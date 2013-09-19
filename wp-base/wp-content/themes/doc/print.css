@@ -1,0 +1,59 @@
+@media print  {
+body {
+background : #fff;
+color : #000;
+width : 100%;
+margin : 0;
+padding : 0;
+font-family : 'Times New Roman';
+font-size : 11pt;
+line-height : 1.5;
+word-spacing : 1pt;
+letter-spacing : 0.2pt;
+}
+#top, #sidebar, #footer, .meta, .social, .navigation, #com, hr {
+display : none;
+}
+#header {
+text-align : center;
+}
+#header h2 {
+font-size : 22pt;
+}
+.pt {
+text-align : center;
+}
+.pt h2, .pt h1 {
+font-size : 14pt;
+}
+h2 a, h1 a {
+border : 0;
+text-decoration : none;
+letter-spacing : 0.3pt;
+}
+p + p {
+text-indent : 20pt;
+margin-top : -10pt;
+}
+table p + p {
+text-indent : 0;
+}
+a {
+color : #666;
+border-bottom : 0.1pt solid #666;
+}
+img {
+float : left;
+display : inline;
+margin : 5pt 10pt 0 0;
+}
+a img {
+border : none;
+}
+code {
+font-family : Courier, monospace;
+}
+blockquote {
+font-style : italic;
+}
+}

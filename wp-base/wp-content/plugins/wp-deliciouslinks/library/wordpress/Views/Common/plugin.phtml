@@ -1,0 +1,25 @@
+/*
+Plugin Name: <?php echo $this->options['name']."\n";?>
+Plugin URI: <?php echo $this->options['uri']."\n";?>
+Description: <?php echo $this->options['short_desc']."\n";?>
+Author: <?php echo $this->options['author']."\n";?>
+Author URI: <?php echo $this->options['author_uri']."\n";?>
+Version: <?php echo $this->options['version']."\n";?>
+ */ 
+$lib = dirname ( __FILE__ ) . '<?php echo $this->options['load'];?>';
+if (! file_exists ( $lib )) {
+	require_once dirname ( __FILE__ ) . '/' . basename ( __FILE__, '.php' ) . '/' . basename ( __FILE__ );
+} else {
+	require_once $lib;
+
+<?php if(isset($this->options['include']))
+{
+	foreach($this->options['include'] as $include):?>
+	@include_once (<?php echo $include;?>);
+	<?php
+	endforeach;	
+}
+?>
+
+	new <?php echo $this->options['class'];?> ( __FILE__,array(<?php echo $this->preloads;?>) );
+}

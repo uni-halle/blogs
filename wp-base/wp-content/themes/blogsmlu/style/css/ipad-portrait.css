@@ -1,0 +1,80 @@
+/*
+	Theme Name: Blogs@MLU Default Theme
+	iPad (Portrait Orientation) CSS Styles
+	Author: Matthias Kretschmann
+	Author URI: http://kremalicious.com
+*/
+
+#wrapper,
+#header,
+#sidebar, .sidelist, 
+#content, 
+#footerbar, #footer, #global-footer,
+#top, #topbar {
+	clear: both;
+  	display: block;
+  	width: 100%;
+  	float: none;
+  	margin: 0;
+  	padding: 0;
+  	position: relative;
+  	left: 0;
+  	top: 0;
+}
+
+#wrapper {
+	clear: both;
+  	display: block;
+  	width: 96%;
+  	float: none;
+  	padding: 0 !important;
+  	margin: 30px 2% !important;
+}
+
+#content {
+	padding: 7%;
+	width: 86%;
+}
+
+#blogname {
+	margin-left: 0;
+	width: 94%;
+	top: 25px;
+	float: right;
+	margin-top: 20px;
+}
+
+#sidebar {
+	border: none;
+	padding: 0 2%;
+	width: 96%;
+}
+
+.sidelist {
+	margin: 20px 0;
+}
+
+.sidelist h2, #sidebar .widgettitle {
+	background: #9BC34B; /* old browsers */
+	background: -moz-linear-gradient(top, #9BC34B 33%, #8EBB41 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(33%,#9BC34B), color-stop(100%,#8EBB41)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9BC34B', endColorstr='#8EBB41',GradientType=0 ); /* ie */
+	border: 1px solid #bbe468;
+	padding-left: 3%;
+	width: 97%;
+	height: 33px;
+}
+
+.footerlist {
+	width: 30%;
+	float: left !important;
+	margin-right: 20px;
+}
+
+#global-footer {
+	padding: 20px 0 !important;
+}
+
+#front-admin {
+	right: 0;
+}

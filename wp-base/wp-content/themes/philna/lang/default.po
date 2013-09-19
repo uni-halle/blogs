@@ -1,0 +1,727 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: philna 1.0.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-03-06 16:33+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: yinheli <yinheli@gmail.com>\n"
+"Language-Team: yinheli <yinheli@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: AMERICAN SAMOA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:20
+#: header.php:19
+msgid "RSS 2.0 - posts"
+msgstr ""
+
+#: 404.php:21
+#: header.php:20
+msgid "RSS 2.0 - all comments"
+msgstr ""
+
+#: 404.php:85
+msgid "Welcome to 404 error page!"
+msgstr ""
+
+#: 404.php:86
+msgid "Welcome to this customized error page. You've reached this page because you've clicked on a link that does not exist. This is probably our fault... but instead of showing you the basic '404 Error' page that is confusing and doesn't really explain anything, we've created this page to explain what went wrong."
+msgstr ""
+
+#: 404.php:88
+msgid "try to search"
+msgstr ""
+
+#: archive.php:6
+msgid "Archive:"
+msgstr ""
+
+#: archive.php:11
+#, php-format
+msgid "&#8216;%1$s&#8217; Category"
+msgstr ""
+
+#: archive.php:14
+#, php-format
+msgid "Posts Tagged &#8216;%1$s&#8217;"
+msgstr ""
+
+#: archive.php:17
+#: archive.php:20
+#: archive.php:23
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: archive.php:17
+#: archive.php:45
+#: comments-ajax.php:97
+#: comments.php:51
+#: comments.php:101
+#: contact.php:19
+#: index.php:16
+#: links.php:22
+#: page.php:15
+#: search.php:15
+#: single.php:12
+msgid "F jS, Y"
+msgstr ""
+
+#: archive.php:20
+msgid "F, Y"
+msgstr ""
+
+#: archive.php:23
+msgid "Y"
+msgstr ""
+
+#: archive.php:26
+msgid "Author Archive"
+msgstr ""
+
+#: archive.php:29
+msgid "Blog Archives"
+msgstr ""
+
+#: archive.php:43
+#: comments-ajax.php:99
+#: comments.php:54
+#: comments.php:98
+#: contact.php:14
+#: index.php:14
+#: page.php:10
+#: search.php:13
+#: single.php:10
+msgid "Edit"
+msgstr ""
+
+#: archive.php:44
+#: index.php:15
+#: search.php:14
+msgid "No comments"
+msgstr ""
+
+#: archive.php:44
+#: index.php:15
+#: search.php:14
+msgid "1 comment"
+msgstr ""
+
+#: archive.php:44
+#: index.php:15
+#: search.php:14
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: archive.php:50
+#: index.php:21
+#: search.php:20
+msgid "Continue reading..."
+msgstr ""
+
+#: archive.php:63
+#: contact.php:35
+#: index.php:35
+#: links.php:42
+#: page.php:30
+#: search.php:34
+#: single.php:41
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: archive.php:71
+#: index.php:43
+#: search.php:42
+msgid "Newer Entries"
+msgstr ""
+
+#: archive.php:72
+#: index.php:44
+#: search.php:43
+msgid "Older Entries"
+msgstr ""
+
+#: comments-ajax.php:97
+#: comments.php:51
+#: comments.php:101
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: comments-ajax.php:97
+#: comments.php:51
+#: comments.php:101
+msgid "H:i"
+msgstr ""
+
+#: comments.php:4
+msgid "Enter your password to view comments."
+msgstr ""
+
+#: comments.php:23
+msgid "Comments"
+msgstr ""
+
+#: comments.php:25
+msgid "Trackbacks"
+msgstr ""
+
+#: comments.php:29
+msgid "Leave a comment"
+msgstr ""
+
+#: comments.php:32
+msgid "Trackback"
+msgstr ""
+
+#: comments.php:83
+msgid "No comments yet.Be the first ?"
+msgstr ""
+
+#: comments.php:116
+msgid "No trackbacks yet."
+msgstr ""
+
+#: comments.php:129
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:134
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: comments.php:144
+msgid "Logged in as"
+msgstr ""
+
+#: comments.php:144
+msgid "Log out of this account"
+msgstr ""
+
+#: comments.php:144
+msgid "Logout &raquo;"
+msgstr ""
+
+#: comments.php:150
+#: comments.php:156
+msgid "Change &raquo;"
+msgstr ""
+
+#: comments.php:151
+msgid "Close &raquo;"
+msgstr ""
+
+#: comments.php:155
+#, php-format
+msgid "Welcome back <strong>%s</strong>."
+msgstr ""
+
+#: comments.php:163
+msgid "Name"
+msgstr ""
+
+#: comments.php:163
+#: comments.php:167
+msgid "(required)"
+msgstr ""
+
+#: comments.php:167
+msgid "E-Mail (will not be published)"
+msgstr ""
+
+#: comments.php:171
+msgid "Website"
+msgstr ""
+
+#: comments.php:183
+msgid "Submitting Comment, Wait me a second..."
+msgstr ""
+
+#: comments.php:187
+msgid "Comments feed"
+msgstr ""
+
+#: comments.php:205
+msgid "Submit Comment"
+msgstr ""
+
+#: contact.php:16
+#: links.php:19
+#: page.php:12
+#: single.php:11
+msgid "Add a comment"
+msgstr ""
+
+#: contact.php:25
+#: links.php:32
+#: page.php:21
+#: single.php:18
+msgid "Pages:"
+msgstr ""
+
+#: footer.php:24
+msgid "Copyright &copy; "
+msgstr ""
+
+#: footer.php:33
+msgid "Theme by <a href=\"http://philna.com\">yinheli</a>. Valid <a href=\"http://validator.w3.org/check?uri=referer\">XHTML 1.1</a> and <a href=\"http://jigsaw.w3.org/css-validator/\">CSS 3</a>."
+msgstr ""
+
+#: footer.php:40
+#, php-format
+msgid "Hi! %s, Welcome back to "
+msgstr ""
+
+#: footer.php:44
+#, php-format
+msgid "%s, you are reading "
+msgstr ""
+
+#: header.php:66
+msgid "E_mail Feed"
+msgstr ""
+
+#: header.php:68
+msgid "Rss Feed"
+msgstr ""
+
+#: header.php:75
+msgid "Home"
+msgstr ""
+
+#: links.php:16
+msgid "Edit links"
+msgstr ""
+
+#: philna_sendmail.php:4
+msgid "<div class=\"mailinfo\" style=\"color:red;\"><p><strong>You should set your name and E_mail if you want to use the contact template page</strong></p></div>"
+msgstr ""
+
+#: philna_sendmail.php:20
+msgid "<div class=\"mailinfo\" style=\"color: #008800;\"><p>Please enter a valid email address!</p></div>"
+msgstr ""
+
+#: philna_sendmail.php:26
+msgid "<div class=\"mailinfo\" style=\"color: #008800;\"><p>Please enter the e-mail Subject</p></div>"
+msgstr ""
+
+#: philna_sendmail.php:32
+msgid "<div class=\"mailinfo\" style=\"color: #008800;\"><p>Verification Code error</p></div>"
+msgstr ""
+
+#: philna_sendmail.php:39
+msgid "<div class=\"mailinfo\" style=\"color: #008800;\"><p>please type the content</p></div>"
+msgstr ""
+
+#: philna_sendmail.php:55
+msgid "<div class=\"mailinfo\"><p><strong>Your message has been sent</strong></p></div>"
+msgstr ""
+
+#: philna_sendmail.php:58
+msgid "<p><strong>Give me a direct email</strong></p>"
+msgstr ""
+
+#: philna_sendmail.php:64
+msgid "E-Mail (required)"
+msgstr ""
+
+#: philna_sendmail.php:67
+msgid "E-mail Subject (required)"
+msgstr ""
+
+#: philna_sendmail.php:71
+msgid "Verification Code"
+msgstr ""
+
+#: philna_sendmail.php:75
+msgid "Send e-mail"
+msgstr ""
+
+#: search.php:3
+msgid "Search Results"
+msgstr ""
+
+#: search.php:4
+#, php-format
+msgid "Keyword: &#8216;%1$s&#8217;"
+msgstr ""
+
+#: sidebar.php:27
+msgid "<h3>Recent Posts</h3>"
+msgstr ""
+
+#: sidebar.php:29
+msgid "<h3>Random Posts</h3>"
+msgstr ""
+
+#: sidebar.php:53
+msgid "Most commented"
+msgstr ""
+
+#: sidebar.php:63
+msgid "Recent Comments"
+msgstr ""
+
+#: sidebar.php:81
+msgid "Categories"
+msgstr ""
+
+#: sidebar.php:91
+msgid "Archives"
+msgstr ""
+
+#: sidebar.php:106
+msgid "Tag Cloud"
+msgstr ""
+
+#: sidebar.php:122
+msgid "Meta"
+msgstr ""
+
+#: single.php:17
+msgid "Continue reading"
+msgstr ""
+
+#: admin/about.php:3
+msgid "About This Theme"
+msgstr ""
+
+#: admin/about.php:8
+msgid "Theme Description:"
+msgstr ""
+
+#: admin/about.php:16
+msgid "Theme Version:"
+msgstr ""
+
+#: admin/about.php:20
+msgid "Template:"
+msgstr ""
+
+#: admin/about.php:25
+msgid "Theme Support:"
+msgstr ""
+
+#: admin/about.php:26
+msgid "Get support for this theme"
+msgstr ""
+
+#: admin/settings.php:151
+msgid "PhilNa Theme Settings"
+msgstr ""
+
+#: admin/settings.php:151
+msgid "PhilNa Settings"
+msgstr ""
+
+#: admin/settings.php:162
+msgid "Settings saved."
+msgstr ""
+
+#: admin/settings.php:170
+msgid "Information"
+msgstr ""
+
+#: admin/settings.php:178
+msgid "Information about this blog"
+msgstr ""
+
+#: admin/settings.php:179
+msgid "You should set this if you want to use the contact.template page "
+msgstr ""
+
+#: admin/settings.php:182
+msgid "Your E_mail"
+msgstr ""
+
+#: admin/settings.php:182
+msgid "(The mail form will send mail to you)"
+msgstr ""
+
+#: admin/settings.php:184
+msgid "Your name:"
+msgstr ""
+
+#: admin/settings.php:184
+msgid "(Will display in the meta and the e_mails )"
+msgstr ""
+
+#: admin/settings.php:196
+msgid "Header"
+msgstr ""
+
+#: admin/settings.php:203
+msgid "Main Meta"
+msgstr ""
+
+#: admin/settings.php:206
+msgid "Keywords"
+msgstr ""
+
+#: admin/settings.php:206
+msgid "( Separate keywords with commas )"
+msgstr ""
+
+#: admin/settings.php:208
+msgid "Description:"
+msgstr ""
+
+#: admin/settings.php:208
+msgid "( Main decription for your blog )"
+msgstr ""
+
+#: admin/settings.php:215
+msgid "Add browser title"
+msgstr ""
+
+#: admin/settings.php:218
+msgid "Add browser title:"
+msgstr ""
+
+#: admin/settings.php:226
+msgid "Search Settings"
+msgstr ""
+
+#: admin/settings.php:230
+msgid "Using google custom search engine."
+msgstr ""
+
+#: admin/settings.php:231
+msgid "CX:"
+msgstr ""
+
+#: admin/settings.php:233
+msgid "How to find the CX code?"
+msgstr ""
+
+#: admin/settings.php:234
+msgid "Find <code>name=\"cx\"</code> in the <strong>Search box code</strong> of <a href=\"http://www.google.com/coop/cse/\">Google Custom Search Engine</a>, and type the <code>value</code> here.<br/>For example: <code>011275726292926788974:fezfvqcwgmo</code>"
+msgstr ""
+
+#: admin/settings.php:241
+msgid "Feed Settings"
+msgstr ""
+
+#: admin/settings.php:245
+msgid "Use custom feed."
+msgstr ""
+
+#: admin/settings.php:246
+msgid "Custom feed URL:"
+msgstr ""
+
+#: admin/settings.php:250
+msgid "Use E_mail feed."
+msgstr ""
+
+#: admin/settings.php:251
+msgid "E_mail feed URL:"
+msgstr ""
+
+#: admin/settings.php:254
+msgid "Show comment state in Rss."
+msgstr ""
+
+#: admin/settings.php:257
+msgid "Add custom text in your Rss such as copyright."
+msgstr ""
+
+#: admin/settings.php:258
+msgid "Rss custom text goes here."
+msgstr ""
+
+#: admin/settings.php:267
+msgid "Show welcome"
+msgstr ""
+
+#: admin/settings.php:271
+msgid "Show welcome in the header"
+msgstr ""
+
+#: admin/settings.php:283
+msgid "Notice"
+msgstr ""
+
+#: admin/settings.php:290
+msgid "Homepage notice settings"
+msgstr ""
+
+#: admin/settings.php:291
+#: admin/settings.php:304
+#: admin/settings.php:393
+msgid "HTML enabled"
+msgstr ""
+
+#: admin/settings.php:295
+msgid "This notice bar will display at the top of posts on homepage."
+msgstr ""
+
+#: admin/settings.php:303
+msgid "Sidebar notice settings"
+msgstr ""
+
+#: admin/settings.php:307
+msgid "This showcase will display at the top of sidebar."
+msgstr ""
+
+#: admin/settings.php:308
+msgid "Who can see?"
+msgstr ""
+
+#: admin/settings.php:311
+msgid "Registered Users"
+msgstr ""
+
+#: admin/settings.php:316
+msgid "Commentator"
+msgstr ""
+
+#: admin/settings.php:321
+msgid "Visitors"
+msgstr ""
+
+#: admin/settings.php:325
+msgid "Title:"
+msgstr ""
+
+#: admin/settings.php:347
+#: admin/settings.php:351
+msgid "Show Enthusiastic commentator"
+msgstr ""
+
+#: admin/settings.php:352
+msgid "Limit days:"
+msgstr ""
+
+#: admin/settings.php:353
+msgid "7 days"
+msgstr ""
+
+#: admin/settings.php:354
+msgid "10 days"
+msgstr ""
+
+#: admin/settings.php:355
+msgid "15 days"
+msgstr ""
+
+#: admin/settings.php:356
+msgid "30 days"
+msgstr ""
+
+#: admin/settings.php:358
+msgid "Limit commtent times:"
+msgstr ""
+
+#: admin/settings.php:359
+msgid "5 times"
+msgstr ""
+
+#: admin/settings.php:360
+msgid "10 times"
+msgstr ""
+
+#: admin/settings.php:361
+msgid "15 times"
+msgstr ""
+
+#: admin/settings.php:362
+msgid "20 times"
+msgstr ""
+
+#: admin/settings.php:371
+msgid "Footer"
+msgstr ""
+
+#: admin/settings.php:379
+msgid "Show the online counter"
+msgstr ""
+
+#: admin/settings.php:383
+msgid "Show (Make sure the websit directory you can write )"
+msgstr ""
+
+#: admin/settings.php:390
+msgid "Footer Insert:"
+msgstr ""
+
+#: admin/settings.php:392
+msgid "Such as google Analytics code, </br>Tongji Beian hao and so on "
+msgstr ""
+
+#: admin/settings.php:408
+msgid "Save Changes"
+msgstr ""
+
+#: admin/settings.php:419
+msgid "If you find my work useful and you want to encourage the development of more free resources, you can do it by donating..."
+msgstr ""
+
+#: app/yinheli_seo.php:161
+#, php-format
+msgid "Search results for &quot;%1$s&quot;"
+msgstr ""
+
+#: app/yinheli_seo.php:173
+msgid "W"
+msgstr ""
+
+#: app/yinheli_welcome.php:22
+#, php-format
+msgid "Howdy, <strong>%s</strong>, welcome back!"
+msgstr ""
+
+#: app/yinheli_welcome.php:25
+msgid "You direct access to my site! you remember my domain ? Thank you !"
+msgstr ""
+
+#: app/yinheli_welcome.php:32
+msgid "You found me through <strong>Baidu</strong>,Congratulations! If you can Subscribe to my blog that would be fine"
+msgstr ""
+
+#: app/yinheli_welcome.php:35
+msgid "You found me through <strong>Google</strong>,Congratulations! If you can Subscribe to my blog that would be fine"
+msgstr ""
+
+#: app/yinheli_welcome.php:38
+msgid "You found me through <strong>Yahoo</strong>,Congratulations! If you can Subscribe to my blog that would be fine"
+msgstr ""
+
+#: app/yinheli_welcome.php:42
+msgid "Thank you for feed me by <strong>Google</strong>"
+msgstr ""
+
+#: app/yinheli_welcome.php:45
+msgid "Thank you for feed me by <strong>XianGuo</strong>"
+msgstr ""
+
+#: app/yinheli_welcome.php:48
+msgid "Thank you for feed me by <strong>ZhuaXia</strong>"
+msgstr ""
+
+#: app/yinheli_welcome.php:51
+msgid "Thank you for feed me by <strong>eZha</strong>"
+msgstr ""
+
+#: app/yinheli_welcome.php:54
+msgid "Thank you for feed me by <strong>YouDao</strong>"
+msgstr ""
+
+#: app/yinheli_welcome.php:65
+#, php-format
+msgid "Howdy, <strong>%s</strong>,"
+msgstr ""
+
+#: app/yinheli_welcome.php:66
+#: app/yinheli_welcome.php:68
+msgid "welcome back from <strong>"
+msgstr ""
+

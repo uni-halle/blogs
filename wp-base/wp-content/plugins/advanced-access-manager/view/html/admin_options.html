@@ -1,0 +1,571 @@
+<div class="wrap" id="aam_wrap">
+    <form action="###form_action###" method="post" id="aam-form">
+        <div class="aacsprite aaclogo"><img title="logo" rel="logo" src="###site_url###/wp-content/plugins/advanced-access-manager/view/css/images/nothing.gif" /></div>
+        <div class="plugin-title">
+            <h2>###LABEL_1###</h2>
+            <!-- ###VERSION### begin-->
+            <!-- ###VERSION_BASIC### begin-->
+            <span class="version basic-type">
+                <a href="http://whimba.org/advanced-access-manager" target="_blank" title="###LABEL_152###">###LABEL_149###</a>
+            </span>
+            <!-- ###VERSION_BASIC### end-->
+            <!-- ###VERSION_PREMIUM### begin-->
+            <span class="version pro-type">###LABEL_140###</span>
+            <!-- ###VERSION_PREMIUM### end-->
+            <!-- ###VERSION### end-->
+        </div>
+        <div class="plugin-notification">
+            <!-- ###ERROR_LIST### begin-->
+            <p>###message### <a href="###url###" target="_blank">###LABEL_168###</a></p>
+            <!-- ###ERROR_LIST### end-->
+        </div>
+        <br class="clear" />
+        <div class="###message_class###">
+            <div class="ui-state-highlight">
+                <div class="aacsprite aactinyicons infoicon">
+                    <span>###LABEL_6###!</span>
+                </div>
+            </div>
+        </div>
+        <br class="clear" />
+        ###nonce###
+        <input type="hidden" name="submited" value="1" />
+        <input type="hidden" id="error" value="###error_indicator###" />
+        <input type="hidden" id="error_message" value="###error_message###" />
+        <input type="hidden" name="current_role" id="current_role" value="###current_role_id###" />
+        <input type="hidden" name="current_user" id="current_user" value="###current_user_id###" />
+        <div class="postbox-container" style="width:70%;">
+            <div class="metabox-holder">
+                <div class="meta-box-sortables">
+                    <!-- ###MAIN_OPTIONS_LIST### begin-->
+                    <div id="metabox-wpaccess-options" class="postbox">
+                        <div class="handlediv" title="###LABEL_72###"><br /></div>
+                        <h3 class="hndle"><span>###LABEL_128###</span></h3>
+                        <div class="inside">
+                            <div class="aam-tabs">
+                                <ul>
+                                    <li><a href="#tabs-1">###LABEL_7###</a></li>
+                                    <li><a href="#tabs-2">###LABEL_8###</a></li>
+                                    <li><a href="#tabs-3">###LABEL_9###</a></li>
+                                    <li><a href="#tabs-4">###LABEL_10###</a></li>
+                                    <li><a href="#tabs-5">###LABEL_80###</a></li>
+                                </ul>
+                                <!-- ###MAIN_MENU_TAB### begin-->
+                                <div id="tabs-1">
+                                    <div class="helpbox postbox main-menu-help">
+                                        <div class="aacsprite aacsmicons aachelp"><span class="help1">###LABEL_172###</span></div>
+                                        <a href="#" class="squarebutton reorganize-menu">###LABEL_12###</a>
+                                        <br class="clear" />
+                                    </div>
+                                    <div class="main-menu-accordion">
+                                        <!-- ###MAIN_MENU_ITEM### begin-->
+                                        <div id="###id###">
+                                            <h4><a href="#" >###name###</a></h4>
+                                            <div>
+                                                <div class="mainmenu-subitem-whole">
+                                                    <input type="checkbox" name="wpaccess[menu][###menu###][whole]" value="1" id="whole" ###whole_checked### />
+                                                    &nbsp;&nbsp;###LABEL_13###
+                                                </div>
+                                                <!-- ###MAIN_MENU_SUBLIST### begin-->
+                                                <div class="postbox submenu-holder">
+                                                    <!-- ###MAIN_MENU_SUBITEM### begin-->
+                                                    <div class="mainmenu-subitem">
+                                                        <input type="checkbox" name="wpaccess[menu][###menu###][sub][###value###]" value="1" ###checked### />
+                                                        &nbsp;&nbsp;###submenu_name###
+                                                    </div>
+                                                    <!-- ###MAIN_MENU_SUBITEM### end-->
+                                                    <br class="clear" />
+                                                </div>
+                                                <!-- ###MAIN_MENU_SUBLIST### end-->
+                                            </div>
+                                        </div>
+                                        <!-- ###MAIN_MENU_ITEM### end-->
+                                    </div>
+                                </div>
+                                <!-- ###MAIN_MENU_TAB### end-->
+                                <!-- ###METABOX_TAB### begin-->
+                                <div id="tabs-2">
+                                    <div class="helpbox postbox">
+                                        <span class="aacsprite aacsmicons aachelp tooltip" alt="###LABEL_14###"><img title="meta" rel="meta" src="###site_url###/wp-content/plugins/advanced-access-manager/view/css/images/nothing.gif" /></span>
+                                        <div class="mbox">
+                                            <input type="text" placeholder="###LABEL_15###" class="initialize-url-text" value="" />
+                                            <a href="#" class="initialize-url lilsqbutton" >###LABEL_16###</a>
+                                            <a href="#" class="refresh-metagox-list squarebutton" >###LABEL_17###</a>
+                                        </div>
+                                        <div id="progressbar"></div>
+                                        <br class="clear" />
+                                    </div>
+                                    <div class="metabox-accordion">
+                                        <!-- ###METABOX_LIST_ITEM### begin-->
+                                        <div>
+                                            <h4><a href="#" >###post_type_label###</a></h4>
+                                            <div>
+                                                <!-- ###POST_METABOXES_LIST### begin-->
+                                                <!-- ###POST_METABOXES_ITEM### begin-->
+                                                <div class="postbox metabox-item" >
+                                                    <h3 style="cursor: default;"><span>###title###</span></h3>
+                                                    <div class="inside">
+                                                        <table class="metabox-description">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>###LABEL_18###:</th>
+                                                                    <td><span class="metabox-id" title="###id###">###short_id###</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>###LABEL_19###:</th>
+                                                                    <td><span class="metabox-priority">###priority###</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>###LABEL_20###:</th>
+                                                                    <td><span class="metabox-position">###position###</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>###LABEL_21###:</th>
+                                                                    <td><input type="checkbox" name="wpaccess[metabox][###internal_id###]" value="1" ###checked### /></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <!-- ###POST_METABOXES_ITEM### end-->
+                                                <!-- ###WIDGET_ITEM### begin-->
+                                                <div class="postbox metabox-item" >
+                                                    <h3 style="cursor: default;"><span>###title###</span></h3>
+                                                    <div class="inside">
+                                                        <table class="metabox-description">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>###LABEL_112###:</th>
+                                                                    <td><span class="metabox-priority">###classname###</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>###LABEL_113###:</th>
+                                                                    <td><span class="metabox-position" title="###description###">###description_short###</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>###LABEL_21###:</th>
+                                                                    <td><input type="checkbox" name="wpaccess[metabox][###classname###]" value="1" ###checked### /></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <!-- ###WIDGET_ITEM### end-->
+                                                <!-- ###POST_METABOXES_LIST### end-->
+                                            </div>
+                                        </div>
+                                        <!-- ###METABOX_LIST_ITEM### end-->
+                                        <!-- ###METABOX_LIST_EMPTY### begin-->
+                                        <div class="ui-widget">
+                                            <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+                                                <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                                                    <span>###LABEL_22### <a href="#" class="refresh-metagox-list" >###LABEL_23###</a></span></p>
+                                            </div>
+                                        </div>
+                                        <!-- ###METABOX_LIST_EMPTY### end-->
+                                    </div>
+                                </div>
+                                <!-- ###METABOX_TAB### end-->
+                                <!-- ###CAPABILITY_TAB### begin-->
+                                <div id="tabs-3">
+                                    <div class="helpbox postbox">
+                                        <div class="aacsprite aacsmicons aachelp"><span class="help1">###LABEL_169###</span></div>
+                                        <br class="clear" />
+                                    </div>
+                                    <!-- ###CAPABILITY_LIST### begin-->
+                                    <div id="capability-list">
+                                        <!-- ###CAPABILITY_ROW### begin-->
+                                        <h4>###group_title###</h4>
+                                        <div>
+                                            <!-- ###CAPABILITY_ITEM### begin-->
+                                            <div class="capability-item ###premium###">
+                                                <div>
+                                                    <input type="checkbox" id="cap-###title###" name="wpaccess[advance][###title###]" value="1" class="capability-name" ###checked### />
+                                                    <label for="cap-###title###" title="###cap_name_full###" class="tooltip aacsprite">###cap_name###</label>
+                                                </div>
+                                                <!-- ###CAPABILITY_DELETE### begin-->
+                                                <div class="aacsprite smex" onclick="mObj.deleteCapability('###title###', '###cap_name###');"><img title="delete capability" rel="delete capability" src="###site_url###/wp-content/plugins/advanced-access-manager/view/css/images/nothing.gif" /></div>
+                                                <!-- ###CAPABILITY_DELETE### end-->
+                                            </div>
+                                            <!-- ###CAPABILITY_ITEM### end-->
+                                            <br class="clear" />
+                                        </div>
+                                        <!-- ###CAPABILITY_ROW### end-->
+                                    </div>
+                                    <!-- ###CAPABILITY_LIST### end-->
+                                    <!-- ###CAPABILITY_LIST_EMPTY### begin-->
+                                    <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;">
+                                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>
+                                            <strong>###LABEL_3###:</strong> ###LABEL_146###</p>
+                                    </div>
+                                    <!-- ###CAPABILITY_LIST_EMPTY### end-->
+                                    <br class="clear" />
+                                    <div class="additional-panel">
+                                        <div class="new-capability">
+                                            <a href="#" class="squarebutton" id="new-capability" title="###LABEL_26###">###LABEL_27###</a>
+                                        </div>
+                                        <div class="default-cap-set">
+                                            <a href="#" class="lilsqbutton" title="###LABEL_28###" id="radio1">###LABEL_29###</a>
+                                            <a href="#" class="lilsqbutton" title="###LABEL_30###" id="radio2">###LABEL_31###</a>
+                                            <a href="#" class="lilsqbutton" title="###LABEL_32###" id="radio3">###LABEL_33###</a>
+                                            <a href="#" class="lilsqbutton" title="###LABEL_34###" id="radio4">###LABEL_35###</a>
+                                            <a href="#" class="lilsqbutton" title="###LABEL_36###" id="radio5">###LABEL_37###</a>
+                                            <a href="#" class="lilsqbutton" title="###LABEL_38###" id="radio6">###LABEL_39###</a>
+                                        </div>
+                                        <br class="clear" />
+                                    </div>
+                                </div>
+                                <!-- ###CAPABILITY_TAB### end-->
+                                <!-- ###RESTRICTION_TAB### begin-->
+                                <div id="tabs-4">
+                                    <div class="tree-holder postbox">
+                                        <div id="sidetreecontrol"><a href="#">###LABEL_40###</a>&nbsp;|&nbsp;<a href="#">###LABEL_41###</a>&nbsp;|&nbsp;<span>###LABEL_159###</span></div>
+                                        <br class="clear" />
+                                        <ul id="tree" class="filetree"></ul>
+                                    </div>
+                                    <div class="post-information postbox">
+                                        <div class="message-passive" id="expire-error-message">
+                                            <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;">
+                                                <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"></span>
+                                                    <strong>###LABEL_3###:</strong> ###LABEL_42###!</p>
+                                            </div>
+                                        </div>
+                                        <div class="message-passive" id="expire-success-message">
+                                            <div class="ui-state-highlight ui-corner-all">
+                                                <span class="aacsprite aactinyicons infoicon"><span>###LABEL_6###!</span></span>
+                                            </div>
+                                        </div>
+                                        <div id="post-date">
+                                            <!-- ###POST_INFORMATION### begin-->
+                                            <!-- ###POST### begin-->
+                                            <table class="restriction-table" cellspacing="0" >
+                                                <thead>
+                                                    <tr>
+                                                        <td colspan="3" class="category-title">###name###</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>&nbsp;</th>
+                                                        <th style="text-align: center;">###LABEL_160###</th>
+                                                        <th style="text-align: center;">###LABEL_150###</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_151###</th>
+                                                        <td><input type="checkbox" name="frontend_post_list" id="frontend_post_list" value="1" /></td>
+                                                        <td><input type="checkbox" name="backend_post_list" id="backend_post_list" value="1" /></td>
+                                                    </tr>
+                                                    <tr id="exclude">
+                                                        <th>###LABEL_129###</th>
+                                                        <td><input type="checkbox" name="frontend_post_exclude" id="frontend_post_exclude" value="1" /></td>
+                                                        <td><input type="checkbox" name="backend_post_exclude" disabled /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_108###</th>
+                                                        <td><input type="checkbox" name="frontend_post_read" id="frontend_post_read" value="1" /></td>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_109###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_post_trash" id="backend_post_trash" value="1" /></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th>###LABEL_110###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_post_delete" id="backend_post_delete" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_111###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_post_edit" id="backend_post_edit" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_92###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_post_publish" id="backend_post_publish" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_93###</th>
+                                                        <td><input type="checkbox" name="frontend_post_comment" id="frontend_post_comment" value="1" /></td>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <a href="#" class="lilsqbutton restore-postinfo" title="###LABEL_171###">###LABEL_170###</a>
+                                                            <a href="#" class="squarebutton save-postinfo" title="###LABEL_59###">###LABEL_60###</a>
+                                                            <a href="#" class="squarebutton save-postinfo-all" title="###LABEL_61###">###LABEL_62###</a>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            <!-- ###POST### end-->
+                                            <!-- ###CATEGORY### begin-->
+                                            <table class="restriction-table">
+                                                <thead>
+                                                    <tr>
+                                                        <td colspan="3" class="category-title">###name###</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>&nbsp;</th>
+                                                        <th style="text-align: center;">###LABEL_160###</th>
+                                                        <th style="text-align: center;">###LABEL_150###</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_151###</th>
+                                                        <td><input type="checkbox" name="frontend_list" id="frontend_list" value="1" /></td>
+                                                        <td><input type="checkbox" name="backend_list" id="backend_list" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_94###</th>
+                                                        <td><input type="checkbox" name="frontend_browse" id="frontend_browse" value="1" /></td>
+                                                        <td><input type="checkbox" name="backend_browse" id="backend_browse" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_111###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_edit" id="backend_edit" value="1" /></td>
+                                                    </tr>
+                                                    <tr class="premium">
+                                                        <td>
+                                                            <div class="table-left text-italic subposts"></div>
+                                                        </td>
+                                                        <td>
+                                                            <input type="checkbox" name="post_in_category" id="post_in_category" value="1" />
+                                                        </td>
+                                                        <td id="premium-ind"><span style="font-size: 10px; font-style: italic; font-weight: bold;">###LABEL_140###</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_151###</th>
+                                                        <td><input type="checkbox" name="frontend_post_list" id="frontend_post_list" class="frontend-browse incat-check" value="1" /></td>
+                                                        <td><input type="checkbox" name="backend_post_list" id="backend_post_list" class="backend-browse incat-check" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_108###</th>
+                                                        <td><input type="checkbox" name="frontend_post_read" id="frontend_post_read" class="frontend-browse incat-check" value="1" /></td>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_109###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_post_trash" id="backend_post_trash" class="backend-browse incat-check" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_110###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_post_delete" id="backend_post_delete" class="backend-browse incat-check" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_111###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_post_edit" id="backend_post_edit" class="backend-browse incat-check" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_92###</th>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                        <td><input type="checkbox" name="backend_post_publish" id="backend_post_publish" class="backend-browse incat-check" value="1" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>###LABEL_93###</th>
+                                                        <td><input type="checkbox" name="frontend_post_comment" id="frontend_post_comment" class="frontend-browse incat-check" value="1" /></td>
+                                                        <td><input type="checkbox" disabled /></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <a href="#" class="lilsqbutton restore-postinfo" title="###LABEL_171###">###LABEL_170###</a>&nbsp;
+                                                            <a href="#" class="squarebutton save-postinfo" title="###LABEL_59###">###LABEL_60###</a>&nbsp;
+                                                            <a href="#" class="squarebutton save-postinfo-all" title="###LABEL_61###">###LABEL_62###</a>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            <!-- ###CATEGORY### end-->
+                                            <!-- ###POST_INFORMATION### end-->
+                                            <div class="ui-state-highlight ui-corner-all">
+                                                <div class="aacsprite aactinyicons infoicon"><span>###LABEL_71###</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br class="clear" />
+                                </div>
+                                <!-- ###RESTRICTION_TAB### end-->
+                                <!-- ###CONFIG_PRESS_TAB### begin-->
+                                <div id="tabs-5">
+                                    <div class="helpbox postbox">
+                                        <span class="aacsprite aacsmicons aachelp"><img title="configpress" rel="configpress" src="###site_url###/wp-content/plugins/advanced-access-manager/view/css/images/nothing.gif" /></span>
+                                        <span class="help2">###LABEL_157###</span>
+                                    </div>
+                                    <textarea id="access_config" name="wpaccess[config_press]">###access_config###</textarea>
+                                </div>
+                                <!-- ###CONFIG_PRESS_TAB### end-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ###MAIN_OPTIONS_LIST### end-->
+                </div>
+            </div>
+        </div>
+        <div class="postbox-container" style="width:20%; margin-left: 10px;">
+            <div class="metabox-holder">
+                <div class="meta-box-sortables">
+                    <!-- ###SUBMIT_METABOX### begin-->
+                    <div id="submitdiv" class="postbox">
+                        <div class="handlediv" title="###LABEL_72###"><br /></div>
+                        <h3 class="hndle"><span>###LABEL_73###</span></h3>
+                        <div class="inside">
+                            <br class="clear" />
+                            <div class="submitbox" id="submitpost">
+                                <div id="minor-publishing">
+                                    <div id="misc-publishing-actions">
+                                        <!-- ###MULTISITE_SELECTOR### begin-->
+                                        <div class="misc-site-section">
+                                            <label>###LABEL_144###:</label>
+                                            <span id="current-site-display" title="###title_full###">###current_site###</span>
+                                            <a href="#" class="change-site hide-if-no-js" tabindex="4">###LABEL_75###</a>
+                                            <div id="site-select" class="hide-if-js">
+                                                <select name="site" id="site" tabindex="4">
+                                                    <!-- ###ROLE_LIST### begin-->
+                                                    <option value="###value###" ###selected### >###title###</option>
+                                                    <!-- ###ROLE_LIST### end-->
+                                                </select>
+                                                <a href="#" class="hide-if-no-js lilsqbutton" id="site-ok">###LABEL_76###</a>
+                                                <a href="#" class="hide-if-no-js" id="site-cancel">###LABEL_77###</a>
+                                            </div>
+                                        </div>
+                                        <!-- ###MULTISITE_SELECTOR### end-->
+                                        <div class="misc-role-section">
+                                            <label>###LABEL_74###:</label>
+                                            <span id="current-role-display">###current_role###</span>
+                                            <a href="#" class="change-role hide-if-no-js" tabindex="4">###LABEL_75###</a>
+                                            <div id="role-select" class="hide-if-js">
+                                                <select name="role" id="role" tabindex="4">
+                                                    <!-- ###ROLE_LIST### begin-->
+                                                    <option value="###value###" ###selected### >###title###</option>
+                                                    <!-- ###ROLE_LIST### end-->
+                                                </select>
+                                                <a href="#" class="hide-if-no-js lilsqbutton" id="role-ok">###LABEL_76###</a>
+                                                <a href="#" class="hide-if-no-js" id="role-cancel">###LABEL_77###</a>
+                                            </div>
+                                        </div>
+                                        <div class="misc-user-section">
+                                            <label>###LABEL_119###:</label>
+                                            <span id="current-user-display">###current_user###</span>
+                                            <a href="#" class="change-user hide-if-no-js" tabindex="4">###LABEL_75###</a>
+                                            <div id="user-select" class="hide-if-js">
+                                                <select name="user" id="user" tabindex="4">
+                                                    <!-- ###USER_LIST### begin-->
+                                                    <option value="###value###" ###selected### >###title###</option>
+                                                    <!-- ###USER_LIST### end-->
+                                                </select>
+                                                <a href="#" class="hide-if-no-js lilsqbutton" id="user-ok">###LABEL_76###</a>
+                                                <a href="#" class="hide-if-no-js" id="user-cancel">###LABEL_77###</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="major-publishing-actions">
+                                    <div class="restore-conf aacsprite aacsmicons aacback" title="###LABEL_78###"><img title="back" rel="back" src="###site_url###/wp-content/plugins/advanced-access-manager/view/css/images/nothing.gif" /></div>
+                                    <div class="save-action">
+                                        <img src="###site_url###/wp-content/plugins/advanced-access-manager/view/css/images/load.gif" style="display:none;" id="ajax-loading" alt="###LABEL_81###">
+                                        <input name="save" id="save" class="lgsquarebutton" value="###LABEL_82###" tabindex="5" onclick="return mObj.submitForm();" type="submit" />
+                                    </div>
+                                    <br class="clear" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ###SUBMIT_METABOX### end-->
+                    <!-- ###ROLE_METABOX### begin-->
+                    <div id="metabox-wpaccess-rolemanager" class="postbox" >
+                        <div class="handlediv" title="###LABEL_72###"><br /></div>
+                        <h3 class="hndle"><span>###LABEL_83###</span></h3>
+                        <div class="inside" style="width:100%; margin: 0px; padding: 0px;">
+                            <div id="role-tabs" >
+                                <ul>
+                                    <li><a href="#role_tab-1">###LABEL_84###</a></li>
+                                    <li><a href="#role_tab-2">###LABEL_85###</a></li>
+                                </ul>
+                                <div id="role_tab-1">
+                                    <!-- ###DELETE_ROLE_LIST### begin-->
+                                    <table class="delete-role-table">
+                                        <tbody>
+                                            <!-- ###DELETE_ROLE_ITEM### begin-->
+                                            <tr id="dl-row-###role_id###">
+                                                <td><span class="role-name">###role_name###</span></td>
+                                                <td><i>(###count###)</i></td>
+                                                <td>
+                                                    <!-- ###DELETE_ROLE_BUTTON### begin-->
+                                                    <a href="javascript:void(0);" onclick="mObj.deleteRole('###role_id###');" style="color:#D54E21;">###LABEL_86###</a>
+                                                    <!-- ###DELETE_ROLE_BUTTON### end-->
+                                                </td>
+                                            </tr>
+                                            <!-- ###DELETE_ROLE_ITEM### end-->
+                                        </tbody>
+                                    </table>
+                                    <!-- ###DELETE_ROLE_LIST### end-->
+                                </div>
+                                <div id="role_tab-2">
+                                    <input type="text" value="" id="new-role-name" placeholder="###LABEL_87###" />
+                                    <a href="#" class="hide-if-no-js lilsqbutton" id="new-role-ok">###LABEL_88###</a>
+                                </div>
+                            </div>
+                            <div id="new-role-message-ok">
+                                <div class="ui-widget">
+                                    <div class="ui-state-highlight ui-corner-all" style="margin-top:5px; padding: 0 .7em;">
+                                        <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+                                            <span>###LABEL_89###!</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ###ROLE_METABOX### end-->
+                    <!-- ###AHM_METABOX### begin-->
+                    <div id="metabox-wpaccess-recommend" class="postbox" >
+                        <div class="handlediv" title="###LABEL_72###"><br /></div>
+                        <h3 class="hndle"><span>###LABEL_95###</span></h3>
+                        <div class="inside" style="width:100%; margin: 0px; padding: 0px;">
+                            <div style="margin: 5px; float: left; width: 30px; padding: 10px 0 0 5px;">
+                                <img title="logo" rel="logo" src="###site_url###/wp-content/plugins/advanced-access-manager/view/css/images/ahm.png" />
+                            </div>
+                            <div style="margin: 5px; float: left; width: 180px; text-align: justify;">
+                                ###LABEL_96###
+                            </div>
+                            <div style="text-align: center">
+                                <a href="###install_link###" class="button button-primary button-large">###LABEL_90###</a>
+                            </div>
+                            <br class="clear" />
+                        </div>
+                    </div>
+                    <!-- ###AHM_METABOX### end-->
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div id="general-dialog" class="dialog">
+        <p>
+            <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 5px 0;"></span>
+            <span class="dialog-text"></span>
+        </p>
+    </div>
+
+    <div id="capability-form" class="dialog" title="###LABEL_26###">
+        <div class="helpbox postbox">
+            <span>###LABEL_174###</span>
+        </div>
+        <input type="text" id="new-cap" placeholder="###LABEL_175###" style="width : 100%;" />
+    </div>
+
+    <div id="dialog-apply-all" class="dialog" title="###LABEL_105###">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>###LABEL_106###</p>
+        <p><input type="checkbox" id="hide-apply-all" />&nbsp;<label for="hide-apply-all">###LABEL_107###</label></p>
+    </div>
+</div>

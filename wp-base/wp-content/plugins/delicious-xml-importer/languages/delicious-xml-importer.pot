@@ -1,0 +1,103 @@
+# Translation of the WordPress plugin   by .
+# Copyright (C) 2010 
+# This file is distributed under the same license as the  package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/delicious-xml-importer\n"
+"POT-Creation-Date: 2010-12-17 17:13+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: delicious.php:40
+msgid "Import Delicious XML"
+msgstr ""
+
+#: delicious.php:56
+msgid ""
+"This importer allows you to import posts or links from your Delicious "
+"bookmarks."
+msgstr ""
+
+#: delicious.php:57
+#, php-format
+msgid ""
+"<a href=\"%s\">Visit this link to get an XML file of your bookmarks.</a> You "
+"will be asked to log in to your Delicious account."
+msgstr ""
+
+#: delicious.php:61
+msgid "Choose the XML file from your computer:"
+msgstr ""
+
+#: delicious.php:64
+msgid "Do you want your Delicious Bookmarks as"
+msgstr ""
+
+#: delicious.php:66
+msgid "Posts"
+msgstr ""
+
+#: delicious.php:67
+msgid "Links"
+msgstr ""
+
+#: delicious.php:71
+msgid "If posts, do you want your Delicious Tags as "
+msgstr ""
+
+#: delicious.php:73
+msgid "Categories"
+msgstr ""
+
+#: delicious.php:74
+msgid "Tags"
+msgstr ""
+
+#: delicious.php:78
+msgid "Submit"
+msgstr ""
+
+#: delicious.php:183
+msgid "Importing post..."
+msgstr ""
+
+#: delicious.php:188
+msgid "Post already imported"
+msgstr ""
+
+#: delicious.php:194
+msgid "Couldn&#8217;t get post ID"
+msgstr ""
+
+#: delicious.php:204 delicious.php:231
+msgid "Done !"
+msgstr ""
+
+#: delicious.php:217
+msgid "Importing link "
+msgstr ""
+
+#: delicious.php:228
+msgid "Couldn&#8217;t get link ID"
+msgstr ""
+
+#: delicious.php:262
+#, php-format
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr ""
+
+#: delicious.php:298
+msgid "Delicious"
+msgstr ""
+
+#: delicious.php:298
+msgid "Import posts from a Delicious XML export file."
+msgstr ""

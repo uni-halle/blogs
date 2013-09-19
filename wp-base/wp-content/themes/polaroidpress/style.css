@@ -1,0 +1,421 @@
+/*  
+Theme Name: PolaroidPress
+Theme URI: http://www.jepson.no
+Description: PolaroidPress
+Version: 1.0
+Author: Magnus Jepson
+Author URI: http://www.jepson.no
+*/
+
+/*************************************
+ +RESET
+ *************************************/
+
+h1 {font-size:2.5em;line-height:1;margin-bottom:.5em; letter-spacing:-2px;}
+h2 {font-size:2em;margin-bottom:.75em;}
+h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
+h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;}
+h5 {font-size:1em;font-weight:700;margin-bottom:1.5em;}
+h6 {font-size:1em;font-weight:700;}
+p,img,dl {margin:0 0 1.5em;}
+a img {border:none;}
+
+/*************************************
+ +Containers
+ *************************************/
+body{
+	background:#eaeade url(images/bg.jpg) repeat-x top left;
+	color:#150500;
+	font-family: Arial, Tahoma, Verdana, sans; 
+	font-size:72.5%;
+	line-height:1.5;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+#wrap{
+	position:relative;
+	margin:0 auto; 
+	text-align:left;
+	width:987px;	
+}
+#header{
+	position:relative;
+	background:url(images/bg-polaroid.jpg) no-repeat top left;
+	float:left;
+	width:406px;
+	height:504px;
+}
+#header img{
+	position:absolute;
+	left:59px;
+	top:100px;
+}
+#header #title {
+	background:#fff;
+	position:absolute;
+	right:60px;
+	top:398px;	
+	text-align:right;
+}
+#top-right{
+	background:url(images/bg-top-right.jpg) no-repeat top left;
+	float:right;
+	width:581px;
+	height:504px;
+}
+#contentwrap{
+	width:845px;
+	background:#fbfbf3;
+	border-left:#daded3 1px solid; 
+	border-right:#daded3 1px solid;
+	padding:0px;
+	margin:0px auto;
+}
+#content{
+	float:right;
+	font-size:1.1em;
+	padding:0 30px 0 0;
+	width:470px;
+	margin-top:-380px;
+	overflow:hidden;
+}
+
+/*************************************
+ +Footer
+ *************************************/
+#footer{
+	clear:both;
+	position:absolute;
+	background:url(images/bg-footer.jpg) no-repeat top left;
+	height:146px;
+	width:987px;
+	font-size:1.1em;
+	padding-bottom:20px;
+}
+#footer a {
+    color:#56523a;
+}
+#footer a:hover {
+	color:#ffffff;
+}
+#top-footer {
+	color:#9fa684;
+	font-size:14px;
+	margin:60px 200px 0 90px;
+	margin-top:60px;
+	height:30px;
+}
+#top-footer ul{
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+#top-footer ul li {
+	display:inline;
+	padding-right:10px;
+
+}
+#credits{
+	color:#56523a;
+	margin:0 0px 0 90px;
+}
+/*************************************
+ +Icons
+ *************************************/
+#rss-big {
+	position:absolute;
+	width:50px;
+	height:50px;
+	top:0px;
+	left:860px;
+}
+#rss-big a{
+	display:block;
+	width:50px;
+	height:50px;
+}
+.rss-small {
+	background:transparent url(images/rss-small.jpg) no-repeat scroll 0%;
+	padding:4px 3px 3px 25px;
+}
+.icon-comments {
+	position:relative;
+	background: url(images/icon-comments.jpg) no-repeat top center;
+	float:right;
+	padding:2px 0 5px 0px;
+	text-align:center;
+}
+.icon-comments a{
+	padding: 10px 20px 10px 20px;
+	color:#f39634;
+	line-height:2em;
+	font-size:16px;
+	font-weight:bold;
+}
+.postinfo .date {background:url(images/calendar-trans.png) no-repeat top left; padding:0px 10px 0 22px; }
+.postinfo .tags {background:url(images/tags-trans.png) no-repeat top left; padding:0px 10px 0 22px; }
+
+/*************************************
+ +Hn, a and p
+ *************************************/
+pre{ max-width:500px; }
+
+a{ color:#19acff; text-decoration:none; }
+a:hover{ color:#424242; text-decoration:none; }
+
+h1, h2, h3{	font-family:Georgia, "Times New Roman", Times, serif; font-weight:normal;	letter-spacing: -1px; margin:0; }
+
+#header #title h1 a { color:#cadd1e; }
+#header #title .description { font-size:12px; color:#424242; margin-left:2px;}
+
+.entrytitle h2{	font-size:2.2em; line-height:1em; margin-right:40px; }
+.entrytitle h2 a { color:#19acff; }
+.entrytitle h2 a:hover{ color:#424242; }
+.entrytitle h3{	margin-top:-10px; font-size:1.8em; color:#6F6F6F; }
+
+.entrybody a{ text-decoration:none; }
+.entrybody a:hover{ text-decoration:none; }
+
+.entrybody h2{ font-size:1.8em; margin-top:.7em; }
+
+blockquote { 
+	background:url(images/bg-sidebar.jpg) repeat;
+	display: block;
+	padding: 1em;
+}
+p img {
+	margin:0em 1.5em 1.5em 0pt;
+	display:block;
+}
+/*************************************
+ +Entry
+ *************************************/
+.entry{
+	position:relative;
+	margin:0;
+	padding-bottom:1em;
+}
+.entrybody {
+	color:#424242;
+	margin-top:10px;
+}	
+.entry img {
+	position: relative;
+	max-width:450px;
+	border:0px;
+	padding:5px;
+	background:#fff;
+	border:1px solid #ccc;
+}
+.entry img:hover{
+	padding:5px;
+	border:1px dotted #000;
+}
+.entry code{
+	background:#e3e7cb;	
+	color:#999;
+	font-size:1.1em;
+	padding:.2em;
+}
+.entrymeta{
+	font-size:1em;
+	padding:.2em 0 0em 0;
+	color:#969696;
+}
+.entrymeta a{
+	color:#a0c032;
+}
+.postinfo { position:relative; margin-bottom:15px;}
+.post-meta { position:absolute; margin:0; margin-left:5px;padding:0; display:inline; list-style:none; }
+.post-meta-key {font-weight: bold; }
+/*************************************
+ +Sidebar
+ *************************************/
+#sidebar{
+	background:url(images/bg-sidebar.jpg) repeat-y;
+	font-size:1.1em;
+	float:left;
+	padding:10px 10px 0 10px;
+	margin:10px 0 0 55px;
+	width:220px;
+	display: inline;
+}
+#sidebar ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	clear:both;
+	margin-bottom:1em;
+}
+#sidebar ul li{
+	margin:.3em;
+}
+#sidebar ul a:hover{
+
+	color:#424242;
+}
+#sidebar h2{
+	color:#424242;
+	font-size:1.6em;
+	margin-top:10px;
+}
+
+/*************************************
+ +Menu
+ *************************************/
+#menu {
+	position:absolute;
+	left:200px;
+	top:0px;
+	width:650px;
+	text-align:right;
+}
+#menu ul{
+	background:#fbfbf2;
+	font-size:1.2em;
+	letter-spacing:-1px;
+	list-style: none;
+	padding:4px 8px 0 8px;
+	margin:0px;
+	text-align:right;
+	float:right;
+	border:1px solid #dedecd;
+	height:25px;
+}
+#menu li{
+	float: left;
+	font-weight:bold;
+}
+#menu li a{
+	padding:4px 8px;
+	color:#f39634;
+}
+#menu li a:hover{
+	color:#19acff;
+	padding:4px 8px;
+}
+#menu li .current{
+	color:#19acff;
+	padding:4px 8px;
+}
+
+
+/*************************************
+ +Comments
+ *************************************/
+.commentsblock{
+	position:relative;
+	font-size:1.0em;
+	margin:0em;
+	color:#424242;
+
+}
+.commentsblock textarea{
+	width:35em;
+	background:#fff;
+}
+.commentsblock #submit {
+	background:#d1d1d1;
+	padding:4px;
+	border:1px solid #a1a1a1;
+}
+.commentsblock input, .commentsblock textarea{
+	border:1px solid #d1d1d1;
+}
+.commentsblock textarea:focus{
+	background:#eee;
+	border:1px solid #a1a1a1;
+}
+.commentsblock textarea:focus, .commentsblock input:focus{
+	background:#eee;
+	border:1px solid #a1a1a1;
+}
+.commentauthor{
+	font-size:1em;
+	font-weight:bold;
+	color:#424242;
+}
+ol.commentlist{
+	font-size:1em;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+ol.commentlist a{
+	color:#a0c032;
+}
+ol.commentlist a:hover{
+	color:#424242;
+}
+.commentlist li{
+	margin-bottom:0.5em;
+	padding:0.5em 1em;
+}
+.alt{
+	background:url(images/bg-sidebar.jpg) repeat-x;
+	border-bottom:1px dotted #e6e6e6;
+	border-top:1px dotted #e6e6e6;
+	padding:0.5em;
+}
+h3.comments{
+	font-size:1.4em;
+	color:#6C6C6C;
+	padding-bottom:1em;
+	margin-top:1em;
+}	
+.comments{
+	color:#424242;
+}
+/*************************************
+ +Flickr
+ *************************************/
+#flickr {
+	margin:0;
+	padding:0em;
+}
+#flickr img {
+	border:0px;	
+}
+#flickr a {
+	background:#FFF;
+	border: 1px dotted #ccc;
+	float: left;
+	display: inline;
+	margin:0.7em;
+	padding:5px;
+	width: 75px;
+	height: 75px;
+}
+#flickr a:hover{
+	background:#DFDDD0;
+}
+/*************************************
+ +Misc
+ *************************************/
+
+div.hr-entry {
+	clear:both;
+	height: 16px;
+	background:url(images/entry-border.jpg) no-repeat; 
+	margin:5px 0;
+}
+div.hr-entry hr {
+  display: none;
+}
+
+.aligncenter {
+	margin: 10px auto 20px auto;
+	display: block;
+}
+
+.alignleft {
+	margin: 5px 20px 8px 0;
+	float: left;
+}
+
+.alignright {
+	margin: 5px 0px 8px 20px;
+	float: right;
+}
+

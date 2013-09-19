@@ -1,0 +1,66 @@
+/* Internet Explorer 6 and lower suck hard. No PNG-Support and the hacks out
+ * there don't work at all. That's why we just disable all transparent
+ * PNGs in IE6 and resize the containers and supply them with normal
+ * background-color and a 1px border. Uglier... maybe it causes _some_
+ * IE6-Users to upgrade to a decent browser. Hopefully.
+ */
+
+#header h1 a {
+  top: 50px;
+  padding-left: 20px;
+  z-index: 1000;
+}
+
+#container {
+  /* This fixes center position in IE 5.5 */
+  position: absolute;
+  left: 50%;
+  margin-left: -410px;
+  width: 820px;
+}
+
+#content, #sidebar, .tool-tip {
+  background: #1f1f25;
+  border: 1px solid #32323b;
+}
+
+.tool-tip {
+  height: 30px;
+}
+
+#contenttop, #contentbottom,
+#sidebartop, #sidebarbottom {
+ display: none;
+}
+
+#contentcontainer {
+  width: 600px;
+}
+
+#sidebarcontainer {
+  width: 225px;
+}
+
+#content {
+  padding: 20px 0 30px 0;
+}
+
+#footer {
+  margin-top: 20px;
+}
+
+#sidebar .searchformdiv {
+  position: relative;
+}
+
+#sidebar #s {
+  width: 90px;
+}
+
+#sidebar #searchsubmit {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+}
+
+

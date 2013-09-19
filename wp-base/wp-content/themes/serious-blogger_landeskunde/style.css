@@ -1,0 +1,148 @@
+/*
+Theme Name: Serious Blogger - Landeskunde-Blog
+Theme URI: http://blogs.uni-halle.de
+Description: Child Theme for Serious Blogger | Landeskunde-Blog
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+Template: serious-blogger
+Version: 1.0
+
+*/
+ 
+@import url("../serious-blogger/style.css");
+
+/* @group Links */
+
+a {
+	color: #5500bb;
+	text-decoration: none;
+	outline: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active, a:focus, .content a:focus, .content a:active {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+/* @end */
+
+.post {
+	margin-bottom: 50px;
+	text-shadow: #fff 0 1px 0;
+}
+
+.logo {
+	height: 110px;
+}
+
+.wrap {
+	overflow: visible;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+.logo h1 {
+	font-size: 2em;
+	padding-top: 50px;
+	margin-top: -20px;
+	background: url(dog-right.png) no-repeat right top;
+	height: 131px;
+}
+
+.logo h5 {
+	margin-top: -100px;
+}
+
+.menu {
+	margin-top: -15px;
+}
+
+/* @group WordPress Classes */
+
+/*################*/
+
+/*### Wordpress classes  ###*/
+
+/*################*/
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+
+img.alignleft, .wp-caption.alignleft {
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+
+img.alignright, .wp-caption.alignright {
+	margin-left: 20px;
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+
+img.aligncenter, .wp-caption.aligncenter {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.content img.wp-smiley {
+	border: none;
+	padding: 0;
+	background-color: transparent;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-khtml-box-shadow: none;
+}
+
+p.wp-caption-text {
+	color: #787878;
+	font-size: 0.9em;
+	font-style: italic;
+	padding: 5px;
+	clear: both;
+	line-height: 1.5em;
+	word-wrap: break-word;
+}
+
+a.more-link {
+	display: block;
+	margin-top: 5px;
+}
+
+.navigation {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: 0.9em;
+}
+
+.sticky {
+	padding: 10px;
+	border: #9bc34b solid 1px;
+}
+
+/* @end */
+
+#wpabar li {
+	list-style: none;
+	background-image: none;
+	padding: 0 5px;
+}
+

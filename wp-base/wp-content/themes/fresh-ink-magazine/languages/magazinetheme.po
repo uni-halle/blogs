@@ -1,0 +1,215 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in echo
+#: fresh-ink-magazine/single.php:33
+msgid " Posted in "
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:35
+msgid " Posted in  "
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:17
+msgid "Archive for"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:7
+msgid "Archive for the"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archives.php:10
+msgid "Archives by Month:"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archives.php:14
+msgid "Archives by Subject:"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:23
+msgid "Author Archive"
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "Baseball"
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "Beach"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:25
+msgid "Blog Archives"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/single.php:61
+msgid "Both comments and pings are currently closed."
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:34
+#: fresh-ink-magazine/search.php:16
+msgid "By "
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:7
+msgid "Category"
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "City"
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "Coffee"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/404.php:4
+msgid "Error 404 - File Not Found."
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "Farm"
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "Fence"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/links.php:9
+msgid "Links: "
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/search.php:45
+msgid "No Search Results Found"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:61
+msgid "Not Found  "
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/sidebar.php:17
+msgid "Past Archives"
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/archive.php:30
+#: fresh-ink-magazine/archive.php:43
+#: fresh-ink-magazine/index.php:15
+#: fresh-ink-magazine/index.php:27
+#: fresh-ink-magazine/search.php:12
+#: fresh-ink-magazine/search.php:25
+msgid "Permanent Link to %s"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/index.php:40
+#: fresh-ink-magazine/search.php:17
+msgid "Posted in "
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:43
+#: fresh-ink-magazine/search.php:25
+msgid "Read the rest of this entry &raquo;"
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/single.php:55
+msgid "Responses are currently closed, but you can <a href=\"%s\" rel=\"trackback\">trackback</a> from your own site."
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "School"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/archive.php:21
+#: fresh-ink-magazine/search.php:7
+msgid "Search Results"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/searchform.php:7
+msgid "Search..."
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "Snow"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/search.php:47
+msgid "Sorry, but nothing matched your search criteria. Please try again with different keywords."
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/single.php:70
+#: fresh-ink-magazine/page.php:41
+msgid "Upss, not found..."
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/functions.php:116
+msgid "Waterfall"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/404.php:5
+msgid "We're sorry, the file you requested could not be found. Please check for a mis-typed URL error, then press the refresh button on your browser. "
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/index.php:21
+#: fresh-ink-magazine/page.php:19
+msgid "Written By: "
+msgstr ""
+
+#. Text in function
+#: fresh-ink-magazine/single.php:52
+msgid "You can <a href=\"#respond\">leave a response</a>, or <a href=\"%s\" rel=\"trackback\">trackback</a> from your own site."
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/single.php:58
+msgid "You can skip to the end and leave a response. Pinging is currently not allowed."
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/sidebar.php:22
+msgid "meta"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/sidebar.php:11
+msgid "recent articles"
+msgstr ""
+
+#. Text in echo
+#: fresh-ink-magazine/footer.php:17
+msgid "theme by "
+msgstr ""

@@ -1,0 +1,1 @@
+<?php wp_list_pages('title_li=<h1>' . __('Pages') . '</h1>' ); ?>

@@ -1,0 +1,269 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pyrmont V2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-07 08:57+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Team Blogos <wordpress@blogos.dk>\n"
+"Language-Team: Team Blogos <wordpress@blogos.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2;plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_c;_e;__ngettext:1,2;__ngettext_noop:1,2\n"
+"X-Poedit-Basepath: c:\\wamp\\www\\wordpress\\wp-content\\themes\\pyrmont-v2\n"
+"X-Poedit-SearchPath-0: c:\\wamp\\www\\wordpress\\wp-content\\themes\\pyrmont-v2\n"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/404.php:6
+msgid "404 Error Page"
+msgstr "Fejl 404-siden!"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/404.php:11
+msgid "This is a 404 error page."
+msgstr "Det er en fejl 404-side."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/archives.php:12
+msgid "Archives"
+msgstr "Arkiver"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/archives.php:66
+msgid "ERROR:"
+msgstr "FEJL:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/archives.php:66
+msgid "No items were found to be displayed."
+msgstr "Vi fandt ikke noget, der kan fremvises."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:12
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Dette indlæg er kodeordsbeskyttet. Indtast kodeordet for at se kommentarer."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:21
+msgid "No Comment."
+msgstr "Ingen kommentarer."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:21
+msgid "1 comment so far"
+msgstr "&Eacute;n kommentar indtil nu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:21
+#, php-format
+msgid "% comments so far"
+msgstr "% kommentarer indtil nu"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:22
+msgid "Add Your Comment"
+msgstr "Tilføj din kommentar"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:47
+msgid "Comments are closed."
+msgstr "Der er lukket for kommentarer."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:58
+msgid "Your Comment"
+msgstr "Din kommentar"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:59
+msgid "Change mind? Click here to cancel."
+msgstr "Fortrød du? Klik her for at annullere."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:64
+msgid "You must be <a href=\"<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>\">logged in</a> to post a comment."
+msgstr "Du skal være <a href=\"<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>\">logget ind</a> for at kunne indsende en kommentar."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:71
+msgid "Logged in as"
+msgstr "Logget ind som"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:71
+msgid "Log out of this account"
+msgstr "Log ud af denne konto"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:71
+msgid "Log out &raquo;"
+msgstr "Log ud &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:81
+msgid "Name"
+msgstr "Navn"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:81
+msgid "<abbr title=\"Required\">*</abbr> :"
+msgstr "<abbr title=\"skal udfyldes\">*</abbr> :"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:86
+msgid "Email"
+msgstr "Mail"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:86
+msgid "<abbr title=\"Required, would not be published\">*</abbr> :"
+msgstr "<abbr title=\"skal udfyldes; offentliggøres ikke\">*</abbr> :"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:91
+msgid "URI :"
+msgstr "URI :"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:99
+msgid "You can use these tags:"
+msgstr "Du må bruge disse tags:"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/comments.php:102
+msgid "Submit"
+msgstr "Indsend"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/footer.php:4
+msgid "Powered by <a href=\"http://wordpress.org/\" title=\"CODE IS POETRY\">WordPress</a>&nbsp;and&nbsp;<a href=\"http://imotta.cn/\" title=\"Pyrmont V2 theme\">Pyrmont V2</a>."
+msgstr "Kører på <a href=\"http://wordpress.org/\" title=\"CODE IS POETRY\">WordPress</a>&nbsp;and&nbsp;<a href=\"http://imotta.cn/\" title=\"Temaet Pyrmont V2\">Pyrmont V2</a>."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/functions.php:17
+msgid "Search"
+msgstr "Søg"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/functions.php:35
+msgid "Waiting for the admin to approve your comment. Please be patient."
+msgstr "Vi afventer, at admin skal godkende din kommentar. Tak for tålmodighed!"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/functions.php:40
+msgid "&nbsp;said:&nbsp;"
+msgstr "&nbsp;siger:&nbsp;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/functions.php:40
+msgid "Y.m.d"
+msgstr "Y.m.d"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/functions.php:40
+msgid "H:i"
+msgstr "H.i"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/functions.php:65
+msgid " comments on "
+msgstr " kommenterer på "
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/header.php:33
+msgid "HOME"
+msgstr "FORSIDE"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/header.php:38
+msgid "Follow me on twitter"
+msgstr "Følg mig på Twitter"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/header.php:39
+msgid "Subscribe"
+msgstr "Abonnér"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/header.php:39
+msgid "rss feed"
+msgstr "rss-feed"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:5
+msgid "Tag: "
+msgstr "Tag: "
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:7
+msgid "Category: "
+msgstr "Kategori: "
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:17
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/page.php:17
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:12
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/single.php:11
+msgid "Permalink to: "
+msgstr "Permalink til: "
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:20
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/page.php:20
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:14
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/single.php:14
+msgid "Category"
+msgstr "Kategori"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:24
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/page.php:24
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:18
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/single.php:18
+msgid "Tags: no tag /"
+msgstr "Tags: Ingen tags /"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:28
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/page.php:28
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:22
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/single.php:22
+msgid "Tag"
+msgstr "Tag"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:30
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/page.php:30
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:24
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/single.php:24
+msgid "Add Comment"
+msgstr "Tilføj kommentar"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:30
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:24
+msgid "1 comment"
+msgstr "&eacute;n kommentar"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:30
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:24
+#, php-format
+msgid "% comments"
+msgstr "% kommentarer"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:31
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/page.php:31
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:25
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/single.php:25
+msgid "Edit"
+msgstr "Redigér"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:38
+msgid "</p><p>Read More >></p>"
+msgstr "</p><p>Læs mere >></p>"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:47
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:33
+msgid "&laquo; Previous Entries"
+msgstr "&laquo; Forrige artikler"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:48
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:34
+msgid "Next Entries &raquo;"
+msgstr "Næste artikler &raquo;"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:55
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/page.php:48
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:41
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/single.php:42
+msgid "Sorry, nothing found!"
+msgstr "Desværre! Intet fundet."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/index.php:59
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/page.php:52
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:45
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/single.php:46
+msgid "Please use the search function, or visit the archives page."
+msgstr "Vær venlig at bruge søgefunktionen. Eller besøg arkivsiderne."
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/links.php:12
+msgid "Links"
+msgstr "Links"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/search.php:4
+msgid "Keyword: "
+msgstr "N&oslash;gleord: "
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/sidebar.php:7
+msgid "Recent Posts"
+msgstr "Nye indlæg"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/sidebar.php:14
+msgid "Recent Comments"
+msgstr "Nye kommentarer"
+
+#: c:\wamp\www\wordpress\wp-content\themes\pyrmont-v2/sidebar.php:21
+msgid "Meta"
+msgstr "Meta"
+

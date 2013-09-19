@@ -1,0 +1,218 @@
+/*-----------------------------------------------------------------------------------------*/
+/*- RESET ---------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------*/
+html, body, div, span, object, iframe, 
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, 
+a, abbr, acronym, address, big, cite, code, del, dfn, em, 
+img, ins, kbd, q, samp, small, strike, strong, sub, sup, 
+tt, var, dl, dt, dd, ol, ul, li, 
+fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline; background: transparent; }
+table { border-spacing: 0; border-collapse: collapse; }
+caption, th, td { text-align: left; font-weight: normal; }
+blockquote, q { quotes: none; }
+:focus { outline: 0; }
+
+
+/*-----------------------------------------------------------------------------------------*/
+/*- Std Styles ----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------*/
+body{font-family: "Lucida Grande", Verdana, Arial, sans-serif;}
+h2{color: #424542; margin: 15px 10px; background:url(images/ocmx_logo.gif) left top no-repeat; text-indent: 66px; font-size: 24px; font-weight: lighter; font-style: italic; font-family: Georgia, "Times New Roman", Times, serif;}
+h3{color: #3c536a; font-size: 14px; margin: 0px 0px 10px; padding: 0px;}
+p{margin: 0px 0px 10px; padding: 0px; line-height: 18px;}
+input, select, textarea{border: 1px solid #7b9ebd; font-size: 13px; font-family: "Lucida Grande", Verdana, Arial, sans-serif;}
+.no_display{display: none;}
+p.error{clear:both; border: 1px solid #a60000; background: #FFCECE; color: #a60000; padding: 5px; text-align:center; width: 708px; margin: 0px 0px 0px 0px;}
+.success{border-width: 1px; border-style: solid; padding: 0 0.6em; margin: 5px 15px 2px; -moz-border-radius: 3px; -khtml-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;}
+p.success{clear:both; border: 1px solid #006600; background-color: #d6f5c2; color: #006600;  padding: 5px; text-align:center; width: 708px; margin: 0px 0px 0px 0px;}
+
+
+/*-----------------------------------------------------------------------------------------*/
+/*- LAYOUT --------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------*/
+.content_box{width: 720px; margin: 20px 10px; position: relative;}
+
+/*------------------------------------*/
+/*- Parent Containers ----------------*/
+.ocmx-tabs{position: relative; z-index: 2; top: 1px;}
+.ocmx-content{position: relative; z-index: 1;}
+	.ocmx-content p.section_notice{color: #4f6f8e; font-size: 13px; font-style: italic;}
+
+/*--------------------------------------------------------------------------------------------------------*/
+/*- Tabs -------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+ul.tabs{list-style: none; margin: 0px; padding: 0px;}
+	ul.tabs li{background: url(images/tabs.jpg) top right no-repeat; height: 27px; padding-right: 9px; width: 120px; float: left; margin-right: 4px;}
+	ul.tabs li.selected{background-position: bottom right;  margin-right: 8px;}
+		ul.tabs li a{height: 21px; width: 110px; padding: 6px 0px 0px 9px; color: #577a9d; font-size: 12px; font-weight: bold; text-decoration: none; background: url(images/tabs.jpg) top left no-repeat; display: block;}
+		ul.tabs li.selected a{background-position: bottom left; color: #464646;}
+	ul.tabs li a:hover{color: #464646;}
+
+/*--------------------------------------------------------------------------------------------------------*/
+/*- Curved Corner Divs -----------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+.header{height: 10px; overflow: hidden; background: #f9f9f9 url(images/top_right.gif) top right no-repeat;}
+	.header div{width: 10px; height: 10px; overflow: hidden; border-left: 1px solid #809DB9;}
+	
+.content{background-color: #e3e9ee; padding: 1px 10px; clear: both; border-left: 1px solid #809db9; border-right: 1px solid #809DB9;}
+
+.footer{height: 10px; overflow: hidden; background: #f9f9f9 url(images/bottom_right.gif) bottom right no-repeat; clear: both;}
+	.footer div{width: 10px; height: 10px; overflow: hidden; background: #fff url(images/bottom_left.gif) left bottom no-repeat;}
+
+
+/*--------------------------------------------------------------------------------------------------------*/
+/*- Rounded Forms ----------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------*/
+.form_item{clear: both; height: auto; padding: 0px 0px 10px; margin: 0px 0px 20px; border-bottom: 1px dotted #809DB9;}
+	.form_label{clear: both; margin-bottom: 10px; height: 26px;}
+		.input_label{color: #5c5c5c; font-size: 13px; font-weight: bold; width: 180px; float: left; clear: left; padding-top: 5px;}
+		.input_form, .thumbnail{float: left; margin-bottom: 10px;}
+
+		/*--------------------------------------------*/
+		/*- Input Forms ------------------------------*/
+		.input_form input{width: 240px; padding: 3px;}
+
+		/*--------------------------------------------*/
+		/*- Select Forms -----------------------------*/
+		.input_form select{width: 240px; padding: 3px;}
+
+		/*--------------------------------------------*/
+		/*- Textarea Forms ---------------------------*/
+		.input_form textarea{width: 440px; height: 100px;}
+		
+		/*--------------------------------------------*/
+		/*- Advert Image Thumbnail -------------------*/
+		.thumbnail{background-color: #fff;}
+		.thumbnail a{
+			display:block;
+			height: 150px;
+			width: 318px;
+			padding: 10px;
+			background: #fff center no-repeat;
+			border: 1px solid #7f9db9;
+			text-decoration: none;
+		}
+		
+		/*--------------------------------------------*/
+		/*- Form Thumbnail ---------------------------*/
+		.form-thumbnail{background-color: #fff;}
+		.form-thumbnail a{
+			display:block;
+			height: 150px;
+			width: 500px;
+			padding: 10px;
+			background: #fff center no-repeat;
+			border: 1px solid #7f9db9;
+			text-decoration: none;
+		}
+		
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- Menu Structure Styles  ------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+.catagories {margin-top: 5px; padding: 10px; background-color: #fff; border: 1px solid #7f9db9;	height: 140px; width: 300px; overflow: auto;}
+	
+	ul.cat_option{list-style: none; margin: 0px; padding: 0px;}
+	ul.cat_option li{float: left; width: 120px;}
+	
+.new_category_div, .new_author_div{padding: 5px; border: 1px solid #ced9e1; background-color: #e3e9ee;}
+.new_category_text .text, .new_author_text{float: left; height: 15px; font-size: 8px;}
+	
+.selection_sections{height: auto; width: 580px; margin: 5px 0px 10px; padding: 10px; background-color: #fff; border: 1px solid #7f9db9;}
+	ul.section_option{float: left; width: 275px; margin-right: 5px; padding: 0px; list-style: none;}
+		ul.section_option li{margin: 0px 0px 5px;}
+			ul.section_option ul{width: 205px; padding-left: 20px; list-style: none;}
+				ul.section_option ul li{margin: 0px 0px 4px;}
+				ul.no_margin{margin-right: 0px;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- Advert Styles ---------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+.selected_image{clear: both; margin-bottom: 20px;}
+	.selected_image .thumbnail{border: 1px solid #7f9db9; background:#fff; padding: 10px;}
+	.selected_image .thumbnail{float:left;}
+
+	.selected_image .change_picture_block{background:#fff; border: 1px solid #7f9db9; float:left; margin-left: 10px; padding: 10px 10px 12px 10px; width: 106px;}
+		.selected_image .change_picture_block div{clear:both; display:block; margin-top:10px;}
+	
+	.selected_image .change_picture_bar{background:#fff; border: 1px solid #7f9db9; float: left; margin-top: 10px; padding: 10px; width: 385px;}
+		.selected_image .change_picture_bar a{float:left; width: 190px; text-align: center; vertical-align: middle;}
+		.selected_image .change_picture_bar div{float:left; width: 190px; text-align: center; padding-top: 2px;}
+
+.gallery_image{clear: both; height: 220px; margin-bottom: 20px;}
+	.gallery_image .image_detail_block{float:left; margin-right: 10px; padding: 10px; width: 300px; border: 1px solid #7f9db9; background:#fff; margin-bottom: 10px;}
+		.label_tag{clear:both; font-weight: bold; margin-bottom:5px;}
+		.label_note{color: #555; font-weight: lighter; font-size: 8pt; font-style: italic; margin-bottom: 10px;	}
+	.gallery_image .image_detail_block .gallery_image_tag{clear:both; display:block; height: 52px; margin-bottom:10px; font-size: 10pt; width: 285px;}
+
+.resize{clear: both; margin-bottom: 20px; margin-top: 10px; border: 1px solid #7f9db9; background:#fff; color: #000; padding: 10px; width: 385px;}/*border: 1px solid #e2c822;	background:#fff9d7;*/
+	.resize input{width: 30px;}
+	.resize ul{list-style: none; margin: 0px; padding: 0px; font-size: 13pt;}
+		.resize ul li{float: left; margin-right: 20px;}
+		.resize ul li.or{margin-top: 5px;}
+
+/*-------------------------------------------------------------------------------------------*/
+/*- Clearfix --------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/* http://sonspring.com/journal/clearing-floats */
+html body * span.clear,
+html body * div.clear,
+html body * li.clear,
+html body * dd.clear
+{background: none; border: 0; clear: both; display: block; float: none; font-size: 0; list-style: none;	margin: 0; padding: 0; overflow: hidden; visibility: hidden; width: 0; height: 0;}
+
+/* http://www.positioniseverything.net/easyclearing.html */
+.clearfix:after{clear: both; content: '.'; display: block; visibility: hidden; height: 0;}
+.clearfix{display: inline-block;}
+* html .clearfix{height: 1%;}
+.clearfix{display: block;}
+.clearboth{clear: both;}
+
+/*-------------------------------------------------------------------------------------------*/
+/*- Gallery Styles --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+tr.gallery_row td{padding: 10px 0px 20px 0px; border-bottom: 1px dotted #809DB9;}
+tr.gallery_row td a {font-weight: bold;}
+.gallery_form_image{clear: both; margin-bottom: 10px;}
+.gallery_form_image .grid_thumbnail{border: 1px solid #7f9db9; background:#fff; display:block; margin: 5px 10px 5px 0px; padding: 5px; height: 120px; width: 140px; overflow: hidden;}
+.gallery_form_image .grid_thumbnail a {height: 120px; width: 140px; overflow: hidden; display: block;}
+.gallery_form_image .grid_edit_details {clear: both; display: block; height: 20px; width: 140px;}
+.gallery_form_image .new_gallery_thumbnail{border: 1px dotted #7f9db9; background: #fff; display:block; margin: 5px 10px 5px 0px; padding: 5px; height: 120px; width: 140px; overflow: hidden;}
+.gallery_form_image .new_gallery_thumbnail a {height: 120px; width: 140px; overflow: hidden; display: block;}
+
+.gallery_form_image .change_picture_block{background:#fff; border: 1px solid #7f9db9; float:left; margin-left: 10px; padding: 10px 10px 12px 10px; width: 106px;}
+.gallery_form_image .change_picture_block div{clear:both; display:block; margin-top:10px;}
+.gallery_form_image .change_picture_bar{background:#fff; border: 1px solid #7f9db9; float: left; margin-top: 10px; padding: 10px; width: 385px;}
+.gallery_form_image .change_picture_bar a{float:left; width: 190px; text-align: center; vertical-align: middle;}
+.gallery_form_image .change_picture_bar div{float:left; width: 190px; text-align: center; padding-top: 2px;}
+
+.gallery_form_image{clear: both; margin-bottom: 20px;}
+.gallery_form_image .thumbnail{background:#fff; background-image: url('images/loading.gif'); background-repeat: no-repeat; background-position: center;border: 1px solid #7f9db9;display:block;float:left;height: 250px;padding: 10px;width: 320px;}
+.gallery_form_image .thumbnail a
+	{
+		height: 226px; width: 300px; display: block; text-decoration: none;  background-repeat: no-repeat
+	}
+.gallery_image .image_detail_block{background:#fff; border: 1px solid #7f9db9; float:left; margin-right: 10px; padding: 10px 10px 12px 10px; width: 300px;}
+.gallery_image .image_detail_block div.label_tag{clear:both; font-weight: bold; margin-bottom:5px;}
+.gallery_image .image_detail_block .gallery_image_tag{clear:both; display:block; margin-bottom:10px; font-size: 10pt; width: 285px;}
+
+.resize{clear: both; margin-bottom: 20px; margin-top: 10px; border: 1px solid #7f9db9; background:#fff; color: #000; padding: 10px; width: 385px;}/*border: 1px solid #e2c822;	background:#fff9d7;*/
+.resize input{width: 30px;}
+.resize ul{list-style: none; margin: 0px; padding: 0px; font-size: 13pt;}
+.resize ul li.or{margin-top: 2px;}
+.resize ul li{float: left; margin-right: 10px;}
+
+.add_image{border: 1px solid #7f9db9; background:#fff; margin-bottom: 2px; padding: 10px; padding-top: 12px; text-transform: lowercase; width: 385px;}
+.add_image a{color: black; font-size: 8pt; margin-left: 12px; font-style: bold; font-weight: normal; text-decoration: none; text-transform: none;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- Table Styles --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+table.widefat tr td.t_center{text-align: center;}
+

@@ -1,0 +1,8 @@
+/* ---------------------- Sticky Post / Simple Mode---------------------- */
+#home .sticky div div, #home .sticky div h2 {display:none;}
+#home .sticky .lili {border-bottom:1px solid #cccccc;min-height:43px;background:#f3f5fc url(../images/up.png) no-repeat 3px 6px;line-height:1.3em;position:relative;height:100%;}
+#home .sticky .clear-content {display:inline;color:gray;font-weight:normal;}
+#home .sticky .views {color:#6280ae;}
+#home .sticky .entry-titlex {display:block;font-weight:bold;padding:2px 5px 2px 40px;width:auto;margin:0 !important;}
+#home .sticky .entry-metax {display:block;float:right;position:absolute;right:5px;bottom:2px;font-size:12px;}
+#home .stick-post1 .entry-titlex {border-top:1px solid #c2cff1;}

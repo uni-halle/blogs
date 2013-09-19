@@ -1,0 +1,542 @@
+/*  
+Theme Name: Grava
+Theme URI: http://nebelschwade.kulturinventur.de/blog/?p=91
+Description: <a href="http://mootools.net">mootools</a>-powered Wordpress-Theme in green. Further Details <a href="http://nebelschwade.kulturinventur.de/blog/?p=91">here</a>.
+Version: 1.1
+Author: Steffen Becker
+Author URI: http://nebelschwade.kulturinventur.de/blog
+
+  The XHTML, CSS, JavaScript, PHP, all images and the included mootools.js
+  and slimbox.js and css are released under the Open-Source MIT-license:
+  http://www.opensource.org/licenses/mit-license.php
+  
+  Used Colors are:
+  
+  111111 - bodybackground, textarea background etc... 
+  000000 - textarea and input focus background
+  1f1f25 - content and sidebar-background
+  32323b - light grey for postmetadata-background an footer-color etc.
+  bff036 - yellowish
+  6ed611 - green
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-decoration: none;
+  font: normal 14px/20px "Lucida Grande", Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+
+body {
+  background: #111;
+}
+
+a, a * {
+  color: #bff036; /* gelblich */
+  color: #6ed611; /* gruen */
+}
+  
+a:hover {
+  text-decoration: line-through;
+  color: #bff036;
+}
+
+.externalURL {
+  color: #bff036;
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+em, i, ins {
+  font-style: italic;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+}
+
+abbr, acronym {
+  border-bottom: 1px dotted #bff036;
+  cursor: help;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+em b, i b, b i, b em,
+strong i, strong em, em strong, i strong {
+  font-style: italic;
+  font-weight: bold;
+}
+
+input, textarea {
+  border: 1px solid #6ed611;
+  background: #111;
+  color: #fff;
+  padding: 5px;
+  max-width: 100%;
+}
+
+select {
+  border: 1px solid #6ed611;
+  background: #111;
+  color: #fff;
+}
+
+select option {
+  background: #111;
+  color: #fff;
+  padding: 5px;  
+}
+
+input:focus, textarea:focus, select option:focus {
+  background: #000;
+}
+
+/**
+ * Start Default Container Stuff 
+ *************************************/
+#container {
+  position: relative;
+  margin: 0 auto;
+  width: 860px;
+}
+
+#header {
+  position: relative;
+  height: 80px;
+}
+
+#maincontainer {
+  position: relative;
+}
+
+#contentcontainer {
+  position: relative;
+  width: 640px;
+  z-index: 5;
+}
+
+#contenttop, #sidebartop {
+  height: 40px;
+  background: url(imgs/top_bg.png) top right no-repeat
+}
+
+#content {
+  background: url(imgs/bg.png) top left repeat-y;
+  padding: 0 20px 30px 20px;
+  min-height: 700px;
+  height: auto !important;
+  height: 700px;  
+}
+
+#contentbottom, #sidebarbottom {
+  height: 40px;
+  background: url(imgs/bottom_bg.png) top right no-repeat;  
+}
+
+#sidebarcontainer {
+  position: absolute;
+  top: 80px;
+  right: 0px;
+  width: 245px;
+  z-index: 1;
+}
+
+#sidebar {
+  background: url(imgs/bg.png) top right repeat-y;
+  padding: 20px 40px 40px 25px;
+}
+
+#footer {
+  position: relative;
+  width: 560px;
+  text-align: center;
+  padding: 20px 40px 40px 40px;
+}
+
+/**
+ * Deafult Content Stuff 
+ *************************************/
+#content h1, #content h2, #content h3,
+#content p, #content pre, #content blockquote, 
+#content ul, #content ol, #content img,
+#content #searchform {
+  margin-bottom: 20px;
+}
+
+#content .entry img {
+  float: left;
+  margin-right: 20px;
+  max-width: 100%;
+  border: 3px solid #32323b;
+}
+
+#content h2 a {
+  position: relative;
+  display: block;
+  height: 40px;
+  padding: 0 20px 8px 20px;
+  font: bold 20px/40px Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 1px;
+  background: url(imgs/heading_bg.png) top left repeat-x #6ed611;
+  color: #222;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#content h2 a:hover {
+  color: #111;
+  text-decoration: none;
+  background: url(imgs/heading_bg_invers.png) top left repeat-x #6ed611;
+}
+
+#content h2 a span {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  width: 560px;
+  height: 40px;
+  color: #222;
+  font: normal 14px/40px Georgia, "Times New Roman", Times, serif;
+  letter-spacing: normal;
+  text-align: right;
+}
+
+#content h2 {
+  clear: both;
+}
+
+#content h3, #content h3 a {
+  font: bold 20px/28px Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 1px;
+  color: #fff;  
+  padding: 0 20px;
+}
+
+#content h3 a {
+  padding: 0;
+}
+
+#content p {
+  text-align: justify;
+  padding: 0 20px;
+}
+
+#content blockquote {
+  margin: 0 20px 20px 20px;
+  background: url(imgs/blockquote_bg.png) top left no-repeat;
+  /* we want the bg-image to show completely */
+  min-height: 51px;
+  height: auto !important;
+  height: 51px;  
+}
+
+#content pre {
+  font-family: "Courier New", Courier, monospace;
+  border: 1px solid #6ed611; 
+  background: #111;
+  margin: 0 40px 20px 40px;
+  padding: 10px;
+}
+
+#content ul, #content ol {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+#content ul li , #content ol li {
+  text-align: left;
+}
+
+#content ul li ul, #content ol li ol {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 0;
+}
+
+#content #searchform {
+  padding: 0 20px;
+}
+
+/**
+ * Specical Content Stuff 
+ *************************************/
+ 
+#content p.postmetadata,
+#content p.postmetadataleft {
+  clear: both;
+  background: #32323b;
+  text-align: right;
+  padding: 7px 20px;
+  /* margin-bottom will sometimes be neglected by mootools accordion
+     that's why we use a 20px border with the content-bg-color here */
+  margin-bottom: 0px;
+  border-bottom: 20px solid #1f1f25;
+}
+
+#content p.postmetadataleft {
+  text-align: justify;
+}
+
+#content div.post {
+  width: 600px;
+}
+
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
+#content .entry .attachment {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#content .entry .attachment img {
+  float: none;
+}
+
+/**
+ * Sidebar 
+ *************************************/
+
+#sidebar ul {
+  padding-left: 5px;
+  list-style: none;
+}
+
+#sidebar ul li ul {
+  list-style: circle;
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+
+/* Subcategorys and Subpages without maring-bottom */
+#sidebar ul li ul li ul {
+  margin-bottom: 0px;
+}
+
+#sidebar #s {
+  width: 100px;
+  border: 1px solid #6ed611;
+  background: #111;
+  margin-left: 10px;
+}
+
+#sidebar #s:focus {
+  background: #000;
+}
+
+#searchsubmit {
+  border: none;
+  background: #1f1f25;
+  cursor: pointer;
+}
+
+.searchformdiv {
+  margin-bottom: 10px;
+}
+
+#sidebar h2, #sidebar h2 a {
+  font: normal 20px/40px Georgia, "Times New Roman", Times, serif;
+  color: #fff;
+}
+
+/* If Calendar */
+#sidebar table {
+  margin-bottom: 14px;
+}
+
+/* Current selected Pages and Categories */
+#sidebar ul li ul li.current_page_item a,
+#sidebar ul li ul li.current-cat a {
+  color: #bff036;
+  text-decoration: line-through;
+}
+
+#sidebar ul li ul li.current_page_item ul li a,
+#sidebar ul li ul li.current-cat ul li a {
+  color: #6ed611;
+  text-decoration: none;
+}
+
+#sidebar li#wp_tag_cloud {
+  list-style: none;
+}
+
+/**
+ * Comments & CForms 
+ *************************************/
+
+#commentlist {
+  list-style: none;
+}
+
+#commentlist li {
+  border: 1px solid #6ed611;
+  padding: 14px 0;
+  margin-bottom: 10px;
+  background: #1f1f25;
+}
+
+#commentlist li.odd {
+  background: #32323b; 
+}
+
+#commentlist li.authorcomment {
+  background: #111;
+}
+
+#commentlist li#newcomment {
+  background: #000;
+}
+
+#commentlist li p {
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+#commentlist li p.commentmetadata, 
+#commentlist li p.commentmetadata * {
+  font-size: 12px;
+  color: #6ed611;
+  clear: both;
+}
+
+#commentsformlist {
+  list-style: none;
+}
+
+#commentsformlist li {
+  clear: both;
+  margin-bottom: 10px;
+}
+
+#commentsformlist li label {
+  display: block;
+  width: 180px;
+  float: left;
+  margin-bottom: 10px;
+}
+
+#commentsformlist li textarea {
+  width: 470px;
+  max-width: 100%;
+  overflow: auto; 
+  margin-bottom: 10px;
+}
+
+#commentsformlist li input {
+  width: 280px;
+  float: right;
+  margin-bottom: 10px;
+}
+
+#commentsformlist li #submit {
+  cursor: pointer;
+  border: none;
+  background: url(imgs/button_bg.png) top left no-repeat #6ed611;
+  text-align: center;
+  display: block;
+  width: 160px;
+  height: 30px;
+  color: #222;
+  font-weight: bold;
+  float: none;
+}
+
+#comments, #respond {
+  border-top: 20px solid #1f1f25;
+}
+
+#content .commenterror {
+  color: #6ed611;
+  font-weight: bold;
+}
+
+/**
+ * Buttons at the top. 
+ *************************************/
+
+#buttons {
+  position: relative;
+  height: 23px;
+  text-align: right;
+  padding: 0 0 20px 0 ;
+}
+
+#buttonsleft {
+  text-align: left;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+}
+
+#content img.button {
+  cursor: pointer;
+  margin: 0 20px;
+  float: none;
+}
+
+#content img.gravatar {
+  height: 60px;
+  width: 60px;
+  border: 1px solid #6ed611;
+  float: left;
+  margin: 2px 10px 5px 20px;
+}
+
+/**
+ * Other Stuff, Header, Footer etc... 
+ *************************************/
+
+#hometop {
+  height: 0px;
+  width: 0px;
+  background: #111;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#header h1 a {
+  display: block;
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  padding-left: 40px;
+  font: normal 34px/34px Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+#footer * {
+  color: #32323b;
+  font: normal 12px/14px "Lucida Grande", Arial, sans-serif;
+}
+
+.tool-tip {
+  background: url(imgs/tooltip_bg.png) top left no-repeat;
+	color: #fff;
+	width: 362px;
+  height: 37px; /* more because of padding, better for ie though. */
+  padding-top: 8px;
+	z-index: 10000;
+  text-align: center;
+}
+
+.tool-title {
+  display: none;
+}
+

@@ -1,0 +1,24 @@
+
+#respond {
+	padding-top: 17px!important;
+}
+
+#author, #email {
+margin-right:0!important;
+}
+
+.logged-in #cancel-comment-reply {
+margin-left:474px;
+margin-top:153px!important;
+position:absolute;
+}
+
+#cancel-comment-reply {
+margin-left:474px;
+margin-top:202px!important;
+position:absolute;
+}
+
+#commentform textarea {
+	overflow: hidden;
+}

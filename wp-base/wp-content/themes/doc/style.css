@@ -1,0 +1,605 @@
+/*
+  
+Theme Name: Doc
+Theme URI: http://wp-content-themes.com/doc-a-free-minimal-wordpress-27-theme/257
+Description: Doc is a minimal one-column free WordPress theme, with 3 widgetized areas at the bottom of the page, fixed width, and a strong focus on the content for your reading pleasure.
+Tags: white, one-column, fixed-width, threaded-comments, sticky-post
+Version: 0.1
+Author: Delicia
+Author URI: http://www.wp-content-themes.com/
+Credits:960 Grid System by NathanSmith & Blueprint Css by Joshua Clayton for inspiration, 
+Eric Meyer's css reset
+
+*/ 
+
+/* ========== Reset ========== */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+margin : 0;
+padding : 0;
+border : 0;
+outline : 0;
+font-size : 100%;
+vertical-align : baseline;
+background : transparent;
+}
+ol, ul {
+list-style : none;
+}
+blockquote, q {
+quotes : none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+content : '';
+content : none;
+}
+:focus {
+outline : 0;
+}
+ins {
+text-decoration : none;
+}
+del {
+text-decoration : line-through;
+}
+table {
+border-collapse : collapse;
+border-spacing : 0;
+}
+
+/* ========== Structure =========== */
+
+body {
+background : #c5c3ae;
+color : #333;
+font-family : Times, 'Times New Roman', serif;
+line-height : 2;
+}
+.container {
+margin-left : auto;
+margin-right : auto;
+width : 980px;
+background : #fff;
+margin-top : 10px;
+margin-bottom : 10px;
+border : 2px outset #eee;
+}
+.g33, .g25, .g16, .g10 {
+float : left;
+display : inline;
+margin : 0 10px;
+padding : 0;
+width : auto;
+}
+.g33 {
+width : 960px;
+}
+.g25 {
+width : 730px;
+}
+.g16 {
+width : 460px;
+}
+.g10 {
+width : 300px;
+}
+.alpha {
+margin-left : 0;
+}
+.omega {
+margin-right : 0;
+}
+
+
+/* ========== HTML elements ========== */
+
+html body div.clear, html body span.clear {
+background : none;
+border : 0;
+clear : both;
+display : block;
+float : none;
+font-size : 0;
+margin : 0;
+padding : 0;
+overflow : hidden;
+visibility : hidden;
+width : 0;
+height : 0;
+}
+.clearfix:after {
+clear : both;
+content : '.';
+display : block;
+visibility : hidden;
+height : 0;
+}
+.clearfix {
+display : inline-block;
+}
+* html .clearfix {
+height : 1%;
+}
+.clearfix {
+display : block;
+}
+a {
+color : #000;
+text-decoration : none;
+border-bottom : 1px solid #000;
+font-weight : 500;
+}
+a:hover {
+color : #666;
+border-bottom : 1px solid #666;
+}
+blockquote {
+font-style : italic;
+padding : 10px 30px;
+font-family : Georgia;
+font-size : 12px;
+}
+p + p {
+text-indent : 20px;
+margin-top : -8px;
+}
+form p + p {
+text-indent : 0;
+}
+img, object {
+max-width : 90%;
+margin : 0;
+padding : 0;
+border : 0;
+}
+a img {
+border : 0;
+}
+h1, h2, h3, h4, h5, h6 {
+margin : 5px 20px 0 10px;
+}
+p {
+margin : 0 0 10px 0;
+}
+h1 {
+font-size : 20px;
+font-weight : 700;
+}
+h2 {
+font-size : 18px;
+font-weight : 600;
+}
+h3 {
+font-size : 17px;
+font-weight : 500;
+}
+h4 {
+font-size : 16px;
+font-weight : 400;
+}
+h5 {
+font-size : 15px;
+font-weight : 300;
+}
+h6 {
+font-size : 14px;
+font-weight : 200;
+}
+em {
+font-style : italic;
+}
+strong {
+font-weight : 600;
+}
+code, pre {
+font-family : Courier, 'Courier New';
+font-size : 11px;
+overflow : auto;
+}
+ol {
+padding-left : 20px;
+margin : 5px 5px 20px 5px;
+}
+ul {
+margin : 5px 5px 20px 5px;
+}
+ul ul {
+margin : 5px;
+}
+ol ol {
+margin : 5px;
+}
+ol li, ul li {
+line-height : 20px;
+margin-bottom : 5px;
+font-size : 12px;
+}
+table {
+margin-bottom : 14px;
+width : 99%;
+}
+th {
+font-weight : 600;
+background : #eee;
+}
+th, td {
+padding : 4px 10px 4px 5px;
+text-align : left;
+}
+tr.even td {
+background : #f8f8f8;
+}
+tfoot {
+font-style : italic;
+}
+
+
+/* ==================== Page elements =================== */
+
+/* ==================== Header =============== */
+
+#top {
+margin-top : 50px;
+border-bottom : 2px solid #999;
+line-height : 1;
+}
+#feeds {
+font-size : 14px;
+}
+.feeds {
+text-align : right;
+}
+#feeds a {
+border : 0;
+text-align : right;
+}
+#header {
+margin : 20px 0 30px 0;
+padding : 30px 0;
+text-align : center;
+}
+#header h2 {
+font-size : 40px;
+line-height : 1;
+}
+#header h2 a {
+border : 0;
+}
+#main {
+margin-left : 80px;
+}
+#main hr {
+width : 50%;
+height : 1px;
+background : #eee;
+border : 1px solid #ddd;
+clear : both;
+}
+
+
+/* ======================= Post styles =================== */
+
+.post {
+margin : 0;
+padding : 10px 30px 60px 70px;
+font-size : 15px;
+line-height : 1.7;
+}
+.post ol {
+list-style : decimal;
+}
+.post ul {
+list-style : circle;
+padding-left : 10px;
+}
+.post ol li a, .post ul li a {
+font-weight : 400;
+}
+.post img {
+max-width : 90%;
+margin : 10px;
+padding : 5px;
+background : #f6f6f6;
+border : 1px solid #eee;
+}
+.pt h2, .pt h1 {
+margin-bottom : 20px;
+padding : 0;
+font-size : 25px;
+line-height : 1;
+letter-spacing : 0;
+font-weight : 400;
+text-transform : lowercase;
+font-variant : small-caps;
+letter-spacing : 1px;
+font-family : 'Times New Roman';
+text-align : center;
+}
+.pt h2 a, .pt h1 a {
+color : #000;
+border : 0;
+font-weight : 400;
+}
+.pt h2 a:hover, .pt h1 a:hover {
+color : #999;
+border : 0;
+}
+.meta {
+font-size : 12px;
+line-height : 1.3;
+}
+.meta a {
+border : 0;
+}
+.text {
+padding : 10px 0;
+}
+.social ul li {
+display : inline;
+margin : 0 10px;
+}
+.navigation {
+font-size : 14px;
+margin : 10px 10px;
+padding : 0 10px;
+font-family : Georgia;
+font-style : italic;
+}
+.navigation a {
+font-weight : 500;
+}
+.sticky .text {
+font-style : italic;
+}
+.category-x{}
+.tag-y{}
+/* Replace 'x' and 'y' with a category/tag slug; 
+this classes will apply different styles to posts filled in the specified cat/tag. 
+You can use this pattern to set different styles to all cats/tags. */
+
+
+/* ============= WordPress image classes =============== */
+
+caption {
+background : #eee;
+color : #000;
+}
+.alignleft {
+float : left;
+display : inline;
+margin-right : 15px;
+margin-bottom : 5px;
+width : auto;
+}
+.alignright {
+float : right;
+display : inline;
+margin-left : 15px;
+margin-bottom : 5px;
+width : auto;
+}
+.aligncenter {
+display : inline;
+text-align : center;
+}
+p.wp-caption-text {
+padding : 5px;
+font-size : 10px;
+background : #eee;
+color : #000;
+}
+.wp-smiley {
+display : inline;
+vertical-align : middle;
+background : none;
+border : 0;
+}
+
+
+/* ===================== Sidebar ==================== */
+
+#sidebar {
+font-family : Georgia;
+margin-top : 40px;
+}
+#sidebar hr {
+width : 33%;
+color : #333;
+float : left;
+clear : both;
+}
+#sidebar a {
+font-weight : 400;
+border : 0;
+}
+#sidebar ul, #sidebar ul li ul, #sidebar ul li ul li, #sidebar ul li ul li ul, #sidebar ul li ul li ul li {
+list-style : none;
+padding-left : 0;
+}
+#sidebar ul li ul li {
+width : 90%;
+padding-left : 10px;
+border-left : 5px solid #eee;
+font-size : 11px;
+line-height : 1.5;
+}
+#sidebar ul li ul li:hover {
+border-left : 5px solid #999;
+}
+#sidebar ul li ul li:hover a {
+color : #666;
+}
+#sidebar a {
+border : 0;
+text-decoration : underline;
+}
+#sidebar h3, #sidebar h2 .widgettitle {
+color : #999;
+padding : 0 10px;
+font-family : 'Times New Roman';
+line-height : 1.7;
+letter-spacing : 0;
+font-weight : 600;
+}
+#sidebar select {
+width : 100%;
+border : 1px solid #999;
+color : #666;
+font-size : 12px;
+font-weight : 200;
+}
+#sidebar option {
+background : #fff;
+padding : 5px;
+}
+
+/* ====================== Footer =================== */
+
+#footer {
+margin-bottom : 50px;
+border-top : 2px solid #999;
+line-height : 1;
+font-size : 12px;
+padding-top : 10px;
+}
+#footer a {
+color : #999;
+border : 0;
+}
+
+
+/* ================== Comment styles =============== */
+
+#com {
+padding-left : 10px;
+font-size : 14px;
+}
+#comments {
+clear : both;
+padding-left : 20px;
+}
+#respond {
+clear : both;
+padding-top : 20px;
+padding-left : 20px;
+}
+.comment-info-split {
+clear : both;
+}
+.commentmetadata {
+color : #333;
+}
+.commentmetadata a {
+color : #666;
+font-weight : 400;
+}
+.commentlist div.alt {
+color : #333;
+padding : 10px;
+}
+ol.commentlist {
+list-style : none;
+margin-left : 20px;
+}
+ol.commentlist ul.children {
+list-style : none;
+}
+.comment-div {
+display : block;
+}
+.commentlist ul li {
+border-bottom : none;
+}
+.commentlist li {
+margin : 10px 0 0 0;
+}
+ol.commentlist {
+list-style : none;
+margin : 0 0 10px;
+padding : 0;
+text-indent : 0;
+}
+ol.commentlist li.comment, .pingback {
+border-top : 1px solid #eee;
+padding : 10px 0 0 10px;
+}
+ol.commentlist li.comment div.vcard {
+font-weight : 600;
+font-size : 13px;
+}
+ol.commentlist li.comment div.vcard cite.fn {
+font-style : normal;
+}
+ol.commentlist li.comment div.vcard cite.fn a {
+font-weight : 400;
+}
+ol.commentlist li.pingback div.vcard cite.fn a {
+font-weight : 400;
+}
+ol.commentlist li.comment div.vcard img.avatar {
+border : 1px solid #eee;
+float : left;
+margin : 0 10px 0 0;
+padding : 5px;
+}
+ol.commentlist li.comment div.comment-meta {
+font-size : 11px;
+}
+ol.commentlist li.comment div.comment-meta a {
+color : #666;
+}
+ol.commentlist li.comment p {
+font-size : 13px;
+margin : 0 0 10px;
+}
+ol.commentlist li.comment ul {
+font-size : 11px;
+list-style : circle;
+margin : 0 0 10px 20px;
+}
+ol.commentlist li.comment div.reply {
+font-size : 12px;
+text-align : right;
+padding : 2px 10px;
+}
+ol.commentlist li.comment div.reply a {
+font-weight : 500;
+}
+ol.commentlist li.pingback div.reply {
+font-size : 12px;
+text-align : right;
+padding : 2px 10px;
+}
+ol.commentlist li.pingback div.reply a {
+font-weight : 500;
+}
+ol.commentlist li.comment ul.children {
+list-style : none;
+margin : 10px 0 0;
+text-indent : 0;
+}
+ol.commentlist li.comment ul.children li.comment-author-admin {
+background : #f6f6f6;
+}
+ol.commentlist li.comment ul.children li.depth-2 {
+margin : 10px;
+}
+ol.commentlist li.comment ul.children li.depth-3 {
+margin : 10px;
+}
+ol.commentlist li.comment ul.children li.depth-4 {
+margin : 10px;
+}
+ol.commentlist li.comment ul.children li.depth-5 {
+margin : 10px;
+}
+.says {
+color : #999;
+}
+#commentform p {
+font-size : 12px;
+padding-left : 10px;
+}
+#com label {
+padding-left : 10px;
+}

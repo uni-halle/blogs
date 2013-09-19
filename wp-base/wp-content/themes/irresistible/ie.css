@@ -1,0 +1,79 @@
+@media handheld, projection, screen {
+
+/*------------------------------------------------------------------
+[ IE.CSS ] Stylesheet For Internet Explorer Only
+--------------------------------------------------------------------
+
+[?] HELP
+
+* html div -------> IE6 and lower
+html>body div ---> IE7 and higher
+
+--------------------------------------------------------------------
+
+[Table of contents]
+
+1. GENERAL FIXES
+2. FORMS FIXES
+3. PLUGINS FIXES
+
+
+/*------------------------------------------------------------------
+1. GENERAL FIXES
+------------------------------------------------------------------*/
+
+/* Prevents <li> overheight */
+* html ul li, * html ol li { height: 1% }
+
+/* Fix for the Italics bugs */
+* html body * { overflow: visible }
+* html iframe, * html frame { overflow: auto }
+* html frameset { overflow: hidden }
+
+html>body ul.comments-list li { height: 1% }
+
+
+/*------------------------------------------------------------------
+2. FORMS FIXES
+------------------------------------------------------------------*/
+
+/* Reset button size */
+button.button, input.submit {
+	overflow: visible;
+	width: 1;
+}
+
+/* Fix for extra margins */
+input.radio, input.checkbox { margin: -4px }
+
+/* Fix text inputs position */
+input.text {
+	margin-bottom: -1px;
+	margin-top: -1px;
+	overflow: hidden;
+	position: relative;
+	z-index: 9999
+}
+
+
+/*------------------------------------------------------------------
+3. PLUGINS FIXES
+------------------------------------------------------------------*/
+
+.replace, .br {line-height: 1;}
+
+/* "Bars" navigation */
+ul.bars li:before { content: '' !important }
+ul.bars li { border-left: 1px solid; padding: 0 4px; }
+
+/* Clearfix */
+.clearfix { display: inline-block }
+.clearfix { display: block }
+* html .clearfix { height: 1% }
+
+
+/*------------------------------------------------------------------
+   End CSS
+------------------------------------------------------------------*/
+
+}/* end @media */

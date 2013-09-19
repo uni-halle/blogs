@@ -1,0 +1,24 @@
+/*
+Theme Name: Blogs@MLU URZ Blog
+Theme URI: http://blogs.uni-halle.de
+Description: Child Theme for Blogs@MLU Default | URZ-Blog
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+Template: blogsmlu
+Version: 1.0
+
+*/
+ 
+@import url("../blogsmlu/style.css");
+
+a#subscribe {
+	width: 128px;
+	height: 128px;
+	background: url(urz-feed.png) no-repeat left top;
+	left: 620px;
+	top: 100px;
+}
+
+a#subscribe:hover {
+	background-position: left bottom;
+}

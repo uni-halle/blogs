@@ -1,0 +1,15 @@
+/* yellow Style */
+
+body#woothemes { background: #1C1C00 url(yellow/bg.jpg) repeat-x center 0; }
+
+body#woothemes h1, 
+body#woothemes h2, 
+body#woothemes h3, 
+body#woothemes h4, 
+#footer #footerWrap #copy a,
+#sidebar a,
+ol.commentlist li p a
+{ color: #b7ae48; }
+
+p.txt0, p.txt0 a, .continue
+{ color: #e4e0a3; }

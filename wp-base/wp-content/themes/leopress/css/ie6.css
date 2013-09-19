@@ -1,0 +1,16 @@
+#subcontent ul li a, #extracontent ul li a {display:inline-block;}
+#subcontent ul li a, #extracontent ul li a {display:block;}
+#subcontent ul li a:hover, #extracontent ul li a:hover { text-decoration:underline;}
+#content {background:url(../img/bg-content.gif) repeat-y center top;}
+#doc {background:url(../img/bg-top.gif) no-repeat center top;}
+.actions {margin-bottom:8px;}
+#searchform {
+	width:131px;
+	right:12px;
+}
+#searchform .input-txt {
+	margin:2px 16px 0 15px;
+	padding:0 10px 0 10px;
+	width:122px;
+}
+#comments .submit {padding:0 0 1px 0;}

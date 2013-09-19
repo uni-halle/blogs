@@ -1,0 +1,48 @@
+.section {
+-moz-border-radius-bottomleft:6px;
+-moz-border-radius-bottomright:6px;
+-moz-border-radius-topleft:6px;
+-moz-border-radius-topright:6px;
+border:1px solid #DFDFDF;
+margin:10px 0;
+clear:both;
+}
+
+.section h3 {
+background-color:#DFDFDF;
+text-shadow:0 1px 0 #FFFFFF;
+font-size:12px;
+font-weight:bold;
+margin:0;
+padding:7px 9px;
+}
+
+.content {
+line-height:25px;
+margin:6px 12px;
+}
+
+.content .option_title {
+display:inline-block;
+width:140px;
+}
+
+.content select {
+width:150px;
+vertical-align:middle!important;
+}
+
+.content .info {
+font-style:italic;
+padding:5px 0;
+}
+
+.homepage_attr {
+margin-left:20px;
+width:600px;
+padding:2px;
+}
+
+.logo {
+vertical-align:middle
+}

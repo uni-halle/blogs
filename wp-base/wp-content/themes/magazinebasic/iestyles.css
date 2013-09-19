@@ -1,0 +1,89 @@
+#sidebar, #secondsidebar {
+	margin: 0 6px;
+}	
+
+html>body #sidebar, html>body #secondsidebar {
+	margin: 0 7px;
+}
+
+#navigation {
+	height: 24px;
+	}
+	
+ul.menu ul {
+	top: 24px;
+	}	
+
+#sub-navigation {
+	height: 23px;
+	padding-top: 2px;
+	}
+
+.meta {
+	margin-bottom: 15px;
+	}
+	
+#twocol {
+	margin-bottom: 10px;
+	}	
+	
+.twopost {
+	padding-bottom: 10px;
+	}
+	
+.post {
+	padding-bottom: 10px;
+ 	}
+	
+.comment-text {
+	margin-left: 140px;
+	padding: 0;
+	}
+	
+	.comment-text p {
+		padding-top: 10px;
+		}	
+
+.commentlist {
+	font-size: 12px;
+	}
+
+.commentlist img {
+	padding: 10px 0 3px;
+	}
+	
+.postmetadata, .tags {
+	font-size: 10px;
+	}
+
+.threepost {
+	padding-bottom: 15px;
+	}
+	
+#leftcontent {
+	margin: 0 7px;
+	}
+	
+#description {
+	width: 60%;
+	font-size: 12px;
+	margin-top: 5px;
+	}	
+
+#threecol {
+	margin: 0;
+	background: url(images/line.png) repeat-y 32.5% 0;
+	}
+
+#threecol2 {
+	background: url(images/line.png) repeat-y 68% 0;
+}
+	
+img.avatar {
+	margin-left: -65px;
+	}
+	
+	
+html>body img.avatar {
+	margin-left: 0px;
+	}	

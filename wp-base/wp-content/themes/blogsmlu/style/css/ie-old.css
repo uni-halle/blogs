@@ -1,0 +1,25 @@
+#top {
+	background: url(../images/top.png) repeat-x left top;
+	height: 44px;
+	border: none;
+}
+
+#wrapper {
+	top: -3px;
+	background: none;
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF,endColorstr=#99FFFFFF);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF,endColorstr=#99FFFFFF);
+	zoom: 1;
+}
+
+#front-admin p {
+	margin-bottom: 10px;
+}
+
+ul.weitersagen {
+	padding-bottom: 10px;
+}
+
+.footerlist {
+	margin-right: 30px;
+}

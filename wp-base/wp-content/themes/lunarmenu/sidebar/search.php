@@ -1,0 +1,2 @@
+<li><form method="get" id="searchform" action="<?php bloginfo('siteurl')?>/">
+<div><input type="text" class="searchfield" value="<?php _e('enter search item','avenue'); ?>" onblur="if(this.value=='')this.value='<?php _e('enter search item','avenue'); ?>';" onfocus="if(this.value=='<?php _e('enter search item','avenue'); ?>')this.value='';" name="s" id="s" /></div></form></li>

@@ -1,0 +1,9 @@
+img.soundcloudIsGold{
+    background: url("../images/soundcloud-logo-sc.png") no-repeat scroll center center #DAE8F6;
+    border: 1px solid #7B9DA2;
+    height: 100px;
+    width: 99%;
+    box-shadow:0 0 5px #666;
+    -moz-box-shadow:0 0 5px #666;
+    -webkit-box-shadow: 0 0 5px #666;
+}

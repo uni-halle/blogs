@@ -1,0 +1,219 @@
+/* Purple Colors */
+
+/*  
+Theme Name: Rockstar
+Version: 1.0.0
+Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
+Author: WooThemes
+Author URI: http://www.woothemes.com
+*/
+
+/*--------------------------------------------------------------------------------
+01. SETUP
+--------------------------------------------------------------------------------*/
+
+body {
+	background: #f8d8b3 url(purple/bg.jpg) top center no-repeat;
+	color: #33211f;
+}
+
+/*--------------------------------------------------------------------------------
+02. STRUCTURE
+--------------------------------------------------------------------------------*/
+
+
+#wrapper {
+	border: 1px solid #ffac9c;
+}
+
+#content {
+	border-right: 1px solid #f5f4f4;
+}
+
+/*--------------------------------------------------------------------------------
+03. HEADER
+--------------------------------------------------------------------------------*/
+
+#header h1 a {
+	color: #33211f;
+}
+
+#header h1 a:hover {
+	color: #343b57;
+}
+
+#header #description {
+	color: #7c6563;
+}
+
+#header #description a {
+	color: #e35984;
+}
+
+#header #description a:hover {
+	color: #33211f;
+}
+
+/*--------------------------------------------------------------------------------
+04. POSTS
+--------------------------------------------------------------------------------*/
+
+#content h3 {
+	color: #33211f;	
+}
+
+.video {
+	border: 5px solid #f8f6d0;
+}
+
+.post h2 a {
+	color: #e35984;
+}
+
+.post h2 a:hover {
+	color: #33211f;
+}
+
+.meta {
+	color: #78386b;
+}
+
+.meta a {
+	color: #78386b;
+}
+
+.post .label a {
+	background: #343b57;
+	color: #fff;
+}
+
+.post .label a:hover {
+	background: #33211F;
+}
+
+.tags {
+	color: #7c6563;
+}
+
+.tags a {
+	color: #343b57;
+}
+
+#navigation a {
+	color: #33211f;
+}
+
+#navigation a:hover {
+	color: #343b57;
+}
+
+/*--------------------------------------------------------------------------------
+05. ENTRIES
+--------------------------------------------------------------------------------*/
+
+.entry a {
+	color: #343b57;
+}
+
+.post .entry blockquote {
+	color: #7c6563;
+}
+
+/* Blog Entry Styles - Images */
+
+/*--------------------------------------------------------------------------------
+06. SIDEBAR
+--------------------------------------------------------------------------------*/
+
+#rss {
+	background: #33211f;
+}
+
+#rss a:hover {
+	color: #343b57;
+}
+
+.widget {
+	margin: 0 0 30px;
+}
+
+#twitter ul li a {
+	color: #e35984;
+}
+
+#twitter ul li a:hover {
+	color: #33211f;
+}
+
+#flickr .flickr_badge_image a  { border: 2px solid #343b57; }
+
+.widget_tag_cloud {
+	color: #7c6563;
+}
+
+.widget_tag_cloud a {
+	color: #343b57;
+}
+
+/*--------------------------------------------------------------------------------
+07. COMMENTS
+--------------------------------------------------------------------------------*/
+
+.commentlist .comment-meta {
+	color: #78386b;
+}
+
+.commentlist .comment-meta a {
+	color: #78386b;
+}
+
+.commentlist .avatar {
+	border: 3px solid #dad9b3;
+}
+
+.commentlist p a {
+	color: #343b57;
+}
+
+.commentlist p a:hover {
+	text-decoration: underline;
+}
+
+.commentlist blockquote {
+	color: #7c6563;
+}
+
+.commentlist .reply a {
+	color: #343b57;
+}
+
+#commentform p a {
+	color: #343b57;
+}
+
+#commentform .comm_count span input {
+	color: #e35984;
+}
+
+/* Comments - Thread */
+
+
+/*--------------------------------------------------------------------------------
+08. ARCHIVES PAGE
+--------------------------------------------------------------------------------*/
+
+#archives {
+	padding: 10px 0 0;
+}
+
+#archives a {
+	color: #e35984 !important;
+}
+
+h4.archive_year {
+}
+
+
+/*--------------------------------------------------------------------------------
+09. MISC
+--------------------------------------------------------------------------------*/

@@ -1,0 +1,150 @@
+/*Styles pertinent only to the homepage*/
+
+
+#home #content {
+	width:589px;
+	float:left;
+	}
+
+#home #sidebar {
+	width:294px;
+	float:right;
+	background:#372529;
+	padding:15px 24px 20px 24px;
+	background:#372529 url(../images/bg_sidebar.jpg) no-repeat;
+	}
+	 
+#latest {
+	background:#372529 url(../images/bg_latest.jpg) top right no-repeat;
+	padding:15px 30px 20px 30px;
+	}	
+
+#latest h2 {
+	font-size:1.7em; 
+	}
+
+#latest .commentcount {
+	font-size:1.1em;
+	}
+		
+#headlines {
+	padding-left:30px;
+	margin-top:3px;
+	overflow:hidden;
+	}
+	
+#headlines li {
+	width:268px;
+	float:left;
+	background:url(../images/bg_headline.gif) bottom no-repeat;
+	padding:14px 0 7px 0;
+	list-style:none;
+	height:52px;
+	line-height:105%;
+	}
+
+li#headline-1 a, li#headline-1 a:visited,
+li#headline-2 a, li#headline-2 a:visited {
+	font-size:0.9em;
+	color:#f2f0e9;
+	}
+
+li#headline-3 a, li#headline-3 a:visited,
+li#headline-4 a, li #headline-4 a:visited {
+	color:#c6c4bd;
+	font-size:0.8em;
+	}
+
+li#headline-5 a, li#headline-5 a:visited,
+li#headline-6 a, li#headline-6 a:visited {
+	color:#a19e94;
+	font-size:0.7em;
+	}
+
+li#headline-7 a, li#headline-7 a:visited,
+li#headline-8 a, li#headline-8 a:visited {
+	color:#88807a;
+	font:0.7em Arial, Helvetica, sans-serif;
+	}
+	
+	
+li#headline-1, li#headline-3, li#headline-5, li#headline-7 {
+	margin-right:21px;
+	}
+	
+#headlines a:hover, #headlines a:active {
+	text-decoration:underline
+	}
+
+#headlines .commentcount {
+	font-size:0.85em;
+	}
+	
+li#headline-1 .commentcount a, li#headline-1 .commentcount a:visited,
+li#headline-2 .commentcount a, li#headline-2 .commentcount a:visited,
+li#headline-3 .commentcount a, li#headline-3 .commentcount a:visited,
+li#headline-4 .commentcount a, li#headline-4 .commentcount a:visited,
+li#headline-5 .commentcount a, li#headline-5 .commentcount a:visited,
+li#headline-6 .commentcount a, li#headline-6 .commentcount a:visited,
+li#headline-7 .commentcount a, li#headline-7 .commentcount a:visited,
+li#headline-8 .commentcount a, li#headline-8 .commentcount a:visited  {
+	color:#87bcd2;
+	font:0.8em Georgia, "Times New Roman", Times, serif;	
+	}
+
+#middle {
+	background:#372529;
+	}
+
+#middle .wrapper {
+	padding:15px 0 0 30px;
+	width:930px;	
+	background: url(../images/bg_middle.jpg) left bottom no-repeat;	
+	}
+
+#home .widget {
+	width:274px;
+	float:left;
+	margin:11px 12px 0 0;
+	}
+
+#home .widget h3 {
+	margin-bottom:4px;
+	}	
+
+
+	
+	
+
+/*Contact Form*/
+
+	
+#contactform {
+	width:302px;
+	float:right;
+	background:#301e22;
+	padding:11px 20px 25px 20px;
+	}
+
+#contactform label, #contactform legend {
+	display:none
+	}
+
+#contactform h3 {
+	margin-bottom:9px;
+	}
+
+#success-message {
+	background:#1c1113;
+	padding:32px;
+	font-size:.8em;
+	position:absolute;
+	top:120px;
+	z-index:9999;
+	width:400px;
+	margin-left:-200px;
+	left:50%;
+	border:7px solid #402b30;
+	}
+	
+		

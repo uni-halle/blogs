@@ -1,0 +1,1 @@
+<?php wp_list_bookmarks('orderby=rand&title_before=<h1>&title_after=</h1>&between=<br />&show_description=1&limit=20'); ?>

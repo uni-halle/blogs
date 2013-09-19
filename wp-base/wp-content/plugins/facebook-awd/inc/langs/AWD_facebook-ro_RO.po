@@ -1,0 +1,1287 @@
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/facebook-awd\n"
+"POT-Creation-Date: 2011-08-04 18:04:21+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2011-11-17 17:13+0200\n"
+"Last-Translator: \n"
+"Language-Team: Web Geek\n"
+"X-Poedit-Language: Romanian\n"
+"X-Poedit-Country: ROMANIA\n"
+
+#: inc/widgets/widget_like_button.php:18
+msgid "Add a Facebook Like Button. Customise the code, or use predefined Like button in settings"
+msgstr "buton pe setări"
+
+#: inc/widgets/widget_like_button.php:41
+msgid "Facebook Like Button"
+msgstr "Facebook Like Button"
+
+#: inc/widgets/widget_like_button.php:45
+#: inc/widgets/widget_activity.php:45
+#: inc/widgets/widget_like_box.php:45
+#: inc/admin_plugins.php:36
+msgid "Iframe Or xfbml:"
+msgstr "Sau iframe xfbml:"
+
+#: inc/widgets/widget_like_button.php:47
+#: inc/widgets/widget_activity.php:47
+#: inc/widgets/widget_like_box.php:47
+msgid "Iframe Or %sxfbml%s %s(not active)%s:"
+msgstr "Sau iframe% sxfbml% s% s (nu este activ)% s:"
+
+#: inc/widgets/widget_like_button.php:52
+#: inc/widgets/widget_login_button.php:41
+#: inc/widgets/widget_activity.php:52
+#: inc/widgets/widget_like_box.php:52
+#: inc/init.php:27
+#: inc/init.php:105
+msgid "Title"
+msgstr "Titlu"
+
+#: inc/widgets/widget_like_button.php:61
+#: inc/widgets/widget_activity.php:61
+#: inc/widgets/widget_like_box.php:61
+#: inc/admin_plugins.php:82
+#: inc/admin_plugins.php:240
+msgid "XFBML"
+msgstr "XFBML"
+
+#: inc/widgets/widget_like_button.php:62
+#: inc/widgets/widget_activity.php:62
+#: inc/widgets/widget_like_box.php:62
+#: inc/admin_plugins.php:83
+#: inc/admin_plugins.php:241
+msgid "IFRAME"
+msgstr "IFRAME"
+
+#: inc/widgets/widget_like_button.php:69
+#: inc/widgets/widget_like_box.php:69
+#: inc/admin_plugins.php:245
+msgid "Url of the page"
+msgstr "URL-ul paginii"
+
+#: inc/widgets/widget_like_button.php:76
+#: inc/admin_plugins.php:68
+msgid "Layout style"
+msgstr "Aspect stil"
+
+#: inc/widgets/widget_like_button.php:78
+#: inc/admin_plugins.php:70
+msgid "Standard"
+msgstr "Standard"
+
+#: inc/widgets/widget_like_button.php:79
+#: inc/admin_plugins.php:71
+msgid "Button Count"
+msgstr "Button Count"
+
+#: inc/widgets/widget_like_button.php:80
+#: inc/admin_plugins.php:72
+msgid "Box Count"
+msgstr "Caseta Count"
+
+#: inc/widgets/widget_like_button.php:87
+#: inc/admin_plugins.php:94
+msgid "Colorscheme of button"
+msgstr "Colorscheme de buton"
+
+#: inc/widgets/widget_like_button.php:89
+#: inc/widgets/widget_activity.php:78
+#: inc/widgets/widget_like_box.php:78
+#: inc/admin_plugins.php:96
+#: inc/admin_plugins.php:251
+#: inc/admin_plugins.php:353
+#: inc/admin_plugins.php:581
+msgid "Light"
+msgstr "Lumina"
+
+#: inc/widgets/widget_like_button.php:90
+#: inc/widgets/widget_activity.php:79
+#: inc/widgets/widget_like_box.php:79
+#: inc/admin_plugins.php:97
+#: inc/admin_plugins.php:252
+#: inc/admin_plugins.php:354
+#: inc/admin_plugins.php:582
+msgid "Dark"
+msgstr "Întuneric"
+
+#: inc/widgets/widget_like_button.php:97
+#: inc/widgets/widget_login_button.php:68
+#: inc/admin_plugins.php:108
+#: inc/admin_plugins.php:446
+msgid "Width of button"
+msgstr "Lăţimea de buton"
+
+#: inc/widgets/widget_like_button.php:104
+#: inc/admin_plugins.php:114
+msgid "Height of button (only for iframe)"
+msgstr "Înălţimea butonul (numai pentru iframe)"
+
+#: inc/widgets/widget_like_button.php:111
+#: inc/widgets/widget_login_button.php:48
+#: inc/widgets/widget_like_box.php:100
+#: inc/admin_plugins.php:101
+#: inc/admin_plugins.php:269
+#: inc/admin_plugins.php:432
+msgid "Show Faces ?"
+msgstr "Arată Faces?"
+
+#: inc/widgets/widget_like_button.php:113
+#: inc/widgets/widget_like_button.php:123
+#: inc/widgets/widget_login_button.php:50
+#: inc/widgets/widget_login_button.php:60
+#: inc/widgets/widget_activity.php:123
+#: inc/widgets/widget_like_box.php:102
+#: inc/widgets/widget_like_box.php:112
+#: inc/widgets/widget_like_box.php:122
+#: inc/admin_plugins.php:89
+#: inc/admin_plugins.php:103
+#: inc/admin_plugins.php:134
+#: inc/admin_plugins.php:149
+#: inc/admin_plugins.php:164
+#: inc/admin_plugins.php:271
+#: inc/admin_plugins.php:278
+#: inc/admin_plugins.php:285
+#: inc/admin_plugins.php:346
+#: inc/admin_plugins.php:379
+#: inc/admin_plugins.php:434
+#: inc/admin_plugins.php:441
+#: inc/admin_plugins.php:548
+#: inc/admin_plugins.php:555
+#: inc/admin_plugins.php:562
+#: inc/admin_settings.php:22
+#: inc/admin_settings.php:45
+#: inc/admin_settings.php:52
+#: inc/admin_settings.php:63
+#: AWD_facebook.php:1031
+#: AWD_facebook.php:1040
+msgid "Yes"
+msgstr "Da"
+
+#: inc/widgets/widget_like_button.php:114
+#: inc/widgets/widget_like_button.php:124
+#: inc/widgets/widget_login_button.php:51
+#: inc/widgets/widget_login_button.php:61
+#: inc/widgets/widget_activity.php:124
+#: inc/widgets/widget_like_box.php:103
+#: inc/widgets/widget_like_box.php:113
+#: inc/widgets/widget_like_box.php:123
+#: inc/admin_plugins.php:90
+#: inc/admin_plugins.php:104
+#: inc/admin_plugins.php:135
+#: inc/admin_plugins.php:150
+#: inc/admin_plugins.php:165
+#: inc/admin_plugins.php:272
+#: inc/admin_plugins.php:279
+#: inc/admin_plugins.php:286
+#: inc/admin_plugins.php:347
+#: inc/admin_plugins.php:380
+#: inc/admin_plugins.php:435
+#: inc/admin_plugins.php:442
+#: inc/admin_plugins.php:549
+#: inc/admin_plugins.php:556
+#: inc/admin_plugins.php:563
+#: inc/admin_settings.php:23
+#: inc/admin_settings.php:46
+#: inc/admin_settings.php:53
+#: inc/admin_settings.php:64
+#: AWD_facebook.php:1032
+#: AWD_facebook.php:1041
+msgid "No"
+msgstr "Nu"
+
+#: inc/widgets/widget_like_button.php:121
+#: inc/admin_plugins.php:87
+msgid "Enable \"Send\" button ? %s(xfbml only)%s"
+msgstr "Activează \"Send \" buton?%s (xfbml numai)%s;"
+
+#: inc/widgets/widget_like_button.php:131
+#: inc/admin_plugins.php:61
+msgid "Action"
+msgstr "Acţiune"
+
+#: inc/widgets/widget_like_button.php:133
+#: inc/admin_plugins.php:63
+msgid "Like"
+msgstr "Ca"
+
+#: inc/widgets/widget_like_button.php:134
+#: inc/admin_plugins.php:64
+msgid "Recommend"
+msgstr "Recomanda"
+
+#: inc/widgets/widget_like_button.php:140
+#: inc/widgets/widget_activity.php:100
+#: inc/admin_plugins.php:358
+msgid "Font"
+msgstr "Sunt"
+
+#: inc/widgets/widget_like_button.php:154
+#: inc/widgets/widget_activity.php:129
+#: inc/widgets/widget_like_box.php:128
+msgid "OR"
+msgstr "SAU"
+
+#: inc/widgets/widget_like_button.php:158
+#: inc/widgets/widget_activity.php:133
+#: inc/widgets/widget_like_box.php:132
+msgid "Use code instead settings ?"
+msgstr "Folosiţi codul de schimb setările?"
+
+#: inc/widgets/widget_like_button.php:159
+#: inc/widgets/widget_activity.php:134
+#: inc/widgets/widget_like_box.php:133
+msgid "Paste"
+msgstr "Pastă"
+
+#: inc/widgets/widget_like_button.php:159
+#: inc/widgets/widget_activity.php:134
+#: inc/widgets/widget_like_box.php:133
+msgid "if you paste code, settings will be ignored"
+msgstr "Dacă lipiţi codul, setări vor fi ignorate"
+
+#: inc/widgets/widget_login_button.php:18
+msgid "Add a Facebook Login Button. Customise the code, or use predefined Login button in settings"
+msgstr "buton pe setări"
+
+#: inc/widgets/widget_login_button.php:36
+msgid "Facebook Login Button"
+msgstr "Facebook Intrare buton"
+
+#: inc/widgets/widget_login_button.php:58
+#: inc/admin_plugins.php:439
+msgid "Show Profile picture ?"
+msgstr "Arata poza de profil?"
+
+#: inc/widgets/widget_login_button.php:75
+#: inc/admin_plugins.php:452
+msgid "Max Rows (faces)"
+msgstr "Rânduri Max (fete)"
+
+#: inc/widgets/widget_login_button.php:82
+#: inc/admin_plugins.php:458
+msgid "Logout Phrase"
+msgstr "Expresie Logout"
+
+#: inc/widgets/widget_login_button.php:88
+msgid "Logout Url redirect"
+msgstr "Logout Url-ul de redirecţionare"
+
+#: inc/widgets/widget_login_button.php:95
+#: inc/admin_plugins.php:470
+msgid "Custom Css"
+msgstr "Particularizate Css"
+
+#: inc/widgets/widget_activity.php:18
+msgid "Add a Facebook Activity Box. Customise the code, or use predefined Activity box in settings"
+msgstr "caseta în setările"
+
+#: inc/widgets/widget_activity.php:40
+msgid "Facebook Activity Box"
+msgstr "Facebook Activitatea Box"
+
+#: inc/widgets/widget_activity.php:69
+msgid "Domain (ex: mysite.com)"
+msgstr "Domeniul (ex: mysite.com)"
+
+#: inc/widgets/widget_activity.php:76
+#: inc/widgets/widget_like_box.php:76
+#: inc/admin_plugins.php:249
+#: inc/admin_plugins.php:351
+msgid "Colorscheme of box"
+msgstr "Colorscheme de box"
+
+#: inc/widgets/widget_activity.php:86
+#: inc/widgets/widget_like_box.php:86
+#: inc/admin_plugins.php:256
+#: inc/admin_plugins.php:332
+#: inc/admin_plugins.php:573
+msgid "Width of box"
+msgstr "Lăţimea de box"
+
+#: inc/widgets/widget_activity.php:93
+#: inc/admin_plugins.php:338
+msgid "Height of box"
+msgstr "Înălţimea de box"
+
+#: inc/widgets/widget_activity.php:114
+#: inc/admin_plugins.php:371
+msgid "Border color"
+msgstr "Frontieră de culoare"
+
+#: inc/widgets/widget_activity.php:121
+#: inc/widgets/widget_like_box.php:120
+#: inc/admin_plugins.php:283
+#: inc/admin_plugins.php:344
+msgid "Show Header ?"
+msgstr "Arată antet?"
+
+#: inc/widgets/widget_like_box.php:18
+msgid "Add a Facebook Like Box. Customise the code, or use predefined Like box in settings"
+msgstr "Setări"
+
+#: inc/widgets/widget_like_box.php:40
+msgid "Facebook Like Box"
+msgstr "Facebook Ca Box"
+
+#: inc/widgets/widget_like_box.php:93
+#: inc/admin_plugins.php:262
+msgid "Height of box (only for iframe)"
+msgstr "Înălţimea cutie (numai pentru iframe)"
+
+#: inc/widgets/widget_like_box.php:110
+#: inc/admin_plugins.php:276
+msgid "Show Stream ?"
+msgstr "Arată Stream?"
+
+#: inc/help/help_plugins.php:12
+#: inc/help/help_settings.php:15
+msgid "Help"
+msgstr "Ajutor"
+
+#: inc/help/help_plugins.php:17
+msgid "The url to like, in XFBML, defaults to the current page"
+msgstr "Url-ul la cum ar fi, în XFBML, implicit la pagina curentă"
+
+#: inc/help/help_plugins.php:23
+msgid "The XFBML is available only on sites that use the JavaScript SDK."
+msgstr "XFBML este disponibil numai pe site-urile care utilizează SDK JavaScript."
+
+#: inc/help/help_plugins.php:29
+msgid "Include a Send button. The Send Button is available only on sites that use the JavaScript SDK."
+msgstr "SDK-ul JavaScript."
+
+#: inc/help/help_plugins.php:35
+msgid "Determines the size and amount of social context next to the button."
+msgstr "Determină mărimea şi cantitatea de contextul social de lângă butonul."
+
+#: inc/help/help_plugins.php:41
+msgid "The width of the plugin, in pixels."
+msgstr "Lăţimea de plugin, în pixeli."
+
+#: inc/help/help_plugins.php:47
+msgid "The height of the plugin, in pixels."
+msgstr "Înălţimea de plugin, în pixeli."
+
+#: inc/help/help_plugins.php:53
+msgid "Show profile pictures below the button."
+msgstr "Arată imaginile de mai jos butonul de profil."
+
+#: inc/help/help_plugins.php:59
+msgid "The verb to display in the button. Currently only 'like' and 'recommend' are supported."
+msgstr "sprijinite."
+
+#: inc/help/help_plugins.php:65
+msgid "The color scheme of the plugin"
+msgstr "Schema de culori a plugin-ului"
+
+#: inc/help/help_plugins.php:71
+#: inc/help/help_plugins.php:77
+msgid "The font of the plugin"
+msgstr "Fontul a plugin-ului"
+
+#: inc/help/help_plugins.php:83
+msgid "The domain to show activity for e.g. 'www.example.com'. In XFBML, defaults to the domain the plugin is on."
+msgstr "la domeniul plugin-ul este pornit."
+
+#: inc/help/help_plugins.php:89
+msgid "Show the Facebook header on the plugin."
+msgstr "Arată cele antet pe Facebook plugin."
+
+#: inc/help/help_plugins.php:95
+msgid "Show recommendations."
+msgstr "Afişaţi recomandări."
+
+#: inc/help/help_plugins.php:101
+msgid "The border color of the plugin."
+msgstr "Culoarea de frontieră a plugin-ului."
+
+#: inc/help/help_plugins.php:107
+msgid "Add custom css for the login button."
+msgstr "Adaugă personalizate CSS pentru butonul de login."
+
+#: inc/help/help_plugins.php:113
+msgid "The sentence in logout link"
+msgstr "Teză în deconectare legătură într-"
+
+#: inc/help/help_plugins.php:119
+msgid "The maximum number of rows of profile pictures to show."
+msgstr "Numărul maxim de rânduri de imagini mai multe date pentru a arăta."
+
+#: inc/help/help_plugins.php:125
+msgid "Show pictures of the user's friends who have joined your site"
+msgstr "Arată fotografiile cu prietenii utilizatorului care s-au alăturat site-ul dvs."
+
+#: inc/help/help_plugins.php:131
+msgid "Show pictures of the user when connected"
+msgstr "Arată imagini ale utilizatorului conectat atunci când"
+
+#: inc/help/help_plugins.php:137
+msgid "Show the profile stream for the public profile"
+msgstr "Arată fluxul de profil pentru mai multe date publice"
+
+#: inc/help/help_plugins.php:143
+msgid "The default Url to comment on ex:http://www.ahwebdev.fr"
+msgstr "Url-ul implicit pentru a comenta pe ex: http://www.ahwebdev.fr"
+
+#: inc/help/help_plugins.php:148
+msgid "The number of comments to display"
+msgstr "Numărul de comentarii pentru a afişa"
+
+#: inc/help/help_settings.php:21
+msgid "This is the id of your application on Facebook, if you have not yet an application, you can create one %shere%s."
+msgstr "aplicaţie, puteţi crea unul% saici% s."
+
+#: inc/help/help_settings.php:28
+msgid "Use xfbml parsing, Visit %sthis page%s"
+msgstr "Utilizaţi parsarea xfbml, Vizitati pagina sthis%% s"
+
+#: inc/help/help_settings.php:31
+msgid "If you set this option to \"No\" you will never be able to use xfbml"
+msgstr "Dacă setaţi această opţiune pentru a \" Nu \" niciodată nu va fi capabil să utilizeze xfbml"
+
+#: inc/help/help_settings.php:38
+msgid "The Open Graph Protocol enables you to integrate your Web pages into the social graph. It is currently designed for Web pages representing profiles of real-world things — things like movies, sports teams, celebrities, and restaurants. Including Open Graph tags on your Web page, makes your page equivalent to a Facebook Page. This means when a user clicks a Like button on your page, a connection is made between your page and the user. Your page will appear in the ”Likes and Interests” section of the user’s profile, and you have the ability to publish updates to the user. Your page will show up in the same places that Facebook pages show up around the site (e.g. search), and you can target ads to people who like your content. The structured data you provide via the Open Graph Protocol defines how your page will be represented on Facebook. %sRead more%s"
+msgstr "Pagina va fi reprezentata pe Facebook. SRead% mai% s"
+
+#: inc/help/help_settings.php:45
+msgid "Facebook helps you simplify and enhance user registration and sign-in by using Facebook as your login system. Users no longer need to fill in yet another registration form or remember another username and password to use your site. As long as the user is signed into Facebook, they are automatically signed into your site as well. Using Facebook for login provides you with all the information you need to create a social, personalized experience from the moment the user visits your site in their browser. %sRead more%s"
+msgstr "browser-ul. SRead% mai% s"
+
+#: inc/help/help_settings.php:52
+msgid "Lang to use with Facebook (default to en_US, or equal to WPLANG Constant if set in wp-config.php)"
+msgstr "stabilite în wp-config.php)"
+
+#: inc/help/help_settings.php:59
+msgid "Facebook Connect permissions (example: publish_stream,user_photos,user_status) %sSee%s the list of permissions "
+msgstr "User_status) sSee%% s la lista de permisiuni"
+
+#: inc/admin_plugins.php:15
+msgid "Like Button"
+msgstr "Ca şi buton"
+
+#: inc/admin_plugins.php:16
+msgid "Activity Feed"
+msgstr "Activitatea RSS"
+
+#: inc/admin_plugins.php:17
+msgid "Login Button"
+msgstr "Intra in buton"
+
+#: inc/admin_plugins.php:18
+msgid "Like Box"
+msgstr "Ca Box"
+
+#: inc/admin_plugins.php:19
+#: AWD_facebook.php:178
+msgid "Comments"
+msgstr "Comentarii"
+
+#: inc/admin_plugins.php:20
+msgid "Live Stream"
+msgstr "Live Stream"
+
+#: inc/admin_plugins.php:21
+msgid "Recommendations"
+msgstr "Recomandări"
+
+#: inc/admin_plugins.php:22
+msgid "Send Button"
+msgstr "Trimite o cerere Button"
+
+#: inc/admin_plugins.php:23
+msgid "Facepile"
+msgstr "Facepile"
+
+#: inc/admin_plugins.php:31
+msgid "All that settings are defaults, you can redefine them in shortcodes, widgets, and themes functions"
+msgstr "widget-uri, şi funcţiile de teme"
+
+#: inc/admin_plugins.php:38
+msgid "Iframe Or %sxfbml%s (%snot active%s):"
+msgstr "Sau iframe% sxfbml% s (% muci% activ s):"
+
+#: inc/admin_plugins.php:43
+msgid "Design"
+msgstr "Proiect"
+
+#: inc/admin_plugins.php:50
+msgid "Fonts of button"
+msgstr "Fonturi de buton"
+
+#: inc/admin_plugins.php:63
+#: inc/admin_plugins.php:70
+#: inc/admin_plugins.php:83
+#: inc/admin_plugins.php:90
+#: inc/admin_plugins.php:96
+#: inc/admin_plugins.php:104
+#: inc/admin_plugins.php:141
+#: inc/admin_plugins.php:156
+#: inc/admin_plugins.php:171
+#: inc/admin_plugins.php:241
+#: inc/admin_plugins.php:251
+#: inc/admin_plugins.php:272
+#: inc/admin_plugins.php:279
+#: inc/admin_plugins.php:286
+#: inc/admin_plugins.php:346
+#: inc/admin_plugins.php:353
+#: inc/admin_plugins.php:380
+#: inc/admin_plugins.php:435
+#: inc/admin_plugins.php:442
+#: inc/admin_plugins.php:581
+#: inc/admin_settings.php:23
+#: inc/admin_settings.php:53
+#: inc/admin_settings.php:64
+msgid "(default)"
+msgstr "(Implicit)"
+
+#: inc/admin_plugins.php:123
+msgid "Display"
+msgstr "Afişa"
+
+#: inc/admin_plugins.php:126
+msgid "Default Url to like"
+msgstr "Url-ul implicit pentru ca"
+
+#: inc/admin_plugins.php:132
+msgid "Add \"Like\" button to pages"
+msgstr "Adaugă \"Ca si\" butonul cu pagini;"
+
+#: inc/admin_plugins.php:139
+#: inc/admin_plugins.php:154
+#: inc/admin_plugins.php:169
+msgid "Where do you want to place \"Like\" button ?"
+msgstr "În cazul în care nu doriţi să plasaţi \"Ca si \" buton ?;"
+
+#: inc/admin_plugins.php:141
+#: inc/admin_plugins.php:156
+#: inc/admin_plugins.php:171
+msgid "Top"
+msgstr "Top"
+
+#: inc/admin_plugins.php:142
+#: inc/admin_plugins.php:157
+#: inc/admin_plugins.php:172
+msgid "Bottom"
+msgstr "Fund"
+
+#: inc/admin_plugins.php:143
+#: inc/admin_plugins.php:158
+#: inc/admin_plugins.php:173
+msgid "Both"
+msgstr "Ambii"
+
+#: inc/admin_plugins.php:147
+msgid "Add \"Like\" button to posts"
+msgstr "Adaugă \"La fel ca \" pentru a posturi"
+
+#: inc/admin_plugins.php:162
+msgid "Add \"Like\" button to custom post types"
+msgstr "Adaugă \" La fel ca \" buton pentru a posta tipurile personalizate"
+
+#: inc/admin_plugins.php:177
+msgid "Exclude Post types (for custom post_type, example: post,page,etc...)"
+msgstr "Exclude tipuri de post (de obicei post_type, de exemplu: posta, pagina, etc ..)"
+
+#: inc/admin_plugins.php:183
+msgid "Exclude Categories or other terms (slug or id example: photos,34,50)"
+msgstr "Excludeţi categorii sau alţi termeni (slug sau id exemplu: fotografii, 34,50)"
+
+#: inc/admin_plugins.php:189
+#: inc/admin_plugins.php:567
+msgid "Exclude Posts or Pages ID (example: 12,46,234)"
+msgstr "Excludeţi mesajele sau ID-ul Pagini (de exemplu: 12,46,234)"
+
+#: inc/admin_plugins.php:198
+#: inc/admin_plugins.php:293
+#: inc/admin_plugins.php:387
+#: inc/admin_plugins.php:479
+#: inc/admin_plugins.php:595
+msgid "Preview"
+msgstr "Anunţ"
+
+#: inc/admin_plugins.php:206
+#: inc/admin_plugins.php:301
+#: inc/admin_plugins.php:395
+#: inc/admin_plugins.php:492
+#: inc/admin_plugins.php:608
+msgid "-show options-"
+msgstr "-Show-opţiuni"
+
+#: inc/admin_plugins.php:234
+msgid "The like box is added via shortcodes, widgets, and themes functions"
+msgstr "Caseta ca se adaugă prin shortcodes, widget-uri, şi funcţiile de teme"
+
+#: inc/admin_plugins.php:322
+msgid "The activity box is added via shortcodes, widgets, and themes functions"
+msgstr "Caseta de activitate este adăugată prin shortcodes, widget-uri, şi funcţiile de teme"
+
+#: inc/admin_plugins.php:326
+msgid "Domain"
+msgstr "Domeniu"
+
+#: inc/admin_plugins.php:377
+msgid "Show Recommendations ?"
+msgstr "Arată Recomandări?"
+
+#: inc/admin_plugins.php:464
+msgid "Redirect url after logout"
+msgstr "Redirecţionare url după ieşire"
+
+#: inc/admin_plugins.php:511
+#: inc/admin_plugins.php:628
+msgid "You must enable XFBML parsing, in settings of the plugin"
+msgstr "Trebuie să activaţi analizare XFBML, în setările plugin-ului"
+
+#: inc/admin_plugins.php:515
+msgid "You must enable FB Connect and set parameters in settings of the plugins"
+msgstr "Trebuie să activaţi FB Conectaţi şi a stabilit parametrii în setările de plugin-uri"
+
+#: inc/admin_plugins.php:529
+msgid "All that settings are defaults, you can redefine them in shortcodes, and themes functions"
+msgstr "funcţiile de teme"
+
+#: inc/admin_plugins.php:530
+msgid "Note: Your themes must use the \"comments_template()\" function php to work."
+msgstr "Notă: Temele dvs. trebuie să utilizeze \" comments_template () \" funcţie PHP pentru a lucra."
+
+#: inc/admin_plugins.php:534
+msgid "URL to comment on"
+msgstr "URL-ul pentru a comenta pe"
+
+#: inc/admin_plugins.php:540
+msgid "Number of posts"
+msgstr "Numărul de posturi"
+
+#: inc/admin_plugins.php:546
+msgid "Add Comments Box to pages"
+msgstr "Adaugă Comentarii Caseta cu pagini"
+
+#: inc/admin_plugins.php:553
+msgid "Add Comments Box to posts"
+msgstr "Adaugă caseta de comentarii la posturi"
+
+#: inc/admin_plugins.php:560
+msgid "Add Comments Box to custom post types"
+msgstr "Adaugă caseta de comentarii la tipurile de mesaj particularizate"
+
+#: inc/admin_plugins.php:579
+msgid "Color Scheme"
+msgstr "Schema de culoare"
+
+#: inc/admin_plugins.php:586
+msgid "User ID to send a notification to upon someone posting a comment. (Only one facebook uid allowed)."
+msgstr "facebook UID sunt permise)."
+
+#: inc/admin_plugins.php:636
+#: inc/admin_settings.php:75
+#: inc/admin_open_graph.php:157
+msgid "Save all settings"
+msgstr "Salvaţi toate setările"
+
+#: inc/classes/class.ahwebdev_wpplugin.php:119
+msgid "Rate this plugin"
+msgstr "Evaluaţi acest plugin"
+
+#: inc/classes/class.ahwebdev_wpplugin.php:120
+msgid "Donate"
+msgstr "Dona"
+
+#: inc/classes/class.ahwebdev_wpplugin.php:125
+msgid "Please if you find Bug, report it to help us. You can report bug %shere%s"
+msgstr "Vă rugăm să dacă găsiţi Bug, este un raport care să ne ajute. Puteţi raporta bug-ul% saici% s"
+
+#: inc/login_process.php:211
+msgid "Wordpress registration is disabled, contact the administrator"
+msgstr "Anul Wordpress este dezactivat, contactaţi administratorul"
+
+#: inc/admin_settings.php:20
+msgid "Activate XFBML"
+msgstr "Activare XFBML"
+
+#: inc/admin_settings.php:27
+msgid "App ID (facebook)"
+msgstr "App ID-ul (facebook)"
+
+#: inc/admin_settings.php:31
+msgid "Admins IDs (facebook)"
+msgstr "Admins ID-uri (facebook)"
+
+#: inc/admin_settings.php:35
+msgid "Page Admin ID (facebook)"
+msgstr "Pagina Admin ID-ul (facebook)"
+
+#: inc/admin_settings.php:39
+msgid "locale"
+msgstr "local"
+
+#: inc/admin_settings.php:43
+msgid "Activate Open Graph ?"
+msgstr "Activaţi Graficul deschis?"
+
+#: inc/admin_settings.php:45
+msgid "(recommended)"
+msgstr "(Recomandat)"
+
+#: inc/admin_settings.php:50
+msgid "Activate FB Connect ?"
+msgstr "Activaţi FB Connect?"
+
+#: inc/admin_settings.php:57
+msgid "App SECRET KEY"
+msgstr "App cheie secretă"
+
+#: inc/admin_settings.php:61
+msgid "Replace Wordpress avatar by Fb avatar ?"
+msgstr "Înlocuiţi Wordpress Avatar Fb de avatar?"
+
+#: inc/admin_settings.php:68
+msgid "Facebook Connect permissions"
+msgstr "Facebook Connect permisiuni"
+
+#: inc/admin_open_graph.php:14
+msgid "Frontpage"
+msgstr "Frontpage"
+
+#: inc/admin_open_graph.php:15
+msgid "Pages"
+msgstr "Pagini"
+
+#: inc/admin_open_graph.php:16
+msgid "Posts"
+msgstr "Mesaje"
+
+#: inc/admin_open_graph.php:17
+msgid "Archives"
+msgstr "Arhive"
+
+#: inc/admin_open_graph.php:18
+msgid "Authors"
+msgstr "Autori"
+
+#: inc/admin_open_graph.php:19
+msgid "Custom Post types (Advanced)"
+msgstr "Tipuri particularizate de post (Avansat)"
+
+#: inc/admin_open_graph.php:20
+msgid "Taxonomies (Advanced)"
+msgstr "Taxonomii (Avansat)"
+
+#: inc/admin_open_graph.php:121
+msgid "There is no custom post types"
+msgstr "Nu există nici o tipurile personalizate mesaj"
+
+#: inc/admin_open_graph.php:147
+msgid "There is no Taxonomies"
+msgstr "Nu există nici o taxonomie"
+
+#: inc/init.php:26
+msgid "Url"
+msgstr "Url-ul"
+
+#: inc/init.php:28
+#: inc/init.php:101
+#: inc/init.php:108
+msgid "Type"
+msgstr "Tip"
+
+#: inc/init.php:29
+msgid "Description"
+msgstr "Descriere"
+
+#: inc/init.php:30
+msgid "Image url (50x50 is better)"
+msgstr "Url imagine (50x50 este mai bine)"
+
+#: inc/init.php:31
+msgid "Admin ids"
+msgstr "Admin id-uri"
+
+#: inc/init.php:32
+msgid "App IDs"
+msgstr "App ID-uri"
+
+#: inc/init.php:33
+msgid "Page IDs"
+msgstr "Pagina ID-uri"
+
+#: inc/init.php:34
+msgid "Site Name"
+msgstr "Numele site-ului"
+
+#: inc/init.php:40
+msgid "Activity"
+msgstr "Activitate"
+
+#: inc/init.php:41
+msgid "Sport"
+msgstr "Sportiv"
+
+#: inc/init.php:44
+msgid "Bar"
+msgstr "Bar"
+
+#: inc/init.php:45
+msgid "Company"
+msgstr "Companie"
+
+#: inc/init.php:46
+msgid "Cafe"
+msgstr "Cafenea"
+
+#: inc/init.php:47
+msgid "Hotel"
+msgstr "Hotel"
+
+#: inc/init.php:48
+msgid "Restaurant"
+msgstr "Restaurant"
+
+#: inc/init.php:51
+msgid "Cause"
+msgstr "Cauza"
+
+#: inc/init.php:52
+msgid "Sports league"
+msgstr "Sports League"
+
+#: inc/init.php:53
+msgid "Sports team"
+msgstr "Sporturi de echipă"
+
+#: inc/init.php:56
+msgid "Band"
+msgstr "Bandă"
+
+#: inc/init.php:57
+msgid "Government"
+msgstr "Guvern"
+
+#: inc/init.php:58
+msgid "Non profit"
+msgstr "Non Profit"
+
+#: inc/init.php:59
+msgid "School"
+msgstr "Şcoală"
+
+#: inc/init.php:60
+msgid "University"
+msgstr "Universitate"
+
+#: inc/init.php:63
+msgid "Actor"
+msgstr "Actor"
+
+#: inc/init.php:64
+msgid "Athlete"
+msgstr "Atlet"
+
+#: inc/init.php:65
+msgid "Director"
+msgstr "Director"
+
+#: inc/init.php:66
+msgid "Musician"
+msgstr "Muzician"
+
+#: inc/init.php:67
+msgid "Politician"
+msgstr "Politician"
+
+#: inc/init.php:68
+msgid "Public figure"
+msgstr "Publice figura"
+
+#: inc/init.php:71
+msgid "City"
+msgstr "Oraş"
+
+#: inc/init.php:72
+msgid "Country"
+msgstr "Ţară"
+
+#: inc/init.php:73
+msgid "Landmark"
+msgstr "Reper"
+
+#: inc/init.php:74
+msgid "State province"
+msgstr "De stat provincie"
+
+#: inc/init.php:77
+#: inc/init.php:107
+msgid "Album"
+msgstr "Album"
+
+#: inc/init.php:78
+msgid "Book"
+msgstr "Carte"
+
+#: inc/init.php:79
+msgid "Drink"
+msgstr "Băutură"
+
+#: inc/init.php:80
+msgid "Food"
+msgstr "Alimente"
+
+#: inc/init.php:81
+msgid "Game"
+msgstr "Joc"
+
+#: inc/init.php:82
+msgid "Product"
+msgstr "Produs"
+
+#: inc/init.php:83
+msgid "Song"
+msgstr "Cântec"
+
+#: inc/init.php:84
+msgid "Movie"
+msgstr "Film"
+
+#: inc/init.php:85
+msgid "Tv show"
+msgstr "Tv arată"
+
+#: inc/init.php:88
+msgid "Blog"
+msgstr "Blog"
+
+#: inc/init.php:89
+msgid "Website"
+msgstr "Website"
+
+#: inc/init.php:90
+msgid "Article"
+msgstr "Articol"
+
+#: inc/init.php:98
+msgid "Video src (swf only) "
+msgstr "Video src (numai swf)"
+
+#: inc/init.php:99
+msgid "Width (max: 398px)"
+msgstr "Lăţime (max: 398px)"
+
+#: inc/init.php:100
+msgid "Height (max: 460px)"
+msgstr "Înălţime (max: 460px)"
+
+#: inc/init.php:104
+msgid "Audio src (mp3 only)"
+msgstr "Src audio (mp3 numai)"
+
+#: inc/init.php:106
+msgid "Artist"
+msgstr "Artist"
+
+#: inc/init.php:111
+msgid "Email"
+msgstr "E-mail"
+
+#: inc/init.php:112
+msgid "Phone number"
+msgstr "Numărul de telefon"
+
+#: inc/init.php:113
+msgid "Fax number"
+msgstr "Număr de fax"
+
+#: inc/init.php:117
+msgid "Latitude"
+msgstr "Latitudine"
+
+#: inc/init.php:118
+msgid "Longitude"
+msgstr "Longitudine"
+
+#: inc/init.php:119
+msgid "Street address"
+msgstr "Adresa"
+
+#: inc/init.php:120
+msgid "Locality"
+msgstr "Localitate"
+
+#: inc/init.php:121
+msgid "Region"
+msgstr "Regiune"
+
+#: inc/init.php:122
+msgid "Postal code"
+msgstr "Cod poştal"
+
+#: inc/init.php:123
+msgid "Country name"
+msgstr "Numele ţării"
+
+#: inc/init.php:126
+msgid "Isbn"
+msgstr "ISBN"
+
+#: inc/init.php:129
+msgid "Upc"
+msgstr "UPC"
+
+#: inc/init.php:233
+#: AWD_facebook.php:353
+msgid "Logout"
+msgstr "Logout"
+
+#: AWD_facebook.php:104
+msgid "Facebook Connect plugin is almost ready. To start using Facebook <strong>you need to set your Facebook Application API ID and Faceook Application secret key</strong>. You can do that in <a href=\"%1s\">Facebook Connect settings page</a>. (Notification from Facebook AWD)"
+msgstr "pagina. (Notificare de la Facebook AWD)"
+
+#: AWD_facebook.php:112
+msgid "Facebook AWD is almost ready... Go to settings and set a FB app Id (Notification from Facebook AWD)"
+msgstr "(Notificare de la Facebook AWD)"
+
+#: AWD_facebook.php:123
+msgid "Users can not register, please enable registration account in blog settings before using FB Connect. (Notification from Facebook AWD)"
+msgstr "înainte de a utiliza FB Connect. (Notificare de la Facebook AWD)"
+
+#: AWD_facebook.php:148
+#: AWD_facebook.php:170
+msgid "Settings"
+msgstr "Setări"
+
+#: AWD_facebook.php:149
+msgid "Plugins"
+msgstr "Plugins"
+
+#: AWD_facebook.php:151
+#: AWD_facebook.php:175
+msgid "Open Graph"
+msgstr "Graficul deschis"
+
+#: AWD_facebook.php:152
+msgid "Support"
+msgstr "Sprijin"
+
+#: AWD_facebook.php:164
+msgid "My Facebook"
+msgstr "My Facebook"
+
+#: AWD_facebook.php:165
+msgid "Informations"
+msgstr "Informaţii"
+
+#: AWD_facebook.php:166
+msgid "Activity on your site"
+msgstr "Activitatea pe site-ul dvs."
+
+#: AWD_facebook.php:169
+msgid "Plugins Settings"
+msgstr "Plugins Setări"
+
+#: AWD_facebook.php:184
+msgid "Open Graph Metas"
+msgstr "Deschideţi Metas Graficul"
+
+#: AWD_facebook.php:197
+msgid "You can use Pattern code in fields, paste it where you need:"
+msgstr "Aveţi posibilitatea să utilizaţi codul de model în câmpuri, lipiţi-o în cazul în care aveţi nevoie:"
+
+#: AWD_facebook.php:201
+#: AWD_facebook.php:210
+#: AWD_facebook.php:217
+#: AWD_facebook.php:225
+#: AWD_facebook.php:238
+msgid "Use blog name"
+msgstr "Utilizaţi numele de blog"
+
+#: AWD_facebook.php:202
+#: AWD_facebook.php:211
+#: AWD_facebook.php:218
+#: AWD_facebook.php:226
+#: AWD_facebook.php:239
+msgid "Use blog description"
+msgstr "Utilizaţi descriere blog"
+
+#: AWD_facebook.php:203
+#: AWD_facebook.php:212
+#: AWD_facebook.php:219
+#: AWD_facebook.php:227
+#: AWD_facebook.php:240
+msgid "Use blog url"
+msgstr "Utilizaţi adresa URL a blog"
+
+#: AWD_facebook.php:204
+msgid "Use term name"
+msgstr "Utiliza numele pe termen"
+
+#: AWD_facebook.php:205
+msgid "Use term description"
+msgstr "Utilizarea pe termen descriere"
+
+#: AWD_facebook.php:220
+msgid "Use archive name"
+msgstr "Utilizaţi numele Arhiva"
+
+#: AWD_facebook.php:228
+#: AWD_facebook.php:241
+msgid "Use title of post"
+msgstr "Utilizarea titlu de mesaj"
+
+#: AWD_facebook.php:229
+#: AWD_facebook.php:242
+msgid "Use excerpt"
+msgstr "Utilizaţi extras"
+
+#: AWD_facebook.php:230
+#: AWD_facebook.php:243
+msgid "Use featured image (if activated)"
+msgstr "Utilizaţi imagini featured (dacă este activată)"
+
+#: AWD_facebook.php:314
+msgid "You must activate xfbml if you want to see support form (FB:comments) Or %sgo to this page%s at bottom"
+msgstr "SGO la această% s pagină în partea de jos"
+
+#: AWD_facebook.php:413
+msgid "Options updated"
+msgstr "Opţiuni de actualizare"
+
+#: AWD_facebook.php:415
+msgid "Options not updated there is an error..."
+msgstr "Opţiuni de actualizare nu există o eroare ..."
+
+#: AWD_facebook.php:698
+msgid "Error No tags..."
+msgstr "În tag-uri de eroare ..."
+
+#: AWD_facebook.php:889
+msgid "WARNING Image is emtpy"
+msgstr "Image AVERTIZARE este emtpy"
+
+#: AWD_facebook.php:891
+msgid "WARNING Title is empty"
+msgstr "Titlul ATENŢIONARE este gol"
+
+#: AWD_facebook.php:893
+msgid "WARNING Site Name is empty"
+msgstr "Numele site-ului ATENŢIONARE este gol"
+
+#: AWD_facebook.php:895
+msgid "WARNING Description is empty"
+msgstr "Descriere ATENŢIONARE este gol"
+
+#: AWD_facebook.php:897
+msgid "WARNING Admins id or app ID are empty"
+msgstr "AVERTISMENT Admins ID-ul sau ID-ul app sunt goale"
+
+#: AWD_facebook.php:952
+msgid "Image"
+msgstr "Imagine"
+
+#: AWD_facebook.php:965
+msgid "Mp3 song"
+msgstr "Mp3 song"
+
+#: AWD_facebook.php:987
+msgid "Video"
+msgstr "Video"
+
+#: AWD_facebook.php:1023
+msgid "Disable Tags for this page ?"
+msgstr "Dezactivează Etichete pentru această pagină?"
+
+#: AWD_facebook.php:1027
+msgid "Disable Tags for this type ? "
+msgstr "Dezactivează Etichete pentru acest tip?"
+
+#: AWD_facebook.php:1027
+msgid "You can override settings on each page individually"
+msgstr "Puteţi să ignoraţi setările de pe fiecare pagina individual"
+
+#: AWD_facebook.php:1039
+msgid "Redefine Tags for this page ?"
+msgstr "Redefinirea Etichete pentru această pagină?"
+
+#: AWD_facebook.php:1046
+msgid "Tags"
+msgstr "Tag-uri"
+
+#: AWD_facebook.php:1088
+#: AWD_facebook.php:1125
+#: AWD_facebook.php:1159
+msgid "Upload"
+msgstr "Încarcă"
+
+#: AWD_facebook.php:1113
+msgid "Video Attachement"
+msgstr "Video Attachement"
+
+#: AWD_facebook.php:1116
+msgid "Facebook supports embedding video in SWF format only. File ith extension \".swf\""
+msgstr "Facebook susţine integrarea video in format SWF numai. Fişier extindere i-lea \" .swf \""
+
+#: AWD_facebook.php:1118
+msgid "You must include a valid Image for your video in Tags section to be displayed in the news feed."
+msgstr "afişate în furaje de ştiri."
+
+#: AWD_facebook.php:1148
+msgid "Audio Attachement"
+msgstr "Audio Ataşament"
+
+#: AWD_facebook.php:1151
+msgid "In a similar fashion to Video you can add an audio file to your markup"
+msgstr "Într-un mod similar cu video aveţi posibilitatea să adăugaţi un fişier audio de markup dvs."
+
+#: AWD_facebook.php:1186
+msgid "code"
+msgstr "cod"
+
+#: AWD_facebook.php:1192
+msgid "For products which have a UPC code or ISBN number"
+msgstr "Pentru produsele care au un cod UPC sau numărul ISBN"
+
+#: AWD_facebook.php:1202
+msgid "Contact infos"
+msgstr "A lua legatura cu alegerile tipsterilor pentru acest"
+
+#: AWD_facebook.php:1204
+msgid "Consider including contact information if your page is about an entity that can be contacted."
+msgstr "poate fi contactat."
+
+#: AWD_facebook.php:1229
+msgid "Location infos"
+msgstr "Locul de amplasare infos"
+
+#: AWD_facebook.php:1231
+msgid "This is useful if your pages is a business profile or about anything else with a real-world location. You can specify location via latitude and longitude, a full address, or both."
+msgstr "longitudine, o adresă completă, sau ambele."
+
+#: AWD_facebook.php:1344
+msgid "You should enable FB connect in %sApp settings%s to use Login buttons"
+msgstr "Tu ar trebui să permită FB conecteze în Sapp% s% setarile de a folosi butoanele Conectare"
+
+#: AWD_facebook.php:1409
+msgid "There is an error, please verify the settings for the Like Button URL"
+msgstr "Există o eroare, vă rugăm să verificaţi setările pentru URL-ul butonul Like"
+
+#: AWD_facebook.php:1458
+msgid "There is an error, please verify the settings for the Comments box url"
+msgstr "Există o eroare, vă rugăm să verificaţi setările pentru căsuţa de comentarii url"
+
+#: AWD_facebook.php:1460
+msgid "There is an error, you must enable XFBML in plugin settings"
+msgstr "Există o eroare, trebuie să activaţi XFBML în setările plugin-ului"
+
+#: AWD_facebook.php:1502
+#: AWD_facebook.php:1508
+msgid "There is an error, please verify the settings for the Like Box URL"
+msgstr "Există o eroare, vă rugăm să verificaţi setările pentru URL-ul Ca Box"
+
+#: AWD_facebook.php:1542
+#: AWD_facebook.php:1548
+msgid "There is an error, please verify the settings for the Acivity Box DOMAIN"
+msgstr "Există o eroare, vă rugăm să verificaţi setările pentru DOMAIN Box Acivity"
+

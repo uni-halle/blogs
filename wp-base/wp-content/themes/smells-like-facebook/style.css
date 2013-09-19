@@ -1,0 +1,604 @@
+/*
+THEME NAME: Smells like Facebook
+THEME URI: http://nazieb.com/595/smells-like-facebook-2-4-1
+VERSION: 2.4.1
+AUTHOR: Ainun Nazieb
+AUTHOR URI: http://nazieb.com/
+DESCRIPTION: The exact Facebook clone theme for Wordpress. Based on Facebook profile page. 3 columns or 2 columns available. Advanced Javascript & AJAX effect just like on Facebook also available. Autogrow comment box.
+TAGS: white, blue, two-columns, three-columns, theme-options, fixed-width, light
+*/
+
+* { margin: 0px; padding: 0px; border: 0; outline: 0; }
+ul li {list-style: none;}
+
+body {
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size: 11px;
+	background: #fff url(images/bodybg.gif) repeat-x scroll left top;
+}
+
+input[type=text], textarea {
+	color: #777777;
+	font-size: 11px;
+	padding: 3px;
+}
+
+input, textarea {
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+}
+
+input[type=submit], input.submit {
+	background-color:#5F78AB;
+	border:1px solid #888888;
+	border-color:#26446E #152F5F #0C2253;
+	color:#FFFFFF;
+	text-shadow:0 1px 0 #3E5A88;
+	font-size:11px;
+	font-weight:bold;
+	padding: 3px 6px 4px;
+	text-align:center;
+}
+
+a {
+	color: #3B5998;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+blockquote {
+	background: url(images/quote.png) no-repeat left top;
+	padding-left: 19px;
+	color: gray;
+}
+
+#wrapper {
+	width: 964px;
+	margin: 0 auto;
+}
+
+#menu {
+	background:transparent url(images/menubar.png) no-repeat scroll left bottom;
+	float: left;
+	width: 964px;
+	font-size: 11px;
+}
+
+#logo {
+	float: left;
+	margin: 5px 0px 3px 3px;
+}
+
+#menu li {
+	float: left;
+	padding: 7px 0px 8px 0px;
+}
+
+#menu li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 7px;
+}
+
+#pagemenu {
+	margin-left: 5px;
+}
+
+#pagemenu a {
+	font-weight: bold;
+}
+
+#pagemenu a:hover {
+	background-color: #5C75AA;
+}
+
+#pagemenu ul {
+	position: absolute;
+	border: 1px solid #3B5998;
+	margin-top: 5px;
+	display: none;
+}
+
+div#menu ul#pagemenu li:hover ul, div#menu ul#pagemenu li:hover ul:hover {
+	display: block;
+}
+
+#pagemenu ul li {
+	float: none;
+	background-color: #fff;
+	padding: 2px 0px;
+}
+
+#pagemenu ul li a {
+	color: #3B5998;
+	font-weight: normal;
+	padding: 5px 20px;
+	display: block;
+}
+
+#pagemenu ul li a:hover {
+	color: #fff;
+}
+
+#menu #more {
+	float: right;
+}
+
+#moremenu {
+	float: right;
+}
+
+#moremenu li {
+	margin-right: 5px;
+}
+
+#moremenu li a:hover {
+	background-color: #5C75AA;
+}
+
+#moremenu ul {
+	position: absolute;
+	border: 1px solid #3B5998;
+	background: #fff;
+	margin-top: 5px;
+	display: none;
+}
+
+div#menu 	div#more ul#moremenu li:hover ul {
+	display: block;
+}
+
+#feedmenu li.feedli {
+	float: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+#feedmenu li a {
+	color: #3B5998;
+	padding: 5px 20px;
+	display: block;
+}
+
+#feedmenu li a:hover {
+	color: #fff;
+}
+
+#search {
+	float: right;
+	margin-top: 4px;
+	margin-right: 12px;
+	margin-left: 5px;
+}
+
+#search-text {
+	float: left;
+	margin-right: 2px;
+}
+
+#search-submit {
+	float: left;
+}
+
+#sidebar, #title {
+	margin-top: 20px;
+}
+
+#title h1 {
+	font-size: 16px;
+	display: inline;
+}
+
+#title h1 a {
+	color: #000;
+}
+
+#desc {
+	display: inline;
+	font-size: 13px;
+}
+
+#categories {
+	margin-top: 11px;
+	margin-bottom: 45px;
+	z-index: 10;
+	position: relative;
+}
+
+#categories li {
+	text-transform: capitalize;
+	float: left;
+	background: #D8DFEA;
+	margin-left: 3px;
+}
+#categories li a {
+	font-size:13px;
+	font-weight:bold;
+	padding:4px 11px;
+	display: block;
+}
+
+#categories li a:hover {
+	color: #fff;
+	text-decoration: none;
+	background: #627AAD;
+}
+
+#categories .current-cat {
+	background: #fff;
+}
+
+#categories .current-cat a {
+	background: #fff;
+	color: #000;
+}
+
+#categories .current-cat a:hover {
+	background: #fff;
+	color: #000;
+}
+
+#categories #plus {
+	background: url(images/plus.gif) no-repeat top left;
+	z-index:999999;
+/*	position:relative;
+	display: block; */
+}
+
+#categories #plus:hover, #categories #plus.hover {
+	background: #627AAD url(images/plus.gif) no-repeat left -25px;	
+}
+
+#hiddencats {
+	width: 100px;
+	z-index: 10000;
+	left:-3px;
+	position:relative;
+	top:-28px;
+}
+
+#hiddencats li {
+	padding: 0px;
+/*	padding: 8px 5px 4px 8px; */
+	background: #eee;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	float: none;
+	margin-left: 0px; 
+}
+
+#hiddencats li.browsecat {
+	background: #fff;
+	border: 1px solid #000;
+	border-left: 1px solid #fff;
+	border-bottom: none;
+	padding: 8px;
+	width: 150px;
+	color: #666;
+}
+
+#hiddencats li a{
+	font-weight: normal;
+	font-size: 11px;
+	padding: 7px 12px;
+}
+
+#hiddencats li a:hover {
+	background: #899BC1;
+}
+
+#hiddencats .current-cat {
+	background: #eee;
+}
+
+#hiddencats .current-cat a {
+	background: #eee;
+	color: #3B5998;
+}
+
+#hiddencats .current-cat a:hover {
+	background: #899BC1;
+	color: #fff;
+}
+
+#hiddencats ul {
+	border-bottom: 1px solid #000;
+}
+
+#hiddenleft {
+	width: 25px;
+	height: 25px;
+	border: 1px solid #000;
+	border-right: none;
+	position: absolute;
+	background: #fff;
+	padding: 2px;
+}
+
+#hiddenplus {
+	background: #627AAD url(images/plus.gif) no-repeat left -25px;
+	height: 25px;
+	width: 25px;
+	cursor: pointer;
+}
+
+#hiddenright {
+	position: absolute;
+	margin-left: 30px;
+}
+
+#content {
+	float: right;
+	width: 740px;
+}
+
+.post {
+/*	clear: both;*/
+	float: left;
+	border-top:1px solid #D8DFEA;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-top: 8px;
+}
+
+.post-gravatar {
+	float: left;
+	margin-right: 10px;
+}
+
+.post-text {
+	float: right;
+	width: 680px;
+}
+
+.post-text label input {
+	border:1px solid #BDC7D8;
+	margin-bottom: 3px;
+	color: #777777;
+	font-size: 11px;
+	padding: 3px;
+	text-align: left;
+	background: #fff;
+}
+
+.post .title {
+	margin-bottom: 10px;
+	font-size: 13px;
+}
+
+.post p {
+	margin-bottom: 10px;
+	line-height: 15px;
+}
+
+.post-text ul li {
+	margin-left: 15px;
+	list-style-type: disc;
+}
+
+.post ol {
+	margin-left: 20px;
+	list-style: decimal;
+}
+
+.post ul, .post ol, .post li {
+	margin-bottom: 10px;
+}
+
+.post ul ul, .post ol ol {
+	margin-top: 10px;
+}
+
+.post .meta, .post .post-meta {
+	color: #777;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.post-meta {
+	border-top: 1px solid #DDDDDD;
+	padding-top: 3px;
+}
+
+.navigation {
+	background:#ECEFF5 none repeat scroll 0 0;
+	border-top:1px solid #D8DFEA;
+	margin-top:8px;
+	padding:3px 7px 4px 0;
+	float: left;
+	width: 100%;
+}
+
+.next {
+	margin-left:52px;
+	float: left;
+}
+
+.prev {
+	margin-right:52px;
+	float: right;
+}
+
+#sidebar {
+	float: left;
+	width: 200px;
+}
+
+.large-avatar {
+	margin-bottom: 10px;
+}
+
+.user-desc {
+	border:1px solid #D8DFEA;
+	color:#333333;
+	margin-bottom:20px;
+	padding:7px;
+}
+
+#sidebar .widget {
+	border-top:1px solid #94A3C4;
+	padding-bottom:10px;
+	border-right:1px solid #D8DFEA;
+	background-color: #FFFFFF;
+}
+
+#sidebar .widgettitle {
+	background:#ECEFF5 none repeat scroll 0 0;
+	border-top:0 none;
+	display:block;
+	font-size:11px;
+	margin-bottom:5px;
+	padding:5px 8px;
+}
+
+#sidebar .widgettitle  a {
+	text-decoration: none;
+	color: #000;
+}
+
+#sidebar .widgettitle img {
+	display: none;
+}
+
+#sidebar .widget ul {
+	padding:0px 7px 10px 8px;
+}
+
+#sidebar .widget li {
+	margin-top: 5px;
+}
+
+.index-comment{
+	background: #ECEFF5;
+	width: 360px;
+	float: left;
+	clear: both;
+	margin-top: 2px;
+	padding: 7px;
+}
+
+.morecomments {
+	background: #ECEFF5 url(images/comment.gif) no-repeat scroll 7px 7px;
+}
+
+.morecomments a {
+	margin-left: 18px;
+}
+
+.ic-avatar {
+	float: left;
+}
+
+.ic-text {
+	width: 315px;
+	float: right;
+}
+
+.ic-meta {
+	margin-bottom: 3px;
+}
+
+.ic-author {
+	font-weight: bold;
+	display: inline;
+}
+
+.ic-content, .comment p {
+	display: inline;
+}
+
+.ic-date {
+	color: #777;
+	margin-top: 2px;
+}
+
+.comment-form input[type=text], #comment_form input[type=text], .comment-form textarea, #comment_form textarea {
+	border:1px solid #BDC7D8;
+	margin-bottom: 3px;
+}
+
+.comment-form textarea, #comment_form textarea {
+	width: 352px;
+}
+
+.comment-form textarea.commenttextright, #comment_form textarea.commenttextright {
+	height:30px;
+	margin-left:5px;
+	width:310px;
+}
+
+.form_submit_right {
+	text-align: right;
+}
+
+textarea.respondtext {
+	border:1px solid #BDC7D8;
+	height:14px;
+	width:352px;
+}
+
+#footer {
+	border-top:1px solid #DDDDDD;
+	clear:both;
+	float:left;
+	margin-bottom:20px;
+	margin-top:10px;
+	padding-top:5px;
+	text-align:right;
+	width:100%;
+}
+
+.archive {
+	background:#F7F7F7 none repeat scroll 0 0;
+	border-bottom:1px solid #D8DFEA;
+	border-top:1px solid #3B5998;
+	padding:4px 6px 5px;
+	color:#333333;
+	font-size:13px;
+	font-weight:bold;
+	line-height:15px;
+}
+
+.nofloat {
+	float: none;
+	width: 100%;
+}
+
+/* Wordpress requirement */
+.aligncenter,
+div.aligncenter {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft {
+   float: left;
+}
+
+.alignright {
+   float: right;
+}
+
+.wp-caption {
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+}
+
+.wp-caption img {
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+   font-size: 11px;
+   line-height: 17px;
+   padding: 0 4px 5px;
+   margin: 0;
+}

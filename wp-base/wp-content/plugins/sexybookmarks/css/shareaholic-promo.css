@@ -1,0 +1,15 @@
+/*------------------------------------------------------------------------------------------*/
+/* Start Ext Promo */
+#ext-promo-prompt{display:none;position:relative;width:100%;line-height:31px;height:31px;font-size:14px;background:#ffefc6 url(https://dtym7iokkjlif.cloudfront.net/media/images/ext-promo-bg.png) repeat-x scroll 0 0;z-index:99998;/*Admin bar is 99999*/}
+#ext-promo-prompt a{text-decoration:none;color:#0076A6;}
+#ext-promo-prompt a:hover{color:#017FD6;}
+#ext-promo-prompt a.close{position:relative;width:20px;float:right;margin-right:10px;margin-top:5px;width:20px;height:20px;text-indent:-9999px;background:transparent url(https://dtym7iokkjlif.cloudfront.net/media/images/ext-promo-x.png) no-repeat scroll 0 0;}
+#ext-promo-prompt a.close:hover{background-position:0 -20px;}
+#ext-promo-prompt a.install{position:relative;width:75px;float:right;margin-right:20px;margin-top:4px;color:black;text-align:center;line-height:19px;border:1px solid rgba(100,100,100,.4);background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.25,#bdbdbd),color-stop(0.6,#d9d9d9),color-stop(0.99,#e0dcdf));background:-moz-linear-gradient(top,#bdbdbd,#e0dcdf);}
+#ext-promo-prompt a.install:hover{border:1px solid rgba(100,100,100,.9);}
+/* End of functionality options Styles*/
+/*------------------------------------------------------------------------------------------*/
+.fs_a{font-family:Arial,Helvetica,Geneva,sans-serif;}
+.fs_c_midgrey2{color:#555555}
+.rounded_5{webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+/*------------------------------------------------------------------------------------------*/

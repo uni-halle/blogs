@@ -1,0 +1,372 @@
+/*
+Theme Name: Aggiornare
+Theme URI: http://geekdesigngirl.com/aggiornare-a-free-wordpress-theme/
+Description: The Aggiornare theme is a minmal theme with a focus on your content. Featuring a custom home page, custom theme options, 4 widgets and free support.  Aggiornare means 'to update' in Italian.  Happy Updating!
+Version: 1.0.5
+Author: GeekDesignGirl
+Author URI: http://geekdesigngirl.com/
+Tags: white, fixed-width, two-columns, light, theme-options
+*/
+
+/*
+    Copyright Nikki Selene Lamagna (GeekDesignGirl)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    I hope this theme will be useful and enjoyable but comes WITHOUT ANY WARRANTY; 
+    without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+    PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+/* CSS Reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+/* End CSS Reset */
+
+/* If you need to edit this file, please save yourself some time and download Firebug (http://getfirebug.com) for use with Firefox browsers */
+
+/* Let's set up default styles */
+
+body { font-family: Baskerville, Times, "Times New Roman", serif; font-size: 62.5%; color: #595959; background: #626262; }
+
+h1 { font-size: 38px; line-height: 46px; text-decoration: none; border-bottom: 1px solid #414141; color: #414141; margin: 10px 0 20px 0; padding: 0 0 6px 0; font-variant: small-caps; } 
+
+h2 { font-size: 32px; line-height: 40px; text-decoration: none; border-bottom: 1px solid #414141; color: #414141; margin: 10px 0 20px 0; padding: 0 0 6px 0; font-variant: small-caps; } 
+
+h3 { font-size: 24px; line-height: 30px; text-decoration: none; color: #414141; margin: 20px 0 5px 0; padding: 0 0 6px 0; font-variant: small-caps; }
+
+h4 { font-size: 18px; line-height: 24px; text-decoration: none; color: #414141; margin: 10px 0; padding: 0 0 6px 0; font-variant: small-caps; }
+
+h5 { font-size: 16px; line-height: 20px; text-decoration: none; color: #414141; margin: 10px 0; padding: 0 0 6px 0; font-variant: small-caps; }
+
+h6 { font-size: 14px; line-height: 18px; text-decoration: none; color: #414141; margin: 10px 0; padding: 0 0 6px 0; font-variant: small-caps; }
+
+address { font-size: 14px; font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; }
+
+abbr, acronym { border-bottom: 1px dotted #595959; }
+
+big { font-size: 16px; font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; }
+
+code, ins, kbd, pre, tt { font-family: Courier, mono; font-size: 14px; }
+
+sub { vertical-align: sub; }
+
+sup { vertical-align: super; }
+
+var, cite { font-style: italic; }
+
+h3 span { color: #1e1e1e; }
+
+p, li, label, dt, dd, div { font-size: 16px; line-height: 20px; }
+
+dd { text-indent: 20px; }
+
+blockquote, .content blockquote p, q { margin: 10px 30px; color: #a1a1a1; font-style: italic; font-size: 18px; text-align: justify; }
+
+table { margin: 10px 0; border-collapse: collapse; }
+
+td, th { padding: 12px; font-size: 14px; text-align: left; border: 1px solid #f4f4f4; }
+
+th { font-weight: bold; border-bottom: 1px solid #595959; }
+
+a { color: #992622; }
+
+a:hover { color: #595959; }
+
+em { font-style: italic; }
+
+strong { font-weight: bold; }
+
+ol { list-style-type: decimal-leading-zero; }
+
+input, textarea { border: 1px solid #414141; padding: 5px; width: 600px; font-family: Baskerville, Times, "Times New Roman", serif; font-size: 14px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+
+input#searchsubmit { cursor: pointer; }
+
+ul ul { margin: 0 0 0 15px; }
+
+a img { border: none }
+
+caption { text-align: center; margin: 0 0 8px 0; font-size: 16px; font-weight: bold; }
+
+/* Some specific p attributes */
+
+p.large { font-size: 30px; line-height: 40px; color: #595959; padding: 0 0 0 30px; }
+
+p.highlight { font-style: italic; text-align: right; font-size: 20px; padding: 15px 15px 0 0; }
+
+p.highlight a { text-decoration: none; }
+
+p.highlight a:hover { text-decoration: underline; color: #595959; }
+
+p.copyright { clear: both; border-top: 1px solid #f4f4f4; padding: 15px 0 10px 0; margin: 10px 0; color: #d8d8d8; font-size: 14px; font-style: italic; }
+
+p.copyright a { color: #d8d8d8; font-size: 14px; font-style: italic; text-decoration: none; border-bottom: 1px dotted #d8d8d8; }
+
+p.copyright a:hover { color: #fff; border-bottom: 1px solid #d8d8d8; }
+
+p.tagline { font-size: 22px; font-style: italic; padding: 10px 0; }
+
+/* Page layout properties */
+
+#color { background: #fff; float: left; width: 100%; }
+
+#wrapper { width: 950px; margin: 0 auto; }
+
+#top { width: 950px; float: left; margin: 10px 0 15px 0; padding: 0 0 15px 0; background: #fff; }
+
+#siteIdentification { width: 278px; float: left; }
+
+#sidebar { width: 278px; float: left; margin: 20px 0 0 0; }
+
+#sidebar input { width: 265px; }
+
+#sidebar input#searchsubmit { margin: 4px 0 0 0; width: 125px; }
+
+#sidebar h2 { text-decoration: none; padding: 0 0 2px 0; margin: 4px; line-height: 32px; }
+
+.sidebarItem { border: 1px solid #e6e6e6; padding: 10px; margin: 0 0 10px 0; -moz-border-radius: 15px; -webkit-border-radius: 15px; float: left; width: 278px; }
+
+#sidebar img { float: left; margin: 0 5px 0 0; }
+
+#sidebar p { margin: 10px 0 15px 0; }
+
+#sidebar a { text-decoration: none; }
+
+#sidebar ul ul { margin: 4px 0 0 4px; }
+
+#sidebar ul ul li { padding: 4px 0 4px 4px; border-bottom: 1px solid #c4c4c4; }
+
+#wp-calendar { width: 100%; }
+
+#wp-calendar td, #wp-calendar th { padding: 5px 0; font-size: 14px; border: 0; }
+
+#wp-calendar th { font-weight: bold; }
+
+#wp-calendar td#prev { text-align: right; }
+
+#main { width: 650px; float: right; min-height: 400px; }
+
+/* Top navigation properties */
+
+#navigation { width: 650px; float: right; margin: 0 0 15px 0; }
+
+#navigation a { font-size: 16px; color: #414141; text-decoration: none; }
+
+#navigation ul { float: right; }
+
+#navigation ul li { float: left; font-variant: small-caps; padding: 0 0 5px 25px; margin: 0 0 10px 0; }
+
+#navigation ul li a { margin: 0 0 10px 0; }
+
+#navigation ul li a:hover { border-bottom: 3px solid #992622; }
+
+#navigation ul li ul { margin: 5px 0 0 0; float: none; }
+
+#navigation ul li ul li ul { margin: 5px 0 0 10px; float: none; }
+
+#navigation ul li ul li { float: none; display: list-item; line-height: 18px; margin: 0; padding: 0; }
+
+#navigation ul li ul li a { font-variant: normal; font-style: italic; font-size: 14px; color: #626262; line-height: 18px; }
+
+#navigation ul li ul li a:hover { color: #992622; border: 0; }
+
+/* Custom home page specific properties - please also see style.php for dynamic values that are used with the custom theme options panel */
+
+.introBanner { background: url('images/bannerBG.png') top left no-repeat; width: 649px; height: 271px; float: left; position: relative; }
+
+.introBanner h2 { text-decoration: none; position: absolute; top: 100px; left: 50px; width: 525px; font-size: 48px; line-height: 48px; text-shadow: 1px 1px #f4f4f4, -1px -1px #414141; text-decoration: none; border: 0; }
+
+#explanation { width: 360px; float: right; }
+
+#explanation p { line-height: 20px; padding: 0 0 20px 0; }
+
+/* We wouldn't be complete without the footer properties, eh? */
+
+#footerWrapper { width: 950px; margin: 0 auto; }
+
+#footerWrapper h3 { font-size: 40px; color: #f4f4f4; font-variant: small-caps; margin: 0 0 15px 0; line-height: 44px; }
+
+#footer { color: #f4f4f4; float: left; width: 950px; margin: 35px 0; }
+
+.footerWidget { width: 258px; float: left; margin: 0 15px 0 0; }
+
+.footerWidget form { margin: 0 0 15px 0; }
+
+.footerWidget input { width: inherit; }
+
+.footerWidget a, #footer a { color: #fff; text-decoration: none; border-bottom: 1px dotted #fff; }
+
+.footerWidget a:hover, #footer a:hover { border-bottom: 1px solid #fff; }
+
+.footerWidget ul { margin: 0 0 20px 0; }
+
+.footerWidget ul ul { margin: 0 0 0 15px; }
+
+.footerWidget ul li { line-height: 22px; }
+
+.footerWidget input { width: 250px; }
+
+.footerWidget input#searchsubmit { width: 125px; margin: 4px 0 0 0; }
+
+.footerWidget form a { font-size: 18px; color: #ded6d6; text-decoration: none; float: left; font-style: italic; margin: 10px 4px 0 0; }
+
+.footerWidget form a:hover { color: #fff; }
+
+/* Content specific properties */
+
+.content { width: 600px; float: right; border-left: 1px dashed #e6e6e6; padding: 0 0 0 35px; }
+
+.content h2 { font-size: 32px; text-decoration: none; border-bottom: 1px solid #414141; color: #414141; margin: 10px 0; padding: 0 0 6px 0; font-variant: small-caps; }
+
+.content h2.pagetitle { border: 1px solid #414141; padding: 4px; background: #e6e6e6;  -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+
+.content h3 { font-size: 24px; text-decoration: none; color: #414141; margin: 20px 0 5px 0; padding: 0 0 6px 0; font-variant: small-caps; }
+
+.content h4 { font-size: 18px; text-decoration: none; color: #414141; margin: 10px 0; padding: 0 0 6px 0; font-variant: small-caps; }
+
+.content ul { margin: 10px 0 20px 15px; list-style-type: disc; }
+
+.content ul ul, .content ol ol { margin: 10px 0 0 15px; }
+
+.content ol { margin: 10px 0 20px 30px; list-style-type: decimal-leading-zero; }
+
+.content p { padding: 0 0 15px 0; font-size: 16px; line-height: 22px; }
+
+.content li { padding: 0 0 5px 0; font-size: 16px; line-height: 22px; }
+
+.content p img { margin: 5px 15px; padding: 2px; border: 1px solid #414141; }
+
+.content p img.aligncenter { display: block; margin: 0 auto; }
+
+.content .post { clear: both; margin: 15px 0; }
+
+.content .post h2 a, .content .post h3 a { text-decoration: none; color: #414141; }
+
+.content .post h2 a:hover, .content .post h3 a:hover { color: #992622; }
+
+.content .post .theTime { text-align: right; font-style: italic; }
+
+.content .entry input { width: inherit; margin: 0 0 8px 0; }
+
+.content p.postmetadata { font-style: italic; line-height: 19px; clear: both; }
+
+.content .navigation a img { border: none; margin: 0 0 4px 0; padding: 0 0 4px 0; }
+
+.content .navigation a:hover img { border-bottom: 2px solid #992622; margin: 0 0 4px 0; padding: 0 0 2px 0; }
+
+.content .wp-caption { background: #f4f4f4; padding: 10px; margin: 5px 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; text-align: center; border: 1px solid #595959; }
+
+.content .wp-caption .wp-caption-text { font-style: italic; font-size: 14px; padding: 4px; }
+
+.content .wp-caption img { border: 1px solid #414141; }
+
+/* Content navigation properties */
+
+.alignleft { float: left; text-align: left; }
+
+.alignright { float: right; text-align: right; }
+
+.aligncenter { display: block; margin: 0 auto; }
+
+.navigation { border-bottom: 1px dashed #e6e6e6; padding: 4px; margin: 0 0 15px 0; float: left; width: 592px; }
+
+.navigation .alignleft { width: 250px; float: left; text-align: left; font-size: 13px; font-style: italic; }
+
+.navigation .alignright { width: 250px; float: right; text-align: right; font-size: 13px; font-style: italic; }
+
+/* Comment properties */
+
+#respond { float: left; width: 600px; border-top: 2px solid #414141; margin: 15px 0 0 0; }
+
+#submit { cursor: pointer; }
+
+.content li.comment, .content li.pingback { border-bottom: 1px dashed #e6e6e6; padding: 12px; margin: 0 0 15px 0; -moz-border-radius: 10px; -webkit-border-radius: 10px; clear: both; }
+
+.content li.odd { background: #e6e6e6; }
+
+.content li.comment p { padding: 8px 0 0 0; }
+
+.content li.comment p img { float: inherit; }
+
+.comment-author img.avatar { float: right; border: 1px solid #595959; padding: 2px; margin: 0 10px 5px 0; }
+
+.comment-meta { text-align: left; font-size: 12px; }
+
+.comment a { text-decoration: none; }
+
+.children #respond { width: inherit; border: 2px solid #e6e6e6; background: #fff; padding: 8px; margin: 0 0 10px 0; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+
+#commentform textarea, #commentform input { width: inherit; }
+
+.content ul ul.children { margin: 0 0 0 5px; }
+
+.content ul.children { list-style-type: none; }
+
+.content ul.children li.even { background: #fff; }
+
+.content ul.children li.odd { background: #e6e6e6; }
+
+.reply a { margin: 10px 0; background: #c4c4c4; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding: 3px 14px; text-align: center; font-style: italic; font-size: 13px; color: #fff; display: block; width: 75px; }
+
+.reply a:hover { color: #992622; }
+
+/* This will preload our hover over image for the logo. May not be ideal but don't want to use Js or other method. */
+
+div#preloaded-images { position: absolute; overflow: hidden; left: -9999px; top: -9999px; height: 1px; width: 1px; }
+
+div#preloaded-images { background: url('images/logoHover.jpg') no-repeat -9999px -9999px; }
+

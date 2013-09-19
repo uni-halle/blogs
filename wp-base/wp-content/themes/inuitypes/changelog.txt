@@ -1,0 +1,45 @@
+ _____________________________________________
+ |                                           |
+ |                                           | 
+ |       [Developed by Zeljan Topic]         | 
+ |                                           | 
+ |     --> http://bizzartic.com <--          | 
+ |                                           | 
+ |          <-[Inuit Types Theme]->          |
+ |                                           | 
+ |                                           | 
+ |___________________________________________|
+ 
+*** InuiTypes Changelog ***
+
+2009.2.10 - Version 1.0 - obviously no changelogs, how did you manage to come here? =)
+
+2009.03.13 - Version 1.1
+	* header.php - Fixed Feedburner management
+	* index.php - Fixed layout
+	* functions.php - Deleted custom feedburner feed server
+	  index.php - Added thumbs to normal posts
+	  
+2009.03.18 - Version 1.2
+	  licence_agreement.txt - GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
+	  
+2009.03.18 - Version 1.3 - 1.4
+	  There are no such versions because of stupid requests of guys behind http://wordpress.org/extend/themes/
+	  I needed to increase a version for every new upload that included corrections for those stupid requests
+	  
+2009.03.18 - Version 1.5
+	  General updates to sidebar (just added splash widgets if no widgets are selected)
+	  
+2009.03.18 - Version 1.6
+	* whole theme has been changed, every file has new custom tweaks so if you're
+	  upgrading, your previous settings will be lost - but no worries, new theme 
+	  options panel makes it easy to customize you blog
+
+2009.6.5 - Version 1.7
+	* footer.php - Removed included suckerfish.js dropdown external file and
+	               made it internal due to problems in IE6
+				   
+2009.13.6 - Version 1.8 - 
+    * Fixed drag/drop issue in widget panel
+
+

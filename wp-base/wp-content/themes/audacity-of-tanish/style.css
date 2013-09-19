@@ -1,0 +1,807 @@
+/*  
+Theme Name: Audacity of Tanish
+Theme URI: http://ahren.org/code/tanish-wp
+Description: Dark configurable theme with JavaScript effects ;-), bottom bars, costumisable background image, dynamic content show/hide capabilities. Needs WP >= 2.7 for full functionality. SCREENSHOT DOESN'T DO JUSTICE ;-), CHECK THE DEMO/PREVIEW and the Dashboard/Admin options! New in this release: option to display latest post expanded in front page, background tile, other styling, extensive fixes, more complete IE (7,8) support, and a lot more. See <a href='http://ahren.org/code/bit/tanish-wp-1dot0'>http://ahren.org/code/bit/tanish-wp-1dot0</a> for full list of changes and <a href='http://ahren.org/code/tanish-wp'>http://ahren.org/code/tanish-wp</a> for features and screenshots.
+Version: 1.0.1
+Author: Ravi Sarma
+Author URI: http://ahren.org/code/
+Tags: two-columns, flexible-width, theme-options, threaded-comments, black, dark
+
+	 Audacity of Tanish 1.0.1
+	 http://ahren.org/code/tanish-wp
+
+	The CSS, XHTML and design are released under the
+    latest GPL (at time of use):
+	http://www.opensource.org/licenses/gpl-license.php
+*/
+
+HTML,
+BODY
+{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    border-style: none;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 9pt;
+    font-family: "Lucida Grande", sans-serif;
+}
+
+A
+{
+    color: #88ff55;
+    text-decoration: none;
+}
+
+A:hover
+{
+    text-decoration: none;
+}
+
+IMG
+{
+    border: none 0px;
+}
+
+BLOCKQUOTE
+{
+    border-left: 2px solid #bb2200;
+    padding: 5px 0px 5px 15px;
+    margin: 0px;
+    margin-left: 15px;
+    color: #dd9955;
+}
+
+.comment BLOCKQUOTE
+{
+    overflow: auto;
+}
+
+TABLE
+{
+    border-style: none;
+    font-family: inherit;
+}
+
+TH
+{
+    border: 1px solid #bb2200;
+    padding: 2px 4px;
+    border-style: solid solid solid none;
+}
+
+TD
+{
+    border: 1px solid #444444;
+    padding: 2px 4px;
+    border-style: none dotted solid none;
+}
+
+PRE,
+CODE
+{
+    color: #ffeeaa;
+	font-family: monospace;
+}
+
+.heading,
+H1,
+H2,
+H3,
+H4,
+H5,
+H6
+{
+    color: #5588ee;
+}
+
+.heading
+{
+    font-family: Georgia, serif;
+    font-size: 18pt;
+}
+
+.postselected .posttitlebar .heading,
+#single .posttitlebar .heading,
+#comments > .heading,
+#respond > .heading
+{
+    font-size: 20pt;
+}
+
+#container
+{
+    padding-bottom: 60px;
+}
+
+#header
+{
+    padding-top: 20px;
+    margin-bottom: 60px;
+}
+
+#title
+{
+    float: left;
+    font-size:  24pt;
+    margin-left: 30px;
+    margin-right: 15px;
+    padding: 6px 16px;
+    background-color: #bb2200;
+}
+
+#title a
+{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#description
+{
+    float: left;
+    font-size: 12pt;
+    padding: 3px 6px;
+    margin-top: 8px;
+}
+
+#rsslink
+{
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+#bottombarbox
+{
+    clear: both;
+    color: #aaaaaa;
+    padding: 50px 0px;
+    background-color: #222222;
+    background: #222222 url(images/darkhzgrad.png?v=2) repeat-x top left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 900px;
+    -webkit-border-bottom-left-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    -khtml-border-bottom-left-radius: 15px;
+    -khtml-border-bottom-right-radius: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    -moz-border-radius-bottomright: 15px;
+}
+
+.bottombar
+{
+    float: left;
+    width: 260px;
+    margin: 10px 20px;
+}
+
+.sbtitle
+{
+    cursor: pointer;
+    margin: 5px 0px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #444444;
+    font-size: 10pt;
+}
+
+.sbcontent
+{
+    display: none;
+    font-size: 9pt;
+}
+
+.sbcontent UL
+{
+    margin-top: 3px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.sbcontent LI
+{
+    margin-left: 15px;
+    padding: 3px 0px;
+    border-top: 1px solid #333333;
+}
+
+.sbcontent > UL > LI:first-child
+{
+    border-top: none;
+}
+
+#wp-calendar
+{
+    margin: 15px 5px;
+    border-style: solid none solid none;
+    border: 1px solid #666666;
+}
+
+#wp-calendar CAPTION
+{
+    margin-bottom: 5px;
+}
+
+#wp-calendar TH
+{
+    border-style: none none solid none;
+}
+
+#wp-calendar TD
+{
+    border-style: none;
+    text-align: right;
+}
+
+#searchform > LABEL
+{
+    display: none;
+}
+
+#single,
+#indexpage,
+#comments
+{
+    clear: both;
+    margin: 0 10%;
+    border: 3px solid #666666;
+    border-left: 25px solid;
+    background-color: #181818;
+    padding: 30px;
+    opacity: 0.96;
+    filter: alpha(opacity = 96);
+}
+
+#single,
+#indexpage
+{
+    border-color: #bb2200;
+    display: none;
+}
+
+.post
+{
+    padding: 0px 10px;
+    clear: both;
+}
+
+#indexpage .postselected
+{
+    margin: 20px -55px 20px -70px !important;
+    padding: 20px 30px;
+    border: 3px solid #bb2200;
+    background-color: #111111;
+}
+
+.posttitlebar
+{
+    padding: 3px 0px 6px 0px;
+    border-bottom: 1px solid #666666;
+}
+
+#indexpage .posttitlebar
+{
+	cursor: pointer;
+}
+
+/*
+#single .posttitlebar
+{
+    margin: -35px -60px 10px -80px;
+    padding: 10px 20px;
+    border: 3px solid #bb2200;
+    background-color: #111111;
+}
+
+#single .posttitlebar .heading
+{
+    color: #ffffff;
+    font-weight: bold;
+}
+
+*/
+
+#indexpage .posttitlebar .heading
+{
+    letter-spacing: 0.07em;
+}
+
+.dateauthor
+{
+    float: right;
+    text-align: right;
+    font-size: 9pt;
+    margin-top: 4px;
+    margin-left: 15px;
+}
+
+.post .avatar
+{
+    display: none;
+}
+
+#single .post .avatar
+{
+    display: block;
+    margin: 10px 20px 5px -90px;
+    background-color: #000000;
+    border: 2px solid #bb2200;
+    padding: 8px;
+    float: left;
+    /*
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+    */
+}
+
+.entry
+{
+    line-height: 180%;
+    font-size: 10pt;
+    padding: 5px 15px;
+    display: inline;
+}
+
+.entry,
+#comments
+{
+    color: #bbbbbb;
+}
+
+/*
+ * TODO:
+ * could make this just '.entry' once we are certain we want the jQuery
+ * effect for #single .entry
+ */
+#indexpage .entry,
+#single .entry
+{
+    display: none;
+}
+
+.entry .morelink
+{
+    display: none;
+}
+
+#indexpage .entry .morelink
+{
+    display: block;
+}
+
+.entry OL,
+.entry UL
+{
+    overflow: auto;
+    margin: 15px 35px 15px 15px;
+    padding: 0px 0px 0px 25px;
+}
+
+.entry UL
+{
+    list-style-type: square;
+}
+
+.entry UL LI,
+.entry OL LI
+{
+    margin: 0px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #444444;
+    border-left: 1px solid #444444;
+}
+
+.entry UL LI:last-child,
+.entry OL LI:last-child
+{
+    border-bottom: 0px none !important;
+}
+
+.postmetabox
+{
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 9pt;
+}
+
+#indexpage .postmetabox
+{
+    display: none;
+}
+
+.postmetabutton
+{
+    float: right;
+    margin: 8px 0px; 
+    cursor: pointer;
+}
+
+#single .postmetabutton
+{
+    display: none;
+}
+
+.postmetadata
+{
+    display: none;
+    clear: both;
+    line-height: 160%;
+    padding: 7px 15px;
+    border: 1px solid #666666;
+    background-color: #222222;
+    text-shadow: #000000 -2px -2px 4px;
+}
+
+#single .postmetadata
+{
+    display: block;
+    margin-top: 30px;
+}
+
+.postmetadata a
+{
+    color: #dddddd;
+}
+
+.postmetadata DIV
+{
+    border-bottom: 1px solid #666666;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+
+.postmetadata DIV:last-child
+{
+    border-bottom: none;
+}
+
+.postmetadata DIV UL
+{
+    margin: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.postmetadata DIV LI
+{
+    margin: 0px;
+    margin-left: 15px;
+    padding: 3px 0px;
+}
+
+.postcats,
+.posttags
+{
+    padding-top: 5px !important;
+    padding-bottom: 10px !important;
+    padding-right: 40px;
+    margin-top: 8px !important;
+}
+
+.postcats
+{
+    background: url(images/briefcase.png) no-repeat top right;
+}
+
+.posttags
+{
+    background: url(images/tag-orange.png) no-repeat top right;
+}
+
+#subpagelinks
+{
+    clear: both;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: solid 1px #666666;
+}
+
+#subpagelinks SPAN
+{
+    font-size: 11pt;
+    font-weight: normal;
+}
+
+#subpagelinks A
+{
+    padding: 1px 6px 3px 6px;
+    border: 1px solid #666666;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.navigation
+{
+    font-family: Georgia, serif;
+    font-size: 14pt;
+    margin: 0px 10%;
+    margin-top: 40px;
+}
+
+.navigation SPAN
+{
+    padding: 5px 12px;
+    background-color: #111111;
+    opacity: 0.7;
+}
+
+#creditsbox
+{
+    position: static;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    background-color: #000000;
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
+}
+
+#credits
+{
+    float: right;
+    text-align: right;
+    margin: 0px;
+    padding: 3px 10px;
+}
+
+#comments
+{
+    /*
+     * without the !important, which AFAIK is really not needed, IE does strange things
+     * for top margin (possibly because we set margins for #comments above as well.
+     */
+    margin: 0px 14% 40px 14% !important;
+    padding: 20px 30px;
+    border-left-color: #666666;
+    border-top: 0px none;
+    /*
+    border: none;
+    -webkit-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    */
+}
+
+/*
+#commentsbotbar
+{
+    height: 25px;
+    margin: 0px -30px -20px -30px;
+    background-color: #bb2200;
+    -webkit-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+}
+*/
+
+.nocomments
+{
+    padding: 3px 8px;
+    background-color: #bb2200;
+    color: #ffffff;
+    font-size: 12pt;
+}
+
+.comment,
+.pingback,
+.trackback
+{
+    list-style-type: none;
+}
+
+.comment > DIV,
+.pingback > DIV,
+.trackback > DIV
+{
+    clear: both;
+    padding: 25px;
+    overflow: auto;
+    margin-bottom: 20px;
+    background-color: #222222;
+}
+
+.bypostauthor > DIV
+{
+    background-color: #001015;
+}
+
+.comment-author
+{
+    float: left;
+    clear: left;
+    width: 80px;
+    min-height: 60px;
+    margin: 0px;
+    margin-right: 25px;
+    padding: 5px 10px 5px 0px;
+    border-right: 2px solid #bb2200;
+}
+
+.comment-author A,
+.comment-meta A
+{
+    color: #88ddff;
+}
+
+.comment-author IMG
+{
+    float: left;
+    clear: left;
+    margin-bottom: 6px;
+    border: 1px solid #666666;
+    padding: 4px;
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+}
+
+.comment-author CITE
+{
+    float: left;
+    clear: left;
+}
+
+.says
+{
+    display: none;
+}
+
+.comment P,
+.pingback P,
+.trackback P
+{
+    overflow: auto;
+    line-height: 140%;
+    /* TODO: check why we had the below in the first place! IE? Firefox? */
+    /* margin-left: 120px; */
+}
+
+/*
+ * don't let the above apply to reply boxes that have been dynanmically
+ * moved below the comment
+ */
+#respond P
+{
+    margin-left: 0px;
+}
+
+.comment .reply,
+.pingback .reply,
+.trackback .reply
+{
+    clear: both;
+    float: left;
+    margin-top: 10px;
+}
+
+.comment .reply
+{
+    padding: 4px 8px;
+    background-color: #bb2200;
+    font-size: 10pt;
+}
+
+.reply A
+{
+    color: #ffffff;
+}
+
+#respond
+{
+    margin-top: 20px;
+    padding: 30px 10px;
+    border-top: 2px solid #bb2200;
+    background: url(images/bgimage/pen1.png?v=001) no-repeat center right;
+    /* add below, attributes to prevent .bypostauthor class from applying, if any */
+}
+
+#respond .heading
+{
+    margin-bottom: 10px;
+}
+
+.responduser
+{
+}
+
+.cancel-comment-reply
+{
+    font-family: "Lucida Grande", sans-serif;
+    margin-bottom: 4px;
+    margin-left: 10px;
+    font-size: 10pt;
+}
+
+.bottombar #s,
+.respondfield INPUT,
+#comment
+{
+    border: 1px solid #666666;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 10pt;
+}
+
+#comment
+{
+    width: 85%;
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
+}
+
+#upgrademsie
+{
+    z-index: 5;
+    position: absolute;
+    display: none;
+    bottom: 0px;
+    left: 30%;
+    width: 40%;
+    border-left: 15px solid #bb2200;
+    background-color: #ffffff;
+    margin: 0px;
+    padding: 10px;
+    color: #bb2200;
+    font-size: 14pt;
+}
+
+#upgrademsie IMG
+{
+    float: left;
+    margin-right: 10px;
+}
+
+/* required as per wordpress.org */
+
+.aligncenter, div.aligncenter
+{
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft
+{
+   float: left;
+}
+
+.alignright
+{
+   float: right;
+}
+
+.wp-caption
+{
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+   /* optional rounded corners for browsers that support it */
+   border-radius: 3px;
+   -moz-border-radius: 3px;
+   -khtml-border-radius: 3px;
+   -webkit-border-radius: 3px;
+}
+
+.wp-caption img
+{
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+
+.wp-caption p.wp-caption-text
+{
+   font-size: 11px;
+   line-height: 17px;
+   padding: 0 4px 5px;
+   margin: 0;
+}
+

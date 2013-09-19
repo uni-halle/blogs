@@ -1,0 +1,73 @@
+#wpet_list{
+	margin: 10px -10px -10px -10px;
+	padding-bottom: 20px;
+	border-bottom: 1px #DFDFDF solid;
+	}
+
+.wpet_todo {
+	padding: 10px;
+	border-top: 1px #DFDFDF solid;
+	}
+	
+.wpet_even {
+	background-color: #FFF;
+	}
+	
+.wpet_odd {
+	background-color: #F9F9F9;
+	}
+	
+.wpet_user {
+	font-weight: bold;
+	padding-left: 15px;
+	}
+	
+.wpet_descr {
+	padding-left: 15px;
+	}
+	
+.wpet_additional {
+	padding-left: 15px;
+	font-size: 0.8em;
+	color: #999;
+	}
+
+.wpet_actions {
+	padding-left: 15px;
+	padding-top: 5px;
+	font-size: 10px;
+	/*display: none;*/
+	}
+	
+.wpet_ready {
+	color: #090;
+	}
+	
+.wpet_delete {
+	color: #C00;
+	}
+	
+.wpet_done {
+	text-decoration: line-through;
+	}
+
+.wpet_clear {
+	clear: both;
+	}
+	
+#wpet_showform {
+	padding-top: 10px;
+	font-weight: bold;
+	color: #DB704C;
+	}
+	
+#wpet_formcontainert, #wpet_formcontainerb {
+	display: none;
+	}
+	
+#wp-easy-todo label {
+	float: left;
+	display: block;
+	width: 150px;
+	font-weight: bold;
+	}

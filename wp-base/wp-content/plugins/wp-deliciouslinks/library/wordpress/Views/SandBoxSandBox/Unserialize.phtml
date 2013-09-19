@@ -1,0 +1,8 @@
+<form method="post"><textarea style="width: 100%; height: 200px;"
+	name='ser'></textarea> <input class='button' type=submit></form>
+<?php
+if(array_key_exists('ser',$_POST))
+{
+	echo $this->_p($_POST['ser']);
+	echo $this->_p(unserialize(stripslashes($_POST['ser'])));
+}

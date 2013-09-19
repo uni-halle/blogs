@@ -1,0 +1,23 @@
+#sidetree{
+    width: 40%;
+    margin: 10px 0 0 10px;
+    float: left;
+}
+
+#content{
+    width: 50%;
+    margin: 10px 10px 0 0;
+    float: right;
+    text-align: justify;
+    padding: 5px;
+}
+
+.welcome{
+    font-family: Candara, Tahoma, Geneva, sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.context{
+    display: none;
+}

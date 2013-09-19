@@ -1,0 +1,15 @@
+/* Red Style */
+
+body#woothemes { background: #440607 url(red/bg.jpg) repeat-x center 0; }
+
+body#woothemes h1, 
+body#woothemes h2, 
+body#woothemes h3, 
+body#woothemes h4, 
+#footer #footerWrap #copy a,
+#sidebar a,
+ol.commentlist li p a
+{ color: #b74848; }
+
+p.txt0, p.txt0 a, .continue
+{ color: #e4a3a3; }

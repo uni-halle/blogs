@@ -1,0 +1,629 @@
+/*
+Theme Name: Andrea
+Theme URI: http://lucianmarin.com/
+Description: Most beautiful WordPress theme ever made, inpired by an incredible woman.
+Version: 0.3
+Author: <a href="http://lucianmarin.com/">Lucian E. Marin</a>
+Tags: white, two columns, fixed width, light, minimal
+For the WordPress community (GPL), enjoy it guys.
+by Lucian E. Marin - lucianmarin.com
+*/
+
+body {
+background:#00355f;
+font-family:Verdana, Geneva, sans-serif;
+font-size:12px;
+color:#fff;
+padding:0 0 15px 0;
+margin:0;
+border-top:#002a53 5px solid;
+}
+
+* {
+padding:0;
+margin:0;
+}
+
+a {
+color:#87b2d8;
+text-decoration:none;
+}
+
+a:hover {
+color:#fff;
+text-decoration:none;
+}
+
+h1, h2, h3, h4 {
+font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-weight:normal;
+}
+
+input, select {
+font-family:Verdana, Geneva, sans-serif;
+font-size:11px;
+}
+
+textarea {
+font-family:Verdana, Geneva, sans-serif;
+font-size:12px;
+}
+
+abbr {
+border:none;
+}
+
+#wrap {
+width:700px;
+margin:0 auto;
+}
+
+/* Header */
+
+#header {
+margin:10px 0;
+padding:0 5px;
+text-align:left;
+}
+
+#header h1 {
+font-size:22px;
+letter-spacing:-1px;
+padding:10px 0;
+color:#4e8abe;
+}
+
+#header h1 a {
+background:url(images/logo.gif) top left no-repeat;
+padding:3px 0 5px 45px;
+color:#fff;
+text-decoration:none;
+}
+
+#menu {
+font-size:13px;
+background:#002a53;
+position:relative;
+padding:5px;
+margin:0 0 10px 0;
+width:690px;
+text-align:left;
+}
+
+#feed {
+float:right;
+padding:3px 10px;
+}
+
+#feed a {
+background:url(images/feed.gif) right no-repeat;
+padding:0 24px 0 0;
+}
+
+#menu ul {
+float:left;
+list-style:none;
+}
+
+#menu li {
+float:left;
+padding:3px 10px;
+border-right:#00355f 1px solid;
+}
+
+#menu li:last-child {
+border:none;
+}
+
+#content {
+float:right;
+width:500px;
+text-align:left;
+}
+
+#content h2 {
+font-size:18px;
+padding:10px 0;
+color:#6799c8;
+}
+
+#content h2 a {
+color:#fff;
+text-decoration:none;
+}
+
+#content h2.archive {
+font-size:18px;
+color:#4e8abe;
+padding:10px 0 5px 0;
+}
+
+#content a.commentsLink {
+color:#6799c8;
+}
+
+/* Navigation */
+
+.aligncenter {
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.alignleft {
+float:left;
+}
+
+.alignright {
+float:right;
+}
+
+.navpost {
+font-size:11px;
+margin:0 0 20px 0;
+}
+
+.navpost div {
+background:#002a53;
+color:#87b2d8;
+padding:2px 4px;
+}
+
+.navpost a {
+color:#87b2d8;
+text-decoration:none;
+}
+
+.navpost a:hover {
+color:#fff;
+text-decoration:none;
+}
+
+.navigation {
+font-size:11px;
+margin:0 0 20px 0;
+}
+
+.navigation a {
+background:#002a53;
+display:block;
+color:#87b2d8;
+text-decoration:none;
+padding:2px 4px;
+}
+
+.navigation a:hover {
+color:#fff;
+text-decoration:none;
+}
+
+/* Main for posts */
+
+.main h3 {
+font-size:15px;
+font-weight:bold;
+margin:0 0 15px 0;
+}
+
+.main img {
+padding:2px;
+border:#005595 1px solid;
+}
+
+.main a {
+color:#87b2d8;
+}
+
+.main a:hover {
+color:#4e8abe;
+}
+
+.main a img {
+padding:2px;
+border:#0085b5 1px solid;
+}
+
+.main a:hover img {
+padding:2px;
+border:#87b2d8 1px solid;
+}
+
+.main p {
+line-height:18px;
+margin:0 0 15px 0;
+}
+
+.main ol {
+line-height:18px;
+margin:0 0 15px 30px;
+}
+
+.main ul {
+line-height:18px;
+margin:0 0 15px 30px;
+}
+
+.main li {
+margin:0 0 5px 0;
+}
+
+.stamp {
+font-size:11px;
+color:#4e8abe;
+margin:0 0 15px 0;
+}
+
+.stamp a {
+color:#87b2d8;
+text-decoration:none;
+}
+
+.stamp a:hover {
+color:#fff;
+}
+
+.meta {
+background:url(images/limit.gif) bottom center no-repeat;
+font-size:11px;
+line-height:16px;
+color:#4e8abe;
+border-top:#005595 1px solid;
+margin:0 0 15px 0;
+padding:5px 10px 30px 10px;
+}
+
+img.wp-smiley {
+margin:0;
+padding:0;
+border:none;
+}
+
+blockquote {
+margin:0 0 0 20px;
+padding:0 0 0 10px;
+border-left:#005595 1px solid;
+}
+
+.warning p {
+font-size:13px;
+margin:0 0 0 20px;
+padding:0 0 0 10px;
+border-left:#005595 1px solid;
+}
+
+/* Sidebar */
+
+#sidebar {
+font-size:11px;
+float:left;
+width:180px;
+padding:0 15px 20px 5px;
+text-align:left;
+}
+
+#sidebar h3 {
+font-size:12px;
+font-weight:bold;
+color:#fff;
+margin:20px 0 5px 0;
+}
+
+#sidebar ul {
+list-style:none;
+}
+
+#sidebar ul ul {
+margin:5px 0 0 10px;
+}
+
+#sidebar ul ul ul {
+margin:5px 0 0 10px;
+}
+
+#sidebar ul li {
+padding:0 0 5px 0;
+}
+
+#author h3 {
+margin:5px 0 5px 0;
+}
+
+/* Forms: input, textarea */
+
+input {
+background:#002a53;
+padding:3px 5px;
+border:none;
+border-bottom:#004b8d 1px solid;
+color:#fff;
+}
+
+textarea {
+background:#002a53;
+width:400px;
+padding:3px 5px;
+border:none;
+border-bottom:#004b8d 1px solid;
+color:#fff;
+}
+
+#searchform {
+margin:15px 0 0 0;
+}
+
+.searchinfo {
+padding:5px 0 0 0;
+}
+
+#searchform input {
+background:#002a53;
+display:block;
+padding:3px 5px;
+border:#004b8d 1px solid;
+color:#a0cbed;
+}
+
+#searchform input:hover {
+background:#004b8d;
+cursor:pointer;
+border:#004b8d 1px solid;
+color:#fff;
+}
+
+#searchform #s {
+background:#002a53;
+padding:3px 5px;
+border:none;
+border-bottom:#004b8d 1px solid;
+color:#fff;
+cursor:text;
+}
+
+input.submit {
+background:#002a53;
+display:block;
+padding:3px 5px;
+margin:0 0 10px 0;
+border:#004b8d 1px solid;
+color:#a0cbed;
+cursor:pointer;
+}
+
+input.submit:hover {
+background:#004b8d;
+cursor:pointer;
+border:#004b8d 1px solid;
+color:#fff;
+}
+
+/* Comments */
+
+.postinput small {
+font-size:11px;
+margin:0 0 0 5px;
+}
+
+p.logged {
+font-size:12px;
+}
+
+h3.reply {
+font-size:15px;
+margin:0 0 10px 0;
+}
+
+.nocomments {
+margin:0 0 30px 0;
+}
+
+ol.commentList {
+list-style:none;
+margin:10px 0 30px 0;
+}
+
+.commentList li {
+padding:0 0 10px 0;
+}
+
+.commentList li.bypostauthor .commentText {
+border-top:#007dc3 3px solid;
+}
+
+.commentMod {
+background:#002a53;
+padding:1px 3px;
+margin:10px 0 0 10px;
+}
+
+.commentAuthor {
+background:url(images/arrow.gif) no-repeat top left;
+padding:10px 0;
+margin:0 0 0 30px;
+width:250px;
+color:#4e8abe;
+}
+
+.commentAuthor img {
+float:left;
+margin:5px 12px 0 0;
+}
+
+.commentAuthor p {
+padding:3px 0 0 0;
+}
+
+.commentAuthor small {
+font-size:11px;
+}
+
+.commentText {
+background:#002a53;
+width:480px;
+padding:10px;
+border-top:#004b8d 3px solid;
+}
+
+.commentText p {
+line-height:18px;
+margin:7px 0;
+}
+
+.commentMeta {
+font-size:12px;
+color:#4e8abe;
+}
+
+#commentForm p {
+color:#4e8abe;
+font-size:11px;
+line-height:18px;
+margin:0 0 15px 0;
+}
+
+/* Footer */
+
+#footer {
+background:#002a53;
+position:relative;
+font-size:11px;
+color:#4e8abe;
+margin:0 auto;
+padding:10px;
+width:680px;
+text-align:left;
+}
+
+#footer a {
+color:#87b2d8;
+text-decoration:none;
+}
+
+#footer a:hover {
+color:#fff;
+text-decoration:none;
+}
+
+#top {
+float:right;
+}
+
+#top a {
+background:url(images/top.gif) right no-repeat;
+padding:0 16px 1px 0;
+}
+
+/* Widgets */
+
+.wp-caption {
+border:1px solid #00377c;
+text-align:center;
+background-color:#001e42;
+padding-top:4px;
+margin:10px;
+-moz-border-radius:3px;
+-khtml-border-radius:3px;
+-webkit-border-radius:3px;
+border-radius:3px;
+}
+
+.wp-caption img {
+margin:0;
+padding:0;
+border:0 none;
+}
+
+.wp-caption-dd {
+font-size:11px;
+line-height:17px;
+padding:0 4px 5px;
+margin:0;
+}
+
+#wp-calendar {
+padding:10px 0 0 0;
+}
+
+#wp-calendar caption {
+text-align:left;
+padding:0 0 3px 0;
+}
+
+#wp-calendar tr th,
+#wp-calendar tr td {
+padding:0 4px 0 0 ;
+text-align:right;
+}
+
+#wp-calendar td a {
+font-weight:bold;
+}
+
+#wp-calendar td a:hover {
+font-weight:bold;
+}
+
+/* Round Corners */
+
+.corner-TL{
+background:url(images/corners.gif) 0 0 no-repeat;
+display:block;
+position:absolute;
+top:0;
+left:0;
+width:10px;
+height:10px;
+overflow:hidden;
+}
+
+.corner-TR{
+background:url(images/corners.gif) -10px 0 no-repeat;
+display:block;
+position:absolute;
+top:0;
+right:0;
+width:10px;
+height:10px;
+overflow:hidden;
+}
+
+.corner-BL{
+background:url(images/corners.gif) 0 -10px no-repeat;
+display:block;
+position:absolute;
+bottom:0;
+left:0;
+width:10px;
+height:10px;
+overflow:hidden;
+}
+
+.corner-BR{
+background:url(images/corners.gif) -10px -10px no-repeat;
+display:block;
+position:absolute;
+bottom:0;
+right:0;
+width:10px;
+height:10px;
+overflow:hidden;
+}
+
+/* Self-Clear Floats */
+
+.group:after {
+content: "."; 
+display: block; 
+height: 0; 
+clear: both; 
+visibility: hidden;
+}
+
+/* IE6/7 Hacks */
+
+* html .group {
+height: 1%;
+}
+
+*:first-child+html .group {
+min-height: 1px;
+}

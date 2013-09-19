@@ -1,0 +1,235 @@
+/*Top Navbar */
+
+#navbar {
+	height:55px;
+	}
+	
+#nav {
+	font-size:0.75em;
+	width:750px;
+	float:left;
+	letter-spacing:0.1em;
+	position:relative;
+	top:0;
+	left:0;
+	}
+	
+#nav, #nav ul, #toolbar ul {
+	list-style: none;
+	}
+	
+#nav li {
+	float:left;
+	padding: 12px 14px 0 20px;
+	background:url(../images/bg_nav.gif) no-repeat 0 15px;
+	position:relative;
+	}
+
+#nav li#nav-home {
+	background:none
+	}
+	
+#nav a, #nav a:visited,
+#nav li.current-cat-parent a, #nav li.current-cat-parent a:visited {
+	display:block;
+	color: #a0838b;
+	border-bottom:3px solid transparent;
+	text-transform:uppercase;
+	padding-bottom:2px;
+	font-weight:bold
+	}
+
+#nav a:hover, #nav a:active	{
+	color:#f7f4ef;
+	text-decoration:none
+	}
+
+#nav li.current-cat a, #nav li.current-cat a:visited,
+#nav li.current-cat-parent a, #nav li.current-cat-parent a:visited {
+	color:#f7f4ef;
+	border-bottom:3px solid #9e5028;
+	}
+	
+
+		
+/* Dropdown Menus */		
+
+#nav ul.children, #toolbar ul.children  {
+	position: absolute;
+	border:1px solid #331e23;
+	border-right:1px solid #6b4851;
+	border-bottom:1px solid #6b4851;
+	display: none;
+    z-index: 50;
+	background: url(../images/bg_children.png);
+	padding:5px 0;
+	}
+
+#nav ul.children, #nav ul.children li,
+#toolbar ul.children, #toolbar ul.children li {		
+	width: 170px;
+	}
+
+#nav ul.children li, 
+#toolbar ul.children li {
+	padding:5px 0;
+	background:none
+	}
+	
+#nav ul.children li a, #nav ul.children li a:visited,
+#nav li li.current-cat a, #nav li li.current-cat a:visited,
+#toolbar ul.children li a, #toolbar ul.children li a:visited
+ {
+	font-weight:normal;
+	font-size:0.9em;
+	color: #a0838b;
+	border:none;
+	padding:2px 11px;
+	text-transform:none;
+	border:0;
+	} 
+
+#nav ul.children li a:hover, #nav ul.children li a:active,
+#nav ul.children li.current-cat a:hover, #nav ul.children li.current-cat a:active,
+#toolbar ul.children li a:hover, #toolbar ul.children li a:active {
+	border:none;
+	color:#f7f4ef;
+	text-decoration:none
+	}	
+
+
+
+
+/*Toolbar Menu*/
+
+#toolbar {
+	height:19px;
+	background:#5d3843 url(../images/bg_toolbar.jpg) no-repeat right;
+	float:right;
+	width:137px;
+	padding-top:7px;
+	position:relative;
+	top:0;
+	left:0;
+	}
+
+#toolbar ul.children {
+	padding:8px 0;
+	}
+		
+#toolbar li {
+	height:11px;
+	list-style:none;
+	overflow:hidden;
+	background: url(../images/bg_toolbar_item.gif) right repeat-y;
+	width:12px;
+	float:left;
+	padding: 0 10px
+	}	
+
+#toolbar a {
+	text-indent:-9999px;
+	display:block;
+	float:left;
+	width:12px;
+	}
+
+a#icon-search, a#icon-search:visited {
+	background:url(../images/icon_search.gif);
+	width:14px;
+	}
+
+a#icon-search:hover, a#icon-search:active {
+	background:url(../images/icon_search.gif) 0 -11px;
+	}
+	
+a#icon-page, a#icon-page:visited {
+	background:url(../images/icon_page.gif);
+	}		
+
+a#icon-page:hover, a#icon-page:active {
+	background:url(../images/icon_page.gif) 0 -11px;
+	}
+	
+a#icon-archives, a#icon-archives:visited {
+	background:url(../images/icon_archives.gif);
+	width:12px;
+	}		
+
+a#icon-archives:hover, a#icon-archives:active {
+	background:url(../images/icon_archives.gif) 0 -11px;
+	}
+
+a#icon-rss, a#icon-rss:visited {
+	background:url(../images/icon_rss.gif);
+	width:11px;
+	}		
+
+a#icon-rss:hover, a#icon-rss:active {
+	background:url(../images/icon_rss.gif) 0 -11px;
+	}
+	
+#toolbar li.last {
+	background:none
+	}
+
+#toolbar ul.children li {
+	font-size:0.75em;
+	letter-spacing:0.1em;
+	margin:3px 0;
+	}
+
+#toolbar .children li a {
+	text-indent:0;
+	width:auto;
+	float:none;
+	}
+
+#toolbar ul.children#searchmenu li {
+	height:22px;
+	}	
+			
+
+			
+/*Subpage Menu*/
+
+.current_page_item a, .current_page_item a:visited {
+	text-decoration:underline
+	}
+
+.current_page_item ul a, .current_page_item ul a:visited {
+	text-decoration:none
+	}
+
+.page-parents ul {
+	padding:10px 0;
+	display:none
+	}
+	
+.page-parents li.current_page_item ul, .page-parents li.current_page_parent ul {
+	display:block
+	}
+		
+.page-parents ul li {
+	background:none;
+	margin:0;
+	overflow:hidden;
+	padding:0;
+	border-bottom:2px solid #301e22;
+	}	
+
+.page-parents ul li a, .page-parents ul li a:visited {
+	background:#2b1a1e;
+	display:block;
+	font-size:.8em;
+	padding:3px 8px 3px 12px;
+	}
+	
+.page-parents ul li a:hover, .page-parents ul li a:active {
+	background:#241619;
+	}
+	
+	
+	
+	
+

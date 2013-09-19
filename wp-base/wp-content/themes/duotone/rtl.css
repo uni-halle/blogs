@@ -1,0 +1,127 @@
+/*
+Theme Name:Duotone
+rtl: yoav@automattic.com
+*/
+
+body {
+	direction:rtl;
+	unicode-bidi:embed;
+}
+
+/* The Reset ---------------- */
+caption,th {text-align:right;}
+blockquote blockquote { margin-left: auto; margin-right: 1.5em; }
+/* -------------------------- */
+#content ul, #content dl, #content ol { margin-right: 20px; margin-left:0;}
+/* Header */
+#header{clear:both; }
+#header h1 {
+	float: right;
+	margin-right: 10px;
+	margin-left: 0;
+}
+.archive h1{margin-right:0;margin-left:auto;}
+.description{float:right;margin-right:1em;padding-right:1em;margin-left:0;padding-left:0;}
+#menu{
+left: 0;
+right:auto;
+float:left;margin-left:10px;margin-right:0;  }
+.archive #menu{margin-left:0;}
+
+#menu li {
+	float: right;
+}
+#menu li a,
+#menu li a:link,
+#menu li a:visited,
+#menu li a:active {
+	float: right;
+	margin-right: 10px;
+	margin-left: 0;
+}
+#menu li.first a {
+	border-right: 0;
+	border-left: auto;
+}
+#menu ul {
+	right: auto;
+	left: 0;
+	float: left;
+	margin-right: 0;
+	margin-left: 10px;
+}
+.archive #menu ul {
+	margin-left: 0;
+}
+#menu .children .children,
+#menu .sub-menu .sub-menu {
+	margin-right: 12px;
+	margin-left: 0;
+}
+#menu ul ul {
+	float: right;
+	right: 0;
+	left: auto;
+}
+
+/* Sidebar */
+#sidebar ul {
+margin-right: 0;
+margin-left: auto;
+}
+#sidebar li {
+float: right;
+}
+#sidebar li ul {
+padding-right: 20px;
+padding-left: 0;
+}
+
+/* Content */
+.vertical #container{clear:both;margin:0 10px 0 0;}
+#content h2{margin-right:210px;margin-left:0;}
+.archive #content h2{margin-right:0;margin-left:auto;}
+.image{float:right;}
+
+#content .thumbnails li {float: right; margin-left: 10px;margin-right: 0; }
+a .thumbnail,a:link .thumbnail,a:visited .thumbnail,a:active .thumbnail{text-align:right; }
+#content .gallery dl{margin-right:0;margin-left:auto;}
+
+#container{margin:0 10px 0 0;}
+
+/* Post Layout */
+#post{float:right;margin:0 0 0 20px;}
+#postmetadata,.commentlist li .metadata{float:right;}
+.navigation{float:right;}
+.navigation div{float:right;}
+.navigation div.prev{text-align:right;}
+.navigation div.next{float:left;text-align:left;}
+.vertical .navigation div.prev{text-align:left;}
+.vertical .navigation div.next{float:left;text-align:right;}
+
+/* Comments list */
+.commentlist{margin-left:auto !important; margin-right: 0 !important;}
+.commentlist li .metadata{float:right;}
+.commentlist li cite,
+.commentlist li .content{float:right;clear:left;}
+
+/* Comment Form */
+h3#respond,h3#comments{padding:0 10px 5px 0;padding-top:20px;}
+#commentform label{float:right;}
+#commentform p input{float:right;}
+#commentform input#submit{margin-left:0;margin-right:10px;}
+
+
+/* Subscriptions */
+#commentform p label.subscribe-label {padding-right:10px; padding-left:0;}
+
+/* EXIF */
+.photo-tech th { margin-left: .5em; margin-right:0; }
+/* Footer */
+#footer .info{float:right;padding-right:42px;padding-left:0;}
+#footer .info img{margin-left:0;margin-right:-42px;}
+#footer #searchform{float:left;}
+#filters{margin-left:auto !important; margin-right: 0 !important;}
+#filters li{ margin-right: 0; float:right ;margin-left:2em;}
+.prev{right:0;left:auto;;}
+.next{right:50%;left:auto;}

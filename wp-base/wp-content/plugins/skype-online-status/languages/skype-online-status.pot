@@ -1,0 +1,919 @@
+# Translation of the WordPress plugin   by .
+# Copyright (C) 2010
+# This file is distributed under the same license as the  package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Skype Online Status/2.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-22 23:54+0100\n"
+"PO-Revision-Date: 2012-12-22 23:57+0100\n"
+"Last-Translator: RavanH <ravanhagen@gmail.com>\n"
+"Language-Team: Skype Online Status - Languages <ravanhagen@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../skype-admin.php:10
+msgid "Skype"
+msgstr ""
+
+#: ../skype-admin.php:11
+#: ../skype-admin.php:492
+#: ../skype-classes.php:101
+msgid "Skype ID"
+msgstr ""
+
+#: ../skype-admin.php:11
+#: ../skype-admin.php:14
+#: ../skype-admin.php:22
+#: ../skype-admin.php:30
+#: ../skype-admin.php:65
+#: ../skype-admin.php:82
+#: ../skype-admin.php:83
+#: ../skype-admin.php:186
+#: ../skype-admin.php:193
+#: ../skype-admin.php:206
+#: ../skype-admin.php:307
+#: ../skype-admin.php:309
+#: ../skype-admin.php:310
+#: ../skype-classes.php:101
+#: ../skype-classes.php:104
+#: ../skype-classes.php:107
+#: ../skype-classes.php:110
+#: ../skype-classes.php:113
+#: ../skype-classes.php:236
+msgid ": "
+msgstr ""
+
+#: ../skype-admin.php:12
+#, php-format
+msgid "Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!"
+msgstr ""
+
+#: ../skype-admin.php:12
+#: ../skype-admin.php:306
+#: ../skype-admin.php:307
+msgid "SkypeOut"
+msgstr ""
+
+#: ../skype-admin.php:14
+#: ../skype-admin.php:492
+#: ../skype-classes.php:104
+msgid "Full Name"
+msgstr ""
+
+#: ../skype-admin.php:15
+msgid "Your full name as you want it to appear in Skype links, link-titles and image alt-texts on your blog."
+msgstr ""
+
+#: ../skype-admin.php:19
+#: ../skype-admin.php:22
+#: ../skype-admin.php:186
+#: ../skype-admin.php:188
+#: ../skype-admin.php:492
+#: ../skype-classes.php:110
+msgid "Theme"
+msgstr ""
+
+#: ../skype-admin.php:21
+#, php-format
+msgid "Start with <strong>selecting one of the predefined theme templates</strong> to load into the database. Change the options to see a preview. You might later select %1$s to edit the template in the text field under %2$s."
+msgstr ""
+
+#: ../skype-admin.php:21
+#: ../skype-admin.php:22
+#: ../skype-admin.php:23
+#: ../skype-admin.php:67
+#: ../skype-admin.php:77
+#: ../skype-admin.php:79
+#: ../skype-admin.php:88
+#: ../skype-admin.php:90
+#: ../skype-admin.php:98
+#: ../skype-admin.php:186
+#: ../skype-admin.php:188
+#: ../skype-admin.php:193
+#: ../skype-admin.php:236
+#: ../skype-admin.php:263
+msgid "Custom..."
+msgstr ""
+
+#: ../skype-admin.php:21
+#: ../skype-admin.php:23
+#: ../skype-admin.php:24
+#: ../skype-admin.php:90
+#: ../skype-admin.php:98
+#: ../skype-admin.php:153
+#: ../skype-admin.php:193
+#: ../skype-classes.php:596
+msgid "Advanced Options"
+msgstr ""
+
+#: ../skype-admin.php:21
+#: ../skype-admin.php:23
+#: ../skype-admin.php:185
+msgid "Custom Template"
+msgstr ""
+
+#: ../skype-admin.php:23
+#, php-format
+msgid "When %1$s is selected, you can edit the template to your liking below at %2$s under %3$s. When you make changes to that field but select another theme template here, those changes will be overwriten by the new template!"
+msgstr ""
+
+#: ../skype-admin.php:23
+#: ../skype-admin.php:186
+msgid "Customize currently loaded template"
+msgstr ""
+
+#: ../skype-admin.php:24
+#, php-format
+msgid "If you cannot find a suitable theme, check out <a href=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>. Select your options there and copy/paste the output into the textarea under %s."
+msgstr ""
+
+#: ../skype-admin.php:24
+#: ../skype-admin.php:98
+#: ../skype-admin.php:153
+msgid "Display"
+msgstr ""
+
+#: ../skype-admin.php:28
+#: ../skype-admin.php:30
+msgid "Function"
+msgstr ""
+
+#: ../skype-admin.php:29
+msgid "Some of the button themes will show your online status in an icon/image, without having a specific function assigned. This means you can select what the button should do when clicked by a visitor."
+msgstr ""
+
+#: ../skype-admin.php:38
+#: ../skype-admin.php:79
+#: ../skype-admin.php:260
+#: ../skype-admin.php:495
+msgid "Note:"
+msgstr ""
+
+#: ../skype-admin.php:38
+#, php-format
+msgid "This setting will only be used in the '%1$s' theme templates, or in your own custom template when the tags %2$s and %3$s are used."
+msgstr ""
+
+#: ../skype-admin.php:42
+#: ../skype-admin.php:197
+#: ../skype-admin.php:245
+msgid "Save Changes"
+msgstr ""
+
+#: ../skype-admin.php:45
+#, php-format
+msgid "If you have your basic settings correct and there is a Skype button visible on blog, you can fine-tune it's appearance and function with the advanced settings. Each option is annotated but you can read more in the %s section."
+msgstr ""
+
+#: ../skype-admin.php:45
+#: ../skype-admin.php:188
+#: ../skype-admin.php:226
+#: ../skype-admin.php:370
+#: ../skype-admin.php:496
+#: ../skype-quickguide-notes.php:6
+msgid "Quick Guide"
+msgstr ""
+
+#: ../skype-admin.php:47
+#: ../skype-admin.php:200
+#: ../skype-quickguide-notes.php:13
+#: ../skype-quickguide-notes.php:28
+#: ../skype-quickguide-notes.php:47
+#: ../skype-quickguide-notes.php:94
+#: ../skype-quickguide-notes.php:108
+#: ../skype-quickguide-notes.php:121
+#: ../skype-quickguide-notes.php:130
+#: ../skype-quickguide-notes.php:135
+#: ../skype-quickguide-notes.php:139
+msgid "Top"
+msgstr ""
+
+#: ../skype-admin.php:54
+msgid "Post content"
+msgstr ""
+
+#: ../skype-admin.php:55
+#, php-format
+msgid "When writing posts you can insert a Skype button with a simple quicktag %1$s or %2$s but to make life even easier, a small button on the WYSIWYG editor can do it for you. Check this option to show %3$s or uncheck to hide it. You may still insert the quicktag  in the HTML code of your post or page content manually."
+msgstr ""
+
+#: ../skype-admin.php:55
+#: ../skype-admin.php:206
+#: ../skype-admin.php:273
+#: ../skype-admin.php:346
+#: ../skype-admin.php:381
+#: ../skype-admin.php:383
+#: ../skype-admin.php:385
+#: ../skype-admin.php:493
+#: ../skype-classes.php:537
+#: ../skype-quickguide-notes.php:115
+#: ../skype-quickguide-notes.php:124
+msgid "Skype Online Status"
+msgstr ""
+
+#: ../skype-admin.php:56
+msgid "Use <strong>Skype Status quicktag button</strong> in the RTE for posts."
+msgstr ""
+
+#: ../skype-admin.php:60
+#: ../skype-admin.php:193
+msgid "Display &amp; Function"
+msgstr ""
+
+#: ../skype-admin.php:61
+msgid "These settings define which options should be used to replace their respective tag (if present) in the selected template file. If unchecked, the tags will be blanked out."
+msgstr ""
+
+#: ../skype-admin.php:62
+#, php-format
+msgid "Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
+msgstr ""
+
+#: ../skype-admin.php:62
+#: ../skype-classes.php:292
+msgid "Leave me voicemail"
+msgstr ""
+
+#: ../skype-admin.php:62
+#: ../skype-admin.php:308
+#: ../skype-admin.php:309
+#: ../skype-classes.php:121
+msgid "SkypeIn"
+msgstr ""
+
+#: ../skype-admin.php:62
+#: ../skype-admin.php:310
+#: ../skype-classes.php:121
+msgid "Skype Voicemail"
+msgstr ""
+
+#: ../skype-admin.php:64
+#, php-format
+msgid "Use %1$s (define below) for %2$s tags."
+msgstr ""
+
+#: ../skype-admin.php:64
+msgid "Action text"
+msgstr ""
+
+#: ../skype-admin.php:65
+#: ../skype-admin.php:79
+#: ../skype-admin.php:98
+#: ../skype-admin.php:153
+msgid "Status texts"
+msgstr ""
+
+#: ../skype-admin.php:65
+#, php-format
+msgid "for the %s tag"
+msgstr ""
+
+#: ../skype-admin.php:66
+#: ../skype-admin.php:75
+#: ../skype-admin.php:77
+#: ../skype-admin.php:79
+#: ../skype-admin.php:153
+msgid "Disabled"
+msgstr ""
+
+#: ../skype-admin.php:75
+#, php-format
+msgid "If you select %1$s, the tags %2$s, %3$s and %4$s in the button template will be ignored."
+msgstr ""
+
+#: ../skype-admin.php:77
+#, php-format
+msgid "When security settings on your server are too tight (<strong>safe_mode</strong> enabled, <strong>open_basedir</strong> restictions or <strong>allow_url_fopen</strong> being disabled), your status does not show or the Skype button doesn't load and you find an error like \"Warning: file_get_contents() [function.file-get-contents]: URL file-access is disabled in the server configuration...\" in the server log files, use either %1$s or %2$s here."
+msgstr ""
+
+#: ../skype-admin.php:79
+#: ../skype-admin.php:391
+msgid "The security settings on your server are too tight for the online status to be read from the Skype server."
+msgstr ""
+
+#: ../skype-admin.php:79
+#, php-format
+msgid "It is advised to set %1$s to %2$s here untill this is fixed."
+msgstr ""
+
+#: ../skype-admin.php:79
+#, php-format
+msgid "You can also select %1$s but only the %2$s status text will be available."
+msgstr ""
+
+#: ../skype-admin.php:79
+#: ../skype-admin.php:123
+msgid "Error"
+msgstr ""
+
+#: ../skype-admin.php:80
+#, php-format
+msgid "Use %s link."
+msgstr ""
+
+#: ../skype-admin.php:80
+msgid "Download Skype now!"
+msgstr ""
+
+#: ../skype-admin.php:81
+msgid "Place link on a new line."
+msgstr ""
+
+#: ../skype-admin.php:82
+msgid "Link text"
+msgstr ""
+
+#: ../skype-admin.php:83
+msgid "Link URL"
+msgstr ""
+
+#: ../skype-admin.php:85
+msgid "Default affiliate link"
+msgstr ""
+
+#: ../skype-admin.php:86
+msgid "Skype main page"
+msgstr ""
+
+#: ../skype-admin.php:87
+msgid "Skype download page"
+msgstr ""
+
+#: ../skype-admin.php:90
+msgid "Leave to Default if you are generous and think downloads should create some small possible revenue for the developer of this plugin -- that's me, thanks! :) -- but if you think open source developers are greedy bastards and should go away, select one of the other options -- just kidding, feel free... Really! You can always donate on the Notes & Live Support section ;)."
+msgstr ""
+
+#: ../skype-admin.php:90
+#, php-format
+msgid "If you want to create your own link to get possible revenue from downloads yourself, select %1$s and paste the link code in the textarea under %2$s below."
+msgstr ""
+
+#: ../skype-admin.php:90
+#: ../skype-admin.php:192
+msgid "Custom Download Link"
+msgstr ""
+
+#: ../skype-admin.php:94
+msgid "Custom Status texts"
+msgstr ""
+
+#: ../skype-admin.php:95
+#, php-format
+msgid "Text that will replace the %s tag depending on actual online status."
+msgstr ""
+
+#: ../skype-admin.php:98
+#, php-format
+msgid "Please, change %1$s to %2$s under %3$s (above) for these options to become available first."
+msgstr ""
+
+#: ../skype-admin.php:106
+msgid "Status"
+msgstr ""
+
+#: ../skype-admin.php:107
+msgid "Value"
+msgstr ""
+
+#: ../skype-admin.php:108
+#: ../skype-admin.php:136
+#: ../skype-admin.php:164
+msgid "Text"
+msgstr ""
+
+#: ../skype-admin.php:124
+msgid "(none)"
+msgstr ""
+
+#: ../skype-admin.php:130
+msgid "Tag texts"
+msgstr ""
+
+#: ../skype-admin.php:131
+msgid "Define texts to replace their respective template tags relating to the Skype button action."
+msgstr ""
+
+#: ../skype-admin.php:134
+msgid "Action"
+msgstr ""
+
+#: ../skype-admin.php:135
+#: ../skype-admin.php:163
+msgid "Tag"
+msgstr ""
+
+#: ../skype-admin.php:153
+#, php-format
+msgid "Please, change %1$s under %3$s (above) to any value other than %2$s for the following options to become available first."
+msgstr ""
+
+#: ../skype-admin.php:162
+msgid "Other"
+msgstr ""
+
+#: ../skype-admin.php:167
+msgid "First seperator"
+msgstr ""
+
+#: ../skype-admin.php:172
+msgid "Second seperator"
+msgstr ""
+
+#: ../skype-admin.php:177
+msgid "My status"
+msgstr ""
+
+#: ../skype-admin.php:186
+#, php-format
+msgid "The currently selected template has been loaded into the database. You can edit it here if you like, but be sure to select %1$s under %2$s or your changes will be lost."
+msgstr ""
+
+#: ../skype-admin.php:186
+#: ../skype-admin.php:188
+#: ../skype-classes.php:549
+msgid "Basic Options"
+msgstr ""
+
+#: ../skype-admin.php:188
+msgid "Available tags:"
+msgstr ""
+
+#: ../skype-admin.php:188
+msgid "Available markers:"
+msgstr ""
+
+#: ../skype-admin.php:188
+#, php-format
+msgid "See %s for more instructions."
+msgstr ""
+
+#: ../skype-admin.php:188
+#, php-format
+msgid "Oh, and did I mention this? Changes to the template will only be loaded when the option %1$s under %2$s is selected!"
+msgstr ""
+
+#: ../skype-admin.php:193
+#, php-format
+msgid "If you are a <a href=\"%1$s\">Skype Affiliate</a> select %2$s at %3$s (above) and paste your link/banner code (HTML/Javascript) here."
+msgstr ""
+
+#: ../skype-admin.php:193
+msgid "Link/Banner Code"
+msgstr ""
+
+#: ../skype-admin.php:206
+#: ../skype-admin.php:273
+#: ../skype-quickguide-notes.php:115
+#: ../skype-quickguide-notes.php:124
+msgid "WordPress Support"
+msgstr ""
+
+#: ../skype-admin.php:210
+msgid "More..."
+msgstr ""
+
+#: ../skype-admin.php:223
+msgid "Options"
+msgstr ""
+
+#: ../skype-admin.php:229
+#: ../skype-admin.php:496
+#: ../skype-quickguide-notes.php:100
+msgid "Notes &amp; Live Support"
+msgstr ""
+
+#: ../skype-admin.php:234
+msgid "Current theme"
+msgstr ""
+
+#: ../skype-admin.php:238
+#: ../skype-classes.php:341
+msgid "Skype button disabled:"
+msgstr ""
+
+#: ../skype-admin.php:238
+#: ../skype-classes.php:341
+msgid "Missing Skype ID."
+msgstr ""
+
+#: ../skype-admin.php:249
+msgid "WARNING !"
+msgstr ""
+
+#: ../skype-admin.php:260
+msgid "The preview button uses the Skype Test Call service to allow testing its function."
+msgstr ""
+
+#: ../skype-admin.php:263
+msgid " (edit under advanced options)"
+msgstr ""
+
+#: ../skype-admin.php:273
+msgid "For all support questions and suggestions, please go to"
+msgstr ""
+
+#: ../skype-admin.php:274
+#, php-format
+msgid "For <strong>feature requests</strong> or general help with <strong>WordPress</strong> or <strong>hosting</strong>, please contact <em>RavanH</em> via e-mail %s or Skype chat:"
+msgstr ""
+
+#: ../skype-admin.php:283
+msgid "Translations"
+msgstr ""
+
+#: ../skype-admin.php:284
+msgid "Translation contributions are highly appreciated. Authors of new translations or updates will be mentioned here."
+msgstr ""
+
+#: ../skype-admin.php:288
+msgid "Want to make your own translation too? Read the <a href=\"http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt\">translation instructions</a> included with this plugin to get started."
+msgstr ""
+
+#: ../skype-admin.php:290
+msgid "Donations"
+msgstr ""
+
+#: ../skype-admin.php:291
+msgid "All donations are much appreciated and will (without objection) be mentioned here as a way of expressing my gratitude."
+msgstr ""
+
+#: ../skype-admin.php:295
+msgid "Please <strong>rate this plugin</strong> at <a href=\"http://wordpress.org/extend/plugins/skype-online-status/\">WordPress</a>"
+msgstr ""
+
+#: ../skype-admin.php:296
+msgid "Do you want your name and/or link up there too? Or just appreciate my work?"
+msgstr ""
+
+#: ../skype-admin.php:297
+msgid "Donate with PayPal - it's fast, free and secure!"
+msgstr ""
+
+#: ../skype-admin.php:298
+msgid "Thanks!"
+msgstr ""
+
+#: ../skype-admin.php:307
+msgid "Call any phone directly from Skype."
+msgstr ""
+
+#: ../skype-admin.php:309
+msgid "Your personal online number."
+msgstr ""
+
+#: ../skype-admin.php:310
+msgid "Never miss a call!"
+msgstr ""
+
+#: ../skype-admin.php:312
+msgid "Accessories: Get the most out of Skype!"
+msgstr ""
+
+#: ../skype-admin.php:324
+msgid "Skype Buttons"
+msgstr ""
+
+#: ../skype-admin.php:325
+msgid "Skype buttons wizard"
+msgstr ""
+
+#: ../skype-admin.php:326
+#, php-format
+msgid "View %s's online status on the Skype server"
+msgstr ""
+
+#: ../skype-admin.php:327
+msgid "Edit Privacy Options in your Skype client"
+msgstr ""
+
+#: ../skype-admin.php:354
+msgid "Your Skype Online Status database settings have been cleared from the database for removal of this plugin!"
+msgstr ""
+
+#: ../skype-admin.php:354
+msgid "You can still resave the old settings shown below to (partly) undo this action but custom widget settings will be reverted to default."
+msgstr ""
+
+#: ../skype-admin.php:354
+msgid "Are you sure?"
+msgstr ""
+
+#: ../skype-admin.php:356
+msgid "Deactivate this plugin"
+msgstr ""
+
+#: ../skype-admin.php:356
+msgid "Deactivate"
+msgstr ""
+
+#: ../skype-admin.php:358
+msgid "Go to the <a href=\"plugins.php\">Plugins page</a> and deactivate it."
+msgstr ""
+
+#: ../skype-admin.php:363
+msgid "Skype Online Status plugin has been upgraded to version "
+msgstr ""
+
+#: ../skype-admin.php:363
+msgid "Please, verify your settings now."
+msgstr ""
+
+#: ../skype-admin.php:363
+msgid "What's new?"
+msgstr ""
+
+#: ../skype-admin.php:368
+#, php-format
+msgid "Skype Online Status plugin version %s has been installed!"
+msgstr ""
+
+#: ../skype-admin.php:369
+msgid "Please, adapt the default settings to your personal preference so you can start using Skype buttons anywhere on your site."
+msgstr ""
+
+#: ../skype-admin.php:370
+#, php-format
+msgid "Read the %s section for more instructions."
+msgstr ""
+
+#: ../skype-admin.php:381
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a>."
+msgstr ""
+
+#: ../skype-admin.php:383
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> <em>automatic upgrade unavailable for this plugin</em>."
+msgstr ""
+
+#: ../skype-admin.php:385
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> or <a href=\"%4$s\">upgrade automatically</a>."
+msgstr ""
+
+#: ../skype-admin.php:391
+msgid "Please, check if one of the following options can be met -or- ask your server admin / hosting provider to take care of this."
+msgstr ""
+
+#: ../skype-admin.php:391
+msgid "Install and activate cURL libraries on the server (preferred)"
+msgstr ""
+
+#: ../skype-admin.php:391
+msgid "Upgrade PHP to a version that includes fsockopen (PHP 4+)"
+msgstr ""
+
+#: ../skype-admin.php:391
+msgid "Change INI setting <strong>allow_url_fopen</strong> to ON (not advised)"
+msgstr ""
+
+#: ../skype-admin.php:391
+msgid "Reading your online status from the remote Skype server has been disabled. As a result, some of the advanced options will not be available. However, Skype button themes that also show your online status by way of images (that are provided by the same Skype server) will still do so."
+msgstr ""
+
+#: ../skype-admin.php:395
+msgid "Please, wait while page has loaded completely.<br /> When the Skype server at http://mystatus.skype.com/ is slow or down, this might take a while..."
+msgstr ""
+
+#: ../skype-admin.php:439
+msgid "Options updated!"
+msgstr ""
+
+#: ../skype-admin.php:445
+msgid "Options reset!"
+msgstr ""
+
+#: ../skype-admin.php:452
+#: ../skype-classes.php:218
+msgid "Skype Test Call"
+msgstr ""
+
+#: ../skype-admin.php:491
+msgid "Define all your <em>default</em> Skype Status settings here."
+msgstr ""
+
+#: ../skype-admin.php:492
+#, php-format
+msgid "Start simply by setting the basics like %1$s, %2$s and the button %3$s you want to show on your blog."
+msgstr ""
+
+#: ../skype-admin.php:493
+#, php-format
+msgid "Then activate the Skype Status Widget on your <a href=\"widgets.php\">Widgets</a> page or use the Skype Status quicktag button %s in the WYSIWYG editor (TinyMCE) to place the Skype Online Status button in any post or page."
+msgstr ""
+
+#: ../skype-admin.php:494
+msgid "Later on, you can fine-tune everything until it fits just perfectly on you pages."
+msgstr ""
+
+#: ../skype-admin.php:495
+msgid "Some basic settings may be overridden per Widget settings or when calling the Skype button with a template function."
+msgstr ""
+
+#: ../skype-admin.php:496
+#, php-format
+msgid "Read more about configuring this plugin and more ways to trigger Skype buttons on your blog in the %1$s section. If you have any remaining questions, see the %2$s page to get help."
+msgstr ""
+
+#: ../skype-classes.php:13
+#: ../skype-classes.php:80
+#: ../skype-classes.php:537
+msgid "Skype Status"
+msgstr ""
+
+#: ../skype-classes.php:16
+msgid "Add a Skype Online Status button"
+msgstr ""
+
+#: ../skype-classes.php:98
+msgid "Title:"
+msgstr ""
+
+#: ../skype-classes.php:107
+msgid "Text before button"
+msgstr ""
+
+#: ../skype-classes.php:111
+#: ../skype-classes.php:117
+msgid "Default"
+msgstr ""
+
+#: ../skype-classes.php:113
+msgid "Text after button"
+msgstr ""
+
+#: ../skype-classes.php:116
+msgid "Use Voicemail?"
+msgstr ""
+
+#: ../skype-classes.php:117
+msgid "Yes"
+msgstr ""
+
+#: ../skype-classes.php:117
+#: ../skype-classes.php:121
+msgid "No"
+msgstr ""
+
+#: ../skype-classes.php:119
+msgid "Leave blank to use the default options as you defined on the <a href=\"options-general.php?page=skype-status.php\">Skype Online Status Settings</a> page."
+msgstr ""
+
+#: ../skype-classes.php:120
+msgid "You can use some basic HTML here like &lt;br /&gt; for new line."
+msgstr ""
+
+#: ../skype-classes.php:121
+#, php-format
+msgid "Set to %1$s if you do not have %2$s or %3$s."
+msgstr ""
+
+#: ../skype-classes.php:234
+msgid " - "
+msgstr ""
+
+#: ../skype-classes.php:240
+msgid "&raquo; Get Skype, call free!"
+msgstr ""
+
+#: ../skype-classes.php:249
+msgid "My status is"
+msgstr ""
+
+#: ../skype-classes.php:251
+#: ../skype-classes.php:277
+#: ../skype-classes.php:278
+msgid "Offline"
+msgstr ""
+
+#: ../skype-classes.php:261
+msgid "English"
+msgstr ""
+
+#: ../skype-classes.php:262
+msgid "French"
+msgstr ""
+
+#: ../skype-classes.php:263
+msgid "German"
+msgstr ""
+
+#: ../skype-classes.php:264
+msgid "Japanese"
+msgstr ""
+
+#: ../skype-classes.php:265
+msgid "Taiwanese"
+msgstr ""
+
+#: ../skype-classes.php:266
+msgid "Chinese"
+msgstr ""
+
+#: ../skype-classes.php:267
+msgid "Brazilian"
+msgstr ""
+
+#: ../skype-classes.php:268
+msgid "Portuguese"
+msgstr ""
+
+#: ../skype-classes.php:269
+msgid "Italian"
+msgstr ""
+
+#: ../skype-classes.php:270
+msgid "Spanish"
+msgstr ""
+
+#: ../skype-classes.php:271
+msgid "Polish"
+msgstr ""
+
+#: ../skype-classes.php:272
+msgid "Swedish"
+msgstr ""
+
+#: ../skype-classes.php:279
+msgid "Online"
+msgstr ""
+
+#: ../skype-classes.php:280
+msgid "Away"
+msgstr ""
+
+#: ../skype-classes.php:281
+msgid "Not available"
+msgstr ""
+
+#: ../skype-classes.php:282
+msgid "Do not disturb"
+msgstr ""
+
+#: ../skype-classes.php:284
+msgid "Skype me!"
+msgstr ""
+
+#: ../skype-classes.php:288
+msgid "Call me!"
+msgstr ""
+
+#: ../skype-classes.php:289
+msgid "Add me to Skype"
+msgstr ""
+
+#: ../skype-classes.php:290
+msgid "Chat with me"
+msgstr ""
+
+#: ../skype-classes.php:291
+msgid "View my profile"
+msgstr ""
+
+#: ../skype-classes.php:293
+msgid "Send me a file"
+msgstr ""
+
+#: ../skype-classes.php:550
+msgid "Sections"
+msgstr ""
+
+#: ../skype-classes.php:551
+msgid "Preview theme template:"
+msgstr ""
+
+#: ../skype-classes.php:552
+#: ../skype-quickguide-notes.php:103
+#: ../skype-quickguide-notes.php:123
+msgid "Support"
+msgstr ""
+
+#: ../skype-classes.php:553
+msgid "Get more from Skype"
+msgstr ""
+
+#: ../skype-classes.php:554
+msgid "Resources"
+msgstr ""
+
+#: ../skype-classes.php:573
+msgid "Settings"
+msgstr ""
+
+#: ../skype-classes.php:597
+msgid "Discussion"
+msgstr ""
+
+#: ../skype-classes.php:598
+#: ../skype-quickguide-notes.php:104
+msgid "Credits"
+msgstr ""
+

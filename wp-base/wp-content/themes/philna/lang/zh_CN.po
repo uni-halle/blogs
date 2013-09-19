@@ -1,0 +1,733 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: philna\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-01 18:12+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: yinheli <yinheli@gmail.com>\n"
+"Language-Team: yinheli <yinheli@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:19
+#: ../header.php:19
+msgid "RSS 2.0 - posts"
+msgstr "RSS 2.0 -全部文章"
+
+#: ../404.php:20
+#: ../header.php:20
+msgid "RSS 2.0 - all comments"
+msgstr "RSS 2.0 -评论"
+
+#: ../404.php:64
+#: ../header.php:64
+msgid "E_mail Feed"
+msgstr "通过邮件订阅"
+
+#: ../404.php:66
+#: ../header.php:66
+msgid "Rss Feed"
+msgstr "Rss 订阅"
+
+#: ../404.php:73
+#: ../header.php:73
+msgid "Home"
+msgstr "首页"
+
+#: ../404.php:86
+msgid "Welcome to 404 error page!"
+msgstr "欢迎来到404页面"
+
+#: ../404.php:87
+msgid "Welcome to this customized error page. You've reached this page because you've clicked on a link that does not exist. This is probably our fault... but instead of showing you the basic '404 Error' page that is confusing and doesn't really explain anything, we've created this page to explain what went wrong."
+msgstr "欢迎您的到来. 您会到达这个页面证明您刚刚点击了失效的链接. 当然, 也可能是我们搞错了... 但与其向您展示一个混乱的, 没有任何说明的 404 出错页面, 我们创建这个页面可以向您解释究竟出了些什么错."
+
+#: ../404.php:89
+msgid "try to search"
+msgstr "尝试搜索"
+
+#: ../archive.php:6
+msgid "Archive:"
+msgstr "存档:"
+
+#: ../archive.php:11
+#, php-format
+msgid "&#8216;%1$s&#8217; Category"
+msgstr "&#8216;%1$s&#8217; 分类"
+
+#: ../archive.php:14
+#, php-format
+msgid "Posts Tagged &#8216;%1$s&#8217;"
+msgstr "标签: &#8216;%1$s&#8217;"
+
+#: ../archive.php:17
+#: ../archive.php:20
+#: ../archive.php:23
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: ../archive.php:17
+#: ../archive.php:45
+#: ../comments-ajax.php:97
+#: ../comments.php:51
+#: ../comments.php:101
+#: ../contact.php:19
+#: ../index.php:16
+#: ../links.php:22
+#: ../page.php:15
+#: ../search.php:15
+#: ../single.php:12
+msgid "F jS, Y"
+msgstr "Y年n月j日"
+
+#: ../archive.php:20
+msgid "F, Y"
+msgstr "F, Y"
+
+#: ../archive.php:23
+msgid "Y"
+msgstr "Y年"
+
+#: ../archive.php:26
+msgid "Author Archive"
+msgstr "作者存档:"
+
+#: ../archive.php:29
+msgid "Blog Archives"
+msgstr "博客存档:"
+
+#: ../archive.php:43
+#: ../comments-ajax.php:99
+#: ../comments.php:54
+#: ../comments.php:98
+#: ../contact.php:14
+#: ../index.php:14
+#: ../page.php:10
+#: ../search.php:13
+#: ../single.php:10
+msgid "Edit"
+msgstr "编辑"
+
+#: ../archive.php:44
+#: ../index.php:15
+#: ../search.php:14
+msgid "No comments"
+msgstr "没有评论"
+
+#: ../archive.php:44
+#: ../index.php:15
+#: ../search.php:14
+msgid "1 comment"
+msgstr "1条评论"
+
+#: ../archive.php:44
+#: ../index.php:15
+#: ../search.php:14
+#, php-format
+msgid "% comments"
+msgstr "% 条评论"
+
+#: ../archive.php:50
+#: ../index.php:21
+#: ../search.php:20
+msgid "Continue reading..."
+msgstr "继续阅读..."
+
+#: ../archive.php:63
+#: ../contact.php:35
+#: ../index.php:35
+#: ../links.php:42
+#: ../page.php:30
+#: ../search.php:34
+#: ../single.php:41
+msgid "Sorry, no posts matched your criteria."
+msgstr "很抱歉,没有找到~"
+
+#: ../archive.php:71
+#: ../index.php:43
+#: ../search.php:42
+msgid "Newer Entries"
+msgstr "新的文章"
+
+#: ../archive.php:72
+#: ../index.php:44
+#: ../search.php:43
+msgid "Older Entries"
+msgstr "旧的文章"
+
+#: ../comments-ajax.php:97
+#: ../comments.php:51
+#: ../comments.php:101
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s at %2$s"
+
+#: ../comments-ajax.php:97
+#: ../comments.php:51
+#: ../comments.php:101
+msgid "H:i"
+msgstr "H:i"
+
+#: ../comments.php:4
+msgid "Enter your password to view comments."
+msgstr "要查看评论,请输入密码."
+
+#: ../comments.php:23
+msgid "Comments"
+msgstr "评论"
+
+#: ../comments.php:25
+msgid "Trackbacks"
+msgstr "Trackbacks"
+
+#: ../comments.php:29
+msgid "Leave a comment"
+msgstr "留言"
+
+#: ../comments.php:32
+msgid "Trackback"
+msgstr "Trackback"
+
+#: ../comments.php:83
+msgid "No comments yet.Be the first ?"
+msgstr "还没有评论.想坐沙发?"
+
+#: ../comments.php:116
+msgid "No trackbacks yet."
+msgstr "还没有 trackbacks"
+
+#: ../comments.php:129
+msgid "Comments are closed."
+msgstr "评论被关闭了"
+
+#: ../comments.php:134
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "你必须<a href=\"%s\">登录</a> 才能发表评论."
+
+#: ../comments.php:144
+msgid "Logged in as"
+msgstr "登录帐号:"
+
+#: ../comments.php:144
+msgid "Log out of this account"
+msgstr "退出这个账户"
+
+#: ../comments.php:144
+msgid "Logout &raquo;"
+msgstr "退出 &raquo;"
+
+#: ../comments.php:150
+#: ../comments.php:156
+msgid "Change &raquo;"
+msgstr "更改 &raquo;"
+
+#: ../comments.php:151
+msgid "Close &raquo;"
+msgstr "关闭 &raquo;"
+
+#: ../comments.php:155
+#, php-format
+msgid "Welcome back <strong>%s</strong>."
+msgstr "欢迎回来 <strong>%s</strong>.评论指导否?"
+
+#: ../comments.php:163
+msgid "Name"
+msgstr "名字"
+
+#: ../comments.php:163
+#: ../comments.php:167
+msgid "(required)"
+msgstr "必填"
+
+#: ../comments.php:167
+msgid "E-Mail (will not be published)"
+msgstr "E-Mail (不会别被公开)"
+
+#: ../comments.php:171
+msgid "Website"
+msgstr "网站"
+
+#: ../comments.php:183
+msgid "Submitting Comment, Wait me a second..."
+msgstr "评论正在提交中...请您稍候......."
+
+#: ../comments.php:187
+msgid "Comments feed"
+msgstr "订阅评论"
+
+#: ../comments.php:205
+msgid "Submit Comment"
+msgstr "提交评论"
+
+#: ../contact.php:16
+#: ../links.php:19
+#: ../page.php:12
+#: ../single.php:11
+msgid "Add a comment"
+msgstr "添加评论"
+
+#: ../contact.php:25
+#: ../links.php:32
+#: ../page.php:21
+#: ../single.php:18
+msgid "Pages:"
+msgstr "分页:"
+
+#: ../footer.php:24
+msgid "Copyright &copy; "
+msgstr "Copyright &copy; "
+
+#: ../footer.php:33
+msgid "Theme by <a href=\"http://philna.com\">yinheli</a>. Valid <a href=\"http://validator.w3.org/check?uri=referer\">XHTML 1.1</a> and <a href=\"http://jigsaw.w3.org/css-validator/\">CSS 3</a>."
+msgstr "主题作者<a href=\"http://philna.com\">yinheli</a>.通过 <a href=\"http://validator.w3.org/check?uri=referer\">XHTML 1.1</a> 和 <a href=\"http://jigsaw.w3.org/css-validator/\">CSS 3</a>验证."
+
+#: ../footer.php:40
+#, php-format
+msgid "Hi! %s, Welcome back to "
+msgstr "Hi! %s, 欢迎回到 "
+
+#: ../footer.php:44
+#, php-format
+msgid "%s, you are reading "
+msgstr "%s, 你正在阅读"
+
+#: ../links.php:16
+msgid "Edit links"
+msgstr "编辑链接"
+
+#: ../philna_sendmail.php:4
+msgid "<div class=\"mailinfo\" style=\"color:red;\"><p><strong>You should set your name and E_mail if you want to use the contact template page</strong></p></div>"
+msgstr "<div class=\"mailinfo\" style=\"color:red;\"><p><strong>你必须到后台设置信.如果你需要使用这个邮件表单.</strong></p></div>"
+
+#: ../philna_sendmail.php:20
+msgid "<div class=\"mailinfo\" style=\"color: #008800;\"><p>Please enter a valid email address!</p></div>"
+msgstr "<div class=\"mailinfo\" style=\"color: #008800;\"><p>必须填写你的邮箱地址.</p></div>"
+
+#: ../philna_sendmail.php:26
+msgid "<div class=\"mailinfo\" style=\"color: #008800;\"><p>Please enter the e-mail Subject</p></div>"
+msgstr "<div class=\"mailinfo\" style=\"color: #008800;\"><p>还没有填写邮件主题</p></div>"
+
+#: ../philna_sendmail.php:32
+msgid "<div class=\"mailinfo\" style=\"color: #008800;\"><p>Verification Code error</p></div>"
+msgstr "<div class=\"mailinfo\" style=\"color: #008800;\"><p>验证码错误</p></div>"
+
+#: ../philna_sendmail.php:39
+msgid "<div class=\"mailinfo\" style=\"color: #008800;\"><p>please type the content</p></div>"
+msgstr "<div class=\"mailinfo\" style=\"color: #008800;\"><p>请输入内容</p></div>"
+
+#: ../philna_sendmail.php:55
+msgid "<div class=\"mailinfo\"><p><strong>Your message has been sent</strong></p></div>"
+msgstr "<div class=\"mailinfo\"><p><strong>邮件已经发送.</strong></p></div>"
+
+#: ../philna_sendmail.php:58
+msgid "<p><strong>Give me a direct email</strong></p>"
+msgstr "<p><strong>直接给我发送邮件l</strong></p>"
+
+#: ../philna_sendmail.php:64
+msgid "E-Mail (required)"
+msgstr "你的邮箱地址(必填)"
+
+#: ../philna_sendmail.php:67
+msgid "E-mail Subject (required)"
+msgstr "邮件主题(必填)"
+
+#: ../philna_sendmail.php:71
+msgid "Verification Code"
+msgstr "验证码"
+
+#: ../philna_sendmail.php:75
+msgid "Send e-mail"
+msgstr "发送邮件"
+
+#: ../search.php:3
+msgid "Search Results"
+msgstr "搜索结果"
+
+#: ../search.php:4
+#, php-format
+msgid "Keyword: &#8216;%1$s&#8217;"
+msgstr "关键字: &#8216;%1$s&#8217;"
+
+#: ../sidebar.php:27
+msgid "<h3>Recent Posts</h3>"
+msgstr "<h3>最近发表</h3>"
+
+#: ../sidebar.php:29
+msgid "<h3>Random Posts</h3>"
+msgstr "<h3>随机文章</h3>"
+
+#: ../sidebar.php:53
+msgid "Most commented"
+msgstr "评论最多"
+
+#: ../sidebar.php:63
+msgid "Recent Comments"
+msgstr "最近评论"
+
+#: ../sidebar.php:81
+msgid "Categories"
+msgstr "分类"
+
+#: ../sidebar.php:91
+msgid "Archives"
+msgstr "归档"
+
+#: ../sidebar.php:106
+msgid "Tag Cloud"
+msgstr "标签云"
+
+#: ../sidebar.php:122
+msgid "Meta"
+msgstr "管理"
+
+#: ../single.php:17
+msgid "Continue reading"
+msgstr "Continue reading"
+
+#: ../admin/about.php:3
+msgid "About This Theme"
+msgstr "关于这个主题"
+
+#: ../admin/about.php:8
+msgid "Theme Description:"
+msgstr "主题描述:"
+
+#: ../admin/about.php:16
+msgid "Theme Version:"
+msgstr "版本:"
+
+#: ../admin/about.php:20
+msgid "Template:"
+msgstr "模板:"
+
+#: ../admin/about.php:25
+msgid "Theme Support:"
+msgstr "主题帮助:"
+
+#: ../admin/about.php:26
+msgid "Get support for this theme"
+msgstr "获得这个主题的帮助."
+
+#: ../admin/settings.php:151
+msgid "PhilNa Theme Settings"
+msgstr "主题PhilNa设置"
+
+#: ../admin/settings.php:151
+msgid "PhilNa Settings"
+msgstr "设置PhilNa"
+
+#: ../admin/settings.php:162
+msgid "Settings saved."
+msgstr "更改已保存."
+
+#: ../admin/settings.php:170
+msgid "Information"
+msgstr "信息设置"
+
+#: ../admin/settings.php:178
+msgid "Information about this blog"
+msgstr "关于这个博客的信息."
+
+#: ../admin/settings.php:179
+msgid "You should set this if you want to use the contact.template page "
+msgstr "你必须设置这个,如果你需要使用联系模板页的话"
+
+#: ../admin/settings.php:182
+msgid "Your E_mail"
+msgstr "你的邮件地址:"
+
+#: ../admin/settings.php:182
+msgid "(The mail form will send mail to you)"
+msgstr "(邮件表单将把邮件发送到这个邮箱)"
+
+#: ../admin/settings.php:184
+msgid "Your name:"
+msgstr "你的名字:"
+
+#: ../admin/settings.php:184
+msgid "(Will display in the meta and the e_mail)"
+msgstr "(由于meta中的作者,和邮件表单)"
+
+#: ../admin/settings.php:196
+msgid "Header"
+msgstr "头部"
+
+#: ../admin/settings.php:203
+msgid "Main Meta"
+msgstr "Meta 设置"
+
+#: ../admin/settings.php:206
+msgid "Keywords"
+msgstr "博客的关键字."
+
+#: ../admin/settings.php:206
+msgid "( Separate keywords with commas )"
+msgstr "(每个关键字用半角的逗号分开)"
+
+#: ../admin/settings.php:208
+msgid "Description:"
+msgstr "描述:"
+
+#: ../admin/settings.php:208
+msgid "( Main decription for your blog )"
+msgstr "( 你的博客的总的描述 )"
+
+#: ../admin/settings.php:215
+msgid "Add browser title"
+msgstr "附加标题"
+
+#: ../admin/settings.php:218
+msgid "Add browser title:"
+msgstr "附加标题(只显示在浏览器标题上):"
+
+#: ../admin/settings.php:226
+msgid "Search Settings"
+msgstr "搜索设置"
+
+#: ../admin/settings.php:230
+msgid "Using google custom search engine."
+msgstr "使用Google自定义搜索作为博客的搜索引擎"
+
+#: ../admin/settings.php:231
+msgid "CX:"
+msgstr "Google自定义代码:"
+
+#: ../admin/settings.php:233
+msgid "How to find the CX code?"
+msgstr "如何找到Google自定义搜索的代码呢?"
+
+#: ../admin/settings.php:234
+msgid "Find <code>name=\"cx\"</code> in the <strong>Search box code</strong> of <a href=\"http://www.google.com/coop/cse/\">Google Custom Search Engine</a>, and type the <code>value</code> here.<br/>For example: <code>011275726292926788974:fezfvqcwgmo</code>"
+msgstr "在<a href=\"http://www.google.com/coop/cse/\">Google 自定义搜索引擎</a>的<strong>搜索框代码</strong>中找到 <code>name=\"cx\"</code> , 并将同行中 <code>value</code> 的值填写在输入框内.<br/>例如: <code>011275726292926788974:fezfvqcwgmo</code>"
+
+#: ../admin/settings.php:241
+msgid "Feed Settings"
+msgstr "Feed输出设置"
+
+#: ../admin/settings.php:245
+msgid "Use custom feed."
+msgstr "使用自定义的订阅地址."
+
+#: ../admin/settings.php:246
+msgid "Custom feed URL:"
+msgstr "自定义订阅地址:"
+
+#: ../admin/settings.php:250
+msgid "Use E_mail feed."
+msgstr "使用邮件订阅"
+
+#: ../admin/settings.php:251
+msgid "E_mail feed URL:"
+msgstr "E_mail 订阅地址(比如feedsky的邮件订阅地址):"
+
+#: ../admin/settings.php:254
+msgid "Show comment state in Rss."
+msgstr "在Feed输出中显示评论的状态.鼓励订阅者直接访问评论."
+
+#: ../admin/settings.php:257
+msgid "Add custom text in your Rss such as copyright."
+msgstr "自定义添加Feed输出文字(版权等)"
+
+#: ../admin/settings.php:258
+msgid "Rss custom text goes here."
+msgstr "Feed输出添加文字(比如版权等)"
+
+#: ../admin/settings.php:267
+msgid "Show welcome"
+msgstr "显示欢迎"
+
+#: ../admin/settings.php:271
+msgid "Show welcome in the header"
+msgstr "在头部显示欢迎词"
+
+#: ../admin/settings.php:283
+msgid "Notice"
+msgstr "通知"
+
+#: ../admin/settings.php:290
+msgid "Homepage notice settings"
+msgstr "首页通知设置"
+
+#: ../admin/settings.php:291
+#: ../admin/settings.php:304
+#: ../admin/settings.php:393
+msgid "HTML enabled"
+msgstr "容许html代码"
+
+#: ../admin/settings.php:295
+msgid "This notice bar will display at the top of posts on homepage."
+msgstr "在首页上显示这个通知."
+
+#: ../admin/settings.php:303
+msgid "Sidebar notice settings"
+msgstr "边侧栏通知设置"
+
+#: ../admin/settings.php:307
+msgid "This showcase will display at the top of sidebar."
+msgstr "这个通知将显示在边侧栏的顶部."
+
+#: ../admin/settings.php:308
+msgid "Who can see?"
+msgstr "哪些人可见?"
+
+#: ../admin/settings.php:311
+msgid "Registered Users"
+msgstr "注册用户"
+
+#: ../admin/settings.php:316
+msgid "Commentator"
+msgstr "评论者"
+
+#: ../admin/settings.php:321
+msgid "Visitors"
+msgstr "任何人"
+
+#: ../admin/settings.php:325
+msgid "Title:"
+msgstr "标题:"
+
+#: ../admin/settings.php:347
+#: ../admin/settings.php:351
+msgid "Show Enthusiastic commentator"
+msgstr "显示热情评论员"
+
+#: ../admin/settings.php:352
+msgid "Limit days:"
+msgstr "限制天数:"
+
+#: ../admin/settings.php:353
+msgid "7 days"
+msgstr "7 天"
+
+#: ../admin/settings.php:354
+msgid "10 days"
+msgstr "10 天"
+
+#: ../admin/settings.php:355
+msgid "15 days"
+msgstr "15 天"
+
+#: ../admin/settings.php:356
+msgid "30 days"
+msgstr "30 天"
+
+#: ../admin/settings.php:358
+msgid "Limit commtent times:"
+msgstr "限制评论条数:"
+
+#: ../admin/settings.php:359
+msgid "5 times"
+msgstr "5 条"
+
+#: ../admin/settings.php:360
+msgid "10 times"
+msgstr "10 条"
+
+#: ../admin/settings.php:361
+msgid "15 times"
+msgstr "15次"
+
+#: ../admin/settings.php:362
+msgid "20 times"
+msgstr "20次"
+
+#: ../admin/settings.php:371
+msgid "Footer"
+msgstr "页底"
+
+#: ../admin/settings.php:379
+msgid "Show the online counter"
+msgstr "显示在线人数"
+
+#: ../admin/settings.php:383
+msgid "Show (Make sure the websit directory you can write )"
+msgstr "显示 (请确保你的网站根目录是可写的 )"
+
+#: ../admin/settings.php:390
+msgid "Footer Insert:"
+msgstr "页底添加:"
+
+#: ../admin/settings.php:392
+msgid "Such as google Analytics code, </br>Tongji Beian hao and so on "
+msgstr "比如统计代码, </br>备案号等等"
+
+#: ../admin/settings.php:408
+msgid "Save Changes"
+msgstr "保存修改"
+
+#: ../admin/settings.php:419
+msgid "If you find my work useful and you want to encourage the development of more free resources, you can do it by donating..."
+msgstr "如果你发现我的劳动是有价值的.并且你想要鼓励我推出更多的免费资源(主题)的话.如果你愿意,你可以捐赠......如果你没有PayPal,你可以通过支付宝.我的支付宝帐号是:foxharbour@126.com"
+
+#: ../app/yinheli_seo.php:161
+#, php-format
+msgid "Search results for &quot;%1$s&quot;"
+msgstr "搜索关键字 &quot;%1$s&quot;"
+
+#: ../app/yinheli_seo.php:173
+msgid "W"
+msgstr "W"
+
+#: ../app/yinheli_welcome.php:22
+#, php-format
+msgid "Howdy, <strong>%s</strong>, welcome back!"
+msgstr "亲爱的 <strong>%s</strong>, 欢迎回来."
+
+#: ../app/yinheli_welcome.php:25
+msgid "You direct access to my site! you remember my domain ? Thank you !"
+msgstr "你直接访问了我的博客.厉害呀,莫非是你记住了我的域名.非常感谢."
+
+#: ../app/yinheli_welcome.php:32
+msgid "You found me through <strong>Baidu</strong>,Congratulations! If you can Subscribe to my blog that would be fine"
+msgstr "恭喜你通过 <strong>百度</strong> 找到了我.你要是能够订阅我那就更好了."
+
+#: ../app/yinheli_welcome.php:35
+msgid "You found me through <strong>Google</strong>,Congratulations! If you can Subscribe to my blog that would be fine"
+msgstr "恭喜你通过 <strong>Google</strong> 找到了我.你要是能够订阅我那就更好了."
+
+#: ../app/yinheli_welcome.php:38
+msgid "You found me through <strong>Yahoo</strong>,Congratulations! If you can Subscribe to my blog that would be fine"
+msgstr "恭喜你通过 <strong>雅虎</strong> 找到了我.你要是能够订阅我那就更好了."
+
+#: ../app/yinheli_welcome.php:42
+msgid "Thank you for feed me by <strong>Google</strong>"
+msgstr "感谢你通过 <strong>Google</strong> 订阅我."
+
+#: ../app/yinheli_welcome.php:45
+msgid "Thank you for feed me by <strong>XianGuo</strong>"
+msgstr "感谢你通过 <strong>鲜果</strong> 订阅我."
+
+#: ../app/yinheli_welcome.php:48
+msgid "Thank you for feed me by <strong>ZhuaXia</strong>"
+msgstr "感谢你通过 <strong>抓虾</strong> 订阅我."
+
+#: ../app/yinheli_welcome.php:51
+msgid "Thank you for feed me by <strong>eZha</strong>"
+msgstr "感谢你通过 <strong>哪吒</strong> 订阅我."
+
+#: ../app/yinheli_welcome.php:54
+msgid "Thank you for feed me by <strong>YouDao</strong>"
+msgstr "感谢你通过 <strong>有道</strong> 订阅我."
+
+#: ../app/yinheli_welcome.php:65
+#, php-format
+msgid "Howdy, <strong>%s</strong>,"
+msgstr "你好,<strong>%s</strong>,"
+
+#: ../app/yinheli_welcome.php:66
+#: ../app/yinheli_welcome.php:68
+msgid "welcome back from <strong>"
+msgstr "欢迎回来 来自 <strong>"
+
+#~ msgid "Sorry: please type a comment."
+#~ msgstr "错误:请输入评论内容!"
+

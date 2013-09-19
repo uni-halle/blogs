@@ -1,0 +1,65 @@
+/*** Dark Colours ********************************************************/
+
+body {background-color: #494949; color:#fff;}
+
+a:link, a:visited {color:#AFD7F5;}
+a:hover {color:#597298;}
+
+.pagetitle {color:#fff; border-top:1px solid #666;}
+
+.navigation {border-top:1px solid #666;}
+
+hr {color:#8F8F87; background-color:#8F8F87;}
+
+.full-column {border-bottom:1px solid #666;}
+
+.menu-main ul li a:link, .menu-main ul li a:visited {color:#fff; border-color: #494949;}
+.menu-main ul li a:hover {border-color: #AFD7F5;}
+.menu-main ul li a span {color:#999;}
+.menu-main ul li.current_page_item a {border-color: #F1EFEB;}
+.menu-main ul ul li a {background: #AFD7F5; border-color: #AFD7F5 !important; color: #494949 !important;}
+.menu-main ul li:hover > a {border-color: #AFD7F5;}
+.menu-main ul ul li:hover > a {border-color: #ccc;}
+.menu-main ul ul a:hover {background: #C3E1F8; border-color: #C3E1F8 !important;}
+
+.blog-name a:link, .blog-name a:visited {color:#fff;}
+.blog-name a:hover {color:#AFD7F5;}
+
+.description {color:#F1EFEB;}
+
+h1 {color:#fff;}
+h1 a:link, h1 a:visited {color:#fff;}
+h1 a:hover {color:#AFD7F5;}
+
+.post, .page {border-top:1px solid #666;}
+.wp-caption p.wp-caption-text {color:#516064;}
+
+blockquote {background: url('images/blockquote_dark.png') no-repeat;}
+table th {background-color: #777;}
+
+.timestamp {color:#999;}
+
+.comment-bubble a:link, .comment-bubble a:visited {color:#fff; background:url('images/comment-bubble_dark.png') no-repeat 0 2px;}
+.comment-bubble a:hover {color:#AFD7F5;}
+
+.post-meta-data {border-top:1px solid #666;}
+
+#comment-wrapper {padding-left:120px; border-top:1px solid #666;}
+
+h3#comments {color:#fff;}
+
+ol.commentlist li {border-top:1px solid #666;}
+ol.commentlist li.bypostauthor {border-top:1px solid #ccc;}
+ol.commentlist li.comment-author-admin {border-top:1px solid #ccc;}
+
+#respond {border-top:1px solid #666;}
+#respond h3 {color:#fff;}
+
+#commentform {border-top:1px solid #666;}
+
+#sidebar {border-top:1px solid #666;}
+#sidebar li h2 {color:#fff;}
+
+#footer {border-top:3px solid #666;}
+#footer a:link, #footer a:visited {color:#fff;}
+#footer a:hover {color:#AFD7F5;}

@@ -1,0 +1,119 @@
+ _____________________________________________
+ |                                           |
+ |                                           | 
+ |       [Developed by Željan Topiæ]         | 
+ |                                           | 
+ |     --> http://bizzartic.com <--          | 
+ |                                           | 
+ |          <-[Inuit Types Theme]->          |
+ |                                           | 
+ |                                           | 
+ |___________________________________________|
+ 
+###### InuiTypes Support Guide - for most common issues users encountered ######
+
+Issue no.1: IMAGES ARE NOT SHOWING UP
+   - check if your ‘cache’ folder in InuiTypes theme files is writing protected - CHMOD your cache folder if that is the case or
+	 contact you hosting provider and ask them to chmod it for you. Also google 'chmod via ftp' and find
+	 a bit info yourself.
+   - You MUST upload images to your blog, images hosted on other locations cannot be resized (ie. hosted on flickr, photobucket,...)   
+   
+###### InuiTypes Installation Guide ######
+
+**** Theme Activation ****
+
+   > After you activate theme in WP Themes go to InuiTypes Options and set it up by your own taste.
+   > Default theme options become active after your first 'Save changes' click so don't get scared if
+     theme doesn't look normal after your first WP theme activation =)
+   > If you are updating theme from previous version, delete all theme files and upload new ones,
+     settings will remain the SAME! - THIS DOESN'T APPLY IF YOU'RE UPGRADING TO VERSION 1.2, PREVIOUS
+	 SETTING WILL BE LOST.
+	 
+**** Exclude Pages from Header Menu ****
+
+   > Check all pages you want to exclude from top header menu
+   > If you exclude parent page, child pages will also be excluded as all child
+     pages are shown in 4-level drop down menu
+
+**** About Your Blog ****
+
+   > Write something about your blog here. Choose your words wisely and write only what is relevant to your blog content
+     as this is very important part of your blog SEO
+   > This section will be visible on top of your front page
+
+**** Featured Post Entries ****
+
+   > Featured entries are not categorized like in Igloo theme, instead number of
+     featured entries you choose will be the number of highlighted posts you
+	 last posted on your blog (sounds complicated but its very simple=)
+
+**** Auto Image Resizing ****
+
+   > When you are creating a post upload image you want to see in featured box, front, archives
+     and in single posts afterwards
+   > Copy the full path to image and paste it in Custom Image Location, in post editing custom setting
+   > That is it!
+   > If you encounter any issues with images not showing up, you should check if your ‘cache’ folder 
+     in InuiTypes theme files is writing protected - CHMOD your cache folder to 777 if that is the case or
+	 contact you hosting provider and ask them to chmod it for you. Also google 'chmod via ftp' and find
+	 a bit info yourself.
+	 
+**** Choose Blog Title over Logo ****
+
+   > show text title & description predefined in WP settings -> General Settings
+   > default 'Blog Title' and 'Tagline' will be chosen
+   > Title will have 50px size, whereas tagline will have default 12px
+   > Size and Font control may be edited in style.css -> #header .blog-title a{ color:#2A2A2A; font-size:50px; font-weight:bold }
+   
+**** Feedburner Setup ****
+
+   > Choose feedburner or any other feed processing URL
+
+**** Header / Footer Scripts ****
+
+   > Enter all kind of scripts you want to use in header or footer
+   > It is highly recommended to include most scripts in footer as pages
+     will load faster but beware - some scripts don't work out of header tag
+	 
+**** Exclude Pages from Header Menu ****
+
+   > Check all pages you want to exclude from top header menu
+   > If you exclude parent page, child pages will also be excluded as all child
+     pages are shown in 4-level drop down menu
+
+**** I Want One Column Normal Posts ****	 
+
+   > Show normal posts in one ore two columns. If checked normal
+     posts will be shown in one column instead of default two columns
+   > All entries are excerpted, full posts on front page are not possible
+
+**** Advertising Scripts ****	 
+
+   > Usually this scripts come from AdSense but other advertising scripts
+     are also allowed, just be careful which width of your ads you choose!
+   > Paste full script code, don't delete anything
+   > You may paste multiple scripts in one textarea if you want, separate them
+     by <br/> tag or any other tags you want as html editing is allowed
+
+**** Banner Ad Scripty ****	 
+
+   > Set up your ad scripts in theme settings and you're done, woila ;)
+	 
+**** Banner Ad 250x250 ****	 
+
+   > Set your one 250x250 banner in theme settings but after that activate it
+     in widgets (there you can postion it at your will)
+	 
+**** Banner Ads 125x125 ****	 
+
+   > Set your multiple 125x125 banners in theme settings but after that activate them
+     in widgets (there you can postion them at your will)
+   > There are 6 125x125 spots available
+   
+**** Translations ****	 
+
+   > Translations are available only for your front-end blog, administration still happens in english
+   > If you have blog in english this is also relevant to you as you can set up all text names
+     just the way you like it - be creative =)
+   
+   

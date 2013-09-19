@@ -1,0 +1,15 @@
+/* Purple Style */
+
+body#woothemes { background: #310542 url(purple/bg.jpg) repeat-x center 0; }
+
+body#woothemes h1, 
+body#woothemes h2, 
+body#woothemes h3, 
+body#woothemes h4, 
+#footer #footerWrap #copy a,
+#sidebar a,
+ol.commentlist li p a
+{ color: #8c48b7; }
+
+p.txt0, p.txt0 a, .continue
+{ color: #d9a3e4; }

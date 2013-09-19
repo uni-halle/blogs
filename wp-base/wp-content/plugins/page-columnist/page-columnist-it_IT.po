@@ -1,0 +1,157 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Page Columnist v1.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2009-02-02 12:51+0100\n"
+"Last-Translator: Luca Realdi <baol77@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: page-columnist.php:585
+#@ page-columnist
+msgid "nextpage"
+msgstr "interruzione di pagina"
+
+#: page-columnist.php:448
+#@ page-columnist
+msgid "WordPress - Next Page (default)"
+msgstr "Interruzioni Wordpress Standard"
+
+#: page-columnist.php:449
+#@ page-columnist
+msgid "Ordinary Plain Page"
+msgstr "Pagina ordinaria senza interruzioni"
+
+#: page-columnist.php:450
+#@ page-columnist
+msgid "Every Sub Page as Column"
+msgstr "Ogni sottopagina come colonna"
+
+#: page-columnist.php:451
+#@ page-columnist
+msgid "First Sub Page as Header"
+msgstr "Prima sottopagina come testata"
+
+#: page-columnist.php:452
+#@ page-columnist
+msgid "Last Sub Page as Footer"
+msgstr "Ultima sottopagina come Piede"
+
+#: page-columnist.php:453
+#@ page-columnist
+msgid "Interior as Columns"
+msgstr "Sottopagine interne come colonne"
+
+#: page-columnist.php:585
+#@ page-columnist
+msgid "insert Page break"
+msgstr "Inserisci un'interruzione di pagina"
+
+#: page-columnist.php:528
+#@ page-columnist
+msgid "Page Columnist &bull; Assistance"
+msgstr "Page Columnist &bull; Assistente"
+
+#: page-columnist.php:520
+#@ page-columnist
+msgid "% spacing"
+msgstr "% margine"
+
+#: page-columnist.php:522
+#@ page-columnist
+msgid "default spacing"
+msgstr "Margine di default"
+
+#: page-columnist.php:524
+#@ page-columnist
+msgid "save changes"
+msgstr "Salva"
+
+#: page-columnist.php:516
+#@ page-columnist
+msgid "enable column resizing"
+msgstr "Abilita il ridimensionamento delle colonne"
+
+#: page-columnist.php:677
+#@ page-columnist
+msgid "You do not have the permission to edit this page."
+msgstr "Non hai i privilegi per modificare questa pagina."
+
+#: page-columnist.php:689
+#@ page-columnist
+msgid "% column default spacing"
+msgstr "% margine di colonna di default"
+
+#: page-columnist.php:59
+#@ page-columnist
+msgid "* content missing"
+msgstr "* senza contenuto"
+
+#: page-columnist.php:476
+#: page-columnist.php:477
+#@ page-columnist
+msgid "Page Columnist"
+msgstr "Page Columnist"
+
+#: page-columnist.php:708
+#@ page-columnist
+msgid "spacing:"
+msgstr "Margine:"
+
+#: page-columnist.php:711
+#@ page-columnist
+msgid "columns:"
+msgstr "Colonne:"
+
+#: page-columnist.php:719
+#@ page-columnist
+msgid "overflow:"
+msgstr "Overflow:"
+
+#: page-columnist.php:721
+#@ page-columnist
+msgid "hide too much columns"
+msgstr "Nascondi troppe colonne"
+
+#: page-columnist.php:722
+#@ page-columnist
+msgid "generate virtual pages"
+msgstr "Genera pagine virtuali"
+
+#: page-columnist.php:739
+#@ page-columnist
+msgid "enable Assistance at Preview"
+msgstr "Abilita Assistente in Anteprima"
+
+#: page-columnist.php:596
+#@ page-columnist
+msgid "Cols"
+msgstr "Colonne"
+
+#: page-columnist.php:727
+#@ page-columnist
+msgid "at overview pages:"
+msgstr ""
+
+#: page-columnist.php:729
+#@ page-columnist
+msgid "same as single pages"
+msgstr ""
+
+#: page-columnist.php:730
+#@ page-columnist
+msgid "render flat single content"
+msgstr ""
+

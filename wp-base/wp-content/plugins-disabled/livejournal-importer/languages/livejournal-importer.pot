@@ -1,0 +1,307 @@
+# Translation of the WordPress plugin LiveJournal Importer 0.2 by wordpressdotorg.
+# Copyright (C) 2010 wordpressdotorg
+# This file is distributed under the same license as the LiveJournal Importer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: LiveJournal Importer 0.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/livejournal-importer\n"
+"POT-Creation-Date: 2010-06-01 13:26+0300\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: livejournal-importer.php:186
+msgid "Import LiveJournal"
+msgstr ""
+
+#: livejournal-importer.php:200
+msgid ""
+"It looks like you attempted to import your LiveJournal posts previously and "
+"got interrupted."
+msgstr ""
+
+#: livejournal-importer.php:202
+msgid "Continue previous import"
+msgstr ""
+
+#: livejournal-importer.php:204
+msgid "Cancel &amp; start a new import"
+msgstr ""
+
+#: livejournal-importer.php:209
+msgid ""
+"Howdy! This importer allows you to connect directly to LiveJournal and "
+"download all your entries and comments"
+msgstr ""
+
+#: livejournal-importer.php:210
+msgid ""
+"Enter your LiveJournal username and password below so we can connect to your "
+"account:"
+msgstr ""
+
+#: livejournal-importer.php:215
+msgid "LiveJournal Username"
+msgstr ""
+
+#: livejournal-importer.php:220
+msgid "LiveJournal Password"
+msgstr ""
+
+#: livejournal-importer.php:226
+msgid ""
+"If you have any entries on LiveJournal which are marked as private, they "
+"will be password-protected when they are imported so that only people who "
+"know the password can see them."
+msgstr ""
+
+#: livejournal-importer.php:227
+msgid ""
+"If you don&#8217;t enter a password, ALL ENTRIES from your LiveJournal will "
+"be imported as public posts in WordPress."
+msgstr ""
+
+#: livejournal-importer.php:228
+msgid ""
+"Enter the password you would like to use for all protected entries here:"
+msgstr ""
+
+#: livejournal-importer.php:232
+msgid "Protected Post Password"
+msgstr ""
+
+#: livejournal-importer.php:238
+msgid ""
+"<strong>WARNING:</strong> This can take a really long time if you have a lot "
+"of entries in your LiveJournal, or a lot of comments. Ideally, you should "
+"only start this process if you can leave your computer alone while it "
+"finishes the import."
+msgstr ""
+
+#: livejournal-importer.php:241
+msgid "Connect to LiveJournal and Import"
+msgstr ""
+
+#: livejournal-importer.php:244
+msgid ""
+"<strong>NOTE:</strong> If the import process is interrupted for <em>any</em> "
+"reason, come back to this page and it will continue from where it stopped "
+"automatically."
+msgstr ""
+
+#: livejournal-importer.php:247
+msgid ""
+"<strong>NOTE:</strong> You appear to have JavaScript disabled, so you will "
+"need to manually click through each step of this importer. If you enable "
+"JavaScript, it will step through automatically."
+msgstr ""
+
+#: livejournal-importer.php:292
+msgid "Post metadata has been downloaded, proceeding with posts..."
+msgstr ""
+
+#: livejournal-importer.php:394
+#, php-format
+msgid "Post <strong>%s</strong> already exists."
+msgstr ""
+
+#: livejournal-importer.php:396
+#, php-format
+msgid "Imported post <strong>%s</strong>..."
+msgstr ""
+
+#: livejournal-importer.php:405
+msgid "Couldn&#8217;t get post ID (creating post failed!)"
+msgstr ""
+
+#: livejournal-importer.php:407
+msgid "Failed to create post."
+msgstr ""
+
+#: livejournal-importer.php:452
+msgid "Could not get a cookie from LiveJournal. Please try again soon."
+msgstr ""
+
+#: livejournal-importer.php:473
+msgid ""
+"Failed to retrieve comment meta information from LiveJournal. Please try "
+"again soon."
+msgstr ""
+
+#: livejournal-importer.php:481
+msgid "You have no comments to import!"
+msgstr ""
+
+#: livejournal-importer.php:508
+msgid ""
+"Comment metadata downloaded successfully, proceeding with comment bodies..."
+msgstr ""
+
+#: livejournal-importer.php:533
+msgid ""
+"Failed to retrieve comment bodies from LiveJournal. Please try again soon."
+msgstr ""
+
+#: livejournal-importer.php:616 livejournal-importer.php:624
+msgid "Anonymous"
+msgstr ""
+
+#: livejournal-importer.php:676
+msgid ""
+"LiveJournal is not responding to authentication requests. Please wait a "
+"while and then try again."
+msgstr ""
+
+#: livejournal-importer.php:686
+msgid "XML-RPC Request Failed -- "
+msgstr ""
+
+#: livejournal-importer.php:746
+msgid ""
+"Please enter your LiveJournal username <em>and</em> password so we can "
+"download your posts and comments."
+msgstr ""
+
+#: livejournal-importer.php:747 livejournal-importer.php:759
+msgid "Start again"
+msgstr ""
+
+#: livejournal-importer.php:758
+msgid ""
+"Logging in to LiveJournal failed. Check your username and password and try "
+"again."
+msgstr ""
+
+#: livejournal-importer.php:803
+msgid "Importing Posts"
+msgstr ""
+
+#: livejournal-importer.php:804
+msgid "We&#8217;re downloading and importing your LiveJournal posts..."
+msgstr ""
+
+#: livejournal-importer.php:808
+#, php-format
+msgid "Imported post batch %d of <strong>approximately</strong> %d"
+msgstr ""
+
+#: livejournal-importer.php:826
+msgid ""
+"Uh oh &ndash; LiveJournal has disconnected us because we made too many "
+"requests to their servers too quickly."
+msgstr ""
+
+#: livejournal-importer.php:827
+msgid ""
+"We&#8217;ve saved where you were up to though, so if you come back to this "
+"importer in about 30 minutes, you should be able to continue from where you "
+"were."
+msgstr ""
+
+#: livejournal-importer.php:829 livejournal-importer.php:964
+msgid "Try Again"
+msgstr ""
+
+#: livejournal-importer.php:842 livejournal-importer.php:894
+msgid "Import the next batch"
+msgstr ""
+
+#: livejournal-importer.php:847
+msgid ""
+"Your posts have all been imported, but wait &#8211; there&#8217;s more! Now "
+"we need to download &amp; import your comments."
+msgstr ""
+
+#: livejournal-importer.php:848
+msgid "Download my comments &raquo;"
+msgstr ""
+
+#: livejournal-importer.php:865
+msgid "Downloading Comments&#8230;"
+msgstr ""
+
+#: livejournal-importer.php:866
+msgid ""
+"Now we will download your comments so we can import them (this could take a "
+"<strong>long</strong> time if you have lots of comments)..."
+msgstr ""
+
+#: livejournal-importer.php:891
+#, php-format
+msgid "Imported comment batch %d of <strong>approximately</strong> %d"
+msgstr ""
+
+#: livejournal-importer.php:899
+msgid ""
+"Your comments have all been imported now, but we still need to rebuild your "
+"conversation threads."
+msgstr ""
+
+#: livejournal-importer.php:900
+msgid "Rebuild my comment threads &raquo;"
+msgstr ""
+
+#: livejournal-importer.php:916
+msgid "Threading Comments&#8230;"
+msgstr ""
+
+#: livejournal-importer.php:917
+msgid ""
+"We are now re-building the threading of your comments (this can also take a "
+"while if you have lots of comments)..."
+msgstr ""
+
+#: livejournal-importer.php:954
+#, php-format
+msgid "Successfully re-threaded %s comments."
+msgstr ""
+
+#: livejournal-importer.php:956
+#, php-format
+msgid "All done. <a href=\"%s\">Have fun!</a>"
+msgstr ""
+
+#: livejournal-importer.php:989 livejournal-importer.php:1017
+#, php-format
+msgid "Continuing in %d&#8230;"
+msgstr ""
+
+#: livejournal-importer.php:994
+msgid "Continuing&#8230;"
+msgstr ""
+
+#: livejournal-importer.php:1023
+msgid "Processing next batch."
+msgstr ""
+
+#: livejournal-importer.php:1084
+msgid "LiveJournal"
+msgstr ""
+
+#. #-#-#-#-#  livejournal-importer.pot (LiveJournal Importer 0.2)  #-#-#-#-#
+#. Description of the plugin/theme
+#: livejournal-importer.php:1084
+msgid "Import posts from LiveJournal using their API."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "LiveJournal Importer"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/livejournal-importer/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "wordpressdotorg"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://wordpress.org/"
+msgstr ""

@@ -1,0 +1,27 @@
+#instagram-plugin-instructions dl dt {
+	clear: both;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+#instagram-plugin-instructions dl dd {
+	margin: 0;
+	padding: 0;
+	font-style: italic;
+}
+
+#instagram-plugin-instructions dl {
+	clear: both;
+	overflow: hidden;
+}
+
+
+#instagram-plugin-instructions dl dd textarea {
+	width: 98%;
+	height: 100px;
+}
+
+#instagram-plugin-instructions li {
+	padding: 20px 0;
+	border-bottom: 1px solid #bbb;
+}

@@ -1,0 +1,300 @@
+/*   
+Theme Name: Airmail - par Avion
+Theme URI: http://johnnye.net/airmail-paravion.html
+Description: A travel or holiday orientated blog template, 2 columns, flexible width, based on old fashioned airmail envolopes. 0.6 fixes some CSS and Menu bugs
+Author: John Nye
+Author URI:http://johnnye.net
+Version: 0.6
+Tags: tan, blue, red, light, two-columns, flexible-width, microformats, holiday
+
+Theme is copyright 2009 John Nye
+Like WordPress, this work is released under GNU General Public License, version 2 (GPL).
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+.
+*/
+
+/* Reset default browser styles */
+@import url('styles/reset.css');
+
+/* Rebuild default browser styles */
+@import url('styles/rebuild.css');
+
+/*
+LAYOUT: Two-Column (Right)
+DESCRIPTION: Two-column fluid layout with one sidebars right of content
+*/
+
+#container {
+	float: left;
+	margin: 0 -200px 0 0;
+	width: 100%;
+}
+#content {
+	margin: 0 200px 0 0;
+}
+#primary, #secondary {
+	float: right;
+	overflow: hidden;
+	width: 180px;
+}
+#secondary {
+	clear: right;
+}
+#footer {
+	clear: both;
+	width: 100%;
+}
+body {
+	//margin: 1.5em 15%;
+	background: #f7f7f0 url(images/bg.png);
+}
+
+#wrapper{
+	margin: 1.5em 15%;
+}
+.spacer{
+	height:1.5em;
+	clear: both;
+}
+/* =Header
+-------------------------------------------------------------- */
+#stripe{
+	background: url(images/banding.gif) repeat-x;
+	padding-top: 25px;
+}
+
+
+#branding {
+	margin: 0 0 1.5em 0;
+
+}
+#blog-title{
+	float: left;
+	
+}
+#blog-title span a{
+	font-size: 2em;
+	font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+	border: 0;
+}
+
+#rss-search{
+	float: right;
+	margin-bottom: 0.5em;
+}
+
+
+/* =Menu
+-------------------------------------------------------------- */
+
+#access {
+	clear: both;
+	margin: 0 0 1.5em 0;
+	overflow: auto;
+}
+.skip-link {
+	display: none;
+}
+.menu ul {
+	list-style: none;
+	margin: 0;
+}
+.menu ul ul {
+	display: none;
+}
+.menu li {
+	/*display: inline;*/
+	float: left;
+	
+}
+.menu a {
+	display: block;
+	float: right;
+	margin-left: 1em;
+	margin-right: 1em;
+	height: 2em;
+	border: 0;
+	color:  #002147;
+	font-size: 1.5em;
+}
+.menu a:hover{
+	color: #000;
+	background: none;
+}
+
+/* =Content
+-------------------------------------------------------------- */
+.slideshow{
+	height: 350px;
+	width: 960px;
+}
+#content{
+	background: url(images/gradient.png) repeat-x;
+}
+
+.post {
+	margin: 0 0 3em 0;	
+}
+.entry-content, .entry-summary {
+	margin: 1.5em 0 0 0;
+}
+.entry-meta, .entry-utility, .comment-meta{
+	font-size: 0.75em;
+	line-height: 1.25em;
+	font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+}
+a{
+	border-bottom-width: 1px;
+	border-bottom-color: #d9e0ed;
+	border-bottom-style: inset;
+	text-decoration: none;
+	color: #002147;
+	
+}
+a:hover, a:active{
+	background-color: #d9e0ed;
+}
+
+/* =Navigation
+-------------------------------------------------------------- */
+
+.navigation {
+	margin: 0 0 1.5em 0;
+	overflow: auto;
+		
+}
+
+
+/* =Widget Areas
+-------------------------------------------------------------- */
+
+.widget-area ul {
+	background: #f2f2e9;
+	list-style: none;
+	margin-left: 0;
+}
+.widget-area ul ul {
+	list-style: none;
+	margin-left: 1.1em;
+}
+.widget-area ul ul ul {
+	margin-left: 2.5em;
+}
+.widget-container {
+	background: url(images/banding.gif) repeat-x;
+	padding-top: 25px;
+	margin: 0 0 1.5em 0;
+}
+
+/* = Footer
+------------------------------------------------------------*/
+
+#footer{
+	margin-top: 1.5em;
+	padding: 25px 0 1.5em 0;
+	background: #dae1ed url('images/banding.gif') repeat-x;
+
+}
+#colophon{
+	margin: 0 15%;
+}
+
+/*comments*/
+#comments{
+	background: #f2f2e9;
+	list-style: none;
+}
+
+#comments li.even{
+	background: #dae1ed;
+	clear: both;
+}
+
+.comment-wrapper{
+	clear: all;
+	display: block;
+}
+.comment-meta{
+	float: left;
+	width: 20%;
+}
+.comment-content{
+	float: left;
+	margin-right: 1.5em;
+	width: 75%;
+}
+/* -------------------------------------------------------------- 
+   
+   Basic WordPress Blog Styles   
+     
+-------------------------------------------------------------- */   
+
+
+/* Images
+-------------------------------------------------------------- */
+
+.entry-content img {
+	margin: 0 0 1.5em 0;
+}
+.alignleft,
+img.alignleft {
+	display: inline;
+	float: left;
+  margin-right: 1.5em;
+}
+.alignright,
+img.alignright {
+	display: inline;
+	float: right;
+  margin-left: 1.5em;
+}
+.aligncenter,
+img.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.wp-caption {
+	text-align: center;
+	margin-bottom: 1.5em;
+}
+.wp-caption img {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+.wp-caption p.wp-caption-text {
+	margin: 0;
+}
+.wp-smiley { 
+	max-height: 1em;
+	margin:0 !important;
+}
+.gallery dl {
+	margin: 0;
+}
+.gallery-caption {
+	margin:-1.5em 0 0 0;
+}
+
+
+/* Pullquotes
+-------------------------------------------------------------- */
+
+blockquote.left {
+	float: left;
+	margin-left: 0;
+	margin-right: 20px;
+	text-align: right;
+	width: 33%;
+}
+blockquote.right {
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
+	text-align: left;
+	width: 33%;
+}
+
+

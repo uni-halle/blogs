@@ -1,0 +1,419 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: win7blog\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-20 09:02+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: kamiyeye <kamiyeye@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n==1?0:1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: D:\\EasyPHP 2.0b1\\www\\blog\\kamiyeye\\wp-content\\themes\\win7blog\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:7
+msgid "Not Found"
+msgstr "Non trouvé"
+
+#: 404.php:9
+msgid "Apologies, but we were unable to find what you were looking for. Perhaps  searching will help."
+msgstr "Désolé, mais nous ne trouvons pas ce que vous désirez. Peut être une recherche vous aidera."
+
+#: 404.php:14
+msgid "Find"
+msgstr "Recherche"
+
+#: archive.php:11
+#, php-format
+msgid "Archive for the &#8216;%s&#8217; Category"
+msgstr "Archive(s) pour la catégorie &#8216;%s&#8217;"
+
+#: archive.php:14
+#, php-format
+msgid "Posts Tagged &#8216;%s&#8217;"
+msgstr "Articles tagués &#8216;%s&#8217;"
+
+#: archive.php:17
+#: archive.php:20
+#: archive.php:23
+#, php-format
+msgid "Archive for %s"
+msgstr "Archive(s) pour %s"
+
+#: archive.php:17
+msgid "F jS, Y"
+msgstr "j F Y"
+
+#: archive.php:20
+msgid "F, Y"
+msgstr "F Y"
+
+#: archive.php:23
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:26
+msgid "Author Archive"
+msgstr "Archive(s) de l'auteur"
+
+#: archive.php:29
+msgid "Blog Archives"
+msgstr "Archive(s) du blog"
+
+#: archive.php:37
+#: index.php:19
+#: index.php:36
+#: index.php:42
+#: search.php:18
+#, php-format
+msgid "Permanent Link to %s"
+msgstr "Lien permanent sur %s"
+
+#: archive.php:39
+#: archives.php:32
+#: image.php:23
+#: index.php:22
+#: index.php:43
+#: links.php:22
+#: page.php:15
+#: search.php:22
+#: single.php:26
+msgid "Edit"
+msgstr "Modifier"
+
+#: archive.php:40
+#: image.php:21
+#: index.php:23
+#: search.php:23
+#: single.php:24
+#, php-format
+msgid "Category: %s"
+msgstr "Catégorie: %s"
+
+#: archive.php:41
+#: index.php:24
+#: search.php:24
+msgid "Tags: "
+msgstr "Tags:"
+
+#: archive.php:43
+#: index.php:26
+#: index.php:41
+#: search.php:26
+msgid "No Comments"
+msgstr "Aucun commentaire"
+
+#: archive.php:43
+#: index.php:26
+#: index.php:41
+#: search.php:26
+msgid "1 Comment"
+msgstr "1 commentaire"
+
+#: archive.php:43
+#: index.php:26
+#: index.php:41
+#: search.php:26
+msgid "% Comments"
+msgstr "% commentaires"
+
+#: archive.php:46
+#: index.php:30
+#: search.php:30
+msgid "More &raquo;"
+msgstr "Plus &raquo;"
+
+#: archive.php:54
+#: index.php:56
+msgid "&laquo; Older Entries"
+msgstr "&laquo; Articles plus anciens"
+
+#: archive.php:55
+#: index.php:57
+msgid "Newer Entries &raquo;"
+msgstr "Articles plus récents &raquo;"
+
+#: archives.php:20
+msgid "Archives by Category"
+msgstr "Archive(s) par catégorie"
+
+#: archives.php:26
+msgid "Archives by Month"
+msgstr "Archive(s) par mois"
+
+#: comments.php:12
+msgid "This post is protected. Enter the password to view any comments."
+msgstr "Cet article est protégé. Entrer le mot de passe pour voir les commentaires."
+
+#: comments.php:47
+#, php-format
+msgid "%d Responses"
+msgstr "%d réactions"
+
+#: comments.php:47
+msgid "One Response"
+msgstr "Une réaction"
+
+#: comments.php:48
+msgid "Leave a comment"
+msgstr "Laisser un commentaire"
+
+#: comments.php:63
+msgid "Leave a Reply"
+msgstr "Laisser une réaction"
+
+#: comments.php:63
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Laisser une réponse à %s"
+
+#: comments.php:64
+msgid "Cancel Reply"
+msgstr "Annuler la réponse"
+
+#: comments.php:67
+#, php-format
+msgid "You must be <a href=\"%s\" title=\"Log in\">logged in</a> to post a comment."
+msgstr "Vous devez être <a href=\"%s\" title=\"Log in\">connecté</a> pour écrire un commentaire."
+
+#: comments.php:74
+msgid "Logged in as "
+msgstr "Connecté en tant que "
+
+#: comments.php:74
+msgid "Log out "
+msgstr "Déconnexion"
+
+#: comments.php:78
+msgid "Name "
+msgstr "Nom"
+
+#: comments.php:78
+#: comments.php:83
+msgid "(required)"
+msgstr "(obligatoire)"
+
+#: comments.php:83
+msgid "Mail (will not be published) "
+msgstr "Mail (ne sera pas publié)"
+
+#: comments.php:88
+msgid "Website "
+msgstr "Site Internet"
+
+#: comments.php:95
+msgid "Submit"
+msgstr "Envoyer"
+
+#: functions.php:31
+msgid "Reply"
+msgstr "Répondre"
+
+#: functions.php:97
+msgid "Home"
+msgstr "Accueil"
+
+#: functions.php:123
+msgid "Recent Comments"
+msgstr "Commentaires récents"
+
+#: functions.php:152
+msgid "Title:"
+msgstr "Titre:"
+
+#: functions.php:176
+msgid "A neat recent comments"
+msgstr "Quelques récents commentaires"
+
+#: functions.php:178
+#: functions.php:179
+msgid "Recent Comments (Win7blog)"
+msgstr "Commentaires récents (Win7blog)"
+
+#: functions.php:227
+msgid "Win7blog Settings"
+msgstr ""
+
+#: header.php:53
+#, php-format
+msgid "%s latest posts"
+msgstr "%s derniers articles"
+
+#: header.php:54
+#, php-format
+msgid "%s latest comments"
+msgstr "%s derniers commentaires"
+
+#: header.php:74
+#: search.php:52
+msgid "Search"
+msgstr "Recherche"
+
+#: image.php:8
+#, php-format
+msgid "Return to %s"
+msgstr "Retourner sur %s"
+
+#: image.php:19
+#: single.php:22
+msgid " posted at "
+msgstr " publié à "
+
+#: image.php:22
+#: single.php:25
+msgid "| Tags: "
+msgstr "| Tags:"
+
+#: index.php:31
+#: page.php:13
+#: single.php:28
+msgid "Pages:"
+msgstr "Pages:"
+
+#: index.php:42
+msgid "Read More"
+msgstr "Lire plus"
+
+#: search.php:8
+msgid "Search:"
+msgstr "Recherche:"
+
+#: search.php:11
+#: search.php:38
+msgid "&laquo; Older Results"
+msgstr "&laquo; Résultats plus anciens"
+
+#: search.php:12
+#: search.php:39
+msgid "Newer Results &raquo;"
+msgstr "Résultats plus récents &raquo;"
+
+#: search.php:45
+msgid "No Results"
+msgstr "Aucun résultat"
+
+#: search.php:47
+msgid "No posts found. Try a different search?"
+msgstr "Aucun article trouvé. Essayer avec une différente recherche?"
+
+#: settings.php:2
+msgid " Settings"
+msgstr ""
+
+#: settings.php:5
+msgid "Donation"
+msgstr ""
+
+#: settings.php:15
+msgid "If you find my work useful and you want to encourage the development of more free resources, you can do it by donating..."
+msgstr ""
+
+#: settings.php:20
+msgid "General"
+msgstr ""
+
+#: settings.php:22
+msgid "Menu Bar Content"
+msgstr ""
+
+#: settings.php:24
+msgid "Category"
+msgstr "Catégorie"
+
+#: settings.php:25
+msgid "Page"
+msgstr "Page"
+
+#: settings.php:26
+msgid "Both"
+msgstr ""
+
+#: settings.php:29
+msgid "Sticky Post Style"
+msgstr ""
+
+#: settings.php:31
+msgid "Simple"
+msgstr ""
+
+#: settings.php:32
+msgid "Rich"
+msgstr ""
+
+#: settings.php:33
+msgid "None"
+msgstr ""
+
+#: settings.php:37
+msgid "Hide Author's Reply from Win7blog Recent Comments (Widget)"
+msgstr ""
+
+#: settings.php:40
+msgid "Hide Post's Tags"
+msgstr ""
+
+#: settings.php:43
+msgid "Show Comment Number of Child Comments"
+msgstr ""
+
+#: settings.php:48
+msgid "SEO"
+msgstr ""
+
+#: settings.php:50
+msgid "Leave these options empty if you are using an SEO plugin"
+msgstr ""
+
+#: settings.php:53
+msgid "Home Page Description"
+msgstr ""
+
+#: settings.php:57
+msgid "Home Page Keywords"
+msgstr ""
+
+#: settings.php:57
+msgid "separate with commas"
+msgstr ""
+
+#: settings.php:65
+msgid "Save changes"
+msgstr ""
+
+#: settings.php:72
+msgid "Reset"
+msgstr ""
+
+#: sidebar.php:10
+msgid "Pages"
+msgstr "Pages"
+
+#: sidebar.php:14
+msgid "Categories"
+msgstr "Catégories"
+
+#: sidebar.php:18
+msgid "Archives"
+msgstr "Archives"
+
+#: sidebar.php:25
+msgid "Meta"
+msgstr "Meta"
+
+#: single.php:16
+msgid "[Statement]  Author: "
+msgstr "[Etat]  Auteur: "
+
+#: single.php:17
+msgid "  First Published on: "
+msgstr "  Première publication le:"
+
+#~ msgid "|&nbspTags: "
+#~ msgstr "|&nbspTags: "
+#~ msgid "views"
+#~ msgstr "Vus"
+

@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-TOC\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-03 22:14-0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Brendon <brendon@22talk.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: c:\\htdocs\\mtw\\wp-content\\plugins\\wp-toc\\\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-toc.php:45
+#: 1.0/wp-toc.php:31
+msgid "Your settings have been updated."
+msgstr ""
+
+#: wp-toc.php:62
+#: 1.0/wp-toc.php:42
+msgid "WP-TOC: Table Of Contents"
+msgstr ""
+
+#: wp-toc.php:64
+#: 1.0/wp-toc.php:44
+msgid "Default Options"
+msgstr ""
+
+#: wp-toc.php:72
+#: 1.0/wp-toc.php:52
+msgid "Depth"
+msgstr ""
+
+#: wp-toc.php:80
+msgid "Title"
+msgstr ""
+
+#: wp-toc.php:88
+msgid "List Type"
+msgstr ""
+
+#: wp-toc.php:92
+msgid "ul (Unordered)"
+msgstr ""
+
+#: wp-toc.php:93
+msgid "ol (Ordered)"
+msgstr ""
+
+#: wp-toc.php:99
+msgid "Style"
+msgstr ""
+
+#: wp-toc.php:103
+msgid "None"
+msgstr ""
+
+#: wp-toc.php:104
+msgid "Mediawiki / Wikipedia"
+msgstr ""
+
+#: wp-toc.php:113
+#: 1.0/wp-toc.php:62
+msgid "Save Changes"
+msgstr ""
+
+#: wp-toc.php:118
+#: 1.0/wp-toc.php:67
+msgid "Usage"
+msgstr ""
+
+#: wp-toc.php:120
+#: 1.0/wp-toc.php:69
+msgid "To insert a Table of Contents, simply place the following code into a post:"
+msgstr ""
+
+#: wp-toc.php:122
+#: 1.0/wp-toc.php:71
+msgid "[toc]"
+msgstr ""
+
+#: wp-toc.php:124
+msgid "You can override the various setting on a per-post basis using parameters:"
+msgstr ""
+
+#: wp-toc.php:126
+msgid "[toc depth=\"2\" listtype=\"ul\" title=\"Contents\"]"
+msgstr ""
+
+#: wp-toc.php:133
+#: 1.0/wp-toc.php:82
+msgid "WP-TOC"
+msgstr ""
+
+#: 1.0/wp-toc.php:73
+msgid "You can override the depth setting on a per-post basis using the depth parameter:"
+msgstr ""
+
+#: 1.0/wp-toc.php:75
+msgid "[toc depth=\"2\"]"
+msgstr ""
+

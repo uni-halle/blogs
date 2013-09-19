@@ -1,0 +1,5 @@
+*.svn*
+*.pem
+backup/
+wp-config.php
+wp-base/wp-content/blogs.dir/

@@ -1,0 +1,17 @@
+<?php
+if(!empty($this->title)): ?>
+<h2><?php echo $this->title;?></h2>
+<?php endif;
+if(count($this->items)>1):
+?>
+<ul class="subsubsub">
+<?php $cnt =1;
+foreach($this->items as $key=>$option):?>
+	<li><a
+		href="<?php echo $this->baseUrl; ?>&page2=<?php echo b8v_Type_String::staticSafe($option['title']);?>"
+		class="rbutton"><strong><?php echo $option['title']; ?></strong></a><?php if($cnt++!=count($this->options)){?>
+	| <?php ;};?></li>
+	<?php endforeach; ?>
+</ul>
+<br clear='all' />
+	<?php endif?>

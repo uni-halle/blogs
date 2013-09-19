@@ -1,0 +1,1 @@
+<?php wp_list_categories('show_count=1&title_li=<h1>' . __('Categories') . '</h1>'); ?>

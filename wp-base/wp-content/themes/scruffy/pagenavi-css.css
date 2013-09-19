@@ -1,0 +1,29 @@
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> WP-PAGENAVI PLUGIN <<<<<*/
+
+.wp-pagenavi  {
+	margin: 15px 0 15px 25px;
+	font-size: 16px;
+}
+
+.wp-pagenavi .pages  {
+	display: inline-block;
+	border: none;
+	margin: 0 20px 0 0;
+	background-color: #f4f5de;
+	color: #666;
+}
+
+.wp-pagenavi .current  {
+	border: none;
+	color: #666;
+	padding: 10px;
+	background: #f4f5de url(img/icons/pagenavicurrent.jpg) no-repeat center center;
+}
+
+.wp-pagenavi a  {
+	border: none;
+	color: #999;
+	text-decoration: none;
+	padding: 0 10px;
+	background-color: #f4f5de;
+}

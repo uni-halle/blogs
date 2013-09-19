@@ -1,0 +1,41 @@
+﻿<h3>Installation:</h3>
+<ul> 
+<li>1. Entpacke das komplette Archiv und speicher es auf deiner Festplatte ab ( per <a href="http://www.rarlab.com/">winrar</a> )</li>
+<li>2. Uploade dieses Theme in den Theme Ordner auf deinen Server ( per <a href="http://filezilla-project.org/">filezilla</a> )</li>
+<li>2. Uploade die n&ouml;tigen Plugins in den Plugin Ordner auf deinen Server </li>
+<li>4. Geh in den Administrationsbereich und klicke auf Design</li>
+<li>5. Aktiviere das Infinity WordPress Theme</li>
+<li>6. Nach aktivieren der Plugins klicke auf "Einstellungen" um flickrRSS zu konfigurieren.</li>
+<li>7. Das war's schon Viel Spa&szlig; beim Bloggen.</li>
+</ul>
+
+<h3>Thumbnails, Delicious und Twitter Integration</h3>
+<p>Wie du wahrscheinlich schon gesehen hast ben&ouml;tigt das Infinity Theme ein benutzerdefiniertes Feld damit das "Magazine cover style" funktioniert, weil es sich doch sehr von den 'Standardeintr&auml;gen' abhebt. <img src="custom_2.png" width="235" height="150" alt="Benutzerdefiniertes Feld" /><br>
+Der clevere Trick ist folgender: Bevor du deinen Post ver&ouml;ffentlichst scrolle etwas herunter zu den Benutzerdefinierten Feldern:</p>
+<p><img src="custom.png" width="762" height="341" alt="Benutzerdefiniertes Feld" /></p>
+<p>Name: thumbnail<br />
+Wert: Pfad des Images</p>
+
+<p>Sobald du den Image Pfad eingegeben hast klicke auf Publizieren und deine letzten Beitr&auml;ge können als Thumbnail Image (235*150 als Standardwert) angezeigt werden. <img src="custom_3.png" width="235" height="150" alt="Benutzerdefiniertes Feld" /><br>Willst du dieses Image sp&auml;ter &auml;ndern gehe einfach auf Artikel bearbeiten, scrolle nach unten bis zu den benutzerdefinierten Feldern und &auml;ndere den Link neben thumbnails und klicke anschlie&szlig;end auf Aktualisieren, und das Image wird ge&auml;ndert.</p>
+
+<p><strong>Twitter-Zeug</strong><br />
+&Ouml;ffne die Datei "left.php" und geh in die Zeile 8 und ersetze den Bildlink durch deinen eigenen.<br /><br />
+&lt;script type="text/javascript" src="http://twitter.com/statuses/user_timeline/yichi.json?callback=twitterCallback2&count=1"&gt;&lt;/script&gt;</p>
+
+<p><strong>Feine Bookmarks</strong><br />
+&Ouml;ffne die Datei "left.php", geh in die Zeile 25 und ersetze die ID (hier: yichi) mit deiner eigenen:<br /><br />
+&lt;script type="text/javascript" src="http://feeds.delicious.com/v2/js/yichi?count=8&sort=date"&gt;&lt;/script&gt;</p>
+
+<p>Das ist alles, das Theme wird super funktionieren. Wenn du irgendwelche Fragen hast oder deine Meinung &uuml;ber das Theme abgeben willst freue ich mich schon darauf dir helfen zu k&ouml;nnen.</p>
+
+<h3>Thumb Image</h3>
+<ul>
+<li>1. Finde ein angebrachtes Image, &auml;ndere die Gr&ouml;&szlig;e (max 320px width) und lade es im Administrationsbereich hoch.</li>
+<li>2. Kopiere die Image-URL</li>
+<li>3. Scrolle im Post Admin Panel zu den benutzerdefinierten Feldern, und w&auml;hle Name aus</li>
+<li>4. F&uuml;ge "thumbnail" ins Namenfeld ein</li>
+<li>5. F&uuml;ge die kopierte URL in den Wert ein</li>
+<li>(Beispiel:)http://domain.de/uploads/2007/09/vj.gif</li>
+<li>6. speichern</li>
+<li>7. Probiere eine Vorschau aus. Wenn alles glatt l&auml;uft klicke auf "Publizieren".</li>
+</ul>

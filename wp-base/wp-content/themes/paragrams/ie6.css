@@ -1,0 +1,55 @@
+/*body {
+	behavior:url("http://test46.ru/wp-content/themes/paragams/csshover.htc"); 
+}*/
+#header #serv {
+	width:475px;
+}
+#serv #navicons {
+	width:236px;
+}
+#serv #navicons li {
+	width:49px;
+}
+#serv #navicons a {
+	height:50px;
+	line-height:50px;
+	padding-left:20px;
+}
+#serv #menu {
+	margin-top:0px;
+	width:475px;
+}
+#sidebar {
+	width:319px;
+	float:right;
+	overflow:hidden;
+}
+#author, #email, #url {
+	float:left;
+	padding:7px 10px;
+	width:170px;
+	border:solid 10px #FFF;
+}
+#comm-add {
+	border-left:1px solid #E7E7E7;
+	float:right;
+	line-height:49px;
+	margin-top:-15px;
+	padding:0 10px;
+	text-decoration:none !important;
+}
+.logged-in #cancel-comment-reply {
+margin-left:474px;
+margin-top:146px!important;
+position:absolute;
+}
+
+#cancel-comment-reply {
+margin-left:474px;
+margin-top:246px!important;
+position:absolute;
+}
+
+#commentform textarea {
+	overflow: hidden;
+}

@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* CSS Document */
+/*
+   Use this stylesheet to compensate for IE 7.
+*/
+
+
+
+		#greendrop ul ul {
+	margin-top: 0;
+	display: none;
+	position: absolute;
+	float: left;
+	width: 180px;
+	z-index: 99999;
+	left: -40px
+	top: 22px;
+}
+#greendrop ul ul li {
+		margin-top: 0;
+	position: absolute;
+	float: left;
+	width: 180px;
+	z-index: 99999;
+	left: -40px
+
+}

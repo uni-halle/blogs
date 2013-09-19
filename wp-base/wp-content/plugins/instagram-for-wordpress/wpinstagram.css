@@ -1,0 +1,27 @@
+ul.wpinstagram, ul.wpinstagram li, ul.wpinstagram li a, ul.wpinstagram li a img {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+ul.wpinstagram {
+	display: block;
+	list-style-type: none;
+}
+ul.wpinstagram li{
+	display: none;
+}
+ul.wpinstagram li:first-child {
+	display: block;
+}
+
+ul.wpinstagram.centered {
+	margin: 0 auto !important;
+}
+
+#fancybox-img {
+	cursor: pointer;
+}
+
+#fancybox-left, #fancybox-right {
+	width: 15% !important;
+}

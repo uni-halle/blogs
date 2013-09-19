@@ -1,0 +1,620 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MistyLook 3.7.1+\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-29 19:39+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ulli Fetzer <ulli@rezkonv.de>\n"
+"Language-Team: http://blog.rezkonv.de <ulli@rezkonv.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+
+#: archive.php:8
+msgid "Category Archive for"
+msgstr "Kategorie-Archiv für"
+
+#: archive.php:11
+msgid "Tag Archive"
+msgstr "Tag-Archiv"
+
+#: archive.php:14
+msgid "Daily Archive for"
+msgstr "Tagesarchiv für"
+
+#: archive.php:14
+msgid "F jS, Y"
+msgstr "j. M Y"
+
+#: archive.php:17
+msgid "Monthly Archive for"
+msgstr "Monatsarchiv für"
+
+#: archive.php:17
+msgid "F, Y"
+msgstr "F Y"
+
+#: archive.php:20
+msgid "Yearly Archive for"
+msgstr "Jahresarchiv für"
+
+#: archive.php:20
+#: footer.php:2
+msgid "Y"
+msgstr "Y"
+
+#: archive.php:22
+msgid "Blog Archives"
+msgstr "Blog-Archive"
+
+#: archive.php:29
+#: archive.php:36
+#: attachment.php:10
+#: author.php:26
+#: index.php:27
+#: page.php:10
+#: search.php:12
+#: search.php:19
+#: single.php:12
+msgid "Permanent Link to"
+msgstr "Permalink für diesen Beitrag"
+
+#: archive.php:31
+#: attachment.php:12
+#: index.php:38
+#: search.php:14
+#: single.php:21
+msgid "Posted in"
+msgstr "Gepostet in"
+
+#: archive.php:31
+#: attachment.php:12
+#: old-comments.php:30
+#: search.php:14
+msgid "on"
+msgstr "am"
+
+#: archive.php:31
+#: attachment.php:12
+#: index.php:29
+#: page-links.php:11
+#: page.php:11
+#: search.php:14
+#: single.php:13
+msgid "M jS, Y"
+msgstr "j. M Y"
+
+#: archive.php:36
+#: search.php:19
+msgid "Read Full Post &#187;"
+msgstr "Gesamtes Posting lesen &#187;"
+
+#: archive.php:42
+#: index.php:48
+#: search.php:25
+msgid "&#171; Newer Posts"
+msgstr "&#171; Neuere Postings"
+
+#: archive.php:42
+#: index.php:48
+#: search.php:25
+msgid "Older Posts &#187;"
+msgstr "Ältere Postings &#187;"
+
+#: attachment.php:12
+#: index.php:29
+#: page.php:11
+#: single.php:13
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: attachment.php:12
+#: index.php:38
+msgid "No Comments &#187;"
+msgstr "Keine Kommentare &#187;"
+
+#: attachment.php:12
+#: index.php:38
+msgid "1 Comment &#187;"
+msgstr "1 Kommentar &#187;"
+
+#: attachment.php:12
+#: index.php:38
+msgid "% Comments &#187;"
+msgstr "% Kommentare &#187;"
+
+#: attachment.php:12
+#: index.php:38
+msgid "Comments Off"
+msgstr "Kommentarfunktion abgeschaltet"
+
+#: attachment.php:24
+#: page-archives.php:42
+msgid "Sorry, no posts matched your criteria."
+msgstr "Keine passenden Postings gefunden."
+
+#: author.php:9
+#: functions.php:35
+#: functions.php:39
+msgid "About"
+msgstr "Über"
+
+#: author.php:11
+msgid "Full Name"
+msgstr "Vollständiger Name"
+
+#: author.php:13
+#: contact.php:74
+#: old-comments.php:98
+#: comments.php:72
+msgid "Website"
+msgstr "Webseite"
+
+#: author.php:15
+msgid "Details"
+msgstr "Details"
+
+#: author.php:19
+msgid "Posts by"
+msgstr "Postings von"
+
+#: author.php:25
+#: old-comments.php:30
+#: page-archives.php:40
+msgid "d M Y"
+msgstr "d.M Y"
+
+#: author.php:30
+msgid "No posts by this author."
+msgstr "Keine Postings von diesem Autor."
+
+#: contact.php:48
+msgid "Please fill in all required fields."
+msgstr "Bitte alle Pflichtfelder ausfüllen."
+
+#: contact.php:52
+msgid "Your email adress failed to validate."
+msgstr "Deine Emailadresse ist ungültig."
+
+#: contact.php:56
+msgid "Incorrect Answer to the AntiSpam Question."
+msgstr "Falsche Antwort auf den Antispam-Test."
+
+#: contact.php:63
+msgid "Continue Reading &#187;"
+msgstr "Weiterlesen &#187;"
+
+#: contact.php:65
+msgid "Required Fields"
+msgstr "Pflichtfelder"
+
+#: contact.php:70
+#: old-comments.php:92
+#: comments.php:66
+msgid "Name"
+msgstr "Name"
+
+#: contact.php:72
+msgid "Email"
+msgstr "Emailadresse"
+
+#: contact.php:76
+msgid "AntiSpam Challenge:"
+msgstr "Antispam-Check:"
+
+#: contact.php:77
+msgid "Just to prove you are not a spammer"
+msgstr "Nur zur Kontrolle, dass Du kein Spammer bist"
+
+#: contact.php:78
+msgid "Message"
+msgstr "Message"
+
+#: contact.php:80
+msgid "Send Message"
+msgstr "Message senden"
+
+#: contact.php:99
+msgid "Hey"
+msgstr "Hallo"
+
+#: contact.php:99
+msgid "thanks for your message! I'll get back to you as soon as possible."
+msgstr "danke für Deine Message. Ich werde sobald wie möglich auf Dich zurückkommen."
+
+#: footer.php:2
+msgid "All Rights Reserved."
+msgstr "Alle Rechte vorbehalten."
+
+#: footer.php:4
+msgid "MistyLook WordPress Theme by Sadish Bala"
+msgstr "MistyLook WordPress Thema von Sadish Bala"
+
+#: footer.php:4
+msgid "Free WordPress Themes"
+msgstr "Freie WordPress Themen"
+
+#: footer.php:4
+msgid "Fresh WordPress Themes"
+msgstr "Erfrischende WordPress Themen"
+
+#: functions.php:27
+#: functions.php:31
+msgid "Links"
+msgstr "Links"
+
+#: functions.php:41
+msgid "Profile"
+msgstr "Profil"
+
+#: functions.php:43
+msgid "There are"
+msgstr "Derzeit sind"
+
+#: functions.php:43
+msgid "Posts and"
+msgstr "Postings und"
+
+#: functions.php:43
+msgid "Comments so far."
+msgstr "Kommentare auf diesem Blog."
+
+#: functions.php:50
+msgid "Recent Posts"
+msgstr "Neueste Postings"
+
+#: functions.php:101
+msgid "MistyLook Options"
+msgstr "MistyLook Optionen"
+
+#: functions.php:111
+msgid "MistyLook Theme: Settings saved."
+msgstr "MistyLook Thema: Einstellungen gespeichert."
+
+#: functions.php:112
+msgid "MistyLook Theme: Settings reset."
+msgstr "MistyLook Thema: Einstellungen auf Anfangswerte zurückgesetzt."
+
+#: functions.php:125
+msgid "Theme Page:"
+msgstr "Webseite des Themas:"
+
+#: functions.php:126
+msgid "Designed & Coded by:"
+msgstr "Design & Programmierung von: "
+
+#: functions.php:136
+msgid "Theme Settings"
+msgstr "Einstellungen für dieses Thema"
+
+#: functions.php:138
+msgid "Change the way your blog looks and acts with the many blog settings below"
+msgstr "Das Aussehen und die Einstellungen Deines Blogs ändern"
+
+#: functions.php:144
+#: functions.php:223
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
+#: functions.php:150
+msgid "List Pages / Navigation"
+msgstr "Seitenanzeige / Navigation"
+
+#: functions.php:159
+msgid "Exclude the Following Pages from the Top Navigation"
+msgstr "Folgende Seiten nicht in der Navigationsleiste anzeigen"
+
+#: functions.php:168
+msgid "Sort the List Pages by"
+msgstr "Sortiere die Seiten nach"
+
+#: functions.php:170
+msgid "Page Title ?"
+msgstr "Alphabetisch nach Titel"
+
+#: functions.php:171
+msgid "Date ?"
+msgstr "Datum"
+
+#: functions.php:172
+msgid "Page Order ?"
+msgstr "Seitennummer"
+
+#: functions.php:173
+msgid "(Each Page can be given a page order number, from the wordpress admin, edit page area)"
+msgstr "(Jeder Seite kann im Adminbereich bei &quot;Seite bearbeiten&quot; eine Seitennummer zugeordnet werden)"
+
+#: functions.php:179
+msgid "Support for Asides / Side Notes"
+msgstr "Asides-Unterstützung / Bemerkungen zu Seiten"
+
+#: functions.php:180
+msgid "Asides are the 'quick bits' of information you want to post. They do not have to look like a regular post."
+msgstr "'Asides' (Nebenbemerkungen) sind Kurzinformationen oder Hinweise, die Du auf Deinen Blog setzen willst. Sie brauchen nicht wie ein normales Posting aussehen."
+
+#: functions.php:181
+msgid "Learn More at"
+msgstr "Weitere Informationen bei "
+
+#: functions.php:200
+msgid "Select the category here. Any posts under this category will look like an Aside."
+msgstr "Die gewünschte Kategorie hier auswählen. Alle Postings mit dieser Kategorie sehen dann wie ein Aside aus."
+
+#: functions.php:202
+msgid "NOT SELECTED"
+msgstr "NICHT AUSGEWÄHLT"
+
+#: functions.php:233
+msgid "Reset"
+msgstr "Reset"
+
+#: functions.php:235
+msgid "If for some reason you want to uninstall MistyLook then press the reset button to clean things up in the database."
+msgstr "Wenn Du MistyLook deinstallieren willst, betätige zunächst den Button 'Einstellungen zurücksetzen' um MistyLook-spezifische Einträge aus der Datenbank zu löschen."
+
+#: functions.php:236
+msgid "You have to make sure to delete the theme folder, if you want to completely remove the theme."
+msgstr "Wenn Du das Thema anschließend vollständig entfernen willst, musst Du das ganze MistyLook-Themenverzeichnis  löschen."
+
+#: functions.php:239
+msgid "Reset Settings"
+msgstr "Einstellungen zurücksetzen"
+
+#: header.php:6
+msgid "Blog Archive"
+msgstr "Blog Archiv"
+
+#: header.php:11
+msgid "RSS Feed"
+msgstr "RSS-Feed"
+
+#: header.php:33
+msgid "Home"
+msgstr "Home"
+
+#: header.php:35
+msgid "Search"
+msgstr "Suchen"
+
+#: header.php:51
+msgid "Feed on"
+msgstr "Feed auf"
+
+#: header.php:52
+msgid "Posts"
+msgstr "Postings"
+
+#: header.php:53
+msgid "Comments"
+msgstr "Kommentare"
+
+#: index.php:21
+msgid "Permalink:"
+msgstr "Permalink:"
+
+#: index.php:21
+msgid "(edit)"
+msgstr "(bearbeiten)"
+
+#: index.php:29
+#: page.php:11
+#: single.php:13
+msgid "by"
+msgstr "von"
+
+#: index.php:33
+msgid "Continue Reading &raquo;"
+msgstr "Weiterlesen &raquo;"
+
+#: index.php:35
+#: single.php:19
+msgid "Tags: "
+msgstr "Tags: "
+
+#: notfound.php:3
+msgid "Ooops...Where did you get such a link ?"
+msgstr "Uups...Woher hast Du diesen Link bekommen?"
+
+#: notfound.php:4
+msgid "Server cannot locate what you are looking for !"
+msgstr "Der Server kann das von Dir Gesuchte nicht finden!"
+
+#: notfound.php:7
+msgid "The Server tried all of its options before returning this page to you."
+msgstr "Der Server versuchte alles, bevor er Dir diese Antwort schickte. "
+
+#: notfound.php:8
+msgid "You are looking for something that is not here now."
+msgstr "Du hast nach etwas gesucht, das es derzeit hier nicht gibt."
+
+#: notfound.php:9
+msgid "You can always try doing a <strong>search</strong> or browsing through the <strong>Archives</strong>."
+msgstr "Du kannst eine <strong>Suche</strong> starten oder durch das <strong>Archiv</strong> browsen."
+
+#: notfound.php:9
+msgid "Don't loose your hope just yet."
+msgstr "Gib Deine Hoffnung noch nicht auf."
+
+#: notfound.php:11
+msgid "Posted as Not Found"
+msgstr "Als 'Nicht gefunden' gepostet"
+
+#: old-comments.php:3
+#: comments.php:9
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Bitte diese Seite nicht direkt aufrufen. Danke!"
+
+#: old-comments.php:9
+#: comments.php:12
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Dieses Posting ist passwortgeschützt. Um die Kommentare zu lesen, Passwort eingeben."
+
+#: old-comments.php:23
+#: comments.php:21
+msgid "No Responses"
+msgstr "Keine Kommentare"
+
+#: old-comments.php:23
+#: comments.php:21
+msgid "One Response"
+msgstr "1 Kommentar"
+
+#: old-comments.php:23
+#: comments.php:21
+msgid "% Responses"
+msgstr "% Kommentare"
+
+#: old-comments.php:23
+#: comments.php:21
+msgid "to"
+msgstr "auf"
+
+#: old-comments.php:30
+msgid "edit this"
+msgstr "Bearbeiten &#187; "
+
+#: old-comments.php:30
+msgid "at"
+msgstr "um"
+
+#: old-comments.php:32
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar wartet auf Moderation."
+
+#: old-comments.php:58
+#: comments.php:37
+msgid "Comments are closed."
+msgstr "Keine Kommentare möglich."
+
+#: old-comments.php:65
+msgid "Trackback URI"
+msgstr "Trackback-URI"
+
+#: old-comments.php:68
+msgid "Comments RSS"
+msgstr "Kommentar-Feed"
+
+#: old-comments.php:75
+#: comments.php:47
+msgid "Leave a Reply"
+msgstr "Kommentar abgeben"
+
+#: old-comments.php:78
+#: comments.php:54
+msgid "You must be"
+msgstr "Du musst Dich"
+
+#: old-comments.php:78
+#: comments.php:54
+msgid "logged in"
+msgstr "anmelden"
+
+#: old-comments.php:78
+#: comments.php:54
+msgid "to post a comment."
+msgstr "um einen Kommentar abzugeben."
+
+#: old-comments.php:87
+#: comments.php:61
+msgid "Logged in as"
+msgstr "Angemeldet als"
+
+#: old-comments.php:87
+#: comments.php:61
+msgid "Log out of this account"
+msgstr "Abmelden"
+
+#: old-comments.php:87
+msgid "Logout"
+msgstr "Abmelden"
+
+#: comments.php:61
+msgid "Log out"
+msgstr "Ausloggen"
+
+#: old-comments.php:92
+#: old-comments.php:95
+#: comments.php:66
+#: comments.php:69
+msgid "(required)"
+msgstr "(Pflichtangabe)"
+
+#: old-comments.php:95
+msgid "Mail (hidden)"
+msgstr "Emailadresse (unsichtbar)"
+
+#: comments.php:69
+msgid "Mail (will not be published)"
+msgstr "Email-Adresse (wird nicht veröffentlicht)"
+
+#: old-comments.php:106
+#: comments.php:80
+msgid "Submit Comment"
+msgstr "Kommentar abschicken"
+
+#: page-archives.php:10
+#: page-archives.php:40
+#: page-links.php:10
+msgid "Permanent Link:"
+msgstr "Permalink:"
+
+#: page-archives.php:13
+msgid "by Categories"
+msgstr "nach Kategorien"
+
+#: page-archives.php:26
+msgid "by Month"
+msgstr "nach Monat"
+
+#: page-archives.php:30
+#: sidebar.php:28
+msgid "Tags"
+msgstr "Tags"
+
+#: page-archives.php:36
+msgid "Last 50 Entries"
+msgstr "Letzte 50 Einträge"
+
+#: page.php:19
+msgid "This page has the following sub pages."
+msgstr "Diese Seite hat folgende Unterseiten."
+
+#: search.php:7
+msgid "Search Results for"
+msgstr "Suchergebnisse für"
+
+#: sidebar.php:7
+msgid "Archives"
+msgstr "Archiv"
+
+#: sidebar.php:12
+msgid "Categories"
+msgstr "Kategorien"
+
+#: sidebar.php:35
+msgid "Pages"
+msgstr "Seiten"
+
+#: sidebar.php:40
+msgid "Meta"
+msgstr "Meta"
+
+#: sidebar.php:44
+msgid "This page validates as XHTML 1.0 Transitional"
+msgstr "Seite auf Einhaltung des XHTML 1.0 Transitional Standard überprüfen"
+
+#: sidebar.php:44
+msgid "Valid"
+msgstr "Validierung"
+
+#: sidebar.php:45
+msgid "XHTML Friends Network"
+msgstr ""
+
+#: sidebar.php:46
+msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr "Powered by WordPress, der State-Of-The-Art Blog-Plattform."
+

@@ -1,0 +1,505 @@
+/*
+Theme Name: Studenten für Halle e.V.
+Theme URI: http://www.studenten-fuer-halle.de/
+Description: WordPress-Theme für Studenten für Halle
+Version: 0.4
+Author: Alexander Winterstein
+Tags: 
+*/
+
+.screen-reader-text {
+  position: absolute;
+  left: -1000em;
+}
+
+body {
+//  background: #D1CFC8;
+  color: #000;
+  font-family: Verdana;
+  font-size: 10pt;
+  line-height: 1.5em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#top {
+  background: url('images/head.png');
+}
+
+#top_all {
+  width: 850px;
+  margin: auto;
+  text-align: left;
+}
+
+#head {
+  height: 80px;
+}
+
+#logo {
+  text-align: center;
+}
+
+#header {
+  float: left;
+  margin-top: 40px;
+  padding-left: 20px;
+}
+
+#navi2 {
+  width: 200px;
+  padding-top: 50px;
+  text-align: left;
+  float: right;
+  height: 40px;
+  font-weight: bold;
+  margin: auto;
+}
+
+#banner {
+  background: url('images/banner_halle_rockt.png');
+//  background: url('images/banner_stadt.png');
+  height: 250px;
+//  border: 1px solid #666;
+}
+
+#navi {
+  float: right;
+  width: 850px;
+  height: 40px;
+  text-align: left;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 200px;
+  background: #fff;
+  font-size: 11pt;
+  filter: alpha(opacity=70); /* IE */
+  -moz-opacity: 0.7; /* Gecko-Browser */
+  opacity: 0.7; /* Opera 9+ */
+}
+
+#navi ul, #navi2 ul {
+  display: inline-block;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+}
+
+#navi ul li, #navi2 ul li {
+  float:left;
+  display:inline;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+//  margin-bottom:0.3em;
+  line-height: 2.8em;
+  padding: 0 10px 0 10px;
+  position:relative;
+//  width: 110px;
+}
+
+* html #navi ul li, #navi2 ul li {
+  margin-bottom:-0.4em;
+}
+
+:first-child + html #navi ul, #navi2 ul {
+  margin-bottom:-0.1em;
+}
+
+#navi ul li ul, #navi2 ul li ul {
+  display:none;
+  margin:0;
+  padding:0;
+  position:absolute;
+  top:1.6em;
+}
+
+* html #navi ul li ul, #navi2 ul li ul {
+  left:-0.4em;
+}
+
+:first-child + html #navi ul, #navi2 ul {
+  padding-bottom:0.4em;
+}
+
+#navi ul li ul li, #navi2 ul li ul li {
+  display:block;
+  float:none;
+//  margin-bottom:0.2em;
+}
+
+#navi ul li:hover ul, #navi2 ul li:hover ul {
+  display:block;
+//  width: 110px;
+  padding-top: 4.7px;
+}
+
+#navi ul a, #navi2 ul a {
+  display:block;
+//  padding: 0.2em 0 0.2em 0;
+  text-decoration:none;
+  color: #000;
+}
+
+#navi ul a:hover, #navi2 ul a:hover {
+  height: 38px;
+  background: #aaa;
+  filter: alpha(opacity=70); /* IE */
+  -moz-opacity: 0.7; /* Gecko-Browser */
+  opacity: 0.7; /* Opera 9+ */
+  color: red;
+}
+
+#middle {
+  background-color: #fff;
+  min-height: 550px;
+}
+
+#middle_all, #bottom_all {
+  width: 830px;
+  margin: auto;
+  text-align: left;
+  padding: 20px 0 20px 20px;
+}
+
+#content {
+  width: 500px;
+}
+
+#sidebar {
+  width: 280px;
+  padding: 0px;
+  float: right;
+}
+
+#news{
+  background-color: #E1D3B6;
+  padding: 20px;
+  font-size: 0.9em;
+}
+
+#news ul {
+  display: inline-block;
+  margin: auto;
+  padding: 0;
+}
+
+#news ul li {
+  list-style-image:none;
+  list-style-position:inherit;
+  list-style-type:none;
+  padding-bottom: 15px;
+  text-decoration: underline;
+}
+
+#bottom {
+//  background: url('images/foot.png');
+  background-color: #E1D3B6;
+  height: 270px;
+}
+
+#bottom_top {
+  background-color: #F0E9DA;
+  height: 15px;
+}
+
+#bottom_all, #bottom_all h1 {
+}
+
+#navi3 {
+  width: 50%;
+  float: left;
+}
+
+#navi3 li {
+  text-decoration: underline;
+}
+
+#impress {
+  width: 50%;
+  padding: 0px;
+  float: right;
+}
+
+#impress .storycontent {
+  padding-left: 20px;
+}
+
+h1 {
+  font-size: 12pt;
+  color: #E60005;
+}
+
+h2 {
+  font-size: 11pt;
+  color: #000;
+}
+
+h3 {
+  font-size: 10pt;
+  color: #000;
+  font-weight: bold;
+}
+
+h3 a {
+  font-size: 12pt;
+  color: #E60005;
+}
+
+h1 a {
+  font-size: 12pt;
+  color: #E60005;
+  text-decoration: none;  
+}
+
+a {
+  text-decoration:none;
+  color: #000;
+}
+
+hr {
+  display: block;
+  clear: left;
+}
+
+ol#comments li p {
+	font-size: 100%;
+}
+
+p, li, .feedback {
+//	font: 90%/175% 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+  line-height:1.5em;
+//	letter-spacing: -1px;
+}
+
+/* classes used by the_meta() */
+ul.post-meta {
+	list-style: none;
+}
+
+ul.post-meta span.post-meta-key {
+	font-weight: bold;
+}
+
+.credit {
+  border-top: 3px ridge #aaa;
+  color: #000;
+  font-size: 11px;
+  margin: 0;
+  padding: 2px;
+  text-align: center;
+}
+
+.credit a:link, .credit a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.credt a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+.feedback {
+	color: #ccc;
+	text-align: right;
+	clear: both;
+}
+
+.meta {
+	font-size: .75em;
+}
+
+.meta li, ul.post-meta li {
+	display: inline;
+}
+
+.meta ul {
+	display: inline;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.meta, .meta a {
+	color: #808080;
+	font-weight: normal;
+	letter-spacing: 0;
+}
+
+.storytitle {
+  margin: 0;
+  padding-top: 5px;
+}
+
+.storytitle a {
+  text-decoration: none;
+}
+
+.storycontent a {
+  text-decoration: underline;
+}
+
+#commentform #author, #commentform #email, #commentform #url, #commentform textarea {
+	background: #fff;
+	border: 1px solid #333;
+	padding: .2em;
+}
+
+#commentform textarea {
+	width: 100%;
+}
+
+#commentlist li ul {
+	border-left: 1px solid #ddd;
+	font-size: 110%;
+	list-style-type: none;
+}
+
+#commentlist li .avatar {
+	float: right;
+	margin-right: 25px;
+	border: 1px dotted #ccc;
+	padding: 2px;
+}
+
+#wp-calendar {
+	border: 1px solid #ddd;
+	empty-cells: show;
+	font-size: 14px;
+	margin: 0;
+	width: 90%;
+}
+
+#wp-calendar #next a {
+	padding-right: 10px;
+	text-align: right;
+}
+
+#wp-calendar #prev a {
+	padding-left: 10px;
+	text-align: left;
+}
+
+#wp-calendar a {
+	display: block;
+	text-decoration: none;
+}
+
+#wp-calendar a:hover {
+	background: #e0e6e0;
+	color: #333;
+}
+
+#wp-calendar caption {
+	color: #999;
+	font-size: 16px;
+	text-align: left;
+}
+
+#wp-calendar td {
+	color: #ccc;
+	font: normal 12px 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+	letter-spacing: normal;
+	padding: 2px 0;
+	text-align: center;
+}
+
+#wp-calendar td.pad:hover {
+	background: #fff;
+}
+
+#wp-calendar td:hover, #wp-calendar #today {
+	background: #eee;
+	color: #bbb;
+}
+
+#wp-calendar th {
+	font-style: normal;
+	text-transform: capitalize;
+}
+
+/* Captions & aligment */
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.wp-caption {
+	border: 1px solid #ddd;
+	text-align: center;
+	background-color: #f3f3f3;
+	padding-top: 4px;
+	margin: 0 10px 10px 0;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.wp-caption img {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	padding: 0 4px 5px;
+	margin: 0;
+}
+/* End captions & aligment */
+
+/******************
+* Kontaktformular *
+******************/
+
+form dl, dl.labels {
+  margin:0em;
+  font-size:100%;
+  margin-top:0.5em
+}
+	
+form dt, dl.labels dt {
+  float:left;
+  width:7em;
+  margin-bottom:0.8em;
+  color:#555;
+  text-align:right;
+  font-weight:400;
+  position:relative /*IEWin hack*/
+}
+	
+form dd, dl.labels dd {
+  margin-left:7.5em;
+  margin-bottom:0.8em;
+  font-size:100%;
+  font-style:normal;
+  text-align:left;
+  padding-left:0.5em
+}
+	
+form dd.submit, dl.labels dd.submit  {
+  margin-top:2em
+}
+	
+.error_msg {
+  font-weight:700;
+  color:#C33;
+}
+	
+.pxs_css_spamcheck {
+  display: none !important;
+}

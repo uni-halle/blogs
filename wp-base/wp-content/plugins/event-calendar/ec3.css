@@ -1,0 +1,154 @@
+/* EventCalendar. Copyright (C) 2005 2006, Alex Tingle.  $Revision: 263 $
+ * This file is licensed under the GNU GPL. See LICENSE file for details.
+ */
+
+/***
+ ***  Calendar
+ ***/
+
+#wp-calendar table {
+ width:100%;
+}
+
+#wp-calendar #prev {
+  text-align:left;
+}
+
+#wp-calendar #next {
+  text-align:right;
+}
+
+.ec3_eventday a {
+ color:#a00 !IMPORTANT;
+}
+
+#wp-calendar table td,
+#wp-calendar table th {
+  text-align:center;
+}
+
+#wp-calendar table td,
+#wp-calendar table td.pad:hover,
+#wp-calendar table.nav tr td {
+ padding:1px;
+ border:none;
+}
+
+#wp-calendar table td:hover,
+#wp-calendar table #today {
+ padding:0px;
+ border:solid 1px #999;
+}
+
+/* The EC graphic. */
+.ec3_ec {
+ display:block;
+ float:right;
+ border:none;
+ width:13px;
+ height:9px;
+}
+.ec3_ec span { display:none }
+
+
+/***
+ ***  Popup
+ ***/
+
+.ec3_popup {
+ margin:0 !IMPORTANT;
+ padding:0 !IMPORTANT;
+ border:none;
+ position:absolute;
+ border-collapse:collapse;
+ filter:alpha(opacity=87);
+ -moz-opacity:.87;
+ opacity:.87;
+ z-index:30000;
+}
+
+.ec3_popup td {
+ padding:0;
+}
+
+.ec3_popup table {
+ border:solid #999 1px;        /* popup border */
+ background-color:#eeb;        /* popup background colour */
+ font-size:x-small;            /* popup font size */
+ color:black;
+ text-align:left;
+}
+
+.ec3_popup table td {
+ padding:1.5px 3px 1.5px 3px;
+}
+
+#ec3_shadow0 div { width:8px; height:32px; }
+#ec3_shadow0 {
+ margin:0;
+ padding:0;
+ border:none;
+ width:8px;
+ background-repeat:no-repeat;
+ background-position:bottom right;
+ vertical-align:bottom;
+}
+
+#ec3_shadow1 {
+ margin:0;
+ padding:0;
+ border:none;
+ height:16px;
+ background-repeat:repeat-x;
+}
+
+#ec3_shadow2 div { width:8px; height:32px; }
+
+#ec3_shadow2 {
+ margin:0;
+ padding:0;
+ border:none;
+ width:8px;
+ background-repeat:no-repeat;
+ background-position:bottom left;
+ vertical-align:bottom;
+}
+
+/***
+ ***  Event list
+ ***/
+
+.ec3_list {
+ margin-left:-12px;
+ word-spacing:-1px;
+ letter-spacing:-0.2px;
+ color:#800;
+}
+
+.ec3_list li {
+ font-size:1em !IMPORTANT;
+}
+
+.ec3_list li:before {
+ content:"" !IMPORTANT;
+}
+
+/***
+ ***  Schedule
+ ***/
+
+table.ec3_schedule {
+ border-collapse:collapse;
+ margin:0.5ex 1ex 0.5ex 0;
+ border:solid 1px #800;
+ float:left;
+}
+
+table.ec3_schedule td {
+ padding:0 0.5ex 0 0.5ex;
+ color:#800;
+}
+
+td.ec3_start { text-align:right; }
+
+td.ec3_to    { text-align:center; }

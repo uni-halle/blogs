@@ -1,0 +1,7 @@
+	#right-content li ul.tabs li a:hover {
+		color:#8b8b8b; text-decoration:none;
+	}
+	
+	#navigation a:hover, #navigation li.current_page_item a {
+		color:#8b8b8b;
+	}

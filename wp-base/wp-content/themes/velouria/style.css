@@ -1,0 +1,324 @@
+/*
+Theme Name:  Velouria
+Theme URI:  http: //www.leonpaternoster.com/
+Description:  A simple, one-column theme that uses tags to emphasise your important content. Released under <a href="http: //creativecommons.org/licenses/GPL/2.0/">Creative Commons General Public License</a> (GNU GPL). Please retain the link to my site in the footer.  Thanks to <a href="http://famfamfam.com/">FAMFAMFAM</a> and <a href="http://www.wefunction.com/function-free-icon-set"> Function Design and Development Studio</a> for the icons.
+Version:  0.1
+Author:  Leon Paternoster
+Author URI:  http: //www.leonpaternoster.com/
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background-color: #fff;
+	color: #444;
+}
+
+body {
+	font-size: 100%;
+	line-height: 1.5em;
+	font-family: helvetica, arial, sans-serif;
+	width: 36em;
+	margin: 0 auto;
+	padding-top: 1.5em;
+	background-color: #fff;
+	color: #444;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: helvetica, arial, sans-serif;
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 6em;
+	line-height: 1em;
+	margin-bottom: 0.25em;
+	clear: both;
+}
+
+h2 {
+	font-size: 3em;
+	margin-bottom: 0.5em;
+	line-height: 1em;
+}
+
+h2.article_title {
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #ccc;
+}
+
+h3 {
+	font-size: 1.5em;
+	margin-bottom: 1em;
+}
+
+h4, h5, h6, dt {
+	font-size: 1em;
+}
+
+p, ul, ol, dd {
+	margin-bottom: 1.5em;
+}
+
+em {
+	font-family: georgia, palatino, times, serif;
+	font-style: italic;
+}
+
+abbr, acronym, dfn {
+	font-family: georgia, palatino, times, serif;
+	font-variant: small-caps;
+	border-bottom: 1px dotted #444;
+	cursor: help;
+}
+
+blockquote {
+	background-image: url(images/quote.gif);
+	padding-left: 3em;
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	color: #0066cc;
+	border: none;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #000;
+	background-color: #ffd100;
+	border-bottom: 1px solid #000;
+}
+
+h1 a:link, h1 a:visited, h1 a:hover {
+	text-decoration: none;
+	color: #444;
+	border: none;
+}	
+
+/* ids and classes */
+
+/* -> header styling */
+
+ul.menu {
+	padding: 0.5em 0.1em;
+	border-bottom: 1px solid #ccc;
+}
+
+ul.menu li {
+	display: inline;
+	margin-right: 1.5em;
+}
+
+.current_page_item, .current_page_item a {
+	cursor: default;
+	background-color: #fff;
+	padding-bottom: 0.1em;
+	border-bottom: 0.1em solid #444;
+}
+
+ul.menu li a:link, ul.menu li a:visited {
+	text-decoration: none;
+	color: #444;
+}
+
+#about p, .excerpt p {
+	padding: 0 4em;
+	font-style: italic;
+	font-family: georgia, palatino, serif;
+}
+
+.excerpt p {
+	font-family: helvetica, arial, sans serif;
+	color: #444;
+	font-style: normal;
+}
+
+/* page and post styling */
+
+.post, .page {
+	padding-top: 1.5em;
+	border-top: 1px solid #ccc;
+}
+
+div.alignleft, .alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1em;
+}
+
+div.alignright, .alignright {
+	display: inline;
+	float: right;
+	margin-left: 1em;
+}
+
+div.aligncenter, .aligncenter {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+p.wp-caption-text {
+	font-size: 0.75em;
+	color: #888;
+	margin-bottom: 2em;
+}
+
+.excerpt {
+	margin-bottom: 1.5em;
+	background-image: url(images/newspaper_48.png);
+	background-repeat: no-repeat;
+	background-position: top left;
+}
+
+.excerpt p {
+	margin-bottom: 0;
+}
+
+.excerpt cite {
+	font-style: normal;
+	padding-left: 4em;
+}
+
+p.leader {
+	font-family: helvetica, arial, sans-serif;
+	font-size: 3em;
+	padding: 0.5em 0 0 0;
+	margin-bottom: 0.5em;
+}
+
+ul.must_read_list {
+	padding: 0 4em;
+}
+
+.favs {
+	background-image: url(images/heart_48.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	padding-bottom: 0.7em;
+}
+
+h5.must_read {
+	font-size: 0.875em;
+	margin-left: 4em;
+	padding-left: 1.5em;
+	background-image: url(images/next.gif);
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+
+/* single pages */
+
+.quoteit {
+	background-image: url(images/coffee_mug.png);
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+
+p.postmetadata {
+	font-size: 0.75em;
+	padding: 1em 4.667em;
+	border-top: 1px dotted #ccc;
+	border-bottom: 1px dotted #ccc;
+	color: #888;
+	background-image: url(images/info.gif);
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+
+p.postmetadata+p:first-line {
+	font-family: georgia, palatino, times, serif;
+	font-variant: small-caps;
+	letter-spacing: 0.1em;
+}
+
+ul.turnpage li {
+	list-style-type: none;
+	padding-left: 1.5em;
+}
+
+ul.turnpage li.next {
+	background-image: url(images/next.gif);
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+
+ul.turnpage li.previous {
+	background-image: url(images/previous.gif);
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+
+
+
+/* footer */
+
+ul.footer {
+	padding-top: 1.5em;
+	margin-top: 1.5em;
+	border-top: 1px solid #ccc;
+}
+
+ul.footer li {
+	display: inline;
+	margin-right: 1.5em;
+}
+
+ol.commentlist {
+	padding: 0 4em;
+}
+
+ol.commentlist li {
+	padding: 1.4em 0.7em 0 0.7em;
+}
+
+ol.commentlist li.alt {
+	background-color: #f2f2f2;
+	border-top: 1px dotted #ccc;
+	border-bottom: 1px dotted #ccc;
+}
+
+.comment_meta {
+	padding: 0 2em;
+	font-weight: bold;
+	background-image: url(images/pencil.gif);
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+
+.comment_text {
+	font-size: 1.167em;
+	padding-left: 1.8em;
+}
+
+form#commentform label {
+	font-weight: bold;
+}
+
+form#commentform input {
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 0.35em;
+}
+
+form#commentform input#submit {
+	width: 10em;
+	border: 1px solid #ccc;
+	padding: 0.35em;
+	cursor: pointer;
+}
+
+textarea#comment {
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 0.35em;
+	font-family: helvetica, arial, nimbus sans, sans-serif;
+}

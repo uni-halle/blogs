@@ -1,0 +1,268 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pyrmont_v2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-08 13:14+1000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sebastien <biologie.france@gmail.com>\n"
+"Language-Team: motta <mottaed@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: AUSTRALIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:6
+msgid "404 Error Page"
+msgstr "Page d'erreur 404"
+
+#: 404.php:11
+msgid "This is a 404 error page."
+msgstr "C'est une page d'erreur 404"
+
+#: archives.php:12
+msgid "Archives"
+msgstr "Archives"
+
+#: archives.php:66
+msgid "ERROR:"
+msgstr "ERREUR:"
+
+#: archives.php:66
+msgid "No items were found to be displayed."
+msgstr "Aucun item à afficher"
+
+#: comments.php:12
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Cet article est protégé par mot de passe. Entrez le mot de passe pour voir les ocmmentaires."
+
+#: comments.php:21
+msgid "No Comment."
+msgstr "Aucun commentaire."
+
+#: comments.php:21
+msgid "1 comment so far"
+msgstr "1 commentaire pour l'instant"
+
+#: comments.php:21
+#, php-format
+msgid "% comments so far"
+msgstr "% commentaires pour le moment"
+
+#: comments.php:22
+msgid "Add Your Comment"
+msgstr "Ajoutez votre commentaire"
+
+#: comments.php:47
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés"
+
+#: comments.php:58
+msgid "Your Comment"
+msgstr "Votre commentaire"
+
+#: comments.php:59
+msgid "Change mind? Click here to cancel."
+msgstr "Vous avez changé d'avis ? Appuyez ici pour annuler"
+
+#: comments.php:64
+msgid "You must be <a href=\"<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>\">logged in</a> to post a comment."
+msgstr "Vous devez être <a href=\"<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>\">connecté</a> pour envoyer un commentaire."
+
+#: comments.php:71
+msgid "Logged in as"
+msgstr "Connecté en tant que"
+
+#: comments.php:71
+msgid "Log out of this account"
+msgstr "Se déconnecter de ce compte"
+
+#: comments.php:71
+msgid "Log out &raquo;"
+msgstr "Déconnexion &raquo;"
+
+#: comments.php:81
+msgid "Name"
+msgstr "Nom"
+
+#: comments.php:81
+msgid "<abbr title=\"Required\">*</abbr> :"
+msgstr "<abbr title=\"Requis\">*</abbr> :"
+
+#: comments.php:86
+msgid "Email"
+msgstr "Email"
+
+#: comments.php:86
+msgid "<abbr title=\"Required, would not be published\">*</abbr> :"
+msgstr "<abbr title=\"Requis, sinon vous ne serez pas publié\">*</abbr> :"
+
+#: comments.php:91
+msgid "URI :"
+msgstr "URI :"
+
+#: comments.php:99
+msgid "You can use these tags:"
+msgstr "Vous pouvez utiliser ces tags:"
+
+#: comments.php:102
+msgid "Submit"
+msgstr "Soumettre"
+
+#: footer.php:4
+msgid "Powered by <a href=\"http://wordpress.org/\" title=\"CODE IS POETRY\">WordPress</a>&nbsp;and&nbsp;<a href=\"http://imotta.cn/\" title=\"Pyrmont V2 theme\">Pyrmont V2</a>."
+msgstr "Propulsé par <a href=\"http://wordpress.org/\" title=\"CODE IS POETRY\">WordPress</a>&nbsp;and&nbsp;<a href=\"http://imotta.cn/\" title=\"Pyrmont V2 theme\">Pyrmont V2</a>,<a href=\"http://www.catsjumping.com/\" title=\"Cats Jumping\">Pyrmont V2</a>."
+
+#: functions.php:17
+msgid "Search"
+msgstr "Recherche"
+
+#: functions.php:35
+msgid "Waiting for the admin to approve your comment. Please be patient."
+msgstr "En attente d'approbation par l'administrateur. Soyez patient."
+
+#: functions.php:40
+msgid "&nbsp;said:&nbsp;"
+msgstr "&nbsp;dit:&nbsp;"
+
+#: functions.php:40
+msgid "Y.m.d"
+msgstr "d.m.Y"
+
+#: functions.php:40
+msgid "H:i"
+msgstr "H:i"
+
+#: functions.php:65
+msgid " comments on "
+msgstr "commentaires actifs"
+
+#: header.php:33
+msgid "HOME"
+msgstr "ACCUEIL"
+
+#: header.php:38
+msgid "Follow me on twitter"
+msgstr "Me suivre sur twitter"
+
+#: header.php:39
+msgid "Subscribe"
+msgstr "Souscrire"
+
+#: header.php:39
+msgid "rss feed"
+msgstr "flux rss"
+
+#: index.php:5
+msgid "Tag: "
+msgstr "Tag: "
+
+#: index.php:7
+msgid "Category: "
+msgstr "Categorie: "
+
+#: index.php:17
+#: page.php:17
+#: search.php:12
+#: single.php:11
+msgid "Permalink to: "
+msgstr "Permalien vers:"
+
+#: index.php:20
+#: page.php:20
+#: search.php:14
+#: single.php:14
+msgid "Category"
+msgstr "Catégorie"
+
+#: index.php:24
+#: page.php:24
+#: search.php:18
+#: single.php:18
+msgid "Tags: no tag /"
+msgstr "Tags: aucun tag /"
+
+#: index.php:28
+#: page.php:28
+#: search.php:22
+#: single.php:22
+msgid "Tag"
+msgstr "Tag"
+
+#: index.php:30
+#: page.php:30
+#: search.php:24
+#: single.php:24
+msgid "Add Comment"
+msgstr "Ajouter un commentaire"
+
+#: index.php:30
+#: search.php:24
+msgid "1 comment"
+msgstr "1 commentaire"
+
+#: index.php:30
+#: search.php:24
+#, php-format
+msgid "% comments"
+msgstr "% commentaires"
+
+#: index.php:31
+#: page.php:31
+#: search.php:25
+#: single.php:25
+msgid "Edit"
+msgstr "Editer"
+
+#: index.php:38
+msgid "</p><p>Read More >></p>"
+msgstr "</p><p>Lire la suite >></p>"
+
+#: index.php:47
+#: search.php:33
+msgid "&laquo; Previous Entries"
+msgstr "&laquo; Entrées précédentes"
+
+#: index.php:48
+#: search.php:34
+msgid "Next Entries &raquo;"
+msgstr "Entrées suivantes &raquo;"
+
+#: index.php:55
+#: page.php:48
+#: search.php:41
+#: single.php:42
+msgid "Sorry, nothing found!"
+msgstr "Désolé, rien n'a été trouvé!"
+
+#: index.php:59
+#: page.php:52
+#: search.php:45
+#: single.php:46
+msgid "Please use the search function, or visit the archives page."
+msgstr "Utilisez la fonction de recherche, ou bien visitez la page d'archives"
+
+#: links.php:12
+msgid "Links"
+msgstr "Liens"
+
+#: search.php:4
+msgid "Keyword: "
+msgstr "Mot clé:"
+
+#: sidebar.php:7
+msgid "Recent Posts"
+msgstr "Articles récents"
+
+#: sidebar.php:14
+msgid "Recent Comments"
+msgstr "Commentaires récents"
+
+#: sidebar.php:21
+msgid "Meta"
+msgstr "Meta"
+

@@ -1,0 +1,125 @@
+/*  
+Theme Name: Excellence
+Theme URI: http://www.blogohblog.com
+Description: Excellence was designed and built by Jai Nischal Verma of <a href="http://www.blogohblog.com/" title="free wordpress themes">Blog Oh Blog</a>. I love to hear of my work being used :). This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution 3.0 License</a>. This means you may use it for any purpose, and make any changes you like. Just leave my link under your footer.
+Author: Jai Nischal Verma
+Author URI: http://www.blogohblog.com
+*/
+
+/**************** Body *********************/
+*{margin:0;padding:0;}
+body{background:#FDFCE8 url(images/bg.jpg) top repeat-x; font-family:Arial; font-size:14px;}
+#wrapper {width:952px; margin:auto;}
+
+/**************** Links & formatting *********************/
+a, a:link, a:visited, a:active {color:#669900; text-decoration:none;}
+a:hover{color:#666666;}
+h2.message {font-size:12px; color: #666; background-color:#EFEFEF; padding:5px 5px 5px 10px; margin-bottom:10px; text-transform:uppercase; font-weight:normal;}
+
+/**************** Header *********************/
+#header {height:65px; padding-bottom:6px; margin-top:10px; margin-left:10px; position:relative;}
+#logo {width:500px; float:left; }
+#logo h1 a {color:#CCCCCC; font-size:34px; display:block;}
+#logo h1 a:hover {color:#FFFFFF;}
+#logo h2 {color: #666666; font-size:11px; text-transform:uppercase; margin-top:2px;}
+#logo_right {width:350px; float:right;}
+#topsearch {margin-top:10px; float:right; margin-right:10px;}
+.rss {width:105px; height:56px; position:absolute; bottom:0px; right:180px; display:block;}
+.searchfield {padding:5px 7px 5px 7px; border:none; color:#ccc; font-family:Arial, Helvetica, sans-serif; background-color: #4A4A4A; font-size:12px; width:160px;}
+
+/**************** Navigation *********************/
+#nav_left {width:18px; height:55px; background:url(images/menu_left.jpg); float:left;}
+#navigation{height:55px; background:url(images/menu_bg.jpg) repeat-x; float:left; width:916px;}
+#menu{text-align:left;}
+#menu li{display:inline;list-style:none; font-weight:bold; font-size:16px;}
+.page_item a:link, .page_item a:visited{color: #fff; line-height:45px; display:block; padding:0 20px 0 20px; float:left; margin-right:5px; }
+.page_item a:hover {color:#fff;text-decoration:none; background:url(images/menu_over.jpg) repeat-x;}
+.current_page_item a:link, .current_page_item a:visited{color:#fff; background:url(images/menu_over.jpg) repeat-x; margin-right:5px; line-height:45px; padding:0 20px 0 20px; display:block; float:left; text-decoration:none;}
+#nav_right {width:18px; height:55px; background:url(images/menu_right.jpg); float:left;}
+
+/**************** Entry *********************/
+#blog {float:left; width:445px; margin-top:20px; margin-left:10px;}
+.post {padding:10px 0 30px 0;}
+.post h2 {line-height:32px; margin-bottom:5px;}
+.post h2 a{font-size:26px; color:#333333; letter-spacing:-1px;}
+.post h2 a:hover {color:#000000;}
+html>body .post  ul { margin-left: 0px; padding: 0 0 0 30px; list-style: none; padding-left: 10px; text-indent: -10px; } 
+html>body .post  li { margin: 7px 0 8px 10px; }
+.post ul li:before{ content: "\00BB \0020"; }
+.post img {margin:0 10px 10px 10px;}
+.date {font-size:11px; color: #669900; padding:5px 0 5px 0; position:relative; height:20px;}
+.comms { position:absolute; right:0px; top:0px;}
+.comms a {font-size:11px; text-transform:uppercase; font-weight:bold; color: #fff; background:url(images/comment.gif) no-repeat; padding:10px 0 0 0px; text-align:center; display:block; height:18px; width:107px;}
+.comms a:hover {color: #456127;}
+.meta{background-color:#EEEFE0;border:1px solid #dbdbdb;color:#333;font-size:10px;line-height:20px;margin:10px 0px 10px;padding:2px 6px 2px 6px;text-transform:uppercase;width:445px;}
+.meta a { color:#666; font-weight:bold;}
+.meta a:hover {color:#000;}
+.date span { font-weight:bold; color:#669900;}
+.content {line-height:24px; color:#333;}
+.content p {margin:0 0 15px 0;}
+.postmetadata {padding:5px; border:1px solid #dbdbdb;background-color:#EEEFE0; font-size:10px; line-height:18px; text-transform:uppercase;}
+
+/**************** Sidebar *********************/
+#sidebar {float:left; width:430px; padding:15px 0 0 40px;}
+#sidebar p {color:#666; line-height:20px;}
+#sidebar ul li {list-style:none;}
+#sidebar h2 {font-size:15px; color:#333333; margin:20px 0 20px 0; clear:both;}
+h2.author {background:url(images/author_icon.jpg) left no-repeat; padding-left:24px;}
+.authimg {float:left; margin:0 20px 0 0;border:1px solid #999999;}
+.ads li {list-style:none; display:inline; margin-right:15px;}
+.ads li img {border:1px solid #999999;}
+.adhere a {font-size:11px;}
+
+.sidebar1, .sidebar2 {float:left; width:200px; margin-bottom:20px;}
+.sidebar1 h2, .sidebar2 h2 {background:url(images/categories.jpg) left no-repeat; padding-left:24px;}
+.sidebar1 ul li ul li {padding:5px 0 5px 10px; font-size:12px; background:url(images/bullet.gif) left center no-repeat;}
+.sidebar2 ul li ul li {padding:5px 0 5px 10px; font-size:12px; background:url(images/bullet.gif) left center no-repeat;}
+
+/**************** Comments *********************/
+.alt{margin:0;padding:10px;}
+.commentlist{padding:0;}
+.commentlist li{background-color:#EEEFE0;border:1px solid #dbdbdb;list-style:none;margin:15px 0 10px;padding:5px 5px 10px 5px;}
+.commentlist li ul li{margin-left:10px;margin-right:-5px;}
+.commentlist p{color:#666666;font-size:12px;margin:10px 5px 10px 0;}
+.children{padding:0;}
+#commentform p{margin:5px 0;}
+.nocomments{margin:0;padding:0;text-align:center;}
+h2#comments{clear:both;color:#333333;font-size:15px;margin:0px 0 20px 0;}
+h2#respond{clear:both;color:#333333;font-size:15px;margin:20px 0 20px 0;}
+.commentmetadata{background-color:#fff;color:#333;font-size:13px;margin:0;padding:3px 5px 3px 5px;}
+.commentmetadata a{color:#333;font-weight:bold;}
+#author, #email, #url{background:#EEEFE0;border:1px solid #dbdbdb;color:#666666;font:12px Arial;margin-right:5px;padding:3px;width:12em;}
+#comment{background:#EEEFE0;border:1px solid #dbdbdb;color:#666666;font:12px Arial;padding:3px;width:99%;}
+#submit{font:1em Arial;margin-bottom:15px;margin-top:5px;padding:2px;}
+
+/**************** Footer *********************/
+#footer { height:104px; background:url(images/footer.jpg) repeat-x;}
+.copyright {font-size:11px; color:#fff; width:930px; margin:auto; padding:20px 10px 10px 10px; text-transform:uppercase;}
+.copyright a{color:#97BE3D;}
+.copyright a:hover {color:#fff;}
+
+/**************** Gallery *********************/
+.gallery {text-align:center;}
+.gallery img {padding:2px; height:100px; width:100px;}
+.gallery a:hover {background-color:#ffffff;}
+.attachment {text-align:center;}
+.attachment img { padding:2px; border:1px solid #999999;}
+.attachment a:hover {background-color:#FFFFFF;}
+.imgnav {text-align:center;}
+.imgleft {float:left;}
+.imgleft a:hover {background-color:#FFFFFF;}
+.imgleft img{ padding:2px; border:1px solid #999999; height:100px; width:100px;}
+.imgright {float:right;}
+.imgright a:hover {background-color:#FFFFFF;}
+.imgright img{ padding:2px; border:1px solid #999999; height:100px; width:100px;}
+
+/*******Miscellaneous*******/
+.navigation {clear:both;}
+.alignleft {font-weight:bold; float:left; margin:10px 0 20px 0; text-transform:uppercase; font-size:12px;}
+.alignright {font-weight:bold; float:right; margin:10px 0 20px 0; text-transform:uppercase; font-size:12px;}
+acronym, abbr, span.caps {cursor: help;}
+acronym, abbr {border-bottom: 1px dashed #999;}
+blockquote {margin: 6px 10px 6px 10px; padding-left: 10px; border-left: 2px solid #E0E55F; }
+blockquote cite { margin: 5px 0 0; display: block; }
+pre {border: solid 1px #9a9a9a;color: blue;margin: 10px;padding:10px;background: #f3f2ed}
+code {font-size:1.0em;color: #0099CC; display:block; margin-bottom:15px; }

@@ -1,0 +1,21 @@
+Version 2.0.7
+	20090906 fix the sticky footer bug
+	20090826 add Polish language (Lukasz Romanowicz)
+
+Version 2.0.6
+	20090826 fix comments.php when comment is closed at admin panel(Pinguim Ribeiro)
+	20090826 add Brazilian Portuguese language (Jefferson)
+	20090823 sticky footer in style.css (code from cssstickyfooter.com)
+
+Version 2.0.5
+	20090821 fix subpage display issue at navigation bar
+	20090821 fix confilct with Lightbox2
+	
+Version 2.0.4	
+	20090807 support 2-level dropdown menu at navigation bar
+	20090803 add German and French language (Patrick Taddey and Reaves)
+	20090707 add Danish language (Georg S. Adamsen)
+	20090701 add Italian language (Gianni Diurno)
+	20090629 add h1-h6 and table styles in the entry
+	20090627 add Chinese language
+	20090620 fix title and content display problem when using Windows Live Writer.

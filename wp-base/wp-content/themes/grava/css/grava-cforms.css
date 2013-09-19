@@ -1,0 +1,131 @@
+#content .cform textarea, #content .cform input,
+#content .cform select {
+  margin: 0;
+}
+
+#content .cform ol {
+  list-style: none;
+}
+
+#content .cform li {
+  position: relative;
+  clear: both;
+  padding-top: 10px;
+  display: block;
+}
+
+#content .cform li label {
+  display: block;
+  width: 180px;
+  float: left;
+}
+
+#content .cform li.cf-box-title {
+  float: left;
+  width: 170px;
+  display: block;
+  margin-bottom: -25px;
+}
+
+
+#content .cform li.cf-box-group label {
+  float: none;
+}
+
+#content .cform li.cf-box-group input.cf-box-b,
+#content .cform li input.cf-box-a {
+  float: left;
+  display: block;
+  margin-left: 180px;
+  clear: both;
+}
+
+#content .cform li.cf-box-group label.cf-group-after,
+#content .cform li label.cf-after {
+  display: block;
+  width: 200px;
+  float: right;
+  margin-right: 70px;
+}
+
+#content .cform .reqtxt, #content .cform .emailreqtxt {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 100px;
+  overflow: hidden;
+  display: block;
+  text-align: right;
+  font-size: 12px;
+}
+
+#content .cform legend {
+  font: bold 20px/28px Georgia, "Times New Roman", Times, serif;
+  letter-spacing: 1px;
+  color: #fff;  
+  padding: 0px 20px 20px 20px;  
+}
+
+#content .cform input[type="submit"],
+#content .cform input[type="checkbox"],
+#content .cform input[type="radio"] {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#content .cform li input[type="text"] {
+  width: 240px;
+}
+
+#content .cform li select[multiple="multiple"],
+#content .cform li select.cfselectmulti {
+  height: 120px;
+  display: block;
+}
+
+#content .cform li textarea {
+  width: 420px;
+  overflow: auto; 
+}
+
+#content .cform li select {
+  width: 250px;
+}
+
+#content .cform #cf_captcha_img {
+  border: none;
+  margin-left: 180px;
+  margin-top: 10px;
+}
+
+#content .cform img {
+  border: none;
+}
+
+#content .cform #sendbutton {
+  cursor: pointer;
+  border: none;
+  background: url(../../../themes/grava/imgs/button_bg.png) top left no-repeat #6ed611;
+  text-align: center;
+  display: block;
+  width: 160px;
+  height: 30px;
+  color: #222;
+  font-weight: bold;
+  float: none;
+  clear: both;
+  margin-left: 40px;
+  margin-bottom: 60px;
+}
+
+#content p.linklove, #content p.linklove * {
+  text-align: right;
+  color: #32323b;
+  font-size: 12px;
+  display: none;
+}
+
+#content p.info {
+  color: #6ed611;
+}

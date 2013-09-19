@@ -1,0 +1,28 @@
+#icon-wrp-campaigns {background: url("images/icons32.png") no-repeat scroll -370px -5px transparent;}
+.form-table th.campaign{width:30px;}
+.form-table th.import-settings{width:300px;}
+.form-table td input#subject{
+	width:500px;
+	}
+.form-table td textarea{
+    width:500px;
+}		
+.metabox-holder .column-1 {
+	float: left;
+	width: 65%;
+	}
+.metabox-holder .column-2 {
+	float: right;
+	width: 33%;
+	}
+.metabox-holder .column-3 {
+	clear: both;
+	width: 100%;
+	}
+
+input#campaign-name{width:100%;}
+	
+
+
+
+

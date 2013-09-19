@@ -1,0 +1,17 @@
+DOCUMENTATION for this module is at
+	http://apache.webthing.com/mod_proxy_html/
+
+UPGRADING: IMPORTANT NOTE
+
+If you are upgrading from mod_proxy_html 2.x (or 1.x), you will need
+some new configuration.  You can Include proxy_html.conf from this
+bundle in your httpd.conf (or apache.conf) to use Version 3 as a
+drop-in replacement for Version 2.
+
+
+WINDOWS USERS:
+
+You may need to install some prerequisite libraries before you can
+load mod_proxy_html into apache.  If you don't already have them,
+see the README at
+	http://apache.webthing.com/mod_proxy_html/windows/

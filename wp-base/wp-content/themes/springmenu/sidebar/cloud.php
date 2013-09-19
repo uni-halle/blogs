@@ -1,0 +1,2 @@
+<?php if ( function_exists('wp_tag_cloud') ) : ?><li class="tagcloud">
+<?php wp_tag_cloud('smallest=11&largest=16&unit=px&number=40&format=flat&orderby=name&order=ASC&exclude=&include='); ?></li><?php endif; ?>

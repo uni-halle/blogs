@@ -1,0 +1,13 @@
+/*---:[ IE 7 styles for the Neoclassical Theme ]:---*/
+/*---:[ -------------------------------------- ]:---*/
+
+/*---:[ layout ]:---*/
+
+#respond { width: 423px; clear: both; }
+
+#ie_clear { height: 1%; }
+
+
+/*---:[ NOTE: uncomment each of the following definitions if a custom stylesheet is being used ]:---*/
+
+/*.custom #footer_bottom { margin-top: -2px; padding-bottom: 0 !important; }*/

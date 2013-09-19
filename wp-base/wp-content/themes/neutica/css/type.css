@@ -1,0 +1,86 @@
+/* type.css */
+#wrapper{font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans; font-size:1.3em; line-height:1.4em}
+
+/*Universal Tags
+------------------------ */
+p{margin:1em 0}
+a, a:hover, .green{font-weight:800}
+h1{font-size:5em; letter-spacing:-0.03em; font-weight:800; font-style:normal; text-transform:capitalize}
+
+/*Header
+------------------------ */
+#header h1 {line-height:50px;}
+#header a{text-decoration:none;font-weight:800;}
+#blog-description{font-size:0.9em; line-height:1em}
+
+/*Content
+------------------------ */
+.entry-title{font-size:2.4em; font-weight:800; font-style:normal; text-transform:capitalize; line-height:1em}
+.post h2 a{text-decoration:none}
+.post h2{font-size:1.4em; font-weight:800; font-style:normal; text-transform:capitalize; line-height:1em}
+.post h3{font-size:1.3em; font-weight:800; font-style:normal; text-transform:capitalize; line-height:1.2em}
+.post h4{font-size:1.2em; font-weight:800; font-style:normal; text-transform:capitalize; line-height:1.2em}
+.post h5{font-size:1.1em; font-weight:800; font-style:normal; text-transform:capitalize; line-height:1.2em}
+/* Copy -----*/
+.post .entry-content p{margin:0 0 1em 0}
+.post blockquote{font-style:italic; font-size:1.8em; line-height:1em; font-weight:200}
+.post .number-of-comments a{text-decoration:underline}
+.entry-meta, .archive-meta{font-size:0.85em}
+.entry-meta h2, .archive-meta h2{font-size:2.5em; line-height:0.85em}
+.archive-meta p{margin:0}
+/* Navigation -----*/
+.edit{font-size:.95em; font-weight:800; font-style:normal; text-transform:capitalize}
+#nav-above-content h2.entry-title{line-height:0.55em}
+#nav-above p{font-size:0.9em}
+#nav-below a, #nav-below a:link{font-size:2em; line-height:0.85em}
+#search h2, .prev h2, .next h2, #sb-1 h2, .emptysearch, .error{font-size:2em; font-weight:800; font-style:normal; text-transform:capitalize}
+.pagination a, h2 a:hover,{text-decoration:none}
+/* Archive Page -----*/
+.entry ul#archives-page li h3, .entry-content ul#archives-page li h3 {font-size:1.3em;font-weight:400;}
+.entry-content ul#archives-page li.content-column{font-size:1em;}
+.entry-content ul#archives-page li.content-column ul {font-size:1em;}
+
+/* Comments
+------------------------ */
+#comments h3, #commentform h3 {font-size:2em;font-weight:800;font-style:normal;text-transform:capitalize}
+#comments h4{font-weight:400;}
+#comment-notes{font-size:0.9em; line-height:1.2em}
+.comment p{font-size:1em; line-height:1.4em}
+.cmntCnt{font-weight:800}
+.comment cite{font-style:normal}
+.comment cite a{text-decoration:underline}
+
+/*	Forms
+------------------------ */
+#commentform textarea, .input-text, textarea{font-size:1em;font-family:Helvetica,Arial,sans-serif;}
+#commentform #submit{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:800;}
+#searchform #s{font-size:1em;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+#searchform #searchsubmit{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:800;}
+#error404-s, #noresults-s{font-size:1em;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
+#error404-searchsubmit, #noresults-searchsubmit{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:800;}
+
+/*Menu
+------------------------ */
+#menu{font-size:2em; line-height:0.8em}
+#menu li a:after{content:"."}
+a.back{text-decoration:none}
+.small{font-size:0.6em}
+
+/* Sidebar
+------------------------ */
+.sidebar a{text-decoration:none}
+.sidebar li h3 {margin:10px 0 0 0;font-size:1.5em;font-weight:400;}
+.sidebar li h3 a {font-weight:400;}
+.sidebar li h3 a:hover {text-decoration:underline;}
+.sidebar li {font-size:0.9em;}
+.sidebar li ul li {font-size:1em;}
+.recent-comments li ul li{line-height:1.3em;}
+.recent-comments li ul li {font-size:0.9em}
+.shadetabs {font-size: 1em;font-weight:800;font-style: normal;list-style-type:none;}
+.shadetabs li a:hover {text-decoration:underline;}
+.shadetabs li a.selected{cursor:default;}
+
+/* Footer
+------------------------ */
+#footer a{}
+#footer p{margin:0}

@@ -1,0 +1,436 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Win7blog 0.4.9 in Danish / på dansk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-16 22:23+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Georg S. Adamsen  <wordpress@blogos.dk>\n"
+"Language-Team: Team Blogos <wordpress@blogos.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2;plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_c;_e;__ngettext:1,2;__ngettext_noop:1,2\n"
+"X-Poedit-Basepath: f:\\fra_d\\wordpress\\work-in-progress\\localization\\themes\\win7blog\n"
+"X-Poedit-SearchPath-0: f:\\fra_d\\wordpress\\work-in-progress\\localization\\themes\\win7blog\n"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/single.php:16
+msgid "[Statement]  Author: "
+msgstr "[Statement]  Forfatter: "
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/single.php:17
+msgid "  First Published on: "
+msgstr "  Først udgivet den: "
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/single.php:22
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/image.php:19
+msgid " posted at "
+msgstr " udgivet den "
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/single.php:24
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:23
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:23
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/image.php:21
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:40
+#, php-format
+msgid "Category: %s"
+msgstr "Kategori: %s"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/single.php:25
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/image.php:22
+msgid "| Tags: "
+msgstr " Tags:"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/single.php:26
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archives.php:32
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/links.php:22
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:22
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:22
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:43
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/page.php:15
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/image.php:23
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:39
+msgid "Edit"
+msgstr "Redigér"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/single.php:28
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:31
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/page.php:13
+msgid "Pages:"
+msgstr "Sider:"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archives.php:20
+msgid "Archives by Category"
+msgstr "Arkiver efter kategori"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archives.php:26
+msgid "Archives by Month"
+msgstr "Månedlige arkiver"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:8
+msgid "Search:"
+msgstr "Søg:"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:11
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:38
+msgid "&laquo; Older Results"
+msgstr "&laquo; Ældre resultater"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:12
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:39
+msgid "Newer Results &raquo;"
+msgstr "Nyere resultater &raquo;"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:18
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:19
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:36
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:42
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:37
+#, php-format
+msgid "Permanent Link to %s"
+msgstr "Permanent link til %s"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:24
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:24
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:41
+msgid "Tags: "
+msgstr "Tags: "
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:26
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:26
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:41
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:43
+msgid "No Comments"
+msgstr "Ingen kommentarer"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:26
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:26
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:41
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:43
+msgid "1 Comment"
+msgstr "&Eacute;n kommentar"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:26
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:26
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:41
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:43
+msgid "% Comments"
+msgstr "% kommentarer"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:30
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:30
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:46
+msgid "More &raquo;"
+msgstr "Mere &raquo;"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:45
+msgid "No Results"
+msgstr "Ingen resultater"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:47
+msgid "No posts found. Try a different search?"
+msgstr "Der blev ikke fundet nogen indlæg. Prøv en anden søgning?"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/search.php:52
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/header.php:74
+msgid "Search"
+msgstr "Søg"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:42
+msgid "Read More"
+msgstr "L&aelig;s mere"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:56
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:54
+msgid "&laquo; Older Entries"
+msgstr "&laquo; Ældre indlæg"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/index.php:57
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:55
+msgid "Newer Entries &raquo;"
+msgstr "Nyere indlæg &raquo;"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/404.php:7
+msgid "Not Found"
+msgstr "Ikke fundet"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/404.php:9
+msgid "Apologies, but we were unable to find what you were looking for. Perhaps  searching will help."
+msgstr "Beklager meget! Men vi kunne ikke finde, hvad du ledte efter. Måske kan du finde det, hvis du foretager en søgning."
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/404.php:14
+msgid "Find"
+msgstr "Find"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/image.php:8
+#, php-format
+msgid "Return to %s"
+msgstr "Gå tilbage til %s"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:12
+msgid "This post is protected. Enter the password to view any comments."
+msgstr "Dette indlæg er beskyttet. Indtast kodeordet for at se kommentarerne."
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:47
+#, php-format
+msgid "%d Responses"
+msgstr "% reaktioner"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:47
+msgid "One Response"
+msgstr "&Eacute;n reaktion"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:48
+msgid "Leave a comment"
+msgstr "Læg en kommentar"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:63
+msgid "Leave a Reply"
+msgstr "Læg et svar"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:63
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Læg et svar til %s"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:64
+msgid "Cancel Reply"
+msgstr "Fortryd svar"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:67
+#, php-format
+msgid "You must be <a href=\"%s\" title=\"Log in\">logged in</a> to post a comment."
+msgstr "Du skal være <a href=\"%s\" title=\"Log ind\">logget ind</a> for at kunne indsende en kommentar."
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:74
+msgid "Logged in as "
+msgstr "Logget ind som "
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:74
+msgid "Log out "
+msgstr "Log ud"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:78
+msgid "Name "
+msgstr "Navn "
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:78
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:83
+msgid "(required)"
+msgstr "(skal udfyldes)"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:83
+msgid "Mail (will not be published) "
+msgstr "Mail (offentliggøres ikke) "
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:88
+msgid "Website "
+msgstr "Hjemmeside"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/comments.php:95
+msgid "Submit"
+msgstr "Indsend"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:11
+#, php-format
+msgid "Archive for the &#8216;%s&#8217; Category"
+msgstr "Arkiv for kategorien &#8216;%s&#8217;"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:14
+#, php-format
+msgid "Posts Tagged &#8216;%s&#8217;"
+msgstr "Indlæg tagget &#8216;%s&#8217;"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:17
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:20
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:23
+#, php-format
+msgid "Archive for %s"
+msgstr "Arkiv for %s"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:17
+msgid "F jS, Y"
+msgstr "j. F Y"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:20
+msgid "F, Y"
+msgstr "F Y"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:23
+msgid "Y"
+msgstr "Y"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:26
+msgid "Author Archive"
+msgstr "Forfatterarkiv"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/archive.php:29
+msgid "Blog Archives"
+msgstr "Blogarkiver"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/sidebar.php:9
+msgid "Pages"
+msgstr "Sider"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/sidebar.php:13
+msgid "Categories"
+msgstr "Kategorier"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/sidebar.php:18
+msgid "Archives"
+msgstr "Arkiver"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/sidebar.php:25
+msgid "Meta"
+msgstr "Meta"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/header.php:53
+#, php-format
+msgid "%s latest posts"
+msgstr "%s nyeste indlæg"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/header.php:54
+#, php-format
+msgid "%s latest comments"
+msgstr "%s nyeste kommentarer"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:2
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:2
+msgid " Settings"
+msgstr " Indstillinger"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:5
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:5
+msgid "Donation"
+msgstr "Donation"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:15
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:15
+msgid "If you find my work useful and you want to encourage the development of more free resources, you can do it by donating..."
+msgstr "Hvis du synes, mit arbejde er brugbart, og og du ønsker at opmuntre til udviklingen af flere gratis ressoucer, kan du gøre det ved at donere ..."
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:20
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:20
+msgid "General"
+msgstr "Generelt"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:22
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:22
+msgid "Menu Bar Content"
+msgstr "Indhold af menulinje"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:24
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:24
+msgid "Category"
+msgstr "Kategori"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:25
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:25
+msgid "Page"
+msgstr "Side"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:26
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:26
+msgid "Both"
+msgstr "Begge"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:29
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:29
+msgid "Sticky Post Style"
+msgstr "Style for opslag"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:31
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:31
+msgid "Simple"
+msgstr "Simpel"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:32
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:32
+msgid "Rich"
+msgstr "Avanceret"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:33
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:33
+msgid "None"
+msgstr "Ingen"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:37
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:37
+msgid "Hide Author's Reply from Win7blog Recent Comments (Widget)"
+msgstr "Skjul forfatters svar i nye kommentarer på Win7blog (Widget)"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:40
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:40
+msgid "Show Comment Number of Child Comments"
+msgstr "Vis antal kommentarer for underkommentarer"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:45
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:45
+msgid "SEO"
+msgstr "SEO (Søgemaskine-optimeret)"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:47
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:47
+msgid "Leave these options empty if you are using an SEO plugin"
+msgstr "Udfyld ikke disse valgmuligheder, hvis du bruger et SEO-plugin"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:50
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:50
+msgid "Home Page Description"
+msgstr "Beskrivelse af Hjem-siden"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:54
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:54
+msgid "Home Page Keywords"
+msgstr "Nøgleord for Hjem-siden"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:54
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:54
+msgid "separate with commas"
+msgstr "adskil med kommaer"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:62
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:62
+msgid "Save changes"
+msgstr "Gem ændringer"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings.php:69
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/settings(0).php:69
+msgid "Reset"
+msgstr "Nulstil"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/functions.php:31
+msgid "Reply"
+msgstr "Besvar"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/functions.php:97
+msgid "Home"
+msgstr "Hjem"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/functions.php:123
+msgid "Recent Comments"
+msgstr "Nye kommentarer"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/functions.php:152
+msgid "Title:"
+msgstr "Titel:"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/functions.php:176
+msgid "A neat recent comments"
+msgstr "En smart boks med nye kommentarer."
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/functions.php:178
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/functions.php:179
+msgid "Recent Comments (Win7blog)"
+msgstr "Nye kommentarer (Win7blog)"
+
+#: f:\fra_d\wordpress\work-in-progress\localization\themes\win7blog/functions.php:226
+msgid "Win7blog Settings"
+msgstr "Win7blog-indstillinger"
+
+#~ msgid " Search "
+#~ msgstr " Søg "
+

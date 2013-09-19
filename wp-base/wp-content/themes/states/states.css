@@ -1,0 +1,211 @@
+.usa .primary  { background:#00285B; }
+.usa .secondary{ background:#629DC9; }
+.usa .tertiary, .usa a{ color:#CEA97F; }
+
+.alabama .primary  { background:#B10021; }
+.alabama .secondary{ background:#f1f1f1; }
+.alabama .tertiary, .alabama a{ color:#368547; }
+
+.alaska .primary  { background:#000080; }
+.alaska .secondary{ background:#FFFF00; }
+.alaska .tertiary, .alaska a{ color:#368547; }
+
+.arizona .primary  { background:#002868; }
+.arizona .secondary{ background:#BF0A30; }
+.arizona .tertiary, .arizona a { color:#BF0A30; }
+
+.arkansas .primary  { background:#CC0033; }
+.arkansas .secondary{ background:#000099; }
+.arkansas .tertiary, .arkansas a{ color:#368547; }
+
+.california .primary  { background:#9E1A36; }
+.california .secondary{ background:#B08A61; }
+.california .tertiary, .california a{ color:#368547; }
+
+.california .primary  { background:#9E1A36; }
+.california .secondary{ background:#B08A61; }
+.california .tertiary, .california a{ color:#368547; }
+
+.colorado .primary  { background:#002868; }
+.colorado .secondary{ background:#BF0A30; }
+.colorado .tertiary, .colorado a{ color:#B78445; }
+
+.connecticut .primary  { background:#006AE8; }
+.connecticut .secondary{ background:#0E8731; }
+.connecticut .tertiary, .connecticut a{ color:#B78445; }
+
+.delaware .primary  { background:#76A1A0; }
+.delaware .secondary{ background:#EFA056; }
+.delaware .tertiary, .delaware a{ color:#006FFF; }
+
+.dc .primary  { background:#BF0000; }
+.dc .secondary{ background:#082C5C; }
+.dc .tertiary, .dc a{ color:#B78445; }
+
+.florida .primary  { background:#D43547; }
+.florida .secondary{ background:#F4A207; }
+.florida .tertiary, .florida a{ color:#B78445; }
+
+.georgia .primary  { background:#002577; }
+.georgia .secondary{ background:#B50027; }
+.georgia .tertiary, .georgia a{ color:#FAB700; }
+
+.hawaii .primary  { background:#00247D; }
+.hawaii .secondary{ background:#CF142B; }
+.hawaii .tertiary, .hawaii a{ color:#B78445; }
+
+.idaho .primary  { background:#003776; }
+.idaho .secondary{ background:#FFB32B; }
+.idaho .tertiary, .idaho a{ color:#76481B; }
+
+.illinois .primary  { background:#83613E; }
+.illinois .secondary{ background:#f1f1f1; }
+.illinois .tertiary, .illinois a{ color:#B78445; }
+
+.indiana .primary  { background:#101195; }
+.indiana .secondary{ background:#FFE700; }
+.indiana .tertiary, .indianaa{ color:#B78445; }
+
+.iowa .primary  { background:#3C3C9E; }
+.iowa .secondary{ background:#E3003D; }
+.iowa .tertiary, .iowa a{ color:#A54A00; }
+
+.kansas .primary  { background:#00009C; }
+.kansas .secondary{ background:#3B6E0C; }
+.kansas .tertiary, .kansas a{ color:#FF7D34; }
+
+.kentucky .primary  { background:#000066; }
+.kentucky .secondary{ background:#0E1B33; }
+.kentucky .tertiary, .kentucky a{ color:#B78445; }
+
+.louisiana .primary  { background:#243C6A; }
+.louisiana .secondary{ background:#FFC500; }
+.louisiana .tertiary, .louisiana a{ color:#B78445; }
+
+.maine .primary  { background:#00009E; }
+.maine .secondary{ background:#9ED9FF; }
+.maine .tertiary, .mainea{ color:#B78445; }
+
+.maryland .primary  { background:#EBAB00; }
+.maryland .secondary{ background:#9E1B34; }
+.maryland .tertiary, .maryland a{ color:#000; }
+
+.massachusetts .primary  { background:#31319C; }
+.massachusetts .secondary{ background:#DDA036; }
+.massachusetts .tertiary, .massachusetts a{ color:#B78445; }
+
+.michigan .primary  { background:#00009E; }
+.michigan .secondary{ background:#86473F; }
+.michigan .tertiary, .michigan a{ color:#B78445; }
+
+.minnesota .primary  { background:#3D68C9; }
+.minnesota .secondary{ background:#EE2C49; }
+.minnesota .tertiary, .minnesota a{ color:#B78445; }
+
+.mississippi .primary  { background:#002868; }
+.mississippi .secondary{ background:#BF0A30; }
+.mississippi .tertiary, .mississippi a{ color:#B78445; }
+
+.missouri .primary  { background:#002868; }
+.missouri .secondary{ background:#BF0A30; }
+.missouri .tertiary, .missouri a{ color:#B78445; }
+
+.montana .primary  { background:#002A86; }
+.montana .secondary{ background:#FFD90F; }
+.montana .tertiary, .montana a{ color:#B78445; }
+
+.nebraska .primary  { background:#002A86; }
+.nebraska .secondary{ background:#FFD90F; }
+.nebraska .tertiary, .nebraska a{ color:#B78445; }
+
+.nevada .primary  { background:#013983; }
+.nevada .secondary{ background:#EE8B31; }
+.nevada .tertiary, .nevada a{ color:#01581F; }
+
+.new-hampshire .primary  { background:#002A86; }
+.new-hampshire .secondary{ background:#EE8B31; }
+.new-hampshire .tertiary, .new-hampshire a{ color:#4F9EFF; }
+
+.new-jersey .primary  { background:#FFC94B; }
+.new-jersey .secondary{ background:#00589C; }
+.new-jersey .tertiary, .new-jersey a{ color:#B78445; }
+
+.new-mexico .primary  { background:#FFCC00; }
+.new-mexico .secondary{ background:#C40001; }
+.new-mexico .tertiary, .new-mexico a{ color:#B78445; }
+
+.new-york .primary  { background:#002A86; }
+.new-york .secondary{ background:#4F9BD0; }
+.new-york .tertiary, .new-york a{ color:#B78445; }
+
+.north-carolina .primary  { background:#002868; }
+.north-carolina .secondary{ background:#BF0A30; }
+.north-carolina .tertiary, .north-carolina a{ color:#FFCA00; }
+
+.north-dakota .primary  { background:#002A86; }
+.north-dakota .secondary{ background:#FF163C; }
+.north-dakota .tertiary, .north-dakota a{ color:#DACC2E; }
+
+.ohio .primary  { background:#0000CC; }
+.ohio .secondary{ background:#FF0000; }
+.ohio .tertiary, .ohio a{ color:#B78445; }
+
+.oklahoma .primary  { background:#0074A8; }
+.oklahoma .secondary{ background:#D1B881; }
+.oklahoma .tertiary, .oklahoma a{ color:#395839; }
+
+.oregon .primary  { background:#002A86; }
+.oregon .secondary{ background:#F5E313; }
+.oregon .tertiary, .oregon a{ color:#B78445; }
+
+.pennsylvania .primary  { background:#002A86; }
+.pennsylvania .secondary{ background:#FF582B; }
+.pennsylvania .tertiary, .pennsylvania a{ color:#B78445; }
+
+.rhode-island .primary  { background:#09ACC5; }
+.rhode-island .secondary{ background:#FCC50E; }
+.rhode-island .tertiary, .rhode-island a{ color:#B78445; }
+
+.south-carolina .primary  { background:#003366; }
+.south-carolina .secondary{ background:#f1f1f1; }
+.south-carolina .tertiary, .south-carolina a{ color:#B78445; }
+
+.south-dakota .primary  { background:#0074A8; }
+.south-dakota .secondary{ background:#FFFF00; }
+.south-dakota .tertiary, .south-dakota a{ color:#B78445; }
+
+.tennessee .primary  { background:#E72121; }
+.tennessee .secondary{ background:#003C7C; }
+.tennessee .tertiary, .tennessee a{ color:#003C7C; }
+
+.texas .primary  { background:#BF0A30; }
+.texas .secondary{ background:#002868; }
+.texas .tertiary, .texas a{ color:#B78445; }
+
+.utah .primary  { background:#3B3D9E; }
+.utah .secondary{ background:#FFB30F; }
+.utah .tertiary, .utah a{ color:#B78445; }
+
+.vermont .primary  { background:#002986; }
+.vermont .secondary{ background:#FFEF91; }
+.vermont .tertiary, .vermont a{ color:#B78445; }
+
+.virginia .primary  { background:#00297B; }
+.virginia .secondary{ background:#AC1305; }
+.virginia .tertiary, .virginia a{ color:#97C8F0; }
+
+.washington .primary  { background:#008457; }
+.washington .secondary{ background:#FFD520; }
+.washington .tertiary, .washington a{ color:#34C2DE; }
+
+.west-virginia .primary  { background:#003776; }
+.west-virginia .secondary{ background:#FF3516; }
+.west-virginia .tertiary, .west-virginia a{ color:#B78445; }
+
+.wisconsin .primary  { background:#002986; }
+.wisconsin .secondary{ background:#E0CA15; }
+.wisconsin .tertiary, .wisconsin a{ color:#B78445; }
+
+.wyoming .primary  { background:#0152A4; }
+.wyoming .secondary{ background:#EE1717; }
+.wyoming .tertiary, .wyoming a{ color:#B78445; }

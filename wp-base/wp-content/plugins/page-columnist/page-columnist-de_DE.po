@@ -1,0 +1,177 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Page Columnist v1.0-alpha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2009-01-06 01:16+0100\n"
+"Last-Translator: admin <info@holzwerkstatt-teuchler.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: page-columnist.php:590
+#@ page-columnist
+msgid "nextpage"
+msgstr "Seitenumbruch"
+
+#: page-columnist.php:453
+#@ page-columnist
+msgid "WordPress - Next Page (default)"
+msgstr "WordPress - Nächste Seite (Standard)"
+
+#: page-columnist.php:454
+#@ page-columnist
+msgid "Ordinary Plain Page"
+msgstr "Gewöhnliche Statische Seite"
+
+#: page-columnist.php:455
+#@ page-columnist
+msgid "Every Sub Page as Column"
+msgstr "jede Teil-Seite als Spalte"
+
+#: page-columnist.php:456
+#@ page-columnist
+msgid "First Sub Page as Header"
+msgstr "Erste Teil-Seite als Kopfzeile"
+
+#: page-columnist.php:457
+#@ page-columnist
+msgid "Last Sub Page as Footer"
+msgstr "Letzte Teil-Seite als Fußzeile"
+
+#: page-columnist.php:458
+#@ page-columnist
+msgid "Interior as Columns"
+msgstr "das Innere als Spalten"
+
+#: page-columnist.php:590
+#@ page-columnist
+msgid "insert Page break"
+msgstr "Seitenumbruch einfügen"
+
+#: page-columnist.php:533
+#@ page-columnist
+msgid "Page Columnist &bull; Assistance"
+msgstr "Page Columnist &bull; Assistent"
+
+#: page-columnist.php:525
+#@ page-columnist
+msgid "% spacing"
+msgstr "% Spaltenabstand"
+
+#: page-columnist.php:527
+#@ page-columnist
+msgid "default spacing"
+msgstr "Standard-Abstand"
+
+#: page-columnist.php:529
+#@ page-columnist
+msgid "save changes"
+msgstr "Änderungen speichern"
+
+#: page-columnist.php:521
+#@ page-columnist
+msgid "enable column resizing"
+msgstr "Spaltenbreiten modifizieren"
+
+#: page-columnist.php:682
+#@ page-columnist
+msgid "You do not have the permission to edit this page."
+msgstr "Sie haben nicht die erforderliche Berechtigung zum Bearbeiten dieser Seite."
+
+#: page-columnist.php:694
+#@ page-columnist
+msgid "% column default spacing"
+msgstr "% Standard-Spaltenabstand"
+
+#: page-columnist.php:86
+#@ page-columnist
+msgid "* content missing"
+msgstr "* Inhalt fehlt"
+
+#: page-columnist.php:481
+#: page-columnist.php:482
+#@ page-columnist
+msgid "Page Columnist"
+msgstr "Page Columnist"
+
+#: page-columnist.php:713
+#@ page-columnist
+msgid "spacing:"
+msgstr "Abstand:"
+
+#: page-columnist.php:716
+#@ page-columnist
+msgid "columns:"
+msgstr "Spalten:"
+
+#: page-columnist.php:724
+#@ page-columnist
+msgid "overflow:"
+msgstr "Überlauf:"
+
+#: page-columnist.php:726
+#@ page-columnist
+msgid "hide too much columns"
+msgstr "Spalten ausblenden"
+
+#: page-columnist.php:727
+#@ page-columnist
+msgid "generate virtual pages"
+msgstr "virtuelle Seiten erzeugen"
+
+#: page-columnist.php:745
+#@ page-columnist
+msgid "enable Assistance at Preview"
+msgstr "aktiviere Unterstützung bei Vorschau"
+
+#: page-columnist.php:601
+#@ page-columnist
+msgid "Cols"
+msgstr "Spalten"
+
+#: page-columnist.php:736
+#@ page-columnist
+msgid "render flat single content"
+msgstr "linear darstellen"
+
+#: page-columnist.php:732
+#@ page-columnist
+msgid "at overview pages:"
+msgstr "in Artikel Übersichten:"
+
+#: page-columnist.php:379
+#@ page-columnist
+msgid "Plugin can not be activated."
+msgstr "Plugin kann nicht aktiviert werden."
+
+#: page-columnist.php:379
+#@ page-columnist
+msgid "required"
+msgstr "erforderlich"
+
+#: page-columnist.php:379
+#@ page-columnist
+msgid "actual"
+msgstr "tatsächlich"
+
+#: page-columnist.php:735
+#@ page-columnist
+msgid "pagination"
+msgstr "Pagination"
+
+#: page-columnist.php:734
+#@ page-columnist
+msgid "same as single pages"
+msgstr "wie einzelne Seiten"
+

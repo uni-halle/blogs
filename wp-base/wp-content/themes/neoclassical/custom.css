@@ -1,0 +1,23 @@
+/*
+File:			custom.css
+Description:	Custom styles for the Neoclassical Theme that you define
+
+Use:
+
+The <body> tag has been appended with the "custom" class, like so: <body class="custom">.
+You can use the "custom" class to overwrite *any* CSS declarations contained in this
+theme's style.css file.
+
+For example, if you wish to change the default link color to green, you would add the 
+following declarations to this file:
+
+	.custom a, .custom a:visited { color: #090; } <--- This makes links green
+	
+	.custom a:hover { color: #00f; } <--- This makes links blue when you mouse over them
+
+Why this works:
+
+By using the "custom" class, you are creating more specific CSS declarations for HTML
+elements. CSS styling is applied through rules of specificity, and because declarations
+prepended with .custom are more specific, they get applied when the page is rendered!
+*/

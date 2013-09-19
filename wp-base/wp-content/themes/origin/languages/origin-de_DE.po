@@ -1,0 +1,804 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Origin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-28 10:37+0200\n"
+"PO-Revision-Date: 2012-09-24 16:55+0100\n"
+"Last-Translator: Vincent Kollin <vincent@vkpdm.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.3\n"
+"X-Poedit-SearchPath-0: c:\\wamp\\www\\cell\\wp-content\\themes\\origin\n"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/404.php:27
+msgid "Not Found"
+msgstr "Nicht gefunden"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/404.php:32
+#, php-format
+msgid ""
+"You tried going to %1$s, and it doesn't exist. All is not lost! You can "
+"search for what you're looking for."
+msgstr ""
+"Du versuchst zu %1$s zu kommen, aber es existiert nicht. Noch ist alles "
+"verloren! Bitte benutze doch die Suchfunktion."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/archive.php:35
+#: c:\wamp\www\cell\wp-content\themes\origin/index.php:50
+msgid ""
+"[entry-published] &middot; by [entry-author] &middot; in [entry-terms "
+"taxonomy=\"category\" before=\"\"] [entry-edit-link before=\" &middot; \"]"
+msgstr ""
+"[entry-published] &middot; von [entry-author] &middot; in [entry-terms "
+"taxonomy=\"category\" before=\"\"] [entry-edit-link before=\" &middot; \"]"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/archive.php:41
+#: c:\wamp\www\cell\wp-content\themes\origin/attachment.php:52
+#: c:\wamp\www\cell\wp-content\themes\origin/index.php:58
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-archives.php:53
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-bookmarks.php:51
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-fullwidth.php:37
+#: c:\wamp\www\cell\wp-content\themes\origin/page.php:38
+msgid "Pages:"
+msgstr "Seiten:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/attachment.php:46
+#, php-format
+msgid "Download &quot;%1$s&quot;"
+msgstr "Download &quot;%1$s&quot;"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/attachment.php:51
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-archives.php:35
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-bookmarks.php:35
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-fullwidth.php:35
+#: c:\wamp\www\cell\wp-content\themes\origin/page.php:36
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Weiterlesen  <span class=\"meta-nav\">&rarr;</span>"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/comment.php:32
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar wartet noch auf Moderation."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/comments.php:25
+msgid "No Responses"
+msgstr "Keine Reaktion"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/comments.php:25
+msgid "One Response"
+msgstr "Eine Reaktion"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/comments.php:25
+msgid "% Responses"
+msgstr "% Reaktionen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/comments.php:46
+#, php-format
+msgid ""
+"Comments are closed, but <a href=\"%1$s\" title=\"Trackback URL for this post"
+"\">trackbacks</a> and pingbacks are open."
+msgstr ""
+"Die Kommentarfunktion wurde geschlossen, aber <a href=\"%1$s\" title="
+"\"Trackback URL für diesen Artikel\">Trackbacks</a> und Pingbacks sind noch "
+"offen."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/comments.php:52
+msgid "Comments are closed."
+msgstr "Die Kommentarfunktion ist geschlossen."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:179
+#: c:\wamp\www\cell\wp-content\themes\origin/loop-nav.php:28
+msgid "&larr; Previous"
+msgstr "&larr; Zurück"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:180
+#: c:\wamp\www\cell\wp-content\themes\origin/loop-nav.php:28
+msgid "Next &rarr;"
+msgstr "Vor &rarr;"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:208
+msgid "(Untitled)"
+msgstr "(Ohne Titel)"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:256
+msgid "*"
+msgstr "*"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:261
+msgid "Name"
+msgstr "Name"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:262
+msgid "Email"
+msgstr "Email"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:263
+msgid "Website"
+msgstr "Webseite"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:268
+msgid "Comment"
+msgstr "Kommentar"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:269
+#, php-format
+msgid ""
+"You must be <a href=\"%1$s\" title=\"Log in\">logged in</a> to post a "
+"comment."
+msgstr ""
+"Du musst dich <a href=\"%1$s\" title=\"Anmelden\">Anmelden</a> um diesen "
+"Artikel zu kommentieren."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:270
+#, php-format
+msgid "Logged in as <a href=\"%1$s\" title=\"%2$s\">%2$s</a>."
+msgstr "Angemeldet als  <a href=\"%1$s\" title=\"%2$s\">%2$s</a>."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:270
+msgid "Log out &rarr;"
+msgstr "Abmelden &rarr;"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:275
+msgid "Leave a Reply"
+msgstr "Hinterlasse ein Kommentar"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:276
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Hinterlasse ein Kommentar für  %s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:277
+msgid "Click here to cancel reply."
+msgstr "Klicke hier um den Kommentar abzubrechen."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:278
+msgid "Post Comment &rarr;"
+msgstr "Artikel Kommentar  &rarr;"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:303
+msgid "Copyright &#169; [the-year] [site-link]"
+msgstr "Copyright &#169; [the-year] [site-link]"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/functions.php:303
+msgid "Powered by [wp-link] and [theme-link]"
+msgstr "Ermöglicht durch  [wp-link] und [theme-link]"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/loop-error.php:15
+msgid "Apologies, but no entries were found."
+msgstr "Entschuldigung, aber es wurde nichts gefunden."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/loop-nav.php:16
+msgid "&larr; Return to entry"
+msgstr "$larr; Zurück zum Eintrag"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/loop-nav.php:22
+msgid "&larr; %link"
+msgstr "$larr; %link"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/loop-nav.php:23
+msgid "%link"
+msgstr "%link"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-archives.php:37
+msgid "Archives by category"
+msgstr "Archivierung nach Kategorie"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-archives.php:41
+msgid "RSS"
+msgstr "RSS"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/page-template-archives.php:45
+msgid "Archives by month"
+msgstr "Archivierung nach Monat"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/post.php:48
+msgid "[entry-terms taxonomy=\"post_tag\" before=\"Tags: \"]"
+msgstr "[entry-terms taxonomy=\"post_tag\" before=\"Tags: \"]"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/search.php:34
+msgid "[entry-published] [entry-author]"
+msgstr "[entry-published] [entry-author]"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/singular.php:34
+msgid "By [entry-author] on [entry-published] [entry-edit-link before=\" | \"]"
+msgstr ""
+"Von [entry-author] am [entry-published] [entry-edit-link before=\" | \"]"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:38
+msgid "General settings"
+msgstr "Grundeinstellungen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:56
+msgid "Favicon:"
+msgstr "Favicon:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:62
+msgid "Upload favicon image (recommended max size: 32x32)."
+msgstr "Favicon hochladen (empfohlene maximale Größe: 32x32)."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:74
+msgid "Logo:"
+msgstr "Logo:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:80
+msgid "Upload logo image (recommended max width: 200px)."
+msgstr "Logo hochladen (empfohlene maximale Breite: 200px)."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:92
+msgid "Font family:"
+msgstr "Schriftfamilie:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:96
+msgid "Bitter"
+msgstr "Bitter"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:97
+msgid "Georgia"
+msgstr "Georgia"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:98
+msgid "Droid Serif"
+msgstr "Droid Serif"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:99
+msgid "Helvetica"
+msgstr "Helvetica"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:100
+msgid "Istok Web"
+msgstr "Istok Web"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:101
+msgid "Arial"
+msgstr "Arial"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:102
+msgid "Verdana"
+msgstr "Verdana"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:103
+msgid "Lucida Sans Unicode"
+msgstr "Lucida Sans Unicode"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:104
+msgid "Droid Sans"
+msgstr "Droid Sans"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:112
+msgid "Font size:"
+msgstr "Schriftgröße:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:116
+msgid "default"
+msgstr "Standard"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:117
+msgid "17"
+msgstr "17"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:118
+msgid "16"
+msgstr "16"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:119
+msgid "15"
+msgstr "15"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:120
+msgid "14"
+msgstr "14"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:121
+msgid "13"
+msgstr "13"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:122
+msgid "12"
+msgstr "12"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:124
+msgid "The base font size in pixels."
+msgstr "Die Basisschriftgröße in Pixel."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:131
+msgid "Link color:"
+msgstr "Linkfarbe:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:136
+msgid "Set the theme link color."
+msgstr "Bestimme die Design-Linkfarbe."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:143
+msgid "Custom CSS:"
+msgstr "Eigene CSS:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/admin/functions-admin.php:147
+msgid ""
+"Add your custom CSS here. It would overwrite any default or custom theme "
+"settings."
+msgstr ""
+"Füge hier deine eigenen CSS ein. Es wird alle Standard oder Theme-"
+"Einstellungen überschreiben."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-post-seo.php:37
+msgid "SEO"
+msgstr "SEO"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-post-seo.php:70
+msgid "Document Title:"
+msgstr "Dokumenten Titel"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-post-seo.php:76
+msgid "Meta Description:"
+msgstr "Meta Beschreibung:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-post-seo.php:82
+msgid "Meta Keywords:"
+msgstr "Meta Schlüsselwörter:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-post-template.php:36
+msgid "Template"
+msgstr "Design"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-post-template.php:87
+msgid "No templates exist for this post type."
+msgstr "Es existiert kein Design für diesen Artikel-Typ."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-theme-about.php:31
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-theme-about.php:36
+#, php-format
+msgid "About %1$s"
+msgstr "Über %1$s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-theme-about.php:61
+msgid "Theme:"
+msgstr "Design:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-theme-about.php:69
+msgid "Version:"
+msgstr "Version:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-theme-about.php:77
+msgid "Author:"
+msgstr "Autor:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-theme-about.php:85
+msgid "Description:"
+msgstr "Beschreibung:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-theme-footer.php:29
+msgid "Footer settings"
+msgstr "Footer-Einstellungen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/meta-box-theme-footer.php:52
+msgid ""
+"You can add custom <acronym title=\"Hypertext Markup Language\">HTML</"
+"acronym> and/or shortcodes, which will be automatically inserted into your "
+"theme."
+msgstr ""
+"Du kannst eigene <acronym title=\"Hypertext Markup Language\">HTML</acronym> "
+"und/oder shortcodes einfügen, diese werden dann automatisch eingefügt."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/theme-settings.php:168
+#, php-format
+msgid "%1$s Theme Settings"
+msgstr "%1$s Design-Einstellungen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/theme-settings.php:236
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/admin/theme-settings.php:240
+msgid "Support"
+msgstr "Hilfe"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-archives.php:45
+msgid "Archives"
+msgstr "Archive"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-archives.php:166
+msgid "Title:"
+msgstr "Titel:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-archives.php:202
+msgid "Show post count?"
+msgstr "Artikelanzahl anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-authors.php:45
+msgid "Authors"
+msgstr "Autoren"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-authors.php:195
+msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgstr "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-authors.php:203
+msgid "Exclude admin?"
+msgstr "Admin ausschließen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-authors.php:207
+msgid "Show full name?"
+msgstr "Vollen Namen anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-authors.php:211
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-categories.php:302
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-tags.php:313
+msgid "Hide empty?"
+msgstr "Leere verbergen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:45
+msgid "Bookmarks"
+msgstr "Lesezeichen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:285
+msgid "Categorize?"
+msgstr "Kategorisieren?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:289
+msgid "Show description?"
+msgstr "Beschreibung anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:293
+msgid "Hide invisible?"
+msgstr "Unsichtbare verbergen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:297
+msgid "Show rating?"
+msgstr "Bewertung anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:301
+msgid "Show updated?"
+msgstr "Aktualisierte anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:305
+msgid "Show images?"
+msgstr "Bilder anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:309
+msgid "Show name?"
+msgstr "Namen anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-bookmarks.php:313
+msgid "Show private?"
+msgstr "Private anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-calendar.php:45
+msgid "Calendar"
+msgstr "Kalender"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-calendar.php:114
+msgid "One-letter abbreviation?"
+msgstr "Mit einem Buchstaben abkürzen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-categories.php:45
+msgid "Categories"
+msgstr "Kategorien"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-categories.php:286
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-pages.php:273
+msgid "Hierarchical?"
+msgstr "Hierarchisch?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-categories.php:290
+msgid "Use description?"
+msgstr "Beschreibung verwenden?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-categories.php:294
+msgid "Show last update?"
+msgstr "Letzte Aktualisierung anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-categories.php:298
+msgid "Show count?"
+msgstr "Anzahl anzeigen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-nav-menu.php:44
+msgid "Navigation Menu"
+msgstr "Navigation Menu"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-pages.php:45
+msgid "Pages"
+msgstr "Seiten"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-search.php:45
+msgid "Search"
+msgstr "Suche"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-search.php:144
+msgid "Search Label:"
+msgstr "Such label:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-search.php:148
+msgid "Search Text:"
+msgstr "Such Text:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-search.php:155
+msgid "Search Submit:"
+msgstr "Such-Submit:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-search.php:160
+msgid "Use theme's <code>searchform.php</code>?"
+msgstr "Designeigene <code>searchform.php</code> benutzen?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-tags.php:45
+msgid "Tags"
+msgstr "Tags"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/classes/widget-tags.php:309
+msgid "Pad counts?"
+msgstr "Pad-Anzahl?"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:42
+msgid "Browse:"
+msgstr "Durchsuchen:"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:45
+msgid "Home"
+msgstr "Home"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:296
+msgid "g:i a"
+msgstr "g:i a"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:299
+#, php-format
+msgid "Minute %1$s"
+msgstr "Minute %1$s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:299
+msgid "i"
+msgstr "i"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:302
+msgid "g a"
+msgstr "g a"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:313
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:319
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:324
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:329
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:516
+msgid "Y"
+msgstr "Y"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:314
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:325
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:520
+msgid "F"
+msgstr "F"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:315
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:524
+msgid "d"
+msgstr "d"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:320
+#, php-format
+msgid "Week %1$s"
+msgstr "Woche %1$s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:336
+#, php-format
+msgid "Search results for &quot;%1$s&quot;"
+msgstr "Suchergebnisse für &quot;%1$s&quot;"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:340
+msgid "404 Not Found"
+msgstr "404 Nichts gefunden"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:384
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:417
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:432
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:460
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:409
+msgid "Split"
+msgstr "Aufteilen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/breadcrumb-trail.php:413
+msgid "Merge"
+msgstr "Zusammenfügen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/custom-field-series.php:84
+msgid "Articles in this series"
+msgstr "Artikel in dieser Serie"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/custom-field-series.php:183
+msgid "Series"
+msgstr "Serien"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/post-stylesheets.php:253
+msgid "Stylesheet"
+msgstr "Stylesheet"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:292
+msgid "Default"
+msgstr "Standard"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:293
+msgid "One Column"
+msgstr "Eine Spalte"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:294
+msgid "Two Columns, Left"
+msgstr "Zwei Spalten, Links"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:295
+msgid "Two Columns, Right"
+msgstr "Zwei Spalten, Rechts"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:296
+msgid "Three Columns, Left"
+msgstr "Drei Spalten, Links"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:297
+msgid "Three Columns, Right"
+msgstr "Drei Spalten, Rechts"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:298
+msgid "Three Columns, Center"
+msgstr "Drei Spalten, Mittig"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:374
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:482
+msgid "Layout"
+msgstr "Layout"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/extensions/theme-layouts.php:401
+msgid "Layout is a theme-specific structure for the single view of the post."
+msgstr ""
+"Das Layout ist eine Designeigene Struktur für die Einzeldarstellung für "
+"Artikel."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/comments.php:197
+msgid "Log out &raquo;"
+msgstr "Abmelden &raquo;"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/comments.php:205
+msgid "Post Comment"
+msgstr "Artikel-Kommentare"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:412
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:418
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:421
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:427
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:430
+#, php-format
+msgid "Archive for %1$s"
+msgstr "Archiv für %1$s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:415
+#, php-format
+msgid "Archive for minute %1$s"
+msgstr "Archiv für Minute %1$s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:421
+msgid "F jS, Y"
+msgstr "F jS, Y"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:424
+#, php-format
+msgid "Archive for week %1$s of %2$s"
+msgstr "Archiv für Woche %1$s von %2$s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:424
+msgid "W"
+msgstr "W"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/context.php:449
+#, php-format
+msgid "%1$s Page %2$s"
+msgstr "%1$s Seite %2$s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/deprecated.php:572
+#, php-format
+msgid ""
+"<code>%1$s</code> &mdash; This function has been removed or replaced by "
+"another function."
+msgstr ""
+"<code>%1$s</code> &mdash; Diese Funktion wurde entfernt oder durch eine "
+"andere ersetzt."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/settings.php:76
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/settings.php:80
+msgid "Copyright &#169; [the-year] [site-link]."
+msgstr "Copyright &#169; [the-year] [site-link]."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/settings.php:76
+msgid "Powered by [wp-link], [theme-link], and [child-link]."
+msgstr "Ermöglicht durch [wp-link], [theme-link] und [child-link]."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/settings.php:80
+msgid "Powered by [wp-link] and [theme-link]."
+msgstr "Ermöglicht durch [wp-link] und [theme-link]."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:93
+msgid "WordPress"
+msgstr "WordPress"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:134
+msgid "Log out"
+msgstr "Abmelden"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:136
+msgid "Log in"
+msgstr "Anmelden"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:151
+#, php-format
+msgid "This page loaded in %1$s seconds with %2$s database queries."
+msgstr "Diese Seite wurde in %1$s Sekunden mit %2$s Datenbankabfragen geladen."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:235
+msgid "Leave a response"
+msgstr "Hinterlasse ein Reaktion"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:235
+#, php-format
+msgid "%1$s Response"
+msgstr "%1$s Reaktionen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:235
+#, php-format
+msgid "%1$s Responses"
+msgstr "%1$s Reaktionen"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:328
+msgid "Shortlink"
+msgstr "Shortlink"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:352
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:429
+msgid "Permalink"
+msgstr "Permalink"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:380
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s um %2$s"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:469
+msgid "Reply"
+msgstr "Antwort"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/shortcodes.php:470
+msgid "Log in to reply."
+msgstr "Melde dich an, um zu antworten."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/sidebars.php:82
+msgid "The main (primary) widget area, most often used as a sidebar."
+msgstr "Die Primäre-Widget-Sektion, oft benutzt als Sidebar."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/sidebars.php:86
+msgid ""
+"The second most important widget area, most often used as a secondary "
+"sidebar."
+msgstr "Die Sekundäre-Widget-Sektion, oft benutzt als sekundäre Sidebar."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/sidebars.php:90
+msgid "A widget area loaded in the footer of the site."
+msgstr "Eine Widget-Sektion die im Footer geladen wird."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/sidebars.php:94
+msgid "Displayed within the site's header area."
+msgstr "Wird im Kopfbereich angezeigt"
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/sidebars.php:98
+msgid "Loaded before the page's main content area."
+msgstr "Wird vor dem eigentlichen Inhalt angezeigt."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/sidebars.php:102
+msgid "Loaded after the page's main content area."
+msgstr "Wird nach dem eigentlichen Inhalt angezeigt."
+
+#: c:\wamp\www\cell\wp-content\themes\origin/library/functions/sidebars.php:106
+msgid ""
+"Loaded on singular post (page, attachment, etc.) views before the comments "
+"area."
+msgstr ""
+"Wird in Einzelansichten (Seiten, angehängten Dateien)  vor dem "
+"Kommentarbereich angezeigt."

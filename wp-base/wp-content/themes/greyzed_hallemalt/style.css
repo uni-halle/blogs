@@ -1,0 +1,29 @@
+/*
+Theme Name: Greyzed || Halle Malt Edition
+Theme URI: http://blogs.urz.uni-halle.de/hallemalt
+Description: Child Theme for Halle Malt based on Greyzed
+Author: Matthias Kretschmann
+Author URI: http://matthiaskretschmann.com
+Template: greyzed
+Version: 1.0
+*/
+
+#footer {
+	height: 100%;
+	overflow: hidden;
+	margin-bottom: 1em
+}
+
+#footer-bott .menu-neu-container,
+#footer-bott .menu-neu-container ul,
+#footer-bott .menu-neu-container ul li {
+	display: inline;
+}
+
+#footer-bott .menu-neu-container a {
+	margin-right: 15px
+}
+
+#footer-bott p {
+	margin-top: 1em
+}

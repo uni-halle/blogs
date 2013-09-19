@@ -1,0 +1,1792 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/facebook-awd\n"
+"POT-Creation-Date: 2012-03-21 12:33:14+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: AWD_facebook.php:301
+msgid ""
+"Facebook AWD is almost ready... Go to settings and set your FB app Id, youe "
+"FB Secret Key and your FB User ID (Notification from Facebook AWD)"
+msgstr ""
+
+#: AWD_facebook.php:315
+msgid ""
+"Users can not register, please enable registration account in blog settings "
+"before using FB Connect. (Notification from Facebook AWD)"
+msgstr ""
+
+#: AWD_facebook.php:362
+msgid "My Profile"
+msgstr ""
+
+#: AWD_facebook.php:364 AWD_facebook.php:450 AWD_facebook.php:514
+msgid "Settings"
+msgstr ""
+
+#: AWD_facebook.php:365
+msgid "Wiki"
+msgstr ""
+
+#: AWD_facebook.php:366 AWD_facebook.php:452 AWD_facebook.php:530
+msgid "Support"
+msgstr ""
+
+#: AWD_facebook.php:367
+msgid "Debugger"
+msgstr ""
+
+#: AWD_facebook.php:370
+msgid "Refresh Facebook Data"
+msgstr ""
+
+#: AWD_facebook.php:371
+msgid "Unsync FB Account"
+msgstr ""
+
+#: AWD_facebook.php:436
+msgid "| With:"
+msgstr ""
+
+#: AWD_facebook.php:451
+msgid "Plugins"
+msgstr ""
+
+#: AWD_facebook.php:454 AWD_facebook.php:538 inc/admin/admin_settings.php:46
+msgid "Open Graph"
+msgstr ""
+
+#: AWD_facebook.php:496
+#: inc/classes/plugins/class.AWD_facebook_plugin_abstract.php:110
+msgid "WIKI & SUPPORT"
+msgstr ""
+
+#: AWD_facebook.php:502
+#: inc/classes/plugins/class.AWD_facebook_plugin_abstract.php:116
+msgid "Get Top Freelance Web Developer & Pay Per Hour"
+msgstr ""
+
+#: AWD_facebook.php:515 AWD_facebook.php:523 AWD_facebook.php:531
+#: AWD_facebook.php:548 AWD_facebook.php:562
+msgid "My Facebook"
+msgstr ""
+
+#: AWD_facebook.php:516 AWD_facebook.php:524 AWD_facebook.php:532
+#: AWD_facebook.php:549 AWD_facebook.php:563
+msgid "Application Infos"
+msgstr ""
+
+#: AWD_facebook.php:517 AWD_facebook.php:525 AWD_facebook.php:533
+#: AWD_facebook.php:550 AWD_facebook.php:564
+msgid "Informations"
+msgstr ""
+
+#: AWD_facebook.php:518 AWD_facebook.php:526 AWD_facebook.php:534
+#: AWD_facebook.php:551 AWD_facebook.php:565
+msgid "Activity on your site"
+msgstr ""
+
+#: AWD_facebook.php:519 AWD_facebook.php:527 AWD_facebook.php:535
+#: AWD_facebook.php:552 AWD_facebook.php:566
+msgid "Discover"
+msgstr ""
+
+#: AWD_facebook.php:522
+msgid "Plugins Settings"
+msgstr ""
+
+#: AWD_facebook.php:542
+msgid "Open Graph Metas"
+msgstr ""
+
+#: AWD_facebook.php:545
+msgid "Facebook AWD Manager"
+msgstr ""
+
+#: AWD_facebook.php:622
+msgid "You can use Pattern code in fields, paste it where you need:"
+msgstr ""
+
+#: AWD_facebook.php:626 AWD_facebook.php:635 AWD_facebook.php:642
+#: AWD_facebook.php:650 AWD_facebook.php:663
+msgid "Use blog name"
+msgstr ""
+
+#: AWD_facebook.php:627 AWD_facebook.php:636 AWD_facebook.php:643
+#: AWD_facebook.php:651 AWD_facebook.php:664
+msgid "Use blog description"
+msgstr ""
+
+#: AWD_facebook.php:628 AWD_facebook.php:637 AWD_facebook.php:644
+#: AWD_facebook.php:652 AWD_facebook.php:665
+msgid "Use blog url"
+msgstr ""
+
+#: AWD_facebook.php:629
+msgid "Use term name"
+msgstr ""
+
+#: AWD_facebook.php:630
+msgid "Use term description"
+msgstr ""
+
+#: AWD_facebook.php:645
+msgid "Use archive name"
+msgstr ""
+
+#: AWD_facebook.php:653 AWD_facebook.php:666
+msgid "Use title of post"
+msgstr ""
+
+#: AWD_facebook.php:654 AWD_facebook.php:667
+msgid "Use excerpt"
+msgstr ""
+
+#: AWD_facebook.php:655 AWD_facebook.php:668
+msgid "Use featured image (if activated)"
+msgstr ""
+
+#: AWD_facebook.php:680
+msgid "Message"
+msgstr ""
+
+#: AWD_facebook.php:712
+msgid "Rate this plugin"
+msgstr ""
+
+#: AWD_facebook.php:713
+msgid "Donate"
+msgstr ""
+
+#: AWD_facebook.php:718
+msgid "Plugins installed"
+msgstr ""
+
+#: AWD_facebook.php:728
+msgid "- None"
+msgstr ""
+
+#: AWD_facebook.php:734
+msgid "WIKI"
+msgstr ""
+
+#: AWD_facebook.php:781
+msgid ""
+"You must set a valid Application ID AND a Application secret Key in "
+"settings, then try to reload."
+msgstr ""
+
+#: AWD_facebook.php:790
+msgid "Name"
+msgstr ""
+
+#: AWD_facebook.php:798
+msgid "Link"
+msgstr ""
+
+#: AWD_facebook.php:802
+msgid "Namespace"
+msgstr ""
+
+#: AWD_facebook.php:806
+msgid "Daily active users"
+msgstr ""
+
+#: AWD_facebook.php:810
+msgid "Weekly active users"
+msgstr ""
+
+#: AWD_facebook.php:814
+msgid "Monthly active users"
+msgstr ""
+
+#: AWD_facebook.php:819
+msgid "Test Settings"
+msgstr ""
+
+#: AWD_facebook.php:881
+msgid "Bug Tracker"
+msgstr ""
+
+#: AWD_facebook.php:927 inc/classes/class.AWD_facebook_options.php:130
+msgid "Logout"
+msgstr ""
+
+#: AWD_facebook.php:930
+msgid "My Facebook ID: <strong>%s</strong>"
+msgstr ""
+
+#: AWD_facebook.php:1146
+msgid "Options updated"
+msgstr ""
+
+#: AWD_facebook.php:1148
+msgid "Options not updated there is an error..."
+msgstr ""
+
+#: AWD_facebook.php:1152
+msgid "Options were reseted"
+msgstr ""
+
+#: AWD_facebook.php:1169
+msgid "Facebook infos"
+msgstr ""
+
+#: AWD_facebook.php:1172
+msgid "Facebook Email"
+msgstr ""
+
+#: AWD_facebook.php:1175
+msgid "Enter your Facebook Email"
+msgstr ""
+
+#: AWD_facebook.php:1179
+msgid "Facebook ID"
+msgstr ""
+
+#: AWD_facebook.php:1182
+msgid "Enter your Facebook ID"
+msgstr ""
+
+#: AWD_facebook.php:1186
+msgid "Unsync Facebook Account ?"
+msgstr ""
+
+#: AWD_facebook.php:1189
+msgid ""
+"Note: This will clear all your facebook data linked with this account, you "
+"could login with WP account."
+msgstr ""
+
+#: AWD_facebook.php:1734
+msgid "Error No tags..."
+msgstr ""
+
+#: AWD_facebook.php:1961
+msgid "WARNING Image is emtpy"
+msgstr ""
+
+#: AWD_facebook.php:1963
+msgid "WARNING Title is empty"
+msgstr ""
+
+#: AWD_facebook.php:1965
+msgid "WARNING Site Name is empty"
+msgstr ""
+
+#: AWD_facebook.php:1967
+msgid "WARNING Description is empty"
+msgstr ""
+
+#: AWD_facebook.php:1969
+msgid "WARNING Admins id or app ID are empty"
+msgstr ""
+
+#: AWD_facebook.php:1971
+msgid ""
+"WARNING og:locale is empty, you should define this option in openGraph "
+"settings."
+msgstr ""
+
+#: AWD_facebook.php:2031
+msgid "Image"
+msgstr ""
+
+#: AWD_facebook.php:2044
+msgid "Mp3 song"
+msgstr ""
+
+#: AWD_facebook.php:2066
+msgid "Video"
+msgstr ""
+
+#: AWD_facebook.php:2120
+msgid "Disable Tags for this page ?"
+msgstr ""
+
+#: AWD_facebook.php:2124
+msgid "Disable Tags for this type ? "
+msgstr ""
+
+#: AWD_facebook.php:2124
+msgid "You can override settings on each page individually"
+msgstr ""
+
+#: AWD_facebook.php:2128 AWD_facebook.php:2137 inc/admin/admin_plugins.php:84
+#: inc/admin/admin_plugins.php:104 inc/admin/admin_plugins.php:135
+#: inc/admin/admin_plugins.php:150 inc/admin/admin_plugins.php:165
+#: inc/admin/admin_plugins.php:277 inc/admin/admin_plugins.php:284
+#: inc/admin/admin_plugins.php:291 inc/admin/admin_plugins.php:298
+#: inc/admin/admin_plugins.php:393 inc/admin/admin_plugins.php:426
+#: inc/admin/admin_plugins.php:480 inc/admin/admin_plugins.php:487
+#: inc/admin/admin_plugins.php:500 inc/admin/admin_plugins.php:610
+#: inc/admin/admin_plugins.php:617 inc/admin/admin_plugins.php:624
+#: inc/admin/admin_plugins.php:631 inc/admin/admin_settings.php:41
+#: inc/admin/admin_settings.php:51 inc/admin/admin_settings.php:61
+#: inc/admin/admin_settings.php:72
+#: inc/classes/class.AWD_facebook_widget_activity.php:157
+#: inc/classes/class.AWD_facebook_widget_likebox.php:119
+#: inc/classes/class.AWD_facebook_widget_likebox.php:129
+#: inc/classes/class.AWD_facebook_widget_likebox.php:139
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:117
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:127
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:51
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:68
+msgid "Yes"
+msgstr ""
+
+#: AWD_facebook.php:2129 AWD_facebook.php:2138 inc/admin/admin_plugins.php:85
+#: inc/admin/admin_plugins.php:105 inc/admin/admin_plugins.php:136
+#: inc/admin/admin_plugins.php:151 inc/admin/admin_plugins.php:166
+#: inc/admin/admin_plugins.php:278 inc/admin/admin_plugins.php:285
+#: inc/admin/admin_plugins.php:292 inc/admin/admin_plugins.php:299
+#: inc/admin/admin_plugins.php:394 inc/admin/admin_plugins.php:427
+#: inc/admin/admin_plugins.php:481 inc/admin/admin_plugins.php:488
+#: inc/admin/admin_plugins.php:501 inc/admin/admin_plugins.php:611
+#: inc/admin/admin_plugins.php:618 inc/admin/admin_plugins.php:625
+#: inc/admin/admin_plugins.php:632 inc/admin/admin_settings.php:42
+#: inc/admin/admin_settings.php:52 inc/admin/admin_settings.php:62
+#: inc/admin/admin_settings.php:73
+#: inc/classes/class.AWD_facebook_widget_activity.php:158
+#: inc/classes/class.AWD_facebook_widget_likebox.php:72
+#: inc/classes/class.AWD_facebook_widget_likebox.php:120
+#: inc/classes/class.AWD_facebook_widget_likebox.php:130
+#: inc/classes/class.AWD_facebook_widget_likebox.php:140
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:118
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:128
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:52
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:69
+msgid "No"
+msgstr ""
+
+#: AWD_facebook.php:2136
+msgid "Redefine Tags for this page ?"
+msgstr ""
+
+#: AWD_facebook.php:2143
+msgid "Tags"
+msgstr ""
+
+#: AWD_facebook.php:2189 AWD_facebook.php:2226 AWD_facebook.php:2268
+#: inc/admin/admin_plugins.php:531
+msgid "Upload"
+msgstr ""
+
+#: AWD_facebook.php:2214
+msgid "Video Attachement"
+msgstr ""
+
+#: AWD_facebook.php:2217
+msgid ""
+"Facebook supports embedding video in SWF format only. File ith extension \"."
+"swf\""
+msgstr ""
+
+#: AWD_facebook.php:2219
+msgid ""
+"You must include a valid Image for your video in Tags section to be "
+"displayed in the news feed."
+msgstr ""
+
+#: AWD_facebook.php:2257
+msgid "Audio Attachement"
+msgstr ""
+
+#: AWD_facebook.php:2260
+msgid "In a similar fashion to Video you can add an audio file to your markup"
+msgstr ""
+
+#: AWD_facebook.php:2297
+msgid "code"
+msgstr ""
+
+#: AWD_facebook.php:2303
+msgid "For products which have a UPC code or ISBN number"
+msgstr ""
+
+#: AWD_facebook.php:2313
+msgid "Contact infos"
+msgstr ""
+
+#: AWD_facebook.php:2315
+msgid ""
+"Consider including contact information if your page is about an entity that "
+"can be contacted."
+msgstr ""
+
+#: AWD_facebook.php:2340
+msgid "Location infos"
+msgstr ""
+
+#: AWD_facebook.php:2342
+msgid ""
+"This is useful if your pages is a business profile or about anything else "
+"with a real-world location. You can specify location via latitude and "
+"longitude, a full address, or both."
+msgstr ""
+
+#: AWD_facebook.php:2458
+msgid "You should enable FB connect in %sApp settings%s to use Login buttons"
+msgstr ""
+
+#: AWD_facebook.php:2471
+msgid "Connect with Facebook"
+msgstr ""
+
+#: AWD_facebook.php:2538
+msgid "There is an error, please verify the settings for the like button url"
+msgstr ""
+
+#: AWD_facebook.php:2569 inc/admin/admin_plugins.php:15
+msgid "Like Button"
+msgstr ""
+
+#: AWD_facebook.php:2570
+msgid "Redefine globals settings?"
+msgstr ""
+
+#: AWD_facebook.php:2572 AWD_facebook.php:2577
+msgid "On"
+msgstr ""
+
+#: AWD_facebook.php:2573 AWD_facebook.php:2578
+msgid "Off"
+msgstr ""
+
+#: AWD_facebook.php:2575
+msgid "Activate ?"
+msgstr ""
+
+#: AWD_facebook.php:2581
+msgid "Where ?"
+msgstr ""
+
+#: AWD_facebook.php:2583 inc/admin/admin_plugins.php:142
+#: inc/admin/admin_plugins.php:157 inc/admin/admin_plugins.php:172
+#: inc/admin/admin_plugins.php:374
+#: inc/classes/class.AWD_facebook_widget_activity.php:102
+msgid "Top"
+msgstr ""
+
+#: AWD_facebook.php:2584 inc/admin/admin_plugins.php:143
+#: inc/admin/admin_plugins.php:158 inc/admin/admin_plugins.php:173
+msgid "Bottom"
+msgstr ""
+
+#: AWD_facebook.php:2585 inc/admin/admin_plugins.php:144
+#: inc/admin/admin_plugins.php:159 inc/admin/admin_plugins.php:174
+msgid "Both"
+msgstr ""
+
+#: AWD_facebook.php:2589
+msgid "Publish"
+msgstr ""
+
+#: AWD_facebook.php:2593
+msgid ""
+"You can publish this post to facebook when you save it, It is recommended to "
+"use OpenGraph. You can set the linked FB pages in settings. If you selected "
+"a lot of pages, the loading may be long."
+msgstr ""
+
+#: AWD_facebook.php:2596
+msgid "Publish to Facebook pages ?"
+msgstr ""
+
+#: AWD_facebook.php:2598
+msgid "Publish to your Facebook profile ?"
+msgstr ""
+
+#: AWD_facebook.php:2600
+msgid "Add a message to the post ?"
+msgstr ""
+
+#: AWD_facebook.php:2603
+msgid "Custom Action Label"
+msgstr ""
+
+#: AWD_facebook.php:2604
+msgid "Read More"
+msgstr ""
+
+#: AWD_facebook.php:2607
+msgid ""
+"You must authorize manage_pages permission in the settings of the plugin"
+msgstr ""
+
+#: AWD_facebook.php:2610
+msgid ""
+"You must authorize publish_stream permission in the settings of the plugin"
+msgstr ""
+
+#: AWD_facebook.php:2688 AWD_facebook.php:2691
+msgid "There is an error, please verify the settings for the Comments box url"
+msgstr ""
+
+#: AWD_facebook.php:2763 AWD_facebook.php:2769
+msgid "There is an error, please verify the settings for the Like Box URL"
+msgstr ""
+
+#: AWD_facebook.php:2817 AWD_facebook.php:2823
+msgid ""
+"There is an error, please verify the settings for the Acivity Box DOMAIN"
+msgstr ""
+
+#: AWD_facebook.php:2864
+msgid "Facebook AWD API"
+msgstr ""
+
+#: AWD_facebook.php:2867
+msgid "Facebook AWD APPLICATIONS INFOS"
+msgstr ""
+
+#: AWD_facebook.php:2870
+msgid "Facebook AWD CURRENT USER"
+msgstr ""
+
+#: AWD_facebook.php:2873
+msgid "Facebook AWD Options"
+msgstr ""
+
+#: AWD_facebook.php:2876
+msgid "Facebook AWD FULL"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:14
+msgid "Frontpage"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:15
+msgid "Pages"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:16
+msgid "Posts"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:17
+msgid "Archives"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:18
+msgid "Authors"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:19
+msgid "Custom Post types (Advanced)"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:20
+msgid "Taxonomies (Advanced)"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:121
+msgid "There is no custom post types"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:147
+msgid "There is no Taxonomies"
+msgstr ""
+
+#: inc/admin/admin_open_graph.php:158 inc/admin/admin_plugins.php:694
+#: inc/admin/admin_settings.php:139
+msgid "Save all settings"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:16
+msgid "Activity Feed"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:17
+msgid "Login Button"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:18
+msgid "Like Box"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:19
+msgid "Comments"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:21
+msgid "Live Stream"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:22
+msgid "Recommendations"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:23
+msgid "Send Button"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:24
+msgid "Facepile"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:33
+msgid ""
+"All that settings are defaults, you can redefine them in shortcodes, "
+"widgets, and themes functions"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:37
+msgid "Design"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:44
+msgid "Fonts of button"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:55
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:135
+msgid "Action"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:57
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:137
+msgid "Like"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:57 inc/admin/admin_plugins.php:64
+#: inc/admin/admin_plugins.php:77 inc/admin/admin_plugins.php:85
+#: inc/admin/admin_plugins.php:97 inc/admin/admin_plugins.php:105
+#: inc/admin/admin_plugins.php:142 inc/admin/admin_plugins.php:157
+#: inc/admin/admin_plugins.php:172 inc/admin/admin_plugins.php:241
+#: inc/admin/admin_plugins.php:252 inc/admin/admin_plugins.php:278
+#: inc/admin/admin_plugins.php:285 inc/admin/admin_plugins.php:292
+#: inc/admin/admin_plugins.php:342 inc/admin/admin_plugins.php:373
+#: inc/admin/admin_plugins.php:393 inc/admin/admin_plugins.php:400
+#: inc/admin/admin_plugins.php:427 inc/admin/admin_plugins.php:481
+#: inc/admin/admin_plugins.php:488 inc/admin/admin_plugins.php:501
+#: inc/admin/admin_plugins.php:650 inc/admin/admin_settings.php:62
+#: inc/admin/admin_settings.php:73
+msgid "(default)"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:58
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:138
+msgid "Recommend"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:62
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:80
+msgid "Layout style"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:64
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:82
+msgid "Standard"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:65
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:83
+msgid "Button Count"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:66
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:84
+msgid "Box Count"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:74 inc/admin/admin_plugins.php:238
+#: inc/admin/admin_plugins.php:339 inc/admin/admin_plugins.php:595
+#: inc/classes/class.AWD_facebook_widget_activity.php:60
+#: inc/classes/class.AWD_facebook_widget_comments.php:50
+#: inc/classes/class.AWD_facebook_widget_likebox.php:58
+#: inc/opengraph_objects.php:8 inc/opengraph_objects.php:97
+msgid "Type"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:76 inc/admin/admin_plugins.php:240
+#: inc/admin/admin_plugins.php:341 inc/admin/admin_plugins.php:597
+#: inc/classes/class.AWD_facebook_widget_activity.php:62
+#: inc/classes/class.AWD_facebook_widget_comments.php:52
+#: inc/classes/class.AWD_facebook_widget_likebox.php:60
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:57
+msgid "XFBML"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:77 inc/admin/admin_plugins.php:241
+#: inc/admin/admin_plugins.php:342
+#: inc/classes/class.AWD_facebook_widget_activity.php:63
+#: inc/classes/class.AWD_facebook_widget_likebox.php:61
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:58
+msgid "IFRAME"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:78 inc/admin/admin_plugins.php:242
+#: inc/admin/admin_plugins.php:343 inc/admin/admin_plugins.php:598
+#: inc/classes/class.AWD_facebook_widget_activity.php:64
+#: inc/classes/class.AWD_facebook_widget_comments.php:53
+#: inc/classes/class.AWD_facebook_widget_likebox.php:62
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:59
+msgid "HTML5"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:82
+msgid "Enable \"Send\" button ? %s(xfbml or html5 only)%s"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:89 inc/admin/admin_plugins.php:359
+#: inc/classes/class.AWD_facebook_widget_activity.php:78
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:73
+msgid "Ref"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:95
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:91
+msgid "Colorscheme of button"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:97 inc/admin/admin_plugins.php:252
+#: inc/admin/admin_plugins.php:400 inc/admin/admin_plugins.php:650
+#: inc/classes/class.AWD_facebook_widget_activity.php:112
+#: inc/classes/class.AWD_facebook_widget_comments.php:83
+#: inc/classes/class.AWD_facebook_widget_likebox.php:88
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:93
+msgid "Light"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:98 inc/admin/admin_plugins.php:253
+#: inc/admin/admin_plugins.php:401 inc/admin/admin_plugins.php:651
+#: inc/classes/class.AWD_facebook_widget_activity.php:113
+#: inc/classes/class.AWD_facebook_widget_comments.php:84
+#: inc/classes/class.AWD_facebook_widget_likebox.php:89
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:94
+msgid "Dark"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:102 inc/admin/admin_plugins.php:275
+#: inc/admin/admin_plugins.php:498
+#: inc/classes/class.AWD_facebook_widget_likebox.php:117
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:115
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:66
+msgid "Show Faces ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:109 inc/admin/admin_plugins.php:492
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:101
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:59
+msgid "Width of button"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:115
+msgid "Height of button"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:124
+msgid "Display"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:127
+msgid "Default Url to like"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:133
+msgid "Add \"Like\" button to pages"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:140 inc/admin/admin_plugins.php:155
+#: inc/admin/admin_plugins.php:170
+msgid "Where do you want to place \"Like\" button ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:148
+msgid "Add \"Like\" button to posts"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:163
+msgid "Add \"Like\" button to custom post types"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:178
+msgid "Exclude Post types (for custom post_type, example: post,page,etc...)"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:184
+msgid "Exclude Categories or other terms (slug or id example: photos,34,50)"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:190 inc/admin/admin_plugins.php:636
+msgid "Exclude Posts or Pages ID (example: 12,46,234)"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:199 inc/admin/admin_plugins.php:306
+#: inc/admin/admin_plugins.php:434 inc/admin/admin_plugins.php:544
+#: inc/admin/admin_plugins.php:658
+msgid "Preview"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:206 inc/admin/admin_plugins.php:313
+#: inc/admin/admin_plugins.php:441 inc/admin/admin_plugins.php:556
+#: inc/admin/admin_plugins.php:670
+msgid "-show options-"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:234
+msgid "The like box is added via shortcodes, widgets, and themes functions"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:246
+#: inc/classes/class.AWD_facebook_widget_likebox.php:79
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:66
+msgid "Url of the page"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:250 inc/admin/admin_plugins.php:398
+#: inc/classes/class.AWD_facebook_widget_activity.php:110
+#: inc/classes/class.AWD_facebook_widget_comments.php:81
+#: inc/classes/class.AWD_facebook_widget_likebox.php:86
+msgid "Colorscheme of box"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:257 inc/admin/admin_plugins.php:379
+#: inc/admin/admin_plugins.php:642
+#: inc/classes/class.AWD_facebook_widget_activity.php:120
+#: inc/classes/class.AWD_facebook_widget_comments.php:91
+#: inc/classes/class.AWD_facebook_widget_likebox.php:103
+msgid "Width of box"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:263 inc/admin/admin_plugins.php:385
+#: inc/classes/class.AWD_facebook_widget_activity.php:127
+msgid "Height of box"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:269 inc/admin/admin_plugins.php:418
+#: inc/classes/class.AWD_facebook_widget_activity.php:148
+#: inc/classes/class.AWD_facebook_widget_likebox.php:96
+msgid "Border color"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:282
+#: inc/classes/class.AWD_facebook_widget_likebox.php:127
+msgid "Show Stream ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:289 inc/admin/admin_plugins.php:391
+#: inc/classes/class.AWD_facebook_widget_activity.php:155
+#: inc/classes/class.AWD_facebook_widget_likebox.php:137
+msgid "Show Header ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:296
+msgid "Force Wall ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:335
+msgid "The activity box is added via shortcodes, widgets, and themes functions"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:347
+msgid "Domain"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:353
+#: inc/classes/class.AWD_facebook_widget_activity.php:92
+msgid "Filter"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:365
+#: inc/classes/class.AWD_facebook_widget_activity.php:85
+msgid "Max Age"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:371
+#: inc/classes/class.AWD_facebook_widget_activity.php:99
+msgid "Link target"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:373
+#: inc/classes/class.AWD_facebook_widget_activity.php:101
+msgid "Blank"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:375
+#: inc/classes/class.AWD_facebook_widget_activity.php:103
+msgid "Parent"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:405
+#: inc/classes/class.AWD_facebook_widget_activity.php:134
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:144
+msgid "Font"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:424
+msgid "Show Recommendations ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:478
+msgid "Display the button on the login page (wp-login.php) ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:485
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:49
+msgid "Show Profile picture ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:505
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:76
+msgid "Max Rows (only if show faces = Yes)"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:511
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:83
+msgid "Logout Phrase"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:517
+msgid "Redirect url after login"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:517 inc/admin/admin_plugins.php:523
+msgid "You can use pattern %BLOG_URL%. Default: current url"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:523
+msgid "Redirect url after logout"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:529 inc/admin/admin_plugins.php:707
+msgid "Button Image"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:535
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:102
+msgid "Custom Css"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:574
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:108
+msgid ""
+"You must enable FB Connect and set parameters in settings of the plugins"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:584
+msgid ""
+"All that settings are defaults, you can redefine them in shortcodes, and "
+"themes functions"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:585
+msgid ""
+"Note: Your themes must use the action \"do_action(\"comment_form_after\");\" "
+"or the function \"commnent_form();\" to work. (look in your theme, in "
+"comments.php file)"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:589
+#: inc/classes/class.AWD_facebook_widget_comments.php:60
+msgid "URL to comment on"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:602
+#: inc/classes/class.AWD_facebook_widget_comments.php:67
+msgid "Number of posts"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:608
+#: inc/classes/class.AWD_facebook_widget_comments.php:74
+msgid "Mobile version ?"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:615
+msgid "Add Comments Box to pages"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:622
+msgid "Add Comments Box to posts"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:629
+msgid "Add Comments Box to custom post types"
+msgstr ""
+
+#: inc/admin/admin_plugins.php:648
+msgid "Color Scheme"
+msgstr ""
+
+#: inc/admin/admin_settings.php:20
+msgid "General"
+msgstr ""
+
+#: inc/admin/admin_settings.php:23
+msgid "App ID (facebook)"
+msgstr ""
+
+#: inc/admin/admin_settings.php:27
+msgid "App SECRET KEY"
+msgstr ""
+
+#: inc/admin/admin_settings.php:31
+msgid "Admins IDs (facebook)"
+msgstr ""
+
+#: inc/admin/admin_settings.php:35
+msgid "locale"
+msgstr ""
+
+#: inc/admin/admin_settings.php:39
+msgid "Activate Mode Debug ?"
+msgstr ""
+
+#: inc/admin/admin_settings.php:49
+msgid "Activate Open Graph ?"
+msgstr ""
+
+#: inc/admin/admin_settings.php:51
+msgid "(recommended)"
+msgstr ""
+
+#: inc/admin/admin_settings.php:56
+msgid "Facebook Connect"
+msgstr ""
+
+#: inc/admin/admin_settings.php:59
+msgid "Activate FB Connect ?"
+msgstr ""
+
+#: inc/admin/admin_settings.php:66
+msgid "Timeout Facebook connect API"
+msgstr ""
+
+#: inc/admin/admin_settings.php:70
+msgid "Add FB avatar choice in Wordpress discussion settings ?"
+msgstr ""
+
+#: inc/admin/admin_settings.php:77
+msgid "Facebook Connect permissions (Users)"
+msgstr ""
+
+#: inc/admin/admin_settings.php:82
+msgid "Manage Pages"
+msgstr ""
+
+#: inc/admin/admin_settings.php:87
+msgid "Publish Stream is enabled"
+msgstr ""
+
+#: inc/admin/admin_settings.php:89
+msgid "Authorize App to publish on your pages"
+msgstr ""
+
+#: inc/admin/admin_settings.php:96
+msgid "Pages can be managed by this plugin."
+msgstr ""
+
+#: inc/admin/admin_settings.php:96
+msgid "Select pages to link with Wordpress"
+msgstr ""
+
+#: inc/admin/admin_settings.php:98
+msgid "Authorize App to access your pages"
+msgstr ""
+
+#: inc/admin/admin_settings.php:106
+msgid "Check the page you want to sync with your blog."
+msgstr ""
+
+#: inc/admin/admin_settings.php:124
+msgid "Advanced Actions (BETA)"
+msgstr ""
+
+#: inc/admin/admin_settings.php:129
+msgid "Actions can be posted on your timeline wall"
+msgstr ""
+
+#: inc/admin/admin_settings.php:131
+msgid "Authorize App to publish actions on your timeline"
+msgstr ""
+
+#: inc/admin/admin_settings.php:140
+msgid "Restore defaults settings"
+msgstr ""
+
+#: inc/admin/admin_settings.php:141
+msgid "Make a donation!"
+msgstr ""
+
+#: inc/admin/admin_settings.php:161
+msgid ""
+"Do you really want to reset all settings ? (AWD plugins and openGraph "
+"settings will be reset too)"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_activity.php:21
+msgid ""
+"Add a Facebook Activity Box. Customise the code, or use predefined Activity "
+"box in settings"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_activity.php:22
+#: inc/classes/class.AWD_facebook_widget_activity.php:48
+msgid "Facebook Activity Box"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_activity.php:53
+#: inc/classes/class.AWD_facebook_widget_comments.php:43
+#: inc/classes/class.AWD_facebook_widget_likebox.php:51
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:47
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:42
+#: inc/opengraph_objects.php:7 inc/opengraph_objects.php:94
+msgid "Title"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_activity.php:71
+msgid "Domain (ex: mysite.com)"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_activity.php:163
+#: inc/classes/class.AWD_facebook_widget_comments.php:97
+#: inc/classes/class.AWD_facebook_widget_likebox.php:145
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:158
+msgid "OR"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_activity.php:167
+#: inc/classes/class.AWD_facebook_widget_comments.php:101
+#: inc/classes/class.AWD_facebook_widget_likebox.php:149
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:162
+msgid "Use code instead settings ?"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_activity.php:168
+#: inc/classes/class.AWD_facebook_widget_comments.php:102
+#: inc/classes/class.AWD_facebook_widget_likebox.php:150
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:163
+msgid "Paste"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_activity.php:168
+#: inc/classes/class.AWD_facebook_widget_comments.php:102
+#: inc/classes/class.AWD_facebook_widget_likebox.php:150
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:163
+msgid "if you paste code, settings will be ignored"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_comments.php:21
+msgid ""
+"Add a Facebook Comments Box. Customise the code, or use predefined Comments "
+"box in settings"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_comments.php:22
+#: inc/classes/class.AWD_facebook_widget_comments.php:38
+msgid "Facebook Comments Box"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebox.php:21
+msgid ""
+"Add a Facebook Like Box. Customise the code, or use predefined Like box in "
+"settings"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebox.php:22
+#: inc/classes/class.AWD_facebook_widget_likebox.php:45
+msgid "Facebook Like Box"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebox.php:47
+msgid "Iframe Or xfbml:"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebox.php:69
+msgid "Force Wall"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebox.php:71
+msgid "YES"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebox.php:110
+msgid "Height of box (only for iframe)"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:21
+msgid ""
+"Add a Facebook Like Button. Customise the code, or use predefined Like "
+"button in settings"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:22
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:45
+msgid "Facebook Like Button"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:54
+msgid "Type:"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:108
+msgid "Height of button (only for iframe)"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_likebutton.php:125
+msgid "Enable \"Send\" button ? %s(xfbml only)%s"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:18
+msgid ""
+"Add a Facebook Login Button. Customise the code, or use predefined Login "
+"button in settings"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:37
+msgid "Facebook Login Button"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:89
+msgid "Logout Url redirect"
+msgstr ""
+
+#: inc/classes/class.AWD_facebook_widget_loginbutton.php:95
+msgid "Login Url redirect"
+msgstr ""
+
+#: inc/classes/plugins/class.AWD_facebook_plugin_abstract.php:86
+msgid ""
+"can not be activated: Facebook AWD All in One - Facebook Connect plugin must "
+"be activated"
+msgstr ""
+
+#: inc/classes/plugins/class.AWD_facebook_plugin_abstract.php:90
+msgid ""
+"can not be activated: Facebook AWD All in One plugin is out to date... You "
+"can download the last version or update it from the Wordpress plugin "
+"directory"
+msgstr ""
+
+#: inc/classes/plugins/class.AWD_facebook_plugin_abstract.php:94
+msgid ""
+"can not be activated: Facebook AWD All in One plugin must be installed... "
+"you can download it from the Wordpress plugin directory"
+msgstr ""
+
+#: inc/help/help_plugins.php:12 inc/help/help_settings.php:15
+msgid "Help"
+msgstr ""
+
+#: inc/help/help_plugins.php:18
+msgid "The url to like, in XFBML, defaults to the current page"
+msgstr ""
+
+#: inc/help/help_plugins.php:24
+msgid "The XFBML is available only on sites that use the JavaScript SDK."
+msgstr ""
+
+#: inc/help/help_plugins.php:30
+msgid ""
+"Include a Send button. The Send Button is available only on sites that use "
+"the JavaScript SDK."
+msgstr ""
+
+#: inc/help/help_plugins.php:36
+msgid "Determines the size and amount of social context next to the button."
+msgstr ""
+
+#: inc/help/help_plugins.php:42
+msgid "The width of the plugin, in pixels."
+msgstr ""
+
+#: inc/help/help_plugins.php:48
+msgid "The height of the plugin, in pixels."
+msgstr ""
+
+#: inc/help/help_plugins.php:54
+msgid "Show profile pictures below the button."
+msgstr ""
+
+#: inc/help/help_plugins.php:60
+msgid ""
+"The verb to display in the button. Currently only 'like' and 'recommend' are "
+"supported."
+msgstr ""
+
+#: inc/help/help_plugins.php:66
+msgid "The color scheme of the plugin"
+msgstr ""
+
+#: inc/help/help_plugins.php:72 inc/help/help_plugins.php:78
+msgid "The font of the plugin"
+msgstr ""
+
+#: inc/help/help_plugins.php:84
+msgid ""
+"The domain to show activity for e.g. 'www.example.com'. In XFBML, defaults "
+"to the domain the plugin is on."
+msgstr ""
+
+#: inc/help/help_plugins.php:90
+msgid "Show the Facebook header on the plugin."
+msgstr ""
+
+#: inc/help/help_plugins.php:96 inc/help/help_plugins.php:184
+msgid "The type of button, xfbml,html5 or iframe"
+msgstr ""
+
+#: inc/help/help_plugins.php:102
+msgid ""
+"The maximum age of a URL to show in the plugin. The default is 0 (we don’t "
+"take age into account). Otherwise the valid values are 1-180, which "
+"specifies the number of days. For example, if you specify '7' the plugin "
+"will only show URLs which were created in the past week"
+msgstr ""
+
+#: inc/help/help_plugins.php:108
+msgid ""
+"This specifies the context in which content links are opened. By default all "
+"links within the plugin will open a new window. If you want the content "
+"links to open in the same window, you can set this parameter to _top or "
+"_parent. Links to Facebook URLs will always open in a new window."
+msgstr ""
+
+#: inc/help/help_plugins.php:114
+msgid ""
+"Allows you to filter which URLs are shown in the plugin. The plugin will "
+"only include URLs which contain the filter string in the first two path "
+"parameters of the URL. If nothing in the first two path parameters of the "
+"URL matches the filter, the URL will not be included. For example, if the "
+"'site' parameter is set to 'www.example.com' and the 'filter' parameter was "
+"set to '/section1/section2' then only pages which matched 'http://www."
+"example.com/section1/section2/*' would be included in the activity feed "
+"section of this plugin. The filter parameter does not apply to any "
+"recommendations which may appear in this plugin (see above); Recommendations "
+"are based only on 'site' parameter."
+msgstr ""
+
+#: inc/help/help_plugins.php:120
+msgid ""
+"Must be a comma separated list, consisting of at most 5 distinct items, each "
+"of length at least 1 and at most 15 characters drawn from the set "
+"'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'. "
+"Specifying a value for the ref attribute adds the 'fb_ref' parameter to the "
+"any links back to your site which are clicked from within the plugin. Using "
+"different values for the ref parameter for different positions and "
+"configurations of this plugin within your pages allows you to track which "
+"instances are performing the best"
+msgstr ""
+
+#: inc/help/help_plugins.php:126
+msgid "Show recommendations."
+msgstr ""
+
+#: inc/help/help_plugins.php:132 inc/help/help_plugins.php:195
+msgid ""
+"The border color of the box. Use hexadecimal value ex: #ff0000 for red border"
+msgstr ""
+
+#: inc/help/help_plugins.php:138
+msgid "Will display the login button after the login form on WP login page"
+msgstr ""
+
+#: inc/help/help_plugins.php:144
+msgid "Add custom css for the login button."
+msgstr ""
+
+#: inc/help/help_plugins.php:150
+msgid "The sentence in logout link"
+msgstr ""
+
+#: inc/help/help_plugins.php:156
+msgid "The maximum number of rows of profile pictures to show."
+msgstr ""
+
+#: inc/help/help_plugins.php:162
+msgid "Show pictures of the user's friends who have joined your site"
+msgstr ""
+
+#: inc/help/help_plugins.php:168
+msgid "Show pictures of the user when connected"
+msgstr ""
+
+#: inc/help/help_plugins.php:174
+msgid "Show the profile stream for the public profile"
+msgstr ""
+
+#: inc/help/help_plugins.php:179
+msgid "The type of box, xfbml,html5 or iframe"
+msgstr ""
+
+#: inc/help/help_plugins.php:189
+msgid ""
+"For Places, specifies whether the stream contains posts from the Place's "
+"wall or just checkins from friends. Default value: No"
+msgstr ""
+
+#: inc/help/help_plugins.php:201
+msgid "The default Url to comment on ex:http://www.ahwebdev.fr"
+msgstr ""
+
+#: inc/help/help_plugins.php:206
+msgid "The number of comments to display"
+msgstr ""
+
+#: inc/help/help_plugins.php:211
+msgid "The type of box, xfbml or html5"
+msgstr ""
+
+#: inc/help/help_plugins.php:217
+msgid "Whether to show the mobile-optimized version. Default: auto-detect"
+msgstr ""
+
+#: inc/help/help_settings.php:20
+msgid "Help you debugging Facebook AWD object"
+msgstr ""
+
+#: inc/help/help_settings.php:26
+msgid ""
+"This is the id of your application on Facebook, if you have not yet an "
+"application, you can create one %shere%s."
+msgstr ""
+
+#: inc/help/help_settings.php:33
+msgid "Use xfbml parsing, Visit %sthis page%s"
+msgstr ""
+
+#: inc/help/help_settings.php:36
+msgid "If you set this option to \"No\" you will never be able to use xfbml"
+msgstr ""
+
+#: inc/help/help_settings.php:43
+msgid ""
+"The Open Graph Protocol enables you to integrate your Web pages into the "
+"social graph. It is currently designed for Web pages representing profiles "
+"of real-world things — things like movies, sports teams, celebrities, and "
+"restaurants. Including Open Graph tags on your Web page, makes your page "
+"equivalent to a Facebook Page. This means when a user clicks a Like button "
+"on your page, a connection is made between your page and the user. Your page "
+"will appear in the ”Likes and Interests” section of the user’s profile, and "
+"you have the ability to publish updates to the user. Your page will show up "
+"in the same places that Facebook pages show up around the site (e.g. "
+"search), and you can target ads to people who like your content. The "
+"structured data you provide via the Open Graph Protocol defines how your "
+"page will be represented on Facebook. %sRead more%s"
+msgstr ""
+
+#: inc/help/help_settings.php:50
+msgid ""
+"Facebook helps you simplify and enhance user registration and sign-in by "
+"using Facebook as your login system. Users no longer need to fill in yet "
+"another registration form or remember another username and password to use "
+"your site. As long as the user is signed into Facebook, they are "
+"automatically signed into your site as well. Using Facebook for login "
+"provides you with all the information you need to create a social, "
+"personalized experience from the moment the user visits your site in their "
+"browser. %sRead more%s"
+msgstr ""
+
+#: inc/help/help_settings.php:57
+msgid ""
+"Lang to use with Facebook (default to en_US, or equal to WPLANG Constant if "
+"set in wp-config.php)"
+msgstr ""
+
+#: inc/help/help_settings.php:64
+msgid ""
+"Facebook Connect permissions (example: publish_stream,user_photos,"
+"user_status) %sSee%s the list of permissions "
+msgstr ""
+
+#: inc/help/help_settings.php:70
+msgid ""
+"This value represents the maximum time in seconds to connect to the Facebook "
+"API. If your server is slow, increase this value, then try again"
+msgstr ""
+
+#: inc/help/help_settings.php:75
+msgid ""
+"The plugin can publish on your facebook pages and on your facebook profile "
+"when you edit a post, to allow the app to make call to the Facebook api, "
+"please ask for custom permissions by clicking on the related's button dialog "
+"(Stream publish and Manage pages). Then, you will be able to choose which "
+"pages you want to sync with your blog by selecting them. After you saved "
+"settings, a dedicated web form will appear in post editor to manage "
+"published's actions"
+msgstr ""
+
+#: inc/help/help_settings.php:76 inc/help/help_settings.php:81
+msgid "Learn more on %sWiki%s"
+msgstr ""
+
+#: inc/opengraph_objects.php:6
+msgid "Url"
+msgstr ""
+
+#: inc/opengraph_objects.php:9
+msgid "Description"
+msgstr ""
+
+#: inc/opengraph_objects.php:10
+msgid "Image url (50x50 is better)"
+msgstr ""
+
+#: inc/opengraph_objects.php:11
+msgid "Admin ids"
+msgstr ""
+
+#: inc/opengraph_objects.php:12
+msgid "App IDs"
+msgstr ""
+
+#: inc/opengraph_objects.php:13
+msgid "Page IDs"
+msgstr ""
+
+#: inc/opengraph_objects.php:14
+msgid "Site Name"
+msgstr ""
+
+#: inc/opengraph_objects.php:15
+msgid "Locale"
+msgstr ""
+
+#: inc/opengraph_objects.php:21
+msgid "Activity"
+msgstr ""
+
+#: inc/opengraph_objects.php:22
+msgid "Sport"
+msgstr ""
+
+#: inc/opengraph_objects.php:25
+msgid "Bar"
+msgstr ""
+
+#: inc/opengraph_objects.php:26
+msgid "Company"
+msgstr ""
+
+#: inc/opengraph_objects.php:27
+msgid "Cafe"
+msgstr ""
+
+#: inc/opengraph_objects.php:28
+msgid "Hotel"
+msgstr ""
+
+#: inc/opengraph_objects.php:29
+msgid "Restaurant"
+msgstr ""
+
+#: inc/opengraph_objects.php:32
+msgid "Cause"
+msgstr ""
+
+#: inc/opengraph_objects.php:33
+msgid "Sports league"
+msgstr ""
+
+#: inc/opengraph_objects.php:34
+msgid "Sports team"
+msgstr ""
+
+#: inc/opengraph_objects.php:37
+msgid "Band"
+msgstr ""
+
+#: inc/opengraph_objects.php:38
+msgid "Government"
+msgstr ""
+
+#: inc/opengraph_objects.php:39
+msgid "Non profit"
+msgstr ""
+
+#: inc/opengraph_objects.php:40
+msgid "School"
+msgstr ""
+
+#: inc/opengraph_objects.php:41
+msgid "University"
+msgstr ""
+
+#: inc/opengraph_objects.php:44
+msgid "Actor"
+msgstr ""
+
+#: inc/opengraph_objects.php:45
+msgid "Athlete"
+msgstr ""
+
+#: inc/opengraph_objects.php:46
+msgid "Director"
+msgstr ""
+
+#: inc/opengraph_objects.php:47
+msgid "Musician"
+msgstr ""
+
+#: inc/opengraph_objects.php:48
+msgid "Politician"
+msgstr ""
+
+#: inc/opengraph_objects.php:49
+msgid "Public figure"
+msgstr ""
+
+#: inc/opengraph_objects.php:52
+msgid "City"
+msgstr ""
+
+#: inc/opengraph_objects.php:53
+msgid "Country"
+msgstr ""
+
+#: inc/opengraph_objects.php:54
+msgid "Landmark"
+msgstr ""
+
+#: inc/opengraph_objects.php:55
+msgid "State province"
+msgstr ""
+
+#: inc/opengraph_objects.php:58 inc/opengraph_objects.php:96
+msgid "Album"
+msgstr ""
+
+#: inc/opengraph_objects.php:59
+msgid "Book"
+msgstr ""
+
+#: inc/opengraph_objects.php:60
+msgid "Drink"
+msgstr ""
+
+#: inc/opengraph_objects.php:61
+msgid "Food"
+msgstr ""
+
+#: inc/opengraph_objects.php:62
+msgid "Game"
+msgstr ""
+
+#: inc/opengraph_objects.php:63
+msgid "Product"
+msgstr ""
+
+#: inc/opengraph_objects.php:64
+msgid "Song"
+msgstr ""
+
+#: inc/opengraph_objects.php:65
+msgid "Movie"
+msgstr ""
+
+#: inc/opengraph_objects.php:66
+msgid "Tv show"
+msgstr ""
+
+#: inc/opengraph_objects.php:69
+msgid "Blog"
+msgstr ""
+
+#: inc/opengraph_objects.php:70
+msgid "Website"
+msgstr ""
+
+#: inc/opengraph_objects.php:71
+msgid "Article"
+msgstr ""
+
+#: inc/opengraph_objects.php:82
+msgid "Video src (swf only, for Facebook site)"
+msgstr ""
+
+#: inc/opengraph_objects.php:83
+msgid "Height (max: 460px)"
+msgstr ""
+
+#: inc/opengraph_objects.php:84
+msgid "Width (max: 398px)"
+msgstr ""
+
+#: inc/opengraph_objects.php:85
+msgid "Type swf"
+msgstr ""
+
+#: inc/opengraph_objects.php:86
+msgid "Video src HTTPS (swf only, for Facebook site)"
+msgstr ""
+
+#: inc/opengraph_objects.php:87
+msgid "Video src (mp4 only, for Iphone/Ipad/Safari) "
+msgstr ""
+
+#: inc/opengraph_objects.php:88
+msgid "Type mp4"
+msgstr ""
+
+#: inc/opengraph_objects.php:89
+msgid "Video src (page html only)"
+msgstr ""
+
+#: inc/opengraph_objects.php:90
+msgid "Type html"
+msgstr ""
+
+#: inc/opengraph_objects.php:93
+msgid "Audio src (mp3 only)"
+msgstr ""
+
+#: inc/opengraph_objects.php:95
+msgid "Artist"
+msgstr ""
+
+#: inc/opengraph_objects.php:100
+msgid "Email"
+msgstr ""
+
+#: inc/opengraph_objects.php:101
+msgid "Phone number"
+msgstr ""
+
+#: inc/opengraph_objects.php:102
+msgid "Fax number"
+msgstr ""
+
+#: inc/opengraph_objects.php:106
+msgid "Latitude"
+msgstr ""
+
+#: inc/opengraph_objects.php:107
+msgid "Longitude"
+msgstr ""
+
+#: inc/opengraph_objects.php:108
+msgid "Street address"
+msgstr ""
+
+#: inc/opengraph_objects.php:109
+msgid "Locality"
+msgstr ""
+
+#: inc/opengraph_objects.php:110
+msgid "Region"
+msgstr ""
+
+#: inc/opengraph_objects.php:111
+msgid "Postal code"
+msgstr ""
+
+#: inc/opengraph_objects.php:112
+msgid "Country name"
+msgstr ""
+
+#: inc/opengraph_objects.php:115
+msgid "Isbn"
+msgstr ""
+
+#: inc/opengraph_objects.php:118
+msgid "Upc"
+msgstr ""

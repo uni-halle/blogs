@@ -1,0 +1,52 @@
+a,
+h3.storytitle,
+h3.storytitle a,
+.meta a, .the-tags a,
+.track-feed, .track-feed a,
+.user-in a,
+table#wp-calendar tbody a,
+#commentlist li p cite,
+#commentlist li p cite a
+{
+	color: #80681E;
+}
+
+table#wp-calendar caption,
+table#wp-calendar tfoot a,
+#menu ul li ul li
+{
+	color: #80681E;
+}
+.blog-desc {
+ text-shadow: #d0c4ab 0 1px 0;
+}
+table#wp-calendar caption, table#wp-calendar th, table#wp-calendar td {
+	background-color:#EBE4DA;
+}
+.tabnav li a {
+	background-color:#B09D75;	
+}
+.tabdiv,
+#commentform input,
+#commentform textarea {
+	background: #EBE4DA;
+}
+.tabdiv li {		
+	border-top: 1px solid #D7CFC2;
+}
+#menu ul li {
+	background: #EBE4DA;
+}
+#menu ul li ul li {
+	border-top: 1px solid #D7CFC2;
+}
+body
+{
+	background: white url(brown/bg.gif) left top repeat-x;
+}
+#header {
+	background: url(brown/head-bg.jpg) center top no-repeat;
+}
+.rss-feed {
+	background: url(brown/rss-bg.gif) right bottom no-repeat;
+}

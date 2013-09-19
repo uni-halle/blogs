@@ -1,0 +1,15 @@
+/* Teal Style */
+
+body#woothemes { background: #01212C url(teal/bg.jpg) repeat-x center 0; }
+
+body#woothemes h1, 
+body#woothemes h2, 
+body#woothemes h3, 
+body#woothemes h4, 
+#footer #footerWrap #copy a,
+#sidebar a,
+ol.commentlist li p a
+{ color: #48abb7; }
+
+p.txt0, p.txt0 a, .continue
+{ color: #a3e4e2; }

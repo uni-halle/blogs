@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://blogs.urz.uni-halle.de/medizinethik/sitemap.xml.gz
