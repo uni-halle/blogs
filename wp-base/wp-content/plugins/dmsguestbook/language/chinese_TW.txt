@@ -1,0 +1,17 @@
+﻿/* icespeech *** icespeech(at)gmail(dot)com *** TraditionalChineseVision*/
+
+<name>暱稱</name>
+<email>E-mail</email>
+<url>個人網頁</url>
+<message>留言內容</message>
+<antispam><b>驗證碼</b><br />送出留言之前請先輸入驗證碼</antispam>
+<mandatory>必填</mandatory>
+<submit>送出</submit>
+<name_error>您的暱稱太短！</name_error>
+<email_error>您的 E-mail 格式有誤！</email_error>
+<url_error>您的網頁網址格式有誤！</url_error>
+<message_error>您的留言內容太短！</message_error>
+<antispam_error>驗證碼輸入錯誤！</antispam_error>
+<success>感謝您的留言！</success>
+<admin_review>您的留言在發佈前將會先交由管理員檢閱，<br />感謝您的耐心等待！</admin_review>
+<spam_detect>此留言含有疑似垃圾訊息的內容！<br />它將暫時不會被此留言板所接受，並等到管理員審核過內容後再做定論。</spam_detect>

@@ -1,0 +1,17 @@
+/* Daniel Schurter *** DMSGuestbook(at)DanielSchurter(dot)net */
+
+<name>Name</name>
+<email>Email</email>
+<url>Website</url>
+<message>Text</message>
+<antispam><b>Anti-spam measures</b><br />Please insert the letter and number combination into the text field before submitting the guestbook entry.</antispam>
+<mandatory>Required</mandatory>
+<submit>Submit</submit>
+<name_error>Name is too short!</name_error>
+<email_error>Invalid email address!</email_error>
+<url_error>Invalid website address!</url_error>
+<message_error>Text is too short!</message_error>
+<antispam_error>Wrong letter-number combination!</antispam_error>
+<success>Thank you for signing our Guestbook!</success>
+<admin_review>The administrator will review your entry before it goes live!<br />Thanks for your patience!</admin_review>
+<spam_detect>This entry contains probably Spam!<br />It was not submitted, but might be reviewed by an administrator for later inclusion.</spam_detect>

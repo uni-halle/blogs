@@ -1,0 +1,16 @@
+/* skurakai *** skurakai(at)yahoo(dot)com */
+
+<name>Jm&#233;no</name>
+<email>E-mail</email>
+<url>Web</url>
+<message>zpr&#225;va</message>
+<antispam><b>Antispamov&#225; kontrola</b><br />Opi&#353;te pros&#237;m kombinaci &#269;&#237;slic a p&#237;smen p&#345;esn&#283; podle obr&#225;zku</antispam>
+<mandatory>Povinn&#225; polo&#382;ka</mandatory>
+<submit>Odeslat</submit>
+<name_error>P&#345;&#237;li&#353; kr&#225;tk&#233; jm&#233;no!</name_error>
+<email_error>Neplatn&#225; e-mailov&#225; adresa!</email_error>
+<url_error>Neplatn&#225; webov&#225; adresa!</url_error>
+<message_error>Text zpr&#225;vy je p&#345;&#237;li&#353; kr&#225;tk&#253;!</message_error>
+<antispam_error>&#352;patn&#225; vypln&#283;n&#225; antispamov&#225; kontrola!</antispam_error>
+<success>D&#283;kujeme za odesl&#225;n&#237; va&#353;eho n&#225;zoru!</success>
+<admin_review>Administr&#225;tor zkontroluje v&#225;&#353; p&#345;&#237;sp&#283;vek!<br />D&#283;kujeme za trp&#283;livost!</admin_review>

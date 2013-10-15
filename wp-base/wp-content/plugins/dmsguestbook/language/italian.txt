@@ -1,0 +1,16 @@
+/* Lucky *** info(at)blog.nuke-evolution(dot)it */
+
+<name>Nome</name>
+<email>Indirizzo Email</email>
+<url>Sito Web</url>
+<message>Testo</message>
+<antispam><b>Misura Antispam</b><br />Per inserire un nuovo messaggio &egrave indispensabile trascrivere il codice di sicurezza, rispettando la combinazione (lettere e numeri).</antispam>
+<mandatory>Obbligatorio</mandatory>
+<submit>Invia</submit>
+<name_error>Il nome &egrave troppo corto!</name_error>
+<email_error>L'indirizzo email non &egrave valido!</email_error>
+<url_error>L'url non &egrave valido!</url_error>
+<message_error>Il testo &egrave troppo breve!</message_error>
+<antispam_error>La combinazione antispam non &egrave corretta!</antispam_error>
+<success>Grazie per il tuo messaggio!</success>
+<admin_review>L'amministratore verificher&agrave questo post!<br />Grazie per la pazienza!</admin_review>

@@ -39,6 +39,12 @@ class M_Attach_To_Post extends C_Base_Module
 
 		include_once('class.attach_to_post_installer.php');
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_Attach_To_Post_Installer');
+		
+		$uri = strtolower($_SERVER['REQUEST_URI']);
+		
+		if (strpos($uri, '/nextgen-attach_to_post') !== false) {
+			define('WP_ADMIN', true);
+		}
     }
 
     /**

@@ -1,0 +1,17 @@
+/* Haco Haco *** info(at)hajohajo(dot)com */
+
+<name>Nav</name><br />
+<email>Email</email><br />
+<url>Malpere</url><br />
+<message>Gotin</message><br />
+<antispam><b>Dij&#238; Spam</b><br />Van Nimra/T&#238;pan bin&#238;vis&#234; ber&#238; tu Gotin&#234;n xwe bi&#351;&#238;n&#234; </antispam><br />
+<mandatory>Tomarkirin p&#234wiste</mandatory><br />
+<submit>Bi&#351;&#238;ne</submit><br />
+<name_error>Nav kurte!</name_error><br />
+<email_error>Email ne raste!</email_error><br />
+<url_error>Nav&#234; malper&#234; ne raste!</url_error><br />
+<message_error>Gotin&#234;n te kurtin!</message_error><br />
+<antispam_error>Nimre/T&#238;p ne rastin!</antispam_error><br />
+<success>Spas bo gotin&#234;n te!</success><br />
+<admin_review>W&#234; Administrator &#231;av bid&#234; gotin&#234;n te!<br />Spas bo arame te!</admin_review>
+<spam_detect>Belk&#251; Spam hatine d&#238;tin!<br />Gotin ne hatin &#351;&#238;yandin!</spam_detect>

@@ -1,0 +1,16 @@
+/* Thomas Jørgensen *** rhv15(at)stofanet(dot)dk */
+
+<name>Navn</name>
+<email>Email</email>
+<url>Hjemmeside</url>
+<message>Tekst</message>
+<antispam><b>Antispam measures</b><br />Skriv venligst bogstav og tal kombinationen i feltet.</antispam>
+<mandatory>Obligatorisk</mandatory>
+<submit>Gem</submit>
+<name_error>Navnet er for kort!</name_error>
+<email_error>Ugyldig email adresse!</email_error>
+<url_error>Ugyldig hjemmeside adresse!</url_error>
+<message_error>Teksten er for kort!</message_error>
+<antispam_error>Forkert "Antispam measures" kombination!</antispam_error>
+<success>Tak for din hilsen!</success>
+<admin_review>Administratoren skal lige godkende din hilsen!<br />Tak!</admin_review>

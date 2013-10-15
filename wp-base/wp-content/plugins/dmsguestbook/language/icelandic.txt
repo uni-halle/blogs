@@ -1,0 +1,17 @@
+/* Rósa Stefánsdóttir *** rosastef(at)rosastef(dot)com*/
+
+<name>Nafn</name>
+<email>Netfang</email>
+<url>Heimasíða</url>
+<message>Skilaboð</message>
+<antispam><b>Rulspóstsía</b><br />Skrifaðu bók- og tölustafina í réttri röð í reitinn hér fyrir neðan.</antispam>
+<mandatory>Verður að fylla út</mandatory>
+<submit>Senda</submit>
+<name_error>Nafn er of stutt!</name_error>
+<email_error>Þetta er ógilt netfang!</email_error>
+<url_error>Ógild slóð á heimasíðu!</url_error>
+<message_error>Skilaboð eru of stutt!</message_error>
+<antispam_error>Þú skrifaðir inn vitlausa stafi! Vinsamlegast prófaðu aftur</antispam_error>
+<success>Takk fyrir að skrifa í gestabókina!</success>
+<admin_review>Færslan verður samþykkt innan skamms!<br />Takk fyrir þolinmæðina!</admin_review>
+<spam_detect>Þessi færsla inniheldur líklega spam!<br />Færslan mun ekki birtast í gestabókinni!</spam_detect>

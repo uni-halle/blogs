@@ -66,21 +66,29 @@ Class se_admin {
 
 		?>
 
-	<div class="error" id="seplus">
-		<h3>Well, we tried...</h3>
+	<div class="welcome-panel" id="seplus">
+		
+		<div class="welcome-panel-content">
+		
+				<h3>Well, we tried...</h3>
 
-		<p>It took a few years of kick-starting the Search Everything Plus project and it being subverted by new full-time projects at Sprout Venture before realizing it had to stop. Our goal of fixing WordPress search with SE+ needed too much focus, something we couldn't sacrifice because of growing client projects. After a year of trying and nothing awesome to show we decided to cease all planning and development on the Search Everything Plus plugin/service. </p>
+				<p class="about-description" style="margin-bottom:1em;">It took a few years of kick-starting the Search Everything Plus project and it being subverted by new full-time projects at Sprout Venture before realizing it had to stop. Our goal of fixing WordPress search with SE+ needed too much focus, something we couldn't sacrifice because of growing client projects. After a year of trying and nothing awesome to show we decided to cease all planning and development on the Search Everything Plus plugin/service. </p>
+		
+				<p class="about-description" style="font-size:1.1em;margin-bottom:1em;">But our goal of fixing WordPress search isn't lost and we have <strong>two</strong> recomendations for you:</p>
+				
+				<p class="about-description" style="font-size:1.1em;margin-bottom:1em;"><strong><a href="http://s-v.me/RgIu">SearchWP</a></strong> &mdash;
+				They claim it's the best search plugin around and we can't agree more. It's seriously close to what we had planned for SE+, in many ways it's much better than what we counted on accomplishing.</p>
 
-		<p>But our goal of fixing WordPress search isn't lost.</p>
-
-		<p>For the last few months we've tested out numerous search solutions for WordPress and we found one. <a href="http://s-v.me/Q8wb">Swiftype</a> offers many of the features you requested for SE+ and their service was something we had only hoped to build. Instead of competing we decided to partner.</p>
-
-		<p>The <a href="http://s-v.me/Q8wb">Swiftype Search plugin</a> replaces the standard WordPress search with a better, more relevant search engine, and in doing so offloads the performance burden of search queries from your database to ours. It also gives you detailed insight into what your users are searching for, so you know which keywords to target when customizing your search engine results. The base ranking algorithm is based on industry best-practices and provides more relevant results by default, but we also allow for any result set to be fully customized via our drag-and-drop interface for result reordering. To make customizations you simply create a Swiftype account and install our the <a href="http://s-v.me/Q8wb">Swiftype Search plugin</a>. You can then login to our dashboard to customize results and read through detailed search analytics.</p>
-
-
-		<p>Sincerely,<br/>
-		Dan Cameron<br/>
-		Principal and Janitor, Sprout Venture</p>
+				<p class="about-description" style="font-size:1.1em;margin-bottom:1em;"><strong><a href="http://s-v.me/Q8wb">Swiftype Search plugin</a></strong> &mdash; 
+				It replaces the standard WordPress search with a better, more relevant search engine, and in doing so offloads the performance burden of search queries from your database to theirs.</p>
+				
+				
+				<p class="about-description" style="font-size:1.1em;margin-bottom:1em;">The advantages of both should be clear but if you're undecided we recomend <a href="http://s-v.me/RgIu">SearchWP</a> becuase of how it doesn't require a subscription.
+					
+				<p class="about-description" style="font-size:1.1em;">Sincerely,
+				Dan Cameron<br/>
+				Principal and Janitor, Sprout Venture Inc.</p>
+		</div>
 	</div>
 
 	<div class="wrap">

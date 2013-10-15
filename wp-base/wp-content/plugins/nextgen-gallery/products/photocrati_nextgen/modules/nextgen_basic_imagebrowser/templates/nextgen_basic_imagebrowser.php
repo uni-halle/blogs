@@ -61,3 +61,12 @@
 
 </div>
 <?php $this->end_element(); ?>
+<script type='text/javascript'>
+	jQuery(function($){
+		NggPaginatedGallery.init(
+			'<?php echo $displayed_gallery->id() ?>',
+			$('#<?php echo $anchor ?>'),
+			$('#<?php echo $anchor ?> .ngg-browser-prev, #<?php echo $anchor ?> .ngg-browser-next')
+		)
+	});
+</script>

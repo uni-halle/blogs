@@ -1,0 +1,16 @@
+/* RO - razvan(at)noraz(dot)ro */
+
+<name>Nume</name>
+<email>e-mail</email>
+<url>www</url>
+<message>Mesaj</message>
+<antispam>Va rog introduceti literele din imaginea de mai jos pentru a putea fi validat comentariul. Atentie la litere MARI si mici!</antispam>
+<mandatory>(necesar)</mandatory>
+<submit>Trimite</submit>
+<name_error>Asta nu e numele tau!!</name_error>
+<email_error>Hai mai incearca... de data asta o adresa de e-mail valabila!</email_error>
+<url_error>Hai mai incearca... de data asta o adresa valabila!</url_error>
+<message_error>Hmmm nu vrei sa imi zici mai multe?!</message_error>
+<antispam_error>Nu e bine!</antispam_error>
+<success>Multumesc pentru comentariu!</success>
+<admin_review>Adminu' meu va verifica comentariul!<br />Multumesc!</admin_review>

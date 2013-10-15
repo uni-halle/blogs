@@ -3,7 +3,7 @@
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
 Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> adds podcasting support to your blog. Features include: media player, 3rd party statistics, iTunes integration, Blubrry Services (Media Statistics and Hosting) integration and a lot more.
-Version: 5.0.1
+Version: 5.0.2
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Change Log:
@@ -32,7 +32,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '5.0.1' );
+define('POWERPRESS_VERSION', '5.0.2' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -1310,7 +1310,7 @@ function powerpress_load_general_feed_settings()
 					$powerpress_feed['itunes_image'] = $Feed['itunes_image'];
 				return;
 			}
-			else if( ( defined('POWERPRESS_TAXONOMY_PODCASTING') || !empty($Powerpress['taxonomy_podcasting']) ) && ( is_tag() || is_tax() ) )
+			else if( ( defined('POWERPRESS_TAXONOMY_PODCASTING') || !empty($GeneralSettings['taxonomy_podcasting']) ) && ( is_tag() || is_tax() ) )
 			{
 				// We need to get the term_id and the tax_id (tt_id)
 				$term_slug = get_query_var('term');

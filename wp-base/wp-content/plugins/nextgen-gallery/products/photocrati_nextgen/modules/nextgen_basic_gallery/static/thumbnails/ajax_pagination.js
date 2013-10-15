@@ -34,7 +34,7 @@ jQuery(function($){
                   $(document).trigger('refreshed');
               }).always(function() { 
                   self.toggle_busy(false);
-              });;
+              });
 
             });
         },

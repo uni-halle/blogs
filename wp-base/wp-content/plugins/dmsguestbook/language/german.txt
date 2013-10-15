@@ -1,0 +1,17 @@
+/* Daniel Schurter *** DMSGuestbook(at)DanielSchurter(dot)net */
+
+<name>Name</name>
+<email>E-Mail</email>
+<url>Webseite</url>
+<message>Text</message>
+<antispam><b>Antispam Massnahme</b><br />Vor dem Absenden des G&auml;stebucheintrags bitte die Buchstaben- und Zahlenkombination in das Textfeld eintragen.</antispam>
+<mandatory>Eingabe erforderlich</mandatory>
+<submit>Eintragen</submit>
+<name_error>Name ist zu kurz!</name_error>
+<email_error>Ung&uuml;ltige E-Mail-Adresse!</email_error>
+<url_error>Ung&uuml;ltige Webseiten-Adresse!</url_error>
+<message_error>Text ist zu kurz!</message_error>
+<antispam_error>Die Buchstaben- und Zahlenkombination ist falsch!</antispam_error>
+<success>Danke f&uuml;r Deinen G&auml;stebucheintrag!</success>
+<admin_review>Der Administrator wird diesen Eintrag &uuml;berpr&uuml;fen!<br />Danke f&uuml;r Deine Geduld!</admin_review>
+<spam_detect>Dieser Eintrag enth&auml;lt vermutlich Spam!<br />Der Eintrag wurde nicht &uuml;bermittelt!</spam_detect>

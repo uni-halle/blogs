@@ -125,6 +125,22 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin_NextGen_Basic_Gallery_
                 );
             }
 
+            // This setting 1) points all images to an imagebrowser display & 2) disables the lightbox effect
+            if ($display_settings['use_imagebrowser_effect'])
+            {
+                // this hook *MUST* be removed later; it should not apply to galleries that may come after this one!
+                $storage->add_post_hook(
+                    'get_image_url',
+                    'imagebrowser alternate url replacer',
+                    'Hook_NextGen_Basic_Imagebrowser_Alt_URLs',
+                    'get_image_url'
+                );
+                $effect_code = '';
+            }
+            else {
+                $effect_code = $this->object->get_effect_code($displayed_gallery);
+            }
+
             // The render functions require different processing
             if (!empty($display_settings['template']))
             {
@@ -137,13 +153,11 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin_NextGen_Basic_Gallery_
                         'next' => (empty($pagination_next)) ? FALSE : $pagination_next,
                         'prev' => (empty($pagination_prev)) ? FALSE : $pagination_prev,
                         'pagination' => $pagination,
-                        'piclens_link'              => @$piclens_link,
-                        'show_slideshow_link'       => @$display_settings['show_slideshow_link'],
-                        'slideshow_link'            => @$display_settings['slideshow_link'],
-                        'slideshow_link_text'       => @$display_settings['slideshow_link_text']
+                        'piclens_link' => $piclens_link,
+                        'slideshow_link' => $slideshow_link
                     )
                 );
-                return $this->object->legacy_render($display_settings['template'], $params, $return, 'gallery');
+                $output = $this->object->legacy_render($display_settings['template'], $params, $return, 'gallery');
             }
             else {
                 $params = $display_settings;
@@ -153,15 +167,21 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin_NextGen_Basic_Gallery_
                 $params['transient_id']         = $displayed_gallery->transient_id;
                 $params['current_page']			= $current_page;
                 $params['piclens_link']			= $piclens_link;
-                $params['effect_code']			= $this->object->get_effect_code($displayed_gallery);
+                $params['effect_code']			= $effect_code;
                 $params['pagination']			= $pagination;
                 $params['thumbnail_size_name']	= $thumbnail_size_name;
                 $params['slideshow_link']       = $slideshow_link;
                 
                 $params = $this->object->prepare_display_parameters($displayed_gallery, $params);
                 
-                return $this->object->render_view('photocrati-nextgen_basic_gallery#thumbnails/index', $params, $return);
+                $output = $this->object->render_view('photocrati-nextgen_basic_gallery#thumbnails/index', $params, $return);
             }
+
+            if ($display_settings['use_imagebrowser_effect'])
+                $storage->del_post_hook('get_image_url', 'imagebrowser alternate url replacer');
+
+            return $output;
+
 		}
 		else if ($display_settings['display_no_images_error']) {
 			return $this->object->render_partial("photocrati-nextgen_gallery_display#no_images_found", array(), $return);

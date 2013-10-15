@@ -61,6 +61,7 @@ if (!empty($action)) {
 		$listmarkers_checkbox = isset($_POST['listmarkers']) ? '1' : '0';
 		$panel_checkbox = isset($_POST['panel']) ? '1' : '0';
 		$layername_quotes = str_replace("\"", "'", $_POST['name']);
+		$address = preg_replace("/\t/", " ", $_POST['address']); //info: tabs break geojson
 		$multi_layer_map_checkbox = isset($_POST['multi_layer_map']) ? '1' : '0';
 		$mlm_checked_imploded = isset($_POST['mlm-all']) ? 'all' : '';
 		if ($mlm_checked_imploded != 'all') {
@@ -72,7 +73,7 @@ if (!empty($action)) {
 			$mlm_checked_imploded = substr($mlm_checked_temp, 0, -1);
 		}
 
-		$result = $wpdb->prepare( "INSERT INTO $table_name_layers (name, basemap, layerzoom, mapwidth, mapwidthunit, mapheight, panel, layerviewlat, layerviewlon, createdby, createdon, updatedby, updatedon, controlbox, overlays_custom, overlays_custom2, overlays_custom3, overlays_custom4, wms, wms2, wms3, wms4, wms5, wms6, wms7, wms8, wms9, wms10, listmarkers, multi_layer_map, multi_layer_map_list, address ) VALUES (%s, %s, %d, %d, %s, %d, %d, %s, %s, %s, %s, %s, %s, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s, %s)", $layername_quotes, $_POST['basemap'], $_POST['layerzoom'], $_POST['mapwidth'], $_POST['mapwidthunit'], $_POST['mapheight'], $panel_checkbox, str_replace(',', '.', $_POST['layerviewlat']), str_replace(',', '.', $_POST['layerviewlon']), $current_user->user_login, current_time('mysql',0), $current_user->user_login, current_time('mysql',0), $_POST['controlbox'], $_POST['overlays_custom'], $_POST['overlays_custom2'], $_POST['overlays_custom3'], $_POST['overlays_custom4'], $wms_checkbox, $wms2_checkbox, $wms3_checkbox, $wms4_checkbox, $wms5_checkbox, $wms6_checkbox, $wms7_checkbox, $wms8_checkbox, $wms9_checkbox, $wms10_checkbox, $listmarkers_checkbox, $multi_layer_map_checkbox, $mlm_checked_imploded, $_POST['address'] );
+		$result = $wpdb->prepare( "INSERT INTO $table_name_layers (name, basemap, layerzoom, mapwidth, mapwidthunit, mapheight, panel, layerviewlat, layerviewlon, createdby, createdon, updatedby, updatedon, controlbox, overlays_custom, overlays_custom2, overlays_custom3, overlays_custom4, wms, wms2, wms3, wms4, wms5, wms6, wms7, wms8, wms9, wms10, listmarkers, multi_layer_map, multi_layer_map_list, address ) VALUES (%s, %s, %d, %d, %s, %d, %d, %s, %s, %s, %s, %s, %s, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %s, %s)", $layername_quotes, $_POST['basemap'], $_POST['layerzoom'], $_POST['mapwidth'], $_POST['mapwidthunit'], $_POST['mapheight'], $panel_checkbox, str_replace(',', '.', $_POST['layerviewlat']), str_replace(',', '.', $_POST['layerviewlon']), $current_user->user_login, current_time('mysql',0), $current_user->user_login, current_time('mysql',0), $_POST['controlbox'], $_POST['overlays_custom'], $_POST['overlays_custom2'], $_POST['overlays_custom3'], $_POST['overlays_custom4'], $wms_checkbox, $wms2_checkbox, $wms3_checkbox, $wms4_checkbox, $wms5_checkbox, $wms6_checkbox, $wms7_checkbox, $wms8_checkbox, $wms9_checkbox, $wms10_checkbox, $listmarkers_checkbox, $multi_layer_map_checkbox, $mlm_checked_imploded, $address );
 		$wpdb->query( $result );
 		$wpdb->query( "OPTIMIZE TABLE $table_name_layers" );
 		echo '<script> window.location="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id=' . $wpdb->insert_id . '&status=published&Layername=' . $layername_quotes . '"; </script> ';
@@ -100,6 +101,7 @@ if (!empty($action)) {
 		$listmarkers_checkbox = isset($_POST['listmarkers']) ? '1' : '0';
 		$panel_checkbox = isset($_POST['panel']) ? '1' : '0';
 		$layername_quotes = str_replace("\"", "'", $_POST['name']);
+		$address = preg_replace("/\t/", " ", $_POST['address']); //info: tabs break geojson
 		$multi_layer_map_checkbox = isset($_POST['multi_layer_map']) ? '1' : '0';
 		$mlm_checked_imploded = isset($_POST['mlm-all']) ? 'all' : '';
 		if ($mlm_checked_imploded != 'all') {
@@ -111,7 +113,7 @@ if (!empty($action)) {
 			$mlm_checked_imploded = substr($mlm_checked_temp, 0, -1);
 		}
 
-		$result = $wpdb->prepare( "UPDATE $table_name_layers SET name = %s, basemap = %s, layerzoom = %d, mapwidth = %d, mapwidthunit = %s, mapheight = %d, panel = %d, layerviewlat = %s, layerviewlon = %s, updatedby = %s, updatedon = %s, controlbox = %d, overlays_custom = %d, overlays_custom2 = %d, overlays_custom3 = %d, overlays_custom4 = %d, wms = %d, wms2 = %d, wms3 = %d, wms4 = %d, wms5 = %d, wms6 = %d, wms7 = %d, wms8 = %d, wms9 = %d, wms10 = %d, listmarkers = %d, multi_layer_map = %d, multi_layer_map_list = %s, address = %s WHERE id = %d", $layername_quotes, $_POST['basemap'], $_POST['layerzoom'], $_POST['mapwidth'], $_POST['mapwidthunit'], $_POST['mapheight'], $panel_checkbox, str_replace(',', '.', $_POST['layerviewlat']), str_replace(',', '.', $_POST['layerviewlon']), $current_user->user_login, current_time('mysql',0), $_POST['controlbox'], $_POST['overlays_custom'], $_POST['overlays_custom2'], $_POST['overlays_custom3'], $_POST['overlays_custom4'], $wms_checkbox, $wms2_checkbox, $wms3_checkbox, $wms4_checkbox, $wms5_checkbox, $wms6_checkbox, $wms7_checkbox, $wms8_checkbox, $wms9_checkbox, $wms10_checkbox, $listmarkers_checkbox, $multi_layer_map_checkbox, $mlm_checked_imploded, $_POST['address'], $oid );
+		$result = $wpdb->prepare( "UPDATE $table_name_layers SET name = %s, basemap = %s, layerzoom = %d, mapwidth = %d, mapwidthunit = %s, mapheight = %d, panel = %d, layerviewlat = %s, layerviewlon = %s, updatedby = %s, updatedon = %s, controlbox = %d, overlays_custom = %d, overlays_custom2 = %d, overlays_custom3 = %d, overlays_custom4 = %d, wms = %d, wms2 = %d, wms3 = %d, wms4 = %d, wms5 = %d, wms6 = %d, wms7 = %d, wms8 = %d, wms9 = %d, wms10 = %d, listmarkers = %d, multi_layer_map = %d, multi_layer_map_list = %s, address = %s WHERE id = %d", $layername_quotes, $_POST['basemap'], $_POST['layerzoom'], $_POST['mapwidth'], $_POST['mapwidthunit'], $_POST['mapheight'], $panel_checkbox, str_replace(',', '.', $_POST['layerviewlat']), str_replace(',', '.', $_POST['layerviewlon']), $current_user->user_login, current_time('mysql',0), $_POST['controlbox'], $_POST['overlays_custom'], $_POST['overlays_custom2'], $_POST['overlays_custom3'], $_POST['overlays_custom4'], $wms_checkbox, $wms2_checkbox, $wms3_checkbox, $wms4_checkbox, $wms5_checkbox, $wms6_checkbox, $wms7_checkbox, $wms8_checkbox, $wms9_checkbox, $wms10_checkbox, $listmarkers_checkbox, $multi_layer_map_checkbox, $mlm_checked_imploded, $address, $oid );
 		$wpdb->query( $result );
 		$wpdb->query( "OPTIMIZE TABLE $table_name_layers" );
 		echo '<script> window.location="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id=' . $oid . '&status=updated&Layername=' . urlencode($_POST['name']) . '"; </script> ';
@@ -371,7 +373,7 @@ if ( $edit_status == 'updated') {
 		?>
 		</h3>
 
-		<table class="widefat fixed">
+		<table class="widefat">
 			<?php if ($isedit === true) { ?>
 			<tr>
 				<td style="width:230px;"><label for="shortcode"><strong><?php _e('Shortcode and API links','lmm') ?>:</strong></label></td>
@@ -447,7 +449,7 @@ if ( $edit_status == 'updated') {
 				<div style="float:right;"><?php _e('display panel','lmm') ?>&nbsp;&nbsp;<input type="checkbox" name="gpx_panel" id="gpx_panel" disabled="disabled"></div>
 				<label for="gpx_url"><strong><?php _e('URL to GPX track','lmm') ?></strong></label><br/>
 				<input style="width:229px;" type="text" id="gpx_url" name="gpx_url" value="<?php echo __(' Feature available in pro version only','lmm'); ?>" disabled="disabled" /><br/>
-				<?php echo '<small>' . __('add file','lmm') . ' | ' . __('convert','lmm') . ' | ' . __('settings','lmm') . ' | ' . __('fit bounds','lmm') . '</small>'; ?>
+				<?php echo '<small>' . __('add','lmm') . ' | ' . __('convert','lmm') . ' | ' . __('merge','lmm') . ' | ' . __('settings','lmm') . ' | ' . __('fit bounds','lmm') . '</small>'; ?>
 				</p>
 				<div style="<?php echo $current_editor_css; ?>">
 				<p><br/>

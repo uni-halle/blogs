@@ -60,7 +60,8 @@ function powerpressplayer_init($GeneralSettings)
 		if( version_compare($GLOBALS['wp_version'], '3.6-alpha', '>') )
 			$enqueue_mejs = true;
 	}
-	else if( !empty($GeneralSettings['player']) && $GeneralSettings['player'] == 'mediaelement-audio' )
+	
+	if( !empty($GeneralSettings['player']) && $GeneralSettings['player'] == 'mediaelement-audio' )
 	{
 		$enqueue_mejs = true;
 	}
@@ -996,7 +997,7 @@ function powerpressplayer_embedable($media_url, $ExtraData = array())
 			case 'mp3':
 			case 'oga':
 			case 'm4a': {
-				if( in_array( $GeneralSettings['player'], array('mediaelement-audio', 'flow-player-classic') ) )
+				if( in_array( $GeneralSettings['player'], array('mediaelement-audio', 'flow-player-classic', 'default') ) )
 					$player = $GeneralSettings['player'];
 			}; break;
 			case 'mp4':
@@ -1047,7 +1048,7 @@ function powerpressplayer_link_title($content, $media_url, $ExtraData = array() 
 		if( !empty($prefix) )
 			$prefix .= ' ';
 		
-		$return = '<p class="powerpress_links powerpress_links_'. $extension .'">'. $prefix . $content . '</p>'.PHP_EOL;
+		$return = '<p class="powerpress_links powerpress_links_'. $extension .'">'. $prefix . $content . '</p>';
 		$player = powerpressplayer_embedable($media_url, $ExtraData);
 		if( $player )
 		{

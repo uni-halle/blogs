@@ -19,7 +19,7 @@ class C_Image_Wrapper
      * Constructor. Converts the image class into an array and fills from defaults any missing values
      *
      * @param object $gallery Individual result from displayed_gallery->get_entities()
-     * @param object $displayed_gallery Displayed gallery
+     * @param object $displayed_gallery Displayed gallery -- MAY BE NULL
      * @param bool $legacy Whether the image source is from NextGen Legacy or NextGen
      * @return void
      */
@@ -403,8 +403,28 @@ class C_Image_Wrapper
     */
     function get_thumbcode($gallery_name = '')
     {
-        $controller = C_Component_Registry::get_instance()->get_utility('I_Display_Type_Controller');
-        return $controller->get_effect_code($this->_displayed_gallery);
+        if (empty($this->_displayed_gallery))
+        {
+            $effect_code = C_NextGen_Settings::get_instance()->thumbCode;
+            $effect_code = str_replace('%GALLERY_ID%', $gallery_name, $effect_code);
+            $effect_code = str_replace('%GALLERY_NAME%', $gallery_name, $effect_code);
+            $effect_code = apply_filters('ngg_get_thumbcode', $effect_code, $this);
+            $retval = $effect_code;
+        }
+        else {
+            $controller = C_Component_Registry::get_instance()->get_utility('I_Display_Type_Controller');
+            $retval = $controller->get_effect_code($this->_displayed_gallery);
+
+            // This setting requires that we disable the effect code
+            $ds = $this->_displayed_gallery->display_settings;
+            if (isset($ds['use_imagebrowser_effect']) && $ds['use_imagebrowser_effect'])
+                $retval = '';
+        }
+
+        $retval .= ' data-image-id="' . $this->__get('id') . '"';
+
+        $this->_cache['thumbcode'] = $retval;
+        return $retval;
     }
 
     /**

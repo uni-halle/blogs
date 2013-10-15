@@ -1,0 +1,16 @@
+/* Thanks blancreg *** blancreg(at)free(dot)fr */
+
+<name>Nom</name>
+<email>Email</email>
+<url>site ouaib</url>
+<message>Texte</message>
+<antispam><b>Mesures Antispam</b><br />Veillez svp taper la combinaison de chiffres et de lettres telle que vous la lisez, dans la boite de saisie avant de poster dans le Livre d'Or.</antispam>
+<mandatory>Obligatoire</mandatory>
+<submit>Poster</submit>
+<name_error>Nom trop court!</name_error>
+<email_error>adresse mail incorrecte!</email_error>
+<url_error>adresse ouaib incorrecte!</url_error>
+<message_error>Texte trop court!</message_error>
+<antispam_error>Combinaison antispam incorrecte!</antispam_error>
+<success>Merci d'avoir signer notre Livre d'Or!</success>
+<admin_review>L'administrateur va v&eacute;rifier votre message!<br />Merci de votre patience!</admin_review>

@@ -1,0 +1,16 @@
+/* Thanks to Joris Heyndrickx *** moonbeetle(at)gmail(dot)com */
+
+<name>Naam</name>
+<email>E-mail</email>
+<url>Website</url>
+<message>Bericht</message>
+<antispam><b>Anti-spam maatregel</b><br />Gelieve de tekst/cijfer-combinatie in het veld in te geven.</antispam>
+<mandatory>Verplicht</mandatory>
+<submit>Verzenden</submit>
+<name_error>Naam is te kort!</name_error>
+<email_error>Ongeldig e-mail adres!</email_error>
+<url_error>Ongeldig website adres!</url_error>
+<message_error>Bericht is te kort!</message_error>
+<antispam_error>Verkeerde cijfer/letter-combinatie!</antispam_error>
+<success>Bedankt voor je bijdrage aan het gastenboek!</success>
+<admin_review>De administrator zal eerst uw bericht bekijken!<br />Bedankt voor uw bericht!</admin_review>

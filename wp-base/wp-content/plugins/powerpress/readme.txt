@@ -2,8 +2,8 @@
 Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, itunes, enclosure, zune, iphone, youtube, viddler, blip.tv, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, webm, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, simple podcasting, seriously simple podcasting, seriously-simple-podcasting, podlove, podcast.de
 Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 5.0.1
+Tested up to: 3.6.1
+Stable tag: 5.0.2
 Donate link: http://create.blubrry.com/
 License: GPLv2 or later
 
@@ -171,6 +171,17 @@ To install Blubrry PowerPress manually, follow these steps:
 = Next Major Release Announcements =
 * PowerPress 6.0+ will no longer be compatible with WordPress 3.0.x, 3.1.x and 3.2.x. Please upgrade to WordPress 3.3 or newer to install future versions of PowerPress.
 * Translation support will change in PowerPress 6.0+. Translations will be packaged in a sepraate plugin made available on WordPress.org. This will allow us to release translations separately and more often.
+
+= 5.0.2 =
+* Released on 09/23/2013
+* Fixed another bug with *Feed Episode Maximizer* RSS <description> having the invalid characters when used with WordPRess 3.6. Added function `powerpress_get_the_excerpt_rss()` to permanently fix issue.
+* Removed `PHP_EOL` from powerpress-player.php where the player links are added to the post content. This should solve the issue where some themes or plugins replace new line characters with actual `<br/>` tags. (Thanks Nathan for the fix!)
+* Option to remove statistics from Dashboard has been re-added. 5.0/5.0.1 removed the option which was automatically disabling statistics in dashboard. Our mistake!
+* Fixed bug with embed link no longer appearing when using FlowPlayerClassic audio player. (thanks cimmerian for bringing to our attention!)
+* Fixed bug with Taxonomy podcasting program level attributes (description, itunes subtitle) not getting applied to taxonomy feed correctly (Thanks Matt for bringing to our attention!)
+* Fixed bug with file size and duratoin checkbox setting in General Settings not saving correctly (Thanks Bridge Maker for letting us know about the bug!)
+* Added image uploader option to both the episode entry box poster image and new itunes image fields. This version will not cause issues with the media upload button if a user cancels the image upload.
+
 
 = 5.0.1 = 
 * Released on 08/30/2013

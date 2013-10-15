@@ -4,8 +4,14 @@ class Hook_NextGen_Basic_Gallery_Integration extends Hook
 {
     function index_action($displayed_gallery, $return=FALSE)
     {
+        $show = $this->object->param('show');
+		$pid  = $this->object->param('pid');
+
+		if (!empty($pid) && isset($displayed_gallery->display_settings['use_imagebrowser_effect']) && intval($displayed_gallery->display_settings['use_imagebrowser_effect']))
+			$show = NEXTGEN_GALLERY_NEXTGEN_BASIC_IMAGEBROWSER;
+
         // Are we to display a different display type?
-        if (($show = $this->object->param('show')))
+        if (!empty($show))
         {
             $params = (array)$displayed_gallery->get_entity();
             $ds = $params['display_settings'];

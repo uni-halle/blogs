@@ -8,7 +8,7 @@ Author:            Robert Harm
 Donate link:       http://www.mapsmarker.com/donations
 Requires at least: 3.0
 Tested up to:      3.6
-Stable tag:        3.6.4
+Stable tag:        3.6.6
 License:           GPLv2
 
 Pin, organize & show your favorite places & tracks through OpenStreetMap, Google Maps, KML, Bing Maps, APIs or Augmented-Reality browsers
@@ -43,7 +43,7 @@ The free version includes a pro upgrader which allows you to start a free 30 day
 We are working hard on delivering the best mapping solution available for WordPress - helping you to share your favorite spots & tracks
 
 = Mission Statement =
-[Maps Marker](http://www.mapsmarker.com) helps you to share your favorite spots easily. The plugin is based on the famous [leaflet.js library](http://www.leafletjs.com) from [CloudMade](http://www.cloudmade.com) which also powers maps on sites like [Flickr](http://www.flickr.com/map), [Foursquare](http://readwrite.com/2012/02/29/foursquare_dumps_google_goes_open-source_for_maps), [Craigslist](http://www.theverge.com/2012/10/4/3452526/craigslist-map-view-apartment-listings-roll-out), [Wikipedia](http://en.wikipedia.org/wiki/Wikipedia_App) and [Washington Post](http://www.washingtonpost.com/wp-srv/special/politics/election-map-2012/senate/). We use this library as the basis for our plugin and have integrated several other libraries for enhancing its functionality. Our main goal is to provide you with an intuitive and user-friendly interface for organizing your spots within your WordPress powered site. Furthermore we are constantly working on improving our plugin by adding new and innovative ways for managing and showing your spots. Our roadmap for new releases gets aligned to our users' needs - so giving support and talking to our users is essential.
+[Maps Marker](http://www.mapsmarker.com) helps you to share your favorite spots easily. The plugin is based on the famous [leaflet.js library](http://www.leafletjs.com) from [CloudMade](http://www.cloudmade.com) which also powers maps on sites like [Facebook](https://twitter.com/amercader/status/386144256148389889/photo/1), [Flickr](http://www.flickr.com/map), [Foursquare](http://readwrite.com/2012/02/29/foursquare_dumps_google_goes_open-source_for_maps), [Craigslist](http://www.theverge.com/2012/10/4/3452526/craigslist-map-view-apartment-listings-roll-out), [Wikipedia](http://en.wikipedia.org/wiki/Wikipedia_App) and [Washington Post](http://www.washingtonpost.com/wp-srv/special/politics/election-map-2012/senate/). We use this library as the basis for our plugin and have integrated several other libraries for enhancing its functionality. Our main goal is to provide you with an intuitive and user-friendly interface for organizing your spots within your WordPress powered site. Furthermore we are constantly working on improving our plugin by adding new and innovative ways for managing and showing your spots. Our roadmap for new releases gets aligned to our users' needs - so giving support and talking to our users is essential.
 
 = Plugin's Official Site =
 http://mapsmarker.com
@@ -144,10 +144,10 @@ to the visitors of your website.
 * Chinese (zh_TW) thanks to jamesho Ho
 * Croatian (hr) thanks to Neven Pausic, Alan Benic and Marijan Rajic
 * Czech (cs_CZ) thanks to Viktor Kleiner and Vlad Kuzba
-* Danish (da_DK) thanks to Mads Dyrmann Larsen
+* Danish (da_DK) thanks to Mads Dyrmann Larsen and Peter Erfurt
 * Dutch (nl_NL) thanks to Marijke Metz and Patrick Ruers
 * English (en_US)
-* French (fr_FR) thanks to Vincèn Pujol and Rodolphe Quiedeville, Fx Benard and cazal cédric
+* French (fr_FR) thanks to Vincèn Pujol and Rodolphe Quiedeville, Fx Benard, cazal cédric and Fabien Hurelle
 * German (de_DE)
 * Hindi (hi_IN) thanks to by Outshine Solutions and Guntupalli Karunakar
 * Hungarian (hu_HU) thanks to István Pintér and Csaba Orban
@@ -285,10 +285,10 @@ MapsMarker &reg; - registration pending
 Copyright 2011-2013, Robert Harm, All Rights Reserved
 
 == Upgrade Notice ==
-= v3.6.4 =
-support for Maps Marker affiliate links - see http://www.mapsmarker.com/v3.6.4 for more details
+= v3.6.6 =
+bugfix release; special chars in marker names could break layer maps - see http://www.mapsmarker.com/v3.6.6 for more details
 
 == Changelog ==
-[blog post with details about v3.6.4](http://www.mapsmarker.com/v3.6.4)
+[blog post with details about v3.6.6](http://www.mapsmarker.com/v3.6.6)
 
 [changelog for all versions](http://www.mapsmarker.com/changelog)

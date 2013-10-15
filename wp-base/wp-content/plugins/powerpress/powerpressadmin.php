@@ -392,12 +392,14 @@ function powerpress_admin_init()
 				//if( !isset($General['display_player_disable_mobile']) )
 				//	$General['display_player_disable_mobile'] = 0;
 				
-				$General['disable_dashboard_widget'] = 0;
-				if( !isset($_POST['StatsInDashboard'] ) )
-					$General['disable_dashboard_widget'] = 1;
+				$General['disable_dashboard_stats'] = 0;
+				if( !empty($_POST['DisableStatsInDashboard'] ) )
+					$General['disable_dashboard_stats'] = 1;
 				if( !isset($General['disable_dashboard_news'] ) )
 					$General['disable_dashboard_news'] = 0;
 					
+				if( !isset($General['episode_box_mode']) ) // Default not set, 1 = no duration/file size, 2 = yes duration/file size (default if not set)
+					$General['episode_box_mode'] = 1; // 1 = no duration/file size (unchecked)
 				if( !isset($General['episode_box_embed'] ) )
 					$General['episode_box_embed'] = 0;
 				if( !isset($General['embed_replace_player'] ) )
@@ -492,8 +494,9 @@ function powerpress_admin_init()
 			{
 				if( !isset($General['display_player_excerpt']) ) // If we are modifying appearance settings but this option was not checked...
 					$General['display_player_excerpt'] = 0; // Set it to zero.
-				if( !isset($_POST['StatsInDashboard'] ) )
-					$General['disable_dashboard_widget'] = 1;	
+				$General['disable_dashboard_stats'] = 0;
+				if( !empty($_POST['DisableStatsInDashboard'] ) )
+					$General['disable_dashboard_stats'] = 1;
 				
 				// Advanced Mode options
 				if( !isset($General['cat_casting'] ) )
@@ -2231,7 +2234,7 @@ function powerpress_remove_hosting(FeedSlug)
 	}
 }
 
-var pp_upload_image_button=false;
+var pp_upload_image_button_funct = false;
 
 jQuery(document).ready(function($) {
 	
@@ -2251,17 +2254,45 @@ jQuery(document).ready(function($) {
 		g_powerpress_last_selected_channel = this.id.replace(/(powerpress_image_browser_)(.*)$/, "$2");
 		tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true&amp;post_id=0', false);
 
-		var oldFunc = window.send_to_editor;
+		if( pp_upload_image_button_funct == false )
+			pp_upload_image_button_funct = window.send_to_editor;
+		
 		window.send_to_editor = function(html)
 		{
 			url = jQuery('img', html).attr('src');
-			//jQuery("#"+formfieldID).val(imgurl);
 			jQuery('#powerpress_image_'+g_powerpress_last_selected_channel).val( url );
 			g_powerpress_last_selected_channel = '';
 			tb_remove();
-			window.send_to_editor = oldFunc;
+			window.send_to_editor = pp_upload_image_button_funct;
+			pp_upload_image_button_funct = false;
 		}
 		return false;
+	});
+	jQuery('.powerpress-itunes-image-browser').click(function(e) {
+		e.preventDefault();
+		g_powerpress_last_selected_channel = this.id.replace(/(powerpress_itunes_image_browser_)(.*)$/, "$2");
+		tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true&amp;post_id=0', false);
+
+		if( pp_upload_image_button_funct == false )
+			pp_upload_image_button_funct = window.send_to_editor;
+		
+		window.send_to_editor = function(html)
+		{
+			url = jQuery('img', html).attr('src');
+			jQuery('#powerpress_itunes_image_'+g_powerpress_last_selected_channel).val( url );
+			g_powerpress_last_selected_channel = '';
+			tb_remove();
+			window.send_to_editor = pp_upload_image_button_funct;
+			pp_upload_image_button_funct = false;
+		}
+		return false;
+	});
+	jQuery('#insert-media-button').click( function(e) {
+		if( pp_upload_image_button_funct != false )
+		{
+			window.send_to_editor = pp_upload_image_button_funct;
+			pp_upload_image_button_funct = false;
+		}
 	});
 	jQuery('.powerpress-embed').change( function() {
 		// if there is a value in the embed box, but there is no value in the url box, then we need to display a warning...

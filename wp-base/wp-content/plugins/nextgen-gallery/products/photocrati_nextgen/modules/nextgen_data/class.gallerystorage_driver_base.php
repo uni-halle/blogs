@@ -537,6 +537,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
 			$image->alttext		= sanitize_title_with_dashes(basename($filename, '.' . pathinfo($filename, PATHINFO_EXTENSION)));
 			$image->galleryid	= $this->object->_get_gallery_id($gallery);
 			$image->filename	= $filename;
+			$image->image_slug = nggdb::get_unique_slug( sanitize_title_with_dashes( $image->alttext ), 'image' );
 			$image_key			= $this->object->_image_mapper->get_primary_key_column();
 
             // If we can't write to the directory, then there's no point in continuing
@@ -1043,6 +1044,10 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
 		$destpath   = NULL;
 		$thumbnail  = NULL;
 
+        // Do this before anything else can modify the original -- $detailed_size
+        // may hold IPTC metadata we need to write to our clone
+        $size = getimagesize($image_path, $detailed_size);
+
 		$result = $this->object->calculate_image_clone_result($image_path, $clone_path, $params);
 
 		// XXX this should maybe be removed and extra settings go into $params?
@@ -1216,6 +1221,14 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
 				}
 
 				$thumbnail->save($destpath, $quality);
+
+                // IF the original contained IPTC metadata we should attempt to copy it
+                if (isset($detailed_size['APP13'])) {
+                    $metadata = iptcembed($detailed_size['APP13'], $destpath);
+                    $fp = fopen($destpath, 'wb');
+                    fwrite($fp, $metadata);
+                    fclose($fp);
+                }
 			}
 		}
 

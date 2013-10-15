@@ -1,3 +1,27 @@
+Notice
+======
+
+Well, we tried...
+-----------------
+
+It took a few years of kick-starting the Search Everything Plus project and it being subverted by new full-time projects at Sprout Venture before realizing it had to stop. Our goal of fixing WordPress search with SE+ needed too much focus, something we couldn't sacrifice because of growing client projects. After a year of trying and nothing awesome to show we decided to cease all planning and development on the Search Everything Plus plugin/service. </p>
+
+But our goal of fixing WordPress search isn't lost and we have <strong>two</strong> recomendations for you:</p>
+
+[SearchWP](http://s-v.me/RgIu)
+They claim it's the best search plugin around and we can't agree more. It's seriously close to what we had planned for SE+, in many ways it's much better than what we counted on accomplishing.</p>
+
+[Swiftype Search plugin](http://s-v.me/Q8wb)
+It replaces the standard WordPress search with a better, more relevant search engine, and in doing so offloads the performance burden of search queries from your database to theirs.</p>
+
+
+The advantages of both should be clear but if you're undecided we recomend [SearchWP](http://s-v.me/RgIu) becuase of how it doesn't require a subscription.
+	
+Sincerely,
+Dan Cameron
+Principal and Janitor, Sprout Venture Inc.
+
+
 Description
 ===========
 

@@ -1,0 +1,4 @@
+How do you feel today? Excellent!;
+How do you feel today? Good, thank you!;
+How do you feel today? Could be better;
+How do you feel today? Horrible :-(;

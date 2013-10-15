@@ -1,0 +1,14 @@
+.tooltip {
+width:300px;
+margin:0;
+text-align:left;
+padding:5px;
+font-size:11px;
+color:#666;
+background:#fff;
+border:1px solid #ccc;
+border-style:dashed;
+border-top:10px solid #ccc;
+}
+
+

@@ -217,6 +217,11 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
      */
     function render($displayed_gallery, $return=FALSE, $mode = null)
     {
+        // Simply throwing our rendered gallery into a feed will most likely not work correctly.
+        // The MediaRSS option in NextGEN is available as an alternative.
+        if(is_feed())
+            return '';
+
     		if ($mode == null)
     		{
     			$mode = 'normal';

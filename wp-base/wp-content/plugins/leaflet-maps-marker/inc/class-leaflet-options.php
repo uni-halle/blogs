@@ -2462,7 +2462,7 @@ class Class_leaflet_options {
 			'section' => 'mapdefaults-section11',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => '<div style="height:380px;"></div>',
+			'desc'    => '<div style="height:400px;"></div>',
 			'type'    => 'helptext'
 		);
 		/*
@@ -2514,7 +2514,7 @@ class Class_leaflet_options {
 			'section' => 'mapdefaults-section12',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => '<div style="height:380px;"></div>',
+			'desc'    => '<div style="height:400px;"></div>',
 			'type'    => 'helptext'
 		);
 		/*
@@ -2569,6 +2569,15 @@ class Class_leaflet_options {
 				'topright' => __('Top right of the map','lmm'),
 				'topleft' => __('Top left of the map','lmm')
 			)
+		);
+		$this->_settings['map_control_options_helptext2'] = array(
+			'version' => '2.7.1',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section13',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => '<div style="height:130px;"></div>',
+			'type'    => 'helptext'
 		);
 		/*
 		* Scale control options
@@ -2658,6 +2667,15 @@ class Class_leaflet_options {
 				'false' => __('false','lmm')
 			)
 		);
+		$this->_settings['map_scale_control_helptext2'] = array(
+			'version' => '2.7.1',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section14',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => '<div style="height:100px;"></div>',
+			'type'    => 'helptext'
+		);
 		/*
 		* Retina display detection
 		*/
@@ -2689,7 +2707,7 @@ class Class_leaflet_options {
 			'section' => 'mapdefaults-section15',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => '<div style="height:490px;"></div>',
+			'desc'    => '<div style="height:500px;"></div>',
 			'type'    => 'helptext'
 		);
 		/*
@@ -3116,6 +3134,96 @@ $this->_settings['clustering_helptext2'] = array(
 				'true' => __('true','lmm'),
 				'false' => __('false','lmm')
 			)
+		);
+		$this->_settings['clustering_helptext3'] = array(
+			'version' => 'p1.3',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'std'     => '',
+			'title'   => __('Cluster colors','lmm') . '<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>',
+			'desc'    => __('Options to set the colors of the cluster circles','lmm') . ' - <a href="http://www.mapsmarker.com/colorpicker" target="_blank">http://www.mapsmarker.com/colorpicker</a><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-clustering-colors.jpg" width="400" height="98" />',
+			'type'    => 'helptext-twocolumn'
+		);
+		$this->_settings['clustering_color_small_text'] = array(
+			'version' => 'p1.3.1',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster small (text color)','lmm'),
+			'std'     => '#000000',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_color_small'] = array(
+			'version' => 'p1.3',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster small (outer)','lmm'),
+			'std'     => 'rgba(181, 226, 140, 0.6)',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_color_small_inner'] = array(
+			'version' => 'p1.3',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster small (inner)','lmm'),
+			'std'     => 'rgba(110, 204, 57, 0.6)',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_color_medium'] = array(
+			'version' => 'p1.3',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster medium (outer)','lmm'),
+			'std'     => 'rgba(241, 211, 87, 0.6)',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_color_medium_inner'] = array(
+			'version' => 'p1.3',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster medium (inner)','lmm'),
+			'std'     => 'rgba(240, 194, 12, 0.6)',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_color_medium_text'] = array(
+			'version' => 'p1.3.1',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster medium (text color)','lmm'),
+			'std'     => '#000000',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_color_large'] = array(
+			'version' => 'p1.3',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster large (outer)','lmm'),
+			'std'     => 'rgba(253, 156, 115, 0.6)',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_color_large_inner'] = array(
+			'version' => 'p1.3',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster large (inner)','lmm'),
+			'std'     => 'rgba(241, 128, 23, 0.6)',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_color_large_text'] = array(
+			'version' => 'p1.3.1',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('Cluster large (text color)','lmm'),
+			'std'     => '#000000',
+			'type'    => 'text-reverse-pro'
 		);
 		$this->_settings['clustering_singleMarkerMode'] = array(
 			'version' => 'p1.0',
@@ -9673,7 +9781,7 @@ $this->_settings['clustering_helptext2'] = array(
 		}		
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.7
-		if (get_option('leafletmapsmarker_version') == '3.6.4' )
+		if (get_option('leafletmapsmarker_version') == '3.6.6' )
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

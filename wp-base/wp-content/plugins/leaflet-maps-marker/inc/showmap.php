@@ -463,8 +463,6 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
  	}
 	$plugin_version = get_option('leafletmapsmarker_version');
 
-	//info: start workaround for incompatibility with jetpack plugin
-	$lmmjs_out .= "if ( document.getElementById('lmm_".$uid."') != undefined ) {".PHP_EOL;
 	$lmmjs_out .= '/* Maps created with MapsMarker.com WordPress plugin - version '.$plugin_version.' */'.PHP_EOL;
 
 	//info: support for responsive templates
@@ -733,7 +731,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 	$lmmjs_out .= "L.control.scale({position:'" . $lmm_options['map_scale_control_position'] . "', maxWidth: " . intval($lmm_options['map_scale_control_maxwidth']) . ", metric: " . $lmm_options['map_scale_control_metric'] . ", imperial: " . $lmm_options['map_scale_control_imperial'] . ", updateWhenIdle: " . $lmm_options['map_scale_control_updatewhenidle'] . "}).addTo(" . $mapname . ");".PHP_EOL;
 	}
 	if (!(empty($mlat) or empty($mlon)) ) {
-	if ($lmm_options[ 'defaults_marker_icon_title' ] == 'show') { $defaults_marker_icon_title = "title: '" . htmlspecialchars($markername) . "', "; } else { $defaults_marker_icon_title = ""; };
+	if ($lmm_options[ 'defaults_marker_icon_title' ] == 'show') { $defaults_marker_icon_title = "title: '" . htmlspecialchars_decode($markername) . "', "; } else { $defaults_marker_icon_title = ""; };
 	$lmmjs_out .= 'var marker = new L.Marker(new L.LatLng('.$mlat.', '.$mlon.'),{ ' . $defaults_marker_icon_title . ' opacity: ' . floatval($lmm_options[ 'defaults_marker_icon_opacity' ]) . '});'.PHP_EOL;
 	 if ($micon == NULL) {
 		  $lmmjs_out .= "marker.options.icon = new L.Icon({iconUrl: '" . LEAFLET_PLUGIN_URL . "leaflet-dist/images/marker.png',iconSize: [" . intval($lmm_options[ 'defaults_marker_icon_iconsize_x' ]) . ", " . intval($lmm_options[ 'defaults_marker_icon_iconsize_y' ]) . "],iconAnchor: [" . intval($lmm_options[ 'defaults_marker_icon_iconanchor_x' ]) . ", " . intval($lmm_options[ 'defaults_marker_icon_iconanchor_y' ]) . "],popupAnchor: [" . intval($lmm_options[ 'defaults_marker_icon_popupanchor_x' ]) . ", " . intval($lmm_options[ 'defaults_marker_icon_popupanchor_y' ]) . "],shadowUrl: '" . $marker_shadow_url . "',shadowSize: [" . intval($lmm_options[ 'defaults_marker_icon_shadowsize_x' ]) . ", " . intval($lmm_options[ 'defaults_marker_icon_shadowsize_y' ]) . "],shadowAnchor: [" . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_x' ]) . ", " . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_y' ]) . "],className: 'lmm_marker_icon_default'});".PHP_EOL;
@@ -786,12 +784,6 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 		if (!empty($geojsonurl)) {
 		$lmmjs_out .= 'geojsonObj = eval("(" + jQuery.ajax({url: "'.$geojsonurl.'", async: false, cache: true}).responseText + ")");'.PHP_EOL;
 		}
-		//2do: check if loading marker via GeoJSON has advantages
-		/*
-		if ( !empty($marker) ) {
-		$lmmjs_out .= 'geojsonObj = eval("(" + jQuery.ajax({url: "' . LEAFLET_PLUGIN_URL . 'leaflet-geojson.php?marker='.$marker.'", async: false, cache: true}).responseText + ")");'.PHP_EOL;
-		}
-		*/
 		//info: load GeoJSON for layer maps
 		if (!empty($layer) && ($multi_layer_map == 0) ) {
 			$lmmjs_out .= 'geojsonObj = eval("(" + jQuery.ajax({url: "' . LEAFLET_PLUGIN_URL . 'leaflet-geojson.php?layer=' . $id . '&full=no&full_icon_url=no", async: false, cache: true}).responseText + ")");'.PHP_EOL;
@@ -860,9 +852,6 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 			}
 		}
 	";	
-
-	//info: end workaround for incompatibility with jetpack plugin
-	$lmmjs_out .= '}'.PHP_EOL;
 
 	//info: fallback for adding js to footer 3
 	if ( (version_compare( $wp_version, '3.3', '>=' )) && ($lmm_options['misc_javascript_header_footer'] == 'footer')) {

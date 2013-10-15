@@ -5,7 +5,7 @@
  Description: Add a wiki to your blog
  Author: S H Mohanjith (Incsub)
  WDP ID: 225
- Version: 1.0.8
+ Version: 1.0.8.2
  Stable tag: trunk
  Author URI: http://premium.wpmudev.org
 */
@@ -28,7 +28,7 @@ class Wiki {
      *
      * @var		string	$current_version	Current version
      */
-    var $current_version = '1.0.8';
+    var $current_version = '1.0.8.2';
     /**
      * @var		string	$translation_domain	Translation domain
      */
@@ -526,8 +526,7 @@ class Wiki {
 		    
 		    // If we're comparing a revision to itself, redirect to the 'view' page for that revision or the edit page for that post
 		    if ( $left_revision->ID == $right_revision->ID ) {
-			$redirect = get_edit_post_link( $left_revision->ID );
-			include( ABSPATH . 'wp-admin/js/revisions-js.php' );
+			$redirect = get_permalink().'?action=edit';
 			break;
 		    }
 		    

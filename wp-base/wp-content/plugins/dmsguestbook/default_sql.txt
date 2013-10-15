@@ -1,0 +1,43 @@
+####################################################
+Failback default mySQL data if DMSGuestbook havn't create this.
+
+1.) Open your phpMyAdmin webfrontend or an other tool.
+2.) Select your wordpress database.
+3.) Copy the mySQL statement and put this in the SQL windows.
+
+####################################################
+
+Be sure the dmsguestbook name have the correct prefix.
+
+mySQL 4.1 and above:
+
+CREATE TABLE wp_dmsguestbook (id mediumint(9) NOT NULL AUTO_INCREMENT,
+name varchar(50) DEFAULT '' NOT NULL,
+email varchar(50) DEFAULT '' NOT NULL,
+gravatar varchar(32) DEFAULT '' NOT NULL,
+url varchar(50) DEFAULT '' NOT NULL,
+date int(10) NOT NULL,
+ip varchar(15) DEFAULT '' NOT NULL,
+message longtext NOT NULL,
+guestbook int(2) DEFAULT '0' NOT NULL,
+spam int(1) DEFAULT '0' NOT NULL,
+additional varchar(50) NOT NULL,
+flag int(2) NOT NULL,
+UNIQUE KEY id (id)
+)DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+mySQL 4.0 and lower:
+
+CREATE TABLE wp_dmsguestbook (id mediumint(9) NOT NULL AUTO_INCREMENT,
+name varchar(50) DEFAULT '' NOT NULL,
+email varchar(50) DEFAULT '' NOT NULL,
+gravatar varchar(32) DEFAULT '' NOT NULL,
+url varchar(50) DEFAULT '' NOT NULL,
+date int(10) NOT NULL,
+ip varchar(15) DEFAULT '' NOT NULL,
+message longtext NOT NULL,
+guestbook int(2) DEFAULT '0' NOT NULL,
+spam int(1) DEFAULT '0' NOT NULL,
+additional varchar(50) NOT NULL,
+flag int(2) NOT NULL,
+UNIQUE KEY id (id))

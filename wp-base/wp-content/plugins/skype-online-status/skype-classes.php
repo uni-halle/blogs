@@ -425,13 +425,13 @@ class Skype_Online_Status {
 				$theme_output .= "<br />";
 
 			if ($config['getskype_link'] == "skype_mainpage")
-				$theme_output .= " <a href=\"http://www.skype.com\" title= \"".$config['getskype_text']."\">".$config['getskype_text']."</a>";
+				$theme_output .= " <a rel=\"nofollow\" href=\"http://www.skype.com\" title= \"".$config['getskype_text']."\">".$config['getskype_text']."</a>";
 			elseif ($config['getskype_link'] == "skype_downloadpage")
-				$theme_output .= " <a href=\"http://www.skype.com/go/download\" title= \"".$config['getskype_text']."\">".$config['getskype_text']."</a>";
+				$theme_output .= " <a rel=\"nofollow\" href=\"http://www.skype.com/go/download\" title= \"".$config['getskype_text']."\">".$config['getskype_text']."</a>";
 			elseif ($config['getskype_link'] == "custom_link" && $config['getskype_custom_link'] != "" )
 				$theme_output .= stripslashes($config['getskype_custom_link']);
 			else
-				$theme_output .= " <a href=\"http://status301.net/skype-online-status/go/download\" title=\"".$config['getskype_text']."\" onmouseover=\"window.status='http://www.skype.com/go/download';return true;\" onmouseout=\"window.status=' ';return true;\">".$config['getskype_text']."</a>";
+				$theme_output .= " <a rel=\"nofollow\" href=\"http://status301.net/skype-online-status/go/download\" title=\"".$config['getskype_text']."\" onmouseover=\"window.status='http://www.skype.com/go/download';return true;\" onmouseout=\"window.status=' ';return true;\">".$config['getskype_text']."</a>";
 			}
 		return str_replace(array("\r\n", "\n\r", "\n", "\r", "%0D%0A", "%0A%0D", "%0D", "%0A"), "", $theme_output);
 	}
@@ -517,7 +517,7 @@ class Skype_Online_Status {
 			return;
 
 		if ( self::$config['getskype_link'] == "skype_mainpage" || self::$config['getskype_link'] == "skype_downloadpage" ) {
-			wp_register_script('skypecheck', 'http://download.skype.com/share/skypebuttons/js/skypeCheck.js', '', '2.0', true);
+			wp_register_script('skypecheck', 'http://download.skype.com/share/skypebuttons/js/skypeCheck.js', '', '2.2', true);
 		} else {
 			wp_register_script('skypecheck', SOSPLUGINURL.'/js/skypeCheck.js', '', SOSVERSION, true);
 		}

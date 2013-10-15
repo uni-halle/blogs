@@ -92,7 +92,7 @@ if (isset($_GET['layer'])) {
 		if ($full == 1) {
 			echo '"markerid":"'.$marker['mid'].'",'.PHP_EOL;
 		}
-			echo '"markername":"' . stripslashes(esc_js($marker['mmarkername'])) . '",'.PHP_EOL;
+			echo '"markername":"' . wp_specialchars_decode(stripslashes(esc_js($marker['mmarkername']))) . '",'.PHP_EOL;
 		if ($full == 1) {
 			echo '"basemap":"'.$marker['mbasemap'].'",'.PHP_EOL;
 			echo '"lat":"'.$marker['mlat'].'",'.PHP_EOL;
@@ -191,7 +191,7 @@ elseif (isset($_GET['marker'])) {
     die();
   //info: added left outer join to also show markers without a layer
   if ($full == 0) {
-	  $sql = 'SELECT m.lat as mlat, m.lon as mlon, CONCAT(m.lon,\',\',m.lat) AS mcoords, m.icon as micon, m.popuptext as mpopuptext, m.address as maddress FROM '.$table_name_markers.' AS m '.$q;
+	  $sql = 'SELECT m.lat as mlat, m.lon as mlon, CONCAT(m.lon,\',\',m.lat) AS mcoords, m.markername as mmarkername, m.icon as micon, m.popuptext as mpopuptext, m.address as maddress FROM '.$table_name_markers.' AS m '.$q;
   } else {
 	 $sql = 'SELECT m.id as mid, m.markername as mmarkername, m.layer as mlayer, CONCAT(m.lon,\',\',m.lat) AS mcoords, m.icon as micon, m.createdby as mcreatedby, m.createdon as mcreatedon, m.updatedby as mupdatedby, m.updatedon as mupdatedon,m.zoom as mzoom, m.basemap as mbasemap, m.lat as mlat, m.lon as mlon, m.openpopup as mopenpopup, m.popuptext as mpopuptext, m.mapwidth as mmapwidth, m.mapwidthunit as mmapwidthunit, m.mapheight as mmapheight, m.controlbox as mcontrolbox, m.overlays_custom as moverlays_custom, m.overlays_custom2 as moverlays_custom2, m.overlays_custom3 as moverlays_custom3, m.overlays_custom4 as moverlays_custom4, m.wms as mwms, m.wms2 as mwms2, m.wms3 as mwms3, m.wms4 as mwms4, m.wms5 as mwms5, m.wms6 as mwms6, m.wms7 as mwms7, m.wms8 as mwms8, m.wms9 as mwms9, m.wms10 as mwms10, m.kml_timestamp as mkml_timestamp, m.address as maddress, l.createdby as lcreatedby, l.createdon as lcreatedon, l.updatedby as lupdatedby, l.updatedon as lupdatedon, l.name AS lname FROM '.$table_name_markers.' AS m INNER JOIN '.$table_name_layers.' AS l ON m.layer=l.id '.$q;
   }
@@ -220,7 +220,7 @@ elseif (isset($_GET['marker'])) {
 	echo '{'.PHP_EOL;
 	if ($full == 1) {
 		echo '"markerid":"'.$marker['mid'].'",'.PHP_EOL;
-		echo '"markername":"' . stripslashes(esc_js($marker['mmarkername'])) . '",'.PHP_EOL;
+		echo '"markername":"' . wp_specialchars_decode(stripslashes(esc_js($marker['mmarkername']))) . '",'.PHP_EOL;
 		echo '"basemap":"'.$marker['mbasemap'].'",'.PHP_EOL;
 		echo '"lat":"'.$marker['mlat'].'",'.PHP_EOL;
 		echo '"lon":"'.$marker['mlon'].'",'.PHP_EOL;

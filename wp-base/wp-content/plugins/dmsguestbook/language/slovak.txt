@@ -1,0 +1,16 @@
+/* Radim Fabik *** radim(at)fabik(dot)co(dot)uk */
+
+<name>Meno</name>
+<email>Email</email>
+<url>Web</url>
+<message>Spr&#225;va</message>
+<antispam><b>Antispam kontrola</b><br />Pred odoslan&#237;m odkazu op&#237;&#353;te kontroln&#253; k&#243;d.</antispam>
+<mandatory>Povinn&#233;</mandatory>
+<submit>Odosla&#357;</submit>
+<name_error>Meno je ve&#318;mi kr&#225;tke!</name_error>
+<email_error>Neplatn&#253; email!</email_error>
+<url_error>Neplatn&#253; web!</url_error>
+<message_error>Text spr&#225;vy je ve&#318;mi kr&#225;tky!</message_error>
+<antispam_error>Chybn&#253; k&#243;d!</antispam_error>
+<success>&#270;akujeme za v&#225;&#353; odkaz!</success>
+<admin_review>Administr&#225;tor skontroluje v&#225;&#353; pr&#237;spevok!<br />&#270;akujeme za trpezlivos&#357;!</admin_review>

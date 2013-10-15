@@ -210,6 +210,16 @@ class Mixin_Form_Field_Generators extends Mixin
             True
         );
     }
+
+	function _render_ajax_pagination_field($display_type)
+	{
+		return $this->object->_render_radio_field(
+			$display_type,
+			'ajax_pagination',
+			_('Enable AJAX pagination'),
+			isset($display_type->settings['ajax_pagination']) ? $display_type->settings['ajax_pagination'] : FALSE
+		);
+	}
     
     function _render_thumbnail_override_settings_field($display_type)
     {

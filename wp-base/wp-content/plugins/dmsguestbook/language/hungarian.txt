@@ -1,0 +1,17 @@
+/* Nizar Midani *** nizar(at)eventa(dot)hu */
+
+<name>N&#233;v</name>
+<email>E-mail</email>
+<url>Weboldal</url>
+<message>&#220;zenet</message>
+<antispam><b>Robotellen&#245;r</b><br />K&#233;rj&#252;k, &#237;rd be az itt l&#225;that&#243; bet&#369;-sz&#225;m sort</antispam>
+<mandatory>K&#246;telez&#245; mezo&#245;</mandatory>
+<submit>Bek&#252;ld&#233;s</submit>
+<name_error>A n&#233;v t&#250;l r&#246;vid!</name_error>
+<email_error>Helytelen e-mail!</email_error>
+<url_error>Helyteten webc&#237;m!</url_error>
+<message_error>A sz&#246;veg t&#250;l r&#246;vid!</message_error>
+<antispam_error>Rossz sz&#225;m-bet&#369; kombin&#225;ci&#243;!</antispam_error>
+<success>K&#246;sz&#246;nj&#252;k a bejegyz&#233;st!</success>
+<admin_review>Az adminisztr&#225;tor r&#246;videsen ellen&#245;rizni fogja!<br />
+K&#246;sz&#246;nj&#252;k meg&#233;rt&#233;sedet &#233;s t&#252;relmedet!</admin_review>

@@ -230,7 +230,8 @@ if ( $action == NULL ) {
 				<h3>' . __('additional optimizations and improvements','lmm') . '</h3>
 				<div>
 				<ul style="list-style-type:disc;margin-left:15px;">
-					<li>' . __('improved performance for layer maps with a huge number of markers (parsing of GeoJSON is up to 3 times faster)','lmm') . '</li>
+					<li><a class="pro-upgrade-external-links" href="http://www.mapsmarker.com/v1.2.1p" target="_blank">' . __('improved performance for layer maps with a huge number of markers (parsing of GeoJSON is up to 3 times faster)','lmm') . '</a></li>
+					<li><a class="pro-upgrade-external-links" href="http://www.mapsmarker.com/v1.3p" target="_blank">' . __('support for shortcodes in popup texts','lmm') . '</a></li>
 				</ul>
 				</div>
 

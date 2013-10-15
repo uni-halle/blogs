@@ -108,7 +108,7 @@ class C_Photocrati_Cache
 				if ($_wp_using_ext_object_cache) {
 					$keys = ($expired_only ? self::get_expired_key_list($group) : self::get_key_list($group));
 					foreach ($keys as $key) $cache->delete($key, FALSE);
-					$sql = $wpdb->prepare("DELETE FROM {$wpdb->prefix} WHERE option_name LIKE %s", "%%{$cache->group}%%");
+					$sql = $wpdb->prepare("DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", "%%{$cache->group}%%");
 					if ($expired_only) $sql .= " AND option_value < ".time();
 					$retval = $wpdb->query($sql);
 				}

@@ -1,0 +1,1632 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DMSGuestbook 1.15.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-02 19:05+0100\n"
+"PO-Revision-Date: 2011-12-06 20:45+0800\n"
+"Last-Translator: Angela Zou <angela380in@hotmail.com>\n"
+"Language-Team: Daniel Schurter <DMSGuestbook@DanielSchurter.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: SWITZERLAND\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: C:\\Dokumente und Einstellungen\\Anonymous666\\Desktop\\dmsguestbook_translate\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin.php:67
+#: widget.php:232
+msgid "Options"
+msgstr "选项"
+
+#: admin.php:67
+msgid "<span style='font-size:12px;'>DMSGuestbook</span>"
+msgstr "<span style='font-size:12px;'>DMS留言板</span>"
+
+#: admin.php:71
+#: admin.php:1460
+#: admin.php:2126
+msgid "Entries"
+msgstr "记录"
+
+#: admin.php:76
+#: admin.php:1471
+#: admin.php:2349
+#: admin.php:2506
+#: admin.php:2638
+msgid "Spam"
+msgstr "垃圾信息"
+
+#: admin.php:81
+#: admin.php:379
+#: admin.php:1454
+msgid "phpinfo"
+msgstr "php信息"
+
+#: admin.php:101
+msgid "Options have been saved"
+msgstr "选项已保存"
+
+#: admin.php:105
+msgid "Options were not saved, text box is empty"
+msgstr "选项没有保存"
+
+#: admin.php:133
+msgid "Create a page where you want to display the DMSGuestbook."
+msgstr "创建一个用于DMS留言板的页面"
+
+#: admin.php:134
+msgid "Save the page and assign it under \"Guestbook settings\" -> \"Basic\"."
+msgstr "保存页面及分配到\"留言板设置\" -> \"基本设置\"."
+
+#: admin.php:135
+msgid "Customize the guestbook to your desire!"
+msgstr "定做你的留言板"
+
+#: admin.php:144
+msgid "One or more options are missing."
+msgstr "没有填一个或更多的选项"
+
+#: admin.php:148
+msgid "Update options database"
+msgstr "更新选项数据库"
+
+#: admin.php:158
+msgid "Update database"
+msgstr "更新数据库"
+
+#: admin.php:184
+msgid "was created"
+msgstr "创建于"
+
+#: admin.php:192
+msgid "was deleted"
+msgstr "删除于"
+
+#: admin.php:198
+#: admin.php:538
+msgid "DMSGuestbook options"
+msgstr "DMS留言板选项"
+
+#: admin.php:198
+#: admin.php:3453
+msgid "Don't forget to set the page id."
+msgstr "别忘了设置页面ID"
+
+#: admin.php:207
+msgid "All DMSGuestbook options were deleted"
+msgstr "所有DMS留言板选项已删除"
+
+#: admin.php:280
+#: admin.php:348
+msgid "Dashboard"
+msgstr "控制板"
+
+#: admin.php:282
+#: admin.php:374
+#: admin.php:523
+#: admin.php:1454
+msgid "Database settings"
+msgstr "数据库设置"
+
+#: admin.php:284
+#: admin.php:375
+#: admin.php:1454
+#: admin.php:1600
+msgid "Guestbook settings"
+msgstr "留言板设置"
+
+#: admin.php:286
+#: admin.php:376
+#: admin.php:1454
+#: admin.php:1886
+msgid "Language settings"
+msgstr "语言设置"
+
+#: admin.php:325
+msgid "Yes"
+msgstr "是"
+
+#: admin.php:327
+msgid "No"
+msgstr "否"
+
+#: admin.php:355
+msgid "entries"
+msgstr "记录"
+
+#: admin.php:356
+msgid "waiting for approval"
+msgstr "等待批准"
+
+#: admin.php:357
+msgid "spam"
+msgstr "垃圾"
+
+#: admin.php:359
+msgid "Server Settings"
+msgstr "服务器设置"
+
+#: admin.php:361
+msgid "Server"
+msgstr "服务器"
+
+#: admin.php:362
+msgid "MYSQL Server"
+msgstr "MySQL服务器"
+
+#: admin.php:363
+msgid "Memory Limit"
+msgstr "内存限制"
+
+#: admin.php:365
+msgid "Graphic Settings"
+msgstr "图画设置"
+
+#: admin.php:367
+msgid "GD Version"
+msgstr "GD版本"
+
+#: admin.php:368
+msgid "Freetype Support"
+msgstr "Freetype支持"
+
+#: admin.php:369
+msgid "Freetype Linkage"
+msgstr "Freetype链接"
+
+#: admin.php:370
+msgid "PNG Support"
+msgstr "PNG支持"
+
+#: admin.php:372
+msgid "Permissions"
+msgstr "权限"
+
+#: admin.php:377
+msgid "Post settings"
+msgstr "文章设置"
+
+#: admin.php:378
+msgid "Spam settings"
+msgstr "垃圾记录设置"
+
+#: admin.php:383
+#: admin.php:1748
+msgid "Miscellaneous"
+msgstr "其他"
+
+#: admin.php:385
+msgid "CSS file writable"
+msgstr "CSS文件可写"
+
+#: admin.php:386
+msgid "xfiles.ttf readable"
+msgstr "xfiles.ttf可读"
+
+#: admin.php:388
+msgid "Captcha Image"
+msgstr "验证图片"
+
+#: admin.php:392
+msgid "If dmsguestbook.css exists and is writable, all CSS settings will be read from it.<br />Otherwise these settings will be loaded from the database."
+msgstr "如果dmsguestbook.css文件可读, CSS选项则从此文件提取.<br />否则CSS选项则从数据库提取"
+
+#: admin.php:396
+msgid "If you don't see the image here, check the xfiles.ttf and captcha.png permission in your captcha folder."
+msgstr "如果你看不到图片, 查看xfiles.ttf及captcha.png文件的权限"
+
+#: admin.php:400
+msgid "News"
+msgstr "新闻"
+
+#: admin.php:410
+msgid "No items"
+msgstr "没有项目"
+
+#: admin.php:419
+msgid "Infos"
+msgstr "信息"
+
+#: admin.php:421
+msgid "FAQ"
+msgstr "常见问题"
+
+#: admin.php:422
+msgid "Changelog"
+msgstr "更新日志"
+
+#: admin.php:446
+#, php-format
+msgid "[Status OK] %s does exist."
+msgstr "[Status OK] %s存在"
+
+#: admin.php:447
+#, php-format
+msgid "Type \"yes, i am sure\" in this textfield if you want delete %s"
+msgstr "使用\"是,我确定\" 在以下选项如果你想删除%s"
+
+#: admin.php:448
+msgid "All guestbook data will be lost!"
+msgstr "所有的留言板数据会丢失!"
+
+#: admin.php:452
+#, php-format
+msgid "delete %s"
+msgstr "删除%s"
+
+#: admin.php:456
+#, php-format
+msgid "%s isn't exist."
+msgstr "%s不存在"
+
+#: admin.php:461
+msgid "if you use mySQL 4.0.xx or lower"
+msgstr "如果你使用的是MySQL 4.0或更低"
+
+#: admin.php:464
+msgid "Create"
+msgstr "创建"
+
+#: admin.php:466
+msgid ""
+"If you want use char like &auml;,&uuml;,&ouml;... and your mysql version is lower than 4.1, be sure the language\n"
+"\t\t\tsetting is e.g. \"de-iso-8859-1\" or similar. Check this with your mysql graphical frontenend like phpmyadmin."
+msgstr "如果你要使用特殊字母比如&auml;,&uuml;,&ouml;..., 而且你的MySQL版本低于4.1, 请确认字符组是正确的."
+
+#: admin.php:470
+#, php-format
+msgid "If there is something wrong with my %s table:"
+msgstr "如果我的%s数据有错:"
+
+#: admin.php:470
+#: admin.php:505
+msgid "Help"
+msgstr "帮助"
+
+#: admin.php:483
+#, php-format
+msgid "[Status OK] \"DMSGuestbook_options\" found in %s."
+msgstr "[Status OK] \"DMS留言板选项\" 在%s找到."
+
+#: admin.php:487
+#, php-format
+msgid "No \"DMSGuestbook_options\" found in %s."
+msgstr "没有在%s找到\"DMS留言板选项\""
+
+#: admin.php:491
+#, php-format
+msgid "Notice: You have some old \"DMSGuestbook_xxxx\" rows in your %s, but this have no functionality impact."
+msgstr "注意: 你有一些旧数据(\"DMS留言板_xxx\")在你的%s, 但是这对插件的运作没有重大影响."
+
+#: admin.php:496
+msgid "Create new DMSGuestbook options"
+msgstr "创建DMS留言板的新选项"
+
+#: admin.php:500
+#, php-format
+msgid "Type \"delete\" to remove all DMSGuestbook option entries from the %s table."
+msgstr "选择\"删除\"来取消在%s数据桌的所有DMS留言板选项"
+
+#: admin.php:503
+msgid "Delete DMSGuestbook options from the database"
+msgstr "从数据库里删除所有DMS留言板的选项"
+
+#: admin.php:505
+#, php-format
+msgid "If there is something wrong with my<br />DMSGuestbook_options in %s:"
+msgstr "如果我的DMS留言板%s选项有误:"
+
+#: admin.php:508
+msgid "Copy this content to a text file in case if you need a backup."
+msgstr "拷贝这些到一个文件以存后备"
+
+#: admin.php:512
+msgid ""
+"Restore DMSGuestbook_options:<br />\n"
+"\t\tOpen your DMSGuestbook option backup text file and put the content in the textfield below.<br />\n"
+"\t\tAll data will be overwrite!"
+msgstr ""
+"恢复GMS留言板选项:<br />\n"
+"\t\t打开你的DMS留言板后备文件, 拷贝所有的文字到以下空白之处<br />\n"
+"\t\t所有数据将被覆盖!"
+
+#: admin.php:518
+msgid "Restore"
+msgstr "恢复"
+
+#: admin.php:518
+#: admin.php:1863
+msgid "Would you really like to restore all data?"
+msgstr "你是否要恢复所有数据?"
+
+#: admin.php:529
+msgid "DMSGuestbook Database"
+msgstr "DMS留言板数据库"
+
+#: admin.php:546
+msgid "DMSGuestbook options backup"
+msgstr "DMS留言板选项后备"
+
+#: admin.php:571
+#: admin.php:1856
+#: admin.php:2495
+#: admin.php:3601
+msgid "Save"
+msgstr "保存"
+
+#: admin.php:600
+msgid "You have to delete the assigned guestbooks by clicking on \"Clear all\" before you can set this again. Assigned guestbooks will not be released until you press the \"Save\" button."
+msgstr "使用\"清除所有\"来删除选中的留言板. 留言板不会出现除非你使用\"保存\"选项."
+
+#: admin.php:601
+msgid "To assign guestbook(s)"
+msgstr "分配留言板"
+
+#: admin.php:620
+#: admin.php:2230
+#: admin.php:2282
+#: admin.php:2364
+#: admin.php:2393
+#: admin.php:2678
+#: admin.php:2741
+msgid "ID"
+msgstr "ID"
+
+#: admin.php:621
+#: admin.php:2230
+msgid "Page"
+msgstr "页面"
+
+#: admin.php:622
+msgid "Page status"
+msgstr "页面状态"
+
+#: admin.php:623
+#: admin.php:2230
+#: admin.php:2344
+#: admin.php:2394
+#: admin.php:2727
+msgid "Guestbook"
+msgstr "留言板"
+
+#: admin.php:623
+msgid "Deactivate super guestbook "
+msgstr "停止超级留言板"
+
+#: admin.php:624
+msgid "Language"
+msgstr "语言"
+
+#: admin.php:640
+msgid "not selected"
+msgstr "没有选中"
+
+#: admin.php:653
+msgid "Activate this guestbook as super guestbook"
+msgstr "启动这个作为超级留言板"
+
+#: admin.php:664
+msgid "Clear all"
+msgstr "清除所有"
+
+#: admin.php:665
+msgid "Would you like to display one particular guestbook in a different languages? Select your desired guestbook and mark the radio button. After that all pages with the assigned language will be bound with the guestbook that you've selected."
+msgstr "你是否想让一个留言板使用不同的英语呢? 选择你的留言板, 然后选择相对应的语言即可."
+
+#: admin.php:690
+msgid "Set"
+msgstr "设置"
+
+#: admin.php:699
+msgid "How to use:<br />1.) Reset all assigned guestbooks by clicking on \"Clear all\"<br />2.) Select your desired language<br /> 3.) Select your guestbook(s) by clicking \"Set\" in ascending order.<br />4.) Press the \"Save\" button"
+msgstr "怎样使用:<br />1.) 使用\"清除所有\"重设所有留言板<br />2.) 选择使用的语言<br />3.) 使用\"设置\"来分配留言板<br />4.) 使用\"保存\""
+
+#: admin.php:707
+msgid "Post per page"
+msgstr "每个页面的文章数"
+
+#: admin.php:712
+msgid "Number of entry in each page"
+msgstr "每个页面的项目"
+
+#: admin.php:718
+msgid "Message text length"
+msgstr "留言长度"
+
+#: admin.php:723
+msgid " chars"
+msgstr " 个字"
+
+#: admin.php:725
+msgid "Define the maximum allowed lenght each message text<br />Deactivate this feature to set 0"
+msgstr "定义留言的最大长度<br />使用0来消除此选项"
+
+#: admin.php:732
+#: admin.php:1505
+msgid "Guestbook width"
+msgstr "留言板宽度"
+
+#: admin.php:739
+msgid "Guestbook width in percent<br /><br />Variable: {width1}"
+msgstr "留言板宽度(百分比)<br /><br />函数: {width1}"
+
+#: admin.php:746
+#: admin.php:1505
+msgid "Separator width"
+msgstr "分开线宽度"
+
+#: admin.php:753
+msgid "Separator width in percent<br /><br />Variable: {width2}"
+msgstr "分开线宽度(百分比)<br /><br />函数: {width2}"
+
+#: admin.php:760
+msgid "Guestbook position (x-axis)"
+msgstr "留言板位置(左右)"
+
+#: admin.php:767
+msgid "Absolute guestbook position in pixel horizontal (x-axis)<br /><br />Variable: {position1}"
+msgstr "留言板在水平的绝对位置 (使用像素). 函数: {position1}"
+
+#: admin.php:774
+msgid "Guestbook position (y-axis)"
+msgstr "留言板位置(上下)"
+
+#: admin.php:781
+msgid "Absolute guestbook position in pixel vertical (y-axis)<br /><br />Variable: {position2}"
+msgstr "留言板在垂直的绝对位置 (使用像素). 函数: {position1}"
+
+#: admin.php:788
+msgid "Navigation char style<br /><br />e.g. < >"
+msgstr "导航字体设计<br /><br />比如 < >"
+
+#: admin.php:800
+msgid "Navigation char style"
+msgstr "导航字体设计"
+
+#: admin.php:810
+#: admin.php:1505
+msgid "Navigation char size"
+msgstr "导航字体大小"
+
+#: admin.php:817
+msgid "Navigation font size in pixel<br /><br />Variable: {navigationsize}"
+msgstr "导航字体大小 (像素)<br /><br />函数: {navigationsize}"
+
+#: admin.php:824
+msgid "Guestbook form position"
+msgstr "留言板位置"
+
+#: admin.php:829
+msgid "Visible the guestbook input form on top or bottom"
+msgstr "在留言板之上或之下出现输入口"
+
+#: admin.php:835
+msgid "Link text"
+msgstr "链接字体"
+
+#: admin.php:842
+msgid "Define a link text if you selected \"bottom\""
+msgstr "如果你选择了\"下边\", 定义你的链接"
+
+#: admin.php:849
+msgid "Sort guestbook items"
+msgstr "排列留言板项目"
+
+#: admin.php:854
+msgid "DESC = Newer post first<br />ASC = Older post first"
+msgstr "DESC = 最新项目列最前<br />ASC = 最旧项目列最前"
+
+#: admin.php:860
+msgid "Database id"
+msgstr "数据库ID"
+
+#: admin.php:865
+msgid "Use the database id to consecutively numbered each guestbook entry"
+msgstr "使用数据库ID来对留言编号"
+
+#: admin.php:881
+msgid "Form template"
+msgstr "表格模版"
+
+#: admin.php:886
+msgid "Create your own input form template and use it is on your guestbook site<br /><br />See an examle in \"/template/form/default.tpl\""
+msgstr "创建你自己的表格模版.例子请见\"/template/form/default.tpl\""
+
+#: admin.php:902
+msgid "Post template"
+msgstr "文章模版"
+
+#: admin.php:907
+msgid "Create your own guestbook post template and use it is on your guestbook site<br /><br />See an examle in \"/template/post/default.tpl\""
+msgstr "创建你自己的留言板留言模版.例子请见\"/template/form/default.tpl\""
+
+#: admin.php:913
+msgid "rel=\"nofollow\" tag for posted url's"
+msgstr "使用 rel=\"nofollow\" 标签"
+
+#: admin.php:918
+msgid "Activate the nofollow tag for posted url's<br /><a href=\"http://en.wikipedia.org/wiki/Nofollow\" target=\"_blank\">http://en.wikipedia.org/wiki/Nofollow</a>"
+msgstr "为URL启用<a href=\"http://en.wikipedia.org/wiki/Nofollow\" target=\"_blank\">nofollow</a>标签"
+
+#: admin.php:934
+msgid "Additional selectbox"
+msgstr "添加下拉列表"
+
+#: admin.php:939
+msgid "Define a selectbox and fill this with your own values.<br />See some examples in your \"dmsguestbook/module\" folder."
+msgstr "定义一个下拉列表以及它的值<br />例子请见\"dmsguestbook/module\"文档"
+
+#: admin.php:945
+msgid "Additional selectbox title"
+msgstr "下拉列表标题"
+
+#: admin.php:952
+msgid "This text will be shown on your input form guestbook page.<br />You could leave this textfield blank by using space character."
+msgstr "此文本将在留言板上出现 (可留空白)"
+
+#: admin.php:959
+msgid "Show additional value"
+msgstr "显示更多值"
+
+#: admin.php:964
+msgid "Show additional text in each guestbook post.<br />You could edit the appearance in \"template/post/default.tpl\"<br />The default setting will be set the additional text on the footer of guestbook post."
+msgstr "在每条留言中, 添加此文本. 默认方式是放在表尾. 你可以在\"template/post/default.tpl\"编辑它的风格"
+
+#: admin.php:970
+msgid "Separator color"
+msgstr "分隔物颜色"
+
+#: admin.php:976
+msgid "Separator between header and body in each entry<br /><br />Variable: {separatorcolor}"
+msgstr "分隔物颜色<br /><br />函数: {separotorcolor}  "
+
+#: admin.php:981
+msgid "Outside border color"
+msgstr "文字编辑框外边的颜色"
+
+#: admin.php:987
+msgid "Color of the outside box<br /><br />Variable: {bordercolor1}"
+msgstr "文字编辑框外边的颜色<br /><br />函数: {bordercolor1}"
+
+#: admin.php:993
+msgid "Textfield border color"
+msgstr "文字编辑框边的颜色"
+
+#: admin.php:999
+msgid "Color of all textfield borders<br /><br />Variable: {bordercolor2}"
+msgstr "文字编辑框边的颜色<br /><br />函数: {bordercolor2}"
+
+#: admin.php:1005
+msgid "Navigation char color"
+msgstr "导航字体颜色"
+
+#: admin.php:1011
+msgid "Define the navigation color<br /><br />Variable: {navigationcolor}"
+msgstr "导航颜色. 函数: {navigationcolor}"
+
+#: admin.php:1017
+msgid "Font color"
+msgstr "字体颜色"
+
+#: admin.php:1023
+msgid "Overall font color<br /><br />Variable: {fontcolor1}"
+msgstr "字体颜色. 函数: {fontcolor1}"
+
+#: admin.php:1029
+#: admin.php:1505
+msgid "Antispam image text color"
+msgstr "防垃圾图片颜色"
+
+#: admin.php:1035
+msgid "Antispam image text color<br /><br />Variable: {captcha_color}"
+msgstr "防垃圾图片颜色. 函数: {captcha_color}"
+
+#: admin.php:1041
+msgid "Date / Time format"
+msgstr "日期 / 时间格式"
+
+#: admin.php:1048
+#: admin.php:1204
+#: admin.php:1418
+#: widget.php:106
+#: widget.php:126
+msgid "More infos"
+msgstr "更多"
+
+#: admin.php:1055
+msgid "Setlocale"
+msgstr "设置时间地区"
+
+#: admin.php:1062
+msgid "Set your language: e.g. en_EN, de_DE, fr_FR, it_IT, de, ge ...<br />(must be installed on your system)"
+msgstr "Setzen des Ländercodes: Z.B.  en_EN, de_DE, fr_FR, it_IT, de, ge ...<br />(Muss auf dem System installiert sein)"
+
+#: admin.php:1069
+msgid "Offset"
+msgstr "偏移"
+
+#: admin.php:1074
+msgid "Time offset: Use this offset if your Wordpress installation is not in the same country where you live.<br />e.g. You live in London and the Wordpress installation is on a server in Chicago.<br />If You want to show the date in GMT (Greenwich Mean Time), set the offset -6 and check the correct time below.<br /><br /> Notice: Don't use the %z or %Z parameter if your offset isn\"t 0."
+msgstr "时间偏差: 如果你的时间和系统不一致, 可以使用此特色来调整"
+
+#: admin.php:1080
+msgid "Send a mail"
+msgstr "发送邮件"
+
+#: admin.php:1085
+msgid "Receive a notification email when user write an new guestbook post"
+msgstr "当有新的留言时, 发送提醒邮件"
+
+#: admin.php:1091
+msgid "Email address"
+msgstr "邮箱"
+
+#: admin.php:1098
+msgid "The email address which the message to be sent is<br />Multiple email adresses are allowed, split these with the \";\" separator.<br />e.g. test1@example.com;test2@example.com;test3@example.com"
+msgstr "发送人邮箱 (可填多项, 使用;来分开)."
+
+#: admin.php:1105
+msgid "Send method"
+msgstr "发送方法"
+
+#: admin.php:1110
+msgid "Use PHP internal mail function if your server supporting this.<br />A SMTP server could be need username and password as authentification which you must known."
+msgstr "如果服务器支持, 你可以使用PHP的mail函式"
+
+#: admin.php:1116
+msgid "SMTP host"
+msgstr "SMTP服务器"
+
+#: admin.php:1123
+msgid "The SMTP server which do you want to connect."
+msgstr "SMTP服务器地址"
+
+#: admin.php:1130
+msgid "SMTP port"
+msgstr "SMTP 端口"
+
+#: admin.php:1135
+msgid "25 = standard port<br />465 = SMTP over SSL port<br />587 = Alternative SMTP port<br /><br />Check your mail documentation for further information."
+msgstr "25 = 默认<br />465 = SMTP SSL 端口<br />587 = 可选SMTP端口"
+
+#: admin.php:1141
+msgid "SMTP username"
+msgstr "SMTP用户名"
+
+#: admin.php:1148
+msgid "SMTP username if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "需要SMTP用户名"
+
+#: admin.php:1155
+msgid "SMTP password"
+msgstr "SMTP密码"
+
+#: admin.php:1162
+msgid "SMTP password if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "需要SMTP密码"
+
+#: admin.php:1169
+msgid "SMTP authentification"
+msgstr "SMTP验证"
+
+#: admin.php:1174
+msgid "SMTP authentification if is needed. <br /><br />Check your mail documentation for further information."
+msgstr "需要SMTP验证"
+
+#: admin.php:1180
+msgid "SMTP SSL"
+msgstr "SMTP SSL"
+
+#: admin.php:1185
+msgid "SMTP SSL (secure socket layer) if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "需要SMTP SSL"
+
+#: admin.php:1193
+#, php-format
+msgid "DMSGuestbook has found an Akismet key %s"
+msgstr "DMSGuestbook hat einen Akismet Schlüssel gefunden: %s"
+
+#: admin.php:1196
+msgid "No WordPress API key for Akismet was found! Activate the Akismet plugin and create a key. More information under: <a href=\"http://akismet.com/\" target=\"_blank\">http://akismet.com/</a> and <a href=\"http://en.wordpress.com/api-keys/\" target=\"_blank\">http://en.wordpress.com/api-keys/</a>"
+msgstr "Es wurde keinen API Schlüssel für Akismet gefunden. Aktiviere das Akismet Plugin und erstelle eine Schlüssel. Mehr Informationen unter: a href=\"http://akismet.com/\" target=\"_blank\">http://akismet.com/</a> und <a href=\"http://en.wordpress.com/api-keys/\" target=\"_blank\">http://en.wordpress.com/api-keys/</a>"
+
+#: admin.php:1199
+msgid "Akismet"
+msgstr "Akismet"
+
+#: admin.php:1211
+msgid "Move spam to the spam folder@Block guestbook post if spam is found on it@"
+msgstr "Verschiebe Spam in den Spam Ordner@Verhindere das Absenden eines Gästebucheintrages wenn Spam gefunden wurde@"
+
+#: admin.php:1216
+msgid "What should Akismet do if spam are detected?"
+msgstr "Akismet应该对垃圾留言怎样反应?"
+
+#: admin.php:1223
+msgid "Antispam off:@Antispam image:@Antispam mathematic figures:@reCAPTCHA:@"
+msgstr "防垃圾功能关闭@防垃圾图片@防垃圾数学验证@验证"
+
+#: admin.php:1228
+msgid "Image:<br /><img src=\"../wp-content/plugins/dmsguestbook/captcha/captcha.php\" /><br />If you don't see the image here, check the xfiles.ttf and captcha.png permission in your captcha folder<br /><br />Mathematic figures:<br />4 + 9 = 13<br /><br />reCAPTCHA: <a href=\"http://recaptcha.net\" target=\"_blank\">learn more about reCAPTCHA</a>"
+msgstr "图片:<br /><img src=\"../wp-content/plugins/dmsguestbook/captcha/captcha.php\" /><br />如果你在此看不见图片,检查你的xfiles.ttf及captcha.png文件权限.<br /><br />数字验证:<br />4 + 9 = 13<br /><br />验证: <a href=\"http://recaptcha.net/\" target=\"_blank\">了解更多</a>"
+
+#: admin.php:1234
+msgid "reCAPTCHA public key"
+msgstr "验证公开密钥"
+
+#: admin.php:1241
+msgid "Enter here you reCAPTCHA public key."
+msgstr "键入你的验证公开密钥"
+
+#: admin.php:1241
+#: admin.php:1255
+msgid "Learn more about reCAPTCHA"
+msgstr "了解更多私人密码匙"
+
+#: admin.php:1248
+msgid "reCAPTCHA private key"
+msgstr "私人密码匙"
+
+#: admin.php:1255
+msgid "Enter here you reCAPTCHA private key."
+msgstr "键入你的验证私人密码匙"
+
+#: admin.php:1263
+msgid "Antispam key"
+msgstr "防垃圾键"
+
+#: admin.php:1270
+msgid "Set a random key to prevent spam.<br />Every page refresh will create a new key which can be saved.<br />It's used for: Antispam image & Antispam mathematic figures."
+msgstr "每当页面刷新时, 会启用新的关键码来防止垃圾. 设立一个关键码."
+
+#: admin.php:1277
+#: admin.php:2422
+msgid "Email"
+msgstr "邮箱"
+
+#: admin.php:1282
+msgid "User must fill out the email text field"
+msgstr "用户必须填写邮箱"
+
+#: admin.php:1288
+#: admin.php:2424
+#: dmsguestbook.php:878
+msgid "Website"
+msgstr "网址"
+
+#: admin.php:1293
+msgid "User must fill out the website text field"
+msgstr "用户必须填写网址"
+
+#: admin.php:1299
+msgid "Mandatory char"
+msgstr "必填项"
+
+#: admin.php:1306
+msgid "Mandatory char were to display on guestbook input form"
+msgstr "留言板上显示必填项"
+
+#: admin.php:1313
+msgid "Show email"
+msgstr "显示邮箱"
+
+#: admin.php:1318
+msgid "Visible email for everyone in each post"
+msgstr "每人的邮箱都可见"
+
+#: admin.php:1324
+msgid "Show website"
+msgstr "显示网址"
+
+#: admin.php:1329
+msgid "Visible website for everyone in each post"
+msgstr "每人的网址都可见"
+
+#: admin.php:1335
+msgid "Show ip address"
+msgstr "显示IP地址"
+
+#: admin.php:1340
+msgid "Visible ip for everyone in each post"
+msgstr "每人的IP都可见"
+
+#: admin.php:1346
+msgid "Mask ip address"
+msgstr "隐藏IP地址"
+
+#: admin.php:1351
+msgid "Mask ip adress if this is visible"
+msgstr "隐藏可见IP地址"
+
+#: admin.php:1359
+#: admin.php:1366
+msgid "Email image path"
+msgstr "邮件图片路径"
+
+#: admin.php:1366
+#: admin.php:1382
+msgid "Actually image:"
+msgstr "图片"
+
+#: admin.php:1375
+#: admin.php:1382
+msgid "Website image path"
+msgstr "网站图片路径"
+
+#: admin.php:1389
+msgid "Admin must every post review"
+msgstr "管理员必须审核每条留言"
+
+#: admin.php:1394
+msgid "Admin must review every post before this can display on the page.<br />You can edit the guestbook review status under \"Entries\"."
+msgstr "管理员必须审核每条留言. 你可以在\"项目\"里管理留言的状态"
+
+#: admin.php:1400
+msgid "URL overrule"
+msgstr "URL否决"
+
+#: admin.php:1406
+msgid "You can overrule this link if you have trouble with the guestbook form submit."
+msgstr "你可以否决此链接如果你没有办法提交你的留言"
+
+#: admin.php:1406
+#: admin.php:1675
+#: widget.php:132
+#: widget.php:133
+#: widget.php:134
+#: widget.php:135
+#: widget.php:136
+#: widget.php:236
+#: widget.php:240
+#: widget.php:244
+#: widget.php:246
+#: widget.php:248
+#: widget.php:253
+#: widget.php:257
+#: widget.php:261
+#: widget.php:265
+#: widget.php:269
+#: widget.php:273
+msgid "Example"
+msgstr "例子"
+
+#: admin.php:1406
+msgid "YourGuestBookName"
+msgstr "留言板名称"
+
+#: admin.php:1413
+msgid "User can use Gravatar"
+msgstr "图片"
+
+#: admin.php:1424
+msgid "Gravatar rating"
+msgstr "图片评论"
+
+#: admin.php:1429
+msgid "You can specify a rating of G, PG, R, or X.<br />[G] A G rated gravatar is suitable for display on all websites with any audience type.<br />[PG] PG rated gravatars may contain rude gestures, provocatively dressed individuals, the lesser swear words, or mild violence.<br />[R] R rated gravatars may contain such things as harsh profanity, intense violence, nudity, or hard drug use.<br />[X] X rated gravatars may contain hardcore sexual imagery or extremely disturbing violence."
+msgstr "图片评价 (可选值G, PG, R, X. 默认为G)"
+
+#: admin.php:1435
+msgid "Gravatar size"
+msgstr "图片大小"
+
+#: admin.php:1442
+msgid "Image size in pixel"
+msgstr "图片像素"
+
+#: admin.php:1449
+msgid "DMSGuestbook settings"
+msgstr "DMS留言板设置"
+
+#: admin.php:1454
+#: admin.php:1465
+#: admin.php:1476
+msgid "This role affects with"
+msgstr "此角色影响"
+
+#: admin.php:1465
+msgid "Guestbook entries (show, edit, delete)"
+msgstr "留言板留言"
+
+#: admin.php:1476
+msgid "Spam entries (show, edit, delete)"
+msgstr "链接项目"
+
+#: admin.php:1490
+msgid "NEW!"
+msgstr "新!"
+
+#: admin.php:1493
+msgid "New CSS entries found, press the save button to save it."
+msgstr "找到新的CSS选项, 选择\"保存\""
+
+#: admin.php:1501
+msgid "Some CSS entries are missing!"
+msgstr "有些CSS选项缺掉"
+
+#: admin.php:1501
+msgid "Press the save button to restore CSS settings."
+msgstr "选择\"保存\"来恢复CSS设置"
+
+#: admin.php:1505
+msgid "Relative guestbook position (left to right)"
+msgstr "留言板位置(左到右)"
+
+#: admin.php:1505
+msgid "Separator between header and body in each entry"
+msgstr "每个项目分开表头及主体"
+
+#: admin.php:1505
+msgid "Border of the outside box"
+msgstr "外框架的边"
+
+#: admin.php:1505
+msgid "Color of all textfield border"
+msgstr "边的颜色"
+
+#: admin.php:1505
+msgid "Navigation color"
+msgstr "导航颜色"
+
+#: admin.php:1505
+msgid "Overall font color"
+msgstr "字体颜色"
+
+#: admin.php:1505
+msgid "Stylesheet (CSS) Help & Tutorials:<br />English: <a href=\"http://www.html.net/tutorials/css/\" target=\"_blank\">http://www.html.net/tutorials/css/</a><br />German: <a href=\"http://www.css4you.de/\" target=\"_blank\">http://www.css4you.de/</a><br />Or ask Google and friends :-)"
+msgstr "CSS帮助及教程: <a href=\"http://www.html.net/tutorials/css/\" target=\"_blank\">英文</a>, <a href=\"http://w3school.com.cn/\" target=\"_blank\">中文</a>"
+
+#: admin.php:1523
+msgid "Description"
+msgstr "描述"
+
+#: admin.php:1584
+msgid "Custom CSS"
+msgstr "特定CSS"
+
+#: admin.php:1586
+msgid "Class heredity:<br /><br />e.g.<br /><b>a.</b>css_navigation_char<b>:hover</b> {color:#ff0000;}<br />All url link with css_navigation_char (navigation link)<br />become hover color red when user drag over it<br /><br /><b>td</b>.css_guestbook_message_nr_name {background-color:#00ff00;}<br />All td with css_guestbook_message_nr_name (guestbook name & id)<br />become background color green<br /><br />"
+msgstr "CSS自定义设置"
+
+#: admin.php:1610
+msgid "Basic"
+msgstr "基本"
+
+#: admin.php:1622
+msgid "Extended"
+msgstr "伸展"
+
+#: admin.php:1649
+msgid "Color"
+msgstr "颜色"
+
+#: admin.php:1662
+msgid "Time / Date"
+msgstr "时间/日期"
+
+#: admin.php:1679
+msgid "Email Notification"
+msgstr "邮箱通知"
+
+#: admin.php:1699
+msgid "Captcha / Akismet"
+msgstr "验证"
+
+#: admin.php:1721
+msgid "Mandatory"
+msgstr "必填"
+
+#: admin.php:1725
+#: admin.php:2421
+msgid "Name"
+msgstr "姓名"
+
+#: admin.php:1726
+msgid "User must fill out name text field"
+msgstr "用户必须填项目"
+
+#: admin.php:1727
+#: dmsguestbook.php:878
+msgid "Message"
+msgstr "留言"
+
+#: admin.php:1728
+msgid "User must fill out message text field"
+msgstr "用户必须填留言"
+
+#: admin.php:1738
+msgid "Gravatar"
+msgstr "用户图片"
+
+#: admin.php:1759
+msgid "Role"
+msgstr "角色"
+
+#: admin.php:1769
+msgid "is writable"
+msgstr "可写"
+
+#: admin.php:1771
+msgid "is not writable or doesn't exist"
+msgstr "不存在或不可写"
+
+#: admin.php:1777
+msgid "CSS"
+msgstr "CSS"
+
+#: admin.php:1781
+msgid "If dmsguestbook.css exist and is writable, all CSS settings will be read from it.<br />Otherwise these settings will be loaded from the database."
+msgstr "如果dmsguestbook.css可写, 则从此载入CSS配置. 否则从数据库载入CSS配置."
+
+#: admin.php:1786
+msgid "Settings for custom CSS"
+msgstr "特定CSS选项"
+
+#: admin.php:1788
+msgid "Mouse hover color"
+msgstr "鼠标在对象之上的颜色"
+
+#: admin.php:1793
+msgid "Email and url image properties"
+msgstr "邮箱及图片URL属性"
+
+#: admin.php:1863
+msgid "Restore default settings - All data will be replaced"
+msgstr "恢复默认设置, 所有数据将会被代替"
+
+#: admin.php:1920
+#: admin.php:2106
+msgid "File not found!"
+msgstr "文件没有找到!"
+
+#: admin.php:1927
+msgid "Not a valid file, must be a language file with .txt prefix."
+msgstr "不是有效文件, 必须使用.txt文件"
+
+#: admin.php:2062
+#: admin.php:2105
+msgid "saved"
+msgstr "以保存"
+
+#: admin.php:2067
+msgid ""
+"Use the DMSGuestbook admin interface for change these css settings.\n"
+"Don't edit this file direct, your change could be overwrite by the DMSGuestbook admin.\n"
+"If dmsguestbook.css is exist and writable, all CSS settings will be read from it.\n"
+"Otherwise these settings will be load from the database."
+msgstr "请使用DMS留言板的设置页面来设置CSS"
+
+#: admin.php:2207
+msgid "Search"
+msgstr "搜索"
+
+#: admin.php:2208
+msgid "Clear"
+msgstr "清空"
+
+#: admin.php:2212
+msgid "Search in: Name, Message, IP, Website and Email Fields.<br />Use % to specify search patterns. e.g. %fox% or %fox or fox%"
+msgstr "搜索"
+
+#: admin.php:2221
+msgid "Active: Guestbook"
+msgstr "启动: 留言板"
+
+#: admin.php:2224
+msgid "Guestbook: All"
+msgstr "留言板: 所有"
+
+#: admin.php:2268
+#: admin.php:2668
+msgid "Bulk Action"
+msgstr "统一行动"
+
+#: admin.php:2269
+msgid "Mark as Spam"
+msgstr "标为垃圾"
+
+#: admin.php:2270
+#: admin.php:2350
+#: admin.php:2670
+#: admin.php:2730
+msgid "Delete"
+msgstr "删除"
+
+#: admin.php:2271
+msgid "Set post visible"
+msgstr "显示此留言"
+
+#: admin.php:2272
+msgid "Set post hidden"
+msgstr "隐藏此留言"
+
+#: admin.php:2275
+#: admin.php:2673
+msgid "Apply"
+msgstr "提交"
+
+#: admin.php:2276
+#: admin.php:2673
+msgid "Would you really like to do this?"
+msgstr "你确定?"
+
+#: admin.php:2283
+#: admin.php:2365
+#: admin.php:2381
+#: admin.php:2524
+#: admin.php:2679
+#: admin.php:2742
+msgid "Author"
+msgstr "作者"
+
+#: admin.php:2284
+#: admin.php:2366
+#: admin.php:2382
+#: admin.php:2525
+#: admin.php:2680
+#: admin.php:2743
+msgid "Comment"
+msgstr "评论"
+
+#: admin.php:2285
+#: admin.php:2367
+#: admin.php:2383
+#: admin.php:2526
+#: admin.php:2681
+#: admin.php:2744
+msgid "Action"
+msgstr "动作"
+
+#: admin.php:2291
+#: admin.php:2686
+msgid "No entries found."
+msgstr "没有项目"
+
+#: admin.php:2333
+msgid "Visible"
+msgstr "可见"
+
+#: admin.php:2337
+msgid "Hidden"
+msgstr "不可见"
+
+#: admin.php:2345
+#: admin.php:2728
+msgid "Submitted on"
+msgstr "提交于"
+
+#: admin.php:2347
+#: admin.php:2348
+msgid "Edit"
+msgstr "编辑"
+
+#: admin.php:2350
+#: admin.php:2517
+#: admin.php:2730
+msgid "Would you really like to delete this dataset?"
+msgstr "是否要删除此数据?"
+
+#: admin.php:2387
+msgid "Back"
+msgstr "回去"
+
+#: admin.php:2398
+msgid "Assigned to: Guestbook"
+msgstr "分配于:留言板"
+
+#: admin.php:2403
+msgid "Switch to: Guestbook"
+msgstr "更换于: 留言板"
+
+#: admin.php:2410
+msgid "Admin review"
+msgstr "管理员评审"
+
+#: admin.php:2410
+msgid "If the Admin review checkbox is activated, the post will not be shown on the guestbook page."
+msgstr "如果启动管理员评审, 此留言将不会在留言板上出现"
+
+#: admin.php:2412
+#: dmsguestbook.php:878
+#: widget.php:104
+msgid "Date"
+msgstr "日期"
+
+#: admin.php:2414
+msgid "Day.Month.Year,Hour:Minute:Second"
+msgstr "天.月.年,小时:分钟:秒"
+
+#: admin.php:2416
+msgid "(DD.MM.YYYY,HH:MM:SS)"
+msgstr "(天.月.年,小时:分钟:秒)"
+
+#: admin.php:2425
+msgid "Don't remove the \"http(s)://\" tag."
+msgstr "别删除\"http(s)://\""
+
+#: admin.php:2426
+msgid "Additional"
+msgstr "更多"
+
+#: admin.php:2430
+#: dmsguestbook.php:878
+msgid "IP"
+msgstr "IP"
+
+#: admin.php:2434
+msgid "query"
+msgstr "询问"
+
+#: admin.php:2475
+#: admin.php:2482
+msgid "Would you really like to clear this text field? Don\\'t forget to press the \"Save\" button."
+msgstr "是否要清空? 别忘了要选择\"保存\""
+
+#: admin.php:2495
+msgid "Would you really like to edit this dataset?"
+msgstr "是否要毕竟此数据?"
+
+#: admin.php:2642
+msgid "Would you really like to delete ALL data entries?"
+msgstr "是否要删除所有数据?"
+
+#: admin.php:2642
+#, php-format
+msgid "Delete all Spam (%s) entries"
+msgstr "删除所有垃圾(%s)项目"
+
+#: admin.php:2669
+#: admin.php:2729
+msgid "Unmark Spam"
+msgstr "此非垃圾"
+
+#: admin.php:2852
+msgid "Dataset (%) was saved"
+msgstr "数据 (%) 以保持"
+
+#: admin.php:2868
+#: admin.php:2877
+msgid "Dataset (%) was deleted"
+msgstr "数据 (%) 被删除"
+
+#: admin.php:2885
+msgid "All Dataset were deleted"
+msgstr "所有数据被删除"
+
+#: admin.php:3453
+msgid "Restore default settings"
+msgstr "恢复默认设置"
+
+#: admin.php:3483
+msgid "have permission"
+msgstr "有权限"
+
+#: admin.php:3600
+msgid "is writable!"
+msgstr "可读!"
+
+#: admin.php:3600
+#, php-format
+msgid "Set %s readonly again when your finished to customize!"
+msgstr "当改写完毕,把%s设为只读!"
+
+#: admin.php:3605
+#, php-format
+msgid "%s is <font style='color:#bb0000;'>not writable!"
+msgstr "%s不可写!"
+
+#: admin.php:3606
+#, php-format
+msgid "Set the write permission for %s to customize this file."
+msgstr "把%s的权限改成可写来改写此文件"
+
+#: admin.php:3619
+msgid "This option(s) was not found in"
+msgstr "此选项没有找到"
+
+#: admin.php:3786
+#, php-format
+msgid "You need <i>%s</i> rights to have access to this page."
+msgstr "你需要<i>%s</i>权限来查看此页面."
+
+#: dmsguestbook.php:111
+msgid "This entry contains probably Spam!"
+msgstr "这条留言可能是垃圾!"
+
+#: dmsguestbook.php:111
+msgid "This entry was not inscribed!"
+msgstr "这条留言可能没有!"
+
+#: dmsguestbook.php:361
+msgid "Database not available!"
+msgstr "数据库不存在!"
+
+#: dmsguestbook.php:878
+msgid "From"
+msgstr "发件人"
+
+#: dmsguestbook.php:878
+msgid "E-mail"
+msgstr "邮箱"
+
+#: dmsguestbook.php:878
+msgid "Additional text"
+msgstr "更多字体"
+
+#: dmsguestbook.php:881
+msgid "You have a new guestbook post!"
+msgstr "你有一条新的留言!"
+
+#: widget.php:87
+msgid "Headline"
+msgstr "标题"
+
+#: widget.php:90
+msgid "This will be shown on top of you widget."
+msgstr "这将会在小工具的顶端出现"
+
+#: widget.php:92
+msgid "Page id"
+msgstr "页面ID"
+
+#: widget.php:94
+msgid "Which guestbook would you like to display on your sidebar?"
+msgstr "在侧栏当中,你想看到哪个留言板?"
+
+#: widget.php:96
+msgid "Number"
+msgstr "数字"
+
+#: widget.php:98
+msgid "How many guestbook entries do you want to see on your widget?"
+msgstr "在你的小工具当中, 你想看到多少条留言?"
+
+#: widget.php:100
+msgid "Lenght"
+msgstr "长度"
+
+#: widget.php:102
+msgid "Cut message text after X characters."
+msgstr "只显示留言的X字"
+
+#: widget.php:106
+msgid "Set the date and time format."
+msgstr "选择日期及时间的格式"
+
+#: widget.php:110
+msgid "Gravatar rating & Gravatar size"
+msgstr "图片评分及图片大小"
+
+#: widget.php:128
+msgid "Don't forget to close all tags!"
+msgstr "别忘了关闭所有标签"
+
+#: widget.php:131
+msgid "Default"
+msgstr "默认"
+
+#: widget.php:139
+msgid "Header"
+msgstr "表头"
+
+#: widget.php:144
+msgid "Data"
+msgstr "数据"
+
+#: widget.php:149
+msgid "Footer"
+msgstr "表尾"
+
+#: widget.php:235
+#: widget.php:239
+msgid "Auto link to a guestbook post"
+msgstr "自动链接留言板文章"
+
+#: widget.php:237
+msgid "LINK1 is trying to generate a link to guestbook with the \"page_id=id\" statement which is defined under page id."
+msgstr "LINK1是用于来添加一个\"page_id=id\"的页面链接"
+
+#: widget.php:241
+msgid "LINK2 is trying to generate a link to guestbook with the \"p=id\" statement where is defined under page id."
+msgstr "LINK2是用于来添加一个\"p_id=id\"的页面链接"
+
+#: widget.php:243
+msgid "Link to the guestbook post (manually)"
+msgstr "手动链接留言板文章"
+
+#: widget.php:244
+#: widget.php:246
+msgid "YourGuestbookId"
+msgstr "留言板ID"
+
+#: widget.php:248
+msgid "YourGuestbookPageName"
+msgstr "留言板文章名"
+
+#: widget.php:250
+msgid "Using SHOW_POST when do you want to connect from an other webpage to your guestbook page, when do you want to define your own path or when do you have problems with LINK1 or LINK2."
+msgstr "当你想在留言板里使用链接到页面时,使用SHOW_POST. 当你想在留言板里使用链接到特定页面时,使用LINK1或LINK2."
+
+#: widget.php:252
+msgid "Count guestbook entries"
+msgstr "显示留言数量"
+
+#: widget.php:254
+msgid "Entries will be display in bold."
+msgstr "项目将使用粗体"
+
+#: widget.php:256
+msgid "Show the database unique id"
+msgstr "显示数据库ID"
+
+#: widget.php:258
+msgid "Id will be display in bold."
+msgstr "ID将使用粗体"
+
+#: widget.php:260
+msgid "Show the date which guestbook post was saved"
+msgstr "显示留言板保存的日期"
+
+#: widget.php:262
+msgid "Date will be display in italic."
+msgstr "日期将以斜体出现"
+
+#: widget.php:264
+msgid "Show the visitor name"
+msgstr "显示留言人姓名"
+
+#: widget.php:266
+msgid "Visitor name will be display underlined."
+msgstr "留言人的姓名将使用下划线来强调"
+
+#: widget.php:268
+msgid "Show the guestbook post text"
+msgstr "显示留言板留言"
+
+#: widget.php:270
+msgid "The whole guestbook post will be display in font size 9 pixel."
+msgstr "所有留言板留言将以9像素大小出现"
+
+#: widget.php:272
+msgid "Show gravatar image if available"
+msgstr "显示用户图片(如有)"
+
+#: widget.php:273
+msgid "This is my gravatar image"
+msgstr "这是我的用户图片"
+
+#~ msgid "Mail"
+#~ msgstr "E-Mail"
+
+#~ msgid "Website image path:"
+#~ msgstr "Webseite Icon Pfad:"
+
+#~ msgid "DMSGuestbook"
+#~ msgstr "DMSGuestbook"
+
+#~ msgid ""
+#~ "More infos: <a href=\\'http://www.php.net/manual/en/function.strftime.php"
+#~ "\\' target=\\'_blank\\'>http://www.php.net/manual/en/function.strftime."
+#~ "php</a>"
+#~ msgstr ""
+#~ "Mehr Information: <a href=\\'http://www.php.net/manual/en/function."
+#~ "strftime.php\\' target=\\'_blank\\'>http://www.php.net/manual/en/function."
+#~ "strftime.php</a>"
+
+#~ msgid "More infos:"
+#~ msgstr "Mehr Informationen:"
+
+#, fuzzy
+#~ msgid "Don\\'t forget to set the page id."
+#~ msgstr "Vergiss nicht die Seiten ID zu setzen"
+
+#, fuzzy
+#~ msgid "Website, "
+#~ msgstr "Webseite"
+
+#~ msgid "File not found"
+#~ msgstr "Datei nicht gefunden"
+
+#~ msgid ""
+#~ "If dmsguestbook.css is exist and writable, all CSS settings will be read "
+#~ "from it.<br />\n"
+#~ "\t\t\tOtherwise these settings will be load from the database."
+#~ msgstr ""
+#~ "Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS "
+#~ "Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die "
+#~ "Einstellungen aus der Datenbank geladen. "
+
+#, fuzzy
+#~ msgid ""
+#~ "If dmsguestbook.css is exist and writable, all CSS settings will be read "
+#~ "from it.<br />\n"
+#~ "\t\t\t\tOtherwise these settings will be load from the database."
+#~ msgstr ""
+#~ "Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS "
+#~ "Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die "
+#~ "Einstellungen aus der Datenbank geladen. "
+
+#, fuzzy
+#~ msgid ""
+#~ "If dmsguestbook.css is exist and writable, all CSS settings will be read "
+#~ "from it."
+#~ msgstr ""
+#~ "Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS "
+#~ "Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die "
+#~ "Einstellungen aus der Datenbank geladen. "
+
+#, fuzzy
+#~ msgid "Examples"
+#~ msgstr "Beispiel:"
+
+#~ msgid "Class heredity"
+#~ msgstr "Klassenvererbung"
+
+#, fuzzy
+#~ msgid "Size of both navigation chars"
+#~ msgstr "Grösse des Navigationszeichen"
+
+#~ msgid "Guestbook width:"
+#~ msgstr "Gästebuch Breite:"
+
+#~ msgid "Separator width:"
+#~ msgstr "Trenner Breite:"
+
+#~ msgid "Antispam image text color:"
+#~ msgstr "Antispam Textfarbe:"
+
+#~ msgid ""
+#~ "Enter here you reCAPTCHA private key.<br /><a href=\\'http://recaptcha."
+#~ "net/\\' target=\\'_blank\\'>Learn more about reCAPTCHA</a>."
+#~ msgstr ""
+#~ "Gib hier den privaten reCAPTCHA Schlüssel ein.<br /><a href=\\'http://"
+#~ "recaptcha.net/\\' target=\\'_blank\\'>Mehr über  reCAPTCHA</a>."
+
+#~ msgid ""
+#~ "Enter here you reCAPTCHA public key.<br /><a href=\\'http://recaptcha.net/"
+#~ "\\' target=\\'_blank\\'>Learn more about reCAPTCHA</a>."
+#~ msgstr ""
+#~ "Gib hier den öffentlichen reCAPTCHA Schlüssel ein.<br /><a href=\\'http://"
+#~ "recaptcha.net/\\' target=\\'_blank\\'>Mehr über  reCAPTCHA</a>."
+
+#~ msgid ""
+#~ "More infos: <a href=\\'http://akismet.com/\\' target=\\'_blank\\'>http://"
+#~ "akismet.com</a>"
+#~ msgstr ""
+#~ "Mehr Informationen: <a href=\\'http://akismet.com/\\' target=\\'_blank"
+#~ "\\'>http://akismet.com</a>"
+
+#~ msgid "Database settings:"
+#~ msgstr "Datenbank Einstellungen:"
+
+#~ msgid "Guestbook settings:"
+#~ msgstr "Gästebuch Einstellungen:"
+
+#~ msgid "Language settings:"
+#~ msgstr "Spracheinstellungen:"
+
+#~ msgid "phpinfo:"
+#~ msgstr "phpinfo:"
+
+#, fuzzy
+#~ msgid "This role affect with"
+#~ msgstr "Diese Regel hat Einfluss auf:"
+
+#, fuzzy
+#~ msgid "Entries:"
+#~ msgstr "Einträge"
+
+#, fuzzy
+#~ msgid "Actuallsy image:"
+#~ msgstr "Aktuelles Icon:"
+
+#~ msgid "%"
+#~ msgstr "Optionen"
+
+#~ msgid "disabled"
+#~ msgstr "daktiviert"
+
+#~ msgid "Users"
+#~ msgstr "Benutzer"

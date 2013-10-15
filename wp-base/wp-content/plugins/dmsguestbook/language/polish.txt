@@ -1,0 +1,16 @@
+/* Thanks to Grzegorz Gibas *** amigib(at)gmail(dot)com */
+
+<name>Imi&#281;</name>
+<email>Email</email>
+<url>WWW</url>
+<message>Tekst</message>
+<antispam><b>Zabezpieczenie antyspamowe</b><br />Prosz&#281; wprowadzi&#263; odpowiedni&#261; kombinacj&#281; liter i cyfr w pole tekstowe zanim wy&#347;lesz wpis do ksi&#281;gi go&#347;ci.</antispam>
+<mandatory>Obowi&#261;zkowy</mandatory>
+<submit>Wy&#347;lij</submit>
+<name_error>Imi&#281; jest za kr&#243;tkie!</name_error>
+<email_error>Nieprawid&#322;owy adres email!</email_error>
+<url_error>Z&#322;y adres twojej strony internetowej!</url_error>
+<message_error>Tekst jest za kr&#243;tki!</message_error>
+<antispam_error>Niestety wpisa&#322;e&#347; z&#322;&#261; kombinacj&#281;, przyjrzyj si&#281 dok&#322;adniej obrazkowi!</antispam_error>
+<success>Dzi&#281;ki wielkie za wpis do mojej ksi&#281;gi!</success>
+<admin_review>Ten wpis czeka na zatwierdzenie przez administratora!<br />Dzi&#281;kuj&#281; za twoj&#261; cierpliwo&#347;&#263;!</admin_review>

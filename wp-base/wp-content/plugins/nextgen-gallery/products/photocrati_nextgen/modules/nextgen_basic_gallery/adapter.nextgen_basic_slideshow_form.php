@@ -103,7 +103,7 @@ class A_NextGen_Basic_Slideshow_Form extends Mixin_Display_Type_Form
     {
         return $this->render_partial('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow_settings_gallery_dimensions', array(
             'display_type_name' => $display_type->name,
-            'gallery_dimensions_label' => _('Maximum Dimensions'),
+            'gallery_dimensions_label' => _('Maximum dimensions'),
             'gallery_width' => $display_type->settings['gallery_width'],
             'gallery_height' => $display_type->settings['gallery_height'],
         ), True);

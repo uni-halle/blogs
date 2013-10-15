@@ -119,6 +119,10 @@ For more information, feel free to visit the official website for the NextGEN Ga
 == Frequently Asked Questions ==
 
 
+= Why are my galleries not opening up in a lightbox after I move my site? =
+
+This is often due to the URL paths to the CSS and JavaScript files used by the Lightbox Effects not being changed to relevant addresses based on the new site. This article will help sort out this issue if that is the case: <a href="http://www.nextgen-gallery.com/galleries-opening-lightbox/" target="_blank">Why are my galleries not opening up in a lightbox?</a>. 
+
 = Do you have documentation or tutorials? =
 
 Yes. See <a href="http://www.nextgen-gallery.com/help/" target="_blank">NextGEN Gallery Documentation</a>.
@@ -194,6 +198,35 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.0.31 - 10.03.2013 =
+* NEW:     Restored AJAX pagination for NextGEN Basic ImageBrowser display type
+* Fixed:   Compatibility with WordPress Local SEO by Yoast
+* Fixed:   Inability to upload images if image_slug field was missing in database
+* Fixed:   Integration of NextGEN Basic Thumbnail and NextGEN Basic Slideshow display types
+* Fixed:   Photocrati Resource Manager further adjusted to be third-party friendly
+* Fixed:   Added the ability to find legacy templates in both the child/parent theme directories
+* Fixed:   JavaScript errors in Attach to Post interface
+* Fixed:   Router can handle port numbers in urls
+* Fixed:   Carousel template was linking to NextGEN Basic ImageBrowser view
+* Fixed:   SQL query generated for displayed galleries using tags as source
+* Fixed:   3rd party compat: raise & never lower pcre.backtrack_limit
+
+= V2.0.30 - 09.25.2013 =
+* NEW:     Restored the ability to use imagebrowser display type instead of a lightbox effect
+* Changed: Displayed galleries are no longer rendered in RSS feeds
+* Changed: Removed "Plugin Check" widget from overview page
+* Fixed:   Silence PHP warnings/errors in an output buffer for AJAX actions
+* Fixed:   Compatibility issue with WordPress SEO and broken site maps (and large error_logs)
+* Fixed:   Compatibility issue with AJAX Event Calendar (and possibly others)
+* Fixed:   Adjusted Photocrati Resource Manager to be third-party friendly
+* Fixed:   Fixed empty result set for displayed galleries selecting 'All' tags
+* Fixed:   URL generation for imagebrowser pagination links
+* Fixed:   Ensure that image meta is imported on creation
+* Fixed:   Ensure that transients are removed when an external object cache is used
+* Fixed:   Don't load pluggable.php. This will fix plugin conflicts
+* Fixed:   In Attach to Post interface, galleries created in one tab weren't showing in another
+* Fixed:   Don't output frame events cookie for XML-RPC requests
 
 = V2.0.27 - 09.18.2013 =
 * Fixed:   Reduce performance impact of purging displayed gallery transients

@@ -1,0 +1,1631 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DMSGuestbook 1.15.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-06 14:23+0100\n"
+"PO-Revision-Date: 2012-04-13 00:53+0100\n"
+"Last-Translator: \n"
+"Language-Team: Daniel Schurter <DMSGuestbook@DanielSchurter.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: SWITZERLAND\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: C:\\Dokumente und Einstellungen\\Anonymous666\\Desktop\\dmsguestbook_translate\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin.php:67
+#: widget.php:232
+msgid "Options"
+msgstr "Optionen"
+
+#: admin.php:67
+msgid "<span style='font-size:12px;'>DMSGuestbook</span>"
+msgstr "<span style='font-size:12px;'>DMSGuestbook</span>"
+
+#: admin.php:71
+#: admin.php:1460
+#: admin.php:2126
+msgid "Entries"
+msgstr "Einträge"
+
+#: admin.php:76
+#: admin.php:1471
+#: admin.php:2349
+#: admin.php:2506
+#: admin.php:2638
+msgid "Spam"
+msgstr "Spam"
+
+#: admin.php:81
+#: admin.php:379
+#: admin.php:1454
+msgid "phpinfo"
+msgstr "phpinfo"
+
+#: admin.php:101
+msgid "Options have been saved"
+msgstr "Optionen wurden gespeichert"
+
+#: admin.php:105
+msgid "Options were not saved, text box is empty"
+msgstr "Optionen wurden nicht gespeichert, das Textfeld ist leer"
+
+#: admin.php:133
+msgid "Create a page where you want to display the DMSGuestbook."
+msgstr "Erstelle eine Seite, wo das DMSGuestbook angezeigt werden soll."
+
+#: admin.php:134
+msgid "Save the page and assign it under \"Guestbook settings\" -> \"Basic\"."
+msgstr "Speichere die Seite und aktiviere diese unter \"Gästebuch Einstellungen\" -> \"Allgemein\"."
+
+#: admin.php:135
+msgid "Customize the guestbook to your desire!"
+msgstr "Passe das Gästebuch nach deinen Wünschen an!"
+
+#: admin.php:144
+msgid "One or more options are missing."
+msgstr "Eine oder mehrere Optionen fehlen."
+
+#: admin.php:148
+msgid "Update options database"
+msgstr "Update Optionen Datenbank"
+
+#: admin.php:158
+msgid "Update database"
+msgstr "Datenbank Update"
+
+#: admin.php:184
+msgid "was created"
+msgstr "wurde erstellt"
+
+#: admin.php:192
+msgid "was deleted"
+msgstr "wurde gelöscht"
+
+#: admin.php:198
+#: admin.php:538
+msgid "DMSGuestbook options"
+msgstr "DMSGuestbook Optionen"
+
+#: admin.php:198
+#: admin.php:3453
+msgid "Don't forget to set the page id."
+msgstr "Vergiss nicht die Seiten ID zu setzen."
+
+#: admin.php:207
+msgid "All DMSGuestbook options were deleted"
+msgstr "Alle DMSGuestbook Optionen wurden gelöscht"
+
+#: admin.php:280
+#: admin.php:348
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: admin.php:282
+#: admin.php:374
+#: admin.php:523
+#: admin.php:1454
+msgid "Database settings"
+msgstr "Datenbank Einstellungen"
+
+#: admin.php:284
+#: admin.php:375
+#: admin.php:1454
+#: admin.php:1600
+msgid "Guestbook settings"
+msgstr "Gästebuch Einstellungen"
+
+#: admin.php:286
+#: admin.php:376
+#: admin.php:1454
+#: admin.php:1886
+msgid "Language settings"
+msgstr "Spracheinstellungen"
+
+#: admin.php:325
+msgid "Yes"
+msgstr "Ja"
+
+#: admin.php:327
+msgid "No"
+msgstr "Nein"
+
+#: admin.php:355
+msgid "entries"
+msgstr "Einträge"
+
+#: admin.php:356
+msgid "waiting for approval"
+msgstr "auf Zustimmung wartend"
+
+#: admin.php:357
+msgid "spam"
+msgstr "Spam"
+
+#: admin.php:359
+msgid "Server Settings"
+msgstr "Server Einstellungen"
+
+#: admin.php:361
+msgid "Server"
+msgstr "Server"
+
+#: admin.php:362
+msgid "MYSQL Server"
+msgstr "MYSQL Server"
+
+#: admin.php:363
+msgid "Memory Limit"
+msgstr "Speicherlimit"
+
+#: admin.php:365
+msgid "Graphic Settings"
+msgstr "Grafik Einstellungen"
+
+#: admin.php:367
+msgid "GD Version"
+msgstr "GD Version"
+
+#: admin.php:368
+msgid "Freetype Support"
+msgstr "Freetype Unterstützung"
+
+#: admin.php:369
+msgid "Freetype Linkage"
+msgstr "Freetype Verbindung"
+
+#: admin.php:370
+msgid "PNG Support"
+msgstr "PNG Unterstützung"
+
+#: admin.php:372
+msgid "Permissions"
+msgstr "Berechtigung"
+
+#: admin.php:377
+msgid "Post settings"
+msgstr "Einträge  Einstellungen"
+
+#: admin.php:378
+msgid "Spam settings"
+msgstr "Spam Einstellungen"
+
+#: admin.php:383
+#: admin.php:1748
+msgid "Miscellaneous"
+msgstr "Sonstiges"
+
+#: admin.php:385
+msgid "CSS file writable"
+msgstr "CSS Datei ist beschreibbar"
+
+#: admin.php:386
+msgid "xfiles.ttf readable"
+msgstr "xfiles.ttf ist lesbar"
+
+#: admin.php:388
+msgid "Captcha Image"
+msgstr "Captcha Bild"
+
+#: admin.php:392
+msgid "If dmsguestbook.css exists and is writable, all CSS settings will be read from it.<br />Otherwise these settings will be loaded from the database."
+msgstr "Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die Einstellungen aus der Datenbank geladen."
+
+#: admin.php:396
+msgid "If you don't see the image here, check the xfiles.ttf and captcha.png permission in your captcha folder."
+msgstr "Fallst du hier kein Bild siehst, überprüfe die xfiles.ttf und captcha.png Berechtigung im captcha Verzeichnis. "
+
+#: admin.php:400
+msgid "News"
+msgstr "Neuigkeiten"
+
+#: admin.php:410
+msgid "No items"
+msgstr "Kein Einträge"
+
+#: admin.php:419
+msgid "Infos"
+msgstr "Informationen"
+
+#: admin.php:421
+msgid "FAQ"
+msgstr "Fragen & Antwort"
+
+#: admin.php:422
+msgid "Changelog"
+msgstr "Änderungen"
+
+#: admin.php:446
+#, php-format
+msgid "[Status OK] %s does exist."
+msgstr "[Status OK] %s ist vorhanden."
+
+#: admin.php:447
+#, php-format
+msgid "Type \"yes, i am sure\" in this textfield if you want delete %s"
+msgstr "Gib \"yes, i am sure\" in das Textfeld ein um %s zu löschen"
+
+#: admin.php:448
+msgid "All guestbook data will be lost!"
+msgstr "Alle Gästebuch Daten werden gelöscht!"
+
+#: admin.php:452
+#, php-format
+msgid "delete %s"
+msgstr "Lösche %s"
+
+#: admin.php:456
+#, php-format
+msgid "%s isn't exist."
+msgstr "%s existiert nicht."
+
+#: admin.php:461
+msgid "if you use mySQL 4.0.xx or lower"
+msgstr "Falls du mySQL 4.0.xx oder niedriger benutzt"
+
+#: admin.php:464
+msgid "Create"
+msgstr "Erstelle"
+
+#: admin.php:466
+msgid ""
+"If you want use char like &auml;,&uuml;,&ouml;... and your mysql version is lower than 4.1, be sure the language\n"
+"\t\t\tsetting is e.g. \"de-iso-8859-1\" or similar. Check this with your mysql graphical frontenend like phpmyadmin."
+msgstr "Falls du Zeichen wie  &auml;, &uuml;, &ouml; benutzt, und deine MySQL Version ist kleiner als 4.1, so stelle sicher, dass Die Spracheinstellung \"de-iso-8859-1\" oder ähnlich ist. Überprüfe dies in deinem grafischen MySQL Bearbeitungsprogramm (z.B. PhpMyAdmin)  "
+
+#: admin.php:470
+#, php-format
+msgid "If there is something wrong with my %s table:"
+msgstr "Falls mit der Tabelle %s irgendwas nicht in Ordnung ist:"
+
+#: admin.php:470
+#: admin.php:505
+msgid "Help"
+msgstr "Hilfe"
+
+#: admin.php:483
+#, php-format
+msgid "[Status OK] \"DMSGuestbook_options\" found in %s."
+msgstr "[Status OK] \"DMSGuestbook_options\" wurden in %s gefunden."
+
+#: admin.php:487
+#, php-format
+msgid "No \"DMSGuestbook_options\" found in %s."
+msgstr "Keine \"DMSGuestbook_options\" gefunden in %s."
+
+#: admin.php:491
+#, php-format
+msgid "Notice: You have some old \"DMSGuestbook_xxxx\" rows in your %s, but this have no functionality impact."
+msgstr "Notiz: Du hast einige alte \"DMSGuestbook_xxxx\" Einträge in %s, aber dies ist nicht weiter schlimm und hat keinen Einfluss auf die Funktion des Gästebuchs."
+
+#: admin.php:496
+msgid "Create new DMSGuestbook options"
+msgstr "Erstelle neue DMSGuestbook Optionen"
+
+#: admin.php:500
+#, php-format
+msgid "Type \"delete\" to remove all DMSGuestbook option entries from the %s table."
+msgstr "Gib \"delete\" in das Textfeld ein um alle DMSGuestbook Optionen aus der %s Tabelle zu löschen."
+
+#: admin.php:503
+msgid "Delete DMSGuestbook options from the database"
+msgstr "Lösche die DMSGuestbook Optionen aus der Datenbank"
+
+#: admin.php:505
+#, php-format
+msgid "If there is something wrong with my<br />DMSGuestbook_options in %s:"
+msgstr "Falls irgendetwas mit DMSGuestbook_options in %s nicht stimmt:"
+
+#: admin.php:508
+msgid "Copy this content to a text file in case if you need a backup."
+msgstr "Kopiere diesen Textinhalt in ein Textfile, falls du mal ein Backup brauchst."
+
+#: admin.php:512
+msgid ""
+"Restore DMSGuestbook_options:<br />\n"
+"\t\tOpen your DMSGuestbook option backup text file and put the content in the textfield below.<br />\n"
+"\t\tAll data will be overwrite!"
+msgstr "Wiederherstellung DMSGuestbook_options:<br />Öffne deine DMSGuestbook Option-Backup Datei und kopiere den Inhalt in das untere Textfeld.<br />Alle Daten werden überschrieben!"
+
+#: admin.php:518
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#: admin.php:518
+#: admin.php:1863
+msgid "Would you really like to restore all data?"
+msgstr "Willst du wirklich alle Daten wiederherstellen?"
+
+#: admin.php:529
+msgid "DMSGuestbook Database"
+msgstr "DMSGuestbook Datenbank"
+
+#: admin.php:546
+msgid "DMSGuestbook options backup"
+msgstr "DMSGuestbook Optionen Backup"
+
+#: admin.php:571
+#: admin.php:1856
+#: admin.php:2495
+#: admin.php:3601
+msgid "Save"
+msgstr "Speichern"
+
+#: admin.php:600
+msgid "You have to delete the assigned guestbooks by clicking on \"Clear all\" before you can set this again. Assigned guestbooks will not be released until you press the \"Save\" button."
+msgstr "Du musst zuerst die zugeordneten Gästebücher freigeben, indem du den Button \"Alles löschen\" drückst. Zugeordnete Gästebücher werden erst gespeichert nachdem der Button \"Speichern\" gedrückt wurde."
+
+#: admin.php:601
+msgid "To assign guestbook(s)"
+msgstr "Zuweisung der Gästebücher"
+
+#: admin.php:620
+#: admin.php:2230
+#: admin.php:2282
+#: admin.php:2364
+#: admin.php:2393
+#: admin.php:2678
+#: admin.php:2741
+msgid "ID"
+msgstr "ID"
+
+#: admin.php:621
+#: admin.php:2230
+msgid "Page"
+msgstr "Seite"
+
+#: admin.php:622
+msgid "Page status"
+msgstr "Seiten Status"
+
+#: admin.php:623
+#: admin.php:2230
+#: admin.php:2344
+#: admin.php:2394
+#: admin.php:2727
+msgid "Guestbook"
+msgstr "Gästebuch"
+
+#: admin.php:623
+msgid "Deactivate super guestbook "
+msgstr "Deaktiviere das Super Gästebuch"
+
+#: admin.php:624
+msgid "Language"
+msgstr "Sprache"
+
+#: admin.php:640
+msgid "not selected"
+msgstr "inaktiv"
+
+#: admin.php:653
+msgid "Activate this guestbook as super guestbook"
+msgstr "Aktiviere dieses Gästebuch als Super Gästebuch"
+
+#: admin.php:664
+msgid "Clear all"
+msgstr "Alles löschen"
+
+#: admin.php:665
+msgid "Would you like to display one particular guestbook in a different languages? Select your desired guestbook and mark the radio button. After that all pages with the assigned language will be bound with the guestbook that you've selected."
+msgstr "Möchtest du ein bestimmtes Gästebuch haben, welches aber in unterschiedlichen Sprachen angezeigt wird? So wähle das gewünschte Gästebuch durch das markieren des entsprechenden Radio-Button aus, danach sind alle Gästebuchseiten, welche eine Sprache zugeordnet bekommen haben, mit diesem Gästebuch verbunden."
+
+#: admin.php:690
+msgid "Set"
+msgstr "hinzufügen"
+
+#: admin.php:699
+msgid "How to use:<br />1.) Reset all assigned guestbooks by clicking on \"Clear all\"<br />2.) Select your desired language<br /> 3.) Select your guestbook(s) by clicking \"Set\" in ascending order.<br />4.) Press the \"Save\" button"
+msgstr "Hilfe zur Benutzung:<br /> 1.) Entferne alle Gästebücher Zuordnung über den \"Alles löschen\" Knopf<br />2.) Wähle dein gewünschtes Gästebuch aus der Liste<br />Aktiviere das Gästebuch durch drücken des entsprechenden \"Hinzufügen\" Knopfs<br />4.) Drücke den \"Speichern\" Knopf "
+
+#: admin.php:707
+msgid "Post per page"
+msgstr "Einträge pro Seite"
+
+#: admin.php:712
+msgid "Number of entry in each page"
+msgstr "Anzahl Einträge pro Seite"
+
+#: admin.php:718
+msgid "Message text length"
+msgstr "Mitteilungstextlänge"
+
+#: admin.php:723
+msgid " chars"
+msgstr " Zeichen"
+
+#: admin.php:725
+msgid "Define the maximum allowed lenght each message text<br />Deactivate this feature to set 0"
+msgstr "Definiere die maximale Textlänge<br/>Deaktiviere dies durch das setzten von 0"
+
+#: admin.php:732
+#: admin.php:1505
+msgid "Guestbook width"
+msgstr "Gästebuch Breite"
+
+#: admin.php:739
+msgid "Guestbook width in percent<br /><br />Variable: {width1}"
+msgstr "Gästebuch Breite in Prozent<br /><br />Variable: {width1}"
+
+#: admin.php:746
+#: admin.php:1505
+msgid "Separator width"
+msgstr "Trenner Breite"
+
+#: admin.php:753
+msgid "Separator width in percent<br /><br />Variable: {width2}"
+msgstr "Trenner Breite in Prozent<br /><br />Variable: {width2}"
+
+#: admin.php:760
+msgid "Guestbook position (x-axis)"
+msgstr "Gästebuch Position (x-Achse)"
+
+#: admin.php:767
+msgid "Absolute guestbook position in pixel horizontal (x-axis)<br /><br />Variable: {position1}"
+msgstr "Absolute horizontale Gästebuch Position (x-Achse)<br /><br />Variable: {position1} "
+
+#: admin.php:774
+msgid "Guestbook position (y-axis)"
+msgstr "Gästebuch Position (y-Achse)"
+
+#: admin.php:781
+msgid "Absolute guestbook position in pixel vertical (y-axis)<br /><br />Variable: {position2}"
+msgstr "Absolute horizontale Gästebuch Position (y-Achse)<br /><br />Variable: {position2} "
+
+#: admin.php:788
+msgid "Navigation char style<br /><br />e.g. < >"
+msgstr "Navigations-Zeichen<br /><br />Z.B. < >"
+
+#: admin.php:800
+msgid "Navigation char style"
+msgstr "Aussehen des Navigationszeichen"
+
+#: admin.php:810
+#: admin.php:1505
+msgid "Navigation char size"
+msgstr "Grösse des Navigationszeichen"
+
+#: admin.php:817
+msgid "Navigation font size in pixel<br /><br />Variable: {navigationsize}"
+msgstr "Navigation Schriftgrösse<br /><br />Variable: {navigationsize}"
+
+#: admin.php:824
+msgid "Guestbook form position"
+msgstr "Gästebuch Formular Position"
+
+#: admin.php:829
+msgid "Visible the guestbook input form on top or bottom"
+msgstr "Anzeige des Gästebuchs oben (top) oder unten (bottom)"
+
+#: admin.php:835
+msgid "Link text"
+msgstr "Link Text"
+
+#: admin.php:842
+msgid "Define a link text if you selected \"bottom\""
+msgstr "Definiere einen Link Text, falls \"unten\" (bottom) ausgewählt wurde"
+
+#: admin.php:849
+msgid "Sort guestbook items"
+msgstr "Sortiert die Gästebuch Einträge"
+
+#: admin.php:854
+msgid "DESC = Newer post first<br />ASC = Older post first"
+msgstr "DESC = Neuere Einträge zuerst<br />ASC = Ältere Einträge zuerst"
+
+#: admin.php:860
+msgid "Database id"
+msgstr "Datenbank ID"
+
+#: admin.php:865
+msgid "Use the database id to consecutively numbered each guestbook entry"
+msgstr "Benutze die Datenbank ID für eine fortlaufende Nummerierung jedes Gästebuchs Eintrages"
+
+#: admin.php:881
+msgid "Form template"
+msgstr "Formular Template"
+
+#: admin.php:886
+msgid "Create your own input form template and use it is on your guestbook site<br /><br />See an examle in \"/template/form/default.tpl\""
+msgstr "Erstelle dein eigenes Eingabeformular und benutze dies in deinem Gästebuch<br />Beispiel unter: \"/template/form/default.tpl\""
+
+#: admin.php:902
+msgid "Post template"
+msgstr "Einträge Template"
+
+#: admin.php:907
+msgid "Create your own guestbook post template and use it is on your guestbook site<br /><br />See an examle in \"/template/post/default.tpl\""
+msgstr "Erstelle dein eigenes Einträge Template und benutze dies in deinem Gästebuch<br />Beispiel unter: \"/template/post/default.tpl\""
+
+#: admin.php:913
+msgid "rel=\"nofollow\" tag for posted url's"
+msgstr "rel=\"nofollow\" Tag für Einträge mit URL's"
+
+#: admin.php:918
+msgid "Activate the nofollow tag for posted url's<br /><a href=\"http://en.wikipedia.org/wiki/Nofollow\" target=\"_blank\">http://en.wikipedia.org/wiki/Nofollow</a>"
+msgstr "Aktiviere das nofollow Tag für Einträge mit URL's<br /><a href=\"http://en.wikipedia.org/wiki/Nofollow\" target=\"_blank\">http://en.wikipedia.org/wiki/Nofollow</a>"
+
+#: admin.php:934
+msgid "Additional selectbox"
+msgstr "Zusätzliche Selectbox"
+
+#: admin.php:939
+msgid "Define a selectbox and fill this with your own values.<br />See some examples in your \"dmsguestbook/module\" folder."
+msgstr "Definiere eine Selectbox und fülle diese mit deinen eignen Werten<br />Hier gibt es ein paar Beispiele: \"dmsguestbook/module\"."
+
+#: admin.php:945
+msgid "Additional selectbox title"
+msgstr "Titel der zusätzlichen Selectbox"
+
+#: admin.php:952
+msgid "This text will be shown on your input form guestbook page.<br />You could leave this textfield blank by using space character."
+msgstr "Dieser Text wird in dem Eingabeformular angezeit<br />Ein Leerzeichen lässt den Text leer."
+
+#: admin.php:959
+msgid "Show additional value"
+msgstr "Zeige die Zusatzwerte an"
+
+#: admin.php:964
+msgid "Show additional text in each guestbook post.<br />You could edit the appearance in \"template/post/default.tpl\"<br />The default setting will be set the additional text on the footer of guestbook post."
+msgstr "Zeige den zusätzlichen Text in jedem Gästebuch Eintrag an.<br />Das Aussehen kann unter  \"template/post/default.tpl\" geändert werden.<br />Ohne Änderung wird der Text am Fuss des Gästebuchseintrag angezeigt."
+
+#: admin.php:970
+msgid "Separator color"
+msgstr "Trenner Farbe"
+
+#: admin.php:976
+msgid "Separator between header and body in each entry<br /><br />Variable: {separatorcolor}"
+msgstr "Trenner Farbe<br /><br />Variable: {separotorcolor}  "
+
+#: admin.php:981
+msgid "Outside border color"
+msgstr "Aussenrandfarbe"
+
+#: admin.php:987
+msgid "Color of the outside box<br /><br />Variable: {bordercolor1}"
+msgstr "Farbe der Aussenbox<br /><br />Variable: {bordercolor1}"
+
+#: admin.php:993
+msgid "Textfield border color"
+msgstr "Textfeld Randfarbe"
+
+#: admin.php:999
+msgid "Color of all textfield borders<br /><br />Variable: {bordercolor2}"
+msgstr "Farbe der Textfelder Ränder<br /><br />Variable: {bordercolor2}"
+
+#: admin.php:1005
+msgid "Navigation char color"
+msgstr "Farbe des Navigationszeichen"
+
+#: admin.php:1011
+msgid "Define the navigation color<br /><br />Variable: {navigationcolor}"
+msgstr "Navigation Zeichenfarbe<br /><br />Variable: {navigationcolor}"
+
+#: admin.php:1017
+msgid "Font color"
+msgstr "Schriftfarbe"
+
+#: admin.php:1023
+msgid "Overall font color<br /><br />Variable: {fontcolor1}"
+msgstr "Schriftfarbe<br /><br />Variable: {fontcolor1}"
+
+#: admin.php:1029
+#: admin.php:1505
+msgid "Antispam image text color"
+msgstr "Antispam Textfarbe"
+
+#: admin.php:1035
+msgid "Antispam image text color<br /><br />Variable: {captcha_color}"
+msgstr "Antispam Textfarbe<br /><br />Variable: {catcha_color}"
+
+#: admin.php:1041
+msgid "Date / Time format"
+msgstr "Datum / Zeit Format"
+
+#: admin.php:1048
+#: admin.php:1204
+#: admin.php:1418
+#: widget.php:106
+#: widget.php:126
+msgid "More infos"
+msgstr "Mehr Informationen"
+
+#: admin.php:1055
+msgid "Setlocale"
+msgstr "Ländercodierung"
+
+#: admin.php:1062
+msgid "Set your language: e.g. en_EN, de_DE, fr_FR, it_IT, de, ge ...<br />(must be installed on your system)"
+msgstr "Setzen des Ländercodes: Z.B.  en_EN, de_DE, fr_FR, it_IT, de, ge ...<br />(Muss auf dem System installiert sein)"
+
+#: admin.php:1069
+msgid "Offset"
+msgstr "Zeitausgleich"
+
+#: admin.php:1074
+msgid "Time offset: Use this offset if your Wordpress installation is not in the same country where you live.<br />e.g. You live in London and the Wordpress installation is on a server in Chicago.<br />If You want to show the date in GMT (Greenwich Mean Time), set the offset -6 and check the correct time below.<br /><br /> Notice: Don't use the %z or %Z parameter if your offset isn\"t 0."
+msgstr "Benutze Zeitausgleich falls deine Wordpress Installation nicht in der selben Zeitzone wie du bist.<br />Z.B: Du lebst in London und die Wordpress Installation ist auf einem Server in Chicago.<br />Falls du nun das Datum nach GMT (Greenwitch Mean Time) haben willst, so musst du einen Zeitausgleich von -6 angeben.<br />Beachte: Benutze nicht den %z oder %Z Parameter, falls der Zeitausgleich nicht 0 ist."
+
+#: admin.php:1080
+msgid "Send a mail"
+msgstr "E-Mail Versand"
+
+#: admin.php:1085
+msgid "Receive a notification email when user write an new guestbook post"
+msgstr "Empfange eine Bestätigung, wenn ein Benutzer einen Gästebucheintrag schreibt"
+
+#: admin.php:1091
+msgid "Email address"
+msgstr "E-Mail Adresse"
+
+#: admin.php:1098
+msgid "The email address which the message to be sent is<br />Multiple email adresses are allowed, split these with the \";\" separator.<br />e.g. test1@example.com;test2@example.com;test3@example.com"
+msgstr "Mit dem \";\" Trenner können mehrere E-Mail Adressen hinzugefügt werden.<br />Z.B. test1@example.com;test2@example.com;test3@example.com  "
+
+#: admin.php:1105
+msgid "Send method"
+msgstr "Mailversandart"
+
+#: admin.php:1110
+msgid "Use PHP internal mail function if your server supporting this.<br />A SMTP server could be need username and password as authentification which you must known."
+msgstr "Benutze die interne PHP Mail Funktion sollte der Server dies unterstützen.<br />Ein SMTP Server braucht vermutlich ein Benutzername und ein Kennwort."
+
+#: admin.php:1116
+msgid "SMTP host"
+msgstr "SMTP Server"
+
+#: admin.php:1123
+msgid "The SMTP server which do you want to connect."
+msgstr "Der SMTP Server über den du E-Mails versenden möchtest."
+
+#: admin.php:1130
+msgid "SMTP port"
+msgstr "SMTP Anschluss"
+
+#: admin.php:1135
+msgid "25 = standard port<br />465 = SMTP over SSL port<br />587 = Alternative SMTP port<br /><br />Check your mail documentation for further information."
+msgstr "25 = Standard<br />465 = SMTP über SSL<br />587 = Alternativer SMTP Anschluss."
+
+#: admin.php:1141
+msgid "SMTP username"
+msgstr "SMTP Benutzername"
+
+#: admin.php:1148
+msgid "SMTP username if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "SMTP Benutzername (falls erforderlich)"
+
+#: admin.php:1155
+msgid "SMTP password"
+msgstr "SMTP Kennwort"
+
+#: admin.php:1162
+msgid "SMTP password if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "SMTP Kennwort (falls erforderlich)"
+
+#: admin.php:1169
+msgid "SMTP authentification"
+msgstr "SMTP Authentifizierung"
+
+#: admin.php:1174
+msgid "SMTP authentification if is needed. <br /><br />Check your mail documentation for further information."
+msgstr "SMTP Authentifizierung (falls erforderlich)"
+
+#: admin.php:1180
+msgid "SMTP SSL"
+msgstr "SMTP SSL"
+
+#: admin.php:1185
+msgid "SMTP SSL (secure socket layer) if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "SMTP SSL (falls erforderlich)"
+
+#: admin.php:1193
+#, php-format
+msgid "DMSGuestbook has found an Akismet key %s"
+msgstr "DMSGuestbook hat einen Akismet Schlüssel gefunden: %s"
+
+#: admin.php:1196
+msgid "No WordPress API key for Akismet was found! Activate the Akismet plugin and create a key. More information under: <a href=\"http://akismet.com/\" target=\"_blank\">http://akismet.com/</a> and <a href=\"http://en.wordpress.com/api-keys/\" target=\"_blank\">http://en.wordpress.com/api-keys/</a>"
+msgstr "Es wurde keinen API Schlüssel für Akismet gefunden. Aktiviere das Akismet Plugin und erstelle eine Schlüssel. Mehr Informationen unter: a href=\"http://akismet.com/\" target=\"_blank\">http://akismet.com/</a> und <a href=\"http://en.wordpress.com/api-keys/\" target=\"_blank\">http://en.wordpress.com/api-keys/</a>"
+
+#: admin.php:1199
+msgid "Akismet"
+msgstr "Akismet"
+
+#: admin.php:1211
+msgid "Move spam to the spam folder@Block guestbook post if spam is found on it@"
+msgstr "Verschiebe Spam in den Spam Ordner@Verhindere das Absenden eines Gästebucheintrages wenn Spam gefunden wurde@"
+
+#: admin.php:1216
+msgid "What should Akismet do if spam are detected?"
+msgstr "Was soll Akismet machen, wenn es Spam entdeckt?"
+
+#: admin.php:1223
+msgid "Antispam off:@Antispam image:@Antispam mathematic figures:@reCAPTCHA:@"
+msgstr "Antispam aus:@Antispam mit Bild:@Antispam Rechenaufgabe:@reCAPTCHA:@"
+
+#: admin.php:1228
+msgid "Image:<br /><img src=\"../wp-content/plugins/dmsguestbook/captcha/captcha.php\" /><br />If you don't see the image here, check the xfiles.ttf and captcha.png permission in your captcha folder<br /><br />Mathematic figures:<br />4 + 9 = 13<br /><br />reCAPTCHA: <a href=\"http://recaptcha.net\" target=\"_blank\">learn more about reCAPTCHA</a>"
+msgstr "Bild:<br /><img src=\"../wp-content/plugins/dmsguestbook/captcha/captcha.php\" /><br />Falls du  hier kein Bild siehst, so überprüfe die xfiles.ttf und captcha.png Datei im captcha Verzeichnis.<br /><br />Antispam mit Zahlen:<br />4 + 9 = 13<br /><br />reCAPTCHA: <a href=\"http://recaptcha.net/\" target=\"_blank\">Mehr über reCAPTCHA</a>"
+
+#: admin.php:1234
+msgid "reCAPTCHA public key"
+msgstr "Öffentlicher reCAPTCHA Schlüssel"
+
+#: admin.php:1241
+msgid "Enter here you reCAPTCHA public key."
+msgstr "Gib hier deinen öffentlichen reCAPTCHA Schlüssel ein."
+
+#: admin.php:1241
+#: admin.php:1255
+msgid "Learn more about reCAPTCHA"
+msgstr "Erfahre mehr über reCAPTCHA"
+
+#: admin.php:1248
+msgid "reCAPTCHA private key"
+msgstr "Privater reCAPTCHA Schlüssel"
+
+#: admin.php:1255
+msgid "Enter here you reCAPTCHA private key."
+msgstr "Gib hier deinen privaten reCAPTCHA Schlüssel ein."
+
+#: admin.php:1263
+msgid "Antispam key"
+msgstr "Antispam Schlüssel"
+
+#: admin.php:1270
+msgid "Set a random key to prevent spam.<br />Every page refresh will create a new key which can be saved.<br />It's used for: Antispam image & Antispam mathematic figures."
+msgstr "Setzt einen zufälligen Schlüssel um Spam besser vorzubeugen.<br />Wird für Antispam Bild und Rechenaufgabe benötigt."
+
+#: admin.php:1277
+#: admin.php:2422
+msgid "Email"
+msgstr "E-Mail"
+
+#: admin.php:1282
+msgid "User must fill out the email text field"
+msgstr "Der Benutzer muss das E-Mail Feld ausfüllen"
+
+#: admin.php:1288
+#: admin.php:2424
+#: dmsguestbook.php:878
+msgid "Website"
+msgstr "Webseite"
+
+#: admin.php:1293
+msgid "User must fill out the website text field"
+msgstr "Der Benutzer muss das Webseite Feld ausfüllen"
+
+#: admin.php:1299
+msgid "Mandatory char"
+msgstr "Zeichen für obligatorischen Text"
+
+#: admin.php:1306
+msgid "Mandatory char were to display on guestbook input form"
+msgstr "Dieses Zeichen wird neben den obligatorischen Eingabefelder angezeigt"
+
+#: admin.php:1313
+msgid "Show email"
+msgstr "Zeigt die E-Mail Adresse an"
+
+#: admin.php:1318
+msgid "Visible email for everyone in each post"
+msgstr "Die E-Mail Adressse ist sichtbar"
+
+#: admin.php:1324
+msgid "Show website"
+msgstr "Zeigt die Webseite an"
+
+#: admin.php:1329
+msgid "Visible website for everyone in each post"
+msgstr "Der Webseiten Link ist sichtbar"
+
+#: admin.php:1335
+msgid "Show ip address"
+msgstr "Zeigt die IP Adresse an"
+
+#: admin.php:1340
+msgid "Visible ip for everyone in each post"
+msgstr "Die IP Adressse ist sichtbar"
+
+#: admin.php:1346
+msgid "Mask ip address"
+msgstr "Maskiert die IP Adresse"
+
+#: admin.php:1351
+msgid "Mask ip adress if this is visible"
+msgstr "Maskiert die IP Adresse"
+
+#: admin.php:1359
+#: admin.php:1366
+msgid "Email image path"
+msgstr "E-Mail Icon Pfad"
+
+#: admin.php:1366
+#: admin.php:1382
+msgid "Actually image:"
+msgstr "Aktuelles Icon:"
+
+#: admin.php:1375
+#: admin.php:1382
+msgid "Website image path"
+msgstr "Webseite Icon Pfad"
+
+#: admin.php:1389
+msgid "Admin must every post review"
+msgstr "Der Administrator muss jeden Eintrag freischalten"
+
+#: admin.php:1394
+msgid "Admin must review every post before this can display on the page.<br />You can edit the guestbook review status under \"Entries\"."
+msgstr "Der Administrator muss jeden einzelnen Eintrag freischalten lassen.<br />Der Status eines Eintrages kann unter \"Einträge\" geändert werden."
+
+#: admin.php:1400
+msgid "URL overrule"
+msgstr "URL überschreiben"
+
+#: admin.php:1406
+msgid "You can overrule this link if you have trouble with the guestbook form submit."
+msgstr "Falls mit dem absenden des Gästebuch Formulars probleme auftauchen, kann die bestehende URL überschrieben werden."
+
+#: admin.php:1406
+#: admin.php:1675
+#: widget.php:132
+#: widget.php:133
+#: widget.php:134
+#: widget.php:135
+#: widget.php:136
+#: widget.php:236
+#: widget.php:240
+#: widget.php:244
+#: widget.php:246
+#: widget.php:248
+#: widget.php:253
+#: widget.php:257
+#: widget.php:261
+#: widget.php:265
+#: widget.php:269
+#: widget.php:273
+msgid "Example"
+msgstr "Beispiel"
+
+#: admin.php:1406
+msgid "YourGuestBookName"
+msgstr "DeinGästebuchName"
+
+#: admin.php:1413
+msgid "User can use Gravatar"
+msgstr "Gravatar"
+
+#: admin.php:1424
+msgid "Gravatar rating"
+msgstr "Gravatar Einstufung"
+
+#: admin.php:1429
+msgid "You can specify a rating of G, PG, R, or X.<br />[G] A G rated gravatar is suitable for display on all websites with any audience type.<br />[PG] PG rated gravatars may contain rude gestures, provocatively dressed individuals, the lesser swear words, or mild violence.<br />[R] R rated gravatars may contain such things as harsh profanity, intense violence, nudity, or hard drug use.<br />[X] X rated gravatars may contain hardcore sexual imagery or extremely disturbing violence."
+msgstr "Du kannst die Einstufung zwischen G, PG, R oder X wechseln.<br />[G] Gut für jedermann<br />[PG] Kann leichte, vulgäre Ausdrücke, Provokationen und leichte Gewalt beinhalten.<br />[R] Kann Respektlosigkeit, intensive Gewalt, Nacktheit oder harte Drogen beinhalten.<br />[X] Kann harte sexuelle Abbildungen oder besorgniserregende Gewalt beinhalten."
+
+#: admin.php:1435
+msgid "Gravatar size"
+msgstr "Gravatar Grösse"
+
+#: admin.php:1442
+msgid "Image size in pixel"
+msgstr "Bildgrösse in Pixel"
+
+#: admin.php:1449
+msgid "DMSGuestbook settings"
+msgstr "DMSGuestbook Einstellungen"
+
+#: admin.php:1454
+#: admin.php:1465
+#: admin.php:1476
+msgid "This role affects with"
+msgstr "Diese Regel hat Einfluss auf"
+
+#: admin.php:1465
+msgid "Guestbook entries (show, edit, delete)"
+msgstr "Gästebuch Einträge (anzeigen, bearbeiten, löschen)"
+
+#: admin.php:1476
+msgid "Spam entries (show, edit, delete)"
+msgstr "Spam Einträge (anzeigen, bearbeiten, löschen)"
+
+#: admin.php:1490
+msgid "NEW!"
+msgstr "NEU!"
+
+#: admin.php:1493
+msgid "New CSS entries found, press the save button to save it."
+msgstr "Neue CSS Einträge gefunden, drücke den Speichern Knopf um diese abzuspeichern."
+
+#: admin.php:1501
+msgid "Some CSS entries are missing!"
+msgstr "Einige CSS Einträge fehlen!"
+
+#: admin.php:1501
+msgid "Press the save button to restore CSS settings."
+msgstr "Drücke den Speichern Knopf um die CSS Einstellungen zu speichern."
+
+#: admin.php:1505
+msgid "Relative guestbook position (left to right)"
+msgstr "Relative Gästebuch Position (links nach rechts)"
+
+#: admin.php:1505
+msgid "Separator between header and body in each entry"
+msgstr "Trenner Farbe"
+
+#: admin.php:1505
+msgid "Border of the outside box"
+msgstr "Rand der äusseren Box"
+
+#: admin.php:1505
+msgid "Color of all textfield border"
+msgstr "Farbe der Textfelder Ränder"
+
+#: admin.php:1505
+msgid "Navigation color"
+msgstr "Farbe des Navigationszeichen"
+
+#: admin.php:1505
+msgid "Overall font color"
+msgstr "Schriftfarbe"
+
+#: admin.php:1505
+msgid "Stylesheet (CSS) Help & Tutorials:<br />English: <a href=\"http://www.html.net/tutorials/css/\" target=\"_blank\">http://www.html.net/tutorials/css/</a><br />German: <a href=\"http://www.css4you.de/\" target=\"_blank\">http://www.css4you.de/</a><br />Or ask Google and friends :-)"
+msgstr "Stylesheet (CSS) Hilfe & Anleitungen:<br />Englisch: <a href=\"http://www.html.net/tutorials/css/\" target=\"_blank\">http://www.html.net/tutorials/css/</a><br />Deutsch: <a href=\"http://www.css4you.de/\" target=\"_blank\">http://www.css4you.de/</a><br />Oder frag Google oder deine Freunde :-)"
+
+#: admin.php:1523
+msgid "Description"
+msgstr "Beschreibung"
+
+#: admin.php:1584
+msgid "Custom CSS"
+msgstr "Angepasstes CSS"
+
+#: admin.php:1586
+msgid "Class heredity:<br /><br />e.g.<br /><b>a.</b>css_navigation_char<b>:hover</b> {color:#ff0000;}<br />All url link with css_navigation_char (navigation link)<br />become hover color red when user drag over it<br /><br /><b>td</b>.css_guestbook_message_nr_name {background-color:#00ff00;}<br />All td with css_guestbook_message_nr_name (guestbook name & id)<br />become background color green<br /><br />"
+msgstr "Klassenvererbung:<br /><br />z.B.<br /><b>a.</b>css_navigation_char<b>:hover</b> {color:#ff0000;}<br />Jeder URL Link mit css_navigation_char (Navigations Link)<br />wird rot, wenn man mit der Maus darüber fährt<br /><br /><b>td</b>.css_guestbook_message_nr_name {background-color:#00ff00;}<br />Alle td mit css_guestbook_message_nr_name (Gästebuch Name und ID)<br />bekommen einen grünen Hintergrund<br /><br />"
+
+#: admin.php:1610
+msgid "Basic"
+msgstr "Allgemein"
+
+#: admin.php:1622
+msgid "Extended"
+msgstr "Erweitert"
+
+#: admin.php:1649
+msgid "Color"
+msgstr "Farbe"
+
+#: admin.php:1662
+msgid "Time / Date"
+msgstr "Zeit / Datum"
+
+#: admin.php:1679
+msgid "Email Notification"
+msgstr "E-Mail Mitteilung"
+
+#: admin.php:1699
+msgid "Captcha / Akismet"
+msgstr "Captcha / Akismet"
+
+#: admin.php:1721
+msgid "Mandatory"
+msgstr "Obligatorisch"
+
+#: admin.php:1725
+#: admin.php:2421
+msgid "Name"
+msgstr "Name"
+
+#: admin.php:1726
+msgid "User must fill out name text field"
+msgstr "Der Benutzer muss das Namens-Feld ausfüllen"
+
+#: admin.php:1727
+#: dmsguestbook.php:878
+msgid "Message"
+msgstr "Mitteilung"
+
+#: admin.php:1728
+msgid "User must fill out message text field"
+msgstr "Der Benutzer muss das Mitteilungs-Feld ausfüllen"
+
+#: admin.php:1738
+msgid "Gravatar"
+msgstr "Gravatar"
+
+#: admin.php:1759
+msgid "Role"
+msgstr "Rolle"
+
+#: admin.php:1769
+msgid "is writable"
+msgstr "ist beschreibbar"
+
+#: admin.php:1771
+msgid "is not writable or doesn't exist"
+msgstr "ist nicht beschreibbar oder existiert nicht"
+
+#: admin.php:1777
+msgid "CSS"
+msgstr "CSS"
+
+#: admin.php:1781
+msgid "If dmsguestbook.css exist and is writable, all CSS settings will be read from it.<br />Otherwise these settings will be loaded from the database."
+msgstr "Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die Einstellungen aus der Datenbank geladen. "
+
+#: admin.php:1786
+msgid "Settings for custom CSS"
+msgstr "Einstellung für angepasstes CSS "
+
+#: admin.php:1788
+msgid "Mouse hover color"
+msgstr "Maushover Farbe"
+
+#: admin.php:1793
+msgid "Email and url image properties"
+msgstr "E-Mail und URL Bild Eigenschaften"
+
+#: admin.php:1863
+msgid "Restore default settings - All data will be replaced"
+msgstr "Werkseinstellung - Alle Daten werden überschrieben"
+
+#: admin.php:1920
+#: admin.php:2106
+msgid "File not found!"
+msgstr "Datei nicht gefunden!"
+
+#: admin.php:1927
+msgid "Not a valid file, must be a language file with .txt prefix."
+msgstr "Keine gültige Datei, muss als Sprachdatei mit der Endung .txt vorlieten."
+
+#: admin.php:2062
+#: admin.php:2105
+msgid "saved"
+msgstr "gespeichert"
+
+#: admin.php:2067
+msgid ""
+"Use the DMSGuestbook admin interface for change these css settings.\n"
+"Don't edit this file direct, your change could be overwrite by the DMSGuestbook admin.\n"
+"If dmsguestbook.css is exist and writable, all CSS settings will be read from it.\n"
+"Otherwise these settings will be load from the database."
+msgstr ""
+"Um die CSS Einstellungen zu ändern sollte die DMSGuestbook Admin Seite benutzt werden. Das dmsguestbook.css nicht direkt bearbeiten, denn die Einstellungen würden automatisch überschrieben werden.\n"
+"Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die Einstellungen aus der Datenbank geladen. "
+
+#: admin.php:2207
+msgid "Search"
+msgstr "Suchen"
+
+#: admin.php:2208
+msgid "Clear"
+msgstr "Löschen"
+
+#: admin.php:2212
+msgid "Search in: Name, Message, IP, Website and Email Fields.<br />Use % to specify search patterns. e.g. %fox% or %fox or fox%"
+msgstr "Suchen in: Name, Mitteilung, IP, Webseite und E-Mail Felder.<br />Benutze % um das Suchmuster zu spezifizieren: z.B. %fuchs% oder %fuchs oder fuchs%"
+
+#: admin.php:2221
+msgid "Active: Guestbook"
+msgstr "Aktiv: Gästebuch"
+
+#: admin.php:2224
+msgid "Guestbook: All"
+msgstr "Gästebuch: Alle"
+
+#: admin.php:2268
+#: admin.php:2668
+msgid "Bulk Action"
+msgstr "Massenvorgang"
+
+#: admin.php:2269
+msgid "Mark as Spam"
+msgstr "Markieren als Spam"
+
+#: admin.php:2270
+#: admin.php:2350
+#: admin.php:2670
+#: admin.php:2730
+msgid "Delete"
+msgstr "Löschen"
+
+#: admin.php:2271
+msgid "Set post visible"
+msgstr "Setze Eintrag auf sichtbar"
+
+#: admin.php:2272
+msgid "Set post hidden"
+msgstr "Setzte Eintrag auf unsichtbar"
+
+#: admin.php:2275
+#: admin.php:2673
+msgid "Apply"
+msgstr "Anwenden"
+
+#: admin.php:2276
+#: admin.php:2673
+msgid "Would you really like to do this?"
+msgstr "Willst du dies wirklich ausführen?"
+
+#: admin.php:2283
+#: admin.php:2365
+#: admin.php:2381
+#: admin.php:2524
+#: admin.php:2679
+#: admin.php:2742
+msgid "Author"
+msgstr "Author"
+
+#: admin.php:2284
+#: admin.php:2366
+#: admin.php:2382
+#: admin.php:2525
+#: admin.php:2680
+#: admin.php:2743
+msgid "Comment"
+msgstr "Kommentar"
+
+#: admin.php:2285
+#: admin.php:2367
+#: admin.php:2383
+#: admin.php:2526
+#: admin.php:2681
+#: admin.php:2744
+msgid "Action"
+msgstr "Handlung"
+
+#: admin.php:2291
+#: admin.php:2686
+msgid "No entries found."
+msgstr "Keine Einträge gefunden"
+
+#: admin.php:2333
+msgid "Visible"
+msgstr "Sichtbar"
+
+#: admin.php:2337
+msgid "Hidden"
+msgstr "Versteckt"
+
+#: admin.php:2345
+#: admin.php:2728
+msgid "Submitted on"
+msgstr "Erstellt"
+
+#: admin.php:2347
+#: admin.php:2348
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: admin.php:2350
+#: admin.php:2517
+#: admin.php:2730
+msgid "Would you really like to delete this dataset?"
+msgstr "Möchtest du den Datenbank Eintrag wirklich löschen?"
+
+#: admin.php:2387
+msgid "Back"
+msgstr "Zurück"
+
+#: admin.php:2398
+msgid "Assigned to: Guestbook"
+msgstr "Zugewiesen an: Gästebuch"
+
+#: admin.php:2403
+msgid "Switch to: Guestbook"
+msgstr "Wechseln zu: Gästebuch"
+
+#: admin.php:2410
+msgid "Admin review"
+msgstr "Freischaltung durch den Admin"
+
+#: admin.php:2410
+msgid "If the Admin review checkbox is activated, the post will not be shown on the guestbook page."
+msgstr "Wenn die \"Freischaltung durch Admin\" Checkbox aktiviert ist, wird der Eintrag nicht auf der Gästebuchseite angezeigt."
+
+#: admin.php:2412
+#: dmsguestbook.php:878
+#: widget.php:104
+msgid "Date"
+msgstr "Datum"
+
+#: admin.php:2414
+msgid "Day.Month.Year,Hour:Minute:Second"
+msgstr "Tag.Monat.Jahr,Stunde:Minute:Sekunde"
+
+#: admin.php:2416
+msgid "(DD.MM.YYYY,HH:MM:SS)"
+msgstr "(TT.MM.JJJJ,SS:MM:SS)"
+
+#: admin.php:2425
+msgid "Don't remove the \"http(s)://\" tag."
+msgstr "Entferne nicht das \"http(s)://\"."
+
+#: admin.php:2426
+msgid "Additional"
+msgstr "Zusätzlich"
+
+#: admin.php:2430
+#: dmsguestbook.php:878
+msgid "IP"
+msgstr "IP"
+
+#: admin.php:2434
+msgid "query"
+msgstr "Anfrage"
+
+#: admin.php:2475
+#: admin.php:2482
+msgid "Would you really like to clear this text field? Don\\'t forget to press the \"Save\" button."
+msgstr "Willst du wirklich den Text löschen? Vergiss danach nicht auf \"Speichern\" zu drücken."
+
+#: admin.php:2495
+msgid "Would you really like to edit this dataset?"
+msgstr "Möchtest du den Datenbank Eintrag wirklich bearbeiten?"
+
+#: admin.php:2642
+msgid "Would you really like to delete ALL data entries?"
+msgstr "Möchtest du wirklich ALLE Datenbank Einträge löschen?"
+
+#: admin.php:2642
+#, php-format
+msgid "Delete all Spam (%s) entries"
+msgstr "Lösche alle (%s) Spam Einträge"
+
+#: admin.php:2669
+#: admin.php:2729
+msgid "Unmark Spam"
+msgstr "Spam unmarkieren"
+
+#: admin.php:2852
+msgid "Dataset (%) was saved"
+msgstr "Datensatz (%) wurde gespeichert"
+
+#: admin.php:2868
+#: admin.php:2877
+msgid "Dataset (%) was deleted"
+msgstr "Datensatz (%) wurde gelöscht"
+
+#: admin.php:2885
+msgid "All Dataset were deleted"
+msgstr "Alle Datensätze wurden gelöscht"
+
+#: admin.php:3453
+msgid "Restore default settings"
+msgstr "Wiederherstellung der Standard Einstellung"
+
+#: admin.php:3483
+msgid "have permission"
+msgstr "hat Zugriff"
+
+#: admin.php:3600
+msgid "is writable!"
+msgstr "ist beschreibbar!"
+
+#: admin.php:3600
+#, php-format
+msgid "Set %s readonly again when your finished to customize!"
+msgstr "Setze die Datei %s wieder auf Schreibgeschützt nach dem bearbeiten!"
+
+#: admin.php:3605
+#, php-format
+msgid "%s is <font style='color:#bb0000;'>not writable!"
+msgstr "%s ist <font style='color:#bb0000;'> nicht beschreibbar!"
+
+#: admin.php:3606
+#, php-format
+msgid "Set the write permission for %s to customize this file."
+msgstr "Um die Datei %s zu bearbeiten zu können muss diese beschreibbar sein."
+
+#: admin.php:3619
+msgid "This option(s) was not found in"
+msgstr "Optionen wurden nicht gefunden in"
+
+#: admin.php:3786
+#, php-format
+msgid "You need <i>%s</i> rights to have access to this page."
+msgstr "Du benötigst <i>%s</i> Berechtigung um auf diese Seite zu kommen."
+
+#: dmsguestbook.php:111
+msgid "This entry contains probably Spam!"
+msgstr "Dieser Beitrag beinhaltet vermutlich Spam!"
+
+#: dmsguestbook.php:111
+msgid "This entry was not inscribed!"
+msgstr "Dieser Beitrag wurde nicht eingetragen!"
+
+#: dmsguestbook.php:361
+msgid "Database not available!"
+msgstr "Datenbank nicht vorhanden!"
+
+#: dmsguestbook.php:878
+msgid "From"
+msgstr "Von"
+
+#: dmsguestbook.php:878
+msgid "E-mail"
+msgstr "E-Mail"
+
+#: dmsguestbook.php:878
+msgid "Additional text"
+msgstr "Zusätzlichen Text"
+
+#: dmsguestbook.php:881
+msgid "You have a new guestbook post!"
+msgstr "Du hast einen neuen Gästebuch Eintrag!"
+
+#: widget.php:87
+msgid "Headline"
+msgstr "Überschrift"
+
+#: widget.php:90
+msgid "This will be shown on top of you widget."
+msgstr "Dies wird als Widget Überschrift verwendet. "
+
+#: widget.php:92
+msgid "Page id"
+msgstr "Seiten ID"
+
+#: widget.php:94
+msgid "Which guestbook would you like to display on your sidebar?"
+msgstr "Welches Gästebuch soll angezeigt werden?"
+
+#: widget.php:96
+msgid "Number"
+msgstr "Nummer"
+
+#: widget.php:98
+msgid "How many guestbook entries do you want to see on your widget?"
+msgstr "Wieviele Gästebuch Einträge sollen angezeigt weden?"
+
+#: widget.php:100
+msgid "Lenght"
+msgstr "Länge"
+
+#: widget.php:102
+msgid "Cut message text after X characters."
+msgstr "Zeige nur X Zeichen der Mitteilung an."
+
+#: widget.php:106
+msgid "Set the date and time format."
+msgstr "Setze das Datum und Zeit Format."
+
+#: widget.php:110
+msgid "Gravatar rating & Gravatar size"
+msgstr "Gravatar Einstufung & Gravatar Grösse"
+
+#: widget.php:128
+msgid "Don't forget to close all tags!"
+msgstr "Vergiss nicht alle offenen Code Enden zu schliessen!"
+
+#: widget.php:131
+msgid "Default"
+msgstr "Standard"
+
+#: widget.php:139
+msgid "Header"
+msgstr "Kopfzeile"
+
+#: widget.php:144
+msgid "Data"
+msgstr "Daten"
+
+#: widget.php:149
+msgid "Footer"
+msgstr "Fusszeile"
+
+#: widget.php:235
+#: widget.php:239
+msgid "Auto link to a guestbook post"
+msgstr "Automatischer Link zum Gästebuch Eintrag"
+
+#: widget.php:237
+msgid "LINK1 is trying to generate a link to guestbook with the \"page_id=id\" statement which is defined under page id."
+msgstr "LINK1 versucht einen direkten Link zum Gästebuch Eintrag Mithilfe \"page_id=id\" zu generieren."
+
+#: widget.php:241
+msgid "LINK2 is trying to generate a link to guestbook with the \"p=id\" statement where is defined under page id."
+msgstr "LINK2 versucht einen direkten Link zum Gästebuch Eintrag Mithilfe von \"p=id\" zu generieren."
+
+#: widget.php:243
+msgid "Link to the guestbook post (manually)"
+msgstr "Link zum Gästebuch Eintrag (manuell)"
+
+#: widget.php:244
+#: widget.php:246
+msgid "YourGuestbookId"
+msgstr "DeineGästebuchID"
+
+#: widget.php:248
+msgid "YourGuestbookPageName"
+msgstr "DeinGästebuchSeitenName"
+
+#: widget.php:250
+msgid "Using SHOW_POST when do you want to connect from an other webpage to your guestbook page, when do you want to define your own path or when do you have problems with LINK1 or LINK2."
+msgstr "Benutze SHOW_POST wenn du von einer anderen Webseite auf dein Gästebuch zugreifen, oder deinen eigenen Pfad definieren möchtest, oder Probleme mit LINK1 oder LINK2 hast."
+
+#: widget.php:252
+msgid "Count guestbook entries"
+msgstr "Zählt die Gästebuch Einträge"
+
+#: widget.php:254
+msgid "Entries will be display in bold."
+msgstr "Einträge werden Fett dargestellt."
+
+#: widget.php:256
+msgid "Show the database unique id"
+msgstr "Zeigt die Datenbank ID an"
+
+#: widget.php:258
+msgid "Id will be display in bold."
+msgstr "ID wird Fett dargestellt."
+
+#: widget.php:260
+msgid "Show the date which guestbook post was saved"
+msgstr "Zeigt an wann der Eintrag erstellt wurde "
+
+#: widget.php:262
+msgid "Date will be display in italic."
+msgstr "Das Datum wird kursiv dargestellt."
+
+#: widget.php:264
+msgid "Show the visitor name"
+msgstr "Zeigt den Namen des Besuchers an"
+
+#: widget.php:266
+msgid "Visitor name will be display underlined."
+msgstr "Der Besucher Name wird unterstrichen angezeigt."
+
+#: widget.php:268
+msgid "Show the guestbook post text"
+msgstr "Zeigt den Gästebuchtext an"
+
+#: widget.php:270
+msgid "The whole guestbook post will be display in font size 9 pixel."
+msgstr "Der Gästebuch Eintrag wird in der Schriftgrösse 9 Pixel angezeigt."
+
+#: widget.php:272
+msgid "Show gravatar image if available"
+msgstr "Zeigt das Gravatar Bild an, falls vorhanden"
+
+#: widget.php:273
+msgid "This is my gravatar image"
+msgstr "Das ist mein Gravatar Bild"
+
+#~ msgid "Mail"
+#~ msgstr "E-Mail"
+
+#~ msgid "Website image path:"
+#~ msgstr "Webseite Icon Pfad:"
+
+#~ msgid "DMSGuestbook"
+#~ msgstr "DMSGuestbook"
+
+#~ msgid ""
+#~ "More infos: <a href=\\'http://www.php.net/manual/en/function.strftime.php"
+#~ "\\' target=\\'_blank\\'>http://www.php.net/manual/en/function.strftime."
+#~ "php</a>"
+#~ msgstr ""
+#~ "Mehr Information: <a href=\\'http://www.php.net/manual/en/function."
+#~ "strftime.php\\' target=\\'_blank\\'>http://www.php.net/manual/en/function."
+#~ "strftime.php</a>"
+
+#~ msgid "More infos:"
+#~ msgstr "Mehr Informationen:"
+
+#, fuzzy
+#~ msgid "Don\\'t forget to set the page id."
+#~ msgstr "Vergiss nicht die Seiten ID zu setzen"
+
+#, fuzzy
+#~ msgid "Website, "
+#~ msgstr "Webseite"
+
+#~ msgid "File not found"
+#~ msgstr "Datei nicht gefunden"
+
+#~ msgid ""
+#~ "If dmsguestbook.css is exist and writable, all CSS settings will be read "
+#~ "from it.<br />\n"
+#~ "\t\t\tOtherwise these settings will be load from the database."
+#~ msgstr ""
+#~ "Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS "
+#~ "Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die "
+#~ "Einstellungen aus der Datenbank geladen. "
+
+#, fuzzy
+#~ msgid ""
+#~ "If dmsguestbook.css is exist and writable, all CSS settings will be read "
+#~ "from it.<br />\n"
+#~ "\t\t\t\tOtherwise these settings will be load from the database."
+#~ msgstr ""
+#~ "Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS "
+#~ "Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die "
+#~ "Einstellungen aus der Datenbank geladen. "
+
+#, fuzzy
+#~ msgid ""
+#~ "If dmsguestbook.css is exist and writable, all CSS settings will be read "
+#~ "from it."
+#~ msgstr ""
+#~ "Falls dmsguestbook.css vorhanden und beschreibbar ist, werden die CSS "
+#~ "Einstellungen aus dmsguestbook.css gelesen.<br />Ansonsten werden die "
+#~ "Einstellungen aus der Datenbank geladen. "
+
+#, fuzzy
+#~ msgid "Examples"
+#~ msgstr "Beispiel:"
+
+#~ msgid "Class heredity"
+#~ msgstr "Klassenvererbung"
+
+#, fuzzy
+#~ msgid "Size of both navigation chars"
+#~ msgstr "Grösse des Navigationszeichen"
+
+#~ msgid "Guestbook width:"
+#~ msgstr "Gästebuch Breite:"
+
+#~ msgid "Separator width:"
+#~ msgstr "Trenner Breite:"
+
+#~ msgid "Antispam image text color:"
+#~ msgstr "Antispam Textfarbe:"
+
+#~ msgid ""
+#~ "Enter here you reCAPTCHA private key.<br /><a href=\\'http://recaptcha."
+#~ "net/\\' target=\\'_blank\\'>Learn more about reCAPTCHA</a>."
+#~ msgstr ""
+#~ "Gib hier den privaten reCAPTCHA Schlüssel ein.<br /><a href=\\'http://"
+#~ "recaptcha.net/\\' target=\\'_blank\\'>Mehr über  reCAPTCHA</a>."
+
+#~ msgid ""
+#~ "Enter here you reCAPTCHA public key.<br /><a href=\\'http://recaptcha.net/"
+#~ "\\' target=\\'_blank\\'>Learn more about reCAPTCHA</a>."
+#~ msgstr ""
+#~ "Gib hier den öffentlichen reCAPTCHA Schlüssel ein.<br /><a href=\\'http://"
+#~ "recaptcha.net/\\' target=\\'_blank\\'>Mehr über  reCAPTCHA</a>."
+
+#~ msgid ""
+#~ "More infos: <a href=\\'http://akismet.com/\\' target=\\'_blank\\'>http://"
+#~ "akismet.com</a>"
+#~ msgstr ""
+#~ "Mehr Informationen: <a href=\\'http://akismet.com/\\' target=\\'_blank"
+#~ "\\'>http://akismet.com</a>"
+
+#~ msgid "Database settings:"
+#~ msgstr "Datenbank Einstellungen:"
+
+#~ msgid "Guestbook settings:"
+#~ msgstr "Gästebuch Einstellungen:"
+
+#~ msgid "Language settings:"
+#~ msgstr "Spracheinstellungen:"
+
+#~ msgid "phpinfo:"
+#~ msgstr "phpinfo:"
+
+#, fuzzy
+#~ msgid "This role affect with"
+#~ msgstr "Diese Regel hat Einfluss auf:"
+
+#, fuzzy
+#~ msgid "Entries:"
+#~ msgstr "Einträge"
+
+#, fuzzy
+#~ msgid "Actuallsy image:"
+#~ msgstr "Aktuelles Icon:"
+
+#~ msgid "%"
+#~ msgstr "Optionen"
+
+#~ msgid "disabled"
+#~ msgstr "daktiviert"
+
+#~ msgid "Users"
+#~ msgstr "Benutzer"

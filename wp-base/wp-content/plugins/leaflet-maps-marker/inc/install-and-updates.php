@@ -660,11 +660,29 @@ if (get_option('leafletmapsmarker_version') == '3.6.3' ) {
 		update_option('leafletmapsmarker_version_before_update', '3.6.3');
 	}
 	update_option('leafletmapsmarker_version', '3.6.4');
+}
+if (get_option('leafletmapsmarker_version') == '3.6.4' ) {
+	delete_transient( 'leafletmapsmarker_install_update_cache_v364');
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'deleted-in-1-hour', 60*3 );
+		update_option('leafletmapsmarker_version_before_update', '3.6.4');
+	}
+	update_option('leafletmapsmarker_version', '3.6.5');
+}
+if (get_option('leafletmapsmarker_version') == '3.6.5' ) {
+	delete_transient( 'leafletmapsmarker_install_update_cache_v365');
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'deleted-in-1-hour', 60*3 );
+		update_option('leafletmapsmarker_version_before_update', '3.6.5');
+	}
+	update_option('leafletmapsmarker_version', '3.6.6');
 	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
 	if (get_option('leafletmapsmarker_redirect') == 'true')
 	{
 		update_option('leafletmapsmarker_redirect', 'false');
-		wp_redirect(LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker');
+		wp_redirect(LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker&first_run=true');
 	} else {
 		update_option('leafletmapsmarker_update_info', 'show');
 	}
@@ -674,7 +692,6 @@ if (get_option('leafletmapsmarker_version') == '3.6.3' ) {
 			update_option('leafletmapsmarker_update_info', 'hide');
 	}
 }
-
 /* template for plugin updates
 if (get_option('leafletmapsmarker_version') == 'x.xbefore' ) {
 	delete_transient( 'leafletmapsmarker_install_update_cache_vxxbefore'); //2do: update to version from line above
