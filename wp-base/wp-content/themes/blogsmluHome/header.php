@@ -97,8 +97,8 @@
 			
 			<ul id="subscribe">
 				<li><a class="rss" href="<?php bloginfo('rss2_url'); ?>" title="<?php bloginfo('name'); ?> RSS-Feed abonnieren">RSS-Feed abonnieren</a></li>
-				<li><a class="twitter" href="https://twitter.com/mlublogs" rel="me">Twitter</a></li>
-				<li><a class="facebook" href="http://www.facebook.com/pages/blogsURZ/156259138175" rel="me">Facebook</a></li>
+				<!--<li><a class="twitter" href="https://twitter.com/mlublogs" rel="me">Twitter</a></li>
+				<li><a class="facebook" href="http://www.facebook.com/pages/blogsURZ/156259138175" rel="me">Facebook</a></li>-->
 			</ul>
 			
 		</div>
@@ -121,7 +121,7 @@
 				<li><span class="number">1</span>Anmelden<span>Anmelden mit eurem 5-stelligen Nutzerkennzeichen</span></li>
 				<li><span class="number">2</span>Blog anlegen<span>Blog-Name und Blog-URL angeben</span></li>
 				<li><span class="number">3</span>Bloggen<span>Und los geht's!</span></li>
-				<li id="last"><a class="button" href="<?php echo site_url('/new-blog.php', 'https'); ?>" title="Neuen Blog bei Blogs@URZ anlegen">Neuen Blog Starten &#8594;</a></li>
+				<li id="last"><a class="button" href="<?php echo site_url('/new-blog.php', 'https'); ?>" title="Neuen Blog bei Blogs@MLU anlegen">Neuen Blog Starten &#8594;</a></li>
 			</ul>
 
 		</div>

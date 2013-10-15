@@ -18,7 +18,7 @@ get_header(); ?>
 				
 		<?php endwhile; endif; ?>
 		
-		<h2>Blogs@URZ News</h2>
+		<h2>Blogs@MLU News</h2>
 				
 		<?php $posts = get_posts( "numberposts=5" ); ?>
 		<?php if( $posts ) : ?>
@@ -49,7 +49,7 @@ get_header(); ?>
 	<div id="sidebar" class="actions">
 		
 		<div class="sidelist">
-			<h2><a href="blog/" title="blogs@URZ Haupt-Blog">blogs@URZ Status &raquo;</a></h2>
+			<h2><a href="blog/" title="blogs@MLU Haupt-Blog">blogs@MLU Status &raquo;</a></h2>
 			<ul id="status">
 			
 				<!--
@@ -74,14 +74,15 @@ get_header(); ?>
 				-->
 		
 			</ul>
-			<p>Aktuelle Neuigkeiten zum Status des Blog-Dienstes erf&auml;hrst du im <a title="Blogs@URZ Hauptblog" rel="me" href="/blog">Hauptblog</a>, &uuml;ber <a rel="me" href="https://twitter.com/mlublogs">Twitter</a> oder auf unserer <a rel="me" href="http://www.facebook.com/pages/blogsURZ/156259138175">Facebook Seite</a>.</p>
+			<p>Aktuelle Neuigkeiten zum Status des Blog-Dienstes erf&auml;hrst du im <a title="Blogs@MLU Hauptblog" rel="me" href="/blog">Hauptblog</a>.</p>
+			<!--, &uuml;ber <a rel="me" href="https://twitter.com/mlublogs">Twitter</a> oder auf unserer <a rel="me" href="http://www.facebook.com/pages/blogsURZ/156259138175">Facebook Seite</a>-->
 		</div>
 		
 		<div class="sidelist">
-			<h2><a href="http://blogportal.urz.uni-halle.de/" title="blogs@URZ Portal">blogs@URZ Portal &raquo;</a></h2>
+			<h2><a href="http://blogportal.urz.uni-halle.de/" title="blogs@MLU Portal">blogs@MLU Portal &raquo;</a></h2>
 			<ul>
-				<li>Beitr&auml;ge von <a href="http://blogportal.urz.uni-halle.de/alleblogs" title="Blogs aus dem Umfeld der Universit&auml;t">Blogs aus dem Umfeld der Universit&auml;t</a> werden im Portal eingebettet in die Universit&auml;ts-Homepage vom blogs@URZ-Team ausgew&auml;hlt und <a href="http://blogportal.urz.uni-halle.de/" title="blogs@URZ Portal">pr&auml;sentiert.</a></li>
-				<li><a class="button small" href="http://blogportal.urz.uni-halle.de/" title="blogs@URZ Portal">blogs@URZ Portal</a></li>
+				<li>Beitr&auml;ge von <a href="http://blogportal.urz.uni-halle.de/alleblogs" title="Blogs aus dem Umfeld der Universit&auml;t">Blogs aus dem Umfeld der Universit&auml;t</a> werden im Portal eingebettet in die Universit&auml;ts-Homepage vom blogs@MLU-Team ausgew&auml;hlt und <a href="http://blogportal.urz.uni-halle.de/" title="blogs@MLU Portal">pr&auml;sentiert.</a></li>
+				<li><a class="button small" href="http://blogportal.urz.uni-halle.de/" title="blogs@MLU Portal">blogs@MLU Portal</a></li>
 			</ul>
 		</div>
 		
@@ -96,7 +97,7 @@ get_header(); ?>
 				<li><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title();?></a>				</li>
 			
 			<?php endwhile;?>
-				<li><a href="/blog/category/anleitungen/" title="Alle blogs@URZ Anleitungen ansehen">[ Alle Anleitungen... ]</a></li>
+				<li><a href="/blog/category/anleitungen/" title="Alle blogs@MLU Anleitungen ansehen">[ Alle Anleitungen... ]</a></li>
 			</ul>
 			
 		</div>		
@@ -109,7 +110,7 @@ get_header(); ?>
 				
 				<h3>Powered By WordPress</h3>
 
-				<p>Der Blogs@URZ Dienst basiert auf der Multisite Variante der weit verbreiteten und leicht zu bedienenden Blog-Software <a title="Wordpress.org" href="http://wordpress.org">WordPress</a>.
+				<p>Der Blogs@MLU Dienst basiert auf der Multisite Variante der weit verbreiteten und leicht zu bedienenden Blog-Software <a title="Wordpress.org" href="http://wordpress.org">WordPress</a>.
 				<a href="http://wordpress.org" title="WordPress"><img src="<?php bloginfo('template_url'); ?>/style/images/wordpress-logo.png" alt="wordpress-logo" width="220" height="64"/></a>
 				</p>
 				
@@ -133,19 +134,19 @@ get_header(); ?>
 			<div class="column-right">
 				<h3>Kontakt</h3>
 				<ul>
-					<li><h4>blogs@URZ Team</h4></li>
-					<li><a class="email" href="/kontakt" title="blogs@URZ-Team kontaktieren">Kontaktformular</a></li>
-					<li><a class="email" href="mailto:blogs@urz.uni-halle.de" title="blogs@URZ-Team kontaktieren">blogs@urz.uni-halle.de</a></li>
-					<li><a class="twitter" href="https://twitter.com/mlublogs" title="Twitter" rel="me">Twitter</a></li>
-					<li><a class="facebook" href="http://www.facebook.com/pages/blogsURZ/156259138175" title="Facebook Seite" rel="me">Facebook</a></li>
+					<li><h4>blogs@MLU Team</h4></li>
+					<li><a class="email" href="/kontakt" title="blogs@MLU-Team kontaktieren">Kontaktformular</a></li>
+					<li><a class="email" href="mailto:blogs@urz.uni-halle.de" title="blogs@MLU-Team per E-Mail kontaktieren">blogs@urz.uni-halle.de</a></li>
+					<!--<li><a class="twitter" href="https://twitter.com/mlublogs" title="Twitter" rel="me">Twitter</a></li>
+					<li><a class="facebook" href="http://www.facebook.com/pages/blogsURZ/156259138175" title="Facebook Seite" rel="me">Facebook</a></li>-->
 				</ul>
 				<ul>
 					<li><h4>Projektverantwortlicher</h4></li>
-					<li>Dirk Pollm&auml;cher</li>
-					<li><a class="email" href="mailto:blogs@urz.uni-halle.de" title="blogs@URZ-Team kontaktieren">blogs@urz.uni-halle.de</a></li>
+					<li>Robert J&auml;ckel</li>
+					<li><a class="email" href="mailto:blogs@urz.uni-halle.de" title="blogs@LMU-Team kontaktieren">blogs@urz.uni-halle.de</a></li>
 				</ul>
 				<ul>
-					<li><h4>Administration <span class="amp">&amp;</span> Design</h4></li>
+					<li><h4>Design</h4></li>
 					<li>Matthias Kretschmann</li>
 					<li><a class="url" href="http://kremalicious.com/blog" title="kremalicious Blog">Blog</a></li>
 					<li><a class="twitter" href="https://twitter.com/kremalicious" title="Twitter">Twitter</a></li>

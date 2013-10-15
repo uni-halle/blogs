@@ -139,7 +139,7 @@ add_filter('wp_footer', 'mlublogs_footer_css');
 function mlublogs_footer_html() {
 	echo '<div id="global-footer">
 		
-		<p>Ein Blog von <a href="http://blogs.urz.uni-halle.de/">Blogs@URZ</a>, dem Blog-Dienst des <a href="http://www.urz.uni-halle.de/" title="Universit&auml;tsrechenzentrum der Martin-Luther-Universität Halle-Wittenberg">Rechenzentrums</a> der <a href="http://www.uni-halle.de" title="Website der Martin-Luther-Universit&auml;t Halle-Wittenberg">Martin-Luther-Universität Halle-Wittenberg</a></p>
+		<p>Ein Blog von <a href="http://blogs.urz.uni-halle.de/">Blogs@MLU</a>, dem Blog-Dienst des <a href="http://www.itz.uni-halle.de/" title="IT-Servicezentrum der Martin-Luther-Universität Halle-Wittenberg">IT-Servicezentrums</a> der <a href="http://www.uni-halle.de" title="Website der Martin-Luther-Universit&auml;t Halle-Wittenberg">Martin-Luther-Universität Halle-Wittenberg</a></p>
 		
 		<p><a href="http://blogs.urz.uni-halle.de/dienst/" title="Features">Features</a> | <a href="http://blogs.urz.uni-halle.de/dienst/nutzungsbedingungen/" title="Nutzungsbedingungen">Nutzungsbedingungen</a> | <a href="http://blogs.urz.uni-halle.de/kontakt" title="Kontakt und Impressum">Kontakt/Impressum</a> | <a href="http://blogs.urz.uni-halle.de/dienst/disclaimer" title="Haftungssausschluss">Disclaimer</a> | <a href="http://blogs.urz.uni-halle.de/dienst/datenschutz" title="Datenschutzerkl&auml;rung">Datenschutzerkl&auml;rung</a> | <a href="https://blogs.urz.uni-halle.de/new-blog.php" title="Neuen Blog anlegen">Neuer Blog</a></p>
 	

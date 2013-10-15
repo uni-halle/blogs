@@ -7,7 +7,7 @@
 </div><!-- end #wrapper -->
 
 <div id="footer">
-	<p><a href="<?php echo get_settings('home'); ?>/" title="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>"><?php bloginfo('name'); ?></a> nutzt das blogs@URZ Home Theme</p>
+	<p><a href="<?php echo get_settings('home'); ?>/" title="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>"><?php bloginfo('name'); ?></a> nutzt das blogs@MLU Home Theme</p>
 	<p>design.code.<a href="http://matthiaskretschmann.com" title="Matthias Kretschmann | Design &amp; Photography">matthias.kretschmann</a></p>
 	<p><a class="valid" href="http://validator.w3.org/check?uri=referer" title="Valid XHTML 1.0">xhtml 1.0</a></p>
 </div>

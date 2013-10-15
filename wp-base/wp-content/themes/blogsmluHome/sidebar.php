@@ -1,31 +1,5 @@
 <div id="sidebar">
 	
-	<div class="sidelist">
-		<h2>blogs@URZ Status</h2>
-		<ul id="status">
-
-			<!--
-			<li class="status-light aufbau"></li>
-			<li class="status-message">Der Dienst befindet sich im Aufbau.</li>
-			-->
-			
-			<li class="status-light green"></li>
-			<li class="status-message">Alles im gr&uuml;nen Bereich.</li>
-
-			<!--
-			<li class="status-light yellow"></li>
-			<li class="status-message">Eingeschr&auml;nkte Funktionen.</li>
-			-->
-
-			<!--
-			<li class="status-light red"></li>
-			<li class="status-message">Der Dienst ist nicht verf&uuml;gbar.</li>
-			-->
-		
-		</ul>
-		<p>Aktuelle Neuigkeiten zum Status des Blog-Dienstes erf&auml;hrst du im <a title="Blogs@URZ Hauptblog" rel="me" href="/blog">Hauptblog</a>, &uuml;ber <a rel="me" href="https://twitter.com/mlublogs">Twitter</a> oder auf unserer <a rel="me" href="http://www.facebook.com/pages/blogsURZ/156259138175">Facebook Seite</a>.</p>
-	</div>
-
 <?php if ( !function_exists('dynamic_sidebar')
         || !dynamic_sidebar('Sidebar') ) : ?>
 

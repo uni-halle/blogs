@@ -740,7 +740,7 @@ h5 {
 
 #header h2 a {
 	display: block;
-	text-indent: -99999999px;
+	text-indent: 99999999px;
 	width: 300px;
 	height: 48px;
 	overflow: hidden;

@@ -205,7 +205,7 @@ msgstr "Absenden"
 
 #: ../footer.php:8
 msgid "is using the blogs@URZ Default Theme"
-msgstr "verwendet das Blogs@URZ Default Theme"
+msgstr "verwendet das Blogs@MLU Default Theme"
 
 #: ../footerbar.php:7
 msgid "Pages"
