@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>Blogs@URZ - Updating</title>
+	<title>Blogs@MLU - Updating</title>
 	
 	<style type="text/css">
 				
@@ -176,8 +176,8 @@
 	</article>
 
 	<footer>
-		<p><a href="/">Blogs@URZ</a></p>
-		<p>design.code.admin.<a href="http://matthiaskretschmann.com" title="Matthias Kretschmann | Design &amp; Photography">matthias.kretschmann</a></p>
+		<p><a href="/">Blogs@MLU</a></p>
+		<!--<p>design.code.admin.<a href="http://matthiaskretschmann.com" title="Matthias Kretschmann | Design &amp; Photography">matthias.kretschmann</a></p>-->
 		<p>html 5</p>
 	</footer>
 	
