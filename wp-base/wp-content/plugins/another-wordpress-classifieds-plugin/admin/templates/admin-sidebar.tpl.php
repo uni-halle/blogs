@@ -1,8 +1,8 @@
-<div class="postbox-container1" style="padding-right: 0.5%; <?php echo $float; ?>; width: 20%; ">
+<div class="awpcp-postbox-container postbox-container" style="<?php echo $float; ?>; width: 20%; ">
     <div class="metabox-holder">
         <div class="meta-box-sortables">
 
-            <div class="apostboxes">
+            <div class="postbox">
                 <h3 class="hndle1"><span><?php _e('Like this plugin?', 'AWPCP'); ?></span></h3>
                 <div class="inside">
                 <p><?php _e('Why not do any or all of the following:', 'AWPCP'); ?></p>
@@ -23,29 +23,29 @@
                 </div>
             </div>
 
-            <div class="apostboxes" style="border-color:#0EAD00; border-width:3px;">
+            <div class="postbox" style="background-color:#FFFFCF; border-color:#0EAD00; border-width:3px;">
                 <h3 class="hndle1" style="color:#145200;">
                     <span class="red">
                         <strong><?php _e('Get a Premium Module!', 'AWPCP'); ?></strong>
                     </span>
                 </h3>
 
-                <div class="inside" style="background-color:#FFFFCF">
+                <div class="inside">
                     <ul>
                         <li class="li_link">
-                            <img style="align:left" src="<?php echo $url; ?>/images/new.gif"/>
+                            <img style="align:left" src="<?php echo $url; ?>/resources/images/new.gif"/>
                             <a style="color:#145200;" href="http://awpcp.com/premium-modules/comments-ratings-module/?ref=panel" target="_blank">
                                 <?php _e('Comments/Ratings Module', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
-                            <img style="align:left" src="<?php echo $url; ?>/images/new.gif"/>
+                            <img style="align:left" src="<?php echo $url; ?>/resources/images/new.gif"/>
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/authorizenet-payment-module/?ref=panel" target="_blank">
                                 <?php _e('Authorize.Net Module', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
-                            <img style="align:left" src="<?php echo $url; ?>/images/new.gif"/>
+                            <img style="align:left" src="<?php echo $url; ?>/resources/images/new.gif"/>
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/paypalpro-payment-module/?ref=panel" target="_blank">
                                 <?php _e('PayPal Pro Module', 'AWPCP'); ?>
                             </a>
@@ -87,7 +87,7 @@
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/google-checkout-module/?ref=panel" target="_blank">
-                                <?php _e('Google Checkout Payment Module'); ?>
+                                <?php _e('Google Checkout Payment Module', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
@@ -104,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="apostboxes">
+            <div class="postbox">
                 <h3 class="hndle1"><span><?php _e('Found a bug?', 'AWPCP'); ?> &nbsp; <?php _e('Need Support?', 'AWPCP'); ?></span></h3>
                 <?php $tpl = '<a href="%s" target="_blank">%s</a>'; ?>
                 <div class="inside">
@@ -119,7 +119,7 @@
                 </div>
             </div>
 
-            <div class="apostboxes">
+            <div class="postbox">
                 <h3 class="hndle1"><span><?php _e("Premium Modules","AWPCP"); ?></span></h3>
                 <div class="inside">
 
@@ -127,7 +127,7 @@
 
                     <?php if (count($modules['premium']['installed']) == 0): ?>
 
-                    <p><?php __("No premium modules installed.", "AWPCP"); ?></p>
+                    <p><?php _e( 'No premium modules installed.', 'AWPCP' ); ?></p>
 
                     <?php else: ?>
 
@@ -159,7 +159,7 @@
                 </div>
             </div>
 
-            <!-- <div class="apostboxes">
+            <!-- <div class="postbox">
                 <h3 class="hndle1"><span><?php __("Other Modules","AWPCP"); ?></span></h3>
 
                 <div class="inside">

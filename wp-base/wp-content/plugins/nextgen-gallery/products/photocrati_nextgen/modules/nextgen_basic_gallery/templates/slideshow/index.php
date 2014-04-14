@@ -41,9 +41,8 @@
     $swfobject->add_attributes('name', 'so' . $displayed_gallery_id);
 
     // adding the flash parameter
-    //$swfobject->add_flashvars( 'file', urlencode ( trailingslashit ( home_url() ) . 'index.php?callback=imagerotator&gid=' . $displayed_gallery_id ) );
     $swfobject->add_flashvars( 'file', urlencode ( $mediarss_link ) );
-    $swfobject->add_flashvars( 'shuffle', $flash_shuffle, 'false', 'bool');
+    $swfobject->add_flashvars( 'shuffle', (!empty($flash_shuffle) ? TRUE : FALSE), '', 'bool');
 
     // option has oposite meaning : true should switch to next image
     $swfobject->add_flashvars( 'linkfromdisplay', !$flash_next_on_click, 'false', 'bool');
@@ -143,7 +142,7 @@
 				<img data-image-id='<?php echo esc_attr($image->pid); ?>'
 					 title="<?php echo esc_attr($image->description)?>"
 					 alt="<?php echo esc_attr($image->alttext)?>"
-					 src="<?php echo esc_attr($storage->get_image_url($image))?>"
+					 src="<?php echo esc_attr($storage->get_image_url($image, 'full', TRUE))?>"
 					 width="<?php echo esc_attr($image_size['width'])?>"
 					 height="<?php echo esc_attr($image_size['height'])?>"
 				/>
@@ -171,7 +170,7 @@
 	<div
 		class="ngg-galleryoverview ngg-slideshow"
 		id="<?php echo_h($anchor)?>"
-		data-placeholder="<?php echo esc_url($placeholder)?>"
+		data-placeholder="<?php echo nextgen_esc_url($placeholder)?>"
 		style="max-width:<?php echo_h($gallery_width) ?>px; max-height:<?php echo_h($gallery_height) ?>px;">
 
 		<div

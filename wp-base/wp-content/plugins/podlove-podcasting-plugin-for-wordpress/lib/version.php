@@ -40,7 +40,7 @@
 namespace Podlove;
 use \Podlove\Model;
 
-define( __NAMESPACE__ . '\DATABASE_VERSION', 45 );
+define( __NAMESPACE__ . '\DATABASE_VERSION', 67 );
 
 add_action( 'init', function () {
 	
@@ -351,6 +351,401 @@ function run_migrations_for_version( $version ) {
 		case 45:
 			delete_transient('podlove_auphonic_user');
 			delete_transient('podlove_auphonic_presets');
+		break;
+		case 46:
+			if (\Podlove\Modules\Base::is_active('contributors')) {
+
+				// manually trigger activation if the old module was active
+				$module = \Podlove\Modules\Contributors\Contributors::instance();
+				$module->was_activated('contributors');
+
+				// then, migrate existing contributors
+				// register old taxonomy so it can be queried
+				$args = array(
+					'hierarchical'  => false,
+					'labels'        => array(),
+					'show_ui'       => true,
+					'show_tagcloud' => true,
+					'query_var'     => true,
+					'rewrite'       => array( 'slug' => 'contributor' ),
+				);
+
+				register_taxonomy( 'podlove-contributors', 'podcast', $args );
+				$contributor_settings = get_option( 'podlove_contributors', array() );
+
+				$contributors = get_terms( 'podlove-contributors', array( 'hide_empty' => 0 ) );
+
+				if ($contributors && !is_wp_error($contributors) && \Podlove\Modules\Contributors\Model\Contributor::count() == 0) {
+					foreach ($contributors as $contributor) {
+
+						// create new contributor
+						$new = new \Podlove\Modules\Contributors\Model\Contributor();
+						$new->publicname = $contributor->name;
+						$new->realname = $contributor->name;
+						$new->slug = $contributor->slug;
+						$new->showpublic = true;
+
+						if (isset($contributor_settings[$contributor->term_id]['contributor_email'])) {
+							$email = $contributor_settings[$contributor->term_id]['contributor_email'];
+							if ($email) {
+								$new->privateemail = $email;
+								$new->avatar = $email;
+							}
+						}
+						$new->save();
+
+						// create contributions
+						$query = new \WP_Query(array(
+							'posts_per_page' => -1,
+							'post_type' => 'podcast',
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'podlove-contributors',
+									'field' => 'slug',
+									'terms' => $contributor->slug
+								)
+							)
+						));
+						while ($query->have_posts()) {
+							$post = $query->next_post();
+							$contribution = new \Podlove\Modules\Contributors\Model\EpisodeContribution();
+							$contribution->contributor_id = $new->id;
+							$contribution->episode_id = Model\Episode::find_one_by_post_id($post->ID)->id;
+							$contribution->save();
+						}
+					}
+				}
+			}
+		break;
+		case 47:
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `protected` TINYINT(1) NULL',
+				\Podlove\Model\Feed::table_name()
+			) );
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `protection_type` TINYINT(1)',
+				\Podlove\Model\Feed::table_name()
+			) );
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `protection_user` VARCHAR(60)',
+				\Podlove\Model\Feed::table_name()
+			) );
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `protection_password` VARCHAR(64)',
+				\Podlove\Model\Feed::table_name()
+			) );
+		break;
+		case 48:
+			$podcast = Model\Podcast::get_instance();
+			$podcast->limit_items = '-1';
+			$podcast->save();
+		break;
+		case 49:
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `explicit` TINYINT',
+				Model\Episode::table_name()
+			) );
+		break;
+		case 50:
+			$podcast = Model\Podcast::get_instance();
+			$podcast->license_type = 'other';
+			$podcast->save();
+
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `license_type` VARCHAR(255) AFTER `publication_date`',
+				Model\Episode::table_name()
+			) );
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `license_name` TEXT AFTER `license_type`',
+				Model\Episode::table_name()
+			) );
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `license_url` TEXT AFTER `license_name`',
+				Model\Episode::table_name()
+			) );
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `license_cc_allow_modifications` TEXT AFTER `license_url`',
+				Model\Episode::table_name()
+			) );
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `license_cc_allow_commercial_use` TEXT AFTER `license_cc_allow_modifications`',
+				Model\Episode::table_name()
+			) );
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `license_cc_license_jurisdiction` TEXT AFTER `license_cc_allow_commercial_use`',
+				Model\Episode::table_name()
+			) );
+		break;
+		case 51:
+			if (\Podlove\Modules\Base::is_active('contributors')) {
+				
+				\Podlove\Modules\Contributors\Model\ContributorGroup::build();
+
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `group_id` VARCHAR(255) AFTER `role_id`',
+					\Podlove\Modules\Contributors\Model\EpisodeContribution::table_name()
+				) );
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `group_id` VARCHAR(255) AFTER `role_id`',
+					\Podlove\Modules\Contributors\Model\ShowContribution::table_name()
+				) );
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `paypal` VARCHAR(255) AFTER `flattr`',
+					\Podlove\Modules\Contributors\Model\Contributor::table_name()
+				) );
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `bitcoin` VARCHAR(255) AFTER `paypal`',
+					\Podlove\Modules\Contributors\Model\Contributor::table_name()
+				) );
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `litecoin` VARCHAR(255) AFTER `bitcoin`',
+					\Podlove\Modules\Contributors\Model\Contributor::table_name()
+				) );
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` DROP COLUMN `permanentcontributor`',
+					\Podlove\Modules\Contributors\Model\Contributor::table_name()
+				) );
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` DROP COLUMN `role`',
+					\Podlove\Modules\Contributors\Model\Contributor::table_name()
+				) );
+			}
+		break;
+		case 52:
+			if (\Podlove\Modules\Base::is_active('contributors')) {
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `jobtitle` VARCHAR(255) AFTER `department`',
+					\Podlove\Modules\Contributors\Model\Contributor::table_name()
+				) );
+			}
+		break;
+		case 53:
+			// set all Episode as published (fix for ADN Module)
+			$episodes = Model\Episode::all();
+			foreach ( $episodes as $episode ) {
+				$post = get_post( $episode->post_id );
+				if ( $post->post_status == 'publish' )
+					update_post_meta( $episode->post_id, '_podlove_episode_was_published', true );
+			}
+		break;
+		case 54:
+			if (\Podlove\Modules\Base::is_active('contributors')) {
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `googleplus` TEXT AFTER `ADN`',
+					\Podlove\Modules\Contributors\Model\Contributor::table_name()
+				) );
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` CHANGE COLUMN `showpublic` `visibility` TINYINT(1)',
+					\Podlove\Modules\Contributors\Model\Contributor::table_name()
+				) );
+			}
+		break;
+		case 55:
+			if (\Podlove\Modules\Base::is_active('contributors')) {
+				\Podlove\Modules\Contributors\Model\DefaultContribution::build();
+
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `comment` TEXT AFTER `position`',
+					\Podlove\Modules\Contributors\Model\EpisodeContribution::table_name()
+				) );
+				$wpdb->query( sprintf(
+					'ALTER TABLE `%s` ADD COLUMN `comment` TEXT AFTER `position`',
+					\Podlove\Modules\Contributors\Model\ShowContribution::table_name()
+				) );
+			}
+		break;
+		case 56:
+			// migrate Podcast Contributors to Default Contributors
+			if (\Podlove\Modules\Base::is_active('contributors')) {
+				$podcast_contributors = \Podlove\Modules\Contributors\Model\ShowContribution::all();
+				foreach ($podcast_contributors as $podcast_contributor_key => $podcast_contributor) {
+					$new = new \Podlove\Modules\Contributors\Model\DefaultContribution();
+					$new->contributor_id = $podcast_contributor->contributor_id;
+					$new->group_id = $podcast_contributor->group_id;
+					$new->role_id = $podcast_contributor->role_id;
+					$new->position = $podcast_contributor->positon;
+					$new->save();
+				}
+			}
+		break;
+		case 57:
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` ADD COLUMN `append_name_to_podcast_title` TINYINT(1) NULL AFTER `embed_content_encoded`',
+				\Podlove\Model\Feed::table_name()
+			) );
+		break;
+		case 58:
+			// if contributors module is active, activate social module
+			if (\Podlove\Modules\Base::is_active('contributors')) {
+				\Podlove\Modules\Base::activate('social');
+			}
+		break;
+		case 59:
+			if (\Podlove\Modules\Base::is_active('bitlove')) {
+				$wpdb->query( sprintf(
+					"ALTER TABLE `%s` ADD COLUMN `bitlove` TINYINT(1) DEFAULT '0'",
+					\Podlove\Model\Feed::table_name()
+				) );
+			}
+		break;
+		case 60:
+			\Podlove\Modules\Base::activate('oembed');
+			\Podlove\Modules\Base::activate('feed_validation');
+		break;
+		case 61:
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` DROP COLUMN `publication_date`',
+				Model\Episode::table_name()
+			) );
+		break;
+		case 62:
+			// rename column
+			$wpdb->query( sprintf(
+				'ALTER TABLE `%s` CHANGE COLUMN `record_date` `recording_date` DATETIME',
+				Model\Episode::table_name()
+			) );
+
+			// update settings
+			$meta = get_option( 'podlove_metadata' );
+
+			if (isset($meta['enable_episode_publication_date'])) {
+				unset($meta['enable_episode_publication_date']);
+			}
+
+			if (isset($meta['enable_episode_record_date'])) {
+				$meta['enable_episode_recording_date'] = $meta['enable_episode_record_date'];
+				unset($meta['enable_episode_record_date']);
+			}
+
+			update_option('podlove_metadata', $meta);
+		break;
+		case 63:
+			if (\Podlove\Modules\Base::is_active('social')) {
+				$tumblr_service = \Podlove\Modules\Social\Model\Service::find_one_by_property( 'title', 'Tumblr' );
+				$tumblr_service->url_scheme = 'http://%account-placeholder%.tumblr.com/';
+				$tumblr_service->save();
+			}
+		break;
+		case 64:
+			if (\Podlove\Modules\Base::is_active('social')) {
+				$services = array(
+					array(
+							'title' 		=> '500px',
+							'type'			=> 'social',
+							'description'	=> '500px Account',
+							'logo'			=> '500px-128.png',
+							'url_scheme'	=> 'https://500px.com/%account-placeholder%'
+						),
+					array(
+							'title' 		=> 'Last.fm',
+							'type'			=> 'social',
+							'description'	=> 'Last.fm Account',
+							'logo'			=> 'lastfm-128.png',
+							'url_scheme'	=> 'https://www.lastfm.de/user/%account-placeholder%'
+						),
+					array(
+							'title' 		=> 'OpenStreetMap',
+							'type'			=> 'social',
+							'description'	=> 'OpenStreetMap Account',
+							'logo'			=> 'openstreetmap-128.png',
+							'url_scheme'	=> 'https://www.openstreetmap.org/user/%account-placeholder%'
+						),
+					array(
+							'title' 		=> 'Soup',
+							'type'			=> 'social',
+							'description'	=> 'Soup Account',
+							'logo'			=> 'soup-128.png',
+							'url_scheme'	=> 'http://%account-placeholder%.soup.io'
+						)
+				);
+
+				foreach ($services as $service_key => $service) {
+					$c = new \Podlove\Modules\Social\Model\Service;
+					$c->title = $service['title'];
+					$c->type = $service['type'];
+					$c->description = $service['description'];
+					$c->logo = $service['logo'];
+					$c->url_scheme = $service['url_scheme'];
+					$c->save();
+				}
+			}
+		break;
+		case 65:
+			if (\Podlove\Modules\Base::is_active('social')) {
+				$flattr_service = \Podlove\Modules\Social\Model\Service::find_one_by_where( "`title` = 'Flattr' AND `type` = 'donation'" );
+				if ($flattr_service) {
+					$contributor_flattr_donations_accounts = \Podlove\Modules\Social\Model\ContributorService::find_all_by_property( 'service_id', $flattr_service->id );
+
+					foreach ( $contributor_flattr_donations_accounts as $contributor_flattr_donations_account ) {
+						$contributor = \Podlove\Modules\Contributors\Model\Contributor::find_by_id( $contributor_flattr_donations_account->contributor_id );
+						
+						if ( $contributor && is_null( $contributor->flattr ) ) {
+							$contributor->flattr = $contributor_flattr_donations_account->value;
+							$contributor->save();
+						}
+
+						$contributor_flattr_donations_account->delete();
+
+					}
+
+					$flattr_service->delete();
+				}
+			}
+		break;
+		case 66:
+			// Temporary add license_type and CC license fields to episode model
+			\Podlove\Model\Episode::property( 'license_type', 'VARCHAR(255)' );
+			\Podlove\Model\Episode::property( 'license_cc_allow_modifications', 'VARCHAR(255)' );
+			\Podlove\Model\Episode::property( 'license_cc_allow_commercial_use', 'VARCHAR(255)' );
+			\Podlove\Model\Episode::property( 'license_cc_license_jurisdiction', 'VARCHAR(255)' );
+
+			$podcast  = \Podlove\Model\Podcast::get_instance();
+			$episodes = \Podlove\Model\Episode::all();
+
+			// Migration for Podcast
+			if( $podcast->license_type  == 'cc' && $podcast->license_cc_allow_commercial_use !== '' &&
+				$podcast->license_cc_allow_modifications !== '' && $podcast->license_cc_license_jurisdiction !== '' ) {
+					$license = array(
+							'version'		=>	'3.0',
+							'commercial_use'=>	$podcast->license_cc_allow_commercial_use,
+							'modification'	=>	$podcast->license_cc_allow_modifications,
+							'jurisdiction'	=>	$podcast->license_cc_license_jurisdiction
+									);
+
+					$podcast->license_url = \Podlove\Model\License::get_url_from_license( $license );
+					$podcast->license_name = \Podlove\Model\License::get_name_from_license( $license );
+
+					$podcast->save();
+			}
+
+			// Migration for Episodes
+			foreach ( $episodes as $episode ) {
+				if( $episode->license_type  == 'other' || $episode->license_cc_allow_commercial_use == '' ||
+					$episode->license_cc_allow_modifications == '' || $episode->license_cc_license_jurisdiction == '' ) {
+					continue;
+				}
+
+				$license = array(
+					'version'        => '3.0',
+					'commercial_use' => $episode->license_cc_allow_commercial_use,
+					'modification'   => $episode->license_cc_allow_modifications,
+					'jurisdiction'   => $episode->license_cc_license_jurisdiction
+				);
+
+				$episode->license_url  = \Podlove\Model\License::get_url_from_license( $license );
+				$episode->license_name = \Podlove\Model\License::get_name_from_license( $license );
+
+				$episode->save();
+			}
+		break;
+		case 67:
+			if (\Podlove\Modules\Base::is_active('social')) {
+				$instagram_service = \Podlove\Modules\Social\Model\Service::find_one_by_where( "`title` = 'Instagram' AND `type` = 'social'" );
+				if ($instagram_service) {
+					$instagram_service->url_scheme = 'https://instagram.com/%account-placeholder%';
+					$instagram_service->save();
+				}
+			}
 		break;
 	}
 

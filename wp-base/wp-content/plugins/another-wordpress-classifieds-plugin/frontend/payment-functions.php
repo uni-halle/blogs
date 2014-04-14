@@ -1,27 +1,5 @@
 <?php
 
-
-function awpcp_payment_urls($transaction) {
-	$thank_you_id = awpcp_get_page_id_by_ref('payment-thankyou-page-name');
-	$thank_you_url = get_permalink($thank_you_id);
-	$cancel_id = awpcp_get_page_id_by_ref('payment-cancel-page-name');
-	$cancel_url = get_permalink($cancel_id);
-
-	$permalink_structure = get_option('permalink_structure');
-	if (!empty($permalink_structure)) {
-		$return_url = trailingslashit($thank_you_url) . $transaction->id;
-		$notify_url = trailingslashit($thank_you_url) . $transaction->id;
-		$cancel_url = trailingslashit($cancel_url) . $transaction->id;
-	} else {
-		$return_url = add_query_arg(array('awpcp-txn' => $transaction->id), $thank_you_url);
-		$notify_url = add_query_arg(array('awpcp-txn' => $transaction->id), $thank_you_url);
-		$cancel_url = add_query_arg(array('awpcp-txn' => $transaction->id), $cancel_url);
-	}
-
-	return array($return_url, $notify_url, $cancel_url);
-}
-
-
 /**
  * Verify data received from PayPal IPN notifications using cURL and
  * returns PayPal's response.

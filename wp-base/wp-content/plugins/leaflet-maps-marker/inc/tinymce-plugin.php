@@ -1,214 +1,258 @@
 <?php
-/**
-Hook into WordPress
-*/
 //info prevent file from being accessed directly
 if (basename($_SERVER['SCRIPT_FILENAME']) == 'tinymce-plugin.php') { die ("Please do not access this file directly. Thanks!<br/><a href='http://www.mapsmarker.com/go'>www.mapsmarker.com</a>"); }
-add_action('admin_print_styles-post.php', 'marker_select_box_css');
-add_action('admin_print_styles-post-new.php', 'marker_select_box_css');
-function marker_select_box_css() {
-	wp_register_style( 'lmm-tinymce-css', LEAFLET_PLUGIN_URL . 'inc/css/marker_select_box.css', array(), NULL );
-	wp_enqueue_style( 'lmm-tinymce-css' );
-}
-add_action('init', 'mm_shortcode_button');
-/**
-Create Our Initialization Function
+add_action('admin_print_styles-post.php', 'mm_shortcode_button');
+add_action('admin_print_styles-post-new.php', 'mm_shortcode_button');
+
+/*
+Initialize
 */
 function mm_shortcode_button() {
-   if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') ) {
-     return;
-   }
-   if ( get_user_option('rich_editing') == 'true' ) {
-     add_filter( 'mce_external_plugins', 'lmm_add_plugin' );
-     add_filter( 'mce_buttons', 'lmm_register_button' );
-     add_filter( 'mce_external_plugins', 'mm_qt' );
-   } else{
-     add_action('admin_footer', 'mm_qt');
-   }
+	if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') ) {
+		return;
+	}
+	if ( get_user_option('rich_editing') == 'true' ) {
+		add_filter( 'mce_external_plugins', 'lmm_button_visual' );
+		add_filter( 'mce_external_plugins', 'lmm_button_text' );
+	} else {
+		add_action('admin_footer', 'lmm_button_text');
+	}
 }
-function mm_qt($plugin_array) {
-    $link = LEAFLET_PLUGIN_URL . 'inc/js/lmm_html_shortcode.php?leafletpluginurl='.base64_encode(LEAFLET_PLUGIN_URL);
-    wp_register_script('html-dialog', $link);
-    wp_enqueue_script('html-dialog');
-    return $plugin_array;
-}
-/**
-Register Button
+/*
+Map button for text tab
 */
-function lmm_register_button( $buttons ) {
-	array_push( $buttons, "|", "mm_shortcode" );
-	return $buttons;
+function lmm_button_text($plugin_array) {
+	if (!is_multisite()) { $adminurl = admin_url(); } else { $adminurl = get_admin_url(); }
+	$text_add = __('Add Map','lmm');
+	$link = LEAFLET_PLUGIN_URL . 'inc/js/tinymce_button_text.php?leafletpluginurl='.base64_encode(LEAFLET_PLUGIN_URL).'&adminurl='.base64_encode($adminurl).'&textadd='.base64_encode($text_add);
+	wp_register_script('html-dialog', $link);
+	wp_enqueue_script('html-dialog');
+	return $plugin_array;
 }
-/**
-Register TinyMCE Plugin
+/*
+Map button for visual tab
 */
-function lmm_add_plugin( $plugin_array ) {
-	$plugin_array['mm_shortcode'] = LEAFLET_PLUGIN_URL . 'inc/js/lmm_tinymce_shortcode.php?leafletpluginurl='.base64_encode(LEAFLET_PLUGIN_URL);
+function lmm_button_visual( $plugin_array ) {
+	if (!is_multisite()) { $adminurl = admin_url(); } else { $adminurl = get_admin_url(); }
+	$text_add = __('Add Map','lmm');
+	$plugin_array['mm_shortcode'] = LEAFLET_PLUGIN_URL . 'inc/js/tinymce_button_visual.php?leafletpluginurl='.base64_encode(LEAFLET_PLUGIN_URL).'&adminurl='.base64_encode($adminurl).'&textadd='.base64_encode($text_add);
 	return $plugin_array;
 }
 add_action('wp_ajax_get_mm_list',  'get_mm_list');
+
 function get_mm_list(){
-    global $wpdb;
-    $table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
-    $table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
+	$get_map_search_nonce = isset($_GET['map_search_nonce']) ? $_GET['map_search_nonce'] : '';
+	if (isset($_GET['q'])) {
+		if (!wp_verify_nonce($get_map_search_nonce, 'map-search-nonce')) { die(__('Security check failed - please call this function from the according admin page!','lmm').''); };
+	}
+	global $wpdb, $wp_version;
+	$table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
+	$table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
 
-    $l_condition = isset($_GET['q']) ? "AND l.name LIKE '%" . mysql_real_escape_string($_GET['q']) . "%'" : '';
-    $m_condition = isset($_GET['q']) ? "AND m.markername LIKE '%" . mysql_real_escape_string($_GET['q']) . "%'" : '';
+	$l_condition = isset($_GET['q']) ? "AND l.name LIKE '%" . esc_sql($_GET['q']) . "%'" : '';
+	$m_condition = isset($_GET['q']) ? "AND m.markername LIKE '%" . esc_sql($_GET['q']) . "%'" : '';
 
-    $marklist = $wpdb->get_results("
-            (SELECT l.id, l.name as 'name', l.createdon, 'layer' as 'type' FROM $table_name_layers as l WHERE l.id != '0' $l_condition)
-            UNION
-            (SELECT m.id, m.markername as 'name', m.createdon, 'marker' as 'type' FROM $table_name_markers as m WHERE  m.id != '0' $m_condition)
-            order by createdon DESC LIMIT 15", ARRAY_A);
-    if(isset($_GET['q']) ){
-        buildMarkersList($marklist);
-        exit();
-    }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title><?php _e('Insert map','lmm') ?></title>
-	<?php echo '<script type="text/javascript" src="' . site_url() . '/wp-includes/js/jquery/jquery.js"></script>'.PHP_EOL; ?>
-	<?php if(!isset($_GET['mode'])): ?>
-		<script type='text/javascript' src='<?php echo LEAFLET_PLUGIN_URL . 'inc/js/tinymce_popup.js' ?>'></script>
-		<script type='text/javascript' src='<?php echo LEAFLET_PLUGIN_URL . 'inc/js/lmm_tinymce_shortcode.php' ?>'></script>
-	<?php endif;?>
-	<script type='text/javascript' src='<?php echo LEAFLET_PLUGIN_URL . 'inc/js/jquery_caret.js' ?>'></script>
-	<link rel='stylesheet' href='<?php echo LEAFLET_PLUGIN_URL . 'inc/css/marker_select_box.css' ?>' type='text/css' media='all' />
-</head>
-<body>
-<table style="width:100%;"><tr>
-<td id="msb_header_description" colspan="3"><?php echo __('If no search term is entered, the latest 15 maps will be shown.','lmm'); ?></td></tr>
-<tr>
-<td style="width:50%;"><div id="msb_searchContainer" style="color:#666666;"><?php _e('Search','lmm'); ?> <input type="text" name="q" id="msb_serch"/></div></td>
-<td><a style="font-size: 10px;Verdana,Arial,Helvetica,sans-serif; color:#666666;" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_marker" target="_blank" title="<?php esc_attr_e('create a new marker map','lmm'); ?>"><?php _e("Add new marker", "lmm") ?></a></td>
-<td><a style="font-size: 10px;Verdana,Arial,Helvetica,sans-serif; color:#666666;" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layer" target="_blank" title="<?php esc_attr_e('create a new layer map','lmm'); ?>"><?php _e("Add new layer", "lmm") ?></a></td>
-</tr>
-</table>
-<div id="msb_listContainer">
-	<?php
-	if ($marklist != NULL) {
-		echo '<div id="msb_listHint">' . __('Please select the map you would like to add','lmm') . '</div>';
+	$marklist = $wpdb->get_results("
+		(SELECT l.id, 'icon-layer.png' as 'icon', l.name as 'name', l.updatedon, l.updatedby, 'layer' as 'type' FROM $table_name_layers as l WHERE l.id != '0' $l_condition)
+		UNION
+		(SELECT m.id, m.icon as 'icon', m.markername as 'name', m.updatedon, m.updatedby, 'marker' as 'type' FROM $table_name_markers as m WHERE  m.id != '0' $m_condition)
+		order by updatedon DESC LIMIT 100", ARRAY_A);
+	if (isset($_GET['q'])) {
 		buildMarkersList($marklist);
-	} else {
-		$no_marker_created_yet = sprintf(__('No map has been created yet. Please <a href="%s" target="_top">click here</a> to add your first one!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker');
-		echo '<table style="width:100%;border-top: 1px solid #CCCCCC;"><tr><td style="width:55px;">' . $no_marker_created_yet . '</td></tr></table>';
-	} ?>
-</div>
-<table style="width:100%;"><tr>
-<td style="padding-top:13px;"><div id="msb_attribution">powered by <a style="text-decoration:none;" href="http://www.mapsmarker.com" target"_blank">MapsMarker.com</a></div></td>
-<td><input class="button-primary" type="button" href="#" id="msb_insertMarkerSC" value="<?php esc_attr_e('Add shortcode','lmm'); ?>" /></td></tr>
-</table>
-<script type="text/javascript">
-(function($){
-    var selectMarkerBox = {
-        markerID : '',
-        mapsmarkerType : '',
+		exit();
+	}
+	?>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title><?php _e('Add Map','lmm') ?></title>
+		<?php echo '<script type="text/javascript" src="' . site_url() . '/wp-includes/js/jquery/jquery.js"></script>'.PHP_EOL; ?>
+		<?php if(!isset($_GET['mode'])): ?>
+			<script type='text/javascript' src='<?php echo LEAFLET_PLUGIN_URL . 'inc/js/tinymce_button_visual.php' ?>'></script>
+		<?php endif;?>
+		<script type='text/javascript' src='<?php echo LEAFLET_PLUGIN_URL . 'inc/js/jquery_caret.js' ?>'></script>
+		<link rel='stylesheet' href='<?php echo LEAFLET_PLUGIN_URL . 'inc/css/marker_select_box.css' ?>' type='text/css' media='all' />
+	</head>
+	<style>
+	.list_item.active {
+		background: #ebebeb ;
+	}
+	<?php if(!isset($_GET['mode'])): ?>
+	body {
+		background: #efefef;
+	}
+	<?php endif; ?>
+	</style>
+	<body>
+	<table style="width:100%;margin-bottom:5px;" cellspacing="0"><tr>
+	<tr>
+	<td style="width:42%;"><div id="msb_searchContainer" title="<?php echo sprintf(esc_attr__('If no search term is entered, the latest %1$s updated maps will be shown.','lmm'), 50); ?>"><input type="text" name="q" id="msb_search" placeholder="<?php _e('Search','lmm'); ?>"/></div></td>
+	<?php 
+		global $current_user;
+		$lmm_options = get_option( 'leafletmapsmarker_options' );
+		if (current_user_can( $lmm_options[ 'capabilities_edit' ])) {
+			echo '<td><a class="newmap" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker" target="_blank" title="' . esc_attr__('create a new marker map','lmm') . '"><img src="' . LEAFLET_PLUGIN_URL  . '/inc/img/icon-menu-add.png"> ' . __('new marker map', 'lmm') . '</a></td>';
+			echo '<td><a class="newmap" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer" target="_blank" title="' . esc_attr__('create a new layer map','lmm') . '"><img src="' . LEAFLET_PLUGIN_URL  . '/inc/img/icon-menu-add.png"> ' . __('new layer map', 'lmm') . '</a></td>';
+		}
+	?>
+	</tr>
+	</table>
+	<div id="msb_listContainer">
+		<?php
+		if ($marklist != NULL) {
+			echo '<div id="msb_listHint">' . __('Please select the map you would like to add','lmm') . ':</div>';
+			buildMarkersList($marklist);
+		} else {
+			echo '<div id="no_map_yet">' . __('No map has been created yet.','lmm') . '<br/>';
+			if (current_user_can( $lmm_options[ 'capabilities_edit' ])) {
+				echo sprintf(__('Please <a href="%s" target="_blank">click here</a> to add your first one!','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker');
+			}
+			echo '</div>';
+		} ?>
+	</div>
+	<table style="width:100%;"><tr>
+	<td style="padding-top:12px;"><a href="#" id="msb_cancel"><?php _e('Cancel','lmm'); ?></a></td>
+	<td>
+		<span id="submit-enabled" style="display:none;"><input type="button" href="#" id="msb_insertMarkerSC" value="<?php esc_attr_e('Insert map','lmm'); ?>" /></span>
+		<span id="submit-disabled"><input class="disabled" type="button" href="#" id="msb_insertMarkerSC_disabled" value="<?php esc_attr_e('Insert map','lmm'); ?>" disabled="disabled" title="<?php esc_attr_e('Please select a map first!','lmm'); ?>" /></span>
+		</td></tr>
+	</table>
+	<script type="text/javascript">
+	(function($){
+		var selectMarkerBox = {
+			markerID : '',
+			mapsmarkerType : '',
 
-        init : function(){
-            var self = selectMarkerBox;
-	        $('#msb_insertMarkerSC').on('click', function(e){
-                e.preventDefault();
-                self.insert();
-                self.close();
-            })
-            $('#msb_cancel').on('click', function(e){
-                e.preventDefault();
-                self.close();
-            })
-            $(document).on('click touchstart', '.list_item', function(e){
-                e.preventDefault();
-                var id = $(this).find('input[name="msb_id"]').val();
-                var type = $(this).find('input[name="msb_type"]').val();
-                $('.list_item.active').removeClass('active');
-                $(this).addClass('active');
-                self.setMarkerID(id)
-                self.setMarkerType(type);
-            })
-            $('#msb_serch').on('keyup', function(){
-                $.post('<?php if (!is_multisite()) { echo admin_url(); } else { echo get_admin_url(); } ?>admin-ajax.php?action=get_mm_list&q='+$(this).val(), function(data){
-                        $('.list_item').remove();
-                        $('#msb_listContainer').append(data);
-                })
-            })
-        },
-        setMarkerID : function(id) {
-            selectMarkerBox.markerID = id;
-        },
-        setMarkerType : function(type) {
-            switch (type)
-            {
-                case 'layer':
-                    selectMarkerBox.mapsmarkerType = 'layer';
-                    break;
-                case 'marker':
-                    selectMarkerBox.mapsmarkerType = 'marker';
-                    break;
-            }
-        },
-        getShortCode : function(){
-          return '[mapsmarker '+ selectMarkerBox.mapsmarkerType +'="'+ selectMarkerBox.markerID +'"]';
-        },
-        insert : function() {
-            if(typeof(tinyMCEPopup) !== 'undefined')
-            tinyMCEPopup.editor.execCommand('mceInsertContent', false, selectMarkerBox.getShortCode());
-            else
-            $('#content', parent.document.body).insertAtCaret(selectMarkerBox.getShortCode());
-        },
-        insertMarker : function() {
-            return;
-        },
-        insertList : function() {
-            return;
-        },
-        close : function() {
-            if(typeof(tinyMCEPopup) !== 'undefined')
-            tinyMCEPopup.close();
-            else
-            window.parent.jQuery('#modal-content').wpdialog('close');
-        }
-    }
-    selectMarkerBox.init();
-})(jQuery)
-</script>
-</body>
-</html>
-<?php
-exit;
+			init : function(){
+				var self = selectMarkerBox;
+				$('#msb_insertMarkerSC').on('click', function(e){
+					e.preventDefault();
+					self.insert();
+					parent.tb_remove();
+
+				})
+				$('#msb_cancel').on('click', function(e){
+					e.preventDefault();
+					parent.tb_remove();
+				})
+				$(document).on('click touchstart', '.list_item', function(e){
+					e.preventDefault();
+					var id = $(this).find('input[name="msb_id"]').val();
+					var type = $(this).find('input[name="msb_type"]').val();
+					$('.list_item.active').removeClass('active');
+					$(this).addClass('active');
+					$('#submit-disabled').hide();
+					$('#submit-enabled').show();
+					self.setMarkerID(id)
+					self.setMarkerType(type);
+				})
+				$(document).on('click touchstart', '.preview', function(e){
+					e.preventDefault();
+					var url = $(this).attr('href');
+					var map_type = $(this).attr('alt');
+					window.open(url, '_blank');
+				})
+				$('#msb_search').on('keyup', function(){
+					<?php $noncelink_map_search = wp_create_nonce('map-search-nonce'); ?>
+					$.post('<?php if (!is_multisite()) { echo admin_url(); } else { echo get_admin_url(); } ?>admin-ajax.php?action=get_mm_list&map_search_nonce=<?php echo $noncelink_map_search; ?>&q='+$(this).val(), function(data){
+							$('.list_item').remove();
+							$('#msb_listContainer').append(data);
+					})
+				})
+			},
+			setMarkerID : function(id) {
+				selectMarkerBox.markerID = id;
+			},
+			setMarkerType : function(type) {
+				switch (type)
+				{
+					case 'layer':
+						selectMarkerBox.mapsmarkerType = 'layer';
+						break;
+					case 'marker':
+						selectMarkerBox.mapsmarkerType = 'marker';
+						break;
+				}
+			},
+			getShortCode : function(){
+			  return '[mapsmarker '+ selectMarkerBox.mapsmarkerType +'="'+ selectMarkerBox.markerID +'"]';
+			},
+			insert : function() {
+				<?php
+					if ( get_user_option("rich_editing") == "true" ) {
+						echo "$('#content', parent.document.body).insertAtCaret(selectMarkerBox.getShortCode());";
+						if ( version_compare( $wp_version, '3.9-alpha', '>=' ) ) { 
+							echo "window.parent.tinyMCE.get('content').insertContent(selectMarkerBox.getShortCode());";
+						} else {
+							echo "window.parent.tinyMCE.activeEditor.execCommand('mceInsertContent', false, selectMarkerBox.getShortCode());";
+						}
+					} else {
+						echo "$('#content', parent.document.body).insertAtCaret(selectMarkerBox.getShortCode());";
+					} 
+				?>
+			},
+			insertMarker : function() {
+				return;
+			},
+			insertList : function() {
+				return;
+			},
+			close : function() {
+				parent.tb_remove();
+			}
+		}
+		selectMarkerBox.init();
+	})(jQuery)
+	</script>
+	</body>
+	</html>
+	<?php
+	exit;
 }
 function buildMarkersList($array){
-?>
-    <?php foreach($array as $one):
-		$date_prepare = strtotime($one['createdon']);
+	foreach($array as $one):
+		$date_prepare = strtotime($one['updatedon']);
 		$date = date("Y/m/d", $date_prepare);
 		if ($one['name'] == NULL) {
 			$name = '(ID '. $one['id'].')';
+			$name_title = '(ID '. $one['id'].')';
 		} else {
-			$name = $one['name'] . ' (ID '. $one['id'].')';
+			$name = '<strong>' . stripslashes(htmlspecialchars($one['name'])) . '</strong> (ID '. $one['id'].')';
+			$name_title = stripslashes(htmlspecialchars($one['name'])) . ' (ID '. $one['id'].')';
 		}
 
 		if ($one['type'] == 'marker') {
-			$maptype = __('Marker','lmm'). '<br/>ID '. $one['id'];
+			$title = __('Marker','lmm'). ' ID ' . $one['id'];
+			if ($one['icon'] == NULL) {
+				$list_entry = '<img src="' . LEAFLET_PLUGIN_URL  . '/leaflet-dist/images/marker.png" title="' . $title . '" />';
+			} else {
+				$list_entry = '<img src="' . LEAFLET_PLUGIN_ICONS_URL . '/' . $one['icon'] . '" title="' . $title . '"/>';
+			}
 		} else {
-			$maptype = __('Layer','lmm'). ' <br/>ID '. $one['id'];
+			$title = __('Layer','lmm'). ' ID ' . $one['id'];
+			$list_entry = '<img class="layer" src="' . LEAFLET_PLUGIN_URL  . '/inc/img/icon-layer.png" title="' . $title . '" />';
 		}
 	?>
     <div class="list_item">
-	<table style="width:100%;"><tr>
-	<td style="width:55px;">
-		<span class="name" title="<?php esc_attr_e('map type and ID','lmm');?>"><?php echo $maptype; ?></span>
-	</td>
-	<td valign="top">
-        <span class="name" title="<?php esc_attr_e('name','lmm');?>"><strong><?php echo stripslashes(htmlspecialchars($one['name'])); ?></strong></span>
-	</td>
-	<td valign="top">
-		<span class="date" title="<?php esc_attr_e('created on','lmm');?>"><?php echo $date; ?></span>
-        <input type="hidden" value="<?php echo $one['type']?>" name="msb_type">
-        <input type="hidden" value="<?php echo $one['id']?>" name="msb_id">
-	</td></tr></table>
+	<table style="width:100%;">
+	<tr>
+		<td style="width:30px;">
+			<span class="name" title="<?php esc_attr_e('map type and ID','lmm');?>"><?php echo $list_entry; ?></span>
+		</td>
+		<td valign="top" title="<?php echo $name_title; ?>">
+        		<span class="name"><?php echo $name; ?></span>
+		</td>
+		<td valign="top" title="<?php esc_attr_e('updated on','lmm');?> <?php echo $date; ?> <?php _e('by','lmm'); ?> <?php echo $one['updatedby']?>">
+			<span class="date"><?php echo $date; ?></span>
+		</td>
+			<td valign="top" style="padding:0 5px;width:10px;">
+			<a class="preview" alt="<?php echo $one['type']; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_<?php echo $one['type']; ?>&id=<?php echo $one['id']; ?>" title="<?php esc_attr_e('open map in new window','lmm'); ?>" target="_blank"><img src="<?php echo LEAFLET_PLUGIN_URL; ?>/inc/img/icon-menu-external.png"/></a>	
+        		<input type="hidden" value="<?php echo $one['type']?>" name="msb_type">
+		        <input type="hidden" value="<?php echo $one['id']?>" name="msb_id">
+		</td>
+	</tr>
+	</table>
     </div>
-    <?php endforeach; ?>
-<?php
+    <?php endforeach; 
 }
 ?>

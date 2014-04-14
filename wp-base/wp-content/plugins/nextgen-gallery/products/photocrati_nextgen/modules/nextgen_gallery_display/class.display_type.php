@@ -13,7 +13,7 @@ class C_Display_Type extends C_DataMapper_Model
 {
 	var $_mapper_interface = 'I_Display_Type_Mapper';
 
-	function define($mapper, $properties, $context=FALSE)
+	function define($properties=array(), $mapper=FALSE, $context=FALSE)
 	{
 		parent::define($mapper, $properties, $context);
 		$this->add_mixin('Mixin_Display_Type_Validation');
@@ -27,7 +27,7 @@ class C_Display_Type extends C_DataMapper_Model
 	 * @param array|stdClass|C_Display_Type $properties
 	 * @param FALSE|string|array $context
 	 */
-	function initialize($mapper=FALSE, $properties=array())
+	function initialize($properties=array(), $mapper=FALSE, $context=FALSE)
 	{
 		// If no mapper was specified, then get the mapper
 		if (!$mapper) $mapper = $this->get_registry()->get_utility($this->_mapper_interface);
@@ -91,6 +91,6 @@ class Mixin_Display_Type_Instance_Methods extends Mixin
 	
 	function get_order()
 	{
-		return NEXTGEN_DISPLAY_PRIORITY_BASE;
+		return NGG_DISPLAY_PRIORITY_BASE;
 	}
 }

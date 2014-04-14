@@ -1,6 +1,6 @@
 <?php
 
-require_once(AWPCP_DIR . '/classes/helpers/page.php');
+require_once(AWPCP_DIR . '/includes/helpers/page.php');
 
 
 /**
@@ -21,7 +21,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     }
 
     public function url($params=array()) {
-        $url = awpcp_get_page_url('search-ads-page-name');
+        $url = awpcp_get_page_url( 'search-ads-page-name', true );
         return add_query_arg($params, $url);
     }
 
@@ -63,12 +63,10 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
             'name' => awpcp_request_param('searchname'),
             'min_price' => awpcp_parse_money( awpcp_request_param( 'searchpricemin' ) ),
             'max_price' => awpcp_parse_money( awpcp_request_param( 'searchpricemax' ) ),
-            'country' => awpcp_request_param('searchcountry'),
-            'state' => awpcp_request_param('searchstate'),
-            'city' => awpcp_request_param('searchcity'),
-            'county' => awpcp_request_param('searchcountyvillage')
+            'regions' => awpcp_request_param('regions'),
         );
 
+        $data = stripslashes_deep( $data );
         $data = apply_filters( 'awpcp-get-posted-data', $data, 'search' );
 
         return $data;
@@ -108,6 +106,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
         $ui['module-extra-fields'] = $hasextrafieldsmodule;
         $ui['posted-by-field'] = get_awpcp_option('displaypostedbyfield');
         $ui['price-field'] = get_awpcp_option('displaypricefield');
+        $ui['allow-user-to-search-in-multiple-regions'] = get_awpcp_option('allow-user-to-search-in-multiple-regions');
 
         $messages = $this->messages;
         $hidden = array('a' => 'dosearch');
@@ -129,7 +128,6 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
             return $this->search_form($form, $errors);
         }
 
-
         // build a link to hold all query parameters
         $params = array_merge(stripslashes_deep($_REQUEST), array('a' => 'searchads'));
         $href = add_query_arg(urlencode_deep($params), awpcp_current_url());
@@ -139,8 +137,12 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
         $conditions = array('disabled = 0');
 
         if (!empty($form['query'])) {
-            $sql = 'MATCH (ad_title, ad_details) AGAINST (%s IN BOOLEAN MODE)';
-            $conditions[] = $wpdb->prepare($sql, $form['query']);
+            // $sql = 'MATCH (ad_title, ad_details) AGAINST (%s IN BOOLEAN MODE)';
+            // $conditions[] = $wpdb->prepare( $sql, $form['query'] );
+            if (!$hasextrafieldsmodule) {
+                $conditions[] = sprintf( "ad_title LIKE '%%%s%%' OR ad_details LIKE '%%%s%%'", $form['query'], $form['query'] );
+            }
+            // If user has extra fields module, we'll set this condition later inside the module logic.
         }
 
         if (!empty($form['name'])) {
@@ -152,43 +154,27 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
             $conditions[] = $wpdb->prepare($sql, $form['category']);
         }
 
-        if (!empty($form['min_price'])) {
+        if ( strlen( $form['min_price'] ) > 0 ) {
             $price = $form['min_price'] * 100;
             $conditions[] = $wpdb->prepare('ad_item_price >= %d', $price);
         }
 
-        if (!empty($form['max_price'])) {
+        if ( strlen( $form[ 'max_price' ] ) > 0 ) {
             $price = $form['max_price'] * 100;
             $conditions[] = $wpdb->prepare('ad_item_price <= %d', $price);
         }
 
-        $fields = array(
-            'city' => 'ad_city',
-            'county' => 'ad_county_village',
-            'state' => 'ad_state',
-            'country' => 'ad_country'
-        );
-
-        foreach ($fields as $field => $column) {
-            if (!empty($form[$field])) {
-                if (is_array($form[$field])) {
-                    $conditions[] = $wpdb->prepare("{$column} IN (%s)", join(',', $cities));
-                } else {
-                    $conditions[] = sprintf("{$column} LIKE '%%%s%%'", $wpdb->escape($form[$field]));
-                }
-            }
-        }
-
+        $conditions = array_merge( $conditions, awpcp_regions_search_conditions( $form[ 'regions' ] ) );
         $where = join(' AND ', $conditions);
 
         // Is the extra fields module present with the required search builder function?
         // If so call the "where clause" builder function
         if ($hasextrafieldsmodule == 1 && function_exists('build_extra_fields_search_where')) {
-            $where .=  build_extra_fields_search_where();
+            $where .= build_extra_fields_search_where();
         }
 
         $order = get_awpcp_option( 'search-results-order' );
 
-        return awpcp_display_ads( $where, '', '', $order, 'ad' );
+        return awpcp_display_ads( $where, '', '', $order, 'search' );
     }
 }

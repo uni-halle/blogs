@@ -67,15 +67,12 @@ class Class_leaflet_options {
 		$this->sections['mapdefaults-section18']	= esc_attr__('Marker clustering settings','lmm');
 		$this->sections['mapdefaults-section19']	= esc_attr__('GPX tracks settings','lmm');
 
-		$this->sections['basemaps-section1']		= esc_attr__('Cloudmade 1 settings','lmm');
-		$this->sections['basemaps-section2']		= esc_attr__('Cloudmade 2 settings','lmm');
-		$this->sections['basemaps-section3']		= esc_attr__('Cloudmade 3 settings','lmm');
-		$this->sections['basemaps-section4']		= esc_attr__('MapBox 1 settings','lmm');
-		$this->sections['basemaps-section5']		= esc_attr__('MapBox 2 settings','lmm');
-		$this->sections['basemaps-section6']		= esc_attr__('MapBox 3 settings','lmm');
-		$this->sections['basemaps-section7']		= esc_attr__('Custom basemap 1 settings','lmm');
-		$this->sections['basemaps-section8']		= esc_attr__('Custom basemap 2 settings','lmm');
-		$this->sections['basemaps-section9']		= esc_attr__('Custom basemap 3 settings','lmm');
+		$this->sections['basemaps-section1']		= esc_attr__('MapBox 1 settings','lmm');
+		$this->sections['basemaps-section2']		= esc_attr__('MapBox 2 settings','lmm');
+		$this->sections['basemaps-section3']		= esc_attr__('MapBox 3 settings','lmm');
+		$this->sections['basemaps-section4']		= esc_attr__('Custom basemap 1 settings','lmm');
+		$this->sections['basemaps-section5']		= esc_attr__('Custom basemap 2 settings','lmm');
+		$this->sections['basemaps-section6']		= esc_attr__('Custom basemap 3 settings','lmm');
 
 		$this->sections['overlays-section1']		= esc_attr__('Available overlays for new markers/layers','lmm');
 		$this->sections['overlays-section2']		= esc_attr__('Custom overlay settings','lmm');
@@ -240,7 +237,7 @@ class Class_leaflet_options {
         }
 		echo '</div>'; // tab-content
 		echo '</div>'; // tabs-top
-		echo '<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . __( 'Save Changes','lmm' ) . '" /></p>
+		echo '<p class="submit"><input id="submit" name="Submit" type="submit" class="button-primary" value="' . __( 'Save Changes','lmm' ) . '" /></p>
 
 	</form>';
 
@@ -283,6 +280,21 @@ class Class_leaflet_options {
 			//info:  Browser compatibility
 			if ($.browser.mozilla)
 			         $("form").attr("autocomplete", "off");
+
+			//info: warn on unsaved changes when leaving page
+			var unsaved = false;
+			$(":input").change(function(){
+				unsaved = true;
+			});
+			$("#submit, #s2id_lmm-select-search-tabs").click(function() {
+				unsaved = false;
+			});
+			function unloadPage(){ 
+				if(unsaved){
+					return "' . esc_attr__('You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?','lmm') . '";
+				}
+			}
+			window.onbeforeunload = unloadPage;	
 		});
 	</script></div>';
 		?>
@@ -511,9 +523,6 @@ class Class_leaflet_options {
 				'bingroad' => __('Bing Maps (Road)','lmm') . ' - <strong>' . __('API key required!','lmm'). '</strong> <a href="http://www.mapsmarker.com/bing-maps" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>',
 				'ogdwien_basemap' => __('OGD Vienna basemap (max zoom 19)','lmm'),
 				'ogdwien_satellite' => __('OGD Vienna satellite (max zoom 19)','lmm'),
-				'cloudmade' => 'Cloudmade - <strong>' . __('API key required!','lmm') . '</strong> <a href="http://www.mapsmarker.com/cloudmade-maps" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>',
-				'cloudmade2' => 'Cloudmade 2 - <strong>' . __('API key required!','lmm') . '</strong> <a href="http://www.mapsmarker.com/cloudmade-maps" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>',
-				'cloudmade3' => 'Cloudmade 3 - <strong>' . __('API key required!','lmm') . '</strong> <a href="http://www.mapsmarker.com/cloudmade-maps" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>',
 				'mapbox' => 'MapBox 1',
 				'mapbox2' => 'MapBox 2',
 				'mapbox3' => 'MapBox 3',
@@ -522,6 +531,15 @@ class Class_leaflet_options {
 				'custom_basemap3' => __('Custom basemap 3','lmm'),
 				'empty_basemap' => __('empty basemap','lmm')
 			)
+		);
+		$this->_settings['global_maxzoom_level'] = array(
+			'version' => 'p1.5',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section1',
+			'title'   => __('Global maximum zoom level','lmm') . $pro_button_link,
+			'desc'    => __('If the native maximum zoom level of a basemap is lower, tiles will be upscaled automatically.','lmm'),
+			'std'     => '21',
+			'type'    => 'text-pro'
 		);
 		/*
 		* Names for default basemaps
@@ -641,33 +659,6 @@ class Class_leaflet_options {
 			'title'   => 'OGD Vienna satellite',
 			'desc'    => '',
 			'std'     => 'OGD Vienna satellite',
-			'type'    => 'text'
-		);
-		$this->_settings['cloudmade_name'] = array(
-			'version' => '1.6',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-section2',
-			'title'   => 'Cloudmade',
-			'desc'    => '',
-			'std'     => 'Cloudmade',
-			'type'    => 'text'
-		);
-		$this->_settings['cloudmade2_name'] = array(
-			'version' => '1.6',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-section2',
-			'title'   => 'Cloudmade 2',
-			'desc'    => '',
-			'std'     => 'Cloudmade 2',
-			'type'    => 'text'
-		);
-		$this->_settings['cloudmade3_name'] = array(
-			'version' => '1.6',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-section2',
-			'title'   => 'Cloudmade 3',
-			'desc'    => '',
-			'std'     => 'Cloudmade 3',
 			'type'    => 'text'
 		);
 		$this->_settings['mapbox_name'] = array(
@@ -850,33 +841,6 @@ class Class_leaflet_options {
 			'section' => 'mapdefaults-section3',
 			'title'   => '',
 			'desc'    => __('OGD Vienna satellite','lmm'),
-			'type'    => 'checkbox',
-			'std'     => 0
-		);
-		$this->_settings['controlbox_cloudmade'] = array(
-			'version' => '1.6',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-section3',
-			'title'   => '',
-			'desc'    => 'Cloudmade',
-			'type'    => 'checkbox',
-			'std'     => 0
-		);
-		$this->_settings['controlbox_cloudmade2'] = array(
-			'version' => '1.6',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-section3',
-			'title'   => '',
-			'desc'    => 'Cloudmade 2',
-			'type'    => 'checkbox',
-			'std'     => 0
-		);
-		$this->_settings['controlbox_cloudmade3'] = array(
-			'version' => '1.6',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-section3',
-			'title'   => '',
-			'desc'    => 'Cloudmade 3',
 			'type'    => 'checkbox',
 			'std'     => 0
 		);
@@ -1507,14 +1471,14 @@ class Class_leaflet_options {
 			'std'     => '160',
 			'type'    => 'text-deletable'
 		);
-		$this->_settings['defaults_marker_popups_image_max_width'] = array(
-			'version' => '2.7.1',
+		$this->_settings['defaults_marker_popups_image_css'] = array(
+			'version' => '3.8.7',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section6',
-			'title'   => __('maximum image width (px)','lmm'),
-			'desc'    => __( 'Reduce image width in popups automatically to the given value in pixel (only if is wider). The height of the images gets reduced by the according ratio automatically (this feature only works if your theme supports the wp_head()-hook).', 'lmm' ),
-			'std'     => '230',
-			'type'    => 'text'
+			'title'   => __('CSS for images in popups','lmm'),
+			'desc'    => __( 'Gets added to .leaflet-popup-content img {...} - use max-width to reduce the image width in popups automatically to the given value in pixel (only if it is wider). The height of the images gets reduced by the according ratio automatically.', 'lmm' ),
+			'std'     => 'max-width:234px !important; height:auto; width:auto !important;',
+			'type'    => 'text-deletable'
 		);
 		$this->_settings['defaults_marker_popups_autopan'] = array(
 			'version' => '2.7.1',
@@ -1537,6 +1501,19 @@ class Class_leaflet_options {
 			'desc'    => __('Controls the presence of a close button in popups.','lmm'),
 			'type'    => 'radio',
 			'std'     => 'true',
+			'choices' => array(
+				'true' => __('true','lmm'),
+				'false' => __('false','lmm')
+			)
+		);
+		$this->_settings['defaults_marker_popups_add_markername'] = array(
+			'version' => 'p1.5.8',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section6',
+			'title'   => __('add markername to popup','lmm') . $pro_button_link,
+			'desc'    => __('If set to true, the marker name gets added to the top of the popup automatically','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'false',
 			'choices' => array(
 				'true' => __('true','lmm'),
 				'false' => __('false','lmm')
@@ -1593,9 +1570,6 @@ class Class_leaflet_options {
 				'bingroad' => __('Bing Maps (Road)','lmm') . ' - <strong>' . __('API key required!','lmm'). '</strong> <a href="http://www.mapsmarker.com/bing-maps" target="_blank"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-question-mark.png" width="12" height="12" border="0"/></a>',
 				'ogdwien_basemap' => __('OGD Vienna basemap (max zoom 19)','lmm'),
 				'ogdwien_satellite' => __('OGD Vienna satellite (max zoom 19)','lmm'),
-				'cloudmade' => 'Cloudmade',
-				'cloudmade2' => 'Cloudmade 2',
-				'cloudmade3' => 'Cloudmade 3',
 				'custom_basemap' => __('Custom basemap','lmm'),
 				'custom_basemap2' => __('Custom basemap 2','lmm'),
 				'custom_basemap3' => __('Custom basemap 3','lmm')
@@ -2260,15 +2234,6 @@ class Class_leaflet_options {
 			'type'    => 'checkbox',
 			'std'     => 0
 		);
-		$this->_settings['defaults_layer_listmarkers_extracss'] = array(
-			'version' => '3.1',
-			'pane'    => 'mapdefaults',
-			'section' => 'mapdefaults-section9',
-			'title'   => __( 'Extra CSS for table cells', 'lmm' ),
-			'desc'    => __( 'example: <strong>padding:20px 0 !important;</strong> increases the default padding between list entries', 'lmm' ),
-			'std'     => '',
-			'type'    => 'text'
-		);
 		/*
 		* Interaction options
 		* formerly "General map settings" and moved to "Basemaps" from "Misc" tab
@@ -2547,7 +2512,7 @@ class Class_leaflet_options {
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section13',
 			'title'   => __('Fullscreen button','lmm') . $pro_button_link,
-			'desc'    => __('Whether to add a button for displaying maps in fullscreen via HTML5','lmm') . '<br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-fullscreen.png" width="77" height="107" /><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>',
+			'desc'    => __('Whether to add a button for displaying maps in fullscreen via HTML5','lmm') . '<br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-fullscreen.png" width="83" height="115" /><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>',
 			'type'    => 'radio-pro',
 			'std'     => 'false',
 			'choices' => array(
@@ -3582,102 +3547,12 @@ $this->_settings['clustering_helptext2'] = array(
 		*
 		===========================================*/
 		/*
-		* Cloudmade settings
-		*/
-		$this->_settings['cloudmade_helptext'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section1',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => __( 'Tutorial for Cloudmade configuration:', 'lmm').'<a href="http://mapsmarker.com/cloudmade" target="_blank">http://mapsmarker.com/cloudmade</a>. ' . __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-cloudmade.jpg" width="411" height="261" />',
-			'type'    => 'helptext'
-		);
-		$this->_settings['cloudmade_api_key'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section1',
-			'title'   => __( 'API key', 'lmm' ),
-			'desc'    => '',
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['cloudmade_styleid'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section1',
-			'title'   => 'styleID',
-			'desc'    => '',
-			'std'     => '',
-			'type'    => 'text'
-		);
-		/*
-		* Cloudmade 2 settings
-		*/
-		$this->_settings['cloudmade2_helptext'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section2',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => __( 'Tutorial for Cloudmade configuration:', 'lmm').'<a href="http://mapsmarker.com/cloudmade" target="_blank">http://mapsmarker.com/cloudmade</a>. ' . __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-cloudmade.jpg" width="411" height="261" />',
-			'type'    => 'helptext'
-		);
-		$this->_settings['cloudmade2_api_key'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section2',
-			'title'   => __( 'API key', 'lmm' ),
-			'desc'    => '',
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['cloudmade2_styleid'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section2',
-			'title'   => 'styleID',
-			'desc'    => '',
-			'std'     => '',
-			'type'    => 'text'
-		);
-		/*
-		* Cloudmade 3 settings
-		*/
-		$this->_settings['cloudmade3_helptext'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section3',
-			'std'     => '',
-			'title'   => '',
-			'desc'    => __( 'Tutorial for Cloudmade configuration:', 'lmm').'<a href="http://mapsmarker.com/cloudmade" target="_blank">http://mapsmarker.com/cloudmade</a>. ' . __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-cloudmade.jpg" width="411" height="261" />',
-			'type'    => 'helptext'
-		);
-		$this->_settings['cloudmade3_api_key'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section3',
-			'title'   => __( 'API key', 'lmm' ),
-			'desc'    => '',
-			'std'     => '',
-			'type'    => 'text'
-		);
-		$this->_settings['cloudmade3_styleid'] = array(
-			'version' => '1.6',
-			'pane'    => 'basemaps',
-			'section' => 'basemaps-section3',
-			'title'   => 'styleID',
-			'desc'    => '',
-			'std'     => '',
-			'type'    => 'text'
-		);
-		/*
 		* MapBox settings
 		*/
 		$this->_settings['mapbox_helptext'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section4',
+			'section' => 'basemaps-section1',
 			'std'     => '',
 			'title'   => '',
 			'desc'    => __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
@@ -3686,7 +3561,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox_user'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section4',
+			'section' => 'basemaps-section1',
 			'title'   => __( 'User', 'lmm' ),
 			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/<strong>mapbox</strong>/map/blue-marble-topo-jul',
 			'std'     => 'mapbox',
@@ -3695,7 +3570,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox_map'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section4',
+			'section' => 'basemaps-section1',
 			'title'   => __('map','lmm'),
 			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/mapbox/map/<strong>blue-marble-topo-jul</strong>',
 			'std'     => 'blue-marble-topo-jul',
@@ -3704,7 +3579,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox_minzoom'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section4',
+			'section' => 'basemaps-section1',
 			'title'   => __('Minimum zoom level','lmm'),
 			'desc'    => '',
 			'std'     => '0',
@@ -3713,7 +3588,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox_maxzoom'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section4',
+			'section' => 'basemaps-section1',
 			'title'   => __('Maximum zoom level','lmm'),
 			'desc'    => '',
 			'std'     => '8',
@@ -3722,7 +3597,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox_attribution'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section4',
+			'section' => 'basemaps-section1',
 			'title'   => __('Attribution','lmm'),
 			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;",
 			'std'     => "MapBox/NASA, <a href=&quot;http://www.mapbox.com&quot; target=&quot;_blank&quot;>http://www.mapbox.com</a>",
@@ -3734,7 +3609,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox2_helptext'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section5',
+			'section' => 'basemaps-section2',
 			'std'     => '',
 			'title'   => '',
 			'desc'    => __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
@@ -3743,7 +3618,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox2_user'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section5',
+			'section' => 'basemaps-section2',
 			'title'   => __( 'User', 'lmm' ),
 			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/<strong>mapbox</strong>/map/geography-class',
 			'std'     => 'mapbox',
@@ -3752,7 +3627,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox2_map'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section5',
+			'section' => 'basemaps-section2',
 			'title'   => __('map','lmm'),
 			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/mapbox/map/<strong>geography-class</strong>',
 			'std'     => 'geography-class',
@@ -3761,7 +3636,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox2_minzoom'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section5',
+			'section' => 'basemaps-section2',
 			'title'   => __('Minimum zoom level','lmm'),
 			'desc'    => '',
 			'std'     => '0',
@@ -3770,7 +3645,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox2_maxzoom'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section5',
+			'section' => 'basemaps-section2',
 			'title'   => __('Maximum zoom level','lmm'),
 			'desc'    => '',
 			'std'     => '8',
@@ -3779,7 +3654,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox2_attribution'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section5',
+			'section' => 'basemaps-section2',
 			'title'   => __('Attribution','lmm'),
 			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;",
 			'std'     => "MapBox, <a href=&quot;http://www.mapbox.com&quot; target=&quot;_blank&quot;>http://www.mapbox.com</a>",
@@ -3791,7 +3666,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox3_helptext'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section6',
+			'section' => 'basemaps-section3',
 			'std'     => '',
 			'title'   => '',
 			'desc'    => __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
@@ -3800,7 +3675,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox3_user'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section6',
+			'section' => 'basemaps-section3',
 			'title'   => __( 'User', 'lmm' ),
 			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/<strong>mapbox</strong>/map/mapbox-streets',
 			'std'     => 'mapbox',
@@ -3809,7 +3684,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox3_map'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section6',
+			'section' => 'basemaps-section3',
 			'title'   => __('map','lmm'),
 			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/mapbox/map/<strong>mapbox-streets</strong>',
 			'std'     => 'mapbox-streets',
@@ -3818,7 +3693,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox3_minzoom'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section6',
+			'section' => 'basemaps-section3',
 			'title'   => __('Minimum zoom level','lmm'),
 			'desc'    => '',
 			'std'     => '0',
@@ -3827,7 +3702,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox3_maxzoom'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section6',
+			'section' => 'basemaps-section3',
 			'title'   => __('Maximum zoom level','lmm'),
 			'desc'    => '',
 			'std'     => '17',
@@ -3836,7 +3711,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['mapbox3_attribution'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section6',
+			'section' => 'basemaps-section3',
 			'title'   => __('Attribution','lmm'),
 			'desc'    => __("For example","lmm"). ": Copyright ".date('Y')." &lt;a href=&quot;http://xy.com&quot;&gt;Provider X&lt;/a&gt;",
 			'std'     => "MapBox, <a href=&quot;http://www.mapbox.com&quot; target=&quot;_blank&quot;>http://www.mapbox.com</a>",
@@ -3848,7 +3723,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_helptext'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'std'     => '',
 			'title'   => '',
 			'desc'    => __( 'Please enter settings for custom basemap', 'lmm').' (custom 1). ' . __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-custom-basemaps.jpg" width="411" height="261" />',
@@ -3857,7 +3732,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_tileurl'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __( 'Tiles URL', 'lmm' ),
 			'desc'    => __("For example","lmm"). ": http://tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
 			'std'     => 'http://tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
@@ -3866,7 +3741,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_attribution'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __( 'Attribution', 'lmm' ),
 			'desc'    => __("For example","lmm"). ": &copy; &lt;a href=&quot;http://openstreetmap.org/&quot;&gt;OpenStreetMap contributors&lt;/a&gt; CC-BY-SA",
 			'std'	  => "&copy; <a href=&quot;http://openstreetmap.org/&quot; target=&quot;_blank&quot;>OpenStreetMap contributors</a>, <a href=&quot;http://creativecommons.org/licenses/by-sa/2.0/&quot; target=&quot;_blank&quot;>CC-BY-SA</a>",
@@ -3875,7 +3750,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_minzoom'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __( 'Minimum zoom level', 'lmm' ),
 			'desc'    => __('Note: maximum zoom level may vary on your basemap','lmm'),
 			'std'     => '1',
@@ -3884,7 +3759,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_maxzoom'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __( 'Maximum zoom level', 'lmm' ),
 			'desc'    => __('Note: maximum zoom level may vary on your basemap','lmm'),
 			'std'     => '17',
@@ -3893,7 +3768,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_tms'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => 'tms',
 			'desc'    => __('If true, inverses Y axis numbering for tiles (turn this on for TMS services).','lmm'),
 			'type'    => 'radio',
@@ -3906,7 +3781,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_subdomains_enabled'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __('Support for subdomains?','lmm'),
 			'desc'    => __('Will replace {s} from tiles url if available','lmm'),
 			'type'    => 'radio',
@@ -3919,7 +3794,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_subdomains_names'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __( 'Subdomain names', 'lmm' ),
 			'desc'    => __('For example','lmm'). ": &quot;a&quot;, &quot;b&quot;, &quot;c&quot;",
 			'std'     => '&quot;a&quot;, &quot;b&quot;, &quot;c&quot;',
@@ -3928,7 +3803,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_continuousworld_enabled'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __('Enable continuousWorld?','lmm'),
 			'desc'    => __('If set to true, the tile coordinates will not be wrapped by world width (-180 to 180 longitude) or clamped to lie within world height (-90 to 90). Use this if you use Leaflet for maps that do not reflect the real world (e.g. game, indoor or photo maps).','lmm'),
 			'type'    => 'radio',
@@ -3941,7 +3816,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_nowrap_enabled'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __('Enable nowrap?','lmm'),
 			'desc'    => __('If set to true, the tiles just will not load outside the world width (-180 to 180 longitude) instead of repeating.','lmm'),
 			'type'    => 'radio',
@@ -3954,7 +3829,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap_errortileurl'] = array(
 			'version' => '3.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section7',
+			'section' => 'basemaps-section4',
 			'title'   => __('Show errorTile-images if map could not be loaded?','lmm'),
 			'desc'    => __('Set to false if you want to use basemaps produced with maptiler for example','lmm'),
 			'type'    => 'radio',
@@ -3970,7 +3845,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_helptext'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'std'     => '',
 			'title'   => '',
 			'desc'    => __( 'Please enter settings for custom basemap', 'lmm').' (custom 2). ' . __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-custom-basemaps.jpg" width="411" height="261" />',
@@ -3979,7 +3854,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_tileurl'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __( 'Tiles URL', 'lmm' ),
 			'desc'    => __("For example","lmm"). ": http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg",
 			'std'     => 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
@@ -3988,7 +3863,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_attribution'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __( 'Attribution', 'lmm' ),
 			'desc'    => __("For example","lmm"). ":  Map tiles: &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt;. Data: &lt;a href=&quot;http://openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by-sa/3.0&quot;&gt;CC BY SA&lt;/a&gt;",
 			'std'     => "Map tiles: <a href=&quot;http://stamen.com&quot; target=&quot;_blank&quot;>Stamen Design</a>, <a href=&quot;http://creativecommons.org/licenses/by/3.0&quot; target=&quot;_blank&quot;>CC BY 3.0</a>. Data: <a href=&quot;http://openstreetmap.org&quot; target=&quot;_blank&quot;>OpenStreetMap</a>, <a href=&quot;http://creativecommons.org/licenses/by-sa/3.0&quot; target=&quot;_blank&quot;>CC BY SA</a>",
@@ -3997,7 +3872,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_minzoom'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __( 'Minimum zoom level', 'lmm' ),
 			'desc'    => __('Note: maximum zoom level may vary on your basemap','lmm'),
 			'std'     => '1',
@@ -4006,7 +3881,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_maxzoom'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __( 'Maximum zoom level', 'lmm' ),
 			'desc'    => __('Note: maximum zoom level may vary on your basemap','lmm'),
 			'std'     => '17',
@@ -4015,7 +3890,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_tms'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => 'tms',
 			'desc'    => __('If true, inverses Y axis numbering for tiles (turn this on for TMS services).','lmm'),
 			'type'    => 'radio',
@@ -4028,7 +3903,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_subdomains_enabled'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __('Support for subdomains?','lmm'),
 			'desc'    => __('Will replace {s} from tiles url if available','lmm'),
 			'type'    => 'radio',
@@ -4041,7 +3916,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_subdomains_names'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __( 'Subdomain names', 'lmm' ),
 			'desc'    => __('For example','lmm'). ": &quot;a&quot;, &quot;b&quot;, &quot;c&quot;",
 			'std'     => '&quot;a&quot;, &quot;b&quot;, &quot;c&quot;',
@@ -4050,7 +3925,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_continuousworld_enabled'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __('Enable continuousWorld?','lmm'),
 			'desc'    => __('If set to true, the tile coordinates will not be wrapped by world width (-180 to 180 longitude) or clamped to lie within world height (-90 to 90). Use this if you use Leaflet for maps that do not reflect the real world (e.g. game, indoor or photo maps).','lmm'),
 			'type'    => 'radio',
@@ -4063,7 +3938,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_nowrap_enabled'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __('Enable nowrap?','lmm'),
 			'desc'    => __('If set to true, the tiles just will not load outside the world width (-180 to 180 longitude) instead of repeating.','lmm'),
 			'type'    => 'radio',
@@ -4076,7 +3951,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap2_errortileurl'] = array(
 			'version' => '3.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section8',
+			'section' => 'basemaps-section5',
 			'title'   => __('Show errorTile-images if map could not be loaded?','lmm'),
 			'desc'    => __('Set to false if you want to use basemaps produced with maptiler for example','lmm'),
 			'type'    => 'radio',
@@ -4092,7 +3967,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_helptext'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'std'     => '',
 			'title'   => '',
 			'desc'    => __( 'Please enter settings for custom basemap', 'lmm').' (custom 3). ' . __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-custom-basemaps.jpg" width="411" height="261" />',
@@ -4101,7 +3976,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_tileurl'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __( 'Tiles URL', 'lmm' ),
 			'desc'    => __("For example","lmm"). ": http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png",
 			'std'     => 'http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png',
@@ -4110,7 +3985,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_attribution'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __( 'Attribution', 'lmm' ),
 			'desc'    => __("For example","lmm"). ": &copy Gravitystorm Ltd. &lt;a href=&quot;http://www.thunderforest.com&quot;&gt;Thunderforest&lt;/a&gt;",
 			'std'     => "&copy; Gravitystorm Ltd. <a href=&quot;http://www.thunderforest.com&quot; target=&quot;_blank&quot;>Thunderforest</a>",
@@ -4119,7 +3994,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_minzoom'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __( 'Minimum zoom level', 'lmm' ),
 			'desc'    => __('Note: maximum zoom level may vary on your basemap','lmm'),
 			'std'     => '1',
@@ -4128,7 +4003,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_maxzoom'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __( 'Maximum zoom level', 'lmm' ),
 			'desc'    => __('Note: maximum zoom level may vary on your basemap','lmm'),
 			'std'     => '18',
@@ -4137,7 +4012,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_tms'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => 'tms',
 			'desc'    => __('If true, inverses Y axis numbering for tiles (turn this on for TMS services).','lmm'),
 			'type'    => 'radio',
@@ -4150,7 +4025,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_subdomains_enabled'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __('Support for subdomains?','lmm'),
 			'desc'    => __('Will replace {s} from tiles url if available','lmm'),
 			'type'    => 'radio',
@@ -4163,7 +4038,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_subdomains_names'] = array(
 			'version' => '1.0',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __( 'Subdomain names', 'lmm' ),
 			'desc'    => __('For example','lmm'). ": &quot;a&quot;, &quot;b&quot;, &quot;c&quot;",
 			'std'     => '&quot;a&quot;, &quot;b&quot;, &quot;c&quot;',
@@ -4172,7 +4047,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_continuousworld_enabled'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __('Enable continuousWorld?','lmm'),
 			'desc'    => __('If set to true, the tile coordinates will not be wrapped by world width (-180 to 180 longitude) or clamped to lie within world height (-90 to 90). Use this if you use Leaflet for maps that do not reflect the real world (e.g. game, indoor or photo maps).','lmm'),
 			'type'    => 'radio',
@@ -4185,7 +4060,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_nowrap_enabled'] = array(
 			'version' => '2.7.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __('Enable nowrap?','lmm'),
 			'desc'    => __('If set to true, the tiles just will not load outside the world width (-180 to 180 longitude) instead of repeating.','lmm'),
 			'type'    => 'radio',
@@ -4198,7 +4073,7 @@ $this->_settings['clustering_helptext2'] = array(
 		$this->_settings['custom_basemap3_errortileurl'] = array(
 			'version' => '3.1',
 			'pane'    => 'basemaps',
-			'section' => 'basemaps-section9',
+			'section' => 'basemaps-section6',
 			'title'   => __('Show errorTile-images if map could not be loaded?','lmm'),
 			'desc'    => __('Set to false if you want to use basemaps produced with maptiler for example','lmm'),
 			'type'    => 'radio',
@@ -5013,7 +4888,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => '<a href="http://code.google.com/apis/kml/documentation/kmlreference.html#href" target="_blank">href</a>',
 			'desc'    => __('http-address of the KML-webservice of the WMS layer','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://data.wien.gv.at/daten/geoserver/ows?version=1.3.0&service=WMS&request=GetMap&crs=EPSG:4326&bbox=48.10,16.16,48.34,16.59&width=1&height=1&layers=ogdwien:OEFFWCOGD&styles=&format=application/vnd.google-earth.kml+xml'
+			'std'     => 'http://data.wien.gv.at/daten/geo?version=1.3.0&service=WMS&request=GetMap&crs=EPSG:4326&bbox=48.10,16.16,48.34,16.59&width=1&height=1&layers=ogdwien:WCANLAGEOGD&styles=&format=application/vnd.google-earth.kml+xml'
 		);
 		$this->_settings['wms_wms_kml_refreshMode'] = array(
 			'version' => '1.4.3',
@@ -5224,7 +5099,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => '<a href="http://code.google.com/apis/kml/documentation/kmlreference.html#href" target="_blank">href</a>',
 			'desc'    => __('http-address of the KML-webservice of the WMS layer','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://data.wien.gv.at/daten/geoserver/ows?version=1.3.0&service=WMS&request=GetMap&crs=EPSG:4326&bbox=48.10,16.16,48.34,16.59&width=1&height=1&layers=ogdwien:AUFZUGOGD&styles=&format=application/vnd.google-earth.kml+xml'
+			'std'     => 'http://data.wien.gv.at/daten/geo?version=1.3.0&service=WMS&request=GetMap&crs=EPSG:4326&bbox=48.10,16.16,48.34,16.59&width=1&height=1&layers=ogdwien:AUFZUGOGD&styles=&format=application/vnd.google-earth.kml+xml'
 		);
 		$this->_settings['wms_wms2_kml_refreshMode'] = array(
 			'version' => '1.4.3',
@@ -8402,6 +8277,7 @@ $this->_settings['clustering_helptext2'] = array(
 				'ja' => __('Japanese','lmm') . ' (ja)',
 				'ko_KR' => __('Korean','lmm') . ' (ko_KR)',
 				'lv' => __('Latvian','lmm') . ' (lv)',
+				'nb_NO' => __('Norwegian (Bokmål)','lmm') . ' (nb_NO)',
 				'pl_PL' => __('Polish','lmm') . ' (pl_PL)',
 				'pt_BR' => __('Portuguese','lmm') . ' - ' . __('Brazil','lmm') . ' (pt_BR)',
 				'pt_PT' => __('Portuguese','lmm') . ' - ' . __('Portugal','lmm') . ' (pt_PT)',
@@ -8413,6 +8289,7 @@ $this->_settings['clustering_helptext2'] = array(
 				'es_MX' => __('Spanish','lmm') . ' (es_MX)',
 				'tr_TR' => __('Turkish','lmm') . ' (tr_TR)',
 				'uk_UK' => __('Ukrainian','lmm') . ' (uk_UK)',
+				'vi' => __('Vietnamese','lmm') . ' (vi)',
 				'yi' => __('Yiddish','lmm') . ' (yi)'
 			)
 		);
@@ -9037,7 +8914,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'radio',
 			'std'     => 'visualead',
 			'choices' => array(
-				'visualead' => 'Visualead.com ' . __('(allows using a custom background for your QR codes)','lmm'),
+				'visualead' => 'Visualead',
 				'google' => 'Google'
 			)
 		);
@@ -9050,12 +8927,25 @@ $this->_settings['clustering_helptext2'] = array(
 			'desc'    =>  '<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-visualead.png" width="200" height="200" /><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>',
 			'type'    => 'helptext'
 		);
+		$this->_settings['qrcode_visualead_caching'] = array(
+			'version' => 'p1.5',
+			'pane'    => 'misc',
+			'section' => 'misc-section8',
+			'title'   => __('QR code caching','lmm') . $pro_button_link,
+			'desc'    => __('Save generated QR codes in the following directory for higher performance and for saving API calls:','lmm') . ' n/a<br/>' . __('Cached QR images will automatically be deleted if the according marker or layer map gets deleted!','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'disabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
+		);		
 		$this->_settings['qrcode_visualead_api_key'] = array(
 			'version' => 'p1.0',
 			'pane'    => 'misc',
 			'section' => 'misc-section8',
 			'title'   => __( 'API key', 'lmm' ) . $pro_button_link,
-			'desc'    => __('If empty, the (unlimited) API key from MapsMarker.com will be used','lmm'),
+			'desc'    => __('If empty, the default API key from MapsMarker.com will be used','lmm') . ' (' . __('valid for default image only!','lmm') . ')',
 			'std'     => '',
 			'type'    => 'text-pro'
 		);
@@ -9064,10 +8954,19 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section8',
 			'title'   => __( 'Image URL', 'lmm' ) . $pro_button_link,
-			'desc'    => sprintf(__( 'If empty, the default image url %s will be used', 'lmm' ),LEAFLET_PLUGIN_URL . 'inc/img/logo-qr-code.png'),
+			'desc'    => sprintf(__('A custom image can only be used if you sign up for a custom visualead API key! Please visit %s for more information.','lmm'), '<a href="http://www.mapsmarker.com/pro-feature-qrcode" target="_blank">mapsmarker.com/visualead</a>'),
 			'std'     => '',
 			'type'    => 'text-pro'
 		);
+		$this->_settings['qrcode_visualead_project_id'] = array(
+			'version' => 'p1.5',
+			'pane'    => 'misc',
+			'section' => 'misc-section8',
+			'title'   => 'project_id' . $pro_button_link,
+			'desc'    => sprintf(__('If a visualead project_id is given, the generate_from_project method will be used instead of the generate method for creating QR codes with custom images (please note that the image url from above will also be ignored if a project_id is set - the image from the project_id is used instead). To create a new project, please log into the <a href="%s" target="_blank">visualead admin dashboard</a>.','lmm'), 'http://api.visualead.com/v3'),
+			'std'     => '',
+			'type'    => 'text-pro'
+		);		
 		$this->_settings['qrcode_visualead_qr_size'] = array(
 			'version' => 'p1.0',
 			'pane'    => 'misc',
@@ -9131,12 +9030,38 @@ $this->_settings['clustering_helptext2'] = array(
 			'std'     => '',
 			'type'    => 'text-pro'
 		);
+		$this->_settings['qrcode_visualead_cells_type'] = array(
+			'version' => 'p1.5',
+			'pane'    => 'misc',
+			'section' => 'misc-section8',
+			'title'   => 'cells_type' . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => '1',
+			'choices' => array(
+				'1' => __('squared','lmm'),
+				'2' => __('rounded','lmm')
+			)
+		);
+		$this->_settings['qrcode_visualead_markers_type'] = array(
+			'version' => 'p1.5',
+			'pane'    => 'misc',
+			'section' => 'misc-section8',
+			'title'   => 'markers_type' . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => '1',
+			'choices' => array(
+				'1' => __('squared','lmm'),
+				'2' => __('rounded','lmm')
+			)
+		);
 		$this->_settings['qrcode_google_helptext'] = array(
 			'version' => 'p1.0',
 			'pane'    => 'misc',
 			'section' => 'misc-section8',
 			'std'     => '',
-			'title'   => '<strong>' . __('Google QR settings','lmm') . '</strong>',
+			'title'   => '<strong>' . __('Google QR settings','lmm') . '</strong><br/><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-google-qr.png" width="122" height="126" />',
 			'desc'    => '',
 			'type'    => 'helptext'
 		);
@@ -9158,16 +9083,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'misc-section9',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => sprintf(__('For more information on how to use the MapsMarker API, <a href="%1s" target="_blank">please visit the API docs on mapsmarker.com</a>','lmm'), 'http://www.mapsmarker.com/mapsmarker-api'),
-			'type'    => 'helptext'
-		);
-		$this->_settings['api_helptext2'] = array(
-			'version' => '3.6',
-			'pane'    => 'misc',
-			'section' => 'misc-section9',
-			'std'     => '',
-			'title'   => '',
-			'desc'    =>  '<strong>' . __('API endpoint','lmm') . ':</strong> ' . LEAFLET_PLUGIN_URL . 'leaflet-api.php<br/><br/>',
+			'desc'    => sprintf(__('For more information on how to use the MapsMarker API, <a href="%1s" target="_blank">please visit the API docs on mapsmarker.com</a>','lmm'), 'http://www.mapsmarker.com/mapsmarker-api') . '<br/><br/><br/><strong>' . __('API endpoint','lmm') . ':</strong> ' . LEAFLET_PLUGIN_URL . 'leaflet-api.php<br/><br/>',
 			'type'    => 'helptext'
 		);
 		$this->_settings['api_status'] = array(
@@ -9203,6 +9119,33 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('JSONP callback function name', 'lmm'),
 			'desc'    => sprintf(__('Used for JSON format only, allows to overcome the <a href="%1s" target="_blank">same origin policy</a> (can be overwritten by parameter callback on each API request)','lmm'), 'http://en.wikipedia.org/wiki/JSONP'),
 			'std'     => 'jsonp',
+			'type'    => 'text'
+		);
+		$this->_settings['api_helptext4'] = array(
+			'version' => '3.8.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section9',
+			'std'     => '',
+			'title'   => '<strong>' . __('Authentication','lmm') . '</strong>',
+			'desc'    =>  sprintf(__('You will find a <a href="%1$s">API URL generator</a> and <a href="%2$s">API URL tester</a> in the tools section. Please see the API docs for more information on authentication.','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_tools#api-url-generator', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_tools#api-url-tester'),
+			'type'    => 'helptext'
+		);
+		$this->_settings['api_key'] = array(
+			'version' => '3.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section9',
+			'title'   => __('Public API key', 'lmm'),
+			'desc'    => __('Both public and private API keys are needed for API calls!','lmm'),
+			'std'     => '',
+			'type'    => 'text'
+		);
+		$this->_settings['api_key_private'] = array(
+			'version' => '3.8.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section9',
+			'title'   => __('Private API key', 'lmm'),
+			'desc'    => __('Both public and private API keys are needed for API calls!','lmm'),
+			'std'     => '',
 			'type'    => 'text'
 		);
 		$this->_settings['api_helptext3'] = array(
@@ -9250,15 +9193,15 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'checkbox-pro',
 			'std'     => 0
 		);
-		$this->_settings['api_key'] = array(
-			'version' => '3.6',
+		$this->_settings['api_permissions_search'] = array(
+			'version' => 'p1.5.7',
 			'pane'    => 'misc',
 			'section' => 'misc-section9',
-			'title'   => __('API key', 'lmm'),
-			'desc'    => __('It is strongly advised to set an API key to protect it from misuse!','lmm'),
-			'std'     => '',
-			'type'    => 'text'
-		);
+			'title'   => '',
+			'desc'    => __('search existing markers/layers','lmm') . ' <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-feature.png" width="70" height="15" /></a>',
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);		
 		$this->_settings['api_allowed_ip'] = array(
 			'version' => '3.6',
 			'pane'    => 'misc',
@@ -9778,15 +9721,45 @@ $this->_settings['clustering_helptext2'] = array(
 		$options_current = get_option( 'leafletmapsmarker_options' );
 		$options_new = array_merge($options_current, $new_options_defaults);
 		update_option( 'leafletmapsmarker_options', $options_new );
-		}		
-		/* template for plugin updates
-		//info:  set defaults for options introduced in v3.7
-		if (get_option('leafletmapsmarker_version') == '3.6.6' )
+		}
+		//info:  set defaults for options introduced in v3.8.6
+		if (get_option('leafletmapsmarker_version') == '3.8.5' )
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
 			{
-				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.7')
+				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.8.6')
+				{
+				$new_options_defaults[$id] = $setting['std'];
+				}
+			}
+		$options_current = get_option( 'leafletmapsmarker_options' );
+		$options_new = array_merge($options_current, $new_options_defaults);
+		update_option( 'leafletmapsmarker_options', $options_new );
+		}
+		//info:  set defaults for options introduced in v3.8.7
+		if (get_option('leafletmapsmarker_version') == '3.8.6' )
+		{
+			$new_options_defaults = array();
+			foreach ( $this->settings as $id => $setting )
+			{
+				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.8.7')
+				{
+				$new_options_defaults[$id] = $setting['std'];
+				}
+			}
+		$options_current = get_option( 'leafletmapsmarker_options' );
+		$options_new = array_merge($options_current, $new_options_defaults);
+		update_option( 'leafletmapsmarker_options', $options_new );
+		}
+		/* template for plugin updates
+		//info:  set defaults for options introduced in v3.9
+		if (get_option('leafletmapsmarker_version') == '3.8.8' )
+		{
+			$new_options_defaults = array();
+			foreach ( $this->settings as $id => $setting )
+			{
+				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.9')
 				{
 				$new_options_defaults[$id] = $setting['std'];
 				}

@@ -1,6 +1,6 @@
 <?php
 
-require_once(AWPCP_DIR . '/frontend/meta.php');
+require_once(AWPCP_DIR . '/frontend/class-awpcp-meta.php');
 
 require_once(AWPCP_DIR . '/frontend/shortcode-raw.php');
 
@@ -15,10 +15,10 @@ require_once(AWPCP_DIR . '/frontend/page-browse-categories.php');
 
 
 class AWPCP_Pages {
-	public $search_ads = null;
+    private $output = array();
 
-	public function AWPCP_Pages() {
-		$this->meta = AWPCP_Meta::instance();
+	public function __construct() {
+		$this->meta = awpcp_meta();
 
 		$this->show_ad = new AWPCP_Show_Ad_Page();
 		$this->browse_ads = new AWPCP_BrowseAdsPage();
@@ -43,12 +43,14 @@ class AWPCP_Pages {
 		add_shortcode('AWPCPBROWSEADS', array($this->browse_ads, 'dispatch'));
 		add_shortcode('AWPCPBROWSECATS', array($this->browse_categories, 'dispatch'));
 
-        add_shortcode('AWPCPSHOWAD','showad');
+        add_shortcode('AWPCPSHOWAD', array( $this, 'show_ad' ) );
 		add_shortcode('AWPCPCLASSIFIEDSUI', 'awpcpui_homescreen');
 
         add_shortcode('AWPCPLATESTLISTINGS', array($this, 'listings_shortcode'));
         add_shortcode('AWPCPRANDOMLISTINGS', array($this, 'random_listings_shortcode'));
         add_shortcode('AWPCPSHOWCAT', array($this, 'category_shortcode'));
+
+        add_shortcode( 'AWPCPBUYCREDITS', array( $this, 'buy_credits' ) );
 
         add_action( 'wp_ajax_awpcp-flag-ad', array( $this, 'ajax_flag_ad' ) );
         add_action( 'wp_ajax_nopriv_awpcp-flag-ad', array( $this, 'ajax_flag_ad' ) );
@@ -71,13 +73,17 @@ class AWPCP_Pages {
 	}
 
 	public function edit_ad() {
-        do_action('awpcp-shortcode', 'edit-ad');
+        if ( ! isset( $this->output['edit-ad'] ) ) {
+            do_action('awpcp-shortcode', 'edit-ad');
 
-		if ( ! isset( $this->edit_ad_page ) ) {
-			$this->edit_ad_page = new AWPCP_EditAdPage();
+            if ( ! isset( $this->edit_ad_page ) ) {
+                $this->edit_ad_page = new AWPCP_EditAdPage();
+            }
+
+            $this->output['edit-ad'] = $this->edit_ad_page->dispatch();
         }
 
-		return $this->edit_ad_page->dispatch();
+        return $this->output['edit-ad'];
 	}
 
 	public function renew_ad() {
@@ -85,6 +91,14 @@ class AWPCP_Pages {
 			$this->renew_ad_page = new AWPCP_RenewAdPage();
 		return is_null($this->renew_ad_page) ? '' : $this->renew_ad_page->dispatch();
 	}
+
+    public function show_ad() {
+        if ( ! isset( $this->output['show-ad'] ) ) {
+            $this->output['show-ad'] = showad();
+        }
+
+        return $this->output['show-ad'];
+    }
 
 	public function search_ads() {
 		if (!isset($this->search_ads_page))
@@ -101,6 +115,17 @@ class AWPCP_Pages {
 
 		return $this->reply_to_ad_page->dispatch();
 	}
+
+    /**
+     * @since 3.0.2
+     */
+    public function buy_credits() {
+        static $output = null;
+        if ( is_null( $output ) ) {
+            $output = awpcp_buy_credits_page()->dispatch();
+        }
+        return $output;
+    }
 
     /* Shortcodes */
 
@@ -139,7 +164,14 @@ class AWPCP_Pages {
     public function category_shortcode($attrs) {
         global $wpdb;
 
-        extract(shortcode_atts(array('id' => 0, 'children' => true), $attrs));
+        $default = array( 'id' => 0, 'children' => true, 'items_per_page' => 10 );
+        extract( shortcode_atts( $default, $attrs ) );
+
+        // request param overrides shortcode param
+        $items_per_page = awpcp_request_param( 'results', $items_per_page );
+        // set the number of items per page, to make sure both the shortcode handler
+        // and the awpcp_display_ads function are using the same value
+        $_REQUEST['results'] = $_GET['results'] = $items_per_page;
 
         $category = $id > 0 ? AWPCP_Category::find_by_id($id) : null;
         $children = awpcp_parse_bool($children);
@@ -168,7 +200,9 @@ class AWPCP_Pages {
         // required so awpcp_display_ads shows the name of the current category
         $_REQUEST['category_id'] = $category->id;
 
-        return awpcp_display_ads($where, '', '', $order, 'cat', $before);
+        $base_url = sprintf( 'custom:%s', awpcp_current_url() );
+
+        return awpcp_display_ads( $where, '', '', $order, $base_url, $before );
     }
 
     /* Ajax handlers */
@@ -194,10 +228,9 @@ class AWPCP_Pages {
 
 function awpcpui_homescreen() {
 	global $classicontent;
-	if (!isset($awpcppagename) || empty($awpcppagename)) {
-		$awpcppage=get_currentpagename();
-		$awpcppagename = sanitize_title($awpcppage, $post_ID='');
-	}
+
+	$awpcppagename = sanitize_title( get_currentpagename() );
+
 	if (!isset($classicontent) || empty($classicontent)) {
 		$classicontent=awpcpui_process($awpcppagename);
 	}
@@ -347,122 +380,80 @@ function awpcp_display_the_classifieds_page_body($awpcppagename) {
 
 
 function awpcp_menu_items() {
-    global $awpcp_imagesurl, $hasrssmodule;
+    $menu_items = awpcp_get_menu_items();
 
-    $permalinks = get_option('permalink_structure');
-
-    $place_ad_page_name = get_awpcp_option('place-ad-page-name');
-    $edit_ad_page_name = get_awpcp_option('edit-ad-page-name');
-    $search_ads_page_name = get_awpcp_option('search-ads-page-name');
-    $browse_ads_page_name = get_awpcp_option('browse-ads-page-name');
-    $browse_categories_page_name = get_awpcp_option('browse-categories-page-name');
-    $view_categories_page_name = get_awpcp_option('view-categories-page-name');
-
-    $view_categories = sanitize_title($view_categories_page_name);
-
-    $awpcp_page_id=awpcp_get_page_id_by_ref('main-page-name');
-    $place_ad_page_id=awpcp_get_page_id_by_ref('place-ad-page-name');
-    $edit_ad_page_id=awpcp_get_page_id_by_ref('edit-ad-page-name');
-    $browse_ads_page_id=awpcp_get_page_id_by_ref('browse-ads-page-name');
-    $search_ads_page_id=awpcp_get_page_id_by_ref('search-ads-page-name');
-
-    // we don't use get_permalink because it will return the homepage URL
-    // if the main AWPCP page happens to be also the front page, and that
-    // will break our rewrite rules
-    if (!empty($permalinks)) {
-        $base_url = home_url(get_page_uri($awpcp_page_id));
-    } else {
-        $base_url = add_query_arg('page_id', $awpcp_page_id, home_url());
-    }
-
-    $action = awpcp_request_param('a');
-
-    $url_placead = get_permalink($place_ad_page_id);
-    $url_browseads = get_permalink($browse_ads_page_id);
-    $url_searchads = get_permalink($search_ads_page_id);
-    $url_editad = get_permalink($edit_ad_page_id);
-
-    if ( get_awpcp_option('main_page_display') ) {
-        if (isset($permalinks) && !empty($permalinks)) {
-            $url_browsecats = sprintf('%s/%s', trim($base_url, '/'), $view_categories);
-        } else {
-            $url_browsecats = add_query_arg(array('layout' => 2), $base_url);
-        }
-    } else {
-        $url_browsecats = user_trailingslashit( $base_url );
-    }
-
-    // if Ad Management panel is enabled Edit Ad links should use that instead
-    if (get_awpcp_option('enable-user-panel') == 1) {
-        $panel_url = awpcp_get_user_panel_url();
-        //$url_placead = add_query_arg(array('action' => 'place-ad'), $panel_url);
-        $url_editad = $panel_url;
-    }
-
-    $place_ad_item = '<li class="post-listing"><a href="%s">%s</a></li>';
-    $place_ad_item = sprintf($place_ad_item, $url_placead, $place_ad_page_name);
-
-    $edit_ad_item = '<li class="edit-listing"><a href="%s">%s</a></li>';
-    $edit_ad_item = sprintf($edit_ad_item, $url_editad, $edit_ad_page_name);
-
-    $browse_cats_item = '<li class="browse-listings"><a href="%s">%s</a></li>';
-    $cid = get_query_var('cid');
-
-    // show View Categories link if we are on the Browse Ads page
-    if (is_page(sanitize_title($browse_ads_page_name))) {
-        $browse_cats_item = sprintf($browse_cats_item, $url_browsecats, $view_categories_page_name);
-    } else {
-        $browse_cats_item = sprintf($browse_cats_item, $url_browseads, $browse_ads_page_name);
-    }
-
-    $search_ads_item = '<li class="search-listings"><a href="%s">%s</a></li>';
-    $search_ads_item = sprintf($search_ads_item, $url_searchads, $search_ads_page_name);
-
-    $items = array();
-
-    $only_admin_can_place_ads = get_awpcp_option('onlyadmincanplaceads');
-    if (!$only_admin_can_place_ads) {
-        if (get_awpcp_option('show-menu-item-place-ad')) {
-            $items['place-ad'] = $place_ad_item;
-        }
-        if (get_awpcp_option('show-menu-item-edit-ad')) {
-            $items['edit-ad'] = $edit_ad_item;
-        }
-        if (get_awpcp_option('show-menu-item-browse-ads')) {
-            $items['browse-ads'] = $browse_cats_item;
-        }
-        if (get_awpcp_option('show-menu-item-search-ads')) {
-            $items['search-ads'] = $search_ads_item;
-        }
-    } elseif ($only_admin_can_place_ads && awpcp_current_user_is_admin() == 1) {
-        if (get_awpcp_option('show-menu-item-place-ad')) {
-            $items['place-ad'] = $place_ad_item;
-        }
-        if (get_awpcp_option('show-menu-item-edit-ad')) {
-            $items['edit-ad'] = $edit_ad_item;
-        }
-        if (get_awpcp_option('show-menu-item-browse-ads')) {
-            $items['browse-ads'] = $browse_cats_item;
-        }
-        if (get_awpcp_option('show-menu-item-search-ads')) {
-            $items['search-ads'] = $search_ads_item;
-        }
-    } else {
-        if (get_awpcp_option('show-menu-item-browse-ads')) {
-            $items['browse-ads'] = $browse_cats_item;
-        }
-        if (get_awpcp_option('show-menu-item-search-ads')) {
-            $items['search-ads'] = $search_ads_item;
-        }
-    }
-
-    $items = apply_filters('awpcp_menu_items', $items);
-
-    $output = '<ul id="postsearchads" class="awpcp-menu-items">%s</ul><div class="fixfloat"></div>';
-    $output = apply_filters('awpcp-menu-items-output', sprintf($output, join('', $items)));
-    $output = '<div class="awpcp-menu-items-container">' . $output . '</div>';
+    ob_start();
+        include ( AWPCP_DIR . '/frontend/templates/main-menu.tpl.php' );
+        $output = ob_get_contents();
+    ob_end_clean();
 
     return $output;
+}
+
+function awpcp_get_menu_items() {
+    $items = array();
+
+    $user_is_allowed_to_place_ads = ! get_awpcp_option( 'onlyadmincanplaceads' ) || awpcp_current_user_is_admin();
+    $show_place_ad_item = $user_is_allowed_to_place_ads && get_awpcp_option( 'show-menu-item-place-ad' );
+    $show_edit_ad_item = $user_is_allowed_to_place_ads && get_awpcp_option( 'show-menu-item-edit-ad' );
+    $show_browse_ads_item = get_awpcp_option( 'show-menu-item-browse-ads' );
+    $show_search_ads_item = get_awpcp_option( 'show-menu-item-search-ads' );
+
+    if ( $show_place_ad_item ) {
+        $place_ad_url = awpcp_get_page_url( 'place-ad-page-name' );
+        $place_ad_page_name = get_awpcp_option( 'place-ad-page-name' );
+        $items['post-listing'] = array( 'url' => $place_ad_url, 'title' => $place_ad_page_name );
+    }
+
+    if ( $show_edit_ad_item ) {
+        if ( get_awpcp_option('enable-user-panel') ) {
+            $edit_ad_url = awpcp_get_user_panel_url();
+        } else {
+            $edit_ad_url = awpcp_get_page_url( 'edit-ad-page-name' );
+        }
+
+        $edit_ad_page_name = get_awpcp_option( 'edit-ad-page-name' );
+        $items['edit-listing'] = array( 'url' => $edit_ad_url, 'title' => $edit_ad_page_name );
+    }
+
+    if ( $show_browse_ads_item ) {
+        $browse_ads_page_name = get_awpcp_option('browse-ads-page-name');
+        if ( is_page( sanitize_title( $browse_ads_page_name ) ) ) {
+            if ( get_awpcp_option( 'main_page_display' ) ) {
+                $browse_cats_url = awpcp_get_view_categories_url();
+            } else {
+                $awpcp_page_id = awpcp_get_page_id_by_ref( 'main-page-name' );
+
+                // we don't use get_permalink because it will return the homepage URL
+                // if the main AWPCP page happens to be also the front page, and that
+                // will break our rewrite rules
+                $permalink_structure = get_option( 'permalink_structure' );
+                if ( ! empty( $permalink_structure ) ) {
+                    $base_url = home_url( get_page_uri( $awpcp_page_id ) );
+                } else {
+                    $base_url = add_query_arg( 'page_id', $awpcp_page_id, home_url() );
+                }
+
+                $browse_cats_url = user_trailingslashit( $base_url );
+            }
+
+            $view_categories_page_name = get_awpcp_option( 'view-categories-page-name' );
+            $items['browse-listings'] = array( 'url' => $browse_cats_url, 'title' => $view_categories_page_name );
+        } else {
+            $browse_ads_url = awpcp_get_page_url( 'browse-ads-page-name' );
+            $items['browse-listings'] = array( 'url' => $browse_ads_url, 'title' => $browse_ads_page_name );
+        }
+    }
+
+    if ( $show_search_ads_item ) {
+        $search_ads_page_name = get_awpcp_option( 'search-ads-page-name' );
+        $search_ads_url = awpcp_get_page_url( 'search-ads-page-name' );
+        $items['search-listings'] = array( 'url' => $search_ads_url, 'title' => $search_ads_page_name );
+    }
+
+    $items = apply_filters( 'awpcp_menu_items', $items );
+
+    return $items;
 }
 
 
@@ -513,8 +504,9 @@ function awpcp_display_classifieds_category_item($category, $class='toplevelitem
 		$ads_in_cat = '';
 	}
 
-	if (isset($category_icon) && !empty($category_icon)) {
-		$cat_icon = "<img class=\"categoryicon\" src=\"$awpcp_imagesurl/caticons/$category_icon\" alt=\"$category[1]\" border=\"0\"/>";
+	if ( isset( $category_icon ) && !empty( $category_icon ) && function_exists( 'awpcp_category_icon_url' ) ) {
+        $cat_icon_url = awpcp_category_icon_url( $category_icon );
+		$cat_icon = "<img class=\"categoryicon\" src=\"$cat_icon_url\" alt=\"$category[1]\" border=\"0\"/>";
 		$cat_icon = sprintf('<a href="%s">%s</a>', esc_url($url_browsecats), $cat_icon);
 	} else {
 		$cat_icon = '';
@@ -530,27 +522,35 @@ function awpcp_render_category_item($category, $args=array()) {
     extract( wp_parse_args( $args, array(
         'link_class' => 'toplevelitem',
         'show_ad_count' => true,
+        'collapse_categories' => false,
     ) ) );
 
     $url_browsecats = url_browsecategory( $category->id );
 
     if ( function_exists( 'get_category_icon' ) ) {
         $category_icon = get_category_icon( $category->id );
-        if ( ! empty( $category_icon ) ) {
-            $icon_url = "$awpcp_imagesurl/caticons/$category_icon";
+        if ( ! empty( $category_icon ) && function_exists( 'awpcp_category_icon_url' ) ) {
+            $icon_url = awpcp_category_icon_url( $category_icon );
             $image = '<img class="categoryicon" src="%s" alt="%s" border="0" />';
             $image = sprintf( $image, $icon_url, esc_attr( $category->name ) );
             $icon = sprintf( '<a href="%s">%s</a>', esc_url( $url_browsecats ), $image );
         }
     }
 
-    $output = '%s <a class="%s" href="%s">%s</a> %s';
+    if ( $collapse_categories ) {
+        $handler = $level === 1 ? '<a class="js-handler" href="#"><span></span></a>' : '';
+    } else {
+        $handler = '';
+    }
+
+    $output = '%s <a class="%s" href="%s">%s</a> %s %s';
 
     return sprintf( $output, isset( $icon ) ? $icon : '',
                              $link_class,
                              esc_url( $url_browsecats ),
                              esc_attr( $category->name ),
-                             $show_ad_count ? "({$category->ad_count})" : '' );
+                             $show_ad_count ? "({$category->ad_count})" : '',
+                             $handler);
 }
 
 
@@ -580,17 +580,25 @@ function awpcp_render_categories_items($parent=0, $args=array()) {
         $categories = $approved;
     }
 
-    $output = '';
+    $collapse_categories = get_awpcp_option( 'collapse-categories-columns' );
+
+    $item_args = array(
+        'level' => $level,
+        'link_class' => '',
+        'show_ad_count' => $show_ad_count,
+        'collapse_categories' => $collapse_categories,
+    );
 
     if ( $level === 1) {
-        $item_args = array( 'link_class' => 'toplevelitem', 'show_ad_count' => $show_ad_count );
         $container_class = 'top-level-categories showcategoriesmainlist';
+        $item_args['link_class'] = 'toplevelitem';
     } else {
-        $item_args = array( 'link_class' => '', 'show_ad_count' => $show_ad_count );
         $container_class = 'sub-categories showcategoriessublist';
         // do not group sub-categories
         $columns = count( $categories );
     }
+
+    $output = '';
 
     $k = 0;
     foreach ( $categories as $category ) {
@@ -599,7 +607,11 @@ function awpcp_render_categories_items($parent=0, $args=array()) {
         }
 
         if ( $k === 0 || $k % $columns === 0 ) {
-            $output .= '<ul class="' . $container_class . ' clearfix">';
+            if ( $level > 1 && $collapse_categories ) {
+                $output .= '<ul class="' . $container_class . ' clearfix" data-collapsible="true">';
+            } else {
+                $output .= '<ul class="' . $container_class . ' clearfix">';
+            }
         }
 
         if ($level === 1) {
@@ -759,8 +771,17 @@ function awpcp_display_the_classifieds_category($awpcppagename, $parent=0, $side
 }
 
 
-//	START FUNCTION: configure the page to display to user for purpose of editing images during ad editing process
+/**
+ * Configure the page to display to user for purpose of editing images during
+ * Ad editing process.
+ *
+ * This function is not really used.
+ *
+ * @deprecated
+ */
 function editimages($adtermid, $adid, $adkey, $editemail) {
+    _deprecated_function( __FUNCTION__, '3.0.2', 'No longer needed.' );
+
 	global $wpdb;
 
 	$output = '';

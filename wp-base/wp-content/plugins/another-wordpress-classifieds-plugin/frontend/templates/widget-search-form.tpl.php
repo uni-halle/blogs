@@ -23,4 +23,7 @@
     <br/>
     <input id="<?php echo $this->get_field_id('show_country'); ?>" name="<?php echo $this->get_field_name('show_country'); ?>" type="checkbox" value="1" <?php echo $show_country == 1 ? " checked='checked'" : "" ?> />
     <label for="<?php echo $this->get_field_id('show_country'); ?>"><?php _e('Show Country field?', 'AWPCP'); ?></label>
+    <br/>
+    <input id="<?php echo $this->get_field_id('show_category'); ?>" name="<?php echo $this->get_field_name('show_category'); ?>" type="checkbox" value="1" <?php echo $show_category == 1 ? " checked='checked'" : "" ?> />
+    <label for="<?php echo $this->get_field_id('show_category'); ?>"><?php _e('Show Category field?', 'AWPCP'); ?></label>
 </p>

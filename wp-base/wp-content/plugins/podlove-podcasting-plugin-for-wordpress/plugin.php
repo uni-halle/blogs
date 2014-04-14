@@ -29,9 +29,8 @@ function activate_for_current_blog() {
 			array( 'name' => 'WebM Audio',             'type' => 'audio',    'mime_type' => 'audio/webm',  'extension' => 'webm' ),
 			array( 'name' => 'WebM Video',             'type' => 'video',    'mime_type' => 'video/webm',  'extension' => 'webm' ),
 			array( 'name' => 'FLAC Audio',             'type' => 'audio',    'mime_type' => 'audio/flac',  'extension' => 'flac' ),
-			array( 'name' => 'Opus Audio',             'type' => 'audio',    'mime_type' => 'audio/opus',  'extension' => 'opus' ),
+			array( 'name' => 'Opus Audio',             'type' => 'audio',    'mime_type' => 'audio/ogg;codecs=opus',  'extension' => 'opus' ),
 			array( 'name' => 'Matroska Audio',         'type' => 'audio',    'mime_type' => 'audio/x-matroska',  'extension' => 'mka' ),
-			array( 'name' => 'Matroska Video',         'type' => 'video',    'mime_type' => 'video/x-matroska',  'extension' => 'mkv' ),
 			array( 'name' => 'Matroska Video',         'type' => 'video',    'mime_type' => 'video/x-matroska',  'extension' => 'mkv' ),
 			array( 'name' => 'PDF Document',           'type' => 'ebook',    'mime_type' => 'application/pdf',  'extension' => 'pdf' ),
 			array( 'name' => 'ePub Document',          'type' => 'ebook',    'mime_type' => 'application/epub+zip',  'extension' => 'epub' ),
@@ -53,8 +52,14 @@ function activate_for_current_blog() {
 		}
 	}
 
+	$podcast = Model\Podcast::get_instance();
+	if (!$podcast->limit_items) {
+		$podcast->limit_items = Model\Feed::ITEMS_NO_LIMIT;
+	}
+	$podcast->save();
+
 	// set default modules
-	$default_modules = array( 'podlove_web_player', 'open_graph', 'asset_validation', 'logging' );
+	$default_modules = array( 'podlove_web_player', 'open_graph', 'asset_validation', 'logging', 'oembed', 'feed_validation' );
 	foreach ( $default_modules as $module ) {
 		\Podlove\Modules\Base::activate( $module );
 	}
@@ -82,17 +87,15 @@ function activate_for_current_blog() {
  * for in the scope of that blog.
  */
 function create_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
-	global $wpdb;
-	
-	// something like 'podlove/podlove.php'
-	$plugin_file = basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ );
-    
+	switch_to_blog( $blog_id );
+
+	$plugin_file = "podlove/podlove.php";
+
 	if ( is_plugin_active_for_network( $plugin_file ) ) {
-		$current_blog = $wpdb->blogid;
-		switch_to_blog( $blog_id );
 		activate_for_current_blog();
-		switch_to_blog( $current_blog );
 	}
+
+	restore_current_blog();
 }
 
 /**
@@ -102,21 +105,18 @@ function create_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) 
  * However, in a multisite install, iterate over all blogs and call the activate
  * function for each of them.
  */
-function activate() {
+function activate($network_wide) {
 	global $wpdb;
 
-	if ( is_multisite() ) {
-		if ( isset( $_GET['networkwide'] ) && ( $_GET['networkwide'] == 1 ) ) {
-			$current_blog = $wpdb->blogid;
-			$blogids = $wpdb->get_col( "SELECT blog_id FROM " . $wpdb->blogs );
-			foreach ( $blogids as $blog_id ) {
-				switch_to_blog($blog_id);
-				activate_for_current_blog();
-			}
-			switch_to_blog($current_blog);
-		} else {
+	if ( $network_wide ) {
+		set_time_limit(0); // may take a while, depending on network size
+		$current_blog = $wpdb->blogid;
+		$blogids = $wpdb->get_col( "SELECT blog_id FROM " . $wpdb->blogs );
+		foreach ( $blogids as $blog_id ) {
+			switch_to_blog($blog_id);
 			activate_for_current_blog();
 		}
+		switch_to_blog($current_blog);
 	} else {
 		activate_for_current_blog();
 	}
@@ -177,86 +177,6 @@ function uninstall_for_current_blog() {
 	Model\Template::destroy();
 }
 
-add_action( 'admin_head', '\Podlove\custom_admin_icons' );
-
-function custom_admin_icons() {
-    ?>
-    <style>
-
-    	/* PODLOVE EPISODE ICON */
-
-        /* Admin Menu - 16px */
-        #menu-posts-podcast .wp-menu-image {
-            background: url(<?php echo \Podlove\PLUGIN_URL ?>/images/episoden/icon-adminmenu16-sprite.png) no-repeat 6px 6px !important;
-        }
-		#menu-posts-podcast:hover .wp-menu-image, #menu-posts-podcast.wp-has-current-submenu .wp-menu-image {
-            background-position: 6px -24px !important;
-        }
-        /* Post Screen - 32px */
-        .icon32-posts-podcast {
-        	background: url(<?php echo \Podlove\PLUGIN_URL ?>/images/episoden/icon-adminpage32.png) no-repeat 0px 0px !important;
-        }
-        @media
-        only screen and (-webkit-min-device-pixel-ratio: 1.5),
-        only screen and (   min--moz-device-pixel-ratio: 1.5),
-        only screen and (     -o-min-device-pixel-ratio: 3/2),
-        only screen and (        min-device-pixel-ratio: 1.5),
-        only screen and (        		 min-resolution: 1.5dppx) {
-        	
-        	/* Admin Menu - 16px @2x */
-        	#menu-posts-podcast .wp-menu-image {
-        		background-image: url('<?php echo \Podlove\PLUGIN_URL ?>/images/episoden/icon-adminmenu16-sprite_2x.png') !important;
-        		-webkit-background-size: 16px 48px;
-        		-moz-background-size:    16px 48px;
-        		background-size:         16px 48px;
-        	}
-        	/* Post Screen - 32px @2x */
-        	.icon32-posts-podcast {
-        		background-image: url('<?php echo \Podlove\PLUGIN_URL ?>/images/episoden/icon-adminpage32_2x.png') no-repeat center !important;
-        		-webkit-background-size: 32px 32px !important;
-        		-moz-background-size:    32px 32px !important;
-        		background-size:         32px 32px !important;
-        	}         
-        }
-
-        /* PODLOVE SETTINGS ICON */
-
-        /* Admin Menu - 16px */
-        #toplevel_page_podlove_settings_handle .wp-menu-image {
-            background: url(<?php echo \Podlove\PLUGIN_URL ?>/images/podlove/icon-adminmenu16-sprite.png) no-repeat 6px 6px !important;
-        }
-		#toplevel_page_podlove_settings_handle:hover .wp-menu-image, #toplevel_page_podlove_settings_handle.wp-has-current-submenu .wp-menu-image {
-            background-position: 6px -26px !important;
-        }
-        /* Post Screen - 32px */
-        #icon-podlove-podcast {
-        	background: url(<?php echo \Podlove\PLUGIN_URL ?>/images/podlove/icon-adminpage32.png) no-repeat 0px 0px !important;
-        }
-        @media
-        only screen and (-webkit-min-device-pixel-ratio: 1.5),
-        only screen and (   min--moz-device-pixel-ratio: 1.5),
-        only screen and (     -o-min-device-pixel-ratio: 3/2),
-        only screen and (        min-device-pixel-ratio: 1.5),
-        only screen and (        		 min-resolution: 1.5dppx) {
-        	
-        	/* Admin Menu - 16px @2x */
-        	#toplevel_page_podlove_settings_handle .wp-menu-image {
-        		background-image: url('<?php echo \Podlove\PLUGIN_URL ?>/images/podlove/icon-adminmenu16-sprite_2x.png') !important;
-        		-webkit-background-size: 16px 48px;
-        		-moz-background-size:    16px 48px;
-        		background-size:         16px 48px;
-        	}
-        	/* Post Screen - 32px @2x */
-        	.icon-podlove-podcast {
-        		background-image: url('<?php echo \Podlove\PLUGIN_URL ?>/images/podlove/icon-adminpage32_2x.png') no-repeat center !important;
-        		-webkit-background-size: 32px 32px !important;
-        		-moz-background-size:    32px 32px !important;
-        		background-size:         32px 32px !important;
-        	}         
-        }
-    </style>
-<?php } 
-
 /**
  * Activate internal modules.
  */
@@ -310,6 +230,9 @@ add_action( 'init', function () {
 	    );
 
 	    wp_enqueue_style( 'podlove-frontend-css' );
+
+	    wp_register_style( 'podlove-admin-font', \Podlove\PLUGIN_URL . '/css/admin-font.css', array(), \Podlove\get_plugin_header( 'Version' ) );
+	    wp_enqueue_style( 'podlove-admin-font' );
 } );
 
 // apply domain mapping plugin where it's essential
@@ -367,23 +290,29 @@ add_action( 'plugins_loaded', function () {
 
 // fire activation and deactivation hooks for modules
 add_action( 'update_option_podlove_active_modules', function( $old_val, $new_val ) {
-	$deactivated_module = current( array_keys( array_diff_assoc( $old_val, $new_val ) ) );
-	$activated_module   = current( array_keys( array_diff_assoc( $new_val, $old_val ) ) );
+	$deactivated_modules = array_keys( array_diff_assoc( $old_val, $new_val ) );
+	$activated_modules   = array_keys( array_diff_assoc( $new_val, $old_val ) );
 
-	if ( $deactivated_module ) {
-		Log::get()->addInfo( 'Deactivate module "' . $deactivated_module . '"' );
-		do_action( 'podlove_module_was_deactivated', $deactivated_module );
-		do_action( 'podlove_module_was_deactivated_' . $deactivated_module );
-	} elseif ( $activated_module ) {
-		Log::get()->addInfo( 'Activate module "' . $activated_module . '"' );
+	if ( $deactivated_modules ) {
+		foreach ($deactivated_modules as $deactivated_module) {
+			Log::get()->addInfo( 'Deactivate module "' . $deactivated_module . '"' );
+			do_action( 'podlove_module_was_deactivated', $deactivated_module );
+			do_action( 'podlove_module_was_deactivated_' . $deactivated_module );
+		}
+	} 
 
-		// init module before firing hooks
-		$class = Modules\Base::get_class_by_module_name( $activated_module );
-		if ( class_exists( $class ) )
-			$class::instance()->load();
+	if ( $activated_modules ) {
+		foreach ($activated_modules as $activated_module) {
+			Log::get()->addInfo( 'Activate module "' . $activated_module . '"' );
 
-		do_action( 'podlove_module_was_activated', $activated_module );
-		do_action( 'podlove_module_was_activated_' . $activated_module );
+			// init module before firing hooks
+			$class = Modules\Base::get_class_by_module_name( $activated_module );
+			if ( class_exists( $class ) )
+				$class::instance()->load();
+
+			do_action( 'podlove_module_was_activated', $activated_module );
+			do_action( 'podlove_module_was_activated_' . $activated_module );
+		}
 	}
 }, 10, 2 );
 
@@ -461,9 +390,21 @@ function override404() {
 			$parsed_redirect_url .= "?" . $parsed_url['query'];
 
 		if ( untrailingslashit( $parsed_redirect_url ) === untrailingslashit( $parsed_request_url ) ) {
-			status_header( 301 );
+			
+			if ($redirect['code']) {
+				$http_code = (int) $redirect['code'];
+			} else {
+				$http_code = 301; // default to permanent
+			}
+
+			// fallback for HTTP/1.0 clients
+			if ($http_code == 307 && $_SERVER['SERVER_PROTOCOL'] == "HTTP/1.0") {
+				$http_code = 302;
+			}
+
+			status_header( $http_code );
 			$wp_query->is_404 = false;
-			\wp_redirect( $redirect['to'], 301 );
+			\wp_redirect( $redirect['to'], $http_code );
 			exit;
 		}
 	}
@@ -626,11 +567,40 @@ function podcast_permalink_proxy($query_vars) {
 	if ( ! isset( $query_vars["post_type"] ) || $query_vars["post_type"] == "post" )
 		$query_vars["post_type"] = array( "podcast", "post" );
 
-	if ( ! isset( $query_vars["post_status"] ) )
-		$query_vars["post_status"] = "publish";
-
 	return $query_vars;
 }
+
+/**
+ * Filters trashed, imported posts from our posts out
+ */
+function remove_trash_posts_from_the_posts($posts, $wp_query) {
+	global $wp_the_query;
+
+	// Apply filter not in the backend and only on the main query
+	if ( $wp_query->is_admin && $wp_the_query == $wp_query )
+		return $posts;
+
+	// No post request
+	if ( isset( $wp_query->query["preview"] ) || false == ( isset( $wp_query->query["name"] ) || isset( $wp_query->query["p"] ) ) )
+		return $posts;
+
+	// Only check if we found more than 2 posts
+	if ( 2 > count( $posts ) )
+		return $posts;
+
+	// Remove trashed posts
+	foreach ( $posts as $index => $post ) {
+		if ( 'trash' == $post->post_status ) {
+			unset( $posts[$index] );
+		}
+	}
+
+	// Resets array keys
+	$posts = array_values( $posts );
+	
+	return $posts;
+}
+add_filter('posts_results', '\Podlove\remove_trash_posts_from_the_posts', 10, 2);
 
 /**
  * Disable verbose page rules mode after startup
@@ -736,6 +706,9 @@ add_action( 'podlove_episode_content_has_changed', function( $episode_id ) {
 // enable chapters pages
 add_action( 'wp', function() {
 
+	if ( ! is_single() )
+		return;
+
 	if ( ! isset( $_REQUEST['chapters_format'] ) )
 		return;
 
@@ -762,6 +735,39 @@ add_action( 'wp', function() {
 	exit;
 } );
 
+/**
+ * When changing from an external chapter asset to 'manual', copy external 
+ * contents into local field.
+ */
+add_filter('pre_update_option_podlove_asset_assignment', function($new, $old) {
+	global $wpdb;
+
+	if (!isset($old['chapters']) || !isset($new['chapters']))
+		return $new;
+
+	if ($new['chapters'] != 'manual')  // just changes to manual
+		return $new;
+
+	if (((int) $old['chapters']) <= 0) // just changes from an asset
+		return $new;
+
+	$episodes = Model\Episode::allByTime();
+
+	// 10 seconds per episode or 30 seconds since 1 request per asset 
+	// is required if it is not cached
+	set_time_limit(max(30, count($episodes) * 10));
+
+	foreach ($episodes as $episode) {
+		if ($chapters = $episode->get_chapters('mp4chaps'))
+			$episode->update_attribute('chapters', mysql_real_escape_string($chapters));
+	}
+
+	// delete chapters caches
+	$wpdb->query('DELETE FROM `' . $wpdb->options . '` WHERE option_name LIKE "%podlove_chapters_string_%"');
+
+	return $new;
+}, 10, 2);
+
 // register ajax actions
 new \Podlove\AJAX\Ajax;
 
@@ -782,6 +788,12 @@ add_action( 'admin_print_styles', function () {
 	wp_register_style( 'podlove-admin-chosen', \Podlove\PLUGIN_URL . '/js/admin/chosen/chosen.min.css', array(), \Podlove\get_plugin_header( 'Version' ) );
 	wp_enqueue_style( 'podlove-admin-chosen' );
 
+	wp_register_style( 'podlove-admin-image-chosen', \Podlove\PLUGIN_URL . '/js/admin/chosen/chosenImage.css', array(), \Podlove\get_plugin_header( 'Version' ) );
+	wp_enqueue_style( 'podlove-admin-image-chosen' );
+
 	wp_register_style( 'podlove-admin-font', \Podlove\PLUGIN_URL . '/css/admin-font.css', array(), \Podlove\get_plugin_header( 'Version' ) );
 	wp_enqueue_style( 'podlove-admin-font' );
+
+	wp_register_script( 'podlove-cryptojs', \Podlove\PLUGIN_URL . '/js/admin/cryptojs/md5.js' );
+	wp_enqueue_script( 'podlove-cryptojs' );
 } );

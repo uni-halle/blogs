@@ -76,6 +76,68 @@ var PODLOVE = PODLOVE || {};
 
 			$(".adn.body", $preview).html(nl2br(text));
 		};
+
+		var adn_list_update = function( that ) {
+				var category = $(that).data("category");
+
+				if (!category)
+					return;
+
+				var data = {
+					action: 'podlove-refresh-channel',
+					category: category
+				};
+
+				$(that).html('<i class="podlove-icon-spinner rotate"></i>');
+
+				$.ajax({
+					url: ajaxurl,
+					data: data,
+					dataType: 'json',
+					success: function(result) {
+						$("#podlove_module_app_dot_net_adn_" + category).children( 'option:not(:first)' ).remove();
+
+						$.each( result, function( index, value) {
+							$("#podlove_module_app_dot_net_adn_" + category).append("<option value='" + index + "'>" + value + "</option>");
+						});						
+						$("#podlove_module_app_dot_net_adn_" + category).trigger("liszt:updated");
+						$(that).html('<i class="podlove-icon-repeat"></i>');
+					}
+				});
+		}
+
+		$(document).ready(function() {
+			if( $("#podlove_module_app_dot_net_adn_broadcast").is(':checked') )
+				$(".row_podlove_module_app_dot_net_adn_broadcast_channel").show();
+			if( $("#podlove_module_app_dot_net_adn_patter_room_announcement").is(':checked') )
+				$(".row_podlove_module_app_dot_net_adn_patter_room").show();
+
+			$(".chosen").chosen();
+		});
+
+		$("#podlove_module_app_dot_net_adn_broadcast").change(function() {
+			if( $(this).is(':checked') ) {
+				$(".row_podlove_module_app_dot_net_adn_broadcast_channel").show();
+			} else {
+				$(".row_podlove_module_app_dot_net_adn_broadcast_channel").hide();
+			}
+			
+			$(".chosen").chosen();
+		});
+
+		$("#podlove_module_app_dot_net_adn_patter_room_announcement").change(function() {
+			if( $(this).is(':checked') ) {
+				$(".row_podlove_module_app_dot_net_adn_patter_room").show();
+			} else {
+				$(".row_podlove_module_app_dot_net_adn_patter_room").hide();
+			}
+
+			$(".chosen").chosen();
+		});
+
+		$(".podlove_adn_patter_refresh, .podlove_adn_broadcast_refresh").on( 'click', function() {
+			adn_list_update( this );
+		});
 		
 		jQuery("#podlove_module_app_dot_net_adn_poster_announcement_text").autogrow();
 		jQuery(".adn-dropdown").chosen(); 

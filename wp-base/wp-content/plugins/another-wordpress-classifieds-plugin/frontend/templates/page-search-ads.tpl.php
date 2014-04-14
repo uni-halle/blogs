@@ -27,19 +27,21 @@
         <?php echo awpcp_form_error('query', $errors); ?>
     </p>
 
-    <p class='awpcp-form-spacer'>
-        <label for="category"><?php _e("Search in Category", "AWPCP"); ?></label>
-        <select id="category" name="searchcategory">
-            <option value=""><?php _e("Select Option", "AWPCP"); ?></option>
-            <?php echo get_categorynameidall($form['category']); ?>
-        </select>
+    <p class="awpcp-form-spacer">
+        <?php $dropdown = new AWPCP_CategoriesDropdown(); ?>
+        <?php echo $dropdown->render( array(
+                'context' => 'search',
+                'selected' => awpcp_array_data('category', '', $form),
+                'name' => 'searchcategory',
+                'required' => false,
+              ) ); ?>
     </p>
 
     <?php if ($ui['posted-by-field']): ?>
     <p class='awpcp-form-spacer'>
         <label for="name"><?php _e("For Ads Posted By", "AWPCP"); ?></label>
         <select id="name" name="searchname">
-            <option value=""><?php _e("Select Option", "AWPCP"); ?></option>
+            <option value=""><?php _e("All Users", "AWPCP"); ?></option>
             <?php echo create_ad_postedby_list($form['name']); ?>
         </select>
     </p>
@@ -60,23 +62,13 @@
     <?php endif ?>
 
     <?php
-    $query = array(
-        'country' => $form['country'],
-        'state' => $form['state'],
-        'city' => $form['city'],
-        'county' => $form['county']
-    );
-    $translations = array(
-        'country' => 'searchcountry',
-        'state' => 'searchstate',
-        'city' => 'searchcity',
-        'county' => 'searchcountyvillage'
+    $options = array(
+        'showTextField' => true,
+        'maxRegions' => ($ui['allow-user-to-search-in-multiple-regions'] ? 10 : 1),
     );
 
-    if ($ui['module-region-fields'])
-        echo awpcp_region_control_form_fields($query, $translations, $errors);
-    else
-        echo awpcp_region_form_fields($query, $translations, 'search', $errors);
+    $selector = new AWPCP_MultipleRegionSelector( $form['regions'], $options );
+    echo $selector->render( 'search', array(), $errors );
     ?>
 
     <?php if ($ui['module-extra-fields']): ?>

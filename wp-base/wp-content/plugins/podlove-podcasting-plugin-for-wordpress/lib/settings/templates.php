@@ -52,8 +52,12 @@ class Templates {
 			
 		$template = \Podlove\Model\Template::find_by_id( $_REQUEST['template'] );
 		$template->update_attributes( $_POST['podlove_template'] );
-		
-		$this->redirect( 'index', $template->id );
+
+		if (isset($_POST['submit_and_stay'])) {
+			$this->redirect( 'edit', $template->id );
+		} else {
+			$this->redirect( 'index', $template->id );
+		}
 	}
 	
 	/**
@@ -65,7 +69,11 @@ class Templates {
 		$template = new \Podlove\Model\Template;
 		$template->update_attributes( $_POST['podlove_template'] );
 
-		$this->redirect( 'index' );
+		if (isset($_POST['submit_and_stay'])) {
+			$this->redirect( 'edit', $template->id );
+		} else {
+			$this->redirect( 'index' );
+		}
 	}
 	
 	/**
@@ -148,7 +156,12 @@ class Templates {
 
 	private function view_template() {
 
-		echo __( 'Episode Templates are an easy way to keep the same structure in all your episodes. Create one and use the displayed <a href="https://github.com/podlove/podlove-publisher#shortcodes" target="_blank">Shortcode</a> as the episode content.', 'podlove' );
+		echo sprintf(
+			__( 'Episode Templates are an easy way to keep the same structure in all your episodes. Create one and use the displayed %sShortcode%s as the episode content.', 'podlove' ),
+			'<a href="http://docs.podlove.org/publisher/shortcodes/" target="_blank">',
+			'</a>'
+			)
+		;
 
 		$table = new \Podlove\Template_List_Table();
 		$table->prepare_items();
@@ -159,7 +172,7 @@ class Templates {
 			var readonly_textareas = $(".highlight-readonly");
 			readonly_textareas.each(function() {
 				var podlove_code_highlight = CodeMirror.fromTextArea(this, {
-					mode: "htmlmixed",
+					mode: "application/x-twig",
 					lineNumbers: false,
 					theme: "default",
 					indentUnit: 4,
@@ -225,7 +238,15 @@ class Templates {
 			'hidden'  => array(
 				'template' => $template->id,
 				'action' => $action
-			)
+			),
+			'submit_button' => false, // for custom control in form_end
+			'form_end' => function() {
+				echo "<p>";
+				submit_button( __('Save Changes'), 'primary', 'submit', false );
+				echo " ";
+				submit_button( __('Save Changes and Continue Editing', 'podlove'), 'secondary', 'submit_and_stay', false );
+				echo "</p>";
+			}
 		);
 
 		\Podlove\Form\build_for( $template, $form_args, function ( $form ) {
@@ -239,16 +260,8 @@ class Templates {
 
 			$f->text( 'content', array(
 				'label'       => __( 'HTML Template', 'podlove' ),
-				'description' => __( 'Have a look at the <a href="https://github.com/eteubert/podlove/wiki/Shortcodes" target="_blank">Shortcode documentation</a> for all available options.', 'podlove' ),
-				'html' => array( 'class' => 'large-text required', 'rows' => 20 ),
-				'default' => <<<EOT
-[podlove-web-player]
-[podlove-episode-downloads]
-
-<span class="podlove-duration">Duration: [podlove-episode field="duration"]</span>
-
-Published by <a href="[podlove-podcast field="publisher_url"]" target="_blank">[podlove-podcast field="publisher_name"]</a> under <a href="[podlove-podcast field="license_url"]" target="_blank">[podlove-podcast field="license_name"]</a>.
-EOT
+				'description' => __( 'Templates support HTML and Twig. Read the <a href="http://docs.podlove.org/guides/understanding-templates/">Template Guide</a> to get started and have a look at the <a href="http://docs.podlove.org/publisher/template-reference/" target="_blank">Template reference</a> for all available data accessors.', 'podlove' ),
+				'html' => array( 'class' => 'large-text required', 'rows' => 20 )
 			) );
 
 		} );
@@ -256,29 +269,12 @@ EOT
 		<script type="text/javascript">
 		var podlove_template_content = document.getElementById("podlove_template_content");
 		var podlove_template_editor = CodeMirror.fromTextArea(podlove_template_content, {
-			mode: "htmlmixed",
+			mode: "application/x-twig",
 			lineNumbers: true,
 			theme: "default",
 			indentUnit: 4,
 			lineWrapping: true,
-			extraKeys: {
-				"'>'": function(cm) { cm.closeTag(cm, '>'); },
-				"'/'": function(cm) { cm.closeTag(cm, '/'); },
-				"'['": function(cm) {
-					CodeMirror.simpleHint(cm, function(cm) {
-						return {
-							list:[
-								"[podlove-episode-downloads]",
-								"[podlove-web-player]",
-								"[podlove-episode field=\"\"]",
-								"[podlove-podcast field=\"\"]",
-								"[podlove-contributors]"
-							],
-							from: cm.getCursor()
-						};
-					});
-				}
-			},
+			autoCloseTags: true,
 			onCursorActivity: function() {
 				podlove_template_editor.matchHighlight("CodeMirror-matchhighlight");
 			}

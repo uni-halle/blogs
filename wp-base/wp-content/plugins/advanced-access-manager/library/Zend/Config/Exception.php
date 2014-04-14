@@ -20,9 +20,9 @@
  */
 
 /**
- * @see Zend_Exception
+ * File has been modified by Vasyl Martyniuk <martyniuk.vasyl@gmail.com> to fit the
+ * project needs.
  */
-require_once 'Zend/Exception.php';
 
 /**
  * @category   Zend

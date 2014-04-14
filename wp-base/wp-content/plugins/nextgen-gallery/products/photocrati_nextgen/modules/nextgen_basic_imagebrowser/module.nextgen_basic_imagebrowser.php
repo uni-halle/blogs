@@ -7,7 +7,7 @@
 ***/
 
 define(
-	'NEXTGEN_GALLERY_NEXTGEN_BASIC_IMAGEBROWSER',
+	'NGG_BASIC_IMAGEBROWSER',
 	'photocrati-nextgen_basic_imagebrowser'
 );
 
@@ -19,7 +19,7 @@ class M_NextGen_Basic_ImageBrowser extends C_Base_Module
 			'photocrati-nextgen_basic_imagebrowser',
 			'NextGEN Basic ImageBrowser',
 			'Provides the NextGEN Basic ImageBrowser Display Type',
-            '0.3',
+            '0.7',
 			'http://www.nextgen-gallery.com',
 			'Photocrati Media',
 			'http://www.photocrati.com'
@@ -59,23 +59,28 @@ class M_NextGen_Basic_ImageBrowser extends C_Base_Module
 			'I_Routing_App',			'A_NextGen_Basic_ImageBrowser_Urls'
 		);
 
-		// Provide the imagebrowser form
-		$this->get_registry()->add_adapter(
-			'I_Form',
-			'A_NextGen_Basic_ImageBrowser_Form',
-			$this->module_id
-		);
-
-        // Provides the setting forms
-        $this->get_registry()->add_adapter(
-            'I_Form_Manager',
-            'A_NextGen_Basic_ImageBrowser_Forms'
-        );
+        if (is_admin()) {
+            // Provide the imagebrowser form
+            $this->get_registry()->add_adapter(
+                'I_Form',
+                'A_NextGen_Basic_ImageBrowser_Form',
+                $this->module_id
+            );
+            // Provides the setting forms
+            $this->get_registry()->add_adapter(
+                'I_Form_Manager',
+                'A_NextGen_Basic_ImageBrowser_Forms'
+            );
+        }
 	}
 
 	function _register_hooks()
 	{
-		C_NextGen_Shortcode_Manager::add('imagebrowser', array(&$this, 'render_shortcode'));
+        if (!defined('NGG_DISABLE_LEGACY_SHORTCODES') || !NGG_DISABLE_LEGACY_SHORTCODES)
+        {
+            C_NextGen_Shortcode_Manager::add('imagebrowser', array(&$this, 'render_shortcode'));
+        }
+        C_NextGen_Shortcode_Manager::add('nggimagebrowser', array(&$this, 'render_shortcode'));
 	}
 
     /**
@@ -95,7 +100,7 @@ class M_NextGen_Basic_ImageBrowser extends C_Base_Module
     {
         $params['gallery_ids']  = $this->_get_param('id', NULL, $params);
         $params['source']       = $this->_get_param('source', 'galleries', $params);
-        $params['display_type'] = $this->_get_param('display_type', NEXTGEN_GALLERY_NEXTGEN_BASIC_IMAGEBROWSER, $params);
+        $params['display_type'] = $this->_get_param('display_type', NGG_BASIC_IMAGEBROWSER, $params);
 
         unset($params['id']);
 

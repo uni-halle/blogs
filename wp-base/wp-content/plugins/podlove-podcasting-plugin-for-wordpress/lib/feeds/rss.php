@@ -47,29 +47,53 @@ class RSS {
 
 			$current_page = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
+			$feed_url_for_page = function($page) use ($feed)
+			{
+				$url = $feed->get_subscribe_url();
+
+				if ($page > 0) {
+					$url .= '?paged=' . $page;
+				}
+
+				if (isset($_GET['redirect'])) {
+					$op = $page > 0 ? '&amp;' : '?';
+					$url .= $op . "redirect=" . $_GET['redirect'];
+				}		
+
+				return $url;		
+			};
+
 			if ( $current_page < $wp_query->max_num_pages )
-				echo "\t" . sprintf( '<atom:link rel="next" href="%s?paged=%s" />', $feed->get_subscribe_url(), $current_page+1 );
+				echo "\n\t" . sprintf( '<atom:link rel="next" href="%s" />', $feed_url_for_page($current_page+1) );
 
 			if ( $current_page > 2 ) {
-				echo "\t" . sprintf( '<atom:link rel="prev" href="%s?paged=%s" />', $feed->get_subscribe_url(), $current_page-1 );
+				echo "\n\t" . sprintf( '<atom:link rel="prev" href="%s" />', $feed_url_for_page($current_page-1) );
 			} elseif ( $current_page == 2 ) {
-				echo "\t" . sprintf( '<atom:link rel="prev" href="%s" />', $feed->get_subscribe_url() );
+				echo "\n\t" . sprintf( '<atom:link rel="prev" href="%s" />', $feed_url_for_page(0) );
 			}
 
-			echo "\t" . sprintf( '<atom:link rel="first" href="%s" />', $feed->get_subscribe_url() );
-
+			echo "\n\t" . sprintf( '<atom:link rel="first" href="%s" />', $feed_url_for_page(0) );
 
 			if ( $wp_query->max_num_pages > 1 )
-				echo "\t" . sprintf( '<atom:link rel="last" href="%s?paged=%s" />', $feed->get_subscribe_url(), $wp_query->max_num_pages );
+				echo "\n\t" . sprintf( '<atom:link rel="last" href="%s" />', $feed_url_for_page($wp_query->max_num_pages) );
 
 			if ( $podcast->language )
-				echo "\t" . '<language>' . $podcast->language . '</language>';
+				echo "\n\t" . '<language>' . $podcast->language . '</language>';
 
 			do_action( 'podlove_rss2_head', $feed );
 
 		}, 9 );
 
 		$posts_per_page = $feed->limit_items == 0 ? get_option( 'posts_per_rss' ) : $feed->limit_items;
+
+		if ($posts_per_page == Model\Feed::ITEMS_GLOBAL_LIMIT) {
+			$posts_per_page = $podcast->limit_items;
+		}
+
+		// now override the option so WP core functions accessing the option get the "correct" value
+		add_filter('pre_option_posts_per_rss', function($_) use ($posts_per_page) {
+			return $posts_per_page;
+		});
 
 		$args = array(
 			'post_type'      => 'podcast',
@@ -82,13 +106,18 @@ class RSS {
 		 * and overrides it with the 'posts_per_rss' option. So we need to
 		 * override that option.
 		 */
-		if ( $posts_per_page > -1 ) {
-			add_filter( 'pre_option_posts_per_rss', function ( $_ ) use ( $posts_per_page ) {
-				return $posts_per_page;
-			} );
-		} else {
-			add_filter( 'post_limits', function( $limits ) { return ''; } );
-		}
+		add_filter( 'post_limits', function($limits) use ($feed) {
+			$page = get_query_var( 'paged' ) ? (int) get_query_var( 'paged' ) : 1;
+
+			$max = $feed->get_post_limit_sql();
+			$start = $max * ($page - 1);
+
+			if ($max > 0) {
+				return 'LIMIT ' . $start . ', ' . $max;
+			} else {
+				return '';
+			}
+		} );
 
 		$args = array_merge( $wp_query->query_vars, $args );
 		query_posts( $args );

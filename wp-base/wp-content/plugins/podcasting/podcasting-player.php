@@ -1,7 +1,5 @@
 <?php
 
-$podcasting_excerpt_check = false;
-
 /**
  * Handle's the various format players for Podcasting
  * @author Spiral Web Consulting
@@ -19,21 +17,16 @@ class PodcastingPlayer
 		add_action('wp_print_scripts', array($this, 'addPlayerScripts'));
 		add_action('wp_head', array($this, 'addPlayerJavascript'));
 		add_filter('the_content', array($this, 'theContent'), 50);
-		add_filter('get_the_excerpt', array($this, 'checkExcerpt'), 1);
 	}
 	
 	/**
 	 * Handle's the podcast shortcode
 	 */
 	function shortcode( $atts, $content = null ) {
-		global $post, $podcasting_excerpt_check;
-		
-		# Don't process the excerpt
-		if ( $podcasting_excerpt_check )
-			return '';
+		global $post;
 
 		# Mark the player added so it doesn't happen automatically
-		$this->_playerAdded[$post->ID] = true;
+        array_push($this->_playerAdded, $post->ID);
 
 		# Extract the information from the shortcode
 		extract( shortcode_atts( array(
@@ -204,62 +197,53 @@ class PodcastingPlayer
 	 * Add the player automatically to a post
 	 */
 	function theContent($content) {
-		global $wpdb, $post, $podcasting_excerpt_check;
+		global $wpdb, $post;
 		
-		# Don't process the excerpt
-		if ( $podcasting_excerpt_check )
-			return $content;
-		
-		# Don't automatically add the player if the page is a feed, the player has already been added, or the user has the automatic player option disabled
-		if ( is_feed() || $this->_playerAdded[$post->ID] || get_option('pod_player_location') == '' )
-			return $content;
-
-		# If there is a post id, grab the enclosures
-		if ($post->ID)
-			$enclosures = $wpdb->get_results("SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE post_id = {$post->ID} AND meta_key = 'enclosure' ORDER BY meta_id", ARRAY_A);
-
-		# Stop if no enclosures
-		if ( $enclosures == '' )
-			return $content;
-
-		# For each enclosure
-		foreach ($enclosures as $enclosure) {
-			# Parse out the enclosure information
-			$enclosure_value = explode("\n", $enclosure['meta_value']);
-			$enclosure_itunes = unserialize($enclosure_value[3]);
-			
-			# Check if the enclosure is an audio format
-			$podcast_player = ( 'mp3' == substr(trim($enclosure_value[0]), -3) ) ? true : false;
-			
-			# Check if the enclosure is a video format
-			$podcast_video_player_formats = array('m4v', 'mp4', 'mov', 'flv');
-			$podcast_video_player = ( in_array(substr(trim($enclosure_value[0]), -3), $podcast_video_player_formats) ) ? true : false;
-			
-			# Place the player in correct spot on the page
-			if ( $podcast_player )
-				if ( get_option('pod_player_location') == 'top' )
-					$content = $this->shortcode(array('format'=>'mp3'), trim($enclosure_value[0])) . $content;
-				else
-					$content .= $this->shortcode(array('format'=>'mp3'), trim($enclosure_value[0]));
-			elseif ( $podcast_video_player )
-				if ( get_option('pod_player_location') == 'top' )
-					$content = $this->shortcode(array('format'=>'video'), trim($enclosure_value[0])) . $content;
-				else
-					$content .= $this->shortcode(array('format'=>'video'), trim($enclosure_value[0]));
+        if( is_singular() && is_main_query() ) 
+        {
+    		
+    		# Don't automatically add the player if the page is a feed, the player has already been added, or the user has the automatic player option disabled
+    		if ( is_feed() || in_array($this->_playerAdded, $post->ID) || get_option('pod_player_location') == '' )
+    			return $content;
+    
+    		# If there is a post id, grab the enclosures
+    		if ($post->ID)
+    			$enclosures = $wpdb->get_results("SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE post_id = {$post->ID} AND meta_key = 'enclosure' ORDER BY meta_id", ARRAY_A);
+    
+    		# Stop if no enclosures
+    		if ( $enclosures == '' )
+    			return $content;
+    
+    		# For each enclosure
+    		foreach ($enclosures as $enclosure) {
+    			# Parse out the enclosure information
+    			$enclosure_value = explode("\n", $enclosure['meta_value']);
+    			$enclosure_itunes = unserialize($enclosure_value[3]);
+    			
+    			# Check if the enclosure is an audio format
+    			$podcast_player = ( 'mp3' == substr(trim($enclosure_value[0]), -3) ) ? true : false;
+    			
+    			# Check if the enclosure is a video format
+    			$podcast_video_player_formats = array('m4v', 'mp4', 'mov', 'flv');
+    			$podcast_video_player = ( in_array(substr(trim($enclosure_value[0]), -3), $podcast_video_player_formats) ) ? true : false;
+    			
+    			# Place the player in correct spot on the page
+    			if ( $podcast_player )
+    				if ( get_option('pod_player_location') == 'top' )
+    					$content = $this->shortcode(array('format'=>'mp3'), trim($enclosure_value[0])) . $content;
+    				else
+    					$content .= $this->shortcode(array('format'=>'mp3'), trim($enclosure_value[0]));
+    			elseif ( $podcast_video_player )
+    				if ( get_option('pod_player_location') == 'top' )
+    					$content = $this->shortcode(array('format'=>'video'), trim($enclosure_value[0])) . $content;
+    				else
+    					$content .= $this->shortcode(array('format'=>'video'), trim($enclosure_value[0]));
+    		}
 		}
-		
+        
 		return $content;
 	}
 	
-	/**
-	 * Checks for the excerpt
-	 **/
-	function checkExcerpt($content)
-	{
-		global $podcasting_excerpt_check;
-		$podcasting_excerpt_check = true;
-		return $content;
-	}
 	
 }
 

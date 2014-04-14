@@ -1,0 +1,14 @@
+.thanks {width:400px; }
+.thanks p {padding-left:20px; padding-right:20px;}
+.info { background: #FFFFCC; border: 1px dotted #D8D2A9; padding: 10px; color: #333; }
+.info a { color: #333; text-decoration: none; border-bottom: 1px dotted #333 }
+.info a:hover { color: #666; border-bottom: 1px dotted #666; }
+
+#se-basic-settings,#se-advanced-settings, #se-test-search, #se-info {margin-top: 20px;}
+#se-basic-settings .manage-column, #se-advanced-settings .manage-column {font-weight:bold;}
+#se-basic-settings.widefat, #se-advanced-settings.widefat,#se-test-search.widefat, #se-info.widefat {width:80%;}
+.se-col {width:350px;}
+.se-suboption label { font-size: smaller;margin-left:10px; color:#666;}
+
+#se-top-notice {width:80%; position:relative;}
+#se-top-notice .updated {margin:0;}

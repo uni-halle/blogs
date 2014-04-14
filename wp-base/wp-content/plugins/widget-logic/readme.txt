@@ -3,8 +3,8 @@ Contributors: alanft
 Donate link: http://www.justgiving.com/widgetlogic_cancerresearchuk
 Tags: widget, admin, conditional tags, filter, context
 Requires at least: 2.8
-Tested up to: 3.5
-Stable tag: 0.56
+Tested up to: 3.7.1
+Stable tag: 0.57
 License: GPLv2 or later
 
 Widget Logic lets you control on which pages widgets appear using WP's conditional tags. It also adds a 'widget_content' filter.
@@ -12,7 +12,7 @@ Widget Logic lets you control on which pages widgets appear using WP's condition
 == Description ==
 This plugin gives every widget an extra control field called "Widget logic" that lets you control the pages that the widget will appear on. The text field lets you use WP's [Conditional Tags](http://codex.wordpress.org/Conditional_Tags), or any general PHP code.
 
-PLEASE NOTE The widget logic you introduce is EVAL'd directly. Anyone who has access to edit widget appearance will have the right to add any code, including malicious and possibly destructive functions. There is an optional filter 'widget_logic_eval_override' which you can use to bypass the EVAL with your own code if needed. (See [Other Notes](../other_notes/)).
+PLEASE NOTE The widget logic you introduce is EVAL'd directly. Anyone who has access to edit widget appearance will have the right to add any code, including malicious and possibly destructive functions. There is an optional filter 'widget_logic_eval_override' which you can use to bypass the EVAL with your own code if needed. (See [Other Notes](other_notes/)).
 
 There is also an option to add a wordpress 'widget_content' filter -- this lets you tweak any widget's HTML to suit your theme without editing plugins and core code.
 
@@ -181,6 +181,9 @@ function make_alternating_widget_styles($content='')
 
 
 == Changelog ==
+
+= 0.57 =
+Small fixes to satisfy some define('WP_DEBUG', true) errors
 
 = 0.56 =
 Small fix to the original WP3.5 fix in 0.54 that had the side effect of failing to save logic text on newly added widgets.

@@ -1,0 +1,133 @@
+.responsive-container{
+	max-width:1200px;
+	margin:0 auto;
+}
+.site-header-half-width-logo{
+	width:38%;
+	margin:1.5% 3%;
+	float:left;	
+}
+.site-header-half-width-logo .site-title, .site-header-half-width-logo .site-description{
+	text-align:left;
+}
+.site-branding{
+	padding:3% 0;
+}
+.site-header-half-width-logo .site-branding{
+	text-align:left;
+}
+.site-header-half-width-nav{
+	width:50%;
+	float:left;
+	margin:3.5% 3% 1.5% 3%;
+	border-top:0;
+}
+.main-navigation {
+	padding:1.5% 0;
+}
+.tinynav { display: none }
+#main-nav { display: block }
+.site-slider-slider-one-image{
+	float:left;
+	width:50%;
+	margin:0;
+}
+.site-slider-slider-one-text{
+	float:left;
+	width:46%;
+	margin:0 2%;	
+}
+.site-slider-slider-one-text-heading{
+	text-align:left;
+}
+.site-slider-slider-one-text-description{
+	text-align:left;
+}
+.site-slider-slider-one-text-button{
+	text-align:left;	
+}
+.content-area{
+	width:60%;
+	margin:2% 4% 2% 2%;
+	float:left;
+}
+.site-content{
+	width:100%;
+	margin:0;	
+}
+.paging-navigation .nav-previous{
+	width:50%;
+	margin:0;	
+}
+.paging-navigation .nav-next{
+	width:50%;
+	margin:0;	
+}
+.post-navigation .nav-previous{
+	width:50%;
+}
+.post-navigation .nav-next{
+	width:50%;
+}
+.widget-area{
+	width:32%;
+	margin:2% 2% 2% 0;	
+	float:left;
+}
+.biz0ne-products-services-item{
+	float:left;
+	width:33.33%;	
+	margin:0;
+}
+.biz0ne-quote{
+	margin:0 auto 2% auto;
+}
+/* BizSix Section */
+.bizsix-welcome{
+	padding:5% 7% 5% 7%;
+}
+.bizsix-welcome h1{
+	font-size:50px;
+	font-size:5.0rem;
+}
+.bizsix-products-item-image{
+	float:left;
+	width:40%;
+	margin:0 2.5%;
+}
+.bizsix-products-item-description{
+	float:left;
+	width:50%;
+	margin:0 2.5%;
+}
+.bizsix-image-align-left{
+	text-align:left;
+}
+.bizsix-image-align-right{
+	text-align:right;
+}
+.site-info{
+	width:40%;
+	padding:5% 0;
+}
+.footer-widget-two{
+	width:30%;
+	padding:5% 0;
+}
+.footer-widget-three{
+	width:20%;
+	padding:5% 0;
+}
+.site-info h3{
+	text-align:left;
+}
+.site-info h3 a{
+	color:#515254;
+}
+.site-info p{
+	text-align:left;
+}
+.footer-search{
+	width:64%;
+	margin:20px 8% 5px 8%;	
+}

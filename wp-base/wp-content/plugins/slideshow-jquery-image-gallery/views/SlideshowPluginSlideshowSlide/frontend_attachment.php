@@ -2,14 +2,26 @@
 
 $title = $description = $url = $urlTarget = $alternativeText = $noFollow = $postId = '';
 
+$titleElementTag = $descriptionElementTag = SlideshowPluginSlideInserter::getElementTag();
+
 if (isset($properties['title']))
 {
 	$title = trim(SlideshowPluginSecurity::htmlspecialchars_allow_exceptions($properties['title']));
 }
 
+if (isset($properties['titleElementTagID']))
+{
+	$titleElementTag = SlideshowPluginSlideInserter::getElementTag($properties['titleElementTagID']);
+}
+
 if (isset($properties['description']))
 {
 	$description = trim(SlideshowPluginSecurity::htmlspecialchars_allow_exceptions($properties['description']));
+}
+
+if (isset($properties['descriptionElementTagID']))
+{
+	$descriptionElementTag = SlideshowPluginSlideInserter::getElementTag($properties['descriptionElementTagID']);
 }
 
 if (isset($properties['url']))
@@ -29,7 +41,7 @@ if (isset($properties['alternativeText']))
 
 if (isset($properties['noFollow']))
 {
-    $noFollow = ' rel="nofollow" ';
+	$noFollow = ' rel="nofollow" ';
 }
 
 if (isset($properties['postId']))
@@ -40,8 +52,18 @@ if (isset($properties['postId']))
 // Post ID should always be numeric
 if (is_numeric($postId)):
 
-	// Anchor tag is used twice
-	$anchorTagAttributes = (!empty($url) ? ' href="' . $url . '" ' : '') . (!empty($urlTarget) ? ' target="' . $urlTarget . '" ' : '') . $noFollow;
+	$anchorTag = $endAnchorTag = $anchorTagAttributes = '';
+
+	if (strlen($url) > 0)
+	{
+		$anchorTagAttributes =
+			'href="' . $url . '" ' .
+			(strlen($urlTarget) > 0 ? 'target="' . $urlTarget . '" ' : '') .
+			$noFollow;
+
+		$anchorTag    = '<a ' . $anchorTagAttributes . '>';
+		$endAnchorTag = '</a>';
+	}
 
 	// Get post from post id. Post should be able to load
 	$attachment = get_post($postId);
@@ -98,12 +120,12 @@ if (is_numeric($postId)):
 		if ($imageAvailable): ?>
 
 			<div class="slideshow_slide slideshow_slide_image">
-				<a <?php echo $anchorTagAttributes; ?>>
+				<?php echo $anchorTag; ?>
 					<img src="<?php echo htmlspecialchars($imageSrc); ?>" alt="<?php echo $alternativeText; ?>" <?php echo ($imageWidth > 0) ? 'width="' . $imageWidth . '"' : ''; ?> <?php echo ($imageHeight > 0) ? 'height="' . $imageHeight . '"' : ''; ?> />
-				</a>
-				<div class="slideshow_description slideshow_transparent">
-					<?php echo !empty($title) ? '<h2><a ' . $anchorTagAttributes . '>' . $title . '</a></h2>' : ''; ?>
-					<?php echo !empty($description) ? '<p><a ' . $anchorTagAttributes . '>' . $description . '</a></p>' : ''; ?>
+				<?php echo $endAnchorTag; ?>
+				<div class="slideshow_description_box slideshow_transparent">
+					<?php echo !empty($title) ? '<' . $titleElementTag . ' class="slideshow_title">' . $anchorTag . $title . $endAnchorTag . '</' . $titleElementTag . '>' : ''; ?>
+					<?php echo !empty($description) ? '<' . $descriptionElementTag . ' class="slideshow_description">' . $anchorTag . $description . $endAnchorTag . '</' . $descriptionElementTag . '>' : ''; ?>
 				</div>
 			</div>
 

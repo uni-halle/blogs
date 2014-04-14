@@ -373,7 +373,41 @@ abstract class Base
 			}
 		}
 
+		// @todo this is the wrong place to do this!
+		if ( isset( $_REQUEST['passwords'] ) && is_array( $_REQUEST['passwords'] ) ) {
+			foreach ( $_REQUEST['passwords'] as $password ) {
+				if ( isset( $attributes[ $password ] ) && $attributes[ $password ] !== $_REQUEST[ 'field_filler_podlove_feed' ][ $password ] ) {
+					$this->$password = crypt($attributes[ $password ], SECURE_AUTH_SALT);
+				} else {
+					$feed = \Podlove\Model\Feed::find_one_by_id($this->id);
+					$this->$password = $feed->protection_password;
+				}
+			}
+		}
 		return $this->save();
+	}
+
+	/**
+	 * Update and save a single attribute.
+	 * 	
+	 * @param  string $attribute attribute name
+	 * @param  mixed  $value
+	 * @return (bool) query success
+	 */
+	public function update_attribute($attribute, $value) {
+		global $wpdb;
+
+		$this->$attribute = $value;
+
+		$sql = sprintf(
+			"UPDATE %s SET %s = '%s' WHERE id = %s",
+			self::table_name(),
+			$attribute,
+			$value,
+			$this->id
+		);
+
+		return $wpdb->query( $sql );
 	}
 	
 	/**
@@ -493,7 +527,7 @@ abstract class Base
 		     . self::table_name()
 		     . ' ('
 		     . implode( ',', $property_sql )
-		     . ' );'
+		     . ' ) CHARACTER SET utf8;'
 		;
 		
 		$wpdb->query( $sql );
@@ -550,5 +584,13 @@ abstract class Base
 	public static function destroy() {
 		global $wpdb;
 		$wpdb->query( 'DROP TABLE ' . self::table_name() );
+	}
+
+	public static function delete_all($reset_autoincrement = true) {
+	    global $wpdb;
+	    $wpdb->query( 'TRUNCATE ' . self::table_name() );  
+
+	    if ($reset_autoincrement)
+	    	$wpdb->query( 'ALTER TABLE ' . self::table_name() . ' AUTO_INCREMENT = 1' );  
 	}
 }

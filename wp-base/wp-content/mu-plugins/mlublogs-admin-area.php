@@ -32,7 +32,7 @@ function mlublogs_admin_bar() {
 	wp_register_style('mlublogs_admin_bar_css', "$home_url/wp-content/themes/blogsmluHome/style/css/mlublogs-admin-bar.css");
 	wp_enqueue_style('mlublogs_admin_bar_css');
 }
-add_action( 'admin_bar_init', 'mlublogs_admin_bar' , 5 );
+//add_action( 'admin_bar_init', 'mlublogs_admin_bar' , 5 );
 
 // Custom Admin Bar - Remove some stuff
 function mlublogs_admin_bar_remove_links() {
@@ -67,6 +67,7 @@ function mlublogs_admin_bar_menu() {
 		'title' => __('Anleitungen'),
 		'href' => 'http://blogs.urz.uni-halle.de/blog/kategorie/anleitungen/'
 	));
+	/*
 	$wp_admin_bar->add_menu(array(
 		'id' => 'mlublogs-wp-twitter',
 		'parent' => 'mlublogs-wp',
@@ -79,6 +80,7 @@ function mlublogs_admin_bar_menu() {
 		'title' => __('Facebook'),
 		'href' => 'http://www.facebook.com/pages/blogsURZ/156259138175'
 	));
+	*/
 }
 add_action('admin_bar_menu', 'mlublogs_admin_bar_menu');
 
@@ -93,7 +95,7 @@ function mlublogs_custom_login() {
 if ( is_admin() ) {
 	
 	// admin CSS
-	add_action('admin_init', 'mlublogs_admin_init' , 4);
+	// add_action('admin_init', 'mlublogs_admin_init' , 4);
 	
 	function mlublogs_admin_init() {
 		$home_url = site_url();

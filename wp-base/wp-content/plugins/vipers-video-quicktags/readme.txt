@@ -3,7 +3,7 @@ Contributors: Viper007Bond
 Donate link: http://www.viper007bond.com/donate/
 Tags: video, quicktags, wysiwyg, tinymce, youtube, google video, dailymotion, vimeo, veoh, viddler, metacafe, blip.tv, flickr, ifilm, myspace, flv, quicktime
 Requires at least: 2.8
-Tested up to: 3.5
+Tested up to: 3.9
 Stable tag: trunk
 
 Allows easy and XHTML valid posting of videos from various websites such as YouTube, DailyMotion, Vimeo, and more.
@@ -98,6 +98,12 @@ Sure! I do this in my free time and I appreciate all donations that I get. It ma
 2. DailyMotion configuration page with Farbtastic color picker showing.
 
 == Changelog ==
+
+= v6.5.0 =
+
+* **General:** WordPress 3.9 compatibility.
+* **Editor:** Switch to native dialog box styling and drop the variable height functionality. It was too complicated to be worth it.
+* **General:** Remove the donate button. I meant to remove this years ago but kept forgetting. I'm lucky enough to work for Automattic and no longer need to the rare donation that this button brings.
 
 = v6.4.5 =
 

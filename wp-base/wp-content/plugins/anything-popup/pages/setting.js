@@ -1,6 +1,6 @@
 /**
  *     Anything Popup
- *     Copyright (C) 2011 - 2013 www.gopiplus.com
+ *     Copyright (C) 2011 - 2014 www.gopiplus.com
  *     http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
  * 
  *     This program is free software: you can redistribute it and/or modify

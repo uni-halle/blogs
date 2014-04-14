@@ -1,0 +1,64 @@
+/*
+	Red color scheme for Catch Box
+*/
+
+/* =Global
+----------------------------------------------- */
+
+body {
+	background-color: #ba3027;
+}
+#branding ul.menu li,
+#branding #access-secondary ul.menu li {
+    border-left: 1px solid #89251e;
+}
+#branding #access,
+#colophon #access-footer,
+#branding ul.menu ul a {
+	background: #89251e; /* Show a solid color for older browsers */
+	background: -moz-linear-gradient(#ba3027, #89251e);
+	background: -o-linear-gradient(#ba3027, #89251e);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ba3027), to(#89251e)); /* older webkit syntax */
+	background: -webkit-linear-gradient(#ba3027, #89251e);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ba3027', endColorstr='#89251e'); /* for IE */
+}
+#branding ul.menu ul a {
+	color: #fff;
+}
+#branding ul.menu li:hover > a,
+#branding ul.menu a:focus,
+#colophon #access-footer ul.menu a:hover,
+#colophon #access-footer ul.menu a:focus {
+	background: #ba3027; /* Show a solid color for older browsers */
+	background: -moz-linear-gradient(#89251e, #ba3027);
+	background: -o-linear-gradient(#89251e, #ba3027);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#89251e), to(#ba3027)); /* Older webkit syntax */
+	background: -webkit-linear-gradient(#89251e, #ba3027);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#89251e', endColorstr='#ba3027'); /* for IE */
+	color: #fff;
+}
+#access-secondary {
+    background-color: #ac2d24;
+}
+#branding #access-secondary ul.menu a {
+    color: #fff;
+}
+#colophon #access-footer ul.menu li {
+    border-left: 1px solid #89251e;	
+}
+#branding #access-secondary ul.menu a {
+    line-height: 2.6em;
+}
+#branding #access, #colophon #access-footer {
+	border-bottom: 1px solid #89251e;
+	margin-bottom: 0;
+}
+#content #infinite-handle span {
+	background-color: #53810a;
+}
+#content #infinite-handle span:hover {
+	background-color: #3e6107;
+}
+#site-generator {
+	border-color: #89251e;
+}

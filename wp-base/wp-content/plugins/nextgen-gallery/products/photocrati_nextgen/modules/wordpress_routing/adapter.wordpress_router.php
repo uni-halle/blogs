@@ -8,8 +8,11 @@ class A_WordPress_Router extends Mixin
 	function initialize()
 	{
 		// Set context to path if subdirectory install
-		$parts = parse_url($this->object->get_base_url());
-		if (isset($parts['path'])) $this->object->context = $parts['path'];
+		$parts = parse_url($this->object->get_base_url(FALSE));
+		if (isset($parts['path'])) {
+            $parts = explode('/index.php', $parts['path']);
+			$this->object->context = array_shift($parts);
+		}
 
 
 		$this->object->add_post_hook(
@@ -56,6 +59,18 @@ class A_WordPress_Router extends Mixin
 		return $retval;
 	}
 
+	function _add_index_dot_php_to_url($url)
+	{
+		if (strpos($url, '/index.php') === FALSE) {
+			$pattern = get_option('permalink_structure');
+			if (!$pattern OR strpos($pattern, '/index.php') !== FALSE) {
+				$url = $this->object->join_paths($url, '/index.php');
+			}
+		}
+
+		return $url;
+	}
+
 
 	function get_base_url($site_url = FALSE)
 	{
@@ -63,32 +78,20 @@ class A_WordPress_Router extends Mixin
         if ($site_url)
         {
             if (!$this->_site_url) {
-                $this->_site_url = site_url();
-				$pattern = get_option('permalink_structure');
-                if (!$pattern OR strpos($pattern, '/index.php') !== FALSE) {
-                    $this->_site_url = $this->object->join_paths(
-                        $this->_site_url, '/index.php'
-                    );
-                }
+				$this->_site_url = $this->_add_index_dot_php_to_url(site_url());
             }
             $retval = $this->_site_url;
         }
         else {
             if (!$this->_home_url) {
-                $this->_home_url = home_url();
-				$pattern = get_option('permalink_structure');
-				if (!$pattern OR strpos($pattern, '/index.php') !== FALSE) {
-                    $this->_home_url = $this->object->join_paths(
-                        $this->_home_url, '/index.php'
-                    );
-                }
+                $this->_home_url = $this->_add_index_dot_php_to_url(home_url());
             }
             $retval = $this->_home_url;
         }
         
-    if ($this->object->is_https()) {
-    	$retval = preg_replace('/^http:\\/\\//i', 'https://', $retval, 1);
-    }
+		if ($this->object->is_https()) {
+			$retval = preg_replace('/^http:\\/\\//i', 'https://', $retval, 1);
+		}
 
 		return $retval;
 	}

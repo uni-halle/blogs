@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 0.5.8 =
+* Some dropdown menu CSS tweaks.
+* New screenshot size - 880x660.
+* Updated FitVids to the latest version.
+
 = 0.5.6 =
 * Updated Hybrid Core to 1.6.
 * Minor CSS and PHP fixes to reflect changes in the framework.

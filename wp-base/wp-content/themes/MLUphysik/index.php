@@ -26,7 +26,8 @@ $options = get_option( 'MLUphysik_theme_settings' );
 <div class="tile olglogo square image masonry-brick" style="background:#fff !important; -moz-box-shadow: 1px 1px 5px #888;
 -webkit-box-shadow: 1px 1px 5px #888;
 box-shadow: 1px 1px 5px #888;">
-<a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?>" style="display: block; width:100%; height: 100%;">
+<!--<a href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?>" style="display: block; width:100%; height: 100%;">-->
+<a href="/" title="<?php bloginfo('name'); ?>" style="display: block; width:100%; height: 100%;">
 <div id="outer">
 	   <div id="phiR">
 <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">

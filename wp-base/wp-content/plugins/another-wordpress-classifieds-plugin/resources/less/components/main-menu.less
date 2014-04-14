@@ -1,0 +1,76 @@
+.awpcp-navigation {
+    .awpcp-menu-toggle {
+        background: #000 url("../images/bullet_arrow_down.png") 10px center no-repeat;
+        color: #eee;
+        cursor: pointer;
+        display: none;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 0;
+        padding: 8px 8px 8px 30px;
+        text-transform: uppercase;
+    }
+
+    ul {
+        display: block;
+        list-style: none;
+        margin: 0;
+        padding: 0px 0 15px 0;
+
+        li {
+            background: transparent no-repeat left center;
+            float: left;
+            list-style: none;
+            margin: 0 15px 10px 0;
+            padding-left: 20px;
+        }
+
+        .search-listings {
+            background-image: url("../images/search_ico.png");
+        }
+
+        .edit-listing {
+            background-image: url("../images/edit_ico.png");
+        }
+
+        .post-listing {
+            background-image: url("../images/post_ico.png");
+        }
+
+        .browse-listings {
+            background-image: url("../images/browse_ico.png");
+        }
+
+        .buy-subscription {
+            background-image: url("../images/buy_subscription_ico.png");
+        }
+    }
+}
+
+@media screen and (max-width: 44em) {
+    .awpcp-navigation {
+        .awpcp-menu-toggle {
+            display: block;
+        }
+
+        .awpcp-nav-menu {
+            display: none;
+
+            li {
+                margin-bottom: 6px;
+                width: 100%;
+                padding: 0 0 0 20px;
+                text-align: left;
+            }
+        }
+    }
+
+    .awpcp-navigation.toggle-on {
+        .awpcp-menu-toggle {
+            background-image: url("../images/bullet_arrow_up.png");
+        }
+        .awpcp-nav-menu {
+            display: block;
+        }
+    }
+}

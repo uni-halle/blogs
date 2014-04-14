@@ -3,9 +3,9 @@ hide all option-page sections
 */
 
 function timezonecalculator_hide_sections() {
-	for (var i=0;i<timezonecalculator_sections.length;i++) {
-		$('timezonecalculator_'+timezonecalculator_sections[i]).style.display="none";
-		$('timezonecalculator_'+timezonecalculator_sections[i]+'_link').className="";
+	for (var i=0; i<timezonecalculator_sections.length; i++) {
+		jQuery('#timezonecalculator_'+timezonecalculator_sections[i]+'_link').removeClass('current');
+		jQuery('#timezonecalculator_'+timezonecalculator_sections[i]).css('display', 'none');
 	}
 }
 
@@ -30,7 +30,40 @@ function timezonecalculator_open_section(section) {
 	if (my_section.length===0)
 		my_section=timezonecalculator_sections[0];
 
-	$('timezonecalculator_'+my_section).style.display="block";
-	$('timezonecalculator_'+my_section+'_link').className="current";
-	$('timezonecalculator_section').value=my_section;
+	jQuery('#timezonecalculator_'+my_section).css('display', 'block');
+	jQuery('#timezonecalculator_'+my_section+'_link').addClass('current');
+	jQuery('#timezonecalculator_section').val(my_section);
+}
+
+/*
+- shows section-links only if menu is visible
+
+- hides settings-page-menu and
+displays all settings-page-sections
+except drag-and-drop
+
+if viewport < 440px
+*/
+
+function timezonecalculator_resize_settings_page() {
+	if (jQuery(window).width()<440) {
+		if (jQuery('#timezonecalculator_menu').is(':visible')) {
+			jQuery('.timezonecalculator_section_link').hide();
+			jQuery('.timezonecalculator_section_text').show();
+
+			jQuery('#timezonecalculator_menu').hide();
+			jQuery('#timezonecalculator_form_settings > div').show();
+			jQuery('#timezonecalculator_drag_and_drop').hide();
+		}
+	}
+
+	else {
+		if (!jQuery('#timezonecalculator_menu').is(':visible')) {
+			jQuery('.timezonecalculator_section_text').hide();
+			jQuery('.timezonecalculator_section_link').show();
+
+			jQuery('#timezonecalculator_menu').show();
+			timezonecalculator_open_section(jQuery('#timezonecalculator_section').val());
+		}
+	}
 }

@@ -139,6 +139,9 @@ class PodcastingFeed {
 		if ( 'podcast' == get_query_var('feed') ) {
 			$podcast_format = get_term_by('slug', get_query_var('format'), 'podcast_format');
 			$title = $this->getOption('pod_title');
+
+// This causes the image title to mismatch - which casuses a validation error
+//   but we will keep it for different name in iTunes
 			if ( 'default-format' != get_query_var('format') && '' != get_query_var('format') && !empty($podcast_format) )
 				$title .= " ($podcast_format->name)";
 		}

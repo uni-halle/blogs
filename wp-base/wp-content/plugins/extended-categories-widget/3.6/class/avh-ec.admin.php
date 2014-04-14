@@ -29,23 +29,23 @@ class AVH_EC_Admin
         $this->core = & AVH_EC_Singleton::getInstance('AVH_EC_Core');
         $this->catgrp = & AVH_EC_Singleton::getInstance('AVH_EC_Category_Group');
 
-        add_action('wp_ajax_delete-group', array(&$this, 'ajaxDeleteGroup'));
+        add_action('wp_ajax_delete-group', array($this, 'ajaxDeleteGroup'));
 
         // Admin menu
-        add_action('admin_init', array(&$this, 'actionAdminInit'));
-        add_action('admin_menu', array(&$this, 'actionAdminMenu'));
-        add_filter('plugin_action_links_extended-categories-widget/widget_extended_categories.php', array(&$this, 'filterPluginActions'), 10, 2);
+        add_action('admin_init', array($this, 'actionAdminInit'));
+        add_action('admin_menu', array($this, 'actionAdminMenu'));
+        add_filter('plugin_action_links_extended-categories-widget/widget_extended_categories.php', array($this, 'filterPluginActions'), 10, 2);
 
         // Actions used for editing posts
-        add_action('load-post.php', array(&$this, 'actionLoadPostPage'));
-        add_action('load-page.php', array(&$this, 'actionLoadPostPage'));
+        add_action('load-post.php', array($this, 'actionLoadPostPage'));
+        add_action('load-page.php', array($this, 'actionLoadPostPage'));
 
         // Actions related to adding and deletes categories
         add_action("created_category", array($this, 'actionCreatedCategory'), 10, 2);
         add_action("delete_category", array($this, 'actionDeleteCategory'), 10, 2);
 
-        add_filter('manage_categories_group_columns', array(&$this, 'filterManageCategoriesGroupColumns'));
-        add_filter('explain_nonce_delete-avhecgroup', array(&$this, 'filterExplainNonceDeleteGroup'), 10, 2);
+        add_filter('manage_categories_group_columns', array($this, 'filterManageCategoriesGroupColumns'));
+        add_filter('explain_nonce_delete-avhecgroup', array($this, 'filterExplainNonceDeleteGroup'), 10, 2);
 
         return;
     }
@@ -53,14 +53,12 @@ class AVH_EC_Admin
     public function actionAdminInit()
     {
         if (is_admin() && isset($_GET['taxonomy']) && 'category' == $_GET['taxonomy']) {
-            add_action($_GET['taxonomy'] . '_edit_form', array(&$this, 'displayCategoryGroupForm'), 10, 2);
+            add_action($_GET['taxonomy'] . '_edit_form', array($this, 'displayCategoryGroupForm'), 10, 2);
         }
-        add_action('edit_term', array(&$this, 'handleEditTerm'), 10, 3);
+        add_action('edit_term', array($this, 'handleEditTerm'), 10, 3);
     }
 
     /**
-     *
-     *
      * Adds Category Group form
      * @WordPress action category_edit_form
      *
@@ -81,14 +79,14 @@ class AVH_EC_Admin
             $current_selection = $current_group->term_id;
         }
 
-        $cat_groups = get_terms($this->catgrp->taxonomy_name, array('hide_empty' => FALSE));
+        $cat_groups = get_terms($this->catgrp->taxonomy_name, array('hide_empty' => false));
         foreach ($cat_groups as $group) {
             $temp_cat = get_term($group->term_id, $this->catgrp->taxonomy_name, OBJECT, 'edit');
             $dropdown_value[] = $group->term_id;
             $dropdown_text[] = $temp_cat->name;
         }
 
-        $seldata ='';
+        $seldata = '';
         foreach ($dropdown_value as $key => $sel) {
             $seldata .= '<option value="' . esc_attr($sel) . '" ' . (($current_selection == $sel) ? 'selected="selected"' : '') . ' >' . esc_html(ucfirst($dropdown_text[$key])) . '</option>' . "\n";
         }
@@ -145,7 +143,7 @@ class AVH_EC_Admin
      * When a category is deleted this function is called so the category is deleted from every group as well.
      *
      * @param object $term
-     * @param int    $term_taxonomy_id
+     * @param int $term_taxonomy_id
      */
     public function actionDeleteCategory($term_id, $term_taxonomy_id)
     {
@@ -177,28 +175,28 @@ class AVH_EC_Admin
 
         // Add menu system
         $folder = $this->core->getBaseDirectory(AVHEC_PLUGIN_DIR);
-        add_menu_page('AVH Extended Categories', 'AVH Extended Categories', 'manage_options', $folder, array(&$this, 'doMenuOverview'));
-        $this->hooks['menu_overview'] = add_submenu_page($folder, 'AVH Extended Categories: ' . __('Overview', 'avh-ec'), __('Overview', 'avh-ec'), 'manage_options', $folder, array(&$this, 'doMenuOverview'));
-        $this->hooks['menu_general'] = add_submenu_page($folder, 'AVH Extended Categories: ' . __('General Options', 'avh-ec'), __('General Options', 'avh-ec'), 'manage_options', 'avhec-general', array(&$this, 'doMenuGeneral'));
-        $this->hooks['menu_category_groups'] = add_submenu_page($folder, 'AVH Extended Categories: ' . __('Category Groups', 'avh-ec'), __('Category Groups', 'avh-ec'), 'manage_options', 'avhec-grouped', array(&$this, 'doMenuCategoryGroup'));
-        $this->hooks['menu_manual_order'] = add_submenu_page($folder, 'AVH Extended Categories: ' . __('Manually Order', 'avh-ec'), __('Manually Order', 'avh-ec'), 'manage_options', 'avhec-manual-order', array(&$this, 'doMenuManualOrder'));
-        $this->hooks['menu_faq'] = add_submenu_page($folder, 'AVH Extended Categories:' . __('F.A.Q', 'avh-ec'), __('F.A.Q', 'avh-ec'), 'manage_options', 'avhec-faq', array(&$this, 'doMenuFAQ'));
+        add_menu_page('AVH Extended Categories', 'AVH Extended Categories', 'manage_options', $folder, array($this, 'doMenuOverview'));
+        $this->hooks['menu_overview'] = add_submenu_page($folder, 'AVH Extended Categories: ' . __('Overview', 'avh-ec'), __('Overview', 'avh-ec'), 'manage_options', $folder, array($this, 'doMenuOverview'));
+        $this->hooks['menu_general'] = add_submenu_page($folder, 'AVH Extended Categories: ' . __('General Options', 'avh-ec'), __('General Options', 'avh-ec'), 'manage_options', 'avhec-general', array($this, 'doMenuGeneral'));
+        $this->hooks['menu_category_groups'] = add_submenu_page($folder, 'AVH Extended Categories: ' . __('Category Groups', 'avh-ec'), __('Category Groups', 'avh-ec'), 'manage_options', 'avhec-grouped', array($this, 'doMenuCategoryGroup'));
+        $this->hooks['menu_manual_order'] = add_submenu_page($folder, 'AVH Extended Categories: ' . __('Manually Order', 'avh-ec'), __('Manually Order', 'avh-ec'), 'manage_options', 'avhec-manual-order', array($this, 'doMenuManualOrder'));
+        $this->hooks['menu_faq'] = add_submenu_page($folder, 'AVH Extended Categories:' . __('F.A.Q', 'avh-ec'), __('F.A.Q', 'avh-ec'), 'manage_options', 'avhec-faq', array($this, 'doMenuFAQ'));
 
         // Add actions for menu pages
         // Overview Menu
-        add_action('load-' . $this->hooks['menu_overview'], array(&$this, 'actionLoadPageHook_Overview'));
+        add_action('load-' . $this->hooks['menu_overview'], array($this, 'actionLoadPageHook_Overview'));
 
         // General Options Menu
-        add_action('load-' . $this->hooks['menu_general'], array(&$this, 'actionLoadPageHook_General'));
+        add_action('load-' . $this->hooks['menu_general'], array($this, 'actionLoadPageHook_General'));
 
         // Category Groups Menu
-        add_action('load-' . $this->hooks['menu_category_groups'], array(&$this, 'actionLoadPageHook_CategoryGroup'));
+        add_action('load-' . $this->hooks['menu_category_groups'], array($this, 'actionLoadPageHook_CategoryGroup'));
 
         // Manual Order Menu
-        add_action('load-' . $this->hooks['menu_manual_order'], array(&$this, 'actionLoadPageHook_ManualOrder'));
+        add_action('load-' . $this->hooks['menu_manual_order'], array($this, 'actionLoadPageHook_ManualOrder'));
 
         // FAQ Menu
-        add_action('load-' . $this->hooks['menu_faq'], array(&$this, 'actionLoadPageHook_faq'));
+        add_action('load-' . $this->hooks['menu_faq'], array($this, 'actionLoadPageHook_faq'));
     }
 
     /**
@@ -207,8 +205,8 @@ class AVH_EC_Admin
     public function actionLoadPageHook_Overview()
     {
         // Add metaboxes
-        add_meta_box('avhecBoxCategoryGroupList', __('Group Overview', 'avh-ec'), array(&$this, 'metaboxCategoryGroupList'), $this->hooks['menu_overview'], 'normal', 'core');
-        add_meta_box('avhecBoxTranslation', __('Translation', 'avh-ec'), array(&$this, 'metaboxTranslation'), $this->hooks['menu_overview'], 'normal', 'core');
+        add_meta_box('avhecBoxCategoryGroupList', __('Group Overview', 'avh-ec'), array($this, 'metaboxCategoryGroupList'), $this->hooks['menu_overview'], 'normal', 'core');
+        add_meta_box('avhecBoxTranslation', __('Translation', 'avh-ec'), array($this, 'metaboxTranslation'), $this->hooks['menu_overview'], 'normal', 'core');
 
         add_screen_option('layout_columns', array('max' => 2, 'default' => 2));
 
@@ -234,8 +232,8 @@ class AVH_EC_Admin
         global $screen_layout_columns;
 
         // This box can't be unselectd in the the Screen Options
-        // add_meta_box('avhecBoxAnnouncements', __('Announcements', 'avh-ec'), array ( &$this, 'metaboxAnnouncements' ), $this->hooks['menu_overview'], 'side', '');
-        add_meta_box('avhecBoxDonations', __('Donations', 'avh-ec'), array(&$this, 'metaboxDonations'), $this->hooks['menu_overview'], 'side', '');
+        // add_meta_box('avhecBoxAnnouncements', __('Announcements', 'avh-ec'), array ( $this, 'metaboxAnnouncements' ), $this->hooks['menu_overview'], 'side', '');
+        add_meta_box('avhecBoxDonations', __('Donations', 'avh-ec'), array($this, 'metaboxDonations'), $this->hooks['menu_overview'], 'side', '');
 
         $hide2 = '';
         switch ($screen_layout_columns) {
@@ -275,7 +273,7 @@ class AVH_EC_Admin
     public function actionLoadPageHook_General()
     {
         // Add metaboxes
-        add_meta_box('avhecBoxOptions', __('Options', 'avh-ec'), array(&$this, 'metaboxOptions'), $this->hooks['menu_general'], 'normal', 'core');
+        add_meta_box('avhecBoxOptions', __('Options', 'avh-ec'), array($this, 'metaboxOptions'), $this->hooks['menu_general'], 'normal', 'core');
 
         add_screen_option('layout_columns', array('max' => 2, 'default' => 2));
 
@@ -297,7 +295,7 @@ class AVH_EC_Admin
     {
         global $screen_layout_columns;
 
-        $groups = get_terms($this->catgrp->taxonomy_name, array('hide_empty' => FALSE));
+        $groups = get_terms($this->catgrp->taxonomy_name, array('hide_empty' => false));
         foreach ($groups as $group) {
             $group_id[] = $group->term_id;
             $groupname[] = $group->name;
@@ -365,7 +363,7 @@ class AVH_EC_Admin
         $data['actual_options'] = $actual_options;
 
         // This box can't be unselectd in the the Screen Options
-        add_meta_box('avhecBoxDonations', __('Donations', 'avh-ec'), array(&$this, 'metaboxDonations'), $this->hooks['menu_general'], 'side', 'core');
+        add_meta_box('avhecBoxDonations', __('Donations', 'avh-ec'), array($this, 'metaboxDonations'), $this->hooks['menu_general'], 'side', 'core');
 
         $hide2 = '';
         switch ($screen_layout_columns) {
@@ -420,9 +418,9 @@ class AVH_EC_Admin
     {
 
         // Add metaboxes
-        add_meta_box('avhecBoxCategoryGroupAdd', __('Add Group', 'avh-ec'), array(&$this, 'metaboxCategoryGroupAdd'), $this->hooks['menu_category_groups'], 'normal', 'core');
-        add_meta_box('avhecBoxCategoryGroupList', __('Group Overview', 'avh-ec'), array(&$this, 'metaboxCategoryGroupList'), $this->hooks['menu_category_groups'], 'side', 'core');
-        add_meta_box('avhecBoxCategoryGroupSpecialPages', __('Special Pages', 'avh-ec'), array(&$this, 'metaboxCategoryGroupSpecialPages'), $this->hooks['menu_category_groups'], 'normal', 'core');
+        add_meta_box('avhecBoxCategoryGroupAdd', __('Add Group', 'avh-ec'), array($this, 'metaboxCategoryGroupAdd'), $this->hooks['menu_category_groups'], 'normal', 'core');
+        add_meta_box('avhecBoxCategoryGroupList', __('Group Overview', 'avh-ec'), array($this, 'metaboxCategoryGroupList'), $this->hooks['menu_category_groups'], 'side', 'core');
+        add_meta_box('avhecBoxCategoryGroupSpecialPages', __('Special Pages', 'avh-ec'), array($this, 'metaboxCategoryGroupSpecialPages'), $this->hooks['menu_category_groups'], 'normal', 'core');
 
         add_screen_option('layout_columns', array('max' => 2, 'default' => 2));
 
@@ -502,7 +500,7 @@ class AVH_EC_Admin
                     $data_edit_group['edit'] = array('group_id' => $group_id, 'name' => $group->name, 'slug' => $group->slug, 'widget_title' => $widget_title, 'description' => $group->description, 'categories' => $cats);
                     $data['edit'] = array('form' => $options_edit_group, 'data' => $data_edit_group);
 
-                    add_meta_box('avhecBoxCategoryGroupEdit', __('Edit Group', 'avh-ec') . ': ' . $group->name, array(&$this, 'metaboxCategoryGroupEdit'), $this->hooks['menu_category_groups'], 'normal', 'low');
+                    add_meta_box('avhecBoxCategoryGroupEdit', __('Edit Group', 'avh-ec') . ': ' . $group->name, array($this, 'metaboxCategoryGroupEdit'), $this->hooks['menu_category_groups'], 'normal', 'low');
                     break;
                 case 'delete':
                     if (!isset($_GET['group_ID'])) {
@@ -574,7 +572,7 @@ class AVH_EC_Admin
             $this->core->saveOptions($this->core->options);
         }
         $data_special_pages['sp'] = $data_special_pages_new;
-        $cat_groups = get_terms($this->catgrp->taxonomy_name, array('hide_empty' => FALSE));
+        $cat_groups = get_terms($this->catgrp->taxonomy_name, array('hide_empty' => false));
 
         foreach ($cat_groups as $group) {
             $temp_cat = get_term($group->term_id, $this->catgrp->taxonomy_name, OBJECT, 'edit');
@@ -592,7 +590,7 @@ class AVH_EC_Admin
         $data['sp'] = array('form' => $options_special_pages, 'data' => $data_special_pages);
 
         // This box can't be unselectd in the the Screen Options
-        // add_meta_box( 'avhecBoxDonations', __( 'Donations', 'avh-ec' ), array (&$this, 'metaboxDonations' ), $this->hooks['menu_category_groups'], 'side', 'core' );
+        // add_meta_box( 'avhecBoxDonations', __( 'Donations', 'avh-ec' ), array ($this, 'metaboxDonations' ), $this->hooks['menu_category_groups'], 'side', 'core' );
 
         echo '<div class="wrap avhec-metabox-wrap">';
         echo $this->displayIcon('index');
@@ -700,7 +698,7 @@ class AVH_EC_Admin
      */
     public function actionLoadPageHook_ManualOrder()
     {
-        add_meta_box('avhecBoxManualOrder', __('Manually Order Categories', 'avh-ec'), array(&$this, 'metaboxManualOrder'), $this->hooks['menu_manual_order'], 'normal', 'core');
+        add_meta_box('avhecBoxManualOrder', __('Manually Order Categories', 'avh-ec'), array($this, 'metaboxManualOrder'), $this->hooks['menu_manual_order'], 'normal', 'core');
 
         add_screen_option('layout_columns', array('max' => 1, 'default' => 1));
 
@@ -752,8 +750,6 @@ class AVH_EC_Admin
     }
 
     /**
-     *
-     *
      * Displays the Manual Order metabox.
      *
      * @author Andrew Charlton - original
@@ -819,9 +815,9 @@ class AVH_EC_Admin
         echo '</span>';
         echo '<ul id="avhecManualOrder">';
         $results = $wpdb->get_results($wpdb->prepare("SELECT * FROM $wpdb->terms t inner join $wpdb->term_taxonomy tt on t.term_id = tt.term_id WHERE taxonomy = 'category' and parent = %d ORDER BY avhec_term_order ASC", $parentID));
-        foreach ($results as $row)
+        foreach ($results as $row) {
             echo "<li id='id_$row->term_id' class='lineitem menu-item-settings'>" . __($row->name) . "</li>";
-
+        }
         echo '</ul>';
         echo '<input type="submit" name="btnOrderCats" id="btnOrderCats" class="button-primary" 	value="' . __('Save Order', 'avh-ec') . '"	onclick="javascript:orderCats(); return true;" />';
 
@@ -854,8 +850,8 @@ class AVH_EC_Admin
      */
     public function actionLoadPageHook_faq()
     {
-        add_meta_box('avhecBoxFAQ', __('F.A.Q.', 'avh-ec'), array(&$this, 'metaboxFAQ'), $this->hooks['menu_faq'], 'normal', 'core');
-        add_meta_box('avhecBoxTranslation', __('Translation', 'avh-ec'), array(&$this, 'metaboxTranslation'), $this->hooks['menu_faq'], 'normal', 'core');
+        add_meta_box('avhecBoxFAQ', __('F.A.Q.', 'avh-ec'), array($this, 'metaboxFAQ'), $this->hooks['menu_faq'], 'normal', 'core');
+        add_meta_box('avhecBoxTranslation', __('Translation', 'avh-ec'), array($this, 'metaboxTranslation'), $this->hooks['menu_faq'], 'normal', 'core');
 
         add_screen_option('layout_columns', array('max' => 2, 'default' => 2));
 
@@ -878,8 +874,8 @@ class AVH_EC_Admin
         global $screen_layout_columns;
 
         // This box can't be unselectd in the the Screen Options
-        // add_meta_box('avhecBoxAnnouncements', __('Announcements', 'avh-ec'), array ( &$this, 'metaboxAnnouncements' ), $this->hooks['menu_faq'], 'side', 'core');
-        add_meta_box('avhecBoxDonations', __('Donations', 'avh-ec'), array(&$this, 'metaboxDonations'), $this->hooks['menu_faq'], 'side', 'core');
+        // add_meta_box('avhecBoxAnnouncements', __('Announcements', 'avh-ec'), array ( $this, 'metaboxAnnouncements' ), $this->hooks['menu_faq'], 'side', 'core');
+        add_meta_box('avhecBoxDonations', __('Donations', 'avh-ec'), array($this, 'metaboxDonations'), $this->hooks['menu_faq'], 'side', 'core');
 
         $hide2 = '';
         switch ($screen_layout_columns) {
@@ -1122,8 +1118,8 @@ class AVH_EC_Admin
     /**
      * When not using AJAX, this function is called when the deletion fails.
      *
-     * @param  string $text
-     * @param  int    $group_id
+     * @param string $text
+     * @param int $group_id
      * @return string @WordPress Filter explain_nonce_$verb-$noun
      * @see wp_explain_nonce
      */
@@ -1150,10 +1146,11 @@ class AVH_EC_Admin
             $page = preg_replace('[^a-zA-Z0-9\.\_\-]', '', $_GET['page']);
         }
 
-        if (function_exists("admin_url"))
+        if (function_exists("admin_url")) {
             return admin_url(basename($_SERVER["PHP_SELF"])) . "?page=" . $page;
-        else
+        } else {
             return $_SERVER['PHP_SELF'] . "?page=" . $page;
+        }
     }
 
     /**
@@ -1164,7 +1161,7 @@ class AVH_EC_Admin
      */
     public function printCategoryGroupRows()
     {
-        $cat_groups = get_terms($this->catgrp->taxonomy_name, array('hide_empty' => FALSE));
+        $cat_groups = get_terms($this->catgrp->taxonomy_name, array('hide_empty' => false));
 
         foreach ($cat_groups as $group) {
             if ('none' != $group->slug) {
@@ -1226,8 +1223,9 @@ class AVH_EC_Admin
             $class = 'class="' . $column_name . ' column-' . $column_name . '"';
 
             $style = '';
-            if (in_array($column_name, $hidden))
+            if (in_array($column_name, $hidden)) {
                 $style = ' style="display:none;"';
+            }
 
             $attributes = $class . $style;
 
@@ -1342,7 +1340,7 @@ class AVH_EC_Admin
     /**
      * Ouput formatted options
      *
-     * @param  array  $option_data
+     * @param array $option_data
      * @return string
      */
     public function printOptions($option_data, $option_actual)
@@ -1416,8 +1414,8 @@ class AVH_EC_Admin
     /**
      * Used in forms to set an option checked
      *
-     * @param  mixed   $checked
-     * @param  mixed   $current
+     * @param mixed $checked
+     * @param mixed $current
      * @return strings
      */
     public function isChecked($checked, $current)

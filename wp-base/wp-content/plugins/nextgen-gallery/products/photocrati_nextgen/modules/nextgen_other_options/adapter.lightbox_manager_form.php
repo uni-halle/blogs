@@ -21,12 +21,12 @@ class A_Lightbox_Manager_Form extends Mixin
         $sub_fields = array();
         $advanced_fields = array();
 
-        foreach ($form_manager->get_forms(NEXTGEN_LIGHTBOX_OPTIONS_SLUG, TRUE) as $form) {
+        foreach ($form_manager->get_forms(NGG_LIGHTBOX_OPTIONS_SLUG, TRUE) as $form) {
             $form->enqueue_static_resources();
             $sub_fields[$form->context] = $form->render(FALSE);
         }
 
-        foreach ($form_manager->get_forms(NEXTGEN_LIGHTBOX_ADVANCED_OPTIONS_SLUG, TRUE) as $form) {
+        foreach ($form_manager->get_forms(NGG_LIGHTBOX_ADVANCED_OPTIONS_SLUG, TRUE) as $form) {
             $form->enqueue_static_resources();
             $advanced_fields[$form->context] = $form->render(FALSE);
         }
@@ -40,7 +40,8 @@ class A_Lightbox_Manager_Form extends Mixin
                 'id_field'   => $mapper->get_primary_key_column(),
                 'selected'   => $this->object->get_model()->thumbEffect,
                 'sub_fields' => $sub_fields,
-                'adv_fields' => $advanced_fields
+                'adv_fields' => $advanced_fields,
+                'lightbox_global'   => $this->object->get_model()->thumbEffectContext,
             ),
             TRUE
         );
@@ -70,7 +71,6 @@ class A_Lightbox_Manager_Form extends Mixin
 		                else {
 		                    $library->display_settings[$k] = $v;
 		                }
-
 		            }
 		            
 					$mapper->save($library);
@@ -93,6 +93,11 @@ class A_Lightbox_Manager_Form extends Mixin
 					$settings->save();
 				}
 			}
+		}
+		
+		if (($thumbEffectContext = $this->object->param('thumbEffectContext'))) {
+			$settings->thumbEffectContext = $thumbEffectContext;
+			$settings->save();
 		}
 	}
 }

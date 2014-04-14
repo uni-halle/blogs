@@ -1,0 +1,30 @@
+*** Revision History ***
+===========================
+version 1.0.7		2014-02-18
+* Fixed screenshot size
+
+version 1.0.6		2014-02-08
+* Fixed a minor bug in widget
+
+version 1.0.5		2014-01-19
+* Added input sanitization for widgets
+
+version 1.0.4		2014-01-19
+* Added input sanitization for widgets
+* Removed Google Custom Search Engine Widget
+
+version 1.0.3		2014-01-19
+* fixed minor issues of links
+
+version 1.0.2		2014-01-19
+* Added support for multilevel menus
+* fixed issue of moretag
+
+version 1.0.1		2014-01-19
+* Changed screeshot size
+* Updated few variables with theme-slug
+
+version 1.0.0		2013-12-26
+* Initial Version
+
+

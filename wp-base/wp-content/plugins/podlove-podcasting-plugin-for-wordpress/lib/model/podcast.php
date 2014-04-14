@@ -1,5 +1,4 @@
 <?php
-
 namespace Podlove\Model;
 
 /**
@@ -8,7 +7,7 @@ namespace Podlove\Model;
  * There is only one podcast, that's why this is a singleton.
  * Data handling is still similar to the other models. Storage is different.
  */
-class Podcast {
+class Podcast implements Licensable {
 
 	/**
 	 * Singleton instance container.
@@ -163,6 +162,24 @@ class Podcast {
 		return $t;
 	}
 
+	public function get_license()
+	{
+		$license = new License('podcast', array(
+			'license_name'         => $this->license_name,
+			'license_url'          => $this->license_url
+		));
+		
+		return $license;
+	}
+
+	public function get_license_picture_url() {
+		return $this->get_license()->getPictureUrl();
+	}
+
+	public function get_license_html() {
+		return $this->get_license()->getHtml();
+	}
+
 	public function get_url_template() {
 		return \Podlove\get_setting( 'website', 'url_template' );
 	}
@@ -178,8 +195,12 @@ $podcast->property( 'owner_name' );
 $podcast->property( 'owner_email' );
 $podcast->property( 'publisher_name' );
 $podcast->property( 'publisher_url' );
+$podcast->property( 'license_type' );
 $podcast->property( 'license_name' );
 $podcast->property( 'license_url' );
+$podcast->property( 'license_cc_allow_modifications' );
+$podcast->property( 'license_cc_allow_commercial_use' );
+$podcast->property( 'license_cc_license_jurisdiction' );
 $podcast->property( 'keywords' );
 $podcast->property( 'category_1' );
 $podcast->property( 'category_2' );
@@ -189,6 +210,7 @@ $podcast->property( 'label' );
 $podcast->property( 'episode_prefix' );
 $podcast->property( 'media_file_base_uri' );
 $podcast->property( 'uri_delimiter' );
-$podcast->property( 'episode_number_length' );
+$podcast->property( 'limit_items' );
 $podcast->property( 'language' );
-// $podcast->property( 'url_template' );
+$podcast->property( 'complete' );
+$podcast->property( 'flattr' );

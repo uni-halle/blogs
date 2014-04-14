@@ -13,7 +13,7 @@ class AWPCP_RawShortcode {
     private $raw = array();
 
     public function __construct() {
-        add_action('init', array($this, 'init'));
+        add_action('init', array($this, 'init'), 10000);
     }
 
     public function init() {
@@ -23,10 +23,15 @@ class AWPCP_RawShortcode {
         $functions = array('my_formatter', 'theme_formatter', 'columns_formatter');
         $function = false;
 
-        foreach ($functions as $fn) if (function_exists($fn)) $function = $fn;
+        foreach ( $functions as $fn ) {
+            if ( function_exists( $fn ) ) {
+                $function = $fn;
+                break;
+            }
+        }
 
         // do nothing if we can't find one of the problematic functions
-        if (!$function) return;
+        if ( false === $function ) return;
 
         // remove ThemesForest formater filter
         remove_filter('the_content', $function, 99);

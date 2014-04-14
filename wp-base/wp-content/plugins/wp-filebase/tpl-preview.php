@@ -1,8 +1,9 @@
 <?php
 
-//define('WP_INSTALLING', true); // make wp load faster
-require(dirname(__FILE__).'/../../../wp-load.php');
-require_once(dirname(__FILE__).'/wp-filebase.php');
+if(empty($_REQUEST['type']) || empty( $_REQUEST['tag']))
+	exit;
+
+require_once('wpfb-load.php');
 wpfb_loadclass('Core');
 
 $type = $_REQUEST['type'];
@@ -30,11 +31,17 @@ wpfb_loadclass('Output','TplLib','ListTpl','AdminGuiTpls');
 <?php
 if($list) {
 	$tpl = WPFB_ListTpl::Get($tag);
+	if(is_null($tpl))
+		exit;
+	
 	echo do_shortcode($tpl->Sample(WPFB_AdminGuiTpls::$sample_cat, WPFB_AdminGuiTpls::$sample_file));
 }
 else
 {
 	$tpl_src = WPFB_Core::GetTpls($type, $tag);
+	if(!is_string($tpl_src) || empty($tpl_src))
+		exit;
+	
 	$table_found = (strpos($tpl_src, '<table') !== false);
 	if(!$list && !$table_found && strpos($tpl_src, '<tr') !== false) {
 		$tpl_src = "<table>$tpl_src</table>";

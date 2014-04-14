@@ -3,13 +3,13 @@
 Plugin Name: Readability Buttons (readability.com)
 Plugin URI: http://sparanoid.com/work/readability/
 Description: Adds readability.com widget for your site.
-Version: 2.0.8
+Version: 2.0.10
 Author: Tunghsiao Liu
 Author URI: http://sparanoid.com/
 Author Email: info@sparanoid.com
 License: GPLv2 or later
 
-  Copyright 2012 Tunghsiao Liu, aka. Sparanoid (info@sparanoid.com)
+  Copyright 2014 Tunghsiao Liu, aka. Sparanoid (info@sparanoid.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -80,7 +80,8 @@ class Readability_Widget extends WP_Widget {
 
 		extract( $args, EXTR_SKIP );
     $title 		           = apply_filters('widget_title', $instance['title']);
-    $show_read           = $instance['show_read'];
+    $show_read_now       = $instance['show_read_now'];
+    $show_read_later     = $instance['show_read_later'];
     $show_print          = $instance['show_print'];
     $show_email          = $instance['show_email'];
     $show_send_to_kindle = $instance['show_send_to_kindle'];
@@ -111,7 +112,8 @@ class Readability_Widget extends WP_Widget {
 
     	// TODO Update the widget with the new values
   		$instance['title']               = strip_tags($new_instance['title']);
-  		$instance['show_read']           = strip_tags($new_instance['show_read']);
+  		$instance['show_read_now']       = strip_tags($new_instance['show_read_now']);
+  		$instance['show_read_later']     = strip_tags($new_instance['show_read_later']);
   		$instance['show_print']          = strip_tags($new_instance['show_print']);
   		$instance['show_email']          = strip_tags($new_instance['show_email']);
   		$instance['show_send_to_kindle'] = strip_tags($new_instance['show_send_to_kindle']);
@@ -140,7 +142,8 @@ class Readability_Widget extends WP_Widget {
 		//);
 
     $title                = esc_attr($instance['title']);
-    $show_read            = esc_attr($instance['show_read']);
+    $show_read_now        = esc_attr($instance['show_read_now']);
+    $show_read_later      = esc_attr($instance['show_read_later']);
     $show_print           = esc_attr($instance['show_print']);
     $show_email           = esc_attr($instance['show_email']);
     $show_send_to_kindle  = esc_attr($instance['show_send_to_kindle']);

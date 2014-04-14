@@ -9,7 +9,9 @@ class AWPCP_UserListingsEditAd extends AWPCP_AdminListingsEditAd {
         $page = $page ? $page : 'awpcp-admin-listings-edit-ad';
         $title = $title ? $title : __('AWPCP Ad Management Panel - Listings - Edit Ad', 'AWPCP');
         parent::__construct($page, $title);
+    }
 
-        $this->sidebar = false;
+    public function show_sidebar() {
+        return false;
     }
 }

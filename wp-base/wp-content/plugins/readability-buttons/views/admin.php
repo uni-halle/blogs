@@ -5,8 +5,11 @@
 </p>
 
 <p>
-  <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('show_read'); ?>" name="<?php echo $this->get_field_name('show_read'); ?>" value="1" <?php checked( '1', $show_read ); ?>>
-  <label for="<?php echo $this->get_field_id('show_read'); ?>"><?php _e('Read Now / Later'); ?></label>
+  <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('show_read_now'); ?>" name="<?php echo $this->get_field_name('show_read_now'); ?>" value="1" <?php checked( '1', $show_read_now ); ?>>
+  <label for="<?php echo $this->get_field_id('show_read_now'); ?>"><?php _e('Read Now'); ?></label>
+  <br>
+  <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('show_read_later'); ?>" name="<?php echo $this->get_field_name('show_read_later'); ?>" value="1" <?php checked( '1', $show_read_later ); ?>>
+  <label for="<?php echo $this->get_field_id('show_read_later'); ?>"><?php _e('Read Later'); ?></label>
   <br>
   <input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('show_print'); ?>" name="<?php echo $this->get_field_name('show_print'); ?>" value="1" <?php checked( '1', $show_print ); ?>>
   <label for="<?php echo $this->get_field_id('show_print'); ?>"><?php _e('Print'); ?></label>

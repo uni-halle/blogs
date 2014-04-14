@@ -4,7 +4,11 @@ class A_NextGen_AddGallery_Ajax extends Mixin
 {
 	function cookie_dump_action()
 	{
-		return array('success' => 1);
+        foreach ($_COOKIE as $key => &$value) {
+            if (is_string($value)) $value = stripslashes($value);
+        }
+
+		return array('success' => 1, 'cookies' => $_COOKIE);
 	}
 
     function upload_image_action()
@@ -58,7 +62,7 @@ class A_NextGen_AddGallery_Ajax extends Mixin
 		                  $error = TRUE;
 		              }
 		          }
-		          catch (E_InsufficientWriteAccessException $ex) {
+		          catch (E_NggErrorException $ex) {
 		              $retval['error'] = $ex->getMessage();
 		              $error = TRUE;
 		          }
@@ -68,13 +72,13 @@ class A_NextGen_AddGallery_Ajax extends Mixin
 		              $error = TRUE;
 		          }
 		      }
-		    }
-		    else {
-          $retval['error'] = "No permissions to upload images. Try refreshing the page.";
+		}
+		else {
+          $retval['error'] = "No permissions to upload images. Try refreshing the page or ensuring that your user account has sufficient roles/privileges.";
           $error = TRUE;
-		    }
+		}
 
-        if ($error) header('HTTP/1.1 400 Bad Request');
+        if ($error) return $retval;
         else $retval['gallery_name'] = esc_html($gallery_name);
 
         return $retval;
@@ -90,7 +94,7 @@ class A_NextGen_AddGallery_Ajax extends Mixin
         {
 		      if (($dir = urldecode($this->param('dir')))) {
 		          $fs = $this->get_registry()->get_utility('I_Fs');
-		          $root = path_join($fs->get_document_root(), 'wp-content');
+		          $root = NGG_IMPORT_ROOT;
 
 		          $browse_path = $fs->join_paths($root, $dir);
 		          if (@file_exists($browse_path)) {
@@ -99,8 +103,8 @@ class A_NextGen_AddGallery_Ajax extends Mixin
 		              if( count($files) > 2 ) { /* The 2 accounts for . and .. */
 		                  $html[] = "<ul class=\"jqueryFileTree\" style=\"display: none;\">";
 		                  foreach( $files as $file ) {
-		                      $file_path = path_join($browse_path, $file);
-		                      $rel_file_path = str_replace(WP_CONTENT_DIR, '', $file_path);
+                              $file_path = $fs->join_paths($browse_path, $file);
+		                      $rel_file_path = str_replace($root, '', $file_path);
 		                      if(@file_exists($file_path) && $file != '.' && $file != '..' && is_dir($file_path) ) {
 		                          $html[] = "<li class=\"directory collapsed\"><a href=\"#\" rel=\"" . htmlentities($rel_file_path) . "/\">" . htmlentities($file) . "</a></li>";
 		                      }
@@ -118,7 +122,7 @@ class A_NextGen_AddGallery_Ajax extends Mixin
 		      }
 	      }
         else {
-          $retval['error'] = "No permissions to browse folders. Try refreshing the page.";
+          $retval['error'] = "No permissions to browse folders. Try refreshing the page or ensuring that your user account has sufficient roles/privileges.";
         }
 
         return $retval;
@@ -132,22 +136,27 @@ class A_NextGen_AddGallery_Ajax extends Mixin
         if ($this->validate_ajax_request('nextgen_upload_image'))
         {
 		      if (($folder = $this->param('folder'))) {
-		          $storage = $this->get_registry()->get_utility('I_Gallery_Storage');
-		          $fs      = $this->get_registry()->get_utility('I_Fs');
+		          $storage = C_Gallery_Storage::get_instance();
+				  $fs	   = C_Fs::get_instance();
 		          try {
-		              $retval = $storage->import_gallery_from_fs($fs->join_paths($fs->get_document_root(), 'wp-content', $folder));
+					$keep_files = $this->param('keep_location') == 'on';
+		              $retval = $storage->import_gallery_from_fs($fs->join_paths(NGG_IMPORT_ROOT, $folder), false, !$keep_files);
 		              if (!$retval) $retval = array('error' => "Could not import folder. No images found.");
 		          }
-		          catch (Exception $ex) {
-		              $retval['error'] = $ex->getMessage();
-		          }
+				  catch (E_NggErrorException $ex) {
+					  $retval['error'] = $ex->getMessage();
+				  }
+				  catch (Exception $ex) {
+					  $retval['error']            = "An unexpected error occured.";
+					  $retval['error_details']    = $ex->getMessage();
+				  }
 		      }
 		      else {
 		          $retval['error'] = "No folder specified";
 		      }
         }
         else {
-          $retval['error'] = "No permissions to import folders. Try refreshing the page.";
+          $retval['error'] = "No permissions to import folders. Try refreshing the page or ensuring that your user account has sufficient roles/privileges.";
         }
 
         return $retval;

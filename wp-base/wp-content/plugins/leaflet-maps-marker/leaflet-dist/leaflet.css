@@ -17,6 +17,7 @@
 	margin: 0px !important;
 	padding: 0px !important;
 	border: none !important;
+	display:inline !important;
 }
 .lmm-listmarkers table {
 	margin: 0px !important;
@@ -71,6 +72,7 @@
 	border:none !important;
 	border-radius:0 !important;
 	box-shadow:none !important;
+	display:inline !important;
 }
 .lmm-geo-tags { display:none!important; }
 .leaflet-container {
@@ -95,7 +97,10 @@
 .leaflet-control-layers-overlays, .leaflet-control-layers-base {
 	margin:0 !important;
 }
-/* original leaflet.css styles (check on updates!) */
+.gm-style { /*Gmap link fix*/
+	pointer-events:auto;
+}
+/* original leaflet.css styles */
 .leaflet-map-pane,
 .leaflet-tile,
 .leaflet-marker-icon,
@@ -465,12 +470,3 @@
 	font: 12px/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
 	color:#000000 !important;
 	}
-
-/*RH leave on updates to set max image width in popups. Gets overriden by extra css with set value if theme supports wp_head()  */
-.leaflet-popup-content img {
-	max-width:250px !important;
-	height:auto;
-	margin: 0px !important;
-	padding: 0px !important;
-	box-shadow:none !important;
-}

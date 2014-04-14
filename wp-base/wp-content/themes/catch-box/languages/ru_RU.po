@@ -1,0 +1,1166 @@
+# Copyright (C) 2012 the Catch Themes Team
+# This file is distributed under the  GNU General Public License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Catch Box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-20 16:41+0545\n"
+"PO-Revision-Date: 2014-03-20 16:41+0545\n"
+"Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
+"Language-Team: D'CLIC <contact@dclic.info>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_x;_ex;_n;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:14
+msgid "Error 404 - Page Not Found."
+msgstr "Ошибка 404 - Страница не найдена."
+
+#: ../404.php:18
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "Кажется, мы не можем найти то, что вы ищете."
+
+#: ../404.php:19
+msgid "This might be because:"
+msgstr "Это может быть, потому что:"
+
+#: ../404.php:20
+msgid ""
+"You have typed the web address incorrectly, or the page you were looking for "
+"may have been moved, updated or deleted."
+msgstr ""
+"Вы набрали неправильный адрес или страница, которую вы ищете, возможно, была "
+"перемещена, изменена или удалена."
+
+#: ../404.php:21
+msgid "Please try the following options instead:"
+msgstr "Пожалуйста, попробуйте следующее:"
+
+#: ../404.php:22
+msgid ""
+"Check for a mis-typed URL error, then press the refresh button on your "
+"browser or Use the search box below."
+msgstr ""
+"Убедитесь, что нет никакой ошибки в URL, а затем нажмите кнопку Обновить или "
+"воспользуйтесь формой поиска ниже."
+
+#: ../archive.php:22
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Архив за день: %s"
+
+#: ../archive.php:24
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Архив за месяц: %s"
+
+#: ../archive.php:24
+msgid "F Y"
+msgstr "F Y"
+
+#: ../archive.php:26
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Архив за год: %s"
+
+#: ../archive.php:26
+msgid "Y"
+msgstr "Y"
+
+#: ../archive.php:28
+msgid "Blog Archives"
+msgstr "Архивы блога"
+
+#: ../archive.php:52 ../author.php:69 ../category.php:45 ../index.php:32
+#: ../page-blog.php:65 ../search.php:39 ../tag.php:45
+msgid "Nothing Found"
+msgstr "Ничего не найдено"
+
+#: ../archive.php:56 ../author.php:73 ../category.php:49 ../index.php:36
+#: ../page-blog.php:69 ../tag.php:49
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+"Извините, но ничего не найдено в указанном архиве. Возможно, поиск поможет "
+"найти соответствующий пост."
+
+#: ../author.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Архивы авторов : %s"
+
+#: ../author.php:44 ../content-single.php:76
+#, php-format
+msgid "About %s"
+msgstr "О %s"
+
+#: ../category.php:16
+#, php-format
+msgid "Category Archives: %s"
+msgstr "Архивы раздела: %s"
+
+#: ../comments.php:17
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Требуется пароль для просмотра этой страницы. Пожалуйста, введите пароль для "
+"просмотра комментариев."
+
+#: ../comments.php:33
+#, php-format
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgstr "Комментарий о &ldquo;%2$s&rdquo;"
+
+#: ../comments.php:40 ../comments.php:60
+msgid "Comment navigation"
+msgstr "Навигация по комментариям"
+
+#: ../comments.php:41 ../comments.php:61
+msgid "&larr; Older Comments"
+msgstr "&larr; Старые комментарии"
+
+#: ../comments.php:42 ../comments.php:62
+msgid "Newer Comments &rarr;"
+msgstr "Новые комментарии &rarr;"
+
+#: ../comments.php:72
+msgid "Comments are closed."
+msgstr "Комментарии закрыты."
+
+#: ../content-aside.php:16 ../content-featured.php:14
+#: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
+#: ../content-link.php:16 ../content-quote.php:14 ../content-status.php:15
+#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:829
+#, php-format
+msgid "Permalink to %s"
+msgstr "Постоянная ссылка на %s"
+
+#: ../content-aside.php:17
+msgid "Aside"
+msgstr "в сторону"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgid "Reply"
+msgstr "Ответ"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgid "1"
+msgstr "1"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgid "%"
+msgstr "%"
+
+#: ../content-aside.php:33 ../content-gallery.php:32 ../content-image.php:27
+#: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
+#: ../content.php:55 ../functions.php:375
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Читать далее <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-aside.php:35 ../content-featured.php:24
+#: ../content-gallery.php:55 ../content-image.php:29 ../content-link.php:35
+#: ../content-page.php:19 ../content-quote.php:37 ../content-single.php:31
+#: ../content-status.php:36 ../content.php:57 ../image.php:87
+msgid "Pages:"
+msgstr "Страницы:"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "Leave a reply"
+msgstr "Оставить комментарий"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>1</b> Reply"
+msgstr "<b>1</b> ответ"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>%</b> Replies"
+msgstr "<b>%</b> ответов"
+
+#: ../content-aside.php:50 ../content-featured.php:51
+#: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
+#: ../content-page.php:27 ../content-quote.php:78 ../content-single.php:64
+#: ../content-status.php:51 ../content.php:100 ../functions.php:623
+#: ../functions.php:651 ../image.php:97
+msgid "Edit"
+msgstr "Изменить"
+
+#: ../content-featured.php:35 ../content-featured.php:44
+#: ../content-gallery.php:68 ../content-gallery.php:78 ../content-image.php:53
+#: ../content-image.php:62 ../content-quote.php:50 ../content-quote.php:60
+#: ../content-single.php:42 ../content-single.php:45 ../content.php:71
+#: ../content.php:81
+msgid ", "
+msgstr ", "
+
+#: ../content-featured.php:37
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Эта запись была размещена в %1$s и помечена как %2$s. Вы можете использовать "
+"это <a href=\"%3$s\" title=\"Постоянная ссылка на %4$s\" rel=\"закладка"
+"\">Постоянная ссылка</a> добавить в закладки"
+
+#: ../content-featured.php:39
+#, php-format
+msgid ""
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
+"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Эта запись была размещена в %1$s (<a href=\"%3$s\" название=\"Постоянная "
+"ссылка на %4$s\" rel=\"закладка\">постоянная ссылка</a>)."
+
+#: ../content-gallery.php:17
+msgid "Gallery"
+msgstr "Галерея"
+
+#: ../content-gallery.php:47
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgstr "Этот альбом содержит <a %1$s>%2$s фотографий</a>."
+
+#: ../content-gallery.php:72 ../content-image.php:57 ../content-quote.php:54
+#: ../content.php:75
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "<span class=\"%1$s\">Опубликовано в</span> %2$s"
+
+#: ../content-gallery.php:84 ../content-image.php:65 ../content-quote.php:66
+#: ../content.php:87
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">Помечено в качестве</span> %2$s"
+
+#: ../content-image.php:16
+msgid "Image"
+msgstr "Изображение"
+
+#: ../content-image.php:40
+#, php-format
+msgid ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by "
+"</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
+"title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+msgstr ""
+"<a href=\"%1$s\" rel=\"закладка\"><time class=\"дата\" datetime=\"%2$s\" "
+"pubdate>%3$s</time></a><span class=\"автор\"> <span class=\"sep\"> автор </"
+"span> <span class=\"VCard\"><a class=\"url fn n\" href=\"%4$s\" title=\"%5$s"
+"\" rel=\"автор\">%6$s</a></span></span>"
+
+#: ../content-image.php:45 ../functions.php:689
+#, php-format
+msgid "View all posts by %s"
+msgstr "Просмотреть все статьи %s"
+
+#: ../content-link.php:17
+msgid "Link"
+msgstr "Ссылка"
+
+#: ../content-quote.php:15
+msgid "Quote"
+msgstr "Цитата"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "No Comments &darr;"
+msgstr "Нет комментариев &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "1 Comment &darr;"
+msgstr "1 комментарий &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "% Comments &darr;"
+msgstr "% комментариев &darr;"
+
+#: ../content-single.php:47
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s by <a href=\"%6$s\">%5$s</a>. "
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+msgstr ""
+"Эта запись была размещена в %1$s и помечено как %2$s по <a href=\"%6$s\">"
+"%5$s</a> (<a href=\"%3$s\" title=\"Постоянной ссылке %4$s\" rel=\"закладка"
+"\">постоянная ссылка</a>)."
+
+#: ../content-single.php:49
+#, php-format
+msgid ""
+"This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a "
+"href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Эта запись была размещена в %1$s автор <a href=\"%6$s\">%5$s</a> (<a href="
+"\"%3$s\" title=\"Постоянная ссылка - %4$s\" rel=\"bookmark\">постоянная "
+"ссылка</a>)."
+
+#: ../content-single.php:51
+#, php-format
+msgid ""
+"This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href="
+"\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Эта статья была опубликована <a href=\"%6$s\">%5$s</a> (<a href=\"%3$s\" "
+"title=\"Постоянная ссылка на %4$s\" rel=\"закладка\">постоянная ссылка</a>)."
+
+#: ../content-single.php:80
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Просмотреть все статьи %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-status.php:16
+msgid "Status"
+msgstr "Статус"
+
+#: ../content.php:16
+msgid "Featured"
+msgstr "Популярные"
+
+#: ../footer.php:54
+msgid "Footer menu"
+msgstr "Footer menu"
+
+#: ../functions.php:109
+msgid "Primary Menu"
+msgstr "Главное меню"
+
+#: ../functions.php:110
+msgid "Secondary Menu"
+msgstr "Подменю"
+
+#: ../functions.php:111
+msgid "Footer Menu"
+msgstr "Footer Menu"
+
+#: ../functions.php:179
+msgid "Garden"
+msgstr "Garden"
+
+#: ../functions.php:185
+msgid "Flower"
+msgstr "Flower"
+
+#: ../functions.php:191
+msgid "Mountain"
+msgstr "Mountain"
+
+#: ../functions.php:343
+#, php-format
+msgid "Page %s"
+msgstr "Страница %s"
+
+#: ../functions.php:444
+msgid "Main Sidebar"
+msgstr "Основной Сайдбар"
+
+#: ../functions.php:453
+msgid "Footer Area One"
+msgstr "Footer зона первая"
+
+#: ../functions.php:455 ../functions.php:465 ../functions.php:475
+msgid "An optional widget area for your site footer"
+msgstr "Дополнительная зона виджетов для футера (footer)  вашего сайта"
+
+#: ../functions.php:463
+msgid "Footer Area Two"
+msgstr "Footer зона Вторая"
+
+#: ../functions.php:473
+msgid "Footer Area Three"
+msgstr "Footer зона Третья"
+
+#: ../functions.php:507 ../functions.php:536 ../single.php:15
+msgid "Post navigation"
+msgstr "Навигация по статьям"
+
+#: ../functions.php:515 ../functions.php:544
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Предыдущие статьи"
+
+#: ../functions.php:516 ../functions.php:545
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Новые статьи <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../functions.php:623
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: ../functions.php:640
+#, php-format
+msgid "%1$s on %2$s <span class=\"says\">said:</span>"
+msgstr "%1$s в %2$s <span class=\"говорит\">cказал :</span>"
+
+#: ../functions.php:646
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s к %2$s"
+
+#: ../functions.php:655
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации."
+
+#: ../functions.php:664
+msgid "Reply <span>&darr;</span>"
+msgstr "Ответ <span>&darr;</span>"
+
+#: ../functions.php:683
+#, php-format
+msgid ""
+"<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
+"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
+"\" rel=\"author\">%7$s</a></span></span>"
+msgstr ""
+"<span class=\"sep\">Опубликовано </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"закладка\"><time class=\"дата\" datetime=\"%3$s\" pubdate>%4$s</time></"
+"a><span class=\"автор\"> <span class=\"sep\"> автор </span> <span class="
+"\"vcard автора\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel="
+"\"автор\">%7$s</a></span></span>"
+
+#: ../functions.php:741
+msgid "ID"
+msgstr "ID"
+
+#: ../functions.php:955
+msgid "Name"
+msgstr "Имя"
+
+#: ../functions.php:957
+msgid "Email"
+msgstr "E-mail"
+
+#: ../functions.php:1324
+msgid "Primary menu"
+msgstr "Главное меню"
+
+#: ../functions.php:1326 ../functions.php:1359
+msgid "Skip to primary content"
+msgstr "Перейти к основному содержанию"
+
+#: ../functions.php:1327 ../functions.php:1360
+msgid "Skip to secondary content"
+msgstr "Перейти к дополнительному содержимому"
+
+#: ../functions.php:1357
+msgid "Secondary menu"
+msgstr "Подменю"
+
+#: ../functions.php:1379
+msgid "Copyright &copy;"
+msgstr "Copyright &copy;"
+
+#: ../functions.php:1383
+msgid ". All Rights Reserved."
+msgstr ". Все права защищены."
+
+#: ../functions.php:1386
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: ../functions.php:1386
+msgid "Powered by WordPress"
+msgstr "Работает на WordPress"
+
+#: ../functions.php:1386
+#, php-format
+msgid "Powered by %s"
+msgstr "Работает на %s"
+
+#: ../functions.php:1388 ../inc/theme-options.php:660
+msgid "http://catchthemes.com/"
+msgstr "http://catchthemes.com/"
+
+#: ../functions.php:1388
+msgid "Theme Catch Box by Catch Themes"
+msgstr "Theme Catch Box by Catch Themes"
+
+#: ../functions.php:1388
+#, php-format
+msgid "Theme: %s"
+msgstr "Тема:  %s"
+
+#: ../image.php:15
+msgid "Image navigation"
+msgstr "Навигация"
+
+#: ../image.php:16
+msgid "&larr; Previous"
+msgstr "&larr; Назад"
+
+#: ../image.php:17
+msgid "Next &rarr;"
+msgstr "Далее &rarr;"
+
+#: ../image.php:27
+#, php-format
+msgid ""
+"<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class="
+"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
+"at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> "
+"in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+msgstr ""
+"<span class=\"meta-prep meta-prep-entry-date\">Опубликован </span> <span "
+"class=\"entry-date\"><abbr class=\"опубликовано\" title=\"%1$s\">%2$s</"
+"abbr></span> à <a href=\"%3$s\" title=\"Ссылка на полноразмерное изображение"
+"\">%4$s &times; %5$s</a> в <a href=\"%6$s\" title=\"Вернуться к %7$s\" rel="
+"\"gallery\">%8$s</a>"
+
+#: ../inc/theme-options.php:104
+msgid "Favicon URL"
+msgstr "Favicon URL"
+
+#: ../inc/theme-options.php:113
+msgid "Web Clip Icon URL"
+msgstr "Web Clip Icon URL"
+
+#: ../inc/theme-options.php:122
+msgid "Color Scheme"
+msgstr "Цветовая схема"
+
+#: ../inc/theme-options.php:130
+msgid "Link Color"
+msgstr "Цвет ссылок"
+
+#: ../inc/theme-options.php:138
+msgid "Default Layout"
+msgstr "Выберите скелет сайта:"
+
+#: ../inc/theme-options.php:146
+msgid "Content layout"
+msgstr "Отображение материала"
+
+#: ../inc/theme-options.php:154
+msgid "Excerpt Length in Words"
+msgstr "Кол-во слов до \"Читать далее...\""
+
+#: ../inc/theme-options.php:162
+msgid "Feed Redirect URL"
+msgstr "Feed Redirect URL"
+
+#: ../inc/theme-options.php:170
+msgid "Move Site Title and Tagline?"
+msgstr "Move Site Title and Tagline?"
+
+#: ../inc/theme-options.php:178
+msgid "Default Display Text in Search"
+msgstr "Default Display Text in Search"
+
+#: ../inc/theme-options.php:186
+msgid "Disable Search in Header?"
+msgstr "Отключить поиск в заголовке (header)"
+
+#: ../inc/theme-options.php:194
+msgid "Enable Secondary & Footer Menu in Mobile Devices?"
+msgstr "Enable Secondary & Footer Menu in Mobile Devices?"
+
+#: ../inc/theme-options.php:202
+msgid "Custom CSS Styles"
+msgstr "Пользовательские стили CSS"
+
+#: ../inc/theme-options.php:239 ../inc/theme-options.php:240
+#: ../inc/theme-options.php:687
+msgid "Theme Options"
+msgstr "Параметры темы"
+
+#: ../inc/theme-options.php:262
+msgid "Add/Change Favicon"
+msgstr "Добавить / Изменить Favicon"
+
+#: ../inc/theme-options.php:276
+msgid "Add/Change Web Clip Icon"
+msgstr "Добавить / Изменить Web Clip Icon"
+
+#: ../inc/theme-options.php:290
+msgid "Light"
+msgstr "Светлый"
+
+#: ../inc/theme-options.php:296
+msgid "Dark"
+msgstr "Темный"
+
+#: ../inc/theme-options.php:302
+msgid "Blue"
+msgstr "Голубой"
+
+#: ../inc/theme-options.php:308
+msgid "Green"
+msgstr "Green"
+
+#: ../inc/theme-options.php:314
+msgid "Red"
+msgstr "Red"
+
+#: ../inc/theme-options.php:320
+msgid "Brown"
+msgstr "Brown"
+
+#: ../inc/theme-options.php:326
+msgid "Orange"
+msgstr "Orange"
+
+#: ../inc/theme-options.php:345
+msgid "Content on left"
+msgstr "Контент слева"
+
+#: ../inc/theme-options.php:350
+msgid "Content on right"
+msgstr "Контент справа"
+
+#: ../inc/theme-options.php:355
+msgid "One-column, no sidebar"
+msgstr "Один блок, без боковых панелей"
+
+#: ../inc/theme-options.php:373
+msgid "Show excerpt"
+msgstr "Показывать до \"Читать далее...\""
+
+#: ../inc/theme-options.php:378
+msgid "Show full content"
+msgstr "Показать полный контент"
+
+#: ../inc/theme-options.php:479
+msgid "Select a Color"
+msgstr "Выберите цвет"
+
+#: ../inc/theme-options.php:482
+#, php-format
+msgid "Default color: %s"
+msgstr "Цвет по умолчанию: %s"
+
+#: ../inc/theme-options.php:498
+msgid "Words"
+msgstr "слова"
+
+#: ../inc/theme-options.php:526
+msgid "Check to move above the Header/Logo Image"
+msgstr "Check to move above the Header/Logo Image"
+
+#: ../inc/theme-options.php:556
+msgid "Check to Disable"
+msgstr "Отметьте, чтобы отключить"
+
+#: ../inc/theme-options.php:571
+msgid "Check to Enable"
+msgstr "Check to Enable"
+
+#: ../inc/theme-options.php:585
+msgid "CSS Tutorial from W3Schools."
+msgstr "CSS учебник."
+
+#: ../inc/theme-options.php:585
+msgid "http://www.w3schools.com/css/default.asp"
+msgstr "http://htmlbook.ru/css/"
+
+#: ../inc/theme-options.php:585
+msgid "CSS Tutorial"
+msgstr "Учебник CSS"
+
+#: ../inc/theme-options.php:585
+msgid "Click Here to Read"
+msgstr "Нажмите здесь, чтобы прочитать"
+
+#: ../inc/theme-options.php:650
+msgid "http://facebook.com/catchthemes"
+msgstr "http://facebook.com/catchthemes"
+
+#: ../inc/theme-options.php:652
+msgid "https://twitter.com/catchthemes"
+msgstr "https://twitter.com/catchthemes"
+
+#: ../inc/theme-options.php:658
+msgid "Theme Options By"
+msgstr "Theme Options By"
+
+#: ../inc/theme-options.php:660 ../inc/theme-options.php:661
+msgid "Catch Themes"
+msgstr "Catch Themes"
+
+#: ../inc/theme-options.php:667
+msgid "http://catchthemes.com/themes/catch-box-pro/"
+msgstr "http://catchthemes.com/themes/catch-box-pro/"
+
+#: ../inc/theme-options.php:667
+msgid "Upgrade to Catch Box Pro"
+msgstr "Обновить до Catch Box Pro"
+
+#: ../inc/theme-options.php:672
+msgid "http://catchthemes.com/donate/"
+msgstr "http://catchthemes.com/donate/"
+
+#: ../inc/theme-options.php:672
+msgid "Donate"
+msgstr "Пожертвования приветсвуются"
+
+#: ../inc/theme-options.php:673
+msgid "http://catchthemes.com/support/"
+msgstr "http://catchthemes.com/support/"
+
+#: ../inc/theme-options.php:673
+msgid "Support"
+msgstr "Поддержка и помощь (Eng)"
+
+#: ../inc/theme-options.php:674
+msgid "http://catchthemes.com/support-forum/forum/catch-box-public/"
+msgstr "http://catchthemes.com/support-forum/forum/catch-box-public/"
+
+#: ../inc/theme-options.php:674
+msgid "Support Forum"
+msgstr "Support Forum"
+
+#: ../inc/theme-options.php:675
+msgid "http://catchthemes.com/theme-instructions/catch-box/"
+msgstr "http://catchthemes.com/theme-instructions/catch-box/"
+
+#: ../inc/theme-options.php:675
+msgid "Theme Instructions"
+msgstr "Theme Instructions"
+
+#: ../inc/theme-options.php:676
+msgid "https://www.facebook.com/catchthemes/"
+msgstr "https://www.facebook.com/catchthemes/"
+
+#: ../inc/theme-options.php:676
+msgid "Like Catch Themes on Facebook"
+msgstr "Like Catch Themes on Facebook"
+
+#: ../inc/theme-options.php:676 ../inc/theme-options.php:805
+msgid "Facebook"
+msgstr "Facebook"
+
+#: ../inc/theme-options.php:677
+msgid "https://twitter.com/catchthemes/"
+msgstr "https://twitter.com/catchthemes/"
+
+#: ../inc/theme-options.php:677
+msgid "Follow Catch Themes on Twitter"
+msgstr "Follow Catch Themes on Twitter"
+
+#: ../inc/theme-options.php:677 ../inc/theme-options.php:810
+msgid "Twitter"
+msgstr "Twitter"
+
+#: ../inc/theme-options.php:678
+msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
+msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
+
+#: ../inc/theme-options.php:678
+msgid "Rate us 5 Star on WordPress"
+msgstr "Rate us 5 Star on WordPress"
+
+#: ../inc/theme-options.php:678
+msgid "5 Star Rating"
+msgstr "5 Star Rating"
+
+#: ../inc/theme-options.php:688
+msgid "Featured Post Slider"
+msgstr "Featured Post Slider"
+
+#: ../inc/theme-options.php:689
+msgid "Social Links"
+msgstr "Социальные сети"
+
+#: ../inc/theme-options.php:690
+msgid "Webmaster Tools"
+msgstr "Webmaster Tools"
+
+#: ../inc/theme-options.php:717
+msgid "Slider Options"
+msgstr "Параметры слайд-шоу"
+
+#: ../inc/theme-options.php:721
+msgid "Exclude Slider post from Home page posts:"
+msgstr "Исключить из слайд-шоу элементы, присутствущие на домашней страницы."
+
+#: ../inc/theme-options.php:723
+msgid "Check to disable"
+msgstr "Отметьте, чтобы отключить"
+
+#: ../inc/theme-options.php:726
+msgid "Number of Slides"
+msgstr "Количество слайдов"
+
+#: ../inc/theme-options.php:732
+msgid "Featured Post ID"
+msgstr "Featured Post ID"
+
+#: ../inc/theme-options.php:734
+msgid "Click Here To Edit"
+msgstr "Нажмите здесь, чтобы редактировать"
+
+#: ../inc/theme-options.php:740
+msgid ""
+"<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
+"Featured Slider."
+msgstr ""
+"<strong>Внимание</strong> : здесь вы добавляете ID статьи, которая должна "
+"отображаться на слайде главной странице (Homepage Featured Slider)."
+
+#: ../inc/theme-options.php:741 ../inc/theme-options.php:787
+#: ../inc/theme-options.php:914 ../inc/theme-options.php:955
+msgid "Save"
+msgstr "Сохранить"
+
+#: ../inc/theme-options.php:745
+msgid "Slider Effect Options"
+msgstr "Установка эффектов"
+
+#: ../inc/theme-options.php:750
+msgid "Transition Effect:"
+msgstr "Эффект перехода:"
+
+#: ../inc/theme-options.php:755
+msgid "fade"
+msgstr "мягкий"
+
+#: ../inc/theme-options.php:756
+msgid "wipe"
+msgstr "перекрытие"
+
+#: ../inc/theme-options.php:757
+msgid "scrollUp"
+msgstr "прокрутка вверх"
+
+#: ../inc/theme-options.php:758
+msgid "scrollDown"
+msgstr "прокрутка вниз"
+
+#: ../inc/theme-options.php:759
+msgid "scrollLeft"
+msgstr "прокрутка влево"
+
+#: ../inc/theme-options.php:760
+msgid "scrollRight"
+msgstr "прокрутка вправо"
+
+#: ../inc/theme-options.php:761
+msgid "blindX"
+msgstr "blindX"
+
+#: ../inc/theme-options.php:762
+msgid "blindY"
+msgstr "blindY"
+
+#: ../inc/theme-options.php:763
+msgid "blindZ"
+msgstr "blindZ"
+
+#: ../inc/theme-options.php:764
+msgid "cover"
+msgstr "перекрытие"
+
+#: ../inc/theme-options.php:765
+msgid "shuffle"
+msgstr "случайно"
+
+#: ../inc/theme-options.php:771
+msgid "Transition Delay"
+msgstr "Задержка перехода"
+
+#: ../inc/theme-options.php:774 ../inc/theme-options.php:783
+msgid "second(s)"
+msgstr "секунд"
+
+#: ../inc/theme-options.php:780
+msgid "Transition Length"
+msgstr "Длительность перехода"
+
+#: ../inc/theme-options.php:816
+msgid "Google +"
+msgstr "Google +"
+
+#: ../inc/theme-options.php:822
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: ../inc/theme-options.php:828
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: ../inc/theme-options.php:834
+msgid "Youtube"
+msgstr "Youtube"
+
+#: ../inc/theme-options.php:840
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: ../inc/theme-options.php:846
+msgid "Deviantart"
+msgstr "Deviantart"
+
+#: ../inc/theme-options.php:852
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: ../inc/theme-options.php:858
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: ../inc/theme-options.php:864
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: ../inc/theme-options.php:870
+msgid "MySpace"
+msgstr "MySpace"
+
+#: ../inc/theme-options.php:876
+msgid "Aim"
+msgstr "Aim"
+
+#: ../inc/theme-options.php:882
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../inc/theme-options.php:888
+msgid "Slideshare"
+msgstr "Slideshare"
+
+#: ../inc/theme-options.php:894
+msgid "Instagram"
+msgstr "Instagram"
+
+#: ../inc/theme-options.php:900
+msgid "Skype"
+msgstr "Skype"
+
+#: ../inc/theme-options.php:906
+msgid "Soundcloud"
+msgstr "Soundcloud"
+
+#: ../inc/theme-options.php:913
+msgid ""
+"<strong>Note:</strong> Enter the url for correponding social networking "
+"website"
+msgstr ""
+"<strong>Внимание:</strong> Введите URL, который соответствует вашей "
+"социальной сети"
+
+#: ../inc/theme-options.php:928
+msgid "Header and Footer Code"
+msgstr "Header and Footer Code"
+
+#: ../inc/theme-options.php:933
+msgid "Code to display on Header"
+msgstr "Code to display on Header"
+
+#: ../inc/theme-options.php:940
+msgid ""
+"Note: Here you can put scripts from Google, Facebook etc. which will load on "
+"Header"
+msgstr ""
+"Note: Here you can put scripts from Google, Facebook etc. which will load on "
+"Header"
+
+#: ../inc/theme-options.php:944
+msgid "Code to display on Footer"
+msgstr "Code to display on Footer"
+
+#: ../inc/theme-options.php:951
+msgid ""
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
+"will load on footer"
+msgstr ""
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
+"will load on footer"
+
+#: ../inc/widgets.php:20
+msgid "Use this widget to add any type of Ad as a widget."
+msgstr "Используйте этот виджет для подключения рекламы в виджетах"
+
+#: ../inc/widgets.php:21
+msgid "Catch Box Adspace Widget"
+msgstr "Catch Box виджет для рекламы"
+
+#: ../inc/widgets.php:38
+msgid "Title (optional):"
+msgstr "Заголовок (не обязательно):"
+
+#: ../inc/widgets.php:43
+msgid "Ad Code:"
+msgstr "Код рекламы:"
+
+#: ../inc/widgets.php:49
+msgid "Image Url:"
+msgstr "URL изображения:"
+
+#: ../inc/widgets.php:53
+msgid "Link URL:"
+msgstr "URL (ссылка):"
+
+#: ../inc/widgets.php:57
+msgid "Alt text:"
+msgstr "Текст подсказки (alt):"
+
+#: ../search.php:15
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Результаты поиска: %s"
+
+#: ../search.php:43
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+"Извините, ничего не найдено по вашему запросу. Пожалуйста, попробуйте ввести "
+"другие ключевые слова."
+
+#: ../searchform.php:11
+msgid "Search"
+msgstr "Поиск"
+
+#: ../sidebar.php:28
+msgid "Archives"
+msgstr "Архивы"
+
+#: ../sidebar.php:37
+msgid "Meta"
+msgstr "Мета"
+
+#: ../single.php:16
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> Назад"
+
+#: ../single.php:17
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Вперед <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../tag.php:16
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Архивы ключевых слов: %s"
+
+#~ msgid "Settings saved."
+#~ msgstr "Настройки сохранены."
+
+#~ msgid ""
+#~ "Some themes provide customization options that are grouped together on a "
+#~ "Theme Options screen. If you change themes, options may change or "
+#~ "disappear, as they are theme-specific. Your current theme, Catch Box, "
+#~ "provides the following Theme Options:"
+#~ msgstr ""
+#~ "Некоторые темы имеют варианты настроек, которые группируются на экране "
+#~ "настроек темы. Если вы меняете тему, параметры могут измениться или "
+#~ "исчезнуть, потому что они имеют конкретную тему. Ваша текущая тема, Catch "
+#~ "Box предоставляет следующие возможности темы:"
+
+#~ msgid ""
+#~ "<strong>Color Scheme</strong>: You can choose a color palette of \"Light"
+#~ "\" (light background with dark text) or \"Dark\" (dark background with "
+#~ "light text) for your site."
+#~ msgstr ""
+#~ "Вы можете выбрать цветовую палитру \"Light\" (светлый фон с темным "
+#~ "текстом) или \"Dark\" (темный фон со светлым текстом) для вашего сайта."
+
+#~ msgid ""
+#~ "<strong>Link Color</strong>: You can choose the color used for text links "
+#~ "on your site. You can enter the HTML color or hex code, or you can choose "
+#~ "visually by clicking the \"Select a Color\" button to pick from a color "
+#~ "wheel."
+#~ msgstr ""
+#~ "<strong>Цвет ссылок</strong>: Вы можете выбрать цвет, используемый для "
+#~ "ссылок на сайте. Вы можете ввести HTML-цвета или шестнадцатеричный код, "
+#~ "или вы можете выбрать визуально, нажав \"Select a Color\" для выбора в "
+#~ "цветовом кругу."
+
+#~ msgid ""
+#~ "<strong>Default Layout</strong>: You can choose if you want your "
+#~ "site&#8217;s default layout to have a sidebar on the left, the right, or "
+#~ "not at all."
+#~ msgstr ""
+#~ "<strong>Default Layout</strong>: Вы можете выбрать, макет вашего сайта "
+#~ "есть с боковой панелью с левой стороны, с правой стороны, или вообще без "
+#~ "боковых панелей"
+
+#~ msgid ""
+#~ "Remember to click \"Save Changes\" to save any changes you have made to "
+#~ "the theme options."
+#~ msgstr ""
+#~ "Не забудьте нажать \"Save Changes\" , чтобы сохранить изменения, "
+#~ "внесенные в тему."
+
+#~ msgid "For more information:"
+#~ msgstr "Для получения дополнительной информации:"
+
+#~ msgid ""
+#~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
+#~ "target=\"_blank\">Documentation on Theme Options</a>"
+#~ msgstr ""
+#~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
+#~ "target=\"_blank\">Документация по настройке темы (англ.)</a>"
+
+#~ msgid ""
+#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support "
+#~ "Forums</a>"
+#~ msgstr ""
+#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Форум "
+#~ "поддержки</a>"
+
+#~ msgid "Overview"
+#~ msgstr "Обзор"
+
+#~ msgid ""
+#~ "Slider Some themes provide customization options that are grouped "
+#~ "together on a Theme Options screen. If you change themes, options may "
+#~ "change or disappear, as they are theme-specific. Your current theme, "
+#~ "Catch Box, provides the following Theme Options:"
+#~ msgstr ""
+#~ "Слайд-шоу некоторых темы предлагает варианты настроек, которые "
+#~ "группируются на экране настроек темы. Если вы меняете темы, параметры "
+#~ "могут измениться или исчезнуть, потому что они имеют конкретную тему. "
+#~ "Ваша текущая тема, Catch Box предоставляет следующие возможности темы:"
+
+#~ msgid "Webmaster Site Verification IDs"
+#~ msgstr "Webmaster Site Verification IDs"
+
+#~ msgid "Google Site Verification ID"
+#~ msgstr "Verification ID site Google"
+
+#~ msgid "Enter your Google ID number only"
+#~ msgstr "Введите только ваш Google ID "
+
+#~ msgid "Yahoo Site Verification ID"
+#~ msgstr "Site de verification d'ID Yahoo"
+
+#~ msgid "Enter your Yahoo ID number only"
+#~ msgstr "Введите только ваш Yahoo ID "
+
+#~ msgid "Bing Site Verification ID"
+#~ msgstr "Site de Verification d'ID Bing"
+
+#~ msgid "Enter your Bing ID number only"
+#~ msgstr "Введите только ваш Bing ID "
+
+#~ msgid "Webmaster Site Verification Code"
+#~ msgstr "Site de verification de code Webmaster"
+
+#~ msgid "Analytics, site stats Header code"
+#~ msgstr "Аналитика, статистика сайта (загружается в заголовке сайта)"
+
+#~ msgid "Analytics, site stats footer code"
+#~ msgstr "Аналитика, статистика сайта (загружается в подвале сайта)"
+
+#~ msgid "Viemo"
+#~ msgstr "Viemo"
+
+#~ msgid "Disable Sidebar Template"
+#~ msgstr "Désactiver la barre latérale"

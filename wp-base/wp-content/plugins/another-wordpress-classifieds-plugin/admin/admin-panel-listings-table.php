@@ -29,44 +29,17 @@ class AWPCP_Listings_Table extends WP_List_Table {
             $conditions[] = sprintf('user_id = %d', wp_get_current_user()->ID);
         }
 
-        if (!empty($params['s'])) {
-            switch ($params['search-by']) {
-                case 'id':
-                    $conditions[] = sprintf('ad_id = %d', (int) $params['s']);
-                    break;
-
-                case 'keyword':
-                    $conditions[] = sprintf('MATCH (ad_title, ad_details) AGAINST ("%s")', $params['s']);
-                    break;
-
-                case 'location':
-                    $conditions[] = sprintf('( ad_city=\'%1$s\' OR ad_state=\'%1$s\' OR ad_country=\'%1$s\' OR ad_county_village=\'%1$s\' )', $params['s']);
-                    break;
-
-                case 'user':
-                    global $wpdb;
-
-                    $sql = "SELECT DISTINCT ID FROM wp_users ";
-                    $sql.= "LEFT JOIN wp_usermeta ON (ID = user_id) ";
-                    $sql.= 'WHERE (user_login LIKE \'%%%1$s%%\') OR ';
-                    $sql.= '(meta_key = \'last_name\' AND meta_value LIKE \'%%%1$s%%\') ';
-                    $sql.= 'OR (meta_key = \'first_name\' AND meta_value LIKE \'%%%1$s%%\')';
-
-                    $users = $wpdb->get_col($wpdb->prepare($sql, $params['s']));
-
-                    if (!empty($users))
-                        $conditions[] = 'user_id IN (' . join(',', $users) . ')';
-
-                    break;
-
-                case 'title':
-                default:
-                    $conditions[] = sprintf('ad_title LIKE \'%%%s%%\'', $params['s']);
-                    break;
-            }
+        try {
+            $search_by_conditions_parser = awpcp_listings_table_search_by_condition_parser();
+            $search_by_condition = $search_by_conditions_parser->parse( $params['search-by'], $params['s']);
+            $conditions[] = $search_by_condition;
+        } catch (Exception $e) {
+            // TODO: ignore?
         }
 
         $show_unpaid = false;
+        $show_non_verified = false;
+
         switch ($params['filterby']) {
             case 'is-featured':
                 $conditions[] = 'is_featured_ad = 1';
@@ -79,6 +52,12 @@ class AWPCP_Listings_Table extends WP_List_Table {
             case 'unpaid':
                 $conditions[] = "payment_status = 'Unpaid'";
                 $show_unpaid = true;
+                $show_non_verified = true;
+                break;
+
+            case 'non-verified':
+                $conditions[] = "verified = 0";
+                $show_non_verified = true;
                 break;
 
             case 'awaiting-approval':
@@ -92,13 +71,18 @@ class AWPCP_Listings_Table extends WP_List_Table {
                 $conditions[] = sprintf($sql, $category->id);
                 break;
 
-            case 'all':
+            case 'completed':
             default:
                 break;
         }
 
-        if (!$show_unpaid)
+        if ( ! $show_unpaid ) {
             $conditions[] = "payment_status != 'Unpaid'";
+        }
+
+        if ( ! $show_non_verified ) {
+            $conditions[] = 'verified = 1';
+        }
 
         switch($params['orderby']) {
             case 'title':
@@ -152,13 +136,14 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
     public function prepare_items() {
         $query = $this->parse_query();
+
         $this->total_items = AWPCP_Ad::query(array_merge(array('fields' => 'count'), $query));
         $this->items = AWPCP_Ad::query(array_merge(array('fields' => '*'), $query));
 
         if (awpcp_request_param('filterby') == 'category') {
             $category = AWPCP_Category::find_by_id(awpcp_request_param('category'));
             if (!is_null($category)) {
-                awpcp_flash(sprintf(__('Showing Ads from %s category.'), "<strong>{$category->name}</strong>"));
+                awpcp_flash(sprintf(__('Showing Ads from %s category.', 'AWPCP'), "<strong>{$category->name}</strong>"));
             }
         }
 
@@ -187,7 +172,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $columns['payment_term'] = __('Payment Term', 'AWPCP');
         $columns['payment_status'] = __('Payment Status', 'AWPCP');
 
-        if ( function_exists( 'awpcp_show_featured_ads' ) ) {
+        if ( defined( 'AWPCP_FEATURED_ADS_MODULE' ) ) {
             $columns['featured'] = __( 'Featured', 'AWPCP' );
         }
 
@@ -221,8 +206,12 @@ class AWPCP_Listings_Table extends WP_List_Table {
                 'bulk-make-featured' => __( 'Make Featured', 'AWPCP' ),
                 'bulk-remove-featured' => __( 'Make Non Featured', 'AWPCP' ),
                 'bulk-renew' => __( 'Renew', 'AWPCP' ),
-                'bulk-spam' => __( 'Mark as SPAM', 'AWPCP' ),
+                'bulk-spam' => __( 'Mark as SPAM', 'AWPCP' )
             );
+
+            $fb = AWPCP_Facebook::instance();
+            if ( $fb->get( 'page_token' ) )
+                $actions['bulk-send-to-facebook'] = __( 'Send to Facebook', 'AWPCP' );
         }
 
         $actions['bulk-delete'] = __( 'Delete', 'AWPCP' );
@@ -235,18 +224,20 @@ class AWPCP_Listings_Table extends WP_List_Table {
             'is-featured' => 'featured-ads',
             'flagged' => 'flagged-ads',
             'unpaid' => 'unpaid-ads',
+            'non-verified' => 'non-verified-ads',
             'awaiting-approval' => 'awaiting-approval',
-            'all' => 'all',
+            'completed' => 'completed',
         );
 
-        $selected = awpcp_array_data($this->params['filterby'], 'all', $filters);
+        $selected = awpcp_array_data($this->params['filterby'], 'completed', $filters);
 
         $views = array(
             'featured-ads' => array(__('Featured', 'AWPCP'), $this->page->url(array('filterby' => 'is-featured', 'filter' => true))),
             'flagged-ads'  => array(__('Flagged', 'AWPCP'), $this->page->url(array('filterby' => 'flagged', 'filter' => true))),
             'unpaid-ads' => array(__('Unpaid', 'AWPCP'), $this->page->url(array('filterby' => 'unpaid', 'filter' => true))),
-            'awaiting-approval' => array( __( 'Awaiting Approval' ), $this->page->url( array( 'filterby' => 'awaiting-approval', 'filter' => true ) ) ),
-            'all' => array( __( 'All', 'AWPCP' ), $this->page->url( array( 'filterby' => 'all', 'filter' => false ) ) ),
+            'non-verified-ads' => array( __( 'Unverified', 'AWPCP' ), $this->page->url( array( 'filterby' => 'non-verified', 'filter' => true ) ) ),
+            'awaiting-approval' => array( __( 'Awaiting Approval', 'AWPCP' ), $this->page->url( array( 'filterby' => 'awaiting-approval', 'filter' => true ) ) ),
+            'completed' => array( __( 'Completed', 'AWPCP' ), $this->page->url( array( 'filterby' => 'completed', 'filter' => false ) ) ),
         );
 
         return $this->page->links($views, $selected);
@@ -259,13 +250,16 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $id = 'search-by';
         $label = __('Search by', 'AWPCP');
 
-        $options = array(
-            // 'id' => __('Ad ID', 'AWPCP'),
-            'title' => __('Ad Title', 'AWPCP'),
-            'keyword' => __('Keyword', 'AWPCP'),
-            'location' => __('Location', 'AWPCP'),
-            'user' => __('User', 'AWPCP')
-        );
+        $options['id'] = __('Ad ID', 'AWPCP');
+        $options['title'] = __('Ad Title', 'AWPCP');
+        $options['keyword'] = __('Keyword', 'AWPCP');
+        $options['location'] = __('Location', 'AWPCP');
+
+        if ( awpcp_current_user_is_admin() ) {
+            $options['payer-email'] = __('Payer Email', 'AWPCP');
+        }
+
+        $options['user'] = __('User', 'AWPCP');
 
         $search_by = awpcp_request_param('search-by', 'title');
 
@@ -284,14 +278,15 @@ class AWPCP_Listings_Table extends WP_List_Table {
         echo $html;
     }
 
-    public function extra_tablenav() {
+    public function extra_tablenav( $which ) {
         $ipp = $this->items_per_page;
 
         $selected = 'selected="selected"';
         $option   = '<option %2$s value="%1$s">%1$s</option>';
 
         $select = '<div class="tablenav-pages"><select name="items-per-page">';
-        foreach (array(5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100) as $value)
+        // TODO: use a single pagination form, check create_pager function in dcfunctions.php
+        foreach (array(5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 500) as $value)
             $select.= sprintf($option, $value, $value == $ipp ? $selected : '');
         $select.= '</select></div>';
 
@@ -314,7 +309,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
     public function column_title($item) {
         $title = $item->get_title();
         $url = $this->page->url(array('action' => 'view', 'id' => $item->ad_id));
-        if (awpcp_current_user_is_admin($item)) {
+        if ( awpcp_current_user_is_admin() ) {
             // TODO: build URL to view Ad inside admin
             $template = '<strong><a title="%3$s" href="%2$s">%1$s</a></strong><br/><strong>%4$s</strong>: %5$s';
             $content = sprintf( $template, $title, $url, __( 'View Ad.', 'AWPCP' ), __( 'Access Key', 'AWPCP' ), $item->get_access_key() );

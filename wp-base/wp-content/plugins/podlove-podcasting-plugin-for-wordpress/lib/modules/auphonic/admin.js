@@ -25,6 +25,7 @@ var PODLOVE = PODLOVE || {};
 	    return this.each(function() {
 
 	        var	$button  = $(this),
+	        	$htmlButton = $button.closest("button"),
 			    $idle    = $button.find(".state_idle"),
 			    $working = $button.find(".state_working"),
 			    $fail    = $button.find(".state_fail"),
@@ -33,18 +34,21 @@ var PODLOVE = PODLOVE || {};
 	        var start = function() {
 	        	$idle.hide();
 	        	$working.show();
+	        	$htmlButton.attr('disabled', 'disabled');
 	        };
 
 	        var stop = function() {
 				$working.hide();
 				$success.show().delay(750).fadeOut(200);
 				$idle.delay(750).fadeIn(200);
+				$htmlButton.removeAttr('disabled');
 	        };
 
 	        var fail = function() {
 	        	$working.hide();
 	        	$fail.show().delay(750).fadeOut(200);
 	        	$idle.delay(750).fadeIn(200);
+	        	$htmlButton.removeAttr('disabled');
 	        }
 
 	        $button.bind('start', start);
@@ -62,7 +66,7 @@ var PODLOVE = PODLOVE || {};
 			var chapters_entry = "";
 
 			$.each(production.chapters, function(index, value) {
-				chapters_entry = chapters_entry + value.start + " " + value.title;
+				chapters_entry = chapters_entry + value.start_output + " " + value.title;
 				if (value.url == "") {
 			
 				} else {
@@ -83,10 +87,12 @@ var PODLOVE = PODLOVE || {};
 
 		function get_metadata_fields(production, chapter_asset_assignment) {
 			var fields = [
-				{ field: '#title'                 , value: production.metadata.title },
-				{ field: '#_podlove_meta_subtitle', value: production.metadata.subtitle },
-				{ field: '#_podlove_meta_summary' , value: production.metadata.summary },
-				{ field: '#new-tag-post_tag'      , value: production.metadata.tags.join(" , ") },
+				{ field: '#title'                 		, value: production.metadata.title },
+				{ field: '#_podlove_meta_subtitle'		, value: production.metadata.subtitle },
+				{ field: '#_podlove_meta_summary' 		, value: production.metadata.summary },
+				{ field: '#new-tag-post_tag'      		, value: production.metadata.tags.join(" , ") },
+				{ field: '#_podlove_meta_license_name'  , value: production.metadata.license },
+				{ field: '#_podlove_meta_license_url'   , value: production.metadata.license_url }
 			];
 
 			if (chapter_asset_assignment == 'manual') {
@@ -193,6 +199,9 @@ var PODLOVE = PODLOVE || {};
 			data.metadata.subtitle = $("#_podlove_meta_subtitle").val();
 			data.metadata.summary = $("#_podlove_meta_summary").val();
 			data.metadata.year = $("#aa").val() || (new Date()).getFullYear();
+			data.metadata.license = $("#_podlove_meta_license_name").val();
+			data.metadata.license_url = $("#_podlove_meta_license_url").val();
+			data.metadata.tags = $(".the-tags").val().split(',').concat( $("#new-tag-post_tag").val().split(',') );
 				
 			if(typeof chapter_asset_assignment !== 'undefined') {
 				if (chapter_asset_assignment == 'manual' && raw_chapters !== "") {
@@ -219,17 +228,28 @@ var PODLOVE = PODLOVE || {};
 		}
 
 		function update_auphonic_production(production_uuid, callback) {
-			var url = 'https://auphonic.com/api/production/{uuid}.json'
-				data = extract_auphonic_data_from_form("update");
+			// Delete chapters before adding them again (avoid doubling of chapters)
+			var url = 'https://auphonic.com/api/production/{uuid}/chapters.json',
+				production_uuid = $("#auphonic_productions option:selected").val();
 
-		 	var xhr = PODLOVE.Auphonic.createCORSRequest("POST", url.replace("{uuid}", production_uuid));
+		 	var xhr = PODLOVE.Auphonic.createCORSRequest("DELETE", url.replace("{uuid}", production_uuid));
 		 	xhr.setRequestHeader("Content-type","application/json");
 		 	xhr.setRequestHeader("Authorization","Bearer " + PODLOVE.Auphonic.get_token());
-		 	xhr.onload = function(e) {
-		 		callback();
-		 	};
+		 	xhr.onloadend = function() {
+		 		// Once chapters are deleted update the auphonic production
+	 			var url = 'https://auphonic.com/api/production/{uuid}.json'
+	 				data = extract_auphonic_data_from_form("update");
 
-		 	xhr.send(JSON.stringify(data));
+	 		 	var xhr = PODLOVE.Auphonic.createCORSRequest("POST", url.replace("{uuid}", production_uuid));
+	 		 	xhr.setRequestHeader("Content-type","application/json");
+	 		 	xhr.setRequestHeader("Authorization","Bearer " + PODLOVE.Auphonic.get_token());
+	 		 	xhr.onload = function(e) {
+	 		 		callback();
+	 		 	};
+
+	 		 	xhr.send(JSON.stringify(data));
+		 	};
+		 	xhr.send();			
 		}
 
 		function stop_auphonic_production() {
@@ -257,7 +277,7 @@ var PODLOVE = PODLOVE || {};
 		 	};
 		 	xhr.send();
 		}
-		
+
 		/**
 		 * Create Auphonic production.
 		 */				
@@ -563,6 +583,27 @@ var PODLOVE = PODLOVE || {};
 		 	    var pad_char = typeof c !== 'undefined' ? c : '0';
 		 	    var pad = new Array(1 + p).join(pad_char);
 		 	    return (pad + n).slice(-pad.length);
+		 	},
+		 	refresh_preset_list: function( that ) {
+		 		var data = {
+		 			action: 'podlove-refresh-auphonic-presets'
+		 		};
+
+		 		$(that).html('<i class="podlove-icon-spinner rotate"></i>');
+
+		 		$.ajax({
+		 			url: ajaxurl,
+		 			data: data,
+		 			dataType: 'json',
+		 			success: function(result) {
+		 				$("#podlove_module_auphonic_auphonic_production_preset").children( 'option:not(:first)' ).remove();
+
+		 				$.each( result.data, function( index, value) {
+		 					$("#podlove_module_auphonic_auphonic_production_preset").append("<option value='" + value.uuid + "'>" + value.preset_name + "</option>");
+		 				});
+		 				$(that).html('<i class="podlove-icon-repeat"></i>');
+		 			}
+		 		});
 		 	}
 		}
 	}());
@@ -821,4 +862,8 @@ jQuery(function($) {
 	if ($("#auphonic").length && pagenow && pagenow === "podcast") {
 		PODLOVE.AuphonicImport();
 	}
+
+	$(".podlove_auphonic_production_refresh").on( 'click', function() {
+		PODLOVE.Auphonic.refresh_preset_list( this );
+	});
 });

@@ -5,30 +5,30 @@ namespace Podlove;
  * strpos wrapper that prefers mb_strpos but falls back to strpos.
  */
 function strpos($haystack, $needle, $offset = 0, $encoding = 'UTF-8') {
-	if (function_exists('mb_strpos'))
-		return mb_strpos($haystack, $needle, $offset, $encoding);
-	else
-		return strpos($haystack, $needle, $offset);
+  if (function_exists('mb_strpos'))
+    return mb_strpos($haystack, $needle, $offset, $encoding);
+  else
+    return strpos($haystack, $needle, $offset);
 }
 
 /**
  * strlen wrapper that prefers mb_strlen but falls back to strlen.
  */
 function strlen($str, $encoding = 'UTF-8') {
-	if (function_exists('mb_strlen'))
-		return mb_strlen($str, $encoding);
-	else
-		return strlen($str);
+  if (function_exists('mb_strlen'))
+    return mb_strlen($str, $encoding);
+  else
+    return strlen($str);
 }
 
 /**
  * substr wrapper that prefers mb_substr but falls back to substr.
  */
 function substr($str, $start, $length = NULL, $encoding = 'UTF-8') {
-	if (function_exists('mb_substr'))
-		return mb_substr($str, $start, $length, $encoding);
-	else
-		return substr($str, $start, $length);
+  if (function_exists('mb_substr'))
+    return mb_substr($str, $start, $length, $encoding);
+  else
+    return substr($str, $start, $length);
 }
 
 function format_bytes( $size, $decimals = 2 ) {
@@ -56,11 +56,14 @@ function get_setting( $namespace, $name ) {
 			'custom_episode_slug'    => '/podcast/%podcast%/',
 			'episode_archive' => 'on',
 			'episode_archive_slug' => '/podcast/',
-			'url_template' => '%media_file_base_url%%episode_slug%%suffix%.%format_extension%'
+			'url_template' => '%media_file_base_url%%episode_slug%%suffix%.%format_extension%',
+			'force_download' => 'on',
+			'ssl_verify_peer' => 'on'
 		),
 		'metadata' => array(
-			'enable_episode_record_date'      => 0,
-			'enable_episode_publication_date' => 0
+			'enable_episode_recording_date' => 0,
+			'enable_episode_explicit' => 0,
+			'enable_episode_license' => 0
 		),
 		'redirects' => array(
 			'podlove_setting_redirect' => array(),
@@ -104,11 +107,16 @@ function require_code_mirror() {
 	wp_register_script( 'podlove-codemirror-mode-javascript-js', $codemirror_path . 'modes/javascript/javascript.js', array( 'podlove-codemirror-js' ) );
 	wp_register_script( 'podlove-codemirror-mode-xml-js', $codemirror_path . 'modes/xml/xml.js', array( 'podlove-codemirror-js' ) );
 	wp_register_script( 'podlove-codemirror-mode-yaml-js', $codemirror_path . 'modes/yaml/yaml.js', array( 'podlove-codemirror-js' ) );
+	wp_register_script( 'podlove-codemirror-mode-twig-js', $codemirror_path . 'modes/twig/twig.js', array( 'podlove-codemirror-js' ) );
 	wp_register_script( 'podlove-codemirror-mode-htmlmixed-js', $codemirror_path . 'modes/htmlmixed/htmlmixed.js', array(
 		'podlove-codemirror-mode-css-js',
 		'podlove-codemirror-mode-javascript-js',
 		'podlove-codemirror-mode-yaml-js',
 		'podlove-codemirror-mode-xml-js'
+	) );
+	wp_register_script( 'podlove-codemirror-mode-twigmixed-js', $codemirror_path . 'modes/twigmixed/twigmixed.js', array(
+		'podlove-codemirror-mode-htmlmixed-js',
+		'podlove-codemirror-mode-twig-js'
 	) );
 
 	wp_register_script(
@@ -139,6 +147,7 @@ function require_code_mirror() {
 
 	wp_enqueue_script( 'podlove-codemirror-js' );
 	wp_enqueue_script( 'podlove-codemirror-mode-htmlmixed-js' );
+	wp_enqueue_script( 'podlove-codemirror-mode-twigmixed-js' );
 	wp_enqueue_script( 'podlove-codemirror-util-close-js' );
 	wp_enqueue_script( 'podlove-codemirror-util-match-js' );
 	wp_enqueue_script( 'podlove-codemirror-util-hint-js' );
@@ -169,6 +178,7 @@ namespace Podlove\Form;
  * 		- submit_button set to false to hide the submit button
  * 		- form          set to false to skip <form> wrapper
  * 		- attributes    optional html attributes for form tag
+ * 		- is_table      is it a table form? defaults to true
  * @param  function $callback inner form
  * @return void
  * 
@@ -217,18 +227,163 @@ function build_for( $object, $args, $callback ) {
 		<?php endforeach ?>
 	<?php endif ?>
 
-	<table class="form-table">
-		<?php call_user_func( $callback, new \Podlove\Form\Input\Builder( $object, $context ) ); ?>
-	</table>
+	<?php if ( !isset($args['is_table']) || $args['is_table'] !== false ): ?>
+		<table class="form-table">
+	<?php endif; ?>
+	<?php call_user_func( $callback, new \Podlove\Form\Input\Builder( $object, $context ) ); ?>
+	<?php if ( !isset($args['is_table']) || $args['is_table'] !== false ): ?>
+		</table>
+	<?php endif; ?>
+
 	<?php if ( ! isset( $args['submit_button'] ) || $args['submit_button'] === true ): ?>
 		<?php submit_button(); ?>
 	<?php endif ?>
+
+	<?php if ( isset($args['form_end']) && is_callable($args['form_end'])): ?>
+		<?php call_user_func( $args['form_end'] ); ?>
+	<?php endif; ?>
 
 	<?php if ( $print_form ): ?>
 		</form>
 	<?php endif ?>
 	
 	<?php
+}
+
+namespace Podlove\License;
+
+function version_per_country_cc() {
+	$version_per_country_cc = array(
+		'international' => array("version" => "3.0", "name" => "Unported"),
+		'ar' => array("version" => "2.5"),
+		'au' => array("version" => "3.0"),
+		'at' => array("version" => "3.0"),
+		'be' => array("version" => "2.0"),
+		'br' => array("version" => "3.0"),
+		'bg' => array("version" => "2.5"),
+		'ca' => array("version" => "2.5"),
+		'cl' => array("version" => "3.0"),
+		'cn' => array("version" => "3.0"),
+		'co' => array("version" => "2.5"),
+		'cr' => array("version" => "3.0"),
+		'hr' => array("version" => "3.0"),
+		'cz' => array("version" => "3.0"),
+		'dk' => array("version" => "2.5"),
+		'ec' => array("version" => "3.0"),
+		'eg' => array("version" => "3.0"),
+		'ee' => array("version" => "3.0"),
+		'fi' => array("version" => "1.0"),
+		'fr' => array("version" => "3.0"),
+		'de' => array("version" => "3.0"),
+		'gr' => array("version" => "3.0"),
+		'gt' => array("version" => "3.0"),
+		'hk' => array("version" => "3.0"),
+		'hu' => array("version" => "2.5"),
+		'igo' => array("version" => "3.0"),
+		'in' => array("version" => "2.5"),
+		'ie' => array("version" => "3.0"),
+		'il' => array("version" => "2.5"),
+		'it' => array("version" => "3.0"),
+		'jp' => array("version" => "2.1"),
+		'lu' => array("version" => "3.0"),
+		'mk' => array("version" => "2.5"),
+		'my' => array("version" => "2.5"),
+		'mt' => array("version" => "2.5"),
+		'mx' => array("version" => "2.5"),
+		'nl' => array("version" => "3.0"),
+		'nz' => array("version" => "3.0"),
+		'no' => array("version" => "3.0"),
+		'pe' => array("version" => "2.5"),
+		'ph' => array("version" => "3.0"),
+		'pl' => array("version" => "3.0"),
+		'pt' => array("version" => "3.0"),
+		'pr' => array("version" => "3.0"),
+		'ro' => array("version" => "3.0"),
+		'rs' => array("version" => "3.0"),
+		'sg' => array("version" => "3.0"),
+		'si' => array("version" => "2.5"),
+		'za' => array("version" => "2.5"),
+		'kp' => array("version" => "2.0"),
+		'es' => array("version" => "3.0"),
+		'se' => array("version" => "2.5"),
+		'ch' => array("version" => "3.0"),
+		'tw' => array("version" => "3.0"),
+		'th' => array("version" => "3.0"),
+		'gb' => array("version" => "2.0"),
+		'gb_sc' => array("version" => "2.5"),
+		'ug' => array("version" => "3.0"),
+		'us' => array("version" => "3.0"),
+		'vn' => array("version" => "3.0")		
+	);
+	asort( $version_per_country_cc );
+	return $version_per_country_cc;
+}
+
+function locales_cc() {
+	$locales = array(
+		'international' => "International",
+		'ar' => "Argentina",
+		'au' => "Australia",
+		'at' => "Austria",
+		'be' => "Belgium",
+		'br' => "Brazil",
+		'bg' => "Bulgaria",
+		'ca' => "Canada",
+		'cl' => "Chile",
+		'cn' => "China Mainland",
+		'co' => "Colombia",
+		'cr' => "Costa Rica",
+		'hr' => "Croatia",
+		'cz' => "Czech Republic",
+		'dk' => "Denmark",
+		'ec' => "Ecuador",
+		'eg' => "Egypt",
+		'ee' => "Estonia",
+		'fi' => "Finland",
+		'fr' => "France",
+		'de' => "Germany",
+		'gr' => "Greece",
+		'gt' => "Guatemala",
+		'hk' => "Hong Kong",
+		'hu' => "Hungary",
+		'igo' => "IGO",
+		'in' => "India",
+		'ie' => "Ireland",
+		'il' => "Israel",
+		'it' => "Italy",
+		'jp' => "Japan",
+		'lu' => "Luxembourg",
+		'mk' => "Macedonia",
+		'my' => "Malaysia",
+		'mt' => "Malta",
+		'mx' => "Mexico",
+		'nl' => "Netherlands",
+		'nz' => "New Zealand",
+		'no' => "Norway",
+		'pe' => "Peru",
+		'ph' => "Philippines",
+		'pl' => "Poland",
+		'pt' => "Portugal",
+		'pr' => "Puerto Rico",
+		'ro' => "Romania",
+		'rs' => "Serbia",
+		'sg' => "Singapore",
+		'si' => "Slovenia",
+		'za' => "South Africa",
+		'kp' => "South Korea",
+		'es' => "Spain",
+		'se' => "Sweden",
+		'ch' => "Switzerland",
+		'tw' => "Taiwan",
+		'th' => "Thailand",
+		'gb' => "UK: England & Wales",
+		'gb_sc' => "UK: Scotland",
+		'ug' => "Uganda",
+		'us' => "United States",
+		'vn' => "Vietnam"
+	);
+	asort( $locales );
+	return $locales;
 }
 
 namespace Podlove\Locale;
@@ -548,4 +703,19 @@ function categories( $prefix_subcategories = true ) {
 	}
  
 	return $temp;
+}
+
+namespace Podlove\Flattr;
+
+function getFlattrScript() {
+	return "<script type=\"text/javascript\">\n
+		/* <![CDATA[ */
+	    (function() {
+		     var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+		     s.type = 'text/javascript';
+		     s.async = true;
+		    s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+		    t.parentNode.insertBefore(s, t);
+			 })();
+		/* ]]> */</script>\n";
 }

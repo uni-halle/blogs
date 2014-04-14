@@ -1241,6 +1241,9 @@ overflow: hidden;
 font-size: 18px;
 letter-spacing: 1px;
 line-height: 1.1;
+-webkit-hyphens: auto;
+-moz-hyphens: auto;
+hyphens: auto;
 }
 
 /*****accordeon****/
@@ -1280,16 +1283,17 @@ margin-left: -16px;
 
 content: "\e01a ";
 }
-.post30 .olgaccordeon strong {
+.post30 .olgaccordeon h4 strong {
 display: inline-block;
 width: 82px;
 text-align: right;
 }
-.post30 .olgaccordeon strong:after {
+.post30 .olgaccordeon h4 strong:after {
 content: "  |  ";
 margin-right: 5px;
 }
 /*******spezielle styles z.b. slider*******/
+.post111 .post .post-thumbnail, /*fotostory*/
 .post32 .post .post-thumbnail,
 .post32 .post h1,
 .post38 .post-thumbnail {display: none;}
@@ -1387,6 +1391,10 @@ zoom:1.02;
     from { -moz-transform: rotate(0deg) translateX(2px) rotate(0deg);}
     to   { -moz-transform: rotate(360deg) translateX(2px) rotate(-360deg); }
 }
+@-moz-keyframes red {
+    from { transform: rotate(0deg) translateX(2px) rotate(0deg);}
+    to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
+}
 
 @-o-keyframes red {
     from { -o-transform: rotate(0deg) translateX(2px) rotate(0deg); }
@@ -1395,7 +1403,7 @@ zoom:1.02;
 
 @keyframes red {
     from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
-    to   { transform: rotate(360deg) translateX(2px) rotate(-360deg; }
+    to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
     }
 
 
@@ -1452,12 +1460,41 @@ text-align: left;
 width: 150px;
 margin: 11px;
 padding: 5px;
-height: 188px;
+height: 260px;
 overflow: hidden;
 text-overflow: ellipsis;
 }
 
+/*fotostory*/
+.post111 .gallery-item {
+float: left;
+text-align: left;
+width: 282px;
+height: auto;
+margin: 11px 0;
+padding: 5px 0;
+}
 
+.post111 .gallery-item:first-child,
+.post111 .gallery-item:nth-child(17),
+.post111 .gallery-item:nth-last-child(-n+2) {
+	width: 100%;
+} 
+.post111 .gallery-caption {
+	height: 150px;
+	overflow-y: auto;
+	word-wrap: break-word;
+text-overflow: ellipsis;
+/* font-size: 78%; */
+line-height: 1.2;
+padding: 0 0 0 5px;
+max-width: 125px;
+font-size: small;
+}
+.metro .tile.wide.post111.imagetext .box img {
+width: 150px;
+}
+/*end fotostory*/
 
 .gallery-item a {border: none;}
 /******responsive*******/

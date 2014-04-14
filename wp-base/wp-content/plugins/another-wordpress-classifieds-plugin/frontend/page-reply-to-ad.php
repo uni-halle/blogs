@@ -1,6 +1,6 @@
 <?php
 
-require_once(AWPCP_DIR . '/classes/helpers/page.php');
+require_once(AWPCP_DIR . '/includes/helpers/page.php');
 
 
 /**
@@ -169,11 +169,11 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
 
         $sender_name = stripslashes($form['sender_name']);
         $sender_email = stripslashes($form['sender_email']);
-        $message = strip_html_tags(stripslashes($form['message']));
+        $message = awpcp_strip_html_tags(stripslashes($form['message']));
 
 
         if (get_awpcp_option('usesenderemailinsteadofadmin')) {
-            $sender = strip_html_tags($sender_name);
+            $sender = awpcp_strip_html_tags($sender_name);
             $from = $sender_email;
         } else {
             $sender = $nameofsite;

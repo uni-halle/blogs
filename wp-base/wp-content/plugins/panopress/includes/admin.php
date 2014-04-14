@@ -34,15 +34,6 @@ var PP_SETTINGS_HEIGHT = \'' . $pp_settings[PP_SETTINGS_HEIGHT] . '\';
 ';
 }
 /***********************************************************************
- * print media headers
- **********************************************************************/
-function pp_media_headers() {
-	if ( PP_DEFAULT_WP_MEDIA )
-		echo '<script type="text/javascript" src="' . plugins_url( '/js/media.js', dirname( __FILE__ ) ) . '"></script>
-		<script type="text/javascript" src="/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
-		';
-}
-/***********************************************************************
  * add tynymce plugin
  **********************************************************************/
 function pp_load_tinymce_plugin($plugin_array) {
@@ -89,7 +80,6 @@ if (is_admin()) {
 	add_action( 'admin_init', 'pp_admin_init' );
 	add_action( 'admin_menu', 'pp_admin_menu' );
 	add_action( 'admin_print_scripts', 'pp_admin_print_scripts' );
-	add_action( 'admin_head-media-upload-popup', 'pp_media_headers' );
 	add_filter( 'contextual_help', 'pp_contextual_help', 10, 3 );
 	register_uninstall_hook( __FILE__, 'pp_uninstall' );
 }
@@ -147,6 +137,7 @@ function pp_edit_settings() {
 			$pp_settings[ PP_SETTINGS_PANOBOX ][ PB_SETTINGS_HEIGHT ]     = pp_check_size( $_POST[PP_SETTINGS_PANOBOX . '_' . PB_SETTINGS_HEIGHT] );
 			//$pp_settings[ PP_SETTINGS_PANOBOX ][ PB_SETTINGS_RESIZE ]     = true;
 			$pp_settings[ PP_SETTINGS_PANOBOX ][ PB_SETTINGS_STYLE ]      = $style;
+			$pp_settings[ PP_SETTINGS_PANOBOX ][ PB_SETTINGS_GALLERIES ]  = $_POST[PP_SETTINGS_PANOBOX . '_' . PB_SETTINGS_GALLERIES]     == '1';
 			/* save settings */
 			if ( get_option( PP_SETTINGS ) )
 				update_option( PP_SETTINGS, $pp_settings );
@@ -195,13 +186,16 @@ input:disabled{opacity:.5}
 	<tr valign="top">
 		<th scope="row">
 			<?php pp_e( 'Panobox' ); ?>
-			<br />
-			(lightbox clone)
 		</th>
 		<td colspan="2">
-			<input id="panobox-active" name="<?php echo PP_SETTINGS_PANOBOX_ACTIVE; ?>" value="1" type="checkbox"<?php if ( $pp_settings[PP_SETTINGS_PANOBOX_ACTIVE] ) : ?> checked<?php endif; ?> /><label for="panobox-active"><?php pp_e( 'Open panoramas in Panobox window' ); ?></label>
+			
+			<input id="panobox-active" name="<?php echo PP_SETTINGS_PANOBOX_ACTIVE; ?>" value="1" type="checkbox"<?php if ( $pp_settings[PP_SETTINGS_PANOBOX_ACTIVE] ) : ?> checked<?php endif; ?> /><label for="panobox-active"><?php pp_e( 'Open panoramas in Panobox' ); ?></label>
 			<input type="hidden" id="panobox-open" name="panobox_open" value="<?php echo ! isset($_POST['panobox_open']) || $_POST['panobox_open'] == 'hide' ? 'hide' : 'show' ?>"  />
-			<a id="panobox-options-label" href="javascript:toggle_panobox_options()"><?php echo ! isset($_POST['panobox_open']) || $_POST['panobox_open'] == 'hide' ? 'More options' : 'Less options'; ?></a>
+			<br />
+			<input id="panobox-galleries" name="<?php echo PP_SETTINGS_PANOBOX . '_' . PB_SETTINGS_GALLERIES; ?>" value="1" type="checkbox"<?php if ( $pp_settings[PP_SETTINGS_PANOBOX][PB_SETTINGS_GALLERIES] ) : ?> checked<?php endif; ?> /><label for="panobox-galleries"><?php pp_e( 'Open image galleries in Panobox' ); ?></label>
+
+			<br />
+			<a id="panobox-options-label" href="javascript:toggle_panobox_options()"><?php echo ! isset($_POST['panobox_open']) || $_POST['panobox_open'] == 'hide' ? 'Customize Panobox...' : 'Customize Panobox'; ?></a>
 			<br/>
 			<table id="panobox-options" style="<?php if( ! isset($_POST['panobox_open']) || $_POST['panobox_open'] == 'hide') : ?>display:none<?php endif; ?>" >
 				<tr>

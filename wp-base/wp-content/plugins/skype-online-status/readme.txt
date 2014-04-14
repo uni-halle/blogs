@@ -3,8 +3,8 @@ Contributors: RavanH
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Online%20Status&item_number=2%2e8&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8&lc=us
 Tags: skype, skype button, online, status, online status, widget, widgets, post, posts, quicktag, tinymce, tinymce3, im, skype-button
 Requires at least: 2.9
-Tested up to: 3.6
-Stable tag: 2.9.2
+Tested up to: 3.8
+Stable tag: 2.9.4
 
 Unlimited, highly customizable and accessible (!) Skype buttons through widgets, post shortcode/quicktag and template tags.
 
@@ -14,7 +14,7 @@ This WordPress plugin allows you to add one or multiple, highly customizable and
 
 The Skype Status admin page and Skype Widget options are adequately annotated but there is also a **Quick Guide** section with lots of information on all the possible ways to get you blog Skyped. If you still cannot get it working the way you want to, find a Skype link to the developer on the Notes & Live Support section.
 
-Button themes are mostly based on the themes you can find on [Skype's button wizard page](http://www.skype.com/share/buttons/wizard.html "Skype buttons") but more feature rich, like showing your online status in the alt text of the image, more accessible (!) and much more customizable, like setting your own Status texts in your blogs language. Even a button to invoke normal phone calls or multichats or conference calls is possible!
+Button themes are mostly based on the themes you can find on [Skype's button wizard page http://www.skype.com/share/buttons/wizard.html "Skype buttons") but more feature rich, like showing your online status in the alt text of the image, more accessible (!) and much more customizable, like setting your own Status texts in your blogs language. Even a button to invoke normal phone calls or multichats or conference calls is possible!
 
 = Which version? =
 
@@ -24,26 +24,27 @@ This plugin also has been tested and working fine on WPMU 2.7+.
 
 = Translations =
 
-Since version 2.6.4.0, Skype Online Status is ready for internationalization. Anyone who wants to contribute can do so by making a transation. Read [translation instructions](http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions") (also included in the latest package) for more info.
+Since version 2.6.4.0, Skype Online Status is ready for internationalization. Anyone who wants to contribute can do so by making a transation. Read [translation instructions http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions" (also included in the latest package) for more info.
 
-- **Belorussian** * Author: [M. Comfi](http://www.comfi.com/) (version 2.7)
-- **Bulgarian** * Author: [Nikolay Nikolov](http://en.chat4o.com/) (version 2.8.2)
-- **Danish** * Author: [Georg S. Adamsen](http://wordpress.blogos.dk/2009/03/18/skype-online-status/) (version 2.8.2)
-- **Dutch** * Author: [R.A. van Hagen](http://status301.net/) (version 2.8.7)
-- **Estonian** * Author: [Iflexion Design](http://iflexion.com/) (version 2.7)
-- **Finnish** * Author: [Jani Alha](http://www.wysiwyg.fi/) (version 2.8.5)
-- **French** * Author: [Emmanuelle Traduction](http://www.translatonline.com/) (version 2.8.2)
-- **German** * Author: [Fabian Schulz](http://www.fabianschulz.net/blog/2009/08/05/skype-online-status/) (version 2.7)
-- **Hindi** * Author: [Outshine Solutions](http://outshinesolutions.com) (version 2.8.2)
-- **Indonesian** * Author: [Nasrulhaq Muiz](http://al-badar.net) (version 2.8.4)
-- **Italian** * Author: [Gianni Diurno](http://gidibao.net/index.php/portfolio/ "Gianni Diurno - Portfolio") (version 2.6.9)
-- **Japanese** * Author: [Ryuei Sasaki](http://ryueisasaki.com/) (version 2.8.2)
-- **Lithuanian** * Author: [Vincent G](http://www.host1free.com) (version 2.8.2)
-- **Portuguese** * Author: [Miguel Angelo Patricio](http://www.miguelpatricio.com/) (version 2.8.2)
-- **Russian** * Author: [Leonid Jack](http://studio-xl.com/) (version 2.7)
-- **Spanish** * Authors: [Rodolfo Castro & Rocio Moreno](http://www.ars-legalconsulting.es/blog/) (version 2.7)
-- **Turkish** * Author: [Hakan Er](http://hakanertr.wordpress.com/) (version: 2.8.8)
-- **Ukrainian** * Author: [Michael Svystun](http://emarketingblog.com.ua/) (version 2.7)
+- **Basque** * Silvia Ribés http://silviaribes.net/ (version 2.9.3)
+- **Belorussian** * M. Comfi http://www.comfi.com/ (version 2.7)
+- **Bulgarian** * Nikolay Nikolov http://en.chat4o.com/ (version 2.8.2)
+- **Danish** * Georg S. Adamsen http://wordpress.blogos.dk/2009/03/18/skype-online-status/ (version 2.8.2)
+- **Dutch** * R.A. van Hagen http://status301.net/ (version 2.8.7)
+- **Estonian** * Iflexion Design http://iflexion.com/ (version 2.7)
+- **Finnish** * Jani Alha http://www.wysiwyg.fi/ (version 2.8.5)
+- **French** * Emmanuelle Traduction http://www.translatonline.com/ (version 2.8.2)
+- **German** * Fabian Schulz http://www.fabianschulz.net/blog/2009/08/05/skype-online-status/ (version 2.7)
+- **Hindi** * Outshine Solutions http://outshinesolutions.com (version 2.8.2)
+- **Indonesian** * Nasrulhaq Muiz http://al-badar.net (version 2.8.4)
+- **Italian** * Gianni Diurno http://gidibao.net/index.php/portfolio/ (version 2.6.9)
+- **Japanese** * Ryuei Sasaki http://ryueisasaki.com/ (version 2.8.2)
+- **Lithuanian** * Vincent G http://www.host1free.com (version 2.8.2)
+- **Portuguese** * Miguel Angelo Patricio http://www.miguelpatricio.com/ (version 2.8.2)
+- **Russian** * Leonid Jack http://studio-xl.com/ (version 2.7)
+- **Spanish** * Rodolfo Castro & Rocio Moreno http://www.ars-legalconsulting.es/blog/ (version 2.7)
+- **Turkish** * Hakan Er http://hakanertr.wordpress.com/ (version: 2.8.8)
+- **Ukrainian** * Michael Svystun http://emarketingblog.com.ua/ (version 2.7)
 
 New translations and their Authors will be mentioned here.
 
@@ -51,18 +52,15 @@ New translations and their Authors will be mentioned here.
 
 Top donators making my continued work possible:
 
-- **Claudio Cosmaro** [SocialHosting.net](http://socialhosting.net)
-- **G. Pelzer** Life is a journey. [Life Coaching](http://vivocoaching.com/)
-- **Yamisi Daniel, USA** What could you do with more time? [inTouch Virtual Assistance](http://www.intouchva.com/)
-- **Michelle Vandepas, USA** Live Your life's Purpose. [Divine Purpose unleashed](http://divinepurposeunleashed.com/)
+- **Claudio Cosmaro** [SocialHosting.net http://socialhosting.net)
+- **G. Pelzer** Life is a journey. [Life Coaching http://vivocoaching.com/)
+- **Yamisi Daniel, USA** What could you do with more time? [inTouch Virtual Assistance http://www.intouchva.com/)
+- **Michelle Vandepas, USA** Live Your life's Purpose. [Divine Purpose unleashed http://divinepurposeunleashed.com/)
 
-= Example =
-
-Go to the [Skype Online Status plugin page](http://status301.net/en/wordpress-plugins/skype-online-status/ "Skype Online Status plugin - Status301") to see a Skype button in action (right side) or go and test a button on [Skype's button page](http://www.skype.com/share/buttons/ "Skype buttons"). The button templates used there -- and more -- are available in this plugin.
 
 == Installation ==
 
-Quick installation: [Install now](http://coveredwebservices.com/wp-plugin-install/?plugin=skype-online-status) !
+Quick installation: [Install now http://coveredwebservices.com/wp-plugin-install/?plugin=skype-online-status) !
 
  &hellip; OR &hellip;
 
@@ -98,15 +96,15 @@ If your online status is still incorrect, type in your webbrowser http://mystatu
 
 = I have found a bug. Where do I report it? =
 
-For bug reports, go to [WordPress Support &raquo; Skype Online Status](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") and describe what is happening there. Please provide as much related info as you can but at least give me your plugin and Wordpress version number.
+For bug reports, go to [WordPress Support &raquo; Skype Online Status http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") and describe what is happening there. Please provide as much related info as you can but at least give me your plugin and Wordpress version number.
 
 = I have a feature request. Where do I ask? =
 
-For all 'normal' feature requests and suggestions go to [WordPress Support &raquo; Skype Online Status](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") but if you want custom development, please contact me directly from the *Notes & Live Support* section on the Skype Online Status options page or browse to my website [Status301](http://status301.net/ "Status301.net"). I will gladly consider any proposal.
+For all 'normal' feature requests and suggestions go to [WordPress Support &raquo; Skype Online Status http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") but if you want custom development, please contact me directly from the *Notes & Live Support* section on the Skype Online Status options page or browse to my website [Status301 http://status301.net/ "Status301.net"). I will gladly consider any proposal.
 
 = I have trouble setting up a Skype button on my blog. Where do I get help? =
 
-Have you read the *Quick Guide* section of your WordPress Options > Skype Status page, available after installation already? For all remaining questions, post them on [WordPress Support &raquo; Skype Online Status](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") or go for Live Support via Skype Chat to the Support section on the Skype Online Status Options page after installation. I will be happy to respond :)
+Have you read the *Quick Guide* section of your WordPress Options > Skype Status page, available after installation already? For all remaining questions, post them on [WordPress Support &raquo; Skype Online Status http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") or go for Live Support via Skype Chat to the Support section on the Skype Online Status Options page after installation. I will be happy to respond :)
 
 = I have installed the plugin, fiddled with the settings, added a widget/quicktag, there is no error message but I see no button! =
 
@@ -118,9 +116,9 @@ By default, the plugin displays a link below each Skype button that allows visit
 
 = I would like to contribute. Is that possible? =
 
-Ofcource! What did you have in mind? Monetary funding is always appreciated but if you can help me out in development, that's cool too :) Right now, translation (.mo) files are MORE then welcome! Read [translation instructions](http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions") (also included in the latest package) for more info.
+Ofcource! What did you have in mind? Monetary funding is always appreciated but if you can help me out in development, that's cool too :) Right now, translation (.mo) files are MORE then welcome! Read [translation instructions http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions" (also included in the latest package) for more info.
 
-Any small donation via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Online%20Status&item_number=2%2e6%2e2%2e9&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8 "PayPal Donate") to keep me developing is _**VERY**_ welcome. Thanks!
+Any small donation via [PayPal https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Online%20Status&item_number=2%2e6%2e2%2e9&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8 "PayPal Donate") to keep me developing is _**VERY**_ welcome. Thanks!
 
 Read more on usage in the **Quick Guide** section of your WordPress Options > Skype Status page, available after installation.
 
@@ -138,13 +136,13 @@ This program is free software; you can redistribute it and/or modify it under th
 
 = Support =
 
-Post your questions on [WordPress Support &raquo; Skype Online Status](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") or go for Live Support via Skype Chat to the Support section on the Skype Online Status Options page after installation.
+Post your questions on [WordPress Support &raquo; Skype Online Status http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status") or go for Live Support via Skype Chat to the Support section on the Skype Online Status Options page after installation.
 
 = Road Map =
 
 For version 3 and beyond :)
 
-- More translations! Read [translation instructions](http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions") (also included in the latest package) for more info.
+- More translations! Read [translation instructions http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions" (also included in the latest package) for more info.
 - Skypecasts widgets !
 - Skype-like button theme wizard...
 - integration with WP user system (skype field on the Profile page, ++)
@@ -152,7 +150,7 @@ For version 3 and beyond :)
 
 = Bugs =
 
-Please report anything you find on [WordPress Support &raquo; Skype Online Status](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status")
+Please report anything you find on [WordPress Support &raquo; Skype Online Status http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Online Status")
 
 When reporting bugs, please describe as carefully as possible and provide information like the version number of the plugin, WordPress and - if relevant - server security settings, PHP and MySQL version. Provide as much related info as you can, so we can reproduce the error... And fix it :) 
 
@@ -163,10 +161,18 @@ When reporting bugs, please describe as carefully as possible and provide inform
 
 == Upgrade Notice ==
 
-= 2.9.2 =
-Multilingual status images. Bugfix: language tag appearing in Skype ID.
+= 2.9.4 =
+Admin changes and Basque translation
 
 == Changelog ==
+
+= 2.9.4 =
+* Some admin changes
+* Basque translation
+* Skype popup position fix
+
+= 2.9.3 =
+* BUGFIX: PHP Strict notices
 
 = 2.9.2 =
 * Multilingual status images
@@ -241,7 +247,7 @@ Multilingual status images. Bugfix: language tag appearing in Skype ID.
 * adaptation of settings page to fit the new WP 2.7 backend
 
 = 2.6.4 =
-* Internationalization: Read [translation instructions](http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions") for more info.
+* Internationalization: Read [translation instructions http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt "Skype Online Status translation instructions") for more info.
 
 = 2.6.3 =
 * Implement the use of cURL if available

@@ -1,10 +1,13 @@
 <?php
 
-require_once(AWPCP_DIR . '/classes/helpers/admin-page.php');
-require_once(AWPCP_DIR . '/admin/admin-panel-listings-place-ad-page.php');
-require_once(AWPCP_DIR . '/admin/admin-panel-listings-edit-ad-page.php');
-require_once(AWPCP_DIR . '/admin/admin-panel-listings-renew-ad-page.php');
-require_once(AWPCP_DIR . '/admin/admin-panel-listings-table.php');
+require_once( AWPCP_DIR . '/includes/helpers/admin-page.php' );
+
+require_once( AWPCP_DIR . '/admin/class-media-manager.php' );
+
+require_once( AWPCP_DIR . '/admin/admin-panel-listings-place-ad-page.php' );
+require_once( AWPCP_DIR . '/admin/admin-panel-listings-edit-ad-page.php' );
+require_once( AWPCP_DIR . '/admin/admin-panel-listings-renew-ad-page.php' );
+require_once( AWPCP_DIR . '/admin/admin-panel-listings-table.php' );
 
 
 /**
@@ -18,9 +21,12 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         parent::__construct($page, $title, __('Listings', 'AWPCP'));
 
         $this->table = null;
-        $this->sidebar = awpcp_current_user_is_admin();
 
         add_action('wp_ajax_awpcp-listings-delete-ad', array($this, 'ajax'));
+    }
+
+    public function show_sidebar() {
+        return awpcp_current_user_is_admin();
     }
 
     /**
@@ -103,16 +109,34 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             $actions['send-key'] = array(__('Send Access Key', 'AWPCP'), $this->url(array('action' => 'send-key', 'id' => $ad->ad_id)));
         }
 
-        if ($ad->is_about_to_expire())
-            $actions['renwew-ad'] = array(__('Renew Ad', 'AWPCP'), $this->url(array('action' => 'renew', 'id' => $ad->ad_id)));
+        if ( $ad->is_about_to_expire() ) {
+            $hash = awpcp_get_renew_ad_hash( $ad->ad_id );
+            $params = array( 'action' => 'renew', 'id' => $ad->ad_id, 'awpcprah' => $hash );
+            $actions['renwew-ad'] = array( __( 'Renew Ad', 'AWPCP' ), $this->url( $params ) );
+        }
 
-        if ($images = $ad->get_total_images_uploaded()) {
-            $label = __('Manage Images', 'AWPCP');
+        if ($images = $ad->count_image_files()) {
+            $label = __( 'Manage Images', 'AWPCP' );
             $url = $this->url(array('action' => 'manage-images', 'id' => $ad->ad_id));
             $actions['manage-images'] = array($label, array('', $url, " ($images)"));
         } else if (get_awpcp_option('imagesallowdisallow') == 1) {
             $actions['add-image'] = array(__('Add Images', 'AWPCP'), $this->url(array('action' => 'add-image', 'id' => $ad->ad_id)));
         }
+
+        if ( $admin ) {
+            $fb = AWPCP_Facebook::instance();
+            if ( $fb->get( 'page_token', '' ) && !awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook' ) ) {
+                $actions['send-to-facebook'] = array(
+                    __( 'Send to Facebook', 'AWPCP' ),
+                    $this->url( array(
+                        'action' => 'send-to-facebook',
+                        'id' => $ad->ad_id
+                    ) )
+                );
+            }
+        }
+
+        $actions = apply_filters( 'awpcp-admin-listings-table-actions', $actions, $ad, $this );
 
         if (is_array($filter)) {
             $actions = array_intersect_key($actions, array_combine($filter, $filter));
@@ -133,12 +157,13 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             'mark-paid',
             'send-key',
             'bulk-renew',
+            'bulk-send-to-facebook',
             'unflag',
             'spam', 'bulk-spam',
         );
 
         if (!awpcp_current_user_is_admin() && in_array($action, $protected_actions)) {
-            awpcp_flash(_x('You do not have sufficient permissions to perform that action.', 'admin litings', 'AWPCP'), 'error');
+            awpcp_flash(_x('You do not have sufficient permissions to perform that action.', 'admin listings', 'AWPCP'), 'error');
             $action = 'index';
         }
 
@@ -177,6 +202,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
                 break;
 
             case 'bulk-renew':
+            case 'renew-ad':
             case 'renew':
                 return $this->renew_ad();
                 break;
@@ -211,6 +237,11 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
             case 'bulk-delete':
                 return $this->delete_selected_ads();
+
+            case 'bulk-send-to-facebook':
+            case 'send-to-facebook':
+                return $this->send_to_facebook();
+                break;
 
             case -1:
             case 'index':
@@ -492,45 +523,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
     }
 
     public function manage_images() {
-        $action = $this->get_current_action();
-
-        $picid = awpcp_request_param('picid');
-        $adid = awpcp_request_param('adid');
-
-        if ($action == 'deletepic') {
-            $adtermid = awpcp_request_param('adtermid');
-            $adkey = awpcp_request_param('adkey');
-            $editemail = awpcp_request_param('editemail');
-
-            $message = deletepic($picid, $adid, $adtermid, $adkey, $editemail, $force=true);
-            awpcp_flash($message);
-
-        } else if ($action == 'rejectpic') {
-            $query="UPDATE  ". AWPCP_TABLE_ADPHOTOS ." SET disabled=1 WHERE ad_id='$adid' AND key_id='$picid'";
-            $res = awpcp_query($query, __LINE__);
-
-            awpcp_flash(__("The Image has been disabled and can no longer be viewed.", "AWPCP"));
-
-        } else if ($action == 'approvepic') {
-            $query="UPDATE  ". AWPCP_TABLE_ADPHOTOS ." SET disabled=0 WHERE ad_id='$adid' AND key_id='$picid'";
-            $res = awpcp_query($query, __LINE__);
-
-            awpcp_flash(__("The Image has been enabled and can now be viewed.", "AWPCP"));
-
-        } elseif ($action == 'set-primary-image') {
-            awpcp_set_ad_primary_image($adid, $picid);
-        }
-
-        $this->page = 'awpcp-admin-images';
-        $this->title = get_bloginfo() . __(" User Ad Management Panel - Manage Images", "AWPCP");
-
-        $is_admin_user = awpcp_current_user_is_admin();
-        $admin_must_approve = get_awpcp_option('imagesapprove');
-        $approve = ($is_admin_user || !$admin_must_approve);
-
-        $content = viewimages('ad_id=' . $this->id, $approve, $this->url());
-
-        echo $this->render('content', $content);
+        echo awpcp_media_manager()->dispatch( $this );
     }
 
     public function delete_ad() {
@@ -570,6 +563,73 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             awpcp_flash( sprintf( __( '%d of %d Ads were deleted. %d generated errors.', 'AWPCP' ), $deleted,$total, $failed ) );
         } else {
             awpcp_flash( sprintf( __( '%d of %d Ads were deleted.', 'AWPCP' ), $deleted, $total ) );
+        }
+
+        return $this->redirect('index');
+    }
+
+    public function send_to_facebook() {
+        $is_admin = awpcp_current_user_is_admin();
+
+        if ( !$is_admin )
+            return $this->redirect('index');
+
+        $ads = isset( $_REQUEST['selected'] ) ? $_REQUEST['selected'] : ( isset( $_REQUEST['id'] ) ? array( $_REQUEST['id'] ) : array() );
+
+        if ( !$ads )
+            return $this->redirect('index');
+
+        $total = count( $ads );
+        $sent = 0;
+        $failed = 0;
+
+        $fb = AWPCP_Facebook::instance();
+        $fb->set_access_token( 'page_token' );        
+
+        foreach ( $ads as $ad_id ) {
+            $ad = AWPCP_Ad::find_by_id( $ad_id );
+
+            if ( !$ad || awpcp_get_ad_meta( $ad_id, 'sent-to-facebook', true ) == 1 ) {
+                $failed++;
+                continue;
+            }
+
+            // TODO: add a blurb of content?
+            $ad_image = awpcp_media_api()->get_ad_primary_image( $ad );
+            $thumbnail = $ad_image ? $ad_image->get_url( 'primary' ) : '';
+
+            $data = array( 'link' => url_showad( $ad->ad_id ),
+                           'name' => $ad->ad_title,
+                           'picture' => $thumbnail );
+
+            try {
+                $response = $fb->api_request( '/' . $fb->get( 'page_id' ) . '/links',
+                                              'POST',
+                                              $data );
+
+                if ( $response && isset( $response->id ) ) {
+                    awpcp_update_ad_meta( $ad_id, 'sent-to-facebook', 1 );
+                    $sent++;
+                } else {
+                    $failed++;
+                }
+            } catch (Exception $e) {
+                $error = true;
+                $failed++;
+            }
+        }
+
+        if ( isset( $error ) && $error ) {
+            $msg = str_replace( '<a>',
+                                '<a href="' . admin_url( 'admin.php?page=awpcp-settings&g=facebook-settings' ) . '">',
+                                __( 'AWPCP can not post to Facebook because your credentials are invalid or have expired. Please check your <a>settings</a>.', 'AWPCP' ) );
+            awpcp_flash( $msg, 'error' );            
+        }
+
+        if ( $sent > 0 && $failed > 0 ) {
+            awpcp_flash( sprintf( __( '%d of %d Ads were sent to Facebook. %d generated errors.', 'AWPCP' ), $sent, $total, $failed ) );
+        } else {
+            awpcp_flash( sprintf( __( '%d of %d Ads were sent to Facebook. %d generated errors.', 'AWPCP' ), $sent, $total, $failed ) );
         }
 
         return $this->redirect('index');

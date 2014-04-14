@@ -18,7 +18,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 	
 	if ($result != '1')
 	{
-		?><div class="error fade"><p><strong>Oops, selected details doesn't exist (1).</strong></p></div><?php
+		?><div class="error fade"><p><strong><?php _e('Oops, selected details doesnt exist.', 'anything-popup'); ?></strong></p></div><?php
 	}
 	else
 	{
@@ -36,7 +36,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 			
 			//	Set success message
 			$pop_success_msg = TRUE;
-			$pop_success = __('Selected record was successfully deleted.', AnythingPopup_UNIQUE_NAME);
+			$pop_success = __('Selected record was successfully deleted.', 'anything-popup');
 		}
 	}
 	
@@ -48,40 +48,41 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 ?>
 <div class="wrap">
   <div id="icon-edit" class="icon32 icon32-posts-post"></div>
-    <h2><?php echo AnythingPopup_TITLE; ?><a class="add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=anything-popup&amp;ac=add">Add New</a></h2>
+    <h2><?php _e('Anything Popup', 'anything-popup'); ?>
+	<a class="add-new-h2" href="<?php echo ANYTHGPOPUP_ADMIN_URL; ?>&amp;ac=add"><?php _e('Add New', 'anything-popup'); ?></a></h2>
     <div class="tool-box">
 	<?php
 		$sSql = "SELECT * FROM `".AnythingPopupTable."` order by pop_id desc";
 		$myData = array();
 		$myData = $wpdb->get_results($sSql, ARRAY_A);
 		?>
-		<script language="JavaScript" src="<?php echo get_option('siteurl'); ?>/wp-content/plugins/anything-popup/pages/setting.js"></script>
+		<script language="JavaScript" src="<?php echo ANYTHGPOPUP_PLUGIN_URL; ?>/pages/setting.js"></script>
 		<form name="frm_pop_display" method="post">
       <table width="100%" class="widefat" id="straymanage">
         <thead>
           <tr>
             <th class="check-column" scope="col"><input type="checkbox" name="pop_group_item[]" /></th>
-			<th scope="col">Id</th>
-			<th scope="col">Short code</th>
-            <th scope="col">Popup title</th>
-			<th scope="col">Window width</th>
-			<th scope="col">Window height</th>
-			<th scope="col">Header color</th>
-			<th scope="col">Border color</th>
-			<th scope="col">Font color</th>
+			<th scope="col"><?php _e('Id', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Short code code', 'anything-popup'); ?></th>
+            <th scope="col"><?php _e('Popup title', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Window width', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Window height', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Header color', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Border color', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Font color', 'anything-popup'); ?></th>
           </tr>
         </thead>
 		<tfoot>
           <tr>
             <th class="check-column" scope="col"><input type="checkbox" name="pop_group_item[]" /></th>
-			<th scope="col">Id</th>
-			<th scope="col">Short code</th>
-            <th scope="col">Popup title</th>
-			<th scope="col">Window width</th>
-			<th scope="col">Window height</th>
-			<th scope="col">Header color</th>
-			<th scope="col">Border color</th>
-			<th scope="col">Font color</th>
+			<th scope="col"><?php _e('Id', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Short code code', 'anything-popup'); ?></th>
+            <th scope="col"><?php _e('Popup title', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Window width', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Window height', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Header color', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Border color', 'anything-popup'); ?></th>
+			<th scope="col"><?php _e('Font color', 'anything-popup'); ?></th>
           </tr>
         </tfoot>
 		<tbody>
@@ -97,8 +98,8 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 						<td><?php echo $data['pop_id']; ?></td>
 						<td>[AnythingPopup id="<?php echo $data['pop_id']; ?>"]
 						<div class="row-actions">
-							<span class="edit"><a title="Edit" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=anything-popup&amp;ac=edit&amp;did=<?php echo $data['pop_id']; ?>">Edit</a> | </span>
-							<span class="trash"><a onClick="javascript:_pop_delete('<?php echo $data['pop_id']; ?>')" href="javascript:void(0);">Delete</a></span> 
+						<span class="edit"><a title="Edit" href="<?php echo ANYTHGPOPUP_ADMIN_URL; ?>&amp;ac=edit&amp;did=<?php echo $data['pop_id']; ?>"><?php _e('Edit', 'anything-popup'); ?></a> | </span>
+						<span class="trash"><a onClick="javascript:_pop_delete('<?php echo $data['pop_id']; ?>')" href="javascript:void(0);"><?php _e('Delete', 'anything-popup'); ?></a></span> 
 						</div>
 						</td>
 						<td><?php echo stripslashes($data['pop_title']); ?></td>
@@ -114,7 +115,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 			}
 			else
 			{
-				?><tr><td colspan="9" align="center">No records available.</td></tr><?php 
+				?><tr><td colspan="9" align="center"><?php _e('No records available.', 'anything-popup'); ?></td></tr><?php 
 			}
 			?>
 		</tbody>
@@ -124,17 +125,20 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
       </form>	
 	  <div class="tablenav">
 	  <h2>
-	  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=anything-popup&amp;ac=add">Add New</a>
-	  <a class="button add-new-h2" target="_blank" href="<?php echo AnythingPopup_FAV; ?>">Help</a>
+	  <a class="button add-new-h2" href="<?php echo ANYTHGPOPUP_ADMIN_URL; ?>&amp;ac=add"><?php _e('Add New', 'anything-popup'); ?></a>
+	  <a class="button add-new-h2" target="_blank" href="<?php echo AnythingPopup_FAV; ?>"><?php _e('Help', 'anything-popup'); ?></a>
 	  </h2>
 	  </div>
 	  <div style="height:5px"></div>
-	<h3>Plugin configuration option</h3>
+	<h3><?php _e('Plugin configuration option', 'anything-popup'); ?></h3>
 	<ol>
-		<li>Drag and drop the widget.</li>
-		<li>Add the plugin in the posts or pages using short code.</li>
-		<li>Add directly in to the theme using PHP code.</li>
+		<li><?php _e('Drag and drop the widget.', 'anything-popup'); ?></li>
+		<li><?php _e('Add the plugin in the posts or pages using short code.', 'anything-popup'); ?></li>
+		<li><?php _e('Add directly in to the theme using PHP code.', 'anything-popup'); ?></li>
 	</ol>
-	<p class="description"><?php echo AnythingPopup_LINK; ?></p>
+	<p class="description">
+		<?php _e('Check official website for more information', 'anything-popup'); ?>
+		<a target="_blank" href="<?php echo AnythingPopup_FAV; ?>"><?php _e('click here', 'anything-popup'); ?></a><br />
+	</p>
 	</div>
 </div>

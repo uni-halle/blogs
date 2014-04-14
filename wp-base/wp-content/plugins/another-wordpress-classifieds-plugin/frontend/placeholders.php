@@ -34,7 +34,7 @@ function awpcp_content_placeholders() {
         ),
         'addetails' => array(
             'callback' => 'awpcp_do_placeholder_details',
-            ),
+        ),
         'location' => array(
             'callback' => 'awpcp_do_placeholder_location',
         ),
@@ -139,6 +139,8 @@ function awpcp_content_placeholders() {
         'category_url' => array(),
         // 'category_link' => array(),
         'category_name' => array(),
+        'parent_category_url' => array(),
+        'parent_category_name' => array(),
         'details' => array(),
         'excerpt' => array(),
         'contact_name' => array(),
@@ -161,7 +163,16 @@ function awpcp_content_placeholders() {
         'start_date' => array(
             'callback' => 'awpcp_do_placeholder_dates',
         ),
+        'end_date' => array(
+            'callback' => 'awpcp_do_placeholder_dates',
+        ),
         'posted_date' => array(
+            'callback' => 'awpcp_do_placeholder_dates',
+        ),
+        'last_updated_date' => array(
+            'callback' => 'awpcp_do_placeholder_dates',
+        ),
+        'renewed_date' => array(
             'callback' => 'awpcp_do_placeholder_dates',
         ),
 
@@ -224,7 +235,7 @@ function awpcp_do_placeholders($ad, $content, $context) {
         $placeholder = trim($match, '$');
         $callback = $placeholders[$placeholder]['callback'];
 
-        if (function_exists($callback)) {
+        if ( is_callable( $callback ) ) {
             $replacement = call_user_func($callback, $ad, $placeholder, $context);
             $content = str_replace($match, $replacement, $content);
             $processed[$match] = true;
@@ -268,6 +279,20 @@ function awpcp_do_placeholder_category_url($ad, $placeholder) {
     return url_browsecategory($ad->ad_category_id);
 }
 
+/**
+ * @since 3.2
+ */
+function awpcp_do_placeholder_parent_category_name( $ad, $placeholder ) {
+    return $ad->ad_category_parent_id > 0 ? stripslashes( get_adcatname( $ad->ad_category_parent_id ) ) : '';
+}
+
+/**
+ * @since 3.2
+ */
+function awpcp_do_placeholder_parent_category_url( $ad, $placeholder ) {
+    return $ad->ad_category_parent_id > 0 ? url_browsecategory( $ad->ad_category_parent_id ) : '';
+}
+
 
 /**
  * @since 3.0
@@ -302,9 +327,12 @@ function awpcp_do_placeholder_details($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_excerpt($ad, $placeholder) {
+    $word_count = get_awpcp_option( 'words-in-listing-excerpt' );
     $details = stripslashes_deep($ad->ad_details);
-    $replacements['addetailssummary'] = wp_trim_words($details, 20, '');
-    $replacements['excerpt'] = wp_trim_words($details, 20);
+
+    $replacements['addetailssummary'] = wp_trim_words( $details, $word_count, '' );
+    $replacements['excerpt'] = wp_trim_words( $details, $word_count );
+
     return $replacements[$placeholder];
 }
 
@@ -313,7 +341,9 @@ function awpcp_do_placeholder_excerpt($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_contact_name($ad, $placeholder) {
-    return stripslashes($ad->ad_contact_name);
+    $contact_name = get_awpcp_option( 'hidelistingcontactname' ) == 1 && !is_user_logged_in()
+                    ? __( 'Seller', 'AWPCP' ) : $ad->ad_contact_name;
+    return stripslashes( $contact_name );
 }
 
 
@@ -332,7 +362,7 @@ function awpcp_do_placeholder_website_link($ad, $placeholder) {
     $nofollow = get_awpcp_option('visitwebsitelinknofollow') ? 'rel="nofollow"' : '';
     $label = __('Visit Website', 'AWPCP');
 
-    if (!empty($ad->websiteurl)) {
+    if ( ( get_awpcp_option( 'displaywebsitefieldreqpriv' ) != 1 || is_user_logged_in() ) && !empty( $ad->websiteurl ) ) {
         $url = awpcp_esc_attr($ad->websiteurl);
 
         $content = '<br/><a %s href="%s" target="_blank">%s</a>';
@@ -358,7 +388,7 @@ function awpcp_do_placeholder_price($ad, $placeholder) {
     $price = empty($ad->ad_item_price) ? 0 : ($ad->ad_item_price / 100);
 
     $replacements = array();
-    if ($price >= 1 && get_awpcp_option('displaypricefield') == 1) {
+    if ($price >= 0 && get_awpcp_option('displaypricefield') == 1) {
         $label = __('Price', 'AWPCP');
         $currency = awpcp_format_money($price);
         // single ad
@@ -378,8 +408,11 @@ function awpcp_do_placeholder_price($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_dates($ad, $placeholder) {
-    $replacements['start_date'] = awpcp_time($ad->ad_startdate, 'awpcp-date');
-    $replacements['posted_date'] = awpcp_time($ad->ad_postdate, 'awpcp-date');
+    $replacements['start_date'] = awpcp_datetime( 'awpcp-date', $ad->ad_startdate );
+    $replacements['end_date'] = awpcp_datetime( 'awpcp-date', $ad->ad_enddate );
+    $replacements['posted_date'] = awpcp_datetime( 'awpcp-date', $ad->ad_postdate );
+    $replacements['last_updated_date'] = awpcp_datetime( 'awpcp-date', $ad->ad_last_updated );
+    $replacements['renewed_date'] = awpcp_datetime( 'awpcp-date', $ad->renewed_date );
 
     return $replacements[$placeholder];
 }
@@ -402,12 +435,12 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
     $url = url_showad($ad->ad_id);
 
     if (get_awpcp_option('imagesallowdisallow') == 1) {
-        $images_uploaded = get_total_imagesuploaded($ad->ad_id);
-        $primary_image = awpcp_get_ad_primary_image($ad->ad_id);
+        $images_uploaded = $ad->count_image_files();
+        $primary_image = awpcp_media_api()->get_ad_primary_image( $ad );
 
         if ($primary_image) {
-            $large_image = awpcp_get_image_url($primary_image, 'large');
-            $thumbnail = awpcp_get_image_url($primary_image, 'primary');
+            $large_image = $primary_image->get_url( 'large' );
+            $thumbnail = $primary_image->get_url( 'primary' );
 
             if (get_awpcp_option('show-click-to-enlarge-link', 1)) {
                 $link = '<a class="thickbox enlarge" href="%s">%s</a>';
@@ -424,8 +457,8 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
             $content.= '</div>';
 
             $placeholders['featureimg'] = sprintf($content, esc_attr($large_image),
-                                                             esc_attr($thumbnail),
-                                                             $link);
+                                                            esc_attr($thumbnail),
+                                                            $link);
 
             // listings
             $content = '<a href="%s"><img src="%s" width="%spx" border="0" alt="%s" /></a>';
@@ -435,21 +468,19 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
         }
 
         if ($images_uploaded >= 1) {
-            $query = "SELECT image_name FROM " . AWPCP_TABLE_ADPHOTOS . " ";
-            $query.= "WHERE ad_id = %d AND disabled = 0 ";
-            $query.= "ORDER BY is_primary ASC, image_name ASC";
-            $query = $wpdb->prepare($query, $ad->ad_id, $primary_image->key_id);
-
-            $results = $wpdb->get_results($query);
-            $images = array();
+            $results = awpcp_media_api()->find_images_by_ad_id( $ad->ad_id, array(
+                'enabled' => 1,
+                'order' => array( 'is_primary ASC', 'name ASC' ),
+            ) );
 
             $columns = get_awpcp_option('display-thumbnails-in-columns', 0);
             $rows = $columns > 0 ? ceil(count($results) / $columns) : 0;
             $shown = 0;
 
+            $images = array();
             foreach ($results as $image) {
-                $large_image = awpcp_get_image_url($image, 'large');
-                $thumbnail = awpcp_get_image_url($image, 'thumbnail');
+                $large_image = $image->get_url( 'large' );
+                $thumbnail = $image->get_url( 'thumbnail' );
 
                 if ($columns > 0) {
                     $css = join(' ', awpcp_get_grid_item_css_class(array(), $shown, $columns, $rows));
@@ -466,6 +497,8 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
                 $images[] = sprintf($content, esc_attr($css),
                                               esc_attr($large_image),
                                               esc_attr($thumbnail));
+
+                $shown = $shown + 1;
             }
 
             $placeholders['awpcpshowadotherimages'] = join('', $images);
@@ -510,8 +543,8 @@ function awpcp_do_placeholder_views($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_legacy_dates($ad, $placeholder) {
-    $replacements['ad_startdate'] = awpcp_time( $ad->ad_startdate, 'awpcp-date' );
-    $replacements['ad_postdate'] = awpcp_time( $ad->ad_postdate, 'awpcp-date' );
+    $replacements['ad_startdate'] = awpcp_datetime( 'awpcp-date', $ad->ad_startdate );
+    $replacements['ad_postdate'] = awpcp_datetime( 'awpcp-date', $ad->ad_postdate );
     $replacements['awpcpadpostdate'] = sprintf('%s<br/>', $replacements['ad_postdate']);
 
     return $replacements[$placeholder];
@@ -522,30 +555,67 @@ function awpcp_do_placeholder_legacy_dates($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_location($ad, $placeholder) {
-    $replacements['city'] = stripslashes_deep($ad->ad_city);
-    $replacements['state'] = stripslashes_deep($ad->ad_state);
-    $replacements['village'] = stripslashes_deep($ad->ad_county_village);
-    $replacements['country'] = stripslashes_deep($ad->ad_country);
+    $regions = AWPCP_Ad::get_ad_regions_names( $ad->ad_id );
 
-    $replacements['county'] = $replacements['village'];
-
+    $cities = array();
+    $states = array();
+    $villages = array();
+    $countries = array();
     $places = array();
-    if (!empty($replacements['city'])) {
-        $places[] = $replacements['city'];
-    }
-    if (!empty($replacements['village'])) {
-        $places[] = $replacements['village'];
-    }
-    if (!empty($replacements['state'])) {
-        $places[] = $replacements['state'];
-    }
-    if (!empty($replacements['country'])) {
-        $places[] = $replacements['country'];
+
+    if ( get_awpcp_option( 'show-city-field-before-county-field' ) ) {
+        $order = array( 'country', 'state', 'city', 'county' );
+    } else {
+        $order = array( 'country', 'state', 'county', 'city' );
     }
 
-    if (!empty($places)) {
-        $replacements['location'] = sprintf('<br/><label>%s</label>: %s', __("Location","AWPCP"), join(', ', $places));
-        $replacements['region'] = join(', ', $places);
+    foreach ( $regions as $region ) {
+        if ( !empty( $region['city'] ) ) {
+            $cities[] = stripslashes_deep( $region['city'] );
+        }
+        if ( !empty( $region['county'] ) ) {
+            $villages[] = stripslashes_deep( $region['county'] );
+        }
+        if ( !empty( $region['state'] ) ) {
+            $states[] = stripslashes_deep( $region['state'] );
+        }
+        if ( !empty( $region['country'] ) ) {
+            $countries[] = stripslashes_deep( $region['country'] );
+        }
+
+        $place = array();
+        foreach( $order as $field ) {
+            if ( ! empty( $region[ $field ] ) ) {
+                $place[] = stripslashes_deep( $region[ $field ] );
+            }
+        }
+
+        $places[] = $place;
+    }
+
+    if ( !empty( $cities ) ) {
+        $replacements['city'] = join( ', ', $cities );
+    }
+    if ( !empty( $states ) ) {
+        $replacements['state'] = join( ', ', $states );
+    }
+    if ( !empty( $villages ) ) {
+        $replacements['county'] = join( ', ', $villages );
+        $replacements['village'] = $replacements['county'];
+    }
+    if ( !empty( $countries ) ) {
+        $replacements['country'] = join( ', ', $countries );
+    }
+
+    $location = array();
+    foreach ( $places as $place ) {
+        $location[] = join( ', ', $place );
+    }
+    $location = join( '; ', $location );
+
+    if ( !empty( $location ) ) {
+        $replacements['location'] = sprintf( '<br/><label>%s</label>: %s', __( 'Location', 'AWPCP' ), $location );
+        $replacements['region'] = $location;
     } else {
         $replacements['location'] = '';
         $replacements['region'] = '';
@@ -627,9 +697,18 @@ function awpcp_do_placeholder_contact_url($ad, $placeholder) {
  */
 function awpcp_do_placeholder_contact_phone($ad, $placeholder) {
     if (!empty($ad->ad_contact_phone)) {
-        $content = sprintf('<br/><label>%s</label>: %s', __('Phone', 'AWPCP'), $ad->ad_contact_phone);
+        $phone = $ad->ad_contact_phone;
+
+        if ( get_awpcp_option( 'displayphonefieldpriv') == 1 && !is_user_logged_in() ) {
+            $allowed = intval( strlen( $phone ) * 0.4 );
+            $phone = substr($phone, 0, $allowed) . str_repeat('X', strlen( $phone ) - $allowed );
+        }
+
+        $content = sprintf( '<br/><label>%s</label>: %s',
+                            __('Phone', 'AWPCP'),
+                            $phone );
         $replacements['adcontactphone'] = $content;
-        $replacements['contact_phone'] = $ad->ad_contact_phone;
+        $replacements['contact_phone'] = $phone;
     } else {
         $replacements['adcontactphone'] = '';
         $replacements['contact_phone'] = '';
@@ -715,19 +794,7 @@ function awpcp_do_placeholder_twitter_button($ad, $placeholder) {
 function awpcp_do_placeholder_facebook_button($ad, $placeholder) {
     $info = awpcp_get_ad_share_info($ad->ad_id);
 
-    $href = 'http://www.facebook.com/sharer.php?';
-    $href.= 's=100';
-
-    foreach ($info['images'] as $k => $image) {
-        $href.= '&p[images][' . $k . ']=' . urlencode($image);
-    }
-
-    // put them after the image URLs to avoid conflict with lightbox plugins
-    // https://github.com/drodenbaugh/awpcp/issues/310
-    // http://www.awpcp.com/forum/viewtopic.php?f=4&t=3470&p=15358#p15358
-    $href.= '&p[url]=' . urlencode($info['url']);
-    $href.= '&p[title]=' . urlencode($ad->get_title());
-    $href.= '&p[summary]=' . urlencode($info['description']);
+    $href = sprintf( 'http://www.facebook.com/sharer/sharer.php?u=%s', urlencode( $info['url'] ) );
 
     $button = '<div class="tw_button awpcp_tweet_button_div">';
     $button.= '<a href="%s" class="facebook-share-button" title="%s" target="_blank"></a>';

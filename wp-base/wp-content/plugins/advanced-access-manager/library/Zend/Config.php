@@ -19,6 +19,10 @@
  * @version    $Id: Config.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
+/**
+ * File has been modified by Vasyl Martyniuk <martyniuk.vasyl@gmail.com> to fit the
+ * project needs.
+ */
 
 /**
  * @category   Zend
@@ -165,7 +169,6 @@ class Zend_Config implements Countable, Iterator
             $this->_count = count($this->_data);
         } else {
             /** @see Zend_Config_Exception */
-            require_once 'Zend/Config/Exception.php';
             throw new Zend_Config_Exception('Zend_Config is read only');
         }
     }
@@ -234,7 +237,6 @@ class Zend_Config implements Countable, Iterator
             $this->_skipNextIteration = true;
         } else {
             /** @see Zend_Config_Exception */
-            require_once 'Zend/Config/Exception.php';
             throw new Zend_Config_Exception('Zend_Config is read only');
         }
 
@@ -427,7 +429,6 @@ class Zend_Config implements Countable, Iterator
         while (array_key_exists($extendedSectionCurrent, $this->_extends)) {
             if ($this->_extends[$extendedSectionCurrent] == $extendingSection) {
                 /** @see Zend_Config_Exception */
-                require_once 'Zend/Config/Exception.php';
                 throw new Zend_Config_Exception('Illegal circular inheritance detected');
             }
             $extendedSectionCurrent = $this->_extends[$extendedSectionCurrent];

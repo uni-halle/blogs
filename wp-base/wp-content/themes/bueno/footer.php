@@ -1,47 +1,49 @@
-	<div id="extended-footer">
-	
-		<div class="col-full">
-	
-			<div class="block one">
-				
-				<?php dynamic_sidebar('footer-1'); ?>
-				
-			</div><!-- /.block -->
-			
-			<div class="block two">
-			
-				<?php dynamic_sidebar('footer-2'); ?>
-			
-			</div><!-- /.block -->
-			
-			<div class="block three">
-				
-				<?php dynamic_sidebar('footer-3'); ?>
-			
-			</div><!-- /.block -->
-			
-		</div><!-- /.col-full -->
-		
-	</div><!-- /#extended-footer -->
-	
-	<div id="footer">
-	
-		<div class="col-full">
-	
-			<div id="copyright" class="col-left">
-				<p>&copy; <?php echo date('Y'); ?> <?php bloginfo(); ?>. <?php _e('All Rights Reserved.', 'woothemes') ?></p>
+<?php
+/**
+ * The template for displaying the footer.
+ *
+ * Contains the closing of the id=main div and all content after
+ *
+ * @package bueno
+ */
+?>
 			</div>
-			
-			<div id="credit" class="col-right">
-				<p><?php _e('Powered by', 'woothemes') ?> <a href="http://www.wordpress.org">Wordpress</a>. <?php _e('Designed by', 'woothemes') ?> <a href="http://www.woothemes.com"><img src="<?php bloginfo('template_directory'); ?>/images/woothemes.png" width="87" height="21" alt="Woo Themes" /></a></p>
+		</div>
+	</div><!-- #main -->
+
+	<div class="container">
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="footer-inner">
+				<div class="site-info">
+					<div class="footer-text">
+						<?php 
+						$footer_text = esc_attr(of_get_option('footer_text'));
+						if ('' != $footer_text) {
+							echo stripslashes(htmlspecialchars_decode($footer_text));
+						} else { ?>
+							<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', 'bueno' ); ?>" rel="generator"><?php printf( __( 'Proudly powered by %s', 'bueno' ), 'WordPress' ); ?></a>
+						<?php } ?>
+					</div>
+					<?php if ('true' == of_get_option('footer_menu')) {
+						wp_nav_menu( array( 
+							'container'       => 'ul', 
+			                'menu_class'      => 'footer-menu', 
+			                'menu_id'         => 'footer-nav',
+			                'depth'           => 0,
+			                'theme_location' => 'footer' 
+						) ); 
+					}
+					?>
+					<div class="clear"></div>
+					<div id="toTop"><i class="icon-angle-up"></i></div>
+				</div>
 			</div>
-			
-		</div><!-- /.col-full -->
-		
-	</div><!-- /#footer -->
-	
-</div><!-- /#container -->
+			<div class="footer_bg_holder"></div>
+			<div class="footer_border_holder"></div>
+		</footer><!-- #colophon -->
+	</div>
+</div><!-- .page-wrapper -->
+
 <?php wp_footer(); ?>
-<?php if ( get_option('woo_google_analytics') <> "" ) { echo stripslashes(get_option('woo_google_analytics')); } ?>
 </body>
 </html>

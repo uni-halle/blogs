@@ -1,6 +1,6 @@
 <?php
 
-require_once(AWPCP_DIR . '/classes/helpers/admin-page.php');
+require_once(AWPCP_DIR . '/includes/helpers/admin-page.php');
 require_once(AWPCP_DIR . '/admin/admin-panel-fees-table.php');
 
 
@@ -166,7 +166,12 @@ class AWPCP_AdminFees extends AWPCP_AdminPageWithTable {
             if (is_null($fee)) {
                 $fee = new AWPCP_Fee($_POST);
             } else {
-                $fee->update($_POST);
+                $data = $_POST;
+
+                if ( !isset( $data['private'] ) )
+                    $data['private'] = 0;
+
+                $fee->update( $data );
             }
 
             if ($fee->save($errors) === false) {

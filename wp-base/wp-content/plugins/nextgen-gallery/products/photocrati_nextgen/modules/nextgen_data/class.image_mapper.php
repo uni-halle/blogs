@@ -8,27 +8,40 @@ class C_Image_Mapper extends C_CustomTable_DataMapper_Driver
 	 * Defines the gallery image mapper
 	 * @param type $context
 	 */
-	function define($context=FALSE)
+	function define($context=FALSE, $not_used=FALSE)
 	{
 		// Add 'attachment' context
 		if (!is_array($context)) $context = array($context);
 		array_push($context, 'attachment');
 
-		$this->primary_key_column = 'pid';
-
+		// Define the mapper
+		$this->_primary_key_column = 'pid';
 		parent::define('ngg_pictures', $context);
+		$this->add_mixin('Mixin_NextGen_Table_Extras');
 		$this->add_mixin('Mixin_Gallery_Image_Mapper');
-		$this->add_post_hook(
-			'_convert_to_entity',
-			'Unserialize Metadata',
-			'Hook_Unserialize_Image_Metadata',
-			'unserialize_metadata'
-		);
 		$this->implement('I_Image_Mapper');
 		$this->set_model_factory_method('image');
+
+		// Define the columns
+		$this->define_column('pid', 		'BIGINT', 0);
+		$this->define_column('image_slug',	'VARCHAR(255)');
+		$this->define_column('post_id',		'BIGINT', 0);
+		$this->define_column('galleryid',	'BIGINT', 0);
+		$this->define_column('filename',	'VARCHAR(255)');
+		$this->define_column('description',	'TEXT');
+		$this->define_column('alttext',		'TEXT');
+		$this->define_column('imagedate',	'DATETIME');
+		$this->define_column('exclude',		'INT', 0);
+		$this->define_column('sortorder',	'BIGINT', 0);
+		$this->define_column('meta_data',	'TEXT');
+        $this->define_column('extras_post_id', 'BIGINT', 0);
+		$this->define_column('updated_at',  'BIGINT');
+
+		// Mark the columns which should be unserialized
+		$this->add_serialized_column('meta_data');
 	}
 
-	function initialize()
+	function initialize($object_name=FALSE)
 	{
 		parent::initialize('ngg_pictures');
 	}
@@ -58,6 +71,8 @@ class Mixin_Gallery_Image_Mapper extends Mixin
 
     function _save_entity($entity)
     {
+		$entity->updated_at = time();
+
         // If successfully saved, then import metadata and
         $retval = $this->call_parent('_save_entity', $entity);
         if ($retval) {
@@ -66,7 +81,7 @@ class Mixin_Gallery_Image_Mapper extends Mixin
 			if (!isset($entity->meta_data['saved'])) {
 				nggAdmin::import_MetaData($image_id);
 			}
-			C_Photocrati_Cache::flush();
+			C_Photocrati_Cache::flush('displayed_gallery_rendering');
         }
         return $retval;
     }
@@ -134,25 +149,16 @@ class Mixin_Gallery_Image_Mapper extends Mixin
 		}
 
         // Set unique slug
-        if (isset($entity->alttext)) {
-            $this->object->_set_default_value($entity, 'image_slug', nggdb::get_unique_slug( sanitize_title_with_dashes( $entity->alttext ), 'image' ));
+        if (isset($entity->alttext) && !isset($entity->image_slug)) {
+            $entity->image_slug = nggdb::get_unique_slug( sanitize_title_with_dashes( $entity->alttext ), 'image' );
         }
 
 		// Ensure that the exclude parameter is an integer or boolean-evaluated
 		// value
 		if (is_string($entity->exclude)) $entity->exclude = intval($entity->exclude);
-	}
-}
 
-/**
- * Unserializes the metadata when fetched from the database
- */
-class Hook_Unserialize_Image_Metadata extends Hook
-{
-	function unserialize_metadata($entity)
-	{
-		if (isset($entity->meta_data) && is_string($entity->meta_data)) {
-			$entity->meta_data = $this->object->unserialize($entity->meta_data);
-		}
+		// Trim alttext and description
+		$entity->description = trim($entity->description);
+		$entity->alttext	 = trim($entity->alttext);
 	}
 }

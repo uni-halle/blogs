@@ -1,5 +1,21 @@
 === Desk Mess Mirrored ===
-Changelog: July 20, 2013
+Changelog: November 16, 2013
+
+== Version 2.2.3 ==
+= Code =
+* Added support for Post-Format: Link
+* Added DMM_SHOW_PAGE_PERMALINK constant
+* Made "Page Permalink" link conditionally display with default as false
+* Removed unused $sep_location parameter
+
+= CSS =
+* Added appropriate styling for post-format: link related items
+* Removed really old browser CSS support ... going with support for current only
+
+= Miscellaneous =
+* Added Serbo-Croatian translation by Andrijana Nikolic from webhostinggeeks.com
+
+/** ------------------------------------------------------------------------- */
 == Version 2.2.2 ==
 = Code =
 * Fix comments closed message displaying when comments are open

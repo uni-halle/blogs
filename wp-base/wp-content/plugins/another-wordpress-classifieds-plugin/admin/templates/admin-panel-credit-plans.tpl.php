@@ -1,5 +1,5 @@
 <div class="metabox-holder">
-    <div class="apostboxes">
+    <div class="postbox">
         <h3 class="hndle"><span><?php _e( 'Credit System Settings', 'AWPCP' ); ?></span></h3>
         <div class="inside">
         <form action="<?php echo admin_url( 'options.php' ); ?>" method="post">

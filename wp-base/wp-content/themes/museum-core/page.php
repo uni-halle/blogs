@@ -3,12 +3,15 @@
 	This is the default page template
 */
 get_header();
-include( AP_CORE_OPTIONS ); ?>
-<div class="content span-9<?php echo $right; ?>">
+tha_content_before();
+$ap_core_content = ap_core_get_which_content(); ?>
+<div class="content col-md-9 <?php echo $ap_core_content; ?>">
+	<?php tha_content_top(); ?>
 
-	<?php get_template_part('parts/post', 'page'); ?>
+	<?php get_template_part('parts/content', 'page'); ?>
 
+	<?php tha_content_bottom(); ?>
 </div>
+<?php tha_content_after();?>
 <?php get_sidebar(); ?>
-<div class="clear"></div>
 <?php get_footer(); ?>

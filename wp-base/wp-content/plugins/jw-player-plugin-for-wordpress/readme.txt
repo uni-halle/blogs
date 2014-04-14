@@ -5,7 +5,7 @@ Contributors: LongTail Video Inc.
 Tags: JW Player, Video, Flash, LongTail Video, Playlists, Audio, HTML5, iPad, iPhone, iPod, Mobile
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ The JW Player WordPress Plugin enables you to embed Flash and HTML5 audio and vi
 
 == Description ==
 
-The JW Player WordPress Plugin makes it extremely easy to deliver Flash and HTML5 video through your WordPress website. This plugin has been developed by LongTail Video, the creator of the JW Player, and allows for easy customization and embedding of Flash and HTML5 video using the JW Player in your WordPress posts. It provides support for all of the JW Player 6 configuration options, including custom watermarks, HLS/RTMP streaming and VAST/VPAID advertising.
+The JW Player WordPress Plugin makes it extremely easy to deliver Flash and HTML5 video through your WordPress website. This plugin allows for easy customization and embedding of Flash and HTML5 video using the JW Player in your WordPress posts. It provides support for all of the JW Player 6 configuration options, including custom watermarks, HLS/RTMP streaming and VAST/VPAID advertising.
 
 <strong>Key Features</strong>
 
@@ -25,7 +25,7 @@ The JW Player WordPress Plugin makes it extremely easy to deliver Flash and HTML
 * A full featured playlist manager - order your media by simply dragging the mouse.
 * A powerful shortcode system for customizations at embed time.
 
-See <a href='http://www.longtailvideo.com/jw-player/'>the JW Player product pages</a> for more info about JW Player.
+See <a href='http://www.jwplayer.com/'>the JW Player product pages</a> for more info about JW Player.
 
 <strong>Documentation</strong>
 
@@ -98,6 +98,10 @@ Additionally, all the embedding, skinning and scripting functionalities of JW Pl
 3. Control almost every aspect of your player right within Wordpress.
 
 == Changelog ==
+
+= 2.1.2 =
+
+* ENHANCEMENT: Support for JW Player 6.8 (See the <a href="http://www.jwplayer.com/support/jw-player/28835/release-notes">Player elease notes</a> for more info).
 
 = 2.1.1 =
 

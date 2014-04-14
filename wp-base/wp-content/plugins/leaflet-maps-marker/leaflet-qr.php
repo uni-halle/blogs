@@ -33,32 +33,19 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 	}
 	//info: visualead settings
 	if ($lmm_options['qrcode_provider'] == 'visualead') {
-		$ch=curl_init();
-		curl_setopt($ch, CURLOPT_URL,"http://api.visualead.com/v1/generate");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-		curl_setopt($ch, CURLOPT_HTTPHEADER,array("Content-type: application/json"));
-		curl_setopt($ch, CURLOPT_POST,true);
-		$filedata = urlencode(LEAFLET_PLUGIN_URL . 'inc/img/logo-qr-code.png');
-		$api_key = strrev('b7a8f1a0e750-c488-44b4-c34b-2592e115');
-		$data=array(
-			'api_key'=>$api_key,
-			'image'=>$filedata,
-			'qr_x'=>4,
-			'qr_y'=>5,
-			'qr_size'=>124,
-			'output_type' => 1,
-			'action'=>'url',
-			'content'=>array('url'=>$url)
-		);
-		$data = json_encode($data);
-		curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
-		$output = curl_exec($ch);
-		curl_close($ch);
-		$results = json_decode($output);
+		$api_url = 'http://api.visualead.com/v3/generate_from_project?api_key=22ecaee1-101a-4ee8-1bc0-0000584d2591&project_id=94819&qr_x=4&qr_y=5&qr_size=124&qr_rotation=0&output_type=1&action=url&content[url]='.$url.'&cells_type=1&markers_type=1';
+		$output = wp_remote_get( $api_url, array( 'sslverify' => false, 'timeout' => 10 ) );
+		$results = json_decode($output['body']);
+		
+		//$results = json_decode($output);
 		if($results->response ==1){
 			$image_decoded= base64_decode($results->image);
-			echo '<a href="data:image/png;base64,' . $results->image . '" title="' . sprintf(esc_attr__('QR code image for link to full screen map (%s)','lmm'),$url) . '"><img src="data:image/png;base64,' . $results->image . '" alt="QR-Code"/></a>';
-			echo '<br/><a href="http://www.visualead.com" target="_blank" title="' . esc_attr__('QR code powered by visualead.com','lmm') . '"><img style="margin:10px 0 0 35px;" src="' . LEAFLET_PLUGIN_URL . 'inc/img/logo-visualead.png"></a>';
+			echo '<span title="' . sprintf(esc_attr__('QR code image for link to full screen map (%s)','lmm'),$url) . '"><img src="data:image/png;base64,' . $results->image . '" alt="QR-Code"/></span>';
+			echo '<br/><a href="http://www.visualead.com/api/?pricing_mapsmarker" target="_blank" title="' . esc_attr__('QR code powered by visualead.com','lmm') . '"><img style="margin:10px 0 0 35px;" src="' . LEAFLET_PLUGIN_URL . 'inc/img/logo-visualead.png"></a>';
+		} else {
+			echo __('QR code could not be generated!','lmm') . '<br/>';
+			echo 'Error ID: ' . $results->error_id . ' (' . $results->error . ')<br/>';
+			echo sprintf(__('Please contact %1$s for more details','lmm'), '<a href="mailto:api@visualead.com?subject=QR error ID '.$results->error_id.'">api@visualead.com</a>');
 		}
 	//info: Google QR settings
 	} else if ($lmm_options['qrcode_provider'] == 'google') {

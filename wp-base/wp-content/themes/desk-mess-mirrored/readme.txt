@@ -20,6 +20,10 @@ This may not be construed as overriding any item with a previously applied licen
 4. screenshot-4.png - Description: Showcasing the drop-down menu with multiple levels
 
 == Basic FAQ ==
+= Q: Where did the >>Page Permalink<< at the bottom of my pages go? =
+Although the idea behind adding a link to the bottom of pages was supposed to be useful, it was not popular and as such it has been conditionally set to not be displayed.
+There are two ways to display this feature now, in your Child-Theme define `DMM_SHOW_PAGE_PERMALINK` as `true`; or, modify the `functions.php` file to change the default from `false` to `true`
+
 = Q: Why is there a >>Page Permalink<< at the bottom of my pages? Can I hide it? =
 The idea is to provide an easy to copy permalink for the article so readers can more easily share the page with others.
 You can hide this text by adding `div.page-shortlink{ display:none; }` to your stylesheet.
@@ -95,3 +99,4 @@ It is also recommended to use this functionality in a Child-Theme versus modifyi
 * http://themes.trac.wordpress.org/ticket/10236 - version 2.1
 * http://themes.trac.wordpress.org/ticket/11492 - version 2.2
 * http://themes.trac.wordpress.org/ticket/13428 - version 2.2.1
+* http://themes.trac.wordpress.org/ticket/13479 - version 2.2.2

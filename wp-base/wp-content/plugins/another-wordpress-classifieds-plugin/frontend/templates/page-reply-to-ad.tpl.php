@@ -26,7 +26,7 @@
 
     <p class="awpcp-form-spacer">
         <label for="awpcp-contact-message"><?php _e("Your message", "AWPCP"); ?></label>
-        <textarea id="awpcp-contact-message" class="textareainput required" name="message" rows="5" cols="90%"><?php echo $form['message']; ?></textarea>
+        <textarea id="awpcp-contact-message" class="awpcp-textarea textareainput required" name="message" rows="5" cols="90%"><?php echo $form['message']; ?></textarea>
         <?php echo awpcp_form_error('message', $errors) ?>
     </p>
 

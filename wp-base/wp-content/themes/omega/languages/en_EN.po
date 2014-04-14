@@ -1,0 +1,1022 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Omega WordPress Theme\n"
+"POT-Creation-Date: 2014-04-11 21:04+0700\n"
+"PO-Revision-Date: 2014-04-11 21:04+0700\n"
+"Last-Translator: Hence Wijaya <hence.wijaya@gmail.com>\n"
+"Language-Team: ThemeHall <hello@themehall.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-KeywordsList: _e;__;esc_attr_e;esc_attr__;esc_html_e;esc_html__;_x;"
+"_n;_x:1,2c;_n:1,2;_;gettext;gettext_noop\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:14
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:18
+#, php-format
+msgid ""
+"It looks like nothing was found at this location. Perhaps you can return "
+"back to the site's <a href=\"%s\">homepage</a> and see if you can find what "
+"you are looking for. Or, you can try finding it by using the search form "
+"below."
+msgstr ""
+
+#: attachment-image.php:27 lib/hooks.php:252
+msgid "Pages:"
+msgstr ""
+
+#: attachment-image.php:39
+msgid "Gallery"
+msgstr ""
+
+#: comment.php:18
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr ""
+
+#: comment.php:21
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: comment.php:22 lib/functions/shortcodes-post.php:380
+msgid "(Edit)"
+msgstr ""
+
+#: functions.php:39
+msgid "Content"
+msgstr ""
+
+#: functions.php:40
+msgid "Content / Sidebar"
+msgstr ""
+
+#: functions.php:41
+msgid "Sidebar / Content"
+msgstr ""
+
+#: lib/admin/meta-box-post-template.php:38
+msgid "Template"
+msgstr ""
+
+#: lib/classes/customize-control-background-image.php:37
+msgctxt "theme customizer tab"
+msgid "Default"
+msgstr ""
+
+#: lib/classes/media-meta.php:147 lib/classes/media-meta.php:270
+#: lib/functions/template-media.php:94
+#, php-format
+msgid "%1$s &#215; %2$s"
+msgstr ""
+
+#: lib/classes/media-meta.php:148 lib/classes/media-meta.php:270
+msgid "Dimensions"
+msgstr ""
+
+#: lib/classes/media-meta.php:154 lib/classes/widget-featured-posts.php:294
+msgid "Date"
+msgstr ""
+
+#: lib/classes/media-meta.php:158
+msgid "Camera"
+msgstr ""
+
+#: lib/classes/media-meta.php:162
+msgid "Aperture"
+msgstr ""
+
+#: lib/classes/media-meta.php:167
+#, php-format
+msgid "%s mm"
+msgstr ""
+
+#: lib/classes/media-meta.php:167
+msgid "Focal Length"
+msgstr ""
+
+#: lib/classes/media-meta.php:173
+msgid "International Organization for Standardization"
+msgstr ""
+
+#: lib/classes/media-meta.php:173
+msgid "ISO"
+msgstr ""
+
+#: lib/classes/media-meta.php:192
+#, php-format
+msgid "%s sec"
+msgstr ""
+
+#: lib/classes/media-meta.php:192
+msgid "Shutter Speed"
+msgstr ""
+
+#: lib/classes/media-meta.php:211 lib/classes/media-meta.php:265
+msgid "Run Time"
+msgstr ""
+
+#: lib/classes/media-meta.php:215
+msgid "Artist"
+msgstr ""
+
+#: lib/classes/media-meta.php:219
+msgid "Composer"
+msgstr ""
+
+#: lib/classes/media-meta.php:223
+msgid "Album"
+msgstr ""
+
+#: lib/classes/media-meta.php:227
+msgid "Track"
+msgstr ""
+
+#: lib/classes/media-meta.php:231
+msgid "Year"
+msgstr ""
+
+#: lib/classes/media-meta.php:235
+msgid "Genre"
+msgstr ""
+
+#: lib/classes/media-meta.php:238 lib/classes/media-meta.php:273
+msgid "File Name"
+msgstr ""
+
+#: lib/classes/media-meta.php:242 lib/classes/media-meta.php:277
+msgid "File Size"
+msgstr ""
+
+#: lib/classes/media-meta.php:246 lib/classes/media-meta.php:281
+msgid "File Type"
+msgstr ""
+
+#: lib/classes/media-meta.php:250 lib/classes/media-meta.php:285
+msgid "Mime Type"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:45
+msgid "Displays featured page with thumbnails"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:54
+msgid "Featured Page"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:167
+#: lib/classes/widget-featured-posts.php:259
+#: lib/classes/widget-featured-posts.php:295
+#: lib/classes/widget-featured-posts.php:420
+msgid "Title"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:172
+msgid "Page"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:180
+#: lib/classes/widget-featured-posts.php:350
+msgid "Show Featured Image"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:184
+#: lib/classes/widget-featured-posts.php:354
+msgid "Image Size"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:196
+#: lib/classes/widget-featured-posts.php:366
+msgid "Image Alignment"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:198
+#: lib/classes/widget-featured-posts.php:338
+#: lib/classes/widget-featured-posts.php:368
+msgid "None"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:199
+#: lib/classes/widget-featured-posts.php:339
+#: lib/classes/widget-featured-posts.php:369
+msgid "Left"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:200
+#: lib/classes/widget-featured-posts.php:340
+#: lib/classes/widget-featured-posts.php:370
+msgid "Right"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:208
+msgid "Show Page Title"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:213
+msgid "Show Page Content"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:217
+msgid "Content Character Limit"
+msgstr ""
+
+#: lib/classes/widget-featured-page.php:222
+msgid "More Text"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:47
+msgid "By"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:50
+msgid "[Read More...]"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:54
+msgid "More Posts from this Category"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:59
+msgid "Displays featured posts with thumbnails"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:68
+msgid "Featured Posts"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:268
+msgid "Category"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:275
+msgid "All Categories"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:282
+#: lib/classes/widget-featured-posts.php:425
+msgid "Number of Posts to Show"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:287
+msgid "Number of Posts to Offset"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:292
+msgid "Order By"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:296
+msgid "Parent"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:297
+msgid "ID"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:298
+msgid "Comment Count"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:299
+msgid "Random"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:304
+msgid "Sort Order"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:306
+msgid "Descending (3, 2, 1)"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:307
+msgid "Ascending (1, 2, 3)"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:313
+msgid "Exclude Previously Displayed Posts?"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:322
+msgid "Show Author Gravatar"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:326
+msgid "Gravatar Size"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:328
+msgid "Small (45px)"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:329
+msgid "Medium (65px)"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:330
+msgid "Large (85px)"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:331
+msgid "Extra Large (125px)"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:336
+msgid "Gravatar Alignment"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:384
+msgid "Show Post Title"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:389
+msgid "Show Post Info"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:394
+msgid "Content Type"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:396
+msgid "Show Content"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:397
+msgid "Show Excerpt"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:398
+msgid "Show Content Limit"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:399
+msgid "No Content"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:402
+msgid "Limit content to"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:404
+msgid "characters"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:409
+msgid "More Text (if applicable)"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:417
+msgid ""
+"To display an unordered list of more posts from this category, please fill "
+"out the information below"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:435
+msgid "Show Category Archive Link"
+msgstr ""
+
+#: lib/classes/widget-featured-posts.php:439
+msgid "Link Text"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:174
+msgid "Browse:"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:175 lib/functions/omega-extras.php:113
+msgid "Home"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:176
+#: lib/functions/template-general.php:431
+msgid "404 Not Found"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:177
+#: lib/functions/template-general.php:276 lib/hooks.php:391
+msgid "Archives"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:179
+#: lib/functions/template-general.php:412
+#, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:181
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:183
+#: lib/functions/template-general.php:373
+#, php-format
+msgid "Minute %s"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:185
+#, php-format
+msgid "Week %s"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:712
+#: lib/functions/template-general.php:392
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:729
+#: lib/functions/template-general.php:373
+msgctxt "minute archives time format"
+msgid "i"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:746
+#: lib/functions/template-general.php:353
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:762
+#: lib/extensions/breadcrumb-trail.php:791
+#: lib/extensions/breadcrumb-trail.php:818
+#: lib/extensions/breadcrumb-trail.php:845
+#: lib/extensions/breadcrumb-trail.php:1032
+#: lib/functions/template-general.php:295
+#: lib/functions/template-general.php:315
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:763
+#: lib/extensions/breadcrumb-trail.php:819
+#: lib/extensions/breadcrumb-trail.php:1036
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:764
+#: lib/extensions/breadcrumb-trail.php:1040
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:792
+#: lib/functions/template-general.php:315
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:1131
+#: lib/extensions/breadcrumb-trail.php:1167
+#: lib/extensions/breadcrumb-trail.php:1184
+#: lib/extensions/breadcrumb-trail.php:1215
+msgid "Edit"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:1159
+msgid "Split"
+msgstr ""
+
+#: lib/extensions/breadcrumb-trail.php:1163
+msgid "Merge"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:155
+msgid "Install Required Plugins"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:156
+msgid "Install Plugins"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:157
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:158
+msgid "Something went wrong."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:169
+#: lib/extensions/class-tgm-plugin-activation.php:480
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:170
+#: lib/extensions/class-tgm-plugin-activation.php:1836
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:171
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:507
+#: lib/extensions/class-tgm-plugin-activation.php:2048
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:535
+#, php-format
+msgid "The following plugin was activated successfully: %s."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:694
+msgid "Dismiss this notice"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1081
+msgid "External Link"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1086
+msgid "Private Repository"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1089
+msgid "Pre-Packaged"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1093
+msgid "WordPress Repository"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1096
+msgid "Required"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1096
+msgid "Recommended"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1099
+msgid "Not Installed"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1101
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1271
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1287
+msgid "Plugin"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1288
+msgid "Source"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1289
+msgid "Type"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1290
+msgid "Status"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1308
+msgid "Install"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1309
+msgid "Activate"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1534
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1819
+msgid "Install package not available."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1820
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1821
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1822
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1823
+msgid "Plugin install failed."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1824
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1835
+msgid "Plugin activation failed."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1945
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1946
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1946
+#: lib/extensions/class-tgm-plugin-activation.php:1955
+msgid "Show Details"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1946
+#: lib/extensions/class-tgm-plugin-activation.php:1955
+msgid "Hide Details"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1947
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1948
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1952
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1953
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1954
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1955
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1956
+msgid "All installations have been completed."
+msgstr ""
+
+#: lib/extensions/class-tgm-plugin-activation.php:1957
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: lib/extensions/custom-css.php:58
+msgid "CSS"
+msgstr ""
+
+#: lib/extensions/custom-logo.php:20
+msgid "Branding"
+msgstr ""
+
+#: lib/extensions/custom-logo.php:45
+msgid "Logo"
+msgstr ""
+
+#: lib/extensions/featured-header.php:198
+msgid "Featured Header"
+msgstr ""
+
+#: lib/extensions/footer-widgets.php:30
+#, php-format
+msgid "Footer %d"
+msgstr ""
+
+#: lib/extensions/footer-widgets.php:31
+#, php-format
+msgid "Footer %d widget area."
+msgstr ""
+
+#: lib/extensions/omega-child-page.php:10
+#: lib/extensions/omega-child-page.php:11
+#: lib/extensions/omega-child-page.php:61
+#: lib/extensions/omega-child-page.php:116
+msgid "Omega Child Themes"
+msgstr ""
+
+#: lib/extensions/omega-child-page.php:65
+msgid ""
+"Personalize your Omega powered site with one of Omega child themes below"
+msgstr ""
+
+#: lib/extensions/omega-child-page.php:96
+msgid "Child Themes"
+msgstr ""
+
+#: lib/extensions/post-stylesheets.php:282
+msgid "Stylesheet"
+msgstr ""
+
+#: lib/extensions/theme-fonts.php:397
+msgid "Fonts"
+msgstr ""
+
+#: lib/extensions/theme-layouts.php:341
+msgctxt "theme layout"
+msgid "Default"
+msgstr ""
+
+#: lib/extensions/theme-layouts.php:433 lib/extensions/theme-layouts.php:543
+#: lib/extensions/theme-layouts.php:628
+msgid "Layout"
+msgstr ""
+
+#: lib/extensions/theme-layouts.php:459
+msgid "Layout is a theme-specific structure for the single view of the post."
+msgstr ""
+
+#: lib/extensions/theme-layouts.php:661
+msgid "Global Layout"
+msgstr ""
+
+#: lib/functions/attr.php:405
+msgctxt "post time format"
+msgid "l, F j, Y, g:i a"
+msgstr ""
+
+#: lib/functions/attr.php:526
+msgctxt "comment time format"
+msgid "l, F j, Y, g:i a"
+msgstr ""
+
+#: lib/functions/deprecated.php:479 lib/functions/deprecated.php:567
+msgid "Permalink"
+msgstr ""
+
+#: lib/functions/deprecated.php:612
+#, php-format
+msgid ""
+"<code>%1$s</code> &mdash; This function has been removed or replaced by "
+"another function."
+msgstr ""
+
+#: lib/functions/head.php:128
+#, php-format
+msgid "%1$s Page %2$s"
+msgstr ""
+
+#: lib/functions/media.php:33
+msgid "Post Thumbnail"
+msgstr ""
+
+#: lib/functions/omega-extras.php:87
+msgid "Theme Settings"
+msgstr ""
+
+#: lib/functions/omega-template-tags.php:37
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr ""
+
+#: lib/functions/omega-template-tags.php:38
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr ""
+
+#: lib/functions/omega-template-tags.php:47
+msgid "<span class=\"meta-nav\">&larr;</span> Previous Page"
+msgstr ""
+
+#: lib/functions/omega-template-tags.php:51
+msgid "Next Page <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: lib/functions/shortcodes-post.php:31
+msgid "ago"
+msgstr ""
+
+#: lib/functions/shortcodes-post.php:217 partials/comments-loop.php:2
+msgid "% Comments"
+msgstr ""
+
+#: lib/functions/shortcodes-post.php:218
+msgid "1 Comment"
+msgstr ""
+
+#: lib/functions/shortcodes-post.php:219
+msgid "Leave a Comment"
+msgstr ""
+
+#: lib/functions/shortcodes-post.php:259
+msgid "Tagged With: "
+msgstr ""
+
+#: lib/functions/shortcodes-post.php:296 lib/functions/shortcodes-post.php:335
+msgid "Filed Under: "
+msgstr ""
+
+#: lib/functions/template-general.php:47
+msgid "State-of-the-art semantic personal publishing platform"
+msgstr ""
+
+#: lib/functions/template-general.php:47
+msgid "WordPress"
+msgstr ""
+
+#: lib/functions/template-general.php:74
+#: lib/functions/template-general.php:125
+#, php-format
+msgid "%s WordPress Theme"
+msgstr ""
+
+#: lib/functions/template-general.php:92
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: lib/functions/template-general.php:242
+#, php-format
+msgid "You are browsing the search results for &#8220;%s&#8221;"
+msgstr ""
+
+#: lib/functions/template-general.php:248
+msgid "You are browsing the site archives by time."
+msgstr ""
+
+#: lib/functions/template-general.php:251
+#: lib/functions/template-general.php:254
+#: lib/functions/template-general.php:257
+#, php-format
+msgid "You are browsing the site archives for %s."
+msgstr ""
+
+#: lib/functions/template-general.php:260
+msgid "You are browsing the site archives."
+msgstr ""
+
+#: lib/functions/template-general.php:315
+#, php-format
+msgid "Week %1$s of %2$s"
+msgstr ""
+
+#: lib/functions/template-general.php:334
+msgctxt "daily archives date format"
+msgid "F j, Y"
+msgstr ""
+
+#: lib/functions/template-post.php:85
+msgctxt "taxonomy terms separator"
+msgid ", "
+msgstr ""
+
+#: lib/functions/utility.php:79
+msgid "(Untitled)"
+msgstr ""
+
+#: lib/hooks.php:58
+msgctxt "nav menu location"
+msgid "Primary"
+msgstr ""
+
+#: lib/hooks.php:74
+msgctxt "sidebar"
+msgid "Primary"
+msgstr ""
+
+#: lib/hooks.php:75
+msgid ""
+"The main sidebar. It is displayed on either the left or right side of the "
+"page based on the chosen layout."
+msgstr ""
+
+#: lib/hooks.php:178
+msgid "Copyright &#169; [the-year] [site-link]."
+msgstr ""
+
+#: lib/hooks.php:178
+msgid "Theme by [author-uri]."
+msgstr ""
+
+#: lib/hooks.php:364
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: lib/hooks.php:374
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: lib/hooks.php:382
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: lib/hooks.php:385
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: lib/hooks.php:388
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: partials/comments-loop-error.php:4
+#, php-format
+msgid ""
+"Comments are closed, but <a href=\"%s\" title=\"Trackback URL for this post"
+"\">trackbacks</a> and pingbacks are open."
+msgstr ""
+
+#: partials/comments-loop-error.php:10
+msgid "Comments are closed."
+msgstr ""
+
+#: partials/comments-loop-nav.php:4
+msgid "&larr; Previous"
+msgstr ""
+
+#: partials/comments-loop-nav.php:5
+#, php-format
+msgid "Page %1$s of %2$s"
+msgstr ""
+
+#: partials/comments-loop-nav.php:6
+msgid "Next &rarr;"
+msgstr ""
+
+#: partials/comments-loop.php:2
+msgid "One Comment"
+msgstr ""
+
+#: partials/entry-byline.php:4
+msgid "Posted by [post_author_posts_link] "
+msgstr ""
+
+#: partials/entry-byline.php:6
+msgid "Posted "
+msgstr ""
+
+#: partials/entry-byline.php:10
+msgid "on [post_date] [post_comments] [post_edit before=\" | \"]"
+msgstr ""
+
+#: partials/entry-byline.php:12
+msgid "on [post_date] [post_edit before=\" | \"]"
+msgstr ""
+
+#: partials/entry-footer.php:3
+#, php-format
+msgid "Posted in: %s"
+msgstr ""
+
+#: partials/entry-footer.php:4
+#, php-format
+msgid "Tagged: %s"
+msgstr ""
+
+#: partials/no-results.php:13
+msgid "Nothing Found"
+msgstr ""
+
+#: partials/no-results.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: partials/no-results.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: partials/no-results.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""

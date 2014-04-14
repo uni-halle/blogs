@@ -10,7 +10,9 @@
 <?php _e("Listing URL", "AWPCP") ?>: <?php echo url_showad($ad->ad_id) ?> 
 <?php _e("Listing ID", "AWPCP") ?>: <?php echo $ad->ad_id ?> 
 <?php _e("Listing Edit Email", "AWPCP") ?>: <?php echo $ad->ad_contact_email ?> 
+<?php if ( get_awpcp_option( 'include-ad-access-key' ) ): ?>
 <?php _e( "Listing Edit Key", "AWPCP" ); ?>: <?php echo $ad->get_access_key(); ?> 
+<?php endif; ?>
 
 
 <?php echo sprintf(__("If you have questions about your listing contact %s. Thank you for your business.", 'AWPCP'), $admin_email) ?> 

@@ -1,37 +1,19 @@
 (function($){
-    window.NggPaginatedGallery = {
+    window.NggPaginatedGallery = function(displayed_gallery_id, container, links) {
+        this.displayed_gallery_id = displayed_gallery_id;
+        this.links                = links;
+        this.container            = container;
 
-        init: function(displayed_gallery_id, container, links){
-            this.displayed_gallery_id = displayed_gallery_id;
-            this.links                = links;
-            this.container            = container;
-
-            var displayed_gallery = this.get_displayed_gallery_obj();
-            if (displayed_gallery) {
-                if (typeof(displayed_gallery.display_settings['ajax_pagination']) != 'undefined') {
-                    if (parseInt(displayed_gallery.display_settings['ajax_pagination'])) {
-                        this.enable_ajax_pagination();
-                    }
-                }
-            }
-
-            // We maintain a count of all the current AJAX actions initiated
-            if (typeof(window['ngg_ajax_operation_count']) == 'undefined') {
-                window['ngg_ajax_operaton_count'] = 0;
-            }
-        },
-
-
-        get_displayed_gallery_obj: function(){
+        this.get_displayed_gallery_obj = function(){
             var index = 'gallery_'+this.displayed_gallery_id;
             if (typeof(window.galleries[index]) == 'undefined')
                 return false;
             else
                 return window.galleries[index];
-        },
+        };
 
 
-        enable_ajax_pagination: function(){
+        this.enable_ajax_pagination = function(){
             var transient_id = this.get_displayed_gallery_obj().transient_id;
             var obj         = this;
 
@@ -47,15 +29,15 @@
                         action: 'render_displayed_gallery',
                         displayed_gallery_id: transient_id,
                         ajax_referrer: $link.attr('href')
-                    }
+                    };
 
                     // Notify the user that we're busy
                     obj.do_ajax(request);
                 });
             });
-        },
+        };
 
-        do_ajax: function(request){
+        this.do_ajax = function(request){
 
             var container    = this.container;
 
@@ -82,6 +64,21 @@
                     $(document).trigger('refreshed');
                 }
             });
+        };
+
+        // Initialize
+        var displayed_gallery = this.get_displayed_gallery_obj();
+        if (displayed_gallery) {
+            if (typeof(displayed_gallery.display_settings['ajax_pagination']) != 'undefined') {
+                if (parseInt(displayed_gallery.display_settings['ajax_pagination'])) {
+                    this.enable_ajax_pagination();
+                }
+            }
+        }
+
+        // We maintain a count of all the current AJAX actions initiated
+        if (typeof(window['ngg_ajax_operation_count']) == 'undefined') {
+            window['ngg_ajax_operaton_count'] = 0;
         }
     };
 

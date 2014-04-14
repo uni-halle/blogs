@@ -20,15 +20,6 @@ if (( (($lmm_options['standard_basemap'] == 'bingaerial') || ($lmm_options['stan
 if (is_plugin_active('footer-javascript/footer-javascript.php') ) {
 	echo '<p><div class="error" style="padding:10px;"><strong>' . __('Warning: you are using the plugin Javascript to Footer which is incompatible with Leaflet Maps Marker and causing maps to break. Please deactivate this plugin in order to be able to use Leaflet Maps Marker.','lmm') . '</strong></div></p>';
 }
-//info: plugin Lazy Load
-if (is_plugin_active('lazy-load/lazy-load.php') ) {
-	global $wp_version;
-	if ( version_compare( $wp_version, '3.3', '<' ) ) {
-		echo '<p><div class="error" style="padding:10px;"><strong>' . __('Warning: you are using the plugin Lazy Load which is incompatible with Leaflet Maps Marker and WordPress <3.3. Please upgrade to the latest WordPress version or disable the Lazy Load plugin.','lmm') . '</strong></div></p>';
-	} else if ( (version_compare( $wp_version, '3.3', '>=' )) && ($lmm_options['misc_javascript_header_footer'] == 'header') ) {
-		echo '<p><div class="error" style="padding:10px;"><strong>' . __('Warning: you are using the plugin Lazy Load and set Leaflet Maps Marker to include Javascript files in header. Please change this setting to include Javascript files in footer (Settings / Misc) or deactivate the Lazy Load plugin.','lmm') . '</strong></div></p>';
-	}
-}
 //info: plugin jQuery Colorbox
 if (is_plugin_active('jquery-colorbox/jquery-colorbox.php') ) {
 	$lmm_jquery_colorbox_options = get_option( 'jquery-colorbox_settings' );
@@ -86,5 +77,9 @@ if (is_plugin_active('w3-total-cache/w3-total-cache.php') ) {
 			}
 		}
 	}
+}
+//info: plugin Root Relative URLs
+if (is_plugin_active('root-relative-urls/sb_root_relative_urls.php') ) {
+	echo '<p><div class="error" style="padding:10px;"><strong>' . sprintf(__('Warning: the plugin %1$s is active and causing maps to break - please deactivate that plugin!','lmm'), '"Root Relative URLs"	') . '</strong></div></p>';
 }
 ?>

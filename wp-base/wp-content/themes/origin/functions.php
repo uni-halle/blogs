@@ -2,9 +2,11 @@
 /**
  * @package Origin
  * @subpackage Functions
- * @version 0.5.6
+ * @version 0.5.8
  * @author AlienWP
+ * @author Justin Tadlock <justin@justintadlock.com>
  * @link http://alienwp.com
+ * @link http://justintadlock.com
  * @license http://www.gnu.org/licenses/gpl-2.0.html
  */
 

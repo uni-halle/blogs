@@ -7,13 +7,17 @@ global $wpdb;
 
 define('AWPCP_TABLE_ADFEES', $wpdb->prefix . "awpcp_adfees");
 define('AWPCP_TABLE_ADS', $wpdb->prefix . "awpcp_ads");
-define('AWPCP_TABLE_ADSETTINGS', $wpdb->prefix . "awpcp_adsettings");
-define('AWPCP_TABLE_ADPHOTOS', $wpdb->prefix . "awpcp_adphotos");
+define('AWPCP_TABLE_AD_REGIONS', $wpdb->prefix . "awpcp_ad_regions");
+define('AWPCP_TABLE_AD_META', $wpdb->prefix . 'awpcp_admeta');
+define('AWPCP_TABLE_MEDIA', $wpdb->prefix . "awpcp_media");
 define('AWPCP_TABLE_CATEGORIES', $wpdb->prefix . "awpcp_categories");
-define('AWPCP_TABLE_PAGES', $wpdb->prefix . "awpcp_pages");
-define('AWPCP_TABLE_PAGENAME', $wpdb->prefix . "awpcp_pagename");
 define('AWPCP_TABLE_PAYMENTS', $wpdb->prefix . 'awpcp_payments');
 define('AWPCP_TABLE_CREDIT_PLANS', $wpdb->prefix . 'awpcp_credit_plans');
+define('AWPCP_TABLE_PAGES', $wpdb->prefix . "awpcp_pages");
+define('AWPCP_TABLE_PAGENAME', $wpdb->prefix . "awpcp_pagename");
+
+define('AWPCP_TABLE_ADSETTINGS', $wpdb->prefix . "awpcp_adsettings");
+define('AWPCP_TABLE_ADPHOTOS', $wpdb->prefix . "awpcp_adphotos");
 
 
 class AWPCP_Installer {
@@ -21,6 +25,8 @@ class AWPCP_Installer {
     private static $instance = null;
 
     private function AWPCP_Installer() {
+        $this->columns = new AWPCP_DatabaseColumnCreator();
+
         $this->create_ads_table =
         "CREATE TABLE IF NOT EXISTS " . AWPCP_TABLE_ADS . " (
             `ad_id` INT(10) NOT NULL AUTO_INCREMENT,
@@ -47,18 +53,38 @@ class AWPCP_Installer {
             `ad_enddate` DATETIME NOT NULL,
             `disabled` TINYINT(1) NOT NULL DEFAULT 0,
             `disabled_date` DATETIME,
+            `flagged` TINYINT(1) NOT NULL DEFAULT 0,
+            `verified` TINYINT(1) NOT NULL DEFAULT 1,
+            `verified_at` DATETIME,
             `ad_key` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
             `ad_transaction_id` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
             `payment_gateway` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
             `payment_status` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+            `payer_email` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
             `is_featured_ad` TINYINT(1) DEFAULT NULL,
             `posterip` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-            `flagged` TINYINT(1) NOT NULL DEFAULT 0,
             `user_id` INT(10) DEFAULT NULL,
             `renew_email_sent` TINYINT(1) NOT NULL DEFAULT 0,
             `renewed_date` DATETIME,
             FULLTEXT KEY `titdes` (`ad_title`,`ad_details`),
             PRIMARY KEY  (`ad_id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
+
+        $this->create_ad_regions_table =
+        "CREATE TABLE IF NOT EXISTS " . AWPCP_TABLE_AD_REGIONS . " (
+            `id` INT(10) NOT NULL AUTO_INCREMENT,
+            `ad_id` INT(10) NOT NULL,
+            `country` VARCHAR(64) COLLATE utf8_general_ci DEFAULT '',
+            `county` VARCHAR(64) COLLATE utf8_general_ci DEFAULT '',
+            `state` VARCHAR(64) COLLATE utf8_general_ci DEFAULT '',
+            `city` VARCHAR(64) COLLATE utf8_general_ci DEFAULT '',
+            `region_id` INT(10) DEFAULT NULL,
+            INDEX `country_index` (`country`),
+            INDEX `county_index` (`county`),
+            INDEX `state_index` (`state`),
+            INDEX `city_index` (`city`),
+            INDEX `region_id_index` (`region_id`),
+            PRIMARY KEY  (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
 
         $this->create_fees_table =
@@ -82,13 +108,15 @@ class AWPCP_Installer {
 
         $this->create_payments_table =
         'CREATE TABLE IF NOT EXISTS ' . AWPCP_TABLE_PAYMENTS . " (
-            `id` VARCHAR(64) NOT NULL,
+            `id` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
             `items` TEXT,
             `data` TEXT,
             `errors` TEXT,
             `user_id` INT(10) NOT NULL,
-            `status` VARCHAR(32) NOT NULL DEFAULT 'open',
-            `payment_status` VARCHAR(32),
+            `status` VARCHAR(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'open',
+            `payment_status` VARCHAR(32) CHARACTER SET utf8 COLLATE utf8_general_ci,
+            `payment_gateway` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+            `payer_email` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
             `version` TINYINT(1),
             `created` DATETIME NOT NULL,
             `updated` DATETIME NOT NULL,
@@ -97,15 +125,37 @@ class AWPCP_Installer {
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
 
         $this->create_credit_plans_table =
-        'CREATE TABLE IF NOT EXISTS ' . AWPCP_TABLE_CREDIT_PLANS . " (
+        "CREATE TABLE IF NOT EXISTS " . AWPCP_TABLE_CREDIT_PLANS . " (
             `id` INT(10) NOT NULL AUTO_INCREMENT,
-            `name` VARCHAR(255) NOT NULL,
-            `description` VARCHAR(500) NOT NULL,
+            `name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+            `description` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
             `credits` INT(10) NOT NULL,
             `price` FLOAT,
             `created` DATETIME NOT NULL,
             `updated` DATETIME NOT NULL,
             PRIMARY KEY  (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
+
+        $this->create_media_table =
+        "CREATE TABLE IF NOT EXISTS " . AWPCP_TABLE_MEDIA . " (
+            `id` INT(10) NOT NULL AUTO_INCREMENT,
+            `ad_id` INT(10) UNSIGNED NOT NULL DEFAULT 0,
+            `name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+            `path` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+            `mime_type` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+            `enabled` TINYINT(1) NOT NULL DEFAULT 0,
+            `is_primary` TINYINT(1) NOT NULL DEFAULT 0,
+            `created` DATETIME NOT NULL,
+            PRIMARY KEY  (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
+
+        $this->create_ad_meta_table =
+        "CREATE TABLE IF NOT EXISTS " . AWPCP_TABLE_AD_META . " (
+            `meta_id` BIGINT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+            `awpcp_ad_id` BIGINT(10) UNSIGNED NOT NULL,
+            `meta_key` VARCHAR(255),
+            `meta_value` LONGTEXT,
+            PRIMARY KEY  (`meta_id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
     }
 
@@ -143,7 +193,7 @@ class AWPCP_Installer {
 
         // if table exists, this is an upgrade
         $table = $wpdb->get_var("SHOW TABLES LIKE '" . AWPCP_TABLE_CATEGORIES . "'");
-        if (strcmp($table, AWPCP_TABLE_CATEGORIES) === 0) {
+        if ( strcasecmp( $table, AWPCP_TABLE_CATEGORIES ) === 0 ) {
             return $this->upgrade($version, $awpcp_db_version);
         }
 
@@ -165,6 +215,16 @@ class AWPCP_Installer {
 
         // create Ads table
         dbDelta($this->create_ads_table);
+
+        // Create ad metadata table.
+        dbDelta( $this->create_ad_meta_table );
+
+        // create awpcp_ad_regions table
+        dbDelta( $this->create_ad_regions_table );
+
+        // create awpcp_media table
+        dbDelta( $this->create_media_table );
+
 
 
         // create Ad Photos table
@@ -250,15 +310,18 @@ class AWPCP_Installer {
         }
 
         // Drop the tables
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_CATEGORIES);
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_ADFEES);
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_CREDIT_PLANS);
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_PAYMENTS);
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_ADS);
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_ADSETTINGS);
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_ADPHOTOS);
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_PAGENAME);
-        $wpdb->query("DROP TABLE IF EXISTS " . AWPCP_TABLE_PAGES);
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_ADFEES );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_ADPHOTOS );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_ADS );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_ADSETTINGS );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_AD_META );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_AD_REGIONS );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_CATEGORIES );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_CREDIT_PLANS );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_MEDIA );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAGES );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAGENAME );
+        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAYMENTS );
 
         // TODO: implement uninstall methods in other modules
         $tables = array($wpdb->prefix . 'awpcp_comments');
@@ -335,6 +398,9 @@ class AWPCP_Installer {
         }
         if (version_compare($oldversion, '3.0-beta23') < 0) {
             $this->upgrade_to_3_0_0($oldversion);
+        }
+        if ( version_compare( $oldversion, '3.0.2' ) < 0 ) {
+            $this->upgrade_to_3_0_2( $oldversion );
         }
 
         do_action('awpcp_upgrade', $oldversion, $newversion);
@@ -915,10 +981,80 @@ class AWPCP_Installer {
             $awpcp->settings->update_option( 'maximagesize', 1048576 );
         }
 
-        $awpcp->settings->update_option('show-widget-modification-notice', true, true);
+        if ( is_null( $awpcp->settings->get_option( 'show-widget-modification-notice', null ) ) ) {
+            $awpcp->settings->update_option('show-widget-modification-notice', true, true);
+        }
 
-        update_option('awpcp-pending-manual-upgrade', true);
-        update_option('awpcp-import-payment-transactions', true);
+        $query = "SELECT option_name FROM $wpdb->options ";
+        $query.= "WHERE option_name LIKE 'awpcp-payment-transaction-%' ";
+        $query.= "LIMIT 0, 100";
+
+        $transactions = $wpdb->get_results( $query );
+
+        if ( count( $transactions ) > 0 ) {
+            update_option('awpcp-import-payment-transactions', true);
+            update_option('awpcp-pending-manual-upgrade', true);
+        }
+    }
+
+    private function upgrade_to_3_0_2($oldversion) {
+        global $wpdb;
+
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+
+        $manual_upgrade_required = false;
+        $settings = awpcp()->settings;
+
+        // fix for all Ads being (visually) marked as featured (part of #527).
+        $layout = $settings->get_option( 'displayadlayoutcode' );
+        $layout = str_replace( 'awpcp_featured_ad_wrapper', '$isfeaturedclass', $layout );
+        $settings->update_option( 'displayadlayoutcode', $layout );
+
+        // create awpcp_ad_regions table
+        dbDelta( $this->create_ad_regions_table );
+
+        // create awpcp_media table
+        dbDelta( $this->create_media_table );
+
+        // Create ad metadata table.
+        dbDelta( $this->create_ad_meta_table );
+
+        // migrate old regions
+        if ( $this->column_exists( AWPCP_TABLE_ADS, 'ad_country' ) ) {
+            update_option( 'awpcp-migrate-regions-information', true );
+
+            // the following option was used as the cursor during the first
+            // upgrade. However, we had to rollback some of the modifications
+            // and the upgrade had to be run again. The new cursor is:
+            // 'awpcp-migrate-regions-info-cursor'.
+            delete_option( 'awpcp-migrate-regions-information-cursor' );
+
+            $manual_upgrade_required = true;
+        }
+
+        // migrate media regions
+        if ( awpcp_table_exists( AWPCP_TABLE_ADPHOTOS ) ) {
+            update_option( 'awpcp-migrate-media-information', true );
+
+            $manual_upgrade_required = true;
+        }
+
+        // add columns required for email verification feature
+        $this->columns->create( AWPCP_TABLE_ADS, 'verified', "TINYINT(1) NOT NULL DEFAULT 1" );
+        $this->columns->create( AWPCP_TABLE_ADS, 'verified_at', "DATETIME" );
+
+        // add payer email column
+        $this->columns->create( AWPCP_TABLE_ADS, 'payer_email', "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' AFTER `payment_status`" );
+        $this->columns->create( AWPCP_TABLE_PAYMENTS, 'payment_gateway', "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' AFTER `payment_status`" );
+        $this->columns->create( AWPCP_TABLE_PAYMENTS, 'payer_email', "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' AFTER `payment_status`" );
+
+        if ( $this->column_exists( AWPCP_TABLE_ADS, 'payer_email' ) ) {
+            $wpdb->query( "UPDATE " . AWPCP_TABLE_ADS . " SET payer_email = ad_contact_email" );
+        }
+
+        if ( $manual_upgrade_required ) {
+            update_option( 'awpcp-pending-manual-upgrade', true );
+        }
     }
 }
 

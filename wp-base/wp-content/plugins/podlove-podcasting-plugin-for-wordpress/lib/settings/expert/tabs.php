@@ -22,7 +22,7 @@ class Tabs {
 		$this->title = $title;
 	}
 
-	public function addTab( Tab $tab ) {
+	public function addTab( $tab ) {
 		$this->tabs[] = $tab;
 	}
 
@@ -48,7 +48,9 @@ class Tabs {
 	}
 
 	public function initCurrentTab() {
-		return $this->getCurrentTab()->init();
+		if( is_object( $this->getCurrentTab() ) ) {
+			return $this->getCurrentTab()->init();
+		} 		
 	}
 
 	public function initAllTabs() {
@@ -61,6 +63,10 @@ class Tabs {
 		foreach ( $this->tabs as $tab )
 			if ( $tab->is_active() )
 				return $tab;
+	}
+
+	public function getTabs() {
+		return $this->tabs;
 	}
 
 }

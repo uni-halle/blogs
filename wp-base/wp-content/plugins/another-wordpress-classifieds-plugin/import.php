@@ -8,7 +8,6 @@ class AWPCP_CSV_Importer {
 		"contact_name",
 		"contact_email",
 		"category_name",
-		'username'
 	);
 
 	private $columns = array(
@@ -97,7 +96,7 @@ class AWPCP_CSV_Importer {
 	public $images_imported = 0;
 	public $ads_rejected = 0;
 
-	public function __construct($options) {
+	public function __construct($options=array()) {
 		$this->options = wp_parse_args($options, $this->defaults);
 
 		// load Extra Fields definitions
@@ -112,7 +111,7 @@ class AWPCP_CSV_Importer {
 	 * @param $csv		filename of the CSV file
 	 * @param $zip		filename of the ZIP file
 	 */
-	public function import($csv, $zip, &$errors, &$messages) {
+	public function import( $csv, $zip = '', &$errors = array(), &$messages = array() ) {
 		$parsed = $this->get_csv_data($csv);
 
 		if (empty($parsed)) {
@@ -123,8 +122,10 @@ class AWPCP_CSV_Importer {
 		if ( empty( $zip ) ) {
 			$import_dir = false;
 		} else {
-			$import_dir = $this->extract_images( $zip, $errors, $messages );
-			if ( $import_dir === false ) {
+			$import_dir = $this->prepare_import_dir();
+			$images = $this->unzip( $zip, $import_dir, $errors, $messages );
+
+			if ( false === $images ) {
 				return false;
 			}
 		}
@@ -212,6 +213,8 @@ class AWPCP_CSV_Importer {
 	private function import_ads($header, $csv, $import_dir, &$errors, &$messages) {
 		global $wpdb;
 
+		$region_columns = array( 'city', 'state', 'country', 'county_village' );
+
 		$test_import = $this->options['test-import'];
 		$images_created = array();
 
@@ -221,6 +224,7 @@ class AWPCP_CSV_Importer {
 			$columns = array();
 			$values = array();
 			$placeholders = array();
+			$region = array();
 
 			$email = awpcp_array_data('contact_email', '', $data);
 			$category = awpcp_array_data('category_name', '', $data);
@@ -256,7 +260,7 @@ class AWPCP_CSV_Importer {
 					continue;
 				}
 
-				$errors = array_merge($errors, $_errors);
+				array_splice( $errors, count( $errors ), 0, $_errors );
 
 				// missing value, mark row as bad
 				if (strlen($value) === 0 && in_array($key, $this->required)) {
@@ -267,9 +271,17 @@ class AWPCP_CSV_Importer {
 					break;
 				}
 
-				$placeholders[] = empty($this->types[$key]) ? '%d' : '%s';
-				$values[] = $value;
-				$columns[] = $column;
+				if ( in_array( $key, $region_columns ) ) {
+					if ( $key == 'county_village' ) {
+						$region['county'] = $value;
+					} else {
+						$region[ $key ] = $value;
+					}
+				} else {
+					$placeholders[] = empty($this->types[$key]) ? '%d' : '%s';
+					$values[] = $value;
+					$columns[] = $column;
+				}
 			}
 
 			foreach ($this->auto_columns as $key => $value) {
@@ -295,7 +307,7 @@ class AWPCP_CSV_Importer {
 				$options = $field->field_options;
 				$category = $field->field_category;
 
-				$enforce = in_array($cat_id, $category);
+				$enforce = in_array($category_id, $category);
 
 				$value = awpcp_validate_extra_field($name, $data[$name], $row, $validate, $type, $options, $enforce, $errors);
 
@@ -322,12 +334,12 @@ class AWPCP_CSV_Importer {
 				$values[] = $value;
 			}
 
-			if ($import_dir) {
-				$images = explode(';', $data['images']);
-				$images = $this->import_images($images, $row, $import_dir, $errors);
-				$this->images_imported += count($images);
+			if ( $import_dir ) {
+				$image_names = explode( ';', $data['images'] );
+				$images = $this->import_images( $image_names, $row, $import_dir, $errors );
+				$this->images_imported += count( $images );
 				// save created images to be deleted later, if test mode is on
-				array_splice($images_created, 0, 0, $images);
+				array_splice( $images_created, 0, 0, $images );
 			} else {
 				$images = array();
 			}
@@ -340,6 +352,7 @@ class AWPCP_CSV_Importer {
 
 			$sql = 'INSERT INTO ' . AWPCP_TABLE_ADS . ' ';
 			$sql.= '( ' . join(', ', $columns) . ' ) VALUES ( ' . join(', ', $placeholders) . ' ) ';
+
 			$sql = $wpdb->prepare($sql, $values);
 
 			if ($test_import) {
@@ -349,15 +362,19 @@ class AWPCP_CSV_Importer {
 				$inserted_id = $wpdb->insert_id;
 			}
 
-			if (!empty($images)) {
-				$this->save_images($images, $inserted_id, $row, $errors);
+			if ( !empty( $region ) ) {
+				$this->save_regions( $region, $inserted_id, $row, $errors );
+			}
+
+			if ( !empty( $images ) ) {
+				$this->save_images( $images, $inserted_id, $row, $errors );
 			}
 
 			$this->ads_imported++;
 		}
 
-		if ($import_dir) {
-			$this->remove_images($import_dir, $images_created);
+		if ( $import_dir ) {
+			$this->remove_images( $import_dir, $images_created );
 		}
 	}
 
@@ -373,9 +390,11 @@ class AWPCP_CSV_Importer {
 
 		if (!is_dir($import_dir)) {
 			umask(0);
-			mkdir($import_dir, 0777, true);
+			mkdir($import_dir, awpcp_directory_permissions(), true);
 			chown($import_dir, $owner);
 		}
+
+		$import_dir = $this->prepare_import_dir();
 
 		require_once(ABSPATH . 'wp-admin/includes/class-pclzip.php');
 
@@ -415,14 +434,101 @@ class AWPCP_CSV_Importer {
 		return $import_dir;
 	}
 
+	private function prepare_import_dir() {
+		$current_user = wp_get_current_user();
+
+		list( $images_dir, $thumbnails_dir ) = awpcp_setup_uploads_dir();
+		$import_dir = str_replace( 'thumbs', 'import', $thumbnails_dir );
+		$import_dir = $import_dir . $current_user->ID . '-' . time();
+
+		$owner = fileowner( $images_dir );
+
+		if ( !is_dir( $import_dir ) ) {
+			umask( 0 );
+			@mkdir( $import_dir, awpcp_directory_permissions(), true );
+			@chown( $import_dir, $owner );
+		}
+
+		return file_exists( $import_dir ) ? $import_dir : false;
+	}
+
+	public function unzip($file, &$errors=array()) {
+		if ( !file_exists( $file ) ) {
+			$message = __( 'File %s does not exists.', 'AWPCP' );
+			$errors[] = sprintf( $message, $file );
+			return false;
+		}
+
+		$import_dir = $this->prepare_import_dir();
+
+		if ( false === $import_dir ) {
+			$message = __( 'Import directory %s does not exists.', 'AWPCP' );
+			$errors[] = sprintf( $message, $import_dir );
+			return false;
+		}
+
+		require_once( ABSPATH . 'wp-admin/includes/class-pclzip.php' );
+
+		$archive = new PclZip( $file );
+		$items = $archive->extract( PCLZIP_OPT_EXTRACT_AS_STRING );
+		$files = array();
+
+		if ( !is_array( $items ) ) {
+			$errors[] = __( 'Incompatible ZIP Archive', 'AWPCP' );
+			return false;
+		}
+
+		if ( 0 === count( $items ) ) {
+			$errors[] = __( 'Empty ZIP Archive', 'AWPCP' );
+			return false;
+		}
+
+		foreach ( $items as $item ) {
+			// ignore folder and don't extract the OS X-created __MACOSX directory files
+			if ( $item['folder'] || '__MACOSX/' === substr( $item['filename'], 0, 9 ) ) {
+				continue;
+			}
+
+			// don't extract files with a filename starting with . (like .DS_Store)
+			if ( '.' === substr( basename( $item['filename'] ), 0, 1 ) ) {
+				continue;
+			}
+
+			$path = trailingslashit( $import_dir ) . $item['filename'];
+
+			// if file is inside a directory, create it first
+			if ( dirname( $item['filename'] ) !== '.' ) {
+				@mkdir( $import_dir . '/' . dirname( $item['filename'] ), awpcp_directory_permissions(), true );
+			}
+
+			// extract file
+			if ( $h = @fopen( $path, 'w' ) ) {
+				fwrite( $h, $item['content'] );
+				fclose( $h );
+			} else {
+				$message = __( 'Could not write temporary file %s', 'AWPCP' );
+				$errors[] = sprintf( $message, $path );
+			}
+
+			if ( file_exists( $path ) ) {
+				$files[] = array(
+					'path' => $path,
+					'filename' => $item['filename'],
+				);
+			}
+		}
+
+		return $files;
+	}
+
 	/**
 	 * TODO: handle test imports
 	 */
 	private function import_images($images, $row, $import_dir, &$errors) {
 		$test_import = $this->options['test-import'];
 
-		list($images_dir, $thumbs_dir) = awpcp_setup_uploads_dir();
-		list($min_width, $min_height, $min_size, $max_size) = awpcp_get_image_constraints();
+		list( $images_dir, $thumbnails_dir ) = awpcp_setup_uploads_dir();
+		list( $min_width, $min_height, $min_size, $max_size ) = awpcp_get_image_constraints();
 
 		$import_dir = trailingslashit($import_dir);
 
@@ -430,7 +536,7 @@ class AWPCP_CSV_Importer {
 		foreach (array_filter($images) as $filename) {
 			$tmpname = $import_dir . $filename;
 
-			$uploaded = awpcp_upload_image_file($images_dir, $filename, $tmpname, $min_size, $max_size, $min_width, $min_height, false);
+			$uploaded = awpcp_upload_image_file($images_dir, basename($filename), $tmpname, $min_size, $max_size, $min_width, $min_height, false);
 
 			if (is_array($uploaded) && isset($uploaded['filename'])) {
 				$entries[] = $uploaded;
@@ -443,16 +549,33 @@ class AWPCP_CSV_Importer {
 		return $entries;
 	}
 
+	private function save_regions($region, $ad_id, $row, &$errors) {
+		if ( ! $this->options['test-import'] ) {
+			$ad = AWPCP_Ad::find_by_id( $ad_id );
+            awpcp_basic_regions_api()->update_ad_regions( $ad, array( $region ), 1 );
+		}
+	}
+
 	private function save_images($entries, $adid, $row, &$errors) {
 		global $wpdb;
 
 		$test_import = $this->options['test-import'];
+		$media_api = awpcp_media_api();
 
 		foreach ($entries as $entry) {
-			$sql = 'INSERT INTO ' . AWPCP_TABLE_ADPHOTOS . " SET image_name = '%s', ad_id = %d, disabled = 0";
-			$sql = $wpdb->prepare($sql, $entry['filename'], $adid);
+            $extension = pathinfo( $entry['filename'], PATHINFO_EXTENSION );
+            $mime_type = sprintf( 'image/%s', $extension );
 
-			$result = $test_import || $wpdb->query($sql);
+			$data = array(
+				'ad_id' => $adid,
+				'name' => $entry['filename'],
+				'path' => $entry['filename'],
+				'mime_type' => $mime_type,
+				'enabled' => true,
+				'is_primary' => false,
+			);
+
+			$result = $test_import || $media_api->create( $data );
 
 			if ($result === false) {
 				$msg = __("Could not save the information to the database for %s in row %d", 'AWPCP');
@@ -465,16 +588,6 @@ class AWPCP_CSV_Importer {
 		list($images_dir, $thumbs_dir) = awpcp_setup_uploads_dir();
 
 		$test_import = $this->options['test-import'];
-		$import_dir = trailingslashit($import_dir);
-
-		foreach (scandir($import_dir) as $file) {
-			$filename = $import_dir . $file;
-			if ($file == '.' || $file == '..' || is_dir($filename))
-				continue;
-
-			if (file_exists($filename))
-				unlink($filename);
-		}
 
 		if ($test_import) {
 			foreach ($images as $image) {
@@ -486,7 +599,7 @@ class AWPCP_CSV_Importer {
 			}
 		}
 
-		rmdir($import_dir);
+		awpcp_rmdir( $import_dir );
 	}
 
 	private function get_csv_data($fileName, $maxLimit=1000) {
@@ -683,7 +796,7 @@ class AWPCP_CSV_Importer {
 		$date = null;
 		foreach ($date_formats[$date_time_format] as $_format) {
 			$_format = trim(sprintf("%s %s", join($date_separator, $_format), $suffix));
-			$parsed = strptime($val, $_format);
+			$parsed = awpcp_strptime( $val, $_format );
 			if ($parsed && empty($parsed['unparsed'])) {
 				$date = $parsed;
 				break;
@@ -730,7 +843,9 @@ function is_valid_date($month, $day, $year) {
  *                    required fields may be empty if enforce is false.
  */
 function awpcp_validate_extra_field($name, $value, $row, $validate, $type, $options, $enforce, &$errors) {
-	$_errors = array();
+	$validation_errors = array();
+	$serialize = false;
+
 	$list = null;
 
 	switch ($type) {
@@ -743,7 +858,8 @@ function awpcp_validate_extra_field($name, $value, $row, $validate, $type, $opti
 		case 'Select Multiple':
 			// value can be any combination of items from options list
 			$msg = sprintf( __("Extra Field %s's value is not allowed in row %d. Allowed values are: %%s", 'AWPCP'), $name, $row );
-			$list = split(';', $value);
+			$list = explode( ';', $value );
+			$serialize = true;
 
 		case 'Select':
 		case 'Radio Button':
@@ -754,20 +870,20 @@ function awpcp_validate_extra_field($name, $value, $row, $validate, $type, $opti
 			}
 
 			// only attempt to validate if the field is required (has validation)
-			if (!empty($validate)) {
-				foreach ($list as $item) {
-					if (empty($item)) {
-						continue;
-					}
-					if (!in_array($item, $options)) {
-						$msg = sprintf($msg, join(', ', $options));
-						$_errors[] = $msg;
-					}
+			foreach ($list as $item) {
+				if (empty($item)) {
+					continue;
+				}
+				if (!in_array($item, $options)) {
+					$msg = sprintf($msg, join(', ', $options));
+					$validation_errors[] = $msg;
 				}
 			}
 
 			// extra fields multiple values are stored serialized
-			$value = maybe_serialize($list);
+			if ( $serialize ) {
+				$value = maybe_serialize( $list );
+			}
 
 			break;
 
@@ -775,8 +891,9 @@ function awpcp_validate_extra_field($name, $value, $row, $validate, $type, $opti
 			break;
 	}
 
-	if (!empty($_errors)) {
-		return $_errors;
+	if (!empty($validation_errors)) {
+		array_splice( $errors, count( $errors ), 0, $validation_errors );
+		return false;
 	}
 
 	$list = is_array($list) ? $list : array($value);
@@ -789,32 +906,32 @@ function awpcp_validate_extra_field($name, $value, $row, $validate, $type, $opti
 		switch ($validate) {
 			case 'missing':
 				if (empty($value)) {
-					$_errors[] = "Extra Field $name is required in row $row.";
+					$validation_errors[] = "Extra Field $name is required in row $row.";
 				}
 				break;
 
 			case 'url':
 				if (!isValidURL($item)) {
-					$_errors[] = "Extra Field $name must be a valid URL in row $row.";
+					$validation_errors[] = "Extra Field $name must be a valid URL in row $row.";
 				}
 				break;
 
 			case 'email':
 				$regex = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$";
 				if (!eregi($regex, $item)) {
-					$_errors[] = "Extra Field $name must be a valid email address in row $row.";
+					$validation_errors[] = "Extra Field $name must be a valid email address in row $row.";
 				}
 				break;
 
 			case 'numericdeci':
 				if (!is_numeric($item)) {
-					$_errors[] = "Extra Field $name must be a number in row $row.";
+					$validation_errors[] = "Extra Field $name must be a number in row $row.";
 				}
 				break;
 
 			case 'numericnodeci':
 				if (!ctype_digit($item)) {
-					$_errors[$name] = "Extra Field $name must be an integer number in row $row.";
+					$validation_errors[$name] = "Extra Field $name must be an integer number in row $row.";
 				}
 				break;
 
@@ -823,8 +940,9 @@ function awpcp_validate_extra_field($name, $value, $row, $validate, $type, $opti
 		}
 	}
 
-	if (!empty($_errors)) {
-		return $_errors;
+	if (!empty($validation_errors)) {
+		array_splice( $errors, count( $errors ), 0, $validation_errors );
+		return false;
 	}
 
 	return $value;
@@ -897,7 +1015,7 @@ function awpcp_csv_importer_get_user_id($username, $email, $row, &$errors=array(
 	}
 	$users[$username] = $result;
 
-	$message = __("A new user '%s' with email address '%s' and password '%s' was created for row %d.");
+	$message = __("A new user '%s' with email address '%s' and password '%s' was created for row %d.", 'AWPCP');
 	$messages[] = sprintf($message, $username, $email, $password, $row);
 
 	return $result;

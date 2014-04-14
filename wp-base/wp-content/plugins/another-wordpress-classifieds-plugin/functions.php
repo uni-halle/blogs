@@ -72,8 +72,6 @@ if (!function_exists('wp_trim_words')) {
 	/**
 	 * Trims text to a certain number of words.
 	 *
-	 * @since 3.3.0
-	 *
 	 * @param string $text Text to trim.
 	 * @param int $num_words Number of words. Default 55.
 	 * @param string $more What to append if $text needs to be trimmed. Default '&hellip;'.
@@ -81,7 +79,7 @@ if (!function_exists('wp_trim_words')) {
 	 */
 	function wp_trim_words( $text, $num_words = 55, $more = null ) {
 		if ( null === $more )
-			$more = __( '&hellip;' );
+			$more = __( '&hellip;', 'AWPCP' );
 		$original_text = $text;
 		$text = wp_strip_all_tags( $text );
 		$words_array = preg_split( "/[\n\r\t ]+/", $text, $num_words + 1, PREG_SPLIT_NO_EMPTY );
@@ -113,6 +111,53 @@ function awpcp_esc_textarea($text) {
 	return $text;
 }
 
+/**
+ * @since 3.0.2
+ */
+function awpcp_strptime( $date, $format ) {
+	if ( function_exists( 'strptime' ) ) {
+		return strptime( $date, $format );
+	} else {
+		return awpcp_strptime_replacement( $date, $format );
+	}
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_strptime_replacement( $date, $format ) {
+    $masks = array(
+        '%d' => '(?P<d>[0-9]{2})',
+        '%m' => '(?P<m>[0-9]{2})',
+        '%y' => '(?P<y>[0-9]{2})',
+        '%Y' => '(?P<Y>[0-9]{4})',
+        '%H' => '(?P<H>[0-9]{2})',
+        '%M' => '(?P<M>[0-9]{2})',
+        '%S' => '(?P<S>[0-9]{2})',
+        // usw..
+    );
+
+    $rexep = "#" . strtr( preg_quote( $format ), $masks ) . "#";
+    if ( ! preg_match( $rexep, $date, $out ) )
+        return false;
+
+    $unparsed = preg_replace( $rexep, '', $date );
+
+    if ( strlen( $out['y'] ) )
+    	$out['Y'] = ( $out['y'] > 69 ? 1900 : 2000 ) + $out['y'];
+
+    $ret = array(
+        'tm_sec' => (int) $out['S'],
+        'tm_min' => (int) $out['M'],
+        'tm_hour' => (int) $out['H'],
+        'tm_mday' => (int) $out['d'],
+        'tm_mon' => $out['m'] ? $out['m'] - 1 : 0,
+        'tm_year' => $out['Y'] > 1900 ? $out['Y'] - 1900 : 0,
+        'unparsed' => $unparsed,
+    );
+
+    return $ret;
+}
 
 /**
  * @since	3.0
@@ -243,28 +288,62 @@ function awpcp_get_datetime_format() {
  *
  * @since 2.0.7
  * @param $format 	'mysql', 'timestamp', or first arguemnt for date() function.
+ * @deprecated	since 3.0.2, use awpcp_datetime()
  */
 function awpcp_time($date=null, $format='mysql') {
-	if (is_null($date) || strlen($date) === 0) {
-		$date = current_time('timestamp');
-	} else if (is_string($date)) {
-		$date = strtotime($date);
+	_deprecated_function( __FUNCTION__, '3.0.2', 'awpcp_datetime()' );
+	return awpcp_datetime( $format, $date );
+}
+
+
+/**
+ * TODO: consider using date_i18n
+ * Returns the given date as MySQL date string, Unix timestamp or
+ * using a custom format.
+ *
+ * @since 3.0.2
+ * @param $format 	'mysql', 'timestamp', 'awpcp', 'awpcp-date', 'awpcp-time'
+ *					  or first arguemnt for date() function.
+ */
+function awpcp_datetime( $format='mysql', $date=null ) {
+	if ( is_null( $date ) || strlen( $date ) === 0 ) {
+		$date = current_time( 'timestamp' );
+	} else if ( is_string( $date ) ) {
+		$date = strtotime( $date );
 	} // else, we asume a timestamp
 
-	switch ($format) {
+	switch ( $format ) {
 		case 'mysql':
-			return date('Y-m-d H:i:s', $date);
+			return date( 'Y-m-d H:i:s', $date );
 		case 'timestamp':
 			return $date;
 		case 'awpcp':
-			return date(awpcp_get_datetime_format(), $date);
+			return date( awpcp_get_datetime_format(), $date) ;
 		case 'awpcp-date':
-			return date(awpcp_get_date_format(), $date);
+			return date( awpcp_get_date_format(), $date );
 		case 'awpcp-time':
-			return date(awpcp_get_time_format(), $date);
+			return date( awpcp_get_time_format(), $date );
 		default:
-			return date($format, $date);
+			return date( $format, $date );
 	}
+}
+
+
+function awpcp_set_datetime_date( $datetime, $date ) {
+    $base_timestamp = strtotime( $datetime );
+    $base_year_month_day_timestamp = strtotime( date( 'Y-m-d', strtotime( $datetime ) ) );
+    $time_of_the_day_in_seconds = $base_timestamp - $base_year_month_day_timestamp;
+
+    $target_year_month_day_timestamp = strtotime( date( 'Y-m-d', strtotime( $date ) ) );
+
+    $new_datetime_timestamp = $target_year_month_day_timestamp + $time_of_the_day_in_seconds;
+
+    return awpcp_datetime( 'mysql', $new_datetime_timestamp );
+}
+
+function awpcp_is_mysql_date( $date ) {
+	$regexp = '/^\d{4}-\d{1,2}-\d{1,2}(\s\d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
+	return preg_match( $regexp, $date ) === 1;
 }
 
 
@@ -322,6 +401,16 @@ function awpcp_get_users($where='') {
 	usort( $users, create_function( '$a, $b', 'return strcasecmp( $a->display_name, $b->display_name );' ) );
 
 	return $users;
+}
+
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_get_users_basic_information() {
+	global $wpdb;
+
+	return $wpdb->get_results( "SELECT ID, display_name, user_login FROM $wpdb->users ORDER BY display_name" );
 }
 
 
@@ -426,6 +515,7 @@ function awpcp_pagination($config, $url) {
 	}
 
 	$pagination = join('', $items);
+	$options = awpcp_pagination_options( $results );
 
 	ob_start();
 		include(AWPCP_DIR . '/frontend/templates/listings-pagination.tpl.php');
@@ -523,49 +613,122 @@ function awpcp_get_comma_separated_list($items=array(), $threshold=5, $none='') 
  * @param $translations array 	Allow developers to change the name
  * 								attribute of the form field associated
  *								to this Region Field.
+ * @since 3.0.2
  */
-function awpcp_region_fields($translations) {
-	$fields = array();
+function awpcp_region_fields( $context='details' ) {
+    $fields = apply_filters( 'awpcp-region-fields', false, $context );
 
-	if (get_awpcp_option('displaycountryfield')) {
-		$fields['country'] = array(
-			'class' => 'country-field',
-			'name' => $translations['country'],
-			'label' => __('Country', 'AWPCP'),
-			'help' => __('separate countries by commas', 'AWPCP'),
-			'required' => get_awpcp_option( 'displaycountryfieldreqop', false ),
-		);
-	}
-	if (get_awpcp_option('displaystatefield')) {
-		$fields['state'] = array(
-			'class' => 'state-field',
-			'name' => $translations['state'],
-			'label' => __('State/Province', 'AWPCP'),
-			'help' => __('separate states by commas', 'AWPCP'),
-			'required' => get_awpcp_option( 'displaystatefieldreqop', false ),
-		);
-	}
-	if (get_awpcp_option('displaycityfield')) {
-		$fields['city'] = array(
-			'class' => 'city-field',
-			'name' => $translations['city'],
-			'label' => __('City', 'AWPCP'),
-			'help' => __('separate cities by commas', 'AWPCP'),
-			'required' => get_awpcp_option( 'displaycityfieldreqop', false ),
-		);
-	}
-	if (get_awpcp_option('displaycountyvillagefield')) {
-		$fields['county'] = array(
-			'class' => 'county-field',
-			'name' => $translations['county'],
-			'label' => __('County/Village/Other', 'AWPCP'),
-			'help' => __('separate counties by commas', 'AWPCP'),
-			'required' => get_awpcp_option( 'displaycountyvillagefieldreqop', false ),
-		);
-	}
+    if ( false === $fields ) {
+    	$fields = awpcp_default_region_fields( $context );
+    }
 
-	return $fields;
+    return $fields;
 }
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_default_region_fields( $context='details', $cache=true ) {
+    $show_country_field = get_awpcp_option( 'displaycountryfield' );
+    $show_state_field = get_awpcp_option( 'displaystatefield' );
+    $show_city_field = get_awpcp_option( 'displaycityfield' );
+    $show_county_field = get_awpcp_option( 'displaycountyvillagefield' );
+    $show_city_field_before_county_field = get_awpcp_option( 'show-city-field-before-county-field' );
+
+    $always_shown = in_array( $context, array( 'details', 'search' ) );
+    $can_be_required = $context !== 'search';
+    $_fields = array();
+
+    if ( $show_country_field ) {
+    	$required = $can_be_required && ( (bool) get_awpcp_option( 'displaycountryfieldreqop' ) );
+        $_fields['country'] = array(
+            'type' => 'country',
+            'label' => __('Country', 'AWPCP') . ( $required ? '*' : '' ),
+            'help' => __('separate countries by commas', 'AWPCP'),
+            'required' => $required,
+            'alwaysShown' => $always_shown,
+        );
+    }
+    if ( $show_state_field ) {
+    	$required = $can_be_required && ( (bool) get_awpcp_option( 'displaystatefieldreqop' ) );
+        $_fields['state'] = array(
+            'type' => 'state',
+            'label' => __('State/Province', 'AWPCP') . ( $required ? '*' : '' ),
+            'help' => __('separate states by commas', 'AWPCP'),
+            'required' => $required,
+            'alwaysShown' => $always_shown,
+        );
+    }
+    if ( $show_city_field ) {
+    	$required = $can_be_required && ( (bool) get_awpcp_option( 'displaycityfieldreqop' ) );
+        $_fields['city'] = array(
+            'type' => 'city',
+            'label' => __('City', 'AWPCP') . ( $required ? '*' : '' ),
+            'help' => __('separate cities by commas', 'AWPCP'),
+            'required' => $required,
+            'alwaysShown' => $always_shown,
+        );
+    }
+    if ( $show_county_field ) {
+    	$required = $can_be_required && ( (bool) get_awpcp_option( 'displaycountyvillagefieldreqop' ) );
+        $_fields['county'] = array(
+            'type' => 'county',
+            'label' => __('County/Village/Other', 'AWPCP') . ( $required ? '*' : '' ),
+            'help' => __('separate counties by commas', 'AWPCP'),
+            'required' => $required,
+            'alwaysShown' => $always_shown,
+        );
+    }
+
+    if ( ! $show_city_field_before_county_field ) {
+        $fields = array();
+        foreach( array( 'country', 'state', 'county', 'city' ) as $field ) {
+            if ( isset( $_fields[ $field ] ) ) {
+                $fields[ $field ] = $_fields[ $field ];
+            }
+        }
+    } else {
+        $fields = $_fields;
+    }
+
+    return $fields;
+}
+
+
+/**
+ * TODO: this belongs to an Ads API.
+ * @since 3.0.2
+ */
+function awpcp_regions_search_conditions($regions=array()) {
+	global $wpdb;
+
+	if ( empty( $regions ) ) return array();
+
+	$conditions = array();
+	$fields = null;
+
+	foreach ( $regions as $region ) {
+		if ( $fields === null ) {
+			$fields = array_reverse( array_keys( awpcp_region_fields() ) );
+		}
+
+		foreach ( $fields as $column ) {
+			$value = isset( $region[ $column ] ) ? trim( $region[ $column ] ) : '';
+			if ( ! empty( $value ) ) {
+				$conditions[] = sprintf( "{$column} LIKE '%%%s%%'", esc_sql( trim( $value ) ) );
+				break;
+			}
+		}
+	}
+
+	if ( empty( $conditions ) ) return array();
+
+	$sql = 'SELECT ad_id FROM ' . AWPCP_TABLE_AD_REGIONS . ' ';
+	$sql.= 'WHERE ' . join( ' OR ', $conditions );
+
+	return array( '`ad_id` IN ( ' . $sql . ' )' );
+}
+
 
 /**
  * @since 3.0
@@ -582,6 +745,7 @@ function awpcp_get_region_field_entries($field) {
 
 	// TODO: shouldn't this conditions be the default behavior in AWPCP_Ad::query?
 	$conditions[] = "disabled = 0";
+	$conditions[] = "verified = 1";
 	$conditions[] = "payment_status != 'Unpaid'";
     if (get_awpcp_option('disablependingads') == 0 && get_awpcp_option('freepay') == 1) {
         $conditions[] = "payment_status != 'Pending'";
@@ -661,8 +825,8 @@ function awpcp_region_form_fields($query, $translations=null, $context='details'
 
 	// no field is required in Search Ads screen
 	if ( $context == 'search' ) {
-		foreach ( $fields as &$field ) {
-			$field['required'] = false;
+		foreach ( $fields as $key => $field ) {
+			$fields[$key]['required'] = false;
 		}
 	}
 
@@ -1000,13 +1164,16 @@ function awpcp_get_ad_number_allowed_images($ad_id) {
 		$allowed = get_awpcp_option('imagesallowedfree');
 	}
 
-	return apply_filters('awpcp_number_images_allowed', $allowed, $ad_id);
+	return $allowed;
 }
 
 
 /**
+ * @deprecated since 3.0.2 - use awpcp_media_api()->find_images_by_ad_id() instead
  */
-function awpcp_get_ad_images($ad_id) {
+function awpcp_get_ad_images( $ad_id ) {
+	_deprecated_function( __FUNCTION__, '3.0.2', 'awpcp_media_api()->find_images_by_ad_id()' );
+
 	global $wpdb;
 
 	$query = "SELECT * FROM " . AWPCP_TABLE_ADPHOTOS . " ";
@@ -1016,13 +1183,17 @@ function awpcp_get_ad_images($ad_id) {
 }
 
 /**
- *
+ * @deprecated 3.0.2 use $media->get_url()
  */
 function awpcp_get_image_url($image, $suffix='') {
+	_deprecated_function( __FUNCTION__, '3.0.2', 'AWPCP_Media::get_url()' );
+
 	static $uploads = array();
 
-	if (empty($uploads))
-		$uploads = array_shift(awpcp_setup_uploads_dir());
+	if ( empty( $uploads ) ) {
+		$uploads = awpcp_setup_uploads_dir();
+		$uploads = array_shift( $uploads );
+	}
 
 	$images = trailingslashit(AWPCPUPLOADURL);
 	$thumbnails = trailingslashit(AWPCPTHUMBSUPLOADURL);
@@ -1065,6 +1236,7 @@ function awpcp_get_image_url($image, $suffix='') {
 
 /**
  *
+ * @deprecated use awpcp_media_api()->set_ad_primary_image()
  */
 function awpcp_set_ad_primary_image($ad_id, $image_id) {
 	global $wpdb;
@@ -1088,8 +1260,8 @@ function awpcp_set_ad_primary_image($ad_id, $image_id) {
  *
  * @param  int	$ad_id	Ad's ID
  * @return object	an StdClass object representing an image
+ * @deprecated use awpcp_media_api()->get_ad_primary_image()
  */
-// TODO: eventually move this to AWPCP_Ad
 function awpcp_get_ad_primary_image($ad_id) {
 	global $wpdb;
 
@@ -1247,21 +1419,52 @@ function awpcp_get_page_name($pagename) {
  * Always return the full URL, even if the page is set as
  * the homepage.
  *
- * The returned URL has no trailing slash.
+ * The returned URL has no trailing slash. However, if the
+ * $trailinghslashit parameter is set to true, the returned URL
+ * will be passed through user_trailingslashit() function.
+ *
+ * If permalinks are disabled, the home url will have
+ * a trailing slash.
  *
  * @since 2.0.7
  */
-function awpcp_get_page_url($pagename) {
+function awpcp_get_page_url($pagename, $trailingslashit=false) {
+	global $wp_rewrite;
+
 	$id = awpcp_get_page_id_by_ref($pagename);
 
 	if (get_option('permalink_structure')) {
-		$url = home_url(get_page_uri($id));
+		$permalink = $wp_rewrite->get_page_permastruct();
+		$permalink = str_replace( '%pagename%', get_page_uri( $id ), $permalink );
+
+		$url = home_url( $permalink );
+		$url = $trailingslashit ? user_trailingslashit( $url ) : rtrim($url, '/');
 	} else {
-		$url = add_query_arg('page_id', $id, home_url());
+		$url = add_query_arg( 'page_id', $id, home_url('/') );
 	}
 
-	return rtrim($url, '/');
+	return $url;
 }
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_get_view_categories_url() {
+    $permalinks = get_option('permalink_structure');
+    $main_page_id = awpcp_get_page_id_by_ref('main-page-name');
+    $page_name = get_awpcp_option('view-categories-page-name');
+    $slug = sanitize_title($page_name);
+
+    if ( !empty( $permalinks ) ) {
+        $url = sprintf( '%s/%s', trim( home_url( get_page_uri( $main_page_id ) ), '/' ), $slug );
+        $url = user_trailingslashit( $url );
+    } else {
+        $url = add_query_arg( array( 'page_id' => $main_page_id, 'layout' => 2 ), home_url('/') );
+    }
+
+    return $url;
+}
+
 
 /**
  * Returns a link that can be used to initiate the Ad Renewal process.
@@ -1269,15 +1472,67 @@ function awpcp_get_page_url($pagename) {
  * @since 2.0.7
  */
 function awpcp_get_renew_ad_url($ad_id) {
-	if (get_awpcp_option('enable-user-panel') == 1) {
+	$hash = awpcp_get_renew_ad_hash( $ad_id );
+	if ( get_awpcp_option( 'enable-user-panel' ) == 1 ) {
 		$url = awpcp_get_user_panel_url();
-		$url = add_query_arg(array('id' => $ad_id, 'action' => 'renew-ad'), $url);
+		$url = add_query_arg( array( 'id' => $ad_id, 'action' => 'renew', 'awpcprah' => $hash ), $url );
 	} else {
 		$url = awpcp_get_page_url('renew-ad-page-name');
-		$url = add_query_arg(array('ad_id' => $ad_id), $url);
+		$url = add_query_arg( array( 'ad_id' => $ad_id, 'awpcprah' => $hash ), $url );
 	}
 
 	return $url;
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_get_renew_ad_hash( $ad_id ) {
+	return md5( sprintf( 'renew-ad-%d-%s', $ad_id, wp_salt() ) );
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_verify_renew_ad_hash( $ad_id, $hash ) {
+	return strcmp( awpcp_get_renew_ad_hash( $ad_id ), $hash ) === 0;
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_get_email_verification_url( $ad_id ) {
+	$hash = awpcp_get_email_verification_hash( $ad_id );
+
+    if ( get_option( 'permalink_structure' ) ) {
+        return home_url( "/awpcpx/listings/verify/{$ad_id}/$hash" );
+    } else {
+        $params = array(
+            'awpcpx' => true,
+            'module' => 'listings',
+            'action' => 'verify',
+            'awpcp-ad' => $ad_id,
+            'awpcp-hash' => $hash,
+        );
+
+        return add_query_arg( $params, home_url( 'index.php' ) );
+    }
+
+	return user_trailingslashit( $url );
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_get_email_verification_hash( $ad_id ) {
+	return wp_hash( sprintf( 'verify-%d', $ad_id ) );
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_verify_email_verification_hash( $ad_id, $hash ) {
+	return strcmp( awpcp_get_email_verification_hash( $ad_id ) , $hash ) === 0;
 }
 
 /**
@@ -1319,6 +1574,34 @@ function awpcp_get_admin_panel_url() {
 }
 
 /**
+ * @since 3.0.2
+ */
+function awpcp_get_admin_settings_url( $section = false ) {
+	return add_query_arg( array( 'page' => 'awpcp-admin-settings', 'g' => $section ), admin_url( 'admin.php' ) );
+}
+
+/**
+ * @since 3.2.1
+ */
+function awpcp_get_admin_credit_plans_url() {
+	return add_query_arg( 'page', 'awpcp-admin-credit-plans', admin_url( 'admin.php' ) );
+}
+
+/**
+ * @since 3.2.1
+ */
+function awpcp_get_admin_fees_url() {
+	return add_query_arg( 'page', 'awpcp-admin-fees', admin_url( 'admin.php' ) );
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_get_admin_categories_url() {
+	return add_query_arg( 'page', 'awpcp-admin-categories', admin_url( 'admin.php' ) );
+}
+
+/**
  * @since  3.0
  */
 function awpcp_get_admin_upgrade_url() {
@@ -1339,8 +1622,8 @@ function awpcp_get_admin_listings_url() {
  *
  * @since 2.0.7
  */
-function awpcp_get_user_panel_url() {
-	return admin_url('admin.php?page=awpcp-panel');
+function awpcp_get_user_panel_url( $params=array() ) {
+	return add_query_arg( $params, admin_url( 'admin.php?page=awpcp-panel' ) );
 }
 
 
@@ -1389,19 +1672,30 @@ function awpcp_ajaxurl($overwrite=false) {
 /**
  * @since 3.0-beta
  */
-function awpcp_get_blog_name() {
+function awpcp_get_blog_name($decode_html=true) {
 	$blog_name = get_option('blogname');
+
 	if (empty($blog_name)) {
 		$blog_name = _x('Classifieds Website', 'default blog title', 'AWPCP');
 	}
+
+	if ( $decode_html ) {
+		$blog_name = html_entity_decode( $blog_name, ENT_QUOTES, 'UTF-8' );
+	}
+
 	return $blog_name;
 }
 
-
+/**
+ * Use AWPCP_Request::post_param when possible.
+ */
 function awpcp_post_param($name, $default='') {
 	return awpcp_array_data($name, $default, $_POST);
 }
 
+/**
+ * Use AWPCP_Request::param when possible.
+ */
 function awpcp_request_param($name, $default='', $from=null) {
 	return awpcp_array_data($name, $default, is_null($from) ? $_REQUEST : $from);
 }
@@ -1434,6 +1728,100 @@ function awpcp_get_properties($objects, $property, $default='') {
 	return $results;
 }
 
+/**
+ * Input:
+ *  Array
+ *  (
+ *      [a] => dosearch
+ *      [keywordphrase] =>
+ *      [searchcategory] =>
+ *      [searchname] =>
+ *      [searchpricemin] => 0
+ *      [searchpricemax] => 0
+ *      [regions] => Array
+ *          (
+ *              [0] => Array
+ *                  (
+ *                      [country] => Colombia
+ *                      [state] => Boyacá
+ *                      [city] => Tunja
+ *                  )
+ *
+ *              [1] => Array
+ *                  (
+ *                      [country] => Colombia
+ *                      [state] => Antioquia
+ *                      [city] => Medellín
+ *                  )
+ *
+ *              [2] => Array
+ *                  (
+ *                      [country] => Colombia
+ *                      [state] => Boyacá
+ *                      [city] => Tunja
+ *                  )
+ *
+ *          )
+ *
+ *      [awpcp-test-min] =>
+ *      [awpcp-test-max] =>
+ *      [awpcp-select_list] =>
+ *  )
+ *
+ * Output:
+ * Array
+ * (
+ *      [a] => dosearch
+ *      [keywordphrase] =>
+ *      [searchcategory] =>
+ *      [searchname] =>
+ *      [searchpricemin] => 0
+ *      [searchpricemax] => 0
+ *      [regions[0][country]] => Colombia
+ *      [regions[0][state]] => Boyacá
+ *      [regions[0][city]] => Tunja
+ *      [regions[1][country]] => Colombia
+ *      [regions[1][state]] => Antioquia
+ *      [regions[1][city]] => Medellín
+ *      [regions[2][country]] => Colombia
+ *      [regions[2][state]] => Boyacá
+ *      [regions[2][city]] => Tunja
+ *      [awpcp-test-min] =>
+ *      [awpcp-test-max] =>
+ *      [awpcp-select_list] =>
+ * )
+ * TODO: see WP's _http_build_query
+ *
+ * @since 3.0.2
+ */
+function awpcp_flatten_array($array) {
+	if ( is_array( $array ) ) {
+		$flat = array();
+		_awpcp_flatten_array( $array, array(), $flat );
+		return $flat;
+	} else {
+		return $array;
+	}
+}
+
+/**
+ * @since 3.0.2
+ */
+function _awpcp_flatten_array($array, $path=array(), &$return=array()) {
+	if ( is_array( $array ) ) {
+		foreach ( $array as $key => $value) {
+			_awpcp_flatten_array( $value, array_merge( $path, array( $key ) ), $return );
+		}
+	} else if ( count( $path ) > 0 ){
+		$first = $path[0];
+		if ( count( $path ) > 1 ) {
+			$return[ $first . '[' . join('][', array_slice( $path, 1 ) ) . ']'] = $array;
+		} else {
+			$return[ $first ] = $array;
+		}
+	}
+}
+
 
 /**
  * Parses 'yes', 'true', 'no', 'false', 0, 1 into bool values.
@@ -1452,6 +1840,9 @@ function awpcp_parse_bool($value) {
 }
 
 
+/**
+ * XXX: Referenced in FAQ: http://awpcp.com/forum/faq/why-doesnt-my-currency-code-change-when-i-set-it/
+ */
 function awpcp_get_currency_symbol() {
 	$dollar = array('CAD', 'AUD', 'NZD', 'SGD', 'HKD', 'USD');
 	$code = get_awpcp_option('displaycurrencycode');
@@ -1475,6 +1866,7 @@ function awpcp_get_currency_symbol() {
 	return empty($symbol) ? $code : $symbol;
 }
 
+
 /**
  * @since 3.0
  */
@@ -1497,12 +1889,14 @@ function awpcp_format_money($value, $include_symbol=true) {
  * @since 3.0
  */
 function awpcp_parse_money($value, $decimal_separator=false, $thousands_separator=false) {
+	if ( strlen( $value ) === 0 ) return false;
+
 	$thousands_separator = $thousands_separator ? $thousands_separator : get_awpcp_option('thousands-separator');
 	$decimal_separator = $decimal_separator ? $decimal_separator : get_awpcp_option('decimal-separator');
 
-	$pattern = '/^-?(?:\d+|\d{1,3}(?:\\' . $thousands_separator . '\\d{3})+)?(?:\\' . $decimal_separator . '\\d+)?$/';
+	$pattern = '/^-?(?:\d+|\d{1,3}(?:' . preg_quote( $thousands_separator ) . '\\d{3})+)?(?:' . preg_quote( $decimal_separator ) . '\\d+)?$/';
 
-	if (preg_match($pattern, $value)) {
+	if ( preg_match( $pattern, $value ) ) {
 		$value = str_replace($thousands_separator, '', $value);
 		$value = str_replace($decimal_separator, '.', $value);
 		$number = floatval($value);
@@ -1603,6 +1997,25 @@ function awpcp_form_error($field, $errors) {
 }
 
 
+/**
+ * @since 3.0.2
+ */
+function awpcp_module_not_compatible_notice( $module, $installed_version ) {
+	global $awpcp_db_version;
+
+	$modules = awpcp()->get_premium_modules_information();
+
+	$name = $modules[ $module ][ 'name' ];
+	$required_version = $modules[ $module ][ 'required' ];
+
+	$message = __( 'This version of AWPCP %1$s module is not compatible with AWPCP version %2$s. Please get AWPCP %1$s %3$s or newer!', 'AWPCP' );
+	$message = sprintf( $message, '<strong>' . $name . '</strong>', $awpcp_db_version, '<strong>' . $required_version . '</strong>' );
+    $message = sprintf( '<strong>%s:</strong> %s', __( 'Error', 'AWPCP' ), $message );
+
+    return awpcp_print_error( $message );
+}
+
+
 function awpcp_render_attributes($attrs) {
     $attributes = array();
     foreach ($attrs as $name => $value) {
@@ -1629,6 +2042,39 @@ function awpcp_uploaded_file_error($file) {
 	return array($file['error'], $upload_errors[$file['error']]);
 }
 
+function awpcp_get_file_extension( $filename ) {
+	return pathinfo( $filename, PATHINFO_EXTENSION );
+}
+
+/**
+ * Recursively remove a directory.
+ * @since 3.0.2
+ */
+function awpcp_rmdir($dir) {
+	if ( is_dir( $dir ) ) {
+		$objects = scandir( $dir );
+		foreach ( $objects as $object ) {
+			if ( $object != "." && $object != ".." ) {
+				if ( filetype( $dir . "/" . $object ) == "dir" ) {
+					awpcp_rmdir( $dir . "/" . $object );
+				} else {
+					unlink( $dir . "/" . $object );
+				}
+			}
+		}
+		reset( $objects );
+		rmdir( $dir );
+	}
+}
+
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_directory_permissions() {
+	return intval( get_awpcp_option( 'upload-directory-permissions', '0755' ), 8 );
+}
+
 
 /**
  * @since 2.0.7
@@ -1653,6 +2099,32 @@ function awpcp_column_exists($table, $column) {
 
 /** Email functions
  ---------------------------------------------------------------------------- */
+
+/**
+ * Extracted from class-phpmailer.php (PHPMailer::EncodeHeader).
+ *
+ * @since 3.0.2
+ */
+function awpcp_encode_address_name($str) {
+	if ( !preg_match('/[\200-\377]/', $str ) ) {
+		// Can't use addslashes as we don't know what value has magic_quotes_sybase
+		$encoded = addcslashes( $str, "\0..\37\177\\\"" );
+		if ( ( $str == $encoded) && !preg_match( '/[^A-Za-z0-9!#$%&\'*+\/=?^_`{|}~ -]/', $str ) ) {
+			return $encoded;
+		} else {
+			return "\"$encoded\"";
+		}
+	}
+
+	return $str;
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_format_email_address($address, $name) {
+	return awpcp_encode_address_name( $name ) . " <" . $address . ">";
+}
 
 /**
  * Return the email address that should receive the notifications intented for
@@ -1693,7 +2165,7 @@ function awpcp_admin_sender_email_address($include_contact_name=false) {
  * @return	string	name <email@address>
  */
 function awpcp_admin_email_from() {
-	return sprintf( '%s <%s>', awpcp_get_blog_name(), awpcp_admin_sender_email_address() );
+	return awpcp_format_email_address( awpcp_admin_sender_email_address(), awpcp_get_blog_name() );
 }
 
 /**
@@ -1704,7 +2176,7 @@ function awpcp_admin_email_from() {
  * @return	string	name <email@address>
  */
 function awpcp_admin_email_to() {
-	return sprintf( '%s <%s>', awpcp_get_blog_name(), awpcp_admin_recipient_email_address() );
+	return awpcp_format_email_address( awpcp_admin_recipient_email_address(), awpcp_get_blog_name() );
 }
 
 /**
@@ -1713,7 +2185,7 @@ function awpcp_admin_email_to() {
 function awpcp_ad_enabled_email($ad) {
 	// user email
 	$mail = new AWPCP_Email;
-	$mail->to[] = "{$ad->ad_contact_name} <{$ad->ad_contact_email}>";
+	$mail->to[] = awpcp_format_email_address( $ad->ad_contact_email, $ad->ad_contact_name );
 	$mail->subject = sprintf(__('Your Ad "%s" has been approved', 'AWPCP'), $ad->get_title());
 
 	$template = AWPCP_DIR . '/frontend/templates/email-ad-enabled-user.tpl.php';
@@ -1722,37 +2194,63 @@ function awpcp_ad_enabled_email($ad) {
 	$mail->send();
 }
 
-function awpcp_ad_updated_email($ad, $message) {
+/**
+ * @since 3.0.2
+ */
+function awpcp_ad_updated_user_email( $ad, $message ) {
 	$admin_email = awpcp_admin_recipient_email_address();
 
-	// user email
-
 	$mail = new AWPCP_Email;
-	$mail->to[] = "{$ad->ad_contact_name} <{$ad->ad_contact_email}>";
+	$mail->to[] = awpcp_format_email_address( $ad->ad_contact_email, $ad->ad_contact_name );
 	$mail->subject = sprintf(__('Your Ad "%s" has been successfully updated', 'AWPCP'), $ad->get_title());
 
 	$template = AWPCP_DIR . '/frontend/templates/email-ad-updated-user.tpl.php';
 	$mail->prepare($template, compact('ad', 'message', 'admin_email'));
 
-	$mail->send();
+	return $mail;
+}
+
+
+function awpcp_ad_updated_email( $ad, $message ) {
+	// user email
+	$mail = awpcp_ad_updated_user_email( $ad, $message );
+	return $mail->send();
 }
 
 function awpcp_ad_awaiting_approval_email($ad, $ad_approve, $images_approve) {
 	// admin email
+	$params = array( 'page' => 'awpcp-listings',  'action' => 'manage-images', 'id' => $ad->ad_id );
+    $manage_images_url = add_query_arg( $params, admin_url( 'admin.php' ) );
+
+	if ( false == $ad_approve && $images_approve ) {
+		$subject = __( 'Images on Ad "%s" are awaiting approval', 'AWPCP' );
+
+		$message = __( 'Images on Ad "%s" are awaiting approval. You can approve the images going to the Manage Images sections for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP');
+		$messages = array( sprintf( $message, $ad->get_title(), $manage_images_url ) );
+	} else {
+		$subject = __( 'The Ad "%s" is awaiting approval', 'AWPCP' );
+
+		$message = __('The Ad "%s" is awaiting approval. You can approve the Ad going to the Manage Listings section and clicking the "Enable" action shown on top. Click here to continue: %s.', 'AWPCP');
+		$params = array('page' => 'awpcp-listings',  'action' => 'view', 'id' => $ad->ad_id);
+	    $url = add_query_arg( $params, admin_url( 'admin.php' ) );
+
+	    $messages[] = sprintf( $message, $ad->get_title(), $url );
+
+	    if ( $images_approve ) {
+		    $message = __( 'Additionally, You can approve the images going to the Manage Images sections for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP' );
+		    $messages[] = sprintf( $message, $manage_images_url );
+		}
+	}
 
 	$mail = new AWPCP_Email;
 	$mail->to[] = awpcp_admin_email_to();
-	$mail->subject = sprintf(__('The Ad "%s" is awaiting approval', "AWPCP"), $ad->get_title());
-
-	$params = array('page' => 'awpcp-listings',  'action' => 'view', 'id' => $ad->ad_id);
-    $url = add_query_arg($params, admin_url('admin.php'));
+	$mail->subject = sprintf( $subject, $ad->get_title() );
 
 	$template = AWPCP_DIR . '/frontend/templates/email-ad-awaiting-approval-admin.tpl.php';
-	$mail->prepare($template, compact('ad', 'url'));
+	$mail->prepare( $template, compact( 'messages' ) );
 
 	$mail->send();
 }
-
 
 /** Table Helper related functions
  ---------------------------------------------------------------------------- */
@@ -1811,5 +2309,24 @@ function awpcp_print_inline_javascript() {
 
 	foreach ($awpcp->inline_scripts as $name => $script) {
 		echo $script;
+	}
+}
+
+/**
+ * @since 3.2.1
+ */
+function awpcp_load_plugin_textdomain( $__file__, $text_domain ) {
+	if ( get_awpcp_option( 'activatelanguages' ) ) {
+		$basename = dirname( plugin_basename( $__file__ ) );
+
+		if ( load_plugin_textdomain( $text_domain, false, $basename . '/languages/' ) ) {
+			return true;
+		}
+
+		// main l10n MO file can be in the top level directory or inside the
+		// languages directory. A file inside the languages directory is prefered.
+		if ( $text_domain == 'AWPCP' ) {
+			return load_plugin_textdomain( $text_domain, false, $basename );
+		}
 	}
 }

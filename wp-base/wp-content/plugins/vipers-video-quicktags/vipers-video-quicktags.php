@@ -5,7 +5,7 @@
 Plugin Name:  Viper's Video Quicktags
 Plugin URI:   http://www.viper007bond.com/wordpress-plugins/vipers-video-quicktags/
 Description:  Easily embed videos from various video websites such as YouTube, DailyMotion, and Vimeo into your posts.
-Version:      6.4.5
+Version:      6.5.0
 Author:       Viper007Bond
 Author URI:   http://www.viper007bond.com/
 
@@ -26,36 +26,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-**************************************************************************
-
-In short, this plugin is free to use by anyone and everyone. You are
-welcome to use it on a commercial site or whatever you want. However, I do
-very much appreciate donations for all of my time and effort, although
-they obviously aren't required for you to use this plugin. You can even
-just buy me a beer ( http://www.viper007bond.com/donate/ ).
-
-If you sell this code (i.e. are a web developer selling features provided
-via this plugin to clients), it would be very nice if you threw some of
-your profits my way. After all, you are profiting off my hard work. ;)
-
-Thanks and enjoy this plugin!
-
-**************************************************************************
-
-If you're here looking for how to add support for both TinyMCE 2 and
-TinyMCE 3 buttons, then you'll need to check out the legacy version
-of this plugin. The version you are looking at only supports
-WordPress 2.6 and newer to keep the code of this plugin
-siginificantly simpler as well as encourage people to update.
-
-The legacy version can be found here:
-
-http://downloads.wordpress.org/plugin/vipers-video-quicktags.5.4.4.zip
-
 **************************************************************************/
 
 class VipersVideoQuicktags {
-	var $version = '6.4.5';
+	var $version = '6.5.0';
 	var $settings = array();
 	var $defaultsettings = array();
 	var $swfobjects = array();
@@ -366,7 +340,7 @@ class VipersVideoQuicktags {
 				add_action( 'admin_footer', array(&$this, 'OutputjQueryDialogDiv') );
 
 				wp_enqueue_script( 'jquery-ui-dialog' );
-				wp_enqueue_style( 'vvq-jquery-ui', plugins_url('/vipers-video-quicktags/resources/vvq-jquery-ui.css'), array(), $this->version, 'screen' );
+				wp_enqueue_style( 'wp-jquery-ui-dialog' );
 
 				// Register editor button hooks
 				add_filter( 'tiny_mce_version', array(&$this, 'tiny_mce_version') );
@@ -693,35 +667,17 @@ class VipersVideoQuicktags {
 	var VVQData = {};
 <?php echo $datajs; ?>
 
-	// Set default heights (IE sucks)
-	if ( jQuery.browser.msie ) {
-		var VVQDialogDefaultHeight = 254;
-		var VVQDialogDefaultExtraHeight = 114;
-	} else {
-		var VVQDialogDefaultHeight = 246;
-		var VVQDialogDefaultExtraHeight = 106;
-	}
-	
+
 	// This function is run when a button is clicked. It creates a dialog box for the user to input the data.
 	function VVQButtonClick( tag ) {
 
 		// Close any existing copies of the dialog
 		VVQDialogClose();
 
-		// Calculate the height/maxHeight (i.e. add some height for Blip.tv)
-		VVQDialogHeight = VVQDialogDefaultHeight;
-		VVQDialogMaxHeight = VVQDialogDefaultHeight + VVQDialogDefaultExtraHeight;
-		if ( "bliptv" == tag ) {
-			VVQDialogHeight = VVQDialogDefaultHeight + 16;
-			VVQDialogMaxHeight = VVQDialogMaxHeight + 16;
-		} else if ( "viddler" == tag ) {
-			VVQDialogMaxHeight = VVQDialogDefaultHeight;
-		}
-
 		// Open the dialog while setting the width, height, title, buttons, etc. of it
 		var buttons = { "<?php echo esc_js('Okay', 'vipers-video-quicktags'); ?>": VVQButtonOkay, "<?php echo esc_js('Cancel', 'vipers-video-quicktags'); ?>": VVQDialogClose };
-		var title = '<img src="<?php echo esc_url( plugins_url('/vipers-video-quicktags/buttons/') ); ?>' + tag + '.png" alt="' + tag + '" width="20" height="20" /> ' + VVQData[tag]["title"];
-		jQuery("#vvq-dialog").dialog({ autoOpen: false, width: 750, minWidth: 750, height: VVQDialogHeight, minHeight: VVQDialogHeight, maxHeight: VVQDialogMaxHeight, title: title, buttons: buttons, resize: VVQDialogResizing });
+		var title = VVQData[tag]["title"];
+		jQuery("#vvq-dialog").dialog({ autoOpen: false, width: 750, minWidth: 750, title: title, buttons: buttons });
 
 		// Reset the dialog box incase it's been used before
 		jQuery("#vvq-dialog-slide-header").removeClass("selected");
@@ -758,13 +714,13 @@ class VipersVideoQuicktags {
 		jQuery("#vvq-dialog-input").focus();
 	}
 
-	// Close + reset
+	// Close
 	function VVQDialogClose() {
-		jQuery(".ui-dialog").height(VVQDialogDefaultHeight);
-
-		if ( jQuery('#vvq-dialog').dialog('isOpen') )
+		if (jQuery('#vvq-dialog').dialog('isOpen')) {
 			jQuery("#vvq-dialog").dialog("close");
+		}
 	}
+
 
 	// Callback function for the "Okay" button
 	function VVQButtonOkay() {
@@ -791,43 +747,17 @@ class VipersVideoQuicktags {
 				ed.selection.moveToBookmark(tinymce.EditorManager.activeEditor.windowManager.bookmark);
 
 			ed.execCommand('mceInsertContent', false, text);
-		} else
+		} else {
 			edInsertContent(edCanvas, text);
+		}
 
 		VVQDialogClose();
-	}
-
-	// This function is called while the dialog box is being resized.
-	function VVQDialogResizing( test ) {
-		if ( jQuery(".ui-dialog").height() > VVQDialogHeight ) {
-			jQuery("#vvq-dialog-slide-header").addClass("selected");
-		} else {
-			jQuery("#vvq-dialog-slide-header").removeClass("selected");
-		}
 	}
 
 	// On page load...
 	jQuery(document).ready(function(){
 		// Add the buttons to the HTML view
 		jQuery("#ed_toolbar").append('<?php echo $this->esc_js( $buttonshtml ); ?>');
-
-		// Make the "Dimensions" bar adjust the dialog box height
-		jQuery("#vvq-dialog-slide-header").click(function(){
-			var slide = jQuery('#vvq-dialog-slide');
-
-			if ( jQuery(this).hasClass("selected") ) {
-				jQuery(this).removeClass("selected");
-				jQuery(this).parents(".ui-dialog").animate({ height: VVQDialogHeight }, function(){
-					if ( !slide.hasClass('hidden') )
-						slide.hide();
-				});
-			} else {
-				jQuery(this).addClass("selected");
-				jQuery(this).parents(".ui-dialog").animate({ height: VVQDialogMaxHeight });
-				if ( !slide.hasClass('hidden') )
-					slide.show();
-			}
-		});
 
 		// If the Enter key is pressed inside an input in the dialog, do the "Okay" button event
 		jQuery("#vvq-dialog :input").keyup(function(event){
@@ -882,7 +812,7 @@ class VipersVideoQuicktags {
 			<p><input type="text" id="vvq-dialog-input" style="width:98%" /></p>
 			<input type="hidden" id="vvq-dialog-tag" />
 		</div>
-		<div id="vvq-dialog-slide-header" class="vvq-dialog-slide ui-dialog-titlebar"><?php _e('Dimensions', 'vipers-video-quicktags'); ?></div>
+		<h3 id="vvq-dialog-slide-header" class="vvq-dialog-slide"><?php _e('Dimensions', 'vipers-video-quicktags'); ?></h3>
 		<div id="vvq-dialog-slide" class="vvq-dialog-slide vvq-dialog-content">
 			<p><?php printf( __("The default dimensions for this video type can be set on this plugin's <a href='%s'>settings page</a>. However, you can set custom dimensions for this one particular video here:", 'vipers-video-quicktags'), admin_url('options-general.php?page=vipers-video-quicktags') ); ?></p>
 			<p><input type="text" id="vvq-dialog-width" class="vvq-dialog-dim" style="width:50px" /> &#215; <input type="text" id="vvq-dialog-height" class="vvq-dialog-dim" style="width:50px" /> pixels</p>
@@ -1199,34 +1129,8 @@ class VipersVideoQuicktags {
 
 <div class="wrap">
 
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-	<input type="hidden" name="cmd" value="_donations" />
-	<input type="hidden" name="business" value="paypal@viper007bond.com" />
-	<input type="hidden" name="item_name" value="<?php echo esc_attr( __("Viper's Video Quicktags", 'vipers-video-quicktags') ); ?>" />
-	<input type="hidden" name="no_shipping" value="1" />
-	<input type="hidden" name="return" value="http://www.viper007bond.com/donation-thanks/" />
-	<input type="hidden" name="cancel_return" value="http://www.viper007bond.com/wordpress-plugins/vipers-video-quicktags/" />
-	<input type="hidden" name="cn" value="<?php echo esc_attr( __('Optional Comment', 'vipers-video-quicktags') ); ?>" />
-	<input type="hidden" name="currency_code" value="USD" />
-	<input type="hidden" name="tax" value="0" />
-	<input type="hidden" name="lc" value="US" />
-	<input type="hidden" name="bn" value="PP-DonationsBF" />
-
-<?php if ( function_exists('screen_icon') ) screen_icon(); ?>
-	<h2>
-<?php
-
-	_e("Viper's Video Quicktags", 'vipers-video-quicktags');
-
-	// Want to get rid of the donate button? Alright, if you insist. :(
-	// Use the "vvq_donatebutton" filter to return FALSE and it'll go away (much better than editing this file).
-	if ( TRUE === apply_filters( 'vvq_donatebutton', TRUE ) )
-		echo '		<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but04.gif" name="submit" alt="Donate" title="' . esc_attr( __('Donate to Viper007Bond for this plugin via PayPal', 'vipers-video-quicktags') ) . '" style="vertical-align:middle;" />' . "\n";
-
-?>
-	</h2>
-
-	</form>
+	<?php if ( function_exists('screen_icon') ) screen_icon(); ?>
+	<h2><?php _e( "Viper's Video Quicktags", 'vipers-video-quicktags' ); ?></h2>
 
 	<ul class="subsubsub">
 <?php

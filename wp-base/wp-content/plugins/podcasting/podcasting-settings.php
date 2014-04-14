@@ -24,7 +24,7 @@ class PodcastingSettings
 	 */
 	function addPodcastingSettingsPage() {
 		# Add the options page
-		add_options_page('Podcasting Settings', 'Podcasting', 8, basename(__FILE__), array($this, 'addSettings'));
+		add_options_page('Podcasting Settings', 'Podcasting', 'manage_options', basename(__FILE__), array($this, 'addSettings'));
 	}
 	
 	/**
@@ -36,6 +36,11 @@ class PodcastingSettings
 			register_setting('podcasting', 'pod_title', '');
 			register_setting('podcasting', 'pod_tagline', '');
 			register_setting('podcasting', 'pod_disable_enclose', '');
+            
+            register_setting('podcasting', 'pod_cat', '');
+            
+            
+            //iTunes Options                        
 			register_setting('podcasting', 'pod_itunes_summary', '');
 			register_setting('podcasting', 'pod_itunes_author', '');
 			register_setting('podcasting', 'pod_itunes_image', '');
@@ -46,19 +51,34 @@ class PodcastingSettings
 			register_setting('podcasting', 'pod_itunes_explicit', '');
 			register_setting('podcasting', 'pod_itunes_ownername', '');
 			register_setting('podcasting', 'pod_itunes_owneremail', '');
-			register_setting('podcasting', 'pod_itunes_new-feed-url', '');			
+			register_setting('podcasting', 'pod_itunes_new-feed-url', '');
+            			
 			register_setting('podcasting', 'pod_formats', '');
-			register_setting('podcasting', 'pod_player_flashvars', '');
-			register_setting('podcasting', 'pod_audio_width', '');
-			register_setting('podcasting', 'pod_player_use_video', '');
+            
+            //General Player Options
+            register_setting('podcasting', 'pod_use_native_player', '');
+            register_setting('podcasting', 'pod_player_use_video', '');
 			register_setting('podcasting', 'pod_player_location');
 			register_setting('podcasting', 'pod_player_text_above', '');
 			register_setting('podcasting', 'pod_player_text_before', '');
 			register_setting('podcasting', 'pod_player_text_below', '');
 			register_setting('podcasting', 'pod_player_text_link', '');
+                        
+            //Flash Player Options
+			register_setting('podcasting', 'pod_player_flashvars', '');
 			register_setting('podcasting', 'pod_player_width', '');
 			register_setting('podcasting', 'pod_player_height', '');
+            
+            //Flash Video Player Options
 			register_setting('podcasting', 'pod_video_flashvars', '');
+            
+            //Flash Audio Player Options
+            register_setting('podcasting', 'pod_audio_width', '');
+                        
+            // Native Player Options
+            register_setting('podcasting', 'pod_player_audiovars', '');
+            register_setting('podcasting', 'pod_player_videovars', '');
+                     
 			register_setting('podcasting', 'pod_accept_fail', '');
 		}
 	}
@@ -87,11 +107,20 @@ class PodcastingSettings
 				update_option('pod_title', $_POST['pod_title']);
 				update_option('pod_tagline', $_POST['pod_tagline']);
 				update_option('pod_disable_enclose', $_POST['pod_disable_enclose']);
+                update_option('pod_cat', $_POST['pod_cat']);
 
 				// Update the iTunes options
 				update_option('pod_itunes_summary', $_POST['pod_itunes_summary']);
 				update_option('pod_itunes_author', $_POST['pod_itunes_author']);
-				update_option('pod_itunes_image', podcasting_urlencode($_POST['pod_itunes_image']));
+                if($_POST['pod_itunes_image'] == '')
+                {
+                    update_option('pod_itunes_image', $_POST['pod_itunes_image']);
+                }
+                else
+                {
+                    update_option('pod_itunes_image', podcasting_urlencode($_POST['pod_itunes_image']));
+                }
+				
 				update_option('pod_itunes_cat1', $_POST['pod_itunes_cat1']);
 				update_option('pod_itunes_cat2', $_POST['pod_itunes_cat2']);
 				update_option('pod_itunes_cat3', $_POST['pod_itunes_cat3']);
@@ -108,14 +137,18 @@ class PodcastingSettings
 				update_option('pod_player_text_before', $_POST['pod_player_text_before']);
 				update_option('pod_player_text_below', $_POST['pod_player_text_below']);
 				update_option('pod_player_text_link', $_POST['pod_player_text_link']);
+				update_option('pod_use_native_player', $_POST['pod_use_native_player']);
+				
 
 				// Update the audio player options
 				update_option('pod_player_flashvars', $_POST['pod_player_flashvars']);
+                update_option('pod_player_audiovars', $_POST['pod_player_audiovars']);
 				update_option('pod_audio_width', $_POST['pod_audio_width']);
 				update_option('pod_player_use_video', $_POST['pod_player_use_video']);
 
 				// Update the video player options
-				update_option('pod_video_flashvars', $_POST['pod_video_flashvars']);
+//				update_option('pod_video_flashvars', $_POST['pod_video_flashvars']);
+                update_option('pod_player_videovars', $_POST['pod_player_videovars']);
 				update_option('pod_player_width', $_POST['pod_player_width']);
 				update_option('pod_player_height', $_POST['pod_player_height']);
 				
@@ -126,6 +159,8 @@ class PodcastingSettings
 				if ( '' != $_POST['pod_format_new_name'] ) {
 					$args = ( '' != $_POST['pod_format_new_slug'] ) ? array('slug' => $_POST['pod_format_new_slug']) : '';
 					$format = wp_insert_term($_POST['pod_format_new_name'], 'podcast_format', $args);
+                    // Need to handle error here:
+                    // object(WP_Error)#311 (2) { ["errors"]=> array(1) { ["term_exists"]=> array(1) { [0]=> string(54) "A term with the name and slug provided already exists." } } ["error_data"]=> array(1) { ["term_exists"]=> string(1) "2" } }object(WP_Error)#311 (2) { ["errors"]=> array(1) { ["term_exists"]=> array(1) { [0]=> string(54) "A term with the name and slug provided already exists." } } ["error_data"]=> array(1) { ["term_exists"]=> string(1) "2" } }
 					$format = get_term($format['term_id'], 'podcast_format');
 
 					$pod_explicits = unserialize(get_option('pod_formats'));
@@ -140,15 +175,19 @@ class PodcastingSettings
 						$format = get_term($term_id, 'podcast_format');
 
 						if ( isset($_POST["delete_pod_format_$term_id"]) )
+                        {
 							wp_delete_term($term_id, 'podcast_format');
-
-						// Update taxonomy
-						$args = array( 'name' => $_POST["pod_format_name_$term_id"], 'slug' => $_POST["pod_format_slug_$term_id"] );
-						wp_update_term($term_id, 'podcast_format', $args);
-
-						// Update explicit
-						$pod_explicits[$_POST["pod_format_slug_$term_id"]] = $_POST["pod_format_explicit_$term_id"];
-						update_option('pod_formats', serialize($pod_explicits));
+                        }
+                        else
+                        {
+    						// Update taxonomy
+    						$args = array( 'name' => $_POST["pod_format_name_$term_id"], 'slug' => $_POST["pod_format_slug_$term_id"] );
+    						wp_update_term($term_id, 'podcast_format', $args);
+    
+    						// Update explicit
+    						$pod_explicits[$_POST["pod_format_slug_$term_id"]] = $_POST["pod_format_explicit_$term_id"];
+    						update_option('pod_formats', serialize($pod_explicits));
+                        }
 					}
 				}
 
@@ -181,17 +220,21 @@ class PodcastingSettings
 			);
 
 		$pod_formats = get_terms('podcast_format', 'get=all');
+        
 		?>
 
 		<div class="wrap">
 			
-		<h2>Podcasting Settings</h2>
+<h2>Podcasting Settings</h2>
 			
 		<form method="post" action="options-general.php?page=podcasting-settings.php">
 		<?php $this->nonceField(); ?>
-			<p><em>
-				Podcasting is brought to you for free by The Software Group.
-        Visit <a href="http://podcastingplugin.com/">PodcastingPlugin.com</a> for usage information and project news.
+            <strong>Questions about using this plugin?  <a target="_blank" href="http://podcastingplugin.com/">Contact us</a> for help.</strong>
+			<p>
+            <em>
+				
+                Visit <a target="_blank" href="http://podcastingplugin.com/">PodcastingPlugin.com</a> for usage information and project news.
+                The Podcasting plugin is brought to you by The Software Group.
 			</em></p>
 			<table class="form-table">
 				<tr valign="top">
@@ -200,12 +243,59 @@ class PodcastingSettings
 					</th>
 					<td>
 						<p style="margin: 7px 0;"><strong>
-							<?php global $wp_rewrite;
-							if ($wp_rewrite->using_permalinks())
-								echo get_option('home') . '/feed/podcast/';
-							else
-								echo get_option('home') . '/?feed=podcast'; ?>
+							<?php 
+                            global $wp_rewrite;
+                            $pod_cat = get_option("pod_cat");
+                            echo get_option('home');
+                            echo '/';
+                            if ($wp_rewrite->using_permalinks())
+                            {
+                                if(get_option( 'category_base' ) != '')
+                                {
+                                    echo get_option( 'category_base' );                               
+                                }
+                                else
+                                {
+                                    echo 'category';
+                                }
+                                
+                                echo '/';
+                                
+                                wp_dropdown_categories('name=pod_cat&id=id&selected=' . $pod_cat ) ;
+                                echo '/feed/podcast/';
+                            }
+                            else
+                            {
+                                echo "?cat=";
+                                
+                                $category_ids = get_all_category_ids();
+                                echo'<select name="pod_cat" id="id">';
+                                // For each value of the array assign variable name "city"
+
+                                foreach($category_ids as $category_id)
+                                {
+                                    echo'<option value="' . $category_id;
+                                    if($pod_cat = $category_id)
+                                        echo " selected";
+                                    echo '">'.$category_id.'</option>';
+                                }
+                                echo'</select>';
+                                echo '&feed=podcast';
+                            }
+                            
+						
+						?>
 						</strong></p>
+                        <br />
+                        See format urls below if you've created formats.<br />
+                        <span class="setting-description">
+                        
+                        <br />
+                        Most people create a category named 'podcasting' and tag podcasts with that category
+                        to create a podcast only feed. More information can be found <a href="http://docs.podcastingplugin.com/?p=233">
+                        on the podcast plugin help site.</a>
+                        
+                        </span>
 					</td>
 				</tr>
 				<tr valign="top">
@@ -213,7 +303,7 @@ class PodcastingSettings
 						<label for="pod_title">Title:</label>
 					</th>
 					<td>
-						<input type="text" size="40" name="pod_title" id="pod_title" value="<?php echo stripslashes(get_option('pod_title')); ?>" />
+						<input type="text" style="width: 95%" name="pod_title" id="pod_title" value="<?php echo stripslashes(get_option('pod_title')); ?>" />
 						<br /><span class="setting-description">If your podcast's title is different than your blog's title, change the title here.</span>
 					</td>
 				</tr>
@@ -334,7 +424,7 @@ class PodcastingSettings
 				</tr>
 			</table>
 
-			<h3>General Player Options</h3>
+<h3>General Player Options</h3>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">
@@ -392,9 +482,28 @@ class PodcastingSettings
 						<br /><span class="setting-description">Select the block of text that will link to the podcast file.</span>
 					</td>
 				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label for="pod_use_native_player">Use HTML5 Players</label>
+					</th>
+					<td>
+						<select name="pod_use_native_player" id="pod_use_native_player">
+							<?php $text_links = array('yes', 'no');
+							$text_link_option = get_option('pod_use_native_player');
+							foreach ($text_links as $text_link) {
+								$selected = ($text_link == $text_link_option) ? ' selected="selected"' : '';
+								echo '<option value="' . $text_link . '"' . $selected . '>' . ucfirst($text_link) . '</option>';
+							} ?>
+						</select>
+						<br />
+                        <span class="setting-description">
+                            Use native HTML5 enabled WordPress media players.
+                        </span>
+					</td>
+                </td>                
 			</table>
 
-			<h3>Audio Player Options</h3>
+<h3>Audio Player Options</h3>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">
@@ -415,6 +524,17 @@ class PodcastingSettings
 					</td>
 				</tr>
 				<tr valign="top">
+					<th scope="row" style="width: 200px;">
+						<label for="pod_player_audiovars">Audio Player Vars:</label>
+					</th>
+					<td>
+						<input type="text" size="40" name="pod_player_audiovars" id="pod_player_audiovars" value="<?php echo stripslashes(get_option('pod_player_audiovars')); ?>" />
+						<br /><span class="setting-description">
+                        The 'src' is already set. You can add <a target="_blank" href="https://codex.wordpress.org/Audio_Shortcode">other options</a> here.
+                        </span>
+					</td>
+				</tr>
+				<tr valign="top">
 					<th scope="row">
 						<label for="pod_player_use_video">Use Video Player:</label>
 					</th>
@@ -430,9 +550,10 @@ class PodcastingSettings
 						<br /><span class="setting-description">Selecting this option will use the video player instead of the audio player for audio files.</span>
 					</td>
 				</tr>
+
 			</table>
 
-			<h3>Video Player Options</h3>
+<h3>Video Player Options</h3>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">
@@ -452,18 +573,32 @@ class PodcastingSettings
 						<br /><span class="setting-description">The default height in pixels of the video player. This can be changed on a per video basis by adding a height=&quot;y&quot; parameter to the [podcast] tag.</span>
 					</td>
 				</tr>
-				<tr valign="top">
+				<!--
+                <tr valign="top">
 					<th scope="row" style="width: 200px;">
 						<label for="pod_video_flashvars">Player Flashvars:</label>
 					</th>
 					<td>
-						<input type="text" size="40" name="pod_video_flashvars" id="pod_video_flashvars" value="<?php echo stripslashes(get_option('pod_video_flashvars')); ?>" />
+						<input type="text" size="40" name="pod_video_flashvars" id="pod_video_flashvars" value="<?php //echo stripslashes(get_option('pod_video_flashvars')); ?>" />
 						<br /><span class="setting-description">Optional <a href="http://code.longtailvideo.com/trac/wiki/FlashVars">JW FLV Player flashvars</a> that will apply on a global basis. Enter the flashvars like so: <code>autostart: 'true', bufferlength: 4</code>. Additional flashvars can be appended on a per video basis by adding a flashvars=&quot;x&quot; parameter to the [podcast] tag.</span>
 					</td>
 				</tr>
+                -->
+				<tr valign="top">
+					<th scope="row" style="width: 200px;">
+						<label for="pod_player_videovars">Video Player Vars:</label>
+					</th>
+					<td>
+						<input type="text" size="40" name="pod_player_videovars" id="pod_player_videovars" value="<?php echo stripslashes(get_option('pod_player_videovars')); ?>" />
+						<br /><span class="setting-description">
+                        The 'src', 'height' and 'width' are already set. You can add <a target="_blank" href="https://codex.wordpress.org/Video_Shortcode">other options</a> here.
+                        </span>
+					</td>
+				</tr>
+
 			</table>
 			
-			<h3>Advanced Options</h3>
+<h3>Advanced Options</h3>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">
@@ -508,31 +643,73 @@ class PodcastingSettings
 				<?php if ( function_exists('settings_fields') ) settings_fields('podcasting'); ?>
 				<input type="submit" name="Submit" value="Save Changes" />
 			</p>
+            <?php tsg_podcasting_var_dump($pod_formats); ?> 
 
-			<?php if ( count($pod_formats) > 1 ) { ?>
 				<br />
-				<h3>Formats</h3>
-				<?php foreach ($pod_formats as $pod_format) {
-				if ( 'default-format' != $pod_format->slug ) {
-					if ( $term_count > 0 ) $term_ids .= ','; $term_count++;
-					$term_ids .= $pod_format->term_id; ?>
+<h3>Media Format Feed Definitions</h3>
+        <p>The Podcasting Plugin allows your podcast to create feeds for multiple
+        media formats. For example you might want to distribute an audio feed with mp3 files
+        and a video feed with mp4 files. In this case you could set up for format or each or use the
+        default format for audio and create a new mp4 format for your video feed.<p/>
+				<?php 
+                $term_ids = '';
+                $term_count = 0;
+                foreach ($pod_formats as $pod_format) 
+                {
+					if ( $term_count > 0 ) 
+                        $term_ids .= ','; 
+                    $term_count++;
+					$term_ids .= $pod_format->term_id;     
+                    
+                    // build the feed URL for this format
+                    $readonly = '';  
+                
+                    $appender = "&";
+                    if ($wp_rewrite->using_permalinks())
+                    {
+                        $appender = "?";
+                    }
+                 
+                    $format_option = "format=$pod_format->slug";         
+    				if ( 'default-format' == $pod_format->slug ) 
+                    {
+                        $readonly = 'readonly="readonly"';
+                        $format_option = '';
+                        $appender = "";
+                        
+                    }    
+                    
+    
+
+                    ?>
+
 					<table cellpadding="3" class="pod_format">
 						<tr>
 							<td class="pod-title">Format Feed</td>
-							<td colspan="6">
+							<td colspan="3">
 								<input type="text" name="pod_format_feed" class="pod_format_feed" value="<?php
 								global $wp_rewrite;
-								if ($wp_rewrite->using_permalinks())
-									echo get_option('home') . "/feed/podcast/?format=$pod_format->slug";
-								else
-									echo get_option('home') . "/?feed=podcast&format=$pod_format->slug"; ?>" readonly="readonly" />
+                                /*
+                                echo get_option('home');
+                                echo '/';
+                                echo get_option( 'category_base' );
+                                echo '/';
+                                $pod_cat = get_option("pod_cat");
+                                echo get_the_category_by_ID( $pod_cat );                      
+                                */
+								echo $this->getCategoryFeedURL($pod_cat);
+                                echo $appender;
+                                echo $format_option;
+								 ?>" readonly="readonly" />
 							</td>
 						</tr>
 						<tr>
 							<td class="pod-title">Format Name</td>
-							<td><input type="text" name="pod_format_name_<?php echo $pod_format->term_id; ?>" class="pod_format_name" value="<?php echo $pod_format->name; ?>" />					
+							<td><input type="text" name="pod_format_name_<?php echo $pod_format->term_id; ?>" class="pod_format_name" value="<?php echo $pod_format->name?>" <?php echo $readonly; ?>/>					
 							<td class="pod-title">Format Slug</td>
-							<td><input type="text" name="pod_format_slug_<?php echo $pod_format->term_id; ?>" class="pod_format_slug" value="<?php echo $pod_format->slug; ?>" /></td>					
+							<td><input type="text" name="pod_format_slug_<?php echo $pod_format->term_id; ?>" class="pod_format_slug" value="<?php echo $pod_format->slug ?>" <?php echo $readonly; ?>/></td>					
+						</tr>
+                        <tr>
 							<td class="pod-title">Explicit</td>
 							<td><select name="pod_format_explicit_<?php echo $pod_format->term_id; ?>" class="pod_format_explicit">
 								<?php $explicits = array('', 'no', 'yes', 'clean');
@@ -541,19 +718,40 @@ class PodcastingSettings
 									$selected = ($explicit == $format_explicit[$pod_format->slug]) ? ' selected="selected"' : '';
 									echo '<option value="' . $explicit . '"' . $selected . '>' . ucfirst($explicit) . '</option>';
 								} ?>
-							</select></td>					
+							</select></td>	
+                            <?php
+                            if ( 'default-format' == $pod_format->slug )
+                            {
+                            ?>				
+							<td colspan="2" class="pod-update">
+								<input name="Submit" type="submit" class="button-secondary" value="Update" />                            
+                           </td>
+                            <?php
+                            }
+                            else
+                            {
+                            ?>
+							<td class="pod-delete">
+								<input name="delete_pod_format_<?php echo $pod_format->term_id; ?>" type="submit" class="button-secondary" value="Delete" onclick="return deleteSomething( 'podcast_format', <?php echo $pod_format->term_id; ?>, 'You are about to delete a podcast format. All episodes currently assigned to this format will become assigned to no format.\n\'OK\' to delete, \'Cancel\' to stop.' );" /> 
+                            </td> 
 							<td class="pod-update">
-								<input name="Submit" type="submit" class="button-secondary" value="Update" /> 
-								<input name="delete_pod_format_<?php echo $pod_format->term_id; ?>" type="submit" class="button-secondary" value="Delete" onclick="return deleteSomething( 'podcast_format', <?php echo $pod_format->term_id; ?>, 'You are about to delete a podcast format. All episodes currently assigned to this format will become assigned to no format.\n\'OK\' to delete, \'Cancel\' to stop.' );" /></td>
-						</tr>
+								<input name="Submit" type="submit" class="button-secondary" value="Update" />                            
+                            </td>                            
+                            <?php
+                            }
+                            ?>
+
+
+                        </tr>
 					</table>
 					<input name="term_ids" type="hidden" value="<?php echo $term_ids; ?>" />
-				<?php } } ?>
-			<?php } ?>
+    		<?php  } ?>
+		
 
 			<br />
 
-			<h3>Add a New Format</h3>
+<h3>Add a New Media Format Feed Definition</h3>
+<p>If you need an addition media format feed definition you can add it here.</p>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row" style="width: 200px;">
@@ -604,7 +802,52 @@ class PodcastingSettings
 	function nonceField() {
 		echo "<input type='hidden' name='podcasting-nonce-key' value='" . wp_create_nonce('podcasting') . "' />";
 	}
-	
+
+	/**
+	 * Category functions
+	 */
+         
+    function getCategoryFeedURL($cat_id)
+    {
+        global $wp_rewrite;
+        
+        $ret = $cat_id;
+
+
+        $ret = get_category_link( $cat_id );
+        
+
+        if($wp_rewrite->using_permalinks())
+        {        
+            $ret .= 'feed/podcast/';
+        }
+        else
+        {
+            $ret .= '&feed=podcast';
+        }        
+       
+        return $ret;
+    }
+    
+    function getCategoryURLFirst()
+    {
+        $ret = get_option('home');
+        $ret .= '/';
+        if ($wp_rewrite->using_permalinks())
+        {
+            if(get_option( 'category_base' ) != '')
+            {
+                $ret .= get_option( 'category_base' );
+                $ret .= '/';
+            }
+        }
+        else
+        {
+            $ret .= "?cat=";
+        }
+        
+        return $ret;
+	}
 }
 
 # Start the Podcasting settings interface

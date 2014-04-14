@@ -1,0 +1,115 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Contact Form 7 Modules: Send All Fields\n"
+"POT-Creation-Date: 2014-03-15 17:07-0700\n"
+"PO-Revision-Date: 2014-03-15 17:07-0700\n"
+"Last-Translator: Zack Katz <support@katz.co>\n"
+"Language-Team: Zack Katz <support@katz.co>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: hidden.php:267
+msgid "Hidden field"
+msgstr ""
+
+#: hidden.php:277
+msgid "Name"
+msgstr ""
+
+#: hidden.php:280 hidden.php:286
+msgid "optional"
+msgstr ""
+
+#: hidden.php:286
+msgid "Default value"
+msgstr ""
+
+#: hidden.php:287
+msgid "Use this text as watermark?"
+msgstr ""
+
+#: hidden.php:292
+msgid "Dynamic Values"
+msgstr ""
+
+#: hidden.php:293
+msgid ""
+"To use dynamic data from the post or page the form is embedded on, you can "
+"use the following values:"
+msgstr ""
+
+#: hidden.php:295
+msgid "<code>post_title</code>: The title of the post/page"
+msgstr ""
+
+#: hidden.php:296
+msgid "<code>post_url</code>: The URL of the post/page"
+msgstr ""
+
+#: hidden.php:297
+msgid ""
+"<code>post_category</code>: The categories the post is in, comma-separated"
+msgstr ""
+
+#: hidden.php:298
+msgid "<code>post_date</code>: The date the post/page was created"
+msgstr ""
+
+#: hidden.php:299
+msgid "<code>post_author</code>: The name of the author of the post/page"
+msgstr ""
+
+#: hidden.php:301
+msgid "The following values will be replaced if an user is logged in:"
+msgstr ""
+
+#: hidden.php:303
+msgid "<code>user_name</code>: User Login"
+msgstr ""
+
+#: hidden.php:304
+msgid "<code>user_id</code>: User ID"
+msgstr ""
+
+#: hidden.php:305
+msgid "<code>user_email</code>: User Email Address"
+msgstr ""
+
+#: hidden.php:306
+msgid ""
+"<code>user_display_name</code>: Display Name (Generally the first and last "
+"name of the user)"
+msgstr ""
+
+#: hidden.php:312
+msgid "Copy this code and paste it into the form left."
+msgstr ""
+
+#: hidden.php:314
+msgid "And, put this code into the Mail fields below."
+msgstr ""
+
+#: send-all-fields.php:110
+msgid "All Fields"
+msgstr ""
+
+#: send-all-fields.php:118
+#, php-format
+msgid "Add all fields to your email with %s[all-fields]%s"
+msgstr ""
+
+#: send-all-fields.php:120
+msgid ""
+"Put this code into the Mail fields below to output all submitted fields in "
+"the email."
+msgstr ""

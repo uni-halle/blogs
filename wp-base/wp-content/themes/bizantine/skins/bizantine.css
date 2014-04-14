@@ -1,0 +1,245 @@
+body,
+button,
+input,
+select,
+textarea {
+	color: #cdd0d3;
+}
+a {
+	color:#cdd0d3;
+}
+a:visited {
+	color:#cdd0d3;
+}
+a:hover,
+a:focus,
+a:active {
+	color:#575757;
+}
+blockquote {
+    border-left: 1em solid #171717;
+}
+#wrapper-three{
+	width:100%;
+}
+.responsive-container{
+	width:100%;
+}
+.site-header{
+	background:none;
+}
+#inner-container{
+	width:100%;
+	background:#1D1D1D;
+	margin:0 0 5% 0;
+	padding:5% 0 0 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;		
+}
+.main-navigation-inner{
+	background:#171717;
+}
+.site-slider{
+	width:90%;
+	margin:0 5% 0 5%;
+	background-color:#171717;
+	background-image:none;
+}
+.site-main{
+	padding:3.5% 0 5% 0;
+}
+.site-slider-slider-one{
+	width:90%;
+	margin:7% 5%;
+}
+.site-slider-slider-one-image{
+	margin:0 5% 5% 5%;
+}
+.site-slider-slider-one-text-heading{
+	font-size:36px;
+	font-size:3.6rem;
+}
+.site-slider-slider-one-text-description ul li{
+	border-bottom:1px solid #000;
+}
+.site-slider-slider-one-text-button a{
+	font-size:18px;
+	font-size:1.8rem;
+	color:#fff;	
+	border-bottom: 4px solid #000000;
+	background:#333437;
+    padding: 0.7em 2em;
+}
+.biz0ne-welcome{
+	width:86%;
+	padding:0 7% 5% 7%;
+}
+.biz0ne-products-services-img{
+	background:none;
+}
+.biz0ne-quote{
+	width:86%;
+	border:0;
+	background:#171717;
+}
+.biz0ne-quote-text{
+	background:url(images/Bizantine/quote.png) no-repeat left top;
+}
+.biz0ne-quote-name span{
+	background:#000;
+	font-size:14px;
+    font-size: 1.4rem;	
+}
+.content-area {
+    margin: 5% 0;
+    width: 100%;
+}
+.full-page-content-area{
+	width:90%;
+	margin:2% auto;
+	float:none;
+}
+.widget-area{
+	background:#171717;
+	padding:3% 0;
+}
+.widget {
+	color:#cdd0d3;
+}
+.widget a{
+	color:#cdd0d3;
+}
+.widget ul li{
+	border-bottom:1px solid #000;
+}
+.widget ul li a{
+	color:#cdd0d3;
+}
+.search-field{
+	background:#151414 !important;
+	color:#cdd0d3;
+}
+.search-submit{
+	background:#000 !important;
+	color:#fff !important;
+}
+.post-navigation{
+	background:#171717;
+}
+.comments-area{
+	background:#171717;	
+}
+.comment-navigation .nav-previous a{
+	background:#000;
+}
+.comment-navigation .nav-next a{
+	background:#000;
+}
+.more-link{
+	background:#171717;
+}
+.page-links a{
+	background:#171717;
+}
+.post .entry-title{
+	border-bottom:1px solid #171717;
+}
+.entry-meta{
+	border-bottom:1px solid #171717;	
+}
+.entry-meta-bottom{
+	border-top:1px solid #171717;
+}
+.entry-meta-bottom-item{
+	border-bottom:1px solid #171717;
+}
+.entry-meta-bottom-item a{
+	background:#171717;
+}
+.wp-caption {
+	border: 1px solid #171717;
+}
+.paging-navigation .nav-previous{
+	background-color:#171717;
+}
+.paging-navigation .nav-next{
+	background-color:#171717;
+}
+.footer-social{
+	background-color:#111111;
+	background-image:none;
+}
+.site-footer{
+	width:90%;
+	padding:0 5%;
+	background-color:#0e0e0e;
+	background-image:none;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;		
+}
+
+/* Responsive Rules
+----------------------------------------------- */
+
+/* styles for less than 400px */
+@media screen 
+and (max-width : 399px) {
+
+}
+
+/* styles for 400px - 600px */
+@media screen 
+and (min-width : 400px) 
+and (max-width : 599px) {
+
+}
+
+/* styles for 600px - 900px */
+@media screen 
+and (min-width : 600px) 
+and (max-width : 900px) {
+.site-slider-slider-one-text-heading{
+	font-size:48px;
+	font-size:4.8rem;
+}
+}
+
+/* styles for 901px - 1200px */
+@media screen 
+and (min-width : 901px) {
+#wrapper-three{
+	max-width:1200px;
+	margin:0 auto;
+}	
+.responsive-container{
+	width:100%;
+}
+.site-slider-slider-one-image{
+	margin:0;
+}
+.site-slider-slider-one-text-heading{
+	font-size:48px;
+	font-size:4.8rem;
+}
+.site-slider-slider-video-one-text-heading{
+	font-size:48px;
+	font-size:4.8rem;	
+}
+.site-slider-slider-oneplus-text-heading{
+	font-size:48px;
+	font-size:4.8rem;		
+}
+.site-slider-slider-two-video-cont{
+	width:93%;
+	margin:0 0 0 7%;	
+}
+.content-area {
+    margin: 2% 4% 2% 6%;
+    width: 53%;
+}
+.widget-area{
+	padding:2% 0;
+}
+}

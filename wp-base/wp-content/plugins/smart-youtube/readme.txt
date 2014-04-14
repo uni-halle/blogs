@@ -3,7 +3,7 @@ Contributors: freediver
 Donate link: https://www.networkforgood.org/donation/MakeDonation.aspx?ORGID2=520781390
 Tags: youtube, video, play, media, Post, posts, admin, metacafe, liveleak, vimeo, facebook, thumbnails
 Requires at least: 2.0
-Tested up to: 3.5.1
+Tested up to: 3.8.2
 Stable tag: trunk
 
 Smart Youtube is a professional WordPress Video plugin that allows you to easily insert videos/playlists into your post, comments and in your RSS feed. The plugin is designed to be small and fast and not use any external resources.
@@ -48,6 +48,16 @@ For updates, you can check out [my blog](http://www.prelovac.com/vladimir/) or f
 
 
 == Changelog ==
+
+= 4.2.3 =
+* Fixed Facebook sharing compatibility (correct image displayed)
+
+= 4.2.2=
+* Added colorbox compatibility
+
+
+= 4.2.1=
+* Added support for center padding
 
 = 4.2.0 =
 * Updated to latest Colorbox libraries

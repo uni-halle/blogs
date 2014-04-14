@@ -34,12 +34,12 @@ class AVH_EC_Core
          */
         $catgrp = & AVH_EC_Singleton::getInstance('AVH_EC_Category_Group');
 
-        $this->version = '3.8.2';
+        $this->version = '3.9.3';
         $this->comment = '<!-- AVH Extended Categories version ' . $this->version . ' | http://blog.avirtualhome.com/wordpress-plugins/ -->';
         $this->db_options_core = 'avhec';
         $this->db_options_tax_meta = 'avhec-tax_meta';
 
-        add_action('init', array(&$this, 'handleInitializePlugin'), 10);
+        add_action('init', array($this, 'handleInitializePlugin'), 10);
     }
 
     public function handleInitializePlugin()
@@ -81,11 +81,11 @@ class AVH_EC_Core
 
         $db = new AVH_DB();
         if (!$db->field_exists('avhec_term_order', $wpdb->terms)) {
-            $wpdb->query("ALTER TABLE $wpdb->terms ADD `avhec_term_order` INT( 4 ) NULL DEFAULT '0'");
+            $wpdb->query("ALTER TABLE $wpdb->terms ADD `avhec_term_order` INT( 4 ) null DEFAULT '0'");
         }
 
         $this->handleTextdomain();
-        add_filter('get_terms_orderby', array(&$this, 'applyOrderFilter'), 10, 2);
+        add_filter('get_terms_orderby', array($this, 'applyOrderFilter'), 10, 2);
     }
 
     public function applyOrderFilter($orderby, $args)
@@ -107,10 +107,6 @@ class AVH_EC_Core
 
     /**
      * Loads the i18n
-     *
-     * @return
-     *
-     *
      */
     public function handleTextdomain()
     {
@@ -163,8 +159,8 @@ class AVH_EC_Core
     /**
      * Used in forms to set the checked option.
      *
-     * @param  mixed      $checked
-     * @param  mixed_type $current
+     * @param mixed $checked
+     * @param mixed_type $current
      * @return string
      *
      * @since 2.0
@@ -181,8 +177,8 @@ class AVH_EC_Core
     /**
      * Used in forms to set the SELECTED option
      *
-     * @param  string $current
-     * @param  string $field
+     * @param string $current
+     * @param string $field
      * @return string
      */
     public function isSelected($current, $field)
@@ -197,14 +193,14 @@ class AVH_EC_Core
     /**
      * Get the base directory of a directory structure
      *
-     * @param  string $directory
+     * @param string $directory
      * @return string
      *
      */
     public function getBaseDirectory($directory)
     {
         // place each directory into array and get the last element
-        $directory_array = explode('/', directory);
+        $directory_array = explode('/', $directory);
         // get highest or top level in array of directory strings
         $public_base = end($directory_array);
 
@@ -266,8 +262,8 @@ class AVH_EC_Core
      * Get the value for an option element.
      * If there's no option is set on the Admin page, return the default value.
      *
-     * @param  string $key
-     * @param  string $option
+     * @param string $key
+     * @param string $option
      * @return mixed
      */
     public function getOptionElement($option, $key)
@@ -324,7 +320,7 @@ class AVH_EC_Core
      *            Optional. Override default arguments.
      * @return string HTML content only if 'echo' argument is 0.
      */
-    public function avh_wp_dropdown_categories($args = '', $selectedonly)
+    public function avh_wp_dropdown_categories($args = array())
     {
         $mywalker = new AVH_Walker_CategoryDropdown();
 
@@ -343,18 +339,20 @@ class AVH_EC_Core
         extract($r);
 
         $tab_index_attribute = '';
-        if ((int) $tab_index > 0)
+        if ((int) $tab_index > 0) {
             $tab_index_attribute = ' tabindex="' . $tab_index . '"';
+        }
 
         $categories = get_terms($taxonomy, $r);
         $name = esc_attr($name);
         $class = esc_attr($class);
         $id = $id ? esc_attr($id) : $name;
 
-        if (!$r['hide_if_empty'] || !empty($categories))
+        if (!$r['hide_if_empty'] || !empty($categories)) {
             $output = "<select name='$name' id='$id' class='$class' $tab_index_attribute>\n";
-        else
+        } else {
             $output = '';
+        }
 
         if (empty($categories) && !$r['hide_if_empty'] && !empty($show_option_none)) {
             $show_option_none = apply_filters('list_cats', $show_option_none);
@@ -381,13 +379,15 @@ class AVH_EC_Core
             }
             $output .= walk_category_dropdown_tree($categories, $depth, $r);
         }
-        if (!$r['hide_if_empty'] || !empty($categories))
+        if (!$r['hide_if_empty'] || !empty($categories)) {
             $output .= "</select>\n";
+        }
 
         $output = apply_filters('wp_dropdown_cats', $output);
 
-        if ($echo)
+        if ($echo) {
             echo $output;
+        }
 
         return $output;
     }
@@ -426,7 +426,7 @@ class AVH_EC_Core
      *            Optional. Override default arguments.
      * @return string HTML content only if 'echo' argument is 0.
      */
-    public function avh_wp_list_categories($args = '', $selectedonly)
+    public function avh_wp_list_categories($args = array())
     {
         $mywalker = new AVHEC_Walker_Category();
         $defaults = array('show_option_all' => '', 'orderby' => 'name', 'order' => 'ASC', 'show_last_update' => 0, 'style' => 'list', 'show_count' => 0, 'hide_empty' => 1, 'use_desc_for_title' => 1, 'child_of' => 0, 'feed' => '', 'feed_type' => '', 'feed_image' => '', 'exclude' => '', 'exclude_tree' => '', 'current_category' => 0, 'hierarchical' => true, 'title_li' => __('Categories'), 'echo' => 1, 'depth' => 0, 'walker' => $mywalker);
@@ -455,25 +455,29 @@ class AVH_EC_Core
         $categories = get_categories($r);
 
         $output = '';
-        if ($title_li && 'list' == $style)
+        if ($title_li && 'list' == $style) {
             $output = '<li class="categories">' . $r['title_li'] . '<ul>';
+        }
 
         if (empty($categories)) {
-            if ('list' == $style)
+            if ('list' == $style) {
                 $output .= '<li>' . __("No categories") . '</li>';
-            else
+            } else {
                 $output .= __("No categories");
+            }
         } else {
             global $wp_query;
 
-            if (!empty($show_option_all))
-                if ('list' == $style)
+            if (!empty($show_option_all)) {
+                if ('list' == $style) {
                     $output .= '<li><a href="' . get_bloginfo('url') . '">' . $show_option_all . '</a></li>';
-                else
+                } else {
                     $output .= '<a href="' . get_bloginfo('url') . '">' . $show_option_all . '</a>';
-
-            if (empty($r['current_category']) && is_category())
+                }
+            }
+            if (empty($r['current_category']) && is_category()) {
                 $r['current_category'] = $wp_query->get_queried_object_id();
+            }
 
             if ($hierarchical) {
                 $depth = $r['depth'];
@@ -484,21 +488,23 @@ class AVH_EC_Core
             $output .= walk_category_tree($categories, $depth, $r);
         }
 
-        if ($title_li && 'list' == $style)
+        if ($title_li && 'list' == $style) {
             $output .= '</ul></li>';
+        }
 
         $output = apply_filters('wp_list_categories', $output);
 
-        if ($echo)
+        if ($echo) {
             echo $output;
-        else
+        } else {
             return $output;
+        }
     }
 
     public function getCategories()
     {
-        static $_categories = NULL;
-        if (NULL === $_categories) {
+        static $_categories = null;
+        if (null === $_categories) {
             $_categories = get_categories('get=all');
         }
 
@@ -507,8 +513,8 @@ class AVH_EC_Core
 
     public function getCategoriesId($categories)
     {
-        static $_categories_id = NULL;
-        if (NULL == $_categories_id) {
+        static $_categories_id = null;
+        if (null == $_categories_id) {
             foreach ($categories as $key => $category) {
                 $_categories_id[$category->term_id] = $key;
             }
@@ -531,11 +537,13 @@ class AVH_Walker_CategoryDropdown extends Walker_CategoryDropdown
         $args = array_slice(func_get_args(), 2);
         $output = '';
 
-        if ($max_depth < -1) // invalid parameter
+        if ($max_depth < -1) {
             return $output;
+        }
 
-        if (empty($elements)) // nothing to walk
+        if (empty($elements)) {
             return $output;
+        }
 
         $id_field = $this->db_fields['id'];
         $parent_field = $this->db_fields['parent'];
@@ -543,8 +551,9 @@ class AVH_Walker_CategoryDropdown extends Walker_CategoryDropdown
         // flat display
         if (-1 == $max_depth) {
             $empty_array = array();
-            foreach ($elements as $e)
+            foreach ($elements as $e) {
                 $this->display_element($e, $empty_array, 1, 0, $args, $output);
+            }
 
             return $output;
         }
@@ -555,10 +564,11 @@ class AVH_Walker_CategoryDropdown extends Walker_CategoryDropdown
         $top_level_elements = array();
         $children_elements = array();
         foreach ($elements as $e) {
-            if (0 == $e->$parent_field)
+            if (0 == $e->$parent_field) {
                 $top_level_elements[] = $e;
-            else
+            } else {
                 $children_elements[$e->$parent_field][] = $e;
+            }
         }
 
         /*
@@ -572,10 +582,11 @@ class AVH_Walker_CategoryDropdown extends Walker_CategoryDropdown
             $top_level_elements = array();
             $children_elements = array();
             foreach ($elements as $e) {
-                if ($root->$parent_field == $e->$parent_field)
+                if ($root->$parent_field == $e->$parent_field) {
                     $top_level_elements[] = $e;
-                else
+                } else {
                     $children_elements[$e->$parent_field][] = $e;
+                }
             }
         }
 
@@ -588,9 +599,11 @@ class AVH_Walker_CategoryDropdown extends Walker_CategoryDropdown
          */
         if ((0 == $max_depth) && count($children_elements) > 0) {
             $empty_array = array();
-            foreach ($children_elements as $orphans)
-                foreach ($orphans as $op)
+            foreach ($children_elements as $orphans) {
+                foreach ($orphans as $op) {
                     $this->display_element($op, $empty_array, 1, 0, $args, $output);
+                }
+            }
         }
 
         return $output;
@@ -636,8 +649,9 @@ class AVHEC_Walker_Category extends Walker
      */
     public function start_lvl(&$output, $depth = 0, $args = array())
     {
-        if ('list' != $args['style'])
+        if ('list' != $args['style']) {
             return;
+        }
 
         $indent = str_repeat("\t", $depth);
         $output .= $indent . '<ul class="children">' . "\n";
@@ -657,8 +671,9 @@ class AVHEC_Walker_Category extends Walker
      */
     public function end_lvl(&$output, $depth = 0, $args = array())
     {
-        if ('list' != $args['style'])
+        if ('list' != $args['style']) {
             return;
+        }
 
         $indent = str_repeat("\t", $depth);
         $output .= $indent . '</ul>' . "\n";
@@ -684,24 +699,26 @@ class AVHEC_Walker_Category extends Walker
         $cat_name = esc_attr($object->name);
         $cat_name = apply_filters('list_cats', $cat_name, $object);
         $link = '<div class="avhec-widget-line"><a href="' . get_category_link($object->term_id) . '" ';
-        if ($use_desc_for_title == 0 || empty($object->description))
+        if ($use_desc_for_title == 0 || empty($object->description)) {
             $link .= 'title="' . sprintf(__('View all posts filed under %s'), $cat_name) . '"';
-        else
+        } else {
             $link .= 'title="' . esc_attr(strip_tags(apply_filters('category_description', $object->description, $object))) . '"';
+        }
         $link .= '>';
         $link .= $cat_name . '</a>';
 
         if ((!empty($feed_image)) || (!empty($feed))) {
             $link .= '<div class="avhec-widget-rss"> ';
 
-            if (empty($feed_image))
+            if (empty($feed_image)) {
                 $link .= '(';
+            }
 
             $link .= '<a href="' . get_category_feed_link($object->term_id, $feed_type) . '"';
 
-            if (empty($feed))
+            if (empty($feed)) {
                 $alt = ' alt="' . sprintf(__('Feed for all posts filed under %s'), $cat_name) . '"';
-            else {
+            } else {
                 $title = ' title="' . $feed . '"';
                 $alt = ' alt="' . $feed . '"';
                 $name = $feed;
@@ -710,33 +727,44 @@ class AVHEC_Walker_Category extends Walker
 
             $link .= '>';
 
-            if (empty($feed_image))
+            if (empty($feed_image)) {
                 $link .= $name;
-            else
+            } else {
                 $link .= '<img src="' . $feed_image . '"' . $alt . $title . ' />';
+            }
             $link .= '</a>';
-            if (empty($feed_image))
+            if (empty($feed_image)) {
                 $link .= ')';
+            }
             $link .= '</div>';
         }
 
-        if (isset($show_count) && $show_count)
+        if (isset($show_count) && $show_count) {
             $link .= '<div class="avhec-widget-count"> (' . intval($object->count) . ')</div>';
+        }
 
         if (isset($show_date) && $show_date) {
             $link .= ' ' . gmdate('Y-m-d', $object->last_update_timestamp);
         }
 
-        if (isset($current_category) && $current_category)
+        // When on a single post get the post's category. This ensures that that category will be given the CSS style of "current category".
+        if (is_single()) {
+            $post_cats = get_the_category();
+            $current_category = $post_cats[0]->term_id;
+        }
+
+        if (isset($current_category) && $current_category) {
             $_current_category = get_category($current_category);
+        }
 
         if ('list' == $args['style']) {
             $output .= "\t" . '<li';
             $class = 'cat-item cat-item-' . $object->term_id;
-            if (isset($current_category) && $current_category && ($object->term_id == $current_category))
+            if (isset($current_category) && $current_category && ($object->term_id == $current_category)) {
                 $class .= ' current-cat';
-            elseif (isset($_current_category) && $_current_category && ($object->term_id == $_current_category->parent))
+            } elseif (isset($_current_category) && $_current_category && ($object->term_id == $_current_category->parent)) {
                 $class .= ' current-cat-parent';
+            }
             $output .= ' class="' . $class . '"';
             $output .= '>' . $link . '</div>' . "\n";
         } else {
@@ -760,8 +788,9 @@ class AVHEC_Walker_Category extends Walker
      */
     public function end_el(&$output, $object, $depth = 0, $args = array())
     {
-        if ('list' != $args['style'])
+        if ('list' != $args['style']) {
             return;
+        }
 
         $output .= '</li>' . "\n";
     }

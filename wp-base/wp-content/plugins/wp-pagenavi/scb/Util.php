@@ -28,7 +28,9 @@ class scbUtil {
 		$content = str_replace( array( "'", "\n" ), array( '"', '' ), ob_get_clean() );
 
 		echo "<script type='text/javascript'>\n";
+		echo "//<![CDATA[";
 		echo "jQuery(function ($) { $('head').prepend('$content'); });\n";
+		echo "//]]>";
 		echo "</script>";
 	}
 
@@ -137,6 +139,93 @@ function scb_list_fold( $list, $key, $value ) {
 	return $r;
 }
 
+/**
+ * Splits a list into sets, grouped by the result of running each value through $fn.
+ *
+ * @param array List of items to be partitioned
+ * @param callback Function that takes an element and returns a string key
+ */
+function scb_list_group_by( $list, $fn ) {
+	$groups = array();
+
+	foreach ( $list as $item ) {
+		$key = call_user_func( $fn, $item );
+
+		if ( null === $key )
+			continue;
+
+		$groups[ $key ][] = $item;
+	}
+
+	return $groups;
+}
+
+//_____Database Table Utilities_____
+
+/**
+ * Register a table with $wpdb
+ *
+ * @param string $key The key to be used on the $wpdb object
+ * @param string $name The actual name of the table, without $wpdb->prefix
+ */
+function scb_register_table( $key, $name = false ) {
+	global $wpdb;
+
+	if ( !$name )
+		$name = $key;
+
+	$wpdb->tables[] = $name;
+	$wpdb->$key = $wpdb->prefix . $name;
+}
+
+/**
+ * Runs the SQL query for installing/upgrading a table
+ *
+ * @param string $key The key used in scb_register_table()
+ * @param string $columns The SQL columns for the CREATE TABLE statement
+ * @param array $opts Various other options
+ */
+function scb_install_table( $key, $columns, $opts = array() ) {
+	global $wpdb;
+
+	$full_table_name = $wpdb->$key;
+
+	if ( is_string( $opts ) ) {
+		$opts = array( 'upgrade_method' => $opts );
+	}
+
+	$opts = wp_parse_args( $opts, array(
+		'upgrade_method' => 'dbDelta',
+		'table_options' => '',
+	) );
+
+	$charset_collate = '';
+	if ( $wpdb->has_cap( 'collation' ) ) {
+		if ( ! empty( $wpdb->charset ) )
+			$charset_collate = "DEFAULT CHARACTER SET $wpdb->charset";
+		if ( ! empty( $wpdb->collate ) )
+			$charset_collate .= " COLLATE $wpdb->collate";
+	}
+
+	$table_options = $charset_collate . ' ' . $opts['table_options'];
+
+	if ( 'dbDelta' == $opts['upgrade_method'] ) {
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+		dbDelta( "CREATE TABLE $full_table_name ( $columns ) $table_options" );
+		return;
+	}
+
+	if ( 'delete_first' == $opts['upgrade_method'] )
+		$wpdb->query( "DROP TABLE IF EXISTS $full_table_name;" );
+
+	$wpdb->query( "CREATE TABLE IF NOT EXISTS $full_table_name ( $columns ) $table_options;" );
+}
+
+function scb_uninstall_table( $key ) {
+	global $wpdb;
+
+	$wpdb->query( "DROP TABLE IF EXISTS " . $wpdb->$key );
+}
 
 //_____Minimalist HTML framework_____
 
@@ -187,6 +276,18 @@ function html_link( $url, $title = '' ) {
 }
 endif;
 
+function scb_get_query_flags( $wp_query = null ) {
+	if ( !$wp_query )
+		$wp_query = $GLOBALS['wp_query'];
+
+	$flags = array();
+	foreach ( get_object_vars( $wp_query ) as $key => $val ) {
+		if ( 'is_' == substr( $key, 0, 3 ) && $val )
+			$flags[] = substr( $key, 3 );
+	}
+
+	return $flags;
+}
 
 //_____Compatibility layer_____
 

@@ -6,8 +6,6 @@
     <?php endif; ?>
 <?php endif; ?>
 
-<?php awpcp_print_messages(); ?>
-
 <?php foreach ((array) $messages as $message): ?>
     <?php echo awpcp_print_message($message); ?>
 <?php endforeach; ?>

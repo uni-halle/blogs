@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anyt
 Author URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Plugin URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Tags: popup, contact
-Requires at least: 3.2
-Tested up to: 3.6
-Stable tag: 5.0
+Requires at least: 3.4
+Tested up to: 3.8
+Stable tag: 5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,11 +52,11 @@ Plugin configuration
 
 == Screenshots ==
 
-1. http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
+1. Front Screen. http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 
-2. http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
+2. Front Screen. http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 
-3. http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
+3. Admin Screen. http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 
 == Changelog ==
 
@@ -82,6 +82,11 @@ Tested up to 3.6
 Added few security features.
 New admin layout.
 
+= 5.1 =
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (anything-popup.po) available in the languages folder.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -105,3 +110,8 @@ Option to add multiple pop up on single page.
 Tested up to 3.6
 Added few security features.
 New admin layout.
+
+= 5.1 =
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (anything-popup.po) available in the languages folder.

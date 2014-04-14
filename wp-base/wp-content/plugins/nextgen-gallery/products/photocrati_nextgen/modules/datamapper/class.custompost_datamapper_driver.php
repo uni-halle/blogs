@@ -30,6 +30,7 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 			'is_select'		=>	TRUE,
 			'is_delete'		=>	FALSE
 		);
+
 		return $this->object;
 	}
 
@@ -252,18 +253,22 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 	 */
 	function convert_post_to_entity($post, $model=FALSE)
 	{
-
 		$entity = new stdClass();
-		foreach ($post as $key => $value) {
-			if ($key == 'post_content') {
-				$post_content = $this->object->unserialize($value);
-				if ($post_content) {
-					foreach ($post_content as $key2 => $value2) {
-						$entity->$key2 = $value2;
-					}
+
+		// Unserialize the post content field
+		if (is_string($post->post_content)) {
+			if (($post_content = $this->object->unserialize($post->post_content))) {
+				foreach ($post_content as $key => $value) {
+					$post->$key = $value;
 				}
 			}
-			else $entity->$key = $value;
+
+		}
+		unset($post->post_content);
+
+		// Copy all fields to the entity
+		foreach ($post as $key => $value) {
+			$entity->$key = $value;
 		}
         $this->object->_convert_to_entity($entity);
 		return $model? $this->object->convert_to_model($entity) : $entity;
@@ -282,10 +287,12 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 		if (!($entity instanceof stdClass)) $post = $entity->get_entity();
 
 		// Create the post content
+		$post_content = clone $post;
+		foreach ($this->object->_table_columns as $column) unset($post_content->$column);
 		unset($post->id_field);
 		unset($post->post_content_filtered);
 		unset($post->post_content);
-		$post->post_content = $this->object->serialize($post);
+		$post->post_content = $this->object->serialize($post_content);
 		$post->post_content_filtered = $post->post_content;
 		$post->post_type = $this->object->get_object_name();
 
@@ -335,7 +342,14 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 		/* @var $wpdb wpdb */
 		global $wpdb;
 		if (!is_array($omit)) $omit = array($omit);
+
+		// By default, we omit creating meta values for columns in the posts table
+		$omit = array_merge($omit, $this->object->_table_columns);
+
+		// Delete the existing meta values
 		$wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->postmeta} WHERE post_id = %s", $post_id));
+
+		// Create query for new meta values
 		$sql_parts = array();
 		foreach($entity as $key => $value) {
 			if (in_array($key, $omit)) continue;
@@ -357,7 +371,9 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
         $post = $this->object->_convert_entity_to_post($entity);
 		$primary_key = $this->object->get_primary_key_column();
 
-		if (($post_id = wp_insert_post($post))) {
+        // TODO: unsilence this. Wordpress 3.9-beta2 is generating an error that should be corrected before its
+        // final release.
+		if (($post_id = @wp_insert_post($post))) {
 
 			$new_entity = $this->object->find($post_id, TRUE);
 			foreach ($new_entity->get_entity() as $key => $value) $entity->$key = $value;
@@ -367,8 +383,9 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 				$post_id,
 				$entity instanceof stdClass ? $entity : $entity->get_entity()
 			);
-		}
 
+			$entity->$primary_key = $post_id;
+		}
 		$entity->id_field = $primary_key;
 
 		return $post_id;
@@ -412,7 +429,7 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 	 * @param  string $sql optionally run the specified query
 	 * @return array
 	 */
-	function run_query($sql=FALSE, $model=FALSE)
+	function run_query($sql=FALSE, $model=FALSE, $convert_to_entities=TRUE)
 	{
 		$retval = array();
 
@@ -424,14 +441,13 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 
 		// Execute the query
 		$query = new WP_Query();
+		if (isset($this->object->debug)) $this->object->_query_args['debug'] = TRUE;
 		$query->query_vars = $this->object->_query_args;
 		add_action('pre_get_posts', array(&$this, 'set_query_args'), PHP_INT_MAX-1, 1);
-		foreach ($query->get_posts() as $row) {
-			$row = $this->object->convert_post_to_entity($this->scrub_result($row), $model);
-			if (!$model)
-                $row->id_field = $this->object->get_primary_key_column();
-			$retval[] = $row;
+        if ($convert_to_entities) foreach ($query->get_posts() as $row) {
+			$retval[] = $this->object->convert_post_to_entity($row, $model);
 		}
+        else $retval = $query->get_posts();
 		remove_action('pre_get_posts', array(&$this, 'set_query_args'), PHP_INT_MAX-1, 1);
 
 		return $retval;
@@ -478,19 +494,10 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 	 */
 	function count()
 	{
-		$retval = 0;
+        $this->object->select($this->object->get_primary_key_column());
+		$retval = $this->object->run_query(FALSE, FALSE, FALSE);
 
-		global $wpdb;
-		$key = $this->object->get_primary_key_column();
-		$sql = $wpdb->prepare(
-			"SELECT COUNT({$key}) FROM {$wpdb->posts} WHERE post_type = %s",
-			$this->object->get_object_name()
-		);
-		$results = $this->object->run_query($sql);
-		if ($results && isset($results[0]->$key))
-			$retval = (int)$results[0]->$key;
-
-		return $retval;
+		return count($retval);
 	}
 
 
@@ -522,15 +529,11 @@ class C_CustomPost_DataMapper_Driver extends C_DataMapper_Driver_Base
 
 	function define($object_name, $context=FALSE)
 	{
+		if (strlen($object_name) > 20) throw new Exception("The custom post name can be no longer than 20 characters long");
+
 		parent::define($object_name, $context);
 		$this->add_mixin('Mixin_CustomPost_DataMapper_Driver');
 		$this->implement('I_CustomPost_DataMapper');
-	}
-
-	function initialize($object_name)
-	{
-		if (strlen($object_name) > 20) throw new Exception("The custom post name can be no longer than 20 characters long");
-		parent::initialize($object_name);
 	}
 
 

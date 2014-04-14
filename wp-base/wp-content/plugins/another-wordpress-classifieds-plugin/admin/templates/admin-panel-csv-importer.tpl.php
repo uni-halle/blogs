@@ -74,8 +74,13 @@
 								<br/><?php echo awpcp_form_error('import_zip', $form_errors) ?>
 							</td>
 						</tr>
+					</tbody>
+				</table>
 
-						<tr><th scope="row" colspan="2"><b><?php _e('You can configure default dates for imported Ads', 'AWPCP') ?></b></th></tr>
+				<h3><?php _ex( 'If the CSV does not contain start/end dates, use these by default:', 'csv-importer', 'AWPCP' ); ?></h3>
+
+				<table class="form-table">
+					<tbody>
 						<tr>
 							<th scope="row">
 								<label for="awpcp-importer-start-date"><?php _e('Start Date (mm/dd/yyyy)', 'AWPCP') ?></label>
@@ -150,12 +155,12 @@
 						</tr>
 						<tr>
 							<th scope="row">
-								<?php _e('Assign Ads to an user?', 'AWPCP') ?>
+								<?php _ex( 'Assign Ads to a user?', 'csv-importer', 'AWPCP' ); ?>
 							</th>
 							<td>
 								<input type="checkbox" name="assign_user" id="awpcp-importer-auto-assign-user" value="1" <?php echo $assign_user == 1 ? 'checked="checked"' : ''; ?> />
-								<label for="awpcp-importer-auto-assign-user"><?php _e('Assign Ads to an user?', 'AWPCP') ?></label><br/>
-								<span class="description"><?php _e("If unchecked, Ads won't be associated to an user.", 'AWPCP') ?></span>
+								<label for="awpcp-importer-auto-assign-user"><?php _ex( 'Assign Ads to a user?', 'csv-importer', 'AWPCP' ); ?></label><br/>
+								<span class="description"><?php _ex( "If checked, the Ads will belong to the user specified below.", 'csv-importer', 'AWPCP' ); ?></span>
 								<br/><br/><?php echo awpcp_form_error('assign_user', $form_errors) ?>
 							</td>
 						</tr>
@@ -172,7 +177,7 @@
 									</option>
 								<?php endforeach ?>
 								</select><br/>
-								<span class="description"><?php _e("Ads will be associated to this user if the username column is not present in the CSV file, there is no user with that username and we couldn't find an user with the contact_email address specified in the CSV file.", 'AWPCP') ?></span>
+								<span class="description"><?php _ex( "Any value other than 'use spreadsheet information' means the Ads will be associated to the selected user if: the username column is not present in the CSV file, there is no user with that username and we couldn't find a user with the contact_email address specified in the CSV file.", 'csv-importer', 'AWPCP' ); ?></span>
 								<br/><br/><?php echo awpcp_form_error('user', $form_errors) ?>
 							</td>
 						</tr>

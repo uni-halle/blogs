@@ -1,0 +1,290 @@
+/*
+ Theme Name:     Transnational Radio Encounters (based on Beta Child based on Omega)
+ Theme URI:      http://transnationalradio.org
+ Description:    Modified Beta-Theme for TRE-Research, based on Beta/Omeage
+ Author:         Tom
+ Author URI:     http://diskurslabor.de
+ Template:       omega
+ Version:        1.0.0
+*/
+
+@import url(../omega/style.css);
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+.omega-nav-menu a {padding-top: 10px !important; padding-bottom: 10px !important}
+
+/* .entry-content>p {max-width: 50px !important} */
+
+.title-area {
+/* 	margin: 2%; */
+	padding: 0px;
+	margin-bottom: -4%;
+/* 	margin-bottom: -10%; */
+	}
+
+li.menu-item a, h1.entry-title a {text-decoration: none}
+a {
+	text-decoration: underline;
+	color: #92907b;	
+}
+
+a:hover {
+	text-decoration: none;
+	color: #92908b;
+}
+
+
+
+@media (max-width: 1023px) {
+.site-header>.wrap{
+	/* position: relative; bottom: -28px; */
+	position: relative;
+	padding: 0px !important;
+ 	background: none !important; 
+ 	margin: 0px !important;
+ 	}
+}
+
+@media (min-width: 1023px) {
+.site-header>.wrap{
+	position: relative;
+	padding: 0px !important;
+ 	background: none !important;
+
+	}	
+}
+
+
+h1.entry-title {text-align: left; margin-bottom: 20px;}
+
+
+/* main.content {text-align: left !important; max-width: 648px; float: left} */
+
+h3.widget-title {
+	font-weight: 700 !important;
+	font-size: 16px !important;
+	margin-top: 2%;	
+}
+
+.sub-menu li:nth-child(odd) a {background: white !important;}
+.sub-menu li:nth-child(even) a {background: #e1d9d8 !important;}
+
+a[href^="mailto:"]{
+	background:  transparent url(http://www.dev.diskurslabor.de/wp-content/uploads/2013/11/mail.png) center left no-repeat;
+	display: inline-block;
+	padding-left: 20px;
+	line-height: 15px;
+}
+
+
+/*.sub-menu li:nth-child(odd) a {background: #7a1215 !important;}*/
+
+/*Farbe*/
+.site-inner, .content, #respond {background: #ece9e8 !important;}
+
+.wrap.col-4 {padding-left: 19px; padding-right: 19px;}
+
+main.content {
+/*	padding: 0px 0% 0px 14%;*/
+	text-align: justify;
+	padding-left: 19px;
+	padding-right: 19px;
+}
+
+.footer-widgets-1 {width: 100% !important; clear: both}
+/*.footer-widgets-2, .footer-widgets-3,.footer-widgets-4 {width: 33.33% !important}*/
+.footer-widgets-2, .footer-widgets-3 {width: 100% !important;}
+/*
+.footer-widgets-2 {padding-left: 20% !important;}
+.footer-widgets-3 {padding-left: 30% !important;}
+*/
+/*.footer-widgets-3 img {width: 30% !important;}*/
+.footer-widgets-2 .widget_text, .footer-widgets-3 .widget_text {float: left; margin-right: 2%;}
+
+
+.footer-widgets img {opacity: 0.5; /*width: 10%;*/; height: 35px; vertical-align: bottom !important}
+.footer-widgets img:hover {opacity: 0.8; /*width: 10%;*/}
+
+.footer-widgets-4 {float: left !important; width: 100% !important}
+.footer-widgets-4 .widget_text {float: left; margin-right: 5%; width: 45%;}
+.footer-widgets-4 img {height: auto; float: left; margin-right: 2%}
+
+
+/*
+li.menu-item-has-children:before {
+	content: "» ";
+	float: left;
+	padding-top: 25px;
+	padding-left: 10px;
+	color: black;
+}
+*/
+
+.layout-2c-l .content {
+	width: 70%;
+}
+
+.sidebar {
+	padding-left: 2%;
+	width: 28%;
+}
+
+/* Content-Titel */
+h1.entry-title:before {
+	content:"» ";
+}
+
+header .wrap {background: white !important}
+
+/* Seitentitel
+h1.site-title a {}*/
+
+.site-header .wrap {
+	margin-top: 2%;
+	padding-bottom: 0em !important;
+	/*background: #f5f5f5;*/
+}
+
+.site-header .nav-primary {
+	float: left !important;
+	width: 100%;
+}
+
+.omega-nav-menu {
+	text-align: left;
+}
+/* oder menu-menu-3*/
+#menu-menu/*-2*/ {
+/* 	display: none; */
+	margin-top: -32px;
+	margin-bottom: 3%;
+	letter-spacing: 1px;
+	line-height: 1.5;
+	font-family: 'Ubuntu', sans-serif;
+	text-transform: uppercase;
+/* 	margin-left: 19px; */
+	
+}
+
+ul.sub-menu {
+	background-color: #7a1215 !important;
+}
+
+li.menu-item a {background-color: #7a1215 !important;}
+
+.nav-primary a, .omage-nav-menu a {
+	color:black !important;
+	font-family: sans-serif;
+}
+
+
+
+h3, h4.grau {
+	color: gray !important;
+}
+
+h4.grau {
+	line-height: 0.4em !important
+}
+
+/*.footer-widgets-2 {
+	width: 65% !important;
+	margin-left: 2%;
+	padding-top:2.4% !important
+}*/
+
+h2.site-description {
+	color: #727775;
+}
+
+
+
+
+
+h1.site-title img {
+	float: left;
+	width: 980px;
+}
+
+
+
+
+/* Das bitte nicht anfassen!
+-------------------------------------------------------------- */
+
+.site-title {
+    font-size: 35px;
+    letter-spacing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333333;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+.site-header,
+.site-header .omega-nav-menu .sub-menu a, .omega-nav-menu .children a {
+	background: #7a1215;/* rgb(245,245,245); */
+	border: none;
+	font-family: 'Ubuntu', sans-serif;
+	text-transform: uppercase;
+}
+
+.site-header > .wrap {
+  padding: 0.5em 0;
+}
+
+.site-header .nav-primary,
+.site-header .title-area {
+  vertical-align: middle;  
+  text-align: left;
+  display: inline-block;
+}
+
+.site-header .nav-primary {
+  float: right;
+}
+
+.site-header a,
+.site-header a:hover {
+	color: #fff;
+}
+
+.nav-primary a:hover ,
+.nav-primary .sub-menu a:hover,
+.nav-primary .children a:hover
+{
+	color: #eee;
+}
+
+.site-header .nav-primary li:last-child a {
+	padding-right: 0;
+}
+
+.entry-title {
+    font-size: 30px;
+}
+
+.footer-widgets {
+    background: none repeat scroll 0 0 #F5F5F5;
+}
+
+.omega-nav-menu .sub-menu .sub-menu,
+.omega-nav-menu .children .children {
+  margin: -53px 0 0 199px;
+}
+
+@media only screen and (max-width: 1023px) {
+
+  .site-header .nav-primary,
+  .site-header .title-area {
+    text-align: center;
+/*     display: block; */
+    float: none;
+  }
+
+}

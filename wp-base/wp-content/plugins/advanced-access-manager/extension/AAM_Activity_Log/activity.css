@@ -1,0 +1,46 @@
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+ */
+.activity-top-actions{
+    float: right;
+    display: inline-table;
+    width: auto;
+    text-align: right;
+}
+
+.activity-top-action{
+    width: 24px;
+    height: 24px;
+    display: table-cell;
+    text-indent: -9999px;
+    padding-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.activity-top-action-clear{
+    background-image: url('images/trash.png');
+}
+
+.activity-top-action-clear:hover{
+    background-image: url('images/trash-active.png');
+}
+
+.activity-top-action-clear-active{
+    background-image: url('images/trash-active.png');
+}
+
+.activity-top-action-info{
+    background-image: url('images/info.png');
+}
+
+.activity-top-action-info:hover{
+    background-image: url('images/info-active.png');
+}
+
+.activity-top-action-info-active{
+    background-image: url('images/info-active.png');
+}

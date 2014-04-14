@@ -2,7 +2,7 @@
 <form action="<?php echo awpcp_esc_attr($paypal_url); ?>" method="post">
     <input type="hidden" value="2" name="rm">
     <input type="hidden" value="_cart" name="cmd">
-    <input type="hidden" value="utf-8" name="charset">
+    <?php /*<input type="hidden" value="utf-8" name="charset"> */ ?>
     <input type="hidden" value="<?php echo get_awpcp_option('paypalemail'); ?>" name="business">
 	<input type="hidden" value="<?php echo $currency; ?>" name="currency_code" />
 	<input type="hidden" value="<?php echo $custom; ?>" name="custom" />
@@ -25,7 +25,7 @@
 	<?php endif ?>
 
     <?php $text = _x('Return to %s', 'paypal-checkout-form', 'AWPCP'); ?>
-    <input type="hidden" value="<?php echo sprintf($text, awpcp_get_blog_name()); ?>" name="cbt">
+    <input type="hidden" value="<?php echo sprintf($text, awpcp_get_blog_name( $decode_html = false )); ?>" name="cbt">
 
 	<?php $alt = __("Make payments with PayPal - it's fast, free and secure!", "AWPCP"); ?>
 	<input type="image" src="<?php echo $awpcp_imagesurl; ?>/payments-paypal-checkout-express.gif" border="0" name="submit" alt="<?php echo $alt; ?>" />

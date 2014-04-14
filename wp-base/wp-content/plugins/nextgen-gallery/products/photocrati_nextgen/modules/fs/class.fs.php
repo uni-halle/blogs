@@ -33,7 +33,7 @@ class C_Fs extends C_Component
 	function initialize()
 	{
 		parent::initialize();
-		$this->_document_root = $this->set_document_root($_SERVER['DOCUMENT_ROOT']);
+		$this->_document_root = $this->set_document_root(ABSPATH);
 	}
 }
 
@@ -42,8 +42,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
     
         function add_trailing_slash($path)
         {
-            if (substr($path, -1) != '/') $path .= '/';
-            return $path;
+            return rtrim($path, "/\\").DIRECTORY_SEPARATOR;
         }
     
     
@@ -107,8 +106,7 @@ class Mixin_Fs_Instance_Methods extends Mixin
          */
         function remove_path_segment($path, $segment)
         {
-            if (substr($segment, -1) == '/') $segment = substr($segment, 0, -1);
-            $parts = explode($segment, $path);
+            $parts = explode($segment, rtrim($path, "/\\"));
             return $this->join_paths($parts);
         }
     
@@ -276,20 +274,13 @@ class Mixin_Fs_Instance_Methods extends Mixin
 		$params = func_get_args();
 		$this->_flatten_array($params, $segments);
 
-        // if a protocol exists strip it from the string and store it for later
-        $pattern = "#^[a-zA-Z].+://#i";
-        preg_match($pattern, $segments[0], $matches);
-        if (!empty($matches)) {
-            $protocol = reset($matches);
-            $segments[0] = preg_replace($pattern, '', $segments[0], 1);
-        }
-
 		foreach ($segments as $segment) {
-            $segment = trim($segment, '/\\');
-            $pieces = array_values(preg_split('/[\/\\\\]/', $segment));
+            $segment = trim($segment, "/\\");
+            $pieces = array_values(preg_split('#[/\\\\]#', $segment));
 
             // determine if each piece should be appended to $retval
             foreach ($pieces as $ndx => $val) {
+                if ($val === '') continue;
                 $one = array_search($val, $retval);
                 $two = array_search($val, $pieces);
                 $one = (FALSE === $one ? 0 : count($one) + 1);
@@ -308,17 +299,13 @@ class Mixin_Fs_Instance_Methods extends Mixin
 
 		}
 
-		$retval = $protocol . implode('/', $retval);
-
-        if ((empty($protocol) && 'WINNT' !== PHP_OS)
-            && strpos($retval, '/') !== 0
-            && is_null($protocol)
-            && !@file_exists($retval))
-        {
-            $retval = '/' . $retval;
+        // Join the paths together
+        $retval = implode(DIRECTORY_SEPARATOR, $retval);
+        if (strpos($retval, $this->get_document_root()) !== 0) {
+            $retval = DIRECTORY_SEPARATOR . trim($retval, "/\\");
         }
 
-		return $retval;
+        return $retval;
 	}
 
 	function _flatten_array($obj, &$arr)
@@ -361,7 +348,8 @@ class Mixin_Fs_Instance_Methods extends Mixin
 	 */
 	function set_document_root($value)
 	{
-        // Even for windows hosts we force '/' as the path separator
-		return $this->_document_root = untrailingslashit(str_replace('\\', '/', $value));
+        if ($value !== DIRECTORY_SEPARATOR)
+            $value = rtrim($value, "/\\");
+		return ($this->_document_root = $value);
 	}
 }

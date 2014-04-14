@@ -27,18 +27,23 @@ class SC_Comment_Guestbook {
 	// main function to show the rendered HTML output
 	public function show_html($atts) {
 		$this->init_sc();
-		if('' !== $this->options->get('cgb_clist_in_page_content') && '' !== $this->options->get('cgb_clist_adjust')) {
+		if('' !== $this->options->get('cgb_clist_in_page_content') && '' !== $this->options->get('cgb_adjust_output')) {
 			// Show comments template in page content
-			include(CGB_PATH.'includes/comments-template.php');
+			ob_start();
+				include(CGB_PATH.'includes/comments-template.php');
+				$out = ob_get_contents();
+			ob_end_clean();
+			return $out;
 		}
 		else {
 			// Show comment form
 			$out = '';
 			if(comments_open()) {
-				// to only show one form above the comment list the form_in_page is not displayed of form_above_comments is enabled
-				if('' !== $this->options->get('cgb_form_in_page') && ('' === $this->options->get('cgb_form_above_comments') || '' === $this->options->get('cgb_clist_adjust'))) {
+				// Only show one form above the comment list. The form_in_page will not be displayed if form_above_comments and adjust_output is enabled
+				if('' !== $this->options->get('cgb_form_in_page') && ('' === $this->options->get('cgb_form_above_comments') || '' === $this->options->get('cgb_adjust_output'))) {
+					require_once(CGB_PATH.'includes/comments-functions.php');
 					ob_start();
-						comment_form();
+						comment_form(CGB_Comments_Functions::get_instance()->get_guestbook_comment_form_args());
 						$out .= ob_get_contents();
 					ob_end_clean();
 				}
@@ -60,10 +65,10 @@ class SC_Comment_Guestbook {
 
 		// Filter to overwrite comments_open status
 		if('' !== $this->options->get('cgb_ignore_comments_open')) {
-			add_filter('comments_open', array(&$cgb, 'filter_comments_open'));
+			add_filter('comments_open', array(&$cgb, 'filter_comments_open'), 50);
 		}
 		// Filter to show the adjusted comment style
-		if(1 == $this->options->get('cgb_clist_adjust')) {
+		if('' !== $this->options->get('cgb_adjust_output')) {
 			add_filter('comments_template', array(&$this, 'filter_comments_template'));
 			if('desc' === $this->options->get('cgb_clist_order') || '' !== $this->options->get('cgb_clist_show_all')) {
 				add_filter('comments_array', array(&$this, 'filter_comments_array'));

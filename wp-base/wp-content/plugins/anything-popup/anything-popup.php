@@ -1,10 +1,9 @@
 <?php
-
 /*
 Plugin Name: Anything Popup
 Description: This is a simple plugin to display the entered content in to unblockable popup window. popup will open by clicking the text or image button.
 Author: Gopi.R
-Version: 5.0
+Version: 5.1
 Plugin URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Author URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Donate link: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
@@ -14,10 +13,22 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 global $wpdb, $wp_version;
 define("AnythingPopupTable", $wpdb->prefix . "AnythingPopup");
-define("AnythingPopup_UNIQUE_NAME", "anything-popup");
-define("AnythingPopup_TITLE", "Anything Popup");
 define('AnythingPopup_FAV', 'http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/');
-define('AnythingPopup_LINK', 'Check official website for more information <a target="_blank" href="'.AnythingPopup_FAV.'">click here</a>');
+
+if ( ! defined( 'ANYTHGPOPUP_PLUGIN_BASENAME' ) )
+	define( 'ANYTHGPOPUP_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+
+if ( ! defined( 'ANYTHGPOPUP_PLUGIN_NAME' ) )
+	define( 'ANYTHGPOPUP_PLUGIN_NAME', trim( dirname( ANYTHGPOPUP_PLUGIN_BASENAME ), '/' ) );
+
+if ( ! defined( 'ANYTHGPOPUP_PLUGIN_DIR' ) )
+	define( 'ANYTHGPOPUP_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . ANYTHGPOPUP_PLUGIN_NAME );
+
+if ( ! defined( 'ANYTHGPOPUP_PLUGIN_URL' ) )
+	define( 'ANYTHGPOPUP_PLUGIN_URL', WP_PLUGIN_URL . '/' . ANYTHGPOPUP_PLUGIN_NAME );
+	
+if ( ! defined( 'ANYTHGPOPUP_ADMIN_URL' ) )
+	define( 'ANYTHGPOPUP_ADMIN_URL', get_option('siteurl') . '/wp-admin/options-general.php?page=anything-popup' );
 
 function AnythingPopup( $pop_id = "1" )
 {
@@ -153,7 +164,7 @@ function AnythingPopup_shortcode( $atts )
 	}
 	else
 	{
-		$pop = "No record found.";
+		$pop = _('No record found.', 'anything-popup');
 	}
 	return $pop;
 }
@@ -174,7 +185,7 @@ function AnythingPopup_install()
 		$sSql = $sSql . "`pop_content`TEXT CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ,";
 		$sSql = $sSql . "`pop_caption` VARCHAR( 2024 ) NOT NULL default 'Click to open popup' ,";
 		$sSql = $sSql . "PRIMARY KEY ( `pop_id` )";
-		$sSql = $sSql . ")";
+		$sSql = $sSql . ") ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 		$wpdb->query($sSql);
 		
 		$sSql = "";
@@ -201,28 +212,32 @@ function AnythingPopup_widget($args)
 function AnythingPopup_control() 
 {
 	$pop_id = get_option('pop_id');
-	if (@$_POST['pop_submit']) 
+	if (isset($_POST['pop_submit'])) 
 	{
 		$pop_id = stripslashes(trim($_POST['pop_id']));
 		update_option('pop_id', $pop_id );
 	}
 	
-	echo '<p>Popup ID<br>';
+	echo '<p>'.__('Popup ID', 'anything-popup').'<br>';
 	echo '<input  style="width: 200px;" maxlength="100" type="text" value="';
 	echo $pop_id . '" name="pop_id" id="pop_id" /></p>';
 	echo '<input type="hidden" id="pop_submit" name="pop_submit" value="1" />';
+	
+	echo '<p>';
+	_e('Check official website for more information', 'anything-popup');
+	?> <a target="_blank" href="<?php echo AnythingPopup_FAV; ?>"><?php _e('click here', 'anything-popup'); ?></a></p><?php
 }
 
 function AnythingPopup_widget_init()
 {
 	if(function_exists('wp_register_sidebar_widget')) 
 	{
-		wp_register_sidebar_widget('Anything Popup', 'Anything Popup', 'AnythingPopup_widget');
+		wp_register_sidebar_widget(__('Anything Popup', 'anything-popup'), __('Anything Popup', 'anything-popup'), 'AnythingPopup_widget');
 	}
 	
 	if(function_exists('wp_register_widget_control')) 
 	{
-		wp_register_widget_control('Anything Popup', array('Anything Popup', 'widgets'), 'AnythingPopup_control');
+		wp_register_widget_control(__('Anything Popup', 'anything-popup'), array(__('Anything Popup', 'anything-popup'), 'widgets'), 'AnythingPopup_control');
 	} 
 }
 
@@ -254,7 +269,7 @@ function AnythingPopup_admin()
 
 function AnythingPopup_add_to_menu() 
 {
-	add_options_page('Anything Popup', 'Anything Popup', 'manage_options', 'anything-popup', 'AnythingPopup_admin' );
+	add_options_page( __('Anything Popup', 'anything-popup'), __('Anything Popup', 'anything-popup'), 'manage_options', 'anything-popup', 'AnythingPopup_admin' );
 }
 
 if (is_admin()) 
@@ -270,6 +285,12 @@ function AnythingPopup_add_javascript_files()
 	}
 }   
 
+function AnythingPopup_textdomain() 
+{
+	  load_plugin_textdomain( 'anything-popup', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'AnythingPopup_textdomain');
 add_shortcode( 'AnythingPopup', 'AnythingPopup_shortcode' );
 add_action('wp_enqueue_scripts', 'AnythingPopup_add_javascript_files');
 add_action("plugins_loaded", "AnythingPopup_widget_init");

@@ -7,6 +7,7 @@
 class C_Display_Type_Controller extends C_MVC_Controller
 {
 	static $_instances = array();
+	var $cachable = TRUE;
 
 	function define($context=FALSE)
 	{
@@ -69,45 +70,19 @@ class Mixin_Display_Type_Controller extends Mixin
 		$settings	= C_NextGen_Settings::get_instance();
 		$mapper		= $this->object->get_registry()->get_utility('I_Lightbox_Library_Mapper');
 		$library	= $mapper->find_by_name($settings->thumbEffect);
+		$thumbEffectContext = isset($settings->thumbEffectContext) ? $settings->thumbEffectContext : '';
 
         // Make the path to the static resources available for libraries
         // Shutter-Reloaded in particular depends on this
         $this->object->_add_script_data(
             'ngg_common',
             'nextgen_lightbox_settings',
-            array('static_path' => $this->object->get_static_relpath('', 'photocrati-lightbox')),
+            array('static_path' => $this->object->get_static_url('', 'photocrati-lightbox'), 'context' => $thumbEffectContext),
             TRUE,
-            FALSE
+            true
         );
 
-        {
-			$i=0;
-			foreach (explode("\n", $library->scripts) as $script) {
-				wp_enqueue_script(
-					$library->name.'-'.$i,
-					$script
-				);
-				if ($i == 0 AND isset($library->values)) {
-					foreach ($library->values as $name => $value) {
-						$this->object->_add_script_data(
-							$library->name . '-0',
-							$name,
-							$value,
-							FALSE
-						);
-					}
-				}
-				$i+=1;
-			}
-			$i=0;
-			foreach (explode("\n", $library->css_stylesheets) as $style) {
-				wp_enqueue_style(
-					$library->name.'-'.$i,
-					$style
-				);
-				$i+=1;
-			}
-		}
+        M_Lightbox::_register_library_resources($library, FALSE);
 	}
 
 
@@ -140,6 +115,10 @@ class Mixin_Display_Type_Controller extends Mixin
             FALSE
         );
 
+        // Enqueue trigger button resources
+        C_Displayed_Gallery_Trigger_Manager::get_instance()->enqueue_resources($displayed_gallery);
+
+        // Enqueue lightbox library
         $this->object->enqueue_lightbox_resources($displayed_gallery);
 	}
 
@@ -209,6 +188,11 @@ class Mixin_Display_Type_Controller extends Mixin
 		$effect_code = $settings->thumbCode;
 		$effect_code = str_replace('%GALLERY_ID%', $displayed_gallery->id(), $effect_code);
 		$effect_code = str_replace('%GALLERY_NAME%', $displayed_gallery->id(), $effect_code);
+
+        global $post;
+        if ($post && isset($post->ID) && $post->ID)
+            $effect_code = str_replace('%PAGE_ID%', $post->ID, $effect_code);
+
 		return $effect_code;
 	}
 
@@ -243,7 +227,7 @@ class Mixin_Display_Type_Controller extends Mixin
 
 			// Get the associated data with this script
 			$script = &$wp_scripts->registered[$handle];
-			$data = &$script->extra['data'];
+			$data = isset($script->extra['data']) ? $script->extra['data'] : '';
 
 			// Construct the addition
 			$addition = $define ? "\nvar {$object_name} = " . json_encode($object_value) . ';' :
@@ -260,6 +244,8 @@ class Mixin_Display_Type_Controller extends Mixin
 			}
 
             $script->extra['data'] = $data;
+
+unset($script);
 		}
 
 		return $retval;

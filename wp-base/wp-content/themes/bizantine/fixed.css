@@ -1,0 +1,148 @@
+#wrapper-three{
+	max-width:1200px;
+	margin:0 auto;
+}	
+.responsive-container{
+	width:100%;
+}
+.site-header-half-width-logo{
+	width:38%;
+	margin:1.5% 3%;
+	float:left;	
+}
+.site-header-half-width-logo .site-title, .site-header-half-width-logo .site-description{
+	text-align:left;
+}
+.site-branding{
+	padding:3% 0;
+}
+.site-header-half-width-logo .site-branding{
+	text-align:left;
+}
+.site-header-half-width-nav{
+	width:50%;
+	float:left;
+	margin:3.5% 3% 1.5% 3%;
+	background:none;
+}
+.main-navigation {
+	padding:1.5% 0;
+}
+.tinynav { display: none }
+#main-nav { display: block }
+.content-area {
+    margin: 2% 4% 2% 6%;
+    width: 53%;
+	float:left;	
+}
+.site-content{
+	width:100%;
+	margin:0;	
+}
+.paging-navigation .nav-previous{
+	width:50%;
+	margin:0;	
+}
+.paging-navigation .nav-next{
+	width:50%;
+	margin:0;	
+}
+.post-navigation .nav-previous{
+	width:50%;
+}
+.post-navigation .nav-next{
+	width:50%;
+}
+.widget-area{
+	width:32%;
+	margin:2% 2% 2% 0;	
+	float:left;
+	padding:2% 0;
+}
+.biz0ne-products-services-item{
+	float:left;
+	width:33.33%;	
+	margin:0;
+}
+.biz0ne-quote{
+	margin:0 auto 2% auto;
+}
+/* bizseven Section */
+.bizseven-welcome{
+	margin:2% 7% 5% 7%;
+}
+.bizseven-welcome h1{
+	font-size:50px;
+	font-size:5.0rem;
+}
+.bizseven-work{
+	width:86%;
+	margin:0 7% 5% 7%;	
+}
+.bizseven-work-intro{
+	width:100%;
+	padding:0 0 5% 0;	
+}
+.bizseven-work-intro h1{
+	width:100%;
+	text-align:left;
+	padding:0 0 20px 0;
+	font-size:48px;
+	font-size:4.8rem;
+	font-family:'TitilliumText22LMedium', sans-serif;	
+}
+.bizseven-work-items{
+	width:100%;
+	padding:0 0 0 0;	
+}
+.da-thumbs li {
+	width:25%;
+}
+.bizeight-da-thumbs li {
+	width:50%;
+}
+.bizseven-about{
+	width:86%;
+	margin:0 7% 5% 7%;
+}
+.bizseven-about-title{
+	width:100%;
+	padding:0 0 0 0;	
+}
+.bizseven-welcome h1{
+	width:100%;
+	text-align:left;
+	padding:0 0 20px 0;
+	font-size:48px;
+	font-size:4.8rem;
+	font-family:'TitilliumText22LMedium', sans-serif;
+}
+.bizseven-work-intro-desc{
+	padding:0 0 2% 0;	
+}
+.bizseven-about-content{
+	width:100%;
+	padding:0 0 0 0;
+}
+.site-info{
+	width:40%;
+	padding:5% 0;
+}
+.footer-widget-two{
+	width:30%;
+	padding:5% 0;
+}
+.footer-widget-three{
+	width:20%;
+	padding:5% 0;
+}
+.site-info h3{
+	text-align:left;
+}
+.site-info p{
+	text-align:left;
+}
+.footer-search{
+	width:64%;
+	margin:20px 8% 5px 8%;	
+}

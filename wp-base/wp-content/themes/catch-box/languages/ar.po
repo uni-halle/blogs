@@ -1,0 +1,1155 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Catch Box theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-20 16:37+0545\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
+"Language-Team: www.ed3s.com <master@ed3s.com>\n"
+"Language: ar_SA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:14
+msgid "Error 404 - Page Not Found."
+msgstr "خطأ 404: غير موجود"
+
+#: ../404.php:18
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "يبدو انه لا يمكن العثور عن طلبك"
+
+#: ../404.php:19
+msgid "This might be because:"
+msgstr "قد يكون بسبب :"
+
+#: ../404.php:20
+msgid ""
+"You have typed the web address incorrectly, or the page you were looking for "
+"may have been moved, updated or deleted."
+msgstr "قمت بكتابة عنوان غير صحيح ، أو قد يكون تم نقل الصفحة أو حذفها "
+
+#: ../404.php:21
+msgid "Please try the following options instead:"
+msgstr "يرجى المحاولة بالخيارات التالية :"
+
+#: ../404.php:22
+msgid ""
+"Check for a mis-typed URL error, then press the refresh button on your "
+"browser or Use the search box below."
+msgstr ""
+"تحقق من عنوان الرابط بشكل صحيح وقم بتصحيحه ، او استخدم محرك البحث في الاسفل "
+"للوصول لما تريد "
+
+#: ../archive.php:22
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "الارشيف يوم: %s"
+
+#: ../archive.php:24
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "ارشيف شهر : %s"
+
+#: ../archive.php:24
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: ../archive.php:26
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "ارشيف عام : %s"
+
+#: ../archive.php:26
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: ../archive.php:28
+msgid "Blog Archives"
+msgstr "ارشيف"
+
+#: ../archive.php:52 ../author.php:69 ../category.php:45 ../index.php:32
+#: ../page-blog.php:65 ../search.php:39 ../tag.php:45
+msgid "Nothing Found"
+msgstr "لم يتم العثور على شئ"
+
+#: ../archive.php:56 ../author.php:73 ../category.php:49 ../index.php:36
+#: ../page-blog.php:69 ../tag.php:49
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr "نعتذر لعدم وصولك الى طلبك ، استخدم البحث للوصول لما تريد ."
+
+#: ../author.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr "ارشيف الكاتب : %s"
+
+#: ../author.php:44 ../content-single.php:76
+#, php-format
+msgid "About %s"
+msgstr "عن %s"
+
+#: ../category.php:16
+#, php-format
+msgid "Category Archives: %s"
+msgstr "ارشيف التصنيف : %s"
+
+#: ../comments.php:17
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"هذه التدوينة محمية بكلمة مرور ، فضلاً اكتب كلمة المرور لمشاهدة التعليقات"
+
+#: ../comments.php:33
+#, php-format
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../comments.php:40 ../comments.php:60
+msgid "Comment navigation"
+msgstr "ملاحة التعليق"
+
+#: ../comments.php:41 ../comments.php:61
+msgid "&larr; Older Comments"
+msgstr "&larr; تعليقات اقدم"
+
+#: ../comments.php:42 ../comments.php:62
+msgid "Newer Comments &rarr;"
+msgstr "تعليقات احدث &rarr;"
+
+#: ../comments.php:72
+msgid "Comments are closed."
+msgstr "التعليقات مغلقة"
+
+#: ../content-aside.php:16 ../content-featured.php:14
+#: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
+#: ../content-link.php:16 ../content-quote.php:14 ../content-status.php:15
+#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:829
+#, php-format
+msgid "Permalink to %s"
+msgstr "الرابط الدائم لـ %s"
+
+#: ../content-aside.php:17
+msgid "Aside"
+msgstr "جانب"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgid "Reply"
+msgstr "رد"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
+msgid "1"
+msgstr "1"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
+msgid "%"
+msgstr "%"
+
+#: ../content-aside.php:33 ../content-gallery.php:32 ../content-image.php:27
+#: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
+#: ../content.php:55 ../functions.php:375
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "اكمل القراءة <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-aside.php:35 ../content-featured.php:24
+#: ../content-gallery.php:55 ../content-image.php:29 ../content-link.php:35
+#: ../content-page.php:19 ../content-quote.php:37 ../content-single.php:31
+#: ../content-status.php:36 ../content.php:57 ../image.php:87
+msgid "Pages:"
+msgstr "صفحات:"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "Leave a reply"
+msgstr "اكتب رداً"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>1</b> Reply"
+msgstr "<b>1</b> رد"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>%</b> Replies"
+msgstr "<b>%</b> رد"
+
+#: ../content-aside.php:50 ../content-featured.php:51
+#: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
+#: ../content-page.php:27 ../content-quote.php:78 ../content-single.php:64
+#: ../content-status.php:51 ../content.php:100 ../functions.php:623
+#: ../functions.php:651 ../image.php:97
+msgid "Edit"
+msgstr "تحرير"
+
+#: ../content-featured.php:35 ../content-featured.php:44
+#: ../content-gallery.php:68 ../content-gallery.php:78 ../content-image.php:53
+#: ../content-image.php:62 ../content-quote.php:50 ../content-quote.php:60
+#: ../content-single.php:42 ../content-single.php:45 ../content.php:71
+#: ../content.php:81
+msgid ", "
+msgstr ", "
+
+#: ../content-featured.php:37
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"التصنيف: %1$s | وسوم: %2$s. | رابط التدوينة <a href=\"%3$s\" title=\" %4$s\" "
+"rel=\"bookmark\">permalink</a>."
+
+#: ../content-featured.php:39
+#, php-format
+msgid ""
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
+"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"التصنيف: %1$s. |  <a href=\"%3$s\" title=\" %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+
+#: ../content-gallery.php:17
+msgid "Gallery"
+msgstr "المعرض"
+
+#: ../content-gallery.php:47
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../content-gallery.php:72 ../content-image.php:57 ../content-quote.php:54
+#: ../content.php:75
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "<span class=\"%1$s\">التصنيف</span> %2$s"
+
+#: ../content-gallery.php:84 ../content-image.php:65 ../content-quote.php:66
+#: ../content.php:87
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">وسوم:</span> %2$s"
+
+#: ../content-image.php:16
+msgid "Image"
+msgstr "صورة"
+
+#: ../content-image.php:40
+#, php-format
+msgid ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by "
+"</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
+"title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+msgstr ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> "
+"الكاتب: </span> <span class=\"author vcard\"><a class=\"url fn n\" href="
+"\"%4$s\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+
+#: ../content-image.php:45 ../functions.php:689
+#, php-format
+msgid "View all posts by %s"
+msgstr "عرض تدوينات  %s"
+
+#: ../content-link.php:17
+msgid "Link"
+msgstr "رابط"
+
+#: ../content-quote.php:15
+msgid "Quote"
+msgstr "اقتباس"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "No Comments &darr;"
+msgstr "لا يوجد تعليقات &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "1 Comment &darr;"
+msgstr "تعليق واحد &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "% Comments &darr;"
+msgstr "% تعليقات &darr;"
+
+#: ../content-single.php:47
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s by <a href=\"%6$s\">%5$s</a>. "
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+msgstr ""
+"التصنيف: %1$s | وسوم: %2$s | الكاتب: <a href=\"%6$s\">%5$s</a> | <a href="
+"\"%3$s\" title=\" %4$s\" rel=\"bookmark\">الرابط</a>."
+
+#: ../content-single.php:49
+#, php-format
+msgid ""
+"This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a "
+"href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"التصنيف: %1$s by <a href=\"%6$s\">%5$s</a> | <a href=\"%3$s\" title=\" %4$s"
+"\" rel=\"bookmark\">الرابط</a>"
+
+#: ../content-single.php:51
+#, php-format
+msgid ""
+"This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href="
+"\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"الكاتب: <a href=\"%6$s\">%5$s</a> | <a href=\"%3$s\" title=\" %4$s\" rel="
+"\"bookmark\">الرابط</a>."
+
+#: ../content-single.php:80
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "عرض تدوينات %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-status.php:16
+msgid "Status"
+msgstr "حالة"
+
+#: ../content.php:16
+msgid "Featured"
+msgstr "مميز"
+
+#: ../footer.php:54
+msgid "Footer menu"
+msgstr "القائمة السفلية"
+
+#: ../functions.php:109
+msgid "Primary Menu"
+msgstr "القائمة الاولى"
+
+#: ../functions.php:110
+msgid "Secondary Menu"
+msgstr "القائمة الثانية"
+
+#: ../functions.php:111
+msgid "Footer Menu"
+msgstr "قائمة الفوتر"
+
+#: ../functions.php:179
+msgid "Garden"
+msgstr "حديقة"
+
+#: ../functions.php:185
+msgid "Flower"
+msgstr "زهرة"
+
+#: ../functions.php:191
+msgid "Mountain"
+msgstr "جبل"
+
+#: ../functions.php:343
+#, php-format
+msgid "Page %s"
+msgstr "صفحة %s"
+
+#: ../functions.php:444
+msgid "Main Sidebar"
+msgstr "القائمة الجانبية"
+
+#: ../functions.php:453
+msgid "Footer Area One"
+msgstr "القائمة السفلية الاولى"
+
+#: ../functions.php:455 ../functions.php:465 ../functions.php:475
+msgid "An optional widget area for your site footer"
+msgstr "المساحة المخصصة في ذيل القالب Footer "
+
+#: ../functions.php:463
+msgid "Footer Area Two"
+msgstr "القائمة السفلية الثانية"
+
+#: ../functions.php:473
+msgid "Footer Area Three"
+msgstr "القائمة السفلية الثالثة"
+
+#: ../functions.php:507 ../functions.php:536 ../single.php:15
+msgid "Post navigation"
+msgstr "ملاحة التدوينة"
+
+#: ../functions.php:515 ../functions.php:544
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&rarr;</span> تدوينات اقدم"
+
+#: ../functions.php:516 ../functions.php:545
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "تدوينات احدث <span class=\"meta-nav\">&larr;</span>"
+
+#: ../functions.php:623
+msgid "Pingback:"
+msgstr "تعقيبات:"
+
+#: ../functions.php:640
+#, php-format
+msgid "%1$s on %2$s <span class=\"says\">said:</span>"
+msgstr "%1$s on %2$s <span class=\"says\">قال:</span>"
+
+#: ../functions.php:646
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s at %2$s"
+
+#: ../functions.php:655
+msgid "Your comment is awaiting moderation."
+msgstr "تعليقك بانتظار موافقة مدير المدونة"
+
+#: ../functions.php:664
+msgid "Reply <span>&darr;</span>"
+msgstr "رد <span>&darr;</span>"
+
+#: ../functions.php:683
+#, php-format
+msgid ""
+"<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
+"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
+"\" rel=\"author\">%7$s</a></span></span>"
+msgstr ""
+"<span class=\"sep\">التاريخ: </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
+"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> | الكاتب: </"
+"span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title="
+"\"%6$s\" rel=\"author\">%7$s</a></span></span>"
+
+#: ../functions.php:741
+msgid "ID"
+msgstr "ID"
+
+#: ../functions.php:955
+msgid "Name"
+msgstr "الاسم"
+
+#: ../functions.php:957
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: ../functions.php:1324
+msgid "Primary menu"
+msgstr "القائمة الاولى"
+
+#: ../functions.php:1326 ../functions.php:1359
+msgid "Skip to primary content"
+msgstr "تخطى الى المحتوى الاساسي"
+
+#: ../functions.php:1327 ../functions.php:1360
+msgid "Skip to secondary content"
+msgstr "تخطى الى المحتوى الثانوي"
+
+#: ../functions.php:1357
+msgid "Secondary menu"
+msgstr "القائمة الثانية"
+
+#: ../functions.php:1379
+msgid "Copyright &copy;"
+msgstr "جميع الحقوق محفوظة &copy;"
+
+#: ../functions.php:1383
+msgid ". All Rights Reserved."
+msgstr " "
+
+#: ../functions.php:1386
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: ../functions.php:1386
+msgid "Powered by WordPress"
+msgstr "مدعوم من"
+
+#: ../functions.php:1386
+#, php-format
+msgid "Powered by %s"
+msgstr "Powered by %s"
+
+#: ../functions.php:1388 ../inc/theme-options.php:660
+msgid "http://catchthemes.com/"
+msgstr "http://catchthemes.com/"
+
+#: ../functions.php:1388
+msgid "Theme Catch Box by Catch Themes"
+msgstr "Theme Catch Box by Catch Themes"
+
+#: ../functions.php:1388
+#, php-format
+msgid "Theme: %s"
+msgstr "Theme: %s"
+
+#: ../image.php:15
+msgid "Image navigation"
+msgstr "ملاحة الصورة"
+
+#: ../image.php:16
+msgid "&larr; Previous"
+msgstr "السابق &larr;"
+
+#: ../image.php:17
+msgid "Next &rarr;"
+msgstr "&rarr; التالي"
+
+#: ../image.php:27
+#, php-format
+msgid ""
+"<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class="
+"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
+"at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> "
+"in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+msgstr ""
+"<span class=\"meta-prep meta-prep-entry-date\">التاريخ </span> <span class="
+"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
+"بمقاس <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</"
+"a> في <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+
+#: ../inc/theme-options.php:104
+msgid "Favicon URL"
+msgstr "رابط الايقونة"
+
+#: ../inc/theme-options.php:113
+msgid "Web Clip Icon URL"
+msgstr "Web Clip Icon URL"
+
+#: ../inc/theme-options.php:122
+msgid "Color Scheme"
+msgstr "لون القالب"
+
+#: ../inc/theme-options.php:130
+msgid "Link Color"
+msgstr "لون الروابط"
+
+#: ../inc/theme-options.php:138
+msgid "Default Layout"
+msgstr "التخطيط الافتراضي"
+
+#: ../inc/theme-options.php:146
+msgid "Content layout"
+msgstr "تخطيط المحتوى"
+
+#: ../inc/theme-options.php:154
+msgid "Excerpt Length in Words"
+msgstr "طول المقتطف"
+
+#: ../inc/theme-options.php:162
+msgid "Feed Redirect URL"
+msgstr "Feed Redirect URL"
+
+#: ../inc/theme-options.php:170
+msgid "Move Site Title and Tagline?"
+msgstr "Move Site Title and Tagline?"
+
+#: ../inc/theme-options.php:178
+msgid "Default Display Text in Search"
+msgstr "Default Display Text in Search"
+
+#: ../inc/theme-options.php:186
+msgid "Disable Search in Header?"
+msgstr "Disable Search in Header?"
+
+#: ../inc/theme-options.php:194
+msgid "Enable Secondary & Footer Menu in Mobile Devices?"
+msgstr "Enable Secondary & Footer Menu in Mobile Devices?"
+
+#: ../inc/theme-options.php:202
+msgid "Custom CSS Styles"
+msgstr "CSS مخصص"
+
+#: ../inc/theme-options.php:239 ../inc/theme-options.php:240
+#: ../inc/theme-options.php:687
+msgid "Theme Options"
+msgstr "خيارات القالب"
+
+#: ../inc/theme-options.php:262
+msgid "Add/Change Favicon"
+msgstr "اضافة/تغيير الايقونة"
+
+#: ../inc/theme-options.php:276
+msgid "Add/Change Web Clip Icon"
+msgstr "Add/Change Web Clip Icon"
+
+#: ../inc/theme-options.php:290
+msgid "Light"
+msgstr "فاتح"
+
+#: ../inc/theme-options.php:296
+msgid "Dark"
+msgstr "داكن"
+
+#: ../inc/theme-options.php:302
+msgid "Blue"
+msgstr "ازرق"
+
+#: ../inc/theme-options.php:308
+msgid "Green"
+msgstr "Green"
+
+#: ../inc/theme-options.php:314
+msgid "Red"
+msgstr "Red"
+
+#: ../inc/theme-options.php:320
+msgid "Brown"
+msgstr "Brown"
+
+#: ../inc/theme-options.php:326
+msgid "Orange"
+msgstr "Orange"
+
+#: ../inc/theme-options.php:345
+msgid "Content on left"
+msgstr "القائمة الجانبية في اليمين"
+
+#: ../inc/theme-options.php:350
+msgid "Content on right"
+msgstr "القائمة الجانبية في اليسار"
+
+#: ../inc/theme-options.php:355
+msgid "One-column, no sidebar"
+msgstr "بدون قائمة جانبية"
+
+#: ../inc/theme-options.php:373
+msgid "Show excerpt"
+msgstr "اظهار المقتطف"
+
+#: ../inc/theme-options.php:378
+msgid "Show full content"
+msgstr "اظهار التدوينة كاملة"
+
+#: ../inc/theme-options.php:479
+msgid "Select a Color"
+msgstr "اختر اللون"
+
+#: ../inc/theme-options.php:482
+#, php-format
+msgid "Default color: %s"
+msgstr "اللون الافتراضي : %s"
+
+#: ../inc/theme-options.php:498
+msgid "Words"
+msgstr "Words"
+
+#: ../inc/theme-options.php:526
+msgid "Check to move above the Header/Logo Image"
+msgstr "Check to move above the Header/Logo Image"
+
+#: ../inc/theme-options.php:556
+msgid "Check to Disable"
+msgstr "Check to Disable"
+
+#: ../inc/theme-options.php:571
+msgid "Check to Enable"
+msgstr "Check to Disable"
+
+#: ../inc/theme-options.php:585
+msgid "CSS Tutorial from W3Schools."
+msgstr "CSS Tutorial from W3Schools."
+
+#: ../inc/theme-options.php:585
+msgid "http://www.w3schools.com/css/default.asp"
+msgstr "http://www.w3schools.com/css/default.asp"
+
+#: ../inc/theme-options.php:585
+msgid "CSS Tutorial"
+msgstr "CSS Tutorial"
+
+#: ../inc/theme-options.php:585
+msgid "Click Here to Read"
+msgstr "انقر هنا للقراءة"
+
+#: ../inc/theme-options.php:650
+msgid "http://facebook.com/catchthemes"
+msgstr "http://facebook.com/catchthemes"
+
+#: ../inc/theme-options.php:652
+msgid "https://twitter.com/catchthemes"
+msgstr "https://twitter.com/catchthemes"
+
+#: ../inc/theme-options.php:658
+msgid "Theme Options By"
+msgstr "Theme Options By"
+
+#: ../inc/theme-options.php:660 ../inc/theme-options.php:661
+msgid "Catch Themes"
+msgstr "Catch Themes"
+
+#: ../inc/theme-options.php:667
+msgid "http://catchthemes.com/themes/catch-box-pro/"
+msgstr "http://catchthemes.com/themes/catch-box-pro/"
+
+#: ../inc/theme-options.php:667
+msgid "Upgrade to Catch Box Pro"
+msgstr "الترقية الى المدفوع"
+
+#: ../inc/theme-options.php:672
+msgid "http://catchthemes.com/donate/"
+msgstr "http://catchthemes.com/donate/"
+
+#: ../inc/theme-options.php:672
+msgid "Donate"
+msgstr " التبرع"
+
+#: ../inc/theme-options.php:673
+msgid "http://catchthemes.com/support/"
+msgstr "http://catchthemes.com/support/"
+
+#: ../inc/theme-options.php:673
+msgid "Support"
+msgstr "الدعم"
+
+#: ../inc/theme-options.php:674
+msgid "http://catchthemes.com/support-forum/forum/catch-box-public/"
+msgstr "http://catchthemes.com/support-forum/forum/catch-box-public/"
+
+#: ../inc/theme-options.php:674
+msgid "Support Forum"
+msgstr "Support Forum"
+
+#: ../inc/theme-options.php:675
+msgid "http://catchthemes.com/theme-instructions/catch-box/"
+msgstr "http://catchthemes.com/theme-instructions/catch-box/"
+
+#: ../inc/theme-options.php:675
+msgid "Theme Instructions"
+msgstr "Theme Instructions"
+
+#: ../inc/theme-options.php:676
+msgid "https://www.facebook.com/catchthemes/"
+msgstr "https://www.facebook.com/catchthemes/"
+
+#: ../inc/theme-options.php:676
+msgid "Like Catch Themes on Facebook"
+msgstr "Like Catch Themes on Facebook"
+
+#: ../inc/theme-options.php:676 ../inc/theme-options.php:805
+msgid "Facebook"
+msgstr "Facebook"
+
+#: ../inc/theme-options.php:677
+msgid "https://twitter.com/catchthemes/"
+msgstr "https://twitter.com/catchthemes/"
+
+#: ../inc/theme-options.php:677
+msgid "Follow Catch Themes on Twitter"
+msgstr "Follow Catch Themes on Twitter"
+
+#: ../inc/theme-options.php:677 ../inc/theme-options.php:810
+msgid "Twitter"
+msgstr "Twitter"
+
+#: ../inc/theme-options.php:678
+msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
+msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
+
+#: ../inc/theme-options.php:678
+msgid "Rate us 5 Star on WordPress"
+msgstr "Rate us 5 Star on WordPress"
+
+#: ../inc/theme-options.php:678
+msgid "5 Star Rating"
+msgstr "5 Star Rating"
+
+#: ../inc/theme-options.php:688
+msgid "Featured Post Slider"
+msgstr "سلايدر"
+
+#: ../inc/theme-options.php:689
+msgid "Social Links"
+msgstr "الشبكات الاجتماعية"
+
+#: ../inc/theme-options.php:690
+msgid "Webmaster Tools"
+msgstr "ادوات مشرفي المواقع"
+
+#: ../inc/theme-options.php:717
+msgid "Slider Options"
+msgstr "خيارات"
+
+#: ../inc/theme-options.php:721
+msgid "Exclude Slider post from Home page posts:"
+msgstr "التدوينات التي ستعرض في السلايدر"
+
+#: ../inc/theme-options.php:723
+msgid "Check to disable"
+msgstr "تعطيل السلايدر"
+
+#: ../inc/theme-options.php:726
+msgid "Number of Slides"
+msgstr "عدد السلايدر"
+
+#: ../inc/theme-options.php:732
+msgid "Featured Post ID"
+msgstr "Featured Post ID"
+
+#: ../inc/theme-options.php:734
+msgid "Click Here To Edit"
+msgstr "تحرير"
+
+#: ../inc/theme-options.php:740
+msgid ""
+"<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
+"Featured Slider."
+msgstr ""
+"<strong>ملاحظة</strong>: عليك باضافة رقم ID الخاص بالتدوينة في المربع اعلاه "
+"حتى يتم عرض التدوينات في السلايدر"
+
+#: ../inc/theme-options.php:741 ../inc/theme-options.php:787
+#: ../inc/theme-options.php:914 ../inc/theme-options.php:955
+msgid "Save"
+msgstr "حفظ"
+
+#: ../inc/theme-options.php:745
+msgid "Slider Effect Options"
+msgstr "اعدادات المؤثرات"
+
+#: ../inc/theme-options.php:750
+msgid "Transition Effect:"
+msgstr "تأثير الانزلاق"
+
+#: ../inc/theme-options.php:755
+msgid "fade"
+msgstr "تلاشي"
+
+#: ../inc/theme-options.php:756
+msgid "wipe"
+msgstr "مسح"
+
+#: ../inc/theme-options.php:757
+msgid "scrollUp"
+msgstr "الانتقال للاعلى"
+
+#: ../inc/theme-options.php:758
+msgid "scrollDown"
+msgstr "الانتقال للاسفل"
+
+#: ../inc/theme-options.php:759
+msgid "scrollLeft"
+msgstr "الانتقال لليسار"
+
+#: ../inc/theme-options.php:760
+msgid "scrollRight"
+msgstr "الانتقال لليمين"
+
+#: ../inc/theme-options.php:761
+msgid "blindX"
+msgstr "تعمية افقية"
+
+#: ../inc/theme-options.php:762
+msgid "blindY"
+msgstr "تعمية طولية"
+
+#: ../inc/theme-options.php:763
+msgid "blindZ"
+msgstr "تعمية من الزاوية"
+
+#: ../inc/theme-options.php:764
+msgid "cover"
+msgstr "التفاف"
+
+#: ../inc/theme-options.php:765
+msgid "shuffle"
+msgstr "اختلاط"
+
+#: ../inc/theme-options.php:771
+msgid "Transition Delay"
+msgstr "تأخير التحويل"
+
+#: ../inc/theme-options.php:774 ../inc/theme-options.php:783
+msgid "second(s)"
+msgstr "ثانية/ثواني"
+
+#: ../inc/theme-options.php:780
+msgid "Transition Length"
+msgstr "طول الانتظار"
+
+#: ../inc/theme-options.php:816
+msgid "Google +"
+msgstr "Google +"
+
+#: ../inc/theme-options.php:822
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: ../inc/theme-options.php:828
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: ../inc/theme-options.php:834
+msgid "Youtube"
+msgstr "Youtube"
+
+#: ../inc/theme-options.php:840
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: ../inc/theme-options.php:846
+msgid "Deviantart"
+msgstr "Deviantart"
+
+#: ../inc/theme-options.php:852
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: ../inc/theme-options.php:858
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: ../inc/theme-options.php:864
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: ../inc/theme-options.php:870
+msgid "MySpace"
+msgstr "MySpace"
+
+#: ../inc/theme-options.php:876
+msgid "Aim"
+msgstr "Aim"
+
+#: ../inc/theme-options.php:882
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../inc/theme-options.php:888
+msgid "Slideshare"
+msgstr "Slideshare"
+
+#: ../inc/theme-options.php:894
+msgid "Instagram"
+msgstr "Instagram"
+
+#: ../inc/theme-options.php:900
+msgid "Skype"
+msgstr "Skype"
+
+#: ../inc/theme-options.php:906
+msgid "Soundcloud"
+msgstr "Soundcloud"
+
+#: ../inc/theme-options.php:913
+msgid ""
+"<strong>Note:</strong> Enter the url for correponding social networking "
+"website"
+msgstr "<strong>ملاحظة:</strong> اكتب عنوان/رابط الشبكات الاجتماعية بشكل كامل"
+
+#: ../inc/theme-options.php:928
+msgid "Header and Footer Code"
+msgstr "Header and Footer Code"
+
+#: ../inc/theme-options.php:933
+msgid "Code to display on Header"
+msgstr "Code to display on Header"
+
+#: ../inc/theme-options.php:940
+msgid ""
+"Note: Here you can put scripts from Google, Facebook etc. which will load on "
+"Header"
+msgstr ""
+"Note: Here you can put scripts from Google, Facebook etc. which will load on "
+"Header"
+
+#: ../inc/theme-options.php:944
+msgid "Code to display on Footer"
+msgstr "Code to display on Footer"
+
+#: ../inc/theme-options.php:951
+msgid ""
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
+"will load on footer"
+msgstr ""
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
+"will load on footer"
+
+#: ../inc/widgets.php:20
+msgid "Use this widget to add any type of Ad as a widget."
+msgstr "لاضافة الاعلانات الخاصة بك"
+
+#: ../inc/widgets.php:21
+msgid "Catch Box Adspace Widget"
+msgstr "Catch Box اعلانات جانبية"
+
+#: ../inc/widgets.php:38
+msgid "Title (optional):"
+msgstr "العنوان (اختياري)"
+
+#: ../inc/widgets.php:43
+msgid "Ad Code:"
+msgstr "الكود"
+
+#: ../inc/widgets.php:49
+msgid "Image Url:"
+msgstr "رابط الصورة"
+
+#: ../inc/widgets.php:53
+msgid "Link URL:"
+msgstr "رابط"
+
+#: ../inc/widgets.php:57
+msgid "Alt text:"
+msgstr "نص بديل"
+
+#: ../search.php:15
+#, php-format
+msgid "Search Results for: %s"
+msgstr "نتائج البحث عن : %s"
+
+#: ../search.php:43
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+"عذراً , لا يوجد شئ يطابق معايير البحث التي طلبتها ، فضلاً استخدم كلمات بحث "
+"اخرى."
+
+#: ../searchform.php:11
+msgid "Search"
+msgstr "بحث"
+
+#: ../sidebar.php:28
+msgid "Archives"
+msgstr "الارشيف"
+
+#: ../sidebar.php:37
+msgid "Meta"
+msgstr "منوعات"
+
+#: ../single.php:16
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "السابق <span class=\"meta-nav\">&larr;</span>"
+
+#: ../single.php:17
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "<span class=\"meta-nav\">&rarr;</span> التالي"
+
+#: ../tag.php:16
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "ارشيف الوسم : %s"
+
+#~ msgid "Settings saved."
+#~ msgstr "تم حفظ الاعدادات"
+
+#~ msgid ""
+#~ "Some themes provide customization options that are grouped together on a "
+#~ "Theme Options screen. If you change themes, options may change or "
+#~ "disappear, as they are theme-specific. Your current theme, Catch Box, "
+#~ "provides the following Theme Options:"
+#~ msgstr ""
+#~ "بعض القوالب تتيح لك خيارات عديدة ، فإذا قمت بتغيير القالب الى آخر ربما "
+#~ "يتم فقد الاعدادات والخيارات التي قمت باختيارها في هذا القالب ، هذا القالب "
+#~ "يحتوي على الخيارات التالية :"
+
+#~ msgid ""
+#~ "<strong>Color Scheme</strong>: You can choose a color palette of \"Light"
+#~ "\" (light background with dark text) or \"Dark\" (dark background with "
+#~ "light text) for your site."
+#~ msgstr ""
+#~ "<strong>نظام الالوان</strong>: لديك في هذا القالب ثلاث خيارات من الالوان "
+#~ "وهي الفاتح (الابيض) ، الداكن (الاسود) او الازرق ويمكنك الاختيار فيما "
+#~ "بينها لتعطي قالبك رونقاً اخر."
+
+#~ msgid ""
+#~ "<strong>Link Color</strong>: You can choose the color used for text links "
+#~ "on your site. You can enter the HTML color or hex code, or you can choose "
+#~ "visually by clicking the \"Select a Color\" button to pick from a color "
+#~ "wheel."
+#~ msgstr ""
+#~ "<strong>الوان الروابط</strong>: يتيح لك هذا الخيار اعطاء الروابط في موقعك "
+#~ "اللون الذي ترغبه ويمكنك الاختيار من قائمة الالوان ما يناسبك وكما تشاء بكل "
+#~ "يسر وسهولة"
+
+#~ msgid ""
+#~ "<strong>Default Layout</strong>: You can choose if you want your "
+#~ "site&#8217;s default layout to have a sidebar on the left, the right, or "
+#~ "not at all."
+#~ msgstr ""
+#~ "<strong>التخطيط الافتراضي</strong>: يمكنك من جعل القائمة الجانبية في "
+#~ "اليسار او اليمين او حذف القائمة الجانبية وجعل التدوينات تظهر في المدونة "
+#~ "بشكل كامل دون قائمة جانبية"
+
+#~ msgid ""
+#~ "Remember to click \"Save Changes\" to save any changes you have made to "
+#~ "the theme options."
+#~ msgstr ""
+#~ "لا تنسى ان تضغط على حفظ التغييرات لحفظ الاعدادات التي قمت بتعيينها | <a "
+#~ "href=\"http://www.ed3s.com\" target=\"_blank\">تعريب القالب بواسطة شبكة "
+#~ "ادعس</a>"
+
+#~ msgid "For more information:"
+#~ msgstr "للمزيد من المعلومات"
+
+#~ msgid ""
+#~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
+#~ "target=\"_blank\">Documentation on Theme Options</a>"
+#~ msgstr ""
+#~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
+#~ "target=\"_blank\">Documentation on Theme Options</a>"
+
+#~ msgid ""
+#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support "
+#~ "Forums</a>"
+#~ msgstr ""
+#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support "
+#~ "Forums</a>"
+
+#~ msgid "Overview"
+#~ msgstr "نظرة عامة"
+
+#~ msgid ""
+#~ "Slider Some themes provide customization options that are grouped "
+#~ "together on a Theme Options screen. If you change themes, options may "
+#~ "change or disappear, as they are theme-specific. Your current theme, "
+#~ "Catch Box, provides the following Theme Options:"
+#~ msgstr ""
+#~ "Slider Some themes provide customization options that are grouped "
+#~ "together on a Theme Options screen. If you change themes, options may "
+#~ "change or disappear, as they are theme-specific. Your current theme, "
+#~ "Catch Box, provides the following Theme Options:"
+
+#~ msgid "Webmaster Site Verification IDs"
+#~ msgstr "معرفات تأكيد مشرفي المواقع ID"
+
+#~ msgid "Google Site Verification ID"
+#~ msgstr "معرف قوقل ID"
+
+#~ msgid "Enter your Google ID number only"
+#~ msgstr "ادخل معرف ID قوقل الرقمي"
+
+#~ msgid "Yahoo Site Verification ID"
+#~ msgstr "معرف ياهو ID"
+
+#~ msgid "Enter your Yahoo ID number only"
+#~ msgstr "ادخل معرف ID ياهو الرقمي"
+
+#~ msgid "Bing Site Verification ID"
+#~ msgstr "معرف بينق ID "
+
+#~ msgid "Enter your Bing ID number only"
+#~ msgstr " ادخل معرف ID بينق الرقمي"
+
+#~ msgid "Webmaster Site Verification Code"
+#~ msgstr "اكواد ادوات مشرفي المواقع"
+
+#~ msgid "Analytics, site stats Header code"
+#~ msgstr "كود التحليلات , في الرأس"
+
+#~ msgid "Analytics, site stats footer code"
+#~ msgstr "كود التحليلات , في الذيل (الفوتر)"

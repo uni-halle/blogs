@@ -2,6 +2,8 @@ jQuery(function($){
 	$(document).ready(function(){
 if (!Modernizr.svg) { 
     $('.olglogo a').css({'background': '#fff url(/wp-content/themes//MLUphysik/content/ico/apple-touch-icon-114-precomposed.png) no-repeat center','border':'1px solid #ccc','filter':'glow(color=black, strength=2)','zoom':'1'});
+        $('.chemie .tile.olglogo a').css({'background':'#A00000 url(/wp-content/themes//MLUchemie/bg.png)','zoom':'1'});
+
     $('#outer').remove();
 };
 		//masonry
@@ -19,7 +21,7 @@ function olgprettyPhoto() {
 		//prettyPhoto
 				$(".slides a, .gallery-icon a, a[rel^='prettyPhoto']").prettyPhoto({
 				animation_speed:'normal',
-				allow_resize: false,
+				allow_resize: true,
 				keyboard_shortcuts: true,
 				show_title: false,
 				show_description: true,
@@ -73,6 +75,16 @@ $("a[href='http://studieninfo.physik.uni-halle.de/?p=204']").click();
  });
  
 }; // END function
+function innertilelink () {
+	$('.tile').on('hover', 'strong a', function(){
+ olghref = $(this).attr('href');
+$(this).removeAttr("href").css({'border-bottom':'1px dotted','cursor':'pointer'}).click(function(){ 
+$("a[href='" + olghref + "']").click(); 
+return false;
+
+ });
+});
+};// END function
 	
 	$(function (){
         $('.loop-entry a').bind("click",function(event){
@@ -81,7 +93,8 @@ $("a[href='http://studieninfo.physik.uni-halle.de/?p=204']").click();
 var url = $(this).hide().attr('href')+'#wrap .post';
             //console.log(this.attr());
 $(this).parent().addClass('double-vertical quadro').css('overflow-y','auto').find('.box').html('<h4>Inhalte werden geladen...</h4>').load(url,function(){
-olgajaxhelper()
+olgajaxhelper();
+//innertilelink ();
 });         
             $('#masonry-wrap').masonry( 'reload' );
        event.preventDefault(event);

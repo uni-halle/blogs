@@ -16,34 +16,18 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
 	{
 		// Base upload path
 		$retval = C_NextGen_Settings::get_instance()->gallerypath;
-    $fs = $this->get_registry()->get_utility('I_Fs');
+        $fs = $this->get_registry()->get_utility('I_Fs');
 
 		// If a gallery has been specified, then we'll
 		// append the slug
-		if ($gallery) {
-			if (!is_object($gallery)) {
-				$gallery = $this->object->_get_gallery_id($gallery);
-				$gallery = $this->object->_gallery_mapper->find($gallery);
-			}
-			
-			if ($gallery) {
-				$path = $gallery->path;
-				$base = basename($path);
-				$slug = $gallery->slug;
-				
-				if ($base == null) {
-					$base = $slug;
-				}
-				
-				$retval = $fs->join_paths($retval, $base);
-			}
-		}
+		if ($gallery) $retval = $this->get_gallery_abspath($gallery);
 
 		// We need to make this an absolute path
-		if (strpos($retval, $fs->get_document_root()) === FALSE)
-            $retval = $fs->join_paths($fs->get_document_root(), $retval);
+		if (strpos($retval, $fs->get_document_root()) !== 0)
+            $retval = rtrim($fs->join_paths($fs->get_document_root(), $retval), "/\\");
 
-		return $retval;
+        // Convert slashes
+        return $this->object->convert_slashes($retval);
 	}
 
 
@@ -63,17 +47,24 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
 			}
 		}
 
-		// If a path was stored in the entity, then use that
-		if ($gallery && isset($gallery->path)) {
-			$retval = $fs->join_paths($fs->get_document_root(), $gallery->path);
-		}
-        elseif ($gallery) {
-            // fallback to the upload abspath
-            $storage = $this->object->get_registry()->get_utility('I_Gallery_Storage');
-            $retval = $storage->get_upload_abspath($gallery);
+        // We we have a gallery, determine it's path
+        if ($gallery) {
+            if (isset($gallery->path)) {
+                $retval = $gallery->path;
+            }
+            elseif (isset($gallery->slug)) {
+                $fs = $this->get_registry()->get_utility('I_Fs');
+                $basepath = C_NextGen_Settings::get_instance()->gallerypath;
+                $retval = $fs->join_paths($basepath, $gallery->slug);
+
+            }
         }
 
-		return $retval;
+        // Ensure that the path is absolute
+        if (strpos($retval, $fs->get_document_root()) !== 0)
+            $retval = rtrim($fs->join_paths($fs->get_document_root(), $retval), "/\\");
+
+        return $this->object->convert_slashes(rtrim($retval, "/\\"));
 	}
 
 
@@ -151,7 +142,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
 			}
 		}
 
-		return $retval;
+		return $retval ? rtrim($retval, "/\\") : $retval;
 	}
 
 
@@ -161,16 +152,31 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
 	 * @param string $size
 	 * @returns array
 	 */
-	function get_image_url($image, $size='full')
+	function get_image_url($image, $size='full', $check_existance=FALSE)
 	{
-		$fs		= $this->get_registry()->get_utility('I_Fs');
-		$router = $this->get_registry()->get_utility('I_Router');
-		$request_uri = str_replace(
-			trailingslashit($fs->get_document_root()),
-			'',
-			$this->object->get_image_abspath($image, $size)
-		);
-        return $router->remove_url_segment('/index.php', $router->get_url($request_uri, FALSE, TRUE));
+		$retval  = NULL;
+		$fs		 = $this->get_registry()->get_utility('I_Fs');
+		$router	 = $this->get_registry()->get_utility('I_Router');
+		$abspath = $this->object->get_image_abspath($image, $size, $check_existance);
+		if ($abspath) {
+			$doc_root = $fs->get_document_root();
+			
+			if ($doc_root != null) {
+                $doc_root = rtrim($doc_root, "/\\").DIRECTORY_SEPARATOR;
+			}
+			
+			$request_uri = str_replace(
+				$doc_root,
+				'',
+				$abspath
+			);
+
+            $request_uri = '/'.ltrim(str_replace("\\", '/', $request_uri), "/");
+			
+			$retval = $router->remove_url_segment('/index.php', $router->get_url($request_uri, FALSE, TRUE));
+		}
+
+		return $retval;
 	}
 
 	/**
@@ -624,30 +630,25 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
         }
 
         $image_key = $this->object->_image_mapper->get_primary_key_column();
+        $gallery_abspath = $fs->join_paths($fs->get_document_root(), $gallery->path);
 
         // Check for folder permission
-        if (!is_dir($gallery->path) && !wp_mkdir_p($gallery->path))
+        if (!is_dir($gallery_abspath) && !wp_mkdir_p($gallery_abspath))
         {
-            $message .= sprintf(__('Unable to create directory %s.', 'nggallery'), esc_html(WINABSPATH . $gallery->path));
+            $message .= sprintf(__('Unable to create directory %s.', 'nggallery'), esc_html($gallery_abspath));
             return;
         }
-        if (!is_writable(WINABSPATH . $gallery->path))
+        if (!is_writable($gallery_abspath))
         {
-            $message .= sprintf(__('Unable to write to directory %s. Is this directory writable by the server?', 'nggallery'), esc_html(WINABSPATH . $gallery->path));
+            $message .= sprintf(__('Unable to write to directory %s. Is this directory writable by the server?', 'nggallery'), esc_html($gallery_abspath));
             return;
         }
 
         foreach ($images as $image) {
-
-            // Ensure that there is capacity available
-            if ((is_multisite()) && $settings->get('wpmuQuotaCheck'))
-            {
-                require_once(ABSPATH . 'wp-admin/includes/ms.php');
-                if (upload_is_user_over_quota(FALSE)) {
-                    $message .= sprintf(__('Sorry, you have used your space allocation. Please delete some files to upload more files.', 'nggallery'));
-                    throw new E_NoSpaceAvailableException();
-                }
-            }
+			if ($this->object->is_current_user_over_quota()) {
+				$message = sprintf(__('Sorry, you have used your space allocation. Please delete some files to upload more files.', 'nggallery'));
+				throw new E_NoSpaceAvailableException($message);
+			}
 
             // Copy the db entry
             if (is_numeric($image))

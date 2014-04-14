@@ -3,10 +3,10 @@
 Plugin Name: PanoPress
 Plugin URI:  http://www.panopress.org/
 Description: Embed Flash & HTML5 360° Panoramas & Virtual Tours, 360° Video, Gigapixel Panoramas etc, created using KRPano, Pano2VR, PanoTour Pro, Flashificator, Saladoplayer, and similar panorama applications  on your WordPress site using a simple shortcode.
-Version:     1.1
+Version:     1.2
 Author:      <a href="http://www.omercalev.com">Omer Calev</a> & <a href="http://www.samrohn.com">Sam Rohn</a>
 ************************************************************************
-	Copyright 2011-2013 by the authors.
+	Copyright 2011-2014 by the authors.
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as 
 	published by the Free Software Foundation.
@@ -23,8 +23,8 @@ Author:      <a href="http://www.omercalev.com">Omer Calev</a> & <a href="http:/
 	USAGE: [pano file="pano file name or url"]
 	
 	Optional Parameter:
-		width/w    = "800"
-		height/h   = "450"
+		width/w    = "100%"
+		height/h   = "450px"
 		title/t    = "title text"
 		alt/a      = "alt text"
 		preview/p  = "preview image url"
@@ -33,7 +33,7 @@ Author:      <a href="http://www.omercalev.com">Omer Calev</a> & <a href="http:/
 ***/
 // CONFIG
 define( 'PP_APP_NAME',     'PanoPress' );
-define( 'PP_APP_VERSION', '1.1' );
+define( 'PP_APP_VERSION', '1.2' );
 // defaults
 define( 'PP_DEFAULT_WIDTH',         '640px' );
 define( 'PP_DEFAULT_HEIGHT',        '480px' );
@@ -99,6 +99,7 @@ define( 'PB_SETTINGS_RESIZE',        'resize' );
 define( 'PB_SETTINGS_STYLE',         'style' );
 define( 'PB_SETTINGS_STYLE_BOX',     'box' );
 define( 'PB_SETTINGS_STYLE_OVERLAY', 'overlay' );
+define( 'PB_SETTINGS_GALLERIES',     'galleries' );
 // one pano pre page
 define( 'PP_OPPP_ALL',      'all' );
 define( 'PP_OPPP_MOBILE',   'mobile' );
@@ -111,7 +112,6 @@ $pp_pano2vr_js    = false;
 $pp_settings      = get_option( PP_SETTINGS );
 $pp_id_counter    = 0;
 /************************  set defaults *******************************/
-
 function pp_default_settings() { 
 	global $pp_settings, $pp_wp_upload_dir;
 	// panopress
@@ -135,6 +135,7 @@ function pp_default_settings() {
 	$pp_settings[PP_SETTINGS_PANOBOX][PB_SETTINGS_STYLE]      = 'light';
 	$pp_settings[PP_SETTINGS_PANOBOX][PB_SETTINGS_SHADOW]     = true;
 	$pp_settings[PP_SETTINGS_PANOBOX][PB_SETTINGS_BG_OPACITY] = 0.6;
+	$pp_settings[PP_SETTINGS_PANOBOX][PB_SETTINGS_GALLERIES]  = false;
 }
 if ( ! $pp_settings ) {
 	$pp_settings = array();
@@ -154,8 +155,10 @@ function pp_get_url( $url, $allowSSL = false ) {
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // trust all sites
 	}
 	curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );//TRUE to return the transfer as a string of the return value of curl_exec() instead of outputting it out directly. (http://www.php.net/manual/en/function.curl-setopt.php)
-	curl_setopt( $curl, CURLOPT_FOLLOWLOCATION, true);// alow redirec
-	curl_setopt( $curl, CURLOPT_MAXREDIRS, 6 ); // max redirects
+	if ( !ini_get( 'open_basedir' ) && !ini_get( 'safe_mode' ) ) {
+		curl_setopt( $curl, CURLOPT_FOLLOWLOCATION, true);// alow redirec
+		curl_setopt( $curl, CURLOPT_MAXREDIRS, 6 ); // max redirects
+	}
 	$respnse['content'] = curl_exec( $curl );
 	$respnse['status']  = curl_getinfo( $curl, CURLINFO_HTTP_CODE );
 	curl_close( $curl );
@@ -175,25 +178,17 @@ function pp_get_viewr_name ( $xml_url ) {
 	libxml_use_internal_errors( is_user_logged_in() );
 	
 	// test allow_url_fopen
-	if( ini_get( 'allow_url_fopen' ) != 1 ){ 
-		$xml = is_user_logged_in() ? simplexml_load_file( $xml_url ) :  @ simplexml_load_file( $xml_url );
+	if( ini_get( 'allow_url_fopen' ) == 1 ){
+		$xml =  @ simplexml_load_file( $xml_url );
+		
 	} else if ( function_exists( 'curl_init' ) ) { // try curl
 		$results = pp_get_url( $xml_url );
 		if ( $results['status'] == 200 ) {
 			$xml = simplexml_load_string( $results['content'] );
-		} else{
-			$content = pp__( 'Can\'t find XML file' ) . ' ' . $xml_url;
-		}
-	} else{// TODO: ask input from user (admin only)
-		$content = pp__( '"allow_url_fopen" option is not enabled in the php.ini file on this server & cURL is not installed.' );
-	}
+		} 
+	} 
 	
-	// xml errors (admin only)
-	if ( $xml === false ) {
-		foreach( libxml_get_errors() as $err ) {
-			$content .=  $err-> message . ' (line ' . $err->line . ' in ' . $err->file . ')' + "\r";
-		}
-	} elseif ( $xml ) {
+	if ( $xml ) {
 		if ( $xml -> getName() == 'krpano' ) {     
 			$content = PP_VIEWER_NAME_KRPANO;      // krpano xml
 			$status  = 1;
@@ -205,6 +200,13 @@ function pp_get_viewr_name ( $xml_url ) {
 				}
 			}
 			$status = 1;
+		} elseif ( $xml -> getName() == 'tour' ) {
+			foreach ( $xml -> children() as $second ) {
+				if ( $second-> getName() ==  'panorama' ) {
+					$content = PP_VIEWER_NAME_PANO2VR;     // pano2vr tour xml
+					$status = 1;
+				}
+			}
 		}
 	}
 	return array( 'status' => $status , 'content' => $content );
@@ -215,9 +217,10 @@ function pp_get_viewr_name ( $xml_url ) {
 function pp_headers() {
 global $pp_settings;
 $oppp = $pp_settings[PP_SETTINGS_OPPP] == PP_OPPP_ALL || ( $pp_settings[PP_SETTINGS_OPPP] == PP_OPPP_MOBILE && PP_USER_AGENT_MODILE )? 'true' : 'false';
+
 // add resize default to pp settings
 $pp_settings[PP_SETTINGS_PANOBOX][PB_SETTINGS_RESIZE] = 1;
-//for dev only <script type="text/javascript"  src="/dev/js/tinyq/tinyq-core.js"></script>
+
 echo '<!-- ' . PP_APP_NAME . ' [' . PP_APP_VERSION . '] -->
 <script type="text/javascript">
 pp_oppp=' . $oppp . ';
@@ -235,23 +238,42 @@ echo '<style type="text/css">
 echo '<!-- /' . PP_APP_NAME . ' -->
 ';
 }
+add_action( 'wp_head', 'pp_headers' );
+
 /**
  * inject code into footer
  **/
 function pp_footer() {
-	if( PP_PANOBOX_IMAGES )
+	if( PP_PANOBOX_IMAGES || $pp_settings[PP_SETTINGS_PANOBOX][PB_SETTINGS_GALLERIES] ) {
 		echo '<script type="text/javascript">panopress.imagebox();</script>';
+	}
 }
+add_action( 'wp_footer', 'pp_footer');
+
+/**
+ * override gallery_shortcode and change link to 'file'
+ **/
+function pp_gallery_shortcode ( $atrr ) {
+	$atrr['link'] = 'file';
+	return gallery_shortcode ( $atrr );
+}
+
+if ( $pp_settings[PP_SETTINGS_PANOBOX][PB_SETTINGS_GALLERIES] ) {
+	add_shortcode( 'gallery', 'pp_gallery_shortcode' );
+}
+
 // admin page
 if ( is_admin() ) {
 	require_once( dirname( __FILE__ ) . '/includes/admin.php' );
 }
+
 //add settings link on plugin page (added @ 1.0)
 function pp_settings_link( $links ) { 
   array_unshift( $links, '<a href="options-general.php?page=panopress">' . pp__( 'Settings' ) . '</a>' ); 
   return $links; 
 }
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__) , 'pp_settings_link' );
+
 //add Instructions $ forums links on plugin page (added @ 1.0)
 function pp_set_plugin_meta( $links, $file ) {
 	if ( $file == plugin_basename(__FILE__) ) {
@@ -262,6 +284,7 @@ function pp_set_plugin_meta( $links, $file ) {
 	return $links;
 }
 add_filter( 'plugin_row_meta', 'pp_set_plugin_meta', 10, 2 );
+
 /**
  * language support (not implemented)
  **/
@@ -271,12 +294,14 @@ function pp__( $msg ) {
 function pp_e( $msg ) {
 	echo pp__( $msg );
 }
+
 /**
  * return error html code for $msg
  **/
 function pp_error( $msg ) {
-return '<div class="pp-error"><strong>' . pp__( 'Error' ) . '</strong><br/>' . $msg . '</div>';
+return '<div class="pp-error-msg"><strong>' . pp__( 'Error' ) . '</strong><br/>' . $msg . '</div>';
 }
+
 /**
  * validate and formate width & height values enterd by user
  * return formated size if ok or null if failed
@@ -312,6 +337,7 @@ function pp_check_size ( $size ) {
 
 	return  implode ( $parts );
 }
+
 /**
  * return html code for embbeding
  * @param settings: [array] pp settings
@@ -351,15 +377,10 @@ function pp_embed( $settings, $params = null, $type = PP_VIEWER_TYPE_FLASH, $ver
 <div id="' . $id . '">' . $settings[PP_SETTINGS_ALT] . '</div>
 ';
 	}else{
-		// 1.1
-		$html .= '<div class="pp-embed" style="position:relative;width:' . $settings[PP_SETTINGS_WIDTH] . ';height:' . $settings[PP_SETTINGS_HEIGHT] . ';">
+		// 1.2 - support @media queries
+		$html .= '<div class="pp-embed" style="position:relative;">
 <div id="' . $id . '" style="width:' . $settings[PP_SETTINGS_WIDTH] . '; height:' . $settings[PP_SETTINGS_HEIGHT] . '">' . ( strlen( $settings[PP_SETTINGS_PREVIEW] ) > 0 ? '<img src="' . $settings[PP_SETTINGS_PREVIEW] . '" style="width:' . $settings[PP_SETTINGS_WIDTH] . '; height:' . $settings[PP_SETTINGS_HEIGHT] . '"/>' : '' ) . '<p>' . $settings[PP_SETTINGS_ALT] . '</p></div>
 ';
-/* 1.0
-		$html .= '<div class="pp-embed" style="position:relative;width:' . $settings[PP_SETTINGS_WIDTH] . 'px;height:' . $settings[PP_SETTINGS_HEIGHT] . 'px;">
-<div id="' . $id . '" style="width:' . $settings[PP_SETTINGS_WIDTH] . 'px; height:' . $settings[PP_SETTINGS_HEIGHT] . 'px"><img src="' . $settings[PP_SETTINGS_PREVIEW] . '"/>' . $settings[PP_SETTINGS_ALT] . '</div>
-';
-*/ 
 	}
 	$html  .= '<script type="text/javascript">panopress.embed(' . json_encode( $embed ) . ')</script>
 <noscript>' . pp_error( pp__( 'Javascript not activated' ) ) . '</noscript>
@@ -368,6 +389,7 @@ function pp_embed( $settings, $params = null, $type = PP_VIEWER_TYPE_FLASH, $ver
 ';
 	return $html;
 }
+
 /**
  * return html code for unknown type
  * @param setting: [array] pp settings
@@ -381,6 +403,7 @@ function pp_unknown( $settings ) {
 		return  pp_embed( $settings, null, PP_VIEWER_TYPE_LINK, '0'  );
 	}
 }
+
 /**
  * return html code for html type
  * @param setting: [array] pp settings
@@ -389,6 +412,7 @@ function pp_html( $settings ) {
 	$base = substr( $settings[PP_SETTINGS_FILE], 0, strrpos($settings[PP_SETTINGS_FILE], '/' ) + 1 );
 	return  pp_embed( $settings, array( 'base' => $base), PP_VIEWER_TYPE_HTML, '4.0'  );
 }
+
 /**
  * return html code for swf type
  * @param setting: [array] pp settings
@@ -401,6 +425,7 @@ function pp_swf( $settings ) {
 	$base = substr( $settings[PP_SETTINGS_FILE], 0, strrpos($settings[PP_SETTINGS_FILE], '/' ) + 1 );
 	return  pp_embed( $settings, array( 'base' => $base), PP_VIEWER_TYPE_FLASH, '9.0.0'  );
 }
+
 /**
  * return html code for mov type
  * @param setting: [array] pp settings
@@ -425,6 +450,7 @@ function pp_mov( $settings ) {
 	$settings[PP_SETTINGS_VIEWER_NAME] = PP_VIEWER_NAME_CUTY;
 	return  pp_embed( $settings, null, PP_VIEWER_TYPE_FLASH, '10.0.0' );
 }
+
 /**
  * return html code for xml pano2vr
  * @param setting: [array] pp settings
@@ -434,10 +460,10 @@ function pp_xml_pano2vr( $settings ) {
 	$base = substr( $settings[PP_SETTINGS_FILE], 0, strrpos($settings[PP_SETTINGS_FILE], '/') + 1 );
 	$html = '';
 	// if user agent is not iPhone/Pad/Pod, use swf
-	if( PP_USER_AGENT_MODILE ){
-		$js    = $base . 'pano2vr_player.js';
-		$skin  = $base . 'skin.js';
-		$xml   = $settings[PP_SETTINGS_FILE];
+	if( PP_USER_AGENT_MODILE ) {
+		$xml = $settings[PP_SETTINGS_FILE];
+		$xml = substr( $xml, 7 );
+		$xml = substr( $xml, strpos( $xml, '/' )  + 1);
 		$settings[PP_SETTINGS_FILE] =  plugins_url( 'pano2vr.php',  __FILE__  );
 		$html .= pp_embed( $settings, array( 'xml' => $xml ), PP_VIEWER_TYPE_HTML, '5.0' );	
 	}
@@ -447,6 +473,7 @@ function pp_xml_pano2vr( $settings ) {
 	}
 return $html;
 }
+
 /**
  * return html code for xml krpano
  * @param setting: [array] pp settings
@@ -456,17 +483,20 @@ function pp_xml_krpano( $settings ) {
 	$html = '';
 	$id  = 'pp_' . rand( 1000, 9999 );
 	$xml = $settings[PP_SETTINGS_FILE];
+	if( PP_USER_AGENT_MODILE ){	
+		$xml = substr( $xml, 7 );
+		$xml = substr( $xml, strpos( $xml, '/' )  + 1);
+	}
 	if ( $settings[PP_SETTINGS_USE_VIEWER_DIR] ) {
 		$swf = site_url( '/' . $settings[PP_SETTINGS_VIEWER_DIR] . '/' . 'krpano.swf' );
 		$js  = site_url( '/' . $settings[PP_SETTINGS_VIEWER_DIR] . '/' . 'krpano.js' );
 	} else {
 		$str = substr( $xml, 0, strlen( $settings[PP_SETTINGS_FILE] ) - 3 );
 		$swf = $str . 'swf';
-		$js  = $str . 'js';
 	}
 	if( PP_USER_AGENT_MODILE ){
 		$settings[PP_SETTINGS_FILE] =  plugins_url( 'krpano.php',  __FILE__  );
-		$html .= pp_embed( $settings, array( 'js' => $js, 'xml' => $xml ), PP_VIEWER_TYPE_HTML, '5.0' );	
+		$html .= pp_embed( $settings, array( 'xml' => $xml ), PP_VIEWER_TYPE_HTML, '5.0' );	
 	}
 	else {
 		$settings[PP_SETTINGS_FILE] = $swf;
@@ -474,6 +504,7 @@ function pp_xml_krpano( $settings ) {
 	}
 	return $html;
 }
+
 /**
  * return html code for xml fpp
  * @param setting: [array] pp settings
@@ -492,6 +523,7 @@ function pp_xml_fpp( $settings ) {
 	$settings[PP_SETTINGS_FILE] = $swf;
 	return pp_embed( $settings, array( 'base' => substr( $xml, 0, strrpos($xml, '/') + 1 ), 'flashvars' =>  array( 'xml_file' => $xml ) ), PP_VIEWER_TYPE_FLASH, '9.0.0' );
 }
+
 /**
  * return the html code for the pano type
  * @param setting: [array] pp settings
@@ -544,6 +576,7 @@ function pp_select( $settings ) {
 	$settings[PP_SETTINGS_TYPE] = PP_FILE_TYPE_UNKNOWN;
 	return pp_unknown( $settings );
 }
+
 /**
  * shortcode handler
  * @param attributes: [array]  shortcode attributes
@@ -613,18 +646,12 @@ function pp_sohrtcode_handler( $attributes ) {
 		// error report (admin only)
 		libxml_use_internal_errors( is_user_logged_in() );
 		// test allow_url_fopen
-		if( ini_get( 'allow_url_fopen' ) != 1 ){ 
+		if( ini_get( 'allow_url_fopen' ) == 1 ){ 
 			$xml = is_user_logged_in() ? simplexml_load_file( $settings[PP_SETTINGS_FILE] ) :  @ simplexml_load_file( $settings[PP_SETTINGS_FILE] );
 		}
 		// try curl
 		else if ( function_exists('curl_init') ) {
-			// 1.0
-			//$curl = curl_init( $settings[PP_SETTINGS_FILE] );
-			//curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1 );
-			//$result = curl_exec( $curl );
-			//curl_close( $curl );
-			//$xml = is_user_logged_in() ? simplexml_load_string( $result ) : @ simplexml_load_string( $result );
-			
+
 			//1.1
 			$results = pp_get_url( $settings[PP_SETTINGS_FILE] );
 			if ( $results['status'] == 200 ) {
@@ -662,14 +689,12 @@ function pp_sohrtcode_handler( $attributes ) {
 	return pp_select( $settings );
 	
 }
+
 function pp_bool( $subject ){
 	$subject = strtolower( $subject );
 	return $subject === 'true'  || $subject === 'on'  || $subject === 'yes' || $subject === '1' ? true : false ;
 }
+
 // add pano shortcode
 add_shortcode( 'pano', 'pp_sohrtcode_handler' );
-// headers
-add_action( 'wp_head', 'pp_headers' );
-// footer
-add_action('wp_footer', 'pp_footer');
 ?>

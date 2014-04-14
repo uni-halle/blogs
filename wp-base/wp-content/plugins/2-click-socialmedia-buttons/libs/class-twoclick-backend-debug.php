@@ -32,10 +32,6 @@ if(!class_exists('Twoclick_Social_Media_Buttons_Backend_Debug')) {
 		 * @since 1.1
 		 * @author ppfeufer
 		 */
-		function Twoclick_Social_Media_Buttons_Backend_Debug() {
-			Twoclick_Social_Media_Buttons_Backend_Debug::__construct();
-		} // END function Twoclick_Social_Media_Buttons_Backend_Debug()
-
 		function __construct() {
 			if($this->_is_twoclick_settings_page()) {
 				$this->_get_debug_output();

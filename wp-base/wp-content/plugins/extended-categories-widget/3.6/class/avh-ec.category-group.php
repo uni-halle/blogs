@@ -29,7 +29,7 @@ class AVH_EC_Category_Group
     {
         global $wpdb;
 
-        register_shutdown_function(array(&$this, '__destruct'));
+        register_shutdown_function(array($this, '__destruct'));
 
         /**
          * Taxonomy name
@@ -46,12 +46,12 @@ class AVH_EC_Category_Group
          * Create the table if it doesn't exist.
          */
         if ($wpdb->get_var('show tables like \'' . $wpdb->avhec_cat_group . '\'') != $wpdb->avhec_cat_group) {
-            add_action('init', array(&$this, 'doCreateTable'), 2); // Priority needs to be the same as the Register Taxonomy
+            add_action('init', array($this, 'doCreateTable'), 2); // Priority needs to be the same as the Register Taxonomy
         }
-        add_action('init', array(&$this, 'doRegisterTaxonomy'), 2); // Priority for registering custom taxonomies is +1 over the creation of the initial taxonomies
-        add_action('init', array(&$this, 'doSetupOptions'));
+        add_action('init', array($this, 'doRegisterTaxonomy'), 2); // Priority for registering custom taxonomies is +1 over the creation of the initial taxonomies
+        add_action('init', array($this, 'doSetupOptions'));
 
-        add_action('admin_init', array(&$this, 'addMetaBoxes'));
+        add_action('admin_init', array($this, 'addMetaBoxes'));
     }
 
     /**
@@ -82,7 +82,7 @@ class AVH_EC_Category_Group
             $charset_collate .= ' COLLATE ' . $wpdb->collate;
         }
 
-        $sql = 'CREATE TABLE `' . $wpdb->avhec_cat_group . '` ( `group_term_id` BIGINT(20) UNSIGNED NOT NULL DEFAULT 0, `term_id` BIGINT(20) UNSIGNED NOT NULL DEFAULT 0, PRIMARY KEY (`group_term_id`, `term_id`) )' . $charset_collate . ';';
+        $sql = 'CREATE TABLE `' . $wpdb->avhec_cat_group . '` ( `group_term_id` BIGINT(20) UNSIGNED NOT null DEFAULT 0, `term_id` BIGINT(20) UNSIGNED NOT null DEFAULT 0, PRIMARY KEY (`group_term_id`, `term_id`) )' . $charset_collate . ';';
 
         $result = $wpdb->query($sql);
     }
@@ -100,7 +100,7 @@ class AVH_EC_Category_Group
          */
         $labels = array('name' => __('Category Groups', 'avh-ec'), 'singular_name' => __('Category Group', 'avh-ec'), 'search_items' => __('Search Category Groups', 'avh-ec'), 'popular_items' => __('Popular Category Groups'), 'all_items' => __('All Category Groups'), 'parent_item' => __('Parent Category Group'), 'parent_item_colon' => __('Parent Category Group:'), 'edit_item' => __('Edit Category Group'), 'update_item' => __('Update Category Group'), 'add_new_item' => __('Add New Category Group'), 'new_item_name' => __('New Category Group Name'));
         $caps = array('manage_terms' => null, 'edit_terms' => null, 'delete_terms' => null, 'assign_terms' => 'edit_posts');
-        register_taxonomy($this->taxonomy_name, array('post', 'page'), array('hierarchical' => TRUE, 'labels' => $labels, 'query_var' => TRUE, 'rewrite' => TRUE, 'show_in_nav_menus' => FALSE, 'public' => TRUE, 'show_ui' => FALSE, 'capabilities' => $caps));
+        register_taxonomy($this->taxonomy_name, array('post', 'page'), array('hierarchical' => true, 'labels' => $labels, 'query_var' => true, 'rewrite' => true, 'show_in_nav_menus' => false, 'public' => true, 'show_ui' => false, 'capabilities' => $caps));
     }
 
     /**
@@ -113,13 +113,18 @@ class AVH_EC_Category_Group
         $all_categories = $this->getAllCategoriesTermID();
         if (false === $this->getTermIDBy('slug', 'none')) {
             $none_group_id = wp_insert_term('none', $this->taxonomy_name, array('description' => __('This group will not show the widget.', 'avh-ec')));
-            $all_group_id = wp_insert_term('All', $this->taxonomy_name, array('description' => __('Holds all the categories.', 'avh-ec')));
-            $home_group_id = wp_insert_term('Home', $this->taxonomy_name, array('description' => __('This group will be shown on the front page.', 'avh-ec')));
 
-            // Fill the standard groups with all categories
+            $home_group_id = wp_insert_term('Home', $this->taxonomy_name, array('description' => __('This group will be shown on the front page.', 'avh-ec')));
             $this->setCategoriesForGroup($home_group_id['term_id'], $all_categories);
-            $this->setWidgetTitleForGroup($all_group_id['term_id'], '');
             $this->setWidgetTitleForGroup($home_group_id['term_id'], '');
+        }
+        if (false === $this->getTermIDBy('slug', 'all')) {
+            $all_group_id = wp_insert_term('All', $this->taxonomy_name, array('description' => __('Holds all the categories.', 'avh-ec')));
+            if (! is_wp_error($all_group_id)) {
+                $this->setWidgetTitleForGroup($all_group_id['term_id'], '');
+            } else {
+                trigger_error($all_group_id->get_error_message(), E_USER_NOTICE);
+            }
         }
 
         $options = get_option($this->db_options_widget_titles);
@@ -168,7 +173,7 @@ class AVH_EC_Category_Group
      *
      * @param int $group_id
      *            The Taxonomy Term ID
-     * @return Array False Will return FALSE, if the row does not exists.
+     * @return Array false Will return false, if the row does not exists.
      *
      */
     public function getCategoriesFromGroup($group_id)
@@ -245,7 +250,7 @@ class AVH_EC_Category_Group
     /**
      * Set the Widget Title for a Group
      *
-     * @param int    $group_id
+     * @param int $group_id
      * @param string $widget_title
      *
      */
@@ -288,9 +293,9 @@ class AVH_EC_Category_Group
     /**
      * Same as get_term_by, but returns the ID only if found, else false
      *
-     * @param  string $field
-     * @param  string $value
-     * @return int    boolean
+     * @param string $field
+     * @param string $value
+     * @return int boolean
      */
     public function getTermIDBy($field, $value)
     {
@@ -309,7 +314,7 @@ class AVH_EC_Category_Group
      *
      * @param
      *            $group_id
-     * @return Object False False when the group doesn't exists.
+     * @return Object false false when the group doesn't exists.
      */
     public function getGroup($group_id)
     {
@@ -326,7 +331,7 @@ class AVH_EC_Category_Group
     public function getGroupByCategoryID($category_id)
     {
         $return = get_term_by('slug', 'none', $this->taxonomy_name);
-        $cat_groups = get_terms($this->taxonomy_name, array('hide_empty' => FALSE));
+        $cat_groups = get_terms($this->taxonomy_name, array('hide_empty' => false));
 
         foreach ($cat_groups as $group) {
             $cats = $this->getCategoriesFromGroup($group->term_id);
@@ -382,7 +387,7 @@ class AVH_EC_Category_Group
      * @param $widget_title return
      *            -1,0,1 Unknown Group, Duplicate Slug, Succesfull
      */
-    public function doUpdateGroup($group_id, $args = array(), $selected_categories, $widget_title = '')
+    public function doUpdateGroup($group_id, $args = array(), $selected_categories = array(), $widget_title = '')
     {
         $group = $this->getGroup($group_id);
         if (is_object($group)) {

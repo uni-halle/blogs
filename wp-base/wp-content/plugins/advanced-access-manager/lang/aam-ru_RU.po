@@ -1,0 +1,334 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AAM\n"
+"POT-Creation-Date: 2013-12-01 14:07-0500\n"
+"PO-Revision-Date: 2014-01-31 21:24+0400\n"
+"Last-Translator: Maxim Kernozhitskiy <maxim@aeromultimedia.com>\n"
+"Language-Team: WPAAM <support@wpaam.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: aam.php:243 aam.php:248 aam.php:267
+msgid "Access denied"
+msgstr "Доступ запрещен"
+
+#: aam.php:691 aam.php:692
+msgid "AAM"
+msgstr "AAM"
+
+#: aam.php:701 aam.php:702
+msgid "Access Control"
+msgstr "Контроль доступа"
+
+#: aam.php:709 aam.php:710
+msgid "Extensions"
+msgstr "Расширение"
+
+#: application/view/capability.php:98 application/view/capability.php:179
+msgid "System"
+msgstr "Система"
+
+#: application/view/capability.php:99 application/view/capability.php:181
+msgid "Post & Page"
+msgstr "Пост и Страница"
+
+#: application/view/capability.php:100 application/view/capability.php:183
+msgid "Backend Interface"
+msgstr "Интерфейс Админа"
+
+#: application/view/capability.php:101
+msgid "Miscellaneous"
+msgstr "Разное"
+
+#: application/view/capability.php:185
+msgid "Miscelaneous"
+msgstr "Разное"
+
+#: application/view/manager.php:59
+msgid "Roles"
+msgstr "Роли"
+
+#: application/view/manager.php:60
+msgid "Role Manager"
+msgstr "Менеджер ролей"
+
+#: application/view/manager.php:68
+msgid "Users"
+msgstr "Пользователи"
+
+#: application/view/manager.php:69
+msgid "User Manager"
+msgstr "Менеджер пользователей"
+
+#: application/view/manager.php:77
+msgid "Visitor"
+msgstr "Посетители"
+
+#: application/view/manager.php:78
+msgid "Visitor Manager"
+msgstr "Менеджер посетителей"
+
+#: application/view/manager.php:95
+msgid "Admin Menu"
+msgstr "Меню Админа"
+
+#: application/view/manager.php:98
+msgid ""
+"Control Access to Admin Menu. Restrict access to entire Menu or Submenu. "
+"<b>Notice</b>, the menu is rendered based on Role's or User's capabilities."
+msgstr ""
+"Контроль доступа к меню Администратора. Запретить доступ ко всему меню или в "
+"подменю. <b>Внимание</b>, меню отображается основываясь на Роли или доступе "
+"пользователя."
+
+#: application/view/manager.php:103
+msgid "Metabox & Widget"
+msgstr "Виджеты и Метабоксы"
+
+#: application/view/manager.php:106
+msgid ""
+"Filter the list of Metaboxes or Widgets for selected Role or User. If "
+"metabox or widget is not listed, try to click <b>Refresh the List</b> button "
+"or Copy & Paste direct link to page where specific metabox or widget is "
+"shown and hit <b>Retrieve Metaboxes from Link</b> button."
+msgstr ""
+"Фильтрует лист Виджетов или Метабоксов для выбранной Роли Пользователя. Если "
+"метабокс или виджет не в списке попробуйте нажать кнопку <b>Обновить список</"
+"b> или скопировать и вставить прямую ссылку на страницу, где показан "
+"метабокс или виджет и нажать кнопку <b>Извлеч Метабоксы из ссылки</b>"
+
+#: application/view/manager.php:111
+msgid "Capability"
+msgstr "Возможность"
+
+#: application/view/manager.php:114
+msgid ""
+"Manage the list of Capabilities for selected User or Role. <b>Notice</b>, "
+"list of user's capabilities are inherited from user's Role.<br/><b>Warning!</"
+"b> Be very careful with capabilities. Deleting or unchecking any capability "
+"may cause temporary or permanent constrol lost over some features or "
+"WordPress dashboard."
+msgstr ""
+"Управляйте листом возможностей для выбранных Пользователя или Роли. "
+"<b>Внимание</b>, лист пользовательских возможностей унаследован от Роли "
+"пользователя.<br/> <b>ВНИМАНИЕ!</b> будьте осторожны с возможностями. "
+"Удаление или снятие некоторых возможностей пользователя может привести к "
+"временной, либо постоянной потере контроля над некоторыми функциями "
+"Wordpress."
+
+#: application/view/manager.php:119
+msgid "Posts & Categories"
+msgstr "Посты и Категории"
+
+#: application/view/manager.php:122
+msgid ""
+"Manage access to individual <b>Post</b> or <b>Term</b>. Notice, under "
+"<b>Post</b>, we assume any post, page or custom post type. And under "
+"<b>Term</b> - any term like Post Categories."
+msgstr ""
+"Управляйте доступом к индивидуальным <b>Постам</b> или <b>Терминам</b>. "
+"Понятие <b>Пост</b> в данном случае - любой пост, страница или Собственный "
+"тип поста. А под <b>Термином</b> - любой термин типа Категории поста."
+
+#: application/view/manager.php:127
+msgid "Event Manager"
+msgstr "Менеджер событий"
+
+#: application/view/manager.php:130
+msgid ""
+"Define your own action when some event appeared in your WordPress blog. This "
+"sections allows you to trigger an action on event like post content change, "
+"or page status update. You can setup to send email notification, change the "
+"post status or write your own custom event handler."
+msgstr ""
+"Укажите ваше собственное действие, когда происходит некоторое событие в "
+"Wordpress. Эта секция позволяет вам отрабатывать действие или даже изменение "
+"контента, или изменение статуса страницы. Вы можете отправлять уведомления "
+"на email, менять статус поста или написать свой собственный обработчик."
+
+#: application/view/manager.php:135
+msgid "ConfigPress"
+msgstr "ConfigPress"
+
+#: application/view/manager.php:138
+msgid ""
+"Control <b>AAM</b> behavior with ConfigPress. For more details please check "
+"<b>ConfigPress tutorial</b>."
+msgstr ""
+"Контролируйте поведение <b>AAM</b> с ConfigPress. Для подробностей "
+"посмотрите <b>ConfigPress туториал</b>."
+
+#: application/view/manager.php:342
+msgid "Rollback Settings"
+msgstr "Настройки Rollback"
+
+#: application/view/manager.php:343
+msgid "Cancel"
+msgstr "Отменить"
+
+#: application/view/manager.php:344
+msgid "Send E-mail"
+msgstr "Отправить E-mail"
+
+#: application/view/manager.php:345 application/view/manager.php:351
+msgid "Add New Role"
+msgstr "Добавить Роль"
+
+#: application/view/manager.php:346
+msgid "Manage"
+msgstr "Управление"
+
+#: application/view/manager.php:347
+msgid "Edit"
+msgstr "Редактировать"
+
+#: application/view/manager.php:348
+msgid "Delete"
+msgstr "Удалить"
+
+#: application/view/manager.php:349
+msgid "Filtered"
+msgstr "Фильтровано"
+
+#: application/view/manager.php:350
+msgid "Clear"
+msgstr "Отчистить"
+
+#: application/view/manager.php:352
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: application/view/manager.php:353
+#, php-format
+msgid ""
+"System detected %d user(s) with this role. All Users with Role <b>%s</b> "
+"will be deleted automatically!"
+msgstr ""
+"Система определила %d пользователя(лей) с этой ролью. Все Пользователи с "
+"Ролью <b>%s</b> будут удалены автоматически!"
+
+#: application/view/manager.php:354
+#, php-format
+msgid "Are you sure that you want to delete role <b>%s</b>?"
+msgstr "Вы уверены, что хотите удалить роль <b>%s</b>?"
+
+#: application/view/manager.php:355
+msgid "Delete Role"
+msgstr "Удалить Роль"
+
+#: application/view/manager.php:356
+msgid "Add User"
+msgstr "Добавить пользователя"
+
+#: application/view/manager.php:357
+msgid "Filter Users"
+msgstr "Фильтр пользователей"
+
+#: application/view/manager.php:358 application/view/manager.php:374
+msgid "Refresh List"
+msgstr "Обновить список"
+
+#: application/view/manager.php:359
+msgid "Block"
+msgstr "Заблокировать"
+
+#: application/view/manager.php:360
+#, php-format
+msgid "Are you sure you want to delete user <b>%s</b>?"
+msgstr "Вы уверены, что хотите удалить пользователя <b>%s</b>?"
+
+#: application/view/manager.php:361
+msgid "Filter Capabilities by Category"
+msgstr "Фильтр возможностей по категории"
+
+#: application/view/manager.php:362
+msgid "Inherit Capabilities"
+msgstr "Назледовать возможности"
+
+#: application/view/manager.php:363
+msgid "Add New Capability"
+msgstr "Добавить новую возможность"
+
+#: application/view/manager.php:364
+#, php-format
+msgid "Are you sure that you want to delete capability <b>%s</b>?"
+msgstr "Вы уверены, что хотите удалить возможность <b>%s</b>?"
+
+#: application/view/manager.php:365
+msgid "Delete Capability"
+msgstr "Удалить возможность"
+
+#: application/view/manager.php:366
+msgid "Select Role"
+msgstr "Выбрать роль"
+
+#: application/view/manager.php:367
+msgid "Add Capability"
+msgstr "Добавить возможность"
+
+#: application/view/manager.php:368
+msgid "Add Event"
+msgstr "Добавить событие"
+
+#: application/view/manager.php:369
+msgid "Edit Event"
+msgstr "Редактировать событие"
+
+#: application/view/manager.php:370 application/view/manager.php:372
+msgid "Delete Event"
+msgstr "Удалить событие"
+
+#: application/view/manager.php:371
+msgid "Save Event"
+msgstr "Сохранить событие"
+
+#: application/view/manager.php:373
+msgid "Filter Posts by Post Type"
+msgstr "Фильтр постов по Типу"
+
+#: application/view/manager.php:375
+msgid "Restore Default"
+msgstr "Сбросить настройки"
+
+#: application/view/manager.php:376
+msgid "Apply"
+msgstr "Применить"
+
+#: application/view/manager.php:377
+msgid "Edit Term"
+msgstr "Редактировать Термин"
+
+#: application/view/manager.php:378
+msgid "Manager Access"
+msgstr "Диспетчер доступу"
+
+#: application/view/manager.php:379
+msgid "Unlock Default Accesss Control"
+msgstr "Разблокировать стандартный контроль доступа"
+
+#: application/view/manager.php:380
+msgid "Close"
+msgstr "Закрыть"
+
+#: application/view/manager.php:381
+msgid "Edit Role"
+msgstr "Редактировать роль"
+
+#: application/view/metabox.php:179
+msgid "Dashboard Widgets"
+msgstr "Панель виджетов"
+
+#: application/view/metabox.php:183
+msgid "Frontend Widgets"
+msgstr "Frontend виджеты"
+
+#: application/view/post.php:181
+msgid "[empty]"
+msgstr "[пусто]"
+
+#: application/view/post.php:345 application/view/post.php:353
+msgid "All"
+msgstr "Все"

@@ -22,11 +22,9 @@ if(!current_user_can('manage_polls')) {
 	die('Access Denied');
 }
 
-
 ### Poll Manager
 $base_name = plugin_basename('wp-polls/polls-manager.php');
 $base_page = 'admin.php?page='.$base_name;
-
 
 ### Form Processing 
 if(!empty($_POST['do'])) {

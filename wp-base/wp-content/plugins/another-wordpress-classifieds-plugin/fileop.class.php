@@ -155,41 +155,44 @@ class fileop {
 		return $myreturn;
 	}
 
-	function extract_zip($archive,$path='') {
-		$basename=false;
-		if (substr($archive,-4)=='.zip') {
-			if (is_file($archive)) {
-				require_once dirname(__FILE__).'/zip.class.php';
+	// /**
+	//  * this is no longer used.
+	//  */
+	// function extract_zip($archive,$path='') {
+	// 	$basename=false;
+	// 	if (substr($archive,-4)=='.zip') {
+	// 		if (is_file($archive)) {
+	// 			require_once dirname(__FILE__).'/zip.class.php';
 
-				$basename=substr(basename($archive),0,-4);
-				$zipfile=new zipfile();
-				$zipfile->read_zip($archive);
-				if (empty($path)) {
-					$path=dirname($archive);
-				}
-				$path.='/'.$basename;
-				if (!is_dir($path)) {
-					$this->mkdir($path);
-				}
-				for ($i=0;isset($zipfile->dirs[$i]);++$i) {
-					$temp=explode('/',$zipfile->dirs[$i]);
-					$sub_path=$path;
-					for ($j=0;isset($temp[$j]);++$j) {
-						if (!empty($temp[$j])) {
-							$sub_path.='/'.$temp[$j];
-							if (!is_dir($sub_path)) {
-								$this->mkdir($sub_path);
-							}
-						}
-					}
-				}
-				for ($i=0;isset($zipfile->files[$i]);++$i) {
-					$this->file_put_contents($path.$zipfile->files[$i]['dir'].'/'.$zipfile->files[$i]['name'],$zipfile->files[$i]['data']);
-				}
-			}
-		}
-		return $basename;
-	}
+	// 			$basename=substr(basename($archive),0,-4);
+	// 			$zipfile=new zipfile();
+	// 			$zipfile->read_zip($archive);
+	// 			if (empty($path)) {
+	// 				$path=dirname($archive);
+	// 			}
+	// 			$path.='/'.$basename;
+	// 			if (!is_dir($path)) {
+	// 				$this->mkdir($path);
+	// 			}
+	// 			for ($i=0;isset($zipfile->dirs[$i]);++$i) {
+	// 				$temp=explode('/',$zipfile->dirs[$i]);
+	// 				$sub_path=$path;
+	// 				for ($j=0;isset($temp[$j]);++$j) {
+	// 					if (!empty($temp[$j])) {
+	// 						$sub_path.='/'.$temp[$j];
+	// 						if (!is_dir($sub_path)) {
+	// 							$this->mkdir($sub_path);
+	// 						}
+	// 					}
+	// 				}
+	// 			}
+	// 			for ($i=0;isset($zipfile->files[$i]);++$i) {
+	// 				$this->file_put_contents($path.$zipfile->files[$i]['dir'].'/'.$zipfile->files[$i]['name'],$zipfile->files[$i]['data']);
+	// 			}
+	// 		}
+	// 	}
+	// 	return $basename;
+	// }
 
 	// a special way to mark the backup files. Why? because accessing file.php~ on the web would show the source code
 	// while file~.php wouldn't

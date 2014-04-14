@@ -20,6 +20,11 @@
  */
 
 /**
+ * File has been modified by Vasyl Martyniuk <martyniuk.vasyl@gmail.com> to fit the
+ * project needs.
+ */
+
+/**
 * @category   Zend
 * @package    Zend
 * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)

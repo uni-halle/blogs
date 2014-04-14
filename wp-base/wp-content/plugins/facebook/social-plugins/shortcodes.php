@@ -67,7 +67,7 @@ class Facebook_Shortcodes {
 
 		$options = shortcode_atts( array(
 			'href' => '',
-			'send' => isset( $site_options['send'] ) && $site_options['send'],
+			'share' => isset( $site_options['share'] ) && $site_options['share'],
 			'layout' => isset( $site_options['layout'] ) ? $site_options['layout'] : '',
 			'show_faces' => isset( $site_options['show_faces'] ) && $site_options['show_faces'],
 			'width' => isset( $site_options['width'] ) ? $site_options['width'] : 0,
@@ -86,7 +86,7 @@ class Facebook_Shortcodes {
 				$options['href'] = apply_filters( 'facebook_rel_canonical', get_permalink( $post->ID ) );
 		}
 
-		foreach ( array( 'send', 'show_faces' ) as $bool_key ) {
+		foreach ( array( 'share', 'show_faces' ) as $bool_key ) {
 			$options[$bool_key] = (bool) $options[$bool_key];
 		}
 		$options['width'] = absint( $options['width'] );
@@ -207,10 +207,13 @@ class Facebook_Shortcodes {
 	 * @return string Follow Button div HTML or empty string if minimum requirements not met
 	 */
 	public static function embedded_post( $attributes, $content = null ) {
+		global $content_width;
+
 		$options = shortcode_atts( array(
 			'href' => '',
+			'width' => 0,
 			'show_border' => true
-		), $attributes, 'facebook_embed_post' );
+		), $attributes, 'facebook_embedded_post' );
 
 		$options['href'] = trim( $options['href'] );
 		if ( ! $options['href'] )
@@ -218,6 +221,16 @@ class Facebook_Shortcodes {
 
 		if ( ! class_exists( 'Facebook_Embedded_Post' ) )
 			require_once( dirname(__FILE__) . '/class-facebook-embedded-post.php' );
+
+		$options['width'] = absint( $options['width'] );
+		if ( ! Facebook_Embedded_Post::isValidWidth( $options['width'] ) ) {
+			unset($options['width']);
+			if ( isset($content_width) ) {
+				$width = absint($content_width);
+				if ( Facebook_Embedded_Post::isValidWidth( $width ) )
+					$options['width'] = $width;
+			}
+		}
 
 		$embed = Facebook_Embedded_Post::fromArray( $options );
 		if ( ! $embed )

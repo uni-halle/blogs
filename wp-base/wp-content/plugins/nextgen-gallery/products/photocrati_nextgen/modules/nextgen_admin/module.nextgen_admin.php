@@ -6,7 +6,7 @@
 }
 ***/
 
-define('NEXTGEN_FS_ACCESS_SLUG', 'ngg_fs_access');
+define('NGG_FS_ACCESS_SLUG', 'ngg_fs_access');
 
 class M_NextGen_Admin extends C_Base_Module
 {
@@ -19,7 +19,7 @@ class M_NextGen_Admin extends C_Base_Module
 			'photocrati-nextgen_admin',
 			'NextGEN Administration',
 			'Provides a framework for adding Administration pages',
-			'0.4',
+			'0.7',
 			'http://www.nextgen-gallery.com',
 			'Photocrati Media',
 			'http://www.photocrati.com'
@@ -92,12 +92,11 @@ class M_NextGen_Admin extends C_Base_Module
 	function _register_hooks()
 	{
         // Register scripts
-        add_action('init', array(&$this, 'register_scripts'));
+        add_action('init', array(&$this, 'register_scripts'), 9);
 
 		// Provides menu options for managing NextGEN Settings
 		add_action('admin_menu', array(&$this, 'add_menu_pages'), 999);
 	}
-
 
     function register_scripts()
     {
@@ -109,8 +108,8 @@ class M_NextGen_Admin extends C_Base_Module
         wp_register_style('select2', $router->get_static_url('photocrati-nextgen_admin#select2/select2.css'));
         wp_register_script('select2', $router->get_static_url('photocrati-nextgen_admin#select2/select2.modded.js'));
 
-        $match = preg_quote("/wp-admin/post.php", "#");
-        if (preg_match("#{$match}#", $_SERVER['REQUEST_URI'])) {
+        if (preg_match("#/wp-admin/post(-new)?.php#", $_SERVER['REQUEST_URI']))
+        {
             wp_enqueue_script('ngg_progressbar');
             wp_enqueue_style('ngg_progressbar');
         }

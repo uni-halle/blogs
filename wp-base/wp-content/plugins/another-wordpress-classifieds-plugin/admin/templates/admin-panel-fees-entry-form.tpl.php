@@ -11,7 +11,7 @@
         <?php $class = 'inline-edit-col-left'; ?>
         <fieldset class="<?php echo $class; ?>">
             <div class="inline-edit-col">
-                <h4><?php echo $id ? __( 'Edit', 'AWPCP' ) : __( 'Add', 'AWPCP' ); ?></h4>
+                <h4><?php echo $id ? __( 'Edit Fee Plan Details', 'AWPCP' ) : __( 'New Fee Plan Details', 'AWPCP' ); ?></h4>
 
                 <label>
                     <span class="title"><?php _e('Name', 'AWPCP'); ?></span>
@@ -112,7 +112,7 @@
             <?php $cancel = __('Cancel', 'AWPCP'); ?>
             <a class="button-secondary cancel alignleft" title="<?php echo $cancel; ?>" href="#inline-edit" accesskey="c"><?php echo $cancel; ?></a>
             <a class="button-primary save alignright" title="<?php echo $label ?>" href="#inline-edit" accesskey="s"><?php echo $label; ?></a>
-            <img alt="" src="http://local.wordpress.org/wp-admin/images/wpspin_light.gif" style="display: none;" class="waiting">
+            <img alt="" src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" style="display: none;" class="waiting">
             <input type="hidden" value="<?php echo esc_attr( $id ); ?>" name="id">
             <input type="hidden" value="<?php echo esc_attr( $_POST['action'] ); ?>" name="action">
             <br class="clear">

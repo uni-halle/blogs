@@ -139,6 +139,7 @@ add_action( 'iwwc', 'iww_cookie' );
 
 add_action( 'admin_menu', 'my_remove_menus', 999 );
 
+/*
 function my_remove_menus() {
 
 	
@@ -148,6 +149,7 @@ function my_remove_menus() {
 	remove_menu_page('edit-comments.php');	
     remove_menu_page('edit.php?post_type=page'); // Pages
 }
+*/
 
 add_filter( 'use_default_gallery_style', '__return_false' );
 ?>

@@ -35,8 +35,7 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 			<dl><dt><strong>skype_id</strong></dt><dd>Alternative Skype ID.</dd>
 				<dt><strong>user_name</strong></dt><dd>Define the full Skype user or screen name.</dd>
 				<dt><strong>button_theme</strong></dt><dd>Define the theme template file to use for the button. Value must match a filename (without extention) from the /plugins/skype-online-status/templates/ directory or the predefined theme template will be used.</dd>
-				<dt><strong>use_voicemail</strong></dt><dd>Set to 'on' if you want to display the 'Leave a voicemail' link in the Dropdown themes. Use this only if you have a <a href="http://www.tkqlhce.com/click-3049686-10520919" target="_top">SkypeIn number</a> or <a href="http://www.tkqlhce.com/click-3049686-10423078" target="_top">Skype Voicemail</a>
-<img src="http://www.ftjcfx.com/image-3049686-10423078" width="1" height="1" style="border:0" alt=""/>. Set of 'off' if you have a predefined setting 'on' and you want to override it.</dd>
+				<dt><strong>use_voicemail</strong></dt><dd>Set to 'on' if you want to display the 'Leave a voicemail' link in the Dropdown themes. Use this only if you have a <a href="https://support.skype.com/en/category/ONLINE_NUMBER_SKYPEIN/" target="_blank">SkypeIn number</a> or <a href="https://support.skype.com/en/category/VOICEMAIL/" target="_blank">Skype Voicemail</a>. Set of 'off' if you have a predefined setting 'on' and you want to override it.</dd>
 				<dt><strong>button_function</strong></dt><dd>Define the button's function. Value must match a valid Skype function like 'call', 'add', 'chat', 'userinfo', 'voicemail' or 'sendfile'.</dd>
 				<dt><strong>use_getskype</strong></dt><dd>Set to 'on' if you want to display the <em>Get Skype</em> link. Set to 'off' to remove the link.</dd>
 			</dl>

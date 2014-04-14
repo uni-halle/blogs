@@ -3,6 +3,7 @@
 class C_Form extends C_MVC_Controller
 {
 	static $_instances = array();
+	var $page = NULL;
 
 	/**
 	 * Gets an instance of a form
@@ -66,7 +67,8 @@ class Mixin_Form_Instance_Methods extends Mixin
 	 */
 	function save_action($attributes=array())
 	{
-		if ($this->object->has_method('get_model')) {
+		if (!$attributes) $attributes = array();
+		if ($this->object->has_method('get_model') && $this->object->get_model()) {
 			return $this->object->get_model()->save($attributes);
 		}
 		else return TRUE;
@@ -93,6 +95,11 @@ class Mixin_Form_Instance_Methods extends Mixin
             ),
             TRUE
         );
+	}
+
+	function get_model()
+	{
+		return $this->page->has_method('get_model') ? $this->page->get_model() : NULL;
 	}
 }
 
@@ -223,11 +230,13 @@ class Mixin_Form_Field_Generators extends Mixin
     
     function _render_thumbnail_override_settings_field($display_type)
     {
+		$hidden = !(isset($display_type->settings['override_thumbnail_settings']) ? $display_type->settings['override_thumbnail_settings'] : FALSE);
+
         $override_field = $this->_render_radio_field(
             $display_type,
             'override_thumbnail_settings',
             'Override thumbnail settings',
-            $display_type->settings['override_thumbnail_settings'],
+            isset($display_type->settings['override_thumbnail_settings']) ? $display_type->settings['override_thumbnail_settings'] : FALSE,
 			"This does not affect existing thumbnails; overriding the thumbnail settings will create an additional set of thumbnails. To change the size of existing thumbnails please visit 'Manage Galleries' and choose 'Create new thumbnails' for all images in the gallery."
         );
 
@@ -237,9 +246,9 @@ class Mixin_Form_Field_Generators extends Mixin
                 'display_type_name' => $display_type->name,
                 'name' => 'thumbnail_dimensions',
                 'label'=> _('Thumbnail dimensions'),
-                'thumbnail_width' => $display_type->settings['thumbnail_width'],
-                'thumbnail_height'=> $display_type->settings['thumbnail_height'],
-                'hidden' => empty($display_type->settings['override_thumbnail_settings']) ? 'hidden' : '',
+                'thumbnail_width' => isset($display_type->settings['thumbnail_width']) ? $display_type->settings['thumbnail_width'] : 0,
+                'thumbnail_height'=> isset($display_type->settings['thumbnail_height']) ? $display_type->settings['thumbnail_height'] : 0,
+                'hidden' => $hidden ? 'hidden' : '',
                 'text' => ''
             ),
             TRUE
@@ -252,27 +261,27 @@ class Mixin_Form_Field_Generators extends Mixin
             'thumbnail_quality',
             'Thumbnail quality',
             $qualities,
-            $display_type->settings['thumbnail_quality'],
+            isset($display_type->settings['thumbnail_quality']) ? $display_type->settings['thumbnail_quality'] : 100,
             '',
-            empty($display_type->settings['override_thumbnail_settings']) ? TRUE : FALSE
+            $hidden
         );
 
         $crop_field = $this->_render_radio_field(
             $display_type,
             'thumbnail_crop',
             'Thumbnail crop',
-            $display_type->settings['thumbnail_crop'],
+            isset($display_type->settings['thumbnail_crop']) ? $display_type->settings['thumbnail_crop'] : FALSE,
             '',
-            empty($display_type->settings['override_thumbnail_settings']) ? TRUE : FALSE
+            $hidden
         );
 
         $watermark_field = $this->_render_radio_field(
             $display_type,
             'thumbnail_watermark',
             'Thumbnail watermark',
-            $display_type->settings['thumbnail_watermark'],
+            isset($display_type->settings['thumbnail_watermark']) ? $display_type->settings['thumbnail_watermark'] : FALSE,
             '',
-            empty($display_type->settings['override_thumbnail_settings']) ? TRUE : FALSE
+            $hidden
         );
 
         $everything = $override_field . $dimensions_field . $quality_field . $crop_field . $watermark_field;
@@ -289,11 +298,13 @@ class Mixin_Form_Field_Generators extends Mixin
      */
     function _render_image_override_settings_field($display_type)
     {
+		$hidden = !(isset($display_type->settings['override_image_settings']) ? $display_type->settings['override_image_settings'] : FALSE);
+
         $override_field = $this->_render_radio_field(
             $display_type,
             'override_image_settings',
             'Override image settings',
-            $display_type->settings['override_image_settings'],
+            isset($display_type->settings['override_image_settings']) ? $display_type->settings['override_image_settings'] : 0,
 			'Overriding the image settings will create an additional set of images'
         );
 
@@ -306,7 +317,7 @@ class Mixin_Form_Field_Generators extends Mixin
             $qualities,    
             $display_type->settings['image_quality'],
             '',
-            empty($display_type->settings['override_image_settings']) ? TRUE : FALSE
+            $hidden
         );
 
         $crop_field = $this->_render_radio_field(
@@ -315,7 +326,7 @@ class Mixin_Form_Field_Generators extends Mixin
             'Image crop',
             $display_type->settings['image_crop'],
             '',
-            empty($display_type->settings['override_image_settings']) ? TRUE : FALSE
+            $hidden
         );
 
         $watermark_field = $this->_render_radio_field(
@@ -324,7 +335,7 @@ class Mixin_Form_Field_Generators extends Mixin
             'Image watermark',
             $display_type->settings['image_watermark'],
             '',
-            empty($display_type->settings['override_image_settings']) ? TRUE : FALSE
+            $hidden
         );
 
         $everything = $override_field . $quality_field . $crop_field . $watermark_field;

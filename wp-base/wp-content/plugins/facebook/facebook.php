@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Facebook
- * @version 1.5.3
+ * @version 1.5.5
  */
 /*
 Plugin Name: Facebook
@@ -9,7 +9,7 @@ Plugin URI: http://wordpress.org/plugins/facebook/
 Description: Add Facebook social plugins and the ability to publish new posts to a Facebook Timeline or Facebook Page. Official Facebook plugin.
 Author: Facebook
 Author URI: https://developers.facebook.com/docs/wordpress/
-Version: 1.5.3
+Version: 1.5.5
 License: GPL2
 License URI: license.txt
 Domain Path: /languages/
@@ -31,7 +31,7 @@ class Facebook_Loader {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.5.3';
+	const VERSION = '1.5.5';
 
 	/**
 	 * Default Facebook locale
@@ -265,7 +265,6 @@ class Facebook_Loader {
 		add_filter( 'script_loader_src', array( 'Facebook_Loader', 'async_script_loader_src' ), 1, 2 );
 
 		$args = array(
-			'channelUrl' => plugins_url( 'channel.php', __FILE__ ),
 			'xfbml' => true
 		);
 		if ( is_admin() ) {
@@ -340,16 +339,29 @@ class Facebook_Loader {
 		if ( $handle !== 'facebook-jssdk' )
 			return $src;
 
-		// @link https://developers.facebook.com/docs/reference/javascript/#loading
-		$html = '<div id="fb-root"></div><script type="text/javascript">(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src=' . json_encode($src) . ';fjs.parentNode.insertBefore(js,fjs)}(document,"script","facebook-jssdk"));</script>' . "\n";
+		// @link https://developers.facebook.com/docs/javascript/gettingstarted/#loading
+		$html = '<script type="text/javascript">(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src=' . json_encode($src) . ';fjs.parentNode.insertBefore(js,fjs)}(document,"script","facebook-jssdk"));</script>' . "\n";
 		if ( isset( $wp_scripts ) && $wp_scripts->do_concat )
 			$wp_scripts->print_html .= $html;
 		else
 			echo $html;
 
-		// empty out the src response
-		// results in extra DOM but nothing to load
+		// place after wp_print_footer_scripts at priority 20
+		add_action( 'wp_footer', array( 'Facebook_Loader', 'js_sdk_root_div' ), 21 );
+
+		// empty out the src response to avoid extra <script>
 		return '';
+	}
+
+	/**
+	 * Output a div#fb-root for use by the Facebook SDK for JavaScript
+	 *
+	 * @since 1.5.4
+	 *
+	 * @return void
+	 */
+	public static function js_sdk_root_div() {
+		echo '<div id="fb-root"></div>';
 	}
 
 	/**
@@ -408,7 +420,8 @@ class Facebook_Loader {
 
 		return new Facebook_WP_Extend( array(
 			'appId' => $this->credentials['app_id'],
-			'secret' => $this->credentials['app_secret']
+			'secret' => $this->credentials['app_secret'],
+			'allowSignedRequest' => false
 		) );
 	}
 

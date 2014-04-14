@@ -3,16 +3,16 @@ Contributors: fabifott
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=wpfilebase%40fabi%2eme&item_name=WP-Filebase&no_shipping=0&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: filebase, filemanager, file, files, manager, upload, download, downloads, downloadmanager, images, pdf, widget, filelist, list, thumbnails, thumbnail, attachment, attachments, category, categories, media, template, ftp, http, mp3, id3
 Requires at least: 3.1
-Tested up to: 3.6
-Stable tag: 0.3.0.02
+Tested up to: 3.8.1
+Stable tag: 0.3.0.05
 
 Adds a powerful download manager including file categories, downloads counter, widgets, sorted file lists and more to your WordPress blog.
 
 == Description ==
 
-WP-Filebase is an advanced file manager for Wordpress.
-It keeps files structured in categories, offers a template system to create sortable, paginated file lists and can sideload files from another web site.
-The Plugin is made for easy management of many files and consistent output using templates.
+WP-Filebase is an advanced file download manager for WordPress.
+It keeps Files structured in Categories, offers a Template System to create sortable, paginated File Lists and can sideload Files from other websites.
+The Plugin is made for easy management of many Files and consistent output using Templates.
 
 With WP-Filebase you can...
 
@@ -48,21 +48,23 @@ More features are:
 *	Search integration
 *	Automatic synchronization of file system and database
 
-You can see a [live demo on my Website](http://fabi.me/downloads/ "WP-Filebase demo"), [documentation can be found here](http://wpfilebase.com/documentation/ "WP-Filebase documentation").
+You can see a [live demo on my Website](http://fabi.me/downloads/ "WP-Filebase demo"), download manager [documentation can be found here](http://wpfilebase.com/documentation/ "WP-Filebase documentation").
 For support, please [leave a message on my blog](http://fabi.me/wordpress-plugins/wp-filebase-file-download-manager/#postcomment "Post comment"). When having trouble don't forget to post PHP and Wordpress version! Any ideas/feature requests are welcome.
 
-[WP-Filebase on GitHub](https://github.com/f4bsch/WP-Filebase)
+[WP-Filebase on GitHub](https://github.com/f4bsch/WP-Filebase).
 
 = WP-Filebase Pro =
 [WP-Filebase Pro](http://wpfilebase.com/) includes even more advanced features:
 
 *	PDF indexing and thumbnails
+*	File Pages with custom post type
 *	Secondary Categories
 *	Extended Permissions
 *	File Passwords
-*	Embedded Upload Forms
+*	Embedded front-end Upload Forms
 *	Improved Syncing algorithm
-*	Dropbox, Amazon S3 and FTP sync
+*	Dropbox, Google Drive, Amazon S3 and FTP sync
+*	XML Sitemap
 
 == Installation ==
 
@@ -114,6 +116,32 @@ Goto WP-Filebase Settings and disable Permalinks under "Download". Try to disabl
 
 
 == Changelog ==
+
+= 0.3.0.05 =
+* Reverted 'direct access block' since this is not working for multi-site in some cases
+
+= 0.3.0.04 =
+* Fixed a conflict with NexGEN Gallery Plugin by disabling its resource manager output buffer
+* Improved security: direct access of plugin files is blocked if plugin is disabled
+
+= 0.3.0.03 =
+* Enhanced Search Functions: added dash (-) operator to exclude words, added wildcard (*)
+* Shortcode file links can be opened in new tab
+* New File Template variable `%cat_id%`
+* Updated getID3 to 1.10
+* Fixed: Added img alt attributes
+* Added function to reset hits (see Settings / Downloads)
+* Added column filter dataTables plugin
+* Fixed usage of `wp_check_filetype`
+* GUI adjustments to fit latest WordPress version
+* Fixed Security Issue in `GetFileHash` (thanks to [Samir Megueddem](http://www.synacktiv.com))
+* Fixed image urls in custom CSS stylesheet
+* Improved Sideload
+* Fixed typos and update language files
+* Fixed some permission issue for edit permissions and editor plugin
+* Fixed file download permission issue
+* Fixed general permission bug, where user roles were not loaded (added get_role_caps())
+
 
 = 0.3.0.02 =
 * Fixed batch uploader
@@ -695,6 +723,8 @@ If you want to translate WP-Filebase in your language, open `wp-filebase/languag
 WP-Filebase currently offers the action `wpfilebase_sync`. This will run a fast filebase sync that adds new files.
 
 The hook `wpfilebase_file_downloaded` with file_id as parameter can be used for download logging.
+
+[WP-Filebase on GitHub](https://github.com/f4bsch/WP-Filebase)
 
 
 == WP-Filebase Pro ==

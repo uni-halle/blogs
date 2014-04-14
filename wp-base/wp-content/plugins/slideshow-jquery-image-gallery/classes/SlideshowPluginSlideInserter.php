@@ -10,24 +10,14 @@
  */
 class SlideshowPluginSlideInserter
 {
-	/** @var bool $localizedScript Flag to see if localizeScript function has been called */
-	private static $localizedScript;
-
 	/**
 	 * Returns the html for showing the image insert button.
-	 * Localizes script unless $localizeScript is set to false.
 	 *
 	 * @since 2.0.0
-	 * @param boolean $localizeScript
 	 * @return String $button
 	 */
-	static function getImageSlideInsertButton($localizeScript = true)
+	static function getImageSlideInsertButton()
 	{
-		if ($localizeScript)
-		{
-			self::localizeScript();
-		}
-
 		// Put popup html in footer
 		add_action('admin_footer', array(__CLASS__, 'includePopup'));
 
@@ -39,19 +29,12 @@ class SlideshowPluginSlideInserter
 
 	/**
 	 * Returns the html for showing the text insert button.
-	 * Localizes script unless $localizeScript is set to false.
 	 *
 	 * @since 2.0.0
-	 * @param boolean $localizeScript
 	 * @return String $button
 	 */
-	static function getTextSlideInsertButton($localizeScript = true)
+	static function getTextSlideInsertButton()
 	{
-		if ($localizeScript)
-		{
-			self::localizeScript();
-		}
-
 		// Return button html
 		ob_start();
 		include(SlideshowPluginMain::getPluginPath() . '/views/' . __CLASS__ . '/insert-text-button.php');
@@ -60,23 +43,56 @@ class SlideshowPluginSlideInserter
 
 	/**
 	 * Returns the html for showing the video insert button.
-	 * Localizes script unless $localizeScript is set to false.
 	 *
 	 * @since 2.1.0
-	 * @param boolean $localizeScript
 	 * @return String $button
 	 */
-	static function getVideoSlideInsertButton($localizeScript = true)
+	static function getVideoSlideInsertButton()
 	{
-		if ($localizeScript)
-		{
-			self::localizeScript();
-		}
-
 		// Return button html
 		ob_start();
 		include(SlideshowPluginMain::getPluginPath() . '/views/' . __CLASS__ . '/insert-video-button.php');
 		return ob_get_clean();
+	}
+
+	/**
+	 * Returns a list of element tags, without special characters.
+	 *
+	 * @since 2.2.20
+	 * @return array $elementTags
+	 */
+	static function getElementTags()
+	{
+		return array(
+			0 => 'div',
+			1 => 'p',
+			2 => 'h1',
+			3 => 'h2',
+			4 => 'h3',
+			5 => 'h4',
+			6 => 'h5',
+			7 => 'h6',
+		);
+	}
+
+	/**
+	 * Get a specific element tag by its ID. If no ID is passed, the first value in the element tags array will be
+	 * returned.
+	 *
+	 * @since 2.2.20
+	 * @param int $id
+	 * @return array $elementTags
+	 */
+	static function getElementTag($id = null)
+	{
+		$elementTags = self::getElementTags();
+
+		if (isset($elementTags[$id]))
+		{
+			return $elementTags[$id];
+		}
+
+		return reset($elementTags);
 	}
 
 	/**
@@ -294,13 +310,12 @@ class SlideshowPluginSlideInserter
 	static function localizeScript()
 	{
 		// Return if function doesn't exist
-		if (!function_exists('get_current_screen') ||
-			self::$localizedScript)
+		if (!function_exists('get_current_screen'))
 		{
 			return;
 		}
 
-        // Return when not on a slideshow edit page, or files have already been included.
+        // Return when not on a slideshow edit page
         $currentScreen = get_current_screen();
 
         if ($currentScreen->post_type != SlideshowPluginPostType::$postType)
@@ -319,8 +334,5 @@ class SlideshowPluginSlideInserter
 				)
 			)
 		);
-
-		// Set enqueued to true
-		self::$localizedScript = true;
 	}
 }

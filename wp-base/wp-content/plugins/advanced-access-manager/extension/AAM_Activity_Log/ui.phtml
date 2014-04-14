@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+ */
+?>
+<div class="feature-content-container" id="activity_log_content">
+    <table id="activity_list">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th style="width:25%;"><?php echo __('Username', 'aam'); ?></th>
+                <th><?php echo __('Activity', 'aam'); ?></th>
+                <th style="width:30%;"><?php echo __('Time', 'aam'); ?></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <div id="clear_activity_dialog" class="aam-dialog" title="<?php echo __('Clear Activity Log', 'aam'); ?>">
+        <p class="dialog-content">
+            <?php echo __('Are you sure you want to clear activity log?', 'aam'); ?>
+        </p>
+    </div>
+    <div id="info_activity_dialog" class="aam-dialog" title="<?php echo __('Activity Log Info', 'aam'); ?>">
+        <p>
+            <?php echo sprintf(__('Basic version of Activity Log tracks only user\'s login and logout. Consider to purchase the <b>%s</b> Extension today to get access to advanced list of activities as well as we can develop additional activities on demand.', 'aam'), '<a href="http://wpaam.com/forum/viewtopic.php?f=7&t=91" target="_blank">AAM Activities</a>'); ?>
+        </p>
+    </div>
+</div>

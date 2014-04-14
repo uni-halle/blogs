@@ -3,8 +3,8 @@ Contributors: omercalev, sam rohn
 Donate link: http://panopress.org
 Tags:  360, 360 degree Photography, 360 degree Panorama, 360 degree Video, 360 Panorama, 360 Photography, 360 Video, 360Cities, CuTy, EasyPano, FFP, Flash, Flash Panorama Player, Flashificator, HTML5, Gigapixel, Gigapan, Lightbox, Kolor, KRPano, Media, Multires, Object Movie, Object VR, Object2VR, Pano, Pano2VR, Panobox, PanoPress, Panorama, Panoramic, Panotour, Panotour Pro, Photo, Photography, Photosynth, PTGui, QuickTime VR, QTVR, Responsive, Salado, Saladoplayer, Shortcode, Silverlight, Tourweaver, Tourwrist, Virtual Tour, Virtual Reality, ViewAt, VR, WebGL, Zoomify
 Requires at least: 3.0.0
-Tested up to: 3.5.1
-Stable tag: 1.1
+Tested up to: 3.8
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,9 +110,21 @@ See the <a href="http://www.panopress.org/forums/">PanoPress Forums</a> for late
 
 == Upgrade Notice ==
 
-PanoPress 1.1 Final release, recommended for all users.
+PanoPress 1.2 include security & compatibility updates, recommended for all users.
 
 == Changelog ==
+
+= 1.2 =
+* Add support for Pano2VR 4 tour.
+* Improve CSS @media queries support.
+* Add support for image & galleries in Panobox.
+* Add HTML5 full-screen support for Panobox on mobile devices.
+* Fixed mouse-wheel bug.
+* Fixed PHP safe_mode bug.
+* Fixed PHP allow_url_fopen bug.
+* Fixed sub-folder tinyMCE editor box bug
+* Fixed HTML5 full-screen KRPano and Pano2VR.
+* Security & compatibility updates.
 
 = 1.1 =
 * Add support for CSS units in Panopress & Panobox, supported units: px|em|ex|%|in|cm|mm|pt|pc, the default unit is pixels.

@@ -5,7 +5,7 @@
  Description: Add a wiki to your blog
  Author: S H Mohanjith (Incsub)
  WDP ID: 225
- Version: 1.0.8.2
+ Version: 1.0.8.3
  Stable tag: trunk
  Author URI: http://premium.wpmudev.org
 */
@@ -28,7 +28,7 @@ class Wiki {
      *
      * @var		string	$current_version	Current version
      */
-    var $current_version = '1.0.8.2';
+    var $current_version = '1.0.8.3';
     /**
      * @var		string	$translation_domain	Translation domain
      */
@@ -874,8 +874,23 @@ class Wiki {
 	}
 	echo '<input type="hidden" name="post_type" id="post_type" value="'.$edit_post->post_type.'" />';
 	echo '<input type="hidden" name="post_ID" id="wiki_id" value="'.$edit_post->ID.'" />';
-	echo '<input type="hidden" name="post_status" id="wiki_id" value="published" />';
-	echo '<input type="hidden" name="comment_status" id="comment_status" value="open" />';
+
+	if ( 'private' == $edit_post->post_status ) {
+	    $edit_post->post_password = '';
+	    $visibility = 'private';
+        $visibility_trans = __('Private');
+	} elseif ( !empty( $edit_post->post_password ) ) {
+	    $visibility = 'password';
+	    $visibility_trans = __('Password protected');
+	} else {
+	    $visibility = 'public';
+	    $visibility_trans = __('Public');
+	}
+
+	echo '<input type="hidden" name="post_status" id="wiki_post_status" value="'.$edit_post->post_status.'" />';
+	echo '<input type="hidden" name="visibility" id="wiki_visibility" value="'.$visibility.'" />';
+
+	echo '<input type="hidden" name="comment_status" id="comment_status" value="'.$edit_post->comment_status.'" />';
 	echo '<input type="hidden" name="action" id="wiki_action" value="editpost" />';
 	echo '<div><input type="text" name="post_title" id="wiki_title" value="'.$edit_post->post_title.'" class="incsub_wiki_title" size="30" /></div>';
 	echo  '<div>';

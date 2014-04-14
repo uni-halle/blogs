@@ -1,6 +1,6 @@
 <?php // emails are sent in plain text, blank lines in templates and spaces at 
       // the end of the lineare required ?>
-<?php _e('Someone responded to one of the Ads in your website.'); ?>
+<?php _e('Someone responded to one of the Ads in your website.', 'AWPCP'); ?>
 
 
 <?php _e("Contacting about", "AWPCP"); ?>: <?php echo $ad_title; ?> 

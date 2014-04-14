@@ -5,13 +5,13 @@
     <h3><?php _ex('Credit Plans', 'credit plans table', 'AWPCP') ?></h3>
 <?php endif ?>
 
-    <table class="awpcp-table awpcp-credit-plans-table">
+    <table class="awpcp-credit-plans-table awpcp-table">
         <thead>
             <tr>
-                <th><?php _ex('Plan', 'credit plans table', 'AWPCP') ?></th>
-                <th><?php _ex('Description', 'credit plans table', 'AWPCP') ?></th>
-                <th><?php _ex('Credits', 'credit plans table', 'AWPCP') ?></th>
-                <th><?php _ex('Price', 'credit plans table', 'AWPCP') ?></th>
+                <th><?php echo $column_names['plan']; ?></th>
+                <th><?php echo $column_names['description']; ?></th>
+                <th><?php echo $column_names['credits']; ?></th>
+                <th><?php echo $column_names['price']; ?></th>
             </tr>
         </thead>
         <tbody>
@@ -24,12 +24,13 @@
         <?php foreach ($credit_plans as $plan): ?>
 
             <tr data-price="<?php echo esc_attr($plan->price) ?>" data-credits="<?php echo esc_attr($plan->credits) ?>">
-                <td>
+                <td data-title="<?php echo $column_names['plan']; ?>">
                     <input id="credit-plan-<?php echo $plan->id ?>" type="radio" name="credit_plan" value="<?php echo $plan->id ?>" <?php echo $plan->id == $selected ? 'checked="checked"' : '' ?> />
-                    <label for="credit-plan-<?php echo $plan->id ?>"><?php echo $plan->name ?></label></td>
-                <td><?php echo $plan->description ?></td>
-                <td><?php echo number_format($plan->credits, 0) ?></td>
-                <td><?php echo number_format($plan->price, 2) ?></td>
+                    <label for="credit-plan-<?php echo $plan->id ?>"><?php echo $plan->name ?></label>
+                </td>
+                <td data-title="<?php echo $column_names['description']; ?>"><?php echo $plan->description ?>&nbsp;</td>
+                <td data-title="<?php echo $column_names['credits']; ?>"><?php echo number_format($plan->credits, 0) ?></td>
+                <td data-title="<?php echo $column_names['price']; ?>"><?php echo number_format($plan->price, 2) ?></td>
             </tr>
 
         <?php endforeach ?>

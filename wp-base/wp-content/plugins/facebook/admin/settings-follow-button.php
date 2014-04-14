@@ -158,14 +158,14 @@ class Facebook_Follow_Button_Settings extends Facebook_Social_Plugin_Button_Sett
 		// when, where
 		add_settings_field(
 			'facebook-follow-show-on',
-			__( 'Show on', 'facebook' ),
+			_x( 'Show on', 'Display the social plugin in specific areas of a website', 'facebook' ),
 			array( &$this, 'display_show_on' ),
 			$this->hook_suffix,
 			$section
 		);
 		add_settings_field(
 			'facebook-follow-position',
-			__( 'Position', 'facebook' ),
+			_x( 'Position', 'Desired position of a Facebook social plugin relative to main post content.', 'facebook' ),
 			array( &$this, 'display_position' ),
 			$this->hook_suffix,
 			$section,
@@ -175,14 +175,14 @@ class Facebook_Follow_Button_Settings extends Facebook_Social_Plugin_Button_Sett
 		// follow button options
 		add_settings_field(
 			'facebook-follow-layout',
-			__( 'Layout', 'facebook' ),
+			_x( 'Layout', 'Positioning of components of a Facebook social plugin relative to each other. Example layouts include button before interaction count or interaction count above button.', 'facebook' ),
 			array( &$this, 'display_layout' ),
 			$this->hook_suffix,
 			$section
 		);
 		add_settings_field(
 			'facebook-follow-show-faces',
-			__( 'Show faces', 'facebook' ),
+			_x( 'Show faces', 'Show the faces of Facebook friends who have interacted with this object.', 'facebook' ),
 			array( &$this, 'display_show_faces' ),
 			$this->hook_suffix,
 			$section,
@@ -221,7 +221,7 @@ class Facebook_Follow_Button_Settings extends Facebook_Social_Plugin_Button_Sett
 	 * @return void
 	 */
 	public function section_header() {
-		echo '<p>' . esc_html( __( "Encourage visitors to follow to public updates from an author's Facebook account.", 'facebook' ) ) . ' <a href="https://developers.facebook.com/docs/reference/plugins/follow/" title="' . esc_attr( sprintf( __( '%s social plugin documentation', 'facebook' ), 'Facebook ' . self::social_plugin_name() ) ) . '">' . esc_html( __( 'Read more...', 'facebook' ) ) . '</a></p>';
+		echo '<p>' . esc_html( __( "Encourage visitors to follow to public updates from an author's Facebook account.", 'facebook' ) ) . ' <a href="https://developers.facebook.com/docs/plugins/follow-button/" title="' . esc_attr( sprintf( __( '%s social plugin documentation', 'facebook' ), 'Facebook ' . self::social_plugin_name() ) ) . '">' . esc_html( __( 'Read more...', 'facebook' ) ) . '</a></p>';
 	}
 
 	/**
@@ -310,7 +310,7 @@ class Facebook_Follow_Button_Settings extends Facebook_Social_Plugin_Button_Sett
 	 * @return array layout descriptions keyed by layout choice
 	 */
 	public static function layout_descriptions() {
-		$follow_plural = __( 'followers', 'facebook' );
+		$follow_plural = _x( 'followers', 'Facebook users following public updates from another Facebook user', 'facebook' );
 		return array(
 			'standard' => __( 'Display social text next to the button.', 'facebook' ),
 			'button_count' => sprintf( __( 'Display total number of %s next to the button.', 'facebook' ), $follow_plural ),

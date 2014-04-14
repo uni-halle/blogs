@@ -240,7 +240,7 @@ function awpcp_calculate_end_date($increment, $period, $start_date) {
  * TODO: Use the new $ad->calculate_end_date() method.
  */
 function awpcp_calculate_ad_end_date($duration, $interval='DAY', $ad=null) {
-	$now = awpcp_time(null, 'timestamp');
+	$now = awpcp_datetime( 'timestamp' );
 	$end_date = is_null($ad) ? $ad->ad_enddate : 0;
 	// if the Ad's end date is in the future, use that as starting point 
 	// for the new end date, else use current date.
@@ -289,36 +289,48 @@ function awpcp_calculate_ad_disabled_state($id=null, $transaction=null, $payment
 
 
 /**
+ * @since 3.0.2
+ */
+function awpcp_ad_renewed_user_email( $ad ) {
+	$mail = new AWPCP_Email;
+	$mail->to[] = awpcp_format_email_address( $ad->ad_contact_email, $ad->ad_contact_name );
+	$mail->subject = sprintf( get_awpcp_option( 'ad-renewed-email-subject' ), $ad->get_title() );
+
+	$introduction = get_awpcp_option( 'ad-renewed-email-body' );
+
+	$template = AWPCP_DIR . '/frontend/templates/email-ad-renewed-success-user.tpl.php';
+	$mail->prepare( $template, compact( 'ad', 'introduction' ) );
+
+	return $mail;
+}
+
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_ad_renewed_admin_email( $ad, $body ) {
+	$mail = new AWPCP_Email;
+	$mail->to[] = awpcp_admin_email_to();
+	$mail->subject = sprintf( __( 'The classifieds listing "%s" has been successfully renewed.', 'AWPCP' ), $ad->ad_title );
+
+	$template = AWPCP_DIR . '/frontend/templates/email-ad-renewed-success-admin.tpl.php';
+	$mail->prepare( $template, compact( 'body' ) );
+
+	return $mail;
+}
+
+
+/**
  * @since 2.1.2
  */
 function awpcp_send_ad_renewed_email($ad) {
-    global $nameofsite;
+	// send notification to the user
+	$user_email = awpcp_ad_renewed_user_email( $ad );
+	$user_email->send();
 
-    $admin_sender_email = awpcp_admin_sender_email_address();
-    $admin_recipient_email = awpcp_admin_recipient_email_address();
-
-    $subject = get_awpcp_option('ad-renewed-email-subject');
-    $subject = sprintf($subject, $ad->ad_title);
-    $introduction = get_awpcp_option('ad-renewed-email-body');
-
-    // send notification to the user
-    ob_start();
-        include(AWPCP_DIR . '/frontend/templates/email-ad-renewed-success-user.tpl.php');
-        $body = ob_get_contents();
-    ob_end_clean();
-
-    awpcp_process_mail($admin_sender_email, $ad->ad_contact_email, $subject, $body, $nameofsite, $admin_recipient_email);
-
-    // send notification to the admin
-    $subject = __('The classifieds listing "%s" has been successfully renewed.', 'AWPCP');
-    $subject = sprintf($subject, $ad->ad_title);
-
-    ob_start();
-        include(AWPCP_DIR . '/frontend/templates/email-ad-renewed-success-admin.tpl.php');
-        $body = ob_get_contents();
-    ob_end_clean();
-
-    awpcp_process_mail($admin_sender_email, awpcp_admin_recipient_email_address(), $subject, $body, $nameofsite, $admin_recipient_email);
+	// send notification to the admin
+	$admin_email = awpcp_ad_renewed_admin_email( $ad, $user_email->body );
+	$admin_email->send();
 }
 
 /**
@@ -349,40 +361,10 @@ function awpcp_renew_ad_success_message($ad, $text=null, $send_email=true) {
  * @param $adid int The id of the Ad the image belongs to.
  * @param $force boolean True if image should be deleted even if curent
  * 						 user is not admin.
+ * @deprecated use awpcp_media_api()->delete()
  */
-function deletepic($picid,$adid,$adtermid,$adkey,$editemail,$force=false)
-{
-	$output = '';
-	$isadmin=checkifisadmin() || $force;
-	$savedemail=get_adposteremail($adid);
-	// TODO: this won't work for email address like jhon-doe@gmail.com
-	$editemail = str_replace('-', '@', $editemail);
-
-	// XXX: an user with the same email as the user who posted the Ad
-	// can delete an image. This is how Ads and Users are associated.
-	if ((strcasecmp($editemail, $savedemail) == 0) || ($isadmin == 1 ))
-	{
-		global $wpdb;
-		$tbl_ad_photos = $wpdb->prefix . "awpcp_adphotos";
-
-		$output .= "<div id=\"classiwrapper\">";
-
-		$images = AWPCP_Image::find(array('id' => (int) $picid, 'ad_id' => (int) $adid));
-		if (!empty($images)) {;
-			if ($images[0]->delete() && $isadmin == 1 && ($force || is_admin())) {
-				$message = __("The image has been deleted","AWPCP");
-				return $message;
-			}
-		}
-
-		$output .= editimages($adtermid,$adid,$adkey,$editemail);
-
-	} else {
-		$output .= __("Unable to delete you image, please contact the administrator.","AWPCP");
-	}
-
-	$output .= "</div>";
-	return $output;
+function deletepic( $picid, $adid, $adtermid, $adkey, $editemail, $force=false ) {
+	_deprecated_function( __FUNCTION__, '3.0.2', 'awpcp_media_api()->delete()' );
 }
 
 
@@ -438,27 +420,35 @@ function deletead($adid, $adkey, $editemail, $force=false, &$errors=array()) {
 
 
 /**
- * @since 2.1.4
+ * @since 3.0.2
  */
-function awpcp_ad_posted_email($ad, $transaction, $message, $notify_admin=true) {
+function awpcp_ad_posted_user_email( $ad, $transaction = null, $message='' ) {
 	$admin_email = awpcp_admin_recipient_email_address();
 
-	// user email
-
-	$user_message = new AWPCP_Email;
-	$user_message->to[] = "{$ad->ad_contact_name} <{$ad->ad_contact_email}>";
-	$user_message->subject = get_awpcp_option('listingaddedsubject');
+	$email = new AWPCP_Email;
+	$email->to[] = "{$ad->ad_contact_name} <{$ad->ad_contact_email}>";
+	$email->subject = get_awpcp_option('listingaddedsubject');
 
 	$template = AWPCP_DIR . '/frontend/templates/email-place-ad-success-user.tpl.php';
-	$user_message->prepare($template, compact('ad', 'transaction', 'message', 'admin_email'));
+	$email->prepare($template, compact('ad', 'transaction', 'message', 'admin_email'));
 
+	return $email;
+}
+
+
+/**
+ * @since 2.1.4
+ */
+function awpcp_ad_posted_email( $ad, $transaction = null, $message = '', $notify_admin = true ) {
 	$result = false;
+
+	// user email
+	$user_message = awpcp_ad_posted_user_email( $ad, $transaction, $message );
 	if (get_awpcp_option('send-user-ad-posted-notification', true)) {
 		$result = $user_message->send();
 	}
 
 	// admin email
-
 	if ($notify_admin && get_awpcp_option('notifyofadposted')) {
 		// grab the body to be included in the email sent to the admin
 		$content = $user_message->body;
@@ -477,88 +467,6 @@ function awpcp_ad_posted_email($ad, $transaction, $message, $notify_admin=true) 
 	}
 
 	return $result;
-}
-
-
-// TODO: update other ad_success_email calls
-function ad_success_email($ad_id, $message, $notify_admin = true) {
-	global $nameofsite;
-
-	$ad = AWPCP_Ad::find_by_id($ad_id);
-
-	if (is_null($ad)) {
-		return __('An un expected error occurred while trying to send a notification email about your Ad being posted. Please contact an Administrator if your Ad is not being properly listed.', 'AWPCP');
-	}
-
-	$adposteremail = $ad->ad_contact_email;
-	$adpostername = $ad->ad_contact_name;
-	$listingtitle = $ad->ad_title;
-	$transaction_id = $ad->ad_transaction_id;
-	$key = $ad->get_access_key();
-
-	$url_showad = url_showad($ad_id);
-	$adlink = $url_showad;
-
-	$listingaddedsubject = get_awpcp_option('listingaddedsubject');
-	$mailbodyuser = get_awpcp_option('listingaddedbody');
-	$subjectadmin = __("New classified ad listing posted","AWPCP");
-
-	// emails are sent in plain text, blank lines in templates are required
-
-	ob_start();
-		include(AWPCP_DIR . '/frontend/templates/email-place-ad-success-user.tpl.php');
-		$user_email_body = ob_get_contents();
-	ob_end_clean();
-
-	ob_start();
-		include(AWPCP_DIR . '/frontend/templates/email-place-ad-success-admin.tpl.php');
-		$admin_email_body = ob_get_contents();
-	ob_end_clean();
-
-
-	// email the buyer
-
-	$admin_sender_email = awpcp_admin_sender_email_address();
-	$admin_recipient_email = awpcp_admin_recipient_email_address();
-
-	$send_success_notification = get_awpcp_option('send-user-ad-posted-notification', true);
-
-	if ($send_success_notification) {
-		$messagetouser = __( 'Your Ad has been submitted and an email has been sent to the email address you provided with information you will need to edit your listing.', 'AWPCP' );
-		$awpcpdosuccessemail = awpcp_process_mail( $admin_sender_email,
-												   $adposteremail,
-												   $listingaddedsubject,
-												   $user_email_body,
-												   $nameofsite,
-												   $admin_recipient_email );
-	} else {
-		$messagetouser = __("Your Ad has been submitted.","AWPCP");
-		$awpcpdosuccessemail = true;
-	}
-
-	if (get_awpcp_option('adapprove') == 1 && $ad->disabled) {
-		$awaitingapprovalmsg = get_awpcp_option('notice_awaiting_approval_ad');
-		$messagetouser .= "<br/><br/>$awaitingapprovalmsg";
-	}
-
-	// email the administrator if the admin has this option set
-
-	if (get_awpcp_option( 'notifyofadposted' ) && $notify_admin) {
-		awpcp_process_mail( $admin_sender_email,
-			 				$admin_recipient_email,
-			 				$subjectadmin,
-			 				$admin_email_body,
-			 				$nameofsite,
-			 				$admin_recipient_email );
-	}
-
-	if ($awpcpdosuccessemail) {
-		$printmessagetouser = "$messagetouser";
-	} else {
-		$printmessagetouser = __("Although your Ad has been submitted, there was a problem encountered while attempting to email your Ad details to the email address you provided.","AWPCP");
-	}
-
-	return $printmessagetouser;
 }
 
 
@@ -595,12 +503,7 @@ function awpcp_render_ads($ads, $context='listings', $config=array(), $paginatio
 
 	$before_content = apply_filters('awpcp-listings-before-content', array(), $context);
 	$after_content = apply_filters('awpcp-listings-after-content', array(), $context);
-
-	if (is_array($pagination)) {
-		$pagination_block = awpcp_pagination($pagination, '');
-	} else {
-		$pagination_block = '';
-	}
+	$pagination_block = is_array( $pagination ) ? awpcp_pagination( $pagination, '' ) : '';
 
 	ob_start();
 		include(AWPCP_DIR . '/frontend/templates/listings.tpl.php');
@@ -643,6 +546,8 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 	$awpcp_browsecats_pageid=awpcp_get_page_id_by_ref('browse-categories-page-name');
 	$awpcpwppostpageid=awpcp_get_page_id_by_ref('main-page-name');
 	$browseadspageid=awpcp_get_page_id_by_ref('browse-ads-page-name');
+
+	$searchadspageid=awpcp_get_page_id_by_ref('search-ads-page-name');
 
 	$displayadthumbwidth = get_awpcp_option('displayadthumbwidth');
 
@@ -708,6 +613,10 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 
 			if ($adorcat == 'cat') {
 				$tpname = get_permalink($awpcp_browsecats_pageid);
+			} elseif ($adorcat == 'search') {
+				$tpname = get_permalink($searchadspageid);
+			} elseif ( preg_match( '/^custom:/', $adorcat ) ) {
+				$tpname = str_replace( 'custom:', '', $adorcat );
 			} else {
 				$tpname = get_permalink($browseadspageid);
 			}
@@ -781,18 +690,24 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 		}
 
 		if ($ads_exist) {
-			$output .= "<div class=\"fixfloat\"></div><div class=\"pager\">$pager1</div>";
-			$output .= "<div class=\"changecategoryselect\"><form method=\"post\" action=\"$url_browsecatselect\"><select style='float:left' name=\"category_id\"><option value=\"-1\">";
-			$output .= __("Select Category","AWPCP");
-			$output .= "</option>";
-			$allcategories=get_categorynameidall($show_category_id='');
-			$output .= "$allcategories";
-			$output .= "</select><input type=\"hidden\" name=\"a\" value=\"browsecat\" />&nbsp;<input class=\"button\" type=\"submit\" value=\"";
-			$output .= __("Change Category","AWPCP");
-			$output .= "\" /></form></div><div id='awpcpcatname' class=\"fixfloat\">";
-
 			$category_id = (int) awpcp_request_param('category_id', -1);
 			$category_id = $category_id === -1 ? (int) get_query_var('cid') : $category_id;
+
+			$output .= "<div class=\"changecategoryselect\"><form method=\"post\" action=\"$url_browsecatselect\">";
+
+			$output .= '<div class="awpcp-category-dropdown-container">';
+			$dropdown = new AWPCP_CategoriesDropdown();
+			$output .= $dropdown->render( array( 'context' => 'search', 'name' => 'category_id', 'selected' => $category_id ) );
+			$output .= '</div>';
+
+			$output .= "<input type=\"hidden\" name=\"a\" value=\"browsecat\" />&nbsp;<input class=\"button\" type=\"submit\" value=\"";
+			$output .= __("Change Category","AWPCP");
+			$output .= "\" /></form></div>";
+
+			$output .= "<div class=\"pager\">$pager1</div><div class=\"fixfloat\"></div>";
+
+			$output .= "<div id='awpcpcatname' class=\"fixfloat\">";
+
 			if ($category_id > 0) {
 				$output .= "<h3>" . __("Category: ", "AWPCP") . get_adcatname($category_id) . "</h3>";
 			}
@@ -832,19 +747,27 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 
 /**
  * Generates HTML to display login form when user is not registered.
+ * @tested
  */
 function awpcp_login_form($message=null, $redirect=null) {
 	if ( is_null( $redirect ) ) {
 		$redirect = awpcp_current_url();
 	}
 
-	$register_url = add_query_arg( array(
-		'redirect_to' => add_query_arg( 'register', true, $redirect ),
-	), site_url( 'wp-login.php?action=register', 'login' ) );
+	$registration_url = get_awpcp_option( 'registrationurl' );
+	if ( empty( $registration_url ) ) {
+		if ( function_exists( 'wp_registration_url' ) ) {
+			$registration_url = wp_registration_url();
+		} else {
+			$registration_url = site_url( 'wp-login.php?action=register', 'login' );
+		}
+	}
 
-	$lost_password_url = add_query_arg( array(
-		'redirect_to' => add_query_arg( 'reset', true, $redirect ),
-	), wp_lostpassword_url() );
+	$redirect_to = urlencode( add_query_arg( 'register', true, $redirect ) );
+	$register_url = add_query_arg( array( 'redirect_to' => $redirect_to ), $registration_url );
+
+	$redirect_to = urlencode( add_query_arg( 'reset', true, $redirect ) );
+	$lost_password_url = add_query_arg( array( 'redirect_to' => $redirect_to ), wp_lostpassword_url() );
 
 	ob_start();
 		include( AWPCP_DIR . '/frontend/templates/login-form.tpl.php' );
@@ -861,62 +784,4 @@ function awpcp_user_payment_terms_sort($a, $b) {
 		$result = strcasecmp($a->name, $b->name);
 	}
 	return $result;
-}
-
-
-function awpcp_get_user_and_payment_terms_information() {
-	$users = awpcp_get_users();
-	$payment_terms = array();
-
-	$payments = awpcp_payments_api();
-
-	foreach ($users as $k => $user) {
-		$user_terms = $payments->get_user_payment_terms($user->ID);
-		$ids = array();
-
-		foreach ($user_terms as $type => $terms) {
-			foreach ($terms as $term) {
-				$id = "{$term->type}-{$term->id}";
-				if (!isset($payment_terms[$id])) {
-					$payment_terms[$id] = $term;
-				}
-				$ids[] = $id;
-			}
-		}
-		$users[$k]->payment_terms = join(',', $ids);
-	}
-
-	usort($payment_terms, 'awpcp_user_payment_terms_sort');
-
-	return array($users, $payment_terms);
-}
-
-
-/**
- * Render the users dropdown used to post an Ad on behalf of another user.
- *
- * @param $user_id 		ID of selected user. Set to false to select none
- * 						of the users in the dropdown.
- */
-function awpcp_render_users_dropdown($user_id='', $payment_term='') {
-	global $current_user;
-	get_currentuserinfo();
-
-	list($users, $payment_terms) = awpcp_get_user_and_payment_terms_information();
-
-	$json = json_encode($users);
-
-	// TODO: is this really necesary?
-	if ($user_id !== false && empty($user_id) && $current_user) {
-		$selected = $current_user->ID;
-	}
-
-	usort($payment_terms, 'awpcp_user_payment_terms_sort');
-
-	ob_start();
-		include(AWPCP_DIR . '/frontend/templates/page-place-ad-details-step-users-dropdown.tpl.php');
-		$html = ob_get_contents();
-	ob_end_clean();
-
-	return $html;
 }

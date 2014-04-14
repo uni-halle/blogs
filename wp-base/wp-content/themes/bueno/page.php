@@ -1,37 +1,39 @@
-<?php get_header(); ?>
-       
-    <div id="content" class="col-full">
-		<div id="main" class="col-left">
-		
-			<?php if ( get_option( 'woo_breadcrumbs' ) == 'true') { yoast_breadcrumb('<div id="breadcrumb"><p>','</p></div>'); } ?>
-            
-            <?php if (have_posts()) : $count = 0; ?>
-            <?php while (have_posts()) : the_post(); $count++; ?>
-                                                                        
-                <div class="post">
+<?php
+/**
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
+ *
+ * @package bueno
+ */
 
-                    <h1 class="title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
-                    
-                    <div class="entry">
-                    	<?php the_content(); ?>
-                    </div>
+get_header(); ?>
 
-                </div><!-- /.post -->
-                
-                <?php if ('open' == $post->comment_status) : ?>
-	                <?php comments_template(); ?>
-				<?php endif; ?>
-                                                    
-			<?php endwhile; else: ?>
-				<div class="post">
-                	<p><?php _e('Sorry, no posts matched your criteria.', 'woothemes') ?></p>
-                </div><!-- /.post -->
-            <?php endif; ?>  
-        
-		</div><!-- /#main -->
+	<div id="primary" class="span8 <?php echo esc_attr( of_get_option('blog_sidebar_pos') ) ?>">
+		<div id="content" class="site-content" role="main">
 
-        <?php get_sidebar(); ?>
+			<?php 
+				// Include slider for static home page
+				get_template_part( 'templates/slider' ); 
+			?>
 
-    </div><!-- /#content -->
-		
+			<?php while ( have_posts() ) : the_post(); ?>
+				<div class="page_wrap">
+					<h1 class="entry-title"><?php the_title(); ?></h1>
+					<?php the_content(); ?>		
+				</div>
+				<?php
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( comments_open() || '0' != get_comments_number() )
+						comments_template();
+				?>
+
+			<?php endwhile; // end of the loop. ?>
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -15,7 +15,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         parent::__construct($page, $title);
     }
 
-    protected function get_ad() {
+    public function get_ad() {
         if (!isset($this->ad)) $this->ad = null;
 
         if (is_null($this->ad)) {
@@ -27,12 +27,12 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         return $this->ad;
     }
 
-    protected function get_edit_hash($ad) {
+    public function get_edit_hash($ad) {
         return wp_create_nonce("edit-ad-{$ad->ad_id}");
     }
 
     protected function verify_edit_hash($ad) {
-        return wp_verify_nonce(awpcp_request_param('hash'), "edit-ad-{$ad->ad_id}");
+        return wp_verify_nonce(awpcp_request_param('edit-hash'), "edit-ad-{$ad->ad_id}");
     }
 
     protected function is_user_allowed_to_edit($ad) {
@@ -45,23 +45,6 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         return false;
     }
 
-    protected function send_email_notifications($ad) {
-        $messages = $this->get_ad_notices($ad);
-
-        // send user notification
-        if (AWPCP_Ad::belongs_to_user($ad->ad_id, wp_get_current_user()->ID)) {
-            awpcp_ad_updated_email($ad, join("\n\n", $messages));
-        }
-
-        $ad_approve = get_awpcp_option('adapprove') == 1;
-        $images_approve = get_awpcp_option('imagesapprove') == 1;
-
-        // send admin notification
-        if (($ad_approve || $images_approve) && $ad->disabled) {
-            awpcp_ad_awaiting_approval_email($ad, $ad_approve, $images_approve);
-        }
-    }
-
     protected function _dispatch($default=null) {
         $is_admin_user = awpcp_current_user_is_admin();
         $user = wp_get_current_user();
@@ -69,13 +52,14 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         if ($user->ID && !is_admin() && get_awpcp_option('enable-user-panel') == 1) {
             $url = admin_url('admin.php?page=awpcp-panel');
             $message = __('Please go to the Ad Management panel to edit your Ads.', 'AWPCP');
-            $message = sprintf('%s <a href="%s">%s</a>', $message, $url, __('Click here', 'AWPCP'));
+            $message = sprintf('%s <a href="%s">%s</a>.', $message, $url, __('Click here', 'AWPCP'));
             return $this->render('content', awpcp_print_message($message));
         }
 
         $ad = $this->get_ad();
+
         if (!is_null($ad) && !$this->is_user_allowed_to_edit($ad)) {
-            $message = __('You are not allowed to edit the especified Ad.', 'AWPCP');
+            $message = __('You are not allowed to edit the specified Ad.', 'AWPCP');
             return $this->render('content', awpcp_print_error($message));
         }
 
@@ -161,9 +145,11 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         }
     }
 
-    public function details_step_form($ad, $form, $errors=array()) {
+    public function details_step_form($ad, $form=array(), $errors=array()) {
         $form = $this->get_posted_details( $form );
         $form = array_merge( $form, $this->get_characters_allowed( $ad->ad_id ) );
+
+        $form['regions-allowed'] = $this->get_regions_allowed( $ad->ad_id );
 
         // if there are errors then the user already sent edited information,
         // and we don't need to provide defaults from Ad object
@@ -173,18 +159,44 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
             }
         }
 
-        $hidden = array('hash' => $this->get_edit_hash($ad));
+        // overwrite user email and name using Profile information
+        if ( $ad->user_id ) {
+            $info = $this->get_user_info( $ad->user_id );
 
-        return $this->details_form($form, true, $hidden, $errors);
+            $fields = array( 'ad_contact_name', 'ad_contact_email', 'ad_contact_phone' );
+            foreach ($fields as $field) {
+                if ( empty( $form[ $field ] ) && isset( $info[ $field ] ) && ! empty( $info[ $field ] ) ) {
+                    $form[ $field ] = $info[ $field ];
+                }
+            }
+        }
+
+        $hidden = array('edit-hash' => $this->get_edit_hash($ad));
+        $required = $this->get_required_fields();
+
+        if ( is_admin() ) {
+            $manage_attachments = __( 'Manage Attachments', 'AWPCP' );
+            $url = add_query_arg( array( 'action' => 'manage-images', 'id' => $ad->ad_id ), $this->url() );
+            $link = sprintf( '<strong><a href="%s" title="%s">%s</a></strong>', $url, esc_attr( $manage_attachments ), esc_html( $manage_attachments ) );
+            $message = __( "Go to the %s section to manage the Images and Attachments for this Ad.", "AWPCP");
+
+            $this->messages[] = sprintf( $message, $link );
+        }
+
+        return $this->details_form($form, true, $hidden, $required, $errors);
     }
 
-    public function save_details_step($errors=array()) {
+    /**
+     * @param transaction   unused but required to match method
+     *                          signature in parent class.
+     */
+    public function save_details_step($transaction=null, $errors=array()) {
         global $wpdb, $hasextrafieldsmodule;
 
         $ad = $this->get_ad();
 
         if (is_null($ad)) {
-            $message = __('The especified Ad doesn\'t exists.', 'AWPCP');
+            $message = __('The specified Ad doesn\'t exists.', 'AWPCP');
             return $this->render('content', awpcp_print_error($message));
         }
 
@@ -192,7 +204,9 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $characters = $this->get_characters_allowed( $ad->ad_id );
         $errors = array();
 
-        if (!$this->validate_details($data, true, $errors)) {
+        $payment_term = awpcp_payments_api()->get_ad_payment_term( $ad );
+
+        if ( ! $this->validate_details( $data, true, $payment_term, $errors ) ) {
             return $this->details_step_form($ad, $data, $errors);
         }
 
@@ -210,25 +224,30 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $ad->ad_contact_phone = $data['ad_contact_phone'];
         $ad->ad_contact_email = $data['ad_contact_email'];
         $ad->websiteurl = $data['websiteurl'];
-        $ad->ad_country = $data['ad_country'];
-        $ad->ad_state = $data['ad_state'];
-        $ad->ad_city = $data['ad_city'];
-        $ad->ad_county_village = $data['ad_county_village'];
-        $ad->ad_item_price = awpcp_parse_money($data['ad_item_price']) * 100;
+        $ad->ad_item_price = $data['ad_item_price'] * 100;
         $ad->ad_last_updated = current_time('mysql');
 
         if (awpcp_current_user_is_admin()) {
-            $ad->ad_startdate = awpcp_time($data['start_date']);
-            $ad->ad_enddate = awpcp_time($data['end_date']);
+            $ad->ad_startdate = awpcp_set_datetime_date( $ad->ad_startdate, $data['start_date'] );
+            $ad->ad_enddate = awpcp_set_datetime_date( $ad->ad_enddate, $data['end_date'] );
         }
 
         if (awpcp_current_user_is_admin() && !empty($data['ad_category'])) {
-            $ad->ad_category_id = $data['ad_category'];
+            $category = AWPCP_Category::find_by_id( $data['ad_category'] );
+            if ( ! is_null( $category ) ) {
+                $ad->ad_category_id = $category->id;
+                $ad->ad_category_parent_id = $category->parent;
+            }
         }
 
         if (!$ad->save()) {
             $errors[] = __('There was an unexpected error trying to save your Ad details. Please try again or contact an administrator.', 'AWPCP');
             return $this->details_step_form($ad, $data, $errors);
+        }
+
+        if ( awpcp_current_user_is_admin() || get_awpcp_option( 'allow-regions-modification' ) ) {
+            $regions_allowed = $this->get_regions_allowed( $ad->ad_id );
+            awpcp_basic_regions_api()->update_ad_regions( $ad, $data['regions'], $regions_allowed );
         }
 
         do_action('awpcp_edit_ad', $ad);
@@ -248,15 +267,14 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
             return $this->render('content', awpcp_print_error($message));
         }
 
+        $output =  apply_filters( 'awpcp-edit-ad-upload-files-step', false, $this );
+
+        if ( false !== $output ) return $output;
+
         $errors = array();
-        $this->upload_images($ad, $errors);
+        $this->handle_file_actions($ad, $errors);
 
-        $payment_term = awpcp_payments_api()->get_ad_payment_term($ad);
-
-        $images_allowed = $payment_term->images;
-        $images_uploaded = $ad->get_total_images_uploaded();
-        $images_left = max($images_allowed - $images_uploaded, 0);
-        $max_image_size = get_awpcp_option('maximagesize');
+        extract( $params = $this->get_images_config( $ad ) );
 
         // see if we can move to the next step
         if (!get_awpcp_option('imagesallowdisallow')) {
@@ -267,37 +285,47 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
             return $this->finish_step();
         }
 
-
         // we are still here... let's show the upload images form
-        $params = array(
-            'images_left' => $images_left,
-            'images_uploaded' => $images_uploaded,
-            'max_image_size' => $max_image_size,
-            'images' => awpcp_get_ad_images($ad->ad_id),
+
+        $params = array_merge( $params, array( 'errors' => $errors ) );
+
+        return $this->upload_images_form( $ad, $params );
+    }
+
+    public function upload_images_form( $ad, $params=array() ) {
+        if ( awpcp_current_user_is_admin() || ! get_awpcp_option( 'imagesapprove' ) ) {
+            $show_image_actions = true;
+        } else {
+            $show_image_actions = false;
+        }
+
+        $params = array_merge( $params, array(
+            'images' => awpcp_media_api()->find_images_by_ad_id( $ad->ad_id ),
             'hidden' => array(
                 'ad_id' => $ad->ad_id,
-                'hash' => $this->get_edit_hash($ad)),
+                'edit-hash' => $this->get_edit_hash( $ad ) ),
             'messages' => $this->messages,
-            'errors' => $errors
-        );
+            'actions' => array(
+                'enable' => $show_image_actions,
+                'disable' => $show_image_actions,
+            ),
+            'next' => __( 'Finish', 'AWPCP' ),
+        ) );
 
-        return $this->upload_images_form($ad, $params);
+        $template = AWPCP_DIR . '/frontend/templates/page-place-ad-upload-images-step.tpl.php';
+
+        return $this->render( $template, $params );
     }
 
     public function finish_step() {
         $ad = $this->get_ad();
 
         if (is_null($ad)) {
-            $message = __('The especified Ad doesn\'t exists.', 'AWPCP');
+            $message = __('The specified Ad doesn\'t exists.', 'AWPCP');
             return $this->render('content', awpcp_print_error($message));
         }
 
-        // TODO: move awpcp_calculate_ad_disabled_state() function to Ad model
-        if ($ad->disabled && !awpcp_calculate_ad_disabled_state($ad->ad_id)) {
-            $ad->enable();
-        }
-
-        $this->send_email_notifications($ad);
+        awpcp_listings_api()->consolidate_existing_ad( $ad );
 
         if (is_admin()) {
             $message = __('The Ad has been edited successfully. <a href="%s">Go back to view listings</a>.', 'AWPCP');
@@ -309,7 +337,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
         $template = AWPCP_DIR . '/frontend/templates/page-place-ad-finish-step.tpl.php';
         $params = array(
-            'messages' => array_merge($this->messages, $this->get_ad_notices($ad)),
+            'messages' => array_merge( $this->messages, awpcp_listings_api()->get_ad_alerts( $ad ) ),
             'edit' => true,
             'ad' => $ad
         );
@@ -321,7 +349,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $ad = $this->get_ad();
 
         if (is_null($ad)) {
-            $message = __('The especified Ad doesn\'t exists.', 'AWPCP');
+            $message = __('The specified Ad doesn\'t exists.', 'AWPCP');
             return $this->render('content', awpcp_print_error($message));
         }
 

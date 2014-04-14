@@ -2,23 +2,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Slideshow Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-09 23:54+0100\n"
-"PO-Revision-Date: 2013-09-09 23:54+0100\n"
-"Last-Translator: Åke Isacsson <ake@nojdkund.se>\n"
-"Language-Team: Stefan Boonstra <wordpress@stefanboonstra.com>\n"
+"POT-Creation-Date: 2014-03-19 20:36+0100\n"
+"PO-Revision-Date: 2014-03-19 20:38+0100\n"
+"Last-Translator: Wilhelm Svenselius <wilhelm.svenselius@gmail.com>\n"
+"Language-Team: Wilhelm Svenselius <wilhelm.svenselius@gmail.com>\n"
+"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: classes/SlideshowPluginGeneralSettings.php:82
 #: classes/SlideshowPluginGeneralSettings.php:83
 #: views/SlideshowPluginGeneralSettings/general-settings.php:14
 msgid "General Settings"
-msgstr "Genrella Inställningar"
+msgstr "Inställningar"
 
 #: classes/SlideshowPluginGeneralSettings.php:150
 msgid "New"
@@ -29,69 +30,69 @@ msgid "Are you sure you want to delete this custom style?"
 msgstr "Vill du verkligen radera denna anpassade stil?"
 
 #: classes/SlideshowPluginGeneralSettings.php:196
-#: classes/SlideshowPluginInstaller.php:714
+#: classes/SlideshowPluginInstaller.php:803
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:6
 msgid "Light"
 msgstr "Ljus"
 
 #: classes/SlideshowPluginGeneralSettings.php:197
-#: classes/SlideshowPluginInstaller.php:714
+#: classes/SlideshowPluginInstaller.php:803
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:7
 msgid "Dark"
 msgstr "Mörk"
 
 #: classes/SlideshowPluginGeneralSettings.php:353
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:57
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:139
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:143
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: classes/SlideshowPluginInstaller.php:711
+#: classes/SlideshowPluginInstaller.php:800
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:472
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:70
-#: views/SlideshowPluginSlideshowSlide/backend_video.php:37
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:111
+#: views/SlideshowPluginSlideshowSlide/backend_video.php:43
 msgid "Yes"
 msgstr "Ja"
 
-#: classes/SlideshowPluginInstaller.php:712
+#: classes/SlideshowPluginInstaller.php:801
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:473
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:71
-#: views/SlideshowPluginSlideshowSlide/backend_video.php:38
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:112
+#: views/SlideshowPluginSlideshowSlide/backend_video.php:44
 msgid "No"
 msgstr "Nej"
 
-#: classes/SlideshowPluginInstaller.php:714
+#: classes/SlideshowPluginInstaller.php:803
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:610
 msgid "The style used for this slideshow"
 msgstr "Vald stil för detta bildspel"
 
-#: classes/SlideshowPluginInstaller.php:714
+#: classes/SlideshowPluginInstaller.php:803
 msgid "Custom"
 msgstr "Anpassa"
 
-#: classes/SlideshowPluginInstaller.php:715
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:122
+#: classes/SlideshowPluginInstaller.php:804
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:126
 msgid "Custom style editor"
-msgstr "Redigerare för anpassade stilar"
+msgstr "Redigera anpassade stilar"
 
-#: classes/SlideshowPluginInstaller.php:716
+#: classes/SlideshowPluginInstaller.php:805
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:518
 msgid "Animation used for transition between slides"
-msgstr "Animering som används för växling mellan bilder"
+msgstr "Animering för bildövergångar"
 
-#: classes/SlideshowPluginInstaller.php:716
+#: classes/SlideshowPluginInstaller.php:805
 msgid "Slide"
 msgstr "Bildspelsbild"
 
-#: classes/SlideshowPluginInstaller.php:716
+#: classes/SlideshowPluginInstaller.php:805
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Fade"
 msgstr "Tona"
 
-#: classes/SlideshowPluginInstaller.php:716
-#: classes/SlideshowPluginInstaller.php:717
-#: classes/SlideshowPluginInstaller.php:718
-#: classes/SlideshowPluginInstaller.php:719
+#: classes/SlideshowPluginInstaller.php:805
+#: classes/SlideshowPluginInstaller.php:806
+#: classes/SlideshowPluginInstaller.php:807
+#: classes/SlideshowPluginInstaller.php:808
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:548
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:549
@@ -99,33 +100,33 @@ msgstr "Tona"
 msgid "Animation"
 msgstr "Animering"
 
-#: classes/SlideshowPluginInstaller.php:717
+#: classes/SlideshowPluginInstaller.php:806
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:519
 msgid "Number of seconds the slide takes to slide in"
 msgstr "Antal sekunder för bilden att glida in"
 
-#: classes/SlideshowPluginInstaller.php:718
+#: classes/SlideshowPluginInstaller.php:807
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:520
 msgid "Number of seconds the description takes to slide in"
-msgstr "Antal sekunder det tar innan beskrivningen visas"
+msgstr "Antal sekunder innan beskrivningen visas"
 
-#: classes/SlideshowPluginInstaller.php:719
+#: classes/SlideshowPluginInstaller.php:808
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:521
 msgid "Seconds between changing slides"
 msgstr "Antal sekunder mellan bilder"
 
-#: classes/SlideshowPluginInstaller.php:720
+#: classes/SlideshowPluginInstaller.php:809
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:522
 msgid "Number of slides to fit into one slide"
-msgstr "Antal bildelsbilder som får plats i en bildserie"
+msgstr "Antal bilder som får plats i en serie"
 
-#: classes/SlideshowPluginInstaller.php:720
-#: classes/SlideshowPluginInstaller.php:721
-#: classes/SlideshowPluginInstaller.php:722
-#: classes/SlideshowPluginInstaller.php:723
-#: classes/SlideshowPluginInstaller.php:724
-#: classes/SlideshowPluginInstaller.php:725
-#: classes/SlideshowPluginInstaller.php:726
+#: classes/SlideshowPluginInstaller.php:809
+#: classes/SlideshowPluginInstaller.php:810
+#: classes/SlideshowPluginInstaller.php:811
+#: classes/SlideshowPluginInstaller.php:812
+#: classes/SlideshowPluginInstaller.php:813
+#: classes/SlideshowPluginInstaller.php:814
+#: classes/SlideshowPluginInstaller.php:815
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:551
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:552
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:553
@@ -138,40 +139,40 @@ msgstr "Antal bildelsbilder som får plats i en bildserie"
 msgid "Display"
 msgstr "Visa"
 
-#: classes/SlideshowPluginInstaller.php:721
+#: classes/SlideshowPluginInstaller.php:810
 msgid "Width of the slideshow, set to parent&#39;s width on 0"
-msgstr "Bredd för bildspel, satt till parent&#39;s bredd på 0"
+msgstr "Bredd för bildspel, satt till parent&#39;s bredd om 0"
 
-#: classes/SlideshowPluginInstaller.php:722
+#: classes/SlideshowPluginInstaller.php:811
 msgid "Height of the slideshow"
 msgstr "Höjd på bildspelet"
 
-#: classes/SlideshowPluginInstaller.php:723
+#: classes/SlideshowPluginInstaller.php:812
 msgid "Height of the description boxes"
 msgstr "Höjd på beskrivningsyta"
 
-#: classes/SlideshowPluginInstaller.php:724
+#: classes/SlideshowPluginInstaller.php:813
 msgid "Fit image into slide (stretching it)"
-msgstr "Anpassa bild till bildspelsbildsytan (skala om ej propotionellt))"
+msgstr "Anpassa bild till bildspelsytan (sträck ut)"
 
-#: classes/SlideshowPluginInstaller.php:725
+#: classes/SlideshowPluginInstaller.php:814
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:529
 msgid "Show title and description"
 msgstr "Visa titel och beskrivning"
 
-#: classes/SlideshowPluginInstaller.php:726
+#: classes/SlideshowPluginInstaller.php:815
 msgid "Hide description box, it will pop up when a mouse hovers over the slide"
 msgstr "Dölj beskrivning, visas vid mus-över"
 
-#: classes/SlideshowPluginInstaller.php:727
+#: classes/SlideshowPluginInstaller.php:816
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:531
 msgid "Automatically slide to the next slide"
-msgstr "Byt automatiskt till nästa bildspelsbild"
+msgstr "Byt automatiskt till nästa bild"
 
-#: classes/SlideshowPluginInstaller.php:727
-#: classes/SlideshowPluginInstaller.php:728
-#: classes/SlideshowPluginInstaller.php:729
-#: classes/SlideshowPluginInstaller.php:730
+#: classes/SlideshowPluginInstaller.php:816
+#: classes/SlideshowPluginInstaller.php:817
+#: classes/SlideshowPluginInstaller.php:818
+#: classes/SlideshowPluginInstaller.php:819
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:560
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:561
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:562
@@ -184,108 +185,131 @@ msgstr "Byt automatiskt till nästa bildspelsbild"
 msgid "Control"
 msgstr "Kontroll"
 
-#: classes/SlideshowPluginInstaller.php:728
+#: classes/SlideshowPluginInstaller.php:817
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:532
 msgid "Return to the beginning of the slideshow after last slide"
 msgstr "Återgå till början av bildspelet efter sista bilden"
 
-#: classes/SlideshowPluginInstaller.php:729
+#: classes/SlideshowPluginInstaller.php:818
 msgid "Activate buttons (so the user can scroll through the slides)"
-msgstr "Aktivera knappar (så användaren kan växla mellan bildspelsbilder)"
+msgstr "Aktivera knappar (för att gå mellan bilder)"
 
-#: classes/SlideshowPluginInstaller.php:730
+#: classes/SlideshowPluginInstaller.php:819
 msgid "Show control panel (play and pause button)"
-msgstr "Visa kontrollpanel (spela och pausa knappar)"
+msgstr "Visa kontrollpanel (spela/pausa-knappar)"
 
-#: classes/SlideshowPluginPostType.php:38
+#: classes/SlideshowPluginPostType.php:45
 msgid "Slideshows"
 msgstr "Bildspel"
 
-#: classes/SlideshowPluginPostType.php:39
+#: classes/SlideshowPluginPostType.php:46
 #: views/SlideshowPluginWidget/form.php:7
 msgid "Slideshow"
 msgstr "Bildspel"
 
-#: classes/SlideshowPluginPostType.php:40
+#: classes/SlideshowPluginPostType.php:47
 msgid "Add New Slideshow"
 msgstr "Lägg till nytt bildspel"
 
-#: classes/SlideshowPluginPostType.php:41
+#: classes/SlideshowPluginPostType.php:48
 msgid "Edit slideshow"
 msgstr "Redigera bildspel"
 
-#: classes/SlideshowPluginPostType.php:42
+#: classes/SlideshowPluginPostType.php:49
 msgid "New slideshow"
 msgstr "Nytt bildspel"
 
-#: classes/SlideshowPluginPostType.php:43
+#: classes/SlideshowPluginPostType.php:50
 msgid "View slideshow"
 msgstr "Visa bildspel"
 
-#: classes/SlideshowPluginPostType.php:44
+#: classes/SlideshowPluginPostType.php:51
 msgid "Search slideshows"
 msgstr "Sök bildspel"
 
-#: classes/SlideshowPluginPostType.php:45
-#: classes/SlideshowPluginPostType.php:46
+#: classes/SlideshowPluginPostType.php:52
+#: classes/SlideshowPluginPostType.php:53
 msgid "No slideshows found"
 msgstr "Hittade inga bildspel"
 
-#: classes/SlideshowPluginPostType.php:91
+#: classes/SlideshowPluginPostType.php:98
 msgid "Information"
 msgstr "Information"
 
-#: classes/SlideshowPluginPostType.php:100
+#: classes/SlideshowPluginPostType.php:107
 msgid "Slides List"
 msgstr "Bildspelslista"
 
-#: classes/SlideshowPluginPostType.php:109
+#: classes/SlideshowPluginPostType.php:116
 msgid "Slideshow Style"
-msgstr "Bildspels stil"
+msgstr "Bildspelsstil"
 
-#: classes/SlideshowPluginPostType.php:118
+#: classes/SlideshowPluginPostType.php:125
 msgid "Slideshow Settings"
-msgstr "Bildspel inställningar"
+msgstr "Inställningar för bildspel"
 
-#: classes/SlideshowPluginPostType.php:174
-#: classes/SlideshowPluginSlideInserter.php:222
+#: classes/SlideshowPluginPostType.php:173
+msgid "Slideshow created"
+msgstr ""
+
+#: classes/SlideshowPluginPostType.php:177
+msgid "Slideshow updated"
+msgstr ""
+
+#: classes/SlideshowPluginPostType.php:224
+#: classes/SlideshowPluginSlideInserter.php:238
 #: views/SlideshowPluginPostType/slides.php:2
 msgid "Insert"
 msgstr "Infoga"
 
-#: classes/SlideshowPluginPostType.php:183
+#: classes/SlideshowPluginPostType.php:232
+msgid "Open all"
+msgstr ""
+
+#: classes/SlideshowPluginPostType.php:234
+msgid "Close all"
+msgstr ""
+
+#: classes/SlideshowPluginPostType.php:240
 #: views/SlideshowPluginPostType/slides.php:10
 msgid "Add slides to this slideshow by using one of the buttons above."
-msgstr "Lägg till bildspelsbilder genom knapparna ovan."
+msgstr "Lägg till bilder genom knapparna ovan."
+
+#: classes/SlideshowPluginPostType.php:320
+msgid "Duplicate"
+msgstr ""
+
+#: classes/SlideshowPluginPostType.php:371
+msgid "Copy"
+msgstr ""
 
 #: classes/SlideshowPluginShortcode.php:148
 msgid "No slideshow selected."
 msgstr "Inget bildspel valt."
 
-#: classes/SlideshowPluginSlideInserter.php:178
+#: classes/SlideshowPluginSlideInserter.php:194
 msgid "More results loaded"
 msgstr "Fler sökresultat laddade"
 
-#: classes/SlideshowPluginSlideInserter.php:233
+#: classes/SlideshowPluginSlideInserter.php:249
 msgid "Load more results"
 msgstr "Ladda fler resultat"
 
-#: classes/SlideshowPluginSlideInserter.php:244
+#: classes/SlideshowPluginSlideInserter.php:260
 msgid "No images were found, click here to upload some."
-msgstr "Inga bilder hittades, klicka här för att ladda upp några."
+msgstr "Inga bilder hittades, klicka här för att ladda upp."
 
-#: classes/SlideshowPluginSlideInserter.php:317
+#: classes/SlideshowPluginSlideInserter.php:332
 msgid "Are you sure you want to delete this slide?"
 msgstr "Vill du verkligen radera denna bildspelsbild?"
 
-#: classes/SlideshowPluginSlideInserter.php:318
+#: classes/SlideshowPluginSlideInserter.php:333
 msgid "Insert image slide"
-msgstr ""
+msgstr "Infoga bild"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:523
 msgid "Maximum width. When maximum width is 0, maximum width is ignored"
-msgstr ""
-"Maximal bredd. När maximal bredd är satt till 0, är maximal bredd ignorerad"
+msgstr "Maximal bredd (0 för att ignorera)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:524
 msgid "http://en.wikipedia.org/wiki/Aspect_ratio_(image)"
@@ -300,7 +324,7 @@ msgstr "Mer info"
 msgid ""
 "Proportional relationship%s between slideshow's width and height (width:"
 "height)"
-msgstr "Propotionell relation%s mellan bildspelets bredd och höjd (bredd:höjd)"
+msgstr "Proportionell relation%s mellan bredd och höjd (bredd:höjd)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:525
 msgid "Slideshow's height"
@@ -308,7 +332,7 @@ msgstr "Bildspelets höjd"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:526
 msgid "Image behaviour"
-msgstr ""
+msgstr "Bildplacering"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:527
 msgid "Shrink slideshow's height when width shrinks"
@@ -317,16 +341,15 @@ msgstr "Minska bildspelets höjd när bredden minskas"
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:528
 msgid ""
 "Enable responsiveness (Shrink slideshow's width when page's width shrinks)"
-msgstr ""
-"Aktivara anpassning (förminska bildspelets bredd när sidans bredd minskas)"
+msgstr "Anpassa bildspelets bredd till sidbredden"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:530
 msgid "Hide description box, pop up when mouse hovers over"
-msgstr "Dölj beskrivnng, visas när mus-över"
+msgstr "Dölj beskrivnng, visas vid mus-över"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:533
 msgid "Pause slideshow when mouse hovers over"
-msgstr "Pausa bildspelet när mus-över"
+msgstr "Pausa bildspelet vid mus-över"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:534
 msgid "Activate navigation buttons"
@@ -334,7 +357,7 @@ msgstr "Aktivera navigeringsknappar"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:535
 msgid "Hide navigation buttons, show when mouse hovers over"
-msgstr "Dölj navigeringsknappar, visa när mus-över"
+msgstr "Dölj navigeringsknappar, visa vid mus-över"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:536
 msgid "Activate pagination"
@@ -342,11 +365,11 @@ msgstr "Aktivera sidnumrering"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:537
 msgid "Hide pagination, show when mouse hovers over"
-msgstr "Dölj sidnumrering, visa när mus-över"
+msgstr "Dölj sidnumrering, visa vid mus-över"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:538
 msgid "Activate control panel (play and pause button)"
-msgstr "Aktivera kontrollpanel (spela och paus knapp)"
+msgstr "Aktivera kontrollpanel (spela/pausa-knapp)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:539
 msgid "Hide control panel, show when mouse hovers over"
@@ -354,20 +377,20 @@ msgstr "Göm kontrollpanel, visa när mus-över"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:540
 msgid "Wait until the next slide has loaded before showing it"
-msgstr ""
+msgstr "Visa inte nästa bild förrän den är laddad"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:541
 msgid "Show a loading icon until the first slide appears"
-msgstr ""
+msgstr "Visa en vänteikon innan den första bilden laddats"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:542
 msgid "Randomize slides"
-msgstr "Slumpvisa bildspelsbilder"
+msgstr "Visa i slumpmässig ordning"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:543
 #, php-format
 msgid "Avoid content filter (disable if '%s' is shown)"
-msgstr "Undvik innehåll filter (inaktivera om '%s' visas)"
+msgstr "Undvik innehållsfilter (inaktivera om '%s' visas)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Slide Left"
@@ -391,19 +414,19 @@ msgstr "Tona direkt"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Random Animation"
-msgstr "Slumpvald animering"
+msgstr "Slumpmässigt"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:555
 msgid "Natural and centered"
-msgstr ""
+msgstr "Naturlig och centrerad"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:555
 msgid "Crop to fit"
-msgstr ""
+msgstr "Beskär och anpassa"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:555
 msgid "Stretch to fit"
-msgstr ""
+msgstr "Sträck ut och anpassa"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:569
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:570
@@ -414,19 +437,39 @@ msgstr "Diverse"
 
 #: classes/SlideshowPluginWidget.php:23
 msgid "Enables you to show your slideshows in the widget area of your website."
-msgstr "Gör att du kan visa dina bildspel i Widget ytan på din webbsida."
+msgstr "Gör att du kan visa dina bildspel i widget-ytan på din webbsida."
 
 #: classes/SlideshowPluginWidget.php:29
 msgid "Slideshow Widget"
-msgstr "Bildspel Widget"
+msgstr "Bildspelswidget"
+
+#: views/SlideshowPlugin/slideshow.php:23
+msgid "Play"
+msgstr ""
+
+#: views/SlideshowPlugin/slideshow.php:23
+msgid "Pause"
+msgstr ""
+
+#: views/SlideshowPlugin/slideshow.php:25
+msgid "Previous"
+msgstr ""
+
+#: views/SlideshowPlugin/slideshow.php:26
+msgid "Next"
+msgstr ""
+
+#: views/SlideshowPlugin/slideshow.php:28
+msgid "Go to slide"
+msgstr ""
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:46
 msgid "Default stylesheets"
-msgstr "Standard stilmallar"
+msgstr "Standardstilmallar"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:60
 msgid "Create a new custom style from this style"
-msgstr "Skapa en ny anpassad stil baserat på denna stil"
+msgstr "Skapa en ny anpassad stil baserad på denna stil"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:62
 msgid "Customize"
@@ -437,51 +480,51 @@ msgid "Custom stylesheets"
 msgstr "Anpassa stilmallar"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:89
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:168
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:172
 msgid "Edit this style"
 msgstr "Redigera stil"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:91
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:170
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:174
 #: views/SlideshowPluginPostType/slides.php:138
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:88
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:112
 msgid "Edit"
 msgstr "Redigera"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:98
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:177
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:181
 msgid "Delete this style"
 msgstr "Radera denna stil"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:100
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:179
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:183
 msgid "Delete"
 msgstr "Radera"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:110
 msgid "Click 'Customize' to create a new custom stylesheet."
-msgstr "Klicka 'Anpassa' för att skapa en ny anpassad stilmall"
+msgstr "Klicka 'Anpassa' för att skapa en anpassad stilmall."
 
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:126
-msgid "Select a stylesheet from the left to start customizing it."
-msgstr "Välj en stilmall till vänster för att börja anpassa den."
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:130
+msgid "Select a stylesheet to start customizing it."
+msgstr "Välj en stilmall för att börja anpassa den."
 
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:135
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:188
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:139
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:192
 #: views/SlideshowPluginPostType/slides.php:59
 #: views/SlideshowPluginPostType/slides.php:144
 #: views/SlideshowPluginPostType/slides.php:196
 #: views/SlideshowPluginPostType/slides.php:264
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:96
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:12
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:101
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:54
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:120
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:18
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:150
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:80
 #: views/SlideshowPluginWidget/form.php:2
 msgid "Title"
 msgstr "Titel"
 
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:144
-#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:196
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:148
+#: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:200
 msgid "Style"
 msgstr "Stil"
 
@@ -496,14 +539,14 @@ msgid ""
 "therefore do not alter any existing ones. To adapt a slideshow's settings, "
 "%sclick here.%s"
 msgstr ""
-"Inställningarna som görs på denna sida appliceras bara till nya bildspel som "
-"skapas och därför ej på redan befintliga bildspel. För att applicera "
-"bildspelsinställningar, %sklicka här.%s"
+"Inställningarna som görs på denna sida appliceras bara på nya bildspel, ej "
+"på befintliga bildspel. För att applicera bildspelsinställningar, %sklicka "
+"här.%s"
 
 #: views/SlideshowPluginGeneralSettings/default-slideshow-settings-tab.php:29
 #: views/SlideshowPluginGeneralSettings/general-settings.php:15
 msgid "Default Slideshow Settings"
-msgstr "Standard Bildspelsinställningar"
+msgstr "Standardinställningar för bildspel"
 
 #: views/SlideshowPluginGeneralSettings/default-slideshow-settings-tab.php:41
 #: views/SlideshowPluginPostType/settings.php:12
@@ -512,7 +555,7 @@ msgstr "inställningar"
 
 #: views/SlideshowPluginGeneralSettings/default-slideshow-settings-tab.php:77
 msgid "Default Slideshow Stylesheet"
-msgstr "Standar Bildspel stilmall"
+msgstr "Standardstilmall för bildspel"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:11
 msgid "Add slideshows"
@@ -520,7 +563,7 @@ msgstr "Lägg till bildspel"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:12
 msgid "Edit slideshows"
-msgstr "REdigera bildspel"
+msgstr "Redigera bildspel"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:13
 msgid "Delete slideshows"
@@ -528,11 +571,11 @@ msgstr "Radera bildspel"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:20
 msgid "User Capabilities"
-msgstr "Användar möjligheter"
+msgstr "Behörigheter"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:22
 msgid "Select the user roles that will able to perform certain actions."
-msgstr "Välj den användar roll som har möjlighet att utföra vissa åtgärder."
+msgstr "Välj för varje åtgärd vilka användarroller som kan utföra den."
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:38
 msgid "Untitled role"
@@ -540,19 +583,19 @@ msgstr "Namnlös roll"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:65
 msgid "Settings"
-msgstr "inställningar"
+msgstr "Inställningar"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:69
 msgid "Stylesheet location"
-msgstr ""
+msgstr "Placering av stilmall"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:72
 msgid "top"
-msgstr ""
+msgstr "överst"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:73
 msgid "bottom"
-msgstr ""
+msgstr "nederst"
 
 #: views/SlideshowPluginGeneralSettings/general-settings.php:16
 msgid "Custom Styles"
@@ -563,21 +606,19 @@ msgid ""
 "To use this slideshow in your website either add this piece of shortcode to "
 "your posts or pages"
 msgstr ""
-"För att använda detta bildspel på din webbsida lägger du till denna del av "
-"kortkoden på dina inlägg eller sidor"
+"För att använda detta bildspel infogar du koden nedan på dina inlägg eller "
+"sidor"
 
 #: views/SlideshowPluginPostType/information.php:5
 msgid ""
 "Or add this piece of code to where ever in your website you want to place "
 "the slideshow"
-msgstr ""
-"Eller lägg till denna del av koden på valfri plats på din webbsida där du "
-"vill placera bildspelet"
+msgstr "Alternativt infoga koden nedan på valfri plats på din webbsida"
 
 #: views/SlideshowPluginPostType/information.php:9
 #, php-format
 msgid "Or go to the %swidgets page%s and show the slideshow as a widget."
-msgstr "Eller gå till %swidget sidan%s och visa bildspelet som en widget"
+msgstr "Eller gå till %swidgetsidan%s och visa bildspelet som en widget."
 
 #: views/SlideshowPluginPostType/settings.php:26
 #: views/SlideshowPluginPostType/style-settings.php:11
@@ -587,26 +628,26 @@ msgstr "Standard"
 #: views/SlideshowPluginPostType/slides.php:54
 #: views/SlideshowPluginPostType/slides.php:191
 #: views/SlideshowPluginSlideInserter/insert-text-button.php:2
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:6
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:48
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:9
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:69
 msgid "Text slide"
-msgstr "Text bildspelsbild"
+msgstr "Textruta"
 
 #: views/SlideshowPluginPostType/slides.php:61
 #: views/SlideshowPluginPostType/slides.php:150
 #: views/SlideshowPluginPostType/slides.php:198
 #: views/SlideshowPluginPostType/slides.php:270
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:103
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:15
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:108
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:57
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:135
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:33
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:165
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:95
 msgid "Description"
 msgstr "Beskrivning"
 
 #: views/SlideshowPluginPostType/slides.php:63
 #: views/SlideshowPluginPostType/slides.php:200
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:21
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:63
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:51
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:113
 msgid "Background color"
 msgstr "Bakgrundsfärg"
 
@@ -614,10 +655,10 @@ msgstr "Bakgrundsfärg"
 #: views/SlideshowPluginPostType/slides.php:155
 #: views/SlideshowPluginPostType/slides.php:205
 #: views/SlideshowPluginPostType/slides.php:275
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:110
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:28
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:115
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:71
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:150
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:59
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:180
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:121
 msgid "URL"
 msgstr "URL"
 
@@ -625,10 +666,10 @@ msgstr "URL"
 #: views/SlideshowPluginPostType/slides.php:157
 #: views/SlideshowPluginPostType/slides.php:207
 #: views/SlideshowPluginPostType/slides.php:277
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:113
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:31
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:118
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:74
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:153
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:62
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:183
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:124
 msgid "Open URL in"
 msgstr "Öppna URL i"
 
@@ -636,10 +677,10 @@ msgstr "Öppna URL i"
 #: views/SlideshowPluginPostType/slides.php:159
 #: views/SlideshowPluginPostType/slides.php:209
 #: views/SlideshowPluginPostType/slides.php:279
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:115
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:33
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:120
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:76
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:155
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:64
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:185
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:126
 msgid "Same window"
 msgstr "Samma fönster"
 
@@ -647,36 +688,36 @@ msgstr "Samma fönster"
 #: views/SlideshowPluginPostType/slides.php:160
 #: views/SlideshowPluginPostType/slides.php:210
 #: views/SlideshowPluginPostType/slides.php:280
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:116
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:34
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:121
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:77
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:156
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:65
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:186
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:127
 msgid "New window"
 msgstr "Nytt fönster"
 
 #: views/SlideshowPluginPostType/slides.php:90
 #: views/SlideshowPluginPostType/slides.php:230
 #: views/SlideshowPluginSlideInserter/insert-video-button.php:2
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:56
-#: views/SlideshowPluginSlideshowSlide/backend_video.php:23
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:94
+#: views/SlideshowPluginSlideshowSlide/backend_video.php:26
 msgid "Video slide"
-msgstr "Video bildspel"
+msgstr "Video"
 
 #: views/SlideshowPluginPostType/slides.php:95
 #: views/SlideshowPluginPostType/slides.php:235
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:62
-#: views/SlideshowPluginSlideshowSlide/backend_video.php:29
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:103
+#: views/SlideshowPluginSlideshowSlide/backend_video.php:35
 msgid "Youtube Video ID"
-msgstr "Youtube Video ID"
+msgstr "YouTube Video ID"
 
 #: views/SlideshowPluginPostType/slides.php:133
 #: views/SlideshowPluginPostType/slides.php:255
 #: views/SlideshowPluginSlideInserter/insert-image-button.php:2
 #: views/SlideshowPluginSlideInserter/insert-image-button.php:4
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:82
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:89
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:101
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:135
 msgid "Image slide"
-msgstr "Bildspels bild"
+msgstr "Bild"
 
 #: views/SlideshowPluginPostType/slides.php:171
 msgid ""
@@ -690,12 +731,12 @@ msgstr ""
 #: views/SlideshowPluginPostType/slides.php:218
 #: views/SlideshowPluginPostType/slides.php:243
 #: views/SlideshowPluginPostType/slides.php:289
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:135
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:45
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:78
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:140
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:88
-#: views/SlideshowPluginSlideshowSlide/backend_video.php:45
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:174
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:76
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:117
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:203
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:138
+#: views/SlideshowPluginSlideshowSlide/backend_video.php:49
 msgid "Delete slide"
 msgstr "Radera bild"
 
@@ -706,7 +747,7 @@ msgstr "Personliga anpassningar kan skapas och anpassas %shär%s."
 
 #: views/SlideshowPluginPostType/support-plugin.php:3
 msgid "Help to keep this plugin free!"
-msgstr "Hjälp till att hålla detta tillägg kostnadsfritt!"
+msgstr "Hjälp oss hålla detta tillägg gratis!"
 
 #: views/SlideshowPluginPostType/support-plugin.php:6
 msgid ""
@@ -715,10 +756,10 @@ msgid ""
 "consider making a small donation to the plugin or rating it as 5-stars on "
 "Wordpress.org. Thank you in advance!"
 msgstr ""
-"För att förse dig med dom nyaste funktionerna, supportforum, och bug-fixar "
-"krävs en stor del motivation. Därför ber jag dig vänligast att överväga att "
-"göra en liten donation till detta tillägg eller poängsätta det som en 5-"
-"stjärnigt tillägg på Wordpress.org. Tack på förhand!"
+"För att förse dig med dom nyaste funktionerna, supportforum, och bugfixar "
+"krävs en stor del motivation. Därför ber jag dig överväga att göra en liten "
+"donation till detta tillägg eller poängsätta det som 5-stjärnigt på "
+"Wordpress.org. Tack på förhand!"
 
 #: views/SlideshowPluginPostType/support-plugin.php:15
 msgid "Rate on Wordpress.org"
@@ -758,8 +799,8 @@ msgid ""
 "It seems you haven't created any slideshows yet. %sYou can create a "
 "slideshow here!%s"
 msgstr ""
-"Det verkar som att du inte har skapat några bildspel ännu. %sDu kan skapa "
-"ett bildspel här!%s"
+"Det verkar som om du inte har skapat några bildspel ännu. %sDu kan skapa ett "
+"bildspel här!%s"
 
 #: views/SlideshowPluginSlideInserter/search-popup.php:6
 msgid "Search"
@@ -769,38 +810,49 @@ msgstr "Sök"
 msgid "Search images by title or ID"
 msgstr "Sök bilder per titel eller ID"
 
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:120
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:38
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:125
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:81
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:90
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:4
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:89
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:130
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:58
+#: views/SlideshowPluginSlideshowSlide/backend_video.php:21
+msgid "Click to toggle"
+msgstr ""
+
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:160
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:69
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:190
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:131
 msgid "Don't let search engines follow link"
-msgstr ""
+msgstr "Låt inte sökmotorer följa länkar"
 
-#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:126
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:131
+#: views/SlideshowPluginSlideshowSlide/backend_attachment.php:168
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:197
 msgid "Alternative text"
-msgstr ""
+msgstr "Alternativtext"
 
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:18
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:60
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:48
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:110
 msgid "Text color"
 msgstr "Text färg"
 
-#: views/SlideshowPluginSlideshowSlide/backend_templates.php:69
-#: views/SlideshowPluginSlideshowSlide/backend_video.php:36
-msgid "Show related videos"
-msgstr ""
-
-#: views/SlideshowPluginSlideshowSlide/backend_text.php:65
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:53
+#: views/SlideshowPluginSlideshowSlide/backend_text.php:115
 msgid "(Leave empty for a transparent background)"
 msgstr "(Lämna tomt för genomskinlig bakgrund)"
 
+#: views/SlideshowPluginSlideshowSlide/backend_templates.php:110
+#: views/SlideshowPluginSlideshowSlide/backend_video.php:42
+msgid "Show related videos"
+msgstr "Visa relaterade filmer"
+
+#: views/SlideshowPluginUpload/upload-button.php:1
+msgid "Upload/Manage Images"
+msgstr "Ladda upp/Hantera bilder"
+
 #: views/SlideshowPluginWidget/form.php:9
 msgid "Random Slideshow"
-msgstr "Slumpvalt Bildspel"
-
-#~ msgid "Upload/Manage Images"
-#~ msgstr "Ladda upp/Hantera bilder"
+msgstr "Slumpvalt bildspel"
 
 #~ msgid "Fit image into slide (Stretch image)"
 #~ msgstr "Anpassa bilden i bildspelet (utvidga)"

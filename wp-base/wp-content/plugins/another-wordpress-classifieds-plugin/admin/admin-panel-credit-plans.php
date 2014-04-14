@@ -1,6 +1,6 @@
 <?php
 
-require_once(AWPCP_DIR . '/classes/helpers/admin-page.php');
+require_once(AWPCP_DIR . '/includes/helpers/admin-page.php');
 require_once(AWPCP_DIR . '/admin/admin-panel-credit-plans-table.php');
 
 

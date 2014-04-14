@@ -1,6 +1,6 @@
 <?php
 
-require_once( AWPCP_DIR . '/classes/helpers/page.php' );
+require_once( AWPCP_DIR . '/includes/helpers/page.php' );
 
 class AWPCP_BrowseAdsPage extends AWPCP_Page {
 

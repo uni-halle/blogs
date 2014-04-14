@@ -1,12 +1,12 @@
 <?php
 
 /***
-	{
-		Product: photocrati-nextgen
-	}
-***/
+{
+Product: photocrati-nextgen
+}
+ ***/
 
-define('NEXTGEN_GALLERY_CHANGE_OPTIONS_CAP', 'NextGEN Manage gallery');
+define('NGG_CHANGE_OPTIONS_CAP', 'NextGEN Manage gallery');
 
 class P_Photocrati_NextGen extends C_Base_Product
 {
@@ -17,7 +17,7 @@ class P_Photocrati_NextGen extends C_Base_Product
 		'photocrati-wordpress_routing',
 		'photocrati-security',
 		'photocrati-lzw',
-        'photocrati-nextgen_settings',
+		'photocrati-nextgen_settings',
 		'photocrati-mvc',
 		'photocrati-ajax',
 		'photocrati-dynamic_stylesheet',
@@ -33,7 +33,6 @@ class P_Photocrati_NextGen extends C_Base_Product
 		'photocrati-attach_to_post',
 		'photocrati-nextgen_other_options',
 		'photocrati-nextgen_pro_upgrade',
-		'photocrati-jsconsole',
 		'photocrati-mediarss',
 		'photocrati-cache',
 		'photocrati-lightbox',
@@ -43,7 +42,9 @@ class P_Photocrati_NextGen extends C_Base_Product
 		'photocrati-nextgen_basic_singlepic',
 		'photocrati-nextgen_basic_tagcloud',
 		'photocrati-nextgen_basic_album',
-		'photocrati-widget'
+		'photocrati-widget',
+		'photocrati-third_party_compat',
+		'photocrati-nextgen_xmlrpc'
 	);
 
 	function define()
@@ -52,13 +53,13 @@ class P_Photocrati_NextGen extends C_Base_Product
 			'photocrati-nextgen',
 			'Photocrati NextGEN',
 			'Photocrati NextGEN',
-			'2.0.31',
+            NGG_PLUGIN_VERSION,
 			'http://www.nextgen-gallery.com',
 			'Photocrati Media',
 			'http://www.photocrati.com'
 		);
 
-		$module_path = path_join(dirname(__FILE__), 'modules');
+		$module_path = implode(DIRECTORY_SEPARATOR, array(dirname(__FILE__), 'modules'));
 		$this->get_registry()->set_product_module_path($this->module_id, $module_path);
 		$this->get_registry()->add_module_path($module_path, TRUE, FALSE);
 

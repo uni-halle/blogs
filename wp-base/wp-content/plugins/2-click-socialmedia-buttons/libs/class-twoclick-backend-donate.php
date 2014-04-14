@@ -27,13 +27,6 @@ if(!class_exists('Twoclick_Social_Media_Buttons_Backend_Donate')) {
 		private $var_sDonateLinkFlattr = 'http://flattr.com/thing/390240/WordPress-Plugin-2-Click-Social-Media-Buttons;';
 		private $var_sDonateLinkPaypal = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DC2AEJD2J66RE';
 
-		/**
-		 * Konstruktor
-		 */
-		function Twoclick_Social_Media_Buttons_Backend_Donate() {
-			Twoclick_Social_Media_Buttons_Backend_Donate::__construct();
-		} // END function Twoclick_Social_Media_Buttons_Backend_Donate()
-
 		function __construct() {
 			if($this->_is_twoclick_settings_page()) {
 				$this->render_donate_page();

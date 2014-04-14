@@ -30,16 +30,6 @@ if(!class_exists('Twoclick_Social_Media_Buttons_Frontend')) {
 		private $array_TwoclickButtonsOptions;
 
 		/**
-		 * PHP 4 Constructor
-		 *
-		 * @since 1.0
-		 * @author ppfeufer
-		 */
-		function Twoclick_Social_Media_Buttons_Frontend() {
-			Twoclick_Social_Media_Buttons_Frontend::__construct();
-		} // END function Twoclick_Social_Media_Buttons_Frontend()
-
-		/**
 		 * PHP 5 Constructor
 		 *
 		 * @since 1.0

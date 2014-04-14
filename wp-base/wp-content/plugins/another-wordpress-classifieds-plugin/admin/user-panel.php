@@ -3,7 +3,6 @@
  * User Ad Management Panel functions
  */
 
-require_once(AWPCP_DIR . '/admin/user-panel-account.php');
 require_once(AWPCP_DIR . '/admin/user-panel-listings.php');
 
 
@@ -15,7 +14,7 @@ class AWPCP_User_Panel {
         add_action('personal_options_update', array($this, 'save_profile_fields'));
         add_action('edit_user_profile_update', array($this, 'save_profile_fields'));
 
-        $this->account = new AWPCP_UserAccount();
+        $this->account = awpcp_account_balance_page();
         $this->listings = new AWPCP_UserListings();
 
 		add_action('awpcp_add_menu_page', array($this, 'menu'));
@@ -33,7 +32,7 @@ class AWPCP_User_Panel {
         if (awpcp_payments_api()->credit_system_enabled() && !awpcp_current_user_is_admin()) {
             $parts = array($this->account->title, $this->account->menu, $this->account->page);
             $hook = add_users_page($parts[0], $parts[1], $capability, $parts[2], array($this->account, 'dispatch'));
-            // add_action("admin_print_styles-{$hook}", array($this->account, 'scripts'));
+            add_action("admin_print_styles-{$hook}", array($this->account, 'scripts'));
         }
 
 		if (get_awpcp_option('enable-user-panel') != 1) return;

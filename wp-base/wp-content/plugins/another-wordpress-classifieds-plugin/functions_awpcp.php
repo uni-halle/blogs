@@ -36,6 +36,7 @@ function sqlerrorhandler($ERROR, $QUERY, $PHPFILE, $LINE) {
  * Wrapper for mysql_query which triggers an error if the query fails.
  */
 function awpcp_query($query, $LINE) {
+	global $wpdb;
 	//Query, and if failure happens, emit an appropriate error
 	$res = array();
 	if (!($res=mysql_query($query))) {
@@ -179,7 +180,7 @@ function awpcp_check_spam($name, $website, $email, $details) {
 			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 			$content['referrer'] = get_option('home'); // use site home page instead of $_SERVER['HTTP_REFERER']; seems to work better
 			$content['blog'] = get_option('home');
-			
+
 			//if (empty($content['referrer'])) {
 			//	$content['referrer'] = get_permalink();
 			//}
@@ -193,10 +194,6 @@ function awpcp_check_spam($name, $website, $email, $details) {
 			}
 
 			$response = akismet_http_post($queryString, $akismet_api_host, '/1.1/comment-check', $akismet_api_port);
-			_log("Spam check, Akismet said: ");
-			foreach ($response as $key => $value) {
-				_log($key." - ".$value."");
-			}
 
 			if ($response[1] == 'true') {
 				//update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
@@ -221,7 +218,7 @@ function awpcp_check_spam($name, $website, $email, $details) {
 	    $isSpam = wp_blacklist_check($name, $email, $website, $details, preg_replace( '/[^0-9., ]/', '', awpcp_getip() ), $_SERVER['HTTP_USER_AGENT']);
 
 	_log("Ad spam check final answer: " . $isSpam);
-	
+
 	return $isSpam;
 }
 
@@ -462,29 +459,16 @@ function get_numimgsallowed($adtermid){
 	return $imagesallowed;
 }
 // END FUNCTION
-// START FUNCTION check if ad has entry in adterm ID field in the event admin switched back to free mode after previously running in paid mode
-// this way user continues to be allowed number of images allowed per the ad term ID
-function ad_term_id_set($adid)
-{
-	return (get_adfield_by_pk('adterm_id', $adid) != 0);
-}
-// END FUNCTION check if user has paid for ad in event admin switched back to free mode after previously running in paid mode
+
 // this way if user paid for ad user continues to be allowed number of images paid for
 // START FUNCTION: Check to see how many images an ad is currently using
 function get_total_imagesuploaded($ad_id) {
-
 	global $wpdb;
-	$tbl_ad_photos = $wpdb->prefix . "awpcp_adphotos";
 
-	$totalimagesuploaded='';
+	$query = "SELECT count(*) FROM " . AWPCP_TABLE_MEDIA . " WHERE ad_id=%d";
+	$images = absint( $wpdb->get_var( $wpdb->prepare( $query, $ad_id ) ) );
 
-	$query="SELECT count(*) FROM ".$tbl_ad_photos." WHERE ad_id='$ad_id'";
-	$res = awpcp_query($query, __LINE__);
-	while ($rsrow=mysql_fetch_row($res)) {
-		list($totalimagesuploaded)=$rsrow;
-	}
-	return $totalimagesuploaded;
-
+	return $images;
 }
 // END FUNCTION
 
@@ -858,21 +842,6 @@ function get_adfield_by_pk($field, $adid) {
 	return $thevalue;
 }
 
-function get_adcountryvalue($adid){
-	return get_adfield_by_pk('ad_country', $adid);
-}
-
-function get_adstatevalue($adid){
-	return get_adfield_by_pk('ad_city', $adid);
-}
-
-function get_adcityvalue($adid){
-	return get_adfield_by_pk('ad_state', $adid);
-}
-
-function get_adcountyvillagevalue($adid){
-	return get_adfield_by_pk('ad_county_village', $adid);
-}
 
 function get_adcategory($adid){
 	return get_adfield_by_pk('ad_category_id', $adid);
@@ -981,7 +950,8 @@ function total_ads_in_cat($catid) {
     $totaladsincat = '';
 
     // never allow Unpaid Ads
-    $filter = " AND payment_status != 'Unpaid'";
+    $filter = " AND payment_status != 'Unpaid' ";
+    $filter = " AND verified = 1 ";
     // the name of the disablependingads setting gives the wrong meaning,
     // it actually means "Enable Paid Ads that are Pendings payment", so when
     // the setting has a value of 1, pending Ads should NOT be excluded.
@@ -990,7 +960,7 @@ function total_ads_in_cat($catid) {
         $filter = " AND payment_status != 'Pending'";
     }
 
-    // TODO: ideally there would be a function to get all visible Ads
+    // TODO: ideally there would be a function to get all visible Ads,
     // and modules, like Regions, would use hooks to include their own
     // conditions.
     if ($hasregionsmodule == 1) {
@@ -1000,9 +970,6 @@ function total_ads_in_cat($catid) {
             if (function_exists('awpcp_regions_api')) {
             	$regions = awpcp_regions_api();
             	$filter .= ' AND ' . $regions->sql_where($theactiveregionid);
-            } else {
-            	$theactiveregionname = addslashes(get_theawpcpregionname($theactiveregionid));
-            	$filter .= "AND (ad_city='$theactiveregionname' OR ad_state='$theactiveregionname' OR ad_country='$theactiveregionname' OR ad_county_village='$theactiveregionname')";
             }
         }
     }
@@ -1153,7 +1120,11 @@ function setup_url_structure($awpcpthepagename) {
 }
 
 function url_showad($ad_id) {
-	$modtitle = sanitize_title(get_adtitle($ad_id));
+	$ad = AWPCP_Ad::find_by_id( $ad_id );
+
+	if ( is_null( $ad ) ) return false;
+
+	$modtitle = sanitize_title( $ad->get_title() );
 	$seoFriendlyUrls = get_awpcp_option('seofriendlyurls');
 	$permastruc = get_option('permalink_structure');
 
@@ -1166,32 +1137,28 @@ function url_showad($ad_id) {
 	if($seoFriendlyUrls && isset($permastruc) && !empty($permastruc)) {
 		$url = sprintf('%s/%s/%s', trim($base_url, '/'), $ad_id, $modtitle);
 
-		$city = get_adcityvalue($ad_id);
-		$state = get_adstatevalue($ad_id);
-		$country = get_adcountryvalue($ad_id);
-		$county = get_adcountyvillagevalue($ad_id);
+		$region = $ad->get_first_region();
 
 		$parts = array();
-
-		if( get_awpcp_option('showcityinpagetitle') && !empty($city) ) {
-			$parts[] = sanitize_title($city);
+		if( get_awpcp_option( 'showcityinpagetitle' ) && $region ) {
+			$parts[] = sanitize_title( awpcp_array_data( 'city', '', $region ) );
 		}
-		if( get_awpcp_option('showstateinpagetitle') && !empty($state) ) {
-			$parts[] = sanitize_title($state);
+		if( get_awpcp_option( 'showstateinpagetitle' ) && $region ) {
+			$parts[] = sanitize_title( awpcp_array_data( 'state', '', $region ) );
 		}
-		if( get_awpcp_option('showcountryinpagetitle') && !empty($country) ) {
-			$parts[] = sanitize_title($country);
+		if( get_awpcp_option( 'showcountryinpagetitle' ) && $region ) {
+			$parts[] = sanitize_title( awpcp_array_data( 'country', '', $region ) );
 		}
-		if( get_awpcp_option('showcountyvillageinpagetitle') && !empty($county) ) {
-			$parts[] = sanitize_title($county);
+		if( get_awpcp_option( 'showcountyvillageinpagetitle' ) && $region ) {
+			$parts[] = sanitize_title( awpcp_array_data( 'county', '', $region ) );
 		}
 		if( get_awpcp_option('showcategoryinpagetitle') ) {
-			$awpcp_ad_category_id = get_adcategory($ad_id);
+			$awpcp_ad_category_id = $ad->ad_category_id;
 			$parts[] = sanitize_title(get_adcatname($awpcp_ad_category_id));
 		}
 
 		// always append a slash (RSS module issue)
-		$url = sprintf("%s%s", trailingslashit($url), join('/', $parts));
+		$url = sprintf( "%s%s", trailingslashit( $url ), join( '/', array_filter( $parts ) ) );
 		$url = user_trailingslashit($url);
 	} else {
 		$base_url = user_trailingslashit($base_url);
@@ -1437,54 +1404,25 @@ function field_exists($field) {
 // END FUNCTION: check if ad_settings field exists
 
 
-
 function isValidURL($url) {
 	return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url);
 }
 
 
-
-function isValidEmailAddress($email) {
-	// First, we check that there's one @ symbol,
-	// and that the lengths are right.
-	if (!preg_match("/^[^@]{1,64}@[^@]{1,255}$/", $email)) {
-		// Email invalid because wrong number of characters
-		// in one section or wrong number of @ symbols.
-		return false;
-	}
-	// Split it into sections to make life easier
-	$email_array = explode("@", $email);
-	$local_array = explode(".", $email_array[0]);
-	for ($i = 0; $i < sizeof($local_array); $i++) {
-		//Special handling for 1-character domains:  (e.g. q.com):
-		if ($i == 1 && strlen($local_array[$i]) == 1 && 
-			preg_match("/[A-Za-z0-9]/", $local_array[$i])) {
-			//single character domain is valid
-			continue;
-		}
-		if (!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$",
-			$local_array[$i])) {
-			return false;
-		}
-	}
-	// Check if domain is IP. If not,
-	// it should be valid domain name
-	if (!preg_match("/^\[?[0-9\.]+\]?$/", $email_array[1])) {
-		$domain_array = explode(".", $email_array[1]);
-		if (sizeof($domain_array) < 2) {
-			return false; // Not enough parts to domain
-		}
-		for ($i = 0; $i < sizeof($domain_array); $i++) {
-			if
-			(!preg_match("/^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]+))$/",
-				$domain_array[$i])) {
-				return false;
-			}
-		}
-	}
-	return true;
+/**
+ * @since 3.0.2
+ */
+function awpcp_is_valid_email_address($email) {
+	return filter_var( $email, FILTER_VALIDATE_EMAIL ) !== false;
 }
-// START FUNCTION: function to handle automatic ad expirations
+
+
+/**
+ * @deprecated since 3.0.2. @see awpcp_is_valid_email_address()
+ */
+function isValidEmailAddress($email) {
+	return awpcp_is_valid_email_address( $email );
+}
 
 
 /**
@@ -1876,7 +1814,7 @@ function check_ad_fee_paid($adid) {
 }
 
 // START FUNCTION: Clear HTML tags
-function strip_html_tags( $text )
+function awpcp_strip_html_tags( $text )
 {
 	// Remove invisible content
 	$text = preg_replace(
@@ -1960,12 +1898,8 @@ function awpcp_process_mail($senderemail='', $receiveremail='',  $subject='',
 	}
 
 	$subject = $subject;
+	$message = "$body\n\n" . awpcp_format_email_sent_datetime() . "\n\n";
 
-	$format = get_awpcp_option('date-format') . ' \a\t ' . get_awpcp_option('time-format');
-	$time = date_i18n($format, current_time('timestamp'));
-
-	$message = "$body\n\n";
-	$message.= __('Email sent on:', 'AWPCP')." $time\n\n";
 	_log("Processing email");
 
 	if (wp_mail($receiveremail, $subject, $message, $headers )) {
@@ -1984,6 +1918,11 @@ function awpcp_process_mail($senderemail='', $receiveremail='',  $subject='',
 	    _log("SMTP not configured properly, all attempts failed");
 	    return 0;
 	}
+}
+
+function awpcp_format_email_sent_datetime() {
+	$time = date_i18n( awpcp_get_datetime_format(), current_time( 'timestamp' ) );
+	return sprintf( __( 'Email sent %s.', 'AWPCP' ), $time );
 }
 
 // make sure the IP isn't a reserved IP address
@@ -2098,22 +2037,13 @@ function awpcp_get_ad_share_info($id) {
 
 	$info['images'] = array();
 
-	$info['published-time'] = awpcp_time( $ad->ad_postdate, 'Y-m-d' );
-	$info['modified-time'] = awpcp_time( $ad->ad_last_updated, 'Y-m-d' );
+	$info['published-time'] = awpcp_datetime( 'Y-m-d', $ad->ad_postdate );
+	$info['modified-time'] = awpcp_datetime( 'Y-m-d', $ad->ad_last_updated );
 
-	$sql = 'SELECT image_name FROM ' . AWPCP_TABLE_ADPHOTOS . ' ';
-	$sql.= 'WHERE ad_id=%d AND disabled=0';
+	$images = awpcp_media_api()->find_by_ad_id( $ad->ad_id, array( 'enabled' => true ) );
 
-	$images = $wpdb->get_results($wpdb->prepare($sql, $id), ARRAY_A);
-
-	if (!empty($images)) {
-
-		$uploads_dir = get_awpcp_option('uploadfoldername', 'uploads');
-		$blogurl = network_site_url();
-
-		foreach ($images as $image) {
-			$info['images'][] = $blogurl . '/wp-content/' . $uploads_dir . '/awpcp/' . $image['image_name'];
-		}
+	foreach ( $images as $image ) {
+		$info[ 'images' ][] = $image->get_url( 'large' );
 	}
 
 	return $info;
@@ -2145,4 +2075,24 @@ function awpcp_insert_share_button($layout, $adid, $title) {
 
 	$layout = str_replace('$sharebtn', $button, $layout);
 	return $layout;
+}
+
+//
+// Metadata API.
+//
+
+function awpcp_add_ad_meta( $ad_id, $meta_key, $meta_value, $unique = false ) {
+    return add_metadata( 'awpcp_ad', $ad_id, $meta_key, $meta_value, $unique );
+}
+
+function awpcp_update_ad_meta( $ad_id, $meta_key, $meta_value, $prev_value = '' ) {
+    return update_metadata( 'awpcp_ad', $ad_id, $meta_key, $meta_value, $prev_value );
+}
+
+function awpcp_delete_ad_meta( $ad_id, $meta_key, $meta_value = '', $delete_all = false) {
+    return delete_metadata( 'awpcp_ad', $ad_id, $meta_key, $meta_value, $delete_all );
+}
+
+function awpcp_get_ad_meta( $ad_id, $meta_key='', $single = false ) {
+    return get_metadata( 'awpcp_ad', $ad_id, $meta_key, $single );
 }

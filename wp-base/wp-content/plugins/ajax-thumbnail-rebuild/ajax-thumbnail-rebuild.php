@@ -3,7 +3,7 @@
    Plugin URI: http://breiti.cc/wordpress/ajax-thumbnail-rebuild
    Author: junkcoder
    Author URI: http://breiti.cc
-   Version: 1.09
+   Version: 1.11
    Description: Rebuild all thumbnails
    Max WP Version: 3.6.1
    Text Domain: ajax-thumbnail-rebuild
@@ -27,11 +27,67 @@ class AjaxThumbnailRebuild {
 
 	function AjaxThumbnailRebuild() {
 		add_action( 'admin_menu', array(&$this, 'addAdminMenu') );
+		add_filter( 'attachment_fields_to_edit', array(&$this, 'addRebuildSingle'), 10, 2 );
 	}
 
 	function addAdminMenu() {
 		add_management_page( __( 'Rebuild all Thumbnails', 'ajax-thumbnail-rebuild' ), __( 'Rebuild Thumbnails', 'ajax-thumbnail-rebuild'
  ), 'manage_options', 'ajax-thumbnail-rebuild', array(&$this, 'ManagementPage') );
+	}
+
+	/**
+	 * Add rebuild thumbnails button to the media page
+	 * 
+	 * @param array $fields
+	 * @param object $post
+	 * @return array
+	 */
+	function addRebuildSingle($fields, $post) {
+		global $post;
+		$thumbnails = array();
+		foreach ( ajax_thumbnail_rebuild_get_sizes() as $s )
+			$thumbnails[] = 'thumbnails[]='.$s['name'];
+		$thumbnails = '&'.implode('&', $thumbnails);
+	    ob_start();
+	    ?>
+	    <script>
+		    function setMessage(msg) {
+				jQuery("#atr-message").html(msg);
+				jQuery("#atr-message").show();
+			}
+
+			function regenerate() {
+				jQuery("#ajax_thumbnail_rebuild").prop("disabled", true);
+				setMessage("<?php _e('Reading attachments...', 'ajax-thumbnail-rebuild') ?>");
+				thumbnails = '<?php echo $thumbnails ?>';
+				jQuery.ajax({
+					url: "<?php echo admin_url('admin-ajax.php'); ?>",
+					type: "POST",
+					data: "action=ajax_thumbnail_rebuild&do=regen&id=<?php echo $post->ID ?>" + thumbnails,
+					success: function(result) {
+						if (result != '-1') {
+							setMessage("<?php _e('Done.', 'ajax-thumbnail-rebuild') ?>");
+						}
+					},
+					error: function(request, status, error) {
+						setMessage("<?php _e('Error', 'ajax-thumbnail-rebuild') ?>" + request.status);
+					},
+					complete: function() {
+						jQuery("#ajax_thumbnail_rebuild").prop("disabled", false);
+					}
+				});
+			}
+		</script>
+		<input type='button' onclick='javascript:regenerate();' class='button' name='ajax_thumbnail_rebuild' id='ajax_thumbnail_rebuild' value='Rebuild Thumbnails'>
+	    <span id="atr-message" class="updated fade" style="clear:both;display:none;line-height:28px;padding-left:10px;"></span>
+	    <?php
+	    $html = ob_get_clean();
+	    $fields["ajax-thumbnail-rebuild"] = array(
+	        "label"	=> __('Ajax Thumbnail Rebuild', 'ajax-thumbnail-rebuild'),
+	        "input"	=> "html",
+	        "html"	=> $html
+	    );
+	    return $fields;
 	}
 
 	function ManagementPage() {
@@ -86,10 +142,11 @@ class AjaxThumbnailRebuild {
 							type: "POST",
 							data: "action=ajax_thumbnail_rebuild&do=regen&id=" + list[curr].id + thumbnails,
 							success: function(result) {
-								jQuery("#thumb").show();
-								jQuery("#thumb-img").attr("src",result);
-
 								curr = curr + 1;
+								if (result != '-1') {
+									jQuery("#thumb").show();
+									jQuery("#thumb-img").attr("src",result);
+								}
 								regenItem();
 							}
 						});
@@ -178,7 +235,7 @@ function ajax_thumbnail_rebuild_ajax() {
 			    $res[] = array('id' => $image->meta_value, 'title' => $image->title);
 			}
 		} else {
-			$attachments =& get_children( array(
+			$attachments = get_children( array(
 				'post_type' => 'attachment',
 				'post_mime_type' => 'image',
 				'numberposts' => -1,
@@ -200,9 +257,10 @@ function ajax_thumbnail_rebuild_ajax() {
 		if ( FALSE !== $fullsizepath && @file_exists($fullsizepath) ) {
 			set_time_limit( 30 );
 			wp_update_attachment_metadata( $id, wp_generate_attachment_metadata_custom( $id, $fullsizepath, $thumbnails ) );
+			die( wp_get_attachment_thumb_url( $id ));
 		}
 
-		die( wp_get_attachment_thumb_url( $id ));
+		die('-1');
 	}
 }
 add_action('wp_ajax_ajax_thumbnail_rebuild', 'ajax_thumbnail_rebuild_ajax');

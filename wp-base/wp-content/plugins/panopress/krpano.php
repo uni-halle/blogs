@@ -1,13 +1,23 @@
-<?php $id  = 'pp_' . rand( 1000, 9999 ); ?>
+<?php
+$input = filter_input_array ( INPUT_GET );
+if( parse_url ( $input['xml'],  PHP_URL_HOST ) ){
+	exit;
+}
+$js = '/' . substr( $input['xml'], 0, strlen( $input['xml'] ) - 3 ) . 'js';
+
+if ( !file_exists ( $_SERVER['DOCUMENT_ROOT'] . $js ) ) {
+	$js = '../../panorama/global/krpano.js';
+}
+?>
 <html>
 <head>
-<script type="text/javascript"  src="<?php echo $_GET['js'];?>"></script>
+<script type="text/javascript" src="<?php echo $js; ?>"></script>	
 </head>
 <body>
-<div id="<?php echo $id; ?>" style="width:100%; height:100%; display:block"></div>
+<div id="krp" style="width:100%; height:100%; display:block"></div>
 <script type="text/javascript">
-embedpano({'target':'<?php echo $id; ?>','xml':'<?php echo $_GET['xml'];?>'});
-document.getElementById('<?php echo $id; ?>').className = 'pp-embed-content';
+embedpano({'target':'krp','xml':'/<?php echo $input['xml'];?>'});
+document.getElementById('krp').className = 'pp-embed-content';
 </script>
 </body>
 </html>

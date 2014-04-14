@@ -10,7 +10,9 @@
 
 <?php _e("Listing Edit Email", "AWPCP") ?>: <?php echo $ad->ad_contact_email ?>
 
+<?php if ( get_awpcp_option( 'include-ad-access-key' ) ): ?>
 <?php _e("Listing Edit Key", "AWPCP") ?>: <?php echo $ad->get_access_key() ?>
+<?php endif; ?>
 
 <?php _e("Listing End Date", "AWPCP") ?>: <?php echo $ad->get_end_date() ?>
 

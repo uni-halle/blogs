@@ -1,5 +1,326 @@
 <?php
 
+/**
+ * Upload and associates the given files with the specified Ad.
+ *
+ * @param $files	An array of elements of $_FILES.
+ * @since 3.0.2
+ */
+function awpcp_upload_files( $ad, $files, &$errors=array() ) {
+    $media = awpcp_media_api();
+
+    $constraints = awpcp_get_upload_file_constraints();
+    $image_mime_types = awpcp_get_image_mime_types();
+
+    $uploaded = array();
+    foreach ( $files as $name => $info ) {
+    	$can_upload = awpcp_can_upload_file_to_ad( $info, $ad );
+    	if ( $can_upload !== true ) {
+    		if ( $can_upload !== false ) {
+    			$errors[ $name ] = $can_upload;
+    		} else {
+    			$message = _x( 'An error occurred trying to upload the file %s.', 'upload files', 'AWPCP' );
+    			$errors[ $name ] = sprintf( $message, '<strong>' . $info['name'] . '</strong>' );
+    		}
+    		continue;
+    	}
+
+        if ( $result = awpcp_upload_file( $info, $constraints, $error ) ) {
+            $file = $media->create( array(
+                'ad_id' => $ad->ad_id,
+                'name' => $result['filename'],
+                'path' => $result['path'],
+                'mime_type' => $result['mime_type'],
+                'is_primary' => in_array( $info['type'], $image_mime_types ) && awpcp_array_data( 'is_primary', false, $info ),
+            ) );
+
+            if ( ! is_null( $file ) ) {
+            	if ( $file->is_image() && $file->is_primary() ) {
+	                $media->set_ad_primary_image( $ad, $file );
+	            }
+
+	            $uploaded[] = $file;
+            } else {
+                $message = _x( 'The file %s was properly uploaded but there was a problem trying to save the information to the database.', 'upload files', 'AWPCP' );
+                $errors[ $name ] = sprintf( $message, '<strong>' . $result['original'] . '</strong>' );
+            }
+        } else {
+            $errors[ $name ] = $error;
+        }
+    }
+
+    return $uploaded;
+}
+
+
+/**
+ * Check that the given file meets the file size, dimensions and file type
+ * constraints and moves the file to the AWPCP Uploads directory.
+ *
+ * @param $error	if an error occurs the error message will be returned by reference
+ *					using this variable.
+ * @param $action	'upload' if the file was uplaoded using an HTML File field.
+ *					'copy' if the file was uplaoded using a different method. Images
+ *					extracted from a ZIP file during Ad import.
+ * @return			false if an error occurs or an array with the upload file information
+ *					on success.
+ * @since 3.0.2
+ */
+function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload' ) {
+	$filename = sanitize_file_name( $file['name'] );
+	$tmpname = $file['tmp_name'];
+
+	$mime_type = $file[ 'type' ];
+
+	if ( ! in_array( $mime_type, $constraints[ 'mime_types' ] ) ) {
+		$error = _x( 'The type of the uplaoded file %s is not allowed.', 'upload files', 'AWPCP' );
+		$error = sprintf( $error, '<strong>' . $filename . '</strong>' );
+		return false;
+	}
+
+	$paths = awpcp_get_uploads_directories();
+
+	if ( ! file_exists( $tmpname ) ) {
+		$error = _x( 'The specified file does not exists: %s.', 'upload files', 'AWPCP' );
+		$error = sprintf( $error, '<strong>' . $filename . '</strong>' );
+		return false;
+	}
+
+	if ( $action == 'upload' && ! is_uploaded_file( $tmpname ) ) {
+		$error = _x( 'Unknown error encountered while uploading the image.', 'upload files', 'AWPCP' );
+		$error = sprintf( $error, '<strong>' . $filename . '</strong>' );
+		return false;
+	}
+
+	$file_size = filesize( $tmpname );
+
+	if ( empty( $file_size ) || $file_size <= 0 ) {
+		$error = _x( 'There was an error trying to find out the file size of the image %s.', 'upload files', 'AWPCP' );
+		$error = sprintf( $error, '<strong>' . $filename . '</strong>' );
+		return false;
+	}
+
+	if ( in_array( $mime_type, awpcp_get_image_mime_types() ) ) {
+		if ( $file_size > $constraints['max_image_size'] ) {
+			$error = _x( 'The file %s was larger than the maximum allowed file size of %s bytes. The file was not uploaded.', 'upload files', 'AWPCP' );
+			$error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['max_image_size'] );
+			return false;
+		}
+
+		if ( $file_size < $constraints['min_image_size'] ) {
+			$error = _x( 'The file %s does not appear to be a valid image file.', 'upload files', 'AWPCP' );
+			$error = sprintf( $error, '<strong>' . $filename . '</strong>' );
+			return false;
+		}
+
+		$img_info = getimagesize( $tmpname );
+
+		if ( ! isset( $img_info[ 0 ] ) && ! isset( $img_info[ 0 ] ) ) {
+			$error = _x( 'The size of %1$s was too small. The file was not uploaded. File size must be greater than %2$d bytes.', 'upload files', 'AWPCP' );
+			$error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['min_image_size'] );
+			return false;
+		}
+
+		if ( $img_info[ 0 ] < $constraints['min_image_width'] ) {
+			$error = _x( 'The image %s did not meet the minimum width of %s pixels. The file was not uploaded.', 'upload files', 'AWPCP');
+			$error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['min_image_width'] );
+			return false;
+		}
+
+		if ( $img_info[ 1 ] < $constraints['min_image_height'] ) {
+			$error = _x( 'The image %s did not meet the minimum height of %s pixels. The file was not uploaded.', 'upload files', 'AWPCP');
+			$error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['min_image_height'] );
+			return false;
+		}
+	} else {
+		if ( $file_size > $constraints['max_attachment_size'] ) {
+			$error = _x( 'The file %s was larger than the maximum allowed file size of %s bytes. The file was not uploaded.', 'upload files', 'AWPCP' );
+			$error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['max_attachment_size'] );
+			return false;
+		}
+	}
+
+	$newname = wp_unique_filename( $paths['files_dir'], $filename );
+	$newpath = trailingslashit( $paths['files_dir'] ) . $newname;
+
+	if ( $action == 'upload' && ! @move_uploaded_file( $tmpname, $newpath ) ) {
+		$error = _x( 'The file %s could not be moved to the destination directory.', 'upload files', 'AWPCP' );
+		$error = sprintf( $error, '<strong>' . $filename . '</strong>' );
+		return false;
+	} else if ( $action == 'copy' && ! @copy( $tmpname, $newpath ) ) {
+		$error = _x( 'The file %s could not be copied to the destination directory.', 'upload files', 'AWPCP' );
+		$error = sprintf( $message, '<strong>' . $filename . '</strong>' );
+		return false;
+	}
+
+	if ( in_array( $mime_type, awpcp_get_image_mime_types() ) ) {
+		if ( ! awpcp_create_image_versions( $newname, $paths['files_dir'] ) ) {
+			$error = _x( 'Could not create resized versions of image %s.', 'upload files', 'AWPCP' );
+			$error = sprintf( $error, '<strong>' . $filename . '</strong>' );
+
+			# TODO: unlink resized version, thumbnail and primary image
+			@unlink( $newpath );
+
+			return false;
+		}
+	}
+
+	@chmod( $newpath, 0644 );
+
+	return array(
+		'original' => $filename,
+		'filename' => basename( $newpath ),
+		'path' => str_replace( $paths['files_dir'], '', $newpath ),
+		'mime_type' => $mime_type,
+	);
+}
+
+/**
+ * Return mime types associated with image files.
+ *
+ * @since 3.0.2
+ */
+function awpcp_get_image_mime_types() {
+	return array(
+		'image/png',
+		'image/jpg', 'image/jpeg', 'image/pjpeg',
+		'image/gif',
+	);
+}
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_get_allowed_mime_types() {
+	return awpcp_array_data( 'mime_types', array(), awpcp_get_upload_file_constraints() );
+}
+
+/**
+ * File type, size and dimension constraints for uplaoded files.
+ *
+ * @since 3.0.2
+ */
+function awpcp_get_upload_file_constraints( ) {
+	return apply_filters( 'awpcp-upload-file-constraints', array(
+		'mime_types' => awpcp_get_image_mime_types(),
+
+		'max_image_size' => get_awpcp_option( 'maximagesize' ),
+		'min_image_size' => get_awpcp_option( 'minimagesize' ),
+		'min_image_height' => get_awpcp_option( 'imgminheight' ),
+		'min_image_width' => get_awpcp_option( 'imgminwidth' ),
+	) );
+}
+
+/**
+ * Returns information about the number of files uplaoded to an Ad, and
+ * the number of files that can still be added to that same Ad.
+ *
+ * @since 3.0.2
+ */
+function awpcp_get_ad_uploaded_files_stats( $ad ) {
+    $payment_term = awpcp_payments_api()->get_ad_payment_term( $ad );
+
+    $images_allowed = get_awpcp_option( 'imagesallowedfree', 0 );
+    $images_allowed = awpcp_get_property( $payment_term, 'images', $images_allowed );
+    $images_uploaded = $ad->count_image_files();
+    $images_left = max( $images_allowed - $images_uploaded, 0 );
+
+    return apply_filters( 'awpcp-ad-uploaded-files-stats', array(
+        'images_allowed' => $images_allowed,
+        'images_uploaded' => $images_uploaded,
+        'images_left' => $images_left,
+	), $ad );
+}
+
+/**
+ * Determines if a file of the given type can be added to an Ad based solely
+ * on the number of files of the same type that are already attached to
+ * the Ad.
+ *
+ * @since 3.0.2
+ */
+function awpcp_can_upload_file_to_ad( $file, $ad ) {
+    $stats = awpcp_get_ad_uploaded_files_stats( $ad );
+
+    $image_mime_types = awpcp_get_image_mime_types();
+    $images_allowed = $stats['images_allowed'];
+    $images_uploaded = $stats['images_uploaded'];
+
+    $result = true;
+
+    if ( in_array( $file['type'], $image_mime_types ) ) {
+    	if ( $images_allowed <= $images_uploaded ) {
+    		$result = _x( "You can't add more images to this Ad. There are not remaining images slots.", 'upload files', 'AWPCP' );
+    	}
+    }
+
+    return apply_filters( 'awpcp-can-upload-file-to-ad', $result, $file, $ad, $stats );
+}
+
+/**
+ * Verifies the upload directories exists and have proper permissions, then
+ * returns the path to the directories to store raw files and image thumbnails.
+ *
+ * @since 3.0.2
+ */
+function awpcp_get_uploads_directories() {
+	static $uploads_directories = null;
+
+	if ( is_null( $uploads_directories ) ) {
+		global $wpcontentdir;
+
+		$permissions = awpcp_directory_permissions();
+
+		$upload_dir_name = get_awpcp_option( 'uploadfoldername', 'uploads' );
+		$upload_dir = $wpcontentdir . '/' . $upload_dir_name . '/';
+
+		// Required to set permission on main upload directory
+		require_once(AWPCP_DIR . '/fileop.class.php');
+
+		$fileop = new fileop();
+		$owner = fileowner( $wpcontentdir );
+
+		if ( ! is_dir( $upload_dir ) && is_writable( $wpcontentdir ) ) {
+			umask( 0 );
+			mkdir( $upload_dir, $permissions );
+			chown( $upload_dir, $owner );
+		}
+
+		$fileop->set_permission( $upload_dir, $permissions );
+
+		$files_dir = $upload_dir . 'awpcp/';
+		$thumbs_dir = $upload_dir . 'awpcp/thumbs/';
+
+		if ( ! is_dir( $files_dir ) && is_writable( $upload_dir ) ) {
+			umask( 0 );
+			@mkdir( $files_dir, $permissions );
+			@chown( $files_dir, $owner );
+		}
+
+		if ( ! is_dir( $thumbs_dir ) && is_writable( $upload_dir ) ) {
+			umask( 0 );
+			@mkdir( $thumbs_dir, $permissions );
+			@chown( $thumbs_dir, $owner );
+		}
+
+		$fileop->set_permission( $files_dir, $permissions );
+		$fileop->set_permission( $thumbs_dir, $permissions );
+
+		$uploads_directories = array(
+			'files_dir' => $files_dir,
+			'thumbnails_dir' => $thumbs_dir,
+		);
+	}
+
+	return $uploads_directories;
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 
 /**
  * @param $file A $_FILES item
@@ -8,6 +329,8 @@ function awpcp_upload_image_file($directory, $filename, $tmpname, $min_size, $ma
 	$filename = sanitize_file_name($filename);
 	$newname = wp_unique_filename($directory, $filename);
 	$newpath = trailingslashit($directory) . $newname;
+
+	// debugp( $directory, $filename, $tmpname ); kaboom();
 
 	if ( !file_exists( $tmpname ) ) {
 		return sprintf( __( 'The specified image file does not exists: %s.', 'AWPCP' ), $filename );
@@ -33,7 +356,7 @@ function awpcp_upload_image_file($directory, $filename, $tmpname, $min_size, $ma
 	}
 
 	if (!(in_array($ext, $allowed_extensions))) {
-		return __('The file has an invalid extension and was rejected.', 'AWPCP');
+		return sprintf( __('The file %s has an invalid extension and was rejected.', 'AWPCP'), $filename );
 
 	} elseif ($size < $min_size) {
 		$message = __('The size of %1$s was too small. The file was not uploaded. File size must be greater than %2$d bytes.', 'AWPCP');
@@ -44,15 +367,15 @@ function awpcp_upload_image_file($directory, $filename, $tmpname, $min_size, $ma
 		return sprintf($message, $filename, $max_size);
 
 	} elseif (!isset($imginfo[0]) && !isset($imginfo[1])) {
-		return __('The file does not appear to be a valid image file.', 'AWPCP');
+		return sprintf( __('The file %s does not appear to be a valid image file.', 'AWPCP' ), $filename );
 
-	} elseif ($imginfo[0] < $min_height) {
-		$message = __('The image did not meet the minimum width of %s pixels. The file was not uploaded.', 'AWPCP');
-		return sprintf($message, $min_width);
+	} elseif ( $imginfo[0] < $min_width ) {
+		$message = __('The image %s did not meet the minimum width of %s pixels. The file was not uploaded.', 'AWPCP');
+		return sprintf($message, $filename, $min_width);
 
 	} elseif ($imginfo[1] < $min_height) {
-		$message = __('The image did not meet the minimum height of %s pixels. The file was not uploaded.', 'AWPCP');
-		return sprintf($message, $min_width);
+		$message = __('The image %s did not meet the minimum height of %s pixels. The file was not uploaded.', 'AWPCP');
+		return sprintf( $message, $filename, $min_height );
 	}
 
 	if ($uploaded && !@move_uploaded_file($tmpname, $newpath)) {
@@ -74,46 +397,6 @@ function awpcp_upload_image_file($directory, $filename, $tmpname, $min_size, $ma
 	@chmod($newpath, 0644);
 
 	return array('original' => $filename, 'filename' => $newname);
-}
-
-
-/**
- * Used in the admin panels to add images to existing ads
- */
-function admin_handleimagesupload($adid) {
-	global $wpdb, $wpcontentdir, $awpcp_plugin_path;
-
-	list($images_dir, $thumbs_dir) = awpcp_setup_uploads_dir();
-	list($min_width, $min_height, $min_size, $max_size) = awpcp_get_image_constraints();
-
-	$ad = AWPCP_Ad::find_by_id($adid);
-	if (!is_null($ad)) {
-
-		list($images_allowed, $images_uploaded, $images_left) = awpcp_get_ad_images_information($adid);
-
-		if ($images_left > 0) {
-			$filename = awpcp_array_data('name', '', $_FILES['awpcp_add_file']);
-			$tmpname = awpcp_array_data('tmp_name', '', $_FILES['awpcp_add_file']);
-			$result = awpcp_upload_image_file($images_dir, $filename, $tmpname,
-											  $min_size, $max_size, $min_width, $min_height);
-		} else {
-			$message = __('No more images can be added to this Ad. The Ad already have %d of %d images allowed.', 'AWPCP');
-			$result = sprintf($message, $images_uploaded, $images_allowed);
-		}
-	} else {
-		$result = __("The Ad doesn't exists. All uploaded files were rejected.", 'AWPCP');
-	}
-
-	if (is_array($result) && isset($result['filename'])) {
-		// TODO: consider images approve settings
-		$sql = 'insert into ' . AWPCP_TABLE_ADPHOTOS . " set image_name = '%s', ad_id = '$adid', disabled = 0";
-		$sql = $wpdb->prepare($sql, $result['filename']);
-		$result = $wpdb->query($sql) ;
-	} else {
-		return '<div class="error"><p>' . $result . '</p></div>';
-	}
-
-	return $result !== false ? true : false;
 }
 
 
@@ -189,6 +472,8 @@ function awpcp_resizer($filename, $dir) {
 function awpcp_setup_uploads_dir() {
 	global $wpcontentdir;
 
+	$permissions = awpcp_directory_permissions();
+
 	$upload_dir_name = get_awpcp_option('uploadfoldername', 'uploads');
 	$upload_dir = $wpcontentdir . '/' . $upload_dir_name . '/';
 
@@ -200,28 +485,29 @@ function awpcp_setup_uploads_dir() {
 
 	if (!is_dir($upload_dir) && is_writable($wpcontentdir)) {
 		umask(0);
-		mkdir($upload_dir, 0777);
+		mkdir( $upload_dir, $permissions );
 		chown($upload_dir, $owner);
 	}
-	$fileop->set_permission($upload_dir,0777);
-	
+
+	$fileop->set_permission( $upload_dir, $permissions );
+
 	$images_dir = $upload_dir . 'awpcp/';
 	$thumbs_dir = $upload_dir . 'awpcp/thumbs/';
 
 	if (!is_dir($images_dir) && is_writable($upload_dir)) {
 		umask(0);
-		@mkdir($images_dir, 0777);
+		@mkdir( $images_dir, $permissions );
 		@chown($images_dir, $owner);
 	}
 
 	if (!is_dir($thumbs_dir) && is_writable($upload_dir)) {
 		umask(0);
-		@mkdir($thumbs_dir, 0777);
+		@mkdir( $thumbs_dir, $permissions );
 		@chown($thumbs_dir, $owner);
 	}
 
-	$fileop->set_permission($images_dir, 0777);
-	$fileop->set_permission($thumbs_dir, 0777);
+	$fileop->set_permission( $images_dir, $permissions );
+	$fileop->set_permission( $thumbs_dir, $permissions );
 
 	return array($images_dir, $thumbs_dir);
 }
@@ -236,86 +522,17 @@ function awpcp_get_image_constraints() {
 }
 
 
-function awpcp_handle_uploaded_images($ad_id, &$form_errors=array()) {
-	global $wpdb;
-
-	list($images_dir, $thumbs_dir) = awpcp_setup_uploads_dir();
-	list($images_allowed, $images_uploaded, $images_left) = awpcp_get_ad_images_information($ad_id);
-	list($min_width, $min_height, $min_size, $max_size) = awpcp_get_image_constraints();
-
-	$primary = awpcp_post_param('primary-image');
-	$disabled = get_awpcp_option('imagesapprove') == 1 ? 1 : 0;
-
-	if ($images_left <= 0) {
-		$form_errors['form'] = __("You can't add more images to this Ad. There are not remaining images slots.", 'AWPCP');
-	}
-
-	$count = 0;
-	for ($i=0; $i < $images_left; $i++) {
-		$field = 'AWPCPfileToUpload' . $i;
-		$file = $_FILES[$field];
-
-		if ($file['error'] !== 0) {
-			continue;
-		}
-
-		$filename = sanitize_file_name($file['name']);
-		$tmpname = awpcp_array_data('tmp_name', '', $file);
-
-		$uploaded = awpcp_upload_image_file($images_dir, $filename, $tmpname, $min_size, $max_size, $min_width, $min_height);
-
-		if (is_array($uploaded) && isset($uploaded['filename'])) {
-			$sql = 'INSERT INTO ' . AWPCP_TABLE_ADPHOTOS . " SET image_name = '%s', ad_id = %d, disabled = %d";
-			$sql = $wpdb->prepare($sql, $uploaded['filename'], $ad_id, $disabled);
-			$result = $wpdb->query($sql);
-
-			if ($result !== false) {
-				if ($primary == "field-$i") {
-					awpcp_set_ad_primary_image($ad_id, $wpdb->insert_id);
-				}
-				$count += 1;
-			} else {
-				$msg = __("Could not save the information to the database for: %s", 'AWPCP');
-				$form_errors[$field] = sprintf($msg, $uploaded['original']);
-			}
-		} else {
-			$form_errors[$field] = $uploaded;
-		}
-	}
-
-	if (intval($primary) > 0) {
-		awpcp_set_ad_primary_image($ad_id, intval($primary));
-	}
-
-	if (empty($form_errors) && $count <= 0) {
-		$form_errors['form'] = __('No image files were uploaded');
-	}
-
-	$form_errors = array_filter($form_errors);
-
-	if (!empty($form_errors)) {
-		return false;
-	}
-
-	return true;
-}
-
-
-function handleimagesupload($adid, $adtermid, $nextstep, $adpaymethod, $adaction, $adkey) {
-	return awpcp_handle_uploaded_images($ad_id);
-}
-
-
 /**
- * Create thumbnails and resize original image to match image size 
+ * Create thumbnails and resize original image to match image size
  * restrictions.
  */
 function awpcp_create_image_versions($filename, $directory) {
-// function awpcpcreatethumb($filename, $directory, $width, $height) {
 	$directory = trailingslashit($directory);
 	$thumbnails = $directory . 'thumbs/';
 
 	$filepath = $directory . $filename;
+
+	awpcp_fix_image_rotation( $filepath );
 
 	// create thumbnail
 	$width = get_awpcp_option('imgthumbwidth');
@@ -337,6 +554,87 @@ function awpcp_create_image_versions($filename, $directory) {
 	return $resized && $thumbnail && $primary;
 }
 
+/**
+ * @since 3.0.2
+ */
+function awpcp_fix_image_rotation( $filepath ) {
+	if ( ! function_exists( 'exif_read_data' ) ) {
+		return;
+	}
+
+	$exif_data = @exif_read_data( $filepath );
+
+	$orientation = isset( $exif_data['Orientation'] ) ? $exif_data['Orientation'] : 0;
+	$mime_type = isset( $exif_data['MimeType'] ) ? $exif_data['MimeType'] : '';
+
+	$rotation_angle = 0;
+	if ( 6 == $orientation ) {
+		$rotation_angle = 90;
+	} else if ( 3 == $orientation ) {
+		$rotation_angle = 180;
+	} else if ( 8 == $orientation ) {
+		$rotation_angle = 270;
+	}
+
+	if ( $rotation_angle > 0 ) {
+		awpcp_rotate_image( $filepath, $mime_type, $rotation_angle );
+	}
+}
+
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_rotate_image( $file, $mime_type, $angle ) {
+	if ( class_exists( 'Imagick' ) ) {
+		awpcp_rotate_image_with_imagick( $file, $angle );
+	} else {
+		awpcp_rotate_image_with_gd( $file, $mime_type, $angle );
+	}
+}
+
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_rotate_image_with_imagick( $filepath, $angle ) {
+	$imagick = new Imagick();
+	$imagick->readImage( $filepath );
+	$imagick->rotateImage( new ImagickPixel(), $angle );
+	$imagick->setImageOrientation( 1 );
+	$imagick->writeImage( $filepath );
+	$imagick->clear();
+	$imagick->destroy();
+}
+
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_rotate_image_with_gd( $filepath, $mime_type, $angle ) {
+    // GD needs negative degrees
+    $angle = -$angle;
+
+    switch ( $mime_type ) {
+    	case 'image/jpeg':
+    		$source = imagecreatefromjpeg( $filepath );
+    		$rotate = imagerotate( $source, $angle, 0 );
+    		imagejpeg( $rotate, $filepath );
+    		break;
+    	case 'image/png':
+    		$source = imagecreatefrompng( $filepath );
+    		$rotate = imagerotate( $source, $angle, 0 );
+    		imagepng( $rotate, $filepath );
+    		break;
+    	case 'image/gif':
+    		$source = imagecreatefromgif( $filepath );
+    		$rotate = imagerotate( $source, $angle, 0 );
+    		imagegif( $rotate, $filepath );
+    		break;
+    	default:
+    		break;
+    }
+}
 
 function awpcp_make_intermediate_size($file, $directory, $width, $height, $crop=false, $suffix='') {
 	$info = pathinfo($file);
@@ -348,10 +646,7 @@ function awpcp_make_intermediate_size($file, $directory, $width, $height, $crop=
 	$image = image_make_intermediate_size($file, $width, $height, $crop);
 
 	if (!is_writable($directory)) {
-		@chmod($directory, 0755);
-		if (!is_writable($directory)) {
-			@chmod($directory, 0777);
-		}
+		@chmod( $directory, awpcp_directory_permissions() );
 	}
 
 	if (is_array($image) && !empty($image)) {

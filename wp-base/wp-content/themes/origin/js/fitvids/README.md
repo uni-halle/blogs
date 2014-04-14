@@ -4,9 +4,9 @@ A lightweight, easy-to-use jQuery plugin for fluid width video embeds.
 FitVids automates [the Intrinsic Ratio Method by Thierry Koblentz](http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/) to achieve fluid width videos in your responsive web design.
 
 ## How Do I Use It?
-Include jQuery and FitVids.js in your layout and target your videos container with `fitVids()`.
+Include jQuery 1.7+ and FitVids.js in your layout and target your videos container with `fitVids()`.
 
-```javascript
+```html
 <script src="path/to/jquery.min.js"></script>
 <script src="path/to/jquery.fitvids.js"></script>
 <script>
@@ -32,16 +32,23 @@ This will wrap each video in a `div.fluid-width-video-wrapper` and apply the nec
 Have a custom video player? We now have a `customSelector` option where you can add your own specific video vendor selector (_mileage may vary depending on vendor and fluidity of player_):
 
 ```javascript
-  $("#thing-with-videos").fitVids({ customSelector: "iframe[src^'http://mycoolvideosite.com'], iframe[src^='http://myviiids.com']"});
+  $("#thing-with-videos").fitVids({ customSelector: "iframe[src^='http://mycoolvideosite.com'], iframe[src^='http://myviiids.com']"});
   // Selectors are comma separated, just like CSS
 ```
 
 _Note:_ This will be the quickest way to add your own custom vendor as well as test your player's compatibility with FitVids.
 
+## Known issues
+
+* Vimeo Autoplay API is not compatible with FitVids in IE11. You must manually wrap videos you want to autoplay.
+
+
 ## Changelog
-* _09.02.11 - v1 - 2.376kb_
+* _08.16.13 - v1.0.3 - 2.779k_
+  * Optionally works with Zepto
+* _09.02.11 - v1.0.2 - 2.376kb_
   * Added `customSelector` option
-* _09.02.11 - v1 - 2.135kb_
+* _09.02.11 - v1.0.0 - 2.135kb_
 	* Initial release
 	* Vimeo,YouTube, Blip.tv, Viddler, Kickstarter
 

@@ -12,7 +12,7 @@ class AWPCP_AdminUsers {
 
     public function __construct() {
         add_filter('manage_' . self::USERS_SCREEN . '_columns', array($this, 'get_columns'), 20);
-        add_filter('manage_users_custom_column', array($this, 'custom_column'), 10, 3);
+        add_filter('manage_users_custom_column', array($this, 'custom_column'), 100, 3);
         add_action('load-users.php', array($this, 'scripts'));
 
         add_action('wp_ajax_awpcp-users-credit', array($this, 'ajax'));
@@ -21,9 +21,11 @@ class AWPCP_AdminUsers {
 
     private function get_table() {
         if (is_null($this->table)) {
-            if (!get_current_screen())
+            if (!get_current_screen()) {
                 set_current_screen(self::USERS_SCREEN);
-            $this->table = _get_list_table('WP_Users_List_Table');
+            }
+
+            $this->table = _get_list_table( 'WP_Users_List_Table', array( 'screen' => self::USERS_SCREEN ) );
         }
 
         return $this->table;
@@ -83,7 +85,7 @@ class AWPCP_AdminUsers {
             // load the table so the get_columns methods is properly called
             // when attempt to find out the number of columns in the table
             $table = $this->get_table();
-            $columns = count(get_column_headers(self::USERS_SCREEN));
+            $columns = $_POST['columns'];
 
             ob_start();
                 include(AWPCP_DIR . '/admin/templates/admin-panel-users-balance-form.tpl.php');

@@ -8,7 +8,7 @@ class Hook_NextGen_Basic_Gallery_Integration extends Hook
 		$pid  = $this->object->param('pid');
 
 		if (!empty($pid) && isset($displayed_gallery->display_settings['use_imagebrowser_effect']) && intval($displayed_gallery->display_settings['use_imagebrowser_effect']))
-			$show = NEXTGEN_GALLERY_NEXTGEN_BASIC_IMAGEBROWSER;
+			$show = NGG_BASIC_IMAGEBROWSER;
 
         // Are we to display a different display type?
         if (!empty($show))
@@ -16,7 +16,7 @@ class Hook_NextGen_Basic_Gallery_Integration extends Hook
             $params = (array)$displayed_gallery->get_entity();
             $ds = $params['display_settings'];
 
-            if ((!empty($ds['show_slideshow_link']) || !empty($ds['show_thumbnail_link']))
+            if ((!empty($ds['show_slideshow_link']) || !empty($ds['show_thumbnail_link']) || !empty($ds['use_imagebrowser_effect']))
             &&   $show != $this->object->context)
             {
                 // We've got an alternate request. We'll use a different display

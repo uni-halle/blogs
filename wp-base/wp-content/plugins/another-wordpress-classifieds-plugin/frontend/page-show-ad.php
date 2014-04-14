@@ -89,7 +89,7 @@ function awpcp_get_ad_location($ad_id, $country=false, $county=false, $state=fal
  *
  * @return Show Ad page content.
  */
-function showad($adid, $omitmenu, $preview=false, $send_email=true) {
+function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, $show_messages=true ) {
 	global $wpdb;
 
 	wp_enqueue_script('awpcp-page-show-ad');
@@ -150,22 +150,25 @@ function showad($adid, $omitmenu, $preview=false, $send_email=true) {
 				$is_ad_owner = false;
 			}
 
-			if ($omitmenu) {
-				$output = '<div id="classiwrapper">%s</div><!--close classiwrapper-->';
-			} else {
-				$output = '<div id="classiwrapper">%s%%s</div><!--close classiwrapper-->';
-				$output = sprintf($output, awpcp_menu_items());
-			}
+			$output = '<div id="classiwrapper">%s<!--awpcp-single-ad-layout--></div><!--close classiwrapper-->';
+			$output = sprintf( $output, $omitmenu ? '' : awpcp_menu_items() );
 
 			if (!$isadmin && !$is_ad_owner && !$preview && $ad->disabled == 1) {
 				$message = __('The Ad you are trying to view is pending approval. Once the Administrator approves it, it will be active and visible.', 'AWPCP');
-				return sprintf($output, awpcp_print_error($message));
+				return str_replace( '<!--awpcp-single-ad-layout-->', awpcp_print_error( $message ), $output );
 			}
 
-			if ($isadmin && $ad->disabled == 1) {
+			if ( awpcp_request_param('verified') && $ad->verified ) {
+				$messages[] = awpcp_print_message( __( 'Your email address was successfully verified.', 'AWPCP' ) );
+			}
+
+			if ($show_messages && $isadmin && $ad->disabled == 1) {
 				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the Administrator) and the author can see it.', 'AWPCP');
 				$messages[] = awpcp_print_error($message);
-			} else if ($is_ad_owner && $ad->disabled == 1) {
+			} else if ( $show_messages && ( $is_ad_owner || $preview ) && ! $ad->verified ) {
+				$message = __('This Ad is currently disabled until you verify the email address used for the contact information. Only you (the author) can see it.', 'AWPCP');
+				$messages[] = awpcp_print_error($message);
+			} else if ( $show_messages && ( $is_ad_owner || $preview ) && $ad->disabled == 1 ) {
 				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the author) can see it.', 'AWPCP');
 				$messages[] = awpcp_print_error($message);
 			}
@@ -178,7 +181,7 @@ function showad($adid, $omitmenu, $preview=false, $send_email=true) {
 
 			$layout = awpcp_do_placeholders( $ad, $layout, 'single' );
 
-			$output = sprintf($output, join('', $messages) . $layout);
+			$output = str_replace( '<!--awpcp-single-ad-layout-->', join('', $messages) . $layout, $output );
 			$output = apply_filters('awpcp-show-ad', $output, $adid);
 
 			$ad->visit();

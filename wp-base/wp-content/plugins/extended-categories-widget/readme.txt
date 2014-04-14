@@ -3,8 +3,8 @@ Contributors: petervanderdoes
 Donate link: http://blog.avirtualhome.com/wordpress-plugins/
 Tags: extended, categories, widget, top categories
 Requires at least: 2.3
-Tested up to: 3.6.1
-Stable tag: 3.8.2
+Tested up to: 3.8
+Stable tag: 3.9.3
 
 The AVH Extended Categories Widgets gives you three widgets for displaying categories.
 == Description ==
@@ -58,7 +58,7 @@ You can set the following options for the Category Group Widget:
 * Set the default group when editing or creating a post.
 
 You can also select not to show the Category Group widget by selecting the group: None
- 
+
 Translations:
 
 * Czech - Čeština (cs_CZ)
@@ -73,7 +73,12 @@ Translations:
 * Swedish - Svenska (sv_SE)
 * Turkish - Türkçe (tr)
 
-Some of the translations are incomplete. Currently we're in the middle of changing the way you can help with translations. Keep an eye on the [website](http:///blog.avirtualhome.com) for the announcement.
+Some of the translations are incomplete. You can help translate all of the AVH Software by registering at our [translation site](http://translate.avirtualhome.com).
+
+= Get involved =
+
+Bugs and feature requests can be submitted at the [AVH Extended Categories GitHub Repository](https://github.com/petervanderdoes/AVH-Extended-Categories/blob/develop/Contributing.md).
+Developers can checkout and contribute to the source code on the [AVH Extended Categories GitHub Repository](https://github.com/petervanderdoes/AVH-Extended-Categories/blob/develop/Contributing.md).
 
 == Installation ==
 
@@ -85,11 +90,10 @@ The AVH Extended Categories Widgets can be installed in 3 easy steps:
 
 1. Go to the Presentation/Appearance->Widgets page and drag the widget into the sidebar of your choice. Configuration of the widget is done like all other widgets.
 
-
 == Support ==
 
 = What about support? =
-I created a support site at http://forums.avirtualhome.com where you can ask questions or request features.
+Support is done through WordPress.org
 
 = Depth selection =
 Starting with version 2.0 and WordPress 2.8 you can select how many levels deep you want to show your categories. This option only works when you select Show Hierarchy as well.
@@ -98,11 +102,11 @@ Here is how it works: Say you have 5 top level categories and each top level has
 You select to display all categories, select to Show hierarchy and select how many levels you want to show, in this case Toplevel only.
 
 = I want to help and translate the plug-in =
-I have setup a project in [Launchpad](https://translations.launchpad.net/avhextendedcategories/trunk) for translating the plug-in.
+You can help translate all of the AVH Software by registering at our [translation site](http://translate.avirtualhome.com).
 
 = Multiple Category Groups =
 The following is an explanation how assigning multiple groups to page/post works.
- 
+
 Lets say you have the following groups:
 Free Time
 Theater
@@ -135,6 +139,27 @@ Whether Widget 2 shows Movie or Music depends on the creation order of groups. I
 None
 
 == Changelog ==
+= Version 3.9.3 =
+* Log errors as E_USER_NOTICE when creating category groups.
+
+= Version 3.9.1 =
+* When the category group home is deleted there are MySQL errors.
+
+= Version 3.9.0 =
+* Add CSS classes to output when on a single post.
+* Added language: Serbian - Српски (sr) thanks to  Borisa Djuraskovic - http://www.webhostinghub.com
+* Update language: Spanish - Español (es) thanks to Andrew Kurtis - http://www.webhostinghub.com
+
+= Version 3.8.5 =
+* Bugfix: Options of the group widgets are not obeyed.
+
+= Version 3.8.4 =
+* Bugfix: Options of the widgets are not obeyed.
+
+= Version 3.8.3 =
+* Bugfix: Widget would not keep checked categories
+* Bugfix: Several PHP warnings and notices are shown.
+
 = Version 3.8.2 =
 * WordPress plugin page is no longer available.
 
@@ -226,7 +251,7 @@ None
 
 = Version 3.2.2 =
 * Bugfix: Problem with Chrome and saving the category group.
-* Bugfix: Extra metabox displayed. The plugin uses it's own metabox for Category Group selection. 
+* Bugfix: Extra metabox displayed. The plugin uses it's own metabox for Category Group selection.
 
 = Version 3.2.1 =
 * Speed improvements in the admin section when there are a lot of categories and several Categories widgets.
@@ -250,7 +275,7 @@ None
 
 = Version 3.0.2 =
 * Bugfix: The plugin conflicts with the standard theme/plugin editor in WordPress
- 
+
 = Version 3.0.1 =
 * Bugfix: Definition of the metabox for post/page in the wrong place
 
@@ -278,7 +303,7 @@ None
 = Version 2.3.1 =
 * Bugfix: Undefined function
 
-= Version 2.3 = 
+= Version 2.3 =
 * RFC: You can change the text Select Category, without editing any translation file.
 * Bugfix: Selecting one parent wouldn't show it's children.
 * You can now display only selected categories. This didn't work properly in an hierachical category structure.
@@ -287,7 +312,7 @@ None
 = Version 2.2 =
 * RFC: Internationalization of the plug-in.
 * Bugfix: W3 Validation Errors when using drop down categories.
-* Added option to exclude categories from displaying instead of including them. (Compliments to: Jose Luis Moya - http://www.alsur.es ) 
+* Added option to exclude categories from displaying instead of including them. (Compliments to: Jose Luis Moya - http://www.alsur.es )
 
 = Version 2.1 =
 * RFC: The path for the RSS image can be URI.

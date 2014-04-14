@@ -1,32 +1,90 @@
 <?php
 /*
 Plugin Name: Search Everything
-Plugin URI: https://github.com/sproutventure/search-everything-wordpress-plugin/
+Plugin URI: https://github.com/Zemanta/search-everything-wordpress-plugin/
 Description: Adds search functionality without modifying any template pages: Activate, Configure and Search. Options Include: search highlight, search pages, excerpts, attachments, drafts, comments, tags and custom fields (metadata). Also offers the ability to exclude specific pages and posts. Does not search password-protected content.
-Version: 7.0.1
-Author: Dan Cameron of Sprout Venture
-Author URI: http://sproutventure.com/
+Version: 8.0
+Author: Zemanta
+Author URI: http://www.zemanta.com
 */
 
-/*
- This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+define('SE_VERSION', '8.0');
 
- This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- */
+if (!defined('SE_PLUGIN_FILE'))
+	define('SE_PLUGIN_FILE', plugin_basename(__FILE__));
 
-if ( !defined( 'WP_CONTENT_DIR' ) )
-	define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
+if (!defined('SE_PLUGIN_NAME'))
+	define('SE_PLUGIN_NAME', trim(dirname(plugin_basename(__FILE__)), '/'));
 
-if ( !defined( 'DIRECTORY_SEPARATOR' ) ) {
-	if ( strpos( php_uname( 's' ), 'Win' ) !== false )
-		define( 'DIRECTORY_SEPARATOR', '\\' );
-	else
-		define( 'DIRECTORY_SEPARATOR', '/' );
+if (!defined('SE_PLUGIN_DIR'))
+	define('SE_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . SE_PLUGIN_NAME);
+
+if (!defined('SE_PLUGIN_URL'))
+	define('SE_PLUGIN_URL', WP_PLUGIN_URL . '/' . SE_PLUGIN_NAME);
+
+if (!defined('SE_ZEMANTA_API_GATEWAY'))
+	define('SE_ZEMANTA_API_GATEWAY', 'http://api.zemanta.com/services/rest/0.0/');
+
+if (!defined('SE_ZEMANTA_DASHBOARD_URL'))
+	define('SE_ZEMANTA_DASHBOARD_URL', 'http://blogmind.zemanta.com/');
+
+if (!defined('SE_ZEMANTA_PREFS_URL'))
+	define('SE_ZEMANTA_PREFS_URL', 'http://prefs.zemanta.com/api/get-sfid/');
+
+if (!defined('SE_ZEMANTA_LOGO_URL'))
+	define('SE_ZEMANTA_LOGO_URL', 'http://www.zemanta.com');
+
+if (!defined('SE_PREFS_STATE_FOUND')) {
+	define('SE_PREFS_STATE_FOUND', 1);
+	define('SE_PREFS_STATE_FAILED', -2);
+	define('SE_PREFS_STATE_NOT_ENGLISH', -4);
+	define('SE_PREFS_STATE_EMPTY', -7);
 }
-define( 'SE_ABSPATH', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 
-$SE = new SearchEverything();
-//add filters based upon option settings
+include_once(SE_PLUGIN_DIR . '/config.php');
+include_once(SE_PLUGIN_DIR . '/options.php');
+
+add_action('wp_loaded','se_initialize_plugin');
+
+function se_initialize_plugin() {
+	$SE = new SearchEverything();
+	
+	//add filters based upon option settings
+	//include_once(SE_PLUGIN_DIR . '/zemanta/zemanta.php');
+	//$se_zemanta = new SEZemanta();
+}
+
+function se_get_view($view) {
+	return SE_PLUGIN_DIR . "/views/$view.php";
+}
+
+function se_admin_head() {
+	$se_options = se_get_options();
+	$se_meta = se_get_meta();
+	$se_metabox = $se_options['se_research_metabox'];
+	include(se_get_view('admin_head'));
+}
+
+add_action('admin_head', 'se_admin_head');
+
+function se_global_notice() {
+	global $pagenow, $se_global_notice_pages;
+	
+	$se_meta = se_get_meta();
+
+	$close_url = admin_url( 'options-general.php' );
+	$close_url = add_query_arg( array(
+		'page' => 'extend_search',
+		'se_global_notice' => 0,
+	), $close_url );
+
+	$notice = $se_meta['se_global_notice'];
+	
+	if ($notice && in_array($pagenow, $se_global_notice_pages)) {
+		include(se_get_view('global_notice'));
+	}
+}
+add_action('all_admin_notices', 'se_global_notice' );
 
 class SearchEverything {
 
@@ -35,66 +93,92 @@ class SearchEverything {
 	var $wp_ver23;
 	var $wp_ver25;
 	var $wp_ver28;
+	var $ajax_request;
 	private $query_instance;
 
-	function SearchEverything() {
+	function SearchEverything($ajax_query=false) {
 		global $wp_version;
 		$this->wp_ver23 = ( $wp_version >= '2.3' );
 		$this->wp_ver25 = ( $wp_version >= '2.5' );
 		$this->wp_ver28 = ( $wp_version >= '2.8' );
-		$this->options = get_option( 'se_options' );
+		$this->ajax_request = $ajax_query ? true : false;
+		$this->options = se_get_options();
 
-		if ( is_admin() ) {
-			include SE_ABSPATH  . 'views/options.php';
+		if ($this->ajax_request) {
+			$this->init_ajax($ajax_query);
+		}
+		else {
+			$this->init();
+		}		
+	}
+
+	function init_ajax($query) {
+		$this->search_hooks();
+	}
+
+	function init() {
+		if ( current_user_can('manage_options') ) {
 			$SEAdmin = new se_admin();
 			// Disable Search-Everything, because posts_join is not working properly in Wordpress-backend's Ajax functions
-			if ( basename( $_SERVER["SCRIPT_NAME"] ) == "admin-ajax.php" ) {
+			if (basename( $_SERVER["SCRIPT_NAME"] ) == "admin-ajax.php") {
 				return true;
 			}
 		}
+
+		$this->search_hooks();
+
+		// Highlight content
+		if ( $this->options['se_use_highlight'] ) {
+			add_filter( 'the_content', array( &$this, 'se_postfilter' ), 11 );
+			add_filter( 'the_title', array( &$this, 'se_postfilter' ), 11 );
+			add_filter( 'the_excerpt', array( &$this, 'se_postfilter' ), 11 );
+		}
+	}
+
+	function search_hooks() {
 		//add filters based upon option settings
-		if ( "Yes" == $this->options['se_use_tag_search'] || "Yes" == $this->options['se_use_category_search'] || "Yes" == $this->options['se_use_tax_search'] ) {
+		if ( $this->options['se_use_tag_search'] || $this->options['se_use_category_search'] || $this->options['se_use_tax_search'] ) {
 			add_filter( 'posts_join', array( &$this, 'se_terms_join' ) );
-			if ( "Yes" == $this->options['se_use_tag_search'] ) {
+			if ( $this->options['se_use_tag_search'] ) {
 				$this->se_log( "searching tags" );
 			}
-			if ( "Yes" == $this->options['se_use_category_search'] ) {
+			if ( $this->options['se_use_category_search'] ) {
 				$this->se_log( "searching categories" );
 			}
-			if ( "Yes" == $this->options['se_use_tax_search'] ) {
+			if ( $this->options['se_use_tax_search'] ) {
 				$this->se_log( "searching custom taxonomies" );
 			}
 		}
 
-		if ( "Yes" == $this->options['se_use_page_search'] ) {
+		if ( $this->options['se_use_page_search'] ) {
 			add_filter( 'posts_where', array( &$this, 'se_search_pages' ) );
 			$this->se_log( "searching pages" );
 		}
 
-		if ( "Yes" == $this->options['se_use_excerpt_search'] ) {
+		if ( $this->options['se_use_excerpt_search'] ) {
 			$this->se_log( "searching excerpts" );
 		}
 
-		if ( "Yes" == $this->options['se_use_comment_search'] ) {
+		if ( $this->options['se_use_comment_search'] ) {
 			add_filter( 'posts_join', array( &$this, 'se_comments_join' ) );
 			$this->se_log( "searching comments" );
 			// Highlight content
-			if ( "Yes" == $this->options['se_use_highlight'] ) {
+			if ( $this->options['se_use_highlight'] ) {
 				add_filter( 'comment_text', array( &$this, 'se_postfilter' ) );
 			}
 		}
 
-		if ( "Yes" == $this->options['se_use_draft_search'] ) {
+		if ( $this->options['se_use_draft_search'] ) {
 			add_filter( 'posts_where', array( &$this, 'se_search_draft_posts' ) );
 			$this->se_log( "searching drafts" );
 		}
 
-		if ( "Yes" == $this->options['se_use_attachment_search'] ) {
+		if ( $this->options['se_use_attachment_search'] ) {
 			add_filter( 'posts_where', array( &$this, 'se_search_attachments' ) );
 			$this->se_log( "searching attachments" );
 		}
 
-		if ( "Yes" == $this->options['se_use_metadata_search'] ) {
+		if ( $this->options['se_use_metadata_search'] ) {
 			add_filter( 'posts_join', array( &$this, 'se_search_metadata_join' ) );
 			$this->se_log( "searching metadata" );
 		}
@@ -110,7 +194,7 @@ class SearchEverything {
 			$this->se_log( "searching excluding categories" );
 		}
 
-		if ( "Yes" == $this->options['se_use_authors'] ) {
+		if ( $this->options['se_use_authors'] ) {
 
 			add_filter( 'posts_join', array( &$this, 'se_search_authors_join' ) );
 			$this->se_log( "searching authors" );
@@ -125,15 +209,7 @@ class SearchEverything {
 		add_filter( 'posts_where', array( &$this, 'se_no_future' ) );
 
 		add_filter( 'posts_request', array( &$this, 'se_log_query' ), 10, 2 );
-
-		// Highlight content
-		if ( "Yes" == $this->options['se_use_highlight'] ) {
-			add_filter( 'the_content', array( &$this, 'se_postfilter' ), 11 );
-			add_filter( 'the_title', array( &$this, 'se_postfilter' ), 11 );
-			add_filter( 'the_excerpt', array( &$this, 'se_postfilter' ), 11 );
-		}
 	}
-
 
 	// creates the list of search keywords from the 's' parameters.
 	function se_get_search_terms() {
@@ -158,7 +234,7 @@ class SearchEverything {
 	// add where clause to the search query
 	function se_search_where( $where, $wp_query ) {
 
-		if ( !$wp_query->is_search() )
+		if ( !$wp_query->is_search() && !$this->ajax_request)
 			return $where;
 
 		$this->query_instance = &$wp_query;
@@ -167,22 +243,22 @@ class SearchEverything {
 		$searchQuery = $this->se_search_default();
 
 		//add filters based upon option settings
-		if ( "Yes" == $this->options['se_use_tag_search'] ) {
+		if ( $this->options['se_use_tag_search'] ) {
 			$searchQuery .= $this->se_build_search_tag();
 		}
-		if ( "Yes" == $this->options['se_use_category_search'] || 'Yes' == $this->options['se_use_tax_search'] ) {
+		if ( $this->options['se_use_category_search'] || $this->options['se_use_tax_search'] ) {
 			$searchQuery .= $this->se_build_search_categories();
 		}
-		if ( "Yes" == $this->options['se_use_metadata_search'] ) {
+		if ( $this->options['se_use_metadata_search'] ) {
 			$searchQuery .= $this->se_build_search_metadata();
 		}
-		if ( "Yes" == $this->options['se_use_excerpt_search'] ) {
+		if ( $this->options['se_use_excerpt_search'] ) {
 			$searchQuery .= $this->se_build_search_excerpt();
 		}
-		if ( "Yes" == $this->options['se_use_comment_search'] ) {
+		if ( $this->options['se_use_comment_search'] ) {
 			$searchQuery .= $this->se_build_search_comments();
 		}
-		if ( "Yes" == $this->options['se_use_authors'] ) {
+		if ( $this->options['se_use_authors'] ) {
 			$searchQuery .= $this->se_search_authors();
 		}
 		if ( $searchQuery != '' ) {
@@ -202,29 +278,35 @@ class SearchEverything {
 	// search for terms in default locations like title and content
 	// replacing the old search terms seems to be the best way to
 	// avoid issue with multiple terms
-	function se_search_default() {
+	function se_search_default(){ 
 
 		global $wpdb;
 
-		$n = ( isset( $this->query_instance->query_vars['exact'] ) && $this->query_instance->query_vars['exact'] ) ? '' : '%';
-		$search = '';
+		$not_exact = empty($this->query_instance->query_vars['exact']);
+		$search_sql_query = '';
 		$seperator = '';
 		$terms = $this->se_get_search_terms();
 
 		// if it's not a sentance add other terms
-		$search .= '(';
+		$search_sql_query .= '(';
 		foreach ( $terms as $term ) {
-			$search .= $seperator;
+			$search_sql_query .= $seperator;
 
+			$esc_term = esc_sql($term);
+			if ($not_exact) {
+				$esc_term = "%$esc_term%";
+			}
 
-			$search .= sprintf( "((%s.post_title LIKE '%s%s%s') OR (%s.post_content LIKE '%s%s%s'))", $wpdb->posts, $n, $term, $n, $wpdb->posts, $n, $term, $n );
-
+			$like_title = "($wpdb->posts.post_title LIKE '$esc_term')";
+			$like_post = "($wpdb->posts.post_content LIKE '$esc_term')";
+			
+			$search_sql_query .= "($like_title OR $like_post)";
 
 			$seperator = ' AND ';
 		}
 
-		$search .= ')';
-		return $search;
+		$search_sql_query .= ')';
+		return $search_sql_query;
 	}
 
 	// Exclude post revisions
@@ -255,7 +337,7 @@ class SearchEverything {
 	function se_log( $msg ) {
 
 		if ( $this->logging ) {
-			$fp = fopen( SE_ABSPATH . "logfile.log", "a+" );
+			$fp = fopen( SE_PLUGIN_DIR. "logfile.log", "a+" );
 			if ( !$fp ) {
 				echo 'unable to write to log file!';
 			}
@@ -285,7 +367,7 @@ class SearchEverything {
 		if ( !empty( $this->query_instance->query_vars['s'] ) ) {
 
 			$where = str_replace( '"', '\'', $where );
-			if ( 'Yes' == $this->options['se_approved_pages_only'] ) {
+			if ( $this->options['se_approved_pages_only'] ) {
 				$where = str_replace( "post_type = 'post'", " AND 'post_password = '' AND ", $where );
 			} else { // < v 2.1
 				$where = str_replace( 'post_type = \'post\' AND ', '', $where );
@@ -298,9 +380,11 @@ class SearchEverything {
 	// create the search excerpts query
 	function se_build_search_excerpt() {
 		global $wpdb;
-		$s = $this->query_instance->query_vars['s'];
+		$vars = $this->query_instance->query_vars;
+		
+		$s = $vars['s'];
 		$search_terms = $this->se_get_search_terms();
-		$exact = $this->query_instance->query_vars['exact'];
+		$exact = isset( $vars['exact'] ) ? $vars['exact'] : '';
 		$search = '';
 
 		if ( !empty( $search_terms ) ) {
@@ -312,14 +396,14 @@ class SearchEverything {
 				$search .= "{$searchand}($wpdb->posts.post_excerpt LIKE '{$n}{$term}{$n}')";
 				$searchand = ' AND ';
 			}
-			$sentence_term = $wpdb->escape( $s );
-			if ( !$sentence && count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
+			$sentence_term = esc_sql( $s );
+			if ( count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
 				$search = "($search) OR ($wpdb->posts.post_excerpt LIKE '{$n}{$sentence_term}{$n}')";
 			}
 			if ( !empty( $search ) )
 				$search = " OR ({$search}) ";
 		}
-		$this->se_log( "excerpt where: ".$where );
+
 		return $search;
 	}
 
@@ -362,10 +446,12 @@ class SearchEverything {
 	// create the comments data query
 	function se_build_search_comments() {
 		global $wpdb;
-		$s = $this->query_instance->query_vars['s'];
+		$vars = $this->query_instance->query_vars;
+		
+		$s = $vars['s'];
 		$search_terms = $this->se_get_search_terms();
-		$exact = $this->query_instance->query_vars['exact'];
-
+		$exact = isset( $vars['exact'] ) ? $vars['exact'] : '';
+		$search = '';
 		if ( !empty( $search_terms ) ) {
 			// Building search query on comments content
 			$n = ( $exact ) ? '' : '%';
@@ -378,15 +464,15 @@ class SearchEverything {
 				}
 				$searchand = ' AND ';
 			}
-			$sentense_term = $wpdb->escape( $s );
-			if ( !$sentence && count( $search_terms ) > 1 && $search_terms[0] != $sentense_term ) {
+			$sentense_term = esc_sql( $s );
+			if ( count( $search_terms ) > 1 && $search_terms[0] != $sentense_term ) {
 				if ( $this->wp_ver23 ) {
 					$searchContent = "($searchContent) OR (cmt.comment_content LIKE '{$n}{$sentense_term}{$n}')";
 				}
 			}
 			$search = $searchContent;
 			// Building search query on comments author
-			if ( $this->options['se_use_cmt_authors'] == 'Yes' ) {
+			if ( $this->options['se_use_cmt_authors'] ) {
 				$searchand = '';
 				$comment_author = '';
 				foreach ( $search_terms as $term ) {
@@ -396,22 +482,22 @@ class SearchEverything {
 					}
 					$searchand = ' AND ';
 				}
-				$sentence_term = $wpdb->escape( $s );
-				if ( !$sentence && count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
+				$sentence_term = esc_sql( $s );
+				if ( count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
 					if ( $this->wp_ver23 ) {
 						$comment_author = "($comment_author) OR (cmt.comment_author LIKE '{$n}{$sentence_term}{$n}')";
 					}
 				}
 				$search = "($search) OR ($comment_author)";
 			}
-			if ( 'Yes' == $this->options['se_approved_comments_only'] ) {
+			if ( $this->options['se_approved_comments_only'] ) {
 				$comment_approved = "AND cmt.comment_approved =  '1'";
 				$search = "($search) $comment_approved";
 			}
 			if ( !empty( $search ) )
 				$search = " OR ({$search}) ";
 		}
-		$this->se_log( "comments where: ".$where );
+		//$this->se_log( "comments where: ".$where );
 		$this->se_log( "comments sql: ".$search );
 		return $search;
 	}
@@ -436,7 +522,7 @@ class SearchEverything {
 				}
 				$searchand = ' OR ';
 			}
-			$sentence_term = $wpdb->escape( $s );
+			$sentence_term = esc_sql( $s );
 			if ( count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
 				if ( $this->wp_ver23 ) {
 					$search .= " OR (u.display_name LIKE '{$n}{$sentence_term}{$n}')";
@@ -476,7 +562,7 @@ class SearchEverything {
 				}
 				$searchand = ' AND ';
 			}
-			$sentence_term = $wpdb->escape( $s );
+			$sentence_term = esc_sql( $s );
 			if ( count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
 				if ( $this->wp_ver23 ) {
 					$search = "($search) OR (m.meta_value LIKE '{$n}{$sentence_term}{$n}')";
@@ -496,9 +582,11 @@ class SearchEverything {
 	// create the search tag query
 	function se_build_search_tag() {
 		global $wpdb;
-		$s = $this->query_instance->query_vars['s'];
+		$vars = $this->query_instance->query_vars;
+
+		$s = $vars['s'];
 		$search_terms = $this->se_get_search_terms();
-		$exact = $this->query_instance->query_vars['exact'];
+		$exact = isset( $vars['exact'] ) ? $vars['exact'] : '';
 		$search = '';
 
 		if ( !empty( $search_terms ) ) {
@@ -512,8 +600,8 @@ class SearchEverything {
 				}
 				$searchand = ' AND ';
 			}
-			$sentence_term = $wpdb->escape( $s );
-			if ( !$sentence && count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
+			$sentence_term = esc_sql( $s );
+			if ( count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
 				if ( $this->wp_ver23 ) {
 					$search = "($search) OR (tter.name LIKE '{$n}{$sentence_term}{$n}')";
 				}
@@ -528,9 +616,11 @@ class SearchEverything {
 	// create the search categories query
 	function se_build_search_categories() {
 		global $wpdb;
-		$s = $this->query_instance->query_vars['s'];
+		$vars = $this->query_instance->query_vars;
+		
+		$s = $vars['s'];
 		$search_terms = $this->se_get_search_terms();
-		$exact = $this->query_instance->query_vars['exact'];
+		$exact = isset( $vars['exact'] ) ? $vars['exact'] : '';
 		$search = '';
 
 		if ( !empty( $search_terms ) ) {
@@ -543,7 +633,7 @@ class SearchEverything {
 				$searchSlug .= "{$searchand}(tter.slug LIKE '{$n}".sanitize_title_with_dashes( $term )."{$n}')";
 				$searchand = ' AND ';
 			}
-			if ( !$sentence && count( $search_terms ) > 1 && $search_terms[0] != $s ) {
+			if ( count( $search_terms ) > 1 && $search_terms[0] != $s ) {
 				$searchSlug = "($searchSlug) OR (tter.slug LIKE '{$n}".sanitize_title_with_dashes( $s )."{$n}')";
 			}
 			if ( !empty( $searchSlug ) )
@@ -557,8 +647,8 @@ class SearchEverything {
 				$searchDesc .= "{$searchand}(ttax.description LIKE '{$n}{$term}{$n}')";
 				$searchand = ' AND ';
 			}
-			$sentence_term = $wpdb->escape( $s );
-			if ( !$sentence && count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
+			$sentence_term = esc_sql( $s );
+			if ( count( $search_terms ) > 1 && $search_terms[0] != $sentence_term ) {
 				$searchDesc = "($searchDesc) OR (ttax.description LIKE '{$n}{$sentence_term}{$n}')";
 			}
 			if ( !empty( $searchDesc ) )
@@ -629,7 +719,7 @@ class SearchEverything {
 
 			} else {
 
-				if ( 'Yes' == $this->options['se_approved_comments_only'] ) {
+				if ( $this->options['se_approved_comments_only'] ) {
 					$comment_approved = " AND comment_approved =  '1'";
 				} else {
 					$comment_approved = '';
@@ -686,11 +776,13 @@ class SearchEverything {
 			}
 			// if we're searching custom taxonomies
 			if ( $this->options['se_use_tax_search'] ) {
-				$all_taxonomies = get_object_taxonomies( 'post' );
+				$all_taxonomies = get_taxonomies();
+				$filter_taxonomies = array( 'post_tag', 'category', 'nav_menu', 'link_category' );
+
 				foreach ( $all_taxonomies as $taxonomy ) {
-					if ( $taxonomy == 'post_tag' || $taxonomy == 'category' )
+					if ( in_array( $taxonomy, $filter_taxonomies ) )
 						continue;
-					$on[] = "ttax.taxonomy = '".addslashes( $taxonomy )."'";
+					$on[] = "ttax.taxonomy = '" . addslashes( $taxonomy )."'";
 				}
 			}
 			// build our final string
@@ -706,7 +798,7 @@ class SearchEverything {
 	// in the search result page.
 	function se_postfilter( $postcontent ) {
 		global $wpdb;
-		$s = $this->query_instance->query_vars['s'];
+		$s =  isset( $this->query_instance->query_vars['s'] ) ? $this->query_instance->query_vars['s'] : '';
 		// highlighting
 		if ( is_search() && $s != '' ) {
 			$highlight_color = $this->options['se_highlight_color'];
@@ -741,4 +833,86 @@ class SearchEverything {
 	}// se_log_query
 } // END
 
-?>
+add_action('wp_ajax_search_everything', 'search_everything_callback');
+
+function search_everything_callback() {
+	$is_query = !empty($_GET['s']);
+	$result = array();
+	if ($is_query) {
+		$result = array(
+			'own' => array(),
+			'external' => array()
+		);
+
+		$params = array(
+			's' => $_GET['s']
+		);
+
+		$zemanta_response = api(array(
+			'method' => 'zemanta.suggest',
+			'return_images' => 0,
+			'return_rich_objects' => 0,
+			'return_articles' => 1,
+			'return_markup' => 0,
+			'return_rdf_links' => 0,
+			'return_keywords' => 0,
+			'careful_pc' => 1,
+			'interface' => 'wordpress-se',
+			'format' => 'json',
+			'emphasis' => $_GET['s'],
+			'text' => $_GET['text']
+		));
+
+		if (!is_wp_error($zemanta_response) && $zemanta_response['response']['code'] == 200) {
+			$result['external'] = json_decode($zemanta_response['body'])->articles;
+		}
+
+		$SE = new SearchEverything(true);
+
+		if (!empty($_GET['exact'])) {
+			$params['exact'] = true;
+		}
+
+		$post_query = new WP_query($params);
+
+		while ( $post_query->have_posts() ) {
+			$post_query->the_post();
+
+			$result['own'][] = get_post();
+		}
+		$post_query->reset_postdata();
+		
+	}
+	print json_encode($result);
+	die();
+}
+
+function se_enqueue_styles() {
+	wp_enqueue_style('se-link-styles', SE_PLUGIN_URL . '/static/css/se-styles.css');
+}
+
+add_action('wp_enqueue_scripts', 'se_enqueue_styles');
+
+
+
+function se_post_publish_ping($post_id) {
+	//should happen only on first publish
+	if( ( $_POST['post_status'] == 'publish' ) && ( $_POST['original_post_status'] != 'publish' ) ) {
+		$permalink = get_permalink($post_id);
+
+		$zemanta_response = api(array(
+			'method' => 'zemanta.post_published_ping',
+			'current_url' => $permalink,
+			'post_url' => $permalink,
+			'post_rid' => '',
+			'interface' => 'wordpress-se',
+			'deployment' => 'search-everything',
+			'format' => 'json'
+		));
+
+		$status = json_decode($zemanta_response['body'])->status;
+	}
+}
+
+add_action( 'publish_post', 'se_post_publish_ping' );
+

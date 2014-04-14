@@ -1,37 +1,74 @@
 === Advanced Access Manager ===
-Contributors: vasyl_m, haeckdesign
-Donate link: http://whimba.org/donation
-Tags: access manager, access control, comments, capability, dashboard widget, expire, expire link, filter menu, page, post, metabox, role manager, user access, user control, user role, access configuration
-Requires at least: 3.2
-Tested up to: 3.5.1
-Stable tag: 1.7.5
+Contributors: vasyl_m
+Tags: access manager, access, access control, comments, capability, widget, filter menu, role manager, user access, user control, user
+Requires at least: 3.4.2
+Tested up to: 3.8.1
+Stable tag: 2.5
 
-Graphic interface to manage User Access to your Front-end and Back-end
+Graphic interface to manage Access control to your Front-end and Back-end
 
 == Description ==
 
-Advanced Access Manager is very powerful and flexible Access Control tool for
-your WordPress website. It supports Single WordPress installation and Multisite
-setup.
-This is the basic list of features you can perform this AAM:
+Are you looking for free and powerful plugin for WordPress Access Control?
 
-* Filter Admin Menu
-* Filter Admin Panel
-* Filter Dashboard Widgets
-* Filter Metaboxes
-* Manage Comments
-* Manage Capabilities (Create, Delete)
-* Manage User Roles (Create, Edit, Delete)
-* Manage Access to your Posts, Pages or even Custom Post Types
-* Give possibility to promote Users
-* Manage Admin Menu Order
-* Manage other Administrators
-* Exclude Front-end Pages from Navigation
+Nowadays AAM is one of the most popular access control plugins. It is easy-to-use but
+at the same time very powerful tool that gives you a flexible control over your either
+single WordPress site or Multisite Network. With AAM you are allowed to configure access
+to different parts of your website for any Role or individual User.
 
-And many-many other features.
+**Please Notice!**
+If you have any issues with AAM or you have any questions related to it, we offer
+free and fast support. You can either send us an email or leave a message on WordPress
+Forum. We always ready to help you and to improve your experience with AAM.
 
-If you have any problems with current plugin, please send me an email or leave a
-message on Forums Posts.
+In Current version you are allowed to do next:
+
+**Control Access to Admin Menu (including submenu).**
+As example you can restrict access for Role Editor to Menu "Pages" or does not allow
+ individual User to manage Post's Categories.
+
+**Filter Widgets & Metaboxes.**
+Filter the list of metaboxes that User can see during Post/Page editing. At the same
+time you can filter the list of Dashboard and Frontend widgets.
+
+**Filter Post or Page content**
+You can filter Post's or Page's content based on currently logged in user or visitor.
+
+**Manage Role's or User's Capabilities.**
+AAM, with simple interface, allows you to grand or remove capabilities from Role or User.
+You can also create new capabilities or remove existing.
+
+**Control Access to Posts, Pages, CPTs or Terms.**
+You can restrict access to individual page or post for any user or role as well as
+restrict access to entire Term and all posts inside it. You can also restrict
+page commenting for individual pages or exclude them from Frontend menu. We are
+extending the list of possible restrictions with each new version.
+
+**Create custom actions for system events.**
+As example your system can trigger email to you if some user published Post/Page or
+modified content. You are also allowed to develop your own custom action for event.
+
+**Track User Activities.**
+With AAM you can track user activities within your website. So you can easily find out
+when user was logged in or modified some Post/Page. There are many activities that can
+be tracked. We constantly adding more and more.
+
+**Manage Role List.**
+AAM allows you to create new Roles or Delete existing.
+
+There are a lot of small and hidden features included in AAM that we are not listing
+here but you can find more about them on our [Forum](http://wpaam.com/forum).
+
+The AAM support also these languages:
+
+ * English
+ * German (by Kolja www.Reggae-Party.de)
+ * Spanish (by Etruel www.netmdp.com)
+ * Polish (by Gustaw Lasek www.servitium.pl)
+ * French (by Moskito7)
+ * Russian (by Maxim Kernozhickii www.aeromultimedia.com)
+ * Persian (by Ghaem Omidi www.forum.wp-parsi.com)
+ * Norwegian (by Christer Berg Johannesen www.improbus.com)
 
 == Installation ==
 
@@ -41,17 +78,6 @@ message on Forums Posts.
 
 == Frequently Asked Questions ==
 
-= How can I give access for other Administrators to Advanced Access Manager? =
-
-If you are Super Admin, you can manage the Administrator's Role as other User
-Roles. To give an access to Access Manager's Option Page, just create a new
-capability <b>AAM Manage</b> and check it for Administrator's User Role.
-
-= My users are not able to edit permalink. What should I do? =
-
-Release 1.6.5 introduced a custom Capability "Edit Permalink". Make sure that
-User or User Role has this Capability checked under Capabilities Tab.
-
 = What is "Initiate URL" button, under "Metaboxes & Widgets" Tab? =
 
 Sometimes list of additional metaboxes is conditional on edit post page. Like e.g.
@@ -59,20 +85,6 @@ display custom metabox "Photos" only if Post Status is Published. Access Manager
 initiates the list of metaboxes for each post in default status ("auto-draft").
 That is why you have to manually initialize the URL to the edit post page where
 the list of additional metaboxes can be picked by AAM.
-
-= How can I delete created Capability? =
-
-You have to configure Advanced Access Manager behavior with ConfigPress. For more
-information please follow the <a href="http://whimba.org/forum/viewtopic.php?f=4&t=2#p2">link</a>
-
-= I unchecked some Menus on "Main Menu" Tab but they are still not shown. Why? =
-
-The reason is that "Main Menu" Tab is not directly related to list of Capabilities.
-It means, if you selected/deselected some Menu or Submenu it will not add or delete
-correct capabilities for current User Role. In such way if you want to give somebody
-access to backend I recommend to use predefined set of options "Editor" and then
-just filter Main Menu.
-
 
 == Screenshots ==
 
@@ -83,6 +95,118 @@ just filter Main Menu.
 5. ConfigPress
 
 == Changelog ==
+
+= 2.5 =
+* Fixed issue with AAM Plus Package and Multisite
+* Introduced Development License
+* Minor internal adjustment for AAM Development Community
+
+= 2.5 Beta =
+* Refactored Post & Pages Access List
+* Extended ConfigPress with Post & Pages Access List Options
+* Refactored internal UI hander
+* Fixed issue with Restore Default flag and AAM Plus Package
+* Added LIST Restriction for AAM Plus Package
+* Added ADD Restriction for AAM Plus Package
+* Filter list of editable roles based on current user level
+* Gives ability for non-admin users manage AAM if admin granted access
+* Removed Backup object. Replaces with Restore Default
+* Merged ajax handler with UI manager
+* Implemented Clear All Settings feature (one step closer to Import/Export)
+* Added Error notification for Extension page
+* Fixed bug with Multisite and AAM Plus Package ajax call
+* Regenerated language file
+* Fixed bug with non-existing term
+
+= 2.4 =
+* Added Norwegian language Norwegian (by Christer Berg Johannesen)
+* Localize the default Roles
+* Regenerated .pod file
+* Added AAM Media Manager Extension
+* Added AAM Content Manager Extension
+* Standardized Extension Modules
+* Fixed issue with Media list
+
+= 2.3 =
+* Added Persian translation by Ghaem Omidi
+* Added Inherit Capabilities From Role drop-down on Add New Role Dialog
+* Small Cosmetic CSS changes
+
+= 2.2.3 =
+* Improved Admin Menu access control
+* Extended ConfigPress with aam.menu.undefined setting
+* Fixed issue with Frontend Widget
+* Updated Polish Language File
+
+= 2.2.2 =
+* Fixed very significant issue with Role deletion
+* Added Unfiltered Capability checkbox
+* Regenerated language file
+* Fixed issue with language encoding
+* Fixed issue with Metaboxes tooltips
+
+= 2.2.1 =
+* Fixed the issue with Activity include
+
+= 2.2 =
+* Fixed issue with jQuery UI Tooltip Widget
+* Added AAM Warning Panel
+* Added Event Log Feature
+* Moved ConfigPress to separate Page (refactored internal handling)
+* Reverted back the SSL handling
+* Added Post Delete feature
+* Added Post's Restore Default Restrictions feature
+* Added ConfigPress Extension turn on/off setting
+* Russian translation by (Maxim Kernozhitskiy http://aeromultimedia.com)
+* Removed Migration possibility
+* Refactored AAM Core Console model
+* Increased the number of saved restriction for basic version
+* Simplified Undo feature
+
+= 2.1.1 =
+* Fixed fatal error in caching mechanism
+* Extended ConfigPress tutorial
+* Fixed error for AAM Plus Package for PHP earlier versions
+* Improved Admin over SSL check
+* Improved Taxonomy Query handling mechanism
+
+= 2.1 =
+* Fixed issue with Admin Menu restrictions (thanks to MikeB2B)
+* Added Polish Translation
+* Fixed issue with Widgets restriction
+* Improved internal User & Role handling
+* Implemented caching mechanism
+* Extended Update mechanism (remove the AAM cache after update)
+* Added New ConfigPress setting aam.caching (by default is FALSE)
+* Improved Metabox & Widgets filtering mechanism
+* Added French Translation (by Moskito7)
+* Added "My Feature" Tab
+* Regenerated .pot file
+
+= 2.0 =
+* New UI
+* Robust and completely new core functionality
+* Over 3 dozen of bug fixed and improvement during 3 alpha & beta versions
+* Improved Update mechanism
+
+= 1.9.1 =
+* Fixed bug with empty event list
+* Fixed bug with direct attachment access
+* Reverted back the default UI design
+* Last release of 1.x AAM Branch
+
+= 1.9 =
+* AAM 2.0 alpha 1 Announcement
+
+= 1.8.5 =
+* Added Event Manager
+* Added ConfigPress parameter "aam.encoding"
+
+= 1.8 =
+* Fixed user caching issue
+* Fixed issue with encoding
+* Clear output buffer to avoid from third party plugins issues
+* Notification about new release 2.0
 
 = 1.7.5 =
 * Accordion Fix

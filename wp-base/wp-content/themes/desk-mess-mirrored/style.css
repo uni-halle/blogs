@@ -2,11 +2,11 @@
 Theme Name: Desk Mess Mirrored
 Theme URI: http://buynowshop.com/themes/desk-mess-mirrored/
 Description: Marble desktop covered with a mix of old and new items, such as some vintage papers, a stainless steel pen, and, a hot cup of coffee! Now with more documentation and post-format support for the following types: asides, quotes and status! <strong>Please read the included changelog.txt, readme.txt, and support.txt files for details of the latest changes and important notices.</strong> Please note <strong>WordPress 3.4 is required</strong> for some functionality; also note the latest version of the Multi Child-Theme is available for download at http://buynowshop.com/themes/desk-mess-mirrored/multi too!
-Version: 2.2.2
+Version: 2.2.3
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 WordPress Required Version: 3.4
-WordPress Tested Version: 3.6
+WordPress Tested Version: 3.7.1
 Tags: brown, orange, silver, tan, light, two-columns, right-sidebar, fixed-width, threaded-comments, sticky-post, custom-menu, custom-background
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -189,7 +189,6 @@ code { /* Use for inline code references such as parameters, functions, short on
 	margin: 0;
 	overflow: auto;
 	text-align: left;
-	overflow-x: auto; /* Use horizontal scroll if needed; for Firefox 2, not needed in Firefox 3 */
 	white-space: pre-wrap; /* css-3 */
 	word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
@@ -262,7 +261,6 @@ pre { /* Use for "Code" text styling */
 	overflow: auto;
     padding: 5px;
 	text-align: left;
-	overflow-x: auto; /* Use horizontal scroll if needed; for Firefox 2, not needed in Firefox 3 */
 	white-space: pre-wrap; /* css-3 */
 	word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
@@ -675,6 +673,16 @@ span.quote-glyph a span.no-title { position: relative; top: 10px; }
 .format-status.sticky .glyph { right: 3px; top: 16px; }
 .format-status h1, .format-status .postdata { text-align: right; }
 span.status-glyph { font-family: "Times New Roman", Georgia, Arial, serif; font-size: 500%; }
+
+/* Post Format - Link */
+.format-link {}
+.format-link .glyph {
+    float: left;
+    top: 16px;
+}
+.format-link.sticky .glyph { right: 3px; top: 16px; }
+.format-link h1, .format-link .postdata { text-align: right; }
+span.link-glyph { font-family: "Times New Roman", Georgia, Arial, serif; font-size: 500%; }
 /*-- End: Post Formats --*/
 
 /*-- Images --*/

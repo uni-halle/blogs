@@ -43,7 +43,7 @@
 <div class="metabox-holder">
     <div class="meta-box-sortables" <?php echo empty($sidebar) ? '' : ' style="float:left;width:70%;"'; ?>>
 
-        <div class="apostboxes">
+        <div class="postbox">
             <h3 class="hndle1"><span><?php _e("Another Wordpress Classifieds Plugin Stats", "AWPCP"); ?><span></h3>
             <div class="inside">
                 <ul>
@@ -63,7 +63,7 @@
                     <?php else: ?>
                         <?php $msg = __("You have not configured your Listing fees. Go to %s to set up your listing fees. Once that is completed, if you are running in pay mode, the options will automatically appear on the listing form for users to fill out.", "AWPCP"); ?>
                     <?php endif; ?>
-                    <?php $url = add_query_arg('page', 'awpcp-admin-fess', admin_url('admin.php')); ?>
+                    <?php $url = add_query_arg('page', 'awpcp-admin-fees', admin_url('admin.php')); ?>
                     <p><?php echo sprintf($msg, sprintf('<a href="%s">%s</a>', $url, __('Fees', 'AWPCP'))); ?></p>
                 <?php else: ?>
                     <?php $msg = __("You currently have your system configured to run in free mode. To change to 'pay' mode go to %s and Check the box labeled 'Charge Listing Fee? (Pay Mode).'", "AWPCP"); ?>
@@ -76,7 +76,7 @@
 
                 <div style="border-top:1px solid #dddddd;">
                     <?php $msg = __("Go to the %s section to edit/delete current categories or add new categories.", "AWPCP"); ?>
-                    <?php $url = add_query_arg('page', 'Cofigure3', admin_url('admin.php')); ?>
+                    <?php $url = awpcp_get_admin_categories_url(); ?>
                     <p><?php echo sprintf($msg, sprintf('<a href="%s">%s</a>', $url, __('Manage Categories', 'AWPCP'))); ?></p>
 
                     <ul>
@@ -121,16 +121,17 @@
             </div>
         </div>
 
-        <?php $href = admin_url('admin.php?page=awpcp-admin-settings'); ?>
-
-        <p>
-            <?php _e('AWPCP is highly customizable. Use the next button to go to the Settings section to fit AWPCP to your needs.', 'AWPCP'); ?>
-            <a href="<?php echo $href ?>" class="button-primary"><?php _e('Configure AWPCP', 'AWPCP'); ?></a>
-        </p>
+        <div class="postbox">
+            <div class="inside">
+                <?php $href = admin_url( 'admin.php?page=awpcp-admin-settings' ); ?>
+                <?php _e( 'AWPCP is highly customizable. Use the next button to go to the Settings section to fit AWPCP to your needs.', 'AWPCP' ); ?>
+                <a href="<?php echo $href; ?>" class="button-primary"><?php _e( 'Configure AWPCP', 'AWPCP' ); ?></a>
+            </div>
+        </div>
 
         <?php if (get_awpcp_option('showlatestawpcpnews')): ?>
 
-        <div class="apostboxes">
+        <div class="postbox">
             <h3 class="hndle1"><span><?php _e("Latest News About Another Wordpress Classifieds Plugin","AWPCP"); ?></span></h3>
             <div class="inside">
 

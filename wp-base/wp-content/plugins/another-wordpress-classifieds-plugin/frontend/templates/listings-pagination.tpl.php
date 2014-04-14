@@ -9,7 +9,6 @@
                     <td><?php echo join('&nbsp;', $items); ?></td>
                     <td>
                         <select name="results">
-                        <?php $options = array_merge(array(5), range(10, 100, 10)); ?>
                         <?php foreach ($options as $option): ?>
                             <?php if ($results == $option): ?>
                             <option value="<?php echo $option; ?>" selected="selected"><?php echo $option; ?></option>

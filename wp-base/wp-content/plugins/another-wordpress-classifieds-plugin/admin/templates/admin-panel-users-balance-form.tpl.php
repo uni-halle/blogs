@@ -18,8 +18,8 @@
         <p class="submit inline-edit-save">
             <?php $cancel = __('Cancel', 'AWPCP'); ?>
             <a class="button-secondary cancel alignleft" title="<?php echo $cancel; ?>" href="#inline-edit" accesskey="c"><?php echo $cancel; ?></a>
-            <a class="button-primary save alignright" title="<?php echo $label ?>" href="#inline-edit" accesskey="s"><?php echo $label ?></a>
-            <img alt="" src="http://local.wordpress.org/wp-admin/images/wpspin_light.gif" style="display: none;" class="waiting">
+            <a class="button-primary save alignleft" style="margin-left: 5px;" title="<?php echo $label ?>" href="#inline-edit" accesskey="s"><?php echo $label ?></a>
+            <img alt="" src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" style="display: none;" class="waiting">
             <input type="hidden" value="<?php echo esc_attr( $user->ID ); ?>" name="user">
             <input type="hidden" value="<?php echo esc_attr( $_POST['action'] ); ?>" name="action">
             <br class="clear">

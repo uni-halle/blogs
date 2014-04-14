@@ -32,6 +32,10 @@ class AWPCP_RenewAdPage extends AWPCP_Place_Ad_Page {
         return $this->ad;
     }
 
+    public function verify_renew_ad_hash($ad) {
+        return awpcp_verify_renew_ad_hash( $ad->ad_id, awpcp_request_param( 'awpcprah' ) );
+    }
+
     protected function _dispatch($default=null) {
         $ad = $this->get_ad();
 
@@ -41,13 +45,16 @@ class AWPCP_RenewAdPage extends AWPCP_Place_Ad_Page {
         } else if (!$ad->is_about_to_expire() && !$ad->has_expired()) {
             $message = __("The specified Ad doesn't need to be renewed.", 'AWPCP');
             return $this->render('content', awpcp_print_error($message));
+        } else if ( !$this->verify_renew_ad_hash( $ad ) ) {
+            $message = __("There was an error trying to renew your Ad. The URL is not valid. Please contact the Administrator of this site for further assistance.", 'AWPCP');
+            return $this->render('content', awpcp_print_error($message));
         }
 
         $transaction = $this->get_transaction();
 
         if (!is_null($transaction) && $transaction->get('context') != $this->context) {
             $page_name = awpcp_get_page_name('renew-ad-page-name');
-            $page_url = awpcp_get_page_url('renew-ad-page-name');
+            $page_url = awpcp_get_renew_ad_url( $ad->ad_id );
             $message = __('You are trying to post an Ad using a transaction created for a different purpose. Pelase go back to the <a href="%s">%s</a> page.<br>If you think this is an error please contact the administrator and provide the following transaction ID: %s', 'AWPCP');
             $message = sprintf($message, $page_url, $page_name, $transaction->id);
             return $this->render('content', awpcp_print_error($message));
@@ -206,7 +213,7 @@ class AWPCP_RenewAdPageImplementation {
 
         // if everything is fine move onto the next step
         if (!is_null($term)) {
-            $payments->set_transaction_status_to_checkout($transaction, $transaction_errors);
+            $payments->set_transaction_status_to_ready_to_checkout($transaction, $transaction_errors);
             if (empty($transaction_errors)) {
                 return $this->checkout_step();
             }
@@ -238,6 +245,8 @@ class AWPCP_RenewAdPageImplementation {
         $transaction = $this->page->get_transaction(true);
         $payments = awpcp_payments_api();
 
+        $errors = array();
+
         // verify transaction pre-conditions
 
         if (is_null($transaction)) {
@@ -249,14 +258,17 @@ class AWPCP_RenewAdPageImplementation {
             return $this->payment_completed_step();
         }
 
-        if ($transaction->payment_is_not_required()) {
-            $errors = array();
+        if ( $transaction->is_ready_to_checkout() ) {
+            $payments->set_transaction_status_to_checkout( $transaction, $errors );
+        }
+
+        if ( empty($errors) && $transaction->payment_is_not_required() ) {
             $payments->set_transaction_status_to_payment_completed($transaction, $errors);
 
             return $this->payment_completed_step();
         }
 
-        if (!$transaction->is_ready_to_checkout() && !$transaction->is_processing_payment()) {
+        if ( !$transaction->is_doing_checkout() && !$transaction->is_processing_payment() ) {
             $message = __('We can\'t process payments for this Payment Transaction at this time. Please contact the website administrator and provide the following transaction ID: %s', 'AWPCP');
             $message = sprintf($message, $transaction->id);
             return $this->page->render('content', awpcp_print_error($message));
@@ -298,7 +310,7 @@ class AWPCP_RenewAdPageImplementation {
             'payments' => $payments,
             'transaction' => $transaction,
             'messages' => $this->messages,
-            'url' => $this->url(),
+            'url' => $this->page->url(),
             'hidden' => array('step' => 'finish')
         );
 

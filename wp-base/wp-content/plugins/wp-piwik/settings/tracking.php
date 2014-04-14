@@ -86,14 +86,25 @@ if (self::$settings->getGlobalOption('add_tracking_code')) {
 	<label for="wp-piwik_reqpost"><?php _e('WP-Piwik can automatically force the Tracking Code to sent data in POST. See', 'wp-piwik'); ?> <a href="http://piwik.org/faq/troubleshooting/#faq_100">Piwik FAQ</a>. <?php _e('Disabled in proxy mode.', 'wp-piwik'); ?></label>
 </td></tr>
 
-<tr><th><?php _e('Enable cache', 'wp-piwik'); ?>:</th><td>
-	<input type="checkbox" value="1" id="wp-piwik_cache" name="wp-piwik_cache"<?php echo (self::$settings->getGlobalOption('cache')?' checked="checked"':''); ?> />
-	<label for="wp-piwik_cache"><?php _e('Cache API calls, which not contain today\'s values, for a week', 'wp-piwik'); ?>.</label>
-</td></tr>
-
 <tr><th><?php _e('CDN URL', 'wp-piwik'); ?>:</th><td>
 	http://<input type="text" value="<?php echo self::$settings->getGlobalOption('track_cdnurl'); ?>" id="wp-piwik_cdnurl" name="wp-piwik_cdnurl" /> https://<input type="text" value="<?php echo self::$settings->getGlobalOption('track_cdnurlssl'); ?>" id="wp-piwik_cdnurlssl" name="wp-piwik_cdnurlssl" /><br />
 	<label for="wp-piwik_reqpost"><?php _e('Leave blank if you do not want to define a CDN URL or you do not know what this is.', 'wp-piwik'); ?></label>
+</td></tr>
+
+<tr><th><?php _e('Track admin pages', 'wp-piwik'); ?>:</th><td>
+	<input type="checkbox" value="1" id="wp-piwik_trackadmin" name="wp-piwik_trackadmin"<?php echo (self::$settings->getGlobalOption('track_admin')?' checked="checked"':''); ?> />
+	<label for="wp-piwik_trackadmin"><?php _e('Enable to track users on admin pages (remember to configure the tracking filter appropriately).', 'wp-piwik'); ?></label>
+</td></tr>
+
+<tr><th><?php _e('Track RSS feeds', 'wp-piwik'); ?>:</th><td>
+	<input type="checkbox" value="1" id="wp-piwik_trackfeed" name="wp-piwik_trackfeed"<?php echo (self::$settings->getGlobalOption('track_feed')?' checked="checked"':''); ?> />
+	<label for="wp-piwik_trackfeed"><?php _e('Enable to track posts in feeds via tracking pixel.', 'wp-piwik'); ?></label>
+</td></tr>
+
+<tr><th><?php _e('Track RSS feed links as campaign', 'wp-piwik'); ?>:</th><td>
+	<input type="checkbox" value="1" id="wp-piwik_trackfeed_addcampaign" name="wp-piwik_trackfeed_addcampaign"<?php echo (self::$settings->getGlobalOption('track_feed_addcampaign')?' checked="checked"':''); ?> />
+	<label for="wp-piwik_trackfeed_addcampaign"><?php _e('This will add Piwik campaign parameters to the RSS feed links.', 'wp-piwik'); ?> (<a href="https://piwik.org/docs/tracking-campaigns/">Piwik: Tracking campaign</a>)</label><br />
+	<?php _e('Campaign', 'wp-piwik'); ?>: <input type="text" value="<?php echo self::$settings->getGlobalOption('track_feed_campaign'); ?>" id="wp-piwik_trackfeed_campaign" name="wp-piwik_trackfeed_campaign"> <?php _e('Keyword: post name.', 'wp-piwik'); ?>
 </td></tr>
 
 <tr><th><?php _e('Tracking filter', 'wp-piwik'); ?>:</th><td>

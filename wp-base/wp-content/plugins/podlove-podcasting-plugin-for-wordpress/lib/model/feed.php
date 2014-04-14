@@ -3,6 +3,10 @@ namespace Podlove\Model;
 
 class Feed extends Base {
 
+	const ITEMS_WP_LIMIT = 0;
+	const ITEMS_NO_LIMIT = -1;
+	const ITEMS_GLOBAL_LIMIT = -2;
+
 	public function save() {
 		global $wpdb;
 		
@@ -51,6 +55,21 @@ class Feed extends Base {
 	}
 
 	/**
+	 * Build the title of the feed
+	 *
+	 */
+	public function get_title() {
+
+		$podcast = Podcast::get_instance();
+
+		if( $this->append_name_to_podcast_title )
+			return $podcast->title . ' (' . $this->name . ')';
+
+		return $podcast->title;
+
+	}
+
+	/**
 	 * Get title for browser feed discovery.
 	 *
 	 * This title is used by clients to show the user the subscribe option he
@@ -96,23 +115,33 @@ class Feed extends Base {
 	 * @return array
 	 */
 	function post_ids() {
+		global $wpdb;
 
-		$episode_asset = $this->episode_asset();
+		$allowed_status = array("publish");
+		$allowed_status = apply_filters("podlove_feed_post_ids_allowed_status", $allowed_status);
 
-		if ( ! $episode_asset )
-			return array();
+		$sql = "
+			SELECT
+				p.ID
+			FROM
+				" . $wpdb->posts . " p
+				INNER JOIN " . Episode::table_name() .  " e ON e.post_id = p.ID
+				INNER JOIN " . MediaFile::table_name() .  " mf ON mf.`episode_id` = e.id
+				INNER JOIN " . EpisodeAsset::table_name() .  " a ON a.id = mf.`episode_asset_id`
+			WHERE
+				a.id = %d
+				AND
+				p.post_status IN (" . implode(',', array_map(function($s) { return "'$s'"; }, $allowed_status)) . ")
+			ORDER BY
+				p.post_date DESC
+		";
 
-		$media_files = $episode_asset->media_files();
-
-		if ( ! count( $media_files ) )
-			return array();
-
-		// fetch releases
-		$media_files = array_filter( $media_files, function($mf){ return $mf->size > 0; });
-		$episode_ids = array_map( function ( $v ) { return $v->episode_id; }, $media_files );
-		$episodes = Episode::find_all_by_where( "id IN (" . implode( ',', $episode_ids ) . ")" );
-
-		return array_map( function ( $v ) { return $v->post_id; }, $episodes );
+		return $wpdb->get_col(
+			$wpdb->prepare(
+				$sql,
+				$this->episode_asset()->id
+			)
+		);
 	}
 
 	public function get_content_type() {
@@ -152,7 +181,7 @@ class Feed extends Base {
 			}
 		}
 
-		return $html;
+		return apply_filters( 'podlove_feed_alternate_links', $html );
 	}
 
 	public static function get_link_tag( $args = array() ) {
@@ -168,6 +197,11 @@ class Feed extends Base {
 
 		$tag_name = $args['prefix'] ? $args['prefix'] . ':link' : 'link';
 
+		if (isset($_GET['redirect'])) {
+			$op = parse_url($args['href'], PHP_URL_QUERY) ? '&amp;' : '?';
+			$args['href'] .= $op . "redirect=" . $_GET['redirect'];
+		}
+
 		return sprintf(
 			'<%s%s%s%s href="%s" />',
 			$tag_name,
@@ -178,6 +212,38 @@ class Feed extends Base {
 		);
 	}
 
+	/**
+	 * Get the SQL LIMIT segment for this feed.
+	 *
+	 * Depending on settings it can be LIMIT <num> or empty.
+	 * 
+	 * @return string
+	 */
+	public function get_post_limit_sql($posts_per_page = false)
+	{
+		if ($posts_per_page === false)
+			$posts_per_page = (int) $this->limit_items;
+
+		if ($posts_per_page === self::ITEMS_WP_LIMIT)
+			$posts_per_page = (int) get_option('posts_per_rss');
+
+		if ($posts_per_page > 0)
+			return $posts_per_page;
+
+		// no limit
+		if ($posts_per_page === self::ITEMS_NO_LIMIT)
+			return '';
+
+		if ($posts_per_page === self::ITEMS_GLOBAL_LIMIT) {
+			$podcast = Podcast::get_instance();
+			if ((int) $podcast->limit_items !== self::ITEMS_GLOBAL_LIMIT) {
+				return $this->get_post_limit_sql($podcast->limit_items);
+			}
+		}
+
+		// default to no limit; however, this should never happen
+		return '';
+	}
 }
 
 Feed::property( 'id', 'INT NOT NULL AUTO_INCREMENT PRIMARY KEY' );
@@ -193,3 +259,8 @@ Feed::property( 'enable', 'INT' );
 Feed::property( 'discoverable', 'INT' );
 Feed::property( 'limit_items', 'INT' );
 Feed::property( 'embed_content_encoded', 'INT' );
+Feed::property( 'append_name_to_podcast_title', 'TINYINT(1)' );
+Feed::property( 'protected', 'TINYINT(1)' );
+Feed::property( 'protection_type', 'TINYINT(1)' ); // Protection type: 0: local, 1: WordPress User
+Feed::property( 'protection_user', 'VARCHAR(60)' );
+Feed::property( 'protection_password', 'VARCHAR(64)' );

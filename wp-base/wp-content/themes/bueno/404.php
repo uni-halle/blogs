@@ -1,28 +1,25 @@
-<?php get_header(); ?>
-       
-    <div id="content" class="col-full">
-		<div id="main" class="col-left">
-            
-            <?php if (have_posts()) : $count = 0; ?>
-            <?php while (have_posts()) : the_post(); $count++; ?>
-                                                                        
-                <div class="post">
+<?php
+/**
+ * The template for displaying 404 pages (Not Found).
+ *
+ * @package bueno
+ */
 
-                    <h2 class="title"><?php _('Error 404 - Page not found!', 'woothemes') ?></h2>
-                    <p><?php _('The page you trying to reach does not exist, or has been moved. Please use the menus or the search box to find what you are looking for.', 'woothemes') ?></p>
+get_header(); ?>
 
-                </div><!-- /.post -->
-                                                    
-			<?php endwhile; else: ?>
-				<div class="post">
-                	<p><?php _e('Sorry, no posts matched your criteria.', 'woothemes') ?></p>
-                </div><!-- /.post -->
-            <?php endif; ?>  
-                        
-        </div><!-- /#main -->
+	<div id="primary" class="page404 span12">
+		<div class="hentry">
+			<div class="error404-num">404</div>
+			<div>
+		      <hgroup>
+		        <h1><?php _e( 'Sorry!', 'bueno' ); ?></h1>
+		        <h2><?php _e( 'Page Not Found', 'bueno' ); ?></h2>
+		      </hgroup>
+		      <h6><?php _e( 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'bueno' ); ?></h6>
+		      <p><?php _e( 'Please try using our search box below to look for information on the internet.', 'bueno' ); ?></p>
+		      <?php get_search_form(); /* outputs the default Wordpress search form */ ?>
+		    </div>
+		</div>
+	</div><!-- #primary -->
 
-        <?php get_sidebar(); ?>
-
-    </div><!-- /#content -->
-		
 <?php get_footer(); ?>

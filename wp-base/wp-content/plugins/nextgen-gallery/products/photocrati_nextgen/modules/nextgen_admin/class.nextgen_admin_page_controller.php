@@ -82,6 +82,8 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
 	 */
 	function enqueue_backend_resources()
 	{
+		$atp = $this->object->get_registry()->get_utility('I_Attach_To_Post_Controller');
+		
 		wp_enqueue_script('jquery');
 		$this->object->enqueue_jquery_ui_theme();
 		wp_enqueue_script('jquery-ui-accordion');
@@ -114,6 +116,15 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
 		// Ensure select2
 		wp_enqueue_style('select2');
 		wp_enqueue_script('select2');
+		
+		if ($atp != null) {
+			$atp->mark_script('jquery-ui-accordion');
+			$atp->mark_script('nextgen_display_settings_page_placeholder_stub');
+			$atp->mark_script('iris');
+			$atp->mark_script('wp-color-picker');
+			$atp->mark_script('nextgen_admin_page');
+			$atp->mark_script('select2');
+		}
 	}
 
 	function enqueue_jquery_ui_theme()
@@ -162,7 +173,6 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
 	{
 		return "Saved successfully";
 	}
-
 
 	/**
 	 * Returns an accordion tab, encapsulating the form
@@ -230,13 +240,22 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
 			// request
 			$tabs			= array();
 			$errors			= array();
-			$success		= $this->object->is_post_request() ?
-									$this->object->get_success_message() : '';
+			$action 		= $this->object->_get_action();
+			$success		= $this->param('message');
+			if ($success)	$success = $this->object->get_success_message();
+			else 			$success = $this->object->is_post_request() ?
+										$this->object->get_success_message() : '';
 
+			// First, process the Post request
+			if ($this->object->is_post_request() && $this->has_method($action)) {
+				$this->object->$action($this->object->param($this->context));
+			}
+
+			// Display and process all forms
 			foreach ($this->object->get_forms() as $form) {
+				$form->page = $this->object;
 				$form->enqueue_static_resources();
 				if ($this->object->is_post_request()) {
-					$action = $this->object->_get_action();
 					if ($form->has_method($action)) {
                         $form->$action($this->object->param($form->context));
 					}
@@ -261,7 +280,8 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
 				'errors'			=>	$errors,
 				'success'			=>	$success,
 				'form_header'		=>  $token->get_form_html(),
-                'show_save_button'  =>  $this->object->show_save_button()
+                'show_save_button'  =>  $this->object->show_save_button(),
+				'model'				=>	$this->object->has_method('get_model') ? $this->get_model() : NULL
 			));
 		}
 

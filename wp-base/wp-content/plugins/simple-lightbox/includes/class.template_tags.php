@@ -32,8 +32,8 @@ class SLB_Template_Tags extends SLB_Collection_Controller {
 	protected function _hooks() {
 		parent::_hooks();
 		$this->util->add_action('init', $this->m('init_defaults'));
-		
-		add_action('wp_footer', $this->m('client_output'), $this->util->priority('client_footer_output'));
+		$this->util->add_action('footer', $this->m('client_output'), 1, 0, false);
+		$this->util->add_filter('footer_script', $this->m('client_output_script'), $this->util->priority('client_footer_output'), 1, false);
 	}
 	
 	/* Collection Management */
@@ -59,12 +59,19 @@ class SLB_Template_Tags extends SLB_Collection_Controller {
 	 * @param SLB_Template_Tags $tags Tags controller
 	 */
 	public function init_defaults($tags) {
+		$js_path = 'js/';
+		$js_path .= ( SLB_DEV ) ? 'dev' : 'prod';
+		$src_base = $this->util->get_file_url('template-tags', true);
 		$defaults = array (
 			'item'		=> array (
-				'client_script'	=> $this->util->get_file_url('template-tags/item/tag.item.js'),
+				'scripts'		=> array (
+					array ( 'base', "$src_base/item/$js_path/tag.item.js" ),
+				)
 			),
 			'ui'		=> array (
-				'client_script'	=> $this->util->get_file_url('template-tags/ui/tag.ui.js'),
+				'scripts'		=> array (
+					array ( 'base', "$src_base/ui/$js_path/tag.ui.js" ),
+				)
 			),
 		);
 		foreach ( $defaults as $id => $props ) {
@@ -75,27 +82,41 @@ class SLB_Template_Tags extends SLB_Collection_Controller {
 	/* Output */
 	
 	/**
-	 * Client output
+	 * Build client output
 	 */
 	public function client_output() {
-		//Stop if not enabled
-		if ( !$this->has_parent() || !$this->get_parent()->is_enabled() ) {
-			return;
-		}
-		$out = array();
-		$out[] = '<!-- SLB-TPTG -->' . PHP_EOL;
-		$code = array();
 		//Load matched handlers
-		foreach ( $this->get() as $id => $tag ) {
-			//Define
-			$params = array(
-				sprintf("'%s'", $id),
-				sprintf("'%s'", $tag->get_client_script('uri')),
-			);
-			$code[] = $this->util->call_client_method('View.add_template_tag_handler',  $params, false);
+		foreach ( $this->get() as $tag ) {
+			$tag->enqueue_scripts();
 		}
-		$out[] = $this->util->build_script_element(implode('', $code), 'add_template_tags', true, true);
-		$out[] = '<!-- /SLB-TPTG -->' . PHP_EOL;
-		echo implode('', $out);
+	}
+	
+	/**
+	 * Client output script
+	 * @param array $commands Client script commands
+	 * @return array Modified script commands
+	 */
+	public function client_output_script($commands) {
+		$out = array('/* TPLT */');
+		$code = array();
+		
+		foreach ( $this->get() as $tag ) {
+			$styles = $tag->get_styles(array('uri_format'=>'full'));
+			if ( empty($styles) ) {
+				continue;
+			}
+			//Setup client parameters
+			$params = array(
+				sprintf("'%s'", $tag->get_id()),
+			);
+			$params[] = json_encode( array('styles' => array_values($styles)) );
+			//Extend handler in client
+			$code[] = $this->util->call_client_method('View.extend_template_tag_handler', $params, false);
+		}
+		if ( !empty($code) ) {
+			$out[] = implode('', $code);
+			$commands[] = implode(PHP_EOL, $out);
+		}
+		return $commands;
 	}
 }

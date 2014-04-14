@@ -3,14 +3,14 @@ Contributors: Nsp Code
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 3.6
-Stable tag: 1.6.2
+Tested up to: 3.8.1
+Stable tag: 1.6.8
 
-Order Post Types Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
+Post Order and custom Post Type Objects (posts, any custom post types) using a Drag and Drop Sortable JavaScript AJAX interface. 
 
 == Description ==
 
-<strong>Over 290.000 DOWNLOADS and near PERFECT ratting out of 180 REVIEWS</strong>. <br />
+<strong>Over 470.000 DOWNLOADS and near PERFECT ratting out of 200 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability.
 It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can have the admin posts interface sorted per your new sort. Post Order has never been easier.
 
@@ -50,7 +50,7 @@ Feel free to contact me at electronice_delphi@yahoo.com
 
 = I have no PHP knowledge at all, i will still be able to use this plugin? =
 
-Absolutely you can! Unlike many of other plugins, you don't have to do any code changes to make your post order to change accordingly to custom defined post order. There is an option to autoupdate the WordPress queries so the posts order will be returned in the required order. Anyway this can be turned off to allow customized code usage.
+Absolutely you can! Unlike many other plugins, you don't have to do any code changes to make your post order to change accordingly to custom defined post order. There is an option to autoupdate the WordPress queries so the posts order will be returned in the required order. Anyway this can be turned off to allow customized code usage.
 
 = What kind of posts/pages this plugin allow me to sort? =
 
@@ -66,6 +66,29 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
+= 1.6.8 = 
+ - Edit Gallery - image order fix
+ - "re-order" menu item allow translation 
+ - Hungarian translation - Adam Laki - http://codeguide.hu/
+ - Minor admin style improvments
+
+
+= 1.6.5 = 
+ - Updates/Fixes
+ - German translation
+ - Norwegian (norsk) translation
+
+= 1.6.4 = 
+ - DISALLOW_FILE_MODS fix, change the administrator capability to switch_themes
+
+= 1.6.3 = 
+ - Updates/Fixes
+ - Menu Walker nottices Fix
+
+= 1.6.2 = 
+ - Updates/Fixes
+ - Turkish - Türkçe translation
+ 
 = 1.6.1 = 
  - Updates/Fixes
  - Menu Walker nottices Fix
@@ -130,11 +153,11 @@ All ideas are welcome and i put them on my list to be implemented into the new v
  
 == Upgrade Notice ==
 
-Make sure you get the latest version
+Make sure you get the latest version.
 
 
 == Localization ==
 
-Currently available in English, Brazilian Portuguese, Spanish, Romanian, Italian.
+Available in English, Brazilian Portuguese, Spanish, Romanian, Italian, Dusth, Hebrew, German, Norwegian (norsk), Turkish (türkçe), Hungarian.
 Want to contribute with a translation to your language? Please contact me at electronice_delphi@yahoo.com
 http://www.nsp-code.com

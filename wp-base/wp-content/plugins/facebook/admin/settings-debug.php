@@ -198,7 +198,7 @@ class Facebook_Settings_Debugger {
 			return;
 
 		echo '<section id="debug-app">';
-		echo '<header><h3><a href="' . self::get_app_edit_base_uri( $facebook_loader->credentials['app_id'] ) . '" target="_blank">' . esc_html( sprintf( __( 'App %s', 'facebook' ), $facebook_loader->credentials['app_id'] ) ) . '</a></h3></header>';
+		echo '<header><h3><a href="' . esc_url( self::get_app_edit_base_uri( $facebook_loader->credentials['app_id'] ), array('http', 'https') ) . '" target="_blank">' . esc_html( sprintf( __( 'App %s', 'facebook' ), $facebook_loader->credentials['app_id'] ) ) . '</a></h3></header>';
 
 		self::app_editors( $facebook_loader->credentials['app_id'] );
 		self::app_details( $facebook_loader->credentials['app_id'] );
@@ -284,12 +284,12 @@ class Facebook_Settings_Debugger {
 		if ( $wordpress_users_display_count === 1 ) {
 			$ask_string = $wordpress_users_display[0];
 		} else if ( $wordpress_users_display_count === 2 ) {
-			$ask_string = $wordpress_users_display[0] . ' ' . _x( 'or', 'bridge between two options: this or that or these', 'facebook' ) . ' ' . $wordpress_users_display[1];
+			$ask_string = $wordpress_users_display[0] . ' ' . esc_html( _x( 'or', 'bridge between two options: this or that or these', 'facebook' ) ) . ' ' . $wordpress_users_display[1];
 		} else {
-			$ask_string = ', ' . _x( 'or', 'bridge between two options: this or that or these', 'facebook' ) . ' ' . array_pop( $wordpress_users_display );
+			$ask_string = ', ' . esc_html( _x( 'or', 'bridge between two options: this or that or these', 'facebook' ) ) . ' ' . array_pop( $wordpress_users_display );
 			$ask_string = implode( ', ', $wordpress_users_display ) . $ask_string;
 		}
-		echo '<p>' . sprintf( __( '%s can change these application settings on Facebook.', 'facebook' ), $ask_string ) . '</p>';
+		echo '<p>' . sprintf( esc_html( __( '%s can change these application settings on Facebook.', 'facebook' ) ), $ask_string ) . '</p>';
 	}
 
 	/**
@@ -315,14 +315,16 @@ class Facebook_Settings_Debugger {
 
 		// link to the relevant Facebook app editor screen
 		$app_edit_base_uri = self::get_app_edit_base_uri( $app_id );
+		$app_details_uri = $app_edit_base_uri . 'appdetails/';
+		$app_summary_uri = $app_edit_base_uri . 'summary/';
 
 		echo '<table id="facebook-app-login-fields">';
 		echo '<caption>' . esc_html( __( 'Facebook Login', 'facebook' ) ) . '</caption>';
-		echo '<thead><tr><th>' . esc_html( __( 'Setting', 'facebook' ) ) . '</th><th>' . esc_html( __( 'Value', 'facebook' ) ) . '</th></tr></thead>';
+		echo '<thead><tr><th>' . esc_html( _x( 'Setting', 'Table column header. The Facebook application setting.', 'facebook' ) ) . '</th><th>' . esc_html( _x( 'Value', 'Facebook application setting retrieved from Facebook servers.', 'facebook' ) ) . '</th></tr></thead>';
 		echo '<tbody>';
 
 		// app name
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'appdetails/#name" target="_blank">' . esc_html( __( 'App name', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_details_uri . '#name', array('http', 'https') ) . '" target="_blank">' . esc_html( __( 'App name', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['name'] ) && $app_details['name'] ) {
 			echo '>"' . esc_html( $app_details['name'] ) . '"';
 		} else {
@@ -332,13 +334,13 @@ class Facebook_Settings_Debugger {
 			if ( $site_name && $site_name !== __( 'My Site' ) )
 				echo esc_html( sprintf( __( 'Not set. Consider using: %s', 'facebook' ), $site_name ) );
 			else
-				echo esc_html( __( 'Not set.', 'facebook' ) );
+				echo esc_html( _x( 'Not set.', 'No stored value found.', 'facebook' ) );
 			unset( $site_name );
 		}
 		echo '</td></tr>';
 
 		// app domains able to act on behalf of the application
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'summary/" target="_blank">' . esc_html( __( 'App Domains', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_summary_uri, array('http', 'https') ) . '" target="_blank">' . esc_html( __( 'App Domains', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['app_domains'] ) && ! empty( $app_details['app_domains'] ) ) {
 			echo '><ul>';
 			foreach( $app_details['app_domains'] as $app_domain ) {
@@ -352,10 +354,9 @@ class Facebook_Settings_Debugger {
 		echo '</td></tr>';
 
 		// Website with Facebook Login
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'summary/#site_url_input" target="_blank">' . esc_html( __( 'Website', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_summary_uri .'#site_url_input', array('http', 'https') ) . '" target="_blank">' . esc_html( __( 'Website', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['website_url'] ) && $app_details['website_url'] ) {
-			$app_details['website_url'] = esc_url( $app_details['website_url'], array( 'http', 'https' ) );
-			echo '><a href="' . $app_details['website_url'] . '" target="_blank">' . $app_details['website_url'] . '</a>';
+			echo '><a href="' . esc_url( $app_details['website_url'], array( 'http', 'https' ) ) . '" target="_blank">' . esc_html( $app_details['website_url'] ) . '</a>';
 		} else {
 			echo ' class="error-message">';
 			echo esc_html( sprintf( __( 'Not set. Consider using: %s', 'facebook' ), home_url( '/' ) ) );
@@ -363,7 +364,7 @@ class Facebook_Settings_Debugger {
 		echo '</td></tr>';
 
 		// One-line description
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'appdetails/" target="_blank">' . esc_html( __( 'One-line description', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_details_uri, array('http', 'https') ) . '" target="_blank">' . esc_html( __( 'One-line description', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['auth_dialog_headline'] ) && $app_details['auth_dialog_headline'] ) {
 			echo '>"' . esc_html( $app_details['auth_dialog_headline'] ) . '"';
 		} else {
@@ -379,7 +380,7 @@ class Facebook_Settings_Debugger {
 		echo '</td></tr>';
 
 		// publish permissions explanation
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'appdetails/" target="_blank">' . esc_html( _x( 'Publish permissions explanation', 'Explain the reason for requesting publish permissions from a Facebook user', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_details_uri, array('http', 'https') ) . '" target="_blank">' . esc_html( _x( 'Publish permissions explanation', 'Explain the reason for requesting publish permissions from a Facebook user', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['auth_dialog_perms_explanation'] ) && $app_details['auth_dialog_perms_explanation'] )
 			echo '>"' . esc_html( $app_details['auth_dialog_perms_explanation'] ) . '"';
 		else
@@ -387,20 +388,19 @@ class Facebook_Settings_Debugger {
 		echo '</td></tr>';
 
 		// Privacy Policy
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'appdetails/#privacy_url" target="_blank">' . esc_html( __( 'Privacy Policy', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_details_uri . '#privacy_url', array('http', 'https') ) . '" target="_blank">' . esc_html( __( 'Privacy Policy', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['privacy_policy_url'] ) && $app_details['privacy_policy_url'] ) {
-			$app_details['privacy_policy_url'] = esc_url( $app_details['privacy_policy_url'], array( 'http', 'https' ) );
-			echo '><a href="' . $app_details['privacy_policy_url'] . '" target="_blank">' . $app_details['privacy_policy_url'] . '</a>';
+			echo '><a href="' . esc_url( $app_details['privacy_policy_url'], array( 'http', 'https' ) ) . '" target="_blank">' . esc_html( $app_details['privacy_policy_url'] ) . '</a>';
 		} else {
 			echo ' class="error-message">' . esc_html( __( 'Not set.', 'facebook' ) ) . ' ' . esc_html( _x( 'Create a new page?', 'Create a new WordPress page', 'facebook' ) );
 		}
 		echo '</td></tr>';
 
 		// Terms of Service
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'appdetails/#tos_url" target="_blank">' . esc_html( __( 'Terms of Service', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_details_uri . '#tos_url', array('http', 'https') ) . '" target="_blank">' . esc_html( __( 'Terms of Service', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['terms_of_service_url'] ) && $app_details['terms_of_service_url'] ) {
 			$app_details['terms_of_service_url'] = esc_url( $app_details['terms_of_service_url'], array( 'http', 'https' ) );
-			echo '><a href="' . $app_details['terms_of_service_url'] . '" target="_blank">' . $app_details['terms_of_service_url'] . '</a>';
+			echo '><a href="' . esc_url( $app_details['terms_of_service_url'], array( 'http', 'https' ) ) . '" target="_blank">' . esc_html( $app_details['terms_of_service_url'] ) . '</a>';
 		} else {
 			echo ' class="error-message">';
 			echo esc_html( __( 'Not set.', 'facebook' ) ) . ' ' . esc_html( _x( 'Create a new page?', 'Create a new WordPress page', 'facebook' ) );
@@ -408,7 +408,7 @@ class Facebook_Settings_Debugger {
 		echo '</td></tr>';
 
 		// Logo
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'appdetails/" target="_blank">' . esc_html( _x( 'Logo', 'Facebook application logo', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_details_uri, array('http', 'https') ) . '" target="_blank">' . esc_html( _x( 'Logo', 'Facebook application logo', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['logo_url'] ) && $app_details['logo_url'] ) {
 			echo '><img alt="' . esc_attr( __( 'Facebook application logo', 'facebook' ) ) . '" src="' . esc_url( $app_details['logo_url'], array( 'http', 'https' ) ) . '" />';
 		} else {
@@ -417,7 +417,7 @@ class Facebook_Settings_Debugger {
 		echo '</td></tr>';
 
 		// Icon
-		echo '<tr><th><a href="' . $app_edit_base_uri . 'appdetails/" target="_blank">' . esc_html( _x( 'Icon', 'Facebook application icon', 'facebook' ) ) . '</a></th><td';
+		echo '<tr><th><a href="' . esc_url( $app_details_uri, array('http', 'https') ) . '" target="_blank">' . esc_html( _x( 'Icon', 'Facebook application icon', 'facebook' ) ) . '</a></th><td';
 		if ( isset( $app_details['icon_url'] ) && $app_details['icon_url'] ) {
 			echo '><img alt="' . esc_attr( __( 'Facebook application icon', 'facebook' ) ) . '" src="' . esc_url( $app_details['icon_url'], array( 'http', 'https' ) ) . '" />';
 		} else {
@@ -492,7 +492,7 @@ class Facebook_Settings_Debugger {
 				} else {
 					$s = '';
 					foreach( $public_post_types as $post_type ) {
-						$s .= "'" . $wpdb->escape( $post_type ) . "',";
+						$s .= "'" . esc_sql( $post_type ) . "',";
 					}
 					$where .= ' IN (' . rtrim( $s, ',' ) . ')';
 					unset( $s );
@@ -508,7 +508,7 @@ class Facebook_Settings_Debugger {
 				} else {
 					$s = '';
 					foreach( $public_states as $state ) {
-						$s .= "'" . $wpdb->escape( $state ) . "',";
+						$s .= "'" . esc_sql( $state ) . "',";
 					}
 					$where .= ' IN (' . rtrim( $s, ',' ) . ')';
 					unset( $s );
@@ -550,8 +550,7 @@ class Facebook_Settings_Debugger {
 			$page_link = $post_to_page['link'];
 		else
 			$page_link = 'https://www.facebook.com/' . $post_to_page['id'];
-		$page_link = esc_url( $page_link, array( 'http', 'https' ) );
-		echo '<p>' . sprintf( esc_html( _x( 'Publishing to %s.', 'publishing to a page name on Facebook.com', 'facebook' ) ), '<a href="' . $page_link . '">' . esc_html( $post_to_page['name'] ) . '</a>' );
+		echo '<p>' . sprintf( esc_html( _x( 'Publishing to %s.', 'publishing to a page name on Facebook.com', 'facebook' ) ), '<a href="' . esc_url( $page_link, array( 'http', 'https' ) ) . '">' . esc_html( $post_to_page['name'] ) . '</a>' );
 		unset( $page_link );
 		if ( isset( $post_to_page['set_by_user'] ) ) {
 			if ( get_current_user_id() == $post_to_page['set_by_user'] ) {
@@ -590,24 +589,24 @@ class Facebook_Settings_Debugger {
 
 		$features = array(
 			'like' => array(
-				'name' => __( 'Like Button', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/like/'
+				'name' => _x( 'Like Button', 'Facebook Like Button social plugin', 'facebook' ),
+				'url' => 'https://developers.facebook.com/docs/plugins/like-button/'
 			),
 			'send' => array(
-				'name' => __( 'Send Button', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/send/'
+				'name' => _x( 'Send Button', 'Facebook Send Button social plugin', 'facebook' ),
+				'url' => 'https://developers.facebook.com/docs/plugins/send-button/'
 			),
 			'follow' => array(
-				'name' => __( 'Follow Button', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/follow/'
+				'name' => _x( 'Follow Button', 'Facebook Follow Button social plugin', 'facebook' ),
+				'url' => 'https://developers.facebook.com/docs/plugins/follow-button/'
 			),
 			'recommendations_bar' => array(
-				'name' => __( 'Recommendations Bar', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/recommendationsbar/'
+				'name' => _x( 'Recommendations Bar', 'Facebook Recommendations Bar social plugin', 'facebook' ),
+				'url' => 'https://developers.facebook.com/docs/plugins/recommendations-bar/'
 			),
 			'comments' => array(
-				'name' => __( 'Comments Box', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/comments/'
+				'name' => _x( 'Comments Box', 'Facebook Comments Box social plugin', 'facebook' ),
+				'url' => 'https://developers.facebook.com/docs/plugins/comments/'
 			)
 		);
 
@@ -660,23 +659,23 @@ class Facebook_Settings_Debugger {
 		$all_widgets = array(
 			'activity-feed' => array(
 				'name' => __( 'Activity Feed', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/activity/'
+				'url' => 'https://developers.facebook.com/docs/plugins/activity/'
 			),
 			'like' => array(
 				'name' => __( 'Like Button', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/like/'
+				'url' => 'https://developers.facebook.com/docs/plugins/like-button/'
 			),
 			'recommendations' => array(
 				'name' => __( 'Recommendations Box', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/recommendations/'
+				'url' => 'https://developers.facebook.com/docs/plugins/recommendations/'
 			),
 			'send' => array(
 				'name' => __( 'Send Button', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/send/'
+				'url' => 'https://developers.facebook.com/docs/plugins/send-button/'
 			),
 			'follow' => array(
 				'name' => __( 'Follow Button', 'facebook' ),
-				'url' => 'https://developers.facebook.com/docs/reference/plugins/follow/'
+				'url' => 'https://developers.facebook.com/docs/plugins/follow-button/'
 			)
 		);
 
@@ -748,7 +747,7 @@ class Facebook_Settings_Debugger {
 				echo $http_transport;
 			}
 		} else {
-			echo __( 'none available', 'facebook' );
+			echo _x( 'none available', 'No available solution found.', 'facebook' );
 		}
 		echo '</td></tr>';
 		unset( $http_transport );

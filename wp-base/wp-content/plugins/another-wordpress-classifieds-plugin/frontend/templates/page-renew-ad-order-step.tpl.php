@@ -18,7 +18,7 @@
     <p class="form-submit">
         <input class="button" type="submit" value="<?php _e('Continue', 'AWPCP') ?>" id="submit" name="submit">
         <?php if (!is_null($transaction)): ?>
-        <input type="hidden" value="<?php echo esc_attr($transaction->id) ?>" name="awpcp-txn">
+        <input type="hidden" value="<?php echo esc_attr( $transaction->id ); ?>" name="transaction_id">
         <?php endif; ?>
         <input type="hidden" value="order" name="step">
     </p>

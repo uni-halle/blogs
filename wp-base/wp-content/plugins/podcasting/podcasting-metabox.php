@@ -30,7 +30,7 @@ class PodcastingMetabox {
 		add_action('delete_post', array($this, 'deleteForm'));
 		
 		# Add the metabox to the interface
-		add_meta_box('podcasting', 'Podcasting', array($this, 'editForm'), 'post', 'normal');
+		add_meta_box('podcasting', 'Podcasting File Enclosures', array($this, 'editForm'), 'post', 'normal');
 	}
 	
 	/**
@@ -72,6 +72,7 @@ class PodcastingMetabox {
 		global $wpdb;
 		include_once( ABSPATH . WPINC . '/class-IXR.php' );
 
+        // Look at removing this stuff
 		$log = debug_fopen( ABSPATH . 'enclosures.log', 'a' );
 		$post_links = array();
 		debug_fwrite( $log, 'BEGIN ' . date( 'YmdHis', time() ) . "\n" );
@@ -130,9 +131,14 @@ class PodcastingMetabox {
 			
 		<?php
 		# If the list of enclosures is not empty
-		if ( !empty($enclosures) ) {
+		if ( !empty($enclosures) ) 
+        {
 		# Loop through each enclosure
-		foreach ($enclosures as $enclosure) {
+    		foreach ($enclosures as $enclosure) 
+            {
+            $enclosure_count = 0;
+            $pod_enclosure_ids = '';
+            
 			# If the enclosure count is greater than none, add to a list of valid enclosures
 			if ( $enclosure_count > 0 ) $pod_enclosure_ids .= ','; $enclosure_count++;
 			# Append the current enclosure id to a list of enclosure ids
@@ -148,19 +154,22 @@ class PodcastingMetabox {
 			
 			### START THE ENCLOSURE HTML ###
 			?>
-			<table cellpadding="3" class="pod_enclosure" id="pod_episode_<?php echo $enclosure['meta_id']; ?>">
+			<table cellpadding="4" class="pod_enclosure" id="pod_episode_<?php echo $enclosure['meta_id']; ?>">
 				<tr>
 					<td class="pod-title">File</td>
-					<td colspan="<?php echo ( $podcast_player || $podcast_video_player ) ? 5 : 6; ?>"><input type="text" name="pod_file_<?php echo $enclosure['meta_id']; ?>" class="pod_file" value="<?php echo $enclosure_value[0]; ?>" readonly="readonly" /></td>
-					<?php if ( $podcast_player ) { ?>
-					<td class="pod-player"><input name="add_editor" type="button" class="button-primary" value="Send to editor &raquo;" style="margin: 0 5px; width: 80%;" onClick="insertPodcastString('<?php echo trim($enclosure_value[0]); ?>');" /></td>
-					<?php } elseif ( $podcast_video_player ) { ?>
-					<td class="pod-player"><input name="add_editor" type="button" class="button-primary" style="margin: 0 5px; width: 80%;" value="Send to editor &raquo;" onClick="insertPodcastString('<?php echo trim($enclosure_value[0]); ?>', '1');" /></td>
-					<?php } ?>
+					<td colspan="<?php echo ( $podcast_player || $podcast_video_player ) ? 2 : 3; ?>"><input type="text" name="pod_file_<?php echo $enclosure['meta_id']; ?>" class="pod_file" value="<?php echo $enclosure_value[0]; ?>" readonly="readonly" /></td>
 				</tr>
+                <tr>
+					<td class="pod-title"><a href="#" class="pod-tip" title="Up to 12 comma-separated words which iTunes uses for search placement.">Keywords</a></td>
+					<td colspan="2"><input type="text" name="pod_keywords_<?php echo $enclosure['meta_id']; ?>" class="pod_keywords" value="<?php echo stripslashes($enclosure_itunes['keywords']); ?>" /></td>
+                </tr>
+                <tr>
+                	<td class="pod-title"><a href="#" class="pod-tip" title="Author name if different than default.">Author</a></td>
+					<td colspan="2"><input type="text" name="pod_author_<?php echo $enclosure['meta_id']; ?>" class="pod_author" value="<?php echo stripslashes($enclosure_itunes['author']); ?>" /></td>
+                </tr>
 				<tr>
 					<td class="pod-title">Format</td>
-					<td><select name="pod_format_<?php echo $enclosure['meta_id']; ?>" class="pod_format">
+					<td colspan="2"><select name="pod_format_<?php echo $enclosure['meta_id']; ?>" class="pod_format">
 						<?php
 						# Get the enclosure format
 						$enclosure_format = wp_get_object_terms($enclosure['meta_id'], 'podcast_format');
@@ -176,15 +185,21 @@ class PodcastingMetabox {
 							# Output the option value
 							echo '<option value="' . $pod_format->slug . '"' . $selected . '>' . $pod_format->name . '</option>';
 						} ?>
-					</select></td>
-					<td class="pod-title"><a href="#" class="pod-tip" title="Up to 12 comma-separated words which iTunes uses for search placement.">Keywords</a></td>
-					<td colspan="4"><input type="text" name="pod_keywords_<?php echo $enclosure['meta_id']; ?>" class="pod_keywords" value="<?php echo stripslashes($enclosure_itunes['keywords']); ?>" /></td>
+					   </select>
+                    </td>
+                </tr>
+				<tr>  
+                	<td class="pod-title"><a href="#" class="pod-tip" title="Length of the podcast in HH:MM:SS format.">Length</a></td>
+					<td class="pod-length"><input type="text" name="pod_length_<?php echo $enclosure['meta_id']; ?>" class="pod_length" value="<?php echo stripslashes($enclosure_itunes['length']); ?>" /></td>
+  
+					<?php if ( $podcast_player ) { ?>
+					<td class="pod-player"><input name="add_editor" type="button" class="button-primary" value="Send Shortcode To Editor &raquo;"  onClick="insertPodcastString('<?php echo trim($enclosure_value[0]); ?>');" /></td>
+					<?php } elseif ( $podcast_video_player ) { ?>
+					<td class="pod-player"><input name="add_editor" type="button" class="button-primary" value="Send to editor &raquo;" onClick="insertPodcastString('<?php echo trim($enclosure_value[0]); ?>', '1');" /></td>
+					<?php } ?>
+                    
 				</tr>
 				<tr>
-					<td class="pod-title"><a href="#" class="pod-tip" title="Author name if different than default.">Author</a></td>
-					<td><input type="text" name="pod_author_<?php echo $enclosure['meta_id']; ?>" class="pod_author" value="<?php echo stripslashes($enclosure_itunes['author']); ?>" /></td>
-					<td class="pod-title"><a href="#" class="pod-tip" title="Length of the podcast in HH:MM:SS format.">Length</a></td>
-					<td class="pod-length"><input type="text" name="pod_length_<?php echo $enclosure['meta_id']; ?>" class="pod_length" value="<?php echo stripslashes($enclosure_itunes['length']); ?>" /></td>
 					<td class="pod-title"><a href="#" class="pod-tip" title="Explicit setting if different than default.">Explicit</a></td>
 					<td class="pod-explicit"><select name="pod_explicit_<?php echo $enclosure['meta_id']; ?>" class="pod_format">
 						<?php
@@ -195,7 +210,7 @@ class PodcastingMetabox {
 							echo '<option value="' . $explicit . '"' . $selected . '>' . ucfirst($explicit) . '</option>';
 						} ?>
 					</select></td>
-					<td class="pod-update"><input name="delete_pod_<?php echo $enclosure['meta_id']; ?>" type="button" class="button" style="margin: 0 5px; width: 80%;" value="Delete Enclosure" onclick="delete_podcast_episode(<?php echo $enclosure['meta_id']; ?>);" /></td>
+					<td class="pod-update"><input name="delete_pod_<?php echo $enclosure['meta_id']; ?>" type="button" class="button" value="Delete Enclosure" onclick="delete_podcast_episode(<?php echo $enclosure['meta_id']; ?>);" /></td>
 				</tr>
 			</table>
 			
@@ -207,17 +222,30 @@ class PodcastingMetabox {
 		<input name="pod_ignore_enclosure_ids" id="pod_ignore_enclosure_ids" type="hidden" value="" />
 		</div>
 		
-		<table cellpadding="3" class="pod_new_enclosure">
+        
+        <h4>Add New File Enclosure:</h4>
+		<table c class="pod_new_enclosure">
 			<tr>
-				<td class="pod-title">File URL</td>
+				<td class="pod-title">New File URL</td>
 				<td><input type="text" name="pod_new_file" class="pod_new_file" value="" /></td>
-				<td class="pod-new-format"><select name="pod_new_format" class="pod_new_format">
+            </tr>
+            <tr>  
+                <td class="pod-title">Format</td>  
+				<td class="pod-new-format">
+                    <select name="pod_new_format" class="pod_new_format">
 					<?php foreach ($pod_formats as $pod_format) {
 						$selected = ( 'default-format' == $pod_format->slug ) ? ' selected="selected"' : '';
 						echo '<option value="' . $pod_format->slug . '"' . $selected . '>' . $pod_format->name . '</option>';
 					} ?>
-				</select></td>
-				<td class="submit"><input name="add_episode" id="add_podcast_button" type="button" class="" value="Add" onclick="add_podcast_episode();" /></td>
+				    </select>
+                </td>
+            </tr>
+            <tr> 
+                <td>
+                </td>   
+				<td>
+                    <input name="add_episode" id="add_podcast_button" type="button" class="button" value="Add New File Enclosure &raquo;" onclick="add_podcast_episode();" />
+                </td>
 			</tr>
 		</table>
 	<?php } // podcasting_edit_form()
@@ -228,6 +256,8 @@ class PodcastingMetabox {
 	function saveForm($postID) {
 		global $wpdb;
 
+        $added_enclosure_ids = array();
+                
 		// Security prevention
 		if ( !current_user_can('edit_post', $postID) )
 			return $postID;
@@ -239,12 +269,14 @@ class PodcastingMetabox {
 
 		// Ignore save_post action for revisions and autosave
 		if (wp_is_post_revision($postID) || wp_is_post_autosave($postID)) return $postID;
-
+        
+        
+        
 		// Add new enclosures
-		if ( $_POST['pod_new_enclosure_ids'] != '' ) {
+		if ( isset($_POST['pod_new_enclosure_ids']) && $_POST['pod_new_enclosure_ids'] != '' ) {
 			$pod_new_enclosure_ids = explode(',', substr($_POST['pod_new_enclosure_ids'], 0, -1));
 			$pod_ignore_enclosure_ids = explode(',', substr($_POST['pod_ignore_enclosure_ids'], 0, -1));
-			$added_enclosure_ids = array();
+			
 			foreach ( $pod_new_enclosure_ids AS $pod_enclosure_id ) {
 				$pod_enclosure_id = (int) $pod_enclosure_id;
 
@@ -256,14 +288,21 @@ class PodcastingMetabox {
 
 					// Enclose the file using a custom method
 					$headers = $this->getHttpHeaders($pod_content);
+                    
+                    tsg_podcasting_log( "headers: " . print_r($headers, true) );
 
 					# Check if the headers processed the file correctly, if they didn't try to clean up the file
 					if ( $headers['response'] != '200' ) {
 						$pod_content = podcasting_urlencode($pod_content);
 						$headers = $this->getHttpHeaders($pod_content);
+                        
+                        tsg_podcasting_log( "retry headers: " . print_r($headers, true) );
 					}
 					
 					$length = (int) $headers['content-length'];
+                    
+                    tsg_podcasting_log( "length: " . $length );
+                    
 					$type = addslashes( $headers['content-type'] );
 					if ( $headers['response'] != '404' && is_array($headers) ) {
 						add_post_meta($postID, 'enclosure', "$pod_content\n$length\n$type\n");
@@ -287,41 +326,42 @@ class PodcastingMetabox {
 			$pod_delete_enclosure_ids = explode(',', substr($_POST['pod_delete_enclosure_ids'], 0, -1));
 			$enclosures = $wpdb->get_results("SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE post_id = {$postID} AND meta_key = 'enclosure' ORDER BY meta_id", ARRAY_A); $i = 0;
 
-			if ( $_POST['pod_enclosure_ids'] != '' ) {
-			foreach ($pod_enclosure_ids as $pod_enclosure_id) {
-				// Ensure we're dealing with an ID
-				$pod_enclosure_id = (int) $pod_enclosure_id;
-
-				$itunes = serialize(array(
-					'format' => $_POST['pod_format_' . $pod_enclosure_id],
-					'keywords' => $_POST['pod_keywords_' . $pod_enclosure_id],
-					'author' => $_POST['pod_author_' . $pod_enclosure_id],
-					'length' => $_POST['pod_length_' . $pod_enclosure_id],
-					'explicit' => $_POST['pod_explicit_' . $pod_enclosure_id]
-					));
-
-				// Update format
-				wp_set_object_terms($pod_enclosure_id, $_POST['pod_format_' . $pod_enclosure_id], 'podcast_format', false);
-
-				// Update enclsoure
-				$enclosure = explode("\n", $enclosures[$i]['meta_value']);
-				$enclosure[3] = $itunes;
-				
-				// Check that we have the full enclosure before updating it
-				if ( is_array($enclosures) ) {
-					update_post_meta($postID, 'enclosure', implode("\n", $enclosure), $enclosures[$i]['meta_value']);
-				}
-				
-				$i++;
-
-				// Delete enclosure
-				if ( in_array($pod_enclosure_id, $pod_delete_enclosure_ids) ) {
-					// Remove format
-					wp_delete_object_term_relationships($pod_enclosure_id, 'podcast_format');
-					// Remove enclosure
-					delete_meta($pod_enclosure_id);
-				}
-			}
+			if ( $_POST['pod_enclosure_ids'] != '' ) 
+            {
+    			foreach ($pod_enclosure_ids as $pod_enclosure_id) {
+    				// Ensure we're dealing with an ID
+    				$pod_enclosure_id = (int) $pod_enclosure_id;
+    
+    				$itunes = serialize(array(
+    					'format' => $_POST['pod_format_' . $pod_enclosure_id],
+    					'keywords' => $_POST['pod_keywords_' . $pod_enclosure_id],
+    					'author' => $_POST['pod_author_' . $pod_enclosure_id],
+    					'length' => $_POST['pod_length_' . $pod_enclosure_id],
+    					'explicit' => $_POST['pod_explicit_' . $pod_enclosure_id]
+    					));
+    
+    				// Update format
+    				wp_set_object_terms($pod_enclosure_id, $_POST['pod_format_' . $pod_enclosure_id], 'podcast_format', false);
+    
+    				// Update enclsoure
+    				$enclosure = explode("\n", $enclosures[$i]['meta_value']);
+    				$enclosure[3] = $itunes;
+    				
+    				// Check that we have the full enclosure before updating it
+    				if ( is_array($enclosures) ) {
+    					update_post_meta($postID, 'enclosure', implode("\n", $enclosure), $enclosures[$i]['meta_value']);
+    				}
+    				
+    				$i++;
+    
+    				// Delete enclosure
+    				if ( in_array($pod_enclosure_id, $pod_delete_enclosure_ids) ) {
+    					// Remove format
+    					wp_delete_object_term_relationships($pod_enclosure_id, 'podcast_format');
+    					// Remove enclosure
+    					delete_meta($pod_enclosure_id);
+    				}
+    			}
 			}
 			if ( count($added_enclosure_ids) > 0 ) {
 			foreach ($added_enclosure_ids as $pod_enclosure_id) {
@@ -373,19 +413,26 @@ class PodcastingMetabox {
 		$podcast_video_player_formats = array('m4v', 'mp4', 'mov', 'flv', 'm4a');
 		$podcast_video_player = ( in_array(strtolower(substr(trim($url), -3)), $podcast_video_player_formats) ) ? true : false;
 		?>
-		<table cellpadding="3" class="pod_enclosure" id="new_enclosure_<?php echo $id; ?>">
+		<table cellpadding="4" class="pod_enclosure" id="new_enclosure_<?php echo $id; ?>">
 			<tr>
 				<td class="pod-title">File</td>
-				<td colspan="<?php echo ( $podcast_player || $podcast_video_player ) ? 5 : 6; ?>"><input type="text" name="pod_new_file_<?php echo $id; ?>" class="pod_file" value="<?php echo $url; ?>" readonly="readonly" /></td>
-				<?php if ( $podcast_player ) { ?>
-				<td class="pod-player"><input name="add_editor" type="button" class="button-primary" value="Send to editor &raquo;" style="margin: 0 5px; width: 80%;" onClick="insertPodcastString('<?php echo trim($url); ?>');" /></td>
-				<?php } elseif ( $podcast_video_player ) { ?>
-				<td class="pod-player"><input name="add_editor" type="button" class="button-primary" style="margin: 0 5px; width: 80%;" value="Send to editor &raquo;" onClick="insertPodcastString('<?php echo trim($url); ?>', '1');" /></td>
-				<?php } ?>
+				<td colspan="<?php echo ( $podcast_player || $podcast_video_player ) ? 2 : 3; ?>"><input type="text" name="pod_new_file_<?php echo $id; ?>" class="pod_file" value="<?php echo $url; ?>" readonly="readonly" /></td>
+
 			</tr>
+            <tr>
+				<td class="pod-title"><a href="#" class="pod-tip" title="Up to 12 comma-separated words which iTunes uses for search placement.">Keywords</a></td>
+				<td colspan="2"><input type="text" name="pod_new_keywords_<?php echo $id; ?>" class="pod_keywords" value="" />
+                </td>
+			</tr>
+            <tr>
+            	<td class="pod-title"><a href="#" class="pod-tip" title="Author name if different than default.">Author</a></td>
+                <td colspan="2"><input type="text" name="pod_author_<?php echo $enclosure['meta_id']; ?>" class="pod_author" value="" /></td>
+            </tr>
 			<tr>
+            
 				<td class="pod-title">Format</td>
-				<td><select name="pod_new_format_<?php echo $id; ?>" class="pod_format">
+				<td colspan="2">
+                    <select name="pod_new_format_<?php echo $id; ?>" class="pod_format">
 					<?php
 					# Loop through each of the available podcasting formats
 					foreach ($pod_formats as $pod_format) {
@@ -394,25 +441,31 @@ class PodcastingMetabox {
 						# Output the option value
 						echo '<option value="' . $pod_format->slug . '"' . $selected . '>' . $pod_format->name . '</option>';
 					} ?>
-				</select></td>
-				<td class="pod-title"><a href="#" class="pod-tip" title="Up to 12 comma-separated words which iTunes uses for search placement.">Keywords</a></td>
-				<td colspan="4"><input type="text" name="pod_new_keywords_<?php echo $id; ?>" class="pod_keywords" value="" /></td>
-			</tr>
+				    </select>
+                </td>
+            </tr>    
 			<tr>
-				<td class="pod-title"><a href="#" class="pod-tip" title="Author name if different than default.">Author</a></td>
-				<td><input type="text" name="pod_new_author_<?php echo $id; ?>" class="pod_author" value="" /></td>
 				<td class="pod-title"><a href="#" class="pod-tip" title="Length of the podcast in HH:MM:SS format.">Length</a></td>
 				<td class="pod-length"><input type="text" name="pod_new_length_<?php echo $id; ?>" class="pod_length" value="" /></td>
-				<td class="pod-title"><a href="#" class="pod-tip" title="Explicit setting if different than default.">Explicit</a></td>
-				<td class="pod-explicit"><select name="pod_new_explicit_<?php echo $id; ?>" class="pod_format">
+				<?php if ( $podcast_player ) { ?>
+				<td class="pod-player"><input name="add_editor" type="button" class="button-primary" value="Send Shortcode To Editor &raquo;"  onClick="insertPodcastString('<?php echo trim($url); ?>');" /></td>
+				<?php } elseif ( $podcast_video_player ) { ?>
+				<td class="pod-player"><input name="add_editor" type="button" class="button-primary" value="Send Shortcode To Editor &raquo;" onClick="insertPodcastString('<?php echo trim($url); ?>', '1');" /></td>
+				<?php } ?>
+			</tr>    
+			<tr>
+            	<td class="pod-title"><a href="#" class="pod-tip" title="Explicit setting if different than default.">Explicit</a></td>
+				<td class="pod-explicit">
+                <select name="pod_new_explicit_<?php echo $id; ?>" class="pod_format">
 					<?php
 					$explicits = array('', 'no', 'yes', 'clean');
 					foreach ($explicits as $explicit) {
 						$selected = '';
 						echo '<option value="' . $explicit . '"' . $selected . '>' . ucfirst($explicit) . '</option>';
 					} ?>
-				</select></td>
-				<td class="pod-update"><input name="delete_pod_<?php echo $id; ?>" type="button" class="button" style="margin: 0 5px; width: 80%;" value="Delete Enclosure" onclick="delete_new_podcast_episode(<?php echo $id; ?>);" /></td>
+				    </select>
+                </td>
+				<td class="pod-update"><input name="delete_pod_<?php echo $id; ?>" type="button" class="button"  value="Delete Enclosure" onclick="delete_new_podcast_episode(<?php echo $id; ?>);" /></td>
 			</tr>
 		</table>
 		
@@ -449,20 +502,25 @@ class PodcastingMetabox {
 	 * @return an array containing file information
 	 */
 	function getHttpHeaders($url) {
+    
+        $default_len = '1048576';
 		# Don't attempt to get enclosure information since we're accepting failure
 		if ( get_option('pod_accept_fail') == 'yes' ) {
 			$headers = array(
 				'response' => 200,
-				'content-length' => '1048576',
+				'content-length' => $default_len,
 				'content-type' => $this->getMimeType($url)
 			);
 			return $headers;
 		}
 		
-    $wp_head = wp_get_http_headers($url);
+        $wp_head = wp_get_http_headers($url);
+        
+        tsg_podcasting_log( "actual wp_head: " . print_r($wp_head, true) );
+        
 		$headers = array(
 			'response' => '200',
-			'content-length' => $wp_head['content-length'],
+			'content-length' => isset( $wp_head['content-length'] ) ? (int) $wp_head['content-length'] : $default_len,            
 			'content-type' => $this->getMimeType($url)
 		);
 

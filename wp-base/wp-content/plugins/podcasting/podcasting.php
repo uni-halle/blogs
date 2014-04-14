@@ -2,14 +2,17 @@
 
 /*
 Plugin Name: Podcasting Plugin by TSG
-Version: 2.4
+Version: 3.0.7
 Plugin URI: http://podcastingplugin.com/
 Description: Podcasting enhances WordPress' existing podcast support by adding multiple iTunes-compatible feeds, media players, and an easy to use interface.
 Author: TSG & Spiral Web Consulting (plugin originator)
 Author URI: http://podcastingplugin.com/
 */
 
-define('PODCASTING_VERSION', '2.4');
+define('PODCASTING_VERSION', '3.0.7');
+
+//Make sure this is FALSE for release
+define('TSG_DEBUG', FALSE);
 
 # Register Podcasting's taxonomy
 function build_taxonomies() {
@@ -34,17 +37,24 @@ include_once('podcasting-metabox.php');
 include_once('podcasting-feed.php');
 
 # Include the player
-include_once('podcasting-player.php');
+include_once('podcasting-native-player.php');
 
 # Include the podPress importer
 include_once('podpress-importer.php');
 
+# Include the player window
+include_once('podcasting-player-window.php');
+
+# Include the url redirector
+include_once('podcasting-redirect.php');
 /**
  * Post installation procedures
  */
 function podcasting_install() {
 	# Setup the default taxonomy
-	wp_insert_term('Default Format', 'podcast_format');
+	$status = wp_insert_term('Default Format', 'podcast_format');
+    
+    tsg_podcasting_var_dump($status);
 	
 	# Add Podcasting options to the database
 	add_option('pod_title', get_option('blogname'), "The podcast's title");
@@ -74,6 +84,7 @@ function podcasting_install() {
 	add_option('pod_player_height', '300', 'Podcast player height');
 	add_option('pod_video_flashvars', '', 'Podcasting video flashvars');
 	add_option('pod_accept_fail', 'no', 'Accept enclosure failure');
+    
 }
 
 /**
@@ -222,6 +233,43 @@ if (!function_exists('mime_content_type')) {
 			return 'application/octet-stream';
 		}
 	}
+}
+
+function tsg_podcasting_log($data)
+{
+    
+    if(TSG_DEBUG)
+    {
+        
+        $File = dirname(__FILE__) . "/tsglog.txt"; 
+        try {
+            $fh = fopen($File, "a");
+            if (! $fh) {
+                throw new Exception("Could not open the file!");
+            }
+        }
+        catch (Exception $e) {
+            echo "Error (File: ".$e->getFile().", line ".
+            $e->getLine()."): ".$e->getMessage();
+        }
+        fwrite($fh, $data . "\n"); 
+
+        fclose($fh); 
+    }
+
+}
+
+function tsg_podcasting_var_dump($data)
+{
+    if(TSG_DEBUG)
+    {
+        ob_start();
+        var_dump($data);
+        $result = ob_get_clean();
+        tsg_podcasting_log($result);
+    }
+
+
 }
 
 ?>

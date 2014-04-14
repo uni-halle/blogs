@@ -2,8 +2,8 @@
 Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, itunes, enclosure, zune, iphone, youtube, viddler, blip.tv, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, webm, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, simple podcasting, seriously simple podcasting, seriously-simple-podcasting, podlove, podcast.de
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 5.0.2
+Tested up to: 3.9
+Stable tag: 5.0.7
 Donate link: http://create.blubrry.com/
 License: GPLv2 or later
 
@@ -109,6 +109,7 @@ We now offer one-on-one consulting via Gotomeeting, Skype or phone.
  * [Message Flow](http://wordpress.org/extend/plugins/message-flow/) - generates a CoverFlow-like interface for your blog posts with podcast episodes. For podcasts, use shortocde `[message-flow podcasts_only="true"]`.
  * [Eli's PowerPress Addon Widget](http://wordpress.org/extend/plugins/podpress-addons/) - Adds a sidebar widget that lists your podcast episodes linked to the play in a new window PowerPress player.
  * [PowerPress Posts From MySQL](http://wordpress.org/extend/plugins/powerpress-posts-from-mysql/developers/) - Creates blog posts with PowerPress podcast episode information from a MySQL table.
+ * [Featured Podcast Widget](http://wordpress.org/plugins/featured-podcast-widget/), [Home Page](http://www.richardfarrar.com/featured-podcast-widget-for-wordpress/) - A widget that enables you to display your latest podcast from a category or featured podcast utilising the PowerPress plugin's default player.
  * [Subscribe Sidebar plugin by Blubrry](http://wordpress.org/extend/plugins/subscribe-sidebar/) - A sidebar widget that provides a list of "Subscribe" links to your sidebar.
  
  
@@ -170,7 +171,51 @@ To install Blubrry PowerPress manually, follow these steps:
 
 = Next Major Release Announcements =
 * PowerPress 6.0+ will no longer be compatible with WordPress 3.0.x, 3.1.x and 3.2.x. Please upgrade to WordPress 3.3 or newer to install future versions of PowerPress.
-* Translation support will change in PowerPress 6.0+. Translations will be packaged in a sepraate plugin made available on WordPress.org. This will allow us to release translations separately and more often.
+* Translation support will change in PowerPress 6.0+. Translations will be packaged in a separate plugin made available on WordPress.org. This will allow us to release translations separately and more often.
+* We are looking for beta testers! If you would like to beta test future versions of PowerPress, please [contact us](http://www.blubrry.com/contact.php) with your name and email.
+
+
+= 5.0.7 =
+* Released on 4/3/3014
+* Fixed bug found with some versions of php with a parse error on line 1345 (Thanks joebotha for reporting)
+
+
+= 5.0.6 =
+* Released on 4/3/3014
+* Added logic to deal with the WP Super Cache plugin adding HTML comments at the bottom of feeds. Setting to allow HTML comments with a note have been added to the Feed settings page.
+* Added logic to deal with the W3 Total Cache plugin adding HTML comments at the bottom of feeds. Uses same setting as above.
+* Added logic for Verify feature to ignore PHP Warning messages caused by other plugins.
+* Added minified versions of the player and mejs javascript files. (Thanks idleberg for the suggestion)
+* Added the riff module to getid3 library (thanks Kathy for reporting the riff error)
+* Fixed bug with Blubrry media hosting screen, selecting already published media not returning to the post edit screen (Thanks Paul for making us aware of the bug)
+* Fixed notice message found in powerpressadmin-defaults.php (thanks sbmorrissey for bringing to our attention)
+* Added support for future MultiSite features.
+* Tested compatibility with WordPress 3.9.
+
+
+= 5.0.5 =
+* Released on 3/2/2014
+* Added logic for Blubrry Services to use alternative API servers to address random issues with session errors.
+
+
+= 5.0.4 =
+* Released on 1/30/2014
+* Fixed bug with MEjs player not working for m4a files (Thanks JT for the code patch!)
+* Added logic to PowerPress edit iTunes Subscription URL settings, precaution to make sure the field is saved correctly.
+* Made a few CSS changes for WordPress 3.8+
+* Noted in the HTML5 audio player option that Firefox 26.0+ now supports mp3 playback. We are aware that Firefox 21.0 supported mp3 playback but it was limited to particular Windows versions.
+* Fixed bug where player and links may not appear for custom post type podcasting episodes. (Thanks Seth and Segovia for discovering and helping me debug the problem!)
+* Fixed bug where Blubrry hosting customers may not have been able to publish media for custom post type podcasting.
+* Renamed post type podcasting setting field in database to avoid possible field setting conflicts.
+* Added logic to allow for the premium podcast feeds feature to work with custom post type podcasting.
+* Added the HTML5 download attribute, when then download link is clicked the file will be downloaded, rather than streamed to default media player. Only Chrome, Firefox and Opera web browsers currently support this HTML5 attribute.
+
+
+= 5.0.3 =
+* Released on 12/3/2013
+* Fixed bug with feed title not properly XML encoding ampersand. (Thanks Robin for bringing to our attention!) 
+* Updated supported version number to WordPress 3.7.1
+
 
 = 5.0.2 =
 * Released on 09/23/2013

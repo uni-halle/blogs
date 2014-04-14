@@ -23,39 +23,50 @@ function timezonecalculator_is_field_empty(textfield) {
 }
 
 /*
-checks if value of textfield
+displays or removes an inline error-message
+*/
+
+function timezonecalculator_inline_error(element, message, error) {
+	element.siblings().remove('.error');
+
+	if (error)
+		element.after('<div class="error">'+message+'</div>');
+}
+
+/*
+checks if value of an element
 is an integer
 between minval and maxval
 */
 
-function timezonecalculator_check_integer(object, minval, maxval) {
-
-	var value=object.value;
+function timezonecalculator_check_integer(element, minval, maxval) {
+	var value=element.val();
 
 	if (isNaN(value)) {
-		alert('You did not enter a numeric value!');
+		timezonecalculator_inline_error(element, 'You did not enter a numeric value.', true);
 		return false;
 	}
 
 	var parsed_value=parseInt(value, 10);
 
 	if (isNaN(parsed_value) || parsed_value!=value) {
-		alert('You did not enter a numeric value!');
+		timezonecalculator_inline_error(element, 'You did not enter a numeric value.', true);
 		return false;
 	}
 
 	if (!isNaN(minval) && parsed_value < minval) {
-		alert('Your entry has to be larger or equal than '+minval);
+		timezonecalculator_inline_error(element, 'Your entry has to be larger or equal than '+minval+'.', true);
 		return false;
 	}
 
 	if (!isNaN(maxval) && parsed_value > maxval) {
-		alert('Your entry has to be smaller or equal than '+maxval);
+		timezonecalculator_inline_error(element, 'Your entry has to be smaller or equal than '+maxval+'.', true);
 		return false;
 	}
 
-	return true;
+	timezonecalculator_inline_error(element, '', false);
 
+	return true;
 }
 
 /*
@@ -64,16 +75,15 @@ checkbox and array of fields
 */
 
 function timezonecalculator_toggle_related_fields(element, fields, checked) {
-
-	if (element.checked==checked) {
+	if (element.prop('checked')==checked) {
 		for (var i=0;i<fields.length;i++) {
-			$('timezonecalculator_'+fields[i]).disabled=null;
+			jQuery('#timezonecalculator_'+fields[i]).prop('disabled', false);
 		}
 	}
 
 	else {
 		for (var i=0;i<fields.length;i++) {
-			$('timezonecalculator_'+fields[i]).disabled='disabled';
+			jQuery('#timezonecalculator_'+fields[i]).prop('disabled', true);
 		}
 	}
 }
@@ -83,11 +93,8 @@ selects a certain option-value in a html select
 */
 
 function timezonecalculator_select_value_in_select(select, value) {
-	for (var i=0; i<select.length; i++) {
-		if (select[i].value == value) {
-			select[i].selected = true;
-		}
-	}
+	if(jQuery('#'+select+' option[value="'+value+'"]').length)
+		jQuery('#'+select).val(value);
 }
 
 /*
@@ -97,8 +104,16 @@ get today's date
 function timezonecalculator_get_today_date() {
 	var currentTime = new Date();
 	var year = currentTime.getUTCFullYear();
-	var month = (currentTime.getUTCMonth()+1).toPaddedString(2);
-	var day = (currentTime.getUTCDate()).toPaddedString(2);
+	var month = timezonecalculator_pad((currentTime.getUTCMonth()+1), 2);
+	var day = timezonecalculator_pad(currentTime.getUTCDate(), 2);
 
 	return year+''+month+''+day;
+}
+
+/*
+left-padding of input value
+*/
+
+function timezonecalculator_pad(str, max) {
+	return str.toString().length < max ? timezonecalculator_pad('0' + str, max) : str;
 }

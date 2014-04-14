@@ -15,7 +15,7 @@
                 <?php echo $item->description; ?>
             </td>
             <td class="amount">
-            <?php if ($item->payment_type === 'money'): ?>
+            <?php if ( $item->payment_type === AWPCP_Payment_Transaction::PAYMENT_TYPE_MONEY ): ?>
                 <?php echo awpcp_format_money($item->amount); ?>
             <?php else: ?>
                 <?php echo number_format($item->amount, 0); ?>
@@ -37,7 +37,8 @@
         <?php endif; ?>
 
         <tr>
-            <td class="row-header"><?php _ex('Total Amount ($)', 'transaction items', 'AWPCP'); ?></td>
+            <?php $label = sprintf( '%s (%s)', _x( 'Total Amount', 'transaction items', 'AWPCP' ), awpcp_get_currency_symbol() ); ?>
+            <td class="row-header"><?php echo $label; ?></td>
             <td class="amount"><?php echo awpcp_format_money($totals['money']); ?></td>
         </tr>
     </tfoot>

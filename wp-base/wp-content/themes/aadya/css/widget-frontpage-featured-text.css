@@ -1,0 +1,17 @@
+.widget-lib-font-awesome {
+	font-family: 'FontAwesome', Arial, Helvetica, sans-serif;
+}
+.icon-select {
+	margin: 10px 0;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-select p.label {
+	margin-bottom: 3px; 
+}
+.icon-select input, .icon-select select {
+	padding-top: 5px;
+}
+.icon-select select {
+	font-size: 14px;
+	width: 100%; 
+}

@@ -26,12 +26,8 @@ if(!class_exists('Twoclick_Social_Media_Buttons_Backend_Changelog')) {
 	class Twoclick_Social_Media_Buttons_Backend_Changelog extends Twoclick_Social_Media_Buttons_Backend {
 
 		/**
-		 * Konstruktoren
+		 * Konstruktor
 		 */
-		function Twoclick_Social_Media_Buttons_Backend_Changelog() {
-			Twoclick_Social_Media_Buttons_Backend_Changelog::__construct();
-		} // END function Twoclick_Social_Media_Buttons_Backend_Changelog()
-
 		function __construct() {
 			if($this->_is_twoclick_settings_page()) {
 				$this->_get_changelog();

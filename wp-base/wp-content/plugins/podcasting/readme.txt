@@ -1,12 +1,12 @@
 === Podcasting Plugin by TSG ===
-Contributors: glennbennett, cavemonkey50 
+Contributors: glennbennett 
 Donate link: http://podcastingplugin.com/volunteer/
-Tags: podcast, itunes, podcasting, rss, feed, enclosure, mp3, video
-Requires at least: 2.7
-Tested up to: 3.5.1
-Stable tag: 2.4
+Tags: podcast, itunes, podcasting, rss, feed, enclosure, mp3, video, castfeed, cloudcasting, cloudcasts
+Requires at least: 3.6
+Tested up to: 3.8.1
+Stable tag: 3.0.7
 
-The Podcasting plugin by TSG enhances WordPress' existing podcast support by adding multiple iTunes-compatible feeds, media players, and an easy to use interface.
+The Podcasting plugin by TSG enhances WordPress' existing podcast support by adding multiple iTunes-compatible feeds and on page media players.
 
 == Description ==
 
@@ -25,7 +25,7 @@ For more information, visit the [Podcasting plugin site](http://podcastingplugin
 == Installation ==
 
 You install this plugin just like any other WordPress plugin.
-The basic way is to extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
+The basic way is to use built in plugin installer and then activate the Plugin from the Plugins page.
 
 == Frequently Asked Questions ==
 
@@ -42,8 +42,51 @@ Please visit the [Podcasting plugin page](http://docs.podcastingplugin.com/scree
 5. The video player before an episode is playing.
 
 == Changelog ==
+= 3.0.7 =
+* Fix podcast feed url display
+
+= 3.0.6 =
+* Fix podcast feed url display for formats
+* Cleanup the Player Window.
+
+= 3.0.5 =
+* Fix podcast feed url display
+* Update Media Format handling in settings - Display, but lock default
+
+= 3.0.4.1 =
+* Fix Problem inserting enclosure using Fire Fox
+
+= 3.0.4 =
+* Improve meta box text fields
+
+= 3.0.3 =
+* Improve meta box text fields
+* Insure copy to editor works on newly inserted enclosures
+* Added New Player Window
+
+= 3.0.2 =
+* Fixed native player option - checked with audio.
+
+= 3.0.1 =
+* Fixed in_array parameters - used to prevent duplicate players
+
+= 3.0 =
+* You now have the option to use the WordPress media players. 
+* The legacy Video player is not available in this version.
+* We will attempt to find a suitable replacement if possible.
+* 
+* Fixed some meta box formatting issues
+* Added more clarity abound category podcasting
+*  making it more likely that users will start with a podcast only feed.
+
+= 2.4.2 =
+* Fixed up the admin displays for 3.8
+
+= 2.4.1 =
+* Fixed incompatibility with JetPack - Player not displaying
+
 = 2.4 =
-* Updated media player
+* Updated audio media player
 
 = 2.3.11 =
 * Fixed 302 error when adding podcast media files
@@ -252,5 +295,5 @@ Please visit the [Podcasting plugin page](http://docs.podcastingplugin.com/scree
 
 == Upgrade Notice ==
 
-= 2.3.7 =
-* Clean up titles for iTunes
+= 2.4.1 =
+* Fixed incompatibility with JetPack - Player not displaying

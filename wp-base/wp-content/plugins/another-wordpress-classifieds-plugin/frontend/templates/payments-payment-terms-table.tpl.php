@@ -20,15 +20,7 @@
 
         <tr <?php echo $this->item_attributes($item) ?>>
             <?php foreach ($columns as $column => $name): ?>
-
-                <?php if ($column === 'price' && $item->requires_payment()): ?>
-            <td colspan="2"><?php echo $this->item_column($item, 'price'); ?></td>
-                <?php elseif ($column === 'credits' && $item->requires_payment()): ?>
-            <!-- -->
-                <?php else: ?>
-            <td><?php echo $this->item_column($item, $column); ?></td>
-                <?php endif ?>
-
+            <td data-title="<?php echo esc_attr( $name ); ?>"><?php echo $this->item_column($item, $column); ?></td>
             <?php endforeach ?>
         </tr>
 

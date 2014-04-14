@@ -77,6 +77,6 @@ if ( ( $client_last_modified && $client_etag )
 	status_header( 304 );
 	exit;
 }
-
+ob_end_flush();
 // If we made it this far, just serve the file
 readfile( $file );

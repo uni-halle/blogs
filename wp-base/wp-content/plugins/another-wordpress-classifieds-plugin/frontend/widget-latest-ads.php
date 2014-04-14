@@ -49,7 +49,7 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
     protected function render($items, $instance, $html_class='') {
         global $awpcp_imagesurl;
 
-        $thumbnail_width = absint(trim(get_awpcp_option('displayadthumbwidth'))) . 'px';
+        $thumbnail_width = absint( trim( get_awpcp_option( 'displayadthumbwidth' ) ) );
 
         foreach ($items as $item) {
             $url = url_showad($item->ad_id);
@@ -58,9 +58,10 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
             if (!$instance['show-images']) {
                 $html[] = sprintf('<li class="%s">%s</li>', $html_class, $title);
             } else {
-                $image = awpcp_get_ad_primary_image($item->ad_id);
+                $image = awpcp_media_api()->get_ad_primary_image( $item );
+
                 if (!is_null($image) && get_awpcp_option('imagesallowdisallow')) {
-                    $image_url = awpcp_get_image_url($image);
+                    $image_url = $image->get_url();
                 } else {
                     $image_url = "$awpcp_imagesurl/adhasnoimage.gif";
                 }
@@ -76,7 +77,7 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
                 }
 
                 if ($instance['show-title']) {
-                    $html_title = sprintf('<h3>%s</h3>', $title);
+                    $html_title = sprintf('<div class="awpcp-listing-title">%s</div>', $title);
                 } else {
                     $html_title = '';
                 }
@@ -101,6 +102,7 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
     protected function query($instance) {
         $conditions[] = "ad_title <> ''";
         $conditions[] = "disabled = 0";
+        $conditions[] = "verified = 1";
         $conditions[] = "payment_status != 'Unpaid'";
 
         // Quick fix, to make this module work with Region Control module.
@@ -113,9 +115,6 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
             if (function_exists('awpcp_regions_api')) {
                 $regions = awpcp_regions_api();
                 $conditions[] = $regions->sql_where($region_id);
-            } else {
-                $region = addslashes(get_theawpcpregionname($region_id));
-                $conditions[] = "(ad_city ='$region' OR ad_state='$region' OR ad_country='$region' OR ad_county_village='$region')";
             }
         }
 

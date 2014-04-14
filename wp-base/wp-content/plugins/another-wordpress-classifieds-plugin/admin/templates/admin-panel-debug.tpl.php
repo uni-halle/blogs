@@ -13,16 +13,16 @@
 		<?php $title_settings = _x('AWPCP Settings', 'debug page', 'AWPCP') ?>
 		<?php $title_rules = _x('Rewrite Rules', 'debug page', 'AWPCP') ?>
 
-		<ul>
-			<li><a href="#awpcp-debug-awpcp-pages"><?php echo $title_pages ?></a></li>
-			<li><a href="#awpcp-debug-php-info"><?php echo $title_php_info ?></a></li>
-			<li><a href="#awpcp-debug-awpcp-settings"><?php echo $title_settings ?></a></li>
-			<li><a href="#awpcp-debug-rewrite-rules"><?php echo $title_rules ?></a></li>
-		</ul>
+		<h2 class="nav-tab-wrapper">
+			<a class="nav-tab" href="#awpcp-debug-awpcp-pages"><?php echo $title_pages; ?></a>
+			<a class="nav-tab" href="#awpcp-debug-php-info"><?php echo $title_php_info; ?></a>
+			<a class="nav-tab" href="#awpcp-debug-awpcp-settings"><?php echo $title_settings; ?></a>
+			<a class="nav-tab" href="#awpcp-debug-rewrite-rules"><?php echo $title_rules; ?></a>
+		</h2>
 
 		<div class="metabox-holder">
 
-		<div id="awpcp-debug-awpcp-pages" class="apostboxes">
+		<div id="awpcp-debug-awpcp-pages" class="postbox">
 		    <h3 class="hndle1"><span><?php echo $title_pages ?></span></h3>
 		    <div class="inside">
 				<table>
@@ -48,7 +48,7 @@
 		    </div>
 	    </div>
 
-		<div id="awpcp-debug-awpcp-settings" class="apostboxes">
+		<div id="awpcp-debug-awpcp-settings" class="postbox">
 		    <h3 class="hndle1"><span><?php echo $title_settings ?></span></h3>
 		    <div class="inside">
 		    	<table>
@@ -72,7 +72,7 @@
 		    </div>
 	    </div>
 
-		<div id="awpcp-debug-rewrite-rules" class="apostboxes">
+		<div id="awpcp-debug-rewrite-rules" class="postbox">
 		    <h3 class="hndle1"><span><?php echo $title_rules ?></span></h3>
 		    <div class="inside">
 				<table>
@@ -94,7 +94,7 @@
 		    </div>
 	    </div>
 
-		<div id="awpcp-debug-php-info" class="apostboxes">
+		<div id="awpcp-debug-php-info" class="postbox">
 		    <h3 class="hndle1"><span><?php echo $title_php_info ?></span></h3>
 		    <div class="inside">
 				<table>
@@ -104,15 +104,15 @@
 							<td scope="row"><?php echo phpversion() ?></td>
 						</tr>
 						<tr>
-							<th scope="row"><?php _e('cURL', 'debug page', 'AWPCP') ?></th>
+							<th scope="row"><?php _ex('cURL', 'debug page', 'AWPCP') ?></th>
 							<td><?php echo in_array('curl', get_loaded_extensions()) ? __('Installed', 'AWPCP') : __('Not Installed', 'AWPCP') ?></td>
 						</tr>
 						<tr>
-							<th scope="row"><?php _e("cURL's alternate CA info (cacert.pem)", 'debug page', 'AWPCP') ?></th>
+							<th scope="row"><?php _ex("cURL's alternate CA info (cacert.pem)", 'debug page', 'AWPCP') ?></th>
 							<td><?php echo file_exists(AWPCP_DIR . '/cacert.pem') ? _x('Exists', 'alternate CA info for cURL', 'AWPCP') : _x('Missing', 'alternate CA info for cURL', 'AWPCP'); ?></td>
 						</tr>
 						<tr>
-							<th scope="row"><?php _e('PayPal Connection', 'debug page', 'AWPCP') ?></th>
+							<th scope="row"><?php _ex('PayPal Connection', 'debug page', 'AWPCP') ?></th>
 							<?php $response = awpcp_paypal_verify_received_data(array(), $errors) ?>
 							<?php if ($response === 'INVALID'): ?>
 							<td><?php _ex('Working', 'debug page', 'AWPCP')	?></td>

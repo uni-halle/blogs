@@ -1,17 +1,14 @@
 <?php
-//info: construct path to wp-load.php and get $wp_path
-while(!is_file('wp-load.php')){
-  if(is_dir('../')) chdir('../');
-  else die('Error: Could not construct path to wp-load.php - please check <a href="http://mapsmarker.com/path-error">http://mapsmarker.com/path-error</a> for more details');
-}
-include( 'wp-load.php' );
 header('Content-Type: text/css; charset=UTF-8'); //info: to prevent console warning on chrome
-$lmm_options = get_option( 'leafletmapsmarker_options' );
+
+$defaults_marker_popups_maxwidth = isset($_GET['defaults_marker_popups_maxwidth']) ? intval($_GET['defaults_marker_popups_maxwidth']) : '';
+$defaults_marker_popups_image_css = isset($_GET['defaults_marker_popups_image_css']) ? urldecode($_GET['defaults_marker_popups_image_css']) : '';
+
 echo "
 /* TinyMCE specific rules for Leaflet Maps Marker */
 html .mcecontentbody {
 	font: 12px/1.4 'Helvetica Neue',Arial,Helvetica,sans-serif;
-	max-width:" . intval($lmm_options['defaults_marker_popups_maxwidth'] + 1) . "px;
+	max-width:" . $defaults_marker_popups_maxwidth . "px;
 	word-wrap: break-word;
 }
 .mcecontentbody a {
@@ -21,7 +18,6 @@ html .mcecontentbody {
 	text-decoration:underline;
 }
 .mcecontentbody img {
-	max-width:" . intval($lmm_options['defaults_marker_popups_image_max_width']) . "px !important;
-	height:auto;
+	" . $defaults_marker_popups_image_css . "
 }
 "; ?>

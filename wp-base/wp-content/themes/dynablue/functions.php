@@ -186,7 +186,7 @@ $theme_ads_page_options = 'theme_twitter_id, theme_google_id';
 </form>
 
 </div>
-<?
+<?php
 }
 
 function theme_twitter_show()

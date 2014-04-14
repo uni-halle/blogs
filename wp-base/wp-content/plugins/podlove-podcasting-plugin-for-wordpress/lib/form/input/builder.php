@@ -105,6 +105,18 @@ class Builder {
 		<?php
 	}
 
+	public function password( $object_key, $arguments ) {
+		$this->build_input_values( $object_key, $arguments );
+		$random = rand();
+		?>
+		<div>
+			<input type="password" name="<?php echo $this->field_name; ?>" id="<?php echo $this->field_id; ?>" value="<?php echo $random; ?>" <?php echo $this->html_attributes; ?>>
+			<input type="hidden" name="<?php echo "field_filler_".$this->field_name; ?>" id="<?php echo "field_filler_".$this->field_name; ?>" value="<?php echo $random; ?>" <?php echo $this->html_attributes; ?>>
+			<input type="hidden" name="passwords[]" value="<?php echo esc_attr( $this->object_key ) ?>">
+		</div>
+		<?php
+	}
+
 	public function checkbox( $object_key, $arguments ) {
 		$this->build_input_values( $object_key, $arguments );
 		?>
@@ -118,7 +130,13 @@ class Builder {
 		?>
 		<select name="<?php echo $this->field_name; ?>" id="<?php echo $this->field_id; ?>" <?php echo $this->html_attributes; ?>>
 			<?php if ( ! isset( $this->arguments['please_choose'] ) || $this->arguments['please_choose'] ): ?>
-				<option value=""><?php echo __( 'Please choose ...', 'podlove' ); ?></option>
+				<option value=""><?php
+					if (isset($this->arguments['please_choose_text'])) {
+						echo $this->arguments['please_choose_text'];
+					} else {
+						echo __( 'Please choose ...', 'podlove' );
+					}
+				?></option>
 			<?php endif; ?>
 			<?php foreach ( $this->arguments['options'] as $key => $value ): ?>
 				<?php 
@@ -204,11 +222,11 @@ class Builder {
 		<div>
 			<input type="text" name="<?php echo $this->field_name; ?>" id="<?php echo $this->field_id; ?>" value="<?php echo esc_attr( $this->field_value ); ?>" <?php echo $this->html_attributes; ?>>
 			<br>
-			<img src="<?php echo $this->field_value; ?>" <?php echo $img_html_attributes ?>>
+			<img src="<?php echo $this->field_value; ?>" <?php echo $img_html_attributes ?> />
 		</div>
 		<script type="text/javascript">
 		(function($) {
-			$("#<?php echo $this->field_id ?>").on( 'keyup', function() {
+			$("#<?php echo $this->field_id ?>").on( 'change', function() {
 				url = $(this).val();
 				$(this).parent().find("img").attr("src", url);
 			} );
@@ -216,6 +234,40 @@ class Builder {
 		</script>
 		<?php
 	}
+
+	public function avatar( $object_key, $arguments ) {
+		$this->build_input_values( $object_key, $arguments );
+
+		?>
+		<div>
+			<input type="text" name="<?php echo $this->field_name; ?>" id="<?php echo $this->field_id; ?>" value="<?php echo esc_attr( $this->field_value ); ?>" <?php echo $this->html_attributes; ?>>
+			<br>
+			<img src="<?php echo $this->field_value; ?>" class="podlove-avatar" />
+		</div>
+		<script type="text/javascript">
+		(function($) {
+			function get_gravatar(field) {
+				if( $(field).val().indexOf("@") == -1 ) {
+					url = $(field).val();
+				} else {
+					url = 'http://www.gravatar.com/avatar/' + CryptoJS.MD5( $(field).val() ) + '&amp;s=50';
+
+				}	
+				$(field).parent().find("img").attr("src", url);
+			}
+
+			$("#<?php echo $this->field_id ?>").on( 'change', function() {
+				get_gravatar(this);
+			} );
+
+			$( document ).ready(function() {
+				get_gravatar( $("#<?php echo $this->field_id ?>") );
+			});
+		})(jQuery);
+		</script>
+		<?php
+	}	
+
 
 	public function callback( $object_key, $arguments ) {
 		call_user_func( $arguments['callback'] );

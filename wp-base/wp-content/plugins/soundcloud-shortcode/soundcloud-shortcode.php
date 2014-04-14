@@ -3,7 +3,7 @@
 Plugin Name: SoundCloud Shortcode
 Plugin URI: http://wordpress.org/extend/plugins/soundcloud-shortcode/
 Description: Converts SoundCloud WordPress shortcodes to a SoundCloud widget. Example: [soundcloud]http://soundcloud.com/forss/flickermood[/soundcloud]
-Version: 2.3
+Version: 3.0.2
 Author: SoundCloud Inc.
 Author URI: http://soundcloud.com
 License: GPLv2
@@ -37,7 +37,6 @@ function soundcloud_shortcode($atts, $content = null) {
 
   // Custom shortcode options
   $shortcode_options = array_merge(array('url' => trim($content)), is_array($atts) ? $atts : array());
-
   // Turn shortcode option "param" (param=value&param2=value) into array
   $shortcode_params = array();
   if (isset($shortcode_options['params'])) {
@@ -45,16 +44,21 @@ function soundcloud_shortcode($atts, $content = null) {
   }
   $shortcode_options['params'] = $shortcode_params;
 
+  $player_type = soundcloud_get_option('player_type', 'visual');
+  $isIframe    = $player_type !== 'flash';
+  $isVisual    = !$player_type || $player_type === 'visual';
+
+
   // User preference options
   $plugin_options = array_filter(array(
-    'iframe' => soundcloud_get_option('player_iframe', true),
+    'iframe' => $isIframe,
     'width'  => soundcloud_get_option('player_width'),
-    'height' =>  soundcloud_url_has_tracklist($shortcode_options['url']) ? soundcloud_get_option('player_height_multi') : soundcloud_get_option('player_height'),
+    'height' => soundcloud_url_has_tracklist($shortcode_options['url']) ? soundcloud_get_option('player_height_multi') : soundcloud_get_option('player_height'),
     'params' => array_filter(array(
       'auto_play'     => soundcloud_get_option('auto_play'),
       'show_comments' => soundcloud_get_option('show_comments'),
       'color'         => soundcloud_get_option('color'),
-      'theme_color'   => soundcloud_get_option('theme_color'),
+      'visual'        => ($isVisual ? 'true' : 'false')
     )),
   ));
   // Needs to be an array
@@ -87,11 +91,17 @@ function soundcloud_shortcode($atts, $content = null) {
   if (isset($options['height']) && !preg_match('/^\d+$/', $options['height'])) { unset($options['height']); }
 
   // The "iframe" option must be true to load the iframe widget
-  $iframe = soundcloud_booleanize($options['iframe'])
-    // Default to flash widget for permalink urls (e.g. http://soundcloud.com/{username})
-    // because HTML5 widget doesn’t support those yet
-    ? preg_match('/api.soundcloud.com/i', $options['url'])
-    : false;
+  $iframe = soundcloud_booleanize($options['iframe']);
+
+  // Remove visual parameter from Flash widget or when it's false because that's the default
+  if ($options['params']['visual'] && (!$iframe || !soundcloud_booleanize($options['params']['visual']))) {
+    unset($options['params']['visual']);
+  }
+
+  // Merge in "url" value
+  $options['params'] = array_merge(array(
+    'url' => $options['url']
+  ), $options['params']);
 
   // Return html embed code
   if ($iframe) {
@@ -156,17 +166,15 @@ function soundcloud_oembed_params_callback($match) {
  */
 function soundcloud_iframe_widget($options) {
 
-  // Merge in "url" value
-  $options['params'] = array_merge(array(
-    'url' => $options['url']
-  ), $options['params']);
-
   // Build URL
-  $url = 'http://w.soundcloud.com/player?' . http_build_query($options['params']);
+  $url = 'https://w.soundcloud.com/player?' . http_build_query($options['params']);
   // Set default width if not defined
   $width = isset($options['width']) && $options['width'] !== 0 ? $options['width'] : '100%';
   // Set default height if not defined
-  $height = isset($options['height']) && $options['height'] !== 0 ? $options['height'] : (soundcloud_url_has_tracklist($options['url']) ? '450' : '166');
+
+  $height = isset($options['height']) && $options['height'] !== 0
+              ? $options['height']
+              : (soundcloud_url_has_tracklist($options['url']) || (isset($options['params']['visual']) && soundcloud_booleanize($options['params']['visual'])) ? '450' : '166');
 
   return sprintf('<iframe width="%s" height="%s" scrolling="no" frameborder="no" src="%s"></iframe>', $width, $height, $url);
 }
@@ -178,13 +186,8 @@ function soundcloud_iframe_widget($options) {
  */
 function soundcloud_flash_widget($options) {
 
-  // Merge in "url" value
-  $options['params'] = array_merge(array(
-    'url' => $options['url']
-  ), $options['params']);
-
   // Build URL
-  $url = 'http://player.soundcloud.com/player.swf?' . http_build_query($options['params']);
+  $url = 'https://player.soundcloud.com/player.swf?' . http_build_query($options['params']);
   // Set default width if not defined
   $width = isset($options['width']) && $options['width'] !== 0 ? $options['width'] : '100%';
   // Set default height if not defined
@@ -222,11 +225,10 @@ function register_soundcloud_settings() {
   register_setting('soundcloud-settings', 'soundcloud_player_height');
   register_setting('soundcloud-settings', 'soundcloud_player_height_multi');
   register_setting('soundcloud-settings', 'soundcloud_player_width ');
-  register_setting('soundcloud-settings', 'soundcloud_player_iframe');
+  register_setting('soundcloud-settings', 'soundcloud_player_type');
   register_setting('soundcloud-settings', 'soundcloud_auto_play');
   register_setting('soundcloud-settings', 'soundcloud_show_comments');
   register_setting('soundcloud-settings', 'soundcloud_color');
-  register_setting('soundcloud-settings', 'soundcloud_theme_color');
 }
 
 function soundcloud_shortcode_options() {
@@ -240,16 +242,18 @@ function soundcloud_shortcode_options() {
   <p>You can always override these settings on a per-shortcode basis. Setting the 'params' attribute in a shortcode overrides these defaults individually.</p>
 
   <form method="post" action="options.php">
-    <?php settings_fields( 'soundcloud-settings' ); ?>
+    <?php settings_fields('soundcloud-settings'); ?>
     <table class="form-table">
 
       <tr valign="top">
         <th scope="row">Widget Type</th>
         <td>
-          <input type="radio" id="player_iframe_true"  name="soundcloud_player_iframe" value="true"  <?php if (strtolower(get_option('soundcloud_player_iframe')) === 'true')  echo 'checked'; ?> />
-          <label for="player_iframe_true"  style="margin-right: 1em;">HTML5</label>
-          <input type="radio" id="player_iframe_false" name="soundcloud_player_iframe" value="false" <?php if (strtolower(get_option('soundcloud_player_iframe')) === 'false') echo 'checked'; ?> />
-          <label for="player_iframe_false" style="margin-right: 1em;">Flash</label>
+          <input type="radio" id="player_type_visual" name="soundcloud_player_type" value="visual" <?php if (!get_option('soundcloud_player_type') || strtolower(get_option('soundcloud_player_type')) === 'visual')  echo 'checked'; ?> />
+          <label for="player_type_visual" style="margin-right: 1em;">Visual</label>
+          <input type="radio" id="player_type_html5" name="soundcloud_player_type" value="html5" <?php if (strtolower(get_option('soundcloud_player_type')) === 'html5')  echo 'checked'; ?> />
+          <label for="player_type_html5" style="margin-right: 1em;">HTML5</label>
+          <input type="radio" id="player_type_flash" name="soundcloud_player_type" value="flash" <?php if (strtolower(get_option('soundcloud_player_type')) === 'flash')  echo 'checked'; ?> />
+          <label for="player_type_flash" style="margin-right: 1em;">Flash</label>
         </td>
       </tr>
 
@@ -283,8 +287,7 @@ function soundcloud_shortcode_options() {
           <?php echo http_build_query(array_filter(array(
             'auto_play'     => get_option('soundcloud_auto_play'),
             'show_comments' => get_option('soundcloud_show_comments'),
-            'color'         => get_option('soundcloud_color'),
-            'theme_color'   => get_option('soundcloud_theme_color'),
+            'color'         => get_option('soundcloud_color')
           ))) ?>
         </td>
       </tr>
@@ -295,9 +298,9 @@ function soundcloud_shortcode_options() {
           <input type="radio" id="auto_play_none" name="soundcloud_auto_play" value=""<?php if (get_option('soundcloud_auto_play') == '') echo 'checked'; ?> />
           <label for="auto_play_none"  style="margin-right: 1em;">Default</label>
           <input type="radio" id="auto_play_true"  name="soundcloud_auto_play" value="true"<?php if (get_option('soundcloud_auto_play') == 'true') echo 'checked'; ?> />
-          <label for="auto_play_true"  style="margin-right: 1em;">True</label>
+          <label for="auto_play_true"  style="margin-right: 1em;">Yes</label>
           <input type="radio" id="auto_play_false" name="soundcloud_auto_play" value="false" <?php if (get_option('soundcloud_auto_play') == 'false') echo 'checked'; ?> />
-          <label for="auto_play_false" style="margin-right: 1em;">False</label>
+          <label for="auto_play_false" style="margin-right: 1em;">No</label>
         </td>
       </tr>
 
@@ -307,9 +310,9 @@ function soundcloud_shortcode_options() {
           <input type="radio" id="show_comments_none"  name="soundcloud_show_comments" value=""<?php if (get_option('soundcloud_show_comments') == '') echo 'checked'; ?> />
           <label for="show_comments_none" style="margin-right: 1em;">Default</label>
           <input type="radio" id="show_comments_true"  name="soundcloud_show_comments" value="true"<?php if (get_option('soundcloud_show_comments') == 'true') echo 'checked'; ?> />
-          <label for="show_comments_true"  style="margin-right: 1em;">True</label>
+          <label for="show_comments_true"  style="margin-right: 1em;">Yes</label>
           <input type="radio" id="show_comments_false" name="soundcloud_show_comments" value="false" <?php if (get_option('soundcloud_show_comments') == 'false') echo 'checked'; ?> />
-          <label for="show_comments_false" style="margin-right: 1em;">False</label>
+          <label for="show_comments_false" style="margin-right: 1em;">No</label>
         </td>
       </tr>
 
@@ -318,14 +321,6 @@ function soundcloud_shortcode_options() {
         <td>
           <input type="text" name="soundcloud_color" value="<?php echo get_option('soundcloud_color'); ?>" /> (color hex code e.g. ff6699)<br />
           Defines the color to paint the play button, waveform and selections.
-        </td>
-      </tr>
-
-      <tr valign="top">
-        <th scope="row">Theme Color</th>
-        <td>
-          <input type="text" name="soundcloud_theme_color" value="<?php echo get_option('soundcloud_theme_color'); ?>" /> (color hex code e.g. ff6699)<br />
-          Defines the background color of the player.
         </td>
       </tr>
 

@@ -7,7 +7,7 @@ class C_Display_Type_Mapper extends C_CustomPost_DataMapper_Driver
 {
 	public static $_instances = array();
 
-	function define($context=FALSE)
+	function define($context=FALSE, $not_used=FALSE)
 	{
 		$object_name = 'display_type';
 
@@ -15,7 +15,7 @@ class C_Display_Type_Mapper extends C_CustomPost_DataMapper_Driver
 		// This allows us to adapt the driver itself, if required
 		if (!is_array($context)) $context = array($context);
 		array_push($context, $object_name);
-		parent::define(NULL, $context);
+		parent::define($object_name, $context);
 
 		$this->add_mixin('Mixin_Display_Type_Mapper');
 		$this->implement('I_Display_Type_Mapper');
@@ -75,7 +75,7 @@ class Mixin_Display_Type_Mapper extends Mixin
 		$retval = NULL;
 		foreach ($this->object->find_all($model) as $display_type) {
 			foreach ($find_entity_types as $entity_type) {
-				if (in_array($entity_type, $display_type->entity_types)) {
+				if (isset($display_type->entity_types) && in_array($entity_type, $display_type->entity_types)) {
 					$retval[] = $display_type;
 					break;
 				}
@@ -104,7 +104,7 @@ class Mixin_Display_Type_Mapper extends Mixin
 		if (!isset($entity->settings)) $entity->settings = array();
 		$this->_set_default_value($entity, 'preview_image_relpath', '');
 		$this->_set_default_value($entity, 'default_source', '');
-        $this->_set_default_value($entity, 'view_order', NEXTGEN_DISPLAY_PRIORITY_BASE);
+        $this->_set_default_value($entity, 'view_order', NGG_DISPLAY_PRIORITY_BASE);
         $this->_set_default_value($entity, 'settings', 'use_lightbox_effect', TRUE);
 	}
 }

@@ -3,7 +3,7 @@
 function awpcp_cron_schedules($schedules) {
 	$schedules['monthly'] = array(
 		'interval'=> 2592000,
-		'display'=>  __('Once Every 30 Days')
+		'display'=>  __('Once Every 30 Days', 'AWPCP')
 	);
 	return $schedules;
 }
@@ -15,7 +15,7 @@ function awpcp_schedule_activation() {
 	}
 
 	if (!wp_next_scheduled('doadcleanup_hook')) {
-		wp_schedule_event(time(), 'monthly', 'doadcleanup_hook');
+		wp_schedule_event(time(), 'daily', 'doadcleanup_hook');
 	}
 
 	if (!wp_next_scheduled('awpcp_ad_renewal_email_hook')) {
@@ -26,21 +26,28 @@ function awpcp_schedule_activation() {
 		wp_schedule_event(time(), 'daily', 'awpcp-clean-up-payment-transactions');
 	}
 
+    if ( ! wp_next_scheduled( 'awpcp-clean-up-non-verified-ads' ) ) {
+        wp_schedule_event( current_time( 'timestamp' ), 'daily', 'awpcp-clean-up-non-verified-ads' );
+    }
+
 	add_action('doadexpirations_hook', 'doadexpirations');
 	add_action('doadcleanup_hook', 'doadcleanup');
 	add_action('awpcp_ad_renewal_email_hook', 'awpcp_ad_renewal_email');
 	add_action('awpcp-clean-up-payment-transactions', 'awpcp_clean_up_payment_transactions');
+    add_action( 'awpcp-clean-up-payment-transactions', 'awpcp_clean_up_non_verified_ads' );
 
 	// wp_schedule_event(time() + 10, 'hourly', 'doadexpirations_hook');
-	// wp_schedule_event(time() + 10, 'monthly', 'doadcleanup_hook');
+	// wp_schedule_event(time() + 10, 'daily', 'doadcleanup_hook');
 	// wp_schedule_event(time() + 10, 'daily', 'awpcp_ad_renewal_email_hook');
 	// wp_schedule_event(time() + 10, 'daily', 'awpcp-clean-up-payment-transactions');
+    // wp_schedule_event(time() + 10, 'daily', 'awpcp-clean-up-non-verified-ads');
 
-	// debug('System date is: ' . date('d-m-Y H:i:s'),
-	// 	  'Ad Expiration: ' . date('d-m-Y H:i:s', wp_next_scheduled('doadexpirations_hook')),
-	// 	  'Ad Cleanup: ' . date('d-m-Y H:i:s', wp_next_scheduled('doadcleanup_hook')),
-	// 	  'Ad Renewal Email: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp_ad_renewal_email_hook')),
-	// 	  'Payment transactions: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp-clean-up-payment-transactions')));
+    // debug('System date is: ' . date('d-m-Y H:i:s'),
+    //       'Ad Expiration: ' . date('d-m-Y H:i:s', wp_next_scheduled('doadexpirations_hook')),
+    //       'Ad Cleanup: ' . date('d-m-Y H:i:s', wp_next_scheduled('doadcleanup_hook')),
+    //       'Ad Renewal Email: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp_ad_renewal_email_hook')),
+    //       'Payment transactions: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp-clean-up-payment-transactions')),
+    //       'Unverified Ads: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp-clean-up-non-verified-ads')));
 }
 
 
@@ -65,7 +72,7 @@ function doadexpirations() {
     $admin_recipient_email = awpcp_admin_recipient_email_address();
 
 
-    $ads = AWPCP_Ad::find("ad_enddate <= NOW() AND disabled != 1 AND payment_status != 'Unpaid'");
+    $ads = AWPCP_Ad::find("ad_enddate <= NOW() AND disabled != 1 AND payment_status != 'Unpaid' AND verified = 1");
 
     foreach ($ads as $ad) {
         $ad->disable();
@@ -112,10 +119,10 @@ function doadcleanup() {
     // get Unpaid Ads older than a month
     $conditions[] = "(payment_status = 'Unpaid' AND (ad_postdate + INTERVAL 30 DAY) < CURDATE()) ";
 
-    // also, get Ads that were disabled more than a month ago, but only if the
+    // also, get Ads that were disabled more than a week ago, but only if the
     // 'disable instead of delete' flag is not set.
     if (get_awpcp_option('autoexpiredisabledelete') != 1) {
-        $conditions[] = "(disabled=1 AND (disabled_date + INTERVAL 30 DAY) < CURDATE())";
+        $conditions[] = "(disabled=1 AND (disabled_date + INTERVAL 7 DAY) < CURDATE())";
     }
 
     $ads = AWPCP_Ad::find(join(' OR ', $conditions));
@@ -142,7 +149,7 @@ function awpcp_ad_renewal_email() {
 
 	$query = 'ad_enddate <= ADDDATE(NOW(), INTERVAL %d DAY) AND ';
 	$query.= 'disabled != 1 AND renew_email_sent != 1';
-	$ads = AWPCP_Ad::find($wpdb->prepare($query, $threshold));
+	$ads = AWPCP_Ad::find($wpdb->prepare($query, $threshold + 1));
 
 	$subject = get_awpcp_option('renew-ad-email-subject');
 	$subject = sprintf($subject, $threshold);
@@ -150,6 +157,12 @@ function awpcp_ad_renewal_email() {
     $admin_sender_email = awpcp_admin_sender_email_address();
 
 	foreach ($ads as $ad) {
+        // When the user clicks the renew ad link, AWPCP uses
+        // the is_about_to_expire() method to decide if the Ad
+        // can be renewed. We double check here to make
+        // sure users can use the link in the email immediately.
+        if ( ! $ad->is_about_to_expire() ) continue;
+
 		$href = awpcp_get_renew_ad_url($ad->ad_id);
 
 		// awpcp_process_mail doesn't support HTML
@@ -181,7 +194,7 @@ function awpcp_ad_renewal_email() {
  * Remove incomplete payment transactions
  */
 function awpcp_clean_up_payment_transactions() {
-    $threshold = awpcp_time(current_time('timestamp') - 24*60*60, 'mysql');
+    $threshold = awpcp_datetime( 'mysql', current_time( 'timestamp' ) - 24 * 60 * 60 );
 
     $transactions = AWPCP_Payment_Transaction::query(array(
         'status' => array(
@@ -194,4 +207,43 @@ function awpcp_clean_up_payment_transactions() {
     foreach ($transactions as $transaction) {
         $transaction->delete();
     }
+}
+
+
+/**
+ * @since 3.0.2
+ */
+function awpcp_clean_up_non_verified_ads( /* AWPCP_ListingsAPI */ $listings ) {
+    global $wpdb;
+
+    $resend_email_threshold = get_awpcp_option( 'email-verification-first-threshold' );
+    $delete_ads_threshold = get_awpcp_option( 'email-verification-second-threshold' );
+
+    // delete Ads that have been in a non-verified state for more than M days
+
+    $conditions = array(
+        'verified = 0',
+        $wpdb->prepare( 'ad_postdate < ADDDATE( NOW(), INTERVAL -%d DAY )', $delete_ads_threshold )
+    );
+
+    foreach ( AWPCP_Ad::find( join( ' AND ', $conditions ) ) as $ad ) {
+        $ad->delete();
+    }
+
+    // re-send verificaiton email for Ads that have been in a non-verified state for more than N days
+
+    $conditions = array(
+        'verified = 0',
+        $wpdb->prepare( 'ad_postdate < ADDDATE( NOW(), INTERVAL -%d DAY )', $resend_email_threshold )
+    );
+
+    foreach ( AWPCP_Ad::find( join( ' AND ', $conditions ) ) as $ad ) {
+        if ( intval( awpcp_get_ad_meta( $ad->ad_id, 'verification_emails_sent', true ) ) <= 1 ) {
+            $listings->send_verification_email( $ad );
+        }
+    }
+}
+
+function awpcp_clean_up_non_verified_ads_handler() {
+    return awpcp_clean_up_non_verified_ads( awpcp_listings_api() );
 }

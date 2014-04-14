@@ -1,0 +1,93 @@
+//
+// Pager pagination
+// --------------------------------------------------
+
+
+.pager {
+  margin: @baseLineHeight 0;
+  list-style: none;
+  text-align: center;
+  .clearfix();
+}
+.pager li {
+  display: inline;
+  &:before {
+    display: none;
+  }
+}
+.pager li > a,
+.pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #111;
+  border:none;
+}
+.pager li > a:hover,
+.pager li > a:focus {
+  text-decoration: none;
+  background-color: @linkColor;
+}
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+  color: @grayLight;
+  background-color: #fff;
+  cursor: default;
+}
+
+.type-attachment .pager {
+  padding: 0 0 10px 0;
+  &:after {
+    clear: both;
+    content: "";
+    width: 100%;
+    display: block;
+  }
+  li.previous {
+    float: left;
+    width: 50%;
+    text-align: right;
+    padding: 0;
+    &:after {
+      content: "prev";
+      display: inline-block;
+      overflow: hidden;
+      width: 0;
+    }
+    > a {
+      margin: 0 5px;
+      float: none;
+      display: inline-block;
+      min-width: 75px;
+      text-align: center;
+    }
+  }
+  li.next {
+    float: left;
+    width: 50%;
+    text-align: left;
+    padding: 0;
+    &:after {
+      content: "next";
+      display: inline-block;
+      overflow: hidden;
+      width: 0;
+    }
+    > a {
+      margin: 0 5px;
+      float: none;
+      display: inline-block;
+      min-width: 75px;
+      text-align: center;
+    }
+  }
+}

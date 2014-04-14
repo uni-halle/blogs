@@ -31,9 +31,9 @@ class SLB_Content_Handlers extends SLB_Collection_Controller {
 	
 	protected function _hooks() {
 		parent::_hooks();
-		$this->util->add_action('init', $this->m('init_defaults'));
-		
-		add_action('wp_footer', $this->m('client_output'), $this->util->priority('client_footer_output'));
+		$this->util->add_action('init', $this->m('init_defaults'), 5);
+		$this->util->add_action('footer', $this->m('client_output'), 1, 0, false);
+		$this->util->add_filter('footer_script', $this->m('client_output_script'), $this->util->priority('client_footer_output'), 1, false);
 	}
 	
 	/* Collection Management */
@@ -107,20 +107,30 @@ class SLB_Content_Handlers extends SLB_Collection_Controller {
 	/**
 	 * Get matching handler for URI
 	 * @param string $uri URI to find match for
-	 * @return SLB_Content_Handler Matching handler (NULL if no handler matched)
+	 * @return object Handler package (FALSE if no match found)
+	 * Package members
+	 * > handler (Content_Handler) Matching handler instance (Default: NULL)
+	 * > props (array) Properties returned from matching handler (May be empty depending on handler)
 	 */
 	public function match($uri) {
+		$ret = (object) array('handler' => null, 'props' => array());
 		foreach ( $this->get() as $handler ) {
-			if ( $handler->match($uri) ) {
+			$props = $handler->match($uri, $this);
+			if ( !!$props ) {
+				$ret->handler = $handler;
+				//Add handler props
+				if ( is_array($props) ) {
+					$ret->props = $props;
+				}
 				//Save match
 				$hid = $handler->get_id();
 				if ( !isset($this->request_matches[$hid]) ) {
 					$this->request_matches[$hid] = $handler;
 				}
-				return $handler;
+				break;
 			}
 		}
-		return null;
+		return $ret;
 	}
 	
 	/* Cache */
@@ -175,17 +185,22 @@ class SLB_Content_Handlers extends SLB_Collection_Controller {
 	
 	/**
 	 * Initialize default handlers
-	 * @param SLB_Content_Handlers $controller Handlers controller
+	 * @param SLB_Content_Handlers $handlers Handlers controller
 	 */
-	public function init_defaults($controller) {
-		$handlers = array (
+	public function init_defaults($handlers) {
+		$src_base = $this->util->get_file_url('content-handlers', true);
+		$js_path = 'js/';
+		$js_path .= ( SLB_DEV ) ? 'dev' : 'prod';
+		$defaults = array (
 			'image'		=> array (
 				'match'			=> $this->m('match_image'),
-				'client_script'	=> $this->util->get_file_url('content-handlers/image/handler.image.js'),
-			),
+				'scripts'		=> array (
+					array ( 'base', "$src_base/image/$js_path/handler.image.js" ),
+				),
+			)
 		);
-		foreach ( $handlers as $id => $props ) {
-			$controller->add($id, $props);
+		foreach ( $defaults as $id => $props ) {
+			$handlers->add($id, $props);
 		}
 	}
 	
@@ -194,35 +209,73 @@ class SLB_Content_Handlers extends SLB_Collection_Controller {
 	 * @param string $uri URI to match
 	 * @return bool TRUE if URI is image
 	 */
-	public function match_image($uri) {
-		return ( $this->util->has_file_extension($uri, array('jpg', 'jpeg', 'jpe', 'jfif', 'jif', 'gif', 'png')) ) ? true : false;
+	public function match_image($uri, $handlers) {
+		//Sanitize URI
+		$qpos = strpos($uri, '?');
+		$uri_source = ( $qpos !== false ) ? substr($uri, 0, $qpos) : $uri;
+		
+		//Standard
+		$match = ( $this->util->has_file_extension($uri_source, array('jpg', 'jpeg', 'jpe', 'jfif', 'jif', 'gif', 'png')) ) ? true : false;
+		
+		//If match not found, allow third-party matching
+		if ( !$match ) {
+			$match = $this->util->apply_filters('image_match', $match, $uri);
+		}
+		
+		if ( !!$match ) {
+			$ret = ( $uri != $uri_source ) ? array('uri' => $uri_source) : true;
+		} else {
+			$ret = false;
+		}
+		
+		return $ret;
 	}
 	
 	/* Output */
 	
 	/**
-	 * Client output
+	 * Build client output
+	 * Load handler files in client
 	 */
 	public function client_output() {
-		//Stop if not enabled
-		if ( !$this->has_parent() || !$this->get_parent()->is_enabled() ) {
-			return;
-		}
-		$id_fmt = 'add_handler_%s';
-		$out = array();
-		$out[] = '<!-- SLB-HDL -->' . PHP_EOL;
-		$code = array();
-		//Load matched handlers
+		//Get handlers for current request
 		foreach ( $this->request_matches as $handler ) {
-			//Define
+			$handler->enqueue_scripts();
+		}
+	}
+	
+	/**
+	 * Client output script
+	 * @param array $commands Client script commands
+	 * @return array Modified script commands
+	 */
+	public function client_output_script($commands) {
+		$out = array('/* CHDL */');
+		$code = array();
+		
+		foreach ( $this->request_matches as $handler ) {
+			//Attributes
+			$attrs = $handler->get_attributes();
+			//Styles
+			$styles = $handler->get_styles(array('uri_format'=>'full'));
+			if ( !empty($styles) ) {
+				$attrs['styles'] = array_values($styles);
+			}
+			if ( empty($attrs) ) {
+				continue;
+			}
+			//Setup client parameters
 			$params = array(
 				sprintf("'%s'", $handler->get_id()),
-				sprintf("'%s'", $handler->get_client_script('uri')),
+				json_encode($attrs),
 			);
-			$code[] = $this->util->call_client_method('View.add_content_handler',  $params, false);
+			//Extend handler in client
+			$code[] = $this->util->call_client_method('View.extend_content_handler', $params, false);
 		}
-		$out[] = $this->util->build_script_element(implode('', $code), 'add_content_handlers', true, true);
-		$out[] = '<!-- /SLB-HDL -->' . PHP_EOL;
-		echo implode('', $out);
+		if ( !empty($code) ) {
+			$out[] = implode('', $code);
+			$commands[] = implode(PHP_EOL, $out);
+		}
+		return $commands;
 	}
 }

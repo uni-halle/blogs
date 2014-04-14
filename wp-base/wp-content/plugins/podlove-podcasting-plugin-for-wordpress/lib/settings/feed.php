@@ -16,6 +16,10 @@ class Feed {
 			/* $function   */ array( $this, 'page' )
 		);
 		add_action( 'admin_init', array( $this, 'process_form' ) );
+		
+		if( isset( $_GET["page"] ) && $_GET["page"] == "podlove_feeds_settings_handle" && isset( $_GET["update_settings"] ) && $_GET["update_settings"] == "true") {
+		   	add_action('admin_bar_init', array( $this, 'save_global_feed_setting'));
+		}  
 	}
 
 	public static function get_action_link( $feed, $title, $action = 'edit', $class = 'link' ) {
@@ -38,7 +42,11 @@ class Feed {
 		$feed = \Podlove\Model\Feed::find_by_id( $_REQUEST['feed'] );
 		$feed->update_attributes( $_POST['podlove_feed'] );
 		
-		$this->redirect( 'index', $feed->id );
+		if (isset($_POST['submit_and_stay'])) {
+			$this->redirect( 'edit', $feed->id );
+		} else {
+			$this->redirect( 'index', $feed->id );
+		}
 	}
 	
 	/**
@@ -50,7 +58,11 @@ class Feed {
 		$feed = new \Podlove\Model\Feed;
 		$feed->update_attributes( $_POST['podlove_feed'] );
 
-		$this->redirect( 'index' );
+		if (isset($_POST['submit_and_stay'])) {
+			$this->redirect( 'edit', $feed->id );
+		} else {
+			$this->redirect( 'index' );
+		}
 	}
 	
 	/**
@@ -147,6 +159,50 @@ class Feed {
 		$table = new \Podlove\Feed_List_Table();
 		$table->prepare_items();
 		$table->display();
+		?>
+		<form method="post" action="admin.php?page=podlove_feeds_settings_handle&amp;update_settings=true">
+			<?php settings_fields( Podcast::$pagehook ); ?>
+
+			<?php
+			$podcast = \Podlove\Model\Podcast::get_instance();
+
+			$form_attributes = array(
+				'context'    => 'podlove_podcast',
+				'form'       => false
+			);
+
+			\Podlove\Form\build_for( $podcast, $form_attributes, function ( $form ) {
+				$wrapper = new \Podlove\Form\Input\TableWrapper( $form );
+				$podcast = $form->object;
+
+				$wrapper->subheader( __( 'Feed Global Defaults', 'podlove' ) );
+
+				$limit_options = array(
+					'-1' => __( "No limit. Include all items.", 'podlove' ),
+					'0'  => __( 'Use WordPress Default', 'podlove' ) . ' (' . get_option( 'posts_per_rss' ) . ')'
+				);
+				for( $i = 1; $i*5 <= 100; $i++ ) {
+					$limit_options[ $i*5 ] = $i*5;
+				}
+
+				$wrapper->select( 'limit_items', array(
+					'label'       => __( 'Limit Items', 'podlove' ),
+					'description' => __( 'If you have a lot of episodes, you might want to restrict the feed size. Additional limits can be set for the feeds individually.', 'podlove' ),
+					'options' => $limit_options,
+					'please_choose' => false,
+					'default' => '-1'
+				) );
+			});
+			?>
+		</form>
+		<?php
+	}
+
+	public function save_global_feed_setting() {
+  		$podcast_settings = get_option('podlove_podcast');
+  		$podcast_settings['limit_items'] = (int) $_REQUEST['podlove_podcast']['limit_items'];
+  		update_option('podlove_podcast', $podcast_settings);
+		header('Location: '.get_site_url().'/wp-admin/admin.php?page=podlove_feeds_settings_handle');
 	}
 	
 	private function form_template( $feed, $action, $button_text = NULL ) {
@@ -156,13 +212,23 @@ class Feed {
 			'hidden'  => array(
 				'feed' => $feed->id,
 				'action' => $action
-			)
+			),
+			'submit_button' => false, // for custom control in form_end
+			'form_end' => function() {
+				echo "<p>";
+				submit_button( __('Save Changes'), 'primary', 'submit', false );
+				echo " ";
+				submit_button( __('Save Changes and Continue Editing', 'podlove'), 'secondary', 'submit_and_stay', false );
+				echo "</p>";
+			}
 		);
 
 		\Podlove\Form\build_for( $feed, $form_args, function ( $form ) {
 			$wrapper = new \Podlove\Form\Input\TableWrapper( $form );
 
 			$feed = $form->object;
+
+			$podcast = \Podlove\Model\Podcast::get_instance();
 
 			$episode_assets = \Podlove\Model\EpisodeAsset::all();
 			$assets = array();
@@ -179,14 +245,20 @@ class Feed {
 			) );
 
 			$wrapper->string( 'name', array(
-				'label'       => __( 'Feed Title', 'podlove' ),
+				'label'       => __( 'Feed Name', 'podlove' ),
 				'description' => __( 'Some podcast clients may display this title to describe the feed content.', 'podlove' ),
 				'html' => array( 'class' => 'regular-text required' )
+			) );
+			
+			$wrapper->checkbox( 'append_name_to_podcast_title', array(
+				'label'       => __( 'Append Feed Name to Podcast title', 'podlove' ),
+				'description' => sprintf( __( 'Structure of the feed title. Preview: %s', 'podlove' ), $podcast->title . '<span id="feed_title_preview_append"></span>' ),
+				'default'     => false
 			) );
 
 			$wrapper->string( 'slug', array(
 				'label'       => __( 'Slug', 'podlove' ),
-				'description' => ( $feed ) ? sprintf( __( 'Feed identifier. URL Preview: %s', 'podlove' ), '<span id="feed_subscribe_url_preview">' . $feed->get_subscribe_url() .  '</span>' ) : '',
+				'description' => ( $feed ) ? sprintf( __( 'Feed identifier. URL Preview: %s', 'podlove' ), '<span id="feed_subscribe_url_preview">' . $feed->get_subscribe_url() . '</span>' ) : '',
 				'html'        => array( 'class' => 'regular-text required' )
 			) );
 
@@ -203,6 +275,8 @@ class Feed {
 				'description' => __( 'Allow this feed to appear in podcast directories.', 'podlove' ),
 				'default'     => true
 			) );
+
+			do_action( 'podlove_feeds_directories', $wrapper );
 			
 			$wrapper->string( 'itunes_feed_id', array(
 				'label'       => __( 'iTunes Feed ID', 'podlove' ),
@@ -230,7 +304,14 @@ class Feed {
 				'html' => array( 'class' => 'regular-text' )
 			) );
 
+			$podcast_settings = get_option('podlove_podcast');
+			if( $podcast_settings['limit_items'] < 0 ) {
+				$limit_default = 'No limit';
+			} else {
+				$limit_default = $podcast_settings['limit_items'];
+			}
 			$limit_options = array(
+				'-2' => __( "Use Podlove default (".$limit_default.")", 'podlove' ),
 				'-1' => __( "No limit. Include all items.", 'podlove' ),
 				'0'  => __( 'Use WordPress Default', 'podlove' ) . ' (' . get_option( 'posts_per_rss' ) . ')'
 			);
@@ -243,7 +324,7 @@ class Feed {
 				'description' => __( 'If you have a lot of episodes, you might want to restrict the feed size.', 'podlove' ),
 				'options' => $limit_options,
 				'please_choose' => false,
-				'default' => '-1'
+				'default' => '-2'
 			) );
 			
 			$wrapper->checkbox( 'embed_content_encoded', array(
@@ -251,6 +332,38 @@ class Feed {
 				'description' => __( 'Warning: Potentially creates huge feeds.', 'podlove' ),
 				'default'     => false
 			) );
+
+			$wrapper->subheader( __( 'Protection', 'podlove' ) );
+
+			$wrapper->checkbox( 'protected', array(
+				'label'       => __( 'Protect feed ', 'podlove' ),
+				'description' => __( 'The feed will be protected by HTTP Basic Authentication.', 'podlove' ),
+				'default'     => false
+			) );
+
+			$wrapper->select( 'protection_type', array(
+				'label'       => __( 'Method', 'podlove' ),
+				'description' => __( '', 'podlove' ),
+				'options' => array(
+					'0'   => 'Custom Login',
+					'1' => 'WordPress User database'
+				),
+				'default' => -1,
+				'please_choose' => true
+			) );
+
+			$wrapper->string( 'protection_user', array(
+				'label'       => __( 'Username', 'podlove' ),
+				'description' => '',
+				'html'        => array( 'class' => 'regular-text required' )
+			) );
+
+			$wrapper->password( 'protection_password', array(
+				'label'       => __( 'Password', 'podlove' ),
+				'description' => '',
+				'html'        => array( 'class' => 'regular-text required' )
+			) );
+
 		} );
 	}
 	

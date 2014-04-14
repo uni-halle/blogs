@@ -6,8 +6,8 @@
 
     <?php echo $this->render_credit_plans_table( $transaction ); ?>
 <?php else: ?>
-    <?php $item = reset( $table->get_items() ); ?>
-    <?php $value = $table->item_id( $item, 'money' ); ?>
+    <?php $items = $table->get_items(); ?>
+    <?php $value = $table->item_id( $items[0], 'money' ); ?>
     <?php $attrs = array( 'type' => 'hidden', 'name' => 'payment_term', 'value' => $value ); ?>
     <?php echo sprintf( '<input %s>', awpcp_render_attributes( $attrs ) ); ?>
 <?php endif; ?>

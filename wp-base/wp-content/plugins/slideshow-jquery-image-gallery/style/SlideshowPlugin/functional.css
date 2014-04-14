@@ -65,7 +65,10 @@
   position: absolute;
   top: 0;
 }
-.slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description {
+.slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image img {
+  float: none;
+}
+.slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image .slideshow_description_box {
   display: none;
   position: absolute;
   width: 100%;
@@ -124,6 +127,17 @@
 }
 .slideshow_container .slideshow_pagination .slideshow_pagination_center ul li:hover {
   cursor: pointer;
+}
+.slideshow_container .assistive-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+.slideshow_container .hide-text {
+  font: 0/0 a;
+  color: rgba(0, 0, 0, 0);
+  text-shadow: none;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
 }
 .slideshow_container .slideshow_manufacturer {
   position: absolute !important;

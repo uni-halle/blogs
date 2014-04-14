@@ -30,6 +30,12 @@
 			'track_mode' => 0,
 			'track_post' => false,
 			'track_proxy' => false,
+			'track_admin' => false,
+			'track_feed' => false,
+			'track_feed_goal' => '',
+			'track_feed_revenue' => '',
+			'track_feed_campaign' => 'feed',
+			'track_feed_addcampaign' => 'false',
 			'track_cdnurlssl' => '',
 			'track_noscript' => false,
 			'track_nojavascript' => false,
@@ -38,7 +44,8 @@
 			'disable_cookies' => false,
 			'toolbar' => false,
 			'shortcodes' => false,
-			'cache' => true
+			'cache' => true,
+			'perpost_stats' => false
 		),
 		$settings = array(
 			'name' => '',

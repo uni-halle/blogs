@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+ */
+?>
+<div class="feature-content-container" id="post_access_content">
+    <table id="post_list">
+        <thead>
+            <tr>
+                <th>Post ID</th>
+                <th>Post Status</th>
+                <th>Post Link</th>
+                <th width="60%"><?php echo __('Name', 'aam'); ?></th>
+                <th width="20%"><?php echo __('Status', 'aam'); ?></th>
+                <th><?php echo __('Control', 'aam'); ?></th>
+                <th>Restriction Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <div id="delete_post_dialog" class="aam-dialog" title="<?php echo __('Delete Post', 'aam'); ?>">
+        <p class="dialog-content"></p>
+    </div>
+
+    <div id="filter_post_dialog" class="aam-dialog" title="<?php echo __('Filter Posts by Type', 'aam'); ?>">
+        <div class="tree-holder postbox">
+            <div id="sidetreecontrol">
+                <a href="#"><?php echo __('Collapse All', 'aam'); ?></a>&nbsp;|&nbsp;
+                <a href="#"><?php echo __('Expand All', 'aam'); ?></a>&nbsp;|&nbsp;
+                <span><?php echo __('Refresh', 'aam'); ?></span></div>
+            <br class="clear" />
+            <ul id="tree" class="filetree"></ul>
+        </div>
+        <div class="aam-main-loader"></div>
+    </div>
+
+    <div id="access_dialog" class="aam-dialog">
+        <div class="aam-lock-message">
+            <span><?php echo __('You reached the limit. Get <a href="' . admin_url('admin.php?page=aam-ext') . '" target="_blank">AAM Plus Package</a> to unlock the feature.'); ?></span>
+        </div>
+        <div class="post-access-inherited"></div>
+        <?php if ($this->getSubject()->getUID() != 'visitor') { ?>
+            <div class="post-access-area">
+                <input type="radio" id="post_area_frontend" value="frontend" checked="checked" name="access_area" /><label for="post_area_frontend"><?php echo __('Frontend', 'aam'); ?></label>
+                <input type="radio" id="post_area_backend" value="backend" name="access_area" /><label for="post_area_backend"><?php echo __('Backend', 'aam'); ?></label>
+            </div>
+        <?php } ?>
+        <div id="access_control_area"></div>
+        <div class="aam-main-loader"></div>
+    </div>
+</div>

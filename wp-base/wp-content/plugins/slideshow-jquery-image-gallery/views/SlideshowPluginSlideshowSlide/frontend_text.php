@@ -2,14 +2,26 @@
 
 $title = $description = $textColor = $color = $url = $urlTarget = $noFollow = '';
 
+$titleElementTag = $descriptionElementTag = SlideshowPluginSlideInserter::getElementTag();
+
 if (isset($properties['title']))
 {
 	$title = trim(SlideshowPluginSecurity::htmlspecialchars_allow_exceptions($properties['title']));
 }
 
+if (isset($properties['titleElementTagID']))
+{
+	$titleElementTag = SlideshowPluginSlideInserter::getElementTag($properties['titleElementTagID']);
+}
+
 if (isset($properties['description']))
 {
 	$description = trim(SlideshowPluginSecurity::htmlspecialchars_allow_exceptions($properties['description']));
+}
+
+if (isset($properties['descriptionElementTagID']))
+{
+	$descriptionElementTag = SlideshowPluginSlideInserter::getElementTag($properties['descriptionElementTagID']);
 }
 
 if (isset($properties['textColor']))
@@ -48,28 +60,40 @@ if (isset($properties['urlTarget']))
 
 if (isset($properties['noFollow']))
 {
-    $noFollow = ' rel="nofollow" ';
+	$noFollow = 'rel="nofollow"';
 }
 
-$anchorTagAttributes = (!empty($url) ? 'href="' . $url . '"' : '') . ' ' . (!empty($urlTarget) ? 'target="' . $urlTarget . '"' : '') . $noFollow;
+$anchorTag = $endAnchorTag = $anchorTagAttributes = '';
+
+if (strlen($url) > 0)
+{
+	$anchorTagAttributes =
+		'href="' . $url . '" ' .
+		(strlen($urlTarget) > 0 ? 'target="' . $urlTarget . '" ' : '') .
+		(strlen($textColor) > 0 ? 'style="color: ' . $textColor . '" ' : '') .
+		$noFollow;
+
+	$anchorTag    = '<a ' . $anchorTagAttributes . '>';
+	$endAnchorTag = '</a>';
+}
 
 ?>
 
-<div class="slideshow_slide slideshow_slide_text" style="<?php echo !empty($color) ? 'background-color: ' . $color . ';' : '' ?>">
-	<?php if(!empty($title)): ?>
-	<h2>
-		<a <?php echo $anchorTagAttributes; ?> style="<?php echo !empty($textColor) ? 'color: ' . $textColor . ';' : ''; ?>">
+<div class="slideshow_slide slideshow_slide_text" style="<?php echo strlen($color) > 0 ? 'background-color: ' . $color . ';' : '' ?>">
+	<?php if(strlen($title) > 0): ?>
+	<<?php echo $titleElementTag; ?> class="slideshow_title" style="<?php echo strlen($textColor) > 0 ? 'color: ' . $textColor . ';' : ''; ?>">
+		<?php echo $anchorTag; ?>
 			<?php echo $title; ?>
-		</a>
-	</h2>
+		<?php echo $endAnchorTag; ?>
+	</<?php echo $titleElementTag; ?>>
 	<?php endif; ?>
 
-	<?php if(!empty($description)): ?>
-	<p>
-		<a <?php echo $anchorTagAttributes; ?> style="<?php echo !empty($textColor) ? 'color: ' . $textColor . ';' : ''; ?>">
+	<?php if(strlen($description) > 0): ?>
+	<<?php echo $descriptionElementTag; ?> class="slideshow_description" style="<?php echo strlen($textColor) > 0 ? 'color: ' . $textColor . ';' : ''; ?>">
+		<?php echo $anchorTag; ?>
 			<?php echo $description; ?>
-		</a>
-	</p>
+		<?php echo $endAnchorTag; ?>
+	</<?php echo $descriptionElementTag; ?>>
 	<?php endif; ?>
 
 	<a <?php echo $anchorTagAttributes ?> class="slideshow_background_anchor"></a>

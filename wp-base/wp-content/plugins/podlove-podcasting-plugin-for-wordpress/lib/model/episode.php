@@ -6,7 +6,30 @@ use Podlove\ChaptersManager;
 /**
  * We could use simple post_meta instead of a table here
  */
-class Episode extends Base {
+class Episode extends Base implements Licensable {
+
+	public static function allByTime() {
+		global $wpdb;
+
+		$sql = 'SELECT * FROM `' . self::table_name() . '` e JOIN `' . $wpdb->prefix . 'posts` p ON e.post_id = p.ID ORDER BY p.post_date DESC';
+		$rows = $wpdb->get_results($sql);
+
+		if ( ! $rows ) {
+			return array();
+		}
+
+		$episodes = array();
+		foreach ( $rows as $row ) {
+			$episode = new self();
+			$episode->flag_as_not_new();
+			foreach (self::property_names() as $property) {
+				$episode->$property = $row->$property;
+			}
+			$episodes[] = $episode;
+		}
+		
+		return $episodes;
+	}
 
 	/**
 	 * Generate a human readable title.
@@ -28,16 +51,24 @@ class Episode extends Base {
 	}
 
 	public function description() {
+	
+	  if ( $this->summary ) {
+	    $description = $this->summary;
+	  } elseif ( $this->subtitle ) {
+	    $description = $this->subtitle;
+	  } else {
+	    $description = get_the_title();
+	  }
+	
+	  return htmlspecialchars( trim( $description ) );
+	}
 
-		if ( $this->summary ) {
-			$description = $this->summary;
-		} elseif ( $this->subtitle ) {
-			$description = $this->subtitle;
-		} else {
-			$description = get_the_title();
-		}
+	public function explicitText() {
 
-		return htmlspecialchars( trim( $description ) );
+		if ($this->explicit == 2)
+			return 'clean';
+
+		return $this->explicit ? 'yes' : 'no';
 	}
 
 	public function media_files() {
@@ -71,6 +102,17 @@ class Episode extends Base {
 		return $media_files;
 	}
 
+	/**
+	 * Get episode related to the current global post object.
+	 */
+	public static function get_current() {
+		if (is_single()) {
+			return self::find_one_by_post_id(get_the_ID());
+		} else {
+			return null;
+		}
+	}
+
 	public static function find_or_create_by_post_id( $post_id ) {
 		$episode = Episode::find_one_by_property( 'post_id', $post_id );
 
@@ -102,9 +144,9 @@ class Episode extends Base {
 		$podcast = Podcast::get_instance();
 		$asset_assignment = AssetAssignment::get_instance();
 
-		if ( $asset_assignment->image == 0 )
+		if ( ! $asset_assignment->image )
 			return;
-
+		
 		if ( $asset_assignment->image == 'manual' )
 			return $this->cover_art;
 
@@ -184,7 +226,7 @@ class Episode extends Base {
 			return false;
 
 		// skip deleted podcasts
-		if ( ! in_array( $post->post_status, array( 'draft', 'publish', 'pending', 'future' ) ) )
+		if ( ! in_array( $post->post_status, array( 'private', 'draft', 'publish', 'pending', 'future' ) ) )
 			return false;
 
 		// skip versions
@@ -194,6 +236,23 @@ class Episode extends Base {
 		return true;
 	}
 
+	public function get_license()
+	{
+		$license = new License('episode', array(
+			'license_name'         => $this->license_name,
+			'license_url'          => $this->license_url
+		));
+
+		return $license;
+	}
+
+	public function get_license_picture_url() {
+		return $this->get_license()->getPictureUrl();
+	}
+
+	public function get_license_html() {
+		return $this->get_license()->getHtml();
+	}	
 }
 
 Episode::property( 'id', 'INT NOT NULL AUTO_INCREMENT PRIMARY KEY' );
@@ -205,5 +264,7 @@ Episode::property( 'slug', 'VARCHAR(255)' );
 Episode::property( 'duration', 'VARCHAR(255)' );
 Episode::property( 'cover_art', 'VARCHAR(255)' );
 Episode::property( 'chapters', 'TEXT' );
-Episode::property( 'record_date', 'DATETIME' );
-Episode::property( 'publication_date', 'DATETIME' );
+Episode::property( 'recording_date', 'DATETIME' );
+Episode::property( 'explicit', 'TINYINT' );
+Episode::property( 'license_name', 'TEXT' );
+Episode::property( 'license_url', 'TEXT' );

@@ -2,20 +2,21 @@
 Contributors: jbenders
 Tags: widgets, photos, instagram
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 0.4.8
+Tested up to: 3.8.1
+Stable tag: 1.0.6
 
-Simple sidebar widget that shows Your latest instagr.am pictures and picture embedder.
+A comprehensive sidebar widget that can show your latest photos, tagged
+photos, your favourite photos, your feed, other users photos. Can be shown
+in three ways with a Grid, Grid with paging and slideshow options.
 
 == Description ==
 
-Simple sidebar widget that shows Your latest instagr.am pictures and picture embedder. Requires PHP curl extension.
-To embed picture use [instagram] shortcode.
-Example:
-[instagram url='http://instagr.am/p/BSJRn/' size='large' addlink='no']
+A comprehensive sidebar widget that can show your latest photos, tagged
+photos, your favourite photos, your feed, other users photos. Can be shown
+in three ways with a Grid, Grid with paging and slideshow options.
 
-Sizes are: large (612x612px), middle (306x306px) and small (150x150px).
-addlink='yes' encloses img element with a element.
+To get started add the Instagram Widget to your sidebar and click the setup
+button.
 
 == Screenshots ==
 
@@ -29,23 +30,40 @@ Installation as usual.
 1. Unzip and Upload all files to a sub directory in "/wp-content/plugins/".
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Add 'Instagram' widget to Your sidebar via 'Appearance' > 'Widgets' menu in WordPress.
-4. Follow the instructions for creating your own client for instagram
-5. Enter the newly created details into the widget
-6. Change title of widget to what ever You like.
+4. Click setup and follow the instructions
+5. Enjoy!
 
 == Changelog ==
 
-= 0.4.8 = 
-* fixed possible function collision by prefixing it
+= 1.0.6 = 
+* Fix for poor error responses returned from widget service.
 
-= 0.4.7 = 
-* added local caching to prevent the instagram api from denying requests
+= 1.0.5 =
+* Fix for bad plugin instantiation from widgets.php
 
-= 0.4.6 = 
-* removed some nasty code
+= 1.0.4 =
+* Addition of missing before and after widget variables
 
-= 0.4.5 = 
-* fixed small bug
+= 1.0.3 =
+* Message alerting users to why the plugin uses the INK361 Instagram service
+* Removal of paid version (refund given to every user who purchased)
+* Free version now contains all of the features in the paid version
+* Removal of incorrect license on lightbox.js
+
+= 1.0.2 =
+* Fixes for IE
+
+= 1.0.1 =
+* Bugfix for caching
+
+= 1.0.0 =
+* Major improvements in installation and setup
+* New display modes
+* New instagram results to choose from
+* New pro version
+
+= 0.4.5 =
+* bugfix for syntax error
 
 = 0.4.4 =
 * bugfix for wordpress error types

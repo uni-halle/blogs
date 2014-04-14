@@ -2,10 +2,10 @@
  * Theme Name: Origin
  * Theme URI: http://alienwp.com/themes/origin/
  * Description: Origin is a minimalistic theme with responsive layout. The theme supports custom header and background, plus a number of extra settings: link color picker, typography options, and a nice selection of Google fonts - built into the new WordPress theme customizer.
- * Version: 0.5.6
+ * Version: 0.5.8
  * Author: AlienWP
  * Author URI: http://alienwp.com
- * Tags: flexible-width, theme-options, threaded-comments, microformats, translation-ready, rtl-language-support, one-column, two-columns, right-sidebar, sticky-post, custom-background, featured-images
+ * Tags: responsive-layout, theme-options, threaded-comments, microformats, translation-ready, rtl-language-support, one-column, two-columns, right-sidebar, sticky-post, custom-background, featured-images
  * License: GNU General Public License v2.0
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
@@ -570,7 +570,7 @@ a:hover img { opacity: 0.85; }
 	min-height: 30px;
 }
 #menu-primary li a {
-	line-height: 1em;
+	line-height: 1.4em;
 	margin-left: 3.5em;
 	display: block;
 	text-transform: uppercase;
@@ -613,6 +613,7 @@ a:hover img { opacity: 0.85; }
 	position: absolute;
 	top: 25px;
 	left: 19px;
+	max-width: 17em;
 	border: 1px solid #e3e3e3;
 	background: #fff;
 	-webkit-box-shadow: 0 0 7px rgba(0,0,0,.09);

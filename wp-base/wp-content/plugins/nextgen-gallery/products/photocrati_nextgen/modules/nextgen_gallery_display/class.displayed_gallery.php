@@ -17,7 +17,7 @@ class C_Displayed_Gallery extends C_DataMapper_Model
 {
 	var $_mapper_interface = 'I_Displayed_Gallery_Mapper';
 
-	function define($mapper=FALSE, $properties=FALSE, $context=FALSE)
+	function define($properties=array(), $mapper=FALSE, $context=FALSE)
 	{
 		parent::define($mapper, $properties, $context);
 		$this->add_mixin('Mixin_Displayed_Gallery_Validation');
@@ -33,10 +33,12 @@ class C_Displayed_Gallery extends C_DataMapper_Model
 	 * @param array|stdClass|C_Displayed_Gallery $properties
 	 * @param FALSE|string|array $context
 	 */
-	function initialize($mapper=FALSE, $properties=array())
+	function initialize($properties=array(), $mapper=FALSE, $context=FALSE)
 	{
 		if (!$mapper) $mapper = $this->get_registry()->get_utility($this->_mapper_interface);
 		parent::initialize($mapper, $properties);
+
+		$this->select_random_variation();
 	}
 }
 
@@ -75,7 +77,8 @@ class Mixin_Displayed_Gallery_Validation extends Mixin
 			}
 
 			// If no maximum_entity_count has been given, then set a maximum
-			if (!isset($this->object->maximum_entity_count)) {
+			if (!isset($this->object->maximum_entity_count)) 
+			{
 				$this->object->maximum_entity_count = C_Photocrati_Settings_Manager::get('maximum_entity_count', 500);
 			}
 
@@ -90,6 +93,28 @@ class Mixin_Displayed_Gallery_Validation extends Mixin
 
 class Mixin_Displayed_Gallery_Queries extends Mixin
 {
+	function select_random_variation()
+	{
+		$retval = FALSE;
+
+		$source_obj = $this->object->get_source();
+		if ($source_obj && $source_obj->has_variations) {
+			$max = 0;
+			if (!defined('NGG_MAX_VARIATIONS')) {
+				$settings = C_Photocrati_Global_Settings_Manager::get_instance();
+				$max = $settings->get('max_variations', 5);
+				define('NGG_MAX_VARIATIONS', $max);
+			}
+			else $max = NGG_MAX_VARIATIONS;
+
+			$this->object->variation = floor(rand(1, $max));
+
+			$retval = $this->object->variation;
+		}
+
+		return $retval;
+	}
+
 	function get_entities($limit=FALSE, $offset=FALSE, $id_only=FALSE, $returns='included')
 	{
 		$retval = array();
@@ -97,8 +122,18 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 		// If a maximum entity count has been set for the displayed gallery,
 		// then ensure that's honoured
 		if (isset($this->object->maximum_entity_count)) {
-			if (!$limit OR (is_numeric($limit) && $limit > $this->object->maximum_entity_count)) {
-				$limit = intval($this->object->maximum_entity_count);
+			$max = intval($this->object->maximum_entity_count);
+			if (!$limit OR (is_numeric($limit) && $limit > $max)) {
+				$limit = $max;
+			}
+		}
+		
+		// Note: always use global setting, otherwise displayed galleries are going to "remember" how much the maximum was when they were created instead of how much the maximum is now -- this property is not even exposed in the UI so it'd be fairly difficult for the user to realize what's going on
+		$max = intval(C_Photocrati_Settings_Manager::get('maximum_entity_count', 500));
+		if ($max)
+		{
+			if (!$limit OR (is_numeric($limit) && $limit > $max)) {
+				$limit = $max;
 			}
 		}
 
@@ -134,7 +169,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 		// Find a way to minimalize or segment
 		$mapper	= $this->get_registry()->get_utility('I_Image_Mapper');
 		$image_key		= $mapper->get_primary_key_column();
-		$select			= $id_only ? $image_key : '*';
+		$select			= $id_only ? $image_key : $mapper->get_table_name().'.*';
 		$sort_direction	= $this->object->order_direction;
 		$sort_by		= $this->object->order_by;
 
@@ -168,13 +203,14 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 					$select,
 					$image_key,
 					$sortorder_set,
-					'sortorder',
+					'new_sortorder',
 					TRUE
 				);
 				// A user might want to sort the results by the order of
 				// images that they specified to be included. For that,
 				// we need some trickery by reversing the order direction
 				$sort_direction = $this->object->order_direction == 'ASC' ? 'DESC' : 'ASC';
+				$sort_by = 'new_sortorder';
 			}
 
 			// Add exclude column
@@ -204,10 +240,11 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 					$select,
 					$image_key,
 					$this->object->sortorder,
-					'sortorder',
+					'new_sortorder',
 					TRUE
 				);
 				$sort_direction = $this->object->order_direction == 'ASC' ? 'DESC' : 'ASC';
+				$sort_by = 'new_sortorder';
 			}
 			$mapper->select($select);
 
@@ -239,10 +276,11 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 					$select,
 					$image_key,
 					$this->object->sortorder,
-					'sortorder',
+					'new_sortorder',
 					TRUE
 				);
 				$sort_direction = $this->object->order_direction == 'ASC' ? 'DESC' : 'ASC';
+				$sort_by = 'new_sortorder';
 			}
 
 			// Mark each result as excluded
@@ -317,7 +355,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 		}
 
 		// Apply a sorting order
-		if ($sort_by) $mapper->order_by($sort_by, $sort_direction);
+		if ($sort_by)  $mapper->order_by($sort_by, $sort_direction);
 
 		// Apply a limit
 		if ($limit) {
@@ -325,7 +363,9 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 			else		 $mapper->limit($limit);
 		}
 
-		return $mapper->run_query();
+		$results = $mapper->run_query();
+
+		return $results;
 	}
 
 	/**
@@ -347,7 +387,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 		$album_key		= $album_mapper->get_primary_key_column();
 		$gallery_mapper	= $this->get_registry()->get_utility('I_Gallery_Mapper');
 		$gallery_key	= $gallery_mapper->get_primary_key_column();
-		$select			= $id_only ? $album_key.", sortorder" : '*';
+		$select			= $id_only ? $album_key.", sortorder" : $album_mapper->get_table_name().'.*';
 		$retval			= array();
 
 		// If no exclusions are specified, are entity_ids are specified,
@@ -402,8 +442,8 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 				// always take precedence
 				$included_ids = $this->object->entity_ids;
 				foreach ($this->object->exclusions as $excluded_id) {
-					if (($index = array_search($excluded_id, $included_entity_ids)) !== FALSE) {
-						unset($included_entity_ids[$index]);
+					if (($index = array_search($excluded_id, $included_ids)) !== FALSE) {
+						unset($included_ids[$index]);
 					}
 				}
 				$excluded_ids = array_diff($entity_ids, $included_ids);
@@ -481,8 +521,8 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 		$gallery_mapper	= $this->get_registry()->get_utility('I_Gallery_Mapper');
 		$image_mapper = $this->object->get_registry()->get_utility('I_Image_Mapper');
 		$gallery_key	= $gallery_mapper->get_primary_key_column();
-		$album_select	= ($id_only ? $album_key : '*').", 1 AS is_album, 0 AS is_gallery, name AS title, albumdesc AS galdesc";
-		$gallery_select = ($id_only ? $gallery_key : '*').", 1 AS is_gallery, 0 AS is_album";
+		$album_select	= ($id_only ? $album_key : $album_mapper->get_table_name().'.*').", 1 AS is_album, 0 AS is_gallery, name AS title, albumdesc AS galdesc";
+		$gallery_select = ($id_only ? $gallery_key : $gallery_mapper->get_table_name().'.*').", 1 AS is_gallery, 0 AS is_album";
 
 		// Modify the sort order of the entities
 		if ($this->object->sortorder) {
@@ -620,7 +660,14 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 
         if (isset($this->object->maximum_entity_count)) {
             $max = intval($this->object->maximum_entity_count);
-            if ($retval > $max) $retval = $max;
+            if ($retval > $max) {
+            	$retval = $max;
+            }
+        }
+				// Given maximum entity count can't be set, always use global setting to avoid confusion
+                $max = intval(C_NextGen_Settings::get_instance()->get('maximum_entity_count', 500));
+        if ($retval > $max) {
+        	$retval = $max;
         }
 
         return $retval;
@@ -724,12 +771,12 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 		global $wpdb;
 
         // If no tags were provided, get them from the container_ids
-        if (!$tags) $tags = $this->object->container_ids;
+        if (!$tags || !is_array($tags)) $tags = $this->object->container_ids;
 
 		// Convert container ids to a string suitable for WHERE IN
 		$container_ids = array();
-        if (!in_array('all', array_map('strtolower', $tags))) {
-			foreach ($tags as $container) {
+        if (is_array($tags) && !in_array('all', array_map('strtolower', $tags))) {
+			foreach ($tags as $ndx => $container) {
 				$container_ids[]= "'{$container}'";
 			}
 			$container_ids = implode(',', $container_ids);
@@ -747,9 +794,13 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 
 		// Get all term_ids for each image tag slug
 		$term_ids = array();
-		foreach ($wpdb->get_results($query) as $row) {
-			$term_ids[] = $row->term_id;
-		}
+        $results = $wpdb->get_results($query);
+        if (is_array($results) && !empty($results))
+        {
+            foreach ($results as $row) {
+                $term_ids[] = $row->term_id;
+            }
+        }
 
 		return $term_ids;
 	}
@@ -817,9 +868,13 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
 	 */
 	function get_source()
 	{
+		$retval = NULL;
 		$sources = $this->object->_get_source_map();
-		$mapper = $this->get_registry()->get_utility('I_Displayed_Gallery_Source_Mapper');
-		$retval = $mapper->find_by_name($sources[$this->object->source], TRUE);
+		if (isset($sources[$this->object->source])) {
+			$mapper = $this->get_registry()->get_utility('I_Displayed_Gallery_Source_Mapper');
+			$retval = $mapper->find_by_name($sources[$this->object->source], TRUE);
+		}
+
 		return $retval;
 	}
 
@@ -870,34 +925,14 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      */
     function to_transient()
     {
-        // TODO: put this someplace more appropriate
-        // If the source is random do a separate image id lookup and fill those values into the gallery entity_ids
-        // This is necessary for compat w/Pro Lightbox so it can retrieve (through it's iframe request) the same images
-        // the viewer was previously looking at.
-        if (in_array($this->object->source, array('random', 'random_images')) && empty($this->object->entity_ids))
-        {
-            global $wpdb;
-
-            $image_ids = array();
-            $limit = (!empty($this->object->display_settings['images_per_page']) ? $this->object->display_settings['images_per_page'] : $this->object->maximum_entity_count);
-
-            $sql = "SELECT `pid` FROM `{$wpdb->nggpictures}` WHERE `exclude` = 0";
-            if (!empty($this->object->exclusions))
-                $sql .= sprintf(" AND `pid` NOT IN (%s)", implode(',', $this->object->exclusions));
-            $sql .= " ORDER BY RAND() LIMIT {$limit}";
-
-            foreach ($wpdb->get_results($sql, ARRAY_N) as $res) {
-                $image_ids[] = reset($res);
-            }
-
-            $this->object->entity_ids = $image_ids;
-        }
-
 		$group = 'displayed_galleries';
 		$key = C_Photocrati_Cache::generate_key($this->object->get_entity(), $group);
 		if (is_null(C_Photocrati_Cache::get($key, NULL, $group))) {
 			C_Photocrati_Cache::set($key, $this->object->get_entity(), $group, 1800);
 		}
+
+		$this->object->transient_id = $key;
+		if (!$this->object->id()) $this->object->id($key);
 
         return $key;
     }
@@ -907,9 +942,19 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      * Applies the values of a transient to this object
      * @param string $transient_id
      */
-    function apply_transient($transient_id)
+    function apply_transient($transient_id=NULL)
     {
-		if (($transient = C_Photocrati_Cache::get($transient_id, 'displayed_galleries')))
+		$retval = FALSE;
+
+		if (!$transient_id && isset($this->object->transient_id)) $transient_id = $this->object->transient_id;
+
+		if ($transient_id && ($transient = C_Photocrati_Cache::get($transient_id, FALSE, 'displayed_galleries'))) {
 			$this->object->_stdObject = $transient;
+            $this->object->transient_id = $transient_id;
+			if (!$this->object->id()) $this->object->id($transient_id);
+			$retval = TRUE;
+		}
+
+		return $retval;
     }
 }

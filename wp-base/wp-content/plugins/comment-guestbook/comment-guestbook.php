@@ -3,12 +3,13 @@
 Plugin Name: Comment Guestbook
 Plugin URI: http://wordpress.org/extend/plugins/comment-guestbook/
 Description: Add a guestbook page which uses the wordpress integrated comments.
-Version: 0.5.0
+Version: 0.6.3
 Author: Michael Burtscher
 Author URI: http://wordpress.org/extend/plugins/comment-guestbook/
+License: GPLv2
 
 A plugin for the blogging MySQL/PHP-based WordPress.
-Copyright 2012 Michael Burtscher
+Copyright 2012-2014 Michael Burtscher
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNUs General Public License
@@ -53,11 +54,8 @@ class Comment_Guestbook {
 		// ADMIN PAGE:
 		if (is_admin()) {
 			// Include required php-files and initialize required objects
-			require_once('admin/admin.php');
-			$admin = new CGB_Admin();
-			// Register actions
-			add_action('plugins_loaded', array(&$admin->options, 'version_upgrade'));
-			add_action('admin_menu', array(&$admin, 'register_pages'));
+			require_once(CGB_PATH.'admin/admin.php');
+			CGB_Admin::get_instance()->init_admin_page();
 		}
 
 		// FRONT PAGE:
@@ -72,7 +70,7 @@ class Comment_Guestbook {
 			}
 			// Set filter to overwrite comments_open status
 			if(isset($_POST['cgb_comments_status']) && 'open' === $_POST['cgb_comments_status']) {
-				add_filter('comments_open', array(&$this, 'filter_comments_open'));
+				add_filter('comments_open', array(&$this, 'filter_comments_open'), 50);
 			}
 		}
 	} // end constructor

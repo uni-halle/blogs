@@ -1,0 +1,1230 @@
+# Copyright (C) 2012 the Catch Themes Team
+# This file is distributed under the  GNU General Public License.
+# Sakin Shrestha <sakin@catchinternet.com>, 2012.
+# Kris Thomsen <mail@kristhomsen.dk>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Catch Box\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-20 16:39+0545\n"
+"PO-Revision-Date: 2014-03-20 16:39+0545\n"
+"Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
+"Language-Team: Kris Thomsen <mail@kristhomsen.dk>\n"
+"Language: da_DK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: .\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:14
+msgid "Error 404 - Page Not Found."
+msgstr "Error 404 - Side ikke fundet."
+
+#: ../404.php:18
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "Det ser ud til at vi ikke kan finde det du ledte efter."
+
+#: ../404.php:19
+msgid "This might be because:"
+msgstr "Dette kan skyldes:"
+
+#: ../404.php:20
+msgid ""
+"You have typed the web address incorrectly, or the page you were looking for "
+"may have been moved, updated or deleted."
+msgstr ""
+"Du har indtastet webadressen forkert, eller måske er siden du ledte efter "
+"blevet flyttet, opdateret eller slettet."
+
+#: ../404.php:21
+msgid "Please try the following options instead:"
+msgstr "Prøv venligst følgende muligheder i stedet:"
+
+#: ../404.php:22
+msgid ""
+"Check for a mis-typed URL error, then press the refresh button on your "
+"browser or Use the search box below."
+msgstr ""
+"Kontrollér, at du ikke har tastet URL'en forkert og tryk derefter genopfrisk-"
+"knappen i din browser eller brug søgeboksen nedenfor."
+
+#: ../archive.php:22
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Daglige arkiver: %s"
+
+#: ../archive.php:24
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Månedlige arkiver: %s"
+
+#: ../archive.php:24
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: ../archive.php:26
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Årlige arkiver: %s"
+
+#: ../archive.php:26
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: ../archive.php:28
+msgid "Blog Archives"
+msgstr "Blog-arkiver"
+
+#: ../archive.php:52 ../author.php:69 ../category.php:45 ../index.php:32
+#: ../page-blog.php:65 ../search.php:39 ../tag.php:45
+msgid "Nothing Found"
+msgstr "Intet fundet"
+
+#: ../archive.php:56 ../author.php:73 ../category.php:49 ../index.php:36
+#: ../page-blog.php:69 ../tag.php:49
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+"Beklager, men ingen resultater blev fundet udfra det forespurgte arkiv. "
+"Måske en søgning ville hjælpe dig med at finde et relateret indlæg."
+
+#: ../author.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Forfatter-arkiver: %s"
+
+#: ../author.php:44 ../content-single.php:76
+#, php-format
+msgid "About %s"
+msgstr "Om %s"
+
+#: ../category.php:16
+#, php-format
+msgid "Category Archives: %s"
+msgstr "Kategori-arkiver: %s"
+
+#: ../comments.php:17
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Dette indlæg er beskyttet med adgangskode. Indtast adgangskoden for at se "
+"kommentarerne."
+
+#: ../comments.php:33
+#, php-format
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "En tanke om &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s tanker om &ldquo;%2$s&rdquo;"
+
+#: ../comments.php:40 ../comments.php:60
+msgid "Comment navigation"
+msgstr "Kommentar-navigation"
+
+#: ../comments.php:41 ../comments.php:61
+msgid "&larr; Older Comments"
+msgstr "&larr; Ældre kommentarer"
+
+#: ../comments.php:42 ../comments.php:62
+msgid "Newer Comments &rarr;"
+msgstr "Nyere kommentarer &rarr;"
+
+#: ../comments.php:72
+msgid "Comments are closed."
+msgstr "Lukket for kommentarer."
+
+#: ../content-aside.php:16 ../content-featured.php:14
+#: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
+#: ../content-link.php:16 ../content-quote.php:14 ../content-status.php:15
+#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:829
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink til %s"
+
+#: ../content-aside.php:17
+msgid "Aside"
+msgstr "Aside"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgid "Reply"
+msgstr "Svar"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
+msgid "1"
+msgstr "1"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
+msgid "%"
+msgstr "%"
+
+#: ../content-aside.php:33 ../content-gallery.php:32 ../content-image.php:27
+#: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
+#: ../content.php:55 ../functions.php:375
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Fortsæt læsning <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-aside.php:35 ../content-featured.php:24
+#: ../content-gallery.php:55 ../content-image.php:29 ../content-link.php:35
+#: ../content-page.php:19 ../content-quote.php:37 ../content-single.php:31
+#: ../content-status.php:36 ../content.php:57 ../image.php:87
+msgid "Pages:"
+msgstr "Sider:"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "Leave a reply"
+msgstr "Skriv kommentar"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>1</b> Reply"
+msgstr "<b>1</b> svar"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>%</b> Replies"
+msgstr "<b>%</b> svar"
+
+#: ../content-aside.php:50 ../content-featured.php:51
+#: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
+#: ../content-page.php:27 ../content-quote.php:78 ../content-single.php:64
+#: ../content-status.php:51 ../content.php:100 ../functions.php:623
+#: ../functions.php:651 ../image.php:97
+msgid "Edit"
+msgstr "Redigér"
+
+#: ../content-featured.php:35 ../content-featured.php:44
+#: ../content-gallery.php:68 ../content-gallery.php:78 ../content-image.php:53
+#: ../content-image.php:62 ../content-quote.php:50 ../content-quote.php:60
+#: ../content-single.php:42 ../content-single.php:45 ../content.php:71
+#: ../content.php:81
+msgid ", "
+msgstr ", "
+
+#: ../content-featured.php:37
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Dette indlæg blev postet i %1$s og tagget %2$s. Bogmærk <a href=\"%3$s\" "
+"title=\"Permalink til %4$s\" rel=\"bookmark\">permalink'et</a>."
+
+#: ../content-featured.php:39
+#, php-format
+msgid ""
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
+"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Dette indlæg blev postet i %1$s. Bogmærk <a href=\"%3$s\" title=\"Permalink "
+"til %4$s\" rel=\"bookmark\">permalink'et</a>."
+
+#: ../content-gallery.php:17
+msgid "Gallery"
+msgstr "Galleri"
+
+#: ../content-gallery.php:47
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] "Dette galleri indeholder <a %1$s>%2$s billede</a>."
+msgstr[1] "Dette galleri indeholder <a %1$s>%2$s billede</a>."
+
+#: ../content-gallery.php:72 ../content-image.php:57 ../content-quote.php:54
+#: ../content.php:75
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "<span class=\"%1$s\">Postet i</span> %2$s"
+
+#: ../content-gallery.php:84 ../content-image.php:65 ../content-quote.php:66
+#: ../content.php:87
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">Tagget</span> %2$s"
+
+#: ../content-image.php:16
+msgid "Image"
+msgstr "Billede"
+
+#: ../content-image.php:40
+#, php-format
+msgid ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by "
+"</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
+"title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+msgstr ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by "
+"</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
+"title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+
+#: ../content-image.php:45 ../functions.php:689
+#, php-format
+msgid "View all posts by %s"
+msgstr "Vis alle indlæg af %s"
+
+#: ../content-link.php:17
+msgid "Link"
+msgstr "Link"
+
+#: ../content-quote.php:15
+msgid "Quote"
+msgstr "Citat"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "No Comments &darr;"
+msgstr "Ingen kommentarer &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "1 Comment &darr;"
+msgstr "1 kommentar &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "% Comments &darr;"
+msgstr "% kommentarer &darr;"
+
+#: ../content-single.php:47
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s by <a href=\"%6$s\">%5$s</a>. "
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+msgstr ""
+"Dette indlæg blev postet i %1$s og tagget %2$s af <a href=\"%6$s\">%5$s</a>. "
+"Bogmærk <a href=\"%3$s\" title=\"Permalink til %4$s\" rel=\"bookmark"
+"\">permalink'et</a>."
+
+#: ../content-single.php:49
+#, php-format
+msgid ""
+"This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a "
+"href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Dette indlæg blev postet i %1$s af <a href=\"%6$s\">%5$s</a>. Bogmærk <a "
+"href=\"%3$s\" title=\"Permalink til %4$s\" rel=\"bookmark\">permalink'et</a>."
+
+#: ../content-single.php:51
+#, php-format
+msgid ""
+"This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href="
+"\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Dette indlæg blev postet af <a href=\"%6$s\">%5$s</a>. Bogmærk <a href=\"%3$s"
+"\" title=\"Permalink til %4$s\" rel=\"bookmark\">permalink'et</a>."
+
+#: ../content-single.php:80
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Vis alle indlæg af %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-status.php:16
+msgid "Status"
+msgstr "Status"
+
+#: ../content.php:16
+msgid "Featured"
+msgstr "Featured"
+
+#: ../footer.php:54
+msgid "Footer menu"
+msgstr "Sidefods-menu"
+
+#: ../functions.php:109
+msgid "Primary Menu"
+msgstr "Primær menu"
+
+#: ../functions.php:110
+msgid "Secondary Menu"
+msgstr "Sekundær menu"
+
+#: ../functions.php:111
+msgid "Footer Menu"
+msgstr "Sidefods-menu"
+
+#: ../functions.php:179
+msgid "Garden"
+msgstr "Have"
+
+#: ../functions.php:185
+msgid "Flower"
+msgstr "Blomst"
+
+#: ../functions.php:191
+msgid "Mountain"
+msgstr "Bjerg"
+
+#: ../functions.php:343
+#, php-format
+msgid "Page %s"
+msgstr "Side %s"
+
+#: ../functions.php:444
+msgid "Main Sidebar"
+msgstr "Hovedsidepanel"
+
+#: ../functions.php:453
+msgid "Footer Area One"
+msgstr "Sidefodsområde 1"
+
+#: ../functions.php:455 ../functions.php:465 ../functions.php:475
+msgid "An optional widget area for your site footer"
+msgstr "Et valgfrit widget-område i dine sidefod"
+
+#: ../functions.php:463
+msgid "Footer Area Two"
+msgstr "Sidefodsområde 2"
+
+#: ../functions.php:473
+msgid "Footer Area Three"
+msgstr "Sidefodsområde 3"
+
+#: ../functions.php:507 ../functions.php:536 ../single.php:15
+msgid "Post navigation"
+msgstr "Indlægsnavigation"
+
+#: ../functions.php:515 ../functions.php:544
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Ældre indlæg"
+
+#: ../functions.php:516 ../functions.php:545
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Nyere indlæg <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../functions.php:623
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: ../functions.php:640
+#, php-format
+msgid "%1$s on %2$s <span class=\"says\">said:</span>"
+msgstr "%1$s d. %2$s <span class=\"says\">sagde:</span>"
+
+#: ../functions.php:646
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s d. %2$s"
+
+#: ../functions.php:655
+msgid "Your comment is awaiting moderation."
+msgstr "Din kommentar afventer godkendelse."
+
+#: ../functions.php:664
+msgid "Reply <span>&darr;</span>"
+msgstr "Svar <span>&darr;</span>"
+
+#: ../functions.php:683
+#, php-format
+msgid ""
+"<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
+"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
+"\" rel=\"author\">%7$s</a></span></span>"
+msgstr ""
+"<span class=\"sep\">Skrevet d. </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"bookmark\"><time class=\"entry-date\" datetime=\"%3$s\" pubdate>%4$s</"
+"time></a><span class=\"by-author\"> <span class=\"sep\"> af </span> <span "
+"class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" "
+"rel=\"author\">%7$s</a></span></span>"
+
+#: ../functions.php:741
+msgid "ID"
+msgstr "ID"
+
+#: ../functions.php:955
+msgid "Name"
+msgstr "Navn"
+
+#: ../functions.php:957
+msgid "Email"
+msgstr "Email"
+
+#: ../functions.php:1324
+msgid "Primary menu"
+msgstr "Primær menu"
+
+#: ../functions.php:1326 ../functions.php:1359
+msgid "Skip to primary content"
+msgstr "Hop til primær indhold"
+
+#: ../functions.php:1327 ../functions.php:1360
+msgid "Skip to secondary content"
+msgstr "Hop til sekundær indhold"
+
+#: ../functions.php:1357
+msgid "Secondary menu"
+msgstr "Sekundær menu"
+
+#: ../functions.php:1379
+msgid "Copyright &copy;"
+msgstr "Copyright &copy;"
+
+#: ../functions.php:1383
+msgid ". All Rights Reserved."
+msgstr ". Alle rettigheder forbeholdt."
+
+#: ../functions.php:1386
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: ../functions.php:1386
+msgid "Powered by WordPress"
+msgstr "Drevet af %s"
+
+#: ../functions.php:1386
+#, php-format
+msgid "Powered by %s"
+msgstr "Drevet af %s"
+
+#: ../functions.php:1388 ../inc/theme-options.php:660
+msgid "http://catchthemes.com/"
+msgstr "http://catchthemes.com/"
+
+#: ../functions.php:1388
+msgid "Theme Catch Box by Catch Themes"
+msgstr "Tema Catch Box af Catch Themes"
+
+#: ../functions.php:1388
+#, php-format
+msgid "Theme: %s"
+msgstr "Tema: %s"
+
+#: ../image.php:15
+msgid "Image navigation"
+msgstr "Billedenavigation"
+
+#: ../image.php:16
+msgid "&larr; Previous"
+msgstr "&larr; Forrige"
+
+#: ../image.php:17
+msgid "Next &rarr;"
+msgstr "Næste &rarr;"
+
+#: ../image.php:27
+#, php-format
+msgid ""
+"<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class="
+"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
+"at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> "
+"in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+msgstr ""
+"<span class=\"meta-prep meta-prep-entry-date\">Offentliggjort </span> <span "
+"class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></"
+"span> d. <a href=\"%3$s\" title=\"Link til fuld-størrelse billede\">%4$s "
+"&times; %5$s</a> i <a href=\"%6$s\" title=\"Tilbage til %7$s\" rel=\"gallery"
+"\">%8$s</a>"
+
+#: ../inc/theme-options.php:104
+msgid "Favicon URL"
+msgstr "Favicon-url"
+
+#: ../inc/theme-options.php:113
+msgid "Web Clip Icon URL"
+msgstr "Web Clip Icon URL"
+
+#: ../inc/theme-options.php:122
+msgid "Color Scheme"
+msgstr "Farvetema"
+
+#: ../inc/theme-options.php:130
+msgid "Link Color"
+msgstr "Link-farve"
+
+#: ../inc/theme-options.php:138
+msgid "Default Layout"
+msgstr "Standard layout"
+
+#: ../inc/theme-options.php:146
+msgid "Content layout"
+msgstr "Indholdslayout"
+
+#: ../inc/theme-options.php:154
+msgid "Excerpt Length in Words"
+msgstr "Resumé-længde i ord"
+
+#: ../inc/theme-options.php:162
+msgid "Feed Redirect URL"
+msgstr "Url til feed-omdirigering"
+
+#: ../inc/theme-options.php:170
+msgid "Move Site Title and Tagline?"
+msgstr "Move Site Title and Tagline?"
+
+#: ../inc/theme-options.php:178
+msgid "Default Display Text in Search"
+msgstr "Default Display Text in Search"
+
+#: ../inc/theme-options.php:186
+msgid "Disable Search in Header?"
+msgstr "Deaktivér søgning i sidehoved?"
+
+#: ../inc/theme-options.php:194
+msgid "Enable Secondary & Footer Menu in Mobile Devices?"
+msgstr "Enable Secondary & Footer Menu in Mobile Devices?"
+
+#: ../inc/theme-options.php:202
+msgid "Custom CSS Styles"
+msgstr "Tilpasset CSS-stil"
+
+#: ../inc/theme-options.php:239 ../inc/theme-options.php:240
+#: ../inc/theme-options.php:687
+msgid "Theme Options"
+msgstr "Temaindstillinger"
+
+#: ../inc/theme-options.php:262
+msgid "Add/Change Favicon"
+msgstr "Tilføj/Ændr favicon"
+
+#: ../inc/theme-options.php:276
+msgid "Add/Change Web Clip Icon"
+msgstr "Tilføj/Ændr Web Clip Icon"
+
+#: ../inc/theme-options.php:290
+msgid "Light"
+msgstr "Lyst"
+
+#: ../inc/theme-options.php:296
+msgid "Dark"
+msgstr "Mørkt"
+
+#: ../inc/theme-options.php:302
+msgid "Blue"
+msgstr "Blå"
+
+#: ../inc/theme-options.php:308
+msgid "Green"
+msgstr "Green"
+
+#: ../inc/theme-options.php:314
+msgid "Red"
+msgstr "Red"
+
+#: ../inc/theme-options.php:320
+msgid "Brown"
+msgstr "Brown"
+
+#: ../inc/theme-options.php:326
+msgid "Orange"
+msgstr "Orange"
+
+#: ../inc/theme-options.php:345
+msgid "Content on left"
+msgstr "Indhold til venstre"
+
+#: ../inc/theme-options.php:350
+msgid "Content on right"
+msgstr "Indhold til højre"
+
+#: ../inc/theme-options.php:355
+msgid "One-column, no sidebar"
+msgstr "Èn kolonne, intet sidepanel"
+
+#: ../inc/theme-options.php:373
+msgid "Show excerpt"
+msgstr "Vis resumé"
+
+#: ../inc/theme-options.php:378
+msgid "Show full content"
+msgstr "Vis fuldt indhold"
+
+#: ../inc/theme-options.php:479
+msgid "Select a Color"
+msgstr "Vælg en farve"
+
+#: ../inc/theme-options.php:482
+#, php-format
+msgid "Default color: %s"
+msgstr "Standard farve: %s"
+
+#: ../inc/theme-options.php:498
+msgid "Words"
+msgstr "ord"
+
+#: ../inc/theme-options.php:526
+msgid "Check to move above the Header/Logo Image"
+msgstr "Check to move above the Header/Logo Image"
+
+#: ../inc/theme-options.php:556
+msgid "Check to Disable"
+msgstr "Afkryds for at deaktivere"
+
+#: ../inc/theme-options.php:571
+msgid "Check to Enable"
+msgstr "Afkryds for at  aktivere"
+
+#: ../inc/theme-options.php:585
+msgid "CSS Tutorial from W3Schools."
+msgstr "CSS-tutorial fra W3Schools."
+
+#: ../inc/theme-options.php:585
+msgid "http://www.w3schools.com/css/default.asp"
+msgstr "http://www.w3schools.com/css/default.asp"
+
+#: ../inc/theme-options.php:585
+msgid "CSS Tutorial"
+msgstr "CSS-tutorial"
+
+#: ../inc/theme-options.php:585
+msgid "Click Here to Read"
+msgstr "Klik her for at læse"
+
+#: ../inc/theme-options.php:650
+msgid "http://facebook.com/catchthemes"
+msgstr "http://facebook.com/catchthemes"
+
+#: ../inc/theme-options.php:652
+msgid "https://twitter.com/catchthemes"
+msgstr "https://twitter.com/catchthemes"
+
+#: ../inc/theme-options.php:658
+msgid "Theme Options By"
+msgstr "Theme Options By"
+
+#: ../inc/theme-options.php:660 ../inc/theme-options.php:661
+msgid "Catch Themes"
+msgstr "Catch Themes"
+
+#: ../inc/theme-options.php:667
+msgid "http://catchthemes.com/themes/catch-box-pro/"
+msgstr "http://catchthemes.com/themes/catch-box-pro/"
+
+#: ../inc/theme-options.php:667
+msgid "Upgrade to Catch Box Pro"
+msgstr "Opgrader til Catch Box Pro"
+
+#: ../inc/theme-options.php:672
+msgid "http://catchthemes.com/donate/"
+msgstr "http://catchthemes.com/donate/"
+
+#: ../inc/theme-options.php:672
+msgid "Donate"
+msgstr "Doner Nu"
+
+#: ../inc/theme-options.php:673
+msgid "http://catchthemes.com/support/"
+msgstr "http://catchthemes.com/support/"
+
+#: ../inc/theme-options.php:673
+msgid "Support"
+msgstr "Hjælp til tema"
+
+#: ../inc/theme-options.php:674
+msgid "http://catchthemes.com/support-forum/forum/catch-box-public/"
+msgstr "http://catchthemes.com/support-forum/forum/catch-box-public/"
+
+#: ../inc/theme-options.php:674
+msgid "Support Forum"
+msgstr "Support Forum"
+
+#: ../inc/theme-options.php:675
+msgid "http://catchthemes.com/theme-instructions/catch-box/"
+msgstr "http://catchthemes.com/theme-instructions/catch-box/"
+
+#: ../inc/theme-options.php:675
+msgid "Theme Instructions"
+msgstr "Theme Instructions"
+
+#: ../inc/theme-options.php:676
+msgid "https://www.facebook.com/catchthemes/"
+msgstr "https://www.facebook.com/catchthemes/"
+
+#: ../inc/theme-options.php:676
+msgid "Like Catch Themes on Facebook"
+msgstr "Like Catch Themes on Facebook"
+
+#: ../inc/theme-options.php:676 ../inc/theme-options.php:805
+msgid "Facebook"
+msgstr "Facebook"
+
+#: ../inc/theme-options.php:677
+msgid "https://twitter.com/catchthemes/"
+msgstr "https://twitter.com/catchthemes/"
+
+#: ../inc/theme-options.php:677
+msgid "Follow Catch Themes on Twitter"
+msgstr "Follow Catch Themes on Twitter"
+
+#: ../inc/theme-options.php:677 ../inc/theme-options.php:810
+msgid "Twitter"
+msgstr "Twitter"
+
+#: ../inc/theme-options.php:678
+msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
+msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
+
+#: ../inc/theme-options.php:678
+msgid "Rate us 5 Star on WordPress"
+msgstr "Rate us 5 Star on WordPress"
+
+#: ../inc/theme-options.php:678
+msgid "5 Star Rating"
+msgstr "5 Star Rating"
+
+#: ../inc/theme-options.php:688
+msgid "Featured Post Slider"
+msgstr "Featured Post Slider"
+
+#: ../inc/theme-options.php:689
+msgid "Social Links"
+msgstr "Sociale links"
+
+#: ../inc/theme-options.php:690
+msgid "Webmaster Tools"
+msgstr "Webmaster-værktøjer"
+
+#: ../inc/theme-options.php:717
+msgid "Slider Options"
+msgstr "Slider-indstillinger"
+
+#: ../inc/theme-options.php:721
+msgid "Exclude Slider post from Home page posts:"
+msgstr "Ekskludér slider-indlæg fra dine Forside-indlæg:"
+
+#: ../inc/theme-options.php:723
+msgid "Check to disable"
+msgstr "Afkryds for at deaktivere"
+
+#: ../inc/theme-options.php:726
+msgid "Number of Slides"
+msgstr "Antal slides"
+
+#: ../inc/theme-options.php:732
+msgid "Featured Post ID"
+msgstr "Featured Post ID"
+
+#: ../inc/theme-options.php:734
+msgid "Click Here To Edit"
+msgstr "Klik her for at redigere"
+
+#: ../inc/theme-options.php:740
+msgid ""
+"<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
+"Featured Slider."
+msgstr ""
+"<strong>Bemærk</strong>: Her kan du tilføje indlægs-id'er som vises i "
+"forsidens Featured-slider."
+
+#: ../inc/theme-options.php:741 ../inc/theme-options.php:787
+#: ../inc/theme-options.php:914 ../inc/theme-options.php:955
+msgid "Save"
+msgstr "Gem"
+
+#: ../inc/theme-options.php:745
+msgid "Slider Effect Options"
+msgstr "Indstillinger for slider-effekt"
+
+#: ../inc/theme-options.php:750
+msgid "Transition Effect:"
+msgstr "Overgangseffekt:"
+
+#: ../inc/theme-options.php:755
+msgid "fade"
+msgstr "fade"
+
+#: ../inc/theme-options.php:756
+msgid "wipe"
+msgstr "wipe"
+
+#: ../inc/theme-options.php:757
+msgid "scrollUp"
+msgstr "scrollUp"
+
+#: ../inc/theme-options.php:758
+msgid "scrollDown"
+msgstr "scrollDown"
+
+#: ../inc/theme-options.php:759
+msgid "scrollLeft"
+msgstr "scrollLeft"
+
+#: ../inc/theme-options.php:760
+msgid "scrollRight"
+msgstr "scrollRight"
+
+#: ../inc/theme-options.php:761
+msgid "blindX"
+msgstr "blindX"
+
+#: ../inc/theme-options.php:762
+msgid "blindY"
+msgstr "blindY"
+
+#: ../inc/theme-options.php:763
+msgid "blindZ"
+msgstr "blindZ"
+
+#: ../inc/theme-options.php:764
+msgid "cover"
+msgstr "cover"
+
+#: ../inc/theme-options.php:765
+msgid "shuffle"
+msgstr "shuffle"
+
+#: ../inc/theme-options.php:771
+msgid "Transition Delay"
+msgstr "Overgangsforsinkelse"
+
+#: ../inc/theme-options.php:774 ../inc/theme-options.php:783
+msgid "second(s)"
+msgstr "sekund(er)"
+
+#: ../inc/theme-options.php:780
+msgid "Transition Length"
+msgstr "Overgangslængde"
+
+#: ../inc/theme-options.php:816
+msgid "Google +"
+msgstr "Google +"
+
+#: ../inc/theme-options.php:822
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: ../inc/theme-options.php:828
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: ../inc/theme-options.php:834
+msgid "Youtube"
+msgstr "Youtube"
+
+#: ../inc/theme-options.php:840
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: ../inc/theme-options.php:846
+msgid "Deviantart"
+msgstr "Deviantart"
+
+#: ../inc/theme-options.php:852
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: ../inc/theme-options.php:858
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: ../inc/theme-options.php:864
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: ../inc/theme-options.php:870
+msgid "MySpace"
+msgstr "MySpace"
+
+#: ../inc/theme-options.php:876
+msgid "Aim"
+msgstr "Aim"
+
+#: ../inc/theme-options.php:882
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../inc/theme-options.php:888
+msgid "Slideshare"
+msgstr "Slideshare"
+
+#: ../inc/theme-options.php:894
+msgid "Instagram"
+msgstr "Instagram"
+
+#: ../inc/theme-options.php:900
+msgid "Skype"
+msgstr "Skype"
+
+#: ../inc/theme-options.php:906
+msgid "Soundcloud"
+msgstr "Soundcloud"
+
+#: ../inc/theme-options.php:913
+msgid ""
+"<strong>Note:</strong> Enter the url for correponding social networking "
+"website"
+msgstr ""
+"<strong>Bemærk:</strong> Indtast url'en til den passende sociale netværks-"
+"webside"
+
+#: ../inc/theme-options.php:928
+msgid "Header and Footer Code"
+msgstr "Header and Footer Code"
+
+#: ../inc/theme-options.php:933
+msgid "Code to display on Header"
+msgstr "Code to display on Header"
+
+#: ../inc/theme-options.php:940
+msgid ""
+"Note: Here you can put scripts from Google, Facebook etc. which will load on "
+"Header"
+msgstr ""
+"Note: Here you can put scripts from Google, Facebook etc. which will load on "
+"Header"
+
+#: ../inc/theme-options.php:944
+msgid "Code to display on Footer"
+msgstr "Code to display on Footer"
+
+#: ../inc/theme-options.php:951
+msgid ""
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
+"will load on footer"
+msgstr ""
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
+"will load on footer"
+
+#: ../inc/widgets.php:20
+msgid "Use this widget to add any type of Ad as a widget."
+msgstr "Brug denne widget til at tilføje alle slags reklamer som en widget."
+
+#: ../inc/widgets.php:21
+msgid "Catch Box Adspace Widget"
+msgstr "Catch Box reklameområde-widget"
+
+#: ../inc/widgets.php:38
+msgid "Title (optional):"
+msgstr "Titel (valgfri):"
+
+#: ../inc/widgets.php:43
+msgid "Ad Code:"
+msgstr "Reklamekode:"
+
+#: ../inc/widgets.php:49
+msgid "Image Url:"
+msgstr "Billede-url:"
+
+#: ../inc/widgets.php:53
+msgid "Link URL:"
+msgstr "Link-url:"
+
+#: ../inc/widgets.php:57
+msgid "Alt text:"
+msgstr "Alt-tekst:"
+
+#: ../search.php:15
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Søgeresultater for: %s"
+
+#: ../search.php:43
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+"Beklager, men intet matchede dine søgekriterier. Prøv venligst igen med "
+"nogen andre nøgleord."
+
+#: ../searchform.php:11
+msgid "Search"
+msgstr "Søg"
+
+#: ../sidebar.php:28
+msgid "Archives"
+msgstr "Arkiver"
+
+#: ../sidebar.php:37
+msgid "Meta"
+msgstr "Meta"
+
+#: ../single.php:16
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> Forrige"
+
+#: ../single.php:17
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Næste <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../tag.php:16
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Tag-arkiver: %s"
+
+#~ msgid "Settings saved."
+#~ msgstr "Indstillinger gemt."
+
+#~ msgid ""
+#~ "Some themes provide customization options that are grouped together on a "
+#~ "Theme Options screen. If you change themes, options may change or "
+#~ "disappear, as they are theme-specific. Your current theme, Catch Box, "
+#~ "provides the following Theme Options:"
+#~ msgstr ""
+#~ "Nogen tema'er giver tilpasningsmuligheder som bliver grupperet i et "
+#~ "Temaindstillinger-skærmbillede. Hvis du ændrer tema, kan indstillingerne "
+#~ "ændre sig eller forsvinde, da de er tema-specifikke. Dit nuværende tema, "
+#~ "Catch Box, giver følgende temaindstillinger:"
+
+#~ msgid ""
+#~ "<strong>Color Scheme</strong>: You can choose a color palette of \"Light"
+#~ "\" (light background with dark text) or \"Dark\" (dark background with "
+#~ "light text) for your site."
+#~ msgstr ""
+#~ "<strong>Farvetema</strong>: Du kan vælge mellem farve-paletterne \"Lyst"
+#~ "\" (lys baggrund med mørk tekst) eller \"Mørkt\" (mørk baggrund med lys "
+#~ "tekst) til din side."
+
+#~ msgid ""
+#~ "<strong>Link Color</strong>: You can choose the color used for text links "
+#~ "on your site. You can enter the HTML color or hex code, or you can choose "
+#~ "visually by clicking the \"Select a Color\" button to pick from a color "
+#~ "wheel."
+#~ msgstr ""
+#~ "<strong>Link-farve</strong>: Du kan vælge farven, som bruges til "
+#~ "tekstlinks på din side. Du kan indtaste HTML-farven eller hex-koden, "
+#~ "eller du kan vælge visuelt ved at klikke på \"Vælg en farve\"-knappen for "
+#~ "at vælge fra et farve-hjul."
+
+#~ msgid ""
+#~ "<strong>Default Layout</strong>: You can choose if you want your "
+#~ "site&#8217;s default layout to have a sidebar on the left, the right, or "
+#~ "not at all."
+#~ msgstr ""
+#~ "<strong>Standard Layout</strong>: Du kan vælge om du ønsker din sides "
+#~ "standard layout skal have sidepanelet til venstre, højre eller slet ikke."
+
+#~ msgid ""
+#~ "Remember to click \"Save Changes\" to save any changes you have made to "
+#~ "the theme options."
+#~ msgstr ""
+#~ "Husk at klikke \"Gem ændringer\" for at gemme de ændringer du laver til "
+#~ "temaindstillingerne."
+
+#~ msgid "For more information:"
+#~ msgstr "For mere information:"
+
+#~ msgid ""
+#~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
+#~ "target=\"_blank\">Documentation on Theme Options</a>"
+#~ msgstr ""
+#~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
+#~ "target=\"_blank\">Dokumentation for temaindstillinger</a>"
+
+#~ msgid ""
+#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support "
+#~ "Forums</a>"
+#~ msgstr ""
+#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support fora</"
+#~ "a>"
+
+#~ msgid "Overview"
+#~ msgstr "Overblik"
+
+#~ msgid ""
+#~ "Slider Some themes provide customization options that are grouped "
+#~ "together on a Theme Options screen. If you change themes, options may "
+#~ "change or disappear, as they are theme-specific. Your current theme, "
+#~ "Catch Box, provides the following Theme Options:"
+#~ msgstr ""
+#~ "Slider Nogen tema'er giver tilpasningsmuligheder som bliver grupperet i "
+#~ "et Temaindstillinger-skærmbillede. Hvis du ændrer tema, kan "
+#~ "indstillingerne ændre sig eller forsvinde, da de er tema-specifikke. Dit "
+#~ "nuværende tema, Catch Box, giver følgende temaindstillinger:"
+
+#~ msgid "Webmaster Site Verification IDs"
+#~ msgstr "Webmaster-sideverifikations-id'er"
+
+#~ msgid "Google Site Verification ID"
+#~ msgstr "Google Site-verifikations-id"
+
+#~ msgid "Enter your Google ID number only"
+#~ msgstr "Indtast kun dit Google id-nummer"
+
+#~ msgid "Yahoo Site Verification ID"
+#~ msgstr "Yahoo Site-verifikations-id"
+
+#~ msgid "Enter your Yahoo ID number only"
+#~ msgstr "Indtast kun dit Yahoo id-nummer"
+
+#~ msgid "Bing Site Verification ID"
+#~ msgstr "Bing Site-verifikations-id"
+
+#~ msgid "Enter your Bing ID number only"
+#~ msgstr "Indtast kun dit Bing id-nummer"
+
+#~ msgid "Webmaster Site Verification Code"
+#~ msgstr "Webmaster Site-verifikationskode"
+
+#~ msgid "Analytics, site stats Header code"
+#~ msgstr "Analyse, side-statistik sidehovedskode"
+
+#~ msgid "Analytics, site stats footer code"
+#~ msgstr "Analyse, sidestatistik sidefodskode"
+
+#~ msgid "More Themes"
+#~ msgstr "Flere temaer"
+
+#~ msgid "Catch Box"
+#~ msgstr "Catch Box"
+
+#~ msgid ""
+#~ "Catch Box is simple, lightweight, box shaped, and adaptable WordPress "
+#~ "Theme for bloggers and professionals. It is based on HTML5, CSS3 and "
+#~ "Responsive Web Design to view in various devices. 10 Best Reasons to use "
+#~ "Catch Box Theme. 1. Responsive Web Design, 2. Custom Menus (Primary, "
+#~ "Secondary and Footer menus), 3. Theme Options for light or dark or blue "
+#~ "color scheme, custom link colors, three layout choices, two content "
+#~ "choices between excerpt and content option in homepage, feed redirection, "
+#~ "custom css styles, 4. Featured Sliders where you can define number of "
+#~ "slides and post IDs, 5. Social Links (Facebook, Twitter, RSS, Linkedin, "
+#~ "Pinterest, etc), 6. Webmaster Tools (Google, Yahoo and Bing site "
+#~ "verification ID, Header and Footer codes), 7. Custom Backgrounds, 8. "
+#~ "Custom Header, 9. Catchbox Adspace widget to add any type of "
+#~ "Advertisements, and 10. Support popular plugins. Multilingual Ready "
+#~ "(WPML) and also currently translated in Brazilian Portuguese, Spanish, "
+#~ "Danish and Germany."
+#~ msgstr ""
+#~ "Catch-Box er et simpelt, letvægts-, boks-formet og tilpassende Wordpress-"
+#~ "tema for bloggere og professionellse. Det er baseret på HTML5, CSS3 og "
+#~ "Responsive Web Design for at kunne vises på forskellige enheder. De 10 "
+#~ "bedste grunde til at bruge Catch Box-temaet. 1. Responsive Web Design, 2. "
+#~ "Tilpassede menuer (primær, sekundær og sidefodsmenuer), 3. Tema-"
+#~ "indstillinger for en lys eller mørk eller blå farvepalette, tilpassede "
+#~ "link-farver, tre layout-valg, to indholdsvalg mellem resumé- og "
+#~ "indholdsvalg på hjemmesiden, feed-omstilling, tilpassede css-stil, 4. "
+#~ "Featured-sliders hvor du kan definere antal af slides og indlæg-id'er, 5. "
+#~ "Sociale links (Facebook, Twitter, RSS, Linkedin, Pinterest etc.), 6. "
+#~ "Webmaster-værktøjer (Google-, Yahoo- og Bing-sidegodkendelses-id, "
+#~ "sidehoved- og sidefods-koder), 7. Tilpassede baggrunde, 8. Tilpasset "
+#~ "sidehoved, 9. Catchbox reklameområde-widget til at tilføje enhver form "
+#~ "for reklamer, og 10. Understøtter populære udvidelser.  Fler-sprogsklar "
+#~ "(WPML) og i øjeblikket også oversat til brasiliansk-portuguisisk, spansk, "
+#~ "dansk og tysk."
+
+#~ msgid ""
+#~ "dark, light, blue, white, black, gray, one-column, two-columns, left-"
+#~ "sidebar, right-sidebar, fixed-width, flexible-width, custom-background, "
+#~ "custom-colors, custom-header, custom-menu, editor-style, featured-image-"
+#~ "header, featured-images, full-width-template, microformats, post-formats, "
+#~ "rtl-language-support, sticky-post, theme-options, translation-ready"
+#~ msgstr ""
+#~ "mørkt, lyst, blå, hvid, sort, grå, en-kolonne, to-kolonner, venstre-"
+#~ "sidepanel, højre-sidepanel, fast-bredde, fleksibel-bredde, tilpasset-"
+#~ "baggrund, tilpassede-farver, tilpasset-sidehoved, tilpasset-menu, "
+#~ "redigeringsstil, featured-billede-sidehoved, featured-billeder, fuld-"
+#~ "bredde-skabelon, mikroformater, post-formater, rtl-sprog-understøttelse, "
+#~ "klæbende-indlæg, tema-indstillinger, oversættelses-klar"
+
+#~ msgid "Disable Sidebar Template"
+#~ msgstr "Deaktivér sidepanel-skabelon"
+
+#~ msgid "Full Width Disable Sidebar Template"
+#~ msgstr "Fuld-bredde deaktiver sidepanel-skabelon"

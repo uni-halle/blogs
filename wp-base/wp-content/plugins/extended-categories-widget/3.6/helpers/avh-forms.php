@@ -13,7 +13,7 @@ if (!function_exists('avh_doWidgetFormText')) {
 
 if (!function_exists('avh_doWidgetFormCheckbox')) {
 
-    function avh_doWidgetFormCheckbox($field_id, $field_name, $description, $is_checked = FALSE)
+    function avh_doWidgetFormCheckbox($field_id, $field_name, $description, $is_checked = false)
     {
         echo '<label for="' . $field_id . '">';
         echo '<input class="checkbox" type="checkbox" id="' . $field_id . '"	name="' . $field_name . '"' . ($is_checked ? ' CHECKED' : '') . ' /> ';

@@ -1,1 +1,1 @@
-/srv/www/wordpress/wp-base/wp-content/mu-plugins/wpmu-plugin-stats/cets_plugin_stats.php
+wpmu-plugin-stats/cets_plugin_stats.php

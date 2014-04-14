@@ -6,9 +6,9 @@ Tags:              Google Maps, OpenStreetMap, OSM, bing maps, googlemaps, googl
 Author URI:        http://www.harm.co.at
 Author:            Robert Harm
 Donate link:       http://www.mapsmarker.com/donations
-Requires at least: 3.0
-Tested up to:      3.6
-Stable tag:        3.6.6
+Requires at least: 3.3
+Tested up to:      3.9
+Stable tag:        3.8.8
 License:           GPLv2
 
 Pin, organize & show your favorite places & tracks through OpenStreetMap, Google Maps, KML, Bing Maps, APIs or Augmented-Reality browsers
@@ -16,12 +16,14 @@ Pin, organize & show your favorite places & tracks through OpenStreetMap, Google
 == Description ==
 Maps Marker allows you to pin, organize and share your favorite places & tracks through your WordPress powered site easily. You can use maps from OpenStreetMap, Google Maps, Google Earth, Bing Maps or custom maps and additionally display your spots in innovative ways like through augmented-reality browsers.
 
-For even more features please try "[Leaflet Maps Marker Pro](http://www.mapsmarker.com/comparison)": 
+For even more features please try "Leaflet Maps Marker Pro" - demo maps including admin area access available at [http://demo.mapsmarker.com](http://demo.mapsmarker.com/). 
 
+= Highlights of Leaflet Maps Marker Pro =
 * integration of the latest leaflet.js version
 * [marker clustering](http://www.mapsmarker.com/pro-feature-clustering)
 * [GPX tracks](http://www.mapsmarker.com/pro-feature-gpx)
 * [mobile optimized maps](http://www.mapsmarker.com/pro-feature-nojquery)
+* [support for CSV/XLS/XLSX/ODS import and export for bulk additions and bulk updates of markers](http://www.mapsmarker.com/pro-feature-import)
 * [HTML5 fullscreen maps](http://www.mapsmarker.com/pro-feature-html-fullscreen-maps)
 * [minimaps](http://www.mapsmarker.com/pro-feature-minimaps)
 * [mobile web app support and optimized mobile viewport](http://www.mapsmarker.com/pro-feature-webapp)
@@ -35,9 +37,16 @@ For even more features please try "[Leaflet Maps Marker Pro](http://www.mapsmark
 * [MapsMarker API](http://www.mapsmarker.com/pro-feature-mapsmarker-api)
 * [whitelabel backend admin pages](http://www.mapsmarker.com/pro-feature-whitelabel)
 * [advanced permission settings](http://www.mapsmarker.com/pro-feature-advanced-permissions)
+* [duplicate markers](http://www.mapsmarker.com/v1.5.1p)
+* [support for dynamic switching between simplified and advanced editor (no more reloads needed)](http://www.mapsmarker.com/v1.5.7p)
+* [support for filtering of marker icons on backend (based on filename)](http://www.mapsmarker.com/v1.5.7p)
+* [support for changing marker IDs and layer IDs from the tools page](http://www.mapsmarker.com/v1.5.7p)
+* [support for bulk updates of marker maps on the tools page for selected layers only](http://www.mapsmarker.com/v1.5.7p)
 * priority support
 
-The free version includes a pro upgrader which allows you to start a free 30 day trial easily. For a live demo of the admin area please visit [demo.mapsmarker.com](http://demo.mapsmarker.com).
+The free version includes a pro upgrader which allows you to start a free 30 day trial easily. 
+
+If you want to compare the free and pro version side by side, please visit [http://www.mapsmarker.com/comparison](http://www.mapsmarker.com/comparison).
 
 = Vision =
 We are working hard on delivering the best mapping solution available for WordPress - helping you to share your favorite spots & tracks
@@ -151,22 +160,24 @@ to the visitors of your website.
 * German (de_DE)
 * Hindi (hi_IN) thanks to by Outshine Solutions and Guntupalli Karunakar
 * Hungarian (hu_HU) thanks to István Pintér and Csaba Orban
-* Indonesian (id_ID) thanks to Andy Aditya Sastrawikarta and Emir Hartato
+* Indonesian (id_ID) thanks to Andy Aditya Sastrawikarta, Emir Hartato and Phibu Reza
 * Italian (it_IT) thanks to Luca Barbetti
 * Japanese (ja) thanks to Shu Higashi
 * Korean (ko_KR) thanks to Andy Park
 * Latvian (lv) thanks to Juris Orlovs and Eriks Remess
+* Norwegian/Bokmål (nb_NO) thanks to Inge Tang
 * Polish (pl_PL) translation thanks to Pawel Wyszynski and Tomasz Rudnicki
 * Portuguese (pt_BR) thanks to Andre Santos and Antonio Hammerl
 * Portuguese (pt_PT) translation thanks to Joao Campos
 * Romanian (ro_RO) translation thanks to Arian and Daniel Codrea
-* Russian (ru_RU) thanks to Ekaterina Golubina, supported by Teplitsa of Social Technologies
+* Russian (ru_RU) thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies) and Vyacheslav Strenadko
 * Slovak (sk_SK) thanks to Zdenko Podobny
 * Spanish (es_ES) thanks to David Ramirez, Alvaro Lara, Ricardo Viteri
 * Spanish (es_MX) thanks to Victor Guevara
-* Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha and Dan Paulsson
-* Turkish (tr_TR) thanks to Emre Erkan
+* Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha, Dan Paulsson and Elger Lindgren
+* Turkish (tr_TR) thanks to Emre Erkan and Mahir Tosun
 * Ukrainian (uk_UK) thanks to Andrexj
+* Vietnamese (vi) thanks to Hoai Thu
 * Yiddish (yi) thanks to Raphael Finkel
 
 For full credits of each translations please visit [http://www.mapsmarker.com/languages](http://www.mapsmarker.com/languages) (had to remove backlinks from readme-file as it is considered as spam by WordPress :-/ )
@@ -225,8 +236,7 @@ One personal request: before you post a new support ticket in the [Wordpress Sup
 1. [FAQ](www.mapsmarker.com/faq/)
 2. [Docs](http://www.mapsmarker.com/docs/)
 3. [Wordpress Support Forum](http://wordpress.org/support/plugin/leaflet-maps-marker) (free community support)
-4. [WP Questions](http://wpquestions.com/affiliates/register/name/robertharm) (paid community support)
-5. [WordPress HelpCenter](http://wphelpcenter.com/) (paid professional support)
+4. [Upgrade to Pro](http://www.mapsmarker.com/install) (paid developer support)
 
 [More info on support](http://mapsmarker.com/support/)
 
@@ -270,7 +280,7 @@ This program is free software; you can redistribute it and/or modify it under th
 * Home-Icon from [Pro Theme Design](http://prothemedesign.com), licence: Creative Commons Attribution (by)
 * Editor-Switch-Icon by AMAZIGH Aneglus, license: GNU/GPL
 * Submenu icons from [Bijou](http://bijou.im) and [Iconic](http://somerandomdude.com/work/iconic/) icon sets (GPL)
-
+* PHPExcel for import/export [http://phpexcel.codeplex.com/](http://phpexcel.codeplex.com/) (LGPL)
 = Credits & special thanks to =
 * Sindre Wimberger ([http://www.sindre.at](http://www.sindre.at)) for help with bugfixing & geo-consulting
 * Julia Loew ([http://www.weiderand.net](http://www.weiderand.net)) for logo and corporate design
@@ -282,13 +292,13 @@ For more information on translations of the plugin and how to contribute a new t
 
 = Trademark and copyright =
 MapsMarker &reg; - registration pending
-Copyright 2011-2013, Robert Harm, All Rights Reserved
+Copyright 2011-2014, Robert Harm, All Rights Reserved
 
 == Upgrade Notice ==
-= v3.6.6 =
-bugfix release; special chars in marker names could break layer maps - see http://www.mapsmarker.com/v3.6.6 for more details
+= v3.8.8 =
+security fixes (potential XSS issues - exploitable by admins only) - see http://www.mapsmarker.com/v3.8.8 for more details
 
 == Changelog ==
-[blog post with details about v3.6.6](http://www.mapsmarker.com/v3.6.6)
+[blog post with details about v3.8.8](http://www.mapsmarker.com/v3.8.8)
 
 [changelog for all versions](http://www.mapsmarker.com/changelog)

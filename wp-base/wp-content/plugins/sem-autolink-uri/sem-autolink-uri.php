@@ -3,22 +3,22 @@
 Plugin Name: Autolink URI
 Plugin URI: http://www.semiologic.com/software/autolink-uri/
 Description: Automatically wraps unhyperlinked uri with html anchors.
-Version: 2.2
+Version: 2.4
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: sem-autolink-uri
 Domain Path: /lang
+License: Dual licensed under the MIT and GPLv2 licenses
 */
 
 /*
 Terms of use
 ------------
 
-This software is copyright Mesoconcepts (http://www.mesoconcepts.com), and is distributed under the terms of the GPL license, v.2.
-
-http://www.opensource.org/licenses/gpl-2.0.php
+This software is copyright Denis de Bernardy & Mike Koepke, and is distributed under the terms of the MIT and GPLv2 licenses.
 **/
 
+add_action( 'plugins_loaded', array ( autolink_uri::get_instance(), 'plugin_setup' ) );
 
 /**
  * autolink_uri
@@ -27,13 +27,66 @@ http://www.opensource.org/licenses/gpl-2.0.php
  **/
 
 class autolink_uri {
-    /**
-     * autolink_uri()
-     */
-    function autolink_uri() {
+	/**
+	 * Plugin instance.
+	 *
+	 * @see get_instance()
+	 * @type object
+	 */
+	protected static $instance = NULL;
+
+	/**
+	 * URL to this plugin's directory.
+	 *
+	 * @type string
+	 */
+	public $plugin_url = '';
+
+	/**
+	 * Path to this plugin's directory.
+	 *
+	 * @type string
+	 */
+	public $plugin_path = '';
+
+	/**
+	 * Access this plugin’s working instance
+	 *
+	 * @wp-hook plugins_loaded
+	 * @return  object of this class
+	 */
+	public static function get_instance()
+	{
+		NULL === self::$instance and self::$instance = new self;
+
+		return self::$instance;
+	}
+
+	/**
+	 * Used for regular plugin work.
+	 *
+	 * @wp-hook plugins_loaded
+	 * @return  void
+	 */
+	public function plugin_setup()
+	{
+		$this->plugin_url    = plugins_url( '/', __FILE__ );
+		$this->plugin_path   = plugin_dir_path( __FILE__ );
+
+		// more stuff: register actions and filters
         // after shortcodes
         add_filter('the_content', array($this, 'filter'), 12);
         add_filter('the_excerpt', array($this, 'filter'), 12);
+	    add_filter('widget_text', array($this, 'filter'), 12);
+	}
+
+	/**
+	 * Constructor. Intentionally left empty and public.
+	 *
+	 * @see plugin_setup()
+	 */
+
+	public function __construct() {
     }
 
     /**
@@ -151,7 +204,7 @@ class autolink_uri {
 				<\s*\/\s*head\s*>
 				/isx",
 			'blocks' => "/
-				<\s*(script|style|object|textarea)(?:\s.*?)?>
+				<\s*(script|style|object|textarea|code|pre)(?:\s.*?)?>
 				.*?
 				<\s*\/\s*\\1\s*>
 				/isx",
@@ -207,7 +260,3 @@ class autolink_uri {
 		return str_replace(array_keys($unescape), array_values($unescape), $text);
 	} # unescape()
 } # autolink_uri
-
-
-$autolink_uri = new autolink_uri();
-?>

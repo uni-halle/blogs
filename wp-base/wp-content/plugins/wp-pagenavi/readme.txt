@@ -1,23 +1,22 @@
 === WP-PageNavi ===
-Contributors: GamerZ, scribu
-Tags: navigation, pagination, paging, pages
-Requires at least: 3.2
-Tested up to: 3.4
-Stable tag: 2.83
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: GamerZ, scribu  
+Donate link: http://lesterchan.net/site/donation/  
+Tags: navigation, pagination, paging, pages  
+Requires at least: 3.2  
+Tested up to: 3.8  
+Stable tag: trunk  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
 Adds a more advanced paging navigation interface.
 
 == Description ==
 
-[PHP5 is required since version 2.70](http://scribu.net/wordpress/wp-pagenavi/wp-2-70.html)
-
 Want to replace the old *&larr; Older posts | Newer posts &rarr;* links with some page links?
 
 This plugin provides the `wp_pagenavi()` template tag which generates fancy pagination links. See the [installation instructions](http://wordpress.org/extend/plugins/wp-pagenavi/installation/) for using it in your theme.
 
-Links: [Demo](http://lesterchan.net/wordpress/) | [Plugin News](http://scribu.net/wordpress/wp-pagenavi/) | [Translating](http://scribu.net/wordpress/translating-plugins.html)
+Help to translate at <https://translate.foe-services.de/projects/wp-pagenavi>.
 
 == Installation ==
 
@@ -32,10 +31,9 @@ In your theme, you need to find calls to next_posts_link() and previous_posts_li
 
 In the Twentyten theme, it looks like this:
 
-`
-<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyten' ) ); ?></div>
-<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?></div>
-`
+`<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyten' ) ); ?></div>`
+`<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?></div>`
+
 
 You would replace those two lines with this:
 
@@ -89,6 +87,12 @@ You can do that like so:
 `<?php wp_pagenavi( array( 'options' => PageNavi_Core::$options->get_defaults() ) ); ?>`
 
 == Changelog ==
+
+= 2.85 =
+* FIXED: "Use pagenavi-css.css" & "Always Show Page Navigation" in the options are not being saved
+
+= 2.84 =
+* FIXED: Updated scb framework to fix scbAdminPage incompatible error
 
 = 2.83 =
 * added 'echo' parameter
@@ -172,7 +176,7 @@ You can do that like so:
 
 = 2.11 (2007-06-01) =
 * new: Page Navigation Now Is Customizable Via 'WP-Admin -> Options -> PageNavi' And pagenavi-css.css
-* new: Default Style Navigation Is Now Boxed Navigation (Similar To Digg.com) =
+* new: Default Style Navigation Is Now Boxed Navigation (Similar To Digg.com)
 * fixed: Fix For Ultimate Tag Warrior By Oliver Kastler & Stephan (Netconcepts)
 
 = 2.10 (2007-02-01) =

@@ -9,7 +9,7 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 		<fieldset class="options">
 			<h4><?php _e('Skype', 'skype-online-status') ?></h4>
 			<p><label for="skype_id"><?php _e('Skype ID', 'skype-online-status'); _e(': ', 'skype-online-status') ?></label><input type="text" name="skype_id" id="skype_id" value="<?php echo Skype_Online_Status::$config['skype_id'] ?>" /> <a href="#skypeid_info" class="info">?</a></p>
-			<blockquote id="skypeid_info" style="display:none"><em><?php printf(__('Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!','skype-online-status'),'<a href="http://www.anrdoezrs.net/click-4119525-10420859?url=http%3A%2F%2Fwww.skype.com%2Fallfeatures%2Fcallphones%2F%2F%3Fcm_mmc%3Daffiliate%2D%5F%2Dcommission%5Fjunction%2D%5F%2Dlink%2D%5F%2Dbuilder" title="SkypeOut">'.__('SkypeOut','skype-online-status').'</a>') ?></em></blockquote>
+			<blockquote id="skypeid_info" style="display:none"><em><?php printf(__('Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!','skype-online-status'),'<a href="https://support.skype.com/en/category/CALLING_PHONES_SKYPEOUT/" title="SkypeOut">'.__('SkypeOut','skype-online-status').'</a>') ?> <?php _e('Note: The new Windows Live Skype IDs do not allow online status to be detected and are not supported by this plugin.', 'skype-online-status') ?></em></blockquote>
 
 			<p><label for="user_name"><?php _e('Full Name', 'skype-online-status'); _e(': ', 'skype-online-status') ?></label><input type="text" style="width: 250px;" name="user_name" id="user_name" value="<?php echo stripslashes(htmlspecialchars(Skype_Online_Status::$config['user_name'])) ?>" /> <a href="#username_info" class="info">?</a></p>
 			<blockquote id="username_info" style="display:none"><em><?php _e('Your full name as you want it to appear in Skype links, link-titles and image alt-texts on your blog.', 'skype-online-status') ?></em></blockquote>
@@ -59,7 +59,7 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 		<fieldset class="options">
 			<br /><h4><?php _e('Display &amp; Function', 'skype-online-status') ?></h4>
 			<p><?php _e('These settings define which options should be used to replace their respective tag (if present) in the selected template file. If unchecked, the tags will be blanked out.','skype-online-status') ?></p> 
-			<p><input type="checkbox" name="use_voicemail" id="use_voicemail"<?php if ( Skype_Online_Status::$config['use_voicemail'] == "on" ) { print " checked=\"checked\""; } ?> /> <label for="use_voicemail"><?php printf(__('Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s.', 'skype-online-status'),"<strong>".__('Leave me voicemail', 'skype-online-status')."</strong>", '<a href="http://www.tkqlhce.com/click-3049686-10520919" target="_top">'.__('SkypeIn','skype-online-status').'</a><img src="http://www.ftjcfx.com/image-3049686-10520919" width="1" height="1" style="border:0" alt="" />', '<a href="http://www.tkqlhce.com/click-3049686-10423078" target="_top">'.__('Skype Voicemail','skype-online-status').'</a>
+			<p><input type="checkbox" name="use_voicemail" id="use_voicemail"<?php if ( Skype_Online_Status::$config['use_voicemail'] == "on" ) { print " checked=\"checked\""; } ?> /> <label for="use_voicemail"><?php printf(__('Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s.', 'skype-online-status'),"<strong>".__('Leave me voicemail', 'skype-online-status')."</strong>", '<a href="https://support.skype.com/en/category/ONLINE_NUMBER_SKYPEIN/" target="_top">'.__('SkypeIn','skype-online-status').'</a><img src="http://www.ftjcfx.com/image-3049686-10520919" width="1" height="1" style="border:0" alt="" />', '<a href="https://support.skype.com/en/category/VOICEMAIL/" target="_top">'.__('Skype Voicemail','skype-online-status').'</a>
 <img src="http://www.ftjcfx.com/image-3049686-10423078" width="1" height="1" style="border:0" alt="" />') ?></label>
 			<br /><input type="checkbox" name="use_function" id="use_function"<?php if ( Skype_Online_Status::$config['use_function'] == "on" ) { print " checked=\"checked\""; } ?> /> <label for="use_function"><?php printf(__('Use %1$s (define below) for %2$s tags.', 'skype-online-status'),"<strong>".__('Action text', 'skype-online-status')."</strong>","{add/call/chat/userinfo/voicemail/sendfile}") ?></label>
 			<br /><label for="use_status"><strong><?php _e('Status texts', 'skype-online-status') ?></strong> <?php printf(__('for the %s tag', 'skype-online-status'),"{status}"); _e(': ', 'skype-online-status') ?></label><select name="use_status" id="use_status">
@@ -307,18 +307,7 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 
 	public static function meta_box_more($object, $data) {
 		?>
-			<ul>
-				<li><a href="http://www.anrdoezrs.net/click-4119525-10420859?url=http%3A%2F%2Fwww.skype.com%2Fallfeatures%2Fcallphones%2F%2F%3Fcm_mmc%3Daffiliate%2D%5F%2Dcommission%5Fjunction%2D%5F%2Dlink%2D%5F%2Dbuilder" title="<?php _e('SkypeOut','skype-online-status') ?>" 
-onmouseover="window.status='http://www.skype.com';return true;" onmouseout="window.status=' ';return true;"><?php _e('SkypeOut','skype-online-status'); _e(': ','skype-online-status'); _e('Call any phone directly from Skype.','skype-online-status') ?></a></li>
-				<li><a href="http://www.anrdoezrs.net/click-4119525-10420859?url=http%3A%2F%2Fwww.skype.com%2Fallfeatures%2Fonlinenumber%2F%2F%3Fcm_mmc%3Daffiliate%2D%5F%2Dcommission%5Fjunction%2D%5F%2Dlink%2D%5F%2Dbuilder" title="<?php _e('SkypeIn','skype-online-status') ?>" 
-onmouseover="window.status='http://www.skype.com';return true;" onmouseout="window.status=' ';return true;"><?php _e('SkypeIn','skype-online-status'); _e(': ','skype-online-status'); _e('Your personal online number.','skype-online-status') ?></a></li>
-				<li><a href="http://www.anrdoezrs.net/click-4119525-10420859?url=http%3A%2F%2Fwww.skype.com%2Fallfeatures%2Fvoicemail%2F%2F%3Fcm_mmc%3Daffiliate%2D%5F%2Dcommission%5Fjunction%2D%5F%2Dlink%2D%5F%2Dbuilder" title="<?php _e('Skype Voicemail','skype-online-status') ?>" onmouseover="window.status='http://www.skype.com';return true;" onmouseout="window.status=' ';return true;"><?php _e('Skype Voicemail','skype-online-status'); _e(': ','skype-online-status'); _e('Never miss a call!','skype-online-status');?></a></li>
-				<li><a href="http://www.anrdoezrs.net/click-4119525-10420859?url=http%3A%2F%2Fwww.skype.com%2Fallfeatures%2Faccessories%2F%2F%3Fcm_mmc%3Daffiliate%2D%5F%2Dcommission%5Fjunction%2D%5F%2Dlink%2D%5F%2Dbuilder" title="Skype Accessories" 
-onmouseover="window.status='http://www.skype.com';return true;" onmouseout="window.status=' ';return true;"><?php _e('Accessories: Get the most out of Skype!','skype-online-status') ?></a></li>
-			</ul>
-
-			<br />
-			<iframe frameborder="0" scrolling="no" allowtransparency="yes" style="margin:0;padding:0;border:none;width:100%;height:110px" src="http://status301.net/skype-online-status/ads/?ad=110&amp;ref=<?php echo rawurlencode( 'http://' . $_SERVER['HTTP_HOST'] ); ?>"></iframe>
+			<iframe frameborder="0" scrolling="no" allowtransparency="yes" style="margin:0;padding:0;border:none;width:100%;height:700px" src="http://status301.net/skype-online-status/ads/?ad=xxl&amp;ref=<?php echo rawurlencode( 'http://' . $_SERVER['HTTP_HOST'] ); ?>"></iframe>
 		<?php
 	}
 
@@ -326,10 +315,13 @@ onmouseover="window.status='http://www.skype.com';return true;" onmouseout="wind
 	public static function meta_box_resources($object, $data) {
 		?>
 			<ul>
-				<li><a target="blank" href="http://www.skype.com/intl/en/tell-a-friend/get-a-skype-button/"><?php _e('Skype Buttons','skype-online-status') ?></a></li>
-				<li><a target="blank" href="http://www.skype.com/intl/en/tell-a-friend/wizard/" target="_blank"><?php _e('Skype buttons wizard','skype-online-status') ?></a></li>
-				<li><a target="blank" href="http://mystatus.skype.com/<?php echo Skype_Online_Status::$config['skype_id'] ?>"><?php printf(__('View %s\'s online status on the Skype server','skype-online-status'),Skype_Online_Status::$config['skype_id']) ?></a></li>
-				<li><a class="thickbox thickbox-preview" target="blank" href="http://c.skype.com/i/legacy/images/share/buttons/privacy_shot.jpg"><?php _e('Edit Privacy Options in your Skype client','skype-online-status') ?></a></li>
+				<li><a target="_blank" href="http://www.skype.com/en/features/skype-buttons/create-skype-buttons/"><?php _e('Skype Buttons','skype-online-status') ?></a></li>
+				<li><a target="_blank" class="thickbox thickbox-preview" href="http://mystatus.skype.com/<?php echo Skype_Online_Status::$config['skype_id'] ?>?TB_iframe=true&amp;width=130&amp;=60"><?php printf(__('View %s\'s online status on the Skype server','skype-online-status'),Skype_Online_Status::$config['skype_id']) ?></a></li>
+				<li><a target="_blank" class="thickbox thickbox-preview" href="http://c.skype.com/i/legacy/images/share/buttons/privacy_shot.jpg"><?php _e('Edit Privacy Options in your Skype client','skype-online-status') ?></a></li>
+				<li><a target="_blank" href="https://support.skype.com/category/CALLING_PHONES_SKYPEOUT/" title="<?php _e('SkypeOut','skype-online-status') ?>"><?php _e('SkypeOut','skype-online-status'); _e(': ','skype-online-status'); _e('Call any phone directly from Skype.','skype-online-status') ?></a></li>
+				<li><a target="_blank" href="https://support.skype.com/category/ONLINE_NUMBER_SKYPEIN/" title="<?php _e('SkypeIn','skype-online-status') ?>"><?php _e('SkypeIn','skype-online-status'); _e(': ','skype-online-status'); _e('Your personal online number.','skype-online-status') ?></a></li>
+				<li><a target="_blank" href="https://support.skype.com/category/VOICEMAIL/" title="<?php _e('Skype Voicemail','skype-online-status') ?>"><?php _e('Skype Voicemail','skype-online-status'); _e(': ','skype-online-status'); _e('Never miss a call!','skype-online-status');?></a></li>
+				<li><a target="_blank" href="https://support.skype.com/category/GROUP_VIDEO_CALLING/" title="<?php _e('Group Video calling','skype-online-status') ?>"><?php _e('Group Video calling','skype-online-status'); ?></a></li>
 			</ul>
 		<?php
 	}
@@ -491,7 +483,7 @@ onmouseover="window.status='http://www.skype.com';return true;" onmouseout="wind
 
       <div id="settings" style="min-height: 800px;">
 
-<iframe frameborder="0" scrolling="no" allowtransparency="yes" style="float:right;margin:0 0 0 5px;padding:0;border:0;width:450px;height:220px;background-color:transparent" src="http://status301.net/skype-online-status/ads/?ad=top&amp;ref=<?php echo rawurlencode( 'http://' . $_SERVER['HTTP_HOST'] ); ?>" id="ad_big"></iframe>
+	  <iframe frameborder="0" scrolling="no" allowtransparency="yes" style="float:right;margin:0 0 0 5px;padding:0;border:0;width:450px;height:220px;background-color:transparent" src="http://status301.net/skype-online-status/ads/?ad=top&amp;ref=<?php echo rawurlencode( 'http://' . $_SERVER['HTTP_HOST'] ); ?>" id="ad_big"></iframe>
 
 	  <p style="text-align:justify"><?php _e('Define all your <em>default</em> Skype Status settings here.', 'skype-online-status') ?> 
 		<?php printf(__('Start simply by setting the basics like %1$s, %2$s and the button %3$s you want to show on your blog.', 'skype-online-status'),"<strong>".__('Skype ID', 'skype-online-status')."</strong>","<strong>".__('Full Name', 'skype-online-status')."</strong>","<strong>".__('Theme', 'skype-online-status')."</strong>") ?> 

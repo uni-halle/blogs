@@ -50,7 +50,7 @@ class Mixin_MediaRSS_Controller extends Mixin
         {
             // retrieve by transient id
             $factory           = $this->object->get_registry()->get_utility('I_Component_Factory');
-            $displayed_gallery = $factory->create('displayed_gallery', $mapper);
+            $displayed_gallery = $factory->create('displayed_gallery', NULL, $mapper);
             $displayed_gallery->apply_transient($transient_id);
         }
         elseif (($params = $this->object->param('params')))
@@ -58,7 +58,7 @@ class Mixin_MediaRSS_Controller extends Mixin
             // Create the displayed gallery based on the URL parameters
 			$factory = $this->object->get_registry()->get_utility('I_Component_Factory');
 			$displayed_gallery = $factory->create(
-				'displayed_gallery', $mapper, json_decode($params)
+				'displayed_gallery', json_decode($params), $mapper
 			);
 		}
 
@@ -96,16 +96,16 @@ class Mixin_MediaRSS_Controller extends Mixin
 	 */
 	function _get_feed_copyright($displayed_gallery)
 	{
-		$site_url = $this->object->get_site_url();
+		$base_url = $this->object->get_base_url();
 		$blog_name	= get_option('blogname');
-		return "Copyright (C) {$blog_name} ({$site_url})";
+		return "Copyright (C) {$blog_name} ({$base_url})";
 	}
 
 	/**
 	 * Gets the Site URL
 	 * @return string
 	 */
-	function get_site_url()
+	function get_base_url()
 	{
 		$router		= $this->get_registry()->get_utility('I_Router');
 		return $router->get_base_url();
@@ -128,7 +128,7 @@ class Mixin_MediaRSS_Controller extends Mixin
 	 */
 	function _get_feed_link($displayed_gallery)
 	{
-		return $this->object->get_site_url();
+		return $this->object->get_base_url();
 	}
 
 

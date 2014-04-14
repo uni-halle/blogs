@@ -1,0 +1,926 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Alexandria\n"
+"POT-Creation-Date: 2013-08-24 15:46+0530\n"
+"PO-Revision-Date: 2013-08-24 15:51+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;__ngettext:1,2;_n:1,2;"
+"__ngettext_noop:1,2;_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;"
+"_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
+"esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: ../404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: ../404.php:19
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: ../404.php:27
+msgid "Most Used Categories"
+msgstr ""
+
+#: ../404.php:44
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: ../archive.php:31 ../index.php:31
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: ../archive.php:39 ../index.php:39
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: ../archive.php:42 ../index.php:42
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: ../archive.php:45 ../index.php:45
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: ../archive.php:48 ../index.php:48
+msgid "Asides"
+msgstr ""
+
+#: ../archive.php:51 ../index.php:51
+msgid "Images"
+msgstr ""
+
+#: ../archive.php:54 ../index.php:54
+msgid "Videos"
+msgstr ""
+
+#: ../archive.php:57 ../index.php:57
+msgid "Quotes"
+msgstr ""
+
+#: ../archive.php:60 ../index.php:60
+msgid "Links"
+msgstr ""
+
+#: ../archive.php:63 ../footer-one.php:24 ../footer-one.php:52
+#: ../footer-two.php:24 ../footer-two.php:38 ../index.php:63 ../sidebar.php:17
+msgid "Archives"
+msgstr ""
+
+#: ../comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../comments.php:36 ../comments.php:56
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:37 ../comments.php:57
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:38 ../comments.php:58
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: ../content-aside.php:20 ../content.php:24
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../content-aside.php:23 ../content-page.php:18 ../content-single.php:36
+#: ../content.php:27 ../image.php:60
+msgid "Pages:"
+msgstr ""
+
+#: ../content-aside.php:35 ../content-aside.php:45 ../content-single.php:46
+#: ../content-single.php:49 ../content.php:39 ../content.php:49
+msgid " "
+msgstr ""
+
+#: ../content-aside.php:39 ../content.php:43
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: ../content-aside.php:49 ../content.php:53
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: ../content-aside.php:60 ../content.php:60
+msgid "Leave a comment"
+msgstr ""
+
+#: ../content-aside.php:60 ../content.php:60
+msgid "1 Comment"
+msgstr ""
+
+#: ../content-aside.php:60 ../content.php:60
+msgid "% Comments"
+msgstr ""
+
+#: ../content-aside.php:64 ../content-page.php:23 ../content-single.php:79
+#: ../content.php:64 ../image.php:34 ../image.php:78
+#: ../inc/template-tags.php:71 ../inc/template-tags.php:97
+msgid "Edit"
+msgstr ""
+
+#: ../content-single.php:54 ../content-single.php:62
+#, php-format
+msgid "Tags : %2$s"
+msgstr ""
+
+#: ../content-single.php:54 ../content-single.php:56 ../content-single.php:62
+#: ../content-single.php:64
+#, php-format
+msgid ""
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>"
+msgstr ""
+
+#: ../content-single.php:62 ../content-single.php:64
+#, php-format
+msgid "Categories : %1$s"
+msgstr ""
+
+#: ../footer-one.php:10 ../footer-two.php:10
+msgid "&copy; All rights reserved."
+msgstr ""
+
+#: ../footer-one.php:12 ../footer-two.php:12
+#, php-format
+msgid "Designed by: %1$s."
+msgstr ""
+
+#: ../footer-one.php:14 ../footer-two.php:14
+msgid "A Semantic Personal Publishing Platform"
+msgstr ""
+
+#: ../footer-one.php:14 ../footer-two.php:14 ../inc/template-tags.php:87
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: ../footer-one.php:37 ../sidebar.php:24
+msgid "Meta"
+msgstr ""
+
+#: ../functions.php:65
+msgid "Primary Menu"
+msgstr ""
+
+#: ../functions.php:105
+msgid "Sidebar"
+msgstr ""
+
+#: ../functions.php:113
+msgid "Footer Left Sidebar"
+msgstr ""
+
+#: ../functions.php:122
+msgid "Footer Center Sidebar"
+msgstr ""
+
+#: ../functions.php:131
+msgid "Footer Right Sidebar"
+msgstr ""
+
+#: ../functions.php:213
+msgid "Select a Menu to appear here in Dashboard->Appearance->Menus "
+msgstr ""
+
+#: ../functions.php:220
+msgid "Home"
+msgstr ""
+
+#: ../header.php:60 ../header.php:83
+msgid "Skip to content"
+msgstr ""
+
+#: ../image.php:23
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+msgstr ""
+
+#: ../image.php:39
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr ""
+
+#: ../image.php:40
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../image.php:69
+#, php-format
+msgid ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
+"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
+"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+
+#: ../image.php:71
+#, php-format
+msgid ""
+"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+msgstr ""
+
+#: ../image.php:73
+msgid ""
+"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
+"\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+
+#: ../image.php:75
+msgid "Both comments and trackbacks are currently closed."
+msgstr ""
+
+#: ../index-bone.php:10 ../index-btwo.php:12
+msgid "Welcome Headline Comes Here"
+msgstr ""
+
+#: ../index-bone.php:20
+msgid ""
+"You can change this text in welcome text box of welcome section block in Biz "
+"one tab of theme options page. You can change this text in welcome text box "
+"of welcome section block in Biz two tab of theme options page."
+msgstr ""
+
+#: ../index-bone.php:51 ../index-btwo.php:53
+msgid "Design"
+msgstr ""
+
+#: ../index-bone.php:62 ../index-btwo.php:64
+msgid ""
+"You can change this text in description box of left section block in Biz two "
+"tab of theme options page."
+msgstr ""
+
+#: ../index-bone.php:89 ../index-btwo.php:100
+msgid "Development"
+msgstr ""
+
+#: ../index-bone.php:100 ../index-btwo.php:113
+msgid ""
+"You can change this text in description box of center section block in Biz "
+"two tab of theme options page."
+msgstr ""
+
+#: ../index-bone.php:127 ../index-btwo.php:150
+msgid "Marketing"
+msgstr ""
+
+#: ../index-bone.php:138 ../index-btwo.php:163
+msgid ""
+"You can change this text in description box of right section block in Biz "
+"two tab of theme options page."
+msgstr ""
+
+#: ../index-bone.php:157 ../index-btwo.php:185
+msgid ""
+"You can change this text in quote box of quote section block in Biz two tab "
+"of theme options page. You can change this text in quote box of quote "
+"section block in Biz two tab of theme options page."
+msgstr ""
+
+#: ../index-bone.php:171 ../index-btwo.php:199
+msgid "Mac Taylor"
+msgstr ""
+
+#: ../index-btwo.php:22
+msgid ""
+"You can change this text in welcome text box of welcome section block in Biz "
+"two tab of theme options page. You can change this text in welcome text box "
+"of welcome section block in Biz two tab of theme options page."
+msgstr ""
+
+#: ../index-btwo.php:214
+msgid "Portfolio"
+msgstr ""
+
+#: ../no-results.php:13
+msgid "Nothing Found"
+msgstr ""
+
+#: ../no-results.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../no-results.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: ../no-results.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: ../options.php:27
+msgid "No"
+msgstr ""
+
+#: ../options.php:27
+msgid "Yes"
+msgstr ""
+
+#: ../options.php:39
+msgid "Select a page:"
+msgstr ""
+
+#: ../options.php:54
+msgid "Theme Notice"
+msgstr ""
+
+#: ../options.php:55
+msgid ""
+"Version 2 is completely rewritten. In V2, you do not have to set \"front "
+"page displays\" to \"static page\" for the bizone and biztwo layouts to "
+"work. If you made a child theme for previous version, it will probably not "
+"work with this version. You can continue using older version or create a new "
+"child theme."
+msgstr ""
+
+#: ../options.php:59 ../options.php:62
+msgid "Select a Skin"
+msgstr ""
+
+#: ../options.php:63
+msgid ""
+"If you are not using child theme, selecting child theme will be same as "
+"using alexandria skin. If you are using child theme, then lite.css from the "
+"child theme will be used."
+msgstr ""
+
+#: ../options.php:76
+msgid "Single Post Settings"
+msgstr ""
+
+#: ../options.php:79
+msgid "Show Featured Image?"
+msgstr ""
+
+#: ../options.php:80
+msgid "Select yes if you want to show featured image."
+msgstr ""
+
+#: ../options.php:87
+msgid "Show Ratings?"
+msgstr ""
+
+#: ../options.php:88
+msgid "Select yes if you want to show ratings under post title."
+msgstr ""
+
+#: ../options.php:95
+msgid "Show Posted by and Date?"
+msgstr ""
+
+#: ../options.php:96
+msgid "Select yes if you want to show Posted by and Date under post title."
+msgstr ""
+
+#: ../options.php:103
+msgid "Show Categories and Tags?"
+msgstr ""
+
+#: ../options.php:104
+msgid "Select yes if you want to show categories under post title."
+msgstr ""
+
+#: ../options.php:111
+msgid "Show Next/Previous Box"
+msgstr ""
+
+#: ../options.php:112
+msgid "Select yes if you want to show Next/Previous box on single post page."
+msgstr ""
+
+#: ../options.php:130 ../admin/options-framework.php:285
+msgid "Social Settings"
+msgstr ""
+
+#: ../options.php:133
+msgid "Twitter"
+msgstr ""
+
+#: ../options.php:134
+msgid "Enter your twitter id"
+msgstr ""
+
+#: ../options.php:139
+msgid "Redditt"
+msgstr ""
+
+#: ../options.php:140
+msgid "Enter your reddit url"
+msgstr ""
+
+#: ../options.php:145
+msgid "Facebook"
+msgstr ""
+
+#: ../options.php:146
+msgid "Enter your facebook url"
+msgstr ""
+
+#: ../options.php:151
+msgid "Stumble"
+msgstr ""
+
+#: ../options.php:152
+msgid "Enter your stumbleupon url"
+msgstr ""
+
+#: ../options.php:157
+msgid "Flickr"
+msgstr ""
+
+#: ../options.php:158
+msgid "Enter your flickr url"
+msgstr ""
+
+#: ../options.php:163
+msgid "LinkedIn"
+msgstr ""
+
+#: ../options.php:164
+msgid "Enter your linkedin url"
+msgstr ""
+
+#: ../options.php:169
+msgid "Google"
+msgstr ""
+
+#: ../options.php:170
+msgid "Enter your google url"
+msgstr ""
+
+#: ../options.php:183
+msgid "Logo Section Settings"
+msgstr ""
+
+#: ../options.php:186
+msgid "Logo Section Layout"
+msgstr ""
+
+#: ../options.php:190
+msgid "Select a layout"
+msgstr ""
+
+#: ../options.php:191
+msgid "Images for logo section."
+msgstr ""
+
+#: ../options.php:208
+msgid "Select Header Type"
+msgstr ""
+
+#: ../options.php:211
+msgid "Select which type of header"
+msgstr ""
+
+#: ../options.php:212
+msgid ""
+"Header One or WordPress Custom header feature. If you select custom header, "
+"go to appearance->Header and set a custom header"
+msgstr ""
+
+#: ../options.php:225
+msgid "Header On/Off Settings"
+msgstr ""
+
+#: ../options.php:229
+msgid "Show Header on homepage"
+msgstr ""
+
+#: ../options.php:230
+msgid "Select yes if you want to show Header on homepage."
+msgstr ""
+
+#: ../options.php:237
+msgid "Show Header on Single post page"
+msgstr ""
+
+#: ../options.php:238
+msgid "Select yes if you want to show Header on Single post page."
+msgstr ""
+
+#: ../options.php:245
+msgid "Show Header on Pages"
+msgstr ""
+
+#: ../options.php:246
+msgid "Select yes if you want to show Header on Pages."
+msgstr ""
+
+#: ../options.php:253
+msgid "Show Header on Category Pages"
+msgstr ""
+
+#: ../options.php:254
+msgid "Select yes if you want to show Header on Category Pages."
+msgstr ""
+
+#: ../options.php:268 ../admin/options-framework.php:289
+msgid "Header One Settings"
+msgstr ""
+
+#: ../options.php:271 ../options.php:336 ../options.php:475
+msgid "Welcome Section"
+msgstr ""
+
+#: ../options.php:274 ../options.php:355 ../options.php:381 ../options.php:407
+#: ../options.php:494 ../options.php:520 ../options.php:546 ../options.php:596
+#: ../options.php:616 ../options.php:636 ../options.php:656
+msgid "Upload Image"
+msgstr ""
+
+#: ../options.php:275 ../options.php:356 ../options.php:382 ../options.php:408
+#: ../options.php:495 ../options.php:521 ../options.php:547 ../options.php:597
+#: ../options.php:617 ../options.php:637 ../options.php:657
+msgid "Upload your image here."
+msgstr ""
+
+#: ../options.php:279 ../options.php:339 ../options.php:360 ../options.php:386
+#: ../options.php:412 ../options.php:478 ../options.php:499 ../options.php:525
+#: ../options.php:551
+msgid "Headline"
+msgstr ""
+
+#: ../options.php:280 ../options.php:340 ../options.php:361 ../options.php:387
+#: ../options.php:413 ../options.php:479 ../options.php:500 ../options.php:526
+#: ../options.php:552
+msgid "Enter the headline"
+msgstr ""
+
+#: ../options.php:284
+msgid "Feature text"
+msgstr ""
+
+#: ../options.php:285
+msgid "Enter the feature text"
+msgstr ""
+
+#: ../options.php:289
+msgid "Call To Action text"
+msgstr ""
+
+#: ../options.php:290
+msgid "Enter the text"
+msgstr ""
+
+#: ../options.php:294
+msgid "Call To Action Link"
+msgstr ""
+
+#: ../options.php:295
+msgid "Enter the full url"
+msgstr ""
+
+#: ../options.php:310
+msgid "Layout Settings"
+msgstr ""
+
+#: ../options.php:313
+msgid "Select a homepage layout"
+msgstr ""
+
+#: ../options.php:314 ../options.php:716
+msgid "Images for layout."
+msgstr ""
+
+#: ../options.php:332 ../admin/options-framework.php:291
+msgid "Biz One Settings"
+msgstr ""
+
+#: ../options.php:344 ../options.php:365 ../options.php:391 ../options.php:417
+#: ../options.php:483 ../options.php:504 ../options.php:530 ../options.php:556
+msgid "Welcome text"
+msgstr ""
+
+#: ../options.php:345 ../options.php:366 ../options.php:392 ../options.php:418
+#: ../options.php:484 ../options.php:505 ../options.php:531 ../options.php:557
+msgid "Enter the welcome text"
+msgstr ""
+
+#: ../options.php:352
+msgid "Left Section"
+msgstr ""
+
+#: ../options.php:370 ../options.php:396 ../options.php:422 ../options.php:509
+#: ../options.php:535 ../options.php:561 ../options.php:606 ../options.php:626
+#: ../options.php:646 ../options.php:666
+msgid "Link"
+msgstr ""
+
+#: ../options.php:371 ../options.php:397 ../options.php:423 ../options.php:510
+#: ../options.php:536 ../options.php:562
+msgid "Enter the link to product or service"
+msgstr ""
+
+#: ../options.php:378
+msgid "Center Section"
+msgstr ""
+
+#: ../options.php:404
+msgid "Right Section"
+msgstr ""
+
+#: ../options.php:430 ../options.php:569
+msgid "Quote Section"
+msgstr ""
+
+#: ../options.php:433 ../options.php:572
+msgid "Show Quote?"
+msgstr ""
+
+#: ../options.php:434 ../options.php:573
+msgid "Select yes if you want to show quote."
+msgstr ""
+
+#: ../options.php:441 ../options.php:580
+msgid "Quote"
+msgstr ""
+
+#: ../options.php:442 ../options.php:581
+msgid "Enter the Quote Text"
+msgstr ""
+
+#: ../options.php:446 ../options.php:585
+msgid "Customer Name"
+msgstr ""
+
+#: ../options.php:447
+msgid "Enter the customer name"
+msgstr ""
+
+#: ../options.php:454 ../options.php:673
+msgid "Recent Posts"
+msgstr ""
+
+#: ../options.php:457 ../options.php:676
+msgid "Show Recent Posts Section?"
+msgstr ""
+
+#: ../options.php:458 ../options.php:677
+msgid "Select yes if you want to recent posts at the bottom."
+msgstr ""
+
+#: ../options.php:472 ../admin/options-framework.php:292
+msgid "Biz Two Settings"
+msgstr ""
+
+#: ../options.php:491
+msgid "Top Section"
+msgstr ""
+
+#: ../options.php:517
+msgid "Middle Section"
+msgstr ""
+
+#: ../options.php:543
+msgid "Bottom Section"
+msgstr ""
+
+#: ../options.php:586
+msgid "Enter the Customer Name"
+msgstr ""
+
+#: ../options.php:593
+msgid "Portfolio Item # 1"
+msgstr ""
+
+#: ../options.php:601 ../options.php:621 ../options.php:641 ../options.php:661
+msgid "Name"
+msgstr ""
+
+#: ../options.php:602 ../options.php:642 ../options.php:662
+msgid "Enter the project name"
+msgstr ""
+
+#: ../options.php:607 ../options.php:627 ../options.php:647 ../options.php:667
+msgid "Enter the link to project"
+msgstr ""
+
+#: ../options.php:613
+msgid "Portfolio Item # 2"
+msgstr ""
+
+#: ../options.php:622
+msgid "Enter the project name."
+msgstr ""
+
+#: ../options.php:633
+msgid "Portfolio Item # 3"
+msgstr ""
+
+#: ../options.php:653
+msgid "Portfolio Item # 4"
+msgstr ""
+
+#: ../options.php:691
+msgid "Standard Page Settings"
+msgstr ""
+
+#: ../options.php:694
+msgid "Show Comments?"
+msgstr ""
+
+#: ../options.php:695
+msgid "Select yes if you want to show comments"
+msgstr ""
+
+#: ../options.php:709
+msgid "Footer Settings"
+msgstr ""
+
+#: ../options.php:712
+msgid "Footer Layouts"
+msgstr ""
+
+#: ../options.php:715
+msgid "Select a footer layout"
+msgstr ""
+
+#: ../search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../searchform.php:10 ../searchform.php:11
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: ../searchform.php:11
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr ""
+
+#: ../searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#: ../slider-one.php:26
+msgid "Responsive Business Theme"
+msgstr ""
+
+#: ../slider-one.php:35
+msgid ""
+"You can change this text in Slider One settings tab of theme options page. "
+"Write something awesome to make your website ridiculously fabulous."
+msgstr ""
+
+#: ../slider-one.php:45
+msgid "Continue Reading"
+msgstr ""
+
+#: ../admin/options-framework.php:169 ../admin/options-framework.php:450
+msgid "Theme Options"
+msgstr ""
+
+#: ../admin/options-framework.php:284
+msgid "General"
+msgstr ""
+
+#: ../admin/options-framework.php:284 ../admin/options-framework.php:286
+#: ../admin/options-framework.php:288 ../admin/options-framework.php:290
+#: ../admin/options-framework.php:294
+msgid "Settings"
+msgstr ""
+
+#: ../admin/options-framework.php:286
+msgid "Logo Section"
+msgstr ""
+
+#: ../admin/options-framework.php:288
+msgid "Header"
+msgstr ""
+
+#: ../admin/options-framework.php:290
+msgid "Layout"
+msgstr ""
+
+#: ../admin/options-framework.php:293
+msgid "Standard Blog Settings"
+msgstr ""
+
+#: ../admin/options-framework.php:294
+msgid "Footer"
+msgstr ""
+
+#: ../admin/options-framework.php:314
+msgid "Save Options"
+msgstr ""
+
+#: ../admin/options-framework.php:315
+msgid "Restore Defaults"
+msgstr ""
+
+#: ../admin/options-framework.php:315
+msgid "Click OK to reset. Any theme settings will be lost!"
+msgstr ""
+
+#: ../admin/options-framework.php:351
+msgid "Default options restored."
+msgstr ""
+
+#: ../admin/options-framework.php:392
+msgid "Options saved."
+msgstr ""
+
+#: ../admin/options-medialibrary-uploader.php:26
+msgid "Options Framework Internal Container"
+msgstr ""
+
+#: ../admin/options-medialibrary-uploader.php:128
+msgid "Upload"
+msgstr ""
+
+#: ../admin/options-medialibrary-uploader.php:151
+msgid "View File"
+msgstr ""
+
+#: ../admin/options-medialibrary-uploader.php:288
+msgid "Gallery"
+msgstr ""
+
+#: ../admin/options-medialibrary-uploader.php:288
+msgid "Previously Uploaded"
+msgstr ""
+
+#: ../inc/extras.php:66
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ../inc/template-tags.php:34
+msgid "Post navigation"
+msgstr ""
+
+#: ../inc/template-tags.php:44
+msgid "Older posts"
+msgstr ""
+
+#: ../inc/template-tags.php:48
+msgid "Newer posts"
+msgstr ""
+
+#: ../inc/template-tags.php:71
+msgid "Pingback:"
+msgstr ""
+
+#: ../inc/template-tags.php:92
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: ../inc/template-tags.php:101
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../inc/template-tags.php:191
+#, php-format
+msgid ""
+"<span class=\"posted-on\">Posted on %1$s</span><span class=\"byline\"> by "
+"%2$s</span>"
+msgstr ""
+
+#: ../inc/template-tags.php:199
+#, php-format
+msgid "View all posts by %s"
+msgstr ""

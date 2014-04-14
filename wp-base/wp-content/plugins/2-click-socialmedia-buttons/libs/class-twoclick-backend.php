@@ -38,16 +38,6 @@ if(!class_exists('Twoclick_Social_Media_Buttons_Backend')) {
 		private $obj_screen;
 
 		/**
-		 * PHP 4 Constructor
-		 *
-		 * @since 1.0
-		 * @author ppfeufer
-		 */
-		function Twoclick_Social_Media_Buttons_Backend() {
-			Twoclick_Social_Media_Buttons_Backend::__construct();
-		} // END function Twoclick_Social_Media_Buttons_Backend()
-
-		/**
 		 * PHP 5 Constructor
 		 *
 		 * @since 1.0

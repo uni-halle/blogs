@@ -90,13 +90,13 @@ class WP_Skeleton_Logger {
     }
 
     private function write($entry) {
-        $file = fopen(AWPCP_DIR . '/DEBUG', 'a');
+        $file = fopen(AWPCP_DIR . '/debug.log', 'a');
         fwrite($file, print_r($entry['var'], true) . "\n");
         fclose($file);
     }
 
     public function show() {
-        if (!file_exists(AWPCP_DIR . '/DEBUG')) {
+        if ( ! get_option( 'awpcp-debug', false ) ) {
             return;
         }
 

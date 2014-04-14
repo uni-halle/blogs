@@ -1,11 +1,30 @@
 <?php
 
-class C_NextGen_Data_Installer
+class C_NextGen_Data_Installer extends C_NggLegacy_Installer
 {
 	function get_registry()
 	{
 		return C_Component_Registry::get_instance();
 	}
+
+	function install()
+	{
+         $this->remove_table_extra_options();
+	}
+
+    function remove_table_extra_options()
+    {
+        global $wpdb;
+
+        $likes = array(
+            "option_name LIKE '%ngg_gallery%'",
+            "option_name LIKE '%ngg_pictures%'",
+            "option_name LIKE '%ngg_album%'"
+        );
+
+        $sql = "DELETE FROM {$wpdb->options} WHERE ".implode(" OR ", $likes);
+        $wpdb->query($sql);
+    }
 
 	function uninstall($hard = FALSE)
 	{

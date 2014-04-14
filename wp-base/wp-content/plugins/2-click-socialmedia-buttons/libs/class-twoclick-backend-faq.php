@@ -26,12 +26,8 @@ if(!class_exists('Twoclick_Social_Media_Buttons_Backend_Faq')) {
 	class Twoclick_Social_Media_Buttons_Backend_Faq extends Twoclick_Social_Media_Buttons_Backend {
 
 		/**
-		 * Konstruktoren
+		 * Konstruktor
 		 */
-		function Twoclick_Social_Media_Buttons_Backend_Faq() {
-			Twoclick_Social_Media_Buttons_Backend_Faq::__construct();
-		} // END function Twoclick_Social_Media_Buttons_Backend_Faq()
-
 		function __construct() {
 			if($this->_is_twoclick_settings_page()) {
 				$this->_get_faq();

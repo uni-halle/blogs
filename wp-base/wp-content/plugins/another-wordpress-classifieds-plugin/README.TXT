@@ -2,10 +2,10 @@
 Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
-Requires at least: 2.7
-Tested up to: 3.5.2
-Last Updated: 2013-Jul-5
-Stable tag: tags/3.0.1
+Requires at least: 3.5
+Tested up to: 3.8.1
+Last Updated: 2014-Mar-13
+Stable tag: tags/3.2.1
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -16,9 +16,9 @@ AWPCP Classifieds:  Great for increasing retention to your site, adding revenue 
 
 Add a classified ads section to your Wordpress site, quickly and easily.  
 Lots of features, very configurable.  Easy to setup.  Great support.
-We're the #1 Wordpress Classified Ads Plugin: 4+ years old and 200,000+ downloads!
+We're the #1 Wordpress Classified Ads Plugin: 6+ years old and 225,000+ downloads!
 
-NEW modules:  Comments/Ratings, Authorize.net and PayPal Pro Gateways!
+NEW module(s):  [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
 
 = Features =
  = Ad Features =
@@ -38,6 +38,8 @@ NEW modules:  Comments/Ratings, Authorize.net and PayPal Pro Gateways!
     13. Ads now support embedded videos
     14. Ads can have character limits, supported by plans (different plans can have different limits)
     15. Ads can be displayed on any page for a single category using shortcodes
+    16. Auto-verify ads with email links to post immediately upon click
+    17. Now allows ads to be 'Sent to Facebook' inside of ad management
  = Notification Features =
     1. Allow posters to be notified of expiring ads
     2. Allow admin to be notified when new ads are posted
@@ -46,13 +48,14 @@ NEW modules:  Comments/Ratings, Authorize.net and PayPal Pro Gateways!
     4. Admin can (optionally) be notified of expiring ads
  = Payment Features =
     1. Allows for paid or free ads
-    2. Supports PayPal and 2Checkout for paid ads
-    3. Google Checkout support for paid ads also through a Premium Module
-    4. Allow for image posting limits higher than free ads
-    5. Multiple fee scales for posting ads (allows you to have longer ad 
+    2. Supports PayPal, PayPal Pro and 2Checkout for paid ads
+    3. Allow for image posting limits higher than free ads
+    4. Multiple fee scales for posting ads (allows you to have longer ad 
        postings with higher fees)
-    6. Variable ad expiration lengths connected to fee scale 
+    5. Variable ad expiration lengths connected to fee scale 
        (e.g. allow ads	to run for 30 days for $10, 60 days for $15, etc)
+    6. Supports a "credit system" or pay with regular currency per ad.  Mix
+       and match if you want.
  = Ad Posting Controls =
     1. Allow admin to approve ads prior to posting
     2. Allow admin to approve images prior to posting
@@ -69,6 +72,9 @@ NEW modules:  Comments/Ratings, Authorize.net and PayPal Pro Gateways!
        ad creation/editing/delete.
     10. Admin can post ads on behalf of other users with the ads displaying as
         if the user posted them initially
+    11. Email verification step can be used to auto-post ads upon successful 
+        verification link click
+    12. Ads can be posted to a Facebook page
  = Image Features =
     1. Allow image posting or shut it off completely
     2. Control the number, filesize, height and width of images posted
@@ -87,8 +93,8 @@ NEW modules:  Comments/Ratings, Authorize.net and PayPal Pro Gateways!
        locale, so users don't see items they aren't physically near them, 
        also allows customization of the region types, such as 
        village, borough, etc)
-    4. Google Checkout (allows you to support Google Checkout as a 
-       payment method for paid ad posting)
+    4. PayPal Pro Support (allows you to have an embedded payment 
+        form on your site for use with PayPal Pro accounts)
     5. RSS Feeds (allows you syndicate your classifieds for your users to
        download in their favorite RSS reader and come back to your site
        more often!)
@@ -107,17 +113,18 @@ NEW modules:  Comments/Ratings, Authorize.net and PayPal Pro Gateways!
     9. Subscriptions (allows power users to place blocks of ads at a time,
        great for real estate agents, car dealers, anyone who wants to place ads in
        bulk.)
-    10. **NEW** Comments/Ratings (allows users to rate ads and place comments 
+    10. Comments/Ratings (allows users to rate ads and place comments 
         on them.)
-    11. **NEW** Authorize.net Payment Gateway (allows users to purchase ads, 
+    11. Authorize.net Payment Gateway (allows users to purchase ads, 
         subscriptions and credit plans using Authorize.net)
-    12. **NEW** PayPal Pro Support (allows you to have an embedded payment 
-        form on your site for use with PayPal Pro accounts)
+    11. **NEW** Attachments (allows users to attach PDFs, text files or other 
+        images to their classifieds (great for job boards!))
 
 = Premium Module Links: =
-* **NEW** [Comments/Ratings](http://awpcp.com/premium-modules/comments-ratings-module?ref=wp)
-* **NEW** [Authorize.net Gateway](http://www.awpcp.com/premium-modules/authorizenet-payment-module?ref=wp)
-* **NEW** [PayPal Pro Gateway](http://www.awpcp.com/premium-modules/paypalpro-payment-module?ref=wp)
+* **NEW** [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
+* [Comments/Ratings](http://awpcp.com/premium-modules/comments-ratings-module?ref=wp)
+* [Authorize.net Gateway](http://www.awpcp.com/premium-modules/authorizenet-payment-module?ref=wp)
+* [PayPal Pro Gateway](http://www.awpcp.com/premium-modules/paypalpro-payment-module?ref=wp)
 * [Extra Fields](http://awpcp.com/premium-modules/extra-fields-module?ref=wp)
 * [Region Control](http://awpcp.com/premium-modules/regions-control-module?ref=wp)
 * [Category Icons](http://awpcp.com/premium-modules/category-icons-module?ref=wp)
@@ -139,7 +146,7 @@ If you love the plugin, [please consider purchasing a Premium Module](http://awp
 
 == Credits ==
 
-Copyright 2009-13 awpcp.com
+Copyright 2009-14 awpcp.com
 
 AWPCP Classifieds icons courtesy of http://www.famfamfam.com/lab/icons/silk/
 dcfunctions.php used with permission under GPL by Dan Caragea http://www.datemill.com
@@ -199,6 +206,152 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+= Versions 3.0.2, 3.2, 3.2.1 =
+* NEW: Attachments module
+* NEW: Add support for email verification to post Ads
+* NEW: Add 'Send to Facebook' action to ad management (beta).
+* NEW: Add a preview step to the Place Ad workflow
+* Change "Select Category" to "All Categories" in Category dropdown in search contexts
+* Change "Select Option" to "All Users" in Users dropdown in search context
+* Globally change parameter 'awpcp-txn' name to 'transaction_id'
+* Add functions to fix rotation of uploaded images
+* Change Admin Categories query parameter to avoid conflict with WP Security
+* Add CSS media queries for elements in Place Ad * Order Step
+* Add setting to control word count in Ad excerpt
+* Sort users in user dropdown by display_name.
+* Add asterisk in front of required fields in Place Ad/Edit Ad form
+* Verify $attachments placeholder has been properly installed
+* Use bold font for subtitles in Single Ad view
+* Store selected number of results in Manage Categories section
+* Premium modules now perform compatibility checks at initialization.
+* Replace awpcp_time with awpcp_datetime.
+* Do not overwrite Ad info with Profile info on Edit.
+* Add setting to control the order of the Region Fields.
+* Add setting to show/hide the Ad Access Key in email notifications
+* Allow users to make phone, contact name and website private.
+* Fix Upload Image/Files step styles in admin screens.
+* Add support for posting Ads in multiple regions (with Subscriptions module only)
+* Add 'allow-regions-modification' setting for Multiple Reigons feature available with Subscriptions module.
+* Add JavaScript validation to warn user about duplicated regions
+* Add integration for WP Affiliate Platform plugin
+* Remove 'caticons' images from main plugin.
+* Use WP DB to insert new category rows
+* Add security hash to Renew Ad URL
+* Add compatibility with All In One SEO Pack
+* Make Categories list collapsible and add multiple dropdowns to choose a category
+* Add setting to control whether categories list are collapsible or not.
+* Send email to admin user when images are awaiting approval
+* Allow admin to decide which payment types (currency, credit) are accepted
+* Allow admin to control the file permissions of the uploads directory
+* Improved code to unzip image files in CSV Import
+* Allow search by category field to be hidden in Search Ads widget
+* Add support for GET extra field parameters in search form.
+* Improve Ad's layout in widgets.
+* Credits should be debited from the user account at the end of the transaction
+* Use WP functions to access database from get_total_imagesuploaded
+* Delete disabled Ads after 7 days (instead of 30).
+* Use plugin_dir_url and plugin_dir_path functions to get plugins path and urls.
+* Run clean up function daily. Ads are still deleted after they have been disabled for a full month.
+* Add verification to warn about duplicate page names
+* Add search by payer email on the Listings admin section
+* Fix hardcoded table name in Basic Regions API methods.
+* Add first version of unit test suite for AWPCP.
+* Add shortcode for a frontend Buy Credits page
+* Update plugin templates and CSS style to make it more responsive
+* Load jQuery Smoothness Theme using a protocol relative URL.
+* Add end_date, last_updated_date, renewed_date placholders
+* Add $parent_category_url and $parent_category_name placeholders
+* Update translation files.
+* Add links to View Ad and Return to Listings to media manager screen
+* Improve appearance of admin sections in WP 3.8.
+* Add setting to force secure URLs on payment pages
+* Add OpenGrap integration with Facebook Official Plugin
+* Generate proper canonical URLs when Yoast WordPress SEO is installed
+* Allow users to use wildcards in domains whitelist definitions.
+* Fix Unpaid filter in admin Listings section.
+* Update text in settings.
+* Multiple fixes in Categories admin section.
+* Improve Akismet configuration error message.
+* Clicking the name of category redirects the user to the Edit Category section.
+* Update CSV Importer screen texts.
+* Rename "Non Verified" filter in admin listing to "Unverified".
+* Add items_per_page parameter to AWPCPSHOWCAT shortcode
+* Move premium modules translations into their own files
+* Remove spaces around region names before saving them
+* Strip slashes from form data in Search Ads form
+* Use MySQL LIKE operator for searching Ads
+* Do not show upgrade notices to non admin users.
+* Fix Fatal error in hosts that do not have PHP EXIF extension.
+* Fix PHP error in showad function
+* Prevent Show Ad shortcode from being executed twice, or more times
+* Fix Manage Attachments link
+* Do not print HTML markup for the Multiple Region Selector if no fields are enabled
+* Remove unused css styles that caused conflicts with Easy Bootstrap Shortcode plugin
+* Fix translation problem in email messages
+* Fix users dropdown in Place Ad page to use less memory loading users info
+* Fix Fatal error in Comments & Ratings module
+* Preserve creation time when editing Ads
+* Mark images/attachments as enabled by default when image approve is off
+* Fix: Parent category was not being properly updated on Edit Ad
+* Remove theme conflict: Update JS code used to handle Delete Ad button
+* Fix: Show sub-categories in proper order
+* Fix path to loading gif used in admin forms.
+* Remove Knockout JS HTML comments from Multiple Region selector template
+* Add missing string to translations files and update spanish translations
+* Fix Knockout JS parse error and other JS errors in IE.
+* Do not execute Edit Ad shortcode multiple times during the request
+* Fix: Update coupon redemption count
+* Fix placehoder to display Ad images
+* Fix Ad URL and page title in Show Ad page
+* Fix Ads Widgets to show images again
+* Fix fatal error when trying to access an Ad that doesn't exists.
+* Fix error parsing Ad price
+* Fix Search Ads widget
+* Fix validation errors in PayPal Payments Standard gateway
+* Fix Categories Dropdown to notify other widgets when a category is selected
+* Do not require price field when not marked as required.
+* Show prices below 1.00
+* Add missing translation domain to translatable string
+* Fix spelling errors in admin URLs
+* Run custom_column handler later to avoid conflict with Simplr Registration Form Plus+ plugin
+* Fix has_expired() method of Ad
+* Improve cron job routine to send Renew Ad emails
+* Change name of hash parameter in Edit Ad page
+* Escape quotes and double quotes in mailbox name
+* Fix workaround for ThemeForest's theme_formatter function
+* Fix Buy Subscription option in User Panel for non-administrators users.
+* Fix Add credit/Remove Credit operations (were failing if WP_DEBUG was defined).
+* Fix Payment Transaction: functions to verify transitions between payment status.
+* Fix fatal error in Authorize.Net module and problem uploading images
+* Fix fatal error on Renew Ad page
+* Make manual upgrade for 3.0.2 mandatory only if there are pending transactions in wp_options table
+* Fix Renew Ad link and Renew Ad calculations
+* Minor fixes for Credit System screens.
+* Fix: Remove legacy number images allowed filter that caused problems to uploaded images
+* Fix admin menu error for non-adminastrator users.
+* Fix: Search pagination breaks when going to second page
+* strip_html_tags renamed to awpcp_strip_html_tags.
+* Fix MySQL strict mode issues with new columns in Ads table
+* Add option to show 500 listings per page
+* Fix MySQL strict mode issues when saving images
+* Fix fatal error caused by missing file.
+* Fix image size issue in Latest Ads widget
+* Fix Registration URL setting
+* Fix hardcoded database table name.
+* Fix function that retrieves Ad information for Facebook Share button
+* Fix CSV import problems
+* Do not enforce region data, when payment term does not allow regions
+* Do not show Fee Categories warning to regular users
+* Improve upgrade screen to run all upgrade routines with one click
+* Fix: Pre-fill region fields with Profile data.
+* Fix conflict with bbPress and Facebook Share Button
+* Fix conflict with All In One SEO Pack OpenGraph tags
+* Use currency symbol defined in settings in payment page
+* Fix spelling error
+* Do not show menu markup when there are no menu items enabled
+* Use display name as user's contact name in Place Ad
+* Fix upgrade issue from older versions
+
 = Version 3.0.1 =
 * Made regions control fields optional on search (new settings)
 * Fixed reCAPTCHA conflict with other plugins

@@ -10,7 +10,7 @@
         <p class="submit inline-edit-save">
             <a class="button-secondary cancel alignleft" title="Cancel" href="#inline-edit" accesskey="c"><?php _e('Cancel', 'AWPCP') ?></a>
             <a class="button-primary delete alignleft" title="Delete" href="#inline-edit" accesskey="s"><?php _e('Delete', 'AWPCP') ?></a>
-            <img alt="" src="http://local.wordpress.org/wp-admin/images/wpspin_light.gif" style="display: none;" class="waiting">
+            <img alt="" src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" style="display: none;" class="waiting">
             <input type="hidden" value="<?php echo esc_attr( $_POST['id'] ); ?>" name="id">
             <input type="hidden" value="<?php echo esc_attr( $_POST['action'] ); ?>" name="action">
             <br class="clear">

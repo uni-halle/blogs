@@ -1,9 +1,9 @@
 === Podlove Podcast Publisher ===
-Contributors: eteubert
+Contributors: eteubert, chemiker
 Donate link: http://flattr.com/thing/728463/Podlove-Podcasting-Plugin-for-WordPress
 Tags: podlove, podcast, publishing, blubrry, podpress, powerpress, feed, audio, video, player
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.8
 Stable tag: trunk
 License: MIT
 
@@ -75,7 +75,270 @@ If you haven't already, get the official Flattr plugin here:
 
 Find the setting Flattr > Advanced Settings > Flattrable content > Post Types and check "podcast". Save changes. There is no step 3 ;)
 
+== Installation ==
+
+1. Download the Podlove Publisher Plugin to your desktop.
+1. If downloaded as a zip archive, extract the Plugin folder to your desktop.
+1. With your FTP program, upload the Plugin folder to the wp-content/plugins folder in your WordPress directory online.
+1. Go to Plugins screen and find the newly uploaded Plugin in the list.
+1. Click Activate Plugin to activate it.
+
 == Changelog ==
+
+= 1.10.7 =
+
+* Feature: Direct episode access in templates via `{{ podcast.episodes({slug: 'pod001'}).title }}`
+* Feature: Episodes in templates can be filtered and ordered, for example `{{ podcast.episodes({orderby: 'title', 'order': 'ASC'}) }}`. For details, see [`podcast.episodes` documentation](http://docs.podlove.org/publisher/template-reference/#podcast)
+* Feature: Direct contributor access in templates via `{{ podcast.contributors({id: 'john'}).name }}`
+* Feature: Add shortcode `[podlove-podcast-social-media-list]`, which lists all social media accounts for the podcast
+* Feature: Add shortcode `[podlove-podcast-donations-list]`, which lists all donation accounts for the podcast
+* Feature: Add tag support for Auphonic
+* Enhancement: Add "Save and Continue Editing" buttons to all table based management screens
+* Enhancement: Use translations for month and day names in formatted template dates (if a language other than english is used)
+* Enhancement: Add refresh buttons for Auphonic preset selector
+* Enhancement: Pass more data to web player (as preparation for the next release)
+* Enhancement: Improved export format: It has its own namespace and a version now. Publisher version and export date are included as XML comments. XML elements are indented for better readability.
+* Remove default content for new templates
+* Fix: "Network Activate" works now
+* Fix: group and role filters for `[podlove-podcast-contributor-list]` shortcode work as expected now
+* Fix: Add services and donations to export format
+* Fix: `episode.player` in episode loops, outside the WordPress loop works now
+* Fix: Auphonic chapter integration issue
+* Fix: Instagram URL scheme
+
+= 1.10.6 =
+
+* Fix: contributor services will be saved correctly
+* Enhancement: add a donation column to contributor management table
+
+= 1.10.5 =
+
+**Changes to the Templating System**
+
+`episode.recordingDate` and `episode.publicationDate` are DateTime objects now. Available accessors are: year, month, day, hours, minutes, seconds. For custom formatting, use `episode.recordingDate.format("Y-m-d H:i:s")` for example. Calling `episode.recordingDate` directly is still supported and defaults to the format configured in WordPress.
+
+**Other Changes**
+
+* Enhancement: Add refresh buttons for ADN patter and broadcast channel selectors
+* Fix: Avoid "Grey Goo" scenario of self-replicating contributors
+
+= 1.10.4 =
+
+* Hotfix: solve migration issue
+
+= 1.10.3 =
+
+**Changes to the Templating System**
+
+* New filter: `padLeft(padCharacter, padLength)` can be used to append a character to the left of the given string until a certain length is reached. Example: `{{ "4"|padLeft("0",2) }}` returns "04";
+* For consistency `{{ contributor.avatar }}` is now an object. To render an HTML image tag, use `{% include '@contributors/avatar.twig' with {'avatar': contributor.avatar} only %}`.
+* `{{ episode.duration }}` has been turned into an object to enable custom time renderings. The duration object has the following accessors: hours, minutes, seconds, milliseconds and totalMilliseconds.
+
+__DEPRECATIONS/WARNINGS__
+
+* `{{ episode.duration }}` should not be used any more. The default templates are updated but if you have used it in a custom template, you must replace it. Example: `{{ episode.duration.hours }}:{{ episode.duration.minutes|padLeft("0",2) }}:{{ episode.duration.seconds|padLeft("0",2) }}`
+* `{{ episode.license.html }}` and `{{ podcast.license.html }}` are deprecated. Use `{% include '@core/license.twig' %}` for the previous behaviour of choosing the correct license based on context. If you want to be more specific, use `{% include '@core/license.twig' with {'license': episode.license} %}` or `{% include '@core/license.twig' with {'license': podcast.license} %}`.
+
+**Other Changes**
+
+* Feature: ADN Module supports broadcasts
+* Enhancement: Contributor shortcode defaults to `donations="yes"` to avoid confusion
+* Enhancement: `[podlove-episode-downloads]` now uses templates internally
+* Enhancement: Added 500px, Last.fm, OpenStreetMap and Soup to Services
+* Enhancement: Use custom contributor social/donation titles as icon titles
+* Enhancement: Template form has a "Save Changes and Continue Editing" button now
+* Enhancement: feed validation is asynchronous now and has improved performance
+* Enhancement: Licenses have a new interface and are compatible with Auphonic now: they can be imported from a finished production and are included when creating a production.
+* Enhancement: Default MySQL character set is utf8 now when creating tables
+* Enhancement: Add datepicker for episode recording date
+* Fix: all default contributors appear in new episodes again
+* Fix: change Tumblr URLs from https to http since Tumblr does not support them
+* Fix: `[podlove-podcast-contributor-list]` shows the correct contributors now
+* Fix: internal template warning when accessing empty contributor roles or groups
+* Fix: episode rendering when no files are available
+* Fix: flattr script in rss feeds
+* Fix: importer issue where sometimes modules would not activate properly
+
+= 1.10.2 =
+
+* Feature: add template filter `formatBytes` to format an integer as kilobytes, megabytes etc. Example: `{{ file.size|formatBytes }}`
+* Feature: New accessor `{{ file.id }}`. This is required to generate download forms.
+* Fix: `[podlove-episode-contributor-list]` shortcode: Firstly, the "title" attribute works again. Secondly, output by group is optional now and defaults to "not grouped" (as it was before 1.10). If you are using contributor groups and would like grouped output, use `[podlove-episode-contributor-list groupby="group"]`
+* Fix: division by zero bug in statistics dashboard
+* Fix: parse time in statistics dashboard correctly as normalplaytime
+* Fix: add missing template accessor `{{ episode.recordingDate }}`
+* Remove separate "publication date" field in episodes. Instead, use the episode post publication date maintained by WordPress. It can be accessed via `{{ episode.publicationDate }}`
+* Fix: missing contributor-edit-icon on last entries
+
+= 1.10.1 =
+
+* Fix: podlove-episode-contributor-list shortcode: add support for "group" and "role" attributes
+* Fix: podlove-episode-contributor-list shortcode: fix broken flattr button
+* Fix: feed widget: only compress if zlib extension is loaded
+
+= 1.10.0 =
+
+**All-new, mighty Templating system**
+
+You can now use the [Twig Template Syntax](http://twig.sensiolabs.org/documentation) in all templates. Access all podcast/episode data via the new template API. Please read the [Template Guide](http://docs.podlove.org/guides/understanding-templates/) to get started.
+
+If you have used templates before, please note that some shortcodes are now _DEPRECATED_. That means they still work but will be removed at some point. Following is a list of affected shortcodes and their replacements:
+
+Instead of `[podlove-web-player]`, write `{{ episode.player }}`.
+
+Instead of `[podlove-podcast-license]`, write `{{ podcast.license.html }}`.
+
+Instead of `[podlove-episode-license]`, write `{{ episode.license.html }}`.
+
+Instead of `[podlove-episode field="subtitle"]`, write `{{ episode.subtitle }}`. Instead of `[podlove-episode field="summary"]`, write `{{ episode.summary }}` etc. When in doubt, look at the [Episode Template Reference](http://docs.podlove.org/publisher/template-reference/#episode).
+
+Changing the podcast data shortcodes works exactly the same: Instead of `[podlove-podcast field="title"]`, write `{{ podcast.title }}` etc. When in doubt, look at the [Podcast Template Reference](http://docs.podlove.org/publisher/template-reference/#podcast).
+
+**Other Changes**
+
+* Feature: The Podlove dashboard includes a section for feeds if you activate the "Feed Validation" module. It is intended as an overview for the state of your feeds. It shows the latest modification date, the number of entries, compressed and uncompressed size and the latest item. Additionally, you can validate your feeds against the w3c feed validator right from the dashboard.
+* Feature" Better Bitlove integration. There is a new setting in `Podlove > Podcast Feeds > Directory Settings` called "Available via Bitlove?". It checks if there is a corresponding Bitlove feed and verifies it on a regular basis.
+* Feature: Support for the oEmbed format
+* New shortcode: `[podlove-episode-list]` lists all episodes including their episode image, publication date, title, subtitle and duration chronologically. This replaces the archive pages generated by the [Archivist - Custom Archive Templates](https://wordpress.org/plugins/archivist-custom-archive-templates/) plugin, if you are using it right now.
+* New shortcode: `[podlove-feed-list]` lists all public feeds
+* New shortcode: `[podlove-global-contributor-list]` shows all podcast contributors and lists related episodes.
+* New shortcode: `[podlove-podcast-contributor-list]` shows regular podcast contributors
+* Enhancement: The feed title may now include the asset title for easier discovery. This setting can be found at `Podlove > Feed Settings`
+* Changed shortcode: `[podlove-contributor-list]` is _DEPRECATED_. Please use `[podlove-episode-contributor-list]` instead.
+* Enhancement: add "autogrow" feature to chaptermarks text field
+* Enhancement: globally hide the migration-tool banner once dismissed rather than per-client via cookie
+* Fix: When setting the chapter asset to manual, delete all chapter caches to avoid hiccups
+* Fix: Contributor links in the backend use an ID now rather than the contributor slug. That way they work when no slug is set.
+* Fix ADN backslash escaping issue in post titles
+* Fix: all contributions can be deleted
+
+= 1.9.12 =
+* Enhancement: Take over chapters when switching from chapter asset to manual
+* Enhancement: Contributor tables look better in a wider range of themes
+* Fix: Auphonic module: Buttons cannot be clicked again while the corresponding action is in progress
+
+= 1.9.11 =
+* Enhancement: Split podcast settings into tabs.
+* Enhancement: Import/Export module supports contributors and contributions
+* Enhancement: Separate "default contributors" and "podcast contributors". You can configure default contributors in "Contributor Settings > Defaults" and podcast contributors in "Podcast Settings > Contributors". Display podcast contributors using the shortcode `[podlove-podcast-contributor-list]`.
+* Enhancements: Plethora of adjustments in contributor interfaces to avoid confusions and smoothen workflows
+* Feature: Contributions may have a public comment (to describe the context of the person), which can be displayed in contributor lists.
+* Fix: Skip contributions with missing contributors.
+
+= 1.9.10 =
+* Fix: episode images when using manual entry
+* Fix: do not include episodes in blog feed
+* Fix: paged feed calculation of number of pages when using global Publisher default
+* Fix: remove unused IDs from contributor lists
+
+= 1.9.9 =
+* Fix: several contributor episode form bugs
+* Fix: sum of all media file sizes in dashboard statistics
+* Add lost bugfix: Bundle crt file to avoid StartSSL trust issues.
+
+= 1.9.8 =
+* Enhancement: WordPress has an option to close commenting for posts after a certain amount of days. This now also applies to podcast episodes.
+* Enhancement: Fallback for Contributor Names.
+* We had to change the generated Flattr URL for contributors in episodes to a less error prone scheme. Flattr counts for those buttons will therefore reset to 0 (the actual clicks are _not_ lost! they are just not displayed).
+* fix sum of all media file sizes in dashboard statistics
+* fix license URLs
+* fix feed paging issue
+* Fix: Feed Item Limit is now displayed correctly
+* Fix: Ignore deleted contributors if they were assigned to an Episode or Podcast
+* Fix: activation / deactivation of multiple modules at once works as expected now
+* add filter "podlove_enable_gzip_for_feeds" to disable gzip feed compression
+* Contributor role and group columns will be hidden if no roles or groups were added
+
+= 1.9.7 =
+* fix and enhance dashboard statistics
+* gender statistics: use episode contributions instead of contributors for counting
+
+= 1.9.6 =
+* fix redirect issue after podcast migrations
+* fix legacy ADN module publishing issue
+* only show `itunes:complete` in feeds if it is set avoid a feedvalidator.org bug
+* add experimental episode fun facts in dashboard
+* add PayPal Button link in contributor settings
+* other contributor admin enhancements
+* contributor public name defaults to real name now
+
+= 1.9.5 =
+* Contributor Module improvements
+  * New icon graphics
+  * "Contributor Groups" as a new way to divide contributors by participation. For example, you might want to have a "Team" group and one for supporting contributions.
+  * No more default roles. It's just not possible to provide a sensible default set. So just add the ones you need :) (existing roles will *not* be deleted)
+  * The contributors defined in `Podcast Settings > Contributors` are now the default contributors for new episodes
+  * Reworked contributor management table. Better use of space, hideable columns, avatars and more.
+  * Reworked episode contributor table. Avatars, edit links and more.
+  * Support for more services
+  * ... and a bunch of other tweaks
+* Web Player Update: compatible with WordPress theme "Twenty Fourteen"
+* Fix: don't gzip feeds when zlib compression is active
+* Fix: episode media file checkbox width for WP3.8
+* Fix: menu icons for WP3.8
+
+= 1.9.4 =
+* Fix: gzip feeds on compatible systems only (avoids failing feed generation)
+* Fix: Feed paging (again)
+
+= 1.9.3 =
+* Fix: provide global feed limit default on setup
+* Fix: managing contributor roles no longer outputs permission issues
+* Fix: corrected a faulty "Add New" contributor link
+* Fix: paged feeds were broken
+
+= 1.9.2 =
+* Fix: _Module: Contributors_ prevent initial migration to import duplicate contributors
+* Fix: _Module: Contributors_ Fix faulty default roles
+
+= 1.9.0 / 1.9.1 =
+
+**New Module: Contributors**
+
+Podcasts are not possible without their active communities. Huge contributions are being made behind the scenes and nobody notices except the podcaster. The contributors module shines light on all those diligent people. It's now easy to manage contributors of an episode and list them on the blog. The list contains references to their social profiles and the donation service Flattr. Shortcode to display them in an episode post: [`[podlove-contributor-list]`](http://docs.podlove.org/publisher/shortcodes/#contributors).
+
+**Simple Protected Feeds**
+
+You can now protect some or all of your feeds using HTTP authentication. Authenticate via a defined username and password or use the WordPress user database as backend.
+
+**License Selector**
+
+We built an interface to generate a Creative Commons license for your podcast and episodes. You can still use a custom URL and name if you don't want a CC license. Use `[podlove-podcast-license]` and `[podlove-episode-license]` to display them in your episode posts.
+
+**Other Changes**
+
+* Feature: Add "Expert Settings" option to always redirect to media files instead of forcing a browser download. This is interesting for you if you want to minimize traffic on your server hosting the Publisher.
+* Feature: add global setting to configure feed item limits
+* Feature: Set "itunes:explicit" tag per episode if you want to (you have to activate the feature in the expert settings)
+* Enhancement: Feeds are delivered with gzip compression if possible
+* Enhancement: Support for temporary redirects in expert settings
+* Fix: keep ?redirect=no flag in paged feeds
+* Fix: _Module: Import/Export_ Importing episodes no longer causes floods of ADN posts.
+* Fix: _Module: Auphonic_ respect Auphonic chapter offset
+* _DEPRECATED_: `podlove-contributors` shortcode. Use `podlove-contributor-list` instead
+
+= 1.8.13 =
+* Feature: Update Web Player to 2.0.17 (for realsies). It fixes an issue with icon/font display.
+
+= 1.8.12 =
+* Feature: Update Web Player to 2.0.17
+* Bugfix: Fix PHP 5.3 issue in import module
+
+= 1.8.11 =
+* Feature: New module for Import/Export. Now you can easily move all your podcast data to another WordPress instance.
+* Feature: Add support for `<itunes:complete>` tag. If there won't be any additional episodes, you can go to `Podlove > Podcast Settings` and activate this setting.
+* Bugfix: Bundle crt file to avoid StartSSL trust issues.
+
+= 1.8.10 =
+* Hotfix: Removes incompletely updated license feature which wasn't supposed to be in that release in the first place. Sorry!
+
+= 1.8.9 =
+* Feature: Update Web Player to 2.0.16
+* Enhancement: Render Twitter and OpenGraph tags using a DOM-Generator to avoid all possible escaping issues.
+* Enhancement: Allow multiple mime types for web player config slots. Fixes an issue with Firefox and Opus.
+* Enhancement: I CAN HAZ SECURETEH?! auth.podlove.org haz https nao.
+* Bugfix: Module settings screen rendering issue with PHP 5.3
+* Bugfix: Fix link to shortcode documentation
 
 = 1.8.7 / 1.8.8 =
 * Enhancement: Refined Auphonic Workflow: Always import duration and slug; new option to automatically start productions after creation; new option to automatically publish episodes as soon as the production is ready

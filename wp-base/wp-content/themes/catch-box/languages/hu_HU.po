@@ -1,0 +1,1061 @@
+# Copyright (C) 2012 the Catch Themes Team
+# This file is distributed under the  GNU General Public License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Catch Box 2.7.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-20 16:40+0545\n"
+"PO-Revision-Date: 2014-03-20 16:40+0545\n"
+"Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
+"Language-Team: Szempy <szempy@gmail.com>\n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:14
+msgid "Error 404 - Page Not Found."
+msgstr "404-es Hiba - Az oldal nem található"
+
+#: ../404.php:18
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "Sajnos nem találtuk amit ön keres."
+
+#: ../404.php:19
+msgid "This might be because:"
+msgstr "Ez azért lehet mert :"
+
+#: ../404.php:20
+msgid ""
+"You have typed the web address incorrectly, or the page you were looking for "
+"may have been moved, updated or deleted."
+msgstr ""
+"Rosszul írta be a web címet vagy az ön által keresett weblap át lett "
+"helyezve, meg lett frissít vagy le lett törölve."
+
+#: ../404.php:21
+msgid "Please try the following options instead:"
+msgstr "Kérjük próbálja ki a következő opciókat helyette :"
+
+#: ../404.php:22
+msgid ""
+"Check for a mis-typed URL error, then press the refresh button on your "
+"browser or Use the search box below."
+msgstr ""
+"Ellenőrizze, hogy a linket jól írta-e be, nyomja a frissítés gombot a "
+"böngészőjén, vagy használja a lent megtalálható kereső mezőt."
+
+#: ../archive.php:22
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Napi archívum : %s"
+
+#: ../archive.php:24
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "havi archívum : %s"
+
+#: ../archive.php:24
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "Y F"
+
+#: ../archive.php:26
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Éves archívum : %s"
+
+#: ../archive.php:26
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y"
+
+#: ../archive.php:28
+msgid "Blog Archives"
+msgstr "Blog archívum"
+
+#: ../archive.php:52 ../author.php:69 ../category.php:45 ../index.php:32
+#: ../page-blog.php:65 ../search.php:39 ../tag.php:45
+msgid "Nothing Found"
+msgstr "Nincs találat"
+
+#: ../archive.php:56 ../author.php:73 ../category.php:49 ../index.php:36
+#: ../page-blog.php:69 ../tag.php:49
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+"Elnézést, de nem találtunk semmit a megadott archívumra. Talán ha rákeres "
+"akkor megtalálja a kapcsolódó cikket."
+
+#: ../author.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Írók archívum : %s"
+
+#: ../author.php:44 ../content-single.php:76
+#, php-format
+msgid "About %s"
+msgstr "Erről %s"
+
+#: ../category.php:16
+#, php-format
+msgid "Category Archives: %s"
+msgstr "Kategória archívum : %s"
+
+#: ../comments.php:17
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Ez a cikk jelszóval védett. Írja be a jelszót, hogy megtekinthesse a "
+"hozzászólásokat."
+
+#: ../comments.php:33
+#, php-format
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Egy gondolat a &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s gondolat &ldquo;%2$s&rdquo;"
+
+#: ../comments.php:40 ../comments.php:60
+msgid "Comment navigation"
+msgstr "Hozzászólás navigáció"
+
+#: ../comments.php:41 ../comments.php:61
+msgid "&larr; Older Comments"
+msgstr "&larr; Régebbi Hozzászólások"
+
+#: ../comments.php:42 ../comments.php:62
+msgid "Newer Comments &rarr;"
+msgstr "Újabb Hozzászólások&rarr;"
+
+#: ../comments.php:72
+msgid "Comments are closed."
+msgstr "Hozzászólások lezárva."
+
+#: ../content-aside.php:16 ../content-featured.php:14
+#: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
+#: ../content-link.php:16 ../content-quote.php:14 ../content-status.php:15
+#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:829
+#, php-format
+msgid "Permalink to %s"
+msgstr "Elérési útvonal %s"
+
+#: ../content-aside.php:17
+msgid "Aside"
+msgstr "Mellett"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgid "Reply"
+msgstr "Válasz"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
+msgid "1"
+msgstr "1"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
+msgid "%"
+msgstr "%"
+
+#: ../content-aside.php:33 ../content-gallery.php:32 ../content-image.php:27
+#: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
+#: ../content.php:55 ../functions.php:375
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Tovább <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-aside.php:35 ../content-featured.php:24
+#: ../content-gallery.php:55 ../content-image.php:29 ../content-link.php:35
+#: ../content-page.php:19 ../content-quote.php:37 ../content-single.php:31
+#: ../content-status.php:36 ../content.php:57 ../image.php:87
+msgid "Pages:"
+msgstr "Oldal:"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "Leave a reply"
+msgstr "Szólj hozzá :"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>1</b> Reply"
+msgstr "<b>1</b> Hozzászólás "
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>%</b> Replies"
+msgstr "<b>%</b> Hozzászólás"
+
+#: ../content-aside.php:50 ../content-featured.php:51
+#: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
+#: ../content-page.php:27 ../content-quote.php:78 ../content-single.php:64
+#: ../content-status.php:51 ../content.php:100 ../functions.php:623
+#: ../functions.php:651 ../image.php:97
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: ../content-featured.php:35 ../content-featured.php:44
+#: ../content-gallery.php:68 ../content-gallery.php:78 ../content-image.php:53
+#: ../content-image.php:62 ../content-quote.php:50 ../content-quote.php:60
+#: ../content-single.php:42 ../content-single.php:45 ../content.php:71
+#: ../content.php:81
+msgid ", "
+msgstr ", "
+
+#: ../content-featured.php:37
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Ez a bejegyzés %1$s nél jelenik meg, ilyen cimkével : %2$s . Tedd be "
+"kedvenceid közé <a href=\"%3$s\" title=\"Link %4$s\" rel=\"bookmark\">ezzel "
+"a linkel</a>."
+
+#: ../content-featured.php:39
+#, php-format
+msgid ""
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
+"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Ez a bejegyzés %1$s nél jelenik meg. Tedd be kedvenceid közé <a href=\"%3$s"
+"\" title=\"Link %4$s\" rel=\"bookmark\">ezzel a linkel</a>."
+
+#: ../content-gallery.php:17
+msgid "Gallery"
+msgstr "Képtár"
+
+#: ../content-gallery.php:47
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] "Ez a képtár <a %1$s>%2$s képet</a> tartalmaz."
+msgstr[1] "Ez a képtár <a %1$s>%2$s képet</a> tartalmaz."
+
+#: ../content-gallery.php:72 ../content-image.php:57 ../content-quote.php:54
+#: ../content.php:75
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "<span class=\"%1$s\">Kategoria</span> %2$s"
+
+#: ../content-gallery.php:84 ../content-image.php:65 ../content-quote.php:66
+#: ../content.php:87
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">Cimke</span> %2$s"
+
+#: ../content-image.php:16
+msgid "Image"
+msgstr "Kép"
+
+#: ../content-image.php:40
+#, php-format
+msgid ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by "
+"</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
+"title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+msgstr ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> "
+"szerző </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s"
+"\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+
+#: ../content-image.php:45 ../functions.php:689
+#, php-format
+msgid "View all posts by %s"
+msgstr "Összes bejegyzés megjelenítése %stől"
+
+#: ../content-link.php:17
+msgid "Link"
+msgstr "Hivatkozás"
+
+#: ../content-quote.php:15
+msgid "Quote"
+msgstr "Idézni"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "No Comments &darr;"
+msgstr "Nincs hozzászólás &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "1 Comment &darr;"
+msgstr "1 Hozzászólás &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "% Comments &darr;"
+msgstr "% Hozzászólás &darr;"
+
+#: ../content-single.php:47
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s by <a href=\"%6$s\">%5$s</a>. "
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+msgstr ""
+"Ez a bejegyzés megjelenik %1$s és %2$s cimkézte fel <a href=\"%6$s\">%5$s</"
+"a>. Tedd be kedvenceid közé <a href=\"%3$s\" title=\"Link %4$s\" rel="
+"\"bookmark\">ezzel a linkel</a>."
+
+#: ../content-single.php:49
+#, php-format
+msgid ""
+"This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a "
+"href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Ez a bejegyzés megjelenik %1$s <a href=\"%6$s\">%5$s</a> által. Tedd be "
+"kedvenceid közé <a href=\"%3$s\" title=\"Link %4$s\" rel=\"bookmark\">ezzel "
+"a linkel</a>."
+
+#: ../content-single.php:51
+#, php-format
+msgid ""
+"This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href="
+"\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Ezt a bejegyzés <a href=\"%6$s\">%5$s</a> írta. Tedd be kedvenceid közé <a "
+"href=\"%3$s\" title=\"Link %4$s\" rel=\"bookmark\">ezzel a linkel</a>."
+
+#: ../content-single.php:80
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+"Összes %s által írt bejegyzés megjelenítése <span class=\"meta-nav\">&rarr;</"
+"span>"
+
+#: ../content-status.php:16
+msgid "Status"
+msgstr "Állapot"
+
+#: ../content.php:16
+msgid "Featured"
+msgstr "Kiemelt"
+
+#: ../footer.php:54
+msgid "Footer menu"
+msgstr "Lábléc Menü"
+
+#: ../functions.php:109
+msgid "Primary Menu"
+msgstr "Elsődleges Menü"
+
+#: ../functions.php:110
+msgid "Secondary Menu"
+msgstr "Másodlagos Menü"
+
+#: ../functions.php:111
+msgid "Footer Menu"
+msgstr "Lábléc Menü"
+
+#: ../functions.php:179
+msgid "Garden"
+msgstr "Kert"
+
+#: ../functions.php:185
+msgid "Flower"
+msgstr "Virág"
+
+#: ../functions.php:191
+msgid "Mountain"
+msgstr "Hegy"
+
+#: ../functions.php:343
+#, php-format
+msgid "Page %s"
+msgstr "%s Oldal"
+
+#: ../functions.php:444
+msgid "Main Sidebar"
+msgstr "Fő oldalsáv"
+
+#: ../functions.php:453
+msgid "Footer Area One"
+msgstr "Első Lábléc Terület"
+
+#: ../functions.php:455 ../functions.php:465 ../functions.php:475
+msgid "An optional widget area for your site footer"
+msgstr "Egy opcionális widget terület az oldalad láblécének"
+
+#: ../functions.php:463
+msgid "Footer Area Two"
+msgstr "Második Lábléc Terület"
+
+#: ../functions.php:473
+msgid "Footer Area Three"
+msgstr "Harmadik Lábléc Terület"
+
+#: ../functions.php:507 ../functions.php:536 ../single.php:15
+msgid "Post navigation"
+msgstr "Hozzászólás navigáció"
+
+#: ../functions.php:515 ../functions.php:544
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Régebbi hozzászólások"
+
+#: ../functions.php:516 ../functions.php:545
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Újabb hozzászólások <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../functions.php:623
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: ../functions.php:640
+#, php-format
+msgid "%1$s on %2$s <span class=\"says\">said:</span>"
+msgstr "%1$s ekkor %2$s <span class=\"says\">ezt mondta:</span>"
+
+#: ../functions.php:646
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s ekkor %2$s"
+
+#: ../functions.php:655
+msgid "Your comment is awaiting moderation."
+msgstr "A hozzászólása moderálásra vár."
+
+#: ../functions.php:664
+msgid "Reply <span>&darr;</span>"
+msgstr "Válasz <span>&darr;</span>"
+
+#: ../functions.php:683
+#, php-format
+msgid ""
+"<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
+"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
+"\" rel=\"author\">%7$s</a></span></span>"
+msgstr ""
+"<span class=\"sep\">Közzétette </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
+"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> szerző </"
+"span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title="
+"\"%6$s\" rel=\"author\">%7$s</a></span></span>"
+
+#: ../functions.php:741
+msgid "ID"
+msgstr "ID"
+
+#: ../functions.php:955
+msgid "Name"
+msgstr "Név"
+
+#: ../functions.php:957
+msgid "Email"
+msgstr "Emailcím"
+
+#: ../functions.php:1324
+msgid "Primary menu"
+msgstr "Elsődleges menü"
+
+#: ../functions.php:1326 ../functions.php:1359
+msgid "Skip to primary content"
+msgstr "Tovább az elsődleges tartalomra"
+
+#: ../functions.php:1327 ../functions.php:1360
+msgid "Skip to secondary content"
+msgstr "Tovább az másodlagos tartalomra"
+
+#: ../functions.php:1357
+msgid "Secondary menu"
+msgstr "Másodlegos menü"
+
+#: ../functions.php:1379
+msgid "Copyright &copy;"
+msgstr "Copyright &copy;"
+
+#: ../functions.php:1383
+msgid ". All Rights Reserved."
+msgstr ". Minden szerzői jog fenntartva."
+
+#: ../functions.php:1386
+msgid "http://wordpress.org/"
+msgstr "http://wordpress.org/"
+
+#: ../functions.php:1386
+msgid "Powered by WordPress"
+msgstr "Powered by WordPress"
+
+#: ../functions.php:1386
+#, php-format
+msgid "Powered by %s"
+msgstr "Powered by %s"
+
+#: ../functions.php:1388 ../inc/theme-options.php:660
+msgid "http://catchthemes.com/"
+msgstr "http://catchthemes.com/"
+
+#: ../functions.php:1388
+msgid "Theme Catch Box by Catch Themes"
+msgstr "Catch Box téma Catch Themes-től"
+
+#: ../functions.php:1388
+#, php-format
+msgid "Theme: %s"
+msgstr "Téma: %s"
+
+#: ../image.php:15
+msgid "Image navigation"
+msgstr "Kép navigátór"
+
+#: ../image.php:16
+msgid "&larr; Previous"
+msgstr "&larr; Előző"
+
+#: ../image.php:17
+msgid "Next &rarr;"
+msgstr "Következő &rarr;"
+
+#: ../image.php:27
+#, php-format
+msgid ""
+"<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class="
+"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
+"at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> "
+"in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+msgstr ""
+"<span class=\"meta-prep meta-prep-entry-date\">Közzétette </span> <span "
+"class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></"
+"span> itt <a href=\"%3$s\" title=\"Link a teljes méretű képhez\">%4$s "
+"&times; %5$s</a> ebbe <a href=\"%6$s\" title=\"Vissza %7$s\" rel=\"gallery\">"
+"%8$s</a>"
+
+#: ../inc/theme-options.php:104
+msgid "Favicon URL"
+msgstr "Favicon URL"
+
+#: ../inc/theme-options.php:113
+msgid "Web Clip Icon URL"
+msgstr "Honlap Klipp Ikon URL"
+
+#: ../inc/theme-options.php:122
+msgid "Color Scheme"
+msgstr "Szín séma"
+
+#: ../inc/theme-options.php:130
+msgid "Link Color"
+msgstr "Hivatkozás színe"
+
+#: ../inc/theme-options.php:138
+msgid "Default Layout"
+msgstr "Alapértelmezett Elrendezés"
+
+#: ../inc/theme-options.php:146
+msgid "Content layout"
+msgstr "Tartalom Elrendezése"
+
+#: ../inc/theme-options.php:154
+msgid "Excerpt Length in Words"
+msgstr "Kivonat hossza szavakban"
+
+#: ../inc/theme-options.php:162
+msgid "Feed Redirect URL"
+msgstr "RSS átirányítási URL"
+
+#: ../inc/theme-options.php:170
+msgid "Move Site Title and Tagline?"
+msgstr "Helyezzük át a Honlap Címét és a Cimkéket ?"
+
+#: ../inc/theme-options.php:178
+msgid "Default Display Text in Search"
+msgstr "Default Display Text in Search"
+
+#: ../inc/theme-options.php:186
+msgid "Disable Search in Header?"
+msgstr "Keresősáv letíltása a Fejlécben"
+
+#: ../inc/theme-options.php:194
+msgid "Enable Secondary & Footer Menu in Mobile Devices?"
+msgstr "Engedélyezze a Másodlagos és a Lábléc Menüt mobil eszközökön ?"
+
+#: ../inc/theme-options.php:202
+msgid "Custom CSS Styles"
+msgstr "Egyéni CSS stílusok"
+
+#: ../inc/theme-options.php:239 ../inc/theme-options.php:240
+#: ../inc/theme-options.php:687
+msgid "Theme Options"
+msgstr "Téma Beállítások"
+
+#: ../inc/theme-options.php:262
+msgid "Add/Change Favicon"
+msgstr "Favicon Hozzáadása/Megváltoztatása"
+
+#: ../inc/theme-options.php:276
+msgid "Add/Change Web Clip Icon"
+msgstr "Web Clip Ikon Hozzáadása/Megváltoztatása"
+
+#: ../inc/theme-options.php:290
+msgid "Light"
+msgstr "Világos"
+
+#: ../inc/theme-options.php:296
+msgid "Dark"
+msgstr "Sötét"
+
+#: ../inc/theme-options.php:302
+msgid "Blue"
+msgstr "Kék"
+
+#: ../inc/theme-options.php:308
+msgid "Green"
+msgstr "Zöld"
+
+#: ../inc/theme-options.php:314
+msgid "Red"
+msgstr "Red"
+
+#: ../inc/theme-options.php:320
+msgid "Brown"
+msgstr "Brown"
+
+#: ../inc/theme-options.php:326
+msgid "Orange"
+msgstr "Orange"
+
+#: ../inc/theme-options.php:345
+msgid "Content on left"
+msgstr "Tartalom bal felől"
+
+#: ../inc/theme-options.php:350
+msgid "Content on right"
+msgstr "Tartalom jobb felől"
+
+#: ../inc/theme-options.php:355
+msgid "One-column, no sidebar"
+msgstr "Egy oszlop, nincs oldalsáv"
+
+#: ../inc/theme-options.php:373
+msgid "Show excerpt"
+msgstr "Kivonat megjelenítése"
+
+#: ../inc/theme-options.php:378
+msgid "Show full content"
+msgstr "Teljes tartalom megjelenítése"
+
+#: ../inc/theme-options.php:479
+msgid "Select a Color"
+msgstr "Válasszon ki egy színt"
+
+#: ../inc/theme-options.php:482
+#, php-format
+msgid "Default color: %s"
+msgstr "Alapértelmezett szín: %s"
+
+#: ../inc/theme-options.php:498
+msgid "Words"
+msgstr "Szavak"
+
+#: ../inc/theme-options.php:526
+msgid "Check to move above the Header/Logo Image"
+msgstr "Pipálja ki ahhoz hogy a Fejléc/Logó fölött jelenjen meg"
+
+#: ../inc/theme-options.php:556
+msgid "Check to Disable"
+msgstr "Letíltáshoz pipálja ki"
+
+#: ../inc/theme-options.php:571
+msgid "Check to Enable"
+msgstr "Engedélyezéshez pipálja ki"
+
+#: ../inc/theme-options.php:585
+msgid "CSS Tutorial from W3Schools."
+msgstr "CSS útmutatót a W3Schools-on talál."
+
+#: ../inc/theme-options.php:585
+msgid "http://www.w3schools.com/css/default.asp"
+msgstr "http://www.w3schools.com/css/default.asp"
+
+#: ../inc/theme-options.php:585
+msgid "CSS Tutorial"
+msgstr "CSS Útmutató"
+
+#: ../inc/theme-options.php:585
+msgid "Click Here to Read"
+msgstr "Kattintson ide az olvasáshoz"
+
+#: ../inc/theme-options.php:650
+msgid "http://facebook.com/catchthemes"
+msgstr "http://facebook.com/catchthemes"
+
+#: ../inc/theme-options.php:652
+msgid "https://twitter.com/catchthemes"
+msgstr "https://twitter.com/catchthemes"
+
+#: ../inc/theme-options.php:658
+msgid "Theme Options By"
+msgstr "Theme Options By"
+
+#: ../inc/theme-options.php:660 ../inc/theme-options.php:661
+msgid "Catch Themes"
+msgstr "Catch Themes"
+
+#: ../inc/theme-options.php:667
+msgid "http://catchthemes.com/themes/catch-box-pro/"
+msgstr "http://catchthemes.com/themes/catch-box-pro/"
+
+#: ../inc/theme-options.php:667
+msgid "Upgrade to Catch Box Pro"
+msgstr "Upgrade to Catch Box Pro"
+
+#: ../inc/theme-options.php:672
+msgid "http://catchthemes.com/donate/"
+msgstr "http://catchthemes.com/donate/"
+
+#: ../inc/theme-options.php:672
+msgid "Donate"
+msgstr "Adományozzon most"
+
+#: ../inc/theme-options.php:673
+msgid "http://catchthemes.com/support/"
+msgstr "http://catchthemes.com/support/"
+
+#: ../inc/theme-options.php:673
+msgid "Support"
+msgstr "Support"
+
+#: ../inc/theme-options.php:674
+msgid "http://catchthemes.com/support-forum/forum/catch-box-public/"
+msgstr "http://catchthemes.com/support-forum/forum/catch-box-public/"
+
+#: ../inc/theme-options.php:674
+msgid "Support Forum"
+msgstr "Support Forum"
+
+#: ../inc/theme-options.php:675
+msgid "http://catchthemes.com/theme-instructions/catch-box/"
+msgstr "http://catchthemes.com/theme-instructions/catch-box/"
+
+#: ../inc/theme-options.php:675
+msgid "Theme Instructions"
+msgstr "Theme Instructions"
+
+#: ../inc/theme-options.php:676
+msgid "https://www.facebook.com/catchthemes/"
+msgstr "https://www.facebook.com/catchthemes/"
+
+#: ../inc/theme-options.php:676
+msgid "Like Catch Themes on Facebook"
+msgstr "Like Catch Themes on Facebook"
+
+#: ../inc/theme-options.php:676 ../inc/theme-options.php:805
+msgid "Facebook"
+msgstr "Facebook"
+
+#: ../inc/theme-options.php:677
+msgid "https://twitter.com/catchthemes/"
+msgstr "https://twitter.com/catchthemes/"
+
+#: ../inc/theme-options.php:677
+msgid "Follow Catch Themes on Twitter"
+msgstr "Follow Catch Themes on Twitter"
+
+#: ../inc/theme-options.php:677 ../inc/theme-options.php:810
+msgid "Twitter"
+msgstr "Twitter"
+
+#: ../inc/theme-options.php:678
+msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
+msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
+
+#: ../inc/theme-options.php:678
+msgid "Rate us 5 Star on WordPress"
+msgstr "Rate us 5 Star on WordPress"
+
+#: ../inc/theme-options.php:678
+msgid "5 Star Rating"
+msgstr "5 Star Rating"
+
+#: ../inc/theme-options.php:688
+msgid "Featured Post Slider"
+msgstr "Featured Post Slider"
+
+#: ../inc/theme-options.php:689
+msgid "Social Links"
+msgstr "Közösségi linkek"
+
+#: ../inc/theme-options.php:690
+msgid "Webmaster Tools"
+msgstr "Webmester Eszközök"
+
+#: ../inc/theme-options.php:717
+msgid "Slider Options"
+msgstr "Oszlop beállítások"
+
+#: ../inc/theme-options.php:721
+msgid "Exclude Slider post from Home page posts:"
+msgstr "Csúszka kizárása a Főoldal hozászólásainál:"
+
+#: ../inc/theme-options.php:723
+msgid "Check to disable"
+msgstr "Letíltáshoz pipálja ki"
+
+#: ../inc/theme-options.php:726
+msgid "Number of Slides"
+msgstr "Oszlopok száma"
+
+#: ../inc/theme-options.php:732
+msgid "Featured Post ID"
+msgstr "Kiemelt bejegyzés IDja"
+
+#: ../inc/theme-options.php:734
+msgid "Click Here To Edit"
+msgstr "A szerkesztéshez kattintson ide"
+
+#: ../inc/theme-options.php:740
+msgid ""
+"<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
+"Featured Slider."
+msgstr ""
+"<strong>Megjegyzés</strong>: Itt adhatod hozzá a bejegyzések IDját amelyek "
+"megjelennek a Főoldal kiemelt oszlopába."
+
+#: ../inc/theme-options.php:741 ../inc/theme-options.php:787
+#: ../inc/theme-options.php:914 ../inc/theme-options.php:955
+msgid "Save"
+msgstr "Mentés"
+
+#: ../inc/theme-options.php:745
+msgid "Slider Effect Options"
+msgstr "Slider hatások beállítása"
+
+#: ../inc/theme-options.php:750
+msgid "Transition Effect:"
+msgstr "Átmenet hatása:"
+
+#: ../inc/theme-options.php:755
+msgid "fade"
+msgstr "fade"
+
+#: ../inc/theme-options.php:756
+msgid "wipe"
+msgstr "wipe"
+
+#: ../inc/theme-options.php:757
+msgid "scrollUp"
+msgstr "scrollUp"
+
+#: ../inc/theme-options.php:758
+msgid "scrollDown"
+msgstr "scrollDown"
+
+#: ../inc/theme-options.php:759
+msgid "scrollLeft"
+msgstr "scrollLeft"
+
+#: ../inc/theme-options.php:760
+msgid "scrollRight"
+msgstr "scrollRight"
+
+#: ../inc/theme-options.php:761
+msgid "blindX"
+msgstr "blindX"
+
+#: ../inc/theme-options.php:762
+msgid "blindY"
+msgstr "blindY"
+
+#: ../inc/theme-options.php:763
+msgid "blindZ"
+msgstr "blindZ"
+
+#: ../inc/theme-options.php:764
+msgid "cover"
+msgstr "cover"
+
+#: ../inc/theme-options.php:765
+msgid "shuffle"
+msgstr "shuffle"
+
+#: ../inc/theme-options.php:771
+msgid "Transition Delay"
+msgstr "Átmenet késleltetés"
+
+#: ../inc/theme-options.php:774 ../inc/theme-options.php:783
+msgid "second(s)"
+msgstr "másodpercben (s)"
+
+#: ../inc/theme-options.php:780
+msgid "Transition Length"
+msgstr "Átmenet hossza"
+
+#: ../inc/theme-options.php:816
+msgid "Google +"
+msgstr "Google +"
+
+#: ../inc/theme-options.php:822
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: ../inc/theme-options.php:828
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: ../inc/theme-options.php:834
+msgid "Youtube"
+msgstr "Youtube"
+
+#: ../inc/theme-options.php:840
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: ../inc/theme-options.php:846
+msgid "Deviantart"
+msgstr "Deviantart"
+
+#: ../inc/theme-options.php:852
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: ../inc/theme-options.php:858
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: ../inc/theme-options.php:864
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: ../inc/theme-options.php:870
+msgid "MySpace"
+msgstr "MySpace"
+
+#: ../inc/theme-options.php:876
+msgid "Aim"
+msgstr "Aim"
+
+#: ../inc/theme-options.php:882
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../inc/theme-options.php:888
+msgid "Slideshare"
+msgstr "Slideshare"
+
+#: ../inc/theme-options.php:894
+msgid "Instagram"
+msgstr "Instagram"
+
+#: ../inc/theme-options.php:900
+msgid "Skype"
+msgstr "Skype"
+
+#: ../inc/theme-options.php:906
+msgid "Soundcloud"
+msgstr "Soundcloud"
+
+#: ../inc/theme-options.php:913
+msgid ""
+"<strong>Note:</strong> Enter the url for correponding social networking "
+"website"
+msgstr ""
+"<strong>Megjegyzés:</strong> Írja be a megfelelő szociális hálózatoknak a "
+"linkjét."
+
+#: ../inc/theme-options.php:928
+msgid "Header and Footer Code"
+msgstr "Fejléc és Lábléc kód"
+
+#: ../inc/theme-options.php:933
+msgid "Code to display on Header"
+msgstr "A fejlécben megjelenítendő kód"
+
+#: ../inc/theme-options.php:940
+msgid ""
+"Note: Here you can put scripts from Google, Facebook etc. which will load on "
+"Header"
+msgstr ""
+"Megjegyzés : Ide teheti be szkripteket Google, Facebook stb. amik a fejlécen "
+"fognak betőltödni."
+
+#: ../inc/theme-options.php:944
+msgid "Code to display on Footer"
+msgstr "A láblécben megjelenítendő kód"
+
+#: ../inc/theme-options.php:951
+msgid ""
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
+"will load on footer"
+msgstr ""
+"Megjegyzés : Ide teheti be szkripteket Google, Facebook stb. amik a láblécen "
+"fognak betőltödni."
+
+#: ../inc/widgets.php:20
+msgid "Use this widget to add any type of Ad as a widget."
+msgstr ""
+"Használja ezt a widgetet ahhoz hogy hírdetéseket adjon hozzá widgetként."
+
+#: ../inc/widgets.php:21
+msgid "Catch Box Adspace Widget"
+msgstr "Catch Box Adspace Widget"
+
+#: ../inc/widgets.php:38
+msgid "Title (optional):"
+msgstr "Cím (opcionális) :"
+
+#: ../inc/widgets.php:43
+msgid "Ad Code:"
+msgstr "Hirdetés kód:"
+
+#: ../inc/widgets.php:49
+msgid "Image Url:"
+msgstr "Kép linkje:"
+
+#: ../inc/widgets.php:53
+msgid "Link URL:"
+msgstr "Link URL:"
+
+#: ../inc/widgets.php:57
+msgid "Alt text:"
+msgstr "Alternatív szöveg:"
+
+#: ../search.php:15
+#, php-format
+msgid "Search Results for: %s"
+msgstr "A keresés eredménye: % s"
+
+#: ../search.php:43
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+"Sajnálom, de semmi nem felelt meg a megadott keresési feltételeknek. Kérjük, "
+"próbálja meg újra más kulcsszavakkal."
+
+#: ../searchform.php:11
+msgid "Search"
+msgstr "Keresés"
+
+#: ../sidebar.php:28
+msgid "Archives"
+msgstr "Archívum"
+
+#: ../sidebar.php:37
+msgid "Meta"
+msgstr "Meta"
+
+#: ../single.php:16
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> Előző"
+
+#: ../single.php:17
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Következő <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../tag.php:16
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Archívum címkék: %s"

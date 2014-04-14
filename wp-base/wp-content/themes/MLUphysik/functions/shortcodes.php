@@ -50,7 +50,7 @@ function iww_func( $atts ){
 				<dd><input type='text' id='tx_kofointerested_pi1_last_name' name='last_name' value=''/></dd>
 				<dt><label for='tx_kofointerested_pi1_first_name'>Vorname</label></dt>
 				<dd><input type='text' id='tx_kofointerested_pi1_first_name' name='first_name' value=''/></dd>
-				<dt><label for='tx_kofointerested_pi1_agreeprivacypolicy'>Zustimmung <a title='Datenschutzbestimmungen, öffnet in neuem Fenster' href='http://www.ich-will-wissen.de/impressum/#c9976' target='_blank'>Datenschutz&shy;bestimmungen</a> <sup>*</sup></label></dt>
+				<dt><label for='tx_kofointerested_pi1_agreeprivacypolicy'>Zustimmung <a title='Datenschutzbestimmungen, öffnet in neuem Fenster' href='http://www.ich-will-wissen.de/information/datenschutz.html#c2698' target='_blank'>Datenschutz&shy;bestimmungen</a> <sup>*</sup></label></dt>
 				<dd><input type='checkbox' id='tx_kofointerested_pi1_agreeprivacypolicy' name='agree' value='1'/></dd>
 			</dl>
 			<span class='clear'></span>

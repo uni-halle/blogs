@@ -1,0 +1,529 @@
+/* Layout
+ --------------------------------------------------------------------------- */
+
+#wpbody-content .metabox-holder {
+    padding-top: 0;
+}
+
+.wrap .awpcp-page-header {
+    padding-bottom: 12px;
+}
+
+.wrap .awpcp-main-content {
+    float: left;
+    width: 78%;
+}
+.wrap .awpcp-main-content.without-sidebar {
+    float: none;
+    width: auto;
+}
+
+
+/* Common
+ --------------------------------------------------------------------------- */
+
+.row {
+    margin-bottom: 10px;
+}
+.row .legend, .row .form {
+    float: left;
+}
+.row .legend {
+    margin-right: 20px;
+    width: 130px;
+}
+
+.tabs {
+    background: #EEE;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 4px 8px 0;
+}
+.tabs li {
+    float: left;
+    margin: 0 4px 0 0;
+}
+.tabs li a {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    display: block;
+    font-size: 1.1em;
+    padding: 7px 6px;
+    text-decoration: none;
+}
+.tabs li a:hover, .tabs li a.active {
+    background: #FFF;
+}
+
+.nav-tab-wrapper {
+    .nav-tab {
+        font-size: 12px;
+        padding: 2px 5px;
+    }
+}
+
+.category-checklist {
+    background: #FFF;
+    border: 1px solid #DDD;
+    max-height: 150px;
+    overflow-y: scroll;
+    min-width: 150px;
+}
+.category-checklist ul {
+    margin: 0;
+    padding: 0 4px;
+}
+.category-checklist ul ul {
+    padding-left: 14px;
+}
+
+.awpcp-delete-form .submit .delete {
+    margin-left: 5px;
+}
+
+.uploaderror, .awpcp-error {
+    background: none repeat scroll 0 0 #FFEBE8;
+    border: 1px solid #CC0000;
+    display: block;
+    margin: 5px 0 0;
+    padding: 5px;
+}
+
+
+/* Admin Panel
+ ---------------------------------------------------------------------------- */
+
+/* Sticky Notices */
+
+.update-nag {
+    margin-top: -1px;
+
+    -webkit-border-top-right-radius: 0;
+    -moz-border-radius-topright: 0;
+    border-top-right-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    border-top-left-radius: 0;
+}
+.update-nag ~ .update-nag {
+    margin-top: 5px;
+
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.awpcp-sticky-notice {
+    text-align: left;
+}
+.awpcp-sticky-notice p {
+    text-align: left;
+    padding: 0 10px;
+}
+.awpcp-sticky-notice .align-center {
+    text-align: center;
+}
+.awpcp-sticky-notice .actions {
+    text-align: center;
+}
+
+.awpcp-sticky-error {
+    background: #FFEBE8;
+    border-color: #CC0000;
+}
+.awpcp-sticky-error a {
+    color: #CC0000;
+}
+
+/* Admin Upgrade */
+
+.awpcp-upgrade-form .progress-bar {
+    border: 1px solid #AAA;
+}
+.awpcp-upgrade-form .progress-bar-value {
+    background: #DDD;
+    height: 24px;
+    width: 0;
+}
+
+.awpcp-upgrade-completed-message {
+    display: none;
+}
+
+/* Manage Links */
+
+.awpcp-block {
+    background: #FFF;
+    border: 1px solid #E5E5E5;
+    padding: 10px;
+}
+
+.awpcp-admin-manage-links {
+    li {
+        display: inline-block;
+        margin: 0 0 0 3px;
+    }
+    li:before {
+        content: '|';
+        padding-right: 3px;
+    }
+
+    .label {
+        font-weight: bold;
+        margin-left: 0;
+    }
+    .label:before, li:nth-child(2):before {
+        content: '';
+        padding-right: 0;
+    }
+}
+
+ /* Admin Page */
+
+#wpbody-content .awpcp-admin-page .awpcp-page-header .button-primary {
+    margin: 5px 0 0;
+}
+#wpbody-content .awpcp-admin-page .inline-edit-row label {
+    font-weight: normal;
+}
+#wpbody-content .awpcp-admin-page .inline-edit-row .inline-edit-col-left {
+    float: left;
+    width: 43%;
+}
+#wpbody-content .awpcp-admin-page .inline-edit-row .inline-edit-col-center {
+    float: left;
+    width: 24%;
+}
+#wpbody-content .awpcp-admin-page .inline-edit-row .inline-edit-col-right {
+    float: left;
+    width: 43%;
+}
+
+/* Admin Sidebar */
+
+.awpcp-postbox-container {
+    .postbox {
+        min-width: 200px;
+
+        .hndle, .hndle1 {
+            cursor: default;
+        }
+    }
+}
+
+.li_link {
+    margin-left: 10px;
+}
+.inside {
+    padding: 5px 10px !important;
+}
+.apostboxes {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+
+    background-color:#FFFFFF;
+    border-color:#DFDFDF;
+    border-radius: 3px;
+    border-style:solid;
+    border-width:1px;
+    line-height:1;
+    margin-bottom:20px;
+    /*min-width:255px;*/
+    position:relative;
+    width:99.5%;
+}
+.apostboxes h3 {
+    background: url("../images/admin-sidebar-gray-grad.png") repeat-x scroll left top #DFDFDF;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+
+/* =Admin Settings
+---------------------------------------------------------------------------- */
+
+.awpcp-admin-settings {
+    form textarea {
+        width: 600px;
+        height: 120px;
+    }
+
+    label {
+        font-weight: normal;
+    }
+
+    .awpcp-main-content {
+        .metabox-holder {
+            padding-top: 20px !important;
+        }
+    }
+}
+
+/* =Admin Credit Plans
+---------------------------------------------------------------------------- */
+
+#wpbody-content .awpcp-admin-credit-plans .inline-edit-row .inline-edit-col-left,
+#wpbody-content .awpcp-admin-credit-plans .inline-edit-row .inline-edit-col-center {
+    width: 50%;
+}
+.awpcp-admin-credit-plans .wp-list-table label span.title {
+    width: 7em;
+}
+.awpcp-admin-credit-plans .wp-list-table label span.input-text-wrap {
+    margin-left: 7em;
+}
+
+
+/* =Admin Fees
+---------------------------------------------------------------------------- */
+
+#wpbody-content .awpcp-admin-fees .inline-edit-row .inline-edit-col-left,
+#wpbody-content .awpcp-admin-fees .inline-edit-row .inline-edit-col-center {
+    width: 50%;
+}
+
+.awpcp-admin-fees form .awpcp-message {
+    margin-bottom: 0;
+}
+
+.awpcp-admin-fees .inline-edit-col label .title {
+    width: 6em;
+}
+.awpcp-admin-fees .inline-edit-col label .input-text-wrap {
+    margin-left: 6em;
+}
+
+.awpcp-admin-fees .inline-edit-col .category-checklist {
+    height: 290px;
+    max-height: 290px;
+}
+
+.awpcp-admin-fees .column-categories {
+    width: 17%;
+}
+.awpcp-admin-fees .column-categories .category-checklist {
+    height: 100px;
+    min-width: 100px;
+}
+.awpcp-admin-fees .column-categories .category-checklist li {
+    margin-bottom: 3px;
+}
+.awpcp-admin-fees .column-categories .category-checklist label {
+    font-size: 0.9em;
+}
+
+
+/* =Admin Listings
+---------------------------------------------------------------------------- */
+
+.wp-admin .awpcp-listings .manage {
+    width: 40%;
+}
+
+/* Listings - View */
+
+.wp-admin #showawpcpadpage {
+    overflow: hidden;
+}
+.wp-admin #showawpcpadpage .awpcp-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.wp-admin #showawpcpadpage .showawpcpadpage {
+    margin-bottom: 10px;
+    line-height: 1.5em;
+}
+.wp-admin #showawpcpadpage label {
+    font-weight: bold;
+}
+.wp-admin #showawpcpadpage .awpcp-ad-primary-image a {
+    text-align: center;
+    display: block;
+}
+.wp-admin #showawpcpadpage #displayimagethumbs ul {
+    overflow: hidden;
+}
+.wp-admin #showawpcpadpage #displayimagethumbs ul li {
+    float: left;
+    margin-right: 15px
+}
+
+
+.awpcp-admin-listings .add {
+    margin-bottom: 10px;
+}
+
+.awpcp-admin-listings table .column-title,
+.awpcp-admin-listings table .column-manage {
+    width: 17%;
+}
+
+.awpcp-admin-listings .search-by-box {
+    clear: both;
+    float: right;
+    margin: 5px 10px 0 0;
+}
+
+.awpcp-admin-listings #classiwrapper {
+    padding: 0;
+}
+
+/* Listings - Media Manager */
+
+.awpcp-media-manager-upload-form {
+    background: #F9F9F9;
+    margin: 0 2px 5px;
+    padding: 8px 10px;
+}
+
+.awpcp-media-manager-file-list li {
+    float: left;
+    margin: 0;
+    text-align: center;
+    width: 50%;
+}
+.awpcp-media-manager-file-list .jpg,
+.awpcp-media-manager-file-list .png,
+.awpcp-media-manager-file-list .gif {
+    width: 25%;
+}
+.awpcp-media-manager-file-list li .disabled .awpcp-media-manager-file-thumbnail {
+    opacity: 0.5;
+}
+
+.awpcp-media-manager-file-list .awpcp-media-manager-file {
+    background: #F9F9F9;
+    margin: 2px;
+    padding: 10px;
+}
+
+.awpcp-media-manager-file-list .awpcp-media-manager-file-thumbnail {
+    background: #EEE;
+    margin-bottom: 4px;
+    padding: 5px;
+    min-height: 0;
+}
+.awpcp-media-manager-file-list .jpg .awpcp-media-manager-file-thumbnail,
+.awpcp-media-manager-file-list .png .awpcp-media-manager-file-thumbnail,
+.awpcp-media-manager-file-list .gif .awpcp-media-manager-file-thumbnail {
+    min-height: 129px;
+}
+
+.awpcp-media-manager-file-list .awcp-media-manager-file-actions {
+    display: block;
+}
+.awpcp-media-manager-file-list .awcp-media-manager-file-action {
+    float: left;
+    margin-right: 2px;
+}
+
+
+/* =Settings
+---------------------------------------------------------------------------- */
+
+#awpcp-admin-settings .settings-form {
+    padding: 0 6px;
+}
+#awpcp-admin-settings .settings-form label img {
+    vertical-align: middle;
+}
+
+
+/* =Debug Page
+---------------------------------------------------------------------------- */
+
+#awpcp-admin-debug {
+    .nav-tab-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .postbox table {
+        border-spacing: 0;
+        width: 100%;
+
+        thead th {
+            padding: 4px 0px;
+        }
+
+        tbody {
+            tr:nth-child(2n+1) {
+                // background: #EFEFEF;
+            }
+            tr:nth-child(2n) {
+                // background: #FDFDFD;
+            }
+            th {
+                padding: 6px 10px;
+                text-align: left;
+            }
+            td {
+                padding: 6px 10px;
+            }
+            td.align-center {
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+/* User Ad Management Panel
+ ---------------------------------------------------------------------------- */
+
+/* Listings */
+
+#awpcp-ad-management-panel {
+    /*padding-top: 30px;*/
+}
+
+#awpcp-ad-management-panel #lookup-ads-by .legend {
+    margin-top: 4px;
+}
+
+#awpcp-ad-management-panel #pagination .pages {
+    float: left;
+    margin: 4px 10px 0 0;
+}
+
+#awpcp-ad-management-panel .pager {
+    float: left;
+    margin: 0px 15px 2px 0;
+}
+
+#awpcp-ad-management-panel .awpcp-main-content {
+    width: 99%;
+}
+
+/* Manage Images */
+
+.listcatsh {
+    border: 1px solid #DDD !important;
+}
+
+/* Comments */
+
+#awpcp-admin-comments .comments .column-title {
+    width: 25%;
+}
+#awpcp-admin-comments .comments .column-content {
+    width: 30%;
+}
+
+
+/* Facebook Settings. */
+#awpcp-admin-settings form.facebook-integration-settings .section {
+    border-bottom: dotted 1px #ccc;
+    padding: 0 0 10px 0;
+}
+
+#awpcp-admin-settings .facebook-integration-diagnostics {
+    padding: 2px 10px;
+    background: #d7f5ff;
+    border: solid 1px #bad5df;
+    border-radius: 4px;    
+}
+
+#awpcp-admin-settings form.facebook-integration-settings .section.disabled {
+    color: #ccc;
+}

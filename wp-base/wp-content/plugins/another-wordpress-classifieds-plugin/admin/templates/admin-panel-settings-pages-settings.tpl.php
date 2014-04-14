@@ -1,4 +1,7 @@
-			<h3><?php _e('Restore AWPCP Pages', 'AWPCP') ?></h3>
+			<div class="metabox-holder">
+				<div class="postbox">
+					<h3 class="hndle"><span><?php _e('Restore AWPCP Pages', 'AWPCP') ?></span></h3>
+					<div class="inside">
 
 			<?php if (!empty($missing)): ?>
 
@@ -17,7 +20,7 @@
 				<?php $message = sprintf($message, get_awpcp_option($page->page), $default) ?>
 			<?php endif ?>
 				<li><?php echo $message ?></li>
-			<?php endforeach ?>	
+			<?php endforeach ?>
 
 				</ul>
 			</div>
@@ -30,4 +33,8 @@
 					<?php _e('If you are having problems with your plugin pages, you can delete them and use the Restore button to have the plugin create them again.', 'AWPCP') ?>
 					<input type="submit" value="Restore" class="button-primary" id="submit" name="restore-pages">
 				</form>
+			</div>
+
+					</div>
+				</div>
 			</div>

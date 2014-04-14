@@ -27,19 +27,21 @@ class A_NextGen_Basic_Album_Controller extends Mixin
 		// /nggallery/album--id/gallery--id
 
 		// Are we to display a gallery?
-        if (($gallery = $this->param('gallery')))
+        if (($gallery = $gallery_slug = $this->param('gallery')))
         {
             // basic albums only support one per post
             if (isset($GLOBALS['nggShowGallery']))
                 return;
             $GLOBALS['nggShowGallery'] = TRUE;
 
-            if (!is_numeric($gallery))
-            {
-                $mapper = $this->object->get_registry()->get_utility('I_Gallery_Mapper');
-                $result = reset($mapper->select()->where(array('slug = %s', $gallery))->limit(1)->run_query());
-                $gallery = $result->{$result->id_field};
-            }
+			// Try finding the gallery by slug first. If nothing is found, we assume that
+			// the user passed in a gallery id instead
+			$mapper = $this->object->get_registry()->get_utility('I_Gallery_Mapper');
+			$result = reset($mapper->select()->where(array('slug = %s', $gallery))->limit(1)->run_query());
+			if ($result) {
+				$gallery = $result->{$result->id_field};
+			}
+
 
             $renderer = $this->object->get_registry()->get_utility('I_Displayed_Gallery_Renderer');
             return $renderer->display_images(
@@ -75,7 +77,7 @@ class A_NextGen_Basic_Album_Controller extends Mixin
 		$this->albums = $displayed_gallery->get_albums();
 
         // None of the above: Display the main album. Get the settings required for display
-        $current_page = (int)$this->param('page', 1);
+        $current_page = (int)$this->param('nggpage', 1);
         $offset = $display_settings['galleries_per_page'] * ($current_page - 1);
         $entities = $displayed_gallery->get_included_entities($display_settings['galleries_per_page'], $offset);
 
@@ -106,15 +108,16 @@ class A_NextGen_Basic_Album_Controller extends Mixin
             else {
                 $params = $display_settings;
                 $albums = $this->prepare_legacy_album_params($displayed_gallery->get_entity(), array('entities' => $entities));;
+                $params['image_gen_params'] = $albums['image_gen_params'];
                 $params['galleries'] = $albums['galleries'];
                 $params['displayed_gallery'] = $displayed_gallery;
                 $params = $this->object->prepare_display_parameters($displayed_gallery, $params);
 
                 switch ($displayed_gallery->display_type) {
-                    case NEXTGEN_GALLERY_NEXTGEN_BASIC_COMPACT_ALBUM:
+                    case NGG_BASIC_COMPACT_ALBUM:
                         $template = 'compact';
                         break;
-                    case NEXTGEN_GALLERY_NEXTGEN_BASIC_EXTENDED_ALBUM:
+                    case NGG_BASIC_EXTENDED_ALBUM:
                         $template = 'extended';
                         break;
                 }
@@ -173,6 +176,9 @@ class A_NextGen_Basic_Album_Controller extends Mixin
             );
         }
 
+        // so user templates can know how big the images are expected to be
+        $params['image_gen_params'] = $image_gen_params;
+
         // Transform entities
         $params['galleries'] = $params['entities'];
         unset($params['entities']);
@@ -185,7 +191,7 @@ class A_NextGen_Basic_Album_Controller extends Mixin
             {
                 if (($image = $image_mapper->find(intval($gallery->previewpic))))
                 {
-                    $gallery->previewurl = $storage->get_image_url($image, $image_gen->get_size_name($image_gen_params));
+                    $gallery->previewurl = $storage->get_image_url($image, $image_gen->get_size_name($image_gen_params), TRUE);
                     $gallery->previewname = $gallery->name;
                 }
             }
@@ -196,7 +202,7 @@ class A_NextGen_Basic_Album_Controller extends Mixin
 			if ($gallery->is_album)
             {
                 if ($gallery->pageid > 0)
-                    $gallery->pagelink = get_post_permalink($gallery->pageid);
+                    $gallery->pagelink = @get_page_link($gallery->pageid);
                 else {
                     $gallery->pagelink = $this->object->set_param_for(
                         $this->object->get_routed_url(TRUE),
@@ -209,9 +215,10 @@ class A_NextGen_Basic_Album_Controller extends Mixin
 			// Otherwise, if it's a gallery then it will look like
 			// /nggallery/album--slug/gallery--slug
 			else {
-                if ($gallery->pageid > 0)
-                    $gallery->pagelink = get_post_permalink($gallery->pageid);
-                else {
+                if ($gallery->pageid > 0) {
+					$gallery->pagelink = @get_page_link($gallery->pageid);
+				}
+                if (empty($gallery->pagelink)) {
                     $pagelink = $this->object->get_routed_url(TRUE);
                     $parent_album = $this->object->get_parent_album_for($gallery->$id_field);
                     if ($parent_album) {
@@ -237,15 +244,12 @@ class A_NextGen_Basic_Album_Controller extends Mixin
                 }
 			}
 
-			// The router by default will generate param segments that look like,
-			// /gallery--foobar. We need to convert these to the admittingly
-			// nicer links that ngglegacy uses
-            if ($gallery->pageid <= 0)
-                $gallery->pagelink = $this->object->prettify_pagelink($gallery->pagelink);
-
             // Let plugins modify the gallery
             $gallery = apply_filters('ngg_album_galleryobject', $gallery);
         }
+
+        $params['album'] = reset($this->albums);
+        $params['albums'] = $this->albums;
 
         // Clean up
         unset($storage);
@@ -255,24 +259,6 @@ class A_NextGen_Basic_Album_Controller extends Mixin
 
         return $params;
     }
-
-
-	function prettify_pagelink($pagelink)
-	{
-		$param_separator = C_NextGen_Settings::get_instance()->get('router_param_separator');
-
-		$regex = implode('', array(
-			'#',
-			'/(gallery|album)',
-			preg_quote($param_separator, '#'),
-			'([^/?]+)',
-			'#'
-		));
-		
-		$pagelink = preg_replace($regex, '/\2', $pagelink);
-		
-		return $pagelink;
-	}
 
 
     function _get_js_lib_url()

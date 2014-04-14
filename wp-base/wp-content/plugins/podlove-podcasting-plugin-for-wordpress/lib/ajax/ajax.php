@@ -19,14 +19,18 @@ class Ajax {
 			'create-file',
 			'update-asset-position',
 			'update-feed-position',
-			'podcast'
+			'podcast',
+			'hide-teaser',
+			'get-license-url',
+			'get-license-name',
+			'get-license-parameters-from-url'
 		);
 
 		foreach ( $actions as $action )
 			add_action( 'wp_ajax_podlove-' . $action, array( $this, str_replace( '-', '_', $action ) ) );
 	}
 
-	private function respond_with_json( $result ) {
+	public static function respond_with_json( $result ) {
 		header( 'Cache-Control: no-cache, must-revalidate' );
 		header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
 		header( 'Content-type: application/json' );
@@ -47,7 +51,7 @@ class Ajax {
 			$podcast_data[ $property ] = $podcast->$property;
 		}
 		
-		$this->respond_with_json( $podcast_data );
+		self::respond_with_json( $podcast_data );
 	}
 
 	public function get_new_guid() {
@@ -56,7 +60,7 @@ class Ajax {
 		$post = get_post( $post_id );
 		$guid = \Podlove\Custom_Guid::guid_for_post( $post );
 
-		$this->respond_with_json( array( 'guid' => $guid ) );
+		self::respond_with_json( array( 'guid' => $guid ) );
 	}
 
 	public function validate_file() {
@@ -66,7 +70,7 @@ class Ajax {
 		$info = $file->curl_get_header();
 		$reachable = $info['http_code'] >= 200 && $info['http_code'] < 300;
 
-		$this->respond_with_json( array(
+		self::respond_with_json( array(
 			'file_url'	=> $file_url,
 			'reachable'	=> $reachable,
 			'file_size'	=> $info['download_content_length']
@@ -84,7 +88,7 @@ class Ajax {
 		$validation_cache[ $file_url ] = $reachable;
 		update_option( 'podlove_migration_validation_cache', $validation_cache );
 
-		$this->respond_with_json( array(
+		self::respond_with_json( array(
 			'file_url'	=> $file_url,
 			'reachable'	=> $reachable,
 			'file_size'	=> $header['download_content_length']
@@ -108,7 +112,7 @@ class Ajax {
 		$result['file_size'] = ( $info['http_code'] == 304 ) ? $file->size : $info['download_content_length'];
 
 		if ( ! $result['reachable'] ) {
-			unset( $info['certinfo'] );
+			$info['certinfo'] = print_r($info['certinfo'], true);
 			$info['php_open_basedir'] = ini_get( 'open_basedir' );
 			$info['php_safe_mode'] = ini_get( 'safe_mode' );
 			$info['php_curl'] = in_array( 'curl', get_loaded_extensions() );
@@ -120,7 +124,7 @@ class Ajax {
 			}
 		}
 
-		$this->respond_with_json( $result );
+		self::respond_with_json( $result );
 	}
 
 	public function create_file() {
@@ -136,7 +140,7 @@ class Ajax {
 
 		$file = Model\MediaFile::find_or_create_by_episode_id_and_episode_asset_id( $episode_id, $episode_asset_id );
 
-		$this->respond_with_json( array(
+		self::respond_with_json( array(
 			'file_id'   => $file->id,
 			'file_size' => $file->size
 		) );
@@ -162,6 +166,31 @@ class Ajax {
 			->update_attributes( array( 'position' => $position ) );
 
 		die();
+	}
+
+	public function hide_teaser() {
+		update_option( '_podlove_hide_teaser', TRUE );
+	}
+
+	private function parse_get_parameter_into_url_array() {
+		return array(
+						'version'		 => '3.0',
+						'modification'	 => $_REQUEST['modification'],
+						'commercial_use' => $_REQUEST['commercial_use'],
+						'jurisdiction'	 => $_REQUEST['jurisdiction']
+					);
+	}
+
+	public function get_license_url() {
+		self::respond_with_json( \Podlove\Model\License::get_url_from_license( self::parse_get_parameter_into_url_array() ) );
+	}
+
+	public function get_license_name() {
+		self::respond_with_json( \Podlove\Model\License::get_name_from_license( self::parse_get_parameter_into_url_array() ) );
+	}
+
+	public function get_license_parameters_from_url() {
+		self::respond_with_json( \Podlove\Model\License::get_license_from_url( $_REQUEST['url'] ) );
 	}
 	
 }

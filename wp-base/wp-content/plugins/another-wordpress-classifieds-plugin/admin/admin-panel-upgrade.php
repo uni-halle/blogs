@@ -1,6 +1,6 @@
 <?php
 
-require_once(AWPCP_DIR . '/classes/helpers/admin-page.php');
+require_once(AWPCP_DIR . '/includes/helpers/admin-page.php');
 
 
 /**
@@ -14,20 +14,46 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
         parent::__construct($page, $title, $menu);
 
         $this->upgrades = array(
-            'awpcp-import-payment-transactions' => array($this, 'import_payment_transactions'),
+            'awpcp-import-payment-transactions' => array(
+                'name' => 'Import Payment Transactions',
+            ),
+            'awpcp-migrate-regions-information' => array(
+                'name' => 'Migrate Regions Information',
+            ),
+            'awpcp-migrate-media-information' => array(
+                'name' => 'Migrate Media Information',
+            ),
         );
 
-        add_action('wp_ajax_awpcp-import-payment-transaction', array($this, 'ajax_import_payment_transactions'));
+        add_action( 'wp_ajax_awpcp-import-payment-transactions', array( $this, 'ajax_import_payment_transactions' ) );
+        add_action('wp_ajax_awpcp-migrate-regions-information', array($this, 'ajax_migrate_regions_information'));
+        add_action( 'wp_ajax_awpcp-migrate-media-information', array( $this, 'ajax_migrate_media_information' ) );
     }
 
     private function has_pending_upgrades() {
-        foreach ($this->upgrades as $upgrade => $callback) {
+        foreach ($this->upgrades as $upgrade => $data) {
             if (get_option($upgrade)) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    private function count_pending_upgrades() {
+        return count( $this->get_pending_upgrades() );
+    }
+
+    private function get_pending_upgrades() {
+        $pending_upgrades = array();
+
+        foreach ($this->upgrades as $upgrade => $data) {
+            if (get_option($upgrade)) {
+                $pending_upgrades[$upgrade] = $data;
+            }
+        }
+
+        return $pending_upgrades;
     }
 
     private function update_pending_upgrades_status() {
@@ -41,20 +67,28 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
     }
 
     private function _dispatch() {
-        foreach ($this->upgrades as $upgrade => $callback) {
-            if (get_option($upgrade)) {
-                return call_user_func($callback);
-            }
+        $pending_upgrades = $this->get_pending_upgrades();
+
+        $tasks = array();
+        foreach ( $pending_upgrades as $action => $data ) {
+            $tasks[] = array('name' => $data['name'], 'action' => $action);
         }
 
-        // seems like there are no pending upgrade, let's clear
-        // the pending-manual-upgrade flag
-        $this->update_pending_upgrades_status();
+        $messages = array(
+            'introduction' => _x( 'Before you can use AWPCP again we need to upgrade your database. This operation may take a few minutes, depending on the amount of information stored. Please press the Upgrade button shown below to start the process.', 'awpcp upgrade', 'AWPCP' ),
+            'success' => sprintf( _x( 'Congratulations. AWPCP has been successfully upgraded. You can now access all features. <a href="%s">Click here to Continue</a>.', 'awpcp upgrade', 'AWPCP' ), add_query_arg( 'page', 'awpcp.php' ) ),
+            'button' => _x( 'Upgrade', 'awpcp upgrade', 'AWPCP' ),
+        );
 
-        // ... and tell to the user everything is ready
-        $template = AWPCP_DIR . '/admin/templates/admin-panel-upgrade.tpl.php';
-        return $this->render($template, array('url' => add_query_arg('page', 'awpcp.php')));
+        $tasks = new AWPCP_AsynchronousTasksHelper( $tasks, $messages );
+
+        return $this->render( 'content', $tasks->render() );
     }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Import Pyment Transactions
+     */
 
     private function count_old_payment_transactions() {
         global $wpdb;
@@ -63,21 +97,6 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
         $query.= "WHERE option_name LIKE 'awpcp-payment-transaction-%'";
 
         return (int) $wpdb->get_var($query);
-    }
-
-    private function import_payment_transactions() {
-        if ($this->count_old_payment_transactions() === 0) {
-            delete_option('awpcp-import-payment-transactions');
-            return $this->dispatch();
-        }
-
-        $params = array(
-            'url' => add_query_arg('page', 'awpcp.php'),
-            'action' => 'awpcp-import-payment-transaction',
-        );
-
-        $template = AWPCP_DIR . '/admin/templates/admin-panel-upgrade-import-payment-transactions.tpl.php';
-        return $this->render($template, $params);
     }
 
     public function ajax_import_payment_transactions() {
@@ -100,7 +119,13 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
                 $transaction = new AWPCP_Payment_Transaction(array('id' => $hash));
             }
 
-            $data = get_option($option_name, null);
+            $data = maybe_unserialize( get_option( $option_name, null ) );
+
+            // can't process this transaction, skip and delete old data
+            if ( !is_array( $data ) ) {
+                delete_option($option_name);
+                continue;
+            }
 
             $errors = awpcp_array_data('__errors__', array(), $data);
             $user_id = awpcp_array_data('user-id', null, $data);
@@ -120,7 +145,7 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
             }
 
             foreach ($items as $item) {
-                $transaction->add_item($item->id, $item->name, '', 'money', $amount);
+                $transaction->add_item($item->id, $item->name, '', AWPCP_Payment_Transaction::PAYMENT_TYPE_MONEY, $amount);
                 // at the time of this upgrade, only one item was supported.
                 break;
             }
@@ -173,10 +198,175 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
             $this->update_pending_upgrades_status();
         }
 
-        $response = array('total' => $existing_transactions, 'remaining' => $remaining_transactions);
+        return $this->ajax_response( $existing_transactions, $remaining_transactions );
+    }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Migrate Regions Information
+     */
+
+    private function count_ads_pending_region_information_migration($cursor) {
+        global $wpdb;
+
+        $sql = 'SELECT COUNT(ad_id) FROM ' . AWPCP_TABLE_ADS . ' ';
+        $sql.= 'WHERE ad_id > %d';
+
+        return intval( $wpdb->get_var( $wpdb->prepare( $sql, $cursor ) ) );
+    }
+
+    public function ajax_migrate_regions_information() {
+        global $wpdb;
+
+        if ( awpcp_column_exists( AWPCP_TABLE_ADS, 'ad_country' ) ) {
+            $cursor = get_option( 'awpcp-migrate-regions-info-cursor', 0 );
+            $total = $this->count_ads_pending_region_information_migration( $cursor );
+
+            $sql = 'SELECT ad_id, ad_country, ad_state, ad_city, ad_county_village ';
+            $sql.= 'FROM ' . AWPCP_TABLE_ADS . ' ';
+            $sql.= 'WHERE ad_id > %d ORDER BY ad_id LIMIT 0, 100';
+
+            $results = $wpdb->get_results( $wpdb->prepare( $sql, $cursor ) );
+
+            $regions = awpcp_basic_regions_api();
+            foreach ( $results as $ad ) {
+                $region = array();
+                if ( ! empty( $ad->ad_country ) ) {
+                    $region['country'] = $ad->ad_country;
+                }
+                if ( ! empty( $ad->ad_county_village ) ) {
+                    $region['county'] = $ad->ad_county_village;
+                }
+                if ( ! empty( $ad->ad_state ) ) {
+                    $region['state'] = $ad->ad_state;
+                }
+                if ( ! empty( $ad->ad_city ) ) {
+                    $region['city'] = $ad->ad_city;
+                }
+
+                if ( ! empty( $region ) ) {
+                    // remove old data first
+                    $regions->delete_by_ad_id( $ad->ad_id );
+                    $regions->save( array_merge( array( 'ad_id' => $ad->ad_id ), $region ) );
+                }
+
+                $cursor = $ad->ad_id;
+            }
+
+            update_option( 'awpcp-migrate-regions-info-cursor', $cursor );
+            $remaining = $this->count_ads_pending_region_information_migration( $cursor );
+
+            if ( 0 === $remaining ) {
+                // TODO: do this in the next version
+                // $columns = array( 'ad_country, ad_state, ad_city, ad_county_village' );
+                // foreach ( $columns as $column ) {
+                //     $wpdb->query( sprintf( 'ALTER TABLE %s DROP COLUMN', AWPCP_TABLE_ADS, $column ) );
+                // }
+
+                // TODO: delete region_id column in a future upgrade and remove
+                // all rows from ad_regions table that have no data in the country, county, state
+                // and city columns.
+
+                delete_option( 'awpcp-migrate-regions-information' );
+                $this->update_pending_upgrades_status();
+            }
+        } else {
+            $total = 0;
+            $remaining = 0;
+        }
+
+        return $this->ajax_response( $total, $remaining );
+    }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Migrate Media Information
+     */
+
+    public function ajax_migrate_media_information() {
+        global $wpdb;
+
+        if ( ! awpcp_table_exists( AWPCP_TABLE_ADPHOTOS ) ) {
+            return $this->ajax_response( 0, 0 );
+        }
+
+        $cursor = get_option( 'awpcp-migrate-media-information-cursor', 0 );
+        $total = $this->count_pending_images( $cursor );
+
+        $sql = 'SELECT * FROM ' . AWPCP_TABLE_ADPHOTOS . ' ';
+        $sql.= 'WHERE ad_id > %d ORDER BY key_id LIMIT 0, 100';
+
+        $results = $wpdb->get_results( $wpdb->prepare( $sql, $cursor ) );
+
+        $uploads = awpcp_setup_uploads_dir();
+        $uploads = array_shift( $uploads );
+
+        foreach ( $results as $image ) {
+            $cursor = $image->ad_id;
+
+            $filename = awpcp_get_image_url( $image->image_name );
+
+            if ( empty( $filename ) ) continue;
+
+            $path = str_replace( AWPCPUPLOADURL, $uploads, $filename );
+
+            if ( function_exists( 'mime_content_type' ) ) {
+                $mime_type = mime_content_type( $path );
+            } else {
+                $extension = pathinfo( $image->image_name, PATHINFO_EXTENSION );
+                $mime_type = sprintf( 'image/%s', $extension );
+            }
+
+            $entry = array(
+                'ad_id' => $image->ad_id,
+                'path' => $image->image_name,
+                'name' => $image->image_name,
+                'mime_type' => strtolower( $mime_type ),
+                'enabled' => ! $image->disabled,
+                'is_primary' => $image->is_primary,
+                'created' => awpcp_datetime(),
+            );
+
+            $wpdb->insert( AWPCP_TABLE_MEDIA, $entry );
+        }
+
+        update_option( 'awpcp-migrate-media-information-cursor', $cursor );
+        $remaining = $this->count_pending_images( $cursor );
+
+        if ( 0 === $remaining ) {
+            // TODO: do this in the next version upgrade
+            // $wpdb->query( 'DROP TABLE ' . AWPCP_TABLE_ADPHOTOS );
+
+            delete_option( 'awpcp-migrate-media-information' );
+            $this->update_pending_upgrades_status();
+        }
+
+        return $this->ajax_response( $total, $remaining );
+    }
+
+    private function count_pending_images($cursor) {
+        global $wpdb;
+
+        $sql = 'SELECT count(key_id) FROM ' . AWPCP_TABLE_ADPHOTOS . '  ';
+        $sql.= 'WHERE ad_id > %d ORDER BY key_id LIMIT 0, 100';
+
+        return intval( $wpdb->get_var( $wpdb->prepare( $sql, $cursor ) ) );
+    }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Ajax Response
+     */
+
+    private function ajax_response( $total, $remaining ) {
+        $response = array(
+            'status' => 'ok',
+            'recordsCount' => $total,
+            'recordsLeft' => $remaining
+        );
 
         header( "Content-Type: application/json" );
-        echo json_encode($response);
+        echo json_encode( $response );
         die();
     }
 }

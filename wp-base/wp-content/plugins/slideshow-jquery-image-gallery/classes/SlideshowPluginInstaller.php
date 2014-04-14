@@ -106,8 +106,97 @@ class SlideshowPluginInstaller
 			self::updateV2_2_16_to_V_2_2_17();
 		}
 
+		// Update to version 2.2.20
+		if (self::firstVersionGreaterThanSecond('2.2.20', $currentVersion) ||
+			$currentVersion == null)
+		{
+			self::updateV2_2_17_to_V_2_2_20();
+		}
+
 		// Set new version
 		update_option(self::$versionKey, SlideshowPluginMain::$version);
+	}
+
+	/**
+	 * Version 2.2.17 to 2.2.20
+	 *
+	 * Version 2.2.20 allows users to choose what kind of element displays the title and description of a slide. This
+	 * replaces all default header (h2) and paragraph (p) elements with a default div element. This method will update
+	 * all custom stylesheets with the new selectors.
+	 *
+	 * @since 2.2.20
+	 */
+	private static function updateV2_2_17_to_V_2_2_20()
+	{
+		// Check if this has already been done
+		if (get_option('slideshow-jquery-image-gallery-updated-from-v2-2-17-to-v2-2-20') !== false)
+		{
+			return;
+		}
+
+		$additionalCSS =
+"
+.slideshow_container .slideshow_slide_text p,
+.slideshow_container .slideshow_slide_text h1,
+.slideshow_container .slideshow_slide_text h2,
+.slideshow_container .slideshow_slide_text h3,
+.slideshow_container .slideshow_slide_text h4,
+.slideshow_container .slideshow_slide_text h5,
+.slideshow_container .slideshow_slide_text h6 { text-align: center; }
+
+.slideshow_container .slideshow_description_box div,
+.slideshow_container .slideshow_description_box div a,
+.slideshow_container .slideshow_description_box p,
+.slideshow_container .slideshow_description_box p a,
+.slideshow_container .slideshow_description_box h1,
+.slideshow_container .slideshow_description_box h1 a,
+.slideshow_container .slideshow_description_box h2,
+.slideshow_container .slideshow_description_box h2 a,
+.slideshow_container .slideshow_description_box h3,
+.slideshow_container .slideshow_description_box h3 a,
+.slideshow_container .slideshow_description_box h4,
+.slideshow_container .slideshow_description_box h4 a,
+.slideshow_container .slideshow_description_box h5,
+.slideshow_container .slideshow_description_box h5 a,
+.slideshow_container .slideshow_description_box h6,
+.slideshow_container .slideshow_description_box h6 a {
+	text-align: center;
+	color: #fff;
+}
+";
+		$customStylesOptionsKey = 'slideshow-jquery-image-gallery-custom-styles';
+
+		// Get all custom stylesheet keys
+		$customStyles = get_option($customStylesOptionsKey, array());
+
+		if (is_array($customStyles))
+		{
+			foreach ($customStyles as $customStyleKey => $customStyleValue)
+			{
+				// Get custom style from custom style key
+				$customStyle = get_option($customStyleKey, null);
+
+				if (!isset($customStyle))
+				{
+					continue;
+				}
+
+				$customStyle = str_replace('.slideshow_description', '.slideshow_description_box', $customStyle);
+
+				$customStyle = str_replace('.slideshow_slide_text h2', '.slideshow_slide_text div.slideshow_title', $customStyle);
+				$customStyle = str_replace('.slideshow_slide_text p', '.slideshow_slide_text div.slideshow_description', $customStyle);
+
+				$customStyle = str_replace('.slideshow_description_box h2', '.slideshow_description_box div.slideshow_title', $customStyle);
+				$customStyle = str_replace('.slideshow_description_box p', '.slideshow_description_box div.slideshow_description', $customStyle);
+
+				$customStyle .= $additionalCSS;
+
+				// Save
+				update_option($customStyleKey, $customStyle);
+			}
+		}
+
+		add_option('slideshow-jquery-image-gallery-updated-from-v2-2-17-to-v2-2-20', 'updated', '', false);
 	}
 
 	/**
@@ -165,7 +254,7 @@ class SlideshowPluginInstaller
 			}
 		}
 
-		update_option('slideshow-jquery-image-gallery-updated-from-v2-2-16-to-v2-2-17', 'updated');
+		add_option('slideshow-jquery-image-gallery-updated-from-v2-2-16-to-v2-2-17', 'updated', '', false);
 	}
 
 	/**
@@ -230,7 +319,7 @@ class SlideshowPluginInstaller
 			}
 		}
 
-		update_option('slideshow-jquery-image-gallery-updated-from-v2-2-12-to-v2-2-16', 'updated');
+		add_option('slideshow-jquery-image-gallery-updated-from-v2-2-12-to-v2-2-16', 'updated', '', false);
 	}
 
 	/**
@@ -282,7 +371,7 @@ class SlideshowPluginInstaller
 			}
 		}
 
-		update_option('slideshow-jquery-image-gallery-updated-from-v2-2-8-to-v2-2-12', 'updated');
+		add_option('slideshow-jquery-image-gallery-updated-from-v2-2-8-to-v2-2-12', 'updated', '', false);
 	}
 
 	/**
@@ -340,7 +429,7 @@ class SlideshowPluginInstaller
 			}
 		}
 
-		update_option('slideshow-jquery-image-gallery-updated-from-v2-2-0-to-v2-2-8', 'updated');
+		add_option('slideshow-jquery-image-gallery-updated-from-v2-2-0-to-v2-2-8', 'updated', '', false);
 	}
 
 	/**
@@ -402,7 +491,7 @@ class SlideshowPluginInstaller
 			}
 		}
 
-		update_option('slideshow-jquery-image-gallery-updated-from-v2-1-23-to-v2-2-0', 'updated');
+		add_option('slideshow-jquery-image-gallery-updated-from-v2-1-23-to-v2-2-0', 'updated', '', false);
 	}
 
 	/**
@@ -493,7 +582,7 @@ class SlideshowPluginInstaller
 			}
 		}
 
-		update_option('slideshow-jquery-image-gallery-updated-from-v2-1-20-to-v2-1-23', 'updated');
+		add_option('slideshow-jquery-image-gallery-updated-from-v2-1-20-to-v2-1-23', 'updated', '', false);
 	}
 
 	/**
@@ -535,7 +624,7 @@ class SlideshowPluginInstaller
 		}
 
 		// Register as updated
-		update_option('slideshow-jquery-image-gallery-updated-from-v2-1-20-to-v2-1-22', 'updated');
+		add_option('slideshow-jquery-image-gallery-updated-from-v2-1-20-to-v2-1-22', 'updated', '', false);
 	}
 
 	/**
@@ -657,7 +746,7 @@ class SlideshowPluginInstaller
 			}
 		}
 
-		update_option('slideshow-plugin-updated-from-v2-to-v2-1-20', 'updated');
+		add_option('slideshow-plugin-updated-from-v2-to-v2-1-20', 'updated', '', false);
 	}
 
 	/**
@@ -832,7 +921,7 @@ class SlideshowPluginInstaller
 			);
 		}
 
-		update_option('slideshow-plugin-updated-from-v1-x-x-to-v2-0-1', 'updated');
+		add_option('slideshow-plugin-updated-from-v1-x-x-to-v2-0-1', 'updated', '', false);
 	}
 
 	/**
