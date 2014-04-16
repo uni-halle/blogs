@@ -3,3 +3,8 @@
 backup/
 wp-config.php
 wp-base/wp-content/blogs.dir/
+Thumbs.db
+wp-base/wp-content/plugins/si-captcha-for-wordpress/captcha/cache/*.php
+wp-base/wp-content/wptouch-data/
+wp-base/wp-content/plugins/prism-detached/cache/
+backup/
