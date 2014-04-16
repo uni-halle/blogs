@@ -4,7 +4,7 @@ Theme URI: http://www.opencodez.com/free-themes/aadya/
 Author: Opencodez Team
 Author URI: http://www.opencodez.com
 Description: The Aadya theme for WordPress developed on top of Twitter Bootstrap Framework 3.0. The theme is fully responsive and can be viewed on any device. With 5 different layouts for posts and pages, Aadya theme is uniquely positioned for any business or personal website. The theme has 12 widget areas, 2 strategic menu locations, nicely designed and customizable footer with its own widget areas. In addition to this the theme provieds with 5 pre-installed widgets for FrontPage Marketing Text, FrontPage Marketeing Thumbnails, Author Profile, Social Icon Box.
-Version: 1.0.7
+Version: 1.0.8
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: light, blue, white, one-column, two-columns, three-columns, right-sidebar,left-sidebar, responsive-layout, custom-background, custom-header, custom-menu, featured-images, flexible-header, full-width-template, sticky-post, theme-options, translation-ready, custom-colors, threaded-comments
@@ -698,6 +698,8 @@ border-radius:0px;
 img#wpstats{display:none}
 
 
+
+
 /*-----------------------------------------------------------------------*/
 @media (min-width: 768px) {
 	.post-tile{
@@ -708,3 +710,25 @@ img#wpstats{display:none}
 		padding-top: 0px;
 	}
 }
+
+input[type=search] {
+	background: transparent url(img/search-icon.png) no-repeat 7px center;
+	border: solid 1px transparent;
+	padding-left:35px;
+	width: 30px;
+	height: 34px;
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+	top : 4px;
+}
+input[type=search]:focus {
+	background: transparent url(img/search-icon-focus.png) no-repeat 7px center;
+	width: 130px;
+	background-color: #fff;
+	outline: none;
+}
+

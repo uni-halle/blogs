@@ -1,7 +1,6 @@
 <?php
 /**
  * Single Template
- *
  * Displays single post
  *
  * @package     Desk_Mess_Mirrored
@@ -12,7 +11,7 @@
  * @link        http://wordpress.org/extend/themes/desk-mess-mirrored/
  *
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2013, Edward Caissie
+ * @copyright   Copyright (c) 2009-2014, Edward Caissie
  *
  * @version     2.0
  * @date        December 11, 2012
@@ -24,28 +23,32 @@
 
 get_header(); ?>
 
-<div id="maintop"></div>
+	<div id="maintop"></div>
 
-<div id="wrapper">
-    <div id="content">
+	<div id="wrapper">
+		<div id="content">
 
-        <div id="main-blog">
-            <?php
-            if ( have_posts() ) {
-                while ( have_posts() ) {
-                    the_post();
-                    get_template_part( 'desk-mess-mirrored', get_post_format() );
-                } /** End while - have posts */
-            } else {
-                dmm_no_posts_found();
-            } /** End if - have posts */ ?>
-        </div><!--end main blog-->
+			<div id="main-blog">
+				<?php
+				if ( have_posts() ) {
+					while ( have_posts() ) {
+						the_post();
+						get_template_part( 'desk-mess-mirrored', get_post_format() );
+					}
+					/** End while - have posts */
+				} else {
+					dmm_no_posts_found();
+				} /** End if - have posts */
+				?>
+			</div>
+			<!--end main blog-->
 
-        <?php get_sidebar(); ?>
+			<?php get_sidebar(); ?>
 
-        <div class="clear"></div>
+			<div class="clear"></div>
 
-    </div><!--end content-->
-</div><!--end wrapper-->
+		</div>
+		<!--end content-->
+	</div><!--end wrapper-->
 
 <?php get_footer();

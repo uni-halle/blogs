@@ -1,6 +1,26 @@
 === Desk Mess Mirrored ===
-Changelog: November 16, 2013
+Changelog: April 13, 2014
 
+== Version 2.2.4/2.2.4.1 ==
+= Code =
+* Added `dmm_post_meta_link_edit()` function with filter hooks for DRY purposes
+* Removed call to `function_exists( 'dynamic_sidebar' )` as required WordPress version precludes its necessity
+
+= CSS =
+* Added better list element styles
+* Fixed typo on `.wp-caption img` max-width property
+* Fixed `.wp-caption` left and right alignment issues
+* Minor clean-up of old properties
+
+= Miscellaneous =
+* Added `Textdomain` to theme header block
+* Change `fixed-width` theme tag to `fixed-layout`
+* Code reformatted to better meet the WordPress Coding Standards
+* Clean-up `readme.txt` file
+* Replaced screenshot with new 880 x 660 version (removed secondary screenshots)
+* Updated Copyright Years
+
+/** ------------------------------------------------------------------------- */
 == Version 2.2.3 ==
 = Code =
 * Added support for Post-Format: Link

@@ -39,6 +39,12 @@ Copyright: @afarkas @jdalton @jon_neal @rem
 Changelog
 ---------
 
+0.9.8
+- fix featured image issue from 0.9.6 update
+
+0.9.7
+- fix featured image issue from 0.9.6 update
+
 0.9.6
 - Replace layout meta box with templates
 - move theme options to omega options plugin

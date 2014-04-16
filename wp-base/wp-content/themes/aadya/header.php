@@ -43,6 +43,7 @@
 		if(empty($aadya_header_background) && !empty($wp_header_image)):
 			$aadya_header_background = get_header_image();
 		endif;
+		$display_nav_search = of_get_option('display_nav_search');
 		
 	?>	
 	<?php if ( $aadya_header !== "blank" ) : ?>
@@ -99,6 +100,17 @@
 								'container' => false, 
 								'fallback_cb' => false, 
 								'walker' => new wp_bootstrap_navwalker() ) ); ?>	
+								
+		<?php if(isset($display_nav_search) && $display_nav_search==true): ?> 						
+		<ul class="nav navbar-nav navbar-right visible-md visible-lg pull-right">
+			<li>
+				<form class="navbar-search navbar-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<input type="search" name="s" id="s" class="search-fields" placeholder="<?php esc_attr_e( 'Search', 'openstrap' ); ?>" name="s">
+				</form>
+			</li>
+		</ul>								
+		<?php endif; ?>		
+		
 			</div><!--/.nav-collapse -->
 		  </div>
 		</div>
@@ -109,11 +121,7 @@
 		 * We need to put our slider code here as we are doing a full width carousel 	
 		*/
 		if (is_page_template( 'page-templates/front-page-with-slider.php' )) {
-			$display_slider = of_get_option('display_slider');
-			if(isset($display_slider) && $display_slider==true) {
 				get_template_part( 'slides', 'index' );
-				//get_template_part( 'test', 'slides' );
-			}			
 		}	
 	?>
 	

@@ -131,6 +131,13 @@ function optionsframework_options() {
 		'type' => 'upload');			
 		
 	$options[] = array(
+		'name' => __('Display Search Icon in Nav Menu', 'options_check'),
+		'desc' => __('Check to display Search in Nav Menu. Defaults to True.', 'options_check'),
+		'id' => 'display_nav_search',
+		'std' => '1',
+		'type' => 'checkbox');				
+		
+	$options[] = array(
 		'name' => __('Theme Layout', 'options_check'),
 		'desc' => __('This option allows you to set wider theme layout.', 'options_check'),
 		'id' => 'theme_layout',
@@ -163,7 +170,6 @@ function optionsframework_options() {
 		'class' => 'mini', //mini, tiny, small
 		'options' => $theme_footer_widgets);			
 	
-
 	$options[] = array(
 		'name' => __('Copyright Text', 'options_check'),
 		'desc' => __('Your sites copyright statement.', 'options_check'),

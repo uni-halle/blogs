@@ -233,7 +233,7 @@ function omega_entry() {
 
 	if ( is_home() || is_archive() || is_search() ) {
 		if(omega_get_setting( 'content_archive_thumbnail' )) {
-			get_the_image( array( 'meta_key' => 'Thumbnail', 'default_size' => omega_get_setting( 'image_size' ) ) ); 
+			get_the_image( array('attachment' => false, 'meta_key' => 'Thumbnail', 'default_size' => omega_get_setting( 'image_size' ) ) ); 
 		}
 	
 

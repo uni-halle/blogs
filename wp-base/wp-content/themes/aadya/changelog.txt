@@ -1,5 +1,10 @@
 *** Revision History ***
 ===========================
+version 1.0.8		2014-02-18
+* Added configurable search box in nav menu
+* Fixed blurb button configuration
+* Fixed front page row heading configuration
+
 version 1.0.7		2014-02-18
 * Fixed screenshot size
 

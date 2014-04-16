@@ -1,24 +1,23 @@
 <?php
 /**
- * Upgrade routine for Portfolio Press.
- * Sets $options['upgrade-0-9-6'] to true if user is updating
+ * Sets $options['upgrade-0-9-8'] to true if user is updating
  */
 function omega_upgrade_routine() {
 
 	$options = get_option( 'omega_framework', false );
-
+	
 	// If version is set, upgrade routine has already run
-	if ( !empty( $options['version'] ) ) {
+	if ( $options['version'] == '0.9.8' ) {
 		return;
 	}
-
+	
 	// If $options exist, user is upgrading
-	if ( $options ) {
-		$options['upgrade-0-9-6'] = true;
+	if ( empty( $options['upgrade-0-9-8']) && get_option( 'omega_theme_settings', false ) ) {
+		$options['upgrade-0-9-8'] = true;
 	}
 
 	// New version number
-	$options['version'] = '0.9.6';
+	$options['version'] = '0.9.8';
 
 	update_option( 'omega_framework', $options );
 }
@@ -32,7 +31,7 @@ function omega_upgrade_notice() {
 	if ( current_user_can( 'edit_theme_options' ) ) {
 		$options = get_option( 'omega_framework', false );
 
-		if ( !empty( $options['upgrade-0-9-6'] ) && $options['upgrade-0-9-6'] ) {
+		if ( !empty( $options['upgrade-0-9-8'] ) && $options['upgrade-0-9-8'] ) {
 			echo '<div class="updated"><p>';
 				printf( __(
 					'Thanks for updating Omega Theme.  Please <a href="%1$s">read about important changes</a> in this version and give your site a quick check. <a href="%2$s">Dismiss notice</a>' ),
@@ -53,7 +52,7 @@ function omega_notice_ignores() {
 	$options = get_option( 'omega_framework' );
 
 	if ( isset( $_GET['omega_upgrade_notice_ignore'] ) && '1' == $_GET['omega_upgrade_notice_ignore'] ) {
-		$options['upgrade-0-9-6'] = false;
+		$options['upgrade-0-9-8'] = false;
 		update_option( 'omega_framework', $options );
 	}
 

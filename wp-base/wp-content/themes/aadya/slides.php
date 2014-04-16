@@ -26,7 +26,10 @@
 	$aadya_link_3 = trim(of_get_option('slider_image_button_3_link')); if(($aadya_link_3 == "")) unset($aadya_link_3);
 	$aadya_link_4 = trim(of_get_option('slider_image_button_4_link')); if(($aadya_link_4 == "")) unset($aadya_link_4);	
 	
+	$display_slider = of_get_option('display_slider');
+	
 ?>    
+<?php if(isset($display_slider) && $display_slider==true):?>
 <?php if(isset($aadya_slider_img_1) || isset($aadya_slider_img_2) || isset($aadya_slider_img_3) || isset($aadya_slider_img_4)) :?>	
 	<!-- Carousel
     ================================================== -->
@@ -136,18 +139,32 @@
     </div><!-- /.carousel -->
 	</div><!-- /.slider -->
 <?php endif;?>	
+<?php endif;?>	
 
-<?php if(of_get_option('display_blurb') == '1'): ?>	
+<?php
+	$display_blurb = of_get_option('display_blurb');
+	$display_blurb_button = of_get_option('display_blurb_button');
+	
+	if($display_blurb_button !=1) {
+		$blurb_col = 12;
+	} else {
+		$blurb_col = 9;
+	}
+?>
+
+<?php if($display_blurb == '1'): ?>	
 <div class="blurb">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-<?php echo $blurb_col; ?>">
                 <span><?php echo of_get_option('blurb_heading'); ?></span>
                 <p><?php echo of_get_option('blurb_text'); ?></p>
-            </div>            
+            </div>        
+			<?php if($display_blurb_button == '1'): ?>	
             <div class="col-md-3">
                 <a href="<?php echo get_permalink( of_get_option('blurb_button_link_page')); ?>" class="btn-buy hover-effect"><?php echo of_get_option('blurb_button_title'); ?></a>            
             </div>
+			<?php endif; ?>	
         </div>
     </div>
 </div>
