@@ -187,7 +187,9 @@ function awpcp_content_placeholders() {
         ),
 
         'twitter_button' => array(),
+        'twitter_button_url' => array(),
         'facebook_button' => array(),
+        'facebook_button_url' => array(),
 
         // single ad [only] placeholders
         'images' => array(),
@@ -388,6 +390,7 @@ function awpcp_do_placeholder_price($ad, $placeholder) {
     $price = empty($ad->ad_item_price) ? 0 : ($ad->ad_item_price / 100);
 
     $replacements = array();
+
     if ($price >= 0 && get_awpcp_option('displaypricefield') == 1) {
         $label = __('Price', 'AWPCP');
         $currency = awpcp_format_money($price);
@@ -468,10 +471,7 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
         }
 
         if ($images_uploaded >= 1) {
-            $results = awpcp_media_api()->find_images_by_ad_id( $ad->ad_id, array(
-                'enabled' => 1,
-                'order' => array( 'is_primary ASC', 'name ASC' ),
-            ) );
+            $results = awpcp_media_api()->find_public_images_by_ad_id( $ad->ad_id );
 
             $columns = get_awpcp_option('display-thumbnails-in-columns', 0);
             $rows = $columns > 0 ? ceil(count($results) / $columns) : 0;
@@ -510,7 +510,7 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
 
     // fallback thumbnail
     if (!isset($placeholders['awpcp_image_name_srccode'])) {
-        $thumbnail = sprintf('%s/adhasnoimage.gif', $awpcp_imagesurl);
+        $thumbnail = sprintf('%s/adhasnoimage.png', $awpcp_imagesurl);
         $content = '<a href="%s"><img src="%s" width="%spx" border="0" alt="%s" /></a>';
         $content = sprintf($content, $url, $thumbnail, $thumbnail_width, awpcp_esc_attr($ad->ad_title));
 
@@ -773,10 +773,7 @@ function awpcp_do_placeholder_flag_link($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_twitter_button($ad, $placeholder) {
-    $url = add_query_arg(array(
-        'url' => urlencode(url_showad($ad->ad_id)),
-        'text' => urlencode($ad->get_title()),
-    ), 'http://twitter.com/share');
+    $url = awpcp_do_placeholder_twitter_button_url( $ad, 'twitter_button_url' );
 
     $button = '<div class="tw_button awpcp_tweet_button_div">';
     $button.= '<a href="' . $url . '" rel="nofollow" class="twitter-share-button" target="_blank">';
@@ -789,18 +786,36 @@ function awpcp_do_placeholder_twitter_button($ad, $placeholder) {
 
 
 /**
+ * @since 3.2.2
+ */
+function awpcp_do_placeholder_twitter_button_url( $ad, $placeholder ) {
+    return add_query_arg(array(
+        'url' => urlencode(url_showad($ad->ad_id)),
+        'text' => urlencode($ad->get_title()),
+    ), 'http://twitter.com/share');
+}
+
+
+/**
  * @since 3.0
  */
 function awpcp_do_placeholder_facebook_button($ad, $placeholder) {
-    $info = awpcp_get_ad_share_info($ad->ad_id);
-
-    $href = sprintf( 'http://www.facebook.com/sharer/sharer.php?u=%s', urlencode( $info['url'] ) );
+    $href = awpcp_do_placeholder_facebook_button_url( $ad, 'facebook_button_url' );
 
     $button = '<div class="tw_button awpcp_tweet_button_div">';
     $button.= '<a href="%s" class="facebook-share-button" title="%s" target="_blank"></a>';
     $button.= '</div>';
 
     return sprintf($button, $href, __('Share on Facebook', 'AWPCP'));
+}
+
+
+/**
+ * @since 3.2.2
+ */
+function awpcp_do_placeholder_facebook_button_url( $ad, $placeholder ) {
+    $info = awpcp_get_ad_share_info( $ad->ad_id );
+    return sprintf( 'http://www.facebook.com/sharer/sharer.php?u=%s', urlencode( $info['url'] ) );
 }
 
 

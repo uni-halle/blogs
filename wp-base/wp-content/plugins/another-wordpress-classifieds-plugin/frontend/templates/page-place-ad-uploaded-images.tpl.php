@@ -10,7 +10,13 @@
     <ul class="uploaded-images clearfix" id="uploaded-images">
     <?php foreach ( $images as $image ): ?>
 
-        <?php $class = array($image->is_primary ? 'primary-image' : '', $image->enabled ? 'enabled' : 'disabled') ?>
+        <?php
+            $class = array(
+                $image->is_primary ? 'primary-image' : '',
+                $image->enabled ? 'enabled' : 'disabled',
+                strtolower( $image->status ),
+            );
+        ?>
 
         <li class="<?php echo join( ' ', array_filter( $class ) ); ?>">
             <img src="<?php echo $image->get_url( 'thumbnail' ); ?>" />
@@ -21,7 +27,7 @@
             ?>
 
             <ul class="image-actions clearfix">
-                <?php if ( $actions['enable'] && ! $image->enabled ): ?>
+                <?php if ( $image->is_approved() && ! $image->enabled ): ?>
                 <li class="label"><?php echo _x( 'Disabled', 'upload images', 'AWPCP' ); ?></li>
                 <li class="enable">
                     <?php $href = add_query_arg( array( 'step' => 'upload-images', 'a' => 'enable-picture' ), $url ); ?>
@@ -29,7 +35,7 @@
                 </li>
                 <?php endif ?>
 
-                <?php if ( $actions['disable'] && $image->enabled ): ?>
+                <?php if ( $image->is_approved() && $image->enabled ): ?>
                 <li class="label"><?php echo _x( 'Enabled', 'upload images', 'AWPCP' ); ?></li>
                 <li class="disable">
                     <?php $href = add_query_arg( array( 'step' => 'upload-images', 'a' => 'disable-picture' ), $url ); ?>
@@ -43,12 +49,12 @@
                 </li>
 
                 <?php if ($image->is_primary): ?>
-                <li class="primary">
+                <li class="not-primary">
                     <?php $href = add_query_arg( array( 'step' => 'upload-images', 'a' => 'make-not-primary' ), $url ); ?>
                     <?php echo sprintf( $link, $href, _x( 'Unset as Primary Image', 'upload images', 'AWPCP' ) ); ?>
                 </li>
                 <?php else: ?>
-                <li class="not-primary">
+                <li class="primary">
                     <?php $href = add_query_arg( array( 'step' => 'upload-images', 'a' => 'make-primary' ), $url ); ?>
                     <?php echo sprintf( $link, $href, _x( 'Set as Primary Image', 'upload images', 'AWPCP' ) ); ?>
                 </li>

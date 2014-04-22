@@ -2,7 +2,7 @@
 /*
 Plugin Name: Toggle The Title
 Plugin URI: http://wordpress.org/extend/plugins/toggle-the-title/
-Version: 1.3
+Version: 1.4
 Description: A plugin that will allow to remove page titles per page.
 Author: Avner Komarow 
 Author URI: mailto:avner.komarow@gmail.com
@@ -100,7 +100,7 @@ function TitleToggler_save_title_status_input() {
     else update_post_meta(get_the_ID(), 'toggle_page_title', 0 );
 }
 
-function TitleToggler_hide_title($title, $id) {
+function TitleToggler_hide_title($title, $id = '') {	
 	if (!is_page() || get_post_type( $id ) <> 'page' || !in_the_loop()) return $title; //works only on pages!  -> exit 
 	
 	$is_hide_all_pages = strpos( get_option('TitleToggler_disableAllPages'), 'checked' ); //if is page & Disable all pages Titles is on then -> hide

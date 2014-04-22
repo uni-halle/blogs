@@ -2,8 +2,8 @@
 Contributors: vasyl_m
 Tags: access manager, access, access control, comments, capability, widget, filter menu, role manager, user access, user control, user
 Requires at least: 3.4.2
-Tested up to: 3.8.1
-Stable tag: 2.5
+Tested up to: 3.9
+Stable tag: 2.5.1
 
 Graphic interface to manage Access control to your Front-end and Back-end
 
@@ -95,6 +95,13 @@ the list of additional metaboxes can be picked by AAM.
 5. ConfigPress
 
 == Changelog ==
+
+= 2.5.1 =
+* Extended AAM Media Manager Extension
+* Adjusted control_area to AAM Media Manager
+* Fixed issue with mb_* functions
+* Added Contextual Help Menu
+* Updated My Feature extension
 
 = 2.5 =
 * Fixed issue with AAM Plus Package and Multisite

@@ -73,11 +73,10 @@ class AWPCP_User_Panel {
         }
 
         $profile = (array) get_user_meta($user_id, 'awpcp-profile', true);
-        // get username and email from WP
-        $profile['username'] = $current_user->user_login;
         $profile['email'] = $_POST['email'];
         $profile['website'] = $_POST['url'];
         $profile = array_merge($profile, $_POST['awpcp-profile']);
+
         update_user_meta($user_id, 'awpcp-profile', $profile);
     }
 }

@@ -459,7 +459,7 @@ class AWPCP_PaymentsAPI {
             return '';
 
         $balance = $this->format_account_balance();
-        $text = sprintf(__('You currently have %d in credit in your account.', 'AWPCP'), $balance);
+        $text = sprintf(__('You currently have %s in credit in your account.', 'AWPCP'), $balance);
 
         return awpcp_print_message( $text );
     }

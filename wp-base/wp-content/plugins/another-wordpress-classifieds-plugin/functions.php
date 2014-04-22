@@ -137,22 +137,24 @@ function awpcp_strptime_replacement( $date, $format ) {
         // usw..
     );
 
-    $rexep = "#" . strtr( preg_quote( $format ), $masks ) . "#";
-    if ( ! preg_match( $rexep, $date, $out ) )
+    $regexp = "#" . strtr( preg_quote( $format ), $masks ) . "#";
+    if ( ! preg_match( $regexp, $date, $out ) ) {
         return false;
+    }
 
-    $unparsed = preg_replace( $rexep, '', $date );
+    $unparsed = preg_replace( $regexp, '', $date );
 
-    if ( strlen( $out['y'] ) )
+    if ( isset( $out['y'] ) && strlen( $out['y'] ) ) {
     	$out['Y'] = ( $out['y'] > 69 ? 1900 : 2000 ) + $out['y'];
+    }
 
     $ret = array(
-        'tm_sec' => (int) $out['S'],
-        'tm_min' => (int) $out['M'],
-        'tm_hour' => (int) $out['H'],
-        'tm_mday' => (int) $out['d'],
-        'tm_mon' => $out['m'] ? $out['m'] - 1 : 0,
-        'tm_year' => $out['Y'] > 1900 ? $out['Y'] - 1900 : 0,
+        'tm_sec' => (int) awpcp_array_data( 'S', 0, $out),
+        'tm_min' => (int) awpcp_array_data( 'M', 0, $out),
+        'tm_hour' => (int) awpcp_array_data( 'H', 0, $out),
+        'tm_mday' => (int) awpcp_array_data( 'd', 0, $out),
+        'tm_mon' => awpcp_array_data( 'm', 0, $out) ? awpcp_array_data( 'm', 0, $out) - 1 : 0,
+        'tm_year' => awpcp_array_data( 'Y', 0, $out) > 1900 ? awpcp_array_data( 'Y', 0, $out) - 1900 : 0,
         'unparsed' => $unparsed,
     );
 
@@ -353,7 +355,7 @@ function awpcp_is_mysql_date( $date ) {
  * @param $id int 	User ID
  */
 function awpcp_get_user_data($id) {
-	$users = awpcp_get_users('WHERE ID = ' . intval($id));
+	$users = awpcp_get_users( $id );
 	if (!empty($users)) {
 		return array_shift($users);
 	}
@@ -373,44 +375,49 @@ function awpcp_get_user_data($id) {
  *
  * @param $where string 	SQL Where clause to filter users
  */
-function awpcp_get_users($where='') {
+function awpcp_get_users( $user_id = null ) {
 	global $wpdb;
 
-	$users = $wpdb->get_results("SELECT ID, display_name FROM $wpdb->users $where");
+	$query = 'SELECT <wp-users>.ID, <wp-users>.user_login, <wp-users>.user_email, <wp-users>.user_url, <wp-users>.display_name, <wp-user-meta>.meta_key, <wp-user-meta>.meta_value ';
+	$query.= 'FROM <wp-users> JOIN <wp-user-meta> ON (<wp-user-meta>.user_id = <wp-users>.ID) ';
+	$query.= "WHERE <wp-user-meta>.meta_key IN ('first_name', 'last_name', 'awpcp-profile') ";
 
-	foreach ($users as $k => $user) {
-		$data = get_userdata($user->ID);
-		$profile = get_user_meta($user->ID, 'awpcp-profile', true);
-
-		$users[$k] = new stdClass();
-		$users[$k]->ID = $user->ID;
-		$users[$k]->user_email = empty($profile['email']) ? $data->user_email : $profile['email'];
-		$users[$k]->user_login = awpcp_get_property($data, 'user_login', '');
-		$users[$k]->display_name = awpcp_get_property($data, 'display_name', '');
-		$users[$k]->first_name = awpcp_get_property($data, 'first_name', '');
-		$users[$k]->last_name = awpcp_get_property($data, 'last_name', '');
-		$users[$k]->username = awpcp_array_data('username', '', $profile);
-		$users[$k]->user_url = awpcp_get_property($data, 'user_url', '');
-
-		$users[$k]->address = awpcp_array_data('address', '', $profile);
-		$users[$k]->phone = awpcp_array_data('phone', '', $profile);
-		$users[$k]->city = awpcp_array_data('city', '', $profile);
-		$users[$k]->state = awpcp_array_data('state', '', $profile);
+	if ( ! is_null( $user_id ) ) {
+		$query .= $wpdb->prepare( ' AND <wp-users>.ID = %d ', $user_id );
 	}
 
-	usort( $users, create_function( '$a, $b', 'return strcasecmp( $a->display_name, $b->display_name );' ) );
+	$query.= 'ORDER BY <wp-users>.display_name ASC, <wp-users>.ID ASC';
+
+	$query = str_replace( '<wp-users>', $wpdb->users, $query );
+	$query = str_replace( '<wp-user-meta>', $wpdb->usermeta, $query);
+
+	$users_info = $wpdb->get_results( $query );
+	$users = array();
+
+	$profile_info = null;
+
+	foreach ( $users_info as $k => $info ) {
+		if ( ! isset( $users[ $info->ID ] ) ) {
+			$users[ $info->ID ] = new stdClass();
+			$users[ $info->ID ]->ID = $info->ID;
+			$users[ $info->ID ]->user_login = $info->user_login;
+			$users[ $info->ID ]->user_email = $info->user_email;
+			$users[ $info->ID ]->user_url = $info->user_url;
+			$users[ $info->ID ]->display_name = $info->display_name;
+		}
+
+		if ( $info->meta_key == 'awpcp-profile' ) {
+			$profile_info = maybe_unserialize( $info->meta_value );
+			$users[ $info->ID ]->address = awpcp_array_data( 'address', '', $profile_info );
+			$users[ $info->ID ]->phone = awpcp_array_data( 'phone', '', $profile_info );
+			$users[ $info->ID ]->city = awpcp_array_data( 'city', '', $profile_info );
+			$users[ $info->ID ]->state = awpcp_array_data( 'state', '', $profile_info );
+		} else {
+			$users[ $info->ID ]->{$info->meta_key} = $info->meta_value;
+		}
+	}
 
 	return $users;
-}
-
-
-/**
- * @since 3.0.2
- */
-function awpcp_get_users_basic_information() {
-	global $wpdb;
-
-	return $wpdb->get_results( "SELECT ID, display_name, user_login FROM $wpdb->users ORDER BY display_name" );
 }
 
 
@@ -726,7 +733,7 @@ function awpcp_regions_search_conditions($regions=array()) {
 	$sql = 'SELECT ad_id FROM ' . AWPCP_TABLE_AD_REGIONS . ' ';
 	$sql.= 'WHERE ' . join( ' OR ', $conditions );
 
-	return array( '`ad_id` IN ( ' . $sql . ' )' );
+	return array( AWPCP_TABLE_ADS . '.`ad_id` IN ( ' . $sql . ' )' );
 }
 
 
@@ -1996,6 +2003,13 @@ function awpcp_form_error($field, $errors) {
 	return empty($error) ? '' : '<span class="awpcp-error">' . $error . '</span>';
 }
 
+function awpcp_attachment_background_color_explanation() {
+	if ( get_awpcp_option( 'imagesapprove' ) ) {
+		return '<p>' . _x( 'The images or files with pale red background have been rejected by an administrator user. Likewise, files with a pale yellow background are awaiting approval. Files that are awaiting approval and rejected files, cannot be shown in the frontend.', 'AWPCP' ) . '</p>';
+	} else {
+		return '';
+	}
+}
 
 /**
  * @since 3.0.2
@@ -2090,9 +2104,9 @@ function awpcp_table_exists($table) {
  */
 function awpcp_column_exists($table, $column) {
     global $wpdb;
-    $wpdb->hide_errors();
+    $suppress_errors = $wpdb->suppress_errors();
     $result = $wpdb->query("SELECT `$column` FROM $table");
-    $wpdb->show_errors();
+    $wpdb->suppress_errors( $suppress_errors );
     return $result !== false;
 }
 
@@ -2328,5 +2342,33 @@ function awpcp_load_plugin_textdomain( $__file__, $text_domain ) {
 		if ( $text_domain == 'AWPCP' ) {
 			return load_plugin_textdomain( $text_domain, false, $basename );
 		}
+	}
+}
+
+function awpcp_utf8_strlen( $string ) {
+	if ( function_exists( 'mb_strlen' ) ) {
+		return mb_strlen( $string, 'UTF-8' );
+	} else {
+		return preg_match_all( '(.)su', $string );
+	}
+}
+
+function awpcp_utf8_substr( $string, $start, $length=null ) {
+	if ( function_exists( 'mb_substr' ) ) {
+		return mb_substr( $string, $start, $length, 'UTF-8' );
+	} else {
+		return awpcp_utf8_substr_pcre( $string, $start, $length );
+	}
+}
+
+function awpcp_utf8_substr_pcre( $string, $start, $length=null ) {
+	if ( is_null( $length ) ) {
+		$length = awpcp_utf8_strlen( $string ) - $start;
+	}
+
+	if ( preg_match_all( '/.{' . $start . '}(.{' . $length . '})/su', $string, $matches ) ) {
+		return $matches[1][0];
+	} else {
+		return '';
 	}
 }

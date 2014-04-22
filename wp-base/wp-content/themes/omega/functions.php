@@ -31,7 +31,7 @@ function omega_theme_setup() {
 	/* Enable custom template hierarchy. */
 	//add_theme_support( 'omega-template-hierarchy' );
 
-	/* Enable theme layouts (need to add stylesheet support).  */
+	/* Enable theme layouts (need to add stylesheet support). */
 	add_theme_support( 
 		'theme-layouts', 
 		array(
@@ -39,7 +39,7 @@ function omega_theme_setup() {
 			'2c-l'      => __( 'Content / Sidebar', 'omega' ),
 			'2c-r'      => __( 'Sidebar / Content', 'omega' )
 		),
-		array( 'default' => is_rtl() ? '2c-r' :'2c-l', 'customizer' => true ) 
+		array( 'default' => is_rtl() ? '2c-r' :'2c-l', 'customize' => true ) 
 	);
 	
 		

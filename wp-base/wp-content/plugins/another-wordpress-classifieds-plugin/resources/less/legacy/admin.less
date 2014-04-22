@@ -129,14 +129,6 @@
     text-align: center;
 }
 
-.awpcp-sticky-error {
-    background: #FFEBE8;
-    border-color: #CC0000;
-}
-.awpcp-sticky-error a {
-    color: #CC0000;
-}
-
 /* Admin Upgrade */
 
 .awpcp-upgrade-form .progress-bar {
@@ -350,23 +342,37 @@
 }
 
 
-.awpcp-admin-listings .add {
-    margin-bottom: 10px;
-}
+.awpcp-admin-listings {
+    .add {
+        margin-bottom: 10px;
+    }
 
-.awpcp-admin-listings table .column-title,
-.awpcp-admin-listings table .column-manage {
-    width: 17%;
-}
+    .subsubsub {
+        float: none;
+        margin-top: 5px;
+    }
 
-.awpcp-admin-listings .search-by-box {
-    clear: both;
-    float: right;
-    margin: 5px 10px 0 0;
-}
+    .awpcp-search-container {
+        margin: 5px 0 10px;
 
-.awpcp-admin-listings #classiwrapper {
-    padding: 0;
+        .search-by-box {
+            float: left;
+            margin: 5px 10px 0 0;
+        }
+        .search-box {
+            float: left;
+        }
+    }
+
+    table {
+        .column-title, .column-manage {
+            width: 17%;
+        }
+    }
+
+    #classiwrapper {
+        padding: 0;
+    }
 }
 
 /* Listings - Media Manager */
@@ -382,40 +388,90 @@
     margin: 0;
     text-align: center;
     width: 50%;
-}
-.awpcp-media-manager-file-list .jpg,
-.awpcp-media-manager-file-list .png,
-.awpcp-media-manager-file-list .gif {
-    width: 25%;
-}
-.awpcp-media-manager-file-list li .disabled .awpcp-media-manager-file-thumbnail {
-    opacity: 0.5;
-}
 
-.awpcp-media-manager-file-list .awpcp-media-manager-file {
-    background: #F9F9F9;
-    margin: 2px;
-    padding: 10px;
-}
+    &.jpg, &.png, &.gif {
+        width: 25%;
+    }
 
-.awpcp-media-manager-file-list .awpcp-media-manager-file-thumbnail {
-    background: #EEE;
-    margin-bottom: 4px;
-    padding: 5px;
-    min-height: 0;
-}
-.awpcp-media-manager-file-list .jpg .awpcp-media-manager-file-thumbnail,
-.awpcp-media-manager-file-list .png .awpcp-media-manager-file-thumbnail,
-.awpcp-media-manager-file-list .gif .awpcp-media-manager-file-thumbnail {
-    min-height: 129px;
-}
+    .awpcp-media-manager-file {
+        background: #F9F9F9;
+        margin: 2px;
+        padding: 10px;
 
-.awpcp-media-manager-file-list .awcp-media-manager-file-actions {
-    display: block;
-}
-.awpcp-media-manager-file-list .awcp-media-manager-file-action {
-    float: left;
-    margin-right: 2px;
+        .awpcp-media-manager-file-thumbnail {
+            background: #EEE;
+            margin-bottom: 4px;
+            padding: 5px;
+            min-height: 0;
+        }
+    }
+
+    .disabled .awpcp-media-manager-file-thumbnail {
+        opacity: 0.5;
+    }
+
+    .awaiting-approval {
+        background: @attachment_awaiting_approval_background;
+    }
+    .rejected {
+        background: @attachment_rejected_background;
+    }
+    .approved {
+        // background: @attachment_approved_background;
+    }
+
+    .awcp-media-manager-file-actions {
+        background: red;
+
+        li {
+            margin-right: 3px;
+            width: auto;
+
+            a {
+                background: @delete_attachment_icon_url center center no-repeat;
+                display: block;
+                height: 24px;
+                width: 24px;
+
+                &.delete {
+                    background-image: @delete_attachment_icon_url;
+                }
+                &.reject-file {
+                    background-image: @reject_attachment_icon_url;
+                }
+                &.approve-file {
+                    background-image: @approve_attachment_icon_url;
+                }
+                &.rejectpic {
+                    background-image: @disable_attachment_icon_url;
+                }
+                &.approvepic {
+                    background-image: @enable_attachment_icon_url;
+                }
+                &.set-primary-image {
+                    background-image: @primary_image_icon_url;
+                }
+            }
+        }
+    }
+
+    &.jpg, &.png, &.gif {
+        .awpcp-media-manager-file-thumbnail {
+            min-height: 129px;
+        }
+
+        .awcp-media-manager-file-actions {
+            a.delete {
+                background-image: @delete_image_icon_url;
+            }
+            a.approvepic {
+                background-image: @enable_image_icon_url;
+            }
+            a.rejectpic {
+                background-image: @disable_image_icon_url;
+            }
+        }
+    }
 }
 
 

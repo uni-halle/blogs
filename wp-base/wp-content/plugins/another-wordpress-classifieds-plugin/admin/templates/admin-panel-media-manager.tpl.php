@@ -11,18 +11,26 @@
 <div class="postbox">
     <div class="inside">
 
-<h3><?php echo sprintf( _x( 'Files for Ad %s.', 'media manager', 'AWPCP' ), '&laquo;' . $ad->get_title() . '&raquo;' ); ?></h3>
+<h3><?php echo sprintf( _x( 'Upload files for Ad %s.', 'media manager', 'AWPCP' ), '&laquo;' . $ad->get_title() . '&raquo;' ); ?></h3>
 
 <form class="awpcp-media-manager-upload-form" method="post" enctype="multipart/form-data">
     <input type="hidden" name="awpcp_action" value="add_image">
     <input type="hidden" name="action" value="add-image">
     <?php echo wp_nonce_field('awpcp_upload_image'); ?>
 
-    <?php echo _x( 'Upload a file for this Ad:', 'media manager', 'AWPCP' ); ?>
-
     <input type="file" name="awpcp_add_file" data-bind="value: file">
     <input class="button" type="submit" name="awpcp_submit_file" value="<?php echo _x( 'Add File', 'media manager', 'AWPCP' ); ?>" data-bind="enable: file">
 </form>
+
+    </div>
+</div>
+
+<div class="postbox">
+    <div class="inside">
+
+<h3><?php echo sprintf( _x( 'Existing files for Ad %s.', 'media manager', 'AWPCP' ), '&laquo;' . $ad->get_title() . '&raquo;' ); ?></h3>
+
+<?php echo awpcp_attachment_background_color_explanation(); ?>
 
 <?php foreach ( $groups as $group => $files ): ?>
 
@@ -32,7 +40,7 @@
     <?php foreach ( $files as $file ): ?>
 
     <li class="<?php echo esc_attr( awpcp_get_file_extension( $file->name ) ); ?>">
-        <div class="awpcp-media-manager-file clearfix <?php echo $file->enabled ? 'enabled' : 'disabled'; ?>">
+        <div class="awpcp-media-manager-file clearfix <?php echo strtolower( $file->status ); ?> <?php echo $file->enabled ? 'enabled' : 'disabled'; ?>">
 
             <div class="awpcp-media-manager-file-thumbnail">
         <?php if ( $file->is_image() ): ?>
@@ -45,26 +53,30 @@
         <?php endif; ?>
             </div>
 
-            <div class="awcp-media-manager-file-actions">
-        <?php foreach( $actions as $action => $label ): ?>
+            <form action="<?php echo $urls['endpoint']; ?>" method="post" name="<?php echo $file->id; ?>">
+            <?php foreach( $hidden as $name => $value ): ?>
+                <input type="hidden" name="<?php echo $name; ?>" value="<?php echo $value; ?>" />
+            <?php endforeach; ?>
+                <input type="hidden" name="picid" value="<?php echo $file->id; ?>" />
+                <input type="hidden" name="action" value="" />
 
-            <?php if ( ( ! $file->is_image() || $file->is_primary() ) && $action == 'set-primary-image' ) continue; ?>
+                <ul class="awcp-media-manager-file-actions">
+            <?php foreach( $actions as $action => $label ): ?>
 
-            <?php if ( $file->enabled && $action == 'approvepic' ) continue; ?>
+                <?php if ( ( ! $file->is_image() || $file->is_primary() ) && $action == 'set-primary-image' ) continue; ?>
 
-            <?php if ( ! $file->enabled && $action == 'rejectpic' ) continue; ?>
+                <?php if ( $file->enabled && $action == 'approvepic' ) continue; ?>
 
-                <form class="awcp-media-manager-file-action" method="post" action="<?php echo $urls['endpoint']; ?>">
-                <?php foreach( $hidden as $name => $value ): ?>
-                    <input type="hidden" name="<?php echo $name; ?>" value="<?php echo $value; ?>" />
-                <?php endforeach; ?>
-                    <input type="hidden" name="picid" value="<?php echo $file->id; ?>" />
-                    <input type="hidden" name="action" value="<?php echo $action; ?>" />
-                    <input type="submit" class="button" value="<?php echo esc_attr( $label ); ?>" />
-                </form>
+                <?php if ( ! $file->enabled && $action == 'rejectpic' ) continue; ?>
 
-        <?php endforeach; ?>
-            </div>
+                <?php if ( $file->is_approved() && $action == 'approve-file' ) continue; ?>
+
+                <?php if ( ( $file->is_awaiting_approval() || $file->is_rejected() ) && $action == 'reject-file' ) continue; ?>
+
+                    <li><a class="<?php echo $action; ?>" href="#" data-action="<?php echo $action; ?>" title="<?php echo $label; ?>"></a></li>
+            <?php endforeach; ?>
+                </ul>
+            </form>
 
         </div>
     </li>

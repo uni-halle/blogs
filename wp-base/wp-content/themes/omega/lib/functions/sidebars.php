@@ -22,20 +22,14 @@ function omega_register_sidebar( $args ) {
 		'id'            => '',
 		'name'          => '',
 		'description'   => '',
-		'before_widget' => '<section id="%s" class="widget %s">',
-		'after_widget'  => '</section>',
+		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap">',
+		'after_widget'  => '</div></section>',
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>'
 	);
 
 	/* Allow developers to filter the default sidebar arguments. */
 	$defaults = apply_filters( 'omega_sidebar_defaults', $defaults );
-
-	/* Parse the arguments. */
-	$args = wp_parse_args( $args, $defaults );
-
-	/* Allow developers to filter the sidebar arguments. */
-	$args = apply_filters( 'omega_sidebar_args', $args );
 
 	/* Register the sidebar. */
 	return register_sidebar( $args );

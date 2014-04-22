@@ -10,7 +10,7 @@ class AWPCP_Exception extends Exception {
     }
 
     public function get_errors() {
-        return array_filter( array_merge( array( $this->getMessage() ), $this->errors ) );
+        return array_filter( array_merge( array( $this->getMessage() ), (array) $this->errors ) );
     }
 }
 

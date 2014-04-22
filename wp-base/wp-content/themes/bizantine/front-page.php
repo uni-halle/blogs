@@ -9,10 +9,10 @@ get_header(); ?>
 
 	<?php 
 		
-		if( !of_get_option('homepage_layout') || of_get_option('homepage_layout') == 'bseven' ) {
-			get_template_part( 'index', 'bseven' );
-		}elseif( of_get_option('homepage_layout') == 'bone' ) {
-			get_template_part( 'index', 'bone' );  
+		if( !of_get_option('homepage_layout') || of_get_option('homepage_layout') == 'bone' ) {
+			get_template_part( 'index', 'bone' );
+		}elseif( of_get_option('homepage_layout') == 'bseven' ) {
+			get_template_part( 'index', 'bseven' );  
 		}else{	
 			if( 'page' == get_option( 'show_on_front' ) ){	
 				get_template_part('index', 'page');

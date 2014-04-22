@@ -3,7 +3,7 @@
  * Plugin Name: FG Joomla to WordPress
  * Plugin Uri:  http://wordpress.org/extend/plugins/fg-joomla-to-wordpress/
  * Description: A plugin to migrate categories, posts, images and medias from Joomla to WordPress
- * Version:     1.29.4
+ * Version:     1.30.0
  * Author:      Frédéric GILLES
  */
 
@@ -1557,6 +1557,20 @@ SQL;
 				return !empty($result);
 			} catch ( PDOException $e ) {}
 			return false;
+		}
+		
+		/**
+		 * Search a term by its slug (LIKE search)
+		 * 
+		 * @param string $slug slug
+		 * @return int Term id
+		 */
+		public function get_term_id_by_slug($slug) {
+			global $wpdb;
+			return $wpdb->get_var("
+				SELECT term_id FROM $wpdb->terms
+				WHERE slug LIKE '$slug'
+			");
 		}
 		
 	}

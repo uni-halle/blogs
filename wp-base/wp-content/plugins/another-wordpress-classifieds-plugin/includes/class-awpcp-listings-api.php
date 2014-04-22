@@ -1,16 +1,22 @@
 <?php
 
+/**
+ * @since 3.0.2
+ */
+function awpcp_listings_api() {
+    return new AWPCP_ListingsAPI( awpcp_request(), awpcp()->settings );
+}
+
+
 class AWPCP_ListingsAPI {
     private static $instance = null;
 
     private $request = null;
+    private $settings = null;
 
-    public function __construct( /*AWPCP_Request*/ $request = null ) {
-        if ( ! is_null( $request ) ) {
-            $this->request = $request;
-        } else {
-            $this->request = new AWPCP_Request;
-        }
+    public function __construct( /*AWPCP_Request*/ $request = null, $settings ) {
+        $this->request = $request;
+        $this->settings = $settings;
 
         add_action( 'template_redirect', array( $this, 'dispatch' ) );
     }
@@ -73,30 +79,19 @@ class AWPCP_ListingsAPI {
      * @since 3.0.2
      */
     public function consolidate_new_ad( $ad, $transaction ) {
-        $ad->payment_status = $transaction->payment_status;
-        $ad->payment_gateway = $transaction->payment_gateway;
-        $ad->payer_email = $transaction->payer_email;
-
         do_action( 'awpcp-place-ad', $ad, $transaction );
-
-        if ( ! is_user_logged_in() && get_awpcp_option( 'enable-email-verification' ) ) {
-            $ad->verified = false;
-            $ad->disabled = true;
-        } else {
-            $ad->verified = true;
-            $ad->verified_at = awpcp_datetime();
-
-            // TODO: move awpcp_calculate_ad_disabled_state() function to Ad model
-            if ( $ad->disabled && ! awpcp_calculate_ad_disabled_state( null, $transaction ) ) {
-                $ad->enable( /*enable images?*/ ! get_awpcp_option( 'imagesapprove', false ) );
-            }
-        }
 
         if ( $ad->verified ) {
             $this->send_ad_posted_email_notifications( $ad, array(), $transaction );
         } else {
             $this->send_verification_email( $ad );
         }
+
+        if ( ! $ad->verified && ! $ad->disabled ) {
+            $ad->disable();
+        }
+
+        $transaction->set( 'ad-consolidated-at', awpcp_datetime() );
     }
 
     /**
@@ -105,14 +100,39 @@ class AWPCP_ListingsAPI {
     public function consolidate_existing_ad( $ad ) {
         // if Ad is enabled and should be disabled, then disable it, otherwise
         // do not alter the Ad disabled status.
-        // TODO: move awpcp_calculate_ad_disabled_state() function to Ad model
-        if ( ! $ad->disabled && awpcp_calculate_ad_disabled_state( $ad->ad_id ) ) {
+        if ( ! $ad->disabled && $ad->should_be_disabled() ) {
             $ad->disable();
+            $ad->clear_disabled_date();
+        } else if ( $ad->disabled ) {
+            $ad->clear_disabled_date();
         }
 
         if ( $ad->verified ) {
             $this->send_ad_updated_email_notifications( $ad );
         }
+    }
+
+    public function update_listing_verified_status( $listing, $transaction ) {
+        if ( $listing->verified ) {
+            return;
+        } else if ( $this->should_mark_listing_as_verified( $listing, $transaction ) ) {
+            $listing->verified = true;
+            $listing->verified_at = awpcp_datetime();
+        } else {
+            $listing->verified = false;
+            $listing->verified_at = null;
+        }
+    }
+
+    private function should_mark_listing_as_verified( $listing, $transaction ) {
+        if ( ! $this->settings->get_option( 'enable-email-verification' ) ) {
+            return true;
+        } else if ( is_user_logged_in() ) {
+            return true;
+        } else if ( $transaction->payment_is_completed() || $transaction->payment_is_pending() ) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -132,7 +152,7 @@ class AWPCP_ListingsAPI {
 
         // TODO: move awpcp_calculate_ad_disabled_state() function to Ad model
         if ( $ad->disabled && ! awpcp_calculate_ad_disabled_state( null, null, $ad->payment_status ) ) {
-            $ad->enable( /*enable images?*/ ! get_awpcp_option( 'imagesapprove', false ) );
+            $ad->enable( /*approve images?*/ ! get_awpcp_option( 'imagesapprove', false ) );
         }
 
         $this->send_ad_posted_email_notifications( $ad );
@@ -212,11 +232,4 @@ class AWPCP_ListingsAPI {
             awpcp_update_ad_meta( $ad->ad_id, 'verification_emails_sent', $emails_sent + 1 );
         }
     }
-}
-
-/**
- * @since 3.0.2
- */
-function awpcp_listings_api() {
-    return AWPCP_ListingsAPI::instance();
 }

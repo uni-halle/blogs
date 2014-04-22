@@ -39,6 +39,11 @@ Copyright: @afarkas @jdalton @jon_neal @rem
 Changelog
 ---------
 
+0.9.9
+- fix pagination style css
+- bring back the Layout Options
+- Add compatibility with WordPress 3.9
+
 0.9.8
 - fix featured image issue from 0.9.6 update
 
@@ -62,8 +67,7 @@ Changelog
 0.9.3
 - Removed HTML Allowed Tags in WordPress Comment Section (done)
 - fix theme setting issue 
-- add do_action( 'omega_content' ); // omega_content 
-
+- add do_action( 'omega_content' ); // omega_content
 
 0.9.2
 - fixed duplicate tag

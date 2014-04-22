@@ -396,8 +396,14 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 
 			if ($_POST['button_theme']!="custom_edit") // get template file content to load into db
 				$_POST['button_template'] = Skype_Online_Status::get_template_file($_POST['button_theme']);
+
+			$skype_id_array = array('');
+			if (isset($_POST['skype_id'])) { 
+				$skype_id_array = explode("@",str_replace("live:","",$_POST['skype_id']));
+			}
+
 			$option = array(
-				"skype_id" => isset($_POST['skype_id']) ? $_POST['skype_id'] : '',
+				"skype_id" => $skype_id_array[0],
 				"user_name" => isset($_POST['user_name']) ? $_POST['user_name'] : '',
 				"button_theme" => isset($_POST['button_theme']) ? $_POST['button_theme'] : '',
 				"button_template" => isset($_POST['button_template']) ? stripslashes($_POST['button_template']) : '',

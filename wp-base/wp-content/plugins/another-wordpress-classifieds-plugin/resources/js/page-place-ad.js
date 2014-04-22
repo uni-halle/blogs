@@ -147,7 +147,7 @@
             };
 
             passed = {
-                name: data.first_name + ' ' + data.last_name,
+                name: data.display_name,
                 email: data.user_email,
                 website: data.user_url,
                 phone: data.phone,

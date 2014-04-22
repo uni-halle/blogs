@@ -8,7 +8,11 @@
     <div><a class="button-primary" title="<?php echo esc_attr( $label ); ?>" href="<?php echo esc_attr( $url ); ?>" accesskey="s"><?php echo $label; ?></a></div>
 
     <?php echo $table->views() ?>
-    <?php echo $table->search_box(__('Search Ads', 'AWPCP'), 'ads') ?>
+
+    <div class="awpcp-search-container clearfix">
     <?php echo $table->get_search_by_box() ?>
+    <?php echo $table->search_box(__('Search Ads', 'AWPCP'), 'ads') ?>
+    </div>
+
     <?php echo $table->display() ?>
 </form>

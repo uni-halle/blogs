@@ -25,6 +25,8 @@
 
 <form class="awpcp-upload-images-form" method="post" enctype="multipart/form-data">
 
+<?php echo awpcp_attachment_background_color_explanation(); ?>
+
 	<?php $is_primary_set = false ?>
 
 <?php if ($images_uploaded > 0): ?>

@@ -48,7 +48,8 @@ if (aam_Core_Request::post('type') === aam_Control_Object_Term::UID) {
                                 'aam_term_access_list',
                                 aam_Core_Settings::get('term_frontend_restrictions'),
                                 'frontend',
-                                $object
+                                $object,
+                                $post_type
                             )
                 );
                 foreach ($term_fcaps as $i => $action) {
@@ -94,7 +95,8 @@ if (aam_Core_Request::post('type') === aam_Control_Object_Term::UID) {
                                 'aam_term_access_list',
                                 aam_Core_Settings::get('term_backend_restrictions'),
                                 'backend',
-                                $object
+                                $object,
+                                $post_type
                             )
                 );
                 foreach ($term_bcaps as $i => $action) {
@@ -147,7 +149,8 @@ if (aam_Core_Request::post('type') === aam_Control_Object_Term::UID) {
                             'aam_post_access_list',
                             aam_Core_Settings::get('post_frontend_restrictions'),
                             'frontend',
-                            $object
+                            $object,
+                            $post_type
                         )
             );
             foreach ($post_fcaps as $i => $action) {
@@ -197,7 +200,8 @@ if (aam_Core_Request::post('type') === aam_Control_Object_Term::UID) {
                             'aam_post_access_list',
                             aam_Core_Settings::get('post_backend_restrictions'),
                             'backend',
-                            $object
+                            $object,
+                            $post_type
                         )
             );
             foreach ($post_bcaps as $i => $action) {

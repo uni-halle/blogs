@@ -29,7 +29,11 @@ class AWPCP_UserListings extends AWPCP_Admin_Listings {
     }
 
     public function renew_ad() {
-        $page = new AWPCP_UserListingsRenewAd();
-        return $page->dispatch('renew');
+        if ( awpcp_current_user_is_admin() ) {
+            return parent::renew_ad();
+        } else {
+            $page = new AWPCP_UserListingsRenewAd();
+            return $page->dispatch('renew');
+        }
     }
 }

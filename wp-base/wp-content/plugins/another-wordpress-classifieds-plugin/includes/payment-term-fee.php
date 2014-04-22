@@ -120,9 +120,8 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
         return $result !== false;
     }
 
-    protected function &get_default_properties() {
-        if (!is_array($this->defaults))
-            parent::get_default_properties();
+    protected function prepare_default_properties() {
+        parent::prepare_default_properties();
 
         if (!isset($this->defaults['buys'])) {
             $this->defaults['buys'] = 0;
@@ -131,7 +130,7 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
         return $this->defaults;
     }
 
-    protected function &sanitize(&$data) {
+    protected function sanitize( $data ) {
         $data = parent::sanitize($data);
         $data['ads'] = 1;
         $data['buys'] = (int) $data['buys'];
@@ -144,22 +143,22 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
     }
 
     protected function translate($_data) {
-        $data['adterm_id'] = $_data['id'];
+        $data['adterm_id'] = absint( $_data['id'] );
         $data['adterm_name'] = $_data['name'];
         $data['amount'] = $_data['price'];
-        $data['credits'] = $_data['credits'];
-        $data['rec_period'] = $_data['duration_amount'];
+        $data['credits'] = absint( $_data['credits'] );
+        $data['rec_period'] = absint( $_data['duration_amount'] );
         $data['rec_increment'] = $_data['duration_interval'];
-        $data['imagesallowed'] = $_data['images'];
-        $data['title_characters'] = $_data['title_characters'];
-        $data['characters_allowed'] = $_data['characters'];
+        $data['imagesallowed'] = absint( $_data['images'] );
+        $data['title_characters'] = absint( $_data['title_characters'] );
+        $data['characters_allowed'] = absint( $_data['characters'] );
         $data['categories'] = $_data['categories'];
         // TODO: properly save, validate and sanitize this value
-        $data['buys'] = $_data['buys'];
-        $data['private'] = $_data['private'];
-        $data['is_featured_ad_pricing'] = $_data['featured'];
+        $data['buys'] = absint( $_data['buys'] );
+        $data['private'] = absint( $_data['private'] );
+        $data['is_featured_ad_pricing'] = absint( $_data['featured'] );
 
-        if ( is_null( $data[ 'adterm_id' ] ) ) {
+        if ( $data[ 'adterm_id' ] === 0 || is_null( $data[ 'adterm_id' ] ) || strlen( $data[ 'adterm_id' ] ) == 0 ) {
             unset( $data[ 'adterm_id' ] );
         }
 

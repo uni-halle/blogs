@@ -3,12 +3,14 @@ Contributors: RavanH
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Online%20Status&item_number=2%2e8&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8&lc=us
 Tags: skype, skype button, online, status, online status, widget, widgets, post, posts, quicktag, tinymce, tinymce3, im, skype-button
 Requires at least: 2.9
-Tested up to: 3.8
-Stable tag: 2.9.4
+Tested up to: 3.9
+Stable tag: 2.9.5
 
 Unlimited, highly customizable and accessible (!) Skype buttons through widgets, post shortcode/quicktag and template tags.
 
 == Description ==
+
+NOTICE: the new Microsoft Live accounts (using "live:", "@hotmail.com" or "@live.com" in the Skype ID) are not supported due to lack of willingness by Microsoft to fix a parse error bug on the Skype online status server.
 
 This WordPress plugin allows you to add one or multiple, highly customizable and accessible (!) Skype buttons to your site. You can pick any of the available Skype button themes that will show your online status and place them in your *pages and posts content* (with a neat little Skype quicktag button in the WYSIWYG editor), in your sidebar via *widgets* (unlimited number) or anywhere in your theme template files.
 
@@ -29,6 +31,7 @@ Since version 2.6.4.0, Skype Online Status is ready for internationalization. An
 - **Basque** * Silvia Ribés http://silviaribes.net/ (version 2.9.3)
 - **Belorussian** * M. Comfi http://www.comfi.com/ (version 2.7)
 - **Bulgarian** * Nikolay Nikolov http://en.chat4o.com/ (version 2.8.2)
+- **Croatian** * Saša http://lasersko-graviranje.bisa.hr (version 2.9.4)
 - **Danish** * Georg S. Adamsen http://wordpress.blogos.dk/2009/03/18/skype-online-status/ (version 2.8.2)
 - **Dutch** * R.A. van Hagen http://status301.net/ (version 2.8.7)
 - **Estonian** * Iflexion Design http://iflexion.com/ (version 2.7)
@@ -42,8 +45,9 @@ Since version 2.6.4.0, Skype Online Status is ready for internationalization. An
 - **Lithuanian** * Vincent G http://www.host1free.com (version 2.8.2)
 - **Portuguese** * Miguel Angelo Patricio http://www.miguelpatricio.com/ (version 2.8.2)
 - **Russian** * Leonid Jack http://studio-xl.com/ (version 2.7)
+- **Serbian** * Ognjen Djuraskovic http://firstsiteguide.com (version 2.9.3)
 - **Spanish** * Rodolfo Castro & Rocio Moreno http://www.ars-legalconsulting.es/blog/ (version 2.7)
-- **Turkish** * Hakan Er http://hakanertr.wordpress.com/ (version: 2.8.8)
+- **Turkish** * Hakan Er http://hakanertr.wordpress.com/ (version 2.8.8)
 - **Ukrainian** * Michael Svystun http://emarketingblog.com.ua/ (version 2.7)
 
 New translations and their Authors will be mentioned here.
@@ -166,9 +170,12 @@ Admin changes and Basque translation
 
 == Changelog ==
 
+= 2.9.5 =
+* Strip "live:" and "@live.com" from Skype ID to prevent parse error from Skype server. Still waiting for real fix by Microsoft.
+
 = 2.9.4 =
 * Some admin changes
-* Basque translation
+* Basque and Croation translations
 * Skype popup position fix
 
 = 2.9.3 =

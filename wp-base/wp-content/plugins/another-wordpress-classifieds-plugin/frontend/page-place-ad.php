@@ -190,7 +190,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     }
 
     protected function get_users() {
-        $users = awpcp_get_users_basic_information();
+        $users = awpcp_get_users();
         $payments = awpcp_payments_api();
 
         $payment_terms = array();
@@ -707,7 +707,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         // TODO: strip slashes from title, details
         $ui['delete-button'] = !is_admin() && $edit;
         // show categories dropdown if $category is not set
-        $ui['category-field'] = $edit || empty($form['ad_category']);
+        $ui['category-field'] = ( $edit || empty( $form['ad_category'] ) ) && $is_admin_user;
         $ui['user-dropdown'] = $edit && $is_admin_user;
         $ui['start-end-date'] = $edit && $is_admin_user;
         // $ui['payment-term-dropdown'] = !$pay_first || ($is_admin_user && !$edit && $payments_enabled);
@@ -995,8 +995,8 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     protected function prepare_ad_title($title, $characters) {
         $$title = stripslashes_deep( $title );
 
-        if ( $characters > 0 && strlen( $title ) > $characters ) {
-            $title = substr( $title, 0, $characters );
+        if ( $characters > 0 && awpcp_utf8_strlen( $title ) > $characters ) {
+            $title = awpcp_utf8_substr( $title, 0, $characters );
         }
 
         return $title;
@@ -1011,8 +1011,8 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $details = wp_kses_post(stripslashes_deep($details));
         }
 
-        if ($characters > 0 && strlen($details) > $characters) {
-            $details = substr($details, 0, $characters);
+        if ( $characters > 0 && awpcp_utf8_strlen( $details ) > $characters ) {
+            $details = awpcp_utf8_substr( $details, 0, $characters );
         }
 
         if ($allow_html) {
@@ -1189,18 +1189,12 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $next = __( 'Checkout', 'AWPCP' );
         }
 
-        if ( awpcp_current_user_is_admin() || ! get_awpcp_option( 'imagesapprove' ) ) {
-            $show_image_actions = true;
-        } else {
-            $show_image_actions = false;
-        }
-
         $params = array_merge( $params, array(
             'images' => awpcp_media_api()->find_images_by_ad_id( $ad->ad_id ),
             'messages' => $this->messages,
             'actions' => array(
-                'enable' => $show_image_actions,
-                'disable' => $show_image_actions,
+                'enable' => true,
+                'disable' => true,
             ),
             'next' => $next,
         ) );
@@ -1344,11 +1338,12 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
                 return $this->render('content', join(',', array_map('awpcp_print_error', $errors)));
             }
 
-            awpcp_listings_api()->consolidate_new_ad( $ad, $transaction );
-
             $transaction->save();
-            $ad->save();
         }
+
+        // reload Ad, since modifications were probably made as part of the
+        // transaction handling workflow
+        $ad = AWPCP_Ad::find_by_id( $transaction->get( 'ad-id', 0 ) );
 
         $params = array(
             'edit' => false,

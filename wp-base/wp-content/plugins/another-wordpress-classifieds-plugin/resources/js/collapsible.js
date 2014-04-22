@@ -12,7 +12,10 @@ AWPCP.define('awpcp/collapsible', ['jquery'], function($) {
             var self = this;
 
             if (self.subject.length !== 0) {
-                self.subject.hide();
+                if (!self.subject.is('[awpcp-keep-open]')) {
+                    self.subject.hide();
+                }
+
                 self.toggleClass();
 
                 self.handler.click(function(event) {

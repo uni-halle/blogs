@@ -324,10 +324,10 @@ class Omega {
 		require_if_theme_supports( 'post-formats', trailingslashit( OMEGA_FUNCTIONS ) . 'post-formats.php' );
 
 		/* Custom template tags for omega theme. */
-		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'omega-template-tags.php' );
+		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'template-tags.php' );
 
 		/* Custom functions that act independently of the theme templates. */
-		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'omega-extras.php' );
+		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'extras.php' );
 
 		/* Load the deprecated functions */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'deprecated.php' );
@@ -361,7 +361,7 @@ class Omega {
 		require_if_theme_supports( 'loop-pagination', trailingslashit( OMEGA_EXTENSIONS ) . 'loop-pagination.php' );
 
 		/* Load the Theme Layouts extension */
-		require_once( trailingslashit( OMEGA_EXTENSIONS ) . 'theme-layouts.php' );
+		require_if_theme_supports( 'theme-layouts', trailingslashit( OMEGA_EXTENSIONS ) . 'theme-layouts.php' );
 
 		/* Load the Post Stylesheets extension if supported. */
 		require_if_theme_supports( 'post-stylesheets', trailingslashit( OMEGA_EXTENSIONS ) . 'post-stylesheets.php' );

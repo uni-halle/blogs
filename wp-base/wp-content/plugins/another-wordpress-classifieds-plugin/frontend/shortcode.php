@@ -348,7 +348,6 @@ function awpcp_display_the_classifieds_page_body($awpcppagename) {
 	$output .= "<div class=\"classifiedcats\">";
 
 	//Display the categories
-	// $output .= awpcp_display_the_classifieds_category($awpcppagename);
     $output .= awpcp_render_categories( 0, array(
         'columns' => get_awpcp_option( 'view-categories-columns' ),
         'hide_empty' => get_awpcp_option( 'hide-empty-categories' ),
@@ -464,30 +463,6 @@ function awpcp_get_menu_items() {
 function awpcp_display_classifieds_category_item($category, $class='toplevelitem', $ads_in_cat=false) {
 	global $awpcp_imagesurl;
 
-	// $permastruc = get_option('permalink_structure');
-	// $awpcp_browsecats_pageid=awpcp_get_page_id_by_ref('browse-categories-page-name');
-
-	// // Category URL
-	// $modcatname1=cleanstring($category[1]);
-	// $modcatname1=add_dashes($modcatname1);
-
-	// $base_url = get_permalink($awpcp_browsecats_pageid);
-	// if (get_awpcp_option('seofriendlyurls')) {
-	// 	if (isset($permastruc) && !empty($permastruc)) {
-	// 		$url_browsecats = sprintf('%s/%s/%s', trim($base_url, '/'), $category[0], $modcatname1);
-	// 	} else {
-	// 		$params = array('a' => 'browsecat', 'category_id' => $category[0]);
-	// 		$url_browsecats = add_query_arg($params, $base_url);
-	// 	}
-	// } else {
-	// 	if (isset($permastruc) && !empty($permastruc)) {
-	// 		$params = array('category_id' => "$category[0]/$modcatname1");
-	// 		$url_browsecats = add_query_arg($params, $base_url);
-	// 	} else {
-	// 		$params = array('a' => 'browsecat', 'category_id' => $category[0]);
-	// 		$url_browsecats = add_query_arg($params, $base_url);
-	// 	}
-	// }
 	$url_browsecats = url_browsecategory($category[0]);
 
 	// Category icon
@@ -741,15 +716,18 @@ function awpcp_display_the_classifieds_category($awpcppagename, $parent=0, $side
             $query = "SELECT category_id,category_name FROM ". AWPCP_TABLE_CATEGORIES ." ";
             $query.= "WHERE category_parent_id='$mcid' AND category_name <> '' ";
             $query.= "ORDER BY category_order,category_name ASC";
-            $res2 = awpcp_query($query, __LINE__);
 
-            if (mysql_num_rows($res2)) {
+            $query_results = $wpdb->get_results( $query, ARRAY_N );
+
+            if ( is_array( $query_results ) && ! empty( $query_results ) ) {
                 $myreturn .= "<ul class=\"showcategoriessublist\">";
-                while ($rsrow2=mysql_fetch_row($res2)) {
+
+                foreach ( $query_results as $sub_category ) {
                     $myreturn .= "<li>";
-                    $myreturn .= awpcp_display_classifieds_category_item($rsrow2, '');
+                    $myreturn .= awpcp_display_classifieds_category_item( $sub_category, '' );
                     $myreturn .= "</li>";
                 }
+
                 $myreturn .= "</ul>";
             }
 
@@ -768,130 +746,4 @@ function awpcp_display_the_classifieds_category($awpcppagename, $parent=0, $side
     }
 
 	return $myreturn;
-}
-
-
-/**
- * Configure the page to display to user for purpose of editing images during
- * Ad editing process.
- *
- * This function is not really used.
- *
- * @deprecated
- */
-function editimages($adtermid, $adid, $adkey, $editemail) {
-    _deprecated_function( __FUNCTION__, '3.0.2', 'No longer needed.' );
-
-	global $wpdb;
-
-	$output = '';
-
-	$imgstat = '';
-	$awpcpuperror = '';
-
-	if (strcasecmp($editemail, get_adposteremail($adid)) == 0) {
-
-		$imagecode = '<h2>' . __('Manage your Ad images','AWPCP') . '</h2>';
-
-		if (!isset($adid) || empty($adid)) {
-			$imagecode.=__("There has been a problem encountered. The system is unable to continue processing the task in progress. Please start over and if you encounter the problem again, please contact a system administrator.","AWPCP");
-
-		} else {
-			// First make sure images are allowed
-			if (get_awpcp_option('imagesallowdisallow') == 1) {
-				// Next figure out how many images user is allowed to upload
-				$numimgsallowed = awpcp_get_ad_number_allowed_images($adid, $adtermid);
-
-				// Next figure out how many (if any) images the user has previously uploaded
-				$totalimagesuploaded = get_total_imagesuploaded($adid);
-
-				// Next determine if the user has reached their image quota and act accordingly
-				if ($totalimagesuploaded >= 1) {
-					$imagecode.="<p>";
-					$imagecode.=__("Your images are displayed below. The total number of images you are allowed is","AWPCP");
-					$imagecode.=": $numimgsallowed</p>";
-
-					if (($numimgsallowed - $totalimagesuploaded) == 0) {
-						$imagecode.="<p>";
-						$imagecode.=__("If you want to change your images you will first need to delete the current images","AWPCP");
-						$imagecode.="</p>";
-					}
-
-					$admin_must_approve = get_awpcp_option('imagesapprove');
-					if ($admin_must_approve == 1) {
-						$imagecode.="<p>";
-						$imagecode.=__("Image approval is in effect so any new images you upload will not be visible to viewers until an admin has approved it","AWPCP");
-						$imagecode.="</p>";
-					}
-
-					// Display the current images
-					$imagecode .= "<div id=\"displayimagethumbswrapper\"><div id=\"displayimagethumbs\"><ul>";
-					$theimage = '';
-
-					$query = "SELECT key_id,image_name,disabled FROM " . AWPCP_TABLE_ADPHOTOS . " ";
-					$query.= "WHERE ad_id='$adid' ORDER BY image_name ASC";
-
-					$res = awpcp_query($query, __LINE__);
-
-					while ($rsrow=mysql_fetch_row($res)) {
-						list($ikey,$image_name,$disabled) = $rsrow;
-
-						$ikey = sprintf(join('_', array($ikey, $adid, $adtermid, $adkey, $editemail)));
-						$ikey = str_replace('@', '-', $ikey);
-						$actions = array();
-
-						$editadpageid = awpcp_get_page_id_by_ref('edit-ad-page-name');
-						$url_editpage = get_permalink($editadpageid);
-
-						$href = add_query_arg(array('a' => 'dp', 'k' => str_replace('@','-',$ikey)), $url_editpage);
-						$actions[] = sprintf('<a href="%s">%s</a>', $href, _x('Delete', 'edit ad', 'AWPCP'));
-
-						$transval = '';
-						if ((awpcp_current_user_is_admin() || !$admin_must_approve) && $disabled == 1) {
-							$transval = 'class="imgtransparency"';
-							$href = add_query_arg(array('a' => 'enable-picture', 'k' => $ikey), $url_editpage);
-							$actions[] = sprintf('<a href="%s">%s</a>', $href, _x('Enable', 'edit ad', 'AWPCP'));
-						} else if (awpcp_current_user_is_admin() || !$admin_must_approve) {
-							$href = add_query_arg(array('a' => 'disable-picture', 'k' => $ikey), $url_editpage);
-							$actions[] = sprintf('<a href="%s">%s</a>', $href, _x('Disable', 'edit ad', 'AWPCP'));
-						} else if ($disabled == 1) {
-							$transval = 'class="imgtransparency"';
-							$actions[] = '<font style="font-size:smaller;">' . __('Disabled','AWPCP') . '</font>';
-						}
-
-						$large_image = awpcp_get_image_url($image_name, 'large');
-						$thumbnail = awpcp_get_image_url($image_name, 'thumbnail');
-
-						$theimage .= "<li>";
-						$theimage .= "<a class=\"thickbox\" href=\"" . $large_image . "\">";
-						$theimage .= "<img $transval src=\"" . $thumbnail . "\"/>";
-						$theimage .= "</a>";
-						$theimage .= sprintf("<br/>%s", join(' | ', $actions));
-						$theimage .= "</li>";
-					}
-
-					$imagecode.=$theimage;
-					$imagecode.="</ul></div></div>";
-					$imagecode.="<div class=\"fixfloat\"></div>";
-
-				} elseif ($totalimagesuploaded < 1) {
-					$imagecode.=__("You do not currently have any images uploaded. Use the upload form below to upload your images. If you do not wish to upload any images simply click the finish button. If uploading images, be careful not to click the finish button until after you've uploaded all your images","AWPCP");
-				}
-
-				if ($totalimagesuploaded < $numimgsallowed) {
-					$max_image_size=get_awpcp_option('maximagesize');
-					$showimageuploadform=display_awpcp_image_upload_form($adid,$adtermid,$adkey,$adaction='editad',$nextstep='finish',$adpaymethod='',$awpcpuperror);
-				} else {
-					$showimageuploadform=display_awpcp_image_upload_form($adid,$adtermid,$adkey,$adaction='editad',$nextstep='finishnoform',$adpaymethod='',$awpcpuperror);
-				}
-
-			}
-
-			$imagecode.=$showimageuploadform;
-			$imagecode.="<div class=\"fixfloat\"></div>";
-		}
-
-		$output .= "<div id=\"classiwrapper\">$imagecode</div>";
-	}
-	return $output;
 }

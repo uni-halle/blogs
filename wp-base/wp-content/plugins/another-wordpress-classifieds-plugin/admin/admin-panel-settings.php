@@ -55,8 +55,6 @@ class AWPCP_Classified_Pages_Settings {
 	}
 }
 
-require_once( AWPCP_DIR . '/includes/helpers/facebook.php' );
-
 class AWPCP_Facebook_Page_Settings {
 
 	public function __construct() {

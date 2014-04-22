@@ -23,11 +23,15 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
             'awpcp-migrate-media-information' => array(
                 'name' => 'Migrate Media Information',
             ),
+            'awpcp-update-media-status' => array(
+                'name' => 'Update Image/Attachments Status',
+            ),
         );
 
         add_action( 'wp_ajax_awpcp-import-payment-transactions', array( $this, 'ajax_import_payment_transactions' ) );
         add_action('wp_ajax_awpcp-migrate-regions-information', array($this, 'ajax_migrate_regions_information'));
         add_action( 'wp_ajax_awpcp-migrate-media-information', array( $this, 'ajax_migrate_media_information' ) );
+        add_action( 'wp_ajax_awpcp-update-media-status', array( $this, 'ajax_update_media_status' ) );
     }
 
     private function has_pending_upgrades() {
@@ -351,6 +355,37 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
         $sql.= 'WHERE ad_id > %d ORDER BY key_id LIMIT 0, 100';
 
         return intval( $wpdb->get_var( $wpdb->prepare( $sql, $cursor ) ) );
+    }
+
+    public function ajax_update_media_status() {
+        global $wpdb;
+
+        if ( get_awpcp_option( 'imagesapprove' ) ) {
+            $query = 'UPDATE ' . AWPCP_TABLE_MEDIA . ' SET `status` = %s WHERE enabled = 1';
+            $wpdb->query( $wpdb->prepare( $query, AWPCP_Media::STATUS_APPROVED ) );
+
+            $query = 'UPDATE ' . AWPCP_TABLE_MEDIA . ' SET `status` = %s WHERE enabled = 0';
+            $wpdb->query( $wpdb->prepare( $query, AWPCP_Media::STATUS_REJECTED ) );
+        } else {
+            $query = 'UPDATE ' . AWPCP_TABLE_MEDIA . ' SET `status` = %s';
+            $wpdb->query( $wpdb->prepare( $query, AWPCP_Media::STATUS_APPROVED ) );
+        }
+
+        if ( get_awpcp_option( 'adapprove' ) && get_awpcp_option( 'imagesapprove' ) ) {
+            $query = 'UPDATE ' . AWPCP_TABLE_MEDIA . ' m INNER JOIN ' . AWPCP_TABLE_ADS . ' a ';
+            $query.= 'ON (m.ad_id = a.ad_id AND a.disabled = 1 AND a.disabled_date IS NULL) ';
+            $query.= 'SET m.status = %s';
+            $query.= 'WHERE m.enabled != 1';
+
+            $query = $wpdb->prepare( $query, AWPCP_Media::STATUS_AWAITING_APPROVAL );
+
+            $wpdb->query( $query );
+        }
+
+        delete_option( 'awpcp-update-media-status' );
+        $this->update_pending_upgrades_status();
+
+        return $this->ajax_response( 1, 0 );
     }
 
     /**

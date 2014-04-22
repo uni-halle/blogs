@@ -29,9 +29,9 @@ function omega_register_footer_widget_areas() {
 			'id'            => sprintf( 'footer-%d', $counter ),
 			'name'          => sprintf( __( 'Footer %d', 'omega' ), $counter ),
 			'description'   => sprintf( __( 'Footer %d widget area.', 'omega' ), $counter ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap">',
-			'after_widget'  => '</div></section>',
-			'before_title'  => '<h4 class="widget-title widgettitle">',
+			'before_widget' => '<li id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</li>',
+			'before_title'  => '<h4 class="widget-title">',
 			'after_title'   => '</h4>'
 		);
 

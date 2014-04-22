@@ -103,16 +103,14 @@ function omega_customize_preview_script() {
 
 	?>
 	<script type="text/javascript">
-	wp.customize(
-		'custom_css',
-		function( value ) {
-			value.bind(
-				function( to ) {
-					jQuery( '#custom-colors-css' ).text( to );
-				}
-			);
-		}
-	);
+	( function( $ ){
+		// Bind the Live CSS
+		wp.customize('custom_css', function( value ) {
+			value.bind(function( to ) {
+					$( '#custom-css' ).text( to );
+			});
+		});
+	} )( jQuery )
 	</script>
 	<?php
 }

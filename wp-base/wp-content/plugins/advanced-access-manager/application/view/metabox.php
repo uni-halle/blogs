@@ -211,11 +211,8 @@ class aam_View_Metabox extends aam_View_Abstract {
                     $content .= '<div class=metabox-row>';
                 }
                 //prepare title
-                if (mb_strlen($metabox['title']) > 18) {
-                    $title = mb_substr($metabox['title'], 0, 15) . '...';
-                } else {
-                    $title = $metabox['title'];
-                }
+                $title = $this->prepareTitle($metabox['title']);
+                
                 //prepare selected
                 if ($metaboxControl->has($screen, $metabox['id'])) {
                     $checked = 'checked="checked"';
@@ -257,6 +254,23 @@ class aam_View_Metabox extends aam_View_Abstract {
         return $content;
     }
 
+     /**
+     * 
+     * @param type $title
+     * @return string
+     */
+    protected function prepareTitle($title) {
+        if (function_exists('mb_strlen')) {
+            if ((mb_strlen($title) > 18)) {
+                $title = mb_substr($title, 0, 15) . '..';
+            }
+        } elseif (strlen($title) > 18) {
+            $title = substr($title, 0, 15) . '..';
+        }
+
+        return $title;
+    }
+    
     /**
      *
      * @param type $text

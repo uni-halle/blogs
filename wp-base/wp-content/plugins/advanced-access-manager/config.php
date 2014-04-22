@@ -8,7 +8,7 @@
  */
 
 //AAM Version for Update purpose
-define('AAM_VERSION', '2.5');
+define('AAM_VERSION', '2.5.1');
 
 define('AAM_BASE_DIR', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 

@@ -125,7 +125,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
         if ( $admin ) {
             $fb = AWPCP_Facebook::instance();
-            if ( $fb->get( 'page_token', '' ) && !awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook' ) ) {
+            if ( $fb->get( 'page_token', '' ) && !awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook' ) && !$ad->disabled ) {
                 $actions['send-to-facebook'] = array(
                     __( 'Send to Facebook', 'AWPCP' ),
                     $this->url( array(
@@ -154,12 +154,15 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             'disable', 'rejectad', 'bulk-disable',
             'remove-featured', 'bulk-remove-featured',
             'make-featured', 'bulk-make-featured',
+            'mark-verified',
             'mark-paid',
             'send-key',
             'bulk-renew',
             'bulk-send-to-facebook',
             'unflag',
             'spam', 'bulk-spam',
+
+            'approve-file', 'reject-file',
         );
 
         if (!awpcp_current_user_is_admin() && in_array($action, $protected_actions)) {
@@ -197,6 +200,10 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
                 return $this->unflag_ad();
                 break;
 
+            case 'mark-verified':
+                return $this->mark_as_verified();
+                break;
+
             case 'mark-paid':
                 return $this->mark_as_paid();
                 break;
@@ -232,6 +239,8 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             case 'deletepic':
             case 'rejectpic':
             case 'approvepic':
+            case 'approve-file':
+            case 'reject-file':
                 return $this->manage_images();
                 break;
 
@@ -387,6 +396,15 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         return $this->redirect('index');
     }
 
+    public function mark_as_verified() {
+        $ad = AWPCP_Ad::find_by_id( $this->id );
+
+        awpcp_listings_api()->verify_ad( $ad );
+        awpcp_flash( __( 'The Ad was marked as verified.', 'AWPCP' ) );
+
+        return $this->redirect( 'index' );
+    }
+
     public function mark_as_paid() {
         $ad = AWPCP_Ad::find_by_id($this->id);
 
@@ -523,6 +541,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
     }
 
     public function manage_images() {
+        wp_enqueue_script( 'awpcp-admin-attachments' );
         echo awpcp_media_manager()->dispatch( $this );
     }
 
@@ -584,12 +603,12 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         $failed = 0;
 
         $fb = AWPCP_Facebook::instance();
-        $fb->set_access_token( 'page_token' );        
+        $fb->set_access_token( 'page_token' );
 
         foreach ( $ads as $ad_id ) {
             $ad = AWPCP_Ad::find_by_id( $ad_id );
 
-            if ( !$ad || awpcp_get_ad_meta( $ad_id, 'sent-to-facebook', true ) == 1 ) {
+            if ( !$ad || awpcp_get_ad_meta( $ad_id, 'sent-to-facebook', true ) == 1 || $ad->disabled ) {
                 $failed++;
                 continue;
             }

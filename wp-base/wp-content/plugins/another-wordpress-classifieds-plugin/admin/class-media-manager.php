@@ -47,6 +47,12 @@ class AWPCP_MediaManager {
             case 'approvepic':
                 return $this->enable_picture( $ad, $media );
 
+            case 'approve-file':
+                return $this->approve_file( $ad, $media );
+
+            case 'reject-file':
+                return $this->reject_file( $ad, $media );
+
             case 'set-primary-image':
                 return $this->set_primary_image( $ad, $media );
 
@@ -82,6 +88,26 @@ class AWPCP_MediaManager {
         } else {
             awpcp_flash( _x( 'There was an error trying to enable the file.', 'media manager', 'AWPCP' ) );
         }
+        return $this->show_images( $ad );
+    }
+
+    public function approve_file( $ad, $media ) {
+        if ( awpcp_media_api()->approve( $media ) ) {
+            awpcp_flash( _x( 'The file has been approved.', 'media manager', 'AWPCP' ) );
+        } else {
+            awpcp_flash( _x( 'There was an error trying to approve the file.', 'media manager', 'AWPCP' ) );
+        }
+
+        return $this->show_images( $ad );
+    }
+
+    public function reject_file( $ad, $media ) {
+        if ( awpcp_media_api()->reject( $media ) ) {
+            awpcp_flash( _x( 'The file has been rejected.', 'media manager', 'AWPCP' ) );
+        } else {
+            awpcp_flash( _x( 'There was an error trying to reject the file.', 'media manager', 'AWPCP' ) );
+        }
+
         return $this->show_images( $ad );
     }
 
@@ -172,15 +198,17 @@ class AWPCP_MediaManager {
         $groups = $this->get_files( $ad );
 
         $actions = array(
-            'deletepic' => _x( 'Delete', 'media manager', 'AWPCP' ),
             'approvepic' => _x( 'Enable', 'media manager', 'AWPCP' ),
             'rejectpic' => _x( 'Disable', 'media manager', 'AWPCP' ),
+            'deletepic' => _x( 'Delete', 'media manager', 'AWPCP' ),
             'set-primary-image' =>_x( 'Set as primary', 'media manager', 'AWPCP' ),
+            'approve-file' => _x( 'Approve', 'media manager', 'AWPCP' ),
+            'reject-file' => _x( 'Reject', 'media manager', 'AWPCP' ),
         );
 
         if ( ! awpcp_current_user_is_admin() && get_awpcp_option( 'imagesapprove' ) ) {
-            unset( $actions['approvepic'] );
-            unset( $actions['rejectpic'] );
+            unset( $actions['approve-file'] );
+            unset( $actions['reject-file'] );
         }
 
         ob_start();

@@ -293,12 +293,6 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
     }
 
     public function upload_images_form( $ad, $params=array() ) {
-        if ( awpcp_current_user_is_admin() || ! get_awpcp_option( 'imagesapprove' ) ) {
-            $show_image_actions = true;
-        } else {
-            $show_image_actions = false;
-        }
-
         $params = array_merge( $params, array(
             'images' => awpcp_media_api()->find_images_by_ad_id( $ad->ad_id ),
             'hidden' => array(
@@ -306,8 +300,8 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
                 'edit-hash' => $this->get_edit_hash( $ad ) ),
             'messages' => $this->messages,
             'actions' => array(
-                'enable' => $show_image_actions,
-                'disable' => $show_image_actions,
+                'enable' => true,
+                'disable' => true,
             ),
             'next' => __( 'Finish', 'AWPCP' ),
         ) );

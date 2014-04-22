@@ -307,13 +307,9 @@ function array2qs($myarray) {
  * TODO: replace usage of this function with awpcp_pagination()
  */
 function create_pager($from,$where,$offset,$results,$tpname) {
-	$query = "SELECT count(*) FROM $from WHERE $where";
+	global $wpdb;
 
-	if ( ! ( $res = @mysql_query( $query ) ) ) {
-		die( mysql_error().' on line: '.__LINE__ );
-	}
-
-	$totalrows=mysql_result($res,0,0);
+	$totalrows = $wpdb->get_var( "SELECT count(*) FROM $from WHERE $where" );
 
 	return _create_pager( $totalrows, $offset, $results, $tpname );
 }

@@ -7,6 +7,16 @@ if (!Modernizr.svg) {
     $('#outer').remove();
 };
 		//masonry
+		/*mWrap=new Masonry('#masonry-wrap',{
+			itemSelector: '.tile',
+			columnWidth: 80,
+			isAnimated: true,
+			animationOptions: {
+				duration: 750,
+				easing: 'linear',
+				queue: false
+			}
+		});*/
 		$('#masonry-wrap').masonry({
 		  itemSelector: '.tile',
   columnWidth: 80,
@@ -96,7 +106,8 @@ $(this).parent().addClass('double-vertical quadro').css('overflow-y','auto').fin
 olgajaxhelper();
 //innertilelink ();
 });         
-            $('#masonry-wrap').masonry( 'reload' );
+       //$('#masonry-wrap').masonry( 'reload' );
+       $('#masonry-wrap').masonry('reloadItems').masonry('layout');
        event.preventDefault(event);
        event.stopPropagation();
        //return false;

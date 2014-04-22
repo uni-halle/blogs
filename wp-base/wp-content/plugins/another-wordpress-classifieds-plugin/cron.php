@@ -10,44 +10,54 @@ function awpcp_cron_schedules($schedules) {
 
 // ensure we get the expiration hooks scheduled properly:
 function awpcp_schedule_activation() {
-	if (!wp_next_scheduled('doadexpirations_hook')) {
-		wp_schedule_event(time(), 'hourly', 'doadexpirations_hook');
-	}
-
-	if (!wp_next_scheduled('doadcleanup_hook')) {
-		wp_schedule_event(time(), 'daily', 'doadcleanup_hook');
-	}
-
-	if (!wp_next_scheduled('awpcp_ad_renewal_email_hook')) {
-		wp_schedule_event(time(), 'daily', 'awpcp_ad_renewal_email_hook');
-	}
-
-	if (!wp_next_scheduled('awpcp-clean-up-payment-transactions')) {
-		wp_schedule_event(time(), 'daily', 'awpcp-clean-up-payment-transactions');
-	}
-
-    if ( ! wp_next_scheduled( 'awpcp-clean-up-non-verified-ads' ) ) {
-        wp_schedule_event( current_time( 'timestamp' ), 'daily', 'awpcp-clean-up-non-verified-ads' );
-    }
-
-	add_action('doadexpirations_hook', 'doadexpirations');
-	add_action('doadcleanup_hook', 'doadcleanup');
-	add_action('awpcp_ad_renewal_email_hook', 'awpcp_ad_renewal_email');
-	add_action('awpcp-clean-up-payment-transactions', 'awpcp_clean_up_payment_transactions');
+    add_action('doadexpirations_hook', 'doadexpirations');
+    add_action('doadcleanup_hook', 'doadcleanup');
+    add_action('awpcp_ad_renewal_email_hook', 'awpcp_ad_renewal_email');
+    add_action('awpcp-clean-up-payment-transactions', 'awpcp_clean_up_payment_transactions');
     add_action( 'awpcp-clean-up-payment-transactions', 'awpcp_clean_up_non_verified_ads' );
 
-	// wp_schedule_event(time() + 10, 'hourly', 'doadexpirations_hook');
-	// wp_schedule_event(time() + 10, 'daily', 'doadcleanup_hook');
-	// wp_schedule_event(time() + 10, 'daily', 'awpcp_ad_renewal_email_hook');
-	// wp_schedule_event(time() + 10, 'daily', 'awpcp-clean-up-payment-transactions');
-    // wp_schedule_event(time() + 10, 'daily', 'awpcp-clean-up-non-verified-ads');
+    if (!wp_next_scheduled('doadexpirations_hook')) {
+        wp_schedule_event( time(), 'hourly', 'doadexpirations_hook' );
+    }
 
-    // debug('System date is: ' . date('d-m-Y H:i:s'),
-    //       'Ad Expiration: ' . date('d-m-Y H:i:s', wp_next_scheduled('doadexpirations_hook')),
-    //       'Ad Cleanup: ' . date('d-m-Y H:i:s', wp_next_scheduled('doadcleanup_hook')),
-    //       'Ad Renewal Email: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp_ad_renewal_email_hook')),
-    //       'Payment transactions: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp-clean-up-payment-transactions')),
-    //       'Unverified Ads: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp-clean-up-non-verified-ads')));
+    if (!wp_next_scheduled('doadcleanup_hook')) {
+        wp_schedule_event( time(), 'daily', 'doadcleanup_hook' );
+    }
+
+    if (!wp_next_scheduled('awpcp_ad_renewal_email_hook')) {
+        wp_schedule_event( time(), 'daily', 'awpcp_ad_renewal_email_hook' );
+    }
+
+    if (!wp_next_scheduled('awpcp-clean-up-payment-transactions')) {
+        wp_schedule_event( time(), 'daily', 'awpcp-clean-up-payment-transactions' );
+    }
+
+    if ( ! wp_next_scheduled( 'awpcp-clean-up-non-verified-ads' ) ) {
+        wp_schedule_event( time(), 'daily', 'awpcp-clean-up-non-verified-ads' );
+    }
+
+    // if ( awpcp_current_user_is_admin() ) {
+    //     wp_clear_scheduled_hook( 'doadexpirations_hook' );
+    //     wp_clear_scheduled_hook( 'doadcleanup_hook' );
+    //     wp_clear_scheduled_hook( 'awpcp_ad_renewal_email_hook' );
+    //     wp_clear_scheduled_hook( 'awpcp-clean-up-payment-transactions' );
+    //     wp_clear_scheduled_hook( 'awpcp-clean-up-non-verified-ads' );
+
+    //     wp_schedule_event( time() + 10, 'hourly', 'doadexpirations_hook' );
+    //     wp_schedule_event( time() + 10, 'daily', 'doadcleanup_hook' );
+    //     wp_schedule_event( time() + 10, 'daily', 'awpcp_ad_renewal_email_hook' );
+    //     wp_schedule_event( time() + 10, 'daily', 'awpcp-clean-up-payment-transactions' );
+    //     wp_schedule_event( time() + 10, 'daily', 'awpcp-clean-up-non-verified-ads' );
+
+    //     debugp(
+    //         'System date is: ' . date('d-m-Y H:i:s'),
+    //         'Ad Expiration: ' . date('d-m-Y H:i:s', wp_next_scheduled('doadexpirations_hook')),
+    //         'Ad Cleanup: ' . date('d-m-Y H:i:s', wp_next_scheduled('doadcleanup_hook')),
+    //         'Ad Renewal Email: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp_ad_renewal_email_hook')),
+    //         'Payment transactions: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp-clean-up-payment-transactions')),
+    //         'Unverified Ads: ' . date('d-m-Y H:i:s', wp_next_scheduled('awpcp-clean-up-non-verified-ads'))
+    //     );
+    // }
 }
 
 

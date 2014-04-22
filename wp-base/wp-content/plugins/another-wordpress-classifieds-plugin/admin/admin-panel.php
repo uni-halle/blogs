@@ -204,15 +204,6 @@ class AWPCP_Admin {
 			// in _wp_menu_output, despite the fact we are showing the
 			// All Users page.
 			$typenow = 'hide-users-menu';
-
-			// foreach ( array_keys( $submenu ) as $parent ) {
-			// 	foreach ( $submenu[ $parent ] as $priority => $submenu_array ) {
-			// 		if ( $submenu_array[2] == 'users.php' ) {
-			// 			unset( $submenu[ $parent ][ $priority ] );
-			// 			break 2;
-			// 		}
-			// 	}
-			// }
 		}
 
 		return $parent_file;
@@ -907,221 +898,6 @@ function awpcp_opsconfig_categories() {
 
 	echo $output;
 }
-// END FUNCTION: Manage categories
-
-
-/**
- * Show view to manage images in AWPCP database.
- *
- * This function is called both from the AWPCP Admin Panel and
- * the AWPCP User Ad Management Panel.
- *
- * @param $where string SQL string to filter shown images.
- * @param $approve boolean Whether the Approve/Disable buttons are shown or not.
- * @param $delete_image_form_action string URL used as the action for the 
- *										   delete form.
- * @deprecated since 3.0.2	Replaced by the MediaManager.
- */
-function viewimages($where, $approve=true, $delete_image_form_action=null, $upload_result=false) {
-	_deprecated_function( __FUNCTION, '3.0.2', 'Use the new Media Manager' );
-
-	global $wpdb;
-
-	$output = '';
-	$tbl_ad_photos = $wpdb->prefix . "awpcp_adphotos";
-	$thumbnailwidth=get_awpcp_option('imgthumbwidth');
-	$thumbnailwidth.="px";
-
-	$from="$tbl_ad_photos";
-
-	$ad_id = absint( awpcp_request_param( 'id' ) );
-
-	if ( $ad_id > 0 ) {
-		$sql = 'SELECT ad_title FROM ' . AWPCP_TABLE_ADS . ' WHERE ad_id = %d';
-		$ad_title = $wpdb->get_var( $wpdb->prepare( $sql, $ad_id ) );
-	}
-
-	if (!isset($where) || empty($where))
-	{
-		$where="image_name <> ''";
-	}
-
-	if (!images_exist())
-	{
-		$imagesallowedstatus='';
-
-		if (get_awpcp_option('imagesallowdisallow') == 0)
-		{
-			$href = add_query_arg(array('page' => 'awpcp-admin-settings'), admin_url());
-			$imagesallowedstatus=__("You are not currently allowing users to upload images with their ad. To allow users to upload images please change the related setting in your general options configuration", "AWPCP");
-			$imagesallowedstatus.="<p><a href=\"$href\">";
-			$imagesallowedstatus.=__("Click here to change allowed images status","AWPCP");
-			$imagesallowedstatus.="</a></p>";
-		}
-
-		$showimages="<p style=\"padding:10px\">";
-		$showimages.=__("There are currently no images in the system","AWPCP");
-		$showimages="$imagesallowedstatus</p>";
-		$pager1='';
-		$pager2='';
-	}
-	else
-	{
-		$offset = absint( awpcp_request_param( 'offset' ) );
-		$results = absint( awpcp_request_param( 'results' , 10) );
-
-		$items=array();
-		$query = "SELECT key_id, ad_id, image_name, disabled, is_primary FROM $from ";
-		$query.= "WHERE $where ORDER BY image_name DESC LIMIT $offset, $results";
-		$res = awpcp_query($query, __LINE__);
-
-		while ($rsrow=mysql_fetch_row($res)) {
-			list($ikey, $adid, $image_name, $disabled, $is_primary)=$rsrow;
-			$adtermid=get_adterm_id($adid);
-			$editemail=get_adposteremail($adid);
-			$adkey=get_adkey($adid);
-
-			if (is_null($delete_image_form_action)) {
-				// $delete_image_form_action = '?page=Manage2&sortby=';
-				$delete_image_form_action = awpcp_current_url();
-			}
-
-			$dellink="<form method=\"post\" action=\"$delete_image_form_action\">";
-			$dellink.="<input type=\"hidden\" name=\"adid\" value=\"$adid\" />";
-			$dellink.="<input type=\"hidden\" name=\"picid\" value=\"$ikey\" />";
-			$dellink.="<input type=\"hidden\" name=\"adtermid\" value=\"$adtermid\" />";
-			$dellink.="<input type=\"hidden\" name=\"adkey\" value=\"$adkey\" />";
-			$dellink.="<input type=\"hidden\" name=\"editemail\" value=\"$editemail\" />";
-			$dellink.="<input type=\"hidden\" name=\"action\" value=\"deletepic\" />";
-			$dellink.="<input type=\"submit\" class=\"button\" value=\"";
-			$dellink.=__("Delete","AWPCP");
-			$dellink.="\" />";
-			$dellink.="</form>";
-			$transval='';
-			if ($disabled == 1){
-				$transval="style=\"-moz-opacity:.20; filter:alpha(opacity=20); opacity:.20;\"";
-			}
-
-			$approvelink='';
-
-			// show Approve/Disble buttons when needed
-			if ($disabled == 1 && $approve) {
-				$approvelink="<form method=\"post\" action=\"$delete_image_form_action\">";
-				$approvelink.="<input type=\"hidden\" name=\"adid\" value=\"$adid\" />";
-				$approvelink.="<input type=\"hidden\" name=\"picid\" value=\"$ikey\" />";
-				$approvelink.="<input type=\"hidden\" name=\"adtermid\" value=\"$adtermid\" />";
-				$approvelink.="<input type=\"hidden\" name=\"adkey\" value=\"$adkey\" />";
-				$approvelink.="<input type=\"hidden\" name=\"editemail\" value=\"$editemail\" />";
-				$approvelink.="<input type=\"hidden\" name=\"action\" value=\"approvepic\" />";
-				$approvelink.="<input type=\"submit\" class=\"button\" value=\"";
-				$approvelink.= __( 'Enable', 'AWPCP' );
-				$approvelink.="\" />";
-				$approvelink.="</form>";
-			} else if ($approve) {
-				$approvelink="<form method=\"post\" action=\"$delete_image_form_action\">";
-				$approvelink.="<input type=\"hidden\" name=\"adid\" value=\"$adid\" />";
-				$approvelink.="<input type=\"hidden\" name=\"picid\" value=\"$ikey\" />";
-				$approvelink.="<input type=\"hidden\" name=\"adtermid\" value=\"$adtermid\" />";
-				$approvelink.="<input type=\"hidden\" name=\"adkey\" value=\"$adkey\" />";
-				$approvelink.="<input type=\"hidden\" name=\"editemail\" value=\"$editemail\" />";
-				$approvelink.="<input type=\"hidden\" name=\"action\" value=\"rejectpic\" />";
-				$approvelink.="<input type=\"submit\" class=\"button\" value=\"";
-				$approvelink.=__("Disable","AWPCP");
-				$approvelink.="\" />";
-				$approvelink.="</form>";
-			}
-
-			$primary_image_form = '';
-			if (!$is_primary) {
-				$primary_image_form = "<form method=\"post\" action=\"$delete_image_form_action\">";
-				$primary_image_form.= "<input type=\"hidden\" name=\"adid\" value=\"$adid\" />";
-				$primary_image_form.= "<input type=\"hidden\" name=\"picid\" value=\"$ikey\" />";
-				$primary_image_form.= "<input type=\"hidden\" name=\"adtermid\" value=\"$adtermid\" />";
-				$primary_image_form.= "<input type=\"hidden\" name=\"adkey\" value=\"$adkey\" />";
-				$primary_image_form.= "<input type=\"hidden\" name=\"editemail\" value=\"$editemail\" />";
-				$primary_image_form.= "<input type=\"hidden\" name=\"action\" value=\"set-primary-image\" />";
-				$primary_image_form.= "<input type=\"submit\" class=\"button\" value=\"";
-				$primary_image_form.= __("Set as primary","AWPCP");
-				$primary_image_form.= "\" />";
-				$primary_image_form.= "</form>";
-			}
-
-			$large_image = awpcp_get_image_url($image_name, 'large');
-			$thumbnail = awpcp_get_image_url($image_name, 'thumbnail');
-			$theimages = "<a href=\"" . $large_image . "\"><img $transval src=\"" . $thumbnail . "\"/></a><br/>$dellink $approvelink $primary_image_form";
-
-			$pager1=create_pager($from,$where,$offset,$results,$tpname='');
-			$pager2=create_pager($from,$where,$offset,$results,$tpname='');
-
-			$items[]="<td class=\"displayadsicell\">$theimages</td>";
-
-		}
-
-			$opentable="<table class=\"listcatsh\"><tr>";
-			$closetable="</tr></table>";
-
-			$theitems=smart_table( $items, intval($results/2), $opentable, $closetable );
-
-			$showcategories="$theitems";
-		
-		if (!isset($ikey) || empty($ikey) || $ikey == 0)
-		{
-			$showcategories="<p style=\"padding:20px;\">";
-			$showcategories.=__("There were no images found","AWPCP");
-			$showcategories.="</p>";
-			$pager1='';
-			$pager2='';
-		}
-	}
-
-	$output .= "
-		<style>
-		table.listcatsh { width: 100%; padding: 0px; border: none;}
-		table.listcatsh td { text-align:center;width:10%;font-size: 12px; border: none; background-color: #F4F4F4;
-		vertical-align: middle; font-weight: normal; }
-		table.listcatsh tr.special td { border-bottom: 1px solid #ff0000;  }
-		table.listcatsc { width: 100%; padding: 0px; border: none; border: 1px solid #dddddd;}
-		table.listcatsc td { text-align:center;width:10%;border: none;
-		vertical-align: middle; padding: 5px; font-weight: normal; }
-		table.listcatsc tr.special td { border-bottom: 1px solid #ff0000;  }
-		</style>
-		";
-
-	if ( '' != $upload_result &&  1 != $upload_result ) 
-	    $uploader = $upload_result; 
-	else
-	    $uploader = '';
-
-	if ('awpcp-listings' == $_GET['page'] || 'awpcp-panel' == $_GET['page']) {
-		$uploader .= "
-	<h3>Images for ad titled: \"".$ad_title."\"</h3>
-	<form action='' method='post' enctype='multipart/form-data' style='margin: 15px 0; border: 1px solid #d3d3d3; padding: 10px; background-color: #eeeeee' >
-	    Upload an image for this ad: 
-	    <input type='file' name='awpcp_add_file' value=''/>
-	    <input class='button' type='submit' name='awpcp_submit_file' value='Add File'/>
-	    <input type='hidden' name='awpcp_action' value='add_image'/>
-	    <input type='hidden' name='action' value='add-image'/>
-	    ".wp_nonce_field('awpcp_upload_image')."
-	</form>
-	";
-	}
-
-
-
-	$output .= "
-		$uploader
-		$showcategories";
-
-	return $output;
-}
-
-
-
-///////
-//	Start process of creating | updating  userside classified page
-//////
-
-// wvega: here the pages are created and updated
 
 function awpcp_pages() {
 	$pages = array('main-page-name' => array(get_awpcp_option('main-page-name'), '[AWPCP]'));
@@ -1238,27 +1014,28 @@ function awpcp_create_subpage($refname, $name, $shortcode, $awpcp_page_id=null) 
 }
 
 
-function maketheclassifiedsubpage($theawpcppagename,$awpcpwppostpageid,$awpcpshortcodex) {
-	global $wpdb,$table_prefix,$wp_rewrite;
+function maketheclassifiedsubpage( $page_name, $parent_page_id, $short_code ) {
+	$post_date = date("Y-m-d");
+	$parent_page_id = intval( $parent_page_id );
+	$post_name = sanitize_title( $page_name );
+	$page_name = add_slashes_recursive( $page_name );
 
-	$pdate = date("Y-m-d");
+	$page_id = wp_insert_post( array(
+		'post_date' => $post_date,
+		'post_date_gmt' => $post_date,
+		'post_title' => $page_name,
+		'post_content' => $short_code,
+		'post_status' => 'publish',
+		'comment_status' => 'closed',
+		'post_name' => $post_name,
+		'post_modified' => $post_date,
+		'post_modified_gmt' => $post_date,
+		'post_content_filtered' => $short_code,
+		'post_parent' => $parent_page_id,
+		'post_type' => 'page',
+	) );
 
-	$awpcpwppostpageid = intval($awpcpwppostpageid);
-
-	// First delete any pages already existing with the title and post name of the new page to be created
-	//checkfortotalpageswithawpcpname($theawpcppagename);
-
-	$post_name = sanitize_title($theawpcppagename);
-	$theawpcppagename = add_slashes_recursive($theawpcppagename);
-	$query="INSERT INTO {$table_prefix}posts SET post_author=1, post_date='$pdate', post_date_gmt='$pdate', post_content='$awpcpshortcodex', post_title='$theawpcppagename', post_excerpt='', post_status='publish', comment_status='closed', post_name='$post_name', to_ping='', pinged='', post_modified='$pdate', post_modified_gmt='$pdate', post_content_filtered='$awpcpshortcodex', post_parent=$awpcpwppostpageid, guid='', post_type='page', menu_order=0";
-	$res = awpcp_query($query, __LINE__);
-	$newawpcpwppostpageid=mysql_insert_id();
-	$guid = get_option('home') . "/?page_id=$newawpcpwppostpageid";
-
-	$query="UPDATE {$table_prefix}posts set guid='$guid' WHERE post_title='$theawpcppagename'";
-	$res = awpcp_query($query, __LINE__);
-
-	return $newawpcpwppostpageid;
+	return $page_id;
 }
 
 
@@ -1273,112 +1050,9 @@ function maketheclassifiedsubpage($theawpcppagename,$awpcpwppostpageid,$awpcpsho
  * The part of this function that handles Ads is @deprecated since 2.1.4.
  * The part of this function that handles Categories is still being used.
  */
-// add_action('plugins_loaded', 'awpcp_handle_admin_requests');
 function awpcp_handle_admin_requests() {
 	global $wpdb;
 	global $message;
-		
-	//////////////////
-	// Handle deleting of a listing fee plan
-	/////////////////
-
-	if (isset($_REQUEST['deletefeesetting']) && !empty($_REQUEST['deletefeesetting'])) {
-		$tbl_ad_fees = $wpdb->prefix . "awpcp_adfees";
-		$awpcpfeeplanoptionitem='';
-		$adterm_id='';
-
-		if (isset($_REQUEST['adterm_id']) && !empty($_REQUEST['adterm_id'])) {
-			$adterm_id = clean_field($_REQUEST['adterm_id']);
-		}
-
-		if (empty($adterm_id)) {
-			$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">";
-			$message.=__("No plan ID was provided therefore no action has been taken","AWPCP");
-			$message.="!</div>";
-
-		// First make check if there are ads that are saved under this term
-		} elseif (adtermidinuse($adterm_id)) {
-
-			$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">";
-			$message.=__("The plan could not be deleted because there are active ads in the system that are associated with the plan ID. You need to switch the ads to a new plan ID before you can delete the plan.","AWPCP");
-			$message.="</div>";
-
-			$awpcpfeechangeadstonewidform="<div style=\"border:5px solid#ff0000;padding:5px;\"><form method=\"post\" id=\"awpcp_launch\">";
-			$awpcpfeechangeadstonewidform.="<p>";
-			$awpcpfeechangeadstonewidform.=__("Change ads associated with plan ID $adterm_id to this plan ID","AWPCP");
-			$awpcpfeechangeadstonewidform.="<br/>";
-			$awpcpfeechangeadstonewidform.="<select name=\"awpcpnewplanid\"/>";
-
-
-			$awpcpfeeplans=$wpdb->get_results("select adterm_id as theadterm_ID, adterm_name as theadterm_name from ".$tbl_ad_fees." WHERE adterm_id != '$adterm_id'");
-
-			foreach($awpcpfeeplans as $awpcpfeeplan) {
-				$awpcpfeeplanoptionitem .= "<option value='$awpcpfeeplan->theadterm_ID'>$awpcpfeeplan->theadterm_name</option>";
-			}
-
-			$awpcpfeechangeadstonewidform.="$awpcpfeeplanoptionitem";
-
-			$awpcpfeechangeadstonewidform.="</select>";
-			$awpcpfeechangeadstonewidform.="<input name=\"adterm_id\" type=\"hidden\" value=\"$adterm_id\" /></p>";
-			$awpcpfeechangeadstonewidform.="<input class=\"button\" type=\"submit\" name=\"changeadstonewfeesetting\" value=\"";
-			$awpcpfeechangeadstonewidform.=__("Submit","AWPCP");
-			$awpcpfeechangeadstonewidform.="\" />";
-			$awpcpfeechangeadstonewidform.="</form></div>";
-
-			$message.="<p>$awpcpfeechangeadstonewidform</p>";
-
-		} else {
-			$query="DELETE FROM  ".$tbl_ad_fees." WHERE adterm_id='$adterm_id'";
-			$res = awpcp_query($query, __LINE__);
-
-			$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">";
-			$message.=__("The data has been deleted","AWPCP");
-			$message.="!</div>";
-
-		}
-	}
-
-
-	if (isset($_REQUEST['changeadstonewfeesetting']) && !empty($_REQUEST['changeadstonewfeesetting']))
-	{
-		$tbl_ads = $wpdb->prefix . "awpcp_ads";
-		$adterm_id='';
-		$awpcpnewplanid='';
-
-		if (isset($_REQUEST['adterm_id']) && !empty($_REQUEST['adterm_id']))
-		{
-			$adterm_id=clean_field($_REQUEST['adterm_id']);
-		}
-		if (isset($_REQUEST['awpcpnewplanid']) && !empty($_REQUEST['awpcpnewplanid']))
-		{
-			$awpcpnewplanid=clean_field($_REQUEST['awpcpnewplanid']);
-		}
-
-
-		if (empty($adterm_id))
-		{
-
-			$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">";
-			$message.=__("No plan ID was provided therefore no action has been taken","AWPCP");
-			$message.="!</div>";
-		}
-		else
-		{
-			$query="UPDATE ".$tbl_ads." SET adterm_id='$awpcpnewplanid' WHERE adterm_id='$adterm_id'";
-			$res = awpcp_query($query, __LINE__);
-
-			$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">";
-			$message.=__("All ads with ID $adterm_id have been associated with plan id $awpcpnewplanid. You can now delete plan ID $adterm_id","AWPCP");
-			$message.="!</div>";
-		}
-	}
-
-
-
-	//	End process
-
-	//	Start process of adding | editing ad categories
-
 
 	if (isset($_REQUEST['createeditadcategory']) && !empty($_REQUEST['createeditadcategory']))
 	{
@@ -1400,16 +1074,17 @@ function awpcp_handle_admin_requests() {
 		$aeaction=clean_field($_REQUEST['aeaction']);
 
 		if ( $aeaction == 'newcategory' ) {
-			global $wpdb;
+			$name = stripslashes_deep( awpcp_request_param( 'category_name' ) );
+			$parent = intval( awpcp_request_param( 'category_parent_id' ) );
+			$order = intval( awpcp_request_param( 'category_order' ) );
 
-			$data = array(
-				'category_name' => stripslashes_deep( awpcp_request_param( 'category_name' ) ),
-				'category_parent_id' => intval( awpcp_request_param( 'category_parent_id' ) ),
-				'category_order' => intval( awpcp_request_param( 'category_order' ) )
-			);
+			$category = new AWPCP_Category( null, $name, null, $order, $parent );
 
-			if ( $wpdb->insert( AWPCP_TABLE_CATEGORIES, $data ) ) {
-				$themessagetoprint = __( "The new category has been successfully added.", "AWPCP" );
+			try {
+				awpcp_categories_collection()->save( $category );
+				$themessagetoprint = __( 'The new category was successfully added.', 'AWPCP' );
+			} catch ( AWPCP_Exception $e ) {
+				$themessagetoprint = $e->getMessage();
 			}
 		}
 		elseif ($aeaction == 'delete')
@@ -1434,19 +1109,25 @@ function awpcp_handle_admin_requests() {
 
 				if ( isset($movetocat) && !empty($movetocat) && ($movetocat != 0) )
 				{
-
 					$movetocatparent=get_cat_parent_ID($movetocat);
 
-					$query="UPDATE ".$tbl_ads." SET ad_category_id='$movetocat' ad_category_parent_id='$movetocatparent' WHERE ad_category_id='$category_id'";
-					awpcp_query($query, __LINE__);
+					$query = 'UPDATE ' . AWPCP_TABLE_ADS . ' SET ad_category_id = %d ad_category_parent_id=%d ';
+					$query.= 'WHERE ad_category_id = %d';
+					$query = $wpdb->prepare( $query, $movetocat, $movetocatparent, $category_id );
+
+					$wpdb->query( $query );
 
 					// Must also relocate ads where the main category was a child of the category being deleted
-					$query="UPDATE ".$tbl_ads." SET ad_category_parent_id='$movetocat' WHERE ad_category_parent_id='$category_id'";
-					awpcp_query($query, __LINE__);
+					$query = 'UPDATE ' . AWPCP_TABLE_ADS . ' SET ad_category_parent_id = %d WHERE ad_category_parent_id = %d';
+					$query = $wpdb->prepare( $query, $movetocat, $category_id );
+
+					$wpdb->query( $query );
 
 					// Must also relocate any children categories to the the move-to-cat
-					$query="UPDATE ".$tbl_ad_categories." SET category_parent_id='$movetocat' WHERE category_parent_id='$category_id'";
-					awpcp_query($query, __LINE__);
+					$query = 'UPDATE ' . AWPCP_TABLE_CATEGORIES . ' SET category_parent_id = %d WHERE category_parent_id = %d';
+					$wpdb->prepare( $query, $movetocat, $category_id );
+
+					$wpdb->query( $query );
 				}
 
 
@@ -1472,37 +1153,36 @@ function awpcp_handle_admin_requests() {
 
 					// Adjust any ads transferred from the main category
 					$query="UPDATE ".$tbl_ads." SET ad_category_id='$movetocat', ad_category_parent_id='$movetocatparent' WHERE ad_category_id='$category_id'";
-					awpcp_query($query, __LINE__);
+					$wpdb->query( $query );
 
 					// Must also relocate any children categories to the the move-to-cat
 					$query="UPDATE ".$tbl_ad_categories." SET category_parent_id='$movetocat' WHERE category_parent_id='$category_id'";
-					awpcp_query($query, __LINE__);
+					$wpdb->query( $query );
 
 					// Adjust  any ads transferred from children categories
 					$query="UPDATE ".$tbl_ads." SET ad_category_parent_id='$movetocat' WHERE ad_category_parent_id='$category_id'";
-					$res = awpcp_query($query, __LINE__);
+					$wpdb->query( $query );
 				}
 
-				$query="DELETE FROM  ".$tbl_ad_categories." WHERE category_id='$category_id'";
-				awpcp_query($query, __LINE__);
+				$query = "DELETE FROM  " . AWPCP_TABLE_CATEGORIES . " WHERE category_id='$category_id'";
+				$wpdb->query( $query );
 
 				$themessagetoprint=__("The category has been deleted","AWPCP");
 			}
 		}
 		elseif ($aeaction == 'edit')
 		{
+			$category = AWPCP_Category::find_by_id( $category_id );
+			$category->name = clean_field( awpcp_request_param( 'category_name' ) );
+			$category->parent = intval( clean_field( awpcp_request_param( 'category_parent_id' ) ) );
+			$category->order = intval( awpcp_request_param( 'category_order', 0 ) );
 
-			$category_name = clean_field( awpcp_request_param( 'category_name' ) );
-			$category_parent_id = clean_field( awpcp_request_param( 'category_parent_id' ) );
-			$category_order = intval( awpcp_request_param( 'category_order', 0 ) );
-
-			$query="UPDATE ".$tbl_ad_categories." SET category_name='$category_name',category_parent_id='$category_parent_id',category_order='$category_order' WHERE category_id='$category_id'";
-			awpcp_query($query, __LINE__);
-
-			$query="UPDATE ".$tbl_ads." SET ad_category_parent_id='$category_parent_id' WHERE ad_category_id='$category_id'";
-			awpcp_query($query, __LINE__);
-
-			$themessagetoprint=__("Your category changes have been saved.","AWPCP");
+			try {
+				awpcp_categories_collection()->save( $category );
+				$themessagetoprint = __( 'Your category changes have been saved.', 'AWPCP' );
+			} catch ( AWPCP_Exception $e ) {
+				$themessagetoprint = $e->getMessage();
+			}
 		}
 		else
 		{
@@ -1535,13 +1215,12 @@ function awpcp_handle_admin_requests() {
 
 				if ($cattomove != $moveadstocategory)
 				{
-
 					// First update all the ads in the category to take on the new parent ID
-					$query="UPDATE ".$tbl_ads." SET ad_category_parent_id='$moveadstocategory' WHERE ad_category_id='$cattomove'";
-					awpcp_query($query, __LINE__);
+					$query = "UPDATE " . AWPCP_TABLE_ADS . " SET ad_category_parent_id='$moveadstocategory' WHERE ad_category_id='$cattomove'";
+					$wpdb->query( $query );
 
-					$query="UPDATE ".$tbl_ad_categories." SET category_parent_id='$moveadstocategory' WHERE category_id='$cattomove'";
-					awpcp_query($query, __LINE__);
+					$query = "UPDATE " . AWPCP_TABLE_CATEGORIES . " SET category_parent_id='$moveadstocategory' WHERE category_id='$cattomove'";
+					$wpdb->query( $query );
 				}
 
 			}
@@ -1608,21 +1287,20 @@ function awpcp_handle_admin_requests() {
 					$movetocatparent=get_cat_parent_ID($movetocat);
 
 					// Move the ads in the category main
-					$query="UPDATE ".$tbl_ads." SET ad_category_id='$movetocat',ad_category_parent_id='$movetocatparent' WHERE ad_category_id='$cattodel'";
-					awpcp_query($query, __LINE__);
+					$query = "UPDATE " . AWPCP_TABLE_ADS . " SET ad_category_id='$movetocat',ad_category_parent_id='$movetocatparent' WHERE ad_category_id='$cattodel'";
+					$wpdb->query( $query );
 
 					// Must also relocate ads where the main category was a child of the category being deleted
-					$query="UPDATE ".$tbl_ads." SET ad_category_parent_id='$movetocat' WHERE ad_category_parent_id='$cattodel'";
-					awpcp_query($query, __LINE__);
+					$query = "UPDATE " . AWPCP_TABLE_ADS . " SET ad_category_parent_id='$movetocat' WHERE ad_category_parent_id='$cattodel'";
+					$wpdb->query( $query );
 
 					// Must also relocate any children categories that do not exist in the categories to delete loop to the the move-to-cat
-					$query="UPDATE ".$tbl_ad_categories." SET category_parent_id='$movetocat' WHERE category_parent_id='$cattodel' AND category_id NOT IN (".implode(',',$categoriestodelete).")";
+					$query = "UPDATE " . AWPCP_TABLE_CATEGORIES . " SET category_parent_id='$movetocat' WHERE category_parent_id='$cattodel' AND category_id NOT IN (".implode(',',$categoriestodelete).")";
 
-					awpcp_query($query, __LINE__);
+					$wpdb->query( $query );
 				}
 				elseif ($movedeleteads == 2)
 				{
-
 					$movetocat=$moveadstocategory;
 
 					// If the category has children move the ads in the child categories to the default category
@@ -1630,23 +1308,21 @@ function awpcp_handle_admin_requests() {
 					if ( category_has_children($cattodel) )
 					{
 						//  Relocate the ads ads in any children categories of the category being deleted
-
-						$query="UPDATE ".$tbl_ads." SET ad_category_parent_id='$movetocat' WHERE ad_category_parent_id='$cattodel'";
-						awpcp_query($query, __LINE__);
+						$query = "UPDATE " . AWPCP_TABLE_ADS . " SET ad_category_parent_id='$movetocat' WHERE ad_category_parent_id='$cattodel'";
+						$wpdb->query( $query );
 
 						// Relocate any children categories that exist under the category being deleted
-						$query="UPDATE ".$tbl_ad_categories." SET category_parent_id='$movetocat' WHERE category_parent_id='$cattodel'";
-						awpcp_query($query, __LINE__);
+						$query = "UPDATE " . AWPCP_TABLE_CATEGORIES . " SET category_parent_id='$movetocat' WHERE category_parent_id='$cattodel'";
+						$wpdb->query( $query );
 					}
-
 
 					// Now delete the ads because the admin has checked Delete ads if any
 					massdeleteadsfromcategory($cattodel);
 				}
 
 				// Now delete the categories
-				$query="DELETE FROM  ".$tbl_ad_categories." WHERE category_id='$cattodel'";
-				awpcp_query($query, __LINE__);
+				$query = "DELETE FROM  " . AWPCP_TABLE_CATEGORIES . " WHERE category_id='$cattodel'";
+				$wpdb->query( $query );
 
 				$themessagetoprint=__("The categories have been deleted","AWPCP");
 			}
@@ -1688,33 +1364,6 @@ function awpcp_handle_admin_requests() {
 				$ad->delete();
 			}
 
-			// $listofadstodelete=join("','",$fordeletionid);
-
-			// // Delete the ad images
-			// $query="SELECT image_name FROM ".$tbl_ad_photos." WHERE ad_id IN ('$listofadstodelete')";
-			// $res = awpcp_query($query, __LINE__);
-
-			// for ($i=0;$i<mysql_num_rows($res);$i++)
-			// {
-			// 	$photo=mysql_result($res,$i,0);
-
-			// 	if (file_exists(AWPCPUPLOADDIR.'/'.$photo))
-			// 	{
-			// 		@unlink(AWPCPUPLOADDIR.'/'.$photo);
-			// 	}
-			// 	if (file_exists(AWPCPTHUMBSUPLOADDIR.'/'.$photo))
-			// 	{
-			// 		@unlink(AWPCPTHUMBSUPLOADDIR.'/'.$photo);
-			// 	}
-			// }
-
-			// $query="DELETE FROM ".$tbl_ad_photos." WHERE ad_id IN ('$listofadstodelete')";
-			// awpcp_query($query, __LINE__);
-
-			// // Delete the ads
-			// $query="DELETE FROM ".$tbl_ads." WHERE ad_id IN ('$listofadstodelete')";
-			// awpcp_query($query, __LINE__);
-
 			$themessagetoprint=__("The ads have been deleted","AWPCP");
 
 		}
@@ -1752,18 +1401,12 @@ function awpcp_handle_admin_requests() {
 				$ad->delete();
 			}
 			
-			// $listofadstospam=join("','",$forspamid);
-			// // Delete the ads
-			// $query="DELETE FROM ".$tbl_ads." WHERE ad_id IN ('$listofadstospam')";
-			// awpcp_query($query, __LINE__);
-			
 			$themessagetoprint=__("The selected Ads have been marked as SPAM and removed.","AWPCP");
 		}
 
 		$message = "<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">$themessagetoprint</div>";
 	}
 }
-//	End Process of spamming multiple ads
 
 
 

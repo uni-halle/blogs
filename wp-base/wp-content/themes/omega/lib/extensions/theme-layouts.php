@@ -23,17 +23,17 @@
  */
 
 /* Register metadata with WordPress. */
-// add_action( 'init', 'theme_layouts_register_meta' );
+add_action( 'init', 'theme_layouts_register_meta' );
 
 /* Add post type support for theme layouts. */
-// add_action( 'init', 'theme_layouts_add_post_type_support' );
-// add_action( 'init', 'theme_layouts_remove_post_type_support' );
+add_action( 'init', 'theme_layouts_add_post_type_support' );
+add_action( 'init', 'theme_layouts_remove_post_type_support' );
 
 /* Set up the custom post layouts. */
-// add_action( 'admin_init', 'theme_layouts_admin_setup' );
+add_action( 'admin_init', 'theme_layouts_admin_setup' );
 
 /* Add layout option in Customize. */
-// add_action( 'customize_register', 'theme_layouts_customize_register' );
+add_action( 'customize_register', 'theme_layouts_customize_register' );
 
 /* Filters the theme layout mod. */
 add_filter( 'theme_mod_theme_layout', 'theme_layouts_filter_layout' );
@@ -693,8 +693,8 @@ function theme_layouts_customize_preview_script() { ?>
 		function( value ) {
 			value.bind( 
 				function( to ) {
-					var classes = jQuery( 'body' ).attr( 'class' ).replace( /layout-[a-zA-Z0-9_-]*/g, '' );
-					jQuery( 'body' ).attr( 'class', classes ).addClass( 'layout-' + to );
+					var classes = jQuery( 'body' ).attr( 'class' ).replace( /c-layout-[a-zA-Z0-9_-]*/g, '' );
+					jQuery( 'body' ).attr( 'class', classes ).addClass( 'c-layout-' + to );
 				} 
 			);
 		}

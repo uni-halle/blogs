@@ -1,4 +1,8 @@
 
+Version: 1.0.9
+------------------------------------------
+Changed default homepage layout.
+
 Version: 1.0.8
 ------------------------------------------
 Added new skin.

@@ -4,7 +4,7 @@ Donate link:
 Tags: title, hide, remove, simple, wp, titles, toggle
 Requires at least: 3.0
 Tested up to: 3.6.1
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,8 @@ You could do something like this:
 2. The options screen.
 
 == Changelog ==
+= 1.4 =
+* fixed Warning: \"Missing argument 2 for TitleToggler_hide_title()\" http://wordpress.org/support/topic/hello-great-plugin-but-im-getting-an-error-msg-below
 
 = 1.3 =
 * added a new feature to turn off all page titles
@@ -62,16 +64,16 @@ You could do something like this:
 * fixed menu items disappeared when toggling the title
 
 = 1.1 =
-* fixed link to the "developer web site" (thanks Charles Anders for pointing it out)
+* fixed link to the \"developer web site\" (thanks Charles Anders for pointing it out)
 * fixed plugin conflict with Q and A FAQ (thanks murokoma - http://wordpress.org/support/topic/not-seeing-questions-plugin-conflict-with-toggle-the-title)
 
 = 1.0 =
 -- Init --
 
-== Upgrade notice ==
-
-No upgrade yet (first version of the plugin)
+== Upgrade Notice ==
+= 1.4 =
+* fixed Warning: \"Missing argument 2 for TitleToggler_hide_title()\" http://wordpress.org/support/topic/hello-great-plugin-but-im-getting-an-error-msg-below
+this issue was reported by many users...
 
 == Arbitrary section ==
-you can contact me at avner.komarow@gmail.com
-
+you can contact me at avner.komarow@gmail.com	

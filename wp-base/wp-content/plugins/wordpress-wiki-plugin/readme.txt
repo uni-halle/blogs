@@ -1,10 +1,10 @@
 === Wiki ===
-Contributors: WPMUDEV, mohanjith
-Author: WPMUDEV, mohanjith
+Contributors: WPMUDEV
+Author: WPMUDEV
 Tags: wiki, buddypress, frontend editing
-Requires at least: 3.0.1
-Tested up to: 3.6.1
-Stable tag: tags/1.0.8.3
+Requires at least: 3.3
+Tested up to: 3.9
+Stable tag: trunk
 
 Create a wiki as easily as adding a post
 
@@ -87,10 +87,19 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 4. Edit Wiki in Admin Dashboard 
 
 == Upgrade Notice ==
-* Preserve post status when editing in frontend
-* Preserve comment status when editing in frontend
+* Fixed: Better usability when restoring from front-end
+* Fixed: Front-end editor styles for WP 3.9
+* Removed: legacy editor code for WP versions < 3.3
+* Tested compatible with WP 3.9
+* Minor bugfixes and enhancements
 
 == Changelog ==
+= 1.1 =
+* Fixed: Better usability when restoring from front-end
+* Fixed: Front-end editor styles for WP 3.9
+* Removed: legacy editor code for WP versions < 3.3
+* Tested compatible with WP 3.9
+* Minor bugfixes and enhancements
 
 = 1.0.8.3 =
 * Preserve post status when editing in frontend

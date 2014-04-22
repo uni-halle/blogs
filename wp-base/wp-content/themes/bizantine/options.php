@@ -287,7 +287,7 @@ function optionsframework_options() {
 					$options[] = array( "name" => __("Select a homepage layout", 'Bizantine' ),
 										"desc" => __("Images for layout.", 'Bizantine' ),
 										"id" => "homepage_layout",
-										"std" => "bseven",
+										"std" => "bone",
 										"type" => "images",
 										"options" => array(
 											'bone' => $imagepath . 'layout1.png',

@@ -3,7 +3,7 @@
  Plugin Name: Another Wordpress Classifieds Plugin (AWPCP)
  Plugin URI: http://www.awpcp.com
  Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your wordpress blog. <strong>!!!IMPORTANT!!!</strong> Whether updating a previous installation of Another Wordpress Classifieds Plugin or installing Another Wordpress Classifieds Plugin for the first time, please backup your wordpress database before you install/uninstall/activate/deactivate/upgrade Another Wordpress Classifieds Plugin.
- Version: 3.2.1
+ Version: 3.2.2
  Author: D. Rodenbaugh
  License: GPLv2 or any later version
  Author URI: http://www.skylineconsult.com
@@ -35,49 +35,6 @@ if (preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) {
 define( 'AWPCP_BASENAME', basename( dirname( __FILE__ ) ) );
 define( 'AWPCP_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
 define( 'AWPCP_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) );
-
-// TODO: Why do we need a custom error handler?
-if (!function_exists('AWPCPErrorHandler')) {
-
-	/**
-	 * Set custom error handler functions.
-	 */
-	function AWPCPErrorHandler($errno, $errstr, $errfile, $errline){
-		$output = '';
-		switch ($errno) {
-			case E_USER_ERROR:
-				if ($errstr == "(SQL)"){
-					// handling an sql error
-					$output .= "<b>AWPCP SQL Error</b> Errno: [$errno] SQLError:" . SQLMESSAGE . "<br />\n";
-					$output .= "Query : " . SQLQUERY . "<br />\n";
-					$output .= "Called by line " . SQLERRORLINE . " in file " . SQLERRORFILE . ", error in ".$errfile." at line ".$errline;
-					$output .= ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
-					$output .= "Aborting...<br />\n";
-				} else {
-					$output .= "<b>AWPCP PHP Error</b> [$errno] $errstr<br />\n";
-					$output .= "  Fatal error called by line $errline in file $errfile, error in ".$errfile." at line ".$errline;
-					$output .= ", PHP " . PHP_VERSION . " (" . PHP_OS . ")<br />\n";
-					$output .= "Aborting...<br />\n";
-				}
-				//Echo OK here:
-				echo $output;
-				exit(1);
-				break;
-
-			case E_USER_WARNING:
-			case E_USER_NOTICE:
-		}
-		/* true=Don't execute PHP internal error handler */
-		return true;
-	}
-
-}
-
-if ( get_option( 'awpcp-debug', false ) ) {
-	// let's see some errors
-} else {
-	set_error_handler("AWPCPErrorHandler");
-}
 
 global $awpcp;
 
@@ -131,9 +88,14 @@ require_once(AWPCP_DIR . "/includes/compatibility/class-all-in-one-seo-pack-plug
 require_once(AWPCP_DIR . "/includes/compatibility/class-facebook-plugin-integration.php");
 require_once( AWPCP_DIR . "/includes/compatibility/class-yoast-wordpress-seo-plugin-integration.php" );
 
+require_once(AWPCP_DIR . "/includes/helpers/class-akismet-wrapper-base.php");
+require_once(AWPCP_DIR . "/includes/helpers/class-akismet-wrapper.php");
+require_once(AWPCP_DIR . "/includes/helpers/class-akismet-wrapper-factory.php");
 require_once(AWPCP_DIR . "/includes/helpers/class-awpcp-request.php");
+require_once( AWPCP_DIR . '/includes/helpers/class-facebook-cache-helper.php' );
 require_once(AWPCP_DIR . "/includes/helpers/class-file-cache.php");
 require_once(AWPCP_DIR . "/includes/helpers/class-payment-transaction-helper.php");
+require_once( AWPCP_DIR . '/includes/helpers/facebook.php' );
 require_once(AWPCP_DIR . "/includes/helpers/list-table.php");
 require_once(AWPCP_DIR . "/includes/helpers/email.php");
 require_once(AWPCP_DIR . "/includes/helpers/javascript.php");
@@ -150,6 +112,7 @@ require_once(AWPCP_DIR . "/includes/models/payment-transaction.php");
 
 require_once( AWPCP_DIR . "/includes/db/class-database-column-creator.php" );
 
+require_once( AWPCP_DIR . "/includes/views/class-ajax-handler.php" );
 require_once( AWPCP_DIR . "/includes/views/class-base-page.php" );
 require_once( AWPCP_DIR . "/includes/views/class-step-decorator.php" );
 require_once( AWPCP_DIR . "/includes/views/class-payment-step-decorator.php" );
@@ -184,6 +147,7 @@ require_once( AWPCP_DIR . "/includes/views/admin/account-balance/class-account-b
 require_once( AWPCP_DIR . "/includes/settings/class-credit-plans-settings.php" );
 
 require_once( AWPCP_DIR . "/includes/class-awpcp-listings-api.php" );
+require_once( AWPCP_DIR . "/includes/class-listing-payment-transaction-handler.php" );
 require_once( AWPCP_DIR . "/includes/class-media-api.php" );
 require_once(AWPCP_DIR . "/includes/payments-api.php");
 require_once(AWPCP_DIR . "/includes/regions-api.php");
@@ -334,6 +298,19 @@ class AWPCP {
 			add_filter( 'awpcp-should-generate-title', array( $yoast_wordpress_seo_plugin_integration, 'should_generate_title' ), 10, 2 );
 		}
 
+		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+			// load resources required both in front end and admin screens.
+			$listing_payment_transaction_handler = awpcp_listing_payment_transaction_handler();
+            add_action( 'awpcp-transaction-status-updated', array( $listing_payment_transaction_handler, 'transaction_status_updated' ), 10, 2 );
+			add_filter( 'awpcp-process-payment-transaction', array( $listing_payment_transaction_handler, 'process_payment_transaction' ) );
+
+			$facebook_cache_helper = awpcp_facebook_cache_helper();
+			add_action( 'awpcp-place-ad', array( $facebook_cache_helper, 'on_place_ad' ) );
+			add_action( 'awpcp_approve_ad', array( $facebook_cache_helper, 'on_approve_ad' ) );
+			add_action( 'awpcp_edit_ad', array( $facebook_cache_helper, 'on_edit_ad' ) );
+			add_action( 'awpcp-clear-ad-facebook-cache', array( $facebook_cache_helper, 'handle_clear_cache_event_hook' ), 10, 1 );
+		}
+
 		// Ad metadata integration.
         $wpdb->awpcp_admeta = AWPCP_TABLE_AD_META;
 
@@ -352,6 +329,8 @@ class AWPCP {
 		add_action('admin_notices', array($this, 'admin_notices'));
 
 		add_action('awpcp_register_settings', array($this, 'register_settings'));
+		add_action( 'awpcp-register-payment-term-types', array( $this, 'register_payment_term_types' ) );
+		add_action( 'awpcp-register-payment-methods', array( $this, 'register_payment_methods' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 1000 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 1000 );
@@ -370,11 +349,7 @@ class AWPCP {
 
 		$this->pages = new AWPCP_Pages();
 
-		add_action('awpcp-register-payment-term-types', array($this, 'register_payment_term_types'));
-		add_action('awpcp-register-payment-methods', array($this, 'register_payment_methods'));
-
         add_action( 'awpcp-process-payment-transaction', array( $this, 'process_transaction_update_payment_status' ) );
-        add_action( 'awpcp-process-payment-transaction', array( $this, 'process_transaction_update_ad_payment_status' ) );
         add_action( 'awpcp-process-payment-transaction', array( $this, 'process_transaction_notify_wp_affiliate_platform' ) );
 
         add_action( 'wp_ajax_awpcp-get-regions-options', array( $this, 'get_regions_options' ) );
@@ -383,15 +358,15 @@ class AWPCP {
 		// actions and filters from functions_awpcp.php
 		add_action('phpmailer_init','awpcp_phpmailer_init_smtp');
 
-		add_filter('cron_schedules', 'awpcp_cron_schedules');
-
-		add_action('init', 'awpcp_schedule_activation');
-
 		add_action('widgets_init', array($this, 'register_widgets'));
 
 		if (get_awpcp_option('awpcppagefilterswitch') == 1) {
 			add_filter('wp_list_pages_excludes', 'exclude_awpcp_child_pages');
 		}
+
+		add_filter('cron_schedules', 'awpcp_cron_schedules');
+
+		awpcp_schedule_activation();
 	}
 
 	public function init() {
@@ -433,10 +408,6 @@ class AWPCP {
 	 * @since  3.0
 	 */
 	public function get_premium_modules_information() {
-		global $hasextrafieldsmodule, $hasregionsmodule;
-		global $hascaticonsmodule, $hasgooglecheckoutmodule;
-		global $hasrssmodule;
-
 		static $modules = null;
 
 		if ( is_null( $modules ) ) {
@@ -446,7 +417,7 @@ class AWPCP {
 					'url' => '',
 					'installed' => defined( 'AWPCP_ATTACHMENTS_MODULE' ),
 					'version' => 'AWPCP_ATTACHMENTS_MODULE_DB_VERSION',
-					'required' => '1.0.3',
+					'required' => '3.2.1',
 				),
 				'authorize.net' => array(
 					'name' => __(  'Authorize.Net', 'AWPCP'  ),
@@ -458,7 +429,7 @@ class AWPCP {
 				'category-icons' => array(
 					'name' => __( 'Category Icons', 'AWPCP' ),
 					'url' => 'http://www.awpcp.com/premium-modules/category-icons-module?ref=panel',
-					'installed' => $hascaticonsmodule,
+					'installed' => defined( 'AWPCP_CATEGORY_ICONS_MODULE_DB_VERSION' ),
 					'version' => 'AWPCP_CATEGORY_ICONS_MODULE_DB_VERSION',
 					'required' => '3.2.1',
 				),
@@ -467,7 +438,7 @@ class AWPCP {
 					'url' => 'http://www.awpcp.com/premium-modules/comments-ratings-module/?ref=user-panel',
 					'installed' => defined( 'AWPCP_COMMENTS_MODULE' ),
 					'version' => 'AWPCP_COMMENTS_MODULE_VERSION',
-					'required' => '3.2.2',
+					'required' => '3.2.6',
 				),
 				'coupons' => array(
 					'name' => __( 'Coupons/Discount', 'AWPCP' ),
@@ -481,7 +452,7 @@ class AWPCP {
 					'url' => 'http://www.awpcp.com/premium-modules/extra-fields-module?ref=panel',
 					'installed' => defined( 'AWPCP_EXTRA_FIELDS_MODULE' ),
 					'version' => 'AWPCP_EXTRA_FIELDS_MODULE_DB_VERSION',
-					'required' => '3.2.4',
+					'required' => '3.2.10',
 				),
 				'featured-ads' => array(
 					'name' => __( 'Featured Ads', 'AWPCP' ),
@@ -495,12 +466,12 @@ class AWPCP {
 					'url' =>'http://www.awpcp.com/premium-modules/fee-per-category-module?ref=panel',
 					'installed' => function_exists( 'awpcp_price_cats' ),
 					'version' => 'AWPCP_FPC_MODULE_DB_VERSION',
-					'required' => '3.0.1',
+					'required' => '3.2.1',
 				),
 				'google-checkout' => array(
 					'name' => __( 'Google Checkout', 'AWPCP' ),
 					'url' => 'http://www.awpcp.com/premium-modules/google-checkout-module/?ref=panel',
-					'installed' => $hasgooglecheckoutmodule,
+					'installed' => defined( 'AWPCP_GOOGLE_CHECKOUT_MODULE' ),
 					'version' => 'AWPCP_GOOGLE_CHECKOUT_MODULE_DB_VERSION',
 					'required' => '3.0.1',
 				),
@@ -514,14 +485,14 @@ class AWPCP {
 				'region-control' => array(
 					'name' => __( 'Regions Control', 'AWPCP' ),
 					'url' => 'http://www.awpcp.com/premium-modules/regions-control-module?ref=panel',
-					'installed' => $hasregionsmodule,
+					'installed' => defined( 'AWPCP_REGION_CONTROL_MODULE' ),
 					'version' => 'AWPCP_REGION_CONTROL_MODULE_DB_VERSION',
-					'required' => '3.2.6',
+					'required' => '3.2.9',
 				),
 				'rss' => array(
 					'name' => __( 'RSS', 'AWPCP' ),
 					'url' => 'http://www.awpcp.com/premium-modules/rss-module?ref=panel',
-					'installed' => $hasrssmodule,
+					'installed' => defined( 'AWPCP_RSS_MODULE' ),
 					'version' => 'AWPCP_RSS_MODULE_DB_VERSION',
 					'required' => '3.0.3',
 				),
@@ -660,6 +631,7 @@ class AWPCP {
 		wp_register_script('awpcp-admin-credit-plans', "{$js}/admin-credit-plans.js", array('awpcp-admin-wp-table-ajax'), $awpcp_db_version, true);
 		wp_register_script( 'awpcp-admin-listings', "{$js}/admin-listings.js", array( 'awpcp', 'awpcp-admin-wp-table-ajax' ), $awpcp_db_version, true );
 		wp_register_script('awpcp-admin-users', "{$js}/admin-users.js", array('awpcp-admin-wp-table-ajax'), $awpcp_db_version, true);
+		wp_register_script( 'awpcp-admin-attachments', "{$js}/admin-attachments.js", array( 'awpcp' ), $awpcp_db_version, true );
 
 		/* frontend */
 
@@ -759,27 +731,6 @@ class AWPCP {
 	 * Payment Transaction Integration
 	 */
 
-    /**
-     * Update Ad payment status based on the transaction payment
-     * status.
-     *
-     * The purpose of this method is to handle payment notifications sent
-     * by the payment gateway after the Place Ad operation has been completed.
-     *
-     * @since 2.2.2
-     */
-    private function update_ad_payment_status($transaction) {
-        $ad = AWPCP_Ad::find_by_id($transaction->get('ad-id'));
-
-        if (is_null($ad)) return;
-
-        if ($transaction->payment_is_completed() || $transaction->payment_is_pending() || $transaction->payment_is_failed()) {
-            $ad->payment_status = $transaction->payment_status;
-        }
-
-        $ad->save();
-    }
-
 	/**
 	 * Set payment status to Not Required in requiredtransactions made by
 	 * admin users.
@@ -795,33 +746,6 @@ class AWPCP {
                     $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_NOT_REQUIRED;
                 break;
 		}
-	}
-
-	/**
-     * Update Ad payment status based on the transaction payment
-     * status.
-     *
-     * The purpose of this method is to handle payment notifications sent
-     * by the payment gateway after the Place Ad operation has been completed.
-     *
-	 * @since 2.2.2
-	 */
-	public function process_transaction_update_ad_payment_status($transaction) {
-        if (!in_array($transaction->get('context'), array('renew-ad', 'place-ad')));
-            return;
-
-        switch ($transaction->get_status()) {
-            case AWPCP_Payment_Transaction::STATUS_NEW:
-                break;
-
-            case AWPCP_Payment_Transaction::STATUS_OPEN:
-                break;
-
-            case AWPCP_Payment_Transaction::STATUS_PAYMENT_COMPLETED:
-            case AWPCP_Payment_Transaction::STATUS_COMPLETED:
-                $this->update_ad_payment_status($transaction);
-                break;
-        }
 	}
 
 	/**
@@ -1022,7 +946,6 @@ $hascaticonsmodule = 0;
 $haspoweredbyremovalmodule = 0;
 $hasgooglecheckoutmodule = 0;
 
-
 if (!defined('AWPCP_REGION_CONTROL_MODULE') && file_exists(AWPCP_DIR . "/awpcp_region_control_module.php")) {
 	require_once(AWPCP_DIR . "/awpcp_region_control_module.php");
 	$hasregionsmodule = true;
@@ -1068,14 +991,14 @@ function exclude_awpcp_child_pages($excluded=array()) {
 
 	$query = "SELECT ID FROM {$table_prefix}posts ";
 	$query.= "WHERE post_parent=$awpcp_page_id AND post_content LIKE '%AWPCP%'";
-	$res = awpcp_query($query, __LINE__);
 
-	$awpcpchildpages = array();
-	while ($rsrow=mysql_fetch_row($res)) {
-		$awpcpchildpages[] = $rsrow[0];
+	$child_pages = $wpdb->get_col( $query );
+
+	if ( is_array( $child_pages ) ) {
+		return array_merge( $child_pages, $excluded );
+	} else {
+		return $excluded;
 	}
-
-	return array_merge($awpcpchildpages, $excluded);
 }
 
 

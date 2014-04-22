@@ -766,6 +766,14 @@ class AWPCP_Settings_API {
 		return false;
 	}
 
+	/**
+	 * @since 3.2.2
+	 */
+	public function set_or_update_option( $name, $value ) {
+		$this->options[$name] = $value;
+		return update_option($this->option, $this->options);
+	}
+
 
 	/* Auxiliar methods to validate settings */
 

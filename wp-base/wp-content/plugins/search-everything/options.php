@@ -1,14 +1,20 @@
 <?php
 
 Class se_admin {
+
+	function se_localization() {
+		load_plugin_textdomain('SearchEverything', false, dirname(plugin_basename( __FILE__ )) . '/lang/');
+	}
 	
 	function se_admin() {
 		// Load language file
 		$locale = get_locale();
 		$meta = se_get_meta();
 		$options = se_get_options();
-		if ( !empty($locale) )
-			load_textdomain('SearchEverything', SE_PLUGIN_DIR .'lang/se-'.$locale.'.mo');
+
+		if ( !empty($locale) ) {
+			add_action('admin_init', array(&$this, 'se_localization'));
+		}
 
 		add_action( 'admin_enqueue_scripts', array(&$this,'se_register_plugin_scripts_and_styles'));
 		add_action( 'admin_menu', array(&$this, 'se_add_options_panel'));
@@ -92,7 +98,6 @@ Class se_admin {
 	//build admin interface
 	function se_option_page() {
 		global $wpdb, $table_prefix, $wp_version;
-
 		$new_options = array(
 			'se_exclude_categories'		=> (isset($_POST['exclude_categories']) && !empty($_POST['exclude_categories'])) ? $_POST['exclude_categories'] : '',
 			'se_exclude_categories_list'		=> (isset($_POST['exclude_categories_list']) && !empty($_POST['exclude_categories_list'])) ? $_POST['exclude_categories_list'] : '',
@@ -140,6 +145,9 @@ Class se_admin {
 			$meta['api_key'] = $api_key;
 			se_update_meta($meta);
 		}
+		if ($options['se_research_metabox']['external_search_enabled'] && !empty($meta['api_key'])) {
+			se_get_prefs();
+		}
 
 		$response_messages = se_get_response_messages();
 		$external_message = "";
@@ -180,7 +188,7 @@ Class se_admin {
 */
 function fetch_api_key()
 {
-	$response = api(array(
+	$response = se_api(array(
 		'method' => 'zemanta.auth.create_user',
 		'partner_id' => 'wordpress-se'
 		));
@@ -205,15 +213,15 @@ function fetch_api_key()
 *
 * @param array $arguments Arguments to pass to the API
 */
-function api($arguments)
+function se_api($arguments)
 {
 	$meta = se_get_meta();
 
 	$api_key = $meta['api_key'] ? $meta['api_key'] : '';
-
+		  
 	$arguments = array_merge($arguments, array(
 		'api_key'=> $api_key
-		));
+	));
 
 	if (!isset($arguments['format']))
 	{
@@ -241,4 +249,13 @@ function get_sfid() {
 		}
 	}
 	return array(null, $response_state);
+}
+
+function se_get_prefs() {
+	$meta = se_get_meta();
+	$zemanta_response = se_api(array(
+		'method' => 'zemanta.preferences',
+		'format' => 'json',
+		'interface' => 'wordpress-se'
+	));
 }

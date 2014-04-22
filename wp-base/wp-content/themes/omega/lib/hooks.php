@@ -39,9 +39,6 @@ add_action( 'omega_after_main', 'omega_primary_sidebar' );
 add_filter( 'sidebars_widgets', 'omega_disable_sidebars' );
 add_action( 'template_redirect', 'omega_one_column' );
 
-/* Allow developers to filter the default sidebar arguments. */
-add_filter( 'omega_sidebar_defaults', 'omega_sidebar_defaults' );
-
 add_filter( 'omega_footer_insert', 'omega_default_footer_insert' );
 
 add_filter( 'comment_form_defaults', 'omega_custom_comment_form' );
@@ -67,27 +64,17 @@ function omega_register_menus() {
  */
 
 function omega_register_sidebars() {
-
 	omega_register_sidebar(
 		array(
 			'id'          => 'primary',
 			'name'        => _x( 'Primary', 'sidebar', 'omega' ),
-			'description' => __( 'The main sidebar. It is displayed on either the left or right side of the page based on the chosen layout.', 'omega' )
+			'description' => __( 'The main sidebar. It is displayed on either the left or right side of the page based on the chosen layout.', 'omega' ),
+			'before_widget' => '<li id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</li>',
+			'before_title'  => '<h4 class="widget-title">',
+			'after_title'   => '</h4>'
 		)
 	);
-
-}
-
-function omega_sidebar_defaults($defaults) {
-	/* Set up some default sidebar arguments. */
-	$defaults = array(
-		'before_widget' => '<section id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-wrap">',
-		'after_widget'  => '</div></section>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>'
-	);
-
-	return $defaults;
 }
 
 /**

@@ -29,7 +29,6 @@ class AWPCP_CategoriesWidget extends WP_Widget {
             echo $before_title . $title . $after_title;
         }
 
-        // echo awpcp_display_the_classifieds_category( false, 0, false, 1 );
         echo awpcp_render_categories( 0, array(
             'columns' => 1,
             'hide_empty' => $instance['hide-empty'],

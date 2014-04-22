@@ -65,7 +65,7 @@ class AWPCP_PaymentTerm {
         return $label;
     }
 
-    protected function &get_default_properties() {
+    protected function prepare_default_properties() {
         if (!is_array($this->defaults)) {
             $this->defaults = array(
                 'id' => null,
@@ -89,17 +89,19 @@ class AWPCP_PaymentTerm {
         return $this->defaults;
     }
 
-    protected function &normalize(&$data) {
-        $defaults = $this->get_default_properties();
+    protected function normalize( $data ) {
+        $defaults = $this->prepare_default_properties();
+
         foreach ($defaults as $name => $default) {
             // do not use awpcp_array_data, it does not plays well with values
             // that a make empty() false.
             $data[$name] = isset($data[$name]) ? $data[$name] : $default;
         }
+
         return $data;
     }
 
-    protected function &sanitize(&$data) {
+    protected function sanitize( $data ) {
         $data['categories'] = array_filter($data['categories']);
         $data['duration_amount'] = (int) $data['duration_amount'];
         $data['images'] = (int) $data['images'];
@@ -146,7 +148,7 @@ class AWPCP_PaymentTerm {
     }
 
     public function update($data) {
-        foreach ($this->get_default_properties() as $name => $default) {
+        foreach ( $this->prepare_default_properties() as $name => $default ) {
             // do not use awpcp_array_data, it doesn't plays well with values
             // that make empty() false.
             if (isset($data[$name])) $this->$name = $data[$name];

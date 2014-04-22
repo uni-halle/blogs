@@ -21,6 +21,6 @@ class AWPCP_ListingsTableSearchByUserCondition {
             throw new AWPCP_Exception( sprintf( 'No users found for "%s"', $search_term ) );
         }
 
-        return 'user_id IN (' . join( ',', $users ) . ')';
+        return AWPCP_TABLE_ADS . '.user_id IN (' . join( ',', $users ) . ')';
     }
 }

@@ -111,13 +111,6 @@
 .awpcp-sticky-notice .actions {
   text-align: center;
 }
-.awpcp-sticky-error {
-  background: #FFEBE8;
-  border-color: #CC0000;
-}
-.awpcp-sticky-error a {
-  color: #CC0000;
-}
 /* Admin Upgrade */
 .awpcp-upgrade-form .progress-bar {
   border: 1px solid #AAA;
@@ -294,14 +287,23 @@
 .awpcp-admin-listings .add {
   margin-bottom: 10px;
 }
+.awpcp-admin-listings .subsubsub {
+  float: none;
+  margin-top: 5px;
+}
+.awpcp-admin-listings .awpcp-search-container {
+  margin: 5px 0 10px;
+}
+.awpcp-admin-listings .awpcp-search-container .search-by-box {
+  float: left;
+  margin: 5px 10px 0 0;
+}
+.awpcp-admin-listings .awpcp-search-container .search-box {
+  float: left;
+}
 .awpcp-admin-listings table .column-title,
 .awpcp-admin-listings table .column-manage {
   width: 17%;
-}
-.awpcp-admin-listings .search-by-box {
-  clear: both;
-  float: right;
-  margin: 5px 10px 0 0;
 }
 .awpcp-admin-listings #classiwrapper {
   padding: 0;
@@ -318,36 +320,81 @@
   text-align: center;
   width: 50%;
 }
-.awpcp-media-manager-file-list .jpg,
-.awpcp-media-manager-file-list .png,
-.awpcp-media-manager-file-list .gif {
+.awpcp-media-manager-file-list li.jpg,
+.awpcp-media-manager-file-list li.png,
+.awpcp-media-manager-file-list li.gif {
   width: 25%;
 }
-.awpcp-media-manager-file-list li .disabled .awpcp-media-manager-file-thumbnail {
-  opacity: 0.5;
-}
-.awpcp-media-manager-file-list .awpcp-media-manager-file {
+.awpcp-media-manager-file-list li .awpcp-media-manager-file {
   background: #F9F9F9;
   margin: 2px;
   padding: 10px;
 }
-.awpcp-media-manager-file-list .awpcp-media-manager-file-thumbnail {
+.awpcp-media-manager-file-list li .awpcp-media-manager-file .awpcp-media-manager-file-thumbnail {
   background: #EEE;
   margin-bottom: 4px;
   padding: 5px;
   min-height: 0;
 }
-.awpcp-media-manager-file-list .jpg .awpcp-media-manager-file-thumbnail,
-.awpcp-media-manager-file-list .png .awpcp-media-manager-file-thumbnail,
-.awpcp-media-manager-file-list .gif .awpcp-media-manager-file-thumbnail {
+.awpcp-media-manager-file-list li .disabled .awpcp-media-manager-file-thumbnail {
+  opacity: 0.5;
+}
+.awpcp-media-manager-file-list li .awaiting-approval {
+  background: #fff6db;
+}
+.awpcp-media-manager-file-list li .rejected {
+  background: #ffb3b3;
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions {
+  background: red;
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li {
+  margin-right: 3px;
+  width: auto;
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a {
+  background: url(../images/file-delete.png) center center no-repeat;
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a.delete {
+  background-image: url(../images/file-delete.png);
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a.reject-file {
+  background-image: url(../images/reject-attachment.png);
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a.approve-file {
+  background-image: url(../images/approve-attachment.png);
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a.rejectpic {
+  background-image: url(../images/disable-attachment.png);
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a.approvepic {
+  background-image: url(../images/enable-attachment.png);
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a.set-primary-image {
+  background-image: url(../images/image-primary.png);
+}
+.awpcp-media-manager-file-list li.jpg .awpcp-media-manager-file-thumbnail,
+.awpcp-media-manager-file-list li.png .awpcp-media-manager-file-thumbnail,
+.awpcp-media-manager-file-list li.gif .awpcp-media-manager-file-thumbnail {
   min-height: 129px;
 }
-.awpcp-media-manager-file-list .awcp-media-manager-file-actions {
-  display: block;
+.awpcp-media-manager-file-list li.jpg .awcp-media-manager-file-actions a.delete,
+.awpcp-media-manager-file-list li.png .awcp-media-manager-file-actions a.delete,
+.awpcp-media-manager-file-list li.gif .awcp-media-manager-file-actions a.delete {
+  background-image: url(../images/image-delete.png);
 }
-.awpcp-media-manager-file-list .awcp-media-manager-file-action {
-  float: left;
-  margin-right: 2px;
+.awpcp-media-manager-file-list li.jpg .awcp-media-manager-file-actions a.approvepic,
+.awpcp-media-manager-file-list li.png .awcp-media-manager-file-actions a.approvepic,
+.awpcp-media-manager-file-list li.gif .awcp-media-manager-file-actions a.approvepic {
+  background-image: url(../images/image-enable.png);
+}
+.awpcp-media-manager-file-list li.jpg .awcp-media-manager-file-actions a.rejectpic,
+.awpcp-media-manager-file-list li.png .awcp-media-manager-file-actions a.rejectpic,
+.awpcp-media-manager-file-list li.gif .awcp-media-manager-file-actions a.rejectpic {
+  background-image: url(../images/image-disable.png);
 }
 /* =Settings
 ---------------------------------------------------------------------------- */

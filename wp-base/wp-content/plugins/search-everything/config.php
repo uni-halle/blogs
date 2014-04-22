@@ -75,16 +75,11 @@ function se_update_options($new_options) {
 }
 
 function se_set_global_notice() {
-	$url = admin_url( 'options-general.php' );
-	$url = add_query_arg( array(
-		'page' => 'extend_search',
-		'se_global_notice' => 0,
-	), $url );
-	
+	$url = 'http://zem.si/1l7q5KS';
 	$se_meta = get_option('se_meta', false);
 	$se_meta['se_global_notice'] = array(
-		'title' => 'Search everything has been updated with security fixes!',
-		'message' => 'Search Everything has been upgraded with security updates and some exciting new features. Visit <a href="'.$url.'">settings</a> to learn more.'
+		'title' => 'Searching for your car keys?',
+		'message' => 'Well, there are some things our plugin can\'t search for - your car keys, your wallet, a soulmate and <strong>unregistered custom post types</strong> :) <br> It searches for almost everything else, but it also does some other amazing stuff, like ... research. <a href="'.$url.'" target="_blank">Check it out!</a>'
 	);
 	se_update_meta($se_meta);
 }
@@ -114,6 +109,24 @@ function se_upgrade() {
 	}
 }
 
+function se_migrate_8_0() {
+	$se_meta = get_option('se_meta', false);
+	$se_meta['version'] = '8.1';
+	update_option('se_meta', $se_meta);
+
+	$se_options = get_option('se_options', false);
+	if (empty($se_options['se_research_metabox'])) {
+		$se_options['se_research_metabox'] = array (
+			'visible_on_compose'		=> true,
+			'external_search_enabled'	=> false,
+			'notice_visible'			=> true,
+		);
+	}
+	update_option('se_options',$se_options);	
+
+	se_set_global_notice();
+}
+
 function se_migrate_7_0_4() {
 	$se_meta = get_option('se_meta', false);
 
@@ -125,7 +138,7 @@ function se_migrate_7_0_4() {
 	$se_options = get_option('se_options', false);
 
 	//enable external search
-	$se_options['se_research_widget'] = array (
+	$se_options['se_research_metabox'] = array (
 		'visible_on_compose'		=> true,
 		'external_search_enabled'	=> false,
 		'notice_visible'			=> true,
@@ -134,8 +147,6 @@ function se_migrate_7_0_4() {
 
 	update_option('se_meta',$se_meta);
 	update_option('se_options',$se_options);
-
-	se_set_global_notice();
 }
 
 function se_migrate_7_0_3() {

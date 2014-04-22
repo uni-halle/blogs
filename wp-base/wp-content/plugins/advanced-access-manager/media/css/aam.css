@@ -15,6 +15,17 @@
     font-size: 1.1em;
 }
 
+.aam-help-pointer .inner {
+    padding: 10px;
+    text-align: justify;
+}
+
+.aam-help-pointer .wp-pointer-arrow {
+    left: auto;
+    right: 20px;
+}
+
+
 /** GLOBAL AAM STYLES */
 #aam_form{
     position: relative;

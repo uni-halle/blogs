@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 2.5
+  Version: 2.5.1
   Author: Vasyl Martyniuk <support@wpaam.com>
   Author URI: http://www.wpaam.com
 
@@ -67,6 +67,9 @@ class aam {
             //print required JS & CSS
             add_action('admin_print_scripts', array($this, 'printScripts'));
             add_action('admin_print_styles', array($this, 'printStyles'));
+            
+            //add help menu
+            add_filter('contextual_help', array($this, 'contextualHelp'), 10, 3);
 
             //manager Admin Menu
             if (aam_Core_API::isNetworkPanel()) {
@@ -290,6 +293,24 @@ class aam {
         }
 
         return $pages;
+    }
+    
+    /**
+     * Contextual Help Menu
+     * 
+     * @param type $contextual_help
+     * @param type $screen_id
+     * @param type $screen
+     * 
+     * @return 
+     */
+    public function contextualHelp($contextual_help, $screen_id, $screen){
+        if ($this->isAAMScreen()){
+            $help = new aam_View_Help();
+            $help->content($screen);
+        }
+        
+        return $contextual_help;
     }
 
     /**
@@ -708,6 +729,7 @@ class aam {
             wp_enqueue_style('aam-ui-style', AAM_MEDIA_URL . 'css/jquery-ui.css');
             wp_enqueue_style('aam-style', AAM_MEDIA_URL . 'css/aam.css');
             wp_enqueue_style('aam-datatables', AAM_MEDIA_URL . 'css/jquery.dt.css');
+            wp_enqueue_style('wp-pointer');
             wp_enqueue_style(
                     'aam-treeview', AAM_MEDIA_URL . 'css/jquery.treeview.css'
             );
@@ -752,6 +774,7 @@ class aam {
             wp_enqueue_script('jquery-ui-sortable');
             wp_enqueue_script('jquery-ui-menu');
             wp_enqueue_script('jquery-effects-highlight');
+            wp_enqueue_script('wp-pointer');
 
             $localization = array(
                 'nonce' => wp_create_nonce('aam_ajax'),
@@ -763,6 +786,9 @@ class aam {
                     'role' => $this->getDefaultEditableRole(),
                     'blog' => get_current_blog_id(),
                     'user' => 0
+                ),
+                'contextualMenu' => get_user_meta(
+                        get_current_user_id(), 'aam_contextual_menu', true
                 ),
                 'labels' => aam_View_Manager::uiLabels()
             );

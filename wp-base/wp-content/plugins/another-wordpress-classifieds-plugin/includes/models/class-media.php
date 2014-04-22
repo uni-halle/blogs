@@ -2,13 +2,18 @@
 
 class AWPCP_Media {
 
-    public function __construct( $id, $ad_id, $name, $path, $mime_type, $enabled, $is_primary, $created ) {
+    const STATUS_AWAITING_APPROVAL = 'Awaiting-Approval';
+    const STATUS_APPROVED = 'Approved';
+    const STATUS_REJECTED = 'Rejected';
+
+    public function __construct( $id, $ad_id, $name, $path, $mime_type, $enabled, $status, $is_primary, $created ) {
         $this->id = $id;
         $this->ad_id = $ad_id;
         $this->name = $name;
         $this->path = $path;
         $this->mime_type = $mime_type;
         $this->enabled = $enabled;
+        $this->status = $status;
         $this->is_primary = $is_primary;
         $this->created = $created;
     }
@@ -21,6 +26,7 @@ class AWPCP_Media {
             $object->path,
             $object->mime_type,
             $object->enabled,
+            $object->status,
             $object->is_primary,
             $object->created
         );
@@ -78,104 +84,15 @@ class AWPCP_Media {
         return apply_filters( 'awpcp-get-file-icon-url', $url, $this );
     }
 
-    public static function find($conditions=array()) {
-        global $wpdb;
-
-        $where = array();
-
-        if (isset($conditions['id']))
-            $where[] = $wpdb->prepare('key_id = %d', $conditions['id']);
-        if (isset($conditions['ad_id']))
-            $where[] = $wpdb->prepare('ad_id = %d', $conditions['ad_id']);
-        if (empty($where))
-            $where[] = '1 = 1';
-
-        $query = 'SELECT * FROM ' . AWPCP_TABLE_ADPHOTOS . ' ';
-        $query.= 'WHERE ' . join(' AND ', $where);
-
-        $items = $wpdb->get_results($query);
-
-        if ($items === false) return array();
-
-        $images = array();
-        foreach ($items as $item) {
-            $images[] = self::create_from_object($item);
-        }
-
-        return $images;
+    public function is_awaiting_approval() {
+        return $this->status == self::STATUS_AWAITING_APPROVAL;
     }
 
-    public static function find_by_id($id) {
-        $results = self::find(array('id' => $id));
-        if (empty($results))
-            return null;
-        return array_shift($results);
+    public function is_rejected() {
+        return $this->status == self::STATUS_REJECTED;
     }
 
-    public static function find_by_ad_id($ad_id) {
-        return self::find(array('ad_id' => $ad_id)); 
-    }
-
-    public function save() {
-        global $wpdb;
-
-        $data = array(
-            'key_id' => $this->id,
-            'ad_id' => $this->ad_id,
-            'image_name' => $this->name,
-            'disabled' => $this->disabled,
-            'is_primary' => $this->is_primary
-        );
-
-        $format = array(
-            'key_id' => '%d',
-            'ad_id' => '%d',
-            'image_name' => '%s',
-            'disabled' => '%d',
-            'is_primary' => '%d'
-        );
-
-        if ($this->id) {
-            $where = array('key_id' => $this->id);
-            $result = $wpdb->update(AWPCP_TABLE_ADPHOTOS, $data, $where, $format);
-        } else {
-            $result = $wpdb->insert(AWPCP_TABLE_ADPHOTOS, $data, $format);
-            $this->id = $wpdb->insert_id;
-        }
-
-        return $result === false ? false : true;
-    }
-
-    public function delete() {
-        global $wpdb;
-
-        $info = pathinfo(AWPCPUPLOADDIR . "{$this->name}");
-        $filename = preg_replace("/\.{$info['extension']}/", '', $info['basename']);
-
-        $filenames = array(
-            AWPCPUPLOADDIR . "{$info['basename']}",
-            AWPCPUPLOADDIR . "{$filename}-large.{$info['extension']}",
-            AWPCPTHUMBSUPLOADDIR . "{$info['basename']}",
-            AWPCPTHUMBSUPLOADDIR . "{$filename}-primary.{$info['extension']}",
-        );
-
-        foreach ($filenames as $filename) {
-            if (file_exists($filename)) @unlink($filename);
-        }
-
-        $query = 'DELETE FROM ' . AWPCP_TABLE_ADPHOTOS . ' WHERE key_id = %d';
-        $result = $wpdb->query($wpdb->prepare($query, $this->id));
-
-        return $result === false ? false : true;
-    }
-
-    public function disable() {
-        $this->disabled = 1;
-        return $this->save();
-    }
-
-    public function enable() {
-        $this->disabled = 0;
-        return $this->save();
+    public function is_approved() {
+        return $this->status == self::STATUS_APPROVED;
     }
 }

@@ -286,7 +286,7 @@ function optionsframework_options() {
 					$options[] = array( "name" => __("Select a homepage layout", 'BizFlare' ),
 										"desc" => __("Images for layout.", 'BizFlare' ),
 										"id" => "homepage_layout",
-										"std" => "bsix",
+										"std" => "bone",
 										"type" => "images",
 										"options" => array(
 											'bone' => $imagepath . 'layout1.png',

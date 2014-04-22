@@ -45,7 +45,7 @@ class aam_View_Manager extends aam_View_Abstract {
      * Default ajax response
      */
     const DEFAULT_AJAX_RESPONSE = -1;
-
+    
     /**
      * Constructor
      *
@@ -194,8 +194,7 @@ class aam_View_Manager extends aam_View_Abstract {
      *
      * @access public
      */
-    public function processAjax()
-    {
+    public function processAjax(){   
         $sub_method = aam_Core_Request::request('sub_action');
 
         if (method_exists($this, $sub_method)) {
@@ -795,6 +794,17 @@ class aam_View_Manager extends aam_View_Abstract {
             'status' => ($result === false ? 'failure' : 'success')
         ));
     }
+    
+    /**
+     * Discard Help Pointer
+     * 
+     * @return string
+     * 
+     * @access public
+     */
+    public function discardHelp(){
+        return update_user_meta(get_current_user_id(), 'aam_contextual_menu', 1);
+    }
 
     /**
      * UI Javascript labels
@@ -855,7 +865,8 @@ class aam_View_Manager extends aam_View_Abstract {
             'Trash Post' => __('Trash Post', 'aam'),
             'Restore Default Access' => __('Restore Default Access', 'aam'),
             'Duplicate' => __('Duplicate', 'aam'),
-            'Actions Locked' => __('Actions Locked', 'aam')
+            'Actions Locked' => __('Actions Locked', 'aam'),
+            'AAM Documentation' => __('<h3>AAM Documentation</h3><div class="inner">Find more information about Advanced Access Manager here.</div>', 'aam'),
         ));
     }
 

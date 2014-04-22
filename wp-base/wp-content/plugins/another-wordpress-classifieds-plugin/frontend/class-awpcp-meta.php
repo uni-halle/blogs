@@ -13,8 +13,10 @@ class AWPCP_Meta {
 
     private $request = null;
 
-    private $doing_opengraph = false;
     private $meta_tags;
+
+    private $doing_opengraph = false;
+    private $generated_title = false;
 
     public function __construct( /*AWPCP_Request*/ $request = null ) {
         $this->request = $request;
@@ -133,9 +135,14 @@ class AWPCP_Meta {
         }
     }
 
+    /**
+     * TODO: test that titles are not generated twice
+     * TODO: test that generated title is set after this function finish
+     */
     public function title($title, $separator='-', $seplocation='left') {
-        if ( ! $this->is_browse_categories_or_single_ad_page() )
+        if ( $this->generated_title || ! $this->is_browse_categories_or_single_ad_page() ) {
             return $title;
+        }
 
         // We want to strip separators characters from each side of
         // the title. WordPress uses wptexturize to replace some characters
@@ -172,7 +179,7 @@ class AWPCP_Meta {
             $title = sprintf( "%s%s%s %s %s", $appendix, $name, $title, $sep, $page_title );
         }
 
-        return $title;
+        return $this->generated_title = $title;
     }
 
     private function is_browse_categories_or_single_ad_page() {
@@ -249,10 +256,16 @@ class AWPCP_Meta {
         return implode( " $separator ", $parts );
     }
 
+    /**
+     * TODO: test that titles are not generated twice
+     * TODO: test that generated title is set after this function finish
+     */
     public function page_title( $post_title, $post ) {
-        if ( ! $this->is_browse_categories_or_single_ad_page() )
+        if ( $this->generated_title || ! $this->is_browse_categories_or_single_ad_page() ) {
             return $post_title;
-        return $this->get_page_title();
+        }
+
+        return $this->generated_title = $this->get_page_title();
     }
 
     // The function to add the page meta and Facebook meta to the header of the index page
@@ -309,7 +322,7 @@ class AWPCP_Meta {
         }
 
         if ( empty( $this->properties['images'] ) ) {
-            $this->meta_tags['http://ogp.me/ns#image'] = AWPCP_URL . '/resources/images/adhasnoimage.gif';
+            $this->meta_tags['http://ogp.me/ns#image'] = AWPCP_URL . '/resources/images/adhasnoimage.png';
         }
 
         return $this->meta_tags;

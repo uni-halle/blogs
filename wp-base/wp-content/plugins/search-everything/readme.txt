@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: zemanta
-Tags: search, search highlight, tag search, category search, category exclusion, comment search, page search, admin, seo, post filter
-Requires at least: 3
-Tested up to: 3.8.1
-Stable tag: 8.0
+Tags: search, search highlight, tag search, category search, category exclusion, comment search, page search, admin, seo, post filter, research
+Requires at least: 3.6
+Tested up to: 3.9
+Stable tag: 8.1
 
 Search Everything increases WordPress' default search functionality in three easy steps.
 
@@ -16,7 +16,7 @@ From Jan 24, 2014 Search Everything originaly developed by dancameron, sproutven
 
 Search Everything improves WordPress default search functionality without modifying any of the template pages. You can configure it to search pages, excerpts, attachments, drafts, comments, tags and custom fields (metadata) and you can specify your own search highlight style. It also offers the ability to exclude specific pages and posts. It does not search password-protected content. Simply install, configure... and search.
 
-**NEW:*** Search Everything plugin now includes a writing helper called Research Everything which let’s you search for your posts and link to them while writing. You can also enable Power Search to research posts from the wider web. 
+Search Everything plugin now includes a writing helper called Research Everything that lets you search for your posts and link to them while writing. You can also enable Power Search to research posts from the wider web (for WP3.7 and above). 
 
 = Better WordPress search in three steps =
 
@@ -38,7 +38,7 @@ Search Everything increases the ability of the default Wordpress Search, options
 * Search only approved comments
 * Search Every Draft
 * Search Every Excerpt
-* Search Every Attachment (post type)
+* Search Every Attachment (post type, not the content itself - check FAQ)
 * Search Every Custom Field (metadata)
 * Exclude Posts from search
 * Exclude Categories from search
@@ -51,20 +51,32 @@ Installation Instructions:
 2. Put the 'search-everything' directory into your wp-content/plugins/ directory.
 3. Go to the Plugins page in your WordPress Administration area and click 'Activate' next to Search Everything.
 4. Go to the Options >  Search Everything and configure your settings.
-5. That's it. You can search now.
+5. That's it. Enjoy searching.
 	
 	
 == Frequently Asked Questions ==
+
+= It doesn't search in my PDF/Word/Excel attachments =
+
+We know, this is not a bug. It's not that easy to search through binary files.
+Anyway, if there's a will, there's a way. Just ask us for a workaround and we'll gladly help.
 
 = It doesn't work =
 
 Read the installation guide. 
 
-= It *still* doesn't work (and you're certain there's a bug) =
+= It *still* doesn't work =
 
-Please open a new issue at [github Issues](https://github.com/zemanta/search-everything-wordpress-plugin/issues "Github Issues")
+Please open a new support topic at our [Support page](http://wordpress.org/support/plugin/search-everything)
+
+= I don't get any results in research tool =
+
+Are you using WordPress 3.6? Sorry, but research tool requires at least version 3.7. 
+
 
 = What Translations are included? =
+
+Note: We changed some labels in settings, old translations might not work and need to be updated.
 
 * Arabic
 * Belarusian
@@ -94,6 +106,15 @@ Please open a new issue at [github Issues](https://github.com/zemanta/search-eve
 
 
 == Changelog ==
+
+= 8.1 =
+* Fixed link search bug
+* Fixed bug of limiting number of results in Research Everything
+* Improved code robustness
+* Fixed translation system
+* Fixed upgrade bug
+* Renamed methods with too generic names
+* Fixed admin notices - they're only visible to admins now
 
 = 8.0 =
 * Added research widget on compose screen

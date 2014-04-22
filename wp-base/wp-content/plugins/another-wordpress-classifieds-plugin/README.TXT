@@ -3,9 +3,9 @@ Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 3.5
-Tested up to: 3.8.1
-Last Updated: 2014-Mar-13
-Stable tag: tags/3.2.1
+Tested up to: 3.9
+Last Updated: 2014-Apr-16
+Stable tag: tags/3.2.2
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -206,6 +206,28 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+= Versions 3.2.2 =
+* NEW: Add quick link to Mark an Ad as verified from Classifieds > Listings screen.
+* Allow administrators to see Ad with images pending approval.
+* Make sure Ads appear in Awaiting Approval section after they are edited or renewed.
+* Widgets now show "There are currently no Ads to show" if there are no Ads available to show.
+* Slightly improved appearance of AWPCP messages in WP 3.8+ admin dashboard.
+* Users no longer need to return to website after making a payment to complete the post Ad process.
+* Added $twitter_button_url placeholder.
+* Added $facebook_button_url placeholder.
+* Add modifications necessary to fix for running plugin in WP 3.9.
+* Update cron jobs configuration and instantiation time.
+* Disable "Send to Facebook" action for disabled Ads.
+* Add optimized version of main plugin's images.
+* Ask Facebook to scrape an Ad every time it is updated, created or enabled.
+* Fix SQL errors encountered when Traditional mode is added.
+* Fix duplicate title error in Meta class.
+* Fix error displaying credit balance in Place Ad page.
+* Add helper functions to handle multi-byte strings.
+* Make default Ad image bigger to avoid random images problem with Facebook.
+* Make sure installed modules are properly shown in the admin sidebar.
+* Do not show Category field in Edit Ad form to regular users.
+
 = Versions 3.0.2, 3.2, 3.2.1 =
 * NEW: Attachments module
 * NEW: Add support for email verification to post Ads
