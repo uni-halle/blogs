@@ -19,7 +19,7 @@ class WYSIJA_object{
 	 * Static variable holding core MailPoet's version
 	 * @var array
 	 */
-	static $version = '2.6.3';
+	static $version = '2.6.5';
 
 	function WYSIJA_object(){
 
@@ -640,13 +640,13 @@ class WYSIJA extends WYSIJA_object{
 		$model_config = WYSIJA::get('config','model');
 		// check that the 2000 limit is not passed and process the queue
 
-		if((int)$model_config->getValue('total_subscribers') < 2000 ){
+		//if((int)$model_config->getValue('total_subscribers') < 2000 ){
 			$helper_queue = WYSIJA::get('queue','helper');
 			$helper_queue->report=false;
 			WYSIJA::log('croned_queue process',true,'cron');
 
 			$helper_queue->process();
-		}
+		//}
 
 	}
 
