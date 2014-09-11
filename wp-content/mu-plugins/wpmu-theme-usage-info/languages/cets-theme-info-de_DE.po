@@ -1,0 +1,123 @@
+# Translation of WPMU Theme Info in German
+# This file is distributed under the same license as the WPMU Theme Info package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2013-03-14 16:07:22+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: translate.foe-services.de/ReGlot/0.1\n"
+"Project-Id-Version: WPMU Theme Info\n"
+"Language-Team: Translate.foe-services.de <translate@foe-services.de>\n"
+"Language: German\n"
+
+#: cets_theme_info.php:347 cets_theme_info.php:395
+msgid "Site Titles"
+msgstr "Seitentitel"
+
+#: cets_theme_info.php:372
+msgid "Show/Hide Sites"
+msgstr "Seiten anzeigen/verbergen"
+
+#: cets_theme_info.php:346 cets_theme_info.php:394 cets_theme_info.php:405
+#: cets_theme_info.php:428
+msgid "Total Sites"
+msgstr "Anzahl Seiten"
+
+#: cets_theme_info.php:206
+msgid "Requires at least: %s"
+msgstr "Benötigt mindestens: %s"
+
+#: cets_theme_info.php:207
+msgid "Tested up to: %s"
+msgstr "Getestet bis: %s"
+
+#: cets_theme_info.php:210
+msgid "Languages"
+msgstr "Sprachen"
+
+#: cets_theme_info.php:212
+msgid "Help to translate at %s"
+msgstr "Hilf bei der Übersetzung unter %s"
+
+#: cets_theme_info.php:214
+msgid "License"
+msgstr "Lizenz"
+
+#: cets_theme_info.php:311
+msgid "Themes"
+msgstr "Themes"
+
+#: cets_theme_info.php:312
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: cets_theme_info.php:184
+msgid "About"
+msgstr "Über"
+
+#: cets_theme_info.php:197
+msgid "Development"
+msgstr "Entwicklung"
+
+#: cets_theme_info.php:175
+msgid "Theme Usage Info"
+msgstr "Theme Nutzung"
+
+#: cets_theme_info.php:298
+msgid "Theme Usage Information"
+msgstr "Theme Nutzungsinformationen"
+
+#: cets_theme_info.php:344 cets_theme_info.php:392
+msgid "Used Themes"
+msgstr "Genutzte Themes"
+
+#: cets_theme_info.php:403 cets_theme_info.php:426
+msgid "Unused Themes"
+msgstr "Ungenutzte Themes"
+
+#: cets_theme_info.php:148
+msgid "site"
+msgstr "Seite"
+
+#: cets_theme_info.php:158
+msgid "Activated on the following sites:"
+msgstr "Aktiviert auf den folgenden Seiten:"
+
+#: cets_theme_info.php:226
+msgid "Theme Usage Information %s This plugin requires at least WordPress version 3.4 - Please upgrade to stay safe and secure."
+msgstr "Theme Nutzungsinformationen %s Dieses Plugin benötigt Wordpress 3.4 oder neuer - Bitte update zur neuesten Version um die Sicherheit zu gewährleisten"
+
+#: cets_theme_info.php:345 cets_theme_info.php:393 cets_theme_info.php:404
+#: cets_theme_info.php:427
+msgid "Activated Sitewide"
+msgstr "Netzwerkweit freigeschaltet"
+
+#: cets_theme_info.php:368
+msgid "Theme Files Not Found!"
+msgstr "Theme Daten nicht gefunden!"
+
+#: cets_theme_info.php:317
+msgid "Manage User Access"
+msgstr "Benutzereinstellungen anpassen"
+
+#: cets_theme_info.php:318
+msgid "Users can see usage information for themes in Appearance -> Themes. You can control user access to that information via this toggle."
+msgstr "Benutzer können Nutzungsinformationen für Themes unter Design -> Themes einsehen. Du kannst die Sichtbarkeit mit dieser Einstellung anpassen."
+
+#: cets_theme_info.php:323
+msgid "Let Users View Theme Usage Information:"
+msgstr "Nutzer können Nutzungsinformationen für Themes einsehen:"
+
+#: cets_theme_info.php:6
+msgid "WordPress plugin for letting network admins easily see what themes are actively used on the network"
+msgstr "WordPress Plugin für Network Admins um die Nutzung der Themes im Netzwerk zu überwachen"
+
+#: cets_theme_info.php:144
+msgid "Used on"
+msgstr "Genutzt auf"
+
+#: cets_theme_info.php:146
+msgid "Sites that use this theme"
+msgstr "Seiten die dieses Theme nutzen"

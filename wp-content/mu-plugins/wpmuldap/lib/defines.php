@@ -1,0 +1,51 @@
+<?php
+define ('LDAP_OK',			'0');
+define ('LDAP_IN_GROUP',		'1');
+define ('LDAP_GROUP_NOT_SET',		'2');
+define ('LDAP_ERROR_NO_PASSWORD',	'-1');
+define ('LDAP_ERROR_NO_NOVELL_ID',	'-2');
+define ('LDAP_ERROR_USER_NOT_FOUND',	'-3');
+define ('LDAP_ERROR_NO_EMAIL_IN_NDS',	'-4');
+define ('LDAP_ERROR_CONNECTION',	'-5');
+define ('LDAP_ERROR_WRONG_PASSWORD',	'-6');
+define ('LDAP_ERROR_EMPTY_PARAM',	'-7');
+define ('LDAP_ERROR_ACCESS_GROUP',	'-8');
+define ('LDAP_ERROR_DENIED_GROUP',	'-9');
+define ('LDAP_ERROR_NOT_IN_GROUP',	'-10');
+
+define ('LDAP_INDEX_EMAIL',          '0');
+define ('LDAP_INDEX_NAME',           '1');
+define ('LDAP_INDEX_HOMEDIR',        '2');
+define ('LDAP_INDEX_MEMBER',         '3');
+define ('LDAP_INDEX_MACADDRESS',     '4');
+define ('LDAP_INDEX_GIVEN_NAME',     '5');
+define ('LDAP_INDEX_SURNAME',        '6');
+define ('LDAP_INDEX_PHONE',          '7');
+#define ('LDAP_INDEX_HOMEDIR',        '8');
+#define ('LDAP_INDEX_MEMBER',         '9');
+#define ('LDAP_INDEX_MACADDRESS',     '10');
+define ('LDAP_INDEX_UNIQUE_MEMBER',  '11');
+define ('LDAP_INDEX_DN',             '12');
+define ('LDAP_INDEX_LOCATION',       '13');
+define ('LDAP_INDEX_ROLE',           '14');
+define ('LDAP_INDEX_NICKNAME',	     '15');
+
+define ('LDAP_DEFAULT_ATTRIBUTE_MAIL',		'mail');
+define ('LDAP_DEFAULT_ATTRIBUTE_NICKNAME',	'');
+define ('LDAP_DEFAULT_ATTRIBUTE_GIVENNAME',	'givenname');
+define ('LDAP_DEFAULT_ATTRIBUTE_SN',		'sn');
+define ('LDAP_DEFAULT_ATTRIBUTE_PHONE',		'phone');
+define ('LDAP_DEFAULT_ATTRIBUTE_HOMEDIR',	'homedirectory');
+define ('LDAP_DEFAULT_ATTRIBUTE_MEMBER',	'member');
+define ('LDAP_DEFAULT_ATTRIBUTE_MEMBERNIX',	'uniquemember');
+define ('LDAP_DEFAULT_ATTRIBUTE_MACADDRESS',	'zenwmmacaddress');
+define ('LDAP_DEFAULT_ATTRIBUTE_DN',		'dn');
+define ('LDAP_DEFAULT_ATTRIBUTE_NIXSEARCH',	'uid');
+define ('LDAP_DEFAULT_ATTRIBUTE_WINSEARCH',	'samaccountname');
+define ('LDAP_DEFAULT_ATTRIBUTE_GROUP_OBJECTCLASS','group');
+define ('LDAP_DEFAULT_ATTRIBUTE_GROUP_OBJECTCLASSNIX','groupofuniquenames');
+
+define ('LDAP_DELIM',                ",");
+define ('LDAP_USER_SEARCH_FULLNAME', '0');
+define ('LDAP_USER_SEARCH_EMAIL',    '1');
+define ('LDAP_USER_SEARCH_CN',       '2');

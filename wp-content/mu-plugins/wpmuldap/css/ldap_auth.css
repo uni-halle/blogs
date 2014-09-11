@@ -1,0 +1,20 @@
+#wpmuLdapAdminRequest {
+        font-size: 1.2em;
+        font-weight: bold;
+       	background-color: #ec4d4d;
+	padding: 5px;
+	color: #e8e8e8;
+	margin-top: 10px;
+}
+#wpmuLdapAdminRequest p {
+        margin: 0px;
+        padding: 0px;
+        font-size: 0.8em;
+}
+.ldapmeta {
+	color: red;
+}
+.wpmuLdapOptionMenuSelected {
+	text-decoration: none;
+	font-weight: bold;
+}
