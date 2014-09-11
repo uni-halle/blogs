@@ -1,0 +1,1498 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Facebook AWD All in One v1.4.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/facebook-awd\n"
+"POT-Creation-Date: 2011-08-04 18:04:21+00:00\n"
+"PO-Revision-Date: 2012-10-07 12:48:07+0000\n"
+"Last-Translator: Alex Hermann <alexandre@lasonde.fr>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: inc/admin/forms/activity_box.php:25
+#: inc/admin/forms/comments_box.php:25
+#: inc/admin/forms/like_box.php:25
+#: inc/admin/forms/like_button.php:26
+#: inc/admin/forms/login_button.php:26
+#: inc/admin/forms/shared_activity_box.php:25
+#: inc/admin/views/admin_open_graph_form.php:80
+#@ AWD_facebook
+msgid "Title"
+msgstr "Titre"
+
+#: inc/admin/forms/like_box.php:33
+#@ AWD_facebook
+msgid "Url of the page"
+msgstr "URL de la page"
+
+#: inc/admin/forms/like_button.php:65
+#@ AWD_facebook
+msgid "Layout style"
+msgstr "Style de présentation"
+
+#: inc/admin/forms/like_button.php:61
+#@ AWD_facebook
+msgid "Standard"
+msgstr "Standard"
+
+#: inc/admin/forms/like_button.php:62
+#@ AWD_facebook
+msgid "Button Count"
+msgstr "Bouton Compteur"
+
+#: inc/admin/forms/like_button.php:63
+#@ AWD_facebook
+msgid "Box Count"
+msgstr "Boîte Compteur"
+
+#: inc/admin/forms/activity_box.php:139
+#: inc/admin/forms/comments_box.php:169
+#: inc/admin/forms/like_box.php:68
+#: inc/admin/forms/like_button.php:97
+#@ AWD_facebook
+msgid "Dark"
+msgstr "Foncé"
+
+#: inc/admin/forms/like_button.php:117
+#: inc/admin/forms/login_button.php:96
+#@ AWD_facebook
+msgid "Width of button"
+msgstr "Largeur du bouton"
+
+#: inc/admin/forms/like_button.php:110
+#@ AWD_facebook
+msgid "Show Faces ?"
+msgstr "Afficher les visages?"
+
+#: AWD_facebook.php:2415
+#: AWD_facebook.php:2416
+#: AWD_facebook.php:2427
+#: AWD_facebook.php:2428
+#: inc/admin/forms/activity_box.php:117
+#: inc/admin/forms/activity_box.php:128
+#: inc/admin/forms/comments_box.php:77
+#: inc/admin/forms/comments_box.php:103
+#: inc/admin/forms/comments_box.php:115
+#: inc/admin/forms/comments_box.php:127
+#: inc/admin/forms/like_box.php:79
+#: inc/admin/forms/like_box.php:90
+#: inc/admin/forms/like_box.php:101
+#: inc/admin/forms/like_box.php:112
+#: inc/admin/forms/like_button.php:86
+#: inc/admin/forms/like_button.php:108
+#: inc/admin/forms/like_button.php:185
+#: inc/admin/forms/like_button.php:227
+#: inc/admin/forms/like_button.php:268
+#: inc/admin/forms/login_button.php:36
+#: inc/admin/forms/login_button.php:69
+#: inc/admin/forms/login_button.php:80
+#: inc/admin/views/admin_open_graph_form.php:113
+#: inc/admin/views/admin_open_graph_form.php:142
+#: inc/admin/views/admin_open_graph_form.php:171
+#: inc/admin/views/admin_settings.php:41
+#: inc/admin/views/admin_settings.php:51
+#: inc/admin/views/admin_settings.php:62
+#: inc/admin/views/admin_settings.php:67
+#: inc/admin/views/admin_settings.php:122
+#: inc/admin/views/admin_settings.php:145
+#: inc/admin/views/admin_settings.php:151
+#@ AWD_facebook
+msgid "Yes"
+msgstr "Oui"
+
+#: AWD_facebook.php:2415
+#: AWD_facebook.php:2416
+#: AWD_facebook.php:2427
+#: AWD_facebook.php:2428
+#: inc/admin/forms/activity_box.php:116
+#: inc/admin/forms/activity_box.php:127
+#: inc/admin/forms/comments_box.php:76
+#: inc/admin/forms/comments_box.php:102
+#: inc/admin/forms/comments_box.php:114
+#: inc/admin/forms/comments_box.php:126
+#: inc/admin/forms/like_box.php:78
+#: inc/admin/forms/like_box.php:89
+#: inc/admin/forms/like_box.php:100
+#: inc/admin/forms/like_box.php:111
+#: inc/admin/forms/like_button.php:85
+#: inc/admin/forms/like_button.php:107
+#: inc/admin/forms/like_button.php:184
+#: inc/admin/forms/like_button.php:226
+#: inc/admin/forms/like_button.php:267
+#: inc/admin/forms/login_button.php:35
+#: inc/admin/forms/login_button.php:68
+#: inc/admin/forms/login_button.php:79
+#: inc/admin/views/admin_open_graph_form.php:112
+#: inc/admin/views/admin_open_graph_form.php:141
+#: inc/admin/views/admin_open_graph_form.php:170
+#: inc/admin/views/admin_settings.php:40
+#: inc/admin/views/admin_settings.php:50
+#: inc/admin/views/admin_settings.php:61
+#: inc/admin/views/admin_settings.php:66
+#: inc/admin/views/admin_settings.php:121
+#: inc/admin/views/admin_settings.php:144
+#: inc/admin/views/admin_settings.php:150
+#@ AWD_facebook
+msgid "No"
+msgstr "Non"
+
+#: inc/admin/forms/like_button.php:53
+#@ AWD_facebook
+msgid "Action"
+msgstr "Action"
+
+#: inc/admin/forms/like_button.php:50
+#@ AWD_facebook
+msgid "Like"
+msgstr "J'aime"
+
+#: inc/admin/forms/like_button.php:51
+#@ AWD_facebook
+msgid "Recommend"
+msgstr "Recommander"
+
+#: inc/admin/forms/activity_box.php:100
+#: inc/admin/forms/like_box.php:121
+#: inc/admin/forms/shared_activity_box.php:47
+#@ AWD_facebook
+msgid "Width of box"
+msgstr "Largeur de la box"
+
+#: inc/admin/forms/activity_box.php:108
+#: inc/admin/forms/like_box.php:128
+#: inc/admin/forms/shared_activity_box.php:55
+#@ AWD_facebook
+msgid "Height of box"
+msgstr "Hauteur de la box"
+
+#: inc/admin/forms/activity_box.php:163
+#: inc/admin/forms/like_box.php:135
+#@ AWD_facebook
+msgid "Border color"
+msgstr "Couleur de bordure"
+
+#: inc/admin/forms/activity_box.php:119
+#: inc/admin/forms/like_box.php:103
+#@ AWD_facebook
+msgid "Show Header ?"
+msgstr "Montrer l'entête Facebok ?"
+
+#: inc/admin/views/help/plugins.php:10
+#: inc/admin/views/help/settings.php:13
+#@ AWD_facebook
+msgid "Help"
+msgstr "Aide"
+
+#: inc/admin/views/help/settings.php:51
+#, php-format
+#@ AWD_facebook
+msgid "The Open Graph Protocol enables you to integrate your Web pages into the social graph. It is currently designed for Web pages representing profiles of real-world things — things like movies, sports teams, celebrities, and restaurants. Including Open Graph tags on your Web page, makes your page equivalent to a Facebook Page. This means when a user clicks a Like button on your page, a connection is made between your page and the user. Your page will appear in the ”Likes and Interests” section of the user’s profile, and you have the ability to publish updates to the user. Your page will show up in the same places that Facebook pages show up around the site (e.g. search), and you can target ads to people who like your content. The structured data you provide via the Open Graph Protocol defines how your page will be represented on Facebook. %sRead more%s"
+msgstr ""
+
+#: inc/admin/views/help/settings.php:58
+#, php-format
+#@ AWD_facebook
+msgid "Facebook helps you simplify and enhance user registration and sign-in by using Facebook as your login system. Users no longer need to fill in yet another registration form or remember another username and password to use your site. As long as the user is signed into Facebook, they are automatically signed into your site as well. Using Facebook for login provides you with all the information you need to create a social, personalized experience from the moment the user visits your site in their browser. %sRead more%s"
+msgstr ""
+
+#: inc/admin/views/help/settings.php:44
+#@ AWD_facebook
+msgid "Lang to use with Facebook (default to en_US, or equal to WPLANG Constant if set in wp-config.php)"
+msgstr "Langues à utiliser avec Facebook (par défaut à en_US, ou égale à la constante WPLANG  si elle est définie dans le fichier wp-config.php)"
+
+#: AWD_facebook.php:2406
+#: AWD_facebook.php:2640
+#: inc/admin/forms/plugins_menu.php:8
+#@ AWD_facebook
+msgid "Like Button"
+msgstr "Bouton J'aime"
+
+#: inc/admin/forms/plugins_menu.php:10
+#@ AWD_facebook
+msgid "Activity Feed"
+msgstr "Flux d'activités"
+
+#: AWD_facebook.php:2653
+#: inc/admin/forms/plugins_menu.php:12
+#@ AWD_facebook
+msgid "Login Button"
+msgstr "Bouton Connexion"
+
+#: AWD_facebook.php:2627
+#: inc/admin/forms/plugins_menu.php:9
+#@ AWD_facebook
+msgid "Like Box"
+msgstr "Like box"
+
+#: inc/admin/forms/plugins_menu.php:13
+#@ AWD_facebook
+msgid "Comments"
+msgstr "Commentaires"
+
+#: inc/admin/forms/activity_box.php:130
+#@ AWD_facebook
+msgid "Recommendations"
+msgstr "Recommandations"
+
+#: inc/admin/forms/like_button.php:161
+#@ AWD_facebook
+msgid "Default Url to like"
+msgstr "URL par défaut à Aimer"
+
+#: AWD_facebook.php:2417
+#: inc/admin/forms/activity_box.php:90
+#: inc/admin/forms/like_button.php:197
+#: inc/admin/forms/like_button.php:238
+#: inc/admin/forms/like_button.php:279
+#@ AWD_facebook
+msgid "Top"
+msgstr "Au dessus"
+
+#: AWD_facebook.php:2417
+#: inc/admin/forms/like_button.php:198
+#: inc/admin/forms/like_button.php:239
+#: inc/admin/forms/like_button.php:280
+#@ AWD_facebook
+msgid "Bottom"
+msgstr "En dessous"
+
+#: AWD_facebook.php:2417
+#: inc/admin/forms/like_button.php:199
+#: inc/admin/forms/like_button.php:240
+#: inc/admin/forms/like_button.php:281
+#@ AWD_facebook
+msgid "Both"
+msgstr "Les deux"
+
+#: inc/admin/forms/comments_box.php:152
+#@ AWD_facebook
+msgid "Exclude Posts or Pages ID (example: 12,46,234)"
+msgstr "Exclure les Articles ou ou les Pages (exemple: 12,46,234)"
+
+#: inc/admin/forms/activity_box.php:179
+#: inc/admin/forms/comments_box.php:194
+#: inc/admin/forms/like_box.php:150
+#: inc/admin/forms/like_button.php:340
+#: inc/admin/forms/login_button.php:118
+#: inc/admin/forms/shared_activity_box.php:85
+#@ AWD_facebook
+msgid "Preview"
+msgstr "Aperçu"
+
+#: inc/admin/forms/activity_box.php:33
+#@ AWD_facebook
+msgid "Domain"
+msgstr "Domaine"
+
+#: inc/admin/views/admin_plugins.php:78
+#: inc/admin/views/admin_plugins.php:91
+#@ AWD_facebook
+msgid "You must enable FB Connect and set parameters in settings of the plugins"
+msgstr "Vous devez activer FB Connect et définir les paramètres dans les réglages de l'extension"
+
+#: inc/admin/views/admin_open_graph.php:48
+#: inc/admin/views/admin_plugins.php:134
+#: inc/admin/views/admin_settings.php:170
+#@ AWD_facebook
+msgid "Save all settings"
+msgstr "Enregistrer tous les paramètres"
+
+#: inc/admin/views/admin_settings.php:27
+#@ AWD_facebook
+msgid "App ID (facebook)"
+msgstr "Id de l'application (facebook)"
+
+#: inc/admin/views/admin_settings.php:49
+#@ AWD_facebook
+msgid "Activate Open Graph ?"
+msgstr "Activer Open Graph ?"
+
+#: inc/admin/views/admin_settings.php:51
+#@ AWD_facebook
+msgid "(recommended)"
+msgstr "(Recommandé)"
+
+#: inc/admin/views/admin_settings.php:60
+#@ AWD_facebook
+msgid "Activate FB Connect ?"
+msgstr "Activer FB Connect?"
+
+#: inc/admin/views/admin_settings.php:28
+#@ AWD_facebook
+msgid "App SECRET KEY"
+msgstr "Clé secrète de l'application"
+
+#: inc/admin/views/admin_settings.php:73
+#@ AWD_facebook
+msgid "Facebook Connect permissions"
+msgstr "Autorisations supplémentaires demandées lors de la connexion"
+
+#: inc/classes/tools/class.AWD_facebook_options.php:137
+#@ AWD_facebook
+msgid "Frontpage"
+msgstr "Page d'accueil"
+
+#: inc/classes/tools/class.AWD_facebook_options.php:138
+#@ AWD_facebook
+msgid "Pages"
+msgstr "Pages"
+
+#: inc/classes/tools/class.AWD_facebook_options.php:139
+#@ AWD_facebook
+msgid "Posts"
+msgstr "Articles"
+
+#: inc/classes/tools/class.AWD_facebook_options.php:140
+#@ AWD_facebook
+msgid "Archives"
+msgstr "Archives"
+
+#: inc/classes/tools/class.AWD_facebook_options.php:141
+#@ AWD_facebook
+msgid "Authors"
+msgstr "Auteurs"
+
+#: inc/admin/forms/activity_box.php:59
+#: inc/admin/forms/comments_box.php:60
+#: inc/admin/forms/like_box.php:59
+#: inc/admin/forms/like_button.php:77
+#: inc/admin/views/admin_open_graph_form.php:89
+#@ AWD_facebook
+msgid "Type"
+msgstr "Type"
+
+#: AWD_facebook.php:878
+#: inc/classes/tools/class.AWD_facebook_options.php:218
+#@ AWD_facebook
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: AWD_facebook.php:417
+#: AWD_facebook.php:527
+#: AWD_facebook.php:577
+#@ AWD_facebook
+msgid "Settings"
+msgstr "Réglages"
+
+#: AWD_facebook.php:528
+#@ AWD_facebook
+msgid "Plugins"
+msgstr "Extensions"
+
+#: AWD_facebook.php:530
+#: AWD_facebook.php:604
+#@ AWD_facebook
+msgid "Open Graph"
+msgstr "Open Graph"
+
+#: AWD_facebook.php:419
+#@ AWD_facebook
+msgid "Support"
+msgstr "Aide"
+
+#: AWD_facebook.php:578
+#: AWD_facebook.php:588
+#: AWD_facebook.php:605
+#: AWD_facebook.php:622
+#@ AWD_facebook
+msgid "My Facebook"
+msgstr "Mon Facebook"
+
+#: AWD_facebook.php:580
+#: AWD_facebook.php:590
+#: AWD_facebook.php:607
+#: AWD_facebook.php:624
+#@ AWD_facebook
+msgid "Informations"
+msgstr "Informations"
+
+#: AWD_facebook.php:582
+#: AWD_facebook.php:592
+#: AWD_facebook.php:609
+#: AWD_facebook.php:626
+#@ AWD_facebook
+msgid "Activity on your site"
+msgstr "Activité sur votre site"
+
+#: AWD_facebook.php:587
+#@ AWD_facebook
+msgid "Plugins Settings"
+msgstr "Réglages des extensions"
+
+#: AWD_facebook.php:1703
+#@ AWD_facebook
+msgid "Options updated"
+msgstr "Options mises à jour"
+
+#: AWD_facebook.php:1705
+#@ AWD_facebook
+msgid "Options not updated there is an error..."
+msgstr "Options non mises à jour, il y a une erreur ..."
+
+#: inc/admin/forms/login_button.php:103
+#@ AWD_facebook
+msgid "Button Image"
+msgstr "L'image du bouton"
+
+#: AWD_facebook.php:483
+#@ AWD_facebook
+msgid "| With:"
+msgstr "| Avec"
+
+#: AWD_facebook.php:2343
+#@ AWD_facebook
+msgid "Connect with Facebook"
+msgstr "Connectez-vous avec Facebook"
+
+#: inc/admin/views/admin_settings.php:75
+#@ AWD_facebook
+msgid "Timeout Facebook connect API"
+msgstr "Temps max d'une tentative de connexion à l'api"
+
+#: inc/admin/views/help/settings.php:72
+#@ AWD_facebook
+msgid "This value represents the maximum time in seconds to connect to the Facebook API. If your server is slow, increase this value, then try again"
+msgstr ""
+
+#: AWD_facebook.php:313
+#@ AWD_facebook
+msgid "Facebook AWD is almost ready... Go to settings and set your FB Application ID."
+msgstr ""
+
+#: AWD_facebook.php:316
+#@ AWD_facebook
+msgid "Facebook AWD is almost ready... Go to settings and set your FB Secret Key."
+msgstr ""
+
+#: AWD_facebook.php:409
+#@ AWD_facebook
+msgid "My Profile"
+msgstr ""
+
+#: AWD_facebook.php:412
+#@ AWD_facebook
+msgid "Refresh Facebook Data"
+msgstr ""
+
+#: AWD_facebook.php:413
+#@ AWD_facebook
+msgid "Unsync FB Account"
+msgstr ""
+
+#: AWD_facebook.php:418
+#@ AWD_facebook
+msgid "Documentation"
+msgstr ""
+
+#: AWD_facebook.php:421
+#@ AWD_facebook
+msgid "Debugger"
+msgstr ""
+
+#: AWD_facebook.php:579
+#: AWD_facebook.php:589
+#: AWD_facebook.php:606
+#: AWD_facebook.php:623
+#@ AWD_facebook
+msgid "Application Infos"
+msgstr ""
+
+#: AWD_facebook.php:598
+#@ AWD_facebook
+msgid "Facebook AWD Manager"
+msgstr ""
+
+#: AWD_facebook.php:688
+#@ AWD_facebook
+msgid "Plugins installed"
+msgstr ""
+
+#: AWD_facebook.php:699
+#@ AWD_facebook
+msgid "No plugin found"
+msgstr ""
+
+#: AWD_facebook.php:702
+#@ AWD_facebook
+msgid "Find plugins"
+msgstr ""
+
+#: AWD_facebook.php:705
+#@ AWD_facebook
+msgid "Follow me on Facebook"
+msgstr ""
+
+#: AWD_facebook.php:707
+#@ AWD_facebook
+msgid "Follow me on Twitter"
+msgstr ""
+
+#: AWD_facebook.php:754
+#@ AWD_facebook
+msgid "You must set a valid Facebook Application ID and Secret Key and your Facebook User ID in settings."
+msgstr ""
+
+#: AWD_facebook.php:756
+#@ AWD_facebook
+msgid "Reload"
+msgstr ""
+
+#: AWD_facebook.php:762
+#@ AWD_facebook
+msgid "Info"
+msgstr ""
+
+#: AWD_facebook.php:763
+#@ AWD_facebook
+msgid "Value"
+msgstr ""
+
+#: AWD_facebook.php:767
+#: inc/admin/views/admin_settings.php:112
+#@ AWD_facebook
+msgid "Name"
+msgstr ""
+
+#: AWD_facebook.php:775
+#@ AWD_facebook
+msgid "Link"
+msgstr ""
+
+#: AWD_facebook.php:779
+#@ AWD_facebook
+msgid "Namespace"
+msgstr ""
+
+#: AWD_facebook.php:783
+#@ AWD_facebook
+msgid "Daily active users"
+msgstr ""
+
+#: AWD_facebook.php:787
+#@ AWD_facebook
+msgid "Weekly active users"
+msgstr ""
+
+#: AWD_facebook.php:791
+#@ AWD_facebook
+msgid "Monthly active users"
+msgstr ""
+
+#: AWD_facebook.php:803
+#@ AWD_facebook
+msgid "Test"
+msgstr ""
+
+#: AWD_facebook.php:881
+#, php-format
+#@ AWD_facebook
+msgid "%s Facebook ID: %s"
+msgstr ""
+
+#: AWD_facebook.php:883
+#@ AWD_facebook
+msgid "Login with Facebook"
+msgstr ""
+
+#: AWD_facebook.php:885
+#: AWD_facebook.php:2330
+#, php-format
+#@ AWD_facebook
+msgid "You should enable FB connect in %sApp settings%s"
+msgstr ""
+
+#: AWD_facebook.php:956
+#@ AWD_facebook
+msgid "Edit"
+msgstr ""
+
+#: AWD_facebook.php:957
+#@ AWD_facebook
+msgid "Copy"
+msgstr ""
+
+#: AWD_facebook.php:958
+#@ AWD_facebook
+msgid "Delete"
+msgstr ""
+
+#: AWD_facebook.php:983
+#@ AWD_facebook
+msgid "Default Opengraph Object"
+msgstr ""
+
+#: AWD_facebook.php:1248
+#@ AWD_facebook
+msgid "Disabled"
+msgstr ""
+
+#: AWD_facebook.php:1253
+#@ AWD_facebook
+msgid "Choose Opengraph object for"
+msgstr ""
+
+#: AWD_facebook.php:1256
+#: inc/admin/views/admin_open_graph.php:27
+#@ AWD_facebook
+msgid "No Object found"
+msgstr ""
+
+#: AWD_facebook.php:1710
+#@ AWD_facebook
+msgid "Options were reseted"
+msgstr ""
+
+#: AWD_facebook.php:1728
+#@ AWD_facebook
+msgid "Facebook infos"
+msgstr ""
+
+#: AWD_facebook.php:1731
+#@ AWD_facebook
+msgid "Facebook Email"
+msgstr ""
+
+#: AWD_facebook.php:1734
+#@ AWD_facebook
+msgid "Enter your Facebook Email"
+msgstr ""
+
+#: AWD_facebook.php:1738
+#@ AWD_facebook
+msgid "Facebook ID"
+msgstr ""
+
+#: AWD_facebook.php:1741
+#@ AWD_facebook
+msgid "Enter your Facebook ID"
+msgstr ""
+
+#: AWD_facebook.php:1745
+#@ AWD_facebook
+msgid "Unsync Facebook Account ?"
+msgstr ""
+
+#: AWD_facebook.php:1748
+#@ AWD_facebook
+msgid "Note: This will clear all your facebook data linked with this account."
+msgstr ""
+
+#: AWD_facebook.php:2415
+#@ AWD_facebook
+msgid "Redefine globals settings ?"
+msgstr ""
+
+#: AWD_facebook.php:2416
+#@ AWD_facebook
+msgid "Activate ?"
+msgstr ""
+
+#: AWD_facebook.php:2417
+#: inc/admin/forms/like_button.php:201
+#: inc/admin/forms/like_button.php:242
+#: inc/admin/forms/like_button.php:283
+#@ AWD_facebook
+msgid "Where ?"
+msgstr ""
+
+#: AWD_facebook.php:2422
+#@ AWD_facebook
+msgid "Publish to Facebook"
+msgstr ""
+
+#: AWD_facebook.php:2427
+#@ AWD_facebook
+msgid "Publish to pages ?"
+msgstr ""
+
+#: AWD_facebook.php:2428
+#@ AWD_facebook
+msgid "Publish to profile ?"
+msgstr ""
+
+#: AWD_facebook.php:2429
+#@ AWD_facebook
+msgid "Custom Action Label"
+msgstr ""
+
+#: AWD_facebook.php:2430
+#@ AWD_facebook
+msgid "Add a message to the post ?"
+msgstr ""
+
+#: AWD_facebook.php:2433
+#@ AWD_facebook
+msgid "You must authorize manage_pages permission in the settings of the plugin"
+msgstr ""
+
+#: AWD_facebook.php:2437
+#@ AWD_facebook
+msgid "You must authorize publish_stream permission in the settings of the plugin"
+msgstr ""
+
+#: AWD_facebook.php:2446
+#@ AWD_facebook
+msgid "Opengraph"
+msgstr ""
+
+#: AWD_facebook.php:2447
+#@ AWD_facebook
+msgid "Create an object"
+msgstr ""
+
+#: AWD_facebook.php:2451
+#@ AWD_facebook
+msgid "Default"
+msgstr ""
+
+#: AWD_facebook.php:2457
+#@ AWD_facebook
+msgid "Redefine Opengraph object for this post"
+msgstr ""
+
+#: AWD_facebook.php:2461
+#@ AWD_facebook
+msgid "No Object found."
+msgstr ""
+
+#: AWD_facebook.php:2628
+#@ AWD_facebook
+msgid "Add a Facebook Like Box"
+msgstr ""
+
+#: AWD_facebook.php:2641
+#@ AWD_facebook
+msgid "Add a Facebook Like Button"
+msgstr ""
+
+#: AWD_facebook.php:2654
+#@ AWD_facebook
+msgid "Add a Facebook Login Button"
+msgstr ""
+
+#: AWD_facebook.php:2665
+#@ AWD_facebook
+msgid "Activity Box"
+msgstr ""
+
+#: AWD_facebook.php:2666
+#@ AWD_facebook
+msgid "Add a Facebook Activity Box"
+msgstr ""
+
+#: AWD_facebook.php:2678
+#@ AWD_facebook
+msgid "Comments Box"
+msgstr ""
+
+#: AWD_facebook.php:2679
+#@ AWD_facebook
+msgid "Add a Facebook Comments Box"
+msgstr ""
+
+#: AWD_facebook.php:2690
+#@ AWD_facebook
+msgid "Shared Activity Box"
+msgstr ""
+
+#: AWD_facebook.php:2691
+#@ AWD_facebook
+msgid "Add a Facebook Shared Activity Box"
+msgstr ""
+
+#: AWD_facebook.php:2721
+#@ AWD_facebook
+msgid "Facebook AWD API"
+msgstr ""
+
+#: AWD_facebook.php:2727
+#@ AWD_facebook
+msgid "Facebook AWD APPLICATIONS INFOS"
+msgstr ""
+
+#: AWD_facebook.php:2732
+#@ AWD_facebook
+msgid "Facebook AWD CURRENT USER"
+msgstr ""
+
+#: AWD_facebook.php:2737
+#@ AWD_facebook
+msgid "Facebook AWD Options"
+msgstr ""
+
+#: AWD_facebook.php:2742
+#@ AWD_facebook
+msgid "Facebook AWD FULL"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:11
+#: inc/admin/forms/like_box.php:11
+#: inc/admin/forms/shared_activity_box.php:11
+#@ AWD_facebook
+msgid "Configure the box"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:55
+#: inc/admin/forms/like_box.php:55
+#: inc/admin/forms/like_button.php:73
+#@ AWD_facebook
+msgid "Iframe"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:56
+#: inc/admin/forms/comments_box.php:57
+#: inc/admin/forms/like_box.php:56
+#: inc/admin/forms/like_button.php:74
+#@ AWD_facebook
+msgid "Xfbml"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:57
+#: inc/admin/forms/comments_box.php:58
+#: inc/admin/forms/like_box.php:57
+#: inc/admin/forms/like_button.php:75
+#@ AWD_facebook
+msgid "html5"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:66
+#@ AWD_facebook
+msgid "Filter"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:73
+#: inc/admin/forms/like_button.php:131
+#@ AWD_facebook
+msgid "Ref"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:80
+#@ AWD_facebook
+msgid "Max Age"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:89
+#@ AWD_facebook
+msgid "Blank"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:91
+#@ AWD_facebook
+msgid "Parent"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:93
+#@ AWD_facebook
+msgid "Links Target"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:138
+#: inc/admin/forms/comments_box.php:168
+#: inc/admin/forms/like_box.php:67
+#: inc/admin/forms/like_button.php:96
+#@ AWD_facebook
+msgid "light"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:141
+#: inc/admin/forms/comments_box.php:171
+#: inc/admin/forms/like_box.php:70
+#: inc/admin/forms/like_button.php:99
+#@ AWD_facebook
+msgid "Colors"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:149
+#: inc/admin/forms/like_button.php:35
+#: inc/admin/forms/shared_activity_box.php:63
+#@ AWD_facebook
+msgid "Arial"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:150
+#: inc/admin/forms/like_button.php:36
+#: inc/admin/forms/shared_activity_box.php:64
+#@ AWD_facebook
+msgid "Lucida grande"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:151
+#: inc/admin/forms/like_button.php:37
+#: inc/admin/forms/shared_activity_box.php:65
+#@ AWD_facebook
+msgid "Segoe ui"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:152
+#: inc/admin/forms/like_button.php:38
+#: inc/admin/forms/shared_activity_box.php:66
+#@ AWD_facebook
+msgid "Tahoma"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:153
+#: inc/admin/forms/like_button.php:39
+#: inc/admin/forms/shared_activity_box.php:67
+#@ AWD_facebook
+msgid "Trebuchet ms"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:154
+#: inc/admin/forms/like_button.php:40
+#: inc/admin/forms/shared_activity_box.php:68
+#@ AWD_facebook
+msgid "Verdana"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:156
+#: inc/admin/forms/like_button.php:42
+#: inc/admin/forms/shared_activity_box.php:70
+#@ AWD_facebook
+msgid "Fonts"
+msgstr ""
+
+#: inc/admin/forms/activity_box.php:181
+#: inc/admin/forms/comments_box.php:196
+#: inc/admin/forms/like_box.php:152
+#: inc/admin/forms/like_button.php:342
+#: inc/admin/forms/login_button.php:120
+#: inc/admin/forms/shared_activity_box.php:87
+#@ AWD_facebook
+msgid "Options List"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:11
+#@ AWD_facebook
+msgid "Configure the comments box"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:33
+#@ AWD_facebook
+msgid "Default Url"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:68
+#@ AWD_facebook
+msgid "Nb of comments"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:79
+#@ AWD_facebook
+msgid "Mobile version"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:105
+#@ AWD_facebook
+msgid "Add Comments to pages"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:117
+#@ AWD_facebook
+msgid "Add Comments to posts"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:129
+#@ AWD_facebook
+msgid "Add Comments to custom posts"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:160
+#@ AWD_facebook
+msgid "Width"
+msgstr ""
+
+#: inc/admin/forms/comments_box.php:186
+#@ AWD_facebook
+msgid "Manage comments"
+msgstr ""
+
+#: inc/admin/forms/like_box.php:81
+#: inc/admin/forms/login_button.php:82
+#@ AWD_facebook
+msgid "Show faces"
+msgstr ""
+
+#: inc/admin/forms/like_box.php:92
+#@ AWD_facebook
+msgid "Show Stream"
+msgstr ""
+
+#: inc/admin/forms/like_box.php:114
+#@ AWD_facebook
+msgid "Force Wall ?"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:11
+#: inc/admin/forms/login_button.php:12
+#@ AWD_facebook
+msgid "Configure the button"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:88
+#@ AWD_facebook
+msgid "Send button ?"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:124
+#@ AWD_facebook
+msgid "Height of button"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:146
+#@ AWD_facebook
+msgid "Define a default usage"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:187
+#@ AWD_facebook
+msgid "Display on pages ?"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:229
+#@ AWD_facebook
+msgid "Display on posts ?"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:270
+#@ AWD_facebook
+msgid "On custom posts ?"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:307
+#@ AWD_facebook
+msgid "Exclude Post types"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:315
+#@ AWD_facebook
+msgid "Exclude Categories or other terms"
+msgstr ""
+
+#: inc/admin/forms/like_button.php:323
+#@ AWD_facebook
+msgid "Exclude Posts or Pages ID"
+msgstr ""
+
+#: inc/admin/forms/login_button.php:38
+#@ AWD_facebook
+msgid "Display on Login"
+msgstr ""
+
+#: inc/admin/forms/login_button.php:46
+#@ AWD_facebook
+msgid "Url after login"
+msgstr ""
+
+#: inc/admin/forms/login_button.php:53
+#@ AWD_facebook
+msgid "Url after logout"
+msgstr ""
+
+#: inc/admin/forms/login_button.php:60
+#@ AWD_facebook
+msgid "Logout Label"
+msgstr ""
+
+#: inc/admin/forms/login_button.php:71
+#@ AWD_facebook
+msgid "Show profile picture"
+msgstr ""
+
+#: inc/admin/forms/login_button.php:89
+#@ AWD_facebook
+msgid "Max row"
+msgstr ""
+
+#: inc/admin/forms/plugins_menu.php:11
+#@ AWD_facebook
+msgid "Shared Activity"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph.php:12
+#@ AWD_facebook
+msgid "Create Objects"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph.php:32
+#@ AWD_facebook
+msgid "Editing..."
+msgstr ""
+
+#: inc/admin/views/admin_open_graph.php:32
+#@ AWD_facebook
+msgid "Add an object"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph.php:39
+#@ AWD_facebook
+msgid "Define Objects relation"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph.php:40
+#@ AWD_facebook
+msgid "Select the object to use with type of pages."
+msgstr ""
+
+#: inc/admin/views/admin_open_graph.php:48
+#: inc/admin/views/admin_plugins.php:134
+#: inc/admin/views/admin_settings.php:170
+#@ AWD_facebook
+msgid "Saving settings..."
+msgstr ""
+
+#: inc/admin/views/admin_open_graph.php:49
+#: inc/admin/views/admin_plugins.php:135
+#: inc/admin/views/admin_settings.php:174
+#@ AWD_facebook
+msgid "Donate!"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:8
+#@ AWD_facebook
+msgid "1. Define Object"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:44
+#@ AWD_facebook
+msgid "Template Values: you can use those values in each field of the form, select the input where you want to place a variable then click on the button of your choice."
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:60
+#@ AWD_facebook
+msgid "Title of object (only for reference)"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:65
+#: inc/admin/views/admin_settings.php:34
+#@ AWD_facebook
+msgid "Locale"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:72
+#@ AWD_facebook
+msgid "Auto"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:73
+#@ AWD_facebook
+msgid "A"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:74
+#@ AWD_facebook
+msgid "An"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:75
+#@ AWD_facebook
+msgid "The"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:77
+#@ AWD_facebook
+msgid "The determiner"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:90
+#@ AWD_facebook
+msgid "Custom object type"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:107
+#@ AWD_facebook
+msgid "2. Add Media to Object"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:108
+#@ AWD_facebook
+msgid "Images"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:108
+#@ AWD_facebook
+msgid "Image url"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:108
+#: inc/admin/views/admin_open_graph_form.php:125
+#: inc/admin/views/admin_open_graph_form.php:129
+#: inc/admin/views/admin_open_graph_form.php:132
+#: inc/admin/views/admin_open_graph_form.php:137
+#: inc/admin/views/admin_open_graph_form.php:166
+#@ AWD_facebook
+msgid "Upload an Image"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:108
+#@ AWD_facebook
+msgid "Add a custom image"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:111
+#@ AWD_facebook
+msgid "Auto load images attachments ?"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:137
+#@ AWD_facebook
+msgid "Videos"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:137
+#@ AWD_facebook
+msgid "Video url"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:137
+#@ AWD_facebook
+msgid "Add a custom video"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:140
+#@ AWD_facebook
+msgid "Auto load videos attachments ?"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:154
+#: inc/admin/views/admin_open_graph_form.php:158
+#: inc/admin/views/admin_open_graph_form.php:161
+#@ AWD_facebook
+msgid "Upload a Video"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:166
+#@ AWD_facebook
+msgid "Audios"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:166
+#@ AWD_facebook
+msgid "Audio url"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:166
+#@ AWD_facebook
+msgid "Add a custom audio"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:169
+#@ AWD_facebook
+msgid "Auto load audios attachments ?"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:183
+#: inc/admin/views/admin_open_graph_form.php:187
+#: inc/admin/views/admin_open_graph_form.php:190
+#@ AWD_facebook
+msgid "Upload Audio"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:198
+#@ AWD_facebook
+msgid "Save this object"
+msgstr ""
+
+#: inc/admin/views/admin_open_graph_form.php:199
+#@ AWD_facebook
+msgid "Cancel"
+msgstr ""
+
+#: inc/admin/views/admin_plugins.php:98
+#@ AWD_facebook
+msgid "Your themes must use the action \"do_action(\"comment_form_after\");\" or the function \"commnent_form();\" to work. (look in your theme, in comments.php file)"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:29
+#@ AWD_facebook
+msgid "Admin IDs"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:39
+#@ AWD_facebook
+msgid "Mode Debug ?"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:65
+#@ AWD_facebook
+msgid "Add FB avatar choice ?"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:85
+#@ AWD_facebook
+msgid "Facebook connect is required to manage pages"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:88
+#@ AWD_facebook
+msgid "Publish Stream is enabled"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:90
+#@ AWD_facebook
+msgid "Authorize App to publish on your pages"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:94
+#@ AWD_facebook
+msgid "Pages can be managed"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:94
+#@ AWD_facebook
+msgid "Select pages to link with Wordpress"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:97
+#@ AWD_facebook
+msgid "Authorize App to access your pages"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:102
+#@ AWD_facebook
+msgid "Check the page you want to sync with your posts."
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:110
+#@ AWD_facebook
+msgid "Publish on ?"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:111
+#@ AWD_facebook
+msgid "Picture"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:113
+#@ AWD_facebook
+msgid "ID"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:114
+#@ AWD_facebook
+msgid "Category"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:143
+#@ AWD_facebook
+msgid "Auto publish post on Facebook pages ?"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:149
+#@ AWD_facebook
+msgid "Auto publish post on Facebook profile ?"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:157
+#@ AWD_facebook
+msgid "Default link action Text"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:172
+#@ AWD_facebook
+msgid "Waiting for your anwser"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:172
+#@ AWD_facebook
+msgid "Restore defaults settings"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:191
+#@ AWD_facebook
+msgid "Do you really want to reset all settings (AWD plugins and openGraph settings will be reset) ?"
+msgstr ""
+
+#: inc/admin/views/admin_settings.php:192
+#@ AWD_facebook
+msgid "Restore"
+msgstr ""
+
+#: inc/admin/views/help/plugins.php:13
+#@ AWD_facebook
+msgid "The url to like, in XFBML, defaults to the current page."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:17
+#@ AWD_facebook
+msgid "Help you debugging Facebook AWD object."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:23
+#, php-format
+#@ AWD_facebook
+msgid "This is the id of your application on Facebook. You can find this info on your application dashboard on Facebook developers platform. If you have not yet create an application, you can create one %shere%s."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:30
+#@ AWD_facebook
+msgid "This is Your facebook user id."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:37
+#, php-format
+#@ AWD_facebook
+msgid "This is the secret key of your application on Facebook. You can find this info on your application dashboard on Facebook developers platform. If you have not yet create an application, you can create one %shere%s."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:66
+#, php-format
+#@ AWD_facebook
+msgid "Facebook Connect permissions (example: publish_stream,user_photos,user_status) %sSee the list of permissions%s"
+msgstr ""
+
+#: inc/admin/views/help/settings.php:77
+#@ AWD_facebook
+msgid "This will add the Facebook Avatar to the avatar function of Wordpress, You will be able to activate it on the discussion settings."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:84
+#: inc/admin/views/help/settings.php:89
+#@ AWD_facebook
+msgid "If YES the checkbox to publish on facebook in post editor will be always checked."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:94
+#@ AWD_facebook
+msgid "You can redefine the default text use for the action link. This setting can be redefined in the post editor."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:99
+#@ AWD_facebook
+msgid "I am sure you love it..."
+msgstr ""
+
+#: inc/admin/views/help/settings.php:102
+#@ AWD_facebook
+msgid "I am sure you love it, you can help me to continue support this plugin...Click!"
+msgstr ""
+
+#: inc/classes/plugins/class.AWD_facebook_plugin_abstract.php:100
+#@ AWD_facebook
+msgid "can not be activated: Facebook Connect plugin must be activated"
+msgstr ""
+
+#: inc/classes/plugins/class.AWD_facebook_plugin_abstract.php:104
+#@ AWD_facebook
+msgid "can not be activated: Facebook AWD is out to date... You can download the last version or update it from the Wordpress plugin directory"
+msgstr ""
+
+#: inc/classes/plugins/class.AWD_facebook_plugin_abstract.php:108
+#@ AWD_facebook
+msgid "can not be activated: Facebook AWD plugin must be installed... you can download it from the Wordpress plugin directory"
+msgstr ""
+
+#: inc/classes/tools/class.AWD_facebook_options.php:121
+#@ AWD_facebook
+msgid "Read More"
+msgstr ""
+

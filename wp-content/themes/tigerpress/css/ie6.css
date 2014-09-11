@@ -1,0 +1,27 @@
+#subcontent ul li a, #extracontent ul li a {display:inline-block;}
+#subcontent ul li a, #extracontent ul li a {display:block;}
+#subcontent ul li a:hover, #extracontent ul li a:hover { text-decoration:underline;}
+#content {background:url(../img/bg-content.gif) repeat-y center top;}
+#doc {background:url(../img/bg-top.gif) no-repeat center top;}
+.actions {margin-bottom:8px;}
+#searchform {
+	width:131px;
+	right:12px;
+}
+#searchform .input-txt {
+	margin:2px 16px 0 15px;
+	padding:0 10px 0 10px;
+	width:122px;
+}
+#comments .submit {padding:0 0 1px 0;}
+#subcontent .link-list a:hover, #subcontent .link-list li:hover a {
+	color:#000;
+	text-decoration:underline
+}
+#footer {
+	background:url(../img/bg-footer.gif) no-repeat center top;
+	height:22px;
+}
+#footer #themes-link, #footer #seteg-link  {
+	display:inline
+}

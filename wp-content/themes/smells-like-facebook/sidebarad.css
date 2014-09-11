@@ -1,0 +1,55 @@
+#content {
+	width: 580px;
+}
+
+#content .post-text {
+	width: 500px;
+}
+
+.archive {
+	width: 95%;
+}
+
+#sidebarright {
+	float: right;
+	width: 160px;
+	border-left:1px solid #CCCCCC;
+	margin-top: 80px;
+}
+
+#sidebarright .widget {
+	padding:10px 0 10px 10px;
+	background-color: #FFFFFF;
+	border-bottom:1px solid #E5E5E5;
+	border-left:4px solid #E5E5E5;
+}
+
+#sidebarright .widgettitle {
+	display:block;
+	font-size:11px;
+	margin-bottom:10px;
+	font-size:12px;
+	font-weight:bold;
+	color: #3B5998;
+}
+
+#sidebarright .widgettitle  a {
+	text-decoration: none;
+	color: #000;
+}
+
+#sidebarright .widgettitle img {
+	display: none;
+}
+
+#sidebarright .widget ul {
+	padding:0px 7px 10px 0px;
+}
+
+.widget li {
+	margin-top: 5px;
+}
+
+.navigation {
+	width: 96%;
+}

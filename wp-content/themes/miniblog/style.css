@@ -1,0 +1,913 @@
+/*
+Theme Name: miniBlog
+Theme URI: http://forthelose.org/ftl-themes/
+Description: Premium WP Theme from Ralph Damiano of <a href="http://forthelose.org">ForTheLose.org</a>.  Easily change the color of many elements for a unique appearance.
+Version: 1.0
+Author: Ralph Damiano
+Author URI: http://forthelose.org
+Tags: miniblog, minimalist, simple, theme options
+*/
+ 
+ .panel{
+	display: none;
+ }
+ 
+body{
+	background: #EEEADD;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	font-family: "Verdana", sans-serif;
+	font-size: 11px;
+	color: #444;
+}
+
+/* == Resets N' Stuff == */
+
+a:link,
+a:visited{
+	font-size: 100%;
+	font-family: "Verdana", sans-serif;
+	text-decoration: none;
+	color: #222;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+a:focus,
+a:active{
+	outline: none;
+}
+
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote,
+pre, form, fieldset, table, th, td { 
+	margin: 0;
+	padding: 0; 
+}
+
+ul{
+	list-style-image: url(images/li.gif);
+}
+
+img{
+	border: 0px;
+}
+
+input:focus,
+input:active{
+	outline: none;
+}
+
+.go-left{
+	float: left;
+	clear: left;
+}
+
+.go-right{
+	float: right;
+	clear: right;
+}
+
+.go-center{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.italic{
+	font-style: italic;
+}
+
+.block{
+	display: block;
+}
+
+.clear{
+	clear: both;
+}
+
+.align-right{
+	text-align: right;
+}
+
+.align-left{
+	text-align: left;
+}
+
+.below-post{
+	width: 550px;
+	padding: 10px 0px 10px 90px;
+	overflow: hidden;
+	color: #999;
+}
+
+/* == Wordpress Necessary == */
+
+.aligncenter,
+div.aligncenter {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft {
+   float: left;
+   margin: 5px;
+}
+
+.alignright {
+   float: right;
+   margin: 5px;
+}
+
+.wp-caption {
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+}
+
+.wp-caption img {
+   margin: 0 auto;
+   padding: 0;
+   border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+   font-size: 11px;
+   line-height: 17px;
+   padding: 0 4px 5px;
+   margin: 0;
+}
+
+.wp-smiley{
+	display: inline;
+}
+
+/* == Navbar == */
+
+#navbar{
+	width: 100%;
+	height: 60px;
+	overflow: hidden;
+	background: #FFF;
+}
+
+#navbar-container{
+	width: 950px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+#navbar-container ul{
+	list-style-type: none;
+	list-style-image: none;
+}
+
+#navbar-container ul li{
+	float: left;
+	display: inline;
+}
+
+#navbar-container ul li a:link,
+#navbar-container ul li a:visited{
+	display: block;
+	background: #FFF;
+	padding: 24px 15px;
+	font-weight: bold;
+	font-family: "Arial", sans-serif;
+	color: #999;
+	text-transform: uppercase;
+}
+
+#navbar-container ul li a:hover,
+#navbar-container ul li a:active,
+#navbar-container ul li a:focus{
+	text-decoration: none;
+	background: url(images/dark-border.png) top left repeat-x;
+}
+
+#navbar-container ul li.current_page_item a:link,
+#navbar-container ul li.current_page_item a:visited,
+#navbar-container ul li.current_page_item a:hover,
+#navbar-container ul li.current_page_item a:active,
+#navbar-container ul li.current_page_item a:focus{
+	background: #EEEADD url(images/dark-border.png) top left repeat-x;
+}
+
+#navbar-container ul li.rss-feed{
+	float: right;
+	background: url(images/rss-icon.gif) left center no-repeat;
+	padding: 0px 0px 0px 16px;
+}
+
+/* == Header == */
+
+#header{
+	width: 100%;
+	padding: 20px 0px;
+}
+
+#header-container{
+	height: 108px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+#bubble-container{
+	width: 266px;
+	height: 91px;
+	margin: 0 auto;
+}
+
+#bubble-bottom{
+	width: 35px;
+	height: 17px;
+	margin: 0 auto;
+	overflow: hidden;
+	background: url(images/bubble-bottom.png) no-repeat;
+}
+
+#bubble-left{
+	width: 18px;
+	height: 91px;
+	float: left;
+	margin: 0 auto;
+	background: url(images/bubble-left.png) no-repeat;
+	overflow: hidden;
+}
+
+#bubble-right{
+	width: 18px;
+	height: 91px;
+	float: left;
+	margin: 0 auto;
+	background: url(images/bubble-right.png) no-repeat;
+	overflow: hidden;
+}
+
+#bubble-middle{
+	width: 230px;
+	height: 81px;
+	float: left;
+	margin: 0 auto;
+	padding: 10px 0px 0px;
+	background: #FFF;
+	overflow: hidden;
+}
+
+#bubble-middle h1 a:link,
+#bubble-middle h1 a:visited{
+	font-size: 36px;
+	font-family: "Georgia", serif;
+	font-weight: normal;
+}
+
+#bubble-middle h1 a:hover{
+	text-decoration: none;
+}
+
+#site-slogan{
+	display: block;
+	font-family: "Georgia", serif;
+	color: #666;
+	font-size: 16px;
+	text-transform: lowercase;
+}
+
+.first-color{
+	color: #777;
+}
+
+.second-color{
+	color: #77afcf;
+}
+
+/* == Container == */
+
+#container-top{
+	width: 950px;
+	height: 21px;
+	overflow: hidden;
+	margin: 0 auto;
+	background: url(images/container-top.png) no-repeat;
+}
+
+#container{
+	width: 980px;
+	overflow: hidden;
+	background: url(images/container-bg.gif) top center repeat-y;
+	margin: 0 auto;
+	text-align: left;
+	padding: 9px 90px 30px 0px;
+}
+
+/* == Sidebar == */
+
+#sidebar{
+	width: 280px;
+	float: right;
+	clear: right;
+	overflow: hidden;
+}
+
+.sidebar-box{
+	width: 280px;
+	overflow: hidden;
+	margin: 0px 0px 30px;
+}
+
+#sidebar-recent-posts{
+	float: left;
+	clear: left;
+	text-indent:-9999px;
+	width: 42px;
+	height: 46px;
+	overflow: hidden;
+	margin: -10px 10px 8px 0px;
+	background: url(images/icon-recent-posts.png) no-repeat;
+}
+
+#sidebar-popular-posts{
+	float: left;
+	clear: left;
+	text-indent:-9999px;
+	width: 47px;
+	height: 47px;
+	overflow: hidden;
+	margin: -12px 10px 8px 0px;
+	background: url(images/icon-popular-posts.png) no-repeat;
+}
+
+#sidebar-twitter{
+	float: left;
+	clear: left;
+	text-indent:-9999px;
+	width: 38px;
+	height: 58px;
+	overflow: hidden;
+	margin: -12px 10px 8px 0px;
+	background: url(images/icon-twitter.png) no-repeat;
+}
+
+#sidebar-recent-comments{
+	float: left;
+	clear: left;
+	text-indent:-9999px;
+	width: 46px;
+	height: 46px;
+	overflow: hidden;
+	margin: -12px 10px 8px 0px;
+	background: url(images/icon-recent-comments.png) no-repeat;
+}
+
+#sidebar-search{
+	float: left;
+	clear: left;
+	text-indent:-9999px;
+	width: 43px;
+	height: 44px;
+	overflow: hidden;
+	margin: -12px 10px 8px 0px;
+	background: url(images/icon-search.png) no-repeat;
+}
+
+#sidebar-categories{
+	float: left;
+	clear: left;
+	text-indent:-9999px;
+	width: 45px;
+	height: 51px;
+	overflow: hidden;
+	margin: -12px 10px 8px 0px;
+	background: url(images/icon-categories.png) no-repeat;
+}
+
+.sidebar-box h2.with-icon{
+	height: 22px;
+	width: 260px;
+	background: #EEEADD;
+	font-family: "Georgia", sans-serif;
+	color: #555;
+	font-size: 18px;
+	font-weight: normal;
+	padding: 7px 10px;
+	margin: 5px 0px 10px 0px;
+}
+
+.sidebar-box h2,
+.panel h2{
+	height: 22px;
+	width: 260px;
+	background: #EEEADD;
+	font-family: "Georgia", sans-serif;
+	color: #555;
+	font-size: 18px;
+	font-weight: normal;
+	padding: 7px 10px;
+	margin: 0px 0px 10px 0px;
+}
+
+.sidebar ul,
+.panel ul{
+	width: 100%;
+}
+
+.sidebar-box ul li,
+.panel ul li{
+	margin: 0px 0px 0px 20px;
+	padding: 0px 0px 10px 0px;
+}
+
+.search-box{
+	width: 280px;
+	height: 22px;
+	overflow: hidden;
+}
+
+.search-input{
+	width: 200px;
+	height: 14px;
+	float: left;
+	border: 1px solid #ccc;
+	background: #FFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	padding: 3px 5px;
+	color: #777;
+}
+
+.search-button{
+	width: 46px;
+	height: 20px;
+	float: right;
+	border: 1px solid #ccc;
+	background: #EEEADD;
+	font-family: "Arial", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #444;
+}
+
+/* == Twitter == */
+
+.sidebar-box ul#twitter_update_list li span a:link,
+.sidebar-box ul#twitter_update_list li span a:visited{
+	display: inline;
+	margin: 0px;
+	font-family: "Verdana", sans-serif;
+	font-size: 100%;
+	font-weight: normal;
+}
+
+.sidebar-box ul#twitter_update_list li a:link,
+.sidebar-box ul#twitter_update_list li a:visited{
+	display: block;
+	margin: 0px 0px 0px 10px;
+	font-family: "Arial", sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.twitter-link{
+	text-align: right;
+	float: right;
+}
+
+/* == Tabs == */
+
+#tab-container{
+	width: 280px;
+	overflow: hidden;
+	margin: 0px 0px 30px;
+}
+
+#tabnav{
+	list-style-type: none;
+	list-style-image: none;
+}
+
+#tabnav li{
+	float: left;
+	display: inline;
+	text-align: center;
+}
+
+#tabnav li a:link,
+#tabnav li a:visited{
+	display: block;
+	width: 72px;
+	height: 12px;
+	font-family: "Arial", sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 10px;
+	background: #EEEADD;
+	padding: 12px 4px;
+}
+
+#tabnav li a:hover,
+#tabnav li a.selected:link,
+#tabnav li a.selected:visited{
+	text-decoration: none;
+	background: #d8e7f0;
+}
+
+.panel{
+	padding: 10px 0px 0px 0px;
+	overflow: hidden;
+	width: 280px;
+	clear: both;
+}
+
+/* == Main == */
+
+#main{
+	float: left;
+	clear: left;
+	overflow: hidden;
+	width: 640px;
+}
+
+.post-container{
+	width: 640px;
+	overflow: hidden;
+	margin: 0px 0px 30px;
+	clear: both;
+}
+
+.post-left{
+	width: 60px;
+	float: left;
+	clear: left;
+	overflow: hidden;
+}
+
+.post-right{
+	width: 550px;
+	float: right;
+	clear: right;
+	overflow: hidden;
+	padding: 0px 0px 10px;
+	background: url(images/dots.gif) bottom center repeat-x;
+}
+
+.post-tab{
+	width: 58px;
+	height: 50px;
+	overflow: hidden;
+	margin: 0px 0px 20px 0px;
+	text-align: center;
+	font-family: "Georgia", serif;
+	font-size: 14px;
+	color: #777;
+	padding: 10px 0px 0px 2px;
+	background: url(images/post-tab.png) no-repeat;
+}
+
+.tab-big{
+	font-size: 20px;
+	display: block;
+}
+
+.post-content-left{
+	width: 110px;
+	float: left;
+	clear: left;
+	overflow: hidden;
+}
+
+.post-content-right{
+	width: 410px;
+	float: right;
+	clear: right;
+	overflow: hidden;
+}
+
+.post-content-left img{
+	display: block;
+	width: 98px;
+	height: 98px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	background: #FFF;
+	margin: 0px 0px 10px;
+}
+
+.post-header{
+	width: 410px;
+	overflow: hidden;
+	margin: 0px 0px 10px 0px;
+}
+
+.post-header h1{
+	font-family: "Georgia", sans-serif;
+	font-size: 20px;
+	color: #666;
+	font-weight: normal;
+}
+
+.post-header h1 a:link,
+.post-header h1 a:visited{
+	font-family: "Georgia", sans-serif;
+	font-size: 20px;
+	color: #666;
+	font-weight: normal;
+}
+
+.post-header h1 a:hover{
+	color: #111;
+}
+
+.post-header-title{
+	width: 340px;
+	float: left;
+	clear: left;
+	overflow: hidden;
+	padding: 4px 0px 0px
+}
+
+.post-comments{
+	width: 35px;
+	height: 35px;
+	float: right;
+	clear: right;
+	overflow: hidden;
+}
+
+.post-comments a:link,
+.post-comments a:visited{
+	width: 35px;
+	height: 27px;
+	display: block;
+	overflow: hidden;
+	background: #EEEADD;
+	text-align: center;
+	font-family: "Georgia", serif;
+	font-size: 18px;
+	color: #666;
+	padding: 4px 0px;
+}
+
+.post-comments a:hover{
+	background: #d8e7f0;
+	text-decoration: none;
+}
+
+.post-content a:link,
+.post-content a:visited{
+	text-decoration: underline;
+}
+
+.post-content p{
+	text-align: justify;
+	line-height: 17px;
+	padding: 0px 0px 15px;
+}
+
+.post-content h1{
+	font-family: "Arial", sans-serif;
+	color: #555;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0px 0px 15px;
+}
+
+.post-content h2{
+	font-family: "Arial", sans-serif;
+	color: #77afcf;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0px 0px 15px;
+}
+
+.post-content h3{
+	font-family: "Arial", sans-serif;
+	color: #555;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 0px 0px 15px;
+}
+
+.post-content h4,
+.post-content h5,
+.post-content h6{
+	font-family: "Arial", sans-serif;
+	color: #555;
+	font-size: 13px;
+	font-weight: bold;
+	margin: 0px 0px 15px;
+}
+
+.post-content blockquote{
+	padding: 0px 0px 15px;
+}
+
+.post-content blockquote p{
+	padding: 0px 0px 0px 30px;
+	font-style: italic;
+	border-left: 2px solid #eee;
+}
+
+.post-content ul,
+.post-content ol{
+	margin: 0px 0px 15px;
+}
+
+.post-content ul li,
+.post-content ol li{
+	margin: 0px 0px 5px 20px;
+}
+
+.post-content p.post-more{
+	text-align: right;
+}
+
+.post-content p.post-more a:link,
+.post-content p.post-more a:visited{
+	text-decoration: none;
+	color: #77afcf;
+	font-weight: bold;
+	font-family: "Arial", sans-serif;
+}
+
+.post-content p.post-more a:hover{
+	text-decoration: underline;
+}
+
+/* == Comments == */
+
+.post-announcement{
+	width: 550px;
+	float: right;
+	clear: right;
+	overflow: hidden;
+	padding: 0px 0px 15px;
+	margin: -15px 0px 30px;
+	font-family: "Georgia", sans-serif;
+	font-size: 20px;
+	color: #666;
+	font-weight: normal;
+	background: url(images/dots.gif) bottom center repeat-x;
+}
+
+.post-announcement2{
+	width: 550px;
+	float: right;
+	clear: right;
+	overflow: hidden;
+	padding: 0px 0px 15px;
+	margin: 0px 0px 30px;
+	background: url(images/dots.gif) bottom center repeat-x;
+}
+
+.post-announcement2 h3{
+	font-family: "Georgia", sans-serif;
+	font-size: 17px;
+	color: #666;
+	font-weight: normal;
+}
+
+.comment-container{
+	width: 550px;
+	float: right;
+	clear: right;
+	overflow: hidden;
+	background: url(images/dots.gif) bottom center repeat-x;
+	margin: 0px 0px 30px;
+}
+
+.comment-left{
+	float: left;
+	clear: left;
+	width: 74px;
+	overflow: hidden;
+}
+
+.comment-right{
+	width: 456px;
+	float: right;
+	clear: right;
+	overflow: hidden;
+}
+
+.comment-left img{
+	display: block;
+	width: 62px;
+	height: 62px;
+	padding: 5px;
+	overflow: hidden;
+	background: #FFF;
+	border: 1px solid #ccc;
+}
+
+.comment-header{
+	width: 456px;
+	overflow: hidden;
+	margin: 0px 0px 10px;
+	font-family: "Arial", sans-serif;
+	color: #555;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.comment-header-title{
+	font-family: "Georgia", serif;
+	font-size: 16px;
+	color: #666;
+	font-style: italic;
+	font-weight: normal;
+	display: block;
+	padding: 0px 0px 5px;
+}
+
+/* Ralph Damiano */
+
+.comment-header-title a:link,
+.comment-header-title a:visited{
+	font-family: "Georgia", serif;
+	color: #77afcf;
+	font-style: normal;
+}
+
+.comment-content a:link,
+.comment-content a:visited{
+	text-decoration: underline;
+}
+
+.comment-content p{
+	line-height: 17px;
+	padding: 0px 0px 15px;
+	text-align: justify;
+}
+
+.comment-content h1,
+.comment-content h2,
+.comment-content h3,
+.comment-content h4,
+.comment-content h5,
+.comment-content h6{
+	font-family: "Arial", sans-serif;
+	color: #555;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 0px 0px 15px;
+}
+
+.comment-content blockquote{
+	padding: 0px 0px 15px;
+}
+
+.comment-content blockquote p{
+	padding: 0px 0px 0px 30px;
+	font-style: italic;
+	border-left: 2px solid #eee;
+}
+
+.comment-content ul,
+.comment-content ol{
+	margin: 0px 0px 15px;
+}
+
+.comment-content ul li,
+.comment-content ol li{
+	margin: 0px 0px 5px 20px;
+}
+
+/* == Footer == */
+
+#footer{
+	padding: 20px 0px 10px;
+}
+
+#footer a:link,
+#footer a:visited{
+	text-decoration: underline;
+}
+
+/* Calendar */
+
+#calendar_wrap{
+	padding: 10px 0px 0px;
+	width: 280px;
+	overflow: hidden;
+	text-align: center;
+}
+
+table#wp-calendar{
+	width: 250px;
+	border: 0px;
+	margin: 0 auto;
+}
+
+.post-content img,
+.comment-content img{
+	max-width: 400px;
+}

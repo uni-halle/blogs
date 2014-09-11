@@ -1,0 +1,6 @@
+*+html .clear {zoom: 1;}
+#larr, #rarr {filter: alpha(opacity=20);}
+#larr:hover, #rarr:hover {filter: alpha(opacity=100);}
+.rollover {filter: alpha(opacity=0);}
+#comment, #author, #email, #url {border-color: #fff;}
+*+html .widget_getconnected .widget-body div {width: 49.5%;}

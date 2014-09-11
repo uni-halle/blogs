@@ -1,0 +1,17 @@
+﻿/* George from www.giatimpampa.gr*/
+
+<name>Όνομα</name>
+<email>Email</email>
+<url>Ιστοσελίδα</url>
+<message>Κείμενο</message>
+<antispam><b> Μέτρα Antispam</b><br />Παρακαλώ πληκτρολογήστε τον κωδικό antispam προτού υποβάλετε το ερώτημα.</antispam>
+<mandatory>Υποχρεωτικό</mandatory>
+<submit>Υποβολή</submit>
+<name_error>Το όνομα είναι πολύ μικρό !</name_error>
+<email_error>Λάθος ηλεκτρονική διεύθυνση !</email_error>
+<url_error>Λάθος όνομα ιστοσελίδας !</url_error>
+<message_error>Το κείμενο είναι πολύ μικρό !</message_error>
+<antispam_error>Λάθος κωδικός antispam!</antispam_error>
+<success>Ευχαριστούμε για την καταχώρησή σας!</success>
+<admin_review>Ο διαχειριστής θα πρέπει να ελένξει πρώτα την καταχώρηση !<br />Ευχαριστούμε για την υπομονή.</admin_review>
+<spam_detect>Αυτό το μήνυμα είναι πιθανότατα spam!<br />Δεν έχει ελενχθεί!</spam_detect>

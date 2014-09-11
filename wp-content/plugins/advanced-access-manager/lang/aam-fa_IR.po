@@ -1,0 +1,606 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AAM\n"
+"POT-Creation-Date: 2014-02-20 08:00+0330\n"
+"PO-Revision-Date: 2014-02-20 09:05+0330\n"
+"Last-Translator: Ghaem Omidi <ghaemomidi@yahoo.com>\n"
+"Language-Team: WP-Parsi <ghaemomidi@yahoo.com>\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:380
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:387
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:414
+msgid "Access denied"
+msgstr "امکان دسترسی وجود ندارد."
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:873
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:874
+msgid "AAM"
+msgstr "افزونه مدیریت دسترسی پیشرفته"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:883
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:884
+msgid "Access Control"
+msgstr "کنترل دسترسی"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:891
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:892
+msgid "ConfigPress"
+msgstr "پیکربندی"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:899
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/aam.php:900
+msgid "Extensions"
+msgstr "افزودنی ها"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/config.php:61
+msgid "Failed to create wp-content/aam folder"
+msgstr "ایجاد پوشه wp-content/aam انجام نشد."
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/config.php:64
+msgid "Folder wp-content/aam is not writable"
+msgstr "پوشه wp-content/aam قابل نوشتن نیست."
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/capability.php:100
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/capability.php:204
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/capability.php:100
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/capability.php:204
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/capability.php:100
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/capability.php:204
+msgid "System"
+msgstr "سیستم"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/capability.php:101
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/capability.php:206
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/capability.php:101
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/capability.php:206
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/capability.php:101
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/capability.php:206
+msgid "Post & Page"
+msgstr "نوشته و برگه"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/capability.php:102
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/capability.php:208
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/capability.php:102
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/capability.php:208
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/capability.php:102
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/capability.php:208
+msgid "Backend Interface"
+msgstr "رابط بخش مدیریت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/capability.php:103
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/capability.php:210
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/capability.php:103
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/capability.php:210
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/capability.php:103
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/capability.php:210
+msgid "Miscellaneous"
+msgstr "متفرقه"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/extension.php:99
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/extension.php:99
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/extension.php:99
+msgid "Folder advanced-access-manager/extension is not writable"
+msgstr "پوشه advanced-access-manager/extension قابل نوشتن نیست."
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:59
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:59
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:59
+msgid "Roles"
+msgstr "قوانین"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:60
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:60
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:60
+msgid "Role Manager"
+msgstr "مدیریت قانون"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:68
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:68
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:68
+msgid "Users"
+msgstr "کاربران"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:69
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:69
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:69
+msgid "User Manager"
+msgstr "مدیریت کاربر"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:77
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:77
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:77
+msgid "Visitor"
+msgstr "بازدیدکنندگان"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:78
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:78
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:78
+msgid "Visitor Manager"
+msgstr "مدیریت بازدیدکنندگان"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:95
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:95
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:95
+msgid "Admin Menu"
+msgstr "منوی مدیریت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:98
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:98
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:98
+msgid ""
+"Control Access to Admin Menu. Restrict access to entire Menu or Submenu. "
+"<b>Notice</b>, the menu is rendered based on Role's or User's capabilities."
+msgstr ""
+"<b>کنترل دسترسی به منوی مدیریت. محدود کردن دسترسی به منو یا زیر منو. توجه، "
+"منو بر اساس قابلیت های کاربران یا قوانین ارائه شده است.</b>"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:103
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:103
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:103
+msgid "Metabox & Widget"
+msgstr "متاباکس و ابزارک"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:106
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:106
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:106
+msgid ""
+"Filter the list of Metaboxes or Widgets for selected Role or User. If "
+"metabox or widget is not listed, try to click <b>Refresh the List</b> button "
+"or Copy & Paste direct link to page where specific metabox or widget is "
+"shown and hit <b>Retrieve Metaboxes from Link</b> button."
+msgstr ""
+"<b>فیلترکردن متاباکس ها یا ابزارک ها برای قانون یا کاربر انتخاب شده. اگر "
+"متاباکس یا ابزارک فهرست نشده است، روی ((تازه کردن فهرست)) کلیک کنید یا لینک "
+"مستقیم را کپی کنید و قرار دهید.</b>"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:111
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:111
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:111
+msgid "Capability"
+msgstr "قابلیت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:114
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:114
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:114
+msgid ""
+"Manage the list of Capabilities for selected User or Role. <b>Notice</b>, "
+"list of user's capabilities are inherited from user's Role.<br/><b>Warning!</"
+"b> Be very careful with capabilities. Deleting or unchecking any capability "
+"may cause temporary or permanent constrol lost over some features or "
+"WordPress dashboard."
+msgstr ""
+"مدیریت فهرست قابلیت ها برای کاربر یا قانون انتخاب شده. <b>توجه</b>، با "
+"قابلیت ها خیلی با دقت باشید. پاک کردن یا برداشتن هر قابلیتی ممکن است باعث "
+"شوذ کنترل موقت یا دائم برخی از ویژگی ها یا پیشخوان وردپرس را از دست داد."
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:119
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:119
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:119
+msgid "Posts & Pages"
+msgstr "نوشته ها و برگه ها"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:122
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:122
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:122
+msgid ""
+"Manage access to individual <b>Post</b> or <b>Term</b>. Notice, under "
+"<b>Post</b>, we assume any post, page or custom post type. And under "
+"<b>Term</b> - any term like Post Categories."
+msgstr ""
+"<b>مدیریت دسترسی یه نوشته یا دوره فردی. توجه، ما فرض می کنیم هر نوشته، برگه "
+"یا پست تایپ دلخواه بر اساس نوشته است. و هر دوره ای شبیه دسته های نوشته بر "
+"اساس دوره است.</b>"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:127
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:127
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:127
+msgid "Event Manager"
+msgstr "مدیریت رویداد"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:130
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:130
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:130
+msgid ""
+"Define your own action when some event appeared in your WordPress blog. This "
+"sections allows you to trigger an action on event like post content change, "
+"or page status update. You can setup to send email notification, change the "
+"post status or write your own custom event handler."
+msgstr ""
+"<b>هنگامی که تعدادی رویداد در سایت وردپرسی شما ظاهر می شوند عمل خود را تعریف "
+"کنید. این بخش ها به شما اجازه می دهند تا باعث یک عمل در رویداد شبیه تغییر "
+"محتوای نوشته یا بروزرسانی وضعیت برگه شوید. شما می توانید تنظیم کنید تا تغییر "
+"وضعیت نوشته یا نوشتن یک رویداد دلخواه به عنوان یک اطلاعیه به ایمیل شما ارسال "
+"شوند.</b>"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:331
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:331
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:331
+msgid "Rollback Settings"
+msgstr "تنظیمات عقبگرد"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:332
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:332
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:332
+msgid "Cancel"
+msgstr "لغو"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:333
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:333
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:333
+msgid "Send E-mail"
+msgstr "ارسال ایمیل"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:334
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:340
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:334
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:340
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:334
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:340
+msgid "Add New Role"
+msgstr "افزودن قانون جدید"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:335
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:335
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:335
+msgid "Manage"
+msgstr "مدیریت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:336
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:336
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:336
+msgid "Edit"
+msgstr "ویرایش"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:337
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:337
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:337
+msgid "Delete"
+msgstr "پاک کردن"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:338
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:338
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:338
+msgid "Filtered"
+msgstr "فیلترشده"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:339
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:339
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:339
+msgid "Clear"
+msgstr "پاک کردن"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:341
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:341
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:341
+msgid "Save Changes"
+msgstr "ذخیره ی تغییرات"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:342
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:342
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:342
+#, php-format
+msgid ""
+"System detected %d user(s) with this role. All Users with Role <b>%s</b> "
+"will be deleted automatically!"
+msgstr ""
+"سیستم %d کاربر را با این قانون شناسایی کرده است. همه کاربران با قانون <b>%s</"
+"b> به طور خودکار پاک خواهند شد."
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:343
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:343
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:343
+#, php-format
+msgid "Are you sure that you want to delete role <b>%s</b>?"
+msgstr "آیا شما مطمئنید که می خواهید قانون <b>%s</b> را پاک کنید؟"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:344
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:344
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:344
+msgid "Delete Role"
+msgstr "پاک کردن قانون"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:345
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:345
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:345
+msgid "Add User"
+msgstr "افزودن کاربر"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:346
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:346
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:346
+msgid "Filter Users"
+msgstr "فیلتر کاربران"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:347
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:363
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:347
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:363
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:347
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:363
+msgid "Refresh List"
+msgstr "تازه کردن فهرست"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:348
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:348
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:348
+msgid "Block"
+msgstr "مسدود کردن"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:349
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:349
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:349
+#, php-format
+msgid "Are you sure you want to delete user <b>%s</b>?"
+msgstr "آیا شما مطمئنید که می خواهید <b>%s</b> را پاک کنید؟"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:350
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:350
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:350
+msgid "Filter Capabilities by Category"
+msgstr "فیلترکردن قابلیت ها بر اساس دسته"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:351
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:351
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:351
+msgid "Inherit Capabilities"
+msgstr "به ارث بردن قابلیت ها"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:352
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:352
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:352
+msgid "Add New Capability"
+msgstr "افزودن قابلیت جدید"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:353
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:353
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:353
+#, php-format
+msgid "Are you sure that you want to delete capability <b>%s</b>?"
+msgstr "آیا شما مطمئنید که می خواهید قابلیت <b>%s</b> را پاک کنید؟"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:354
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:354
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:354
+msgid "Delete Capability"
+msgstr "پاک کردن قابلیت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:355
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:355
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:355
+msgid "Select Role"
+msgstr "انتخاب قانون"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:356
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:356
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:356
+msgid "Add Capability"
+msgstr "افزودن قابلیت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:357
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:357
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:357
+msgid "Add Event"
+msgstr "افزودن رویداد"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:358
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:358
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:358
+msgid "Edit Event"
+msgstr "ویرایش رویداد"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:359
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:361
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:359
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:361
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:359
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:361
+msgid "Delete Event"
+msgstr "پاک کردن رویداد"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:360
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:360
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:360
+msgid "Save Event"
+msgstr "ذخیره رویداد"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:362
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:362
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:362
+msgid "Filter Posts by Post Type"
+msgstr "فیلتر کردن نوشته ها بر اساس پست تایپ"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:364
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:364
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:364
+msgid "Restore Default"
+msgstr "بازگردانی به پیش فرض"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:365
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:365
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:365
+msgid "Apply"
+msgstr "اعمال کردن"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:366
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:366
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:366
+msgid "Edit Term"
+msgstr "ویرایش دوره"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:367
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:367
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:367
+msgid "Manager Access"
+msgstr "دسترسی مدیریت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:368
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:368
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:368
+msgid "Unlock Default Accesss Control"
+msgstr "بازکردن کنترل دسترسی پیش فرض"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:369
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:369
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:369
+msgid "Close"
+msgstr "بستن"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:370
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:370
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:370
+msgid "Edit Role"
+msgstr "ویرایش قانون"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:371
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:371
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:371
+msgid "Restore Default Capabilities"
+msgstr "بازگردانی قابلیت های پیش فرض"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:372
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:372
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:372
+#, php-format
+msgid "Are you sure you want to delete <b>%s</b>?"
+msgstr "آیا شما مطمئنید که می خواهید <b>%s</b> را پاک کنید؟"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:373
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:373
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:373
+#, php-format
+msgid "Are you sure you want to move <b>%s</b> to trash?"
+msgstr "آیا شما مطمئنید که می خواهید <b>%s</b> را به زباله دان انتقال دهید؟"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:374
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:374
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:374
+msgid "Delete Post"
+msgstr "پاک کردن نوشته"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:375
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:375
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:375
+msgid "Delete Permanently"
+msgstr "پاک کردن برای همیشه"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:376
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:376
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:376
+msgid "Trash Post"
+msgstr "زباله دان نوشته"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/manager.php:377
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/manager.php:377
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/manager.php:377
+msgid "Restore Default Access"
+msgstr "بازگردانی دسترسی پیش فرض"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/metabox.php:190
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/metabox.php:190
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/metabox.php:190
+msgid "Dashboard Widgets"
+msgstr "ابزارک های پیشخوان"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/metabox.php:194
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/metabox.php:194
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/metabox.php:194
+msgid "Frontend Widgets"
+msgstr "ابزارک های جلو"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/post.php:213
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/post.php:213
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/post.php:213
+msgid "[empty]"
+msgstr "(خالی)"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/post.php:396
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/application/view/post.php:404
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/post.php:396
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application/view/post.php:404
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/post.php:396
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\application\view/post.php:404
+msgid "All"
+msgstr "همه"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Activity_Log/activity.php:98
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Activity_Log/activity.php:98
+msgid "System Login"
+msgstr "ورود به سیستم"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Activity_Log/activity.php:102
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Activity_Log/activity.php:102
+msgid "System Logout"
+msgstr "خروج از سیستم"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Activity_Log/activity.php:108
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Activity_Log/activity.php:108
+msgid "Unknown Activity"
+msgstr "فعالیت ناشناخته"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Activity_Log/extension.php:112
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Activity_Log/extension.php:112
+msgid "Activity Log"
+msgstr "گزارش فعالیت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Activity_Log/extension.php:116
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Activity_Log/extension.php:116
+msgid ""
+"Tracks User Activities like user login/logout or post changes. Check <b>AAM "
+"Activities</b> Extension to get advanced list of possible activities."
+msgstr ""
+"<b>ردیابی فعالیت های کاربر مانند ورود و خروج کاربر یا تغییرات کاربر. افزودنی "
+"فعالیت های افزونه کنترل دسترسی پیشرفته را بررسی کنید تا فهرست پیشرفته از "
+"فعالیت های ممکن را دریافت کنید.</b>"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Activity_Log/extension.php:177
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Activity_Log/extension.php:177
+msgid "Clear Logs"
+msgstr "پاک کردن گزارش ها"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Activity_Log/extension.php:178
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Activity_Log/extension.php:178
+msgid "Get More"
+msgstr "بیشتر"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Multisite_Support/extension.php:125
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Multisite_Support/extension.php:125
+msgid "Sites"
+msgstr "سایت ها"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Multisite_Support/extension.php:126
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Multisite_Support/extension.php:126
+msgid "Site Manager"
+msgstr "مدیریت سایت"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Multisite_Support/extension.php:189
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Multisite_Support/extension.php:189
+msgid "Set Default"
+msgstr "تنظیم پیش فرض"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Multisite_Support/extension.php:190
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Multisite_Support/extension.php:190
+msgid "Unset Default"
+msgstr "تنظیم نکردن پیش فرض"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_Multisite_Support/extension.php:191
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_Multisite_Support/extension.php:191
+msgid "Set as Default"
+msgstr "تنظیم به عنوان پیش فرض"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_My_Feature/extension.php:50
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_My_Feature/extension.php:50
+msgid "My Feature"
+msgstr "ویژگی من"
+
+#: C:\Users\Ghaem\Desktop\advanced-access-manager/extension/AAM_My_Feature/extension.php:53
+#: C:\Users\Ghaem\Desktop\advanced-access-manager\extension\AAM_My_Feature/extension.php:53
+msgid "My customly developed feature"
+msgstr "<b>ویژگی دلخواه توسعه یافته من</b>"

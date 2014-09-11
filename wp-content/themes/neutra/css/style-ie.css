@@ -1,0 +1,9 @@
+body { behavior:url("wp-content/themes/neutra/css/csshover3.htc"); }
+#header { margin-top:50px; }
+#header #menu ul li ul { top:23px; }
+#header #menu ul li:hover ul li ul { _left:130px; }
+#left .post { padding-bottom:1px; }
+#right h2 { text-align:left; margin-left:-15px; }
+#right ul li ul li { text-align:left; margin-left:-15px; }
+
+#comment-template blockquote div.date span { padding-bottom:0; position:relative; bottom:-3px; right:-2px; }

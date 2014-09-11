@@ -1,0 +1,275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pyrmont_v2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-08 13:14+1000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: motta <mottaed@gmail.com>\n"
+"Language-Team: motta <mottaed@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:6
+msgid "404 Error Page"
+msgstr "404 错误页面"
+
+#: 404.php:11
+msgid "This is a 404 error page."
+msgstr "这里是 404 错误页面."
+
+#: archives.php:12
+msgid "Archives"
+msgstr "文章存档"
+
+#: archives.php:66
+msgid "ERROR:"
+msgstr "错误:"
+
+#: archives.php:66
+msgid "No items were found to be displayed."
+msgstr "当前无内容可以显示."
+
+#: comments.php:12
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "请输入密码以查看回复"
+
+#: comments.php:21
+msgid "No Comment."
+msgstr "暂无回复"
+
+#: comments.php:21
+msgid "1 comment so far"
+msgstr "已有 1 个回复"
+
+#: comments.php:21
+#, php-format
+msgid "% comments so far"
+msgstr "已有 % 个回复"
+
+#: comments.php:22
+msgid "Add Your Comment"
+msgstr "添加回复"
+
+#: comments.php:47
+msgid "Comments are closed."
+msgstr "回复功能关闭"
+
+#: comments.php:58
+msgid "Your Comment"
+msgstr "你的回复"
+
+#: comments.php:59
+msgid "Change mind? Click here to cancel."
+msgstr "没想好? 点击这里取消."
+
+#: comments.php:64
+msgid "You must be <a href=\"<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>\">logged in</a> to post a comment."
+msgstr "你必须 <a href=\"<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>\">登陆</a> 之后才能提交回复."
+
+#: comments.php:71
+msgid "Logged in as"
+msgstr "欢迎回来"
+
+#: comments.php:71
+msgid "Log out of this account"
+msgstr "注销本帐号的登陆"
+
+#: comments.php:71
+msgid "Log out &raquo;"
+msgstr "注销本次登陆 &raquo;"
+
+#: comments.php:81
+msgid "Name"
+msgstr "昵称"
+
+#: comments.php:81
+msgid "<abbr title=\"Required\">*</abbr> :"
+msgstr "<abbr title=\"必须填写\">*</abbr> :"
+
+#: comments.php:86
+msgid "Email"
+msgstr "电子邮件"
+
+#: comments.php:86
+msgid "<abbr title=\"Required, would not be published\">*</abbr> :"
+msgstr "<abbr title=\"必须填写. 放心, 我们不会公布邮件地址.\">*</abbr> :"
+
+#: comments.php:91
+msgid "URI :"
+msgstr "网站 :"
+
+#: comments.php:99
+msgid "You can use these tags:"
+msgstr "你可以使用这些标签:"
+
+#: comments.php:102
+msgid "Submit"
+msgstr "提交回复"
+
+#: footer.php:4
+msgid "Powered by <a href=\"http://wordpress.org/\" title=\"CODE IS POETRY\">WordPress</a>&nbsp;and&nbsp;<a href=\"http://imotta.cn/\" title=\"Pyrmont V2 theme\">Pyrmont V2</a>."
+msgstr "本站由 <a href=\"http://wordpress.org/\" title=\"代码如诗\">WordPress</a> 强力驱动.&nbsp;<a href=\"http://imotta.cn/\" title=\"Pyrmont V2 theme\">Pyrmont V2</a>&nbsp;主题."
+
+#: functions.php:17
+msgid "Search"
+msgstr "搜索"
+
+#: functions.php:35
+msgid "Waiting for the admin to approve your comment. Please be patient."
+msgstr "请耐心等待管理员审核通过你的回复."
+
+#: functions.php:40
+msgid "&nbsp;said:&nbsp;"
+msgstr "&nbsp;发表:&nbsp;"
+
+#: functions.php:40
+msgid "Y.m.d"
+msgstr "Y.m.d"
+
+#: functions.php:40
+msgid "H:i"
+msgstr "H:i"
+
+#: functions.php:65
+msgid " comments on "
+msgstr " 的回复: "
+
+#: header.php:33
+msgid "HOME"
+msgstr "首  页"
+
+#: header.php:38
+msgid "Follow me on twitter"
+msgstr "在 twitter 上 follow 我"
+
+#: header.php:39
+msgid "Subscribe"
+msgstr "订阅"
+
+#: header.php:39
+msgid "rss feed"
+msgstr "rss feed"
+
+#: index.php:5
+msgid "Tag: "
+msgstr "标签: "
+
+#: index.php:7
+msgid "Category: "
+msgstr "分类: "
+
+#: index.php:17
+#: page.php:17
+#: search.php:12
+#: single.php:11
+msgid "Permalink to: "
+msgstr "永久链接: "
+
+#: index.php:20
+#: page.php:20
+#: search.php:14
+#: single.php:14
+msgid "Category"
+msgstr "分类"
+
+#: index.php:24
+#: page.php:24
+#: search.php:18
+#: single.php:18
+msgid "Tags: no tag /"
+msgstr "标签: 暂无标签 /"
+
+#: index.php:28
+#: page.php:28
+#: search.php:22
+#: single.php:22
+msgid "Tag"
+msgstr "标签"
+
+#: index.php:30
+#: page.php:30
+#: search.php:24
+#: single.php:24
+msgid "Add Comment"
+msgstr "添加回复"
+
+#: index.php:30
+#: search.php:24
+msgid "1 comment"
+msgstr "1 个回复"
+
+#: index.php:30
+#: search.php:24
+#, php-format
+msgid "% comments"
+msgstr "% 个回复"
+
+#: index.php:31
+#: page.php:31
+#: search.php:25
+#: single.php:25
+msgid "Edit"
+msgstr "编辑"
+
+#: index.php:38
+msgid "</p><p>Read More >></p>"
+msgstr "</p><p>继续阅读全文 >></p>"
+
+#: index.php:47
+#: search.php:33
+msgid "&laquo; Previous Entries"
+msgstr "&laquo; 前一页"
+
+#: index.php:48
+#: search.php:34
+msgid "Next Entries &raquo;"
+msgstr "后一页 &raquo;"
+
+#: index.php:55
+#: page.php:48
+#: search.php:41
+#: single.php:42
+msgid "Sorry, nothing found!"
+msgstr "抱歉, 您请求的内容并不存在!"
+
+#: index.php:59
+#: page.php:52
+#: search.php:45
+#: single.php:46
+msgid "Please use the search function, or visit the archives page."
+msgstr "请使用搜索功能, 或者访问存档页面."
+
+#: links.php:12
+msgid "Links"
+msgstr "友情链接"
+
+#: search.php:4
+msgid "Keyword: "
+msgstr "关键词: "
+
+#: sidebar.php:7
+msgid "Recent Posts"
+msgstr "最新文章"
+
+#: sidebar.php:14
+msgid "Recent Comments"
+msgstr "最新回复"
+
+#: sidebar.php:21
+msgid "Meta"
+msgstr "其它"
+
+#~ msgid "search"
+#~ msgstr "搜索"
+
+#, fuzzy
+#~ msgid "Required"
+#~ msgstr "必须填写"
+

@@ -1,0 +1,663 @@
+/*
+Theme Name: USZ Museum Core
+Theme URI: http://www.usz.uni-halle.de
+Description: Universitätssportzentrum Theme based on Museum Core
+Version: 1.0
+Author: Robert Jäckel/Katrin Roloff
+Template: museum-core
+*/
+@import url("../museum-core/style.css");
+
+/* http://www.diffchecker.com/   */
+
+html {
+	line-height: 1.5em;
+}
+body {
+	line-height: 1.5;
+}
+
+#wrap .span-3 { margin-left: 0; }
+#wrap { min-height: 900px; margin-bottom: 50px; padding: 0; position: relative; }
+nav.mainnav {
+  
+    width: 74.05%;
+    /*float: right;
+    /*padding-right: 60px;*/
+    padding-right: 10px; 
+    padding-left: 1px;
+    margin: 0!important;
+    margin-top: -30px!important;
+    margin-left:25.85%!important;
+}
+img.ajax-loader  {
+    width: auto;
+}
+.header { position: relative; }
+#menu-hauptmenu { margin-left: -10px!important; }
+article { padding-right: 20px!important; }
+.credit {
+    position: relative;
+    font-size: .8em;
+    color: #333;
+}
+.container a:hover, .container a:active { text-decoration: underline; }
+.menu a:hover, .menu a:active { text-decoration: none; }
+
+.credit a,.credit a:link, .credit a:visited { color: #333; }
+.credit a:hover, .credit a:active { color: #000; }
+#rightbox { text-align: right; }   
+@media screen, projection {
+    p { margin: 1em 0; }
+    /*dl dt { font-weight: normal; }*/
+}
+/*
+ol { position: relative; left: -45px; }
+*/
+
+.kontakt {
+   background-color: #eee;
+   padding: 1em;
+   margin-top: 1em;
+   /*width: 780px;*/
+   /*height: auto;*/
+}
+.kontakt img { width: auto; }
+
+input[type="button"] { text-shadow: inherit; }
+input[type="button"] { text-shadow: none; }
+
+#senden {
+    width: 127px;
+    height: 30px;
+}
+
+.half_w {
+  width: 47%;
+  min-width: 150px;
+}
+
+.kontakt>div { float: left; padding-right: 1%}
+.kontakt hr {
+  height: 0;
+  border: none;
+  clear: both;
+}
+/*.kontakt input[type=text],input[type=email] { max-width: 100%; width:380px }*/
+
+/*img, object, embed { margin-top: -70px; }*/
+
+.container {box-shadow: 0 0 10px #626161; }
+
+body { text-shadow: inherit; }
+
+a, a:link, a:visited { color: #81ab2e; }
+a:hover, a:active { text-decoration: underline; }
+
+/*header { 
+    margin: 20px 0 10px; 
+} */
+
+img {
+    margin: 0px 0px 0px 0px;
+}
+
+.headerimg {
+    width: 100%;
+    height: auto;
+    margin-left: 0px;
+}
+
+/*.headerimg hgroup h2, .headerimg hgroup h3, .headerimg hgroup a { text-shadow:inherit; }*/
+
+div.menu-navigation-container {
+    margin: 0!important;
+    position: relative;
+    height: 36px;
+    z-index: 1;
+    display: block;
+    clear: both;
+}
+div.menu-navigation-container ul {
+    list-style-type: none;
+    /*margin: 0 !important;*/
+    margin: 0;
+}
+div.menu-navigation-container li {
+    width: 100%;
+    text-align: right;
+    float: left;
+    padding: 7px 10px;  
+}
+div.menu-navigation-container li:hover,
+div.menu-navigation-container li:active {
+    background: #efefef;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+}
+div.menu-navigation-container li a:link,
+div.menu-navigation-container a:visited,
+nav.mainnav a:visited,
+nav.mainnav a:active,
+div.menu-navigation-container li a:hover,
+div.menu-navigation-container a:active {
+    position: relative;
+    z-index: 999;
+}
+div.menu-navigation-container li li {
+    display: inline;
+    width: 150px;
+    margin: 0;
+    padding: 7px 10px;
+    clear: left;
+    position: relative;
+    z-index: 999;
+    line-height: 0;
+    opacity: 0;
+}
+div.menu-navigation-container li:hover li {
+    line-height: 20px;
+    opacity: 1;
+}
+div.menu-navigation-container li li {
+    -webkit-transition: opacity .50s ease-in .25s, line-height .15s linear .1s;
+    -moz-transition: opacity .50s ease-in .25s, line-height .15s linear .1s;
+    -o-transition: opacity .50s ease-in .25s, line-height .15s linear .1s;
+    transition: opacity .50s ease-in .25s, line-height .15s linear .1s;
+}
+div.menu-navigation-container li li:hover,
+div.menu-navigation-container li li:active {
+    background: #fcfcfc;
+    box-shadow: none!important;
+}
+nav.topnav li ul,
+nav.mainnav li ul,
+div.menu-navigation-container li ul {
+        position: absolute;
+        left: -999em;
+        margin-top: 5px!important;
+}
+nav.topnav li:hover ul,
+nav.mainnav li:hover ul {
+    font-size: 14px;
+}
+div.menu-navigation-container .sub-menu {
+    margin-left: 31px !important;
+    box-shadow: none !important;
+}
+div.menu-navigation-container .sub-menu .sub-menu {
+    margin-left: 20px!important;
+}
+div.menu-navigation-container li:hover ul {
+    left: auto;
+    background: #efefef;
+    padding: 0px;
+    z-index: 1000;
+    box-shadow: 2px 2px 2px rgba(200, 200, 200, 0.5);
+    font-size: 14px;
+}
+div.menu-navigation-container li:hover ul/*,
+div.menu-navigation-container li.sfhover ul*/ {
+    left: auto;
+}
+div.menu-navigation-container li:hover li ul {
+    left: -999em;
+}
+div.menu-navigation-container li li:hover ul {
+    left: 150px;
+    top: -15px;
+    z-index: 111;
+}
+time {
+    display: none;
+}
+ul.sidebar, .sidebar ul  {
+    /*margin: 9px !important;*/
+    margin: 9px 0 !important;
+}
+
+@media only screen and (max-width: 380px){
+    div.menu-navigation-container { font-size: 80%; }
+}
+
+.grenze {
+   border: 1px solid #CCCCCC ; margin-bottom: 0.9em; padding: 0.5em;
+}
+/*
+ul#menu-hauptmenu > li:first-child {
+    margin-left: 287px;
+}
+*/
+form#searchform {
+   text-align: right;
+}
+/*
+
+form#searchform {
+    display: block; 
+    margin-top: -30px; 
+    margin-left: 850px;
+}
+*/
+/*
+.breadcrumbs {
+    margin-left: 295px;
+    background-color: #eeeeee;
+    margin-right: 7px;
+    font-size: small;
+}
+*/
+hgroup.siteinfo {
+    display: none;
+}
+
+.widget_breadcrumb_navxt {
+    font-size: small;
+    /*text-decoration: underline; */
+    color: #888 ;
+}
+.breadcrumbs {
+    padding: 0;
+}
+.breadcrumbs>ul {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+button:focus, button:active, input:focus, input:active, select:focus, select:active, textarea:focus, textarea:active {
+-moz-box-shadow: #9BC34B 0 0 7px;
+-webkit-box-shadow: #9BC34B 0 0 7px;
+box-shadow: #9BC34B 0 0 7px;
+z-index: 1;
+}
+
+textarea {
+    width: 100%;
+}
+
+div.content {
+    padding-top: 20px;
+}
+
+.frontpage_nav {
+    list-style: none;
+}
+.frontpage_nav>li {
+    float: left;
+    margin-top: 20px;
+}
+
+#fliese {
+    width: auto; 
+    height: auto;
+    margin-bottom: 15px;            
+}
+
+.kleiner {
+    width: 300px;          
+}    
+
+.nochkleiner {
+    width: 125px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#adh_logo {
+    position: relative;
+    top: 3em;
+    display: block;
+    text-align: right;
+}
+
+.widget { clear: both; }
+
+#adh_logo img {
+   width: 10em;
+}
+
+#winterball_id {
+    width: 150px;
+    float: right;
+}
+
+.eindruecke {
+    margin-left: 15px;
+}
+
+.name {
+    color: #000;
+    text-decoration: none;
+}
+
+.ui-accordion .ui-accordion-header {
+    background: #fff;
+}
+
+.selkestr {
+    width: auto;
+    float: left;
+    margin-right: 5px;
+} 
+
+#selkestr_eins {
+    margin-left: 0px;
+}
+
+.karte {
+        margin-top: 20px;
+}        
+    
+.weinberg {
+    width: auto;
+    height: 107px;
+    float: left;
+    margin-right: 15px;
+}
+
+#weinberg_eins {
+    margin-left: 20px;
+}
+
+.kroellwitz {
+    width: auto;
+    height: 120px;
+    float: left;
+    margin-right: 20px;
+}
+
+#kroellwitz_eins {
+    margin-left: 20px;
+}
+
+.tanzsaal {
+    width: auto;
+    float: left;
+    margin-right: 20px;
+}
+
+#tanzsaal_eins {
+    margin-left: 15px;
+}
+
+.dojo {
+    width: auto;
+    float: left;
+    margin-right: 20px;
+}
+
+#dojo_eins {
+    margin-left: 20px;
+}
+
+.ziegelwiese {
+    width: auto;
+    float: left;
+    margin-left: 20px;
+}
+
+#ziegelwiese_eins {
+    margin-top: 64px;
+}
+
+.spofe {
+    width: 240px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.spofe_hoch {
+    width: auto;
+    float: left;
+    margin-right: 30px;
+}
+
+# text_spofe {
+    float: left;
+    margin-top: 50px;
+}
+
+.sonderzeit {
+     margin-left: 50px;
+}
+
+#sonderzeit_eins {
+     margin-left: 20px;
+}
+
+
+#fliese_eins {
+margin-left: 20px;
+}
+
+.zeit {
+    float: left;
+    clear: left;
+width: 400px;
+height:30px;
+}
+
+.dick {
+font-weight: bold;
+clear: left;
+}
+
+
+.bootshaus {
+    width: auto;
+    float: left;
+    margin-left: 20px;
+}
+
+#bootshaus_eins {
+      margin-left: 20px;
+}
+
+.spiegelsaal {
+    width: auto;
+    float: left;
+    margin-left: 20px;
+}
+
+#spiegelsaal_eins {
+     margin-left: 20px;
+}
+
+#spiegelsaal_zwei {
+      margin-top: 60px;
+}
+
+#sportstaetten {
+    line-height: 35px;
+}
+
+.lndw {
+   width: auto;
+    float: left;
+    margin-left: 20px; 
+}
+
+#lndw_eins {
+    margin-left: 20px;
+}
+
+.winterball {
+    width: auto;
+    float: left;
+    margin-left: 20px;
+}
+
+#winterball_eins {
+      margin-left: 20px;
+}
+
+.sportfest {
+    width: auto;
+    float: left;
+    margin-left: 20px;
+}
+
+#sportfest {
+     margin-left: 2px;
+}
+
+#sportfest_text  {
+    float: left;
+    margin-top: 50px;
+}
+
+#trabischieben_text {
+    float: left;
+    margin-top: 50px;
+}
+
+#winterball_text {
+    float: left;
+    margin-top: 50px;
+}
+
+.trabi {
+    width: auto;
+    float: left;
+    margin-left: 20px;
+}
+
+#trabi_eins {
+     margin-left: 20px;
+}
+
+.trainingsplaene {
+    width:  96%; 
+    height: 500px;
+}
+
+.impressionen {
+    width: auto; 
+    float: left;
+    margin-right: 10px;
+}
+
+#impressionen_behoerdenlauf {
+    float: right;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+#text_erfolge {
+    text-align: left;
+    margin-top: -45px;
+    padding-left: 10px;
+}
+
+#LA {
+    margin-top: 7px;
+}
+
+#em {
+    width: 96%;
+    height: 500px;    
+}
+
+#sportfrei {
+    text-align: left;
+    line-height:180%;
+}
+
+.portrait {
+    display: inline-block;
+    /*width: 197px;*/
+    float: left;
+    /*margin-top: -55px;*/
+    margin: 0 1em 1em 0;
+}
+
+.wpcf7 {
+    clear: left;
+}
+
+dl {
+    float: left;
+}
+
+dt {
+    font-weight: bold;
+}
+
+#bereich_moni {
+    padding: 4px 40px 4px 5px;
+}
+
+#portrait_moni {
+    margin-left: -20px;
+}
+
+.portrait_fitness {
+    margin-right: 40px;
+    width: 120px;
+    display: inline-block;
+}
+
+#portrait_eins {
+    margin-left: 0px;
+}
+
+.name_fitness {
+    font-weight: bold;
+    width:25%;
+}
+
+.fitness_quali {
+    width: 25%;
+}
+
+#gemeinsam {
+    width: auto;
+}
+
+.gross_buchstaben {
+    text-transform: uppercase;
+}
+
+.spofe {
+    width: 240px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.spofe_hoch {
+    width: auto;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.vsp {
+    margin-top: 13px;
+}
+
+#searchform {
+    float: right;
+}
+
+
+
+@media all and (max-width: 900px) {
+
+}
+
+@media only screen and (max-width: 767px ) {
+    nav.mainnav { width: auto; float: left; margin-left: 19px!important; margin-top: 0px !important; }
+
+}
+
+@media only screen and (max-width: 1023px) {
+    article { padding: 0; }
+}
+#raum_vsp {
+    margin-left: 20px;
+}
+

@@ -1,0 +1,161 @@
+<?php
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+ */
+?>
+<div class="wrap" id="aam">
+    <div class="postbox-container" style="width:70%;" id="configpress_area">
+        <div class="metabox-holder">
+            <div class="meta-box-sortables">
+                <div class="postbox">
+                    <div class="handlediv" title="<?php echo __('Click to toggle', 'aam'); ?>"></div>
+                    <h3 class="hndle">
+                        <span>
+                            <?php echo __('AAM ConfigPress', 'aam'); ?>
+                        </span>
+                    </h3>
+                    <div class="inside">
+                        <textarea id="configpress" style="width:100%; height: 400px;"><?php echo aam_Core_ConfigPress::read(); ?></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="postbox-container" style="width:70%; display: none;" id="configpress_info">
+        <div class="metabox-holder">
+            <div class="meta-box-sortables">
+                <div class="postbox">
+                    <div class="handlediv" title="<?php echo __('Click to toggle', 'aam'); ?>"></div>
+                    <h3 class="hndle">
+                        <span>
+                            <?php echo __('AAM ConfigPress Information', 'aam'); ?>
+                        </span>
+                    </h3>
+                    <div class="inside">
+                        <p>
+                            Below is the list of all possible ConfigPress settings with explanation:
+                            <pre style="background:#fff;color:#000">
+<span style="color:#05a;font-weight: bold;">[aam]</span>
+<span style="color:#00b418">#Define default access to admin menu items if it was not configured.</span>
+<span style="color:#00b418">#By default it is set to</span> <span style="color:#d80800">"allow"</span>.
+<span style="color:#0100b6;font-weight:700;">menu.undefined</span> = <span style="color:#d80800">"deny"</span>
+<span style="color:#00b418">#Change the default access capability to AAM->Access Control screen.</span>
+<span style="color:#00b418">#By default capability is <b>administrator</b>.</span>
+<span style="color:#0100b6;font-weight:700;">page.access_control.capability</span> = <span style="color:#d80800">"aam_manager"</span>
+<span style="color:#00b418">#Change the default access capability to AAM->ConfigPress screen.</span>
+<span style="color:#00b418">#By default capability is <b>administrator</b>.</span>
+<span style="color:#0100b6;font-weight:700;">page.configpress.capability</span> = <span style="color:#d80800">"configpress_guru"</span>
+<span style="color:#00b418">#Change the default access capability to AAM->Extensions screen.</span>
+<span style="color:#00b418">#By default capability is <b>administrator</b>.</span>
+<span style="color:#0100b6;font-weight:700;">page.extensions.capability</span> = <span style="color:#d80800">"aam_extensions_manager"</span>
+<span style="color:#00b418">#If there is no access defined for specific post or page, by default AAM tries to inherit</span>
+<span style="color:#00b418">#settings from parent category. Below setting can change this behavior.</span>
+<span style="color:#0100b6;font-weight:700;">post.inherit</span> = <span style="color:#d80800">"false"</span>
+<span style="color:#00b418">#If there is no access defined for specific category, by default AAM tries to inherit</span>
+<span style="color:#00b418">#settings from parent category. Below setting can change this behavior.</span>
+<span style="color:#0100b6;font-weight:700;">term.inherit</span> = <span style="color:#d80800">"false"</span>
+<span style="color:#00b418">#To speed up the AAM execution, the result can be cached.</span>
+<span style="color:#00b418">#The cache is automatically flush during plugin update or when you hit Save button.</span>
+<span style="color:#0100b6;font-weight:700;">caching</span> = <span style="color:#d80800">"true"</span>
+<span style="color:#00b418">#Unlock restricted features in AAM for one administrator. By default you are not</span>
+<span style="color:#00b418">#allowed to manager other administrators.</span>
+<span style="color:#0100b6;font-weight:700;">super_admin</span> = <span style="color:#d80800">"true"</span>
+<span style="color:#00b418">#Keep the native name for newly created roles. Each WordPress role like</span>
+<span style="color:#00b418">#Editor or Contributor has internal ID (usually lowercase equivalent) and title.</span>
+<span style="color:#00b418">#Each time you create new role with AAM, the ID is changed to something like aam_78koi9831933i.</span>
+<span style="color:#00b418">#Setting below suppresses this behavior and keep the name in lowercase format.</span>
+<span style="color:#0100b6;font-weight:700;">native_role_id</span> = <span style="color:#d80800">"true"</span>
+<span style="color:#00b418">#Control access to Edit Permalink feature (Permalink block under the post or page title).</span>
+<span style="color:#00b418">#If this feature is activated, make sure that you created the custom capability "Manage Permalink"</span>
+<span style="color:#00b418">#By default this feature is deactivated.</span>
+<span style="color:#0100b6;font-weight:700;">control_permalink</span> = <span style="color:#d80800">"false"</span>
+
+<span style="color:#05a;font-weight: bold;">[backend]</span>
+<span style="color:#00b418">#Defines redirect behavior when access is denied to any backend resource like menu</span>
+<span style="color:#00b418">#or post. It can be whether valid URL or post/page ID number.</span>
+<span style="color:#00b418">#By default it will show <b>Access Denied</b> message.</span>
+<span style="color:#0100b6;font-weight:700;">access.deny.redirect</span> = <span style="color:#d80800">"http://someurlhere.in"</span>
+<span style="color:#00b418">#Redefine default <b>Access Denied</b> message.</span>
+<span style="color:#0100b6;font-weight:700;">access.deny.message</span> = <span style="color:#d80800">"Oops. This is restricted area"</span>
+
+<span style="color:#05a;font-weight: bold;">[frontend]</span>
+<span style="color:#00b418">#Defines redirect behavior when access is denied to any frontend resource like page</span>
+<span style="color:#00b418">#or post. It can be whether valid URL or post/page ID number.</span>
+<span style="color:#00b418">#By default it will show <b>Access Denied</b> message.</span>
+<span style="color:#0100b6;font-weight:700;">access.deny.redirect</span> = <span style="color:#d80800">"http://someurlhere.in"</span>
+<span style="color:#00b418">#Redefine default <b>Access Denied</b> message.</span>
+<span style="color:#0100b6;font-weight:700;">access.deny.message</span> = <span style="color:#d80800">"Oops. This is restricted area"</span>
+                            </pre>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php if (aam_Core_Console::hasIssues()) { ?>
+        <div class="postbox-container" style="width:25%; margin-left: 2%;">
+            <div class="metabox-holder">
+                <div class="meta-box-sortables">
+                    <div class="postbox">
+                        <div class="handlediv" title="<?php echo __('Click to toggle', 'aam'); ?>"></div>
+                        <h3 class="hndle">
+                            <span><?php echo __('AAM Warnings', 'aam'); ?></span>
+                        </h3>
+                        <div class="inside">
+                            <?php foreach (aam_Core_Console::getWarnings() as $warning) { ?>
+                                <div class="aam-warning"><span><?php echo $warning; ?></span></div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+
+    <div class="postbox-container" style="width:25%; margin-left: 2%;">
+        <div class="metabox-holder">
+            <div class="meta-box-sortables">
+                <div class="postbox" id="control_panel">
+                    <div class="handlediv" title="<?php echo __('Click to toggle', 'aam'); ?>"></div>
+                    <h3 class="hndle">
+                        <span><?php echo __('Control Panel', 'aam'); ?></span>
+                    </h3>
+                    <div class="inside">
+                        <div class="large-icons-row">
+                            <a href="#" class="aam-icon aam-icon-large aam-icon-large-save" id="save_config" >
+                                <span></span><?php echo __('Save', 'aam'); ?>
+                            </a>
+                            <a href="#" class="aam-icon aam-icon-large aam-icon-large-info" id="info_screen" >
+                                <span></span><?php echo __('Info', 'aam'); ?>
+                            </a>
+                            <a href="#" class="aam-icon aam-icon-large aam-icon-large-editor" style="display: none;" id="configpress_screen" >
+                                <span></span><?php echo __('Editor', 'aam'); ?>
+                            </a>
+                        </div>
+                        <div class="medium-icons-row">
+                            <a href="https://twitter.com/wpaam" target="_blank" class="aam-icon aam-icon-medium aam-icon-medium-twitter" aam-tooltip="<?php echo __('Follow @wpaam', 'aam'); ?>">
+                                <span></span><?php echo __('Follow', 'aam'); ?>
+                            </a>
+                            <a href="http://wpaam.com/support" target="_blank" class="aam-icon aam-icon-medium aam-icon-medium-help" aam-tooltip="<?php echo __('Help Forum', 'aam'); ?>">
+                                <span></span><?php echo __('Help', 'aam'); ?>
+                            </a>
+                            <a href="mailto:support@wpaam.com" class="aam-icon aam-icon-medium aam-icon-medium-message" id="aam_message" aam-tooltip="<?php echo __('E-mail Us', 'aam'); ?>">
+                                <span></span><?php echo __('E-mail Us', 'aam'); ?>
+                            </a>
+                            <a href="http://wordpress.org/support/view/plugin-reviews/advanced-access-manager" target="_blank" class="aam-icon aam-icon-medium aam-icon-medium-star" aam-tooltip="<?php echo __('Rate AAM', 'aam'); ?>">
+                                <span></span><?php echo __('Rate Us', 'aam'); ?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

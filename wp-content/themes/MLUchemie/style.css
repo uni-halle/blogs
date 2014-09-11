@@ -1,0 +1,318 @@
+ /*
+Theme Name: MLUchemie
+Theme URI: http://www.oligoform.com
+Description: MLUphysik, WordPress theme from <a href="http://www.oligoform.com">oligoform.com</a>
+Author: oligoform
+Version: 1.0
+Template: MLUphysik
+License: Free GPL
+
+
+				<h1 id="f5">Farbschema 5</h1>
+				<div style="background: #2D7AAB;"></div> institutsblau
+				<div style="background: #000066"></div> dunkelblau
+				<div style="background: #D4D4D4"></div> hellgrau
+				<div style="background: #F1DE35"></div> gelb
+				<div style="background: #A00000"></div> rot
+ 
+*/
+
+
+@import url('../MLUphysik/style.css');
+/*farben*/
+.bg-color-physikgreen {
+	background: #2D7AAB !important; 
+}
+
+.bg-color-physikred {
+	background: #A00000 !important;
+}
+.bg-color-physikblue {
+	background: #000066 !important;
+}
+
+.bg-color-physikyellow {
+	background: #F1DE35 !important;
+}
+
+.bg-color-physikgrey {
+	background: #D4D4D4 !important;
+	color: #000000;
+	color: #000 !important;
+}
+.bg-color-chemiegreen {
+	background: green !important; 
+}
+
+.bg-color-physikgrey a,
+.bg-color-physikgrey li,
+.bg-color-physikgrey dd,
+.bg-color-physikgrey .olgaccordeon,
+.bg-color-physikgrey {
+	color: #000;
+}
+/*farben end*/
+
+a img:hover,
+a:hover img {
+border: none !important;
+}
+
+/*headline*/
+.metro .tile .text-header {
+font-size: 20px !important;
+line-height: 30px !important;
+max-height: 31px !important;
+letter-spacing: 0;
+font-family: "Arial Narrow",Helvetica,Sans-Serif !important;
+white-space: nowrap;
+}
+/*headline end*/
+
+/*logo*/
+			#logo_chemie_kolben,
+			#back,
+			#back1,
+			#back2 {  
+				width:150px; 
+				height:150px;
+				position: absolute;
+			} 
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			@-webkit-keyframes chilogo {
+  from {
+    background-position: 150px 0;
+  }
+
+  to {
+    background-position: 0 150px;
+  }
+}
+
+@-moz-keyframes chilogo {
+  from {
+    background-position: 150px 0;
+  }
+
+  to {
+    background-position: 0 150px;
+  }
+}
+
+@-ms-keyframes chilogo {
+  from {
+    background-position: 150px 0;
+  }
+
+  to {
+    background-position: 0 150px;
+  }
+}
+
+@-o-keyframes chilogo {
+  from {
+    background-position: 0 150px;
+  }
+
+  to {
+    background-position: 150px 0;
+  }
+}
+
+@keyframes chilogo {
+  from {
+    background-position: 150px 0;
+  }
+
+  to {
+    background-position: 0 150px;
+  }
+}
+
+
+
+
+
+
+
+
+			@-webkit-keyframes backanimation {
+  from {
+    background-position: 150px 0;
+  }
+
+  to {
+    background-position: 0 -150px;
+  }
+}
+
+@-moz-keyframes backanimation {
+  from {
+    background-position: 150px 0;
+  }
+
+  to {
+    background-position: 0 -150px;
+  }
+}
+
+@-ms-keyframes backanimation {
+  from {
+    background-position: 150px 0;
+  }
+
+  to {
+    background-position: 0 -150px;
+  }
+}
+
+@-o-keyframes backanimation {
+  from {
+    background-position: 0 -150px;
+  }
+
+  to {
+    background-position: 150px 0;
+  }
+}
+
+@keyframes backanimation {
+  from {
+    background-position: 150px 0;
+  }
+
+  to {
+    background-position: 0 -150px;
+  }
+}
+
+
+
+
+
+
+
+@-webkit-keyframes backanimation1 {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -150px -150px;
+  }
+}
+
+@-moz-keyframes backanimation1 {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -150px -150px;
+  }
+}
+
+@-ms-keyframes backanimation1 {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -150px -150px;
+  }
+}
+
+@-o-keyframes backanimation1 {
+  from {
+    background-position: -150px 0;
+  }
+  to {
+    background-position: 0 150px;
+  }
+}
+
+@keyframes backanimation1 {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -150px -150px;
+  }
+}
+
+
+#back {
+	    -webkit-animation: chilogo 177s ease-in-out  infinite;
+    -moz-animation: chilogo 177s ease-in-out infinite;
+    -ms-animation: chilogo 177s ease-in-out infinite;
+    -o-animation: chilogo 177s ease-in-out infinite;
+    /*animation:chilogo 177s ease-in-out infinite;*/
+    
+/*
+-moz-animation-direction: alternate;
+-webkit-animation-direction: alternate;
+-ms-animation-direction: alternate;
+-o-animation-direction: alternate;
+  animation-direction: alternate;
+*/
+}
+#logo_chemie_kolben {
+	    -webkit-animation: backanimation 47s ease-in  infinite;
+    -moz-animation: backanimation 47s ease-in infinite;
+    -ms-animation: backanimation 47s ease-in infinite;
+    -o-animation: backanimation 47s ease-in infinite;
+    /*animation:backanimation 47s ease-in infinite;*/
+    
+-moz-animation-direction: alternate;
+-webkit-animation-direction: alternate;
+-ms-animation-direction: alternate;
+-o-animation-direction: alternate;
+  animation-direction: alternate;
+}
+#back1 {
+	    -webkit-animation: backanimation1 39s ease-in-out  infinite;
+    -moz-animation: backanimation1 39s ease-in-out infinite;
+    -ms-animation: backanimation1 39s ease-in-out infinite;
+    -o-animation: backanimation1 39s ease-in-out infinite;
+    /*animation:backanimation1 39s ease-in-out infinite;*/
+    
+-moz-animation-direction: alternate;
+-webkit-animation-direction: alternate;
+-ms-animation-direction: alternate;
+-o-animation-direction: alternate;
+  animation-direction: alternate;
+  
+}
+
+
+
+
+#back{
+    background: #2D7AAB;
+    background: -webkit-linear-gradient(left, transparent,rgba(255, 245, 0, 0.33), rgba(255, 61, 0, 0.62),rgba(255, 0, 0, 1), transparent); /*transp. red*/
+    background: -moz-linear-gradient(left, transparent,rgba(255, 245, 0, 0.33), rgba(255, 61, 0, 0.62),rgba(255, 0, 0, 1), transparent); /*transp. red*/
+    background: -o-linear-gradient(left, transparent,rgba(255, 245, 0, 0.33), rgba(255, 61, 0, 0.62),rgba(255, 0, 0, 1), transparent); /*transp. red*/
+        background: -ms-linear-gradient(left, transparent,rgba(255, 245, 0, 0.33), rgba(255, 61, 0, 0.62),rgba(255, 0, 0, 1), transparent); /*transp. red*/
+background: linear-gradient(left, transparent,rgba(255, 245, 0, 0.33), rgba(255, 61, 0, 0.62),rgba(255, 0, 0, 1), transparent); /*transp. red*/
+}
+#logo_chemie_kolben{
+    background: -webkit-linear-gradient(top, transparent, rgb(25, 122, 177), transparent); /*blue water*/
+    background: -moz-linear-gradient(top, transparent, rgb(25, 122, 177), transparent); /*blue water*/
+    background: -o-linear-gradient(top, transparent, rgb(25, 122, 177), transparent); /*blue water*/
+        background: -ms-linear-gradient(top, transparent, rgb(25, 122, 177), transparent); /*blue water*/
+background: linear-gradient(top, transparent, rgb(25, 122, 177), transparent); /*blue water*/
+    }
+#back1{ 
+    background: #A00000; 
+    background: -webkit-linear-gradient(right, transparent,rgba(100, 230, 255, 0.53), transparent); /*light transp blue, air*/
+    background: -moz-linear-gradient(right, transparent,rgba(100, 230, 255, 0.53), transparent);
+    background: -o-linear-gradient(right, transparent,rgba(100, 230, 255, 0.53), transparent);
+        background: -ms-linear-gradient(right, transparent,rgba(100, 230, 255, 0.53), transparent);
+background: linear-gradient(right, transparent,rgba(100, 230, 255, 0.53), transparent);
+    }
+    /*logo end*/

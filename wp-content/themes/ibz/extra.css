@@ -1,0 +1,367 @@
+/*
+Theme Name: IBZ
+Theme URI: http://wordpress.org/extend/themes/twentyeleven
+Author: the WordPress team
+Author URI: http://wordpress.org/
+Description: The 2011 theme for WordPress is sophisticated, lightweight, and adaptable. Make it yours with a custom menu, header image, and background -- then go further with available theme options for light or dark color scheme, custom link colors, and three layout choices. Twenty Eleven comes equipped with a Showcase page template that transforms your front page into a showcase to show off your best content, widget support galore (sidebar, three footer areas, and a Showcase page widget area), and a custom "Ephemera" widget to display your Aside, Link, Quote, or Status posts. Included are styles for print and for the admin editor, support for featured images (as custom header images on posts and pages and as large images on featured "sticky" posts), and special styles for six different post formats.
+Version: 1.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: dark, light, white, black, gray, one-column, two-columns, left-sidebar, right-sidebar, fixed-width, flexible-width, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready
+Text Domain: twentyeleven
+*/
+
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+div.pp-embed p{visibility:hidden;padding:0px;margin:0px;}
+p{padding:0px;margin:0px;}
+.content a { font-style: italic;  }	
+
+.languages{
+	width:100%; 
+	max-width:895px;
+	height: 15px !important;	
+	overflow: hidden !important;
+	position: relative;
+	margin: 10px auto 0 auto; /* Durch automatische Ränder (in Verbindung mit einer Breite) wird die Seite zentriert. */
+    text-align: right; /* Hierdurch wird die Einstellung text-align: center im Body-Element überschrieben. */
+	}
+	
+.languages li{
+float:right;
+padding-left:10px;
+}
+
+.lang-zh{
+visibility:hidden;
+}	
+	
+.header_text{
+float:left;
+margin: 20px 0 0 30px;
+height: 143px;
+font-size: 41px;
+line-height: 37px;
+text-transform: uppercase;
+}
+
+.header_text a:hover{
+color: #9bc24b;
+}
+
+.header_text h1{
+font-size: 39px;
+line-height: 35px;
+margin: 0;
+padding: 0;
+color: #9bc24b;
+}
+
+.header_logo{
+float:right;
+text-align:right;
+margin: 20px 30px 0 0;
+height: 135px;
+}
+
+.header_subline{
+float: right;
+width:645px;
+height: 1px;
+overflow: hidden;
+margin: 24px 30px 40px 0;
+padding: 48px 0 0 0;
+color: #a0a0a0;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+border-bottom: 2px solid #9bc24b;
+}
+
+.header_subline_img_de{
+background: url(images/ibz-subline03-de.png) no-repeat;
+}
+
+.header_subline_img_en{
+background: url(images/ibz-subline03-en.png) no-repeat;
+}
+
+.header h1{
+font-size: 41px;
+line-height: 38px;
+margin: 0;
+padding: 0;
+}
+
+.news_container , .rss_reader_container , .box_container{
+	width: 185px;
+	padding: 0 9px 10px 9px; 
+	background: #e0e0e0; 
+	margin-bottom: 20px;
+	border: 1px solid #c7c7c7;
+}
+
+.news_container {}
+
+.news_container  h1, .rss_reader_container h1, .box_container h1{
+color: #424242;
+margin: 0 0 6px 0;
+padding: 5px 0 8px 0; 
+text-transform: uppercase;
+font-size:14px;
+min-width: 194px;
+font-weight:normal;
+
+}
+
+.news_container  h2, .rss_reader_container h2 , .box_container h2 {
+color: #424242;
+margin: 0 0 6px 0;
+padding: 5px 0 8px 0; 
+background: url(images/ibz_bg-wpattern.gif) bottom repeat-x;
+text-transform: uppercase;
+font-size:14px;
+min-width: 194px;
+font-weight:normal;
+}
+
+.news_container  h3, .rss_reader_container h3 , .box_container h3 {
+color: #424242;
+font-size:12px;
+font-weight:bold;
+padding-bottom: 0;
+padding-top: 0;
+}
+
+.news_container  li, .rss_reader_container li {
+color:#000000;
+font-size:12px;
+text-align:left;
+padding-bottom: 6px;
+}
+
+.one_third h1{ 
+color: #424242;
+margin: 0 0 6px 0;
+padding: 5px 0 8px 0; 
+background: url(images/ibz_bg-wpattern.gif) bottom repeat-x;
+text-transform: uppercase;
+font-size:14px;
+min-width: 194px;
+font-weight:normal;
+}
+
+.pagnav{
+min-width: 160px;
+margin-bottom: 5px;
+font-size: 12px;
+text-transform: uppercase;
+font-family: 'OpenSansSemibold', Arial, sans-serif;
+color: #424242;
+}
+
+.page_item a:hover { color: #6AA101; display: block; } 
+
+.pagnav li{
+background: #fff;
+margin-bottom: 5px;
+padding-top: 6px;
+min-height: 24px;
+}
+
+.pagnav li ul li{
+font-weight: normal;
+}
+
+.current_page_item a{
+color: #fff;
+background: #9bc24b;
+display: block;
+margin-left: -30px;
+padding-left: 30px;
+}
+
+.current_page_item a:hover{
+color: #fff;
+background: #9bc24b;
+display: block;
+margin-left: -30px;
+padding-left: 30px;
+}
+
+
+
+.current_page_item .children a{
+color: #000000;
+background: #fff;
+display: block;
+margin-left: -30px;
+padding-left: 30px;
+}
+
+.page_item .children a:hover { color: #6AA101; display: block; } 
+
+
+.children {
+padding-top: 1px;
+margin-top: 5px;
+margin-bottom: 0;
+background: url(images/ibz_bg-pattern.gif) #d3d3d3;
+font-family: 'OpenSansRegular', Arial, sans-serif; }
+
+.children li {
+margin-bottom: 1px; }
+
+.children li ul {
+display: none; }
+
+.children li ul li {
+display: none; }
+
+.alignleft {
+float: left;
+margin: 15px 10px 0 0;
+margin-top: 5px; }
+
+
+.ibz-footer-outer {
+float:left; 
+background: url(images/ibz_bg-pattern.gif) gray; 
+width:100%;
+margin-bottom: 30px; }
+
+.ibz-footer-inner {
+float:left; 
+width:100%;
+height: 138px;
+margin: 5px 0; 
+background: #fff; }
+
+.ibz-footer-inner img {
+float:left; 
+height: 100%;
+}
+
+.rooms_container { 
+	float: left;
+	width: 635px; 
+	min-height:250px; 
+	padding: 10px 0 10px 10px;
+	background: #e0e0e0;
+	margin-bottom: 20px; }
+	
+.rooms_container h2 {
+color: #424242;
+margin: -5px 0 5px 0;
+padding: 0 0 8px 0; 
+background: url(images/ibz_bg-wpattern.gif) bottom repeat-x;
+text-transform: uppercase;
+font-size:14px;
+min-width: 194px;
+font-weight:normal;
+}
+
+.rooms_container img { 
+	padding-bottom: 0;
+	margin-bottom: -5px; }
+	
+.rooms_container a { 
+	font-style: normal; }
+	
+.rooms_container a:hover { 
+	color: #9BC24B; }
+
+.rooms_container .leftcol{ 
+	float: left;
+	width: auto; /* vorher 398px*/
+	height: auto; /* vorher 248px*/
+	padding: 1px 1px 0 1px;
+	margin-right:10px;
+	background: #fff; }
+	
+.rooms_container .leftcol ul{ 
+	float: left;
+	margin-top: 1px;
+	margin-bottom: 0;}
+
+	
+.rooms_container .leftcol .button{ 
+	float: right;
+	margin: 2px 5px 0 0; }
+	
+.rooms_container .leftcol .filter{ 
+	float: left;
+	padding: 1px 5px 0 5px;
+	border-right: 3px solid #d3d3d3;
+	height: 23px;
+	cursor: pointer; }
+
+	
+.rooms_container .rightcol{ 
+	float: right;
+	width: 205px;
+	height: 100%; }
+	
+.rooms_container .rightcol .text{ 
+	width: 100%;
+	height: 230px; }
+	
+.rooms_container .rightcol .button{ 
+	background: white;
+	width: 100%;
+	height: 23px;
+	padding-top: 2px; }
+	
+.rooms_container .rightcol .button a{ 
+	width: 100%;
+	display: block;
+	margin-left: 5px; }
+
+
+
+div.panorama{
+ position:relative;
+ width:auto; /* vorher 398px*/
+ height:auto;/* vorher 224px*/
+	}
+
+iframe.panorama{
+	display: block; 
+	width: 398px; 
+	height: 224px;}
+
+div.contactform img{
+	height:0; 
+	}
+	
+div.pp_pic_holder img {
+	padding-bottom: 0; }
+	
+.pp_details {
+	z-index: 30; }
+
+
+/* Footer der MLU ausblenden */
+
+#global-footer {
+    display: none; }
+
+
+
+
+/* clearfix zum Aufheben der Floatumgebung */
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	font-size: 0;
+	clear:both;
+	visibility: hidden; }
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+* html #navi {margin-top: -5px; padding-bottom:7px;}
+/* End hide from IE-mac */

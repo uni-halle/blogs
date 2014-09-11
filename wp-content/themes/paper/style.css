@@ -1,0 +1,685 @@
+/*  
+Theme Name: Paper
+Theme URI: http://birdthemes.com/paper-theme/
+Description: A simple & fun WordPress theme, for artists and craftsters! View a live version of the theme here: http://birdthemes.com/paper-theme/ - Enjoy! 
+Version: 1.0
+Author: Amanda Hawkins
+Author URI: http://www.birdthemes.com/
+Tags: fixed-width, two-columns, light, silver, right-sidebar, threaded-comments
+ 
+The CSS, XHTML and design is released under GPL:
+hhttp://www.gnu.org/licenses/gpl-3.0-standalone.html
+
+*/
+
+
+* {
+	margin:0;
+	padding:0;
+	}
+
+body,html {
+	min-height:101%;
+	}
+	
+body {
+	background: #726b6a url(images/background.jpg) top center;
+	background-repeat: no-repeat;
+	color: #545454;
+	padding: 0; 
+	margin-top: 0;
+	padding-top: 0;
+	}
+
+body, select, input, textarea {
+	font: 76% Helvetica, Arial, Verdana, Sans-Serif;
+	line-height: 180%; letter-spacing: 
+	}
+
+/**************** Structure *****************/
+			#page {
+				width:953px;
+				margin:0 auto;
+				background:transparent;
+				padding: 0;
+				background: #fff url(images/notebook_back.jpg) repeat;
+				}
+						#content {
+									width:943px;
+									float:left;
+									padding: 0 0 0 10px;
+									margin: 0;
+									background: url(images/content.jpg) no-repeat;
+									}
+									#multi_posts {width: 640px; float:left; overflow:hidden;}
+									
+									.navigation {display:block; overflow:hidden; margin-bottom: 30px;
+									padding: 0 25px 0 25px; font-family: courier; font-size: 125%;}
+									.entry {
+											padding:10px 0 0 0;
+											overflow: hidden;
+											font-size: 105%;
+											line-height: 22px;
+											margin-top: 10px;
+											}	
+									.post img, .post img a:link, .post img a:visited {
+												border: 1px solid #cfe3ee; padding: 5px 5px 20px 5px; background: #fff;
+												}
+									.gallery a img, .gallery img {
+											border: 1px solid #cfe3ee; padding: 5px 5px 20px 5px; background: #fff;
+											}
+									
+									.gallery-item {
+											text-align:center;
+											}
+									
+									.gallery-caption {
+											font-size: 10px;
+											padding-top: 0;
+										}
+									
+									.post {
+											padding: 10px 25px 5px 25px ;	
+											margin: 0 0 80px 0;
+											background:transparent;
+											overflow: hidden;
+											}						
+											.sticky {border-left:2px solid yellow;}			
+											#page_content {
+														width:500px;
+														min-height: 300px;
+														float:left;
+														padding: 0 0 0 10px;
+														margin: 12px 0 0 0;
+														}	
+			#header {
+				width:953px;
+				height: 62px;
+				background: url(images/header.jpg) no-repeat;
+				padding:0;
+				}
+				#blogname {
+							width: 235px; 
+							float:right;
+							font-size: 80%;
+							font-weight:normal;
+							font-family: courier, serif;
+							text-transform: none;
+							padding: 8px 0 0 0; 
+							}
+			#notecard {
+				width: 240px;
+				height: 390px;
+				clear:all;
+				}
+				.description {
+							font-size: : 80%;
+							color:#545454;
+							padding: 20px 35px 0 23px;
+							font-family: courier;
+							font-style: normal;
+							font-weight: normal;
+							text-align: center;
+							height: 110px;
+							overflow: hidden;
+							margin-bottom: 10px;
+							}	
+					.etsy {padding-left: 20px;}
+			#notecard img.sidebar {
+				position: absolute;
+				border: 1px solid #cfe3ee;
+				padding: 4px;
+				background: white;
+				}
+			#sidebar {
+				width: 240px;
+				padding: 6px 20px 7px 0;
+				float:right;
+				background: transparent;
+				margin: 0px 10px 5px 0;
+				}
+				#sidelist {margin-top: 390px;}
+
+			#footer {
+				margin: 0 auto;
+				padding-top: 16px;
+				width: 953px;
+				height: 31px;
+				font-size: 12px;
+				text-align: center;
+				color:#696969;
+				overflow: hidden;
+				float: left;
+				background: url(images/footer.jpg);
+				line-height: 14px;
+				}
+				.ahhhdesign {font-size: 12px; display: block; color: #f0dc53;} .ahhhdesign a:link, .ahhhdesign a:visited, .ahhhdesign a:hover {color: #f0dc53;}
+		
+		.date {
+				font-size: 110%;
+				height: 35px;
+				width: 35px;
+				padding:0;
+				float: right;
+				font-family: Courier, helvetica;
+				color: #696969;
+				margin: -15px 5px 0px 10px;
+				clear: all;
+				background: url(images/date.jpg);
+				padding: 4px;
+				color:#fff;
+				text-align: center;
+			}
+			.month {display:block;}
+			.day {font-size: 20px; display:block; margin-top: -8px;}
+			
+			.tags a {background: url(images/tags.jpg) top left; padding: 4px 8px 2px 18px; margin-right: 5px; text-transform:uppercase; letter-spacing: .06em; font-size: 90%;}
+			.category { text-transform:uppercase; letter-spacing: .04em; font-size: 95%; }
+			
+			.commentct {font-family:Courier; float:right; padding: 10px 12px 10px 50px; text-transform:uppercase; letter-spacing: .04em; font-size: 200%; line-height: 12px;} 
+			.edit {float:left; padding-top: 20px;font-family:Courier;}
+			
+			.c_title {font-size: 20px;; display:block; margin-left: -10px; color: #f0d7e1;}
+			
+/**************** HTML Elements *****************/
+				.postmetadata {
+				border-top: 2px solid #f3ddea;
+				border-bottom: 2px solid #f3ddea;
+				padding: 2px 0 2px 0;
+				margin-top: -18px;
+				font-family:Courier;
+				clear:all;
+				min-height: 26px;
+				}
+				
+			.edit_comments {display:block; overflow:hidden; clear:all;}
+	
+	
+			img.wp-smiley {border: 0; padding: 0; margin:0;}
+	
+			.left { float:left; padding-right: 8px; }
+			.right { float:right; padding-left: 8px; }
+			.alignleft {float: left; margin: 2px 6px 6px 0;}
+			.alignright {float: right; margin: 2px 0 6px 6px;}
+			.aligncenter {text-align: center; margin: 8px 0 8px 0}
+			
+			p {	
+				margin: 0 0 15px 0;
+				}
+			
+			a:link, a:visited {
+				color: #456782;
+				text-decoration:none
+				}
+			
+			a:hover, a:active {
+				color:#EB9253;
+				text-decoration: none;
+				}
+			
+			a:focus { 
+		    outline: none; 
+				}
+
+			
+			hr {
+				display: block;
+				border:0;
+				border-bottom: 3px dotted #666666;
+				}
+			
+			small {
+				font-size: 90%;
+				}
+			
+			img {
+				border:0;
+				outline: none;
+				}
+			
+			ol li {
+				margin: 0 0 0 30px;
+				padding: 0px;
+				}
+	
+					
+/****************	Headers ****************/
+
+			h1 {
+				font-family: Courier;
+				font-size: 200%;
+				font-weight:normal;
+				letter-spacing:-0.02em;
+				}
+				
+			h1.title {
+				float:right;
+				padding: 80px 40px 0 0;
+				font-size: 120%;
+				font-weight:normal;
+				}
+				h1.title a
+				{color: #726f6f;}
+				#respond {display: block; margin-top: 30px;}
+				
+			h2 {
+				font-family: Courier;
+				font-size: 150%;
+				font-weight: normal;
+				padding-bottom:2px;
+				border-bottom:0px solid #AFDFE5;
+				margin: 20px 0 0 0;
+				display: inline;
+				background: #fef78f;
+				}
+				h2.comments {font-size: 120%; display: block; margin-top: 30px; padding: 0 0 0 5px; margin-left: -5px; background: #f6f3d2;}
+				h2.pagetitle {margin-left: 23px; background: #c8d7e4; color: #fff; padding: 0 10px 0 2px; }
+			h3 {
+				background: #FFFAF0;
+				font-size: 110%;
+				font-family: Courier;
+				font-weight: normal;
+				}
+			
+			h3#respond {
+				border-top:0px dotted #b6b6b6;
+				margin-top:25px;
+				padding-top:20px;
+				}
+			
+			h3#comments {
+				margin-top:32px;
+				text-align: left;
+				}	
+			
+			h3 a:link, h3 a:visited {
+				color:#5f5f5f;
+				}
+			
+			h4 {
+				font-size:1.6em;
+				margin-bottom:6px;
+				margin-top: 6px;
+				}
+			
+			h5 {
+				color: #fff;
+				font-size:4.5em;
+				margin-bottom:0px;
+				padding: 30px 0px 4px 10px;
+				margin-top: 6px;
+				background: #c7c3c2;
+				font-weight: normal;
+				}	
+				
+			h6 {
+				color: #fff;
+				font-size:1.6em;
+				margin-bottom:0px;
+				padding: 2px 0px 0 10px;
+				margin-top: 6px;
+				background: #FDE2E0;
+				font-family: Courier;
+				}	
+				
+/**************** SIDEBAR ****************/
+
+			#sidebar h3 {
+					border-top:0px solid #666666;
+					border-bottom:0px solid #7ABF79;
+					background-color: transparent;
+					padding:4px 0px 4px 20px;
+					margin:2px -5px 5px -5px;
+					font-size:1.4em;
+					color: #666666;
+					}
+				
+			#sidebar h2 {
+					font: 150% Arial, Helvetica, sans-serif;
+					text-transform:lowercase;
+					font-family: courier;
+					margin-top:0x;
+					padding: 4px 0 0 0px;
+					font-weight:normal;
+					color:#696969;
+					border-top: 0px solid #fef78f;
+					border-bottom: 9px solid #fef78f;
+					background: white;
+					background: url(images/heading_back.jpg) right no-repeat;
+					}
+			
+			#sidebar ul {
+					margin-top: 0;
+					margin-bottom: 20px;
+					}
+				#sidebar .widget {margin-bottom:10px;}
+				#tag_cloud {margin-bottom:10px;}
+				
+				
+			#sidebar li {
+					list-style:none;
+					border-bottom:0px solid #FFF;
+					font-family: courier;
+					display: block;
+					}
+			#sidebar p {padding: 0; margin: 0;}
+		  			 li.recentcomments {margin-bottom: 10px; background: #fef78f;}
+			 
+			#sidebar li a:link, #sidebar li a:visited {
+					background: transparent;
+					}
+					
+				#wp-calendar td a:link {background: #f5eb93; }
+				#wp-calendar caption {text-align: left;}
+					
+			#sidelist select {margin-bottom: 20px;}
+			
+			
+			#sidebar li a:hover, #sidebar li a:active {
+					background:#AFDFE5;
+					text-decoration:none;
+					}
+			
+			#sidebar li li a:link, #sidebar li li a:visited {
+					border-left:none;
+					background: #FFFAF0;
+					}
+			
+			#sidebar a:hover, #sidebar a:active, .current_page_item a, #home .on {
+					color: #ffffff;
+					text-decoration:none;
+					}
+			
+			#sidelist li {
+					list-style:none;
+					}
+			
+			#sidelist li.page_item	 {
+				padding-left: 10px;
+				border-left: 2px solid yellow;
+				}
+			
+			#sidelist  li {
+					list-style:none;
+					border-bottom:0px solid #FFF;
+					line-height: 15px;
+					padding-bottom: 8px;
+					}
+		
+			#sidelist  li a:hover, #sidelist li a:active {
+					background:transparent;
+					text-decoration:none;
+					}
+			
+			#sidelist  li li a:link, #sidelist li li a:visited {
+					border-left:none;
+					background: transparent;
+					}
+
+			#sidelist a:hover, #sidelist a:active, .current_page_item a, #home .on {
+					color: #696969;
+					text-decoration:none;
+					background-color: transparent;
+					}
+
+
+	
+/**************** Small Content ****************/
+
+			code {
+				font-family:"Bitstream Vera Sans Mono","Courier New",monospace; 
+				font-size: 114%;
+				}
+			
+			.bullets li {
+				list-style:none;
+				border-bottom:0px solid #FFF;
+				}
+			
+				
+			#writer {
+				background:#FEF3E0;
+				margin:25px 0 15px 0;
+				padding:12px;
+				}
+			
+			#writer img {
+				padding:1px;
+				border:1px solid #7da939;
+				float:left;
+				width:80px;
+				}
+			
+			#writer span {
+				display:block;
+				padding-top:4px;
+				border-top:1px solid #cbd8b4;
+				margin-top:12px;
+				}
+			
+			#writer p {
+				margin:0;
+				width:482px;
+				}	
+
+/****************Post Formatting****************/
+
+			.post blockquote {
+				color:#666666;
+				float:right;
+				padding:0 0 0 10px;
+				margin:10px 0 10px 61px;
+				border-left: 2px solid #acd1fd;
+				
+				}	
+			.post ul, .post ol {margin-bottom: 25px;}
+			.post ul li {
+				list-style:disc;
+				margin-bottom:5px;
+				line-height:115%;
+				margin-left:30px;
+				}
+			
+			.post ol li {
+				margin-bottom:5px;
+				line-height:115%;
+				margin-left:30px;
+				}
+				
+			#tags {
+				padding:3px;
+				border-bottom:1px solid #70431C;
+				border-top:1px solid #70431C;
+				}	
+
+/********************* Form Elements ******************/
+
+			select {
+				padding: 3px 2px 4px 2px;
+				border: 1px #f0e23b solid;
+				border-right: 2px #f0e23b solid;
+				border-bottom: 2px #f0e23b solid;
+				width:100%;
+				font-size: 12px;
+				color: gray;			
+				}
+
+			#searchform {
+				padding:0 5px 20px 0; 
+				clear:all;
+				}
+			#searchform input {
+					padding: 3px 2px 2px 2px;
+					border: 1px #f0e23b solid;
+					border-right: 2px #f0e23b solid;
+					border-bottom: 2px #f0e23b solid;
+					width: 150px;
+					font-size: 16px;
+					color: gray;
+					}
+			#searchform .button {text-transform: uppercase; 
+					letter-spacing: .05em;
+					font-size: 11px;
+					color: gray;
+					background: #fff;
+					width: 70px;
+					padding: 2px; margin-top: 0;
+			}
+			
+
+			
+			#commentform input {
+			    padding: 3px 2px 2px 2px;
+					background: #fff;
+					letter-spacing: .05em;
+					font-size: 11px;
+					color: #545454;
+				}
+			
+			#commentform textarea {
+				width: 98%;
+				font-size: 12px;
+				padding: 5px;
+				margin-top:5px;
+									background:transparent;
+					line-height: 14px;
+					color: #545454;
+				}
+
+
+/*************** Comments *****************/
+
+						
+			.alt {
+						margin: 10px;
+						background: #f1f1f1;
+						padding: 4px;
+						}
+			
+			.commentlist {
+						padding: 0;
+						text-align: justify;
+						background: white;
+						margin-bottom: 40px;
+						}
+			ol.commentlist {margin:0;}
+			ol.commentlist li {margin:4px 0 8px 0;}
+			.commentlist li {
+						margin:20px 5px 10px 0px;
+						padding: 5px;
+						list-style: none;	
+						border: 1px dotted gray;
+						}
+			.commentlist li ul li { 
+						margin-right: 10px;
+						margin-left: 16px;
+						list-style: none;		
+						}
+			.commentlist li ul li li {background: #fff;}
+			.commentlist li ul li li li {background: #F1F1F1;}
+			.commentlist li ul li li li li{background: #fff;}	
+			.commentlist p {
+						margin: 10px 5px 10px 0;
+						}
+						.children { padding: 0; }
+			
+			.commentlist li .avatar { 
+						float: right;
+						border: 1px solid #eee;
+						padding: 4px;
+						background: #fff;
+						margin: 0 0 6px 6px;
+						}
+					
+			.commentlist cite, .commentlist cite a {
+						font-weight: bold;
+						font-style: normal;
+						font-size: 1.1em;
+						}
+				.commentlist p {
+						font-weight: normal;
+						line-height: 1.5em;
+						text-transform: none;
+						}
+			#commentform p {
+						font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+						}
+			.commentmetadata {
+						font-weight: normal;
+						font-size: 80%;
+						padding-left: 0px;
+						}
+			.reply {
+						background: #fef8d7;
+						font-size: 90%;
+						display: inline;
+						padding: 1px;
+						letter-spacing: .03em;
+						text-transform: uppercase;
+						}
+			.nocomments {
+						text-align: center;
+						margin: 0;
+						padding: 0;
+						}
+			.commentmetadata {
+						margin: 0;
+						}
+						
+						
+						
+/* Captions */
+				.aligncenter,
+				div.aligncenter {
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+				}
+				
+				.wp-caption {
+					border: 1px solid #cfe3ee;
+					text-align: center;
+					background-color: #fff;
+					padding-top: 4px;
+					
+					-moz-border-radius: 1px;
+					-khtml-border-radius: 1px;
+					-webkit-border-radius:1px;
+					border-radius: 1px
+				}
+				
+				.wp-caption img {
+					margin: 0;
+					padding: 0;
+					border: 0 none;
+				}
+				
+				.wp-caption p.wp-caption-text {
+					font-size: 10px;
+					color: gray;
+					line-height: 17px;
+					padding: 0 2px 2px;
+					margin: 0;
+				}
+/* End captions */
+
+		
+/***************** Float Properties******************/
+
+			.clearfloat:after {
+				display:block;
+				visibility:hidden;
+				clear:both;
+				height:0;
+				content:".";
+				}
+				
+			.clearfloat {
+				display:inline-block
+				}
+			
+			.clearfloat {
+				display:block
+				}
+
+				i, em {font-style: italic;}

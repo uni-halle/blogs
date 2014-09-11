@@ -1,0 +1,2 @@
+<li class="feed">
+<a href="<?php bloginfo('rss2_url'); ?>" title="<?php _e('Entries (RSS)','avenue')?>"><img src="<?php bloginfo('template_directory'); ?>/images/feed.jpg" alt="<?php _e('Entries (RSS)','avenue')?>" /></a></li>

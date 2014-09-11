@@ -1,0 +1,179 @@
+/* ---------- @ Post Styles -----------*/
+
+.post {
+	}
+
+.entry {
+	font-size:0.9em;
+	}
+
+.entry p {
+	letter-spacing:0.01em;
+	}
+			
+.entry ul, .entry ol {
+	padding:0 15px 10px 10px;
+	}		
+
+.entry ul li {
+	margin-left:45px;
+	list-style:square;
+	padding:3px 0;
+	}
+
+.entry ol li {
+	margin-left:15px;
+	padding:3px 0;
+	}
+	
+.entry blockquote, .commentlist blockquote {
+	margin:18px 45px 25px 45px;
+	padding:2px 15px 4px 15px;
+	line-height:150%;
+	background:#422f33;
+	border-bottom:1px solid #533b40;
+	border-right:1px solid #533b40;
+	color:#cdc6c4;
+	font-size:0.9em;
+	}			
+
+.entry img {
+	float:left;
+	margin:5px 14px 6px 0;
+	border:1px solid #51373d;
+	padding:6px;
+	background:#372529;
+	}
+ 
+p.postmetadata  {
+	text-transform:uppercase;
+	font:.7em 'Lucida Grande','Lucida Sans Unicode',Arial;
+	color:#a57f88;
+	letter-spacing:0.2em;
+	margin:10px 0 0 0;
+	}
+
+#interior p.postmetadata {
+	font-size:0.65em;
+	}
+	
+.postmetadata em {
+	text-transform:none;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	}
+
+.postmetadata .commentcount {
+	font-style:normal;
+	font-size:1.1em;
+	}
+			
+.entry code {
+	font: 1em "Courier New", Courier, monospace;
+	overflow:auto;
+	padding:14px;
+	background:#422f33;
+	display:block;
+	}
+
+.entry table {
+	width:100%;
+	border-collapse:collapse;
+	margin:15px 0;
+	}
+
+.entry td, .entry th {
+	border-bottom:1px solid #422f33;
+	padding:4px 8px;
+	background:#301e22;
+	}
+
+.entry th {
+	font-weight:normal;
+	text-align:left;
+	width:35%;
+	}
+
+#indexing {
+	background:#301e22;
+	padding:6px 8px;
+	font-size:0.85em;
+	line-height:200%;
+	}
+
+#indexing a {
+	font: italic 0.9em Georgia, "Times New Roman", Times, serif;
+	letter-spacing:0.08em;
+	}	
+	
+
+	
+/* ---------- @ Comment Styles -----------*/
+
+#comment {
+	width:100%;
+	}
+
+#commentarea {
+	padding-top:35px;
+	}
+
+.commentlist, #trackbacklist {
+	margin:25px 0 0 0;
+	padding:0 0 30px 0;
+	}
+
+.commentlist li, #trackbacklist li {
+	margin: 15px 0 3px 22px;
+	padding: 8px 15px 10px 15px;
+	background: url(../images/bg_comment.gif) bottom no-repeat;
+	}
+
+.commentlist .commentmetadata {
+	font-size:0.75em;
+	padding-top:1px
+	}
+
+#trackbacklist .commentmetadata {
+	font-size:0.7em;
+	padding-top:3px;
+	}
+			
+.commentlist cite, #trackbacklist cite {
+	font:normal 1.1em Georgia, "Times New Roman", Times, serif;
+	}	
+
+cite a {
+	font:normal 1.1em Georgia, "Times New Roman", Times, serif;
+	}
+		
+.gravatar {
+	float:left;
+	width:62px;
+	}
+
+.gravatar img {
+	padding:3px;
+	border:1px solid #4f383d;
+	}
+		
+.commentinfo {
+	float:left;
+	padding-top:5px;
+	font-size:0.9em;
+	}
+
+.commentlist li.my_comment {
+	background:#301e22;
+	}
+
+.commenttext {
+	font-size:0.8em;
+	}
+
+.commentlist code {
+	font-size:1.3em;
+	line-height:120%;
+	}
+
+	
+				

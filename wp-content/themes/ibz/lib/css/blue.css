@@ -1,0 +1,12 @@
+/*-------=blue theme-------------------*/	
+
+/* color for selections */
+*::-moz-selection { background:#6ba9d3; }
+*::selection, mark { background:#6ba9d3; }
+	
+/* text color */
+.main_title, .filter_portfolio .active a, .filter_portfolio a:hover { color:#6ba9d3; }
+
+/* flex slider */
+.flex-caption  { border-bottom:3px solid #6ba9d3; }
+.flex-control-nav a { background:url(../../images/bullets_blue.png) no-repeat 0px 0px !important; }

@@ -1,0 +1,7 @@
+* html .clearfix { height: 1%; }
+* html .post span.para { display:inline; }
+* html .commentlist li .byline_expander { height:90px; }
+* html .comments form p { height:45px; }
+
+*+html .clearfix { height: 1%; }
+*+html .comments form p { height:45px; }

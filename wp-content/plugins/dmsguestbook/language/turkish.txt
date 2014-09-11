@@ -1,0 +1,16 @@
+/* Ersin Dogan *** ersin(at)ersindogan(dot)com */
+
+<name>isim</name><br />
+<email>Email</email><br />
+<url>Website</url><br />
+<message>Mesaj</message><br />
+<antispam><b>Antispam &ouml;nlemleri</b><br />L&uuml;tfen mesaj&yacute; g&ouml;ndermeden &ouml;nce rakam ve numara kombinasyonunu gerekli alana giriniz.</antispam><br />
+<mandatory>Zorunlu</mandatory><br />
+<submit>Yaz</submit><br />
+<name_error>&Yacute;sim &ccedil;ok k&yacute;sa!</name_error><br />
+<email_error>Ge&ccedil;ersiz email adresi!</email_error><br />
+<url_error>Ge&ccedil;ersiz website adresi!</url_error><br />
+<message_error>Yaz&yacute; &ccedil;ok k&yacute;sa!</message_error><br />
+<antispam_error>Hatal&yacute; rakam-harf kombinasyonu!</antispam_error><br />
+<success>Mesaj&yacute;n&yacute;z i&ccedil;in te&thorn;ekk&uuml;r ederiz!</success><br />
+<admin_review>Y&ouml;netici mesaj&yacute;n&yacute;z&yacute; kontrol edecek!<br />Anlay&yacute;&thorn;&yacute;n&yacute;z i&ccedil;in te&thorn;ekk&uuml;rler!</admin_review><br />

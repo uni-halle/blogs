@@ -1,0 +1,346 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Avenue\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-06 11:17+0100\n"
+"PO-Revision-Date: 2009-01-06 11:18+0100\n"
+"Last-Translator: webfunk <contact@web-funk.de>\n"
+"Language-Team: Webfunk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: D:\\Temp\\Themes\\concrete\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\\sidebar\n"
+
+#: 404.php:3
+msgid "Error 404"
+msgstr "Error 404"
+
+#: 404.php:4
+msgid "Document not found. Try something else ..."
+msgstr "Die angeforderte Seite wurde nicht gefunden. Versuche etwas anderes."
+
+#: archive.php:7
+msgid "Archive for the Category &raquo; "
+msgstr "Archiv f&uuml;r die Kategorie &raquo; "
+
+#: archive.php:7
+#: archive.php:13
+#: archive.php:28
+msgid " &laquo;"
+msgstr " &laquo;"
+
+#: archive.php:10
+msgid "Archive for "
+msgstr "Beitr&auml;ge vom "
+
+#: archive.php:10
+msgid "F jS, Y"
+msgstr "j. F Y"
+
+#: archive.php:13
+msgid "Archive &raquo; "
+msgstr "Beitr&auml;ge vom  &raquo; "
+
+#: archive.php:13
+msgid "F, Y"
+msgstr "F, Y"
+
+#: archive.php:16
+msgid "All entries "
+msgstr "Alle Beitr&auml;ge "
+
+#: archive.php:19
+#: index.php:5
+msgid "Search Results"
+msgstr "Suchergebnisse"
+
+#: archive.php:22
+msgid "Author Archive"
+msgstr "Autorenarchiv"
+
+#: archive.php:25
+msgid "Blog Archives"
+msgstr "Seitenarchiv"
+
+#: archive.php:28
+msgid "Tag-Archive for &raquo; "
+msgstr "Tag-Archiv f&uuml;r &raquo; "
+
+#: archive.php:32
+#: page.php:16
+msgid "Author: "
+msgstr "Autor: "
+
+#: archive.php:36
+#: index.php:14
+#: single.php:10
+msgid "l, F dS, Y"
+msgstr "l, j. F Y"
+
+#: archive.php:42
+#: index.php:20
+msgid "more..."
+msgstr "weiter..."
+
+#: archive.php:46
+#: index.php:24
+#: single.php:23
+msgid "Category: "
+msgstr "Thema: "
+
+#: archive.php:55
+#: index.php:33
+msgid "&laquo; previous Entries"
+msgstr "&laquo; vorherige Beitr&auml;ge"
+
+#: archive.php:56
+#: index.php:34
+msgid "next Entries &raquo;"
+msgstr "n&auml;chste Beitr&auml;ge &raquo;"
+
+#: archive.php:58
+#: index.php:37
+msgid "Not found"
+msgstr "Nichts gefunden"
+
+#: comments.php:8
+msgid "This post is password protected."
+msgstr "Dieser Beitrag ist passwortgesch&uuml;tzt."
+
+#: comments.php:13
+msgid "No Responses"
+msgstr "Keine Kommentare"
+
+#: comments.php:13
+msgid "One Response"
+msgstr "Ein Kommentar"
+
+#: comments.php:13
+msgid "% Responses"
+msgstr "% Kommentare"
+
+#: comments.php:29
+msgid "(Your comment is awaiting moderation)"
+msgstr "(... warte auf Moderation)"
+
+#: comments.php:73
+msgid "Leave a Reply"
+msgstr "Kommentar abgeben"
+
+#: comments.php:76
+msgid "You must be logged in to post a comment."
+msgstr "Login erforderlich"
+
+#: comments.php:83
+msgid "Name"
+msgstr "Name"
+
+#: comments.php:83
+msgid "(required)"
+msgstr "(erforderlich)"
+
+#: comments.php:86
+msgid "E-Mail ("
+msgstr "E-Mail ("
+
+#: comments.php:86
+msgid "required)"
+msgstr "notwendig)"
+
+#: comments.php:89
+msgid "Website (optional)"
+msgstr "Website (optional)"
+
+#: comments.php:95
+msgid "Submit"
+msgstr "Senden"
+
+#: footer.php:5
+#: footer.php:10
+msgid "Top"
+msgstr "zum Seitenanfang"
+
+#: index.php:25
+msgid "Leave a Comment"
+msgstr "Beitrag kommentieren"
+
+#: index.php:25
+msgid "One Comment"
+msgstr "Ein Kommentar"
+
+#: index.php:25
+msgid "% Comments"
+msgstr "% Kommentare"
+
+#: index.php:25
+msgid "Comments off"
+msgstr "Kommentare geschlossen"
+
+#: index.php:38
+#: page.php:33
+#: single.php:40
+msgid "Sorry, but you are looking for something that isn't here. Try something else."
+msgstr "Sorry, kein Beitrag passt zu diesen Kriterien. Versuche etwas anderes."
+
+#: page.php:15
+msgid "Trackback: "
+msgstr "Trackback: "
+
+#: page.php:21
+#: single.php:27
+msgid "You can leave a <a href=\"#respond\">response.</a>"
+msgstr "Diesen Beitrag <a href=\"#respond\">kommentieren.</a>"
+
+#: page.php:24
+#: single.php:30
+msgid "Responses are currently closed, but you can<br />"
+msgstr "Der Beitrag ist f&uuml;r Kommentare geschlossen, aber Du<br />kannst einen "
+
+#: page.php:24
+#: single.php:30
+msgid " the post from your own site."
+msgstr " auf Deiner Seite setzen."
+
+#: page.php:27
+#: single.php:33
+msgid "You can leave a <a href=\"#respond\">response</a>.<br />Pinging is currently not allowed."
+msgstr "Du kannst diesen Beitrag <a href=\"#respond\">kommentieren</a>.<br />Pingen ist momentan nicht m&ouml;glich."
+
+#: page.php:30
+#: single.php:36
+msgid "Comments and pings are currently closed."
+msgstr "Kommentare und Pings sind geschlossen."
+
+#: single.php:20
+msgid "Tags  &raquo; "
+msgstr "Tags  &raquo; "
+
+#: single.php:23
+msgid "Comments Feed: "
+msgstr "Feed zum Beitrag: "
+
+#: sidebar/categories.php:1
+msgid "Categories"
+msgstr "Kategorien"
+
+#: sidebar/feed.php:2
+#: sidebar/meta.php:5
+#: sidebar/meta.php:6
+msgid "Entries (RSS)"
+msgstr "Beitr&auml;ge als RSS Feed"
+
+#: sidebar/history.php:1
+msgid "Archive"
+msgstr "Archiv"
+
+#: sidebar/last.php:2
+msgid "Latest Comments"
+msgstr "Neue Kommentare"
+
+#: sidebar/meta.php:1
+msgid "Meta"
+msgstr "Meta"
+
+#: sidebar/meta.php:5
+msgid "Entries RSS"
+msgstr "Artikel RSS"
+
+#: sidebar/meta.php:8
+#: sidebar/meta.php:9
+msgid "Comments (RSS)"
+msgstr "Kommentare als RSS Feed"
+
+#: sidebar/meta.php:8
+msgid "Comments RSS"
+msgstr "Kommentare RSS"
+
+#: sidebar/meta.php:11
+msgid "Wordpress Germany"
+msgstr "Wordpress Deutschland"
+
+#: sidebar/most.php:2
+msgid "Most commented"
+msgstr "Meist kommentiert"
+
+#: sidebar/pages.php:1
+msgid "Pages"
+msgstr "Seiten"
+
+#: sidebar/search.php:2
+msgid "enter search item"
+msgstr "suchbegriff eingeben"
+
+#: sidebar/sidestep.php:2
+msgid "Sidestep"
+msgstr "Sidestep"
+
+#: sidebar/sidestep.php:3
+msgid "next Post<br />"
+msgstr "n&auml;chster Beitrag<br />"
+
+#: sidebar/sidestep.php:4
+msgid "previous Post<br />"
+msgstr "vorheriger Beitrag<br />"
+
+#: sidebar/statistics.php:1
+msgid "Blog Statistics"
+msgstr "Blog Statistik"
+
+#: sidebar/statistics.php:2
+msgid "Number of Entries: ("
+msgstr "Anzahl Beitr&auml;ge: ("
+
+#: sidebar/statistics.php:3
+msgid "Number of Comments: ("
+msgstr "Anzahl Kommentare: ("
+
+#: sidebar/statistics.php:4
+msgid "Number of Words: ("
+msgstr "Anzahl Worte: ("
+
+#: sidebar/topical.php:1
+msgid "Latest Entries"
+msgstr "Aktuelle Beitr&auml;ge"
+
+#: sidebar/welcome.php:2
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: sidebar/welcome.php:3
+msgid "This blog actually contains "
+msgstr "Aktuell kannst Du hier "
+
+#: sidebar/welcome.php:3
+msgid " Entries and "
+msgstr " Beitr&auml;ge und "
+
+#: sidebar/welcome.php:3
+msgid " Comments. To get the latest information, you can subscribe to the RSS Feed."
+msgstr " Kommentare lesen. Um auf dem neuesten Stand zu bleiben, abboniere einfach den RSS-Feed."
+
+#~ msgid "Category Archive &raquo; "
+#~ msgstr "Kategorie Archiv &raquo; "
+#~ msgid "Blogbutton"
+#~ msgstr "Blogbutton"
+#~ msgid "E-Mail (will not be published, "
+#~ msgstr "E-Mail (wird nicht angezeigt, "
+#~ msgid "RSS Feeds"
+#~ msgstr "RSS Feeds"
+#~ msgid " Trackback:&nbsp;"
+#~ msgstr " Trackback:&nbsp;"
+#~ msgid " &raquo Edit &laquo"
+#~ msgstr " &raquo Edit &laquo"
+#~ msgid "Archive for month "
+#~ msgstr "Beitr&auml;ge "
+#~ msgid "Feed (Comments): "
+#~ msgstr "Feed zum Beitrag: "
+#~ msgid " Category:"
+#~ msgstr " Themengebiet:"
+#~ msgid "suchbegriff eingeben"
+#~ msgstr "enter search item"
+

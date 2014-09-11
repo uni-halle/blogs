@@ -1,0 +1,64 @@
+/*
+Theme Name: Blogs@MLU Stud.IP Blog
+Theme URI: http://blogs.uni-halle.de
+Description: Child Theme for Blogs@MLU Default | Stud.IP Blog Theme
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+Template: blogsmlu
+Version: 1.0
+*/
+ 
+@import url("../blogsmlu/style.css");
+
+a, #header h2, #header h2 a {
+	color: #213499;
+}
+
+#content a:visited, #jquery-live-search a:visited {
+	color: #6f7599;
+}
+
+.topmenu li.current_page_item a, button:hover, input#submit:hover, .button a:hover {
+	background-color: #213499;
+}
+
+blockquote {
+	border-left-color: #213499;
+}
+
+.sticky {
+	border-color: #213499;
+}
+
+a[href^='mailto:'], a.email, a.url, a.twitter, ul.weitersagen li a {
+	background-image: url(Sprite-Master-Studip.png);
+}
+
+#blogname {
+	background: url(Studi-blog-image.png) no-repeat left top;
+	padding-left: 130px;
+	min-height: 85px;
+	padding-top: 25px;
+	top: 40px;
+}
+
+input[type=submit]:hover, input.submit:hover, input#submit:hover, 
+.button a:hover,
+#TB_secondLine a:hover {
+	background-color: #213499;
+}
+
+/* Smartphones ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	#blogname {
+		padding-left: 125px;
+		padding-top: 10px;
+		float: none;
+		width: 63% !important;
+	}
+	
+	#blogname h2 {
+		
+	}
+}
+

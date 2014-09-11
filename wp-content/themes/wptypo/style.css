@@ -1,0 +1,207 @@
+/*
+Theme Name: WPTypo
+Theme URI: http://diggingintowordpress.com
+Description: A pure typography-based WordPress theme. Designed by Chris Coyier. Original theme coding by http://wpcoder.com. Additional coding by Chris Coyier. Released on http://diggingintowordpress.com.
+
+Copyright (C)  2009  CHRIS COYIER.
+    Permission is granted to copy, distribute and/or modify this document
+    under the terms of the GNU Free Documentation License, Version 1.3
+    or any later version published by the Free Software Foundation;
+    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+    A copy of the license is included in the section entitled "GNU
+    Free Documentation License".
+
+Version: 1.1
+Author: Chris Coyier
+Author URI: http://css-tricks.com
+*/
+
+/*----- CSS Reset -----*/
+* 											{ margin: 0; padding: 0; }
+ul, ol 										{ list-style: none; }
+h1, h2, h3, h4, h5 							{ font-weight: normal; }
+a 											{ outline: none; }
+a img 										{ border:none; }
+
+/*----- General Styles -----*/
+body, html 									{ height: 100%; }
+body 										{ font:62.5% Garamond, 'Adobe Garamond Pro', 'Apple Garamond', 'ITC Garamond', Georgia, Times, 'Times New Roman', serif; }
+
+.clear 										{ clear:both; }
+.clearfix:after 							{ content: "."; visibility: hidden; display: block; height: 0px; clear: both; }
+.hide 										{ display: none; }
+
+
+/*----- Page Structure & Resuables -----*/
+#wrap 										{ width:640px; margin: 0 auto; padding: 0 0 27px 0; position: relative; }
+p.dots 										{ color:#8e8e8e; font-size:1.5em; letter-spacing:1px; line-height:5px; }
+.navigation									{ overflow: hidden; margin: 0 0 25px 0; }
+.navigation a								{ text-decoration: none; color: #666; text-transform: uppercase; }
+
+/*--- Menu ---*/
+#menu 										{ width:100%; top: 0; background:#494949; color:#fff; height:27px; }
+#menu ul 									{ width:580px; font-size:1.3em; text-transform:uppercase; margin:0 auto; 
+											  padding:4px 0px; }
+#menu ul li 								{ display:block; float:left; padding:3px 15px 0px 0px; }
+#menu ul li span 							{ padding:0px 17px 0px 0px; }
+#menu ul li a 								{ color:#fff; text-decoration:none; }
+#menu ul li a:hover 						{ color:#aaa; }
+#menu ul li.explore 						{ display:block; float:right; padding:0px; }
+#menu ul li.explore a 						{ display:block; background:#fff; color:#494949; font-size:0.8em; 
+											  letter-spacing:1px; padding:4px 5px 2px; 
+											  -moz-border-radius:5px; -webkit-border-radius:5px; } 
+#menu ul li.explore a:hover 				{ background:#999; color:#fff; }
+
+
+/*--- Header ---*/
+#header 									{ width:580px; margin:0px auto; padding:40px 0px; }
+#header h1 									{ font-size:4em; font-weight:700; text-transform:uppercase; line-height:30px; }
+#header h1 a 								{ color:#3b3b3b; text-decoration:none; }
+#header h1 a:hover 							{ color:#111; }
+#header p.description 						{ font-size:2em; color:#8e8e8e; font-style:italic; margin:0px; }
+
+
+/*--- Post ---*/
+.post 										{ width:610px; margin:0px auto 50px; padding-right:30px; clear:both; }
+.post .byline 								{ color:#a1a1a1; font-size:1.4em; width:140px; float:left; text-align:right; 
+										      margin-right:25px; padding-top:8px; }
+.post .byline .date 						{ text-transform:uppercase; }
+.post .byline a 							{ color:#a1a1a1; text-decoration:none; }
+.post .byline a:hover 						{ border-bottom:1px solid #d5d5d5; }
+.post h2.title 								{ font-size:4.7em; color:#4c4b4a; float:left; display:block; line-height:50px; width:445px; }
+.post h2.title a 							{ color:#4c4b4a; text-decoration:none; }
+.post h2.title a:hover 						{ color:#222; }
+.post p.dots 								{ margin-left:165px; }
+
+.post span.para 							{ color:#d5d5d5; font-size:6.75em; display:block; width:70px; height:90px; 
+											  margin:12px 20px 0px 75px; float:left; text-align:right; }
+
+/* Entry Styles --*/
+.post .entry 								{ float:left; width:445px; color:#717171; padding:20px 0px 0px; 
+											  font-size:1.5em; line-height:21px; }
+.post .entry:first-line 					{ font-size:1.2em; color:#555; }
+.post .entry h2 							{ font-size:1.8em; margin:20px 0px 10px; color:#525252; }
+.post .entry h3 							{ font-size:1.3em; margin:20px 0px 10px; font-weight:bold; 
+											  text-transform:uppercase; color:#525252; }
+.post .entry h4 							{ font-size:1.65em; margin:20px 0px 10px; font-style:italic; color:#525252; }
+.post .entry h5 							{ font-size:1em; margin:20px 0px 10px; text-transform:uppercase; letter-spacing:3px; }
+.post .entry p 								{ margin-bottom:20px; }
+.post .entry p:first-child:first-line 		{ font-size: 125%; line-height: 1.4; }
+.post .entry ul, .post .entry ol 			{ margin:0px 0px 15px 50px; }
+.post .entry ul li 							{ list-style:disc outside; }
+.post .entry ol li 							{ list-style:decimal outside; }
+.post .entry ol ol li 						{ list-style:lower-alpha outside; }
+.post .entry a 								{ color:#525252; text-decoration:underline; }
+.post .entry a:hover 						{ text-decoration:none; }
+.post .entry blockquote 					{ background:#f1f1f1; padding:15px 30px 1px 10px; margin-bottom:15px; 
+											  font-style:italic; position:relative; }
+.post .entry .blockquote_extender 			{ background:#f1f1f1; position: absolute; width: 1000px; height: 100%; right: 445px; 
+											  top: 0px; overflow:hidden; }
+.post .entry .blockquote_extender span 		{ display:block; width:70px; height:0px; color:#d5d5d5; font-size:11em; top:90px; 
+											  right:-10px; line-height:0px; position:absolute; }
+
+
+/*--- Comments ---*/
+.comments 									{ clear:both; width:610px; margin:0px auto 50px; padding-right:30px; font-size:1.4em; }
+.comments h3.heading 						{ font-size:1.5em; color:#4c4b4a; margin:0px 0px 25px 150px; }
+.comments h3.heading span 					{ text-transform:uppercase; }
+.comments p.notice 							{ font-size:1.1em; color:#4c4b4a; margin:0px 0px 20px 160px; }
+.comments a 								{ color:#525252; text-decoration:underline; }
+.comments a:hover 							{ text-decoration:none; }
+
+/* Comment List */
+.commentlist li 							{ margin-bottom:30px; position:relative; }
+.commentlist li li 							{ margin-bottom: 10px; }
+.commentlist li .byline 					{ color:#a1a1a1; font-size:1em; width:140px; float:left; text-align:right; 
+											  margin-right:25px; padding-top:8px; position:relative; z-index:50; }
+.commentlist li .byline .date 				{ text-transform:uppercase; }
+.commentlist li .byline a 					{ color:#a1a1a1; text-decoration:none; }
+.commentlist li .byline a:hover 			{ border-bottom:1px solid #d5d5d5; }
+.commentlist li .byline strong 				{ color:#4c4b4a; text-transform:uppercase; }
+.commentlist li .byline_expander 			{ background:#f1f1f1; position: absolute; width: 1000px; height: 100%; right: 370px; 
+											  top: 0px; overflow:hidden; z-index:40; }
+.commentlist li .comment_num 				{ position:relative; width:70px; height:70px; float:left; overflow:hidden; }
+.commentlist li .comment_num .bg 			{ font-size:40em; display:block; width:70px; height:70px; line-height:0px; 
+											  position:absolute; left:-35px; top:-67px; color:#b4b4b4; z-index:50; }
+.commentlist li .comment_num .num 			{ color:#ccc; font-weight:bold; text-align:center; display:block; width:70px; 
+											  font-size:4.75em; position:absolute; z-index: 100; }
+.commentlist .text 							{ width:360px; margin:0px 0px 0px 10px; float:left; color:#4c4b4a; font-size:1.1em; }
+.commentlist .text p 						{ margin-bottom:10px; }
+.commentlist .text ul, .commentlist .text ol{ margin:0px 0px 15px 25px; }
+.commentlist .text ul li 					{ list-style:disc outside; }
+.commentlist .text ol li 					{ list-style:decimal outside; }
+.commentlist .text ol ol li 				{ list-style:lower-alpha outside; }
+.commentlist .text blockquote 				{ background:#f1f1f1; padding:15px 30px 1px 10px; margin-bottom:15px; 
+											  font-style:italic; position:relative; }
+.commentlist li.author .byline 				{ padding:15px 0px 13px; }
+.commentlist li.author .comment_num 		{ margin-top:4px; }
+.commentlist li.author .comment_num .bg 	{ color:#4c4b4a; }
+
+/* Form */
+.comments form 								{ clear:both; color:#4c4b4a; padding:5px 0px 0px; }
+.comments form label 						{ display:block; float:left; font-size:1.35em; font-style:italic; 
+											  width:140px; text-align:right; margin-right:25px; }
+.comments form input.text 					{ border:none; background:transparent; border-bottom:1px solid #b4b4b4; 
+											  margin-bottom:15px; display:block; float:left; width:250px; 
+											  font-family:'Courier New', Courier, monospace; padding:5px 0px; outline:none; }
+.comments form .textbox 					{ width:400px; float:left; position:relative; }
+.comments form .bracket 					{ font-size:5em; }
+.comments form textarea 					{ width:430px; border:1px dashed #b4b4b4; border-left:none; 	
+										      background:transparent; font-family:'Courier New', Courier, monospace; 
+											  padding:10px 0px 10px 15px; outline:none; height:150px; } 
+.comments form .allowed_tags 				{ clear:both; margin-left:160px; text-align:right; padding-top:10px; 
+											  font-family: Courier, monospace; font-size: 10px; color: #999; margin-bottom:10px; }
+.comments form p.submit 					{ text-align:right; font-size:2.5em; }
+.comments form p.submit input#submit 		{ background:#fff; border:none; text-transform:uppercase; font-size:0.6em; 
+											  padding:10px 3px 0px; color:#4c4b4a; vertical-align:top; cursor:pointer; 
+											  font-family:Georgia, Serif; }
+	
+/*--- Explore ---*/
+#explore-area   							{ position: absolute; top: 0; left: 0; width: 100%; background: #ccc; 
+											  padding: 10px; overflow: hidden; }
+#explore-area ul li a 						{ display: block; padding: 10px; color: #3B3B3B; text-decoration: none; 
+											  font-size: 16px; border-bottom: 1px solid #3B3B3B; text-align: center;}
+#explore-area ul li a:hover 				{ background: #999; }
+#explore-area h3 							{ font-size:1.6em; margin: 0 0 10px; font-weight:bold; text-transform:uppercase; 
+											  color:#3B3B3B; text-align: center; }
+#explore-area h3 span 						{ font-style: italic; font-weight: normal; font-size: 0.8em; text-transform: lowercase; }
+
+#archives-area  							{ width: 200px; margin-right: 20px; float: left; }
+#blogroll-area  							{ width: 200px; margin-right: 20px; float: left; }
+#search-area    							{ width: 200px; float: left; text-align: center; }
+#search-area p.submit 						{ font-size: 2.5em; }
+#search-area p.submit input#searchsubmit 	{ border:none; text-transform:uppercase; font-size:0.6em; padding:8px 3px 0px; 
+											  color:#4c4b4a; vertical-align:top; cursor:pointer; font-family:Georgia, Serif; 
+											  background: none; }
+
+
+/*--- Search & Archives ---*/
+#page-sub-title 							{ padding: 10px; background: #494949; color: white; margin: 0 0 25px 165px; 
+											  font-size: 2.0em; text-transform: uppercase; letter-spacing: 4px; font-weight: normal; }
+											
+/* REQUIRED by WordPress Theme Directory */
+.aligncenter,
+div.aligncenter 							{ display: block; margin-left: auto; margin-right: auto; }
+.alignleft 									{ float: left; }
+.alignright 								{ float: right; }
+.wp-caption 								{ text-align: center; background-color: #f3f3f3; padding-top: 4px;
+   											  margin: 10px; }
+.wp-caption img 							{ margin: 0; padding: 0; border: 0 none; }
+.wp-caption p.wp-caption-text 				{ font-size: 11px; line-height: 17px; padding: 0 4px 5px; margin: 0; }
+
+		
+	
+/*--- Footer ---*/
+#footer 									{ width:100%; height:27px; background:#4c4b4a; color:#fff; 
+											  font-size:1.1em; text-transform:uppercase; position: fixed; bottom: 0; z-index: 200; }
+#footer p 									{ width:580px; margin:0px auto 0px; padding-top:8px; letter-spacing:1px; }
+#footer p span.left 						{ float:left; display:block; }
+#footer p span.right 						{ float:right; display:block; }
+#footer a 									{ color:#fff; text-decoration:none; }
+#footer a:hover 							{ border-bottom:1px solid #999; }
+
+
+
+
+
+

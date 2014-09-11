@@ -1,0 +1,274 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Anything Popup\n"
+"POT-Creation-Date: 2014-08-01 20:46+0800\n"
+"PO-Revision-Date: 2014-08-01 20:46+0800\n"
+"Last-Translator: \n"
+"Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../anything-popup.php:171
+msgid "No record found."
+msgstr ""
+
+#: ../anything-popup.php:225
+msgid "Popup ID"
+msgstr ""
+
+#: ../anything-popup.php:231 ../pages/content-management-add.php:182
+#: ../pages/content-management-edit.php:204
+#: ../pages/content-management-show.php:141
+msgid "Check official website for more information"
+msgstr ""
+
+#: ../anything-popup.php:232 ../pages/content-management-add.php:183
+#: ../pages/content-management-edit.php:205
+#: ../pages/content-management-show.php:142
+msgid "click here"
+msgstr ""
+
+#: ../anything-popup.php:239 ../anything-popup.php:244
+#: ../anything-popup.php:276 ../pages/content-management-add.php:135
+#: ../pages/content-management-edit.php:157
+#: ../pages/content-management-show.php:52
+msgid "Anything Popup"
+msgstr ""
+
+#: ../pages/content-management-add.php:30
+#: ../pages/content-management-edit.php:58
+msgid "Please enter the popup window width, only number."
+msgstr ""
+
+#: ../pages/content-management-add.php:37
+#: ../pages/content-management-edit.php:65
+msgid "Please enter the popup window height, only number."
+msgstr ""
+
+#: ../pages/content-management-add.php:44
+#: ../pages/content-management-edit.php:72
+msgid "Please enter the header color."
+msgstr ""
+
+#: ../pages/content-management-add.php:51
+#: ../pages/content-management-edit.php:79
+msgid "Please enter the border color."
+msgstr ""
+
+#: ../pages/content-management-add.php:58
+#: ../pages/content-management-edit.php:86
+msgid "Please enter the heder font color."
+msgstr ""
+
+#: ../pages/content-management-add.php:65
+#: ../pages/content-management-edit.php:93
+msgid "Please enter the popup title."
+msgstr ""
+
+#: ../pages/content-management-add.php:72
+#: ../pages/content-management-edit.php:100
+msgid "Please enter the popup link text/image."
+msgstr ""
+
+#: ../pages/content-management-add.php:79
+#: ../pages/content-management-edit.php:107
+msgid "Please enter the popup content."
+msgstr ""
+
+#: ../pages/content-management-add.php:96
+msgid "New details was successfully added."
+msgstr ""
+
+#: ../pages/content-management-add.php:126
+#: ../pages/content-management-edit.php:148
+msgid "Click here to view the details"
+msgstr ""
+
+#: ../pages/content-management-add.php:137
+msgid "Add details"
+msgstr ""
+
+#: ../pages/content-management-add.php:139
+#: ../pages/content-management-edit.php:161
+msgid "Window width"
+msgstr ""
+
+#: ../pages/content-management-add.php:141
+#: ../pages/content-management-edit.php:163
+msgid "Enter your popup window width."
+msgstr ""
+
+#: ../pages/content-management-add.php:143
+#: ../pages/content-management-edit.php:165
+msgid "Window height"
+msgstr ""
+
+#: ../pages/content-management-add.php:145
+#: ../pages/content-management-edit.php:167
+msgid "Enter your popup window height."
+msgstr ""
+
+#: ../pages/content-management-add.php:147
+#: ../pages/content-management-edit.php:169
+#: ../pages/content-management-show.php:71
+#: ../pages/content-management-show.php:84
+msgid "Header color"
+msgstr ""
+
+#: ../pages/content-management-add.php:149
+#: ../pages/content-management-edit.php:171
+msgid "Select your popup window header bg color."
+msgstr ""
+
+#: ../pages/content-management-add.php:151
+#: ../pages/content-management-edit.php:173
+#: ../pages/content-management-show.php:72
+#: ../pages/content-management-show.php:85
+msgid "Border color"
+msgstr ""
+
+#: ../pages/content-management-add.php:153
+#: ../pages/content-management-edit.php:175
+msgid "Select your popup window border color."
+msgstr ""
+
+#: ../pages/content-management-add.php:155
+#: ../pages/content-management-edit.php:177
+msgid "Header font color"
+msgstr ""
+
+#: ../pages/content-management-add.php:157
+#: ../pages/content-management-edit.php:179
+msgid "Select your popup window title font color."
+msgstr ""
+
+#: ../pages/content-management-add.php:159
+#: ../pages/content-management-edit.php:181
+#: ../pages/content-management-show.php:68
+#: ../pages/content-management-show.php:81
+msgid "Popup title"
+msgstr ""
+
+#: ../pages/content-management-add.php:161
+#: ../pages/content-management-edit.php:183
+msgid "Enter your popup window title."
+msgstr ""
+
+#: ../pages/content-management-add.php:163
+#: ../pages/content-management-edit.php:185
+msgid "Popup Link Text / Label / Image"
+msgstr ""
+
+#: ../pages/content-management-add.php:165
+#: ../pages/content-management-edit.php:187
+msgid "Enter your popup button."
+msgstr ""
+
+#: ../pages/content-management-add.php:167
+#: ../pages/content-management-edit.php:189
+msgid "Popup content"
+msgstr ""
+
+#: ../pages/content-management-add.php:169
+#: ../pages/content-management-edit.php:191
+msgid "Enter your popup content."
+msgstr ""
+
+#: ../pages/content-management-add.php:174
+msgid "Insert Details"
+msgstr ""
+
+#: ../pages/content-management-add.php:175
+#: ../pages/content-management-edit.php:197
+msgid "Cancel"
+msgstr ""
+
+#: ../pages/content-management-add.php:176
+#: ../pages/content-management-edit.php:198
+#: ../pages/content-management-show.php:130
+msgid "Help"
+msgstr ""
+
+#: ../pages/content-management-edit.php:17
+#: ../pages/content-management-show.php:22
+msgid "Oops, selected details doesnt exist."
+msgstr ""
+
+#: ../pages/content-management-edit.php:131
+msgid "Details was successfully updated."
+msgstr ""
+
+#: ../pages/content-management-edit.php:159
+msgid "Update details"
+msgstr ""
+
+#: ../pages/content-management-edit.php:196
+msgid "Update Details"
+msgstr ""
+
+#: ../pages/content-management-show.php:40
+msgid "Selected record was successfully deleted."
+msgstr ""
+
+#: ../pages/content-management-show.php:53
+#: ../pages/content-management-show.php:129
+msgid "Add New"
+msgstr ""
+
+#: ../pages/content-management-show.php:66
+#: ../pages/content-management-show.php:79
+msgid "Id"
+msgstr ""
+
+#: ../pages/content-management-show.php:67
+#: ../pages/content-management-show.php:80
+msgid "Short code code"
+msgstr ""
+
+#: ../pages/content-management-show.php:69
+#: ../pages/content-management-show.php:82
+msgid "Width"
+msgstr ""
+
+#: ../pages/content-management-show.php:70
+#: ../pages/content-management-show.php:83
+msgid "Height"
+msgstr ""
+
+#: ../pages/content-management-show.php:73
+#: ../pages/content-management-show.php:86
+msgid "Font color"
+msgstr ""
+
+#: ../pages/content-management-show.php:102
+msgid "Edit"
+msgstr ""
+
+#: ../pages/content-management-show.php:103
+msgid "Delete"
+msgstr ""
+
+#: ../pages/content-management-show.php:119
+msgid "No records available."
+msgstr ""
+
+#: ../pages/content-management-show.php:134
+msgid "Plugin configuration option"
+msgstr ""
+
+#: ../pages/content-management-show.php:136
+msgid "Drag and drop the widget."
+msgstr ""
+
+#: ../pages/content-management-show.php:137
+msgid "Add the plugin in the posts or pages using short code."
+msgstr ""
+
+#: ../pages/content-management-show.php:138
+msgid "Add directly in to the theme using PHP code."
+msgstr ""

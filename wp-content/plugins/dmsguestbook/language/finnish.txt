@@ -1,0 +1,17 @@
+/* Janne Grotenfelt *** janne(at)jossakin(dot)net */
+
+<name>Nimi</name>
+<email>S&auml;hk&ouml;posti</email>
+<url>Nettisivu</url>
+<message>Viesti</message>
+<antispam><b>Anti-spam</b><br />Sy&ouml;t&auml; oheinen kirjain ja numeroyhdistelm&auml; allaolevaan tekstikentt&auml;&auml;n, ole hyv&auml;.</antispam>
+<mandatory>Pakollinen tieto</mandatory>
+<submit>L&auml;het&auml;</submit>
+<name_error>Nimi on liian lyhyt!</name_error>
+<email_error>Virhe s&auml;hk&ouml;postiosoitteessa!</email_error>
+<url_error>Virhe nettisivun osoitteessa!</url_error>
+<message_error>Viesti on liian lyhyt!</message_error>
+<antispam_error>Virheellinen kirjain-numeroyhdistelm&auml;!</antispam_error>
+<success>Kiitos viestist&auml;si vieraskirjaan!</success>
+<admin_review>Yll&auml;pit&auml;j&auml; tarkastaa viestisi, ennen sen julkaisemista!<br />Kiitos k&auml;rsiv&auml;llisyydest&auml;!</admin_review>
+<spam_detect>T&auml;m&auml; viesti on mahdollisesti sp&auml;mmi&auml;!<br />Sit&auml; ei julkaistu, mutta ylläpit&auml;jä&auml; saattaa viel&auml; julkaista sen my&ouml;hemmin.</spam_detect>

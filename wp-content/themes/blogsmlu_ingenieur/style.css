@@ -1,0 +1,32 @@
+/*
+Theme Name: Blogs@MLU Ingenieur (Metallgrau)
+Theme URI: http://blogs.uni-halle.de
+Description: Child Theme for Blogs@MLU Default | Zentrum für Ingenieurwissenschaften
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+Template: blogsmlu
+Version: 1.0
+
+*/
+ 
+@import url("../blogsmlu/style.css");
+
+a, #header h2, #header h2 a {
+	color: #627b86;
+}
+
+#content a:visited, #jquery-live-search a:visited {
+	color: #a1b4bd;
+}
+
+.topmenu li.current_page_item a, button#submit2, input#submit2, .button2 a, button:hover, input#submit:hover, .button a:hover {
+	background-color: #627b86;
+}
+
+blockquote {
+	border-left-color: #627b86;
+}
+
+.sticky {
+	border-color: #627b86;
+}

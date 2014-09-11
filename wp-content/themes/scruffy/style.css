@@ -1,0 +1,970 @@
+/*  
+Theme Name: Scruffy
+Theme URI: http://www.fresh01.co.za/free-themes/
+Description: Scruffy is a free WordPress theme with a unique, "grunge" design. See <a href="http://fresh01.co.za/basic-theme-features">the full list of features</a> on my <a href="http://fresh01.co.za/">website</a>.
+Version: 1.3
+Author: Cobus Bester
+Author URI: http://www.fresh01.co.za/
+Tags: Grunge, Two Column, Unique design, widgets, widgetized, blog, free, blue, beige, dirty, sketched
+*/
+
+/*>>>>> Setup and Reset <<<<<*/
+
+body, html  {
+	height: 100%;
+}
+
+body, html, p, ul, ol {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+body  {
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 80%;
+	line-height: 1.5;  /*unitless for proper inheritance*/
+	color: #666;
+	background: #bcd1dc url(img/bg.jpg) no-repeat center top;
+	text-align: center;
+}
+
+body.altbg  {
+	background: #bcd1dc url(img/altbg.jpg) no-repeat center top;
+}
+
+h1, h2, h3, h4, h5, h6  {
+	font-family: Georgia, Helvetica, Sans-serif;
+	font-weight: normal;
+	margin: 5px 0;
+	color: #666;
+}
+
+h1  {font-size: 30pt}
+h2  {font-size: 24pt}
+h3  {font-size: 20pt}
+h4  {font-size: 18pt}
+h5  {font-size: 14pt}
+h6  {font-size: 12pt}
+
+p  {
+	margin: 18pt 0;
+}
+
+ul, ol  {
+	margin: 10px 0;
+	padding: 0 0 0 30px;
+}
+
+img  {
+	border: none;
+}
+
+/*>>>>> Navigation <<<<<*/
+
+a:link, a:visited  {
+	color: #8697a0;
+}
+
+#nav ul  {
+	margin: 3px 0 0 0;
+	padding: 0 0 0 18px;
+}
+
+#nav ul li  {
+	list-style: none;
+	display: inline;
+	font-size: 1.2em;
+	margin-right: 10px;
+	padding-left: 15px;
+	background: url(img/navdivider.jpg) no-repeat center left;
+}
+
+#nav ul li.first  {
+	background: none;
+}
+
+#nav ul li a:link, #nav ul li a:visited  {
+	font-weight: bold;
+	color: #777777;
+	text-decoration: none;
+	padding-top: 13px;
+}
+
+#nav ul li a:hover  {
+	color: #000;
+	background: url(img/navhover.gif) no-repeat top center;
+}
+
+#nav ul li.current_page_item a:link, #nav ul li.current_page_item a:visited  {
+	color: #000;
+	background: url(img/navhover.gif) no-repeat top center;
+}
+
+
+
+/*>>>>> Layout <<<<<*/
+
+#container  {
+	position: relative;
+	width: 830px;	
+	margin: 0 auto;
+	text-align: left;
+}
+
+#head  {
+	height: 137px;
+	width: 830px;
+	background: #bcd1dc url(img/header.jpg) no-repeat center top;
+}
+
+#head h1  {
+	font-family: Georgia, Times, serif;
+	font-size: 5em;
+	margin: 0 15px;;
+}
+
+#head h1 a {
+	color: #595959;
+	text-decoration: none;
+}
+
+#nav  {
+
+}
+
+#main  {
+	float:left;
+	background: #f4f5de url(img/main.jpg) no-repeat top left;
+	width: 830px;
+	margin-top: -1px;
+	clear: both;
+}
+
+#main.alt  {
+	background: #f4f5de url(img/altmain.jpg) no-repeat top left;
+}
+
+#content  {
+	float: left;
+	width: 560px;
+}
+
+#postnav  {
+	position: relative;
+	z-index: 4;
+}
+
+#sidebar  {
+	float: left;
+	width: 270px;
+	margin-bottom: 20px;
+}
+
+#sidebar .subscribe  {
+	display: block;
+	height: 0;
+	margin-left: 17px;
+	text-indent: -9999px;
+	padding-top: 73px;
+	width: 247px;
+	overflow: hidden;
+	background: url(img/subscribe.jpg) no-repeat top left;
+}
+
+#searchform  {
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+
+*html #searchform  {
+	margin-left: 20px;
+}
+
+#sidebar #searchform .text  {
+	border: 1px solid #ebecd5;
+	height: 22px;
+	width: 195px;
+	padding: 8px 0 0 5px;
+	color: #777;
+}
+
+#sidebar #searchform .submit  {
+	margin-bottom: -9px;
+}
+
+#footer  {
+	position: relative;
+	z-index: 0;
+	float: left;
+	margin: 0 auto;
+	height: 186px;
+	width: 830px;
+	padding: 0 80px;
+	margin-left: -80px;
+	margin-top: -50px;
+	background: url(img/footer.jpg) no-repeat bottom center;
+}
+
+#footer p  {
+	position: absolute;
+	bottom: 0;
+	left: 100px;
+	color: #999;
+}
+
+*html #footer  {
+	margin: -100px 0 0 0;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> POST AND ENTRY <<<<<*/
+
+h3.cathead  {
+	position: absolute;
+	top: 140px;
+	left: 35px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.post  {
+	position: relative;
+	z-index: 5;
+	background: url(img/posttop.jpg) no-repeat top left;
+	padding: 18px 10px 30px 35px;
+	border-bottom: 1px solid #dfe0c3;
+}
+
+.entry p  {
+	line-height: 24px;
+}
+
+.entry  {
+	position: relative;
+	z-index: 1;
+}
+
+.first  {
+	padding-top: 40px!important;
+	background-image: none;
+}
+
+.postbottom  {
+	background: url(img/postbottom.jpg) no-repeat 0% 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 200px;
+	width: 400px;
+	z-index: -5;
+	margin-top: -170px;
+}
+
+.post .comments  {
+	position: absolute;
+	top: 27px;
+	left: -22px;
+	color: #000;
+	text-decoration: none;
+	background: url(img/comments.jpg) no-repeat center center;
+	display: block;
+	padding: 1px 21px 9px 21px;
+	font-family: Georgia, Times, serif;
+	font-size: 36px;
+}
+
+.post .comments a:link, .post .comments a:visited  {
+	text-decoration: none;
+	color: #000!important;
+}
+
+*html .post .comments  {
+	left: -66px;
+}
+
+.first .comments  {
+	top: 53px;
+}
+
+.post .postmetadata  {
+	margin: 0 0 0 10px;
+	color: #8697a0;
+}
+
+.post .postmetadata a:link, .post .postmetadata a:visited  {
+	color: #8697a0;
+	text-decoration: none;
+}
+
+.post .postmetadata .date  {
+	padding: 0 0 0 24px;
+	margin-right: 10px;
+	background: url(img/icons/clock.png) no-repeat left center;
+}
+
+.post .postmetadata .author  {
+	padding: 0 0 0 24px;
+	margin-right: 10px;
+	background: url(img/icons/cog.png) no-repeat left center;
+}
+
+.post .postmetadata .category  {
+	padding: 0 0 0 24px;
+	margin-right: 10px;
+	background: url(img/icons/folder.png) no-repeat left center;
+}
+
+.post .postmetadata .edit  {
+	padding: 0 0 0 24px;
+	margin-right: 10px;
+	margin-top: 10px;
+	background: url(img/icons/edit.png) no-repeat left center;
+}
+
+.post .postmetadata .edit a:link, .post .postmetadata .edit a:visited  {
+	color: red;
+	text-decoration: none;
+}
+
+.first h2.title  {
+	width: 428px;
+}
+
+.post h2.title  {
+	color: #5a5a5a;
+	margin: 12px 0 7px 10px;
+	line-height: 42px;
+}
+
+.post h2.title a:link, .post h2.title a:visited  {
+	color: #5a5a5a;
+	text-decoration: none;
+}
+
+.post h1, .post h2, .post h3, .post h4, .post h5, .post h6  {
+}
+
+.post p.more  {
+	padding: 0 25px 0 0;
+	background: url(img/icons/image_next.png) no-repeat right center;
+}
+
+.post p.more a:link, .post p.more a:visited  {
+	text-decoration: none;
+}
+
+.post p.tags  {
+	padding: 0 0 0 25px;
+	background: url(img/icons/tag.png) no-repeat left center;
+}
+
+.post p.tags a:link, .post p.tags a:visited  {
+	text-decoration: none;
+}
+
+.entry  {
+
+}
+
+.entry p  {
+	margin: 25px 0;
+}
+
+.entry .pagelinks  {
+
+}
+
+.entry .pagelinks a  {
+	
+}
+
+.entry blockquote  {
+	color: #666;
+}
+
+.entry blockquote p  {
+	margin: 0;
+}
+
+.entry blockquote.pullquote_left  {
+	float: left;
+	width: 150px;
+	font-size: 18px;
+	font-family: Georgia, serif;
+}
+
+.entry blockquote.pullquote_right  {
+	float: right;
+	width: 150px;
+	font-size: 18px;
+	font-family: Georgia, serif;
+}
+
+.entry ul  {
+	padding: 0 0 0 30px;
+}
+
+.entry ol  {
+	padding: 0 0 0 30px;
+}
+
+.entry  ol li ol li  {
+	list-style-type: lower-latin;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CUSTOM PARAGRAPH STYLES <<<<<*/
+
+
+
+.entry .download  {
+	padding: 20px 0 20px 80px;
+	background: url(img/icons/download.jpg) no-repeat 4% center;
+}
+
+.entry .info  {
+	padding: 20px 0 20px 80px;
+	background: url(img/icons/info.jpg) no-repeat 4% center;
+}
+
+.entry .update  {
+	padding: 20px 0 20px 80px;
+	background: url(img/icons/update.jpg) no-repeat 4% center;
+}
+
+.entry .warning  {
+	padding: 20px 0 20px 80px;
+	background: url(img/icons/warning.jpg) no-repeat 4% center;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> POST AND IMAGE NAVIGATION <<<<<*/
+
+#navigation  {
+	margin: 0 0 0 30px;
+}
+
+#navigation .prev a:link, #navigation .prev a:visited  {
+	text-decoration: none;
+}
+
+#navigation .prev a:hover  {
+
+}
+
+#navigation .next a:link, #navigation .next a:visited  {
+	text-decoration: none;
+}
+
+#navigation .next a:hover  {
+
+}
+
+#paginate a:link, #paginate a:visited  {
+	padding: 2px 7px;
+	background-color: #ededed;
+	border: 1px solid #9e9e9e;
+	text-decoration: none;
+}
+
+#image_nav  {
+	float: left;
+	width: 100%;
+}
+
+#image_nav img  {
+}
+
+#image_nav a:link, #image_nav a:visited  {
+	display: block;
+}
+
+#image_nav .prev a:link, #image_nav .prev a:visited  {
+	background: url(img/icons/image_prev.png) no-repeat left center;
+	padding: 0 0 0 30px;
+}
+
+#image_nav .next a:link, #image_nav .next a:visited  {
+	background: url(img/icons/image_next.png) no-repeat right center;
+	padding: 0 30px 0 0;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GALLERY <<<<<*/
+
+.gallery  {
+	margin-top: 20px!important;
+}
+
+.gallery-item  {
+	margin: 0;
+	padding: 0;
+	float: left;
+	border: none!important;
+}
+
+.gallery-icon  {
+
+}
+
+.attachment-thumbnail  {
+	border: none!important;
+}
+
+/*>>>>> Widgets <<<<<*/
+
+#widgets  {
+	padding-left: 20px;
+}
+
+.widget a:link, .widget a:visited  {
+		color: #666;
+}
+
+.widget  {
+	border: 1px solid #dfe0c3;
+	width: 225px;
+	margin-bottom: 30px;
+	margin-left: 5px;
+	background: url(img/cattopleft.jpg) no-repeat top left;
+}
+
+.widget .widgetbottom  {
+	position: relative;
+	z-index: 0;
+	height: 29px;
+	width: 225px;
+	background: url(img/catbotright.jpg) no-repeat bottom right;
+	margin-top: -20px;
+}
+
+.widget h3  {
+	font-family: Georgia, Times, serif;
+	font-size: 24px;
+	color: #8a8c6b;
+	background: url(img/widgettitle.jpg) no-repeat bottom center;
+	padding-left: 20px;
+}
+
+.widget ul {
+	position: relative;
+	z-index: 1;
+	margin: 0;
+	padding: 0;
+	margin: 10px 10px 0 25px;
+}
+
+.widget ul li {
+	list-style: none;
+	font-size: 12px;
+	color: #6a6a6a;
+	margin-bottom: 7px;
+}
+
+.widget ul li {
+	margin: 7px 0;
+	list-style: none;
+}
+
+.widget ul li ul  {
+	margin: 0 0 0 15px;
+}
+
+.widget ul li ul li {
+	margin: 5px 0;
+	padding: 0 0 0 0px;
+	list-style: none;
+}
+
+.widget ul li a:link, #sidebar .widget ul li a:visited  {
+	color: #6a6a6a;
+	text-decoration: none;
+}
+
+.widget ul li a:hover  {
+}
+
+.widget .textwidget  {
+	margin: 0 10px 0 25px;
+	padding: 0 0 10px 0;
+}
+
+.widget #recentcomments li  {
+	padding: 0;
+}
+
+.widget #recentcomments li a:link, .widget #recentcomments li a:visited {
+	border-bottom: none;
+	color: #000;
+}
+
+.widget #recentcomments li a:hover  {
+}
+
+.widget h3 a.rsswidget  {
+	font-weight: normal!important;
+	margin-left: 0;
+	text-decoration: none;
+	
+	color: #8a8c6b;
+}
+
+.widget h3 a.rsswidget img  {
+	display: none;
+}
+
+.widget a.rsswidget   {
+}
+
+.widget .rss-date  {
+	display: block;
+}
+
+.widget div.rssSummary  {
+	margin: 10px 0 5px 0;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CALENDAR <<<<<*/
+
+#wp-calendar  {
+	width: 200px;
+	margin: 0 10px;
+	text-align: center;
+}
+
+#wp-calendar caption  {
+	padding: 0 0 7px 0;
+	font-weight: bold;
+	text-align: right;
+}
+
+#wp-calendar a:link, #wp-calendar a:visited  {
+	text-decoration: none;
+	background-color: #dcdcdc;
+	padding: 3px 5px;
+}
+
+#wp-calendar #next  {
+	text-align: right;
+}
+
+#wp-calendar #prev  {
+	text-align: left;
+}
+
+#wp-calendar #next a:link, #wp-calendar #next a:visited,
+#wp-calendar #prev a:link, #wp-calendar #prev a:visited  {
+	background: none;
+	color: #666;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DEMOCRACY PLUGIN STYLING <<<<<*/
+
+.democracy  {
+	width: 75%!important;
+	padding: 5px 20px 40px 5px!important;
+	margin: 0 0 0 20px!important;
+}
+
+.dem-vote-button  {
+	float: left;
+	background-color: #dfe0c3;
+	border: none;
+	height: 25px;
+}
+
+.democracy ul  {
+	padding: 0;
+	margin: 10px 0 10px 0!important;
+}
+
+.democracy ul li  {
+	margin: 0 0 5px 0;
+	padding-left: 0!important;
+	text-transform: uppercase;
+	font-size: 11px;
+	list-style: none;
+}
+
+.democracy ul li a  {
+	background-image: none!important;
+}
+
+.dem-graph  {
+	width: 100%;
+}
+
+.dem-graph a  {
+	width: 100%;
+	padding: 0!important;
+	border-bottom-color: #999!important;
+	border-right-color: #999!important;
+}
+
+.dem-graph b  {
+	color: #000!important;
+	font-size: 10px;
+}
+
+.dem-graph i  {
+	color: #000!important;
+	font-size: 10px;
+}
+
+.democracy ul li input  {
+	margin: 0 2px 0 5px!important;
+}
+
+.dem-vote-link  {
+	float: right;
+	display: block;
+	margin-top: 8px;
+	color: #666;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FLICKRRSS WIDGET <<<<<*/
+
+p.flickrrss  {
+	display: inline;
+}
+
+p.flickrrss img  {
+	padding: 5px;
+	margin-left: 20px;
+	margin-right: -5px;
+}
+
+p.flickrrss img:hover  {
+	background-color: #dfe0c3;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> THEME SWITCHER RELOADED WIDGET <<<<<*/
+
+#themeswitcher  {
+}
+
+#themswitcher li  {
+	margin: 0;
+}
+
+#themeswitcher select  {
+	width: 93%!important;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> COMMENTS <<<<<*/
+
+#comments  {
+	padding: 10px 0 0 0;
+	margin: 0 0 0 30px;
+	border-bottom: 1px solid #dfe0c3;
+}
+
+#comments h3  {
+	margin: 15px 0;
+	font-size: 16px;
+}
+
+#formsblock  {
+	padding: 0 0 20px 0;
+}
+
+#formsblock .hi  {
+	margin: 0 0 -10px 0;
+}
+
+#formsblock .hi small  {
+	font-size: 11px;
+	margin-top: -16px;
+}
+
+#formsblock .comments   {
+	background: url(img/icons/rss_comments.png) no-repeat center right;
+	padding: 6px 30px 6px 0;
+	text-decoration: none;
+	line-height: 20px;
+}
+
+#comments ol  {
+	margin: 5px 0 30px 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid #dfe0c3;
+	border-bottom: 1px solid #dfe0c3;
+}
+
+#comments ol li  {
+	padding: 10px;
+	list-style: none;
+	margin: 5px 0;
+}
+
+#comments ol li.alt  {
+	background-color: #e5e6c6;
+}
+
+#comments ol li.authorcomment  {
+	background-color: #d7d8bf;
+}
+
+.commententry p.moderate  {
+	background-color: #eee;
+	font-style: italic;
+	font-weight: bold;
+	padding: 4px 0 4px 10px;
+}
+
+.commentmeta  {
+	font-size: 11px;
+	
+}
+
+.commentmeta .gravatar  {
+}
+
+.commentmeta .gravatar img  {
+	float: left;
+	margin: 0 10px 0 0;
+	border: 1px solid #ededed;
+}
+
+.commentmeta .commentauthor  {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.commentmeta .commentdate  {
+
+}
+
+.commentmeta .commentpermalink  {
+
+}
+
+#comments #tagbox  {
+	color: #9e9e9e;
+	margin: 0 0 25px 0;
+}
+
+#comments #tagbox:hover  {
+	color: #000;
+}
+
+#comments #tagbox p  {
+	margin: 0;
+	font-size: 12px;
+}
+
+#comments #tagbox strong  {
+	font-size: 12px;
+}
+
+#comments p.nocomments{
+	padding: 0;
+}
+
+#comments textarea{
+	font-family: Arial, Helvetica, Georgia, Sans-serif;
+	font-size: 12px;
+	width: 100%;
+	margin: 0;
+	line-height: 20px;
+	font-size: 15px;
+}
+
+#commentform #submit  {
+	border: 1px solid #9e9e9e;
+	background-color: #ededed;
+	padding: 5px;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> POST IMAGE ALIGNMENT <<<<<*/
+
+.entry img  {
+	padding: 5px;
+	background-color: #dddfc0;
+}
+
+img.wp-smiley  {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.entry .alignleft  {
+	float: left;
+	margin: 10px 15px 10px 0;
+}
+
+.entry .alignright  {
+	float: right;
+	margin: 10px 0 10px 15px;
+}
+
+.entry .aligncenter  {
+	text-align: center;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> POST TABLES <<<<<*/
+
+.post table  {
+	width: 100%;
+	border-left: 1px solid #b4b69c;
+	border-top: 1px solid #b4b69c;
+	border-spacing: 0;
+	margin: 10px 0;
+}
+
+*:first-child+html .post table  {
+	border-collapse: collapse;
+}
+
+.post table th  {
+	font-size: 15px;
+	background-color: #dee0c2;
+	color: #666;
+}
+
+.post table th, .post table td  {
+	border-right: 1px solid #b4b69c;
+	border-bottom: 1px solid #b4b69c;
+	padding: 3px 0 3px 5px;
+}
+
+.post .altrow  {
+	background-color: #fffff9;
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FLOAT & ALIGN <<<<<*/
+
+.floatl  {float: left;}
+.floatr  {float: right;}
+
+.alignl  {text-align: left;}
+.alignr  {text-align: right;}
+.alignc  {text-align: center;}
+
+.hide  {display: none;}
+
+/* http://www.positioniseverything.net/easyclearing.html */
+
+.clearfix:after
+{
+	clear: both;
+	content: '.';
+	display: block;
+	visibility: hidden;
+	height: 0;
+}
+
+.clearfix
+{
+	display: inline-block;
+}
+
+* html .clearfix
+{
+	height: 1%;
+}
+
+.clearfix
+{
+	display: block;
+}

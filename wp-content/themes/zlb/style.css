@@ -1,0 +1,35 @@
+/*
+ Theme Name:   ZLB-Theme
+ Description:  ZLB-Design
+ Author: 
+ Author URI:   http://example.com
+ Template:     twentyeleven
+ Version:      1.0.0
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+*/
+
+@import url("../twentyeleven/style.css");
+
+#access {
+	background: #ccc; /* Show a solid color for older browsers */
+}
+#access a {
+	color: #333;
+}
+
+#branding .only-search #s {
+
+    background-color: #DDDDDD;
+    border-color: #AAAAAA;
+    color: #222222;
+} 
+
+.entry-title, .entry-title a {
+    color: #FF3386;
+}
+
+.entry-title, .entry-title a hover{
+    color: #999999;
+}
+
+.entry-meta .by-author {display:none;}

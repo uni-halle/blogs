@@ -1,0 +1,11 @@
+<?php if(!empty($this->options['donate_link'])):?>
+If you are having trouble and cannot find the answers in the inbuilt help or in the <a href="http://wordpress.org/extend/plugins/<?php echo $this->options['wpslug']; ?>/faq/">FAQ</a> you can post your support questions <a href = "http://wordpress.org/tags/<?php echo $this->options['wpslug']; ?>">here</a>
+
+If you find <?php echo $this->options['name']; ?> useful please rate it at <a href="<?php echo $this->options['uri']; ?>">wordpress.org</a> and please consider making a <a href="<?php echo $this->options['donate_link']; ?>">donation</a> to help us set aside more hours to maintain <?php echo $this->options['name']; ?> 
+
+<?php echo $this->options['name']; ?> is written by <a href='<?php echo $this->options['author_uri']; ?>'><?php echo $this->options['author']; ?></a>
+
+You can check out our other plugins <a href="http://profiles.wordpress.org/users/dcoda/">here</a>
+
+If you require a custom plugin you can contact us <a href="http://dcoda.co.uk/contact/">here</a> and maybe we could write it for you.
+<?php endif;?>

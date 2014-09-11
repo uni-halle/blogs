@@ -1,0 +1,15 @@
+/* Tradução por Gleyber - http://www.gleyber.com.br */
+<name>Seu nome</name>
+<email>Seu e-mail</email>
+<url>Seu site</url>
+<message>Mensagem</message>
+<antispam><b>Medidas Antispam</b><br />Por favor, insira o texto abaixo no campo antes de enviar a mensagem para o livro de visitas.</antispam>
+<mandatory>Obrigat&oacute;rio</mandatory>
+<submit>Enviar mensagem</submit>
+<name_error>Nome muito curto!</name_error>
+<email_error>Endere&ccedil;o de e-mail inv&aacute;lido!!</email_error>
+<url_error>Endere&ccedil;o do site inv&aacute;lido!</url_error>
+<message_error>Texto muito curto!</message_error>
+<antispam_error>Erro na digita&ccedil;&atilde;o da combina&ccedil;&atilde;o!</antispam_error>
+<success>Obrigado por assinar meu livro de visitas!</success>
+<admin_review>O administrador ir&aacute; validar este post!<br />Obrigado por sua paci&ecirc;ncia!</admin_review>

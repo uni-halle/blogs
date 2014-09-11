@@ -1,0 +1,344 @@
+/*
+Theme Name: Deutschdidaktik Uni Halle
+Theme URI: http://wordpress.org/extend/themes/deutschdidaktik
+Author: Maik Schößler
+Author URI: http://portfolio-ms.de/
+Description: LEHRSTUHL FÜR DIDAKTIK DER DEUTSCHEN SPRACHE & LITERATUR
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: Uni Halle, Lehrstuhl Deutschdidaktik, Lehrstuhl f&uuml;r Deutschdidaktik, Sprache, Literatur 
+Text Domain: LEHRSTUHL FÜR DIDAKTIK DER DEUTSCHEN SPRACHE & LITERATUR
+*/
+
+/* RESET
+-------------------------------------------------------------- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size:100%;
+	font-style: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+/* genenral stuff */
+
+:focus {/* remember to define focus styles! */
+	outline: 0;
+}
+.clear {
+    clear: both;
+}
+
+/* base */
+.wrapper {
+margin-top: 45px;
+margin-bottom: 45px;
+margin-left: auto;
+margin-right: auto;
+width: 950px;
+background-color: white;
+box-shadow: rgba(0,0,0,0.5) 0px 0px 10px;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* header */
+
+header>a {
+    float: left;
+}
+header img {
+    border: none;
+}
+
+/* navigation */
+
+.menu-header-nav-container {
+    clear: both;
+    padding-left: 210px;
+    background: #993c8c;
+    min-height: 31px;
+    position: relative;
+}
+
+.menu-header-nav-container ul,
+.menu-header-nav-container ol,
+.menu-header-nav-container li {
+    list-style: none;
+}
+
+.menu-header-nav-container>ul>li {
+    float: left;
+    font-size: 18px;
+    background: #b7b6b6;
+    text-align: justify;
+    height: 31px;
+}
+
+.menu-header-nav-container>ul>li.menu-item-997 {
+    background: #9bc34b;
+    width: 209px;
+}
+.menu-header-nav-container>ul>li.menu-item-998 {
+    background: #7a9b37;
+    width: 130px;
+}
+.menu-header-nav-container>ul>li.menu-item-999 {
+    background: #5d7f18;
+    width: 200px;
+}
+.menu-header-nav-container>ul>li.menu-item-1000 {
+    width: 201px;
+}
+
+.menu-header-nav-container li>a {
+    color: #fff;
+    padding: 6px 0px 3px 23px;
+    display: block;
+}
+.menu-header-nav-container .children {
+    display: none;
+    clear: both;
+    min-height: 31px;
+    position: absolute;
+    background: #fff;
+    top: 31px;
+    left: 210px;
+    width: 739px;
+}
+
+.menu-header-nav-container .children li {
+    background: #fff;
+    float: left;
+}
+.menu-header-nav-container .children a {
+    color: #787878;
+    font-size: 16px;
+    padding: 4px 8px;
+}
+.menu-header-nav-container .current-cat-parent .children,
+.menu-header-nav-container .current-cat .children {
+    display: block;
+    z-index: 5;
+}
+
+/* hover-states */
+
+.menu-header-nav-container li:hover .children {
+    display: block;
+    z-index: 10;
+}
+
+.menu-header-nav-container li:hover {
+    background: #b7b6b6;
+}
+.menu-header-nav-container li:hover>a {
+    color: #fff;
+}
+.menu-header-nav-container>ul>li.cat-item-5 li:hover {
+    background: #9bc34b;
+}
+.menu-header-nav-container>ul>li.cat-item-9 li:hover {
+    background: #7a9b37;
+}
+.menu-header-nav-container>ul>li.cat-item-13 li:hover {
+    background: #5d7f18;
+}
+
+/* breadcrumbs */
+
+#breadcrumb {
+    padding: 30px 0 0 210px;
+    font-size: 12px;
+}
+#breadcrumb a {
+    color: #000;
+}
+
+/* footer */
+#global-footer
+{
+	display:none !important;
+}
+footer {
+    height: 150px;
+    background-color: #9bc34b;
+    line-height: 30px;
+    font-size: 13px;
+}
+footer .liste {
+    background-color: #7a9b37;
+}
+footer .liste * {
+    color: #fff;
+    text-align: center;
+}
+footer .liste p {
+    float: right;
+    font-size: 11px;
+    padding-right: 14px;
+}
+footer ul>li {
+    display: inline;
+    padding: 0 20px;
+}
+footer .cat-item-128 {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+
+
+/* content */
+
+#content {
+    padding: 0 0 15px 210px;
+    width: 470px;
+}
+#content h2 {
+    margin-top: 35px;
+    font-size: 2.2em;
+    color: #9bc34b;
+    margin-bottom: .5em;
+}
+#content h3 {
+    font-size: 1.5em;
+    color: #9bc34b;
+    margin-top: 35px;
+    margin-bottom: .5em;
+}
+#content p,
+#content label,
+#content td {
+    font-size: 0.8125em;
+    line-height: 21px;
+    color: #000000;
+    text-align: justify;
+}
+#content a {
+    font-size: 1em;
+    color: #9bc34b;
+}
+#content table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#content td {
+    border: 1px solid #b7b6b6;
+    padding: 10px;
+    text-align: left;
+}
+#content tr:first-of-type td {
+    font-weight: bold !important;
+}
+#content span {
+    font-weight: bold !important;
+}
+
+
+#content ul li,
+#content ol li {
+    list-style-type: circle;
+    list-style-position: outside;
+    display: list-item;
+    margin-left: 20px;
+    font-weight: normal;
+    line-height: 21px;
+}
+#content ol li {
+    list-style-type: decimal;
+}
+
+
+/* advanced */
+.border {
+    border: 1px solid #b7b5b6;
+    padding: 3px;
+}
+
+/* sidebar */
+
+.sidebar {
+    float:right;
+    width: 226px;
+    margin-left: 40px;
+    line-height: 21px;
+    display: block;
+}
+.sidebar li {
+    list-style-type: none;
+}
+
+.widget_wp_sidebarlogin {
+    margin-top: 60px;
+    background: #b7b6b6;
+    padding: 20px 10px 0;
+    color: #fff;
+    height: 300px;
+    margin-bottom: 100px;
+}
+.widget_wp_sidebarlogin h2 {
+    font-size: 1.1em;
+}
+.widget_wp_sidebarlogin li a {
+    color: white;
+    font-size: 0.8em;
+    display: block;
+}
+
+
+/* logout-button / login */
+.widget_wp_sidebarlogin ul li:last-of-type a, form input[type="submit"] {
+    background: url(images/button_bg.png) no-repeat;
+    height: 29px;
+    width: 147px;
+    border: 0px;
+    margin-top: 8px;
+    padding: 3px 0 0;
+    text-align: center;
+	color:white; 
+	border-radius:0px;
+}
+form input[type="submit"]
+{
+	font-size:0.9em !important;
+	font-weight:normal !important;
+}
+#nav-left {
+    float: left;
+    margin-top: 51px;
+    width: 174px;
+}
+#nav-left a {
+    color: #999;
+    font-size: 15px
+}
+#nav-left li {
+    list-style: none;
+    padding: 5px 0;
+    margin: 0 0;
+    text-align: right;
+}
+#nav-left .nav-parents li {
+    border-bottom: 1px solid #b7b5b6;
+}
+#nav-left .nav-subs {
+    
+}
+#nav-left .current-cat a {
+    color: #333;
+}

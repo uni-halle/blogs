@@ -1,0 +1,698 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Google +1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-07 09:28+0100\n"
+"PO-Revision-Date: 2012-08-07 09:29+0100\n"
+"Last-Translator: \n"
+"Language-Team: Incsub\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: D:\\xampp\\htdocs\\plusone\\wp-content\\plugins\\wpmu-dev-plusone\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SearchPath-0: lib\n"
+"X-Poedit-SearchPath-1: lib/forms\n"
+
+#: lib/class_wdgpo_admin_form_renderer.php:15
+msgid "Yes"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:18
+msgid "No"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:31
+#: lib/class_wpgpo_widget.php:18
+#, php-format
+msgid "Small: %s"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:32
+#: lib/class_wpgpo_widget.php:19
+#, php-format
+msgid "Medium: %s"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:33
+#: lib/class_wpgpo_widget.php:20
+#, php-format
+msgid "Standard: %s"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:34
+#: lib/class_wpgpo_widget.php:21
+#, php-format
+msgid "Tall: %s"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:53
+msgid "Before the post"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:54
+msgid "After the post"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:55
+msgid "Both before and after the post"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:56
+msgid "Manually position the box using shortcode or widget"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:140
+msgid "<p>Google +1 will <strong><em>not</em></strong> be shown for selected types.</p>"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:147
+msgid "Using the WordPress defaults, the needed scripts will be added to your <code>head</code>. Use this option to load the scripts in your footer, after the bulk of your page has lareadt been loaded."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:148
+msgid "Note that this method is a bit less reliable then the default one, as it depends on your theme doing the right thing."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:155
+msgid "Your Google+ page ID is the long number at the end of your page URL."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:162
+msgid "Your Google+ profile ID is the long number at the end of your page URL."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:166
+msgid "Add Google+ profile field to user profile pages"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:168
+msgid "Enabling this option will add a new Google+ profile contact field for your users with posting privileges on their profile page."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:169
+msgid "Automatically add authorship links"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:171
+msgid "Enabling this option will automatically add Google+ authorship links to your posts."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:172
+msgid "Even if the option is turned off, you will be able to add the links yourself using a shortcode and/or template tag."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:177
+msgid "You need CURL for import options to work"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:191
+#: lib/class_wdgpo_contextual_help.php:96
+msgid "Create a project in Google API Console"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:192
+#: lib/class_wdgpo_contextual_help.php:97
+msgid "Under &quot;Services&quot; tab, turn &quot;Google+ API&quot; to <b>ON</b>"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:193
+#: lib/class_wdgpo_contextual_help.php:98
+#, php-format
+msgid "Under &quot;API Access&quot; click &quot;Create oAuth Client Access.&quot; Fill in your details and use this as your &quot;Authorized Redirect URIs&quot;: <code>%s</code>"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:194
+msgid "Copy your <b>Client ID</b> and <b>Client secret</b> values and paste them in the fields below"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:195
+#: lib/class_wdgpo_contextual_help.php:100
+msgid "Save your plugin settings and click the &quot;Authenticate&quot; button"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:199
+msgid "Client ID"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:203
+msgid "Client secret"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:209
+msgid "You need to set up the page and/or profile ID fields to enable Google+ integration."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:212
+msgid "You need to set up your app info to enable Google+ imports."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:216
+msgid "Authenticate"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:218
+msgid "Test"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:219
+msgid "Deauthenticate"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:251
+msgid "Multiple import"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:260
+msgid "Google+ ID:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:262
+msgid "Remove"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:266
+msgid "Add Google+ ID to import"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:268
+msgid "In addition to your page, you can import posts from a number of other Google+ profiles/pages."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:269
+msgid "Keep in mind that every additional import adds more to total processing time."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:277
+msgid "Import posts into BuddyPress as:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:280
+msgid "Activities"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:281
+msgid "Select this option if you want import your Google+ activities as BuddyPress activities."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:285
+msgid "Posts"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:286
+msgid "Select this option if you want import your Google+ activities as posts on your blog."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:288
+msgid "Changing these settings will only affect newly imported posts."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:292
+msgid "I want to display my imported posts in widgets and shortcode only:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:294
+msgid "Select this option if you want to show your imported posts in your widgets, but not actually post them on your blog."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:295
+msgid "Changing this setting will only affect newly imported posts."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:302
+msgid "Limit import to this many posts:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:304
+msgid "At most this many posts will be imported"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:305
+msgid "To prevent timeout issues and incomplete imports, you'll want to keep this number fairly low."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:310
+msgid "Import now"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:314
+msgid "Author assignment"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:316
+msgid "Assign imported posts to this user:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:321
+msgid "Invalid username!"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:323
+msgid "All your imported posts will be assigned to this user."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:327
+msgid "Category assignment"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:329
+msgid "Apply this category:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:331
+msgid "No category"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:339
+msgid "This category will be automatically added to all your imported posts."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:342
+msgid "Tags assignment"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:344
+msgid "Apply these tags:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:352
+msgid "These tags will be automatically added to all your imported posts."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:354
+msgid "Auto-create and apply tags from activity author name:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:357
+msgid "All your imported posts will be auto-tagged according to activity author display name."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:359
+msgid "Auto-create and apply tags from detected hashtags:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:362
+msgid "All your imported posts will be auto-tagged according to detected hashtags."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:365
+msgid "Post formats assignment"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:369
+msgid "Apply this post format:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:371
+msgid "<p>Your theme does not support post formats</p>"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:380
+msgid "This format will be applied to all your imported posts."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:390
+#, php-format
+msgid "Map <b>%s</b> post format to imported posts with these hashtags:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:395
+#: lib/class_wdgpo_admin_form_renderer.php:404
+msgid "Separate multiple hashtags with commas, i.e. <code>#hashtag1,#hashtag2</code>"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:396
+msgid "Any hashtag to post format mapping you set up here will take precedence over your assigned default post format."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:400
+msgid "Hashtags filter"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:402
+msgid "Import only posts with these hashtags:"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:405
+msgid "Leave this field empty to import all posts."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:412
+msgid "Enabling this option will allow you to track your +1s in Google Analytics."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:413
+msgid "<b>Note:</b> your site will need to have Google Analytics already set up for this to work."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:421
+msgid "Your +1 clicks will be added to this category."
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:427
+msgid "Do not do any logging"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:431
+msgid "Log only errors"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:435
+msgid "Log info messages too"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:439
+msgid "Debugging level"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:445
+msgid "Show log"
+msgstr ""
+
+#: lib/class_wdgpo_admin_form_renderer.php:447
+msgid "Clear log"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:41
+#: lib/class_wdgpo_contextual_help.php:108
+msgid "Google +1 settings"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:42
+msgid "Appearance"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:43
+msgid "Show +1s count"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:44
+msgid "Google +1 box position"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:45
+msgid "Do <strong>NOT</strong> Google +1 box for these post types"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:46
+msgid "Language"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:47
+msgid "Show +1 on Front Page"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:48
+msgid "Add scripts to my footer"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:50
+#: lib/class_wdgpo_contextual_help.php:111
+msgid "Google+ Pages and Profiles"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:51
+msgid "My Google+ page ID"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:52
+msgid "My Google+ profile ID"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:53
+msgid "Google+ author profile fields"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:55
+#: lib/class_wdgpo_contextual_help.php:114
+msgid "Google+ activities import"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:57
+msgid "My Google+ App settings"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:58
+msgid "Import settings"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:61
+msgid "Google Analytics integration"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:62
+msgid "Enable Google Analytics integration"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:63
+msgid "Analytics category"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:65
+msgid "Logging"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:66
+msgid "Log level"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:67
+msgid "Log"
+msgstr ""
+
+#: lib/class_wdgpo_admin_pages.php:79
+msgid "Google+ Profile"
+msgstr ""
+
+#: lib/class_wdgpo_codec.php:106
+#, php-format
+msgid "%s on Google+"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:28
+msgid "Google+"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:30
+#: lib/class_wdgpo_contextual_help.php:63
+msgid "The Google+ Plugin is your one-stop solution for total WordPress - Google Plus integration. This is the only plugin you'll ever need to take full advantage of Google's social media tools."
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:33
+msgid "Project page"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:34
+msgid "Installation and instructions page"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:35
+msgid "Support forum"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:56
+msgid "Intro"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:57
+msgid "This is where you configure <b>Google+</b> plugin for your site"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:61
+msgid "General Info"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:64
+msgid "Check out the Google+ Plugin's awesome features:"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:66
+msgid "<b>Add a +1 button to your site</b>  and let visitors spread the word about your content."
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:67
+msgid "<b>Integrate your WordPress site with Google Pages</b> so people can easily add you to their circles."
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:68
+msgid "<b>Post directly to WordPress from Google+</b> for a faster blogging experience."
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:69
+msgid "<b>Post from G+ directly to your BuddyPress activity stream</b>"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:75
+msgid "Setting up your Google+ account info"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:77
+#: lib/class_wdgpo_contextual_help.php:94
+msgid "Follow these steps to set up <em>My Google+ page ID</em> and <em>My Google+ profile ID</em> fields"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:79
+msgid "If you don't already own a Google+ account, go to the <a href=\"https://plus.google.com/\" target=\"_blank\">Google+ page</a> and get an account"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:80
+msgid "Once you have an account, sign in"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:81
+msgid "Next, click on your name and in the URL at the top is a long number right before <code>/posts</code>"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:82
+msgid "Copy the number (approximately 21 characters)"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:83
+msgid "Paste it into <em>My Google+ profile ID</em> field"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:84
+msgid "To set up Google+ page ID, navigate to your Google+ page"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:85
+msgid "Copy the long number at the end of the URL (approximately 20ish characters)"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:86
+msgid "Paste it into <em>My Google+ page ID</em> field"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:92
+msgid "Setting up Google API settings"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:99
+msgid "Copy your <b>Client ID</b> and <b>Client secret</b> values and paste them in the corresponding fields on this page"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:106
+msgid "Settings"
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:109
+msgid "Set up appearance and behavior of your +1 buttons. For integration with your Google Analytics setup, see <b>Google Analytics integration</b> further down the page."
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:112
+msgid "Set up your Google+ identities for Google+ Pages integration and syncing posts with WordPress."
+msgstr ""
+
+#: lib/class_wdgpo_contextual_help.php:115
+msgid "Set up synchronisation of your Google+ profiles and your WordPress blog."
+msgstr ""
+
+#: lib/class_wdgpo_logger.php:31
+msgid "No logged actions"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_activities_widget.php:8
+msgid "Shows your imported Google+ Activities"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_activities_widget.php:27
+#: lib/class_wpgpo_gplus_page_widget.php:52
+#: lib/class_wpgpo_widget.php:30
+msgid "Title:"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_activities_widget.php:32
+msgid "Show items for this feed:"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_activities_widget.php:42
+#: lib/class_wpgpo_gplus_page_widget.php:105
+msgid "Show this many imported posts:"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:8
+msgid "Shows your Google+ Page"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:27
+#, php-format
+msgid "Small icon: %s"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:31
+#, php-format
+msgid "Medium icon: %s"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:35
+#, php-format
+msgid "Large icon: %s"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:41
+msgid "None"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:42
+msgid "Left"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:43
+msgid "Right"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:46
+msgid "before"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:47
+msgid "after"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:59
+msgid "If you'd like to add your Google+ badge, you need to set up your Google+ page ID in plugin settings."
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:76
+msgid "Badge float"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:85
+msgid "My text"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:96
+#, php-format
+msgid "My text will come %s my badge."
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:100
+msgid "Show my imported posts:"
+msgstr ""
+
+#: lib/class_wpgpo_gplus_page_widget.php:122
+#, php-format
+msgid "My posts will come %s my badge and text."
+msgstr ""
+
+#: lib/class_wpgpo_widget.php:8
+msgid "Shows \"Google +1\" box on your post pages"
+msgstr ""
+
+#: lib/class_wpgpo_widget.php:35
+msgid "Appearance:"
+msgstr ""
+
+#: lib/class_wpgpo_widget.php:44
+msgid "Show count:"
+msgstr ""
+
+#: lib/forms/plugin_settings.php:2
+msgid "Google+ settings"
+msgstr ""
+
+#: lib/forms/plugin_settings.php:17
+msgid "<h2>Shortcode</h2> <p>In addition to (or instead of) the auto-inserted Google +1 buttons, you may want to use the shortcode to embed the button in your posts.</p> <dl> <dt>Tag: <code>wdgpo_plusone</code></dt> <dd>Embeds Google +1 button in your post</dd> <dd> Arguments:  <ul> <li> <code>appearance</code> (<em>optional</em>) - Accepts one of these values: <code>small</code>, <code>medium</code>, <code>standard</code>, <code>tall</code>. Default values are set on plugin settings page.  </li> <li> <code>show_count</code> (<em>optional</em>) - Accepts <code>yes</code> or <code>no</code> as values. Default values are set on plugin settings page.  </li> </ul> </dd> <dd> Examples:  <ul> <li> <code>[wdgpo_plusone]</code> - Embeds Google +1 button in your post, with defaults set on plugin settings page.  </li> <li> <code>[wdgpo_plusone appearance=\"tall\"]</code> - Embeds Google +1 <em>tall</em> button in your post, with other options taken from plugin settings.  </li> <li> <code>[wdgpo_plusone show_count=\"no\"]</code> - Embeds Google +1 button without count in your post, with other options taken from plugin settings.  </li> </ul> </dd> <dt>Tag: <code>wdgpo_gplus_page</code></dt> <dd>Embeds your Google+ page widget</dd> <dt>Tag: <code>wdgpo_activities</code></dt> <dd>Embeds your imported Google+ activities</dd> <dd> Arguments: <ul> <li><code>id</code> - a single Google+ ID or a list of comma-separated Google+ IDs to show activities for.</li> <li><code>show_faces</code> - show author images for activities. Accepts <code>yes</code>.</li> <li><code>template</code> - use a custom template to show your activities. You will need to have a file named <code>wdgpo-activities-TEMPLATE.php</code> (where TEMPLATE is the value of this argument) in your theme directory.</li> <li><code>orderby</code> - determines how to order the activities. Valid values are <code>date</code>, <code>title</code> and <code>rand</code>.</li> <li><code>order</code> - determines ordering direction. Valid values are <code>ASC</code> and <code>DESC</code>.</li> <li><code>limit</code> - only show this many activities.</li> <li><code>buffering</code> - By default, the shortcode will push your other content to the bottom. Use this argument if you wish to specify the placement within your content. Accepts <code>yes</code>. <em>Note: enabling this can cause problems on certain configurations.</em></li> </ul> </dd> </dl> <h2>Styling</h2> <p>If you need some extra styling done (e.g. floating the button), the button is wrapped in a <code>DIV</code> with class <code>wdgpo</code>.</p> <p>Based on the rendered button appearance and count, additional classes will be set:</p> <ul> <li><code>wdgpo_small_count</code></li> <li><code>wdgpo_small_nocount</code></li> <li><code>wdgpo_medium_count</code></li> <li><code>wdgpo_medium_nocount</code></li> <li><code>wdgpo_standard_count</code></li> <li><code>wdgpo_standard_nocount</code></li> <li><code>wdgpo_tall_count</code></li> <li><code>wdgpo_tall_nocount</code></li> </ul>"
+msgstr ""
+

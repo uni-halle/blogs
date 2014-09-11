@@ -1,0 +1,70 @@
+/*
+Theme Name: Jenny
+Description: Used to fix buges in IE 6 and IE 7.
+*/
+
+#content{
+overflow:hidden;
+}
+
+ul#connect li{
+float:right;
+margin-right:5px;
+}
+
+.post ul,
+.post ol {
+	margin-left: 2.3em; /* Aligns bullets */
+}
+
+.post-meta ul {
+	margin-left: 0; /* Removes margin-left */
+}
+
+.comment,
+.trackback,
+.pingback {
+	float: none; /* Prevents wacky behaviour of comments */
+}
+
+.comment-body ul {
+	margin-left: 1.5em; /* Aligns bullets */
+}
+
+.post table td,
+.post table th {
+	border-bottom: 1px solid #ddd; /* Adds a border-bottom to each TD/TH */
+}
+
+.top-arrow a{
+background: transparent;
+border:0;
+}
+
+.top-arrow a:hover{
+	border:0;
+}
+
+#submit {
+	padding:4px 2px;
+}
+
+ul.next-prev-links li{
+margin:0;
+padding:0;
+}
+
+.relatedposts ul{
+	list-style:none;
+	margin:10px 0 0 0;
+	padding:0;
+}
+.relatedposts li{
+	width:155px;
+	margin:0 5px 0 0;
+	float:left;
+}
+
+#footer-navi{
+	background:transparent;
+}

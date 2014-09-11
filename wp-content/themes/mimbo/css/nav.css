@@ -1,0 +1,247 @@
+
+/*Top Page Navbar */
+
+
+#nav, #nav * {
+	list-style: none;
+	z-index:1;
+	line-height: 1.0;
+	}
+
+#nav li {
+	float: left;
+	list-style:none;
+	color:#3f4a4f;
+	margin-right:10px;
+	position:relative
+	}
+	
+#nav a, #nav a:visited {
+	display: block;
+	text-decoration: none;
+	border:none;
+	color:#797976;
+	padding:7px 22px;
+	font:bold 0.75em Arial,Verdana;
+	letter-spacing:0.07em;	
+	}
+
+#nav a:hover {
+	text-decoration:none;
+	color:#292928;
+	}	
+
+#nav a:active {
+	background:#f2f0eb;
+	color:#6b6b68;
+	}
+	
+#nav li.current_page_item a, #nav li.current_page_item a:visited {
+	background:#FFF;
+	color:#292928;
+	}
+
+	
+/* Dropdown Menus */		
+
+#nav li:hover {
+	visibility: inherit; /* fixes IE7 'sticky bug' */
+	}
+
+#nav li:hover ul,
+#nav li.sfhover ul {
+	left: 7px;
+	}
+
+ul#nav li:hover li ul,
+ul#nav li.sfhover li ul {
+	top: -999em;
+	}
+
+ul#nav li li:hover ul,
+ul#nav li li.sfhover ul {
+	left: 178px; /* match ul width */
+	top: 0;
+	}
+
+ul#nav li li:hover li ul,
+ul#nav li li.sfhover li ul {
+	top: -999em;
+	}
+
+ul#nav li li li:hover ul,
+ul#nav li li li.sfhover ul {
+	left: 178px; /* match ul width */
+	top: 0;
+	}
+
+#nav li ul {
+	position: absolute;
+	left: -999em;
+	height: auto;
+	width: 178px;
+	z-index:1 !important;
+	line-height:1;
+	-moz-opacity:.98;
+	opacity:.98;
+	margin:0 0 0 11px;
+	border-right:1px solid #424242 !important;
+	border-bottom:1px solid #424242 !important;
+	}
+
+#nav li li {
+	width: 178px;
+	background: #777;
+	z-index:1000;
+	height:auto;
+	padding:4px 0;
+	letter-spacing: 0.06em;
+	border-bottom:1px solid #848484;
+	}
+
+#nav li li a, #nav li li a:visited, 
+#nav li.current_page_parent li.current_page_item a, #nav li.current_page_parent li.current_page_item a:visited {
+	color:#dadada !important;
+	background: #777 !important;
+	text-transform:uppercase;
+	font:0.6em Georgia, "Times New Roman", Times, serif !important;
+	padding:5px 12px !important;
+	}
+
+#nav li li a:hover, #nav li li a:active,
+#nav li.current_page_parent li.current_page_item a:hover, #nav li.current_page_parent li.current_page_item a:active {
+	color:#FFF !important;
+	}	
+		
+#nav li:hover ul, #nav li li:hover ul, #nav li li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul, #nav li li li.sfhover ul {
+	left: auto;
+	}
+
+#nav ul ul {
+	margin:0 0 0 -4px !important
+	}
+
+
+	
+
+/*Category Nav*/
+
+#nav-cat {
+	line-height: 1.0;
+	position:relative;
+	margin:0 auto;
+	background:#607b88;
+	padding:6px 0 6px 15px;
+	border-top:1px solid #83a8b9;
+	}
+	
+#nav-cat li {
+	float:left;
+	list-style:none;
+	padding:0 25px 0 13px !important;
+	border-right:1px dotted #83a8b9;
+	margin-right:25px;
+	position:relative;
+	}
+	
+#nav-cat a, #nav-cat a:visited {
+	display:block;
+	font:bold 1em Arial,Verdana;
+	text-decoration: none;
+	letter-spacing:0.07em;
+	padding-bottom:3px;
+	color:#c6dce6;
+	}
+
+#nav-cat a:hover, #nav-cat li.current-cat a, #nav-cat li.current-cat a:visited {
+	text-decoration:none;
+	color:#FFF
+	}	
+
+#nav-cat a:active {
+	color:#c6dce6;
+ 	}
+ 	
+	
+	
+/*Category Nav Dropdowns*/
+
+#nav-cat li:hover {
+	visibility: inherit; /* fixes IE7 'sticky bug' */
+	}
+
+#nav-cat li:hover ul,
+#nav-cat li.sfhover ul {
+	left: 7px;
+	top: 15px; /* match top ul list item height */
+	}
+
+ul#nav-cat li:hover li ul,
+ul#nav-cat li.sfhover li ul {
+	top: -999em;
+	}
+
+ul#nav-cat li li:hover ul,
+ul#nav-cat li li.sfhover ul {
+	left: 178px; /* match ul width */
+	top: 0;
+	}
+
+ul#nav-cat li li:hover li ul,
+ul#nav-cat li li.sfhover li ul {
+	top: -999em;
+	}
+
+ul#nav-cat li li li:hover ul,
+ul#nav-cat li li li.sfhover ul {
+	left: 178px; /* match ul width */
+	top: 0;
+	}
+	
+#nav-cat li ul {
+	position: absolute;
+	left: -999em;
+	height: auto;
+	width: 178px;
+	z-index:1;
+	line-height:1;
+	-moz-opacity:.98;
+	opacity:.98;
+	border-right:1px solid #424242 !important;
+	border-bottom:1px solid #424242 !important;
+	}
+
+#nav-cat li li {
+	width: 178px;
+	background: #777;
+	z-index:1000;
+	height:auto;
+	padding:4px 0 !important;
+	margin:0;
+	letter-spacing: 0.06em;
+	border-right:none;
+	border-bottom:1px solid #848484;
+	}
+
+#nav-cat li li a, #nav-cat li li a:visited, 
+#nav-cat li.current_page_item li a, #nav-cat li.current_page_item li a:visited {
+	color:#dadada !important;
+	background: #777 !important;
+	border:none;
+	padding:4px 12px;
+	text-transform:uppercase;
+	font:0.8em Georgia, "Times New Roman", Times, serif !important;
+	padding:5px 12px !important;
+	}
+
+#nav-cat li li a:hover, #nav-cat li li a:active,
+#nav-cat li.current_page_item li a:hover, #nav-cat li.current_page_item li a:active {
+	color:#FFF !important;
+	border:none
+	}	
+		
+#nav-cat li:hover ul, #nav-cat li li:hover ul, #nav-cat li li li:hover ul, #nav-cat li.sfhover ul, 
+#nav-cat li li.sfhover ul, #nav-cat li li li.sfhover ul {
+	left: auto;
+	}
+

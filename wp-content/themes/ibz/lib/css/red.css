@@ -1,0 +1,12 @@
+/*-------=red theme-------------------*/	
+
+/* color for selections */
+*::-moz-selection { background:#e46008; }
+*::selection, mark { background:#e46008; }
+	
+/* text color */
+.main_title, .filter_portfolio .active a, .filter_portfolio a:hover { color:#e46008; }
+
+/* flex slider */
+.flex-caption  { border-bottom:3px solid #e46008; }
+.flex-control-nav a { background:url(../../images/bullets_red.png) no-repeat 0px 0px !important; }

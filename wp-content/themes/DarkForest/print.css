@@ -1,0 +1,75 @@
+/*
+Theme Name: Dark Forest
+Theme URI: http://www.raycreations.net/
+Description: Dark Forest theme by <a href="http://www.raycreationsindia.com/">Ray Creations</a>.
+Version: 1.0
+Author: Ray Creations
+Author URI: http://raycreationsindia.com/
+Tags: skyblue, dark, fixed width, two columns, widgets, nature
+
+*/
+
+#page {
+	width: 100%;
+	border: none;
+	background: none;
+}
+#header {
+	border-bottom: 3px solid #59780a;
+	height: auto;
+}
+#headerimg {
+	width: auto;
+}
+#headerimg .description{
+	color: #666666;
+	text-align: right;
+	padding-bottom: 3px;
+	right: 0px;
+	position: absolute;
+	left: auto;
+}
+h1 {
+	margin:0px;
+	font: bold 36px/100% "Trebuchet MS", Tahoma, Arial;
+	text-align: right;
+	padding-bottom: 3px;
+}
+h1 a, h1 a:visited{
+	color: #000;
+	text-decoration: none;
+}
+#content {
+	padding: 10px 0px 30px 0px;
+	width: 100%;
+}
+.post-date {
+	font-size: 11px;
+	text-transform: uppercase;
+	color: #666666;
+	height: auto;
+}
+.post-month, .post-day {
+	color: #666666;
+	display: inline;
+	font-size: 11px;
+	padding: 0px;
+	margin: 0px;
+}
+.post-title {
+	margin: 0px;
+	width: 100%;
+	clear: both;
+}
+.post-cat {
+	float:left;
+	font-size: 11px;
+	padding: 0;
+}
+.post-comments, .post-calendar {
+	float: right;
+	font-size: 11px;
+}
+#comments, #respond, .navigation, #nav, #commentform, #sidebar, #footer, #credits {
+	display: none;
+}

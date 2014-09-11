@@ -1,0 +1,12 @@
+/*-------=orange theme-------------------*/	
+
+/* color for selections */
+*::-moz-selection { background:#ffbe00; }
+*::selection, mark { background:#ffbe00; }
+
+/* text color */
+.main_title, .filter_portfolio .active a, .filter_portfolio a:hover { color:#ffae3b; }
+
+/* flex slider */
+.flex-caption { border-bottom:3px solid #ffbe00; }
+.flex-control-nav a { background:url(../../images/bullets_orange.png) no-repeat 0px 0px !important; }

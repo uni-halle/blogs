@@ -1,0 +1,48 @@
+#top {
+	background: url(../images/top.png) repeat-x left top;
+	height: 44px;
+	border: none;
+}
+
+#wrapper {
+	top: -3px;
+}
+
+#social {
+	bottom: 55px;
+}
+
+#newblog li {
+	padding: 5px 0 5px 35px;
+	border-top: none;
+}
+
+#newblog li#last {
+	margin-top: 30px;
+}
+
+#newblog span.number {
+	top: 0;
+}
+
+#front-admin p {
+	margin-bottom: 10px;
+}
+
+ul.weitersagen {
+	padding-bottom: 10px;
+}
+
+.footerlist {
+	margin-right: 40px;
+}
+
+.infopopup {
+	position: relative;
+	top: -3px;
+}
+
+#sidebar {
+	width: 28%;
+}
+

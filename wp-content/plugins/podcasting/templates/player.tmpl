@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Podcasting Plugin Player!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/favicon.png">
+  
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/mediaelement/2.13.2/js/mediaelement-and-player.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mediaelement/2.13.2/css/mediaelementplayer.css" />
+  
+
+  
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<style type="text/css">
+
+#pod_image img{
+    -moz-box-shadow: 3px 3px 3px #666;
+    -webkit-box-shadow: 3px 3px 3px #666;
+    box-shadow: 3px 3px 3px #666;
+    margin-right: 12px;
+    margin-top: 0px;
+    margin-bottom: 12px;
+    border:1px solid #fff;
+    max-width: 175px;
+    width: 50%;
+    float: left;
+    display: block;
+    height: auto;
+}
+
+.panel {
+    margin-top: 10px;
+}
+
+.panel-body h3 {
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+        <h3>{title}</h3>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+            {player}
+            </li>
+        </ul>
+        
+    </div>
+    <div class="panel panel-primary">
+
+        <div class="panel-body">
+        <h3>{post_title}</h3>
+        <div id=pod_image>
+            {image}
+        </div>    
+            {summary}
+        </div>
+    </div>
+
+</div>
+</body>
+<script>
+// using jQuery
+$('video,audio').mediaelementplayer(/* Options */);
+</script>
+</html>

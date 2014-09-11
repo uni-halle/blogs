@@ -1,0 +1,43 @@
+/*
+Theme Name: Blogs@MLU DwinaDelta Blog
+Theme URI: http://blogs.uni-halle.de
+Description: Child Theme for Blogs@MLU Default | DwinaDelta Blog Theme
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+Template: blogsmlu
+Version: 1.0
+*/
+ 
+@import url("../blogsmlu/style.css");
+
+#blogname {
+	background: url(DwinaDelta-Photo.png) no-repeat left top;
+	padding-left: 140px;
+	min-height: 85px;
+	padding-top: 15px;
+	top: 40px;
+}
+
+#blogname p {
+	float: left;
+	padding-top: 0px;
+	width: 450px;
+}
+
+#blogname h2 {
+	margin-top: 10px;
+}
+
+/* Smartphones ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	#blogname {
+		padding-left: 125px;
+		padding-top: 10px;
+		float: none;
+		width: 63% !important;
+	}
+	
+	#blogname h2 {
+		
+	}
+}

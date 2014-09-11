@@ -1,0 +1,236 @@
+.timezonecalculator_wrap ul {
+	list-style-type: disc;
+	padding: 5px 5px 5px 30px;
+}
+
+ul.subsubsub.timezonecalculator {
+	list-style: none;
+	margin: 8px 0 5px;
+	padding: 0;
+	float: none;
+	display: block;
+	text-align: left;
+}
+ 
+ul.subsubsub.timezonecalculator a {
+	line-height: 2;
+	padding: .2em;
+	text-decoration: none;
+}
+
+ul.subsubsub.timezonecalculator li {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+
+li.timezonecalculator_sortablelist {
+	background-color: #FAFAFA;
+	border: 1px solid #E5E5E5;
+	color: #222222;
+	cursor: move;
+	padding: 3px 5px 3px 5px;
+}
+
+li.timezonecalculator_sortablelist_active {
+	border: 1px solid #2EA2CC;
+}
+
+#timezonecalculator_lists, ul.timezonecalculator_sortablelist, #timezonecalculator_edit, #timezonecalculator_calculator_input, #timezonecalculator_calculator_results, #timezonecalculator_world_clock_output {
+	border: 1px solid #E5E5E5;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+#timezonecalculator_lists, #timezonecalculator_edit {
+	background: #FAFAFA;
+	float: left;
+}
+
+ul.timezonecalculator_sortablelist, #timezonecalculator_calculator_input, #timezonecalculator_calculator_results, #timezonecalculator_world_clock_output {
+	background-color: #FFF;
+}
+
+ul.timezonecalculator_sortablelist {
+	list-style-image: none;
+	list-style-type: none;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+#timezonecalculator_lists {
+	margin-right: 60px;
+	padding: 0 8px;
+}
+
+#timezonecalculator_list_selected {
+	min-height: 220px;
+}
+
+#timezonecalculator_list_available {
+	min-height: 45px;
+}
+
+#timezonecalculator_edit {
+	width: 398px;
+	padding: 5px;
+}
+
+#timezonecalculator_edit_header {
+	margin: 2px 0 15px 0;
+}
+
+#timezonecalculator_edit_submit {
+	margin: 15px 0px 5px 1px;
+}
+
+.timezonecalculator_dashicons {
+	cursor: pointer;
+}
+
+#timezonecalculator_edit_details td {
+	padding: 5px 0;
+}
+
+#timezonecalculator_calculator_input, #timezonecalculator_calculator_results, #timezonecalculator_world_clock_output {
+	margin: 0px;
+}
+
+#timezonecalculator_calculator_input, #timezonecalculator_calculator_results {
+	width: 400px;
+	padding: 15px 10px 0 10px;
+	min-height: 320px;
+	float: left;
+}
+
+#timezonecalculator_world_clock_output {
+	padding: 10px;
+}
+
+.timezonecalculator_calculator_row {
+	width: 100%;
+}
+
+.timezonecalculator_calculator_input_header {
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.timezonecalculator_calculator_input_content {
+	margin-bottom: 20px;
+}
+
+#timezonecalculator_date {
+	line-height: 20px;
+	width: 98%;
+	display: table-cell;
+}
+
+@media screen and (max-width: 782px) {
+	#timezonecalculator_date {
+		line-height: 23px;
+	}
+}
+
+#timezonecalculator_calculator_results .timezonecalculator-output ul {
+	padding: 0px 5px 5px 30px
+}
+
+#timezonecalculator_continent, #timezonecalculator_timezone {
+	width: 98%;
+}
+
+#timezonecalculator_edit_continent, #timezonecalculator_edit_timezone {
+	width: 99%;
+}
+
+div.datePicker table {
+	margin-right: 15px;
+}
+
+#timezonecalculator_selection_gui, #timezonecalculator_calculator, #timezonecalculator_selected_timezones {
+	display: none;
+}
+
+@media screen and (max-width: 610px) {
+	#timezonecalculator_format > table.widefat th:nth-of-type(2), #timezonecalculator_format > table.widefat td:nth-of-type(2), #timezonecalculator_format > table.widefat th:nth-of-type(3), #timezonecalculator_format > table.widefat td:nth-of-type(3), #timezonecalculator_format > table.widefat th:nth-of-type(4), #timezonecalculator_format > table.widefat td:nth-of-type(4) {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 611px) {
+	#timezonecalculator_format > table.widefat th:nth-of-type(2), #timezonecalculator_format > table.widefat td:nth-of-type(2), #timezonecalculator_format > table.widefat th:nth-of-type(3), #timezonecalculator_format > table.widefat td:nth-of-type(3), #timezonecalculator_format > table.widefat th:nth-of-type(4), #timezonecalculator_format > table.widefat td:nth-of-type(4) {
+		display: table-cell;
+	}
+}
+
+.timezonecalculator_section_link {
+	display: none;
+}
+
+.timezonecalculator_button_donate {
+	width: 85px;
+	height: 24px;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	position: relative;
+
+	background: #FEE1A5;
+	color: #1C4182;
+
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+
+	border: 1px solid #FFB829;
+
+	text-shadow: 0px 1px 1px white;
+
+	font: italic bold 14px/24px helvetica, arial;
+}
+
+@-webkit-keyframes timezonecalculator_anim_rotate {
+	0% {
+		-webkit-transform: rotate(0);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-moz-keyframes timezonecalculator_anim_rotate {
+	0% {
+		-moz-transform: rotate(0);
+	}
+	100% {
+		-moz-transform: rotate(360deg);
+	}
+}
+
+@keyframes timezonecalculator_anim_rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.timezonecalculator_spinner:before {
+	content: "\f463";
+}
+
+#timezonecalculator_content .timezonecalculator_spinner {
+	display: inline-block;
+	font-family: dashicons;
+	font-size: 40px;
+	margin: 0;
+	-webkit-animation: timezonecalculator_anim_rotate 2.5s infinite linear;
+	-moz-animation: timezonecalculator_anim_rotate 2.5s infinite linear;
+	animation: timezonecalculator_anim_rotate 2.5s infinite linear;
+	color: #AAA;
+	text-shadow: 0 0 .25em rgba(255,255,255,.3);
+	padding: 0;
+	position: relative;
+}

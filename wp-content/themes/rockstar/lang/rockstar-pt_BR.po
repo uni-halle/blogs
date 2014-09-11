@@ -1,0 +1,320 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Joao Torquato <torquato@i.ua>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in function
+#: rockstar/index.php:12
+#: rockstar/single.php:12
+#: rockstar/search.php:18
+#: rockstar/archive.php:24
+msgid "% Comments"
+msgstr "% Coment&aacute;rios"
+
+#. Text in function
+#: rockstar/comments.php:19
+msgid "% Responses"
+msgstr "% Respostas"
+
+#. Text in function
+#: rockstar/index.php:36
+#: rockstar/search.php:54
+#: rockstar/archive.php:45
+msgid "&laquo; Newer Posts"
+msgstr "&laquo; Posts recentes"
+
+#. Text in function
+#: rockstar/index.php:12
+#: rockstar/single.php:12
+#: rockstar/search.php:18
+#: rockstar/archive.php:24
+msgid "0 Comments"
+msgstr "0 Coment&aacute;rios"
+
+#. Text in function
+#: rockstar/index.php:12
+#: rockstar/single.php:12
+#: rockstar/search.php:18
+#: rockstar/archive.php:24
+msgid "1 Comment"
+msgstr "1 Coment&aacute;rio"
+
+#. Text in function
+#: rockstar/includes/theme-widgets.php:134
+msgid "Account:"
+msgstr "Conta:"
+
+#. Text in echo
+#: rockstar/header.php:11
+#: rockstar/header.php:12
+msgid "Archive"
+msgstr "Arquivo"
+
+#. Text in echo
+#: rockstar/template-archives.php:13
+msgid "Archives"
+msgstr "Arquivos"
+
+#. Text in echo
+#: rockstar/header.php:8
+msgid "Author Archives"
+msgstr "Arquivos do autor"
+
+#. Text in echo
+#: rockstar/template-sitemap.php:22
+msgid "Blog / News Categories"
+msgstr "Categorias do Blog / Not&iacute;cias"
+
+#. Text in echo
+#: rockstar/template-sitemap.php:26
+msgid "Blog / News Monthly Archives"
+msgstr "Arquivos mensais do Blog / Not&iacute;cias"
+
+#. Text in echo
+#: rockstar/archive.php:9
+#: rockstar/archive.php:10
+#: rockstar/archive.php:11
+#: rockstar/archive.php:12
+msgid "Browsing archives for"
+msgstr "Pesquisando arquivos por"
+
+#. Text in echo
+#: rockstar/template-archives.php:26
+msgid "Categories"
+msgstr "Categorias"
+
+#. Text in echo
+#: rockstar/comments.php:39
+msgid "Comments are closed."
+msgstr "Coment&aacute;rios est&atilde;o fechados."
+
+#. Text in echo
+#: rockstar/search-form.php:7
+msgid "Enter keywords..."
+msgstr "Insira as palasvras-chave..."
+
+#. Text in echo
+#: rockstar/404.php:7
+msgid "Epic Failure!"
+msgstr "Falha &eacute;pica!"
+
+#. Text in echo
+#: rockstar/includes/theme-widgets.php:64
+msgid "Flickr Photos"
+msgstr "Fotos do Flickr"
+
+#. Text in echo
+#: rockstar/header.php:32
+msgid "Home"
+msgstr "In&iacute;cio"
+
+#. Text in echo
+#: rockstar/includes/theme-widgets.php:15
+msgid "Latest Video"
+msgstr "V&iacute;deo mais recente"
+
+#. Text in function
+#: rockstar/comments.php:51
+msgid "Leave a Reply"
+msgstr "Deixe uma resposta"
+
+#. Text in function
+#: rockstar/comments.php:51
+msgid "Leave a Reply to %s"
+msgstr "Deixe uma resposta para %s"
+
+#. Text in echo
+#: rockstar/comments.php:66
+msgid "Log out of this account"
+msgstr "Sair desta conta"
+
+#. Text in echo
+#: rockstar/comments.php:66
+msgid "Logged in as"
+msgstr "Logado como"
+
+#. Text in echo
+#: rockstar/comments.php:66
+msgid "Logout"
+msgstr "Sair"
+
+#. Text in echo
+#: rockstar/comments.php:74
+msgid "Mail (will not be published"
+msgstr "E-mail (n&atilde;o ser&aacute; mostrado"
+
+#. Text in echo
+#: rockstar/template-archives.php:32
+msgid "Monthly Archives"
+msgstr "Arquivos mensais"
+
+#. Text in echo
+#: rockstar/comments.php:71
+msgid "Name"
+msgstr "Nome"
+
+#. Text in function
+#: rockstar/comments.php:19
+msgid "No Responses"
+msgstr "Nenhuma resposta"
+
+#. Text in echo
+#: rockstar/search.php:40
+msgid "No results for"
+msgstr "Nenhum resultado para"
+
+#. Text in function
+#: rockstar/index.php:35
+#: rockstar/search.php:53
+#: rockstar/archive.php:44
+msgid "Older Posts &raquo;"
+msgstr "Posts anteriores &raquo;"
+
+#. Text in function
+#: rockstar/comments.php:19
+msgid "One Response"
+msgstr "Uma resposta"
+
+#. Text in echo
+#: rockstar/template-sitemap.php:18
+msgid "Pages"
+msgstr "P&aacute;ginas"
+
+#. Text in echo
+#: rockstar/index.php:9
+#: rockstar/single.php:9
+#: rockstar/search.php:15
+#: rockstar/archive.php:21
+msgid "Permanent Link to"
+msgstr "Link permanente para"
+
+#. Text in echo
+#: rockstar/search.php:45
+msgid "Please try searching again."
+msgstr "Por favor, tente pesquisar novamente."
+
+#. Text in echo
+#: rockstar/search-form.php:8
+msgid "SEARCH"
+msgstr "PESQUISAR"
+
+#. Text in echo
+#: rockstar/header.php:7
+msgid "Search Results"
+msgstr "Resultados da pesquisa"
+
+#. Text in echo
+#: rockstar/search.php:7
+msgid "Search results for"
+msgstr "Resultados da pesquisa po"
+
+#. Text in echo
+#: rockstar/404.php:10
+msgid "Seems like you have done something that's uncool, because we can't find whatever you are after."
+msgstr "Parece que voc&ecirc; fez algo que n&atilde;o &eacute; legal, pois n&atilde;o pudemos encontrar o que quer que seja que voc&e procura."
+
+#. Text in function
+#: rockstar/includes/theme-widgets.php:134
+msgid "Show:"
+msgstr "Mostrar"
+
+#. Text in echo
+#: rockstar/template-sitemap.php:15
+msgid "Sitemap"
+msgstr "Mapa do site"
+
+#. Text in echo
+#: rockstar/includes/theme-widgets.php:119
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
+#. Text in echo
+#: rockstar/comments.php:84
+msgid "Submit Comment"
+msgstr "Enviar conte&uacute;do"
+
+#. Text in echo
+#: rockstar/header.php:13
+msgid "Tag Archive"
+msgstr "Arquivo de tags"
+
+#. Text in function
+#: rockstar/index.php:28
+#: rockstar/single.php:19
+#: rockstar/search.php:32
+#: rockstar/archive.php:38
+msgid "Tagged in "
+msgstr "Com tags em"
+
+#. Text in echo
+#: rockstar/template-archives.php:16
+msgid "The Last 30 Posts"
+msgstr "30 posts mais recentes"
+
+#. Text in echo
+#: rockstar/comments.php:7
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Este post &eacute; protegido por senha. Insira a senha para ver os coment&aacute;rios."
+
+#. Text in function
+#: rockstar/includes/theme-widgets.php:134
+msgid "Title:"
+msgstr "T&iacute;tulo:"
+
+#. Text in echo
+#: rockstar/comments.php:26
+msgid "Trackbacks/Pingbacks"
+msgstr ""
+
+#. Text in function
+#: rockstar/includes/theme-widgets.php:134
+msgid "Twitter Updates"
+msgstr "Updates do Twitter"
+
+#. Text in echo
+#: rockstar/comments.php:77
+msgid "Website"
+msgstr ""
+
+#. Text in echo
+#: rockstar/comments.php:59
+msgid "You must be"
+msgstr "Voc&ecirc; deve estar"
+
+#. Text in function
+#: rockstar/search.php:7
+#: rockstar/search.php:40
+msgid "\\'%s\\'"
+msgstr ""
+
+#. Text in echo
+#: rockstar/template-archives.php:22
+msgid "comments"
+msgstr "coment&aacute;rios"
+
+#. Text in echo
+#: rockstar/comments.php:59
+msgid "logged in"
+msgstr "logado"
+
+#. Text in echo
+#: rockstar/comments.php:19
+msgid "on"
+msgstr "em"
+
+#. Text in echo
+#: rockstar/includes/theme-widgets.php:263
+msgid "subscribe to rss"
+msgstr "inscreva-se no rss"
+
+#. Text in echo
+#: rockstar/comments.php:59
+msgid "to post a comment."
+msgstr "para postar um coment&aacute;rio."
+

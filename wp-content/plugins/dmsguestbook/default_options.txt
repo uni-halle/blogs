@@ -1,0 +1,282 @@
+####################################################
+Failback default option data if DMSGuestbook havn't create this.
+
+1.) Create in wp_option a new row "DMSGuestbook_options" (if isn't exist)
+2.) Copy the whole code below in "wp_options -> DMSGuestbook_options -> option_value" field
+
+####################################################
+<supergb>0</supergb>									/* super guestbook */
+<page_id>0</page_id>									/* id */
+<width1>95</width1>										/* guestbook width */
+<width2>35</width2>										/* separator width */
+<step>10</step>											/* step */
+<messagetext_length>0</messagetext_length>				/* allowed length of each message text */
+<position1>0</position1>								/* guestbook position x-axis horizontal */
+<position2>0</position2>								/* guestbook position y-axis vertical */
+<separatorcolor>EEEEEE</separatorcolor>					/* separator color (separator */
+<bordercolor1>AAAAAA</bordercolor1>						/* outside border color */
+<bordercolor2>DEDEDE</bordercolor2>						/* textfield border color */
+<navigationcolor>000000</navigationcolor>				/* navigation char color*/
+<fontcolor1>000000</fontcolor1>							/* font color */
+<forwardchar>></forwardchar>							/* forward char */
+<backwardchar><</backwardchar>							/* backward char */
+<navigationsize>20</navigationsize>						/* forward / backward char size */
+<require_email>0</require_email>						/* require email */
+<require_url>0</require_url>							/* require url */
+<require_antispam>1</require_antispam>					/* require antispam */
+<antispam_key>0</antispam_key>							/* random key to prevent spam*/
+<recaptcha_publickey>0</recaptcha_publickey>			/* reCAPTCHA public key */
+<recaptcha_privatekey>0<recaptcha_privatekey>			/* reCAPTCHA private key */
+<akismet>0</akismet>									/* avtivate Akismet */
+<akismet_action>0</akismet_action>						/* 0=move to spam folder, 1=block spam */
+<show_url>1</show_url>									/* show url */
+<show_email>1</show_email>								/* show email */
+<show_ip>0</show_ip>									/* show ip */
+<ip_mask>123.123.123.*</ip_mask>						/* ip mask */
+<captcha_color>000000</captcha_color>					/* captcha color */
+<dateformat>%a, %e %B %Y %H:%M:%S %z</dateformat>		/* date format */
+<setlocale>en_EN</setlocale>							/* setlocale */
+<offset>0</offset>										/* date offset */
+<formpos>top</formpos>									/* form position */
+<formposlink>-</formposlink>							/* form link if is set formpos = bottom */
+<send_mail>0</send_mail>								/* notification mail */
+<mail_adress>name@example.com</mail_adress>				/* notification mail to this adress */
+<mail_method>Mail</mail_method>							/* using the php build in method mail or an external smtp server */
+<smtp_host>smtp.example.tld</smtp_host>					/* smtp host */
+<smtp_port>25</smtp_port>								/* smtp port */
+<smtp_username>MyUsername</smtp_username>				/* username if authentification is required */
+<smtp_password>MyPassword</smtp_password>				/* passwort if authentification is required */
+<smtp_auth>0</smtp_auth>								/* activate the authentification */
+<smtp_ssl>0</smtp_ssl>									/* using ssl encryption */
+<sortitem>DESC</sortitem>								/* each post sort by*/
+<dbid>0</dbid>											/* show database id instead continous number*/
+<language>0</language>									/* language */
+<email_image_path>../wp-content/plugins/dmsguestbook/img/email.gif</email_image_path>			/* email image path */
+<website_image_path>../wp-content/plugins/dmsguestbook/img/website.gif</website_image_path> 	/* website image path */
+<admin_review>0</admin_review>							/* admin must review every post before this can display on page */
+<url_overruled>0</url_overruled>						/* you can overrule the url if you have trouble with the guestbook form submit */
+<gravatar>0</gravatar>									/* gravatar */
+<gravatar_rating>G</gravatar_rating>					/* gravatar rating */
+<gravatar_size>40</gravatar_size>						/* gravatar image size in pixel */
+<mandatory_char>*</mandatory_char>						/* mandatory char which you want display on your site */
+<form_template>default.tpl</form_template>				/* form template */
+<post_template>default.tpl</post_template>				/* post template */
+<nofollow>1</nofollow>									/* activate the nofollow tag for posted url's */
+<additional_option>none</additional_option>				/* an additional selectbox. see in your dmsguestbook/module folder for examples */
+<additional_option_title>-</additional_option_title>	/* define a input form title text for additional selectbox */
+<show_additional_option>0</show_additional_option>		/* show additional text in each guestbook post. Edit this appearance in template/post/default.tpl */
+<role1>Administrator</role1>							/* roles for: database / guestbook / language settings, phpinfo */
+<role2>Administrator</role2>							/* roles for: entries */
+<role3>Administrator</role3>							/* roles for: spam */
+"css" => "$csscontainer",					/* all css settings */
+<css_customize>a.css_navigation_char:hover {text-decoration:none; color:#{navigationcolor};}
+a.css_navigation_select:hover {text-decoration:none; color:#bb1100;}
+a.css_navigation_notselect:hover {text-decoration:none; color:#000000;}
+</css_customize> /* custom css */
+<css>
+position of the guestbook|
+css_guestbook_position|
+position:relative;
+left:{position1}px;
+top:{position2}px;@
+
+overall guestbook color|
+css_guestbook_font_color|
+color:#{fontcolor1};@
+
+Form title property (name, email, url, message)|
+CSS class: css_form_text|
+font-weight:normal;@
+
+name text field|
+css_form_namefield|
+border:1px solid #{bordercolor2};
+width:150px;
+color:#{fontcolor1};@
+
+email text field|
+css_form_emailfield|
+border:1px solid #{bordercolor2};
+width:150px;
+color:#{fontcolor1};@
+
+url text field|
+css_form_urlfield|
+border:1px solid #{bordercolor2};
+width:150px;
+color:#{fontcolor1};@
+
+additional selectbox|
+css_form_additional_option|
+border:1px solid #{bordercolor2};
+width:150px;
+color:#{fontcolor1};@
+
+define space between each text fields|
+css_form_textfieldspace|
+text-align:left;
+padding:5px 0px 0px 0px;
+margin:0px 0px;@
+
+message text field|
+css_form_messagefield|
+border:1px solid #{bordercolor2};
+width:80%;
+height:150px;
+color:#{fontcolor1};@
+
+antispam information message|
+css_form_antispamtext|
+text-align:center;@
+
+antispam image or mathematic figures|
+css_form_antispamcontent|
+border:1px solid #{bordercolor2};@
+
+antispam image or mathematic figures position|
+css_form_antispamcontent_position|
+text-align:center;
+padding:5px 0px;
+margin:0px 0px;@
+
+antispam input text field|
+css_form_antispam_inputfield|
+width:60px;
+border:1px solid #{bordercolor2};
+color:#{fontcolor1};@
+
+submit button|
+css_form_submit|
+color:#{fontcolor1};@
+
+submit button position|
+css_form_submit_position|
+text-align:center;
+padding:20px 0px 10px 0px;@
+
+wrong input text error message|
+css_form_errormessage|
+color:#bb0000;
+font-size: 11px;
+text-decoration: none;
+font-weight:bold;@
+
+success input text message|
+css_form_successmessage|
+color:#00bb00;
+font-size: 11px;
+text-decoration: none;
+font-weight:bold;@
+
+visible if the guestbook form is set to 'bottom'|
+css_form_link|
+font-size:11px;
+position:relative;
+top:0px;
+left:0;@
+
+total guestbook entrys (nr)|
+css_navigation_totalcount|
+font-size:11px;
+left:{position1}px;
+width:{width1}%;
+text-align:center;
+padding:0px 0px 5px 10px;@
+
+guestbook pages (1 2 3 4 [..])|
+css_navigation_overview|
+left:{position1}px;
+width:{width1}%;
+text-align:center;
+padding:0px 0px 15px 12px;@
+
+selected guestbook page|
+css_navigation_select|
+color:#bb1100;
+text-decoration:none;@
+
+not selected guestbook page|
+css_navigation_notselect|
+color:#000000;
+text-decoration:none;@
+
+navigation char e.g. &lt; &gt;|
+css_navigation_char|
+color:#{navigationcolor};
+font-size:{navigationsize}px;
+text-decoration:none;
+font-weight:bold;@
+
+navigation char position|
+css_navigation_char_position|
+left:{position1}px;
+width:{width1}%;
+padding:0px 0px 0px 10px;
+margin:0px 0px 20px 0px;
+text-align:center;@
+
+post message number e.g. (24)|
+css_post_header1|
+font-size:11px;
+height:15px;@
+
+post url container|
+css_post_header2|
+width:20px;
+height:15px;@
+
+post email container|
+css_post_header3|
+width:20px;
+height:15px;@
+
+post date & ip address|
+css_post_header4|
+font-size:11px;
+height:15px;@
+
+email image|
+css_post_email_image|
+height:15px;
+width:15px;
+border:0px;@
+
+url image|
+css_post_url_image|
+height:15px;
+width:15px;
+border:0px;@
+
+guestbook separator (separator between guestbook header and body)|
+css_post_separator|
+border: 1px solid #{separatorcolor};
+height:1px;
+width:{width2}%;
+text-align:left;
+margin:0px 0px 0px 0px;@
+
+content in guestbook body (written text by homepage visitors)|
+css_post_message|
+font-size:11px;
+margin:5px 0px 0px 0px;@
+
+guestbook input data container|
+css_form_embedded|
+width:{width1}%;
+border:1px solid #{bordercolor1};
+font-size:12px;
+text-align:left;
+padding:0px 10px;
+margin:0px 0px 0px 0px;
+line-height:1.4em;@
+
+guestbook display post container|
+css_post_embedded|
+width:{width1}%;
+border:1px solid #{bordercolor1};
+font-size:12px;
+text-align:left;
+padding:10px 10px;
+margin:0px 0px 0px 0px;
+line-height:1.4em;@
+</css>								/* css settings */

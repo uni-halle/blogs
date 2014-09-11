@@ -1,0 +1,536 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Translate EN to NL\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-25 23:42-0600\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dennis Meulensteen <dennis@meulensteen.nl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: 404.php:7
+msgid "Not Found"
+msgstr "Niets gevonden"
+
+#: 404.php:9
+msgid "Apologies, but we were unable to find what you were looking for. Perhaps  searching will help."
+msgstr "Excuses maar we konden niet vinden wat u zocht. Wellicht lukt het met het zoekscherm?"
+
+#: 404.php:14
+msgid "Find"
+msgstr "Zoek"
+
+#: archive.php:9
+#, php-format
+msgid "Daily Archives: <span>%s</span>"
+msgstr "Archief op dag: <span>%s</span>"
+
+#: archive.php:11
+#, php-format
+msgid "Monthly Archives: <span>%s</span>"
+msgstr "Archief op maand: <span>%s</span>"
+
+#: archive.php:13
+#, php-format
+msgid "Yearly Archives: <span>%s</span>"
+msgstr "Archief op jaar: <span>%s</span>"
+
+#: archive.php:15
+msgid "Blog Archives"
+msgstr "Blog archieven"
+
+#: archive.php:23
+#: author.php:16
+#: category.php:12
+#: home.php:13
+#: home.php:21
+#: index.php:9
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink naar %s"
+
+#: archive.php:25
+#: author.php:18
+#: category.php:14
+#: home.php:16
+#: home.php:24
+#: index.php:12
+msgid "Read More <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Verder lezen <span class=\"meta-nav\">&rarr;</span>"
+
+#: archive.php:29
+#: author.php:22
+#: category.php:18
+#: home.php:30
+#: index.php:17
+#, php-format
+msgid "%1$s &#8211; %2$s"
+msgstr "%1$s &#8211; %2$s"
+
+#: archive.php:31
+#: author.php:24
+#: category.php:20
+#: home.php:32
+#: index.php:19
+#, php-format
+msgid "By %s"
+msgstr "Door %s"
+
+#: archive.php:31
+#: attachment.php:20
+#: author.php:24
+#: category.php:20
+#: home.php:32
+#: image.php:21
+#: index.php:19
+#, php-format
+msgid "View all posts by %s"
+msgstr "Bekijk alle berichten van %s"
+
+#: archive.php:33
+#: author.php:26
+#: category.php:22
+#: home.php:34
+#: index.php:21
+#, php-format
+msgid "Posted in %s"
+msgstr "Geplaatst in %s"
+
+#: archive.php:35
+#: author.php:28
+#: category.php:24
+#: home.php:36
+#: index.php:23
+msgid "<span class=\"tag-links\">Tagged "
+msgstr "<span class=\"tag-links\">Tagged "
+
+#: archive.php:36
+#: archives.php:32
+#: attachment.php:38
+#: author.php:29
+#: category.php:25
+#: home.php:37
+#: image.php:39
+#: index.php:24
+#: links.php:22
+#: page.php:15
+msgid "Edit"
+msgstr "Pas aan"
+
+#: archive.php:37
+#: author.php:30
+#: category.php:26
+#: home.php:38
+#: index.php:25
+msgid "Comments (0)"
+msgstr "Reacties (0)"
+
+#: archive.php:37
+#: author.php:30
+#: category.php:26
+#: home.php:38
+#: index.php:25
+msgid "Comments (1)"
+msgstr "Reactie (1)"
+
+#: archive.php:37
+#: author.php:30
+#: category.php:26
+#: home.php:38
+#: index.php:25
+msgid "Comments (%)"
+msgstr "Reacties (%)"
+
+#: archive.php:44
+#: author.php:37
+#: category.php:33
+#: home.php:47
+#: index.php:34
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Oudere berichten"
+
+#: archive.php:45
+#: author.php:38
+#: category.php:34
+#: home.php:48
+#: index.php:35
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Jongere berichten <span class=\"meta-nav\">&rarr;</span>"
+
+#: archives.php:20
+msgid "Archives by Category"
+msgstr "Archief op categorie"
+
+#: archives.php:26
+msgid "Archives by Month"
+msgstr "Archief op maand"
+
+#: attachment.php:8
+#: image.php:8
+#, php-format
+msgid "Return to %s"
+msgstr "Terug naar %s"
+
+#: attachment.php:19
+#: image.php:20
+#, php-format
+msgid "Posted by %1$s on <abbr class=\"published\" title=\"%2$sT%3$s\">%4$s at %5$s</abbr>. Bookmark the <a href=\"%6$s\" title=\"Permalink to %7$s\" rel=\"bookmark\">permalink</a>. Follow any comments here with the <a href=\"%8$s\" title=\"Comments RSS to %7$s\" rel=\"alternate\" type=\"application/rss+xml\">RSS feed for this post</a>."
+msgstr "Geplaatst door %1$s op <abbr class=\"published\" title=\"%2$sT%3$s\">%4$s om %5$s</abbr>. Bewaar de <a href=\"%6$s\" title=\"Permalink to %7$s\" rel=\"bookmark\">permalink</a>. Volg eventuele opmerkingen met behulp van de <a href=\"%8$s\" title=\"Comments RSS to %7$s\" rel=\"alternate\" type=\"application/rss+xml\">RSS feed van deze bijdrage</a>."
+
+#: attachment.php:30
+#: image.php:31
+#, php-format
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Plaats een opmerking</a> of een terugkoppeling: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL voor uw bericht\" rel=\"trackback\">Trackback URL</a>."
+
+#: attachment.php:32
+#: image.php:33
+#, php-format
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "Reacties zijn gesloten, maar terugkoppelen kan wel: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+
+#: attachment.php:34
+#: image.php:35
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
+msgstr "Terugkoppelingen zijn gesloten, maar u kunt een <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">opmerking achter laten</a>."
+
+#: attachment.php:36
+#: image.php:37
+msgid "Both comments and trackbacks are currently closed."
+msgstr "Opmerkingen en terugkoppelingen zijn momenteel gesloten."
+
+#: author.php:8
+#, php-format
+msgid "Author Archives: <span class=\"vcard\">%s</span>"
+msgstr "Archief op auteur:  <span class=\"vcard\">%s</span>"
+
+#: category.php:6
+msgid "Category Archives:"
+msgstr "Archief op categorie:"
+
+#: comments.php:10
+msgid "This post is protected. Enter the password to view any comments."
+msgstr "Dit bericht is beveiligd. Voer het wachtwoord in om opmerkingen te zien."
+
+#: comments.php:17
+msgid "No Comments"
+msgstr "Geen opmerkingen"
+
+#: comments.php:17
+msgid "One Comment"
+msgstr "Één opmerking"
+
+#: comments.php:17
+msgid "% Comments"
+msgstr "% opmerkingen"
+
+#: comments.php:22
+msgid "Respond to this"
+msgstr "Reageer hier op"
+
+#: comments.php:34
+msgid "Post a Comment"
+msgstr "Plaats een reactie"
+
+#: comments.php:34
+#, php-format
+msgid "Respond to %s"
+msgstr "Reageer op %s"
+
+#: comments.php:36
+msgid "Cancel this response"
+msgstr "Annulleer deze reactie"
+
+#: comments.php:39
+#, php-format
+msgid "You must be <a href=\"%s\" title=\"Log in\">logged in</a> to post a comment."
+msgstr "U moet eerst <a href=\"%s\" title=\"Log in\">inloggen</a> om een reactie te plaatsen."
+
+#: comments.php:48
+#, php-format
+msgid "<span class=\"loggedin\">Logged in as <a href=\"%1$s\" title=\"Logged in as %2$s\">%2$s</a>.</span> <span class=\"logout\"><a href=\"%3$s\" title=\"Log out of this account\">Log out?</a></span>"
+msgstr "<span class=\"loggedin\">Aangemeld als <a href=\"%1$s\" title=\"Logged in as %2$s\">%2$s</a>.</span> <span class=\"logout\"><a href=\"%3$s\" title=\"Log out of this account\">Afmelden?</a></span>"
+
+#: comments.php:56
+msgid "Your email is <em>never</em> shared."
+msgstr "Uw e-mail adres wordt door ons niet gedeeld."
+
+#: comments.php:56
+msgid "Required fields are marked <span class=\"required\">*</span>"
+msgstr "Verplichte velden worden aangeduid met <span class=\"required\">*</span>"
+
+#: comments.php:59
+msgid "Name"
+msgstr "Naam"
+
+#: comments.php:59
+#: comments.php:62
+msgid "<span class=\"required\">*</span>"
+msgstr "<span class=\"verplicht\">*</span>"
+
+#: comments.php:62
+msgid "Email"
+msgstr "Email"
+
+#: comments.php:65
+msgid "Website"
+msgstr "Website"
+
+#: comments.php:72
+msgid "Comment"
+msgstr "Opmerking"
+
+#: comments.php:75
+msgid "Post Comment"
+msgstr "Plaats opmerking"
+
+#: comments_custom.php:9
+#, php-format
+msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">wrote:</span>"
+msgstr "<cite class=\"fn\">%s</cite> <span class=\"says\">schreef:</span>"
+
+#: comments_custom.php:12
+msgid "Your comment is awaiting moderation."
+msgstr "Uw opmerking wacht op goedkeuring."
+
+#: comments_custom.php:15
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s om %2$s"
+
+#: comments_custom.php:15
+msgid "(Edit)"
+msgstr "(Aanpassen)"
+
+#: footer.php:3
+msgid "WordPress"
+msgstr "WordPress"
+
+#: footer.php:6
+msgid "The Erudite theme for WordPress"
+msgstr "\"The Edudite\" sjabloon voor WordPress"
+
+#: footer.php:6
+msgid "The Erudite"
+msgstr "The Erudite"
+
+#: header.php:18
+msgid "<span>↓</span> Keep Reading"
+msgstr "<span>↓</span> Verder lezen."
+
+#: header.php:19
+msgid "<span>↑</span> Put Away"
+msgstr "<span>↑</span> Verbergen"
+
+#: header.php:20
+msgid "&#x2193; Further Information"
+msgstr "&#x2193; Meer opties"
+
+#: header.php:21
+msgid "<span>↓</span> Show Menu"
+msgstr "<span>↓</span> Toon menu"
+
+#: header.php:22
+msgid "<span>↑</span> Hide Menu"
+msgstr "<span>↑</span> Verberg menu"
+
+#: header.php:30
+#, php-format
+msgid "%s latest posts"
+msgstr "%s nieuwste berichten"
+
+#: header.php:31
+#, php-format
+msgid "%s latest comments"
+msgstr "%s nieuwste opmerkingen"
+
+#: header.php:45
+msgid "Skip to content"
+msgstr "Spring naar inhoud"
+
+#: home.php:24
+#, php-format
+msgid "Keep reading &lsquo;%s&rsquo;"
+msgstr "Lees verder &lsquo;%s&rsquo;"
+
+#: home.php:27
+#: index.php:14
+#: page.php:13
+msgid "Pages:"
+msgstr "Pagina's:"
+
+#: search.php:8
+msgid "Search Results for:"
+msgstr "Zoekresultaten voor:"
+
+#: search.php:38
+msgid "<span class=\"meta-nav\">&larr;</span> Older results"
+msgstr "<span class=\"meta-nav\">&larr;</span> Oudere resultaten"
+
+#: search.php:39
+msgid "Newer results <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Nieuwere resultaten <span class=\"meta-nav\">&rarr;</span>"
+
+#: search.php:45
+msgid "Nothing Found"
+msgstr "Niets gevonden"
+
+#: search.php:47
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "Helaas, niets gevonden dat overeen komt met uw zoekcriteria. Probeer eens andere zoektermen."
+
+#: sidebar.php:9
+msgid "About"
+msgstr "Over"
+
+#: sidebar.php:16
+msgid "Pages"
+msgstr "Pagina's"
+
+#: sidebar.php:31
+msgid "Categories"
+msgstr "Categorieën"
+
+#: sidebar.php:39
+msgid "Archives"
+msgstr "Archief"
+
+#: sidebar.php:53
+msgid "Search"
+msgstr "Zoek"
+
+#: sidebar.php:65
+msgid "RSS Feeds"
+msgstr "RSS koppelingen"
+
+#: sidebar.php:67
+msgid "All posts"
+msgstr "Alle berichten"
+
+#: sidebar.php:68
+msgid "All comments"
+msgstr "Alle opmerkingen"
+
+#: sidebar.php:73
+msgid "Meta"
+msgstr "Beheer"
+
+#: tag.php:6
+msgid "Tag Archives:"
+msgstr "Archieven op sleutelwoord:"
+
+#: library/epigraph.php:34
+#: library/epigraph.php:39
+msgid "Epigraph"
+msgstr "Opschrift"
+
+#: library/epigraph.php:41
+msgid "Citation (optional)"
+msgstr "Citaat (optioneel)"
+
+#: library/theme-options.php:13
+msgid "Dark Colour Scheme"
+msgstr "Donkere kleurstelling"
+
+#: library/theme-options.php:14
+msgid "For all the dark colour lovers out there"
+msgstr "Voor alle liefhebbers van donkere kleuren"
+
+#: library/theme-options.php:19
+msgid "Use Categories in Menu"
+msgstr "Gebruik Categorieën in menu"
+
+#: library/theme-options.php:20
+msgid "Use categories rather than pages for your top menu. Caution: this only works with a small number of categories"
+msgstr "Categorieën gebruiken voor de bovenste menu's. Let op: dit werkt alleen met een beperkt aantal categorieën"
+
+#: library/theme-options.php:25
+msgid "Footer &lsquo;About&lsquo; Blurb"
+msgstr "Ondermarge &lsquo;Over&lsquo; Info"
+
+#: library/theme-options.php:26
+msgid "The following text will appear in the footer for &lsquo;About&lsquo;. <br /><em>Note:</em> This will only appear if you have not enabled a widget for <strong>Erudite Widget 1</strong>"
+msgstr "Onderstaande tekst verschijnt in de ondermarge bij: &lsquo;Over&lsquo;. <br /><em>NB:</em> Dit verschijnt alleen indien u geen widget hebt ingesteld bij <strong>Erudite Widget 1</strong>"
+
+#: library/theme-options.php:35
+msgid "Disable &lsquo;Keep Reading&rsquo;"
+msgstr "&lsquo;Verder lezen&rsquo; uitzetten"
+
+#: library/theme-options.php:36
+msgid "Turns off the dynamic <em>Keep Reading</em> / <em>Put Away</em> functionality on the homepage if it doesn't suit your fancy"
+msgstr "Zet de dynamische <em>Verder lezen</em> / <em>Verbergen</em> functies uit als u dat niet bevalt"
+
+#: library/theme-options.php:41
+msgid "Disable Header/Footer Hiding"
+msgstr "Uitzetten Onder, en boven-marge verbergen"
+
+#: library/theme-options.php:42
+msgid "Turns off the dynamic show/hide functionality of the header and footer"
+msgstr "Zet de dynamische tonen/verbergen functies van de kop en voet uit."
+
+#: library/theme-options.php:47
+msgid "Disable footer credit"
+msgstr "Ondermarge dankwoord uitzetten"
+
+#: library/theme-options.php:48
+msgid "Removes the link to the theme's author in the footer. Leave it in to say &ldquo;thanks for the hard work.&rdquo;"
+msgstr "Verwijdert de koppeling naar de auteur van dit sjabloon. Laat het staan om als het ware te zeggen &ldquo;dank voor het harde werk!&rdquo;"
+
+#: library/theme-options.php:53
+msgid "Enable comment threading"
+msgstr "Opmerkingen heïrarchisch tonen."
+
+#: library/theme-options.php:54
+msgid "Allow comment threading. (Global <a href='options-discussion.php' title='Discussion settings'>discussion settings</a> have no effect unless this is checked first)<br /> This is <strong>off</strong> by default because threaded comments are rubbish. Turn on at your peril, and don't go more than 2 levels deep."
+msgstr "Heïrarchische opmerkingen toestaan. (Algemene <a href='options-discussion.php' title='Discussion settings'>instellingen</a> hebben geen effect tenzij dit eerst is aangevinkt)<br /> Deze optie staat standaard  <strong>uit</strong> omdat heïrarchische opmerkingen waardeloos zijn. Aanzetten op eigen risico, ga daarbij niet verder dan twee nivo's diep."
+
+#: library/theme-options.php:58
+msgid "Google Analytics code"
+msgstr "Google Analytics code"
+
+#: library/theme-options.php:59
+msgid "Enter your <a href=\"http://www.google.com/analytics\">Google Analytics</a> (or other service) tracking code here, and it will automatically be placed just before the <code>&lt;body&gt;</code> tag."
+msgstr "Typ uw <a href=\"http://www.google.com/analytics\">Google Analytics</a> (of vergelijkbare dienst) tracking code hier, dan wordt het automatisch net voor de <code>&lt;body&gt;</code> code geplaatst."
+
+#: library/theme-options.php:109
+msgid "settings saved."
+msgstr "instellingen opgeslagen."
+
+#: library/theme-options.php:110
+msgid "settings reset."
+msgstr "instellingen teruggezet."
+
+#: library/theme-options.php:111
+msgid "widgets reset."
+msgstr "widgets hersteld."
+
+#: library/theme-options.php:227
+msgid "Save changes"
+msgstr "Wijzigingen opslaan."
+
+#: library/theme-options.php:233
+msgid "Reset"
+msgstr "Herstel"
+
+#~ msgid "Title:"
+#~ msgstr "Titel:"
+#~ msgid "Button Text:"
+#~ msgstr "Knop Tekst:"
+#~ msgid "RSS Links"
+#~ msgstr "RSS koppelingen"
+#~ msgid "Posts RSS feed"
+#~ msgstr "RSS koppeling van dit bericht"
+#~ msgid "Comments RSS feed"
+#~ msgstr "RSS koppeling voor opmerkingen"
+#~ msgid "A search form for your blog (The Erudite)"
+#~ msgstr "Een zoekformulier voor uw blog (The Erudite)."
+#~ msgid "Log in/out and administration links (The Erudite)"
+#~ msgstr "Aan/afmelding en administratieve koppelingen (The Erudite)"
+#~ msgid "RSS links for both posts and comments (The Erudite)"
+#~ msgstr "RSS koppelingen voor berichten en opmerkingen (The Erudite)"
+

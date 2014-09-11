@@ -1,0 +1,12 @@
+/*-------=brown theme-------------------*/	
+
+/* color for selections */
+*::-moz-selection { background:#bb8849; }
+*::selection, mark { background:#bb8849; }
+	
+/* text color */
+.main_title, .filter_portfolio .active a, .filter_portfolio a:hover { color:#bb8849; }
+
+/* flex slider */
+.flex-caption { border-bottom:3px solid #bb8849; }
+.flex-control-nav a { background:url(../../images/bullets_brown.png) no-repeat 0px 0px !important; }

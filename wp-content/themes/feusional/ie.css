@@ -1,0 +1,22 @@
+/* ================================================================ 
+IE.
+=================================================================== */ 
+h2.topbox_t{
+font-family: Verdana;
+font-weight: normal;
+font-size: 20px;
+text-shadow: #E7FDF1 0px 1px;}
+
+p.topbox_desc{
+font-family: "Helvetica Neue", Arial, Helvetica, Verdana;
+color:#2E343D;
+font-size: 13px;
+line-height: 20px;
+}
+.entry_post{
+width: 510px;
+overflow: hidden;
+}
+#comments{width: 510px;}
+
+

@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: disciplede\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-20 22:14+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Matthias Kretschmann <krema@jpberlin.de>\n"
+"Language-Team: Bombeleger <info@wp-uebersetzer.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:6
+msgid "The page you were looking for could not be found."
+msgstr "Die Seite nach der du gesucht hast konnte nicht gefunden werden."
+
+#: comments.php:5
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Bitte lade diese Seite nicht direkt. Danke!"
+
+#: comments.php:8
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Dieser Bereich ist Passwortgesch&uuml;tzt. Gib das Passwort ein um weiterzumachen."
+
+#: comments.php:14
+msgid "No Responses"
+msgstr "Keine Antworten"
+
+#: comments.php:14
+msgid "One Response"
+msgstr "Eine Antwort"
+
+#: comments.php:14
+msgid "% Responses"
+msgstr "% Antworten"
+
+#: comments.php:48
+msgid "Leave a Reply"
+msgstr "Deine Meinung dazu"
+
+#: comments.php:48
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Deine Meinung zu %s"
+
+#: comments.php:53
+msgid "You must be"
+msgstr "Du musst"
+
+#: comments.php:53
+msgid "logged in"
+msgstr "eingeloggt"
+
+#: comments.php:53
+msgid "to post a comment"
+msgstr "sein um hier zu posten."
+
+#: comments.php:64
+msgid "Logged in as"
+msgstr "Eingeloggt als"
+
+#: comments.php:64
+msgid "Log out &raquo;"
+msgstr "Abmelden &raquo;"
+
+#: comments.php:69
+msgid "Name"
+msgstr "Name"
+
+#: comments.php:72
+msgid "Mail"
+msgstr "E-Mail"
+
+#: comments.php:72
+msgid "will not be published"
+msgstr "wird nicht ver&ouml;ffentlicht"
+
+#: comments.php:75
+msgid "Website"
+msgstr "Webseite"
+
+#: comments.php:91
+msgid "You can use these tags"
+msgstr "Diese Tags kannst du verwenden"
+
+#: functions.php:22
+#: index.php:39
+#: page.php:19
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: functions.php:27
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr ""
+
+#: functions.php:28
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: functions.php:32
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar wartet jetzt auf eine Moderation."
+
+#: functions.php:43
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: functions.php:44
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: header.php:37
+msgid "subscribe"
+msgstr "abonnieren"
+
+#: header.php:50
+msgid "Home"
+msgstr "Startseite"
+
+#: header.php:63
+#: header.php:66
+msgid "Browsing the archives for the"
+msgstr "Durchsuche das Archiv nach"
+
+#: header.php:63
+msgid "tag"
+msgstr "Tag"
+
+#: header.php:66
+msgid "category"
+msgstr "Kategorie"
+
+#: header.php:69
+msgid "Brpwsing the blog archives for the day"
+msgstr "Das Blog Archiv vom"
+
+#: header.php:69
+msgid "l, F jS, Y"
+msgstr "d M. Y"
+
+#: header.php:72
+msgid "Browsing the blog archives for"
+msgstr "Das Blog Archiv vom"
+
+#: header.php:72
+msgid "F, Y"
+msgstr "M. Y"
+
+#: header.php:75
+msgid "Browsing the blog archives for the year"
+msgstr "Das Blog Archiv aus"
+
+#: header.php:75
+msgid "Y"
+msgstr "Y"
+
+#: header.php:78
+msgid "Search result for"
+msgstr "Suchergebnisse f&uuml;r"
+
+#: header.php:81
+msgid "Browsing the blog archives"
+msgstr "Das Blog Archiv durchsuchen"
+
+#: index.php:18
+msgid "Date"
+msgstr "Datum"
+
+#: index.php:19
+msgid "M j, Y"
+msgstr "d M. Y"
+
+#: index.php:22
+msgid "Author"
+msgstr "Autor"
+
+#: index.php:26
+msgid "Category"
+msgstr "Kategorie"
+
+#: index.php:31
+#: page.php:16
+msgid "<p><b>Continue Reading &raquo;</b></p>"
+msgstr "<p><b>weiterlesen &raquo;</b></p>"
+
+#: index.php:36
+msgid "No Comments"
+msgstr "Keine Antworten"
+
+#: index.php:36
+msgid "1 Comment"
+msgstr "Eine Antwort"
+
+#: index.php:36
+msgid "% Comments"
+msgstr "% Antworten"
+
+#: index.php:40
+msgid "Tagged "
+msgstr "Getaggt unter "
+
+#: index.php:57
+msgid "&laquo; Older Posts"
+msgstr "&laquo; &Auml;ltere Eintr&auml;ge"
+
+#: index.php:58
+msgid "Newer Posts &raquo;"
+msgstr "Neuere Eintr&auml;ge &raquo;"
+
+#: index.php:64
+#: page.php:36
+msgid "Not Found"
+msgstr "Nichts gefunden"
+
+#: index.php:65
+msgid "Sorry, but you are looking for something that isn&acute;t here"
+msgstr "Entschuldige, aber hier gibt es keine Eintr&auml;ge die deinen Kriterien entsprechen."
+
+#: page.php:37
+msgid "Sorry, but you are looking for something that isn&acute;t here."
+msgstr "Entschuldige, aber hier gibt es keine Eintr&auml;ge die deinen Kriterien entsprechen."
+
+#: searchform.php:2
+msgid "Search this blog"
+msgstr "Den Blog durchsuchen"
+
+#: sidebar.php:22
+msgid "About this blog"
+msgstr "Über diesen Blog"
+
+#: sidebar.php:23
+msgid "This is a sidebar example to show how it could look. Customize your sidebar by adding Widgets in WP Admin > Design > Widgets or edit the sidebar files on your own."
+msgstr "Das ist eine Vorschau wie die Sidebar aussehen k&ouml;nnte. Du kannst sie im Admin-Bereich unter Design > Widgets nach deinen W&uuml;nschen anpassen."
+
+#: sidebar.php:27
+msgid "Categories"
+msgstr "Kategorie"
+
+#: sidebar.php:34
+msgid "Archives"
+msgstr "Archiv"
+
+#: sidebar.php:41
+msgid "Blogroll"
+msgstr "Blogroll"
+

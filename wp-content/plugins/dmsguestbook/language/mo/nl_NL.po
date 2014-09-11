@@ -1,0 +1,1840 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DMSGuestbook v1.17.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2011-02-21 13:19+0000\n"
+"Last-Translator: administrator <frank@sgrkempen.be>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: admin.php:67
+#: widget.php:232
+#@ dmsguestbook
+msgid "Options"
+msgstr "Opties"
+
+#: admin.php:67
+#@ dmsguestbook
+msgid "<span style='font-size:12px;'>DMSGuestbook</span>"
+msgstr "<span style='font-size:12px;'>DMSGastenboek</span>"
+
+#: admin.php:71
+#: admin.php:1460
+#: admin.php:2126
+#@ dmsguestbook
+msgid "Entries"
+msgstr "Bijdragen"
+
+#: admin.php:76
+#: admin.php:1471
+#: admin.php:2349
+#: admin.php:2506
+#: admin.php:2638
+#@ dmsguestbook
+#@ default
+msgid "Spam"
+msgstr "Spam"
+
+#: admin.php:81
+#: admin.php:379
+#: admin.php:1454
+#@ dmsguestbook
+msgid "phpinfo"
+msgstr "phpinfo"
+
+#: admin.php:101
+#@ dmsguestbook
+msgid "Options have been saved"
+msgstr "Opties zijn opgeslagen"
+
+#: admin.php:105
+#@ dmsguestbook
+msgid "Options were not saved, text box is empty"
+msgstr "Opties werden niet opgeslagen, tekstvak is leeg"
+
+#: admin.php:133
+#@ dmsguestbook
+msgid "Create a page where you want to display the DMSGuestbook."
+msgstr "Maak een pagina waarop je het DMSGastenboek wil weergeven."
+
+#: admin.php:134
+#@ dmsguestbook
+msgid "Save the page and assign it under \"Guestbook settings\" -> \"Basic\"."
+msgstr "Bewaar de pagina en stel ze in bij \"Gastenboek instellingen\" -> \"Basis\"."
+
+#: admin.php:135
+#@ dmsguestbook
+msgid "Customize the guestbook to your desire!"
+msgstr "Pas het gastenboek aan naar uw wensen!"
+
+#: admin.php:144
+#@ dmsguestbook
+msgid "One or more options are missing."
+msgstr "Een of meer opties ontbreken."
+
+#: admin.php:148
+#@ dmsguestbook
+msgid "Update options database"
+msgstr "Opties bijwerken"
+
+#: admin.php:158
+#@ dmsguestbook
+msgid "Update database"
+msgstr "Update database"
+
+#: admin.php:184
+#@ dmsguestbook
+msgid "was created"
+msgstr "was aangemaakt"
+
+#: admin.php:192
+#@ dmsguestbook
+msgid "was deleted"
+msgstr "was verwijderd"
+
+#: admin.php:198
+#: admin.php:538
+#@ dmsguestbook
+msgid "DMSGuestbook options"
+msgstr "DMSGastenboek opties"
+
+#: admin.php:198
+#: admin.php:3453
+#@ dmsguestbook
+msgid "Don't forget to set the page id."
+msgstr "Vergeet niet om de pagina id in te stellen."
+
+#: admin.php:207
+#@ dmsguestbook
+msgid "All DMSGuestbook options were deleted"
+msgstr "Alle DMSGastenboek opties werden geschrapt"
+
+#: admin.php:280
+#: admin.php:348
+#@ dmsguestbook
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: admin.php:282
+#: admin.php:374
+#: admin.php:523
+#: admin.php:1454
+#@ dmsguestbook
+msgid "Database settings"
+msgstr "Database instellingen"
+
+#: admin.php:284
+#: admin.php:375
+#: admin.php:1454
+#: admin.php:1600
+#@ dmsguestbook
+msgid "Guestbook settings"
+msgstr "Gastenboek instellingen"
+
+#: admin.php:286
+#: admin.php:376
+#: admin.php:1454
+#: admin.php:1886
+#@ dmsguestbook
+msgid "Language settings"
+msgstr "Taalinstellingen"
+
+#: admin.php:325
+#@ dmsguestbook
+msgid "Yes"
+msgstr "Ja"
+
+#: admin.php:327
+#@ dmsguestbook
+msgid "No"
+msgstr "Nee"
+
+#: admin.php:355
+#@ dmsguestbook
+msgid "entries"
+msgstr "berichten"
+
+#: admin.php:356
+#@ dmsguestbook
+msgid "waiting for approval"
+msgstr "wachten op goedkeuring"
+
+#: admin.php:357
+#@ dmsguestbook
+msgid "spam"
+msgstr "spam"
+
+#: admin.php:359
+#@ dmsguestbook
+msgid "Server Settings"
+msgstr "Server Instellingen"
+
+#: admin.php:361
+#@ dmsguestbook
+msgid "Server"
+msgstr "Server"
+
+#: admin.php:362
+#@ dmsguestbook
+msgid "MYSQL Server"
+msgstr "MySQL Server"
+
+#: admin.php:363
+#@ dmsguestbook
+msgid "Memory Limit"
+msgstr "Geheugen limiet"
+
+#: admin.php:365
+#@ dmsguestbook
+msgid "Graphic Settings"
+msgstr "Grafische instellingen"
+
+#: admin.php:367
+#@ dmsguestbook
+msgid "GD Version"
+msgstr "GD versie"
+
+#: admin.php:368
+#@ dmsguestbook
+msgid "Freetype Support"
+msgstr "Freetype ondersteuning"
+
+#: admin.php:369
+#@ dmsguestbook
+msgid "Freetype Linkage"
+msgstr "Freetype ondersteuning"
+
+#: admin.php:370
+#@ dmsguestbook
+msgid "PNG Support"
+msgstr "PNG ondersteuning"
+
+#: admin.php:372
+#@ dmsguestbook
+msgid "Permissions"
+msgstr "Machtigingen"
+
+#: admin.php:377
+#@ dmsguestbook
+msgid "Post settings"
+msgstr "Post instellingen"
+
+#: admin.php:378
+#@ dmsguestbook
+msgid "Spam settings"
+msgstr "Spam instellingen"
+
+#: admin.php:383
+#: admin.php:1748
+#@ dmsguestbook
+msgid "Miscellaneous"
+msgstr "Diversen"
+
+#: admin.php:385
+#@ dmsguestbook
+msgid "CSS file writable"
+msgstr "CSS bestand schrijfbaar"
+
+#: admin.php:386
+#@ dmsguestbook
+msgid "xfiles.ttf readable"
+msgstr "xfiles.ttf leesbaar"
+
+#: admin.php:388
+#@ dmsguestbook
+msgid "Captcha Image"
+msgstr "Captcha afbeelding"
+
+#: admin.php:392
+#@ dmsguestbook
+msgid "If dmsguestbook.css exists and is writable, all CSS settings will be read from it.<br />Otherwise these settings will be loaded from the database."
+msgstr "Als dmsguestbook.css bestaat en schrijfbaar is, zullen alle CSS instellingen worden ingeladen. <br /> Anders zullen deze instellingen worden geladen uit de database."
+
+#: admin.php:396
+#@ dmsguestbook
+msgid "If you don't see the image here, check the xfiles.ttf and captcha.png permission in your captcha folder."
+msgstr "Als je de afbeelding hier niet ziet, controleer dan de permissies van de xfiles.ttf en captcha.png bestanden in uw captcha map."
+
+#: admin.php:400
+#@ dmsguestbook
+msgid "News"
+msgstr "Nieuws"
+
+#: admin.php:410
+#@ dmsguestbook
+msgid "No items"
+msgstr "Geen items"
+
+#: admin.php:419
+#@ dmsguestbook
+msgid "Infos"
+msgstr "Infos"
+
+#: admin.php:421
+#@ dmsguestbook
+msgid "FAQ"
+msgstr "Veelgestelde vragen"
+
+#: admin.php:422
+#@ dmsguestbook
+msgid "Changelog"
+msgstr "Changelog"
+
+#: admin.php:446
+#, php-format
+#@ dmsguestbook
+msgid "[Status OK] %s does exist."
+msgstr "[Status OK] %s bestaat."
+
+#: admin.php:447
+#, php-format
+#@ dmsguestbook
+msgid "Type \"yes, i am sure\" in this textfield if you want delete %s"
+msgstr "Typ  \"yes, i am sure\" in dit tekstveld als je %s wil verwijderen"
+
+#: admin.php:448
+#@ dmsguestbook
+msgid "All guestbook data will be lost!"
+msgstr "Alle gastenboek gegevens zullen verloren gaan!"
+
+#: admin.php:452
+#, php-format
+#@ dmsguestbook
+msgid "delete %s"
+msgstr "verwijder %s"
+
+#: admin.php:456
+#, php-format
+#@ dmsguestbook
+msgid "%s isn't exist."
+msgstr "%s bestaat niet."
+
+#: admin.php:461
+#@ dmsguestbook
+msgid "if you use mySQL 4.0.xx or lower"
+msgstr "als je MySQL 4.0.xx of lager gebruikt"
+
+#: admin.php:464
+#@ dmsguestbook
+msgid "Create"
+msgstr "Aanmaken"
+
+#: admin.php:466
+#@ dmsguestbook
+msgid ""
+"If you want use char like &auml;,&uuml;,&ouml;... and your mysql version is lower than 4.1, be sure the language\n"
+"\t\t\tsetting is e.g. \"de-iso-8859-1\" or similar. Check this with your mysql graphical frontenend like phpmyadmin."
+msgstr ""
+"Als je karakters zoals ä, ü, ö ... wil gebruiken en je MySQL versie lager is dan 4.1, zorg er dan voor dat de taal\n"
+"\\\t\\\t\\\tinstelling \"de-iso-8859-1\" is of iets dergelijks. Controleer dit via het mysql grafische frontenend zoals phpmyadmin."
+
+#: admin.php:470
+#, php-format
+#@ dmsguestbook
+msgid "If there is something wrong with my %s table:"
+msgstr "Als er iets mis is met mijn %s tabel:"
+
+#: admin.php:470
+#: admin.php:505
+#@ dmsguestbook
+msgid "Help"
+msgstr "Help"
+
+#: admin.php:483
+#, php-format
+#@ dmsguestbook
+msgid "[Status OK] \"DMSGuestbook_options\" found in %s."
+msgstr "[Status OK] \"DMSGuestbook_options\" gevonden in %s."
+
+#: admin.php:487
+#, php-format
+#@ dmsguestbook
+msgid "No \"DMSGuestbook_options\" found in %s."
+msgstr "Geen \"DMSGuestbook_options\" gevonden in %s."
+
+#: admin.php:491
+#, php-format
+#@ dmsguestbook
+msgid "Notice: You have some old \"DMSGuestbook_xxxx\" rows in your %s, but this have no functionality impact."
+msgstr "Let op: Je hebt een aantal oude \"DMSGuestbook_xxxx\" rijen in uw %s, maar dit heeft geen gevolgen voor de functionaliteit."
+
+#: admin.php:496
+#@ dmsguestbook
+msgid "Create new DMSGuestbook options"
+msgstr "Maak nieuwe DMSGastenboek opties aan"
+
+#: admin.php:500
+#, php-format
+#@ dmsguestbook
+msgid "Type \"delete\" to remove all DMSGuestbook option entries from the %s table."
+msgstr "Typ \"delete\" om alle DMSGastenboek opties te verwijderen uit de %s tabel."
+
+#: admin.php:503
+#@ dmsguestbook
+msgid "Delete DMSGuestbook options from the database"
+msgstr "DMSGastenboek opties verwijderen uit de database"
+
+#: admin.php:505
+#, php-format
+#@ dmsguestbook
+msgid "If there is something wrong with my<br />DMSGuestbook_options in %s:"
+msgstr "Als er iets mis is met mijn<br />DMSGuestbook_options in %s:"
+
+#: admin.php:508
+#@ dmsguestbook
+msgid "Copy this content to a text file in case if you need a backup."
+msgstr "Kopieer deze inhoud naar een tekstbestand als je een back-up wil."
+
+#: admin.php:512
+#@ dmsguestbook
+msgid ""
+"Restore DMSGuestbook_options:<br />\n"
+"\t\tOpen your DMSGuestbook option backup text file and put the content in the textfield below.<br />\n"
+"\t\tAll data will be overwrite!"
+msgstr ""
+"DMSGastenboek opties herstellen:<br />\n"
+"\\\t\\\tOpen uw DMSGastenboek backup tekstbestand en zet de inhoud in het tekstveld hieronder.<br />\n"
+"\\\t\\\tAlle gegevens zullen overschreven worden!"
+
+#: admin.php:518
+#@ dmsguestbook
+msgid "Restore"
+msgstr "Herstellen"
+
+#: admin.php:518
+#: admin.php:1863
+#@ dmsguestbook
+msgid "Would you really like to restore all data?"
+msgstr "Ben je zeker dat je alle gegevens wil terugzetten?"
+
+#: admin.php:529
+#@ dmsguestbook
+msgid "DMSGuestbook Database"
+msgstr "DMSGastenboek Database"
+
+#: admin.php:546
+#@ dmsguestbook
+msgid "DMSGuestbook options backup"
+msgstr "DMSGastenboek opties back-up"
+
+#: admin.php:571
+#: admin.php:1856
+#: admin.php:2495
+#: admin.php:3601
+#@ dmsguestbook
+msgid "Save"
+msgstr "Opslaan"
+
+#: admin.php:600
+#@ dmsguestbook
+msgid "You have to delete the assigned guestbooks by clicking on \"Clear all\" before you can set this again. Assigned guestbooks will not be released until you press the \"Save\" button."
+msgstr "Je moet de toegewezen gastenboeken verwijderen door op  \"Alles wissen\"  te klikken voordat je ze opnieuw kan instellen. Toegewezen gastenboeken zullen niet worden vrijgegeven totdat je op \"Instellen\" klikt."
+
+#: admin.php:601
+#@ dmsguestbook
+msgid "To assign guestbook(s)"
+msgstr "Om gastenboeken toe te wijzen"
+
+#: admin.php:620
+#: admin.php:2230
+#: admin.php:2282
+#: admin.php:2364
+#: admin.php:2393
+#: admin.php:2678
+#: admin.php:2741
+#@ dmsguestbook
+msgid "ID"
+msgstr "ID"
+
+#: admin.php:621
+#: admin.php:2230
+#@ dmsguestbook
+msgid "Page"
+msgstr "Pagina"
+
+#: admin.php:622
+#@ dmsguestbook
+msgid "Page status"
+msgstr "Pagina status"
+
+#: admin.php:623
+#: admin.php:2230
+#: admin.php:2344
+#: admin.php:2394
+#: admin.php:2727
+#@ dmsguestbook
+msgid "Guestbook"
+msgstr "Gastenboek"
+
+#: admin.php:623
+#@ dmsguestbook
+msgid "Deactivate super guestbook "
+msgstr "Deactiveren super gastenboek "
+
+#: admin.php:624
+#@ dmsguestbook
+msgid "Language"
+msgstr "Taal"
+
+#: admin.php:640
+#@ dmsguestbook
+msgid "not selected"
+msgstr "niet geselecteerd"
+
+#: admin.php:653
+#@ dmsguestbook
+msgid "Activate this guestbook as super guestbook"
+msgstr "Activeer dit gastenboek als super gastenboek"
+
+#: admin.php:664
+#@ dmsguestbook
+msgid "Clear all"
+msgstr "Alles wissen"
+
+#: admin.php:665
+#@ dmsguestbook
+msgid "Would you like to display one particular guestbook in a different languages? Select your desired guestbook and mark the radio button. After that all pages with the assigned language will be bound with the guestbook that you've selected."
+msgstr "Wilt u een bepaald gastenboek weergeven in een andere taal? Selecteer het gewenste gastenboek en markeer de radio-knop. Hierdoor zullen alle pagina's met de geselecteerde taal gekoppeld worden aan het gekozen gastenboek."
+
+#: admin.php:690
+#@ dmsguestbook
+msgid "Set"
+msgstr "Instellen"
+
+#: admin.php:699
+#@ dmsguestbook
+msgid "How to use:<br />1.) Reset all assigned guestbooks by clicking on \"Clear all\"<br />2.) Select your desired language<br /> 3.) Select your guestbook(s) by clicking \"Set\" in ascending order.<br />4.) Press the \"Save\" button"
+msgstr "Hoe te gebruiken: <br />1.) Reset alle toegewezen gastenboeken door op \"Wis alle\" te klikken<br /> 2.) Selecteer de gewenste taal <br /> 3.) Selecteer uw gastenboek(en) door in oplopende volgorde op \"Instellen\" te klikken. <br /> 4.) Druk op \"Opslaan\""
+
+#: admin.php:707
+#@ dmsguestbook
+msgid "Post per page"
+msgstr "Inzendingen per pagina"
+
+#: admin.php:712
+#@ dmsguestbook
+msgid "Number of entry in each page"
+msgstr "Aantal berichten per pagina"
+
+#: admin.php:718
+#@ dmsguestbook
+msgid "Message text length"
+msgstr "Lengte van het bericht"
+
+#: admin.php:723
+#@ dmsguestbook
+msgid " chars"
+msgstr "karakters"
+
+#: admin.php:725
+#@ dmsguestbook
+msgid "Define the maximum allowed lenght each message text<br />Deactivate this feature to set 0"
+msgstr "Stel de maximaal toegestane lengte in van het bericht<br />Deactiveer deze functie door 0 in te geven"
+
+#: admin.php:732
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Guestbook width"
+msgstr "Gastenboek breedte"
+
+#: admin.php:739
+#@ dmsguestbook
+msgid "Guestbook width in percent<br /><br />Variable: {width1}"
+msgstr "Gastenboek breedte in procent<br /><br />Variabele: {width1}"
+
+#: admin.php:746
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Separator width"
+msgstr "Scheidingsteken breedte"
+
+#: admin.php:753
+#@ dmsguestbook
+msgid "Separator width in percent<br /><br />Variable: {width2}"
+msgstr "Scheidingsteken breedte in procent <br /><br />Variabele: {width2}"
+
+#: admin.php:760
+#@ dmsguestbook
+msgid "Guestbook position (x-axis)"
+msgstr "Gastenboek positie (x-as)"
+
+#: admin.php:767
+#@ dmsguestbook
+msgid "Absolute guestbook position in pixel horizontal (x-axis)<br /><br />Variable: {position1}"
+msgstr "Absolute gastenboek positie in pixels, horizontaal (x-as) <br /><br />Variabele: {position1}"
+
+#: admin.php:774
+#@ dmsguestbook
+msgid "Guestbook position (y-axis)"
+msgstr "Gastenboek positie (y-as)"
+
+#: admin.php:781
+#@ dmsguestbook
+msgid "Absolute guestbook position in pixel vertical (y-axis)<br /><br />Variable: {position2}"
+msgstr "Absolute gastenboek positie in pixels verticaal (y-as) <br /><br />Variabele: {position2}"
+
+#: admin.php:788
+#@ dmsguestbook
+msgid "Navigation char style<br /><br />e.g. < >"
+msgstr "Navigatie karakter stijl<br /><br />bijv. < >"
+
+#: admin.php:800
+#@ dmsguestbook
+msgid "Navigation char style"
+msgstr "Navigatie karakter stijl"
+
+#: admin.php:810
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Navigation char size"
+msgstr "Navigatie karakter formaat"
+
+#: admin.php:817
+#@ dmsguestbook
+msgid "Navigation font size in pixel<br /><br />Variable: {navigationsize}"
+msgstr "Navigatie lettergrootte in pixels <br /><br />Variabele: {navigationsize}"
+
+#: admin.php:824
+#@ dmsguestbook
+msgid "Guestbook form position"
+msgstr "Gastenboek formulier positie"
+
+#: admin.php:829
+#@ dmsguestbook
+msgid "Visible the guestbook input form on top or bottom"
+msgstr "Het gastenboek invulformulier boven- of onderaan tonen"
+
+#: admin.php:835
+#@ dmsguestbook
+msgid "Link text"
+msgstr "Linktekst"
+
+#: admin.php:842
+#@ dmsguestbook
+msgid "Define a link text if you selected \"bottom\\"
+msgstr "Definieer een link tekst als je \"onderaan\" selecteerde"
+
+#: admin.php:849
+#@ dmsguestbook
+msgid "Sort guestbook items"
+msgstr "Sorteer gastenboek items"
+
+#: admin.php:854
+#@ dmsguestbook
+msgid "DESC = Newer post first<br />ASC = Older post first"
+msgstr "DESC = Nieuwe berichten eerst <br />ASC = Oude berichten eerst"
+
+#: admin.php:860
+#@ dmsguestbook
+msgid "Database id"
+msgstr "Database id"
+
+#: admin.php:865
+#@ dmsguestbook
+msgid "Use the database id to consecutively numbered each guestbook entry"
+msgstr "Gebruik de database id om de berichten te nummeren"
+
+#: admin.php:881
+#@ dmsguestbook
+msgid "Form template"
+msgstr "Formuliersjabloon"
+
+#: admin.php:886
+#@ dmsguestbook
+msgid "Create your own input form template and use it is on your guestbook site<br /><br />See an examle in \"/template/form/default.tpl\\"
+msgstr "Maak je eigen invulformulier sjabloon en gebruik het op je gastenboek site <br /><br />Zie een voorbeeld in \"/template/form/default.tpl\\"
+
+#: admin.php:902
+#@ dmsguestbook
+msgid "Post template"
+msgstr "Berichtensjabloon"
+
+#: admin.php:907
+#@ dmsguestbook
+msgid "Create your own guestbook post template and use it is on your guestbook site<br /><br />See an examle in \"/template/post/default.tpl\\"
+msgstr "Maak je eigen gastenboek bericht sjabloon en gebruik het op je site <br /><br />Zie een voorbeeld in \"/template/post/default.tpl\\"
+
+#: admin.php:913
+#@ dmsguestbook
+msgid "rel=\"nofollow\" tag for posted url's"
+msgstr "rel=\"nofollow\" tag voor geposte url's"
+
+#: admin.php:918
+#@ dmsguestbook
+msgid "Activate the nofollow tag for posted url's<br /><a href=\"http://en.wikipedia.org/wiki/Nofollow\" target=\"_blank\">http://en.wikipedia.org/wiki/Nofollow</a>"
+msgstr "Activeer de nofollow-tag voor geposte url's <br /><a href=\"http://en.wikipedia.org/wiki/Nofollow\" target=\"_blank\">http://en.wikipedia.org/wiki/Nofollow</a>"
+
+#: admin.php:934
+#@ dmsguestbook
+msgid "Additional selectbox"
+msgstr "Aanvullende selectiebox"
+
+#: admin.php:939
+#@ dmsguestbook
+msgid "Define a selectbox and fill this with your own values.<br />See some examples in your \"dmsguestbook/module\" folder."
+msgstr "Definieer een selectiebox en vul deze met uw eigen waarden. <br />Zie enkele voorbeelden in de \"dmsguestbook/module\" map."
+
+#: admin.php:945
+#@ dmsguestbook
+msgid "Additional selectbox title"
+msgstr "Aanvullende selectiebox titel"
+
+#: admin.php:952
+#@ dmsguestbook
+msgid "This text will be shown on your input form guestbook page.<br />You could leave this textfield blank by using space character."
+msgstr "Deze tekst zal worden weergegeven op uw gastenboek invulformulier. <br />Je zou dit tekstveld leeg kunnen laten met behulp van een spatie."
+
+#: admin.php:959
+#@ dmsguestbook
+msgid "Show additional value"
+msgstr "Toon aanvullende waarde"
+
+#: admin.php:964
+#@ dmsguestbook
+msgid "Show additional text in each guestbook post.<br />You could edit the appearance in \"template/post/default.tpl\"<br />The default setting will be set the additional text on the footer of guestbook post."
+msgstr "Toon aanvullende tekst in elk gastenboek bericht. <br /> Je kan het model aanpassen in  \"template/post/default.tpl\"<br />De standaardinstelling zal worden bijgeplaatst in de voettekst van het gastenboek."
+
+#: admin.php:970
+#@ dmsguestbook
+msgid "Separator color"
+msgstr "Kleur scheidingsteken"
+
+#: admin.php:976
+#@ dmsguestbook
+msgid "Separator between header and body in each entry<br /><br />Variable: {separatorcolor}"
+msgstr "Scheidingsteken tussen de header en body van elk item <br /><br />Variabele: {separatorcolor}"
+
+#: admin.php:981
+#@ dmsguestbook
+msgid "Outside border color"
+msgstr "Kleur buitenrand"
+
+#: admin.php:987
+#@ dmsguestbook
+msgid "Color of the outside box<br /><br />Variable: {bordercolor1}"
+msgstr "Kleur buitenkant vak <br /><br />Variabele: {bordercolor1}"
+
+#: admin.php:993
+#@ dmsguestbook
+msgid "Textfield border color"
+msgstr "Tekstveld randkleur"
+
+#: admin.php:999
+#@ dmsguestbook
+msgid "Color of all textfield borders<br /><br />Variable: {bordercolor2}"
+msgstr "Kleur van alle tekstveld randen<br /><br />Variabele: {bordercolor2}"
+
+#: admin.php:1005
+#@ dmsguestbook
+msgid "Navigation char color"
+msgstr "Kleur navigatie karakter"
+
+#: admin.php:1011
+#@ dmsguestbook
+msgid "Define the navigation color<br /><br />Variable: {navigationcolor}"
+msgstr "Definieer de navigatie kleur <br /><br />Variabele: {navigationcolor}"
+
+#: admin.php:1017
+#@ dmsguestbook
+msgid "Font color"
+msgstr "Kleur lettertype"
+
+#: admin.php:1023
+#@ dmsguestbook
+msgid "Overall font color<br /><br />Variable: {fontcolor1}"
+msgstr "Algemene kleur lettertype <br /><br />Variabele: {fontcolor1}"
+
+#: admin.php:1029
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Antispam image text color"
+msgstr "Tekstkleur antispam afbeelding"
+
+#: admin.php:1035
+#@ dmsguestbook
+msgid "Antispam image text color<br /><br />Variable: {captcha_color}"
+msgstr "Tekstkleur antispam afbeelding <br /><br />Variabele: {captcha_color}"
+
+#: admin.php:1041
+#@ dmsguestbook
+msgid "Date / Time format"
+msgstr "Datum / Tijd-formaat"
+
+#: admin.php:1048
+#: admin.php:1204
+#: admin.php:1418
+#: widget.php:106
+#: widget.php:126
+#@ dmsguestbook
+msgid "More infos"
+msgstr "Meer info"
+
+#: admin.php:1055
+#@ dmsguestbook
+msgid "Setlocale"
+msgstr "Setlocale"
+
+#: admin.php:1062
+#@ dmsguestbook
+msgid "Set your language: e.g. en_EN, de_DE, fr_FR, it_IT, de, ge ...<br />(must be installed on your system)"
+msgstr "Stel uw taal in: bijv. en_EN, nl_NL, fr_FR, it_IT, de, ge ... <br />(Moet geïnstalleerd zijn op uw systeem)"
+
+#: admin.php:1069
+#@ dmsguestbook
+msgid "Offset"
+msgstr "Offset"
+
+#: admin.php:1074
+#, php-format
+#@ dmsguestbook
+msgid "Time offset: Use this offset if your Wordpress installation is not in the same country where you live.<br />e.g. You live in London and the Wordpress installation is on a server in Chicago.<br />If You want to show the date in GMT (Greenwich Mean Time), set the offset -6 and check the correct time below.<br /><br /> Notice: Don't use the %z or %Z parameter if your offset isn\"t 0."
+msgstr "Tijd offset: Gebruik de offset als je Wordpress installatie zich niet in hetzelfde land bevindt dan waar je woont. <br />Je woont bijvoorbeeld in Londen en de Wordpress installatie staat op een server in Chicago. <br /> Als je de datum in GMT (Greenwich Mean Time) wil laten zien, zet de offset op -6 en controleer de juiste tijd hieronder. <br /><br />Opmerking: Gebruik de z% of% Z parameter niet als je offset niet 0 is."
+
+#: admin.php:1080
+#@ dmsguestbook
+msgid "Send a mail"
+msgstr "E-mail verzenden"
+
+#: admin.php:1085
+#@ dmsguestbook
+msgid "Receive a notification email when user write an new guestbook post"
+msgstr "Ontvang een e-mailbericht wanneer een gebruiker een nieuw gastenboek bericht post"
+
+#: admin.php:1091
+#@ dmsguestbook
+msgid "Email address"
+msgstr "E-mail adres"
+
+#: admin.php:1098
+#@ dmsguestbook
+msgid "The email address which the message to be sent is<br />Multiple email adresses are allowed, split these with the \";\" separator.<br />e.g. test1@example.com;test2@example.com;test3@example.com"
+msgstr "Het e-mailadres waarnaar het bericht moet worden verstuurd<br />Meerdere e-mailadressen zijn mogelijk met de \";\" separator. <br />vb. test1@voorbeeld.com; test2@voorbeeld.com; test3@voorbeeld.com"
+
+#: admin.php:1105
+#@ dmsguestbook
+msgid "Send method"
+msgstr "Verzend methode"
+
+#: admin.php:1110
+#@ dmsguestbook
+msgid "Use PHP internal mail function if your server supporting this.<br />A SMTP server could be need username and password as authentification which you must known."
+msgstr "Gebruik de interne PHP mail functie als uw server dit ondersteunt. <br />Een SMTP-server kan een gebruikersnaam en wachtwoord nodig hebben ter authenticatie."
+
+#: admin.php:1116
+#@ dmsguestbook
+msgid "SMTP host"
+msgstr "SMTP-host"
+
+#: admin.php:1123
+#@ dmsguestbook
+msgid "The SMTP server which do you want to connect."
+msgstr "De SMTP-server waarmee je verbinding wil maken."
+
+#: admin.php:1130
+#@ dmsguestbook
+msgid "SMTP port"
+msgstr "SMTP-poort"
+
+#: admin.php:1135
+#@ dmsguestbook
+msgid "25 = standard port<br />465 = SMTP over SSL port<br />587 = Alternative SMTP port<br /><br />Check your mail documentation for further information."
+msgstr "25 = standaard poort <br />465 = SMTP over SSL-poort <br />587 = Alternatieve SMTP-poort <br /><br />Controleer uw e-mail documentatie voor meer informatie."
+
+#: admin.php:1141
+#@ dmsguestbook
+msgid "SMTP username"
+msgstr "SMTP-gebruikersnaam"
+
+#: admin.php:1148
+#@ dmsguestbook
+msgid "SMTP username if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "SMTP-gebruikersnaam indien nodig.<br /><br />Controleer uw e-mail documentatie voor meer informatie."
+
+#: admin.php:1155
+#@ dmsguestbook
+msgid "SMTP password"
+msgstr "SMTP-wachtwoord"
+
+#: admin.php:1162
+#@ dmsguestbook
+msgid "SMTP password if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "SMTP-wachtwoord, indien nodig.<br /><br />Controleer uw e-mail documentatie voor meer informatie."
+
+#: admin.php:1169
+#@ dmsguestbook
+msgid "SMTP authentification"
+msgstr "SMTP-authentificatie"
+
+#: admin.php:1174
+#@ dmsguestbook
+msgid "SMTP authentification if is needed. <br /><br />Check your mail documentation for further information."
+msgstr "SMTP-authentificatie indien nodig.<br /><br />Controleer uw e-mail documentatie voor meer informatie."
+
+#: admin.php:1180
+#@ dmsguestbook
+msgid "SMTP SSL"
+msgstr "SMTP SSL"
+
+#: admin.php:1185
+#@ dmsguestbook
+msgid "SMTP SSL (secure socket layer) if is needed.<br /><br />Check your mail documentation for further information."
+msgstr "SMTP SSL (secure socket layer) indien nodig.<br /><br />Controleer uw e-mail documentatie voor meer informatie."
+
+#: admin.php:1193
+#, php-format
+#@ dmsguestbook
+msgid "DMSGuestbook has found an Akismet key %s"
+msgstr "DMSGastenboek heeft een Akismet sleutel %s gevonden"
+
+#: admin.php:1196
+#@ dmsguestbook
+msgid "No WordPress API key for Akismet was found! Activate the Akismet plugin and create a key. More information under: <a href=\"http://akismet.com/\" target=\"_blank\">http://akismet.com/</a> and <a href=\"http://en.wordpress.com/api-keys/\" target=\"_blank\">http://en.wordpress.com/api-keys/</a>"
+msgstr "Geen WordPress API-sleutel voor de Akismet gevonden! Activeer de Akismet-plugin en maak een sleutel aan. Meer informatie op: <a href=\"http://akismet.com/\" target=\"_blank\">http://akismet.com/</a> en <a href=\"http://en.wordpress.com/api-keys/\" target=\"_blank\">http://en.wordpress.com/api-keys/</a>"
+
+#: admin.php:1199
+#@ dmsguestbook
+msgid "Akismet"
+msgstr "Akismet"
+
+#: admin.php:1211
+#@ dmsguestbook
+msgid "Move spam to the spam folder@Block guestbook post if spam is found on it@"
+msgstr "Verplaats spam naar de spam folder@Gastenboek bericht blokkeren als er spam in wordt gevonden@"
+
+#: admin.php:1216
+#@ dmsguestbook
+msgid "What should Akismet do if spam are detected?"
+msgstr "Wat moet Akismet doen als spam wordt gedetecteerd?"
+
+#: admin.php:1223
+#@ dmsguestbook
+msgid "Antispam off:@Antispam image:@Antispam mathematic figures:@reCAPTCHA:@"
+msgstr "Antispam off:@Antispam afbeelding:@Antispam wiskundige figuren:@reCAPTCHA:@"
+
+#: admin.php:1228
+#@ dmsguestbook
+msgid "Image:<br /><img src=\"../wp-content/plugins/dmsguestbook/captcha/captcha.php\" /><br />If you don't see the image here, check the xfiles.ttf and captcha.png permission in your captcha folder<br /><br />Mathematic figures:<br />4 + 9 = 13<br /><br />reCAPTCHA: <a href=\"http://recaptcha.net\" target=\"_blank\">learn more about reCAPTCHA</a>"
+msgstr "Afbeelding:<br /><img src=\"../wp-content/plugins/dmsguestbook/captcha/captcha.php\" /><br /> Als je de afbeelding niet ziet, controleer dan de permissies op de xfiles.ttf en captcha.png bestanden in uw captcha map<br /><br />Wiskundige figuren:<br />4 + 9 = 13<br /><br />reCAPTCHA: <a href=\"http://recaptcha.net\" target=\"_blank\">Leer meer over reCAPTCHA</a>"
+
+#: admin.php:1234
+#@ dmsguestbook
+msgid "reCAPTCHA public key"
+msgstr "reCAPTCHA publieke sleutel"
+
+#: admin.php:1241
+#@ dmsguestbook
+msgid "Enter here you reCAPTCHA public key."
+msgstr "Vul hier je reCAPTCHA publieke sleutel in."
+
+#: admin.php:1241
+#: admin.php:1255
+#@ dmsguestbook
+msgid "Learn more about reCAPTCHA"
+msgstr "Leer meer over reCAPTCHA"
+
+#: admin.php:1248
+#@ dmsguestbook
+msgid "reCAPTCHA private key"
+msgstr "reCAPTCHA prive-sleutel"
+
+#: admin.php:1255
+#@ dmsguestbook
+msgid "Enter here you reCAPTCHA private key."
+msgstr "Vul hier je reCAPTCHA prive-sleutel in."
+
+#: admin.php:1263
+#@ dmsguestbook
+msgid "Antispam key"
+msgstr "Antispam sleutel"
+
+#: admin.php:1270
+#@ dmsguestbook
+msgid "Set a random key to prevent spam.<br />Every page refresh will create a new key which can be saved.<br />It's used for: Antispam image & Antispam mathematic figures."
+msgstr "Stel een willekeurige sleutel in om spam te voorkomen. <br />Elke pagina vernieuwing maakt een nieuwe sleutel aan dewelke opgeslagen kan worden. <br />Het wordt gebruikt voor: Antispam afbeelding & Antispam wiskundige figuren."
+
+#: admin.php:1277
+#: admin.php:2422
+#@ dmsguestbook
+msgid "Email"
+msgstr "E-mail"
+
+#: admin.php:1282
+#@ dmsguestbook
+msgid "User must fill out the email text field"
+msgstr "Gebruiker moet het e-mail tekstveld invullen"
+
+#: admin.php:1288
+#: admin.php:2424
+#: dmsguestbook.php:839
+#@ dmsguestbook
+msgid "Website"
+msgstr "Website"
+
+#: admin.php:1293
+#@ dmsguestbook
+msgid "User must fill out the website text field"
+msgstr "Gebruiker moet het website tekstveld invullen"
+
+#: admin.php:1299
+#@ dmsguestbook
+msgid "Mandatory char"
+msgstr "Verplicht karakter"
+
+#: admin.php:1306
+#@ dmsguestbook
+msgid "Mandatory char were to display on guestbook input form"
+msgstr "Waar moet het verplichte karakter geplaatst worden in het gastenboek invulformulier"
+
+#: admin.php:1313
+#@ dmsguestbook
+msgid "Show email"
+msgstr "Toon e-mail"
+
+#: admin.php:1318
+#@ dmsguestbook
+msgid "Visible email for everyone in each post"
+msgstr "E-mail voor iedereen zichtbaar in elk bericht"
+
+#: admin.php:1324
+#@ dmsguestbook
+msgid "Show website"
+msgstr "Toon website"
+
+#: admin.php:1329
+#@ dmsguestbook
+msgid "Visible website for everyone in each post"
+msgstr "Website voor iedereen zichtbaar in elk bericht"
+
+#: admin.php:1335
+#@ dmsguestbook
+msgid "Show ip address"
+msgstr "Toon IP-adres"
+
+#: admin.php:1340
+#@ dmsguestbook
+msgid "Visible ip for everyone in each post"
+msgstr "IP voor iedereen zichtbaar in elk bericht"
+
+#: admin.php:1346
+#@ dmsguestbook
+msgid "Mask ip address"
+msgstr "Maskeer ip adres"
+
+#: admin.php:1351
+#@ dmsguestbook
+msgid "Mask ip adress if this is visible"
+msgstr "Maskeer IP-adres indien dit zichtbaar is"
+
+#: admin.php:1359
+#: admin.php:1366
+#@ dmsguestbook
+msgid "Email image path"
+msgstr "Pad naar e-mail afbeelding"
+
+#: admin.php:1366
+#: admin.php:1382
+#@ dmsguestbook
+msgid "Actually image:"
+msgstr "Huidige afbeelding:"
+
+#: admin.php:1375
+#: admin.php:1382
+#@ dmsguestbook
+msgid "Website image path"
+msgstr "Pad naar website afbeelding"
+
+#: admin.php:1389
+#@ dmsguestbook
+msgid "Admin must every post review"
+msgstr "Beheerder moet elk bericht goedkeuren"
+
+#: admin.php:1394
+#@ dmsguestbook
+msgid "Admin must review every post before this can display on the page.<br />You can edit the guestbook review status under \"Entries\"."
+msgstr "Beheerder moet elk bericht goedkeuren voordat het weergegeven kan worden. <br />Je kan de revisiestatus van het gastenboek aanpassen onder \"Berichten\"."
+
+#: admin.php:1400
+#@ dmsguestbook
+msgid "URL overrule"
+msgstr "URL overrulen"
+
+#: admin.php:1406
+#@ dmsguestbook
+msgid "You can overrule this link if you have trouble with the guestbook form submit."
+msgstr "Je kan deze link overrulen als je problemen hebt met het verzenden van het gastenboek formulier."
+
+#: admin.php:1406
+#: admin.php:1675
+#: widget.php:132
+#: widget.php:133
+#: widget.php:134
+#: widget.php:135
+#: widget.php:136
+#: widget.php:236
+#: widget.php:240
+#: widget.php:244
+#: widget.php:246
+#: widget.php:248
+#: widget.php:253
+#: widget.php:257
+#: widget.php:261
+#: widget.php:265
+#: widget.php:269
+#: widget.php:273
+#@ dmsguestbook
+#@ default
+msgid "Example"
+msgstr "Voorbeeld"
+
+#: admin.php:1406
+#@ dmsguestbook
+msgid "YourGuestBookName"
+msgstr "YourGuestBookName"
+
+#: admin.php:1413
+#@ dmsguestbook
+msgid "User can use Gravatar"
+msgstr "Gebruiker mag een Gravatar gebruiken"
+
+#: admin.php:1424
+#@ dmsguestbook
+msgid "Gravatar rating"
+msgstr "Gravatar rating"
+
+#: admin.php:1429
+#@ dmsguestbook
+msgid "You can specify a rating of G, PG, R, or X.<br />[G] A G rated gravatar is suitable for display on all websites with any audience type.<br />[PG] PG rated gravatars may contain rude gestures, provocatively dressed individuals, the lesser swear words, or mild violence.<br />[R] R rated gravatars may contain such things as harsh profanity, intense violence, nudity, or hard drug use.<br />[X] X rated gravatars may contain hardcore sexual imagery or extremely disturbing violence."
+msgstr "Je kan een G, PG, R, of X rating geven. <br />[G] Een G gravatar is geschikt voor weergave op alle publieke websites. <br />[PG] PG gravatars kunnen onbeschofte zaken bevatten, uitdagende kleding, scheldwoorden of licht geweld. <br />[R] R gravatars kunnen dingen als harde vloeken, hevig geweld, naakt of harddrugs bevatten. <br />[X] X gravatars kunnen hardcore seksuele beelden of zeer verontrustend geweld bevatten."
+
+#: admin.php:1435
+#@ dmsguestbook
+msgid "Gravatar size"
+msgstr "Gravatar formaat"
+
+#: admin.php:1442
+#@ dmsguestbook
+msgid "Image size in pixel"
+msgstr "Beeldgrootte in pixels"
+
+#: admin.php:1449
+#@ dmsguestbook
+msgid "DMSGuestbook settings"
+msgstr "DMSGastenboek instellingen"
+
+#: admin.php:1454
+#: admin.php:1465
+#: admin.php:1476
+#@ dmsguestbook
+msgid "This role affects with"
+msgstr "Deze rol beïnvloedt"
+
+#: admin.php:1465
+#@ dmsguestbook
+msgid "Guestbook entries (show, edit, delete)"
+msgstr "Gastenboek berichten (toon, bewerk, verwijder)"
+
+#: admin.php:1476
+#@ dmsguestbook
+msgid "Spam entries (show, edit, delete)"
+msgstr "Spam berichten (toon, bewerk, verwijder)"
+
+#: admin.php:1490
+#@ dmsguestbook
+msgid "NEW!"
+msgstr "NIEUW!"
+
+#: admin.php:1493
+#@ dmsguestbook
+msgid "New CSS entries found, press the save button to save it."
+msgstr "Nieuwe CSS-items gevonden, druk  op de knop Opslaan om te bewaren."
+
+#: admin.php:1501
+#@ dmsguestbook
+msgid "Press the save button to restore CSS settings."
+msgstr "Druk op de knop Opslaan om CSS-instellingen te herstellen."
+
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Relative guestbook position (left to right)"
+msgstr "Relatieve gastenboek positie (van links naar rechts)"
+
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Separator between header and body in each entry"
+msgstr "Scheidingsteken tussen de header en body van elk item"
+
+#: admin.php:1505
+#@ default
+msgid "Border of the outside box"
+msgstr "Rand van de buitenste kader"
+
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Color of all textfield border"
+msgstr "Kleur van alle tekstveld randen"
+
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Navigation color"
+msgstr "Navigatie kleur"
+
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Overall font color"
+msgstr "Algemene kleur lettertype"
+
+#: admin.php:1505
+#@ dmsguestbook
+msgid "Stylesheet (CSS) Help & Tutorials:<br />English: <a href=\"http://www.html.net/tutorials/css/\" target=\"_blank\">http://www.html.net/tutorials/css/</a><br />German: <a href=\"http://www.css4you.de/\" target=\"_blank\">http://www.css4you.de/</a><br />Or ask Google and friends :-)"
+msgstr "Stylesheet (CSS) Help & Tutorials:<br />English: <a href=\"http://www.html.net/tutorials/css/\" target=\"_blank\">http://www.html.net/tutorials/css/</a><br />German: <a href=\"http://www.css4you.de/\" target=\"_blank\">http://www.css4you.de/</a><br />Of Google is je vriend :-)"
+
+#: admin.php:1523
+#@ dmsguestbook
+msgid "Description"
+msgstr "Omschrijving"
+
+#: admin.php:1584
+#@ dmsguestbook
+msgid "Custom CSS"
+msgstr "Aangepaste CSS"
+
+#: admin.php:1586
+#@ dmsguestbook
+msgid "Class heredity:<br /><br />e.g.<br /><b>a.</b>css_navigation_char<b>:hover</b> {color:#ff0000;}<br />All url link with css_navigation_char (navigation link)<br />become hover color red when user drag over it<br /><br /><b>td</b>.css_guestbook_message_nr_name {background-color:#00ff00;}<br />All td with css_guestbook_message_nr_name (guestbook name & id)<br />become background color green<br /><br />"
+msgstr "Class heredity:<br /><br />e.g.<br /><b>a.</b>css_navigation_char<b>:hover</b> {color:#ff0000;}<br />All url link with css_navigation_char (navigation link)<br />become hover color red when user drag over it<br /><br /><b>td</b>.css_guestbook_message_nr_name {background-color:#00ff00;}<br />All td with css_guestbook_message_nr_name (guestbook name & id)<br />become background color green<br /><br />"
+
+#: admin.php:1610
+#@ dmsguestbook
+msgid "Basic"
+msgstr "Basis"
+
+#: admin.php:1622
+#@ default
+msgid "Extended"
+msgstr "Uitgebreid"
+
+#: admin.php:1649
+#@ dmsguestbook
+msgid "Color"
+msgstr "Kleur"
+
+#: admin.php:1662
+#@ dmsguestbook
+msgid "Time / Date"
+msgstr "Tijd / Datum"
+
+#: admin.php:1679
+#@ dmsguestbook
+msgid "Email Notification"
+msgstr "E-mail notificatie"
+
+#: admin.php:1699
+#@ dmsguestbook
+msgid "Captcha / Akismet"
+msgstr "Captcha / Akismet"
+
+#: admin.php:1721
+#@ dmsguestbook
+msgid "Mandatory"
+msgstr "Verplicht"
+
+#: admin.php:1725
+#: admin.php:2421
+#@ dmsguestbook
+msgid "Name"
+msgstr "Naam"
+
+#: admin.php:1726
+#@ dmsguestbook
+msgid "User must fill out name text field"
+msgstr "Gebruiker moet naam tekstveld invullen"
+
+#: admin.php:1727
+#: dmsguestbook.php:839
+#@ dmsguestbook
+msgid "Message"
+msgstr "Bericht"
+
+#: admin.php:1728
+#@ dmsguestbook
+msgid "User must fill out message text field"
+msgstr "Gebruiker moet bericht tekstveld invullen"
+
+#: admin.php:1738
+#@ dmsguestbook
+msgid "Gravatar"
+msgstr "Gravatar"
+
+#: admin.php:1759
+#@ dmsguestbook
+msgid "Role"
+msgstr "Rol"
+
+#: admin.php:1769
+#@ dmsguestbook
+msgid "is writable"
+msgstr "is schrijfbaar"
+
+#: admin.php:1771
+#@ dmsguestbook
+msgid "is not writable or doesn't exist"
+msgstr "is niet beschrijfbaar of bestaat niet"
+
+#: admin.php:1777
+#@ dmsguestbook
+msgid "CSS"
+msgstr "CSS"
+
+#: admin.php:1781
+#@ dmsguestbook
+msgid "If dmsguestbook.css exist and is writable, all CSS settings will be read from it.<br />Otherwise these settings will be loaded from the database."
+msgstr "Als dmsguestbook.css bestaat en beschrijfbaar is, zullen alle CSS instellingen worden ingelezen. <br />Anders zullen de instellingen uit de database worden ingelezen."
+
+#: admin.php:1786
+#@ dmsguestbook
+msgid "Settings for custom CSS"
+msgstr "Instellingen voor aangepaste CSS"
+
+#: admin.php:1788
+#@ dmsguestbook
+msgid "Mouse hover color"
+msgstr "Muisaanwijzer hover kleur"
+
+#: admin.php:1793
+#@ dmsguestbook
+msgid "Email and url image properties"
+msgstr "Eigenschappen voor E-mail en url afbeelding"
+
+#: admin.php:1863
+#@ dmsguestbook
+msgid "Restore default settings - All data will be replaced"
+msgstr "Standaardinstellingen herstellen - Alle gegevens zullen worden vervangen"
+
+#: admin.php:1920
+#: admin.php:2106
+#@ dmsguestbook
+msgid "File not found!"
+msgstr "Bestand niet gevonden!"
+
+#: admin.php:1927
+#@ default
+msgid "Not a valid file, must be a language file with .txt prefix."
+msgstr "Geen geldig bestand, moet een taal bestand zijn met .txt prefix."
+
+#: admin.php:2062
+#: admin.php:2105
+#@ dmsguestbook
+msgid "saved"
+msgstr "opgeslagen"
+
+#: admin.php:2067
+#@ dmsguestbook
+msgid ""
+"Use the DMSGuestbook admin interface for change these css settings.\n"
+"Don't edit this file direct, your change could be overwrite by the DMSGuestbook admin.\n"
+"If dmsguestbook.css is exist and writable, all CSS settings will be read from it.\n"
+"Otherwise these settings will be load from the database."
+msgstr "Gebruik de DMSGastenboek admin-interface de css instellingen te wijzigen. Bewerk dit bestand niet rechtstreeks, het kan overschreven worden door de DMSGastenboek admin. Als dmsguestbook.css bestaat en schrijfbaar is, zullen alle CSS instellingen worden ingelezen. Anders zullen de instellingen worden geladen uit de database."
+
+#: admin.php:2207
+#@ dmsguestbook
+msgid "Search"
+msgstr "Zoeken"
+
+#: admin.php:2208
+#@ dmsguestbook
+msgid "Clear"
+msgstr "Wissen"
+
+#: admin.php:2212
+#, php-format
+#@ dmsguestbook
+msgid "Search in: Name, Message, IP, Website and Email Fields.<br />Use % to specify search patterns. e.g. %fox% or %fox or fox%"
+msgstr "Zoeken in: Naam, Bericht, IP, website en e-mail velden. <br />Gebruik % om zoekpatronen te specificeren. bv %vos% of %vos of vos%"
+
+#: admin.php:2221
+#@ dmsguestbook
+msgid "Active: Guestbook"
+msgstr "Actief: Gastenboek"
+
+#: admin.php:2224
+#@ dmsguestbook
+msgid "Guestbook: All"
+msgstr "Gastenboek: Alle"
+
+#: admin.php:2268
+#: admin.php:2668
+#@ dmsguestbook
+msgid "Bulk Action"
+msgstr "Bulkactie"
+
+#: admin.php:2269
+#@ dmsguestbook
+msgid "Mark as Spam"
+msgstr "Markeren als spam"
+
+#: admin.php:2270
+#: admin.php:2350
+#: admin.php:2670
+#: admin.php:2730
+#@ dmsguestbook
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: admin.php:2271
+#@ dmsguestbook
+msgid "Set post visible"
+msgstr "Inzending zichtbaar zetten"
+
+#: admin.php:2272
+#@ dmsguestbook
+msgid "Set post hidden"
+msgstr "Inzending verborgen zetten"
+
+#: admin.php:2275
+#: admin.php:2673
+#@ dmsguestbook
+msgid "Apply"
+msgstr "Uitvoeren"
+
+#: admin.php:2276
+#: admin.php:2673
+#@ dmsguestbook
+msgid "Would you really like to do this?"
+msgstr "Ben je zeker?"
+
+#: admin.php:2283
+#: admin.php:2365
+#: admin.php:2381
+#: admin.php:2524
+#: admin.php:2679
+#: admin.php:2742
+#@ dmsguestbook
+msgid "Author"
+msgstr "Auteur"
+
+#: admin.php:2284
+#: admin.php:2366
+#: admin.php:2382
+#: admin.php:2525
+#: admin.php:2680
+#: admin.php:2743
+#@ dmsguestbook
+msgid "Comment"
+msgstr "Reactie"
+
+#: admin.php:2285
+#: admin.php:2367
+#: admin.php:2383
+#: admin.php:2526
+#: admin.php:2681
+#: admin.php:2744
+#@ dmsguestbook
+msgid "Action"
+msgstr "Actie"
+
+#: admin.php:2291
+#: admin.php:2686
+#@ dmsguestbook
+msgid "No entries found."
+msgstr "Geen items gevonden."
+
+#: admin.php:2333
+#@ dmsguestbook
+msgid "Visible"
+msgstr "Zichtbaar"
+
+#: admin.php:2337
+#@ dmsguestbook
+msgid "Hidden"
+msgstr "Verborgen"
+
+#: admin.php:2345
+#: admin.php:2728
+#@ dmsguestbook
+msgid "Submitted on"
+msgstr "Ingediend op"
+
+#: admin.php:2347
+#: admin.php:2348
+#@ dmsguestbook
+msgid "Edit"
+msgstr "Bewerken"
+
+#: admin.php:2350
+#: admin.php:2517
+#: admin.php:2730
+#@ dmsguestbook
+msgid "Would you really like to delete this dataset?"
+msgstr "Ben je zeker dat je deze dataset wil verwijderen?"
+
+#: admin.php:2387
+#@ dmsguestbook
+msgid "Back"
+msgstr "Terug"
+
+#: admin.php:2398
+#@ dmsguestbook
+msgid "Assigned to: Guestbook"
+msgstr "Toegewezen aan: Gastenboek"
+
+#: admin.php:2403
+#@ dmsguestbook
+msgid "Switch to: Guestbook"
+msgstr "Overschakelen naar: Gastenboek"
+
+#: admin.php:2410
+#@ dmsguestbook
+msgid "Admin review"
+msgstr "Beheerder review"
+
+#: admin.php:2410
+#@ dmsguestbook
+msgid "If the Admin review checkbox is activated, the post will not be shown on the guestbook page."
+msgstr "Indien het Beheerder review selectievakje is aangestipt, zal de post niet worden weergegeven in het gastenboek."
+
+#: admin.php:2412
+#: dmsguestbook.php:839
+#: widget.php:104
+#@ dmsguestbook
+msgid "Date"
+msgstr "Datum"
+
+#: admin.php:2414
+#@ dmsguestbook
+msgid "Day.Month.Year,Hour:Minute:Second"
+msgstr "Dag.Maand.Jaar,Uur:Minuut:Seconde"
+
+#: admin.php:2416
+#@ dmsguestbook
+msgid "(DD.MM.YYYY,HH:MM:SS)"
+msgstr "(DD.MM.JJJJ,HH:MM:SS)"
+
+#: admin.php:2425
+#@ dmsguestbook
+msgid "Don't remove the \"http(s)://\" tag."
+msgstr "De \"http(s)://\" tag niet verwijderen."
+
+#: admin.php:2426
+#@ dmsguestbook
+msgid "Additional"
+msgstr "Aanvullende"
+
+#: admin.php:2430
+#: dmsguestbook.php:839
+#@ dmsguestbook
+msgid "IP"
+msgstr "IP"
+
+#: admin.php:2434
+#@ dmsguestbook
+msgid "query"
+msgstr "query"
+
+#: admin.php:2475
+#: admin.php:2482
+#@ dmsguestbook
+msgid "Would you really like to clear this text field? Don\\'t forget to press the \"Save\" button."
+msgstr "Ben je zeker dat je dit tekstveld wil wissen? Vergeet de \"Opslaan\" knop niet."
+
+#: admin.php:2495
+#@ dmsguestbook
+msgid "Would you really like to edit this dataset?"
+msgstr "Ben je zeker dat je deze dataset wil wijzigen?"
+
+#: admin.php:2642
+#@ dmsguestbook
+msgid "Would you really like to delete ALL data entries?"
+msgstr "Ben je zeker dat je ALLE gegevens wil wissen?"
+
+#: admin.php:2642
+#, php-format
+#@ dmsguestbook
+msgid "Delete all Spam (%s) entries"
+msgstr "Alle Spam (%S) berichten wissen"
+
+#: admin.php:2669
+#: admin.php:2729
+#@ dmsguestbook
+msgid "Unmark Spam"
+msgstr "Spam niet markeren"
+
+#: admin.php:2852
+#@ dmsguestbook
+msgid "Dataset (%) was saved"
+msgstr "Dataset (%) opgeslagen"
+
+#: admin.php:2868
+#: admin.php:2877
+#@ dmsguestbook
+msgid "Dataset (%) was deleted"
+msgstr "Dataset (%) verwijderd"
+
+#: admin.php:2885
+#@ dmsguestbook
+msgid "All Dataset were deleted"
+msgstr "Alle Datasets verwijderd"
+
+#: admin.php:3453
+#@ dmsguestbook
+msgid "Restore default settings"
+msgstr "Standaardinstellingen herstellen"
+
+#: admin.php:3483
+#@ dmsguestbook
+msgid "have permission"
+msgstr "toestemming hebben"
+
+#: admin.php:3600
+#@ dmsguestbook
+msgid "is writable!"
+msgstr "is beschrijfbaar!"
+
+#: admin.php:3600
+#, php-format
+#@ dmsguestbook
+msgid "Set %s readonly again when your finished to customize!"
+msgstr "Zet %s terug read only wanneer je klaar bent met aanpassen!"
+
+#: admin.php:3605
+#, php-format
+#@ dmsguestbook
+msgid "%s is <font style='color:#bb0000;'>not writable!"
+msgstr "%s is <font style='color:#bb0000;'>niet beschrijfbaar!"
+
+#: admin.php:3606
+#, php-format
+#@ dmsguestbook
+msgid "Set the write permission for %s to customize this file."
+msgstr "Stel schrijfrechten in voor %s om dit bestand te kunnen aanpassen."
+
+#: admin.php:3619
+#@ dmsguestbook
+msgid "This option(s) was not found in"
+msgstr "Deze optie is niet gevonden in"
+
+#: admin.php:3786
+#, php-format
+#@ dmsguestbook
+msgid "You need <i>%s</i> rights to have access to this page."
+msgstr "Je moet <i>%s</i> rechten hebben voor toegang tot deze pagina."
+
+#: dmsguestbook.php:111
+#@ dmsguestbook
+msgid "This entry contains probably Spam!"
+msgstr "Dit bericht bevat waarschijnlijk spam!"
+
+#: dmsguestbook.php:111
+#@ dmsguestbook
+msgid "This entry was not inscribed!"
+msgstr "Dit bericht is niet opgeslagen!"
+
+#: dmsguestbook.php:322
+#@ dmsguestbook
+msgid "Database not available!"
+msgstr "Database niet beschikbaar!"
+
+#: dmsguestbook.php:839
+#@ dmsguestbook
+msgid "From"
+msgstr "Van"
+
+#: dmsguestbook.php:839
+#@ dmsguestbook
+msgid "E-mail"
+msgstr "E-mail"
+
+#: dmsguestbook.php:839
+#@ dmsguestbook
+msgid "Additional text"
+msgstr "Aanvullende tekst"
+
+#: dmsguestbook.php:842
+#@ dmsguestbook
+msgid "You have a new guestbook post!"
+msgstr "Er staat een nieuw bericht in je gastenboek!"
+
+#: widget.php:87
+#@ dmsguestbook
+msgid "Headline"
+msgstr "Headline"
+
+#: widget.php:90
+#@ dmsguestbook
+msgid "This will be shown on top of you widget."
+msgstr "Dit zal boven je widget getoond worden."
+
+#: widget.php:92
+#@ dmsguestbook
+msgid "Page id"
+msgstr "Pagina id"
+
+#: widget.php:94
+#@ dmsguestbook
+msgid "Which guestbook would you like to display on your sidebar?"
+msgstr "Welk gastenboek wil je weergeven in de zijbalk?"
+
+#: widget.php:96
+#@ dmsguestbook
+msgid "Number"
+msgstr "Aantal"
+
+#: widget.php:98
+#@ dmsguestbook
+msgid "How many guestbook entries do you want to see on your widget?"
+msgstr "Hoeveel gastenboek berichten wil je zien in je widget?"
+
+#: widget.php:100
+#@ dmsguestbook
+msgid "Lenght"
+msgstr "Lengte"
+
+#: widget.php:102
+#@ dmsguestbook
+msgid "Cut message text after X characters."
+msgstr "Bericht tekst afknippen na X karakters."
+
+#: widget.php:106
+#@ dmsguestbook
+msgid "Set the date and time format."
+msgstr "Instellen datum en tijd formaat."
+
+#: widget.php:110
+#@ dmsguestbook
+msgid "Gravatar rating & Gravatar size"
+msgstr "Gravatar rating & Gravatar formaat"
+
+#: widget.php:128
+#@ dmsguestbook
+msgid "Don't forget to close all tags!"
+msgstr "Vergeet niet om alle tags te sluiten!"
+
+#: widget.php:131
+#@ dmsguestbook
+msgid "Default"
+msgstr "Standaard"
+
+#: widget.php:139
+#@ dmsguestbook
+msgid "Header"
+msgstr "Hoofding"
+
+#: widget.php:144
+#@ dmsguestbook
+msgid "Data"
+msgstr "Data"
+
+#: widget.php:149
+#@ dmsguestbook
+msgid "Footer"
+msgstr "Voettekst"
+
+#: widget.php:235
+#: widget.php:239
+#@ dmsguestbook
+msgid "Auto link to a guestbook post"
+msgstr "Auto link naar een gastenboek bericht"
+
+#: widget.php:237
+#@ dmsguestbook
+msgid "LINK1 is trying to generate a link to guestbook with the \"page_id=id\" statement which is defined under page id."
+msgstr "Link1 probeert een link te maken naar het gastenboek met het \"page_id=id\" statement, hetwelk gedefinieerd is onder de pagina id."
+
+#: widget.php:241
+#@ dmsguestbook
+msgid "LINK2 is trying to generate a link to guestbook with the \"p=id\" statement where is defined under page id."
+msgstr "Link2 probeert een link te maken naar het gastenboek met het \"p=id\" statement, hetwelk gedefinieerd is onder de pagina id."
+
+#: widget.php:243
+#@ dmsguestbook
+msgid "Link to the guestbook post (manually)"
+msgstr "Link naar het gastenboek bericht (handmatig)"
+
+#: widget.php:244
+#: widget.php:246
+#@ dmsguestbook
+msgid "YourGuestbookId"
+msgstr "YourGuestbookId"
+
+#: widget.php:248
+#@ dmsguestbook
+msgid "YourGuestbookPageName"
+msgstr "YourGuestbookPageName"
+
+#: widget.php:250
+#@ dmsguestbook
+msgid "Using SHOW_POST when do you want to connect from an other webpage to your guestbook page, when do you want to define your own path or when do you have problems with LINK1 or LINK2."
+msgstr "Gebruik SHOW_POST als je van een andere webpagina naar je gastenboek pagina wil linken, als wil je je eigen pad wil definiëren of wanneer je problemen hebt met LINK1 of LINK2."
+
+#: widget.php:252
+#@ dmsguestbook
+msgid "Count guestbook entries"
+msgstr "Gastenboek berichten tellen"
+
+#: widget.php:254
+#@ dmsguestbook
+msgid "Entries will be display in bold."
+msgstr "Inzendingen worden vetgedrukt weergegeven."
+
+#: widget.php:256
+#@ dmsguestbook
+msgid "Show the database unique id"
+msgstr "Toon de unieke database id"
+
+#: widget.php:258
+#@ dmsguestbook
+msgid "Id will be display in bold."
+msgstr "Id wordt in het vet weergegeven."
+
+#: widget.php:260
+#@ dmsguestbook
+msgid "Show the date which guestbook post was saved"
+msgstr "Toon de datum waarop het gastenboek bericht werd bewaard"
+
+#: widget.php:262
+#@ dmsguestbook
+msgid "Date will be display in italic."
+msgstr "Datum wordt cursief weergegeven."
+
+#: widget.php:264
+#@ dmsguestbook
+msgid "Show the visitor name"
+msgstr "Toon de bezoeker naam"
+
+#: widget.php:266
+#@ dmsguestbook
+msgid "Visitor name will be display underlined."
+msgstr "Bezoeker naam wordt onderstreept weergegeven."
+
+#: widget.php:268
+#@ default
+msgid "Show the guestbook post text"
+msgstr "Toon het gastenboek bericht tekst"
+
+#: widget.php:270
+#@ dmsguestbook
+msgid "The whole guestbook post will be display in font size 9 pixel."
+msgstr "Het ganse gastenboek bericht wordt weergegeven in 9 pixels font grootte."
+
+#: widget.php:272
+#@ dmsguestbook
+msgid "Show gravatar image if available"
+msgstr "Toon gravatar afbeelding indien beschikbaar"
+
+#: widget.php:273
+#@ default
+msgid "This is my gravatar image"
+msgstr "Dit is mijn gravatar afbeelding"
+

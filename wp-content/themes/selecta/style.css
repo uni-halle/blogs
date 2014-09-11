@@ -1,0 +1,474 @@
+/*
+Name: Selecta
+Design Studio: Obox Design http://www.obox-design.com/
+Version: 1.0
+Author: Obox Design
+Author URI: http://www.obox-design.com/
+*/
+
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*- RESET - Courtesy of Eric Meyer's CSS Reset Awesomeness: http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ ---*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td{
+margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {outline: 0;}
+body {line-height: 1; color: black; background: white;}
+ol, ul {list-style: none;}
+/* tables still need 'cellspacing="0"' in the markup */
+table {border-collapse: separate;border-spacing: 0;}
+caption, th, td {text-align: left;font-weight: normal;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: "";}
+blockquote, q {quotes: "" "";}
+
+
+/*--*********************************************************************************--------*/
+/*- IE6 WARNING - BEFORE WE DO ANYTHING!! WE NEED TO TELL EVERYONE TO GET RID OF IE 6 -------*/
+/*-------------------------------------------------------------------------------------------*/
+.no_ie{clear:both; border-bottom: 2px solid #a60000; background: #ffcece; color: #000; font-weight: bold; padding: 10px; text-align:center; }
+	.no_ie h1{font-size: 22px; color: #a60000;}
+	.no_ie p{margin: 0px; padding: 0px;}
+	.no_ie a{color: #a60000; text-decoration: underline;}
+	.no_ie a:hover{color: #000;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- SETUP STD CLASSES -----------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+body{font-size: 15px; font-family: Arial, Helvetica, sans-serif;}
+
+h1{margin: 0px; padding: 1px 0px 10px 0px;}
+h2{margin: 0px; padding: 1px 0px 10px 0px;}
+h3{margin: 0px; padding: 1px 0px 10px 0px;}
+h4{margin: 0px; padding: 1px 0px 10px 0px;}
+h5{margin: 0px; padding: 1px 0px 10px 0px;}
+h6{margin: 0px; padding: 1px 0px 10px 0px;}
+
+p{line-height: 24px; margin: 0px 0px 15px;}
+blockquote, blockquote p{line-height: 24px; margin: 0px 0px 15px;}
+
+form{}
+label{}
+textarea, input{}
+input[type=radio]{}
+input[type=checkbox]{}
+input[type=image]{}
+input[type=button]{}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- GLOBAL CLASSES --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/*--- Links ---*/
+a.std_link, a{text-decoration: none;}
+a:active{}
+a:hover{}
+	
+/*--- Layouts ---*/
+.no_bg{background-image: none;}
+.clearboth{clear: both}
+.floatleft{float: left;}
+.floatright{float: right;}
+.floatright{float:right;}
+.no_display{display: none;}
+.alignleft{float: left; margin: 0px 20px 10px 0px;}
+.alignright{float: right; margin: 0px 0px 10px 20px;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- GENERAL LAYOUT --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+#container{}
+
+#header-container{width: 980px; margin: 30px auto; position: relative; z-index: 2;}
+	#header{padding: 1px 20px;}
+
+#feature-post-container{padding: 60px 0px 30px; margin: 0px 0px -30px; position: relative; top: -60px; position: relative; z-index: 1;}
+	#feature-post{width: 980px; margin: 0px auto;}
+		#feature-post .post{margin: 0px;}
+
+#content-container{width: 980px; margin: auto;}
+
+	.post-slider{padding: 0px 0px 20px; margin: 0px 0px 30px;}
+	
+	#sidebar{float: left; width: 330px;}
+	
+	#content{float: right; width: 600px;}
+
+#footer-container{clear: both; padding: 30px 0px 0px; margin: 30px 0px 30px;}
+	#footer{width: 980px; margin: auto;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- HEADER ----------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+h1.logo{float: left; padding: 0px; margin: 0px;}
+
+	/*--------------------------*/
+	/*- MENU -------------------*/
+	ul#menu{float: right; margin-top: 4px;}
+	ul#menu li.parent-item{float: left; margin: 0px 10px; padding: 4px 10px; position: relative;}
+		ul#menu li.parent-item:last-child{ margin: 0px;}
+
+		ul#menu li.parent-item a.parent-link{font-weight: bold;}
+		ul#menu li.parent-item a.parent-link:hover{}
+				
+		ul#menu li.parent-item a.parent-link-sub-menu{}
+			ul#menu li.parent-item a.parent-link-sub-menu:hover{}
+
+		ul#menu li.menu-rss{}
+		ul#menu li.menu-rss a{}
+		ul#menu li.menu-rss a:hover{}
+
+		/*--------------------------*/
+		/*- SUB MENU ---------------*/
+		.sub-menu-container{width: 150px; position: absolute; top: 46px; z-index: 100; left: -20px;}
+		ul.sub-menu{width: 150px; padding: 64px 0px 0px;}
+			ul.sub-menu li{clear: both;}
+				ul.sub-menu li a{ display: block; padding: 10px 10px; font-size: 10pt;}
+					ul.sub-menu li a:hover{}
+				ul.sub-menu li:first-child a{padding-top: 1px;}
+				ul.sub-menu li:last-child a{ border-bottom: none; padding-bottom: 1px;}
+		.sub-menu-footer{clear: both; width: 150px; height: 20px; padding: 0px; margin: 0px;}
+
+/*-------------------------------------------------------------------------------------------*/
+/*- ROUNDED CORNERS - Before we do anything, let's set the rounded corners ------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+/*- -------------------------------------------------------------------------------------------
+	NOTE: There are two color references in the div description
+	The first is the containers background color
+		"LIGHT" refers to the light containing div (eg. the copy containers)
+		"DARK" refers to the darker containing div (eg. side-bar containers)
+	The second reference is the background that the container sits it
+		"NORMAL" refers to the body background color
+		"DARK" refers to the darker containing div background color (eg. the 'feature post' container)
+------------------------------------------------------------------------------------------ -*/
+.container-light{padding: 2px 20px;}
+.container-dark{padding: 2px 20px;}
+
+/*- LIGHT -*/
+.container-header-light-dark{clear: both; height: 20px; overflow: hidden;}
+.container-header-light-dark span{display: block; width: 20px; height: 20px; overflow: hidden;}
+.container-footer-light-dark{height: 20px;}
+.container-footer-light-dark span{float: right; display: block; width: 20px; height: 20px; overflow: hidden;}
+
+.container-header-light-normal{clear: both; height: 20px; overflow: hidden;}
+.container-header-light-normal span{display: block; width: 20px; height: 20px; overflow: hidden;}
+.container-footer-light-normal{height: 20px;}
+.container-footer-light-normal span{float: right; display: block; width: 20px; height: 20px; overflow: hidden;}
+
+/*- DARK -*/
+.container-header-dark-dark{clear: both; height: 20px; overflow: hidden;}
+.container-header-dark-dark span{display: block; width: 20px; height: 20px; overflow: hidden;}
+.container-footer-dark-dark{height: 20px;}
+.container-footer-dark-dark span{float: right; display: block; width: 20px; height: 20px; overflow: hidden;}
+
+.container-header-dark-normal{clear: both; height: 20px; overflow: hidden;}
+.container-header-dark-normal span{display: block; width: 20px; height: 20px; overflow: hidden;}
+.container-footer-dark-normal{height: 20px;}
+.container-footer-dark-normal span{float: right; display: block; width: 20px; height: 20px; overflow: hidden;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- HOME PAGE LAYOUT ------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+	/*--------------------------------------------------------*/
+	/*- FEATURE POSTS ----------------------------------------*/
+	.selected-feature{float: left; width: 680px;}
+		.selected-feature h4{padding: 0px 0px 2px; margin: 0px 0px 0px 55px; font-weight: bold; font-size: 11px;}
+		.selected-feature h2{padding: 0px 0px 6px; margin: 0px 0px 0px 55px; font-weight: bold; font-size: 22px;}
+			.selected-feature h2 a{}
+			.selected-feature h2 a:hover{}
+		.selected-feature .container{}
+	
+	ul.feature-list{float: right; width: 290px; margin: 40px 0px 0px;}
+	ul.feature-list li{clear: both; margin: 0px 0px 23px; height: 62px;}
+		ul.feature-list li span.item{float: left; width: 44px; height: 52px; padding: 10px 0px 0px 26px; margin: 0px 10px 0px 0px; display: block; font-size: 40px; font-weight: bold;}
+		ul.feature-list li h4{font-weight: bold; font-size: 11px; padding: 0px 0px 2px;}
+		ul.feature-list li a{float: left; display: block; width: 210px; padding: 0px 0px 6px; line-height: 22px; font-weight: bold; font-size: 15px;}
+			ul.feature-list li a:hover{}
+			
+	ul.feature-list li.selected span.item{background-position: right;}
+	ul.feature-list li:last-child{margin: 0px 0px 0px;}
+	
+		/*-------------------------------------------------------------*/
+		/*- THE FEATURE CONTAINER DIV IS ALSO USED FOR PAGE TITLES ----*/
+		#feature-post h1{font-weight: bold; font-size: 30px;}
+		
+		
+	/*--------------------------------------------------------*/
+	/*- POST SLIDER ------------------------------------------*/
+	.post-slider h2{float: left; font-size: 30px; font-weight: bold; margin: 0px 0px 15px; padding: 0px;}
+	.post-slider ul{clear: both;}
+		.post-slider ul li{float: left; width: 230px; margin: 0px 20px 0px 0px;}
+		.post-slider ul li .container-light{height: 110px; overflow: hidden;}
+		
+			.post-slider ul li .content{padding: 20px; margin: 0px; -moz-border-radius: 15px; -webkit-border-radius: 15px;}
+				.post-slider ul li div.thumbnail{width: 190px; height: 110px; overflow: hidden;}
+				
+			.post-slider ul li h3{padding: 10px 10px 0px;}
+				.post-slider ul li h3 a{margin: 0px; font-weight: bold; font-size: 15px; line-height: 20px;}
+					.post-slider ul li h3 a:hover{}
+		.post-slider ul li:last-child, .post-slider ul li.last{margin: 0px;}
+
+
+	/*--------------------------------------------------------*/
+	/*- PAGINATION -------------------------------------------*/
+	ul.page_button_content{margin-bottom: 30px;}
+		ul.page_button_content li{float: left; margin: 0px 10px 0px 0px;}
+		ul.page_button_content li a{display: block; width: 35px; height: 25px; overflow: hidden; text-indent: -9999px;}
+			ul.page_button_content li.previous-page a{background-position: 0px -14px;}
+				ul.page_button_content li.previous-page a:hover{background-position: 0px -67px;}
+				
+			ul.page_button_content li a.selected-page{background-position: -45px -1px; width: 47px; height: 30px; padding: 17px 0px 0px; margin: -12px 0px 0px; text-indent: inherit; text-align: center; font-weight: bold; font-size: 15px; text-indent: 0px;}
+
+			ul.page_button_content li a.other-page{background-position: -102px -14px; padding: 5px 0px 0px; height: 20px; text-indent: inherit; text-align: center; font-weight: bold; font-size: 15px; text-indent: 0px;}
+				ul.page_button_content li a.other-page:hover{background-position: -102px -67px;}
+				
+			ul.page_button_content li.next-page a{background-position: -147px -14px;}
+				ul.page_button_content li.next-page a:hover{background-position: -147px -67px;}
+	
+
+/*-------------------------------------------------------------------------------------------*/
+/*- POSTS CLASSES ---------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/*- RESET SOME CLASSES FOR THE COPY AFTER CLEARING EVERYTHING AT THE TOP OF THE CSS  -*/
+.post .copy p{clear: none;}
+.post .copy a{}
+	.post .copy a:hover{}
+.post .copy ol, .post .copy ul{list-style: disc; margin: 0px 0px 10px 30px;}
+	.post .copy ol li, .post .copy ul li{line-height: 22px; padding-bottom: 10px;}
+.post .copy ol{list-style: decimal;}
+.post .copy code, .post .copy pre{}
+.post .copy img{}
+
+
+.post{margin: 0px 0px 30px;}
+	
+	.post h2.title{margin: 0px 0px 0px 55px; padding: 0px 0px 6px; font-weight: bold; font-size: 22px;}
+		.post h2.title a{}
+		.post h2.title a:hover{}
+		.post h4.date{padding: 0px 0px 2px; margin: 0px 0px 0px 55px; font-weight: bold; font-size: 11px;}
+
+	.post .copy{padding: 1px 20px;}
+		.post .copy .media{margin: 0px 0px 20px; z-index: 1;}
+		.post .copy a.action-link{display: inline-block; height: 30px; padding: 0px 0px 0px 10px;}
+			.post .copy a.action-link span{display: block; height: 23px; padding: 7px 10px 0px 0px; font-weight: bold;}
+			.post .copy a.action-link:hover{background-position: left bottom;}
+				.post .copy a.action-link:hover span{background-position: right bottom;}
+		.post a.post-comments{float: right; padding: 9px 0px 0px; font-size: 11px;}
+		.post a.post-comments:hover{}
+
+	#feature-post .post .copy .media{margin: 0px;}
+		
+.post-section-title{clear: both; font-size: 25px; font-weight: bold; margin-bottom: 20px;}
+		
+/*-------------------------------------------------------------------------------------------*/
+/*- PROMOTE POST ----------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+.promote-post{margin-bottom: 30px;}
+	.promote-post h2{font-size: 18pt; margin: 0px 0px 10px; padding: 0px;}
+	.enjoy-copy{font-size: 14pt; font-style: italic; margin: 0px;}
+	.promote-post ul li{ list-style: none; float: left; padding: 10px 0px 0px; margin-right: 15px;}
+		.promote-post ul li.tweet{padding-top: 29px;}
+		.promote-post ul li.moo{padding-top: 29px;}
+		.promote-post ul li.bump{padding-top: 19px;}
+		.promote-post ul li.digg{padding-top: 11px;}
+
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- COMMENTS --------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+#comments{clear: both; margin: 30px 0px;}
+	.comment{margin: 0px 0px 0px;}
+		.comment h3{display: block; margin-bottom: 10px; font-weight: bold; font-size: 14px;}
+			.comment h3 a{}
+			.comment h3 a:hover{}
+			.comment h3 .comment-date{float: right; padding: 3px 0px 0px; font-weight: lighter; font-size: 10px;}
+
+		.user{float: left; width: 78px;}
+			.user img{width: 40px; padding: 10px; margin-right: 10px;}
+			.user a.reply-link{display: block; width: 60px; height: 18px; padding: 7px 0px 0px; margin: 10px 0px 0px; overflow: hidden; text-align: center; font-size: 11px; font-weight: bold;}
+				.user a.reply-link:hover{background-position: bottom;}
+				
+		.comment-post{float: right; width: 522px; margin-bottom: 20px;}
+			.comment-content{ padding: 1px 20px; font-size: 13px;}
+
+	.comment-odd{}
+	
+	/*--------------------------------------------------------*/
+	/*- THREADED COMMENTS - ITS TIME TO THREAD THIS BEAST ----*/
+	.threaded-comments{width: 522px; margin-left: 78px; clear: both; margin-top: 20px;}
+		.threaded-comments .thread-comment{clear: both; }
+			.threaded-comments .last{}
+			
+			.threaded-comments .user{}
+				.threaded-comments .comment-post{ width: 444px; margin-bottom: 20px;}
+					.threaded-comments .comment-post blockquote{}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- POST A COMMENT --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+.comment-form-content{clear: both; margin: 30px 0px;}
+	.comment-form-content h2{margin: 0px 0px 20px;}
+	.comment-form-content .comment_form label{float: left; display: block; width: 130px; height: 50px; margin: 15px 0px 5px; font-size: 20px; font-weight: bold; text-align: right;}
+
+	.comment-input{float: right; width: 462px; height: 50px; margin-bottom: 20px; overflow: hidden;}
+		.comment-input input{width: 430px; height: 24px; padding: 3px 0px; position: relative; top: 9px; left: 20px; background: none; border: none; font-size: 18px;}
+		
+	.comment-texarea{float: right; width: 462px; height: 220px; margin-bottom: 20px; overflow: hidden;}
+		.comment-texarea textarea{width: 430px; height: 190px; padding: 3px 0px; position: relative; top: 9px; left: 20px; background: none; border: none; font-size: 18px; font-family: Arial, Helvetica, sans-serif;}
+		
+	.checkbox{clear: both; margin: 0px 0px 20px 150px; font-size: 15px; font-style: italic;}
+	input.submit_button{clear: both; margin: 0px 0px 0px 150px;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- SPRITES ---------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- ARCHIVES --------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+a.archive-date{float: left; width: 120px; display: block; margin: 10px 20px 10px 0px; font-weight: bold;}
+	a.archive-date:hover{}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- SIDE BAR --------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+#sidebar h2, #sidebar h2 a{font-weight: bold; font-size: 25px; margin: 0px 0px 10px; padding: 0px;}
+	#sidebar h2 a{}
+	#sidebar h2 a:hover{}
+
+#sidebar ul div{}
+#sidebar ul li.widget{margin-bottom: 20px;}
+	#sidebar ul li.widget:last-child{}
+	#sidebar ul li ul li{padding: 10px 0px; font-size: 14px; line-height: 20px;}
+		#sidebar ul li a{}
+		#sidebar ul li a:hover{}
+	#sidebar ul li ul li:first-child{}
+	#sidebar ul li ul li:last-child{ border-bottom: none;}
+
+	/*--------------------------------------------*/
+	/*- SPECIFIC SIDE BAR STYLE ------------------*/
+	#sidebar ul li.flickr, #sidebar ul li.recent-comments, #sidebar ul li.sponsors{ background: none; padding: 0px;}
+	#sidebar ul li.recent-comments h2, #sidebar ul li.flickr h2{}
+
+	/*--------------------------------------------*/
+	/*- SPONSORS ---------------------------------*/
+	#sidebar ul li.sponsors{padding: 0px;}
+	#sidebar .advert{float: left; margin: 0px 20px 20px 0px; width: 140px; height: 140px; padding: 15px 0px 0px 15px;}
+	#sidebar .right{margin: 0px 0px 20px 0px;}
+
+	/*--------------------------------------------*/
+	/*- DETAILED LISTING IN SIDE BAR -------------*/
+	#sidebar ul li.recent-comments h2.recent-comments-title{}
+		#sidebar ul li.recent-comments ul li{padding: 10px 0px;}
+			#sidebar ul li.recent-comments ul li a.detail-image{display: block; float: left; width: 40px; padding: 10px; margin-right: 10px;}
+				#sidebar ul li.recent-comments ul li a.detail-image:hover{}
+				
+			#sidebar ul li.recent-comments ul li a.detail-link{display: block; float: right; width: 220px; margin: 0px; font-weight: bold; font-size: 14px; line-height: 20px;}
+				#sidebar ul li.recent-comments ul li a.detail-link span.date{display: block; font-weight: bold; font-size: 11px; padding: 0px 0px 2px;}
+			#sidebar ul li.recent-comments ul li a.detail-link:hover{}
+		#sidebar ul li.recent-comments ul li:last-child{border-bottom: none;}
+			
+	/*--------------------------------------------*/
+	/*- SEARCH -----------------------------------*/
+	.search-bar{}
+	.search-form input.search{}
+	.search-form input.search_button{}
+	
+
+/*-------------------------------------------------------------------------------------------*/
+/*- FOOTER ----------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+ul.footer-columns{}
+	ul.footer-columns h3{font-weight: bold; font-size: 16px;}
+	ul.footer-columns p{font-size: 12px; line-height: 20px;}
+	ul.footer-columns li.column-one, ul.footer-columns li.column-two, ul.footer-columns li.column-three{float: left; margin-right: 20px; width: 300px;}
+		ul.footer-columns li.column-three{margin: 0px 0px;}
+
+	ul.footer-columns ul li{font-size: 12px; line-height: 18px; padding: 5px 0px;}
+		ul.footer-columns a{}
+		ul.footer-columns a:hover{}
+	ul.footer-columns ul li:first-child{}
+	ul.footer-columns ul li:last-child{ border-bottom: none;}
+
+
+		/*- ------------------------------*/
+		/*- SOCIAL ICONS -----------------*/
+		a.twitter, a.facebook, a.flickr, a.friendfeed, a.delicious, a.digg, a.lastfm, a.youtube, a.feed{background: url(images/icons/sprite.gif) no-repeat; overflow: hidden; text-indent: 30px; padding: 2px 0px;}
+			a.twitter{background-position: 0px -630px;}
+			a.facebook{background-position: 0px -108px;}
+			a.flickr{background-position: 0px -182px;}
+			a.friendfeed{background-position: 0px -220px;}
+			a.delicious{background-position: 0px -33px;}
+			a.digg{background-position: 0px -70px;}
+			a.lastfm{background-position: 0px -369px;}
+			a.youtube{background-position: 0px -780px;}
+			a.feed{background-position: 0px -145px;}
+			
+			
+.footer-copy{font-size: 11px; margin: 10px 20px 0px;}
+	p.copyright{float: left;}
+		p.copyright a{}
+		p.copyright a:hover{}
+	a.obox-logo{float: right; width: 185px; height: 16px; display: block; text-indent: -9999px;}
+		a.obox-logo:hover{}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- SOME STANDARD WORDPRESS PLUGIN/WIDGET STYLES --------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+	/*--------------------------------------------*/
+	/*- FLICKR -----------------------------------*/
+	#flickr_badge_wrapper{}
+	#flickr_badge_wrapper .flickr_badge_image a{display: block; float: left; padding: 10px; margin: 0px 5px 10px;}
+		#flickr_badge_wrapper .flickr_badge_image a:hover{background-position: bottom;}
+
+
+	/*--------------------------------------------*/
+	/*- CALENDAR ---------------------------------*/
+	#sidebar #calendar_wrap{}
+		#wp-calendar{}
+		#sidebar #wp-calendar caption {}
+		#wp-calendar td, #wp-calendar th{}
+		#sidebar #wp-calendar td{}
+		#sidebar #wp-calendar #prev {}
+		#sidebar #wp-calendar #next {}
+		#sidebar #wp-calendar th{}
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+/*- CLEARFIX --- * I prefer not to touch this code, I don't recommend you do so either, it works... so don't fix whats working ;) * -*/
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+/* http://sonspring.com/journal/clearing-floats */
+html body * span.clear,
+html body * div.clear,
+html body * li.clear,
+html body * dd.clear
+{background: none; border: 0; clear: both; display: block; float: none; font-size: 0; list-style: none;	margin: 0; padding: 0; overflow: hidden; visibility: hidden; width: 0; height: 0;}
+
+/* http://www.positioniseverything.net/easyclearing.html */
+.clearfix:after{clear: both; content: '.'; display: block; visibility: hidden; height: 0;}
+.clearfix{display: inline-block;}
+* html .clearfix{height: 1%;}
+.clearfix{display: block;}
+

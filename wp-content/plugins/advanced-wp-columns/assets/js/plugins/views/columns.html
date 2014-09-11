@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<link rel="stylesheet" href="../../../css/admin.css" />
+        <link rel="stylesheet" href="../../../css/buttons.min.css" />      
+        <link rel="stylesheet" href="../../../css/bootstrap.css" />		
+		
+		<link rel="stylesheet" href="../../../css/column-slider/columns-slider.css" />
+		<link rel="stylesheet" href="../../../css/column-slider/themes/wordpress/visual.css" />
+        
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		
+		<script type="text/javascript" src="../../jquery.ddslick.min.js"></script>
+		
+		<script type="text/javascript" src="../../jquery.columns-slider.1.0.min.js"></script>
+		<script type="text/javascript" src="../../jquery.columns-slider-cms.1.0.min.js"></script>
+		
+		<script type="text/javascript" src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>		
+	
+		<script type="text/javascript">
+			$(function() {								
+				setInterval(function() {	
+					var pwidth = parseInt(parent.AWP_Columns.fullWidth) + 60;
+					
+					if(isEditMode()){
+						var oldColumns = getOldColumns();
+						if(oldColumns.length > 0){
+							var maxColumnEndPoint = oldColumns[oldColumns.length - 1].endPoint;
+							if(maxColumnEndPoint > parseInt(parent.AWP_Columns.fullWidth)){
+								pwidth = maxColumnEndPoint + 60;
+							}
+						}
+					}                    
+                    parent.jQuery('#TB_window,#TB_iframeContent').width(pwidth);
+                    parent.jQuery('#TB_window').css('margin-left', -(pwidth / 2));
+                }, 100);
+			
+				$('#btn_save').click(function() {
+					var content = getCMSHTML();
+					if(content != ''){
+						content += "<br class='nc'/>";
+					}
+					if(isEditMode){
+						selectionNode.parents('.csRow:first').remove();
+					}
+									
+					parent.tinymce.activeEditor.execCommand('mceInsertContent', false, content);
+					parent.tb_remove();
+				});
+			});
+		</script>
+        <script type="text/javascript">
+			parent.AWP_Columns.isAdaptive = (parent.AWP_Columns.responsiveSupport == 'on') ? true : false;			
+			
+			var selectionNode = $(window.parent.tinyMCE.get('content').selection.getNode());
+			var isEditMode = function(){
+                if(selectionNode.parents('.csRow:first').length !== 0)
+                {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+			
+			var applyMCE = function(){
+				tinymce.init({
+								selector: ".csMiniEditor",
+								menubar : false,
+								inline: true,
+								plugins: [
+									"advlist autolink lists link image charmap print preview anchor",
+									"searchreplace visualblocks code fullscreen textcolor",
+									"insertdatetime media table contextmenu paste"
+								],
+								fixed_toolbar_container: '.csToolbar',
+								toolbar: "styleselect forecolor link image"
+							});	
+			}
+			
+			var runCMS = function(){
+				$.fn.columnsSliderCMS({
+						debug : false,
+						columnSlider : $('.sliderContainer'),
+						columnAddButton : $('#columnAdd'),
+						columnRemoveButton : $('#columnRemove'),
+						contentHolder : $('.contentHolder'),
+						emptySpaceImage : parent.AWP_Columns.url+'assets/js/plugins/views/img/1x1-pixel.png',
+						containerClass: parent.AWP_Columns.containerClass,
+						columnsClass: parent.AWP_Columns.columnsClass,
+						gutterClass: parent.AWP_Columns.gutterClass,
+						
+						onColumnAdded: function(columnId){
+							applyMCE();
+						}
+					});
+					
+				$.fn.columnsSliderCMS('repaint');
+				
+				if(isEditMode()){
+					setCMSHTML();
+				}
+				
+				applyMCE();
+			}
+			
+			var updateCMS = function(column){
+				$.fn.columnsSliderCMS('update', column);
+			};
+			
+			var getCMSHTML = function(){
+				return $.fn.columnsSliderCMS('generateHTML', parent.AWP_Columns.isAdaptive, parseInt(parent.AWP_Columns.fullWidth));
+			}
+			
+			var setCMSHTML = function(){
+				$.each($('div[data-contentFor]'), function(index, element){
+					$(element).html(selectionNode.parents('.csRow:first').find('[data-csId="'+$(element).attr('data-contentFor')+'"]').get(0).innerHTML);
+				});
+			};
+			
+			var getOldColumns = function(){
+				var matchedColumns = [];
+				
+				var domElements = selectionNode.parents('.csRow:first').find('.csColumn');
+				$.each(domElements, function(index, element){
+					matchedColumns.push({
+						columnId: $(element).attr('data-csId'),
+						isColumn: true,
+						startPoint: parseInt($(element).attr('data-csStartPoint')),  
+						endPoint: parseInt($(element).attr('data-csEndPoint'))
+					});
+				});
+				
+				return matchedColumns;
+			};
+			
+			var generateGuid = function () {
+				var guid = 'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+					var r = Math.random() * 16 | 0,
+						v = c == 'x' ? r : (r & 0x3 | 0x8);
+					return v.toString(16);
+				});
+				return guid;
+			};
+			
+			var getColumnsTemplate = function(columnsNumber){
+				var gapSpace = 15;
+				
+				var columns = [];
+				
+				var gapsReservedSpace = (columnsNumber + 1) * gapSpace;
+				
+				var columnsReservedSpace = (parseInt(parent.AWP_Columns.fullWidth) - gapsReservedSpace)/columnsNumber;
+				
+				for(var columnIndex = 0; columnIndex < columnsNumber; columnIndex++){
+					var startPoint = columnIndex * columnsReservedSpace + (columnIndex + 1) * gapSpace;
+					var endPoint = startPoint + columnsReservedSpace;
+					columns.push({
+						columnId: generateGuid(),
+						isColumn: true,
+						startPoint: startPoint,
+						endPoint: endPoint
+					})
+				}
+				
+				return columns;
+			};
+			
+			var setColumnTemplate = function(columnStructureData){				
+				var columns = [];
+				
+				if(typeof columnStructureData.selectedData.value != 'undefined' && columnStructureData.selectedData.value != null){
+					switch(columnStructureData.selectedData.value){
+						case '1-1':
+							columns = getColumnsTemplate(2);
+						break;
+						case '1-1-1':
+							columns = getColumnsTemplate(3);
+						break;
+						case '1-1-1-1':
+							columns = getColumnsTemplate(4);
+						break;
+					}						
+				}
+				
+				var getLoadedColumnIDs = function(){
+					var columnIDs = [];
+					
+					$.each($('.column-slider-element'), function(index, element){
+						columnIDs.push($(element).attr('data-column-slider-id'));
+					});
+					
+					return columnIDs;
+				};
+				
+				var loadedColumnsIDs = getLoadedColumnIDs();
+				
+				$.each(loadedColumnsIDs, function(index, columnID){
+					$('.sliderContainer').columnsSlider('removeColumn', columnID);
+					$('.contentHolder').find('div[data-contentFor="' + columnID + '"]').remove();
+				});
+				
+				$.each(columns, function(index, column){
+					$('.sliderContainer').columnsSlider('addColumn', column.columnId, column.startPoint, column.endPoint);
+				});
+				
+				if(columns.length > 0){
+					$.fn.columnsSliderCMS('repaint');
+					$.fn.columnsSliderCMS('attachRemovableArea');
+					applyMCE();
+				}
+			}
+			
+			$(document).ready(function() {
+				var oldColumns = [];
+				
+				if(isEditMode()){
+					oldColumns = getOldColumns();
+					
+					if(oldColumns.length > 0){
+							var maxColumnEndPoint = oldColumns[oldColumns.length - 1].endPoint;
+							if(maxColumnEndPoint > parseInt(parent.AWP_Columns.fullWidth)){
+								parent.AWP_Columns.fullWidth = maxColumnEndPoint + 20;
+							}
+						}
+				}else{
+					if(typeof parent.AWP_Columns.columnStructure != 'undefined' && parent.AWP_Columns.columnStructure != null){
+						switch(parent.AWP_Columns.columnStructure){
+							case '1-1':
+								oldColumns = getColumnsTemplate(2);
+							break;
+							case '1-1-1':
+								oldColumns = getColumnsTemplate(3);
+							break;
+							case '1-1-1-1':
+								oldColumns = getColumnsTemplate(4);
+							break;
+						}						
+					}
+				}
+				
+				$('.sliderContainer').columnsSlider({
+					debug: false,
+					maxWidth: parseInt(parent.AWP_Columns.fullWidth),
+					columns: oldColumns,
+					onColumnUpdated: function(column){
+						updateCMS(column);
+					},
+					onInit: function(){
+						runCMS();
+					}
+				});
+				
+				if(isEditMode()){
+					$('#columnStructure option[value="-1"]').attr('selected', 'selected');
+				}else{
+					$('#columnStructure option[value="'+parent.AWP_Columns.columnStructure+'"]').attr('selected', 'selected');
+				}
+				
+				
+				$('#activeColumnStructure').val($("#columnStructure")[0].selectedIndex);
+				
+				var columnStructureInitialised = false;
+				
+				$('#columnStructure').ddslick({					
+					width: 263,
+					imagePosition: "left",
+					onSelected: function (data) {
+						if(columnStructureInitialised === true){							
+							if($('#activeColumnStructure').val() != "" && data.selectedIndex == parseInt($('#activeColumnStructure').val()) || data.selectedData.value == '-1'){
+								return;
+							}else if($('#activeColumnStructure').val() == "0"){
+								setColumnTemplate(data);
+								$('#activeColumnStructure').val(data.selectedIndex);
+							} else {
+								var changeStructure = confirm("Existing columns will be lost, do you want to continue?");
+								
+								if (changeStructure==true){
+									setColumnTemplate(data);
+									$('#activeColumnStructure').val(data.selectedIndex);
+								}
+								else {
+									var returnIndex = parseInt($('#activeColumnStructure').val());
+									
+									$('#columnStructure').ddslick('select', {index: returnIndex });
+								}
+							}
+						}else{
+							columnStructureInitialised = true;
+						}
+					}
+				});				
+			});
+		</script>
+    </head>
+    <body>
+		<div class="dry-header-wrapper">
+			<div class="action-buttons">
+				<img id="columnAdd" src="img/add_btn.png"/>
+				<img id="columnRemove" src="img/remove_btn.png"/>
+			</div>
+			<div class="plugin-details">
+				<b>Advanced WP Columns</b>
+				<p>Drag and drop buttons on the bar below to add and remove the columns.
+				Move and resize columns to fit your desing. Go to <a target="_blank" href="http://www.wpcolumns.com/">http://www.wpcolumns.com</a> for more details.</p>
+			</div>
+			<select id="columnStructure" class="wrapper-dropdown">					
+				<option value="0">Empty</option>
+				<option value="1-1">Two Columns</option>
+				<option value="1-1-1">Three Columns</option>
+				<option value="1-1-1-1">Four Columns</option>
+				<option value="-1">Existing Structure</option>					
+			</select>
+			<input type="hidden" id="activeColumnStructure" value=""/>
+		</div>
+        <div id="dry-wrapper" class="wp-core-ui">          
+            <div>
+                <form>
+					<div class="sliderContainer"></div>
+					
+					<div class="contentHolder"></div>
+                </form>       
+            </div>
+
+            <div class="dry_row">
+                <input id="btn_save" class="button button-primary button-large" type="submit" value=""/>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,177 @@
+/*
+Blogs@MLU Custom WordPress 3.1 Admin Bar Styles
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+*/
+
+/*WordPress 3.1 Admin Bar*/
+
+#wpadminbar,
+#wpadminbar li.ab-me > a, 
+#wpadminbar li.ab-blog > a,
+#wpadminbar li.ab-sadmin,
+#wpadminbar .menupop .ab-sub-wrapper,
+#wpadminbar .ab-top-secondary {
+	
+	/*The Smooth Grey One*/
+	background: #F7F7F7;
+	background: -moz-linear-gradient(top, rgba(247,247,247,0.9) 0%, rgba(211,211,211,0.9) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(247,247,247,0.9)), color-stop(100%,rgba(211,211,211,0.9)));
+	background: -webkit-linear-gradient(top, rgba(247,247,247,0.9) 0%,rgba(211,211,211,0.9) 100%);
+	background: -o-linear-gradient(top, rgba(247,247,247,0.9) 0%,rgba(211,211,211,0.9) 100%);
+	background: -ms-linear-gradient(top, rgba(247,247,247,0.9) 0%,rgba(211,211,211,0.9) 100%);
+	background: linear-gradient(top, rgba(247,247,247,0.9) 0%,rgba(211,211,211,0.9) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6f7f7f7', endColorstr='#e6d3d3d3',GradientType=0 );
+}
+
+#wpadminbar {
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.3);
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,.3);
+	box-shadow: 0 1px 5px rgba(0,0,0,.3);
+	color: #005133;
+	text-shadow:  0 1px 0 rgba(255, 255, 255, .7);
+	border-bottom: 1px solid #7f7f7f;
+	border-bottom: 1px solid rgba(127, 127, 127, .8);
+	-moz-opacity: 0.7;
+	opacity: 0.7; 
+	-webkit-transition: opacity 0.2s ease-in-out;
+	-moz-transition: opacity 0.2s ease-in-out;
+	-o-transition: opacity 0.2s ease-in-out;
+	transition: opacity 0.2s ease-in-out;
+}
+
+	#wpadminbar:hover {
+		-moz-opacity: 1;
+		opacity: 1; 
+	}
+
+#wpadminbar *,
+#wpadminbar .quicklinks .menupop ul li a, 
+#wpadminbar .quicklinks .menupop ul li a span, 
+#wpadminbar .quicklinks .menupop ul li a strong {
+	color: #005133;
+	text-shadow:  0 1px 0 rgba(255, 255, 255, .5);
+}
+
+#wpadminbar a {
+	color: #005133 !important;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	-ms-transition: none;
+	transition: none;
+}
+
+#wpadminbar .quicklinks > ul > li {
+	border-right: 1px solid #fff;
+	border-right-color: rgba(255,255,255,.8);
+}
+
+#wpadminbar .quicklinks > ul > li > a, 
+#wpadminbar .quicklinks > ul > li > .ab-empty-item,
+#wpadminbar ul li:last-child .ab-item {
+	border-right: 1px solid #729233;
+	border-right-color: rgba(76, 95, 42, .2);
+}
+
+#wpadminbar .quicklinks .ab-top-secondary > li {
+	border-left: 1px solid #729233;
+	border-left-color: rgba(76, 95, 42, .2);
+}
+
+#wpadminbar .quicklinks .ab-top-secondary > li > a, #wpadminbar .quicklinks .ab-top-secondary > li > .ab-empty-item {
+	border-left: 1px solid #fff;
+	border-left-color: rgba(255,255,255,.9);
+}
+
+#wpadminbar .quicklinks a:hover,
+#wpadminbar li li:hover > a,
+#wpadminbar li:hover,
+#wpadminbar .quicklinks a:focus,
+#wpadminbar li:focus {
+	background: #9BC34B !important;
+	background: -moz-linear-gradient(top, rgba(129,171,46,0.9) 0%, rgba(155,195,75,0.9) 100%) !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(129,171,46,0.9)), color-stop(100%,rgba(155,195,75,0.9))) !important;
+	background: -webkit-linear-gradient(top, rgba(129,171,46,0.9) 0%,rgba(155,195,75,0.9) 100%) !important;
+	background: -o-linear-gradient(top, rgba(129,171,46,0.9) 0%,rgba(155,195,75,0.9) 100%) !important;
+	background: -ms-linear-gradient(top, rgba(129,171,46,0.9) 0%,rgba(155,195,75,0.9) 100%) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e681ab2e', endColorstr='#e69bc34b',GradientType=0 ) !important;
+	background: linear-gradient(top, rgba(129,171,46,0.9) 0%,rgba(155,195,75,0.9) 100%) !important;
+	text-shadow:  0 1px 0 rgba(255, 255, 255, .7) !important;
+	color: #000 !important;
+	text-decoration: none !important;
+}
+
+#wpadminbar .quicklinks a:active {
+	background: #000 !important;
+	color: #fff !important;
+	text-shadow: none !important;
+}
+
+#wpadminbar .quicklinks li#wp-admin-bar-my-account-with-avatar > a {
+	background: transparent;
+}
+
+#wpadminbar .quicklinks li#wp-admin-bar-my-account-with-avatar > a img {
+	margin-right: 5px;
+}
+
+#wpadminbar .menupop .ab-sub-wrapper {
+	border-color: rgba(0,0,0,.3);
+	-webkit-border-bottom-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+#wpadminbar .quicklinks a span#ab-updates {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding: 1px 4px;
+	border: 2px solid #fff;
+	background: #e10303;
+	background: -moz-linear-gradient(top, #e10303 0%, #8c0101 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e10303), color-stop(100%,#8c0101));
+	background: -webkit-linear-gradient(top, #e10303 0%,#8c0101 100%);
+	background: -o-linear-gradient(top, #e10303 0%,#8c0101 100%);
+	background: -ms-linear-gradient(top, #e10303 0%,#8c0101 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e10303', endColorstr='#8c0101',GradientType=0 );
+	background: linear-gradient(top, #e10303 0%,#8c0101 100%);
+	color: #fff;
+	color: rgba(255,255,255,.9);
+	text-shadow: 0 -1px 0 #444;
+	-webkit-box-shadow: 0 1px 3px #444;
+	-moz-box-shadow: 0 1px 3px #444;
+	box-shadow: 0 1px 3px #444;
+	font-family: inherit;
+	font-weight: bold;
+}
+
+#wpadminbar #adminbarsearch .adminbar-button {
+	clear: none;
+}
+
+#wp-admin-bar-mlublogs-wp > a {
+	text-indent: -999999px;
+	width: 30px;
+	background: url(../images/favicon.png) no-repeat center center !important;
+}
+
+#wp-admin-bar-mlublogs-wp li#wp-admin-bar-mlublogs-wp-twitter { 
+	border-top: 1px solid #fff;
+	border-top-color: rgba(255,255,255,.9);
+	box-shadow: 0 -1px 0 rgba(76, 95, 42, .2)
+}
+
+
+/* 
+   Add User Fix 
+   Hide all buttons which circumvent the LDAP plugin user creation
+*/
+
+#wp-admin-bar-new-user {
+	display: none
+}

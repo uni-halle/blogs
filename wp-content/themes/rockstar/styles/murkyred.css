@@ -1,0 +1,213 @@
+/* Murky red Colors */
+
+/*--------------------------------------------------------------------------------
+01. SETUP
+--------------------------------------------------------------------------------*/
+
+body {
+	background: #b3aeae url(murkyred/bg.jpg) top center no-repeat;
+	color: #33211f;
+}
+
+/*--------------------------------------------------------------------------------
+02. STRUCTURE
+--------------------------------------------------------------------------------*/
+
+
+#wrapper {
+	border: 1px solid #878282;
+}
+
+#content {
+	border-right: 1px solid #f5f4f4;
+}
+
+/*--------------------------------------------------------------------------------
+03. HEADER
+--------------------------------------------------------------------------------*/
+
+#header h1 a {
+	color: #33211f;
+}
+
+#header h1 a:hover {
+	color: #c73636;
+}
+
+#header #description {
+	color: #3c3939;
+	text-shadow: none;
+}
+
+#header #description a {
+	color: #4d3030;
+}
+
+#header #description a:hover {
+	color: #33211f;
+}
+
+/*--------------------------------------------------------------------------------
+04. POSTS
+--------------------------------------------------------------------------------*/
+
+#content h3 {
+	color: #33211f;	
+}
+
+.video {
+	border: 5px solid #f8f6d0;
+}
+
+.post h2 a {
+	color: #4d3030;
+}
+
+.post h2 a:hover {
+	color: #33211f;
+}
+
+.meta {
+	color: #735656;
+}
+
+.meta a {
+	color: #735656;
+}
+
+.post .label a {
+	background: #c73636;
+	color: #fff;
+	text-shadow: 1px 1px #7f0808;
+}
+
+.post .label a:hover {
+	background: #33211F;
+}
+
+.tags {
+	color: #7c6563;
+}
+
+.tags a {
+	color: #c73636;
+}
+
+#navigation a {
+	color: #33211f;
+}
+
+#navigation a:hover {
+	color: #c73636;
+}
+
+/*--------------------------------------------------------------------------------
+05. ENTRIES
+--------------------------------------------------------------------------------*/
+
+.entry a {
+	color: #c73636;
+}
+
+.post .entry blockquote {
+	color: #7c6563;
+}
+
+/* Blog Entry Styles - Images */
+
+/*--------------------------------------------------------------------------------
+06. SIDEBAR
+--------------------------------------------------------------------------------*/
+
+#rss {
+	background: #33211f;
+}
+
+#rss a:hover {
+	color: #c73636;
+}
+
+.widget {
+	margin: 0 0 30px;
+}
+
+#twitter ul li a {
+	color: #4d3030;
+}
+
+#twitter ul li a:hover {
+	color: #33211f;
+}
+
+#flickr .flickr_badge_image a  { border: 2px solid #c73636; }
+
+.widget_tag_cloud {
+	color: #7c6563;
+}
+
+.widget_tag_cloud a {
+	color: #c73636;
+}
+
+/*--------------------------------------------------------------------------------
+07. COMMENTS
+--------------------------------------------------------------------------------*/
+
+.commentlist .comment-meta {
+	color: #735656;
+}
+
+.commentlist .comment-meta a {
+	color: #735656;
+}
+
+.commentlist .avatar {
+	border: 3px solid #dad9b3;
+}
+
+.commentlist p a {
+	color: #c73636;
+}
+
+.commentlist p a:hover {
+	text-decoration: underline;
+}
+
+.commentlist blockquote {
+	color: #7c6563;
+}
+
+.commentlist .reply a {
+	color: #c73636;
+}
+
+#commentform p a {
+	color: #c73636;
+}
+
+#commentform .comm_count span input {
+	color: #4d3030;
+}
+
+/* Comments - Thread */
+
+
+/*--------------------------------------------------------------------------------
+08. ARCHIVES PAGE
+--------------------------------------------------------------------------------*/
+
+#archives {
+	padding: 10px 0 0;
+}
+
+#archives a {
+	color: #4d3030 !important;
+}
+
+h4.archive_year {
+}
+
+
+/*--------------------------------------------------------------------------------
+09. MISC
+--------------------------------------------------------------------------------*/

@@ -1,0 +1,35 @@
+<table class="widefat post fixed" cellspacing="0">
+	<thead>
+		<tr>
+			<th scope="col" class="manage-column" >Details</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+Require WordPress Version : <?php echo $this->options['at_least'];?> to <?php echo $this->options['up_to'];?><br/>
+Version: <?php echo $this->options['version'];?> 
+<?php if($this->options['version'] != $this->options['stable_tag']):?>
+( <strong style='color:#ff0000'>This is a Beta version. Please upgrade when possible.</strong> )
+<?php endif;?>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br/>
+<?php foreach($this->options['sections'] as $key=>$value):?>
+<table class="widefat post fixed" cellspacing="0">
+	<thead>
+		<tr>
+			<th scope="col" class="manage-column" ><?php echo $key;?></th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<?php echo $value;?>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<?php endforeach?>

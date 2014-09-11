@@ -1,0 +1,24 @@
+VERSION			DATE			TYPE			CHANGES
+1.0.9				2009/04/06		Fixed		Fixed som  css bugs
+1.0.8				2009/04/02		Fixed		Fixed some css
+1.0.7				2009/04/02		Fixed		Fixed new commet function
+1.0.6				2009/04/01		Fixed		Fixed search box
+																Fixed some javascript bugs
+																Fixed Enthusiastic commentator function(get_xing) [app/yinheli_xing.php]
+																Fixed some translation.
+												NEW		Add 2 functions ('is_first_page' , 'has_next_page()') [app/yinheli_seo.php]
+
+1.0.5				2009/03/06		Fixed		Fixed welcome function when without COOKIES
+1.0.4				2009/03/06		Fixed		Fixed search page title
+																Fixed sidebar h3 title
+																Fixed welcome function(missing a </strong>)
+												New			Added Chinese language support. 
+
+1.0.3				2009/03/05		New			Add style for Search form
+												New			Add a Donation link in the admin page
+												Fixed		Fixed style for Opear
+															Fixed Recent Comments to Valid XHTML 1.1
+															Fixed the 404 page.
+
+1.0.2				2009/03/04		New			Created this CHANGLOG file.
+												Fixed 		Fixed Sidebar top

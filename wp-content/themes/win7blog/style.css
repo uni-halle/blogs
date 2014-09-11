@@ -1,0 +1,337 @@
+/*
+THEME NAME: Win7blog
+THEME URI: http://www.iwakthemes.com/themes/win7blog
+DESCRIPTION: Win7blog is a clean and fast wordpress theme with the appearance looks like the windows7 style. Plug and play, No plugins required, No JS embedded, it is designed to be fast, secure, useful and beautiful.
+VERSION: 0.5.5
+AUTHOR: <a href="http://www.iwakthemes.com">iwak</a>
+AUTHOR URI: http://www.iwakthemes.com
+TAGS: blue, two-columns, right-sidebar, theme-options, threaded-comments, sticky-post
+*/
+
+@import url('patterns/2c-r.css');
+
+/* ============= Global Section =============== */
+* {margin: 0;padding: 0;}
+body {margin: 0 auto;padding: 0;font-family: Verdana,"BitStream vera Sans",Helvetica,Sans-serif;font-size: 14px;}
+a {text-decoration: none;}
+p {padding: 0 0 10px 0;}
+img {border: 0;}
+h2 {font-size: 1.8em;line-height:1.6em;padding: 20px 0 20px 0;}
+h3 {padding: 10px 0;}
+h4 {font-size: 14px;font-weight: bold;color: gray;}
+hr {margin:5px 0;}
+fieldset {padding:5px;}
+small {font-size:12px;}
+.text {vertical-align:middle;padding:2px 1px;border-style: solid;border-width: 1px;}
+.fixed {clear:both;}
+.hidden {display:none;}
+
+/* ============= Header/Footer Section ============= */
+#header {position: relative;}
+#header h1 {text-align: center;font-family: Arial;font-size: 50px;padding: 45px 0 25px 0;height: 80px;}
+#footer p {font-family: tahoma;text-align:center;padding: 70px 0 1em 0;}
+#blog-description {text-align: center;font-size:14px;font-weight:normal;}
+#menu {white-space:nowrap;float: left;width: 75%;height: 31px;overflow: hidden;line-height:1.5em;margin: 0 0 3px 18px;}
+#menu li {display: inline;}
+#menu  a {float: left;font-weight: bold;padding: 5px 7px;}
+#win7blog_search {margin: 5px 0 0 765px;width:auto;}
+#win7blog_s {width:130px;}
+#w7b_search_btn1, #w7b_search_btn2, #submit {vertical-align:middle;border-style:solid;padding:1px;border-width:1px;}
+#s {width:130px;padding:1px 0;}
+
+/* ============= Container Section ============= */
+#container {
+line-height: 1.5em;
+}
+
+/* ============= Content Section ============= */
+#content {position:relative;}
+.entry-content {padding: 0 0 20px 0;overflow:hidden;}
+.entry-content img {max-width:685px;}
+.entry-content table {background:#FFFFFF none repeat scroll 0 0;border:2px solid #CCCCCC;border-collapse:collapse;margin:5px 0 10px;}
+.entry-content .wp-caption p {margin:0;padding:0 5px;}
+.entry-content ul, .entry-content ol {margin-bottom:10px;}
+.entry-content ul li, .entry-content ol li {list-style-position:inside;padding-left:20px;}
+.entry-content th, .entry-content td {border:1px solid #CCCCCC;padding:3px 10px;text-align:left;vertical-align:top;}
+.entry-content blockquote, .entry-content pre {border-left:5px solid #DDDDDD;margin:10px 30px 10px 10px;padding-left:20px;color:#777777;}
+.entry-content pre {overflow-x:scroll;}
+.entry-titlex, .entry-metax, .clear-content {display:none;}
+
+.datetime {
+font-size: 12px;
+font-weight: normal;
+}
+
+.wp-caption {
+background:#F7F7F7 none repeat scroll 0 0;
+border:1px solid #CCCCCC;
+margin-bottom:5px;
+padding:5px 0;
+text-align:center;
+}
+
+.post_datetime {
+float: left;
+width: 50px;
+height: 62px;
+font-size: 0.8em;
+font-family: arial, georgia;
+color: white;
+text-align:  center;
+margin: 23px 5px 0 0;
+background: url(images/date_button.png) no-repeat center top;
+}
+
+.post_day {
+padding-top: 2px;
+font-size: 30px;
+font-weight: bold;
+}
+
+.comments_quicklink {
+font-size: 0.9em;
+font-weight: bold;
+float: right;
+padding-left: 5px;
+margin: -55px 0 0 0;
+}
+
+.entry-title {
+line-height: 1.2em;
+}
+
+.entry-meta {
+font-family:arial;
+color:gray;
+margin: -10px 0 5px 0;
+font-size: 0.9em;
+}
+
+.hentry .entry-meta {
+margin: -15px 0 10px 0;
+}
+
+.single-meta {
+clear:both;
+text-align:right;
+margin-top:1em;
+padding-top:2px;
+border-top:1px solid gray;
+font-size:14px;
+}
+
+.single-title {
+  text-align: center;
+}
+
+.gallery img {
+padding:5px 30px;
+background-color:#c0d5eb;
+border:1px solid #6280ae !important;
+}
+
+/* For plugin related_post */
+.entry-content .related_post {margin: -1em 0 0;padding:0;}
+.entry-content .related_post li {list-style:none;padding:1px 0;}
+
+/* ============= Sidebar Section ============= */
+.sidebar {font-size: 12px;line-height: 1.5em;padding: 0;}
+.sidebar li, .comments li {list-style:none;}
+.sidebar a:hover {text-decoration: underline;}
+.sidebar h3 {list-style-position: outside;padding: 0 0 2px 0;margin-bottom: 5px;font-size:13px;border-bottom: 1px dotted gray}
+.sidebar .widget {margin-bottom: 1.5em;}
+.sidebar ul ul {margin:0;}
+.sidebar ul ul li {padding-left:10px;}
+
+/* For default widget recent-posts, external widget wp-postviews and gd-star-rating*/
+#recent-posts li, #most-viewed li, .widget_gdstarrating li {
+	background: url(images/wp-articles.gif) no-repeat 0 0;
+	line-height: 1.1em;
+	padding: 0 0 5px 18px;
+}
+
+.children {
+padding-bottom: 0 !important;
+}
+
+.recentcomments {
+background: url(images/wp-comments.png) no-repeat 0 0;
+padding-left: 18px;
+line-height: 1.5em;
+height: 1.5em;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space:nowrap;
+width: 180px;
+}
+
+/* ---------------------- Default Calendar ---------------------- */
+#calendar h3 {border:0;padding:0;margin:0;}
+#wp-calendar {text-align: left;width: 185px;margin-bottom: 1em;}
+#wp-calendar caption {font-weight: bold;text-align: left;padding-bottom: 2px;margin-bottom: 2px;}
+
+/* ============= Comments Section ============= */
+#respond {
+  margin: 1em 0 2em 0;
+  font-size: 0.9em;
+}
+
+.old_wp_comments {
+	border: 1px solid #c0d5eb;
+	padding: 2px;
+	margin-bottom: 5px;
+}
+
+#comments blockquote {
+border:1px dashed gray;
+padding:2px 5px;
+margin:5px 60px 5px 20px;
+background-color:#c9c9c9;
+font-style:italic;
+font-size:90%;
+}
+
+#comments .depth-1 {
+  border: 1px solid #c0d5eb !important;
+  margin: 0 0 5px 0 !important;
+  padding: 3px 0;
+ }
+
+#comments .even, #comments .alt {
+	border-left: 3px solid #c0d5eb;
+	margin: 1em 0 1em 3em;
+	padding-left: 5px;
+}
+
+.thread-alt {
+	background: #eaedf0;
+}
+
+.thread-even {
+	background: white;
+}
+
+#commentform {
+	margin-top: 10px;
+}
+
+.comment_author {
+font-weight: bold;
+}
+
+.comment_index {
+float:right;
+font-weight:bold;
+margin: 0 5px;
+}
+
+form#commentform .form-input {
+margin-bottom: 0.8em;
+}
+
+div#comments-list {
+width: 85%;
+}
+
+div#comments p {
+padding: 0 0 0 0;
+}
+
+.reply {
+font-size: 12px;
+}
+
+.avatar {
+float: right;
+margin: 0 7px;
+}
+
+div#comments {
+margin-top: 2em;
+}
+
+textarea#comment {
+height:13em;
+margin:0 0 0.5em;
+overflow:auto;
+width:95%;
+}
+
+.alignright,img.alignright{
+float:right;
+margin:0 0 0 1em;
+}
+
+.alignleft,img.alignleft{
+float:left;
+margin:10px 10px 0 0;
+}
+
+.aligncenter,img.aligncenter{
+display:block;
+margin:1em auto;
+text-align:center;
+}
+
+div.gallery {
+clear:both;
+height:180px;
+margin:1em 0;
+width:100%;
+}
+
+div.gallery dl{
+margin:1em auto;
+overflow:hidden;
+text-align:center;
+}
+
+div.gallery dl.gallery-columns-1 {
+width:100%;
+}
+
+div.gallery dl.gallery-columns-2 {
+width:49%;
+}
+
+div.gallery dl.gallery-columns-3 {
+width:33%;
+}
+
+div.gallery dl.gallery-columns-4 {
+width:24%;
+}
+
+div.gallery dl.gallery-columns-5 {
+width:19%;
+}
+
+div#nav-above {
+margin-bottom:1em;
+}
+
+div#nav-below {
+margin-top:1em;
+}
+
+div#nav-images {
+height:150px;
+margin:1em 0;
+}
+
+div.navigation {
+height:1.25em;
+}
+
+div.navigation div.nav-next {
+float:right;
+text-align:right;
+}
+
+div.gallery dl,div.navigation div.nav-previous {
+float:left;
+}
+
+input#author,input#email,input#url,div.navigation div {
+width:30%;
+}

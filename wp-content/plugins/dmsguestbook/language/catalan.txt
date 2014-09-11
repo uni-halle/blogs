@@ -1,0 +1,16 @@
+/* Bosco *** bosthon(at)gmail(dot)com */
+
+<name>Nom</name>
+<email>Email</email>
+<url>Web</url>
+<message>Missatge</message>
+<antispam><b>Mesura antispam</b><br />Si us plau introdueix la seg&uuml;ent combinaci&oacute; de lletres i n&uacute;meros dins el camp de formulari situat a sota, abans d'enviar el missatge, Gr&Agrave;cies.</antispam>
+<mandatory>Requerit</mandatory>
+<submit>Signar</submit>
+<name_error>Error: nom massa curt.</name_error>
+<email_error>Error: email no v&aacute;lid.</email_error>
+<url_error>Error: URL no v&aacute;lida.</url_error>
+<message_error>Error: missatge massa curt.</message_error>
+<antispam_error>Error: combinaci&oacute; antispam incorrecta.</antispam_error>
+<success>Missatge enviat.</success>
+<admin_review>L'administrador revisar&agrave; aquest enviament!<br />Gràcies per la teva paciència!</admin_review>

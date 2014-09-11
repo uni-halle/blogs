@@ -1,0 +1,12 @@
+/*-------=green theme-------------------*/	
+
+/* color for selections */
+*::-moz-selection { background:#85b304; }
+*::selection, mark { background:#85b304; }
+
+/* text color */
+.main_title, .filter_portfolio .active a, .filter_portfolio a:hover { color:#85b304; }
+
+/* flex slider */
+.flex-caption { border-bottom:3px solid #85b304; }
+.flex-control-nav a { background:url(../../images/bullets_green.png) no-repeat 0px 0px !important;}

@@ -1,0 +1,48 @@
+#page {
+	text-align:right;
+	direction:rtl;
+}
+
+
+.postmetadata {
+	clear:right;
+}
+
+.alignright {
+	float: left;
+}
+
+.alignleft {
+	float: right;
+}
+code {
+	display:block;
+	direction:ltr;
+	text-align:left;
+}
+acronym, abbr, span.caps {
+	letter-spacing:0; /* fix opera bug */
+}
+
+.entry ol {
+	padding: 0 35px 0 0;
+}
+#sidebar ul ul, #sidebar ul ol {
+	margin: 5px 10px 0 0;
+}
+#sidebar ul ul ul, #sidebar ul ol {
+	margin: 0 10px 0 0;
+}
+#commentform #submit {
+	float:left;
+}
+#wp-calendar #next a {
+	text-align:left;
+}
+#wp-calendar #prev a {
+	text-align:right;
+}
+
+#email, #url {
+	direction:ltr;
+}

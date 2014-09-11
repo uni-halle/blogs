@@ -1,0 +1,34 @@
+/*  
+THEME NAME: Neutica
+THEME URI: http://www.allancole.com/themes/neutica/
+DESCRIPTION: A clean and elegant Sandbox theme for Wordpress based on the classic font - Helvetica Neue. Features a color options page, automatically pulled post thumbnail images(no need for custom fields).
+VERSION: 1.0.9
+AUTHOR: Allan Cole
+AUTHOR URI: http://www.allancole.com/
+TAGS: simple, two column, widget ready, gravatar support, theme options, magazine, right sidebar, fixed width, helvetica, yellow.
+.
+This work is released under GNU General Public License, version 2 (GPL).
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Please leave the footer links in tact. THANKS!
+.
+*/
+
+@import "css/reset.css";
+@import "css/layout.css";
+@import "css/type.css";
+@import "css/colors.css";
+
+/*	Wordpress 2.5+ Image Styles
+------------------------------------------ */
+.img,img.alignnone {margin: 0 0 1em 0;clear:both;float:none;display:block;}
+img.alignleft {margin:0 10px 1em 0px;clear:left;float:left;}
+img.alignright {margin:0 0 1em 10px;clear:right;float:right;}
+img.aligncenter{margin:0 auto;position:relative;clear:none;}
+
+/*	Wordpress 2.5+ Shortcode Styles
+------------------------------------------ */
+div.gallery{clear:both;float:left;width:100%;}
+div.gallery dl{float:left;text-align:center;}
+div.gallery dl dt{margin:0;}
+div.gallery dl dd{margin-left:0;}
+dd.gallery-caption {width:100%;}

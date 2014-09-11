@@ -1,0 +1,374 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "% Comments"
+msgstr "% kommenttia"
+
+#. Text in function
+#: bueno/comments.php:20
+msgid "% Responses"
+msgstr "% vastausta"
+
+#. Text in function
+#: bueno/index.php:56
+msgid "&laquo; Older Entries"
+msgstr "&laquo; Vanhemmat artikkelit"
+
+#. Text in function
+#: bueno/archive.php:79
+#: bueno/search.php:56
+msgid "&larr; Previous Entries"
+msgstr "&larr; Edelliset artikkelit"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "0 Comments"
+msgstr "0 kommenttia"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "1 Comment"
+msgstr "1 kommentti"
+
+#. Text in echo
+#: bueno/footer.php:32
+msgid "All Rights Reserved."
+msgstr "Kaikki oikeudet pidätetään."
+
+#. Text in echo
+#: bueno/archive.php:9
+#: bueno/archive.php:12
+#: bueno/archive.php:15
+#: bueno/archive.php:18
+#: bueno/header.php:11
+#: bueno/header.php:12
+msgid "Archive"
+msgstr "Arkisto"
+
+#. Text in echo
+#: bueno/archive.php:21
+msgid "Archive by Author"
+msgstr "Arkisto kirjoittajan mukaan"
+
+#. Text in echo
+#: bueno/archive.php:60
+#: bueno/index.php:37
+#: bueno/single.php:36
+#: bueno/search.php:37
+msgid "Author"
+msgstr "Kirjoittaja"
+
+#. Text in echo
+#: bueno/header.php:8
+msgid "Author Archives"
+msgstr "Kirjoittajan arkistot"
+
+#. Text in echo
+#: bueno/archive.php:56
+#: bueno/index.php:33
+#: bueno/template-archives.php:27
+#: bueno/single.php:32
+#: bueno/template-sitemap.php:23
+#: bueno/search.php:33
+msgid "Categories"
+msgstr "Aiheet"
+
+#. Text in echo
+#: bueno/archive.php:52
+#: bueno/index.php:29
+#: bueno/single.php:28
+#: bueno/template-sitemap.php:44
+#: bueno/search.php:29
+msgid "Comments"
+msgstr "Kommentit"
+
+#. Text in echo
+#: bueno/comments-legacy.php:37
+msgid "Comments For This Post"
+msgstr "Kommentit artikkelille"
+
+#. Text in echo
+#: bueno/comments.php:68
+#: bueno/comments-legacy.php:117
+msgid "Comments are closed."
+msgstr "Kommentit ovat pois päältä."
+
+#. Text in echo
+#: bueno/footer.php:36
+msgid "Designed by"
+msgstr "Suunnitellut"
+
+#. Text in echo
+#: bueno/includes/theme-comments.php:26
+msgid "Direct link to this comment"
+msgstr "Suora linkki tähän kommenttiin"
+
+#. Text in echo
+#: bueno/comments.php:107
+msgid "E-mail"
+msgstr "Sähköposti"
+
+#. Text in echo
+#: bueno/header.php:83
+msgid "Home"
+msgstr "Etusivu"
+
+#. Text in function
+#: bueno/comments.php:80
+#: bueno/comments-legacy.php:126
+msgid "Leave a Reply"
+msgstr "Jätä vastaus"
+
+#. Text in function
+#: bueno/comments.php:80
+msgid "Leave a Reply to %s"
+msgstr "Jätä vastaus nimimerkille %s"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+msgid "Log out of this account"
+msgstr "Kirjaudu ulos tältä tunnukselta"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+msgid "Logged in as"
+msgstr "Kirjautuneena tunnuksella"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+msgid "Logout"
+msgstr "Kirjaudu ulos"
+
+#. Text in echo
+#: bueno/comments-legacy.php:144
+msgid "Mail (will not be published)"
+msgstr "Sähköposti (ei julkaista)"
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:248
+msgid "Media Tag:"
+msgstr "Media-avainsana:"
+
+#. Text in echo
+#: bueno/template-archives.php:33
+msgid "Monthly Archives"
+msgstr "Kuukausittaiset arkistot"
+
+#. Text in echo
+#: bueno/comments.php:102
+#: bueno/comments-legacy.php:141
+msgid "Name"
+msgstr "Nimi"
+
+#. Text in function
+#: bueno/index.php:57
+msgid "Newer Entries &raquo;"
+msgstr "Uudemmat artikkelit &raquo;"
+
+#. Text in function
+#: bueno/archive.php:80
+#: bueno/search.php:57
+msgid "Next Entries &rarr;"
+msgstr "Seuraavat artikkelit &rarr;"
+
+#. Text in function
+#: bueno/comments.php:20
+msgid "No Responses"
+msgstr "Ei vastauksia"
+
+#. Text in echo
+#: bueno/comments.php:59
+msgid "No comments yet"
+msgstr "Ei vielä kommentteja"
+
+#. Text in function
+#: bueno/comments.php:20
+msgid "One Response"
+msgstr "Yksi vastaus"
+
+#. Text in echo
+#: bueno/template-sitemap.php:17
+msgid "Pages"
+msgstr "Sivut"
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:14
+msgid "Photos on <span>flick<span>r</span></span>"
+msgstr "Kuvia <span>flick<span>r</span></span>"
+
+#. Text in echo
+#: bueno/footer.php:36
+msgid "Powered by"
+msgstr "Toteutettu"
+
+#. Text in echo
+#: bueno/header.php:85
+msgid "RSS"
+msgstr "RSS"
+
+#. Text in echo
+#: bueno/comments.php:107
+msgid "Required"
+msgstr "Vaaditaan"
+
+#. Text in echo
+#: bueno/search-form.php:3
+#: bueno/search-form.php:7
+#: bueno/header.php:55
+msgid "Search"
+msgstr "Haku"
+
+#. Text in echo
+#: bueno/header.php:7
+msgid "Search Results"
+msgstr "Hakutulokset"
+
+#. Text in echo
+#: bueno/search.php:8
+msgid "Search results"
+msgstr "Hakutulokset"
+
+#. Text in echo
+#: bueno/search-form.php:6
+#: bueno/header.php:54
+msgid "Search..."
+msgstr "Haku..."
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:261
+msgid "Show Content:"
+msgstr "Näytä sisältö:"
+
+#. Text in echo
+#: bueno/template-fullwidth.php:27
+#: bueno/archive.php:73
+#: bueno/index.php:50
+#: bueno/page.php:27
+#: bueno/single.php:51
+#: bueno/404.php:18
+#: bueno/search.php:50
+msgid "Sorry, no posts matched your criteria."
+msgstr "Pahoittelut, yksikään artikkeli ei vastannut hakusanojasi."
+
+#. Text in echo
+#: bueno/comments.php:121
+#: bueno/comments-legacy.php:155
+msgid "Submit Comment"
+msgstr "Lähetä kommentti"
+
+#. Text in echo
+#: bueno/header.php:13
+msgid "Tag Archive"
+msgstr "Avainsana-arkisto"
+
+#. Text in echo
+#: bueno/archive.php:24
+msgid "Tag Archives:"
+msgstr "Avainsana-arkistot:"
+
+#. Text in echo
+#: bueno/template-archives.php:17
+msgid "The Last 30 Posts"
+msgstr "Viimeisimmät 30 artikkelia"
+
+#. Text in echo
+#: bueno/comments.php:9
+#: bueno/comments-legacy.php:9
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Tämä artikkeli on salasanasuojattu. Ole hyvä ja syötä salasanasi jatkaaksesi."
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:245
+msgid "Title:"
+msgstr "Otsikko:"
+
+#. Text in echo
+#: bueno/comments-legacy.php:79
+msgid "Trackbacks For This Post"
+msgstr "Paluuviitteet artikkelille:"
+
+#. Text in echo
+#: bueno/comments.php:40
+msgid "Trackbacks/Pingbacks"
+msgstr "Paluuviitteet/Päivitystiedotteet"
+
+#. Text in echo
+#: bueno/comments.php:112
+#: bueno/comments-legacy.php:147
+msgid "Website"
+msgstr "Kotisivu"
+
+#. Text in function
+#: bueno/includes/theme-widgets.php:164
+msgid "Woo - Featured Posts"
+msgstr "Woo - Suositellut artikkelit"
+
+#. Text in echo
+#: bueno/comments.php:117
+msgid "You can use these tags"
+msgstr "Voit käyttää näitä avainsanoja"
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+msgid "You must be"
+msgstr "Sinun täytyy olla"
+
+#. Text in echo
+#: bueno/comments-legacy.php:57
+#: bueno/comments-legacy.php:89
+#: bueno/includes/theme-comments.php:39
+msgid "Your comment is awaiting moderation."
+msgstr "Kommenttisi odottaa hyväksyntää."
+
+#. Text in echo
+#: bueno/comments-legacy.php:61
+#: bueno/comments-legacy.php:93
+#: bueno/includes/theme-comments.php:24
+msgid "at"
+msgstr ""
+
+#. Text in echo
+#: bueno/template-archives.php:23
+msgid "comments"
+msgstr "kommentit"
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+msgid "logged in"
+msgstr "kirjautuneena"
+
+#. Text in echo
+#: bueno/comments.php:20
+msgid "to"
+msgstr ""
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+msgid "to post a comment."
+msgstr "lähettääksesi kommentin"
+

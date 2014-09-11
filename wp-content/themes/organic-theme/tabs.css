@@ -1,0 +1,59 @@
+.widget {
+width: 245px;
+background: #ffffff;
+margin-bottom: 30px;
+}
+
+	.widget a {
+	color: #333333;
+	text-decoration: none;
+	}
+	
+	.widget a:hover {
+	color: #333333;
+	text-decoration: underline;
+	}
+
+	.tabnav li {
+	display: inline;
+	list-style: none;
+	padding-right: 2px;
+	background-color:#FFFFFF;
+	}
+	
+		.tabnav li a {
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #ffffff;
+		font-weight: bold;
+		padding: 12px 12px;
+		outline: none;
+		background-color:#8BA4AB;	
+		line-height: 1.6em;
+		font-size: 70%;
+		}
+		
+		.tabnav li a:hover, .tabnav li a:active, .tabnav li.ui-tabs-selected a {
+		background: #333333;
+		color: #ffffff;
+		text-decoration: none;
+		font-size: 70%;
+		}
+		
+	.tabdiv {
+	margin-top: 10px;
+	background: #DCE4E7;
+	border: 1px solid #dedbd1;
+	padding: 5px;
+	}
+	
+		.tabdiv li {		
+		margin-left: 10px;
+		padding-bottom: 5px;
+		border-bottom: 1px solid #C8D1D6;
+		font-size: 70%;
+		}
+
+.ui-tabs-hide {
+		display: none;
+		}

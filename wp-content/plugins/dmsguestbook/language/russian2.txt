@@ -1,0 +1,15 @@
+﻿/* Willi Wäfler *** williwaefler(at)web(dot)de */
+
+<name>Имя</name>
+<email>E-mail</email>
+<url>Сайт</url>
+<message>Текст</message><antispam><b>Защита от спама</b><br />Вводите пожалуйста комбинации букв или цифр в текстовое поле перед отправкой записи в гостевую книгу</antispam>
+<mandatory>Обязательно</mandatory>
+<submit>Записать</submit>
+<name_error>Имя слишком короткое!</name_error>
+<email_error>Неправильный адрес электронной почты!</email_error>
+<url_error>Неправильная ссылка на сайт!</url_error>
+<message_error>Текст слишком короткий!</message_error>
+<antispam_error>Неправильная комбинация букв и цифр!</antispam_error>
+<success>Спасибо за запись в гостевую книгу!</success>
+<admin_review>Администратор сайта проверяет эту запись!<br />Спасибо за терпения!</admin_review>

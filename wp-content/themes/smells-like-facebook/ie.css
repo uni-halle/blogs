@@ -1,0 +1,18 @@
+#hiddencats {
+	position: absolute;
+	margin-left: -25px;
+	margin-top: 25px;
+}
+
+#menu ul li {
+	position: relative;
+}
+
+#menu ul ul {
+	margin-top: 25px;
+	left: 0;
+}
+
+.ic-content {
+	margin-left: 4px;
+}

@@ -1,0 +1,20 @@
+CREATE TABLE wp_211_wrp (
+         id       bigint(20) auto_increment primary key,
+         name varchar(100),
+         rss_url text,
+         category text,
+         number int(11),
+         schedule int(11),
+         status varchar(20),
+         author varchar(100),
+         publish_date varchar(20),
+         last_run varchar(20),
+         next_run varchar(20),
+         origin text,
+         rewrite text,
+         cache_image varchar(10),
+         source_link varchar(10),
+         template text,
+         enable_template varchar(10),
+         exclude text               
+         );

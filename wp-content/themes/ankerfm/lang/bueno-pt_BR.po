@@ -1,0 +1,415 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Joao Torquato <torquato@i.ua>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "% Comments"
+msgstr "% Coment&aacute;rios"
+
+#. Text in function
+#: bueno/comments.php:20
+#, fuzzy
+msgid "% Responses"
+msgstr "% Respostas"
+
+#. Text in function
+#: bueno/index.php:56
+#, fuzzy
+msgid "&laquo; Older Entries"
+msgstr "Entradas Anteriores &raquo;"
+
+#. Text in function
+#: bueno/archive.php:79
+#: bueno/search.php:56
+#, fuzzy
+msgid "&larr; Previous Entries"
+msgstr "&laquo; Entradas Anteriores"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "0 Comments"
+msgstr "0 Coment&aacute;rios"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "1 Comment"
+msgstr "1 Coment&aacute;rio"
+
+#. Text in echo
+#: bueno/footer.php:32
+#, fuzzy
+msgid "All Rights Reserved."
+msgstr "Todos os direitos reservados."
+
+#. Text in echo
+#: bueno/archive.php:9
+#: bueno/archive.php:12
+#: bueno/archive.php:15
+#: bueno/archive.php:18
+#: bueno/header.php:11
+#: bueno/header.php:12
+#, fuzzy
+msgid "Archive"
+msgstr "Arquivo"
+
+#. Text in echo
+#: bueno/archive.php:21
+#, fuzzy
+msgid "Archive by Author"
+msgstr "Arquivo por Autor"
+
+#. Text in echo
+#: bueno/archive.php:60
+#: bueno/index.php:37
+#: bueno/single.php:36
+#: bueno/search.php:37
+#, fuzzy
+msgid "Author"
+msgstr "Autor"
+
+#. Text in echo
+#: bueno/header.php:8
+#, fuzzy
+msgid "Author Archives"
+msgstr "Arquivos do Autor"
+
+#. Text in echo
+#: bueno/archive.php:56
+#: bueno/index.php:33
+#: bueno/template-archives.php:27
+#: bueno/single.php:32
+#: bueno/template-sitemap.php:23
+#: bueno/search.php:33
+#, fuzzy
+msgid "Categories"
+msgstr "Categorias"
+
+#. Text in echo
+#: bueno/archive.php:52
+#: bueno/index.php:29
+#: bueno/single.php:28
+#: bueno/template-sitemap.php:44
+#: bueno/search.php:29
+msgid "Comments"
+msgstr "Coment&aacute;rios"
+
+#. Text in echo
+#: bueno/comments-legacy.php:37
+#, fuzzy
+msgid "Comments For This Post"
+msgstr "Coment&aacute;rios para este post"
+
+#. Text in echo
+#: bueno/comments.php:68
+#: bueno/comments-legacy.php:117
+#, fuzzy
+msgid "Comments are closed."
+msgstr "Coment&aacute;rios est&atilde;o fechados."
+
+#. Text in echo
+#: bueno/footer.php:36
+#, fuzzy
+msgid "Designed by"
+msgstr "Desenvolvido por "
+
+#. Text in echo
+#: bueno/includes/theme-comments.php:26
+#, fuzzy
+msgid "Direct link to this comment"
+msgstr "Link direto para este coment&aacute;rio"
+
+#. Text in echo
+#: bueno/comments.php:107
+msgid "E-mail"
+msgstr "E-mail"
+
+#. Text in echo
+#: bueno/header.php:83
+msgid "Home"
+msgstr "In&iacute;cio"
+
+#. Text in function
+#: bueno/comments.php:80
+#: bueno/comments-legacy.php:126
+#, fuzzy
+msgid "Leave a Reply"
+msgstr "Deixe uma Resposta"
+
+#. Text in function
+#: bueno/comments.php:80
+#, fuzzy
+msgid "Leave a Reply to %s"
+msgstr "Deixe uma Resposta para %s"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+msgid "Log out of this account"
+msgstr "Sair desta conta"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+#, fuzzy
+msgid "Logged in as"
+msgstr "Logado como"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+#, fuzzy
+msgid "Logout"
+msgstr "Sair"
+
+#. Text in echo
+#: bueno/comments-legacy.php:144
+#, fuzzy
+msgid "Mail (will not be published)"
+msgstr "E-mail (n&ailde;o ser&aacute; publicado)"
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:248
+msgid "Media Tag:"
+msgstr "Tag de M&iacute;dia:"
+
+#. Text in echo
+#: bueno/template-archives.php:33
+#, fuzzy
+msgid "Monthly Archives"
+msgstr "Arquivos por M&ecirc;s"
+
+#. Text in echo
+#: bueno/comments.php:102
+#: bueno/comments-legacy.php:141
+#, fuzzy
+msgid "Name"
+msgstr "Nome"
+
+#. Text in function
+#: bueno/index.php:57
+msgid "Newer Entries &raquo;"
+msgstr "Entradas Recentes &raquo;"
+
+#. Text in function
+#: bueno/archive.php:80
+#: bueno/search.php:57
+msgid "Next Entries &rarr;"
+msgstr "Pr&oacute;ximas Entradas &raquo;"
+
+#. Text in function
+#: bueno/comments.php:20
+#, fuzzy
+msgid "No Responses"
+msgstr "Nenhuma resposta"
+
+#. Text in echo
+#: bueno/comments.php:59
+msgid "No comments yet"
+msgstr "Ainda sem coment&aacute;rios."
+
+#. Text in function
+#: bueno/comments.php:20
+#, fuzzy
+msgid "One Response"
+msgstr "Uma resposta"
+
+#. Text in echo
+#: bueno/template-sitemap.php:17
+msgid "Pages"
+msgstr "P&aacute;ginas"
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:14
+#, fuzzy
+msgid "Photos on <span>flick<span>r</span></span>"
+msgstr "Fotos no <span>Flick<span>r</span></span>"
+
+#. Text in echo
+#: bueno/footer.php:36
+#, fuzzy
+msgid "Powered by"
+msgstr "Turbinado por"
+
+#. Text in echo
+#: bueno/header.php:85
+#, fuzzy
+msgid "RSS"
+msgstr "RSS"
+
+#. Text in echo
+#: bueno/comments.php:107
+msgid "Required"
+msgstr "Obrigat&oacute;rio"
+
+#. Text in echo
+#: bueno/search-form.php:3
+#: bueno/search-form.php:7
+#: bueno/header.php:55
+msgid "Search"
+msgstr "Pesquisar"
+
+#. Text in echo
+#: bueno/header.php:7
+msgid "Search Results"
+msgstr "Resultados da Pesquisa"
+
+#. Text in echo
+#: bueno/search.php:8
+#, fuzzy
+msgid "Search results"
+msgstr "Resultados da pesquisa"
+
+#. Text in echo
+#: bueno/search-form.php:6
+#: bueno/header.php:54
+msgid "Search..."
+msgstr "Pesquisar..."
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:261
+msgid "Show Content:"
+msgstr "Mostrar conte&uacute;do:"
+
+#. Text in echo
+#: bueno/template-fullwidth.php:27
+#: bueno/archive.php:73
+#: bueno/index.php:50
+#: bueno/page.php:27
+#: bueno/single.php:51
+#: bueno/404.php:18
+#: bueno/search.php:50
+msgid "Sorry, no posts matched your criteria."
+msgstr "Desculpe, nenhum artigo correspondeu aos crit&eacute;rios de procura."
+
+#. Text in echo
+#: bueno/comments.php:121
+#: bueno/comments-legacy.php:155
+#, fuzzy
+msgid "Submit Comment"
+msgstr "Enviar Coment&aacute;rio"
+
+#. Text in echo
+#: bueno/header.php:13
+#, fuzzy
+msgid "Tag Archive"
+msgstr "Arquivo de Tags"
+
+#. Text in echo
+#: bueno/archive.php:24
+#, fuzzy
+msgid "Tag Archives:"
+msgstr "Arquivo de Tags:"
+
+#. Text in echo
+#: bueno/template-archives.php:17
+#, fuzzy
+msgid "The Last 30 Posts"
+msgstr "30 posts mais recentes"
+
+#. Text in echo
+#: bueno/comments.php:9
+#: bueno/comments-legacy.php:9
+#, fuzzy
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Este post &eacute; protegido por senha. Informe a senha para ver os coment&aacute;rios."
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:245
+msgid "Title:"
+msgstr "T&iacute;tulo:"
+
+#. Text in echo
+#: bueno/comments-legacy.php:79
+#, fuzzy
+msgid "Trackbacks For This Post"
+msgstr "Trackbacks para este post"
+
+#. Text in echo
+#: bueno/comments.php:40
+#, fuzzy
+msgid "Trackbacks/Pingbacks"
+msgstr "Trackbacks/Pingbacks"
+
+#. Text in echo
+#: bueno/comments.php:112
+#: bueno/comments-legacy.php:147
+msgid "Website"
+msgstr "Site"
+
+#. Text in function
+#: bueno/includes/theme-widgets.php:164
+msgid "Woo - Featured Posts"
+msgstr "Woo - Posts em Destaque"
+
+#. Text in echo
+#: bueno/comments.php:117
+#, fuzzy
+msgid "You can use these tags"
+msgstr "Voc&ecirc; pode utilizar estas tags"
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+#, fuzzy
+msgid "You must be"
+msgstr "Voc&ecirc; deve estar"
+
+#. Text in echo
+#: bueno/comments-legacy.php:57
+#: bueno/comments-legacy.php:89
+#: bueno/includes/theme-comments.php:39
+#, fuzzy
+msgid "Your comment is awaiting moderation."
+msgstr "Seu coment&aacute;rio aguarda modera&ccedil;&atilde;o."
+
+#. Text in echo
+#: bueno/comments-legacy.php:61
+#: bueno/comments-legacy.php:93
+#: bueno/includes/theme-comments.php:24
+#, fuzzy
+msgid "at"
+msgstr "em"
+
+#. Text in echo
+#: bueno/template-archives.php:23
+#, fuzzy
+msgid "comments"
+msgstr "coment&aacute;rios"
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+#, fuzzy
+msgid "logged in"
+msgstr "logado"
+
+#. Text in echo
+#: bueno/comments.php:20
+#, fuzzy
+msgid "to"
+msgstr "para"
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+#, fuzzy
+msgid "to post a comment."
+msgstr "para fazer um coment&aacute;rio."
+

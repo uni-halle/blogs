@@ -1,0 +1,17 @@
+/* Lisa Smith *** hej(at)vardagspoesi(dot)se */
+/* Jimmy Rosén *** jimmy(at)angrycreative(dot)se */
+
+<name>Namn</name>
+<email>E-post</email>
+<url>Hemsida</url>
+<message>Meddelande</message>
+<antispam><b>Antispam</b><br />Var v&auml;nlig och skriv in r&auml;tt bokstavskombination i textf&auml;ltet nedan innan du skickar iv&auml;g ditt meddelande.</antispam>
+<mandatory>Obligatorisk</mandatory>
+<submit>Skicka</submit>
+<name_error>Namnet &auml;r f&ouml;rkort!</name_error>
+<email_error>Felaktig e-post adress!</email_error>
+<url_error>Felaktig hemsideadress!</url_error>
+<message_error>F&ouml;r lite text!</message_error>
+<antispam_error>Felaktig bokstavskombination!</antispam_error>
+<success>Tack f&ouml;r att du skrev i g&auml;stboken!</success>
+<admin_review>Administrat&ouml;ren kommer att granska ditt meddelande.<br />Tack f&ouml;r ditt t&aring;lamod!</admin_review>

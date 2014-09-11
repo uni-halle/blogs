@@ -1,0 +1,48 @@
+<form action="" method="post">
+<table class="widefat">
+<thead>
+	<tr>
+	<th colspan=2 ></th>
+	</tr>
+</thead>
+<tbody>
+	<tr class="<?php echo $this->alternate()?>">
+		<th scope='row' style="vertical-align:top">
+			Delicious ID
+		</th>
+		<td>
+			<input name = 'id' value = '<?php echo $this->data['id'];?>'  style='width:300px' />
+			<br/>
+			<small>Your delicious ID.</small>
+		</td>
+	</tr>
+	<tr class="<?php echo $this->alternate()?>">
+		<th scope='row' style="vertical-align:top">
+			Delicious password
+		</th>
+		<td>
+			<input name = 'password' value = '<?php echo $this->data['password'];?>'  style='width:300px' />
+			<br/>
+			<small>The password to your Delicious account.</small>
+		</td>
+	</tr>
+	<tr class="<?php echo $this->alternate()?>">
+		<th scope='row'  style="vertical-align:top">Time Between Updates</th>
+		<td><input name='between' value='<?php echo $this->data['between'];?>' />
+		Days<br />
+		<small>The Minimum time between updates. Updates are activated by site
+		visits</small></td>
+	</tr>
+	<tr class="<?php echo $this->alternate()?>">
+		<th scope='row'>Last Synced</th>
+		<td><?php 
+		if($this->data['last_updated'])
+		{
+			$datetime = $this->data['last_updated']+(get_option('gmt_offset')*60);
+		echo gmdate(get_option('date_format').' '.get_option('time_format'),$this->data['last_updated']);} else { echo 'Never' ;};?><br />
+		</td>
+	</tr>
+</table>
+<br/>
+<input class='button' type='submit'  value='Update Settings &amp; Sync Links' />
+</form>

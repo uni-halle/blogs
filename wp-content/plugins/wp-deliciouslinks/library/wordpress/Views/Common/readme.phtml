@@ -1,0 +1,16 @@
+=== <?php echo $this->options['name'];?> ===
+Contributors: <?php echo $this->options['author']."\n";?>
+Donate link: <?php echo $this->options['donate_link']."\n";?>
+Tags: <?php echo implode(', ',$this->options['tags'])."\n";?>
+Requires at least: <?php echo $this->options['at_least']."\n";?>
+Tested up to: <?php echo $this->options['up_to']."\n";?>
+Stable tag: <?php echo $this->options['stable_tag']."\n";?>
+
+<?php echo $this->options['short_desc']."\n";?>
+
+<?php foreach($this->options['sections'] as $key=>$value):?>
+== <?php echo $key;?> ==
+
+<?php echo $value?>
+
+<?php endforeach;?>

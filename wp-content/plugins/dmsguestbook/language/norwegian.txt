@@ -1,0 +1,16 @@
+/* Thanks to Torjus Færsnes *** torjus(at)faersnes(dot)no */
+
+<name>Navn</name>
+<email>E-post</email>
+<url>Nettside</url>
+<message>Tekst</message>
+<antispam><b>Menneske eller maskin?</b><br />Skriv inn bokstavene og tallene i tekstfeltet f&oslash;r du sender inn hilsenen.</antispam>
+<mandatory>Obligatorisk</mandatory>
+<submit>Legg inn hilsen</submit>
+<name_error>Navnefeltet er ikke fylt ut riktig</name_error>
+<email_error>E-postadressen er ugyldig</email_error>
+<url_error>Adressen til nettsiden er ugyldig</url_error>
+<message_error>Teksten er for kort</message_error>
+<antispam_error>Du har tastet inn feil kombinasjon i menneske-eller maskintesten</antispam_error>
+<success>Takk for at du la igjen din hilsen!</success>
+<admin_review>Administratoren m&aring; sjekke denne hilsenen f&oslash;r denlegges ut!</admin_review>

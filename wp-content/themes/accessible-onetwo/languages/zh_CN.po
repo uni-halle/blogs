@@ -1,0 +1,18 @@
+# Copyright (C) 2013 Daniel Davis
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Accessible OneTwo 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-25 12:15:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-03-25 16:55+0900\n"
+"Last-Translator: Daniel Davis <me@daniemon.com>\n"
+"Language-Team: Chinese, China (Simplified Han)\n"
+
+#: footer.php:18
+msgid "Return to top of page"
+msgstr "返回页面顶端"
+

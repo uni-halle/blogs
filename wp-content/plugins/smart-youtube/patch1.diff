@@ -1,0 +1,77 @@
+From e6c2891d7ba1176e8a99d18d81b5363c320e6fc2 Mon Sep 17 00:00:00 2001
+From: Mainboarder <git@mainboarder.de>
+Date: Wed, 30 Jul 2014 08:56:25 +0200
+Subject: [PATCH] Dynamic protocol decision
+
+---
+ smartyoutube.php | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/smartyoutube.php b/smartyoutube.php
+index 59c89a8..118897b 100644
+--- a/smartyoutube.php
++++ b/smartyoutube.php
+@@ -1021,10 +1021,10 @@ EOT;
+ 			$ll = '';
+ 		}
+ 		
+-		$root_url = $this->options['privacy'] ? 'https://www.youtube-nocookie.com' : 'https://www.youtube.com'; 
++		$root_url = $this->options['privacy'] ? '//www.youtube-nocookie.com' : '//www.youtube.com'; 
+ 		
+ 		if ( $excerpt == 'thm' ) {
+-			$img_url = htmlspecialchars( "https://img.youtube.com/vi/$file/0.jpg" );
++			$img_url = htmlspecialchars( "//img.youtube.com/vi/$file/0.jpg" );
+ 			global $post;
+ 			$post_url = get_permalink( $post->ID );
+ 			$yte_tag = <<<EOT
+@@ -1033,7 +1033,7 @@ EOT;
+ 		}
+ 		
+ 		if ( ( ( is_home() || is_front_page() || is_archive() ) && $context == 'post' && $thumb == 'on' ) || ( $context == 'thumb' ) || ( $context == 'excerpt' && $excerpt == 'thm' ) ) {
+-			$img_url = htmlspecialchars( "https://img.youtube.com/vi/$file/0.jpg" );
++			$img_url = htmlspecialchars( "//img.youtube.com/vi/$file/0.jpg" );
+ 			if ( $context == 'excerpt' && $excerpt == 'thm' ) {
+ 				global $post;
+ 				$post_url = get_permalink( $post->ID );
+@@ -1058,7 +1058,7 @@ EOT;
+ EOT;
+ 			} elseif ( $valid == 'off' || strpos( $_SERVER['HTTP_USER_AGENT'], 'iPhone' ) === TRUE || strpos( $_SERVER['HTTP_USER_AGENT'], 'iPod' ) === TRUE || strpos( $_SERVER['HTTP_USER_AGENT'], 'iPad' ) === TRUE ) {
+ 				if ( $context == 'post' && $colorbox == 'on' ) {
+-					$img_url = htmlspecialchars( "https://img.youtube.com/vi/$file/0.jpg" );
++					$img_url = htmlspecialchars( "//img.youtube.com/vi/$file/0.jpg" );
+ 					$yte_tag = <<<EOT
+ <a class="colorbox_video" href="$video_url"><img width="$width" height="$height" src="$img_url" /></a></span>
+ EOT;
+@@ -1073,7 +1073,7 @@ EOT;
+ EOT;
+ 			} else {
+ 				if ( $context == 'post' && $colorbox == 'on' ) {
+-					$img_url = htmlspecialchars( "https://img.youtube.com/vi/$file/0.jpg" );
++					$img_url = htmlspecialchars( "//img.youtube.com/vi/$file/0.jpg" );
+ 					$yte_tag = <<<EOT
+ <a class="colorbox_video" href="$video_url"><img width="$width" height="$height" src="$img_url" /></a></span>
+ EOT;
+@@ -1095,9 +1095,9 @@ EOT;
+ 				$high = '&fmt=18';
+ 			}
+ 			if ( $playlist )
+-				$url = 'https://www.youtube.com/playlist?list=';
++				$url = '//www.youtube.com/playlist?list=';
+ 			else
+-				$url = 'https://www.youtube.com/watch?v=';
++				$url = '//www.youtube.com/watch?v=';
+ 				
+ 			$yte_tag = '';
+ 			if ( $this->options['link'] == 'on' ) {
+@@ -1105,7 +1105,7 @@ EOT;
+ 			}
+ 			
+ 			if ( $this->options['img'] == 'on' ) {
+-				$yte_tag .= '<p><a href="' . $url . $file . $high. '"><img src="https://img.youtube.com/vi/' . $file . '/default.jpg" width="130" height="97" border=0></a></p>';
++				$yte_tag .= '<p><a href="' . $url . $file . $high. '"><img src="//img.youtube.com/vi/' . $file . '/default.jpg" width="130" height="97" border=0></a></p>';
+ 			}
+ 			
+ 			 if ($this->options['link'] == 'off' && $this->options['img'] == 'off')
+-- 
+1.8.3.msysgit.0
+

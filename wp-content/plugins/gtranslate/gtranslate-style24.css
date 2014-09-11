@@ -1,0 +1,4 @@
+a.gflag {font-size:24px;padding:1px 0;background-repeat:no-repeat;background-image:url(24.png);}
+a.gflag img {border:0;height:24px;display:inline;}
+a.gflag:hover {background-image:url(24a.png);}
+img.gstats {display:none;}

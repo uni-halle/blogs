@@ -1,0 +1,18 @@
+* html .asides .one {
+	margin: 0 5px;
+}
+
+* html .asides .navigation, * html .asides .navigation .edge-nav, * html .asides .navigation a {
+	height:56px;
+}
+
+* html h2.logo {
+	background-image:none;
+	margin-left:142px;
+}
+
+* html .sub-container .one {margin-left:5px !important;}
+
+
+
+* html div.edge-alt {bottom:-7px;}

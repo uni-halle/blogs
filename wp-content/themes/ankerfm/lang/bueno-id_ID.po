@@ -1,0 +1,374 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ryan Riatno <ponzicrawl@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "% Comments"
+msgstr "% Komentar"
+
+#. Text in function
+#: bueno/comments.php:20
+msgid "% Responses"
+msgstr "% Tanggapan"
+
+#. Text in function
+#: bueno/index.php:56
+msgid "&laquo; Older Entries"
+msgstr "&laquo; Tulisan Sebelumnya"
+
+#. Text in function
+#: bueno/archive.php:79
+#: bueno/search.php:56
+msgid "&larr; Previous Entries"
+msgstr "&larr; Tulisan Sebelumnya"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "0 Comments"
+msgstr "0 Komentar"
+
+#. Text in function
+#: bueno/archive.php:53
+#: bueno/index.php:30
+#: bueno/single.php:29
+#: bueno/search.php:30
+msgid "1 Comment"
+msgstr "1 Komentar"
+
+#. Text in echo
+#: bueno/footer.php:32
+msgid "All Rights Reserved."
+msgstr "Hak Cipta Dilindungi."
+
+#. Text in echo
+#: bueno/archive.php:9
+#: bueno/archive.php:12
+#: bueno/archive.php:15
+#: bueno/archive.php:18
+#: bueno/header.php:11
+#: bueno/header.php:12
+msgid "Archive"
+msgstr "Arsip"
+
+#. Text in echo
+#: bueno/archive.php:21
+msgid "Archive by Author"
+msgstr "Arsip Penulis"
+
+#. Text in echo
+#: bueno/archive.php:60
+#: bueno/index.php:37
+#: bueno/single.php:36
+#: bueno/search.php:37
+msgid "Author"
+msgstr "Penulis"
+
+#. Text in echo
+#: bueno/header.php:8
+msgid "Author Archives"
+msgstr "Arsip Penulis"
+
+#. Text in echo
+#: bueno/archive.php:56
+#: bueno/index.php:33
+#: bueno/template-archives.php:27
+#: bueno/single.php:32
+#: bueno/template-sitemap.php:23
+#: bueno/search.php:33
+msgid "Categories"
+msgstr "Kategori"
+
+#. Text in echo
+#: bueno/archive.php:52
+#: bueno/index.php:29
+#: bueno/single.php:28
+#: bueno/template-sitemap.php:44
+#: bueno/search.php:29
+msgid "Comments"
+msgstr "Komentar"
+
+#. Text in echo
+#: bueno/comments-legacy.php:37
+msgid "Comments For This Post"
+msgstr "Komentar untuk tulisan ini"
+
+#. Text in echo
+#: bueno/comments.php:68
+#: bueno/comments-legacy.php:117
+msgid "Comments are closed."
+msgstr "Komentar ditutup."
+
+#. Text in echo
+#: bueno/footer.php:36
+msgid "Designed by"
+msgstr "Didesain oleh"
+
+#. Text in echo
+#: bueno/includes/theme-comments.php:26
+msgid "Direct link to this comment"
+msgstr "Tautan langsung untuk komentar ini"
+
+#. Text in echo
+#: bueno/comments.php:107
+msgid "E-mail"
+msgstr "E-mail"
+
+#. Text in echo
+#: bueno/header.php:83
+msgid "Home"
+msgstr "Beranda"
+
+#. Text in function
+#: bueno/comments.php:80
+#: bueno/comments-legacy.php:126
+msgid "Leave a Reply"
+msgstr "Berikan Komentar"
+
+#. Text in function
+#: bueno/comments.php:80
+msgid "Leave a Reply to %s"
+msgstr "Berikan Komentar pada %s"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+msgid "Log out of this account"
+msgstr "Keluar dari akun ini"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+msgid "Logged in as"
+msgstr "Masuk sebagai"
+
+#. Text in echo
+#: bueno/comments.php:96
+#: bueno/comments-legacy.php:136
+msgid "Logout"
+msgstr "Keluar"
+
+#. Text in echo
+#: bueno/comments-legacy.php:144
+msgid "Mail (will not be published)"
+msgstr "Mail (tidak akan ditampilkan)"
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:248
+msgid "Media Tag:"
+msgstr "Tag Media:"
+
+#. Text in echo
+#: bueno/template-archives.php:33
+msgid "Monthly Archives"
+msgstr "Arsip Bulanan"
+
+#. Text in echo
+#: bueno/comments.php:102
+#: bueno/comments-legacy.php:141
+msgid "Name"
+msgstr "Nama"
+
+#. Text in function
+#: bueno/index.php:57
+msgid "Newer Entries &raquo;"
+msgstr "Tulisan Terbaru &raquo;"
+
+#. Text in function
+#: bueno/archive.php:80
+#: bueno/search.php:57
+msgid "Next Entries &rarr;"
+msgstr "Tulisan Selanjutnya &rarr;"
+
+#. Text in function
+#: bueno/comments.php:20
+msgid "No Responses"
+msgstr "Tidak ada Tanggapan"
+
+#. Text in echo
+#: bueno/comments.php:59
+msgid "No comments yet"
+msgstr "Belum ada komentar"
+
+#. Text in function
+#: bueno/comments.php:20
+msgid "One Response"
+msgstr "Satu Tanggapan"
+
+#. Text in echo
+#: bueno/template-sitemap.php:17
+msgid "Pages"
+msgstr "Halaman"
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:14
+msgid "Photos on <span>flick<span>r</span></span>"
+msgstr "Foto pada <span>flick<span>r</span></span>"
+
+#. Text in echo
+#: bueno/footer.php:36
+msgid "Powered by"
+msgstr "Didukung oleh"
+
+#. Text in echo
+#: bueno/header.php:85
+msgid "RSS"
+msgstr "RSS"
+
+#. Text in echo
+#: bueno/comments.php:107
+msgid "Required"
+msgstr "Harus diisi"
+
+#. Text in echo
+#: bueno/search-form.php:3
+#: bueno/search-form.php:7
+#: bueno/header.php:55
+msgid "Search"
+msgstr "Cari "
+
+#. Text in echo
+#: bueno/header.php:7
+msgid "Search Results"
+msgstr "Hasil Pencarian"
+
+#. Text in echo
+#: bueno/search.php:8
+msgid "Search results"
+msgstr "Hasil Pencarian"
+
+#. Text in echo
+#: bueno/search-form.php:6
+#: bueno/header.php:54
+msgid "Search..."
+msgstr "Cari..."
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:261
+msgid "Show Content:"
+msgstr "Tampilkan Konten:"
+
+#. Text in echo
+#: bueno/template-fullwidth.php:27
+#: bueno/archive.php:73
+#: bueno/index.php:50
+#: bueno/page.php:27
+#: bueno/single.php:51
+#: bueno/404.php:18
+#: bueno/search.php:50
+msgid "Sorry, no posts matched your criteria."
+msgstr "Maaf, tidak ada tulisan yang sesuai dengan kriteria anda."
+
+#. Text in echo
+#: bueno/comments.php:121
+#: bueno/comments-legacy.php:155
+msgid "Submit Comment"
+msgstr "Kirim Komentar "
+
+#. Text in echo
+#: bueno/header.php:13
+msgid "Tag Archive"
+msgstr "Arsip Tag"
+
+#. Text in echo
+#: bueno/archive.php:24
+msgid "Tag Archives:"
+msgstr "Arsip Tag:"
+
+#. Text in echo
+#: bueno/template-archives.php:17
+msgid "The Last 30 Posts"
+msgstr "30 Tulisan Terakhir"
+
+#. Text in echo
+#: bueno/comments.php:9
+#: bueno/comments-legacy.php:9
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Tulisan ini dilindungi oleh password. Masukan password untuk melihat komentar."
+
+#. Text in echo
+#: bueno/includes/theme-widgets.php:245
+msgid "Title:"
+msgstr "Judul:"
+
+#. Text in echo
+#: bueno/comments-legacy.php:79
+msgid "Trackbacks For This Post"
+msgstr "Trackbacks untuk tulisan ini"
+
+#. Text in echo
+#: bueno/comments.php:40
+msgid "Trackbacks/Pingbacks"
+msgstr "Trackbacks/Pingbacks"
+
+#. Text in echo
+#: bueno/comments.php:112
+#: bueno/comments-legacy.php:147
+msgid "Website"
+msgstr "Website"
+
+#. Text in function
+#: bueno/includes/theme-widgets.php:164
+msgid "Woo - Featured Posts"
+msgstr "Woo - Featured Posts"
+
+#. Text in echo
+#: bueno/comments.php:117
+msgid "You can use these tags"
+msgstr "Anda  bisa menggunakan tag berikut"
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+msgid "You must be"
+msgstr "Anda harus menjadi"
+
+#. Text in echo
+#: bueno/comments-legacy.php:57
+#: bueno/comments-legacy.php:89
+#: bueno/includes/theme-comments.php:39
+msgid "Your comment is awaiting moderation."
+msgstr "Komentar anda sedang dimoderasi"
+
+#. Text in echo
+#: bueno/comments-legacy.php:61
+#: bueno/comments-legacy.php:93
+#: bueno/includes/theme-comments.php:24
+msgid "at"
+msgstr "pada"
+
+#. Text in echo
+#: bueno/template-archives.php:23
+msgid "comments"
+msgstr "komentar"
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+msgid "logged in"
+msgstr "masuk"
+
+#. Text in echo
+#: bueno/comments.php:20
+msgid "to"
+msgstr "untuk"
+
+#. Text in echo
+#: bueno/comments.php:88
+#: bueno/comments-legacy.php:129
+msgid "to post a comment."
+msgstr "untuk memberikan komentar."
+

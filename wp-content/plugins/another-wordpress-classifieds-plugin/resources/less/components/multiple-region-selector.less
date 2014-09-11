@@ -1,0 +1,46 @@
+.awpcp-multiple-region-selector {
+
+    .add-region, .remove-region {
+        font-size: 0.8em;
+    }
+
+    .add-region {
+        margin-left: 10px;
+    }
+}
+
+#classiwrapper, .awpcp-multiple-region-selector {
+
+    // TODO: these rules for UL are repeated
+    > ul, .awpcp-region-selector-partials {
+        margin: 0;
+        padding: 0;
+    }
+
+    .awpcp-region-selector {
+        background: rgba(0, 0, 0, 0.02);
+        list-style-type: none;
+        margin-bottom: 5px;
+        padding: 4px 0px;
+
+        .awpcp-region-selector-partial {
+            list-style-type: none;
+            margin-bottom: 2px;
+
+            label {
+                display: block;
+                margin-right: 5px;
+            }
+
+            .loading-message {
+                color: #555;
+                font-size: 0.9em;
+                font-style: italic;
+            }
+        }
+    }
+
+    .awpcp-region-selector:last-of-type {
+        margin-bottom: 0;
+    }
+}

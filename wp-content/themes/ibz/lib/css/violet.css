@@ -1,0 +1,12 @@
+/*-------=violet theme-------------------*/	
+
+/* color for selections */
+*::-moz-selection { background:#e757e9; }
+*::selection, mark { background:#e757e9; }
+
+/* text color */
+.main_title, .filter_portfolio .active a, .filter_portfolio a:hover { color:#e757e9; }
+
+/* flex slider */
+.flex-caption { border-bottom:3px solid #e757e9; }
+.flex-control-nav a { background:url(../../images/bullets_violet.png) no-repeat 0px 0px !important; }

@@ -1,0 +1,402 @@
+/*
+Theme Name: Blogs@MLU Default Theme
+Visual Editor CSS Styles
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+*/
+
+body#tinymce {
+	font: 87.5%/1.5em "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
+	letter-spacing: 0.01em;
+	color: #4c4c4c;
+}
+
+/* @group Links */
+
+#tinymce a {
+	color: #81ab2e;
+	text-decoration: none;
+	outline: none;
+}
+
+#tinymce a:hover {
+	text-decoration: underline;
+}
+
+#tinymce a:active, #tinymce a:focus, #tinymce a:focus {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+/*File Type Icons*/
+
+#tinymce a[href^="mailto:"],
+#tinymce a[href$='.pdf'], 
+#tinymce a[href$='.swf'], #tinymce a[href$='.fla'], #tinymce a[href$='.swd'],
+#tinymce a[href$='.xls'], #tinymce a[href$='.xlsx'], #tinymce a[href$='.csv'], #tinymce a[href$='.xlt'], #tinymce a[href$='.xlw'],
+#tinymce a[href$='.ppt'], #tinymce a[href$='.pptx'], #tinymce a[href$='.pps'],
+#tinymce a[href$='.doc'], #tinymce a[href$='.docx'], #tinymce a[href$='.rtf'], #tinymce a[href$='.txt'], #tinymce a[href$='.wps'],
+#tinymce a[href$='.zip'], #tinymce a[href$='.gzip'], #tinymce a[href$='.rar'] {
+	display: inline-block;
+	min-height: 11px;
+	padding-left: 15px;
+	background-image: url(../images/Sprite-Master.png);
+	background-repeat: no-repeat;
+}
+
+#tinymce a[href$='.pdf'], 
+#tinymce a[href$='.swf'], #tinymce a[href$='.fla'], #tinymce a[href$='.swd'],
+#tinymce a[href$='.xls'], #tinymce a[href$='.xlsx'], #tinymce a[href$='.csv'], #tinymce a[href$='.xlt'], #tinymce a[href$='.xlw'],
+#tinymce a[href$='.ppt'], #tinymce a[href$='.pptx'], #tinymce a[href$='.pps'],
+#tinymce a[href$='.doc'], #tinymce a[href$='.docx'], #tinymce a[href$='.rtf'], #tinymce a[href$='.txt'], #tinymce a[href$='.wps'],
+#tinymce a[href$='.zip'], #tinymce a[href$='.gzip'], #tinymce a[href$='.rar'] {
+	padding-left: 20px;
+}
+
+#tinymce a[href^='mailto:'] {
+	background-position: -288px -48px;
+}
+
+#tinymce a[href$='.pdf'] {
+	background-position: -283px -378px;
+}
+
+#tinymce a[href$='.swf'], #tinymce a[href$='.fla'], #tinymce a[href$='.swd'] {
+	background-position: ;
+}
+
+#tinymce a[href$='.xls'], #tinymce a[href$='.xlsx'], #tinymce a[href$='.csv'], #tinymce a[href$='.xlt'], #tinymce a[href$='.xlw'] {
+	background-position: -283px -533px;
+}
+
+#tinymce a[href$='.ppt'], #tinymce a[href$='.pptx'], #tinymce a[href$='.pps'] {
+	background-position: -283px -579px;
+}
+
+#tinymce a[href$='.doc'], #tinymce a[href$='.docx'], #tinymce a[href$='.rtf'], #tinymce a[href$='.txt'], #tinymce a[href$='.wps'] {
+	background-position: -283px -484px;
+}
+
+#tinymce a[href$='.zip'], #tinymce a[href$='.gzip'], #tinymce a[href$='.rar'] {
+	background-position: -283px -432px;
+}
+
+/* @end */
+
+/* @group Headings */
+
+@font-face {
+	font-family: 'TitilliumMaps26L500wt';
+	src: url('../fonts/TitilliumMaps26L002.eot');
+	src: url('../fonts/TitilliumMaps26L002.woff') format('woff'), url('../fonts/TitilliumMaps26L002.otf') format('opentype'), url('../fonts/TitilliumMaps26L002.svg#TitilliumMaps26L-500wt') format('svg');
+}
+
+#tinymce h1, #tinymce h2, #tinymce h3, #tinymce h4, #tinymce h5, #tinymce h6 {
+	color: #000;
+	text-decoration: none;
+	font-family: TitilliumMaps26L500wt, 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
+	letter-spacing: 0.02em;
+}
+
+#tinymce h1, #tinymce h2 {
+	font-size: 2em; 
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	line-height: 1.2em;
+	clear: both;
+}
+
+#tinymce h3 {
+	font-size: 1.33333em; 
+	margin: 1.5em 0;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 5px;
+	clear: both;
+}
+
+#tinymce h4 {
+	 font-size: 1.16667em; 
+	 padding: 1.82143em 0;
+	 margin: 0 !important;
+}
+
+#tinymce h5 {
+	font-size: 1.1em;
+	padding: 1.3em 0;
+	margin: 0 !important;
+}
+
+/* @end */
+
+/* @group HTML Standard Elements */
+
+#tinymce img {
+	border: none;
+	-ms-interpolation-mode: bicubic;
+	border: 1px solid #ccc;
+	padding: 5px;
+	background-color: #eaeaea;
+	box-shadow: #ccc 0px 2px 5px;
+	-webkit-box-shadow: #ccc 0px 2px 5px;
+	-moz-box-shadow: #ccc 0px 2px 5px;
+	-khtml-box-shadow: #ccc 0px 2px 5px;
+}
+
+#tinymce ol, #tinymce form {
+	margin: 0;
+	padding: 0;
+}
+
+#tinymce code, #tinymce pre {
+	background: #f9f9f9;
+	border: 1px solid #ccc;
+	display: block;
+	font-family: Consolas,"Bitstream Vera Sans Mono","Courier New",monospace;
+	font-size: 1em;
+	line-height: 1.6em;
+	margin: 1.5em 10px;
+	padding: .5em 10px;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+}
+
+#tinymce abbr {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+	white-space: nowrap;
+}
+
+#tinymce acronym {
+	border-bottom: 1px dotted #787878;
+	cursor: help;
+}
+
+#tinymce address {
+	font-style: italic;
+}
+
+#tinymce cite {
+	font-variant: small-caps;
+}
+
+#tinymce blockquote {
+	background: #f9f9f9;
+	border-left: 5px solid #81ab2e;
+	margin: 1.5em 10px;
+	padding: .5em 10px;
+	quotes: "\201C""\201D""\2018""\2019";
+}
+
+#tinymce blockquote:before {
+	color: #ccc;
+	content: open-quote;
+	font-size: 4em;
+	line-height: .1em;
+	margin-right: .25em;
+	vertical-align: -.4em;
+}
+
+#tinymce blockquote p {
+	display: inline;
+}
+
+#tinymce em {
+	font-style: italic;
+}
+
+#tinymce dl {
+	margin: 0px 0px 24px 0px;
+}
+
+#tinymce dt {
+	font-weight: bold;
+	color: #000;
+}
+
+#tinymce dd {
+	margin-bottom: 24px;
+}
+
+#tinymce hr {
+	background-color: #ccc;
+	border-width: 0;
+	color: #ccc;
+	height: 2px;
+	line-height: 0;
+	page-break-after: always;
+	text-align: center;
+	width: 80%;
+	margin: 3em 10px;
+	clear: both;
+}
+
+#tinymce hr:after {
+	content: "\a7\a7";
+	font-size: 1.25em;
+}
+
+#tinymce hr.line {
+	border: none;
+	height: 1px;
+	width: 100%;
+	display: block;
+	background-color: #e4e4e4;
+	clear: both;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#tinymce small {
+	font-size: 0.8em;
+}
+
+#tinymce strong {
+	font-weight: bold;
+}
+
+#tinymce sub {
+	bottom: -0.25em;
+	position: relative;
+	vertical-align: baseline;
+}
+
+#tinymce sup {
+	bottom: 0.33em;
+	position: relative;
+	vertical-align: baseline;
+}
+
+#tinymce ul, #tinymce ol {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 40px;
+}
+
+#tinymce ul ul, #tinymce ol ol {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#tinymce ul li, #tinymce li {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: 15px;
+}
+
+#tinymce ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+#tinymce ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+
+
+#tinymce p {
+	margin-bottom: 1.5em;
+}
+
+/* @group Tables */
+
+#tinymce table {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: inherit;
+	margin: 1.5em 10px;
+}
+
+#tinymce thead {
+	background: #ccc;
+	font-weight: bold;
+}
+
+#tinymce th {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #eee;
+	padding: .25em 10px;
+}
+
+#tinymce tbody tr:hover {
+	background: #eee;
+}
+
+#tinymce tbody tr:nth-child(even) {
+	background: #f9f9f9;
+}
+
+#tinymce td {
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #eee;
+	padding: .25em 10px;
+}
+
+
+/* @end */
+
+/* @end */
+
+/* @group WordPress Classes */
+
+#tinymce .alignleft {
+	float: left;
+}
+
+#tinymce .alignright {
+	float: right;
+}
+
+#tinymce .aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+
+#tinymce img.alignleft, #tinymce .wp-caption.alignleft {
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+
+#tinymce img.alignright, #tinymce .wp-caption.alignright {
+	margin-left: 20px;
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+
+#tinymce img.aligncenter, #tinymce .wp-caption.aligncenter {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#tinymce img.wp-smiley,
+#tinymce img.mceWPmore {
+	border: none;
+	padding: 0;
+	background-color: transparent;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-khtml-box-shadow: none;
+}
+
+#tinymce img.mceWPmore {
+	border-top: 1px dotted #ccc;
+}
+
+#tinymce p.wp-caption-text {
+	color: #787878;
+	font-size: 0.9em;
+	font-style: italic;
+	padding: 5px;
+	clear: both;
+	line-height: 1.5em;
+	word-wrap: break-word;
+}
+
+/* @end */

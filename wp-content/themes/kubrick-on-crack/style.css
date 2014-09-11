@@ -1,0 +1,141 @@
+/* CSS Document */
+
+/* -------------------------------------------------------------- 
+
+	Theme Name: Kubrick on Crack!
+	Theme URI: http://fearlessflyer.com
+	Description: 
+	Author: Michael Soriano
+	Author URI: http://fearlessflyer.com
+	Version: 0.1
+
+-------------------------------------------------------------- */
+* {padding:0; margin:0;}
+body {background: url(images/smoke-art2.jpg) no-repeat #000000; background-position:top center; font-family:arial, helvetica; font-size:13px; line-height:20px;} 
+a { outline:none;}
+a:hover {}
+a img {border:none;}
+
+.alignright {float:right;}
+.alignleft {float:left;}
+.alignnone {clear:both;}
+.aligncenter {margin-left: auto; margin-right: auto;}
+
+blockquote {padding:0 0 0 35px; border-left:#CCCCCC 2px solid; font-family:Georgia; font-style:italic; }
+blockquote blockquote {}
+.wp-caption {padding:5px; text-align:center; margin:0 auto;}
+img.alignright {display:inline;}
+img.alignleft {display:inline;}
+img.aligncenter {margin:0 auto; display:block;}
+img.alignnone {clear:both;}
+
+#wrap {position:relative; margin:0 auto; text-align:center; background:url(images/wrap2.png) no-repeat; width:728px;}
+
+
+#header {clear:both; height:152px; width:728px; margin:0 auto; text-align:left;}
+
+#nav {background:url(images/top-bar2.png); height:48px; padding:10px 0 0 20px; } 
+#nav ul li{float:left; padding:0 10px 0 10px; list-style:none; height:35px;}
+#nav ul li.current_page_item {background:url(images/nav-left.png) no-repeat;}
+#nav ul li a { display:block; height:35px; padding:0 13px 0 0; font-size:24px; color:#4d4c4d; letter-spacing:-1px; font-weight:bold; text-decoration:none; line-height:32px;}
+#nav ul li.current_page_item a{background:url(images/nav.png) no-repeat top right; color:#FFFFFF;}
+
+#searchform {display:none;}
+input.inputs {padding:8px; border:1px solid #999999; margin-top:15px; margin-bottom:15px; margin-left:6px;}
+input.go{background:url(images/search-btn.png); width:84px; height:37px; border:none;}
+
+#rss-sprites {float:right; position:relative; top:18px; left:-25px;}
+#rss-sprites ul li {float:left; list-style:none; height:50px; }
+#rss-sprites ul li a{background:url(images/rss-sprites.png) no-repeat; height:50px; text-indent:-9999px; display:block;}
+#rss-sprites ul li a#srch {background-position:0 0; width:58px;}
+#rss-sprites ul li a:hover#srch {background-position:0 -50px;}
+#rss-sprites ul li a#twt {background-position:-58px 0; width:54px;}
+#rss-sprites ul li a:hover#twt {background-position:-58px -50px;}
+#rss-sprites ul li a#rss {background-position:-112px 0; width:78px;}
+#rss-sprites ul li a:hover#rss {background-position:-112px -50px;} 
+
+#main-container {background:#f6f6f6; margin:0 auto; width:728px; min-height:688px; overflow:hidden; position:relative; text-align:left; }
+
+/*feature-section*/
+.post-title-big{font-size:38px; line-height:40px; letter-spacing:-2px; color:#FFFFFF; text-transform:capitalize; }
+.post-title-big a {color:#FFFFFF; text-decoration:none;}
+
+.feature-post {clear:both; overflow:hidden; background:url(images/feature-bg2.png) no-repeat; height:340px; padding-right:10px}
+.feature-post .post-title-big{padding:25px 5px 15px 0;} 
+.feature-post small {padding:5px; background:#000000; width:100px; color:#FFFFFF; }
+.feature-post p {color:#CCCCCC; padding:0 10px 0 0; height:125px; overflow:hidden;}
+img.feature-image {float:left; padding:35px 30px 0 41px; margin-right:10px;}
+a#continue-btn {background:url(images/continue-reading.png); width:187px; height:41px; display:block; text-indent:-9999px; position:absolute; top:278px; left:475px;}
+a:hover#continue-btn {background:url(images/continue-reading-hover.png);}
+
+/*regular-posts*/
+ul.posts {padding:0; margin:0}
+ul.posts li {list-style:none; width:320px; float:left; padding-left:28px;}
+ul.posts li .post {}
+ul.posts .post-title {font-size:18px; letter-spacing:-1px; padding-bottom:14px; padding-top:20px; text-transform:capitalize; height:8px; overflow:hidden; margin-bottom:10px;}
+ul.posts .post-title a{color:#333333; text-decoration:none;}
+.thumb-image {padding-bottom:10px;}
+ul.posts .post-excerpt {background:url(images/horiz.gif) repeat-x bottom left; height:160px; overflow:hidden; padding-bottom:10px;} 
+ul.posts .post-title .comments-bubble {background:url(images/comments-bubble.png); width:27px; height:27px; padding-top:2px; margin-left:3px; float:right;position:relative; top:-5px; text-align:center; font-size:12px; font-weight:bold; color:#FFFFFF;}
+.page-navigation {text-align:center; clear:both; padding-top:22px;}
+.page-navigation a {background:url(images/page-navis.png); width:162px; height:34px; padding-top:6px; display:inline-table; color:#FFFFFF; text-decoration:none; font-weight:bold;}
+.page-navigation a:hover {background:url(images/page-navis-hover.png);}
+/*single*/
+
+.post-in-single .post-title-big { background:url(images/title-bg.png) repeat-x top left #2c2c2c; text-align:center; padding:20px 10px;}
+#single-image {background:url(images/single-image-bg2.jpg) no-repeat; width:728px; height:332px; clear:both; position:relative;}
+#single-image img {position:absolute; top:13px; left:153px;}
+.post-content {padding:10px 30px 10px 30px;}
+.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6 {font-weight:normal; font-size:24px; line-height:28px;}
+.post-content p {padding:10px 0;}
+.post-content p a {color:#d81313; font-weight:bold; text-decoration:none;}
+.post-content p a:hover {text-decoration:underline;}
+.post-content .wp-caption-text {font-family:georgia; font-style:italic; font-size:11px; line-height:14px; padding:5px; color:#666666;}
+.post-content .wp-caption {padding:10px 5px 5px 5px; background:#dcdcdc;}
+.post-content .wp-caption.alignleft {margin:12px 15px 0 0;}
+.post-content .wp-caption.alignright {margin:12px 0 0 10px;}
+.post-content p img.alignleft {padding:20px 15px 0 0;}
+.post-content p img.alignright {padding:20px 0 0 15px;}
+.post-content p code {line-height:14px;}
+.post-content ul {padding-left:35px;}
+.post-content ol {padding-left:35px;}
+
+/*comments*/
+#join-the-disc {background:url(images/join-the-discussion.png) no-repeat #2c2c2c; width:668px; color:#d8d8d8; padding:100px 30px 35px 30px; margin-top:20px;}
+#join-the-disc p a {color:#d81313; text-decoration:none;}
+#join-the-disc a {text-decoration:none;}
+#comments {position:relative; top:-55px; left:380px;}
+ul.commentlist li {list-style:none;}
+.myLinks {width:1px; height:1px; overflow:hidden;}
+img.avatar {float:left; padding:3px; border:1px solid #666666; margin:0 10px 0 0;}
+li.comment {}
+ul.children {margin:20px 0 0 40px;}
+.comment-body {background:#333333; margin-bottom:20px; padding:15px; -moz-border-radius-bottomleft:6px; -moz-border-radius-bottomright:6px; -moz-border-radius-topleft:6px; -moz-border-radius-topright:6px;}
+cite.fn a {font-style:normal; text-transform:capitalize;  padding:0; color:#999999;}
+.comment-author {line-height:14px;}
+.comment-meta {font-family:verdana; font-size:10px; color:#666666; line-height:12px;}
+.comment-meta a {color:#666666;}
+.comment-meta .commentmetadata p a {color:#d81313; }
+a.comment-reply-link {color:#d81313; font-family:verdana; font-size:11px; padding:10px 0 0 0;}
+#respond {-moz-border-radius-bottomleft:6px; -moz-border-radius-bottomright:6px; -moz-border-radius-topleft:6px; -moz-border-radius-topright:6px; background:#333333 url(images/response-bg.png) repeat-x; padding:20px 16px 20px 16px;}
+h3#response-title {background:url(images/response-h3.png) no-repeat; height:72px; width:632px; text-indent:-9999px; }
+#commentform {padding:25px; margin:20px; background:#2b2b2b; -moz-border-radius-bottomleft:6px; -moz-border-radius-bottomright:6px; -moz-border-radius-topleft:6px; -moz-border-radius-topright:6px; overflow:hidden;}
+.comment-form-labels {padding-top:10px;}
+.comment-form-labels small{color:#666666}
+.comment-form-input-fields {border:1px solid #666; background:#666; padding:10px;}
+input#submit {background:url(images/submit-btn.png) no-repeat; width:199px; height:35px; border:none; text-indent:-9999px; margin:15px 20px 0 0; float:right;}
+#cancel-comment-reply {padding-left:23px;} 
+a#cancel-comment-reply-link {color:#d81313; text-transform:uppercase;}
+
+
+
+/*footer*/
+#footer-wrap{background:#000000 url(images/footer-wrap-bg2.jpg) repeat-x; height:130px; margin:0 auto; text-align:center;}
+#footer {height:130px; background:url(images/footer-bg2.jpg) top left no-repeat; width:728px; margin:0 auto; }
+#credits {text-align:left; padding:45px 0 0 25px; font-family:verdana; font-size:10px;}
+#credits a {color:#d81313; text-decoration:none;}
+#credits p {line-height:12px;}
+#credits p strong {text-transform:capitalize; font-weight:normal;}
+#credits-right {float:right; text-align:right; position:relative; top:23px; font-family:verdana; font-size:10px; color:#ffffff;}
+#credits-right a {color:#d81313; text-decoration:none;}
+#credits-right p {line-height:22px;}

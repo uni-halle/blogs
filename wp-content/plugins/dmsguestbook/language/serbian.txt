@@ -1,0 +1,19 @@
+<name>Vase ime</name>
+<email>Email</email>
+<url>Vebsajt</url>
+<message>Tekst</message>
+<antispam><b>Antispam mjere</b><br />Molimo Vas da upisete zbir sledeca
+
+dva broja u polje ispod.</antispam>
+<mandatory>Obavezna polja</mandatory>
+<submit>Upis</submit>
+<name_error>Ime je prekratko!</name_error>
+<email_error>Neispravan unos email adrese!</email_error>
+<url_error>Neispravan unos vebsajt adrese!</url_error>
+<message_error>Tekst je prekratak!</message_error>
+<antispam_error>Greska pri unosu zbira u celiju!</antispam_error>
+<success>Hvala na upisu u knjigu posjetilaca!</success>
+<admin_review>Administrator ce morati provjeriti i odobriti unos!<br
+/>Hvala na strpljenju!</admin_review>
+<spam_detect>Unos najvjerovatnije sadrzi Spam!<br />Neupjesan upis!
+</spam_detect>

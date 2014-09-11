@@ -1,0 +1,131 @@
+/*
+ Theme Name:   Twenty Fourteen Child for forms
+ Description:  Twenty Fourteen Child Theme for Forms
+ Author:       Kristina Kunze
+ Template:     twentyfourteen
+ Version:      1.0.0
+ Tags:         no sidebar, no header, no navigation, no comments, no meta data for articles, white background and footer
+ Text Domain:  twenty-fourteen-child
+*/
+
+@import url("../twentyfourteen/style.css");
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+/* Footer Textfarbe und padding */
+.site-info a{
+	color: #2b2b2b;
+}
+
+.site-info{
+	color: #2b2b2b;
+	padding: 15px 10px;
+	width: 380px;
+}
+
+/* footer Hintergrundfarbe und position */
+.site-footer {
+	background-color: #fff;
+	margin: 0 auto;
+	width:100%;
+	position: relative;
+}
+ /* Farbe und Umrandung für Formularfelder */
+input,
+textarea {
+	color: #2b2b2b;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+input:focus,
+textarea:focus {
+	border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+/* margin top Anpassungen für Seite */
+.masthead-fixed .site-main {
+margin-top: 24px;
+}
+ 
+.full-width .site-content .entry-header, 
+.full-width .site-content .entry-content,
+.entry-header,
+.entry-content {
+padding-right: 10px;
+padding-left: 10px;
+}
+ /* maximale Breite des Contents und footer */
+.site-content .entry-header, 
+.site-content .entry-content, 
+.site-content .entry-summary, 
+.site-content .entry-meta, 
+.page-content,
+.site-footer,
+.site {
+max-width: 400px;
+}
+
+/* padding für content */
+.site-content .entry-content, .site-content .entry-summary, .page-content {
+padding: 0px 10px 0;
+}
+
+.hentry {
+margin: 0 auto;
+}
+
+.entry-title {
+font-size: 24px;	
+}
+
+/* Breite von Eingabefeldern 400px */
+input[type="email"],
+input[type="text"],
+input[type="url"],
+input[type="file"],
+.wpcf7,
+form,
+p,
+small,
+label,
+textarea {
+	width: 390px;	
+}
+/*  Einrücken von Radio Buttons und Checkboxen*/
+input[type="radio"],
+input[type="checkbox"] {
+	margin-left: 20px;	
+}
+
+/*Checkboxen als Block anzeigen */
+span.wpcf7-list-item { display: block; }
+
+/* small text z.b. für Hinweise unter Formulartext in grau */
+small {
+	color: #949494;
+}
+
+/* margin und padding für Formular Antwort Feld */
+div.wpcf7-response-output {
+margin: 0;
+padding: 0px 5px;
+}
+
+nav.navigation.paging-navigation {
+	display: none;	
+}
+
+div#global-footer {
+	width: 400px;	
+	padding: 10px 10px;
+}
+
+#global-footer p {
+	width: 380px;
+	padding: 0;
+}
+
+#global-footer, 
+#colophon {
+	display:none;
+}

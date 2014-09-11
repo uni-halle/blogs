@@ -1,0 +1,16 @@
+/* Thanks to Manuel Gualda Caballero *** manuel(at)utopiaverde(dot)org */
+
+<name>Nombre</name>
+<email>Correo</email>
+<url>Web</url>
+<message>Mensaje</message>
+<antispam><b>Medida antispam</b><br />Por favor, introduce la siguiente combinaci&oacute;n de letras y n&uacute;meros dentro del campo de formulario de abajo antes de enviar tu mensaje. Gracias.</antispam>
+<mandatory>Obligatorio</mandatory>
+<submit>Enviar</submit>
+<name_error>Error: nombre demasiado corto.</name_error>
+<email_error>Error: correo no v&aacute;lido.</email_error>
+<url_error>Error: URL no v&aacute;lida.</url_error>
+<message_error>Error: mensaje demasiado corto.</message_error>
+<antispam_error>Error: combinaci&oacute;n antispam incorrecta.</antispam_error>
+<success>Mensaje enviado.</success>
+<admin_review>El administrador revisar&aacute; este env&iacute;o!<br />&iexcl; Gracias por su paciencia!</admin_review>

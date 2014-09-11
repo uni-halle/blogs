@@ -1,0 +1,15 @@
+h2 { margin-bottom: 20px; }
+.title { margin: 0px !important; background: #DFDFDF url(../images/gray-grad.png) repeat-x scroll left top; padding: 10px; font-family: Georgia, serif; font-weight: normal !important; letter-spacing: 1px; font-size: 18px; }
+.container { background: #EAF3FA; padding: 10px; }
+.maintable { font-family:"Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; background: ##F9F9F9; margin-bottom: 20px; padding: 10px 0px; border:1px solid #E6E6E6; }
+.mainrow { padding-bottom: 10px !important; border-bottom: 1px solid #E6E6E6 !important; float: left; margin: 0px 10px 10px 10px !important; }
+.titledesc { font-size: 12px; font-weight:bold; width: 220px !important; margin-right: 20px !important; }
+.forminp { width: 700px !important; valign: middle !important; }
+.forminp input, .forminp select, .forminp textarea { margin-bottom: 9px !important; background: #fff; border-top: 1px solid #ccc; border-left: 1px solid #ccc; width: 500px; padding: 4px; font-family:"Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; font-size: 12px; }
+.forminp span { font-size: 9px !important; font-weight: normal !important; line-height: 14px !important; }
+.info { background: #FFFFCC; border: 1px dotted #D8D2A9; padding: 10px; color: #333; }
+.forminp .checkbox { width:20px }
+.info a { color: #333; text-decoration: none; border-bottom: 1px dotted #333 }
+.info a:hover { color: #666; border-bottom: 1px dotted #666; }
+.warning { background: #FFEBE8; border: 1px dotted #CC0000; padding: 10px; color: #333; font-weight: bold; }
+

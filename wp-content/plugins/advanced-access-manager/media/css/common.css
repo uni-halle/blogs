@@ -1,0 +1,369 @@
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+*/
+.aam-beta-version{
+    margin: 15px 10px;
+    border: 1px solid #FF8888;
+    border-radius: 4px;
+    padding: 4px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.aam-hidden{
+    display: none;
+}
+
+.aam-dialog{
+    display: none;
+}
+
+.wrap a{
+    outline: 0;
+}
+
+.aam-tooltip {
+    display:none;
+    position:absolute;
+    border:1px solid #CCCCCC;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #AAAAAA;
+    padding: 5px 10px;
+    z-index: 9999;
+    color: #333333;
+    font-size: 1em;
+    max-width: 300px;
+    left:0px;
+    top: 0px;
+    font-weight: bold;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.aam-icon{
+    text-indent: -9999px;
+    text-align: center;
+    background-repeat: no-repeat;
+}
+
+a.aam-icon{
+    outline: none;
+}
+
+.aam-icon span {
+    content: "";
+    display: block;
+    background-repeat: no-repeat;
+    opacity: 1;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition:    opacity 0.5s;
+    -o-transition:      opacity 0.5s;
+}
+
+.aam-icon span:hover{
+    opacity: 1;
+}
+
+.aam-icon-large span {
+    background-image: url('images/common/large-iconset.png');
+    width: 48px;
+    height: 48px;
+    margin-left: calc(50% - 24px);
+    margin-left: -moz-calc(50% - 24px);
+}
+
+.aam-icon-medium span {
+    background-image: url('images/common/medium-iconset.png');
+    width: 24px;
+    height: 24px;
+    margin-left: calc(50% - 12px);
+    margin-left: -moz-calc(50% - 12px);
+}
+
+.aam-icon-small span {
+    background-image: url('images/common/small-iconset.png');
+    width: 16px;
+    height: 16px;
+    margin-left: calc(50% - 8px);
+    margin-left: -moz-calc(50% - 8px);
+}
+
+.aam-icon-large-active{
+    background-position-y: -48px !important;
+}
+
+.aam-icon-medium-active{
+    background-position-y: -24px !important;
+}
+
+.aam-icon-small-active{
+    background-position-y: -16px !important;
+}
+
+.aam-icon-large-save span{
+    background-position: 0 0;
+}
+
+.aam-icon-large-save:hover span{
+    background-position: 0 -48px;
+}
+
+.aam-icon-large-roleback span{
+    background-position: -48px 0;
+}
+
+.aam-icon-large-roleback:hover span{
+    background-position: -48px -48px;
+}
+
+.aam-icon-large-twitter span{
+    background-position: -96px 0;
+}
+
+.aam-icon-large-twitter:hover span{
+    background-position: -96px -48px;
+}
+
+.aam-icon-large-message span{
+    background-position: -144px 0;
+}
+
+.aam-icon-large-message:hover span{
+    background-position: -144px -48px;
+}
+
+.aam-icon-large-link span{
+    background-position: -192px 0;
+}
+
+.aam-icon-large-link:hover span{
+    background-position: -192px -48px;
+}
+
+.aam-icon-large-info span{
+    background-position: -240px 0;
+}
+
+.aam-icon-large-info:hover span{
+    background-position: -240px -48px;
+}
+
+.aam-icon-large-editor span{
+    background-position: -288px 0;
+}
+
+.aam-icon-large-editor:hover span{
+    background-position: -288px -48px;
+}
+
+.aam-icon-medium-add span{
+    background-position: 0 0;
+}
+
+.aam-icon-medium-add:hover span{
+    background-position: 0 -24px;
+}
+
+.aam-icon-medium-refresh span{
+    background-position: -24px 0px;
+}
+
+.aam-icon-medium-refresh:hover span{
+    background-position: -24px -24px;
+}
+
+.aam-icon-medium-filter span{
+    background-position: -48px 0px;
+}
+
+.aam-icon-medium-filter:hover span{
+    background-position: -48px -24px;
+}
+
+.aam-icon-medium-copy span{
+    background-position: -72px 0px;
+}
+
+.aam-icon-medium-copy:hover span{
+    background-position: -72px -24px;
+}
+
+.aam-icon-medium-roleback span{
+    background-position: -96px 0px;
+}
+
+.aam-icon-medium-roleback:hover span{
+    background-position: -96px -24px;
+}
+
+.aam-icon-medium-twitter span{
+    background-position: -120px 0;
+}
+
+.aam-icon-medium-twitter:hover span{
+    background-position: -120px -24px;
+}
+
+.aam-icon-medium-help span{
+    background-position: -144px 0;
+}
+
+.aam-icon-medium-help:hover span{
+    background-position: -144px -24px;
+}
+
+.aam-icon-medium-message span{
+    background-position: -168px 0;
+}
+
+.aam-icon-medium-message:hover span{
+    background-position: -168px -24px;
+}
+
+.aam-icon-medium-star span{
+    background-position: -192px 0;
+}
+
+.aam-icon-medium-star:hover span{
+    background-position: -192px -24px;
+}
+
+.aam-icon-small-manage span{
+    background-position: 0 0;
+}
+
+.aam-icon-small-manage:hover span{
+    background-position: 0 -16px;
+}
+
+.aam-icon-small-delete span{
+    background-position: -16px 0;
+}
+
+.aam-icon-small-delete:hover span{
+    background-position: -16px -16px;
+}
+
+.aam-icon-small-pen span{
+    background-position: -32px 0;
+}
+
+.aam-icon-small-pen:hover span{
+    background-position: -32px -16px;
+}
+
+.aam-icon-small-edit-user span{
+    background-position: -48px 0;
+}
+
+.aam-icon-small-edit-user:hover span{
+    background-position: -48px -16px;
+}
+
+.aam-icon-small-block span{
+    background-position: -64px 0;
+}
+
+.aam-icon-small-block:hover span{
+    background-position: -64px -16px;
+}
+
+.aam-icon-small-roleback span{
+    background-position: -80px 0;
+}
+
+.aam-icon-small-roleback:hover span{
+    background-position: -80px -16px;
+}
+
+.aam-icon-small-trash span{
+    background-position: -96px 0;
+}
+
+.aam-icon-small-trash:hover span{
+    background-position: -96px -16px;
+}
+
+.aam-icon-small-select span{
+    background-position: -112px 0;
+}
+
+.aam-icon-small-select:hover span{
+    background-position: -112px -16px;
+}
+
+.large-icons-row{
+    display: table;
+    width: 100%;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.large-icons-row .aam-icon{
+    display: table-cell;
+    text-align: center;
+    vertical-align: bottom;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.large-icons-row a.disabled span{
+    opacity: 0.8;
+    cursor: none;
+    pointer-events: none;
+    text-decoration: line-through;
+}
+
+.medium-icons-row{
+    display: inline-table;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.medium-icons-row .aam-icon{
+    display: table-cell;
+    text-indent: 0;
+    font-size: 9px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.medium-icons-row a.aam-icon{
+    text-decoration: none;
+}
+
+.aam-list-row-actions{
+    width: 100%;
+    display: inline-table;
+    text-align: center;
+}
+
+.aam-list-row-actions .aam-icon{
+    display: table-cell;
+}
+
+.aam-warning{
+    width: 100%;
+    height: 40px;
+    display: table-row;
+    background: transparent url('images/common/warning.png') no-repeat 2px center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 1px;
+}
+
+.aam-warning span{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 30px;
+    font-size: 0.9em;
+}

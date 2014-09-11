@@ -1,0 +1,17 @@
+/* Luiz Ricardo Bastos, from Limeira, Brazi, lrmbastos(at)uol(dot)com(dot)br */
+
+<name>Nome</name>
+<email>E-mail</email>
+<url>Site</url>
+<message>Mensagem</message>
+<antispam><b>Medida antispam</b><br />
+Por favor, digite a seguinte combina&ccedil;&atilde;o de letras e n&uacute;meros no campo de formul&aacute;rio abaixo, antes de enviar sua mensagem. Obrigado.</antispam>
+<mandatory>Campos obrigat&oacute;rios</mandatory>
+<submit>Enviar</submit>
+<name_error>Erro: nome muito curto.</name_error>
+<email_error>Erro: e-mail n&atilde;o &eacute; v&aacute;lido.</email_error>
+<url_error>Erro: Site n&atilde;o v&aacute;lido.</url_error>
+<message_error>Erro: mensagem curta demais.</message_error>
+<antispam_error>Erro: combina&ccedil;&atilde;o antispam incorreta.</antispam_error>
+<success>Mensagem enviada.</success>
+<admin_review>O administrador revisar&aacute; esta mensagem!<br />Obrigado por sua compreens&atilde;o!</admin_review>

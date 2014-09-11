@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+ */
+?>
+<div class="wrap" id="aam">
+    <form action="" method="post" id="aam_form">
+        <?php do_action('aam_cmanager_hierarchy'); ?>
+        <div class="postbox-container" style="width:70%;">
+            <div class="metabox-holder">
+                <div class="meta-box-sortables">
+                    <div class="postbox">
+                        <div class="handlediv" title="<?php echo __('Click to toggle', 'aam'); ?>"></div>
+                        <h3 class="hndle">
+                            <?php if (aam_Core_API::isNetworkPanel()) { ?>
+                                <span class="current-site"></span>
+                            <?php } ?>
+                            <span class="current-subject"></span>
+                        </h3>
+                        <div class="inside main-inside">
+                            <div class="aam-main-loader"></div>
+                            <div class="aam-main-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php if (aam_Core_Console::hasIssues()) { ?>
+            <div class="postbox-container" style="width:25%; margin-left: 2%;">
+                <div class="metabox-holder">
+                    <div class="meta-box-sortables">
+                        <div class="postbox">
+                            <div class="handlediv" title="<?php echo __('Click to toggle', 'aam'); ?>"></div>
+                            <h3 class="hndle">
+                                <span><?php echo __('AAM Warnings', 'aam'); ?></span>
+                            </h3>
+                            <div class="inside">
+                                <?php foreach (aam_Core_Console::getWarnings() as $warning) { ?>
+                                    <div class="aam-warning"><span><?php echo $warning; ?></span></div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <div class="postbox-container" style="width:25%; margin-left: 2%;">
+            <div class="metabox-holder" id="control_panel">
+                <div class="meta-box-sortables">
+                    <div class="postbox">
+                        <div class="handlediv" title="<?php echo __('Click to toggle', 'aam'); ?>"></div>
+                        <h3 class="hndle">
+                            <span><?php echo __('Control Panel', 'aam'); ?></span>
+                        </h3>
+                        <div class="inside">
+                            <div class="large-icons-row" id="cpanel_major">
+                            </div>
+                            <div class="medium-icons-row" id="cpanel_minor"></div>
+                            <div class="aam-metabox-loader"></div>
+                        </div>
+                        <div id="restore_dialog" class="aam-dialog" title="<?php echo __('Undo Change', 'aam'); ?>">
+                            <p class="dialog-content"><?php echo __('Would your like to role back current settings?', 'aam'); ?></p>
+                        </div>
+                        <div id="message_dialog" class="aam-dialog" title="<?php echo __('E-mail Us', 'aam'); ?>">
+                            <p class="dialog-content"><?php echo __('Our E-mail address is <b>support@wpaam.com</b>', 'aam'); ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metabox-holder" id="control_manager">
+                <div class="meta-box-sortables">
+                    <div class="postbox">
+                        <div class="handlediv" title="<?php echo __('Click to toggle', 'aam'); ?>"></div>
+                        <h3 class="hndle">
+                            <span><?php echo __('Control Manager', 'aam'); ?></span>
+                        </h3>
+                        <div class="inside">
+                            <div id="minor-publishing">
+                                <div id="misc-publishing-actions" class="control-manager">
+                                    <?php
+                                    $subjects = aam_View_Collection::retrieveSubjects();
+                                    foreach ($subjects as $subject) {
+                                        echo '<a href="#" class="', $subject->class, '" ';
+                                        echo 'aam-tooltip="', $subject->title, '" segment="' . $subject->segment . '">';
+                                        echo $subject->label, '</a>';
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="control-manager-content">
+                                <?php
+                                foreach ($subjects as $subject) {
+                                    echo $subject->controller->content();
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br class="clear" />
+    </form>
+</div>

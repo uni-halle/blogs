@@ -1,0 +1,101 @@
+/*
+Theme Name: Jenny
+Theme URI: http://www.speckygeek.com/wordpress-themes/
+Description: A premium-quality, highly customizable WordPress theme. Multiple colour schemes, supports widgets, SEO-optimized, fast to load and no plugins required. Built-in contact form. Works in WordPress 3.0 and superior. Works in all versions of Firefox, Chrome, Opera and Safari and Internet Explorer 6 and higher. 
+Version: 1.5.2
+Author: Specky Geek
+Author URI: http://www.speckygeek.com
+Tags: blue, black, red, light, two-columns, fixed-width, threaded-comments, custom-header, custom-menu, custom-background, sticky-post, theme-options, editor-style
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*Actual StyleSheets are in Styles Folder*/
+
+.aligncenter {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.alignleft {
+	margin-right: 15px;
+	float: left;
+}
+
+.alignright {
+	margin-left: 15px;
+	float: right;
+}
+
+
+/*=Contact Page
+-------------------------------------------*/
+
+#contact {
+	margin-top: 15px;
+	overflow: hidden;
+	position: relative;
+	clear:both;
+	font-size:14px;
+}
+#contact p {
+	margin: 0;
+	clear:both;
+}
+#contact .error {
+	color:#FF7200;
+	font-size:12px;
+	padding:0 5px;
+}
+#contact label {
+	color: #888;
+	font-size: 12px;
+	font-weight:bold;
+	float:left;
+	
+}
+#contact .contact-info{
+width:350px;
+}
+#contact input {
+	margin:0 0 9px;
+	width:98%;
+	float:left;	
+}
+#contact textarea {
+	width:98%;
+}
+#contact #sendCopy{
+float:left;
+width:auto;
+margin-right:5px;
+}
+
+#contact .checkmail{
+float:left;
+margin:10px 0;
+clear:both;
+}
+
+#contact .contact-submit {
+	margin: 0 0 24px;
+}
+#contact .contact-submit input {
+	width: auto;
+	font-size: 14px;
+}
+#contact .alertbox{
+margin:5px 0 25px 0; 
+padding:10px;
+border:2px solid #FF9F9F;
+background:#FBFBEE;
+clear:both;
+}
+#contact .successbox{
+margin:5px 0 25px 0; 
+padding:10px;
+border:2px solid #68EF87;
+background:#FBFBEE;
+clear:both;
+}

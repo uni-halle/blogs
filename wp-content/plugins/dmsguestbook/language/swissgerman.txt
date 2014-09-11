@@ -1,0 +1,16 @@
+/* Daniel Schurter *** DMSGuestbook(at)DanielSchurter(dot)net */
+
+<name>Nam&auml;</name>
+<email>Iimeil</email>
+<url>Websiit&auml;</url>
+<message>Tegscht</message>
+<antispam><b>Antisp&auml;m Massnahme</b><br />Vor em Abs&auml;nde vom Geschtebuech Ihtrag, d Buechstabe -und Zahl&auml;kombination is Tegschtf&auml;ldiitr&auml;hge.</antispam>
+<mandatory>bruchts</mandatory>
+<submit>iihtr&auml;hge</submit>
+<name_error>De Name isch zchurz!</name_error>
+<email_error>Ung&uuml;ltigi Imeil Adr&auml;sse!</email_error>
+<url_error>Ung&uuml;ltigi Websiit&auml; Adr&auml;sse!</url_error>
+<message_error>Tegscht isch zchurz!</message_error>
+<antispam_error>D Buechstabe und Zahlekombination isch falsch!</antispam_error>
+<success>Messi f&uuml;r din Geschtebuech ihtrag!</success>
+<admin_review>D&auml; Administrator wird d&auml; ihtrag &uuml;berpr&uuml;ef&auml;!<br />Dank&auml; f&uuml;r dini Geduld!</admin_review>

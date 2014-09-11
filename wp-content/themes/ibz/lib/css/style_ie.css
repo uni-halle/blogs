@@ -1,0 +1,19 @@
+input[type="text"], input[type="email"], input[type="password"] { 
+	height:31px;
+	padding:12px 0 12px 20px; }
+	
+.wpcf7 input[type="text"], 
+.wpcf7 input[type="email"], 
+.wpcf7 input[type="password"]  { 
+	height:55px;
+	padding:17px 0 7px 20px; }
+	
+.nivo-controlNav {	 
+	bottom:-22px; }
+	
+iframe.panorama {	 
+	margin: 7px -7px -12px 7px;
+	display: inline;
+	width:398px;   }
+	
+

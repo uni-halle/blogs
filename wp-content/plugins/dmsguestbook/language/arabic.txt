@@ -1,0 +1,15 @@
+
+<name>الاسم</name>
+<email>البريد الإلكتروني</email>
+<url>عنوان الموقع</url>
+<message>النص</message>
+<antispam><b>أداة مضاد الـ Spam</b><br />الرجاء ادخل النص وعدد الجمع في الحقل المخصص قبل الضغط على زر دوّن.</antispam>
+<mandatory>إلزامي</mandatory>
+<submit>دوّن</submit>
+<name_error>الاسم قصير جداً!</name_error>
+<email_error>البريد الإلكتروني المدخل غير صحيح!</email_error>
+<url_error>عنوان الموقع المدخل غير صحيح!</url_error>
+<message_error>النص قصير جدّاً!</message_error>
+<antispam_error>لم يتم إدخال المطلوب في أداة مضاد الـ Spam!</antispam_error>
+<success>شكراً لك لتدوينك في سجّل الزوّار!</success>
+<admin_review>سيتم مراجعة رسالتك من قبل الإدارة!<br />نشكرك لطول بالك!</admin_review>

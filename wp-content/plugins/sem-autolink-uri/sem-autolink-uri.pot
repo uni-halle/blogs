@@ -1,0 +1,37 @@
+# Copyright (C) 2014 Autolink URI
+# This file is distributed under the same license as the Autolink URI package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Autolink URI 2.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/sem-autolink-uri\n"
+"POT-Creation-Date: 2014-04-22 16:44:19+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. #-#-#-#-#  sem-autolink-uri.pot (Autolink URI 2.5)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: sem-autolink-uri-info.php:2
+msgid "Autolink URI"
+msgstr ""
+
+#. #-#-#-#-#  sem-autolink-uri.pot (Autolink URI 2.5)  #-#-#-#-#
+#. Description of the plugin/theme
+#: sem-autolink-uri-info.php:3
+msgid "Automatically wraps unhyperlinked uri with html anchors."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.semiologic.com/software/autolink-uri/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Denis de Bernardy & Mike Koepke"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.getsemiologic.com"
+msgstr ""

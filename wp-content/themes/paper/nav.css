@@ -1,0 +1,139 @@
+/*Main Navbar */
+
+#nav {
+	background: url(images/navigation.jpg) no-repeat;
+	height: 53px;
+	font-size:1em;
+	padding: 9px 0 0 100px;
+	font-family:Courier;
+	font-size: 125%;
+	text-transform:uppercase; letter-spacing: .04em;
+	}
+	
+#nav, #nav ul {
+	list-style: none;
+	}
+
+#nav a, #nav a:hover {
+	display: block;
+	color: #ebc208;
+	text-decoration:none;
+	background-color: transparent;
+	margin: 0;
+	}
+
+#nav li {
+	float: left;
+	list-style:none;
+	}
+
+#nav a, #nav a:visited {
+	display:block;
+	padding:0 8px 0 8px;
+	}
+
+#nav a:hover, #nav a:active, .current_page_item	a,  #home .on {
+	color: #696969;
+	text-decoration:none;
+	}	
+	
+	
+	
+	
+/* Dropdown Menus */		
+#nav li ul {
+	position: absolute;
+	left: -999em;
+	height: auto;
+	width: 174px;
+	border-bottom: 0px solid #a9a9a9;
+	}
+
+#nav li li {
+	border-top: 0px solid #a9a9a9;
+	background: transparent;
+	}
+
+#nav li li a, #nav li li a:visited {
+	font-weight:normal;
+	font-size:0.9em;
+	color:#696969;
+	}
+
+#nav li li a:hover, #nav li li a:active {
+	background: #FEF78F;
+	}	
+		
+#nav li:hover ul, #nav li li:hover ul, #nav li li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul, #nav li li li.sfhover ul {
+	left: auto;
+	}
+
+a.main:hover
+{	background:none;
+	}
+	
+/****************Subnav ****************/
+
+.subnav li {
+	list-style:none;
+	border-bottom:0px solid #FFF;
+	}
+
+.subnav li a:link, .subnav li a:visited {
+	background: #FDE2E0;
+	display:block;
+	padding:0px 2px 2px 5px;
+	margin:0px 0px 0px 0px;
+	border-left:0px solid #e4efd5;
+	}
+		
+.subnav li a:hover, .subnav li a:active {
+	background:#AFDFE5;
+	text-decoration:none;
+	}
+
+.subnav li li a:link, .subnav li li a:visited {
+	border-left:none;
+	}
+
+
+/*flickr NAV */
+
+#f_nav {
+	font-size:1.1em;
+	margin: 14px 0 0 0;
+	}
+	
+#f_nav, #f_nav ul {
+	list-style: none;
+	line-height: 1;
+	margin-right: 8px;
+	float: right;
+	}
+
+#f_nav a {
+	display: block;
+	text-decoration: none;
+	border:#696969 1px solid;
+	background: #fff;
+	margin: 2px;
+	}
+#f_nav a.badge_text {border: 0; font-weight: normal; color: gray; font-size: 10px;}
+#f_nav li {
+	float: left;
+	list-style:none;
+	border-right:0px dotted #FFFAF0;
+	}
+
+#f_nav a, #f_nav a:visited {
+	display:block;
+	font-weight:bold;
+	color: #FFFAF0;
+	padding:3px 3px;
+	}
+
+#f_nav a:hover, #f_nav a:active {
+	background:#FDF5E6;
+	color: #696969;
+	text-decoration:none;
+	}	

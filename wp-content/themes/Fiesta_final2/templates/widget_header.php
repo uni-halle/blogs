@@ -1,0 +1,1 @@
+  <li  class="art-widget-title"><?php echo $title; ?></li>

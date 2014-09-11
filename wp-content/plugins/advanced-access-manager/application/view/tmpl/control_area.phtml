@@ -1,0 +1,242 @@
+<?php
+
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+ */
+global $wp_taxonomies;
+
+if (aam_Core_Request::post('type') === aam_Control_Object_Term::UID) {
+    $object = $this->getSubject()->getObject(
+            aam_Control_Object_Term::UID, aam_Core_Request::post('id')
+    );
+    if (isset($wp_taxonomies[$object->getTerm()->taxonomy])){
+        //take in consideration only first object type
+        $post_type = $wp_taxonomies[$object->getTerm()->taxonomy]->object_type[0];
+    } else {
+        $post_type = 'post';
+    }
+} else {
+    $object = $this->getSubject()->getObject(
+            aam_Control_Object_Post::UID, aam_Core_Request::post('id')
+    );
+    $post_type = $object->getPost()->post_type;
+}
+
+if ($post_type == 'attachment'){
+?>
+    <div class="attachment-access-block">
+        Get better access control over your media files with 
+        <b><a href="http://wpaam.com/aam-extensions/aam-media-manager/" target="_blank">AAM Media Manager</a></b>
+        extension.
+    </div>
+<?php 
+}
+if ($object->getUID() == aam_Control_Object_Term::UID) { ?>
+    <div id="term_access">
+        <table class="dataTable" id="term_access_frontend">
+            <thead>
+                <tr>
+                    <th colspan="2" class="term-access-title">
+                        <?php echo $this->getObjectTitle('term', $object->getTerm()->taxonomy) . ' ' . __('Access', 'aam'); ?>
+                    </th>
+                </tr>
+                <tr>
+                    <th><?php echo __('Capability', 'aam'); ?></th>
+                    <th><?php echo __('Restrict', 'aam'); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $term_fcaps = aam_Core_ConfigPress::getParam(
+                            'aam.term.' . $object->getTerm()->taxonomy . '.caps.frontend',
+                            apply_filters(
+                                'aam_term_access_list',
+                                aam_Core_Settings::get('term_frontend_restrictions'),
+                                'frontend',
+                                $object,
+                                $post_type
+                            )
+                );
+                foreach ($term_fcaps as $i => $action) {
+                ?>
+                    <tr class="<?php echo ($i % 2 ? 'event' : 'odd'); ?>">
+                        <td>
+                            <div class="post-access">
+                                <?php echo __($action, 'aam'); ?>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="aam-list-row-actions">
+                                <div class="post-action">
+                                    <input type="checkbox" id="term_frontend_<?php echo $action; ?>" name="access[term][frontend][<?php echo $action; ?>]" <?php echo ($object->has('frontend', $action) ? 'checked="checked"' : ''); ?> />
+                                    <label for="term_frontend_<?php echo $action; ?>">
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+
+        <table class="dataTable" id="term_access_backend">
+            <thead>
+                <tr>
+                    <th colspan="2" class="term-access-title">
+                        <?php echo $this->getObjectTitle('term', $object->getTerm()->taxonomy) . ' ' . __('Access', 'aam'); ?>
+                    </th>
+                </tr>
+                <tr>
+                    <th><?php echo __('Capability', 'aam'); ?></th>
+                    <th><?php echo __('Restrict', 'aam'); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $term_bcaps = aam_Core_ConfigPress::getParam(
+                            'aam.term.' . $object->getTerm()->taxonomy . '.caps.backend',
+                            apply_filters(
+                                'aam_term_access_list',
+                                aam_Core_Settings::get('term_backend_restrictions'),
+                                'backend',
+                                $object,
+                                $post_type
+                            )
+                );
+                foreach ($term_bcaps as $i => $action) {
+                ?>
+                <tr class="<?php echo ($i % 2 ? 'event' : 'odd'); ?>">
+                    <td>
+                        <div class="post-access">
+                            <?php echo __($action, 'aam'); ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="aam-list-row-actions">
+                            <div class="post-action">
+                                <input type="checkbox" id="term_backend_<?php echo $action ?>" name="access[term][backend][<?php echo $action; ?>]" <?php echo ($object->has('backend', $action) ? 'checked="checked"' : ''); ?> />
+                                <label for="term_backend_<?php echo $action ?>">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+<?php } ?>
+<div id="post_access" class="post-access-list">
+    <table class="dataTable" id="post_access_frontend">
+        <thead>
+            <tr>
+                <th colspan="2" class="post-access-title">
+                    <?php if (($object->getUID() == aam_Control_Object_Term::UID)){
+                        echo sprintf(__('All %s in Term', 'aam'), $this->getObjectTitle('post', $post_type));
+                    } else {
+                        echo $this->getObjectTitle('post', $post_type) . ' ' . __('Access', 'aam');
+                    }
+                    ?>
+                </th>
+            </tr>
+            <tr>
+                <th><?php echo __('Capability', 'aam'); ?></th>
+                <th><?php echo __('Restrict', 'aam'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $post_fcaps = aam_Core_ConfigPress::getParam(
+                        'aam.post.' . $post_type . '.caps.frontend',
+                        apply_filters(
+                            'aam_post_access_list',
+                            aam_Core_Settings::get('post_frontend_restrictions'),
+                            'frontend',
+                            $object,
+                            $post_type
+                        )
+            );
+            foreach ($post_fcaps as $i => $action) {
+            ?>
+            <tr class="<?php echo ($i % 2 ? 'event' : 'odd'); ?>">
+                <td>
+                    <div class="post-access">
+                        <?php echo __($action, 'aam'); ?>
+                    </div>
+                </td>
+                <td>
+                    <div class="aam-list-row-actions">
+                        <div class="post-action post-action-check">
+                            <input type="checkbox" id="post_frontend_<?php echo $action ?>" name="access[post][frontend][<?php echo $action; ?>]" <?php echo ($object->has('frontend', $action) ? 'checked="checked"' : ''); ?> />
+                            <label for="post_frontend_<?php echo $action ?>">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+    <table class="dataTable" id="post_access_backend">
+        <thead>
+            <tr>
+                <th colspan="2" class="post-access-title">
+                    <?php if (($object->getUID() == aam_Control_Object_Term::UID)){
+                        echo sprintf(__('All %s in Term', 'aam'), $this->getObjectTitle('post', $post_type));
+                    } else {
+                        echo $this->getObjectTitle('post', $post_type) . ' ' . __('Access', 'aam');
+                    }
+                    ?>
+                </th>
+            </tr>
+            <tr>
+                <th><?php echo __('Capability', 'aam'); ?></th>
+                <th><?php echo __('Restrict', 'aam'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $post_bcaps =  aam_Core_ConfigPress::getParam(
+                        'aam.post.' . $post_type . '.caps.backend',
+                        apply_filters(
+                            'aam_post_access_list',
+                            aam_Core_Settings::get('post_backend_restrictions'),
+                            'backend',
+                            $object,
+                            $post_type
+                        )
+            );
+            foreach ($post_bcaps as $i => $action) {
+            ?>
+            <tr class="<?php echo ($i % 2 ? 'event' : 'odd'); ?>">
+                <td>
+                    <div class="post-access">
+                        <?php echo __($action, 'aam'); ?>
+                    </div>
+                </td>
+                <td>
+                    <div class="aam-list-row-actions">
+                        <div class="post-action post-action-check">
+                            <input type="checkbox" id="post_backend_<?php echo $action ?>" name="access[post][backend][<?php echo $action; ?>]" <?php echo ($object->has('backend', $action) ? 'checked="checked"' : ''); ?> />
+                            <label for="post_backend_<?php echo $action ?>">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+    <div class="post-access-block">
+        <a href="#" class="aam-lock-big">
+            <span><?php echo __('Get AAM Plus Package', 'aam'); ?></span>
+        </a>
+    </div>
+</div>

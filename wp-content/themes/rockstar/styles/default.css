@@ -1,0 +1,211 @@
+/* Default Colors */
+
+/*--------------------------------------------------------------------------------
+01. SETUP
+--------------------------------------------------------------------------------*/
+
+body {
+	background: #f8f6d0 url(default/bg.jpg) top center no-repeat;
+	color: #33211f;
+}
+
+/*--------------------------------------------------------------------------------
+02. STRUCTURE
+--------------------------------------------------------------------------------*/
+
+
+#wrapper {
+	border: 1px solid #f1edaa;
+}
+
+#content {
+	border-right: 1px solid #f5f4f4;
+}
+
+/*--------------------------------------------------------------------------------
+03. HEADER
+--------------------------------------------------------------------------------*/
+
+#header h1 a {
+	color: #33211f;
+}
+
+#header h1 a:hover {
+	color: #c89a2b;
+}
+
+#header #description {
+	color: #7c6563;
+}
+
+#header #description a {
+	color: #6f9f85;
+}
+
+#header #description a:hover {
+	color: #33211f;
+}
+
+/*--------------------------------------------------------------------------------
+04. POSTS
+--------------------------------------------------------------------------------*/
+
+#content h3 {
+	color: #33211f;	
+}
+
+.video {
+	border: 5px solid #f8f6d0;
+}
+
+.post h2 a {
+	color: #6f9f85;
+}
+
+.post h2 a:hover {
+	color: #33211f;
+}
+
+.meta {
+	color: #7e9e8d;
+}
+
+.meta a {
+	color: #7e9e8d;
+}
+
+.post .label a {
+	background: #C89A2B;
+	color: #fff;
+}
+
+.post .label a:hover {
+	background: #33211F;
+}
+
+.tags {
+	color: #7c6563;
+}
+
+.tags a {
+	color: #c89a2b;
+}
+
+#navigation a {
+	color: #33211f;
+}
+
+#navigation a:hover {
+	color: #c89a2b;
+}
+
+/*--------------------------------------------------------------------------------
+05. ENTRIES
+--------------------------------------------------------------------------------*/
+
+.entry a {
+	color: #c89a2b;
+}
+
+.post .entry blockquote {
+	color: #7c6563;
+}
+
+/* Blog Entry Styles - Images */
+
+/*--------------------------------------------------------------------------------
+06. SIDEBAR
+--------------------------------------------------------------------------------*/
+
+#rss {
+	background: #33211f;
+}
+
+#rss a:hover {
+	color: #c89a2b;
+}
+
+.widget {
+	margin: 0 0 30px;
+}
+
+#twitter ul li a {
+	color: #6f9f85;
+}
+
+#twitter ul li a:hover {
+	color: #33211f;
+}
+
+#flickr .flickr_badge_image a  { border: 2px solid #C89A2B; }
+
+.widget_tag_cloud {
+	color: #7c6563;
+}
+
+.widget_tag_cloud a {
+	color: #c89a2b;
+}
+
+/*--------------------------------------------------------------------------------
+07. COMMENTS
+--------------------------------------------------------------------------------*/
+
+.commentlist .comment-meta {
+	color: #7e9e8d;
+}
+
+.commentlist .comment-meta a {
+	color: #7e9e8d;
+}
+
+.commentlist .avatar {
+	border: 3px solid #dad9b3;
+}
+
+.commentlist p a {
+	color: #c89a2b;
+}
+
+.commentlist p a:hover {
+	text-decoration: underline;
+}
+
+.commentlist blockquote {
+	color: #7c6563;
+}
+
+.commentlist .reply a {
+	color: #c89a2b;
+}
+
+#commentform p a {
+	color: #c89a2b;
+}
+
+#commentform .comm_count span input {
+	color: #6f9f85;
+}
+
+/* Comments - Thread */
+
+
+/*--------------------------------------------------------------------------------
+08. ARCHIVES PAGE
+--------------------------------------------------------------------------------*/
+
+#archives {
+	padding: 10px 0 0;
+}
+
+#archives a {
+	color: #6F9F85 !important;
+}
+
+h4.archive_year {
+}
+
+
+/*--------------------------------------------------------------------------------
+09. MISC
+--------------------------------------------------------------------------------*/

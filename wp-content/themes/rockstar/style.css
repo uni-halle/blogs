@@ -1,0 +1,740 @@
+/*  
+Theme Name: Rockstar
+Version: 1.0.0
+Description: Designed by <a href="http://www.woothemes.com">WooThemes</a>.
+Author: WooThemes
+Author URI: http://www.woothemes.com
+*/
+
+/*--------------------------------------------------------------------------------
+00. RESET
+--------------------------------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, font, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+/* remember to define focus styles! */
+
+:focus {
+	outline: 0;
+}
+
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+
+blockquote, q {
+	quotes: "" "";
+}
+
+/*--------------------------------------------------------------------------------
+01. SETUP
+--------------------------------------------------------------------------------*/
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 0 0 40px 0;
+}
+
+/*--------------------------------------------------------------------------------
+02. STRUCTURE
+--------------------------------------------------------------------------------*/
+
+#header {
+	width: 980px;
+	margin: 60px auto 0;
+	position: relative;
+}
+
+#wrapper {
+	width: 920px;
+	background: #fff;
+	padding: 30px;
+	margin: 0 auto;
+}
+
+#content {
+	width: 560px;
+	padding: 0 29px 0 0;
+	float: left;
+}
+
+#content.fullwidth  {width: 920px;border-right: 0;}
+
+#sidebar {
+	width: 300px;
+	padding: 0 0 0 30px;
+	float: right;
+}
+
+/*--------------------------------------------------------------------------------
+03. HEADER
+--------------------------------------------------------------------------------*/
+
+#header h1 {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 50px;
+	line-height: 36px;
+	letter-spacing: -3px;
+	font-weight: bold;
+	text-transform: uppercase;
+	float: left;
+	padding-right: 20px;
+	text-shadow: 2px 2px #F7F7F7;
+}
+
+#header h1 a {
+	text-decoration: none;
+}
+
+#header h1 a:hover {
+}
+
+#header #description {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	text-shadow: 1px 1px #F7F7F7;
+	float: left;
+	width: 460px;
+}
+
+#header #description a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#header #description a:hover {
+}
+
+/*--------------------------------------------------------------------------------
+04. POSTS
+--------------------------------------------------------------------------------*/
+
+#content h3 {
+	letter-spacing: -1px;
+	font-size: 24px;
+	margin: 0 0 30px 0;
+	line-height: 24px;
+}
+
+.post {
+	margin: 0 0 40px 0;
+}
+
+.video {
+	margin: 10px 0 20px;
+}
+
+.post h2 {
+	font-size: 28px;
+	margin: 0 0 10px 0;
+	line-height: 28px;
+	text-shadow: 1px 1px #ccc;
+}
+
+.post h2 a {
+	text-decoration: none;
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+
+.post h2 a:hover {
+}
+
+.meta {
+	font-size: 14px;
+	margin: 0 0 15px;
+}
+
+.meta a {
+	text-decoration: none;
+}
+
+.meta a:hover {
+	text-decoration: underline;
+}
+
+.post .label {
+	margin-right: 2px;
+}
+
+.post .label a {
+	padding: 5px 7px 3px 7px;
+	text-transform: lowercase;
+	font-weight: bold;
+	letter-spacing: -1px;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.post .label a:hover {}
+
+.tags {
+	font-size: 16px;
+}
+
+.tags a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#navigation {
+	float: left;
+	width: 100%;
+}
+
+#navigation a {
+	text-shadow: 1px 1px #ccc;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 22px;
+	letter-spacing: -1px;
+}
+
+#navigation a:hover {
+}
+
+#navigation #next {
+	float: left;
+	display: inline;
+}
+
+#navigation #prev {
+	float: right;
+	display: inline;
+}
+
+/*--------------------------------------------------------------------------------
+05. ENTRIES
+--------------------------------------------------------------------------------*/
+
+.entry p {
+	font-size: 16px;
+	line-height: 24px;
+	margin: 0 0 15px;
+}
+
+.entry a {
+	text-decoration: none;
+}
+
+.entry a:hover, .tags a:hover {
+	text-decoration: underline;
+}
+
+.post .entry h1, .post .entry h2, .post .entry h3, .post .entry h4, .post .entry h5 {
+	font-weight: bold;
+	letter-spacing: -1px;
+	margin: 0 0 15px !important;
+}
+
+.post .entry h1 {
+	font-size: 24px;
+}
+
+.post .entry h2 {
+	font-size: 22px;
+}
+
+.post .entry h3 {
+	font-size: 20px;
+}
+
+.post .entry h4 {
+	font-size: 18px;
+}
+
+.post .entry h5 {
+	font-size: 16px;
+}
+
+.post .entry pre {
+	margin: 0 0 15px 15px;
+}
+
+.post .entry code {
+	font-family: Courier, sans-serif !important;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.post .entry ul, .post .entry ol  {
+	margin: 0 0 15px 25px;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.post .entry ul li {
+	list-style: disc;
+	line-height: 24px;		
+}
+
+.post .entry ol li {
+	list-style: decimal;
+	line-height: 24px;			
+}
+
+.post .entry blockquote {
+	background: url(images/ico-quote.jpg) top right no-repeat;
+	display: block;
+	margin: 0 0 15px 10px;
+	font-style: italic;
+}
+
+/* Blog Entry Styles - Images */
+
+.wp-caption {
+	text-align: center;
+	padding: 9px 5px 5px;
+	background: #f7f0df;
+	border: 1px solid #C7B894;
+}
+
+.wp-caption img {
+	padding: 0;
+	margin: 0 0 5px;
+}
+
+.wp-caption-text {
+	margin: 10px 0 0;
+	padding: 0;
+}
+
+.wp-caption .wp-caption-text, .wp-caption .wp-caption-dd {
+	font-size:14px !important;
+	color: #9B9074;
+	text-align: center; 
+	margin: 0;
+	padding: 0;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+.alignright {
+	margin: 0 0 15px 15px;
+	display: inline;
+	float: right;
+	}
+
+.alignleft {
+	margin: 0 15px 15px 0;
+	display: inline;
+	float: left;
+	}
+
+img.wp-smiley  {
+	padding: 0;
+	border: none;
+}
+
+/*--------------------------------------------------------------------------------
+06. SIDEBAR
+--------------------------------------------------------------------------------*/
+
+#rss {	height: 36px;
+	width: 300px;
+	position: relative;
+	margin: 0 0 30px;
+}
+
+#rss a {
+	width: 280px;
+	background: url(images/ico-rss.gif) top right no-repeat;
+	color: #fff;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	float: left;
+	position: relative;
+	top: 10px;
+	left: 10px;
+}
+
+#rss a:hover {
+}
+
+#tags {
+	margin: 0 0 30px;
+	font-size: 18px;
+	line-height: 24px;
+}
+
+#tags a {
+	text-decoration: none;
+	font-size: 18px !important;	
+}
+
+#search {
+	margin: 0 0 30px;
+}
+
+#search #s {
+	border: 1px solid #33211f;
+	background: #fcf5f3;
+	color: #33211f;
+	font-size: 14px;
+	line-height: 20px;
+	font-family: Helvetica, Arial, sans-serif;
+	padding: 8px 5px 5px;
+	width: 190px;
+	float: left;
+	display: inline;
+}
+
+#search .search_btn {
+	border: none;
+	background: none;
+	color: #33211f;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	width: 95px;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+.widget {
+	margin: 0 0 30px;
+}
+
+.widget h3 {
+	color: #33211f;
+	text-shadow: 1px 1px #ccc;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	margin: 0 0 5px;
+}
+
+.widget ul {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.widget li {
+	color: #7c6563;
+}
+
+.widget_categories li, .widget_archive li, .widget_links li {
+	width: 50%;
+	float: left;
+	display: inline;
+}
+
+.widget_pages li li {
+	padding: 0 0 0 5px;
+}
+
+.widget li a {
+	color: #33211f;
+	text-decoration: none;
+}
+
+.widget li a:hover {
+	text-decoration: underline;
+}
+
+.widget_text {
+	font-size: 14px;
+	line-height: 20px;
+}
+
+#twitter {
+	background: url(images/ico-twitter.jpg) top right no-repeat;
+	display: block;
+}
+
+#twitter li {
+	width: 100%;
+	font-size: 16px !important;
+	margin-bottom: 15px;	
+}
+
+#twitter ul li a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#twitter ul li a:hover {
+}
+
+#flickr .flickr_badge_image  { margin: 4px 7px;	float: left; }
+#flickr .flickr_badge_image a  { display: block; }
+
+.widget_tag_cloud {
+	font-size: 16px;
+}
+
+.widget_tag_cloud a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#ads img  { margin: 0 18px 15px 0; }
+
+/*--------------------------------------------------------------------------------
+07. COMMENTS
+--------------------------------------------------------------------------------*/
+
+#comments .title {
+	margin: 0 0 1px 0 !Important;
+}
+
+.commentlist .comment {
+	display: block;
+	margin: 0 0 30px;
+}
+
+.commentlist .comment-author {
+	font-size: 22px;
+	letter-spacing: -1px;
+	margin: 0 0 10px;
+	color: #33211f;
+}
+
+.commentlist .comment-author cite {
+	font-weight: bold;
+}
+
+.commentlist .comment-author a {
+	text-decoration: none;
+	color: #33211f;
+	font-weight: bold;
+}
+
+.commentlist .comment-author a:hover {
+	text-decoration: underline;
+}
+
+.commentlist .comment-meta {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	margin: 0 0 15px 0;
+}
+
+.commentlist .comment-meta a {
+	text-decoration: none;
+}
+
+.commentlist .comment-meta a:hover {
+	text-decoration: underline;
+}
+
+.commentlist .avatar {
+	float: right;
+}
+
+.commentlist p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	margin: 0 0 15px;
+}
+
+.commentlist p a {
+	text-decoration: none;
+}
+
+.commentlist p a:hover {
+	text-decoration: underline;
+}
+
+.commentlist blockquote {
+	background: url(images/ico-quote.jpg) top right no-repeat;
+	display: block;
+	margin: 0 0 15px 10px;
+	font-style: italic;}
+
+.commentlist .reply {
+	display: block;
+}
+
+.commentlist .reply a {
+	line-height: 14px;
+	text-decoration: none;
+	font-size: 14px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;	
+}
+
+.commentlist .reply a:hover {
+	text-decoration: underline;
+	color: #33211f;
+}
+
+#commentform p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin: 0 0 10px 0;
+}
+
+#commentform p a {
+	text-decoration: none;
+}
+
+#commentform p a:hover {
+	text-decoration: underline;
+}
+
+#commentform #author, #commentform #email, #commentform #url, #commentform #comment {
+	padding: 5px;
+	margin: 0 0 10px;
+	border: 1px solid #33211f;
+	font-size: 16px;
+	line-height: 24px;
+	font-family: Helvetica, Arial, sans-serif;	
+	background: #fcf5f3;
+}
+
+#commentform #submit
+ {
+	padding: 0;
+	text-transform: uppercase;
+	border: none;
+	background: none;
+	color: #33211f;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	font-family: Helvetica, Arial, sans-serif;	
+	border: none;	
+}
+
+#commentform label {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	letter-spacing: 1px;
+	margin: 0 0 0 15px;
+}
+
+#commentform .comm_count {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0;
+}
+
+#commentform .comm_count {
+	float: left;
+	width: 452px;
+	padding: 0 0 10px 0;
+}
+
+#commentform .comm_count span {
+	float: right;
+	display: inline;
+}
+
+#commentform .comm_count span input {
+	border: none !important;
+	background: none !important;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+/* Comments - Thread */
+
+.commentlist .depth-2, .commentlist .depth-3, .commentlist .depth-4, .commentlist .depth-5  {
+	margin: 0 0 30px 30px;
+}
+
+.commentlist .children {
+	margin: 30px 0 0;
+}
+
+
+/*--------------------------------------------------------------------------------
+08. ARCHIVES PAGE
+--------------------------------------------------------------------------------*/
+
+#archives {
+	padding: 10px 0 0;
+}
+
+#archives a {
+}
+
+h4.archive_year {
+}
+
+#archives .archives_list {
+	border-left:4px solid #C7B894;
+	list-style: none !important;
+	list-style-image:none !important;
+	list-style-position:outside !important;
+	list-style-type:none !important;
+	margin: 0 0 15px 15px !important;
+}
+
+#archives .archives_list li {
+	background:transparent url(images/archives.jpg) no-repeat scroll 0 2px;
+	clear:left;
+	padding-left:24px;
+	font-size: 12px !important;
+	list-style: none !important;
+}
+
+#archives .archives_list .date {
+	color: #C7B894;
+	width: 100px !important;
+	font-style: italic;
+	display: inline-block;
+}
+
+/*--------------------------------------------------------------------------------
+09. MISC
+--------------------------------------------------------------------------------*/
+
+.fix {
+	clear: both;
+}

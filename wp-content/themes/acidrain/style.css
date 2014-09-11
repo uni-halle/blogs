@@ -1,0 +1,485 @@
+/*
+Theme Name: Acid Rain
+Theme URI: http://www.mbwebdesign.co.uk/templates/wordpress
+Description: Another contemporary Wordpress theme by Mathew Browne of MB Web Design
+Version: 1.1
+Author: Mathew Browne
+Author URI: http://www.mbwebdesign.co.uk
+Tags: black, fixed-width, two-columns, right-sidebar
+
+	The CSS, XHTML and design is released under GPL:
+	http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+html{
+background-color:#000000;
+background-image:url('header.jpg');
+background-position:top;
+background-repeat:no-repeat;
+}
+
+body {
+background-image:url('footer.jpg');
+background-position:bottom;
+background-repeat:no-repeat;
+font-family: Arial, Helvetica, sans-serif;
+font-size:0.75em;
+line-height:1.3em;
+color: #CCCCCC;
+text-align: center;
+}
+
+#wrapper{
+width:900px;
+margin:0px auto;
+text-align:left;
+}
+
+#header{
+height:150px;
+margin-bottom:20px;}
+
+#content{
+float:left;
+width:600px;
+margin-left:20px;
+line-height:1.9em;}
+
+#sidebar{
+float:right;
+width:200px;
+margin-right:20px;
+text-align:left;
+}
+
+#sidebar form {margin: 0;}
+
+.makesep{height:8px;
+background-image:url('header.jpg');
+background-repeat:no-repeat;
+background-position:center;
+margin:5px 0px;
+}
+
+.even, .alt {border-top: 1px solid #202020;
+background-color:#090909}
+
+
+small {
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: 0.9em;
+	line-height: 1.5em;
+	}
+
+h1, h2, h3, #calendar caption {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	line-height:normal
+	}
+
+h1 {font-size: 3em;}
+h2, #calendar caption {font-size: 1.6em;}
+
+.post-title {font-size: 1.6em; margin-bottom:0px; padding-top:0px;}
+.daa{margin-top:0px;padding-top:0px; font-size:0.9em;}
+
+#sidebar h2, #calendar caption {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.2em;
+	}
+
+h3 {font-size: 1.3em;}
+
+h1, h1 a, h1 a:hover, h1 a:visited{
+	text-decoration: none;
+	color: white;
+	}
+
+h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited, #calendar caption {
+	color: #FFFFFF;
+	}
+
+h2, h2 a, h2 a:hover, h2 a:visited, h3, h3 a, h3 a:hover, h3 a:visited, #sidebar h2, #wp-calendar caption, cite {
+	text-decoration: none;
+	}
+
+.entry p a:visited {
+	color: white;
+	}
+
+.commentlist li, #commentform input, #commentform textarea {
+font-family:Arial, Helvetica, sans-serif;
+font-size:0.9em;
+	}
+.commentlist li ul li {
+	font-size: 1em;
+}
+
+.commentlist li {
+	font-weight: bold;
+}
+
+.commentlist li .avatar { 
+	float: right;
+	border: 1px solid #333333;
+	padding: 3px;
+	background-color: white;
+	}
+
+.commentlist cite, .commentlist cite a {
+	font-weight: bold;
+	font-style: normal;
+	font-size: 1.1em;
+	}
+
+.commentlist p {
+	font-weight: normal;
+	line-height: 1.5em;
+	text-transform: none;
+	}
+
+#commentform p {
+	font-family: Arial, Helvetica, sans-serif
+	}
+
+.commentmetadata {
+	font-weight: normal;
+	}
+
+
+code {
+	font: 1.1em 'Courier New', Courier, Fixed;
+	}
+
+acronym, abbr, span.caps
+{
+	font-size: 0.9em;
+	letter-spacing: .07em;
+	}
+
+a, h2 a:hover, h3 a:hover {
+	color: #AB95D0;
+	text-decoration: none;
+	}
+
+.cb{clear:both; height:10px; width:100%;}
+
+a:hover {
+	color: #FFCC66;
+	text-decoration: none;
+	}
+
+#wp-calendar #prev a, #wp-calendar #next a {
+	font-size: 9px;
+	}
+
+#wp-calendar a {
+	text-decoration: none;
+	}
+
+#wp-calendar th {
+	font-style: normal;
+	text-transform: capitalize;
+	text-align: center;
+	}
+
+#page {}
+
+.post {
+	margin: 0 0 30px;
+	text-align: justify;
+	}
+
+.post hr {
+	display: block;
+	}
+
+
+.postmetadata {
+	clear: both;
+}
+
+.clear {
+	clear: both;
+}
+
+#footer {
+text-align:center;
+font-size:0.9em;
+clear:both;
+padding:30px;}
+
+
+#sidebar h2 {
+	margin: 5px 0 0;
+	padding: 0;
+	}
+
+h3 {
+	padding: 0;
+	margin: 30px 0 0;
+	}
+
+h3.comments {
+	padding: 0;
+	margin: 40px auto 20px ;
+	}
+
+p img {
+	padding: 0;
+	max-width: 100%;
+	}
+
+img.centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+img.alignright {
+	padding: 5px;
+	margin: 0 0 5px 5px;
+	display: inline;
+	}
+
+img.alignleft {
+	padding: 5px;
+	margin: 0 5px 5px 0;
+	display: inline;
+	}
+
+.alignright {float: right;}
+.alignleft {float: left}
+
+
+
+
+.entry ol {
+	padding: 0 0 0 35px;
+	margin: 0;
+	}
+
+.entry ol li {
+	margin: 0;
+	padding: 0;
+	}
+
+.postmetadata ul, .postmetadata li {
+	display: inline;
+	list-style-type: none;
+	list-style-image: none;
+	}
+
+#sidebar ul, #sidebar ul ol {
+	margin: 0;
+	padding: 0;
+	}
+
+#sidebar ul li {
+	list-style-type: none;
+	list-style-image: none;
+	margin-bottom: 0px;
+	}
+#sidebar ul ul ul{padding-left:10px;}
+
+ol li, #sidebar ul ol li {
+	list-style: decimal outside;
+	}
+
+
+#searchform {
+	margin: 10px auto;
+	padding: 5px 3px;
+	text-align: center;
+	}
+
+#sidebar #searchform #s {
+	width: 108px;
+	padding: 2px;
+	}
+
+#sidebar #searchsubmit {
+	padding: 1px;
+	}
+
+.entry form {text-align:center;
+	}
+
+select {
+	width: 130px;
+	}
+
+#commentform input {
+	width: 150px;
+	padding: 2px;
+	margin: 5px 5px 1px 0;
+	}
+
+#commentform {
+	margin: 5px 10px 0 0;
+	}
+#commentform textarea {
+	width: 100%;
+	padding: 2px;
+	}
+#commentform #submit {
+	margin: 0 0 4px auto;
+	float: right;
+	}
+
+
+.alt {
+	margin: 0;
+	padding: 10px;
+	}
+
+.commentlist {
+	padding: 0;
+	text-align: justify;
+	}
+
+.commentlist li {
+	margin: 15px 0 10px;
+	padding: 5px 5px 10px 10px;
+	list-style: none;
+
+	}
+.commentlist li ul li { 
+	margin-right: -5px;
+	margin-left: 10px;
+}
+
+.commentlist p {
+	margin: 10px 5px 10px 0;
+}
+.children { padding: 0; }
+
+#commentform p {
+	margin: 5px 0;
+	}
+
+.nocomments {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	}
+
+.commentmetadata {
+	margin: 0;
+	display: block;
+	}
+
+#wp-calendar {
+width:100%;
+	empty-cells: show;
+	margin: 10px auto 0;
+	}
+
+#wp-calendar #next a {
+	padding-right: 10px;
+	text-align: right;
+	}
+
+#wp-calendar #prev a {
+	padding-left: 10px;
+	text-align: left;
+	}
+
+#wp-calendar a {
+	display: block;
+	}
+
+#wp-calendar td {
+	padding: 3px 0;
+	text-align: center;
+	}
+
+
+acronym, abbr, span.caps {
+	cursor: help;
+	}
+
+acronym, abbr {
+	border-bottom: 1px dashed #666666;
+	}
+
+blockquote {
+	margin: 15px 30px 0 10px;
+	padding-left: 20px;
+	border-left: 5px solid #333333;
+	}
+
+blockquote cite {
+	margin: 5px 0 0;
+	display: block;
+	}
+
+.center {
+	text-align: center;
+	}
+
+.hidden {
+	display: none;
+	}
+
+hr {
+	display: none;
+	}
+
+a img {
+	border: none;
+	}
+
+.navigation {
+	display: block;
+	text-align: center;
+	}
+
+
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption {
+	border: 1px solid #333333;
+	text-align: center;
+	background-color: #000000;
+	padding-top: 4px;
+	margin: 10px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.wp-caption img {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+	font-size: 9px;
+	line-height: 14px;
+	padding: 0 5px 5px;
+	margin: 0;
+}
+
+#header h1{float:left;padding-top:40px;}
+#header h1, #header h1 a{color:white;}
+#header .description{float:right; padding-top:70px; color:white;}
+
+#sidebar a{
+	color: #DF9486;
+}
+#sidebar h2, #calendar caption{
+	background-position:top;
+	padding:10px 10px 15px 0px;
+	text-align:left;
+}
+
+#calendar h2{display:none;}

@@ -1,0 +1,74 @@
+/*
+Theme Name: Jenny
+Description: Used to style the TinyMCE editor.
+*/
+
+html .mceContentBody {
+	max-width: 530px;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size: 12px;
+	color: #444;
+	line-height:1.65;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+hr {
+	display: none;
+}
+
+img {
+	vertical-align: baseline;
+	border: 0;
+}
+
+p {
+	margin: 0 0 1.4em 0;
+	font-size: 13px;
+	line-height: 1.65;
+}
+
+a {
+	color: #4083A9;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/*Typo Styles*/
+.intro, .intro1 {
+color:#888;
+font-size:18px;
+font-family:"Lucida Grande","Lucida Sans Unicode","Trebuchet MS",Verdana,Arial,sans-serif;
+}
+.intro2 {
+color:#888;
+font-size:18px;
+font-family:Georgia, "Times New Roman", Serif;
+}
+.intro3{
+color:#444;
+font-size:20px;
+font-family:Georgia, "Times New Roman", Serif;
+}
+
+.capitalize{
+text-transform:capitalize;
+}
+
+.col1, .half, .half1 {
+width:48%;
+float:left;
+margin-bottom:1.4em;
+}
+
+.col2, .half2{
+width:48%;
+float:right;
+margin-bottom:1.4em;
+}

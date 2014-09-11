@@ -1,0 +1,850 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AAM\n"
+"POT-Creation-Date: 2014-05-04 19:41-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: WPAAM <support@wpaam.com>\n"
+"Language-Team: WP AAM <support@wpaam.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: d:\\xampp\\htdocs\\aam\\wp-content\\plugins\\aam\\\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: aam.php:404 aam.php:412 aam.php:439
+msgid "Access denied"
+msgstr ""
+
+#: aam.php:927 aam.php:928
+msgid "AAM"
+msgstr ""
+
+#: aam.php:939 aam.php:940
+msgid "Access Control"
+msgstr ""
+
+#: aam.php:949 aam.php:950
+msgid "ConfigPress"
+msgstr ""
+
+#: aam.php:959 aam.php:960
+msgid "Extensions"
+msgstr ""
+
+#: application/core/repository.php:261
+msgid "Failed to Remove Extension"
+msgstr ""
+
+#: application/core/repository.php:306
+msgid "Invalid License Key"
+msgstr ""
+
+#: application/core/repository.php:309
+msgid "Failed to write file to wp-content/aam folder"
+msgstr ""
+
+#: application/core/repository.php:313
+msgid "Failed to reach the WPAAM Server"
+msgstr ""
+
+#: application/core/repository.php:329
+msgid "Failed to insert extension to extension folder"
+msgstr ""
+
+#: application/view/abstract.php:81
+msgid "You are not allowed to manager current view"
+msgstr ""
+
+#: application/view/capability.php:101 application/view/capability.php:205
+msgid "System"
+msgstr ""
+
+#: application/view/capability.php:102 application/view/capability.php:207
+msgid "Post & Page"
+msgstr ""
+
+#: application/view/capability.php:103 application/view/capability.php:209
+msgid "Backend Interface"
+msgstr ""
+
+#: application/view/capability.php:104 application/view/capability.php:211
+msgid "Miscellaneous"
+msgstr ""
+
+#: application/view/extension.php:100
+msgid "Folder advanced-access-manager/extension is not writable"
+msgstr ""
+
+#: application/view/manager.php:76
+msgid "Roles"
+msgstr ""
+
+#: application/view/manager.php:77
+msgid "Role Manager"
+msgstr ""
+
+#: application/view/manager.php:86
+msgid "Users"
+msgstr ""
+
+#: application/view/manager.php:87
+msgid "User Manager"
+msgstr ""
+
+#: application/view/manager.php:96
+msgid "Visitor"
+msgstr ""
+
+#: application/view/manager.php:97
+msgid "Visitor Manager"
+msgstr ""
+
+#: application/view/manager.php:120
+msgid "Admin Menu"
+msgstr ""
+
+#: application/view/manager.php:132
+msgid "Metabox & Widget"
+msgstr ""
+
+#: application/view/manager.php:145 application/view/tmpl/capability.phtml:17
+#: application/view/tmpl/control_area.phtml:47
+#: application/view/tmpl/control_area.phtml:94
+#: application/view/tmpl/control_area.phtml:148
+#: application/view/tmpl/control_area.phtml:199
+#: extension/AAM_Plus_Package/ui.phtml:28
+#: extension/AAM_Plus_Package/ui.phtml:60
+#: extension/AAM_Plus_Package/ui.phtml:93
+#: extension/AAM_Plus_Package/ui.phtml:125
+msgid "Capability"
+msgstr ""
+
+#: application/view/manager.php:156
+msgid "Posts & Pages"
+msgstr ""
+
+#: application/view/manager.php:169
+msgid "Event Manager"
+msgstr ""
+
+#: application/view/manager.php:241
+msgid "You are not allowed to manage any AAM Features."
+msgstr ""
+
+#: application/view/manager.php:820
+msgid "Rollback Settings"
+msgstr ""
+
+#: application/view/manager.php:821
+msgid "Cancel"
+msgstr ""
+
+#: application/view/manager.php:822
+msgid "Send E-mail"
+msgstr ""
+
+#: application/view/manager.php:823 application/view/manager.php:829
+msgid "Add New Role"
+msgstr ""
+
+#: application/view/manager.php:824
+msgid "Manage"
+msgstr ""
+
+#: application/view/manager.php:825
+msgid "Edit"
+msgstr ""
+
+#: application/view/manager.php:826
+msgid "Delete"
+msgstr ""
+
+#: application/view/manager.php:827
+msgid "Filtered"
+msgstr ""
+
+#: application/view/manager.php:828
+msgid "Clear"
+msgstr ""
+
+#: application/view/manager.php:830
+msgid "Save Changes"
+msgstr ""
+
+#: application/view/manager.php:831
+#, php-format
+msgid ""
+"System detected %d user(s) with this role. All Users with Role <b>%s</b> "
+"will be deleted automatically!"
+msgstr ""
+
+#: application/view/manager.php:832
+#, php-format
+msgid "Are you sure that you want to delete role <b>%s</b>?"
+msgstr ""
+
+#: application/view/manager.php:833 application/view/tmpl/role.phtml:53
+msgid "Delete Role"
+msgstr ""
+
+#: application/view/manager.php:834
+msgid "Add User"
+msgstr ""
+
+#: application/view/manager.php:835
+msgid "Filter Users"
+msgstr ""
+
+#: application/view/manager.php:836 application/view/manager.php:852
+msgid "Refresh List"
+msgstr ""
+
+#: application/view/manager.php:837
+msgid "Block"
+msgstr ""
+
+#: application/view/manager.php:838
+#, php-format
+msgid "Are you sure you want to delete user <b>%s</b>?"
+msgstr ""
+
+#: application/view/manager.php:839
+msgid "Filter Capabilities by Category"
+msgstr ""
+
+#: application/view/manager.php:840 application/view/tmpl/capability.phtml:47
+msgid "Inherit Capabilities"
+msgstr ""
+
+#: application/view/manager.php:841 application/view/tmpl/capability.phtml:62
+msgid "Add New Capability"
+msgstr ""
+
+#: application/view/manager.php:842
+#, php-format
+msgid "Are you sure that you want to delete capability <b>%s</b>?"
+msgstr ""
+
+#: application/view/manager.php:843 application/view/tmpl/capability.phtml:81
+msgid "Delete Capability"
+msgstr ""
+
+#: application/view/manager.php:844
+msgid "Select Role"
+msgstr ""
+
+#: application/view/manager.php:845
+msgid "Add Capability"
+msgstr ""
+
+#: application/view/manager.php:846
+msgid "Add Event"
+msgstr ""
+
+#: application/view/manager.php:847
+msgid "Edit Event"
+msgstr ""
+
+#: application/view/manager.php:848 application/view/manager.php:850
+#: application/view/tmpl/event.phtml:105
+msgid "Delete Event"
+msgstr ""
+
+#: application/view/manager.php:849
+msgid "Save Event"
+msgstr ""
+
+#: application/view/manager.php:851
+msgid "Filter Posts by Post Type"
+msgstr ""
+
+#: application/view/manager.php:853 application/view/tmpl/manager.phtml:63
+msgid "Restore Default"
+msgstr ""
+
+#: application/view/manager.php:854
+msgid "Apply"
+msgstr ""
+
+#: application/view/manager.php:855
+msgid "Edit Term"
+msgstr ""
+
+#: application/view/manager.php:856
+msgid "Manager Access"
+msgstr ""
+
+#: application/view/manager.php:857
+msgid "Unlock Default Accesss Control"
+msgstr ""
+
+#: application/view/manager.php:858
+msgid "Close"
+msgstr ""
+
+#: application/view/manager.php:859
+msgid "Edit Role"
+msgstr ""
+
+#: application/view/manager.php:860
+msgid "Restore Default Capabilities"
+msgstr ""
+
+#: application/view/manager.php:861
+#, php-format
+msgid "Are you sure you want to delete <b>%s</b>?"
+msgstr ""
+
+#: application/view/manager.php:862
+#, php-format
+msgid "Are you sure you want to move <b>%s</b> to trash?"
+msgstr ""
+
+#: application/view/manager.php:863 application/view/tmpl/post.phtml:27
+msgid "Delete Post"
+msgstr ""
+
+#: application/view/manager.php:864
+msgid "Delete Permanently"
+msgstr ""
+
+#: application/view/manager.php:865
+msgid "Trash Post"
+msgstr ""
+
+#: application/view/manager.php:866
+msgid "Restore Default Access"
+msgstr ""
+
+#: application/view/manager.php:867
+msgid "Duplicate"
+msgstr ""
+
+#: application/view/manager.php:868
+msgid "Actions Locked"
+msgstr ""
+
+#: application/view/manager.php:869
+msgid ""
+"<h3>AAM Documentation</h3><div class=\"inner\">Find more information about "
+"Advanced Access Manager here.</div>"
+msgstr ""
+
+#: application/view/metabox.php:191
+msgid "Dashboard Widgets"
+msgstr ""
+
+#: application/view/metabox.php:195
+msgid "Frontend Widgets"
+msgstr ""
+
+#: application/view/post.php:199
+msgid "[empty]"
+msgstr ""
+
+#: application/view/post.php:383 application/view/post.php:391
+msgid "All"
+msgstr ""
+
+#: config.php:62
+msgid "Failed to create wp-content/aam folder"
+msgstr ""
+
+#: config.php:65
+msgid "Folder wp-content/aam is not writable"
+msgstr ""
+
+#: extension/AAM_Activity_Log/activity.php:98
+msgid "System Login"
+msgstr ""
+
+#: extension/AAM_Activity_Log/activity.php:102
+msgid "System Logout"
+msgstr ""
+
+#: extension/AAM_Activity_Log/activity.php:108
+msgid "Unknown Activity"
+msgstr ""
+
+#: extension/AAM_Activity_Log/extension.php:72
+msgid "Activity Log"
+msgstr ""
+
+#: extension/AAM_Activity_Log/extension.php:177
+msgid "Clear Logs"
+msgstr ""
+
+#: extension/AAM_Activity_Log/extension.php:178
+msgid "Get More"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/extension.php:122
+msgid "Sites"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/extension.php:123
+msgid "Site Manager"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/extension.php:186
+msgid "Set Default"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/extension.php:187
+msgid "Unset Default"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/extension.php:188
+msgid "Set as Default"
+msgstr ""
+
+#: extension/AAM_My_Feature/extension.php:56
+msgid "My Feature"
+msgstr ""
+
+#: extension/AAM_Plus_Package/extension.php:168
+msgid "Comments"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:16
+msgid "Category"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:18
+#: application/view/tmpl/event.phtml:19 application/view/tmpl/post.phtml:19
+msgid "Control"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:24
+msgid "Filter Capability List"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:28
+msgid "Group Name"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:29
+msgid "Select"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:53
+#: application/view/tmpl/role.phtml:27 application/view/tmpl/role.phtml:46
+#: application/view/tmpl/user.phtml:31
+msgid "Role Name"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:54
+#: application/view/tmpl/event.phtml:17 application/view/tmpl/event.phtml:65
+#: application/view/tmpl/role.phtml:17 application/view/tmpl/user.phtml:17
+#: application/view/tmpl/user.phtml:32
+#: extension/AAM_Multisite_Support/ui.phtml:18
+msgid "Action"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:66
+msgid "Capability Name"
+msgstr ""
+
+#: application/view/tmpl/capability.phtml:70
+msgid "Keep Unfiltered"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:15
+#: application/view/tmpl/configpress.phtml:34
+#: application/view/tmpl/configpress.phtml:53
+#: application/view/tmpl/extension.phtml:15
+#: application/view/tmpl/extension.phtml:148
+#: application/view/tmpl/extension.phtml:167
+#: application/view/tmpl/extension.phtml:187
+#: application/view/tmpl/manager.phtml:17
+#: application/view/tmpl/manager.phtml:38
+#: application/view/tmpl/manager.phtml:57
+#: application/view/tmpl/manager.phtml:87
+msgid "Click to toggle"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:18
+msgid "AAM ConfigPress"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:36
+#: application/view/tmpl/extension.phtml:150
+#: application/view/tmpl/manager.phtml:40
+msgid "AAM Warnings"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:55
+#: application/view/tmpl/manager.phtml:59
+msgid "Control Panel"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:59
+#: application/view/tmpl/manager.phtml:64
+msgid "Save"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:62
+#: application/view/tmpl/manager.phtml:67
+msgid "Follow @wpaam"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:62
+#: application/view/tmpl/manager.phtml:67
+msgid "Follow"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:63
+#: application/view/tmpl/manager.phtml:68
+msgid "Help Forum"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:63
+#: application/view/tmpl/manager.phtml:68
+msgid "Help"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:64
+#: application/view/tmpl/manager.phtml:69
+#: application/view/tmpl/manager.phtml:77
+msgid "E-mail Us"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:65
+#: application/view/tmpl/manager.phtml:70
+msgid "Rate AAM"
+msgstr ""
+
+#: application/view/tmpl/configpress.phtml:65
+#: application/view/tmpl/manager.phtml:70
+msgid "Rate Us"
+msgstr ""
+
+#: application/view/tmpl/control_area.phtml:43
+#: application/view/tmpl/control_area.phtml:90
+#: application/view/tmpl/control_area.phtml:142
+#: application/view/tmpl/control_area.phtml:193
+msgid "Access"
+msgstr ""
+
+#: application/view/tmpl/control_area.phtml:48
+#: application/view/tmpl/control_area.phtml:95
+#: application/view/tmpl/control_area.phtml:149
+#: application/view/tmpl/control_area.phtml:200
+#: extension/AAM_Plus_Package/ui.phtml:29
+#: extension/AAM_Plus_Package/ui.phtml:61
+#: extension/AAM_Plus_Package/ui.phtml:94
+#: extension/AAM_Plus_Package/ui.phtml:126
+msgid "Restrict"
+msgstr ""
+
+#: application/view/tmpl/control_area.phtml:140
+#: application/view/tmpl/control_area.phtml:191
+#, php-format
+msgid "All %s in Term"
+msgstr ""
+
+#: application/view/tmpl/control_area.phtml:239
+msgid "Get AAM Plus Package"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:14 application/view/tmpl/event.phtml:28
+msgid "Event"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:15
+msgid "Event Specifier"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:16
+msgid "Bind Post Type"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:18
+msgid "Action Specifier"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:24
+msgid "Manager Event"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:31
+msgid "Post Status Change"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:32
+msgid "Post Content Change"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:37
+msgid "Status Changed To"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:52
+msgid "Bind to Post Type"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:68
+msgid "Email Notification"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:69
+msgid "Change Status"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:70
+msgid "Callback"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:75
+msgid "Email Address"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:81
+msgid "Change Status To"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:96
+msgid "Callback Function"
+msgstr ""
+
+#: application/view/tmpl/event.phtml:106
+msgid "Are you sure you want to delete selected Event?"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:18
+msgid "Extension List"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:25
+#: application/view/tmpl/post.phtml:17
+msgid "Name"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:26
+msgid "Description"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:27
+msgid "Price"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:28
+msgid "Actions"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:123
+msgid "Install Extension"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:125
+msgid ""
+"If you already have license key for current extension, please enter it "
+"below. Othewise click <b>Purchase</b> button to checkout your order."
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:130
+msgid "Update Extension"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:132
+msgid "Extension has been installed. Your license key: "
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:169
+msgid "Connect with AAM"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:189
+msgid "Development License"
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:193
+msgid ""
+"Become a member of <b>AAM Community</b>. Obtain <b>Development License</b> "
+"today for $119 and get access to all extensions that are available today and "
+"will be developed witin a year."
+msgstr ""
+
+#: application/view/tmpl/extension.phtml:196
+msgid "Read More"
+msgstr ""
+
+#: application/view/tmpl/manager.phtml:63
+msgid "Default"
+msgstr ""
+
+#: application/view/tmpl/manager.phtml:74
+msgid "Undo Change"
+msgstr ""
+
+#: application/view/tmpl/manager.phtml:75
+msgid "Would your like to role back current settings?"
+msgstr ""
+
+#: application/view/tmpl/manager.phtml:78
+msgid "Our E-mail address is <b>support@wpaam.com</b>"
+msgstr ""
+
+#: application/view/tmpl/manager.phtml:89
+msgid "Control Manager"
+msgstr ""
+
+#: application/view/tmpl/menu.phtml:33
+msgid "Restrict All"
+msgstr ""
+
+#: application/view/tmpl/menu.phtml:70
+msgid "There is no single menu item allowed for current Role or User"
+msgstr ""
+
+#: application/view/tmpl/metabox.phtml:15
+msgid "Retrieve Metaboxes From Link"
+msgstr ""
+
+#: application/view/tmpl/metabox.phtml:16
+msgid "Refresh the List"
+msgstr ""
+
+#: application/view/tmpl/post.phtml:18
+msgid "Status"
+msgstr ""
+
+#: application/view/tmpl/post.phtml:31
+msgid "Filter Posts by Type"
+msgstr ""
+
+#: application/view/tmpl/post.phtml:34
+msgid "Collapse All"
+msgstr ""
+
+#: application/view/tmpl/post.phtml:35
+msgid "Expand All"
+msgstr ""
+
+#: application/view/tmpl/post.phtml:36
+msgid "Refresh"
+msgstr ""
+
+#: application/view/tmpl/post.phtml:45
+msgid "You reached the limit. Get <a href=\""
+msgstr ""
+
+#: application/view/tmpl/post.phtml:50
+msgid "Frontend"
+msgstr ""
+
+#: application/view/tmpl/post.phtml:51
+msgid "Backend"
+msgstr ""
+
+#: application/view/tmpl/role.phtml:16
+msgid "Role"
+msgstr ""
+
+#: application/view/tmpl/role.phtml:31
+msgid "Inherit Caps"
+msgstr ""
+
+#: application/view/tmpl/role.phtml:38 application/view/tmpl/role.phtml:42
+msgid "Duplicate Role"
+msgstr ""
+
+#: application/view/tmpl/role.phtml:56
+msgid "Notice"
+msgstr ""
+
+#: application/view/tmpl/role.phtml:58
+msgid "You can not delete <b>Administrator</b> Role"
+msgstr ""
+
+#: application/view/tmpl/user.phtml:16 extension/AAM_Activity_Log/ui.phtml:15
+msgid "Username"
+msgstr ""
+
+#: application/view/tmpl/user.phtml:25
+msgid "Filter Users by Role"
+msgstr ""
+
+#: application/view/tmpl/user.phtml:39
+msgid "Delete User"
+msgstr ""
+
+#: application/view/tmpl/visitor.phtml:11
+msgid ""
+"Control Access to your blog for visitor (any user that is not logged in)"
+msgstr ""
+
+#: extension/AAM_Activity_Log/ui.phtml:16
+msgid "Activity"
+msgstr ""
+
+#: extension/AAM_Activity_Log/ui.phtml:17
+msgid "Time"
+msgstr ""
+
+#: extension/AAM_Activity_Log/ui.phtml:23
+msgid "Clear Activity Log"
+msgstr ""
+
+#: extension/AAM_Activity_Log/ui.phtml:25
+msgid "Are you sure you want to clear activity log?"
+msgstr ""
+
+#: extension/AAM_Activity_Log/ui.phtml:28
+msgid "Activity Log Info"
+msgstr ""
+
+#: extension/AAM_Activity_Log/ui.phtml:30
+#, php-format
+msgid ""
+"Basic version of Activity Log tracks only user's login and logout. Consider "
+"to purchase the <b>%s</b> Extension today to get access to advanced list of "
+"activities as well as we can develop additional activities on demand."
+msgstr ""
+
+#: extension/AAM_Multisite_Support/ui.phtml:17
+msgid "Site"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/ui.phtml:24
+msgid "Set Default Site"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/ui.phtml:26
+msgid "Would you like to set the site"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/ui.phtml:26
+msgid "as default?"
+msgstr ""
+
+#: extension/AAM_Multisite_Support/ui.phtml:29
+msgid "All newly created sites will inherit list of Roles & Capabilities."
+msgstr ""
+
+#: extension/AAM_My_Feature/ui.phtml:13
+msgid "Do you need a custom feature?"
+msgstr ""
+
+#: extension/AAM_My_Feature/ui.phtml:15
+msgid "Create your own extension "
+msgstr ""
+
+#: extension/AAM_My_Feature/ui.phtml:16
+msgid "or ask us and we will develop it for you."
+msgstr ""
+
+#: extension/AAM_Plus_Package/ui.phtml:24
+#: extension/AAM_Plus_Package/ui.phtml:56
+msgid "All Categories Default Access"
+msgstr ""
+
+#: extension/AAM_Plus_Package/ui.phtml:89
+#: extension/AAM_Plus_Package/ui.phtml:121
+msgid "All Posts Default Access"
+msgstr ""

@@ -1,0 +1,804 @@
+# Copyright (C) 2010 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: shrsb-bg_BG\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/sexybookmarks\n"
+"POT-Creation-Date: 2011-01-23 21:26:57+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2011-10-03 11:08+0200\n"
+"Last-Translator: Nikolay Nikolov <statiiki@abv.bg>\n"
+"Language-Team: Nikolay Nikolov <statiiki@abv.bg>\n"
+"X-Poedit-Language: Bulgarian\n"
+"X-Poedit-Country: BULGARIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+# %sPlugin Options Page%s
+#: sexy-bookmarks.php:138
+msgid "NOTICE: Shareaholic was updated... Please visit the %sPlugin Options Page%s and re-save your preferences."
+msgstr "СЪОБЩЕНИЕ: Shareaholic беше обновен... Моля, посетете %sстраницата с настройките на разширението%s и запазете отново вашите настройки."
+
+# %sPlugin Options Page%s
+#: sexy-bookmarks.php:176
+msgid "NOTICE: Shareaholic needs to be configured... Please visit the %sPlugin Options Page%s and set your preferences."
+msgstr "СЪОБЩЕНИЕ: Shareaholic трябва да бъде настроен... Моля, посетете %sстраницата с настройките на разширението%s и задайте вашите настройки."
+
+#: sexy-bookmarks.php:228
+msgid "WARNING: You are about to reset all settings to their default state! Do you wish to continue?"
+msgstr "ВНИМАНИЕ: На път сте да възстановите всички настройки към състоянието им по подразбиране! Желаете ли да продължите?"
+
+#: sexy-bookmarks.php:232
+#: sexy-bookmarks.php:480
+#: sexy-bookmarks.php:542
+#: sexy-bookmarks.php:633
+#: sexy-bookmarks.php:637
+#: sexy-bookmarks.php:641
+#: sexy-bookmarks.php:646
+#: sexy-bookmarks.php:707
+#: sexy-bookmarks.php:788
+msgid "Yes"
+msgstr "Да"
+
+#: sexy-bookmarks.php:232
+#: sexy-bookmarks.php:542
+msgid "Cancel"
+msgstr "Отказ"
+
+#: sexy-bookmarks.php:273
+msgid "All settings have been reset to their default values."
+msgstr "Всички настройки са възстановени към състоянието си по подразбиране."
+
+#: sexy-bookmarks.php:317
+msgid "Your changes have been saved successfully!"
+msgstr "Промените са запазени успешно!"
+
+#: sexy-bookmarks.php:320
+msgid "Please choose where you would like the menu to be displayed."
+msgstr "Моля, изберете къде да се показва менюто."
+
+#: sexy-bookmarks.php:321
+msgid "You can't display the menu if you don't choose a few sites to add to it!"
+msgstr "Менюто не може да бъде показано ако не изберете поне няколко сайта за добавяне!"
+
+#: sexy-bookmarks.php:322
+msgid "Please choose where you want the menu displayed."
+msgstr "Моля, изберете къде да бъде показано менюто."
+
+# %sTwitter Friendly Links Plugin%s
+#: sexy-bookmarks.php:332
+msgid "You must first download and activate the %sTwitter Friendly Links Plugin%s before hosting your own short URLs..."
+msgstr "Първо трябва да изтеглите и активирате %sразширението Twitter Friendly Links%s преди да можете да си създавате собствени кратки URL адреси..."
+
+# %sYOURLS Plugin%s
+#: sexy-bookmarks.php:334
+msgid "You must first download and activate the %sYOURLS Plugin%s before hosting your own short URLs..."
+msgstr "Първо трябва да изтеглите и активирате %sразширението YOURLS%s преди да можете да си създавате собствени кратки URL адреси..."
+
+#: sexy-bookmarks.php:351
+msgid "WARNING: The request for a custom sprite has timed out. Reverting to default sprite files."
+msgstr "ВНИМАНИЕ: Времето за заявката за собствено фоново изображение от тип sprite изтече. Възстановени са sprite файловете по подразбиране."
+
+#: sexy-bookmarks.php:353
+msgid "Changes saved successfully. However, you should try to generate a custom sprite again later."
+msgstr "Промените са запазени успешно. Обаче, трябва да опитате да генерирате собствено фоново изображение от тип sprite отново по-късно."
+
+# %sspritegen folder%s
+# %sNeed Help?%s
+#: sexy-bookmarks.php:357
+#: sexy-bookmarks.php:379
+msgid "WARNING: Your %sspritegen folder%s is not writeable by the server! %sNeed Help?%s"
+msgstr "ВНИМАНИЕ: Забранено е записването във вашата %sspritegen папка%s! %sИмате нужда от помощ?%s"
+
+#: sexy-bookmarks.php:359
+#: sexy-bookmarks.php:364
+#: sexy-bookmarks.php:369
+#: sexy-bookmarks.php:380
+#: sexy-bookmarks.php:384
+#: sexy-bookmarks.php:388
+msgid "Changes saved successfully. However, settings are not optimal until you resolve the issue listed above."
+msgstr "Промените са запазени успешно. Обаче, настройките няма да бъдат оптимални, докато не решите проблема описан отгоре."
+
+# %sNeed Help?%s
+#: sexy-bookmarks.php:362
+#: sexy-bookmarks.php:383
+msgid "WARNING: You need to delete the current custom sprite %s before the plugin can write to the folder. %sNeed Help?%s"
+msgstr "ВНИМАНИЕ: Трябва да изтриете текущото потребителско фоново изображение от тип sprite %s преди разширението да може да записва в папката. %sИмате нужда от помощ?%s"
+
+# %sNeed Help?%s
+#: sexy-bookmarks.php:367
+#: sexy-bookmarks.php:387
+msgid "WARNING: You need to delete the current custom stylesheet %s before the plugin can write to the folder. %sNeed Help?%s"
+msgstr "ВНИМАНИЕ: Трябва да изтриете текущия потребителски стил %s преди разширението да може да записва в папката. %sИмате нужда от помощ?%s"
+
+#: sexy-bookmarks.php:394
+msgid "Short URL(s) have been reset."
+msgstr "Кратките URL адреси са нулирани."
+
+#: sexy-bookmarks.php:473
+msgid "BETA Testing"
+msgstr "БЕТА тестване"
+
+#: sexy-bookmarks.php:478
+msgid "We completely re-wrote Shareaholic from the ground up to make it faster, leaner, better."
+msgstr "Ние напълно пренаписахме Shareaholic от нулата, за да го направим по-бърз, по-изчистен и по-добър."
+
+#: sexy-bookmarks.php:479
+msgid "Use the new version? (BETA)"
+msgstr "Използвайте новата версия? (БЕТА)"
+
+#: sexy-bookmarks.php:481
+#: sexy-bookmarks.php:634
+#: sexy-bookmarks.php:638
+#: sexy-bookmarks.php:642
+#: sexy-bookmarks.php:647
+#: sexy-bookmarks.php:651
+#: sexy-bookmarks.php:708
+#: sexy-bookmarks.php:712
+#: sexy-bookmarks.php:789
+msgid "No"
+msgstr "Не"
+
+#: sexy-bookmarks.php:482
+msgid "You can switch back at any time."
+msgstr "Можете да превключите обратно по-всяко време."
+
+# %sthis link%s
+#: sexy-bookmarks.php:486
+msgid "We are anxious to hear what you think! If you would like to leave us some feedback, please follow %sthis link%s and share your thoughts and opinions with us."
+msgstr "Нямаме търпение да чуем какво мислите! Ако желаете да ни предоставите малко обратна връзка, моля последвайте %sтози линк%s и споделете вашите мисли и мнения с нас."
+
+#: sexy-bookmarks.php:492
+msgid "Enabled Networks"
+msgstr "Активирани социални мрежи"
+
+#: sexy-bookmarks.php:496
+msgid "Select the Networks to display. Drag to reorder."
+msgstr "Изберете мрежите, които да се показват. Пренаредете ги с влачене."
+
+#: sexy-bookmarks.php:498
+msgid "Select"
+msgstr "Избери"
+
+#: sexy-bookmarks.php:499
+msgid "All"
+msgstr "Всички"
+
+#: sexy-bookmarks.php:500
+msgid "None"
+msgstr "Никой"
+
+#: sexy-bookmarks.php:501
+msgid "Most Popular"
+msgstr "Най-популярни"
+
+#: sexy-bookmarks.php:511
+msgid "Made with Much Love, these Icons are © Shareaholic"
+msgstr "Направени с много любов, тези икони са © Shareaholic"
+
+#: sexy-bookmarks.php:516
+msgid "Functionality Settings"
+msgstr "Функционални настройки:"
+
+#: sexy-bookmarks.php:522
+msgid "Twitter Options:"
+msgstr "Twitter настройки:"
+
+#: sexy-bookmarks.php:524
+msgid "Configuration Instructions:"
+msgstr "Инструкции за конфигуриране:"
+
+#: sexy-bookmarks.php:525
+msgid "Using the strings %s and %s you can fully customize your tweet output."
+msgstr "Използвайки низовете %s и %s вие можете напълно да кустомизирате вида на tweet-овете."
+
+#: sexy-bookmarks.php:526
+msgid "Example Configurations:"
+msgstr "Примерни конфигурации:"
+
+#: sexy-bookmarks.php:528
+msgid "or"
+msgstr "или"
+
+#: sexy-bookmarks.php:532
+msgid "Configure Custom Tweet Template:"
+msgstr "Конфигурирайте собствен tweet образец:"
+
+#: sexy-bookmarks.php:532
+msgid "Characters:"
+msgstr "Символи:"
+
+#: sexy-bookmarks.php:535
+msgid "Example Tweet Output:"
+msgstr "Примерен tweet резултат:"
+
+# %sALL%s
+#: sexy-bookmarks.php:539
+msgid "This will clear %sALL%s short URLs. - Are you sure?  Note: you will also need to \"Save Changes\" to complete the reset."
+msgstr "Това ще изчисти %sВСИЧКИ%s кратки URL адреси. - Сигурни ли сте? Бележка: също ще трябва да запазите промените за да завършите операцията."
+
+#: sexy-bookmarks.php:546
+msgid "Which URL Shortener?"
+msgstr "Кой сайт за съкращаване на URL адреси?"
+
+#: sexy-bookmarks.php:551
+msgid "Don't use a shortener"
+msgstr "Не съкращавай URL адресите"
+
+#: sexy-bookmarks.php:565
+msgid "Reset all Short URLs"
+msgstr "Нулирай всички кратки URL адреси"
+
+#: sexy-bookmarks.php:568
+#: sexy-bookmarks.php:580
+#: sexy-bookmarks.php:589
+#: sexy-bookmarks.php:601
+#: sexy-bookmarks.php:621
+msgid "User ID:"
+msgstr "Потребителско ID:"
+
+#: sexy-bookmarks.php:570
+#: sexy-bookmarks.php:591
+#: sexy-bookmarks.php:611
+#: sexy-bookmarks.php:623
+msgid "API Key:"
+msgstr "API ключ:"
+
+#: sexy-bookmarks.php:576
+#: sexy-bookmarks.php:597
+#: sexy-bookmarks.php:607
+#: sexy-bookmarks.php:617
+msgid "Track Generated Links?"
+msgstr "Следи генерираните линкове?"
+
+#: sexy-bookmarks.php:582
+msgid "Password:"
+msgstr "Парола:"
+
+#: sexy-bookmarks.php:630
+msgid "General Functionality Options:"
+msgstr "Общи функционални настройки:"
+
+#: sexy-bookmarks.php:632
+msgid "Add nofollow to the links?"
+msgstr "Да се добави nofollow към линковете?"
+
+#: sexy-bookmarks.php:636
+msgid "Open links in new window?"
+msgstr "Да се отварят линковете в нов прозорец?"
+
+#: sexy-bookmarks.php:640
+msgid "Show Share Counters for Facebook and Twitter?"
+msgstr "Показвай брояч на споделянията за Facebook и Twitter?"
+
+#: sexy-bookmarks.php:643
+msgid "(beta-mode exclusive feature)"
+msgstr "(екстра налична само в бета режим)"
+
+#: sexy-bookmarks.php:645
+msgid "Show Shareaholic Promo?"
+msgstr "Показвай Shareaholic промо?"
+
+#: sexy-bookmarks.php:649
+msgid "Track Performance?"
+msgstr "Следи ефективността?"
+
+#: sexy-bookmarks.php:650
+msgid "Yes (recommended)"
+msgstr "Да (препоръчва се)"
+
+#: sexy-bookmarks.php:658
+msgid "Plugin Aesthetics"
+msgstr "Естетика на разширението"
+
+#: sexy-bookmarks.php:663
+msgid "Warning!"
+msgstr "Внимание!"
+
+# %STRICTLY%s
+#: sexy-bookmarks.php:664
+msgid "This option is intended %STRICTLY%s for users who understand how to edit CSS/JS and intend to change/edit the associated images themselves. Unfortunately, no support will be offered for this feature, as I cannot be held accountable for your coding and/or image editing mistakes."
+msgstr "Тази настройка е предназначена %САМО%s за потребители, които разбират от редактиране на CSS/JS и смятат да променят/редактират съответните изображения. За съжаление, няма да се предлага поддръжка за тази екстра, понеже не мога да отговарям за вашите грешки при кодирането и/или редактирането на изображението."
+
+#: sexy-bookmarks.php:665
+msgid "How it works..."
+msgstr "Как работи..."
+
+#: sexy-bookmarks.php:666
+msgid "Since you have chosen for the plugin to override the style settings with your own custom mods, it will now pull the files from the new folders it is going to create on your server as soon as you save your changes. The file/folder locations should be as follows:"
+msgstr "Тъй като сте поискали разширението да използва ваши собствени стилови настройки, то сега ще ползва файловете от новите папки, които ще създаде на вашия сървър веднага след като запазите настройките. Разположението на файлът/папката би трябвало да бъде следното:"
+
+#: sexy-bookmarks.php:683
+msgid "Once you have saved your changes, you will be able to edit the image sprite that holds all of the icons for Shareaholic as well as the CSS which accompanies it. Just be sure that you do in fact edit the CSS if you edit the images, as it is unlikely the heights, widths, and background positions of the images will stay the same after you are done."
+msgstr "След като запазите промените, ще можете да редактирате както фоновото изображение от тип sprite, съдържащо иконките на Shareholic, така и съответния CSS код. Само не забравяйте реално да редактирате и CSS-а, ако редактирате изображението, защото едва ли височините, ширините и позицията на изображенията ще останат същите след редакцията."
+
+#: sexy-bookmarks.php:684
+msgid "Just a quick note... When you edit the styles and images to include your own custom backgrounds, icons, and CSS styles, be aware that those changes will not be reflected on the plugin options page. In other words: when you select your networks to be displayed, or when you select the background image to use, it will still be displaying the images from the original plugin directory."
+msgstr "Само една бърза бележка... Когато редактирате стиловете и изображенията за да включите свой собствен фон, иконки и CSS стил, имайте предвид, че тези промени няма да засегнат страницата с настройките на разширението. С други думи: когато избирате кои мрежи да се показват или когато избирате фоновото изображение, което да се използва, все още ще се показват изображенията от оригиналната папка на разширението."
+
+#: sexy-bookmarks.php:685
+msgid "In Case of Emergency"
+msgstr "В случай на авария"
+
+#: sexy-bookmarks.php:686
+msgid "If you happen to mess things up, you can follow these directions to reset the plugin back to normal and try again if you wish:"
+msgstr "Ако оплескате нещата, можете да следвате тези инструкции за да върнете разширението към стандартни настройки и да опитате отново ако желаете:"
+
+#: sexy-bookmarks.php:688
+msgid "Login to your server via FTP or SSH. (whichever you are more comfortable with)"
+msgstr "Влезте във вашия сървър през FTP или SSH. (което ви е по-удобно)"
+
+#: sexy-bookmarks.php:689
+msgid "Navigate to your wp-content directory."
+msgstr "Отворете вашата wp-content папка."
+
+#: sexy-bookmarks.php:690
+msgid "Delete the directory named \"sexy-mods\"."
+msgstr "Изтрийте папката на име \"sexy-mods\"."
+
+#: sexy-bookmarks.php:691
+msgid "Login to your WordPress dashboard."
+msgstr "Влезте във вашето WordPress табло."
+
+#: sexy-bookmarks.php:692
+msgid "Go to the SexyBookmarks plugin options page. (Settings->SexyBookmarks)"
+msgstr "Отидете до настройките на разширението SexyBookmarks. (Настройки->SexyBookmarks)"
+
+#: sexy-bookmarks.php:693
+msgid "Deselect the \"Use custom mods\" option."
+msgstr "Премахнете отметката \"Използвай стилове с потребителски модификации?\"."
+
+#: sexy-bookmarks.php:694
+msgid "Save your changes."
+msgstr "Запазете промените."
+
+#: sexy-bookmarks.php:696
+msgid "Close Message"
+msgstr "Затвори съобщението"
+
+#: sexy-bookmarks.php:700
+msgid "Override Styles With Custom Mods Instead?"
+msgstr "Използвай стилове с потребителски модификации?"
+
+#: sexy-bookmarks.php:705
+msgid "jQuery Related Options"
+msgstr "Настройки свързани с jQuery"
+
+#: sexy-bookmarks.php:706
+msgid "Animate-expand multi-lined bookmarks?"
+msgstr "Анимирано разгъване на отметки по-дълги от 1 ред?"
+
+#: sexy-bookmarks.php:709
+msgid "Auto-space/center the bookmarks?"
+msgstr "Автоматично подравняване на отметките?"
+
+#: sexy-bookmarks.php:710
+msgid "Space"
+msgstr "Празно място"
+
+#: sexy-bookmarks.php:711
+msgid "Center"
+msgstr "Център"
+
+#: sexy-bookmarks.php:713
+msgid "jQuery Compatibility Fix"
+msgstr "Поправка на jQuery съвместимостта"
+
+#: sexy-bookmarks.php:714
+msgid "Check this box ONLY if you notice jQuery being loaded twice in your source code!"
+msgstr "Сложете отметка САМО ако забележите, че jQuery се зарежда два пъти във вашия изходен код."
+
+#: sexy-bookmarks.php:716
+msgid "Load scripts in Footer"
+msgstr "Зареждай скриптовете във футъра"
+
+#: sexy-bookmarks.php:717
+msgid "Check this box if you want the SexyBookmarks javascript to be loaded in your blog's footer."
+msgstr "Сложете отметка ако желаете JavaScript кода на SexyBookmarks да се зарежда във футър файла на вашия блог."
+
+#: sexy-bookmarks.php:719
+msgid "Background Image Options"
+msgstr "Настройки на фоновото изображение"
+
+#: sexy-bookmarks.php:721
+msgid "Use a background image?"
+msgstr "Използване на фоново изображение?"
+
+#: sexy-bookmarks.php:754
+msgid "Menu Placement"
+msgstr "Разположение на менюто"
+
+# %sofficial install guide%s
+#: sexy-bookmarks.php:760
+msgid "Need help with this? Find it in the %sofficial install guide%s."
+msgstr "Имате нужда от помощ? Намерете я в %sофициалното упътване за инсталация%s."
+
+#: sexy-bookmarks.php:766
+msgid "Menu Location (in relation to content):"
+msgstr "Разположение на менюто (спрямо съдържанието):"
+
+#: sexy-bookmarks.php:767
+msgid "Above Content"
+msgstr "Над съдържанието"
+
+#: sexy-bookmarks.php:768
+msgid "Below Content"
+msgstr "Под съдържанието"
+
+#: sexy-bookmarks.php:769
+msgid "Above & Below Content"
+msgstr "Над и под съдържанието"
+
+#: sexy-bookmarks.php:770
+msgid "Manual Mode"
+msgstr "Ръчен режим"
+
+#: sexy-bookmarks.php:771
+msgid "Posts, pages, or the whole shebang?"
+msgstr "Публикации, страници или навсякъде?"
+
+#: sexy-bookmarks.php:776
+msgid "Posts Only"
+msgstr "Само публикации"
+
+#: sexy-bookmarks.php:777
+msgid "Pages Only"
+msgstr "Само страници"
+
+#: sexy-bookmarks.php:778
+msgid "Index Only"
+msgstr "Само начална страница"
+
+#: sexy-bookmarks.php:779
+msgid "Posts &amp; Pages"
+msgstr "Публикации и страници"
+
+#: sexy-bookmarks.php:780
+msgid "Posts &amp; Index"
+msgstr "Публикации и начална страница"
+
+#: sexy-bookmarks.php:781
+msgid "Pages &amp; Index"
+msgstr "Страници и начална страница"
+
+#: sexy-bookmarks.php:782
+msgid "Posts, Pages, &amp; Index"
+msgstr "Публикации, страници и начална страница"
+
+#: sexy-bookmarks.php:786
+msgid "Click here for help with this option"
+msgstr "Цъкнете тук за помощ относно тази настройка"
+
+#: sexy-bookmarks.php:787
+msgid "Show in RSS feed?"
+msgstr "Показвай в RSS хранилката?"
+
+#: sexy-bookmarks.php:791
+msgid "Hide menu from mobile browsers?"
+msgstr "Скриване на менюто за мобилните браузъри?"
+
+#: sexy-bookmarks.php:800
+msgid "Save Changes"
+msgstr "Запази настройките"
+
+#: sexy-bookmarks.php:804
+msgid "Reset Settings"
+msgstr "Възстанови стандартните настройки"
+
+#: sexy-bookmarks.php:810
+msgid "Helpful Plugin Links"
+msgstr "Връзки към полезни разширения"
+
+#: sexy-bookmarks.php:815
+msgid "Installation &amp; Usage Guide"
+msgstr "Упътване за инсталация и употреба"
+
+#: sexy-bookmarks.php:816
+msgid "Frequently Asked Questions"
+msgstr "Често задавани въпроси"
+
+#: sexy-bookmarks.php:817
+msgid "Bug Submission Form"
+msgstr "Формуляр за докладване на бъгове"
+
+#: sexy-bookmarks.php:818
+msgid "Feature Request Form"
+msgstr "Формуляр за предлагане на функционалности"
+
+#: sexy-bookmarks.php:819
+msgid "Submit a Translation"
+msgstr "Изпрати превод"
+
+#: sexy-bookmarks.php:820
+msgid "Shareaholic Browsers Add-ons"
+msgstr "Shareaholic добавки за браузъра"
+
+#: sexy-bookmarks.php:821
+msgid "Thanks &amp; Credits"
+msgstr "Благодарности и кредити"
+
+#: sexy-bookmarks.php:840
+#: sexy-bookmarks.php:843
+msgid "SexyBookmarks (by Shareaholic)"
+msgstr "SexyBookmarks (от Shareaholic)"
+
+#: sexy-bookmarks.php:840
+msgid "Shareaholic"
+msgstr "Shareaholic"
+
+#: sexy-bookmarks.php:843
+msgid "SexyBookmarks"
+msgstr "SexyBookmarks"
+
+#: sexy-bookmarks.php:879
+msgid "Settings"
+msgstr "Настройки"
+
+#: includes/bookmarks-data.php:21
+msgid "Check this box to include %s in your bookmarking menu"
+msgstr "Сложете тази отметка за да включите %s във вашето меню с отметки"
+
+#: includes/bookmarks-data.php:28
+#: includes/bookmarks-data.php:63
+#: includes/bookmarks-data.php:88
+#: includes/bookmarks-data.php:203
+#: includes/bookmarks-data.php:258
+#: includes/bookmarks-data.php:263
+#: includes/bookmarks-data.php:268
+#: includes/bookmarks-data.php:273
+#: includes/bookmarks-data.php:313
+#: includes/bookmarks-data.php:328
+#: includes/bookmarks-data.php:338
+#: includes/bookmarks-data.php:343
+#: includes/bookmarks-data.php:363
+msgid "Submit this to "
+msgstr "Изпрати това в "
+
+#: includes/bookmarks-data.php:33
+#: includes/bookmarks-data.php:38
+#: includes/bookmarks-data.php:53
+#: includes/bookmarks-data.php:73
+#: includes/bookmarks-data.php:78
+#: includes/bookmarks-data.php:93
+#: includes/bookmarks-data.php:118
+#: includes/bookmarks-data.php:153
+#: includes/bookmarks-data.php:158
+#: includes/bookmarks-data.php:163
+#: includes/bookmarks-data.php:173
+#: includes/bookmarks-data.php:178
+#: includes/bookmarks-data.php:293
+#: includes/bookmarks-data.php:353
+#: includes/bookmarks-data.php:373
+#: includes/bookmarks-data.php:393
+#: includes/bookmarks-data.php:403
+#: includes/bookmarks-data.php:408
+#: includes/bookmarks-data.php:418
+#: includes/bookmarks-data.php:428
+#: includes/bookmarks-data.php:443
+msgid "Share this on "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:43
+msgid "Digg this!"
+msgstr "Digg-ни това!"
+
+#: includes/bookmarks-data.php:48
+msgid "Post this on "
+msgstr "Публикувай това в "
+
+#: includes/bookmarks-data.php:58
+msgid "Buzz up!"
+msgstr "Buzz up!"
+
+#: includes/bookmarks-data.php:68
+msgid "Stumble upon something good? Share it on StumbleUpon"
+msgstr "Попаднахте на нещо добро? Споделете го в StumbleUpon"
+
+#: includes/bookmarks-data.php:83
+#: includes/bookmarks-data.php:223
+#: includes/bookmarks-data.php:243
+#: includes/bookmarks-data.php:383
+msgid "Post this to "
+msgstr "Публикувай това в "
+
+#: includes/bookmarks-data.php:98
+msgid "Tweet This!"
+msgstr "Tweet-ни това!"
+
+#: includes/bookmarks-data.php:102
+msgid "an 'Email to a Friend' link"
+msgstr "линк от тип 'Изпрати по e-mail'"
+
+#: includes/bookmarks-data.php:103
+msgid "Email this to a friend?"
+msgstr "Изпрати по email на приятел?"
+
+#: includes/bookmarks-data.php:108
+msgid "Suggest this article to "
+msgstr "Изпрати тази статия в "
+
+#: includes/bookmarks-data.php:111
+msgid "a 'Subscribe to Comments' link"
+msgstr "линк от тип 'Абониране за коментарите'"
+
+#: includes/bookmarks-data.php:112
+#: includes/public.php:139
+msgid "Subscribe to the comments for this post?"
+msgstr "Абонирайте се за коментарите на тази публикация?"
+
+#: includes/bookmarks-data.php:123
+msgid "Seed this on "
+msgstr "Изпрати това в "
+
+#: includes/bookmarks-data.php:128
+#: includes/bookmarks-data.php:133
+#: includes/bookmarks-data.php:143
+#: includes/bookmarks-data.php:148
+#: includes/bookmarks-data.php:183
+#: includes/bookmarks-data.php:188
+#: includes/bookmarks-data.php:193
+#: includes/bookmarks-data.php:198
+#: includes/bookmarks-data.php:218
+#: includes/bookmarks-data.php:378
+#: includes/bookmarks-data.php:398
+#: includes/bookmarks-data.php:423
+msgid "Add this to "
+msgstr "Добави това в "
+
+#: includes/bookmarks-data.php:138
+msgid "Post on Google Buzz"
+msgstr "Публикувай в Google Buzz"
+
+#: includes/bookmarks-data.php:168
+msgid "Mark this on "
+msgstr "Публикувай това в "
+
+#: includes/bookmarks-data.php:177
+#: includes/bookmarks-data.php:182
+#: includes/bookmarks-data.php:187
+#: includes/bookmarks-data.php:192
+#: includes/bookmarks-data.php:197
+msgid " (Russian)"
+msgstr "(Руски)"
+
+#: includes/bookmarks-data.php:208
+msgid "Send this page to "
+msgstr "Изпрати тази страница в "
+
+#: includes/bookmarks-data.php:213
+msgid "Bump this on "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:228
+msgid "Save this to "
+msgstr "Запази това в "
+
+#: includes/bookmarks-data.php:233
+msgid "Tip this to "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:238
+msgid "Sphinn this on "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:248
+msgid "Grind this! on "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:253
+msgid "Ping this on "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:257
+#: includes/bookmarks-data.php:262
+msgid " (Dutch)"
+msgstr "(Холандски)"
+
+#: includes/bookmarks-data.php:278
+msgid "Blend this!"
+msgstr "Сподели това!"
+
+#: includes/bookmarks-data.php:282
+msgid " (Polish)"
+msgstr "(Полски)"
+
+#: includes/bookmarks-data.php:283
+msgid "Add this to Wykop!"
+msgstr "Добави това в Wykop!"
+
+#: includes/bookmarks-data.php:288
+msgid "Engage with this article!"
+msgstr "Сподели тази статия!"
+
+#: includes/bookmarks-data.php:297
+msgid " (Swedish)"
+msgstr "(Шведски)"
+
+#: includes/bookmarks-data.php:298
+msgid "Push this on "
+msgstr "Изпрати това в "
+
+#: includes/bookmarks-data.php:302
+msgid " (Japanese)"
+msgstr "(Японски)"
+
+#: includes/bookmarks-data.php:303
+msgid "Bookmarks this on "
+msgstr "Запази това в "
+
+#: includes/bookmarks-data.php:308
+msgid "Store this link on "
+msgstr "Запази този линк в "
+
+#: includes/bookmarks-data.php:318
+msgid "Add to a lense on "
+msgstr "Добави в "
+
+#: includes/bookmarks-data.php:323
+msgid "Submit this story to "
+msgstr "Изпрати тази публикация в "
+
+#: includes/bookmarks-data.php:333
+msgid "Clip this to "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:337
+#: includes/bookmarks-data.php:342
+msgid " (Spanish)"
+msgstr "(Испански)"
+
+#: includes/bookmarks-data.php:348
+msgid "Submit this link to "
+msgstr "Изпрати този линк в "
+
+#: includes/bookmarks-data.php:358
+msgid "Submit tip to "
+msgstr "Изпрати в "
+
+#: includes/bookmarks-data.php:368
+msgid "Promote this on "
+msgstr "Промотирай това в "
+
+#: includes/bookmarks-data.php:388
+msgid "Blog this on "
+msgstr "Публикувай това в "
+
+#: includes/bookmarks-data.php:402
+msgid " (Estonian)"
+msgstr "(Естонски)"
+
+#: includes/bookmarks-data.php:413
+msgid "Add this link to "
+msgstr "Добави този линк в "
+
+#: includes/bookmarks-data.php:417
+msgid "(Italian)"
+msgstr "(Италиански)"
+
+#: includes/bookmarks-data.php:433
+msgid "Spring this on "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:438
+msgid "Box this on "
+msgstr "Сподели това в "
+
+#: includes/bookmarks-data.php:448
+#: includes/bookmarks-data.php:453
+#: includes/bookmarks-data.php:458
+msgid "Email this via "
+msgstr "Изпрати по имейл чрез "
+
+#: includes/bookmarks-data.php:463
+msgid "Share this via "
+msgstr "Сподели това чрез "
+
+#: includes/public.php:549
+msgid "An unknown error occurred in SexyBookmarks"
+msgstr "Възникна неизвестна грешка в SexyBookmarks"
+
+#: includes/public.php:814
+msgid "SexyBookmarks has been disabled on this page"
+msgstr "SexyBookmarks е изключено за тази страница"
+

@@ -1,0 +1,32 @@
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+
+#main .breadcrumb {
+  padding: 8px 15px;
+  margin: 0 0 @baseLineHeight;
+  list-style: none;
+  background-color: #2A2827;
+  position: relative;
+  z-index: 3;
+  > li {
+    display: inline-block;
+    .ie7-inline-block();
+    padding: 0;
+    &:before {
+      display: none;
+    }
+    a {
+      text-shadow:none;
+    }
+    > .divider {
+      padding: 0 5px;
+      color: #ccc;
+    }
+  }
+  > .active {
+    color: #fff;
+    font-weight: normal;
+  }
+}

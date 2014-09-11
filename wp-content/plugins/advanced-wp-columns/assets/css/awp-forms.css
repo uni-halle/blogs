@@ -1,0 +1,21 @@
+.awp-columns label {
+	color: #222;
+	text-shadow: #fff 0 1px 0;
+}
+.awp-columns th {
+	vertical-align: top;
+	text-align: left;
+	padding: 10px;
+	width: 200px;
+	font-weight: 400;
+}
+.awp-columns td input[type="text"]{
+	width: 25em;
+}
+.awp-columns td input[type="text"]:disabled
+{
+	background-color:#F8F8F8;
+}
+.awp-columns td span.description{
+	padding-left: 15px;
+}

@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/my-page-order\n"
+"POT-Creation-Date: 2009-11-21 23:27+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: mypageorder.php:14 mypageorder.php:65 mypageorder.php:221
+msgid "My Page Order"
+msgstr ""
+
+#: mypageorder.php:31 mypageorder.php:90
+msgid "Order Pages"
+msgstr ""
+
+#: mypageorder.php:32 mypageorder.php:107
+msgid "Support Forum"
+msgstr ""
+
+#: mypageorder.php:33 mypageorder.php:71 mypageorder.php:105
+msgid "Donate"
+msgstr ""
+
+#: mypageorder.php:71
+msgid ""
+"If you like my plugin please consider donating. Every little bit helps me "
+"provide support and continue development."
+msgstr ""
+
+#: mypageorder.php:71
+msgid "No thanks, hide this"
+msgstr ""
+
+#: mypageorder.php:77
+msgid ""
+"Choose a page from the drop down to order its subpages or order the pages on "
+"this level by dragging and dropping them into the desired order."
+msgstr ""
+
+#: mypageorder.php:83 mypageorder.php:87
+msgid "Order Subpages"
+msgstr ""
+
+#: mypageorder.php:100
+msgid "Click to Order Pages"
+msgstr ""
+
+#: mypageorder.php:103
+msgid "Plugin Homepage"
+msgstr ""
+
+#: mypageorder.php:137
+msgid "Updating Page Order..."
+msgstr ""
+
+#: mypageorder.php:170
+msgid "Page order updated successfully."
+msgstr ""
+
+#: mypageorder.php:202
+msgid "Return to parent page"
+msgstr ""
+
+#: mypageorder.php:220
+msgid "Enhanced Pages widget provided by My Page Order"
+msgstr ""
+
+#: mypageorder.php:226
+msgid "Pages"
+msgstr ""
+
+#: mypageorder.php:320
+msgid "Title:"
+msgstr ""
+
+#: mypageorder.php:323
+msgid "Sort by:"
+msgstr ""
+
+#: mypageorder.php:325
+msgid "Page Order"
+msgstr ""
+
+#: mypageorder.php:326
+msgid "Page Title"
+msgstr ""
+
+#: mypageorder.php:327
+msgid "Post Date"
+msgstr ""
+
+#: mypageorder.php:328
+msgid "Post Modified"
+msgstr ""
+
+#: mypageorder.php:329
+msgid "Author"
+msgstr ""
+
+#: mypageorder.php:330
+msgid "Page Slug"
+msgstr ""
+
+#: mypageorder.php:331
+msgid "Page ID"
+msgstr ""
+
+#: mypageorder.php:335
+msgid "Sort Order:"
+msgstr ""
+
+#: mypageorder.php:337
+msgid "Ascending"
+msgstr ""
+
+#: mypageorder.php:338
+msgid "Descending"
+msgstr ""
+
+#: mypageorder.php:341
+msgid "Might only work with Page Title."
+msgstr ""
+
+#: mypageorder.php:344
+msgid "Show Home:"
+msgstr ""
+
+#: mypageorder.php:346
+msgid "Enter text for link to blog home, blank to hide."
+msgstr ""
+
+#: mypageorder.php:349
+msgid "Exclude:"
+msgstr ""
+
+#: mypageorder.php:351 mypageorder.php:356 mypageorder.php:361
+msgid "Page IDs, separated by commas."
+msgstr ""
+
+#: mypageorder.php:354
+msgid "Exclude Tree:"
+msgstr ""
+
+#: mypageorder.php:359
+msgid "Include:"
+msgstr ""
+
+#: mypageorder.php:364
+msgid "Depth:"
+msgstr ""
+
+#: mypageorder.php:366
+msgid "0 = Hierarchy, -1 = Flat, 1 = Top Level, 2+ = Depth."
+msgstr ""
+
+#: mypageorder.php:369
+msgid "Child Of:"
+msgstr ""
+
+#: mypageorder.php:371
+msgid "ID of Parent Page."
+msgstr ""
+
+#: mypageorder.php:374
+msgid "Show Date:"
+msgstr ""
+
+#: mypageorder.php:376
+msgid "modified or custom to use Date Format."
+msgstr ""
+
+#: mypageorder.php:379
+msgid "Date Format:"
+msgstr ""
+
+#: mypageorder.php:381
+msgid "Custom date format to use with custom Show Date."
+msgstr ""
+
+#: mypageorder.php:384
+msgid "Meta Key:"
+msgstr ""
+
+#: mypageorder.php:386
+msgid "Use with Meta Value."
+msgstr ""
+
+#: mypageorder.php:389
+msgid "Meta Value:"
+msgstr ""
+
+#: mypageorder.php:391
+msgid "Use with Meta Key."
+msgstr ""
+
+#: mypageorder.php:394
+msgid "Link Before:"
+msgstr ""
+
+#: mypageorder.php:396
+msgid "Text or HTML to proceed link text."
+msgstr ""
+
+#: mypageorder.php:399
+msgid "Link After:"
+msgstr ""
+
+#: mypageorder.php:401
+msgid "Text or HTML after link text."
+msgstr ""
+
+#: mypageorder.php:404
+msgid "Authors:"
+msgstr ""
+
+#: mypageorder.php:406
+msgid "Author IDs, seperated by comma."
+msgstr ""
+
+#: mypageorder.php:409
+msgid "Number:"
+msgstr ""
+
+#: mypageorder.php:411
+msgid "Number of pages to display."
+msgstr ""
+
+#: mypageorder.php:414
+msgid "Offset:"
+msgstr ""
+
+#: mypageorder.php:416
+msgid "Number of pages to skip."
+msgstr ""

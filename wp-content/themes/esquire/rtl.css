@@ -1,0 +1,214 @@
+/* =Reset
+----------------------------------------------- *
+*/
+caption,
+th {
+	text-align: right;
+}
+
+/* =Global
+----------------------------------------------- */
+
+body {
+	background: url(img/bg-rtl.png) repeat-y right;
+}
+
+/* Alignment */
+.alignright {
+	float: right;
+	margin-left: 0.66em;
+	margin-right: auto;
+}
+.alignleft {
+	float: left;
+	margin-right: 0.66em;
+	margin-left: auto;
+}
+.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* =Theme
+----------------------------------------------- */
+
+#sidebar {
+	background: #ff6 url(img/sidebar-bg-rtl.png) no-repeat 0 100%;
+	padding: 20px 20px 60px 19px;
+	right: 30px;
+	left: auto;
+}
+#sidebar .button {
+	float: right;
+	margin-left: 5px;
+	margin-right: auto;
+}
+.bar {
+    background-position: right 100%;
+}
+
+/* Menu */
+#access ul ul {
+	right: 164px;
+	left: auto;
+}
+#access ul ul .children,
+#access ul ul .sub-menu {
+	right: 164px;
+	left: auto;
+}
+#search {
+	clear: right;
+}
+#credit {
+	right: 25px;
+	left: auto;
+}
+#header {
+	margin: 0 -40px 3.5em 0;
+}
+#header h2 {
+	padding: 1.15em 40px 0 0;
+}
+
+/* Posts */
+.hentry {
+	padding-right: 380px;
+	padding-left: 0;
+}
+.datebox {
+	right: 280px;
+	left: auto;
+}
+.datebox .day {
+	text-align: left;
+}
+.datebox .month {
+	text-align: left;
+}
+
+.photo .frame img {
+	padding: 80px 78px 0;
+}
+
+/* Quote.hentry */
+.format-quote blockquote {
+	background: #ff3300 url(img/quote-bg-rtl.png) no-repeat 97% 15px;
+	padding: 12px 80px 12px 15px;
+}
+.quote-caption {
+	text-align: left;
+}
+
+/* Video.hentry */
+.video .content .player {
+	padding: 31px 29px 0 0;
+}
+
+/* Text.hentry */
+.text .content > p:first-child:first-letter {
+	float: right;
+	padding: 16px 27px 20px 21px  ;
+	margin: 0.1em 0 0 5px;
+}
+
+/* gallery.hentry */
+.gallery-thumb {
+	float: right;
+	margin: 0 0 1.32em 1.32em;
+}
+
+/* Link.hentry */
+.link .entry-title {
+	background: #3399ff url(img/link-bg-rtl.png) repeat-y 0% 50%;
+	padding-left: 40px;
+	padding-right: 0;
+}
+
+/* Audio.hentry */
+.audio .artwork {
+	margin: 0 -2px 5px 0;
+}
+.audio .artwork img {
+	margin: 2px 2px 0 0;
+}
+.audio .overlay {
+	background: url(img/album-overlay-rtl.png) no-repeat 0 0;
+	right: 0;
+	left: auto;
+}
+
+/* Chat.hentry */
+.chat dt em {
+	float: right;
+}
+
+/* Meta */
+.meta {
+	clear: right;
+}
+.tagbar {
+	clear: right;
+}
+
+/* Footer */
+#footer {
+	margin: -30px 340px 0 0;
+}
+#footer a[rel="prev"],
+#footer span.prev {
+	float: right;
+	padding-right: 20px;
+	padding-left: 0;
+}
+#footer a[rel="prev"] span.prev {
+	padding-right: 0;
+	padding-left: 0;
+}
+#footer a[rel="next"],
+#footer span.next {
+	float: left;
+	padding-left: 20px;
+	padding-right: 0;
+}
+#footer a[rel="next"] span.next {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+/* =Comments
+----------------------------------------------- */
+
+#comments li.pingback {
+	padding: 1.32em 44px 0 0;
+}
+.comment-meta {
+	padding: 3px 31px 0.66em 0;
+}
+li.comment .avatar {
+	right: 13px;
+	left: auto;
+}
+.comment-content {
+	margin: 0.66em 31px 0.66em 0;
+}
+li.comment .reply {
+	margin: 0.66em 31px 0.66em 0;
+}
+
+
+/* =Widgets
+----------------------------------------------- */
+
+#widgets {
+	margin: 0 340px 3em 0;
+}
+
+/* =IE7
+----------------------------------------------- */
+
+#ie7 #footer a[rel=\"next\"] span.next {
+	padding-left: 5px;
+	padding-right: 0;
+}

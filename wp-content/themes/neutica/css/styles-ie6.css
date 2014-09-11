@@ -1,0 +1,8 @@
+/* styles-ie6.css */
+
+#wrapper {width:1000px;}
+#wrapper .entry-content {width:380px;}
+#menu{padding:15px 0px 15px 15px;}
+#countrytabs.shadetabs {height:10px;display:block;overflow:hidden;}
+.shadetabs li a.selected{z-index:10;height:20px;display:inline;border-bottom-width:20px;}
+.tabmenu {background:#241C0F;}

@@ -1,0 +1,34 @@
+#respond {
+	padding-top: 17px!important;
+}
+#comm-add {
+	border-left:1px solid #E7E7E7;
+	float:right;
+	line-height:49px;
+	margin-top:-15px;
+	padding:0 10px;
+	text-decoration:none !important;
+}
+.attachment #comm-add {
+	margin-top:1px;
+}
+
+#author, #email {
+margin-right:0!important;
+}
+
+.logged-in #cancel-comment-reply {
+margin-left:474px;
+margin-top:153px!important;
+position:absolute;
+}
+
+#cancel-comment-reply {
+margin-left:474px;
+margin-top:253px!important;
+position:absolute;
+}
+
+#commentform textarea {
+	overflow: hidden;
+}

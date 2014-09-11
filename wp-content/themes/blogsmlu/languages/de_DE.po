@@ -1,0 +1,295 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: blogsmlu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-24 22:47+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Matthias Kretschmann <krema@jpberlin.de>\n"
+"Language-Team: Matthias Kretschmann <krema@jpberlin.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:4
+msgid "Error 404 - Not found"
+msgstr "Fehler 404 - Nicht gefunden"
+
+#: ../404.php:6
+msgid "Sorry, but something went wrong."
+msgstr "Sorry, aber irgendwas ging schief."
+
+#: ../404.php:8
+msgid "Maybe try a search:"
+msgstr "Vielleicht hilft eine Suche weiter:"
+
+#: ../404.php:12
+msgid "Recent Entries"
+msgstr "Letzte Beitr&auml;ge"
+
+#: ../404.php:13
+msgid "Or have a look at the recent entries:"
+msgstr "Oder wirf einen Blick auf die letzten Beitr&auml;ge"
+
+#: ../admin-menu.php:10
+msgid "User ID"
+msgstr "Nutzerkennzeichen"
+
+#: ../admin-menu.php:12
+msgid "Password"
+msgstr "Passwort"
+
+#: ../admin-menu.php:15
+msgid "Remember me"
+msgstr "Erinnere dich an mich"
+
+#: ../admin-menu.php:16
+#: ../admin-menu.php:23
+#: ../comments.php:56
+msgid "Login"
+msgstr "Anmelden"
+
+#: ../admin-menu.php:20
+msgid "Recover Password"
+msgstr "Passwort vergessen?"
+
+#: ../admin-menu.php:54
+msgid "Blog Dashboard"
+msgstr "Blog-Dashboard"
+
+#: ../admin-menu.php:55
+msgid "Your Profile"
+msgstr "Dein Benutzer-Profil"
+
+#: ../admin-menu.php:58
+msgid "New Post"
+msgstr "Neuer Artikel"
+
+#: ../admin-menu.php:61
+msgid "New Page"
+msgstr "Neue Seite"
+
+#: ../admin-menu.php:64
+msgid "Upload Files"
+msgstr "Medien hochladen"
+
+#: ../admin-menu.php:65
+msgid "Sidebar Widgets"
+msgstr "Sidebar Widgets"
+
+#: ../admin-menu.php:71
+msgid "Add New User"
+msgstr "Neuen Benutzer hinzuf&uuml;gen"
+
+#: ../admin-menu.php:75
+#: ../comments.php:63
+msgid "Logout"
+msgstr "Abmelden"
+
+#: ../admin-menu.php:78
+msgid "Admin Menu"
+msgstr "Admin Men&uuml;"
+
+#: ../archive.php:9
+msgid "Category "
+msgstr "Kategorie "
+
+#: ../archive.php:11
+msgid "All posts tagged"
+msgstr "All Artikel mit Schlagwort "
+
+#: ../archive.php:14
+msgid "Day Archive for "
+msgstr "Tages-Archiv f&uuml;r den "
+
+#: ../archive.php:17
+msgid "Month Archive for "
+msgstr "Monats-Archiv f&uuml;r "
+
+#: ../archive.php:20
+msgid "Year Archive for "
+msgstr "Jahres-Archiv f&uuml;r "
+
+#: ../archive.php:77
+msgid "All posts by "
+msgstr "Alle Artikel von "
+
+#: ../archive.php:95
+#: ../index.php:29
+#: ../index.php:33
+#: ../page.php:14
+#: ../single.php:21
+msgid "[ Read On ... ]"
+msgstr "[ Weiterlesen ... ]"
+
+#: ../archive.php:102
+#: ../index.php:15
+#: ../search.php:57
+#: ../single.php:17
+msgid "Written by "
+msgstr "Verfasst von "
+
+#: ../archive.php:102
+#: ../comments.php:5
+#: ../index.php:39
+#: ../search.php:57
+#: ../single.php:25
+msgid "No Comments"
+msgstr "Keine Kommentare"
+
+#: ../archive.php:102
+#: ../comments.php:5
+#: ../index.php:39
+#: ../search.php:57
+#: ../single.php:25
+msgid "1 Comment"
+msgstr "1 Kommentar"
+
+#: ../archive.php:102
+#: ../comments.php:5
+#: ../index.php:39
+#: ../search.php:57
+#: ../single.php:25
+msgid "% Comments"
+msgstr "% Kommentare"
+
+#: ../archive.php:102
+#: ../index.php:39
+#: ../page.php:22
+#: ../search.php:57
+#: ../single.php:25
+msgid "Edit "
+msgstr "Bearbeiten"
+
+#: ../archive.php:109
+#: ../index.php:46
+#: ../search.php:64
+msgid "&laquo; Older Entries"
+msgstr "&laquo; &Auml;ltere Beitr&auml;ge"
+
+#: ../archive.php:110
+#: ../index.php:47
+#: ../search.php:65
+msgid "Newer Entries &raquo;"
+msgstr "Neuere Beitr&auml;ge &raquo;"
+
+#: ../comments.php:39
+msgid "Comments are closed."
+msgstr "Kommentare sind geschlossen."
+
+#: ../comments.php:49
+msgid "Leave a Reply"
+msgstr "Kommentieren"
+
+#: ../comments.php:49
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Kommentiere %s"
+
+#: ../comments.php:56
+msgid "You must be logged in to post a comment. "
+msgstr "Du musst angemeldet sein, um einen Kommentar zu hinterlassen. "
+
+#: ../comments.php:63
+msgid "Logged in as "
+msgstr "Angemeldet als "
+
+#: ../comments.php:77
+msgid "Submit"
+msgstr "Absenden"
+
+#: ../footer.php:8
+msgid "is using the blogs@URZ Default Theme"
+msgstr "verwendet das Blogs@MLU Default Theme"
+
+#: ../footerbar.php:7
+msgid "Pages"
+msgstr "Seiten"
+
+#: ../footerbar.php:12
+msgid "Recent Comments"
+msgstr "Letzte Kommentare"
+
+#: ../footerbar.php:17
+msgid "Tags"
+msgstr "Schlagworte"
+
+#: ../header.php:98
+msgid "Subscribe to RSS-Feed"
+msgstr "RSS-Feed abonnieren"
+
+#: ../index.php:52
+msgid "Not found."
+msgstr "Nichts gefunden."
+
+#: ../index.php:54
+msgid "Sorry, but you are looking for something that isn't here. Try something else."
+msgstr "Sorry, aber du suchst nach etwas, das nicht existiert. Versuche etwas anderes."
+
+#: ../page.php:15
+#: ../single.php:22
+msgid "Pages: "
+msgstr "Seiten: "
+
+#: ../page.php:31
+msgid "Sub Pages"
+msgstr "Unter-Seiten"
+
+#: ../search.php:21
+msgid "All Results &raquo;"
+msgstr "Alle Ergebnisse &raquo;"
+
+#: ../search.php:25
+#: ../search.php:70
+msgid "Nothing found."
+msgstr "Nichts gefunden."
+
+#: ../search.php:25
+#: ../search.php:73
+msgid "Try a different search?"
+msgstr "Probiere eine andere Suche?"
+
+#: ../search.php:37
+msgid "Search results for "
+msgstr "Suchergebnisse f&uuml;r "
+
+#: ../sidebar.php:7
+msgid "Search"
+msgstr "Suche"
+
+#: ../sidebar.php:12
+msgid "Categories"
+msgstr "Kategorien"
+
+#: ../sidebar.php:19
+msgid "Archives"
+msgstr "Archiv"
+
+#: ../sidebar.php:26
+msgid "Blogroll"
+msgstr "Blogroll"
+
+#: ../single.php:28
+msgid "Tags: "
+msgstr "Schlagworte: "
+
+#: ../single.php:38
+msgid "More Services"
+msgstr "Weitere Dienste"
+
+#: ../single.php:59
+msgid "Oh snap, no entries found."
+msgstr "Ups, keine Beitr&auml;ge gefunden."
+
+#~ msgid "Username"
+#~ msgstr "Benutzername"
+#~ msgid "Hide"
+#~ msgstr "Verstecken"
+#~ msgid "Meta"
+#~ msgstr "Meta"
+

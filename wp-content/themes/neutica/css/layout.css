@@ -1,0 +1,150 @@
+/* layout.css */
+
+#wrapper{margin:20px 0px 0px 20px; max-width:1000px; min-width:1000px;}
+
+/* Header
+------------------------ */
+#header{margin:0px; padding:0px; position:relative;display:block;}
+#header h1 a .hide{visibility:hidden}
+#header h1 a{display:block; width:600px; margin:10px 50px 0 0; padding:0; float:left}
+#blog-description{float:left; height:30px; width:285px; display:block; margin:30px 15px 0px 0px; padding:0px 0px 0px 0px}
+
+/* Content
+------------------------ */
+#container{}
+#content{margin-top:0px;width:650px;float:left;min-height:400px;}
+#featured{width:600px;height:145px;padding:0;margin:0;display:block;}
+#featured .featured-post{padding:15px;height:120px;}
+#featured .featured-post h2.entry-title a {width:570px;}
+.post, .hentry {padding:15px 0 0 0; margin:0 55px 150px 0; clear:both; width:600px}
+.hentry a {padding:3px 0;}
+.error404{height:200px}
+ul.meta-list{width:200px;}
+ul.attachment-meta-list{margin-bottom:10px;}
+ul.meta-list li a {padding:4px 1px 4px 2px;margin:0;}
+/* Images -----*/
+.hentry .thePic .post-image{margin-bottom:50px;}
+img.post-image, img.attachment-thumbnail {width:185px; height:185px; margin:0 5px 50px 0; padding:0}
+.single img.attachment-thumbnail{width:100px;height:100px;margin:0;border:none;}
+.archive .post img, .search .hentry img, .home .post img{float:left; margin:1em 15px 10px 0px}
+/* Copy -----*/
+blockquote{padding:10px 15px;margin-bottom:1em;}
+.hentry object, .hentry embed{display:block; margin:2em auto}
+.entry-title, .entry-title a{display:block; width:200px; margin-bottom:10px;}
+.entry-content{margin:1em 0; padding:0 15px 2em 0; width:385px; display:block; float:left}
+.home .entry-content, .archive .entry-content, .search .entry-content, .page .entry-content{margin:0; padding:0 15px 2em 0; width:385px; display:block; float:left}
+.entry-meta, .archive-meta{margin:10px 0 35px 0; width:185px; display:block;float:left; position:relative}
+/* Lists -----*/
+.entry ul, .entry-content ul{padding:0;margin: 0 1em 1em 1em;}
+.entry ol, .entry-content ol{padding:0;margin: 0 1em 1em 1em;list-style:decimal-leading-zero inside}
+.entry ul li, .entry-content ul li{list-style:square inside; padding:0}
+.entry ul li ul, .entry-content ul li ul, .entry ol li ol, .entry-content ol li ol{padding:0;margin:0 0 0 2em;font-size:0.75em;}
+.entry ol li{margin:1em 0}
+/* Archives Page -----*/
+.entry-content ul#archives-page {margin:0 0 2em 0;padding:0 0 2em 0;}
+.entry-content ul#archives-page li.content-column ul {margin-left:0;}
+.entry-content ul#archives-page li.content-column ul li ul {margin-left:1em;}
+.entry-content ul#archives-page li.content-column {list-style:none;margin:0 0 2em 0;}
+.entry-content ul#archives-page li h3 {display:block;}
+
+/* Navigation -----*/
+abbr{text-decoration:none}
+#nav-above, #nav-below{clear:both; display:block; width:585px; height:120px; padding:10px 0px 0px 15px;}
+#nav-above .small{clear:both; display:block}
+#nav-above h2.entry-title{width:170px; margin:0px 15px 0 0; float:left}
+#nav-above-content{padding:0; margin:0px; width:170px; float:left}
+#nav-below .nav-next {padding:0; margin:10px 15px 0px 185px; width:185px; float:left}
+#nav-below .nav-previous{padding:0; margin:10px 15px 0px 0px; width:185px; float:left}
+#nav-below a {display:block;}
+#nav-below{clear:both; width:585px;}
+
+/* Comments
+------------------------ */
+.comment{width:200px;margin:6px 0;position:relative;overflow:auto}
+.comment a {padding:4px 1px 4px 2px;margin:0;}
+#comments{margin:20px 0 30px 0;padding:10px 0;width:200px;}
+#comments h3{padding-bottom:10px;}
+.comment-meta{margin:0;}
+#respond h3{margin:13px 0 0 0}
+.comment .date{bottom:1em; position:absolute; right:1em}
+.byuser p, .comment p{padding:0px}
+.comment-author-admin p{padding:0 0 0 10px}
+#commentform{}
+/* Avatar -----*/
+a.avatar-link{float:right;border:none;padding:0;margin:0;}
+a.avatar-link:hover{border:none;padding:0;margin:0;}
+a.avatar-link img {border:none;padding:0;margin:0;}
+a.avatar-link:hover img {border:none;padding:0;margin:0;}
+
+/* Page Menu
+------------------------ */
+#menu{width:285px; min-height:135px; padding:15px 0px 0px 15px;float:left;}
+#menu li{float:left; margin-left:0px}
+#menu li a{padding:3px 0px 3px 0px; margin-right:10px; display:block}
+
+/* Sidebar
+------------------------ */
+.sidebar{float:left; width:142px; padding:13px 15px 0 0}
+.sidebar ul li.widget, .sidebar ul li.widget #searchform {margin-bottom:30px;}
+.sidebar li h3 a img {margin:0 0 1em 10px;clear:right;float:right;}
+.sidebar li ul li a {position:relative;}
+.sidebar li.widget_sandbox_rsslinks ul li a img {text-align:right;vertical-align:middle;top:2px;right:1px;position:absolute;}
+.sidebar li.widget_sandbox_rsslinks ul li {padding:0;margin:0}
+.sidebar li ul li ul {list-style:disc;}
+.sidebar li ul li ul li {list-style-position:inside;}
+.sidebar li ul li ul li a {display:inline;}
+.sidebar li ul li a{display:block;padding:0;margin:0;}
+.sidebar #tag_cloud a{padding:3px 3px 3px 1px;}
+.children{padding:0 0 0 10px; margin:0px}
+.children li{padding:0; margin:0}
+#primary ul, #secondary ul, #secondary #search {margin-top:0px; margin-bottom:0px}
+.recent-comments {display:block; width:285px; margin:15px 0 0 0; float:left; list-style:none}
+.recent-comments li ul li {margin-bottom:10px}
+#initial.sidebar {float:left;width:300px;padding-right:0;}
+
+/*	Tabs */
+.tabmenu {display: block;width: 300px;margin: 15px 0 0 0;float: left;list-style: none;}
+#menu-item-wrap{width:300px;margin-bottom:5px;padding:10px 0;}
+.shadetabs {width:285px;text-align: left;}
+.shadetabs li {margin-right:0px;padding: 0;min-width: 20px;float: left;}
+.shadetabs li a {text-decoration: none;position: relative;z-index: 1;padding: 3px 7px 3px 7px;}
+.shadetabs li a.selected{position: relative;top: 0px;}
+.shadetabs li a.selected:hover{text-decoration: none;}
+.tabcontent ul li {padding-bottom:10px;}
+.tabcontent {display:none;}
+@media print {
+	.tabcontent {
+	display:block !important;
+	}
+}
+
+
+/*	Wordpress 2.5+ Shortcode Styles
+------------------------------------------ */
+div.entry-attachment,div.entry-caption{text-align:center;}
+div.entry-attachment img,div#nav-images div img{overflow:hidden;}
+body.attachment div#nav-images{clear:both;width:100%;}
+body.attachment div#nav-images div{padding:1em 0;width:50%;}
+body.attachment div#nav-images div.nav-previous{text-align:left;}
+body.attachment div#nav-images div.nav-next{text-align:right;}
+body.attachment div#comments{clear:both;}
+
+/* forms.css */
+.input-text, textarea{font-size:1em;}
+label{font-size:1em; margin:0}
+#search-form label{position:absolute; height:0px; top:-99999px}
+.form-label{margin-top:10px;}
+p.input-submit{text-align:right}
+#commentform input{width:200px;}
+#commentform textarea, .input-text, textarea{width:200px;}
+#commentform #submit{padding:.3em;margin-top:5px;width:100px;cursor:pointer;}
+#searchform #s, #searchform #s {margin-top:3px;width:100%;height:15px;}
+#searchform #searchsubmit{padding:0 5px;margin-top:5px;cursor:pointer;}
+#error404-searchform{float:none;}
+#error404-s,#noresults-s {margin-top:3px;width:200px;height:15px;clear:both;float:none;}
+#error404-searchsubmit, #noresults-searchsubmit{padding:0 5px;margin-top:5px;cursor:pointer;}
+
+/* Footer
+------------------------ */
+img#wpstats {position:fixed;display:block;bottom:5px;right:15px;}
+#footer{clear:both; padding:1em 1em 1em 0}

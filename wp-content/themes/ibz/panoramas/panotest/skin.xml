@@ -1,0 +1,73 @@
+<skin marginleft="0" marginright="0" margintop="0" marginbottom="0" ><element x="-142" y="-65" anchor="7" width="286" height="50" id="controller" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="container" mask="0" >
+<element x="25" y="141" anchor="0" width="32" height="32" id="up" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/up.png" overurl="images/up__o.png" >
+<action src="pressed" type="tiltup" value="" value2="" target="$self" />
+</element>
+<element x="25" y="141" anchor="0" width="32" height="32" id="down" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/down.png" overurl="images/down__o.png" >
+<action src="pressed" type="tiltdown" value="" value2="" target="$self" />
+</element>
+<element x="-41" y="10" anchor="0" width="32" height="32" id="left" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/left.png" overurl="images/left__o.png" >
+<action src="pressed" type="panleft" value="" value2="" target="$self" />
+</element>
+<element x="291" y="10" anchor="0" width="32" height="32" id="right" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/right.png" overurl="images/right__o.png" >
+<action src="pressed" type="panright" value="" value2="" target="$self" />
+</element>
+<element x="90" y="210" anchor="0" width="32" height="32" id="zoomin" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/zoomin.png" overurl="images/zoomin__o.png" >
+<action src="pressed" type="zoomin" value="" value2="" target="$self" />
+</element>
+<element x="120" y="210" anchor="0" width="32" height="32" id="zoomout" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/zoomout.png" overurl="images/zoomout__o.png" >
+<action src="pressed" type="zoomout" value="" value2="" target="$self" />
+</element>
+<element x="160" y="210" anchor="0" width="32" height="32" id="autorotate" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/autorotate.png" overurl="images/autorotate__o.png" >
+<action src="click" type="toogleautorotate" value="" value2="" target="$self" />
+</element>
+<element x="190" y="210" anchor="0" width="32" height="32" id="info" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/info.png" overurl="images/info__o.png" >
+<action src="click" type="tooglevisible" value="" value2="" target="userdata" />
+</element>
+<element x="220" y="210" anchor="0" width="32" height="32" id="movemode" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/movemode.png" overurl="images/movemode__o.png" >
+<action src="click" type="changeviewermode" value="2" value2="" target="$self" />
+</element>
+<element x="250" y="210" anchor="0" width="32" height="32" id="fullscreen" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/fullscreen.png" overurl="images/fullscreen__o.png" >
+<action src="click" type="tooglefullscreen" value="" value2="" target="$self" />
+</element>
+</element>
+<element x="340" y="20" anchor="0" width="5" height="5" id="hotspot" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="hotspot" distort="0" distance="500" >
+<action src="enter" type="show" value="" value2="" target="hstext" />
+<action src="leave" type="hide" value="" value2="" target="hstext" />
+<action src="click" type="gotourl" value="$hu" value2="$ht" target="$self" />
+<element x="-16" y="-16" anchor="0" width="32" height="32" id="hsimage" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="1" type="button" btnurl="images/hsimage.png" >
+</element>
+<element x="-50" y="20" anchor="0" width="100" height="20" id="hstext" visible="0" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="text" text="$hs" align="1" color="0x000000" bordercolor="0x000000" borderalpha="1" backgroundcolor="0xffffff" backgroundalpha="1" backgroundvisible="1" borderwidth="1" borderradius="0" wordwrap="0" scrollbar="0" autosize="1" >
+</element>
+</element>
+<element x="-105" y="-30" anchor="4" width="210" height="60" id="loading" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="container" mask="0" >
+<action src="click" type="hide" value="" value2="" target="$self" />
+<action src="loaded" type="hide" value="" value2="" target="$self" />
+<action src="reload" type="show" value="" value2="" target="$self" />
+<element x="0" y="0" anchor="0" width="210" height="60" id="loadingbg" visible="1" alpha="0.5" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="rectangle" bordercolor="0x000000" borderalpha="1" backgroundcolor="0x000000" backgroundalpha="1" backgroundvisible="1" borderwidth="0" borderradius="20" >
+</element>
+<element x="0" y="0" anchor="0" width="210" height="60" id="loadingbrd" visible="1" alpha="0.5" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="rectangle" bordercolor="0xffffff" borderalpha="1" backgroundcolor="0x000000" backgroundalpha="1" backgroundvisible="0" borderwidth="2" borderradius="18" >
+</element>
+<element x="16" y="12" anchor="0" width="178" height="23" id="loadingtext" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="text" text="Loading... $p%" align="0" color="0xffffff" bordercolor="0x000000" borderalpha="1" backgroundcolor="0xffffff" backgroundalpha="1" backgroundvisible="0" borderwidth="0" borderradius="0" wordwrap="0" scrollbar="0" autosize="1" >
+</element>
+<element x="15" y="35" anchor="0" width="182" height="13" id="loadingbar" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="3" handcursor="0" type="rectangle" bordercolor="0x808080" borderalpha="1" backgroundcolor="0xffffff" backgroundalpha="1" backgroundvisible="1" borderwidth="1" borderradius="9" >
+<modifier src="loading" type="scalex" offset="0" factor="1" />
+</element>
+</element>
+<element x="-120" y="-80" anchor="4" width="240" height="140" id="userdata" visible="0" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="container" mask="0" >
+<action src="click" type="hide" value="" value2="" target="$self" />
+<element x="0" y="0" anchor="0" width="240" height="140" id="userdatabg" visible="1" alpha="0.5" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="rectangle" bordercolor="0x000000" borderalpha="1" backgroundcolor="0x000000" backgroundalpha="1" backgroundvisible="1" borderwidth="0" borderradius="20" >
+</element>
+<element x="0" y="0" anchor="0" width="240" height="140" id="userdatabrd" visible="1" alpha="0.5" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="rectangle" bordercolor="0xffffff" borderalpha="1" backgroundcolor="0x000000" backgroundalpha="1" backgroundvisible="0" borderwidth="2" borderradius="18" >
+</element>
+<element x="10" y="10" anchor="0" width="220" height="20" id="title" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="text" text="&lt;b&gt;$ut&lt;/b&gt;" align="0" color="0xffffff" bordercolor="0x000000" borderalpha="1" backgroundcolor="0xffffff" backgroundalpha="1" backgroundvisible="0" borderwidth="0" borderradius="0" wordwrap="0" scrollbar="0" autosize="0" >
+</element>
+<element x="10" y="30" anchor="0" width="220" height="20" id="description" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="text" text="$ud" align="0" color="0xffffff" bordercolor="0x000000" borderalpha="1" backgroundcolor="0xffffff" backgroundalpha="1" backgroundvisible="0" borderwidth="0" borderradius="0" wordwrap="0" scrollbar="0" autosize="0" >
+</element>
+<element x="10" y="50" anchor="0" width="220" height="20" id="author" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="text" text="$ua" align="0" color="0xffffff" bordercolor="0x000000" borderalpha="1" backgroundcolor="0xffffff" backgroundalpha="1" backgroundvisible="0" borderwidth="0" borderradius="0" wordwrap="0" scrollbar="0" autosize="0" >
+</element>
+<element x="10" y="70" anchor="0" width="220" height="23" id="datetime" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="text" text="$ue" align="0" color="0xffffff" bordercolor="0x000000" borderalpha="1" backgroundcolor="0xffffff" backgroundalpha="1" backgroundvisible="0" borderwidth="0" borderradius="0" wordwrap="0" scrollbar="0" autosize="1" >
+</element>
+<element x="10" y="110" anchor="0" width="220" height="23" id="copyright" visible="1" alpha="1" angle="0" scalex="1" scaley="1" center="4" handcursor="0" type="text" text="&amp;#169; $uc" align="0" color="0xffffff" bordercolor="0x000000" borderalpha="1" backgroundcolor="0xffffff" backgroundalpha="1" backgroundvisible="0" borderwidth="0" borderradius="0" wordwrap="0" scrollbar="0" autosize="1" >
+</element>
+</element>
+</skin>

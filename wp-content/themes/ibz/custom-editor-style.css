@@ -1,0 +1,110 @@
+/*
+Theme Name: IBZ
+Theme URI: http://wordpress.org/extend/themes/twentyeleven
+Author: the WordPress team
+Author URI: http://wordpress.org/
+Description: The 2011 theme for WordPress is sophisticated, lightweight, and adaptable. Make it yours with a custom menu, header image, and background -- then go further with available theme options for light or dark color scheme, custom link colors, and three layout choices. Twenty Eleven comes equipped with a Showcase page template that transforms your front page into a showcase to show off your best content, widget support galore (sidebar, three footer areas, and a Showcase page widget area), and a custom "Ephemera" widget to display your Aside, Link, Quote, or Status posts. Included are styles for print and for the admin editor, support for featured images (as custom header images on posts and pages and as large images on featured "sticky" posts), and special styles for six different post formats.
+Version: 1.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: dark, light, white, black, gray, one-column, two-columns, left-sidebar, right-sidebar, fixed-width, flexible-width, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready
+Text Domain: twentyeleven
+*/
+
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+body#tinymce.wp-editor { 
+    width:600px;
+}
+
+.rooms_container { 
+	float: left;
+	width: 635px; 
+	height:250px; 
+	padding: 10px 0 10px 10px;
+	background: #d3d3d3; }
+	
+.rooms_container h2 { 
+	padding: 0;
+	margin: 0; }
+
+.rooms_container .leftcol{ 
+	float: left;
+	width: 398px; 
+	height: 248px;
+	padding: 1px;
+	background: #fff; }
+	
+.rooms_container .leftcol .button{ 
+	float: right;
+	margin-right: 5px; }
+	
+.rooms_container .leftcol .filter{ 
+	float: left;
+	padding: 0 5px;
+	border-right: 3px solid #d3d3d3;
+	height: 21px; }
+
+	
+.rooms_container .rightcol{ 
+	float: right;
+	width: 205px;
+	height: 100%; }
+	
+.rooms_container .rightcol .text{ 
+	width: 100%;
+	height: 225px; }
+	
+.rooms_container .rightcol .button{ 
+	background: white;
+	width: 100%;
+	height: 25px; }
+	
+.rooms_container .rightcol .button a{ 
+	width: 100%;
+	display: block;
+	margin-left: 5px; }
+
+
+
+.rss_reader_container{
+
+background-color:#eeeeee;
+padding:3px;
+min-width:100px;
+}
+
+.news_container  {
+margin-top:10px;
+background-color:#eeeeee;
+padding:3px;
+min-width:100px;
+}
+
+
+.news_container  h1, .rss_reader_container h1{
+text-transform: uppercase;
+font-size:12px;
+text-align:left;
+border-bottom:4px dashed;
+font-weight:bold;
+
+}
+
+.news_container  h2, .rss_reader_container h2{
+
+font-size:12px;
+text-align:left;
+font-weight:bold;
+}
+
+.news_container  li, .rss_reader_container li{
+color:#000000;
+font-size:12px;
+text-align:left;
+
+}
+
+
+

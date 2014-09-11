@@ -1,0 +1,1 @@
+<?php if ( wptouch_admin_is_setting_pro() ) { ?><span class="pro" title="Only available in WPtouch Pro. <br/>Click for more info."><a href="http://www.wptouch.com/?utm_campaign=from_go_pro&utm_source=wptouch&utm_medium=web" target="_blank"><?php _e( 'Pro', 'wptouch-pro' ); ?></a></span><?php } ?>

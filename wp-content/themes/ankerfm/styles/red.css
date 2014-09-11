@@ -1,0 +1,146 @@
+/* Red Colors Stylesheet */
+
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 1. SETUP */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 1.1 Defaults */
+
+body  { background: #fff url(red/bodytile.jpg) repeat left top; }
+
+/* 1.2 Hyperlinks */
+
+a:link, a:visited  { color: #c40000; }
+a:hover  {}
+
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 2. SITE STRUCTURE & APPEARANCE */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 2.1 Containers & Columns */
+
+
+/* 2.2 Navigation */
+
+
+/* 2.2.1 Drop-down menus */
+
+
+
+/* CATEGORY NAVIGATION */
+
+/* PAGES NAVIGATION */
+#pagenav a  { border-bottom: 4px solid #ffc1c1; }
+#pagenav li.current_page_item a, #pagenav li a:hover  { border-color: #c40000;  }
+#pagenav li ul  { border-top: 1px solid #ffc1c1; }
+#pagenav li ul li  { border-color: #ffc1c1; }
+#pagenav li ul a:hover  { color: #fff!important; background: #c40000;  }
+#pagenav li.rss a  { color: #c40000; background: url(red/ico-rss.png) no-repeat right 4px; }
+
+
+
+/* 2.3 Header */
+
+
+/* 2.4 Content */
+
+
+/* 2.5 Sidebar */
+
+
+/* 2.6 Extended Footer */
+#extended-footer  { background-color: #ffc1c1; color: #bd2828; }
+#extended-footer .widget h3  { color: #c40000; }
+#extended-footer li a:link, #extended-footer li a:visited  { color:#bd2828; }
+.one, .two  { border-right: 1px solid #bd2828; }
+
+/* 2.7 Footer */
+
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 3. POSTS */
+/*-------------------------------------------------------------------------------------------*/
+
+.post .date  { background: url(red/date.png) no-repeat left top; }
+
+.post-meta li .body a:hover  { color: #c40000; }
+
+
+/* 3.1 Typographic Elements */
+
+/* 3.2 Images */
+.post img.thumbnail  { border: 5px solid #ffc1c1; }
+.entry img  { border: 5px solid #ffc1c1; }
+
+/* 3.3 Pagination / WP-Pagenavi */
+
+.more_entries .wp-pagenavi a:link,
+.more_entries .wp-pagenavi a:visited { color: #c40000; }
+.more_entries .wp-pagenavi .current, 
+.more_entries .wp-pagenavi .on,
+.more_entries .wp-pagenavi a:hover { background: #ffc1c1 !important; color: #c40000; }
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 4. WIDGETS */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 4.1 Generic Widgets */
+.widget h3  { border-bottom: 1px solid #c40000; }
+
+.widget ul li a:link, .widget ul li a:visited { background: url(red/bullet.png) no-repeat 10px center; border-bottom: 1px solid #ffc1c1; }
+.widget ul li a:hover  { color: #c40000; background: url(red/bullet_hover.png) no-repeat 10px center; font-weight: bold; }
+
+.widget_recent_comments li, #twitter li  { border-bottom: 1px solid #ffc1c1; } /* RESET LI STYLING FOR RECENT COMMENT & TWITTER */
+.widget_recent_comments li a, #twitter a  { color: #c40000!important; } /* RESET <A> STYLING FOR RECENT COMMENT & TWITTER */
+
+
+/* 4.2 Specific Widgets */
+
+/* FEATURED POSTS */
+
+#featured li  { border-bottom: 1px solid #ffc1c1; }
+#featured span.thumb img  { border: 5px solid #ffc1c1; }
+#featured span.thumb img:hover  { border-color: #c40000; }
+
+/* WIDGET FORMS */
+input#s, input.field  { border: 1px solid #ffc1c1; }
+input#s:focus, input.field:focus  { border: 1px solid #c40000; }
+input.submit  { background-color: #c40000; }
+
+/* FLICKR */
+#flickr a img  { border: #ffc1c1 3px solid;}
+#flickr a:hover img  { border:#c40000 3px solid; }
+
+/* LIFESTREAM */
+.widget_lifestream ul li  { border-bottom: 1px solid #ffc1c1; }
+
+/* TEXT WIDGET */
+
+/* CALENDAR */
+#wp-calendar th,#wp-calendar td{background:#ffc1c1;}
+#wp-calendar th  { color: #c40000; }
+
+/* ADS */
+#sidebar .ads125 { border: 1px solid #ffc1c1; }
+
+/* 4.3 Extended Footer Widgets */
+
+
+/*-------------------------------------------------------------------------------------------*/
+/* 5. COMMENTS */
+/*-------------------------------------------------------------------------------------------*/
+
+/* 5.1 Comments */
+
+
+/* 5.2 Pingbacks / Trackbacks */
+
+/* 5.3 Comments Form */
+#commentform #submit  { background-color: #c40000; }
+

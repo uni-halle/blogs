@@ -1,0 +1,272 @@
+/*-------------------------------------------------------------------------------------------*/
+/*- SETUP STD CLASSES -----------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+body{color: #111; background: #333;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- GLOBAL CLASSES --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/*--- Links ---*/
+a.std_link, a{color: #3B96DF;}
+a:active{color: #c00;}
+a:hover{color: #111;}
+
+/*-------------------------------------------------------------------------------------------*/
+/*- GENERAL LAYOUT --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+#header{background: #C3E024;}
+#feature-post-container{background: #111; border-top: 1px solid #444; border-bottom: 1px solid #444;}
+.post-slider{border-bottom: 1px dotted #555;}
+#footer-container{background: #111; border-top: 1px solid #444; border-bottom: 1px solid #444;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- HEADER ----------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+	/*--------------------------*/
+	/*- MENU -------------------*/
+	ul#menu li.parent-item a.parent-link{color: #111;}
+	ul#menu li.parent-item a.parent-link:hover{color: #fff;}
+
+		/*--------------------------*/
+		/*- SUB MENU ---------------*/
+		ul.sub-menu{background: url(submenu-header.png) top no-repeat;}
+			ul.sub-menu li{background: #fff;}
+				ul.sub-menu li a{border-bottom: 1px dotted #ccc;}
+		.sub-menu-footer{background: url(submenu-footer.png) bottom no-repeat;}
+
+/*-------------------------------------------------------------------------------------------*/
+/*- ROUNDED CORNERS - Before we do anything, let's set the rounded corners ------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+/*- -------------------------------------------------------------------------------------------
+	NOTE: There are two color references in the div description
+	The first is the containers background color
+		"LIGHT" refers to the light containing div (eg. the copy containers)
+		"DARK" refers to the darker containing div (eg. side-bar containers)
+	The second reference is the background that the container sits it
+		"NORMAL" refers to the body background color
+		"DARK" refers to the darker containing div background color (eg. the 'feature post' container)
+------------------------------------------------------------------------------------------ -*/
+.container-light{background: #fff;}
+.container-dark{background: #101010;}
+
+/*- LIGHT -*/
+.container-header-light-dark{background: url(rounded-corners-light-dark.png) 100% 0;}
+.container-header-light-dark span{background: url(rounded-corners-light-dark.png) 0 0;}
+.container-footer-light-dark{background: url(rounded-corners-light-dark.png) 0 100%;}
+.container-footer-light-dark span{background: url(rounded-corners-light-dark.png) 100% 100%;}
+
+.container-header-light-normal{background: url(rounded-corners-light-normal.png) 100% 0;}
+.container-header-light-normal span{background: url(rounded-corners-light-normal.png) 0 0;}
+.container-footer-light-normal{background: url(rounded-corners-light-normal.png) 0 100%;}
+.container-footer-light-normal span{background: url(rounded-corners-light-normal.png) 100% 100%;}
+
+/*- DARK -*/
+.container-header-dark-dark{background: url(rounded-corners-dark-dark.png) 100% 0;}
+.container-header-dark-dark span{background: url(rounded-corners-dark-dark.png) 0 0;}
+.container-footer-dark-dark{background: url(rounded-corners-dark-dark.png) 0 100%;}
+.container-footer-dark-dark span{background: url(rounded-corners-dark-dark.png) 100% 100%;}
+
+.container-header-dark-normal{background: url(rounded-corners-dark-normal.png) 100% 0;}
+.container-header-dark-normal span{background: url(rounded-corners-dark-normal.png) 0 0;}
+.container-footer-dark-normal{background: url(rounded-corners-dark-normal.png)  0 100%;}
+.container-footer-dark-normal span{background: url(rounded-corners-dark-normal.png) 100% 100%;}
+
+/*- -------------------------------------------------------------------------------------------
+	NOTE: This is udes for the dark style themes only, just to spicen up the activity.
+	The color is called 'alt' and is determined by the header and footer id's
+------------------------------------------------------------------------------------------ -*/
+
+#header-container .container-dark, #footer-container .container-dark{background: #C3E024;}
+
+/*- ALT -*/
+#header-container .container-header-dark-dark, #footer-container .container-header-dark-dark
+	{background: url(rounded-corners-alt-dark.png) 100% 0;}
+#header-container .container-header-dark-dark span, #footer-container .container-header-dark-dark span
+	{background: url(rounded-corners-alt-dark.png) 0 0;}
+#header-container .container-footer-dark-dark, #footer-container .container-footer-dark-dark
+	{background: url(rounded-corners-alt-dark.png) 0 100%;}
+#header-container .container-footer-dark-dark span, #footer-container .container-footer-dark-dark span
+	{background: url(rounded-corners-alt-dark.png) 100% 100%;}
+
+#header-container .container-header-dark-normal, #footer-container .container-header-dark-normal span
+	{background: url(rounded-corners-alt-normal.png) 100% 0;}
+#header-container .container-header-dark-normal span, #footer-container .container-header-dark-normal span
+	{background: url(rounded-corners-alt-normal.png) 0 0;}
+#header-container .container-footer-dark-normal, #footer-container .container-footer-dark-normal
+	{background: url(rounded-corners-alt-normal.png)  0 100%;}
+#header-container .container-footer-dark-normal span, #footer-container .container-footer-dark-normal span
+	{background: url(rounded-corners-alt-normal.png) 100% 100%;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- HOME PAGE LAYOUT ------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+	/*--------------------------------------------------------*/
+	/*- FEATURE POSTS ----------------------------------------*/
+	.selected-feature{}
+		.selected-feature .feature-title{background: url(title-swish-bg.png) bottom left no-repeat;}
+		.selected-feature h4{color: #fff;}
+		.selected-feature h2 a{color: #C3E024;}
+		.selected-feature h2 a:hover{color: #3B96DF;}
+
+	ul.feature-list li span.item{color: #fff; background: url(feature-list-number-bg.png) top right no-repeat;}
+	ul.feature-list li h4{color: #fff;}
+	ul.feature-list li a{color: #C3E024;}
+		ul.feature-list li a:hover{color: #fff;}
+
+
+		/*-------------------------------------------------------------*/
+		/*- THE FEATURE CONTAINER DIV IS ALSO USED FOR PAGE TITLES ----*/
+		#feature-post h1{color: #fff;}
+		#feature-post .post h2.title a:hover{color: #3B96DF;}
+		#feature-post .post h4{color: #CFEE27;}
+		
+		
+	/*--------------------------------------------------------*/
+	/*- POST SLIDER ------------------------------------------*/
+	.post-slider h2{color: #fff;}
+	.post-slider ul li .content{background: #fff;}
+	.post-slider ul li h3{background: url(slider-lip.png) 15px 0px no-repeat;}
+		.post-slider ul li h3 a{color: #C3E024;}
+			.post-slider ul li h3 a:hover{color: #fff;}
+			
+
+
+	/*--------------------------------------------------------*/
+	/*- PAGINATION -------------------------------------------*/
+	ul.page_button_content li a{background: url(pagination.png) no-repeat;}
+	ul.page_button_content li a.other-page{color: #C3E024;}
+		ul.page_button_content li a.other-page:hover{color: #111;}
+	ul.page_button_content li a.selected-page{color: #111;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- POSTS CLASSES ---------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+/*- RESET SOME CLASSES FOR THE COPY AFTER CLEARING EVERYTHING AT THE TOP OF THE CSS  -*/
+.post .copy a{color: #3B96DF;}
+	.post .copy a:hover{color: #000;}
+.post .copy ol, .post .copy ul{color: #555;}
+
+.post{}
+	.post-title{background: url(title-swish-bg.png) bottom left no-repeat;}
+	
+		.post h2.title, .post h2.title a{color: #fff;}
+		.post h2.title a:hover{color: #3B96DF;}
+		.post h4.date{color: #CFEE27;}
+
+	.post .copy{background: #fff;}
+		.post .copy a.action-link{background: url(action-bg.png) left top no-repeat;}
+			.post .copy a.action-link span{background: url(action-bg.png) top right no-repeat; color: #111;}
+				.post .copy a.action-link:hover span{color: #fff;}
+		.post a.post-comments:hover{color: #111;}
+
+.post-section-title{border-bottom: 1px dotted #555; color: #fff;}
+.post .post-section-title{border-bottom: 1px dotted #555; color: #111;}
+		
+/*-------------------------------------------------------------------------------------------*/
+/*- PROMOTE POST ----------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+.enjoy-copy{color: #575757;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- COMMENTS --------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+.comment h3{color: #111; border-bottom: 1px dotted #ccc;}
+	.comment h3 a{color: #111;}
+	.comment h3 a:hover{color: #C3E024;}
+	.comment h3 .comment-date{color: #777;}
+
+		.user{background: url(comment-lip.png) top right no-repeat;}
+			.user img{background: url(avatar-bg.png) top no-repeat;}
+			.user a.reply-link{color: #111; background: url(reply-button.png) top no-repeat;}
+
+		.comment-content{background: #fff;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- POST A COMMENT --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+	.comment-form-content .comment_form label{color: #C3E024;}
+
+	.comment-input{background: url(comment-input-bg.png) no-repeat;}
+		.comment-input input{color: #ccc;}
+		
+		.checkbox{color: #C3E024;}
+		
+	.comment-texarea{background: url(comment-message-bg.png) no-repeat;}
+		.comment-texarea textarea{color: #ccc; background: none;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- ARCHIVES --------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+a.archive-date{color: #C3E024;}
+	a.archive-date:hover{color: #fff;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- SIDE BAR --------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+#sidebar h2, #sidebar h2 a{color: #C3E024;}
+
+#sidebar ul li.widget{color: #999;}
+	#sidebar ul li ul li{border-bottom: 1px dotted #444; color: #999;}
+		#sidebar ul li a{color: #fff;}
+		#sidebar ul li a:hover{color: #2FC6FF;}
+
+	/*--------------------------------------------*/
+	/*- SPECIFIC SIDE BAR STYLE ------------------*/
+	#sidebar ul li.flickr, #sidebar ul li.recent-comments, #sidebar ul li.sponsors{}
+	#sidebar ul li.recent-comments h2, #sidebar ul li.flickr h2{color: #111;}
+
+
+	/*--------------------------------------------*/
+	/*- SPONSORS ---------------------------------*/
+	#sidebar .advert{background: url(small-advert-bg.png);}
+
+
+	/*--------------------------------------------*/
+	/*- DETAILED LISTING IN SIDE BAR -------------*/
+	#sidebar ul li.recent-comments h2.recent-comments-title{color: #111;}
+		#sidebar ul li.recent-comments ul li{border-bottom: 1px dotted #333;}
+			#sidebar ul li.recent-comments ul li a.detail-image{background: url(avatar-bg.png) top no-repeat;}
+				#sidebar ul li.recent-comments ul li a.detail-image:hover{background: url(avatar-bg.png) bottom no-repeat;}
+				
+			#sidebar ul li.recent-comments ul li a.detail-link{color: #ccc;}
+				#sidebar ul li.recent-comments ul li a.detail-link span.date{color: #CFEE27;}
+			#sidebar ul li.recent-comments ul li a.detail-link:hover{color: #2FC6FF;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- FOOTER ----------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+	ul.footer-columns h3{color: #111;}
+	ul.footer-columns p{color: #000;}
+
+	ul.footer-columns ul li{color: #fff; border-bottom: 1px dotted #fff;}
+		ul.footer-columns a{color: #000;}
+		ul.footer-columns a:hover{color: #333;}
+
+	p.copyright{color: #555;}
+		p.copyright a{color: #888;}
+		p.copyright a:hover{color: #FF6666;}
+	a.obox-logo{background: url(obox-logo.png) top;}
+		a.obox-logo:hover{background: url(obox-logo.png) bottom;}
+
+
+/*-------------------------------------------------------------------------------------------*/
+/*- SOME STANDARD WORDPRESS PLUGIN/WIDGET STYLES --------------------------------------------*/
+/*-------------------------------------------------------------------------------------------*/
+
+	/*--------------------------------------------*/
+	/*- FLICKR -----------------------------------*/
+	#flickr_badge_wrapper .flickr_badge_image a{background: url(flickr-bg.png) top no-repeat;}
+	
+	
+	

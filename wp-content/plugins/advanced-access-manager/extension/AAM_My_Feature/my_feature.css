@@ -1,0 +1,22 @@
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+ */
+.my-feature-banner{
+    width: 100%;
+    background: transparent url('images/worker.png') no-repeat center 10px;
+    padding-top: 150px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.my-feature-banner .banner-style{
+    margin: 0px 10px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}

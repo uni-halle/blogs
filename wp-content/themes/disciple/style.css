@@ -1,0 +1,266 @@
+/*
+Theme Name: Disciple
+Theme URI: http://themes.blogwarhammer.net/disciple
+Description: Revamped version of the theme based on feedback with all new features from WordPress 2.7. New design, threaded comments, one sidebar (but larger), easier to customize colors and your own logo, cleaner and more friendly in all browsers.
+Version: 2.0.1
+Author: Regis
+Author URI: http://themes.blogwarhammer.net
+Tags: blue, white, two-columns, fixed-width, right-sidebar, threaded-comments, sticky-post
+
+This theme is released under GPL (http://www.opensource.org/licenses/gpl-3.0.html)
+*/
+
+/* basic */
+	body { width:100%; background-color:#F5F4F1; margin:0px 0px 10px 0px; padding:0px; font:13px/150% Tahoma, Verdana, Helvetica, sans-serif; color:#333333; }
+	a { color:#CC0000; text-decoration:none; outline:none; }
+	a:hover { color:#CC0000; text-decoration:underline; }
+	a img { border:0; }
+	blockquote { border-left:solid 5px #A7B3BC; padding:5px 5px 5px 8px; margin:8px; background-color:#F4F5F7; line-height:160%; display:inline-block; }
+		blockquote blockquote { background-color:#E8EAEE; }
+		blockquote blockquote blockquote { background-color:#DEE1E7; }
+		blockquote blockquote blockquote blockquote { background-color:#D6D9E0; }
+	pre { border-left:solid 5px #738695; padding:5px 5px 5px 8px; margin:8px 8px 8px 8px; background-color:#EEF0F2; overflow:scroll; }
+	ul { list-style-image:url('images/arrow.png'); }
+	input, 
+	select, 
+	textarea { font:8pt Verdana, Arial, sans-serif; color:#333333; }
+	form { margin:0px; padding:0px; }
+	p { margin:11px 0px 11px 0px; }
+	acronym, abbr, span.caps { cursor:help; }
+	acronym, abbr { border-bottom:1px dashed #999; }
+	code { font:1.1em 'Courier New', Courier, Fixed; }
+	acronym, abbr, span.caps { font-size:0.9em; letter-spacing:.07em; }
+
+/* blue top bar */
+	#topbar { background-color:#546a85; height:150px; border-bottom:solid 5px #475A72; }
+
+/* wrapper */
+	#wrap { width:980px; margin:-155px auto 0px; padding:0px; overflow:hidden; background:url('images/bg_c1.gif') 90px top repeat-y; }
+
+/* blog title + description */
+	#head { height:100px; overflow:hidden; text-align:center;  }
+		#head #blog-name { margin:20px 0px 0px 0px; padding:0px; font:normal 36px Georgia, "Times New Roman", Times, serif; letter-spacing:1px; }
+		#head #blog-desc { margin:0px 0px 0px 0px; padding:0px; font:normal 11pt Georgia, "Times New Roman", Times, serif; color:#FFFFFF;  font-style:italic; }
+		#head a { color:#FFFFFF; }
+		#head a:hover { color:#FFFFFF; text-decoration:none; }
+
+/* menu */
+	#menu { margin:auto; overflow:hidden; height:18px; font-size:8pt; line-height:130%; letter-spacing:1px; }
+	#menu ul { list-style:none; list-style-image:none; margin:0px 0px 0px 10px; padding:0px; }
+		#menu li { display: inline; }
+		#menu li a { float:left; height:18px; overflow:hidden; background-color:#EDEBE4; padding:2px 5px 2px 5px; margin:0px 5px 0px 0px; color:#666666; }
+		#menu li a:hover { background-color:#DCD8CD; color:#333333; text-decoration:none; }
+		#menu li.current_page_item a { background-color:#CFCABA; color:#333333; }
+		#menu li.current_page_item a:hover { color:#333333; text-decoration:none; }
+
+/* columns */
+	#c0 { width:90px; float:left; padding:0px; margin:0px; overflow:hidden; }
+	#c1 { width:600px; float:left; padding:0px; margin:0px; overflow:hidden; background:url('images/bg_wrap.gif') left top no-repeat; }
+		#c1-inner { border-top:solid 5px #cfcaba; padding:0px 0px 0px 0px; }
+	#c2 { width:290px; float:left; padding:0px; margin:0px 0px 0px 0px; overflow:hidden; }
+
+/* contact + subscribe text */
+	#subscribe { margin:125px 10px 0px 0px; text-align:left; color:#FFFFFF; font:italic 10pt Georgia, "Times New Roman", Times, serif; }
+	#subscribe a { color:#FFFFFF; }
+	#subscribe a:hover { color:#FFBE97; text-decoration:none; }
+	#subscribe img { margin-bottom:-3px; position: absolute; }
+
+	#searchform { margin:123px 0px 30px 10px; }
+	#searchform #s { width:180px; }
+
+/* posts */
+	.post { margin:0px 10px 10px 10px; padding:5px; overflow:hidden; line-height:160%; color:#333333; }
+
+	
+	/* post that is sticky */
+		.sticky { background-color:#F4F5F7; }
+		.sticky-notice { display:none; }
+		.sticky .sticky-notice { display:inline; float:right; width:20px; height:20px; background-color:#8297B0; margin:5px; }
+
+	/* post title */
+		.post-title h1 { margin:0px; padding:0px 0px 2px 0px; font:normal 24px Georgia, "Times New Roman", Times, serif; letter-spacing:-0.02em; line-height:130%; }
+		.post-title h1 a { color:#333333; }
+		.post-title h1 a:hover { color:#666666; text-decoration:none; }
+
+	/* bar with date, author and category */
+		.post-sub { padding:5px 0px 0px 0px; overflow:hidden; color:#999999; }
+			.icon { margin:4px 4px 0px 0px; }
+			.post-sub a, 
+			.post-foot a { color:#999999; border-bottom:dotted 1px #CCCCCC; }
+			.post-sub a:hover, 
+			.post-foot a:hover { background-color:#EBEBEB; color:#666666; border-bottom:dotted 1px #333333; text-decoration:none; }
+			.post-date { float:left; overflow:hidden; margin-right:20px; }
+		/* to show post author remove "display:none;" from the line below */
+			.post-author { float:left; overflow:hidden; margin-right:20px; }
+			.post-cat { float:left; overflow:hidden; }
+
+	/* post text */
+		.post-text { overflow:hidden; color:#333333; }
+
+	/* post footer with tags, edit and comments */
+		.post-foot { overflow:hidden; margin:10px 0px 0px 0px; color:#999999; line-height:160%; }
+			.post-edit { float:right; }
+			.post-comments { float:right; }
+
+	/* icon that seperate the posts */
+		.sep { display:block; height:30px; background:transparent url('images/sep.gif') top center no-repeat; overflow:hidden; }
+
+/* comments */
+	.commentlist { padding:0px; margin:0px; overflow:hidden; }
+	.commentlist ul { margin:0px; padding:0px; list-style:none; list-style-image:none; }
+	.commentlist li { margin:0px 0px 0px 30px; padding:0px; list-style:none; overflow:hidden; }
+	.commentlist .depth-1 { margin:0px !important; }
+	
+	.comment-arrow { background:url('images/bg_comments.gif') 20px top no-repeat; height:8px; margin-top:10px; overflow:hidden; }
+ 	.comment-text { overflow:hidden; background-color:#ECEFF2; padding:10px 10px 10px 10px; border-bottom:solid 3px #71808C; }
+		.avatar { float:left; border:1px solid #EEEEEE; padding:2px; margin:0px 10px 0px 0px; background:#FFFFFF; }
+		.comment-author cite, .comment-author cite a { font-weight:bold; font-style:normal; }
+		.comment-meta a { font-size:8pt; color:#999999; }
+		.comment-reply { font-size:8pt; float:right; }
+			.comment-reply a { background-color:#F8F9FA; padding:3px 7px 3px 7px; color:#333333; margin-left:5px; }
+			.comment-reply a:hover { background-color:#FFFFFF; }
+
+	.trackbacklist { padding:0px 0px 0px 20px; overflow:hidden; }
+	.trackbacklist .comment-author cite, .trackbacklist .comment-author cite a { font-weight:normal; }
+
+	#respond input, #respond textarea { background-color:#F8F8F8; padding:4px; border:solid 1px #CCCCCC; }
+	#respond input { background-color:#F8F8F8; }
+	#respond input:hover, #respond textarea:hover { border:solid 1px #AEAEAE; }
+	#respond #comment { width:98%; max-width:98%; }
+	#respond #submit { background-color:#E3E4E6; }
+	#respond #submit:hover { background-color:#D7D8DB; }
+
+/* widgets */
+	#widgets { list-style:none; margin:0px; padding:0px; color:#333333; }
+	.widget { border-left:solid 5px #A5B4C5; margin:0px 0px 20px 0px; padding:0px 0px 0px 10px; }
+	.widget ul { margin:0px; padding:0px 0px 0px 20px; }
+	.widget ul li { padding:5px 0px 0px 0px; }
+	.widget ul li a { padding:1px 1px 1px 1px; }
+	.widget li a:hover { background-color:#546a85; color:#FFFFFF; text-decoration:none; }
+	.widget h2 { margin:0px 0px 5px 0px; padding:0px; color:#546a85; font:italic 11pt Georgia, "Times New Roman", Times, serif; text-transform:lowercase; }
+
+	/* list-icons for widgets */
+	.widget_recent_entries li { list-style-image:url('images/24.png'); }
+	.widget_recent_comments li { list-style-image:url('images/18.png'); }
+	.widget_links li, 
+	.widget_betterblogroll li, 
+	.widget_sclw li { list-style-image:url('images/13.png');  }
+
+/* footer */
+	#footer { width:980px; margin:0px auto 0px; font-size:8pt; color:#AA9F8A; overflow:hidden; }
+		#footer-c0 { width:90px; float:left; }
+		#footer-c1 { width:600px; height:80px; float:left; text-align:center; border-top:solid 5px #cfcaba; background:url('images/icon_bottom.gif') center bottom no-repeat; padding:3px 0px 0px 0px; }
+		#footer-c2 { width:290px; float:left; }
+		#footer a { color:#AA9F8A; border-bottom:dotted 1px #BEB6A7; }
+		#footer a:hover { text-decoration:none; }
+
+/* Wordpress defaults */
+	.navigation {
+		display: block;
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 60px;
+		}
+	p img {
+		padding: 0;
+		max-width: 100%;
+		}
+	img.centered {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		}
+	img.alignright {
+		padding: 4px;
+		margin: 0 0 2px 7px;
+		display: inline;
+		}
+	img.alignleft {
+		padding: 4px;
+		margin: 0 7px 2px 0;
+		display: inline;
+		}
+	.alignright {
+		float: right;
+		}
+	.alignleft {
+		float: left
+		}
+
+	/* Begin Calendar */
+	#wp-calendar #prev a, #wp-calendar #next a {
+		font-size: 9pt;
+		}
+	#wp-calendar a {
+		text-decoration: none;
+		}
+	#wp-calendar caption {
+		font-weight:bold;
+		text-align: center;
+		}
+	#wp-calendar th {
+		font-style:normal;
+		font-weight:normal;
+		text-transform: capitalize;
+		}
+	#wp-calendar {
+		empty-cells: hide;
+		width: 200px;
+		}
+	#wp-calendar #next a {
+		padding-right: 10px;
+		text-align: right;
+		}
+	#wp-calendar #prev a {
+		padding-left: 10px;
+		text-align: left;
+		}
+	#wp-calendar a {
+		display: block; background-color:#D3CFBE;
+		}
+	#wp-calendar #today {
+		background-color:#BDC6D5;
+		}
+	#wp-calendar caption {
+		text-align: center;
+		width: 100%;
+		}
+	#wp-calendar td {
+		text-align: center;
+		background-color:#EAE8DF;
+		}
+	#wp-calendar .pad {
+		background-color:#F5F4F1;
+		}
+	/* End Calendar */
+
+	/* Captions */
+	.aligncenter,
+	div.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.wp-caption {
+		border: 1px solid #F4F5F7;
+		text-align: center;
+		background-color: #F4F5F7;
+		padding-top: 4px;
+		margin: 10px;
+		-moz-border-radius: 3px;
+		-khtml-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+	}
+	.wp-caption img {
+		margin: 0;
+		padding: 0;
+		border: 0 none;
+	}
+	.wp-caption p.wp-caption-text {
+		font-size: 11px;
+		line-height: 17px;
+		padding: 0 4px 5px;
+		margin: 0;
+	}
+	/* End captions */

@@ -1,0 +1,64 @@
+body {
+	background: #614535;
+}
+#menu ul {
+	background: url(brown/menu_bg.gif) repeat-x 0 bottom;
+}
+#menu ul li a {
+	border-left:1px solid #4c372b;
+}
+#search {
+	background: url(brown/search_block_bg.gif) no-repeat 0 0;
+}
+#container {
+	background: url(brown/top.gif) no-repeat 0 143px;
+}
+.background {
+	background: #F5F5F5 url(brown/content_bg.gif) repeat-y right top;
+}
+#sidebar .block, #sidebar .adverts{
+	background: url(brown/sidebar_block_top.gif) repeat-x 0 0;
+}
+#footer {
+	background: url(brown/footer_bg.gif);
+}
+#footer .left-col h2 {
+	background: url(brown/footer_element.gif) no-repeat right 18px;
+}
+#footer .left-col ul li {
+	background: url(brown/footer_line.gif) repeat-x left bottom;
+}
+#copyright {
+	background: #2b1d16 url(brown/bottom.gif) no-repeat left bottom;
+	border-top: #4c372b 1px solid;
+	color: #946558;
+}
+
+.post-content a span.read_more {
+	color: #a45945;
+}
+
+#footer a {
+	color: #85594d;
+}
+
+#footer a:hover {
+	color: #a45945;
+}
+
+#footer h2 {
+	color: #87766d;
+}
+
+#sidebar h2 {
+	color:#93624a;	
+}
+#sidebar .block a {
+	color:#694a3f;
+}
+#wp-calendar th{
+	background:#e2c6c0 none repeat scroll 0 0;
+}
+#footer #subscribe {
+	color:#e4c0b2;
+}

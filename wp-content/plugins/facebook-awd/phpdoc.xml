@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+  <parser>
+    <target>../facebook-awd-documentation</target>
+  </parser>
+  <transformer>
+    <target>../facebook-awd-documentation</target>
+  </transformer>
+  <files>
+    <directory>.</directory>
+    <ignore>getid3/*</ignore>
+  </files>
+</phpdoc>

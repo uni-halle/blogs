@@ -1,0 +1,45 @@
+
+.bizzadmin .fl { float: left }
+.bizzadmin .fr { float: right }
+.bizzadmin .clear { clear: both }
+.bizzadmin h2 { margin-bottom: 10px; font:oblique normal 25px Georgia; padding:0 0 0 5px }
+  .bizzadmin h2 a{ font:normal 14px Verdana; color:#162CCD; background:transparent; border:1px solid #162CCD; padding:0 8px 1px 5px; margin:0 }
+    .bizzadmin h2 a.active{ color:#ffffff; background:#162CCD; border:1px solid #162CCD; padding:0 8px 1px 7px }
+	.bizzadmin h2 a:hover{ color:#ffffff; background:#162CCD; border:1px solid #162CCD }
+.bizzadmin a{ color:#162CCD; text-decoration:none; border-bottom:1px dotted }
+
+.bizzadmin .introduction p{ padding:15px; margin:0 0 10px 0 }
+.bizzadmin .introduction a{ font-weight:bold; padding:0 0 3px 0 }
+  .bizzadmin .introduction p span{ background: #fff7c0 url(neww.png) no-repeat 0 bottom; padding: 0 0 0 20px; margin:0 }
+.bizzadmin .box-title { margin:4px 0 0 0 !important; background: #444; color:#fff; padding: 10px 1em 10px 1em; font-family: Georgia, serif; font-weight: normal !important; letter-spacing: 1px; font-size: 17px; }
+  .bizzadmin .box-title em.widgetsurl a { color:#ffffff }
+
+.bizzadmin .maintable { font-family:Georgia; padding: 0; border: 0; width: 335px; margin:0 10px; float: left; }
+  .bizzadmin .maintable .subheading { background: #EBEDD5; color:#000000; padding: 10px 13px; border-top:1px solid #CBCCB9; font-size: 16px; font-weight: normal !important; letter-spacing: 1px }
+    .bizzadmin .maintable .subheading a{ font:normal 10px Verdana; color:#162CCD; background:transparent; border:1px solid #162CCD; padding:0 2px 1px 2px; margin:0 }
+	  .bizzadmin .maintable .subheading a.active{ color:#ffffff; background:#162CCD; border:1px solid #162CCD; padding:0 2px 1px 3px }
+	  .bizzadmin .maintable .subheading a:hover{ color:#ffffff; background:#162CCD; border:1px solid #162CCD }
+  .bizzadmin .maintable .options-box { background: #EBEDD5 url(../../images/border-bg.png) repeat-x 0 bottom; padding: 0 0 5px 0; margin:0 }
+    .bizzadmin .table-row { color: #000; margin: 0; padding: 0 15px }
+      .bizzadmin .table-row .top-container{ color: #444; font:bold 11px Verdana; border: none; padding:10px 0 0 0; margin: 0 }
+      .bizzadmin .table-row .bottom-container { border: none; margin: 0; padding:10px 0 0 0 }
+	    .bizzadmin .table-row .bottom-container p { font:normal 13px Georgia; line-height: 160% }
+        .bizzadmin .table-row .bottom-container .description { margin:0; padding:0 }
+.bizzadmin .space-line { clear: both; margin: 0; padding: 0; width: auto }
+.bizzadmin .wrap-dropdown { text-align:left; width: 23em; height: 80px; overflow: auto; border: 1px solid #7F9DB9; background: #ffffff; margin:0 0 15px 0 }
+.bizzadmin .wrap-dropdown .table-row{ background: none; margin:0 }
+  .bizzadmin .wrap-dropdown .top-container { width:0% }
+  .bizzadmin .wrap-dropdown .bottom-container { width:100%; border:0; padding:0; margin:0; background:none }
+    .bizzadmin .wrap-dropdown .bottom-container .text { padding: 4px 0 5px 5px; margin: -10px 0 0 0 }
+    .bizzadmin .wrap-dropdown .bottom-container .text:hover { background:#DDE4DE; }
+.bizzadmin .maintable .table-row input, .maintable .table-row textarea { font: normal 0.923em/1.667em Consolas, "Andale Mono", "Courier New", Courier; width: 25.5em; padding: 0.333em; color: #3C3D35; background: #fff; border: 0.083em solid #BFBFBF; border-top-color: #A5A5A5; border-left-color: #A5A5A5; }
+.bizzadmin .maintable .table-row input:focus, .maintable .table-row textarea:focus { background: #DDE4DE; }
+.bizzadmin .maintable .table-row select { width: 27.5em; padding: 5px; color: #3C3D35; background: #fff; border: 0.083em solid #BFBFBF; border-top-color: #A5A5A5; border-left-color: #A5A5A5; }
+.bizzadmin .maintable .table-row input.input_checkbox { width: 20px; border: 0; background: transparent; }
+.bizzadmin .submit-title { margin: -32px 0 0 0; padding:0 10px 0 0 }
+  .bizzadmin .submit-title input { width: 95px }
+.bizzadmin .reset_save { display:inline; float:left; padding:30px 0 0 0; margin:0 }
+.bizzadmin .reset { margin:0 0 0 30px }
+  .bizzadmin .reset input { border:1px solid #ED0000 }
+
+

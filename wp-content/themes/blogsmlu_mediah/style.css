@@ -1,0 +1,19 @@
+/*
+Theme Name: Blogs@MLU mediA=H
+Theme URI: http://blogs.uni-halle.de
+Description: Child Theme for Blogs@MLU Default | mediA=H
+Author: Matthias Kretschmann
+Author URI: http://kremalicious.com
+Template: blogsmlu
+Version: 1.0
+*/
+ 
+@import url("../blogsmlu/style.css");
+
+#blogname {
+	
+}
+
+#blogname p {
+	
+}

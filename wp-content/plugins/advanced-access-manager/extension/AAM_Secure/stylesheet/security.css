@@ -1,0 +1,84 @@
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+*/
+
+#aam_form{
+    position: relative;
+}
+
+.clear{
+    line-height: 0;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
+
+.main-inside{
+    position: relative;
+    min-height: 200px;
+}
+
+.aam-main-loader{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: transparent url('images/main-loader.gif') no-repeat center;
+}
+
+.aam-icon-large span {
+    background-image: url('images/large-iconset.png');
+}
+
+.aam-icon-large-glob span{
+    background-position: 0 0;
+}
+
+.aam-icon-large-glob:hover span{
+    background-position: 0 -48px;
+}
+
+.aam-icon-large-settings span{
+    background-position: -48px 0;
+}
+
+.aam-icon-large-settings:hover span{
+    background-position: -48px -48px;
+}
+
+
+.restriction{
+    background: transparent url('images/restriction.png') no-repeat center;
+}
+
+.deny{
+    background: transparent url('images/deny.png') no-repeat center;
+}
+
+.center{
+    text-align: center;
+}
+
+.feature-off-notice{
+    width: 90%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.1em;
+    margin: 5px auto 0 auto;
+    border: 1px solid #FFAAAA;
+}
+
+.feature-off-notice a{
+    text-decoration: none;
+    color: #257DA6;
+}
+
+#settings_mode{
+    text-align: justify;
+    padding: 5px 15px;
+}

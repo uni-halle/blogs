@@ -1,0 +1,172 @@
+.collabpress {
+	font-family: 'Helvetica', sans-serif;
+	font-size: 1.3em;
+	font-weight: 300;
+}
+
+.collabpress-project {
+	background-color: #808080;
+	float: left;
+	height: 190px;
+	margin: 0 5px 5px 0;
+	padding: 5px;
+	width: 190px;
+	position: relative;
+}
+
+.collabpress-project h2 {
+	font-size: 1.2em;
+	font-weight: 400;
+}
+
+.collabpress-project .edit-project {
+	position: absolute;
+	bottom: .83em;
+	right: .83em;
+}
+.edit-project a {
+	color: #ccc;
+}
+.collabpress-project.new {
+	background-color: #0072ff;
+	text-align: center;
+}
+
+.collabpress-project.new .plus-sign {
+	font-size: 3em;
+	line-height: 1em;
+	margin: .25em 0;
+}
+
+
+.collabpress .project-links {
+	margin-right: 20px;
+}
+
+.collabpress .project-links a, .collabpress .overall-links a {
+	padding: 5px;
+}
+.collabpress .project-links a.current, .collabpress .overall-links a.current {
+	background-color: #ddd;
+	font-weight: bold;
+}
+
+.collabpress a,.collabpress a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+.collabpress a:hover {
+	color: black;
+	text-decoration: underline;
+}
+
+.collabpress .collabpress-project a {
+	color: white;
+	text-decoration: none;
+}
+
+.collabpress .menu-item-settings {
+	display: none;
+}
+
+.collabpress .menu-item-handle {
+	background: #f1f1f1;
+	border: 1px solid #dfdfdf;
+	position: relative;
+	padding-left: 10px;
+	height: auto;
+	width: 400px;
+	line-height: 35px;
+	overflow: hidden;
+	word-wrap: break-word;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.collabpress .menu-item-handle .item-title {
+	display: inline;
+}
+
+.collabpress #menu-to-edit .menu-item-invalid .menu-item-handle {
+	background: #f6c9cc;
+}
+
+.collabpress .menu .sortable-placeholder {
+	border-color: #bbb;
+	background-color: #f5f5f5;
+	border-width: 1px;
+	border-style: dashed;
+	height: 35px;
+	width: 410px;
+	margin-top: 13px;
+}
+
+.collabpress .menu-item-depth-0 {
+	margin-left: 0;
+}
+
+.collabpress .menu-item-depth-1 {
+	margin-left: 30px;
+}
+
+.collabpress .menu-item.complete .item-title, .collabpress-task h1.complete {
+	text-decoration: line-through;
+}
+
+a.view-all-link {
+	display: block;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+.overall-links {
+	margin: 20px 20px 0 0;
+}
+
+.collabpress .projects {
+	clear: both;
+	padding: 20px 0 0;
+}
+
+.collabpress #menu-to-edit {
+	margin: 0;
+	padding: 0;
+}
+
+.collabpress .sortable-placeholder {
+	list-style-type: none;
+}
+
+.collabpress dl {
+	margin: 0;
+}
+
+.collabpress .menu-item-bar {
+	clear: both;
+line-height: 1.5em;
+position: relative;
+margin: 9px 0 0;
+}
+
+.collabpress .item-controls {
+	font-size: 12px;
+	position: absolute;
+	right: 20px;
+	top: -1px;
+}
+
+.collabpress .add-new-task, .collabpress .add-new-task-list {
+	font-weight: bold;
+}
+
+.collabpress-task h1 input[type="checkbox"] {
+	margin-right: 5px;
+	vertical-align: middle;
+}
+
+.toggle-view-completed-tasks {
+	cursor: pointer;
+}

@@ -1,0 +1,285 @@
+/*
+Stylesheet for default template
+Author: Najeeb
+Plugin: Nmedia File Uploader Plugin
+*/
+
+#nmuploader-wrapper
+{
+	margin:0 auto;
+	padding:5px;
+	width:100%;
+	font-family: arial,sans-serif;
+	clear:both;
+}
+
+#nmuploader-wrapper #nm-link-title a.nm-link-title
+{
+	text-decoration:none;
+	color:#333;
+	font-size:12px;
+}
+
+
+/* nmuploader container */
+#nmuploader-wrapper ul#nmuploader-container
+{
+	border:#ccc 1px solid;
+	clear:both;
+}
+
+#nmuploader-wrapper ul#nmuploader-container, ul#nmuploader-top, ul#nmuploader-bottom
+{
+	list-style:none;
+	margin:0;
+	padding:0;
+	font-size:13px;
+}
+
+#nmuploader-wrapper ul#nmuploader-top li ul, ul#nmuploader-bottom li ul
+{
+	cursor:auto;
+	border:none;
+	list-style:none;
+	margin:0;
+	padding:0;
+	clear:left;	
+	
+}
+
+
+#nmuploader-wrapper ul#nmuploader-top li ul li, ul#nmuploader-bottom li ul li
+{
+	padding:3px;
+	float:left;	
+}
+
+#nmuploader-wrapper ul#nmuploader-top li ul li.active
+{
+	background-color:#ccc;
+	font-size: 18px;
+	padding-right:20px; padding-left:20px;
+}
+
+#nmuploader-wrapper ul#nmuploader-top li ul li.active{font-weight:bold;}
+
+
+
+#nmuploader-wrapper ul#nmuploader-container li
+{
+	border-bottom:#CCC 1px solid;
+	line-height:30px;
+	background:none;
+	list-style:none;
+}
+
+#nmuploader-wrapper ul#nmuploader-container li ul.nmuploader-row
+{
+	margin:0;
+	padding:0;
+	list-style:none;
+	clear:both;
+	/*display:none;*/
+}
+
+#nmuploader-wrapper ul#nmuploader-container li.heading
+{
+	font-weight:bold;
+	background-color:#CCC;
+}
+
+
+#nmuploader-wrapper ul#nmuploader-container li ul.nmuploader-row li
+{
+	padding:3px;
+	float:left;
+	border-bottom:none;
+}
+
+/* li row each */
+#nmuploader-wrapper ul#nmuploader-container li ul.nmuploader-row li.check{width:2%; padding-top:20px;}
+#nmuploader-wrapper ul#nmuploader-container li ul.nmuploader-row li.image{
+	width:15%; overflow:hidden;
+}
+#nmuploader-wrapper ul#nmuploader-container li ul.nmuploader-row li.meta{
+	width:75%; font-size:12px;
+}
+.nm-file-meta-more{color:#999; font-style:italic}
+
+#nmuploader-wrapper ul#nmuploader-container li ul.nmuploader-row li.tool{
+	width:10%; float:right; text-align:center;
+	padding-top:20px;
+	}
+/* li row each */
+
+
+#nmuploader-wrapper ul#nmuploader-container li ul.nmuploader-row li.admin{background-color:#33CC00}
+
+#nmuploader-wrapper ul#nmuploader-top li ul li.sorts{text-align:center; background-color:#ccc}
+#nmuploader-wrapper ul#nmuploader-top li ul li.sorts img{padding:0; margin:0 auto}
+
+#nmuploader-wrapper ul#nmuploader-bottom li ul li#prev-page{float:left; width:20%}
+#nmuploader-wrapper ul#nmuploader-bottom li ul li#page-count{float:left; text-align:center; width:55%}
+#nmuploader-wrapper ul#nmuploader-bottom li ul li#next-page{float:right; text-align:right; width:20%}
+
+
+#nmuploader-wrapper form{width:100%;}
+
+.fix_height{clear:both;}
+
+/*.red
+{
+	background-color:#F00;
+	color:#fff;
+	border:#999 1px dashed;
+	padding:5px;
+}
+
+.error
+{
+	color:#F00;
+	display:none;
+	font-style:italic;
+	font-size:11px;
+}*/
+
+
+.download-zip
+{
+	background-color:#ccc;
+	width:100%;
+	text-align:center;
+	margin:10px auto;
+}
+
+
+/* upload form */
+#nm-upload-container .nm-uploader-area
+{
+	border:#999 1px dashed;
+	padding-top: 25px;
+	margin:0 auto;
+	margin-bottom:15px;
+	text-align:center;
+}
+
+.no-file-found{
+margin:0 auto;
+	margin-bottom:15px;
+	text-align:center;
+	color:#F33;	
+}
+
+#nm-upload-container form{	width:100%;}
+
+#nm-upload-container .nm-uploader-area span
+{
+	font-style:italic;
+	color:#999;
+	display:block;
+	font-size:11px;
+}
+
+#nm-upload-container ul.nm-file-meta
+{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+#nm-upload-container ul.nm-file-meta li.caption
+{
+	float:left;
+	width:25%;
+}
+#nm-upload-container ul.nm-file-meta li.inputs
+{
+	float:left;
+	width:73%;
+}
+
+#nm-upload-container object{ float:none;}
+
+#nm-upload-container #error{background-color:red; color:#fff; text-align:center}
+/* user roles in admin form */
+#nm-upload-container ul.user-roles
+{
+	list-style:none;
+	margin:0;
+	padding:0;
+	clear:left;
+}
+
+#nm-upload-container ul.user-roles li
+{
+	float:left;
+	cursor:pointer;
+	font-size:12px;
+	padding:4px;
+}
+
+#nm-upload-container ul.user-roles li.public{clear:both}
+/* user roles in admin form */
+
+/* file detail container defined in includes-filedetail.php */
+#file-meta-container tr td{ padding: 0 5px; border-top: 1px solid #E7E7E7; vertical-align:middle}
+#file-meta-container tr td ul{margin:0; padding:0; list-style:none}
+.odd{background-color: #ccc}
+.odd-meta{background-color: #999}
+.even-meta{background-color: #fff}
+
+
+/* 
+	Web20 Table Style
+	written by Netway Media, http://www.netway-media.com
+*/
+
+table#user-files
+{
+  border-collapse: collapse;
+  border: 1px solid #666666;
+  font: normal 11px verdana, arial, helvetica, sans-serif;
+  background: #f6f6f6;
+  text-align:left;
+  width:100%;
+ 
+}
+
+table#user-files thead
+{
+	background-color:#999;
+	line-height:25px;
+	color:#00F;
+}
+
+
+.green
+{
+	background-color:#3C3;
+	color:#333;
+	border:#999 1px dashed;
+	padding:5px;
+}
+
+.red
+{
+	background-color:#F00;
+	color:#fff;
+	border:#999 1px dashed;
+	padding:5px;
+}
+
+.option-box
+{
+	background-color:#999;
+	border:#666 1px dashed;
+	padding:10px;
+}
+
+li.search{float: right;}
+
+.search input[type=search], .search select{
+	width: 125px;
+	height: 25px;
+	margin-right: 5px;
+}

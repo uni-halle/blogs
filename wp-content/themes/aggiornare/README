@@ -1,0 +1,12 @@
+Aggiornare is a WordPress theme. WP 2.9.2 compatible. Widget and custom theme options. Aggiornare means 'to update' in Italian.
+
+SETUP
+You will need to place the unzipped 'aggiornare' folder into your '/wp-content/themes/' folder and then activate it under Appearance in the WordPress backend. Aggiornare will work out of the box but, if you want it to look like it does here, please create 2 new pages, a "Home" page (name the page Home) and a blog page (you can name that page anything you'd like, i.e. News). When you create your "Home" page, choose the Home option underneath Template in the Attributes box (in the right sidebar). Then, click under Settings->Reading and choose "Front page displays a static page" and choose "Home" for the Front Page and the blog page for the Posts page.
+
+You can then modify the Homepage settings under Appearance->Aggiornare Settings to create the home page you want.
+
+TOP NAVIGATION
+You can set the order of the top navigation by altering the "Order" in the "Edit Page" option.  This can be found under "Attributes" in the right sidebar.  A value of 1 comes first, 2 second, and so on.
+
+TROUBLESHOOTING & SUPPORT REQUESTS
+Please direct all questions, concerns, & feedback to http://support.geekdesigngirl.com.

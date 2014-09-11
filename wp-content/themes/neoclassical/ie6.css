@@ -1,0 +1,14 @@
+/*---:[ IE6 styles for the Neoclassical Theme ]:---*/
+/*---:[ ------------------------------------- ]:---*/
+
+
+/*---:[ layout ]:---*/
+
+#content, .sidebar { overflow: hidden; }
+
+
+/*---:[ NOTE: uncomment each of the following definitions if a custom stylesheet is being used ]:---*/
+
+/* .custom #container { padding: 0; margin-bottom: 20px; background: none; border: 3px solid #9f7148; border-top: none; }
+
+.custom #footer_bottom { display: none; }*/

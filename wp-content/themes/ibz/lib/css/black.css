@@ -1,0 +1,12 @@
+/*-------=black theme-------------------*/	
+
+/* color for selections */
+*::-moz-selection { background:#666; }
+*::selection, mark { background:#666; }
+	
+/* text color */
+.main_title, .filter_portfolio .active a, .filter_portfolio a:hover { color:#666; }
+
+/* flex slider */
+.flex-caption  { border-bottom:3px solid #666; }
+.flex-control-nav a { background:url(../../images/bullets_black.png) no-repeat 0px 0px !important;}

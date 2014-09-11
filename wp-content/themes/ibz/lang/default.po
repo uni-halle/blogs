@@ -1,0 +1,479 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Maja 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-06 17:56+0100\n"
+"PO-Revision-Date: 2012-05-06 17:56+0100\n"
+"Last-Translator: dabaman\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_x;_e\n"
+"X-Poedit-Basepath: ./\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:17
+msgid "404 - page not found"
+msgstr ""
+
+#: ../404.php:21
+msgid "Sorry, the page you're looking for has gotten lost!"
+msgstr ""
+
+#: ../archive.php:19
+msgid "Archive of"
+msgstr ""
+
+#: ../archive.php:37
+#: ../author.php:57
+#: ../page.php:25
+msgid "Not found"
+msgstr ""
+
+#: ../archive.php:38
+#: ../author.php:58
+#: ../page.php:26
+msgid "Sorry, we can't find that."
+msgstr ""
+
+#: ../author.php:28
+msgid "About"
+msgstr ""
+
+#: ../author.php:36
+msgid "Visit"
+msgstr ""
+
+#: ../author.php:36
+msgid "'s Website"
+msgstr ""
+
+#: ../comments.php:14
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../comments.php:29
+msgid "Comments"
+msgstr ""
+
+#: ../comments.php:51
+msgid "Trackbacks and Pingbacks"
+msgstr ""
+
+#: ../comments.php:63
+msgid "There are no comments yet, add one below."
+msgstr ""
+
+#: ../comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: ../comments.php:77
+msgid "You must be"
+msgstr ""
+
+#: ../comments.php:79
+msgid "logged in"
+msgstr ""
+
+#: ../comments.php:81
+msgid "to post a comment."
+msgstr ""
+
+#: ../footer-menu.php:16
+msgid "Forrst"
+msgstr ""
+
+#: ../footer-menu.php:20
+msgid "Facebook"
+msgstr ""
+
+#: ../footer-menu.php:24
+msgid "Dribbble"
+msgstr ""
+
+#: ../footer-menu.php:28
+msgid "You Tube"
+msgstr ""
+
+#: ../footer-menu.php:32
+msgid "Vimeo"
+msgstr ""
+
+#: ../footer-menu.php:36
+msgid "Twitter"
+msgstr ""
+
+#: ../footer-menu.php:40
+msgid "RSS Feed"
+msgstr ""
+
+#: ../index.php:22
+msgid "Read All"
+msgstr ""
+
+#: ../index.php:32
+msgid "No posts yet!"
+msgstr ""
+
+#: ../metadata-blog.php:33
+#: ../metadata-blog.php:62
+msgid "No comments"
+msgstr ""
+
+#: ../metadata-blog.php:33
+#: ../metadata-blog.php:62
+msgid "1 comment"
+msgstr ""
+
+#: ../metadata-blog.php:33
+#: ../metadata-blog.php:62
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: ../search.php:17
+msgid "Results for"
+msgstr ""
+
+#: ../searchform.php:12
+msgid "Search..."
+msgstr ""
+
+#: ../sidebar.php:19
+msgid "Categories"
+msgstr ""
+
+#: ../sidebar.php:26
+msgid "Archives"
+msgstr ""
+
+#: ../single.php:27
+msgid "Tags: "
+msgstr ""
+
+#: ../single.php:52
+msgid "Previous post"
+msgstr ""
+
+#: ../single.php:53
+msgid "&laquo; Previous post"
+msgstr ""
+
+#: ../single.php:56
+msgid "Next post"
+msgstr ""
+
+#: ../single.php:57
+msgid "Next post &raquo;"
+msgstr ""
+
+#: ../lib/blog-comments.php:21
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../lib/blog-comments.php:26
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: ../lib/blog-comments.php:27
+msgid "(Edit)"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:12
+msgid "Appearance"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:13
+msgid "Site Details"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:14
+msgid "Social Profiles"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:15
+msgid "Google Map"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:30
+msgid "Logo"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:31
+msgid "Paste an image URL of your logo here."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:40
+msgid "Favicon"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:41
+msgid "Paste an image URL of your favicon here (16x16px ICO file)."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:50
+msgid "Color Scheme"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:51
+msgid "This will change the color of ribbons and selections."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:54
+msgid "Black"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:54
+msgid "Blue"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:54
+msgid "Green"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:54
+msgid "Orange"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:54
+msgid "Violet"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:54
+msgid "Red"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:54
+msgid "Brown"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:60
+msgid "Custom CSS code"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:61
+msgid "For example: h1, h2, h3 { color:blue; }"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:71
+msgid "Copyright information <br/> (will appear inside the left sidebar)"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:72
+msgid "Some inline HTML (&lt;a&gt;, &lt;b&gt;, &lt;em&gt;, &lt;i&gt;, &lt;strong&gt;) is allowed."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:74
+msgid "&copy; 2012, Site name"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:80
+msgid "Default text for mobile navigation"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:81
+msgid "This text will be displayed as a front text for  dropdown navigation when viewing on a small screen device."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:83
+msgid "Go to page..."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:89
+msgid "Display RSS Feed icon"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:90
+msgid "RSS icon will appear alongside with social profiles icons."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:98
+msgid "Display Flex Slider"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:99
+msgid "Flex Slider will be displayed where [flex-slider] shortcode is placed"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:107
+msgid "Filter portfolio categories"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:108
+msgid "Check if you want to use category filtering inside portfolio (Quicksand)."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:120
+msgid "Your Forrst profile link"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:131
+msgid "Your Facebook profile link"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:142
+msgid "Your Dribbble profile link"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:152
+msgid "YouTube"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:153
+msgid "Your YouTube profile link"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:164
+msgid "Your Vimeo profile link"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:175
+msgid "Your Twitter profile link"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:186
+msgid "Display Google Map"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:187
+msgid "Google map will be displayed where [google-map] shortcode is placed"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:195
+msgid "Latitude"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:196
+msgid "Enter your location latitude (from maps.google.com)."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:205
+msgid "Longitude"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:206
+msgid "Enter your location longitude (from maps.google.com)."
+msgstr ""
+
+#: ../lib/maja-theme-options.php:215
+msgid "Zoom level"
+msgstr ""
+
+#: ../lib/maja-theme-options.php:216
+msgid "Enter zoom level (default 15)."
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:31
+msgid "Theme Settings Page"
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:122
+msgid "Maja Options"
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:122
+msgid "Theme Options"
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:320
+msgid "Expecting a Numeric value! Please fix."
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:333
+msgid "Expecting comma separated numeric values"
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:343
+msgid "Expecting comma separated numeric values! Please fix."
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:368
+msgid "Invalid email! Please re-enter!"
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:370
+msgid "This setting field cannot be empty! Please enter a valid email address."
+msgstr ""
+
+#: ../lib/maja-theme-settings.php:378
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:6
+#: ../lib/post-types-portfolio.php:7
+msgid "Portfolio"
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:8
+msgid "Add Item"
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:9
+msgid "Edit Portfolio Item"
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:10
+msgid "New Portfolio Item"
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:11
+msgid "View Portfolio"
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:12
+msgid "Search Portfolio"
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:13
+msgid "No Portfolio Items Found"
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:14
+msgid "No Portfolio Items Found In Trash"
+msgstr ""
+
+#: ../lib/post-types-portfolio.php:51
+#: ../lib/post-types-portfolio.php:52
+msgid "Filter"
+msgstr ""
+
+#: ../lib/post-types-slider.php:10
+msgid "Slides"
+msgstr ""
+
+#: ../lib/post-types-slider.php:11
+msgid "Slider"
+msgstr ""
+
+#: ../lib/post-types-slider.php:12
+#: ../lib/post-types-slider.php:13
+msgid "Add New Slide"
+msgstr ""
+
+#: ../lib/post-types-slider.php:14
+msgid "Edit slide"
+msgstr ""
+
+#: ../lib/post-types-slider.php:15
+msgid "New slide"
+msgstr ""
+
+#: ../lib/post-types-slider.php:16
+msgid "View slide"
+msgstr ""
+
+#: ../lib/post-types-slider.php:17
+msgid "Search slides"
+msgstr ""
+
+#: ../lib/post-types-slider.php:18
+msgid "No slides found"
+msgstr ""
+
+#: ../lib/post-types-slider.php:19
+msgid "No slides found in Trash"
+msgstr ""
+

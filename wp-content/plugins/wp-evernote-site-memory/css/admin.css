@@ -1,0 +1,47 @@
+#icon-evernote {
+	background: transparent url(http://static.evernote.com/site-mem-36.png) no-repeat 0 0;
+}
+
+.siteMemoryButton {
+	margin: 0px 20px 0 0;
+}
+.siteMemoryButton img {
+	padding: 10px 0 0 0;
+}
+
+.siteMemoryPostBox {
+	width: 95%;
+	margin: 20px 0 20px 0;
+	padding: 10px 20px 10px 20px;
+} 
+
+.evernoteSiteMemory {
+	color: #6a6a6a;
+	font-size: 16px;
+	line-height: 18px;
+}
+	.evernoteSiteMemory img {
+		float: left;
+	}
+	.evernoteSiteMemory a {
+		color: #458e0b;
+		text-decoration: none;
+		font-weight: bold;
+	}
+		.evernoteSiteMemory a:hover {
+			color: #000000;
+		}
+.evernoteSiteMemoryDescription {
+	height: 57px;
+	float: left;
+	background-color: #f8f8f8;
+	border: #dddddd 1px solid;
+	margin: 0 0 0 1px;
+	padding: 10px;
+}
+
+.evernoteSiteMemoryClear {
+	clear: both;
+	height: 0px;
+	line-height: 0px;
+}

@@ -1,0 +1,384 @@
+/*
+Theme Name: Beautiful Day DE-Edition
+Theme URI: http://templates.arcsin.se/
+Version: 2.0
+Description: Previously released by Kaushal Sheth, includes several fixes and improvements. Based on the <a href="http://templates.arcsin.se/">free website template</a> Beautiful Day. Also available as <a href="http://templates.arcsin.se/beautiful-day-joomla-template/">Joomla template</a> and <a href="http://templates.arcsin.se/beautiful-day-blogger-template/">Blogger template</a>. Deutsche Bearbeitung: <a href="http://www.domain-anonym-registrieren.de/">Frank Kugler</a>.
+Author: Viktor Persson
+Author URI: http://arcsin.se
+*/
+
+/* standard elements */
+html {
+	min-height: 100%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	color: #963;
+}
+a:hover {
+	color: #C60;
+}
+body {
+	background: #CCD8E0 url('img/bg.jpg') repeat-x left bottom;
+	color: #444;
+	font: normal 62.5% Tahoma, sans-serif
+}
+p, code, ul {
+	padding-bottom: 10px;
+}
+li {
+	list-style: none;
+}
+h1 {
+	font: normal 1.8em Tahoma, sans-serif;
+	margin-bottom: 4px;
+}
+h2 {
+	font: normal 1.6em sans-serif;
+}
+h3 {
+	font: bold 1.1em sans-serif;
+}
+code {
+	background: #FFF;
+	border: 1px solid #EEE;
+	border-left: 6px solid #C1CAD3;
+	color: #666;
+	display: block;
+	font: normal 1em Tahoma, sans-serif;
+	line-height: 1.6em;
+	margin: 4px 0 12px;
+	padding: 8px 10px;
+	white-space: pre;
+}
+blockquote {
+	background: url('img/quote.gif') no-repeat;
+	display: block;
+	font: bold 0.9em Verdana, sans-serif;
+	padding-left: 26px
+}
+big {
+	font-size: 1.1em;
+}
+h1, h2, h3 {
+	padding-top: 6px;
+}
+label {
+	display: block;
+	font-size: 0.9em;
+}
+/* misc */
+.clearer {
+	clear: both;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+/* structure */
+.container {
+	background: #FFF;
+	font-size: 1.2em;
+	margin: 0 auto;
+	padding: 0 10px 10px;
+	width: 780px;
+}
+/* header */
+.top {
+	background: url('img/clouds.gif') repeat-x;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:50px;
+	padding-bottom:0
+}
+/* title */
+.header {
+	background: #FFF;
+	font-size: 1.2em;
+	height: 150px;
+	margin: 0 auto;
+	padding: 10px 10px 5px;
+	width: 780px;
+}
+.header .left, .header .right {
+	background: #A4A4A0;
+	color: #FFF;
+	height: 150px;
+}
+.header .left {
+	background: #B3C2C7 url('img/header.jpg') no-repeat;
+	text-align: center;
+	width: 564px;
+	font: normal 2.8em "Trebuchet MS", sans-serif;
+	line-height: 150px;
+}
+.header .right {
+	overflow: auto;
+	width: 212px;
+}
+.header .right p, .header .right h2 {
+	padding: 0 16px;
+}
+.header .right h2 {
+	padding-top: 16px;
+	font: normal 1.6em "Trebuchet MS", sans-serif;
+}
+/* navigation */
+.navigation {
+	border: 1px solid #CFDEE7;
+	border-color: #DFEEF7 #CFDEE7;
+	background:#D9E1E5 url('img/nav.gif');
+	height: 41px
+}
+.navigation a {
+	background: #D9E1E5 url('img/nav.gif');
+	border-right: 1px solid #AFBEC7;
+	color: #456;
+	display: block;
+	float: left;
+	text-decoration: none;
+	font: bold 1em sans-serif;
+	line-height: 41px;
+	padding: 0 20px;
+}
+.navigation a:hover {
+	background-position: left bottom;
+	color: #234;
+}
+.navigation ul {
+	display: inline;
+}
+.navigation li {
+	float: left;
+}
+/* main */
+.main {
+	border-top: 4px solid #FFF;
+	background: url('img/bgmain.gif') repeat-y;
+}
+/* sub navigation */
+.sidenav {
+	float: right;
+	width: 210px;
+}
+.sidenav h2 {
+	color: #5A5A43;
+	font: bold 1em Tahoma, sans-serif;
+	line-height: 30px;
+	margin: 0;
+	padding-left: 12px;
+}
+.sidenav ul {
+	padding: 0;
+	border-top: 1px solid #EAEADA;
+}
+.sidenav li {
+	border-bottom: 1px solid #EAEADA;
+}
+.sidenav li a {
+	font-size: 1.1em;
+	color: #554;
+	display: block;
+	padding: 8px 0 8px 5%;
+	text-decoration: none;
+	width: 95%;
+}
+.sidenav li a:hover {
+	background: #F0F0EB;
+	color: #654;
+}
+/* content */
+.content {
+	float: left;
+	margin: 10px 0;
+	padding: 0 16px;
+	width: 531px;
+}
+.content .descr {
+	color: #664;
+	font-size: 0.9em;
+	margin-bottom: 6px;
+}
+.content li {
+	background: url('img/li.gif') no-repeat 0 30%;
+	padding: 1px 0 1px 16px;
+}
+.content p {
+	font-family: "Lucida Sans Unicode", sans-serif;
+}
+/* footer */
+.footer {
+	background: url('img/bgfooter.gif') repeat-x;
+	color: #FFF;
+	font: bold 1em sans-serif;
+	padding: 0 16px;
+	line-height: 39px;
+	height: 39px;
+}
+.footer a, .footer a:hover {
+	color: #FFF;
+}
+/* posts */
+.post h1 a {
+	text-decoration:none;
+}
+.post h1 a:hover {
+	text-decoration:underline;
+}
+.post {
+	margin: 6px 0 2px;
+}
+.post .info {
+	padding: 5px 10px;
+	border: 1px solid #E3E4E4;
+	background:#F5F5F5;
+	color: #555;
+	margin: 2px 0 4px;
+}
+.post img {
+	border: 4px solid #DDD;
+	margin: 4px 0;
+}
+.post a img {
+	border: 4px solid #DDD;
+}
+.post a:hover img {
+	border-color: #CCC;
+}
+.info a {
+	text-decoration: none;
+}
+.info a:hover {
+	text-decoration: underline;
+}
+/* comments */
+.content ol li {
+	list-style: none;
+	background: none;
+}
+#commentlist li {
+	margin-bottom: 1.5em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #700000;
+	list-style: none;
+}
+#commentform {
+	margin: 1em 0;
+	background: #FAFAFA;
+	width: 280px;
+}
+.commentmetadata {
+	padding: 2px 0 4px;
+}
+.commentmetadata a {
+	color: #664;
+}
+textarea.styled {
+	width: 280px;
+}
+.styled {
+	font-size: 1.1em;
+	background: #F8F7F6;
+	border: 1px solid #D6D3D3;
+}
+.styled:hover {
+	background: #FFF;
+	border: 1px solid #D6D3D3;
+}
+.styled:focus {
+	background: #FFF;
+	border: 1px solid #939793;
+}
+#commentform input {
+	margin-bottom: 3px;
+}
+a img {
+	border:none;
+}
+/* calendar */
+#wp-calendar {
+	color:#A0A0A0;
+}
+.sidenav table caption {
+	border-bottom-color:#000;
+}
+.sidenav table thead tr {
+	border-bottom-color:#000;
+	color:#A53512;
+}
+.sidenav table th {
+	border-bottom-color:#000;
+}
+.sidenav table td#today {
+	border-color:#000;
+	color:#A53512;
+}
+.sidenav table td a {
+	border-bottom-color:#000;
+	background-color:#EDF3DE;
+}
+.sidenav table tfoot {
+	border-top-color:#000;
+}
+.sidenav table tfoot a {
+	background:none;
+}
+/* calendar
+--------------------------------------------------*/
+#wp-calendar {
+	display:inline-table;
+	border-collapse:collapse;
+	width:185px;
+	margin:0px 10px 0 10px;
+	text-align:center;
+}
+.sidenav table caption {
+	margin: -5px 10px 0 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid;
+	letter-spacing: 0.1em;
+}
+.sidenav table thead tr {
+	border-bottom:1px solid;
+}
+.sidenav table th {
+	border-bottom:1px solid;
+}
+.sidenav table td {
+	width: 225px; /* maximaize width; honestly, I don't know much about tables... */
+	padding: 1px;
+	font-size: 0.9em;
+}
+.sidenav table td#today {
+	padding: 0;
+	border: 1px solid;
+	font-size: 1em;
+	font-weight: bold;
+}
+.sidenav table td a {
+	display: block;
+	border-bottom: 1px solid;
+	font-weight: bold;
+	font-size: 1.15em;
+}
+.sidenav table tfoot {
+	border-top:1px solid;
+}
+.sidenav table tfoot a {
+	border: none;
+	font-weight: bold;
+}
+.sidenav table tfoot #prev a {
+	text-align:left;
+}
+.sidenav table tfoot #next a {
+	text-align:center;
+}
+#searchform {
+	padding:10px;
+}

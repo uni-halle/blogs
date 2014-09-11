@@ -1,0 +1,10 @@
+#errorpage p{
+font-size:14px;
+}
+#errorpage h2{
+margin-top:20px;
+}
+#use-wp-self,#use-google{
+text-align:center;
+margin-top:30px;
+}

@@ -1,0 +1,549 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Elegant Grunge 1.0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-16 14:26+1000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Michael Tyson <mike@tyson.id.au>\n"
+"Language-Team: Michael Tyson <mike@tyson.id.au>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: AUSTRALIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__;_c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:10
+msgid "Not found"
+msgstr ""
+
+#: 404.php:11
+msgid "Sorry, no posts could be found here.  Try searching below:"
+msgstr ""
+
+#: 404.php:15
+msgid "Or, try one of these posts:"
+msgstr ""
+
+#: 404.php:17
+#: index.php:20
+#: search.php:16
+#, php-format
+msgid "Permanent Link to %s"
+msgstr ""
+
+#: comments.php:10
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:27
+msgid "Says:"
+msgstr ""
+
+#: comments.php:29
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: comments.php:33
+#, php-format
+msgid "%1$s at %2$s|date at time"
+msgstr ""
+
+#: comments.php:33
+msgid "F jS, Y"
+msgstr ""
+
+#: comments.php:33
+msgid "edit"
+msgstr ""
+
+#: comments.php:59
+msgid "No Responses"
+msgstr ""
+
+#: comments.php:59
+msgid "One Response"
+msgstr ""
+
+#: comments.php:59
+msgid "% Responses"
+msgstr ""
+
+#: comments.php:59
+#, php-format
+msgid "to &#8220;%s&#8221;"
+msgstr ""
+
+#: comments.php:98
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:106
+msgid "Leave a Reply"
+msgstr ""
+
+#: comments.php:115
+#, php-format
+msgid "You must be %1$slogged in%2$s to post a comment."
+msgstr ""
+
+#: comments.php:122
+#, php-format
+msgid "Logged in as %1$s. %2$sLog out &raquo;%3$s"
+msgstr ""
+
+#: comments.php:122
+msgid "Log out of this account"
+msgstr ""
+
+#: comments.php:127
+msgid "Name"
+msgstr ""
+
+#: comments.php:127
+#: comments.php:130
+msgid "(required)"
+msgstr ""
+
+#: comments.php:130
+msgid "Mail (will not be published)"
+msgstr ""
+
+#: comments.php:133
+msgid "Website"
+msgstr ""
+
+#: comments.php:141
+msgid "Submit Comment"
+msgstr ""
+
+#: footer.php:9
+msgid "Subscribe RSS"
+msgstr ""
+
+#: footer.php:17
+#, php-format
+msgid "%1$s Theme by %2$s."
+msgstr ""
+
+#: functions.php:451
+msgid "Header image:"
+msgstr ""
+
+#: functions.php:454
+msgid "If specified, the image (typically a transparent PNG) at the above URL will be used for the header."
+msgstr ""
+
+#: functions.php:459
+msgid "RSS subscription:"
+msgstr ""
+
+#: functions.php:462
+msgid "Display RSS subscription link"
+msgstr ""
+
+#: functions.php:467
+msgid "Post info:"
+msgstr ""
+
+#: functions.php:470
+msgid "Display post author"
+msgstr ""
+
+#: functions.php:475
+msgid "Page setup:"
+msgstr ""
+
+#: functions.php:486
+msgid "Copyright message:"
+msgstr ""
+
+#: functions.php:493
+#: functions.php:598
+#: functions.php:643
+msgid "Image frames:"
+msgstr ""
+
+#: functions.php:496
+#: functions.php:603
+#: functions.php:648
+msgid "Apply frame to all images"
+msgstr ""
+
+#: functions.php:497
+#, php-format
+msgid ""
+"If enabled, all images larger than %1$d x %2$d\n"
+"\t\t\t\twill have a frame with drop shadow applied. Otherwise, only images and other elements with a class\n"
+"\t\t\t\tof 'frame' will have this style applied.<br/>\n"
+"\t\t\t\tThis setting can be configured per-post and per-page, also."
+msgstr ""
+
+#: functions.php:505
+msgid "Don't frame images with class:"
+msgstr ""
+
+#: functions.php:508
+msgid "Separate multiple classes with commas ','"
+msgstr ""
+
+#: functions.php:513
+msgid "Extra header content:"
+msgstr ""
+
+#: functions.php:516
+msgid "This can be used to add extra RSS feed links from your page, for example, such as a Twitter feed."
+msgstr ""
+
+#: functions.php:521
+msgid "Photoblog thumbnails:"
+msgstr ""
+
+#: functions.php:525
+msgid "Create scaled thumbnails"
+msgstr ""
+
+#: functions.php:526
+msgid ""
+"If enabled, will generate thumbnail files. Otherwise, will use the original images, resulting in slower loading times.\n"
+"\t\t\tNote that the first photoblog page load after this is enabled will be slow, while images are being created, so you should\n"
+"\t\t\t<a href=\"/tag/photoblog\" target=\"_blank\">load this</a> yourself."
+msgstr ""
+
+#: functions.php:531
+msgid "Thumbnail size:"
+msgstr ""
+
+#: functions.php:534
+msgid "Leave blank for flexible size"
+msgstr ""
+
+#: functions.php:539
+msgid "Photoblog display:"
+msgstr ""
+
+#: functions.php:542
+msgid "Number of thumbnails per page:"
+msgstr ""
+
+#: functions.php:547
+msgid "Use lightbox mode"
+msgstr ""
+
+#: functions.php:548
+msgid "Requires a lightbox plugin to be installed, such as <a href=\"http://www.stimuli.ca/lightbox/\">Lightbox 2</a>."
+msgstr ""
+
+#: functions.php:552
+msgid "Draw frames around photoblog items"
+msgstr ""
+
+#: functions.php:564
+msgid "Save Changes"
+msgstr ""
+
+#: functions.php:593
+#: functions.php:638
+msgid "Elegant Grunge Theme Options"
+msgstr ""
+
+#: functions.php:604
+#, php-format
+msgid ""
+"If enabled, all images larger than %1$d x %2$d \n"
+"\t\t\t\twill have a frame with drop shadow applied. Otherwise, only images and other elements with a class\n"
+"\t\t\t\tof 'frame' will have this style applied."
+msgstr ""
+
+#: functions.php:649
+#, php-format
+msgid ""
+"If enabled, all images larger than %1$d x %2$d \n"
+"\t\t\t\t\twill have a frame with drop shadow applied. Otherwise, only images and other elements with a class\n"
+"\t\t\t\t\tof 'frame' will have this style applied."
+msgstr ""
+
+#: functions.php:656
+msgid "Related tag(s):"
+msgstr ""
+
+#: functions.php:660
+msgid ""
+"If specified and 'Page with custom sidebar' page template is selected, will display posts from these tags\n"
+"\t\t\t\t\tin the sidebar. Specify multiple tags by separating with a comma ','."
+msgstr ""
+
+#: functions.php:667
+msgid "Related posts title:"
+msgstr ""
+
+#: functions.php:671
+msgid ""
+"If 'Page with custom sidebar' page template is selected, and one or more related tags are provided above, this will be the title\n"
+"\t\t\t\t\tabove a list of related posts."
+msgstr ""
+
+#: functions.php:678
+msgid "Extra sidebar content:"
+msgstr ""
+
+#: functions.php:682
+msgid "If 'Page with custom sidebar' page template is selected, this text/HTML will be displayed in the sidebar."
+msgstr ""
+
+#: functions.php:779
+msgid "Heading:"
+msgstr ""
+
+#: functions.php:784
+msgid "Display:"
+msgstr ""
+
+#: functions.php:785
+msgid "entries"
+msgstr ""
+
+#: functions.php:790
+msgid "Display random entries"
+msgstr ""
+
+#: functions.php:792
+msgid "Display recent entries"
+msgstr ""
+
+#: functions.php:796
+msgid "Tags to display:"
+msgstr ""
+
+#: functions.php:798
+msgid "Separate multiple tags with commas"
+msgstr ""
+
+#: functions.php:802
+msgid "Image width:"
+msgstr ""
+
+#: functions.php:807
+msgid "Image height:"
+msgstr ""
+
+#: header.php:12
+#: header.php:13
+msgid "Archive"
+msgstr ""
+
+#: header.php:70
+msgid "Home"
+msgstr ""
+
+#: index.php:29
+msgid "Continue reading"
+msgstr ""
+
+#: index.php:35
+#: search.php:19
+msgid "no comments"
+msgstr ""
+
+#: index.php:35
+#: search.php:19
+msgid "1 comment"
+msgstr ""
+
+#: index.php:35
+#: search.php:19
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: index.php:36
+#: search.php:20
+msgid "tags:"
+msgstr ""
+
+#: index.php:38
+#: search.php:22
+msgid "posted in"
+msgstr ""
+
+#: index.php:40
+#: search.php:24
+msgid "Edit"
+msgstr ""
+
+#: index.php:50
+#: search.php:30
+msgid "&laquo; Older Entries"
+msgstr ""
+
+#: index.php:51
+#: search.php:31
+msgid "Newer Entries &raquo;"
+msgstr ""
+
+#: index.php:56
+msgid "Not Found"
+msgstr ""
+
+#: index.php:57
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr ""
+
+#: links.php:12
+msgid "Links"
+msgstr ""
+
+#: page-custom-sidebar.php:19
+#: page-no-sidebar.php:19
+#: page.php:11
+msgid "<p class=\"serif\">Read the rest of this page &raquo;</p>"
+msgstr ""
+
+#: page-custom-sidebar.php:21
+#: page-no-sidebar.php:21
+#: page.php:13
+msgid "Pages:"
+msgstr ""
+
+#: page-custom-sidebar.php:26
+#: page-no-sidebar.php:26
+#: page.php:18
+msgid "Edit this entry."
+msgstr ""
+
+#: page-custom-sidebar.php:43
+msgid "Related posts"
+msgstr ""
+
+#: page-custom-sidebar.php:54
+msgid "More updates"
+msgstr ""
+
+#: search.php:11
+msgid "Search Results"
+msgstr ""
+
+#: search.php:36
+msgid "No posts found. Try a different search?"
+msgstr ""
+
+#: searchform.php:1
+msgid "search"
+msgstr ""
+
+#: searchform.php:5
+msgid "Go"
+msgstr ""
+
+#: sidebar.php:21
+#, php-format
+msgid "You are currently browsing the archives for the %s category."
+msgstr ""
+
+#: sidebar.php:24
+#, php-format
+msgid "You are currently browsing the %1$s blog archives for the day %2$s"
+msgstr ""
+
+#: sidebar.php:26
+#: single.php:30
+msgid "l, F jS, Y"
+msgstr ""
+
+#: sidebar.php:29
+#, php-format
+msgid "You are currently browsing the %1$s blog archives for %2$s"
+msgstr ""
+
+#: sidebar.php:31
+msgid "F, Y"
+msgstr ""
+
+#: sidebar.php:34
+#, php-format
+msgid "You are currently browsing the %1$s blog archives for the year %2$s"
+msgstr ""
+
+#: sidebar.php:36
+msgid "Y"
+msgstr ""
+
+#: sidebar.php:39
+#, php-format
+msgid "You have searched the %1$s blog archives for <strong>%2$s</strong>. If you are unable to find anything in these search results, you can try one of these links."
+msgstr ""
+
+#: sidebar.php:43
+#, php-format
+msgid "You are currently browsing the %s blog archives"
+msgstr ""
+
+#: sidebar.php:50
+#: single.php:24
+msgid "Pages"
+msgstr ""
+
+#: sidebar.php:52
+msgid "Archives"
+msgstr ""
+
+#: sidebar.php:58
+msgid "Categories"
+msgstr ""
+
+#: sidebar.php:63
+msgid "Meta"
+msgstr ""
+
+#: single.php:27
+msgid "Tags:"
+msgstr ""
+
+#: single.php:30
+#, php-format
+msgid "This entry was posted on %1$s at %2$s"
+msgstr ""
+
+#: single.php:32
+#, php-format
+msgid "and is filed under %s"
+msgstr ""
+
+#: single.php:34
+msgid ". "
+msgstr ""
+
+#: single.php:35
+#, php-format
+msgid "You can follow any responses to this entry through the <a href=\"%s\">RSS 2.0</a> feed."
+msgstr ""
+
+#: single.php:40
+#, php-format
+msgid "You can %1$sleave a response%2$s, or %3$strackback%4$s from your own site."
+msgstr ""
+
+#: single.php:45
+#, php-format
+msgid "Responses are currently closed, but you can %1$strackback%2$s from your own site."
+msgstr ""
+
+#: single.php:50
+msgid "You can skip to the end and leave a response. Pinging is currently not allowed."
+msgstr ""
+
+#: single.php:54
+msgid "Both comments and pings are currently closed."
+msgstr ""
+
+#: single.php:56
+msgid "Edit this entry"
+msgstr ""
+
+#: single.php:66
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+

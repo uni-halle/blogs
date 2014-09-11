@@ -1,0 +1,17 @@
+/* Christopher Meng *** cickumqt(at)Gmail(dot)com */
+
+<name>姓名</name>
+<email>邮箱</email>
+<url>网站</url>
+<message>留言</message>
+<antispam><b>反垃圾措施</b><br />请在您提交留言之前输入验证码！</antispam>
+<mandatory>必须填写</mandatory>
+<submit>提交</submit>
+<name_error>姓名太短啦！</name_error>
+<email_error>邮箱地址非法！</email_error>
+<url_error>网站地址非法！</url_error>
+<message_error>留言太少啦！</message_error>
+<antispam_error>验证码错误！</antispam_error>
+<success>感谢您的留言！</success>
+<admin_review>评论正在等待审核，请稍候！<br />感谢您的耐心！</admin_review>
+<spam_detect>您的输入可能包含垃圾信息!<br />评论正在等待审核，暂时不会显示，请耐心等待</spam_detect>

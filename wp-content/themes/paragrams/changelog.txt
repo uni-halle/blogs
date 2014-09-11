@@ -1,0 +1,59 @@
+=========================
+= 1.0 - Initial release =
+=========================
+
+============================
+= 1.1 - WP 3.0 mod by mijk =
+============================
+- added default WP classes
+- modified header.php + functions.php (added wp_nav_menu support)
+- modified index.php + archive.php + search.php + functions.php  (added support for WP post-thumbnails)
+- modified style.css - added default WP classes
+
+========
+= 1.11 =
+========
+Post Thumbnail Function Modification
+- modified index.php + archive.php + search.php + functions.php  
+(changed support for correct resolution of WP post-thumbnails)
+- Added Theme Options page to input Twitter and Facebook URL's
+- modified functions.php and header.php
+- Added support for Theme Background change
+- modified functions.php
+
+====================================================
+= 1.12 - Fixed backwards compatibility with WP 2.9 =
+====================================================
+Fixed backwards compatibility for menu (for WP 2.9+)
+- modified header.php
+
+==========================
+= 1.13 - Cleanup Release =
+==========================
+- cleaned up markup in all files
+- theme better commented
+- fixed backward compatibility
+- css cleanup
+- jQuery enqueued the right way
+- menu script fixed to noConflict
+- cleaned up header from scripts
+- modified default excerpt symbol from [...] to ... (functions.php)
+- fixed changelog.txt
+
+========================================
+= 1.14 - Added support for custom logo =
+========================================
+- added support for changing logo (functions.php, style.css, header.php)
+- fixed footer copyright generator (footer.php)
+
+======================================
+= 1.15 - Support for nested comments =
+======================================
+- added support for nested comments (comments.php, functions.php, style.css, ie6.css, ie7.css, ie8.css)
+- added attachment.php with image browsing support (attachment.php, style.css)
+- added edit links to posts and pages (single.php, page.php)
+
+========
+= 1.16 =
+========
+- fixed columnizer issue (js/columnizer.js)

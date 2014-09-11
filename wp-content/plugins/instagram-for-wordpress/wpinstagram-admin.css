@@ -1,0 +1,109 @@
+#instagram-plugin-instructions dl dt {
+	clear: both;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+#instagram-plugin-instructions dl dd {
+	margin: 0;
+	padding: 0;
+	font-style: italic;
+}
+
+#instagram-plugin-instructions dl {
+	clear: both;
+	overflow: hidden;
+}
+
+
+#instagram-plugin-instructions dl dd textarea {
+	width: 98%;
+	height: 100px;
+}
+
+#instagram-plugin-instructions li {
+	padding: 20px 0;
+	border-bottom: 1px solid #bbb;
+}
+
+.lboxWrapper {
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	z-index: 150;
+	display: none;
+}
+
+.lboxWrapper.visible {
+	display: block;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.lboxWrapper .lboxOverlay {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 10000;
+	background: #000000;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+	right: 0px;
+	bottom: 0px;
+	cursor: pointer;
+}
+
+.lboxWrapper .lboxFrame {
+	position: fixed;
+	margin: 0px;
+	width: 800px;
+	z-index: 100001;
+	height: 400px;
+	padding: 20px;
+	left: 50%;
+	margin-left: -410px;
+	background: #FFF;
+}
+
+.lboxWrapper .lboxFrame iframe {
+	width: 800px;
+	height: 400px;
+	border: 0px none;
+	overflow: hidden;
+}
+
+.lboxWrapper .lboxClose {
+	position: absolute;
+	top: -30px;
+	line-height: 25px;
+	font-size: 25px;
+	font-weight: bold;
+	right: 0px;
+	color: #FFF;
+	text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+	cursor: pointer;
+}
+
+.simpleSetupButton {
+	width: 100%;
+	text-align: center;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	margin: 5px 0px 10px 0px !important;
+}
+
+.simpleSetupButton.button-secondary, .simpleSetupButton.button-secondary:hover {
+	background: #FF4545;
+	color: #000;
+	font-weight: bold;
+	text-shadow: none;
+}
+
+hr.divider {
+	border: 0px none;
+	border-top: 1px solid #CCC;
+}

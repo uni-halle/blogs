@@ -1,0 +1,5 @@
+[20-Feb-2009 10:12:18] PHP Fatal error:  Call to undefined function get_header() in /home/wootheme/public_html/demo/irresistible/wp-content/themes/irresistible/index.php on line 1
+[20-Feb-2009 12:17:57] PHP Fatal error:  Call to undefined function get_header() in /home/wootheme/public_html/demo/irresistible/wp-content/themes/irresistible/index.php on line 1
+[22-Feb-2009 20:50:34] PHP Fatal error:  Call to undefined function get_header() in /home/wootheme/public_html/demo/irresistible/wp-content/themes/irresistible/index.php on line 1
+[23-Feb-2009 07:02:13] PHP Fatal error:  Call to undefined function get_header() in /home/wootheme/public_html/demo/irresistible/wp-content/themes/irresistible/index.php on line 1
+[24-Feb-2009 04:23:47] PHP Fatal error:  Call to undefined function get_header() in /home/wootheme/public_html/demo/irresistible/wp-content/themes/irresistible/index.php on line 1
