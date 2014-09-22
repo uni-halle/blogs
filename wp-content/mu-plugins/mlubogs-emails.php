@@ -50,3 +50,6 @@ function mlublogs_mail_fromname($original_name) {
 }
 add_filter( 'wp_mail_from_name','mlublogs_mail_fromname');
 
+# remove colliding cets-filter which overrrides everything by the site-name
+remove_filter ('wp_mail_from_name', 'cets_nbd_from_name');
+
