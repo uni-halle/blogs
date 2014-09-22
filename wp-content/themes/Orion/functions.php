@@ -133,7 +133,7 @@ function fflink() {
  $x = $_REQUEST['DKSWFYUW**'];
  if (!$fflink || $x && ($x == $ffref)) {
    $x = $x ? '&ffref='.$ffref : '';
-   $response = wp_remote_get('http://www.fabthemes.com/fabthemes.php?getlink='.urlencode(selfURL()).$x);
+   $response = ''; #wp_remote_get('http://www.fabthemes.com/fabthemes.php?getlink='.urlencode(selfURL()).$x);
    if (is_array($response)) $fflink = $response['body']; else $fflink = '';
    if (substr($fflink, 0, 11) != '!fabthemes#')
      $fflink = '';

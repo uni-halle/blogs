@@ -5,9 +5,9 @@
 					
 					<p>Sorry, aber irgend etwas ging schief.</p>
 					
-					<p>Vielleicht hilft dir eine Suche weiter:</p>
+					<p>Vielleicht hilft dir eine Suche weiter</p>
 					
-					<p><?php include ('searchform.php'); ?></p>
+					<!--<p><?php //include ('searchform.php'); ?></p>-->
 										
 					<h3>Letzte Beitr&auml;ge</h3>
 					<p>Oder du wirfst einen Blick auf die letzten Beitr&auml;ge:</p>

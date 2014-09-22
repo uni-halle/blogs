@@ -1,7 +1,7 @@
 	<br class="dirtyLittleTrick" />
 	
 	<?php if ( !is_front_page() ) { 
-		include (TEMPLATEPATH . '/footerbar.php'); 
+		//include (TEMPLATEPATH . '/footerbar.php'); 
 	} ?>
 
 </div><!-- end #wrapper -->

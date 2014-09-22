@@ -42,8 +42,8 @@ wp_list_pages(array('child_of'=>5,'sort_column'=>'menu_order','title_li'=>''));
         <!-- footer added for IBZ-->
          <div class="ibz-footer-outer" >
           <div class="ibz-footer-inner" >
-		 	<a href="http://www.uni-halle.de" target="_blank"><img src="www.ibz.uni-halle.de/files/2012/11/logo-mlu.gif" alt="Logo Martin-Luther-Universität Halle-Wittenberg" /></a>
-		 	<a href="http://www.leopoldina.org" target="_blank"><img src="www.ibz.uni-halle.de/files/2012/11/logo-leopoldina.gif" alt="Logo Leopoldina" /></a>
+		 	<a href="http://www.uni-halle.de" target="_blank"><img src="/files/2012/11/logo-mlu.gif" alt="Logo Martin-Luther-Universität Halle-Wittenberg" /></a>
+		 	<a href="http://www.leopoldina.org" target="_blank"><img src="/files/2012/11/logo-leopoldina.gif" alt="Logo Leopoldina" /></a>
           </div>
          </div>
 
