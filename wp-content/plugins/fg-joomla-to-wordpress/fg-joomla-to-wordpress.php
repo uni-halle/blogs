@@ -3,7 +3,7 @@
  * Plugin Name: FG Joomla to WordPress
  * Plugin Uri:  http://wordpress.org/plugins/fg-joomla-to-wordpress/
  * Description: A plugin to migrate categories, posts, images and medias from Joomla to WordPress
- * Version:     1.38.0
+ * Version:     1.39.0
  * Author:      Frédéric GILLES
  */
 
@@ -50,12 +50,12 @@ if ( !class_exists('fgj2wp', false) ) {
 			new fgj2wp_modules($this); // modules check
 			new fgj2wp_links($this); // web links
 			
-			add_action( 'init', array(&$this, 'init') ); // Hook on init
-			add_action( 'admin_enqueue_scripts', array(&$this, 'enqueue_scripts') );
-			add_action( 'fgj2wp_post_test_database_connection', array(&$this, 'test_joomla_1_0'), 8 );
-			add_action( 'fgj2wp_post_test_database_connection', array(&$this, 'get_joomla_info'), 9 );
-			add_action( 'fgj2wp_pre_import_check', array(&$this, 'test_joomla_1_0') );
-			add_action( 'load-importer-fgj2wp', array(&$this, 'add_help_tab'), 20 );
+			add_action( 'init', array($this, 'init') ); // Hook on init
+			add_action( 'admin_enqueue_scripts', array($this, 'enqueue_scripts') );
+			add_action( 'fgj2wp_post_test_database_connection', array($this, 'test_joomla_1_0'), 8 );
+			add_action( 'fgj2wp_post_test_database_connection', array($this, 'get_joomla_info'), 9 );
+			add_action( 'fgj2wp_pre_import_check', array($this, 'test_joomla_1_0') );
+			add_action( 'load-importer-fgj2wp', array($this, 'add_help_tab'), 20 );
 		}
 		
 		/**
@@ -117,6 +117,7 @@ if ( !class_exists('fgj2wp', false) ) {
 				'force_media_import'	=> 0,
 				'meta_keywords_in_tags'	=> 0,
 				'import_as_pages'		=> 0,
+				'timeout'				=> 5,
 			);
 			$options = get_option('fgj2wp_options');
 			if ( is_array($options) ) {
@@ -705,6 +706,7 @@ SQL;
 				'force_media_import'	=> filter_input(INPUT_POST, 'force_media_import', FILTER_VALIDATE_BOOLEAN),
 				'meta_keywords_in_tags'	=> filter_input(INPUT_POST, 'meta_keywords_in_tags', FILTER_VALIDATE_BOOLEAN),
 				'import_as_pages'		=> filter_input(INPUT_POST, 'import_as_pages', FILTER_VALIDATE_BOOLEAN),
+				'timeout'				=> filter_input(INPUT_POST, 'timeout', FILTER_SANITIZE_NUMBER_INT),
 			);
 		}
 		
@@ -1483,10 +1485,12 @@ SQL;
 												}
 												
 												// Caption shortcode
-												if ( preg_match('/class=".*caption.*?".*?title="(.*?)"/', $link['old_link'], $matches_caption) ) {
-													$caption_value = str_replace('%', '%%', $matches_caption[1]);
-													$align_value = ($alignment != '')? $alignment : 'alignnone';
-													$caption = '[caption id="attachment_' . $media['attachment_id'] . '" align="' . $align_value . '"' . $width_assertion . ']%s' . $caption_value . '[/caption]';
+												if ( preg_match('/class=".*caption.*?"/', $link['old_link']) ) {
+													if ( preg_match('/title="(.*?)"/', $link['old_link'], $matches_caption) ) {
+														$caption_value = str_replace('%', '%%', $matches_caption[1]);
+														$align_value = ($alignment != '')? $alignment : 'alignnone';
+														$caption = '[caption id="attachment_' . $media['attachment_id'] . '" align="' . $align_value . '"' . $width_assertion . ']%s' . $caption_value . '[/caption]';
+													}
 												}
 												
 												$align_class = ($alignment != '')? $alignment . ' ' : '';
@@ -1691,7 +1695,9 @@ SQL;
 				return true;
 			}
 			
-			$response = wp_remote_get($url); // Uses WordPress HTTP API
+			$response = wp_remote_get($url, array(
+				'timeout'     => $this->plugin_options['timeout'],
+			)); // Uses WordPress HTTP API
 			
 			if ( is_wp_error($response) ) {
 				trigger_error($response->get_error_message(), E_USER_WARNING);

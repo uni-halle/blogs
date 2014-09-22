@@ -5,17 +5,17 @@
  * Domain Path: /languages
  * Plugin URI:  http://wordpress.org/plugins/search-and-replace/
  * Description: A simple search to find strings in your database and replace those strings.
- * Author:      Frank Bültge, Ron Guerin
+ * Author:      Frank Bültge
  * Author URI:  http://bueltge.de
- * Version:     2.6.6
+ * Version:     2.7.0
  * License:     GPLv2+
  * Donate URI:
  *
  *
  * License:
  * ==============================================================================
- * Copyright 2014 Ron Guerin <ron@vnetworx.net>
  * Copyright 2009 - 2014 Frank Bueltge  (email : frank@bueltge.de)
+ * Hints, maintain updates in 2014 from Ron Guerin <ron@vnetworx.net>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -141,6 +141,7 @@ function searchandreplace_doit(
 	$user_login = TRUE,
 	$signups = TRUE
 ) {
+
 	global $wpdb;
 
 	$myecho = '';
@@ -149,9 +150,9 @@ function searchandreplace_doit(
 	$replace_slug = strtolower( $replace_text );
 
 	if ( ! $sall && ! $content && ! $id && ! $guid && ! $title && ! $excerpt && ! $meta_value &&
-	     ! $comment_content && ! $comment_author && ! $comment_author_email && ! $comment_author_url && ! $comment_count &&
-	     ! $cat_description && ! $tag && ! $user_id && ! $user_login &&
-	     ! $signups
+		! $comment_content && ! $comment_author && ! $comment_author_email && ! $comment_author_url && ! $comment_count &&
+		! $cat_description && ! $tag && ! $user_id && ! $user_login &&
+		! $signups
 	) {
 		return '<div class="error"><p><strong>' . __( 'Nothing (checkbox) selected to modify!', FB_SAR_TEXTDOMAIN ) . '</strong></p></div><br class="clear" />';
 	}
@@ -228,7 +229,7 @@ function searchandreplace_doit(
 
 	// post guid
 	if ( $guid ) {
-		$myecho .= "\n" . '<li>' . __( 'Searching <acronym title=\"Global Unique Identifier\">GUID</acronym>', FB_SAR_TEXTDOMAIN ) . ' ...';
+		$myecho .= "\n" . '<li>' . __( 'Searching <abbr title=\"Global Unique Identifier\">GUID</abbr>', FB_SAR_TEXTDOMAIN ) . ' ...';
 
 		$myecho .= "\n" . '<ul>' . "\n";
 		$myecho .= searchandreplace_results( 'guid', 'posts', $search_text );
@@ -481,10 +482,10 @@ function searchandreplace_doit(
  * @return string
  */
 function searchandreplace_results( $field, $table, $search_text ) {
+
 	global $wpdb;
 
 	$myecho  = '';
-	$results = '';
 
 	$myecho .= "\n" . '<li>';
 	$results = "SELECT $field FROM " . $wpdb->$table . " WHERE $field LIKE \"%$search_text%\"";
@@ -500,7 +501,7 @@ function searchandreplace_results( $field, $table, $search_text ) {
 		if ( $total_results == 0 ) {
 			$myecho .= ' - <strong>' . $total_results . '</strong> ';
 		} else {
-			foreach ( $results as $row ) {
+			foreach ( $results as $result ) {
 				//echo $row[$field] . "\n";
 				$myecho .= '|';
 			}
@@ -515,6 +516,7 @@ function searchandreplace_results( $field, $table, $search_text ) {
 
 
 function searchandreplace_sall( $search_text, $replace_text = FALSE ) {
+
 	global $wpdb;
 
 	if ( empty( $wpdb->dbname ) ) {
@@ -570,8 +572,9 @@ function searchandreplace_sall( $search_text, $replace_text = FALSE ) {
 
 	$replace_sql = '';
 
+
 	for ( $i = 0; $i < count( $tables ); $i ++ ) {
-		//@abstract query building of each table		
+		//@abstract query building of each table
 		if ( $wpdb->get_var( "SELECT COUNT(*) FROM " . $tables[ $i ][ 'Tables_in_' . $wpdb->dbname ] ) > 0 ) {
 			//@abstract get the table data type information
 			$sql    = 'desc ' . $tables[ $i ][ 'Tables_in_' . $wpdb->dbname ];
@@ -585,24 +588,64 @@ function searchandreplace_sall( $search_text, $replace_text = FALSE ) {
 			$no_varchar_field = 0;
 
 			for ( $j = 0; $j < count( $column ); $j ++ ) {
+
 				if ( $no_varchar_field != 0 ) {
 					$search_sql .= 'or ';
-					if ( $replace_text ) {
-						$replace_sql .= ', ';
-					}
+
+					//if ( $replace_text ) {
+					//	$replace_sql .= ', ';
+					//}
+
 				}
-				$search_sql .= '`' . $column[ $j ][ 'Field' ] . '` like \'%' . $search_text . '%\' ';
-				// replace string @TODO
+
+				//  COLLATE utf8_bin  for search case sensitive
+				$search_sql .= '`' . $column[ $j ][ 'Field' ] . '` like \'%' . $search_text . '%\' COLLATE utf8_bin ';
+
 				if ( $replace_text ) {
-					$replace_sql .= $column[ $j ][ 'Field' ] . ' = ';
-					$replace_sql .= 'REPLACE(' . $column[ $j ][ 'Field' ] . ', "' . $search_text . '", "' . $replace_text . '")';
+
+
+					$search_result = $wpdb->get_results( $search_sql, ARRAY_A );
+
+					// Loop about the result and check for serialized data
+					// Unset serialized data, no changes
+					foreach ( $search_result as $key => $values ) {
+
+						foreach ( $values as $field => $value ) {
+							if ( is_serialized( $value ) ) {
+								/*
+								$value = @unserialize( $value );
+								$value = json_decode(
+									str_replace( $search_text, $replace_text, json_encode( $value ) )
+								);
+								$value = serialize( $value );
+								*/
+
+								if ( isset( $column[ $j ][ 'Field' ] ) && $field === $column[ $j ][ 'Field' ] ) {
+									unset( $column[ $j ][ 'Field' ] );
+								}
+							}
+						}
+
+					}
+
+					if ( ! empty( $column[ $j ][ 'Field' ] ) ) {
+						$replace_sql .= $column[ $j ][ 'Field' ] . ' = ';
+						// Note that when searching for text to replace, MySQL uses case-sensitive match to perform search for string to be replaced.
+						$replace_sql .= 'REPLACE(' . $column[ $j ][ 'Field' ] . ', "' . $search_text . '", "' . $replace_text . '"), ';
+					}
 				}
 
 				$no_varchar_field ++;
 			}
 
 			if ( $no_varchar_field > 0 ) {
+
 				$search_result = $wpdb->get_results( $search_sql, ARRAY_A );
+				if ( $replace_text ) {
+					$replace_sql = rtrim( $replace_sql, ", " );
+					$wpdb->get_results( $replace_sql, ARRAY_A );
+				}
+
 				if ( count( $search_result ) ) {
 					$result_in_tables ++;
 
@@ -612,7 +655,12 @@ function searchandreplace_sall( $search_text, $replace_text = FALSE ) {
 					$myecho .= '<script language="JavaScript">
 						table_id.push("' . $tables[ $i ][ 'Tables_in_' . $wpdb->dbname ] . '_sql");
 					</script>';
-					$myecho .= '<div id="' . $tables[ $i ][ 'Tables_in_' . $wpdb->dbname ] . '_sql" style="display:none;"><code>' . $search_sql . '</code></div>';
+					// Display sql statement
+					$sql = $search_sql;
+					if ( $replace_text ) {
+						$sql = $replace_sql;
+					}
+					$myecho .= '<div id="' . $tables[ $i ][ 'Tables_in_' . $wpdb->dbname ] . '_sql" style="display:none;"><code>' . $sql . '</code></div>';
 					$myecho .= '<p><a href="javascript:toggle(\'' . $tables[ $i ][ 'Tables_in_' . $wpdb->dbname ] . '_wrapper' . '\')">Result</a></p>';
 					$myecho .= '<script language="JavaScript">
 						table_id.push("' . $tables[ $i ][ 'Tables_in_' . $wpdb->dbname ] . '_wrapper");
@@ -625,17 +673,14 @@ function searchandreplace_sall( $search_text, $replace_text = FALSE ) {
 
 			}
 
-			if ( $replace_text ) {
-				$wpdb->get_results( $replace_sql );
-			}
 		}
 	}
 
 	if ( ! $result_in_tables ) {
 		$myecho = '<p style="color:red;">' . __( 'Sorry,' ) . ' <code>' .
-		          stripslashes_deep( stripslashes_deep( htmlentities2( $search_text ) ) ) . '</code> ' .
-		          __( 'is not found in this database', FB_SAR_TEXTDOMAIN ) .
-		          '(<code>' . $wpdb->dbname . '</code>)!</p>';
+			stripslashes_deep( stripslashes_deep( htmlentities2( $search_text ) ) ) . '</code> ' .
+			__( 'is not found in this database', FB_SAR_TEXTDOMAIN ) .
+			'(<code>' . $wpdb->dbname . '</code>)!</p>';
 	}
 
 	return $myecho;
@@ -652,8 +697,8 @@ function searchandreplace_sall( $search_text, $replace_text = FALSE ) {
 function searchandreplace_table_arrange( $array ) {
 
 	$table_data = ''; // @abstract	returning table
-	$max        = 0; // @abstract	max lenth of a row
-	$max_i      = 0; // @abstract	number of the row which is maximum max lenth of a row
+	$max        = 0; // @abstract	max length of a row
+	$max_i      = 0; // @abstract	number of the row which is maximum max length of a row
 
 	$search_text = $_POST[ "search_text" ];
 
@@ -663,8 +708,14 @@ function searchandreplace_table_arrange( $array ) {
 		$j = 0;
 
 		foreach ( $array[ $i ] as $key => $data ) {
-			$data = preg_replace( "|($search_text)|Ui", "<code style=\"background:#ffc516;padding:0 4px;\"><b>$1</b></code>", htmlspecialchars( $data ) );
-			$table_data .= '<td>' . $data . ' &nbsp;</td>';
+
+			$hint = '';
+			if ( is_serialized( $data ) ) {
+				$hint = '<div class="error below-h2 form-invalid">' . __( 'Serialized, no changes possible.', FB_SAR_TEXTDOMAIN ) . '</div>';
+			}
+
+			$data = preg_replace( "|($search_text)|U", "<code style=\"background:#ffc516;padding:0 4px;\"><b>$1</b></code>", htmlspecialchars( $data ) );
+			$table_data .= '<td>' . $hint . $data . ' &nbsp;</td>';
 			$j ++;
 		}
 
@@ -695,9 +746,9 @@ function searchandreplace_table_arrange( $array ) {
 	// @abstract printing the table data
 	return '<div class="table_bor">
 		<table class="widefat">'
-	       . '<thead>' . $table_head . '</thead>'
-	       . '<tbody>' . $table_data . '</tbody>'
-	       . '</table>
+	. '<thead>' . $table_head . '</thead>'
+	. '<tbody>' . $table_data . '</tbody>'
+	. '</table>
 		</div>';
 }
 
@@ -706,6 +757,7 @@ function searchandreplace_table_arrange( $array ) {
  * add js to the head that fires the 'new node' function
  */
 function searchandreplace_add_js_head() {
+
 	?>
 	<script type="text/javascript">
 		/* <![CDATA[ */
@@ -724,7 +776,6 @@ function searchandreplace_add_js_head() {
 	</script>
 <?php
 }
-
 
 function searchandreplace_action() {
 
@@ -788,6 +839,7 @@ function searchandreplace_action() {
 
 
 function searchandreplace_page() {
+
 	global $wpdb;
 
 	if ( ! isset( $wpdb ) ) {
@@ -818,7 +870,8 @@ function searchandreplace_page() {
 			<div class="inside">
 				<p><?php _e( 'This plugin modifies your database directly!<br /><strong>WARNING: </strong>You <strong>cannot</strong> undo any changes made by this plugin. <strong>It is therefore recommended you backup your database before running this plugin.</strong> <a href="http://www.gnu.org/licenses/gpl-2.0.txt">There is no warranty for this plugin!</a> <strong>Activate</strong> the plugin <strong>only</strong> if you want to use it!', FB_SAR_TEXTDOMAIN ); ?></p>
 
-				<p><?php _e( 'Text search is case sensitive and has no pattern matching capabilites. This replace function matches raw text so it can be used to replace HTML tags too.', FB_SAR_TEXTDOMAIN ); ?></p>
+				<p><?php _e( 'Text search is case sensitive and has no pattern matching capabilities. This replace function matches raw text so it can be used to replace HTML tags too.', FB_SAR_TEXTDOMAIN ); ?></p>
+				<p><?php _e( 'But it will not replaced strings inside serialized data fields, like option values in the table options.', FB_SAR_TEXTDOMAIN ); ?></p>
 
 				<p><?php _e( '<strong>Step One:</strong> Use the folllowing search (only) first, for a better understanding of what will happen when you do the replace. The SQL query and tables will be returned with the results. The search uses all fields in all tables! After verifying your results you can use the replace function.', FB_SAR_TEXTDOMAIN ); ?></p>
 
@@ -836,8 +889,8 @@ function searchandreplace_page() {
 							</td>
 						</tr>
 						<tr>
-							<th><?php _e( 'Search for', FB_SAR_TEXTDOMAIN ); ?></th>
-							<td><input class="code" type="text" name="search_text" value="" size="80" /></td>
+							<th><label for="search_text"><?php _e( 'Search for', FB_SAR_TEXTDOMAIN ); ?></label></th>
+							<td><input class="code" type="text" id="search_text" name="search_text" value="" size="80" /></td>
 						</tr>
 						<tr class="alternate">
 							<th>
@@ -850,8 +903,8 @@ function searchandreplace_page() {
 							</td>
 						</tr>
 						<tr class="alternate">
-							<th><?php _e( 'Replace with', FB_SAR_TEXTDOMAIN ); ?></th>
-							<td><input class="code" type="text" name="replace_text" value="" size="80" /></td>
+							<th><label for="replace_text"><?php _e( 'Replace with', FB_SAR_TEXTDOMAIN ); ?></label></th>
+							<td><input class="code" type="text" id="replace_text" name="replace_text" value="" size="80" /></td>
 						</tr>
 					</table>
 					<p class="submit">

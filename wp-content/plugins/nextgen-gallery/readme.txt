@@ -2,7 +2,7 @@
 Contributors: photocrati
 Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,nextgen-gallery,nextgen
 Requires at least: 3.6.1
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: trunk
 License: GPLv2
 
@@ -199,6 +199,14 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 == Changelog ==
 
+= V2.0.66.29 - 09.17.2014 =
+* NEW:     Added skip_excluding_globally_excluded_images property to displayed gallery objects
+* Fixed:   SQL generation for random image selection
+* Fixed:   Adjust regex for replacing displayed gallery placeholder images
+* Fixed:   Removed filters to home_url needed previously for WMPL compatibility
+* Fixed:   Use canonical redirects when appropriate
+* Fixed:   Ability to override image files using XML-RPC
+
 = V2.0.66.27 - 08.18.2014 =
 * Fixed:   Missing class.frame_communication_option_handerl.php error
 
@@ -233,7 +241,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * NEW: 	   Spanish (es_ES) language thanks to Andrew Kurtis at WebHostingHub
 * Changed: Updated Czech language thanks to Separatista; additional thanks to Martin Krizek for the original translation who was mistakenly unaccredited
 * Changed: "Upgrade to Pro" page has new design, advertises for NextGEN Plus
-* Changed: Basic Albums templates now given the image counter <p> element the class 'ngg-album-gallery-image-counter' (by user request)
+* Changed: Basic Albums templates now given the image counter P element the class 'ngg-album-gallery-image-counter' (by user request)
 * Changed: Gallery widgets now apply height:auto to their element; fixes compatibility with some themes
 * Changed: Random galleries should be substantially faster now (1000% or more for large image tables)
 * Fixed:   Complete WPML compatibility
@@ -247,7 +255,7 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Multisite gallery path tooltip gave a wrong default setting
 * Fixed:   Flush 'all' caches when pope_module_list setting changes
 * Fixed:   Don't enqueue related images css in the admin
-* Fixed:   Basic Slideshows fixes WP creating extraneous <p> element above the slideshow display
+* Fixed:   Basic Slideshows fixes WP creating extraneous P element above the slideshow display
 * Fixed:   Basic Singlepic will now display images marked 'excluded' in the admin
 * Fixed:   Admin pages can now update when the "Save" button text has been translated
 

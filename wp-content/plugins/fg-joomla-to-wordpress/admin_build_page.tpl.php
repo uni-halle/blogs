@@ -130,6 +130,10 @@ if ( !defined( 'ABSPATH' ) ) exit;
 					<td><input id="import_as_pages" name="import_as_pages" type="checkbox" value="1" <?php checked($data['import_as_pages'], 1); ?> /> <label for="import_as_pages" ><?php _e('Import as pages instead of blog posts (without categories)', 'fgj2wp'); ?></label></td>
 				</tr>
 				<tr>
+					<th scope="row"><?php _e('Timeout for each media:', 'fgj2wp'); ?></th>
+					<td><input id="timeout" name="timeout" type="text" size="5" value="<?php echo $data['timeout']; ?>" /> <?php _e('seconds', 'fgj2wp'); ?></td>
+				</tr>
+				<tr>
 					<th scope="row">&nbsp;</th>
 					<td><?php submit_button( __('Save settings', 'fgj2wp'), 'secondary', 'save' ); ?>
 					<?php submit_button( __('Import content from Joomla to WordPress', 'fgj2wp'), 'primary', 'import' ); ?></td>
@@ -164,7 +168,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
 	
 	<div style="float:left; width:300px;">
 		<h3><?php _e('Do you need extra features?', 'fgj2wp'); ?></h3>
-		<p>
 		<ul style="list-style:disc inside">
 			<li><?php _e('authors and all users migration', 'fgj2wp'); ?></li>
 			<li><?php _e('menus migration', 'fgj2wp'); ?></li>
@@ -198,7 +201,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
 			<a href="http://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank"><img src="http://www.fredericgilles.net/wp-content/uploads/premium-version.png" alt="Buy Premium Version" /></a>
 		</div>
 		<p><?php _e('Please note that some of these features need an add-on in addition to the Premium version.', 'fgj2wp'); ?>
-		</p>
 		</p>
 		<hr />
 		<p><?php _e('If you found this plugin useful and it saved you many hours or days, please rate it on <a href="http://wordpress.org/extend/plugins/fg-joomla-to-wordpress/">FG Joomla to WordPress</a>. You can also make a donation using the button below.', 'fgj2wp'); ?></p>

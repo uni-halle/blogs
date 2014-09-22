@@ -14,7 +14,8 @@ class A_NextGen_Basic_Singlepic_Controller extends Mixin
         $display_settings = $displayed_gallery->display_settings;
 
         // use this over get_included_entities() so we can display images marked 'excluded'
-        $image = array_shift($displayed_gallery->get_entities(1, FALSE, FALSE, 'both'));
+        $displayed_gallery->skip_excluding_globally_excluded_images = TRUE;
+        $image = array_shift($displayed_gallery->get_entities(1, FALSE, FALSE, 'included'));
 
         if (!$image)
             return $this->object->render_partial("photocrati-nextgen_gallery_display#no_images_found", array(), $return);

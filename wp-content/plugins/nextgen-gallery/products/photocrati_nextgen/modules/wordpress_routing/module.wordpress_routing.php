@@ -8,8 +8,8 @@
  ***/
 class M_WordPress_Routing extends C_Base_Module
 {
-    static $_use_canonical_redirect = NULL;
-    static $_use_old_slugs          = NULL;
+    static $_use_canonical_redirect = TRUE;
+    static $_use_old_slugs          = TRUE;
 
     function define()
 	{
@@ -39,11 +39,9 @@ class M_WordPress_Routing extends C_Base_Module
         // in the restore_request_uri() method
         if (has_action('template_redirect', 'wp_old_slug_redirect')) {
             remove_action( 'template_redirect', 'wp_old_slug_redirect');
-            if (!is_null(self::$_use_canonical_redirect)) self::$_use_old_slugs = TRUE;
         }
         if (has_action('template_redirect', 'redirect_canonical')) {
             remove_action( 'template_redirect', 'redirect_canonical');
-            if (!is_null(self::$_use_canonical_redirect)) self::$_use_canonical_redirect = TRUE;
         }
     }
 

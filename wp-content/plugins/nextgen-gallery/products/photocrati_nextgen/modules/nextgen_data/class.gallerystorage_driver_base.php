@@ -626,7 +626,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
 	 * @param type $filename specifies the name of the file
 	 * @return C_Image
 	 */
-	function upload_base64_image($gallery, $data, $filename=FALSE, $image_id=FALSE)
+    function upload_base64_image($gallery, $data, $filename=FALSE, $image_id=FALSE, $override=FALSE)
 	{
         $settings = C_NextGen_Settings::get_instance();
         $memory_limit = intval(ini_get('memory_limit'));
@@ -663,7 +663,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
 
             // Prevent duplicate filenames: check if the filename exists and
             // begin appending '-i' until we find an open slot
-            if (!ini_get('safe_mode') && @file_exists($abs_filename))
+            if (!ini_get('safe_mode') && @file_exists($abs_filename) && !$override)
             {
                 $file_exists = TRUE;
                 $i = 0;

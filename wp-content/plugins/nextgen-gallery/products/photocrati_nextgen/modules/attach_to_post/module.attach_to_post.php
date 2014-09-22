@@ -167,27 +167,10 @@ class M_Attach_To_Post extends C_Base_Module
      */
     function substitute_placeholder_imgs($content)
     {
-		// Get some utilities
-		$mapper = $this->get_registry()->get_utility('I_Displayed_Gallery_Mapper');
-		$router	= $this->get_registry()->get_utility('I_Router');
-
-		// To match ATP entries we compare the stored url against a generic path
-		// We must check HTTP and HTTPS as well as permalink and non-permalink forms
-		$preview_url = parse_url($router->join_paths(
-			$router->remove_url_segment('index.php', $router->get_base_url('root')),
-			'/nextgen-attach_to_post/preview'
-		));
-        $router->debug = TRUE;
-		$preview_url = preg_quote($preview_url['host'] . $preview_url['path'], '#');
-
-		$alt_preview_url = parse_url($router->join_paths(
-			$router->remove_url_segment('index.php', $router->get_base_url('root')),
-			'index.php/nextgen-attach_to_post/preview'
-		));
-		$alt_preview_url = preg_quote($alt_preview_url['host'] . $alt_preview_url['path'], '#');
-
 		// The placeholder MUST have a gallery instance id
-		if (preg_match_all("#<img.*http(s)?://({$preview_url}|{$alt_preview_url})/id--(\\d+).*\\/>#mi", $content, $matches, PREG_SET_ORDER)) {
+        if (preg_match_all("#<img.*http(s)?://(.*)/" . NGG_ATTACH_TO_POST_SLUG . "/preview/id--(\\d+).*>#mi", $content, $matches, PREG_SET_ORDER))
+        {
+            $mapper = C_Displayed_Gallery_Mapper::get_instance();
 			foreach ($matches as $match) {
 				// Find the displayed gallery
 				$displayed_gallery_id = $match[3];

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Import Joomla 1.5 (FG)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-04 06:42+0100\n"
-"PO-Revision-Date: 2014-09-04 06:44+0100\n"
+"POT-Creation-Date: 2014-09-20 06:49+0100\n"
+"PO-Revision-Date: 2014-09-20 12:42+0100\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -250,19 +250,27 @@ msgstr "Créer des pages :"
 msgid "Import as pages instead of blog posts (without categories)"
 msgstr "Importer en tant que pages au lieu d'articles (sans les catégories)"
 
+#: admin_build_page.tpl.php:133
+msgid "Timeout for each media:"
+msgstr "Timeout pour chaque média :"
+
 #: admin_build_page.tpl.php:134
+msgid "seconds"
+msgstr ""
+
+#: admin_build_page.tpl.php:138
 msgid "Save settings"
 msgstr "Enregistrer les paramètres"
 
-#: admin_build_page.tpl.php:135
+#: admin_build_page.tpl.php:139
 msgid "Import content from Joomla to WordPress"
 msgstr "Importer le contenu de Joomla vers WordPress"
 
-#: admin_build_page.tpl.php:142
+#: admin_build_page.tpl.php:146
 msgid "After the migration"
 msgstr "Après la migration"
 
-#: admin_build_page.tpl.php:145
+#: admin_build_page.tpl.php:149
 msgid ""
 "During the migration, prefixes have been added to the categories slugs to "
 "avoid categories duplicates. This button will remove these prefixes which "
@@ -272,133 +280,133 @@ msgstr ""
 "pour éviter les doublons. Ce bouton supprimera ces préfixes qui sont "
 "inutiles après la migration."
 
-#: admin_build_page.tpl.php:149
+#: admin_build_page.tpl.php:153
 msgid "Remove the prefixes from the categories"
 msgstr "Supprimer les préfixes des catégories"
 
-#: admin_build_page.tpl.php:154
+#: admin_build_page.tpl.php:158
 msgid "If you have links between articles, you need to modify internal links."
 msgstr ""
 "Si vous avez des liens entre articles, vous avez besoin de modifier les "
 "liens internes."
 
-#: admin_build_page.tpl.php:158
+#: admin_build_page.tpl.php:162
 msgid "Modify internal links"
 msgstr "Modifier les liens internes"
 
-#: admin_build_page.tpl.php:166
+#: admin_build_page.tpl.php:170
 msgid "Do you need extra features?"
 msgstr "Vous avez besoin de fonctionnalités supplémentaires ?"
 
-#: admin_build_page.tpl.php:169
+#: admin_build_page.tpl.php:172
 msgid "authors and all users migration"
 msgstr "migration des auteurs et de tous les utilisateurs"
 
-#: admin_build_page.tpl.php:170
+#: admin_build_page.tpl.php:173
 msgid "menus migration"
 msgstr "migration des menus"
 
-#: admin_build_page.tpl.php:171
+#: admin_build_page.tpl.php:174
 msgid "SEO: keeps Joomla IDs or redirects standard Joomla URLs"
 msgstr "SEO : garde les IDs de Joomla ou redirige les URLs standards de Joomla"
 
-#: admin_build_page.tpl.php:172
+#: admin_build_page.tpl.php:175
 msgid "SEO: Keeps meta description and meta keywords"
 msgstr "SEO : Garde les meta description et meta keywords"
 
-#: admin_build_page.tpl.php:173
+#: admin_build_page.tpl.php:176
 msgid "SEO: Keeps sh404sef, JoomSEF and OpenSEF URLs"
 msgstr "SEO : garde les URLs sh404sef, JoomSEF et OpenSEF"
 
-#: admin_build_page.tpl.php:174
+#: admin_build_page.tpl.php:177
 msgid "Joomla views counts migration"
 msgstr "migration des compteurs de vues de Joomla"
 
-#: admin_build_page.tpl.php:175
+#: admin_build_page.tpl.php:178
 msgid "Joomla 1.0 compatible"
 msgstr "compatible Joomla 1.0"
 
-#: admin_build_page.tpl.php:176
+#: admin_build_page.tpl.php:179
 msgid "Joomla 2.5+ featured images"
 msgstr "images d'intro de Joomla 2.5+"
 
-#: admin_build_page.tpl.php:177
+#: admin_build_page.tpl.php:180
 msgid "Joomla 3.1+ tags"
 msgstr "mots-clefs de Joomla 3.1+"
 
-#: admin_build_page.tpl.php:178
+#: admin_build_page.tpl.php:181
 msgid "Mambo 4.5 and 4.6 compatible"
 msgstr "compatible Mambo 4.5 et 4.6"
 
-#: admin_build_page.tpl.php:179
+#: admin_build_page.tpl.php:182
 msgid "K2 content"
 msgstr "contenu K2"
 
-#: admin_build_page.tpl.php:180
+#: admin_build_page.tpl.php:183
 msgid "EasyBlog content"
 msgstr "contenu EasyBlog"
 
-#: admin_build_page.tpl.php:181
+#: admin_build_page.tpl.php:184
 msgid "Kunena forum to bbPress"
 msgstr "forum Kunena vers bbPress"
 
-#: admin_build_page.tpl.php:182
+#: admin_build_page.tpl.php:185
 msgid "Flexicontent content"
 msgstr "contenu Flexicontent"
 
-#: admin_build_page.tpl.php:183
+#: admin_build_page.tpl.php:186
 msgid "Zoo content"
 msgstr "contenu Zoo"
 
-#: admin_build_page.tpl.php:184
+#: admin_build_page.tpl.php:187
 msgid "Jcomments and Jomcomment comments"
 msgstr "commentaires Jcomments et Jomcomment"
 
-#: admin_build_page.tpl.php:185
+#: admin_build_page.tpl.php:188
 msgid "Joomlatags tags"
 msgstr "mots-clefs Joomlatags"
 
-#: admin_build_page.tpl.php:186
+#: admin_build_page.tpl.php:189
 msgid "Attachments"
 msgstr "fichiers joints Attachments"
 
-#: admin_build_page.tpl.php:187
+#: admin_build_page.tpl.php:190
 msgid "Rokbox images"
 msgstr "images Rokbox"
 
-#: admin_build_page.tpl.php:188
+#: admin_build_page.tpl.php:191
 msgid "JoomGallery images"
 msgstr "images JoomGallery"
 
-#: admin_build_page.tpl.php:189
+#: admin_build_page.tpl.php:192
 msgid "Phocagallery images"
 msgstr "images Phocagallery"
 
-#: admin_build_page.tpl.php:190
+#: admin_build_page.tpl.php:193
 msgid "Joom!Fish translations to WPML"
 msgstr "traductions Joom!Fish vers WPML"
 
-#: admin_build_page.tpl.php:191
+#: admin_build_page.tpl.php:194
 msgid "JEvents events"
 msgstr "évènements JEvents"
 
-#: admin_build_page.tpl.php:192
+#: admin_build_page.tpl.php:195
 msgid "Contact Directory contacts"
 msgstr "contacts de Contact Directory"
 
-#: admin_build_page.tpl.php:193
+#: admin_build_page.tpl.php:196
 msgid "Docman documents"
 msgstr "documents Docman"
 
-#: admin_build_page.tpl.php:194
+#: admin_build_page.tpl.php:197
 msgid "Virtuemart e-commerce"
 msgstr "boutique en ligne Virtuemart"
 
-#: admin_build_page.tpl.php:195
+#: admin_build_page.tpl.php:198
 msgid "JReviews reviews"
 msgstr "revues JReviews"
 
-#: admin_build_page.tpl.php:200
+#: admin_build_page.tpl.php:203
 msgid ""
 "Please note that some of these features need an add-on in addition to the "
 "Premium version."
@@ -406,7 +414,7 @@ msgstr ""
 "Veuillez noter que certaines de ces fonctionnalités nécessitent un module "
 "supplémentaire en plus de la version Premium."
 
-#: admin_build_page.tpl.php:204
+#: admin_build_page.tpl.php:206
 msgid ""
 "If you found this plugin useful and it saved you many hours or days, please "
 "rate it on <a href=\"http://wordpress.org/extend/plugins/fg-joomla-to-"
@@ -419,7 +427,7 @@ msgstr ""
 "WordPress</a>. Vous pouvez aussi faire une donation en utilisant le bouton "
 "ci-dessous."
 
-#: admin_build_page.tpl.php:223
+#: admin_build_page.tpl.php:225
 msgid ""
 "All new imported posts or pages and their comments will be deleted from "
 "WordPress."
@@ -427,11 +435,11 @@ msgstr ""
 "Tous les nouveaux articles ou pages importés vont être supprimés de "
 "WordPress."
 
-#: admin_build_page.tpl.php:226
+#: admin_build_page.tpl.php:228
 msgid "All content will be deleted from WordPress."
 msgstr "Toutes les données vont être supprimées de WordPress."
 
-#: admin_build_page.tpl.php:229
+#: admin_build_page.tpl.php:231
 msgid "Please select a remove option."
 msgstr "Veuillez sélectionner une option de suppression."
 

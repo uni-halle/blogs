@@ -1,0 +1,493 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Shareaholic | share buttons, analytics, related content v7.5.1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/shareaholic\n"
+"POT-Creation-Date: 2013-07-09 22:02:07+00:00\n"
+"PO-Revision-Date: 2014-08-29 22:12:32+0000\n"
+"Last-Translator: Takis Bouyouris <takis@nevma.gr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: templates/terms_of_service_modal.php:12
+#, php-format
+#@ shareaholic
+msgid "%sRelated content%s keeps people on your site and turns visitors into readers."
+msgstr "Το %sΣχετικό Περιεχόμενο%s κάνεις τους χρήστες σας να επανέρχονται στην ιστοσελίδα σας και τους μετατρέπει σε αναγνώστες σας."
+
+#: templates/terms_of_service_modal.php:4
+#, php-format
+#@ shareaholic
+msgid "%sShareaholic%s gives you the essential tools you need to become a successful publisher."
+msgstr "Το %sShareaholic%s σας παρέχει τα απαραίτητα εργαλεία για να γίνετε ένας επιτυχημένεος εκδότης."
+
+#: templates/advanced_settings.php:19
+#@ shareaholic
+msgid "(it is recommended NOT to disable analytics)"
+msgstr "(συνίσταται να ΜΗΝ απενεργοποιήσετε τα στατιστικά)"
+
+#: templates/advanced_settings.php:25
+#@ shareaholic
+msgid "(it is recommended NOT to disable open graph tags)"
+msgstr "(συνίσταται να ΜΗΝ απενεργοποιήσετε τα tags του open graph)"
+
+#: templates/failed_to_create_api_key.php:6
+#: templates/terms_of_service_notice.php:6
+#, php-format
+#@ shareaholic
+msgid "Action required: You've installed Shareaholic for WordPress.  We're ready when you are. %sGet started now &raquo;%s"
+msgstr "Δώστε προσοχή εδώ: Το Shareaholic για το WordPress έχει εγκατασταθεί. Είστε έτοιμοι. %sΞεκινήστε τώρα &raquo;%s"
+
+#: templates/terms_of_service_modal.php:21
+#, php-format
+#@ shareaholic
+msgid "By clicking \"Get Started\" you agree to Shareholic's %sTerms of Service%s and %sPrivacy Policy%s."
+msgstr "Πατώντας \"Ξεκινήστε\" συμφωνείτε στους %sΌρους Χρήσης%s και την %sΠολιτική Εμπιστευτικότητας%s του Shareaholic."
+
+#: templates/advanced_settings.php:19
+#@ shareaholic
+msgid "Disable Analytics"
+msgstr "Απενεργοποιήστε τα Στατιστικά"
+
+#: templates/meta_boxes.php:36
+#@ shareaholic
+msgid "Do not include Open Graph tags"
+msgstr "Μη συμπεριλάβετε τα tags για το Open Graph"
+
+#: templates/meta_boxes.php:16
+#@ shareaholic
+msgid "Hide Related Content"
+msgstr "Κρύψτε το Σχετικό Περιεχόμενο"
+
+#: templates/meta_boxes.php:6
+#@ shareaholic
+msgid "Hide Share Buttons"
+msgstr "Κρύψτε τα κουμπιά για το share"
+
+#: templates/footer.php:8
+#, php-format
+#@ shareaholic
+msgid "If you like our work, show some love and %sgive us a good rating%s. Made with much love in Boston, Massachusetts."
+msgstr "Αν σας αρέσει η δουλειά μας, τότε δείξτε μας την αγάπη σας και %δώστε μας μια καλή βαθμολογία%s. Κατασκευάστηκε στη Βοστώνη της Μασσαχουσέττης με πολύ αγάπη."
+
+#: templates/failed_to_create_api_key_modal.php:7
+#@ shareaholic
+msgid "It appears that we are having some trouble setting up Shareaholic for WordPress right now. This is usually temporary. Please revisit this section after a few minutes or click \"retry\" now."
+msgstr "Παρουσιάστηκε κάποιο πρόβλημα κατά τη ρύθμιση του Shareaholic για το WordPress. Συνήθως αυτό είναι προσωρινό. Παρακαλούμε επισκεφθείτε αυτή την περιοχή σε μερικά λεπτά ή πανήστε \"Προσπαθήστε ξανά\" τώρα."
+
+#: templates/failed_to_create_api_key_modal.php:12
+#@ shareaholic
+msgid "Retry"
+msgstr "Προσπαθήστε ξανά"
+
+#: templates/advanced_settings.php:45
+#: templates/settings.php:101
+#@ shareaholic
+msgid "Save Changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: utilities.php:96
+#@ shareaholic
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: admin.php:229
+#: admin.php:298
+#@ shareaholic
+msgid "Settings successfully saved"
+msgstr "Οι ρυθμίσεις έχουν αποθηκευτεί με επιτυχία"
+
+#: templates/failed_to_create_api_key_modal.php:2
+#@ shareaholic
+msgid "Setup Shareaholic"
+msgstr "Ρυθμίστε το Shareaholic"
+
+#: templates/settings.php:67
+#@ shareaholic
+msgid "Share Buttons"
+msgstr "Κουμπιά για share"
+
+#. translators: plugin header field 'Author'
+#: admin.php:197
+#: shareaholic.php:0
+#: utilities.php:113
+#@ shareaholic
+msgid "Shareaholic"
+msgstr "Shareaholic"
+
+#. translators: plugin header field 'Name'
+#: shareaholic.php:0
+#@ shareaholic
+msgid "Shareaholic | share buttons, analytics, related content"
+msgstr "Shareaholic | κουμπιά για share, στατιστικά, σχετικό περιεχόμενο"
+
+#: templates/advanced_settings.php:3
+#@ shareaholic
+msgid "Shareaholic: Advanced Settings"
+msgstr "Shareaholic: Λεπτομερείς Ρυθμίσεις"
+
+#. translators: plugin header field 'Description'
+#: shareaholic.php:0
+#@ shareaholic
+msgid "Whether you want to get people sharing, grow your fans, make money, or know who's reading your content, Shareaholic will help you get it done. See <a href=\"admin.php?page=shareaholic-settings\">configuration panel</a> for more settings."
+msgstr "Παρακινήστε τους χρήστες σας να κάνουν share το περιεχόμενό σας, αναπτύξτε τη βάση των χρηστών σας, παρακολουθήστε ποιος διαβάζει το περιεχόμενό σας. Με το Shareaholic θα το καταφέρετε. Πηγαίνεται στην <a href=\"admin.php?page=shareaholic-settings\">κεντρική οθόνη</a> για περισσότερες ρυθμίσεις."
+
+#: templates/advanced_settings.php:7
+#@ shareaholic
+msgid "You rarely should need to edit the settings on this page."
+msgstr "Η ανάγκη να επεξεργαστείτε τις ρυθμίσεις σε αυτή τη σελίδα είναι πολύ σπάνια."
+
+#. translators: plugin header field 'AuthorURI'
+#: shareaholic.php:0
+#@ shareaholic
+msgid "https://shareaholic.com"
+msgstr "https://shareaholic.com"
+
+#. translators: plugin header field 'PluginURI'
+#: shareaholic.php:0
+#@ shareaholic
+msgid "https://shareaholic.com/publishers/"
+msgstr "https://shareaholic.com/publishers/"
+
+#: admin.php:196
+#@ shareaholic
+msgid "Shareaholic Settings"
+msgstr ""
+
+#: admin.php:205
+#: admin.php:206
+#: utilities.php:130
+#@ shareaholic
+msgid "App Manager"
+msgstr ""
+
+#: admin.php:213
+#: admin.php:214
+#@ shareaholic
+msgid "Advanced Settings"
+msgstr ""
+
+#: admin.php:292
+#@ shareaholic
+msgid "Settings successfully reset. Refresh this page to complete the reset."
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: shareaholic.php:0
+#@ shareaholic
+msgid "7.5.1.0"
+msgstr ""
+
+#: templates/advanced_settings.php:7
+#@ shareaholic
+msgid "After changing any Shareaholic advanced setting, it is good practice to clear any WordPress caching plugins (if you are using one, like W3 Total Cache or WP Super Cache)."
+msgstr ""
+
+#: templates/advanced_settings.php:14
+#@ shareaholic
+msgid "Advanced"
+msgstr ""
+
+#: templates/advanced_settings.php:25
+#@ shareaholic
+msgid "Disable <code>Open Graph</code> tags"
+msgstr ""
+
+#: templates/advanced_settings.php:31
+#@ shareaholic
+msgid "Disable Admin Bar Menu (requires page refresh)"
+msgstr ""
+
+#: templates/advanced_settings.php:37
+#@ shareaholic
+msgid "Disable Debugger (it is recommended NOT to disable the debugger)"
+msgstr ""
+
+#: templates/advanced_settings.php:43
+#@ shareaholic
+msgid "Disable server-side Share Counts API"
+msgstr ""
+
+#: templates/advanced_settings.php:43
+#@ shareaholic
+msgid "(unless there are issues with calling the service, it is recommended NOT to disable this API)"
+msgstr ""
+
+#: templates/advanced_settings.php:45
+#: templates/settings.php:101
+#@ shareaholic
+msgid "Saving Changes..."
+msgstr ""
+
+#: templates/advanced_settings.php:53
+#@ shareaholic
+msgid "Server Connectivity"
+msgstr ""
+
+#: templates/advanced_settings.php:55
+#@ shareaholic
+msgid "All Shareaholic servers are reachable"
+msgstr ""
+
+#: templates/advanced_settings.php:56
+#@ shareaholic
+msgid "Shareaholic should be working correctly."
+msgstr ""
+
+#: templates/advanced_settings.php:56
+#@ shareaholic
+msgid "All Shareaholic servers are accessible."
+msgstr ""
+
+#: templates/advanced_settings.php:58
+#@ shareaholic
+msgid "Unable to reach any Shareaholic server"
+msgstr ""
+
+#: templates/advanced_settings.php:58
+#: templates/advanced_settings.php:65
+#@ shareaholic
+msgid "Checking..."
+msgstr ""
+
+#: templates/advanced_settings.php:58
+#: templates/advanced_settings.php:65
+#@ shareaholic
+msgid "Re-check"
+msgstr ""
+
+#: templates/advanced_settings.php:59
+#, php-format
+#@ default
+msgid "A network problem or firewall is blocking all connections from your web server to Shareaholic.com.  <strong>Shareaholic cannot work correctly until this is fixed.</strong>  Please contact your web host or firewall administrator and give them <a href=\"%s\" target=\"_blank\">this information about Shareaholic and firewalls</a>. Let us <a href=\"#\" onclick=\"%s\">know</a> too, so we can follow up!"
+msgstr ""
+
+#: templates/advanced_settings.php:62
+#@ shareaholic
+msgid "Server-side Share Counts API is reachable"
+msgstr ""
+
+#: templates/advanced_settings.php:63
+#@ shareaholic
+msgid "The server-side Share Counts API should be working correctly."
+msgstr ""
+
+#: templates/advanced_settings.php:63
+#@ shareaholic
+msgid "All servers and services needed by the API are accessible."
+msgstr ""
+
+#: templates/advanced_settings.php:65
+#@ shareaholic
+msgid "Unable to reach the server-side Share Count API"
+msgstr ""
+
+#: templates/advanced_settings.php:66
+#, php-format
+#@ default
+msgid "A network problem or firewall is blocking connections from your web server to various Share Count APIs.  <strong>The API cannot work correctly until this is fixed.</strong>  If you continue to face this issue, please contact <a href=\"#\" onclick=\"%s\">us</a> and we will follow up! In the meantime, if you disable the server-side Share Counts API from the Advanced options above, Shareaholic will default to using client-side APIs for share counts successfully -- so nothing to worry about!"
+msgstr ""
+
+#: templates/advanced_settings.php:73
+#@ shareaholic
+msgid "Your Shareaholic Site ID"
+msgstr ""
+
+#: templates/advanced_settings.php:77
+#@ shareaholic
+msgid "Not set."
+msgstr ""
+
+#: templates/advanced_settings.php:87
+#@ shareaholic
+msgid "Reset"
+msgstr ""
+
+#: templates/advanced_settings.php:88
+#@ shareaholic
+msgid "This will reset all of your settings and start you from scratch. This can not be undone."
+msgstr ""
+
+#: templates/advanced_settings.php:90
+#@ shareaholic
+msgid "Resetting Plugin..."
+msgstr ""
+
+#: templates/advanced_settings.php:90
+#@ shareaholic
+msgid "Reset Plugin"
+msgstr ""
+
+#: templates/deprecation_warnings.php:6
+#@ shareaholic
+msgid "will be deprecated SOON. Please update the code found in the following files at your convenience:"
+msgstr ""
+
+#: templates/failed_to_create_api_key_modal.php:15
+#@ shareaholic
+msgid "or, try again later."
+msgstr ""
+
+#: templates/failed_to_create_api_key_modal.php:19
+#, php-format
+#@ shareaholic
+msgid "If you continue to get this prompt for more than a few hours, try to check server connectivity or reset the plugin in %sadvanced settings%s."
+msgstr ""
+
+#: templates/failed_to_create_api_key_modal.php:19
+#, php-format
+#@ shareaholic
+msgid "Also, if you have a question or have a bug to report, please %slet us know%s."
+msgstr ""
+
+#: templates/meta_boxes.php:26
+#@ shareaholic
+msgid "Exclude from Related Content"
+msgstr ""
+
+#: templates/settings.php:3
+#@ shareaholic
+msgid "Shareaholic: App Manager"
+msgstr ""
+
+#: templates/settings.php:22
+#, php-format
+#@ shareaholic
+msgid "First time here? Read %sUnderstanding the new Shareaholic for WordPress interface and configuration settings.%s"
+msgstr ""
+
+#: templates/settings.php:22
+#, php-format
+#@ shareaholic
+msgid "If you are upgrading from an earlier version of Shareaholic for WordPress and need help, have a question or have a bug to report, please %slet us know%s."
+msgstr ""
+
+#: templates/settings.php:25
+#@ shareaholic
+msgid "Related Content"
+msgstr ""
+
+#: templates/settings.php:26
+#@ shareaholic
+msgid "Pick where you want Related Content to be displayed. Click \"Customize\" to customize look & feel, themes, block lists, etc."
+msgstr ""
+
+#: templates/settings.php:44
+#: templates/settings.php:87
+#@ shareaholic
+msgid "Customize"
+msgstr ""
+
+#: templates/settings.php:52
+#@ shareaholic
+msgid "Edit Related Content Settings"
+msgstr ""
+
+#: templates/settings.php:54
+#@ shareaholic
+msgid "Status:"
+msgstr ""
+
+#: templates/settings.php:58
+#@ shareaholic
+msgid "Processing"
+msgstr ""
+
+#: templates/settings.php:60
+#@ shareaholic
+msgid "Ready"
+msgstr ""
+
+#: templates/settings.php:68
+#@ shareaholic
+msgid "Pick where you want your buttons to be displayed. Click \"Customize\" to customize look & feel, themes, share counters, alignment, etc."
+msgstr ""
+
+#: templates/settings.php:95
+#@ shareaholic
+msgid "Edit Share Button Settings"
+msgstr ""
+
+#: templates/terms_of_service_modal.php:2
+#@ shareaholic
+msgid "Thanks for Installing!"
+msgstr ""
+
+#: templates/terms_of_service_modal.php:8
+#, php-format
+#@ shareaholic
+msgid "%sShare buttons%s enables your readers to spread your content."
+msgstr ""
+
+#: templates/terms_of_service_modal.php:16
+#, php-format
+#@ shareaholic
+msgid "%sAnalytics%s gives you all the insights you need to grow your site."
+msgstr ""
+
+#: templates/terms_of_service_modal.php:20
+#@ shareaholic
+msgid "Get Started »"
+msgstr ""
+
+#: templates/why_to_sign_up.php:2
+#@ shareaholic
+msgid "Sign up for a FREE Shareaholic account to unlock more features."
+msgstr ""
+
+#: templates/why_to_sign_up.php:4
+#@ shareaholic
+msgid "Get the Floated Share Buttons app"
+msgstr ""
+
+#: templates/why_to_sign_up.php:5
+#@ shareaholic
+msgid "Monetize your site, plus lots more!"
+msgstr ""
+
+#: templates/why_to_sign_up.php:7
+#@ shareaholic
+msgid "Unlock more features, for free"
+msgstr ""
+
+#: templates/why_to_sign_up.php:9
+#@ shareaholic
+msgid "Click the button above to sign up or log in to your free Shareaholic account. It takes just seconds to sign up and it's free!"
+msgstr ""
+
+#: templates/why_to_sign_up.php:14
+#@ shareaholic
+msgid "Shareaholic Helpdesk"
+msgstr ""
+
+#: templates/why_to_sign_up.php:15
+#@ shareaholic
+msgid "Submit a Language Translation"
+msgstr ""
+
+#: templates/why_to_sign_up.php:16
+#@ shareaholic
+msgid "Get the Shareaholic Browser Add-on"
+msgstr ""
+
+#: utilities.php:137
+#@ shareaholic
+msgid "General Settings"
+msgstr ""
+
+#: utilities.php:144
+#@ shareaholic
+msgid "FAQ & Support"
+msgstr ""
+

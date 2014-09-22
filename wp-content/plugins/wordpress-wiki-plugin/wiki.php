@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Wiki Lite
-Plugin URI: http://premium.wpmudev.org/project/wiki
+Plugin Name: Wiki
+Plugin URI: https://wordpress.org/plugins/wordpress-wiki-plugin/
 Description: Add a wiki to your blog
 Author: WPMU DEV
 WDP ID: 168
-Version: 1.1.0.1
+Version: 1.1.0.2
 Author URI: http://premium.wpmudev.org
 Text Domain: wiki
 */
@@ -31,7 +31,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 class Wiki {
 	// @var string Current version
-	var $version = '1.1.0.1';
+	var $version = '1.1.0.2';
 	// @var string The db prefix
 	var $db_prefix = '';
 	// @var string The plugin settings
@@ -92,6 +92,11 @@ class Wiki {
 		
 		add_action('add_meta_boxes_incsub_wiki', array(&$this, 'meta_boxes') );
 		add_action('wp_insert_post', array(&$this, 'save_wiki_meta'), 10, 2 );
+
+		add_filter('get_next_post_where', array(&$this, 'get_next_post_where'));
+		add_filter('get_previous_post_where', array(&$this, 'get_previous_post_where'));
+		add_filter('get_next_post_sort', array(&$this, 'get_next_post_sort'));
+		add_filter('get_previous_post_sort', array(&$this, 'get_previous_post_sort'));
 		
 		add_action('widgets_init', array(&$this, 'widgets_init'));
 		add_action('pre_post_update', array(&$this, 'send_notifications'), 50, 1);
@@ -1031,6 +1036,118 @@ class Wiki {
 		
 		update_post_meta( $post->ID, '_edit_lock', $lock );
 	}
+
+	/**
+	 * Alters the get_next_post_where clause so that the next post link returns the correct wiki
+	 *
+	 * @since 1.2.5.2
+	 * @access public
+	 * @filter get_next_post_where
+	 */
+	function get_next_post_where( $sql ) {
+		global $wpdb, $post;
+		
+		if ( ! is_main_query() || ! is_singular('incsub_wiki') ) {
+    	return $sql;
+    }
+		
+		switch ( $this->get_setting('sub_wiki_order_by') ) {
+			case 'menu_order' :
+				$sql  = $wpdb->prepare("WHERE p.menu_order " . (( $this->get_setting('sub_wiki_order') == 'ASC') ? '>' : '<') . " %d AND p.post_type = 'incsub_wiki' AND p.post_status = 'publish'", $post->menu_order);
+				$sql .= $wpdb->prepare(" AND p.post_parent = %d", $post->post_parent);
+				break;
+				
+			case 'title' :
+				$sql  = $wpdb->prepare("WHERE p.post_title " . (( $this->get_setting('sub_wiki_order') == 'ASC') ? '>' : '<') . " %s AND p.post_type = 'incsub_wiki' AND p.post_status = 'publish'", $post->post_title);
+				$sql .= $wpdb->prepare(" AND p.post_parent = %d", $post->post_parent);
+				break;				
+		}
+		
+		return $sql;
+	}
+
+	/**
+	 * Alters the get_previous_post_where clause so that the previous post link returns the correct wiki
+	 *
+	 * @since 1.2.5.2
+	 * @access public
+	 * @filter get_previous_post_where
+	 */	
+	function get_previous_post_where( $sql ) {
+		global $wpdb, $post;
+		
+		if ( ! is_main_query() || ! is_singular('incsub_wiki') ) {
+    	return $sql;
+    }
+    
+		switch ( $this->get_setting('sub_wiki_order_by') ) {
+			case 'menu_order' :
+				$sql  = $wpdb->prepare("WHERE p.menu_order " . (( $this->get_setting('sub_wiki_order') == 'ASC') ? '<' : '>') . " %d AND p.post_type = 'incsub_wiki' AND p.post_status = 'publish'", $post->menu_order);
+				$sql .= $wpdb->prepare(" AND p.post_parent = %d", $post->post_parent);
+				break;
+				
+			case 'title' :
+				$sql  = $wpdb->prepare("WHERE p.post_title " . (( $this->get_setting('sub_wiki_order') == 'ASC') ? '<' : '>') . " %s AND p.post_type = 'incsub_wiki' AND p.post_status = 'publish'", $post->post_title);
+				$sql .= $wpdb->prepare(" AND p.post_parent = %d", $post->post_parent);
+				break;				
+		}
+		
+		return $sql;
+	}
+
+	/**
+	 * Alters the get_next_post_sort clause so that the next post link returns the correct wiki
+	 *
+	 * @since 1.2.5.2
+	 * @access public
+	 * @filter get_next_post_sort
+	 */		
+	function get_next_post_sort( $sql ) {
+		global $wpdb, $post;
+
+		if ( ! is_main_query() || ! is_singular('incsub_wiki') ) {
+    	return $sql;
+    }
+    
+		switch ( $this->get_setting('sub_wiki_order_by') ) {
+			case 'menu_order' :
+				$sql = 'ORDER BY p.menu_order ' . (( $this->get_setting('sub_wiki_order') == 'ASC') ? 'ASC' : 'DESC') . ' LIMIT 1';
+				break;
+				
+			case 'title' :
+				$sql = 'ORDER BY p.post_title ' . (( $this->get_setting('sub_wiki_order') == 'ASC') ? 'ASC' : 'DESC') . ' LIMIT 1';
+				break;
+		}
+		
+		return $sql;
+	}
+
+	/**
+	 * Alters the get_previous_post_sort clause so that the previous post link returns the correct wiki
+	 *
+	 * @since 1.2.5.2
+	 * @access public
+	 * @filter get_previous_post_sort
+	 */			
+	function get_previous_post_sort( $sql ) {
+		global $wpdb, $post;
+
+		if ( ! is_main_query() || ! is_singular('incsub_wiki') ) {
+    	return $sql;
+    }
+    
+		switch ( $this->get_setting('sub_wiki_order_by') ) {
+			case 'menu_order' :
+				$sql = 'ORDER BY p.menu_order ' . (( $this->get_setting('sub_wiki_order') == 'ASC') ? 'DESC' : 'ASC') . ' LIMIT 1';
+				break;
+			
+			case 'title' :
+				$sql = 'ORDER BY p.post_title ' . (( $this->get_setting('sub_wiki_order') == 'ASC') ? 'DESC' : 'ASC') . ' LIMIT 1';
+				break;
+		}
+		
+		return $sql;
+	}
 		
 	/**
 	 * Safely retrieve a setting
@@ -1509,24 +1626,14 @@ class Wiki {
 	}
 		
 	/**
-	 * Activation hook
-	 * 
-	 * Create tables if they don't exist and add plugin options
-	 * 
-	 * @see		http://codex.wordpress.org/Function_Reference/register_activation_hook
-	 * @param bool $network_activate Whether the plugin is being activated for the entire network 
+	 * Install
+	 *
 	 * @$uses	$wpdb
 	 */
-	function install( $network_activate ) {
+	function install() {
 		global $wpdb;
 		
-		// Move wiki_version option from blog table to sitemeta table
-		if ( $wiki_version = get_option('wiki_version') ) {
-			update_site_option('wiki_version', $wiki_version);
-			delete_option('wiki_version');
-		}
-		
-		if ( get_site_option('wiki_version', false) == $this->version )
+		if ( get_option('wiki_version', false) == $this->version )
 			return;
 		
 		// WordPress database upgrade/creation functions
@@ -1550,21 +1657,9 @@ class Wiki {
 				PRIMARY KEY  (ID)
 			) ENGINE=InnoDB $charset_collate;");
 
-		// Setup blog(s)
-		if ( $network_activate ) {
-			$results = $wpdb->get_results("
-				SELECT blog_id
-				FROM $wpdb->blogs
-			");
-			
-			foreach ( $results as $row ) {
-				$this->setup_blog($row->blog_id);
-			}
-		} else {
-			$this->setup_blog();
-		}
+		$this->setup_blog();
 							
-		update_site_option('wiki_version', $this->version);
+		update_option('wiki_version', $this->version);
 	}
 		
 	/**
@@ -1623,8 +1718,9 @@ class Wiki {
 	function init() {
 		global $wpdb, $wp_rewrite, $current_user, $blog_id, $wp_roles;
 		
+		$this->install();	//we run this here because activation hooks aren't triggered when updating - see http://wp.mu/8kv
+		
 		if ( is_admin() ) {
-			$this->install(is_multisite() ? true : false);	//we run this here because activation hooks aren't triggered when updating - see http://wp.mu/8kv
 			$this->init_admin_pages();
 		}
 		

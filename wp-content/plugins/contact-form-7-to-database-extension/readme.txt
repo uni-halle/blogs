@@ -5,17 +5,15 @@ Tags: contact form,database,contact form database,save contact form,form databas
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
-Tested up to: 3.9.1
-Stable tag: 2.8.9
+Tested up to: 4.0
+Stable tag: 2.8.12
 
 Saves submitted form data to the database and allow you to export the data to a file and use short codes to display it.
 
 == Description ==
 
-Find detailed information, including a video tutorial on the <a href="http://cfdbplugin.com/">CFDB Plugin Site</a>
-
-The "CFDB" plugin saves contact form submissions to your WordPress database and provides short codes to retrieve and display the data.
-See the CFDB Documentation Site
+The "CFDB" plugin saves contact form submissions to your WordPress database and provides and administration page and short codes to view and display the data.
+Video tutorial on the <a href="http://cfdbplugin.com/">CFDB Plugin Site</a>
 
 By simply installing the plugin, it will automatically begin to capture submissions from:
 
@@ -82,6 +80,16 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.8.13 =
+* Bug fix in "trans"
+
+= 2.8.12 =
+* Work-around for WP bug https://core.trac.wordpress.org/ticket/29658
+
+= 2.8.11 =
+* Bug fix related to Excel Internet Query export
+* Bug fix when HTML special characters in short code attributes
 
 = 2.8.10 =
 * Bug fix related to "trans" with multiple transform functions

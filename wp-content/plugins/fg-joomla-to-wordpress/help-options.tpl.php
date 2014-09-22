@@ -60,6 +60,8 @@
 
 <p><strong>Create pages:</strong> You have the choice to import the Joomla articles as WordPress posts or pages.</p>
 
+<p><strong>Timeout for each media:</strong> The default timeout to copy a media is 5 seconds. You can change it if you have many errors like "Can't copy xxx. Operation timeout".</p>
+
 <p><strong>SEO <span class="fgj2wp-premium-feature">(Premium feature)</span>:</strong>
 <ul>
 <li><strong>Import the meta description and the meta keywords to WordPress SEO by Yoast:</strong> If you are using the WordPress SEO by Yoast plugin, this option will import the articles meta data into the WordPress posts.</li>

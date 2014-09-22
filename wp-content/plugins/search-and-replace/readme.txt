@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: database, mysql, search, replace, admin, security
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 2.6.6
+Stable tag: trunk
 License: GPLv2+
 
 A simple search for find strings in your database and replace the string.
@@ -12,7 +12,7 @@ A simple search for find strings in your database and replace the string.
 == Description ==
 A simple search for find strings in your database and replace the string. You can search in ID, post-content, GUID, titel, excerpt, meta-data, comments, comment-author, comment-e-mail, comment-url, tags/categories and categories-description. It is possible to replace the user-ID in all tables and the user-login.
 
-"Search and Replace" original plugin is by [Mark Cunningham](http://thedeadone.net/ "Mark Cunningham") and was advanced (comments and comment-author) by [Gonahkar](http://www.gonahkar.com/ "Gonahkar"). Much more enhanced and maintained by [Frank Bültge](http://bueltge.de) and current version is also maintained by Ron Guerin <ron@vnetworx.net>.
+"Search and Replace" Originalplugin ist von [Mark Cunningham](http://thedeadone.net/ "Mark Cunningham") and was advanced (comments and comment-author) by [Gonahkar](http://www.gonahkar.com/ "Gonahkar"). Much more enhanced and maintained by [Frank Bültge](http://bueltge.de) and current version is also maintained by Ron Guerin <ron@vnetworx.net>.
 
 == Installation ==
 = Requirements =
@@ -36,10 +36,15 @@ All existing translation files need to be updated for Search and Replace 2.6.6, 
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
 
 = Translations =
-The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows) or plugin for WordPress [Localization](http://wordpress.org/extend/plugins/codestyling-localization/).
+The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all definitions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows) or plugin for WordPress [Localization](http://wordpress.org/extend/plugins/codestyling-localization/).
 
 
 == Changelog ==
+= v1.7.0 (2014-09-14) =
+* Exclude serialized data from replace function (maybe we reduce the support)
+* Add hint, if is serialized data on the result table
+* Fix to see also the result case sensitive
+
 = v2.6.6 (09/05/2014) =
 * *Thanks to [Ron Guerin](http://wordpress.org/support/profile/rong) for help to maintain the plugin*
 * Fix to use $wpdb object for all database access

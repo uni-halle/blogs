@@ -1,9 +1,9 @@
 === Wiki ===
 Contributors: WPMUDEV
 Author: WPMUDEV
-Tags: wiki, buddypress, frontend editing
+Tags: Wiki, Wikis, BuddyPress, frontend editing, Documentation, Docs, Manual, Manuals, Document Management, Document Manager, Documents Manager, Documents, Organized Docs, Organized Documents, Instructions, Instruction, Guides, Instruction Guide, Instruction Guides, WordPress Wiki, Mediawiki, WordPress Wiki, WordPress Wikis
 Requires at least: 3.3
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: trunk
 
 Create a wiki as easily as adding a post
@@ -96,6 +96,9 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 * Minor bugfixes and enhancements
 
 == Changelog ==
+= 1.1.0.2 = 
+* Fixed: Prev/next links don't show correct posts based upon Wiki settings
+
 = 1.1.0.1 = 
 * Fixed: unable to translate notification emails 
 

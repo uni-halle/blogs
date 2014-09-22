@@ -1,0 +1,204 @@
+# Copyright (C) 2013 Shareaholic | share buttons, analytics, related content
+# This file is distributed under the same license as the Shareaholic | share buttons, analytics, related content package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Shareaholic | share buttons, analytics, related content "
+"7.0.0.8\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/shareaholic\n"
+"POT-Creation-Date: 2013-07-09 22:02:07+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-07-29 15:28+0200\n"
+"Last-Translator: Takis Bouyouris <takis@nevma.gr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: admin.php:258
+msgid "Settings successfully saved"
+msgstr "Οι ρυθμίσεις έχουν αποθηκευτεί με επιτυχία"
+
+#: templates/advanced_settings.php:3
+msgid "Shareaholic: Advanced Settings"
+msgstr "Shareaholic: Λεπτομερείς Ρυθμίσεις"
+
+#: templates/advanced_settings.php:5
+msgid "You rarely should need to edit the settings on this page."
+msgstr ""
+"Η ανάγκη να επεξεργαστείτε τις ρυθμίσεις σε αυτή τη σελίδα είναι πολύ σπάνια."
+
+#: templates/advanced_settings.php:15
+msgid "Disable Analytics"
+msgstr "Απενεργοποιήστε τα Στατιστικά"
+
+#: templates/advanced_settings.php:15
+msgid "(it is recommended NOT to disable analytics)"
+msgstr "(συνίσταται να ΜΗΝ απενεργοποιήσετε τα στατιστικά)"
+
+#: templates/advanced_settings.php:21
+msgid "Do not automatically include <code>Open Graph</code> tags"
+msgstr "Μην συμπεριλάβετε αυτόματα τα tags του <code>Open Graph</code>"
+
+#: templates/advanced_settings.php:21
+msgid "(it is recommended NOT to disable open graph tags)"
+msgstr "(συνίσταται να ΜΗΝ απενεργοποιήσετε τα tags του open graph)"
+
+#: templates/advanced_settings.php:26 templates/settings.php:71
+msgid "Save Changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: templates/deprecation_warnings.php:6
+msgid ""
+"is being deprecated. Please update the code found in the following files:"
+msgstr ""
+"συνίσταται να μην χρησιμοποιείται πια. Παρακαλούμε ανανεώστε τον κώδικα στις "
+"παρακάτω γραμμές:"
+
+#: templates/failed_to_create_api_key.php:6
+#: templates/terms_of_service_notice.php:6
+msgid ""
+"Action required: You've installed Shareaholic for WordPress.  We're ready "
+"when you are. %sGet started now &raquo;%s"
+msgstr ""
+"Δώστε προσοχή εδώ: Το Shareaholic για το WordPress έχει εγκατασταθεί. Είστε "
+"έτοιμοι. %sΞεκινήστε τώρα &raquo;%s"
+
+#: templates/failed_to_create_api_key_modal.php:2
+msgid "Setup Shareaholic"
+msgstr "Ρυθμίστε το Shareaholic"
+
+#: templates/failed_to_create_api_key_modal.php:7
+msgid ""
+"It appears that we are having some trouble setting up Shareaholic for "
+"WordPress right now. This is usually temporary. Please revisit this section "
+"after a few minutes or click \"retry\" now."
+msgstr ""
+"Παρουσιάστηκε κάποιο πρόβλημα κατά τη ρύθμιση του Shareaholic για το "
+"WordPress. Συνήθως αυτό είναι προσωρινό. Παρακαλούμε επισκεφθείτε αυτή την "
+"περιοχή σε μερικά λεπτά ή πανήστε \"Προσπαθήστε ξανά\" τώρα."
+
+#: templates/failed_to_create_api_key_modal.php:12
+msgid "Retry"
+msgstr "Προσπαθήστε ξανά"
+
+#: templates/failed_to_create_api_key_modal.php:14
+msgid "or, try again later"
+msgstr "ή προσπαθήστε ξανά αργότερα"
+
+#: templates/footer.php:8
+msgid ""
+"If you like our work, show some love and %sgive us a good rating%s. Made "
+"with much love in Boston, Massachusetts."
+msgstr ""
+"Αν σας αρέσει η δουλειά μας, τότε δείξτε μας την αγάπη σας και %δώστε μας "
+"μια καλή βαθμολογία%s. Κατασκευάστηκε στη Βοστώνη της Μασσαχουσέττης με πολύ "
+"αγάπη."
+
+#: templates/meta_boxes.php:6
+msgid "Hide Share Buttons"
+msgstr "Κρύψτε τα κουμπιά για το share"
+
+#: templates/meta_boxes.php:16
+msgid "Hide Related Content"
+msgstr "Κρύψτε το Σχετικό Περιεχόμενο"
+
+#: templates/meta_boxes.php:26
+msgid "Do not include Open Graph tags"
+msgstr "Μη συμπεριλάβετε τα tags για το Open Graph"
+
+#: templates/settings.php:3
+msgid "Shareaholic: Available Apps"
+msgstr "Shareaholic: Διαθέσιμες Εφαρμογές"
+
+#: templates/settings.php:19
+msgid "Share Buttons"
+msgstr "Κουμπιά για share"
+
+#: templates/settings.php:46
+msgid "Related Content / Recommendations"
+msgstr "Σχετικό Περιεχόμενο / Προτάσεις"
+
+#: templates/terms_of_service_modal.php:2
+msgid "Thanks for Installing"
+msgstr "Ευχαριστούμε που το Εγκαταστήσατε"
+
+#: templates/terms_of_service_modal.php:4
+msgid ""
+"%sShareaholic%s gives you the essential tools you need to become a "
+"successful publisher."
+msgstr ""
+"Το %sShareaholic%s σας παρέχει τα απαραίτητα εργαλεία για να γίνετε ένας "
+"επιτυχημένεος εκδότης."
+
+#: templates/terms_of_service_modal.php:8
+msgid ""
+"%sShare buttons%s let your readers post your content to their favorite "
+"networks."
+msgstr ""
+"Τα κουμπιά για το %sShare%s επιτρέπουν στους αναγνώστες σας να κάνουν post "
+"το περιεχόμενό σας στα αγαπημένα τους social networks."
+
+#: templates/terms_of_service_modal.php:12
+msgid ""
+"%sRelated content%s keeps people on your site and turns visitors into "
+"readers."
+msgstr ""
+"Το %sΣχετικό Περιεχόμενο%s κάνεις τους χρήστες σας να επανέρχονται στην "
+"ιστοσελίδα σας και τους μετατρέπει σε αναγνώστες σας."
+
+#: templates/terms_of_service_modal.php:16
+msgid ""
+"%sAnalytics%s gives you the insight to create tailored content and grow your "
+"site."
+msgstr ""
+"Τα %sΣτατιστικά%s σας δίνουν τη δυνατότητα να δημιουργείτε εξειδικευμένο "
+"περιεχόμενο και να ανπτύσσετε την ιστοσελίδα σας."
+
+#: templates/terms_of_service_modal.php:20
+msgid "Get Started"
+msgstr "Ξεκινήστε"
+
+#: templates/terms_of_service_modal.php:21
+msgid ""
+"By clicking \"Get Started\" you agree to Shareholic's %sTerms of Service%s "
+"and %sPrivacy Policy%s."
+msgstr ""
+"Πατώντας \"Ξεκινήστε\" συμφωνείτε στους %sΌρους Χρήσης%s και την %sΠολιτική "
+"Εμπιστευτικότητας%s του Shareaholic."
+
+#: templates/why_to_sign_up.php:104
+msgid "Edit General Website Settings"
+msgstr "Επεξεργασία Γενικών Ρυθμίσεων Ιστοσελίδας"
+
+#: utilities.php:81
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#. Plugin Name of the plugin/theme
+msgid "Shareaholic | share buttons, analytics, related content"
+msgstr "Shareaholic | κουμπιά για share, στατιστικά, σχετικό περιεχόμενο"
+
+#. Plugin URI of the plugin/theme
+msgid "https://shareaholic.com/publishers/"
+msgstr "https://shareaholic.com/publishers/"
+
+#. Description of the plugin/theme
+msgid ""
+"Whether you want to get people sharing, grow your fans, make money, or know "
+"who's reading your content, Shareaholic will help you get it done. See <a "
+"href=\"admin.php?page=shareaholic-settings\">configuration panel</a> for "
+"more settings."
+msgstr ""
+"Παρακινήστε τους χρήστες σας να κάνουν share το περιεχόμενό σας, αναπτύξτε "
+"τη βάση των χρηστών σας, παρακολουθήστε ποιος διαβάζει το περιεχόμενό σας. "
+"Με το Shareaholic θα το καταφέρετε. Πηγαίνεται στην <a href=\"admin.php?"
+"page=shareaholic-settings\">κεντρική οθόνη</a> για περισσότερες ρυθμίσεις."
+
+#. Author of the plugin/theme
+msgid "Shareaholic"
+msgstr "Shareaholic"
+
+#. Author URI of the plugin/theme
+msgid "https://shareaholic.com"
+msgstr "https://shareaholic.com"
+

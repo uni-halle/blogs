@@ -255,9 +255,9 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
 				$mapper->where(array("{$image_key} NOT IN %s", $this->object->exclusions));
 			}
 
-			// Ensure that no images marked as excluded at the gallery level are
-			// returned
-			$mapper->where(array("exclude = %d", 0));
+			// Ensure that no images marked as excluded at the gallery level are returned
+            if (empty($this->object->skip_excluding_globally_excluded_images))
+			    $mapper->where(array("exclude = %d", 0));
 		}
 
 		// When returns is "excluded", it's a little more complicated as the
@@ -349,8 +349,15 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
         // gallery created by randomly selecting X image ids that are then set as the gallery entity_ids
 		elseif ($this->object->source == 'random_images' && empty($this->object->entity_ids)) {
             $table_name = $mapper->get_table_name();
-            $mapper->_where_clauses[] = " /*NGG_NO_EXTRAS_TABLE*/ `{$image_key}` IN (SELECT `{$image_key}` FROM (SELECT `{$image_key}` FROM `{$table_name}` i ORDER BY RAND() LIMIT {$this->object->maximum_entity_count}) o) /*NGG_NO_EXTRAS_TABLE*/";
-		}
+            $where_clauses = array();
+            $sub_where_sql = '';
+            foreach ($mapper->_where_clauses as $where) {
+                $where_clauses[] = '(' . $where . ')';
+            }
+            if ($where_clauses)
+                $sub_where_sql = 'WHERE ' . implode(' AND ', $where_clauses);
+            $mapper->_where_clauses = array(" /*NGG_NO_EXTRAS_TABLE*/ `{$image_key}` IN (SELECT `{$image_key}` FROM (SELECT `{$image_key}` FROM `{$table_name}` i {$sub_where_sql} ORDER BY RAND() LIMIT {$this->object->maximum_entity_count}) o) /*NGG_NO_EXTRAS_TABLE*/");
+        }
 
 		// Apply a sorting order
 		if ($sort_by)  $mapper->order_by($sort_by, $sort_direction);
