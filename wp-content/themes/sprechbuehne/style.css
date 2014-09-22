@@ -1,0 +1,198 @@
+@charset "UTF-8";
+
+/**
+ * Theme Name:     WP-CT by Whydesign.
+ * Theme URI:      http://sprechbuehne.uni-halle.de/
+ * Description:    Child theme for the Sprechbuehne theme. For more NFOs, please visit www.humently.de
+ * Author:         Whydesign - Ludwig Jäschke
+ * Author URI:     http://humently.de
+ * Tags:		   ludwig jäschke, whydesign, webentwicklung halle, mlu, uni, sprechbuehne, child
+ * Template:       twentytwelve
+ * Version:        1.0.0
+ */
+
+@import url('../twentytwelve/style.css');
+
+body {
+	background: #CCCCCC;
+	font-family: "Trebuchet MS", Verdana, Helvetica, sans-serif;
+}
+a {
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: bold;
+}
+a:visited {
+	color: #5f6770;
+}
+a:link {
+	color: #517496;
+}
+hgroup {
+	background: #990000;
+}
+.hgroup-inner {
+	padding: 15px 17px 14px 10px;
+	border-right: 8px dotted #C1C1C1;
+	display: inline-block;
+}
+hgroup img {
+	height: 81px;
+	width: auto;
+}
+.hgroup-inner>img {
+	-webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: url(grayscale.svg); /* Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+}
+body .site {
+	background: transparent;
+	padding: 20px 10px 10px 10px;
+	margin: 0 auto;
+	box-shadow: none;
+	width: auto;
+	max-width: none;
+}
+.main-navigation ul.nav-menu, .main-navigation div.nav-menu > ul {
+	border-bottom: 6px solid #990000;
+	border-top: 6px solid #990000;
+}
+.main-navigation li a {
+	font-size: 11px;
+	font-weight: 600;
+	padding: 0 7px;
+}
+.main-navigation li a:hover {
+	background: #990000;
+	color: #C1C1C1;
+}
+#main {
+	border: 25px solid #990000;
+	padding: 20px 15px 0 15px;
+}
+.title-start, #post-23 .entry-title, #post-28 .entry-title {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 9px;
+	color: #990000;
+	margin: 0 0 30px 0;
+}
+.entry-thumb {
+	float: left;
+	padding: 32px 25px 10px 0;
+	max-width: 220px;
+}
+.entry-thumb img {
+	max-width: 150px;
+	height: auto;
+}
+.entry-header {
+	display: inline-table;
+	font-size: 19px;
+	font-weight: 100;
+	margin-bottom: 8px;
+}
+.entry-content {
+	display: table;
+	color: #990000;
+	max-width: 980px;
+}
+.entry-header .entry-title a, .entry-header .entry-title {
+	color: #990000;
+	font-size: 18px;
+	font-weight: bold;
+}
+.entry-content p {
+	margin: 0;
+	font-family: "Trebuchet MS", Verdana, Helvetica, sans-serif;
+}
+footer.entry-meta {
+	margin-top: 2px;
+}
+.entry-content footer.entry-meta a, .comment-content footer.entry-meta a {
+	color: #517496;
+	font-size: 12px;
+}
+.site-content article {
+	border-bottom: 4px double #990000;
+	overflow: auto;
+}
+.entry-content>ul.image-gallery {
+	margin: 15px 0;
+}
+.archive-header, .page-header {
+	padding: 0;
+	margin: 0 0 30px 0;
+	border: 0;
+}
+#post-23 .entry-content {
+	margin: auto;
+}
+#post-23 .entry-header, #post-28 .entry-header {
+	width: 100%;
+}
+.main-navigation ul.nav-menu.toggled-on {
+	width: 100%;
+}
+h3.menu-toggle, .menu-toggle:active, .menu-toggle.toggled-on, .menu-toggle:hover {
+	background: #990000;
+	box-shadow: none;
+	border-radius: 0;
+	width: 100%;
+	padding: 7px 0;
+	border: 0;
+	margin: 0 0 10px 0;
+	color: #fff;
+	font-size: 15px;
+}
+.toggled-on li {
+	margin: 10px 0;
+}
+.toggled-on li a {
+	width: 100%;
+	display: block;
+	padding: 5px 0;
+}
+@media screen and (max-width: 1015px) {
+	hgroup img:nth-child(5), hgroup img:nth-child(6), hgroup img:nth-child(7) {
+		display: none;
+	}
+}
+@media screen and (max-width: 639px) {
+	hgroup img:nth-child(3), hgroup img:nth-child(4) {
+		display: none;
+	}
+}
+@media screen and (max-width: 388px) {
+	hgroup img:nth-child(2) {
+		display: none;
+	}
+	hgroup {
+		text-align: center;
+	}
+	.hgroup-inner {
+		display: block;
+	}
+}
+footer[role="contentinfo"] {
+	margin: 0;
+	text-align: right;
+	padding: 10px 25px;
+	max-width: none;
+	border-bottom: 45px solid #990000;
+}
+footer[role="contentinfo"] a {
+	font-size: 11px;
+	font-weight: 100;
+	color: #444;
+}
+.entry-content td, .comment-content td, .entry-content table {
+	border: 0;
+	color: #990000;
+}
