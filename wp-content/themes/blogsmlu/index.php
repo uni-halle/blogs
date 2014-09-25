@@ -52,7 +52,7 @@
 		<h2><?php _e('Not found.','blogsmlu'); ?></h2>
 		
 		<p><?php _e("Sorry, but you are looking for something that isn't here. Try something else.",'blogsmlu'); ?></p>
-		<?php include ('searchform.php'); ?>
+		<?php //include ('searchform.php'); ?>
 		
 	<?php endif; ?>
 	

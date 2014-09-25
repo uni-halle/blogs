@@ -5,9 +5,9 @@
 					
 					<p><?php _e('Sorry, but something went wrong.','blogsmlu'); ?></p>
 					
-					<p><p><?php _e('Maybe try a search:','blogsmlu'); ?></p></p>
+					<!--<p><p><?php _e('Maybe try a search:','blogsmlu'); ?></p></p>-->
 					
-					<p><?php include ('searchform.php'); ?></p>
+					<!--<p><?php //include ('searchform.php'); ?></p>-->
 										
 					<h3><?php _e('Recent Entries','blogsmlu'); ?></h3>
 					<p><?php _e('Or have a look at the recent entries:','blogsmlu'); ?></p>

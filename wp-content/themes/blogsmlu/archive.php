@@ -143,7 +143,7 @@
 		} else {
 			echo("<h2 class='center'>No posts found.</h2>");
 		}
-		include ('searchform.php');
+		//include ('searchform.php');
 
 	endif; ?>
 
