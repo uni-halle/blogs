@@ -538,11 +538,14 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle {
         try {
             $time = $this->generateSubmitTime();
             $posted_data['submit_time'] = $time;
-            $url = get_admin_url() . sprintf('admin.php?page=%s&submit_time=%s',
 
-                    $this->getDBPageSlug(),
-                    $time);
-            $posted_data['submit_url'] = $url;
+// No longer generating submit_url because it seems to cause CF7 to think it is
+// a spam submission and it drops it.
+//            $url = get_admin_url() . sprintf('admin.php?page=%s&submit_time=%s',
+//
+//                    $this->getDBPageSlug(),
+//                    $time);
+//            $posted_data['submit_url'] = $url;
         } catch (Exception $ex) {
             error_log(sprintf('CFDB Error: %s:%s %s  %s', $ex->getFile(), $ex->getLine(), $ex->getMessage(), $ex->getTraceAsString()));
         }
@@ -865,7 +868,13 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle {
                         // List - value is serialized array
                         $valueArray = @unserialize($entry[$fieldId]);
                         if (is_array($valueArray)) {
-                            $postedData[$fieldName] = implode(',',$valueArray);
+                            $postedData[$fieldName] = '';
+                            // Array of (Array of column-name => value)
+                            $tmpArray = array();
+                            foreach ($valueArray as $listArray) {
+                                $tmpArray[] = implode(',', array_values($listArray));
+                            }
+                            $postedData[$fieldName] = implode('|', $tmpArray);
                         }
                         else {
                             $postedData[$fieldName] = $entry[$fieldId];

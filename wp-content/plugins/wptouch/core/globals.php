@@ -215,7 +215,7 @@ function wptouch_get_desktop_switch_link() {
 	if ( isset( $wptouch_pro->post[ 'wptouch_switch_location' ] ) ) {
 		$redirect_location = $wptouch_pro->post[ 'wptouch_switch_location' ];
 	} else {
-		$redirect_location = $_SERVER['REQUEST_URI'];
+		$redirect_location = esc_url_raw( $_SERVER['REQUEST_URI'], array( 'http', 'https' ) );
 	}
 
 	return apply_filters( 'wptouch_desktop_switch_link', get_bloginfo( 'url' ) . '?wptouch_switch=mobile&amp;redirect=' . urlencode( $redirect_location ) );

@@ -10,7 +10,7 @@
 						<i class="icon-key"></i> Login
 					</a>
 				<?php } else { ?>
-					<a href="<?php echo wp_logout_url( $_SERVER['REQUEST_URI'] ); ?>" class="tappable" title="<?php _e( 'Logout', 'wptouch-pro' ); ?>">
+					<a href="<?php echo wp_logout_url( esc_url_raw( $_SERVER['REQUEST_URI'] ) ); ?>" class="tappable" title="<?php _e( 'Logout', 'wptouch-pro' ); ?>">
 						<i class="icon-user"></i>
 						<?php _e( 'Logout', 'wptouch-pro' ); ?>
 					</a>

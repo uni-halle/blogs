@@ -58,7 +58,7 @@
 			<?php comment_id_fields(); ?>
 
 			<?php if ( is_user_logged_in() ) { ?>
-				<p><?php _e( 'Logged in as', 'wptouch-pro' ); ?> <?php echo $user_identity; ?>. <a href="<?php echo wp_logout_url( $_SERVER['REQUEST_URI'] ); ?>" title="Log out"><?php _e( 'Log out', 'wptouch-pro' ); ?> &raquo;</a></p>
+				<p><?php _e( 'Logged in as', 'wptouch-pro' ); ?> <?php echo $user_identity; ?>. <a href="<?php echo wp_logout_url( esc_url_raw( $_SERVER['REQUEST_URI'], array( 'http', 'https' ) ) ); ?>" title="Log out"><?php _e( 'Log out', 'wptouch-pro' ); ?> &raquo;</a></p>
 
 			<?php } else { ?>
 

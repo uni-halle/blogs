@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WPtouch Mobile Plugin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPtouch Mobile Plugin 3.4.9\n"
+"Project-Id-Version: WPtouch Mobile Plugin 3.4.10\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wptouch\n"
-"POT-Creation-Date: 2014-09-05 13:57:34+00:00\n"
+"POT-Creation-Date: 2014-09-23 14:14:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,13 +48,13 @@ msgstr ""
 msgid "No notifications"
 msgstr ""
 
-#: admin/html/plugin-area.php:9
+#: admin/html/plugin-area.php:10
 msgid ""
 "A new product version (%s) is available. %sRenew your license%s to download "
 "this update and receive additional product support."
 msgstr ""
 
-#: admin/html/plugin-area.php:11
+#: admin/html/plugin-area.php:12
 msgid ""
 "A new product version (%s) is available. Please %sactivate your license%s, "
 "or %spurchase a new license%s to enable updates and full product support."
@@ -1761,11 +1761,11 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: themes/foundation/modules/login/login-html.php:29
+#: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr ""
 
-#: themes/foundation/modules/login/login-html.php:30
+#: themes/foundation/modules/login/login-html.php:31
 msgid "Lost password?"
 msgstr ""
 
@@ -2237,9 +2237,9 @@ msgstr ""
 msgid "WPtouch Mobile Plugin"
 msgstr ""
 
-#. #-#-#-#-#  wptouch.pot (WPtouch Mobile Plugin 3.4.9)  #-#-#-#-#
+#. #-#-#-#-#  wptouch.pot (WPtouch Mobile Plugin 3.4.10)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wptouch.pot (WPtouch Mobile Plugin 3.4.9)  #-#-#-#-#
+#. #-#-#-#-#  wptouch.pot (WPtouch Mobile Plugin 3.4.10)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://www.wptouch.com/"
 msgstr ""
