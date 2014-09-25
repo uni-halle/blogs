@@ -1,6 +1,6 @@
 <?php
 /*
-	Plugin Name: mluBlogs Blog Fetch Functions
+	Plugin Name: * mluBlogs Blog Fetch Functions
 	Plugin URI: http://blogs.urz.uni-halle.de
 	Description: Diverse Helfer-Funktionen fuer die Anzeige der Blogs an verschiednen Stellen (Neue Blogs, Aktivste Blogs, Blogliste etc.)
 	Version: 1.0

@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Plugin Name: * mluBlogs Dashboard
+ * Author: Blogs@MLU Team
+ * Author URI: mailto:blogs@uni-halle.de
+ * Version: 1.1
+ * Description: modifiziert das Standard WP-Dashboard: * Entfernt Dashboard-Widgets: Plugins, Primary und Secundary Feed. * Fügt die Feeds Blogportal und Blogs-News hinzu. * Setzt die Caching-Dauer für gerenderte Feeds auf 30 Minuten</li></ul>
+ */
 
 add_action('wp_dashboard_setup', 'my_dashboard_widgets');
 function my_dashboard_widgets() {
@@ -41,4 +47,4 @@ function mlu_dashboard_blogportal () {
 
 
 // feed-cache-lifetime
-add_filter( 'wp_feed_cache_transient_lifetime', create_function( '$a', 'return 1800;' ) );
+add_filter( 'wp_feed_cache_transient_lifetime', function() {return 1800;} );

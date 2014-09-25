@@ -1,10 +1,10 @@
 <?php
 /*
-	Plugin Name: mluBlogs Admin Area
+	Plugin Name: * mluBlogs Admin Area
 	Plugin URI: http://blogs.urz.uni-halle.de
 	Description: Alle eigenen Funktionen, die der Veränderung des Admin-Bereichs in allen Blogs dienen
-	Version: 1.0
-	Author: Matthias Kretschmann
+	Version: 1.1
+	Author: Matthias Kretschmann/Robert Jäckel
 	Author URI: http://matthiaskretschmann.com
 	
 	Instructions:
