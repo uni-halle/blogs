@@ -3,7 +3,7 @@
  * Plugin Name: FG Joomla to WordPress
  * Plugin Uri:  http://wordpress.org/plugins/fg-joomla-to-wordpress/
  * Description: A plugin to migrate categories, posts, images and medias from Joomla to WordPress
- * Version:     1.39.0
+ * Version:     1.39.1
  * Author:      Frédéric GILLES
  */
 
@@ -208,9 +208,6 @@ if ( !class_exists('fgj2wp', false) ) {
 		 * 
 		 */
 		private function admin_build_page() {
-			$posts_count = wp_count_posts('post');
-			$pages_count = wp_count_posts('page');
-			$media_count = wp_count_posts('attachment');
 			$cat_count = count(get_categories(array('hide_empty' => 0)));
 			$tags_count = count(get_tags(array('hide_empty' => 0)));
 			
@@ -219,9 +216,9 @@ if ( !class_exists('fgj2wp', false) ) {
 			$data['title'] = __('Import Joomla (FG)', 'fgj2wp');
 			$data['description'] = __('This plugin will import sections, categories, posts, medias (images, attachments) and web links from a Joomla database into WordPress.<br />Compatible with Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2 and 3.3.', 'fgj2wp');
 			$data['description'] .= "<br />\n" . __('For any issue, please read the <a href="http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/" target="_blank">FAQ</a> first.', 'fgj2wp');
-			$data['posts_count'] = $posts_count->publish + $posts_count->draft + $posts_count->future + $posts_count->pending;
-			$data['pages_count'] = $pages_count->publish + $pages_count->draft + $pages_count->future + $pages_count->pending;
-			$data['media_count'] = $media_count->inherit;
+			$data['posts_count'] = $this->count_posts('post');
+			$data['pages_count'] = $this->count_posts('page');
+			$data['media_count'] = $this->count_posts('attachment');
 			$data['database_info'] = array(
 				sprintf(_n('%d category', '%d categories', $cat_count, 'fgj2wp'), $cat_count),
 				sprintf(_n('%d post', '%d posts', $data['posts_count'], 'fgj2wp'), $data['posts_count']),
@@ -238,6 +235,22 @@ if ( !class_exists('fgj2wp', false) ) {
 			// Hook for doing other actions after displaying the admin page
 			do_action('fgj2wp_post_display_admin_page');
 			
+		}
+		
+		/**
+		 * Count the number of posts for a post type
+		 * @param string $post_type
+		 */
+		public function count_posts($post_type) {
+			$count = 0;
+			$excluded_status = array('trash', 'auto-draft');
+			$tab_count = wp_count_posts($post_type);
+			foreach ( $tab_count as $key => $value ) {
+				if ( !in_array($key, $excluded_status) ) {
+					$count += $value;
+				}
+			}
+			return $count;
 		}
 		
 		/**
