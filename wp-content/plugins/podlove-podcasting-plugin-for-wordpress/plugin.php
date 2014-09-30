@@ -223,7 +223,7 @@ function add_feed_discoverability() {
 		return;
 
 	if ( ! function_exists( '\Podlove\Feeds\prepare_for_feed' ) )
-		require_once \PODLOVE\PLUGIN_DIR . 'lib/feeds/base.php';
+		require_once \Podlove\PLUGIN_DIR . 'lib/feeds/base.php';
 
 	$cache = \Podlove\Cache\TemplateCache::get_instance();
 	echo $cache->cache_for('feed_discoverability', function() {
@@ -978,6 +978,9 @@ add_filter('posts_search', function($search, $query) {
 	global $wpdb;
 
 	if (!isset($query->query_vars['search_terms']))
+		return $search;
+		
+	if ( isset( $query->query_vars['suppress_filters'] ) && true == $query->query_vars['suppress_filters'] )
 		return $search;
 
 	$episodesTable = \Podlove\Model\Episode::table_name();

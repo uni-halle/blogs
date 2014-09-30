@@ -468,6 +468,12 @@ i.icon.icon-recommendations {
   height: 16px;
 }
 
+i.icon.icon-affiliate {
+  background-position: 0 -160px;
+  width: 16px;
+  height: 16px;
+}
+
 i.icon.icon-analytics {
   background-position: 0 -32px;
   width: 16px;

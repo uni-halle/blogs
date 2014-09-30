@@ -439,8 +439,9 @@ class ShareaholicAdmin {
     Mary Anne<br />
     Happiness Specialist<br />
     <a href='http://support.shareaholic.com'>support.shareaholic.com</a><br /><br />
-    <img width='200' height='36' src='https://shareaholic.com/assets/layouts/shareaholic-logo.png' alt='Shareaholic' title='Shareaholic'>";
-
+    <img width='200' height='36' src='https://shareaholic.com/assets/layouts/shareaholic-logo.png' alt='Shareaholic' title='Shareaholic'><br />
+    <p style='font-size:12px;color:#C3C2C2;'>This is an automated e-mail sent by your WordPress CMS directly to the website admin</p>";
+    
     $headers = "From: Shareaholic <hello@shareaholic.com>\r\n";
     $headers.= "Reply-To: Mary Anne <hello@shareaholic.com>\r\n";
     $headers.= "X-Mailer: PHP/" . phpversion() . "\r\n";

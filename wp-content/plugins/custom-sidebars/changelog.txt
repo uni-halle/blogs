@@ -4,6 +4,10 @@ Author: Javier Marquez (Incsub), Philipp Stracker (Incsub)
 Change Log:
 ----------------------------------------------------------------------
 
+2.0.9.9
+----------------------------------------------------------------------
+- Fixed: Minified CSS files included now.
+
 2.0.9.8
 ----------------------------------------------------------------------
 - Better: Add context-guide how to changes settings for static front-page.

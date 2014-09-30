@@ -26,7 +26,7 @@ Shareaholic.click_objects['unverified_general_settings'] = {
       + encodeURIComponent(
         Shareaholic.click_objects['general_settings'].url(button)
       );
-    return url;
+    return Shareaholic.click_objects['general_settings'].url(button);
   },
   callback: function(button) {
     Shareaholic.click_objects['general_settings'].callback(button);

@@ -1,12 +1,15 @@
 <div class="signuppromo unit size1of5">
-<p class="promoh1"><?php echo sprintf(__('Sign up for a FREE Shareaholic account to unlock more features.', 'shareaholic')); ?></p>
+<p class="promoh1"><?php echo sprintf(__('Gain access to more features with a FREE Shareaholic account:', 'shareaholic')); ?></p>
 <ul>
-  <li><?php echo sprintf(__('Get the Floated Share Buttons app', 'shareaholic')); ?></li>
-  <li><?php echo sprintf(__('Monetize your site, plus lots more!', 'shareaholic')); ?></li>
+  <li><?php echo sprintf(__('Floating Share buttons', 'shareaholic')); ?></li>
+  <li><?php echo sprintf(__('Follow buttons', 'shareaholic')); ?></li>
+  <li><?php echo sprintf(__('Revenue Generating Apps', 'shareaholic')); ?></li>
+  <li><?php echo sprintf(__('Social Analytics, plus lots more!', 'shareaholic')); ?></li>
+  
 </ul>
-<button data-href='edit' id='general_settings' class="btn btn-large btn-success"><?php echo sprintf(__('Unlock more features, for free', 'shareaholic')); ?></button>
+<button data-href='edit' id='general_settings' class="btn btn-large btn-success"><?php echo sprintf(__('Configure additional features &#8594;', 'shareaholic')); ?></button>
 
-<p class="signuppromo_note"><?php echo sprintf(__("Click the button above to sign up or log in to your free Shareaholic account. It takes just seconds to sign up and it's free!", 'shareaholic')); ?></p>
+<p class="signuppromo_note"><?php echo sprintf(__("Already have a Shareaholic account? Click the button above to log in.", 'shareaholic')); ?></p>
 </div>
 
 <div class="help_links unit size1of5">  

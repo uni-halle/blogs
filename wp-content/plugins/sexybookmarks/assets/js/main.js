@@ -11,7 +11,7 @@
             button = this;
             e.preventDefault();
             url = click_object.url(this);
-            if (click_object.selector == '#general_settings') {
+            if (click_object.selector == '#general_settings' || click_object.selector == '#affiliate_settings') {
                 window.open(url);
                 return false;
             } else {
@@ -63,6 +63,14 @@
             }
         },
 
+        'affiliate_settings': {
+            selector: '#affiliate_settings',
+            url: function(button) {
+                return first_part_of_url + 'websites/edit/'
+                    + '?verification_key=' + verification_key;
+            }
+        },
+        
         'general_settings': {
             selector: '#general_settings',
             url: function(button) {
@@ -168,6 +176,7 @@
         Shareaholic.disable_buttons();
 
         Shareaholic.bind_button_clicks(Shareaholic.click_objects['app_settings']);
+        Shareaholic.bind_button_clicks(Shareaholic.click_objects['affiliate_settings']);
         Shareaholic.bind_button_clicks(Shareaholic.click_objects['general_settings']);
         Shareaholic.bind_button_clicks(Shareaholic.click_objects['app_wide_settings']);
         if (Shareaholic.click_objects['unverified_general_settings']) {
