@@ -3,7 +3,7 @@
 Plugin Name: Custom Sidebars
 Plugin URI:  http://premium.wpmudev.org/project/custom-sidebars/
 Description: Allows you to create widgetized areas and custom sidebars. Replace whole sidebars or single widgets for specific posts and pages.
-Version:     2.0.9.7
+Version:     2.0.9.8
 Author:      WPMU DEV
 Author URI:  http://premium.wpmudev.org/
 Textdomain:  custom-sidebars
@@ -51,11 +51,13 @@ function inc_sidebars_free_init() {
 	$plugin_dir_rel = dirname( plugin_basename( __FILE__ ) );
 	$plugin_url = plugin_dir_url( __FILE__ );
 
+	define( 'CSB_PLUGIN', __FILE__ );
 	define( 'CSB_LANG_DIR', $plugin_dir_rel . '/lang/' );
 	define( 'CSB_VIEWS_DIR', $plugin_dir . '/views/' );
 	define( 'CSB_INC_DIR', $plugin_dir . '/inc/' );
 	define( 'CSB_JS_URL', $plugin_url . 'js/' );
 	define( 'CSB_CSS_URL', $plugin_url . 'css/' );
+	define( 'CSB_IMG_URL', $plugin_url . 'img/' );
 
 	// Load the actual core.
 	require_once CSB_INC_DIR . 'class-custom-sidebars.php';

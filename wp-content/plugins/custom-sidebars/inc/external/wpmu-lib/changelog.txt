@@ -4,6 +4,12 @@ Author:      Philipp Stracker
 Change Log:
 ----------------------------------------------------------------------
 
+1.0.13
+----------------------------------------------------------------------
+- Migrate project to grunt
+- Add support for wp-config option: define('WDEV_UNMINIFIED', true)
+- Fix javascript issue with dynamic form submit in WpmUiAjaxData
+
 1.0.12
 ----------------------------------------------------------------------
 - Fix issue with duplicate markup of cloned multiselect elements.

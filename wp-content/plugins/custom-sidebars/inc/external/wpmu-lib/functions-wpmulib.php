@@ -1,7 +1,7 @@
 <?php
 
 // Based on Jigsaw plugin by Jared Novack (http://jigsaw.upstatement.com/)
-class TheLib_1_0_12 {
+class TheLib_1_0_13 {
 
 	// --- Start of 5.2 compatibility functions
 
@@ -44,8 +44,6 @@ class TheLib_1_0_12 {
 	}
 
 	protected function _sess_add( $key, $value ) {
-		if ( ! session_id() ) { session_start(); }
-
 		if ( ! is_array( @$_SESSION[ '_lib_persist_' . $key ] ) ) {
 			$_SESSION[ '_lib_persist_' . $key ] = array();
 		}
@@ -53,8 +51,6 @@ class TheLib_1_0_12 {
 	}
 
 	protected function _sess_get( $key ) {
-		if ( ! session_id() ) { session_start(); }
-
 		if ( ! is_array( @$_SESSION[ '_lib_persist_' . $key ] ) ) {
 			$_SESSION[ '_lib_persist_' . $key ] = array();
 		}
@@ -62,15 +58,17 @@ class TheLib_1_0_12 {
 	}
 
 	protected function _sess_clear( $key ) {
-		if ( ! session_id() ) { session_start(); }
-
 		unset( $_SESSION[ '_lib_persist_' . $key ] );
 	}
 
 	// --- End of Session access
 
 	public function __construct() {
-		if ( ! session_id() ) { session_start(); }
+		if ( ! session_id() ) {
+			if ( ! headers_sent() ) {
+				session_start();
+			}
+		}
 
 		// Check for persistent data from last request that needs to be processed.
 		$this->check_persistent_data();
@@ -86,6 +84,10 @@ class TheLib_1_0_12 {
 	 */
 	protected function _css_url( $file ) {
 		static $Url = null;
+
+		if ( defined( 'WDEV_UNMINIFIED' ) && WDEV_UNMINIFIED ) {
+			$file = str_replace( '.min.css', '.css', $file );
+		}
 		if ( null === $Url ) {
 			$Url = plugins_url( 'css/', __FILE__ );
 		}
@@ -102,6 +104,10 @@ class TheLib_1_0_12 {
 	 */
 	protected function _js_url( $file ) {
 		static $Url = null;
+
+		if ( defined( 'WDEV_UNMINIFIED' ) && WDEV_UNMINIFIED ) {
+			$file = str_replace( '.min.js', '.js', $file );
+		}
 		if ( null === $Url ) {
 			$Url = plugins_url( 'js/', __FILE__ );
 		}
@@ -134,6 +140,7 @@ class TheLib_1_0_12 {
 	 *  - core
 	 *  - scrollbar
 	 *  - select
+	 *  - vnav
 	 *
 	 * @since  1.0.0
 	 * @param  string $modules The module to load.
@@ -142,7 +149,7 @@ class TheLib_1_0_12 {
 	public function add_ui( $module = 'core', $onpage = null ) {
 		switch ( $module ) {
 			case 'core':
-				$this->add_css( $this->_css_url( 'wpmu-ui.css' ), $onpage );
+				$this->add_css( $this->_css_url( 'wpmu-ui.min.css' ), $onpage );
 				$this->add_js( $this->_js_url( 'wpmu-ui.min.js' ), $onpage );
 				break;
 
@@ -151,17 +158,21 @@ class TheLib_1_0_12 {
 				break;
 
 			case 'select':
-				$this->add_css( $this->_css_url( 'select2.css' ), $onpage );
+				$this->add_css( $this->_css_url( 'select2.min.css' ), $onpage );
 				$this->add_js( $this->_js_url( 'select2.min.js' ), $onpage );
 				break;
 
 			case 'vnav':
-				$this->add_css( $this->_css_url( 'wpmu-vnav.css' ), $onpage );
+				$this->add_css( $this->_css_url( 'wpmu-vnav.min.css' ), $onpage );
 				$this->add_js( $this->_js_url( 'wpmu-vnav.min.js' ), $onpage );
 				break;
 
 			default:
 				$ext = strrchr( $module, '.' );
+
+				if ( defined( 'WDEV_UNMINIFIED' ) && WDEV_UNMINIFIED ) {
+					$module = str_replace( '.min' . $ext, $ext, $module );
+				}
 				if ( '.css' === $ext ) {
 					$this->add_css( $module, $onpage, 20 );
 				} else if ( '.js' === $ext ) {
@@ -251,6 +262,8 @@ class TheLib_1_0_12 {
 			return;
 		}
 
+		global $wp_styles, $wp_scripts;
+
 		$scripts = $this->_get( 'js_or_css' );
 		$this->_clear( 'js_or_css' );
 
@@ -263,7 +276,6 @@ class TheLib_1_0_12 {
 			// Any plugin/theme could add new handles at any moment...
 			$handles = array();
 			if ( 'css' == $type ) {
-				global $wp_styles;
 				if ( ! is_a( $wp_styles, 'WP_Styles' ) ) {
 					$wp_styles = new WP_Styles();
 				}
@@ -274,7 +286,6 @@ class TheLib_1_0_12 {
 					)
 				);
 			} else {
-				global $wp_scripts;
 				if ( ! is_a( $wp_scripts, 'WP_Scripts' ) ) {
 					$wp_scripts = new WP_Scripts();
 				}
@@ -292,7 +303,7 @@ class TheLib_1_0_12 {
 			} else {
 				// Get the filename from the URL, then sanitize it and prefix "wpmu-"
 				$urlparts = explode( '?', $url, 2 );
-				$alias = 'wpmu-' . sanitize_title( basename( reset( $urlparts ) ) );
+				$alias = 'wpmu-' . sanitize_title( basename( $urlparts[0] ) );
 			}
 			$onpage = empty( $onpage ) ? '' : $onpage;
 

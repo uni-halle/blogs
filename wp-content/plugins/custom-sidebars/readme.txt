@@ -119,6 +119,9 @@ If you are running a earlier version of Wordpress download Custom Sidebars 0.8.2
 
 == Changelog ==
 
+= 2.0.9.8 =
+* Better: Add context-guide how to changes settings for static front-page.
+
 = 2.0.9.7 =
 * New: Assign a Sidebar to 404 pages via the Sidebar Location dialog.
 
