@@ -36,12 +36,12 @@
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
 			<div class="hgroup-inner">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( home_url( '/' ) ); ?>files/2014/08/logo.gif"></a>
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>files/2014/09/jandl-verjandlungen.jpg">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>files/2014/08/stueck-morgenstern.jpg">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>files/2014/08/stueck-goethe.jpg">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>files/2014/08/stueck-liebeslust.jpg">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>files/2014/08/stueck-schwitters.jpg">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/logo.gif"></a>
+				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/09/jandl-verjandlungen1.jpg">
+				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/stueck-morgenstern.jpg">
+				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/stueck-goethe.jpg">
+				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/stueck-liebeslust.jpg">
+				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/stueck-schwitters.jpg">
 			</div>
 		</hgroup>
 
