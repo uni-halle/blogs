@@ -42,7 +42,7 @@ $cCat = get_query_var('cat');
         ?></title>
         <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url') ?>" />
         <link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
-        <link href="<?php bloginfo('template_url').'/images/favicon.ico' ?>" rel="shortcut icon" />
+        <link href="<?php echo get_bloginfo('template_url').'/images/favicon.ico' ?>" rel="shortcut icon" />
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <!--[if lt IE 9]>
         <script src="<?php echo bloginfo('template_url') ?>/js/html5.js" type="text/javascript"></script>
