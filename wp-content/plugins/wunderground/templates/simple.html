@@ -1,0 +1,45 @@
+{#
+	This template is processed using the Twig template engine
+	Learn more at: http://twig.sensiolabs.org/doc/templates.html
+
+	You can override this output by copying this file into your
+	theme's directory, in a subfolder named "wunderground". The
+	path to the file would look like this:
+	/wp-content/themes/my-theme/wunderground/simple.html
+#}
+
+{# Escape the HTML in the passed data automatically #}
+{% autoescape 'html' %}
+{% spaceless %}
+
+<div class="wu-wrapper wu-simple-forecast {{ class }}">
+
+	{% include 'search-form.html' %}
+
+	{% include 'alert.html' %}
+
+	<div class="wu-forecast-wrapper{% if showdata.icon is not empty %} wu-has-icon{% endif %}">
+
+		{% for i in range( low = 0, high = (numdays - 1) ) %}
+
+			{% set day = wunderground.forecast.days[i] %}
+			{% set summary = day.summary %}
+			{% set forecast = day.summary.day %}
+
+			{% include 'day-simple.html' %}
+
+			{% if showdata.night is not empty %}
+				{% set forecast = day.summary.night %}
+				{% include 'day-simple.html' with { 'night' : true } %}
+			{% endif %}
+
+		{% endfor %}
+
+	</div>
+
+	{% include 'copyright.html' %}
+
+</div>
+
+{% endspaceless %}
+{% endautoescape %}

@@ -1,0 +1,664 @@
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Wunderground\n"
+"POT-Creation-Date: 2014-10-02 14:46-0700\n"
+"PO-Revision-Date: 2014-10-02 20:47+0000\n"
+"Last-Translator: Zachary Katz <zack@katz.co>\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/wunderground/language/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: inc/class-template.php:67
+#, php-format
+msgid "Statement as of %s"
+msgstr "Declarație ca aparținând %s"
+
+#: inc/class-template.php:68
+msgid "The location could not be found."
+msgstr ""
+
+#: inc/class-template.php:69
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
+
+#: inc/class-template.php:70
+#, php-format
+msgid "%s%% Chance of Precipitation"
+msgstr "%s%% Șanse de Precipitații"
+
+#: inc/class-template.php:71
+msgid "m/d"
+msgstr "l/z"
+
+#: inc/class-template.php:72
+msgid "Currently"
+msgstr "În prezent"
+
+#: inc/class-template.php:73
+#, php-format
+msgid "High %d&deg;"
+msgstr ""
+
+#: inc/class-template.php:74
+#, php-format
+msgid "Low %d&deg;"
+msgstr ""
+
+#: inc/class-template.php:75
+#, php-format
+msgid "%d&deg;"
+msgstr ""
+
+#: inc/class-template.php:76
+#, php-format
+msgid "View the %s forecast on Wunderground.com"
+msgstr "Vizualizați prognoza %s pe Wunderground.com"
+
+#: inc/class-template.php:77
+msgctxt "Weather alert issued date/time"
+msgid "Issued:"
+msgstr ""
+
+#: inc/class-template.php:78
+msgctxt "Weather alert expires date/time"
+msgid "Expires:"
+msgstr ""
+
+#: inc/class-template.php:117
+msgid "Current Conditions"
+msgstr "Condiții Curente"
+
+#: inc/class-template.php:118
+msgid "Simple display of the current conditions."
+msgstr "Afișarea simplă a condițiilor actuale."
+
+#: inc/class-template.php:123
+msgid "Grid Forecast"
+msgstr ""
+
+#: inc/class-template.php:124
+msgid "Scales to any screen size."
+msgstr "Scalare pentru orice dimensiune de ecran."
+
+#: inc/class-template.php:129
+msgid "Details Table"
+msgstr "Tabel Detalii"
+
+#: inc/class-template.php:130
+msgid ""
+"Display the forecast in a table with rows. Great for in-depth forecast "
+"display."
+msgstr ""
+
+#: inc/class-template.php:135
+msgid "Horizontal Table"
+msgstr ""
+
+#: inc/class-template.php:136
+msgid ""
+"Display the forecast in a table with columns. Great for forecast summaries."
+msgstr ""
+
+#: inc/class-widget.php:43
+msgid "Add a Wunderground.com forecast"
+msgstr ""
+
+#: inc/class-widget.php:48 inc/functions.php:168
+msgid "Wunderground"
+msgstr "Wunderground"
+
+#: inc/class-widget.php:147
+msgid "Title"
+msgstr "Titlu"
+
+#: inc/class-widget.php:148
+msgid "Leave empty to hide the widget title."
+msgstr "Lăsați necompletat pentru a ascunde titlul mini-aplicației widget."
+
+#: inc/class-widget.php:154
+msgid "Location"
+msgstr "Locație"
+
+#: inc/class-widget.php:155
+msgid "Locations will autoload, but you may also define custom locations."
+msgstr "Locațiile se vor încărca automat, dar poate de asemenea puteți defini locații personalizate."
+
+#: inc/class-widget.php:156
+msgid "Enter the name of a location."
+msgstr "Introduceți numele unei locații."
+
+#: inc/class-widget.php:163
+msgid "Location Title"
+msgstr ""
+
+#: inc/class-widget.php:164
+msgid "Change how the location is displayed in the widget search field."
+msgstr ""
+
+#: inc/class-widget.php:165
+msgid "Leave empty to use the location name."
+msgstr ""
+
+#: inc/class-widget.php:166
+msgid ""
+"Example: if the Location is set to \"Denver, Colorado\", you may prefer to "
+"set the Location Title as \"Denver\", which is simpler."
+msgstr ""
+
+#: inc/class-widget.php:175
+msgid "# of Days in Forecast"
+msgstr "# de Zile de Prognoză"
+
+#: inc/class-widget.php:181
+msgid "Include Current Conditions"
+msgstr ""
+
+#: inc/class-widget.php:182
+msgid "Add the current conditions to the forecast."
+msgstr ""
+
+#: inc/class-widget.php:188
+msgid "Include Night Forecasts"
+msgstr ""
+
+#: inc/class-widget.php:189
+msgid "This will result in double the number of forecasts shown."
+msgstr ""
+
+#: inc/class-widget.php:195
+msgid "Icon Set"
+msgstr "Seturi de Pictograme"
+
+#: inc/class-widget.php:196
+msgid ""
+"Choose the look and feel of the images that will represent the weather."
+msgstr "Alegeți aspectul şi senzația ale imaginilor ce vor reprezenta vremea."
+
+#: inc/class-widget.php:224
+msgid "Widget Template"
+msgstr ""
+
+#: inc/class-widget.php:225
+msgid "Choose how you would like to display the forecast."
+msgstr ""
+
+#: inc/class-widget.php:230
+msgid "Show in Forecast"
+msgstr "Afișare în Prognoză"
+
+#: inc/class-widget.php:235
+msgid "Search Form"
+msgstr ""
+
+#: inc/class-widget.php:236
+msgid "Allow searching weather forecasts."
+msgstr ""
+
+#: inc/class-widget.php:239
+msgid "Weekday Labels"
+msgstr ""
+
+#: inc/class-widget.php:240
+msgid "Show the names of the days of the week."
+msgstr ""
+
+#: inc/class-widget.php:243
+msgid "Date"
+msgstr "Data"
+
+#: inc/class-widget.php:244
+msgid "Display the date numerically (\"09/14\")."
+msgstr ""
+
+#: inc/class-widget.php:247
+msgid "Weather Icon"
+msgstr "Pictogramă Meteo"
+
+#: inc/class-widget.php:248
+msgid "Icon representing the forecast conditions."
+msgstr ""
+
+#: inc/class-widget.php:251
+msgid "Chance of Rain"
+msgstr "Șanse de Ploaie"
+
+#: inc/class-widget.php:252
+msgid "Display the percent chance of rain."
+msgstr ""
+
+#: inc/class-widget.php:255
+msgid "High & Low Temp"
+msgstr ""
+
+#: inc/class-widget.php:256
+msgid "Show the high & low temperatures for forecast."
+msgstr ""
+
+#: inc/class-widget.php:259
+msgid "Condition Title"
+msgstr "Titlul Stării "
+
+#: inc/class-widget.php:260
+msgid "Short summary of conditions (\"Clear\", \"Partly Cloudy\", etc.)."
+msgstr ""
+
+#: inc/class-widget.php:263
+msgid "Forecast Text"
+msgstr "Text Prognoză"
+
+#: inc/class-widget.php:264
+msgid "Display a description of the forecast, normally in sentence format."
+msgstr ""
+
+#: inc/class-widget.php:267
+msgid "Weather Alerts &amp; Warnings"
+msgstr "Alerte Meteo &amp; Avertismente"
+
+#: inc/class-widget.php:268
+msgid ""
+"This functionality is currently not working; we are working with "
+"Wunderground.com to restore it."
+msgstr ""
+
+#: inc/class-widget.php:284
+msgid "Forecast Language"
+msgstr "Limbă Prognoză"
+
+#: inc/class-widget.php:295
+msgid "Measurements"
+msgstr "Unități de Măsură"
+
+#: inc/class-widget.php:298
+msgid "Fahrenheit &amp; Inches"
+msgstr "Fahrenheit &amp; Inch"
+
+#: inc/class-widget.php:301
+msgid "Celsius &amp; Meters"
+msgstr "Celsius &amp; Metri"
+
+#: inc/functions.php:42
+msgid "Weather Forecast"
+msgstr "Prognoza Vremii"
+
+#: inc/functions.php:153 inc/functions.php:170
+msgid "Incredible"
+msgstr "Incredibil"
+
+#: inc/functions.php:154 inc/functions.php:169
+msgid "Elemental"
+msgstr "Elementar"
+
+#: inc/functions.php:155 inc/functions.php:171
+msgid "Helen"
+msgstr "Helen"
+
+#: inc/functions.php:156 inc/functions.php:173
+msgid "Default"
+msgstr "Implicit"
+
+#: inc/functions.php:157 inc/functions.php:174
+msgid "Smiley"
+msgstr "Zâmbet"
+
+#: inc/functions.php:158 inc/functions.php:175
+msgid "Generic"
+msgstr "Generic"
+
+#: inc/functions.php:159 inc/functions.php:176
+msgid "Old School"
+msgstr "De Modă Veche"
+
+#: inc/functions.php:160 inc/functions.php:177
+msgid "Cartoon"
+msgstr "Desene animate"
+
+#: inc/functions.php:161 inc/functions.php:178
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/functions.php:162 inc/functions.php:179
+msgid "Simple"
+msgstr "Simplu"
+
+#: inc/functions.php:163 inc/functions.php:180
+msgid "Contemporary"
+msgstr "Contemporan"
+
+#: inc/functions.php:312
+msgid "Afrikaans"
+msgstr "Africană"
+
+#: inc/functions.php:317
+msgid "Albanian"
+msgstr "Albaneză"
+
+#: inc/functions.php:322
+msgid "Arabic"
+msgstr "Arabă"
+
+#: inc/functions.php:328
+msgid "Armenian"
+msgstr "Armeană"
+
+#: inc/functions.php:333
+msgid "Azerbaijani"
+msgstr "Azeră"
+
+#: inc/functions.php:338
+msgid "Basque"
+msgstr "Bască"
+
+#: inc/functions.php:343
+msgid "Belarusian"
+msgstr "Bielorusă"
+
+#: inc/functions.php:348
+msgid "Bulgarian"
+msgstr "Bulgară"
+
+#: inc/functions.php:353
+msgid "British English"
+msgstr "Engleză Britanică"
+
+#: inc/functions.php:358
+msgid "Burmese"
+msgstr "Birmaneză"
+
+#: inc/functions.php:363
+msgid "Catalan"
+msgstr "Catalană"
+
+#: inc/functions.php:368
+msgid "Chinese - Simplified"
+msgstr "Chineză - Simplificată"
+
+#: inc/functions.php:373
+msgid "Chinese - Traditional"
+msgstr "Chineză - Tradițională"
+
+#: inc/functions.php:378
+msgid "Croatian"
+msgstr "Croată"
+
+#: inc/functions.php:383
+msgid "Czech"
+msgstr "Cehă"
+
+#: inc/functions.php:388
+msgid "Danish"
+msgstr "Daneză"
+
+#: inc/functions.php:393
+msgid "Dhivehi"
+msgstr "Divei"
+
+#: inc/functions.php:399
+msgid "Dutch"
+msgstr "Olandeză"
+
+#: inc/functions.php:404
+msgid "English"
+msgstr "Engleză"
+
+#: inc/functions.php:409
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: inc/functions.php:414
+msgid "Estonian"
+msgstr "Estonă"
+
+#: inc/functions.php:419
+msgid "Farsi"
+msgstr "Farsi"
+
+#: inc/functions.php:424
+msgid "Finnish"
+msgstr "Finlandeză"
+
+#: inc/functions.php:429
+msgid "French"
+msgstr "Franceză"
+
+#: inc/functions.php:434
+msgid "French Canadian"
+msgstr "Franceză Canadiană"
+
+#: inc/functions.php:439
+msgid "Galician"
+msgstr "Galiciană"
+
+#: inc/functions.php:444
+msgid "German"
+msgstr "Germană"
+
+#: inc/functions.php:449
+msgid "Georgian"
+msgstr "Georgiană"
+
+#: inc/functions.php:454
+msgid "Greek"
+msgstr "Greacă"
+
+#: inc/functions.php:459
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: inc/functions.php:464
+msgid "Haitian Creole"
+msgstr "Creolă haitiană"
+
+#: inc/functions.php:469
+msgid "Hebrew"
+msgstr "Ebraică"
+
+#: inc/functions.php:475
+msgid "Hindi"
+msgstr "Hindusă"
+
+#: inc/functions.php:480
+msgid "Hungarian"
+msgstr "Maghiară"
+
+#: inc/functions.php:485
+msgid "Icelandic"
+msgstr "Islandeză"
+
+#: inc/functions.php:490
+msgid "Ido"
+msgstr "Ido"
+
+#: inc/functions.php:495
+msgid "Indonesian"
+msgstr "Indoneziană"
+
+#: inc/functions.php:500
+msgid "Irish Gaelic"
+msgstr "Galeză Irlandeză"
+
+#: inc/functions.php:505
+msgid "Italian"
+msgstr "Italiană"
+
+#: inc/functions.php:510
+msgid "Japanese"
+msgstr "Japoneză"
+
+#: inc/functions.php:515
+msgid "Javanese"
+msgstr "Javaneză"
+
+#: inc/functions.php:520
+msgid "Khmer"
+msgstr "Khmer"
+
+#: inc/functions.php:525
+msgid "Korean"
+msgstr "Coreeană"
+
+#: inc/functions.php:530
+msgid "Kurdish"
+msgstr "Curdă"
+
+#: inc/functions.php:536
+msgid "Latin"
+msgstr "Latină"
+
+#: inc/functions.php:541
+msgid "Latvian"
+msgstr "Letonă"
+
+#: inc/functions.php:546
+msgid "Lithuanian"
+msgstr "Lituaniană"
+
+#: inc/functions.php:551
+msgid "Low German"
+msgstr "Germană de jos"
+
+#: inc/functions.php:556
+msgid "Macedonian"
+msgstr "Macedonă"
+
+#: inc/functions.php:561
+msgid "Maltese"
+msgstr "Malteză"
+
+#: inc/functions.php:566
+msgid "Mandinka"
+msgstr "Mandinka"
+
+#: inc/functions.php:571
+msgid "Maori"
+msgstr "Maori"
+
+#: inc/functions.php:576
+msgid "Marathi"
+msgstr "Marathi"
+
+#: inc/functions.php:581
+msgid "Mongolian"
+msgstr "Mongolă"
+
+#: inc/functions.php:586
+msgid "Norwegian"
+msgstr "Norvegiană"
+
+#: inc/functions.php:591
+msgid "Occitan"
+msgstr "Occitană"
+
+#: inc/functions.php:596
+msgid "Pashto"
+msgstr "Pashto"
+
+#: inc/functions.php:602
+msgid "Plautdietsch"
+msgstr "Plautdietsch"
+
+#: inc/functions.php:607
+msgid "Polish"
+msgstr "Poloneză"
+
+#: inc/functions.php:612
+msgid "Portuguese"
+msgstr "Portugheză"
+
+#: inc/functions.php:617
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: inc/functions.php:623
+msgid "Romanian"
+msgstr "Română"
+
+#: inc/functions.php:628
+msgid "Russian"
+msgstr "Rusă"
+
+#: inc/functions.php:633
+msgid "Serbian"
+msgstr "Sârbă"
+
+#: inc/functions.php:638
+msgid "Slovak"
+msgstr "Slovacă"
+
+#: inc/functions.php:643
+msgid "Slovenian"
+msgstr "Slovenă"
+
+#: inc/functions.php:648
+msgid "Spanish"
+msgstr "Spaniolă"
+
+#: inc/functions.php:653
+msgid "Swahili"
+msgstr "Swahili"
+
+#: inc/functions.php:658
+msgid "Swedish"
+msgstr "Suedeză"
+
+#: inc/functions.php:663
+msgid "Swiss"
+msgstr "Elveţiană"
+
+#: inc/functions.php:668
+msgid "Tagalog"
+msgstr "Tagalog"
+
+#: inc/functions.php:673
+msgid "Tatarish"
+msgstr "Tătară"
+
+#: inc/functions.php:678
+msgid "Thai"
+msgstr "Tailandeză"
+
+#: inc/functions.php:683
+msgid "Turkish"
+msgstr "Turcă"
+
+#: inc/functions.php:688
+msgid "Turkmen"
+msgstr "Turkmenă"
+
+#: inc/functions.php:693
+msgid "Ukrainian"
+msgstr "Ucraineană"
+
+#: inc/functions.php:698
+msgid "Uzbek"
+msgstr "Uzbecă"
+
+#: inc/functions.php:703
+msgid "Vietnamese"
+msgstr "Vietnameză"
+
+#: inc/functions.php:708
+msgid "Welsh"
+msgstr "Galeză"
+
+#: inc/functions.php:713
+msgid "Wolof"
+msgstr "Wolof"
+
+#: inc/functions.php:718
+msgid "Yiddish - transliterated"
+msgstr "Idiș - transcrisă"
+
+#: inc/functions.php:723
+msgid "Yiddish - unicode"
+msgstr "Idiș - unicode"

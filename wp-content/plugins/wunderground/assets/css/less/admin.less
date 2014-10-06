@@ -1,0 +1,106 @@
+.wunderground-settings {
+
+	.setting-wrapper {
+		padding: 0 0 1.5em 0;
+		border-bottom: 1px solid #ddd;
+		position: relative;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+		// Align the howto with the label
+		&.forecast .howto {
+			padding-left: 1.75em;
+		}
+	}
+
+	.layout-title {
+		font-size: 1.4em;
+	}
+
+	span.title {
+		font-weight: normal;
+		font-size: .9em;
+		color: #444;
+	}
+
+	// Highlight the active title for checkboxes and radios
+	:checked + span.title {
+		font-weight: bold!important;
+		color: black;
+	}
+
+	.icons {
+		li {
+			display:block;
+			width:48%;
+			padding: 5px 1%;
+		}
+
+		// Clear floats
+		li:nth-child(2n + 1) {
+			clear: left;
+		}
+
+		label {
+			display:block;
+			float:left;
+			line-height: 50px;
+			width:100%;
+		}
+
+		input {
+			margin-top:.75em
+		}
+
+		.icon {
+			display:block;
+			height: 50px;
+			width: 50px;
+			margin-right:10px;
+		}
+
+		img {
+
+		}
+	}
+
+	.layout {
+
+		h3 {
+			margin-bottom: 0;
+		}
+
+		img {
+			display: block;
+			opacity: 1;
+			margin: .5em 0 .25em;
+			border: 1px solid #ddd;
+			box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		input {
+			float: right;
+			margin: 0;
+			line-height: auto;
+		}
+	}
+
+	h3 {
+		line-height: 1.2em;
+	}
+
+	.description {
+		font-weight: normal;
+	}
+
+	img {
+		max-width:100%!important;
+	}
+
+}

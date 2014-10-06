@@ -1,0 +1,137 @@
+.wu-forecast-wrapper .wu-day-title {
+	font-family: verb, sans-serif;
+	font-weight: bold;
+	color: #777;
+}
+
+.wu-forecast-wrapper .wu-cond-pop {
+	font-weight: normal;
+    display: inline-block;
+
+    background: url("../img/icons/raindrop-sprite.png") left -20px no-repeat;
+    padding-left: 20px;
+    margin-left: 5px;
+
+    .wu-rtl & {
+	    background: url("../img/icons/raindrop-sprite.png") right -20px no-repeat;
+	    padding-right: 20px;
+	    margin-right: 5px;
+	}
+
+    min-height: 20px;
+    height: 20px;
+}
+
+.wu-forecast-wrapper {
+
+	.wu-simple-forecast-day {
+
+		float: left;
+
+		.wu-rtl & { float: right; }
+
+		width: 215px;
+		margin-bottom: 13px;
+
+		.wu-cond-pop {
+			font-size: 0.9375rem;
+		}
+	}
+
+	.wu-has-icon {
+
+		text-align: right;
+
+		.wu-forecast-body {
+			margin-right: 60px;
+		}
+
+	}
+
+	// High-low wrapper
+	.wu-cond-highlow {
+
+		margin: 10px 0;
+		/*font-size: 0.9375rem;*/
+	    color: #999;
+
+	    .wu-cond-high {
+	    	padding-right: .5em;
+	    	color: #d5202a;
+	    }
+
+		.wu-cond-split {
+			position: absolute;
+			left: -9999px;
+			color: #ccc;
+		}
+
+	    .wu-cond-low {
+	    	color: #0053ae;
+	    }
+
+	    .wu-cond-current {}
+	}
+
+
+	// Conditions
+	.wu-cond-text {
+		.wu-bold();
+		margin: .25em 0 .5em 0;
+	}
+
+	.wu-forecast-text {
+
+	}
+
+	// Icon
+	.wu-cond-icon {
+		width: 50px;
+		float: right;
+		margin-left: 10px;
+
+		.wu-rtl & {
+			float: left;
+			margin-right: 10px;
+		}
+
+		z-index: 10000;
+	}
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 280px) {
+	.wu-has-icon .wu-simple-forecast-day {
+		min-width: 215px;
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width : 620px) {
+	.wu-has-icon .wu-simple-forecast-day {
+		min-width: 125px;
+		width: auto;
+		max-width: 47%;
+		margin-right: 3%;
+	}
+}
+
+@media only screen and (min-width : 768px) {
+	.wu-has-icon .wu-simple-forecast-day {
+		max-width: 22%;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
