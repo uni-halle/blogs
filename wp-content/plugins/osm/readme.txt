@@ -2,8 +2,8 @@
 Contributors: MiKa
 Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, Open Layers, Open Street Map, CloudMade, marker, POI, geocode, geotagging, location, Route, Tracks, WMS, OpenWeatherMap, Weather, OpenSeaMap, stamen, toner, watercolor, basemap, ssl, exif, meta, widget
 Requires at least: 2.8
-Tested up to: 3.9.1
-Stable tag: 2.8.1
+Tested up to: 4.0
+Stable tag: 2.8.2
 
 Customize maps in your post, pages and widgets. Add geotag to your blog and site. Use GPX, KML, CSV, TXT ... 
 
@@ -69,6 +69,9 @@ There must be not format tag (like href ...) in the shortcode.
 
 
 == Changelog ==
+= 2.8.2 =
+* NEW: tested with WordPress 4.0 
+* NEW: Support of old geotags
 = 2.8.1 =
 * NEW: add excerpt (read more text) to popup of geotagged post 
 * NEW: Add OSRM routing service

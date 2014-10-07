@@ -371,7 +371,10 @@
    // just add single marker 
    if ($marker  == 'OSM_geo'){ 
      global $post;
-     $Data = get_post_meta($post->ID, 'OSM_geo_data', true); 
+     //$Data = get_post_meta($post->ID, 'OSM_geo_data', true);
+     $CustomFieldName = get_option('osm_custom_field','OSM_geo_data');
+     $Data = get_post_meta($post->ID, $CustomFieldName, true); 
+
      $PostMarker = get_post_meta($post->ID, 'OSM_geo_icon', true);
 
      $Data = preg_replace('/\s*,\s*/', ',',$Data);
@@ -400,7 +403,9 @@
    // just add osm widget
    else if ($marker  == 'OSM_geo_widget'){ 
      global $post;
-     $Data = get_post_meta($post->ID, 'OSM_geo_data', true); 
+     //$Data = get_post_meta($post->ID, 'OSM_geo_data', true);
+     $CustomFieldName = get_option('osm_custom_field','OSM_geo_data');
+     $Data = get_post_meta($post->ID, $CustomFieldName, true);  
      $PostMarker = get_post_meta($post->ID, 'OSM_geo_icon', true);
 
      $Data = preg_replace('/\s*,\s*/', ',',$Data);

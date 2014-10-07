@@ -3,7 +3,7 @@
 Plugin Name: OSM
 Plugin URI: http://wp-osm-plugin.HanBlog.net
 Description: Embeds maps in your blog and adds geo data to your posts.  Find samples and a forum on the <a href="http://wp-osm-plugin.HanBlog.net">OSM plugin page</a>.  
-Version: 2.8.1
+Version: 2.8.2
 Author: MiKa
 Author URI: http://www.HanBlog.net
 Minimum WordPress Version Required: 2.8
@@ -27,7 +27,7 @@ Minimum WordPress Version Required: 2.8
 */
 load_plugin_textdomain('OSM-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 
-define ("PLUGIN_VER", "V2.8.1");
+define ("PLUGIN_VER", "V2.8.2");
 
 // modify anything about the marker for tagged posts here
 // instead of the coding.
@@ -91,7 +91,7 @@ define('OSM_PLUGIN_JS_URL', OSM_PLUGIN_URL."js/");
 
 global $wp_version;
 if (version_compare($wp_version,"2.8","<")){
-  exit('[OSM plugin - ERROR]: At least Wordpress Version 2.5.1 is needed for this plugin!');
+  exit('[OSM plugin - ERROR]: At least Wordpress Version 2.8 is required for this plugin!');
 }
 	
 // get the configuratin by
@@ -492,26 +492,28 @@ class Osm
          for ($TagNum = 0; $TagNum < $NumOfGeoTagsInPost; $TagNum++){
            list($tag_lat, $tag_lon) = explode(',', $GeoData_Array[$TagNum]); 
            list($tag_lat, $tag_lon) = $this->checkLatLongRange('$marker_all_posts',$tag_lat, $tag_lon);
-           if ($a_import == 'osm_l' ){   
-             $categories = wp_get_post_categories($post->ID);
-	     // take the last one but ignore those without a specific category
-             foreach( $categories as $catid ) {
-	       $cat = get_category($catid);
-               if ((strtolower($cat->name) == 'uncategorized') || (strtolower($cat->name) == 'allgemein')){
-                 $Category_Txt = '';
-               }
-               else{
-                 $Category_Txt = $cat->name.': ';
-               }
+           //if ($a_import == 'osm_l' ){   
+           $categories = wp_get_post_categories($post->ID);
+	   // take the last one but ignore those without a specific category
+           foreach( $categories as $catid ) {
+	     $cat = get_category($catid);
+             if ((strtolower($cat->name) == 'uncategorized') || (strtolower($cat->name) == 'allgemein')){
+               $Category_Txt = '';
              }
-             $Marker_Txt = '<a href="'.get_permalink($post->ID).'">'.$Category_Txt.get_the_title($post->ID).'  </a><br>';
-             $Marker_Txt .= get_the_excerpt($post->ID);
-             $MarkerArray[] = array('lat'=> $tag_lat,'lon'=>$tag_lon,'popup_height'=>'100', 'popup_width'=>'150', 'marker'=>$Icon[name], 'text'=>$Marker_Txt, 'Marker'=>$PostMarker);
-           }	 
-           else{ // plain osm without link to the post
-             $Marker_Txt = ' ';
-             $MarkerArray[] = array('lat'=> $tag_lat,'lon'=>$tag_lon,'popup_height'=>'100', 'popup_width'=>'150', 'marker'=>$Icon["name"], 'text'=>$Marker_Txt, 'Marker'=>$PostMarker);
+             else{
+               $Category_Txt = $cat->name.': ';
+             }
            }
+           $Marker_Txt = '<a href="'.get_permalink($post->ID).'">'.$Category_Txt.get_the_title($post->ID).'  </a><br>';
+           if ($a_import == 'osm_l' ){  
+             $Marker_Txt .= get_the_excerpt($post->ID);
+           }
+           $MarkerArray[] = array('lat'=> $tag_lat,'lon'=>$tag_lon,'popup_height'=>'100', 'popup_width'=>'150', 'marker'=>$Icon[name], 'text'=>$Marker_Txt, 'Marker'=>$PostMarker);
+           //}	 
+           //else{ // plain osm without link to the post
+           //  $Marker_Txt = ' ';
+           //  $MarkerArray[] = array('lat'=> $tag_lat,'lon'=>$tag_lon,'popup_height'=>'100', 'popup_width'=>'150', 'marker'=>$Icon["name"], 'text'=>$Marker_Txt, 'Marker'=>$PostMarker);
+           //}
          }
        }
        $this->traceText(DEBUG_INFO, "Found Marker ".count($MarkerArray));  
@@ -590,7 +592,7 @@ class Osm
     // import data from tagged posts
     else if ($a_type  == 'osm'){
       $LayerName = 'TaggedPosts';
-      $PopUp = 'false';
+      $PopUp = 'true';
     }
 
     // import data from wpgmg
@@ -750,7 +752,9 @@ $pOsm = new Osm();
 
 function OSM_isGeotagged(){
   global $post;
-  $Data = get_post_meta($post->ID, 'OSM_geo_data', true); 
+  //$Data = get_post_meta($post->ID, 'OSM_geo_data', true); 
+  $CustomFieldName = get_option('osm_custom_field','OSM_geo_data');
+  $Data = get_post_meta($post->ID, $CustomFieldName, true); 
   $PostMarker = get_post_meta($post->ID, 'OSM_geo_icon', true);
   $Data = preg_replace('/\s*,\s*/', ',',$Data);
   // get pairs of coordination
