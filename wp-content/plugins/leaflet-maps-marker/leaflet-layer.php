@@ -8,7 +8,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-layer.php') { die ("Please
 <div class="wrap">
 <?php include('inc' . DIRECTORY_SEPARATOR . 'admin-header.php'); ?>
 <?php
-global $wpdb, $allowedtags;
+global $wpdb, $allowedtags, $locale;
 $lmm_options = get_option( 'leafletmapsmarker_options' );
 //info: set marker shadow url
 if ( $lmm_options['defaults_marker_icon_shadow_url_status'] == 'default' ) {
@@ -62,7 +62,7 @@ if (!empty($action)) {
 		$listmarkers_checkbox = isset($_POST['listmarkers']) ? '1' : '0';
 		$panel_checkbox = isset($_POST['panel']) ? '1' : '0';
 		$layername_quotes = str_replace("\\\\","/", str_replace("\"","'", $_POST['name'])); //info: backslash and double quotes break geojson
-		$address = str_replace("\\","/", preg_replace("/\t/", " ", $_POST['address'])); //info: tabs break geojson
+		$address = preg_replace("/(\\\\)(?!')/","/", preg_replace("/\t/", " ", $_POST['address'])); //info: tabs break geojson
 		$multi_layer_map_checkbox = isset($_POST['multi_layer_map']) ? '1' : '0';
 		$mlm_checked_imploded = isset($_POST['mlm-all']) ? 'all' : '';
 		$clustering = '1';  //info: added for compat
@@ -105,7 +105,7 @@ if (!empty($action)) {
 		$listmarkers_checkbox = isset($_POST['listmarkers']) ? '1' : '0';
 		$panel_checkbox = isset($_POST['panel']) ? '1' : '0';
 		$layername_quotes = str_replace("\\\\","/", str_replace("\"","'", $_POST['name'])); //info: backslash and double quotes break geojson
-		$address = str_replace("\\","/", preg_replace("/\t/", " ", $_POST['address'])); //info: tabs break geojson
+		$address = preg_replace("/(\\\\)(?!')/","/", preg_replace("/\t/", " ", $_POST['address'])); //info: tabs break geojson
 		$multi_layer_map_checkbox = isset($_POST['multi_layer_map']) ? '1' : '0';
 		$mlm_checked_imploded = isset($_POST['mlm-all']) ? 'all' : '';
 		$clustering = '1';  //info: added for compat
@@ -561,7 +561,7 @@ if ( $edit_status == 'updated') {
 										if ($lmm_options['google_maps_language_localization'] == 'browser_setting') {
 											$google_language = '';
 										} else if ($lmm_options['google_maps_language_localization'] == 'wordpress_setting') {
-											if ( defined('WPLANG') ) { $google_language = '&hl=' . substr(WPLANG, 0, 2); } else { $google_language =  '&hl=en'; }
+											if ( $locale != NULL ) { $google_language = '&hl=' . substr($locale, 0, 2); } else { $google_language =  '&hl=en'; }
 										} else {
 											$google_language = '&hl=' . $lmm_options['google_maps_language_localization'];
 										}

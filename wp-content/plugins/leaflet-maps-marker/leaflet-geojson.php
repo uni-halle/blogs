@@ -29,7 +29,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 } else {
 	//info: set php header to allow calls from other (sub)domains
 	header('Access-Control-Allow-Origin: *');
-	global $wpdb;
+	global $wpdb, $locale;
 	$table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 	$table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
 	$lmm_options = get_option( 'leafletmapsmarker_options' );
@@ -39,7 +39,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 	if ($lmm_options['google_maps_language_localization'] == 'browser_setting') {
 		$google_language = '';
 	} else if ($lmm_options['google_maps_language_localization'] == 'wordpress_setting') {
-		if ( defined('WPLANG') ) { $google_language = "&hl=" . substr(WPLANG, 0, 2); } else { $google_language =  '&hl=en'; }
+		if ( $locale != NULL ) { $google_language = "&hl=" . substr($locale, 0, 2); } else { $google_language =  '&hl=en'; }
 	} else {
 		$google_language = "&hl=" . $lmm_options['google_maps_language_localization'];
 	}

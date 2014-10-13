@@ -2,12 +2,12 @@
 Contributors:      harmr
 Plugin Name:       Leaflet Maps Marker
 Plugin URI:        https://www.mapsmarker.com
-Tags:              Google Maps, OpenStreetMap, OSM, bing maps, googlemaps, google earth, map, maps, kml, gpx, location, augmented-reality 
+Tags:              Google Maps, OpenStreetMap, OSM, bing maps, googlemaps, google earth, map, maps, kml, gpx, location, augmented-reality
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.3
 Tested up to:      4.0
-Stable tag:        3.9.2
+Stable tag:        3.9.3
 License:           GPLv2
 
 Pin, organize & show your favorite places & tracks through OpenStreetMap, Google Maps, KML, Bing Maps, APIs or Augmented-Reality browsers
@@ -183,9 +183,9 @@ to the visitors of your website.
 * Romanian (ro_RO) translation thanks to Arian, Daniel Codrea and Flo Bejgu, http://www.inboxtranslation.com
 * Russian (ru_RU) thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies) and Vyacheslav Strenadko
 * Slovak (sk_SK) thanks to Zdenko Podobny
-* Spanish (es_ES) thanks to David Ramirez, Alvaro Lara, Ricardo Viteri
+* Spanish (es_ES) thanks to David Ramirez, Alvaro Lara, Ricardo Viteri and Juan Valdes
 * Spanish (es_MX) thanks to Victor Guevara
-* Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha, Dan Paulsson and Elger Lindgren
+* Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha, Dan Paulsson, Elger Lindgren and Anton Andreasson
 * Turkish (tr_TR) thanks to Emre Erkan and Mahir Tosun
 * Ukrainian (uk_UK) thanks to Andrexj
 * Vietnamese (vi) thanks to Hoai Thu
@@ -306,10 +306,10 @@ MapsMarker &reg; - registration pending
 Copyright 2011-2014, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.9.2 =
-bugfix and compatibility release (RTL support, mySQL...) - see https://www.mapsmarker.com/v3.9.2 for more details
+= v3.9.3 =
+bugfix and compatibility release (RTL support, bing localization...) - see https://www.mapsmarker.com/v3.9.3 for more details
 
 == Changelog ==
-[blog post with details about v3.9.2](https://www.mapsmarker.com/v3.9.2)
+[blog post with details about v3.9.3](https://www.mapsmarker.com/v3.9.3)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

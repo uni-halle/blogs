@@ -18,7 +18,7 @@ $columnsort = (in_array($columnsort_input, $columnsort_values)) ? $columnsort_in
 $columnsortorder_values = array('asc','desc','ASC','DESC');
 $columnsortorder_input = isset($_GET['order']) ? esc_sql($_GET['order']) : $lmm_options[ 'misc_marker_listing_sort_sort_order' ];
 $columnsortorder = (in_array($columnsortorder_input, $columnsortorder_values)) ? $columnsortorder_input : $lmm_options[ 'misc_marker_listing_sort_sort_order' ];
-$start = ($pagenum - 1) * intval($lmm_options[ 'markers_per_page' ]);
+$offset = ($pagenum - 1) * intval($lmm_options[ 'markers_per_page' ]);
 $action = isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '');
 $searchtext = isset($_POST['searchtext']) ? '%' .esc_sql($_POST['searchtext']) . '%' : (isset($_GET['searchtext']) ? '%' . esc_sql($_GET['searchtext']) : '') . '%';
 $markers_per_page_validated = intval($lmm_options[ 'markers_per_page' ]);
@@ -26,16 +26,15 @@ if ($action == 'search') {
 	$markersearchnonce = isset($_POST['_wpnonce']) ? $_POST['_wpnonce'] : '';
 	if (! wp_verify_nonce($markersearchnonce, 'markersearch-nonce') ) die('<br/>'.__('Security check failed - please call this function from the according admin page!','lmm').'');
        	$mcount = intval($wpdb->get_var('SELECT COUNT(*) FROM `'.$table_name_markers.'` WHERE `markername` like \'%'.$searchtext.'%'.'\' OR `popuptext` like \'%'.$searchtext.'%'.'\''));
-	$marklist = $wpdb->get_results( $wpdb->prepare("SELECT m.id,CONCAT(m.lat,',',m.lon) AS coords,m.basemap,m.icon,m.popuptext,m.layer,m.zoom,m.openpopup as openpopup,m.lat,m.lon,m.mapwidth,m.mapheight,m.mapwidthunit,m.markername,m.panel,m.createdby,m.createdon,m.updatedby,m.updatedon,m.controlbox,m.overlays_custom,m.overlays_custom2,m.overlays_custom3,m.overlays_custom4,m.wms,m.wms2,m.wms3,m.wms4,m.wms5,m.wms6,m.wms7,m.wms8,m.wms9,m.wms10,m.address,l.name AS layername,l.id as layerid FROM `$table_name_markers` AS m LEFT OUTER JOIN $table_name_layers AS l ON m.layer=l.id WHERE m.markername like '%s' OR m.popuptext like '%s' order by $columnsort $columnsortorder LIMIT $markers_per_page_validated OFFSET $start", $searchtext, $searchtext), ARRAY_A);
+	$marklist = $wpdb->get_results( $wpdb->prepare("SELECT m.id,CONCAT(m.lat,',',m.lon) AS coords,m.basemap,m.icon,m.popuptext,m.layer,m.zoom,m.openpopup as openpopup,m.lat,m.lon,m.mapwidth,m.mapheight,m.mapwidthunit,m.markername,m.panel,m.createdby,m.createdon,m.updatedby,m.updatedon,m.controlbox,m.overlays_custom,m.overlays_custom2,m.overlays_custom3,m.overlays_custom4,m.wms,m.wms2,m.wms3,m.wms4,m.wms5,m.wms6,m.wms7,m.wms8,m.wms9,m.wms10,m.address,l.name AS layername,l.id as layerid FROM `$table_name_markers` AS m LEFT OUTER JOIN $table_name_layers AS l ON m.layer=l.id WHERE m.markername like '%s' OR m.popuptext like '%s' order by $columnsort $columnsortorder LIMIT $markers_per_page_validated OFFSET $offset", $searchtext, $searchtext), ARRAY_A);
 } else {
         $mcount = intval($wpdb->get_var('SELECT COUNT(*) FROM '.$table_name_markers));
 	$marker_per_page = intval($lmm_options[ 'markers_per_page' ]);
- 	$marklist = $wpdb->get_results( "SELECT m.id,CONCAT(m.lat,',',m.lon) AS coords,m.basemap,m.icon,m.popuptext,m.layer,m.zoom,m.openpopup as openpopup,m.lat,m.lon,m.mapwidth,m.mapheight,m.mapwidthunit,m.markername,m.panel,m.createdby,m.createdon,m.updatedby,m.updatedon,m.controlbox,m.overlays_custom,m.overlays_custom2,m.overlays_custom3,m.overlays_custom4,m.wms,m.wms2,m.wms3,m.wms4,m.wms5,m.wms6,m.wms7,m.wms8,m.wms9,m.wms10,m.address,l.name AS layername,l.id as layerid FROM `$table_name_markers` AS m LEFT OUTER JOIN $table_name_layers AS l ON m.layer=l.id order by $columnsort $columnsortorder LIMIT $marker_per_page OFFSET $start", ARRAY_A);
+ 	$marklist = $wpdb->get_results( "SELECT m.id,CONCAT(m.lat,',',m.lon) AS coords,m.basemap,m.icon,m.popuptext,m.layer,m.zoom,m.openpopup as openpopup,m.lat,m.lon,m.mapwidth,m.mapheight,m.mapwidthunit,m.markername,m.panel,m.createdby,m.createdon,m.updatedby,m.updatedon,m.controlbox,m.overlays_custom,m.overlays_custom2,m.overlays_custom3,m.overlays_custom4,m.wms,m.wms2,m.wms3,m.wms4,m.wms5,m.wms6,m.wms7,m.wms8,m.wms9,m.wms10,m.address,l.name AS layername,l.id as layerid FROM `$table_name_markers` AS m LEFT OUTER JOIN $table_name_layers AS l ON m.layer=l.id order by $columnsort $columnsortorder LIMIT $marker_per_page OFFSET $offset", ARRAY_A);
 }
-if ($start > $mcount or $start < 0)
-$start = 0;
 //info:  get pagination
 $getorder = isset($_GET['order']) ? htmlspecialchars($_GET['order']) : $lmm_options[ 'misc_marker_listing_sort_sort_order' ];
+$getorderby = isset($_GET['orderby']) ? '&orderby=' . htmlspecialchars($_GET['orderby']) : '';
 if ($getorder == 'asc') { $sortorder = 'desc'; } else { $sortorder= 'asc'; };
 if ($getorder == 'asc') { $sortordericon = 'asc'; } else { $sortordericon = 'desc'; };
 $pager = '';
@@ -51,27 +50,27 @@ if ($mcount > intval($lmm_options[ 'markers_per_page' ])) {
 	$pager .= '<form style="display:inline;" method="POST" action="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers">' . __('page','lmm') . ' ';
     if ($pagenum > (2 + $radius * 2)) {
       foreach (range(1, 1 + $radius) as $num)
-        $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
+        $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.$getorderby.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
       $pager .= '...';
       foreach (range($pagenum - $radius, $pagenum - 1) as $num)
-        $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
+        $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.$getorderby.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
     }
     else
       if ($pagenum > 1)
         foreach (range(1, $pagenum - 1) as $num)
-          $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
+          $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.$getorderby.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
     $pager .= '<span class="paging-input"><input type="text" size="2" value="'.$pagenum.'" name="paged" class="current-page"> <!--total pages <span class="total-pages">'.$maxpage.' </span>--></span>';
     if (($maxpage - $pagenum) >= (2 + $radius * 2)) {
       foreach (range($pagenum + 1, $pagenum + $radius) as $num)
-        $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
+        $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.$getorderby.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
       $pager .= '...';
       foreach (range($maxpage - $radius, $maxpage) as $num)
-        $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
+        $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.$getorderby.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
     }
     else
       if ($pagenum < $maxpage)
         foreach (range($pagenum + 1, $maxpage) as $num)
-          $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
+          $pager .= '<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers&paged='.$num.$getorderby.'&order='.$getorder.'" class="first-page">'.$num.'</a>';
     $pager .= '</div></form>';
   }
 }

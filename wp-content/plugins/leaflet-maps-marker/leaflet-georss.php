@@ -88,11 +88,16 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 			header('Content-type: application/atom+xml; charset=utf-8');
 			echo '<?xml version="1.0" encoding="utf-8"?>'.PHP_EOL;
-			echo '<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">'.PHP_EOL;
+			echo '<feed xmlns:atom="http://www.w3.org/2005/Atom" xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">'.PHP_EOL;
+			echo '<atom:link href="' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?layer=' . $layer_prepared . '%26format%3Datom" rel="self" type="application/rss+xml" />'.PHP_EOL;
 			if (($layer_prepared == 'all') || ($layer_prepared == '*')) {
+				$layercreatedon = $wpdb->get_var("SELECT max(`createdon`) FROM `$table_name_layers`");
+				$date_kml =  strtotime($layercreatedon);
+				$time_kml =  strtotime($layercreatedon);
 				echo '<title>' . get_bloginfo('name') . ' - ' . __('maps','lmm') . '</title>'.PHP_EOL;
+				echo '<updated>' . date("Y-m-d", $date_kml) . 'T' . date("h:m:s", $time_kml) . $plus_minus . $offset_kml . '</updated>'.PHP_EOL;
 				echo '<link href="' . home_url() . '"/>'.PHP_EOL;
-				echo '<id>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-all-layers</id>'.PHP_EOL;
+				echo '<id>' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?layer=all</id>'.PHP_EOL;
 			} else {
 				$layername = $wpdb->get_var($wpdb->prepare("SELECT `name` FROM `$table_name_layers` WHERE `id` = %d", intval($_GET['layer'])));
 				$layercreatedby = $wpdb->get_var($wpdb->prepare("SELECT `createdby` FROM `$table_name_layers` WHERE `id` = %d", intval($_GET['layer'])));
@@ -105,29 +110,19 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				echo '</author>'.PHP_EOL;
 				echo '<updated>' . date("Y-m-d", $date_kml) . 'T' . date("h:m:s", $time_kml) . $plus_minus . $offset_kml . '</updated>'.PHP_EOL;
 				echo '<link href="' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?layer=' . intval($_GET['layer']) . '"/>'.PHP_EOL;
-				echo '<id>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-layer-' . intval($_GET['layer']) . '</id>'.PHP_EOL;
+				echo '<id>' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?layer=' . intval($_GET['layer']) . '</id>'.PHP_EOL;
 			}
 			echo '<generator>www.mapsmarker.com</generator>'.PHP_EOL;
 			echo '<subtitle>GeoRSS-feed created with Maps Marker Pro (www.mapsmarker.com)</subtitle>'.PHP_EOL;
 
 			foreach ($markers as $marker) {
-				//info: get icon urls for each marker
-				if ($marker['micon'] == null) {
-					$micon_url = LEAFLET_PLUGIN_URL . 'leaflet-dist/images/marker.png';
-				} else {
-					$micon_url = LEAFLET_PLUGIN_ICONS_URL . '/' . $marker['micon'];
-				}
 				echo '<entry>'.PHP_EOL;
 				echo '<title>' . htmlspecialchars(stripslashes($marker['mmarkername'])) . '</title>'.PHP_EOL;
 				echo '<link href="' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?marker=' . $marker['mid'] . '"/>'.PHP_EOL;
-				echo '<id>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-layer-' . intval($_GET['layer']) . '-marker-' . $marker['mid'] . '</id>'.PHP_EOL;
+				echo '<id>' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?marker=' . $marker['mid'] . '</id>'.PHP_EOL;
 				echo '<updated>' . date("Y-m-d", $date_kml) . 'T' . date("h:m:s", $time_kml) . $plus_minus . $offset_kml . '</updated>'.PHP_EOL;
-				echo '<contributor>' . stripslashes($marker['mcreatedby']) . '</contributor>'.PHP_EOL;
+				echo '<author><name>' . stripslashes($marker['mcreatedby']) . '</name></author>'.PHP_EOL;
 				echo '<content><![CDATA[' . stripslashes(wp_kses($marker['mpopuptext'], $allowedtags)) . ']]></content>'.PHP_EOL;
-				echo '<logo>' . $micon_url . '</logo>'.PHP_EOL;
-				echo '<icon>' . $micon_url . '</icon>'.PHP_EOL;
-				echo '<source>' . home_url() . '</source>'.PHP_EOL;
-				echo '<where>' . htmlspecialchars($marker['maddress']) . '</where>'.PHP_EOL;
 				echo '<georss:where>'.PHP_EOL;
 				//info: add if srsnames are verified - <gml:Point srsName="' . $srsname . '">
 				echo '<gml:Point>'.PHP_EOL;
@@ -139,7 +134,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			echo '</feed>';
 			//info: end output as atom
 		} else if ($format != 'atom') { //info: output as RSS 2.0
-			$offset_kml = date('H:i',get_option('gmt_offset')*3600);
+			$offset_kml = date('Hi',get_option('gmt_offset')*3600);
 			if ($offset_kml >= 0) { $plus_minus = '+'; } else { $plus_minus = '-'; };
 			/*info: not used yet, as don´t know which are right srsnames
 			if ($lmm_options[ 'misc_projections' ] == 'L.CRS.EPSG3857' ) { $srsname = 'EPSG3857'; }
@@ -150,14 +145,14 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 			header('Content-type: application/rss+xml; charset=utf-8');
 			echo '<?xml version="1.0" encoding="utf-8"?>'.PHP_EOL;
-			echo '<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">'.PHP_EOL;
+			echo '<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">'.PHP_EOL;
 			echo '<channel>'.PHP_EOL;
+			echo '<atom:link href="' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?layer=' . $layer_prepared . '" rel="self" type="application/rss+xml" />'.PHP_EOL;
 			echo '<link>' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?layer=' . intval($_GET['layer']) . '</link>'.PHP_EOL;
 			if (($layer_prepared == 'all') || ($layer_prepared == '*')) {
 				$newest_marker_createdon = strtotime($wpdb->get_var('SELECT max(createdon) FROM '.$table_name_markers.''));			
 				echo '<title>' . get_bloginfo('name') . ' - ' . __('maps','lmm') . '</title>'.PHP_EOL;
-				echo '<guid>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-all-layers</guid>'.PHP_EOL;
-				echo '<lastBuildDate>' . date("Y-m-d", $newest_marker_createdon) . 'T' . date("h:m:s", $newest_marker_createdon) . $plus_minus . $offset_kml . '</lastBuildDate>'.PHP_EOL;
+				echo '<lastBuildDate>' . date("D, d M Y", $newest_marker_createdon) . ' ' . date("h:m:s", $newest_marker_createdon) . ' ' . $plus_minus . $offset_kml . '</lastBuildDate>'.PHP_EOL;
 			} else {
 				$layername = $wpdb->get_var($wpdb->prepare("SELECT `name` FROM `$table_name_layers` WHERE `id` = %d", intval($_GET['layer'])));
 				$layercreatedby = $wpdb->get_var($wpdb->prepare("SELECT `createdby` FROM `$table_name_layers` WHERE `id` = %d", intval($_GET['layer'])));
@@ -165,27 +160,19 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				$date_kml_layer =  strtotime($layercreatedon);
 				$time_kml_layer =  strtotime($layercreatedon);
 				echo '<title>' . get_bloginfo('name') . ' - ' . htmlspecialchars($layername) . '</title>'.PHP_EOL;
-				echo '<managingEditor>' . stripslashes($layercreatedby) . '</managingEditor>'.PHP_EOL;
-				echo '<guid>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-layer-' . intval($_GET['layer']) . '</guid>'.PHP_EOL;
-				echo '<lastBuildDate>' . date("Y-m-d", $date_kml_layer) . 'T' . date("h:m:s", $time_kml_layer) . $plus_minus . $offset_kml . '</lastBuildDate>'.PHP_EOL;
+				echo '<lastBuildDate>' . date("D, d M Y", $date_kml_layer) . ' ' . date("h:m:s", $time_kml_layer) . ' ' . $plus_minus . $offset_kml . '</lastBuildDate>'.PHP_EOL;
 			}
 			echo '<generator>www.mapsmarker.com</generator>'.PHP_EOL;
 			echo '<description>GeoRSS-feed created with Maps Marker Pro (www.mapsmarker.com)</description>'.PHP_EOL;
 			foreach ($markers as $marker) {
 				$date_kml_marker =  strtotime($marker['mcreatedon']);
 				$time_kml_marker =  strtotime($marker['mcreatedon']);
-				//info: get icon urls for each marker
-				if ($marker['micon'] == null) {
-					$micon_url = LEAFLET_PLUGIN_URL . 'leaflet-dist/images/marker.png';
-				} else {
-					$micon_url = LEAFLET_PLUGIN_ICONS_URL . '/' . $marker['micon'];
-				}
 				echo '<item>'.PHP_EOL;
 				echo '<title>' . htmlspecialchars(stripslashes($marker['mmarkername'])) . '</title>'.PHP_EOL;
 				echo '<link>' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?marker=' . $marker['mid'] . '</link>'.PHP_EOL;
-				echo '<guid>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-layer-' . $marker['lid'] . '-marker-' . $marker['mid'] . '</guid>'.PHP_EOL;
-				echo '<pubdate>' . date("Y-m-d", $date_kml_marker) . 'T' . date("h:m:s", $time_kml_marker) . $plus_minus . $offset_kml . '</pubdate>'.PHP_EOL;
-				echo '<author>' . $marker['mcreatedby'] . '</author>'.PHP_EOL;
+				echo '<guid isPermaLink="false">' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-layer-' . $marker['lid'] . '-marker-' . $marker['mid'] . '</guid>'.PHP_EOL;
+				echo '<pubDate>' . date("D, d M Y", $date_kml_marker) . ' ' . date("h:m:s", $time_kml_marker) . ' ' . $plus_minus . $offset_kml . '</pubDate>'.PHP_EOL;
+				echo '<dc:creator>' . $marker['mcreatedby'] . '</dc:creator>'.PHP_EOL;
 				$sanitize_popuptext_from = array(
 					'#<ul(.*?)>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
 					'#</li>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
@@ -210,9 +197,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				);
 				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', wp_kses($marker['mpopuptext'], $allowedtags))));
 				echo '<description><![CDATA[' . $popuptext_sanitized . ']]></description>'.PHP_EOL;
-				echo '<image>' . $micon_url . '</image>'.PHP_EOL;
-				echo '<source>' . home_url() . '</source>'.PHP_EOL;
-				echo '<where>' . htmlspecialchars($marker['maddress']) . '</where>'.PHP_EOL;
+				echo '<source url="' . home_url() . '">' . home_url() . '</source>'.PHP_EOL;
 				echo '<georss:where>'.PHP_EOL;
 				echo '<gml:Point>'.PHP_EOL;
 				echo '<gml:pos>'.$marker['mlat'].' '.$marker['mlon'].'</gml:pos>'.PHP_EOL;
@@ -260,7 +245,8 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 			header('Content-type: application/atom+xml; charset=utf-8');
 			echo '<?xml version="1.0" encoding="utf-8"?>'.PHP_EOL;
-			echo '<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">'.PHP_EOL;
+			echo '<feed xmlns:atom="http://www.w3.org/2005/Atom" xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">'.PHP_EOL;
+			echo '<atom:link href="' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?marker=' . $markerid_prepared . '%26format%3Datom" rel="self" type="application/rss+xml" />'.PHP_EOL;
 			foreach ($markers as $marker) {
 				$date_kml =  strtotime($marker['mcreatedon']);
 				$time_kml =  strtotime($marker['mcreatedon']);
@@ -277,25 +263,18 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			}
 			
 			foreach ($markers as $marker) {
-				echo '<id>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-marker-' . ($marker['mid']) . '</id>'.PHP_EOL;
-				//info: get icon urls for each marker
-				if ($marker['micon'] == null) {
-					$micon_url = LEAFLET_PLUGIN_URL . 'leaflet-dist/images/marker.png';
-				} else {
-					$micon_url = LEAFLET_PLUGIN_ICONS_URL . '/' . $marker['micon'];
-				}
+				echo '<id>' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?marker=' . intval($_GET['marker']) . '</id>'.PHP_EOL;
 				echo '<entry>'.PHP_EOL;
 				echo '<title>' . htmlspecialchars(stripslashes($marker['mmarkername'])) . '</title>'.PHP_EOL;
 				if (($markerid_prepared != 'all') || ($markerid_prepared != '*')) {
 					echo '<link href="' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?marker=' . intval($_GET['marker']) . '"/>'.PHP_EOL;
-					echo '<id>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-marker-' . intval($_GET['marker']) . '-detail</id>'.PHP_EOL;
+					echo '<id>' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?marker=' . intval($_GET['marker']) . '</id>'.PHP_EOL;
 				}
+				echo '<author>'.PHP_EOL;
+				echo '<name>' . stripslashes($marker['mcreatedby']) . '</name>'.PHP_EOL;
+				echo '</author>'.PHP_EOL;				
 				echo '<updated>' . date("Y-m-d", $date_kml) . 'T' . date("h:m:s", $time_kml) . $plus_minus . $offset_kml . '</updated>'.PHP_EOL;
 				echo '<content><![CDATA[' . stripslashes(wp_kses($marker['mpopuptext'], $allowedtags)) . ']]></content>'.PHP_EOL;
-				echo '<logo>' . $micon_url . '</logo>'.PHP_EOL;
-				echo '<icon>' . $micon_url . '</icon>'.PHP_EOL;
-				echo '<source>' . home_url() . '</source>'.PHP_EOL;
-				echo '<where>' . htmlspecialchars($marker['maddress']) . '</where>'.PHP_EOL;
 				echo '<georss:where>'.PHP_EOL;
 				//info: add if srsnames are verified - <gml:Point srsName="' . $srsname . '">
 				echo '<gml:Point>'.PHP_EOL;
@@ -307,7 +286,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			echo '</feed>';
 			//info: end output as atom
 		} else if ($format != 'atom') { //info: output as RSS 2.0
-			$offset_kml = date('H:i',get_option('gmt_offset')*3600);
+			$offset_kml = date('Hi',get_option('gmt_offset')*3600);
 			if ($offset_kml >= 0) { $plus_minus = '+'; } else { $plus_minus = '-'; };
 			/*info: not used yet, as don´t know which are right srsnames
 			if ($lmm_options[ 'misc_projections' ] == 'L.CRS.EPSG3857' ) { $srsname = 'EPSG3857'; }
@@ -318,36 +297,26 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 			header('Content-type: application/rss+xml; charset=utf-8');
 			echo '<?xml version="1.0" encoding="utf-8"?>'.PHP_EOL;
-			echo '<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">'.PHP_EOL;
+			echo '<rss version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">'.PHP_EOL;
 			echo '<channel>'.PHP_EOL;
+			echo '<atom:link href="' . LEAFLET_PLUGIN_URL . 'leaflet-georss.php?marker=' . $markerid_prepared . '" rel="self" type="application/rss+xml" />'.PHP_EOL;
 			if (($markerid_prepared != 'all') || ($markerid_prepared != '*')) {
 				echo '<link>' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?marker=' . intval($_GET['marker']) . '</link>'.PHP_EOL;
-				echo '<title>' . get_bloginfo('name') . ' - ' . htmlspecialchars(stripslashes($marker['mmarkername'])) . '</title>'.PHP_EOL;
+				echo '<title>' . get_bloginfo('name') . ' - ' . __('marker','lmm') . ' ' . intval($_GET['marker']) . '</title>'.PHP_EOL;
 			} else {
 				echo '<title>' . get_bloginfo('name') . '</title>'.PHP_EOL;
 			}			
 			echo '<generator>www.mapsmarker.com</generator>'.PHP_EOL;
 			echo '<description>GeoRSS-feed created with Maps Marker Pro (www.mapsmarker.com)</description>'.PHP_EOL;
-			if (($markerid_prepared != 'all') || ($markerid_prepared != '*')) {
-				echo '<guid>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-marker-' . intval($_GET['marker']) . '-channel</guid>'.PHP_EOL;
-			} else {
-				echo '<guid>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-marker-channel</guid>'.PHP_EOL;
-			}
 			foreach ($markers as $marker) {
 				$date_kml_marker =  strtotime($marker['mcreatedon']);
 				$time_kml_marker =  strtotime($marker['mcreatedon']);
-				//info: get icon urls for each marker
-				if ($marker['micon'] == null) {
-					$micon_url = LEAFLET_PLUGIN_URL . 'leaflet-dist/images/marker.png';
-				} else {
-					$micon_url = LEAFLET_PLUGIN_ICONS_URL . '/' . $marker['micon'];
-				}
 				echo '<item>'.PHP_EOL;
 				echo '<title>' . htmlspecialchars(stripslashes($marker['mmarkername'])) . '</title>'.PHP_EOL;
 				echo '<link>' . LEAFLET_PLUGIN_URL . 'leaflet-fullscreen.php?marker=' . $marker['mid'] . '</link>'.PHP_EOL;
-				echo '<guid>' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-marker-' . $marker['mid'] . '</guid>'.PHP_EOL;
-				echo '<pubdate>' . date("Y-m-d", $date_kml_marker) . 'T' . date("h:m:s", $time_kml_marker) . $plus_minus . $offset_kml . '</pubdate>'.PHP_EOL;
-				echo '<author>' . stripslashes($marker['mcreatedby']) . '</author>'.PHP_EOL;
+				echo '<guid isPermaLink="false">' .   preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), get_bloginfo('name')) . '-marker-' . $marker['mid'] . '</guid>'.PHP_EOL;
+				echo '<pubDate>' . date("D, d M Y", $date_kml_marker) . ' ' . date("h:m:s", $time_kml_marker) . ' ' . $plus_minus . $offset_kml . '</pubDate>'.PHP_EOL;
+				echo '<dc:creator>' . stripslashes($marker['mcreatedby']) . '</dc:creator>'.PHP_EOL;
 				$sanitize_popuptext_from = array(
 					'#<ul(.*?)>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
 					'#</li>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
@@ -372,9 +341,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				);
 				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', wp_kses($marker['mpopuptext'], $allowedtags))));
 				echo '<description><![CDATA[' . $popuptext_sanitized . ']]></description>'.PHP_EOL;
-				echo '<image>' . $micon_url . '</image>'.PHP_EOL;
-				echo '<source>' . home_url() . '</source>'.PHP_EOL;
-				echo '<where>' . htmlspecialchars($marker['maddress']) . '</where>'.PHP_EOL;
+				echo '<source url="' . home_url() . '">' . home_url() . '</source>'.PHP_EOL;
 				echo '<georss:where>'.PHP_EOL;
 				echo '<gml:Point>'.PHP_EOL;
 				echo '<gml:pos>'.$marker['mlat'].' '.$marker['mlon'].'</gml:pos>'.PHP_EOL;

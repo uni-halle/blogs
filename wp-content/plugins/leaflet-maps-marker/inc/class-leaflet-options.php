@@ -3582,7 +3582,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section20',
 			'title'   => __('icon','lmm') . $pro_button_link,
-			'desc'    => __('','lmm'),
+			'desc'    => '',
 			'type'    => 'radio-pro',
 			'std'     => 'icon-cross-hairs',
 			'choices' => array(
@@ -7111,7 +7111,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'std'     => 'browser_setting',
 			'choices' => array(
 				'browser_setting' => __('automatic 1 (distinct language for each user - detects the users browser language setting, preferred method by Google)','lmm'),
-				'wordpress_setting' => sprintf(__('automatic 2 (same language for each user - uses the first two letters from the constant WPLANG defined in wp-config.php = %s)','lmm'),substr(WPLANG,0,2)),
+				'wordpress_setting' => sprintf(__('automatic 2 (same language for each user - using the global variable $locale = %s)','lmm'), '<strong>' . substr(get_locale(),0,2) . '</strong>'),
 				'ar' => __('Arabic','lmm') . ' (' . __('language code','lmm') . ': ar)',
 				'bg' => __('Bulgarian','lmm') . ' (' . __('language code','lmm') . ': bg)',
 				'ca' => __('Catalan','lmm') . ' (' . __('language code','lmm') . ': ca)',
@@ -7546,7 +7546,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'radio',
 			'std'     => 'automatic',
 			'choices' => array(
-				'automatic' => sprintf(__('automatic (uses constant WPLANG defined in wp-config.php = %s - fallback to en_US if not supported by bing)','lmm'),WPLANG),
+				'automatic' => sprintf(__('automatic (using the global variable $locale = %s - fallback to en-US if not supported by bing)','lmm'),'<strong>' . str_replace("_","-", get_locale()) . '</strong>'),
 				'af' => __('Afrikaans','lmm') . ' (' . __('culture code','lmm') . ': af)',
 				'am' => __('Amharic','lmm') . ' (' . __('culture code','lmm') . ': am)',
 				'ar-sa' => __('Arabic (Saudi Arabia)','lmm') . ' (' . __('culture code','lmm') . ': ar-sa)',
@@ -9988,7 +9988,7 @@ $this->_settings['clustering_helptext2'] = array(
 		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.10
-		if (get_option('leafletmapsmarker_version') == '3.9.2' )
+		if (get_option('leafletmapsmarker_version') == '3.9.3' )
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
