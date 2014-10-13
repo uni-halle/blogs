@@ -1,29 +1,13 @@
-/*global AWPCPUsers*/
-(function($, undefined) {
-
+/*global AWPCP*/
+AWPCP.run('awpcp/page-place-ads', [
+    'jquery',
+    'knockout',
+    'awpcp/file-manager',
+    'awpcp/settings',
+    'awpcp/jquery-userfield'
+],
+function( $, ko, FileManager, settings ) {
     var AWPCP = jQuery.AWPCP = jQuery.extend({}, jQuery.AWPCP, AWPCP);
-
-    $.AWPCP.UsersDropdown = function(dropdown) {
-        var self = this;
-
-        self.dropdown = dropdown.change(function() {
-            var select = $(this),
-                id = parseInt(select.val(), 10),
-                terms;
-
-            if (id > 0) {
-                terms = select.find(':selected').attr('data-payment-terms');
-                terms = terms ? terms.split(',') : [];
-                $.publish('/user/updated', [id, terms, self.previous !== id]);
-            }
-
-            self.previous = self.id;
-        });
-
-        self.previous = parseInt(self.dropdown.val(), 10);
-        self.dropdown.change();
-    };
-
 
     $.AWPCP.PaymentTermsTable = function(table) {
         var self = this;
@@ -43,8 +27,8 @@
             }
         });
 
-        $.subscribe('/user/updated', function(event, user, terms) {
-            self.user_terms = terms;
+        $.subscribe('/user/updated', function(event, user) {
+            self.user_terms = user.payment_terms;
             self.update();
         });
     };
@@ -95,7 +79,6 @@
         }
     });
 
-
     $.AWPCP.UserInformation = function(container) {
         var self = this;
 
@@ -108,29 +91,12 @@
         self.state = self.container.find('input[name=ad_state], select[name=ad_state]');
         self.city = self.container.find('input[name=ad_city], select[name=ad_city]');
 
-        $.subscribe('/user/updated', function(event, user, terms, overwrite) {
-            self.update(self.getUserData(user), overwrite);
+        $.subscribe('/user/updated', function(event, user, overwrite) {
+            self.update(user, overwrite);
         });
     };
 
     $.extend($.AWPCP.UserInformation.prototype, {
-        getUserData: function(id) {
-            var self = this;
-
-            if (!self.hasOwnProperty('users')) {
-                self.users = {};
-                $.each(AWPCPUsers, function(k, entry) {
-                    self.users[entry.ID] = entry;
-                });
-            }
-
-            if (self.users[id]) {
-                return self.users[id];
-            }
-
-            return null;
-        },
-
         update: function(data, overwrite) {
             var self = this,
                 current,
@@ -208,6 +174,8 @@
         pages.push('.awpcp-edit-ad');
         pages.push('.awpcp-admin-listings-place-ad');
         pages.push('.awpcp-admin-listings-edit-ad');
+        pages.push('.awpcp-buddypress-create-listing');
+        pages.push('.awpcp-buddypress-edit-listing');
 
         container = $(pages.join(', '));
 
@@ -217,8 +185,7 @@
             var form = container.find('.awpcp-order-form');
             if (form.length) {
                 $.noop(new $.AWPCP.PaymentTermsTable(container.find('.awpcp-payment-terms-table')));
-                // $.noop(new $.AWPCP.CategoriesDropdown(container.find('[name="category"]')));
-                $.noop(new $.AWPCP.UsersDropdown(container.find('[name="user"]')));
+                container.find('[autocomplete-field], [dropdown-field]').userfield();
 
                 form.validate({
                     messages: $.AWPCP.l10n('page-place-ad-order')
@@ -243,8 +210,7 @@
                 // update profile information everytime the selected user changes
                 $.noop(new $.AWPCP.UserInformation(container));
 
-                // $.noop(new $.AWPCP.CategoriesDropdown(container.find('[name="ad_category"]')));
-                $.noop(new $.AWPCP.UsersDropdown(container.find('[name="user"]')));
+                container.find('[autocomplete-field], [dropdown-field]').userfield();
 
                 $.noop(new $.AWPCP.DatepickerField(container.find('[name="start_date"]')));
                 $.noop(new $.AWPCP.DatepickerField(container.find('[name="end_date"]')));
@@ -265,8 +231,12 @@
         /* Upload Images Form */
 
         (function() {
-            form = container.find('.awpcp-upload-images-form');
+            var form = container.find('.awpcp-upload-images-form');
+
             if (form.length) {
+                var data = settings.get( 'file-manager-data' );
+                ko.applyBindings( new FileManager( data.nonce, data.files, data.options ), $('.awpcp-file-manager').get( 0 ) );
+
                 var radios = form.find('.uploadform :radio').change(function() {
                     radios.closest('li').removeClass('primary').addClass('not-primary');
                     $(this).closest('li').removeClass('not-primary').addClass('primary');
@@ -296,4 +266,4 @@
             }
         })();
     });
-})(jQuery);
+});

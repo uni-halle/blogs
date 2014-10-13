@@ -82,62 +82,6 @@ class AWPCP_CreditPlansTable extends WP_List_Table {
         );
     }
 
-    // public function get_bulk_actions() {
-    //     return array('bulk-delete' => __('Delete', 'AWPCP'));
-    // }
-
-    // public function get_views() {
-    //     $views = array(
-    //         'featured-ads' => array(__('Featured Ads', 'AWPCP'), $this->page->url(array('filterby' => 'is_featured_ad', 'filter' => true))),
-    //         'flagged-ads'  => array(__('Flagged Ads', 'AWPCP'), $this->page->url(array('filterby' => 'flagged', 'filter' => true)))
-    //     );
-
-    //     return $this->page->links($views);
-    // }
-
-    // public function get_search_by_box() {
-    //     $id = 'search-by';
-    //     $label = __('Search by', 'AWPCP');
-
-    //     $options = array(
-    //         'id' => __('Ad ID', 'AWPCP'),
-    //         'title' => __('Ad Title', 'AWPCP'),
-    //         'keyword' => __('Keyword', 'AWPCP'),
-    //         'location' => __('Location', 'AWPCP'),
-    //         'user' => __('User', 'AWPCP')
-    //     );
-
-    //     $search_by = awpcp_request_param('search-by', 'title');
-
-    //     $html = '<p class="search-by-box">';
-    //     $html.= '<label>' . $label . ':</label>&nbsp;&nbsp;';
-
-    //     foreach ($options as $value => $text) {
-    //         $id = 'search-by-' . $value;
-    //         $selected = $search_by == $value ? 'checked="checked"' : '';
-    //         $html.= '<input type="radio" id="' . $id . '" name="search-by" ' . $selected . ' value="' . $value . '" />&nbsp;';
-    //         $html.= '<label for="' . $id . '">' . $text . '</label>&nbsp;';
-    //     }
-
-    //     $html.= '</p>';
-
-    //     echo $html;
-    // }
-
-    // public function extra_tablenav() {
-    //     $ipp = $this->items_per_page;
-
-    //     $selected = 'selected="selected"';
-    //     $option   = '<option %2$s value="%1$s">%1$s</option>';
-
-    //     $select = '<div class="tablenav-pages"><select name="items-per-page">';
-    //     foreach (array(5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100) as $value)
-    //         $select.= sprintf($option, $value, $value == $ipp ? $selected : '');
-    //     $select.= '</select></div>';
-
-    //     echo $select;
-    // }
-
     private function get_row_actions($item) {
         $actions = $this->page->actions($item);
         return $this->page->links($actions);

@@ -59,8 +59,9 @@
 
 .nav-tab-wrapper {
     .nav-tab {
-        font-size: 12px;
+        font-size: 11px;
         padding: 2px 5px;
+        margin-right: -3px;
     }
 }
 
@@ -113,6 +114,10 @@
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+}
+
+.awpcp-update-nag {
+    display: inline-block !important;
 }
 
 .awpcp-sticky-notice {
@@ -193,44 +198,11 @@
     width: 43%;
 }
 
-/* Admin Sidebar */
-
-.awpcp-postbox-container {
-    .postbox {
-        min-width: 200px;
-
-        .hndle, .hndle1 {
-            cursor: default;
-        }
+.metabox-holder {
+    .postbox .inside {
+        padding: 5px 12px !important;
     }
 }
-
-.li_link {
-    margin-left: 10px;
-}
-.inside {
-    padding: 5px 10px !important;
-}
-.apostboxes {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-
-    background-color:#FFFFFF;
-    border-color:#DFDFDF;
-    border-radius: 3px;
-    border-style:solid;
-    border-width:1px;
-    line-height:1;
-    margin-bottom:20px;
-    /*min-width:255px;*/
-    position:relative;
-    width:99.5%;
-}
-.apostboxes h3 {
-    background: url("../images/admin-sidebar-gray-grad.png") repeat-x scroll left top #DFDFDF;
-    text-shadow: 0 1px 0 #FFFFFF;
-}
-
 
 /* =Admin Settings
 ---------------------------------------------------------------------------- */
@@ -249,6 +221,50 @@
         .metabox-holder {
             padding-top: 20px !important;
         }
+    }
+
+    .settings-form {
+        h3 {
+            margin-top: 2em;
+            margin-bottom: 0.7em;
+        }
+        .form-table {
+            th, td {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+    }
+
+    .category-checklist {
+        height: 290px;
+        max-height: 290px;
+
+        .awpcp-categories-list  {
+            margin-top: 4px;
+
+            li {
+                margin-bottom: 4px;
+            }
+
+            ul {
+                margin-left: 20px;
+
+                li:first-child {
+                    margin-top: 4px;
+                }
+            }
+        }
+    }
+}
+
+.awpcp-licenses-settings {
+    .form-table th {
+        width: 250px;
+    }
+
+    .awpcp-license-valid {
+        color: green;
     }
 }
 
@@ -309,9 +325,26 @@
 /* =Admin Listings
 ---------------------------------------------------------------------------- */
 
+.awpcp-admin-listings .awpcp-category-filter {
+    @select_field_width: 180px;
+    @submit_button_max_width: 90px;
+
+    max-width: @select_field_width + @submit_button_max_width;
+
+    select {
+        max-width: @select_field_width;
+    }
+    input {
+        margin: 1px 8px 0 0;
+    }
+}
+
+/* .awpcp-listings refers to the listings table in Classifieds > Listings */
+/* .manage is the Manage column */
 .wp-admin .awpcp-listings .manage {
     width: 40%;
 }
+
 
 /* Listings - View */
 
@@ -427,12 +460,14 @@
             margin-right: 3px;
             width: auto;
 
-            a {
+            a, span {
                 background: @delete_attachment_icon_url center center no-repeat;
                 display: block;
                 height: 24px;
                 width: 24px;
+            }
 
+            a {
                 &.delete {
                     background-image: @delete_attachment_icon_url;
                 }
@@ -449,8 +484,12 @@
                     background-image: @enable_attachment_icon_url;
                 }
                 &.set-primary-image {
-                    background-image: @primary_image_icon_url;
+                    background-image: @not_primary_image_icon_url;
                 }
+            }
+
+            span.primary-image {
+                background-image: @primary_image_icon_url;
             }
         }
     }

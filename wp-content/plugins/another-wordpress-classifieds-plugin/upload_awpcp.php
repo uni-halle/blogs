@@ -169,7 +169,7 @@ function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload'
 
 	return array(
 		'original' => $filename,
-		'filename' => basename( $newpath ),
+		'filename' => awpcp_utf8_basename( $newpath ),
 		'path' => str_replace( $paths['files_dir'], '', $newpath ),
 		'mime_type' => $mime_type,
 	);
@@ -334,7 +334,7 @@ function awpcp_upload_image_file($directory, $filename, $tmpname, $min_size, $ma
 		return sprintf( __( 'The specified image file does not exists: %s.', 'AWPCP' ), $filename );
 	}
 
-	$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+	$ext = strtolower( awpcp_get_file_extension( $filename ) );
 	$imginfo = getimagesize($tmpname);
 	$size = filesize($tmpname);
 
@@ -412,7 +412,7 @@ function awpcp_resizer($filename, $dir) {
 		return false;
 	}
 
-	$parts = pathinfo( $filename );
+	$parts = awpcp_utf8_pathinfo( $filename );
 
 	if( 'jpg' == $parts['extension'] || 'jpeg' == $parts['extension'] ) {
 		$src = imagecreatefromjpeg( $dir . $filename );
@@ -427,7 +427,7 @@ function awpcp_resizer($filename, $dir) {
 	if ($width < $maxwidth && $height < $maxheight) {
 		return true;
 	}
-	 
+
 	$newwidth = '';
 	$newheight = '';
 
@@ -584,7 +584,7 @@ function awpcp_fix_image_rotation( $filepath ) {
  * @since 3.0.2
  */
 function awpcp_rotate_image( $file, $mime_type, $angle ) {
-	if ( class_exists( 'Imagick' ) ) {
+	if ( class_exists( 'Imagick' ) && method_exists( 'Imagick', 'setImageOrientation' ) ) {
 		awpcp_rotate_image_with_imagick( $file, $angle );
 	} else {
 		awpcp_rotate_image_with_gd( $file, $mime_type, $angle );
@@ -635,11 +635,11 @@ function awpcp_rotate_image_with_gd( $filepath, $mime_type, $angle ) {
 }
 
 function awpcp_make_intermediate_size($file, $directory, $width, $height, $crop=false, $suffix='') {
-	$info = pathinfo($file);
-	$filename = preg_replace("/\.{$info['extension']}/", '', $info['basename']);
+	$path_info = awpcp_utf8_pathinfo( $file );
+	$filename = preg_replace("/\.{$path_info['extension']}/", '', $path_info['basename']);
 	$suffix = empty($suffix) ? '.' : "-$suffix.";
 
-	$newpath = trailingslashit($directory) . $filename . $suffix . $info['extension'];
+	$newpath = trailingslashit($directory) . $filename . $suffix . $path_info['extension'];
 
 	$image = image_make_intermediate_size($file, $width, $height, $crop);
 
@@ -648,7 +648,7 @@ function awpcp_make_intermediate_size($file, $directory, $width, $height, $crop=
 	}
 
 	if (is_array($image) && !empty($image)) {
-		$tmppath = trailingslashit($info['dirname']) . $image['file'];
+		$tmppath = trailingslashit($path_info['dirname']) . $image['file'];
 		$result = rename($tmppath, $newpath);
 	} else {
 		$result = copy($file, $newpath);

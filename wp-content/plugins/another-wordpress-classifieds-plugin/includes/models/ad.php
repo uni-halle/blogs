@@ -135,16 +135,25 @@ class AWPCP_Ad {
 		return array_filter( apply_filters( 'awpcp-ad-order-conditions', $parts, $order ) );
 	}
 
-	public static function get_where_conditions($conditions=array()) {
+	/**
+	 * @since 3.3
+	 */
+	public static function get_where_conditions_for_valid_ads( $conditions = array() ) {
         $conditions[] = "payment_status != 'Unpaid'";
         $conditions[] = "verified = 1";
-		$conditions[] = "disabled = 0";
 
-        if ((get_awpcp_option('disablependingads') == 0) && (get_awpcp_option('freepay') == 1)) {
+        if ( ( get_awpcp_option( 'enable-ads-pending-payment' ) == 0 ) && ( get_awpcp_option( 'freepay' ) == 1 ) ) {
             $conditions[] = "payment_status != 'Pending'";
         }
 
-        return array_filter( apply_filters( 'awpcp-ad-where-statement', $conditions ) );
+        return array_filter( apply_filters( 'awpcp-ad-where-statement', array_filter( $conditions, 'strlen' ) ) );
+	}
+
+	public static function get_where_conditions($conditions=array()) {
+		$conditions = self::get_where_conditions_for_valid_ads( $conditions );
+		$conditions = array_merge( $conditions, array( "disabled = 0" ) );
+
+        return $conditions;
 	}
 
 	/**
@@ -565,16 +574,22 @@ class AWPCP_Ad {
 		return '';
 	}
 
-	function has_expired($date=null) {
-		$end_date = strtotime( $this->ad_enddate ) + 24 * 60 * 60;
-		$date = is_null($date) ? current_time('timestamp') : $date;
-		return $end_date < $date;
+	function has_expired( $target_date = null ) {
+		$target_date = is_null( $target_date ) ? current_time( 'timestamp' ) : $target_date;
+		$end_date = strtotime( $this->ad_enddate );
+
+		return $end_date < $target_date;
 	}
 
 	function is_about_to_expire() {
-		$threshold = get_awpcp_option( 'ad-renew-email-threshold' );
-		$date = strtotime( "+ $threshold days", current_time( 'timestamp' ) );
-		return $this->has_expired( $date );
+		if ( $this->has_expired() ) {
+			return false;
+		}
+
+		$end_of_date_range = awpcp_calculate_end_of_renew_email_date_range_from_now();
+		$one_second_after_end_of_date_range = $end_of_date_range + 1;
+
+		return $this->has_expired( $one_second_after_end_of_date_range );
 	}
 
 	/**
@@ -682,7 +697,8 @@ class AWPCP_Ad {
 	 * @since 3.0
 	 */
 	function get_characters_allowed_in_title() {
-		return $this->get_payment_term()->get_characters_allowed_in_title();
+        $term = $this->get_payment_term();
+		return is_object( $term ) ? $term->get_characters_allowed_in_title() : 0;
 	}
 
 	/**
@@ -698,7 +714,8 @@ class AWPCP_Ad {
 	 * @since 2.1.2
 	 */
 	function get_characters_allowed() {
-		return $this->get_payment_term()->get_characters_allowed();
+        $term = $this->get_payment_term();
+		return is_object( $term ) ? $term->get_characters_allowed() : 0;
 	}
 
 	function get_remaining_characters_count() {
@@ -709,7 +726,8 @@ class AWPCP_Ad {
 	 * @since 3.0.2
 	 */
 	function get_regions_allowed() {
-		return $this->get_payment_term()->get_regions_allowed();
+        $term = $this->get_payment_term();
+		return is_object( $term ) ? $term->get_regions_allowed() : 0;
 	}
 
 	private function set_disabled_status($disabled) {
@@ -731,16 +749,20 @@ class AWPCP_Ad {
 		return $result;
 	}
 
-	public function disable() {
-		if ($result = $this->set_disabled_status(true)) {
+	public function disable( $trigger_actions = true ) {
+		$listing_disabled = $this->set_disabled_status( true );
+
+		if ( $listing_disabled && $trigger_actions ) {
 			do_action('awpcp_disable_ad', $this);
 		}
 
-		return $result;
+		return $listing_disabled;
 	}
 
-	public function enable( $approve_images = true ) {
-		if ($result = $this->set_disabled_status(false)) {
+	public function enable( $approve_images = true, $trigger_actions = true ) {
+		$listing_enabled = $this->set_disabled_status( false );
+
+		if ( $listing_enabled ) {
 			if ( $approve_images ) {
 				$images = awpcp_media_api()->find_images_awaiting_approval_by_ad_id( $this->ad_id );
 				foreach ($images as $image) {
@@ -748,10 +770,12 @@ class AWPCP_Ad {
 				}
 			}
 
-			do_action('awpcp_approve_ad', $this);
+			if ( $trigger_actions ) {
+				do_action( 'awpcp_approve_ad', $this );
+			}
 		}
 
-		return $result;
+		return $listing_enabled;
 	}
 
 	/**
@@ -783,7 +807,8 @@ class AWPCP_Ad {
 	public function mark_as_spam() {
 		// this doesn't feel right :\
 		if ($result = $this->delete()) {
-        	awpcp_submit_spam($this->ad_id);
+			$spam_submitter = awpcp_listing_spam_submitter();
+			$spam_submitter->submit( (array) $this );
         }
 
         return $result;

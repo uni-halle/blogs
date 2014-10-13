@@ -2,6 +2,8 @@
 
 class AWPCP_Listings_Table extends WP_List_Table {
 
+    private $selected_category_id;
+
     public function __construct($page) {
         parent::__construct(array('plural' => 'awpcp-listings'));
         $this->page = $page;
@@ -11,9 +13,14 @@ class AWPCP_Listings_Table extends WP_List_Table {
         global $wpdb;
 
         $user = wp_get_current_user();
-        $ipp = (int) get_user_meta($user->ID, 'listings-items-per-page', true);
-        $this->items_per_page = awpcp_request_param('items-per-page', $ipp === 0 ? 10 : $ipp);
+
+        $items_per_page = (int) get_user_meta($user->ID, 'listings-items-per-page', true);
+        $this->items_per_page = awpcp_request_param('items-per-page', $items_per_page === 0 ? 10 : $items_per_page);
         update_user_meta($user->ID, 'listings-items-per-page', $this->items_per_page);
+
+        $default_category = absint( get_user_meta( $user->ID, 'listings-category', true ) );
+        $this->selected_category_id = awpcp_request_param( 'category', $default_category );
+        update_user_meta( $user->ID, 'listings-category', $this->selected_category_id );
 
         $params = $this->params = shortcode_atts(array(
             's' => '',
@@ -22,7 +29,6 @@ class AWPCP_Listings_Table extends WP_List_Table {
             'orderby' => '',
             'order' => 'desc',
             'paged' => 1,
-            'category' => 0
         ), $_REQUEST);
 
         $conditions = array('1 = 1');
@@ -38,6 +44,12 @@ class AWPCP_Listings_Table extends WP_List_Table {
             $conditions[] = $search_by_condition;
         } catch (Exception $e) {
             // TODO: ignore?
+        }
+
+        if ( ! empty( $this->selected_category_id ) ) {
+            $category = AWPCP_Category::find_by_id( $this->selected_category_id );
+            $sql = '( ' . AWPCP_TABLE_ADS . '.ad_category_id = %d OR ' . AWPCP_TABLE_ADS . '.ad_category_parent_id = %d )';
+            $conditions[] = $wpdb->prepare( $sql, $category->id, $category->id );
         }
 
         $show_unpaid = false;
@@ -66,12 +78,6 @@ class AWPCP_Listings_Table extends WP_List_Table {
             case 'awaiting-approval':
                 $conditions[] = AWPCP_TABLE_ADS . '.disabled = 1';
                 $conditions[] = AWPCP_TABLE_ADS . '.disabled_date IS NULL';
-                break;
-
-            case 'category':
-                $category = AWPCP_Category::find_by_id($params['category']);
-                $sql = '(' . AWPCP_TABLE_ADS . '.ad_category_id = %1$d OR ' . AWPCP_TABLE_ADS . '.ad_category_parent_id = %1$d)';
-                $conditions[] = sprintf($sql, $category->id);
                 break;
 
             case 'images-awaiting-approval':
@@ -290,18 +296,50 @@ class AWPCP_Listings_Table extends WP_List_Table {
     }
 
     public function extra_tablenav( $which ) {
-        $ipp = $this->items_per_page;
+        if ( $which == 'top' ) {
+            echo $this->render_category_filter();
+        }
+        echo $this->render_items_per_page_selector();
+    }
 
+    /**
+     * @since 3.3
+     */
+    private function render_category_filter() {
+        $category_selector = awpcp_categories_dropdown()->render( array(
+            'context' => 'search',
+            'name' => 'category',
+            'label' => false,
+            'selected' => $this->selected_category_id,
+            'required' => false,
+        ) );
+
+        $submit_button = '<input class="button" type="submit" value="%s">';
+        $submit_button = sprintf( $submit_button, esc_attr( _x( 'Filter', 'admin listings table', 'AWPCP' ) ) );
+
+        $template = '<div class="alignleft actions awpcp-category-filter"><category-selector><submit-button></div>';
+        $template = str_replace( '<category-selector>', $category_selector, $template );
+        $template = str_replace( '<submit-button>', $submit_button, $template );
+
+        return $template;
+    }
+
+    /**
+     * TODO: use a single pagination form, check create_pager function in dcfunctions.php
+     */
+    private function render_items_per_page_selector() {
+        $template = '<option %3$s value="%1$s">%2$s</option>';
         $selected = 'selected="selected"';
-        $option   = '<option %2$s value="%1$s">%1$s</option>';
 
-        $select = '<div class="tablenav-pages"><select name="items-per-page">';
-        // TODO: use a single pagination form, check create_pager function in dcfunctions.php
-        foreach (array(5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 500) as $value)
-            $select.= sprintf($option, $value, $value == $ipp ? $selected : '');
-        $select.= '</select></div>';
+        foreach ( awpcp_pagination_options( $this->items_per_page ) as $value ) {
+            $attributes = $value == $this->items_per_page ? $selected : '';
+            $options[] = sprintf( $template, esc_attr( $value ), esc_html( $value ), $attributes );
+        }
 
-        echo $select;
+        $output = '<div class="tablenav-pages"><select name="items-per-page"><options></select></div>';
+        $output = str_replace( '<options>', implode( '', $options ), $output );
+
+        return $output;
     }
 
     private function get_row_actions($item) {

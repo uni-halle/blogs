@@ -129,47 +129,5 @@
             </div>
         </div>
 
-        <?php if (get_awpcp_option('showlatestawpcpnews')): ?>
-
-        <div class="postbox">
-            <h3 class="hndle1"><span><?php _e("Latest News About Another Wordpress Classifieds Plugin","AWPCP"); ?></span></h3>
-            <div class="inside">
-
-            <?php //$awpcpwidgets = get_option('dashboard_widget_options'); ?>
-            <?php //@extract( @$awpcpwidgets['dashboard_secondary'], EXTR_SKIP ); ?>
-            <?php $feed = @fetch_feed('http://feeds2.feedburner.com/Awpcp'); ?>
-
-            <?php if (is_wp_error($feed)): ?>
-                <?php if (is_admin() || current_user_can('manage_options')): ?>
-                <div class="rss-widget">
-                    <p><?php echo sprintf(__('<strong>RSS Error</strong>: %s', 'AWPCP'), $feed->get_error_message()); ?></p>
-                </div>
-                <?php endif; ?>
-            <?php else: ?>
-            <?php $maxitems = $feed->get_item_quantity(5);  // figure out how many total items there are, but limit it to 5. ?>
-            <?php $rss_items = $feed->get_items(0, $maxitems);  // build an array of all the items, starting with element 0 (first element). ?>
-                <ul>
-                    <?php if ($maxitems == 0): ?>
-                    <li><?php _ex('No news right now.', 'awpcp latest news', 'AWPCP'); ?></li>
-                    <?php else: ?>
-                        <?php foreach ($rss_items as $item): ?>
-                    <li>
-                        <h4>
-                            <?php $title = $item->get_title(); ?>
-                            <a href="<?php echo $item->get_permalink(); ?>" title="<?php echo esc_attr($title); ?>"><?php echo $title; ?></a>
-                            <small><?php echo $item->get_date( awpcp_get_datetime_format() ); ?></small>
-                        </h4>
-                        <p><?php echo $item->get_description(); ?><p>
-                    </li>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </ul>
-            <?php endif; ?>
-
-            </div>
-        </div>
-
-        <?php endif; ?>
-
     </div>
 </div>

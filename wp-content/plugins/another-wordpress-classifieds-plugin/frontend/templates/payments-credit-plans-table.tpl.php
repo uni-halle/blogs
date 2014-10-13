@@ -8,10 +8,10 @@
     <table class="awpcp-credit-plans-table awpcp-table">
         <thead>
             <tr>
-                <th><?php echo $column_names['plan']; ?></th>
-                <th><?php echo $column_names['description']; ?></th>
-                <th><?php echo $column_names['credits']; ?></th>
-                <th><?php echo $column_names['price']; ?></th>
+                <th><?php echo esc_html( $column_names['plan'] ); ?></th>
+                <th><?php echo esc_html( $column_names['description'] ); ?></th>
+                <th><?php echo esc_html( $column_names['credits'] ); ?></th>
+                <th><?php echo esc_html( $column_names['price'] ); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -24,13 +24,13 @@
         <?php foreach ($credit_plans as $plan): ?>
 
             <tr data-price="<?php echo esc_attr($plan->price) ?>" data-credits="<?php echo esc_attr($plan->credits) ?>">
-                <td data-title="<?php echo $column_names['plan']; ?>">
-                    <input id="credit-plan-<?php echo $plan->id ?>" type="radio" name="credit_plan" value="<?php echo $plan->id ?>" <?php echo $plan->id == $selected ? 'checked="checked"' : '' ?> />
-                    <label for="credit-plan-<?php echo $plan->id ?>"><?php echo $plan->name ?></label>
+                <td data-title="<?php echo esc_attr( $column_names['plan'] ); ?>">
+                    <input id="credit-plan-<?php echo esc_attr( $plan->id ); ?>" type="radio" name="credit_plan" value="<?php echo esc_attr( $plan->id ); ?>" <?php echo $plan->id == $selected ? 'checked="checked"' : '' ?> />
+                    <label for="credit-plan-<?php echo esc_attr( $plan->id ); ?>"><?php echo esc_html( $plan->name ); ?></label>
                 </td>
-                <td data-title="<?php echo $column_names['description']; ?>"><?php echo $plan->description ?>&nbsp;</td>
-                <td data-title="<?php echo $column_names['credits']; ?>"><?php echo number_format($plan->credits, 0) ?></td>
-                <td data-title="<?php echo $column_names['price']; ?>"><?php echo number_format($plan->price, 2) ?></td>
+                <td data-title="<?php echo esc_attr( $column_names['description'] ); ?>"><?php echo esc_html( $plan->description ); ?>&nbsp;</td>
+                <td data-title="<?php echo esc_attr( $column_names['credits'] ); ?>"><?php echo esc_html( number_format( $plan->credits, 0 ) ); ?></td>
+                <td data-title="<?php echo esc_attr( $column_names['price'] ); ?>"><?php echo esc_html( number_format( $plan->price, 2 ) ); ?></td>
             </tr>
 
         <?php endforeach ?>

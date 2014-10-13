@@ -179,6 +179,24 @@ class AWPCP_PaymentTerm {
     }
 
     /**
+     * I want to move the renew Ad code to the payment terms. Right now
+     * all the logic is handled inside the Ad or by third objects.
+     * If the payment term, or an object capable of renewing Ads regardless of
+     * the payment term they are associated with, takes care of the renew logic
+     * an exception could be thrown when there is an error, and calling objects
+     * would be able to show informative errors to the user.
+     *
+     * Until the above is possible, every payment term will implement this
+     * method to produce informative errors when ad_can_be_renewed returns false.
+     *
+     * @since 3.3
+     * @return string
+     */
+    public function ad_cannot_be_renewed_error( $listing ) {
+        return '';
+    }
+
+    /**
      * Calculates a date adding this term's duration to the given
      * start date.
      *

@@ -94,7 +94,12 @@
                 </span>
 
                 <div class="cat-checklist category-checklist">
-                <?php echo awpcp_get_categories_checkboxes(awpcp_get_property($fee, 'categories', array())); ?>
+                <?php
+                    $params = array(
+                        'selected' => awpcp_get_property( $fee, 'categories', array() ),
+                    );
+                    echo awpcp_categories_checkbox_list_renderer()->render( $params );
+                ?>
                 </div>
         <?php endif ?>
 

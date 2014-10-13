@@ -11,9 +11,9 @@
                         <select name="results">
                         <?php foreach ($options as $option): ?>
                             <?php if ($results == $option): ?>
-                            <option value="<?php echo $option; ?>" selected="selected"><?php echo $option; ?></option>
+                            <option value="<?php echo esc_attr( $option ); ?>" selected="selected"><?php echo esc_html( $option ); ?></option>
                             <?php else: ?>
-                            <option value="<?php echo $option; ?>"><?php echo $option; ?></option>
+                            <option value="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></option>
                             <?php endif; ?>
                         <?php endforeach; ?>
                         </select>

@@ -15,7 +15,8 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
             add_filter( 'wpseo_opengraph_url', array( $this, 'og_url' ) );
             add_filter( 'wpseo_og_article_published_time', array( $this, 'og_published_time' ) );
             add_filter( 'wpseo_og_article_modified_time', array( $this, 'og_modified_time' ) );
-            add_filter( 'wpseo_opengraph_image', array( $this, 'og_image' ) );
+
+            add_action( 'wpseo_opengraph', array( $this, 'og_image' ), 90 );
 
             return false;
         }
@@ -54,13 +55,20 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
     }
 
     public function og_image( $image ) {
-        if ( ! $this->image_already_processed ) {
-            $tags = $this->meta->get_meta_tags();
-            $image = $tags['http://ogp.me/ns#image'];
-            $this->image_already_processed = true;
+        if ( $this->image_already_processed ) {
+            return;
         }
 
-        return $image;
+        $tags = $this->meta->get_meta_tags();
+
+        if ( ! isset( $tags['http://ogp.me/ns#image'] ) ) {
+            return;
+        }
+
+        echo $this->meta->render_tag( 'meta', array( 'property' => 'og:image', 'content' => $tags['http://ogp.me/ns#image'] ) );
+        echo $this->meta->render_tag( 'link', array( 'rel' => 'image_src', 'href' => $tags['http://ogp.me/ns#image'] ) );
+
+        $this->image_already_processed = true;
     }
 
     public function should_generate_rel_canonical( $should ) {
@@ -76,9 +84,12 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
      * TODO: move to a parent class for all SEO plugin integrations.
      */
     public function canonical_url( $url ) {
-        if ( $awpcp_canonical_url = awpcp_rel_canonical_url() ) {
+        $awpcp_canonical_url = awpcp_rel_canonical_url();
+
+        if ( $awpcp_canonical_url ) {
             return $awpcp_canonical_url;
         }
+
         return $url;
     }
 
@@ -86,15 +97,15 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
         $this->meta = $meta;
 
         if ( defined( 'WPSEO_VERSION' ) ) {
-            add_filter( 'wpseo_title', array( $this, 'title' ) );
+            add_filter( 'wpseo_title', array( $this, 'build_title' ) );
             return false;
         }
 
         return $should;
     }
 
-    public function title( $title ) {
+    public function build_title( $title ) {
         global $sep;
-        return $this->meta->title( $title, $sep, '' );
+        return $this->meta->title_builder->build_title( $title, $sep, '' );
     }
 }

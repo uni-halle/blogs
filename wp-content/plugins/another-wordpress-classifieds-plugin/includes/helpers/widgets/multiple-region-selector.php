@@ -2,12 +2,8 @@
 
 
 class AWPCP_MultipleRegionSelector {
-    public $options = array(
-        'maxRegions' => 1,
-        'showTextField' => false,
-        'hierarchy' => array('country', 'county', 'state', 'city'),
-    );
 
+    public $options = array();
     public $regions = array();
 
     public function AWPCP_MultipleRegionSelector($regions, $options) {
@@ -23,7 +19,13 @@ class AWPCP_MultipleRegionSelector {
             $this->regions = $regions;
         }
 
-        $this->options = array_merge( $this->options, $options );
+        $this->options = wp_parse_args( $options, array(
+            'maxRegions' => 1,
+            'showTextField' => false,
+            'showExistingRegionsOnly' => get_awpcp_option( 'buildsearchdropdownlists' ),
+            'hierarchy' => array( 'country', 'county', 'state', 'city' ),
+        ) );
+
         $this->options['maxRegions'] = max( $this->options['maxRegions'], count( $regions ) );
     }
 
@@ -34,19 +36,25 @@ class AWPCP_MultipleRegionSelector {
     private function get_region_field_options( $context, $type, $selected, $hierarchy ) {
         $options = apply_filters( 'awpcp-region-field-options', false, $context, $type, $selected, $hierarchy );
 
-        if ( false !== $options ) return $options;
+        if ( false !== $options ) {
+            return $options;
+        }
 
-        if ( $context === 'search' && get_awpcp_option( 'buildsearchdropdownlists' ) ) {
+        if ( $context === 'search' && $this->options['showExistingRegionsOnly'] ) {
             $options = $this->get_existing_regions_of_type($type, $hierarchy);
         } else {
             $options = array();
         }
 
+        $filtered_options = array();
+
         foreach ( $options as $key => $option ) {
-            $options[ $key ] = array( 'id' => $option, 'name' => $option );
+            if ( strlen( $option ) > 0 ) {
+                $filtered_options[] = array( 'id' => $option, 'name' => $option );
+            }
         }
 
-        return $options;
+        return $filtered_options;
     }
 
     private function get_existing_regions_of_type($type, $hierarchy) {

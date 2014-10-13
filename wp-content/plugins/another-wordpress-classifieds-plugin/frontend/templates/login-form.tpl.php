@@ -11,11 +11,12 @@
 
 	<p id="nav" class="nav">
 	<?php if ( isset($_GET['checkemail']) && in_array( $_GET['checkemail'], array('confirm', 'newpass') ) ) : ?>
+	<!-- nothing here -->
 	<?php elseif ( get_option('users_can_register') ) : ?>
 	<a href="<?php echo esc_url( $register_url ); ?>"><?php _e( 'Register', 'AWPCP' ); ?></a> |
-	<a href="<?php echo esc_url( $lost_password_url ); ?>" title="<?php esc_attr_e( 'Password Lost and Found', 'AWPCP' ); ?>"><?php _e( 'Lost your password?', 'AWPCP' ); ?></a>
+	<a href="<?php echo esc_url( $lost_password_url ); ?>" title="<?php esc_attr_e( 'Password Lost and Found', 'AWPCP' ); ?>"><?php echo esc_html( __( 'Lost your password?', 'AWPCP' ) ); ?></a>
 	<?php else : ?>
-	<a href="<?php echo esc_url( $lost_password_url ); ?>" title="<?php esc_attr_e( 'Password Lost and Found', 'AWPCP' ); ?>"><?php _e( 'Lost your password?', 'AWPCP' ); ?></a>
+	<a href="<?php echo esc_url( $lost_password_url ); ?>" title="<?php esc_attr_e( 'Password Lost and Found', 'AWPCP' ); ?>"><?php echo esc_html( __( 'Lost your password?', 'AWPCP' ) ); ?></a>
 	<?php endif; ?>
 	</p>
 </div>

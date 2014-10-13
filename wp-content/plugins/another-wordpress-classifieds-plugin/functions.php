@@ -112,6 +112,33 @@ function awpcp_esc_textarea($text) {
 }
 
 /**
+ * @since 3.3
+ */
+function awpcp_apply_function_deep( $function, $value ) {
+    if ( is_array( $value ) ) {
+        foreach ( $value as $key => $data ) {
+            $value[ $key ] = awpcp_apply_function_deep( $function, $data );
+        }
+    } elseif ( is_object( $value ) ) {
+        $vars = get_object_vars( $value );
+        foreach ( $vars as $key => $data ) {
+            $value->{$key} = awpcp_apply_function_deep( $function, $data );
+        }
+    } elseif ( is_string( $value ) ) {
+        $value = call_user_func( $function, $value );
+    }
+
+    return $value;
+}
+
+/**
+ * @since 3.3
+ */
+function awpcp_strip_all_tags_deep( $string ) {
+    return awpcp_apply_function_deep( 'wp_strip_all_tags', $string );
+}
+
+/**
  * @since 3.0.2
  */
 function awpcp_strptime( $date, $format ) {
@@ -309,24 +336,26 @@ function awpcp_time($date=null, $format='mysql') {
  */
 function awpcp_datetime( $format='mysql', $date=null ) {
 	if ( is_null( $date ) || strlen( $date ) === 0 ) {
-		$date = current_time( 'timestamp' );
+		$timestamp = current_time( 'timestamp' );
 	} else if ( is_string( $date ) ) {
-		$date = strtotime( $date );
-	} // else, we asume a timestamp
+		$timestamp = strtotime( $date );
+	} else {
+        $timestamp = $date;
+    }
 
 	switch ( $format ) {
 		case 'mysql':
-			return date( 'Y-m-d H:i:s', $date );
+			return date( 'Y-m-d H:i:s', $timestamp );
 		case 'timestamp':
-			return $date;
+			return $timestamp;
 		case 'awpcp':
-			return date( awpcp_get_datetime_format(), $date) ;
+			return date( awpcp_get_datetime_format(), $timestamp) ;
 		case 'awpcp-date':
-			return date( awpcp_get_date_format(), $date );
+			return date( awpcp_get_date_format(), $timestamp );
 		case 'awpcp-time':
-			return date( awpcp_get_time_format(), $date );
+			return date( awpcp_get_time_format(), $timestamp );
 		default:
-			return date( $format, $date );
+			return date( $format, $timestamp );
 	}
 }
 
@@ -343,81 +372,17 @@ function awpcp_set_datetime_date( $datetime, $date ) {
     return awpcp_datetime( 'mysql', $new_datetime_timestamp );
 }
 
+function awpcp_extend_date_to_end_of_the_day( $datetime ) {
+    $next_day = strtotime( '+ 1 days', $datetime );
+    $zero_hours_next_day = strtotime( date( 'Y-m-d', $next_day ) );
+    $end_of_the_day = $zero_hours_next_day - 1;
+
+    return $end_of_the_day;
+}
+
 function awpcp_is_mysql_date( $date ) {
 	$regexp = '/^\d{4}-\d{1,2}-\d{1,2}(\s\d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
 	return preg_match( $regexp, $date ) === 1;
-}
-
-
-/**
- * Get a WP User. See awpcp_get_users for details.
- *
- * @param $id int 	User ID
- */
-function awpcp_get_user_data($id) {
-	$users = awpcp_get_users( $id );
-	if (!empty($users)) {
-		return array_shift($users);
-	}
-	return null;
-}
-
-
-/**
- * Get list of WP registered users, adding special attributes to
- * each User object, as needed by AWPCP.
- *
- * Attributes added are:
- * - username
- * - address
- * - city
- * - state
- *
- * @param $where string 	SQL Where clause to filter users
- */
-function awpcp_get_users( $user_id = null ) {
-	global $wpdb;
-
-	$query = 'SELECT <wp-users>.ID, <wp-users>.user_login, <wp-users>.user_email, <wp-users>.user_url, <wp-users>.display_name, <wp-user-meta>.meta_key, <wp-user-meta>.meta_value ';
-	$query.= 'FROM <wp-users> JOIN <wp-user-meta> ON (<wp-user-meta>.user_id = <wp-users>.ID) ';
-	$query.= "WHERE <wp-user-meta>.meta_key IN ('first_name', 'last_name', 'awpcp-profile') ";
-
-	if ( ! is_null( $user_id ) ) {
-		$query .= $wpdb->prepare( ' AND <wp-users>.ID = %d ', $user_id );
-	}
-
-	$query.= 'ORDER BY <wp-users>.display_name ASC, <wp-users>.ID ASC';
-
-	$query = str_replace( '<wp-users>', $wpdb->users, $query );
-	$query = str_replace( '<wp-user-meta>', $wpdb->usermeta, $query);
-
-	$users_info = $wpdb->get_results( $query );
-	$users = array();
-
-	$profile_info = null;
-
-	foreach ( $users_info as $k => $info ) {
-		if ( ! isset( $users[ $info->ID ] ) ) {
-			$users[ $info->ID ] = new stdClass();
-			$users[ $info->ID ]->ID = $info->ID;
-			$users[ $info->ID ]->user_login = $info->user_login;
-			$users[ $info->ID ]->user_email = $info->user_email;
-			$users[ $info->ID ]->user_url = $info->user_url;
-			$users[ $info->ID ]->display_name = $info->display_name;
-		}
-
-		if ( $info->meta_key == 'awpcp-profile' ) {
-			$profile_info = maybe_unserialize( $info->meta_value );
-			$users[ $info->ID ]->address = awpcp_array_data( 'address', '', $profile_info );
-			$users[ $info->ID ]->phone = awpcp_array_data( 'phone', '', $profile_info );
-			$users[ $info->ID ]->city = awpcp_array_data( 'city', '', $profile_info );
-			$users[ $info->ID ]->state = awpcp_array_data( 'state', '', $profile_info );
-		} else {
-			$users[ $info->ID ]->{$info->meta_key} = $info->meta_value;
-		}
-	}
-
-	return $users;
 }
 
 
@@ -496,8 +461,6 @@ function awpcp_pagination($config, $url) {
 					   'picid',
 					   'adkey',
 					   'editemail',
-					   'deletemultipleads',
-					   'spammultipleads',
 					   'awpcp_ads_to_action',
 					   'post_type');
 
@@ -550,41 +513,6 @@ function awpcp_get_categories_ids() {
 	}
 
 	return $categories;
-}
-
-function _awpcp_get_categories_checkboxes($field_name, $categories=array(), $selected=array(), $editable=true) {
-	$checked = 'checked="checked"';
-	$template = '<label class="selectit"><input type="checkbox" id="in-category-%1$d" %3$s name="%4$s[]" value="%1$d"> %2$s</label>';
-
-	$items = '';
-	foreach ($categories as $category) {
-		$items .= sprintf('<li id="category-%1$d">', $category->id);
-
-		$attributes = '';
-		if (in_array($category->id, $selected))
-			$attributes .= 'checked="checked"';
-		if (!$editable)
-			$attributes .= 'disabled="disabled"';
-
-		$items .= sprintf($template, $category->id, $category->name, $attributes, $field_name);
-
-		$children = AWPCP_Category::find(array('parent' => $category->id));
-		if (!empty($children)) {
-			$items .= _awpcp_get_categories_checkboxes($field_name, $children, $selected, $editable);
-		}
-
-		$items .= '</li>';
-	}
-
-	return '<ul>' . $items . '</ul>';
-}
-
-function awpcp_get_categories_checkboxes($selected=array(), $editable=true, $field_name='categories') {
-	global $wpdb;
-
-	$categories = AWPCP_Category::find(array('parent' => 0));
-
-	return _awpcp_get_categories_checkboxes( $field_name, $categories, (array) $selected, $editable );
 }
 
 /**
@@ -722,7 +650,7 @@ function awpcp_regions_search_conditions($regions=array()) {
 		foreach ( $fields as $column ) {
 			$value = isset( $region[ $column ] ) ? trim( $region[ $column ] ) : '';
 			if ( ! empty( $value ) ) {
-				$conditions[] = sprintf( "{$column} LIKE '%%%s%%'", esc_sql( trim( $value ) ) );
+                $conditions[] = $wpdb->prepare( "{$column} LIKE '%%%s%%'", trim( $value ) );
 				break;
 			}
 		}
@@ -754,7 +682,8 @@ function awpcp_get_region_field_entries($field) {
 	$conditions[] = "disabled = 0";
 	$conditions[] = "verified = 1";
 	$conditions[] = "payment_status != 'Unpaid'";
-    if (get_awpcp_option('disablependingads') == 0 && get_awpcp_option('freepay') == 1) {
+
+    if ( get_awpcp_option( 'enable-ads-pending-payment' ) == 0 && get_awpcp_option( 'freepay' ) == 1 ) {
         $conditions[] = "payment_status != 'Pending'";
     }
 
@@ -810,6 +739,7 @@ function awpcp_render_region_form_field_options($entries, $selected=false) {
  * @param $translations array 	Allow developers to change the name
  * 								attribute of the form field associated
  *								to this Region Field.
+ * @deprecated since 3.2.3
  */
 function awpcp_region_form_fields($query, $translations=null, $context='details', $errors=array()) {
 	if (is_null($translations)) {
@@ -1057,88 +987,6 @@ function awpcp_country_list_options($value=false, $use_names=true) {
 	return join('', $options);
 }
 
-function awpcp_state_list_options() {
-	return '<option selected value="">-- Choose a State --</option>
-	<option value="ZZ">None</option>
-	<optgroup label="United States">
-	<option value="AL">Alabama</option>
-	<option value="AK">Alaska</option>
-	<option value="AZ">Arizona</option>
-	<option value="AR">Arkansas</option>
-	<option value="CA">California</option>
-	<option value="CO">Colorado</option>
-	<option value="CT">Connecticut</option>
-	<option value="DE">Delaware</option>
-	<option value="FL">Florida</option>
-	<option value="GA">Georgia</option>
-	<option value="HI">Hawaii</option>
-	<option value="ID">Idaho</option>
-	<option value="IL">Illinois</option>
-	<option value="IN">Indiana</option>
-	<option value="IA">Iowa</option>
-	<option value="KS">Kansas</option>
-	<option value="KY">Kentucky</option>
-	<option value="LA">Louisiana</option>
-	<option value="ME">Maine</option>
-	<option value="MD">Maryland</option>
-	<option value="MA">Massachusetts</option>
-	<option value="MI">Michigan</option>
-	<option value="MN">Minnesota</option>
-	<option value="MS">Mississippi</option>
-	<option value="MO">Missouri</option>
-	<option value="MT">Montana</option>
-	<option value="NE">Nebraska</option>
-	<option value="NV">Nevada</option>
-	<option value="NH">New Hampshire</option>
-	<option value="NJ">New Jersey</option>
-	<option value="NM">New Mexico</option>
-	<option value="NY">New York</option>
-	<option value="NC">North Carolina</option>
-	<option value="ND">North Dakota</option>
-	<option value="OH">Ohio</option>
-	<option value="OK">Oklahoma</option>
-	<option value="OR">Oregon</option>
-	<option value="PA">Pennsylvania</option>
-	<option value="RI">Rhode Island</option>
-	<option value="SC">South Carolina</option>
-	<option value="SD">South Dakota</option>
-	<option value="TN">Tennessee</option>
-	<option value="TX">Texas</option>
-	<option value="UT">Utah</option>
-	<option value="VT">Vermont</option>
-	<option value="VA">Virginia</option>
-	<option value="WA">Washington</option>
-	<option value="WV">West Virginia</option>
-	<option value="WI">Wisconsin</option>
-	<option value="WY">Wyoming</option>
-	</optgroup>
-	<optgroup label="Canada">
-	<option value="AB">Alberta</option>
-	<option value="BC">British Columbia</option>
-	<option value="MB">Manitoba</option>
-	<option value="NB">New Brunswick</option>
-	<option value="NF">Newfoundland and Labrador</option>
-	<option value="NT">Northwest Territories</option>
-	<option value="NS">Nova Scotia</option>
-	<option value="NU">Nunavut</option>
-	<option value="ON">Ontario</option>
-	<option value="PE">Prince Edward Island</option>
-	<option value="PQ">Quebec</option>
-	<option value="SK">Saskatchewan</option>
-	<option value="YT">Yukon Territory</option>
-	</optgroup>
-	<optgroup label="Australia">
-	<option value="AC">Australian Capital Territory</option>
-	<option value="NW">New South Wales</option>
-	<option value="NO">Northern Territory</option>
-	<option value="QL">Queensland</option>
-	<option value="SA">South Australia</option>
-	<option value="TS">Tasmania</option>
-	<option value="VC">Victoria</option>
-	<option value="WS">Western Australia</option>
-	</optgroup>';
-}
-
 
 /**
  * AWPCP misc functions
@@ -1214,7 +1062,7 @@ function awpcp_get_image_url($image, $suffix='') {
 	$thumbnail = $thumbnails . $basename;
 	$part = empty($suffix) ? '.' : "-$suffix.";
 
-	$info = pathinfo($original);
+	$info = awpcp_utf8_pathinfo($original);
 
 	if ($suffix == 'original') {
 		$alternatives = array($original);
@@ -1583,8 +1431,8 @@ function awpcp_get_admin_panel_url() {
 /**
  * @since 3.0.2
  */
-function awpcp_get_admin_settings_url( $section = false ) {
-	return add_query_arg( array( 'page' => 'awpcp-admin-settings', 'g' => $section ), admin_url( 'admin.php' ) );
+function awpcp_get_admin_settings_url( $group = false ) {
+	return add_query_arg( array( 'page' => 'awpcp-admin-settings', 'g' => $group ), admin_url( 'admin.php' ) );
 }
 
 /**
@@ -1647,16 +1495,8 @@ function awpcp_current_url() {
  *							false to attempt to strip it.
  */
 function awpcp_get_current_domain($www=true, $prefix='') {
-	$domain = awpcp_array_data('HTTP_HOST', '', $_SERVER);
-	if (empty($domain)) {
-		$domain = awpcp_array_data('SERVER_NAME', '', $_SERVER);
-	}
-
-	if (!$www && substr($domain, 0, 4) === 'www.') {
-		$domain = $prefix . substr($domain, 4);
-	}
-
-	return $domain;
+    _deprecated_function( __FUNCTION__, '3.2.3', 'awpcp_request()->domain( $include_www, $www_prefix_replacement )' );
+    return awpcp_request()->domain( $www, $prefix );
 }
 
 /**
@@ -1670,7 +1510,7 @@ function awpcp_ajaxurl($overwrite=false) {
 	if ($overwrite || $ajaxurl === false) {
 		$url = admin_url('admin-ajax.php');
 		$parts = parse_url($url);
-		$ajaxurl = str_replace($parts['host'], awpcp_get_current_domain(), $url);
+		$ajaxurl = str_replace($parts['host'], awpcp_request()->domain(), $url);
 	}
 
 	return $ajaxurl;
@@ -1981,6 +1821,16 @@ function awpcp_print_messages() {
 	awpcp_clear_flash_messages();
 }
 
+function awpcp_print_form_errors( $errors ) {
+    foreach ( $errors as $index => $error ) {
+        if ( is_numeric( $index ) ) {
+            echo awpcp_print_message( $error, array( 'error' ) );
+        } else {
+            echo awpcp_print_message( $error, array( 'error', 'ghost' ) );
+        }
+    }
+}
+
 function awpcp_print_message($message, $class=array('updated')) {
 	$class = array_merge(array('awpcp-message'), $class);
 	return '<div class="' . join(' ', $class) . '"><p>' . $message . '</p></div>';
@@ -1989,7 +1839,6 @@ function awpcp_print_message($message, $class=array('updated')) {
 function awpcp_print_error($message) {
 	return awpcp_print_message($message, array('error'));
 }
-
 
 function awpcp_validate_error($field, $errors) {
 	$error = awpcp_array_data($field, '', $errors);
@@ -2005,7 +1854,7 @@ function awpcp_form_error($field, $errors) {
 
 function awpcp_attachment_background_color_explanation() {
 	if ( get_awpcp_option( 'imagesapprove' ) ) {
-		return '<p>' . _x( 'The images or files with pale red background have been rejected by an administrator user. Likewise, files with a pale yellow background are awaiting approval. Files that are awaiting approval and rejected files, cannot be shown in the frontend.', 'AWPCP' ) . '</p>';
+		return '<p>' . __( 'The images or files with pale red background have been rejected by an administrator user. Likewise, files with a pale yellow background are awaiting approval. Files that are awaiting approval and rejected files, cannot be shown in the frontend.', 'AWPCP' ) . '</p>';
 	} else {
 		return '';
 	}
@@ -2057,7 +1906,7 @@ function awpcp_uploaded_file_error($file) {
 }
 
 function awpcp_get_file_extension( $filename ) {
-	return pathinfo( $filename, PATHINFO_EXTENSION );
+	return awpcp_utf8_pathinfo( $filename, PATHINFO_EXTENSION );
 }
 
 /**
@@ -2278,70 +2127,39 @@ function awpcp_print_column_headers($screen, $id = true, $sortable=array()) {
 	$wp_list_table->print_column_headers($id);
 }
 
-
-/** Temporary solution to avoid breaking inline scripts due to wpauotp and wptexturize
- ---------------------------------------------------------------------------- */
-
 /**
- * @since  2.1.2
+ * @since 3.3
  */
-function awpcp_inline_javascript_placeholder($name, $script) {
-	global $awpcp;
-
-	if (!isset($awpcp->inline_scripts) || !is_array($awpcp->inline_scripts))
-		$awpcp->inline_scripts = array();
-
-	$awpcp->inline_scripts[$name] = $script;
-
-	return "<AWPCPScript style='display:none'>$name</AWPCPScript>";
+function awpcp_enqueue_main_script() {
+    wp_enqueue_script( 'awpcp' );
 }
 
 /**
- * @since  2.1.2
+ * @since 3.3
  */
-function awpcp_inline_javascript($content) {
-	global $awpcp;
+function awpcp_maybe_add_thickbox() {
+    if ( get_awpcp_option( 'awpcp_thickbox_disabled' ) ) {
+        return;
+    }
 
-	if (!isset($awpcp->inline_scripts) || !is_array($awpcp->inline_scripts))
-		return $content;
-
-	foreach ($awpcp->inline_scripts as $name => $script) {
-		$content = preg_replace("{<AWPCPScript style='display:none'>$name</AWPCPScript>}", $script, $content);
-	}
-
-	return $content;
+    add_thickbox();
 }
 
-/**
- * @since  2.1.3
- */
-function awpcp_print_inline_javascript() {
-	global $awpcp;
-
-	if (!isset($awpcp->inline_scripts) || !is_array($awpcp->inline_scripts))
-		return;
-
-	foreach ($awpcp->inline_scripts as $name => $script) {
-		echo $script;
-	}
-}
 
 /**
  * @since 3.2.1
  */
 function awpcp_load_plugin_textdomain( $__file__, $text_domain ) {
-	if ( get_awpcp_option( 'activatelanguages' ) ) {
-		$basename = dirname( plugin_basename( $__file__ ) );
+	$basename = dirname( plugin_basename( $__file__ ) );
 
-		if ( load_plugin_textdomain( $text_domain, false, $basename . '/languages/' ) ) {
-			return true;
-		}
+	if ( load_plugin_textdomain( $text_domain, false, $basename . '/languages/' ) ) {
+		return true;
+	}
 
-		// main l10n MO file can be in the top level directory or inside the
-		// languages directory. A file inside the languages directory is prefered.
-		if ( $text_domain == 'AWPCP' ) {
-			return load_plugin_textdomain( $text_domain, false, $basename );
-		}
+	// main l10n MO file can be in the top level directory or inside the
+	// languages directory. A file inside the languages directory is prefered.
+	if ( $text_domain == 'AWPCP' ) {
+		return load_plugin_textdomain( $text_domain, false, $basename );
 	}
 }
 
@@ -2349,7 +2167,7 @@ function awpcp_utf8_strlen( $string ) {
 	if ( function_exists( 'mb_strlen' ) ) {
 		return mb_strlen( $string, 'UTF-8' );
 	} else {
-		return preg_match_all( '(.)su', $string );
+		return preg_match_all( '(.)su', $string, $matches );
 	}
 }
 
@@ -2371,4 +2189,53 @@ function awpcp_utf8_substr_pcre( $string, $start, $length=null ) {
 	} else {
 		return '';
 	}
+}
+
+/**
+ * from http://stackoverflow.com/a/4459219/201354.
+ *
+ * @since 3.3
+ */
+function awpcp_utf8_pathinfo( $path, $path_parts_types = null ) {
+    $modified_path = awpcp_add_path_prefix( $path );
+    $path_parts = is_null( $path_parts_types ) ? pathinfo( $modified_path ) : pathinfo( $modified_path, $path_parts_types );
+    $path_parts = awpcp_remove_path_prefix( $path_parts, $path_parts_types );
+
+    return $path_parts;
+}
+
+function awpcp_add_path_prefix( $path, $prefix = '_629353a' ) {
+    if ( strpos( $path, '/' ) === false ) {
+        $modified_path = $prefix . $path;
+    } else {
+        $modified_path = str_replace( '/', "/$prefix", $path );
+    }
+
+    return $modified_path;
+}
+
+function awpcp_remove_path_prefix( $path_parts, $path_part_type, $prefix = '_629353a' ) {
+    if ( is_array( $path_parts ) ) {
+        foreach ( $path_parts as $key => $value ) {
+            $path_parts[ $key ] = str_replace( $prefix, '', $value );
+        }
+    } else if ( is_string( $path_parts ) ) {
+        $path_parts = str_replace( $prefix, '', $path_parts );
+    }
+
+    return $path_parts;
+}
+
+function awpcp_utf8_basename( $path, $suffix = null ) {
+    $modified_path = awpcp_add_path_prefix( $path );
+    $basename = basename( $modified_path );
+    return awpcp_remove_path_prefix( $basename, PATHINFO_BASENAME );
+}
+
+/**
+ * @since 3.3
+ */
+function awpcp_register_activation_hook( $__FILE__, $callback ) {
+    $file = WP_CONTENT_DIR . '/plugins/' . basename( dirname( $__FILE__ ) ) . '/' . basename( $__FILE__ );
+    register_activation_hook( $file, $callback );
 }

@@ -73,6 +73,8 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     }
 
     public function dispatch($default=null) {
+        do_action( 'awpcp-before-post-listing-page' );
+
         wp_enqueue_style('awpcp-jquery-ui');
         wp_enqueue_script('awpcp-page-place-ad');
 
@@ -181,41 +183,6 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         return $this->order_step();
     }
 
-    protected function sort_payment_terms($a, $b) {
-        $result = strcasecmp($a->type, $b->type);
-        if ($result == 0) {
-            $result = strcasecmp($a->name, $b->name);
-        }
-        return $result;
-    }
-
-    protected function get_users() {
-        $users = awpcp_get_users();
-        $payments = awpcp_payments_api();
-
-        $payment_terms = array();
-        foreach ($users as $k => $user) {
-            $user_terms = $payments->get_user_payment_terms($user->ID);
-
-            $ids = array();
-            foreach ($user_terms as $type => $terms) {
-                foreach ($terms as $term) {
-                    $id = "{$term->type}-{$term->id}";
-                    if (!isset($payment_terms[$id])) {
-                        $payment_terms[$id] = $term;
-                    }
-                    $ids[] = $id;
-                }
-            }
-
-            $users[$k]->payment_terms = join(',', $ids);
-        }
-
-        usort($payment_terms, array($this, 'sort_payment_terms'));
-
-        return array($users, $payment_terms);
-    }
-
     /**
      * @since 3.0.2
      */
@@ -236,27 +203,6 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $required['terms-of-service'] = true;
 
         return $required;
-    }
-
-    protected function users_dropdown($selected=false, $errors) {
-        global $current_user;
-        get_currentuserinfo();
-
-        if ($selected !== false && empty($selected) && $current_user) {
-            $selected = $current_user->ID;
-        }
-
-        list($users, $payment_terms) = $this->get_users();
-
-        ob_start();
-            include(AWPCP_DIR . '/frontend/templates/page-place-ad-details-step-users-dropdown.tpl.php');
-            $html = ob_get_contents();
-        ob_end_clean();
-
-        // TODO: set this information as a property in the AWPCP JavaScript object
-        wp_localize_script('awpcp-page-place-ad', 'AWPCPUsers', $users);
-
-        return $html;
     }
 
     protected function validate_order($data, &$errors=array()) {
@@ -286,6 +232,10 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
             $message = __( 'The Payment Term you selected is not available for non-administrator users.', 'AWPCP' );
             $errors['payment-term'] = $message;
         }
+
+        $additional_errors = apply_filters( 'awpcp-validate-post-listing-order', array(), $data );
+
+        array_splice( $errors, count( $errors ), 0, $additional_errors );
     }
 
     public function order_step() {
@@ -519,6 +469,10 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         $data = $wpdb->get_row( $wpdb->prepare( $query, (int) $ad_id ), ARRAY_A );
 
+        if ( get_awpcp_option('allowhtmlinadtext') ) {
+            $data['ad_details'] = awpcp_esc_textarea( $data['ad_details'] );
+        }
+
         // please note we are dividing the Ad price by 100
         // Ad prices have been historically stored in cents
         $data['ad_category'] = $data['ad_category_id'];
@@ -533,7 +487,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
     protected function get_user_info($user_id=false) {
         $user_id = $user_id === false ? get_current_user_id() : $user_id;
-        $data = awpcp_get_user_data($user_id);
+        $data = awpcp_users_collection()->find_by_id( $user_id );
 
         $translations = array(
             'ad_contact_name' => array('display_name', 'user_login', 'username'),
@@ -651,7 +605,14 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
 
         $data = array();
         foreach ($defaults as $name => $default) {
-            $data[$name] = awpcp_array_data($name, $default, $from);
+            $value = awpcp_array_data( $name, $default, $from );
+            $value = stripslashes_deep( $value );
+
+            if ( $name != 'ad_details' ) {
+                $value = awpcp_strip_all_tags_deep( $value );
+            }
+
+            $data[ $name ] = $value;
         }
 
         if (empty($data['user_id'])) {
@@ -719,7 +680,6 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $ui['contact-phone-field-required'] = get_awpcp_option('displayphonefieldreqop') == 1;
         $ui['price-field'] = get_awpcp_option('displaypricefield') == 1;
         $ui['price-field-required'] = get_awpcp_option('displaypricefieldreqop') == 1;
-        // $ui['module-region-fields'] = $hasregionsmodule;
         $ui['allow-regions-modification'] = $is_admin_user || !$edit || get_awpcp_option( 'allow-regions-modification' );
         $ui['price-field'] = get_awpcp_option('displaypricefield') == 1;
         $ui['extra-fields'] = $hasextrafieldsmodule && function_exists('awpcp_extra_fields_render_form');
@@ -982,9 +942,9 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         }
 
         if (get_awpcp_option('useakismet')) {
-            // XXX: check why it isn't working so well
-            if (awpcp_check_spam($data['ad_contact_name'], $data['websiteurl'], $data['ad_contact_email'], $data['ad_details'])) {
-                //Spam detected!
+            $spam_filter = awpcp_listing_spam_filter();
+
+            if ( $spam_filter->is_spam( $data ) ) {
                 $errors[] = __("Your Ad was flagged as spam. Please contact the administrator of this site.", "AWPCP");
             }
         }
@@ -993,7 +953,7 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
     }
 
     protected function prepare_ad_title($title, $characters) {
-        $$title = stripslashes_deep( $title );
+        $$title = $title;
 
         if ( $characters > 0 && awpcp_utf8_strlen( $title ) > $characters ) {
             $title = awpcp_utf8_substr( $title, 0, $characters );
@@ -1006,9 +966,9 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         $allow_html = (bool) get_awpcp_option('allowhtmlinadtext');
 
         if (!$allow_html) {
-            $details = esc_html(stripslashes_deep($details));
+            $details = esc_html( $details );
         } else {
-            $details = wp_kses_post(stripslashes_deep($details));
+            $details = wp_kses_post( $details );
         }
 
         if ( $characters > 0 && awpcp_utf8_strlen( $details ) > $characters ) {
@@ -1190,7 +1150,9 @@ class AWPCP_Place_Ad_Page extends AWPCP_Page {
         }
 
         $params = array_merge( $params, array(
+            'listing' => $ad,
             'images' => awpcp_media_api()->find_images_by_ad_id( $ad->ad_id ),
+            'is_primary_set' => awpcp_media_api()->listing_has_primary_image( $ad ),
             'messages' => $this->messages,
             'actions' => array(
                 'enable' => true,

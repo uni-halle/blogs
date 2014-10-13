@@ -16,9 +16,9 @@
             </td>
             <td class="amount">
             <?php if ( $item->payment_type === AWPCP_Payment_Transaction::PAYMENT_TYPE_MONEY ): ?>
-                <?php echo awpcp_format_money($item->amount); ?>
+                <?php echo esc_html( awpcp_format_money( $item->amount ) ); ?>
             <?php else: ?>
-                <?php echo number_format($item->amount, 0); ?>
+                <?php echo esc_html( number_format( $item->amount, 0 ) ); ?>
             <?php endif; ?>
             </td>
         </tr>
@@ -32,14 +32,14 @@
         <?php if ($show_credits): ?>
         <tr>
             <td class="row-header"><?php _ex('Total Amount (credit)', 'transaction items', 'AWPCP'); ?></td>
-            <td class="amount"><?php echo number_format($totals['credits'], 0); ?></td>
+            <td class="amount"><?php echo esc_html( number_format( $totals['credits'], 0 ) ); ?></td>
         </tr>
         <?php endif; ?>
 
         <tr>
             <?php $label = sprintf( '%s (%s)', _x( 'Total Amount', 'transaction items', 'AWPCP' ), awpcp_get_currency_symbol() ); ?>
-            <td class="row-header"><?php echo $label; ?></td>
-            <td class="amount"><?php echo awpcp_format_money($totals['money']); ?></td>
+            <td class="row-header"><?php echo esc_html( $label ); ?></td>
+            <td class="amount"><?php echo esc_html( awpcp_format_money( $totals['money'] ) ); ?></td>
         </tr>
     </tfoot>
 </table>

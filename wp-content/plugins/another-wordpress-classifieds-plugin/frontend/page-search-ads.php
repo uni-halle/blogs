@@ -21,8 +21,8 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     }
 
     public function url($params=array()) {
-        $url = awpcp_get_page_url( 'search-ads-page-name', true );
-        return add_query_arg($params, $url);
+        $page_url = awpcp_get_page_url( 'search-ads-page-name', true );
+        return add_query_arg( $params, $page_url );
     }
 
     public function show_return_link($content) {
@@ -33,7 +33,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     }
 
     public function dispatch() {
-        wp_enqueue_script('awpcp-page-search-ads');
+        wp_enqueue_script('awpcp-page-search-listings');
         wp_enqueue_script('awpcp-extra-fields');
 
         $awpcp = awpcp();
@@ -57,16 +57,15 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     }
 
     protected function get_posted_data() {
-        $data = array(
+        $data = stripslashes_deep( array(
             'query' => awpcp_request_param('keywordphrase'),
             'category' => awpcp_request_param('searchcategory'),
             'name' => awpcp_request_param('searchname'),
             'min_price' => awpcp_parse_money( awpcp_request_param( 'searchpricemin' ) ),
             'max_price' => awpcp_parse_money( awpcp_request_param( 'searchpricemax' ) ),
             'regions' => awpcp_request_param('regions'),
-        );
+        ) );
 
-        $data = stripslashes_deep( $data );
         $data = apply_filters( 'awpcp-get-posted-data', $data, 'search' );
 
         return $data;
@@ -102,7 +101,6 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     protected function search_form($form, $errors=array()) {
         global $hasregionsmodule, $hasextrafieldsmodule;
 
-        $ui['module-region-fields'] = $hasregionsmodule;
         $ui['module-extra-fields'] = $hasextrafieldsmodule;
         $ui['posted-by-field'] = get_awpcp_option('displaypostedbyfield');
         $ui['price-field'] = get_awpcp_option('displaypricefield');
@@ -119,30 +117,37 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     }
 
     protected function do_search_step() {
-        global $wpdb, $hasextrafieldsmodule;
-
-        $errors = array();
         $form = $this->get_posted_data();
 
+        $errors = array();
         if (!$this->validate_posted_data($form, $errors)) {
             return $this->search_form($form, $errors);
         }
+
+        $output = apply_filters( 'awpcp-search-listings-content-replacement', null, $form );
+
+        if ( is_null( $output ) ) {
+            return $this->search_listings( $form );
+        } else {
+            return $output;
+        }
+    }
+
+    private function search_listings( $form ) {
+        global $wpdb, $hasextrafieldsmodule;
 
         // build a link to hold all query parameters
         $params = array_merge(stripslashes_deep($_REQUEST), array('a' => 'searchads'));
         $href = add_query_arg(urlencode_deep($params), awpcp_current_url());
         $this->return_link = '<div class="awpcp-return-to-search-link"><a href="' . esc_attr($href) . '">' . __('Return to Search', 'AWPCP') . '</a></div>';
 
-
         $conditions = array('disabled = 0');
 
         if (!empty($form['query'])) {
-            // $sql = 'MATCH (ad_title, ad_details) AGAINST (%s IN BOOLEAN MODE)';
-            // $conditions[] = $wpdb->prepare( $sql, $form['query'] );
-            if (!$hasextrafieldsmodule) {
-                $conditions[] = sprintf( "ad_title LIKE '%%%s%%' OR ad_details LIKE '%%%s%%'", $form['query'], $form['query'] );
-            }
             // If user has extra fields module, we'll set this condition later inside the module logic.
+            if (!$hasextrafieldsmodule) {
+                $conditions[] = $wpdb->prepare( "( ad_title LIKE '%%%s%%' OR ad_details LIKE '%%%s%%' )", $form['query'], $form['query'] );
+            }
         }
 
         if (!empty($form['name'])) {

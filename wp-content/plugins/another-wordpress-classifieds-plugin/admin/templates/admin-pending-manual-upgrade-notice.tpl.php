@@ -1,4 +1,4 @@
-<div class="update-nag clearfix">
+<div class="update-nag awpcp-update-nag clearfix">
     <?php $url = awpcp_get_admin_upgrade_url(); ?>
     <p class="align-center"><strong>
         <?php _e( 'Manual Upgrade Required', 'AWPCP' ); ?></strong>

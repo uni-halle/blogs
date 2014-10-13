@@ -1,0 +1,186 @@
+#classiwrapper .awpcp-uploaded-files, .awpcp-uploaded-files,
+#classiwrapper .uploaded-images, .uploaded-images,
+#classiwrapper .awpcp-uploaded-images, .awpcp-uploaded-images {
+    margin-bottom: 10px;
+
+    li {
+        background: #EEE;
+        border: 1px solid #E2E2E2;
+        float: left;
+        list-style-type: none;
+        margin: 0 10px 30px;
+        min-width: 180px;
+        padding: 3px;
+        text-align: center;
+
+        .image-container {
+            background: #E2E2E2;
+
+            img {
+                border-radius: 0;
+                box-shadow: none;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        .image-actions {
+            padding-top: 5px;
+
+            li {
+                background: transparent;
+                border: none;
+                margin: 0;
+                padding: 0 1px;
+                min-width: 0;
+                width: auto;
+
+                a, label {
+                    background: @enable_image_icon_url center center no-repeat;
+                    cursor: pointer;
+                    display: block;
+                    height: 22px;
+                    width: 25px;
+                }
+                a:hover, label:hover {
+                    background-color: #C6C6C6;
+                }
+            }
+
+            .spinner {
+                background: url('/wp-admin/images/spinner.gif') center center no-repeat;
+                display: block;
+                height: 20px;
+                width: 20px;
+            }
+            .spinner-hidden {
+                display: none;
+            }
+
+            .enable a {
+                background-image: @enable_image_icon_url;
+            }
+            .disable a {
+                background-image: @disable_image_icon_url;
+            }
+            .delete a {
+                background-image: @delete_image_icon_url;
+            }
+            .status label {
+                background: none;
+                font-size: 0.9em;
+                padding: 0 3px;
+                width: auto;
+            }
+            .primary-status span {
+                display: block;
+
+                &.primary a, &.primary label {
+                    background-image: @primary_image_icon_url;
+                }
+                &.not-primary a, &.not-primary label {
+                    background-image: @not_primary_image_icon_url;
+                }
+                &.primary input, &.not-primary input {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .primary-image {
+        background: #B6E2AF;
+        border: 3px solid #86CC7C;
+        padding: 1px;
+    }
+
+    .awaiting-approval {
+        background: @attachment_awaiting_approval_background;
+        border-color: #E6E6C8;
+    }
+    .rejected {
+        background: @attachment_rejected_background;
+        border-color: #FC9393;
+    }
+    .approved {
+        // background: @attachment_approved_background;
+    }
+
+    .disabled img {
+        opacity: 0.5;
+    }
+}
+
+#classiwrapper .awpcp-uploaded-images, .awpcp-uploaded-images {
+    li {
+        position: relative;
+
+        .primary-image-label {
+            position: absolute;
+            bottom: -23px;
+            height: 20px;
+            background: #B6E2AF;
+            font-size: 11px;
+            padding: 0 6px;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            width: 144px;
+            box-sizing: border-box;
+            line-height: 18px;
+            left: 50%;
+            margin-left: -72px;
+        }
+    }
+}
+
+#classiwrapper .awpcp-uploaded-attachments, .awpcp-uploaded-attachments {
+    li {
+        margin: 0 0 4px;
+        min-width: 100%;
+        padding: 6px 10px 3px;
+
+        > a {
+            float: left;
+        }
+
+        img {
+            display: inline;
+        }
+
+        .image-actions {
+            float: right;
+            padding-top: 0px;
+
+            .delete a {
+                background-image: @delete_attachment_icon_url;
+            }
+            .enable a {
+                background-image: @enable_attachment_icon_url;
+            }
+            .disable a {
+                background-image: @disable_attachment_icon_url;
+            }
+        }
+    }
+
+    li.disabled {
+        background: #F3F3F3;
+
+        > a {
+            opacity: 0.5;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #classiwrapper .uploaded-images, .uploaded-images,
+    #classiwrapper .awpcp-uploaded-images, .awpcp-uploaded-images {
+        li {
+            width: 100%;
+
+            .image-actions li {
+                width: auto;
+            }
+        }
+    }
+}

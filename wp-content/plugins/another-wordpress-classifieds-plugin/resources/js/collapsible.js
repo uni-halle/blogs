@@ -16,7 +16,7 @@ AWPCP.define('awpcp/collapsible', ['jquery'], function($) {
                     self.subject.hide();
                 }
 
-                self.toggleClass();
+                self.toggleHandlerClass();
 
                 self.handler.click(function(event) {
                     self.toggle.apply(self, [event, this]);
@@ -26,7 +26,7 @@ AWPCP.define('awpcp/collapsible', ['jquery'], function($) {
             }
         },
 
-        toggleClass: function() {
+        toggleHandlerClass: function() {
             if (this.subject.is(':visible')) {
                 this.handler.find('span').removeClass('open').addClass('close');
             } else {
@@ -37,7 +37,7 @@ AWPCP.define('awpcp/collapsible', ['jquery'], function($) {
         toggle: function(event) {
             event.preventDefault();
             var self = this;
-            self.subject.slideToggle(function() { self.toggleClass(); });
+            self.subject.slideToggle(function() { self.toggleHandlerClass(); });
         }
     });
 

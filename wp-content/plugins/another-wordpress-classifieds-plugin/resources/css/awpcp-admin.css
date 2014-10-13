@@ -52,8 +52,9 @@
   background: #FFF;
 }
 .nav-tab-wrapper .nav-tab {
-  font-size: 12px;
+  font-size: 11px;
   padding: 2px 5px;
+  margin-right: -3px;
 }
 .category-checklist {
   background: #FFF;
@@ -97,6 +98,9 @@
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+.awpcp-update-nag {
+  display: inline-block !important;
 }
 .awpcp-sticky-notice {
   text-align: left;
@@ -165,37 +169,8 @@
   float: left;
   width: 43%;
 }
-/* Admin Sidebar */
-.awpcp-postbox-container .postbox {
-  min-width: 200px;
-}
-.awpcp-postbox-container .postbox .hndle,
-.awpcp-postbox-container .postbox .hndle1 {
-  cursor: default;
-}
-.li_link {
-  margin-left: 10px;
-}
-.inside {
-  padding: 5px 10px !important;
-}
-.apostboxes {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  background-color: #FFFFFF;
-  border-color: #DFDFDF;
-  border-radius: 3px;
-  border-style: solid;
-  border-width: 1px;
-  line-height: 1;
-  margin-bottom: 20px;
-  /*min-width:255px;*/
-  position: relative;
-  width: 99.5%;
-}
-.apostboxes h3 {
-  background: url("../images/admin-sidebar-gray-grad.png") repeat-x scroll left top #dfdfdf;
-  text-shadow: 0 1px 0 #FFFFFF;
+.metabox-holder .postbox .inside {
+  padding: 5px 12px !important;
 }
 /* =Admin Settings
 ---------------------------------------------------------------------------- */
@@ -208,6 +183,37 @@
 }
 .awpcp-admin-settings .awpcp-main-content .metabox-holder {
   padding-top: 20px !important;
+}
+.awpcp-admin-settings .settings-form h3 {
+  margin-top: 2em;
+  margin-bottom: 0.7em;
+}
+.awpcp-admin-settings .settings-form .form-table th,
+.awpcp-admin-settings .settings-form .form-table td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.awpcp-admin-settings .category-checklist {
+  height: 290px;
+  max-height: 290px;
+}
+.awpcp-admin-settings .category-checklist .awpcp-categories-list {
+  margin-top: 4px;
+}
+.awpcp-admin-settings .category-checklist .awpcp-categories-list li {
+  margin-bottom: 4px;
+}
+.awpcp-admin-settings .category-checklist .awpcp-categories-list ul {
+  margin-left: 20px;
+}
+.awpcp-admin-settings .category-checklist .awpcp-categories-list ul li:first-child {
+  margin-top: 4px;
+}
+.awpcp-licenses-settings .form-table th {
+  width: 250px;
+}
+.awpcp-licenses-settings .awpcp-license-valid {
+  color: green;
 }
 /* =Admin Credit Plans
 ---------------------------------------------------------------------------- */
@@ -255,6 +261,17 @@
 }
 /* =Admin Listings
 ---------------------------------------------------------------------------- */
+.awpcp-admin-listings .awpcp-category-filter {
+  max-width: 270px;
+}
+.awpcp-admin-listings .awpcp-category-filter select {
+  max-width: 180px;
+}
+.awpcp-admin-listings .awpcp-category-filter input {
+  margin: 1px 8px 0 0;
+}
+/* .awpcp-listings refers to the listings table in Classifieds > Listings */
+/* .manage is the Manage column */
 .wp-admin .awpcp-listings .manage {
   width: 40%;
 }
@@ -352,7 +369,8 @@
   margin-right: 3px;
   width: auto;
 }
-.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a {
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a,
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li span {
   background: url(../images/file-delete.png) center center no-repeat;
   display: block;
   height: 24px;
@@ -374,6 +392,9 @@
   background-image: url(../images/enable-attachment.png);
 }
 .awpcp-media-manager-file-list li .awcp-media-manager-file-actions li a.set-primary-image {
+  background-image: url(../images/image-not-primary.png);
+}
+.awpcp-media-manager-file-list li .awcp-media-manager-file-actions li span.primary-image {
   background-image: url(../images/image-primary.png);
 }
 .awpcp-media-manager-file-list li.jpg .awpcp-media-manager-file-thumbnail,
@@ -493,6 +514,18 @@
 }
 .align-text-right {
   text-align: right;
+}
+.awpcp-admin-sidebar .postbox {
+  min-width: 200px;
+}
+.awpcp-admin-sidebar .postbox .hndle {
+  cursor: default;
+}
+.awpcp-admin-sidebar .postbox .inside *:first-child {
+  margin-top: 0;
+}
+.awpcp-admin-sidebar .awpcp-get-a-premium-module .hndle {
+  border-bottom-color: #E9E9B2;
 }
 .progress-bar {
   border: 1px solid #AAA;

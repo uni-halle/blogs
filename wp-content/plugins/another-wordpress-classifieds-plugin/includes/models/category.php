@@ -62,18 +62,24 @@ class AWPCP_Category {
         }
     }
 
-    public static function find($conditions=array()) {
-        $where = array();
+    public static function find($args=array()) {
+        $conditions = array();
 
-        if (isset($conditions['id']) && is_array($conditions['id']))
-            $where[] = sprintf( 'category_id IN (%s)', join( ',', $conditions['id'] ) );
-        else if (isset($conditions['id']))
-            $where[] = sprintf('category_id  = %d', $conditions['id']);
+        if ( isset( $args['id'] ) && is_array( $args['id'] ) ) {
+            $conditions[] = sprintf( 'category_id IN (%s)', join( ',', $args['id'] ) );
+        } else if ( isset( $args['id'] ) ) {
+            $conditions[] = sprintf( 'category_id  = %d', $args['id'] );
+        }
 
-        if (isset($conditions['parent']))
-            $where[] = sprintf('category_parent_id = %d', (int) $conditions['parent']);
+        if ( isset( $args['parent'] ) ) {
+            $conditions[] = sprintf( 'category_parent_id = %d', (int) $args['parent'] );
+        }
 
-        return self::query(array('where' => join(' AND ', $where)));
+        if ( empty( $conditions ) ) {
+            return self::query();
+        } else {
+            return self::query( array( 'where' => join( ' AND ', $conditions ) ) );
+        }
     }
 
     public static function find_by_id($category_id) {
@@ -136,6 +142,11 @@ class AWPCP_CategoriesCollection {
 
             $category->id = $this->db->insert_id;
 
+            /**
+             * @since 3.3
+             */
+            do_action( 'awpcp-category-added', $category );
+
             return $rows_affected;
         } else {
             return false;
@@ -180,6 +191,11 @@ class AWPCP_CategoriesCollection {
             $result = $this->update_category( $category );
             throw new AWPCP_Exception( $e->getMessage() );
         }
+
+        /**
+         * @since 3.3
+         */
+        do_action( 'awpcp-category-edited' );
 
         return $rows_updated;
     }
@@ -229,5 +245,33 @@ class AWPCP_CategoriesCollection {
         $category->name = $previous_category_data->category_name;
         $category->parent = $previous_category_data->category_parent_id;
         $category->order = $previous_category_data->category_order;
+    }
+
+    /**
+     * @since 3.3
+     */
+    public function get_all() {
+        return AWPCP_Category::query( array(
+            'orderby' => 'category_order ASC, category_name',
+            'order' => 'ASC',
+        ) );
+    }
+
+    /**
+     * @since 3.3
+     */
+    public function find( $args = array() ) {
+        return AWPCP_Category::find( $args );
+    }
+
+    /**
+     * @since 3.3
+     */
+    public function find_by_parent_id( $category_parent_id ) {
+        return AWPCP_Category::query( array(
+            'where' => sprintf( 'category_parent_id = %d', absint( $category_parent_id ) ),
+            'orderby' => 'category_order ASC, category_name',
+            'order' => 'ASC',
+        ) );
     }
 }

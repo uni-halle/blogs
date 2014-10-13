@@ -4,8 +4,11 @@ class AWPCP_Settings_API {
 
 	private static $instance = null;
 
-	public $option = 'awpcp-options';
+	public $setting_name = 'awpcp-options';
+
 	public $options = array();
+	private $runtime_options = array();
+
 	public $defaults = array();
 	public $groups = array();
 
@@ -21,13 +24,13 @@ class AWPCP_Settings_API {
 	}
 
 	public function load() {
-		$options = get_option($this->option);
+		$options = get_option($this->setting_name);
 		$this->options = is_array($options) ? $options : array();
 	}
 
 	public function register_settings() {
 
-		register_setting($this->option, $this->option, array($this, 'validate'));
+		register_setting($this->setting_name, $this->setting_name, array($this, 'validate'));
 
 		// Group: Private
 
@@ -59,7 +62,6 @@ class AWPCP_Settings_API {
         $options = array('admin' => __( 'Administrator', 'AWPCP' ), 'admin,editor' => __( 'Administrator & Editor', 'AWPCP' ) );
         $this->add_setting( $key, 'awpcpadminaccesslevel', __( 'Who can access AWPCP Admin Dashboard', 'AWPCP' ), 'radio', 'admin', __( 'Role of WordPress users who can have admin access to Classifieds.', 'AWPCP' ), array( 'options' => $options ) );
 		$this->add_setting( $key, 'awpcppagefilterswitch', __( 'Enable page filter', 'AWPCP' ), 'checkbox', 1, __( 'Uncheck this if you need to turn off the AWPCP page filter that prevents AWPCP classifieds children pages from showing up in your wp pages menu (You might need to do this if for example the AWPCP page filter is messing up your page menu. It means you will have to manually exclude the AWPCP children pages from showing in your page list. Some of the pages really should not be visible to your users by default).', 'AWPCP') );
-		$this->add_setting( $key, 'showlatestawpcpnews', __( 'Show latest AWPCP news', 'AWPCP' ), 'checkbox', 1, __( 'Show latest news from www.awpcp.com RSS feed.', 'AWPCP' ) );
 
 		// Section: General - Date & Time Format
 
@@ -161,7 +163,7 @@ class AWPCP_Settings_API {
 
 		// Section: Ad/Listings - Notifications
 
-		$key = $this->add_section($group, __('User Notifications', 'AWPCP'), 'user-notifications', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('User Notifications', 'AWPCP'), 'user-notifications', 5, array($this, 'section'));
 
 		$this->add_setting( $key, 'send-user-ad-posted-notification', __( 'Ad Posted', 'AWPCP' ), 'checkbox', 1, __( 'An email will be sent when an Ad is posted.', 'AWPCP' ) );
 		$this->add_setting( $key, 'send-ad-enabled-email', __( 'Ad Enabled', 'AWPCP' ), 'checkbox', 1, __( 'Notify Ad owner when the Ad is enabled.', 'AWPCP' ) );
@@ -169,39 +171,23 @@ class AWPCP_Settings_API {
 		$this->add_setting( $key, 'ad-renew-email-threshold', __( 'Ad Renew email threshold', 'AWPCP' ), 'textfield', 5, __( 'The email is sent the specified number of days before the Ad expires.', 'AWPCP' ) );
 		$this->add_setting( $key, 'notifyofadexpiring', __( 'Ad Expired', 'AWPCP' ), 'checkbox', 1, __( 'An email will be sent when the Ad expires.', 'AWPCP' ) );
 
-		$key = $this->add_section($group, __('Admin Notifications', 'AWPCP'), 'admin-notifications', 10, array($this, 'section'));
+		// Section: Ad/Listings - Admin Notifications
+
+		$key = $this->add_section($group, __('Admin Notifications', 'AWPCP'), 'admin-notifications', 5, array($this, 'section'));
 
 		$this->add_setting( $key, 'notifyofadposted', __( 'Ad Posted', 'AWPCP' ), 'checkbox', 1, __( 'An email will be sent when an Ad is posted.', 'AWPCP' ) );
 		$this->add_setting( $key, 'notifyofadexpired', __( 'Ad Expired', 'AWPCP' ), 'checkbox', 1, __( 'An email will be sent when the Ad expires.', 'AWPCP' ) );
 
-		// Section: Ad/Listings - Moderation
+		// Section: Ad/Listings - Regions
 
-		$key = $this->add_section($group, __('Moderation', 'AWPCP'), 'moderation', 10, array($this, 'section'));
-
-		$this->add_setting( $key, 'onlyadmincanplaceads', __( 'Only admin can post Ads', 'AWPCP' ), 'checkbox', 0, __( 'If checked only administrator users will be allowed to post Ads.', 'AWPCP' ) );
-		$this->add_setting( $key, 'adapprove', __( 'Disable Ad until admin approves', 'AWPCP' ), 'checkbox', 0, __( 'New Ads will be in a disabled status, not visible to visitors, until the administrator approves them.', 'AWPCP' ) );
-		$this->add_setting( $key, 'disablependingads', __( 'Enable paid ads that are pending payment.', 'AWPCP' ), 'checkbox', 1, __( 'Enable paid ads that are pending payment.', 'AWPCP' ) );
-		$this->add_setting( $key, 'enable-email-verification', __( 'Enable email verification for new Ads', 'AWPCP' ), 'checkbox', 0, __( 'If checked, all new Ads will remain disabled until the user clicks a verification link sent to the email address used to post the Ad.', 'AWPCP' ) );
-		$this->add_setting( $key, 'email-verification-first-threshold', __( 'Number of days before the verification email is sent again', 'AWPCP' ), 'textfield', 5, '' );
-		$this->add_setting( $key, 'email-verification-second-threshold', __( 'Number of days before Ads that remain in a unverified status will be deleted', 'AWPCP' ), 'textfield', 30, '' );
-		$this->add_setting( $key, 'notice_awaiting_approval_ad', __( 'Awaiting approval message', 'AWPCP' ), 'textarea', __( 'All ads must first be approved by the administrator before they are activated in the system. As soon as an admin has approved your ad it will become visible in the system. Thank you for your business.', 'AWPCP' ), __( 'Text for message to notify user that ad is awaiting approval', 'AWPCP') );
-
-		$this->add_setting( $key, 'ad-poster-email-address-whitelist', __( 'Allowed domains in Ad poster email', 'AWPCP' ), 'textarea', '', __( 'Only email addresses with a domain in the list above will be allowed. *.foo.com will match a.foo.com, b.foo.com, etc. but foo.com will match foo.com only. Please type a domain per line.', 'AWPCP' ) );
-
-		$this->add_setting( $key, 'noadsinparentcat', __( 'Prevent ads from being posted to top level categories?', 'AWPCP' ), 'checkbox', 0, '' );
-		$this->add_setting( $key, 'use-multiple-category-dropdowns', __( 'Use multiple dropdowns to choose categories', 'AWPCP' ), 'checkbox', 0, __( 'If checked, a dropdown with top level categories will be shown. When the user chooses a category, a new dropdown will apper showing the sub-categories of the selected category, if any. Useful if your website supports a high number of categories.', 'AWPCP' ) );
-
-		$this->add_setting( $key, 'addurationfreemode', __( 'Free Ads expiration threshold', 'AWPCP' ), 'textfield', 0, __( 'Expire free ads after how many days? (0 for no expiration).', 'AWPCP' ) );
-		$this->add_setting( $key, 'autoexpiredisabledelete', __( 'Disable expired ads instead of deleting them?', 'AWPCP' ), 'checkbox', 0, __( 'Check to disable.', 'AWPCP' ) );
-
-		$key = $this->add_section( $group, __( 'Regions Settings', 'AWPCP' ), 'regions-settings', 10, array( $this, 'section' ) );
+		$key = $this->add_section( $group, __( 'Regions Settings', 'AWPCP' ), 'regions-settings', 20, array( $this, 'section' ) );
 
 		$this->add_setting( $key, 'allow-regions-modification', __( 'Allow Regions modification', 'AWPCP' ), 'checkbox', 1, __( 'If enabled, users will be allowed to change the region information associated with their Ads.', 'AWPCP' ) );
 		$this->add_setting( $key, 'allow-user-to-search-in-multiple-regions', __( 'Allow users to search Ads in multiple regions', 'AWPCP' ), 'checkbox', 0, __( 'If enabled, users will be allowed to search Ads in multiple regions.', 'AWPCP' ) );
 
 		// Section: Ad/Listings - Layout and Presentation
 
-		$key = $this->add_section($group, __('Layout and Presentation', 'AWPCP'), 'layout', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('Layout and Presentation', 'AWPCP'), 'layout', 30, array($this, 'section'));
 
 		$this->add_setting( $key, 'show-ad-preview-before-payment', __( 'Show Ad preview before payment.', 'AWPCP' ), 'checkbox', 0, __( 'If enabled, a preview of the Ad being posted will be shown after the images have been uploaded and before the user is asked to pay. The user is allowed to go back and edit the Ad details and uploaded images or proceed with the posting process.', 'AWPCP' ) );
 		$this->add_setting( $key, 'allowhtmlinadtext', __( 'Allow HTML in Ad text', 'AWPCP' ), 'checkbox', 0, __( 'Allow HTML in ad text (Not recommended).', 'AWPCP' ) );
@@ -292,7 +278,7 @@ class AWPCP_Settings_API {
 
 		// Section: Ad/Listings - Menu Items
 
-		$key = $this->add_section($group, __('Menu Items', 'AWPCP'), 'menu-items', 20, array($this, 'section'));
+		$key = $this->add_section( $group, __( 'Menu Items', 'AWPCP' ), 'menu-items', 40, array( $this, 'section' ) );
 
 		$this->add_setting( $key, 'show-menu-item-place-ad', __( 'Show Place Ad menu item', 'AWPCP' ), 'checkbox', 1, '' );
 		$this->add_setting( $key, 'show-menu-item-edit-ad', __( 'Show Edit Ad menu item', 'AWPCP' ), 'checkbox', 1, '' );
@@ -302,30 +288,6 @@ class AWPCP_Settings_API {
 		// Group: Payment Settings
 
 		$group = $this->add_group( __( 'Payment', 'AWPCP') , 'payment-settings', 40 );
-
-		// Section: Payment Settings - Default
-
-		$key = $this->add_section($group, __('Payment Settings', 'AWPCP'), 'default', 10, array($this, 'section'));
-
-		$order_options = array(
-			1 => __( 'Name', 'AWPCP' ),
-			2 => __( 'Price', 'AWPCP' ),
-			3 => __( 'Images Allowed', 'AWPCP' ),
-			5 => __( 'Duration', 'AWPCP' ),
-		);
-
-		$direction_options = array(
-			'ASC' => __( 'Ascending', 'AWPCP' ),
-			'DESC' => __( 'Descending', 'AWPCP' ),
-		);
-
-		$this->add_setting( $key, 'freepay', __( 'Charge Listing Fee?', 'AWPCP' ), 'checkbox', 0, __( 'Charge Listing Fee? (Pay Mode)', 'AWPCP' ) );
-		$this->add_setting( $key, 'fee-order', __( 'Fee Plan sort order', 'AWPCP' ), 'select', 1, __( 'The order used to sort Fees in the payment screens.', 'AWPCP' ), array( 'options' => $order_options ) );
-		$this->add_setting( $key, 'fee-order-direction', __( 'Fee Plan sort direction', 'AWPCP' ), 'select', 'ASC', __( 'The direction used to sort Fees in the payment screens.', 'AWPCP' ), array( 'options' => $direction_options ) );
-		$this->add_setting($key, 'pay-before-place-ad', _x('Pay before entering Ad details', 'settings', 'AWPCP'), 'checkbox', 1, _x('Check to ask for payment before entering Ad details. Uncheck if you want users to pay for Ads at the end of the process, after images have been uploaded.', 'settings', 'AWPCP'));
-		$this->add_setting( $key, 'displaycurrencycode', __( 'Currency used in payment pages', 'AWPCP' ), 'textfield', 'USD', __( 'The display currency for your payment pages', 'AWPCP' ) );
-		$this->add_setting( $key, 'paylivetestmode', __( 'Put payment gateways in test mode?', 'AWPCP' ), 'checkbox', 0, '');
-		$this->add_setting( $key, 'force-secure-urls', __( 'Force secure URLs on payment pages', 'AWPCP' ), 'checkbox', 0, __( 'If checked all classifieds pages that involve payments will be accessed through a secure (HTTPS) URL.', 'AWPCP' ) );
 
 		// Section: Payment Settings - PayPal
 
@@ -366,8 +328,8 @@ class AWPCP_Settings_API {
 		$options = array( '0755' => '0755', '0777' => '0777' );
 		$this->add_setting( $key, 'upload-directory-permissions', __( 'File permissions for uploads directory', 'AWPCP' ), 'select', '0755', __( 'File permissions applied to the uploads directory and sub-directories so that the plugin is allowed to write to those directories.', 'AWPCP' ), array( 'options' => $options ) );
 
-		$this->add_setting( $key, 'maximagesize', __( 'Maximum file size per image', 'AWPCP' ), 'textfield', '1048576', __( 'Maximum file size, in bytes, for files user can upload to system. 1 MB = 1048576 bytes. You can google "x MB to bytes" to get an accurate convertion.', 'AWPCP' ) );
-		$this->add_setting( $key, 'minimagesize', __( 'Minimum file size per image', 'AWPCP' ), 'textfield', '300', __( 'Minimum file size, in bytes, for files user can upload to system. 1 MB = 1048576 bytes. You can google "x MB to bytes" to get an accurate convertion.', 'AWPCP' ) );
+		$this->add_setting( $key, 'maximagesize', __( 'Maximum file size per image', 'AWPCP' ), 'textfield', '1048576', __( 'Maximum file size, in bytes, for files user can upload to system. 1 MB = 1048576 bytes. You can google "x MB to bytes" to get an accurate conversion.', 'AWPCP' ) );
+		$this->add_setting( $key, 'minimagesize', __( 'Minimum file size per image', 'AWPCP' ), 'textfield', '300', __( 'Minimum file size, in bytes, for files user can upload to system. 1 MB = 1048576 bytes. You can google "x MB to bytes" to get an accurate conversion.', 'AWPCP' ) );
 		$this->add_setting( $key, 'imgminwidth', __( 'Minimum image width', 'AWPCP' ), 'textfield', '640', __( 'Minimum width for images.', 'AWPCP' ) );
 		$this->add_setting( $key, 'imgminheight', __( 'Minimum image height', 'AWPCP' ), 'textfield', '480', __( 'Minimum height for images.', 'AWPCP' ) );
 		$this->add_setting( $key, 'imgmaxwidth', __( 'Maximum image width', 'AWPCP' ), 'textfield', '640', __( 'Maximum width for images. Images wider than this are automatically resized upon upload.', 'AWPCP' ) );
@@ -415,71 +377,66 @@ class AWPCP_Settings_API {
 
 		$group = $this->add_group( __( 'Form', 'AWPCP' ), 'form-field-settings', 70);
 
-		// Section: Posted By Field
+		// Section: User Field
 
-		$key = $this->add_section($group, __('Posted By Field', 'AWPCP'), 'posted-by', 10, array($this, 'section'));
-		$this->add_setting($key, 'displaypostedbyfield', __( 'Show Posted By field', 'AWPCP' ), 'checkbox', 1, __( 'Show Posted By field?', 'AWPCP' ) );
+		// TODO: Is this the right place to put this setting?
+		$key = $this->add_section( $group, __( 'User Field', 'AWPCP' ), 'user', 5, array( $this, 'section' ) );
+		$options = array( 'dropdown' => __( 'Dropdown', 'AWPCP' ), 'autocomplete' => __( 'Autocomplete', 'AWPCP' ) );
+		$this->add_setting( $key, 'user-field-widget', __( 'HTML Widget for User field', 'AWPCP' ), 'radio', 'dropdown', __( 'The user field can be represented with an HTML dropdown or a text field with autocomplete capabilities. Using the dropdown is faster if you have a small number of users. If your website has a lot of registered users, however, the dropdown may take too long to render and using the autocomplete version may be a better idea.', 'AWPCP' ), array( 'options' => $options ) );
+		$this->add_setting( $key, 'displaypostedbyfield', __( 'Show User Field on Search', 'AWPCP' ), 'checkbox', 1, __( 'Show as "Posted By" in search form?', 'AWPCP' ) );
 
 		// Section: Phone Field
 
-		$key = $this->add_section($group, __('Phone Field', 'AWPCP'), 'phone', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('Phone Field', 'AWPCP'), 'phone', 15, array($this, 'section'));
 
 		$this->add_setting( $key, 'displayphonefield', __( 'Show Phone field', 'AWPCP' ), 'checkbox', 1, __( 'Show phone field?', 'AWPCP' ) );
-		$this->add_setting( $key, 'displayphonefieldreqop', __( 'Require Phone', 'AWPCP' ), 'checkbox', 0, __( 'Require phone?', 'AWPCP' ) );
-		$this->add_setting( $key, 'displayphonefieldpriv', __( 'Make Phone private?', 'AWPCP' ), 'checkbox', 0, __( 'Make Phone private (only visible to logged in users).', 'AWPCP' ) );
+		$this->add_setting( $key, 'displayphonefieldreqop', __( 'Require Phone', 'AWPCP' ), 'checkbox', 0, __( 'Require phone on Place Ad and Edit Ad forms?', 'AWPCP' ) );
+		$this->add_setting( $key, 'displayphonefieldpriv', __( 'Make Phone restricted?', 'AWPCP' ), 'checkbox', 0, __( 'Make phone restricted (only visible to logged in users).', 'AWPCP' ) );
 
 		// Section: Website Field
 
-		$key = $this->add_section($group, __('Website Field', 'AWPCP'), 'website', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('Website Field', 'AWPCP'), 'website', 15, array($this, 'section'));
 		$this->add_setting( $key, 'displaywebsitefield', __( 'Show Website field', 'AWPCP' ), 'checkbox', 1, __( 'Show website field?', 'AWPCP' ) );
-		$this->add_setting( $key, 'displaywebsitefieldreqop', __( 'Require Website', 'AWPCP' ), 'checkbox', 0, __( 'Require website?', 'AWPCP' ) );
-		$this->add_setting( $key, 'displaywebsitefieldreqpriv', __( 'Make Website private?', 'AWPCP' ), 'checkbox', 0, __( 'Make Website private (only visible to logged in users).', 'AWPCP' ) );
+		$this->add_setting( $key, 'displaywebsitefieldreqop', __( 'Require Website', 'AWPCP' ), 'checkbox', 0, __( 'Require website on Place Ad and Edit Ad forms?', 'AWPCP' ) );
+		$this->add_setting( $key, 'displaywebsitefieldreqpriv', __( 'Make Website restricted?', 'AWPCP' ), 'checkbox', 0, __( 'Make website restricted (only visible to logged in users).', 'AWPCP' ) );
 
 		// Section: Price Field
 
-		$key = $this->add_section($group, __('Price Field', 'AWPCP'), 'price', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('Price Field', 'AWPCP'), 'price', 15, array($this, 'section'));
 		$this->add_setting( $key, 'displaypricefield', __( 'Show Price field', 'AWPCP' ), 'checkbox', 1, __( 'Show price field?', 'AWPCP' ) );
-		$this->add_setting( $key, 'displaypricefieldreqop', __( 'Require Price', 'AWPCP' ), 'checkbox', 0, __( 'Require price?', 'AWPCP' ) );
+		$this->add_setting( $key, 'displaypricefieldreqop', __( 'Require Price', 'AWPCP' ), 'checkbox', 0, __( 'Require price on Place Ad and Edit Ad forms?', 'AWPCP' ) );
+		$this->add_setting( $key, 'price-field-is-restricted', __( 'Make Price restricted?', 'AWPCP' ), 'checkbox', 0, __( 'Make price restricted (only visible to logged in users).', 'AWPCP' ) );
+		$this->add_setting( $key, 'hide-price-field-if-empty', __( 'Hide price field if empty or zero', 'AWPCP' ), 'checkbox', 0, __( 'If checked all price placeholders will be replaced with an empty string when the price of the Ad is zero or was not set.', 'AWPCP' ) );
 
 		// Section: Country Field
 
-		$key = $this->add_section($group, __('Country Field', 'AWPCP'), 'country', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('Country Field', 'AWPCP'), 'country', 20, array($this, 'section'));
 		$this->add_setting($key, 'displaycountryfield', __( 'Show Country field', 'AWPCP' ), 'checkbox', 1, __( 'Show country field?', 'AWPCP' ) );
-		$this->add_setting($key, 'displaycountryfieldreqop', __( 'Require Country', 'AWPCP' ), 'checkbox', 0, __( 'Require country?', 'AWPCP' ) );
+		$this->add_setting($key, 'displaycountryfieldreqop', __( 'Require Country', 'AWPCP' ), 'checkbox', 0, __( 'Require country on Place Ad and Edit Ad forms?', 'AWPCP' ) );
 
 		// Section: State Field
 
-		$key = $this->add_section($group, __('State Field', 'AWPCP'), 'state', 10, array($this, 'section'));
-		$this->add_setting( $key, 'displaystatefield', __( 'Show State field', 'AWPCP' ), 'checkbox', 1, __( 'Show State field?', 'AWPCP' ) );
-		$this->add_setting( $key, 'displaystatefieldreqop', __( 'Require State', 'AWPCP' ), 'checkbox', 0, __( 'Require state?', 'AWPCP' ) );
+		$key = $this->add_section($group, __('State Field', 'AWPCP'), 'state', 25, array($this, 'section'));
+		$this->add_setting( $key, 'displaystatefield', __( 'Show State field', 'AWPCP' ), 'checkbox', 1, __( 'Show state field?', 'AWPCP' ) );
+		$this->add_setting( $key, 'displaystatefieldreqop', __( 'Require State', 'AWPCP' ), 'checkbox', 0, __( 'Require state on Place Ad and Edit Ad forms?', 'AWPCP' ) );
 
 		// Section: County Field
 
-		$key = $this->add_section($group, __('County Field', 'AWPCP'), 'county', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('County Field', 'AWPCP'), 'county', 30, array($this, 'section'));
 		$this->add_setting($key, 'displaycountyvillagefield', __( 'Show County/Village/other', 'AWPCP' ), 'checkbox', 0, __( 'Show County/village/other?', 'AWPCP' ) );
-		$this->add_setting($key, 'displaycountyvillagefieldreqop', __( 'Require County/Village/other', 'AWPCP' ), 'checkbox', 0, __( 'Require county/village/other?', 'AWPCP' ) );
+		$this->add_setting($key, 'displaycountyvillagefieldreqop', __( 'Require County/Village/other', 'AWPCP' ), 'checkbox', 0, __( 'Require county/village/other on Place Ad and Edit Ad forms?', 'AWPCP' ) );
 
 		// Section: City Field
 
-		$key = $this->add_section($group, __('City Field', 'AWPCP'), 'city', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('City Field', 'AWPCP'), 'city', 35, array($this, 'section'));
 		$this->add_setting($key, 'displaycityfield', __( 'Show City field', 'AWPCP' ), 'checkbox', 1, __( 'Show city field?', 'AWPCP' ) );
-		$this->add_setting($key, 'show-city-field-before-county-field', __( 'Show City field before County field', 'AWPCP' ), 'checkbox', 1, __( 'If checked the City field will be shown before the County field. This setting may be overwritten if Region Control module is installed.', 'AWPCP' ) );
-		$this->add_setting($key, 'displaycityfieldreqop', __( 'Require City', 'AWPCP' ), 'checkbox', 0, __( 'Require city?', 'AWPCP' ) );
+		$this->add_setting($key, 'show-city-field-before-county-field', __( 'Show City field before County field', 'AWPCP' ), 'checkbox', 1, __( 'If checked the city field will be shown before the county field. This setting may be overwritten if Region Control module is installed.', 'AWPCP' ) );
+		$this->add_setting($key, 'displaycityfieldreqop', __( 'Require City', 'AWPCP' ), 'checkbox', 0, __( 'Require city on Place Ad and Edit Ad forms?', 'AWPCP' ) );
 
 
-		// Group: User Registration
+		// Group: Registration
 
 		$group = $this->add_group( __( 'Registration', 'AWPCP' ), 'registration-settings', 80);
-
-		// Section: User Registration
-
-		$key = $this->add_section($group, __('Registration Settings', 'AWPCP'), 'default', 10, array($this, 'section'));
-
-		$this->add_setting( $key, 'requireuserregistration', __( 'Require user registration', 'AWPCP' ), 'checkbox', 0, __( 'Require user registration?', 'AWPCP' ) );
-		$this->add_setting( $key, 'reply-to-ad-requires-registration', __( 'Reply to Ad requires user registration', 'AWPCP' ), 'checkbox', 0, __( 'Require user registration for replying to an Ad?', 'AWPCP' ) );
-		// $this->add_setting( $key, 'postloginformto', __( 'Post login form to', 'AWPCP' ), 'textfield', '', __( 'Post login form to this URL. Value should be the full URL to the wordpress login script (e.g. http://www.awpcp.com/wp-login.php).', 'AWPCP' ) . '<br/>' . __( '**Only needed if registration is required and your login url is mod-rewritten.', 'AWPCP' ) );
-		$this->add_setting( $key, 'registrationurl', __( 'Custom Registration Page URL', 'AWPCP' ), 'textfield', '', __( 'Location of registration page. Value should be the full URL to the wordpress registration page (e.g. http://www.awpcp.com/wp-login.php?action=register).', 'AWPCP' ) . '<br/>' . __( '**Only change this setting when using membership plugin with custom login pages or similar scenarios.', 'AWPCP' ) );
-
 
 		// Group: Email
 
@@ -487,7 +444,7 @@ class AWPCP_Settings_API {
 
 		// Section: General Email Settings
 
-		$key = $this->add_section($group, __('General Email Settings', 'AWPCP'), 'default', 10, array($this, 'section'));
+		$key = $this->add_section($group, __('General Email Settings', 'AWPCP'), 'default', 20, array($this, 'section'));
 
 		$this->add_setting( $key, 'admin-recipient-email', __( 'TO email address for outgoing emails', 'AWPCP' ), 'textfield', '', __( 'Emails are sent to your WordPress admin email. If you prefere to receive emails in a different address, please enter it here.', 'AWPCP' ) );
 		$this->add_setting( $key, 'awpcpadminemail', __( 'FROM email address for outgoing emails', 'AWPCP' ), 'textfield', '', __( 'Emails go out using your WordPress admin email. If you prefer to use a different email enter it here.', 'AWPCP' ) );
@@ -546,7 +503,7 @@ class AWPCP_Settings_API {
 
 		// Section: Advanced Email Configuration
 
-		$key = $this->add_section( $group, __( 'Advanced Email Configuration', 'AWPCP' ), 'advanced', 10, array( $this, 'section' ) );
+		$key = $this->add_section( $group, __( 'Advanced Email Configuration', 'AWPCP' ), 'advanced', 30, array( $this, 'section' ) );
 
 		$this->add_setting( $key, 'usesmtp', __( 'Enable external SMTP server', 'AWPCP' ), 'checkbox', 0, __( 'Enabled external SMTP server (if emails not processing normally).', 'AWPCP' ) );
 		$this->add_setting( $key, 'smtphost', __( 'SMTP host', 'AWPCP' ), 'textfield', 'mail.example.com', __( 'SMTP host (if emails not processing normally).', 'AWPCP' ) );
@@ -554,14 +511,23 @@ class AWPCP_Settings_API {
 		$this->add_setting( $key, 'smtpusername', __( 'SMTP username', 'AWPCP' ), 'textfield', 'smtp_username', __( 'SMTP username (if emails not processing normally).', 'AWPCP' ) );
 		$this->add_setting( $key, 'smtppassword', __( 'SMTP password', 'AWPCP' ), 'password', '', __( 'SMTP password (if emails not processing normally).', 'AWPCP' ) );
 
-		// Group: Email
+		// Group: Facebook
 
 		$group = $this->add_group('Facebook', 'facebook-settings', 100);
 
+		$key = $this->add_section( $group, __( 'General Settings', 'AWPCP' ), 'general', 10, array( $this, 'section' ) );
+
+		$this->add_setting( $key, 'sends-listings-to-facebook-automatically', __( 'Send Ads to Facebook Automatically', 'AWPCP' ), 'checkbox', 1, __( 'If checked, Ads will be posted to Facebook shortly after they are posted, enabled or edited, whichever occurs first. Ads will be posted only once. Please note that disabled Ads cannot be posted to Facebook.', 'AWPCP' ) );
+
+
 		// save settings to database
 		$this->skip = true;
-		update_option($this->option, $this->options);
+		$this->save_settings();
 		$this->skip = false;
+	}
+
+	private function save_settings() {
+		update_option( $this->setting_name, $this->options );
 	}
 
 	/**
@@ -590,7 +556,7 @@ class AWPCP_Settings_API {
 
 		// save settings to database
 		$this->skip = true;
-		update_option($this->option, $this->options);
+		$this->save_settings();
 		$this->skip = false;
 
 		$this->set_javascript_data();
@@ -699,6 +665,25 @@ class AWPCP_Settings_API {
 		return true;
 	}
 
+	public function add_license_setting( $module_name, $module_slug ) {
+        $section = $this->enable_licenses_settings_section();
+
+        $setting_label = str_replace( '<module-name>', $module_name, __( '<module-name> License Key', 'AWPCP' ) );
+        $this->add_setting( $section, "$module_slug-license", $setting_label, 'license', '', '', compact( 'module_name', 'module_slug' ) );
+	}
+
+	private function enable_licenses_settings_section() {
+		$group_slug = 'licenses-settings';
+		$section_slug = 'premium-modules';
+
+		if ( ! isset( $this->groups[ $group_slug ] ) ) {
+			$this->add_group( __( 'Licenses', 'AWPCP' ), $group_slug, 100000 );
+			$this->add_section( $group_slug, 'Premium Modules', $section_slug, 10, array( $this, 'section' ) );
+		}
+
+		return "$group_slug:$section_slug";
+	}
+
 	public function get_option($name, $default='', $reload=false) {
 		// reload options
 		if ($reload) { $this->load(); }
@@ -760,7 +745,7 @@ class AWPCP_Settings_API {
 	public function update_option($name, $value, $force=false) {
 		if (isset($this->options[$name]) || $force) {
 			$this->options[$name] = $value;
-			update_option($this->option, $this->options);
+			$this->save_settings();
 			return true;
 		}
 		return false;
@@ -771,9 +756,27 @@ class AWPCP_Settings_API {
 	 */
 	public function set_or_update_option( $name, $value ) {
 		$this->options[$name] = $value;
-		return update_option($this->option, $this->options);
+		return $this->save_settings();
 	}
 
+	/**
+	 * @since 3.3
+	 */
+	public function option_exists( $name ) {
+		return isset( $this->options[ $name ] );
+	}
+
+	public function set_runtime_option( $name, $value ) {
+		$this->runtime_settings[ $name ] = $value;
+	}
+
+	public function get_runtime_option( $name, $default = '' ) {
+		if ( isset( $this->runtime_settings[ $name ] ) ) {
+			return $this->runtime_settings[ $name ];
+		} else {
+			return $default;
+		}
+	}
 
 	/* Auxiliar methods to validate settings */
 
@@ -942,6 +945,7 @@ class AWPCP_Settings_API {
 
 		$pages = awpcp_pages();
 		$pageids = $wpdb->get_results('SELECT page, id FROM ' . AWPCP_TABLE_PAGES, OBJECT_K);
+		$pages_updated = 0;
 
 		foreach ($pages as $key => $data) {
 			$id = intval($pageids[$key]->id);
@@ -954,9 +958,16 @@ class AWPCP_Settings_API {
 			$page = array(
 				'ID' => $id,
 				'post_title' => $title,
-				'post_name' => sanitize_title($options[$key]));
+				'post_name' => sanitize_title($options[$key])
+			);
 
 			wp_update_post($page);
+
+			$pages_updated = $pages_updated + 1;
+		}
+
+		if ( $pages_updated ) {
+			do_action( 'awpcp-pages-updated' );
 		}
 
 		flush_rewrite_rules();
@@ -1088,6 +1099,51 @@ class AWPCP_Settings_API {
 		$html[] = '<span class="description">' . $setting->helptext . '</span>';
 
 		echo join( '', $html );
+	}
+
+	public function categories( $args ) {
+		$setting = $args['setting'];
+
+        $params = array(
+        	'field_name' => 'awpcp-options[' . $setting->name . ']',
+            'selected' => $this->get_option( $setting->name ),
+
+            'first_level_ul_class' => 'awpcp-categories-list',
+            'no-cache' => time()
+        );
+		$checklist = awpcp_categories_checkbox_list_renderer()->render( $params );
+
+        echo sprintf( '<div class="cat-checklist category-checklist">%s</div>', $checklist );
+		echo '<span class="description">' . $setting->helptext . '</span>';
+	}
+
+	public function license( $args ) {
+		$setting = $args['setting'];
+
+		$module_name = $args['module_name'];
+		$module_slug = $args['module_slug'];
+
+		$this->licenses_manager = awpcp_licenses_manager();
+
+		$license = $this->get_option( $setting->name );
+
+		echo '<input id="' . $setting->name . '" class="regular-text" type="text" name="awpcp-options[' . $setting->name . ']" value="' . esc_attr( $license ) . '">';
+
+		if ( ! empty( $license ) ) {
+			if ( $this->licenses_manager->is_license_valid( $module_name, $module_slug ) ) {
+				echo '<input class="button-secondary" type="submit" name="awpcp-deactivate-' . $module_slug . '-license" value="' . __( 'Deactivate License', 'AWPCP' ) . '"/>';
+				echo '<br>Status: <span class="awpcp-license-status awpcp-license-valid">' . __( 'active', 'AWPCP' ) . '</span>.';
+			} else if ( $this->licenses_manager->is_license_inactive( $module_name, $module_slug ) ) {
+				echo '<input class="button-secondary" type="submit" name="awpcp-activate-' . $module_slug . '-license" value="' . __( 'Activate License', 'AWPCP' ) . '"/>';
+				echo '<br>Status: <span class="awpcp-license-status awpcp-license-inactive">' . __( 'inactive', 'AWPCP' ) . '</span>.';
+			} else if ( $this->licenses_manager->is_license_expired( $module_name, $module_slug ) ) {
+				echo '<input class="button-secondary" type="submit" name="awpcp-check-' . $module_slug . '-license" value="' . __( 'Check License', 'AWPCP' ) . '"/>';
+				echo '<br>Status: <span class="awpcp-license-status awpcp-license-expired">' . __( 'expired', 'AWPCP' ) . '</span>.';
+			} else {
+				echo '<br>Status: <span class="awpcp-license-status awpcp-license-invalid">' . __( 'invalid', 'AWPCP' ) . '</span>. Please contact customer support.';
+			}
+			wp_nonce_field( 'awpcp-update-license-status-nonce', 'awpcp-update-license-status-nonce' );
+		}
 	}
 
 	/**

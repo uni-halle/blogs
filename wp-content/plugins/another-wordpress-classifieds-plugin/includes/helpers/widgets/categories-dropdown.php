@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @since 3.3
+ */
+function awpcp_categories_dropdown() {
+    return new AWPCP_CategoriesDropdown();
+}
+
 class AWPCP_CategoriesDropdown {
 
     public function render($params) {
@@ -9,19 +16,25 @@ class AWPCP_CategoriesDropdown {
             'label' => __( 'Ad Category', 'AWPCP' ),
             'required' => true,
             'selected' => null,
+            'placeholders' => array(),
         ) ) );
 
         if ( $context == 'search' ) {
-            $labels['default-option-first-level'] = __( 'All Categories', 'AWPCP' );
-            $labels['default-option-second-level'] = __( 'All Sub-categories', 'AWPCP' );
+            $placeholders = array_merge( array(
+                'default-option-first-level' => __( 'All Categories', 'AWPCP' ),
+                'default-option-second-level' => __( 'All Sub-categories', 'AWPCP' ),
+            ), $placeholders );
         } else {
-            $labels['default-option-first-level'] = __( 'Select a Category', 'AWPCP' );
-
             if ( get_awpcp_option( 'noadsinparentcat' ) ) {
-                $labels['default-option-second-level'] = __( 'Select a Sub-category', 'AWPCP' );
+                $second_level_option_placeholder = __( 'Select a Sub-category', 'AWPCP' );
             } else {
-                $labels['default-option-second-level'] = __( 'Select a Sub-category (optional)', 'AWPCP' );
+                $second_level_option_placeholder = __( 'Select a Sub-category (optional)', 'AWPCP' );
             }
+
+            $placeholders = array_merge( array(
+                'default-option-first-level' => __( 'Select a Category', 'AWPCP' ),
+                'default-option-second-level' => $second_level_option_placeholder
+            ), $placeholders );
         }
 
         // export categories list to JavaScript, but don't replace an existing categories list

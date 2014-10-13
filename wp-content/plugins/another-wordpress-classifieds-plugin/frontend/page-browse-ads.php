@@ -23,21 +23,32 @@ class AWPCP_BrowseAdsPage extends AWPCP_Page {
     }
 
     protected function _dispatch() {
+        awpcp_enqueue_main_script();
+
         $action = $this->get_current_action();
 
         switch ($action) {
             case 'browsecat':
-                return $this->browse_cat_step();
+                return $this->browse_listings( 'render_listings_from_category' );
             case 'browseads':
             default:
-                return $this->browse_ads_step();
+                return $this->browse_listings( 'render_all_listings' );
         }
     }
 
-    protected function browse_cat_step() {
-        global $wpdb;
-
+    protected function browse_listings( $callback ) {
         $category_id = intval(awpcp_request_param('category_id', get_query_var('cid')));
+        $output = apply_filters( 'awpcp-browse-listings-content-replacement', null, $category_id );
+
+        if ( is_null( $output ) ) {
+            return $this->$callback( $category_id );
+        } else {
+            return $output;
+        }
+    }
+
+    private function render_listings_from_category( $category_id ) {
+        global $wpdb;
 
         if ($category_id == -1 || empty($category_id)) {
             $conditions = array();
@@ -59,8 +70,8 @@ class AWPCP_BrowseAdsPage extends AWPCP_Page {
         return $output;
     }
 
-    protected function browse_ads_step() {
-        $order = get_awpcp_option('groupbrowseadsby');
+    protected function render_all_listings() {
+        $order = get_awpcp_option( 'groupbrowseadsby' );
         return awpcp_display_ads( '', '', '', $order, 'ad');
     }
 }

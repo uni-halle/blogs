@@ -178,8 +178,6 @@ class AWPCP_Admin {
 	}
 
 	public function scripts() {
-		// wp_enqueue_style('awpcp-admin-style');
-		// wp_enqueue_script('awpcp-admin-script');
 	}
 
 	private function get_manage_credits_section_url() {
@@ -671,9 +669,9 @@ function awpcp_opsconfig_categories() {
 			}
 			else
 			{
-				$aeword1=__("Sorry but you cannot delete ","AWPCP");
-				$aeword1.="<b>$category_name</b>";
-				$aeword1.=__(" It is the default category. The default category cannot be deleted","AWPCP");
+				$aeword1 = __( 'Sorry but you cannot delete %s. It is the default category and the default category cannot be deleted.', 'AWPCP' );
+				$aeword1 = sprintf( $aeword1, '<strong>' . $category_name . '</strong>' );
+
 				$aeword2='';
 				$aeword3='';
 				$aeword4='';
@@ -1167,6 +1165,8 @@ function awpcp_handle_admin_requests() {
 				$query = "DELETE FROM  " . AWPCP_TABLE_CATEGORIES . " WHERE category_id='$category_id'";
 				$wpdb->query( $query );
 
+				do_action( 'awpcp-category-deleted', $category_id );
+
 				$themessagetoprint=__("The category has been deleted","AWPCP");
 			}
 		}
@@ -1330,81 +1330,6 @@ function awpcp_handle_admin_requests() {
 		}
 
 		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">$themessagetoprint</div>";
-	}
-
-
-	//	End process
-
-	//	Start Process of deleting multiple ads
-
-
-	if (isset($_REQUEST['deletemultipleads']) && !empty($_REQUEST['deletemultipleads']))
-	{
-		$tbl_ads = $wpdb->prefix . "awpcp_ads";
-		$tbl_ad_photos = $wpdb->prefix . "awpcp_adphotos";
-
-		if (isset($_REQUEST['awpcp_ads_to_action']) && !empty($_REQUEST['awpcp_ads_to_action']))
-		{
-			$theawpcparrayofadstodelete=$_REQUEST['awpcp_ads_to_action'];
-		}
-
-		if (!isset($theawpcparrayofadstodelete) || empty($theawpcparrayofadstodelete) )
-		{
-			$themessagetoprint=__("No ads have been selected, you must select one or more ads first.","AWPCP");
-		}
-		else
-		{
-			foreach ($theawpcparrayofadstodelete as $theawpcpadtodelete)
-			{
-				$fordeletionid[]=$theawpcpadtodelete;
-			}
-
-			$ads = AWPCP_Ad::find(sprintf('WHERE ad_id IN (%s)', join("','", $fordeletionid)));
-			foreach ($ads as $ad) {
-				$ad->delete();
-			}
-
-			$themessagetoprint=__("The ads have been deleted","AWPCP");
-
-		}
-
-		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">$themessagetoprint</div>";
-	}
-
-
-	//	End Process of deleting multiple ads
-
-
-	//	Start Process of spamming multiple ads
-
-
-	if (isset($_REQUEST['spammultipleads']) && !empty($_REQUEST['spammultipleads']))
-	{
-		$tbl_ads = $wpdb->prefix . "awpcp_ads";
-		if (isset($_REQUEST['awpcp_ads_to_action']) && !empty($_REQUEST['awpcp_ads_to_action']))
-		{
-			$theawpcparrayofadstospam=$_REQUEST['awpcp_ads_to_action'];
-		}
-		if (!isset($theawpcparrayofadstospam) || empty($theawpcparrayofadstospam) )
-		{
-			$themessagetoprint=__("No ads have been selected, you must select one or more ads first.","AWPCP");
-		}
-		else
-		{
-			foreach ($theawpcparrayofadstospam as $theawpcpadtospam) {
-				$forspamid[]=$theawpcpadtospam;
-				awpcp_submit_spam($theawpcpadtospam);
-			}
-
-			$ads = AWPCP_Ad::find(sprintf('WHERE ad_id IN (%s)', join("','", $forspamid)));
-			foreach ($ads as $ad) {
-				$ad->delete();
-			}
-			
-			$themessagetoprint=__("The selected Ads have been marked as SPAM and removed.","AWPCP");
-		}
-
-		$message = "<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">$themessagetoprint</div>";
 	}
 }
 

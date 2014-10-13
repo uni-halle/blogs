@@ -1,29 +1,32 @@
 <?php
 
+function awpcp_database_column_creator() {
+    return new AWPCP_DatabaseColumnCreator( $GLOBALS['wpdb'] );
+}
+
 class AWPCP_DatabaseColumnCreator {
 
-    /**
-     * TODO: pass $wpdb as a parameter to the constructor
-     */
-    public function create( $table, $column_name, $column_definition ) {
-        global $wpdb;
+    private $db;
 
+    public function __construct( $db ) {
+        $this->db = $db;
+    }
+
+    public function create( $table, $column_name, $column_definition ) {
         if ( ! $this->column_exists( $table, $column_name ) ) {
             $query = sprintf( 'ALTER TABLE %s ADD `%s` %s', $table, $column_name, $column_definition );
-            $wpdb->query( $query );
+            $this->db->query( $query );
         }
     }
 
     private function column_exists( $table, $column ) {
-        global $wpdb;
+        $suppress_errors = $this->db->suppress_errors();
+        $show_errors = $this->db->show_errors( false );
 
-        $suppress_errors = $wpdb->suppress_errors();
-        $show_errors = $wpdb->show_errors( false );
+        $result = $this->db->query( "SELECT `$column` FROM $table" );
 
-        $result = $wpdb->query( "SELECT `$column` FROM $table" );
-
-        $wpdb->show_errors( $show_errors );
-        $wpdb->suppress_errors( $suppress_errors );
+        $this->db->show_errors( $show_errors );
+        $this->db->suppress_errors( $suppress_errors );
 
         return $result !== false;
     }

@@ -73,7 +73,7 @@ if (typeof jQuery !== 'undefined') {
                 return self.credit_card_number() && self.credit_card_number().length > 0 && !self.is_amex();
             });
 
-            // helper function to switc between a textfield and a dropdown
+            // helper function to switch between a textfield and a dropdown
             // for the State field
 
             self.countries = [{
@@ -87,6 +87,7 @@ if (typeof jQuery !== 'undefined') {
                         { code: 'CA', name: 'California' },
                         { code: 'CO', name: 'Colorado' },
                         { code: 'CT', name: 'Connecticut' },
+                        { code: 'DC', name: 'District Of Columbia (Washington, D.C)' },
                         { code: 'DE', name: 'Delaware' },
                         { code: 'FL', name: 'Florida' },
                         { code: 'GA', name: 'Georgia' },

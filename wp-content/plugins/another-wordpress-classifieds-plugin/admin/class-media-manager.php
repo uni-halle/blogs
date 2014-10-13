@@ -201,9 +201,9 @@ class AWPCP_MediaManager {
             'approvepic' => _x( 'Enable', 'media manager', 'AWPCP' ),
             'rejectpic' => _x( 'Disable', 'media manager', 'AWPCP' ),
             'deletepic' => _x( 'Delete', 'media manager', 'AWPCP' ),
-            'set-primary-image' =>_x( 'Set as primary', 'media manager', 'AWPCP' ),
             'approve-file' => _x( 'Approve', 'media manager', 'AWPCP' ),
             'reject-file' => _x( 'Reject', 'media manager', 'AWPCP' ),
+            'set-primary-image' =>_x( 'Set as primary', 'media manager', 'AWPCP' ),
         );
 
         if ( ! awpcp_current_user_is_admin() && get_awpcp_option( 'imagesapprove' ) ) {

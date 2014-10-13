@@ -27,9 +27,7 @@ class AWPCP_BasePage extends AWPCP_Page {
     }
 
     public function dispatch() {
-        $this->request_method = $this->request->method();
         $this->do_page();
-
         return $this->output;
     }
 
@@ -95,7 +93,7 @@ class AWPCP_BasePage extends AWPCP_Page {
     }
 
     private function do_step_method( $step ) {
-        switch ( $this->request_method ) {
+        switch ( $this->get_request_method() ) {
             case 'POST':
                 $step->post( $this );
                 break;
@@ -137,12 +135,12 @@ class AWPCP_BasePage extends AWPCP_Page {
     }
 
     private function handle_redirection_exception( $redirection ) {
-        $this->request_method = $redirection->request_method;
         $this->default_step_name = null;
         $this->current_step_name = null;
         $this->do_next_step = true;
         $this->next_step = null;
 
+        $this->set_request_method( $redirection->request_method );
         $this->set_current_step( $redirection->step_name );
 
         $this->do_page();
@@ -159,7 +157,7 @@ class AWPCP_BasePage extends AWPCP_Page {
     }
 
     public function is_current_step( $step_name ) {
-        return in_array( $this->get_current_step_name(), $step_name );
+        return strcmp( $this->get_current_step_name(), $step_name ) === 0;
     }
 
     public function set_current_step( $step_name ) {
@@ -173,6 +171,23 @@ class AWPCP_BasePage extends AWPCP_Page {
 
     public function skip_next_step() {
         $this->do_next_step = false;
+    }
+
+    /**
+     * @since 3.3
+     */
+    private function get_request_method() {
+        if ( is_null( $this->request_method ) ) {
+            $this->request_method = $this->request->method();
+        }
+        return $this->request_method;
+    }
+
+    /**
+     * @since 3.3
+     */
+    private function set_request_method( $request_method ) {
+        $this->request_method = $request_method;
     }
 
     public function redirect( $step_name, $request_method='GET' ) {

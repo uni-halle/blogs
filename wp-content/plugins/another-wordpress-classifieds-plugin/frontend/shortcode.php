@@ -94,7 +94,7 @@ class AWPCP_Pages {
 
     public function show_ad() {
         if ( ! isset( $this->output['show-ad'] ) ) {
-            $this->output['show-ad'] = showad();
+            $this->output['show-ad'] = $this->show_ad->dispatch();
         }
 
         return $this->output['show-ad'];
@@ -161,48 +161,14 @@ class AWPCP_Pages {
         return awpcp_render_ads($ads, 'ramdom-listings-shortcode', $config, false);
     }
 
-    public function category_shortcode($attrs) {
-        global $wpdb;
+    public function category_shortcode( $attrs ) {
+        static $output = null;
 
-        $default = array( 'id' => 0, 'children' => true, 'items_per_page' => 10 );
-        extract( shortcode_atts( $default, $attrs ) );
-
-        // request param overrides shortcode param
-        $items_per_page = awpcp_request_param( 'results', $items_per_page );
-        // set the number of items per page, to make sure both the shortcode handler
-        // and the awpcp_display_ads function are using the same value
-        $_REQUEST['results'] = $_GET['results'] = $items_per_page;
-
-        $category = $id > 0 ? AWPCP_Category::find_by_id($id) : null;
-        $children = awpcp_parse_bool($children);
-
-        if ( is_null( $category ) ) {
-            return __('Category ID must be valid for Ads to display.', 'category shortcode', 'AWPCP');
+        if ( is_null( $output ) ) {
+            $output = awpcp_category_shortcode()->render( $attrs );
         }
 
-        if ($children) {
-            // show children categories and disable possible sidebar (Region Control sidelist)
-            $before = awpcp_display_the_classifieds_category( '', $category->id, false, 1 );
-            // $before = awpcp_render_categories( $category->id, array( 'sidelist' => false, 'columns' => 1 ) );
-        } else {
-            $before = '';
-        }
-
-        if ( $children ) {
-            $where = '( ad_category_id=%1$d OR ad_category_parent_id = %1$d ) AND disabled = 0';
-        } else {
-            $where = 'ad_category_id=%1$d AND disabled = 0';
-        }
-        $where = $wpdb->prepare($where, $category->id);
-
-        $order = get_awpcp_option( 'groupbrowseadsby' );
-
-        // required so awpcp_display_ads shows the name of the current category
-        $_REQUEST['category_id'] = $category->id;
-
-        $base_url = sprintf( 'custom:%s', awpcp_current_url() );
-
-        return awpcp_display_ads( $where, '', '', $order, $base_url, $before );
+        return $output;
     }
 
     /* Ajax handlers */
@@ -348,28 +314,16 @@ function awpcp_display_the_classifieds_page_body($awpcppagename) {
 	$output .= "<div class=\"classifiedcats\">";
 
 	//Display the categories
-    $output .= awpcp_render_categories( 0, array(
-        'columns' => get_awpcp_option( 'view-categories-columns' ),
-        'hide_empty' => get_awpcp_option( 'hide-empty-categories' ),
-        'show_children' => true,
-        'show_ad_count' => get_awpcp_option( 'showadcount' ),
+    $params = array(
+        'show_in_columns' => get_awpcp_option( 'view-categories-columns' ),
+        'show_empty_categories' => ! get_awpcp_option( 'hide-empty-categories' ),
+        'show_children_categories' => true,
+        'show_listings_count' => get_awpcp_option( 'showadcount' ),
         'show_sidebar' => true,
-    ) );
+    );
+    $output .= awpcp_categories_list_renderer()->render( $params );
 
 	$output .= "</div>";
-	$removeLink = get_awpcp_option('removepoweredbysign');
-
-	if ( field_exists($field='removepoweredbysign') && !($removeLink) ) {
-		$output .= "<p><font style=\"font-size:smaller\">";
-		$output .= __("Powered by ","AWPCP");
-		$output .= "<a href=\"http://www.awpcp.com\">Another Wordpress Classifieds Plugin</a> </font></p>";
-	} elseif ( field_exists($field='removepoweredbysign') && ($removeLink) ) {
-
-	} else {
-//		$output .= "<p><font style=\"font-size:smaller\">";
-//		$output .= __("Powered by ","AWPCP");
-//		$output .= "<a href=\"http://www.awpcp.com\">Another Wordpress Classifieds Plugin</a> </font></p>";
-	}
 
 	$output .= "</div>";
 
@@ -401,7 +355,7 @@ function awpcp_get_menu_items() {
     if ( $show_place_ad_item ) {
         $place_ad_url = awpcp_get_page_url( 'place-ad-page-name' );
         $place_ad_page_name = get_awpcp_option( 'place-ad-page-name' );
-        $items['post-listing'] = array( 'url' => $place_ad_url, 'title' => $place_ad_page_name );
+        $items['post-listing'] = array( 'url' => $place_ad_url, 'title' => esc_html( $place_ad_page_name ) );
     }
 
     if ( $show_edit_ad_item ) {
@@ -412,7 +366,7 @@ function awpcp_get_menu_items() {
         }
 
         $edit_ad_page_name = get_awpcp_option( 'edit-ad-page-name' );
-        $items['edit-listing'] = array( 'url' => $edit_ad_url, 'title' => $edit_ad_page_name );
+        $items['edit-listing'] = array( 'url' => $edit_ad_url, 'title' => esc_html( $edit_ad_page_name ) );
     }
 
     if ( $show_browse_ads_item ) {
@@ -437,313 +391,20 @@ function awpcp_get_menu_items() {
             }
 
             $view_categories_page_name = get_awpcp_option( 'view-categories-page-name' );
-            $items['browse-listings'] = array( 'url' => $browse_cats_url, 'title' => $view_categories_page_name );
+            $items['browse-listings'] = array( 'url' => $browse_cats_url, 'title' => esc_html( $view_categories_page_name ) );
         } else {
             $browse_ads_url = awpcp_get_page_url( 'browse-ads-page-name' );
-            $items['browse-listings'] = array( 'url' => $browse_ads_url, 'title' => $browse_ads_page_name );
+            $items['browse-listings'] = array( 'url' => $browse_ads_url, 'title' => esc_html( $browse_ads_page_name  ) );
         }
     }
 
     if ( $show_search_ads_item ) {
         $search_ads_page_name = get_awpcp_option( 'search-ads-page-name' );
         $search_ads_url = awpcp_get_page_url( 'search-ads-page-name' );
-        $items['search-listings'] = array( 'url' => $search_ads_url, 'title' => $search_ads_page_name );
+        $items['search-listings'] = array( 'url' => $search_ads_url, 'title' => esc_html( $search_ads_page_name ) );
     }
 
     $items = apply_filters( 'awpcp_menu_items', $items );
 
     return $items;
-}
-
-
-/**
- * Renders the HTML content for a Category Item to be inserted inside a
- * LI or P element.
- */
-function awpcp_display_classifieds_category_item($category, $class='toplevelitem', $ads_in_cat=false) {
-	global $awpcp_imagesurl;
-
-	$url_browsecats = url_browsecategory($category[0]);
-
-	// Category icon
-	if (function_exists('get_category_icon')) {
-		$category_icon = get_category_icon($category[0]);
-	}
-
-	// Ads count
-	if ( $ads_in_cat === false && get_awpcp_option('showadcount') == 1) {
-		$ads_in_cat = '(' . total_ads_in_cat($category[0]) . ')';
-	} else if ( $ads_in_cat !== false ) {
-        $ads_in_cat = '(' . $ads_in_cat . ')';
-    } else {
-		$ads_in_cat = '';
-	}
-
-	if ( isset( $category_icon ) && !empty( $category_icon ) && function_exists( 'awpcp_category_icon_url' ) ) {
-        $cat_icon_url = awpcp_category_icon_url( $category_icon );
-		$cat_icon = "<img class=\"categoryicon\" src=\"$cat_icon_url\" alt=\"$category[1]\" border=\"0\"/>";
-		$cat_icon = sprintf('<a href="%s">%s</a>', esc_url($url_browsecats), $cat_icon);
-	} else {
-		$cat_icon = '';
-	}
-
-	return $cat_icon . '<a class="' . $class . '" href="' . $url_browsecats . '">' . $category[1] . '</a> ' . $ads_in_cat;
-}
-
-
-function awpcp_render_category_item($category, $args=array()) {
-    global $awpcp_imagesurl;
-
-    extract( wp_parse_args( $args, array(
-        'link_class' => 'toplevelitem',
-        'show_ad_count' => true,
-        'collapse_categories' => false,
-    ) ) );
-
-    $url_browsecats = url_browsecategory( $category->id );
-
-    if ( function_exists( 'get_category_icon' ) ) {
-        $category_icon = get_category_icon( $category->id );
-        if ( ! empty( $category_icon ) && function_exists( 'awpcp_category_icon_url' ) ) {
-            $icon_url = awpcp_category_icon_url( $category_icon );
-            $image = '<img class="categoryicon" src="%s" alt="%s" border="0" />';
-            $image = sprintf( $image, $icon_url, esc_attr( $category->name ) );
-            $icon = sprintf( '<a href="%s">%s</a>', esc_url( $url_browsecats ), $image );
-        }
-    }
-
-    if ( $collapse_categories ) {
-        $handler = $level === 1 ? '<a class="js-handler" href="#"><span></span></a>' : '';
-    } else {
-        $handler = '';
-    }
-
-    $output = '%s <a class="%s" href="%s">%s</a> %s %s';
-
-    return sprintf( $output, isset( $icon ) ? $icon : '',
-                             $link_class,
-                             esc_url( $url_browsecats ),
-                             esc_attr( $category->name ),
-                             $show_ad_count ? "({$category->ad_count})" : '',
-                             $handler);
-}
-
-
-function awpcp_render_categories_items($parent=0, $args=array()) {
-    global $wpdb;
-
-    // same as the args for awpcp_render_categories
-    extract( $args );
-
-    $categories = AWPCP_Category::query( array(
-        'where' => $wpdb->prepare( 'category_parent_id = %d', $parent ),
-        'orderby' => 'category_order ASC, category_name',
-        'order' => 'ASC',
-    ) );
-
-    if ( $hide_empty || get_awpcp_option( 'showadcount' ) ) {
-        $approved = array();
-        foreach ( $categories as $category ) {
-            $count = total_ads_in_cat( $category->id );
-
-            if ( $hide_empty && $count == 0 ) continue;
-
-            $category->ad_count = $count;
-            $approved[] = $category;
-        }
-
-        $categories = $approved;
-    }
-
-    $collapse_categories = get_awpcp_option( 'collapse-categories-columns' );
-
-    $item_args = array(
-        'level' => $level,
-        'link_class' => '',
-        'show_ad_count' => $show_ad_count,
-        'collapse_categories' => $collapse_categories,
-    );
-
-    if ( $level === 1) {
-        $container_class = 'top-level-categories showcategoriesmainlist';
-        $item_args['link_class'] = 'toplevelitem';
-    } else {
-        $container_class = 'sub-categories showcategoriessublist';
-        // do not group sub-categories
-        $columns = count( $categories );
-    }
-
-    $output = '';
-
-    $k = 0;
-    foreach ( $categories as $category ) {
-        if ( $k > 0 && $k % $columns === 0 ) {
-            $output .= '</ul>';
-        }
-
-        if ( $k === 0 || $k % $columns === 0 ) {
-            if ( $level > 1 && $collapse_categories ) {
-                $output .= '<ul class="' . $container_class . ' clearfix" data-collapsible="true">';
-            } else {
-                $output .= '<ul class="' . $container_class . ' clearfix">';
-            }
-        }
-
-        if ($level === 1) {
-            $output.= sprintf( '<li class="columns-%d">', $columns );
-            $output.= '<p class="top-level-category maincategoryclass ">';
-            $output.= awpcp_render_category_item( $category, $item_args );
-            $output.= '</p>';
-        } else {
-            $output.= '<li>';
-            $output.= awpcp_render_category_item( $category, $item_args );
-        }
-
-        if ($show_children) {
-            $output.= awpcp_render_categories_items($category->id, array_merge( $args, array( 'level' => $level + 1 ) ) );
-        }
-
-        $output.= '</li>';
-
-        $k = $k + 1;
-    }
-
-    if ( count( $categories ) > 0 ) {
-        $output .= '</ul>';
-    }
-
-    return $output;
-}
-
-
-function awpcp_render_categories( $parent=0, $args=array() ) {
-    global $hasregionsmodule;
-
-    $args = wp_parse_args( $args, array(
-        'level' => 1,
-        'columns' => get_awpcp_option('view-categories-columns', 2),
-        'show_sidebar' => true,
-        'hide_empty' => false,
-        'show_children' => true,
-    ) );
-
-    extract( $args );
-
-    if ( $show_sidebar && $hasregionsmodule === 1 && get_awpcp_option( 'showregionssidelist' ) ) {
-        $sidebar = awpcp_region_control_render_sidelist();
-        $showing_sidebar = true;
-    } else {
-        $showing_sidebar = false;
-    }
-
-    $categories = awpcp_render_categories_items( $parent, $args );
-
-    if ( !empty( $categories ) ) {
-        if ( $showing_sidebar ) {
-            $output = '<div id="awpcpcatlayout" class="awpcp-categories-list">%s<div class="awpcpcatlayoutleft">%s</div></div><div class="fixfloat"></div>';
-            $output = sprintf( $output, $sidebar, $categories );
-        } else {
-            $output = '<div id="awpcpcatlayout" class="awpcp-categories-list">%s</div><div class="fixfloat"></div>';
-            $output = sprintf( $output, $categories );
-        }
-    } else {
-        $output = '';
-    }
-
-    return $output;
-}
-
-/**
- * @deprecated  since 3.0-beta20
- * @param  [type]  $awpcppagename [description]
- * @param  integer $parent        [description]
- * @return [type]                 [description]
- */
-function awpcp_display_the_classifieds_category($awpcppagename, $parent=0, $sidebar=true, $columns=false, $hide_empty=false) {
-	global $wpdb;
-	global $awpcp_imagesurl;
-	global $hasregionsmodule;
-
-	$usingsidelist = 0;
-
-	$awpcp_page_id=awpcp_get_page_id_by_ref('main-page-name');
-	$browsecatspagename=sanitize_title(get_awpcp_option('browse-categories-page-name'));
-
-	$table_cols = 1;
-	$query = "SELECT category_id,category_name FROM " . AWPCP_TABLE_CATEGORIES . " ";
-	$query.= "WHERE category_parent_id = %d AND category_name <> '' ";
-	$query.= "ORDER BY category_order, category_name ASC";
-
-	$results = $wpdb->get_results( $wpdb->prepare( $query, $parent ), ARRAY_N );
-
-    $myreturn = '';
-
-    if ( count( $results ) > 0 ) {
-        $myreturn = '<div id="awpcpcatlayout" class="awpcp-categories-list">';// Open the container division
-
-        // For use with regions module if sidelist is enabled
-        if ($sidebar && $hasregionsmodule == 1) {
-            if (get_awpcp_option('showregionssidelist')) {
-                $awpcpregions_sidepanel = awpcp_region_control_render_sidelist();
-                $usingsidelist = true;
-            }
-        }
-
-        if ($usingsidelist) {
-            $myreturn.="$awpcpregions_sidepanel<div class=\"awpcpcatlayoutleft\">";
-        }
-
-        $i = 0;
-        if ($columns === false) {
-            $columns = get_awpcp_option('view-categories-columns', 2);
-        }
-
-        foreach ( $results as $rsrow ) {
-            if ($i > 0 && $i % $columns == 0) {
-                $myreturn .= '</ul>';
-            }
-            if ($i == 0 || $i % $columns == 0) {
-                $myreturn .= '<ul class="showcategoriesmainlist clearfix">';
-            }
-
-            $myreturn .= '<li class="columns-' . $columns . '">';
-            $myreturn .= '<p class="maincategoryclass">';
-            $myreturn .= awpcp_display_classifieds_category_item($rsrow);
-            $myreturn .= '</p>';
-
-            $mcid = $rsrow[0];
-
-            $query = "SELECT category_id,category_name FROM ". AWPCP_TABLE_CATEGORIES ." ";
-            $query.= "WHERE category_parent_id='$mcid' AND category_name <> '' ";
-            $query.= "ORDER BY category_order,category_name ASC";
-
-            $query_results = $wpdb->get_results( $query, ARRAY_N );
-
-            if ( is_array( $query_results ) && ! empty( $query_results ) ) {
-                $myreturn .= "<ul class=\"showcategoriessublist\">";
-
-                foreach ( $query_results as $sub_category ) {
-                    $myreturn .= "<li>";
-                    $myreturn .= awpcp_display_classifieds_category_item( $sub_category, '' );
-                    $myreturn .= "</li>";
-                }
-
-                $myreturn .= "</ul>";
-            }
-
-            $myreturn .= "</li>";
-            $i++;
-        }
-
-        $myreturn .= "</ul>";
-
-        if ($usingsidelist) {
-            $myreturn.='</div>'; // To close div class awpcplayoutleft
-        }
-
-        $myreturn .= '</div>';// Close the container division
-        $myreturn .= "<div class=\"fixfloat\"></div>";
-    }
-
-	return $myreturn;
 }

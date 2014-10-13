@@ -53,7 +53,7 @@ class AWPCP_Media {
         $thumbnail = $thumbnails . $basename;
         $suffix = empty( $size ) ? '.' : "-$size.";
 
-        $info = pathinfo( $original );
+        $info = awpcp_utf8_pathinfo( $original );
 
         if ( $size == 'original' ) {
             $alternatives = array( $original );
@@ -94,5 +94,23 @@ class AWPCP_Media {
 
     public function is_approved() {
         return $this->status == self::STATUS_APPROVED;
+    }
+}
+
+function awpcp_files_collection() {
+    return new AWPCP_FilesCollection();
+}
+
+class AWPCP_FilesCollection {
+
+    public function get( $file_id ) {
+        $file = awpcp_media_api()->find_by_id( $file_id );
+
+        if ( is_null( $file ) ) {
+            $message = __( 'No file was found with id: %d', 'AWPCP' );
+            throw new AWPCP_Exception( sprintf( $message, $file_id ) );
+        }
+
+        return $file;
     }
 }

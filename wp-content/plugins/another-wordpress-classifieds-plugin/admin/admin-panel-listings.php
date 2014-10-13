@@ -84,7 +84,6 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         $actions = array();
 
         $actions['view'] = array(__('View', 'AWPCP'), $this->url(array('action' => 'view', 'id' => $ad->ad_id)));
-        // $actions['open'] = array(__('Open', 'AWPCP'), url_showad($ad->ad_id));
         $actions['edit'] = array(__('Edit', 'AWPCP'), $this->url(array('action' => 'edit', 'id' => $ad->ad_id)));
         $actions['trash'] = array(__('Delete', 'AWPCP'), $this->url(array('action' => 'delete', 'id' => $ad->ad_id)));
 
@@ -109,7 +108,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             $actions['send-key'] = array(__('Send Access Key', 'AWPCP'), $this->url(array('action' => 'send-key', 'id' => $ad->ad_id)));
         }
 
-        if ( $ad->is_about_to_expire() ) {
+        if ( $ad->is_about_to_expire() || $ad->has_expired() ) {
             $hash = awpcp_get_renew_ad_hash( $ad->ad_id );
             $params = array( 'action' => 'renew', 'id' => $ad->ad_id, 'awpcprah' => $hash );
             $actions['renwew-ad'] = array( __( 'Renew Ad', 'AWPCP' ), $this->url( $params ) );
@@ -123,11 +122,19 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             $actions['add-image'] = array(__('Add Images', 'AWPCP'), $this->url(array('action' => 'add-image', 'id' => $ad->ad_id)));
         }
 
-        if ( $admin ) {
+        if ( $admin && ! $ad->disabled ) {
             $fb = AWPCP_Facebook::instance();
-            if ( $fb->get( 'page_token', '' ) && !awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook' ) && !$ad->disabled ) {
+            if ( ! awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook' ) && $fb->get( 'page_id' ) ) {
                 $actions['send-to-facebook'] = array(
                     __( 'Send to Facebook', 'AWPCP' ),
+                    $this->url( array(
+                        'action' => 'send-to-facebook',
+                        'id' => $ad->ad_id
+                    ) )
+                );
+            } else if ( ! awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook-group' ) && $fb->get( 'group_id' ) ) {
+                $actions['send-to-facebook'] = array(
+                    __( 'Send to Facebook Group', 'AWPCP' ),
                     $this->url( array(
                         'action' => 'send-to-facebook',
                         'id' => $ad->ad_id
@@ -158,7 +165,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             'mark-paid',
             'send-key',
             'bulk-renew',
-            'bulk-send-to-facebook',
+            'send-to-facebook', 'bulk-send-to-facebook',
             'unflag',
             'spam', 'bulk-spam',
 
@@ -416,42 +423,10 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         return $this->redirect('index');
     }
 
-    public function renew_ad_action($ad) {
-        $term = awpcp_payments_api()->get_ad_payment_term( $ad );
-
-        if ( !$ad->has_expired() && !$ad->is_about_to_expire() ) {
-            return false;
-        }
-
-        if ( $term->ad_can_be_renewed( $ad ) ) {
-            $ad->renew();
-            $ad->save();
-
-            awpcp_send_ad_renewed_email( $ad );
-
-            // MOVE inside Ad::renew() ?
-            do_action('awpcp-renew-ad', $ad->ad_id, null);
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function renew_ad_success($n) {
-        return _n('%d Ad was renewed', '%d Ads were renewed', $n, 'AWPCP');
-    }
-
-    public function renew_ad_failure($n) {
-        return __('there was an error trying to renew %d Ads', 'AWPCP');
-    }
-
     public function renew_ad() {
-        return $this->bulk_action(
-            array( $this, 'renew_ad_action' ),
-            array( $this, 'renew_ad_success' ),
-            array( $this, 'renew_ad_failure' )
-        );
+        $page = awpcp_renew_listings_admin_page();
+        $page->dispatch();
+        return $this->redirect( 'index' );
     }
 
     public function mark_as_spam_action($ad) {
@@ -588,69 +563,8 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
     }
 
     public function send_to_facebook() {
-        $is_admin = awpcp_current_user_is_admin();
-
-        if ( !$is_admin )
-            return $this->redirect('index');
-
-        $ads = isset( $_REQUEST['selected'] ) ? $_REQUEST['selected'] : ( isset( $_REQUEST['id'] ) ? array( $_REQUEST['id'] ) : array() );
-
-        if ( !$ads )
-            return $this->redirect('index');
-
-        $total = count( $ads );
-        $sent = 0;
-        $failed = 0;
-
-        $fb = AWPCP_Facebook::instance();
-        $fb->set_access_token( 'page_token' );
-
-        foreach ( $ads as $ad_id ) {
-            $ad = AWPCP_Ad::find_by_id( $ad_id );
-
-            if ( !$ad || awpcp_get_ad_meta( $ad_id, 'sent-to-facebook', true ) == 1 || $ad->disabled ) {
-                $failed++;
-                continue;
-            }
-
-            // TODO: add a blurb of content?
-            $ad_image = awpcp_media_api()->get_ad_primary_image( $ad );
-            $thumbnail = $ad_image ? $ad_image->get_url( 'primary' ) : '';
-
-            $data = array( 'link' => url_showad( $ad->ad_id ),
-                           'name' => $ad->ad_title,
-                           'picture' => $thumbnail );
-
-            try {
-                $response = $fb->api_request( '/' . $fb->get( 'page_id' ) . '/links',
-                                              'POST',
-                                              $data );
-
-                if ( $response && isset( $response->id ) ) {
-                    awpcp_update_ad_meta( $ad_id, 'sent-to-facebook', 1 );
-                    $sent++;
-                } else {
-                    $failed++;
-                }
-            } catch (Exception $e) {
-                $error = true;
-                $failed++;
-            }
-        }
-
-        if ( isset( $error ) && $error ) {
-            $msg = str_replace( '<a>',
-                                '<a href="' . admin_url( 'admin.php?page=awpcp-settings&g=facebook-settings' ) . '">',
-                                __( 'AWPCP can not post to Facebook because your credentials are invalid or have expired. Please check your <a>settings</a>.', 'AWPCP' ) );
-            awpcp_flash( $msg, 'error' );            
-        }
-
-        if ( $sent > 0 && $failed > 0 ) {
-            awpcp_flash( sprintf( __( '%d of %d Ads were sent to Facebook. %d generated errors.', 'AWPCP' ), $sent, $total, $failed ) );
-        } else {
-            awpcp_flash( sprintf( __( '%d of %d Ads were sent to Facebook. %d generated errors.', 'AWPCP' ), $sent, $total, $failed ) );
-        }
-
+        $page = awpcp_send_listing_to_facebook_admin_page();
+        $page->dispatch();
         return $this->redirect('index');
     }
 

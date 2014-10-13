@@ -6,7 +6,7 @@
 <?php echo sprintf("\t%s", $message); ?> 
 
 <?php if ($transaction): ?>
-<?php _e('Payment transaction ID', 'AWPCP') ?>: <?php echo $transaction->id ?> 
+<?php _e('Payment transaction ID', 'AWPCP') ?>: <?php echo esc_html( $transaction->id ); ?> 
 <?php endif ?>
 
 <?php echo awpcp_get_blog_name() ?> 

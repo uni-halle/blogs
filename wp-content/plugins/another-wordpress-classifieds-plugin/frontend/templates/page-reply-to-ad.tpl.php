@@ -12,21 +12,23 @@
     <input type="hidden" name="<?php echo esc_attr($name) ?>" value="<?php echo esc_attr($value) ?>" />
     <?php endforeach ?>
 
+    <?php $disabled = $ui['disable-sender-fields'] ? 'disabled="disabled"' : ''; ?>
+
     <p class="awpcp-form-spacer">
         <label for="awpcp-contact-sender-name"><?php _e("Your name", "AWPCP"); ?></label>
-        <input id="awpcp-contact-sender-name" class="inputbox required" type="text" name="sender_name" value="<?php echo $form['sender_name']; ?>" />
+        <input id="awpcp-contact-sender-name" class="inputbox required" type="text" name="sender_name" value="<?php echo esc_attr( $form['sender_name'] ); ?>" <?php echo $disabled; ?> />
         <?php echo awpcp_form_error('sender_name', $errors) ?>
     </p>
 
     <p class="awpcp-form-spacer">
         <label for="awpcp-contact-sender-email"><?php _e("Your email address", "AWPCP"); ?></label>
-        <input id="awpcp-contact-sender-email" class="inputbox required email" type="text" name="sender_email" value="<?php echo $form['sender_email']; ?>" />
+        <input id="awpcp-contact-sender-email" class="inputbox required email" type="text" name="sender_email" value="<?php echo esc_attr( $form['sender_email'] ); ?>" <?php echo $disabled; ?> />
         <?php echo awpcp_form_error('sender_email', $errors) ?>
     </p>
 
     <p class="awpcp-form-spacer">
         <label for="awpcp-contact-message"><?php _e("Your message", "AWPCP"); ?></label>
-        <textarea id="awpcp-contact-message" class="awpcp-textarea textareainput required" name="message" rows="5" cols="90%"><?php echo $form['message']; ?></textarea>
+        <textarea id="awpcp-contact-message" class="awpcp-textarea textareainput required" name="message" rows="5" cols="90%"><?php echo esc_textarea( $form['message'] ); ?></textarea>
         <?php echo awpcp_form_error('message', $errors) ?>
     </p>
 
@@ -38,5 +40,5 @@
     </p>
     <?php endif ?>
 
-    <input type="submit" class="button" value="<?php _e("Continue","AWPCP"); ?>" />
+    <input type="submit" class="button" value="<?php echo esc_attr( __( "Continue","AWPCP" ) ); ?>" />
 </form>

@@ -12,9 +12,22 @@ class AWPCP_Exception extends Exception {
     public function get_errors() {
         return array_filter( array_merge( array( $this->getMessage() ), (array) $this->errors ) );
     }
+
+    public function format_errors() {
+        return implode( ' ', $this->get_errors() );
+    }
 }
 
 class AWPCP_IOError extends AWPCP_Exception {
+}
+
+class AWPCP_WPError extends AWPCP_Exception {
+
+    private $wp_error;
+
+    public function __construct( $wp_error ) {
+        $this->wp_error = $wp_error;
+    }
 }
 
 class AWPCP_RedirectionException extends AWPCP_Exception {

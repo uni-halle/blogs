@@ -1,9 +1,9 @@
-<div class="awpcp-postbox-container postbox-container" style="<?php echo $float; ?>; width: 20%; ">
+<div class="awpcp-admin-sidebar awpcp-postbox-container postbox-container" style="<?php echo $float; ?>; width: 20%; ">
     <div class="metabox-holder">
         <div class="meta-box-sortables">
 
             <div class="postbox">
-                <h3 class="hndle1"><span><?php _e('Like this plugin?', 'AWPCP'); ?></span></h3>
+                <h3 class="hndle"><span><?php _e('Like this plugin?', 'AWPCP'); ?></span></h3>
                 <div class="inside">
                 <p><?php _e('Why not do any or all of the following:', 'AWPCP'); ?></p>
                     <ul>
@@ -23,8 +23,8 @@
                 </div>
             </div>
 
-            <div class="postbox" style="background-color:#FFFFCF; border-color:#0EAD00; border-width:3px;">
-                <h3 class="hndle1" style="color:#145200;">
+            <div class="awpcp-get-a-premium-module postbox" style="background-color:#FFFFCF; border-color:#0EAD00; border-width:3px;">
+                <h3 class="hndle" style="color:#145200;">
                     <span class="red">
                         <strong><?php _e('Get a Premium Module!', 'AWPCP'); ?></strong>
                     </span>
@@ -105,7 +105,7 @@
             </div>
 
             <div class="postbox">
-                <h3 class="hndle1"><span><?php _e('Found a bug?', 'AWPCP'); ?> &nbsp; <?php _e('Need Support?', 'AWPCP'); ?></span></h3>
+                <h3 class="hndle"><span><?php _e('Found a bug?', 'AWPCP'); ?> &nbsp; <?php _e('Need Support?', 'AWPCP'); ?></span></h3>
                 <?php $tpl = '<a href="%s" target="_blank">%s</a>'; ?>
                 <div class="inside">
                     <ul>
@@ -120,7 +120,7 @@
             </div>
 
             <div class="postbox">
-                <h3 class="hndle1"><span><?php _e("Premium Modules","AWPCP"); ?></span></h3>
+                <h3 class="hndle"><span><?php _e("Premium Modules","AWPCP"); ?></span></h3>
                 <div class="inside">
 
                     <h4><?php _e("Installed", "AWPCP"); ?></h4>
@@ -160,7 +160,7 @@
             </div>
 
             <!-- <div class="postbox">
-                <h3 class="hndle1"><span><?php __("Other Modules","AWPCP"); ?></span></h3>
+                <h3 class="hndle"><span><?php __("Other Modules","AWPCP"); ?></span></h3>
 
                 <div class="inside">
 

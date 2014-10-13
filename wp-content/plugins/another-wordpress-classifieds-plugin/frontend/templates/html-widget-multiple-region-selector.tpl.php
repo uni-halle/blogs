@@ -1,4 +1,4 @@
-<div id="awpcp-multiple-region-selector-<?php echo $uuid; ?>" class="awpcp-multiple-region-selector" uuid="<?php echo $uuid; ?>">
+<div id="awpcp-multiple-region-selector-<?php echo esc_attr( $uuid ); ?>" class="awpcp-multiple-region-selector" uuid="<?php echo esc_attr( $uuid ); ?>">
 
     <ul data-bind="foreach: regions">
         <li class="awpcp-region-selector">
@@ -11,7 +11,7 @@
 
                     <input class="multiple-region inputbox" type="text" data-bind="attr: { id: id, name: textfieldName }, value: selectedText, visible: showTextField, disable: $root.options.disabled" />
 
-                    <span class="loading-message" data-bind="visible: loading"><?php echo _x( 'loading...', 'loading region options', 'AWPCP' ); ?></span>
+                    <span class="loading-message" data-bind="visible: loading"><?php echo esc_html( _x( 'loading...', 'loading region options', 'AWPCP' ) ); ?></span>
 
                     <input type="hidden" data-bind="attr: { name: param }, value: selected" />
                 </li>

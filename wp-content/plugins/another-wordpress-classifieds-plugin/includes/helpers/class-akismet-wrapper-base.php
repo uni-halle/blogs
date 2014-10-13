@@ -6,6 +6,10 @@ class AWPCP_AkismetWrapperBase {
         return array();
     }
 
+    public function get_reporter_data() {
+        return array();
+    }
+
     public function http_post( $request, $path, $ip=null ) {
         return array( array(), '' );
     }

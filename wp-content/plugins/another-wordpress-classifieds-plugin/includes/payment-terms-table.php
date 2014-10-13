@@ -88,26 +88,31 @@ class AWPCP_PaymentTermsTable {
     public function item_column($item, $column) {
         switch ($column) {
             case 'name':
-                if ($item->description)
-                    return sprintf('%s<p>%s</p>', $item->name, $item->description);
-                return $item->get_name();
+                if ( $item->description ) {
+                    $description = sprintf( '%s<p>%s</p>', esc_html( $item->get_name() ), esc_html( $item->description ) );
+                } else {
+                    $description = esc_html( $item->get_name() );
+                }
+                return $description;
 
             case 'ads':
-                return $item->get_allowed_ads_count();
+                return esc_html( $item->get_allowed_ads_count() );
 
             case 'images':
-                return $item->images;
+                return esc_html( $item->images );
 
             case 'title_characters':
                 $characters = $item->get_characters_allowed_in_title();
-                return empty( $characters ) ? _x( 'No Limit', 'payment term duration', 'AWPCP' ) : $characters;
+                $characters = empty( $characters ) ? _x( 'No Limit', 'payment term duration', 'AWPCP' ) : $characters;
+                return esc_html( $characters );
 
             case 'characters':
                 $characters = $item->get_characters_allowed();
-                return empty( $characters ) ? _x( 'No Limit', 'payment term duration', 'AWPCP' ) : $characters;
+                $characters = empty( $characters ) ? _x( 'No Limit', 'payment term duration', 'AWPCP' ) : $characters;
+                return esc_html( $characters );
 
             case 'duration':
-                return $item->get_duration();
+                return esc_html( $item->get_duration() );
 
             case 'price':
                 return $this->render_payment_option(
@@ -170,7 +175,7 @@ class AWPCP_PaymentTermsTable {
             $attrs['checked'] = 'checked';
 
         $html = sprintf('<input %s>', awpcp_render_attributes($attrs));
-        $html.= sprintf('&nbsp;<label for="%s">%s</label>', $value, $amount);
+        $html.= sprintf( '&nbsp;<label for="%s">%s</label>', esc_attr( $value ), esc_html( $amount ) );
 
         return $html;
     }

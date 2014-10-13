@@ -1,0 +1,49 @@
+/*.awpcplatestbox {
+    margin-bottom:5px;
+}
+.awpcplatestbox .awpcp-listing-title {
+    clear: both;
+    font-weight: bold;
+    margin: 4px 0 8px;
+}
+.awpcplatestspacer {
+    clear:both;
+}*/
+
+/* Using !important because theme authors love to use IDs in their
+   CSS selectors. My rules won't be applied unless I know the exact
+   selector or use !important. */
+.awpcp-listings-widget-items-list {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style-type: none !important;
+
+    .awpcp-listings-widget-item {
+        margin-bottom: 15px;
+
+        .awpcplatestthumb {
+            box-sizing: border-box;
+            margin: 0 0 5px;
+            width: 100%;
+
+            a {
+                display: block !important;
+                margin: 0 auto !important;
+                width: 60%;
+
+                img {
+                    max-width: 100%;
+                    margin: 0 auto;
+                }
+            }
+        }
+
+        .awpcp-listing-title {
+            font-weight: bold;
+        }
+
+        .awpcp-widget-read-more {
+            margin-left: 10px !important;
+        }
+    }
+}

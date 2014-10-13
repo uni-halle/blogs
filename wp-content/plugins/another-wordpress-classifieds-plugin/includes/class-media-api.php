@@ -104,7 +104,7 @@ class AWPCP_MediaAPI {
     public function delete( $media ) {
         global $wpdb;
 
-        $info = pathinfo( AWPCPUPLOADDIR . "{$media->name}" );
+        $info = awpcp_utf8_pathinfo( AWPCPUPLOADDIR . $media->name );
         $filename = preg_replace( "/\.{$info['extension']}/", '', $info['basename'] );
 
         $filenames = array(
@@ -314,5 +314,18 @@ class AWPCP_MediaAPI {
         );
 
         return $this->find_images_by_ad_id( $ad_id, $args );
+    }
+
+    /**
+     * @since 3.3
+     */
+    public function listing_has_primary_image( $listing ) {
+        $image = $this->get_ad_primary_image( $listing );
+
+        if ( ! is_null( $image ) ) {
+            return $image->is_primary;
+        } else {
+            return false;
+        }
     }
 }

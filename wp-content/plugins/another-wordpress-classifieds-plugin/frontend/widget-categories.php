@@ -29,13 +29,12 @@ class AWPCP_CategoriesWidget extends WP_Widget {
             echo $before_title . $title . $after_title;
         }
 
-        echo awpcp_render_categories( 0, array(
-            'columns' => 1,
-            'hide_empty' => $instance['hide-empty'],
-            'show_children' => !$instance['show-parents-only'],
-            'show_ad_count' => $instance['show-ad-count'],
-            'show_sidebar' => false,
-        ) );
+        $params = array(
+            'show_empty_categories' => $instance['hide-empty'] ? false : true,
+            'show_children_categories' => $instance['show-parents-only'] ? false : true,
+            'show_listings_count' => $instance['show-ad-count'],
+        );
+        echo awpcp_categories_list_renderer()->render( $params );
 
         echo $after_widget;
     }

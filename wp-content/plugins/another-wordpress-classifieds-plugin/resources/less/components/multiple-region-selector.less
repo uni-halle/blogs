@@ -10,22 +10,29 @@
 }
 
 #classiwrapper, .awpcp-multiple-region-selector {
-
-    // TODO: these rules for UL are repeated
-    > ul, .awpcp-region-selector-partials {
+    ul {
         margin: 0;
-        padding: 0;
+        padding: 0 !important;
+
+        li {
+            list-style-type: none;
+            list-style-image: none;
+        }
     }
 
     .awpcp-region-selector {
         background: rgba(0, 0, 0, 0.02);
-        list-style-type: none;
+        margin-left: 0;
         margin-bottom: 5px;
         padding: 4px 0px;
 
+        .awpcp-region-selector-partials {
+            padding: 2px;
+        }
+
         .awpcp-region-selector-partial {
             list-style-type: none;
-            margin-bottom: 2px;
+            margin: 0;
 
             label {
                 display: block;

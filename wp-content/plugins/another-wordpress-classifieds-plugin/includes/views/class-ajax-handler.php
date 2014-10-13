@@ -90,7 +90,7 @@ abstract class AWPCP_AjaxHandler {
      * @since 3.2.2
      */
     protected function multiple_errors_response( $errors ) {
-        return $this->error( array( 'errors' => $errors ) );
+        return $this->error( array( 'errors' => (array) $errors ) );
     }
 
     /**

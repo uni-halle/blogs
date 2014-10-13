@@ -75,6 +75,9 @@
 
                     <li><a class="<?php echo $action; ?>" href="#" data-action="<?php echo $action; ?>" title="<?php echo $label; ?>"></a></li>
             <?php endforeach; ?>
+            <?php if ( $file->is_image() && $file->is_primary() ): ?>
+                    <li><span class="primary-image"></span></li>
+            <?php endif; ?>
                 </ul>
             </form>
 

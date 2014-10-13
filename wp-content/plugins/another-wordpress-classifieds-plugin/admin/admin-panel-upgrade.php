@@ -84,7 +84,7 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
             'button' => _x( 'Upgrade', 'awpcp upgrade', 'AWPCP' ),
         );
 
-        $tasks = new AWPCP_AsynchronousTasksHelper( $tasks, $messages );
+        $tasks = new AWPCP_AsynchronousTasksComponent( $tasks, $messages );
 
         return $this->render( 'content', $tasks->render() );
     }
@@ -317,7 +317,7 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
             if ( function_exists( 'mime_content_type' ) ) {
                 $mime_type = mime_content_type( $path );
             } else {
-                $extension = pathinfo( $image->image_name, PATHINFO_EXTENSION );
+                $extension = awpcp_get_file_extension( $image->image_name );
                 $mime_type = sprintf( 'image/%s', $extension );
             }
 

@@ -2,10 +2,10 @@
 Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
-Requires at least: 3.5
-Tested up to: 3.9
-Last Updated: 2014-Apr-16
-Stable tag: tags/3.2.2
+Requires at least: 3.6
+Tested up to: 4.0
+Last Updated: 2014-Oct-8
+Stable tag: tags/3.3
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -206,6 +206,60 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+= Versions 3.3 =
+* Allow admins to mark price field as private
+* Add Users Autocomplete field
+* Add plugin integration for Content Aware Sidebars
+* Add support for posting Ads to Facebook Groups
+* Add support for posting Ads to Facebook automatically
+* Add option to hide price if it is empty or was set to zero
+* Allow listings to be filtered by category in Classifieds > Listings screen
+* Make sure Facebook reads basic Ad information when asking it to scrape an Ads page
+* Use version 2.0 of Facebook Graph API and Facebook Login Dialog
+* Improve name and description of "Verify Email Address"
+* Remove Region Selector from Search Ads screen
+* Show detailed error message when there is a problem trying to renew a Listing
+* Force categories list to display a single column in mobile devices
+* Disable Force Secure URLs feature if website does not support secure URLs
+* Add $categories placeholder
+* Add function to render list of categories with cache support
+* Better Edit Image/Files frontend screens
+* Design improvements for the Listings and Search Ads widgets
+* Do not include AWPCP's Javascript in all frontend pages
+* Do not show No Image default thumbnail if AWPCP is configured to not allow images.
+* Rename page-search-ads.js to page-search-listings.js
+* Overwrite Sender Name and Sender Email using current user's information
+* Do not load Payment Term Fee categories when Fee Per Category module is not activated
+* Add core modifications to control premium modules using EDD licenses
+* Remove Latest News section from admin dashboard
+* Remove Fatal error caused by trying to read information from an inexistent Payment Term
+* Fix Renew Ad bulk operation in Ad Management panel
+* Fix Credit Plan issue
+* Make sure PaymentTransactionHelper always assigns an user to the transaction.
+* Do not show configuration admin notices to regular users.
+* Fix integration with Yoast WordPress SEO plugin.
+* Remove PHP warning due to missing argument
+* Improve calculation of the date a listing should be marked as expired
+* Improve description about number of days left before Listing expires
+* Handle WP_Error in Facebook Cache Helper
+* Fix Ad Expired notification behavior
+* Fix Missing argument PHP Warning
+* Add District of Columbia (Washington, D.C) as a valid state option for Authorize.Net
+* Fix function to count number of Ads in a specific category
+* Use decoded version of the listing's URL in emails
+* Fix syntax error in Ad Enabled email template.
+* Add parenthesis to control scope of OR operand in SQL query
+* Fix PHP Warning in Search Widget.
+* Fix problems with region listings count
+* Make sure setImageOrientation method exists in Imagick class
+* Mark pages in trash as missing
+* Fix error handling uploaded files with utf-8 characters in their names
+* Fix error in Facebook Settings when trying to select None as page or group
+* Fix formatting issue when editing a listing
+* Fix responsive main menu in Show Ad and Browse Ads pages
+* Add verification for edge case of duplicate page title
+* Fix: fallback image is not being shown
+
 = Versions 3.2.2 =
 * NEW: Add quick link to Mark an Ad as verified from Classifieds > Listings screen.
 * Allow administrators to see Ad with images pending approval.

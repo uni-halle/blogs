@@ -58,7 +58,7 @@ class AWPCP_Classified_Pages_Settings {
 class AWPCP_Facebook_Page_Settings {
 
 	public function __construct() {
-		add_action( 'load-classifieds_page_awpcp-admin-settings', array( $this, 'maybe_redirect' ) );
+		add_action( 'current_screen', array( $this, 'maybe_redirect' ) );
 		add_action( 'awpcp-admin-settings-page--facebook-settings', array($this, 'dispatch'));
 	}
 
@@ -134,7 +134,7 @@ class AWPCP_Facebook_Page_Settings {
 				break;
 		}
 	}
-	
+
 	private function display_settings( $errors=array() ) {
 		$fb = AWPCP_Facebook::instance();
 		$config = $fb->get_config();
@@ -143,12 +143,13 @@ class AWPCP_Facebook_Page_Settings {
 		if ( $current_step == 3 ) {
 			// User Pages.
 			$pages = $fb->get_user_pages();
+			$groups = $fb->get_user_groups();
 		}
 
 		if ( $current_step >= 2 ) {
 			// Login URL.
 			$redirect_uri = add_query_arg( 'obtain_user_token', 1, admin_url( '/admin.php?page=awpcp-admin-settings&g=facebook-settings' ) );
-			$login_url = $fb->get_login_url( $redirect_uri, 'publish_stream,manage_pages' );
+			$login_url = $fb->get_login_url( $redirect_uri, 'publish_actions,manage_pages,user_groups' );
 		}
 
 		if ( isset( $_GET['code_error'] ) && isset( $_GET['error_message'] )  ) {
@@ -162,9 +163,9 @@ class AWPCP_Facebook_Page_Settings {
 			$fb->validate_config( $diagnostics_errors );
 
 			$error_msg  = '';
-			$error_msg .= '<strong>' . __( 'Facebook Config Diagnostics', 'AWPCP' ) . '</strong><br />';			
+			$error_msg .= '<strong>' . __( 'Facebook Config Diagnostics', 'AWPCP' ) . '</strong><br />';
 
-			if ( $diagnostics_errors ) {				
+			if ( $diagnostics_errors ) {
 				foreach ( $diagnostics_errors as &$e ) {
 					$error_msg .= '&#149; ' . $e . '<br />';
 				}
@@ -190,19 +191,28 @@ class AWPCP_Facebook_Page_Settings {
 		$app_id = isset( $_POST['app_id'] ) ? trim( $_POST['app_id'] ) : '';
 		$app_secret = isset( $_POST['app_secret'] ) ? trim( $_POST['app_secret'] ) : '';
 		$user_token = isset( $_POST['user_token'] ) ? trim( $_POST['user_token'] ) : '';
+
 		$page = isset( $_POST['page'] ) ? trim( $_POST['page'] ) : '';
+		$group = isset( $_POST['group'] ) ? trim( $_POST['group'] ) : '';
 
 		$config['app_id'] = $app_id;
 		$config['app_secret'] = $app_secret;
 		$config['user_token'] = $user_token;
 
-		if ( $page ) {
+		if ( $page == 'none' ) {
+			$config['page_id'] = '';
+			$config['page_token'] = '';
+		} else if ( ! empty( $page ) ) {
 			$parts = explode( '|', $page );
 			$page_id = $parts[0];
 			$page_token = $parts[1];
 
 			$config['page_id'] = $page_id;
 			$config['page_token'] = $page_token;
+		}
+
+		if ( $group ) {
+			$config['group_id'] = $group;
 		}
 
 		$awpcp_fb->set_config( $config );

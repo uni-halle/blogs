@@ -1,10 +1,11 @@
+/*exported CheckAllAds, UncheckAll, CheckAll*/
 function CheckAll() {
     var count = document.mycats.elements.length;
     for (var i=0; i < count; i=i+1) {
-        if (document.mycats.elements[i].checked == 1) {
-            document.mycats.elements[i].checked = 0;
+        if (document.mycats.elements[i].checked === true) {
+            document.mycats.elements[i].checked = false;
         } else {
-            document.mycats.elements[i].checked = 1;
+            document.mycats.elements[i].checked = true;
         }
     }
 }
@@ -12,10 +13,10 @@ function CheckAll() {
 function UncheckAll(){
     var count = document.mycats.elements.length;
     for (var i=0; i < count; i=i+1) {
-        if(document.mycats.elements[i].checked == 1) {
-            document.mycats.elements[i].checked = 0;
+        if(document.mycats.elements[i].checked === true) {
+            document.mycats.elements[i].checked = false;
         } else {
-            document.mycats.elements[i].checked = 1;
+            document.mycats.elements[i].checked = true;
         }
     }
 }
@@ -23,10 +24,10 @@ function UncheckAll(){
 function CheckAllAds() {
     var count = document.manageads.elements.length;
     for (var i=0; i < count; i=i+1) {
-        if(document.manageads.elements[i].checked == 1) {
-            document.manageads.elements[i].checked = 0;
+        if(document.manageads.elements[i].checked === true) {
+            document.manageads.elements[i].checked = false;
         } else {
-            document.manageads.elements[i].checked = 1;
+            document.manageads.elements[i].checked = true;
         }
     }
 }
@@ -34,10 +35,10 @@ function CheckAllAds() {
 function UncheckAll(){
     var count = document.manageads.elements.length;
     for (var i=0; i < count; i=i+1) {
-        if(document.manageads.elements[i].checked == 1) {
-            document.manageads.elements[i].checked = 0;
+        if(document.manageads.elements[i].checked === true) {
+            document.manageads.elements[i].checked = false;
         } else {
-            document.manageads.elements[i].checked = 1;
+            document.manageads.elements[i].checked = true;
         }
     }
 }

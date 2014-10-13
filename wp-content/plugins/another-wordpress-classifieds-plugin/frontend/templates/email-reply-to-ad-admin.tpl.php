@@ -4,7 +4,7 @@
 
 
 <?php _e("Contacting about", "AWPCP"); ?>: <?php echo $ad_title; ?> 
-<?php echo $ad_url; ?> 
+<?php echo urldecode( $ad_url ); ?> 
 
 <?php _ex("Message", 'reply email', "AWPCP"); ?>:
 

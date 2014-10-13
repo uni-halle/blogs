@@ -12,7 +12,7 @@
 
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-credit-card-number"><?php _e('Card Number', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-credit-card-number" type="text" size="50" name="credit_card_number" value="<?php echo awpcp_array_data('credit_card_number', '', $data); ?>" data-bind="value: credit_card_number">
+            <input class="textfield required" id="awpcp-billing-credit-card-number" type="text" size="50" name="credit_card_number" value="<?php echo esc_attr( awpcp_array_data( 'credit_card_number', '', $data ) ); ?>" data-bind="value: credit_card_number">
             <?php echo awpcp_form_error('credit_card_number', $errors); ?>
         </div>
 
@@ -46,12 +46,12 @@
             <label for="awpcp-billing-card-exp-month"><?php _e('Expiration Date', 'AWPCP'); ?></label>
             <div class="awpcp-form-group">
                 <label for="awpcp-billing-card-exp-month"><small>mm</small></label>
-                <input class="textfield short required" id="awpcp-billing-card-exp-month" type="text" size="2" name="exp_month" value="<?php echo awpcp_array_data('exp_month', '', $data); ?>" data-bind="value: exp_month">
+                <input class="textfield short required" id="awpcp-billing-card-exp-month" type="text" size="2" name="exp_month" value="<?php echo esc_attr( awpcp_array_data( 'exp_month', '', $data ) ); ?>" data-bind="value: exp_month">
                 /&nbsp;
             </div>
             <div class="awpcp-form-group">
                 <label for="awpcp-billing-card-exp-year"><small>yyyy</small></label>
-                <input class="textfield short required" id="awpcp-billing-card-exp-year" type="text" size="2" name="exp_year" value="<?php echo awpcp_array_data('exp_year', '', $data); ?>" data-bind="value: exp_year">
+                <input class="textfield short required" id="awpcp-billing-card-exp-year" type="text" size="2" name="exp_year" value="<?php echo esc_attr( awpcp_array_data( 'exp_year', '', $data ) ); ?>" data-bind="value: exp_year">
             </div>
             <?php echo awpcp_form_error('exp_month', $errors); ?>
             <?php echo awpcp_form_error('exp_year', $errors); ?>
@@ -59,7 +59,7 @@
 
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-csc"><?php _e('CSC', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-csc" type="text" size="50" name="csc" value="<?php echo awpcp_array_data('csc', '', $data); ?>">
+            <input class="textfield required" id="awpcp-billing-csc" type="text" size="50" name="csc" value="<?php echo esc_attr( awpcp_array_data('csc', '', $data ) ); ?>">
             <?php echo awpcp_form_error('csc', $errors); ?>
         </div>
     </fieldset>
@@ -67,30 +67,30 @@
     <fieldset>
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-first-name"><?php _e('First Name', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-first-name" type="text" size="50" name="first_name" value="<?php echo awpcp_array_data('first_name', '', $data); ?>" data-bind="value: first_name">
+            <input class="textfield required" id="awpcp-billing-first-name" type="text" size="50" name="first_name" value="<?php echo esc_attr( awpcp_array_data('first_name', '', $data ) ); ?>" data-bind="value: first_name">
             <?php echo awpcp_form_error('first_name', $errors); ?>
         </div>
 
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-last-name"><?php _e('Last Name', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-last-name" type="text" size="50" name="last_name" value="<?php echo awpcp_array_data('last_name', '', $data); ?>" data-bind="value: last_name">
+            <input class="textfield required" id="awpcp-billing-last-name" type="text" size="50" name="last_name" value="<?php echo esc_attr( awpcp_array_data('last_name', '', $data ) ); ?>" data-bind="value: last_name">
             <?php echo awpcp_form_error('last_name', $errors); ?>
         </div>
 
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-addres-1"><?php _e('Address Line 1', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-addres-1" type="text" size="50" name="address_1" value="<?php echo awpcp_array_data('address_1', '', $data); ?>" data-bind="value: address_1">
+            <input class="textfield required" id="awpcp-billing-addres-1" type="text" size="50" name="address_1" value="<?php echo esc_attr( awpcp_array_data('address_1', '', $data ) ); ?>" data-bind="value: address_1">
             <?php echo awpcp_form_error('address_1', $errors); ?>
         </div>
 
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-addres-2"><?php _e('Address Line 2', 'AWPCP'); ?></label>
-            <input class="textfield" id="awpcp-billing-addres-2" type="text" size="50" name="address_2" value="<?php echo awpcp_array_data('address_2', '', $data); ?>" data-bind="value: address_2">
+            <input class="textfield" id="awpcp-billing-addres-2" type="text" size="50" name="address_2" value="<?php echo esc_attr( awpcp_array_data('address_2', '', $data ) ); ?>" data-bind="value: address_2">
         </div>
 
         <div class="awpcp-form-spacer clearfix" data-bind="visible: show_state_field">
             <label for="awpcp-billing-state"><?php _e('State', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-state" type="text" size="50" name="state" value="<?php echo awpcp_array_data('state', '', $data); ?>" data-bind="value: state, disable: _country, visible: !_country()">
+            <input class="textfield required" id="awpcp-billing-state" type="text" size="50" name="state" value="<?php echo esc_attr( awpcp_array_data('state', '', $data ) ); ?>" data-bind="value: state, disable: _country, visible: !_country()">
             <div data-bind="with: _country">
                 <select class="required" id="awpcp-billing-state" name="state" data-bind="options: states, optionsText: 'name', optionsValue: 'code', value: $root.state, enable: $root._country, visible: $root._country"></select>
             </div>
@@ -99,19 +99,19 @@
 
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-city"><?php _e('City', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-city" type="text" size="50" name="city" value="<?php echo awpcp_array_data('city', '', $data); ?>" data-bind="value: city">
+            <input class="textfield required" id="awpcp-billing-city" type="text" size="50" name="city" value="<?php echo esc_attr( awpcp_array_data('city', '', $data ) ); ?>" data-bind="value: city">
             <?php echo awpcp_form_error('city', $errors); ?>
         </div>
 
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-postal-code"><?php _e('Postal Code', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-postal-code" type="text" size="50" name="postal_code" value="<?php echo awpcp_array_data('postal_code', '', $data); ?>" data-bind="value: postal_code">
+            <input class="textfield required" id="awpcp-billing-postal-code" type="text" size="50" name="postal_code" value="<?php echo esc_attr( awpcp_array_data('postal_code', '', $data ) ); ?>" data-bind="value: postal_code">
             <?php echo awpcp_form_error('postal_code', $errors); ?>
         </div>
 
         <div class="awpcp-form-spacer clearfix">
             <label for="awpcp-billing-email"><?php _e('Email', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-email" type="text" size="50" name="email" value="<?php echo awpcp_array_data('email', '', $data); ?>" data-bind="value: email">
+            <input class="textfield required" id="awpcp-billing-email" type="text" size="50" name="email" value="<?php echo esc_attr( awpcp_array_data('email', '', $data ) ); ?>" data-bind="value: email">
             <?php echo awpcp_form_error('email', $errors); ?>
         </div>
     </fieldset>

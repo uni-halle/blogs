@@ -49,13 +49,12 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
     protected function render($items, $instance, $html_class='') {
         global $awpcp_imagesurl;
 
-        $thumbnail_width = absint( trim( get_awpcp_option( 'displayadthumbwidth' ) ) );
-
         if ( empty( $items ) ) {
             return sprintf( '<li class="awpcp-empty-widget %s">%s</li>', $html_class, __( 'There are currently no Ads to show.', 'AWPCP' ) );
         }
 
         foreach ($items as $item) {
+            $images_are_allowed = get_awpcp_option( 'imagesallowdisallow' ) == 1;
             $url = url_showad($item->ad_id);
             $title = sprintf('<a href="%s">%s</a>', $url, stripslashes($item->ad_title));
 
@@ -64,20 +63,21 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
             } else {
                 $image = awpcp_media_api()->get_ad_primary_image( $item );
 
-                if (!is_null($image) && get_awpcp_option('imagesallowdisallow')) {
+                if ( ! is_null( $image ) && $images_are_allowed ) {
                     $image_url = $image->get_url();
-                } else {
+                } else if ( $instance['show-blank'] && $images_are_allowed ) {
                     $image_url = "$awpcp_imagesurl/adhasnoimage.png";
+                } else {
+                    $image_url = '';
                 }
 
-                if (!$instance['show-blank'] && is_null($image)) {
+                if ( empty( $image_url ) ) {
                     $html_image = '';
                 } else {
-                    $html_image = sprintf('<a class="self" href="%1$s"><img src="%2$s" width="%3$s" alt="%4$s" /></a>',
-                                          $url,
-                                          $image_url,
-                                          $thumbnail_width,
-                                          esc_attr($item->ad_title));
+                    $html_image = sprintf( '<a class="self" href="%1$s"><img src="%2$s" alt="%3$s" /></a>',
+                                           $url,
+                                           $image_url,
+                                           esc_attr( $item->ad_title ) );
                 }
 
                 if ($instance['show-title']) {
@@ -89,14 +89,16 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
                 if ($instance['show-excerpt']) {
                     $excerpt = stripslashes( awpcp_utf8_substr( $item->ad_details, 0, 50 ) ) . "...";
                     $read_more = sprintf('<a class="awpcp-widget-read-more" href="%s">[%s]</a>', $url, __("Read more", "AWPCP"));
-                    $html_excerpt = sprintf('<p>%s<br/>%s</p>', $excerpt, $read_more);
+                    $html_excerpt = sprintf( '<div class="awpcp-listings-widget-item-excerpt">%s%s</div>', $excerpt, $read_more );
                 }
 
-                $html[] = sprintf('<li class="%s"><div class="awpcplatestbox"><div class="awpcplatestthumb clearfix">%s</div>%s %s<div class="awpcplatestspacer"></div></div></li>',
-                                  $html_class,
-                                  $html_image,
-                                  $html_title,
-                                  $html_excerpt);
+                if ( $images_are_allowed ) {
+                    $template = '<li class="awpcp-listings-widget-item %1$s"><div class="awpcplatestbox"><div class="awpcplatestthumb clearfix">%2$s</div>%3$s %4$s</div></li>';
+                } else {
+                    $template = '<li class="awpcp-listings-widget-item %1$s"><div class="awpcplatestbox">%3$s %4$s</div></li>';
+                }
+
+                $html[] = sprintf( $template, $html_class, $html_image, $html_title, $html_excerpt );
             }
         }
 
@@ -104,29 +106,12 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
     }
 
     protected function query($instance) {
-        $conditions[] = "ad_title <> ''";
-        $conditions[] = "disabled = 0";
-        $conditions[] = "verified = 1";
-        $conditions[] = "payment_status != 'Unpaid'";
-
-        // Quick fix, to make this module work with Region Control module.
-        // TODO: create a function to return Ads that uses AWCP_Ad::find()
-        // and filters to control which Ads are returned
-        global $hasregionsmodule;
-        if ($hasregionsmodule == 1 && isset($_SESSION['theactiveregionid'])) {
-            $region_id = $_SESSION['theactiveregionid'];
-
-            if (function_exists('awpcp_regions_api')) {
-                $regions = awpcp_regions_api();
-                $conditions[] = $regions->sql_where($region_id);
-            }
-        }
-
         return array(
-            'conditions' => $conditions,
-            'where' => join(' AND ', $conditions),
-            'order' => array( 'ad_postdate DESC', 'ad_id DESC' ),
-            'limit' => $instance['limit']
+            'conditions' => array( "ad_title <> ''" ),
+            'args' => array(
+                'order' => array( 'ad_postdate DESC', 'ad_id DESC' ),
+                'limit' => $instance['limit']
+            )
         );
     }
 
@@ -140,8 +125,9 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
         // do not show empty titles
         echo !empty( $title ) ? $before_title . $title . $after_title : '';
 
-        echo '<ul>';
-        $items = AWPCP_Ad::query( $this->query( $instance ) );
+        echo '<ul class="awpcp-listings-widget-items-list">';
+        $query = $this->query( $instance );
+        $items = AWPCP_Ad::get_enabled_ads( $query['args'], $query['conditions'] );
         echo $this->render( $items, $instance );
         echo '</ul>';
 

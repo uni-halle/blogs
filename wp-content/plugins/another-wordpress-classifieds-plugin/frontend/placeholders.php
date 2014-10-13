@@ -141,6 +141,7 @@ function awpcp_content_placeholders() {
         'category_name' => array(),
         'parent_category_url' => array(),
         'parent_category_name' => array(),
+        'categories' => array(),
         'details' => array(),
         'excerpt' => array(),
         'contact_name' => array(),
@@ -252,16 +253,17 @@ function awpcp_do_placeholders($ad, $content, $context) {
  * @since 3.0
  */
 function awpcp_do_placeholder_url($ad, $placeholder) {
-    return url_showad($ad->ad_id);
+    return esc_url( awpcp_get_listing_renderer()->get_view_listing_url( $ad ) );
 }
 
 /**
  * @since 3.0
  */
 function awpcp_do_placeholder_title($ad, $placeholder) {
-    $url = url_showad($ad->ad_id);
-    $replacements['ad_title'] = sprintf('<a href="%s">%s</a>', $url, $ad->get_title());
-    $replacements['title'] = $ad->get_title();
+    $url = awpcp_get_listing_renderer()->get_view_listing_url( $ad );
+
+    $replacements['ad_title'] = sprintf( '<a href="%s">%s</a>', esc_attr( $url ), esc_html( $ad->get_title() ) );
+    $replacements['title'] = esc_html( $ad->get_title() );
     $replacements['title_link'] = $replacements['ad_title'];
 
     return $replacements[$placeholder];
@@ -271,7 +273,7 @@ function awpcp_do_placeholder_title($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_category_name($ad, $placeholder) {
-    return stripslashes(get_adcatname($ad->ad_category_id));
+    return esc_html( stripslashes( get_adcatname( $ad->ad_category_id ) ) );
 }
 
 /**
@@ -285,7 +287,14 @@ function awpcp_do_placeholder_category_url($ad, $placeholder) {
  * @since 3.2
  */
 function awpcp_do_placeholder_parent_category_name( $ad, $placeholder ) {
-    return $ad->ad_category_parent_id > 0 ? stripslashes( get_adcatname( $ad->ad_category_parent_id ) ) : '';
+    if ( $ad->ad_category_parent_id > 0 ) {
+        $parent_category_name = stripslashes( get_adcatname( $ad->ad_category_parent_id ) );
+        $parent_category_name = esc_html( $parent_category_name );
+    } else {
+        $parent_category_name = '';
+    }
+
+    return $parent_category_name;
 }
 
 /**
@@ -295,11 +304,38 @@ function awpcp_do_placeholder_parent_category_url( $ad, $placeholder ) {
     return $ad->ad_category_parent_id > 0 ? url_browsecategory( $ad->ad_category_parent_id ) : '';
 }
 
+/**
+ * @since 3.3
+ */
+function awpcp_do_placeholder_categories( $listing, $placeholder ) {
+    $categories_ids = array_filter( array( $listing->ad_category_id, $listing->ad_category_parent_id ) );
+    $categories = awpcp_categories_collection()->find( array( 'id' => $categories_ids ) );
+
+    $links = array( 'parent-category' => '', 'category' => '' );
+
+    foreach ( $categories as $category ) {
+        if ( $listing->ad_category_parent_id == $category->id ) {
+            $category_type = 'parent-category';
+        } else {
+            $category_type = 'category';
+        }
+
+        $link = '<a href="<category-url>"><category-name></a>';
+        $link = str_replace( '<category-url>', esc_attr( url_browsecategory( $category->id ), $link ) );
+        $link = str_replace( '<category-name>', esc_html( $category->name ), $link );
+
+        $links[ $category_type ] = $link;
+    }
+
+    $output = '<span class="awpcp-listing-categories"><categories></span>';
+    $output = str_replace( '<categories>', implode( ' / ', array_filter( $links ) ), $output );
+
+    return $output;
+}
 
 /**
  * @since 3.0
  */
-
 function awpcp_do_placeholder_details($ad, $placeholder) {
     static $replacements = array();
 
@@ -330,7 +366,7 @@ function awpcp_do_placeholder_details($ad, $placeholder) {
  */
 function awpcp_do_placeholder_excerpt($ad, $placeholder) {
     $word_count = get_awpcp_option( 'words-in-listing-excerpt' );
-    $details = stripslashes_deep($ad->ad_details);
+    $details = stripslashes( $ad->ad_details );
 
     $replacements['addetailssummary'] = wp_trim_words( $details, $word_count, '' );
     $replacements['excerpt'] = wp_trim_words( $details, $word_count );
@@ -343,9 +379,13 @@ function awpcp_do_placeholder_excerpt($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_contact_name($ad, $placeholder) {
-    $contact_name = get_awpcp_option( 'hidelistingcontactname' ) == 1 && !is_user_logged_in()
-                    ? __( 'Seller', 'AWPCP' ) : $ad->ad_contact_name;
-    return stripslashes( $contact_name );
+    if ( get_awpcp_option( 'hidelistingcontactname' ) == 1 && ! is_user_logged_in() ) {
+        $contact_name = __( 'Seller', 'AWPCP' );
+    } else {
+        $contact_name = $ad->ad_contact_name;
+    }
+
+    return esc_html( stripslashes( $contact_name ) );
 }
 
 
@@ -361,18 +401,17 @@ function awpcp_do_placeholder_website_url($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_website_link($ad, $placeholder) {
-    $nofollow = get_awpcp_option('visitwebsitelinknofollow') ? 'rel="nofollow"' : '';
-    $label = __('Visit Website', 'AWPCP');
-
     if ( ( get_awpcp_option( 'displaywebsitefieldreqpriv' ) != 1 || is_user_logged_in() ) && !empty( $ad->websiteurl ) ) {
-        $url = awpcp_esc_attr($ad->websiteurl);
+        $nofollow = get_awpcp_option('visitwebsitelinknofollow') ? 'rel="nofollow"' : '';
+        $escaped_label = esc_html( __( 'Visit Website', 'AWPCP' ) );
+        $escaped_url = awpcp_esc_attr( $ad->websiteurl );
 
         $content = '<br/><a %s href="%s" target="_blank">%s</a>';
-        $content = sprintf($content, $nofollow, $url, $label);
+        $content = sprintf( $content, $nofollow, $escaped_url, $escaped_label );
         $replacements['awpcpvisitwebsite'] = $content;
 
         $content = '<a %s href="%s" target="_blank">%s</a>';
-        $content = sprintf($content, $nofollow, $url, $label);
+        $content = sprintf( $content, $nofollow, $escaped_url, $escaped_label );
         $replacements['website_link'] = $content;
     } else {
         $replacements['awpcpvisitwebsite'] = '';
@@ -389,18 +428,25 @@ function awpcp_do_placeholder_website_link($ad, $placeholder) {
 function awpcp_do_placeholder_price($ad, $placeholder) {
     $price = empty($ad->ad_item_price) ? 0 : ($ad->ad_item_price / 100);
 
+    $show_price_field = get_awpcp_option( 'displaypricefield' ) == 1;
+    $user_can_see_price_field = is_user_logged_in() || get_awpcp_option( 'price-field-is-restricted' ) == 0;
+
+    if ( get_awpcp_option( 'hide-price-field-if-empty' ) && $price <= 0 ) {
+        $show_price_field = false;
+    }
+
     $replacements = array();
 
-    if ($price >= 0 && get_awpcp_option('displaypricefield') == 1) {
-        $label = __('Price', 'AWPCP');
-        $currency = awpcp_format_money($price);
+    if ( $show_price_field && $user_can_see_price_field && $price >= 0 ) {
+        $escaped_label = esc_html( __( 'Price', 'AWPCP' ) );
+        $escaped_currency = esc_html( awpcp_format_money( $price ) );
         // single ad
         $content = '<div class="showawpcpadpage"><label>%s</label>: <strong>%s</strong></div>';
-        $replacements['aditemprice'] = sprintf($content, $label, $currency);
+        $replacements['aditemprice'] = sprintf($content, $escaped_label, $escaped_currency);
         // listings
-        $replacements['awpcp_display_price'] = sprintf('%s: %s', $label, $currency);
+        $replacements['awpcp_display_price'] = sprintf('%s: %s', $escaped_label, $escaped_currency);
 
-        $replacements['price'] = $currency;
+        $replacements['price'] = $escaped_currency;
     }
 
     return awpcp_array_data( $placeholder, '', $replacements );
@@ -434,8 +480,15 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
         return $replacements[$ad->ad_id][$placeholder];
     }
 
+    $placeholders = array(
+        'featureimg' => '',
+        'awpcpshowadotherimages' => '',
+        'images' => '',
+        'awpcp_image_name_srccode' => '',
+    );
+
+    $url = awpcp_get_listing_renderer()->get_view_listing_url( $ad );
     $thumbnail_width = get_awpcp_option('displayadthumbwidth');
-    $url = url_showad($ad->ad_id);
 
     if (get_awpcp_option('imagesallowdisallow') == 1) {
         $images_uploaded = $ad->count_image_files();
@@ -453,7 +506,7 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
             }
 
             // single ad
-            $content = '<div class="awpcp-ad-primary-image" style="float:right;">';
+            $content = '<div class="awpcp-ad-primary-image">';
             $content.= '<a class="thickbox thumbnail" href="%s">';
             $content.= '<img class="thumbshow" src="%s"/>';
             $content.= '</a>%s';
@@ -509,7 +562,7 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
     }
 
     // fallback thumbnail
-    if (!isset($placeholders['awpcp_image_name_srccode'])) {
+    if ( get_awpcp_option( 'imagesallowdisallow' ) == 1 && empty( $placeholders['awpcp_image_name_srccode'] ) ) {
         $thumbnail = sprintf('%s/adhasnoimage.png', $awpcp_imagesurl);
         $content = '<a href="%s"><img src="%s" width="%spx" border="0" alt="%s" /></a>';
         $content = sprintf($content, $url, $thumbnail, $thumbnail_width, awpcp_esc_attr($ad->ad_title));
@@ -517,12 +570,8 @@ function awpcp_do_placeholder_images($ad, $placeholder) {
         $placeholders['awpcp_image_name_srccode'] = $content;
     }
 
-    $placeholders['featureimg'] = awpcp_array_data('featureimg', '', $placeholders);
-    $placeholders['awpcpshowadotherimages'] = awpcp_array_data('awpcpshowadotherimages', '', $placeholders);
-    $placeholders['imgblockwidth'] = "{$thumbnail_width}px";
-
     $placeholders['featured_image'] = $placeholders['featureimg'];
-    $placeholders['images'] = awpcp_array_data('images', '', $placeholders);
+    $placeholders['imgblockwidth'] = "{$thumbnail_width}px";
     $placeholders['thumbnail_width'] = "{$thumbnail_width}px";
 
     $replacements[$ad->ad_id] = $placeholders;
@@ -789,8 +838,10 @@ function awpcp_do_placeholder_twitter_button($ad, $placeholder) {
  * @since 3.2.2
  */
 function awpcp_do_placeholder_twitter_button_url( $ad, $placeholder ) {
+    $url = awpcp_get_listing_renderer()->get_view_listing_url( $ad );
+
     return add_query_arg(array(
-        'url' => urlencode(url_showad($ad->ad_id)),
+        'url' => urlencode( $url ),
         'text' => urlencode($ad->get_title()),
     ), 'http://twitter.com/share');
 }

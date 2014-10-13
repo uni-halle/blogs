@@ -6,5 +6,5 @@ function($) {
         get: function(context, message) {
             return $.AWPCP.l10n(context, message);
         }
-    }
+    };
 });

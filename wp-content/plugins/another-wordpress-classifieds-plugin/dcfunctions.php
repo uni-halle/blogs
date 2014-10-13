@@ -348,7 +348,6 @@ function _create_pager( $item_count, $offset, $results, $tpname ) {
 	unset($params['category_to_delete'], $params['tpname']);
 	unset($params['category_icon'], $params['sortby'], $params['adid']);
 	unset($params['picid'], $params['adkey'], $params['editemail']);
-	unset($params['deletemultipleads'], $params['spammultipleads']);
 	unset($params['awpcp_ads_to_action'], $params['post_type']);
 
 	$cid = intval(awpcp_request_param('category_id'));

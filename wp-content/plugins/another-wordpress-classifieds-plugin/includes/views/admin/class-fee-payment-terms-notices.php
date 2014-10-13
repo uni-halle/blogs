@@ -4,6 +4,7 @@ function awpcp_fee_payment_terms_notices() {
     return new AWPCP_FeePaymentTermsNotices( awpcp()->settings, awpcp_payments_api() );
 }
 
+// AWPCP_MissingFeePaymentTermsNotification?
 class AWPCP_FeePaymentTermsNotices {
 
     private $settings;

@@ -6,7 +6,7 @@
 			<?php if (!empty($missing)): ?>
 
 			<div class="error">
-				<p><?php _e("The following pages are missing or the plugin can't find them", 'AWPCP') ?></p>
+				<p><?php _e( "The following pages are missing, not published or the plugin can't find them.", 'AWPCP' ); ?></p>
 
 				<ul>
 

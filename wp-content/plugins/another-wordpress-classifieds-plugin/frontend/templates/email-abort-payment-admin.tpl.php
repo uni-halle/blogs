@@ -12,7 +12,7 @@
 <?php endif ?>
 
 <?php if ($transaction): ?>
-<?php _e('Payment Term Type', 'AWPCP') ?>: <?php echo $transaction->get('payment-term-type') ?> 
-<?php _e('Payment Term ID', 'AWPCP') ?>: <?php echo $transaction->get('payment-term-id') ?> 
-<?php _e('Payment transaction ID', 'AWPCP') ?>: <?php echo $transaction->get('txn-id') ?> 
+<?php echo esc_html( __( 'Payment Term Type', 'AWPCP' ) ); ?>: <?php echo esc_html( $transaction->get( 'payment-term-type' ) ); ?> 
+<?php _e('Payment Term ID', 'AWPCP') ?>: <?php echo esc_html( $transaction->get( 'payment-term-id' ) ); ?> 
+<?php _e('Payment transaction ID', 'AWPCP') ?>: <?php echo esc_html( $transaction->get( 'txn-id' ) ); ?> 
 <?php endif ?>

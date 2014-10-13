@@ -17,7 +17,6 @@ function awpcp_paypal_verify_recevied_data_with_curl($postfields='', $cainfo=tru
 
     $ch = curl_init($paypal_url);
     curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_VERBOSE, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $postfields);

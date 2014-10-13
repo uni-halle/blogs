@@ -34,17 +34,17 @@ class AWPCP_Email {
 
         switch ($format) {
             case 'plain':
-                $content = 'text/plain; charset="' . get_option('blog_charset') . '"';
+                $content_type = 'text/plain; charset="' . get_option('blog_charset') . '"';
                 break;
 
             case 'html':
-                $content = 'text/html; charset="' . get_option('blog_charset') . '"';
+                $content_type = 'text/html; charset="' . get_option('blog_charset') . '"';
                 break;
         }
 
         $headers = array_merge(array(
             'MIME-Version' => '1.0',
-            'Content-Type' => $content,
+            'Content-Type' => $content_type,
             'From' => $this->from,
             'Reply-To' => awpcp_admin_email_to(),
         ), $this->headers);

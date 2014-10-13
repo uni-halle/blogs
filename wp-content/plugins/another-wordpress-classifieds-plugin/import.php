@@ -252,10 +252,16 @@ class AWPCP_CSV_Importer {
 					$value = $this->parse($value, $key, $row, $_errors);
 				}
 
+				if ( $key == 'username' && empty( $value ) && ! empty( $_errors ) ) {
+					$this->rejected[$row] = true;
+					$errors = array_merge( $errors, $_errors );
+					break;
+				}
+
 				// if there was an error getting a value for this field,
 				// but the field wasn't included in the CSV, skip and mark
 				// the row as good
-				if ($value === false && !in_array($key, $header)) {
+				if ( $value === false && ! in_array( $key, $header ) ) {
 					$this->rejected[$row] = false;
 					continue;
 				}
@@ -563,7 +569,7 @@ class AWPCP_CSV_Importer {
 		$media_api = awpcp_media_api();
 
 		foreach ($entries as $entry) {
-            $extension = pathinfo( $entry['filename'], PATHINFO_EXTENSION );
+            $extension = awpcp_get_file_extension( $entry['filename'] );
             $mime_type = sprintf( 'image/%s', $extension );
 
 			$data = array(
@@ -994,7 +1000,7 @@ function awpcp_csv_importer_get_user_id($username, $email, $row, &$errors=array(
 	}
 
 	if (empty($username)) {
-		$errors[] = sprintf(__("Username is required in row %s.", 'AWPCP'), $row);
+		$errors[] = sprintf(__("Username is required in row %s. Please include a username or selected a default user.", 'AWPCP'), $row);
 		return false;
 	} else if (empty($email)) {
 		$errors[] = sprintf(__("Contact email is required in row %s.", 'AWPCP'), $row);

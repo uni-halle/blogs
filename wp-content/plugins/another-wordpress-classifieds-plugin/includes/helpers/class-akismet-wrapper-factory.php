@@ -8,7 +8,7 @@ class AWPCP_AkismetWrapperFactory {
 
     public function get_akismet_wrapper() {
         if ( $this->is_akismet_available() ) {
-            return new AWPCP_AkismetWrapper();
+            return new AWPCP_AkismetWrapper( awpcp_request() );
         } else {
             return new AWPCP_AkismetWrapperBase();
         }

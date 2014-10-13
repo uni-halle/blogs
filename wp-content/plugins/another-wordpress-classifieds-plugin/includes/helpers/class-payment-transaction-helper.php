@@ -35,7 +35,7 @@ class AWPCP_PaymentTransactionHelper {
 
     private function set_transaction_attributes_if_transaction_is_new( $transaction ) {
         if ( ! is_null( $transaction ) && $transaction->is_new() ) {
-            $this->user_id = wp_get_current_user()->ID;
+            $transaction->user_id = wp_get_current_user()->ID;
 
             foreach( $this->transaction_attributes as $name => $value ) {
                 $transaction->set( $name, $value );

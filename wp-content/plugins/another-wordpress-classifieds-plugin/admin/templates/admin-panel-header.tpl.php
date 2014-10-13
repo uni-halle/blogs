@@ -1,4 +1,4 @@
-<div id="<?php echo $page_id; ?>" class="<?php echo $page_id; ?> wrap">
+<div id="<?php echo $page_id; ?>" class="<?php echo isset( $page_class ) ? $page_class : $page_id; ?> wrap">
 	<div class="page-content">
 		<h2 class="awpcp-page-header"><?php echo $page_title ?></h2>
 

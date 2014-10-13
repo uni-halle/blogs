@@ -30,7 +30,7 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
             'duration_interval' => $object->rec_increment,
             'price' => $object->amount,
             'credits' => $object->credits,
-            'categories' => array_filter( explode( ',', $object->categories ), 'intval' ),
+            'categories' => array(),
             'featured' => $object->is_featured_ad_pricing,
             'characters' => $object->characters_allowed,
             'title_characters' => $object->title_characters,
@@ -40,6 +40,8 @@ class AWPCP_Fee extends AWPCP_PaymentTerm {
             // custom
             'buys' => $object->buys,
         );
+
+        $params = apply_filters( 'awpcp-get-payment-term-fee-params-from-db', $params, $object );
 
         return new AWPCP_Fee($params);
     }

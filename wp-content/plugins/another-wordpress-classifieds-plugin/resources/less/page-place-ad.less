@@ -11,133 +11,58 @@
     }
 }
 
-#classiwrapper .uploaded-images, .uploaded-images {
-    margin-bottom: 10px;
-
-    li {
-        background: #EEE;
-        float: left;
-        margin: 0 5px 5px 0;
-        min-width: 180px;
-        padding: 6px 3px 3px;
-        text-align: center;
-    }
-
-    li img {
-        display: block;
-        margin: 0 auto;
-    }
-
-    .primary-image {
-        border: 1px solid #111;
-        padding: 5px 2px 2px;
-    }
-
-    .awaiting-approval {
-        background: @attachment_awaiting_approval_background;
-    }
-    .rejected {
-        background: @attachment_rejected_background;
-    }
-    .approved {
-        // background: @attachment_approved_background;
-    }
-
-    .disabled img {
-        opacity: 0.5;
-    }
-}
-
-#classiwrapper .uploaded-files li, .uploaded-files li {
-    margin: 0;
-    min-width: 100%;
-    padding: 6px 10px 3px;
-
-    > a {
-        float: left;
-    }
-
-    img {
-        display: inline;
-    }
-}
-
-#classiwrapper .image-actions, .image-actions {
-    padding-bottom: 5px;
-
-    li {
-        background: transparent;
-        margin: 0;
-        padding: 0 7.5px;
-        min-width: 0;
-        width: auto;
-    }
-    li a, li label {
-        background: @enable_image_icon_url center center no-repeat;
-        cursor: pointer;
-        display: block;
-        height: 22px;
-        width: 25px;
-    }
-    li a:hover, li label:hover {
-        background-color: #C6C6C6;
-    }
-    li span {
-        display: none;
-    }
-    .enable a {
-        background-image: @enable_image_icon_url;
-    }
-    .disable a {
-        background-image: @disable_image_icon_url;
-    }
-    .delete a {
-        background-image: @delete_image_icon_url;
-    }
-
-    .primary a, .primary label {
-        background-image: @primary_image_icon_url;
-    }
-    .not-primary a, .not-primary label {
-        background-image: @not_primary_image_icon_url;
-    }
-    .primary input, .not-primary input {
-        display: none;
-    }
-
-    .label {
-        color: #333;
-        font-size: 0.9em;
-        padding-top: 1px;
-        padding-right: 0;
-    }
-}
-
-#classiwrapper .uploaded-files .image-actions, .uploaded-files .image-actions {
-    float: right;
-
-    .delete a {
-        background-image: @delete_attachment_icon_url;
-    }
-    .enable a {
-        background-image: @enable_attachment_icon_url;
-    }
-    .disable a {
-        background-image: @disable_attachment_icon_url;
-    }
-}
-
 #classiwrapper .uploadform, .uploadform {
     float: left;
     width: 100%;
 
-    .image-upload-field, .image-actions {
+    .image-upload-field, .upload-field-actions {
         float: left;
     }
 
-    .image-actions {
-        padding-bottom: 0;
+    .upload-field-actions {
+        padding-bottom: 5px;
         margin-bottom: 0;
+
+        li {
+            background: transparent;
+            list-style-type: none;
+            margin: 0;
+            padding: 0 7.5px;
+            min-width: 0;
+            width: auto;
+
+            a, label {
+                background: @enable_image_icon_url center center no-repeat;
+                cursor: pointer;
+                display: block;
+                height: 22px;
+                width: 25px;
+            }
+            a:hover, label:hover {
+                background-color: #C6C6C6;
+            }
+
+            span {
+                display: none;
+            }
+        }
+
+        .primary a, .primary label {
+            background-image: @primary_image_icon_url;
+        }
+        .not-primary a, .not-primary label {
+            background-image: @not_primary_image_icon_url;
+        }
+        .primary input, .not-primary input {
+            display: none;
+        }
+
+        .label {
+            color: #333;
+            font-size: 0.9em;
+            padding-top: 1px;
+            padding-right: 0;
+        }
     }
 }
 
@@ -145,16 +70,6 @@
     #classiwrapper .uploadform, .uploadform {
         .image-upload-field {
             width: 80%;
-        }
-    }
-
-    #classiwrapper .uploaded-images, .uploaded-images {
-        li {
-            width: 100%;
-
-            .image-actions li {
-                width: auto;
-            }
         }
     }
 }

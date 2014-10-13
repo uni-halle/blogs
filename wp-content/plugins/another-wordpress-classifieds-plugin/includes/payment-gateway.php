@@ -98,7 +98,7 @@ abstract class AWPCP_PaymentGateway {
     }
 
     protected function get_user_info($user_id=false) {
-        $data = awpcp_get_user_data($user_id);
+        $data = awpcp_users_collection()->find_by_id( $user_id );
 
         $translations = array(
             'first_name' => 'first_name',

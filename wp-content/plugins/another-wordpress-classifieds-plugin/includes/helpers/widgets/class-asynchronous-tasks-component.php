@@ -1,6 +1,6 @@
 <?php
 
-class AWPCP_AsynchronousTasksHelper {
+class AWPCP_AsynchronousTasksComponent {
 
     private $tasks = array();
     private $texts = array();

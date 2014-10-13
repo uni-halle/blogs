@@ -1,0 +1,54 @@
+#awpcpcatlayout {
+    .showcategoriesmainlist {
+        clear: left;
+        display: block;
+        list-style: none;
+
+        li {
+            float: left;
+            list-style:none;
+            padding:0;
+            margin:3px 2% 5px 0px;
+
+            a {
+                text-decoration:none;
+            }
+            ul {
+                margin:0px 0px 20px 10px; list-style:none;
+            }
+        }
+        li.columns-1 {
+            width: 100%; margin: 3px 0 5px;
+        }
+        li.columns-2 {
+            width: 48%;
+        }
+        li.columns-3 {
+            width: 31%;
+        }
+        li.columns-4 {
+            width: 23%;
+        }
+        li.columns-5 {
+            width: 18%;
+        }
+    }
+
+    .showcategoriessublist li {
+        float:none; list-style:none; margin:0; padding:0;  background:none;
+    }
+}
+
+.awpcp-categories-list .top-level-category .js-handler {
+    margin: 4px 10px 0 0;
+}
+
+@media screen and (max-width: 44em) {
+    #awpcpcatlayout .showcategoriesmainlist {
+        padding: 0;
+
+        li.columns-1, li.columns-2, li.columns-3, li.columns-4, li.columns-5 {
+            width: 100%;
+        }
+    }
+}

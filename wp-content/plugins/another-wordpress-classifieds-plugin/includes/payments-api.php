@@ -30,9 +30,9 @@ class AWPCP_PaymentsAPI {
         add_action('init', array($this, 'init'));
 
         if ( is_admin() ) {
-            add_action('admin_init', array($this, 'wp'));
+            add_action( 'admin_init', array( $this, 'wp' ), 1 );
         } else {
-            add_action('template_redirect', array($this, 'wp'));
+            add_action( 'template_redirect', array( $this, 'wp' ), 1 );
         }
 
         add_action('awpcp-transaction-status-updated', array($this, 'update_account_balance'), 10, 1);
@@ -312,16 +312,6 @@ class AWPCP_PaymentsAPI {
                 $plan->price
             );
         }
-
-        // see if we can skip payment due to zero-priced items
-        // debug('Updating transaction payment status from payments-api');
-        // $items = count($transaction->get_items());
-        // $t = $transaction->get_totals();
-        // list($money, $credits) = array($t['money'], $t['credits']);
-
-        // if ($items > 0 && ($money === 0 && $transaction->user_has_enough_credit())) {
-        //     $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_NOT_REQUIRED;
-        // }
     }
 
     public function set_transaction_payment_method($transaction) {
@@ -459,7 +449,7 @@ class AWPCP_PaymentsAPI {
             return '';
 
         $balance = $this->format_account_balance();
-        $text = sprintf(__('You currently have %s in credit in your account.', 'AWPCP'), $balance);
+        $text = sprintf( __( 'You currently have %s credits in your account.', 'AWPCP' ), $balance );
 
         return awpcp_print_message( $text );
     }

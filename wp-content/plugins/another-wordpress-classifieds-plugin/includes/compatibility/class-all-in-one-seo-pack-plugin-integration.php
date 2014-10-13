@@ -69,10 +69,16 @@ class AWPCP_AllInOneSEOPackPluginIntegration {
         return $should;
     }
 
+    /**
+     * TODO: move to a parent class for all SEO plugin integrations.
+     */
     public function canonical_url( $url ) {
-        if ( $awpcp_canonical_url = awpcp_rel_canonical_url() ) {
+        $awpcp_canonical_url = awpcp_rel_canonical_url();
+
+        if ( $awpcp_canonical_url ) {
             return $awpcp_canonical_url;
         }
+
         return $url;
     }
 }

@@ -1,5 +1,5 @@
 /*global console*/
-
+/*exported log*/
 function AWPCPError(message) {
     this.name = 'AWPCPError';
     this.message = message || 'AWPCP Error.';
@@ -72,7 +72,9 @@ var AWPCP = function() {
     return {
         instantiate: instantiate,
         define: define,
-        run: run
+        run: run,
+        log: log,
+        error: error
     };
 };
 

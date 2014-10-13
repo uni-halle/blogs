@@ -48,7 +48,7 @@
         if (this.get('ajaxurl') === null) {
             if (typeof AWPCP !== 'undefined' && AWPCP.ajaxurl) {
                 this.set('ajaxurl', AWPCP.ajaxurl);
-            } else if (ajaxurl) {
+            } else if ( typeof ajaxurl !== 'undefined' ) {
                 this.set('ajaxurl', ajaxurl);
             } else {
                 this.set('ajaxurl', '/wp-admin/admin-ajax.php');
@@ -297,8 +297,6 @@
             var select = $(this), hidden = $('#awpcp-category-dropdown-' + select.attr('target'));
             $.noop(new $.AWPCP.CategoriesDropdown(hidden, select));
         });
-
-        // $('.awpcp-categories-list .top-level-category').closest('li').collapsible();
 
         $('.awpcp-navigation').each(function() {
             $.noop(new $.AWPCP.MainMenu($(this).find('.awpcp-menu-toggle')));

@@ -75,190 +75,6 @@ function string_ends_with($haystack, $needle, $case=true) {
 	return string_contains_string_at_position($haystack, $needle, (strlen($haystack) - strlen($needle)), $case);
 }
 
-/**
- * TODO: update to use newer Akismet functions.
- */
-function awpcp_submit_spam($ad_id) {
-	if (function_exists('akismet_init')) {
-		$wpcom_api_key = get_option('wordpress_api_key');
-
-		if (!empty($wpcom_api_key)) {
-			require_once(ABSPATH . WPINC . '/pluggable.php');
-
-			_log("Now submitting ad " . $ad_id . " as spam");
-
-			global $wpdb, $akismet_api_host, $akismet_api_port, $current_user, $current_site;
-
-			$ad = AWPCP_Ad::find_by_id( (int) $ad_id );
-
-			if ( ! is_null( $ad ) ) {
-				if ( $ad->disabled == 1 ) {
-					_log("Ad " . $ad_id . " already marked as spam");
-					return;
-				}
-
-				$content = array();
-
-				_log("Ad " . $ad_id . " constructing Akismet call");
-
-				//Construct an Akismet-like query:
-				$content['user_ip'] = $ad->posterip;
-				$content['comment_author'] = $ad->ad_contact_name;
-				$content['comment_author_email'] = $ad->ad_contact_email;
-				$content['comment_author_url'] = $ad->websiteurl;
-				$content['comment_content'] = $ad->ad_details;
-				$content['blog'] = get_option('home');
-				$content['blog_lang'] = get_locale();
-				$content['blog_charset'] = get_option('blog_charset');
-				$content['permalink'] = '';
-
-				get_currentuserinfo();
-
-				if ( is_object($current_user) ) {
-					$content['reporter'] = $current_user->user_login;
-				}
-
-				if ( is_object($current_site) ) {
-					$content['site_domain'] = $current_site->domain;
-				}
-
-				$content['user_role'] = 'Editor'; // probably best to present the user with some level of authority
-				$query_string = '';
-
-				foreach ( $content as $key => $data ) {
-					$query_string .= $key . '=' . urlencode( stripslashes($data) ) . '&';
-				}
-
-				_log("Ad " . $ad_id . " query: " . $query_string);
-				$response = akismet_http_post($query_string, $akismet_api_host, "/1.1/submit-spam", $akismet_api_port);
-				_log("Ad " . $ad_id . " spammed, Akismet said: ");
-
-				foreach ($response as $key => $value) {
-					_log($key." - ".$value."");
-				}
-			} else {
-				_log("Ad " . $ad_id . " not found, cannot mark as spam");
-			}
-		} else {
-			global $message;
-			$message="<div style=\"background-color: #FF99CC;\" id=\"message\" class=\"updated fade\">";
-			$message.=__("Please disable spam control on your AWPCP settings because you do not have Akismet properly configured (missing API key)","AWPCP");
-			$message.="</div>";
-		}
-	} else {
-		global $message;
-		$message="<div style=\"background-color: #FF99CC;\" id=\"message\" class=\"updated fade\">";
-		$message.=__("Please disable spam control on your AWPCP settings because you do not have Akismet installed","AWPCP");
-		$message.="</div>";
-	}
-}
-
-//Function to detect spammy posts.  Requires Akismet to be installed.
-function awpcp_check_spam($name, $website, $email, $details) {
-	$content = array();
-
-	//Construct an Akismet-like query:
-	$content['comment_type'] = 'comment';
-	//$content['comment_author'] = $name; // don't send this, it reduces accuracy
-	$content['comment_author_email'] = $email;
-	//$content['comment_author_url'] = $website; // don't send this, it reduces accuracy
-	$content['comment_content'] = $details;
-
-	// innocent until proven guilty
-	$isSpam = FALSE;
-
-	if (function_exists('akismet_init')) {
-
-		$wpcom_api_key = get_option('wordpress_api_key');
-
-		if (!empty($wpcom_api_key)) {
-
-			global $akismet_api_host, $akismet_api_port;
-
-			// set remaining required values for akismet api
-			$content['user_ip'] = preg_replace( '/[^0-9., ]/', '', awpcp_getip() );
-			$content['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-			$content['referrer'] = get_option('home'); // use site home page instead of $_SERVER['HTTP_REFERER']; seems to work better
-			$content['blog'] = get_option('home');
-
-			//if (empty($content['referrer'])) {
-			//	$content['referrer'] = get_permalink();
-			//}
-
-			$queryString = '';
-
-			foreach ($content as $key => $data) {
-				if (!empty($data)) {
-					$queryString .= $key . '=' . urlencode(stripslashes($data)) . '&';
-				}
-			}
-
-			$response = akismet_http_post($queryString, $akismet_api_host, '/1.1/comment-check', $akismet_api_port);
-
-			if ($response[1] == 'true') {
-				//update_option('akismet_spam_count', get_option('akismet_spam_count') + 1);
-				$isSpam = TRUE;
-			}
-
-		} else {
-			global $message;
-			$message="<div style=\"background-color: #FF99CC;\" id=\"message\" class=\"updated fade\">";
-			$message.=__("Please disable spam control on your AWPCP settings because you do not have Akismet properly configured (missing API key)","AWPCP");
-			$message.="</div>";
-		}
-	} else {
-		global $message;
-		$message="<div style=\"background-color: #FF99CC;\" id=\"message\" class=\"updated fade\">";
-		$message.=__("Please disable spam control on your AWPCP settings because you do not have Akismet installed","AWPCP");
-		$message.="</div>";
-	}
-
-	// Akismet says it's not spam or Akismet disabled? Check using the blacklisted words configured in WP, if any:
-	if ( !$isSpam)
-	    $isSpam = wp_blacklist_check($name, $email, $website, $details, preg_replace( '/[^0-9., ]/', '', awpcp_getip() ), $_SERVER['HTTP_USER_AGENT']);
-
-	_log("Ad spam check final answer: " . $isSpam);
-
-	return $isSpam;
-}
-
-function awpcp_blacklist_check($author, $email, $url, $comment, $user_ip, $user_agent) {
-
-	// hook similar the related WP hook, lets people develop their own ad scanning filters
-        do_action('awpcp_blacklist_check', $author, $email, $url, $comment, $user_ip, $user_agent);
-
-        $mod_keys = trim( get_option('blacklist_keys') );
-
-        if ( '' == $mod_keys )
-                return false; // If no blacklist words are set then there's nothing to do here
-
-        $words = explode("\n", $mod_keys );
-
-        foreach ( (array) $words as $word ) {
-
-                $word = trim($word);
-
-                // Skip empty lines
-                if ( empty($word) ) { continue; }
-
-                // Do some escaping magic so that '#' chars in the spam words don't break things:
-                $word = preg_quote($word, '#');
-
-                $pattern = "#$word#i";
-                if (
-                           preg_match($pattern, $author)
-                        || preg_match($pattern, $email)
-                        || preg_match($pattern, $url)
-                        || preg_match($pattern, $comment)
-                        || preg_match($pattern, $user_ip)
-                        || preg_match($pattern, $user_agent)
-                 )
-                        return true;
-        }
-        return false;
-}
-
-
 // START FUNCTION: retrieve individual options from settings table
 function get_awpcp_setting($column, $option) {
 	global $wpdb;
@@ -276,7 +92,7 @@ function get_awpcp_setting($column, $option) {
 }
 
 function get_awpcp_option($option, $default='', $reload=false) {
-	return AWPCP_Settings_API::instance()->get_option($option, $default, $reload);
+	return awpcp()->settings->get_option( $option, $default, $reload );
 }
 
 function get_awpcp_option_group_id($option) {
@@ -647,15 +463,13 @@ function total_ads_in_cat($catid) {
 
     $totaladsincat = '';
 
-    // never allow Unpaid Ads
-    $filter = " AND payment_status != 'Unpaid' ";
-    $filter = " AND verified = 1 ";
-    // the name of the disablependingads setting gives the wrong meaning,
-    // it actually means "Enable Paid Ads that are Pendings payment", so when
-    // the setting has a value of 1, pending Ads should NOT be excluded.
-    // I'll change the next condition considering the above
-    if((get_awpcp_option('disablependingads') == 0) && (get_awpcp_option('freepay') == 1)){
-        $filter = " AND payment_status != 'Pending'";
+    // never allow Unpaid, Unverified or Disabled Ads
+    $conditions[] = "payment_status != 'Unpaid'";
+    $conditions[] = 'verified = 1';
+    $conditions[] = 'disabled = 0';
+
+    if( ( get_awpcp_option( 'enable-ads-pending-payment' ) == 0 ) && ( get_awpcp_option( 'freepay' ) == 1 ) ) {
+        $conditions[] = "payment_status != 'Pending'";
     }
 
     // TODO: ideally there would be a function to get all visible Ads,
@@ -667,16 +481,16 @@ function total_ads_in_cat($catid) {
 
             if (function_exists('awpcp_regions_api')) {
             	$regions = awpcp_regions_api();
-            	$filter .= ' AND ' . $regions->sql_where($theactiveregionid);
+            	$conditions[] = $regions->sql_where( $theactiveregionid );
             }
         }
     }
 
+    $conditions[] = "(ad_category_id='$catid' OR ad_category_parent_id='$catid')";
+
     // TODO: at some point we should start using the Category model.
-    $query = "SELECT count(*) FROM " . AWPCP_TABLE_ADS . " ";
-    $query.= "WHERE (ad_category_id='$catid' OR ad_category_parent_id='$catid') ";
-    // $query.= "AND disabled = 0 AND (flagged IS NULL OR flagged =0) $filter";
-    $query.= "AND disabled = 0 $filter";
+    $query = 'SELECT count(*) FROM ' . AWPCP_TABLE_ADS;
+    $query = sprintf( '%s WHERE %s', $query, implode( ' AND ', $conditions ) );
 
     return $wpdb->get_var( $query );
 }
@@ -694,7 +508,7 @@ function clean_field($foo) {
 function awpcp_get_page_id($name) {
 	global $wpdb;
 	if (!empty($name)) {
-		$sql = "SELECT ID FROM $wpdb->posts WHERE post_name = '$name'";
+		$sql = "SELECT ID FROM {$wpdb->posts} WHERE post_name = '$name'";
 		$id = $wpdb->get_var($sql);
 		return $id;
 	}
@@ -964,11 +778,11 @@ function massdeleteadsfromcategory($catid) {
 // END FUNCTION: sidebar widget
 // START FUNCTION: make sure there's not more than one page with the name of the classifieds page
 function checkforduplicate($cpagename_awpcp) {
-	global $wpdb, $table_prefix;
+	global $wpdb;
 
 	$awpcppagename = sanitize_title( $cpagename_awpcp );
 
-	$query = "SELECT ID {$table_prefix}posts WHERE post_name = %s AND post_type = %s";
+	$query = "SELECT ID FROM {$wpdb->posts} WHERE post_name = %s AND post_type = %s";
 	$query = $wpdb->prepare( $query, $awpcppagename, 'post' );
 
 	$post_ids = $wpdb->get_col( $query );
@@ -1199,24 +1013,4 @@ function awpcp_get_ad_share_info($id) {
 	}
 
 	return $info;
-}
-
-//
-// Metadata API.
-//
-
-function awpcp_add_ad_meta( $ad_id, $meta_key, $meta_value, $unique = false ) {
-    return add_metadata( 'awpcp_ad', $ad_id, $meta_key, $meta_value, $unique );
-}
-
-function awpcp_update_ad_meta( $ad_id, $meta_key, $meta_value, $prev_value = '' ) {
-    return update_metadata( 'awpcp_ad', $ad_id, $meta_key, $meta_value, $prev_value );
-}
-
-function awpcp_delete_ad_meta( $ad_id, $meta_key, $meta_value = '', $delete_all = false) {
-    return delete_metadata( 'awpcp_ad', $ad_id, $meta_key, $meta_value, $delete_all );
-}
-
-function awpcp_get_ad_meta( $ad_id, $meta_key='', $single = false ) {
-    return get_metadata( 'awpcp_ad', $ad_id, $meta_key, $single );
 }

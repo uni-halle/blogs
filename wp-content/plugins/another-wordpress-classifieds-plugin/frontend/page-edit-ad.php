@@ -8,6 +8,8 @@ require_once(AWPCP_DIR . '/frontend/page-place-ad.php');
  */
 class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
+    protected $ad = null;
+
     public $active = false;
     public $messages = array();
 
@@ -16,8 +18,6 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
     }
 
     public function get_ad() {
-        if (!isset($this->ad)) $this->ad = null;
-
         if (is_null($this->ad)) {
             if ($id = awpcp_request_param('ad_id', awpcp_request_param('id', false))) {
                 $this->ad = AWPCP_Ad::find_by_id($id);
@@ -46,16 +46,33 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
     }
 
     protected function _dispatch($default=null) {
-        $is_admin_user = awpcp_current_user_is_admin();
-        $user = wp_get_current_user();
-
-        if ($user->ID && !is_admin() && get_awpcp_option('enable-user-panel') == 1) {
+        if ( $this->should_redirect_user_to_ad_management_panel() ) {
             $url = admin_url('admin.php?page=awpcp-panel');
             $message = __('Please go to the Ad Management panel to edit your Ads.', 'AWPCP');
             $message = sprintf('%s <a href="%s">%s</a>.', $message, $url, __('Click here', 'AWPCP'));
             return $this->render('content', awpcp_print_message($message));
+        } else {
+            return $this->render_page( $default );
+        }
+    }
+
+    private function should_redirect_user_to_ad_management_panel() {
+        if ( ! is_user_logged_in() ) {
+            return false;
         }
 
+        if ( is_admin() ) {
+            return false;
+        }
+
+        if ( ! get_awpcp_option( 'enable-user-panel' ) ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function render_page( $default = null ) {
         $ad = $this->get_ad();
 
         if (!is_null($ad) && !$this->is_user_allowed_to_edit($ad)) {
@@ -80,12 +97,12 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
                 return $this->send_access_key_step();
                 break;
             default:
-                return $this->edit_ad_step();
+                return $this->enter_email_and_key_step();
                 break;
         }
     }
 
-    public function edit_ad_step($show_errors=true) {
+    public function enter_email_and_key_step($show_errors=true) {
         global $wpdb;
 
         $errors = array();
@@ -136,7 +153,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
     public function details_step() {
         $ad = $this->get_ad();
 
-        if (is_null($ad)) return $this->edit_ad_step();
+        if (is_null($ad)) return $this->enter_email_and_key_step();
 
         if (strcmp($this->get_current_action(), 'save-details') === 0) {
             return $this->save_details_step();
@@ -294,7 +311,9 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
     public function upload_images_form( $ad, $params=array() ) {
         $params = array_merge( $params, array(
+            'listing' => $ad,
             'images' => awpcp_media_api()->find_images_by_ad_id( $ad->ad_id ),
+            'is_primary_set' => awpcp_media_api()->listing_has_primary_image( $ad ),
             'hidden' => array(
                 'ad_id' => $ad->ad_id,
                 'edit-hash' => $this->get_edit_hash( $ad ) ),
@@ -349,7 +368,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
         if ( awpcp_post_param( 'confirm', false ) && $ad->delete() ) {
             $this->messages[] = __('Your Ad has been successfully deleted.', 'AWPCP');
-            return $this->edit_ad_step();
+            return $this->enter_email_and_key_step();
         } else {
             $this->messages[] = __('There was a problem trying to delete your Ad. The Ad was not deleted.', 'AWPCP');
             return $this->details_step();
@@ -405,7 +424,7 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
 
             return $this->render($template, $params);
         } else {
-            return $this->edit_ad_step(false);
+            return $this->enter_email_and_key_step(false);
         }
     }
 

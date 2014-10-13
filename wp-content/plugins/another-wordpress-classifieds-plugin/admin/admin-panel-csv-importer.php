@@ -6,7 +6,7 @@ class AWPCP_Admin_CSV_Importer {
 
 	public function scripts() {
 		wp_enqueue_style('awpcp-jquery-ui');
-  		wp_enqueue_script('jquery-ui-datepicker');
+  		wp_enqueue_script( 'awpcp-admin-import' );
 	}
 
 	public function dispatch() {

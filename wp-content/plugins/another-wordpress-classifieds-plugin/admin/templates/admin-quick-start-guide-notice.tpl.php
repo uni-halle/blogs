@@ -1,4 +1,4 @@
-<div id="quick-start-guide-notice" class="update-nag clearfix awpcp-sticky-notice">
+<div id="quick-start-guide-notice" class="update-nag awpcp-update-nag awpcp-sticky-notice clearfix">
     <p class="align-center"><?php _e('Hello and welcome to <strong>Another WordPress Classifieds</strong>. This plugin is super easy to use AND highly configurable.', 'AWPCP') ?></p>
     <p class="align-center"><?php _e('Would you like some help getting started?', 'AWPCP') ?></p>
 
