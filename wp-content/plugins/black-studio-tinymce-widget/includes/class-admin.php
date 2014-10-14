@@ -122,6 +122,9 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Admin' ) ) {
 				add_action( 'black_studio_tinymce_editor', array( $this, 'editor' ), 10, 3 );
 				add_action( 'black_studio_tinymce_before_editor', array( $this, 'display_links' ) ); // consider donating if you remove links
 				add_filter( 'wp_editor_settings', array( $this, 'editor_settings' ), 10, 2 );
+				add_filter( 'tiny_mce_before_init', array( $this, 'tinymce_fix_rtl' ), 10, 2 );
+				add_filter( 'tiny_mce_before_init', array( $this, 'tinymce_fullscreen' ), 10, 2 );
+				add_filter( 'quicktags_settings', array( $this, 'quicktags_fullscreen' ), 10, 2 );
 				do_action( 'black_studio_tinymce_load' );
 			}
 		}
@@ -185,8 +188,6 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Admin' ) ) {
 		 * Enqueue header scripts
 		 *
 		 * @uses wp_enqueue_script()
-		 * @uses Black_Studio_TinyMCE_Plugin::enqueue_script()
-		 * @uses Black_Studio_TinyMCE_Plugin::localize_script()
 		 * @uses do_action()
 		 *
 		 * @return void
@@ -250,8 +251,6 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Admin' ) ) {
 		/**
 		 * Enqueue footer scripts
 		 *
-		 * @uses wp_editor()
-		 *
 		 * @return void
 		 * @since 2.0.0
 		 */
@@ -285,8 +284,10 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Admin' ) ) {
 		public function editor_settings( $settings, $editor_id ) {
 			if ( strstr( $editor_id, 'black-studio-tinymce' ) ) {
 				$settings['default_editor'] = 'tmce';
-				$settings['tinymce'] = array( 'wp_skip_init' => true );
+				$settings['tinymce'] = array( 'wp_skip_init' => true, 'add_unload_trigger' => false );
 				$settings['editor_height'] = 350;
+				$settings['dfw'] = true;
+				$settings['editor_class'] = 'black-studio-tinymce';
 			}
 			return $settings;
 		}
@@ -353,9 +354,13 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Admin' ) ) {
 		/**
 		 * Show row meta on the plugin screen
 		 *
+		 * @uses esc_html()
+		 * @uses esc_url()
+		 *
 		 * @param string[] $links
 		 * @param string $file
 		 * @return string[]
+		 * @since 2.0.0
 		 */
 		public function plugin_row_meta( $links, $file ) {
 			if ( $file == bstw()->get_basename() ) {
@@ -366,6 +371,56 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Admin' ) ) {
 			return $links;
 		}
 
+		/**
+		 * Fix for rtl languages
+		 *
+		 * @param mixed[] $settings
+		 * @return mixed[]
+		 * @since 2.1.0
+		 */
+		public function tinymce_fix_rtl( $settings, $editor_id ) {
+			// This fix has to be applied to all editor instances (not just BSTW ones)
+			if ( is_rtl() && isset( $settings['plugins'] ) && ',directionality' == $settings['plugins'] ) {
+				unset( $settings['plugins'] );
+			}
+			return $settings;
+		}
+
+		/**
+		 * Apply TinyMCE default fullscreen
+		 *
+		 * @param string[] $settings
+		 * @param string $editor_id
+		 * @return string[]
+		 * @since 2.1.2
+		 */
+		public function tinymce_fullscreen( $settings, $editor_id ) {
+			if ( strstr( $editor_id, 'black-studio-tinymce' ) ) {
+				for( $i = 1; $i <= 4; $i++ ) {
+					$toolbar = 'toolbar' . $i;
+					if ( isset( $settings[ $toolbar ] ) ) {
+					  $settings[ $toolbar ] = str_replace( 'wp_fullscreen', 'wp_fullscreen,fullscreen', $settings[ $toolbar ] );
+					}
+				}
+			}
+			return $settings;
+		}
+
+		/**
+		 * Disable Quicktags default fullscreen
+		 *
+		 * @param string[] $settings
+		 * @param string $editor_id
+		 * @return string[]
+		 * @since 2.1.2
+		 */
+		public function quicktags_fullscreen( $settings, $editor_id ) {
+			if ( strstr( $editor_id, 'black-studio-tinymce' ) ) {
+				$settings['buttons'] = str_replace( ',fullscreen', '', $settings['buttons'] );
+			}
+			return $settings;
+		}
+
 	} // END class Black_Studio_TinyMCE_Admin
 
-} // class_exists check
+} // END class_exists check

@@ -3,7 +3,7 @@
 Plugin Name: Black Studio TinyMCE Widget
 Plugin URI: https://wordpress.org/plugins/black-studio-tinymce-widget/
 Description: Adds a new "Visual Editor" widget type based on the native WordPress TinyMCE editor.
-Version: 2.0.4
+Version: 2.1.2
 Author: Black Studio
 Author URI: http://www.blackstudio.it
 Requires at least: 3.1
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Plugin' ) ) {
 		 * @var string
 		 * @since 2.0.0
 		 */
-		public static $version = '2.0.4';
+		public static $version = '2.1.2';
 
 		/**
 		 * The single instance of the plugin class
@@ -52,6 +52,14 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Plugin' ) ) {
 		 * @since 2.0.0
 		 */
 		protected static $admin = null;
+
+		/**
+		 * Instance of admin pointer class
+		 *
+		 * @var object
+		 * @since 2.1.0
+		 */
+		protected static $admin_pointer = null;
 
 		/**
 		 * Instance of compatibility class
@@ -90,6 +98,16 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Plugin' ) ) {
 		 */
 		public static function admin() {
 			return self::$admin;
+		}
+
+		/**
+		 * Return the instance of the admin pointer class
+		 *
+		 * @return object
+		 * @since 2.1.0
+		 */
+		public static function admin_pointer() {
+			return self::$admin_pointer;
 		}
 
 		/**
@@ -153,6 +171,8 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Plugin' ) ) {
 			if ( is_admin() ) {
 				include_once( plugin_dir_path( __FILE__ ) . '/includes/class-admin.php' );
 				self::$admin = Black_Studio_TinyMCE_Admin::instance();
+				include_once( plugin_dir_path( __FILE__ ) . '/includes/class-admin-pointer.php' );
+				self::$admin_pointer = Black_Studio_TinyMCE_Admin_Pointer::instance();
 			}
 			// Include and instantiate text filter class on frontend pages
 			else {
@@ -222,17 +242,47 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Plugin' ) ) {
 
 	} // END class Black_Studio_TinyMCE_Plugin
 
-} // class_exists check
+} // END class_exists check
 
-/**
- * Return the main instance to prevent the need to use globals
- *
- * @return object
- * @since 2.0.0
- */
-function bstw() {
-	return Black_Studio_TinyMCE_Plugin::instance();
-}
 
-/* Create the main instance */
-bstw();
+if ( ! function_exists( 'bstw' ) ) {
+
+	/**
+	 * Return the main instance to prevent the need to use globals
+	 *
+	 * @return object
+	 * @since 2.0.0
+	 */
+	function bstw() {
+		return Black_Studio_TinyMCE_Plugin::instance();
+	}
+
+	/* Create the main instance */
+	bstw();
+
+} // END function_exists bstw check
+else {
+
+	/* Check for multiple plugin instances */
+	if ( ! function_exists( 'bstw_multiple_notice' ) ) {
+	
+		/**
+		 * Show admin notice when multiple instances of the plugin are detected
+		 *
+		 * @return void
+		 * @since 2.1.0
+		 */
+		function bstw_multiple_notice() {
+			global $pagenow;
+			if ( 'widgets.php' == $pagenow ) {
+				echo '<div class="error">';
+				/* translators: error message shown when multiple instance of the plugin are detected */
+				echo '<p>' . esc_html( __( 'ERROR: Multiple instances of the Black Studio TinyMCE Widget plugin were detected. Please activate only one instance at a time.', 'black-studio-tinymce-widget' ) ) . '</p>';
+				echo '</div>';
+			}
+		}
+		add_action( 'admin_notices', 'bstw_multiple_notice' );
+		
+	} // END function_exists bstw_multiple_notice check
+
+} // END else function_exists bstw check
