@@ -33,43 +33,24 @@ class AWPCP_ModulesManager {
     public function load( $module ) {
         $this->modules[ $module->slug ] = $module;
 
-        if ( $this->is_premium_module( $module ) ) {
-            $this->load_premium_module( $module );
-        } else {
-            $this->load_free_module( $module );
-        }
-    }
-
-    private function is_premium_module( $module ) {
-        if ( strcmp( $module->slug, 'xml-sitemap') === 0 ) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    private function load_premium_module( $module ) {
         try {
-            $module->load_textdomain();
-            $this->verify_version_compatibility( $module );
+            $this->load_module( $module );
+        } catch ( AWPCP_Exception $e ) {
+            // pass
+        }
+    }
+
+    private function load_module( $module ) {
+        $module->load_textdomain();
+        $this->verify_version_compatibility( $module );
+
+        if ( $this->is_premium_module( $module ) ) {
             $this->settings->add_license_setting( $module->name, $module->slug );
             // $this->verify_license_status( $module );
-            $this->handle_module_updates( $module );
-            $module->setup( $this->plugin );
-        } catch ( AWPCP_Exception $e ) {
-            // pass
         }
-    }
 
-    private function load_free_module( $module ) {
-        try {
-            $module->load_textdomain();
-            $this->verify_version_compatibility( $module );
-            $this->handle_module_updates( $module );
-            $module->setup();
-        } catch ( AWPCP_Exception $e ) {
-            // pass
-        }
+        $this->handle_module_updates( $module );
+        $module->setup( $this->plugin );
     }
 
     private function verify_version_compatibility( $module ) {
@@ -88,6 +69,14 @@ class AWPCP_ModulesManager {
         if ( ! $this->plugin->is_compatible_with( $module->slug, $module->version ) ) {
             $module->notices[] = 'module-not-compatible-notice';
             throw new AWPCP_Exception( 'Module not compatible with installed AWPCP version.' );
+        }
+    }
+
+    private function is_premium_module( $module ) {
+        if ( strcmp( $module->slug, 'xml-sitemap') === 0 ) {
+            return false;
+        } else {
+            return true;
         }
     }
 

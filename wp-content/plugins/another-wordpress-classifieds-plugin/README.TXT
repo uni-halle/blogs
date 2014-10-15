@@ -4,8 +4,8 @@ Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 3.6
 Tested up to: 4.0
-Last Updated: 2014-Oct-8
-Stable tag: tags/3.3
+Last Updated: 2014-Oct-14
+Stable tag: tags/3.3.1
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -206,6 +206,18 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+= Versions 3.3.1 =
+* Improve rewrite rule for View Categories.
+* Fix conflict with BBPress.
+* Avoid sending verification email when payment is cancelled or fails.
+* Fix ajax handler for Delete File action.
+* Fix conflict with WordPress SEO plugin.
+* Avoid sending verification emails if Email Verification is off.
+* Add support for the appsecret_proof field doing requests to Facebook API.
+* Fix Search Widget: Allow specific region fields to be hidden again
+* Do not send verification emails for Unpaid listings
+* Fix PHP notice in Facebook Cache Helper.
+
 = Versions 3.3 =
 * Allow admins to mark price field as private
 * Add Users Autocomplete field

@@ -268,8 +268,10 @@ class AWPCP_Facebook {
         $url .= '?client_id=' . $this->get( 'app_id' );
         $url .= '&client_secret=' . $this->get( 'app_secret' );
 
-        if ( !$notoken && $this->access_token )
+        if ( !$notoken && $this->access_token ) {
             $url .= '&access_token=' . $this->access_token;
+            $url .= '&appsecret_proof=' . hash_hmac( 'sha256', $this->access_token, $this->get( 'app_secret' ) );
+        }
 
         if ( $method == 'GET' && $args ) {
             foreach ( $args as $k => $v ) {

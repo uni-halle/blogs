@@ -29,6 +29,11 @@ abstract class AWPCP_Module {
         load_plugin_textdomain( $this->textdomain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
+    /**
+     * TODO: run module_setup() on init, instead of plugins_loaded.
+     *  Let's try to move all initialization code to run on init, we'll
+     *  figure out later if we need to execute anything before that.
+     */
     public function setup() {
         if ( ! $this->is_up_to_date() ) {
             $this->install_or_upgrade();

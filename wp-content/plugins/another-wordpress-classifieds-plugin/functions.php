@@ -407,8 +407,13 @@ function awpcp_admin_capability() {
  * AWPCP settings.
  */
 function awpcp_current_user_is_admin() {
-	$capability = awpcp_admin_capability();
-	return current_user_can($capability);
+    // If the current user is being setup before the "init" action has fired,
+    // strange (and difficult to debug) role/capability issues will occur.
+    if ( ! did_action( 'set_current_user' ) ) {
+        _doing_it_wrong( __FUNCTION__, "Trying to call awpcp_current_user_is_admin() before the current user has been set.", '3.3.1' );
+    }
+
+	return current_user_can( awpcp_admin_capability() );
 }
 
 
@@ -550,31 +555,42 @@ function awpcp_get_comma_separated_list($items=array(), $threshold=5, $none='') 
  *								to this Region Field.
  * @since 3.0.2
  */
-function awpcp_region_fields( $context='details' ) {
-    $fields = apply_filters( 'awpcp-region-fields', false, $context );
+function awpcp_region_fields( $context='details', $enabled_fields = null ) {
+    $enabled_fields = is_null( $enabled_fields ) ? awpcp_get_enabled_region_fields() : $enabled_fields;
+
+    $fields = apply_filters( 'awpcp-region-fields', false, $context, $enabled_fields );
 
     if ( false === $fields ) {
-    	$fields = awpcp_default_region_fields( $context );
+    	$fields = awpcp_default_region_fields( $context, $enabled_fields );
     }
 
     return $fields;
 }
 
 /**
+ * @since 3.3.1
+ */
+function awpcp_get_enabled_region_fields() {
+    return array(
+        'country' => get_awpcp_option( 'displaycountryfield' ),
+        'state' => get_awpcp_option( 'displaystatefield' ),
+        'city' => get_awpcp_option( 'displaycityfield' ),
+        'county' => get_awpcp_option( 'displaycountyvillagefield' ),
+    );
+}
+
+/**
  * @since 3.0.2
  */
-function awpcp_default_region_fields( $context='details', $cache=true ) {
-    $show_country_field = get_awpcp_option( 'displaycountryfield' );
-    $show_state_field = get_awpcp_option( 'displaystatefield' );
-    $show_city_field = get_awpcp_option( 'displaycityfield' );
-    $show_county_field = get_awpcp_option( 'displaycountyvillagefield' );
+function awpcp_default_region_fields( $context='details', $enabled_fields = null ) {
+    $enabled_fields = is_null( $enabled_fields ) ? awpcp_get_enabled_region_fields() : $enabled_fields;
     $show_city_field_before_county_field = get_awpcp_option( 'show-city-field-before-county-field' );
 
     $always_shown = in_array( $context, array( 'details', 'search' ) );
     $can_be_required = $context !== 'search';
     $_fields = array();
 
-    if ( $show_country_field ) {
+    if ( $enabled_fields['country'] ) {
     	$required = $can_be_required && ( (bool) get_awpcp_option( 'displaycountryfieldreqop' ) );
         $_fields['country'] = array(
             'type' => 'country',
@@ -584,7 +600,7 @@ function awpcp_default_region_fields( $context='details', $cache=true ) {
             'alwaysShown' => $always_shown,
         );
     }
-    if ( $show_state_field ) {
+    if ( $enabled_fields['state'] ) {
     	$required = $can_be_required && ( (bool) get_awpcp_option( 'displaystatefieldreqop' ) );
         $_fields['state'] = array(
             'type' => 'state',
@@ -594,7 +610,7 @@ function awpcp_default_region_fields( $context='details', $cache=true ) {
             'alwaysShown' => $always_shown,
         );
     }
-    if ( $show_city_field ) {
+    if ( $enabled_fields['city'] ) {
     	$required = $can_be_required && ( (bool) get_awpcp_option( 'displaycityfieldreqop' ) );
         $_fields['city'] = array(
             'type' => 'city',
@@ -604,7 +620,7 @@ function awpcp_default_region_fields( $context='details', $cache=true ) {
             'alwaysShown' => $always_shown,
         );
     }
-    if ( $show_county_field ) {
+    if ( $enabled_fields['county'] ) {
     	$required = $can_be_required && ( (bool) get_awpcp_option( 'displaycountyvillagefieldreqop' ) );
         $_fields['county'] = array(
             'type' => 'county',

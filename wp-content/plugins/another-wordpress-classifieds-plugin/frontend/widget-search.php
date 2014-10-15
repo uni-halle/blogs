@@ -59,6 +59,12 @@ class AWPCP_Search_Widget extends WP_Widget {
             'showTextField' => false,
             'showExistingRegionsOnly' => true,
             'maxRegions' => 1,
+            'enabled_fields' => array(
+                'country' => $instance['show_country'],
+                'state' => $instance['show_state'],
+                'city' => $instance['show_city'],
+                'county' => false,
+            ),
         );
 
         $selector = new AWPCP_MultipleRegionSelector( $regions, $options );

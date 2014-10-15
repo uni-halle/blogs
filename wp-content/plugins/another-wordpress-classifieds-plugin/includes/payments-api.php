@@ -27,7 +27,8 @@ class AWPCP_PaymentsAPI {
             $this->request = new AWPCP_Request;
         }
 
-        add_action('init', array($this, 'init'));
+        add_action( 'init', array( $this, 'register_payment_term_types' ), 9999 );
+        add_action( 'init', array( $this, 'register_payment_methods' ), 9999 );
 
         if ( is_admin() ) {
             add_action( 'admin_init', array( $this, 'wp' ), 1 );
@@ -38,8 +39,11 @@ class AWPCP_PaymentsAPI {
         add_action('awpcp-transaction-status-updated', array($this, 'update_account_balance'), 10, 1);
     }
 
-    public function init() {
+    public function register_payment_term_types() {
         do_action('awpcp-register-payment-term-types', $this);
+    }
+
+    public function register_payment_methods() {
         do_action('awpcp-register-payment-methods', $this);
     }
 

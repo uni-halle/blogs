@@ -139,14 +139,21 @@ class AWPCP_Ad {
 	 * @since 3.3
 	 */
 	public static function get_where_conditions_for_valid_ads( $conditions = array() ) {
-        $conditions[] = "payment_status != 'Unpaid'";
+		$conditions = self::get_where_conditions_for_successfully_paid_listings( $conditions );
+
         $conditions[] = "verified = 1";
+
+        return array_filter( apply_filters( 'awpcp-ad-where-statement', array_filter( $conditions, 'strlen' ) ) );
+	}
+
+	public static function get_where_conditions_for_successfully_paid_listings( $conditions ) {
+        $conditions[] = "payment_status != 'Unpaid'";
 
         if ( ( get_awpcp_option( 'enable-ads-pending-payment' ) == 0 ) && ( get_awpcp_option( 'freepay' ) == 1 ) ) {
             $conditions[] = "payment_status != 'Pending'";
         }
 
-        return array_filter( apply_filters( 'awpcp-ad-where-statement', array_filter( $conditions, 'strlen' ) ) );
+        return $conditions;
 	}
 
 	public static function get_where_conditions($conditions=array()) {

@@ -60,7 +60,7 @@ class AWPCP_FacebookCacheHelper {
 
         $listing_info = json_decode( $response['body'] );
 
-        if ( $listing_info->type != 'article' ) {
+        if ( ! isset( $listing_info->type ) || $listing_info->type != 'article' ) {
             return false;
         } else if ( empty( $listing_info->title ) ) {
             return false;

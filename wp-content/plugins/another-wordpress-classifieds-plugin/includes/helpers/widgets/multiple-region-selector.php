@@ -24,13 +24,18 @@ class AWPCP_MultipleRegionSelector {
             'showTextField' => false,
             'showExistingRegionsOnly' => get_awpcp_option( 'buildsearchdropdownlists' ),
             'hierarchy' => array( 'country', 'county', 'state', 'city' ),
+            // List of Enabled Fields
+            //
+            // Possible value is an array with country, state, city or county as keys. Set to true to
+            // enable that field or false to disable it. All keys must be provided.
+            'enabled_fields' => awpcp_get_enabled_region_fields(),
         ) );
 
         $this->options['maxRegions'] = max( $this->options['maxRegions'], count( $regions ) );
     }
 
     private function get_region_fields( $context ) {
-        return awpcp_region_fields( $context );
+        return awpcp_region_fields( $context, $this->options['enabled_fields'] );
     }
 
     private function get_region_field_options( $context, $type, $selected, $hierarchy ) {
@@ -125,7 +130,7 @@ class AWPCP_MultipleRegionSelector {
         // use first region as template for additional regions
         $this->options['template'] = $regions[0];
 
-        $options = apply_filters( 'awpcp-multiple-region-selector-configuration', $this->options, $context );
+        $options = apply_filters( 'awpcp-multiple-region-selector-configuration', $this->options, $context, $fields );
 
         $uuid = uniqid();
         awpcp()->js->set( "multiple-region-selector-$uuid", array(
