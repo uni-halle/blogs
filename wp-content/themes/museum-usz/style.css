@@ -402,24 +402,27 @@ div.content {
     margin-top: 64px;
 }
 
-.spofe {
+.spofe img {
     width: 240px;
-    float: left;
+    /*float: left;*/
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
-.spofe_hoch {
+.spofe_hoch img {
     width: auto;
-    float: left;
+    /*float: left;*/
     margin-right: 30px;
-}
+    margin-bottom: 20px;
 
+}
+/*
 # text_spofe {
     float: left;
     margin-top: 50px;
 }
-
+--> siehe unten!!!
+*/
 .sonderzeit {
      margin-left: 50px;
 }
@@ -620,21 +623,21 @@ dt {
 .gross_buchstaben {
     text-transform: uppercase;
 }
-
+/*
 .spofe {
     width: 240px;
-    float: left;
+    /*float: left;* /
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
 .spofe_hoch {
     width: auto;
-    float: left;
+    /*float: left;* /
     margin-right: 20px;
     margin-bottom: 20px;
 }
-
+*/
 .vsp {
     margin-top: 13px;
 }
@@ -651,7 +654,7 @@ dt {
 
 @media only screen and (max-width: 767px ) {
     nav.mainnav { width: auto; float: left; margin-left: 19px!important; margin-top: 0px !important; }
-
+    #wrap .span-3 { clear: left; }
 }
 
 @media only screen and (max-width: 1023px) {
@@ -659,5 +662,17 @@ dt {
 }
 #raum_vsp {
     margin-left: 20px;
+}
+
+
+
+
+/** schrader hack */
+.bs_kursangebot {
+  width: 100%;
+  overflow: auto;
+}
+.bs_alpha {
+  white-space: normal;
 }
 
