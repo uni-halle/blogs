@@ -672,7 +672,7 @@ dt {
   width: 100%;
   overflow: auto;
 }
-.bs_alpha {
+#bs_content .bs_alpha {
   white-space: normal;
 }
 
