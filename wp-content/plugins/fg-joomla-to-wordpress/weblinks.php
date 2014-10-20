@@ -20,11 +20,11 @@ if ( !class_exists('fgj2wp_links', false) ) {
 			
 			$this->plugin = $plugin;
 			
-			add_action( 'fgj2wp_post_empty_database', array (&$this, 'empty_links'), 10, 1 );
-			add_action( 'fgj2wp_post_import', array(&$this, 'import_links') );
-			add_action( 'fgj2wp_post_remove_category_prefix', array (&$this, 'remove_category_prefix') );
-			add_action( 'fgj2wp_import_notices', array (&$this, 'display_links_count') );
-			add_filter( 'fgj2wp_pre_display_admin_page', array (&$this, 'process_admin_page'), 11, 1 );
+			add_action( 'fgj2wp_post_empty_database', array ($this, 'empty_links'), 10, 1 );
+			add_action( 'fgj2wp_post_import', array($this, 'import_links') );
+			add_action( 'fgj2wp_post_remove_category_prefix', array ($this, 'remove_category_prefix') );
+			add_action( 'fgj2wp_import_notices', array ($this, 'display_links_count') );
+			add_filter( 'fgj2wp_pre_display_admin_page', array ($this, 'process_admin_page'), 11, 1 );
 		}
 
 		/**

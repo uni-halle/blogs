@@ -18,7 +18,7 @@ if ( !class_exists('fgj2wp_modules', false) ) {
 			
 			$this->plugin = $plugin;
 			
-			add_action( 'fgj2wp_post_test_database_connection', array(&$this, 'check_modules') );
+			add_action( 'fgj2wp_post_test_database_connection', array($this, 'check_modules') );
 		}
 
 		/**

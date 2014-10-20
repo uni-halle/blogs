@@ -3,7 +3,7 @@
  * Plugin Name: FG Joomla to WordPress
  * Plugin Uri:  http://wordpress.org/plugins/fg-joomla-to-wordpress/
  * Description: A plugin to migrate categories, posts, images and medias from Joomla to WordPress
- * Version:     1.39.1
+ * Version:     1.39.3
  * Author:      Frédéric GILLES
  */
 
@@ -585,7 +585,7 @@ SQL;
 		/**
 		 * Get the number of Joomla categories
 		 * 
-		 * $return int Number of categories
+		 * @return int Number of categories
 		 */
 		private function get_categories_count() {
 			$prefix = $this->plugin_options['prefix'];
@@ -610,7 +610,7 @@ SQL;
 		/**
 		 * Get the number of Joomla sections
 		 * 
-		 * $return int Number of sections
+		 * @return int Number of sections
 		 */
 		private function get_sections_count() {
 			$prefix = $this->plugin_options['prefix'];
@@ -626,7 +626,7 @@ SQL;
 		/**
 		 * Get the number of Joomla articles
 		 * 
-		 * $return int Number of articles
+		 * @return int Number of articles
 		 */
 		private function get_posts_count() {
 			$prefix = $this->plugin_options['prefix'];
@@ -643,7 +643,7 @@ SQL;
 		/**
 		 * Get the number of Joomla users
 		 * 
-		 * $return int Number of users
+		 * @return int Number of users
 		 */
 		private function get_users_count() {
 			$prefix = $this->plugin_options['prefix'];
@@ -659,7 +659,7 @@ SQL;
 		/**
 		 * Get the number of Joomla web links
 		 * 
-		 * $return int Number of web links
+		 * @return int Number of web links
 		 */
 		private function get_weblinks_count() {
 			$prefix = $this->plugin_options['prefix'];
@@ -1283,6 +1283,10 @@ SQL;
 					foreach ($matches as $match ) {
 						$filename = $match[4];
 						$filename = str_replace("%20", " ", $filename); // for filenames with spaces
+						if ( strpos($filename, '/') === 0 ) {
+							// Remove the / at the beginning of the filename
+							$filename = substr($filename, 1);
+						}
 						$other_attributes = $match[2] . $match[5];
 						
 						$filetype = wp_check_filetype($filename);
