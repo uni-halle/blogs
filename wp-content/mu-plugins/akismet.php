@@ -1,1 +1,0 @@
-../plugins/akismet/akismet.php
