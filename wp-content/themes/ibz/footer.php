@@ -12,7 +12,8 @@
     <?php $maja_option = maja_get_global_options(); ?>
     
     <!-- responsive navigation -->
- 	<script> 
+ 	<script type="text/javascript">
+jQuery(function($){
 	$('div.viewhide').hide();
 	$('.rooms_container > .leftcol > ul > li:first-child').css('color', '#9BC24B');
 $('li.filter').click(function (e) 
@@ -29,7 +30,7 @@ $(this).css('color', '#9BC24B');
 
 
 })
-
+});
 	
 		jQuery(document).ready(function($) {
 <?php		
@@ -87,7 +88,7 @@ $show=false;
     
     <!-- flex slider code -->    
  	<?php if ($maja_option['maja_slider'] =='1') { ?> 
-        <script>  
+        <script type="text/javascipt">  
 		jQuery(document).ready(function($) {
 		  
 			// FLEX SLIDER
@@ -105,7 +106,7 @@ $show=false;
     
     <!-- google map code -->      
  	<?php if ($maja_option['maja_map-check'] =='1') { ?>          
-        <script>
+        <script type="text/javascript">
           function initialize() {
             var myLatlng = new google.maps.LatLng(<?php echo $maja_option['maja_map-lat'] ?>,<?php echo $maja_option['maja_map-lng'] ?>);
 			 
