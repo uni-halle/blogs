@@ -20,3 +20,9 @@ function add_accordion(){
 }
 
 add_action('get_header','add_accordion');
+
+/*** entferne mlublogs-footer ***/
+if(basename($_SERVER[@REQUEST_URI])!='impressum')
+foreach(['html','css'] as $comp) remove_filter('wp_footer',"mlublogs_footer_$comp");
+
+
