@@ -21,6 +21,14 @@ function add_accordion(){
 
 add_action('get_header','add_accordion');
 
+add_action('wp_enqueue_scripts',function(){
+    wp_register_style('droidsans','//fonts.googleapis.com/css?family=Droid+Sans',false,$theme['Version']);
+    wp_register_style('ptserif','//fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic',false,$theme['Version']);
+    wp_register_style('inconsolata','//fonts.googleapis.com/css?family=Inconsolata',false,$theme['Version']);
+    wp_register_style('ubuntu','//fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic-ext,greek,greek-ext,latin-ext,cyrillic',false,$theme['Version']);
+    wp_register_style('lato','//fonts.googleapis.com/css?family=Lato',false,$theme['Version'] );
+});
+
 /*** entferne mlublogs-footer ***/
 if(basename($_SERVER[@REQUEST_URI])!='impressum')
 foreach(['html','css'] as $comp) remove_filter('wp_footer',"mlublogs_footer_$comp");
