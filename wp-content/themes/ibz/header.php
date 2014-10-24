@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type') ?>; charset=<?php bloginfo('charset'); ?>" />
 <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
-<!--<script src="//code.jquery.com/jquery-latest.js"></script>-->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <title>
 	<?php 
 		if(is_home()) {
