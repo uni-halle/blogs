@@ -2,7 +2,7 @@
 /*
 	Plugin Name: WPtouch Mobile Plugin
 	Plugin URI: http://www.wptouch.com/
-	Version: 3.5.3
+	Version: 3.5.4
 	Description: Create a slick mobile WordPress website with just a few clicks
 	Author: BraveNewCode Inc.
 	Author URI: http://www.wptouch.com/
@@ -12,7 +12,7 @@
 	Trademark: 'WPtouch' is an unregistered trademark of BraveNewCode Inc., and 'WPtouch Pro' is a registered trademark of BraveNewCode Inc.; neither term can be re-used in conjuction with GPL v2 distributions or conveyances of this software under the license terms of the GPL v2 without express prior permission of BraveNewCode Inc.
 */
 
-define( 'WPTOUCH_VERSION', '3.5.3' );
+define( 'WPTOUCH_VERSION', '3.5.4' );
 
 define( 'WPTOUCH_BASE_NAME', basename( __FILE__, '.php' ) . '.php' );
 define( 'WPTOUCH_DIR', WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . basename( __FILE__, '.php' ) );
