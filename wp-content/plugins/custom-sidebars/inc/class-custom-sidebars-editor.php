@@ -150,8 +150,13 @@ class CustomSidebarsEditor extends CustomSidebars {
 	private function save_item( $req, $data )  {
 		$sidebars = self::get_custom_sidebars();
 		$sb_id = $req->id;
-		$sb_name = mb_substr( stripslashes( trim( @$data['name'] ) ), 0, 40 );
 		$sb_desc = stripslashes( trim( @$_POST['description'] ) );
+
+		if ( function_exists( 'mb_substr' ) ) {
+			$sb_name = mb_substr( stripslashes( trim( @$data['name'] ) ), 0, 40 );
+		} else {
+			$sb_name = substr( stripslashes( trim( @$data['name'] ) ), 0, 40 );
+		}
 
 		if ( empty( $sb_name ) ) {
 			return self::req_err(
@@ -185,8 +190,14 @@ class CustomSidebarsEditor extends CustomSidebars {
 			}
 		}
 
+		if ( function_exists( 'mb_strlen' ) ) {
 		if ( mb_strlen( $sb_desc ) > 200 ) {
 			$sb_desc = mb_substr( $sb_desc, 0, 200 );
+			}
+		} else {
+			if ( strlen( $sb_desc ) > 200 ) {
+				$sb_desc = substr( $sb_desc, 0, 200 );
+			}
 		}
 
 		// Populate the sidebar object.
