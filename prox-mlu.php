@@ -29,5 +29,5 @@ if(!function_exists('get_url')) {
   }
 }
 
-if(isset($dom)&&isset($q)) echo str_replace(['> <',@HEAD,@TITLE,@META,@HTML,@Xhtml],['><',@head,@title,@meta,@html,@XHTML],get_url("$prot://$dom.uni-halle.de/$q"));
+if(isset($dom)&&in_array($dom,['www','www2.usz'])&&isset($q)) echo str_replace(['> <',@HEAD,@TITLE,@META,@HTML,@Xhtml],['><',@head,@title,@meta,@html,@XHTML],get_url("$prot://$dom.uni-halle.de/$q"));
 
