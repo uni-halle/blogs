@@ -1,4 +1,4 @@
-/* WPtouch Basic Client-side Ajax Routines */
+// WPtouch Basic Client-side Ajax Routines
 function WPtouchAjax( actionName, actionParams, callback ) {
 	var ajaxData = {
 		action: "wptouch_client_ajax",
@@ -12,3 +12,8 @@ function WPtouchAjax( actionName, actionParams, callback ) {
 		callback( result );
 	});
 }
+
+jQuery( '#footer .back-to-top' ).click( function( e ) {
+	e.preventDefault();
+	jQuery( window ).scrollTop( 0 );
+});

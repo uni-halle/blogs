@@ -496,11 +496,14 @@ class WPtouchProThree {
 	}
 
 	function admin_handle_init() {
+		require_once( dirname( __FILE__ ) . '/info.php' );
 		$this->admin_initialize();
 		$this->setup_admin_twitter_bootstrap();
 		$this->setup_admin_stylesheets();
 		$this->handle_admin_menu_commands();
 		$this->setup_automatic_backup();
+
+		wptouch_update_info();
 	}
 
 	function setup_automatic_backup() {
@@ -708,11 +711,18 @@ class WPtouchProThree {
 			}
 
 			if ( $this->showing_mobile_theme ) {
-				if ( $settings->ignore_urls ) {
+				if ( $settings->enable_url_filter && $settings->filtered_urls ) {
 					$server_url = strtolower( $_SERVER['REQUEST_URI'] );
-					$url_list = explode( "\n", trim( strtolower( $settings->ignore_urls ) ) );
+					$url_list = explode( "\n", trim( strtolower( $settings->filtered_urls ) ) );
+
 					foreach( $url_list as $url ) {
-						if ( strpos( $server_url, trim( $url ) ) !== false ) {
+						if (
+							// Excluding URLs - kill mobile if the URL is matched
+							( $settings->url_filter_behaviour == 'exclude_urls' && strpos( $server_url, trim( $url ) ) !== false ) ||
+
+							// Exclusive URLs - kill mobile if the URL is *not* matched
+							( $settings->url_filter_behaviour == 'exclusive_urls' && strpos( $server_url, trim( $url ) ) === false )
+						) {
 							$this->showing_mobile_theme = false;
 							$this->is_mobile_device = false;
 							break;
@@ -1698,7 +1708,7 @@ class WPtouchProThree {
 
 			wp_enqueue_style( 'wptouch-admin-styles', $this->check_and_use_css_file( '/admin/css/wptouch-admin-3.css' ), false, WPTOUCH_VERSION );
 
-			wp_enqueue_style( 'wptouch-admin-fontawesome', $this->check_and_use_css_file( '/admin/css/font-awesome-subset/fontawesome.css' ), false, WPTOUCH_VERSION );
+			wp_enqueue_style( 'wptouch-admin-fontello', $this->check_and_use_css_file( '/themes/foundation/modules/fontello/css/fontello.css' ), false, WPTOUCH_VERSION );
 
 			if ( wptouch_should_load_rtl() && file_exists( WPTOUCH_DIR . '/admin/css/rtl.css' ) ) {
 				WPTOUCH_DEBUG( WPTOUCH_INFO, 'Loading RTL stylesheet' );

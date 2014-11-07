@@ -25,11 +25,16 @@ function doFoundationFeaturedLoaded() {
 		startSlide: slideNumber,
 		continuous: isContinuous,
 		callback: function( pos ) {
-			var i = bullets.length;
-			while (i--) {
-				bullets[i].className = ' ';
+			if ( isNaN( pos ) ) {
+				pos = 0;
 			}
-			bullets[pos].className = 'active';
+			var i = bullets.length;
+			if ( i > 0 ) {
+				while (i--) {
+					bullets[i].className = ' ';
+				}
+				bullets[pos].className = 'active';
+			}
 		}
 	}
 

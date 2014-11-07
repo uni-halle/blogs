@@ -213,7 +213,7 @@ function wptouch_admin_handle_ajax( $wptouch_pro, $ajax_action ) {
 			}
 			break;
 		default:
-			do_action( 'wptouch_admin_ajax_' . $ajax_action );
+			do_action( 'wptouch_admin_ajax_' . $ajax_action, $wptouch_pro );
 			do_action( 'wptouch_admin_ajax_intercept', $ajax_action );
 			break;
 	}

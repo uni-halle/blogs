@@ -27,6 +27,7 @@ require_once "external/OAuth.php";
  * @author Chris Chabot <chabotc@google.com>
  *
  */
+if( !class_exists( 'apiOAuth' ) ) {
 class apiOAuth extends apiAuth {
   public $cacheKey;
   protected $consumerToken;
@@ -247,4 +248,5 @@ class apiOAuth extends apiAuth {
   public function createAuthUrl($scope) {return null;}
   public function refreshToken($refreshToken) {/* noop*/}
   public function revokeToken() {/* noop*/}
+}
 }

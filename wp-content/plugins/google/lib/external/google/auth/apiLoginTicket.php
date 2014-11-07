@@ -20,6 +20,7 @@
  *
  * @author Brian Eaton <beaton@google.com>
  */
+if( !class_exists( 'apiLoginTicket' ) ) {
 class apiLoginTicket {
   const USER_ATTR = "id";
 
@@ -57,4 +58,5 @@ class apiLoginTicket {
   public function getAttributes() {
     return array("envelope" => $this->envelope, "payload" => $this->payload);
   }
+}
 }

@@ -1,4 +1,7 @@
 /* @group Reset */
+body [class^="icon-"]:before, body [class*=" icon-"]:before {
+	width: auto;
+}
 
 html,body,div,span,applet,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,strike,strong,sub,sup,var,b,u,i,center,ol,ul,li,caption {
 	border: 0;
@@ -172,6 +175,14 @@ img.wp-smiley {
 
 .post .wp-caption img {
 	margin-bottom: 0px;
+}
+
+#gallery_back_to_post {
+	display: block;
+	font-size: 80%;
+	font-weight: bold;
+	margin: 10px 10px 0;
+	text-align: center;
 }
 
 .gallery {
@@ -452,13 +463,13 @@ to {
 }
 
 .nav-controls a.prev-post:before {
-	content: '\f053';
-	font: normal normal 90% 'FontAwesome';
+	content: '\e810';
+	font: normal normal 90% 'fontello';
 }
 
 .nav-controls a.next-post:after {
-	content: '\f054';
-	font: normal normal 90% 'FontAwesome';
+	content: '\e811';
+	font: normal normal 90% 'fontello';
 }
 
 /* @end */
@@ -590,47 +601,124 @@ ul.dots li.active {
 	margin-bottom: -3px;
 }
 
+	.rtl .sharing-options a {
+		float: right;
+	}
+
 /* @group Default */
 
-.sharing-options .facebook-btn:before {
-	content: '\f09a';
+.sharing-options .email-btn:before {
+	content: '\e818';
 	margin-right: 5px;
-	font-family: 'FontAwesome';
+	font-family: 'fontello';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.sharing-options .facebook-btn:before {
+	content: '\e81e';
+	margin-right: 5px;
+	font-family: 'fontello';
 	font-weight: normal;
 	font-style: normal;
 }
 
 .sharing-options .twitter-btn:before {
-	content: '\f099';
+	content: '\e81b';
 	margin-right: 5px;
-	font-family: 'FontAwesome';
+	font-family: 'fontello';
 	font-weight: normal;
 	font-style: normal;
 }
 
 .sharing-options .google-btn:before {
-	content: '\f0d5';
+	content: '\e81c';
 	margin-right: 5px;
-	font-family: 'FontAwesome';
+	font-family: 'fontello';
 	font-weight: normal;
 	font-style: normal;
 }
 
 .sharing-options .pinterest-btn:before {
-	content: '\f0d2';
+	content: '\e823';
 	margin-right: 5px;
-	font-family: 'FontAwesome';
+	font-family: 'fontello';
 	font-weight: normal;
 	font-style: normal;
 }
 
-.sharing-options .email-btn:before {
-	content: '\f003';
-	margin-right: 5px;
-	font-family: 'FontAwesome';
+.rtl .sharing-options .email-btn:before {
+	display: none;
+}
+
+.rtl .sharing-options .facebook-btn:before {
+	display: none;
+}
+
+.rtl .sharing-options .twitter-btn:before {
+	display: none;
+}
+
+.rtl .sharing-options .google-btn:before {
+	display: none;
+}
+
+.rtl .sharing-options .pinterest-btn:before {
+	display: none;
+}
+
+.rtl .sharing-options .email-btn:before {
+	display: none;
+}
+
+.rtl .sharing-options .email-btn:after {
+	content: '\e818';
+	margin-left: 5px;
+	font-family: 'fontello';
 	font-weight: normal;
 	font-style: normal;
 }
+
+.rtl .sharing-options .facebook-btn:after {
+	content: '\e81f';
+	margin-left: 5px;
+	font-family: 'fontello';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.rtl .sharing-options .twitter-btn:after {
+	content: '\e81b';
+	margin-left: 5px;
+	font-family: 'fontello';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.rtl .sharing-options .google-btn:after {
+	content: '\e81c';
+	margin-left: 5px;
+	font-family: 'fontello';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.rtl .sharing-options .pinterest-btn:after {
+	content: '\e823';
+	margin-left: 5px;
+	font-family: 'fontello';
+	font-weight: normal;
+	font-style: normal;
+}
+
+.rtl .sharing-options .email-btn:after {
+	content: '\e818';
+	margin-left: 5px;
+	font-family: 'fontello';
+	font-weight: normal;
+	font-style: normal;
+}
+
 
 /* @end */
 
@@ -688,12 +776,10 @@ body.web-app-mode #switch {
 }
 
 .not-found:after {
-	font-family: 'FontAwesome';
-	content: "\f0c5";
+	font-family: 'fontello';
+	content: "\e83b";
 	display: block;
 	font-size: 400%;
-	margin-top: 90px;
-	margin-bottom: 90px;
 }
 
 .not-found-text {
@@ -963,8 +1049,8 @@ form#commentform button#submit {
 }
 
 .back-to-top:before {
-	content: "\f102";
-	font-family: 'FontAwesome';
+	content: "\e843";
+	font-family: 'fontello';
 	font-weight: normal;
 	font-style: normal;
 	padding-right: 5px;

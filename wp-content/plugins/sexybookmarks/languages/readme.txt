@@ -16,6 +16,7 @@ Shareaholic is used all over the world. Our goal is to support Shareaholic in th
 * Italian (it_IT)
 * Turkish (tr_TR)
 * Spanish - Mexico (es_MX) by [Luis Jared Pardo ](http://www.clickseguro.net)
+* Romanian (ro_RO)
 * Contribute a translation!
 
 == How to translate Shareaholic into your own language ==

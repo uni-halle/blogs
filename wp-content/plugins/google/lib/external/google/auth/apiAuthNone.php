@@ -20,6 +20,7 @@
  * @author Chris Chabot <chabotc@google.com>
  * @author Chirag Shah <chirags@google.com>
  */
+if( !class_exists( 'apiAuthNone' ) ) {
 class apiAuthNone extends apiAuth {
   public $key = null;
 
@@ -45,4 +46,5 @@ class apiAuthNone extends apiAuth {
     }
     return $request;
   }
+}
 }

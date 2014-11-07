@@ -1,7 +1,7 @@
 # Copyright (C) 2014 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.4\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-06-24 13:23:13+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr "Project-Id-Version: WPtouch Pro 3.5.3\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-10-28 13:14:16+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
@@ -27,9 +27,9 @@ msgstr "BraveNewCode의 Twitter 계정"
 msgid "Plugin Licensing Terms"
 msgstr "플러그인 라이선스 약관"
 
-#: admin/html/notification-center.php:6 core/admin-menu.php:65
-msgid "Upgrade to Pro"
-msgstr "Pro로 업그레이드"
+#: admin/html/notification-center.php:6
+msgid "What's in WPtouch Pro?"
+msgstr "WPtouch Pro에는 무엇이 있나요?"
 
 #: admin/html/notification-center.php:10
 msgid "Notifications"
@@ -39,11 +39,11 @@ msgstr "알림"
 msgid "No notifications"
 msgstr "알림 없음"
 
-#: admin/html/plugin-area.php:9
+#: admin/html/plugin-area.php:10
 msgid "A new product version (%s) is available. %sRenew your license%s to download this update and receive additional product support."
 msgstr "새로운 제품 버전(%s)이 있습니다. 이 업데이트를 다운로드하고 추가적인 제품 지원을 받으려면 %s라이선스를 갱신하세요%s."
 
-#: admin/html/plugin-area.php:11
+#: admin/html/plugin-area.php:12
 msgid "A new product version (%s) is available. Please %sactivate your license%s, or %spurchase a new license%s to enable updates and full product support."
 msgstr "새 제품 버전(%s)이 나왔습니다. %s라이선스를 활성화하거나%s %s새로운 라이선스를 구입%s하여 업데이트를 이용하고 완전한 제품 지원을 받으세요."
 
@@ -51,7 +51,7 @@ msgstr "새 제품 버전(%s)이 나왔습니다. %s라이선스를 활성화하
 msgid "License Details"
 msgstr "라이선스 세부정보"
 
-#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:235
+#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:262
 msgid "Note"
 msgstr "참고"
 
@@ -77,7 +77,7 @@ msgstr "라이선스 갱신"
 
 #: admin/pages/custom/wptouch-admin-license.php:25
 #: admin/settings/html/extension-browser-item.php:89
-#: admin/settings/html/theme-browser-item.php:129
+#: admin/settings/html/theme-browser-item.php:136
 msgid "Activate"
 msgstr "활성화"
 
@@ -428,6 +428,7 @@ msgstr "기본"
 
 #: admin/pages/wptouch-admin-general-settings.php:411
 #: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
+#: admin/settings/html/checklist.php:13
 #: admin/settings/html/custom-latest-posts.php:4
 #: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
 #: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
@@ -453,7 +454,7 @@ msgstr "WordPress 페이지"
 
 #: admin/pages/wptouch-admin-menus.php:28
 #: admin/settings/html/icon_menu_area.php:6
-#: infinity-cache/infinity-cache.php:209
+#: infinity-cache/infinity-cache.php:217
 #: themes/foundation/modules/advertising/advertising.php:29
 #: themes/foundation/modules/media/media.php:59
 msgid "None"
@@ -509,6 +510,7 @@ msgid "Restore Backup File"
 msgstr "백업 파일 복원"
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:7
+#: admin/settings/html/checklist.php:15
 #: admin/settings/html/custom-latest-posts.php:8
 #: admin/settings/html/list.php:20 admin/settings/html/numeric.php:16
 #: admin/settings/html/post_type.php:14 admin/settings/html/radiolist.php:15
@@ -538,7 +540,7 @@ msgstr "아직 아이콘이 업로드되지 않았습니다"
 
 #: admin/settings/html/custom_icon_management.php:12
 #: admin/settings/html/image-upload.php:13
-#: admin/settings/html/theme-browser-item.php:137
+#: admin/settings/html/theme-browser-item.php:144
 msgid "Delete"
 msgstr "삭제"
 
@@ -547,7 +549,7 @@ msgid "Upload Icon"
 msgstr "아이콘 업로드"
 
 #: admin/settings/html/custom_icon_upload.php:4
-#: admin/settings/html/image-upload.php:15
+#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:598
 msgid "Upload Complete!"
 msgstr "업로드 완료!"
 
@@ -564,7 +566,7 @@ msgid "Your Server Configuration"
 msgstr "서버 구성"
 
 #: admin/settings/html/extension-browser-item.php:37
-#: admin/settings/html/theme-browser-item.php:49
+#: admin/settings/html/theme-browser-item.php:56
 msgid "Updating..."
 msgstr "업데이트 중..."
 
@@ -573,14 +575,14 @@ msgid "Upgrade to %s"
 msgstr "%s(으)로 업그레이드"
 
 #: admin/settings/html/extension-browser-item.php:39
-#: admin/settings/html/theme-browser-item.php:54
+#: admin/settings/html/theme-browser-item.php:61
 msgid "Download %s Update"
 msgstr "%s 업데이트 다운로드"
 
 #: admin/settings/html/extension-browser-item.php:47
 #: admin/settings/html/installed_icon_sets_ajax.php:8
 #: admin/settings/html/installed_icon_sets_ajax.php:20
-#: admin/settings/html/theme-browser-item.php:68
+#: admin/settings/html/theme-browser-item.php:75
 msgid "by %s"
 msgstr "작성자: %s"
 
@@ -589,48 +591,48 @@ msgid "Extension location: %s"
 msgstr "추가기능 위치: %s"
 
 #: admin/settings/html/extension-browser-item.php:54
-#: admin/settings/html/theme-browser-item.php:76
+#: admin/settings/html/theme-browser-item.php:83
 msgid "Relative to your WordPress wp-content directory."
 msgstr "WordPress wp-content 디렉터리에 대한 상대주소."
 
 #: admin/settings/html/extension-browser-item.php:63
-#: admin/settings/html/theme-browser-item.php:88
+#: admin/settings/html/theme-browser-item.php:95
 msgid "Available in WPtouch Pro"
 msgstr "WPtouch Pro에서 이용 가능"
 
 #: admin/settings/html/extension-browser-item.php:67
-#: admin/settings/html/theme-browser-item.php:92
+#: admin/settings/html/theme-browser-item.php:99
 msgid "More Info"
 msgstr "추가 정보"
 
 #: admin/settings/html/extension-browser-item.php:70
-#: admin/settings/html/theme-browser-item.php:96
+#: admin/settings/html/theme-browser-item.php:103
 msgid "Upgrade License"
 msgstr "라이선스 업그레이드"
 
 #: admin/settings/html/extension-browser-item.php:72
-#: admin/settings/html/theme-browser-item.php:98
+#: admin/settings/html/theme-browser-item.php:105
 msgid "Get License"
 msgstr "라이선스 받기"
 
 #: admin/settings/html/extension-browser-item.php:80
-#: admin/settings/html/theme-browser-item.php:111
+#: admin/settings/html/theme-browser-item.php:118
 msgid "Downloading..."
 msgstr "다운로드 중..."
 
 #: admin/settings/html/extension-browser-item.php:80
 #: admin/settings/html/installed_icon_sets_ajax.php:21
-#: admin/settings/html/theme-browser-item.php:112
+#: admin/settings/html/theme-browser-item.php:119
 msgid "Install"
 msgstr "설치"
 
 #: admin/settings/html/extension-browser-item.php:82
-#: admin/settings/html/theme-browser-item.php:115
+#: admin/settings/html/theme-browser-item.php:122
 msgid "Download"
 msgstr "다운로드"
 
 #: admin/settings/html/extension-browser-item.php:92
-#: admin/settings/html/theme-browser-item.php:125
+#: admin/settings/html/theme-browser-item.php:132
 msgid "Setup"
 msgstr "설정"
 
@@ -655,51 +657,53 @@ msgstr "모두 체크"
 msgid "Reset"
 msgstr "초기화"
 
-#: admin/settings/html/icon_menu_area.php:9
-#: classic-redux/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:32
-#: classic-redux/default/header-bottom.php:112
-#: prose/default/header-bottom.php:21 scaffold/default/header-bottom.php:13
+#: admin/settings/html/icon_menu_area.php:9 bio/default/header-bottom.php:13
+#: classic-redux/default/header-bottom.php:23
+#: classic-redux/default/header-bottom.php:34
+#: classic-redux/default/header-bottom.php:114
+#: hammock/default/header-bottom.php:40
+#: mobilestore/default/header-bottom.php:56 prose/default/header-bottom.php:21
+#: scaffold/default/header-bottom.php:13
 msgid "Menu"
 msgstr "메뉴"
 
-#: admin/settings/html/icon_menu_area.php:19
+#: admin/settings/html/icon_menu_area.php:31
 msgid "Active menus used in this theme."
 msgstr "이 테마에 사용된 활성 메뉴."
 
-#: admin/settings/html/icon_menu_area.php:23
+#: admin/settings/html/icon_menu_area.php:35
 msgid "Show/Hide"
 msgstr "표시/숨김"
 
-#: admin/settings/html/icon_menu_area.php:24
+#: admin/settings/html/icon_menu_area.php:36
 msgid "Menu Item"
 msgstr "메뉴 항목"
 
-#: admin/settings/html/icon_menu_area.php:44
+#: admin/settings/html/icon_menu_area.php:56
 msgid "Icon Set"
 msgstr "아이콘 세트"
 
-#: admin/settings/html/icon_menu_area.php:54
+#: admin/settings/html/icon_menu_area.php:66
 msgid "Drag icons to associate them with menu items"
 msgstr "아이콘을 끌어 메뉴 항목과 연결하세요"
 
-#: admin/settings/html/icon_menu_area.php:79
+#: admin/settings/html/icon_menu_area.php:91
 msgid "You don't have any custom icons yet."
 msgstr "아직 사용자 정의 아이콘이 없습니다."
 
-#: admin/settings/html/icon_menu_area.php:94
+#: admin/settings/html/icon_menu_area.php:106
 msgid "Default Icon"
 msgstr "기본 아이콘"
 
-#: admin/settings/html/icon_menu_area.php:95
+#: admin/settings/html/icon_menu_area.php:107
 msgid "applies to all unset icons"
 msgstr "설정되지 않은 모든 아이콘에 적용됩니다"
 
-#: admin/settings/html/icon_menu_area.php:103
+#: admin/settings/html/icon_menu_area.php:115
 msgid "Trash"
 msgstr "휴지통"
 
-#: admin/settings/html/icon_menu_area.php:104
+#: admin/settings/html/icon_menu_area.php:116
 msgid "drag icon here to reset"
 msgstr "여기로 아이콘을 끌어 초기화하세요"
 
@@ -716,8 +720,8 @@ msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue t
 msgstr "%s%s%s 디렉터리에 현재 쓸 수 없습니다. %s추가 아이콘 세트를 설치하려면 이 문제를 해결하세요."
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:1559 core/class-wptouch-pro.php:1560
-#: core/config.php:53
+#: core/class-wptouch-pro.php:1596 core/class-wptouch-pro.php:1597
+#: core/config.php:54
 msgid "Custom Icons"
 msgstr "사용자 정의 아이콘"
 
@@ -739,7 +743,7 @@ msgid "Pro"
 msgstr "Pro"
 
 #: admin/settings/html/plugin-compat-ajax.php:11
-#: themes/foundation/modules/custom-posts/custom-posts.php:178
+#: themes/foundation/modules/custom-posts/custom-posts.php:153
 msgid "Enable %s"
 msgstr "%s 켜기"
 
@@ -767,32 +771,32 @@ msgstr "WordPress 페이지"
 msgid "Please paste your encoded settings below and save to restore your settings."
 msgstr "아래에 인코딩된 설정을 붙여넣고 저장하여 설정을 복원하세요."
 
-#: admin/settings/html/theme-browser-item.php:6
 #: admin/settings/html/theme-browser-item.php:10
+#: admin/settings/html/theme-browser-item.php:16
 msgid "Click to view screenshots"
 msgstr "클릭하여 스크린샷 보기"
 
-#: admin/settings/html/theme-browser-item.php:51
+#: admin/settings/html/theme-browser-item.php:58
 msgid "Update to %s"
 msgstr "%s(으)로 업데이트"
 
-#: admin/settings/html/theme-browser-item.php:63
+#: admin/settings/html/theme-browser-item.php:70
 msgid "This theme supports %s devices"
 msgstr "이 테마는 %s 장치를 지원합니다"
 
-#: admin/settings/html/theme-browser-item.php:75
+#: admin/settings/html/theme-browser-item.php:82
 msgid "Theme location: %s"
 msgstr "테마 위치: %s"
 
-#: admin/settings/html/theme-browser-item.php:103
+#: admin/settings/html/theme-browser-item.php:110
 msgid "Buy Now"
 msgstr "지금 구입"
 
-#: admin/settings/html/theme-browser-item.php:133
+#: admin/settings/html/theme-browser-item.php:140
 msgid "Copy"
 msgstr "복사"
 
-#: admin/settings/html/theme-browser.php:14
+#: admin/settings/html/theme-browser.php:22
 msgid "Loading Cloud Themes"
 msgstr "클라우드 테마 로드 중"
 
@@ -816,60 +820,35 @@ msgstr "Pro 추가기능 보기"
 msgid "Look at Pro Features"
 msgstr "Pro 기능 보기"
 
-#: admin/settings/html/touchboard.php:14
+#: admin/settings/html/touchboard.php:16
 msgid "Product Support"
 msgstr "제품 지원"
 
-#: admin/settings/html/touchboard.php:16
+#: admin/settings/html/touchboard.php:17
 msgid "Product Knowledgebase"
 msgstr "제품 지식 데이터베이스"
 
-#: admin/settings/html/touchboard.php:17
+#: admin/settings/html/touchboard.php:18
 msgid "Manage Account"
 msgstr "계정 관리"
 
-#: admin/settings/html/touchboard.php:18
+#: admin/settings/html/touchboard.php:19
 msgid "Manage License"
 msgstr "라이선스 관리"
 
-#: admin/settings/html/touchboard.php:20
+#: admin/settings/html/touchboard.php:21
 msgid "WPtouch User Guide"
 msgstr "WPtouch 사용자 가이드"
 
-#: admin/settings/html/touchboard.php:27
+#: admin/settings/html/touchboard.php:28
 msgid "WPtouch News"
 msgstr "WPtouch 뉴스"
 
-#: admin/settings/html/touchboard.php:28
+#: admin/settings/html/touchboard.php:29
 msgid "Read More"
 msgstr "더 보기"
 
-#: admin/settings/html/touchboard.php:45
-msgid "What's New in %s"
-msgstr "%s의 새로운 사항"
-
-#: admin/settings/html/touchboard.php:49 admin/settings/html/touchboard.php:51
-#: core/admin-menu.php:60
-msgid "License"
-msgstr "라이선스"
-
-#: admin/settings/html/touchboard.php:49
-msgid "Unlicensed"
-msgstr "라이선스 없음"
-
-#: admin/settings/html/touchboard.php:49 core/class-wptouch-pro.php:591
-msgid "Offline"
-msgstr "오프라인"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Active"
-msgstr "활성"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Online"
-msgstr "온라인"
-
-#: admin/settings/html/touchboard.php:61
+#: admin/settings/html/touchboard.php:47
 msgid "%s Change Log"
 msgstr "%s 체인지로그"
 
@@ -882,24 +861,26 @@ msgstr "WPtouch Pro는 다음의 사용자-에이전트 또는 사용자-에이�
 msgid "None (Use WordPress Settings)"
 msgstr "없음(WordPress 설정 사용)"
 
-#: bauhaus/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:76
+#: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
+#: classic-redux/default/header-bottom.php:55
+#: hammock/default/header-bottom.php:82 scaffold/default/header-bottom.php:35
+#: simple/default/header-bottom.php:26
+msgid "Logout"
+msgstr "로그아웃"
+
+#: bauhaus/default/header-bottom.php:48 bio/default/header-bottom.php:24
+#: classic-redux/default/header-bottom.php:78
 #: scaffold/default/header-bottom.php:24
 msgid "Search this website"
 msgstr "이 웹사이트 검색"
 
-#: bauhaus/default/header-bottom.php:22
-#: classic-redux/default/header-bottom.php:46
-#: classic-redux/default/header-bottom.php:78
+#: bauhaus/default/header-bottom.php:49 bio/default/header-bottom.php:14
+#: bio/default/header-bottom.php:25 classic-redux/default/header-bottom.php:48
+#: classic-redux/default/header-bottom.php:80
+#: mobilestore/default/header-bottom.php:80
 #: scaffold/default/header-bottom.php:14 scaffold/default/header-bottom.php:25
 msgid "Search"
 msgstr "검색"
-
-#: bauhaus/default/header-bottom.php:40 bauhaus/default/header-bottom.php:42
-#: classic-redux/default/header-bottom.php:53
-#: scaffold/default/header-bottom.php:35 simple/default/header-bottom.php:24
-msgid "Logout"
-msgstr "로그아웃"
 
 #: bauhaus/default/nav-bar.php:6 cms/default/nav-bar.php:6
 #: themes/foundation/default/nav-bar.php:6
@@ -911,9 +892,15 @@ msgstr "이전 게시글"
 msgid "next post"
 msgstr "다음 게시글"
 
-#: bauhaus/default/post-loop.php:22 classic-redux/default/post-loop.php:24
+#: bauhaus/default/post-loop.php:22 bio/default/post-loop.php:19
+#: classic-redux/default/post-loop.php:24
 msgid "by"
 msgstr "작성자:"
+
+#: bauhaus/default/related-posts.php:4
+#: themes/foundation/default/related-posts.php:4
+msgid "Related"
+msgstr "관련"
 
 #: bauhaus/default/search.php:6 classic-redux/default/search.php:5
 #: themes/foundation/default/search.php:6
@@ -929,198 +916,242 @@ msgid "No results found"
 msgstr "검색 결과 없음"
 
 #: bauhaus/default/search.php:46 classic-redux/default/search.php:47
-#: themes/foundation/default/search.php:45
+#: themes/foundation/default/search.php:43
 msgid "Load more %s results"
 msgstr "%s개의 결과 더 로드"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "no comments"
 msgstr "댓글 없음"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "1 comment"
 msgstr "댓글 1개"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "% comments"
 msgstr "댓글 %개"
 
-#: bauhaus/default/single.php:46 classic-redux/default/header-bottom.php:35
-#: classic-redux/default/header-bottom.php:61
+#: bauhaus/default/single.php:36 classic-redux/default/header-bottom.php:37
+#: classic-redux/default/header-bottom.php:63
 msgid "Categories"
 msgstr "카테고리"
 
-#: bauhaus/default/single.php:49 classic-redux/default/header-bottom.php:39
-#: classic-redux/default/header-bottom.php:68
+#: bauhaus/default/single.php:39 classic-redux/default/header-bottom.php:41
+#: classic-redux/default/header-bottom.php:70
 msgid "Tags"
 msgstr "태그"
 
-#: bauhaus/root-functions.php:122 classic-redux/root-functions.php:98
+#: bauhaus/root-functions.php:126 classic-redux/root-functions.php:98
 msgid "Header Menu"
 msgstr "헤더 메뉴"
 
-#: bauhaus/root-functions.php:124 classic-redux/root-functions.php:100
-#: cms/root-functions.php:125 cms/root-functions.php:134
-#: open/root-functions.php:304 prose/root-functions.php:191
-#: scaffold/root-functions.php:77 simple/root-functions.php:60
-#: simple/root-functions.php:71
+#: bauhaus/root-functions.php:128 bio/root-functions.php:89
+#: classic-redux/root-functions.php:100 cms/root-functions.php:125
+#: cms/root-functions.php:134 hammock/root-functions.php:168
+#: mobilestore/root-functions.php:188 mobilestore/root-functions.php:200
+#: open/root-functions.php:350 prose/root-functions.php:195
+#: scaffold/root-functions.php:77 simple/root-functions.php:61
+#: simple/root-functions.php:72
 msgid "Choose a menu"
 msgstr "메뉴 선택"
 
-#: bauhaus/root-functions.php:125
+#: bauhaus/root-functions.php:129
 msgid "Main menu selection"
 msgstr "메인 메뉴 선택"
 
-#: bauhaus/root-functions.php:132 classic-redux/root-functions.php:108
-#: cms/root-functions.php:141 open/root-functions.php:312
-#: prose/root-functions.php:199 scaffold/root-functions.php:85
-#: simple/root-functions.php:79
+#: bauhaus/root-functions.php:136 bio/root-functions.php:97
+#: classic-redux/root-functions.php:108 cms/root-functions.php:141
+#: hammock/root-functions.php:176 open/root-functions.php:358
+#: prose/root-functions.php:203 scaffold/root-functions.php:85
+#: simple/root-functions.php:80
 msgid "Theme background"
 msgstr "테마 배경"
 
-#: bauhaus/root-functions.php:133
+#: bauhaus/root-functions.php:137
 msgid "Header & Menu"
 msgstr "헤더 및 메뉴"
 
-#: bauhaus/root-functions.php:134 classic-redux/root-functions.php:109
-#: cms/root-functions.php:142 open/root-functions.php:313
-#: prose/root-functions.php:201 scaffold/root-functions.php:86
-#: simple/root-functions.php:80
+#: bauhaus/root-functions.php:138 bio/root-functions.php:98
+#: classic-redux/root-functions.php:109 cms/root-functions.php:142
+#: hammock/root-functions.php:178 mobilestore/root-functions.php:232
+#: open/root-functions.php:359 prose/root-functions.php:205
+#: scaffold/root-functions.php:86 simple/root-functions.php:81
 msgid "Links"
 msgstr "링크"
 
-#: bauhaus/root-functions.php:135
+#: bauhaus/root-functions.php:139
 msgid "Post/Page Headers"
 msgstr "게시글/페이지 헤더"
 
-#: bauhaus/root-functions.php:245
+#: bauhaus/root-functions.php:255
 msgid "Theme Shapes"
 msgstr "테마 모양"
 
-#: bauhaus/root-functions.php:251
+#: bauhaus/root-functions.php:261
 msgid "Theme shape style"
 msgstr "테마 모양 스타일"
 
-#: bauhaus/root-functions.php:252
+#: bauhaus/root-functions.php:262
 msgid "Bauhaus will use this shape style throughout its appearance"
 msgstr "Bauhaus는 이 모양 스타일을 전체에 사용합니다"
 
-#: bauhaus/root-functions.php:256
+#: bauhaus/root-functions.php:266
 msgid "Circles"
 msgstr "원"
 
-#: bauhaus/root-functions.php:257
+#: bauhaus/root-functions.php:267
 msgid "Rounded squares"
 msgstr "둥근 사각형"
 
-#: bauhaus/root-functions.php:276 classic-redux/root-functions.php:244
+#: bauhaus/root-functions.php:277
+msgid "Menu Style"
+msgstr "메뉴 스타일"
+
+#: bauhaus/root-functions.php:283
+msgid "Menu animation style"
+msgstr "메뉴 애니메이션 스타일"
+
+#: bauhaus/root-functions.php:284
+msgid "Bauhaus can show your menu off-canvas or in a drop-down."
+msgstr "Bauhaus는 숨김 메뉴 또는 드롭다운 메뉴를 표시할 수 있습니다."
+
+#: bauhaus/root-functions.php:288
+msgid "Off-canvas"
+msgstr "숨김 메뉴"
+
+#: bauhaus/root-functions.php:289
+msgid "Drop-down"
+msgstr "드롭다운"
+
+#: bauhaus/root-functions.php:307 bio/root-functions.php:131
+#: classic-redux/root-functions.php:244
 msgid "Post thumbnails"
 msgstr "썸네일 게시"
 
-#: bauhaus/root-functions.php:281 classic-redux/root-functions.php:249
+#: bauhaus/root-functions.php:312 bio/root-functions.php:136
+#: classic-redux/root-functions.php:249
 msgid "No thumbnails"
 msgstr "썸네일 없음"
 
-#: bauhaus/root-functions.php:282 classic-redux/root-functions.php:250
+#: bauhaus/root-functions.php:313 bio/root-functions.php:137
+#: classic-redux/root-functions.php:250
 msgid "Blog listing only"
 msgstr "블로그 목록만"
 
-#: bauhaus/root-functions.php:283 classic-redux/root-functions.php:251
+#: bauhaus/root-functions.php:314 bio/root-functions.php:138
+#: classic-redux/root-functions.php:251
 msgid "Blog listing, single posts"
 msgstr "블로그 목록, 단일 게시글"
 
-#: bauhaus/root-functions.php:284
+#: bauhaus/root-functions.php:315 bio/root-functions.php:139
 msgid "Blog listing, single posts & pages"
 msgstr "블로그 목록, 단일 게시글 및 페이지"
 
-#: bauhaus/root-functions.php:285
+#: bauhaus/root-functions.php:316 bio/root-functions.php:140
 msgid "All (blog, single, pages, search & archive)"
 msgstr "모두(블로그, 단일, 페이지, 검색 및 아카이브)"
 
-#: bauhaus/root-functions.php:293 classic-redux/root-functions.php:260
+#: bauhaus/root-functions.php:324 bio/root-functions.php:148
+#: classic-redux/root-functions.php:260
 msgid "Thumbnail Selection"
 msgstr "썸네일 선택"
 
-#: bauhaus/root-functions.php:298 classic-redux/root-functions.php:265
+#: bauhaus/root-functions.php:329 bio/root-functions.php:153
+#: classic-redux/root-functions.php:265
 msgid "Post featured image"
 msgstr "추천 이미지 게시"
 
-#: bauhaus/root-functions.php:299 classic-redux/root-functions.php:266
+#: bauhaus/root-functions.php:330 bio/root-functions.php:154
+#: classic-redux/root-functions.php:266
 msgid "Post custom field"
 msgstr "사용자 정의 필드 게시"
 
-#: bauhaus/root-functions.php:307 classic-redux/root-functions.php:274
+#: bauhaus/root-functions.php:338 bio/root-functions.php:162
+#: classic-redux/root-functions.php:274
 msgid "Thumbnail custom field name"
 msgstr "썸네일 사용자 정의 필드 이름"
 
-#: bauhaus/root-functions.php:318 classic-redux/root-functions.php:307
+#: bauhaus/root-functions.php:349 classic-redux/root-functions.php:307
 msgid "Show post categories and tags"
 msgstr "게시글 카테고리 및 태그 표시"
 
-#: bauhaus/root-functions.php:329 classic-redux/root-functions.php:285
+#: bauhaus/root-functions.php:360 bio/root-functions.php:173
+#: classic-redux/root-functions.php:285
 msgid "Show post date"
 msgstr "게시일 표시"
 
-#: bauhaus/root-functions.php:340 classic-redux/root-functions.php:296
+#: bauhaus/root-functions.php:371 bio/root-functions.php:184
+#: classic-redux/root-functions.php:296
 msgid "Show post author"
 msgstr "게시글 작성자 표시"
 
-#: bauhaus/root-functions.php:351
+#: bauhaus/root-functions.php:382
 msgid "Show comment bubbles on posts"
 msgstr "게시글에 댓글 풍선 표시"
 
-#: bauhaus/root-functions.php:362
+#: bauhaus/root-functions.php:393 bio/root-functions.php:195
 msgid "Show search in header"
 msgstr "헤더에 검색 표시"
 
-#: bauhaus/root-functions.php:363
+#: bauhaus/root-functions.php:394 bio/root-functions.php:196
 msgid "Adds Search capability in the site header."
 msgstr "사이트 헤더에 검색 기능을 추가합니다."
 
-#: bauhaus/root-functions.php:373 classic-redux/root-functions.php:318
+#: bauhaus/root-functions.php:404 bio/root-functions.php:206
+#: classic-redux/root-functions.php:318
 msgid "Use infinite scrolling for blog"
 msgstr "블로그에 무한 스크롤 사용"
 
-#: bauhaus/root-functions.php:390
-msgid "Show featured slider on front page"
-msgstr "첫 페이지에 추천 슬라이더 표시"
+#: bio/root-functions.php:87 hammock/root-functions.php:166
+#: mobilestore/root-functions.php:186 open/root-functions.php:348
+#: prose/root-functions.php:193 scaffold/root-functions.php:75
+msgid "Primary Menu"
+msgstr "기본 메뉴"
 
-#: classic-redux/default/header-bottom.php:43
-#: classic-redux/default/header-bottom.php:88
+#: bio/root-functions.php:90 hammock/root-functions.php:169
+#: open/root-functions.php:351 scaffold/root-functions.php:78
+msgid "Menus are awesome!"
+msgstr "메뉴가 멋집니다!"
+
+#: classic-redux/default/header-bottom.php:45
+#: classic-redux/default/header-bottom.php:90
 msgid "Tweets"
 msgstr "트윗"
 
-#: classic-redux/default/header-bottom.php:51
-#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:22
+#: classic-redux/default/header-bottom.php:53
+#: hammock/default/header-bottom.php:80
+#: mobilestore/default/woocommerce/shop/form-login.php:31
+#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:24
 #: themes/foundation/modules/login/login-html.php:20
 msgid "Login"
 msgstr "로그인"
 
-#: classic-redux/default/header-bottom.php:92
+#: classic-redux/default/header-bottom.php:94
 msgid "Follow %s on Twitter"
 msgstr "Twitter에서 %s 팔로우"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:60
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "newer posts"
 msgstr "최근 게시글"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:56
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:59
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "older posts"
 msgstr "오래된 게시글"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "no responses"
 msgstr "답글 없음"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "1 response"
 msgstr "1개의 답글"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "% responses"
 msgstr "%개의 답글"
@@ -1133,7 +1164,7 @@ msgstr "이 게시글 읽기"
 msgid "%s results"
 msgstr "%s개의 결과"
 
-#: classic-redux/default/search.php:38 themes/foundation/default/search.php:36
+#: classic-redux/default/search.php:38 themes/foundation/default/search.php:34
 msgid "No search results found"
 msgstr "검색결과 없음"
 
@@ -1146,7 +1177,7 @@ msgid "Tablets"
 msgstr "태블릿"
 
 #: classic-redux/root-functions.php:107 cms/root-functions.php:140
-#: open/root-functions.php:311 simple/root-functions.php:78
+#: open/root-functions.php:357 simple/root-functions.php:79
 msgid "Header background"
 msgstr "헤더 배경"
 
@@ -1203,7 +1234,7 @@ msgid "Max categories / tags"
 msgstr "카테고리 / 태그 최대 개수"
 
 #: classic-redux/root-functions.php:435 cms/root-functions.php:268
-#: simple/root-functions.php:280
+#: simple/root-functions.php:281
 msgid "CSS Effects"
 msgstr "CSS 효과"
 
@@ -1212,27 +1243,27 @@ msgid "Add a noise effect to the header and theme background"
 msgstr "헤더와 테마 배경에 노이즈 효과 추가"
 
 #: classic-redux/root-functions.php:442 cms/root-functions.php:275
-#: simple/root-functions.php:287
+#: simple/root-functions.php:288
 msgid "Will apply the effect overtop of any background image you upload."
 msgstr "업로드한 배경 이미지에 효과를 적용합니다."
 
-#: cms/default/header-bottom.php:14
+#: cms/default/header-bottom.php:17
 msgid "menu"
 msgstr "메뉴"
 
-#: cms/default/header-bottom.php:21
+#: cms/default/header-bottom.php:24
 msgid "login"
 msgstr "로그인"
 
-#: cms/default/header-bottom.php:25
+#: cms/default/header-bottom.php:28
 msgid "logout"
 msgstr "로그아웃"
 
-#: cms/default/header-bottom.php:38 simple/default/footer-top.php:3
+#: cms/default/header-bottom.php:41 simple/default/footer-top.php:3
 msgid "search this website"
 msgstr "이 웹사이트 검색"
 
-#: cms/default/header-bottom.php:39 simple/default/footer-top.php:5
+#: cms/default/header-bottom.php:42 simple/default/footer-top.php:5
 msgid "search"
 msgstr "검색"
 
@@ -1269,11 +1300,11 @@ msgstr "카테고리 슬라이더"
 msgid "Enable category slider"
 msgstr "카테고리 슬라이더 사용"
 
-#: cms/root-functions.php:231 simple/root-functions.php:261
+#: cms/root-functions.php:231 simple/root-functions.php:262
 msgid "Tiled Background Image"
 msgstr "타일 모양 배경 이미지"
 
-#: cms/root-functions.php:237 simple/root-functions.php:267
+#: cms/root-functions.php:237 simple/root-functions.php:268
 msgid "(Scaled for retina displays)"
 msgstr "(레티나 디스플레이에 맞춤)"
 
@@ -1349,7 +1380,15 @@ msgstr "추가기능 설정"
 msgid "Menus"
 msgstr "메뉴"
 
-#: core/admin-page-templates.php:16
+#: core/admin-menu.php:60
+msgid "License"
+msgstr "라이선스"
+
+#: core/admin-menu.php:65
+msgid "Upgrade to Pro"
+msgstr "Pro로 업그레이드"
+
+#: core/admin-page-templates.php:17
 msgid "Mobile Page Template"
 msgstr "모바일 페이지 템플릿"
 
@@ -1381,60 +1420,72 @@ msgstr "테마 미리보기"
 msgid "Reset Settings"
 msgstr "설정 초기화"
 
-#: core/class-wptouch-pro.php:351
+#: core/class-wptouch-pro.php:354
 msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
 msgstr "uploads/wptouch-data 디렉터리로부터 자동으로 테마를 가져오지 못했습니다. wp-content/wptouch-data로 직접 이 파일들을 이동하거나 이 문제를 해결하기 위해 %s지원팀에 연락하세요%s."
 
-#: core/class-wptouch-pro.php:371
+#: core/class-wptouch-pro.php:374
 msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
 msgstr "클라우드로부터 WPtouch 테마를 설치할 수 없습니다. 자세한 정보는 %s이 글%s을 참조하세요."
 
-#: core/class-wptouch-pro.php:375
+#: core/class-wptouch-pro.php:378
 msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
 msgstr "서버 설정 때문에 WPtouch가 클라우드로부터 활성 테마를 설치할 수 없습니다. 해결 방법은 %s이 글%s을 참조하세요."
 
-#: core/class-wptouch-pro.php:587
+#: core/class-wptouch-pro.php:590
 msgid "Unsupported Browser"
 msgstr "미지원 브라우저"
 
-#: core/class-wptouch-pro.php:588
+#: core/class-wptouch-pro.php:591
 msgid "Theme Preview requires Chrome or Safari."
 msgstr "테마 미리보기에는 Chrome 또는 Safari가 필요합니다."
 
-#: core/class-wptouch-pro.php:589
+#: core/class-wptouch-pro.php:592
 msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
 msgstr "이것은 모든 WPtouch Pro 설정을 초기화합니다.\n계속할까요?"
 
-#: core/class-wptouch-pro.php:590
+#: core/class-wptouch-pro.php:593
 msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
 msgstr "이것은 모든 WPtouch Pro 메뉴 및 아이콘 설정을 초기화합니다.\n계속할까요?"
 
-#: core/class-wptouch-pro.php:592
+#: core/class-wptouch-pro.php:594
+msgid "Offline"
+msgstr "오프라인"
+
+#: core/class-wptouch-pro.php:595
 msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
 msgstr "오프라인 상태이신 것 같습니다. 인터넷에 연결하여 이용 가능한 BraveNewCloud 아이템을 보세요."
 
-#: core/class-wptouch-pro.php:593
+#: core/class-wptouch-pro.php:596
 msgid "The item failed to download for this reason: %reason%"
 msgstr "다음 사유로 항목을 다운로드하지 못했습니다: %reason%"
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:597
 msgid "You are about to reset your license information. Proceed?"
 msgstr "라이선스 정보를 초기화하려고 합니다. 계속할까요?"
 
-#: core/class-wptouch-pro.php:1130
+#: core/class-wptouch-pro.php:599
+msgid "Upload Failed: Not a valid image."
+msgstr "업로드 실패: 올바른 이미지가 아닙니다."
+
+#: core/class-wptouch-pro.php:600
+msgid "Click to view theme demo"
+msgstr "테마 예시를 보려면 클릭하세요"
+
+#: core/class-wptouch-pro.php:1167
 #: themes/foundation/modules/webapp/webapp.php:12
 msgid "Settings"
 msgstr "설정"
 
-#: core/class-wptouch-pro.php:1166
+#: core/class-wptouch-pro.php:1203
 msgid "%s Changelog"
 msgstr "%s 체인지로그"
 
-#: core/class-wptouch-pro.php:2338
+#: core/class-wptouch-pro.php:2377
 msgid "Directory Problem"
 msgstr "디렉터리 문제"
 
-#: core/class-wptouch-pro.php:2339
+#: core/class-wptouch-pro.php:2378
 msgid "One or more required directories could not be created"
 msgstr "하나 이상의 필수 디렉터리를 생성할 수 없습니다"
 
@@ -1486,6 +1537,52 @@ msgstr "이 플러그인은 WPtouch Pro에서 올바르게 작동하지 않을 �
 #: core/notifications.php:214
 msgid "Icon Installation Issue"
 msgstr "아이콘 설치 문제"
+
+#: hammock/default/functions.php:10 prose/default/functions.php:33
+msgid "Load more from this collection"
+msgstr "이 컬렉션의 항목 추가 로드"
+
+#: hammock/default/header-bottom.php:38 prose/default/header-bottom.php:19
+msgid "Collections"
+msgstr "컬렉션"
+
+#: hammock/default/header-bottom.php:41 prose/default/header-bottom.php:22
+msgid "Options"
+msgstr "옵션"
+
+#: hammock/root-functions.php:61 prose/root-functions.php:75
+msgid "Show categories as \"collections\" in menu"
+msgstr "메뉴에 \"컬렉션\"으로 카테고리 표시"
+
+#: hammock/root-functions.php:72 prose/root-functions.php:86
+msgid "Maximum number of items in categories/collections"
+msgstr "카테고리/컬렉션의 최대 항목 개수"
+
+#: hammock/root-functions.php:88
+msgid "Animate the featured image on posts"
+msgstr "게시글의 추천 이미지 움직이기"
+
+#: hammock/root-functions.php:102 open/root-functions.php:119
+#: prose/root-functions.php:105
+msgid "Header Image"
+msgstr "헤더 이미지"
+
+#: hammock/root-functions.php:108 prose/root-functions.php:111
+msgid "Displayed behind header on pages and posts without featured images."
+msgstr "페이지 및 게시글의 헤더 뒤에 추천 이미지 없이 표시됩니다."
+
+#: hammock/root-functions.php:121 prose/root-functions.php:124
+msgid "Site Intro"
+msgstr "사이트 소개"
+
+#: hammock/root-functions.php:127 prose/root-functions.php:130
+msgid "Displayed on post listing page below site name."
+msgstr "사이트 이름 아래의 게시글 목록 페이지에 표시됩니다."
+
+#: hammock/root-functions.php:177 prose/root-functions.php:204
+#: themes/foundation/root-functions.php:11
+msgid "Branding"
+msgstr "브랜딩"
 
 #: include/add-ons/wordtwit-pro.php:179
 #: themes/foundation/modules/twitter/twitter.php:42
@@ -1539,88 +1636,88 @@ msgstr "%0.1fms에 %d개의 쿼리"
 msgid "Default Template"
 msgstr "기본 템플릿"
 
-#: infinity-cache/infinity-cache.php:65 infinity-cache/infinity-cache.php:233
+#: infinity-cache/infinity-cache.php:66 infinity-cache/infinity-cache.php:241
 msgid "Purge Page Cache"
 msgstr "페이지 캐시 삭제"
 
-#: infinity-cache/infinity-cache.php:126
+#: infinity-cache/infinity-cache.php:134
 msgid "Enable Infinity Cache"
 msgstr "무한 캐시 켜기"
 
-#: infinity-cache/infinity-cache.php:134
+#: infinity-cache/infinity-cache.php:142
 msgid "Create cache for desktop users"
 msgstr "데스크톱 사용자를 위해 캐시 생성"
 
-#: infinity-cache/infinity-cache.php:135
+#: infinity-cache/infinity-cache.php:143
 msgid "If you are using another cache plugin such as W3, you can disable this."
 msgstr "W3와 같은 다른 캐시 플러그인을 사용 중인 경우 이 옵션을 끌 수 있습니다."
 
-#: infinity-cache/infinity-cache.php:156
+#: infinity-cache/infinity-cache.php:164
 msgid "Compress output using GZIP"
 msgstr "GZIP으로 출력물 압축"
 
-#: infinity-cache/infinity-cache.php:166
+#: infinity-cache/infinity-cache.php:174
 msgid "Maximum age of cached content"
 msgstr "캐시된 컨텐츠의 최대 보관기간"
 
-#: infinity-cache/infinity-cache.php:167
+#: infinity-cache/infinity-cache.php:175
 msgid "Each cached page will automatically be regenerated after this period elapses"
 msgstr "캐시된 각 페이지는 이 기간이 지난 후에 자동으로 다시 생성됩니다"
 
-#: infinity-cache/infinity-cache.php:171 infinity-cache/infinity-cache.php:172
-#: infinity-cache/infinity-cache.php:173 infinity-cache/infinity-cache.php:174
-#: infinity-cache/infinity-cache.php:175
+#: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
+#: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:183
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d시간"
 msgstr[1] "%d시간"
 
-#: infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:190
 msgid "Remove stale cache file interval"
 msgstr "오래된 캐시 파일 제거 간격"
 
-#: infinity-cache/infinity-cache.php:187
+#: infinity-cache/infinity-cache.php:195
 msgid "Hourly"
 msgstr "매시간"
 
-#: infinity-cache/infinity-cache.php:188
+#: infinity-cache/infinity-cache.php:196
 msgid "Daily"
 msgstr "매일"
 
-#: infinity-cache/infinity-cache.php:195
+#: infinity-cache/infinity-cache.php:203
 msgid "Disable caching for any of these matched URL fragments"
 msgstr "다음과 일치하는 URL 위치의 캐시 끄기"
 
-#: infinity-cache/infinity-cache.php:196
+#: infinity-cache/infinity-cache.php:204
 msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
 msgstr "각 URL 위치를 포함하는 페이지를 캐시하지 않기 위해 라인당 1개의 URL 위치 추가(예: %s)"
 
-#: infinity-cache/infinity-cache.php:204
+#: infinity-cache/infinity-cache.php:212
 msgid "Content Distribution Network Service"
 msgstr "컨텐츠 전송 네트워크 서비스"
 
-#: infinity-cache/infinity-cache.php:205
+#: infinity-cache/infinity-cache.php:213
 msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
 msgstr "컨텐츠 전송 네트워크(CDN)를 사용하면 웹사이트의 반응 속도를 상당히 높일 수 있습니다."
 
-#: infinity-cache/infinity-cache.php:210
-#: themes/foundation/modules/login/login-html.php:29
+#: infinity-cache/infinity-cache.php:218
+#: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr "가입"
 
-#: infinity-cache/infinity-cache.php:218
+#: infinity-cache/infinity-cache.php:226
 msgid "URL %d"
 msgstr "URL %d"
 
-#: infinity-cache/infinity-cache.php:219
+#: infinity-cache/infinity-cache.php:227
 msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
 msgstr "CDN에 설정한 URL을 추가하세요. 예: http://cdn%d.mysite.com. 멀티사이트 도메인도 추가하세요."
 
-#: infinity-cache/infinity-cache.php:241
+#: infinity-cache/infinity-cache.php:249
 msgid "Infinity Cache"
 msgstr "무한 캐시"
 
-#: infinity-cache/infinity-cache.php:628
+#: infinity-cache/infinity-cache.php:636
 msgid "An example for this URL is: %s%s%s."
 msgstr "이 URL의 예: %s%s%s."
 
@@ -1636,63 +1733,730 @@ msgstr "모바일 컨텐츠"
 msgid "Enable mobile content display"
 msgstr "모바일 컨텐츠 표시"
 
-#: multi-ads/multi-ads.php:179
+#: mobilestore/default/functions.php:114
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Login now"
+msgstr "지금 로그인"
+
+#: mobilestore/default/functions.php:115
+msgid "Close"
+msgstr "닫기"
+
+#: mobilestore/default/functions.php:116
+msgid "Add Company Name"
+msgstr "회사명 추가"
+
+#: mobilestore/default/functions.php:117
+msgid "Add Order Notes"
+msgstr "다른 메모 추가"
+
+#: mobilestore/default/functions.php:118
+msgid "CVC"
+msgstr "CVC"
+
+#: mobilestore/default/functions.php:178
+msgid "view more products"
+msgstr "제품 더 보기"
+
+#: mobilestore/default/functions.php:196
+msgid "Added to cart"
+msgstr "카트에 추가"
+
+#: mobilestore/default/header-bottom.php:9
+msgid "Product Categories"
+msgstr "제품 카테고리"
+
+#: mobilestore/default/header-bottom.php:15
+msgid "Recently Viewed"
+msgstr "최근 조회"
+
+#: mobilestore/default/header-bottom.php:20
+msgid "Site Menu"
+msgstr "사이트 메뉴"
+
+#: mobilestore/default/header-bottom.php:70
+msgid "Cart"
+msgstr "카트"
+
+#: mobilestore/default/header-bottom.php:78
+msgid "Search the store"
+msgstr "스토어 검색"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Recent Searches"
+msgstr "최근 검색"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Clear"
+msgstr "지우기"
+
+#: mobilestore/default/header-bottom.php:100
+msgid "Back to blog index"
+msgstr "블로그 인덱스로 돌아가기"
+
+#: mobilestore/default/header-bottom.php:114
+msgid "sorting"
+msgstr "정렬"
+
+#: mobilestore/default/header-bottom.php:115
+msgid "filter by"
+msgstr "정렬 기준:"
+
+#: mobilestore/default/post-loop.php:9
+msgid "Read This Post &rsaquo;"
+msgstr "이 글 읽기 &rsaquo;"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:18
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:33
+msgid "Shipping #%d"
+msgstr "#%d 배송"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:20
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:35
+msgid "Shipping and Handling"
+msgstr "배송 및 취급"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:74
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr "이용 가능한 배송 방법을 보려면 배송료 계산기를 사용하세요."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:78
+msgid "Please continue to the checkout and enter your full address to see if there are any available shipping methods."
+msgstr "체크아웃을 진행하시고 이용 가능한 배송 방법이 있으면 주소를 입력하세요."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:82
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:68
+msgid "Please fill in your details to see available shipping methods."
+msgstr "이용 가능한 배송 방법을 보려면 세부정보를 입력하세요."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:91
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:97
+msgid "There doesn&lsquo;t seem to be any available shipping methods. Please double check your address, or contact us if you need any help."
+msgstr "이용 가능한 배송 방법이 없는 것 같습니다. 주소를 다시 확인하시고 도움이 필요하시면 연락해주세요."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:112
+#: mobilestore/default/woocommerce/cart/totals.php:46
+msgid "Shipping"
+msgstr "배송"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:19
+#: mobilestore/default/woocommerce/cart/totals.php:28
+#: mobilestore/default/woocommerce/checkout/review-order.php:25
+msgid "Cart Subtotal"
+msgstr "카트 소계"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:66
+#: mobilestore/default/woocommerce/cart/totals.php:121
+msgid " (taxes estimated for %s)"
+msgstr "(%s 예상 세금)"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:69
+#: mobilestore/default/woocommerce/cart/totals.php:123
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr "참고: 예상 배송료 및 세금은 %s이며 체크아웃 중에 결제 및 배송 정보에 따라 업데이트됩니다."
+
+#: mobilestore/default/woocommerce/cart/cart.php:51
+msgid "Available on backorder"
+msgstr "이월 주문 가능"
+
+#: mobilestore/default/woocommerce/cart/cart.php:57
+msgid "Remove this item"
+msgstr "이 항목 제거"
+
+#: mobilestore/default/woocommerce/cart/cart.php:83
+msgid "Update Cart"
+msgstr "카트 업데이트"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+msgid "Coupon"
+msgstr "쿠폰"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:41
+msgid "Coupon code"
+msgstr "쿠폰 코드"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:43
+msgid "Apply"
+msgstr "적용"
+
+#: mobilestore/default/woocommerce/cart/cart.php:111
+msgid "Proceed to Checkout"
+msgstr "체크아웃 진행"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:24
+msgid "edit cart"
+msgstr "카트 수정"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:29
+msgid "checkout"
+msgstr "체크아웃"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:73
+msgid "No products in the cart."
+msgstr "카트에 제품이 없습니다."
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:81
+msgid "Subtotal"
+msgstr "소계"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:89
+msgid "Checkout"
+msgstr "체크아웃"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:32
+msgid "Free"
+msgstr "무료"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
+msgstr "죄송합니다. %s에 배송 가능한 배송 방법이 없는 것 같습니다."
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "If you require assistance or wish to make alternate arrangements please contact us."
+msgstr "도움이 필요하시거나 변경하실 사항이 있으시면 연락해주세요."
+
+#: mobilestore/default/woocommerce/cart/totals.php:22
+msgid "Cart Totals"
+msgstr "카트 소계"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+msgid "Cart Discount"
+msgstr "카트 할인"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "[Remove]"
+msgstr "[제거]"
+
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "Order Discount"
+msgstr "주문 할인"
+
+#: mobilestore/default/woocommerce/cart/totals.php:92
+#: mobilestore/default/woocommerce/checkout/review-order.php:94
+msgid "Order Total"
+msgstr "주문 합계"
+
+#: mobilestore/default/woocommerce/cart/totals.php:105
+msgid "(Includes %s)"
+msgstr "(%s 포함)"
+
+#: mobilestore/default/woocommerce/cart/totals.php:135
+msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
+msgstr "배송 방법을 찾을 수 없습니다. 배송료를 다시 계산하고 주/카운티 및 우편번호를 입력하여 다른 배송 방법이 없는지 확인하세요."
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:20
+msgid "You must be logged in to checkout."
+msgstr "체크아웃하려면 로그인해야 합니다."
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Your Order"
+msgstr "내 주문"
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Edit Items"
+msgstr "항목 수정"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Shopped here before?"
+msgstr "여기서 구입한 적이 있으세요?"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:23
+msgid "Enter your login details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section."
+msgstr "아래의 상자에 로그인 정보를 입력하세요. 신규 고객인 경우 결제 및 배송 영역으로 이동하세요."
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:19
+#: mobilestore/default/woocommerce/checkout/review-order.php:18
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:22
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:27
+#: mobilestore/default/woocommerce/emails/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:23
+#: mobilestore/default/woocommerce/order/order-details.php:20
+msgid "Product"
+msgstr "제품"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:20
+msgid "Totals"
+msgstr "합계"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:52
+msgid "Payment"
+msgstr "지불"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:77
+msgid "Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "죄송합니다. 내 위치에서 이용 가능한 지불 방법이 없는 것 같습니다. 도움이 필요하시거나 변경하실 사항이 있으시면 연락해주세요."
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:87
+msgid "Pay for order"
+msgstr "주문 결제"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:31
+msgid "Ship to a different address?"
+msgstr "다른 주소로 배송할까요?"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:57
+msgid "Additional Information"
+msgstr "추가 정보"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:19
+#: mobilestore/default/woocommerce/order/order-details.php:21
+msgid "Total"
+msgstr "합계"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:171
+msgid "Please fill in your details above to see available payment methods."
+msgstr "이용 가능한 지불 방법을 보려면 위에 세부정보를 입력하세요."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:173
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "죄송합니다. 해당 주에서 이용 가능한 지불 방법이 없는 것 같습니다. 도움이 필요하시거나 변경하실 사항이 있으시면 연락해주세요."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr "브라우저에서 JavaScript가 지원되지 않거나 꺼져 있기 때문에 주문 전에 <em>합계 업데이트</em> 버튼을 클릭하세요. 클릭하지 않으면 위의 금액보다 많은 금액이 청구될 수 있습니다."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Update totals"
+msgstr "합계 업데이트"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:194
+msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr "본인은 <a href=\"%s\" target=\"_blank\">이용약관</a>에 동의합니다"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:200
+msgid "Place order"
+msgstr "주문하기"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:13
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
+msgid "You have received an order from %s. Their order is as follows:"
+msgstr "%s에게서 주문을 받았습니다. 주문 내역은 다음과 같습니다."
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:17
+msgid "Order: %s"
+msgstr "주문: %s"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:28
+#: mobilestore/default/woocommerce/emails/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:24
+msgid "Quantity"
+msgstr "수량"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:25
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:29
+#: mobilestore/default/woocommerce/emails/customer-note.php:29
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:25
+msgid "Price"
+msgstr "가격"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:50
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:51
+#: mobilestore/default/woocommerce/emails/customer-note.php:55
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:51
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:38
+msgid "Customer details"
+msgstr "고객 세부정보"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:53
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:54
+#: mobilestore/default/woocommerce/emails/customer-note.php:58
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:54
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:49
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:41
+msgid "Email:"
+msgstr "이메일:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:56
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:57
+#: mobilestore/default/woocommerce/emails/customer-note.php:61
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:57
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:52
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:44
+msgid "Tel:"
+msgstr "전화:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
+msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
+msgstr "안녕하세요. %s의 최근 주문이 완료되었습니다. 주문 세부정보는 아래에 나와 있습니다."
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:22
+#: mobilestore/default/woocommerce/emails/customer-note.php:22
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:18
+msgid "Order:"
+msgstr "주문:"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
+msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
+msgstr "%s에서 주문이 이루어졌습니다. 결제하시려면 다음 링크로 이동하세요: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+msgid "pay"
+msgstr "결제"
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
+msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
+msgstr "%s 계정을 만들어주셔서 감사합니다. 귀하의 사용자 이름은 <strong>%s</strong>입니다."
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:15
+msgid "You can access your account area here: %s."
+msgstr "여기서 계정 영역으로 이동하실 수 있습니다: %s."
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:13
+msgid "Hello, a note has just been added to your order:"
+msgstr "안녕하세요. 주문에 메모가 추가되었습니다:"
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:18
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:21
+msgid "For your reference, your order details are shown below."
+msgstr "아래에 주문 세부정보가 나와 있습니다."
+
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
+msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
+msgstr "주문이 접수되어 처리 중입니다. 아래에 주문 세부정보가 나와 있습니다:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:13
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "누군가가 다음 계정의 비밀번호 초기화를 요청했습니다:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:15
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:15
+msgid "Username: %s"
+msgstr "사용자 이름: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:16
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "실수로 요청하셨으면 이 이메일을 무시하시면 됩니다."
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:17
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:17
+msgid "To reset your password, visit the following address:"
+msgstr "비밀번호를 초기화하려면 다음 주소로 이동하세요:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:20
+msgid "Click here to reset your password"
+msgstr "여기를 클릭하여 비밀번호를 초기화하세요"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:18
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:12
+msgid "Billing address"
+msgstr "청구지 주소"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:28
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:17
+msgid "Shipping address"
+msgstr "배송지 주소"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:34
+msgid "This product is no longer available"
+msgstr "이 제품은 더 이상 구입하실 수 없습니다"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:76
+msgid "Download %d:"
+msgstr "%d 다운로드:"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:78
+msgid "Download:"
+msgstr "다운로드:"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:19
+msgid "Order number: %s"
+msgstr "주문 번호: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:21
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:20
+msgid "Order date: %s"
+msgstr "주문일: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+msgid "jS F Y"
+msgstr "jS F Y"
+
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:38
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:46
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:38
+#: mobilestore/default/woocommerce/order/order-details.php:97
+msgid "Your details"
+msgstr "세부정보"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:28
+msgid "Quantity: %s"
+msgstr "수량: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:31
+msgid "Cost: %s"
+msgstr "가격: %s"
+
+#: mobilestore/default/woocommerce/loop/no-products-found.php:14
+msgid "No products were found matching your search."
+msgstr "제품 검색결과가 없습니다."
+
+#: mobilestore/default/woocommerce/loop-shop.php:40
+msgid "No products found which match your selection."
+msgstr "선택 항목과 일치하는 제품이 없습니다."
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:19
+msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
+msgstr "<strong>%1$s</strong>님 안녕하세요(%1$s님이 아니세요? <a href=\"%2$s\">로그아웃하세요</a>)."
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:26
+msgid "<a href=\"%s\">Edit your password and account details</a>."
+msgstr "<a href=\"%s\">비밀번호와 계정 세부정보를 수정하세요</a>."
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:26
+msgid "Recent Orders"
+msgstr "최근 주문"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:40
+msgid "%s for %s item"
+msgid_plural "%s for %s items"
+msgstr[0] "%s(%s개)"
+msgstr[1] "%s(%s개)"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:49
+msgid "Pay"
+msgstr "결제"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:56
+#: prose/default/comments.php:48 themes/foundation/default/comments.php:48
+msgid "Cancel"
+msgstr "취소"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:62
+msgid "View"
+msgstr "보기"
+
+#: mobilestore/default/woocommerce/order/order-details.php:66
+msgid "Download file%s"
+msgstr "%s 파일 다운로드"
+
+#: mobilestore/default/woocommerce/order/order-details.php:101
+msgid "Email"
+msgstr "이메일"
+
+#: mobilestore/default/woocommerce/order/order-details.php:102
+msgid "Telephone"
+msgstr "전화"
+
+#: mobilestore/default/woocommerce/order/order-details.php:118
+msgid "Billing Address"
+msgstr "청구지 주소"
+
+#: mobilestore/default/woocommerce/order/order-details.php:122
+#: mobilestore/default/woocommerce/order/order-details.php:137
+msgid "N/A"
+msgstr "해당 없음"
+
+#: mobilestore/default/woocommerce/order/order-details.php:133
+msgid "Shipping Address"
+msgstr "배송지 주소"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:63
+msgid "Products tagged &ldquo;"
+msgstr "태그된 제품 &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:91
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:190
+msgid "Search results for &ldquo;"
+msgstr "검색 결과 &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:148
+msgid "Error 404"
+msgstr "오류 404"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:194
+msgid "Posts tagged &ldquo;"
+msgstr "다음 태그가 지정된 글: &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:199
+msgid "Author:"
+msgstr "작성자:"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:204
+#: themes/foundation/root-functions.php:1087
+msgid "Page"
+msgstr "페이지"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:20
+msgid "Username or email"
+msgstr "사용자 이름 또는 이메일"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:24
+msgid "Password"
+msgstr "비밀번호"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:33
+msgid "Lost Password?"
+msgstr "비밀번호 찾기"
+
+#: mobilestore/root-functions.php:6
+msgid "Store"
+msgstr "스토어"
+
+#: mobilestore/root-functions.php:189
+msgid "Off-Canvas left menu"
+msgstr "왼쪽 숨김 메뉴"
+
+#: mobilestore/root-functions.php:198
+msgid "Footer Menu"
+msgstr "푸터 메뉴"
+
+#: mobilestore/root-functions.php:201
+msgid "Menu shown in the MobileStore footer"
+msgstr "MobileStore 푸터에 표시되는 메뉴"
+
+#: mobilestore/root-functions.php:208
+msgid "Menu & Cart Background"
+msgstr "메뉴 및 카트 배경"
+
+#: mobilestore/root-functions.php:211
+msgid "Header & Footer Background"
+msgstr "헤더 및 푸터 배경"
+
+#: mobilestore/root-functions.php:263
+msgid "Primary Actions & Purchase Flow"
+msgstr "기본 작업 및 구매 흐름"
+
+#: mobilestore/root-functions.php:274
+msgid "Highlight Color"
+msgstr "강조 색깔"
+
+#: mobilestore/root-functions.php:390
+msgid "Product Listing"
+msgstr "제품 목록"
+
+#: mobilestore/root-functions.php:396
+msgid "Number of products shown per page in product listings"
+msgstr "제품 목록에 페이지당 표시할 제품 수"
+
+#: mobilestore/root-functions.php:410
+msgid "Product Filters"
+msgstr "제품 필터"
+
+#: mobilestore/root-functions.php:416
+msgid "Show WooCommerce product filters for"
+msgstr "WooCommerce 제품 필터 표시:"
+
+#: mobilestore/root-functions.php:431
+msgid "Site Sidebar"
+msgstr "사이트 사이드바"
+
+#: mobilestore/root-functions.php:437
+msgid "Show category menu in sidebar"
+msgstr "사이드바에 카테고리 메뉴 표시"
+
+#: mobilestore/root-functions.php:445
+msgid "Show recently viewed products in sidebar"
+msgstr "사이드바에 최근에 조회한 제품 표시"
+
+#: mobilestore/root-functions.php:523
+msgid "Site logo display size"
+msgstr "사이트 로고 표시 크기"
+
+#: mobilestore/root-functions.php:528
+msgid "Short (default)"
+msgstr "짧게(기본)"
+
+#: mobilestore/root-functions.php:529
+msgid "Tall (longer vertically for square logos)"
+msgstr "길게(네모 로고의 세로보다 길게)"
+
+#: mobilestore/root-functions.php:536
+msgid "Show site description in large header"
+msgstr "더 큰 헤더에 사이트 설명 표시"
+
+#: multi-ads/multi-ads.php:228
 msgid "Header Ad"
 msgstr "헤더 광고"
 
-#: multi-ads/multi-ads.php:181
+#: multi-ads/multi-ads.php:230
 msgid "Footer Ad"
 msgstr "푸터 광고"
 
-#: multi-ads/multi-ads.php:183
+#: multi-ads/multi-ads.php:232
 msgid "Pre-content Ad"
 msgstr "컨텐츠 앞 광고"
 
-#: multi-ads/multi-ads.php:185
+#: multi-ads/multi-ads.php:234
 msgid "Post-content Ad"
 msgstr "컨텐츠 뒤 광고"
 
-#: multi-ads/multi-ads.php:206
+#: multi-ads/multi-ads.php:236
+msgid "Mid-content Ad"
+msgstr "컨텐츠 중간 광고"
+
+#: multi-ads/multi-ads.php:257
 msgid "Enabled"
 msgstr "켜짐"
 
-#: multi-ads/multi-ads.php:214
+#: multi-ads/multi-ads.php:265
 msgid "Perform A/B test with secondary advertising unit"
 msgstr "보조 광고단위로 A/B 테스트 수행"
 
-#: multi-ads/multi-ads.php:222
+#: multi-ads/multi-ads.php:273
 msgid "Primary Advertising Unit"
 msgstr "기본 광고단위"
 
-#: multi-ads/multi-ads.php:223
+#: multi-ads/multi-ads.php:274
 msgid "HTML, CSS and JS are all accepted."
 msgstr "HTML, CSS, JS 모두 가능합니다."
 
-#: multi-ads/multi-ads.php:230
+#: multi-ads/multi-ads.php:281
 msgid "Secondary Advertising Unit"
 msgstr "보조 광고단위"
 
-#: multi-ads/multi-ads.php:231
+#: multi-ads/multi-ads.php:282
 msgid "If defined, secondary advertising code will be shown 50% of the time."
 msgstr "보조 광고 코드가 설정된 경우 50%의 시간 동안 표시됩니다."
 
-#: multi-ads/multi-ads.php:238
+#: multi-ads/multi-ads.php:289
 msgid "Display on archive/post listings"
 msgstr "아카이브/게시글 목록에 표시"
 
-#: multi-ads/multi-ads.php:246
+#: multi-ads/multi-ads.php:297
 msgid "Display on single posts"
 msgstr "단일 게시글에 표시"
 
-#: multi-ads/multi-ads.php:254
+#: multi-ads/multi-ads.php:305
 msgid "Display on static pages"
 msgstr "정적 페이지에 표시"
 
-#: multi-ads/multi-ads.php:262
+#: multi-ads/multi-ads.php:313
 msgid "Display on taxonomy listings"
 msgstr "체계 목록에 표시"
 
-#: multi-ads/multi-ads.php:269
+#: multi-ads/multi-ads.php:320
 msgid "Display in search results"
 msgstr "검색결과에 표시"
 
@@ -1713,31 +2477,31 @@ msgstr "저희의 위치"
 msgid "Our Hours"
 msgstr "영업시간"
 
-#: open/default/hours.php:12 open/root-functions.php:179
+#: open/default/hours.php:12 open/root-functions.php:206
 msgid "Sunday"
 msgstr "일요일"
 
-#: open/default/hours.php:13 open/root-functions.php:187
+#: open/default/hours.php:13 open/root-functions.php:214
 msgid "Monday"
 msgstr "월요일"
 
-#: open/default/hours.php:14 open/root-functions.php:195
+#: open/default/hours.php:14 open/root-functions.php:222
 msgid "Tuesday"
 msgstr "화요일"
 
-#: open/default/hours.php:15 open/root-functions.php:203
+#: open/default/hours.php:15 open/root-functions.php:230
 msgid "Wednesday"
 msgstr "수요일"
 
-#: open/default/hours.php:16 open/root-functions.php:211
+#: open/default/hours.php:16 open/root-functions.php:238
 msgid "Thursday"
 msgstr "목요일"
 
-#: open/default/hours.php:17 open/root-functions.php:219
+#: open/default/hours.php:17 open/root-functions.php:246
 msgid "Friday"
 msgstr "금요일"
 
-#: open/default/hours.php:18 open/root-functions.php:227
+#: open/default/hours.php:18 open/root-functions.php:254
 msgid "Saturday"
 msgstr "토요일"
 
@@ -1745,89 +2509,87 @@ msgstr "토요일"
 msgid "Closed"
 msgstr "닫음"
 
-#: open/root-functions.php:73
+#: open/root-functions.php:77
+msgid "Open Homepage Menu"
+msgstr "Open 홈페이지 메뉴"
+
+#: open/root-functions.php:83
+msgid "Show full menu on Open homepage"
+msgstr "홈페이지를 열 때 전체 메뉴 표시"
+
+#: open/root-functions.php:84
+msgid "If disabled, only Location & Hours links will be shown"
+msgstr "이 옵션을 끄면 위치 및 시간 링크만 표시됩니다"
+
+#: open/root-functions.php:100
 msgid "Tagline"
 msgstr "태그라인"
 
-#: open/root-functions.php:79
+#: open/root-functions.php:106
 msgid "Displayed below your logo on the homepage."
 msgstr "홈페이지의 로고 아래에 표시됩니다."
 
-#: open/root-functions.php:92 prose/root-functions.php:104
-msgid "Header Image"
-msgstr "헤더 이미지"
-
-#: open/root-functions.php:98
+#: open/root-functions.php:125
 msgid "Displayed behind header on pages."
 msgstr "페이지의 헤더 뒤에 표시됩니다."
 
-#: open/root-functions.php:111
+#: open/root-functions.php:138
 msgid "Location"
 msgstr "위치"
 
-#: open/root-functions.php:117 simple/root-functions.php:229
+#: open/root-functions.php:144 simple/root-functions.php:230
 msgid "Map address"
 msgstr "주소"
 
-#: open/root-functions.php:118
+#: open/root-functions.php:145
 msgid "Enter an address and a menu item for 'Our Location' will be shown."
 msgstr "주소를 입력하시면 '저희의 위치' 메뉴 항목이 표시됩니다."
 
-#: open/root-functions.php:130
+#: open/root-functions.php:157
 msgid "Call to Action"
 msgstr "작업"
 
-#: open/root-functions.php:136
+#: open/root-functions.php:163
 msgid "Show call to action button at bottom of pages"
 msgstr "페이지 하단에 작업 버튼 표시"
 
-#: open/root-functions.php:137
+#: open/root-functions.php:164
 msgid "Give visitors a one-click action to follow and increase your conversions."
 msgstr "방문자가 클릭 한 번으로 팔로우할 수 있는 버튼을 표시하고 전환율을 높이세요."
 
-#: open/root-functions.php:144
+#: open/root-functions.php:171
 msgid "Button Label"
 msgstr "버튼 라벨"
 
-#: open/root-functions.php:152
+#: open/root-functions.php:179
 msgid "Target URL"
 msgstr "대상 URL"
 
-#: open/root-functions.php:153
+#: open/root-functions.php:180
 msgid "Prefix your phone number with \"tel:\" to allow one-click phone calls."
 msgstr "클릭 한 번으로 전화를 걸 수 있도록 전화번호 앞에 \"전화:\"를 지정합니다."
 
-#: open/root-functions.php:165
+#: open/root-functions.php:192
 msgid "Hours"
 msgstr "시간"
 
-#: open/root-functions.php:171
+#: open/root-functions.php:198
 msgid "Use built-in Hours feature"
 msgstr "기본 시간 기능 사용"
 
-#: open/root-functions.php:172
+#: open/root-functions.php:199
 msgid "Add your hours and the current day's hours will appear on the homepage along with a menu item for 'Our Hours'."
 msgstr "시간을 추가하시면 해당 날짜의 시간이 '영업시간' 메뉴 항목과 함께 홈페이지에 표시됩니다."
 
-#: open/root-functions.php:180
+#: open/root-functions.php:207
 msgid "Will show as closed if left blank."
 msgstr "빈 칸으로 두시면 닫음으로 표시됩니다."
 
-#: open/root-functions.php:236
+#: open/root-functions.php:263
 msgid "Let visitors know about holidays, vacations, and other special hours"
 msgstr "방문자들에게 공휴일, 휴가, 특별한 시간을 알려주세요"
 
-#: open/root-functions.php:302 prose/root-functions.php:189
-#: scaffold/root-functions.php:75
-msgid "Primary Menu"
-msgstr "기본 메뉴"
-
-#: open/root-functions.php:305 prose/root-functions.php:192
-#: scaffold/root-functions.php:78
-msgid "Menus are awesome!"
-msgstr "메뉴가 멋집니다!"
-
-#: open/root-functions.php:310
+#: open/root-functions.php:356
 msgid "Main branding colour"
 msgstr "메인 브랜드 색깔"
 
@@ -1927,37 +2689,72 @@ msgstr "WPtouch Pro 3은 WPtouch Pro 2.x와 함께 사용할 수 없습니다. �
 msgid "Unknown error"
 msgstr "알 수 없는 오류"
 
-#: prose/default/functions.php:10
-msgid "Load more from this collection"
-msgstr "이 컬렉션의 항목 추가 로드"
+#: prose/default/comments.php:20 prose/default/comments.php:26
+#: themes/foundation/default/comments.php:20
+#: themes/foundation/default/comments.php:26
+msgid "Load More Comments&hellip;"
+msgstr "더 많은 댓글 로드&hellip;"
 
-#: prose/default/functions.php:11
+#: prose/default/comments.php:38 themes/foundation/default/comments.php:38
+msgid "Comments are closed"
+msgstr "댓글이 닫혔습니다"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply"
+msgstr "답글 남기기"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply to %s"
+msgstr "%s님에게 답글 남기기"
+
+#: prose/default/comments.php:54 themes/foundation/default/comments.php:54
+msgid "You must be %slogged in%s to post a comment."
+msgstr "댓글을 남기려면 %s로그인해야%s 합니다."
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Logged in as"
+msgstr "로그인한 사용자:"
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Log out"
+msgstr "로그아웃"
+
+#: prose/default/comments.php:65 themes/foundation/default/comments.php:65
+msgid "Name"
+msgstr "이름"
+
+#: prose/default/comments.php:67 themes/foundation/default/comments.php:67
+#: themes/foundation/modules/social-links/social-links.php:94
+msgid "E-Mail"
+msgstr "이메일"
+
+#: prose/default/comments.php:69 themes/foundation/default/comments.php:69
+msgid "Website"
+msgstr "웹사이트"
+
+#: prose/default/comments.php:77 themes/foundation/default/comments.php:77
+msgid "Publish"
+msgstr "게시"
+
+#: prose/default/functions.php:34
 msgid "%d minute"
 msgstr "%d분"
 
-#: prose/default/functions.php:12
+#: prose/default/functions.php:35
 msgid "%d minutes"
 msgstr "%d분"
 
-#: prose/default/functions.php:13
+#: prose/default/functions.php:36
 msgid "%d minute remaining"
 msgstr "%d분 남음"
 
-#: prose/default/functions.php:14
+#: prose/default/functions.php:37
 msgid "%d minutes remaining"
 msgstr "%d분 남음"
 
-#: prose/default/functions.php:15
+#: prose/default/functions.php:38
 msgid "Share post"
 msgstr "게시글 공유"
-
-#: prose/default/header-bottom.php:19
-msgid "Collections"
-msgstr "컬렉션"
-
-#: prose/default/header-bottom.php:22
-msgid "Options"
-msgstr "옵션"
 
 #: prose/default/header-bottom.php:43
 msgid "Reading Text Size"
@@ -1979,11 +2776,11 @@ msgstr "큼"
 msgid "Text Sample"
 msgstr "텍스트 샘플"
 
-#: prose/default/header-bottom.php:103
+#: prose/default/header-bottom.php:101
 msgid "Collection"
 msgstr "컬렉션"
 
-#: prose/default/header-bottom.php:105
+#: prose/default/header-bottom.php:103
 msgid "Posts Tagged"
 msgstr "태그된 게시글"
 
@@ -1991,41 +2788,33 @@ msgstr "태그된 게시글"
 msgid "Read Next"
 msgstr "다음 글 읽기"
 
-#: prose/root-functions.php:63
-msgid "Show categories as \"collections\" in menu"
-msgstr "메뉴에 \"컬렉션\"으로 카테고리 표시"
+#: prose/default/single.php:31
+msgid "Discuss this post"
+msgstr "이 게시글에 대해 토론"
 
-#: prose/root-functions.php:74
-msgid "Maximum number of items in categories/collections"
-msgstr "카테고리/컬렉션의 최대 항목 개수"
+#: prose/default/single.php:33
+msgid "View discussion"
+msgstr "토론 보기"
 
-#: prose/root-functions.php:90
-msgid "Animate the featured image on posts"
-msgstr "게시글의 추천 이미지 움직이기"
+#: prose/root-functions.php:64
+msgid "Show comments when reading posts"
+msgstr "글을 읽을 때 댓글 표시"
 
-#: prose/root-functions.php:110
-msgid "Displayed behind header on pages and posts without featured images."
-msgstr "페이지 및 게시글의 헤더 뒤에 추천 이미지 없이 표시됩니다."
+#: prose/root-functions.php:65
+msgid "Comment form will not appear for posts with comments turned off."
+msgstr "댓글 기능이 꺼진 글에는 댓글 양식이 표시되지 않습니다."
 
-#: prose/root-functions.php:123
-msgid "Site Intro"
-msgstr "사이트 소개"
-
-#: prose/root-functions.php:129
-msgid "Displayed on post listing page below site name."
-msgstr "사이트 이름 아래의 게시글 목록 페이지에 표시됩니다."
-
-#: prose/root-functions.php:142
+#: prose/root-functions.php:143
 msgid "Drop Caps"
 msgstr "두문자"
 
-#: prose/root-functions.php:148
+#: prose/root-functions.php:149
 msgid "Use a drop cap at the start of each blog post."
 msgstr "각 블로그 게시글의 처음에 두문자 적용."
 
-#: prose/root-functions.php:200 themes/foundation/root-functions.php:11
-msgid "Branding"
-msgstr "브랜딩"
+#: prose/root-functions.php:196
+msgid "Off-canvas menu for Prose"
+msgstr "Prose의 숨김 메뉴"
 
 #: responsive-images/responsive-images.php:92
 msgid "Responsive Images"
@@ -2055,63 +2844,63 @@ msgstr "품질 최적화"
 msgid "Call Us"
 msgstr "연락처"
 
-#: simple/default/header-bottom.php:15
+#: simple/default/header-bottom.php:17
 msgid "Toggle Menu"
 msgstr "메뉴 토글전환"
 
-#: simple/root-functions.php:58
+#: simple/root-functions.php:59
 msgid "Site Menu (Pulldown)"
 msgstr "사이트 메뉴(풀다운)"
 
-#: simple/root-functions.php:61
+#: simple/root-functions.php:62
 msgid "Pull-down menu at top of pages"
 msgstr "페이지 상단에 풀다운 메뉴"
 
-#: simple/root-functions.php:69
+#: simple/root-functions.php:70
 msgid "Front Page Menu"
 msgstr "프런트 페이지 메뉴"
 
-#: simple/root-functions.php:72
+#: simple/root-functions.php:73
 msgid "Displayed below front page menu and content"
 msgstr "프런트 페이지 메뉴 및 컨텐츠 아래에 표시됨"
 
-#: simple/root-functions.php:190
+#: simple/root-functions.php:191
 msgid "Enable search on blog pages"
 msgstr "블로그 페이지에서 검색 기능 사용"
 
-#: simple/root-functions.php:204
+#: simple/root-functions.php:205
 msgid "Homepage Call Us"
 msgstr "홈페이지 연락처"
 
-#: simple/root-functions.php:210
+#: simple/root-functions.php:211
 msgid "Phone number"
 msgstr "전화번호"
 
-#: simple/root-functions.php:211
+#: simple/root-functions.php:212
 msgid "Enter a phone number and a homepage menu item for 'call us' will be shown."
 msgstr "전화번호를 입력하시면 '연락처'에 관한 홈페이지 메뉴 항목이 표시됩니다."
 
-#: simple/root-functions.php:223
+#: simple/root-functions.php:224
 msgid "Homepage Location"
 msgstr "홈페이지 위치"
 
-#: simple/root-functions.php:230
+#: simple/root-functions.php:231
 msgid "Enter an address and a homepage menu item for 'Our Location' will be shown."
 msgstr "주소를 입력하시면 '저희의 위치'라는 홈페이지 메뉴 항목이 표시됩니다."
 
-#: simple/root-functions.php:242
+#: simple/root-functions.php:243
 msgid "Front Page Content"
 msgstr "프런트 페이지 컨텐츠"
 
-#: simple/root-functions.php:248
+#: simple/root-functions.php:249
 msgid "Front page alternate content"
 msgstr "프런트 페이지 대체 컨텐츠"
 
-#: simple/root-functions.php:249
+#: simple/root-functions.php:250
 msgid "Shows above the front page menu (if enabled), HTML allowed."
 msgstr "프런트 페이지 메뉴(사용하는 경우) 위에 표시합니다. HTML 사용 가능."
 
-#: simple/root-functions.php:286
+#: simple/root-functions.php:287
 msgid "Add a light noise effect to the drop-down menu and theme background"
 msgstr "드롭다운 메뉴 및 테마 배경에 약한 노이즈 효과 추가"
 
@@ -2131,56 +2920,6 @@ msgstr "&laquo; 갤러리의 이전 항목"
 msgid "next in gallery &raquo;"
 msgstr "갤러리의 다음 항목 &raquo;"
 
-#: themes/foundation/default/comments.php:20
-#: themes/foundation/default/comments.php:26
-msgid "Load More Comments&hellip;"
-msgstr "더 많은 댓글 로드&hellip;"
-
-#: themes/foundation/default/comments.php:38
-msgid "Comments are closed"
-msgstr "댓글이 닫혔습니다"
-
-#: themes/foundation/default/comments.php:48
-msgid "Cancel"
-msgstr "취소"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply"
-msgstr "답글 남기기"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply to %s"
-msgstr "%s님에게 답글 남기기"
-
-#: themes/foundation/default/comments.php:54
-msgid "You must be %slogged in%s to post a comment."
-msgstr "댓글을 남기려면 %s로그인해야%s 합니다."
-
-#: themes/foundation/default/comments.php:61
-msgid "Logged in as"
-msgstr "로그인한 사용자:"
-
-#: themes/foundation/default/comments.php:61
-msgid "Log out"
-msgstr "로그아웃"
-
-#: themes/foundation/default/comments.php:65
-msgid "Name"
-msgstr "이름"
-
-#: themes/foundation/default/comments.php:67
-#: themes/foundation/modules/social-links/social-links.php:94
-msgid "E-Mail"
-msgstr "이메일"
-
-#: themes/foundation/default/comments.php:69
-msgid "Website"
-msgstr "웹사이트"
-
-#: themes/foundation/default/comments.php:77
-msgid "Publish"
-msgstr "게시"
-
 #: themes/foundation/default/footer.php:10
 msgid "Back to top"
 msgstr "맨 위로"
@@ -2197,13 +2936,9 @@ msgstr "댓글을 게시하려면 모든 필드에 올바르게 입력하세요.
 msgid "Go back"
 msgstr "뒤로 이동"
 
-#: themes/foundation/default/one-comment.php:12
+#: themes/foundation/default/one-comment.php:17
 msgid "Your comment is awaiting moderation"
 msgstr "댓글이 검토 대기 중입니다"
-
-#: themes/foundation/default/related-posts.php:4
-msgid "Related"
-msgstr "관련"
 
 #: themes/foundation/default/switch-link.php:8
 msgid "mobile"
@@ -2310,116 +3045,116 @@ msgstr "테마 미리보기"
 msgid "Reload"
 msgstr "재업로드"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:190
+#: themes/foundation/modules/custom-posts/custom-posts.php:165
 msgid "Custom Post Support"
 msgstr "맞춤형 게시 지원"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:196
+#: themes/foundation/modules/custom-posts/custom-posts.php:171
 msgid "Enable custom post-type support"
 msgstr "사용자 정의 게시 유형 지원 켜기"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:204
+#: themes/foundation/modules/custom-posts/custom-posts.php:179
 msgid "Show custom post taxonomy"
 msgstr "사용자 정의 게시글 체계 표시"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:216
+#: themes/foundation/modules/custom-posts/custom-posts.php:191
 msgid "Custom Post Types"
 msgstr "사용자 정의 게시 유형"
 
-#: themes/foundation/modules/featured/featured.php:260
+#: themes/foundation/modules/featured/featured.php:265
 msgid "Featured Slider"
 msgstr "추천 슬라이더"
 
-#: themes/foundation/modules/featured/featured.php:266
+#: themes/foundation/modules/featured/featured.php:271
 msgid "Enable featured slider"
 msgstr "추천 슬라이더 사용"
 
-#: themes/foundation/modules/featured/featured.php:267
+#: themes/foundation/modules/featured/featured.php:272
 msgid "Requires at least 2 entries to contain featured images"
 msgstr "추천 이미지를 포함하려면 2개 이상의 입력사항이 필요합니다"
 
-#: themes/foundation/modules/featured/featured.php:274
+#: themes/foundation/modules/featured/featured.php:279
 msgid "Maximum number of posts"
 msgstr "최대 게시글 수"
 
-#: themes/foundation/modules/featured/featured.php:279
+#: themes/foundation/modules/featured/featured.php:284
 msgid "3 posts"
 msgstr "게시글 3개"
 
-#: themes/foundation/modules/featured/featured.php:280
+#: themes/foundation/modules/featured/featured.php:285
 msgid "5 posts"
 msgstr "게시글 5개"
 
-#: themes/foundation/modules/featured/featured.php:281
+#: themes/foundation/modules/featured/featured.php:286
 msgid "10 posts"
 msgstr "게시글 10개"
 
-#: themes/foundation/modules/featured/featured.php:287
+#: themes/foundation/modules/featured/featured.php:292
 msgid "Automatically slide"
 msgstr "자동으로 밀기"
 
-#: themes/foundation/modules/featured/featured.php:295
+#: themes/foundation/modules/featured/featured.php:300
 msgid "Continuously slide"
 msgstr "연속 슬라이드"
 
-#: themes/foundation/modules/featured/featured.php:303
+#: themes/foundation/modules/featured/featured.php:308
 msgid "Grayscale images (CSS 3 effect)"
 msgstr "그레이 스케일 이미지(CSS 3 효과)"
 
-#: themes/foundation/modules/featured/featured.php:304
+#: themes/foundation/modules/featured/featured.php:309
 msgid "Featured slider images will be in grayscale for devices that support CSS filters."
 msgstr "추천 슬라이더 이미지는 CSS 필터를 지원하는 장치에 그레이 스케일로 표시됩니다."
 
-#: themes/foundation/modules/featured/featured.php:319
+#: themes/foundation/modules/featured/featured.php:324
 msgid "Featured slider posts also show in listings"
 msgstr "추천 슬라이더 게시글은 목록에도 표시됩니다"
 
-#: themes/foundation/modules/featured/featured.php:327
+#: themes/foundation/modules/featured/featured.php:332
 msgid "Slide transition speed"
 msgstr "슬라이드 전환 속도"
 
-#: themes/foundation/modules/featured/featured.php:332
+#: themes/foundation/modules/featured/featured.php:337
 msgid "Slow"
 msgstr "느림"
 
-#: themes/foundation/modules/featured/featured.php:333
+#: themes/foundation/modules/featured/featured.php:338
 msgid "Normal"
 msgstr "보통"
 
-#: themes/foundation/modules/featured/featured.php:334
+#: themes/foundation/modules/featured/featured.php:339
 msgid "Fast"
 msgstr "빠름"
 
-#: themes/foundation/modules/featured/featured.php:345
+#: themes/foundation/modules/featured/featured.php:350
 msgid "Show latest posts"
 msgstr "최신 게시글 표시"
 
-#: themes/foundation/modules/featured/featured.php:346
+#: themes/foundation/modules/featured/featured.php:351
 msgid "Show posts from a specific tag"
 msgstr "특정 태그의 게시글 표시"
 
-#: themes/foundation/modules/featured/featured.php:347
+#: themes/foundation/modules/featured/featured.php:352
 msgid "Show posts from a specific category"
 msgstr "특정 카테고리의 게시글 표시"
 
-#: themes/foundation/modules/featured/featured.php:348
+#: themes/foundation/modules/featured/featured.php:353
 msgid "Show only specific posts or pages"
 msgstr "특정 게시글이나 페이지만 표시"
 
-#: themes/foundation/modules/featured/featured.php:354
+#: themes/foundation/modules/featured/featured.php:359
 msgid "Only this tag"
 msgstr "이 태그만"
 
-#: themes/foundation/modules/featured/featured.php:355
-#: themes/foundation/modules/featured/featured.php:364
+#: themes/foundation/modules/featured/featured.php:360
+#: themes/foundation/modules/featured/featured.php:369
 msgid "Enter the tag/category slug name"
 msgstr "태그/카테고리 슬러그 이름 입력"
 
-#: themes/foundation/modules/featured/featured.php:363
+#: themes/foundation/modules/featured/featured.php:368
 msgid "Only this category"
 msgstr "이 카테고리만"
 
-#: themes/foundation/modules/featured/featured.php:372
+#: themes/foundation/modules/featured/featured.php:377
 msgid "Comma-separated list of post/page IDs"
 msgstr "쉼표로 구분된 게시글/페이지 ID 목록"
 
@@ -2447,7 +3182,7 @@ msgstr "정보 기억하기"
 msgid "Log In"
 msgstr "로그인"
 
-#: themes/foundation/modules/login/login-html.php:30
+#: themes/foundation/modules/login/login-html.php:31
 msgid "Lost password?"
 msgstr "비밀번호 찾기"
 
@@ -2515,47 +3250,47 @@ msgstr "트윗"
 msgid "Mail"
 msgstr "메일"
 
-#: themes/foundation/modules/sharing/sharing.php:81
+#: themes/foundation/modules/sharing/sharing.php:94
 msgid "Sharing"
 msgstr "공유"
 
-#: themes/foundation/modules/sharing/sharing.php:87
+#: themes/foundation/modules/sharing/sharing.php:100
 msgid "Show sharing links"
 msgstr "공유 링크 표시"
 
-#: themes/foundation/modules/sharing/sharing.php:88
+#: themes/foundation/modules/sharing/sharing.php:101
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on single posts."
 msgstr "단일 게시글에 Facebook, Twitter, Google+ 및 이메일 버튼을 표시합니다."
 
-#: themes/foundation/modules/sharing/sharing.php:95
+#: themes/foundation/modules/sharing/sharing.php:108
 msgid "Show sharing links on pages"
 msgstr "페이지에 공유 링크 표시"
 
-#: themes/foundation/modules/sharing/sharing.php:96
+#: themes/foundation/modules/sharing/sharing.php:109
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on pages as well as single posts."
 msgstr "단일 게시글뿐만 아니라 페이지에 Facebook, Twitter, Google+ 및 이메일 버튼을 표시합니다."
 
-#: themes/foundation/modules/sharing/sharing.php:103
+#: themes/foundation/modules/sharing/sharing.php:116
 msgid "Sharing links location"
 msgstr "공유 링크 위치"
 
-#: themes/foundation/modules/sharing/sharing.php:108
+#: themes/foundation/modules/sharing/sharing.php:121
 msgid "Above post content"
 msgstr "게시글 내용 위"
 
-#: themes/foundation/modules/sharing/sharing.php:109
+#: themes/foundation/modules/sharing/sharing.php:122
 msgid "Below post content"
 msgstr "게시글 내용 아래"
 
-#: themes/foundation/modules/sharing/sharing.php:115
+#: themes/foundation/modules/sharing/sharing.php:128
 msgid "Color scheme"
 msgstr "배색"
 
-#: themes/foundation/modules/sharing/sharing.php:120
+#: themes/foundation/modules/sharing/sharing.php:133
 msgid "Theme colors"
 msgstr "테마 색깔"
 
-#: themes/foundation/modules/sharing/sharing.php:121
+#: themes/foundation/modules/sharing/sharing.php:134
 msgid "Social network colors"
 msgstr "소셜 네트워크 색깔"
 
@@ -2624,11 +3359,13 @@ msgstr "iPad"
 #: themes/foundation/modules/webapp/webapp.php:91
 #: themes/foundation/modules/webapp/webapp.php:109
 #: themes/foundation/modules/webapp/webapp.php:128
-#: themes/foundation/modules/webapp/webapp.php:136
-#: themes/foundation/modules/webapp/webapp.php:154
-#: themes/foundation/modules/webapp/webapp.php:162
-#: themes/foundation/root-functions.php:428
-#: themes/foundation/root-functions.php:446
+#: themes/foundation/modules/webapp/webapp.php:146
+#: themes/foundation/modules/webapp/webapp.php:165
+#: themes/foundation/modules/webapp/webapp.php:173
+#: themes/foundation/modules/webapp/webapp.php:191
+#: themes/foundation/modules/webapp/webapp.php:199
+#: themes/foundation/root-functions.php:439
+#: themes/foundation/root-functions.php:457
 msgid "%d by %d pixels (PNG)"
 msgstr "%d X %d픽셀(PNG)"
 
@@ -2673,8 +3410,8 @@ msgid "Notice message contents"
 msgstr "알림 메시지 내용"
 
 #: themes/foundation/modules/webapp/webapp.php:44
-msgid "[device] and [icon] are dynamic and used to determine the device and iOS version. Do not remove these from your message."
-msgstr "[device] 및 [icon]은 동적이며 장치 및 iOS 버전을 확인하는 데 사용됩니다. 메시지에서 이것들을 지우지 마세요."
+msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
+msgstr "[icon]은 장치에서 적절한 북마크 아이콘을 표시하는 데 사용됩니다. 메시지에서 제거하지 마세요."
 
 #: themes/foundation/modules/webapp/webapp.php:48
 msgid "the notice message will be shown again for visitors"
@@ -2709,10 +3446,18 @@ msgid "iPhone 5 Startup Screen"
 msgstr "iPhone 5 시작 화면"
 
 #: themes/foundation/modules/webapp/webapp.php:122
+msgid "iPhone 6 Startup Screen"
+msgstr "iPhone 6 시작 화면"
+
+#: themes/foundation/modules/webapp/webapp.php:140
+msgid "iPhone 6+ Startup Screen"
+msgstr "iPhone 6+ 시작 화면"
+
+#: themes/foundation/modules/webapp/webapp.php:159
 msgid "iPad Mini and iPad Startup Screens"
 msgstr "iPad Mini 및 iPad 시작 화면"
 
-#: themes/foundation/modules/webapp/webapp.php:148
+#: themes/foundation/modules/webapp/webapp.php:185
 msgid "Retina iPad Startup Screens"
 msgstr "레티나 iPad 시작 화면"
 
@@ -2741,159 +3486,163 @@ msgid "Language: "
 msgstr "언어:"
 
 #: themes/foundation/root-functions.php:139
-msgid "Install this Web-App on your [device]: tap [icon] then \"Add to Home Screen\""
-msgstr "[device]에 웹 앱을 설치하세요: [icon]을 탭하고 \"홈 화면에 추가\"를 탭하세요"
+msgid "Install this Web-App on your homescreen: tap [icon] then \"Add to Home Screen\""
+msgstr "홈 화면에서 이 웹 앱을 설치하세요. [icon]을 탭하고 \"홈 화면에 추가\"를 탭하세요."
 
-#: themes/foundation/root-functions.php:342
+#: themes/foundation/root-functions.php:345
 msgid "Number of posts in post listings"
 msgstr "게시글 목록의 글 개수"
 
-#: themes/foundation/root-functions.php:343
+#: themes/foundation/root-functions.php:346
 msgid "Overrides the WordPress Reading settings for \"Blog pages show at most\""
 msgstr "WordPress의 \"표시할 블로그 페이지의 최대 수\"에 관한 읽기 설정을 무시합니다"
 
-#: themes/foundation/root-functions.php:350
+#: themes/foundation/root-functions.php:353
 msgid "Excluded categories"
 msgstr "제외된 카테고리"
 
-#: themes/foundation/root-functions.php:351
+#: themes/foundation/root-functions.php:354
 msgid "Comma separated by category name"
 msgstr "카테고리 이름별로 쉼표 구분"
 
-#: themes/foundation/root-functions.php:358
+#: themes/foundation/root-functions.php:361
 msgid "Excluded tags"
 msgstr "제외된 태그"
 
-#: themes/foundation/root-functions.php:359
+#: themes/foundation/root-functions.php:362
 msgid "Comma separated by tag name"
 msgstr "태그 이름별로 쉼표 구분"
 
 #: themes/foundation/root-functions.php:369
+msgid "Allow nested comment replies from mobile visitors"
+msgstr "모바일 방문자가 댓글에 답글을 달도록 허용"
+
+#: themes/foundation/root-functions.php:370
+msgid "Will show a Reply link after each comment"
+msgstr "각 댓글 다음에 답글 링크 표시"
+
+#: themes/foundation/root-functions.php:380
 msgid "Blog"
 msgstr "블로그"
 
-#: themes/foundation/root-functions.php:380
+#: themes/foundation/root-functions.php:391
 msgid "Show comments on pages"
 msgstr "페이지에 댓글 표시"
 
-#: themes/foundation/root-functions.php:381
+#: themes/foundation/root-functions.php:392
 msgid "Overrides the WordPress settings for showing comments on pages."
 msgstr "페이지에 댓글을 표시하는 WordPress 설정을 무시합니다."
 
-#: themes/foundation/root-functions.php:391
-#: themes/foundation/root-functions.php:1119
+#: themes/foundation/root-functions.php:402
+#: themes/foundation/root-functions.php:1136
 msgid "Pages"
 msgstr "페이지"
 
-#: themes/foundation/root-functions.php:404
+#: themes/foundation/root-functions.php:415
 msgid "Icon Title"
 msgstr "아이콘 제목"
 
-#: themes/foundation/root-functions.php:410
+#: themes/foundation/root-functions.php:421
 msgid "Icon title"
 msgstr "아이콘 제목"
 
-#: themes/foundation/root-functions.php:411
+#: themes/foundation/root-functions.php:422
 msgid "When visitors bookmark your website, this will be the title shown."
 msgstr "방문자가 웹사이트를 북마크에 저장하면 이 제목이 표시됩니다."
 
-#: themes/foundation/root-functions.php:422
+#: themes/foundation/root-functions.php:433
 msgid "Android"
 msgstr "Android"
 
-#: themes/foundation/root-functions.php:440
+#: themes/foundation/root-functions.php:451
 msgid "iPhone & iPod touch"
 msgstr "iPhone 및 iPod Touch"
 
-#: themes/foundation/root-functions.php:476
+#: themes/foundation/root-functions.php:487
 msgid "Theme Colors"
 msgstr "테마 색깔"
 
-#: themes/foundation/root-functions.php:486
-msgid "Site Logo"
-msgstr "사이트 로고"
-
-#: themes/foundation/root-functions.php:492
+#: themes/foundation/root-functions.php:499
 msgid "(Scaled by themes to fit logo areas as needed)"
 msgstr "(필요한 경우 테마에서 로고 영역에 맞춤)"
 
-#: themes/foundation/root-functions.php:505
+#: themes/foundation/root-functions.php:510
+msgid "Site Logo"
+msgstr "사이트 로고"
+
+#: themes/foundation/root-functions.php:519
 msgid "Smart App Banner"
 msgstr "스마트 앱 배너"
 
-#: themes/foundation/root-functions.php:511
+#: themes/foundation/root-functions.php:525
 msgid "Enter your app's %sApp Store ID%s"
 msgstr "앱의 %sApp Store ID%s를 입력하세요"
 
-#: themes/foundation/root-functions.php:512
+#: themes/foundation/root-functions.php:526
 msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
 msgstr "앱의 고유 식별자. iTunes Link Maker에서 ID를 찾으세요. 앱을 검색하세요. 링크에서 id와 ?mt 사이의 9자리 숫자가 앱 ID입니다. 예를 들어 Angry Birds의 ID는 343200656입니다."
 
-#: themes/foundation/root-functions.php:524
+#: themes/foundation/root-functions.php:538
 msgid "Theme Footer"
 msgstr "테마 푸터"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "Custom footer content (HTML is allowed)"
 msgstr "사용자 정의 푸터 컨텐츠(HTML 사용 가능)"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "You can add custom footer content that will be displayed below the switch link."
 msgstr "전환 링크 아래에 표시되는 사용자 정의 푸터 내용을 추가할 수 있습니다."
 
-#: themes/foundation/root-functions.php:905
+#: themes/foundation/root-functions.php:914
 msgid "search results for '%s'"
 msgstr "'%s'에 관한 검색결과"
 
-#: themes/foundation/root-functions.php:907
+#: themes/foundation/root-functions.php:916
 msgid "%sCategories &rsaquo;%s %s"
 msgstr "%s카테고리 &rsaquo;%s %s"
 
-#: themes/foundation/root-functions.php:909
+#: themes/foundation/root-functions.php:918
 msgid "Tags &rsaquo; %s"
 msgstr "태그 &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:911
-#: themes/foundation/root-functions.php:913
-#: themes/foundation/root-functions.php:915
+#: themes/foundation/root-functions.php:920
+#: themes/foundation/root-functions.php:922
+#: themes/foundation/root-functions.php:924
 msgid "Archives &rsaquo; %s"
 msgstr "아카이브 &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:930
+#: themes/foundation/root-functions.php:939
 msgid "Load more from this category"
 msgstr "이 카테고리에서 추가로 로드"
 
-#: themes/foundation/root-functions.php:932
+#: themes/foundation/root-functions.php:941
 msgid "Load more tagged like this"
 msgstr "이 태그와 같은 글을 추가로 로드"
 
-#: themes/foundation/root-functions.php:934
+#: themes/foundation/root-functions.php:943
 msgid "Load more from this day"
 msgstr "이날의 글을 추가로 로드"
 
-#: themes/foundation/root-functions.php:936
+#: themes/foundation/root-functions.php:945
 msgid "Load more from this month"
 msgstr "이달의 글을 추가로 로드"
 
-#: themes/foundation/root-functions.php:938
+#: themes/foundation/root-functions.php:947
 msgid "Load more from this year"
 msgstr "이 연도의 글을 추가로 로드"
 
-#: themes/foundation/root-functions.php:940
+#: themes/foundation/root-functions.php:949
 msgid "Load more in this section"
 msgstr "이 영역에서 추가로 로드"
 
-#: themes/foundation/root-functions.php:942
+#: themes/foundation/root-functions.php:951
 msgid "Load more entries"
 msgstr "더 많은 입력항목 로드"
 
-#: themes/foundation/root-functions.php:1068
+#: themes/foundation/root-functions.php:1085
 msgid "Post"
 msgstr "게시"
-
-#: themes/foundation/root-functions.php:1070
-msgid "Page"
-msgstr "페이지"
 
 #. Plugin Name of the plugin/theme
 msgid "WPtouch Pro"

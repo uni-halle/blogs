@@ -1,7 +1,7 @@
 # Copyright (C) 2014 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.4\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-06-24 13:23:13+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr "Project-Id-Version: WPtouch Pro 3.5.3\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-10-28 13:14:16+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
@@ -27,9 +27,9 @@ msgstr "Twitter'da BraveNewCode"
 msgid "Plugin Licensing Terms"
 msgstr "Eklenti Lisanslama Terimleri"
 
-#: admin/html/notification-center.php:6 core/admin-menu.php:65
-msgid "Upgrade to Pro"
-msgstr "Pro'ya Yükselt"
+#: admin/html/notification-center.php:6
+msgid "What's in WPtouch Pro?"
+msgstr "WPtouch Pro'da neler var?"
 
 #: admin/html/notification-center.php:10
 msgid "Notifications"
@@ -39,11 +39,11 @@ msgstr "Bildirimler"
 msgid "No notifications"
 msgstr "Bildirim yok"
 
-#: admin/html/plugin-area.php:9
+#: admin/html/plugin-area.php:10
 msgid "A new product version (%s) is available. %sRenew your license%s to download this update and receive additional product support."
 msgstr "Yeni bir ürün sürümü (%s) mevcut. Bu yükseltmeyi indirmek için %slisansınızı yenileyin%s ve ek ürün desteği alın."
 
-#: admin/html/plugin-area.php:11
+#: admin/html/plugin-area.php:12
 msgid "A new product version (%s) is available. Please %sactivate your license%s, or %spurchase a new license%s to enable updates and full product support."
 msgstr "Yeni bir ürün sürümü (%s) mevcut. Lütfen %slisansınızı etkinleştirerek%s veya %syeni bir lisans satın alarak%s güncellemeleri etkinleştirin ve tam ürün desteği alın."
 
@@ -51,7 +51,7 @@ msgstr "Yeni bir ürün sürümü (%s) mevcut. Lütfen %slisansınızı etkinle�
 msgid "License Details"
 msgstr "Lisans Ayrıntıları"
 
-#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:235
+#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:262
 msgid "Note"
 msgstr "Not"
 
@@ -77,7 +77,7 @@ msgstr "Lisansı Yenile"
 
 #: admin/pages/custom/wptouch-admin-license.php:25
 #: admin/settings/html/extension-browser-item.php:89
-#: admin/settings/html/theme-browser-item.php:129
+#: admin/settings/html/theme-browser-item.php:136
 msgid "Activate"
 msgstr "Aktifleştir"
 
@@ -428,6 +428,7 @@ msgstr "Varsayılan"
 
 #: admin/pages/wptouch-admin-general-settings.php:411
 #: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
+#: admin/settings/html/checklist.php:13
 #: admin/settings/html/custom-latest-posts.php:4
 #: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
 #: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
@@ -453,7 +454,7 @@ msgstr "WordPress Sayfaları"
 
 #: admin/pages/wptouch-admin-menus.php:28
 #: admin/settings/html/icon_menu_area.php:6
-#: infinity-cache/infinity-cache.php:209
+#: infinity-cache/infinity-cache.php:217
 #: themes/foundation/modules/advertising/advertising.php:29
 #: themes/foundation/modules/media/media.php:59
 msgid "None"
@@ -509,6 +510,7 @@ msgid "Restore Backup File"
 msgstr "Yedekleme Dosyasını Geri Yükle"
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:7
+#: admin/settings/html/checklist.php:15
 #: admin/settings/html/custom-latest-posts.php:8
 #: admin/settings/html/list.php:20 admin/settings/html/numeric.php:16
 #: admin/settings/html/post_type.php:14 admin/settings/html/radiolist.php:15
@@ -538,7 +540,7 @@ msgstr "Henüz simge yüklenmedi"
 
 #: admin/settings/html/custom_icon_management.php:12
 #: admin/settings/html/image-upload.php:13
-#: admin/settings/html/theme-browser-item.php:137
+#: admin/settings/html/theme-browser-item.php:144
 msgid "Delete"
 msgstr "Sil"
 
@@ -547,7 +549,7 @@ msgid "Upload Icon"
 msgstr "Simge Yükle"
 
 #: admin/settings/html/custom_icon_upload.php:4
-#: admin/settings/html/image-upload.php:15
+#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:598
 msgid "Upload Complete!"
 msgstr "Yükleme Tamamlandı!"
 
@@ -564,7 +566,7 @@ msgid "Your Server Configuration"
 msgstr "Sunucu Yapılandırmanız"
 
 #: admin/settings/html/extension-browser-item.php:37
-#: admin/settings/html/theme-browser-item.php:49
+#: admin/settings/html/theme-browser-item.php:56
 msgid "Updating..."
 msgstr "Güncelleniyor..."
 
@@ -573,14 +575,14 @@ msgid "Upgrade to %s"
 msgstr "%s sürümüne yükselt"
 
 #: admin/settings/html/extension-browser-item.php:39
-#: admin/settings/html/theme-browser-item.php:54
+#: admin/settings/html/theme-browser-item.php:61
 msgid "Download %s Update"
 msgstr "%s Güncellemesini İndir"
 
 #: admin/settings/html/extension-browser-item.php:47
 #: admin/settings/html/installed_icon_sets_ajax.php:8
 #: admin/settings/html/installed_icon_sets_ajax.php:20
-#: admin/settings/html/theme-browser-item.php:68
+#: admin/settings/html/theme-browser-item.php:75
 msgid "by %s"
 msgstr "yazar %s"
 
@@ -589,48 +591,48 @@ msgid "Extension location: %s"
 msgstr "Uzantı konumu: %s"
 
 #: admin/settings/html/extension-browser-item.php:54
-#: admin/settings/html/theme-browser-item.php:76
+#: admin/settings/html/theme-browser-item.php:83
 msgid "Relative to your WordPress wp-content directory."
 msgstr "WordPress wp içerik dizinine göre."
 
 #: admin/settings/html/extension-browser-item.php:63
-#: admin/settings/html/theme-browser-item.php:88
+#: admin/settings/html/theme-browser-item.php:95
 msgid "Available in WPtouch Pro"
 msgstr "WPtouch Pro'da mevcut"
 
 #: admin/settings/html/extension-browser-item.php:67
-#: admin/settings/html/theme-browser-item.php:92
+#: admin/settings/html/theme-browser-item.php:99
 msgid "More Info"
 msgstr "Daha fazla bilgi"
 
 #: admin/settings/html/extension-browser-item.php:70
-#: admin/settings/html/theme-browser-item.php:96
+#: admin/settings/html/theme-browser-item.php:103
 msgid "Upgrade License"
 msgstr "Lisans Yükselt"
 
 #: admin/settings/html/extension-browser-item.php:72
-#: admin/settings/html/theme-browser-item.php:98
+#: admin/settings/html/theme-browser-item.php:105
 msgid "Get License"
 msgstr "Lisans Al"
 
 #: admin/settings/html/extension-browser-item.php:80
-#: admin/settings/html/theme-browser-item.php:111
+#: admin/settings/html/theme-browser-item.php:118
 msgid "Downloading..."
 msgstr "İndiriliyor..."
 
 #: admin/settings/html/extension-browser-item.php:80
 #: admin/settings/html/installed_icon_sets_ajax.php:21
-#: admin/settings/html/theme-browser-item.php:112
+#: admin/settings/html/theme-browser-item.php:119
 msgid "Install"
 msgstr "Yükle"
 
 #: admin/settings/html/extension-browser-item.php:82
-#: admin/settings/html/theme-browser-item.php:115
+#: admin/settings/html/theme-browser-item.php:122
 msgid "Download"
 msgstr "İndir"
 
 #: admin/settings/html/extension-browser-item.php:92
-#: admin/settings/html/theme-browser-item.php:125
+#: admin/settings/html/theme-browser-item.php:132
 msgid "Setup"
 msgstr "Kur"
 
@@ -655,51 +657,53 @@ msgstr "Tümünü İşaretle"
 msgid "Reset"
 msgstr "Sıfırla"
 
-#: admin/settings/html/icon_menu_area.php:9
-#: classic-redux/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:32
-#: classic-redux/default/header-bottom.php:112
-#: prose/default/header-bottom.php:21 scaffold/default/header-bottom.php:13
+#: admin/settings/html/icon_menu_area.php:9 bio/default/header-bottom.php:13
+#: classic-redux/default/header-bottom.php:23
+#: classic-redux/default/header-bottom.php:34
+#: classic-redux/default/header-bottom.php:114
+#: hammock/default/header-bottom.php:40
+#: mobilestore/default/header-bottom.php:56 prose/default/header-bottom.php:21
+#: scaffold/default/header-bottom.php:13
 msgid "Menu"
 msgstr "Menü"
 
-#: admin/settings/html/icon_menu_area.php:19
+#: admin/settings/html/icon_menu_area.php:31
 msgid "Active menus used in this theme."
 msgstr "Bu temada kullanılan menüleri etkinleştir."
 
-#: admin/settings/html/icon_menu_area.php:23
+#: admin/settings/html/icon_menu_area.php:35
 msgid "Show/Hide"
 msgstr "Göster/Gizle"
 
-#: admin/settings/html/icon_menu_area.php:24
+#: admin/settings/html/icon_menu_area.php:36
 msgid "Menu Item"
 msgstr "Menü Öğesi"
 
-#: admin/settings/html/icon_menu_area.php:44
+#: admin/settings/html/icon_menu_area.php:56
 msgid "Icon Set"
 msgstr "Simge Seti"
 
-#: admin/settings/html/icon_menu_area.php:54
+#: admin/settings/html/icon_menu_area.php:66
 msgid "Drag icons to associate them with menu items"
 msgstr "Simgeleri menü öğeleriyle ilişkilendirmek için sürükleyin"
 
-#: admin/settings/html/icon_menu_area.php:79
+#: admin/settings/html/icon_menu_area.php:91
 msgid "You don't have any custom icons yet."
 msgstr "Henüz bir özel simge setiniz yok."
 
-#: admin/settings/html/icon_menu_area.php:94
+#: admin/settings/html/icon_menu_area.php:106
 msgid "Default Icon"
 msgstr "Varsayılan Simge"
 
-#: admin/settings/html/icon_menu_area.php:95
+#: admin/settings/html/icon_menu_area.php:107
 msgid "applies to all unset icons"
 msgstr "tüm kurulmamış simgelere uygulanır"
 
-#: admin/settings/html/icon_menu_area.php:103
+#: admin/settings/html/icon_menu_area.php:115
 msgid "Trash"
 msgstr "Çöp Kutusu"
 
-#: admin/settings/html/icon_menu_area.php:104
+#: admin/settings/html/icon_menu_area.php:116
 msgid "drag icon here to reset"
 msgstr "sıfırlamak için simgeyi buraya sürükle"
 
@@ -716,8 +720,8 @@ msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue t
 msgstr "%s%s%s dizinine şu an yazılamıyor. %sİlave simge setinin yüklenebilmesi için lütfen bu sorunu giderin."
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:1559 core/class-wptouch-pro.php:1560
-#: core/config.php:53
+#: core/class-wptouch-pro.php:1596 core/class-wptouch-pro.php:1597
+#: core/config.php:54
 msgid "Custom Icons"
 msgstr "Özel Simgeler"
 
@@ -739,7 +743,7 @@ msgid "Pro"
 msgstr "Pro"
 
 #: admin/settings/html/plugin-compat-ajax.php:11
-#: themes/foundation/modules/custom-posts/custom-posts.php:178
+#: themes/foundation/modules/custom-posts/custom-posts.php:153
 msgid "Enable %s"
 msgstr "%s kategorisini etkinleştir"
 
@@ -767,32 +771,32 @@ msgstr "WordPress Sayfası"
 msgid "Please paste your encoded settings below and save to restore your settings."
 msgstr "Lütfen şifreli ayarlarınızı aşağıya kopyalayın ve ayarlarınızı geri yüklemek için kaydedin."
 
-#: admin/settings/html/theme-browser-item.php:6
 #: admin/settings/html/theme-browser-item.php:10
+#: admin/settings/html/theme-browser-item.php:16
 msgid "Click to view screenshots"
 msgstr "Ekran resimlerini görüntülemek için tıklayın"
 
-#: admin/settings/html/theme-browser-item.php:51
+#: admin/settings/html/theme-browser-item.php:58
 msgid "Update to %s"
 msgstr "%s sürümünü güncelle"
 
-#: admin/settings/html/theme-browser-item.php:63
+#: admin/settings/html/theme-browser-item.php:70
 msgid "This theme supports %s devices"
 msgstr "Bu tema %s cihazları destekler"
 
-#: admin/settings/html/theme-browser-item.php:75
+#: admin/settings/html/theme-browser-item.php:82
 msgid "Theme location: %s"
 msgstr "Tema konumu: %s"
 
-#: admin/settings/html/theme-browser-item.php:103
+#: admin/settings/html/theme-browser-item.php:110
 msgid "Buy Now"
 msgstr "Hemen Satın Al"
 
-#: admin/settings/html/theme-browser-item.php:133
+#: admin/settings/html/theme-browser-item.php:140
 msgid "Copy"
 msgstr "Kopyala"
 
-#: admin/settings/html/theme-browser.php:14
+#: admin/settings/html/theme-browser.php:22
 msgid "Loading Cloud Themes"
 msgstr "Bulut Temaları Yükleniyor"
 
@@ -816,60 +820,35 @@ msgstr "Pro Uzantılarına Bakın"
 msgid "Look at Pro Features"
 msgstr "Pro Özelliklerine Bakın"
 
-#: admin/settings/html/touchboard.php:14
+#: admin/settings/html/touchboard.php:16
 msgid "Product Support"
 msgstr "Ürün Desteği"
 
-#: admin/settings/html/touchboard.php:16
+#: admin/settings/html/touchboard.php:17
 msgid "Product Knowledgebase"
 msgstr "Ürün Bilgi Tabanı"
 
-#: admin/settings/html/touchboard.php:17
+#: admin/settings/html/touchboard.php:18
 msgid "Manage Account"
 msgstr "Hesabı Yönet"
 
-#: admin/settings/html/touchboard.php:18
+#: admin/settings/html/touchboard.php:19
 msgid "Manage License"
 msgstr "Lisansı Yönet"
 
-#: admin/settings/html/touchboard.php:20
+#: admin/settings/html/touchboard.php:21
 msgid "WPtouch User Guide"
 msgstr "WPtouch Kullanıcı Kılavuzu"
 
-#: admin/settings/html/touchboard.php:27
+#: admin/settings/html/touchboard.php:28
 msgid "WPtouch News"
 msgstr "WPtouch Haberleri"
 
-#: admin/settings/html/touchboard.php:28
+#: admin/settings/html/touchboard.php:29
 msgid "Read More"
 msgstr "Daha Fazla Oku"
 
-#: admin/settings/html/touchboard.php:45
-msgid "What's New in %s"
-msgstr "%s Sürümündeki Yenilikler"
-
-#: admin/settings/html/touchboard.php:49 admin/settings/html/touchboard.php:51
-#: core/admin-menu.php:60
-msgid "License"
-msgstr "Lisans"
-
-#: admin/settings/html/touchboard.php:49
-msgid "Unlicensed"
-msgstr "Lisanssız"
-
-#: admin/settings/html/touchboard.php:49 core/class-wptouch-pro.php:591
-msgid "Offline"
-msgstr "Çevrimdışı"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Active"
-msgstr "Aktif"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Online"
-msgstr "Çevrimiçi"
-
-#: admin/settings/html/touchboard.php:61
+#: admin/settings/html/touchboard.php:47
 msgid "%s Change Log"
 msgstr "%s Değişim Günlüğü"
 
@@ -882,24 +861,26 @@ msgstr "Aşağıdaki kullanıcı-aracılar veya kullanıcı-aracı kombinasyonla
 msgid "None (Use WordPress Settings)"
 msgstr "Hiçbiri (WordPress Ayarlarını Kullan)"
 
-#: bauhaus/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:76
+#: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
+#: classic-redux/default/header-bottom.php:55
+#: hammock/default/header-bottom.php:82 scaffold/default/header-bottom.php:35
+#: simple/default/header-bottom.php:26
+msgid "Logout"
+msgstr "Çıkış"
+
+#: bauhaus/default/header-bottom.php:48 bio/default/header-bottom.php:24
+#: classic-redux/default/header-bottom.php:78
 #: scaffold/default/header-bottom.php:24
 msgid "Search this website"
 msgstr "Bu web sitesinde arama yap"
 
-#: bauhaus/default/header-bottom.php:22
-#: classic-redux/default/header-bottom.php:46
-#: classic-redux/default/header-bottom.php:78
+#: bauhaus/default/header-bottom.php:49 bio/default/header-bottom.php:14
+#: bio/default/header-bottom.php:25 classic-redux/default/header-bottom.php:48
+#: classic-redux/default/header-bottom.php:80
+#: mobilestore/default/header-bottom.php:80
 #: scaffold/default/header-bottom.php:14 scaffold/default/header-bottom.php:25
 msgid "Search"
 msgstr "Ara"
-
-#: bauhaus/default/header-bottom.php:40 bauhaus/default/header-bottom.php:42
-#: classic-redux/default/header-bottom.php:53
-#: scaffold/default/header-bottom.php:35 simple/default/header-bottom.php:24
-msgid "Logout"
-msgstr "Çıkış"
 
 #: bauhaus/default/nav-bar.php:6 cms/default/nav-bar.php:6
 #: themes/foundation/default/nav-bar.php:6
@@ -911,9 +892,15 @@ msgstr "önceki postalar"
 msgid "next post"
 msgstr "sonraki posta"
 
-#: bauhaus/default/post-loop.php:22 classic-redux/default/post-loop.php:24
+#: bauhaus/default/post-loop.php:22 bio/default/post-loop.php:19
+#: classic-redux/default/post-loop.php:24
 msgid "by"
 msgstr "gönderen:"
+
+#: bauhaus/default/related-posts.php:4
+#: themes/foundation/default/related-posts.php:4
+msgid "Related"
+msgstr "İlgili"
 
 #: bauhaus/default/search.php:6 classic-redux/default/search.php:5
 #: themes/foundation/default/search.php:6
@@ -929,198 +916,242 @@ msgid "No results found"
 msgstr "Sonuç bulunamadı"
 
 #: bauhaus/default/search.php:46 classic-redux/default/search.php:47
-#: themes/foundation/default/search.php:45
+#: themes/foundation/default/search.php:43
 msgid "Load more %s results"
 msgstr "Daha fazla %s sonucu yükle"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "no comments"
 msgstr "yorum yok"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "1 comment"
 msgstr "1 yorum"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "% comments"
 msgstr "% yorum"
 
-#: bauhaus/default/single.php:46 classic-redux/default/header-bottom.php:35
-#: classic-redux/default/header-bottom.php:61
+#: bauhaus/default/single.php:36 classic-redux/default/header-bottom.php:37
+#: classic-redux/default/header-bottom.php:63
 msgid "Categories"
 msgstr "Kategoriler"
 
-#: bauhaus/default/single.php:49 classic-redux/default/header-bottom.php:39
-#: classic-redux/default/header-bottom.php:68
+#: bauhaus/default/single.php:39 classic-redux/default/header-bottom.php:41
+#: classic-redux/default/header-bottom.php:70
 msgid "Tags"
 msgstr "Etiketler"
 
-#: bauhaus/root-functions.php:122 classic-redux/root-functions.php:98
+#: bauhaus/root-functions.php:126 classic-redux/root-functions.php:98
 msgid "Header Menu"
 msgstr "Üstbilgi Menüsü"
 
-#: bauhaus/root-functions.php:124 classic-redux/root-functions.php:100
-#: cms/root-functions.php:125 cms/root-functions.php:134
-#: open/root-functions.php:304 prose/root-functions.php:191
-#: scaffold/root-functions.php:77 simple/root-functions.php:60
-#: simple/root-functions.php:71
+#: bauhaus/root-functions.php:128 bio/root-functions.php:89
+#: classic-redux/root-functions.php:100 cms/root-functions.php:125
+#: cms/root-functions.php:134 hammock/root-functions.php:168
+#: mobilestore/root-functions.php:188 mobilestore/root-functions.php:200
+#: open/root-functions.php:350 prose/root-functions.php:195
+#: scaffold/root-functions.php:77 simple/root-functions.php:61
+#: simple/root-functions.php:72
 msgid "Choose a menu"
 msgstr "Bir menü seç"
 
-#: bauhaus/root-functions.php:125
+#: bauhaus/root-functions.php:129
 msgid "Main menu selection"
 msgstr "Ana menü seçimi"
 
-#: bauhaus/root-functions.php:132 classic-redux/root-functions.php:108
-#: cms/root-functions.php:141 open/root-functions.php:312
-#: prose/root-functions.php:199 scaffold/root-functions.php:85
-#: simple/root-functions.php:79
+#: bauhaus/root-functions.php:136 bio/root-functions.php:97
+#: classic-redux/root-functions.php:108 cms/root-functions.php:141
+#: hammock/root-functions.php:176 open/root-functions.php:358
+#: prose/root-functions.php:203 scaffold/root-functions.php:85
+#: simple/root-functions.php:80
 msgid "Theme background"
 msgstr "Tema arka planı"
 
-#: bauhaus/root-functions.php:133
+#: bauhaus/root-functions.php:137
 msgid "Header & Menu"
-msgstr "Başlık ve Menü"
+msgstr "Üstbilgi ve Menü"
 
-#: bauhaus/root-functions.php:134 classic-redux/root-functions.php:109
-#: cms/root-functions.php:142 open/root-functions.php:313
-#: prose/root-functions.php:201 scaffold/root-functions.php:86
-#: simple/root-functions.php:80
+#: bauhaus/root-functions.php:138 bio/root-functions.php:98
+#: classic-redux/root-functions.php:109 cms/root-functions.php:142
+#: hammock/root-functions.php:178 mobilestore/root-functions.php:232
+#: open/root-functions.php:359 prose/root-functions.php:205
+#: scaffold/root-functions.php:86 simple/root-functions.php:81
 msgid "Links"
 msgstr "Bağlantılar"
 
-#: bauhaus/root-functions.php:135
+#: bauhaus/root-functions.php:139
 msgid "Post/Page Headers"
-msgstr "Posta/Sayfa Başlıkları"
+msgstr "Posta/Sayfa Üstbilgileri"
 
-#: bauhaus/root-functions.php:245
+#: bauhaus/root-functions.php:255
 msgid "Theme Shapes"
 msgstr "Tema Şekilleri"
 
-#: bauhaus/root-functions.php:251
+#: bauhaus/root-functions.php:261
 msgid "Theme shape style"
 msgstr "Tema şekli stili"
 
-#: bauhaus/root-functions.php:252
+#: bauhaus/root-functions.php:262
 msgid "Bauhaus will use this shape style throughout its appearance"
 msgstr "Bauhaus tüm görünümlerinde bu şekil stilini kullanacak"
 
-#: bauhaus/root-functions.php:256
+#: bauhaus/root-functions.php:266
 msgid "Circles"
 msgstr "Daireler"
 
-#: bauhaus/root-functions.php:257
+#: bauhaus/root-functions.php:267
 msgid "Rounded squares"
 msgstr "Yuvarlaklaştırılmış Kareler"
 
-#: bauhaus/root-functions.php:276 classic-redux/root-functions.php:244
+#: bauhaus/root-functions.php:277
+msgid "Menu Style"
+msgstr "Menü Stili"
+
+#: bauhaus/root-functions.php:283
+msgid "Menu animation style"
+msgstr "Menü animasyon stili"
+
+#: bauhaus/root-functions.php:284
+msgid "Bauhaus can show your menu off-canvas or in a drop-down."
+msgstr "Bauhaus menünüzü kanvas dışında ve açılır pencerede gösterebilir."
+
+#: bauhaus/root-functions.php:288
+msgid "Off-canvas"
+msgstr "Kanvas dışı"
+
+#: bauhaus/root-functions.php:289
+msgid "Drop-down"
+msgstr "Açılır pencere"
+
+#: bauhaus/root-functions.php:307 bio/root-functions.php:131
+#: classic-redux/root-functions.php:244
 msgid "Post thumbnails"
 msgstr "Küçük resimleri postala"
 
-#: bauhaus/root-functions.php:281 classic-redux/root-functions.php:249
+#: bauhaus/root-functions.php:312 bio/root-functions.php:136
+#: classic-redux/root-functions.php:249
 msgid "No thumbnails"
 msgstr "Küçük resim yok"
 
-#: bauhaus/root-functions.php:282 classic-redux/root-functions.php:250
+#: bauhaus/root-functions.php:313 bio/root-functions.php:137
+#: classic-redux/root-functions.php:250
 msgid "Blog listing only"
 msgstr "Sadece blog listelemesi"
 
-#: bauhaus/root-functions.php:283 classic-redux/root-functions.php:251
+#: bauhaus/root-functions.php:314 bio/root-functions.php:138
+#: classic-redux/root-functions.php:251
 msgid "Blog listing, single posts"
 msgstr "Blog listeleme, tekil postalar"
 
-#: bauhaus/root-functions.php:284
+#: bauhaus/root-functions.php:315 bio/root-functions.php:139
 msgid "Blog listing, single posts & pages"
 msgstr "Blog listeleme, tekil postalar ve sayfalar"
 
-#: bauhaus/root-functions.php:285
+#: bauhaus/root-functions.php:316 bio/root-functions.php:140
 msgid "All (blog, single, pages, search & archive)"
 msgstr "Tümü (blog, tekil, sayfalar, ara ve arşivle)"
 
-#: bauhaus/root-functions.php:293 classic-redux/root-functions.php:260
+#: bauhaus/root-functions.php:324 bio/root-functions.php:148
+#: classic-redux/root-functions.php:260
 msgid "Thumbnail Selection"
 msgstr "Küçük Resim Seçimi"
 
-#: bauhaus/root-functions.php:298 classic-redux/root-functions.php:265
+#: bauhaus/root-functions.php:329 bio/root-functions.php:153
+#: classic-redux/root-functions.php:265
 msgid "Post featured image"
 msgstr "Popüler görüntüyü postala"
 
-#: bauhaus/root-functions.php:299 classic-redux/root-functions.php:266
+#: bauhaus/root-functions.php:330 bio/root-functions.php:154
+#: classic-redux/root-functions.php:266
 msgid "Post custom field"
 msgstr "Özel alanı postala"
 
-#: bauhaus/root-functions.php:307 classic-redux/root-functions.php:274
+#: bauhaus/root-functions.php:338 bio/root-functions.php:162
+#: classic-redux/root-functions.php:274
 msgid "Thumbnail custom field name"
 msgstr "Küçük resim özel alan adı"
 
-#: bauhaus/root-functions.php:318 classic-redux/root-functions.php:307
+#: bauhaus/root-functions.php:349 classic-redux/root-functions.php:307
 msgid "Show post categories and tags"
 msgstr "Posta kategorilerini ve etiketleri görüntüle"
 
-#: bauhaus/root-functions.php:329 classic-redux/root-functions.php:285
+#: bauhaus/root-functions.php:360 bio/root-functions.php:173
+#: classic-redux/root-functions.php:285
 msgid "Show post date"
 msgstr "Posta tarihini göster"
 
-#: bauhaus/root-functions.php:340 classic-redux/root-functions.php:296
+#: bauhaus/root-functions.php:371 bio/root-functions.php:184
+#: classic-redux/root-functions.php:296
 msgid "Show post author"
 msgstr "Posta yazarını görüntüle"
 
-#: bauhaus/root-functions.php:351
+#: bauhaus/root-functions.php:382
 msgid "Show comment bubbles on posts"
 msgstr "Postalarda yorum baloncukları göster"
 
-#: bauhaus/root-functions.php:362
+#: bauhaus/root-functions.php:393 bio/root-functions.php:195
 msgid "Show search in header"
-msgstr "Aramayı başlıkta göster"
+msgstr "Aramayı üstbilgide göster"
 
-#: bauhaus/root-functions.php:363
+#: bauhaus/root-functions.php:394 bio/root-functions.php:196
 msgid "Adds Search capability in the site header."
-msgstr "Site başlığına Arama kapasitesi ekler."
+msgstr "Site üstbilgisine Arama kapasitesi ekler."
 
-#: bauhaus/root-functions.php:373 classic-redux/root-functions.php:318
+#: bauhaus/root-functions.php:404 bio/root-functions.php:206
+#: classic-redux/root-functions.php:318
 msgid "Use infinite scrolling for blog"
 msgstr "Blog için sonsuz kaydırma kullan"
 
-#: bauhaus/root-functions.php:390
-msgid "Show featured slider on front page"
-msgstr "Özellikli kaydırıcıyı ön sayfada göster"
+#: bio/root-functions.php:87 hammock/root-functions.php:166
+#: mobilestore/root-functions.php:186 open/root-functions.php:348
+#: prose/root-functions.php:193 scaffold/root-functions.php:75
+msgid "Primary Menu"
+msgstr "Birincil Menü"
 
-#: classic-redux/default/header-bottom.php:43
-#: classic-redux/default/header-bottom.php:88
+#: bio/root-functions.php:90 hammock/root-functions.php:169
+#: open/root-functions.php:351 scaffold/root-functions.php:78
+msgid "Menus are awesome!"
+msgstr "Menüler harika!"
+
+#: classic-redux/default/header-bottom.php:45
+#: classic-redux/default/header-bottom.php:90
 msgid "Tweets"
 msgstr "Tweet'ler"
 
-#: classic-redux/default/header-bottom.php:51
-#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:22
+#: classic-redux/default/header-bottom.php:53
+#: hammock/default/header-bottom.php:80
+#: mobilestore/default/woocommerce/shop/form-login.php:31
+#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:24
 #: themes/foundation/modules/login/login-html.php:20
 msgid "Login"
 msgstr "Giriş"
 
-#: classic-redux/default/header-bottom.php:92
+#: classic-redux/default/header-bottom.php:94
 msgid "Follow %s on Twitter"
 msgstr "Twitter'da %s öğesini takip et"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:60
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "newer posts"
 msgstr "yeni postalar"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:56
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:59
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "older posts"
 msgstr "eski postalar"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "no responses"
 msgstr "yanıt yok"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "1 response"
 msgstr "1 yanıt"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "% responses"
 msgstr "% yanıt"
@@ -1133,7 +1164,7 @@ msgstr "Bu Postayı Oku"
 msgid "%s results"
 msgstr "%s sonuçları"
 
-#: classic-redux/default/search.php:38 themes/foundation/default/search.php:36
+#: classic-redux/default/search.php:38 themes/foundation/default/search.php:34
 msgid "No search results found"
 msgstr "Arama sonucu bulunmadı"
 
@@ -1146,7 +1177,7 @@ msgid "Tablets"
 msgstr "Tabletler"
 
 #: classic-redux/root-functions.php:107 cms/root-functions.php:140
-#: open/root-functions.php:311 simple/root-functions.php:78
+#: open/root-functions.php:357 simple/root-functions.php:79
 msgid "Header background"
 msgstr "Üstbilgi arka planı"
 
@@ -1168,7 +1199,7 @@ msgstr "Tablet desteği ekle"
 
 #: classic-redux/root-functions.php:381
 msgid "Header Menu Area"
-msgstr "Başlık Menüsü Alanı"
+msgstr "Üstbilgi Menüsü Alanı"
 
 #: classic-redux/root-functions.php:387
 msgid "Drop-down button says \"Menu\""
@@ -1203,7 +1234,7 @@ msgid "Max categories / tags"
 msgstr "Maks. kategori / etiket"
 
 #: classic-redux/root-functions.php:435 cms/root-functions.php:268
-#: simple/root-functions.php:280
+#: simple/root-functions.php:281
 msgid "CSS Effects"
 msgstr "CSS Efektleri"
 
@@ -1212,27 +1243,27 @@ msgid "Add a noise effect to the header and theme background"
 msgstr "Üstbilgi ve tema arka planlarına bir parazit efekti ekle"
 
 #: classic-redux/root-functions.php:442 cms/root-functions.php:275
-#: simple/root-functions.php:287
+#: simple/root-functions.php:288
 msgid "Will apply the effect overtop of any background image you upload."
 msgstr "Yüklediğiniz herhangi bir arka plan resminin üstüne efekti uygular."
 
-#: cms/default/header-bottom.php:14
+#: cms/default/header-bottom.php:17
 msgid "menu"
 msgstr "menü"
 
-#: cms/default/header-bottom.php:21
+#: cms/default/header-bottom.php:24
 msgid "login"
 msgstr "giriş"
 
-#: cms/default/header-bottom.php:25
+#: cms/default/header-bottom.php:28
 msgid "logout"
 msgstr "çıkış"
 
-#: cms/default/header-bottom.php:38 simple/default/footer-top.php:3
+#: cms/default/header-bottom.php:41 simple/default/footer-top.php:3
 msgid "search this website"
 msgstr "bu web sitesini ara"
 
-#: cms/default/header-bottom.php:39 simple/default/footer-top.php:5
+#: cms/default/header-bottom.php:42 simple/default/footer-top.php:5
 msgid "search"
 msgstr "ara"
 
@@ -1269,11 +1300,11 @@ msgstr "Kategori Kaydırıcı"
 msgid "Enable category slider"
 msgstr "Kategori kaydırıcıyı etkinleştir"
 
-#: cms/root-functions.php:231 simple/root-functions.php:261
+#: cms/root-functions.php:231 simple/root-functions.php:262
 msgid "Tiled Background Image"
 msgstr "Döşenmiş Arka Plan Resmi"
 
-#: cms/root-functions.php:237 simple/root-functions.php:267
+#: cms/root-functions.php:237 simple/root-functions.php:268
 msgid "(Scaled for retina displays)"
 msgstr "(Retina ekranlar için ölçeklendirilmiş)"
 
@@ -1349,7 +1380,15 @@ msgstr "Uzantı Ayarları"
 msgid "Menus"
 msgstr "Menüler"
 
-#: core/admin-page-templates.php:16
+#: core/admin-menu.php:60
+msgid "License"
+msgstr "Lisans"
+
+#: core/admin-menu.php:65
+msgid "Upgrade to Pro"
+msgstr "Pro'ya Yükselt"
+
+#: core/admin-page-templates.php:17
 msgid "Mobile Page Template"
 msgstr "Mobil Sayfa Şablonu"
 
@@ -1381,60 +1420,72 @@ msgstr "Önizleme Temaları"
 msgid "Reset Settings"
 msgstr "Ayarları Sıfırla"
 
-#: core/class-wptouch-pro.php:351
+#: core/class-wptouch-pro.php:354
 msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
 msgstr "uploads/wptouch-data dizininden otomatik tema taşıma başarısız oldu. Lütfen bu dosyaları wp-content/wptouch-data dizinine manuel olarak taşıyın veya bu sorunu çözmek için  %sdestek ile bağlantıya geçin%s."
 
-#: core/class-wptouch-pro.php:371
+#: core/class-wptouch-pro.php:374
 msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
 msgstr "Bulut'tan WPtouch temanızı yükleyemedik. Daha fazla bilgi almak için lütfen %sbu makaleye%s bakın."
 
-#: core/class-wptouch-pro.php:375
+#: core/class-wptouch-pro.php:378
 msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
 msgstr "Sunucu ayarınız WPtouch'ın Buluttan aktif temanızın yüklenmesini engelliyor. Sorunun giderilmesiyle ilgili daha fazla bilgi almak için lütfen %sbu makaleye%s bakın."
 
-#: core/class-wptouch-pro.php:587
+#: core/class-wptouch-pro.php:590
 msgid "Unsupported Browser"
 msgstr "Desteklenmeyen Tarayıcı"
 
-#: core/class-wptouch-pro.php:588
+#: core/class-wptouch-pro.php:591
 msgid "Theme Preview requires Chrome or Safari."
 msgstr "Tema Önizlemesi için Chrome veya Safari gerekir."
 
-#: core/class-wptouch-pro.php:589
+#: core/class-wptouch-pro.php:592
 msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
 msgstr "Bu işlem tüm WPtouch Pro ayarlarını sıfırlar.\nEmin misiniz?"
 
-#: core/class-wptouch-pro.php:590
+#: core/class-wptouch-pro.php:593
 msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
 msgstr "Bu işlem tüm WPtouch Pro menülerini ve simge ayarlarını sıfırlar.\nEmin misiniz?"
 
-#: core/class-wptouch-pro.php:592
+#: core/class-wptouch-pro.php:594
+msgid "Offline"
+msgstr "Çevrimdışı"
+
+#: core/class-wptouch-pro.php:595
 msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
 msgstr "Çevrimdışı görünüyorsunuz. Mevcut BraveNewCloud öğelerini görmek için internete bağlanın."
 
-#: core/class-wptouch-pro.php:593
+#: core/class-wptouch-pro.php:596
 msgid "The item failed to download for this reason: %reason%"
 msgstr "Öğe şu nedenle indirilemedi: %neden%"
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:597
 msgid "You are about to reset your license information. Proceed?"
 msgstr "Lisans bilgilerinizi sıfırlamak üzeresiniz. Devam edilsin mi?"
 
-#: core/class-wptouch-pro.php:1130
+#: core/class-wptouch-pro.php:599
+msgid "Upload Failed: Not a valid image."
+msgstr "Yüklenemedi: Geçerli bir görüntü değil."
+
+#: core/class-wptouch-pro.php:600
+msgid "Click to view theme demo"
+msgstr "Tema demosunu görmek için tıklayın"
+
+#: core/class-wptouch-pro.php:1167
 #: themes/foundation/modules/webapp/webapp.php:12
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: core/class-wptouch-pro.php:1166
+#: core/class-wptouch-pro.php:1203
 msgid "%s Changelog"
 msgstr "%s Değişim Günlüğü"
 
-#: core/class-wptouch-pro.php:2338
+#: core/class-wptouch-pro.php:2377
 msgid "Directory Problem"
 msgstr "Dizin Problemi"
 
-#: core/class-wptouch-pro.php:2339
+#: core/class-wptouch-pro.php:2378
 msgid "One or more required directories could not be created"
 msgstr "Gerekli bir veya daha fazla dizin oluşturulamadı"
 
@@ -1486,6 +1537,52 @@ msgstr "Bu eklenti WPtouch Pro'da düzgün şekilde çalışmayabilir ve Eklenti
 #: core/notifications.php:214
 msgid "Icon Installation Issue"
 msgstr "Simge Yükleme Sorunu"
+
+#: hammock/default/functions.php:10 prose/default/functions.php:33
+msgid "Load more from this collection"
+msgstr "Bu koleksiyondan daha fazla yükle"
+
+#: hammock/default/header-bottom.php:38 prose/default/header-bottom.php:19
+msgid "Collections"
+msgstr "Koleksiyonlar"
+
+#: hammock/default/header-bottom.php:41 prose/default/header-bottom.php:22
+msgid "Options"
+msgstr "Seçenekler"
+
+#: hammock/root-functions.php:61 prose/root-functions.php:75
+msgid "Show categories as \"collections\" in menu"
+msgstr "Menüde kategorileri \"koleksiyonlar\" olarak göster"
+
+#: hammock/root-functions.php:72 prose/root-functions.php:86
+msgid "Maximum number of items in categories/collections"
+msgstr "Kategoriler/koleksiyonlardaki maksimum öğe sayısı"
+
+#: hammock/root-functions.php:88
+msgid "Animate the featured image on posts"
+msgstr "Postalarda özellikli görüntüyü canlandır"
+
+#: hammock/root-functions.php:102 open/root-functions.php:119
+#: prose/root-functions.php:105
+msgid "Header Image"
+msgstr "Üstbilgi Resmi"
+
+#: hammock/root-functions.php:108 prose/root-functions.php:111
+msgid "Displayed behind header on pages and posts without featured images."
+msgstr "Sayfalardaki üstbilgi arkasında ve postalarda özellikli görüntüler olmadan görüntülendi."
+
+#: hammock/root-functions.php:121 prose/root-functions.php:124
+msgid "Site Intro"
+msgstr "Site Girişi"
+
+#: hammock/root-functions.php:127 prose/root-functions.php:130
+msgid "Displayed on post listing page below site name."
+msgstr "Site adı altında posta listeleme sayfasında görüntülendi."
+
+#: hammock/root-functions.php:177 prose/root-functions.php:204
+#: themes/foundation/root-functions.php:11
+msgid "Branding"
+msgstr "Markalalaştırma"
 
 #: include/add-ons/wordtwit-pro.php:179
 #: themes/foundation/modules/twitter/twitter.php:42
@@ -1539,88 +1636,88 @@ msgstr "%0.1f ms içinde %d sorgu"
 msgid "Default Template"
 msgstr "Varsayılan Şablon"
 
-#: infinity-cache/infinity-cache.php:65 infinity-cache/infinity-cache.php:233
+#: infinity-cache/infinity-cache.php:66 infinity-cache/infinity-cache.php:241
 msgid "Purge Page Cache"
 msgstr "Sayfa Önbelleğini Temizle"
 
-#: infinity-cache/infinity-cache.php:126
+#: infinity-cache/infinity-cache.php:134
 msgid "Enable Infinity Cache"
 msgstr "Sonsuz Önbelleği Etkinleştir"
 
-#: infinity-cache/infinity-cache.php:134
+#: infinity-cache/infinity-cache.php:142
 msgid "Create cache for desktop users"
 msgstr "Masaüstü kullanıcıları için önbellek oluştur"
 
-#: infinity-cache/infinity-cache.php:135
+#: infinity-cache/infinity-cache.php:143
 msgid "If you are using another cache plugin such as W3, you can disable this."
 msgstr "W3 gibi başka bir önbellek eklentisi kullanıyorsanız bunu devre dışı bırakabilirsiniz."
 
-#: infinity-cache/infinity-cache.php:156
+#: infinity-cache/infinity-cache.php:164
 msgid "Compress output using GZIP"
 msgstr "GZIP ile çıktıyı sıkıştır"
 
-#: infinity-cache/infinity-cache.php:166
+#: infinity-cache/infinity-cache.php:174
 msgid "Maximum age of cached content"
 msgstr "Maksimum önbelleğe alınmış içerik süresi"
 
-#: infinity-cache/infinity-cache.php:167
+#: infinity-cache/infinity-cache.php:175
 msgid "Each cached page will automatically be regenerated after this period elapses"
 msgstr "Bu süre geçtiğinde önbelleğe alınmış her sayfa otomatik olarak yeniden üretilir"
 
-#: infinity-cache/infinity-cache.php:171 infinity-cache/infinity-cache.php:172
-#: infinity-cache/infinity-cache.php:173 infinity-cache/infinity-cache.php:174
-#: infinity-cache/infinity-cache.php:175
+#: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
+#: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:183
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d saat"
 msgstr[1] "%d saat"
 
-#: infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:190
 msgid "Remove stale cache file interval"
 msgstr "Eski önbellek dosyası intervalini kaldır"
 
-#: infinity-cache/infinity-cache.php:187
+#: infinity-cache/infinity-cache.php:195
 msgid "Hourly"
 msgstr "Saatlik"
 
-#: infinity-cache/infinity-cache.php:188
+#: infinity-cache/infinity-cache.php:196
 msgid "Daily"
 msgstr "Günlük"
 
-#: infinity-cache/infinity-cache.php:195
+#: infinity-cache/infinity-cache.php:203
 msgid "Disable caching for any of these matched URL fragments"
 msgstr "Eşleşen bu URL parçalarının herhangi biri için önbelleğe almayı devre dışı bırak"
 
-#: infinity-cache/infinity-cache.php:196
+#: infinity-cache/infinity-cache.php:204
 msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
 msgstr "Her satıra bir URL parçası ekle, örn. URL parçası içeren sayfaları önbelleğe almamak için %s"
 
-#: infinity-cache/infinity-cache.php:204
+#: infinity-cache/infinity-cache.php:212
 msgid "Content Distribution Network Service"
 msgstr "İçerik Dağıtım Ağı Hizmeti"
 
-#: infinity-cache/infinity-cache.php:205
+#: infinity-cache/infinity-cache.php:213
 msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
 msgstr "İçerik dağıtım ağı (CDN) kullanılmasıyla web sitesinin yanıt kapasitesi ciddi oranda yükselir."
 
-#: infinity-cache/infinity-cache.php:210
-#: themes/foundation/modules/login/login-html.php:29
+#: infinity-cache/infinity-cache.php:218
+#: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr "Kaydol"
 
-#: infinity-cache/infinity-cache.php:218
+#: infinity-cache/infinity-cache.php:226
 msgid "URL %d"
 msgstr "URL %d"
 
-#: infinity-cache/infinity-cache.php:219
+#: infinity-cache/infinity-cache.php:227
 msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
 msgstr "CDN'niz için yapılandırdığınız URL adreslerini ekleyin, örneğin http://cdn%d.mysite.com. Çok bölgeli olması için alan adınızı da ekleyin."
 
-#: infinity-cache/infinity-cache.php:241
+#: infinity-cache/infinity-cache.php:249
 msgid "Infinity Cache"
 msgstr "Sonsuz Önbellek"
 
-#: infinity-cache/infinity-cache.php:628
+#: infinity-cache/infinity-cache.php:636
 msgid "An example for this URL is: %s%s%s."
 msgstr "Bu URL için bir örnek: %s%s%s."
 
@@ -1636,73 +1733,740 @@ msgstr "Mobil İçerik"
 msgid "Enable mobile content display"
 msgstr "Mobil içerik görüntülemeyi etkinleştir"
 
-#: multi-ads/multi-ads.php:179
+#: mobilestore/default/functions.php:114
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Login now"
+msgstr "Hemen giriş yap"
+
+#: mobilestore/default/functions.php:115
+msgid "Close"
+msgstr "Kapat"
+
+#: mobilestore/default/functions.php:116
+msgid "Add Company Name"
+msgstr "Şirket Adını Ekle"
+
+#: mobilestore/default/functions.php:117
+msgid "Add Order Notes"
+msgstr "Sipariş Notları Ekle"
+
+#: mobilestore/default/functions.php:118
+msgid "CVC"
+msgstr "CVC"
+
+#: mobilestore/default/functions.php:178
+msgid "view more products"
+msgstr "daha fazla ürün görüntüle"
+
+#: mobilestore/default/functions.php:196
+msgid "Added to cart"
+msgstr "sepete eklendi"
+
+#: mobilestore/default/header-bottom.php:9
+msgid "Product Categories"
+msgstr "Ürün Kategorileri"
+
+#: mobilestore/default/header-bottom.php:15
+msgid "Recently Viewed"
+msgstr "Son Görüntülenen"
+
+#: mobilestore/default/header-bottom.php:20
+msgid "Site Menu"
+msgstr "Site Menüsü"
+
+#: mobilestore/default/header-bottom.php:70
+msgid "Cart"
+msgstr "Sepet"
+
+#: mobilestore/default/header-bottom.php:78
+msgid "Search the store"
+msgstr "Mağazada ara"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Recent Searches"
+msgstr "Son Aramalar"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Clear"
+msgstr "Temizle"
+
+#: mobilestore/default/header-bottom.php:100
+msgid "Back to blog index"
+msgstr "Blog indeksine geri dön"
+
+#: mobilestore/default/header-bottom.php:114
+msgid "sorting"
+msgstr "sıralanıyor"
+
+#: mobilestore/default/header-bottom.php:115
+msgid "filter by"
+msgstr "şuna göre sırala:"
+
+#: mobilestore/default/post-loop.php:9
+msgid "Read This Post &rsaquo;"
+msgstr "Bu Postayı Oku &rsaquo;"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:18
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:33
+msgid "Shipping #%d"
+msgstr "Nakliye #%d"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:20
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:35
+msgid "Shipping and Handling"
+msgstr "Nakliye ve Teslimat"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:74
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr "Mevcut nakliye yöntemlerini görmek için lütfen nakliye hesaplayıcıyı kullanın."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:78
+msgid "Please continue to the checkout and enter your full address to see if there are any available shipping methods."
+msgstr "Lütfen devam ederek ödeme yapın ve mevcut bir nakliye yöntemi olup olmadığını görmek için tam adresinizi yazın."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:82
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:68
+msgid "Please fill in your details to see available shipping methods."
+msgstr "Mevcut nakliye yöntemlerini görmek için lütfen bilgilerinizi girin."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:91
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:97
+msgid "There doesn&lsquo;t seem to be any available shipping methods. Please double check your address, or contact us if you need any help."
+msgstr "Mevcut bir nakliye yöntemi yok. Lütfen adresinizi bir kez daha kontrol edin veya bize ulaşarak yardım alın."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:112
+#: mobilestore/default/woocommerce/cart/totals.php:46
+msgid "Shipping"
+msgstr "Nakliye"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:19
+#: mobilestore/default/woocommerce/cart/totals.php:28
+#: mobilestore/default/woocommerce/checkout/review-order.php:25
+msgid "Cart Subtotal"
+msgstr "Sepet Alt Toplam"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:66
+#: mobilestore/default/woocommerce/cart/totals.php:121
+msgid " (taxes estimated for %s)"
+msgstr "(%s için tahmini vergiler)"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:69
+#: mobilestore/default/woocommerce/cart/totals.php:123
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr "Not: Nakliye ve vergiler tahmini olarak hesaplanır%s ve fatura ve nakliye bilgilerinize göre ödeme sırasında güncellenir."
+
+#: mobilestore/default/woocommerce/cart/cart.php:51
+msgid "Available on backorder"
+msgstr "Sipariş bakiyesinde mevcut"
+
+#: mobilestore/default/woocommerce/cart/cart.php:57
+msgid "Remove this item"
+msgstr "Bu öğeyi kaldır"
+
+#: mobilestore/default/woocommerce/cart/cart.php:83
+msgid "Update Cart"
+msgstr "Sepeti Güncelle"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+msgid "Coupon"
+msgstr "Kupon"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:41
+msgid "Coupon code"
+msgstr "Kupon kodu"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:43
+msgid "Apply"
+msgstr "Uygula"
+
+#: mobilestore/default/woocommerce/cart/cart.php:111
+msgid "Proceed to Checkout"
+msgstr "Devam ederek ödeme yap"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:24
+msgid "edit cart"
+msgstr "sepeti düzenle"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:29
+msgid "checkout"
+msgstr "ödeme yap"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:73
+msgid "No products in the cart."
+msgstr "Sepette ürün yok."
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:81
+msgid "Subtotal"
+msgstr "Alt toplam"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:89
+msgid "Checkout"
+msgstr "Ödeme yap"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:32
+msgid "Free"
+msgstr "Ücretsiz"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
+msgstr "Üzgünüz, konumunuz (%s) için uygun bir nakliye yöntemi yok."
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "If you require assistance or wish to make alternate arrangements please contact us."
+msgstr "Yardıma ihtiyacınız olursa veya alternatif bir düzenleme yapmak isterseniz lütfen bize ulaşın."
+
+#: mobilestore/default/woocommerce/cart/totals.php:22
+msgid "Cart Totals"
+msgstr "Sepet Toplamları"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+msgid "Cart Discount"
+msgstr "Sepet İndirimi"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "[Remove]"
+msgstr "[Kaldır]"
+
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "Order Discount"
+msgstr "Sipariş İndirimi"
+
+#: mobilestore/default/woocommerce/cart/totals.php:92
+#: mobilestore/default/woocommerce/checkout/review-order.php:94
+msgid "Order Total"
+msgstr "Sipariş Toplamı"
+
+#: mobilestore/default/woocommerce/cart/totals.php:105
+msgid "(Includes %s)"
+msgstr "(%s dahil)"
+
+#: mobilestore/default/woocommerce/cart/totals.php:135
+msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
+msgstr "Nakliye yöntemi bulunamadı; lütfen nakliyenizi yeniden hesaplayın ve bulunduğunuz konuma uygun başka bir yöntem bulunmadığından emin olmak için ülke/şehir ve zip/posta kodunuzu girin."
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:20
+msgid "You must be logged in to checkout."
+msgstr "Ödeme yapmak için oturum açmalısınız"
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Your Order"
+msgstr "Siparişiniz"
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Edit Items"
+msgstr "Öğeleri Düzenle"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Shopped here before?"
+msgstr "Daha önce buradan alışveriş yaptınız mı?"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:23
+msgid "Enter your login details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section."
+msgstr "Aşağıdaki kutulara oturum bilgilerinizi girin. Yeni müşteriyseniz, lütfen Fatura ve Nakliye bölümüne gidin."
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:19
+#: mobilestore/default/woocommerce/checkout/review-order.php:18
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:22
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:27
+#: mobilestore/default/woocommerce/emails/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:23
+#: mobilestore/default/woocommerce/order/order-details.php:20
+msgid "Product"
+msgstr "Ürün"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:20
+msgid "Totals"
+msgstr "Toplamlar"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:52
+msgid "Payment"
+msgstr "Ödeme"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:77
+msgid "Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Üzgünüz, konumunuza uygun ödeme yöntemi yok. Yardıma ihtiyacınız olursa veya alternatif bir düzenleme yapmak isterseniz lütfen bize ulaşın."
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:87
+msgid "Pay for order"
+msgstr "Sipariş için ödeme yap"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:31
+msgid "Ship to a different address?"
+msgstr "Farklı bir adrese nakliye edilsin mi?"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:57
+msgid "Additional Information"
+msgstr "Ek Bilgiler"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:19
+#: mobilestore/default/woocommerce/order/order-details.php:21
+msgid "Total"
+msgstr "Toplam"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:171
+msgid "Please fill in your details above to see available payment methods."
+msgstr "Mevcut ödeme yöntemlerini görmek için lütfen yukarıya bilgilerinizi girin."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:173
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Üzgünüz, bölgenize uygun ödeme yöntemi yok. Yardıma ihtiyacınız olursa veya alternatif bir düzenleme yapmak isterseniz lütfen bize ulaşın."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr "Tarayıcınız JavaScript'i desteklemediğinden veya JavaScript devre dışı bırakıldığından, siparişinizi vermeden önce <em>Toplamları Güncelle</em> tuşunu tıklayın. Aksi takdirde yukarıda belirtilen miktardan daha fazla ücretlendirilebilirsiniz."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Update totals"
+msgstr "Toplamları güncelle"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:194
+msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr "<a href=\"%s\" target=\"_blank\">Hükümler ve koşulları</a> kabul ediyorum."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:200
+msgid "Place order"
+msgstr "Sipariş ver"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:13
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
+msgid "You have received an order from %s. Their order is as follows:"
+msgstr "%s tarafından bir sipariş verildi. Siparişleri şöyle:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:17
+msgid "Order: %s"
+msgstr "Sipariş: %s"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:28
+#: mobilestore/default/woocommerce/emails/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:24
+msgid "Quantity"
+msgstr "Miktar"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:25
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:29
+#: mobilestore/default/woocommerce/emails/customer-note.php:29
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:25
+msgid "Price"
+msgstr "Fiyat"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:50
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:51
+#: mobilestore/default/woocommerce/emails/customer-note.php:55
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:51
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:38
+msgid "Customer details"
+msgstr "Müşteri bilgileri"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:53
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:54
+#: mobilestore/default/woocommerce/emails/customer-note.php:58
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:54
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:49
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:41
+msgid "Email:"
+msgstr "E-posta:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:56
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:57
+#: mobilestore/default/woocommerce/emails/customer-note.php:61
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:57
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:52
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:44
+msgid "Tel:"
+msgstr "Tel:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
+msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
+msgstr "Selam. En son siparişiniz %s tamamlandı. Başvurmanız için sipariş bilgileriniz aşağıda gösterilmektedir:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:22
+#: mobilestore/default/woocommerce/emails/customer-note.php:22
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:18
+msgid "Order:"
+msgstr "Sipariş:"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
+msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
+msgstr "Sizin için %s konumunda bir sipariş oluşturuldu. Bu siparişi ödemek için lütfen şu bağlantıyı kullanın: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+msgid "pay"
+msgstr "öde"
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
+msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
+msgstr "%s hesabı açtığınız için teşekkür ederiz. Kullanıcı adınız: <strong>%s</strong>."
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:15
+msgid "You can access your account area here: %s."
+msgstr "Hesap alanınıza buradan erişebilirsiniz: %s."
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:13
+msgid "Hello, a note has just been added to your order:"
+msgstr "Selam, siparişinize bir not eklendi:"
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:18
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:21
+msgid "For your reference, your order details are shown below."
+msgstr "Başvurmanız için sipariş bilgileriniz aşağıda gösterilmektedir."
+
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
+msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
+msgstr "Siparişiniz alındı ve şu an işleniyor. Başvurmanız için sipariş bilgileriniz aşağıda gösterilmektedir:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:13
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "Şu hesap için parola sıfırlaması talep edildi:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:15
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:15
+msgid "Username: %s"
+msgstr "Kullanıcı adı: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:16
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Bu bir hataysa, bu e-postayı yoksayın, hiçbir işlem yapılmayacaktır."
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:17
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:17
+msgid "To reset your password, visit the following address:"
+msgstr "Parolanızı sıfırlamak için şu adresi ziyaret edin:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:20
+msgid "Click here to reset your password"
+msgstr "Parolanızı sıfırlamak için burayı tıklayın"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:18
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:12
+msgid "Billing address"
+msgstr "Fatura adresi"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:28
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:17
+msgid "Shipping address"
+msgstr "Nakliye adresi"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:34
+msgid "This product is no longer available"
+msgstr "Bu ürün artık mevcut değil"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:76
+msgid "Download %d:"
+msgstr "%d indir:"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:78
+msgid "Download:"
+msgstr "İndir:"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:19
+msgid "Order number: %s"
+msgstr "Sipariş numarası: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:21
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:20
+msgid "Order date: %s"
+msgstr "Sipariş tarihi: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+msgid "jS F Y"
+msgstr "jS F Y"
+
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:38
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:46
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:38
+#: mobilestore/default/woocommerce/order/order-details.php:97
+msgid "Your details"
+msgstr "Bilgileriniz"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:28
+msgid "Quantity: %s"
+msgstr "Miktar: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:31
+msgid "Cost: %s"
+msgstr "Maliyet: %s"
+
+#: mobilestore/default/woocommerce/loop/no-products-found.php:14
+msgid "No products were found matching your search."
+msgstr "Aramanıza uygun ürün bulunamadı."
+
+#: mobilestore/default/woocommerce/loop-shop.php:40
+msgid "No products found which match your selection."
+msgstr "Seçiminize uygun ürün bulunamadı."
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:19
+msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
+msgstr "Selam <strong>%1$s</strong> (%1$s değil misiniz? <a href=\"%2$s\">Oturumu kapat</a>)."
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:26
+msgid "<a href=\"%s\">Edit your password and account details</a>."
+msgstr "<a href=\"%s\">Parolanızı ve hesap bilgilerinizi düzenleyin</a>."
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:26
+msgid "Recent Orders"
+msgstr "Son Siparişler"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:40
+msgid "%s for %s item"
+msgid_plural "%s for %s items"
+msgstr[0] "%s / %s öğe"
+msgstr[1] "%s / %s öğe"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:49
+msgid "Pay"
+msgstr "Öde"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:56
+#: prose/default/comments.php:48 themes/foundation/default/comments.php:48
+msgid "Cancel"
+msgstr "İptal"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:62
+msgid "View"
+msgstr "Görüntüle"
+
+#: mobilestore/default/woocommerce/order/order-details.php:66
+msgid "Download file%s"
+msgstr "Dosyayı indir%s"
+
+#: mobilestore/default/woocommerce/order/order-details.php:101
+msgid "Email"
+msgstr "E-posta"
+
+#: mobilestore/default/woocommerce/order/order-details.php:102
+msgid "Telephone"
+msgstr "Telefon"
+
+#: mobilestore/default/woocommerce/order/order-details.php:118
+msgid "Billing Address"
+msgstr "Fatura Adresi"
+
+#: mobilestore/default/woocommerce/order/order-details.php:122
+#: mobilestore/default/woocommerce/order/order-details.php:137
+msgid "N/A"
+msgstr "Yok"
+
+#: mobilestore/default/woocommerce/order/order-details.php:133
+msgid "Shipping Address"
+msgstr "Nakliye Adresi"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:63
+msgid "Products tagged &ldquo;"
+msgstr "Etiketlenen ürünler &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:91
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:190
+msgid "Search results for &ldquo;"
+msgstr "Şunun için sonuç ara &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:148
+msgid "Error 404"
+msgstr "Hata 404"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:194
+msgid "Posts tagged &ldquo;"
+msgstr "Postalar etiketlendi &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:199
+msgid "Author:"
+msgstr "Yazar:"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:204
+#: themes/foundation/root-functions.php:1087
+msgid "Page"
+msgstr "Sayfa"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:20
+msgid "Username or email"
+msgstr "Kullanıcı adı veya parola"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:24
+msgid "Password"
+msgstr "Parola"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:33
+msgid "Lost Password?"
+msgstr "Parolanızı unuttunuz mu?"
+
+#: mobilestore/root-functions.php:6
+msgid "Store"
+msgstr "Mağaza"
+
+#: mobilestore/root-functions.php:189
+msgid "Off-Canvas left menu"
+msgstr "Kanvas dışı sol menü"
+
+#: mobilestore/root-functions.php:198
+msgid "Footer Menu"
+msgstr "Altbilgi Menüsü"
+
+#: mobilestore/root-functions.php:201
+msgid "Menu shown in the MobileStore footer"
+msgstr "MobileStore altbilgisinde gösterilen menü"
+
+#: mobilestore/root-functions.php:208
+msgid "Menu & Cart Background"
+msgstr "Menü ve Sepet Arkaplanı"
+
+#: mobilestore/root-functions.php:211
+msgid "Header & Footer Background"
+msgstr "Üstbilgi ve Altbilgi Arkaplanı"
+
+#: mobilestore/root-functions.php:263
+msgid "Primary Actions & Purchase Flow"
+msgstr "Birincil Eylemler ve Alışveriş Akışı"
+
+#: mobilestore/root-functions.php:274
+msgid "Highlight Color"
+msgstr "Vurgulama Rengi"
+
+#: mobilestore/root-functions.php:390
+msgid "Product Listing"
+msgstr "Ürün Listesi"
+
+#: mobilestore/root-functions.php:396
+msgid "Number of products shown per page in product listings"
+msgstr "Ürün listesinde her sayfada gösterilen ürün sayısı"
+
+#: mobilestore/root-functions.php:410
+msgid "Product Filters"
+msgstr "Ürün Filtreleri"
+
+#: mobilestore/root-functions.php:416
+msgid "Show WooCommerce product filters for"
+msgstr "Şunun için WooCommerce ürün filtrelerini göster:"
+
+#: mobilestore/root-functions.php:431
+msgid "Site Sidebar"
+msgstr "Site Yan Çubuğu"
+
+#: mobilestore/root-functions.php:437
+msgid "Show category menu in sidebar"
+msgstr "Yan çubukta kategori menüsünü göster"
+
+#: mobilestore/root-functions.php:445
+msgid "Show recently viewed products in sidebar"
+msgstr "Yan çubukta son görüntülenen ürünleri göster"
+
+#: mobilestore/root-functions.php:523
+msgid "Site logo display size"
+msgstr "Site logosu görüntüleme boyutu"
+
+#: mobilestore/root-functions.php:528
+msgid "Short (default)"
+msgstr "Kısa (varsayılan)"
+
+#: mobilestore/root-functions.php:529
+msgid "Tall (longer vertically for square logos)"
+msgstr "Uzun (kare logolar için dikeyde daha uzun)"
+
+#: mobilestore/root-functions.php:536
+msgid "Show site description in large header"
+msgstr "Büyük üstbilgide site tanımını göster"
+
+#: multi-ads/multi-ads.php:228
 msgid "Header Ad"
-msgstr "Başlık Reklamı"
+msgstr "Üstbilgi Reklamı"
 
-#: multi-ads/multi-ads.php:181
+#: multi-ads/multi-ads.php:230
 msgid "Footer Ad"
-msgstr "Altbaşlık Reklamı"
+msgstr "Altbilgi Reklamı"
 
-#: multi-ads/multi-ads.php:183
+#: multi-ads/multi-ads.php:232
 msgid "Pre-content Ad"
 msgstr "İçerik Öncesi Reklam"
 
-#: multi-ads/multi-ads.php:185
+#: multi-ads/multi-ads.php:234
 msgid "Post-content Ad"
 msgstr "İçerik Sonrası Reklam"
 
-#: multi-ads/multi-ads.php:206
+#: multi-ads/multi-ads.php:236
+msgid "Mid-content Ad"
+msgstr "İçerik Ortasında Reklam"
+
+#: multi-ads/multi-ads.php:257
 msgid "Enabled"
 msgstr "Etkinleştirildi"
 
-#: multi-ads/multi-ads.php:214
+#: multi-ads/multi-ads.php:265
 msgid "Perform A/B test with secondary advertising unit"
-msgstr "İkincil renklam birimiyle A/B testi gerçekleştirin"
+msgstr "İkincil reklam birimiyle A/B testi gerçekleştirin"
 
-#: multi-ads/multi-ads.php:222
+#: multi-ads/multi-ads.php:273
 msgid "Primary Advertising Unit"
 msgstr "Birincil Reklam Birimi"
 
-#: multi-ads/multi-ads.php:223
+#: multi-ads/multi-ads.php:274
 msgid "HTML, CSS and JS are all accepted."
 msgstr "HTML, CSS ve JS kabul edilir."
 
-#: multi-ads/multi-ads.php:230
+#: multi-ads/multi-ads.php:281
 msgid "Secondary Advertising Unit"
 msgstr "İkincil Reklam Birimi"
 
-#: multi-ads/multi-ads.php:231
+#: multi-ads/multi-ads.php:282
 msgid "If defined, secondary advertising code will be shown 50% of the time."
 msgstr "Eğer tanımlanırsa, ikincil reklam kodu sürenin %50'sinde görüntülenir."
 
-#: multi-ads/multi-ads.php:238
+#: multi-ads/multi-ads.php:289
 msgid "Display on archive/post listings"
 msgstr "Arşiv/posta listelemelerinde görüntüle"
 
-#: multi-ads/multi-ads.php:246
+#: multi-ads/multi-ads.php:297
 msgid "Display on single posts"
 msgstr "Tekil postalarda görüntüle"
 
-#: multi-ads/multi-ads.php:254
+#: multi-ads/multi-ads.php:305
 msgid "Display on static pages"
 msgstr "Statik sayfalarda görüntüle"
 
-#: multi-ads/multi-ads.php:262
+#: multi-ads/multi-ads.php:313
 msgid "Display on taxonomy listings"
 msgstr "Taksonomi listelemelerinde görüntüle"
 
-#: multi-ads/multi-ads.php:269
+#: multi-ads/multi-ads.php:320
 msgid "Display in search results"
 msgstr "Arama sonuçlarında görüntüle"
 
 #: open/default/front-page.php:25
 msgid "We&lsquo;re <em>open</em> every %s %s."
-msgstr "Her %s %s için <em>hazırız</em>."
+msgstr "%s %s arası her zaman <em>açığız</em>."
 
 #: open/default/front-page.php:27
 msgid "Sorry, we&lsquo;re <em>closed</em> every %s."
-msgstr "Üzgünüz, her %s için <em>kapalıyız</em>."
+msgstr "Üzgünüz, her %s <em>kapalıyız</em>."
 
 #: open/default/functions.php:11 open/default/location.php:5
 #: simple/default/front-page.php:20
@@ -1713,31 +2477,31 @@ msgstr "Yerimiz"
 msgid "Our Hours"
 msgstr "Saatlerimiz"
 
-#: open/default/hours.php:12 open/root-functions.php:179
+#: open/default/hours.php:12 open/root-functions.php:206
 msgid "Sunday"
 msgstr "Pazar"
 
-#: open/default/hours.php:13 open/root-functions.php:187
+#: open/default/hours.php:13 open/root-functions.php:214
 msgid "Monday"
 msgstr "Pazartesi"
 
-#: open/default/hours.php:14 open/root-functions.php:195
+#: open/default/hours.php:14 open/root-functions.php:222
 msgid "Tuesday"
 msgstr "Salı"
 
-#: open/default/hours.php:15 open/root-functions.php:203
+#: open/default/hours.php:15 open/root-functions.php:230
 msgid "Wednesday"
 msgstr "Çarşamba"
 
-#: open/default/hours.php:16 open/root-functions.php:211
+#: open/default/hours.php:16 open/root-functions.php:238
 msgid "Thursday"
 msgstr "Perşembe"
 
-#: open/default/hours.php:17 open/root-functions.php:219
+#: open/default/hours.php:17 open/root-functions.php:246
 msgid "Friday"
 msgstr "Cuma"
 
-#: open/default/hours.php:18 open/root-functions.php:227
+#: open/default/hours.php:18 open/root-functions.php:254
 msgid "Saturday"
 msgstr "Cumartesi"
 
@@ -1745,115 +2509,113 @@ msgstr "Cumartesi"
 msgid "Closed"
 msgstr "Kapalı"
 
-#: open/root-functions.php:73
+#: open/root-functions.php:77
+msgid "Open Homepage Menu"
+msgstr "Open Ana Sayfa Menüsü"
+
+#: open/root-functions.php:83
+msgid "Show full menu on Open homepage"
+msgstr "Open ana sayfasında tam menüyü göster"
+
+#: open/root-functions.php:84
+msgid "If disabled, only Location & Hours links will be shown"
+msgstr "Devre dışı bırakılırsa, sadece Konum ve Saatler bağlantısı gösterilir"
+
+#: open/root-functions.php:100
 msgid "Tagline"
 msgstr "Etiket satırı"
 
-#: open/root-functions.php:79
+#: open/root-functions.php:106
 msgid "Displayed below your logo on the homepage."
-msgstr "Ana sayfada logonuz altında görüntlendi."
+msgstr "Ana sayfada logonuz altında görüntülendi."
 
-#: open/root-functions.php:92 prose/root-functions.php:104
-msgid "Header Image"
-msgstr "Başlık Resmi"
-
-#: open/root-functions.php:98
+#: open/root-functions.php:125
 msgid "Displayed behind header on pages."
-msgstr "Sayfalarda başlık arkasında görüntülendi."
+msgstr "Sayfalarda üstbilgi arkasında görüntülendi."
 
-#: open/root-functions.php:111
+#: open/root-functions.php:138
 msgid "Location"
 msgstr "Yer"
 
-#: open/root-functions.php:117 simple/root-functions.php:229
+#: open/root-functions.php:144 simple/root-functions.php:230
 msgid "Map address"
 msgstr "Harita adresi"
 
-#: open/root-functions.php:118
+#: open/root-functions.php:145
 msgid "Enter an address and a menu item for 'Our Location' will be shown."
 msgstr "'Yerimiz' için gösterilecek bir adres ve menü öğesi girin."
 
-#: open/root-functions.php:130
+#: open/root-functions.php:157
 msgid "Call to Action"
 msgstr "Eyleme Çağrı"
 
-#: open/root-functions.php:136
+#: open/root-functions.php:163
 msgid "Show call to action button at bottom of pages"
 msgstr "Sayfaların altında eyleme çağrı tuşu göster"
 
-#: open/root-functions.php:137
+#: open/root-functions.php:164
 msgid "Give visitors a one-click action to follow and increase your conversions."
-msgstr "Ziyaretçilere tek tıklama eylemi vererek yazışmalarınGive visitors a one-click action to follow and increase your conversions."
+msgstr "Ziyaretçilere tek tıklamayla takip imkanı tanıyın ve dönüştürmelerinizi artırın."
 
-#: open/root-functions.php:144
+#: open/root-functions.php:171
 msgid "Button Label"
 msgstr "Tuş Etiketi"
 
-#: open/root-functions.php:152
+#: open/root-functions.php:179
 msgid "Target URL"
 msgstr "Hedef URL"
 
-#: open/root-functions.php:153
+#: open/root-functions.php:180
 msgid "Prefix your phone number with \"tel:\" to allow one-click phone calls."
 msgstr "Tek tıklamayla telefon araması yapılabilmesi telefon numaranızı \"tel:\" ile başlatın."
 
-#: open/root-functions.php:165
+#: open/root-functions.php:192
 msgid "Hours"
 msgstr "Saatler"
 
-#: open/root-functions.php:171
+#: open/root-functions.php:198
 msgid "Use built-in Hours feature"
-msgstr ""
+msgstr "Dahili Saatler özelliğini kullan"
 
-#: open/root-functions.php:172
+#: open/root-functions.php:199
 msgid "Add your hours and the current day's hours will appear on the homepage along with a menu item for 'Our Hours'."
-msgstr ""
+msgstr "Saatlerinizi ve geçerli günün saatlerini ekleme, 'Saatlerimiz' için ana sayfada bir menü öğesiyle birlikte görüntülenir."
 
-#: open/root-functions.php:180
+#: open/root-functions.php:207
 msgid "Will show as closed if left blank."
-msgstr ""
+msgstr "Boş bırakılırsa kapalı olarak gösterilecektir."
 
-#: open/root-functions.php:236
+#: open/root-functions.php:263
 msgid "Let visitors know about holidays, vacations, and other special hours"
-msgstr ""
+msgstr "Ziyaretçilerin tatiller, resmi tatiller ve diğer özel saatler hakkında bilgi sahibi olmasını sağlayın."
 
-#: open/root-functions.php:302 prose/root-functions.php:189
-#: scaffold/root-functions.php:75
-msgid "Primary Menu"
-msgstr "Birincil Menü"
-
-#: open/root-functions.php:305 prose/root-functions.php:192
-#: scaffold/root-functions.php:78
-msgid "Menus are awesome!"
-msgstr "Menüler harika!"
-
-#: open/root-functions.php:310
+#: open/root-functions.php:356
 msgid "Main branding colour"
-msgstr ""
+msgstr "Ana marka rengi"
 
 #: pro/modules/geolocation/geolocation.php:11
 msgid "Local Promotions"
-msgstr ""
+msgstr "Yerel Kampanyalar"
 
 #: pro/modules/geolocation/geolocation.php:17
 msgid "Enable location detection"
-msgstr ""
+msgstr "Konum tespitini etkinleştir"
 
 #: pro/modules/geolocation/geolocation.php:25
 msgid "Address on which to center the geofence"
-msgstr ""
+msgstr "Coğrafi koruma duvarına göre adres"
 
 #: pro/modules/geolocation/geolocation.php:33
 msgid "Geofence Radius (in km)"
-msgstr ""
+msgstr "Coğrafi Koruma Duvarı Yarıçapı (km)"
 
 #: pro/modules/geolocation/geolocation.php:41
 msgid "Text to show to nearby visitors"
-msgstr ""
+msgstr "Yakındaki ziyaretçilere gösterilecek metin"
 
 #: pro/modules/geolocation/geolocation.php:49
 msgid "Encoded Location"
-msgstr ""
+msgstr "Kodlanan Konum"
 
 #: pro/modules/webapp/webapp.php:120
 msgid "External link— open it in the browser?"
@@ -1865,7 +2627,7 @@ msgstr "Dosya bağlantısı — Tarayıcıda açmak istiyor musunuz?"
 
 #: pro/professional.php:18
 msgid "Show WPML language switcher in theme footer"
-msgstr "Tema alt bilgisinde WPML dil değiştiriciyi göster"
+msgstr "Tema altbilgisinde WPML dil değiştiriciyi göster"
 
 #: pro/professional.php:116
 msgid "License Expired"
@@ -1927,105 +2689,132 @@ msgstr "WPtouch Pro 3 sürümü WPtouch 2.x ile birlikte kurulu olamaz. Önce bu
 msgid "Unknown error"
 msgstr "Bilinmeyen hata"
 
-#: prose/default/functions.php:10
-msgid "Load more from this collection"
-msgstr ""
+#: prose/default/comments.php:20 prose/default/comments.php:26
+#: themes/foundation/default/comments.php:20
+#: themes/foundation/default/comments.php:26
+msgid "Load More Comments&hellip;"
+msgstr "Daha Fazla Yorum Yükle&hellip;"
 
-#: prose/default/functions.php:11
+#: prose/default/comments.php:38 themes/foundation/default/comments.php:38
+msgid "Comments are closed"
+msgstr "Yorumlar kapalı"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply"
+msgstr "Bir Yanıt Bırak"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply to %s"
+msgstr "%s kullanıcısına bir Yanıt yaz"
+
+#: prose/default/comments.php:54 themes/foundation/default/comments.php:54
+msgid "You must be %slogged in%s to post a comment."
+msgstr "Bir yorum postalamak için %soturum açmanız%s gerekir."
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Logged in as"
+msgstr "Oturum açan"
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Log out"
+msgstr "Oturumu kapat"
+
+#: prose/default/comments.php:65 themes/foundation/default/comments.php:65
+msgid "Name"
+msgstr "Ad"
+
+#: prose/default/comments.php:67 themes/foundation/default/comments.php:67
+#: themes/foundation/modules/social-links/social-links.php:94
+msgid "E-Mail"
+msgstr "E-Posta"
+
+#: prose/default/comments.php:69 themes/foundation/default/comments.php:69
+msgid "Website"
+msgstr "Web sitesi"
+
+#: prose/default/comments.php:77 themes/foundation/default/comments.php:77
+msgid "Publish"
+msgstr "Yayınla"
+
+#: prose/default/functions.php:34
 msgid "%d minute"
-msgstr ""
+msgstr "%d dakika"
 
-#: prose/default/functions.php:12
+#: prose/default/functions.php:35
 msgid "%d minutes"
-msgstr ""
+msgstr "%d dakika"
 
-#: prose/default/functions.php:13
+#: prose/default/functions.php:36
 msgid "%d minute remaining"
-msgstr ""
+msgstr "%d dakika kaldı"
 
-#: prose/default/functions.php:14
+#: prose/default/functions.php:37
 msgid "%d minutes remaining"
-msgstr ""
+msgstr "%d dakika kaldı"
 
-#: prose/default/functions.php:15
+#: prose/default/functions.php:38
 msgid "Share post"
-msgstr ""
-
-#: prose/default/header-bottom.php:19
-msgid "Collections"
-msgstr ""
-
-#: prose/default/header-bottom.php:22
-msgid "Options"
-msgstr "Seçenekler"
+msgstr "Postayı paylaş"
 
 #: prose/default/header-bottom.php:43
 msgid "Reading Text Size"
-msgstr ""
+msgstr "Okuma Metni Boyutu"
 
 #: prose/default/header-bottom.php:46
 msgid "Small"
-msgstr ""
+msgstr "Küçük"
 
 #: prose/default/header-bottom.php:49
 msgid "Medium"
-msgstr ""
+msgstr "Orta"
 
 #: prose/default/header-bottom.php:52
 msgid "Large"
-msgstr ""
+msgstr "Büyük"
 
 #: prose/default/header-bottom.php:55
 msgid "Text Sample"
-msgstr ""
+msgstr "Metin Örneği"
+
+#: prose/default/header-bottom.php:101
+msgid "Collection"
+msgstr "Koleksiyon"
 
 #: prose/default/header-bottom.php:103
-msgid "Collection"
-msgstr ""
-
-#: prose/default/header-bottom.php:105
 msgid "Posts Tagged"
-msgstr ""
+msgstr "Etiketlenen Postalar"
 
 #: prose/default/related-posts.php:8
 msgid "Read Next"
-msgstr ""
+msgstr "Sonrakini Oku"
 
-#: prose/root-functions.php:63
-msgid "Show categories as \"collections\" in menu"
-msgstr ""
+#: prose/default/single.php:31
+msgid "Discuss this post"
+msgstr "Bu postayı tartış"
 
-#: prose/root-functions.php:74
-msgid "Maximum number of items in categories/collections"
-msgstr ""
+#: prose/default/single.php:33
+msgid "View discussion"
+msgstr "Tartışmayı görüntüle"
 
-#: prose/root-functions.php:90
-msgid "Animate the featured image on posts"
-msgstr ""
+#: prose/root-functions.php:64
+msgid "Show comments when reading posts"
+msgstr "Postaları okurken yorumları göster"
 
-#: prose/root-functions.php:110
-msgid "Displayed behind header on pages and posts without featured images."
-msgstr ""
+#: prose/root-functions.php:65
+msgid "Comment form will not appear for posts with comments turned off."
+msgstr "Yorumları kapatılan postalar için yorum görüntülenmez."
 
-#: prose/root-functions.php:123
-msgid "Site Intro"
-msgstr ""
-
-#: prose/root-functions.php:129
-msgid "Displayed on post listing page below site name."
-msgstr "Site adı altında posta listeleme sayfasında görüntülendi."
-
-#: prose/root-functions.php:142
+#: prose/root-functions.php:143
 msgid "Drop Caps"
-msgstr "Cap Bırak"
+msgstr "Caps Bırak"
 
-#: prose/root-functions.php:148
+#: prose/root-functions.php:149
 msgid "Use a drop cap at the start of each blog post."
-msgstr "Her blog postası başlangıcında bir cap bırak kullan."
+msgstr "Her blog postası başlangıcında bir caps bırak kullan."
 
-#: prose/root-functions.php:200 themes/foundation/root-functions.php:11
-msgid "Branding"
-msgstr "Markalalaştırma"
+#: prose/root-functions.php:196
+msgid "Off-canvas menu for Prose"
+msgstr "Prose için kanvas dışı menü"
 
 #: responsive-images/responsive-images.php:92
 msgid "Responsive Images"
@@ -2055,63 +2844,63 @@ msgstr "Kaliteyi iyileştir"
 msgid "Call Us"
 msgstr "Bizi Arayın"
 
-#: simple/default/header-bottom.php:15
+#: simple/default/header-bottom.php:17
 msgid "Toggle Menu"
 msgstr "Menüyü Değiştir"
 
-#: simple/root-functions.php:58
+#: simple/root-functions.php:59
 msgid "Site Menu (Pulldown)"
 msgstr "Site Menüsü (Çekmeli)"
 
-#: simple/root-functions.php:61
+#: simple/root-functions.php:62
 msgid "Pull-down menu at top of pages"
 msgstr "Sayfaların en üstünde aşağı açılan menü"
 
-#: simple/root-functions.php:69
+#: simple/root-functions.php:70
 msgid "Front Page Menu"
 msgstr "Ön Sayfa Menüsü"
 
-#: simple/root-functions.php:72
+#: simple/root-functions.php:73
 msgid "Displayed below front page menu and content"
 msgstr "Ön sayfa menüsü ve içerik altında görüntülendi"
 
-#: simple/root-functions.php:190
+#: simple/root-functions.php:191
 msgid "Enable search on blog pages"
 msgstr "Blog sayfalarında aramayı etkinleştir"
 
-#: simple/root-functions.php:204
+#: simple/root-functions.php:205
 msgid "Homepage Call Us"
 msgstr "Giriş Sayfası Biri Arayın"
 
-#: simple/root-functions.php:210
+#: simple/root-functions.php:211
 msgid "Phone number"
 msgstr "Telefon Numarası"
 
-#: simple/root-functions.php:211
+#: simple/root-functions.php:212
 msgid "Enter a phone number and a homepage menu item for 'call us' will be shown."
 msgstr "'Bizi arayın' seçeneğinin görüntülenmesi için bir telefon numarası ve giriş sayfası menüsü girin."
 
-#: simple/root-functions.php:223
+#: simple/root-functions.php:224
 msgid "Homepage Location"
 msgstr "Giriş Sayfası Yeri"
 
-#: simple/root-functions.php:230
+#: simple/root-functions.php:231
 msgid "Enter an address and a homepage menu item for 'Our Location' will be shown."
 msgstr "Gösterilecek 'Konumumuz' için bir adres ve ana sayfa menü öğesi girin."
 
-#: simple/root-functions.php:242
+#: simple/root-functions.php:243
 msgid "Front Page Content"
 msgstr "Ön Sayfa İçeriği"
 
-#: simple/root-functions.php:248
+#: simple/root-functions.php:249
 msgid "Front page alternate content"
 msgstr "Ön sayfa alternatif içerik"
 
-#: simple/root-functions.php:249
+#: simple/root-functions.php:250
 msgid "Shows above the front page menu (if enabled), HTML allowed."
 msgstr "Ön sayfa menüsü üzerinde gösterilir (etkinse), HTML kullanılabilir."
 
-#: simple/root-functions.php:286
+#: simple/root-functions.php:287
 msgid "Add a light noise effect to the drop-down menu and theme background"
 msgstr "Açılır menü ve tema arka planına hafif bir parazit efekti ekle"
 
@@ -2131,56 +2920,6 @@ msgstr "&laquo; galeride bir önceki"
 msgid "next in gallery &raquo;"
 msgstr "galeride bir sonraki &raquo;"
 
-#: themes/foundation/default/comments.php:20
-#: themes/foundation/default/comments.php:26
-msgid "Load More Comments&hellip;"
-msgstr "Daha Fazla Yorum Yükle&hellip;"
-
-#: themes/foundation/default/comments.php:38
-msgid "Comments are closed"
-msgstr "Yorumlar kapalı"
-
-#: themes/foundation/default/comments.php:48
-msgid "Cancel"
-msgstr "İptal"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply"
-msgstr "Bir Yanıt Bırak"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply to %s"
-msgstr "%s kullanıcısına bir Yanıt yaz"
-
-#: themes/foundation/default/comments.php:54
-msgid "You must be %slogged in%s to post a comment."
-msgstr "Bir yorum postalamak için %soturum açmanız%s gerekir."
-
-#: themes/foundation/default/comments.php:61
-msgid "Logged in as"
-msgstr "Oturum açan"
-
-#: themes/foundation/default/comments.php:61
-msgid "Log out"
-msgstr "Oturumu kapat"
-
-#: themes/foundation/default/comments.php:65
-msgid "Name"
-msgstr "Ad"
-
-#: themes/foundation/default/comments.php:67
-#: themes/foundation/modules/social-links/social-links.php:94
-msgid "E-Mail"
-msgstr "E-Posta"
-
-#: themes/foundation/default/comments.php:69
-msgid "Website"
-msgstr "Web sitesi"
-
-#: themes/foundation/default/comments.php:77
-msgid "Publish"
-msgstr "Yayınla"
-
 #: themes/foundation/default/footer.php:10
 msgid "Back to top"
 msgstr "Başa dön"
@@ -2197,13 +2936,9 @@ msgstr "Bir yorum postalamak için lütfen tüm alanları doğru bir şekilde do
 msgid "Go back"
 msgstr "Geri dön"
 
-#: themes/foundation/default/one-comment.php:12
+#: themes/foundation/default/one-comment.php:17
 msgid "Your comment is awaiting moderation"
 msgstr "Yorumunuz moderatör onayını bekliyor"
-
-#: themes/foundation/default/related-posts.php:4
-msgid "Related"
-msgstr "İlgili"
 
 #: themes/foundation/default/switch-link.php:8
 msgid "mobile"
@@ -2310,116 +3045,116 @@ msgstr "Tema Önizleme"
 msgid "Reload"
 msgstr "Tekrar yükle"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:190
+#: themes/foundation/modules/custom-posts/custom-posts.php:165
 msgid "Custom Post Support"
 msgstr "Özel Posta Desteği"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:196
+#: themes/foundation/modules/custom-posts/custom-posts.php:171
 msgid "Enable custom post-type support"
 msgstr "Özel posta tipi desteği etkinleştir"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:204
+#: themes/foundation/modules/custom-posts/custom-posts.php:179
 msgid "Show custom post taxonomy"
 msgstr "Özel posta taksonomisini göster"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:216
+#: themes/foundation/modules/custom-posts/custom-posts.php:191
 msgid "Custom Post Types"
 msgstr "Özel Posta Tipleri"
 
-#: themes/foundation/modules/featured/featured.php:260
+#: themes/foundation/modules/featured/featured.php:265
 msgid "Featured Slider"
 msgstr "Özellikli Kaydırıcı"
 
-#: themes/foundation/modules/featured/featured.php:266
+#: themes/foundation/modules/featured/featured.php:271
 msgid "Enable featured slider"
 msgstr "Özellikli kaydırıcıyı etkinleştir"
 
-#: themes/foundation/modules/featured/featured.php:267
+#: themes/foundation/modules/featured/featured.php:272
 msgid "Requires at least 2 entries to contain featured images"
 msgstr "Özellikli görüntüler içermek için en az 2 giriş gerekir"
 
-#: themes/foundation/modules/featured/featured.php:274
+#: themes/foundation/modules/featured/featured.php:279
 msgid "Maximum number of posts"
 msgstr "Maksimum posta sayısı"
 
-#: themes/foundation/modules/featured/featured.php:279
+#: themes/foundation/modules/featured/featured.php:284
 msgid "3 posts"
 msgstr "3 posta"
 
-#: themes/foundation/modules/featured/featured.php:280
+#: themes/foundation/modules/featured/featured.php:285
 msgid "5 posts"
 msgstr "5 posta"
 
-#: themes/foundation/modules/featured/featured.php:281
+#: themes/foundation/modules/featured/featured.php:286
 msgid "10 posts"
 msgstr "10 posta"
 
-#: themes/foundation/modules/featured/featured.php:287
+#: themes/foundation/modules/featured/featured.php:292
 msgid "Automatically slide"
 msgstr "Otomatik kaydır"
 
-#: themes/foundation/modules/featured/featured.php:295
+#: themes/foundation/modules/featured/featured.php:300
 msgid "Continuously slide"
 msgstr "Sürekli kaydır"
 
-#: themes/foundation/modules/featured/featured.php:303
+#: themes/foundation/modules/featured/featured.php:308
 msgid "Grayscale images (CSS 3 effect)"
 msgstr "Gri tonlamalı görüntüle (CSS 3 efekti)"
 
-#: themes/foundation/modules/featured/featured.php:304
+#: themes/foundation/modules/featured/featured.php:309
 msgid "Featured slider images will be in grayscale for devices that support CSS filters."
 msgstr "Özellikli kaydırıcı görüntüleri CSS filtrelerini destekleyen cihazlar için gri tonlamalı olur."
 
-#: themes/foundation/modules/featured/featured.php:319
+#: themes/foundation/modules/featured/featured.php:324
 msgid "Featured slider posts also show in listings"
 msgstr "Popüler kaydırıcı postaları listelemelerde de gösterilir"
 
-#: themes/foundation/modules/featured/featured.php:327
+#: themes/foundation/modules/featured/featured.php:332
 msgid "Slide transition speed"
 msgstr "Slayt geçiş hızı"
 
-#: themes/foundation/modules/featured/featured.php:332
+#: themes/foundation/modules/featured/featured.php:337
 msgid "Slow"
 msgstr "Yavaş"
 
-#: themes/foundation/modules/featured/featured.php:333
+#: themes/foundation/modules/featured/featured.php:338
 msgid "Normal"
 msgstr "Normal"
 
-#: themes/foundation/modules/featured/featured.php:334
+#: themes/foundation/modules/featured/featured.php:339
 msgid "Fast"
 msgstr "Hızlı"
 
-#: themes/foundation/modules/featured/featured.php:345
+#: themes/foundation/modules/featured/featured.php:350
 msgid "Show latest posts"
 msgstr "En son postaları göster"
 
-#: themes/foundation/modules/featured/featured.php:346
+#: themes/foundation/modules/featured/featured.php:351
 msgid "Show posts from a specific tag"
 msgstr "Belirli bir etiketten postalar göster"
 
-#: themes/foundation/modules/featured/featured.php:347
+#: themes/foundation/modules/featured/featured.php:352
 msgid "Show posts from a specific category"
 msgstr "Belirli bir kategoriden postalar göster"
 
-#: themes/foundation/modules/featured/featured.php:348
+#: themes/foundation/modules/featured/featured.php:353
 msgid "Show only specific posts or pages"
 msgstr "Sadece spesifik postaları veya sayfaları göster"
 
-#: themes/foundation/modules/featured/featured.php:354
+#: themes/foundation/modules/featured/featured.php:359
 msgid "Only this tag"
 msgstr "Sadece bu etiket"
 
-#: themes/foundation/modules/featured/featured.php:355
-#: themes/foundation/modules/featured/featured.php:364
+#: themes/foundation/modules/featured/featured.php:360
+#: themes/foundation/modules/featured/featured.php:369
 msgid "Enter the tag/category slug name"
 msgstr "Etiket/kategori parça adını girin"
 
-#: themes/foundation/modules/featured/featured.php:363
+#: themes/foundation/modules/featured/featured.php:368
 msgid "Only this category"
 msgstr "Sadece bu kategori"
 
-#: themes/foundation/modules/featured/featured.php:372
+#: themes/foundation/modules/featured/featured.php:377
 msgid "Comma-separated list of post/page IDs"
 msgstr "Posta/sayfa kimliklerinin virgülle ayrılmış listesi"
 
@@ -2447,7 +3182,7 @@ msgstr "Beni Hatırla"
 msgid "Log In"
 msgstr "Giriş Yap"
 
-#: themes/foundation/modules/login/login-html.php:30
+#: themes/foundation/modules/login/login-html.php:31
 msgid "Lost password?"
 msgstr "Parolanızı unuttunuz mu?"
 
@@ -2515,47 +3250,47 @@ msgstr "Tweet"
 msgid "Mail"
 msgstr "Posta"
 
-#: themes/foundation/modules/sharing/sharing.php:81
+#: themes/foundation/modules/sharing/sharing.php:94
 msgid "Sharing"
 msgstr "Paylaşım"
 
-#: themes/foundation/modules/sharing/sharing.php:87
+#: themes/foundation/modules/sharing/sharing.php:100
 msgid "Show sharing links"
 msgstr "Paylaşım bağlantılarını görüntüle"
 
-#: themes/foundation/modules/sharing/sharing.php:88
+#: themes/foundation/modules/sharing/sharing.php:101
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on single posts."
 msgstr "Facebook, Twitter, Google+ ve E-posta tuşlarını tekil postalarda gösterir."
 
-#: themes/foundation/modules/sharing/sharing.php:95
+#: themes/foundation/modules/sharing/sharing.php:108
 msgid "Show sharing links on pages"
 msgstr "Sayfalarda paylaşım bağlantılarını göster"
 
-#: themes/foundation/modules/sharing/sharing.php:96
+#: themes/foundation/modules/sharing/sharing.php:109
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on pages as well as single posts."
 msgstr "Facebook, Twitter, Google+ ve E-posta tuşlarını sayfalarda ve tekil postalarda gösterecek."
 
-#: themes/foundation/modules/sharing/sharing.php:103
+#: themes/foundation/modules/sharing/sharing.php:116
 msgid "Sharing links location"
 msgstr "Paylaşım bağlantıları konumu"
 
-#: themes/foundation/modules/sharing/sharing.php:108
+#: themes/foundation/modules/sharing/sharing.php:121
 msgid "Above post content"
 msgstr "Posta içeriği üzerinde"
 
-#: themes/foundation/modules/sharing/sharing.php:109
+#: themes/foundation/modules/sharing/sharing.php:122
 msgid "Below post content"
 msgstr "Posta içeriği altında"
 
-#: themes/foundation/modules/sharing/sharing.php:115
+#: themes/foundation/modules/sharing/sharing.php:128
 msgid "Color scheme"
 msgstr "Renk şeması"
 
-#: themes/foundation/modules/sharing/sharing.php:120
+#: themes/foundation/modules/sharing/sharing.php:133
 msgid "Theme colors"
 msgstr "Tema renkleri"
 
-#: themes/foundation/modules/sharing/sharing.php:121
+#: themes/foundation/modules/sharing/sharing.php:134
 msgid "Social network colors"
 msgstr "Sosyal ağ renkleri"
 
@@ -2624,11 +3359,13 @@ msgstr "iPad"
 #: themes/foundation/modules/webapp/webapp.php:91
 #: themes/foundation/modules/webapp/webapp.php:109
 #: themes/foundation/modules/webapp/webapp.php:128
-#: themes/foundation/modules/webapp/webapp.php:136
-#: themes/foundation/modules/webapp/webapp.php:154
-#: themes/foundation/modules/webapp/webapp.php:162
-#: themes/foundation/root-functions.php:428
-#: themes/foundation/root-functions.php:446
+#: themes/foundation/modules/webapp/webapp.php:146
+#: themes/foundation/modules/webapp/webapp.php:165
+#: themes/foundation/modules/webapp/webapp.php:173
+#: themes/foundation/modules/webapp/webapp.php:191
+#: themes/foundation/modules/webapp/webapp.php:199
+#: themes/foundation/root-functions.php:439
+#: themes/foundation/root-functions.php:457
 msgid "%d by %d pixels (PNG)"
 msgstr "%d x %d piksel (PNG)"
 
@@ -2673,8 +3410,8 @@ msgid "Notice message contents"
 msgstr "Uyarı mesajı içerikleri"
 
 #: themes/foundation/modules/webapp/webapp.php:44
-msgid "[device] and [icon] are dynamic and used to determine the device and iOS version. Do not remove these from your message."
-msgstr "[device] ve [icon] dinamiktir; cihazı ve iOS sürümünü belirlemek için kullanılır. Bunları mesajınızdan kaldırmayın."
+msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
+msgstr "Cihazınız için uygun yer imi görüntülemesi için [icon] kullanılır. Bunu mesajınızdan çıkarmayın."
 
 #: themes/foundation/modules/webapp/webapp.php:48
 msgid "the notice message will be shown again for visitors"
@@ -2709,10 +3446,18 @@ msgid "iPhone 5 Startup Screen"
 msgstr "iPhone 5 Başlangıç Ekranı"
 
 #: themes/foundation/modules/webapp/webapp.php:122
+msgid "iPhone 6 Startup Screen"
+msgstr "iPhone 6 Başlangıç Ekranı"
+
+#: themes/foundation/modules/webapp/webapp.php:140
+msgid "iPhone 6+ Startup Screen"
+msgstr "iPhone 6+ Başlangıç Ekranı"
+
+#: themes/foundation/modules/webapp/webapp.php:159
 msgid "iPad Mini and iPad Startup Screens"
 msgstr "iPad Mini ve iPad Başlangıç Ekranları"
 
-#: themes/foundation/modules/webapp/webapp.php:148
+#: themes/foundation/modules/webapp/webapp.php:185
 msgid "Retina iPad Startup Screens"
 msgstr "Retina iPad Başlangıç Ekranları"
 
@@ -2741,159 +3486,163 @@ msgid "Language: "
 msgstr "Dil:"
 
 #: themes/foundation/root-functions.php:139
-msgid "Install this Web-App on your [device]: tap [icon] then \"Add to Home Screen\""
-msgstr "Bu Web Uygulamasını [device]'a yükleyin: [icon] simgesine ve sonra \"Ana Ekrana Ekle\" seçeneğine dokunun"
+msgid "Install this Web-App on your homescreen: tap [icon] then \"Add to Home Screen\""
+msgstr "Ana sayfanız için bu Web Uygulamasını yükleyin: Sonra [icon] \"Ana Ekrana Ekle\" simgesini tıklayın"
 
-#: themes/foundation/root-functions.php:342
+#: themes/foundation/root-functions.php:345
 msgid "Number of posts in post listings"
 msgstr "Posta listelemelerindeki posta sayısı"
 
-#: themes/foundation/root-functions.php:343
+#: themes/foundation/root-functions.php:346
 msgid "Overrides the WordPress Reading settings for \"Blog pages show at most\""
 msgstr "\"Blog sayfaları gösterebileceği maksimum giriş sayısı\" için WordPress Okuma ayarlarını geçersiz kılar"
 
-#: themes/foundation/root-functions.php:350
+#: themes/foundation/root-functions.php:353
 msgid "Excluded categories"
 msgstr "Hariç bırakılan kategoriler"
 
-#: themes/foundation/root-functions.php:351
+#: themes/foundation/root-functions.php:354
 msgid "Comma separated by category name"
 msgstr "Kategori adları virgül ile ayrılır"
 
-#: themes/foundation/root-functions.php:358
+#: themes/foundation/root-functions.php:361
 msgid "Excluded tags"
 msgstr "Hariç bırakılan etiketler"
 
-#: themes/foundation/root-functions.php:359
+#: themes/foundation/root-functions.php:362
 msgid "Comma separated by tag name"
 msgstr "Etiket adları virgül ile ayrılır"
 
 #: themes/foundation/root-functions.php:369
+msgid "Allow nested comment replies from mobile visitors"
+msgstr "Mobil ziyaretçiler için yerleştirilen yorum yanıtlarına izin ver"
+
+#: themes/foundation/root-functions.php:370
+msgid "Will show a Reply link after each comment"
+msgstr "Her yorumdan sonra bir Yanıtlama bağlantısı gösterir"
+
+#: themes/foundation/root-functions.php:380
 msgid "Blog"
 msgstr "Blog"
 
-#: themes/foundation/root-functions.php:380
+#: themes/foundation/root-functions.php:391
 msgid "Show comments on pages"
 msgstr "Sayfalarda yorumları görüntüle"
 
-#: themes/foundation/root-functions.php:381
+#: themes/foundation/root-functions.php:392
 msgid "Overrides the WordPress settings for showing comments on pages."
 msgstr "Sayfalarda yorumları görüntülemek için WordPress ayarlarını geçersiz kılar."
 
-#: themes/foundation/root-functions.php:391
-#: themes/foundation/root-functions.php:1119
+#: themes/foundation/root-functions.php:402
+#: themes/foundation/root-functions.php:1136
 msgid "Pages"
 msgstr "Sayfalar"
 
-#: themes/foundation/root-functions.php:404
+#: themes/foundation/root-functions.php:415
 msgid "Icon Title"
 msgstr "Simge Başlığı"
 
-#: themes/foundation/root-functions.php:410
+#: themes/foundation/root-functions.php:421
 msgid "Icon title"
 msgstr "Simge başlığı"
 
-#: themes/foundation/root-functions.php:411
+#: themes/foundation/root-functions.php:422
 msgid "When visitors bookmark your website, this will be the title shown."
 msgstr "Ziyaretçiler web sitenize yer imi koyduğunda, bu görüntülenen başlık olur."
 
-#: themes/foundation/root-functions.php:422
+#: themes/foundation/root-functions.php:433
 msgid "Android"
 msgstr "Android"
 
-#: themes/foundation/root-functions.php:440
+#: themes/foundation/root-functions.php:451
 msgid "iPhone & iPod touch"
 msgstr "iPhone ve iPod touch"
 
-#: themes/foundation/root-functions.php:476
+#: themes/foundation/root-functions.php:487
 msgid "Theme Colors"
 msgstr "Tema Renkleri"
 
-#: themes/foundation/root-functions.php:486
-msgid "Site Logo"
-msgstr "Site Logosu"
-
-#: themes/foundation/root-functions.php:492
+#: themes/foundation/root-functions.php:499
 msgid "(Scaled by themes to fit logo areas as needed)"
 msgstr "(Logo alanına gerektiği gibi sığması için temalara göre ölçeklendirilir)"
 
-#: themes/foundation/root-functions.php:505
+#: themes/foundation/root-functions.php:510
+msgid "Site Logo"
+msgstr "Site Logosu"
+
+#: themes/foundation/root-functions.php:519
 msgid "Smart App Banner"
 msgstr "Akıllı Uygulama Banneri"
 
-#: themes/foundation/root-functions.php:511
+#: themes/foundation/root-functions.php:525
 msgid "Enter your app's %sApp Store ID%s"
 msgstr "Uygulamanızın %sApp Store Kimliğini%s girin"
 
-#: themes/foundation/root-functions.php:512
+#: themes/foundation/root-functions.php:526
 msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
 msgstr "Uygulamanızın benzersiz tanımlayıcısı. iTunes Link Maker'dan Kimliğinizi bulun: Uygulamanızı arayın. Verilen bağlantıda, uygulama Kimliğininiz id ve ?mt arasındaki dokuz haneli sayıdır. Örneğin Angry Birds'ün Kimliği, 343200656'dır."
 
-#: themes/foundation/root-functions.php:524
+#: themes/foundation/root-functions.php:538
 msgid "Theme Footer"
 msgstr "Tema Altbilgisi"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "Custom footer content (HTML is allowed)"
 msgstr "Özel altbilgi içeriği (HTML kabul edilir)"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "You can add custom footer content that will be displayed below the switch link."
 msgstr "Değiştirme bağlantısı altında görüntülenecek özel altbilgi içeriği ekleyebilirsiniz."
 
-#: themes/foundation/root-functions.php:905
+#: themes/foundation/root-functions.php:914
 msgid "search results for '%s'"
 msgstr "%s' için arama sonuçları"
 
-#: themes/foundation/root-functions.php:907
+#: themes/foundation/root-functions.php:916
 msgid "%sCategories &rsaquo;%s %s"
 msgstr "%sKategoriler &rsaquo;%s %s"
 
-#: themes/foundation/root-functions.php:909
+#: themes/foundation/root-functions.php:918
 msgid "Tags &rsaquo; %s"
 msgstr "Etiketler &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:911
-#: themes/foundation/root-functions.php:913
-#: themes/foundation/root-functions.php:915
+#: themes/foundation/root-functions.php:920
+#: themes/foundation/root-functions.php:922
+#: themes/foundation/root-functions.php:924
 msgid "Archives &rsaquo; %s"
 msgstr "Arşivleme süresi&rsaquo; %s"
 
-#: themes/foundation/root-functions.php:930
+#: themes/foundation/root-functions.php:939
 msgid "Load more from this category"
 msgstr "Bu kategoriden daha fazla yükle"
 
-#: themes/foundation/root-functions.php:932
+#: themes/foundation/root-functions.php:941
 msgid "Load more tagged like this"
 msgstr "Bu şekilde etiketlenenlerden daha fazla yükle"
 
-#: themes/foundation/root-functions.php:934
+#: themes/foundation/root-functions.php:943
 msgid "Load more from this day"
 msgstr "Bu gün tarihlilerden daha fazla yükle"
 
-#: themes/foundation/root-functions.php:936
+#: themes/foundation/root-functions.php:945
 msgid "Load more from this month"
 msgstr "Bu ay tarihlilerden daha fazla yükle"
 
-#: themes/foundation/root-functions.php:938
+#: themes/foundation/root-functions.php:947
 msgid "Load more from this year"
 msgstr "Bu yıl tarihlilerden daha fazla yükle"
 
-#: themes/foundation/root-functions.php:940
+#: themes/foundation/root-functions.php:949
 msgid "Load more in this section"
 msgstr "Bu bölümden daha fazla yükle"
 
-#: themes/foundation/root-functions.php:942
+#: themes/foundation/root-functions.php:951
 msgid "Load more entries"
 msgstr "Daha fazla giriş yükle"
 
-#: themes/foundation/root-functions.php:1068
+#: themes/foundation/root-functions.php:1085
 msgid "Post"
 msgstr "Postala"
-
-#: themes/foundation/root-functions.php:1070
-msgid "Page"
-msgstr "Sayfa"
 
 #. Plugin Name of the plugin/theme
 msgid "WPtouch Pro"

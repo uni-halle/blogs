@@ -40,12 +40,12 @@
 }
 
 .menu-tree li span:before {
-	font-family: FontAwesome;
-	content:"\f078";
+	font-family: 'fontello';
+	content:"\e80f";
 }
 
 .menu-tree li span.toggle:before {
-	content:"\f077";
+	content:"\e80e";
 	font-weight: normal;
 	font-style: normal;
 }

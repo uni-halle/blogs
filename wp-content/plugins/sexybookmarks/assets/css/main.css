@@ -179,7 +179,7 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 .ptn,.pvn,.pan{padding-top:0px !important}
 .pts,.pvs,.pas{padding-top:5px !important}
 .ptm,.pvm,.pam{padding-top:10px !important}
-.ptl,.pvl,.pal{padding-top:20px !important}
+.ptl,.pvl,.pal{padding-top:10px !important}
 .prn,.phn,.pan{padding-right:0px !important}
 .prs,.phs,.pas{padding-right:5px !important}
 .prm,.phm,.pam{padding-right:10px !important}
@@ -232,7 +232,7 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
   line-height: 16pt;
   box-shadow: 0px 0px 52px rgba(0,0,0,0.32);
   padding: 0;
-  height: 510px;
+  height: 520px;
 }
 
 .api-key-modal{
@@ -266,13 +266,13 @@ h4 {
 
 
 .blocking-modal h2 {
-    font-size: 28px;
-   font-weight: normal;
+  font-size: 28px;
+  font-weight: normal;
 }
 
 .blocking-modal p {
   margin: 10px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 21px;
 }
 
@@ -283,6 +283,7 @@ h4 {
 
 .blocking-modal .btn_main {
   margin-top: -20px;
+  margin-bottom: 5px;
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -495,4 +496,145 @@ i.icon {
   position: relative;
   width: 16px;
   height: 16px;
+}
+
+
+
+// Value Section
+// *****************************************************************************
+
+.plugin-value-section-container {
+  margin: 25px auto;
+  width: 650px;
+}
+
+.plugin-value-section {
+  margin: 25px auto;
+  height: 170px;
+  width: 650px;
+  font: 400 14px/20px "open sans", "helvetica neue", helvetica, arial, sans-serif;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.plugin-value-section .plugin-value-line {
+  display: block;
+  height: 1px;
+  width: 75%;
+  max-width: 770px;
+  margin: 0 auto;
+  border-top: 4px dashed rgba(160, 163, 166, 0.35);
+  margin: 47px auto -44px;
+}
+
+.plugin-value-section .plugin-value {
+  padding-top: 0px;
+}
+
+.plugin-value-section .plugin-value li {
+  position: relative;
+  float: left;
+  width: 25%;
+  margin-right: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  text-align: center;
+}
+
+.plugin-value-section .plugin-value li:last-child {
+  border-right: none;
+}
+
+.plugin-value-section .plugin-value li p {
+  margin: 0;
+  padding: 1em 0.5em;
+  min-height: 110px;
+  color: rgb(136, 136, 136);
+}
+
+.plugin-value-section .plugin-value li a {
+  position: relative;
+  display: block;
+  background: transparent;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.plugin-value-section .plugin-value li .icon {
+  display: block;
+  overflow: hidden;
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  display: block;
+  color: white;
+  margin: 0 auto 12px;
+  font-size: 34px;
+}
+
+.plugin-value-section .plugin-value li .icon.fa-bullhorn {
+  background: #bbea76;
+}
+
+.plugin-value-section .plugin-value li .icon.fa-fire {
+  background: #77dd77;
+}
+
+.plugin-value-section .plugin-value li .icon.fa-bar-chart-o {
+  background: #5ed5a4;
+}
+
+.plugin-value-section .plugin-value li .icon.fa-usd {
+  background: #49c0c0;
+}
+
+.plugin-value-section .plugin-value li.acquire .title {
+  color: #AAD56A;
+}
+
+.plugin-value-section .plugin-value li.engage .title {
+  color: #77dd77;
+}
+
+.plugin-value-section .plugin-value li.learn .title {
+  color: #5ed5a4;
+}
+
+.plugin-value-section .plugin-value li.monetize .title {
+  color: #49c0c0;
+}
+
+.plugin-value-section .plugin-value li a:hover {
+  -webkit-transition: background 0.2s;
+  -moz-transition: background 0.2s;
+  -o-transition: background 0.2s;
+  transition: background 0.2s;
+}
+
+.plugin-value-section .plugin-value li .title {
+  text-transform: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  color: #2c3440;
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.plugin-value-section.in-viewport {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }

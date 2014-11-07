@@ -18,6 +18,14 @@ function foundation_related_posts_settings( $page_options ){
 				'1.0.7'
 			),
 			wptouch_add_pro_setting(
+				'checkbox',
+				'related_posts_skip_tags',
+				__( 'Ignore tags when identifying related posts', 'wptouch-pro' ),
+				'',
+				WPTOUCH_SETTING_BASIC,
+				'1.0.7'
+			),
+			wptouch_add_pro_setting(
 				'radiolist',
 				'related_posts_max',
 				__( 'Maximum number of related posts to show', 'wptouch-pro' ),

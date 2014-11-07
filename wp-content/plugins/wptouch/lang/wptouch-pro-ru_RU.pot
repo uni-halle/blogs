@@ -1,7 +1,7 @@
 # Copyright (C) 2014 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.4\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-06-24 13:23:13+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr "Project-Id-Version: WPtouch Pro 3.5.3\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-10-28 13:14:16+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
@@ -27,9 +27,9 @@ msgstr "BraveNewCode в Twitter"
 msgid "Plugin Licensing Terms"
 msgstr "Условия использования плагинов"
 
-#: admin/html/notification-center.php:6 core/admin-menu.php:65
-msgid "Upgrade to Pro"
-msgstr "Повысить категорию до Pro"
+#: admin/html/notification-center.php:6
+msgid "What's in WPtouch Pro?"
+msgstr "Что у WPtouch Pro внутри?"
 
 #: admin/html/notification-center.php:10
 msgid "Notifications"
@@ -39,11 +39,11 @@ msgstr "Уведомления"
 msgid "No notifications"
 msgstr "Нет уведомлений"
 
-#: admin/html/plugin-area.php:9
+#: admin/html/plugin-area.php:10
 msgid "A new product version (%s) is available. %sRenew your license%s to download this update and receive additional product support."
 msgstr "В наличии новая версия (%s) программы. %sВозобновите лицензию%s, чтобы загрузить это обновление и получить дополнительную техническую поддержку."
 
-#: admin/html/plugin-area.php:11
+#: admin/html/plugin-area.php:12
 msgid "A new product version (%s) is available. Please %sactivate your license%s, or %spurchase a new license%s to enable updates and full product support."
 msgstr "В наличии новая версия (%s) программы. Пожалуйста, %sактивируйте лицензию%s или %sприобретите новую лицензию%s, чтобы включить обновления и полную тех. поддержку."
 
@@ -51,7 +51,7 @@ msgstr "В наличии новая версия (%s) программы. По�
 msgid "License Details"
 msgstr "Лицензионные данные"
 
-#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:235
+#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:262
 msgid "Note"
 msgstr "Заметка"
 
@@ -77,7 +77,7 @@ msgstr "Возобновить лицензию"
 
 #: admin/pages/custom/wptouch-admin-license.php:25
 #: admin/settings/html/extension-browser-item.php:89
-#: admin/settings/html/theme-browser-item.php:129
+#: admin/settings/html/theme-browser-item.php:136
 msgid "Activate"
 msgstr "Активировать"
 
@@ -428,6 +428,7 @@ msgstr "По умолчанию"
 
 #: admin/pages/wptouch-admin-general-settings.php:411
 #: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
+#: admin/settings/html/checklist.php:13
 #: admin/settings/html/custom-latest-posts.php:4
 #: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
 #: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
@@ -453,7 +454,7 @@ msgstr "Страницы WordPress"
 
 #: admin/pages/wptouch-admin-menus.php:28
 #: admin/settings/html/icon_menu_area.php:6
-#: infinity-cache/infinity-cache.php:209
+#: infinity-cache/infinity-cache.php:217
 #: themes/foundation/modules/advertising/advertising.php:29
 #: themes/foundation/modules/media/media.php:59
 msgid "None"
@@ -509,6 +510,7 @@ msgid "Restore Backup File"
 msgstr "Восстановить архивный файл"
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:7
+#: admin/settings/html/checklist.php:15
 #: admin/settings/html/custom-latest-posts.php:8
 #: admin/settings/html/list.php:20 admin/settings/html/numeric.php:16
 #: admin/settings/html/post_type.php:14 admin/settings/html/radiolist.php:15
@@ -538,7 +540,7 @@ msgstr "Значки еще не были загружены"
 
 #: admin/settings/html/custom_icon_management.php:12
 #: admin/settings/html/image-upload.php:13
-#: admin/settings/html/theme-browser-item.php:137
+#: admin/settings/html/theme-browser-item.php:144
 msgid "Delete"
 msgstr "Удалить"
 
@@ -547,7 +549,7 @@ msgid "Upload Icon"
 msgstr "Добавить значок"
 
 #: admin/settings/html/custom_icon_upload.php:4
-#: admin/settings/html/image-upload.php:15
+#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:598
 msgid "Upload Complete!"
 msgstr "Передача завершена!"
 
@@ -564,7 +566,7 @@ msgid "Your Server Configuration"
 msgstr "Конфигурация сервера"
 
 #: admin/settings/html/extension-browser-item.php:37
-#: admin/settings/html/theme-browser-item.php:49
+#: admin/settings/html/theme-browser-item.php:56
 msgid "Updating..."
 msgstr "Обновление..."
 
@@ -573,14 +575,14 @@ msgid "Upgrade to %s"
 msgstr "Повысить категорию до %s"
 
 #: admin/settings/html/extension-browser-item.php:39
-#: admin/settings/html/theme-browser-item.php:54
+#: admin/settings/html/theme-browser-item.php:61
 msgid "Download %s Update"
 msgstr "Загрузить обновление %s"
 
 #: admin/settings/html/extension-browser-item.php:47
 #: admin/settings/html/installed_icon_sets_ajax.php:8
 #: admin/settings/html/installed_icon_sets_ajax.php:20
-#: admin/settings/html/theme-browser-item.php:68
+#: admin/settings/html/theme-browser-item.php:75
 msgid "by %s"
 msgstr "от %s"
 
@@ -589,48 +591,48 @@ msgid "Extension location: %s"
 msgstr "Расположение расширения: %s"
 
 #: admin/settings/html/extension-browser-item.php:54
-#: admin/settings/html/theme-browser-item.php:76
+#: admin/settings/html/theme-browser-item.php:83
 msgid "Relative to your WordPress wp-content directory."
 msgstr "Относится к вашему каталогу wp-content WordPress."
 
 #: admin/settings/html/extension-browser-item.php:63
-#: admin/settings/html/theme-browser-item.php:88
+#: admin/settings/html/theme-browser-item.php:95
 msgid "Available in WPtouch Pro"
 msgstr "В наличии в WPtouch Pro"
 
 #: admin/settings/html/extension-browser-item.php:67
-#: admin/settings/html/theme-browser-item.php:92
+#: admin/settings/html/theme-browser-item.php:99
 msgid "More Info"
 msgstr "Подробнее"
 
 #: admin/settings/html/extension-browser-item.php:70
-#: admin/settings/html/theme-browser-item.php:96
+#: admin/settings/html/theme-browser-item.php:103
 msgid "Upgrade License"
 msgstr "Повысить категорию лицензии"
 
 #: admin/settings/html/extension-browser-item.php:72
-#: admin/settings/html/theme-browser-item.php:98
+#: admin/settings/html/theme-browser-item.php:105
 msgid "Get License"
 msgstr "Получить лицензию"
 
 #: admin/settings/html/extension-browser-item.php:80
-#: admin/settings/html/theme-browser-item.php:111
+#: admin/settings/html/theme-browser-item.php:118
 msgid "Downloading..."
 msgstr "Загрузка..."
 
 #: admin/settings/html/extension-browser-item.php:80
 #: admin/settings/html/installed_icon_sets_ajax.php:21
-#: admin/settings/html/theme-browser-item.php:112
+#: admin/settings/html/theme-browser-item.php:119
 msgid "Install"
 msgstr "Установить"
 
 #: admin/settings/html/extension-browser-item.php:82
-#: admin/settings/html/theme-browser-item.php:115
+#: admin/settings/html/theme-browser-item.php:122
 msgid "Download"
 msgstr "Загрузка"
 
 #: admin/settings/html/extension-browser-item.php:92
-#: admin/settings/html/theme-browser-item.php:125
+#: admin/settings/html/theme-browser-item.php:132
 msgid "Setup"
 msgstr "Настроить"
 
@@ -655,51 +657,53 @@ msgstr "Отметить все"
 msgid "Reset"
 msgstr "Сбросить"
 
-#: admin/settings/html/icon_menu_area.php:9
-#: classic-redux/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:32
-#: classic-redux/default/header-bottom.php:112
-#: prose/default/header-bottom.php:21 scaffold/default/header-bottom.php:13
+#: admin/settings/html/icon_menu_area.php:9 bio/default/header-bottom.php:13
+#: classic-redux/default/header-bottom.php:23
+#: classic-redux/default/header-bottom.php:34
+#: classic-redux/default/header-bottom.php:114
+#: hammock/default/header-bottom.php:40
+#: mobilestore/default/header-bottom.php:56 prose/default/header-bottom.php:21
+#: scaffold/default/header-bottom.php:13
 msgid "Menu"
 msgstr "Меню"
 
-#: admin/settings/html/icon_menu_area.php:19
+#: admin/settings/html/icon_menu_area.php:31
 msgid "Active menus used in this theme."
 msgstr "Активные меню в этой теме."
 
-#: admin/settings/html/icon_menu_area.php:23
+#: admin/settings/html/icon_menu_area.php:35
 msgid "Show/Hide"
 msgstr "Показать/Скрыть"
 
-#: admin/settings/html/icon_menu_area.php:24
+#: admin/settings/html/icon_menu_area.php:36
 msgid "Menu Item"
 msgstr "Пункт меню"
 
-#: admin/settings/html/icon_menu_area.php:44
+#: admin/settings/html/icon_menu_area.php:56
 msgid "Icon Set"
 msgstr "Набор значков"
 
-#: admin/settings/html/icon_menu_area.php:54
+#: admin/settings/html/icon_menu_area.php:66
 msgid "Drag icons to associate them with menu items"
 msgstr "Перетащите значки, чтобы связать их с пунктами меню"
 
-#: admin/settings/html/icon_menu_area.php:79
+#: admin/settings/html/icon_menu_area.php:91
 msgid "You don't have any custom icons yet."
 msgstr "У вас еще нет пользовательских значков."
 
-#: admin/settings/html/icon_menu_area.php:94
+#: admin/settings/html/icon_menu_area.php:106
 msgid "Default Icon"
 msgstr "Значок по умолчанию"
 
-#: admin/settings/html/icon_menu_area.php:95
+#: admin/settings/html/icon_menu_area.php:107
 msgid "applies to all unset icons"
 msgstr "применяется ко всем сброшенным значкам"
 
-#: admin/settings/html/icon_menu_area.php:103
+#: admin/settings/html/icon_menu_area.php:115
 msgid "Trash"
 msgstr "Корзина"
 
-#: admin/settings/html/icon_menu_area.php:104
+#: admin/settings/html/icon_menu_area.php:116
 msgid "drag icon here to reset"
 msgstr "перетащите значок сюда для сброса"
 
@@ -716,8 +720,8 @@ msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue t
 msgstr "Каталог %s%s%s сейчас недоступен для записи. %sИсправьте эту проблему, чтобы разрешить установку дополнительных наборов значков."
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:1559 core/class-wptouch-pro.php:1560
-#: core/config.php:53
+#: core/class-wptouch-pro.php:1596 core/class-wptouch-pro.php:1597
+#: core/config.php:54
 msgid "Custom Icons"
 msgstr "Пользовательские значки"
 
@@ -739,7 +743,7 @@ msgid "Pro"
 msgstr "Pro"
 
 #: admin/settings/html/plugin-compat-ajax.php:11
-#: themes/foundation/modules/custom-posts/custom-posts.php:178
+#: themes/foundation/modules/custom-posts/custom-posts.php:153
 msgid "Enable %s"
 msgstr "Включить %s"
 
@@ -767,32 +771,32 @@ msgstr "Страница WordPress"
 msgid "Please paste your encoded settings below and save to restore your settings."
 msgstr "Вставьте ваши кодированные настройки ниже и сохраните, чтобы восстановить настройки."
 
-#: admin/settings/html/theme-browser-item.php:6
 #: admin/settings/html/theme-browser-item.php:10
+#: admin/settings/html/theme-browser-item.php:16
 msgid "Click to view screenshots"
 msgstr "Нажмите для просм. снимков экрана"
 
-#: admin/settings/html/theme-browser-item.php:51
+#: admin/settings/html/theme-browser-item.php:58
 msgid "Update to %s"
 msgstr "Обновление до %s"
 
-#: admin/settings/html/theme-browser-item.php:63
+#: admin/settings/html/theme-browser-item.php:70
 msgid "This theme supports %s devices"
 msgstr "Эта тема поддерживает устройства %s"
 
-#: admin/settings/html/theme-browser-item.php:75
+#: admin/settings/html/theme-browser-item.php:82
 msgid "Theme location: %s"
 msgstr "Расположение темы: %s"
 
-#: admin/settings/html/theme-browser-item.php:103
+#: admin/settings/html/theme-browser-item.php:110
 msgid "Buy Now"
 msgstr "Купить сразу"
 
-#: admin/settings/html/theme-browser-item.php:133
+#: admin/settings/html/theme-browser-item.php:140
 msgid "Copy"
 msgstr "Копировать"
 
-#: admin/settings/html/theme-browser.php:14
+#: admin/settings/html/theme-browser.php:22
 msgid "Loading Cloud Themes"
 msgstr "Загрузка облачных тем"
 
@@ -816,60 +820,35 @@ msgstr "Посмотрите на расширения Pro"
 msgid "Look at Pro Features"
 msgstr "Посмотрите на функции  Pro"
 
-#: admin/settings/html/touchboard.php:14
+#: admin/settings/html/touchboard.php:16
 msgid "Product Support"
 msgstr "Поддержка продукта"
 
-#: admin/settings/html/touchboard.php:16
+#: admin/settings/html/touchboard.php:17
 msgid "Product Knowledgebase"
 msgstr "Информационная база данных"
 
-#: admin/settings/html/touchboard.php:17
+#: admin/settings/html/touchboard.php:18
 msgid "Manage Account"
 msgstr "Управление учетной записью"
 
-#: admin/settings/html/touchboard.php:18
+#: admin/settings/html/touchboard.php:19
 msgid "Manage License"
 msgstr "Управление лицензией"
 
-#: admin/settings/html/touchboard.php:20
+#: admin/settings/html/touchboard.php:21
 msgid "WPtouch User Guide"
 msgstr "Руководство пользователя WPtouch"
 
-#: admin/settings/html/touchboard.php:27
+#: admin/settings/html/touchboard.php:28
 msgid "WPtouch News"
 msgstr "Новости WPtouch"
 
-#: admin/settings/html/touchboard.php:28
+#: admin/settings/html/touchboard.php:29
 msgid "Read More"
 msgstr "Читать дальше"
 
-#: admin/settings/html/touchboard.php:45
-msgid "What's New in %s"
-msgstr "Что нового в %s"
-
-#: admin/settings/html/touchboard.php:49 admin/settings/html/touchboard.php:51
-#: core/admin-menu.php:60
-msgid "License"
-msgstr "Лицензия"
-
-#: admin/settings/html/touchboard.php:49
-msgid "Unlicensed"
-msgstr "Без лицензии"
-
-#: admin/settings/html/touchboard.php:49 core/class-wptouch-pro.php:591
-msgid "Offline"
-msgstr "Автономно"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Active"
-msgstr "Активно"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Online"
-msgstr "Он-лайн"
-
-#: admin/settings/html/touchboard.php:61
+#: admin/settings/html/touchboard.php:47
 msgid "%s Change Log"
 msgstr "Журнал изменений %s"
 
@@ -882,24 +861,26 @@ msgstr "WPtouch Pro активируется при соответствии л�
 msgid "None (Use WordPress Settings)"
 msgstr "Нет (использовать настройки WordPress)"
 
-#: bauhaus/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:76
+#: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
+#: classic-redux/default/header-bottom.php:55
+#: hammock/default/header-bottom.php:82 scaffold/default/header-bottom.php:35
+#: simple/default/header-bottom.php:26
+msgid "Logout"
+msgstr "Выход"
+
+#: bauhaus/default/header-bottom.php:48 bio/default/header-bottom.php:24
+#: classic-redux/default/header-bottom.php:78
 #: scaffold/default/header-bottom.php:24
 msgid "Search this website"
 msgstr "Поиск на веб-сайте"
 
-#: bauhaus/default/header-bottom.php:22
-#: classic-redux/default/header-bottom.php:46
-#: classic-redux/default/header-bottom.php:78
+#: bauhaus/default/header-bottom.php:49 bio/default/header-bottom.php:14
+#: bio/default/header-bottom.php:25 classic-redux/default/header-bottom.php:48
+#: classic-redux/default/header-bottom.php:80
+#: mobilestore/default/header-bottom.php:80
 #: scaffold/default/header-bottom.php:14 scaffold/default/header-bottom.php:25
 msgid "Search"
 msgstr "Поиск"
-
-#: bauhaus/default/header-bottom.php:40 bauhaus/default/header-bottom.php:42
-#: classic-redux/default/header-bottom.php:53
-#: scaffold/default/header-bottom.php:35 simple/default/header-bottom.php:24
-msgid "Logout"
-msgstr "Выход"
 
 #: bauhaus/default/nav-bar.php:6 cms/default/nav-bar.php:6
 #: themes/foundation/default/nav-bar.php:6
@@ -911,9 +892,15 @@ msgstr "предыдущая запись"
 msgid "next post"
 msgstr "следующая запись"
 
-#: bauhaus/default/post-loop.php:22 classic-redux/default/post-loop.php:24
+#: bauhaus/default/post-loop.php:22 bio/default/post-loop.php:19
+#: classic-redux/default/post-loop.php:24
 msgid "by"
 msgstr "от"
+
+#: bauhaus/default/related-posts.php:4
+#: themes/foundation/default/related-posts.php:4
+msgid "Related"
+msgstr "Сходное"
 
 #: bauhaus/default/search.php:6 classic-redux/default/search.php:5
 #: themes/foundation/default/search.php:6
@@ -929,198 +916,242 @@ msgid "No results found"
 msgstr "Результаты не найдены"
 
 #: bauhaus/default/search.php:46 classic-redux/default/search.php:47
-#: themes/foundation/default/search.php:45
+#: themes/foundation/default/search.php:43
 msgid "Load more %s results"
 msgstr "Загрузить еще %s результатов"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "no comments"
 msgstr "нет комментариев"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "1 comment"
 msgstr "1 комментарий"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "% comments"
 msgstr "% комментария(ев)"
 
-#: bauhaus/default/single.php:46 classic-redux/default/header-bottom.php:35
-#: classic-redux/default/header-bottom.php:61
+#: bauhaus/default/single.php:36 classic-redux/default/header-bottom.php:37
+#: classic-redux/default/header-bottom.php:63
 msgid "Categories"
 msgstr "Категории"
 
-#: bauhaus/default/single.php:49 classic-redux/default/header-bottom.php:39
-#: classic-redux/default/header-bottom.php:68
+#: bauhaus/default/single.php:39 classic-redux/default/header-bottom.php:41
+#: classic-redux/default/header-bottom.php:70
 msgid "Tags"
 msgstr "Теги"
 
-#: bauhaus/root-functions.php:122 classic-redux/root-functions.php:98
+#: bauhaus/root-functions.php:126 classic-redux/root-functions.php:98
 msgid "Header Menu"
 msgstr "Меню заголовка"
 
-#: bauhaus/root-functions.php:124 classic-redux/root-functions.php:100
-#: cms/root-functions.php:125 cms/root-functions.php:134
-#: open/root-functions.php:304 prose/root-functions.php:191
-#: scaffold/root-functions.php:77 simple/root-functions.php:60
-#: simple/root-functions.php:71
+#: bauhaus/root-functions.php:128 bio/root-functions.php:89
+#: classic-redux/root-functions.php:100 cms/root-functions.php:125
+#: cms/root-functions.php:134 hammock/root-functions.php:168
+#: mobilestore/root-functions.php:188 mobilestore/root-functions.php:200
+#: open/root-functions.php:350 prose/root-functions.php:195
+#: scaffold/root-functions.php:77 simple/root-functions.php:61
+#: simple/root-functions.php:72
 msgid "Choose a menu"
 msgstr "Выбрать меню"
 
-#: bauhaus/root-functions.php:125
+#: bauhaus/root-functions.php:129
 msgid "Main menu selection"
 msgstr "Выбор в главном меню"
 
-#: bauhaus/root-functions.php:132 classic-redux/root-functions.php:108
-#: cms/root-functions.php:141 open/root-functions.php:312
-#: prose/root-functions.php:199 scaffold/root-functions.php:85
-#: simple/root-functions.php:79
+#: bauhaus/root-functions.php:136 bio/root-functions.php:97
+#: classic-redux/root-functions.php:108 cms/root-functions.php:141
+#: hammock/root-functions.php:176 open/root-functions.php:358
+#: prose/root-functions.php:203 scaffold/root-functions.php:85
+#: simple/root-functions.php:80
 msgid "Theme background"
 msgstr "Фон темы"
 
-#: bauhaus/root-functions.php:133
+#: bauhaus/root-functions.php:137
 msgid "Header & Menu"
 msgstr "Заголовок и меню"
 
-#: bauhaus/root-functions.php:134 classic-redux/root-functions.php:109
-#: cms/root-functions.php:142 open/root-functions.php:313
-#: prose/root-functions.php:201 scaffold/root-functions.php:86
-#: simple/root-functions.php:80
+#: bauhaus/root-functions.php:138 bio/root-functions.php:98
+#: classic-redux/root-functions.php:109 cms/root-functions.php:142
+#: hammock/root-functions.php:178 mobilestore/root-functions.php:232
+#: open/root-functions.php:359 prose/root-functions.php:205
+#: scaffold/root-functions.php:86 simple/root-functions.php:81
 msgid "Links"
 msgstr "Ссылки"
 
-#: bauhaus/root-functions.php:135
+#: bauhaus/root-functions.php:139
 msgid "Post/Page Headers"
 msgstr "Колонтитулы публикаций/страниц"
 
-#: bauhaus/root-functions.php:245
+#: bauhaus/root-functions.php:255
 msgid "Theme Shapes"
 msgstr "Формы тем"
 
-#: bauhaus/root-functions.php:251
+#: bauhaus/root-functions.php:261
 msgid "Theme shape style"
 msgstr "Стили форм тем"
 
-#: bauhaus/root-functions.php:252
+#: bauhaus/root-functions.php:262
 msgid "Bauhaus will use this shape style throughout its appearance"
 msgstr "Во всех внешних видах Bauhaus будет использован этот стиль"
 
-#: bauhaus/root-functions.php:256
+#: bauhaus/root-functions.php:266
 msgid "Circles"
 msgstr "Круги"
 
-#: bauhaus/root-functions.php:257
+#: bauhaus/root-functions.php:267
 msgid "Rounded squares"
 msgstr "Закруглённые квадраты"
 
-#: bauhaus/root-functions.php:276 classic-redux/root-functions.php:244
+#: bauhaus/root-functions.php:277
+msgid "Menu Style"
+msgstr "Стиль меню"
+
+#: bauhaus/root-functions.php:283
+msgid "Menu animation style"
+msgstr "Стиль анимации меню"
+
+#: bauhaus/root-functions.php:284
+msgid "Bauhaus can show your menu off-canvas or in a drop-down."
+msgstr "Стиль Bauhaus показывает меню вне основы или в раскрывающемся виде."
+
+#: bauhaus/root-functions.php:288
+msgid "Off-canvas"
+msgstr "Вне основы"
+
+#: bauhaus/root-functions.php:289
+msgid "Drop-down"
+msgstr "Раскрытие"
+
+#: bauhaus/root-functions.php:307 bio/root-functions.php:131
+#: classic-redux/root-functions.php:244
 msgid "Post thumbnails"
 msgstr "Эскизы записей"
 
-#: bauhaus/root-functions.php:281 classic-redux/root-functions.php:249
+#: bauhaus/root-functions.php:312 bio/root-functions.php:136
+#: classic-redux/root-functions.php:249
 msgid "No thumbnails"
 msgstr "Нет эскизов"
 
-#: bauhaus/root-functions.php:282 classic-redux/root-functions.php:250
+#: bauhaus/root-functions.php:313 bio/root-functions.php:137
+#: classic-redux/root-functions.php:250
 msgid "Blog listing only"
 msgstr "Только список блога"
 
-#: bauhaus/root-functions.php:283 classic-redux/root-functions.php:251
+#: bauhaus/root-functions.php:314 bio/root-functions.php:138
+#: classic-redux/root-functions.php:251
 msgid "Blog listing, single posts"
 msgstr "Список блога, одиночные записи"
 
-#: bauhaus/root-functions.php:284
+#: bauhaus/root-functions.php:315 bio/root-functions.php:139
 msgid "Blog listing, single posts & pages"
 msgstr "Список блогов, единичные публикации и страницы"
 
-#: bauhaus/root-functions.php:285
+#: bauhaus/root-functions.php:316 bio/root-functions.php:140
 msgid "All (blog, single, pages, search & archive)"
 msgstr "Все (блог, отдельный, страницы, поиск и архив)"
 
-#: bauhaus/root-functions.php:293 classic-redux/root-functions.php:260
+#: bauhaus/root-functions.php:324 bio/root-functions.php:148
+#: classic-redux/root-functions.php:260
 msgid "Thumbnail Selection"
 msgstr "Выбор эскиза"
 
-#: bauhaus/root-functions.php:298 classic-redux/root-functions.php:265
+#: bauhaus/root-functions.php:329 bio/root-functions.php:153
+#: classic-redux/root-functions.php:265
 msgid "Post featured image"
 msgstr "Разместить популярное изображение"
 
-#: bauhaus/root-functions.php:299 classic-redux/root-functions.php:266
+#: bauhaus/root-functions.php:330 bio/root-functions.php:154
+#: classic-redux/root-functions.php:266
 msgid "Post custom field"
 msgstr "Разместить индивидуальное поле"
 
-#: bauhaus/root-functions.php:307 classic-redux/root-functions.php:274
+#: bauhaus/root-functions.php:338 bio/root-functions.php:162
+#: classic-redux/root-functions.php:274
 msgid "Thumbnail custom field name"
 msgstr "Название индивидуального поля эскиза"
 
-#: bauhaus/root-functions.php:318 classic-redux/root-functions.php:307
+#: bauhaus/root-functions.php:349 classic-redux/root-functions.php:307
 msgid "Show post categories and tags"
 msgstr "Показать категории записей и теги"
 
-#: bauhaus/root-functions.php:329 classic-redux/root-functions.php:285
+#: bauhaus/root-functions.php:360 bio/root-functions.php:173
+#: classic-redux/root-functions.php:285
 msgid "Show post date"
 msgstr "Показать дату публикации"
 
-#: bauhaus/root-functions.php:340 classic-redux/root-functions.php:296
+#: bauhaus/root-functions.php:371 bio/root-functions.php:184
+#: classic-redux/root-functions.php:296
 msgid "Show post author"
 msgstr "Показать автора записи"
 
-#: bauhaus/root-functions.php:351
+#: bauhaus/root-functions.php:382
 msgid "Show comment bubbles on posts"
 msgstr "Показывать кружочки с комментариями на публикациях"
 
-#: bauhaus/root-functions.php:362
+#: bauhaus/root-functions.php:393 bio/root-functions.php:195
 msgid "Show search in header"
 msgstr "Показывать поиск в колонтитуле"
 
-#: bauhaus/root-functions.php:363
+#: bauhaus/root-functions.php:394 bio/root-functions.php:196
 msgid "Adds Search capability in the site header."
 msgstr "Добавить возможность поиска в колонтитуле сайта."
 
-#: bauhaus/root-functions.php:373 classic-redux/root-functions.php:318
+#: bauhaus/root-functions.php:404 bio/root-functions.php:206
+#: classic-redux/root-functions.php:318
 msgid "Use infinite scrolling for blog"
 msgstr "Исп. бесконечную прокрутку в блоге"
 
-#: bauhaus/root-functions.php:390
-msgid "Show featured slider on front page"
-msgstr "Показать ползунок избранных на главной странице"
+#: bio/root-functions.php:87 hammock/root-functions.php:166
+#: mobilestore/root-functions.php:186 open/root-functions.php:348
+#: prose/root-functions.php:193 scaffold/root-functions.php:75
+msgid "Primary Menu"
+msgstr "Основное меню"
 
-#: classic-redux/default/header-bottom.php:43
-#: classic-redux/default/header-bottom.php:88
+#: bio/root-functions.php:90 hammock/root-functions.php:169
+#: open/root-functions.php:351 scaffold/root-functions.php:78
+msgid "Menus are awesome!"
+msgstr "Меню прекрасны!"
+
+#: classic-redux/default/header-bottom.php:45
+#: classic-redux/default/header-bottom.php:90
 msgid "Tweets"
 msgstr "Твиты"
 
-#: classic-redux/default/header-bottom.php:51
-#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:22
+#: classic-redux/default/header-bottom.php:53
+#: hammock/default/header-bottom.php:80
+#: mobilestore/default/woocommerce/shop/form-login.php:31
+#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:24
 #: themes/foundation/modules/login/login-html.php:20
 msgid "Login"
 msgstr "Вход"
 
-#: classic-redux/default/header-bottom.php:92
+#: classic-redux/default/header-bottom.php:94
 msgid "Follow %s on Twitter"
 msgstr "Подписаться на %s в Twitter"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:60
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "newer posts"
 msgstr "поздние записи"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:56
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:59
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "older posts"
 msgstr "ранние записи"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "no responses"
 msgstr "нет ответов"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "1 response"
 msgstr "1 ответ"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "% responses"
 msgstr "ответов: %"
@@ -1133,7 +1164,7 @@ msgstr "Читать эту запись"
 msgid "%s results"
 msgstr "Результаты %s"
 
-#: classic-redux/default/search.php:38 themes/foundation/default/search.php:36
+#: classic-redux/default/search.php:38 themes/foundation/default/search.php:34
 msgid "No search results found"
 msgstr "Нет результатов поиска"
 
@@ -1146,7 +1177,7 @@ msgid "Tablets"
 msgstr "Планшеты"
 
 #: classic-redux/root-functions.php:107 cms/root-functions.php:140
-#: open/root-functions.php:311 simple/root-functions.php:78
+#: open/root-functions.php:357 simple/root-functions.php:79
 msgid "Header background"
 msgstr "Фон заголовка"
 
@@ -1203,7 +1234,7 @@ msgid "Max categories / tags"
 msgstr "Макс. категории/ теги"
 
 #: classic-redux/root-functions.php:435 cms/root-functions.php:268
-#: simple/root-functions.php:280
+#: simple/root-functions.php:281
 msgid "CSS Effects"
 msgstr "Эффекты CSS"
 
@@ -1212,27 +1243,27 @@ msgid "Add a noise effect to the header and theme background"
 msgstr "Добавьте шумовой эффект для заголовка и фона темы"
 
 #: classic-redux/root-functions.php:442 cms/root-functions.php:275
-#: simple/root-functions.php:287
+#: simple/root-functions.php:288
 msgid "Will apply the effect overtop of any background image you upload."
 msgstr "Применит эффект для изображения фона после его загрузки."
 
-#: cms/default/header-bottom.php:14
+#: cms/default/header-bottom.php:17
 msgid "menu"
 msgstr "меню"
 
-#: cms/default/header-bottom.php:21
+#: cms/default/header-bottom.php:24
 msgid "login"
 msgstr "вход"
 
-#: cms/default/header-bottom.php:25
+#: cms/default/header-bottom.php:28
 msgid "logout"
 msgstr "выход"
 
-#: cms/default/header-bottom.php:38 simple/default/footer-top.php:3
+#: cms/default/header-bottom.php:41 simple/default/footer-top.php:3
 msgid "search this website"
 msgstr "найти на веб-сайте"
 
-#: cms/default/header-bottom.php:39 simple/default/footer-top.php:5
+#: cms/default/header-bottom.php:42 simple/default/footer-top.php:5
 msgid "search"
 msgstr "найти"
 
@@ -1269,11 +1300,11 @@ msgstr "Слайдер категории"
 msgid "Enable category slider"
 msgstr "Включить слайдер категории"
 
-#: cms/root-functions.php:231 simple/root-functions.php:261
+#: cms/root-functions.php:231 simple/root-functions.php:262
 msgid "Tiled Background Image"
 msgstr "Мозаичное изображение фона"
 
-#: cms/root-functions.php:237 simple/root-functions.php:267
+#: cms/root-functions.php:237 simple/root-functions.php:268
 msgid "(Scaled for retina displays)"
 msgstr "(Масштабировано для дисплеев Retina)"
 
@@ -1349,7 +1380,15 @@ msgstr "Настройки расширения"
 msgid "Menus"
 msgstr "Меню"
 
-#: core/admin-page-templates.php:16
+#: core/admin-menu.php:60
+msgid "License"
+msgstr "Лицензия"
+
+#: core/admin-menu.php:65
+msgid "Upgrade to Pro"
+msgstr "Повысить категорию до Pro"
+
+#: core/admin-page-templates.php:17
 msgid "Mobile Page Template"
 msgstr "Шаблон мобильной страницы"
 
@@ -1381,60 +1420,72 @@ msgstr "Просмотреть тему"
 msgid "Reset Settings"
 msgstr "Сбросить настройки"
 
-#: core/class-wptouch-pro.php:351
+#: core/class-wptouch-pro.php:354
 msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
 msgstr "Отказ автоматического переноса темы из закачек/директории данных wptouch. Пожалуйста, перенесите эти файлы на wp-content/wptouch-data или %scontact support%s вручную, чтобы решить вопрос."
 
-#: core/class-wptouch-pro.php:371
+#: core/class-wptouch-pro.php:374
 msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
 msgstr "Нам не удалось установить вашу активную тему WPtouch из Облака. Пожалуйста, посетите %sэту статью%s за дополнительной информацией."
 
-#: core/class-wptouch-pro.php:375
+#: core/class-wptouch-pro.php:378
 msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
 msgstr "Ваш сервер не даёт WPtouch установить вашу активную тему из Облака. Пожалуйста, посмотрите %sэту статью%s, чтобы узнать дополнительную информацию о том, как это исправить."
 
-#: core/class-wptouch-pro.php:587
+#: core/class-wptouch-pro.php:590
 msgid "Unsupported Browser"
 msgstr "Не поддерживаемый обозреватель"
 
-#: core/class-wptouch-pro.php:588
+#: core/class-wptouch-pro.php:591
 msgid "Theme Preview requires Chrome or Safari."
 msgstr "Для просм. темы требуется Chrome/Safari."
 
-#: core/class-wptouch-pro.php:589
+#: core/class-wptouch-pro.php:592
 msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
 msgstr "Это сбросит все настройки WPtouch Pro.\nВы уверены?"
 
-#: core/class-wptouch-pro.php:590
+#: core/class-wptouch-pro.php:593
 msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
 msgstr "Это сбросит все настройки меню и значков WPtouch Pro.\nВы уверены?"
 
-#: core/class-wptouch-pro.php:592
+#: core/class-wptouch-pro.php:594
+msgid "Offline"
+msgstr "Автономно"
+
+#: core/class-wptouch-pro.php:595
 msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
 msgstr "Вы работаете автономно. Подключитесь к Интернету, чтобы увидеть доступные элементы BraveNewCloud."
 
-#: core/class-wptouch-pro.php:593
+#: core/class-wptouch-pro.php:596
 msgid "The item failed to download for this reason: %reason%"
 msgstr "Отказ загрузки элемента произошёл по следующей причине: %причина%"
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:597
 msgid "You are about to reset your license information. Proceed?"
 msgstr "Вы собираетесь сбросить информацию о лицензии. Продолжить?"
 
-#: core/class-wptouch-pro.php:1130
+#: core/class-wptouch-pro.php:599
+msgid "Upload Failed: Not a valid image."
+msgstr "Неудачная отправка: Недействительное изображение."
+
+#: core/class-wptouch-pro.php:600
+msgid "Click to view theme demo"
+msgstr "Щёлкните, чтобы смотреть демонстрацию темы"
+
+#: core/class-wptouch-pro.php:1167
 #: themes/foundation/modules/webapp/webapp.php:12
 msgid "Settings"
 msgstr "Настройки"
 
-#: core/class-wptouch-pro.php:1166
+#: core/class-wptouch-pro.php:1203
 msgid "%s Changelog"
 msgstr "%s Changelog"
 
-#: core/class-wptouch-pro.php:2338
+#: core/class-wptouch-pro.php:2377
 msgid "Directory Problem"
 msgstr "Проблема с каталогом"
 
-#: core/class-wptouch-pro.php:2339
+#: core/class-wptouch-pro.php:2378
 msgid "One or more required directories could not be created"
 msgstr "Не удалось создать один или более необходимых каталогов"
 
@@ -1486,6 +1537,52 @@ msgstr "Этот плагин может работать неправильно
 #: core/notifications.php:214
 msgid "Icon Installation Issue"
 msgstr "Проблема установки значка"
+
+#: hammock/default/functions.php:10 prose/default/functions.php:33
+msgid "Load more from this collection"
+msgstr "Загрузить ещё из этой коллекции"
+
+#: hammock/default/header-bottom.php:38 prose/default/header-bottom.php:19
+msgid "Collections"
+msgstr "Коллекции"
+
+#: hammock/default/header-bottom.php:41 prose/default/header-bottom.php:22
+msgid "Options"
+msgstr "Параметры"
+
+#: hammock/root-functions.php:61 prose/root-functions.php:75
+msgid "Show categories as \"collections\" in menu"
+msgstr "Показывать категории как \"коллекции\" в меню"
+
+#: hammock/root-functions.php:72 prose/root-functions.php:86
+msgid "Maximum number of items in categories/collections"
+msgstr "Максимальное число элементов в категориях/коллекциях"
+
+#: hammock/root-functions.php:88
+msgid "Animate the featured image on posts"
+msgstr "Анимировать главное изображение в публикациях"
+
+#: hammock/root-functions.php:102 open/root-functions.php:119
+#: prose/root-functions.php:105
+msgid "Header Image"
+msgstr "Изображение в верхнем колонтитуле"
+
+#: hammock/root-functions.php:108 prose/root-functions.php:111
+msgid "Displayed behind header on pages and posts without featured images."
+msgstr "Выводится позади верхнего колонтитула на страницах и публикациях без главных изображений."
+
+#: hammock/root-functions.php:121 prose/root-functions.php:124
+msgid "Site Intro"
+msgstr "Заставка сайта"
+
+#: hammock/root-functions.php:127 prose/root-functions.php:130
+msgid "Displayed on post listing page below site name."
+msgstr "Выводится на станицах листинга публикаций ниже названия сайта."
+
+#: hammock/root-functions.php:177 prose/root-functions.php:204
+#: themes/foundation/root-functions.php:11
+msgid "Branding"
+msgstr "Фирменная символика"
 
 #: include/add-ons/wordtwit-pro.php:179
 #: themes/foundation/modules/twitter/twitter.php:42
@@ -1539,88 +1636,88 @@ msgstr "%d запросов за %0.1f ms"
 msgid "Default Template"
 msgstr "Шаблон по умолчанию"
 
-#: infinity-cache/infinity-cache.php:65 infinity-cache/infinity-cache.php:233
+#: infinity-cache/infinity-cache.php:66 infinity-cache/infinity-cache.php:241
 msgid "Purge Page Cache"
 msgstr "Очистить кэш страницы"
 
-#: infinity-cache/infinity-cache.php:126
+#: infinity-cache/infinity-cache.php:134
 msgid "Enable Infinity Cache"
 msgstr "Включить бесконечный кэш"
 
-#: infinity-cache/infinity-cache.php:134
+#: infinity-cache/infinity-cache.php:142
 msgid "Create cache for desktop users"
 msgstr "Создать кэш для пользователей настольных ПК"
 
-#: infinity-cache/infinity-cache.php:135
+#: infinity-cache/infinity-cache.php:143
 msgid "If you are using another cache plugin such as W3, you can disable this."
 msgstr "Если используется другая надстройка кэша, такая как W3, это можно отключить."
 
-#: infinity-cache/infinity-cache.php:156
+#: infinity-cache/infinity-cache.php:164
 msgid "Compress output using GZIP"
 msgstr "Сжать выходной файл с помощью GZIP"
 
-#: infinity-cache/infinity-cache.php:166
+#: infinity-cache/infinity-cache.php:174
 msgid "Maximum age of cached content"
 msgstr "Максимальный срок хранения содержимого кэша"
 
-#: infinity-cache/infinity-cache.php:167
+#: infinity-cache/infinity-cache.php:175
 msgid "Each cached page will automatically be regenerated after this period elapses"
 msgstr "Все кэшированные страницы автоматически регенерируются по истечении этого периода"
 
-#: infinity-cache/infinity-cache.php:171 infinity-cache/infinity-cache.php:172
-#: infinity-cache/infinity-cache.php:173 infinity-cache/infinity-cache.php:174
-#: infinity-cache/infinity-cache.php:175
+#: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
+#: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:183
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d час"
 msgstr[1] "%d час"
 
-#: infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:190
 msgid "Remove stale cache file interval"
 msgstr "Удалить интервал файлов устаревшего кэша"
 
-#: infinity-cache/infinity-cache.php:187
+#: infinity-cache/infinity-cache.php:195
 msgid "Hourly"
 msgstr "Каждый час"
 
-#: infinity-cache/infinity-cache.php:188
+#: infinity-cache/infinity-cache.php:196
 msgid "Daily"
 msgstr "Ежедневно"
 
-#: infinity-cache/infinity-cache.php:195
+#: infinity-cache/infinity-cache.php:203
 msgid "Disable caching for any of these matched URL fragments"
 msgstr "Отключить кэширование для любого подходящего фрагмента URL"
 
-#: infinity-cache/infinity-cache.php:196
+#: infinity-cache/infinity-cache.php:204
 msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
 msgstr "Добавлять по одному фрагменту URL на строку, т.е. %s, чтобы не кэшировать страницы, содержащие каждый фрагмент URL"
 
-#: infinity-cache/infinity-cache.php:204
+#: infinity-cache/infinity-cache.php:212
 msgid "Content Distribution Network Service"
 msgstr "Сетевая служба распространения контента"
 
-#: infinity-cache/infinity-cache.php:205
+#: infinity-cache/infinity-cache.php:213
 msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
 msgstr "Использование Службы распространения контента (CDN) может значительно повысить оперативность отклика вашего веб-сайта."
 
-#: infinity-cache/infinity-cache.php:210
-#: themes/foundation/modules/login/login-html.php:29
+#: infinity-cache/infinity-cache.php:218
+#: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr "Регистрация"
 
-#: infinity-cache/infinity-cache.php:218
+#: infinity-cache/infinity-cache.php:226
 msgid "URL %d"
 msgstr "URL %d"
 
-#: infinity-cache/infinity-cache.php:219
+#: infinity-cache/infinity-cache.php:227
 msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
 msgstr "Добавьте конфигурированные URL к своей CDN, например http://cdn%d.mysite.com. Также добавьте свой домен для мультицентра."
 
-#: infinity-cache/infinity-cache.php:241
+#: infinity-cache/infinity-cache.php:249
 msgid "Infinity Cache"
 msgstr "Бесконечный кэш"
 
-#: infinity-cache/infinity-cache.php:628
+#: infinity-cache/infinity-cache.php:636
 msgid "An example for this URL is: %s%s%s."
 msgstr "Вот пример для такого URL: %s%s%s."
 
@@ -1636,63 +1733,730 @@ msgstr "Мобильный контент"
 msgid "Enable mobile content display"
 msgstr "Включить показ мобильного контента"
 
-#: multi-ads/multi-ads.php:179
+#: mobilestore/default/functions.php:114
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Login now"
+msgstr "Войти сейчас"
+
+#: mobilestore/default/functions.php:115
+msgid "Close"
+msgstr "Закрыть"
+
+#: mobilestore/default/functions.php:116
+msgid "Add Company Name"
+msgstr "Добавить название компании"
+
+#: mobilestore/default/functions.php:117
+msgid "Add Order Notes"
+msgstr "Добавить примечание к заказу"
+
+#: mobilestore/default/functions.php:118
+msgid "CVC"
+msgstr "CVC"
+
+#: mobilestore/default/functions.php:178
+msgid "view more products"
+msgstr "смотреть товары дальше"
+
+#: mobilestore/default/functions.php:196
+msgid "Added to cart"
+msgstr "Добавлено в корзину"
+
+#: mobilestore/default/header-bottom.php:9
+msgid "Product Categories"
+msgstr "Категории товаров"
+
+#: mobilestore/default/header-bottom.php:15
+msgid "Recently Viewed"
+msgstr "Недавно просмотренные"
+
+#: mobilestore/default/header-bottom.php:20
+msgid "Site Menu"
+msgstr "Меню сайта"
+
+#: mobilestore/default/header-bottom.php:70
+msgid "Cart"
+msgstr "Корзина"
+
+#: mobilestore/default/header-bottom.php:78
+msgid "Search the store"
+msgstr "Поиск в магазине"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Recent Searches"
+msgstr "Недавние поиски"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Clear"
+msgstr "Очистить"
+
+#: mobilestore/default/header-bottom.php:100
+msgid "Back to blog index"
+msgstr "Назад в алфавитный указатель блога"
+
+#: mobilestore/default/header-bottom.php:114
+msgid "sorting"
+msgstr "сортировка"
+
+#: mobilestore/default/header-bottom.php:115
+msgid "filter by"
+msgstr "выборка по"
+
+#: mobilestore/default/post-loop.php:9
+msgid "Read This Post &rsaquo;"
+msgstr "Читать публикацию &rsaquo;"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:18
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:33
+msgid "Shipping #%d"
+msgstr "Отправка #%d"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:20
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:35
+msgid "Shipping and Handling"
+msgstr "Доставка и обработка"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:74
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr "Пожалуйста, используйте калькулятор доставки, чтобы увидеть доступные методы отправки."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:78
+msgid "Please continue to the checkout and enter your full address to see if there are any available shipping methods."
+msgstr "Пожалуйста, продолжайте оформление и введите полный адрес, чтобы посмотреть доступные методы отправки."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:82
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:68
+msgid "Please fill in your details to see available shipping methods."
+msgstr "Пожалуйста, заполните реквизиты, чтобы посмотреть доступные методы отправки."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:91
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:97
+msgid "There doesn&lsquo;t seem to be any available shipping methods. Please double check your address, or contact us if you need any help."
+msgstr "Похоже, &lsquo; нет доступных методов доставки. Пожалуйста, перепроверьте адрес или свяжитесь с нами, если нужна помощь."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:112
+#: mobilestore/default/woocommerce/cart/totals.php:46
+msgid "Shipping"
+msgstr "Доставка"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:19
+#: mobilestore/default/woocommerce/cart/totals.php:28
+#: mobilestore/default/woocommerce/checkout/review-order.php:25
+msgid "Cart Subtotal"
+msgstr "Промежуточный итог корзины"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:66
+#: mobilestore/default/woocommerce/cart/totals.php:121
+msgid " (taxes estimated for %s)"
+msgstr "(налог оценивается на %s)"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:69
+#: mobilestore/default/woocommerce/cart/totals.php:123
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr "Примечание: Доставка и налоги ориентировочные%s, и обновляются по ходу оформления и оплаты заказа на основании информации для выставления вам счёта и доставки."
+
+#: mobilestore/default/woocommerce/cart/cart.php:51
+msgid "Available on backorder"
+msgstr "Доступно по неподтверждённому заказу"
+
+#: mobilestore/default/woocommerce/cart/cart.php:57
+msgid "Remove this item"
+msgstr "Удалить позицию"
+
+#: mobilestore/default/woocommerce/cart/cart.php:83
+msgid "Update Cart"
+msgstr "Обновить корзину"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+msgid "Coupon"
+msgstr "Купон"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:41
+msgid "Coupon code"
+msgstr "Код купона"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:43
+msgid "Apply"
+msgstr "Применить"
+
+#: mobilestore/default/woocommerce/cart/cart.php:111
+msgid "Proceed to Checkout"
+msgstr "Оформление и оплата"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:24
+msgid "edit cart"
+msgstr "править корзину"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:29
+msgid "checkout"
+msgstr "оформление"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:73
+msgid "No products in the cart."
+msgstr "В корзине нет товаров."
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:81
+msgid "Subtotal"
+msgstr "Промежуточный итог"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:89
+msgid "Checkout"
+msgstr "Оформить"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:32
+msgid "Free"
+msgstr "Бесплатно"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
+msgstr "Извините, но кажется, что нет доступных методов доставки в ваш регион (%s)."
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "If you require assistance or wish to make alternate arrangements please contact us."
+msgstr "Если вам нужна помощь или вы хотите решить вопросы иначе, пожалуйста, свяжитесь с нами."
+
+#: mobilestore/default/woocommerce/cart/totals.php:22
+msgid "Cart Totals"
+msgstr "Итого в корзине"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+msgid "Cart Discount"
+msgstr "Скидка в корзине"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "[Remove]"
+msgstr "[Удалить]"
+
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "Order Discount"
+msgstr "Скидка на заказ"
+
+#: mobilestore/default/woocommerce/cart/totals.php:92
+#: mobilestore/default/woocommerce/checkout/review-order.php:94
+msgid "Order Total"
+msgstr "Сумма заказа"
+
+#: mobilestore/default/woocommerce/cart/totals.php:105
+msgid "(Includes %s)"
+msgstr "(Включает %s)"
+
+#: mobilestore/default/woocommerce/cart/totals.php:135
+msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
+msgstr "Методы доставки не найдены; пожалуйста, пересчитайте доставку и введите область/район и почтовый индекс, чтобы убедиться, что нет других доступных методов доставки в ваш регион."
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:20
+msgid "You must be logged in to checkout."
+msgstr "Чтобы оформить заказ, нужно выполнить вход."
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Your Order"
+msgstr "Ваш заказ"
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Edit Items"
+msgstr "Править позиции"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Shopped here before?"
+msgstr "Доставляли сюда раньше?"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:23
+msgid "Enter your login details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section."
+msgstr "Введите реквизиты для входа в прямоугольники ниже. Если вы новый клиент, пожалуйста, перейдите в раздел Выставления счёта &amp;и доставки."
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:19
+#: mobilestore/default/woocommerce/checkout/review-order.php:18
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:22
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:27
+#: mobilestore/default/woocommerce/emails/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:23
+#: mobilestore/default/woocommerce/order/order-details.php:20
+msgid "Product"
+msgstr "Продукт"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:20
+msgid "Totals"
+msgstr "Итоговая сумма"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:52
+msgid "Payment"
+msgstr "Оплата"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:77
+msgid "Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Извините, но кажется, что нет доступных методов оплаты для вашего региона. Пожалуйста, свяжитесь с нами, если вам нужна помощь или вы хотите решить вопросы иначе."
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:87
+msgid "Pay for order"
+msgstr "Оплатить заказ"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:31
+msgid "Ship to a different address?"
+msgstr "Отправить на другой адрес?"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:57
+msgid "Additional Information"
+msgstr "Дополнительная информация"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:19
+#: mobilestore/default/woocommerce/order/order-details.php:21
+msgid "Total"
+msgstr "Итого"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:171
+msgid "Please fill in your details above to see available payment methods."
+msgstr "Пожалуйста, заполните реквизиты, чтобы посмотреть доступные методы оплаты."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:173
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Извините, но кажется, что нет доступных методов оплаты для вашего государства. Пожалуйста, свяжитесь с нами, если вам нужна помощь или вы хотите решить вопросы иначе."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr "Поскольку ваш обозреватель не поддерживает JavaScript или он отключен, пожалуйста, обязательно щелкните кнопку <em>Обновить итог</em> прежде, чем размещать заказ. Если этого не сделать, сумма вашего платежа может оказаться больше, чем указанная выше."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Update totals"
+msgstr "Обновить итоги"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:194
+msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr "Я принимаю <a href=\"%s\" target=\"_blank\">условия и&amp; положения</a>"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:200
+msgid "Place order"
+msgstr "Разместить заказ"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:13
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
+msgid "You have received an order from %s. Their order is as follows:"
+msgstr "Вы получили заказ от %s. Заказ следующий:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:17
+msgid "Order: %s"
+msgstr "Заказ: %s"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:28
+#: mobilestore/default/woocommerce/emails/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:24
+msgid "Quantity"
+msgstr "Количество"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:25
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:29
+#: mobilestore/default/woocommerce/emails/customer-note.php:29
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:25
+msgid "Price"
+msgstr "Цена"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:50
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:51
+#: mobilestore/default/woocommerce/emails/customer-note.php:55
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:51
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:38
+msgid "Customer details"
+msgstr "Реквизиты клиента"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:53
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:54
+#: mobilestore/default/woocommerce/emails/customer-note.php:58
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:54
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:49
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:41
+msgid "Email:"
+msgstr "Эл.почта:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:56
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:57
+#: mobilestore/default/woocommerce/emails/customer-note.php:61
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:57
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:52
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:44
+msgid "Tel:"
+msgstr "Teл.:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
+msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
+msgstr "Привет! Ваш новый заказ по %s укомплектован. Реквизиты вашего заказа показаны ниже для вашего сведения:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:22
+#: mobilestore/default/woocommerce/emails/customer-note.php:22
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:18
+msgid "Order:"
+msgstr "Заказ:"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
+msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
+msgstr "Для вас был создан заказ на %s. Чтобы оплатить заказ, пожалуйста, воспользуйтесь следующей ссылкой: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+msgid "pay"
+msgstr "оплата"
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
+msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
+msgstr "Спасибо за создание уч. записи на %s. Ваше имя пользователя <strong>%s</strong>."
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:15
+msgid "You can access your account area here: %s."
+msgstr "Доступ к данным уч. записи можно получить здесь: %s."
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:13
+msgid "Hello, a note has just been added to your order:"
+msgstr "Здравствуйте, к вашему заказу добавлено примечание:"
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:18
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:21
+msgid "For your reference, your order details are shown below."
+msgstr "Для вашего сведения, реквизиты заказа указаны ниже."
+
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
+msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
+msgstr "Ваш заказ получен и сейчас обрабатывается. Реквизиты вашего заказа показаны ниже для вашего сведения:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:13
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "Был выполнен запрос на сброс пароля для следующей уч. записи:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:15
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:15
+msgid "Username: %s"
+msgstr "Имя пользователя: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:16
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Если это ошибка, просто игнорируйте это эл.письмо и ничего не случится."
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:17
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:17
+msgid "To reset your password, visit the following address:"
+msgstr "Чтобы сбросить пароль, посетите следующий адрес:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:20
+msgid "Click here to reset your password"
+msgstr "Щёлкните здесь, чтобы сбросить пароль"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:18
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:12
+msgid "Billing address"
+msgstr "Адрес для выставления счета"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:28
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:17
+msgid "Shipping address"
+msgstr "Адрес доставки"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:34
+msgid "This product is no longer available"
+msgstr "Этого товара больше нет в наличии"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:76
+msgid "Download %d:"
+msgstr "Загрузка %d:"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:78
+msgid "Download:"
+msgstr "Загрузить:"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:19
+msgid "Order number: %s"
+msgstr "Номер заказа: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:21
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:20
+msgid "Order date: %s"
+msgstr "Дата заказа: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+msgid "jS F Y"
+msgstr "jS F Y"
+
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:38
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:46
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:38
+#: mobilestore/default/woocommerce/order/order-details.php:97
+msgid "Your details"
+msgstr "Ваши реквизиты"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:28
+msgid "Quantity: %s"
+msgstr "Количество: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:31
+msgid "Cost: %s"
+msgstr "Стоимость: %s"
+
+#: mobilestore/default/woocommerce/loop/no-products-found.php:14
+msgid "No products were found matching your search."
+msgstr "Товары, соответствующие условиям поиска, не найдены."
+
+#: mobilestore/default/woocommerce/loop-shop.php:40
+msgid "No products found which match your selection."
+msgstr "Не найдены товары, соответствующие вашему выбору."
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:19
+msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
+msgstr "Здравствуйте <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Выход</a>)."
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:26
+msgid "<a href=\"%s\">Edit your password and account details</a>."
+msgstr "<a href=\"%s\">Править пароль и реквизиты уч. записи</a>."
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:26
+msgid "Recent Orders"
+msgstr "Новые заказы"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:40
+msgid "%s for %s item"
+msgid_plural "%s for %s items"
+msgstr[0] "%s за %s позицию"
+msgstr[1] "%s за %s позиции"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:49
+msgid "Pay"
+msgstr "Оплатить"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:56
+#: prose/default/comments.php:48 themes/foundation/default/comments.php:48
+msgid "Cancel"
+msgstr "Отмена"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:62
+msgid "View"
+msgstr "Просмотр"
+
+#: mobilestore/default/woocommerce/order/order-details.php:66
+msgid "Download file%s"
+msgstr "Загрузить файл%s"
+
+#: mobilestore/default/woocommerce/order/order-details.php:101
+msgid "Email"
+msgstr "Эл.почта"
+
+#: mobilestore/default/woocommerce/order/order-details.php:102
+msgid "Telephone"
+msgstr "Телефон"
+
+#: mobilestore/default/woocommerce/order/order-details.php:118
+msgid "Billing Address"
+msgstr "Адрес для выписки счета"
+
+#: mobilestore/default/woocommerce/order/order-details.php:122
+#: mobilestore/default/woocommerce/order/order-details.php:137
+msgid "N/A"
+msgstr "Н/Д"
+
+#: mobilestore/default/woocommerce/order/order-details.php:133
+msgid "Shipping Address"
+msgstr "Адрес доставки"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:63
+msgid "Products tagged &ldquo;"
+msgstr "Помеченные товары &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:91
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:190
+msgid "Search results for &ldquo;"
+msgstr "Результаты поиска для &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:148
+msgid "Error 404"
+msgstr "Ошибка 404"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:194
+msgid "Posts tagged &ldquo;"
+msgstr "Помеченные публикации &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:199
+msgid "Author:"
+msgstr "Автор:"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:204
+#: themes/foundation/root-functions.php:1087
+msgid "Page"
+msgstr "Страница"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:20
+msgid "Username or email"
+msgstr "Имя пользователя или эл.почта"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:24
+msgid "Password"
+msgstr "Пароль"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:33
+msgid "Lost Password?"
+msgstr "Потеряли пароль?"
+
+#: mobilestore/root-functions.php:6
+msgid "Store"
+msgstr "Магазин"
+
+#: mobilestore/root-functions.php:189
+msgid "Off-Canvas left menu"
+msgstr "Вне основы слева от меню"
+
+#: mobilestore/root-functions.php:198
+msgid "Footer Menu"
+msgstr "Меню нижнего колонтитула"
+
+#: mobilestore/root-functions.php:201
+msgid "Menu shown in the MobileStore footer"
+msgstr "Меню показано в нижнем колонтитуле MobileStore"
+
+#: mobilestore/root-functions.php:208
+msgid "Menu & Cart Background"
+msgstr "Фон меню и корзины"
+
+#: mobilestore/root-functions.php:211
+msgid "Header & Footer Background"
+msgstr "Фон верхнего и нижнего колонтитула"
+
+#: mobilestore/root-functions.php:263
+msgid "Primary Actions & Purchase Flow"
+msgstr "Первоочередные действия и ход покупки"
+
+#: mobilestore/root-functions.php:274
+msgid "Highlight Color"
+msgstr "Цвет выделения"
+
+#: mobilestore/root-functions.php:390
+msgid "Product Listing"
+msgstr "Список товаров"
+
+#: mobilestore/root-functions.php:396
+msgid "Number of products shown per page in product listings"
+msgstr "Число товаров, показываемых на страницу в товарных списках"
+
+#: mobilestore/root-functions.php:410
+msgid "Product Filters"
+msgstr "Товарные выборки"
+
+#: mobilestore/root-functions.php:416
+msgid "Show WooCommerce product filters for"
+msgstr "Показать товарные выборки WooCommerce для"
+
+#: mobilestore/root-functions.php:431
+msgid "Site Sidebar"
+msgstr "Боковая панель сайта"
+
+#: mobilestore/root-functions.php:437
+msgid "Show category menu in sidebar"
+msgstr "Показывать меню категорий на боковой панели"
+
+#: mobilestore/root-functions.php:445
+msgid "Show recently viewed products in sidebar"
+msgstr "Показывать недавно просмотренные товары на боковой панели"
+
+#: mobilestore/root-functions.php:523
+msgid "Site logo display size"
+msgstr "Размер изображения логотипа на экране"
+
+#: mobilestore/root-functions.php:528
+msgid "Short (default)"
+msgstr "Короткий (по умолчанию)"
+
+#: mobilestore/root-functions.php:529
+msgid "Tall (longer vertically for square logos)"
+msgstr "Высокий (вертикально удлинённый для квадратных логотипов)"
+
+#: mobilestore/root-functions.php:536
+msgid "Show site description in large header"
+msgstr "Показывать описание сайта на крупном верхнем колонтитуле"
+
+#: multi-ads/multi-ads.php:228
 msgid "Header Ad"
 msgstr "Реклама в верхнем колонтитуле"
 
-#: multi-ads/multi-ads.php:181
+#: multi-ads/multi-ads.php:230
 msgid "Footer Ad"
 msgstr "Реклама в нижнем колонтитуле"
 
-#: multi-ads/multi-ads.php:183
+#: multi-ads/multi-ads.php:232
 msgid "Pre-content Ad"
 msgstr "Пред-контентная реклама"
 
-#: multi-ads/multi-ads.php:185
+#: multi-ads/multi-ads.php:234
 msgid "Post-content Ad"
 msgstr "Пост-контентная реклама"
 
-#: multi-ads/multi-ads.php:206
+#: multi-ads/multi-ads.php:236
+msgid "Mid-content Ad"
+msgstr "Средне-контентная реклама"
+
+#: multi-ads/multi-ads.php:257
 msgid "Enabled"
 msgstr "Включено"
 
-#: multi-ads/multi-ads.php:214
+#: multi-ads/multi-ads.php:265
 msgid "Perform A/B test with secondary advertising unit"
 msgstr "Выполнить A/B-тест по вторичной рекламной единице"
 
-#: multi-ads/multi-ads.php:222
+#: multi-ads/multi-ads.php:273
 msgid "Primary Advertising Unit"
 msgstr "Первичная рекламная единица"
 
-#: multi-ads/multi-ads.php:223
+#: multi-ads/multi-ads.php:274
 msgid "HTML, CSS and JS are all accepted."
 msgstr "Принимаются HTML, CSS и JS."
 
-#: multi-ads/multi-ads.php:230
+#: multi-ads/multi-ads.php:281
 msgid "Secondary Advertising Unit"
 msgstr "Вторичная рекламная единица"
 
-#: multi-ads/multi-ads.php:231
+#: multi-ads/multi-ads.php:282
 msgid "If defined, secondary advertising code will be shown 50% of the time."
 msgstr "Если определить, вторичный рекламный код будет показан 50% времени."
 
-#: multi-ads/multi-ads.php:238
+#: multi-ads/multi-ads.php:289
 msgid "Display on archive/post listings"
 msgstr "Вывод по архивным/опубликованным листингам"
 
-#: multi-ads/multi-ads.php:246
+#: multi-ads/multi-ads.php:297
 msgid "Display on single posts"
 msgstr "Вывод по единичным публикациям"
 
-#: multi-ads/multi-ads.php:254
+#: multi-ads/multi-ads.php:305
 msgid "Display on static pages"
 msgstr "Вывод на статических страницах"
 
-#: multi-ads/multi-ads.php:262
+#: multi-ads/multi-ads.php:313
 msgid "Display on taxonomy listings"
 msgstr "Вывод на соподчинённых листингах"
 
-#: multi-ads/multi-ads.php:269
+#: multi-ads/multi-ads.php:320
 msgid "Display in search results"
 msgstr "Вывод в результатах поиска"
 
@@ -1713,31 +2477,31 @@ msgstr "Наш адрес"
 msgid "Our Hours"
 msgstr "Часы работы"
 
-#: open/default/hours.php:12 open/root-functions.php:179
+#: open/default/hours.php:12 open/root-functions.php:206
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: open/default/hours.php:13 open/root-functions.php:187
+#: open/default/hours.php:13 open/root-functions.php:214
 msgid "Monday"
 msgstr "Понедельник"
 
-#: open/default/hours.php:14 open/root-functions.php:195
+#: open/default/hours.php:14 open/root-functions.php:222
 msgid "Tuesday"
 msgstr "Вторник"
 
-#: open/default/hours.php:15 open/root-functions.php:203
+#: open/default/hours.php:15 open/root-functions.php:230
 msgid "Wednesday"
 msgstr "Среда"
 
-#: open/default/hours.php:16 open/root-functions.php:211
+#: open/default/hours.php:16 open/root-functions.php:238
 msgid "Thursday"
 msgstr "Четверг"
 
-#: open/default/hours.php:17 open/root-functions.php:219
+#: open/default/hours.php:17 open/root-functions.php:246
 msgid "Friday"
 msgstr "Пятница"
 
-#: open/default/hours.php:18 open/root-functions.php:227
+#: open/default/hours.php:18 open/root-functions.php:254
 msgid "Saturday"
 msgstr "Суббота"
 
@@ -1745,89 +2509,87 @@ msgstr "Суббота"
 msgid "Closed"
 msgstr "Закрыто"
 
-#: open/root-functions.php:73
+#: open/root-functions.php:77
+msgid "Open Homepage Menu"
+msgstr "Открыть меню на главной странице"
+
+#: open/root-functions.php:83
+msgid "Show full menu on Open homepage"
+msgstr "Показывать полное меню на Открытой главной странице"
+
+#: open/root-functions.php:84
+msgid "If disabled, only Location & Hours links will be shown"
+msgstr "При отключении будут показаны ссылки только на местоположение и часы работы"
+
+#: open/root-functions.php:100
 msgid "Tagline"
 msgstr "Подзаголовок"
 
-#: open/root-functions.php:79
+#: open/root-functions.php:106
 msgid "Displayed below your logo on the homepage."
 msgstr "Выводится под вашим логотипом на главной странице."
 
-#: open/root-functions.php:92 prose/root-functions.php:104
-msgid "Header Image"
-msgstr "Изображение в верхнем колонтитуле"
-
-#: open/root-functions.php:98
+#: open/root-functions.php:125
 msgid "Displayed behind header on pages."
 msgstr "Выводится позади заголовка на страницах."
 
-#: open/root-functions.php:111
+#: open/root-functions.php:138
 msgid "Location"
 msgstr "Расположение"
 
-#: open/root-functions.php:117 simple/root-functions.php:229
+#: open/root-functions.php:144 simple/root-functions.php:230
 msgid "Map address"
 msgstr "Адрес на карте"
 
-#: open/root-functions.php:118
+#: open/root-functions.php:145
 msgid "Enter an address and a menu item for 'Our Location' will be shown."
 msgstr "Будет показан ввод адреса и элемента меню для 'Нашего расположения'."
 
-#: open/root-functions.php:130
+#: open/root-functions.php:157
 msgid "Call to Action"
 msgstr "Призыв к акции"
 
-#: open/root-functions.php:136
+#: open/root-functions.php:163
 msgid "Show call to action button at bottom of pages"
 msgstr "Показать кнопку призыва к акции внизу страниц"
 
-#: open/root-functions.php:137
+#: open/root-functions.php:164
 msgid "Give visitors a one-click action to follow and increase your conversions."
 msgstr "Дать посетителям действие в один щелчок, чтобы следить и увеличивать ваши преобразования."
 
-#: open/root-functions.php:144
+#: open/root-functions.php:171
 msgid "Button Label"
 msgstr "Ярлык кнопки"
 
-#: open/root-functions.php:152
+#: open/root-functions.php:179
 msgid "Target URL"
 msgstr "Целевой URL"
 
-#: open/root-functions.php:153
+#: open/root-functions.php:180
 msgid "Prefix your phone number with \"tel:\" to allow one-click phone calls."
 msgstr "Начать телефон с префикса \"тел.:\" чтобы разрешить телефонные звонки одним щелчком."
 
-#: open/root-functions.php:165
+#: open/root-functions.php:192
 msgid "Hours"
 msgstr "Часы работы"
 
-#: open/root-functions.php:171
+#: open/root-functions.php:198
 msgid "Use built-in Hours feature"
 msgstr "Использовать встроенную функцию часов работы"
 
-#: open/root-functions.php:172
+#: open/root-functions.php:199
 msgid "Add your hours and the current day's hours will appear on the homepage along with a menu item for 'Our Hours'."
 msgstr "Введите свои часы работы, и часы текущего дня появятся на главной странице вместе с элементом меню для 'Наших часов работы'."
 
-#: open/root-functions.php:180
+#: open/root-functions.php:207
 msgid "Will show as closed if left blank."
 msgstr "Будет показано закрытым, если оставить пустым."
 
-#: open/root-functions.php:236
+#: open/root-functions.php:263
 msgid "Let visitors know about holidays, vacations, and other special hours"
 msgstr "Уведомлять посетителей о праздниках, отпусках и других особых часах работы"
 
-#: open/root-functions.php:302 prose/root-functions.php:189
-#: scaffold/root-functions.php:75
-msgid "Primary Menu"
-msgstr "Основное меню"
-
-#: open/root-functions.php:305 prose/root-functions.php:192
-#: scaffold/root-functions.php:78
-msgid "Menus are awesome!"
-msgstr "Меню прекрасны!"
-
-#: open/root-functions.php:310
+#: open/root-functions.php:356
 msgid "Main branding colour"
 msgstr "Основной фирменный цвет"
 
@@ -1927,37 +2689,72 @@ msgstr "WPtouch Pro 3 не может сосуществовать с WPtouch Pr
 msgid "Unknown error"
 msgstr "Неизвестная ошибка"
 
-#: prose/default/functions.php:10
-msgid "Load more from this collection"
-msgstr "Загрузить ещё из этой коллекции"
+#: prose/default/comments.php:20 prose/default/comments.php:26
+#: themes/foundation/default/comments.php:20
+#: themes/foundation/default/comments.php:26
+msgid "Load More Comments&hellip;"
+msgstr "Загрузить еще комментарии&hellip;"
 
-#: prose/default/functions.php:11
+#: prose/default/comments.php:38 themes/foundation/default/comments.php:38
+msgid "Comments are closed"
+msgstr "Комментарии закрыты"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply"
+msgstr "Ответить"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply to %s"
+msgstr "Ответить на %s"
+
+#: prose/default/comments.php:54 themes/foundation/default/comments.php:54
+msgid "You must be %slogged in%s to post a comment."
+msgstr "Вы должны %sвойти%s, чтобы оставить комментарий."
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Logged in as"
+msgstr "Вход выполнен как"
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Log out"
+msgstr "Выйти"
+
+#: prose/default/comments.php:65 themes/foundation/default/comments.php:65
+msgid "Name"
+msgstr "Имя"
+
+#: prose/default/comments.php:67 themes/foundation/default/comments.php:67
+#: themes/foundation/modules/social-links/social-links.php:94
+msgid "E-Mail"
+msgstr "Эл. почта"
+
+#: prose/default/comments.php:69 themes/foundation/default/comments.php:69
+msgid "Website"
+msgstr "Веб-сайт"
+
+#: prose/default/comments.php:77 themes/foundation/default/comments.php:77
+msgid "Publish"
+msgstr "Опубликовать"
+
+#: prose/default/functions.php:34
 msgid "%d minute"
 msgstr "%d минута"
 
-#: prose/default/functions.php:12
+#: prose/default/functions.php:35
 msgid "%d minutes"
 msgstr "%d минут"
 
-#: prose/default/functions.php:13
+#: prose/default/functions.php:36
 msgid "%d minute remaining"
 msgstr "осталась %d минута"
 
-#: prose/default/functions.php:14
+#: prose/default/functions.php:37
 msgid "%d minutes remaining"
 msgstr "осталось %d минут"
 
-#: prose/default/functions.php:15
+#: prose/default/functions.php:38
 msgid "Share post"
 msgstr "Поделиться публикацией"
-
-#: prose/default/header-bottom.php:19
-msgid "Collections"
-msgstr "Коллекции"
-
-#: prose/default/header-bottom.php:22
-msgid "Options"
-msgstr "Параметры"
 
 #: prose/default/header-bottom.php:43
 msgid "Reading Text Size"
@@ -1979,11 +2776,11 @@ msgstr "Крупный"
 msgid "Text Sample"
 msgstr "Образец текста"
 
-#: prose/default/header-bottom.php:103
+#: prose/default/header-bottom.php:101
 msgid "Collection"
 msgstr "Коллекция"
 
-#: prose/default/header-bottom.php:105
+#: prose/default/header-bottom.php:103
 msgid "Posts Tagged"
 msgstr "Отмеченные публикации"
 
@@ -1991,41 +2788,33 @@ msgstr "Отмеченные публикации"
 msgid "Read Next"
 msgstr "Читать следующий"
 
-#: prose/root-functions.php:63
-msgid "Show categories as \"collections\" in menu"
-msgstr "Показывать категории как \"коллекции\" в меню"
+#: prose/default/single.php:31
+msgid "Discuss this post"
+msgstr "Обсудить запись"
 
-#: prose/root-functions.php:74
-msgid "Maximum number of items in categories/collections"
-msgstr "Максимальное число элементов в категориях/коллекциях"
+#: prose/default/single.php:33
+msgid "View discussion"
+msgstr "Смотреть обсуждение"
 
-#: prose/root-functions.php:90
-msgid "Animate the featured image on posts"
-msgstr "Анимировать главное изображение в публикациях"
+#: prose/root-functions.php:64
+msgid "Show comments when reading posts"
+msgstr "Показывать комментарии при чтении публикаций"
 
-#: prose/root-functions.php:110
-msgid "Displayed behind header on pages and posts without featured images."
-msgstr "Выводится позади верхнего колонтитула на страницах и публикациях без главных изображений."
+#: prose/root-functions.php:65
+msgid "Comment form will not appear for posts with comments turned off."
+msgstr "Форма комментария не будет показана в публикациях с отключенными комментариями."
 
-#: prose/root-functions.php:123
-msgid "Site Intro"
-msgstr "Заставка сайта"
-
-#: prose/root-functions.php:129
-msgid "Displayed on post listing page below site name."
-msgstr "Выводится на станицах листинга публикаций ниже названия сайта."
-
-#: prose/root-functions.php:142
+#: prose/root-functions.php:143
 msgid "Drop Caps"
 msgstr "Буквицы"
 
-#: prose/root-functions.php:148
+#: prose/root-functions.php:149
 msgid "Use a drop cap at the start of each blog post."
 msgstr "Использовать буквицы в начале каждой публикации блога."
 
-#: prose/root-functions.php:200 themes/foundation/root-functions.php:11
-msgid "Branding"
-msgstr "Фирменная символика"
+#: prose/root-functions.php:196
+msgid "Off-canvas menu for Prose"
+msgstr "Меню вне основы для Prose"
 
 #: responsive-images/responsive-images.php:92
 msgid "Responsive Images"
@@ -2055,63 +2844,63 @@ msgstr "Оптимизация по качеству"
 msgid "Call Us"
 msgstr "Позвонить нам"
 
-#: simple/default/header-bottom.php:15
+#: simple/default/header-bottom.php:17
 msgid "Toggle Menu"
 msgstr "Переключить меню"
 
-#: simple/root-functions.php:58
+#: simple/root-functions.php:59
 msgid "Site Menu (Pulldown)"
 msgstr "Меню сайта (раскрывающееся)"
 
-#: simple/root-functions.php:61
+#: simple/root-functions.php:62
 msgid "Pull-down menu at top of pages"
 msgstr "Выпадающее меню вверху страниц"
 
-#: simple/root-functions.php:69
+#: simple/root-functions.php:70
 msgid "Front Page Menu"
 msgstr "Меню титульной страницы"
 
-#: simple/root-functions.php:72
+#: simple/root-functions.php:73
 msgid "Displayed below front page menu and content"
 msgstr "Отобр. ниже меню и содержания тит. страницы"
 
-#: simple/root-functions.php:190
+#: simple/root-functions.php:191
 msgid "Enable search on blog pages"
 msgstr "Включить поиск на страницах блога"
 
-#: simple/root-functions.php:204
+#: simple/root-functions.php:205
 msgid "Homepage Call Us"
 msgstr "Позвонить нам главной страницы"
 
-#: simple/root-functions.php:210
+#: simple/root-functions.php:211
 msgid "Phone number"
 msgstr "Номер телефона"
 
-#: simple/root-functions.php:211
+#: simple/root-functions.php:212
 msgid "Enter a phone number and a homepage menu item for 'call us' will be shown."
 msgstr "Введите номер телефона и вы увидите пункт меню главной страницы 'позвонить нам'."
 
-#: simple/root-functions.php:223
+#: simple/root-functions.php:224
 msgid "Homepage Location"
 msgstr "Адрес главной страницы"
 
-#: simple/root-functions.php:230
+#: simple/root-functions.php:231
 msgid "Enter an address and a homepage menu item for 'Our Location' will be shown."
 msgstr "Введите адрес и вы увидите пункт меню главной страницы 'Где мы находимся'."
 
-#: simple/root-functions.php:242
+#: simple/root-functions.php:243
 msgid "Front Page Content"
 msgstr "Содержание титульной страницы"
 
-#: simple/root-functions.php:248
+#: simple/root-functions.php:249
 msgid "Front page alternate content"
 msgstr "Альт. содержание титульной страницы"
 
-#: simple/root-functions.php:249
+#: simple/root-functions.php:250
 msgid "Shows above the front page menu (if enabled), HTML allowed."
 msgstr "Показ. над меню титульной страницы (если включено), HTML разрешен."
 
-#: simple/root-functions.php:286
+#: simple/root-functions.php:287
 msgid "Add a light noise effect to the drop-down menu and theme background"
 msgstr "Добавьте легкий шумовой эффект для раскрыв. меню и фона темы"
 
@@ -2131,56 +2920,6 @@ msgstr "&laquo; предыдущее в галерее"
 msgid "next in gallery &raquo;"
 msgstr "следующее в галерее &raquo;"
 
-#: themes/foundation/default/comments.php:20
-#: themes/foundation/default/comments.php:26
-msgid "Load More Comments&hellip;"
-msgstr "Загрузить еще комментарии&hellip;"
-
-#: themes/foundation/default/comments.php:38
-msgid "Comments are closed"
-msgstr "Комментарии закрыты"
-
-#: themes/foundation/default/comments.php:48
-msgid "Cancel"
-msgstr "Отмена"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply"
-msgstr "Ответить"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply to %s"
-msgstr "Ответить на %s"
-
-#: themes/foundation/default/comments.php:54
-msgid "You must be %slogged in%s to post a comment."
-msgstr "Вы должны %sвойти%s, чтобы оставить комментарий."
-
-#: themes/foundation/default/comments.php:61
-msgid "Logged in as"
-msgstr "Вход выполнен как"
-
-#: themes/foundation/default/comments.php:61
-msgid "Log out"
-msgstr "Выйти"
-
-#: themes/foundation/default/comments.php:65
-msgid "Name"
-msgstr "Имя"
-
-#: themes/foundation/default/comments.php:67
-#: themes/foundation/modules/social-links/social-links.php:94
-msgid "E-Mail"
-msgstr "Эл. почта"
-
-#: themes/foundation/default/comments.php:69
-msgid "Website"
-msgstr "Веб-сайт"
-
-#: themes/foundation/default/comments.php:77
-msgid "Publish"
-msgstr "Опубликовать"
-
 #: themes/foundation/default/footer.php:10
 msgid "Back to top"
 msgstr "Наверх"
@@ -2197,13 +2936,9 @@ msgstr "Пожалуйста, введите все поля правильно,
 msgid "Go back"
 msgstr "Вернуться"
 
-#: themes/foundation/default/one-comment.php:12
+#: themes/foundation/default/one-comment.php:17
 msgid "Your comment is awaiting moderation"
 msgstr "Ваш комментарий ожидает модерации"
-
-#: themes/foundation/default/related-posts.php:4
-msgid "Related"
-msgstr "Сходное"
 
 #: themes/foundation/default/switch-link.php:8
 msgid "mobile"
@@ -2310,116 +3045,116 @@ msgstr "Просмотр темы"
 msgid "Reload"
 msgstr "Перезагрузить"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:190
+#: themes/foundation/modules/custom-posts/custom-posts.php:165
 msgid "Custom Post Support"
 msgstr "Поддержка польз. записей"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:196
+#: themes/foundation/modules/custom-posts/custom-posts.php:171
 msgid "Enable custom post-type support"
 msgstr "Включить поддержку польз. типов записей"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:204
+#: themes/foundation/modules/custom-posts/custom-posts.php:179
 msgid "Show custom post taxonomy"
 msgstr "Показать польз. таксономию записи"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:216
+#: themes/foundation/modules/custom-posts/custom-posts.php:191
 msgid "Custom Post Types"
 msgstr "Пользовательские типы записей"
 
-#: themes/foundation/modules/featured/featured.php:260
+#: themes/foundation/modules/featured/featured.php:265
 msgid "Featured Slider"
 msgstr "Готовый слайдер"
 
-#: themes/foundation/modules/featured/featured.php:266
+#: themes/foundation/modules/featured/featured.php:271
 msgid "Enable featured slider"
 msgstr "Включить готовый слайдер"
 
-#: themes/foundation/modules/featured/featured.php:267
+#: themes/foundation/modules/featured/featured.php:272
 msgid "Requires at least 2 entries to contain featured images"
 msgstr "Требуется хотя бы 2 записи с готовыми изображениями"
 
-#: themes/foundation/modules/featured/featured.php:274
+#: themes/foundation/modules/featured/featured.php:279
 msgid "Maximum number of posts"
 msgstr "Макс. число публикаций"
 
-#: themes/foundation/modules/featured/featured.php:279
+#: themes/foundation/modules/featured/featured.php:284
 msgid "3 posts"
 msgstr "3 публикации"
 
-#: themes/foundation/modules/featured/featured.php:280
+#: themes/foundation/modules/featured/featured.php:285
 msgid "5 posts"
 msgstr "5 публикаций"
 
-#: themes/foundation/modules/featured/featured.php:281
+#: themes/foundation/modules/featured/featured.php:286
 msgid "10 posts"
 msgstr "10 публикаций"
 
-#: themes/foundation/modules/featured/featured.php:287
+#: themes/foundation/modules/featured/featured.php:292
 msgid "Automatically slide"
 msgstr "Автоматический слайд"
 
-#: themes/foundation/modules/featured/featured.php:295
+#: themes/foundation/modules/featured/featured.php:300
 msgid "Continuously slide"
 msgstr "Непрерывный слайд"
 
-#: themes/foundation/modules/featured/featured.php:303
+#: themes/foundation/modules/featured/featured.php:308
 msgid "Grayscale images (CSS 3 effect)"
 msgstr "Серые изображения (эффект CSS 3)"
 
-#: themes/foundation/modules/featured/featured.php:304
+#: themes/foundation/modules/featured/featured.php:309
 msgid "Featured slider images will be in grayscale for devices that support CSS filters."
 msgstr "Изображения готового слайдера будут в оттенках серого для устройств, поддерживающих фильтры CSS."
 
-#: themes/foundation/modules/featured/featured.php:319
+#: themes/foundation/modules/featured/featured.php:324
 msgid "Featured slider posts also show in listings"
 msgstr "Популярные записи на линейке также отражены в листингах"
 
-#: themes/foundation/modules/featured/featured.php:327
+#: themes/foundation/modules/featured/featured.php:332
 msgid "Slide transition speed"
 msgstr "Скорость смены слайдов"
 
-#: themes/foundation/modules/featured/featured.php:332
+#: themes/foundation/modules/featured/featured.php:337
 msgid "Slow"
 msgstr "Медленная"
 
-#: themes/foundation/modules/featured/featured.php:333
+#: themes/foundation/modules/featured/featured.php:338
 msgid "Normal"
 msgstr "Нормальная"
 
-#: themes/foundation/modules/featured/featured.php:334
+#: themes/foundation/modules/featured/featured.php:339
 msgid "Fast"
 msgstr "Быстрая"
 
-#: themes/foundation/modules/featured/featured.php:345
+#: themes/foundation/modules/featured/featured.php:350
 msgid "Show latest posts"
 msgstr "Показать последние записи"
 
-#: themes/foundation/modules/featured/featured.php:346
+#: themes/foundation/modules/featured/featured.php:351
 msgid "Show posts from a specific tag"
 msgstr "Показать записи из конкретного тега"
 
-#: themes/foundation/modules/featured/featured.php:347
+#: themes/foundation/modules/featured/featured.php:352
 msgid "Show posts from a specific category"
 msgstr "Показать записи из конкретной категории"
 
-#: themes/foundation/modules/featured/featured.php:348
+#: themes/foundation/modules/featured/featured.php:353
 msgid "Show only specific posts or pages"
 msgstr "Показать только конкретные записи/ стр."
 
-#: themes/foundation/modules/featured/featured.php:354
+#: themes/foundation/modules/featured/featured.php:359
 msgid "Only this tag"
 msgstr "Только этот тег"
 
-#: themes/foundation/modules/featured/featured.php:355
-#: themes/foundation/modules/featured/featured.php:364
+#: themes/foundation/modules/featured/featured.php:360
+#: themes/foundation/modules/featured/featured.php:369
 msgid "Enter the tag/category slug name"
 msgstr "Введите название поля динамических данных для метки/категории"
 
-#: themes/foundation/modules/featured/featured.php:363
+#: themes/foundation/modules/featured/featured.php:368
 msgid "Only this category"
 msgstr "Только эта категория"
 
-#: themes/foundation/modules/featured/featured.php:372
+#: themes/foundation/modules/featured/featured.php:377
 msgid "Comma-separated list of post/page IDs"
 msgstr "Список разделенных запятыми идентификаторов записей/страниц"
 
@@ -2447,7 +3182,7 @@ msgstr "Запомнить"
 msgid "Log In"
 msgstr "Вход"
 
-#: themes/foundation/modules/login/login-html.php:30
+#: themes/foundation/modules/login/login-html.php:31
 msgid "Lost password?"
 msgstr "Потерялся пароль?"
 
@@ -2515,47 +3250,47 @@ msgstr "Твитнуть"
 msgid "Mail"
 msgstr "Отпр. по эл. почте"
 
-#: themes/foundation/modules/sharing/sharing.php:81
+#: themes/foundation/modules/sharing/sharing.php:94
 msgid "Sharing"
 msgstr "Общий доступ"
 
-#: themes/foundation/modules/sharing/sharing.php:87
+#: themes/foundation/modules/sharing/sharing.php:100
 msgid "Show sharing links"
 msgstr "Показать ссылки для обмена"
 
-#: themes/foundation/modules/sharing/sharing.php:88
+#: themes/foundation/modules/sharing/sharing.php:101
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on single posts."
 msgstr "Отобразит кнопки Facebook, Twitter, Google+ и эл. почты в одиночных записях."
 
-#: themes/foundation/modules/sharing/sharing.php:95
+#: themes/foundation/modules/sharing/sharing.php:108
 msgid "Show sharing links on pages"
 msgstr "Показывать совместные ссылки на страницах"
 
-#: themes/foundation/modules/sharing/sharing.php:96
+#: themes/foundation/modules/sharing/sharing.php:109
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on pages as well as single posts."
 msgstr "Покажет кнопки Facebook, Twitter, Google+ и эл.почты на страницах, а также единичные публикации."
 
-#: themes/foundation/modules/sharing/sharing.php:103
+#: themes/foundation/modules/sharing/sharing.php:116
 msgid "Sharing links location"
 msgstr "Ссылки для общего доступа"
 
-#: themes/foundation/modules/sharing/sharing.php:108
+#: themes/foundation/modules/sharing/sharing.php:121
 msgid "Above post content"
 msgstr "Содержание сверху записи"
 
-#: themes/foundation/modules/sharing/sharing.php:109
+#: themes/foundation/modules/sharing/sharing.php:122
 msgid "Below post content"
 msgstr "Содержание снизу записи"
 
-#: themes/foundation/modules/sharing/sharing.php:115
+#: themes/foundation/modules/sharing/sharing.php:128
 msgid "Color scheme"
 msgstr "Цветовая схема"
 
-#: themes/foundation/modules/sharing/sharing.php:120
+#: themes/foundation/modules/sharing/sharing.php:133
 msgid "Theme colors"
 msgstr "Цвета темы"
 
-#: themes/foundation/modules/sharing/sharing.php:121
+#: themes/foundation/modules/sharing/sharing.php:134
 msgid "Social network colors"
 msgstr "Цвета социальной сети"
 
@@ -2624,11 +3359,13 @@ msgstr "iPad"
 #: themes/foundation/modules/webapp/webapp.php:91
 #: themes/foundation/modules/webapp/webapp.php:109
 #: themes/foundation/modules/webapp/webapp.php:128
-#: themes/foundation/modules/webapp/webapp.php:136
-#: themes/foundation/modules/webapp/webapp.php:154
-#: themes/foundation/modules/webapp/webapp.php:162
-#: themes/foundation/root-functions.php:428
-#: themes/foundation/root-functions.php:446
+#: themes/foundation/modules/webapp/webapp.php:146
+#: themes/foundation/modules/webapp/webapp.php:165
+#: themes/foundation/modules/webapp/webapp.php:173
+#: themes/foundation/modules/webapp/webapp.php:191
+#: themes/foundation/modules/webapp/webapp.php:199
+#: themes/foundation/root-functions.php:439
+#: themes/foundation/root-functions.php:457
 msgid "%d by %d pixels (PNG)"
 msgstr "%d на %d пикселов (PNG)"
 
@@ -2673,8 +3410,8 @@ msgid "Notice message contents"
 msgstr "Содержимое уведомлений"
 
 #: themes/foundation/modules/webapp/webapp.php:44
-msgid "[device] and [icon] are dynamic and used to determine the device and iOS version. Do not remove these from your message."
-msgstr "[device] и [icon] - динамические и используются для определения устройства и версии iOS. Не удаляйте их из своего сообщения."
+msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
+msgstr "[icon] используется, чтобы выводить нужный значок закладки для вашего устройства. Не удаляйте его из сообщения."
 
 #: themes/foundation/modules/webapp/webapp.php:48
 msgid "the notice message will be shown again for visitors"
@@ -2709,10 +3446,18 @@ msgid "iPhone 5 Startup Screen"
 msgstr "Заставка для iPhone 5"
 
 #: themes/foundation/modules/webapp/webapp.php:122
+msgid "iPhone 6 Startup Screen"
+msgstr "Начальный экран iPhone 6"
+
+#: themes/foundation/modules/webapp/webapp.php:140
+msgid "iPhone 6+ Startup Screen"
+msgstr "Начальный экран iPhone 6+"
+
+#: themes/foundation/modules/webapp/webapp.php:159
 msgid "iPad Mini and iPad Startup Screens"
 msgstr "Заставки для iPad mini и iPad"
 
-#: themes/foundation/modules/webapp/webapp.php:148
+#: themes/foundation/modules/webapp/webapp.php:185
 msgid "Retina iPad Startup Screens"
 msgstr "Заставки для iPad с Retina"
 
@@ -2741,159 +3486,163 @@ msgid "Language: "
 msgstr "Язык:"
 
 #: themes/foundation/root-functions.php:139
-msgid "Install this Web-App on your [device]: tap [icon] then \"Add to Home Screen\""
-msgstr "Установите веб-приложение на [device]: нажмите [icon], затем \"Добавить на главный экран\""
+msgid "Install this Web-App on your homescreen: tap [icon] then \"Add to Home Screen\""
+msgstr "Установите это веб-приложение себе на главный экран: коснитесь [icon], затем \"Добавить на главный экран\""
 
-#: themes/foundation/root-functions.php:342
+#: themes/foundation/root-functions.php:345
 msgid "Number of posts in post listings"
 msgstr "Количество записей в списках блога"
 
-#: themes/foundation/root-functions.php:343
+#: themes/foundation/root-functions.php:346
 msgid "Overrides the WordPress Reading settings for \"Blog pages show at most\""
 msgstr "Переопределяет Настройки чтения WordPress для \"Самых просматриваемых страниц блога\""
 
-#: themes/foundation/root-functions.php:350
+#: themes/foundation/root-functions.php:353
 msgid "Excluded categories"
 msgstr "Исключенные категории"
 
-#: themes/foundation/root-functions.php:351
+#: themes/foundation/root-functions.php:354
 msgid "Comma separated by category name"
 msgstr "Разд. запятыми названия категорий"
 
-#: themes/foundation/root-functions.php:358
+#: themes/foundation/root-functions.php:361
 msgid "Excluded tags"
 msgstr "Исключенные теги"
 
-#: themes/foundation/root-functions.php:359
+#: themes/foundation/root-functions.php:362
 msgid "Comma separated by tag name"
 msgstr "Разделен. запятыми названия тегов"
 
 #: themes/foundation/root-functions.php:369
+msgid "Allow nested comment replies from mobile visitors"
+msgstr "Разрешить ответы на вложенные комментарии от мобильных посетителей"
+
+#: themes/foundation/root-functions.php:370
+msgid "Will show a Reply link after each comment"
+msgstr "Будет показана ответная ссылка на каждый комментарий"
+
+#: themes/foundation/root-functions.php:380
 msgid "Blog"
 msgstr "Блог"
 
-#: themes/foundation/root-functions.php:380
+#: themes/foundation/root-functions.php:391
 msgid "Show comments on pages"
 msgstr "Показать комментарии на страницах"
 
-#: themes/foundation/root-functions.php:381
+#: themes/foundation/root-functions.php:392
 msgid "Overrides the WordPress settings for showing comments on pages."
 msgstr "Переопределяет настройки WordPress для показа комментариев на страницах."
 
-#: themes/foundation/root-functions.php:391
-#: themes/foundation/root-functions.php:1119
+#: themes/foundation/root-functions.php:402
+#: themes/foundation/root-functions.php:1136
 msgid "Pages"
 msgstr "Страницы"
 
-#: themes/foundation/root-functions.php:404
+#: themes/foundation/root-functions.php:415
 msgid "Icon Title"
 msgstr "Заголовок пиктограммы"
 
-#: themes/foundation/root-functions.php:410
+#: themes/foundation/root-functions.php:421
 msgid "Icon title"
 msgstr "Подпись значка"
 
-#: themes/foundation/root-functions.php:411
+#: themes/foundation/root-functions.php:422
 msgid "When visitors bookmark your website, this will be the title shown."
 msgstr "Когда посетители добавляют закладку вашего сайта, это будет отображаемым названием."
 
-#: themes/foundation/root-functions.php:422
+#: themes/foundation/root-functions.php:433
 msgid "Android"
 msgstr "Android"
 
-#: themes/foundation/root-functions.php:440
+#: themes/foundation/root-functions.php:451
 msgid "iPhone & iPod touch"
 msgstr "iPhone и iPod touch"
 
-#: themes/foundation/root-functions.php:476
+#: themes/foundation/root-functions.php:487
 msgid "Theme Colors"
 msgstr "Цвета темы"
 
-#: themes/foundation/root-functions.php:486
-msgid "Site Logo"
-msgstr "Эмблема сайта"
-
-#: themes/foundation/root-functions.php:492
+#: themes/foundation/root-functions.php:499
 msgid "(Scaled by themes to fit logo areas as needed)"
 msgstr "(Масштаб в темах по размеру областей эмблемы)"
 
-#: themes/foundation/root-functions.php:505
+#: themes/foundation/root-functions.php:510
+msgid "Site Logo"
+msgstr "Эмблема сайта"
+
+#: themes/foundation/root-functions.php:519
 msgid "Smart App Banner"
 msgstr "Умный баннер приложения"
 
-#: themes/foundation/root-functions.php:511
+#: themes/foundation/root-functions.php:525
 msgid "Enter your app's %sApp Store ID%s"
 msgstr "Введите %sИД в App Store%s приложения"
 
-#: themes/foundation/root-functions.php:512
+#: themes/foundation/root-functions.php:526
 msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
 msgstr "Найдите уникальный идентификатор своего приложения от создателя ссылок ITunes: ищите свое приложение. В найденной ссылке ИД вашего приложения - девятизначный номер между ид. и ?mt. Например, ИД Angry Birds - 343200656."
 
-#: themes/foundation/root-functions.php:524
+#: themes/foundation/root-functions.php:538
 msgid "Theme Footer"
 msgstr "Примечание темы"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "Custom footer content (HTML is allowed)"
 msgstr "Содержимое польз. примечания (HTML разрешен)"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "You can add custom footer content that will be displayed below the switch link."
 msgstr "Вы можете добавить примечание, которое будет отображаться под ссылкой-переключателем."
 
-#: themes/foundation/root-functions.php:905
+#: themes/foundation/root-functions.php:914
 msgid "search results for '%s'"
 msgstr "найдено '%s'"
 
-#: themes/foundation/root-functions.php:907
+#: themes/foundation/root-functions.php:916
 msgid "%sCategories &rsaquo;%s %s"
 msgstr "%sКатегории &rsaquo;%s %s"
 
-#: themes/foundation/root-functions.php:909
+#: themes/foundation/root-functions.php:918
 msgid "Tags &rsaquo; %s"
 msgstr "Теги &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:911
-#: themes/foundation/root-functions.php:913
-#: themes/foundation/root-functions.php:915
+#: themes/foundation/root-functions.php:920
+#: themes/foundation/root-functions.php:922
+#: themes/foundation/root-functions.php:924
 msgid "Archives &rsaquo; %s"
 msgstr "Архивы &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:930
+#: themes/foundation/root-functions.php:939
 msgid "Load more from this category"
 msgstr "Загрузить еще из этой категории"
 
-#: themes/foundation/root-functions.php:932
+#: themes/foundation/root-functions.php:941
 msgid "Load more tagged like this"
 msgstr "Загрузить еще помеченные так же"
 
-#: themes/foundation/root-functions.php:934
+#: themes/foundation/root-functions.php:943
 msgid "Load more from this day"
 msgstr "Загрузить еще с этого дня"
 
-#: themes/foundation/root-functions.php:936
+#: themes/foundation/root-functions.php:945
 msgid "Load more from this month"
 msgstr "Загрузить еще с этого месяца"
 
-#: themes/foundation/root-functions.php:938
+#: themes/foundation/root-functions.php:947
 msgid "Load more from this year"
 msgstr "Загрузить еще с этого года"
 
-#: themes/foundation/root-functions.php:940
+#: themes/foundation/root-functions.php:949
 msgid "Load more in this section"
 msgstr "Загрузить еще в этом разделе"
 
-#: themes/foundation/root-functions.php:942
+#: themes/foundation/root-functions.php:951
 msgid "Load more entries"
 msgstr "Загрузить еще записи"
 
-#: themes/foundation/root-functions.php:1068
+#: themes/foundation/root-functions.php:1085
 msgid "Post"
 msgstr "Запись"
-
-#: themes/foundation/root-functions.php:1070
-msgid "Page"
-msgstr "Страница"
 
 #. Plugin Name of the plugin/theme
 msgid "WPtouch Pro"

@@ -26,6 +26,7 @@ require_once "service/apiUtils.php";
  * @author Chirag Shah <chirags@google.com>
  *
  */
+if( !class_exists( 'apiOAuth2' ) ) {
 class apiOAuth2 extends apiAuth {
   public $clientId;
   public $clientSecret;
@@ -383,4 +384,5 @@ class apiOAuth2 extends apiAuth {
     // All good.
     return new apiLoginTicket($envelope, $payload);
   }
+}
 }

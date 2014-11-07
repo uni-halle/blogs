@@ -1,6 +1,6 @@
 <?php
 
-define( 'BNC_API_VERSION', '4.0' );
+define( 'BNC_API_VERSION', '4.1' );
 define( 'BNC_API_URL', 'http://api.wptouch.com/v/' . BNC_API_VERSION );
 define( 'BNC_API_TIMEOUT', 30 );
 

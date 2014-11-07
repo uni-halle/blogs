@@ -20,6 +20,7 @@
  *
  * @author Brian Eaton <beaton@google.com>
  */
+if( !class_exists( 'apiPemVerifier' ) ) {
 class apiPemVerifier extends apiVerifier {
   private $publicKey;
 
@@ -58,4 +59,5 @@ class apiPemVerifier extends apiVerifier {
     }
     return $status === 1;
   }
+}
 }

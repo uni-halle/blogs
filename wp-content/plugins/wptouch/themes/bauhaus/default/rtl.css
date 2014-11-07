@@ -70,9 +70,9 @@ body {
 }
 
 .loop-link .comments:after {
-	content:"\f075";
+	content:"\e812";
 	display: block;
-	font: 30px 'FontAwesome', sans-serif;
+	font: 30px 'fontello', sans-serif;
 	position: absolute;
 	left: 50%;
 	margin-left: -15px;

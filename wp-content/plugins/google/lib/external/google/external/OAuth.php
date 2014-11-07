@@ -2,10 +2,13 @@
 
 /* Generic exception class
  */
+if ( !class_exists( 'apiClientOAuthException' ) ) { 
 class apiClientOAuthException extends Exception {
   // pass
 }
+}
 
+if ( !class_exists( 'apiClientOAuthConsumer' ) ) { 
 class apiClientOAuthConsumer {
   public $key;
   public $secret;
@@ -16,7 +19,9 @@ class apiClientOAuthConsumer {
     $this->callback_url = $callback_url;
   }
 }
+}
 
+if ( !class_exists( 'apiClientOAuthToken' ) ) { 
 class apiClientOAuthToken {
   // access tokens and request tokens
   public $key;
@@ -44,14 +49,19 @@ class apiClientOAuthToken {
     return $this->to_string();
   }
 }
+}
 
+
+if ( !class_exists( 'apiClientOAuthSignatureMethod' ) ) { 
 class apiClientOAuthSignatureMethod {
   public function check_signature(&$request, $consumer, $token, $signature) {
     $built = $this->build_signature($request, $consumer, $token);
     return $built == $signature;
   }
 }
+}
 
+if ( !class_exists( 'apiClientOAuthSignatureMethod_HMAC_SHA1' ) ) { 
 class apiClientOAuthSignatureMethod_HMAC_SHA1 extends apiClientOAuthSignatureMethod {
   function get_name() {
     return "HMAC-SHA1";
@@ -72,7 +82,9 @@ class apiClientOAuthSignatureMethod_HMAC_SHA1 extends apiClientOAuthSignatureMet
     return base64_encode( hash_hmac('sha1', $base_string, $key, true));
   }
 }
+}
 
+if ( !class_exists( 'apiClientOAuthSignatureMethod_RSA_SHA1' ) ) { 
 class apiClientOAuthSignatureMethod_RSA_SHA1 extends apiClientOAuthSignatureMethod {
   public function get_name() {
     return "RSA-SHA1";
@@ -142,7 +154,9 @@ class apiClientOAuthSignatureMethod_RSA_SHA1 extends apiClientOAuthSignatureMeth
     return $ok == 1;
   }
 }
+}
 
+if ( !class_exists( 'apiClientOAuthRequest' ) ) { 
 class apiClientOAuthRequest {
   private $parameters;
   private $http_method;
@@ -448,7 +462,9 @@ if(isset($params['title']) && isset($params['title-exact'])) {
     return $out;
   }
 }
+}
 
+if ( !class_exists( 'apiClientOAuthDataStore' ) ) { 
 class apiClientOAuthDataStore {
   function lookup_consumer($consumer_key) {
     // implement me
@@ -474,7 +490,9 @@ class apiClientOAuthDataStore {
   }
 
 }
+}
 
+if ( !class_exists( 'apiClientOAuthUtil' ) ) { 
 class apiClientOAuthUtil {
   public static function urlencodeRFC3986($string) {
     return str_replace('%7E', '~', rawurlencode($string));
@@ -483,4 +501,5 @@ class apiClientOAuthUtil {
   public static function urldecodeRFC3986($string) {
     return rawurldecode($string);
   }
+}
 }

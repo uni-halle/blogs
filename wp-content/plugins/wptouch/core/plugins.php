@@ -1,4 +1,15 @@
 <?php
+function wptouch_return_false() {
+	return false;
+}
+
+function wptouch_remove_jetpack_related() {
+	if ( class_exists( 'Jetpack_RelatedPosts' ) )
+	{
+		$jprp = Jetpack_RelatedPosts::init();
+		remove_filter( 'the_content', array( $jprp, 'filter_add_target_to_dom' ), 40 );
+	}
+}
 
 function wptouch_plugins_generate_hook_list( $wptouch_pro, $settings ) {
 	require_once( WPTOUCH_DIR . '/core/file-operations.php' );
@@ -110,7 +121,6 @@ function wptouch_plugins_generate_hook_list( $wptouch_pro, $settings ) {
 	}
 
 	$wptouch_pro->plugin_hooks = apply_filters( 'wptouch_plugin_exclusion_list', $final_hook_list );
-
 	@ksort( $wptouch_pro->plugin_hooks );
 	$settings->plugin_hooks = $wptouch_pro->plugin_hooks;
 
@@ -118,12 +128,30 @@ function wptouch_plugins_generate_hook_list( $wptouch_pro, $settings ) {
 }
 
 function wptouch_plugins_disable( $wptouch_pro, $settings ) {
+
 	foreach( $settings->plugin_hooks as $name => $hook_info ) {
 		if ( $name == 'ignore' ) {
 			continue;
 		}
 
 		if ( isset( $settings->enabled_plugins[ $name ] ) && !$settings->enabled_plugins[ $name ]  ) {
+			if ( $name == 'jetpack' ) {
+				// Likes
+				remove_filter( 'the_content', array( 'Jetpack_Likes', 'post_likes' ), 30, 1 );
+				remove_filter( 'post_flair', array( 'Jetpack_Likes', 'post_likes' ), 30, 1 );
+				remove_filter( 'wp_footer', array( 'Jetpack_Likes', 'likes_master' ) );
+				remove_action( 'init', array( 'Jetpack_Likes', 'action_init' ) );
+
+				// Sharing
+				remove_filter( 'the_content', 'sharing_display', 19 );
+				remove_filter( 'the_excerpt', 'sharing_display', 19 );
+				add_filter( 'option_sharedaddy_disable_resources', 'wptouch_return_false' );
+				add_filter( 'sharing_show', 'wptouch_return_false' );
+
+				// Related Posts
+				add_action( 'wp', 'wptouch_remove_jetpack_related' );
+			}
+
 			if ( isset( $hook_info->filters ) && count( $hook_info->filters ) ) {
 				foreach( $hook_info->filters as $hooks ) {
 					WPTOUCH_DEBUG( WPTOUCH_VERBOSE, "Disable filter [" . $hooks->hook . "] with function [" . $hooks->hook_function . "]" );

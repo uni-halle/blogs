@@ -1,7 +1,7 @@
 # Copyright (C) 2014 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.4\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-06-24 13:23:13+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr "Project-Id-Version: WPtouch Pro 3.5.3\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-10-28 13:14:16+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
@@ -27,9 +27,9 @@ msgstr "BraveNewCode在Twitter上"
 msgid "Plugin Licensing Terms"
 msgstr "外掛程式許可術語"
 
-#: admin/html/notification-center.php:6 core/admin-menu.php:65
-msgid "Upgrade to Pro"
-msgstr "升級到Pro版"
+#: admin/html/notification-center.php:6
+msgid "What's in WPtouch Pro?"
+msgstr "WPtouch Pro有哪些功能？"
 
 #: admin/html/notification-center.php:10
 msgid "Notifications"
@@ -39,11 +39,11 @@ msgstr "通知"
 msgid "No notifications"
 msgstr "無通知"
 
-#: admin/html/plugin-area.php:9
+#: admin/html/plugin-area.php:10
 msgid "A new product version (%s) is available. %sRenew your license%s to download this update and receive additional product support."
 msgstr "有一個新的產品版本(%s)。%s續訂你的許可證%s以下載此更新並獲得額外的產品支援。"
 
-#: admin/html/plugin-area.php:11
+#: admin/html/plugin-area.php:12
 msgid "A new product version (%s) is available. Please %sactivate your license%s, or %spurchase a new license%s to enable updates and full product support."
 msgstr "有一個新的產品版本(%s)可用。請%s激活您的許可證%s或%s購買一個新許可證%s以獲得更新和全面的產品支援。"
 
@@ -51,7 +51,7 @@ msgstr "有一個新的產品版本(%s)可用。請%s激活您的許可證%s或%
 msgid "License Details"
 msgstr "許可證詳情"
 
-#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:235
+#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:262
 msgid "Note"
 msgstr "注意"
 
@@ -77,7 +77,7 @@ msgstr "續訂許可證"
 
 #: admin/pages/custom/wptouch-admin-license.php:25
 #: admin/settings/html/extension-browser-item.php:89
-#: admin/settings/html/theme-browser-item.php:129
+#: admin/settings/html/theme-browser-item.php:136
 msgid "Activate"
 msgstr "激活"
 
@@ -428,6 +428,7 @@ msgstr "預設"
 
 #: admin/pages/wptouch-admin-general-settings.php:411
 #: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
+#: admin/settings/html/checklist.php:13
 #: admin/settings/html/custom-latest-posts.php:4
 #: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
 #: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
@@ -453,7 +454,7 @@ msgstr "WordPress頁面"
 
 #: admin/pages/wptouch-admin-menus.php:28
 #: admin/settings/html/icon_menu_area.php:6
-#: infinity-cache/infinity-cache.php:209
+#: infinity-cache/infinity-cache.php:217
 #: themes/foundation/modules/advertising/advertising.php:29
 #: themes/foundation/modules/media/media.php:59
 msgid "None"
@@ -509,6 +510,7 @@ msgid "Restore Backup File"
 msgstr "恢復備份檔案"
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:7
+#: admin/settings/html/checklist.php:15
 #: admin/settings/html/custom-latest-posts.php:8
 #: admin/settings/html/list.php:20 admin/settings/html/numeric.php:16
 #: admin/settings/html/post_type.php:14 admin/settings/html/radiolist.php:15
@@ -538,7 +540,7 @@ msgstr "尚未上傳任何圖示"
 
 #: admin/settings/html/custom_icon_management.php:12
 #: admin/settings/html/image-upload.php:13
-#: admin/settings/html/theme-browser-item.php:137
+#: admin/settings/html/theme-browser-item.php:144
 msgid "Delete"
 msgstr "刪除"
 
@@ -547,7 +549,7 @@ msgid "Upload Icon"
 msgstr "上傳圖示"
 
 #: admin/settings/html/custom_icon_upload.php:4
-#: admin/settings/html/image-upload.php:15
+#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:598
 msgid "Upload Complete!"
 msgstr "上傳完成!"
 
@@ -564,7 +566,7 @@ msgid "Your Server Configuration"
 msgstr "你的伺服器設定"
 
 #: admin/settings/html/extension-browser-item.php:37
-#: admin/settings/html/theme-browser-item.php:49
+#: admin/settings/html/theme-browser-item.php:56
 msgid "Updating..."
 msgstr "更新中..."
 
@@ -573,14 +575,14 @@ msgid "Upgrade to %s"
 msgstr "升級到%s"
 
 #: admin/settings/html/extension-browser-item.php:39
-#: admin/settings/html/theme-browser-item.php:54
+#: admin/settings/html/theme-browser-item.php:61
 msgid "Download %s Update"
 msgstr "下載%s更新"
 
 #: admin/settings/html/extension-browser-item.php:47
 #: admin/settings/html/installed_icon_sets_ajax.php:8
 #: admin/settings/html/installed_icon_sets_ajax.php:20
-#: admin/settings/html/theme-browser-item.php:68
+#: admin/settings/html/theme-browser-item.php:75
 msgid "by %s"
 msgstr "作者: %s"
 
@@ -589,48 +591,48 @@ msgid "Extension location: %s"
 msgstr "擴展位置: %s"
 
 #: admin/settings/html/extension-browser-item.php:54
-#: admin/settings/html/theme-browser-item.php:76
+#: admin/settings/html/theme-browser-item.php:83
 msgid "Relative to your WordPress wp-content directory."
 msgstr "相對於你的WordPress wp內容目錄。"
 
 #: admin/settings/html/extension-browser-item.php:63
-#: admin/settings/html/theme-browser-item.php:88
+#: admin/settings/html/theme-browser-item.php:95
 msgid "Available in WPtouch Pro"
 msgstr "在WPtouch Pro中提供"
 
 #: admin/settings/html/extension-browser-item.php:67
-#: admin/settings/html/theme-browser-item.php:92
+#: admin/settings/html/theme-browser-item.php:99
 msgid "More Info"
 msgstr "更多資訊"
 
 #: admin/settings/html/extension-browser-item.php:70
-#: admin/settings/html/theme-browser-item.php:96
+#: admin/settings/html/theme-browser-item.php:103
 msgid "Upgrade License"
 msgstr "升級許可證"
 
 #: admin/settings/html/extension-browser-item.php:72
-#: admin/settings/html/theme-browser-item.php:98
+#: admin/settings/html/theme-browser-item.php:105
 msgid "Get License"
 msgstr "獲取許可證"
 
 #: admin/settings/html/extension-browser-item.php:80
-#: admin/settings/html/theme-browser-item.php:111
+#: admin/settings/html/theme-browser-item.php:118
 msgid "Downloading..."
 msgstr "正在下載..."
 
 #: admin/settings/html/extension-browser-item.php:80
 #: admin/settings/html/installed_icon_sets_ajax.php:21
-#: admin/settings/html/theme-browser-item.php:112
+#: admin/settings/html/theme-browser-item.php:119
 msgid "Install"
 msgstr "安裝"
 
 #: admin/settings/html/extension-browser-item.php:82
-#: admin/settings/html/theme-browser-item.php:115
+#: admin/settings/html/theme-browser-item.php:122
 msgid "Download"
 msgstr "下載"
 
 #: admin/settings/html/extension-browser-item.php:92
-#: admin/settings/html/theme-browser-item.php:125
+#: admin/settings/html/theme-browser-item.php:132
 msgid "Setup"
 msgstr "設定"
 
@@ -655,51 +657,53 @@ msgstr "全選"
 msgid "Reset"
 msgstr "重設"
 
-#: admin/settings/html/icon_menu_area.php:9
-#: classic-redux/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:32
-#: classic-redux/default/header-bottom.php:112
-#: prose/default/header-bottom.php:21 scaffold/default/header-bottom.php:13
+#: admin/settings/html/icon_menu_area.php:9 bio/default/header-bottom.php:13
+#: classic-redux/default/header-bottom.php:23
+#: classic-redux/default/header-bottom.php:34
+#: classic-redux/default/header-bottom.php:114
+#: hammock/default/header-bottom.php:40
+#: mobilestore/default/header-bottom.php:56 prose/default/header-bottom.php:21
+#: scaffold/default/header-bottom.php:13
 msgid "Menu"
 msgstr "菜單"
 
-#: admin/settings/html/icon_menu_area.php:19
+#: admin/settings/html/icon_menu_area.php:31
 msgid "Active menus used in this theme."
 msgstr "此主題中使用的活動選單。"
 
-#: admin/settings/html/icon_menu_area.php:23
+#: admin/settings/html/icon_menu_area.php:35
 msgid "Show/Hide"
 msgstr "顯示/隱藏"
 
-#: admin/settings/html/icon_menu_area.php:24
+#: admin/settings/html/icon_menu_area.php:36
 msgid "Menu Item"
 msgstr "選單項目"
 
-#: admin/settings/html/icon_menu_area.php:44
+#: admin/settings/html/icon_menu_area.php:56
 msgid "Icon Set"
 msgstr "圖示集"
 
-#: admin/settings/html/icon_menu_area.php:54
+#: admin/settings/html/icon_menu_area.php:66
 msgid "Drag icons to associate them with menu items"
 msgstr "拖動圖示以將其與選單項目關聯"
 
-#: admin/settings/html/icon_menu_area.php:79
+#: admin/settings/html/icon_menu_area.php:91
 msgid "You don't have any custom icons yet."
 msgstr "你尚無任何自訂圖示。"
 
-#: admin/settings/html/icon_menu_area.php:94
+#: admin/settings/html/icon_menu_area.php:106
 msgid "Default Icon"
 msgstr "預設圖示"
 
-#: admin/settings/html/icon_menu_area.php:95
+#: admin/settings/html/icon_menu_area.php:107
 msgid "applies to all unset icons"
 msgstr "應用於所有未設定圖示"
 
-#: admin/settings/html/icon_menu_area.php:103
+#: admin/settings/html/icon_menu_area.php:115
 msgid "Trash"
 msgstr "垃圾箱"
 
-#: admin/settings/html/icon_menu_area.php:104
+#: admin/settings/html/icon_menu_area.php:116
 msgid "drag icon here to reset"
 msgstr "將圖示拖到這裡以重設"
 
@@ -716,8 +720,8 @@ msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue t
 msgstr "%s%s%s目錄當前不可寫。%s請修復此問題以可安裝額外的圖示集。"
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:1559 core/class-wptouch-pro.php:1560
-#: core/config.php:53
+#: core/class-wptouch-pro.php:1596 core/class-wptouch-pro.php:1597
+#: core/config.php:54
 msgid "Custom Icons"
 msgstr "自訂圖示"
 
@@ -739,7 +743,7 @@ msgid "Pro"
 msgstr "Pro"
 
 #: admin/settings/html/plugin-compat-ajax.php:11
-#: themes/foundation/modules/custom-posts/custom-posts.php:178
+#: themes/foundation/modules/custom-posts/custom-posts.php:153
 msgid "Enable %s"
 msgstr "啟用%s"
 
@@ -767,32 +771,32 @@ msgstr "WordPress頁面"
 msgid "Please paste your encoded settings below and save to restore your settings."
 msgstr "請在下面粘貼你的編碼設定並儲存以恢復你的設定。"
 
-#: admin/settings/html/theme-browser-item.php:6
 #: admin/settings/html/theme-browser-item.php:10
+#: admin/settings/html/theme-browser-item.php:16
 msgid "Click to view screenshots"
 msgstr "按一下檢視螢幕截取畫面"
 
-#: admin/settings/html/theme-browser-item.php:51
+#: admin/settings/html/theme-browser-item.php:58
 msgid "Update to %s"
 msgstr "更新到%s"
 
-#: admin/settings/html/theme-browser-item.php:63
+#: admin/settings/html/theme-browser-item.php:70
 msgid "This theme supports %s devices"
 msgstr "此主題支援%s裝置"
 
-#: admin/settings/html/theme-browser-item.php:75
+#: admin/settings/html/theme-browser-item.php:82
 msgid "Theme location: %s"
 msgstr "主題位置: %s"
 
-#: admin/settings/html/theme-browser-item.php:103
+#: admin/settings/html/theme-browser-item.php:110
 msgid "Buy Now"
 msgstr "立即購買"
 
-#: admin/settings/html/theme-browser-item.php:133
+#: admin/settings/html/theme-browser-item.php:140
 msgid "Copy"
 msgstr "複製"
 
-#: admin/settings/html/theme-browser.php:14
+#: admin/settings/html/theme-browser.php:22
 msgid "Loading Cloud Themes"
 msgstr "正在載入雲主題"
 
@@ -816,60 +820,35 @@ msgstr "看看Pro版擴展"
 msgid "Look at Pro Features"
 msgstr "看看Pro版功能"
 
-#: admin/settings/html/touchboard.php:14
+#: admin/settings/html/touchboard.php:16
 msgid "Product Support"
 msgstr "產品支援"
 
-#: admin/settings/html/touchboard.php:16
+#: admin/settings/html/touchboard.php:17
 msgid "Product Knowledgebase"
 msgstr "產品知識庫"
 
-#: admin/settings/html/touchboard.php:17
+#: admin/settings/html/touchboard.php:18
 msgid "Manage Account"
 msgstr "管理帳戶"
 
-#: admin/settings/html/touchboard.php:18
+#: admin/settings/html/touchboard.php:19
 msgid "Manage License"
 msgstr "管理許可證"
 
-#: admin/settings/html/touchboard.php:20
+#: admin/settings/html/touchboard.php:21
 msgid "WPtouch User Guide"
 msgstr "WPtouch使用者指南"
 
-#: admin/settings/html/touchboard.php:27
+#: admin/settings/html/touchboard.php:28
 msgid "WPtouch News"
 msgstr "WPtouch新聞"
 
-#: admin/settings/html/touchboard.php:28
+#: admin/settings/html/touchboard.php:29
 msgid "Read More"
 msgstr "閱讀更多"
 
-#: admin/settings/html/touchboard.php:45
-msgid "What's New in %s"
-msgstr "%s新功能"
-
-#: admin/settings/html/touchboard.php:49 admin/settings/html/touchboard.php:51
-#: core/admin-menu.php:60
-msgid "License"
-msgstr "許可證"
-
-#: admin/settings/html/touchboard.php:49
-msgid "Unlicensed"
-msgstr "無許可證"
-
-#: admin/settings/html/touchboard.php:49 core/class-wptouch-pro.php:591
-msgid "Offline"
-msgstr "離線"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Active"
-msgstr "活動"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Online"
-msgstr "線上"
-
-#: admin/settings/html/touchboard.php:61
+#: admin/settings/html/touchboard.php:47
 msgid "%s Change Log"
 msgstr "%s更改記錄檔"
 
@@ -882,24 +861,26 @@ msgstr "當以下使用者代理或使用者代理組合匹配時，WPtouch Pro�
 msgid "None (Use WordPress Settings)"
 msgstr "無(使用WordPress設定)"
 
-#: bauhaus/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:76
+#: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
+#: classic-redux/default/header-bottom.php:55
+#: hammock/default/header-bottom.php:82 scaffold/default/header-bottom.php:35
+#: simple/default/header-bottom.php:26
+msgid "Logout"
+msgstr "登出"
+
+#: bauhaus/default/header-bottom.php:48 bio/default/header-bottom.php:24
+#: classic-redux/default/header-bottom.php:78
 #: scaffold/default/header-bottom.php:24
 msgid "Search this website"
 msgstr "搜尋此網站"
 
-#: bauhaus/default/header-bottom.php:22
-#: classic-redux/default/header-bottom.php:46
-#: classic-redux/default/header-bottom.php:78
+#: bauhaus/default/header-bottom.php:49 bio/default/header-bottom.php:14
+#: bio/default/header-bottom.php:25 classic-redux/default/header-bottom.php:48
+#: classic-redux/default/header-bottom.php:80
+#: mobilestore/default/header-bottom.php:80
 #: scaffold/default/header-bottom.php:14 scaffold/default/header-bottom.php:25
 msgid "Search"
 msgstr "搜尋"
-
-#: bauhaus/default/header-bottom.php:40 bauhaus/default/header-bottom.php:42
-#: classic-redux/default/header-bottom.php:53
-#: scaffold/default/header-bottom.php:35 simple/default/header-bottom.php:24
-msgid "Logout"
-msgstr "登出"
 
 #: bauhaus/default/nav-bar.php:6 cms/default/nav-bar.php:6
 #: themes/foundation/default/nav-bar.php:6
@@ -911,9 +892,15 @@ msgstr "前一篇文章"
 msgid "next post"
 msgstr "下一篇文章"
 
-#: bauhaus/default/post-loop.php:22 classic-redux/default/post-loop.php:24
+#: bauhaus/default/post-loop.php:22 bio/default/post-loop.php:19
+#: classic-redux/default/post-loop.php:24
 msgid "by"
 msgstr "作者:"
+
+#: bauhaus/default/related-posts.php:4
+#: themes/foundation/default/related-posts.php:4
+msgid "Related"
+msgstr "相關"
 
 #: bauhaus/default/search.php:6 classic-redux/default/search.php:5
 #: themes/foundation/default/search.php:6
@@ -929,198 +916,242 @@ msgid "No results found"
 msgstr "沒有發現結果"
 
 #: bauhaus/default/search.php:46 classic-redux/default/search.php:47
-#: themes/foundation/default/search.php:45
+#: themes/foundation/default/search.php:43
 msgid "Load more %s results"
 msgstr "載入%s個更多結果"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "no comments"
 msgstr "沒有評論"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "1 comment"
 msgstr "1條評論"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "% comments"
 msgstr "%條評論"
 
-#: bauhaus/default/single.php:46 classic-redux/default/header-bottom.php:35
-#: classic-redux/default/header-bottom.php:61
+#: bauhaus/default/single.php:36 classic-redux/default/header-bottom.php:37
+#: classic-redux/default/header-bottom.php:63
 msgid "Categories"
 msgstr "分類"
 
-#: bauhaus/default/single.php:49 classic-redux/default/header-bottom.php:39
-#: classic-redux/default/header-bottom.php:68
+#: bauhaus/default/single.php:39 classic-redux/default/header-bottom.php:41
+#: classic-redux/default/header-bottom.php:70
 msgid "Tags"
 msgstr "標籤"
 
-#: bauhaus/root-functions.php:122 classic-redux/root-functions.php:98
+#: bauhaus/root-functions.php:126 classic-redux/root-functions.php:98
 msgid "Header Menu"
 msgstr "標題選單"
 
-#: bauhaus/root-functions.php:124 classic-redux/root-functions.php:100
-#: cms/root-functions.php:125 cms/root-functions.php:134
-#: open/root-functions.php:304 prose/root-functions.php:191
-#: scaffold/root-functions.php:77 simple/root-functions.php:60
-#: simple/root-functions.php:71
+#: bauhaus/root-functions.php:128 bio/root-functions.php:89
+#: classic-redux/root-functions.php:100 cms/root-functions.php:125
+#: cms/root-functions.php:134 hammock/root-functions.php:168
+#: mobilestore/root-functions.php:188 mobilestore/root-functions.php:200
+#: open/root-functions.php:350 prose/root-functions.php:195
+#: scaffold/root-functions.php:77 simple/root-functions.php:61
+#: simple/root-functions.php:72
 msgid "Choose a menu"
 msgstr "選擇選單"
 
-#: bauhaus/root-functions.php:125
+#: bauhaus/root-functions.php:129
 msgid "Main menu selection"
 msgstr "主選單選擇"
 
-#: bauhaus/root-functions.php:132 classic-redux/root-functions.php:108
-#: cms/root-functions.php:141 open/root-functions.php:312
-#: prose/root-functions.php:199 scaffold/root-functions.php:85
-#: simple/root-functions.php:79
+#: bauhaus/root-functions.php:136 bio/root-functions.php:97
+#: classic-redux/root-functions.php:108 cms/root-functions.php:141
+#: hammock/root-functions.php:176 open/root-functions.php:358
+#: prose/root-functions.php:203 scaffold/root-functions.php:85
+#: simple/root-functions.php:80
 msgid "Theme background"
 msgstr "主題背景"
 
-#: bauhaus/root-functions.php:133
+#: bauhaus/root-functions.php:137
 msgid "Header & Menu"
 msgstr "標題和選單"
 
-#: bauhaus/root-functions.php:134 classic-redux/root-functions.php:109
-#: cms/root-functions.php:142 open/root-functions.php:313
-#: prose/root-functions.php:201 scaffold/root-functions.php:86
-#: simple/root-functions.php:80
+#: bauhaus/root-functions.php:138 bio/root-functions.php:98
+#: classic-redux/root-functions.php:109 cms/root-functions.php:142
+#: hammock/root-functions.php:178 mobilestore/root-functions.php:232
+#: open/root-functions.php:359 prose/root-functions.php:205
+#: scaffold/root-functions.php:86 simple/root-functions.php:81
 msgid "Links"
 msgstr "連結"
 
-#: bauhaus/root-functions.php:135
+#: bauhaus/root-functions.php:139
 msgid "Post/Page Headers"
 msgstr "文章/頁面標頭"
 
-#: bauhaus/root-functions.php:245
+#: bauhaus/root-functions.php:255
 msgid "Theme Shapes"
 msgstr "主題形狀"
 
-#: bauhaus/root-functions.php:251
+#: bauhaus/root-functions.php:261
 msgid "Theme shape style"
 msgstr "主題形狀樣式"
 
-#: bauhaus/root-functions.php:252
+#: bauhaus/root-functions.php:262
 msgid "Bauhaus will use this shape style throughout its appearance"
 msgstr "Bauhaus將在其整體外觀中使用此形狀樣式"
 
-#: bauhaus/root-functions.php:256
+#: bauhaus/root-functions.php:266
 msgid "Circles"
 msgstr "圓圈"
 
-#: bauhaus/root-functions.php:257
+#: bauhaus/root-functions.php:267
 msgid "Rounded squares"
 msgstr "圓角方塊"
 
-#: bauhaus/root-functions.php:276 classic-redux/root-functions.php:244
+#: bauhaus/root-functions.php:277
+msgid "Menu Style"
+msgstr "選單樣式"
+
+#: bauhaus/root-functions.php:283
+msgid "Menu animation style"
+msgstr "選單動畫樣式"
+
+#: bauhaus/root-functions.php:284
+msgid "Bauhaus can show your menu off-canvas or in a drop-down."
+msgstr "Bauhaus可以將您的選單顯示為off-canvas式或下拉式。"
+
+#: bauhaus/root-functions.php:288
+msgid "Off-canvas"
+msgstr "Off-canvas"
+
+#: bauhaus/root-functions.php:289
+msgid "Drop-down"
+msgstr "下拉式"
+
+#: bauhaus/root-functions.php:307 bio/root-functions.php:131
+#: classic-redux/root-functions.php:244
 msgid "Post thumbnails"
 msgstr "文章縮圖"
 
-#: bauhaus/root-functions.php:281 classic-redux/root-functions.php:249
+#: bauhaus/root-functions.php:312 bio/root-functions.php:136
+#: classic-redux/root-functions.php:249
 msgid "No thumbnails"
 msgstr "無縮圖"
 
-#: bauhaus/root-functions.php:282 classic-redux/root-functions.php:250
+#: bauhaus/root-functions.php:313 bio/root-functions.php:137
+#: classic-redux/root-functions.php:250
 msgid "Blog listing only"
 msgstr "僅部落格列表"
 
-#: bauhaus/root-functions.php:283 classic-redux/root-functions.php:251
+#: bauhaus/root-functions.php:314 bio/root-functions.php:138
+#: classic-redux/root-functions.php:251
 msgid "Blog listing, single posts"
 msgstr "部落格列表，單篇文章"
 
-#: bauhaus/root-functions.php:284
+#: bauhaus/root-functions.php:315 bio/root-functions.php:139
 msgid "Blog listing, single posts & pages"
 msgstr "部落格列表、單個文章和頁面"
 
-#: bauhaus/root-functions.php:285
+#: bauhaus/root-functions.php:316 bio/root-functions.php:140
 msgid "All (blog, single, pages, search & archive)"
 msgstr "所有(部落格、單個文章、頁面、搜尋和存檔)"
 
-#: bauhaus/root-functions.php:293 classic-redux/root-functions.php:260
+#: bauhaus/root-functions.php:324 bio/root-functions.php:148
+#: classic-redux/root-functions.php:260
 msgid "Thumbnail Selection"
 msgstr "縮圖選擇"
 
-#: bauhaus/root-functions.php:298 classic-redux/root-functions.php:265
+#: bauhaus/root-functions.php:329 bio/root-functions.php:153
+#: classic-redux/root-functions.php:265
 msgid "Post featured image"
 msgstr "文章幻燈圖片"
 
-#: bauhaus/root-functions.php:299 classic-redux/root-functions.php:266
+#: bauhaus/root-functions.php:330 bio/root-functions.php:154
+#: classic-redux/root-functions.php:266
 msgid "Post custom field"
 msgstr "文章自訂欄位"
 
-#: bauhaus/root-functions.php:307 classic-redux/root-functions.php:274
+#: bauhaus/root-functions.php:338 bio/root-functions.php:162
+#: classic-redux/root-functions.php:274
 msgid "Thumbnail custom field name"
 msgstr "縮圖自訂欄位名稱"
 
-#: bauhaus/root-functions.php:318 classic-redux/root-functions.php:307
+#: bauhaus/root-functions.php:349 classic-redux/root-functions.php:307
 msgid "Show post categories and tags"
 msgstr "顯示文章分類和標籤"
 
-#: bauhaus/root-functions.php:329 classic-redux/root-functions.php:285
+#: bauhaus/root-functions.php:360 bio/root-functions.php:173
+#: classic-redux/root-functions.php:285
 msgid "Show post date"
 msgstr "顯示文章日期"
 
-#: bauhaus/root-functions.php:340 classic-redux/root-functions.php:296
+#: bauhaus/root-functions.php:371 bio/root-functions.php:184
+#: classic-redux/root-functions.php:296
 msgid "Show post author"
 msgstr "顯示文章作者"
 
-#: bauhaus/root-functions.php:351
+#: bauhaus/root-functions.php:382
 msgid "Show comment bubbles on posts"
 msgstr "在文章上顯示評論泡泡"
 
-#: bauhaus/root-functions.php:362
+#: bauhaus/root-functions.php:393 bio/root-functions.php:195
 msgid "Show search in header"
 msgstr "在標頭中顯示搜尋"
 
-#: bauhaus/root-functions.php:363
+#: bauhaus/root-functions.php:394 bio/root-functions.php:196
 msgid "Adds Search capability in the site header."
 msgstr "在網站標頭中新增搜尋功能。"
 
-#: bauhaus/root-functions.php:373 classic-redux/root-functions.php:318
+#: bauhaus/root-functions.php:404 bio/root-functions.php:206
+#: classic-redux/root-functions.php:318
 msgid "Use infinite scrolling for blog"
 msgstr "部落格使用無限滾動"
 
-#: bauhaus/root-functions.php:390
-msgid "Show featured slider on front page"
-msgstr "在首頁顯示圖片投影"
+#: bio/root-functions.php:87 hammock/root-functions.php:166
+#: mobilestore/root-functions.php:186 open/root-functions.php:348
+#: prose/root-functions.php:193 scaffold/root-functions.php:75
+msgid "Primary Menu"
+msgstr "主選單"
 
-#: classic-redux/default/header-bottom.php:43
-#: classic-redux/default/header-bottom.php:88
+#: bio/root-functions.php:90 hammock/root-functions.php:169
+#: open/root-functions.php:351 scaffold/root-functions.php:78
+msgid "Menus are awesome!"
+msgstr "選單很棒！"
+
+#: classic-redux/default/header-bottom.php:45
+#: classic-redux/default/header-bottom.php:90
 msgid "Tweets"
 msgstr "推文"
 
-#: classic-redux/default/header-bottom.php:51
-#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:22
+#: classic-redux/default/header-bottom.php:53
+#: hammock/default/header-bottom.php:80
+#: mobilestore/default/woocommerce/shop/form-login.php:31
+#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:24
 #: themes/foundation/modules/login/login-html.php:20
 msgid "Login"
 msgstr "登入"
 
-#: classic-redux/default/header-bottom.php:92
+#: classic-redux/default/header-bottom.php:94
 msgid "Follow %s on Twitter"
 msgstr "在Twitter上關注%s"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:60
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "newer posts"
 msgstr "較新的文章"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:56
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:59
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "older posts"
 msgstr "較舊的文章"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "no responses"
 msgstr "無回應"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "1 response"
 msgstr "1個回應"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "% responses"
 msgstr "%個回應"
@@ -1133,7 +1164,7 @@ msgstr "閱讀此文"
 msgid "%s results"
 msgstr "%s結果"
 
-#: classic-redux/default/search.php:38 themes/foundation/default/search.php:36
+#: classic-redux/default/search.php:38 themes/foundation/default/search.php:34
 msgid "No search results found"
 msgstr "沒有發現搜尋結果"
 
@@ -1146,7 +1177,7 @@ msgid "Tablets"
 msgstr "平板電腦"
 
 #: classic-redux/root-functions.php:107 cms/root-functions.php:140
-#: open/root-functions.php:311 simple/root-functions.php:78
+#: open/root-functions.php:357 simple/root-functions.php:79
 msgid "Header background"
 msgstr "標題背景"
 
@@ -1203,7 +1234,7 @@ msgid "Max categories / tags"
 msgstr "最大分類/標籤"
 
 #: classic-redux/root-functions.php:435 cms/root-functions.php:268
-#: simple/root-functions.php:280
+#: simple/root-functions.php:281
 msgid "CSS Effects"
 msgstr "CSS特效"
 
@@ -1212,27 +1243,27 @@ msgid "Add a noise effect to the header and theme background"
 msgstr "新增一個噪音特效到標題和主題背景"
 
 #: classic-redux/root-functions.php:442 cms/root-functions.php:275
-#: simple/root-functions.php:287
+#: simple/root-functions.php:288
 msgid "Will apply the effect overtop of any background image you upload."
 msgstr "會在你上傳的任何背景圖片上應用特效。"
 
-#: cms/default/header-bottom.php:14
+#: cms/default/header-bottom.php:17
 msgid "menu"
 msgstr "選單"
 
-#: cms/default/header-bottom.php:21
+#: cms/default/header-bottom.php:24
 msgid "login"
 msgstr "登入"
 
-#: cms/default/header-bottom.php:25
+#: cms/default/header-bottom.php:28
 msgid "logout"
 msgstr "登出"
 
-#: cms/default/header-bottom.php:38 simple/default/footer-top.php:3
+#: cms/default/header-bottom.php:41 simple/default/footer-top.php:3
 msgid "search this website"
 msgstr "搜尋此網站"
 
-#: cms/default/header-bottom.php:39 simple/default/footer-top.php:5
+#: cms/default/header-bottom.php:42 simple/default/footer-top.php:5
 msgid "search"
 msgstr "搜尋"
 
@@ -1269,11 +1300,11 @@ msgstr "分類滑塊"
 msgid "Enable category slider"
 msgstr "啟用分類滑塊"
 
-#: cms/root-functions.php:231 simple/root-functions.php:261
+#: cms/root-functions.php:231 simple/root-functions.php:262
 msgid "Tiled Background Image"
 msgstr "平鋪背景圖片"
 
-#: cms/root-functions.php:237 simple/root-functions.php:267
+#: cms/root-functions.php:237 simple/root-functions.php:268
 msgid "(Scaled for retina displays)"
 msgstr "(針對視網膜顯示幕縮放)"
 
@@ -1349,7 +1380,15 @@ msgstr "擴展設定"
 msgid "Menus"
 msgstr "選單"
 
-#: core/admin-page-templates.php:16
+#: core/admin-menu.php:60
+msgid "License"
+msgstr "許可證"
+
+#: core/admin-menu.php:65
+msgid "Upgrade to Pro"
+msgstr "升級到Pro版"
+
+#: core/admin-page-templates.php:17
 msgid "Mobile Page Template"
 msgstr "行動頁面範本"
 
@@ -1381,60 +1420,72 @@ msgstr "預覽主題"
 msgid "Reset Settings"
 msgstr "重設設定"
 
-#: core/class-wptouch-pro.php:351
+#: core/class-wptouch-pro.php:354
 msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
 msgstr "從uploads/ wptouch-data目錄自動遷移主旨失敗。請將這些檔案手動移到wp-content/wptouch-data，或%s聯絡支援%s以解決此問題。"
 
-#: core/class-wptouch-pro.php:371
+#: core/class-wptouch-pro.php:374
 msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
 msgstr "無法從雲端安裝你的WPtouch主題。請訪問%s此文章%s獲取更多資訊。"
 
-#: core/class-wptouch-pro.php:375
+#: core/class-wptouch-pro.php:378
 msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
 msgstr "您的伺服器設定阻止WPtouch從雲端安裝您的活動主題。請存取%s此文章%s瞭解關於如何解決的更多資訊。"
 
-#: core/class-wptouch-pro.php:587
+#: core/class-wptouch-pro.php:590
 msgid "Unsupported Browser"
 msgstr "不支援的瀏覽器"
 
-#: core/class-wptouch-pro.php:588
+#: core/class-wptouch-pro.php:591
 msgid "Theme Preview requires Chrome or Safari."
 msgstr "主題預覽需要Chrome或Safari瀏覽器。"
 
-#: core/class-wptouch-pro.php:589
+#: core/class-wptouch-pro.php:592
 msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
 msgstr "這將重設所有WPtouch Pro設定。\n你確定嗎？"
 
-#: core/class-wptouch-pro.php:590
+#: core/class-wptouch-pro.php:593
 msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
 msgstr "這將重設所有WPtouch Pro選單和圖示設定。\n你確定嗎？"
 
-#: core/class-wptouch-pro.php:592
+#: core/class-wptouch-pro.php:594
+msgid "Offline"
+msgstr "離線"
+
+#: core/class-wptouch-pro.php:595
 msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
 msgstr "你似乎已離線。請連線到網路以檢視可用的BraveNewCloud項目。"
 
-#: core/class-wptouch-pro.php:593
+#: core/class-wptouch-pro.php:596
 msgid "The item failed to download for this reason: %reason%"
 msgstr "該項目下載失敗，原因是：%reason%"
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:597
 msgid "You are about to reset your license information. Proceed?"
 msgstr "你將要重設你的許可證資訊。要繼續嗎？"
 
-#: core/class-wptouch-pro.php:1130
+#: core/class-wptouch-pro.php:599
+msgid "Upload Failed: Not a valid image."
+msgstr "上傳失敗: 不是有效的圖片。"
+
+#: core/class-wptouch-pro.php:600
+msgid "Click to view theme demo"
+msgstr "按一下檢視主題演示"
+
+#: core/class-wptouch-pro.php:1167
 #: themes/foundation/modules/webapp/webapp.php:12
 msgid "Settings"
 msgstr "設定"
 
-#: core/class-wptouch-pro.php:1166
+#: core/class-wptouch-pro.php:1203
 msgid "%s Changelog"
 msgstr "%s更改記錄檔"
 
-#: core/class-wptouch-pro.php:2338
+#: core/class-wptouch-pro.php:2377
 msgid "Directory Problem"
 msgstr "目錄問題"
 
-#: core/class-wptouch-pro.php:2339
+#: core/class-wptouch-pro.php:2378
 msgid "One or more required directories could not be created"
 msgstr "無法建立一個或更多需要的目錄"
 
@@ -1486,6 +1537,52 @@ msgstr "此外掛程式在WPtouch Pro中無法正常工作，應在外掛程式�
 #: core/notifications.php:214
 msgid "Icon Installation Issue"
 msgstr "圖示安裝問題"
+
+#: hammock/default/functions.php:10 prose/default/functions.php:33
+msgid "Load more from this collection"
+msgstr "從此收藏載入更多"
+
+#: hammock/default/header-bottom.php:38 prose/default/header-bottom.php:19
+msgid "Collections"
+msgstr "收藏"
+
+#: hammock/default/header-bottom.php:41 prose/default/header-bottom.php:22
+msgid "Options"
+msgstr "選項"
+
+#: hammock/root-functions.php:61 prose/root-functions.php:75
+msgid "Show categories as \"collections\" in menu"
+msgstr "在選單中顯示分類為\"收藏\""
+
+#: hammock/root-functions.php:72 prose/root-functions.php:86
+msgid "Maximum number of items in categories/collections"
+msgstr "分類/收藏中的最大項目數"
+
+#: hammock/root-functions.php:88
+msgid "Animate the featured image on posts"
+msgstr "在文章上動態顯示專題圖片"
+
+#: hammock/root-functions.php:102 open/root-functions.php:119
+#: prose/root-functions.php:105
+msgid "Header Image"
+msgstr "標頭圖片"
+
+#: hammock/root-functions.php:108 prose/root-functions.php:111
+msgid "Displayed behind header on pages and posts without featured images."
+msgstr "在無專題圖片的頁面和文章的標頭後顯示。"
+
+#: hammock/root-functions.php:121 prose/root-functions.php:124
+msgid "Site Intro"
+msgstr "網站介紹"
+
+#: hammock/root-functions.php:127 prose/root-functions.php:130
+msgid "Displayed on post listing page below site name."
+msgstr "在文章列表頁網站名稱下面顯示。"
+
+#: hammock/root-functions.php:177 prose/root-functions.php:204
+#: themes/foundation/root-functions.php:11
+msgid "Branding"
+msgstr "品牌"
 
 #: include/add-ons/wordtwit-pro.php:179
 #: themes/foundation/modules/twitter/twitter.php:42
@@ -1539,88 +1636,88 @@ msgstr "%0.1fms內%d次查詢"
 msgid "Default Template"
 msgstr "預設範本"
 
-#: infinity-cache/infinity-cache.php:65 infinity-cache/infinity-cache.php:233
+#: infinity-cache/infinity-cache.php:66 infinity-cache/infinity-cache.php:241
 msgid "Purge Page Cache"
 msgstr "清除頁面快取"
 
-#: infinity-cache/infinity-cache.php:126
+#: infinity-cache/infinity-cache.php:134
 msgid "Enable Infinity Cache"
 msgstr "啟用無限快取"
 
-#: infinity-cache/infinity-cache.php:134
+#: infinity-cache/infinity-cache.php:142
 msgid "Create cache for desktop users"
 msgstr "為桌面使用者建立快取"
 
-#: infinity-cache/infinity-cache.php:135
+#: infinity-cache/infinity-cache.php:143
 msgid "If you are using another cache plugin such as W3, you can disable this."
 msgstr "如果你使用的是其他快取外掛程式，如W3，則可以禁用。"
 
-#: infinity-cache/infinity-cache.php:156
+#: infinity-cache/infinity-cache.php:164
 msgid "Compress output using GZIP"
 msgstr "使用GZIP壓縮輸出"
 
-#: infinity-cache/infinity-cache.php:166
+#: infinity-cache/infinity-cache.php:174
 msgid "Maximum age of cached content"
 msgstr "快取內容最大時限"
 
-#: infinity-cache/infinity-cache.php:167
+#: infinity-cache/infinity-cache.php:175
 msgid "Each cached page will automatically be regenerated after this period elapses"
 msgstr "此時期過去後，每個快取頁面會自動重新生成。"
 
-#: infinity-cache/infinity-cache.php:171 infinity-cache/infinity-cache.php:172
-#: infinity-cache/infinity-cache.php:173 infinity-cache/infinity-cache.php:174
-#: infinity-cache/infinity-cache.php:175
+#: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
+#: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:183
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d小時"
 msgstr[1] "%d小時"
 
-#: infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:190
 msgid "Remove stale cache file interval"
 msgstr "刪除舊快取檔案間隔"
 
-#: infinity-cache/infinity-cache.php:187
+#: infinity-cache/infinity-cache.php:195
 msgid "Hourly"
 msgstr "每小時"
 
-#: infinity-cache/infinity-cache.php:188
+#: infinity-cache/infinity-cache.php:196
 msgid "Daily"
 msgstr "每天"
 
-#: infinity-cache/infinity-cache.php:195
+#: infinity-cache/infinity-cache.php:203
 msgid "Disable caching for any of these matched URL fragments"
 msgstr "禁用任何這些匹配的URL片段的快取"
 
-#: infinity-cache/infinity-cache.php:196
+#: infinity-cache/infinity-cache.php:204
 msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
 msgstr "每行新增一個URL片段，即%s，以不快取包含每個URL片段的頁面"
 
-#: infinity-cache/infinity-cache.php:204
+#: infinity-cache/infinity-cache.php:212
 msgid "Content Distribution Network Service"
 msgstr "內容分配網路服務"
 
-#: infinity-cache/infinity-cache.php:205
+#: infinity-cache/infinity-cache.php:213
 msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
 msgstr "使用內容分配網路(CDN)可顯著提高網站回應速度。"
 
-#: infinity-cache/infinity-cache.php:210
-#: themes/foundation/modules/login/login-html.php:29
+#: infinity-cache/infinity-cache.php:218
+#: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr "註冊"
 
-#: infinity-cache/infinity-cache.php:218
+#: infinity-cache/infinity-cache.php:226
 msgid "URL %d"
 msgstr "URL %d"
 
-#: infinity-cache/infinity-cache.php:219
+#: infinity-cache/infinity-cache.php:227
 msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
 msgstr "新增你為你的CDN設定的URL，例如http://cdn%d.mysite.com。同時新增你的多網站域。"
 
-#: infinity-cache/infinity-cache.php:241
+#: infinity-cache/infinity-cache.php:249
 msgid "Infinity Cache"
 msgstr "無限快取"
 
-#: infinity-cache/infinity-cache.php:628
+#: infinity-cache/infinity-cache.php:636
 msgid "An example for this URL is: %s%s%s."
 msgstr "此URL的一個例子是: %s%s%s。"
 
@@ -1636,63 +1733,730 @@ msgstr "行動內容"
 msgid "Enable mobile content display"
 msgstr "啟用行動內容顯示"
 
-#: multi-ads/multi-ads.php:179
+#: mobilestore/default/functions.php:114
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Login now"
+msgstr "立即登入"
+
+#: mobilestore/default/functions.php:115
+msgid "Close"
+msgstr "關閉"
+
+#: mobilestore/default/functions.php:116
+msgid "Add Company Name"
+msgstr "新增公司名稱"
+
+#: mobilestore/default/functions.php:117
+msgid "Add Order Notes"
+msgstr "新增訂單備註"
+
+#: mobilestore/default/functions.php:118
+msgid "CVC"
+msgstr "CVC"
+
+#: mobilestore/default/functions.php:178
+msgid "view more products"
+msgstr "檢視更多產品"
+
+#: mobilestore/default/functions.php:196
+msgid "Added to cart"
+msgstr "已新增到購物車"
+
+#: mobilestore/default/header-bottom.php:9
+msgid "Product Categories"
+msgstr "產品分類"
+
+#: mobilestore/default/header-bottom.php:15
+msgid "Recently Viewed"
+msgstr "最近檢視"
+
+#: mobilestore/default/header-bottom.php:20
+msgid "Site Menu"
+msgstr "網站選單"
+
+#: mobilestore/default/header-bottom.php:70
+msgid "Cart"
+msgstr "購物車"
+
+#: mobilestore/default/header-bottom.php:78
+msgid "Search the store"
+msgstr "搜尋商店"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Recent Searches"
+msgstr "最近搜尋"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Clear"
+msgstr "清除"
+
+#: mobilestore/default/header-bottom.php:100
+msgid "Back to blog index"
+msgstr "返回到部落格索引"
+
+#: mobilestore/default/header-bottom.php:114
+msgid "sorting"
+msgstr "排序"
+
+#: mobilestore/default/header-bottom.php:115
+msgid "filter by"
+msgstr "篩選依據"
+
+#: mobilestore/default/post-loop.php:9
+msgid "Read This Post &rsaquo;"
+msgstr "閱讀此文&rsaquo;"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:18
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:33
+msgid "Shipping #%d"
+msgstr "配送#%d"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:20
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:35
+msgid "Shipping and Handling"
+msgstr "配送和處理"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:74
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr "請使用配送費計算器來檢視可用的配送方式。"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:78
+msgid "Please continue to the checkout and enter your full address to see if there are any available shipping methods."
+msgstr "請繼續結帳，然後輸入您的詳細地址，看看是否有任何可用的配送方式。"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:82
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:68
+msgid "Please fill in your details to see available shipping methods."
+msgstr "請填寫您的詳細資訊，以檢視可用的配送方式。"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:91
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:97
+msgid "There doesn&lsquo;t seem to be any available shipping methods. Please double check your address, or contact us if you need any help."
+msgstr "似乎沒有任何可用的配送方式。請仔細檢查您的地址，如果需要任何幫助，請聯絡我們。"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:112
+#: mobilestore/default/woocommerce/cart/totals.php:46
+msgid "Shipping"
+msgstr "配送"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:19
+#: mobilestore/default/woocommerce/cart/totals.php:28
+#: mobilestore/default/woocommerce/checkout/review-order.php:25
+msgid "Cart Subtotal"
+msgstr "購物車小計"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:66
+#: mobilestore/default/woocommerce/cart/totals.php:121
+msgid " (taxes estimated for %s)"
+msgstr "(%s估算稅金)"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:69
+#: mobilestore/default/woocommerce/cart/totals.php:123
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr "注: 配送費及稅金為估算%s，會根據您的帳單和配送資訊在結帳時更新。"
+
+#: mobilestore/default/woocommerce/cart/cart.php:51
+msgid "Available on backorder"
+msgstr "缺貨"
+
+#: mobilestore/default/woocommerce/cart/cart.php:57
+msgid "Remove this item"
+msgstr "移除此項目"
+
+#: mobilestore/default/woocommerce/cart/cart.php:83
+msgid "Update Cart"
+msgstr "更新購物車"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+msgid "Coupon"
+msgstr "優惠券"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:41
+msgid "Coupon code"
+msgstr "優惠券代碼"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:43
+msgid "Apply"
+msgstr "應用"
+
+#: mobilestore/default/woocommerce/cart/cart.php:111
+msgid "Proceed to Checkout"
+msgstr "去結帳"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:24
+msgid "edit cart"
+msgstr "編輯購物車"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:29
+msgid "checkout"
+msgstr "結帳"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:73
+msgid "No products in the cart."
+msgstr "購物車中沒有任何產品。"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:81
+msgid "Subtotal"
+msgstr "小計"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:89
+msgid "Checkout"
+msgstr "結帳"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:32
+msgid "Free"
+msgstr "免費"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
+msgstr "抱歉，您的位置(%s)似乎沒有可用的配送方式。"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "If you require assistance or wish to make alternate arrangements please contact us."
+msgstr "如果您需要幫助或需要其他安排，請與我們聯絡。"
+
+#: mobilestore/default/woocommerce/cart/totals.php:22
+msgid "Cart Totals"
+msgstr "購物車總計"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+msgid "Cart Discount"
+msgstr "購物車折扣"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "[Remove]"
+msgstr "[移除]"
+
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "Order Discount"
+msgstr "訂單折扣"
+
+#: mobilestore/default/woocommerce/cart/totals.php:92
+#: mobilestore/default/woocommerce/checkout/review-order.php:94
+msgid "Order Total"
+msgstr "訂單總計"
+
+#: mobilestore/default/woocommerce/cart/totals.php:105
+msgid "(Includes %s)"
+msgstr "(包含%s)"
+
+#: mobilestore/default/woocommerce/cart/totals.php:135
+msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
+msgstr "沒有找到配送方式；請重新計算您的配送，輸入您的州/縣及郵編以確定您的位置沒有其他可用的配送方式。"
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:20
+msgid "You must be logged in to checkout."
+msgstr "您必須登入才能結帳。"
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Your Order"
+msgstr "您的訂單"
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Edit Items"
+msgstr "編輯項目"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Shopped here before?"
+msgstr "以前在這裡購買過？"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:23
+msgid "Enter your login details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section."
+msgstr "在下面的框中輸入您的登入資訊。如果您是新客戶，請進入計費和配送部分。"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:19
+#: mobilestore/default/woocommerce/checkout/review-order.php:18
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:22
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:27
+#: mobilestore/default/woocommerce/emails/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:23
+#: mobilestore/default/woocommerce/order/order-details.php:20
+msgid "Product"
+msgstr "產品"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:20
+msgid "Totals"
+msgstr "總計"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:52
+msgid "Payment"
+msgstr "付款"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:77
+msgid "Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "抱歉，您的位置似乎沒有可用的支付方式。如果您需要幫助或需要其他安排，請與我們聯絡。"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:87
+msgid "Pay for order"
+msgstr "支付訂單"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:31
+msgid "Ship to a different address?"
+msgstr "配送到其他地址？"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:57
+msgid "Additional Information"
+msgstr "附加資訊"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:19
+#: mobilestore/default/woocommerce/order/order-details.php:21
+msgid "Total"
+msgstr "總計"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:171
+msgid "Please fill in your details above to see available payment methods."
+msgstr "請在上面填寫您的詳細資訊以檢視可用的付款方式。"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:173
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "很抱歉，似乎您所在地區沒有可用的支付方式。如果您需要幫助或需要其他安排，請與我們聯絡。"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr "由於您的瀏覽器不支援JavaScript，或者它被禁用了，請確保在下單前按一下<em>更新總計</em>按鈕。如果不這樣做，您可能會被收取超過上述的金額。"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Update totals"
+msgstr "更新總計"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:194
+msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr "我接受<a href=\"%s\" target=\"_blank\">條款和條件</a>"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:200
+msgid "Place order"
+msgstr "下單"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:13
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
+msgid "You have received an order from %s. Their order is as follows:"
+msgstr "您收到了一個來自%s的訂單。訂單如下:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:17
+msgid "Order: %s"
+msgstr "訂單: %s"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:28
+#: mobilestore/default/woocommerce/emails/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:24
+msgid "Quantity"
+msgstr "數量"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:25
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:29
+#: mobilestore/default/woocommerce/emails/customer-note.php:29
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:25
+msgid "Price"
+msgstr "價格"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:50
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:51
+#: mobilestore/default/woocommerce/emails/customer-note.php:55
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:51
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:38
+msgid "Customer details"
+msgstr "客戶資訊"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:53
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:54
+#: mobilestore/default/woocommerce/emails/customer-note.php:58
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:54
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:49
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:41
+msgid "Email:"
+msgstr "電子郵件:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:56
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:57
+#: mobilestore/default/woocommerce/emails/customer-note.php:61
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:57
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:52
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:44
+msgid "Tel:"
+msgstr "聯絡電話:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
+msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
+msgstr "您好。您最近的%s上的訂單已完成。您的訂單詳情如下，供您參考:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:22
+#: mobilestore/default/woocommerce/emails/customer-note.php:22
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:18
+msgid "Order:"
+msgstr "訂單:"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
+msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
+msgstr "已在%s上為您建立了一個訂單。要支付此訂單，請使用下面的連結: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+msgid "pay"
+msgstr "支付"
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
+msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
+msgstr "感謝您建立了一個%s帳戶。您的使用者名稱是<strong>%s</strong>。"
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:15
+msgid "You can access your account area here: %s."
+msgstr "您可以在這裡存取您的帳戶區域: %s。"
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:13
+msgid "Hello, a note has just been added to your order:"
+msgstr "您好，您的訂單剛新增了一個備註:"
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:18
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:21
+msgid "For your reference, your order details are shown below."
+msgstr "供您參考，您的訂單詳情如下。"
+
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
+msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
+msgstr "您的訂單已收到並且正在處理。您的訂單詳情如下，供您參考:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:13
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "有人請求重設以下帳戶的密碼:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:15
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:15
+msgid "Username: %s"
+msgstr "使用者名稱: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:16
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "如果這是個錯誤，請忽略此郵件，並且什麼都不會發生。"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:17
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:17
+msgid "To reset your password, visit the following address:"
+msgstr "要重設密碼，請訪問以下地址:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:20
+msgid "Click here to reset your password"
+msgstr "按一下這裡重設密碼"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:18
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:12
+msgid "Billing address"
+msgstr "帳單地址"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:28
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:17
+msgid "Shipping address"
+msgstr "配送地址"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:34
+msgid "This product is no longer available"
+msgstr "該產品已不再可用"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:76
+msgid "Download %d:"
+msgstr "下載%d:"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:78
+msgid "Download:"
+msgstr "下載:"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:19
+msgid "Order number: %s"
+msgstr "訂單號: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:21
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:20
+msgid "Order date: %s"
+msgstr "訂單日期: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+msgid "jS F Y"
+msgstr "Y 年 n 月 j 日"
+
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:38
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:46
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:38
+#: mobilestore/default/woocommerce/order/order-details.php:97
+msgid "Your details"
+msgstr "您的詳細資訊"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:28
+msgid "Quantity: %s"
+msgstr "數量: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:31
+msgid "Cost: %s"
+msgstr "價格: %s"
+
+#: mobilestore/default/woocommerce/loop/no-products-found.php:14
+msgid "No products were found matching your search."
+msgstr "沒有找到匹配你的搜尋的產品。"
+
+#: mobilestore/default/woocommerce/loop-shop.php:40
+msgid "No products found which match your selection."
+msgstr "沒有找到匹配你的選擇的產品。"
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:19
+msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
+msgstr "您好<strong>%1$s</strong> (不是%1$s？ <a href=\"%2$s\">登出</a>)。"
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:26
+msgid "<a href=\"%s\">Edit your password and account details</a>."
+msgstr "<a href=\"%s\">編輯您的密碼和帳戶詳細資訊</a>。"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:26
+msgid "Recent Orders"
+msgstr "最近的訂單"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:40
+msgid "%s for %s item"
+msgid_plural "%s for %s items"
+msgstr[0] "%s，%s項目"
+msgstr[1] "%s，%s項目"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:49
+msgid "Pay"
+msgstr "支付"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:56
+#: prose/default/comments.php:48 themes/foundation/default/comments.php:48
+msgid "Cancel"
+msgstr "取消"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:62
+msgid "View"
+msgstr "檢視"
+
+#: mobilestore/default/woocommerce/order/order-details.php:66
+msgid "Download file%s"
+msgstr "下載檔案%s"
+
+#: mobilestore/default/woocommerce/order/order-details.php:101
+msgid "Email"
+msgstr "電子郵件"
+
+#: mobilestore/default/woocommerce/order/order-details.php:102
+msgid "Telephone"
+msgstr "聯絡電話"
+
+#: mobilestore/default/woocommerce/order/order-details.php:118
+msgid "Billing Address"
+msgstr "帳單地址"
+
+#: mobilestore/default/woocommerce/order/order-details.php:122
+#: mobilestore/default/woocommerce/order/order-details.php:137
+msgid "N/A"
+msgstr "不適用"
+
+#: mobilestore/default/woocommerce/order/order-details.php:133
+msgid "Shipping Address"
+msgstr "配送地址"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:63
+msgid "Products tagged &ldquo;"
+msgstr "加標籤產品&ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:91
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:190
+msgid "Search results for &ldquo;"
+msgstr "搜尋結果&ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:148
+msgid "Error 404"
+msgstr "錯誤404"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:194
+msgid "Posts tagged &ldquo;"
+msgstr "加標籤文章&ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:199
+msgid "Author:"
+msgstr "作者:"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:204
+#: themes/foundation/root-functions.php:1087
+msgid "Page"
+msgstr "頁面"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:20
+msgid "Username or email"
+msgstr "使用者名稱或電子郵件"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:24
+msgid "Password"
+msgstr "密碼"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:33
+msgid "Lost Password?"
+msgstr "忘記了密碼？"
+
+#: mobilestore/root-functions.php:6
+msgid "Store"
+msgstr "商店"
+
+#: mobilestore/root-functions.php:189
+msgid "Off-Canvas left menu"
+msgstr "Off-Canvas左選單"
+
+#: mobilestore/root-functions.php:198
+msgid "Footer Menu"
+msgstr "頁尾選單"
+
+#: mobilestore/root-functions.php:201
+msgid "Menu shown in the MobileStore footer"
+msgstr "在MobileStore頁尾顯示的選單"
+
+#: mobilestore/root-functions.php:208
+msgid "Menu & Cart Background"
+msgstr "選單和購物車背景"
+
+#: mobilestore/root-functions.php:211
+msgid "Header & Footer Background"
+msgstr "頁眉和頁尾背景"
+
+#: mobilestore/root-functions.php:263
+msgid "Primary Actions & Purchase Flow"
+msgstr "主要操作和購買流程"
+
+#: mobilestore/root-functions.php:274
+msgid "Highlight Color"
+msgstr "高亮顏色"
+
+#: mobilestore/root-functions.php:390
+msgid "Product Listing"
+msgstr "產品列表"
+
+#: mobilestore/root-functions.php:396
+msgid "Number of products shown per page in product listings"
+msgstr "產品列表中每頁顯示的產品數量"
+
+#: mobilestore/root-functions.php:410
+msgid "Product Filters"
+msgstr "產品篩選"
+
+#: mobilestore/root-functions.php:416
+msgid "Show WooCommerce product filters for"
+msgstr "顯示WooCommerce產品篩選"
+
+#: mobilestore/root-functions.php:431
+msgid "Site Sidebar"
+msgstr "網站側邊欄"
+
+#: mobilestore/root-functions.php:437
+msgid "Show category menu in sidebar"
+msgstr "在側邊欄顯示分類選單"
+
+#: mobilestore/root-functions.php:445
+msgid "Show recently viewed products in sidebar"
+msgstr "在側邊欄顯示最近看過的產品"
+
+#: mobilestore/root-functions.php:523
+msgid "Site logo display size"
+msgstr "網站徽標顯示尺寸"
+
+#: mobilestore/root-functions.php:528
+msgid "Short (default)"
+msgstr "短(預設)"
+
+#: mobilestore/root-functions.php:529
+msgid "Tall (longer vertically for square logos)"
+msgstr "高(方形徽標高更長)"
+
+#: mobilestore/root-functions.php:536
+msgid "Show site description in large header"
+msgstr "以大標題顯示網站介紹"
+
+#: multi-ads/multi-ads.php:228
 msgid "Header Ad"
 msgstr "標頭廣告"
 
-#: multi-ads/multi-ads.php:181
+#: multi-ads/multi-ads.php:230
 msgid "Footer Ad"
 msgstr "頁尾廣告"
 
-#: multi-ads/multi-ads.php:183
+#: multi-ads/multi-ads.php:232
 msgid "Pre-content Ad"
 msgstr "內容前廣告"
 
-#: multi-ads/multi-ads.php:185
+#: multi-ads/multi-ads.php:234
 msgid "Post-content Ad"
 msgstr "內容後廣告"
 
-#: multi-ads/multi-ads.php:206
+#: multi-ads/multi-ads.php:236
+msgid "Mid-content Ad"
+msgstr "內容中間廣告"
+
+#: multi-ads/multi-ads.php:257
 msgid "Enabled"
 msgstr "已啟用"
 
-#: multi-ads/multi-ads.php:214
+#: multi-ads/multi-ads.php:265
 msgid "Perform A/B test with secondary advertising unit"
 msgstr "使用二級廣告單元進行A/B測試"
 
-#: multi-ads/multi-ads.php:222
+#: multi-ads/multi-ads.php:273
 msgid "Primary Advertising Unit"
 msgstr "主要廣告單元"
 
-#: multi-ads/multi-ads.php:223
+#: multi-ads/multi-ads.php:274
 msgid "HTML, CSS and JS are all accepted."
 msgstr "HTML、CSS和JS都接受。"
 
-#: multi-ads/multi-ads.php:230
+#: multi-ads/multi-ads.php:281
 msgid "Secondary Advertising Unit"
 msgstr "二級廣告單元"
 
-#: multi-ads/multi-ads.php:231
+#: multi-ads/multi-ads.php:282
 msgid "If defined, secondary advertising code will be shown 50% of the time."
 msgstr "若定義，二級廣告代碼將顯示50%的時間。"
 
-#: multi-ads/multi-ads.php:238
+#: multi-ads/multi-ads.php:289
 msgid "Display on archive/post listings"
 msgstr "在存檔/文章列表上顯示"
 
-#: multi-ads/multi-ads.php:246
+#: multi-ads/multi-ads.php:297
 msgid "Display on single posts"
 msgstr "在單篇文章上顯示"
 
-#: multi-ads/multi-ads.php:254
+#: multi-ads/multi-ads.php:305
 msgid "Display on static pages"
 msgstr "在靜態頁面上顯示"
 
-#: multi-ads/multi-ads.php:262
+#: multi-ads/multi-ads.php:313
 msgid "Display on taxonomy listings"
 msgstr "在分類列表上顯示"
 
-#: multi-ads/multi-ads.php:269
+#: multi-ads/multi-ads.php:320
 msgid "Display in search results"
 msgstr "在搜尋結果中顯示"
 
@@ -1713,31 +2477,31 @@ msgstr "我們的位置"
 msgid "Our Hours"
 msgstr "工作時間"
 
-#: open/default/hours.php:12 open/root-functions.php:179
+#: open/default/hours.php:12 open/root-functions.php:206
 msgid "Sunday"
 msgstr "星期天"
 
-#: open/default/hours.php:13 open/root-functions.php:187
+#: open/default/hours.php:13 open/root-functions.php:214
 msgid "Monday"
 msgstr "星期一"
 
-#: open/default/hours.php:14 open/root-functions.php:195
+#: open/default/hours.php:14 open/root-functions.php:222
 msgid "Tuesday"
 msgstr "星期二"
 
-#: open/default/hours.php:15 open/root-functions.php:203
+#: open/default/hours.php:15 open/root-functions.php:230
 msgid "Wednesday"
 msgstr "星期三"
 
-#: open/default/hours.php:16 open/root-functions.php:211
+#: open/default/hours.php:16 open/root-functions.php:238
 msgid "Thursday"
 msgstr "星期四"
 
-#: open/default/hours.php:17 open/root-functions.php:219
+#: open/default/hours.php:17 open/root-functions.php:246
 msgid "Friday"
 msgstr "星期五"
 
-#: open/default/hours.php:18 open/root-functions.php:227
+#: open/default/hours.php:18 open/root-functions.php:254
 msgid "Saturday"
 msgstr "星期六"
 
@@ -1745,89 +2509,87 @@ msgstr "星期六"
 msgid "Closed"
 msgstr "停業"
 
-#: open/root-functions.php:73
+#: open/root-functions.php:77
+msgid "Open Homepage Menu"
+msgstr "Open主頁選單"
+
+#: open/root-functions.php:83
+msgid "Show full menu on Open homepage"
+msgstr "在Open主頁上顯示完整選單"
+
+#: open/root-functions.php:84
+msgid "If disabled, only Location & Hours links will be shown"
+msgstr "如果禁用，將僅顯示位置和營業時間連結"
+
+#: open/root-functions.php:100
 msgid "Tagline"
 msgstr "標語"
 
-#: open/root-functions.php:79
+#: open/root-functions.php:106
 msgid "Displayed below your logo on the homepage."
 msgstr "在主頁上的徽標下顯示。"
 
-#: open/root-functions.php:92 prose/root-functions.php:104
-msgid "Header Image"
-msgstr "標頭圖片"
-
-#: open/root-functions.php:98
+#: open/root-functions.php:125
 msgid "Displayed behind header on pages."
 msgstr "在頁面上的標頭後顯示。"
 
-#: open/root-functions.php:111
+#: open/root-functions.php:138
 msgid "Location"
 msgstr "位置"
 
-#: open/root-functions.php:117 simple/root-functions.php:229
+#: open/root-functions.php:144 simple/root-functions.php:230
 msgid "Map address"
 msgstr "地圖地址"
 
-#: open/root-functions.php:118
+#: open/root-functions.php:145
 msgid "Enter an address and a menu item for 'Our Location' will be shown."
 msgstr "輸入一個地址，“我們的位置”選單項將顯示。"
 
-#: open/root-functions.php:130
+#: open/root-functions.php:157
 msgid "Call to Action"
 msgstr "行動呼籲"
 
-#: open/root-functions.php:136
+#: open/root-functions.php:163
 msgid "Show call to action button at bottom of pages"
 msgstr "在頁面底部顯示行動呼籲按鈕"
 
-#: open/root-functions.php:137
+#: open/root-functions.php:164
 msgid "Give visitors a one-click action to follow and increase your conversions."
-msgstr "給訪客提供一個一鍵操作按鈕以追蹤並增加你的轉化率。"
+msgstr "給訪客提供一個一鍵操作以追蹤並增加你的轉化率。"
 
-#: open/root-functions.php:144
+#: open/root-functions.php:171
 msgid "Button Label"
 msgstr "按鈕標籤"
 
-#: open/root-functions.php:152
+#: open/root-functions.php:179
 msgid "Target URL"
 msgstr "目標URL"
 
-#: open/root-functions.php:153
+#: open/root-functions.php:180
 msgid "Prefix your phone number with \"tel:\" to allow one-click phone calls."
 msgstr "在你的電話號碼前新增\"電話:\"首碼以實現一鍵呼叫功能。"
 
-#: open/root-functions.php:165
+#: open/root-functions.php:192
 msgid "Hours"
 msgstr "工作時間"
 
-#: open/root-functions.php:171
+#: open/root-functions.php:198
 msgid "Use built-in Hours feature"
 msgstr "使用內置工作時間功能"
 
-#: open/root-functions.php:172
+#: open/root-functions.php:199
 msgid "Add your hours and the current day's hours will appear on the homepage along with a menu item for 'Our Hours'."
 msgstr "新增你的工作時間，當天的工作時間會出現在主頁上並出現一個“工作時間”選單項。"
 
-#: open/root-functions.php:180
+#: open/root-functions.php:207
 msgid "Will show as closed if left blank."
 msgstr "如果留空白將顯示為已停業。"
 
-#: open/root-functions.php:236
+#: open/root-functions.php:263
 msgid "Let visitors know about holidays, vacations, and other special hours"
 msgstr "告訴訪客節假日、休假等特殊工作時間"
 
-#: open/root-functions.php:302 prose/root-functions.php:189
-#: scaffold/root-functions.php:75
-msgid "Primary Menu"
-msgstr "主選單"
-
-#: open/root-functions.php:305 prose/root-functions.php:192
-#: scaffold/root-functions.php:78
-msgid "Menus are awesome!"
-msgstr "選單很棒！"
-
-#: open/root-functions.php:310
+#: open/root-functions.php:356
 msgid "Main branding colour"
 msgstr "主品牌顏色"
 
@@ -1841,7 +2603,7 @@ msgstr "啟用位置檢測"
 
 #: pro/modules/geolocation/geolocation.php:25
 msgid "Address on which to center the geofence"
-msgstr "集中地理圍欄的地址"
+msgstr "用於集中地理圍欄的地址"
 
 #: pro/modules/geolocation/geolocation.php:33
 msgid "Geofence Radius (in km)"
@@ -1927,105 +2689,132 @@ msgstr "WPtouch Pro 3不能與WPtouch 2.x共存。請先在WordPress外掛程式
 msgid "Unknown error"
 msgstr "未知錯誤"
 
-#: prose/default/functions.php:10
-msgid "Load more from this collection"
-msgstr "從此收藏載入更多"
+#: prose/default/comments.php:20 prose/default/comments.php:26
+#: themes/foundation/default/comments.php:20
+#: themes/foundation/default/comments.php:26
+msgid "Load More Comments&hellip;"
+msgstr "載入更多評論&hellip;"
 
-#: prose/default/functions.php:11
+#: prose/default/comments.php:38 themes/foundation/default/comments.php:38
+msgid "Comments are closed"
+msgstr "評論已關閉"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply"
+msgstr "留言"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply to %s"
+msgstr "給%s留言"
+
+#: prose/default/comments.php:54 themes/foundation/default/comments.php:54
+msgid "You must be %slogged in%s to post a comment."
+msgstr "你必須%s登入%s才能發表評論。"
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Logged in as"
+msgstr "已登入為"
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Log out"
+msgstr "登出"
+
+#: prose/default/comments.php:65 themes/foundation/default/comments.php:65
+msgid "Name"
+msgstr "名字"
+
+#: prose/default/comments.php:67 themes/foundation/default/comments.php:67
+#: themes/foundation/modules/social-links/social-links.php:94
+msgid "E-Mail"
+msgstr "電子郵件"
+
+#: prose/default/comments.php:69 themes/foundation/default/comments.php:69
+msgid "Website"
+msgstr "網站"
+
+#: prose/default/comments.php:77 themes/foundation/default/comments.php:77
+msgid "Publish"
+msgstr "發佈"
+
+#: prose/default/functions.php:34
 msgid "%d minute"
-msgstr ""
+msgstr "%d分鐘"
 
-#: prose/default/functions.php:12
+#: prose/default/functions.php:35
 msgid "%d minutes"
-msgstr ""
+msgstr "%d分鐘"
 
-#: prose/default/functions.php:13
+#: prose/default/functions.php:36
 msgid "%d minute remaining"
-msgstr ""
+msgstr "還剩%d分鐘"
 
-#: prose/default/functions.php:14
+#: prose/default/functions.php:37
 msgid "%d minutes remaining"
-msgstr ""
+msgstr "還剩%d分鐘"
 
-#: prose/default/functions.php:15
+#: prose/default/functions.php:38
 msgid "Share post"
-msgstr ""
-
-#: prose/default/header-bottom.php:19
-msgid "Collections"
-msgstr ""
-
-#: prose/default/header-bottom.php:22
-msgid "Options"
-msgstr "選項"
+msgstr "分享文章"
 
 #: prose/default/header-bottom.php:43
 msgid "Reading Text Size"
-msgstr ""
+msgstr "閱讀文字大小"
 
 #: prose/default/header-bottom.php:46
 msgid "Small"
-msgstr ""
+msgstr "小"
 
 #: prose/default/header-bottom.php:49
 msgid "Medium"
-msgstr ""
+msgstr "中"
 
 #: prose/default/header-bottom.php:52
 msgid "Large"
-msgstr ""
+msgstr "大"
 
 #: prose/default/header-bottom.php:55
 msgid "Text Sample"
-msgstr ""
+msgstr "文字示例"
+
+#: prose/default/header-bottom.php:101
+msgid "Collection"
+msgstr "收藏"
 
 #: prose/default/header-bottom.php:103
-msgid "Collection"
-msgstr ""
-
-#: prose/default/header-bottom.php:105
 msgid "Posts Tagged"
-msgstr ""
+msgstr "加標籤文章"
 
 #: prose/default/related-posts.php:8
 msgid "Read Next"
-msgstr ""
+msgstr "閱讀下一篇"
 
-#: prose/root-functions.php:63
-msgid "Show categories as \"collections\" in menu"
-msgstr ""
+#: prose/default/single.php:31
+msgid "Discuss this post"
+msgstr "討論此文章"
 
-#: prose/root-functions.php:74
-msgid "Maximum number of items in categories/collections"
-msgstr ""
+#: prose/default/single.php:33
+msgid "View discussion"
+msgstr "檢視討論"
 
-#: prose/root-functions.php:90
-msgid "Animate the featured image on posts"
-msgstr ""
+#: prose/root-functions.php:64
+msgid "Show comments when reading posts"
+msgstr "閱讀文章時顯示評論"
 
-#: prose/root-functions.php:110
-msgid "Displayed behind header on pages and posts without featured images."
-msgstr ""
+#: prose/root-functions.php:65
+msgid "Comment form will not appear for posts with comments turned off."
+msgstr "關閉評論的文章不會顯示評論表。"
 
-#: prose/root-functions.php:123
-msgid "Site Intro"
-msgstr ""
-
-#: prose/root-functions.php:129
-msgid "Displayed on post listing page below site name."
-msgstr ""
-
-#: prose/root-functions.php:142
+#: prose/root-functions.php:143
 msgid "Drop Caps"
-msgstr ""
+msgstr "首字下沉"
 
-#: prose/root-functions.php:148
+#: prose/root-functions.php:149
 msgid "Use a drop cap at the start of each blog post."
-msgstr ""
+msgstr "在每篇部落格文章的開頭使用首字下沉。"
 
-#: prose/root-functions.php:200 themes/foundation/root-functions.php:11
-msgid "Branding"
-msgstr "品牌"
+#: prose/root-functions.php:196
+msgid "Off-canvas menu for Prose"
+msgstr "Prose Off-canvas選單"
 
 #: responsive-images/responsive-images.php:92
 msgid "Responsive Images"
@@ -2055,63 +2844,63 @@ msgstr "優化品質"
 msgid "Call Us"
 msgstr "致電我們"
 
-#: simple/default/header-bottom.php:15
+#: simple/default/header-bottom.php:17
 msgid "Toggle Menu"
 msgstr "切換選單"
 
-#: simple/root-functions.php:58
+#: simple/root-functions.php:59
 msgid "Site Menu (Pulldown)"
 msgstr "網站選單(下拉)"
 
-#: simple/root-functions.php:61
+#: simple/root-functions.php:62
 msgid "Pull-down menu at top of pages"
 msgstr "頁面頂部的下拉式選單"
 
-#: simple/root-functions.php:69
+#: simple/root-functions.php:70
 msgid "Front Page Menu"
 msgstr "首頁選單"
 
-#: simple/root-functions.php:72
+#: simple/root-functions.php:73
 msgid "Displayed below front page menu and content"
 msgstr "在首頁選單和內容下面顯示"
 
-#: simple/root-functions.php:190
+#: simple/root-functions.php:191
 msgid "Enable search on blog pages"
 msgstr "在部落格頁面上啟用搜尋"
 
-#: simple/root-functions.php:204
+#: simple/root-functions.php:205
 msgid "Homepage Call Us"
 msgstr "主頁致電我們"
 
-#: simple/root-functions.php:210
+#: simple/root-functions.php:211
 msgid "Phone number"
 msgstr "電話號碼"
 
-#: simple/root-functions.php:211
+#: simple/root-functions.php:212
 msgid "Enter a phone number and a homepage menu item for 'call us' will be shown."
 msgstr "輸入一個電話號碼和一個主頁選單項目以顯示“致電我們”。"
 
-#: simple/root-functions.php:223
+#: simple/root-functions.php:224
 msgid "Homepage Location"
 msgstr "主頁位置"
 
-#: simple/root-functions.php:230
+#: simple/root-functions.php:231
 msgid "Enter an address and a homepage menu item for 'Our Location' will be shown."
 msgstr "為將顯示的“公司位置”輸入一個地址和主頁選單項目。"
 
-#: simple/root-functions.php:242
+#: simple/root-functions.php:243
 msgid "Front Page Content"
 msgstr "首頁內容"
 
-#: simple/root-functions.php:248
+#: simple/root-functions.php:249
 msgid "Front page alternate content"
 msgstr "首頁替換內容"
 
-#: simple/root-functions.php:249
+#: simple/root-functions.php:250
 msgid "Shows above the front page menu (if enabled), HTML allowed."
 msgstr "在首頁選單上顯示(如啟用)，允許HTML。"
 
-#: simple/root-functions.php:286
+#: simple/root-functions.php:287
 msgid "Add a light noise effect to the drop-down menu and theme background"
 msgstr "新增一個輕噪音特效到下拉選單和主題背景"
 
@@ -2131,56 +2920,6 @@ msgstr "&laquo; 圖庫上一張"
 msgid "next in gallery &raquo;"
 msgstr "圖庫下一張 &raquo;"
 
-#: themes/foundation/default/comments.php:20
-#: themes/foundation/default/comments.php:26
-msgid "Load More Comments&hellip;"
-msgstr "載入更多評論&hellip;"
-
-#: themes/foundation/default/comments.php:38
-msgid "Comments are closed"
-msgstr "評論已關閉"
-
-#: themes/foundation/default/comments.php:48
-msgid "Cancel"
-msgstr "取消"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply"
-msgstr "留言"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply to %s"
-msgstr "給%s留言"
-
-#: themes/foundation/default/comments.php:54
-msgid "You must be %slogged in%s to post a comment."
-msgstr "你必須%s登入%s才能發表評論。"
-
-#: themes/foundation/default/comments.php:61
-msgid "Logged in as"
-msgstr "已登入為"
-
-#: themes/foundation/default/comments.php:61
-msgid "Log out"
-msgstr "登出"
-
-#: themes/foundation/default/comments.php:65
-msgid "Name"
-msgstr "名字"
-
-#: themes/foundation/default/comments.php:67
-#: themes/foundation/modules/social-links/social-links.php:94
-msgid "E-Mail"
-msgstr "電子郵件"
-
-#: themes/foundation/default/comments.php:69
-msgid "Website"
-msgstr "網站"
-
-#: themes/foundation/default/comments.php:77
-msgid "Publish"
-msgstr "發佈"
-
 #: themes/foundation/default/footer.php:10
 msgid "Back to top"
 msgstr "返回頂部"
@@ -2197,13 +2936,9 @@ msgstr "請正確輸入所有欄位以發表評論。"
 msgid "Go back"
 msgstr "返回"
 
-#: themes/foundation/default/one-comment.php:12
+#: themes/foundation/default/one-comment.php:17
 msgid "Your comment is awaiting moderation"
 msgstr "你的評論等待審核"
-
-#: themes/foundation/default/related-posts.php:4
-msgid "Related"
-msgstr "相關"
 
 #: themes/foundation/default/switch-link.php:8
 msgid "mobile"
@@ -2310,116 +3045,116 @@ msgstr "主題預覽"
 msgid "Reload"
 msgstr "重新載入"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:190
+#: themes/foundation/modules/custom-posts/custom-posts.php:165
 msgid "Custom Post Support"
 msgstr "自訂文章支援"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:196
+#: themes/foundation/modules/custom-posts/custom-posts.php:171
 msgid "Enable custom post-type support"
 msgstr "啟用自訂文章類型支援"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:204
+#: themes/foundation/modules/custom-posts/custom-posts.php:179
 msgid "Show custom post taxonomy"
 msgstr "顯示自訂文章分類"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:216
+#: themes/foundation/modules/custom-posts/custom-posts.php:191
 msgid "Custom Post Types"
 msgstr "自訂文章類型"
 
-#: themes/foundation/modules/featured/featured.php:260
+#: themes/foundation/modules/featured/featured.php:265
 msgid "Featured Slider"
 msgstr "圖片投影"
 
-#: themes/foundation/modules/featured/featured.php:266
+#: themes/foundation/modules/featured/featured.php:271
 msgid "Enable featured slider"
 msgstr "啟用圖片投影"
 
-#: themes/foundation/modules/featured/featured.php:267
+#: themes/foundation/modules/featured/featured.php:272
 msgid "Requires at least 2 entries to contain featured images"
 msgstr "需要至少2個項目以包含投影圖片"
 
-#: themes/foundation/modules/featured/featured.php:274
+#: themes/foundation/modules/featured/featured.php:279
 msgid "Maximum number of posts"
 msgstr "最大文章數"
 
-#: themes/foundation/modules/featured/featured.php:279
+#: themes/foundation/modules/featured/featured.php:284
 msgid "3 posts"
 msgstr "3篇"
 
-#: themes/foundation/modules/featured/featured.php:280
+#: themes/foundation/modules/featured/featured.php:285
 msgid "5 posts"
 msgstr "5篇"
 
-#: themes/foundation/modules/featured/featured.php:281
+#: themes/foundation/modules/featured/featured.php:286
 msgid "10 posts"
 msgstr "10篇"
 
-#: themes/foundation/modules/featured/featured.php:287
+#: themes/foundation/modules/featured/featured.php:292
 msgid "Automatically slide"
 msgstr "自動播放投影"
 
-#: themes/foundation/modules/featured/featured.php:295
+#: themes/foundation/modules/featured/featured.php:300
 msgid "Continuously slide"
 msgstr "連續播放"
 
-#: themes/foundation/modules/featured/featured.php:303
+#: themes/foundation/modules/featured/featured.php:308
 msgid "Grayscale images (CSS 3 effect)"
 msgstr "灰度圖片(CSS 3特效)"
 
-#: themes/foundation/modules/featured/featured.php:304
+#: themes/foundation/modules/featured/featured.php:309
 msgid "Featured slider images will be in grayscale for devices that support CSS filters."
 msgstr "對於支援CSS篩選的裝置，圖片投影的圖片將使用灰度。"
 
-#: themes/foundation/modules/featured/featured.php:319
+#: themes/foundation/modules/featured/featured.php:324
 msgid "Featured slider posts also show in listings"
 msgstr "圖片幻燈文章也使用列表顯示"
 
-#: themes/foundation/modules/featured/featured.php:327
+#: themes/foundation/modules/featured/featured.php:332
 msgid "Slide transition speed"
 msgstr "投影片過渡速度"
 
-#: themes/foundation/modules/featured/featured.php:332
+#: themes/foundation/modules/featured/featured.php:337
 msgid "Slow"
 msgstr "緩慢"
 
-#: themes/foundation/modules/featured/featured.php:333
+#: themes/foundation/modules/featured/featured.php:338
 msgid "Normal"
 msgstr "正常"
 
-#: themes/foundation/modules/featured/featured.php:334
+#: themes/foundation/modules/featured/featured.php:339
 msgid "Fast"
 msgstr "快速"
 
-#: themes/foundation/modules/featured/featured.php:345
+#: themes/foundation/modules/featured/featured.php:350
 msgid "Show latest posts"
 msgstr "顯示最新文章"
 
-#: themes/foundation/modules/featured/featured.php:346
+#: themes/foundation/modules/featured/featured.php:351
 msgid "Show posts from a specific tag"
 msgstr "顯示特定標籤的文章"
 
-#: themes/foundation/modules/featured/featured.php:347
+#: themes/foundation/modules/featured/featured.php:352
 msgid "Show posts from a specific category"
 msgstr "顯示特定分類的文章"
 
-#: themes/foundation/modules/featured/featured.php:348
+#: themes/foundation/modules/featured/featured.php:353
 msgid "Show only specific posts or pages"
 msgstr "僅顯示特定文章或頁面"
 
-#: themes/foundation/modules/featured/featured.php:354
+#: themes/foundation/modules/featured/featured.php:359
 msgid "Only this tag"
 msgstr "僅此標籤"
 
-#: themes/foundation/modules/featured/featured.php:355
-#: themes/foundation/modules/featured/featured.php:364
+#: themes/foundation/modules/featured/featured.php:360
+#: themes/foundation/modules/featured/featured.php:369
 msgid "Enter the tag/category slug name"
 msgstr "輸入標籤/分類slug名稱"
 
-#: themes/foundation/modules/featured/featured.php:363
+#: themes/foundation/modules/featured/featured.php:368
 msgid "Only this category"
 msgstr "僅此分類"
 
-#: themes/foundation/modules/featured/featured.php:372
+#: themes/foundation/modules/featured/featured.php:377
 msgid "Comma-separated list of post/page IDs"
 msgstr "以逗號分隔的文章/頁面ID列表"
 
@@ -2447,7 +3182,7 @@ msgstr "記住我"
 msgid "Log In"
 msgstr "登入"
 
-#: themes/foundation/modules/login/login-html.php:30
+#: themes/foundation/modules/login/login-html.php:31
 msgid "Lost password?"
 msgstr "丟失密碼？"
 
@@ -2515,47 +3250,47 @@ msgstr "推文"
 msgid "Mail"
 msgstr "郵件"
 
-#: themes/foundation/modules/sharing/sharing.php:81
+#: themes/foundation/modules/sharing/sharing.php:94
 msgid "Sharing"
 msgstr "分享"
 
-#: themes/foundation/modules/sharing/sharing.php:87
+#: themes/foundation/modules/sharing/sharing.php:100
 msgid "Show sharing links"
 msgstr "顯示分享連結"
 
-#: themes/foundation/modules/sharing/sharing.php:88
+#: themes/foundation/modules/sharing/sharing.php:101
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on single posts."
 msgstr "將在單篇文章上顯示Facebook、Twitter、Google+及電子郵件按鈕。"
 
-#: themes/foundation/modules/sharing/sharing.php:95
+#: themes/foundation/modules/sharing/sharing.php:108
 msgid "Show sharing links on pages"
 msgstr "在頁面上顯示分享連結"
 
-#: themes/foundation/modules/sharing/sharing.php:96
+#: themes/foundation/modules/sharing/sharing.php:109
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on pages as well as single posts."
 msgstr "將在頁面及單個文章上顯示Facebook、Twitter、Google+和電子郵件按鈕。"
 
-#: themes/foundation/modules/sharing/sharing.php:103
+#: themes/foundation/modules/sharing/sharing.php:116
 msgid "Sharing links location"
 msgstr "分享連結位置"
 
-#: themes/foundation/modules/sharing/sharing.php:108
+#: themes/foundation/modules/sharing/sharing.php:121
 msgid "Above post content"
 msgstr "在文章內容上面"
 
-#: themes/foundation/modules/sharing/sharing.php:109
+#: themes/foundation/modules/sharing/sharing.php:122
 msgid "Below post content"
 msgstr "在文章內容下面"
 
-#: themes/foundation/modules/sharing/sharing.php:115
+#: themes/foundation/modules/sharing/sharing.php:128
 msgid "Color scheme"
 msgstr "顏色方案"
 
-#: themes/foundation/modules/sharing/sharing.php:120
+#: themes/foundation/modules/sharing/sharing.php:133
 msgid "Theme colors"
 msgstr "主題顏色"
 
-#: themes/foundation/modules/sharing/sharing.php:121
+#: themes/foundation/modules/sharing/sharing.php:134
 msgid "Social network colors"
 msgstr "社交網路顏色"
 
@@ -2624,11 +3359,13 @@ msgstr "iPad"
 #: themes/foundation/modules/webapp/webapp.php:91
 #: themes/foundation/modules/webapp/webapp.php:109
 #: themes/foundation/modules/webapp/webapp.php:128
-#: themes/foundation/modules/webapp/webapp.php:136
-#: themes/foundation/modules/webapp/webapp.php:154
-#: themes/foundation/modules/webapp/webapp.php:162
-#: themes/foundation/root-functions.php:428
-#: themes/foundation/root-functions.php:446
+#: themes/foundation/modules/webapp/webapp.php:146
+#: themes/foundation/modules/webapp/webapp.php:165
+#: themes/foundation/modules/webapp/webapp.php:173
+#: themes/foundation/modules/webapp/webapp.php:191
+#: themes/foundation/modules/webapp/webapp.php:199
+#: themes/foundation/root-functions.php:439
+#: themes/foundation/root-functions.php:457
 msgid "%d by %d pixels (PNG)"
 msgstr "%d x %d像素(PNG)"
 
@@ -2673,8 +3410,8 @@ msgid "Notice message contents"
 msgstr "通知訊息內容"
 
 #: themes/foundation/modules/webapp/webapp.php:44
-msgid "[device] and [icon] are dynamic and used to determine the device and iOS version. Do not remove these from your message."
-msgstr "[device]和[icon]是動態的，用來確定裝置和iOS版本。請不要從你的訊息中刪除。"
+msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
+msgstr "[icon]用於顯示裝置的相應書簽圖示。請勿從訊息中刪除它。"
 
 #: themes/foundation/modules/webapp/webapp.php:48
 msgid "the notice message will be shown again for visitors"
@@ -2709,10 +3446,18 @@ msgid "iPhone 5 Startup Screen"
 msgstr "iPhone 5啟動畫面"
 
 #: themes/foundation/modules/webapp/webapp.php:122
+msgid "iPhone 6 Startup Screen"
+msgstr "iPhone6啟動畫面"
+
+#: themes/foundation/modules/webapp/webapp.php:140
+msgid "iPhone 6+ Startup Screen"
+msgstr "iPhone6+啟動畫面"
+
+#: themes/foundation/modules/webapp/webapp.php:159
 msgid "iPad Mini and iPad Startup Screens"
 msgstr "iPad Mini和iPad啟動畫面"
 
-#: themes/foundation/modules/webapp/webapp.php:148
+#: themes/foundation/modules/webapp/webapp.php:185
 msgid "Retina iPad Startup Screens"
 msgstr "視網膜iPad啟動畫面"
 
@@ -2741,159 +3486,163 @@ msgid "Language: "
 msgstr "語言:"
 
 #: themes/foundation/root-functions.php:139
-msgid "Install this Web-App on your [device]: tap [icon] then \"Add to Home Screen\""
-msgstr "在你的[device]上安裝此Web應用程式: 觸按[icon]，然後選擇\"新增到主螢幕\""
+msgid "Install this Web-App on your homescreen: tap [icon] then \"Add to Home Screen\""
+msgstr "在您的主畫面上安裝此Web應用: 按一下[icon]，然後選擇\"新增到主畫面\""
 
-#: themes/foundation/root-functions.php:342
+#: themes/foundation/root-functions.php:345
 msgid "Number of posts in post listings"
 msgstr "文章列表中的文章數"
 
-#: themes/foundation/root-functions.php:343
+#: themes/foundation/root-functions.php:346
 msgid "Overrides the WordPress Reading settings for \"Blog pages show at most\""
 msgstr "覆蓋WordPress閱讀設定\"部落格頁最多顯示\""
 
-#: themes/foundation/root-functions.php:350
+#: themes/foundation/root-functions.php:353
 msgid "Excluded categories"
 msgstr "排除的分類"
 
-#: themes/foundation/root-functions.php:351
+#: themes/foundation/root-functions.php:354
 msgid "Comma separated by category name"
 msgstr "以逗號分隔分類名稱"
 
-#: themes/foundation/root-functions.php:358
+#: themes/foundation/root-functions.php:361
 msgid "Excluded tags"
 msgstr "排除的標籤"
 
-#: themes/foundation/root-functions.php:359
+#: themes/foundation/root-functions.php:362
 msgid "Comma separated by tag name"
 msgstr "以逗號分隔標籤名稱"
 
 #: themes/foundation/root-functions.php:369
+msgid "Allow nested comment replies from mobile visitors"
+msgstr "允許行動訪客發表嵌套評論回復"
+
+#: themes/foundation/root-functions.php:370
+msgid "Will show a Reply link after each comment"
+msgstr "將在每個評論後顯示一個“回復”連結"
+
+#: themes/foundation/root-functions.php:380
 msgid "Blog"
 msgstr "部落格"
 
-#: themes/foundation/root-functions.php:380
+#: themes/foundation/root-functions.php:391
 msgid "Show comments on pages"
 msgstr "在頁面上顯示評論"
 
-#: themes/foundation/root-functions.php:381
+#: themes/foundation/root-functions.php:392
 msgid "Overrides the WordPress settings for showing comments on pages."
 msgstr "覆寫WordPress在頁面上顯示評論的設定。"
 
-#: themes/foundation/root-functions.php:391
-#: themes/foundation/root-functions.php:1119
+#: themes/foundation/root-functions.php:402
+#: themes/foundation/root-functions.php:1136
 msgid "Pages"
 msgstr "頁面"
 
-#: themes/foundation/root-functions.php:404
+#: themes/foundation/root-functions.php:415
 msgid "Icon Title"
 msgstr "圖示標題"
 
-#: themes/foundation/root-functions.php:410
+#: themes/foundation/root-functions.php:421
 msgid "Icon title"
 msgstr "圖示標題"
 
-#: themes/foundation/root-functions.php:411
+#: themes/foundation/root-functions.php:422
 msgid "When visitors bookmark your website, this will be the title shown."
 msgstr "當訪客將你的網站加入我的最愛時，這將是顯示的標題。"
 
-#: themes/foundation/root-functions.php:422
+#: themes/foundation/root-functions.php:433
 msgid "Android"
 msgstr "Android"
 
-#: themes/foundation/root-functions.php:440
+#: themes/foundation/root-functions.php:451
 msgid "iPhone & iPod touch"
 msgstr "iPhone & iPod touch"
 
-#: themes/foundation/root-functions.php:476
+#: themes/foundation/root-functions.php:487
 msgid "Theme Colors"
 msgstr "主題顏色"
 
-#: themes/foundation/root-functions.php:486
-msgid "Site Logo"
-msgstr "網站徽標"
-
-#: themes/foundation/root-functions.php:492
+#: themes/foundation/root-functions.php:499
 msgid "(Scaled by themes to fit logo areas as needed)"
 msgstr "(根據需要按主題縮放以適應徽標區域)"
 
-#: themes/foundation/root-functions.php:505
+#: themes/foundation/root-functions.php:510
+msgid "Site Logo"
+msgstr "網站徽標"
+
+#: themes/foundation/root-functions.php:519
 msgid "Smart App Banner"
 msgstr "智慧應用橫幅"
 
-#: themes/foundation/root-functions.php:511
+#: themes/foundation/root-functions.php:525
 msgid "Enter your app's %sApp Store ID%s"
 msgstr "輸入你的應用程式的%sApp Store ID%s"
 
-#: themes/foundation/root-functions.php:512
+#: themes/foundation/root-functions.php:526
 msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
 msgstr "你的應用程式的唯一識別碼。從iTunes Link Maker查找你的ID: 搜尋你的應用程式。在其提供的連結中，你的應用程式ID是id和?mt之間的九位數字。例如，憤怒的小鳥的ID是343200656。"
 
-#: themes/foundation/root-functions.php:524
+#: themes/foundation/root-functions.php:538
 msgid "Theme Footer"
 msgstr "主題頁腳"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "Custom footer content (HTML is allowed)"
 msgstr "自訂頁腳內容(允許HTML)"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "You can add custom footer content that will be displayed below the switch link."
 msgstr "你可以新增將會在切換連結下面顯示的自訂頁腳內容。"
 
-#: themes/foundation/root-functions.php:905
+#: themes/foundation/root-functions.php:914
 msgid "search results for '%s'"
 msgstr "'%s'的搜尋結果"
 
-#: themes/foundation/root-functions.php:907
+#: themes/foundation/root-functions.php:916
 msgid "%sCategories &rsaquo;%s %s"
 msgstr "%s分類 &rsaquo;%s %s"
 
-#: themes/foundation/root-functions.php:909
+#: themes/foundation/root-functions.php:918
 msgid "Tags &rsaquo; %s"
 msgstr "標籤&rsaquo; %s"
 
-#: themes/foundation/root-functions.php:911
-#: themes/foundation/root-functions.php:913
-#: themes/foundation/root-functions.php:915
+#: themes/foundation/root-functions.php:920
+#: themes/foundation/root-functions.php:922
+#: themes/foundation/root-functions.php:924
 msgid "Archives &rsaquo; %s"
 msgstr "存檔&rsaquo; %s"
 
-#: themes/foundation/root-functions.php:930
+#: themes/foundation/root-functions.php:939
 msgid "Load more from this category"
 msgstr "從此分類載入更多"
 
-#: themes/foundation/root-functions.php:932
+#: themes/foundation/root-functions.php:941
 msgid "Load more tagged like this"
 msgstr "載入更多此類標籤"
 
-#: themes/foundation/root-functions.php:934
+#: themes/foundation/root-functions.php:943
 msgid "Load more from this day"
 msgstr "從今天載入更多"
 
-#: themes/foundation/root-functions.php:936
+#: themes/foundation/root-functions.php:945
 msgid "Load more from this month"
 msgstr "從本月載入更多"
 
-#: themes/foundation/root-functions.php:938
+#: themes/foundation/root-functions.php:947
 msgid "Load more from this year"
 msgstr "從今年載入更多"
 
-#: themes/foundation/root-functions.php:940
+#: themes/foundation/root-functions.php:949
 msgid "Load more in this section"
 msgstr "在此部分載入更多"
 
-#: themes/foundation/root-functions.php:942
+#: themes/foundation/root-functions.php:951
 msgid "Load more entries"
 msgstr "載入更多條目"
 
-#: themes/foundation/root-functions.php:1068
+#: themes/foundation/root-functions.php:1085
 msgid "Post"
 msgstr "文章"
-
-#: themes/foundation/root-functions.php:1070
-msgid "Page"
-msgstr "頁面"
 
 #. Plugin Name of the plugin/theme
 msgid "WPtouch Pro"

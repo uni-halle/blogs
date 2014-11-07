@@ -136,7 +136,7 @@ function foundation_setting_defaults( $settings ) {
 	$settings->webapp_mode_enabled = false;
 	$settings->webapp_enable_persistence = true;
 	$settings->webapp_show_notice = true;
-	$settings->webapp_notice_message = __( 'Install this Web-App on your homescreen: tap [icon] then "Add to Home Screen"', 'wptouch-pro' );
+	$settings->webapp_notice_message = __( 'Install this Web-App on your home screen: tap [icon] then "Add to Home Screen"', 'wptouch-pro' );
 	$settings->webapp_ignore_urls = '';
 	$settings->webapp_notice_expiry_days = 30;
 
@@ -180,6 +180,7 @@ function foundation_setting_defaults( $settings ) {
 	$settings->social_vimeo_url = '';
 	$settings->social_youtube_url = '';
 	$settings->social_linkedin_url = '';
+	$settings->social_yelp_url = '';
 	$settings->social_email_url = '';
 	$settings->social_rss_url = '';
 
@@ -195,6 +196,7 @@ function foundation_setting_defaults( $settings ) {
 	$settings->featured_type = 'latest';
 	$settings->featured_tag = '';
 	$settings->featured_category = '';
+	$settings->featured_post_type = '';
 	$settings->featured_post_ids = '';
 	$settings->featured_speed = 'normal';
 	$settings->featured_max_number_of_posts = '5';
@@ -623,7 +625,7 @@ function foundation_init_data() {
 	$foundation_data = new stdClass;
 
 	// The base module is always loaded; don't change this or horrible things will happen!
-	$foundation_data->theme_support = apply_filters(  'wptouch_theme_support', array( 'base' ) );
+	$foundation_data->theme_support = array( 'base' );
 }
 
 function foundation_get_theme_data() {
@@ -642,6 +644,9 @@ function foundation_load_theme_modules() {
 	$settings = foundation_get_settings();
 
 	$theme_data = foundation_get_theme_data();
+
+	$theme_data->theme_support = apply_filters(  'wptouch_theme_support', $theme_data->theme_support );
+
 	if ( count( $theme_data->theme_support ) ) {
 		foreach( $theme_data->theme_support as $module ) {
 

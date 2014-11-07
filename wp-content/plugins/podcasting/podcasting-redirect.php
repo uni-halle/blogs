@@ -39,7 +39,8 @@
             
 			if (preg_match("/^([a-zA-Z0-9_.-])*$/",$key,$matches)==1) 
             {
-                wp_redirect( home_url() ); exit;
+// This seems to harsh
+//                wp_redirect( home_url() ); exit;
 			} 
           
 		}

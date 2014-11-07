@@ -2,9 +2,9 @@
 
 function fdnAdminCheckFeatured() {
 	var featuredSelect = jQuery( '#featured_enabled' );
-	jQuery( '#featured_category, #featured_tag, #featured_type, #featured_post_ids' ).parent().hide();
+	jQuery( '#featured_category, #featured_tag, #featured_type, #featured_post_ids, #featured_post_type' ).parent().hide();
 	// We're on the proper admin page
-	if ( featuredSelect.attr( 'checked' ) ) {			
+	if ( featuredSelect.attr( 'checked' ) ) {
 		var featuredType = jQuery( '#featured_type' ).val();
 		if ( featuredType == 'latest' ) {
 			jQuery( '#featured_type' ).parent().animate( { height: 'toggle', opacity: 'toggle' }, 280 );
@@ -14,28 +14,30 @@ function fdnAdminCheckFeatured() {
 			jQuery( '#featured_tag, #featured_type' ).parent().animate( { height: 'toggle', opacity: 'toggle' }, 280 );
 		} else if ( featuredType == 'posts' ) {
 			jQuery( '#featured_post_ids, #featured_type' ).parent().animate( { height: 'toggle', opacity: 'toggle' }, 280 );
+		} else if ( featuredType == 'post_type' ) {
+			jQuery( '#featured_post_type, #featured_type' ).parent().animate( { height: 'toggle', opacity: 'toggle' }, 280 );
 		}
-	} 
+	}
 }
 
 function fdnAdminAdsPlacement(){
 	var presentationSelect = jQuery( '#advertising_location' );
 	presentationSelect.change( function(){
 		var selectedOption = presentationSelect.val();
-		if ( selectedOption != 'header' ) {			
+		if ( selectedOption != 'header' ) {
 			jQuery( '.wptouch-not-free #advertising_blog_listings, .wptouch-not-free #advertising_search' ).prop( 'disabled', 'disabled' )
 		} else {
-			jQuery( '.wptouch-not-free #advertising_blog_listings, .wptouch-not-free #advertising_search' ).prop( 'disabled', '' )		
+			jQuery( '.wptouch-not-free #advertising_blog_listings, .wptouch-not-free #advertising_search' ).prop( 'disabled', '' )
 		}
 	}).change();
 }
 
-function fdnCheckAddonsInfinityCDN() {	
+function fdnCheckAddonsInfinityCDN() {
 	var cdnState = jQuery( '#setting-cache_optimize_cdn input:checked' ).attr( 'value' );
 	if ( cdnState == 'maxcdn' ) {
 		jQuery( '#setting-media_optimize_cdn_prefix_1, #setting-media_optimize_cdn_prefix_2, #setting-media_optimize_cdn_prefix_3, #setting-media_optimize_cdn_prefix_4' ).show();
 	} else {
-		jQuery( '#setting-media_optimize_cdn_prefix_1, #setting-media_optimize_cdn_prefix_2, #setting-media_optimize_cdn_prefix_3, #setting-media_optimize_cdn_prefix_4' ).hide();				
+		jQuery( '#setting-media_optimize_cdn_prefix_1, #setting-media_optimize_cdn_prefix_2, #setting-media_optimize_cdn_prefix_3, #setting-media_optimize_cdn_prefix_4' ).hide();
 	}
 }
 
@@ -45,21 +47,21 @@ function fdnCheckAddonsInfinity() {
 		var checked = infinityCheck.attr( 'checked' );
 		var allItems = jQuery( '#section-addons-infinity-cache li' ).not( 'li#setting-cache_enable' );
 		if ( !checked ) {
-			fdnCheckAddonsInfinityCDN();	
-						
-			allItems.hide();		
+			fdnCheckAddonsInfinityCDN();
+
+			allItems.hide();
 		} else {
 			allItems.show();
 
 			fdnCheckAddonsInfinityCDN();
 		}
-	}	
+	}
 }
 
 function fdnCheckAddons() {
 	fdnCheckAddonsInfinity();
 	var infinityCheck = jQuery( '#cache_enable' );
-	if ( infinityCheck.length ) {	
+	if ( infinityCheck.length ) {
 		infinityCheck.change( function() {
 			fdnCheckAddonsInfinity();
 		});
@@ -76,7 +78,7 @@ function fdnCheckAddons() {
 				var thisId = jQuery( this ).prop( 'id' );
 				var newId = thisId.replace( '_ab_enabled', '_code_2' );
 				newId = newId.replace( 'setting-', '' );
-			
+
 				if ( !jQuery( this ).find( 'input' ).is( ":checked" ) ) {
 					jQuery( '#' + newId ).parent().hide();
 				} else {
@@ -94,11 +96,17 @@ function fdnCheckAddons() {
 				jQuery( this ).show();
 			}
 		}).change();
-	}	
+	}
 }
 
-function fdnAdminReady() {	
+function fdnAdminReady() {
 	var isFree = jQuery( '.wptouch-free' );
+
+	webAppNotice = jQuery( '#webapp_notice_message' );
+	if ( webAppNotice.val().indexOf( '[device]' ) > -1 ) {
+		notice_parts = jQuery( '#webapp_notice_message' ).val().split( '[device]' );
+		webAppNotice.val( notice_parts[ 0 ] + 'home screen' + notice_parts[ 1 ] );
+	}
 
 	fdnAdminAdsPlacement();
 
@@ -112,10 +120,10 @@ function fdnAdminReady() {
 	if ( !isFree.length ) {
 		wptouchCheckToggle( '#related_posts_enabled', '#setting-related_posts_max' );
 	}
-	
+
 	// Custom Post Types Show/Hide
-	wptouchCheckToggle( '#enable_custom_post_types', '#setting-show_custom_post_taxonomy, #section-foundation-web-custom-post-types' );
-	
+	wptouchCheckToggle( '#enable_custom_post_types', '#section-foundation-web-custom-post-types' );
+
 	fdnAdminCheckFeatured();
 
 	jQuery( '#featured_enabled' ).click( function() { fdnAdminCheckFeatured(); });

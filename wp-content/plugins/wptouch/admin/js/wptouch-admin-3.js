@@ -777,11 +777,13 @@ function wptouchRefreshScrollers(){
 
 function wptouchSetupAdminToggles() {
 	// Enable iOS Web-App Mode
-	wptouchCheckToggle( '#webapp_mode_enabled', '#setting-webapp_enable_persistence, #section-notice-message, #section-iphone-startup-screen, #section-retina-iphone-startup-screen, #section-iphone-5-startup-screen, #section-ipad-mini-and-ipad-startup-screens, #setting-webapp_ignore_urls, #setting-webapp_external_message, #section-retina-ipad-startup-screens' );
+	wptouchCheckToggle( '#webapp_mode_enabled', '#setting-webapp_enable_persistence, #section-notice-message, #section-iphone-startup-screen, #section-retina-iphone-startup-screen, #section-iphone-5-startup-screen, #section-iphone-6-startup-screen, #section-iphone-6plus-startup-screen, #section-ipad-mini-and-ipad-startup-screens, #setting-webapp_ignore_urls, #setting-webapp_external_message, #section-retina-ipad-startup-screens' );
 	// Show a notice message for iPhone, iPod touch & iPad visitors about Web-App Mode
 	wptouchCheckToggle( '#webapp_show_notice', '#setting-webapp_notice_message, #setting-webapp_notice_expiry_days' );
 	// Include functions.php from Desktop theme method
 	wptouchCheckToggle( '#include_functions_from_desktop_theme', '#setting-functions_php_loading_method' );
+	// Filter URLS
+	wptouchCheckToggle( '#enable_url_filter', '#setting-url_filter_behaviour, #setting-filtered_urls' );
 	// Cache menu settings (advanced)
 	wptouchCheckToggle( '#show_share', '#setting-share_location, #setting-share_colour_scheme' );
 	wptouchCheckToggle( '#automatically_backup_settings', '#setting-backup' );

@@ -28,6 +28,7 @@ require_once 'service/apiServiceRequest.php';
    *   $urlchannels = $adsenseService->urlchannels;
    *  </code>
    */
+  if ( !class_exists( 'UrlchannelsServiceResource' ) ) { 
   class UrlchannelsServiceResource extends apiServiceResource {
 
 
@@ -52,6 +53,7 @@ require_once 'service/apiServiceRequest.php';
       }
     }
   }
+  }
 
   /**
    * The "adunits" collection of methods.
@@ -61,6 +63,7 @@ require_once 'service/apiServiceRequest.php';
    *   $adunits = $adsenseService->adunits;
    *  </code>
    */
+  if ( !class_exists( 'AdunitsServiceResource' ) ) { 
   class AdunitsServiceResource extends apiServiceResource {
 
 
@@ -86,6 +89,7 @@ require_once 'service/apiServiceRequest.php';
       }
     }
   }
+  }
 
   /**
    * The "adclients" collection of methods.
@@ -95,6 +99,7 @@ require_once 'service/apiServiceRequest.php';
    *   $adclients = $adsenseService->adclients;
    *  </code>
    */
+  if ( !class_exists( 'AdclientsServiceResource' ) ) {
   class AdclientsServiceResource extends apiServiceResource {
 
 
@@ -118,6 +123,7 @@ require_once 'service/apiServiceRequest.php';
       }
     }
   }
+  }
 
   /**
    * The "reports" collection of methods.
@@ -127,6 +133,7 @@ require_once 'service/apiServiceRequest.php';
    *   $reports = $adsenseService->reports;
    *  </code>
    */
+  if ( !class_exists( 'ReportsServiceResource' ) ) { 
   class ReportsServiceResource extends apiServiceResource {
 
 
@@ -160,6 +167,7 @@ require_once 'service/apiServiceRequest.php';
       }
     }
   }
+  }
 
   /**
    * The "customchannels" collection of methods.
@@ -169,6 +177,7 @@ require_once 'service/apiServiceRequest.php';
    *   $customchannels = $adsenseService->customchannels;
    *  </code>
    */
+  if ( !class_exists( 'CustomchannelsServiceResource' ) ) { 
   class CustomchannelsServiceResource extends apiServiceResource {
 
 
@@ -194,6 +203,7 @@ require_once 'service/apiServiceRequest.php';
       }
     }
   }
+  }
 
 
 
@@ -211,6 +221,7 @@ require_once 'service/apiServiceRequest.php';
  *
  * @author Google, Inc.
  */
+if ( !class_exists( 'apiAdsenseService' ) ) { 
 class apiAdsenseService extends apiService {
   public $urlchannels;
   public $adunits;
@@ -236,7 +247,9 @@ class apiAdsenseService extends apiService {
     $this->customchannels = new CustomchannelsServiceResource($this, $this->serviceName, 'customchannels', json_decode('{"methods": {"list": {"scopes": ["https://www.googleapis.com/auth/adsense", "https://www.googleapis.com/auth/adsense.readonly"], "parameters": {"pageToken": {"type": "string", "location": "query"}, "adClientId": {"required": true, "type": "string", "location": "path"}, "maxResults": {"format": "int32", "maximum": "10000", "minimum": "0", "location": "query", "type": "integer"}}, "id": "adsense.customchannels.list", "httpMethod": "GET", "path": "adclients/{adClientId}/customchannels", "response": {"$ref": "CustomChannels"}}}}', true));
   }
 }
+}
 
+if ( !class_exists( 'AdClient' ) ) { 
 class AdClient extends apiModel {
   public $productCode;
   public $kind;
@@ -267,7 +280,9 @@ class AdClient extends apiModel {
     return $this->supportsReporting;
   }
 }
+}
 
+if ( !class_exists( 'AdClients' ) ) { 
 class AdClients extends apiModel {
   public $nextPageToken;
   protected $__itemsType = 'AdClient';
@@ -301,7 +316,9 @@ class AdClients extends apiModel {
     return $this->etag;
   }
 }
+}
 
+if ( !class_exists( 'AdUnit' ) ) { 
 class AdUnit extends apiModel {
   public $status;
   public $kind;
@@ -339,7 +356,9 @@ class AdUnit extends apiModel {
     return $this->name;
   }
 }
+}
 
+if ( !class_exists( 'AdUnits' ) ) { 
 class AdUnits extends apiModel {
   public $nextPageToken;
   protected $__itemsType = 'AdUnit';
@@ -373,7 +392,9 @@ class AdUnits extends apiModel {
     return $this->etag;
   }
 }
+}
 
+if ( !class_exists( 'AdsenseReportsGenerateResponse' ) ) { 
 class AdsenseReportsGenerateResponse extends apiModel {
   public $kind;
   public $rows;
@@ -432,7 +453,9 @@ class AdsenseReportsGenerateResponse extends apiModel {
     return $this->averages;
   }
 }
+}
 
+if ( !class_exists( 'AdsenseReportsGenerateResponseHeaders' ) ) { 
 class AdsenseReportsGenerateResponseHeaders extends apiModel {
   public $currency;
   public $type;
@@ -456,7 +479,9 @@ class AdsenseReportsGenerateResponseHeaders extends apiModel {
     return $this->name;
   }
 }
+}
 
+if ( !class_exists( 'CustomChannel' ) ) { 
 class CustomChannel extends apiModel {
   public $kind;
   public $code;
@@ -487,7 +512,9 @@ class CustomChannel extends apiModel {
     return $this->name;
   }
 }
+}
 
+if ( !class_exists( 'CustomChannels' ) ) { 
 class CustomChannels extends apiModel {
   public $nextPageToken;
   protected $__itemsType = 'CustomChannel';
@@ -521,7 +548,9 @@ class CustomChannels extends apiModel {
     return $this->etag;
   }
 }
+}
 
+if ( !class_exists( 'UrlChannel' ) ) { 
 class UrlChannel extends apiModel {
   public $kind;
   public $id;
@@ -545,7 +574,9 @@ class UrlChannel extends apiModel {
     return $this->urlPattern;
   }
 }
+}
 
+if ( !class_exists( 'UrlChannels' ) ) { 
 class UrlChannels extends apiModel {
   public $nextPageToken;
   protected $__itemsType = 'UrlChannel';
@@ -578,4 +609,5 @@ class UrlChannels extends apiModel {
   public function getEtag() {
     return $this->etag;
   }
+}
 }

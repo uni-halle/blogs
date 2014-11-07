@@ -365,17 +365,27 @@ class ShareaholicPublic {
    */
   public static function canvas($id, $app, $title = NULL, $link = NULL, $summary = NULL) {
     global $post, $wp_query;
-    
-    $data_title = ((trim($title) != NULL) ? $title : htmlspecialchars($post->post_title, ENT_QUOTES));
-    $data_link = ((trim($link) != NULL) ? trim($link) : get_permalink($post->ID));
-    $data_summary = ((trim($summary) != NULL) ? $summary : htmlspecialchars(strip_tags(strip_shortcodes($post->post_excerpt)), ENT_QUOTES));
+    $page_type = ShareaholicUtilities::page_type();
+    $is_post = $page_type == 'page' || $page_type == 'post';
+
+    $link = trim($link);
+
+    if (trim($title) == NULL && $is_post) {
+      $title = htmlspecialchars($post->post_title, ENT_QUOTES);
+    }
+    if (trim($link) == NULL && $is_post) {
+      $link = get_permalink($post->ID);
+    }
+    if (trim($summary) == NULL && $is_post) {
+      $summary = htmlspecialchars(strip_tags(strip_shortcodes($post->post_excerpt)), ENT_QUOTES);
+    }
     
     $canvas = "<div class='shareaholic-canvas'
       data-app-id='$id'
       data-app='$app'
-      data-title='$data_title'
-      data-link='$data_link'
-      data-summary='$data_summary'></div>";
+      data-title='$title'
+      data-link='$link'
+      data-summary='$summary'></div>";
 
     return trim(preg_replace('/\s+/', ' ', $canvas));
   }

@@ -1,7 +1,7 @@
 # Copyright (C) 2014 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.4\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-06-24 13:23:13+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr "Project-Id-Version: WPtouch Pro 3.5.3\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-10-28 13:14:16+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
@@ -27,9 +27,9 @@ msgstr "BraveNewCode στο Twitter"
 msgid "Plugin Licensing Terms"
 msgstr "Όροι αδειοδότησης χρήσης προσθηκών"
 
-#: admin/html/notification-center.php:6 core/admin-menu.php:65
-msgid "Upgrade to Pro"
-msgstr "Αναβάθμιση σε Pro"
+#: admin/html/notification-center.php:6
+msgid "What's in WPtouch Pro?"
+msgstr "Τι υπάρχει στο WPtouch Pro;"
 
 #: admin/html/notification-center.php:10
 msgid "Notifications"
@@ -39,11 +39,11 @@ msgstr "Ειδοποιήσεις"
 msgid "No notifications"
 msgstr "Καμία ειδοποίηση"
 
-#: admin/html/plugin-area.php:9
+#: admin/html/plugin-area.php:10
 msgid "A new product version (%s) is available. %sRenew your license%s to download this update and receive additional product support."
 msgstr "Μια νέα έκδοση του προϊόντος (%s) είναι διαθέσιμη. %sΑνανεώστε την άδειά χρήσης σας%s για να κατεβάσετε αυτήν την ενημέρωση και να λάβετε επιπλέον υποστήριξη προϊόντος."
 
-#: admin/html/plugin-area.php:11
+#: admin/html/plugin-area.php:12
 msgid "A new product version (%s) is available. Please %sactivate your license%s, or %spurchase a new license%s to enable updates and full product support."
 msgstr "Μια νέα έκδοση του προϊόντος (%s) είναι διαθέσιμη. %sΕνεργοποιήστε την άδειά χρήσης σας%s ή %sαγοράστε μια νέα άδεια χρήσης%s για να ενεργοποιήσετε τις ενημερώσεις και την πλήρη υποστήριξη προϊόντος."
 
@@ -51,7 +51,7 @@ msgstr "Μια νέα έκδοση του προϊόντος (%s) είναι δ�
 msgid "License Details"
 msgstr "Λεπτομέρειες άδειας χρήσης"
 
-#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:235
+#: admin/pages/custom/wptouch-admin-license.php:11 open/root-functions.php:262
 msgid "Note"
 msgstr "Σημείωση"
 
@@ -77,7 +77,7 @@ msgstr "Ανανέωση Άδειας"
 
 #: admin/pages/custom/wptouch-admin-license.php:25
 #: admin/settings/html/extension-browser-item.php:89
-#: admin/settings/html/theme-browser-item.php:129
+#: admin/settings/html/theme-browser-item.php:136
 msgid "Activate"
 msgstr "Ενεργοποίηση"
 
@@ -428,6 +428,7 @@ msgstr "Προεπιλογή"
 
 #: admin/pages/wptouch-admin-general-settings.php:411
 #: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
+#: admin/settings/html/checklist.php:13
 #: admin/settings/html/custom-latest-posts.php:4
 #: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
 #: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
@@ -453,7 +454,7 @@ msgstr "Σελίδες WordPress"
 
 #: admin/pages/wptouch-admin-menus.php:28
 #: admin/settings/html/icon_menu_area.php:6
-#: infinity-cache/infinity-cache.php:209
+#: infinity-cache/infinity-cache.php:217
 #: themes/foundation/modules/advertising/advertising.php:29
 #: themes/foundation/modules/media/media.php:59
 msgid "None"
@@ -502,13 +503,14 @@ msgstr "Τι νέο υπάρχει"
 
 #: admin/settings/html/backup.php:1
 msgid "Download Backup File"
-msgstr "Λήψη αρχείο αντιγράφου ασφαλείας"
+msgstr "Λήψη αρχείου αντιγράφου ασφαλείας"
 
 #: admin/settings/html/backup.php:2
 msgid "Restore Backup File"
 msgstr "Επαναφορά αρχείου αντίγραφου ασφαλείας"
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:7
+#: admin/settings/html/checklist.php:15
 #: admin/settings/html/custom-latest-posts.php:8
 #: admin/settings/html/list.php:20 admin/settings/html/numeric.php:16
 #: admin/settings/html/post_type.php:14 admin/settings/html/radiolist.php:15
@@ -538,7 +540,7 @@ msgstr "Δεν έχουν αποσταλεί ακόμα εικονίδια"
 
 #: admin/settings/html/custom_icon_management.php:12
 #: admin/settings/html/image-upload.php:13
-#: admin/settings/html/theme-browser-item.php:137
+#: admin/settings/html/theme-browser-item.php:144
 msgid "Delete"
 msgstr "Διαγραφή"
 
@@ -547,7 +549,7 @@ msgid "Upload Icon"
 msgstr "Αποστολή εικονιδίου"
 
 #: admin/settings/html/custom_icon_upload.php:4
-#: admin/settings/html/image-upload.php:15
+#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:598
 msgid "Upload Complete!"
 msgstr "Αποστολή ολοκληρώθηκε!"
 
@@ -564,7 +566,7 @@ msgid "Your Server Configuration"
 msgstr "Ρυθμίσεις του διακομιστή σας"
 
 #: admin/settings/html/extension-browser-item.php:37
-#: admin/settings/html/theme-browser-item.php:49
+#: admin/settings/html/theme-browser-item.php:56
 msgid "Updating..."
 msgstr "Ενημέρωση..."
 
@@ -573,14 +575,14 @@ msgid "Upgrade to %s"
 msgstr "Αναβάθμιση σε %s"
 
 #: admin/settings/html/extension-browser-item.php:39
-#: admin/settings/html/theme-browser-item.php:54
+#: admin/settings/html/theme-browser-item.php:61
 msgid "Download %s Update"
 msgstr "Λήψη ενημέρωσης %s"
 
 #: admin/settings/html/extension-browser-item.php:47
 #: admin/settings/html/installed_icon_sets_ajax.php:8
 #: admin/settings/html/installed_icon_sets_ajax.php:20
-#: admin/settings/html/theme-browser-item.php:68
+#: admin/settings/html/theme-browser-item.php:75
 msgid "by %s"
 msgstr "από %s"
 
@@ -589,48 +591,48 @@ msgid "Extension location: %s"
 msgstr "Τοποθεσία επέκτασης: %s"
 
 #: admin/settings/html/extension-browser-item.php:54
-#: admin/settings/html/theme-browser-item.php:76
+#: admin/settings/html/theme-browser-item.php:83
 msgid "Relative to your WordPress wp-content directory."
 msgstr "Σε σχέση με τον κατάλογο περιεχομένου WordPress που χρησιμοποιείτε."
 
 #: admin/settings/html/extension-browser-item.php:63
-#: admin/settings/html/theme-browser-item.php:88
+#: admin/settings/html/theme-browser-item.php:95
 msgid "Available in WPtouch Pro"
 msgstr "Διαθέσιμο στο WPtouch Pro"
 
 #: admin/settings/html/extension-browser-item.php:67
-#: admin/settings/html/theme-browser-item.php:92
+#: admin/settings/html/theme-browser-item.php:99
 msgid "More Info"
 msgstr "Περισσότερες πληροφορίες"
 
 #: admin/settings/html/extension-browser-item.php:70
-#: admin/settings/html/theme-browser-item.php:96
+#: admin/settings/html/theme-browser-item.php:103
 msgid "Upgrade License"
 msgstr "Αναβάθμιση άδειας χρήσης"
 
 #: admin/settings/html/extension-browser-item.php:72
-#: admin/settings/html/theme-browser-item.php:98
+#: admin/settings/html/theme-browser-item.php:105
 msgid "Get License"
 msgstr "Απόκτηση άδειας χρήσης"
 
 #: admin/settings/html/extension-browser-item.php:80
-#: admin/settings/html/theme-browser-item.php:111
+#: admin/settings/html/theme-browser-item.php:118
 msgid "Downloading..."
 msgstr "Λήψη..."
 
 #: admin/settings/html/extension-browser-item.php:80
 #: admin/settings/html/installed_icon_sets_ajax.php:21
-#: admin/settings/html/theme-browser-item.php:112
+#: admin/settings/html/theme-browser-item.php:119
 msgid "Install"
 msgstr "Εγκατάσταση"
 
 #: admin/settings/html/extension-browser-item.php:82
-#: admin/settings/html/theme-browser-item.php:115
+#: admin/settings/html/theme-browser-item.php:122
 msgid "Download"
 msgstr "Λήψη"
 
 #: admin/settings/html/extension-browser-item.php:92
-#: admin/settings/html/theme-browser-item.php:125
+#: admin/settings/html/theme-browser-item.php:132
 msgid "Setup"
 msgstr "Διαμόρφωση"
 
@@ -655,51 +657,53 @@ msgstr "Έλεγχος όλων"
 msgid "Reset"
 msgstr "Επαναφορά"
 
-#: admin/settings/html/icon_menu_area.php:9
-#: classic-redux/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:32
-#: classic-redux/default/header-bottom.php:112
-#: prose/default/header-bottom.php:21 scaffold/default/header-bottom.php:13
+#: admin/settings/html/icon_menu_area.php:9 bio/default/header-bottom.php:13
+#: classic-redux/default/header-bottom.php:23
+#: classic-redux/default/header-bottom.php:34
+#: classic-redux/default/header-bottom.php:114
+#: hammock/default/header-bottom.php:40
+#: mobilestore/default/header-bottom.php:56 prose/default/header-bottom.php:21
+#: scaffold/default/header-bottom.php:13
 msgid "Menu"
 msgstr "Μενού"
 
-#: admin/settings/html/icon_menu_area.php:19
+#: admin/settings/html/icon_menu_area.php:31
 msgid "Active menus used in this theme."
 msgstr "Ενεργά μενού που χρησιμοποιούνται σε αυτό το θέμα."
 
-#: admin/settings/html/icon_menu_area.php:23
+#: admin/settings/html/icon_menu_area.php:35
 msgid "Show/Hide"
 msgstr "Εμφάνιση/Απόκρυψη"
 
-#: admin/settings/html/icon_menu_area.php:24
+#: admin/settings/html/icon_menu_area.php:36
 msgid "Menu Item"
 msgstr "Στοιχείο μενού"
 
-#: admin/settings/html/icon_menu_area.php:44
+#: admin/settings/html/icon_menu_area.php:56
 msgid "Icon Set"
 msgstr "Σύνολο εικονιδίων"
 
-#: admin/settings/html/icon_menu_area.php:54
+#: admin/settings/html/icon_menu_area.php:66
 msgid "Drag icons to associate them with menu items"
 msgstr "Μετακινήστε εικονίδια για να τα συσχετίσετε με στοιχεία του μενού"
 
-#: admin/settings/html/icon_menu_area.php:79
+#: admin/settings/html/icon_menu_area.php:91
 msgid "You don't have any custom icons yet."
 msgstr "Δεν έχετε ακόμα κανένα ειδικό εικονίδιο."
 
-#: admin/settings/html/icon_menu_area.php:94
+#: admin/settings/html/icon_menu_area.php:106
 msgid "Default Icon"
 msgstr "Προεπιλεγμένο εικονίδιο"
 
-#: admin/settings/html/icon_menu_area.php:95
+#: admin/settings/html/icon_menu_area.php:107
 msgid "applies to all unset icons"
 msgstr "ισχύει για όλα τα μη ορισμένα εικονίδια"
 
-#: admin/settings/html/icon_menu_area.php:103
+#: admin/settings/html/icon_menu_area.php:115
 msgid "Trash"
 msgstr "Κάδος"
 
-#: admin/settings/html/icon_menu_area.php:104
+#: admin/settings/html/icon_menu_area.php:116
 msgid "drag icon here to reset"
 msgstr "μεταφέρετε το εικονίδιο εδώ για επαναφορά"
 
@@ -716,8 +720,8 @@ msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue t
 msgstr "Ο κατάλογος %s%s%s directory προς το παρόν δεν είναι εγγράψιμος. %sΠαρακαλούμε διορθώστε αυτό το πρόβλημα για να επιτραπεί η εγκατάσταση επιπλέον συνόλων εικονιδίων."
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:1559 core/class-wptouch-pro.php:1560
-#: core/config.php:53
+#: core/class-wptouch-pro.php:1596 core/class-wptouch-pro.php:1597
+#: core/config.php:54
 msgid "Custom Icons"
 msgstr "Ειδικά εικονίδια"
 
@@ -739,7 +743,7 @@ msgid "Pro"
 msgstr "Pro"
 
 #: admin/settings/html/plugin-compat-ajax.php:11
-#: themes/foundation/modules/custom-posts/custom-posts.php:178
+#: themes/foundation/modules/custom-posts/custom-posts.php:153
 msgid "Enable %s"
 msgstr "Ενεργοποίηση %s"
 
@@ -767,32 +771,32 @@ msgstr "Σελίδα WordPress"
 msgid "Please paste your encoded settings below and save to restore your settings."
 msgstr "Επικολλήστε τις κωδικοποιημένες ρυθμίσεις σας παρακάτω και πραγματοποιήστε αποθήκευση για να επαναφέρετε τις ρυθμίσεις σας."
 
-#: admin/settings/html/theme-browser-item.php:6
 #: admin/settings/html/theme-browser-item.php:10
+#: admin/settings/html/theme-browser-item.php:16
 msgid "Click to view screenshots"
 msgstr "Κάντε κλικ για να δείτε στιγμιότυπα οθόνης."
 
-#: admin/settings/html/theme-browser-item.php:51
+#: admin/settings/html/theme-browser-item.php:58
 msgid "Update to %s"
 msgstr "Ενημέρωση σε %s"
 
-#: admin/settings/html/theme-browser-item.php:63
+#: admin/settings/html/theme-browser-item.php:70
 msgid "This theme supports %s devices"
 msgstr "Αυτό το θέμα υποστηρίζει συσκευές %s"
 
-#: admin/settings/html/theme-browser-item.php:75
+#: admin/settings/html/theme-browser-item.php:82
 msgid "Theme location: %s"
 msgstr "Τοποθεσία θέματος: %s"
 
-#: admin/settings/html/theme-browser-item.php:103
+#: admin/settings/html/theme-browser-item.php:110
 msgid "Buy Now"
 msgstr "Αγορά τώρα"
 
-#: admin/settings/html/theme-browser-item.php:133
+#: admin/settings/html/theme-browser-item.php:140
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: admin/settings/html/theme-browser.php:14
+#: admin/settings/html/theme-browser.php:22
 msgid "Loading Cloud Themes"
 msgstr "Φόρτωση Θεμάτων Νέφους..."
 
@@ -816,60 +820,35 @@ msgstr "Δείτε προσθήκες Pro"
 msgid "Look at Pro Features"
 msgstr "Δείτε δυνατότητες Pro"
 
-#: admin/settings/html/touchboard.php:14
+#: admin/settings/html/touchboard.php:16
 msgid "Product Support"
 msgstr "Υποστήριξη προϊόντος"
 
-#: admin/settings/html/touchboard.php:16
+#: admin/settings/html/touchboard.php:17
 msgid "Product Knowledgebase"
 msgstr "Βάση γνώσης προΪόντος"
 
-#: admin/settings/html/touchboard.php:17
+#: admin/settings/html/touchboard.php:18
 msgid "Manage Account"
 msgstr "Διαχείριση λογαριασμού"
 
-#: admin/settings/html/touchboard.php:18
+#: admin/settings/html/touchboard.php:19
 msgid "Manage License"
 msgstr "Διαχείριση άδειας"
 
-#: admin/settings/html/touchboard.php:20
+#: admin/settings/html/touchboard.php:21
 msgid "WPtouch User Guide"
 msgstr "Οδηγός χρήσης WPtouch"
 
-#: admin/settings/html/touchboard.php:27
+#: admin/settings/html/touchboard.php:28
 msgid "WPtouch News"
 msgstr "Νέα του WPtouch"
 
-#: admin/settings/html/touchboard.php:28
+#: admin/settings/html/touchboard.php:29
 msgid "Read More"
 msgstr "Διαβάστε περισσότερα"
 
-#: admin/settings/html/touchboard.php:45
-msgid "What's New in %s"
-msgstr "Τι νέο υπάρχει στην %s"
-
-#: admin/settings/html/touchboard.php:49 admin/settings/html/touchboard.php:51
-#: core/admin-menu.php:60
-msgid "License"
-msgstr "Άδεια χρήσης"
-
-#: admin/settings/html/touchboard.php:49
-msgid "Unlicensed"
-msgstr "Χωρίς άδεια χρήσης"
-
-#: admin/settings/html/touchboard.php:49 core/class-wptouch-pro.php:591
-msgid "Offline"
-msgstr "Εκτός σύνδεσης"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Active"
-msgstr "Ενεργό"
-
-#: admin/settings/html/touchboard.php:51
-msgid "Online"
-msgstr "Σε σύνδεση"
-
-#: admin/settings/html/touchboard.php:61
+#: admin/settings/html/touchboard.php:47
 msgid "%s Change Log"
 msgstr "%s αρχείο καταγραφής αλλαγών"
 
@@ -882,24 +861,26 @@ msgstr "Το WPtouch Pro θα ενεργοποιηθεί όταν δημιουρ
 msgid "None (Use WordPress Settings)"
 msgstr "Καμία (να γίνεται χρήση των Ρυθμίσεων WordPress)"
 
-#: bauhaus/default/header-bottom.php:21
-#: classic-redux/default/header-bottom.php:76
+#: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
+#: classic-redux/default/header-bottom.php:55
+#: hammock/default/header-bottom.php:82 scaffold/default/header-bottom.php:35
+#: simple/default/header-bottom.php:26
+msgid "Logout"
+msgstr "Αποσύνδεση"
+
+#: bauhaus/default/header-bottom.php:48 bio/default/header-bottom.php:24
+#: classic-redux/default/header-bottom.php:78
 #: scaffold/default/header-bottom.php:24
 msgid "Search this website"
 msgstr "Αναζήτηση σε αυτόν τον ιστότοπο"
 
-#: bauhaus/default/header-bottom.php:22
-#: classic-redux/default/header-bottom.php:46
-#: classic-redux/default/header-bottom.php:78
+#: bauhaus/default/header-bottom.php:49 bio/default/header-bottom.php:14
+#: bio/default/header-bottom.php:25 classic-redux/default/header-bottom.php:48
+#: classic-redux/default/header-bottom.php:80
+#: mobilestore/default/header-bottom.php:80
 #: scaffold/default/header-bottom.php:14 scaffold/default/header-bottom.php:25
 msgid "Search"
 msgstr "Αναζήτηση"
-
-#: bauhaus/default/header-bottom.php:40 bauhaus/default/header-bottom.php:42
-#: classic-redux/default/header-bottom.php:53
-#: scaffold/default/header-bottom.php:35 simple/default/header-bottom.php:24
-msgid "Logout"
-msgstr "Αποσύνδεση"
 
 #: bauhaus/default/nav-bar.php:6 cms/default/nav-bar.php:6
 #: themes/foundation/default/nav-bar.php:6
@@ -911,9 +892,15 @@ msgstr "προηγούμενο άρθρο"
 msgid "next post"
 msgstr "επόμενο άρθρο"
 
-#: bauhaus/default/post-loop.php:22 classic-redux/default/post-loop.php:24
+#: bauhaus/default/post-loop.php:22 bio/default/post-loop.php:19
+#: classic-redux/default/post-loop.php:24
 msgid "by"
 msgstr "από"
+
+#: bauhaus/default/related-posts.php:4
+#: themes/foundation/default/related-posts.php:4
+msgid "Related"
+msgstr "Σχετικά"
 
 #: bauhaus/default/search.php:6 classic-redux/default/search.php:5
 #: themes/foundation/default/search.php:6
@@ -929,198 +916,242 @@ msgid "No results found"
 msgstr "Δεν βρέθηκαν αποτελέσματα"
 
 #: bauhaus/default/search.php:46 classic-redux/default/search.php:47
-#: themes/foundation/default/search.php:45
+#: themes/foundation/default/search.php:43
 msgid "Load more %s results"
 msgstr "Φόρτωση περισσότερων αποτελεσμάτων %s"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "no comments"
 msgstr "δεν υπαρχουν σχόλια"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "1 comment"
 msgstr "1 σχόλιο"
 
-#: bauhaus/default/single.php:26
+#: bauhaus/default/single.php:16
 msgid "% comments"
 msgstr "% σχόλια"
 
-#: bauhaus/default/single.php:46 classic-redux/default/header-bottom.php:35
-#: classic-redux/default/header-bottom.php:61
+#: bauhaus/default/single.php:36 classic-redux/default/header-bottom.php:37
+#: classic-redux/default/header-bottom.php:63
 msgid "Categories"
 msgstr "Κατηγορίες"
 
-#: bauhaus/default/single.php:49 classic-redux/default/header-bottom.php:39
-#: classic-redux/default/header-bottom.php:68
+#: bauhaus/default/single.php:39 classic-redux/default/header-bottom.php:41
+#: classic-redux/default/header-bottom.php:70
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: bauhaus/root-functions.php:122 classic-redux/root-functions.php:98
+#: bauhaus/root-functions.php:126 classic-redux/root-functions.php:98
 msgid "Header Menu"
 msgstr "Μενού κεφαλίδας"
 
-#: bauhaus/root-functions.php:124 classic-redux/root-functions.php:100
-#: cms/root-functions.php:125 cms/root-functions.php:134
-#: open/root-functions.php:304 prose/root-functions.php:191
-#: scaffold/root-functions.php:77 simple/root-functions.php:60
-#: simple/root-functions.php:71
+#: bauhaus/root-functions.php:128 bio/root-functions.php:89
+#: classic-redux/root-functions.php:100 cms/root-functions.php:125
+#: cms/root-functions.php:134 hammock/root-functions.php:168
+#: mobilestore/root-functions.php:188 mobilestore/root-functions.php:200
+#: open/root-functions.php:350 prose/root-functions.php:195
+#: scaffold/root-functions.php:77 simple/root-functions.php:61
+#: simple/root-functions.php:72
 msgid "Choose a menu"
 msgstr "Επιλέξτε μενού"
 
-#: bauhaus/root-functions.php:125
+#: bauhaus/root-functions.php:129
 msgid "Main menu selection"
 msgstr "Επιλογή κεντρικού μενού"
 
-#: bauhaus/root-functions.php:132 classic-redux/root-functions.php:108
-#: cms/root-functions.php:141 open/root-functions.php:312
-#: prose/root-functions.php:199 scaffold/root-functions.php:85
-#: simple/root-functions.php:79
+#: bauhaus/root-functions.php:136 bio/root-functions.php:97
+#: classic-redux/root-functions.php:108 cms/root-functions.php:141
+#: hammock/root-functions.php:176 open/root-functions.php:358
+#: prose/root-functions.php:203 scaffold/root-functions.php:85
+#: simple/root-functions.php:80
 msgid "Theme background"
 msgstr "Φόντο θέματος"
 
-#: bauhaus/root-functions.php:133
+#: bauhaus/root-functions.php:137
 msgid "Header & Menu"
 msgstr "Κεφαλίδα & Μενού"
 
-#: bauhaus/root-functions.php:134 classic-redux/root-functions.php:109
-#: cms/root-functions.php:142 open/root-functions.php:313
-#: prose/root-functions.php:201 scaffold/root-functions.php:86
-#: simple/root-functions.php:80
+#: bauhaus/root-functions.php:138 bio/root-functions.php:98
+#: classic-redux/root-functions.php:109 cms/root-functions.php:142
+#: hammock/root-functions.php:178 mobilestore/root-functions.php:232
+#: open/root-functions.php:359 prose/root-functions.php:205
+#: scaffold/root-functions.php:86 simple/root-functions.php:81
 msgid "Links"
 msgstr "Σύνδεσμοι"
 
-#: bauhaus/root-functions.php:135
+#: bauhaus/root-functions.php:139
 msgid "Post/Page Headers"
 msgstr "Κεφαλίδες Άρθρων/Σελίδων"
 
-#: bauhaus/root-functions.php:245
+#: bauhaus/root-functions.php:255
 msgid "Theme Shapes"
 msgstr "Σχήματα θέματος"
 
-#: bauhaus/root-functions.php:251
+#: bauhaus/root-functions.php:261
 msgid "Theme shape style"
 msgstr "Στυλ σχήματος θέματος"
 
-#: bauhaus/root-functions.php:252
+#: bauhaus/root-functions.php:262
 msgid "Bauhaus will use this shape style throughout its appearance"
 msgstr "Το Bauhaus θα χρησιμοποιεί αυτό το στυλ σχήματος σε όλη του την εμφάνιση"
 
-#: bauhaus/root-functions.php:256
+#: bauhaus/root-functions.php:266
 msgid "Circles"
 msgstr "Κύκλοι"
 
-#: bauhaus/root-functions.php:257
+#: bauhaus/root-functions.php:267
 msgid "Rounded squares"
 msgstr "Στρογγυλεμένα τετράγωνα"
 
-#: bauhaus/root-functions.php:276 classic-redux/root-functions.php:244
+#: bauhaus/root-functions.php:277
+msgid "Menu Style"
+msgstr "Στυλ μενού"
+
+#: bauhaus/root-functions.php:283
+msgid "Menu animation style"
+msgstr "Στυλ κινουμένων σχεδίων μενού"
+
+#: bauhaus/root-functions.php:284
+msgid "Bauhaus can show your menu off-canvas or in a drop-down."
+msgstr "Το Bauhaus μπορεί να εμφανίζει το μενού εκτός καμβά ή σε αναπτυσσόμενη μορφή."
+
+#: bauhaus/root-functions.php:288
+msgid "Off-canvas"
+msgstr "Εκτός καμβά"
+
+#: bauhaus/root-functions.php:289
+msgid "Drop-down"
+msgstr "Αναπτυσσόμενο"
+
+#: bauhaus/root-functions.php:307 bio/root-functions.php:131
+#: classic-redux/root-functions.php:244
 msgid "Post thumbnails"
 msgstr "Μικρογραφίες άρθρων"
 
-#: bauhaus/root-functions.php:281 classic-redux/root-functions.php:249
+#: bauhaus/root-functions.php:312 bio/root-functions.php:136
+#: classic-redux/root-functions.php:249
 msgid "No thumbnails"
 msgstr "Χωρίς στιγμιότυπα οθόνης"
 
-#: bauhaus/root-functions.php:282 classic-redux/root-functions.php:250
+#: bauhaus/root-functions.php:313 bio/root-functions.php:137
+#: classic-redux/root-functions.php:250
 msgid "Blog listing only"
 msgstr "Μόνο καταχώρηση ιστολογίων"
 
-#: bauhaus/root-functions.php:283 classic-redux/root-functions.php:251
+#: bauhaus/root-functions.php:314 bio/root-functions.php:138
+#: classic-redux/root-functions.php:251
 msgid "Blog listing, single posts"
 msgstr "Καταχώρηση ιστολογίων, μονά άρθρα"
 
-#: bauhaus/root-functions.php:284
+#: bauhaus/root-functions.php:315 bio/root-functions.php:139
 msgid "Blog listing, single posts & pages"
 msgstr "Καταχωρήση ιστολογίων, μονά άρθρα & σελίδες"
 
-#: bauhaus/root-functions.php:285
+#: bauhaus/root-functions.php:316 bio/root-functions.php:140
 msgid "All (blog, single, pages, search & archive)"
 msgstr "Όλα (ιστολόγια, μονά, σελίδες, αναζήτηση & αρχείο καταχωρήσεων)"
 
-#: bauhaus/root-functions.php:293 classic-redux/root-functions.php:260
+#: bauhaus/root-functions.php:324 bio/root-functions.php:148
+#: classic-redux/root-functions.php:260
 msgid "Thumbnail Selection"
 msgstr "Επιλογή μικρογραφίας"
 
-#: bauhaus/root-functions.php:298 classic-redux/root-functions.php:265
+#: bauhaus/root-functions.php:329 bio/root-functions.php:153
+#: classic-redux/root-functions.php:265
 msgid "Post featured image"
 msgstr "Εικόνα προβεβλημένη σε άρθρο"
 
-#: bauhaus/root-functions.php:299 classic-redux/root-functions.php:266
+#: bauhaus/root-functions.php:330 bio/root-functions.php:154
+#: classic-redux/root-functions.php:266
 msgid "Post custom field"
 msgstr "Προσαρμοσμένο πεδίο άρθρου"
 
-#: bauhaus/root-functions.php:307 classic-redux/root-functions.php:274
+#: bauhaus/root-functions.php:338 bio/root-functions.php:162
+#: classic-redux/root-functions.php:274
 msgid "Thumbnail custom field name"
 msgstr "Όνομα προσαρμοσμένου πεδίου μικρογραφίας"
 
-#: bauhaus/root-functions.php:318 classic-redux/root-functions.php:307
+#: bauhaus/root-functions.php:349 classic-redux/root-functions.php:307
 msgid "Show post categories and tags"
 msgstr "Εμφάνιση κατηγοριών και ετικετών άρθρων"
 
-#: bauhaus/root-functions.php:329 classic-redux/root-functions.php:285
+#: bauhaus/root-functions.php:360 bio/root-functions.php:173
+#: classic-redux/root-functions.php:285
 msgid "Show post date"
 msgstr "Εμφάνιση ημερομηνίας άρθρου"
 
-#: bauhaus/root-functions.php:340 classic-redux/root-functions.php:296
+#: bauhaus/root-functions.php:371 bio/root-functions.php:184
+#: classic-redux/root-functions.php:296
 msgid "Show post author"
 msgstr "Εμφάνιση συγγραφέα άρθρου"
 
-#: bauhaus/root-functions.php:351
+#: bauhaus/root-functions.php:382
 msgid "Show comment bubbles on posts"
 msgstr "Εμφάνιση φυσαλίδων σχολίων στα άρθρα"
 
-#: bauhaus/root-functions.php:362
+#: bauhaus/root-functions.php:393 bio/root-functions.php:195
 msgid "Show search in header"
 msgstr "Εμφάνιση αναζήτησης στην κεφαλίδα"
 
-#: bauhaus/root-functions.php:363
+#: bauhaus/root-functions.php:394 bio/root-functions.php:196
 msgid "Adds Search capability in the site header."
 msgstr "Προσθέτει δυνατότητα Αναζήτησης στην κεφαλίδα του ιστότοπου."
 
-#: bauhaus/root-functions.php:373 classic-redux/root-functions.php:318
+#: bauhaus/root-functions.php:404 bio/root-functions.php:206
+#: classic-redux/root-functions.php:318
 msgid "Use infinite scrolling for blog"
 msgstr "Χρήση απεριόριστης κύλισης στο ιστολόγιο"
 
-#: bauhaus/root-functions.php:390
-msgid "Show featured slider on front page"
-msgstr "Εμφανίζει το προβεβλημένο ρυθμιστικό στο εμπροσθόφυλλο"
+#: bio/root-functions.php:87 hammock/root-functions.php:166
+#: mobilestore/root-functions.php:186 open/root-functions.php:348
+#: prose/root-functions.php:193 scaffold/root-functions.php:75
+msgid "Primary Menu"
+msgstr "Κύριο μενού"
 
-#: classic-redux/default/header-bottom.php:43
-#: classic-redux/default/header-bottom.php:88
+#: bio/root-functions.php:90 hammock/root-functions.php:169
+#: open/root-functions.php:351 scaffold/root-functions.php:78
+msgid "Menus are awesome!"
+msgstr "Τα μενού είναι άπαιχτα!"
+
+#: classic-redux/default/header-bottom.php:45
+#: classic-redux/default/header-bottom.php:90
 msgid "Tweets"
 msgstr "Tweets"
 
-#: classic-redux/default/header-bottom.php:51
-#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:22
+#: classic-redux/default/header-bottom.php:53
+#: hammock/default/header-bottom.php:80
+#: mobilestore/default/woocommerce/shop/form-login.php:31
+#: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:24
 #: themes/foundation/modules/login/login-html.php:20
 msgid "Login"
 msgstr "Σύνδεση"
 
-#: classic-redux/default/header-bottom.php:92
+#: classic-redux/default/header-bottom.php:94
 msgid "Follow %s on Twitter"
 msgstr "Ακολουθήστε το %s στο Twitter"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:60
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "newer posts"
 msgstr "νεότερα άρθρα"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:56
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:59
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "older posts"
 msgstr "παλαιότερα άρθρα"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "no responses"
 msgstr "καμία απάντηση"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "1 response"
 msgstr "1 απάντηση"
 
-#: classic-redux/default/post-loop.php:33
+#: classic-redux/default/post-loop.php:33 prose/default/comments.php:10
 #: themes/foundation/default/comments.php:10
 msgid "% responses"
 msgstr "% απαντήσεις"
@@ -1133,7 +1164,7 @@ msgstr "Διαβάστε αυτό το άρθρο"
 msgid "%s results"
 msgstr "Αποτελέσματα για %s"
 
-#: classic-redux/default/search.php:38 themes/foundation/default/search.php:36
+#: classic-redux/default/search.php:38 themes/foundation/default/search.php:34
 msgid "No search results found"
 msgstr "Δεν βρέθηκαν αποτελέσματα αναζήτησης"
 
@@ -1146,7 +1177,7 @@ msgid "Tablets"
 msgstr "Tablets"
 
 #: classic-redux/root-functions.php:107 cms/root-functions.php:140
-#: open/root-functions.php:311 simple/root-functions.php:78
+#: open/root-functions.php:357 simple/root-functions.php:79
 msgid "Header background"
 msgstr "Φόντο κεφαλίδας"
 
@@ -1203,7 +1234,7 @@ msgid "Max categories / tags"
 msgstr "Μέγιστος αριθμός κατηγοριών / ετικετών"
 
 #: classic-redux/root-functions.php:435 cms/root-functions.php:268
-#: simple/root-functions.php:280
+#: simple/root-functions.php:281
 msgid "CSS Effects"
 msgstr "Εφέ CSS"
 
@@ -1212,27 +1243,27 @@ msgid "Add a noise effect to the header and theme background"
 msgstr "Προσθήκη εφέ θορύβου στην κεφαλίδα και στο φόντο θέματος"
 
 #: classic-redux/root-functions.php:442 cms/root-functions.php:275
-#: simple/root-functions.php:287
+#: simple/root-functions.php:288
 msgid "Will apply the effect overtop of any background image you upload."
 msgstr "Το εφέ θα εφαρμοστεί πάνω από οποιαδήποτε εικόνα φόντου ανεβάσετε."
 
-#: cms/default/header-bottom.php:14
+#: cms/default/header-bottom.php:17
 msgid "menu"
 msgstr "μενού"
 
-#: cms/default/header-bottom.php:21
+#: cms/default/header-bottom.php:24
 msgid "login"
 msgstr "σύνδεση"
 
-#: cms/default/header-bottom.php:25
+#: cms/default/header-bottom.php:28
 msgid "logout"
 msgstr "Αποσύνδεση"
 
-#: cms/default/header-bottom.php:38 simple/default/footer-top.php:3
+#: cms/default/header-bottom.php:41 simple/default/footer-top.php:3
 msgid "search this website"
 msgstr "αναζήτηση σε αυτόν τον ιστότοπο"
 
-#: cms/default/header-bottom.php:39 simple/default/footer-top.php:5
+#: cms/default/header-bottom.php:42 simple/default/footer-top.php:5
 msgid "search"
 msgstr "αναζήτηση"
 
@@ -1269,11 +1300,11 @@ msgstr "Ρυθμιστικό κατηγορίας"
 msgid "Enable category slider"
 msgstr "Ενεργοποίηση ρυθμιστικού κατηγορίας"
 
-#: cms/root-functions.php:231 simple/root-functions.php:261
+#: cms/root-functions.php:231 simple/root-functions.php:262
 msgid "Tiled Background Image"
 msgstr "Εικόνα φόντου σε παράθεση"
 
-#: cms/root-functions.php:237 simple/root-functions.php:267
+#: cms/root-functions.php:237 simple/root-functions.php:268
 msgid "(Scaled for retina displays)"
 msgstr "(Με προσαρμογή για οθόνες retina)"
 
@@ -1349,7 +1380,15 @@ msgstr "Ρυθμίσεις επεκτάσεων"
 msgid "Menus"
 msgstr "Μενού"
 
-#: core/admin-page-templates.php:16
+#: core/admin-menu.php:60
+msgid "License"
+msgstr "Άδεια χρήσης"
+
+#: core/admin-menu.php:65
+msgid "Upgrade to Pro"
+msgstr "Αναβάθμιση σε Pro"
+
+#: core/admin-page-templates.php:17
 msgid "Mobile Page Template"
 msgstr "Πρότυπη σελίδα κινητών συσκευών"
 
@@ -1381,60 +1420,72 @@ msgstr "Προεπισκόπηση θέματος"
 msgid "Reset Settings"
 msgstr "Επαναφορά ρυθμίσεων"
 
-#: core/class-wptouch-pro.php:351
+#: core/class-wptouch-pro.php:354
 msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
 msgstr "Η αυτόματη μετεγκατάσταση από τον κατάλογο uploads/wptouch-data απέτυχε. Μετακινήστε χειροκίνητα αυτά τα αρχεία στο wp-content/wptouch-data, ή %scontact support%s για να αντιμετωπιστεί αυτό το πρόβλημα."
 
-#: core/class-wptouch-pro.php:371
+#: core/class-wptouch-pro.php:374
 msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
 msgstr "Δεν καταφέραμε να εγκαταστήσουμε το θέματος σας για το WPtouch από το Νέφος. Παρακαλώ επισκεφτείτε το άρθρο %sthis article%s για περισσότερες πληροφορίες."
 
-#: core/class-wptouch-pro.php:375
+#: core/class-wptouch-pro.php:378
 msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
 msgstr "Οι ρυθμίσεις διακομιστή σας εμποδίζουν το WPtouch να εγκαταστήσει το ενεργό σας θέμα από το Νέφος. Παρακαλούμε επισκεφτείτε %sαυτό το άρθρο%s για πληροφορίες επίλυσης του προβλήματος."
 
-#: core/class-wptouch-pro.php:587
+#: core/class-wptouch-pro.php:590
 msgid "Unsupported Browser"
 msgstr "Μη υποστηριζόμενο πρόγραμμα περιήγησης"
 
-#: core/class-wptouch-pro.php:588
+#: core/class-wptouch-pro.php:591
 msgid "Theme Preview requires Chrome or Safari."
 msgstr "Η προεπισκόπηση θέματος απαιτεί Chrome ή Safari."
 
-#: core/class-wptouch-pro.php:589
+#: core/class-wptouch-pro.php:592
 msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
 msgstr "Αυτή η επιλογή θα επαναφέρει όλες τις ρυθμίσεις του WPtouch Pro.\nΕίσαστε βέβαιοι;"
 
-#: core/class-wptouch-pro.php:590
+#: core/class-wptouch-pro.php:593
 msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
 msgstr "Αυτή η επιλογή θα επαναφέρει όλες τις ρυθμίσεις του μενού και των εικονιδίων WPtouch Pro.\nΕίσαστε βέβαιοι?"
 
-#: core/class-wptouch-pro.php:592
+#: core/class-wptouch-pro.php:594
+msgid "Offline"
+msgstr "Εκτός σύνδεσης"
+
+#: core/class-wptouch-pro.php:595
 msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
 msgstr "Φαίνεται ότι βρίσκεστε εκτός σύνδεσης. Συνδεθείτε στο Internet για να δείτε τα διαθέσιμα στοιχεία BraveNewCloud."
 
-#: core/class-wptouch-pro.php:593
+#: core/class-wptouch-pro.php:596
 msgid "The item failed to download for this reason: %reason%"
 msgstr "Η λήψη του στοιχείου απέτυχε για τον εξής λόγο: %reason%"
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:597
 msgid "You are about to reset your license information. Proceed?"
 msgstr "Πρόκειται να επαναφέρετε τα στοιχεία άδειας χρήσης σας. Συνέχεια;"
 
-#: core/class-wptouch-pro.php:1130
+#: core/class-wptouch-pro.php:599
+msgid "Upload Failed: Not a valid image."
+msgstr "Η αποστολή απέτυχε: μη έγκυρη εικόνα."
+
+#: core/class-wptouch-pro.php:600
+msgid "Click to view theme demo"
+msgstr "Κάντε κλικ εδώ για επίδειξη του θέματος"
+
+#: core/class-wptouch-pro.php:1167
 #: themes/foundation/modules/webapp/webapp.php:12
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: core/class-wptouch-pro.php:1166
+#: core/class-wptouch-pro.php:1203
 msgid "%s Changelog"
 msgstr "%s Αρχείο καταγραφής αλλαγών"
 
-#: core/class-wptouch-pro.php:2338
+#: core/class-wptouch-pro.php:2377
 msgid "Directory Problem"
 msgstr "Πρόβλημα καταλόγου"
 
-#: core/class-wptouch-pro.php:2339
+#: core/class-wptouch-pro.php:2378
 msgid "One or more required directories could not be created"
 msgstr "Αδύνατη η δημιουργία ενός ή περισσότερων απαιτούμενων καταλόγων"
 
@@ -1486,6 +1537,52 @@ msgstr "Αυτή η προσθήκη ίσως να μην λειτουργεί �
 #: core/notifications.php:214
 msgid "Icon Installation Issue"
 msgstr "Πρόβλημα εγκατάστασης εικονιδίου"
+
+#: hammock/default/functions.php:10 prose/default/functions.php:33
+msgid "Load more from this collection"
+msgstr "Φόρτωση περισσότερων από αυτήν τη συλλογή"
+
+#: hammock/default/header-bottom.php:38 prose/default/header-bottom.php:19
+msgid "Collections"
+msgstr "Συλλογές"
+
+#: hammock/default/header-bottom.php:41 prose/default/header-bottom.php:22
+msgid "Options"
+msgstr "Επιλογές"
+
+#: hammock/root-functions.php:61 prose/root-functions.php:75
+msgid "Show categories as \"collections\" in menu"
+msgstr "Εμφάνιση κατηγοριών ως \"συλλογές\" στο μενού"
+
+#: hammock/root-functions.php:72 prose/root-functions.php:86
+msgid "Maximum number of items in categories/collections"
+msgstr "Μέγιστος αριθμός στοιχείων σε κατηγορίες/συλλογές"
+
+#: hammock/root-functions.php:88
+msgid "Animate the featured image on posts"
+msgstr "Κινούμενη προβεβλημένη εικόνα σε άρθρα"
+
+#: hammock/root-functions.php:102 open/root-functions.php:119
+#: prose/root-functions.php:105
+msgid "Header Image"
+msgstr "Εικόνα κεφαλίδας"
+
+#: hammock/root-functions.php:108 prose/root-functions.php:111
+msgid "Displayed behind header on pages and posts without featured images."
+msgstr "Εμφανίζεται πίσω από την κεφαλίδα σε σελίδες και άρθρα χωρίς προβεβλημένες εικόνες."
+
+#: hammock/root-functions.php:121 prose/root-functions.php:124
+msgid "Site Intro"
+msgstr "Εισαγωγή ιστότοπου"
+
+#: hammock/root-functions.php:127 prose/root-functions.php:130
+msgid "Displayed on post listing page below site name."
+msgstr "Εμφανίζεται στη σελίδα λίστας άρθρων κάτω από το όνομα τοποθεσίας."
+
+#: hammock/root-functions.php:177 prose/root-functions.php:204
+#: themes/foundation/root-functions.php:11
+msgid "Branding"
+msgstr "Εμπορική προσαρμογή"
 
 #: include/add-ons/wordtwit-pro.php:179
 #: themes/foundation/modules/twitter/twitter.php:42
@@ -1539,88 +1636,88 @@ msgstr "%d ερωτήματα σε %0.1f ms"
 msgid "Default Template"
 msgstr "Προεπιλεγμένο πρότυπο"
 
-#: infinity-cache/infinity-cache.php:65 infinity-cache/infinity-cache.php:233
+#: infinity-cache/infinity-cache.php:66 infinity-cache/infinity-cache.php:241
 msgid "Purge Page Cache"
 msgstr "Εκκαθάριση Cache Σελίδας"
 
-#: infinity-cache/infinity-cache.php:126
+#: infinity-cache/infinity-cache.php:134
 msgid "Enable Infinity Cache"
 msgstr "Ενεργοποίηση Infinity Cache"
 
-#: infinity-cache/infinity-cache.php:134
+#: infinity-cache/infinity-cache.php:142
 msgid "Create cache for desktop users"
 msgstr "Δημιουργία προσωρινής μνήμης για χρήστες υπολογιστών"
 
-#: infinity-cache/infinity-cache.php:135
+#: infinity-cache/infinity-cache.php:143
 msgid "If you are using another cache plugin such as W3, you can disable this."
 msgstr "Αν χρησιμοποιείτε κάποια άλλη προσθήκη προσωρινής μνήμης όπως τη W3, μπορείτε να απενεργοποιήσετε την τρέχουσα."
 
-#: infinity-cache/infinity-cache.php:156
+#: infinity-cache/infinity-cache.php:164
 msgid "Compress output using GZIP"
 msgstr "Συμπίεση εξαγωμένων με GZIP"
 
-#: infinity-cache/infinity-cache.php:166
+#: infinity-cache/infinity-cache.php:174
 msgid "Maximum age of cached content"
 msgstr "Μέγιστη ηλικία προσωρινά αποθηκευμένου περιεχόμενου"
 
-#: infinity-cache/infinity-cache.php:167
+#: infinity-cache/infinity-cache.php:175
 msgid "Each cached page will automatically be regenerated after this period elapses"
 msgstr "Κάθε προσωρινά αποθηκευμένη σελίδα θα αναδημιουργείται αυτόματα με το πέρας αυτής της περιόδου"
 
-#: infinity-cache/infinity-cache.php:171 infinity-cache/infinity-cache.php:172
-#: infinity-cache/infinity-cache.php:173 infinity-cache/infinity-cache.php:174
-#: infinity-cache/infinity-cache.php:175
+#: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
+#: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:183
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d ώρα"
 msgstr[1] "%d ώρες"
 
-#: infinity-cache/infinity-cache.php:182
+#: infinity-cache/infinity-cache.php:190
 msgid "Remove stale cache file interval"
 msgstr "Αφαίρεση διαστήματος προσωρινής αποθήκευσης μη ενημερωμένου αρχείου"
 
-#: infinity-cache/infinity-cache.php:187
+#: infinity-cache/infinity-cache.php:195
 msgid "Hourly"
 msgstr "Ωριαία"
 
-#: infinity-cache/infinity-cache.php:188
+#: infinity-cache/infinity-cache.php:196
 msgid "Daily"
 msgstr "Ημερήσια"
 
-#: infinity-cache/infinity-cache.php:195
+#: infinity-cache/infinity-cache.php:203
 msgid "Disable caching for any of these matched URL fragments"
 msgstr "Απενεργοποίηση  προσωρινής αποθήκευσης για οποιοδήποτε από τα εξής αντιστοιχισμένα τμήματα URL"
 
-#: infinity-cache/infinity-cache.php:196
+#: infinity-cache/infinity-cache.php:204
 msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
 msgstr "Προσθέστε ένα τμήμα URL ανά γραμμή, δηλαδή %s, ώστε να μη γίνει προσωρινή αποθήκευση των σελίδων που περιέχουν το κάθε τμήμα URL"
 
-#: infinity-cache/infinity-cache.php:204
+#: infinity-cache/infinity-cache.php:212
 msgid "Content Distribution Network Service"
 msgstr "Υπηρεσία Δικτύου Διανομής Περιεχομένου"
 
-#: infinity-cache/infinity-cache.php:205
+#: infinity-cache/infinity-cache.php:213
 msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
 msgstr "Η χρήση ενός δικτύου διανομής περιεχομένου (CDN) μπορεί να βελτιώσει αισθητά την ανταπόκριση του ιστότοπού σας."
 
-#: infinity-cache/infinity-cache.php:210
-#: themes/foundation/modules/login/login-html.php:29
+#: infinity-cache/infinity-cache.php:218
+#: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr "Εγγραφή"
 
-#: infinity-cache/infinity-cache.php:218
+#: infinity-cache/infinity-cache.php:226
 msgid "URL %d"
 msgstr "Διεύθυνση URL %d"
 
-#: infinity-cache/infinity-cache.php:219
+#: infinity-cache/infinity-cache.php:227
 msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
 msgstr "Προσθέστε τα URL που έχετε ρυθμίσει για το CDN σας, π.χ. http://cdn%d.mysite.com. Προσθέστε επίσης τον τομέα σας για πολλαπλή τοποθεσία."
 
-#: infinity-cache/infinity-cache.php:241
+#: infinity-cache/infinity-cache.php:249
 msgid "Infinity Cache"
 msgstr "Infinity Cache"
 
-#: infinity-cache/infinity-cache.php:628
+#: infinity-cache/infinity-cache.php:636
 msgid "An example for this URL is: %s%s%s."
 msgstr "Παράδειγμα για αυτό το URL: %s%s%s."
 
@@ -1636,63 +1733,730 @@ msgstr "Περιεχόμενο για κινητές συσκευές"
 msgid "Enable mobile content display"
 msgstr "Ενεργοποίηση προβολής περιεχομένου για κινητες συσκευές"
 
-#: multi-ads/multi-ads.php:179
+#: mobilestore/default/functions.php:114
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Login now"
+msgstr "Σύνδεση τώρα"
+
+#: mobilestore/default/functions.php:115
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: mobilestore/default/functions.php:116
+msgid "Add Company Name"
+msgstr "Προσθήκη ονόματος εταιρείας"
+
+#: mobilestore/default/functions.php:117
+msgid "Add Order Notes"
+msgstr "Προσθήκη σημειώσεων παραγγελίας"
+
+#: mobilestore/default/functions.php:118
+msgid "CVC"
+msgstr "CVC"
+
+#: mobilestore/default/functions.php:178
+msgid "view more products"
+msgstr "προβολή περισσότερων προϊόντων"
+
+#: mobilestore/default/functions.php:196
+msgid "Added to cart"
+msgstr "Προσθήκη στο καλάθι"
+
+#: mobilestore/default/header-bottom.php:9
+msgid "Product Categories"
+msgstr "Κατηγορίες προϊόντων"
+
+#: mobilestore/default/header-bottom.php:15
+msgid "Recently Viewed"
+msgstr "Είδατε πρόσφατα"
+
+#: mobilestore/default/header-bottom.php:20
+msgid "Site Menu"
+msgstr "Μενού ιστότοπου"
+
+#: mobilestore/default/header-bottom.php:70
+msgid "Cart"
+msgstr "Καλάθι αγορών"
+
+#: mobilestore/default/header-bottom.php:78
+msgid "Search the store"
+msgstr "Αναζήτηση στο κατάστημα"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Recent Searches"
+msgstr "Πρόσφατες αναζητήσεις"
+
+#: mobilestore/default/header-bottom.php:83
+msgid "Clear"
+msgstr "Απαλοιφή"
+
+#: mobilestore/default/header-bottom.php:100
+msgid "Back to blog index"
+msgstr "Πίσω στο ευρετήριο ιστολογίου"
+
+#: mobilestore/default/header-bottom.php:114
+msgid "sorting"
+msgstr "ταξινόμηση"
+
+#: mobilestore/default/header-bottom.php:115
+msgid "filter by"
+msgstr "φιλτράρισμα κατά"
+
+#: mobilestore/default/post-loop.php:9
+msgid "Read This Post &rsaquo;"
+msgstr "Ανάγνωση αυτού του άρθρου &rsaquo;"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:18
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:33
+msgid "Shipping #%d"
+msgstr "Αποστολή #%d"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:20
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:35
+msgid "Shipping and Handling"
+msgstr "Αποστολή και διεκπεραίωση"
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:74
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr "Χρησιμοποιήστε το εργαλείο υπολογισμού αποστολής για να δείτε τις διαθέσιμες μεθόδους αποστολής."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:78
+msgid "Please continue to the checkout and enter your full address to see if there are any available shipping methods."
+msgstr "Συνεχίστε στην ολοκλήρωση αγοράς και δώστε την πλήρη διεύθυνσή σας, για να δείτε αν υπάρχουν διαθέσιμες μέθοδοι αποστολής."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:82
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:68
+msgid "Please fill in your details to see available shipping methods."
+msgstr "Συμπληρώστε τα στοιχεία σας για να δείτε τις διαθέσιμες μεθόδους αποστολής."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:91
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:97
+msgid "There doesn&lsquo;t seem to be any available shipping methods. Please double check your address, or contact us if you need any help."
+msgstr "Φαίνεται ότι δεν υπάρχουν διαθέσιμες μέθοδοι αποστολής. Ελέγξτε ξανά τη διεύθυνσή σας ή επικοινωνήστε μαζί μας αν χρειάζεστε βοήθεια."
+
+#: mobilestore/default/woocommerce/cart/cart-shipping.php:112
+#: mobilestore/default/woocommerce/cart/totals.php:46
+msgid "Shipping"
+msgstr "Αποστολή"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:19
+#: mobilestore/default/woocommerce/cart/totals.php:28
+#: mobilestore/default/woocommerce/checkout/review-order.php:25
+msgid "Cart Subtotal"
+msgstr "Υποσύνολο καλαθιού"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:66
+#: mobilestore/default/woocommerce/cart/totals.php:121
+msgid " (taxes estimated for %s)"
+msgstr "(φόροι υπολογισμένοι για %s)"
+
+#: mobilestore/default/woocommerce/cart/cart-totals.php:69
+#: mobilestore/default/woocommerce/cart/totals.php:123
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr "Σημείωση: τα έξοδα αποστολής και οι φόροι έχουν υπολογιστεί%s και θα ενημερωθούν κατά την ολοκλήρωση της αγοράς, με βάση τα στοιχεία χρέωσης και αποστολής."
+
+#: mobilestore/default/woocommerce/cart/cart.php:51
+msgid "Available on backorder"
+msgstr "Διατίθεται σε προπαραγγελία"
+
+#: mobilestore/default/woocommerce/cart/cart.php:57
+msgid "Remove this item"
+msgstr "Αφαίρεση αυτού του αντικειμένου"
+
+#: mobilestore/default/woocommerce/cart/cart.php:83
+msgid "Update Cart"
+msgstr "Ενημέρωση καλαθιού"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+msgid "Coupon"
+msgstr "Κουπόνι"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:41
+msgid "Coupon code"
+msgstr "Κωδικός κουπονιού"
+
+#: mobilestore/default/woocommerce/cart/cart.php:93
+#: mobilestore/default/woocommerce/checkout/form-coupon.php:20
+#: mobilestore/default/woocommerce/checkout/review-order.php:43
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+#: mobilestore/default/woocommerce/cart/cart.php:111
+msgid "Proceed to Checkout"
+msgstr "Συνέχεια στην ολοκλήρωση αγοράς"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:24
+msgid "edit cart"
+msgstr "επεξεργασία καλαθιού"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:29
+msgid "checkout"
+msgstr "ολοκλήρωση αγοράς"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:73
+msgid "No products in the cart."
+msgstr "Δεν υπάρχουν προϊόντα στο καλάθι."
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:81
+msgid "Subtotal"
+msgstr "Υποσύνολο"
+
+#: mobilestore/default/woocommerce/cart/mini-cart.php:89
+msgid "Checkout"
+msgstr "Ολοκλήρωση αγοράς"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:32
+msgid "Free"
+msgstr "Δωρεάν"
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
+msgstr "Λυπόμαστε, φαίνεται ότι δεν υπάρχουν διαθέσιμες μέθοδοι αποστολής για την τοποθεσία σας (%s)."
+
+#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
+#: mobilestore/default/woocommerce/cart/totals.php:147
+msgid "If you require assistance or wish to make alternate arrangements please contact us."
+msgstr "Αν χρειάζεστε βοήθεια ή επιθυμείτε εναλλακτικό τρόπο διευθέτησης, επικοινωνήστε μαζί μας."
+
+#: mobilestore/default/woocommerce/cart/totals.php:22
+msgid "Cart Totals"
+msgstr "Σύνολα καλαθιού"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+msgid "Cart Discount"
+msgstr "Έκπτωση καλαθιού"
+
+#: mobilestore/default/woocommerce/cart/totals.php:35
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "[Remove]"
+msgstr "[Αφαίρεση]"
+
+#: mobilestore/default/woocommerce/cart/totals.php:83
+msgid "Order Discount"
+msgstr "Έκπτωση παραγγελίας"
+
+#: mobilestore/default/woocommerce/cart/totals.php:92
+#: mobilestore/default/woocommerce/checkout/review-order.php:94
+msgid "Order Total"
+msgstr "Σύνολο παραγγελίας"
+
+#: mobilestore/default/woocommerce/cart/totals.php:105
+msgid "(Includes %s)"
+msgstr "(περιλαμβάνεται %s)"
+
+#: mobilestore/default/woocommerce/cart/totals.php:135
+msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
+msgstr "Δεν βρέθηκαν μέθοδοι αποστολής — Υπολογίστε εκ νέου τα έξοδα αποστολής και δώστε τον νομό/χώρα και τον Τ.Κ. σας, για να αποκλειστεί η ύπαρξη άλλων διαθέσιμων μεθόδων για την τοποθεσία σας."
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:20
+msgid "You must be logged in to checkout."
+msgstr "Πρέπει να έχετε συνδεθεί για ολοκλήρωση αγοράς."
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Your Order"
+msgstr "Η παραγγελία σας"
+
+#: mobilestore/default/woocommerce/checkout/form-checkout.php:51
+msgid "Edit Items"
+msgstr "Επεξεργασία αντικειμένων"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:16
+msgid "Shopped here before?"
+msgstr "Έχετε κάνει ξανά αγορές από εδώ;"
+
+#: mobilestore/default/woocommerce/checkout/form-login.php:23
+msgid "Enter your login details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section."
+msgstr "Δώστε τα στοιχεία σύνδεσής σας στα παρακάτω πλαίσια. Αν είστε καινούργιος πελάτης, συνεχίστε στην ενότητα Χρέωση &amp; αποστολή."
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:19
+#: mobilestore/default/woocommerce/checkout/review-order.php:18
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:22
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:27
+#: mobilestore/default/woocommerce/emails/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:23
+#: mobilestore/default/woocommerce/order/order-details.php:20
+msgid "Product"
+msgstr "Προϊόν"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:20
+msgid "Totals"
+msgstr "Σύνολα"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:52
+msgid "Payment"
+msgstr "Πληρωμή"
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:77
+msgid "Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Λυπόμαστε, φαίνεται ότι δεν υπάρχουν διαθέσιμες μέθοδοι αποστολής για την τοποθεσία σας. Επικοινωνήστε μαζί μας αν χρειάζεστε βοήθεια ή επιθυμείτε εναλλακτικό τρόπο διευθέτησης."
+
+#: mobilestore/default/woocommerce/checkout/form-pay.php:87
+msgid "Pay for order"
+msgstr "Πληρωμή παραγγελίας"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:31
+msgid "Ship to a different address?"
+msgstr "Αποστολή σε διαφορετική διεύθυνση;"
+
+#: mobilestore/default/woocommerce/checkout/form-shipping.php:57
+msgid "Additional Information"
+msgstr "Πρόσθετες πληροφορίες"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:19
+#: mobilestore/default/woocommerce/order/order-details.php:21
+msgid "Total"
+msgstr "Σύνολο"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:171
+msgid "Please fill in your details above to see available payment methods."
+msgstr "Συμπληρώστε τα στοιχεία σας για να δείτε τις διαθέσιμες μεθόδους αποστολής."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:173
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Λυπόμαστε, φαίνεται ότι δεν υπάρχουν διαθέσιμες μέθοδοι αποστολής για τον νομό σας. Επικοινωνήστε μαζί μας αν χρειάζεστε βοήθεια ή επιθυμείτε εναλλακτικό τρόπο διευθέτησης."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr "Επειδή το πρόγραμμα περιήγησής σας δεν υποστηρίζει ή έχει απενεργοποιημένο το JavaScript, βεβαιωθείτε ότι πατήσατε το κουμπί <em>Ενημέρωση συνόλων</em> πριν υποβάλετε την παραγγελία σας. Αν δεν το κάνετε, ενδέχεται να χρεωθείτε ποσό μεγαλύτερο του αναγραφόμενου παραπάνω."
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:184
+msgid "Update totals"
+msgstr "Ενημέρωση συνόλων"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:194
+msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr "Αποδέχομαι τους <a href=\"%s\" target=\"_blank\">όρους &amp; προϋποθέσεις</a>"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:200
+msgid "Place order"
+msgstr "Υποβολή παραγγελίας"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:13
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
+msgid "You have received an order from %s. Their order is as follows:"
+msgstr "Λάβατε μια παραγγελία από %s. Η παραγγελία έχει ως εξής:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:17
+msgid "Order: %s"
+msgstr "Παραγγελία: %s"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:23
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:28
+#: mobilestore/default/woocommerce/emails/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:24
+msgid "Quantity"
+msgstr "Ποσότητα"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:24
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:25
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:29
+#: mobilestore/default/woocommerce/emails/customer-note.php:29
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:25
+msgid "Price"
+msgstr "Τιμή"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:50
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:51
+#: mobilestore/default/woocommerce/emails/customer-note.php:55
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:51
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:38
+msgid "Customer details"
+msgstr "Στοιχεία πελάτη"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:53
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:54
+#: mobilestore/default/woocommerce/emails/customer-note.php:58
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:54
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:41
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:49
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:41
+msgid "Email:"
+msgstr "Email:"
+
+#: mobilestore/default/woocommerce/emails/admin-new-order.php:56
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:57
+#: mobilestore/default/woocommerce/emails/customer-note.php:61
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:57
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:44
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:52
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:44
+msgid "Tel:"
+msgstr "Τηλ:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
+msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
+msgstr "Χαίρετε. Η πρόσφατη παραγγελία σας στο %s ολοκληρώθηκε. Τα στοιχεία της παραγγελία σας εμφανίζονται παρακάτω προς ενημέρωσή σας:"
+
+#: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:22
+#: mobilestore/default/woocommerce/emails/customer-note.php:22
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:18
+msgid "Order:"
+msgstr "Παραγγελία:"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
+msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
+msgstr "Δημιουργήθηκε μια παραγγελία για εσάς στο %s. To pay for this order please use the following link: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
+msgid "pay"
+msgstr "πληρωμή"
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
+msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
+msgstr "Σας ευχαριστούμε που δημιουργήσατε λογαριασμό στο %s. Το όνομα χρήστη σας είναι <strong>%s</strong>."
+
+#: mobilestore/default/woocommerce/emails/customer-new-account.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:15
+msgid "You can access your account area here: %s."
+msgstr "Μπορείτε να προσπελάσετε τον λογαριασμό σας εδώ: %s."
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:13
+msgid "Hello, a note has just been added to your order:"
+msgstr "Γεια σας, μόλις προστέθηκε μια σημείωση στην παραγγελία σας:"
+
+#: mobilestore/default/woocommerce/emails/customer-note.php:18
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:21
+msgid "For your reference, your order details are shown below."
+msgstr "Προς ενημέρωσή σας, τα στοιχεία της παραγγελίας σας εμφανίζονται παρακάτω."
+
+#: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
+msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
+msgstr "Η παραγγελία σας παραλήφθηκε και βρίσκεται υπό επεξεργασία. Τα στοιχεία της παραγγελίας σας εμφανίζονται παρακάτω προς ενημέρωσή σας:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:13
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "Κάποιος ζήτησε επαναφορά κωδικού πρόσβασης για τον εξής λογαριασμό:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:15
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:15
+msgid "Username: %s"
+msgstr "Όνομα χρήστη: %s"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:16
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:16
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Αν ήταν λάθος, αγνοήστε αυτό το email και δεν θα συμβεί τίποτα."
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:17
+#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:17
+msgid "To reset your password, visit the following address:"
+msgstr "Για να επαναφέρετε τον λογαριασμό σας, επισκεφτείτε την εξής διεύθυνση:"
+
+#: mobilestore/default/woocommerce/emails/customer-reset-password.php:20
+msgid "Click here to reset your password"
+msgstr "Κάντε κλικ εδώ για επαναφορά του κωδικού πρόσβασης"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:18
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:12
+msgid "Billing address"
+msgstr "Διεύθυνση χρέωσης"
+
+#: mobilestore/default/woocommerce/emails/email-addresses.php:28
+#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:17
+msgid "Shipping address"
+msgstr "Διεύθυνση αποστολής"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:34
+msgid "This product is no longer available"
+msgstr "Αυτό το προϊόν δεν είναι πια διαθέσιμο"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:76
+msgid "Download %d:"
+msgstr "Λήψη %d:"
+
+#: mobilestore/default/woocommerce/emails/email-order-items.php:78
+msgid "Download:"
+msgstr "Λήψη:"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:19
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:27
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:19
+msgid "Order number: %s"
+msgstr "Αριθμός παραγγελίας: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:20
+#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:21
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:28
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:20
+msgid "Order date: %s"
+msgstr "Ημερομηνία παραγγελίας: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
+msgid "jS F Y"
+msgstr "d m Y"
+
+#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:38
+#: mobilestore/default/woocommerce/emails/plain/customer-note.php:46
+#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:38
+#: mobilestore/default/woocommerce/order/order-details.php:97
+msgid "Your details"
+msgstr "Τα στοιχεία σας"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:28
+msgid "Quantity: %s"
+msgstr "Ποσότητα: %s"
+
+#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:31
+msgid "Cost: %s"
+msgstr "Κόστος: %s"
+
+#: mobilestore/default/woocommerce/loop/no-products-found.php:14
+msgid "No products were found matching your search."
+msgstr "Δεν βρέθηκαν προϊόντα που αντιστοιχούν στην αναζήτησή σας."
+
+#: mobilestore/default/woocommerce/loop-shop.php:40
+msgid "No products found which match your selection."
+msgstr "Δεν βρέθηκαν προϊόντα που αντιστοιχούν στην επιλογή σας."
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:19
+msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
+msgstr "Χαίρετε <strong>%1$s</strong> (δεν είστε ο χρήστης %1$s; <a href=\"%2$s\">Αποσύνδεση</a>)."
+
+#: mobilestore/default/woocommerce/myaccount/my-account.php:26
+msgid "<a href=\"%s\">Edit your password and account details</a>."
+msgstr "<a href=\"%s\">Επεξεργασία του κωδικού πρόσβασης και των στοιχείων λογαριασμού σας</a>."
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:26
+msgid "Recent Orders"
+msgstr "Πρόσφατες παραγγελίες"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:40
+msgid "%s for %s item"
+msgid_plural "%s for %s items"
+msgstr[0] "%s για %s αντικείμενο"
+msgstr[1] "%s για %s αντικείμενα"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:49
+msgid "Pay"
+msgstr "Πληρωμή"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:56
+#: prose/default/comments.php:48 themes/foundation/default/comments.php:48
+msgid "Cancel"
+msgstr "Άκυρο"
+
+#: mobilestore/default/woocommerce/myaccount/my-orders.php:62
+msgid "View"
+msgstr "Προβολή"
+
+#: mobilestore/default/woocommerce/order/order-details.php:66
+msgid "Download file%s"
+msgstr "Λήψη αρχείου%s"
+
+#: mobilestore/default/woocommerce/order/order-details.php:101
+msgid "Email"
+msgstr "Email"
+
+#: mobilestore/default/woocommerce/order/order-details.php:102
+msgid "Telephone"
+msgstr "Τηλέφωνο"
+
+#: mobilestore/default/woocommerce/order/order-details.php:118
+msgid "Billing Address"
+msgstr "Διεύθυνση χρέωσης"
+
+#: mobilestore/default/woocommerce/order/order-details.php:122
+#: mobilestore/default/woocommerce/order/order-details.php:137
+msgid "N/A"
+msgstr "Μ/Δ"
+
+#: mobilestore/default/woocommerce/order/order-details.php:133
+msgid "Shipping Address"
+msgstr "Διεύθυνση αποστολής"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:63
+msgid "Products tagged &ldquo;"
+msgstr "Προϊόντα με ετικέτα &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:91
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:190
+msgid "Search results for &ldquo;"
+msgstr "Αναζήτηση αποτελεσμάτων για &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:148
+msgid "Error 404"
+msgstr "Σφάλμα 404"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:194
+msgid "Posts tagged &ldquo;"
+msgstr "Άρθρα με ετικέτα &ldquo;"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:199
+msgid "Author:"
+msgstr "Συγγραφέας:"
+
+#: mobilestore/default/woocommerce/shop/breadcrumb.php:204
+#: themes/foundation/root-functions.php:1087
+msgid "Page"
+msgstr "Σελίδα"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:20
+msgid "Username or email"
+msgstr "Όνομα χρήστη ή email"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:24
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: mobilestore/default/woocommerce/shop/form-login.php:33
+msgid "Lost Password?"
+msgstr "Χάσατε τον κωδικό;"
+
+#: mobilestore/root-functions.php:6
+msgid "Store"
+msgstr "Κατάστημα"
+
+#: mobilestore/root-functions.php:189
+msgid "Off-Canvas left menu"
+msgstr "Αριστερό μενού εκτός καμβά"
+
+#: mobilestore/root-functions.php:198
+msgid "Footer Menu"
+msgstr "Μενού υποσέλιδου"
+
+#: mobilestore/root-functions.php:201
+msgid "Menu shown in the MobileStore footer"
+msgstr "Μενού που εμφανίζεται στο υποσέλιδο του MobileStore"
+
+#: mobilestore/root-functions.php:208
+msgid "Menu & Cart Background"
+msgstr "Φόντο μενού & καλαθιού αγορών"
+
+#: mobilestore/root-functions.php:211
+msgid "Header & Footer Background"
+msgstr "Φόντο κεφαλίδας & υποσέλιδου"
+
+#: mobilestore/root-functions.php:263
+msgid "Primary Actions & Purchase Flow"
+msgstr "Κύριες ενέργειες & ροή αγοράς"
+
+#: mobilestore/root-functions.php:274
+msgid "Highlight Color"
+msgstr "Χρώμα επισήμανσης"
+
+#: mobilestore/root-functions.php:390
+msgid "Product Listing"
+msgstr "Καταχώρηση προϊόντος"
+
+#: mobilestore/root-functions.php:396
+msgid "Number of products shown per page in product listings"
+msgstr "Αριθμός προϊόντων που εμφανίζονται ανά σελίδα στις καταχωρήσεις προϊόντων"
+
+#: mobilestore/root-functions.php:410
+msgid "Product Filters"
+msgstr "Φίλτρα προϊόντος"
+
+#: mobilestore/root-functions.php:416
+msgid "Show WooCommerce product filters for"
+msgstr "Εμφάνιση φίλτρων προϊόντος WooCommerce για"
+
+#: mobilestore/root-functions.php:431
+msgid "Site Sidebar"
+msgstr "Πλαϊνή γραμμή ιστότοπου"
+
+#: mobilestore/root-functions.php:437
+msgid "Show category menu in sidebar"
+msgstr "Εμφάνιση μενού κατηγορίας στην πλαϊνή γραμμή"
+
+#: mobilestore/root-functions.php:445
+msgid "Show recently viewed products in sidebar"
+msgstr "Εμφάνιση προϊόντων που είδατε πρόσφατα στην πλαϊνή γραμμή"
+
+#: mobilestore/root-functions.php:523
+msgid "Site logo display size"
+msgstr "Μέγεθος εμφάνισης λογότυπου ιστότοπου"
+
+#: mobilestore/root-functions.php:528
+msgid "Short (default)"
+msgstr "Κοντό (προεπιλογή)"
+
+#: mobilestore/root-functions.php:529
+msgid "Tall (longer vertically for square logos)"
+msgstr "Ψηλό (κατακόρυφα μακρύτερο για τετράγωνα λογότυπα)"
+
+#: mobilestore/root-functions.php:536
+msgid "Show site description in large header"
+msgstr "Εμφάνιση περιγραφής ιστότοπου σε μεγάλη κεφαλίδα"
+
+#: multi-ads/multi-ads.php:228
 msgid "Header Ad"
 msgstr "Διαφήμιση κεφαλίδας"
 
-#: multi-ads/multi-ads.php:181
+#: multi-ads/multi-ads.php:230
 msgid "Footer Ad"
 msgstr "Διαφήμιση υποσέλιδου"
 
-#: multi-ads/multi-ads.php:183
+#: multi-ads/multi-ads.php:232
 msgid "Pre-content Ad"
 msgstr "Διαφήμιση προ-περιεχομένου"
 
-#: multi-ads/multi-ads.php:185
+#: multi-ads/multi-ads.php:234
 msgid "Post-content Ad"
 msgstr "Διαφήμιση μετά-περιεχομένου"
 
-#: multi-ads/multi-ads.php:206
+#: multi-ads/multi-ads.php:236
+msgid "Mid-content Ad"
+msgstr "Διαφήμηση εντός περιεχομένου"
+
+#: multi-ads/multi-ads.php:257
 msgid "Enabled"
 msgstr "Ενεργοποιημένη"
 
-#: multi-ads/multi-ads.php:214
+#: multi-ads/multi-ads.php:265
 msgid "Perform A/B test with secondary advertising unit"
 msgstr "Εκτέλεση δοκιμής A/B με δευτερεύουσα μονάδα διαφήμισης"
 
-#: multi-ads/multi-ads.php:222
+#: multi-ads/multi-ads.php:273
 msgid "Primary Advertising Unit"
 msgstr "Πρωτεύουσα μονάδα διαφήμισης"
 
-#: multi-ads/multi-ads.php:223
+#: multi-ads/multi-ads.php:274
 msgid "HTML, CSS and JS are all accepted."
 msgstr "HTML, CSS και JS είναι αποδεκτά."
 
-#: multi-ads/multi-ads.php:230
+#: multi-ads/multi-ads.php:281
 msgid "Secondary Advertising Unit"
 msgstr "Δευτερεύουσα μονάδα διαφήμισης"
 
-#: multi-ads/multi-ads.php:231
+#: multi-ads/multi-ads.php:282
 msgid "If defined, secondary advertising code will be shown 50% of the time."
 msgstr "Αν προσδιοριστεί, ο κώδικας δευτερεύουσας μονάδα διαφήμισης θα εμφανίζεται στο 50% των περιπτώσεων."
 
-#: multi-ads/multi-ads.php:238
+#: multi-ads/multi-ads.php:289
 msgid "Display on archive/post listings"
 msgstr "Εμφάνιση σε λίστες αρχείων καταχωρήσεων/άρθρων"
 
-#: multi-ads/multi-ads.php:246
+#: multi-ads/multi-ads.php:297
 msgid "Display on single posts"
 msgstr "Εμφάνιση σε μονά άρθρα"
 
-#: multi-ads/multi-ads.php:254
+#: multi-ads/multi-ads.php:305
 msgid "Display on static pages"
 msgstr "Εμφάνιση σε στατικές σελίδες"
 
-#: multi-ads/multi-ads.php:262
+#: multi-ads/multi-ads.php:313
 msgid "Display on taxonomy listings"
 msgstr "Εμφάνιση σε λίστες ταξινομίας"
 
-#: multi-ads/multi-ads.php:269
+#: multi-ads/multi-ads.php:320
 msgid "Display in search results"
 msgstr "Εμφάνιση σε αποτελέσματα αναζήτησης"
 
@@ -1713,31 +2477,31 @@ msgstr "Η τοποθεσία μας"
 msgid "Our Hours"
 msgstr "Τα ωράριά μας"
 
-#: open/default/hours.php:12 open/root-functions.php:179
+#: open/default/hours.php:12 open/root-functions.php:206
 msgid "Sunday"
 msgstr "Κυριακή"
 
-#: open/default/hours.php:13 open/root-functions.php:187
+#: open/default/hours.php:13 open/root-functions.php:214
 msgid "Monday"
 msgstr "Δευτέρα"
 
-#: open/default/hours.php:14 open/root-functions.php:195
+#: open/default/hours.php:14 open/root-functions.php:222
 msgid "Tuesday"
 msgstr "Τρίτη"
 
-#: open/default/hours.php:15 open/root-functions.php:203
+#: open/default/hours.php:15 open/root-functions.php:230
 msgid "Wednesday"
 msgstr "Τετάρτη"
 
-#: open/default/hours.php:16 open/root-functions.php:211
+#: open/default/hours.php:16 open/root-functions.php:238
 msgid "Thursday"
 msgstr "Πέμπτη"
 
-#: open/default/hours.php:17 open/root-functions.php:219
+#: open/default/hours.php:17 open/root-functions.php:246
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: open/default/hours.php:18 open/root-functions.php:227
+#: open/default/hours.php:18 open/root-functions.php:254
 msgid "Saturday"
 msgstr "Σάββατο"
 
@@ -1745,89 +2509,87 @@ msgstr "Σάββατο"
 msgid "Closed"
 msgstr "Κλειστά"
 
-#: open/root-functions.php:73
+#: open/root-functions.php:77
+msgid "Open Homepage Menu"
+msgstr "Μενού αρχικής σελίδας Open"
+
+#: open/root-functions.php:83
+msgid "Show full menu on Open homepage"
+msgstr "Εμφάνιση πλήρους μενού στην αρχική σελίδα Open"
+
+#: open/root-functions.php:84
+msgid "If disabled, only Location & Hours links will be shown"
+msgstr "Αν απενεργοποιηθεί, εμφανίζονται μόνο σύνδεσμοι Τοποθεσίας & Ωραρίων"
+
+#: open/root-functions.php:100
 msgid "Tagline"
 msgstr "Σύνθημα"
 
-#: open/root-functions.php:79
+#: open/root-functions.php:106
 msgid "Displayed below your logo on the homepage."
 msgstr "Εμφανίζεται κάτω από το λογότυπό σας στην αρχική σελίδα."
 
-#: open/root-functions.php:92 prose/root-functions.php:104
-msgid "Header Image"
-msgstr "Εικόνα κεφαλίδας"
-
-#: open/root-functions.php:98
+#: open/root-functions.php:125
 msgid "Displayed behind header on pages."
 msgstr "Εμφανίζεται κάτω από την κεφαλίδα σε σελίδες."
 
-#: open/root-functions.php:111
+#: open/root-functions.php:138
 msgid "Location"
 msgstr "Τοποθεσία"
 
-#: open/root-functions.php:117 simple/root-functions.php:229
+#: open/root-functions.php:144 simple/root-functions.php:230
 msgid "Map address"
 msgstr "Διεύθυνση στο χάρτη"
 
-#: open/root-functions.php:118
+#: open/root-functions.php:145
 msgid "Enter an address and a menu item for 'Our Location' will be shown."
 msgstr "Δώστε μία διεύθυνση και ένα στοιχείο μενού για να εμφανιστεί 'Η τοποθεσία μας'."
 
-#: open/root-functions.php:130
+#: open/root-functions.php:157
 msgid "Call to Action"
 msgstr "Κάλεσμα σε δράση"
 
-#: open/root-functions.php:136
+#: open/root-functions.php:163
 msgid "Show call to action button at bottom of pages"
 msgstr "Εμφάνιση καλέσματος σε δράση στο κάτω μέρος των σελίδων"
 
-#: open/root-functions.php:137
+#: open/root-functions.php:164
 msgid "Give visitors a one-click action to follow and increase your conversions."
 msgstr "Δώστε σε επισκέπτες μία ενέργεια με ένα κλικ για να ακολουθήσουν και να αυξήσουν τις μετατροπές σας."
 
-#: open/root-functions.php:144
+#: open/root-functions.php:171
 msgid "Button Label"
 msgstr "Ετικέτα κουμπιού"
 
-#: open/root-functions.php:152
+#: open/root-functions.php:179
 msgid "Target URL"
 msgstr "URL προορισμού"
 
-#: open/root-functions.php:153
+#: open/root-functions.php:180
 msgid "Prefix your phone number with \"tel:\" to allow one-click phone calls."
 msgstr "Προσθέστε στο πρόθεμα \"τηλ\" στον αριθμό τηλεφώνου σας για να επιτρέπετε τηλεφωνικές κλήσεις με ένα κλικ."
 
-#: open/root-functions.php:165
+#: open/root-functions.php:192
 msgid "Hours"
 msgstr "Ωράρια"
 
-#: open/root-functions.php:171
+#: open/root-functions.php:198
 msgid "Use built-in Hours feature"
 msgstr "Χρήση ενσωματωμένης λειτουργίας Ωραρίων"
 
-#: open/root-functions.php:172
+#: open/root-functions.php:199
 msgid "Add your hours and the current day's hours will appear on the homepage along with a menu item for 'Our Hours'."
 msgstr "Προσθέστε τα ωράριά σας και τα ωράρια της τρέχουσας ημέρας θα εμφανιστούν στην αρχική σελίδα, μαζί με ένα στοιχείο μενού που θα γράφει 'Τα ωράριά μας'."
 
-#: open/root-functions.php:180
+#: open/root-functions.php:207
 msgid "Will show as closed if left blank."
 msgstr "Θα εμφανίζεται ως κλειστό αν αφεθεί κενό."
 
-#: open/root-functions.php:236
+#: open/root-functions.php:263
 msgid "Let visitors know about holidays, vacations, and other special hours"
 msgstr "Ενημερώστε τους επισκέπτες σας για διακοπές, εορταστικά ωράρια και άλλα ειδικά ωράρια."
 
-#: open/root-functions.php:302 prose/root-functions.php:189
-#: scaffold/root-functions.php:75
-msgid "Primary Menu"
-msgstr "Κύριο μενού"
-
-#: open/root-functions.php:305 prose/root-functions.php:192
-#: scaffold/root-functions.php:78
-msgid "Menus are awesome!"
-msgstr "Τα μενού είναι άπαιχτα!"
-
-#: open/root-functions.php:310
+#: open/root-functions.php:356
 msgid "Main branding colour"
 msgstr "Κύριο χρώμα σήματος"
 
@@ -1927,37 +2689,72 @@ msgstr "Το WPtouch Pro 3 δεν μπορεί να συνυπάρχει με WP
 msgid "Unknown error"
 msgstr "Άγνωστο σφάλμα"
 
-#: prose/default/functions.php:10
-msgid "Load more from this collection"
-msgstr "Φόρτωση περισσότερων από αυτήν τη συλλογή"
+#: prose/default/comments.php:20 prose/default/comments.php:26
+#: themes/foundation/default/comments.php:20
+#: themes/foundation/default/comments.php:26
+msgid "Load More Comments&hellip;"
+msgstr "Φόρτωση περισσότερων σχολίων&hellip;"
 
-#: prose/default/functions.php:11
+#: prose/default/comments.php:38 themes/foundation/default/comments.php:38
+msgid "Comments are closed"
+msgstr "Τα σχόλια έχουν κλείσει"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply"
+msgstr "Αφήστε απάντηση"
+
+#: prose/default/comments.php:51 themes/foundation/default/comments.php:51
+msgid "Leave a Reply to %s"
+msgstr "Αφήστε μια απάντηση σε %s"
+
+#: prose/default/comments.php:54 themes/foundation/default/comments.php:54
+msgid "You must be %slogged in%s to post a comment."
+msgstr "Πρέπει να είστε %slogged in%s για να δημοσιεύσετε σχόλιο."
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Logged in as"
+msgstr "Συνδεδεμένος ως"
+
+#: prose/default/comments.php:61 themes/foundation/default/comments.php:61
+msgid "Log out"
+msgstr "Αποσύνδεση"
+
+#: prose/default/comments.php:65 themes/foundation/default/comments.php:65
+msgid "Name"
+msgstr "Όνομα"
+
+#: prose/default/comments.php:67 themes/foundation/default/comments.php:67
+#: themes/foundation/modules/social-links/social-links.php:94
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: prose/default/comments.php:69 themes/foundation/default/comments.php:69
+msgid "Website"
+msgstr "Ιστότοπος"
+
+#: prose/default/comments.php:77 themes/foundation/default/comments.php:77
+msgid "Publish"
+msgstr "Δημοσίευση"
+
+#: prose/default/functions.php:34
 msgid "%d minute"
 msgstr "%d λεπτό"
 
-#: prose/default/functions.php:12
+#: prose/default/functions.php:35
 msgid "%d minutes"
 msgstr "%d λεπτά"
 
-#: prose/default/functions.php:13
+#: prose/default/functions.php:36
 msgid "%d minute remaining"
 msgstr "απομένει %d λεπτό"
 
-#: prose/default/functions.php:14
+#: prose/default/functions.php:37
 msgid "%d minutes remaining"
 msgstr "απομένουν %d λεπτά"
 
-#: prose/default/functions.php:15
+#: prose/default/functions.php:38
 msgid "Share post"
 msgstr "Κοινοποίηση άρθρου"
-
-#: prose/default/header-bottom.php:19
-msgid "Collections"
-msgstr "Συλλογές"
-
-#: prose/default/header-bottom.php:22
-msgid "Options"
-msgstr "Επιλογές"
 
 #: prose/default/header-bottom.php:43
 msgid "Reading Text Size"
@@ -1979,11 +2776,11 @@ msgstr "Μεγάλο"
 msgid "Text Sample"
 msgstr "Δείγμα κειμένου"
 
-#: prose/default/header-bottom.php:103
+#: prose/default/header-bottom.php:101
 msgid "Collection"
 msgstr "Συλλογή"
 
-#: prose/default/header-bottom.php:105
+#: prose/default/header-bottom.php:103
 msgid "Posts Tagged"
 msgstr "Άρθρα με ετικέτες"
 
@@ -1991,41 +2788,33 @@ msgstr "Άρθρα με ετικέτες"
 msgid "Read Next"
 msgstr "Ανάγνωση επόμενου"
 
-#: prose/root-functions.php:63
-msgid "Show categories as \"collections\" in menu"
-msgstr "Εμφάνιση κατηγοριών ως \"συλλογές\" στο μενού"
+#: prose/default/single.php:31
+msgid "Discuss this post"
+msgstr "Συζητήστε αυτό το άρθρο"
 
-#: prose/root-functions.php:74
-msgid "Maximum number of items in categories/collections"
-msgstr "Μέγιστος αριθμός στοιχείων σε κατηγορίες/συλλογές"
+#: prose/default/single.php:33
+msgid "View discussion"
+msgstr "Προβολή συζήτησης"
 
-#: prose/root-functions.php:90
-msgid "Animate the featured image on posts"
-msgstr "Κινούμενη προβεβλημένη εικόνα σε άρθρα"
+#: prose/root-functions.php:64
+msgid "Show comments when reading posts"
+msgstr "Εμφάνιση σχολίων κατά την ανάγνωση άρθρων"
 
-#: prose/root-functions.php:110
-msgid "Displayed behind header on pages and posts without featured images."
-msgstr "Εμφανίζεται πίσω από την κεφαλίδα σε σελίδες και άρθρα χωρίς προβεβλημένες εικόνες."
+#: prose/root-functions.php:65
+msgid "Comment form will not appear for posts with comments turned off."
+msgstr "Η φόρμα σχολίων δεν θα εμφανίζεται για άρθρα με απενεργοποιημένα σχόλια."
 
-#: prose/root-functions.php:123
-msgid "Site Intro"
-msgstr "Εισαγωγή ιστότοπου"
-
-#: prose/root-functions.php:129
-msgid "Displayed on post listing page below site name."
-msgstr "Εμφανίζεται στη σελίδα λίστας άρθρων κάτω από το όνομα τοποθεσίας."
-
-#: prose/root-functions.php:142
+#: prose/root-functions.php:143
 msgid "Drop Caps"
 msgstr "Αρχιγράμματα"
 
-#: prose/root-functions.php:148
+#: prose/root-functions.php:149
 msgid "Use a drop cap at the start of each blog post."
 msgstr "Χρήση αρχιγράμματος στην αρχή κάθε άρθρου ιστολογίου."
 
-#: prose/root-functions.php:200 themes/foundation/root-functions.php:11
-msgid "Branding"
-msgstr "Εμπορική προσαρμογή"
+#: prose/root-functions.php:196
+msgid "Off-canvas menu for Prose"
+msgstr "Μενού εκτός καμβά για Prose"
 
 #: responsive-images/responsive-images.php:92
 msgid "Responsive Images"
@@ -2055,63 +2844,63 @@ msgstr "Βελτιστοποίηση για ποιότητα"
 msgid "Call Us"
 msgstr "Καλέστε μας"
 
-#: simple/default/header-bottom.php:15
+#: simple/default/header-bottom.php:17
 msgid "Toggle Menu"
 msgstr "Εμφάνιση μενού"
 
-#: simple/root-functions.php:58
+#: simple/root-functions.php:59
 msgid "Site Menu (Pulldown)"
 msgstr "Μενού ιστότοπου (αναπτυσσόμενο)"
 
-#: simple/root-functions.php:61
+#: simple/root-functions.php:62
 msgid "Pull-down menu at top of pages"
 msgstr "Αναπτυσσόμενο μενού στο πάνω μέρος των σελίδων"
 
-#: simple/root-functions.php:69
+#: simple/root-functions.php:70
 msgid "Front Page Menu"
 msgstr "Μενού εμπροσθόφυλλου"
 
-#: simple/root-functions.php:72
+#: simple/root-functions.php:73
 msgid "Displayed below front page menu and content"
 msgstr "Εμφανίζεται κάτω από το μενού και το περιεχόμενο του εμπροσθόφυλλου"
 
-#: simple/root-functions.php:190
+#: simple/root-functions.php:191
 msgid "Enable search on blog pages"
 msgstr "Ενεργοποίηση αναζήτησης σε σελίδες ιστολογίου"
 
-#: simple/root-functions.php:204
+#: simple/root-functions.php:205
 msgid "Homepage Call Us"
 msgstr "Καλέστε μας στην αρχική σελίδα"
 
-#: simple/root-functions.php:210
+#: simple/root-functions.php:211
 msgid "Phone number"
 msgstr "Αριθμός τηλεφώνου"
 
-#: simple/root-functions.php:211
+#: simple/root-functions.php:212
 msgid "Enter a phone number and a homepage menu item for 'call us' will be shown."
 msgstr "Δώστε αριθμό τηλεφώνου και ένα στοιχείο μενού αρχικής σελίδας για να εμφανίζεται το πεδίο 'Καλέστε μας'."
 
-#: simple/root-functions.php:223
+#: simple/root-functions.php:224
 msgid "Homepage Location"
 msgstr "Τοποθεσία στην αρχική σελίδα"
 
-#: simple/root-functions.php:230
+#: simple/root-functions.php:231
 msgid "Enter an address and a homepage menu item for 'Our Location' will be shown."
 msgstr "Δώστε διεύθυνση και ένα στοιχείο μενού αρχικής σελίδας για να εμφανίζεται το πεδίο 'Η τοποθεσία μας'."
 
-#: simple/root-functions.php:242
+#: simple/root-functions.php:243
 msgid "Front Page Content"
 msgstr "Περιεχόμενο εμπροσθόφυλλου"
 
-#: simple/root-functions.php:248
+#: simple/root-functions.php:249
 msgid "Front page alternate content"
 msgstr "Εναλλακτικό περιεχόμενο εμπροσθόφυλλου"
 
-#: simple/root-functions.php:249
+#: simple/root-functions.php:250
 msgid "Shows above the front page menu (if enabled), HTML allowed."
 msgstr "Εμφανίζεται πάνω από το μενού εμπροσθοφύλλου (αν έχει ενεργοποιηθεί), επιτρέπεται HTML."
 
-#: simple/root-functions.php:286
+#: simple/root-functions.php:287
 msgid "Add a light noise effect to the drop-down menu and theme background"
 msgstr "Προσθήκη εφέ ελαφρύ ήχου στο αναπτυσσόμενο μενού και στο φόντο θέματος."
 
@@ -2131,56 +2920,6 @@ msgstr "&laquo; προηγούμενο στη συλλογή"
 msgid "next in gallery &raquo;"
 msgstr "επόμενο στη συλλογή &raquo;"
 
-#: themes/foundation/default/comments.php:20
-#: themes/foundation/default/comments.php:26
-msgid "Load More Comments&hellip;"
-msgstr "Φόρτωση περισσότερων σχολίων&hellip;"
-
-#: themes/foundation/default/comments.php:38
-msgid "Comments are closed"
-msgstr "Τα σχόλια έχουν κλείσει"
-
-#: themes/foundation/default/comments.php:48
-msgid "Cancel"
-msgstr "Άκυρο"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply"
-msgstr "Αφήστε απάντηση"
-
-#: themes/foundation/default/comments.php:51
-msgid "Leave a Reply to %s"
-msgstr "Αφήστε μια απάντηση σε %s"
-
-#: themes/foundation/default/comments.php:54
-msgid "You must be %slogged in%s to post a comment."
-msgstr "Πρέπει να είστε %slogged in%s για να δημοσιεύσετε σχόλιο."
-
-#: themes/foundation/default/comments.php:61
-msgid "Logged in as"
-msgstr "Συνδεδεμένος ως"
-
-#: themes/foundation/default/comments.php:61
-msgid "Log out"
-msgstr "Αποσύνδεση"
-
-#: themes/foundation/default/comments.php:65
-msgid "Name"
-msgstr "Όνομα"
-
-#: themes/foundation/default/comments.php:67
-#: themes/foundation/modules/social-links/social-links.php:94
-msgid "E-Mail"
-msgstr "E-Mail"
-
-#: themes/foundation/default/comments.php:69
-msgid "Website"
-msgstr "Ιστότοπος"
-
-#: themes/foundation/default/comments.php:77
-msgid "Publish"
-msgstr "Δημοσίευση"
-
 #: themes/foundation/default/footer.php:10
 msgid "Back to top"
 msgstr "Επιστροφή στην αρχή"
@@ -2197,13 +2936,9 @@ msgstr "Συμπληρώστε όλα τα πεδία σωστά για να δ�
 msgid "Go back"
 msgstr "Επιστροφή"
 
-#: themes/foundation/default/one-comment.php:12
+#: themes/foundation/default/one-comment.php:17
 msgid "Your comment is awaiting moderation"
 msgstr "Το σχόλιό σας αναμένει επόπτευση"
-
-#: themes/foundation/default/related-posts.php:4
-msgid "Related"
-msgstr "Σχετικά"
 
 #: themes/foundation/default/switch-link.php:8
 msgid "mobile"
@@ -2310,116 +3045,116 @@ msgstr "Προεπισκόπηση θέματος"
 msgid "Reload"
 msgstr "Επαναφόρτωση"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:190
+#: themes/foundation/modules/custom-posts/custom-posts.php:165
 msgid "Custom Post Support"
 msgstr "Υποστήριξη άρθρων ειδικού τύπου"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:196
+#: themes/foundation/modules/custom-posts/custom-posts.php:171
 msgid "Enable custom post-type support"
 msgstr "Ενεργοποίηση υποστήριξης άρθρων ειδικού τύπου"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:204
+#: themes/foundation/modules/custom-posts/custom-posts.php:179
 msgid "Show custom post taxonomy"
 msgstr "Προβολή ταξινομίας άρθρων ειδικού τύπου"
 
-#: themes/foundation/modules/custom-posts/custom-posts.php:216
+#: themes/foundation/modules/custom-posts/custom-posts.php:191
 msgid "Custom Post Types"
 msgstr "Τύποι ειδικών άρθρων"
 
-#: themes/foundation/modules/featured/featured.php:260
+#: themes/foundation/modules/featured/featured.php:265
 msgid "Featured Slider"
 msgstr "Προβεβλημένο ρυθμιστικό"
 
-#: themes/foundation/modules/featured/featured.php:266
+#: themes/foundation/modules/featured/featured.php:271
 msgid "Enable featured slider"
 msgstr "Ενεργοποίηση προβεβλημένου ρυθμιστικού"
 
-#: themes/foundation/modules/featured/featured.php:267
+#: themes/foundation/modules/featured/featured.php:272
 msgid "Requires at least 2 entries to contain featured images"
 msgstr "Απαιτούνται τουλάχιστον 2 καταχωρήσεις για να περιληφθούν προβεβλημένες εικόνες"
 
-#: themes/foundation/modules/featured/featured.php:274
+#: themes/foundation/modules/featured/featured.php:279
 msgid "Maximum number of posts"
 msgstr "Μέγιστος αριθμός άρθρων"
 
-#: themes/foundation/modules/featured/featured.php:279
+#: themes/foundation/modules/featured/featured.php:284
 msgid "3 posts"
 msgstr "3 άρθρα"
 
-#: themes/foundation/modules/featured/featured.php:280
+#: themes/foundation/modules/featured/featured.php:285
 msgid "5 posts"
 msgstr "5 άρθρα"
 
-#: themes/foundation/modules/featured/featured.php:281
+#: themes/foundation/modules/featured/featured.php:286
 msgid "10 posts"
 msgstr "10 άρθρα"
 
-#: themes/foundation/modules/featured/featured.php:287
+#: themes/foundation/modules/featured/featured.php:292
 msgid "Automatically slide"
 msgstr "Αυτόματη ολίσθηση"
 
-#: themes/foundation/modules/featured/featured.php:295
+#: themes/foundation/modules/featured/featured.php:300
 msgid "Continuously slide"
 msgstr "Συνεχόμενη ολίσθηση"
 
-#: themes/foundation/modules/featured/featured.php:303
+#: themes/foundation/modules/featured/featured.php:308
 msgid "Grayscale images (CSS 3 effect)"
 msgstr "Εικόνες σε κλίμακα του γκρι (εφέ CSS 3)"
 
-#: themes/foundation/modules/featured/featured.php:304
+#: themes/foundation/modules/featured/featured.php:309
 msgid "Featured slider images will be in grayscale for devices that support CSS filters."
 msgstr "Οι εικόνες προβεβλημένου ρυθμιστικού θα εμφανίζονται σε κλίμακα του γκρι για συσκευές που υποστηρίζουν φίλτρα CSS."
 
-#: themes/foundation/modules/featured/featured.php:319
+#: themes/foundation/modules/featured/featured.php:324
 msgid "Featured slider posts also show in listings"
 msgstr "Άρθρα προβεβλημένων ρυθμιστικών φαίνονται επίσης στις καταχωρήσεις"
 
-#: themes/foundation/modules/featured/featured.php:327
+#: themes/foundation/modules/featured/featured.php:332
 msgid "Slide transition speed"
 msgstr "Ταχύτητα μετάβασης ολίσθησης"
 
-#: themes/foundation/modules/featured/featured.php:332
+#: themes/foundation/modules/featured/featured.php:337
 msgid "Slow"
 msgstr "Αργή"
 
-#: themes/foundation/modules/featured/featured.php:333
+#: themes/foundation/modules/featured/featured.php:338
 msgid "Normal"
 msgstr "Κανονική"
 
-#: themes/foundation/modules/featured/featured.php:334
+#: themes/foundation/modules/featured/featured.php:339
 msgid "Fast"
 msgstr "Γρήγορη"
 
-#: themes/foundation/modules/featured/featured.php:345
+#: themes/foundation/modules/featured/featured.php:350
 msgid "Show latest posts"
 msgstr "Εμφάνιση τελευταίων άρθρων"
 
-#: themes/foundation/modules/featured/featured.php:346
+#: themes/foundation/modules/featured/featured.php:351
 msgid "Show posts from a specific tag"
 msgstr "Εμφάνιση άρθρων από συγκεκριμένη ετικέτα"
 
-#: themes/foundation/modules/featured/featured.php:347
+#: themes/foundation/modules/featured/featured.php:352
 msgid "Show posts from a specific category"
 msgstr "Εμφάνιση άρθρων μιας συγκεκριμένης κατηγορίας"
 
-#: themes/foundation/modules/featured/featured.php:348
+#: themes/foundation/modules/featured/featured.php:353
 msgid "Show only specific posts or pages"
 msgstr "Εμφάνιση μόνο συγκεκριμένων άρθρων ή σελίδων"
 
-#: themes/foundation/modules/featured/featured.php:354
+#: themes/foundation/modules/featured/featured.php:359
 msgid "Only this tag"
 msgstr "Μόνο αυτήν την ετικέτα"
 
-#: themes/foundation/modules/featured/featured.php:355
-#: themes/foundation/modules/featured/featured.php:364
+#: themes/foundation/modules/featured/featured.php:360
+#: themes/foundation/modules/featured/featured.php:369
 msgid "Enter the tag/category slug name"
 msgstr "Δώστε σύντομο όνομα ετικέτας/κατηγορίας."
 
-#: themes/foundation/modules/featured/featured.php:363
+#: themes/foundation/modules/featured/featured.php:368
 msgid "Only this category"
 msgstr "Μόνο αυτή η κατηγορία"
 
-#: themes/foundation/modules/featured/featured.php:372
+#: themes/foundation/modules/featured/featured.php:377
 msgid "Comma-separated list of post/page IDs"
 msgstr "Λίστα ID άρθρου/σελίδας χωρισμένα με κόμμα"
 
@@ -2447,7 +3182,7 @@ msgstr "Απομνημόνευση στοιχείων"
 msgid "Log In"
 msgstr "Σύνδεση"
 
-#: themes/foundation/modules/login/login-html.php:30
+#: themes/foundation/modules/login/login-html.php:31
 msgid "Lost password?"
 msgstr "Χάσατε τον κωδικό πρόσβασης;"
 
@@ -2515,47 +3250,47 @@ msgstr "Tweet"
 msgid "Mail"
 msgstr "Αποστολή email"
 
-#: themes/foundation/modules/sharing/sharing.php:81
+#: themes/foundation/modules/sharing/sharing.php:94
 msgid "Sharing"
 msgstr "Κοινοποιήσεις"
 
-#: themes/foundation/modules/sharing/sharing.php:87
+#: themes/foundation/modules/sharing/sharing.php:100
 msgid "Show sharing links"
 msgstr "Εμφάνιση συνδέσμων κοινοποίησης"
 
-#: themes/foundation/modules/sharing/sharing.php:88
+#: themes/foundation/modules/sharing/sharing.php:101
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on single posts."
 msgstr "Εμφανίζει κουμπία Facebook, Twitter, Google+ και Email σε μονά άρθρα."
 
-#: themes/foundation/modules/sharing/sharing.php:95
+#: themes/foundation/modules/sharing/sharing.php:108
 msgid "Show sharing links on pages"
 msgstr "Εμφάνιση συνδέσμων κοινοποίησης στις σελίδες"
 
-#: themes/foundation/modules/sharing/sharing.php:96
+#: themes/foundation/modules/sharing/sharing.php:109
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on pages as well as single posts."
 msgstr "Θα εμφανίζονται κουμπιά Facebook, Twitter, Google+ και Email τόσο σε σελίδες, όσο και σε μονά άρθρα."
 
-#: themes/foundation/modules/sharing/sharing.php:103
+#: themes/foundation/modules/sharing/sharing.php:116
 msgid "Sharing links location"
 msgstr "Τοποθεσία συνδέσμων κοινοποίησης"
 
-#: themes/foundation/modules/sharing/sharing.php:108
+#: themes/foundation/modules/sharing/sharing.php:121
 msgid "Above post content"
 msgstr "Πάνω από το περιεχόμενο του άρθρου"
 
-#: themes/foundation/modules/sharing/sharing.php:109
+#: themes/foundation/modules/sharing/sharing.php:122
 msgid "Below post content"
 msgstr "Κάτω από το περιεχόμενο του άρθρου"
 
-#: themes/foundation/modules/sharing/sharing.php:115
+#: themes/foundation/modules/sharing/sharing.php:128
 msgid "Color scheme"
 msgstr "Συνδυασμός χρωμάτων"
 
-#: themes/foundation/modules/sharing/sharing.php:120
+#: themes/foundation/modules/sharing/sharing.php:133
 msgid "Theme colors"
 msgstr "Χρώματα θέματος"
 
-#: themes/foundation/modules/sharing/sharing.php:121
+#: themes/foundation/modules/sharing/sharing.php:134
 msgid "Social network colors"
 msgstr "Χρώματα κοινωνικού δικτύου"
 
@@ -2624,11 +3359,13 @@ msgstr "iPad"
 #: themes/foundation/modules/webapp/webapp.php:91
 #: themes/foundation/modules/webapp/webapp.php:109
 #: themes/foundation/modules/webapp/webapp.php:128
-#: themes/foundation/modules/webapp/webapp.php:136
-#: themes/foundation/modules/webapp/webapp.php:154
-#: themes/foundation/modules/webapp/webapp.php:162
-#: themes/foundation/root-functions.php:428
-#: themes/foundation/root-functions.php:446
+#: themes/foundation/modules/webapp/webapp.php:146
+#: themes/foundation/modules/webapp/webapp.php:165
+#: themes/foundation/modules/webapp/webapp.php:173
+#: themes/foundation/modules/webapp/webapp.php:191
+#: themes/foundation/modules/webapp/webapp.php:199
+#: themes/foundation/root-functions.php:439
+#: themes/foundation/root-functions.php:457
 msgid "%d by %d pixels (PNG)"
 msgstr "%d επί %d pixel (PNG)"
 
@@ -2673,8 +3410,8 @@ msgid "Notice message contents"
 msgstr "Περιεχόμενα ειδοποιητικού μηνύματος"
 
 #: themes/foundation/modules/webapp/webapp.php:44
-msgid "[device] and [icon] are dynamic and used to determine the device and iOS version. Do not remove these from your message."
-msgstr "Τα [device] και [icon] αποτελούν δυναμικό περιεχόμενο και χρησιμοποιούνται για την εξακρίβωση της συσκευής και της έκδοσης iOS. Μην τα αφαιρείτε από το μήνυμα."
+msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
+msgstr "Το [icon] χρησιμοποιείται για την εμφάνιση του κατάλληλου εικονιδίου σελιδοδείκτη για τη συσκευή σας. Μην το αφαιρέσετε από το μήνυμά σας."
 
 #: themes/foundation/modules/webapp/webapp.php:48
 msgid "the notice message will be shown again for visitors"
@@ -2709,10 +3446,18 @@ msgid "iPhone 5 Startup Screen"
 msgstr "Οθόνη εκκίνησης iPhone 5"
 
 #: themes/foundation/modules/webapp/webapp.php:122
+msgid "iPhone 6 Startup Screen"
+msgstr "Οθόνη έναρξης iPhone 6"
+
+#: themes/foundation/modules/webapp/webapp.php:140
+msgid "iPhone 6+ Startup Screen"
+msgstr "Οθόνη έναρξης iPhone 6+"
+
+#: themes/foundation/modules/webapp/webapp.php:159
 msgid "iPad Mini and iPad Startup Screens"
 msgstr "Οθόνες εκκίνησης iPad Mini και iPad"
 
-#: themes/foundation/modules/webapp/webapp.php:148
+#: themes/foundation/modules/webapp/webapp.php:185
 msgid "Retina iPad Startup Screens"
 msgstr "Οθόνες εκκίνησης Retina iPad"
 
@@ -2741,159 +3486,163 @@ msgid "Language: "
 msgstr "Γλώσσα:"
 
 #: themes/foundation/root-functions.php:139
-msgid "Install this Web-App on your [device]: tap [icon] then \"Add to Home Screen\""
-msgstr "Εγκατάσταση αυτής της Εφαρμογής Web-App σε [device]: πατήστε το [icon] και ύστερα το \"Προσθήκη στην αρχική οθόνη\""
+msgid "Install this Web-App on your homescreen: tap [icon] then \"Add to Home Screen\""
+msgstr "Εγκατάσταση αυτής της Εφαρμογής Web-App στην αρχική σας οθόνη: πατήστε το [icon] και ύστερα το \"Προσθήκη στην αρχική οθόνη\""
 
-#: themes/foundation/root-functions.php:342
+#: themes/foundation/root-functions.php:345
 msgid "Number of posts in post listings"
 msgstr "Αριθμός άρθρων στις καταχωρήσεις άρθρων"
 
-#: themes/foundation/root-functions.php:343
+#: themes/foundation/root-functions.php:346
 msgid "Overrides the WordPress Reading settings for \"Blog pages show at most\""
 msgstr "Παρακάμπτει τις ρυθμίσεις ανάγνωσης του πεδίου \"Οι σελίδες ιστολογίου προβάλουν το πολύ\" στο WordPress"
 
-#: themes/foundation/root-functions.php:350
+#: themes/foundation/root-functions.php:353
 msgid "Excluded categories"
 msgstr "Αποκλεισμένες κατηγορίες"
 
-#: themes/foundation/root-functions.php:351
+#: themes/foundation/root-functions.php:354
 msgid "Comma separated by category name"
 msgstr "Διαχωρισμένες με κόμματα, κατά όνομα κατηγορίας"
 
-#: themes/foundation/root-functions.php:358
+#: themes/foundation/root-functions.php:361
 msgid "Excluded tags"
 msgstr "Αποκλεισμένες ετικέτες"
 
-#: themes/foundation/root-functions.php:359
+#: themes/foundation/root-functions.php:362
 msgid "Comma separated by tag name"
 msgstr "Διαχωρισμένες με κόμμα, κατά όνομα ετικέτας"
 
 #: themes/foundation/root-functions.php:369
+msgid "Allow nested comment replies from mobile visitors"
+msgstr "Να επιτρέπονται οι ένθετες απαντήσεις σε σχόλια από επισκέπτες με κινητές συσκευές"
+
+#: themes/foundation/root-functions.php:370
+msgid "Will show a Reply link after each comment"
+msgstr "Θα εμφανίζει σύνδεσμο Απάντησης ύστερα από κάθε σχόλιο"
+
+#: themes/foundation/root-functions.php:380
 msgid "Blog"
 msgstr "Ιστολόγιο"
 
-#: themes/foundation/root-functions.php:380
+#: themes/foundation/root-functions.php:391
 msgid "Show comments on pages"
 msgstr "Εμφάνιση σχολίων στις σελίδες"
 
-#: themes/foundation/root-functions.php:381
+#: themes/foundation/root-functions.php:392
 msgid "Overrides the WordPress settings for showing comments on pages."
 msgstr "Παράκαμψη των ρυθμίσεων WordPress για την εμφάνιση σχολίων στις σελίδες."
 
-#: themes/foundation/root-functions.php:391
-#: themes/foundation/root-functions.php:1119
+#: themes/foundation/root-functions.php:402
+#: themes/foundation/root-functions.php:1136
 msgid "Pages"
 msgstr "Σελίδες"
 
-#: themes/foundation/root-functions.php:404
+#: themes/foundation/root-functions.php:415
 msgid "Icon Title"
 msgstr "Τίτλος εικονιδίου"
 
-#: themes/foundation/root-functions.php:410
+#: themes/foundation/root-functions.php:421
 msgid "Icon title"
 msgstr "Τίτλος εικονιδίου"
 
-#: themes/foundation/root-functions.php:411
+#: themes/foundation/root-functions.php:422
 msgid "When visitors bookmark your website, this will be the title shown."
 msgstr "Όταν οι επισκέπτες προσθέτουν τον ιστότοπό σας στους σελιδοδείκτες τους, θα εμφανίζεται αυτός ο τίτλος."
 
-#: themes/foundation/root-functions.php:422
+#: themes/foundation/root-functions.php:433
 msgid "Android"
 msgstr "Android"
 
-#: themes/foundation/root-functions.php:440
+#: themes/foundation/root-functions.php:451
 msgid "iPhone & iPod touch"
 msgstr "iPhone & iPod touch"
 
-#: themes/foundation/root-functions.php:476
+#: themes/foundation/root-functions.php:487
 msgid "Theme Colors"
 msgstr "Χρώματα θέματος"
 
-#: themes/foundation/root-functions.php:486
-msgid "Site Logo"
-msgstr "Λογότυπο ιστότοπου"
-
-#: themes/foundation/root-functions.php:492
+#: themes/foundation/root-functions.php:499
 msgid "(Scaled by themes to fit logo areas as needed)"
 msgstr "(Με προσαρμογή κατά θέματα ώστε να χωράνε σε περιοχές με λογότυπα όταν χρειάζεται)"
 
-#: themes/foundation/root-functions.php:505
+#: themes/foundation/root-functions.php:510
+msgid "Site Logo"
+msgstr "Λογότυπο ιστότοπου"
+
+#: themes/foundation/root-functions.php:519
 msgid "Smart App Banner"
 msgstr "Έξυπνο πανό εφαρμογής"
 
-#: themes/foundation/root-functions.php:511
+#: themes/foundation/root-functions.php:525
 msgid "Enter your app's %sApp Store ID%s"
 msgstr "Δώστε το %sApp Store ID%s της εφαρμογής σας"
 
-#: themes/foundation/root-functions.php:512
+#: themes/foundation/root-functions.php:526
 msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
 msgstr "Το μοναδικό αναγνωριστικό (ID) της εφαρμογής σας. Βρείτε το ID από το iTunes Link Maker: αναζητήστε την εφαρμογή σας. Στον σύνδεσμο που σας δίνεται, το ID είναι ο εννιαψήφιος αριθμός ανάμεσα στο id και το ?mt. Για παράδειγμα το ID της εφαρμογής Angry Birds's είναι 343200656."
 
-#: themes/foundation/root-functions.php:524
+#: themes/foundation/root-functions.php:538
 msgid "Theme Footer"
 msgstr "Υποσέλιδο θέματος"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "Custom footer content (HTML is allowed)"
 msgstr "Ειδικό περιεχόμενο υποσέλιδου (επιτρέπεται HTML)"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:541
 msgid "You can add custom footer content that will be displayed below the switch link."
 msgstr "Μπορείτε να προσθέτετε προσαρμοσμένο περιεχόμενου υποσέλιδου, το οποίο θα εμφανίζεται κάτω από τον σύνδεσμο εναλλαγής."
 
-#: themes/foundation/root-functions.php:905
+#: themes/foundation/root-functions.php:914
 msgid "search results for '%s'"
 msgstr "αποτελέσματα αναζήτησης για '%s'"
 
-#: themes/foundation/root-functions.php:907
+#: themes/foundation/root-functions.php:916
 msgid "%sCategories &rsaquo;%s %s"
 msgstr "%sΚατηγορίες &rsaquo;%s %s"
 
-#: themes/foundation/root-functions.php:909
+#: themes/foundation/root-functions.php:918
 msgid "Tags &rsaquo; %s"
 msgstr "Ετικέτες &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:911
-#: themes/foundation/root-functions.php:913
-#: themes/foundation/root-functions.php:915
+#: themes/foundation/root-functions.php:920
+#: themes/foundation/root-functions.php:922
+#: themes/foundation/root-functions.php:924
 msgid "Archives &rsaquo; %s"
 msgstr "Αρχείο καταχωρήσεων &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:930
+#: themes/foundation/root-functions.php:939
 msgid "Load more from this category"
 msgstr "Φόρτωση περισσότερων από αυτήν την κατηγορία"
 
-#: themes/foundation/root-functions.php:932
+#: themes/foundation/root-functions.php:941
 msgid "Load more tagged like this"
 msgstr "Φόρτωση περισσότερων με παρόμοιες ετικέτες"
 
-#: themes/foundation/root-functions.php:934
+#: themes/foundation/root-functions.php:943
 msgid "Load more from this day"
 msgstr "Φόρτωση περισσότερων από αυτήν την ημέρα"
 
-#: themes/foundation/root-functions.php:936
+#: themes/foundation/root-functions.php:945
 msgid "Load more from this month"
 msgstr "Φόρτωση περισσότερων από αυτόν το μήνα"
 
-#: themes/foundation/root-functions.php:938
+#: themes/foundation/root-functions.php:947
 msgid "Load more from this year"
 msgstr "Φόρτωση περισσότερων από αυτό το έτος"
 
-#: themes/foundation/root-functions.php:940
+#: themes/foundation/root-functions.php:949
 msgid "Load more in this section"
 msgstr "Φόρτωση περισσότερων σε αυτό το τμήμα"
 
-#: themes/foundation/root-functions.php:942
+#: themes/foundation/root-functions.php:951
 msgid "Load more entries"
 msgstr "Φόρτωση περισσότερων καταχωρήσεων"
 
-#: themes/foundation/root-functions.php:1068
+#: themes/foundation/root-functions.php:1085
 msgid "Post"
 msgstr "Άρθρο"
-
-#: themes/foundation/root-functions.php:1070
-msgid "Page"
-msgstr "Σελίδα"
 
 #. Plugin Name of the plugin/theme
 msgid "WPtouch Pro"

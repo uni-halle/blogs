@@ -79,9 +79,9 @@ header img {
 }
 
 #menu-toggle:after {
-	content: "\f0c9";
+	content: "\e80a";
 	display: block;
-	font: 110% 'FontAwesome', sans-serif;
+	font: 110% 'fontello', sans-serif;
 	padding: 18px;
 }
 
@@ -92,9 +92,9 @@ header img {
 }
 
 #search-toggle:after {
-	content: "\f002";
+	content: "\e809";
 	display: block;
-	font: 110% 'FontAwesome', sans-serif;
+	font: 110% 'fontello', sans-serif;
 	padding: 18px;
 }
 
@@ -212,11 +212,11 @@ header img {
 }
 
 #slider a p.heading-font:after {
-	content: "\f105";
+	content: "\e80c";
 	margin-left: 8px;
 	top: 2px;
 	position: relative;
-	font-family: FontAwesome;
+	font-family: 'fontello';
 }
 
 .landscape #slider a p.heading-font, .landscape #slider a p.featured-date {
@@ -240,13 +240,13 @@ header img {
 	font-size: 95%;
 	font-weight: bold;
 	margin-left: -25%;
-	top: 6px;
+	top: 10px;
 }
 
 #slider .comments-number:after {
-	content: "\f075";
+	content: "\e812";
 	display: block;
-	font: 36px 'FontAwesome', sans-serif;
+	font: 36px 'fontello', sans-serif;
 	position: absolute;
 	top: 0;
 	left: -60%;
@@ -423,13 +423,13 @@ ul.dots {
 	position: relative;
 	font-size: 70%;
 	font-weight: bold;
-	vertical-align: -2px;
+	vertical-align: -5px;
 }
 
 .loop-link .comments:after {
-	content: "\f075";
+	content: "\e812";
 	display: block;
-	font: 30px 'FontAwesome', sans-serif;
+	font: 30px 'fontello', sans-serif;
 	position: absolute;
 	left: 50%;
 	margin-left: -15px;
@@ -832,8 +832,8 @@ form#commentform input, form#commentform textarea {
 }
 
 .search span.select-wrap i.icon-caret-down {
-	content: "\f063";
-	font: 110% 'FontAwesome', sans-serif;
+	content: "\e844";
+	font: 110% 'fontello', sans-serif;
 	position: relative;
 	z-index: 2;
 	top: 1px;

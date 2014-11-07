@@ -18,6 +18,6 @@
 		<?php endif; ?>
 		<?php comment_text(); ?>
 		<?php if ( $settings->allow_nested_comment_replies ) { ?>
-			<p><?php comment_reply_link(array_merge( $GLOBALS[ 'comment_args' ], array('depth' => $GLOBALS[ 'comment_depth' ], 'max_depth' => $GLOBALS[ 'comment_args' ]))) ?></p>
+			<p><a href="<?php echo esc_url( add_query_arg( 'replytocom', $comment->comment_ID ) ) . '#respond'; ?>"><?php _e( 'Reply' ); ?></a></p>
 		<?php } ?>
 	</div>

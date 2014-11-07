@@ -261,17 +261,45 @@ function wptouch_render_general_page( $page_options ) {
 
 	wptouch_add_page_section(
 		WPTOUCH_ADMIN_SETUP_COMPAT,
-		__( 'Ignored URLs', 'wptouch-pro' ),
-		'ignored-compatibility',
+		__( 'Filter URLs', 'wptouch-pro' ),
+		'filtered-urls-compatibility',
 		array(
 			wptouch_add_setting(
+				'checkbox',
+				'enable_url_filter',
+				wptouchize_it( __( 'Limit the function of WPtouch Pro on specific URLs/Pages', 'wptouch-pro' ) ),
+				'',
+				WPTOUCH_SETTING_BASIC,
+				'3.5.3'
+			),
+			wptouch_add_setting(
+				'list',
+				'url_filter_behaviour',
+				'',
+				'',
+				WPTOUCH_SETTING_BASIC,
+				'3.5.3',
+				array(
+					'exclude_urls' => wptouchize_it( __( 'Do not load WPtouch Pro on these URLs/pages', 'wptouch-pro' ) ),
+					'exclusive_urls' => wptouchize_it( __( 'Only load WPtouch Pro on these URLs/pages', 'wptouch-pro' ) )
+				)
+			),
+			wptouch_add_setting(
+				'textarea',
+				'filtered_urls',
+				wptouchize_it( __( 'Apply filter to these URLs/Pages', 'wptouch-pro' ) ),
+				__( 'Each permalink URL fragment should be on its own line and relative, e.g. "/about" or "/products/store"', 'wptouch-pro' ),
+				WPTOUCH_SETTING_BASIC,
+				'3.5.3'
+			)
+			/*wptouch_add_setting(
 				'textarea',
 				'ignore_urls',
 				wptouchize_it( __( 'Do not load WPtouch Pro on these URLs/Pages', 'wptouch-pro' ) ),
 				__( 'Each permalink URL fragment should be on its own line and relative, e.g. "/about" or "/products/store"', 'wptouch-pro' ),
 				WPTOUCH_SETTING_BASIC,
 				'3.0'
-			)
+			)*/
 		),
 		$page_options
 	);

@@ -131,6 +131,9 @@ function foundation_determine_images() {
 				$new_posts = new WP_Query( array( 'post__in'  => $post_ids, 'posts_per_page' => $args[ 'max_search' ], 'post_type' => $post_types, 'orderby' => 'post__in' ) );
 			}
 			break;
+		case 'post_type':
+			$new_posts = new WP_Query( 'post_type=' . $settings->featured_post_type . '&posts_per_page=' . $args[ 'max_search' ] );
+			break;
 		case 'latest':
 		default:
 			break;
@@ -350,6 +353,7 @@ function foundation_featured_settings( $page_options ) {
 					'latest' => __( 'Show latest posts', 'wptouch-pro' ),
 					'tag' => __( 'Show posts from a specific tag', 'wptouch-pro' ),
 					'category' => __( 'Show posts from a specific category', 'wptouch-pro' ),
+					'post_type' => __( 'Show posts from a specific post type', 'wptouch-pro' ),
 					'posts' => __( 'Show only specific posts or pages', 'wptouch-pro' )
 				)
 			),
@@ -370,6 +374,15 @@ function foundation_featured_settings( $page_options ) {
 				WPTOUCH_SETTING_BASIC,
 				'1.0',
 				false //foundation_get_category_list()
+			),
+			wptouch_add_setting(
+				'list',
+				'featured_post_type',
+				__( 'Only this post type', 'wptouch-pro' ),
+				'',
+				WPTOUCH_SETTING_BASIC,
+				'3.5.3',
+				array_merge( array( 'Select Post Type' ), wptouch_custom_posts_get_list() )
 			),
 			wptouch_add_setting(
 				'text',

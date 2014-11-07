@@ -263,7 +263,7 @@ class PodcastingPlayer
         else 
         {
             $videoss = '[video src="' . $content . '" width="' . $width . '"' . ' height="' . $height . '" '. $videoPlayerVars . ']';
-			echo $videoss;
+//			echo $videoss;
             $player = $podcasting_text_above . $podcasting_text_before;
             $player .= '<span id="pod_audio_' . $this->_id . '">&nbsp;</span>';
             $player .= do_shortcode($videoss);            

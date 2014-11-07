@@ -1,8 +1,8 @@
 === Plugin Name ===
-Contributors: bravenewcode, duanestorey, dalemugford, martin kuplens-ewart
+Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.6
-Stable tag: 3.5.4
+Stable tag: 3.6
 Tested up to: 4.0
 License: GPLv2
 
@@ -40,9 +40,20 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 
 == Changelog ==
 
-= Version 3.5.4 (October 27th, 2014) =
+= Version 3.6 (November 6, 2014) =
 
-* Fixed: Directory structure issues
+* Added: New extension: Advanced Type (Pro Only)
+* Added: Ability to ignore tags when identifying related content
+* Added: Ability to have WPtouch work on specific URLs/pages only
+* Added: Ability to have the featured slider show the latest posts from a specific post type
+* Added: Prose theme now allows site owners to disable use of featured images as header background on single posts (Pro Only)
+* Added: Yelp option for footer social links
+* Changed: Improved appearance of Web App Notice Message on the WordPress login page (Pro Only)
+* Changed: When viewing a WordPress media gallery item, the item's post parent is linked
+* Changed: Share links adjust order and icon placement when the site is in an RTL language
+* Changed: Updated add to home scripts to latest version (3.0.8)
+* Fixed: WPtouch Pro can now disable certain Jetpack components that duplicate WPtouch functionality (Related Posts, Sharing Buttons, Like Box)
+
 
 = Version 3.5.3 (October 10th, 2014) =
 

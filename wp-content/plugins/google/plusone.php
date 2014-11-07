@@ -3,7 +3,7 @@
 Plugin Name: Google+ Plugin
 Plugin URI: http://premium.wpmudev.org/project/google-1
 Description: Integrate with Google+ Pages and add the Google +1 button to your site so your visitors can vote to tell the world how great your site is!
-Version: 1.3.3
+Version: 1.3.5
 Text Domain: wdgpo
 Author: Ve Bailovity (Incsub), raggedrobins (Incsub)
 Author URI: http://premium.wpmudev.org

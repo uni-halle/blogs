@@ -22,6 +22,7 @@
  *
  * @author Brian Eaton <beaton@google.com>
  */
+if( !class_exists( 'apiP12Signer' ) ) {
 class apiP12Signer extends apiSigner {
   // OpenSSL private key resource
   private $privateKey;
@@ -63,4 +64,5 @@ class apiP12Signer extends apiSigner {
     }
     return $signature;
   }
+}
 }
