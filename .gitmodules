@@ -1,0 +1,3 @@
+[submodule "wp-content/plugins/wp-post-formats"]
+	path = wp-content/plugins/wp-post-formats
+	url = https://github.com/crowdfavorite/wp-post-formats
