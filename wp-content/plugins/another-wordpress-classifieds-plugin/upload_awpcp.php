@@ -115,7 +115,7 @@ function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload'
 
 		$img_info = getimagesize( $tmpname );
 
-		if ( ! isset( $img_info[ 0 ] ) && ! isset( $img_info[ 0 ] ) ) {
+		if ( ! isset( $img_info[ 0 ] ) && ! isset( $img_info[ 1 ] ) ) {
 			$error = _x( 'The size of %1$s was too small. The file was not uploaded. File size must be greater than %2$d bytes.', 'upload files', 'AWPCP' );
 			$error = sprintf( $error, '<strong>' . $filename . '</strong>', $constraints['min_image_size'] );
 			return false;

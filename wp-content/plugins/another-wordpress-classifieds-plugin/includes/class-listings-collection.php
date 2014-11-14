@@ -165,4 +165,18 @@ class AWPCP_ListingsCollection {
         $conditions = array( $this->db->prepare( 'user_id = %d', $user_id ), 'disabled = 1' );
         return $this->count_valid_listings( $conditions );
     }
+
+    /**
+     * @since next-release
+     */
+    public function count_enabled_listings_in_category( $category_id ) {
+        $category_condition = '( ad_category_id = %1$d OR ad_category_parent_id = %1$d )';
+
+        $conditions = array(
+            $this->db->prepare( $category_condition, $category_id ),
+            'disabled = 0',
+        );
+
+        return $this->count_valid_listings( $conditions );
+    }
 }

@@ -254,12 +254,36 @@ function deletead($adid, $adkey, $editemail, $force=false, &$errors=array()) {
 function awpcp_ad_posted_user_email( $ad, $transaction = null, $message='' ) {
 	$admin_email = awpcp_admin_recipient_email_address();
 
+	$payments_api = awpcp_payments_api();
+	$show_total_amount = $payments_api->payments_enabled();
+	$show_total_credits = $payments_api->credit_system_enabled();
+	$currency_code = $payments_api->get_currency();
+
+	if ( ! is_null( $transaction ) ) {
+		$transaction_totals = $transaction->get_totals();
+		$total_amount = $transaction_totals['money'];
+		$total_credits = $transaction_totals['credits'];
+	} else {
+		$total_amount = 0;
+		$total_credits = 0;
+	}
+
+	$params = compact(
+		'ad',
+		'admin_email',
+		'transaction',
+		'currency_code',
+		'show_total_amount',
+		'show_total_credits',
+		'total_amount',
+		'total_credits',
+		'message'
+	);
+
 	$email = new AWPCP_Email;
 	$email->to[] = "{$ad->ad_contact_name} <{$ad->ad_contact_email}>";
 	$email->subject = get_awpcp_option('listingaddedsubject');
-
-	$template = AWPCP_DIR . '/frontend/templates/email-place-ad-success-user.tpl.php';
-	$email->prepare($template, compact('ad', 'transaction', 'message', 'admin_email'));
+	$email->prepare( AWPCP_DIR . '/frontend/templates/email-place-ad-success-user.tpl.php', $params );
 
 	return $email;
 }
@@ -311,24 +335,7 @@ function awpcp_render_ads($ads, $context='listings', $config=array(), $paginatio
 		return;
 	}
 
-	$layout = get_awpcp_option('displayadlayoutcode');
-	if (empty($layout)) {
-		$layout = awpcp()->settings->get_option_default_value('displayadlayoutcode');
-	}
-
-	$parity = array('displayaditemseven', 'displayaditemsodd');
-
-	$items = array();
-	foreach ($ads as $i => $ad) {
-		$_layout = awpcp_do_placeholders( $ad, $layout, $context );
-		$_layout = str_replace("\$awpcpdisplayaditems", $parity[$i % 2], $_layout);
-
-		if (function_exists('awpcp_featured_ads')) {
-			$items[] = awpcp_featured_ad_class($ad->ad_id, $_layout);
-		} else {
-			$items[] = $_layout;
-		}
-	}
+	$items = awpcp_render_listings_items( $ads, $context );
 
 	$before_content = apply_filters('awpcp-listings-before-content', array(), $context);
 	$after_content = apply_filters('awpcp-listings-after-content', array(), $context);
@@ -340,6 +347,39 @@ function awpcp_render_ads($ads, $context='listings', $config=array(), $paginatio
 	ob_end_clean();
 
 	return $output;
+}
+
+/**
+ * Renders each listing using the layout configured in the plugin
+ * settings.
+ *
+ * @since next-release
+ *
+ * @param Array $listings An array of AWPCP_Ad objects.
+ * @param string $context The context where the listings will be shown: listings, ?.
+ * @return Array An array of rendered items.
+ */
+function awpcp_render_listings_items( $listings, $context ) {
+	$parity = array( 'displayaditemseven', 'displayaditemsodd' );
+	$layout = get_awpcp_option('displayadlayoutcode');
+
+	if ( empty( $layout) ) {
+		$layout = awpcp()->settings->get_option_default_value( 'displayadlayoutcode' );
+	}
+
+	$items = array();
+	foreach ( $listings as $i => $listing ) {
+		$rendered_listing = awpcp_do_placeholders( $listing, $layout, $context );
+		$rendered_listing = str_replace( "\$awpcpdisplayaditems", $parity[$i % 2], $rendered_listing );
+
+		if ( function_exists( 'awpcp_featured_ads' ) ) {
+			$rendered_listing = awpcp_featured_ad_class( $listing->ad_id, $rendered_listing );
+		}
+
+		$items[] = apply_filters( 'awpcp-render-listing-item', $rendered_listing, $i + 1 );
+	}
+
+	return $items;
 }
 
 //	START FUNCTION: display listing of ad titles when browse ads is clicked
@@ -399,6 +439,7 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 		$isadmin = checkifisadmin();
 		$uiwelcome=stripslashes_deep(get_awpcp_option('uiwelcome'));
 
+		$output .= apply_filters( 'awpcp-content-before-listings-page', '' );
 		$output .= "<div class=\"uiwelcome\">$uiwelcome</div>";
 		$output .= awpcp_menu_items();
 
@@ -481,22 +522,7 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 				$pager2='';
 			}
 
-			$items = array();
-
-			foreach ($ads as $ad) {
-				$layout = get_awpcp_option('displayadlayoutcode');
-				if (empty($layout)) {
-					$layout = awpcp()->settings->get_option_default_value('displayadlayoutcode');
-				}
-
-				$layout = awpcp_do_placeholders( $ad, $layout, 'listings' );
-
-				if (function_exists('awpcp_featured_ads')) {
-					$layout = awpcp_featured_ad_class($ad->ad_id, $layout);
-				}
-
-				$items[] = $layout;
-			}
+			$items = awpcp_render_listings_items( $ads, 'listings' );
 
 			$opentable = "";
 			$closetable = "";
@@ -567,6 +593,7 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
 			}
 		}
 
+		$output .= apply_filters( 'awpcp-content-after-listings-page', '' );
 		$output .= "</div>";
 
 	}

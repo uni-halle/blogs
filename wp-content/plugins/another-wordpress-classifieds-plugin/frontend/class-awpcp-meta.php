@@ -32,6 +32,7 @@ class AWPCP_Meta {
         $this->configure_rel_canonical();
         $this->configure_opengraph_meta_tags();
         $this->configure_title_generation();
+        $this->configure_page_dates();
 
         $this->title_builder->set_current_listing( $this->ad );
         $this->title_builder->set_current_category_id( $this->category_id );
@@ -120,6 +121,14 @@ class AWPCP_Meta {
         if (function_exists('jetpack_og_tags')) {
             $this->jetpack();
         }
+    }
+
+    private function configure_page_dates() {
+        if ( ! $this->is_single_listing_page() )
+            return;
+
+        add_filter( 'get_the_date', array( $this, 'get_the_date' ), 10, 2 );
+        add_filter( 'get_the_modified_date', array( $this, 'get_the_modified_date' ), 10, 2 );
     }
 
     private function is_browse_categories_page() {
@@ -238,6 +247,20 @@ class AWPCP_Meta {
 
         // http://wiki.whatwg.org/wiki/FAQ#Should_I_close_empty_elements_with_.2F.3E_or_.3E.3F
         return '<' . $tag_name . ' ' . implode( ' ', $pieces ) . ( current_theme_supports('html5') ? '>' : ' />') . PHP_EOL;
+    }
+
+    public function get_the_date( $the_date, $d = '' ) {
+        if ( ! $d )
+            $d = get_option( 'date_format' );
+
+        return mysql2date( $d, $this->properties['published-time'] );
+    }
+
+    public function get_the_modified_date( $the_date, $d ) {
+        if ( ! $d )
+            $d = get_option( 'date_format' );
+
+        return mysql2date( $d, $this->properties['modified-time'] );
     }
 
     /**

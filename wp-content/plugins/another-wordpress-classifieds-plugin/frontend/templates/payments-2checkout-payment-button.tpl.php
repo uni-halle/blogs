@@ -20,6 +20,7 @@
 	<input type="hidden" name="c_tangible" value="N" />
 	<input type="hidden" name="x_item_number" value="<?php echo esc_attr( $item->id ); ?>" />
 	<input type="hidden" name="x_custom" value="<?php echo esc_attr( $custom ); ?>" />
+	<input type="hidden" value="<?php echo $currency; ?>" name="currency_code" />
 
 	<?php if ($is_test_mode_enabled): ?>
 	<input type="hidden" name="demo" value="Y" />

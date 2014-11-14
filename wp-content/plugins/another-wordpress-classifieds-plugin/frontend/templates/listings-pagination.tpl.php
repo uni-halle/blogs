@@ -7,6 +7,7 @@
             <tbody>
                 <tr>
                     <td><?php echo join('&nbsp;', $items); ?></td>
+                    <?php if ( count( $options ) > 1 ): ?>
                     <td>
                         <select name="results">
                         <?php foreach ($options as $option): ?>
@@ -18,6 +19,7 @@
                         <?php endforeach; ?>
                         </select>
                     </td>
+                    <?php endif; ?>
                 </tr>
             </tbody>
         </table>

@@ -1,0 +1,24 @@
+.awpcp-row {
+    clear: both;
+
+    .awpcp-one-half, .awpcp-one-third {
+        box-sizing: border-box;
+    }
+    .awpcp-one-half {
+        float: left;
+        width: 49%;
+
+        &:nth-child(2n+1) {
+            clear: left;
+            margin-right: 1%;
+        }
+        &:nth-child(2n) {
+            clear: right;
+            margin-left: 1%;
+        }
+    }
+    .awpcp-one-third {
+        float: left;
+        width: 33%;
+    }
+}

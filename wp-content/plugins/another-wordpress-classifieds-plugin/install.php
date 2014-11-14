@@ -409,6 +409,9 @@ class AWPCP_Installer {
         if ( version_compare( $oldversion, '3.2.2' ) < 0 ) {
             $this->upgrade_to_3_2_2( $oldversion );
         }
+        if ( version_compare( $oldversion, '3.3.2' ) < 0 ) {
+            $this->upgrade_to_3_3_2( $oldversion );
+        }
 
         do_action('awpcp_upgrade', $oldversion, $newversion);
 
@@ -1075,6 +1078,16 @@ class AWPCP_Installer {
         if ( get_awpcp_option( 'imagesapprove' ) ) {
             update_option( 'awpcp-update-media-status', true );
             update_option( 'awpcp-pending-manual-upgrade', true );
+        }
+    }
+
+    private function upgrade_to_3_3_2( $oldversion ) {
+        global $wpdb;
+
+        $files_with_empty_mime_type = $wpdb->get_var( 'SELECT COUNT(id) FROM ' . AWPCP_TABLE_MEDIA . " WHERE mime_type = ''" );
+
+        if ( $files_with_empty_mime_type > 0 ) {
+            update_option( 'awpcp-enable-fix-media-mime-type-upgrde', true );
         }
     }
 }

@@ -15,6 +15,12 @@
 <?php   if ($transaction->get('txn-id')): ?>
 <?php _e("Payment Transaction", "AWPCP")?>: <?php echo $transaction->get('txn-id') ?> 
 <?php   endif ?>
+<?php   if ( $show_total_amount ): ?>
+<?php echo esc_html( __( 'Order Total', 'AWPCP' ) ); ?> (<?php echo esc_html( $currency_code ); ?>): <?php echo esc_html( awpcp_format_money( $total_amount ) ); ?> 
+<?php   endif; ?>
+<?php   if ( $show_total_credits ): ?>
+<?php echo esc_html( __( 'Order Total (credits)', 'AWPCP' ) ); ?>: <?php echo esc_html( $total_credits ); ?> 
+<?php   endif; ?>
 <?php endif ?>
 
 

@@ -312,11 +312,14 @@ class AWPCP_AdminUpgrade extends AWPCP_AdminPage {
 
             if ( empty( $filename ) ) continue;
 
-            $path = str_replace( AWPCPUPLOADURL, $uploads, $filename );
+            $mime_type = '';
 
             if ( function_exists( 'mime_content_type' ) ) {
+                $path = str_replace( AWPCPUPLOADURL, $uploads, $filename );
                 $mime_type = mime_content_type( $path );
-            } else {
+            }
+
+            if ( empty( $mime_type ) ) {
                 $extension = awpcp_get_file_extension( $image->image_name );
                 $mime_type = sprintf( 'image/%s', $extension );
             }

@@ -1,14 +1,23 @@
-/*.awpcplatestbox {
-    margin-bottom:5px;
+.thumbnail_above() {
+    margin-right: 0;
+    margin-left: 0;
+    float: none;
+    width: 100%;
 }
-.awpcplatestbox .awpcp-listing-title {
-    clear: both;
-    font-weight: bold;
-    margin: 4px 0 8px;
+
+.left_thumbnail() {
+    margin-right: 10px;
+    margin-left: 0;
+    float: left;
+    width: 50%;
 }
-.awpcplatestspacer {
-    clear:both;
-}*/
+
+.right_thumbnail() {
+    margin-right: 0;
+    margin-left: 10px;
+    float: right;
+    width: 50%;
+}
 
 /* Using !important because theme authors love to use IDs in their
    CSS selectors. My rules won't be applied unless I know the exact
@@ -23,8 +32,7 @@
 
         .awpcplatestthumb {
             box-sizing: border-box;
-            margin: 0 0 5px;
-            width: 100%;
+            margin-bottom: 5px;
 
             a {
                 display: block !important;
@@ -46,4 +54,34 @@
             margin-left: 10px !important;
         }
     }
+
+    .awpcp-listings-widget-item-with-thumbnail-above-in-desktop .awpcplatestthumb {
+        .thumbnail_above();
+    }
+
+    .awpcp-listings-widget-item-with-left-thumbnail-in-desktop .awpcplatestthumb {
+        .left_thumbnail();
+    }
+
+    .awpcp-listings-widget-item-with-right-thumbnail-in-desktop .awpcplatestthumb {
+        .right_thumbnail();
+    }
+}
+
+@media screen and (max-width: 44em) {
+
+.awpcp-listings-widget-items-list {
+    .awpcp-listings-widget-item-with-left-thumbnail-in-mobile .awpcplatestthumb {
+        .left_thumbnail();
+    }
+
+    .awpcp-listings-widget-item-with-right-thumbnail-in-mobile .awpcplatestthumb {
+        .right_thumbnail();
+    }
+
+    .awpcp-listings-widget-item-with-thumbnail-above-in-mobile .awpcplatestthumb {
+        .thumbnail_above();
+    }
+}
+
 }

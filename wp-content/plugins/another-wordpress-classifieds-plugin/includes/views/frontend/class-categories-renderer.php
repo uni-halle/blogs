@@ -49,13 +49,17 @@ class AWPCP_CategoriesRenderer {
     }
 
     private function render_from_cache( $transient_key ) {
-        $output = get_transient( $transient_key );
+        $transient_keys = get_option( 'awpcp-categories-list-cache-keys', array() );
 
-        if ( $output === false ) {
-            throw new AWPCP_Exception( 'No cache entry was found.' );
+        if ( in_array( $transient_key, $transient_keys, true ) ) {
+            $output = get_transient( $transient_key );
+
+            if ( false !== $output )
+                return $output;
         }
 
-        return $output;
+
+        throw new AWPCP_Exception( 'No cache entry was found.' );
     }
 
     private function render_categories_and_update_cache( $params, $transient_key ) {

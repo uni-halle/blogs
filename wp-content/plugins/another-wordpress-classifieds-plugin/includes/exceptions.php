@@ -40,3 +40,18 @@ class AWPCP_RedirectionException extends AWPCP_Exception {
         $this->request_method = $request_method;
     }
 }
+
+class AWPCP_DatabaseException extends AWPCP_Exception {
+
+    public function __construct( $exception_message, $db_error ) {
+        parent::__construct( $this->prepare_exception_message( $exception_message, $db_error ) );
+    }
+
+    private function prepare_exception_message( $exception_message, $db_error ) {
+        if ( ! empty( $db_error ) ) {
+            return $exception_message . ' ' . $db_error;
+        } else {
+            return $exception_message;
+        }
+    }
+}

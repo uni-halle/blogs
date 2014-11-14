@@ -21,3 +21,5 @@
 </select>
 
 <?php endif; ?>
+
+<script type="text/javascript">var categories_<?php echo $hash; ?> = <?php echo json_encode( $categories ); ?>;</script>

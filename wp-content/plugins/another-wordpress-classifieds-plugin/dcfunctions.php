@@ -419,21 +419,25 @@ function _create_pager( $item_count, $offset, $results, $tpname ) {
 
 	$form = $form . $prev . $myreturn . $next;
 	$form.="\t</td>\n";
-	$form.="\t<td>\n";
-	$form.="\t\t<input type=\"hidden\" name=\"offset\" value=\"$offset\" />\n";
 
-	$flat_params = awpcp_flatten_array( $params );
-	while ( list( $k, $v ) = each( $flat_params ) ) {
-		if ( is_array( $v ) ) {
-			$v = count( $v ) > 0 ? reset( $v ) : '';
+	if ( count( $accepted_results_per_page ) > 1 ) {
+		$form.="\t<td>\n";
+		$form.="\t\t<input type=\"hidden\" name=\"offset\" value=\"$offset\" />\n";
+
+		$flat_params = awpcp_flatten_array( $params );
+		while ( list( $k, $v ) = each( $flat_params ) ) {
+			if ( is_array( $v ) ) {
+				$v = count( $v ) > 0 ? reset( $v ) : '';
+			}
+			$form.= "\t\t<input type=\"hidden\" name=\"" . esc_attr($k) . "\" value=\"" . esc_attr($v) . "\" />\n";
 		}
-		$form.= "\t\t<input type=\"hidden\" name=\"" . esc_attr($k) . "\" value=\"" . esc_attr($v) . "\" />\n";
+
+		$form.="\t\t<select name=\"results\" onchange=\"document.pagerform$myrand.submit()\">\n";
+		$form.=vector2options($accepted_results_per_page,$results);
+		$form.="\t\t</select>\n";
+		$form.="\t</td>\n";
 	}
 
-	$form.="\t\t<select name=\"results\" onchange=\"document.pagerform$myrand.submit()\">\n";
-	$form.=vector2options($accepted_results_per_page,$results);
-	$form.="\t\t</select>\n";
-	$form.="\t</td>\n";
 	$form.="</tr>\n";
 	$form.="</table>\n";
 	$form.="</form>\n";
@@ -444,7 +448,15 @@ function _create_pager( $item_count, $offset, $results, $tpname ) {
  * @since 3.2.1
  */
 function awpcp_pagination_options( $selected=10 ) {
-	$options = array( 0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 500 );
+	$options = get_awpcp_option( 'pagination-options' );
+	return awpcp_build_pagination_options( $options, $selected );
+}
+
+/**
+ * @since next-release
+ */
+function awpcp_build_pagination_options( $options, $selected ) {
+	array_unshift( $options, 0 );
 
 	for ( $i = count( $options ) - 1; $i >= 0; $i-- ) {
 		if ( $options[ $i ] < $selected ) {
@@ -453,9 +465,17 @@ function awpcp_pagination_options( $selected=10 ) {
 		}
 	}
 
-	$options_without_zero = array_slice( $options, 1 );
+	$options_without_zero = array_filter( $options, 'intval' );
 
 	return array_combine( $options_without_zero , $options_without_zero );
+}
+
+/**
+ * @since next-release
+ */
+function awpcp_default_pagination_options( $selected = 10 ) {
+	$default_options = awpcp()->settings->get_option_default_value( 'pagination-options' );
+	return awpcp_build_pagination_options( $default_options, $selected );
 }
 
 function _gdinfo() {

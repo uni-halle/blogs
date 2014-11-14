@@ -492,6 +492,12 @@
 #awpcp-admin-settings form.facebook-integration-settings .section.disabled {
   color: #ccc;
 }
+.is-hidden {
+  display: none;
+}
+.is-visible-inline-block {
+  display: inline-block !important;
+}
 /* new clearfix */
 .clearfix:after {
   visibility: hidden;
@@ -514,6 +520,34 @@
 }
 .align-text-right {
   text-align: right;
+}
+.awpcp-row {
+  clear: both;
+}
+.awpcp-row .awpcp-one-half,
+.awpcp-row .awpcp-one-third {
+  box-sizing: border-box;
+}
+.awpcp-row .awpcp-one-half {
+  float: left;
+  width: 49%;
+}
+.awpcp-row .awpcp-one-half:nth-child(2n+1) {
+  clear: left;
+  margin-right: 1%;
+}
+.awpcp-row .awpcp-one-half:nth-child(2n) {
+  clear: right;
+  margin-left: 1%;
+}
+.awpcp-row .awpcp-one-third {
+  float: left;
+  width: 33%;
+}
+.awpcp-spinner,
+.awpcp-inline-form-spinner {
+  float: none;
+  vertical-align: sub;
 }
 .awpcp-admin-sidebar .postbox {
   min-width: 200px;

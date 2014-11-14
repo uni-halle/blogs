@@ -76,7 +76,11 @@ if (typeof jQuery !== 'undefined') {
                     'columns': tbody.closest('table').find('thead th').length
                 }), function(response) {
 
-                    inline = $(response.html).insertBefore(first);
+                    if ( first.length ) {
+                        inline = $(response.html).insertBefore( first );
+                    } else {
+                        inline = $(response.html).appendTo( tbody );
+                    }
 
                     /* handle save and cancel buttons */
 
@@ -86,21 +90,31 @@ if (typeof jQuery !== 'undefined') {
                     });
 
                     inline.find('a.save').click(function(){
-                        var waiting = inline.find('img.waiting').show();
-                        inline.find('div.error').remove();
+                        var loadingIcon = inline.find( 'p.submit' ).find( 'img.waiting, .spinner' );
+
+                        loadingIcon.show().addClass( 'is-visible-inline-block' );
+                        inline.find( '.awpcp-inline-form-error' ).remove();
+
                         inline.find('form').ajaxSubmit({
                             data: {'save': true},
                             dataType: 'json',
                             success: function(response) {
-                                if (response.status === 'success') {
+                                if ( response.status === 'success' || response.status === 'ok' ) {
+                                    var row = $( response.html );
+
                                     inline.remove();
-                                    tbody.append(response.html);
-                                    if (first.hasClass('empty-row')) {
+                                    tbody.append( row );
+
+                                    if ( first.hasClass( 'empty-row' ) || first.hasClass( 'no-items' ) ) {
                                         first.remove();
                                     }
+
+                                    if ( $.isFunction( options.onSuccess ) ) {
+                                        options.onSuccess.apply( this, [ options.actions.add, row ] );
+                                    }
                                 } else {
-                                    waiting.hide();
-                                    var errors = $('<div class="error">');
+                                    loadingIcon.hide().removeClass( 'is-visible-inline-block' );
+                                    var errors = $( '<div class="awpcp-error awpcp-inline-form-error">' );
                                     $.each(response.errors, function(k,v) {
                                         errors.append(v + '</br>');
                                     });
@@ -125,9 +139,9 @@ if (typeof jQuery !== 'undefined') {
                     row = this.row, inline;
 
                 $.post(options.ajaxurl, $.extend({}, options.data, {
+                    'id': row.data('id'),
                     'action': options.actions.edit,
-                    'id': row.data('id')
-
+                    'columns': row.find('th, td').length
                 }), function(response) {
                     inline = $(response.html).insertAfter(row);
 
@@ -137,18 +151,27 @@ if (typeof jQuery !== 'undefined') {
                     });
 
                     inline.find('a.save').click(function() {
-                        var waiting = inline.find('img.waiting').show();
+                        var loadingIcon = inline.find( 'p.submit' ).find( 'img.waiting, .spinner' );
+
+                        loadingIcon.show().addClass( 'is-visible-inline-block' );
+
                         inline.find('div.error').remove();
                         inline.find('form').ajaxSubmit({
                             data: $.extend({}, options.data, {save: true}),
                             dataType: 'json',
                             success: function(response) {
-                                if (response.status === 'success') {
-                                    row.replaceWith(response.html);
+                                if ( response.status === 'success' || response.status === 'ok' ) {
+                                    var newRow = $( response.html );
+
+                                    row.replaceWith( newRow );
                                     inline.remove();
+
+                                    if ( $.isFunction( options.onSuccess ) ) {
+                                        options.onSuccess.apply( this, [ options.actions.edit, newRow ] );
+                                    }
                                 } else {
-                                    waiting.hide();
-                                    var errors = $('<div class="error">');
+                                    loadingIcon.hide().removeClass( 'is-visible-inline-block' );
+                                    var errors = $('<div class="awpcp-error awpcp-inline-form-error">');
                                     $.each(response.errors, function(k,v) {
                                         errors.append(v + '</br>');
                                     });
@@ -195,8 +218,9 @@ if (typeof jQuery !== 'undefined') {
                     row = this.row, inline;
 
                 $.post(options.ajaxurl, $.extend({}, options.data, {
+                    'id': row.data('id'),
                     'action': options.actions.remove,
-                    'id': row.data('id')
+                    'columns': row.find('th, td').length
                 }), function(response) {
                     inline = $(response.html).insertAfter(row);
                     inline.find('a.cancel').click(function() {
@@ -210,7 +234,9 @@ if (typeof jQuery !== 'undefined') {
                     inline.delegate('a.delete', 'click', function() {
                         var buttons = inline.find('a.delete'),
                             option = $(this).data('option'),
-                            waiting = inline.find('img.waiting').show();
+                            loadingIcon = inline.find( 'p.submit' ).find( 'img.waiting, .spinner' );
+
+                        loadingIcon.show().addClass( 'is-visible-inline-block' );
 
                         form.ajaxSubmit({
                             data: { 'remove': true, 'option': option },
@@ -219,13 +245,17 @@ if (typeof jQuery !== 'undefined') {
                                 var link = null, label;
 
                                 // mission acomplished!
-                                if (response.status === 'success') {
+                                if (response.status === 'success' || response.status === 'ok' ) {
                                     row.remove();
                                     inline.remove();
 
+                                    if ( $.isFunction( options.onSuccess ) ) {
+                                        options.onSuccess.apply( this, [ options.actions.remove, row ] );
+                                    }
+
                                 // we need to ask something else to the user
                                 } else if (response.status === 'confirm') {
-                                    waiting.hide();
+                                    loadingIcon.hide().removeClass( 'is-visible-inline-block' );
 
                                     // create a set of options
                                     $.each(response.options, function(value, label) {
@@ -243,7 +273,7 @@ if (typeof jQuery !== 'undefined') {
 
                                 // ¬_¬
                                 } else {
-                                    waiting.hide();
+                                    loadingIcon.hide().removeClass( 'is-visible-inline-block' );
                                     form.find('div.error').remove();
                                     form.append('<div class="error"><p>' + response.message + '</p></div>');
 
@@ -262,7 +292,7 @@ if (typeof jQuery !== 'undefined') {
                         });
                     });
 
-                    if (response.status === 'success') {
+                    if ( response.status === 'success' || response.status === 'ok' ) {
                         row.hide();
                     } else {
                         alert(response.message);

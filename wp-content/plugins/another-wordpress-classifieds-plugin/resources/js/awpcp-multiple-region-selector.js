@@ -332,8 +332,6 @@ if (typeof jQuery !== 'undefined') {
 
             // HTML id attribute
             self.id = type + Math.random();
-            self.selectName = 'select-' + self.id;
-            self.textfieldName = 'textfield-' + self.id;
 
             self.type = type;
             self.label = ko.observable(label);

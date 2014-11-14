@@ -153,9 +153,9 @@ class AWPCP_Facebook_Page_Settings {
 		}
 
 		if ( isset( $_GET['code_error'] ) && isset( $_GET['error_message'] )  ) {
-			$errors[] = sprintf( __( 'AWPCP could not obtain a valid access token from Facebook: %s', 'AWPCP' ), $_GET['error_message'] );
+			$errors[] = esc_html( sprintf( __( 'We could not obtain a valid access token from Facebook. The API returned the following error: %s', 'AWPCP' ), $_GET['error_message'] ) );
 		} else if ( isset( $_GET['code_error'] ) ) {
-			$errors[] = __( 'AWPCP could not obtain a valid access token from Facebook. Please try again.', 'AWPCP' );
+			$errors[] = esc_html( __( 'We could not obtain a valid access token from Facebook. Please try again.', 'AWPCP' ) );
 		}
 
 		if ( $this->get_current_action() == 'diagnostics' ) {

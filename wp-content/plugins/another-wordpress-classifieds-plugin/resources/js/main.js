@@ -19,3 +19,10 @@ function($, settings, AsynchronousTasks) {
         }
     });
 });
+
+AWPCP.run( 'awpcp/init-categories-dropdown', [ 'jquery', 'awpcp/category-dropdown' ],
+function( $ ) {
+    $( function() {
+        $( '.awpcp-category-dropdown' ).categorydropdown();
+    } );
+} );

@@ -248,6 +248,23 @@ class AWPCP_CategoriesCollection {
     }
 
     /**
+     * @throws AWPCP_Exception if no category is found.
+     * @since next-release
+     */
+    public function get( $category_id ) {
+        $results = AWPCP_Category::query( array(
+            'where' => $this->db->prepare( 'category_id = %d', $category_id )
+        ) );
+
+        if ( empty( $results ) ) {
+            $message = __( 'No category was found with ID: %d', 'AWPCP' );
+            throw new AWPCP_Exception( sprintf( $message, $category_id ) );
+        }
+
+        return array_shift( $results );
+    }
+
+    /**
      * @since 3.3
      */
     public function get_all() {

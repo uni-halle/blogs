@@ -19,7 +19,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
         update_user_meta($user->ID, 'listings-items-per-page', $this->items_per_page);
 
         $default_category = absint( get_user_meta( $user->ID, 'listings-category', true ) );
-        $this->selected_category_id = awpcp_request_param( 'category', $default_category );
+        $this->selected_category_id = isset( $_POST['category'] ) ? awpcp_request_param( 'category' ) : $default_category;
         update_user_meta( $user->ID, 'listings-category', $this->selected_category_id );
 
         $params = $this->params = shortcode_atts(array(
@@ -331,7 +331,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $template = '<option %3$s value="%1$s">%2$s</option>';
         $selected = 'selected="selected"';
 
-        foreach ( awpcp_pagination_options( $this->items_per_page ) as $value ) {
+        foreach ( awpcp_default_pagination_options( $this->items_per_page ) as $value ) {
             $attributes = $value == $this->items_per_page ? $selected : '';
             $options[] = sprintf( $template, esc_attr( $value ), esc_html( $value ), $attributes );
         }

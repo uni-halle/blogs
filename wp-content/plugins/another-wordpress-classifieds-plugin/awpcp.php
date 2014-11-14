@@ -3,7 +3,7 @@
  Plugin Name: Another Wordpress Classifieds Plugin (AWPCP)
  Plugin URI: http://www.awpcp.com
  Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your wordpress blog. <strong>!!!IMPORTANT!!!</strong> Whether updating a previous installation of Another Wordpress Classifieds Plugin or installing Another Wordpress Classifieds Plugin for the first time, please backup your wordpress database before you install/uninstall/activate/deactivate/upgrade Another Wordpress Classifieds Plugin.
- Version: 3.3.1
+ Version: 3.3.2
  Author: D. Rodenbaugh
  License: GPLv2 or any later version
  Author URI: http://www.skylineconsult.com
@@ -69,6 +69,7 @@ $awpcp_imagesurl = $awpcp_plugin_url .'/resources/images';
 // common
 require_once(AWPCP_DIR . "/debug.php");
 require_once(AWPCP_DIR . "/functions.php");
+require_once( AWPCP_DIR . "/includes/functions/format.php" );
 
 $nameofsite = awpcp_get_blog_name();
 
@@ -94,6 +95,7 @@ require_once( AWPCP_DIR . '/includes/helpers/class-module.php' );
 require_once( AWPCP_DIR . "/includes/helpers/class-modules-manager.php" );
 require_once( AWPCP_DIR . "/includes/helpers/class-modules-updater.php" );
 
+require_once( AWPCP_DIR . '/includes/helpers/class-admin-page-links-builder.php' );
 require_once(AWPCP_DIR . "/includes/helpers/class-akismet-wrapper-base.php");
 require_once(AWPCP_DIR . "/includes/helpers/class-akismet-wrapper.php");
 require_once(AWPCP_DIR . "/includes/helpers/class-akismet-wrapper-factory.php");
@@ -176,6 +178,8 @@ require_once( AWPCP_DIR . "/includes/settings/class-credit-plans-settings.php" )
 require_once( AWPCP_DIR . "/includes/settings/class-listings-moderation-settings.php" );
 require_once( AWPCP_DIR . "/includes/settings/class-payment-general-settings.php" );
 require_once( AWPCP_DIR . "/includes/settings/class-registration-settings.php" );
+
+require_once( AWPCP_DIR . "/includes/upgrade/class-fix-empty-media-mime-type-upgrade-routine.php" );
 
 require_once( AWPCP_DIR . "/includes/class-awpcp-listings-api.php" );
 require_once( AWPCP_DIR . "/includes/class-fees-collection.php" );
@@ -464,6 +468,10 @@ class AWPCP {
 			$this->flush_rewrite_rules = true;
 		}
 
+        if ( get_option( 'awpcp-enable-fix-media-mime-type-upgrde' ) ) {
+            awpcp_fix_empty_media_mime_type_upgrade_routine()->run();
+        }
+
 		if ( $this->flush_rewrite_rules || get_option( 'awpcp-flush-rewrite-rules' ) ) {
 			flush_rewrite_rules();
 		}
@@ -519,6 +527,13 @@ class AWPCP {
 					'version' => 'AWPCP_BUDDYPRESS_LISTINGS_MODULE_DB_VERSION',
 					'required' => '1.0.3',
 				),
+                'campaign-manager' => array(
+                    'name' => __( 'Campaign Manager', 'AWPCP' ),
+                    'url' => 'http://www.awpcp.com/',
+                    'installed' => defined( 'AWPCP_CAMPAIGN_MANAGER_MODULE' ),
+                    'version' => 'AWPCP_CAMPAIGN_MANAGER_MODULE_DB_VERSION',
+                    'required' => '1.0.0-RC4',
+                ),
 				'category-icons' => array(
 					'name' => __( 'Category Icons', 'AWPCP' ),
 					'url' => 'http://www.awpcp.com/premium-modules/category-icons-module?ref=panel',
@@ -1295,11 +1310,12 @@ function awpcp_rel_canonical() {
 function awpcp_redirect_canonical($redirect_url, $requested_url) {
 	global $wp_query;
 
+    $awpcp_rewrite = false;
 	$ids = awpcp_get_page_ids_by_ref(awpcp_pages_with_rewrite_rules());
 
 	// do not redirect requests to AWPCP pages with rewrite rules
 	if (is_page() && in_array(awpcp_request_param('page_id', 0), $ids)) {
-		$redirect_url = $requested_url;
+        $awpcp_rewrite = true;
 
 	// do not redirect requests to the front page, if any of the AWPCP pages
 	// with rewrite rules is the front page
@@ -1307,8 +1323,24 @@ function awpcp_redirect_canonical($redirect_url, $requested_url) {
 			  'page' == get_option('show_on_front') && in_array($wp_query->queried_object->ID, $ids) &&
 			   $wp_query->queried_object->ID == get_option('page_on_front'))
 	{
-		$redirect_url = $requested_url;
+        $awpcp_rewrite = true;
 	}
+
+    if ( $awpcp_rewrite ) {
+        // Fix for #943.
+        $requested_host = parse_url( $requested_url, PHP_URL_HOST );
+        $redirect_host = parse_url( $redirect_url, PHP_URL_HOST );
+
+        if ( $requested_host != $redirect_host ) {
+            if ( strtolower( $redirect_host ) == ( 'www.' . $requested_host ) ) {
+                return str_replace( $requested_host, 'www.' . $requested_host, $requested_url );
+            } elseif ( strtolower( $requested_host ) == ( 'www.' . $redirect_host ) ) {
+                return str_replace( 'www.', '', $requested_url );
+            }
+        }
+
+        return $requested_url;
+    }
 
 	// $id = awpcp_get_page_id_by_ref('main-page-name');
 

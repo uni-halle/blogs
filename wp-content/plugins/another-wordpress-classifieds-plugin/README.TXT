@@ -4,8 +4,8 @@ Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 3.6
 Tested up to: 4.0
-Last Updated: 2014-Oct-14
-Stable tag: tags/3.3.1
+Last Updated: 2014-Nov-11
+Stable tag: tags/3.3.2
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -18,7 +18,7 @@ Add a classified ads section to your Wordpress site, quickly and easily.
 Lots of features, very configurable.  Easy to setup.  Great support.
 We're the #1 Wordpress Classified Ads Plugin: 6+ years old and 225,000+ downloads!
 
-NEW module(s):  [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
+NEW module(s):  [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?ref=wp) and [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
 
 = Features =
  = Ad Features =
@@ -40,6 +40,7 @@ NEW module(s):  [Attachments](http://awpcp.com/premium-modules/attachments-modul
     15. Ads can be displayed on any page for a single category using shortcodes
     16. Auto-verify ads with email links to post immediately upon click
     17. Now allows ads to be 'Sent to Facebook' inside of ad management
+    18. Support for displaying ad events in BuddyPress activity stream with [BuddyPress module](http://awpcp.com/premium-modules/buddypress-module?ref=wp)
  = Notification Features =
     1. Allow posters to be notified of expiring ads
     2. Allow admin to be notified when new ads are posted
@@ -48,7 +49,7 @@ NEW module(s):  [Attachments](http://awpcp.com/premium-modules/attachments-modul
     4. Admin can (optionally) be notified of expiring ads
  = Payment Features =
     1. Allows for paid or free ads
-    2. Supports PayPal, PayPal Pro and 2Checkout for paid ads
+    2. Supports PayPal, PayPal Pro, PayFast, Authorize.net and 2Checkout for paid ads
     3. Allow for image posting limits higher than free ads
     4. Multiple fee scales for posting ads (allows you to have longer ad 
        postings with higher fees)
@@ -56,6 +57,7 @@ NEW module(s):  [Attachments](http://awpcp.com/premium-modules/attachments-modul
        (e.g. allow ads	to run for 30 days for $10, 60 days for $15, etc)
     6. Supports a "credit system" or pay with regular currency per ad.  Mix
        and match if you want.
+    7. Support for ad "subscriptions" (packages of ads for a single price)
  = Ad Posting Controls =
     1. Allow admin to approve ads prior to posting
     2. Allow admin to approve images prior to posting
@@ -74,7 +76,7 @@ NEW module(s):  [Attachments](http://awpcp.com/premium-modules/attachments-modul
         if the user posted them initially
     11. Email verification step can be used to auto-post ads upon successful 
         verification link click
-    12. Ads can be posted to a Facebook page
+    12. Ads can be posted to a Facebook page manually or automatically
  = Image Features =
     1. Allow image posting or shut it off completely
     2. Control the number, filesize, height and width of images posted
@@ -117,10 +119,13 @@ NEW module(s):  [Attachments](http://awpcp.com/premium-modules/attachments-modul
         on them.)
     11. Authorize.net Payment Gateway (allows users to purchase ads, 
         subscriptions and credit plans using Authorize.net)
-    11. **NEW** Attachments (allows users to attach PDFs, text files or other 
+    12. **NEW** Attachments (allows users to attach PDFs, text files or other 
         images to their classifieds (great for job boards!))
+    13. **NEW** BuddyPress (allows users to manage their ads in the BuddyPress
+        profile directly, see events from ad posting in the activity stream and more)
 
 = Premium Module Links: =
+* **NEW** [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?ref=wp)
 * **NEW** [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
 * [Comments/Ratings](http://awpcp.com/premium-modules/comments-ratings-module?ref=wp)
 * [Authorize.net Gateway](http://www.awpcp.com/premium-modules/authorizenet-payment-module?ref=wp)
@@ -206,7 +211,22 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
-= Versions 3.3.1 =
+
+= Version 3.3.2 =
+* Allow users to choose thumbnail position in Latest Ads and other widgets
+* Do not set names for the select and text fields used as helpers in the Multiple Region Selector
+* Include total amount paid and total credits spent in the email sent when a listing is successfully posted
+* Add Automatic Upgrade routine to fix media entries that were stored with an empty mime type
+* Fix query to get images when a single mime_type is used as condition
+* Configure Free Payment Term to use one of the accepted payment types
+* Execute awpcp_handle_admin_requests on admin_init
+* Fix several translation issues
+* Verify category cache keys before rendering
+* Add setting for currency code to 2Checkout
+* Make created/updated dates on Show Ad match ad's
+* Better handle www/no-www redirect on the front page
+
+= Version 3.3.1 =
 * Improve rewrite rule for View Categories.
 * Fix conflict with BBPress.
 * Avoid sending verification email when payment is cancelled or fails.
@@ -218,7 +238,7 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 * Do not send verification emails for Unpaid listings
 * Fix PHP notice in Facebook Cache Helper.
 
-= Versions 3.3 =
+= Version 3.3 =
 * Allow admins to mark price field as private
 * Add Users Autocomplete field
 * Add plugin integration for Content Aware Sidebars
@@ -272,7 +292,7 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 * Add verification for edge case of duplicate page title
 * Fix: fallback image is not being shown
 
-= Versions 3.2.2 =
+= Version 3.2.2 =
 * NEW: Add quick link to Mark an Ad as verified from Classifieds > Listings screen.
 * Allow administrators to see Ad with images pending approval.
 * Make sure Ads appear in Awaiting Approval section after they are edited or renewed.

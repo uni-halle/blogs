@@ -6,10 +6,10 @@
                 <li class="awpcp-region-selector-partial" data-bind="visible: visible">
                     <label data-bind="attr: { 'for': id }, text: label"></label>
 
-                    <select class="multiple-region" data-bind="attr: { id: id, name: selectName }, options: options, optionsText: 'name', optionsValue: 'id', optionsCaption: caption, value: selectedOption, visible: showSelectField, disable: $root.options.disabled">
+                    <select class="multiple-region" data-bind="attr: { id: id }, options: options, optionsText: 'name', optionsValue: 'id', optionsCaption: caption, value: selectedOption, visible: showSelectField, disable: $root.options.disabled">
                     </select>
 
-                    <input class="multiple-region inputbox" type="text" data-bind="attr: { id: id, name: textfieldName }, value: selectedText, visible: showTextField, disable: $root.options.disabled" />
+                    <input class="multiple-region inputbox" type="text" data-bind="attr: { id: id }, value: selectedText, visible: showTextField, disable: $root.options.disabled" />
 
                     <span class="loading-message" data-bind="visible: loading"><?php echo esc_html( _x( 'loading...', 'loading region options', 'AWPCP' ) ); ?></span>
 

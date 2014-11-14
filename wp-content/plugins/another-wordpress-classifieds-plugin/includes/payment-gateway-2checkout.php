@@ -26,6 +26,7 @@ class AWPCP_2CheckoutPaymentGateway extends AWPCP_PaymentGateway {
         $amount = $totals['money'];
 
         $x_login = get_awpcp_option('2checkout');
+        $currency = get_awpcp_option('2checkoutcurrencycode');
 
         $payments = awpcp_payments_api();
         $return_url = $payments->get_return_url($transaction);

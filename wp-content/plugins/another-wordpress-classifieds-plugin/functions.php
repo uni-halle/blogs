@@ -401,6 +401,18 @@ function awpcp_admin_capability() {
 	return 'install_plugins';
 }
 
+/**
+ * @since next-release
+ */
+function awpcp_admin_roles_names() {
+    $configured_roles = explode( ',', get_awpcp_option( 'awpcpadminaccesslevel' ) );
+    if ( in_array( 'editor', $configured_roles ) ) {
+        return array( 'administrator', 'editor' );
+    } else {
+        return array( 'administrator' );
+    }
+}
+
 
 /**
  * Check if current user is an Administrator according to

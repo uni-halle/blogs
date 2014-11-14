@@ -52,12 +52,6 @@ class AWPCP_Admin {
 		// hook filter to output Admin panel sidebar. To remove the sidebar
 		// just remove this action
 		add_filter('awpcp-admin-sidebar', 'awpcp_admin_sidebar_output', 10, 2);
-
-		// This functions were executed on plugins_loaded. However,
-		// to avoid execution of AWPCP functions without propperly
-		// upgrading the plugin database, we execute them here, only
-		// after AWPCP_Admin has been instatiated by AWPCP.
-		awpcp_handle_admin_requests();
 	}
 
 
@@ -175,6 +169,12 @@ class AWPCP_Admin {
 
 	public function init() {
 		add_filter( 'parent_file', array( $this, 'parent_file' ) );
+
+		// This functions were executed on plugins_loaded. However,
+		// to avoid execution of AWPCP functions without propperly
+		// upgrading the plugin database, we execute them here, only
+		// after AWPCP_Admin has been instatiated by AWPCP.
+		awpcp_handle_admin_requests();
 	}
 
 	public function scripts() {

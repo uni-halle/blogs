@@ -224,7 +224,7 @@ class AWPCP_MediaAPI {
         if ( is_array( $mime_type ) && ! empty( $mime_type ) ) {
             $conditions[] = "mime_type IN ('" . join( "', '", $mime_type ) . "')";
         } else if ( ! empty( $mime_type ) ) {
-            $conditions[] = $wpdb->prepare( 'mime_type = IN %s', $mime_type );
+            $conditions[] = $wpdb->prepare( 'mime_type = %s', $mime_type );
         }
 
         if ( ! is_null( $status ) ) {

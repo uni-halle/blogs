@@ -15,6 +15,19 @@ class AWPCP_UsersCollection {
         $this->payments = $payments;
     }
 
+    /**
+     * @since next-release
+     */
+    public function get( $user_id ) {
+        $user = $this->find_by_id( $user_id );
+
+        if ( is_null( $user ) ) {
+            throw new AWPCP_Exception( sprintf( 'No User was found with ID: %d.', $user_id ) );
+        }
+
+        return $user;
+    }
+
     public function find_by_id( $user_id ) {
         $query = $this->build_full_user_information_query( array( 'user_id' => $user_id ) );
         $user_information = $this->db->get_results( $query );
