@@ -1,0 +1,293 @@
+/*
+Theme Name:     kw
+Theme URI:      http://llz.uni-halle.de
+Description:    Knowledge Wall
+Author:         Markus Scholz, Zentrum f&uuml;r multimediales Lehren und Lernen
+Author URI:     http://llz.uni-halle.de
+Template:       dw-wallpress
+Version:        0.1
+*/
+
+body {
+	background: #F1F1F1;
+}
+
+#header-inner {
+	margin: 0 auto;
+	width: 70%;
+	padding: 3px 0;
+}
+
+#header #navigation a {
+	font-size: 100%;
+}
+
+.clearing {
+	clear: both;
+	visibility: hidden;
+	height: 0;
+}
+
+.clearfix:before {
+	display: none;
+}
+
+.item .item-title {
+	font-size: 125%;
+}
+
+.item .item-meta {
+	font-size: 110%;
+}
+
+.item .item-meta a {
+	text-decoration: none;
+}
+
+.item .item-meta-left {
+	float: left;
+}
+
+.item .item-meta-right {
+	float: right;
+}
+
+.item .item-meta-likes, .item .item-meta-favorite {
+	margin: 0 10px 0 0;
+}
+
+.item .item-meta-favorite a:hover, .item .item-meta-favorite a:active, .item .item-meta-favorite a:focus {
+	color: #000;
+}
+
+.item .item-meta-favorite a[href*=remove] {
+	color: #F0DA02;
+}
+
+.item .item-meta-favorite a[href*=remove]:hover {
+	color: red;
+}
+
+.item .comments-link a:hover {
+	color: #000;
+}
+
+
+.item .item-meta img {
+	vertical-align: -4px;
+	margin-left: 10px;
+}
+
+
+.item .item-inner .item-main {
+	padding: 20px;
+}
+
+.item .item-thumbnail {
+	position: relative
+}
+
+.item .item-comments {
+	display: none;
+}
+
+.item.format-image {
+}
+
+.item-thumbnail-overlay {
+	position: absolute;
+	background: url(assets/images/index-post-arrow.png) no-repeat;
+	height: 15px;
+	width: 35px;
+	z-index: 10;
+	bottom: 0;
+	left: 30px;
+}
+
+
+#main {
+	padding: 60px 8px 10px 8px;
+}
+
+#sidebar {
+	position: absolute;
+	width: 100%;
+	display: none;
+	border-right: 1px solid #ddd;
+	text-align: left;
+	background: #fff;
+	box-shadow: 1px 2px 2px rgba(0,0,0,0.4);
+	z-index: 999;
+	margin-top: -30px;
+	padding: 30px 0 0 0;
+	overflow: scroll-y;
+}
+
+#sidebar .sidebar-inner {
+	padding: 20px;
+}
+
+#sidebar .widget {
+	border: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;		
+}
+
+ul.tlw-list {
+	overflow: auto;
+	width: 100%
+}
+
+
+ul.tlw-list li a {
+	float: left;
+	padding: 3px 6px;
+	margin: 0 10px 10px 0;
+	border-radius: 3px;
+	text-transform: uppercase;
+	color: #fff;
+	background: #00CCCC;
+}
+
+.item .item-inner {
+	position: relative;
+	padding: 0;
+	margin: 12px;
+}
+
+.item .item-inner .item-ribbon {
+	height: 80px;
+	width: 80px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	display: none;
+}
+
+
+.item.ribbon-featured .item-inner .item-ribbon {
+	background: url(assets/images/index-ribbon-featured.png) no-repeat;
+	display: block;
+}
+
+.item.ribbon-hot .item-inner .item-ribbon {
+	background: url(assets/images/index-ribbon-hot.png) no-repeat;
+	display: block;
+}
+
+.item.ribbon-new .item-inner .item-ribbon {
+	background: url(assets/images/index-ribbon-new.png) no-repeat;
+	display: block;
+}
+
+.item-title {
+	margin: 0;
+}
+
+.masonry-brick.item.ribbon-featured .item-title, .masonry-brick.item.ribbon-hot .item-title, .masonry-brick.item.ribbon-new .item-title {
+	margin: 0 0 0 40px;	
+}
+
+.item.has-ribbon.has-thumbnail .item-title {
+	margin: 0;
+}
+
+.item.has-ribbon .item-title:before {
+	display: none;
+}
+
+.item.ribbon-featured blockquote, .item.ribbon-hot blockquote, .item.ribbon-new blockquote {
+	text-indent: 20px;
+}
+
+.format-quote blockquote:after {
+	display: none;
+}
+
+
+.item.format-audio.masonry-brick .item-ribbon {
+	top: 34px;
+}
+
+.item.format-audio.masonry-brick.has-thumbnail .item-ribbon {
+	top: 0;
+}
+
+
+body.masonry-relayout .format-image.has-thumbnail .item-thumbnail,
+.format-image.has-thumbnail .item-thumbnail {
+	margin: 0;
+}
+
+.format-image.has-thumbnail:hover .item-thumbnail {
+	margin: 0;
+}
+
+
+.format-image.has-thumbnail .item-main,
+body.masonry-relayout .format-image.has-thumbnail .item-main {
+	display: block;
+}
+
+
+/* Post Like System */
+a.jm-post-like {
+	font-weight: normal;
+	display: inline-block;
+	width: auto;
+	-moz-transition: all 0.3s ease-out 0.2s;
+	-webkit-transition: all 0.3s ease-out 0.2s;
+	-o-transition: all 0.3s ease-out 0.2s;
+}
+a.jm-post-like.liked {
+	color: #da1b1b;
+}
+a.jm-post-like:hover,
+a.jm-post-like:active,
+a.jm-post-like:focus,
+a.liked:hover,
+a.liked:active,
+a.liked:focus { /* default on hover */
+	color: #000;
+}
+
+
+
+
+
+/* Percentage width reference:
+- 100%   ~ 1 col
+- 50%    ~ 2 cols
+- 33.3%  ~ 3 cols
+- 25%    ~ 4 cols
+- 20%    ~ 5 cols
+- 16.6%  ~ 6 cols
+- 14.2%  ~ 7 cols
+- 12.5%  ~ 8 cols
+- 11.1%  ~ 9 cols
+- 10%    ~ 10 cols
+*/
+
+
+/* The HD layout has minimum width = 1901 pixel ---*/
+@media only screen and (min-width:1901px) {
+	.item {
+	 	width: 16.6%; /* 6 cols */
+	}
+
+	.grid-double {
+		width: 33.2%;
+	}
+
+	.grid-triple {
+		width: 49.8%;
+	}
+}
+
+@media only screen and (max-width: 985px) {
+	#header .sidebar-control {
+		display: none;
+	}
+}

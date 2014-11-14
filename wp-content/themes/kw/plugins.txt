@@ -1,0 +1,12 @@
+akismet
+infinite-scroll
+jetpack
+like-dislike-counter-for-posts-pages-and-comments
+postie
+slideshow-gallery
+tag-list-widget
+wp-favorite-posts
+wp-front-end-editor
+wp-lightbox-2
+wp-post-formats-develop
+wti-like-post
