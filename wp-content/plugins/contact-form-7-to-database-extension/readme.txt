@@ -6,9 +6,9 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
 Tested up to: 4.0
-Stable tag: 2.8.15
+Stable tag: 2.8.16
 
-Saves submitted form data to the database and allow you to export the data to a file and use short codes to display it.
+Saves submitted form data to the database. Export the data to a file and or short codes to display it.
 
 == Description ==
 
@@ -80,6 +80,9 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.8.17 =
+* Bug fix in [cfdb-html] variable substitution when data for column is not present.
 
 = 2.8.16 =
 * Generating the [submit_time] tag for Contact Form 7 is now an option in the Options page and is off by default to avoid the post being flagged as spam
