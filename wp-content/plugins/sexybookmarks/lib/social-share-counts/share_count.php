@@ -17,14 +17,18 @@ abstract class ShareaholicShareCount {
 
   protected $url;
   protected $services;
+  protected $options;
+  public $raw_response;
 
-  public function __construct($url, $services) {
+  public function __construct($url, $services, $options) {
     // encode the url if needed
     if (!$this->is_url_encoded($url)) {
       $url = urlencode($url);
     }
     $this->url = $url;
     $this->services = $services;
+    $this->options = $options;
+    $this->raw_response = array();
   }
 
   public static function get_services_config() {

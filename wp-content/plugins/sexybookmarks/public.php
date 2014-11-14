@@ -366,17 +366,22 @@ class ShareaholicPublic {
   public static function canvas($id, $app, $title = NULL, $link = NULL, $summary = NULL) {
     global $post, $wp_query;
     $page_type = ShareaholicUtilities::page_type();
-    $is_post = $page_type == 'page' || $page_type == 'post';
+    $is_list_page = $page_type == 'index' || $page_type == 'category';
+    $in_loop = in_the_loop();
 
     $link = trim($link);
 
-    if (trim($title) == NULL && $is_post) {
+    // Use the $post object to get the title, link, and summary only if the
+    // title, link or summary is not provided AND one of the following is true:
+    // - we are on a non list page
+    // - we are in the wordpress loop
+    if (trim($title) == NULL && (!$is_list_page || $in_loop)) {
       $title = htmlspecialchars($post->post_title, ENT_QUOTES);
     }
-    if (trim($link) == NULL && $is_post) {
+    if (trim($link) == NULL && (!$is_list_page || $in_loop)) {
       $link = get_permalink($post->ID);
     }
-    if (trim($summary) == NULL && $is_post) {
+    if (trim($summary) == NULL && (!$is_list_page || $in_loop)) {
       $summary = htmlspecialchars(strip_tags(strip_shortcodes($post->post_excerpt)), ENT_QUOTES);
     }
     
@@ -396,23 +401,42 @@ class ShareaholicPublic {
    *
    */
   public static function share_counts_api() {
+    $debug_mode = isset($_GET['debug']) && $_GET['debug'] === '1';
     $cache_key = 'shr_api_res-' . md5( $_SERVER['QUERY_STRING'] );
     $result = get_transient($cache_key);
+    $has_curl_multi = self::has_curl();
 
-    if (!$result) {
+    if (!$result || $debug_mode) {
       $url = isset($_GET['url']) ? $_GET['url'] : NULL;
       $services = isset($_GET['services']) ? $_GET['services'] : NULL;
       $result = array();
+      $options = array();
+
+      if ($debug_mode && isset($_GET['timeout'])) {
+        $options['timeout'] = intval($_GET['timeout']);
+      }
 
       if(is_array($services) && count($services) > 0 && !empty($url)) {
-        if(self::has_curl()) {
-          $shares = new ShareaholicCurlMultiShareCount($url, $services);
+        if ($debug_mode && isset($_GET['client'])) {
+          if ($has_curl_multi && $_GET['client'] !== 'seq') {
+            $shares = new ShareaholicCurlMultiShareCount($url, $services, $options);
+          } else {
+            $shares = new ShareaholicSeqShareCount($url, $services, $options);
+          }
+        } else if($has_curl_multi) {
+          $shares = new ShareaholicCurlMultiShareCount($url, $services, $options);
         } else {
-          $shares = new ShareaholicSeqShareCount($url, $services);
+          $shares = new ShareaholicSeqShareCount($url, $services, $options);
         }
         $result = $shares->get_counts();
 
-        if (isset($result['data'])) {
+        if ($debug_mode) {
+          $result['has_curl_multi'] = $has_curl_multi;
+          $result['curl_type'] = get_class($shares);
+          $result['raw'] = $shares->raw_response;
+        }
+
+        if (isset($result['data']) && !$debug_mode) {
           set_transient( $cache_key, $result, SHARE_COUNTS_CHECK_CACHE_LENGTH );
         }
       }

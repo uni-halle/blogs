@@ -47,9 +47,12 @@ class ShareaholicSeqShareCount extends ShareaholicShareCount {
         $this->$config[$service]['prepare']($this->url, $config);
       }
 
+      $timeout = isset($config[$service]['timeout']) ? $config[$service]['timeout'] : 1;
+      $timeout = isset($this->options['timeout']) ? $this->options['timeout'] : $timeout;
+
       $options = array(
         'method' => $config[$service]['method'],
-        'timeout' => 1,
+        'timeout' => $timeout,
         'headers' => isset($config[$service]['headers']) ? $config[$service]['headers'] : array(),
         'body' => isset($config[$service]['body']) ? $config[$service]['body'] : NULL,
       );
@@ -63,6 +66,7 @@ class ShareaholicSeqShareCount extends ShareaholicShareCount {
       if(is_numeric($counts)) {
         $response['data'][$service] = $counts;
       }
+      $this->raw_response[$service] = $result;
     }
     return $response;
   }

@@ -87,6 +87,7 @@ class ShareaholicCurlMultiShareCount extends ShareaholicShareCount {
         if(is_numeric($counts)) {
           $response['data'][$service] = $counts;
         }
+        $this->raw_response[$service] = $result;
         curl_multi_remove_handle($multi_handle, $handle);
         curl_close($handle);
       }
@@ -98,6 +99,7 @@ class ShareaholicCurlMultiShareCount extends ShareaholicShareCount {
   private function curl_setopts($curl_handle, $config, $service) {
     // set the url to make the curl request
     curl_setopt($curl_handle, CURLOPT_URL, str_replace('%s', $this->url, $config[$service]['url']));
+    $timeout = isset($this->options['timeout']) ? $this->options['timeout'] : 6;
 
     // other necessary settings:
     // CURLOPT_HEADER means include header in output, which we do not want
@@ -105,7 +107,7 @@ class ShareaholicCurlMultiShareCount extends ShareaholicShareCount {
     curl_setopt_array($curl_handle, array(
       CURLOPT_HEADER => 0,
       CURLOPT_RETURNTRANSFER => 1,
-      CURLOPT_TIMEOUT => 6,
+      CURLOPT_TIMEOUT => $timeout,
       CURLOPT_SSL_VERIFYPEER => false,
       CURLOPT_SSL_VERIFYHOST => false,
     ));
