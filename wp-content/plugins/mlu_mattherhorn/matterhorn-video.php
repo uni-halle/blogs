@@ -30,7 +30,7 @@ call_user_func(function(){
     //wp_enqueue_style("matterhorn-video-css", $baseUri.'video.css');
     add_filter("the_content",function($text){
         $regex="/\[matterhorn(?:([a-z0-9\s]+))?\]([0-9a-z\-]+)\[\/matterhorn\]/i";
-        $replace="<iframe class=\"matterhorn-video$1\" src=\"http://engage.matterhorn.uni-halle.de:8080/engage/ui/embed.html?id=$2\" scrolling=\"no\"></iframe>";
+        $replace="<iframe class=\"matterhorn-video$1\" src=\"https://engage.matterhorn.uni-halle.de/engage/ui/embed.html?id=$2\" scrolling=\"no\"></iframe>";
         return preg_replace($regex,$replace,$text);
         return $text."<hr>".var_dump(preg_replace($regex,$replace,$text))."<hr>";
     });
