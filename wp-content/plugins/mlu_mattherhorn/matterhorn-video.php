@@ -32,9 +32,12 @@ call_user_func(function(){
         $regex="/\[matterhorn(?:([a-z0-9\s]+))?\]([0-9a-z\-]+)\[\/matterhorn\]/i";
         $replace="<iframe class=\"matterhorn-video$1\" src=\"https://engage.matterhorn.uni-halle.de/engage/ui/embed.html?id=$2\" scrolling=\"no\"></iframe>";
         return preg_replace($regex,$replace,$text);
-        return $text."<hr>".var_dump(preg_replace($regex,$replace,$text))."<hr>";
+        //return $text."<hr>".var_dump(preg_replace($regex,$replace,$text))."<hr>";
     });
+    wp_register_script ('matterhorn-js',plugins_url('matterhorn.js',__FILE__),[@jquery]);
+    wp_enqueue_script ('matterhorn-js');
 });
+
 /*
 
 add_action("wp_head", "addHeaderCode");
