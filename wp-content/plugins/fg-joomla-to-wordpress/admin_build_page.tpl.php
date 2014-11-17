@@ -171,6 +171,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 		<ul style="list-style:disc inside">
 			<li><?php _e('authors and all users migration', 'fgj2wp'); ?></li>
 			<li><?php _e('menus migration', 'fgj2wp'); ?></li>
+			<li><?php _e('HTML modules migration', 'fgj2wp'); ?></li>
 			<li><?php _e('SEO: keeps Joomla IDs or redirects standard Joomla URLs', 'fgj2wp'); ?></li>
 			<li><?php _e('SEO: Keeps meta description and meta keywords', 'fgj2wp'); ?></li>
 			<li><?php _e('SEO: Keeps sh404sef, JoomSEF and OpenSEF URLs', 'fgj2wp'); ?></li>

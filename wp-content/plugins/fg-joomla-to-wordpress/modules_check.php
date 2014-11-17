@@ -157,7 +157,7 @@ if ( !class_exists('fgj2wp_modules', false) ) {
 					SELECT COUNT(*) AS nb
 					FROM ${prefix}${table}
 				";
-				$query = $joomla_db->query($sql);
+				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
 				if ( is_a($query, 'PDOStatement') ) {
 					$result = $query->fetch();
 					$count = $result['nb'];
