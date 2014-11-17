@@ -12,7 +12,6 @@ $first_run = (isset($_GET['first_run']) ? 'true' : 'false');
 
 $lmm_pro_readme = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker-pro' . DIRECTORY_SEPARATOR . 'readme.txt';
 $action = isset($_POST['action']) ? $_POST['action'] : '';
-if ( extension_loaded('ionCube Loader') && version_compare(phpversion(),"5.5","<") ) { if ( function_exists('ioncube_loader_iversion') ) { $ic_lv = ioncube_loader_iversion(); $lmm_ic_lv = (int)substr($ic_lv,0,1); } else { $ic_lv = ioncube_loader_version(); $lmm_ic_lv = (int)substr($ic_lv,0,1); } if ($lmm_ic_lv >= 4) { $sf = ''; } else { $sf = strrev('orp-'); } } else { $sf = strrev('orp-'); }
 if ( $action == NULL ) {
 	if (!file_exists($lmm_pro_readme)) {
 		echo '<div class="pro-upgrade-logo-rtl"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/logo-mapsmarker-pro.png" alt="Pro Logo" title="Leaflet Maps Marker Pro Logo"></div>';
@@ -24,8 +23,8 @@ if ( $action == NULL ) {
 		echo '<form method="post"><input type="hidden" name="action" value="upgrade_to_pro_version" />';
 		wp_nonce_field('pro-upgrade-nonce');
 		echo '<p>' . __('If you like using Leaflet Maps Marker, you might also be interested in starting a free 30-day-trial of Leaflet Maps Marker Pro, which offers even more features, higher performance and more.','lmm');
-		$dl_l = 'https://www.mapsmarker.com/upgrade' . $sf;
-		$dl_lt = 'mapsmarker.com/upgrade' . $sf;
+		$dl_l = 'https://www.mapsmarker.com/upgrade-pro';
+		$dl_lt = 'mapsmarker.com/upgrade-pro';
 		echo '</p><p style="clear:both;">' . sprintf(__('Please click on the button below - this will start the download of Leaflet Maps Marker Pro from <a style="text-decoration:none;" href="%1s">%2s</a> and installation as a separate plugin.','lmm'), $dl_l, $dl_lt);
 		echo '<br/>' . __('As next step please activate the pro plugin and you will be guided through the process to receive a free 30-day-trial license without any obligations.','lmm');
 		echo '<br/>' . sprintf(__('Your trial will expire automatically unless you purchase an unexpiring license key at %1$s','lmm'), '<a href="https://www.mapsmarker.com/order" style="text-decoration:none;" target="_blank">mapsmarker.com/order</a>') . ' (<a href="https://www.mapsmarker.com/terms-of-services" target="_blank" style="text-decoration:none;">' . __('Terms of Service','lmm') . '</a>/<a href="https://www.mapsmarker.com/privacy-policy" target="_blank" style="text-decoration:none;">' . __('Privacy Policy','lmm') . '</a>)';
@@ -322,6 +321,7 @@ if ( $action == NULL ) {
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.8p" target="_blank">' . __('tool for monitoring "active shortcodes for already deleted maps"','lmm') . '</a></li>
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.8p" target="_blank">' . __('layer maps: center map on markers and open popups by clicking on list of marker entries','lmm') . '</a></li>
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.9p" target="_blank">' . __('search function for layerlist on marker edit page','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.9.2p" target="_blank">' . __('improved accessibility/screen reader support by using proper alt texts','lmm') . '</a></li> 
 				</ul>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
@@ -371,15 +371,15 @@ if ( $action == NULL ) {
 		add_filter( 'https_ssl_verify', '__return_false' ); //info: otherwise SSL error on localhost installs.
 		add_filter( 'https_local_ssl_verify', '__return_false' ); //info: not sure if needed, added to be sure
 		$upgrader = new Plugin_Upgrader( new Plugin_Upgrader_Skin() );
-		$dl = 'https://www.mapsmarker.com/upgrade' . $sf;
+		$dl = 'https://www.mapsmarker.com/upgrade-pro';
 		$upgrader->install( $dl );
 		//info: check if download was successful
 		$lmm_pro_readme = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker-pro' . DIRECTORY_SEPARATOR . 'readme.txt';
 		if (file_exists($lmm_pro_readme)) {
 			echo '<p>' . __('Please activate the plugin by clicking the link above','lmm') . '</p>';
 		} else {
-			$dl_l = 'https://www.mapsmarker.com/upgrade' . $sf;
-			$dl_lt = 'www.mapsmarker.com/upgrade' . $sf;
+			$dl_l = 'https://www.mapsmarker.com/upgrade-pro';
+			$dl_lt = 'www.mapsmarker.com/upgrade-pro';
 			echo '<p>' . sprintf(__('The pro plugin package could not be downloaded automatically. Please download the plugin from <a href="%1s">%2s</a> and upload it to the directory /wp-content/plugins on your server manually','lmm'), $dl_l, $dl_lt) . '</p>';
 		}
 	}

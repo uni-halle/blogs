@@ -846,6 +846,15 @@ if (get_option('leafletmapsmarker_version') == '3.9.2' ) {
 		update_option('leafletmapsmarker_version_before_update', '3.9.2');
 	}
 	update_option('leafletmapsmarker_version', '3.9.3');
+}
+if (get_option('leafletmapsmarker_version') == '3.9.3' ) {
+	delete_transient( 'leafletmapsmarker_install_update_cache_v393');
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.9.3');
+	}
+	update_option('leafletmapsmarker_version', '3.9.4');
 	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
 	if (get_option('leafletmapsmarker_redirect') == 'true')
 	{
@@ -876,6 +885,7 @@ if (get_option('leafletmapsmarker_version') == 'x.xbefore' ) {
 	//2do - mandatory: move code for redirect-on-first-activation-check and hide changelog for new installs to here
 	//2do - mandatory: set $current_version in leaflet-maps-marker.php / function lmm_install_and_updates()
 	//2do - mandatory: set $current_version in uninstall.php
+	//2do - mandatory (if released together): update pro version (install-and-updates, class-leaflet-options...)
 }
 */
 ?>

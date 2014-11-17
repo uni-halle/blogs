@@ -7,7 +7,7 @@ Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.3
 Tested up to:      4.0
-Stable tag:        3.9.3
+Stable tag:        3.9.4
 License:           GPLv2
 
 Pin, organize & show your favorite places & tracks through OpenStreetMap, Google Maps, KML, Bing Maps, APIs or Augmented-Reality browsers
@@ -52,7 +52,7 @@ For even more features please try "Maps Marker Pro" - demo maps including admin 
 * [support for shortcodes in popup texts](https://www.mapsmarker.com/v1.3p)
 * [support for setting global maximum zoom level to 21 (tiles from basemaps with lower native zoom levels will be upscaled automatically)](https://www.mapsmarker.com/v1.5p)
 * [duplicate markers](https://www.mapsmarker.com/v1.5.1p)
-
+* [improved accessibility/screen reader support by using proper alt texts](https://www.mapsmarker.com/v1.9.2p)
 * priority support
 
 The free version includes a pro upgrader which allows you to start a free 30 day trial easily. 
@@ -184,10 +184,10 @@ to the visitors of your website.
 * Russian (ru_RU) thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies) and Vyacheslav Strenadko
 * Slovak (sk_SK) thanks to Zdenko Podobny
 * Spanish (es_ES) thanks to David Ramirez, Alvaro Lara, Ricardo Viteri and Juan Valdes
-* Spanish (es_MX) thanks to Victor Guevara
+* Spanish (es_MX) thanks to Victor Guevara and Eze Lazcano
 * Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha, Dan Paulsson, Elger Lindgren and Anton Andreasson
 * Turkish (tr_TR) thanks to Emre Erkan and Mahir Tosun
-* Ukrainian (uk_UK) thanks to Andrexj
+* Ukrainian (uk_UK) thanks to Andrexj and Sergey Zhitnitsky
 * Vietnamese (vi) thanks to Hoai Thu
 * Yiddish (yi) thanks to Raphael Finkel
 
@@ -306,10 +306,10 @@ MapsMarker &reg; - registration pending
 Copyright 2011-2014, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.9.3 =
-bugfix and compatibility release (RTL support, bing localization...) - see https://www.mapsmarker.com/v3.9.3 for more details
+= v3.9.4 =
+bugfix and compatibility release - see https://www.mapsmarker.com/v3.9.4 for more details
 
 == Changelog ==
-[blog post with details about v3.9.3](https://www.mapsmarker.com/v3.9.3)
+[blog post with details about v3.9.4](https://www.mapsmarker.com/v3.9.4)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)
