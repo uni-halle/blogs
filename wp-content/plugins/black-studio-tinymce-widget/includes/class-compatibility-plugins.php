@@ -218,9 +218,7 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Compatibility_Plugins' ) ) {
 				add_filter( 'black_studio_tinymce_activate_events', array( $this, 'siteorigin_panels_activate_events' ) );
 				add_filter( 'black_studio_tinymce_deactivate_events', array( $this, 'siteorigin_panels_deactivate_events' ) );
 				add_filter( 'black_studio_tinymce_enable_pages', array( $this, 'siteorigin_panels_enable_pages' ) );
-				add_filter( 'wp_editor_settings', array( $this, 'siteorigin_panels_editor_settings' ), 20, 2 );
 				remove_filter( 'widget_text', array( bstw()->text_filters(), 'wpautop' ), 8 );
-				add_action( 'black_studio_tinymce_after_editor', array( $this, 'siteorigin_panels_after_editor' ) );
 			}
 		}
 
@@ -288,41 +286,6 @@ if ( ! class_exists( 'Black_Studio_TinyMCE_Compatibility_Plugins' ) ) {
 				$pages[] = 'themes.php';
 			}
 			return $pages;
-		}
-		
-		/**
-		 * Editor settings for use within Page Builder (SiteOrigin Panels)
-		 *
-		 * @return void
-		 * @since 2.0.0
-		 */
-		public function siteorigin_panels_editor_settings( $settings, $editor_id ) {
-			// Allow initialization of main page/post editor instances
-			if ( strstr( $editor_id, 'black-studio-tinymce' ) === false ) {
-				if ( ! empty( $settings['tinymce'] ) ) {
-					if ( ! is_array( $settings['tinymce'] ) ) {
-						$settings['tinymce'] = array();
-					}
-					$settings['tinymce']['wp_skip_init'] = false ;
-				}
-			}
-			// Prevent wpautop on editor instances inside Page Builder
-			if ( $editor_id == 'widget-black-studio-tinymce-{$id}-text' ) {
-				$settings['default_editor'] = 'html';
-			}
-			return $settings;
-		}
-
-		/**
-		 * Remove editor content filters for use within Page Builder (SiteOrigin Panels)
-		 * Workaround for WordPress Core bug #28403 https://core.trac.wordpress.org/ticket/28403
-		 *
-		 * @return void
-		 * @since 2.0.0
-		 */
-		public function siteorigin_panels_after_editor() {
-			remove_filter( 'the_editor_content', 'wp_htmledit_pre' );
-			remove_filter( 'the_editor_content', 'wp_richedit_pre' );
 		}
 
 		/**
