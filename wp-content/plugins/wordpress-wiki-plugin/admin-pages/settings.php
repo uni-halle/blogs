@@ -40,7 +40,7 @@ class Wiki_Admin_Page_Settings {
 				} ?>
 			</table>
 			
-			<h3><?php _e('<a target="_blank" href="http://premium.wpmudev.org/project/e-commerce">Upgrade now</a> to access additional features!', 'wiki'); ?></h3>
+			<h3><?php _e('<a target="_blank" href="http://premium.wpmudev.org/project/wordpress-wiki">Upgrade now</a> to access additional features!', 'wiki'); ?></h3>
 			<ul>
 				<li><?php _e('Specify the number of breadcrumbs to add to title', 'wiki'); ?></li>
 				<li><?php _e('Specify a custom name for Wikis', 'wiki'); ?></li>

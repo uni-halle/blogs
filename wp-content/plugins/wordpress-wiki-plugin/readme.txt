@@ -1,7 +1,7 @@
 === Wiki ===
 Contributors: WPMUDEV
 Author: WPMUDEV
-Tags: Wiki, Wikis, BuddyPress, frontend editing, Documentation, Docs, Manual, Manuals, Document Management, Document Manager, Documents Manager, Documents, Organized Docs, Organized Documents, Instructions, Instruction, Guides, Instruction Guide, Instruction Guides, WordPress Wiki, Mediawiki, WordPress Wiki, WordPress Wikis
+Tags: Wiki, Wikis, Mediawiki, Frontend Editor, Knowledge Base, Manual, Document Manager, Organized Documents, Instruction, Guide, WordPress Wiki
 Requires at least: 3.3
 Tested up to: 4.0
 Stable tag: trunk
@@ -10,22 +10,20 @@ Create a wiki as easily as adding a post
 
 == Description ==
 
-WordPress Wiki Lite transforms your WordPress website into a fully functional wiki or add wiki pages to your WordPress blog.
+WordPress Wiki transforms your WordPress website into a fully functioning wiki, or adds wiki pages to your WordPress blog.
 
 [youtube https://www.youtube.com/watch?v=hNwGOHA1014]
 
-= You can use Wiki lite to create... =
+= Use Wiki to create... =
 * A WordPress based Wiki site
 * Multiple Wiki sites on a WordPress MultiSite install - so any user of your site can have their own Wiki.
  
 = Wiki Pro = 
-Wiki lite is a fully functional but limited version of our <a href='http://premium.wpmudev.org/project/wordpress-wiki'>full Wiki plugin</a>. 
-This lite version supports creating and editing of Wikis by users who can edit posts in your blog. Users can edit the Wiki from the frontend 
-as well as the Admin Dashboard. 
+Wiki supports creating and editing Wikis by users who can edit posts in your blog. Users can edit the Wiki from the frontend as well as the Admin Dashboard. For extended functionality look at <a href='http://premium.wpmudev.org/project/wordpress-wiki'>Wiki Pro</a>.
  
-Our full version includes many more features: 
+Wiki Pro includes: 
  
-* **Allow anyone** to edit wikis from frontend 
+* **Allow anyone** to edit wikis from front end 
 * **Allow anyone from the network** to edit wikis 
 * **Allow site users** to edit wikis 
  
@@ -96,6 +94,9 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 * Minor bugfixes and enhancements
 
 == Changelog ==
+= 1.1.0.3 = 
+* Fixed: Wiki Lite links to MarketPress rather than the Wiki project in settings
+
 = 1.1.0.2 = 
 * Fixed: Prev/next links don't show correct posts based upon Wiki settings
 
