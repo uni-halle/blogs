@@ -50,6 +50,7 @@ Pluginspiration: http://plugins.svn.wordpress.org/private-files/trunk/privatefil
 */
 
 class ds_more_privacy_options {
+        protected $authenticator;
 
 	function ds_more_privacy_options() {
 		global  $current_blog;
@@ -63,8 +64,8 @@ class ds_more_privacy_options {
 			// hooks into Misc Blog Actions in Network->Sites->Edit
 				add_action('wpmueditblogaction', array(&$this, 'wpmu_blogs_add_privacy_options'),-999);
 			// hooks into Blog Columns views Network->Sites
-				//add_filter( 'manage_sites-network_columns', array( &$this, 'add_sites_column' ), 10, 1);
-				//add_action( 'manage_sites_custom_column', array( &$this, 'manage_sites_custom_column' ), 10, 3);
+				add_filter( 'manage_sites-network_columns', array( &$this, 'add_sites_column' ), 10, 1);
+				add_action( 'manage_sites_custom_column', array( &$this, 'manage_sites_custom_column' ), 10, 3);
 
 			// hook into options-reading.php Dashboard->Settings->Reading.
 				add_action('blog_privacy_selector', array(&$this, 'add_privacy_options'));
@@ -72,7 +73,8 @@ class ds_more_privacy_options {
 			// all three add_privacy_option get a redirect and a message in the Login form
 		$number = intval(get_site_option('ds_sitewide_privacy'));
 
-		if (( '-1' == $current_blog->public ) || ($number == '-1')) { 
+		if (( '-1' == $current_blog->public ) || ($number == '-1')) {
+				$this->authenticator='users';
 				add_action('template_redirect', array(&$this, 'ds_users_authenticator'));
 			//	add_action('send_headers', array(&$this, 'ds_users_authenticator'));
 				add_action('login_form', array(&$this, 'registered_users_login_message')); 
@@ -80,6 +82,7 @@ class ds_more_privacy_options {
 				add_filter('privacy_on_link_text', array(&$this, 'registered_users_header_link') );
 		}
 		if ( '-2' == $current_blog->public ) {
+				$this->authenticator='members';
 				add_action('template_redirect', array(&$this, 'ds_members_authenticator'));
 			//	add_action('send_headers', array(&$this, 'ds_members_authenticator'));
 				add_action('login_form', array(&$this, 'registered_members_login_message')); 
@@ -88,6 +91,7 @@ class ds_more_privacy_options {
 
 		}
 		if ( '-3' == $current_blog->public ) {
+				$this->authenticator='admins';
 				add_action('template_redirect', array(&$this, 'ds_admins_authenticator'));
 			//	add_action('send_headers', array(&$this, 'ds_admins_authenticator'));
 				add_action('login_form', array(&$this, 'registered_admins_login_message'));
@@ -107,8 +111,12 @@ class ds_more_privacy_options {
 			//email SuperAdmin when privacy changes
 				add_action( 'update_blog_public', array(&$this,'ds_mail_super_admin'));
 			// hook into signup form?
-				// add_action('signup_blogform', array(&$this, 'add_privacy_options'));
+				//add_action('signup_blogform', array(&$this, 'add_privacy_options'));
 
+	}
+        function ds_authenticator() {
+		header('x-ds-auth:'.$this->authenticator.'X');
+		if(isset($this->authenticator)) call_user_func([$this,implode('_',['ds',$this->authenticator,'authenticator'])]);
 	}
 
 	function ds_mail_super_admin() {
