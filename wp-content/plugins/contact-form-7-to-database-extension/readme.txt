@@ -6,7 +6,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
 Tested up to: 4.0
-Stable tag: 2.8.16
+Stable tag: 2.8.17
 
 Saves submitted form data to the database. Export the data to a file and or short codes to display it.
 
@@ -80,6 +80,9 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.8.18 =
+* Better XSS protection for admin panels
 
 = 2.8.17 =
 * Bug fix in [cfdb-html] variable substitution when data for column is not present.
