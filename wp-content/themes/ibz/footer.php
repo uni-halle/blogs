@@ -13,6 +13,7 @@
     
     <!-- responsive navigation -->
  	<script> 
+	(function($) {
 	$('div.viewhide').hide();
 	$('.rooms_container > .leftcol > ul > li:first-child').css('color', '#9BC24B');
 $('li.filter').click(function (e) 
@@ -82,12 +83,14 @@ $show=false;
 				window.location = $(this).find("option:selected").val();
 			});
 		})
+		})( jQuery );
 	</script>    
     <!-- /responsive navigation -->
     
     <!-- flex slider code -->    
  	<?php if ($maja_option['maja_slider'] =='1') { ?> 
         <script>  
+		(function($) {
 		jQuery(document).ready(function($) {
 		  
 			// FLEX SLIDER
@@ -99,6 +102,7 @@ $show=false;
 			  slideshowSpeed: 7000,
 		 	});
 		})
+		})( jQuery );
 	    </script> 
     <?php } ?>  
     <!-- /flex slider code -->   
@@ -106,6 +110,7 @@ $show=false;
     <!-- google map code -->      
  	<?php if ($maja_option['maja_map-check'] =='1') { ?>          
         <script>
+		(function($) {
           function initialize() {
             var myLatlng = new google.maps.LatLng(<?php echo $maja_option['maja_map-lat'] ?>,<?php echo $maja_option['maja_map-lng'] ?>);
 			 
@@ -124,7 +129,7 @@ $show=false;
 			
           }
 		  
-    
+    })( jQuery );
         </script> 
     <?php } ?> 
     <!-- /google map code --> 
