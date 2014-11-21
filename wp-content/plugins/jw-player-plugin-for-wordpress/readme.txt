@@ -5,7 +5,7 @@ Contributors: LongTail Video Inc.
 Tags: JW Player, Video, Flash, LongTail Video, Playlists, Audio, HTML5, iPad, iPhone, iPod, Mobile
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.1.6
+Stable tag: 2.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,13 +99,21 @@ Additionally, all the embedding, skinning and scripting functionalities of JW Pl
 
 == Changelog ==
 
+= 2.1.8 =
+
+* HOTFIX: Fix for JW Player plugin custom short codes with multiple sources.
+
+= 2.1.7 =
+
+* HOTFIX: Fix for JW Player plugin custom short that broke with Wordpress 4.0.1 release
+
 = 2.1.6 =
 
-* ENHANCEMENT: Support for JW Player 6.10 (See the <a href="http://www.jwplayer.com/support/jw-player/28835/release-notes">Player elease notes</a> for more info).
+* ENHANCEMENT: Support for JW Player 6.10 (See the <a href="http://www.jwplayer.com/support/jw-player/28835/release-notes">Player release notes</a> for more info).
 
 = 2.1.5 =
 
-* ENHANCEMENT: Support for JW Player 6.9 (See the <a href="http://www.jwplayer.com/support/jw-player/28835/release-notes">Player elease notes</a> for more info).
+* ENHANCEMENT: Support for JW Player 6.9 (See the <a href="http://www.jwplayer.com/support/jw-player/28835/release-notes">Player release notes</a> for more info).
 
 = 2.1.4 =
 
@@ -117,7 +125,7 @@ Additionally, all the embedding, skinning and scripting functionalities of JW Pl
 
 = 2.1.2 =
 
-* ENHANCEMENT: Support for JW Player 6.8 (See the <a href="http://www.jwplayer.com/support/jw-player/28835/release-notes">Player elease notes</a> for more info).
+* ENHANCEMENT: Support for JW Player 6.8 (See the <a href="http://www.jwplayer.com/support/jw-player/28835/release-notes">Player release notes</a> for more info).
 
 = 2.1.1 =
 
