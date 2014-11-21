@@ -13,6 +13,8 @@ function WPtouchAjax( actionName, actionParams, callback ) {
 	});
 }
 
+jQuery( 'table' ).parent( 'p,div' ).addClass( 'table-parent' );
+
 jQuery( '#footer .back-to-top' ).click( function( e ) {
 	e.preventDefault();
 	jQuery( window ).scrollTop( 0 );

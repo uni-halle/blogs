@@ -192,7 +192,7 @@ function wptouch_get_theme_location() {
 }
 
 function wptouch_get_theme_url() {
-	return WP_CONTENT_URL . wptouch_get_theme_location();
+	return content_url() . wptouch_get_theme_location();
 }
 
 function wptouch_the_theme_url() {

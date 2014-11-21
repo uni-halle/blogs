@@ -556,13 +556,19 @@ ul.dots {
 	font-size: 100%;
 	line-height: 165%;
 	padding-bottom: 50px;
+	padding-left: 20px;
+	padding-right: 20px;
 	overflow: hidden;
 }
+	.post-page-content .post-page-thumbnail,
+	.post-page-content .sharing-options {
+		margin-left: -20px;
+		margin-right: -20px;
+	}
 
 .post-page-content .wp-caption {
 	max-width: 300px !important;
 	width: auto !important;
-	padding: 0 20px;
 }
 
 .post-page-content img.aligncenter {
@@ -573,20 +579,13 @@ ul.dots {
 }
 
 .post-page-content table {
-	margin-left: 20px;
-	margin-right: 20px;
 	max-width: 100%;
 	overflow: scroll;
 }
 
-.post-page-content h1, .post-page-content h2, .post-page-content h3, .post-page-content h4, .post-page-content h5, .post-page-content h6, .post-page-content dl, .post-page-content address {
-	margin-left: 20px;
-	margin-right: 20px;
-}
-
 .post-page-content ul, .post-page-content ol {
-	margin-left: 15px;
-	margin-right: 15px;
+	margin-left: -5px;
+	margin-right: -5px;
 	list-style-type: circle;
 }
 
@@ -595,11 +594,6 @@ ul.dots {
 	margin-right: 10;
 	padding-right: 0;
 	padding-left: 0;
-}
-
-.post-page-content > p, .post-page-content > div > p {
-	padding-left: 20px;
-	padding-right: 20px;
 }
 
 .wptouch-shortcode-webapp-mobile, .wptouch-shortcode-webapp-only, .wptouch-shortcode-webapp-only {

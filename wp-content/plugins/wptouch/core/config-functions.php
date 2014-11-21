@@ -20,7 +20,7 @@ function wptouch_setup_base_content_dir() {
 
 	if ( is_multisite() ) {
 		define( 'WPTOUCH_BASE_CONTENT_MS_DIR', WP_CONTENT_DIR . $desirable_dir );
-		define( 'WPTOUCH_BASE_CONTENT_MS_URL', wptouch_check_url_ssl( WP_CONTENT_URL ) . $desirable_dir );
+		define( 'WPTOUCH_BASE_CONTENT_MS_URL', wptouch_check_url_ssl( content_url() ) . $desirable_dir );
 
 		if ( $blog_id ) {
 			wptouch_create_directory_if_not_exist( WPTOUCH_BASE_CONTENT_MS_DIR );
@@ -49,5 +49,5 @@ function wptouch_setup_base_content_dir() {
 	}
 
 	define( 'WPTOUCH_BASE_CONTENT_DIR', WP_CONTENT_DIR . $desirable_dir );
-	define( 'WPTOUCH_BASE_CONTENT_URL', wptouch_check_url_ssl( WP_CONTENT_URL ) . $desirable_dir );
+	define( 'WPTOUCH_BASE_CONTENT_URL', wptouch_check_url_ssl( content_url() ) . $desirable_dir );
 }

@@ -68,7 +68,7 @@ function wptouch_get_desktop_bloginfo( $param ) {
 		case 'stylesheet_directory':
 		case 'template_url':
 		case 'template_directory':
-			return WP_CONTENT_URL . '/themes/' . get_option( 'template' );
+			return content_url() . '/themes/' . get_option( 'template' );
 		default:
 			return get_bloginfo( $param );
 	}

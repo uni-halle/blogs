@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.6
-Stable tag: 3.6
+Stable tag: 3.6.1
 Tested up to: 4.0
 License: GPLv2
 
@@ -39,6 +39,21 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.6.1 (November 20, 2014) =
+
+* Added: Automatically disable WPtouch when activating WPtouch Pro
+* Added: Highlight available theme & extension updates (Pro Only)
+* Added: Better support for Shortcodes Ultimate
+* Added: Back-to-top links, and multilingual improvements in MobileStore (Pro Only)
+* Added: Minimum character count for mid-content ads in MultiAds (Pro Only)
+* Changed: Improved Custom Latest Posts Page pagination handling
+* Changed: Switch from WP_CONTENT_URL to content_url()
+* Fixed: PHP error on WPEngine when debug mode was enabled (Pro Only)
+* Fixed: Eliminated some warnings and notices
+* Fixed: Arrow directions for next/previous posts in RTL mode
+* Fixed: Custom Latest Posts page now uses WPtouch posts-per-page setting
+
 
 = Version 3.6 (November 6, 2014) =
 

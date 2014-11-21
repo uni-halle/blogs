@@ -78,9 +78,9 @@ class WPtouchProDebug {
 			$message .= '[Process: ' . getmypid() . ']';
 
 			// Lock the debug file for writing so multiple PHP processes don't mangle it
-			if ( flock( $this->debug_file, LOCK_EX ) ) {
+			if ( flock( $this->debug_file, LOCK_EX, $wouldblock ) ) {
 				fwrite( $this->debug_file, $message . ': ' . $msg . "\n" );
-				flock( $this->debug_file, LOCK_UN );
+				flock( $this->debug_file, LOCK_UN, $wouldblock );
 			}
 		}
 	}

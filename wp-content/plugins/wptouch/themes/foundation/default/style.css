@@ -1383,3 +1383,13 @@ span.wpcf7-form-control-wrap {
 }
 
 /* @end */
+
+#content .su-pullquote {
+	float: none;
+	width: 90%;
+}
+
+.table-parent {
+	max-width: 100%;
+	overflow: scroll;
+}

@@ -1007,9 +1007,9 @@ class WPtouchProThree {
 		if ( $this->has_parent_theme() ) {
 			$parent_info = $this->get_parent_theme_info();
 
-			return wptouch_check_url_ssl( WP_CONTENT_URL . $parent_info->location . '/' . apply_filters( 'wptouch_parent_device_class', $this->get_active_device_class() ) );
+			return wptouch_check_url_ssl( content_url() . $parent_info->location . '/' . apply_filters( 'wptouch_parent_device_class', $this->get_active_device_class() ) );
 		} else {
-			return wptouch_check_url_ssl( WP_CONTENT_URL . $theme_info->location . '/' . $this->get_active_device_class() );
+			return wptouch_check_url_ssl( content_url() . $theme_info->location . '/' . $this->get_active_device_class() );
 		}
 	}
 
@@ -1022,7 +1022,7 @@ class WPtouchProThree {
 	function get_stylesheet_directory_uri( $directory, $template = false, $root = false ) {
 		$theme_info = $this->get_current_theme_info();
 
-		return wptouch_check_url_ssl( WP_CONTENT_URL . $theme_info->location . '/' . $this->get_active_device_class() );
+		return wptouch_check_url_ssl( content_url() . $theme_info->location . '/' . $this->get_active_device_class() );
 	}
 
 	function has_parent_theme() {
@@ -1535,7 +1535,7 @@ class WPtouchProThree {
 		$icon_pack_info->icons = wptouch_get_files_in_directory( $location, 'png' );
 
 		if ( is_array( $icon_pack_info->icons ) && count( $icon_pack_info->icons ) ) {
-			$icon_pack_info->thumbnail = str_replace( WP_CONTENT_DIR, WP_CONTENT_URL, $icon_pack_info->icons[ 0 ] );
+			$icon_pack_info->thumbnail = str_replace( WP_CONTENT_DIR, content_url(), $icon_pack_info->icons[ 0 ] );
 		}
 
 		return $icon_pack_info;
@@ -2258,9 +2258,13 @@ class WPtouchProThree {
 		}
 	}
 
-	function redirect_to_page( $url ) {
+	function redirect_to_page( $url, $query_string = false ) {
+
 		if ( strpos( urldecode( $url ), '//' ) !== 0 ) { // Prevent redirects to remote URLs.
-			header( 'Location: ' . urldecode( $url ) );
+			if ( $query_string ) {
+				$query_string = '?' . $query_string;
+			}
+			header( 'Location: ' . urldecode( $url ) . $query_string );
 		}
 		die;
 	}
@@ -2291,7 +2295,7 @@ class WPtouchProThree {
 				}
 
 				if ( $can_do_redirect ) {
-					$this->redirect_to_page( $redirect_target );
+					$this->redirect_to_page( $redirect_target, $_SERVER[ 'QUERY_STRING' ] );
 				}
 			}
 		}
@@ -2411,7 +2415,7 @@ class WPtouchProThree {
 	}
 
 	function get_current_theme_uri() {
-		return wptouch_check_url_ssl( WP_CONTENT_URL . $this->get_current_theme_location() );
+		return wptouch_check_url_ssl( content_url() . $this->get_current_theme_location() );
 	}
 
 	function get_current_theme() {
@@ -2442,7 +2446,7 @@ class WPtouchProThree {
 		$css_file = $this->check_and_use_css_file(
 			$settings->current_theme_location . '/' . $settings->current_theme_name . '/' . $this->get_active_device_class() . '/style.css',
 			WP_CONTENT_DIR,
-			WP_CONTENT_URL
+			content_url()
 		);
 
 		wp_enqueue_style( 'wptouch-theme-css', wptouch_check_url_ssl( $css_file ), 'wptouch-parent-theme-css', WPTOUCH_VERSION );

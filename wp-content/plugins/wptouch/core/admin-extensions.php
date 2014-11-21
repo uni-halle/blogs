@@ -177,7 +177,7 @@ function wptouch_get_addon_location() {
 }
 
 function wptouch_get_addon_url() {
-	echo WP_CONTENT_URL . wptouch_get_addon_location();
+	echo content_url() . wptouch_get_addon_location();
 }
 
 function wptouch_the_addon_url() {

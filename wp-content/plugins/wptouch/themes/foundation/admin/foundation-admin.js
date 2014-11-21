@@ -103,9 +103,11 @@ function fdnAdminReady() {
 	var isFree = jQuery( '.wptouch-free' );
 
 	webAppNotice = jQuery( '#webapp_notice_message' );
-	if ( webAppNotice.val().indexOf( '[device]' ) > -1 ) {
-		notice_parts = jQuery( '#webapp_notice_message' ).val().split( '[device]' );
-		webAppNotice.val( notice_parts[ 0 ] + 'home screen' + notice_parts[ 1 ] );
+	if ( webAppNotice.is( 'textarea' ) ) {
+		if ( webAppNotice.val().indexOf( '[device]' ) > -1 ) {
+			notice_parts = jQuery( '#webapp_notice_message' ).val().split( '[device]' );
+			webAppNotice.val( notice_parts[ 0 ] + 'home screen' + notice_parts[ 1 ] );
+		}
 	}
 
 	fdnAdminAdsPlacement();

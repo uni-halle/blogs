@@ -7,10 +7,10 @@ function foundation_sharing_init() {
 
 	switch ( $settings->share_location ) {
 		case 'top':
-			add_filter( 'the_content', 'foundation_handle_share_links_top' );
+			add_filter( 'the_content', 'foundation_handle_share_links_top', 100 );
 			break;
 		case 'bottom':
-			add_filter( 'the_content', 'foundation_handle_share_links_bottom' );
+			add_filter( 'the_content', 'foundation_handle_share_links_bottom', 100 );
 			break;
 	}
 }
