@@ -12,7 +12,7 @@ class TemplateExtensions {
 	 * Parameters:
 	 *
 	 * - **category:** (optional) "social", "donation" or "all". Default: "all"
-	 * - **type:**     (optional) Filter services by type. List of all service types: 500px, amazon wishlist, app.net, bandcamp, bitbucket, bitcoin, deviantart, diaspora, dogecoin, dribbble, facebook, flattr, flickr, generic wishlist, github, google+, instagram, jabber, last.fm, linkedin, litecoin, openstreetmap, paypal, pinboard, pinterest, playstation network, skype, soundcloud, soup, steam, steam wishlist, thomann wishlist, tumblr, twitter, website, xbox live, xing, youtube
+	 * - **type:**     (optional) Filter services by type. List of all service types: 500px, about.me, amazon wishlist, app.net, auphonic credits, bandcamp, bitbucket, bitcoin, deviantart, diaspora, dogecoin, dribbble, email, facebook, flattr, flickr, foursquare, generic wishlist, github, gittip, google+, instagram, jabber, last.fm, linkedin, litecoin, openstreetmap, orcid, paypal, pinboard, pinterest, playstation network, researchgate, scous, skype, soundcloud, soup, steam, steam wishlist, thomann wishtlist, tumblr, twitter, vimeo, website, xbox live, xing, youtube
 	 *
 	 * Example:
 	 *
@@ -27,7 +27,7 @@ class TemplateExtensions {
 	 * @accessor
 	 * @dynamicAccessor contributor.services
 	 */
-	public function accessorContributorServices($return, $method_name, $contributor, $contribution, $args = array()) {
+	public static function accessorContributorServices($return, $method_name, $contributor, $contribution, $args = array()) {
 
 		$category = (isset($args['category']) && in_array($args['category'], array("social", "donation", "all"))) ? $args['category'] : "all";
 
@@ -76,7 +76,7 @@ class TemplateExtensions {
 	 * @accessor
 	 * @dynamicAccessor podcast.services
 	 */
-	public function accessorPodcastServices($return, $method_name, $podcast, $args = array()) {
+	public static function accessorPodcastServices($return, $method_name, $podcast, $args = array()) {
 
 		$category = isset($args['category']) && in_array($args['category'], array("social", "donation", "all")) ? $args['category'] : "all";
 
