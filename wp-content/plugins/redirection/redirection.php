@@ -3,7 +3,7 @@
 Plugin Name: Redirection
 Plugin URI: http://urbangiraffe.com/plugins/redirection/
 Description: Manage all your 301 redirects and monitor 404 errors
-Version: 2.3.10
+Version: 2.3.11
 Author: John Godley
 Author URI: http://urbangiraffe.com
 ============================================================================================================
@@ -45,7 +45,6 @@ class Redirection extends Redirection_Plugin {
 			$this->add_action( 'load-tools_page_redirection', 'redirection_head' );
 
 			add_filter( 'set-screen-option', array( $this, 'set_per_page' ), 10, 3 );
-			add_action( 'redirection_log_delete', array( $this, 'expire_logs' ) );
 
 			$this->register_plugin_settings( __FILE__ );
 
@@ -65,6 +64,8 @@ class Redirection extends Redirection_Plugin {
 			$this->wp = new WordPress_Module();
 			$this->wp->start();
 		}
+
+		add_action( 'redirection_log_delete', array( $this, 'expire_logs' ) );
 
 		$this->monitor = new Red_Monitor( $this->get_options() );
 		$this->add_action ('template_redirect' );
@@ -131,18 +132,18 @@ class Redirection extends Redirection_Plugin {
 
 		if ( $options['expire_redirect'] > 0 ) {
 			$cleanup = true;
-			$logs = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}redirection_logs WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY)", $options['expire'] ) );
-
+			$logs = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}redirection_logs WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY)", $options['expire_redirect'] ) );
 			if ( $logs > 0 )
-				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}redirection_logs WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY) LIMIT 1000", $options['expire'] ) );
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}redirection_logs WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY) LIMIT 1000", $options['expire_redirect'] ) );
 		}
 
 		if ( $options['expire_404'] > 0 ) {
 			$cleanup = true;
-			$l404 = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}redirection_404 WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY)", $options['expire'] ) );
+			echo $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}redirection_404 WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY)", $options['expire_404'] );
+			$l404 = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}redirection_404 WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY)", $options['expire_404'] ) );
 
 			if ( $l404 > 0 )
-				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}redirection_404 WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY) LIMIT 1000", $options['expire'] ) );
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}redirection_404 WHERE created < DATE_SUB(NOW(), INTERVAL %d DAY) LIMIT 1000", $options['expire_404'] ) );
 		}
 
 		if ( $cleanup ) {
@@ -183,10 +184,11 @@ class Redirection extends Redirection_Plugin {
 	}
 
 	function admin_screen_modules() {
-		$pager = new Redirection_Module_Table();
+		$options = $this->get_options();
+		$pager = new Redirection_Module_Table( $options['token'] );
 		$pager->prepare_items();
 
-		$this->render_admin( 'module_list', array( 'options' => $this->get_options(), 'table' => $pager ) );
+		$this->render_admin( 'module_list', array( 'options' => $options, 'table' => $pager ) );
 	}
 
 	function get_options() {
@@ -367,11 +369,15 @@ class Redirection extends Redirection_Plugin {
 			$group_id = Red_Group::get_first_id();
 
 		$group = Red_Group::get( $group_id );
+		if ( $group === false ) {
+			$this->render_error( __( 'Invalid group ID', 'redirection' ) );
+		}
+		else {
+			$table = new Redirection_Table( Red_Group::get_for_select(), $group );
+			$table->prepare_items();
 
-		$table = new Redirection_Table( Red_Group::get_for_select(), $group );
-		$table->prepare_items();
-
-  		$this->render_admin( 'item_list', array( 'options' => $this->get_options(), 'group' => $group, 'table' => $table, 'date_format' => get_option( 'date_format' ) ) );
+	  		$this->render_admin( 'item_list', array( 'options' => $this->get_options(), 'group' => $group, 'table' => $table, 'date_format' => get_option( 'date_format' ) ) );
+	  	}
 	}
 
 	function setMatched( $match ) {
@@ -450,6 +456,7 @@ class Redirection extends Redirection_Plugin {
 
 		$hook_suffix = '';
 		$module_id = intval( $_POST['id'] );
+		$options = $this->get_options();
 
 		$this->check_ajax_referer( 'red_module_save_'.$module_id );
 
@@ -458,7 +465,7 @@ class Redirection extends Redirection_Plugin {
 		if ( $module ) {
 			$module->update( $_POST );
 
-			$pager = new Redirection_Module_Table( array(), false );
+			$pager = new Redirection_Module_Table( $options['token'] );
 			$json = array( 'html' => $pager->column_name( $module ) );
 		}
 		else
