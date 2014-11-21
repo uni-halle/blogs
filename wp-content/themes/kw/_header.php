@@ -17,7 +17,7 @@
 <div id="header" class="main">
 
 <!-- @llz -->
-<div style="float: left;"><a href="/dev/wp-admin/post-new.php"><img style="margin: 8px 8px 0px;" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/add.png'; ?>" alt="Pin hinzuf&uuml;gen" title="Pin hinzuf&uuml;gen" /></a></div>
+<div style="float: left;"><a href="/wp-admin/post-new.php"><img style="margin: 8px 8px 0px;" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/add.png'; ?>" alt="Pin hinzuf&uuml;gen" title="Pin hinzuf&uuml;gen" /></a></div>
 
 	<div id="header-inner" class="clearfix">
 
