@@ -3,8 +3,8 @@ Contributors: rinatkhaziev, danielbachhuber, jtrees
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=rinat%2ekhaziev%40gmail%2ecom
 Tags: frontend, image, images, media, uploader, upload, video, audio, photo, photos, picture, pictures, file, user generated content, ugc, frontend upload
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag: 0.9
+Tested up to: 4.1
+Stable tag: 0.9.2
 License: GPLv2 or later
 
 This plugin allows your visitors to upload User Generated Content (media and posts/custom-post-types with media).
@@ -42,6 +42,7 @@ You can also manage UGC for selected custom post types (Please refer to the plug
 * Wir sprechen Deutsch (German) (props Joshua Trees)
 * We spreken Nederlands (Dutch) (props Jaap van der Veen)
 * ما فارسی صحبت می کنند (Persian) (props mojtabashahi)
+* Falamos Português (Brazilian Portuguese) (props Murilo Pinto Pereira)
 
 [Fork the plugin on Github](https://github.com/rinatkhaziev/wp-frontend-uploader/)
 
@@ -70,6 +71,7 @@ The major cause of this is either request timeout or request exceeding maximum r
 = Shortcode parameters =
 
 **Customizing Your Form with Shortcode Parameters**
+
 Frontend Uploader uses shortcodes to insert a form into a page or post. The default form is [fu-upload-form], which will upload a media file.
 
 If you would like to build a custom form, it must begin with [fu-upload-form] and end with [/fu-upload-form].
@@ -91,17 +93,22 @@ Within [fu-upload-form], you can add various fields with shortcodes like these:
 1. `[textarea name="post_content"]` => A text box for multiple lines of text
 1. `[input type="file" name="photo"]` => A file uploader
 1. `[checkboxes name="foo" class="checkboxes" description="Pick a fruit" values="value:Description,124:Banana,cherry:Cherry"]`
+1. `[radio name="foo" class="checkboxes" description="Pick a fruit" values="value:Description,124:Banana,cherry:Cherry"]`
 1. `[select name="foo" class="select" description="Pick a fruit" values="apple:Apple,banana:Banana,cherry:Cherry"]`
 1. `[input type="submit" class="btn" value="Submit"]` => A submit button
+
+**Caveats**
+
+You can modify the form as you'd like but you have to make sure that 'post_title' field is present, otherwise upload might fail
 
 = Example of default media upload form =
 
 Here's example of default form (*you don't need to enter all that if you want to use default form, just use `[fu-upload-form]`*):
 
 `[fu-upload-form class="your-class" title="Upload your media"]
-[input type="text" name="post_title" id="title" class="required" description="Title" multiple=""]
+[input type="text" name="post_title" id="title" class="required" description="Title"]
 [textarea name="post_content" class="textarea" id="ug_caption" description="Description (optional)"]
-[input type="file" name="photo" id="ug_photo" class="required" description="Your Photo" multiple=""]
+[input type="file" name="photo" id="ug_photo" class="required" description="Your Photo" multiple="multiple"]
 [input type="submit" class="btn" value="Submit"]
 [/fu-upload-form]`
 
@@ -170,8 +177,7 @@ function my_fu_allowed_mime_types( $mime_types ) {
 }`
 
 = There's no captcha! =
-The plugin runs on multiple websites doing millions of pageviews daily. So far I haven't received a single report regarding spam.
-If you do get spam, please report it in support forums.
+The plugin uses Akismet as spam protection (you have to have Akismet installed and configured). Just enable Akismet support in the plugin's settings and voila.
 
 = Configuration Filters =
 
@@ -232,6 +238,13 @@ function my_fu_upload_result( $layout, $result ) {
 }`
 
 == Changelog ==
+
+= 0.9.2 (Nov 22, 2014) =
+* PHP 5.2 compat for 0.9.1
+
+= 0.9.1 (Nov 21, 2014) =
+* Bugfix: don't texturize [fu-upload-form] shortcode's inner content (needed due to 4.01 default behavior changed)
+* Translation: added pt_BR translation (props Murilo Pinto Pereira)
 
 = 0.9 (Oct 22, 2014) =
 * Feature: Akismet integration! Protects your site from spam submissions
