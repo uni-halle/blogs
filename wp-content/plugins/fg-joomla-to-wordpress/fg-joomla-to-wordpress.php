@@ -3,7 +3,7 @@
  * Plugin Name: FG Joomla to WordPress
  * Plugin Uri:  http://wordpress.org/plugins/fg-joomla-to-wordpress/
  * Description: A plugin to migrate categories, posts, images and medias from Joomla to WordPress
- * Version:     1.40.0
+ * Version:     1.41.0
  * Author:      Frédéric GILLES
  */
 
@@ -1618,9 +1618,10 @@ SQL;
 						if ( is_array($matches) ) {
 							foreach ($matches as $match ) {
 								$link = $match[2];
+								list($link_without_anchor, $anchor_link) = $this->split_anchor_link($link); // Split the anchor link
 								// Is it an internal link ?
-								if ( $this->is_internal_link($link) ) {
-									$meta_key_value = $this->get_joomla_id_in_link($link);
+								if ( $this->is_internal_link($link_without_anchor) ) {
+									$meta_key_value = $this->get_joomla_id_in_link($link_without_anchor);
 									// Can we find an ID in the link ?
 									if ( $meta_key_value['meta_value'] != 0 ) {
 										// Get the linked post
@@ -1632,6 +1633,9 @@ SQL;
 										));
 										if ( count($linked_posts) > 0 ) {
 											$new_link = get_permalink($linked_posts[0]->ID);
+											if ( !empty($anchor_link) ) {
+												$new_link .= '#' . $anchor_link;
+											}
 											$content = str_replace("href=\"$link\"", "href=\"$new_link\"", $content);
 											// Update the post
 											wp_update_post(array(
@@ -1695,6 +1699,25 @@ SQL;
 				}
 			}
 			return $meta_key_value;
+		}
+		
+		/**
+		 * Split a link by its anchor link
+		 * 
+		 * @param string $link Original link
+		 * @return array(string link, string anchor_link) [link without anchor, anchor_link]
+		 */
+		private function split_anchor_link($link) {
+			$pos = strpos($link, '#');
+			if ( $pos !== false ) {
+				// anchor link found
+				$link_without_anchor = substr($link, 0, $pos);
+				$anchor_link = substr($link, $pos + 1);
+				return array($link_without_anchor, $anchor_link);
+			} else {
+				// anchor link not found
+				return array($link, '');
+			}
 		}
 		
 		/**
