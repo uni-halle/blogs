@@ -3,8 +3,8 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 4.0
-Stable tag: 1.9.5
+Tested up to: 4.0.1
+Stable tag: 1.10.1
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -97,6 +97,24 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.10 =
+* Added a way to hide individual link actions like "Dismiss" and "Unlink".
+* Added a "Fix redirect" link action. It replaces a redirect with a direct link. It is hidden by default and can be enabled through the settings page.
+* Added a "Recheck" link action. Unlike the bulk action by the same name, it checks a link immediately and displays the results without having to refresh the page. 
+* Added a "Dismiss" bulk action.
+* Added a note below the "link tweaks" settings explaining that they only apply to the contents of posts (and pages, and CPTs), not comments or custom fields.
+* Made the "Redirect URL" column sortable.
+* Added a "Details" link to the "Status" column.
+* Added a "Warnings" section to Tools -> Broken Links. It shows problems that might be temporary or false positives. Warnings can be disabled through the settings page.
+* Fixed a conflict with plugins that use PHP sessions.
+* Fixed the "post statuses" option. Now disabling a post status (e.g. "Draft") should take effect immediately.
+* Fixed the Mediafire link checker.
+* Fixed the text in the "Status" column being slightly offset vertically when compared to other columns.
+* Fixed search box position in WP 4.1-alpha.
+* Added a few workarounds for situations where a custom post type is removed without first removing the posts.
+* Removed the screen icon. WordPress has deprecated it.
+* Other minor fixes.
 
 = 1.9.5 =
 * Fixed missing YouTube videos not being detected when the video URL starts with https instead of http.

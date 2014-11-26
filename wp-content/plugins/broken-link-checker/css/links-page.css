@@ -84,6 +84,10 @@ td.column-new-url .mini-status {
 	color: black;
 }
 
+table.mini-status {
+	border-spacing: 0;
+}
+
 /* Styles for broken links, redirects and other link states or types */
 
 .blc-redirect .blc-link-url {
@@ -198,6 +202,15 @@ td.column-status {
 .compact .link-text 
 {
 	display: none;
+}
+
+
+/* Only show the "Details" link in the compact view. */
+#blc-links .column-status .row-actions {
+	display: none;
+}
+#blc-links.compact .column-status .row-actions {
+	display: block;
 }
 
 /* Misc table styles */
@@ -455,7 +468,7 @@ div.search-box{
 }
 
 /* Filter-related styles */
-.base-filter-all .blc-dismiss-button {
+.base-filter-all .blc-dismiss-action {
     display: none;
 }
 
