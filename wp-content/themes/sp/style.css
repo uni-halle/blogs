@@ -1,0 +1,13 @@
+/*
+Theme Name:     sp
+Theme URI:      http://llz.uni-halle.de
+Description:    Social Press
+Author:         Markus Scholz, Zentrum f&uuml;r multimediales Lehren und Lernen
+Author URI:     http://llz.uni-halle.de
+Template:       commentpress-modern
+Version:        0.1
+*/
+
+#global-footer {
+  display: none;
+}
