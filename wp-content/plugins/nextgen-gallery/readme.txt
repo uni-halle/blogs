@@ -1,6 +1,6 @@
 === NextGEN Gallery ===
 Contributors: photocrati
-Tags: nextgen, nextgen gallery, gallery, galleries, image, images, image gallery, photo, photos, photo gallery, picture, pictures, picture gallery, album, albums, photo albums, image album, media, media gallery, thumbnails, thumbnail gallery, thumbnail galleries, slideshow, slideshows, slideshow gallery, slideshow galleries, fancybox, lightbox, responsive, responsive gallery, responsive galleries, wordpress responsive gallery, nextcellent, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, best gallery plugin, free photo gallery, singlepic, image captions imagebrowser, watermarks, watermarking, photography, photographer
+Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,nextgen-gallery,nextgen
 Requires at least: 3.6.1
 Tested up to: 4.0
 Stable tag: trunk
@@ -60,7 +60,7 @@ NextGEN has been the dominant WordPress gallery plugin for years. As a result, t
 *See <a href="http://www.nextgen-gallery.com/help/" target="_blank">NextGEN Gallery Documentation</a><br>
 *Get <a href="http://wordpress.org/tags/nextgen-gallery?forum_id=10" target="_blank">NextGEN Support</a> via the WordPress.org forums<br>
 *Get <a href="http://www.nextgen-gallery.com/languages/" target="_blank">Translations</a> for your own language<br>
-*See <a href="http://www.photocrati.com/wordpress-photography-themes" target="_blank">WordPress Photography Themes</a> by the same author<br>
+*See <a href="http://www.photocrati.com/photography-wordpress-themes" target="_blank">WordPress Photography Themes</a> by the same author<br>
 *Follow NextGEN Gallery on <a title="Follow NextGEN Gallery on Facebook" href="http://www.facebook.com/NextGENGallery" target="_blank">Facebook</a>, <a title="Follow NextGEN Gallery on Twitter" href="http://twitter.com/NextGENGallery" target="_blank">Twitter</a>, and <a title="Follow NextGEN Gallery on Google +" href="http://plus.google.com/101643895780935290171" target="_blank">Google +</a><br>
 
 
@@ -198,6 +198,13 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.0.66.33 - 11.24.2014 =
+* Fixed:   Broken NextGEN Pro ecommerce-related shortcodes
+* Fixed:   Spanish PO file
+
+= V2.0.66.31 - 11.21.2014 =
+* Fixed:   Broken shortcodes with WordPress 4.0.1
 
 = V2.0.66.29 - 09.17.2014 =
 * NEW:     Added skip_excluding_globally_excluded_images property to displayed gallery objects

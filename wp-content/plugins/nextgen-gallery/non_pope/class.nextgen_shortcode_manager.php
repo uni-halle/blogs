@@ -176,9 +176,12 @@ class C_NextGen_Shortcode_Manager
 	{
 		$retval = '';
 
-		foreach ($params as $key => &$val) {
-			$val = preg_replace("/^(&[^;]+;)?(.*)/", '\2', $val);
-			$val = preg_replace("/(&[^;]+;)?$/", '', $val);
+		if (is_array($params))
+		{
+			foreach ($params as $key => &$val) {
+				$val = preg_replace("/^(&[^;]+;)?(.*)/", '\2', $val);
+				$val = preg_replace("/(&[^;]+;)?$/", '', $val);
+			}
 		}
 
 		if (isset($this->_shortcodes[$shortcode]))

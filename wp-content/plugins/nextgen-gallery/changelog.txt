@@ -1,6 +1,10 @@
 NextGEN Gallery
 by Photocrati Media
 
+= V2.0.66.33 - 11.24.2014 =
+* Fixed:   Broken NextGEN Pro ecommerce-related shortcodes
+* Fixed:   Spanish PO file
+
 = V2.0.66.31 - 11.21.2014 =
 * Fixed:   Broken shortcodes with WordPress 4.0.1
 
