@@ -2,6 +2,7 @@
 
 /**
  * Podcasting Settings Interface
+ * @author The Software Group 
  * @author Spiral Web Consulting
  **/
 class PodcastingSettings
@@ -31,6 +32,21 @@ class PodcastingSettings
 	 * Adds the settings page for Podcasting
 	 */
 	function addPodcastingSettings() {
+    
+        if ( is_admin() && get_option( 'Activated_Plugin' ) == 'podcasting_plugin' ) {
+    
+            delete_option( 'Activated_Plugin' );
+    
+            /* do stuff once right after activation */
+        	// Update taxonomy
+        	$args = array('slug' => TSG_DEAULT_FORMAT );
+            wp_insert_term("Default", 'podcast_format', $args);
+            
+        	// Update explicit
+        	$pod_explicits["default"] = "no";
+        	update_option(TSG_DEAULT_FORMAT, serialize($pod_explicits));
+        }            
+    
 		# Register Podcasting's settings
 		if ( function_exists('register_setting') ) {
 			register_setting('podcasting', 'pod_title', '');
@@ -81,6 +97,7 @@ class PodcastingSettings
                      
 			register_setting('podcasting', 'pod_accept_fail', '');
 		}
+       
 	}
 	
 	
@@ -220,6 +237,7 @@ class PodcastingSettings
 			);
 
 		$pod_formats = get_terms('podcast_format', 'get=all');
+
         
 		?>
 
@@ -240,6 +258,34 @@ class PodcastingSettings
 				<tr valign="top">
 					<th scope="row" style="width: 200px;">
 						<label>Podcast feed address (URL):</label>
+					</th>
+					<td>
+						<p style="margin: 7px 0;"><strong>
+						<?php 
+                            global $wp_rewrite;
+                            
+                            echo get_option('home');
+
+                            if ($wp_rewrite->using_permalinks())
+                            {
+                                echo '/feed/podcast/';
+                            }
+                            else
+                            {
+                                echo '?feed=podcast';
+                            }
+                            
+						
+						?>
+						</strong></p>
+                       
+                        
+                        </span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row" style="width: 200px;">
+						<label>Advanced Category Podcast feed address (URL):</label>
 					</th>
 					<td>
 						<p style="margin: 7px 0;"><strong>
@@ -670,8 +716,10 @@ class PodcastingSettings
                         $appender = "?";
                     }
                  
-                    $format_option = "format=$pod_format->slug";         
-    				if ( 'default-format' == $pod_format->slug ) 
+                    $format_option = "format=$pod_format->slug"; 
+                    
+                    // allow for 'no format needed' if default   
+    				if ($pod_format->slug == TSG_DEAULT_FORMAT) 
                     {
                         $readonly = 'readonly="readonly"';
                         $format_option = '';

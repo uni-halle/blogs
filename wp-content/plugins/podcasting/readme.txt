@@ -3,8 +3,8 @@ Contributors: glennbennett
 Donate link: http://podcastingplugin.com/volunteer/
 Tags: podcast, itunes, podcasting, rss, feed, enclosure, mp3, video, castfeed, cloudcasting, cloudcasts
 Requires at least: 3.6
-Tested up to: 4.0
-Stable tag: 3.0.11
+Tested up to: 4.0.1
+Stable tag: 3.1.1
 
 The Podcasting plugin by TSG enhances WordPress' existing podcast support to 
 enhance iTunes support by adding multiple iTunes-compatible feeds and an on 
@@ -43,16 +43,25 @@ Please visit the [Podcasting plugin page](http://docs.podcastingplugin.com/scree
 1. An example of the Podcasting enclosure box before a podcast is added.
 2. The Podcasting enclosure box with an example podcast added.
 3. The audio player before an episode begins playing.
-4. The audio player in the middle of an episode.
+4. The audio player in the middle of playing an episode.
 5. The video player before an episode is playing.
 
 == Changelog ==
+= 3.1.1 =
+* Only add default type after activation.
+* 
+
+= 3.1 =
+* Added default format type - Should help with boarding
+* Exposed basic feed urls - To help people get started
+* 
+
 = 3.0.11 =
-* Remove redirect to home when 404 is received
-* Fix video display
+* Removed redirect to home when 404 is received
+* Fixed video display
 
 = 3.0.10 =
-* Clean up player window image
+* Cleaned up player window image
 
 = 3.0.9 =
 * Clean up player window code
