@@ -44,3 +44,8 @@ div.olControlMousePosition {
 
     white-space:nowrap;
 }
+
+/* pink tiles at openseamap */
+.olImageLoadError {
+display: none !important;
+}

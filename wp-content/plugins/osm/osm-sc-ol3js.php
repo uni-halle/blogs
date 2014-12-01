@@ -26,8 +26,8 @@
     $output = '<div id="'.$MapName.'" class="OSM_Map" style="width:'.$width.'px; height:'.$height.'px; overflow:hidden;">';
 
     if(!defined('OL3_LIBS_LOADED')) {
-      $output .= '<link rel="stylesheet" href="http://ol3js.org/en/master/build/ol.css" type="text/css"> ';
-      $output .= '<script src="http://ol3js.org/en/master/build/ol.js" type="text/javascript"></script> ';
+      $output .= '<link rel="stylesheet" href="http://openlayers.org/en/v3.0.0/css/ol.css" type="text/css"> ';
+      $output .= '<script src="http://openlayers.org/en/v3.0.0/build/ol.js" type="text/javascript"></script> ';
       define ('OL3_LIBS_LOADED', 1);
     }
  
@@ -49,6 +49,12 @@
       }
       else if ($type == "stamen_terrain-labels"){
         $output .= '  source: new ol.source.Stamen({layer: "terrain-labels"})';
+      }
+      else if ($type == "openseamap"){
+        $output .= '  source: new ol.source.OSM({';
+        $output .= '    crossOrigin: null,';
+        $output .= '    url: "http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"';
+        $output .= '  })';
       }
       else {// unknwon => OSM map
         $output .= '  source: new ol.source.OSM()';
@@ -106,7 +112,7 @@ var style = {
         layers: [raster,vector],
         renderer: "canvas",
         target: "'.$MapName.'",
-        view: new ol.View2D({
+        view: new ol.View({
           center: ol.proj.transform(['.$lon.','.$lat.'], "EPSG:4326", "EPSG:3857"), zoom: '.$zoom.'
         })
       });
@@ -148,7 +154,7 @@ var style = {
         var '.$MapName.' = new ol.Map({
           layers: [raster],
           target: "'.$MapName.'",
-          view: new ol.View2D({
+          view: new ol.View({
             center: ol.proj.transform(['.$lon.','.$lat.'], "EPSG:4326", "EPSG:3857"),
             zoom: '.$zoom.'
           })
