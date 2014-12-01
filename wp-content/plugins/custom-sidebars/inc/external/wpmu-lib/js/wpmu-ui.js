@@ -1,4 +1,4 @@
-/*! WPMU Dev code library - v1.0.13
+/*! WPMU Dev code library - v1.0.17
  * http://premium.wpmudev.org/
  * Copyright (c) 2014; * Licensed GPLv2+ */
 /*!
@@ -314,6 +314,89 @@
 	};
 
 	/**
+	 * Displays confirmation box to the user.
+	 *
+	 * The layer is displayed in the upper half of the parent element and is by
+	 * default modal.
+	 * Note that the confirmation is asynchronous and the functions return value
+	 * only indicates if the confirmation message was created, and not the users
+	 * response!
+	 *
+	 * Also this is a "disponsable" function which does not create DOM elements
+	 * that can be re-used. All elements are temporary and are removed when the
+	 * confirmation is closed. Only 1 confirmation should be displayed at a time.
+	 *
+	 * @since  1.0.14
+	 * @param  object args {
+	 *     Confirmation options.
+	 *
+	 *     string message
+	 *     bool modal
+	 *     string layout 'fixed' or 'absolute'
+	 *     jQuery parent A jQuery object or selector
+	 *     array buttons Default is ['OK']
+	 *     function(key) callback Receives array-index of the pressed button
+	 * }
+	 * @return bool True if the confirmation is created correctly.
+	 */
+	wpmUi.confirm = function confirm( args ) {
+		var parent, modal, container, el_msg, el_btn, ind, item, primary_button;
+
+		if ( ! args instanceof Object ) { return false; }
+		if ( undefined === args['message'] ) { return false; }
+
+		args['modal'] = undefined === args['modal'] ? true : args['modal'];
+		args['layout'] = undefined === args['layout'] ? 'fixed' : args['layout'];
+		args['parent'] = undefined === args['parent'] ? _body : args['parent'];
+		args['buttons'] = undefined === args['buttons'] ? ['OK'] : args['buttons'];
+		args['callback'] = undefined === args['callback'] ? false : args['callback'];
+
+		parent = jQuery( args['parent'] );
+
+		function handle_close() {
+			var me = jQuery( this ),
+				key = parseInt( me.data( 'key' ) );
+
+			modal.remove();
+			container.remove();
+
+			if ( 'function' === typeof args['callback'] ) {
+				args['callback']( key );
+			}
+		}
+
+		if ( args['modal'] ) {
+			modal = jQuery( '<div class="wmui-confirm-modal"></div>' )
+				.css( { 'position': args['layout'] } )
+				.appendTo( parent );
+		}
+
+		container = jQuery( '<div class="wpmui-confirm-box"></div>' )
+			.css( { 'position': args['layout'] } )
+			.appendTo( parent );
+
+		el_msg = jQuery( '<div class="wpmui-confirm-msg"></div>' )
+			.html( args['message'] );
+
+		el_btn = jQuery( '<div class="wpmui-confirm-btn"></div>' );
+		primary_button = true;
+		for ( ind = 0; ind < args['buttons'].length; ind += 1 ) {
+			item = jQuery( '<button></button>' )
+				.html( args['buttons'][ind] )
+				.addClass( primary_button ? 'button-primary' : 'button-secondary' )
+				.data( 'key', ind )
+				.click( handle_close )
+				.prependTo( el_btn );
+			primary_button = false;
+		}
+
+		el_msg.appendTo( container );
+		el_btn.appendTo( container );
+
+		return true;
+	};
+
+	/**
 	 * Attaches a tooltip to the specified element.
 	 *
 	 * @since  1.0.0
@@ -406,6 +489,8 @@
 		}
 
 		tip = parent.find( '> .wpmui-tip' );
+		el.off();
+
 		if ( ! tip.length ) {
 			tip = jQuery( '<div class="wpmui-tip"></div>' );
 			tip
@@ -417,12 +502,12 @@
 			if ( ! isNaN( args['width'] ) ) {
 				tip.width( args['width'] );
 			}
+		}
 
-			if ( 'hover' === args['trigger'] ) {
-				el.hover( show_tip, hide_tip );
-			} else if ( 'click' === args['trigger'] ) {
-				el.click( toggle_tip );
-			}
+		if ( 'hover' === args['trigger'] ) {
+			el.on( 'mouseenter', show_tip ).on( 'mouseleave', hide_tip );
+		} else if ( 'click' === args['trigger'] ) {
+			el.on( 'click', toggle_tip );
 		}
 
 		tip.html( args['content'] );
@@ -523,6 +608,8 @@
 			wpmUi.upgrade_multiselect();
 			wpmUi.upgrade_tooltips();
 		}
+
+		wpmUi.binary = new WpmUiBinary();
 	}
 
 	/**
@@ -699,6 +786,14 @@
 		var _content = '';
 
 		/**
+		 * Class names to add to the popup window
+		 *
+		 * @since  1.0.14
+		 * @private
+		 */
+		var _classes = '';
+
+		/**
 		 * Is set to true when new content is assigned to the window.
 		 *
 		 * @since  1.0.0
@@ -781,6 +876,15 @@
 		 */
 		var _el_content = null;
 
+		/**
+		 * Window status: visible, hidden, closing
+		 *
+		 * @type   string
+		 * @since  1.0.14
+		 * @private
+		 */
+		var _status = 'hidden';
+
 
 		// ==============================
 		// == Public functions ==========
@@ -842,6 +946,19 @@
 		};
 
 		/**
+		 * Sets optional classes for the main window element.
+		 *
+		 * @since  1.0.14
+		 */
+		this.set_class = function set_class( class_names ) {
+			_classes = class_names;
+			_content_changed = true;
+
+			_update_window();
+			return _me;
+		};
+
+		/**
 		 * Define a callback that is executed after popup is made visible.
 		 *
 		 * @since  1.0.0
@@ -887,6 +1004,24 @@
 		};
 
 		/**
+		 * Shows a confirmation box inside the popup
+		 *
+		 * @since  1.0.14
+		 * @param  object args Message options
+		 */
+		this.confirm = function confirm( args ) {
+			if ( _status !== 'visible' ) { return _me; }
+			if ( ! args instanceof Object ) { return _me; }
+
+			args['layout'] = 'absolute';
+			args['parent'] = _wnd;
+
+			wpmUi.confirm( args );
+
+			return _me;
+		};
+
+		/**
 		 * Show the popup window.
 		 *
 		 * @since  1.0.0
@@ -894,6 +1029,7 @@
 		this.show = function show() {
 			_visible = true;
 			_need_check_size = true;
+			_status = 'visible';
 
 			_update_window();
 
@@ -910,6 +1046,7 @@
 		 */
 		this.hide = function hide() {
 			_visible = false;
+			_status = 'hidden';
 
 			_update_window();
 
@@ -925,7 +1062,12 @@
 		 * @since  1.0.0
 		 */
 		this.close = function close() {
+			// Prevent infinite loop when calling .close inside onclose handler.
+			if ( _status === 'closing' ) { return; }
+
 			_me.hide();
+
+			_status = 'closing';
 
 			if ( typeof _onclose === 'function' ) {
 				_onclose.apply( _me, [ _me.$() ] );
@@ -1033,7 +1175,8 @@
 			if ( _content_changed ) {
 				// Remove the current button bar.
 				_wnd.find( '.buttons' ).remove();
-				_wnd.addClass( 'no-buttons' );
+				_wnd.removeClass();
+				_wnd.addClass( 'wpmui-wnd no-buttons' );
 
 				// Update the content.
 				if ( _content instanceof jQuery ) {
@@ -1048,6 +1191,9 @@
 					buttons.appendTo( _wnd );
 					_wnd.removeClass( 'no-buttons' );
 				}
+
+				// Add custom class to the popup.
+				_wnd.addClass( _classes );
 
 				_content_changed = false;
 			}
@@ -1791,6 +1937,162 @@
 		_init();
 
 	}; /* ** End: WpmUiAjaxData ** */
+
+
+
+
+
+
+
+
+
+	/*===============================*\
+	===================================
+	==                               ==
+	==           UTF8-DATA           ==
+	==                               ==
+	===================================
+	\*===============================*/
+
+
+
+
+
+	/**
+	 * Handles conversions of binary <-> text.
+	 *
+	 * @type   WpmUiBinary
+	 * @since  1.0.0
+	 */
+	var WpmUiBinary = function() {
+		var map = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+
+		WpmUiBinary.utf8_encode = function utf8_encode( string ) {
+			if ( typeof string !== 'string' ) {
+				return string;
+			} else {
+				string = string.replace(/\r\n/g, "\n");
+			}
+			var output = '', i = 0, charCode;
+
+			for ( i; i < string.length; i++ ) {
+				charCode = string.charCodeAt(i);
+
+				if ( charCode < 128 ) {
+					output += String.fromCharCode( charCode );
+				} else if ( (charCode > 127) && (charCode < 2048) ) {
+					output += String.fromCharCode( (charCode >> 6) | 192 );
+					output += String.fromCharCode( (charCode & 63) | 128 );
+				} else {
+					output += String.fromCharCode( (charCode >> 12) | 224 );
+					output += String.fromCharCode( ((charCode >> 6) & 63) | 128 );
+					output += String.fromCharCode( (charCode & 63) | 128 );
+				}
+			}
+
+			return output;
+		};
+
+		WpmUiBinary.utf8_decode = function utf8_decode( string ) {
+			if ( typeof string !== 'string' ) {
+				return string;
+			}
+
+			var output = '', i = 0, charCode = 0;
+
+			while ( i < string.length ) {
+				charCode = string.charCodeAt(i);
+
+				if ( charCode < 128 ) {
+					output += String.fromCharCode( charCode );
+					i += 1;
+				} else if ( (charCode > 191) && (charCode < 224) ) {
+					output += String.fromCharCode(((charCode & 31) << 6) | (string.charCodeAt(i + 1) & 63));
+					i += 2;
+				} else {
+					output += String.fromCharCode(((charCode & 15) << 12) | ((string.charCodeAt(i + 1) & 63) << 6) | (string.charCodeAt(i + 2) & 63));
+					i += 3;
+				}
+			}
+
+			return output;
+		};
+
+		/**
+		 * Converts a utf-8 string into an base64 encoded string
+		 *
+		 * @since  1.0.15
+		 * @param  string input A string with any encoding.
+		 * @return string
+		 */
+		WpmUiBinary.base64_encode = function base64_encode( input ) {
+			if ( typeof input !== 'string' ) {
+				return input;
+			}
+			else {
+				input = WpmUiBinary.utf8_encode( input );
+			}
+			var output = '', a, b, c, d, e, f, g, i = 0;
+
+			while ( i < input.length ) {
+				a = input.charCodeAt(i++);
+				b = input.charCodeAt(i++);
+				c = input.charCodeAt(i++);
+				d = a >> 2;
+				e = ((a & 3) << 4) | (b >> 4);
+				f = ((b & 15) << 2) | (c >> 6);
+				g = c & 63;
+
+				if ( isNaN( b ) ) {
+					f = g = 64;
+				} else if ( isNaN( c ) ) {
+					g = 64;
+				}
+
+				output += map.charAt( d ) + map.charAt( e ) + map.charAt( f ) + map.charAt( g );
+			}
+
+			return output;
+		};
+
+		/**
+		 * Converts a base64 string into the original (binary) data
+		 *
+		 * @since  1.0.15
+		 * @param  string input Base 64 encoded text
+		 * @return string
+		 */
+		WpmUiBinary.base64_decode = function base64_decode( input ) {
+			if ( typeof input !== 'string' ) {
+				return input;
+			} else {
+				input.replace(/[^A-Za-z0-9\+\/\=]/g, '');
+			}
+			var output = '', a, b, c, d, e, f, g, i = 0;
+
+			while ( i < input.length ) {
+				d = map.indexOf( input.charAt( i++ ) );
+				e = map.indexOf( input.charAt( i++ ) );
+				f = map.indexOf( input.charAt( i++ ) );
+				g = map.indexOf( input.charAt( i++ ) );
+
+				a = (d << 2) | (e >> 4);
+				b = ((e & 15) << 4) | (f >> 2);
+				c = ((f & 3) << 6) | g;
+
+				output += String.fromCharCode( a );
+				if ( f !== 64 ) {
+					output += String.fromCharCode( b );
+				}
+				if ( g !== 64 ) {
+					output += String.fromCharCode( c );
+				}
+			}
+
+			return WpmUiBinary.utf8_decode( output );
+		};
+
+	}; /* ** End: WpmUiBinary ** */
 
 }( window.wpmUi = window.wpmUi || {} ));
 

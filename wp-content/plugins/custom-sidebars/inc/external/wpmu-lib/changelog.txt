@@ -4,6 +4,26 @@ Author:      Philipp Stracker
 Change Log:
 ----------------------------------------------------------------------
 
+1.0.17
+----------------------------------------------------------------------
+- Fix issue where scripts were not loaded in some cases
+
+1.0.16
+----------------------------------------------------------------------
+- Fix error on servers that run older version than PHP 5.3
+
+1.0.15
+----------------------------------------------------------------------
+- Add new session storage functions: WDev()->store_add(), store_get()
+- Add JS wpmUi.binary object to base-64 encode/decode data
+
+1.0.14
+----------------------------------------------------------------------
+- Add support for popup-classes (JS)
+- Add JS confirmation dialog: wpmUi.confirm()
+- Add new PHP functions to sanitize missing array keys: WDev()->load_fields()
+- Add new PHP debugging function: WDev()->debug()
+
 1.0.13
 ----------------------------------------------------------------------
 - Migrate project to grunt

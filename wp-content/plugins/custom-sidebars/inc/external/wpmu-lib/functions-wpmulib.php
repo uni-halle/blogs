@@ -1,7 +1,7 @@
 <?php
 
 // Based on Jigsaw plugin by Jared Novack (http://jigsaw.upstatement.com/)
-class TheLib_1_0_13 {
+class TheLib_1_0_17 {
 
 	// --- Start of 5.2 compatibility functions
 
@@ -167,6 +167,10 @@ class TheLib_1_0_13 {
 				$this->add_js( $this->_js_url( 'wpmu-vnav.min.js' ), $onpage );
 				break;
 
+			case 'media':
+				$this->add_js( 'wpmu:media', $onpage );
+				break;
+
 			default:
 				$ext = strrchr( $module, '.' );
 
@@ -188,8 +192,20 @@ class TheLib_1_0_13 {
 	 * @param string $name Name of the variable
 	 * @param mixed $data Value of the variable
 	 */
-	public function add_data( $name, $data ) {
-		wp_localize_script( 'jquery', $name, $data );
+	public function add_data( $name, $data, $onpage = null ) {
+		if ( did_action( 'wp_enqueue_scripts' ) || did_action( 'admin_enqueue_scripts' ) ) {
+			// Javascript sources already enqueued:
+			// Directly output the data right now.
+			printf(
+				'<script>window.%1$s = %2$s;</script>',
+				sanitize_html_class( $name ),
+				json_encode( $data )
+			);
+		} else {
+			// Enqueue the data for output with javascript sources.
+			$this->_add( 'js_data', array( $name, $data ) );
+			$this->_prepare_js_or_css( 'jquery', 'js', $onpage, 1 );
+		}
 	}
 
 	/**
@@ -233,10 +249,10 @@ class TheLib_1_0_13 {
 		if ( ! did_action( 'init' ) ) {
 			$hooked || add_action(
 				'init',
-				array( $this, '_add_admin_js_or_css' )
+				array( $this, '_add_js_or_css' )
 			);
 		} else {
-			$this->_add_admin_js_or_css();
+			$this->_add_js_or_css();
 		}
 	}
 
@@ -257,20 +273,25 @@ class TheLib_1_0_13 {
 	 * @since  1.0.0
 	 * @private
 	 */
-	public function _add_admin_js_or_css() {
-		if ( ! is_admin() ) {
-			return;
-		}
-
+	public function _add_js_or_css() {
 		global $wp_styles, $wp_scripts;
 
 		$scripts = $this->_get( 'js_or_css' );
 		$this->_clear( 'js_or_css' );
 
+		// Prevent adding the same URL twice.
+		$done_urls = array();
+
 		foreach ( $scripts as $script ) {
 			extract( $script ); // url, type, onpage, priority
 
-			$type = ( 'css' == $type || 'style' == $type ? 'css' : 'js' );
+			if ( 'front' === $onpage && is_admin() ) { continue; }
+
+			// Prevent adding the same URL twice.
+			if ( in_array( $url, $done_urls ) ) { continue; }
+			$done_urls[] = $url;
+
+			$type = ( 'css' === $type || 'style' === $type ? 'css' : 'js' );
 
 			// The $handle values are intentionally not cached:
 			// Any plugin/theme could add new handles at any moment...
@@ -285,6 +306,7 @@ class TheLib_1_0_13 {
 						$wp_styles->registered
 					)
 				);
+				$type_callback = '_enqueue_style_callback';
 			} else {
 				if ( ! is_a( $wp_scripts, 'WP_Scripts' ) ) {
 					$wp_scripts = new WP_Scripts();
@@ -295,6 +317,7 @@ class TheLib_1_0_13 {
 						$wp_scripts->registered
 					)
 				);
+				$type_callback = '_enqueue_script_callback';
 			}
 
 			if ( in_array( $url, $handles ) ) {
@@ -307,21 +330,25 @@ class TheLib_1_0_13 {
 			}
 			$onpage = empty( $onpage ) ? '' : $onpage;
 
+			if ( 'front' === $onpage && ! is_admin() ) {
+				$hook = 'wp_enqueue_scripts';
+			} else {
+				$hook = 'admin_enqueue_scripts';
+			}
+
 			$item = compact( 'url', 'alias', 'onpage' );
-			if ( 'css' == $type ) {
-				$this->_have( 'css' ) || add_action(
-					'admin_enqueue_scripts',
-					array( $this, '_enqueue_style_callback' ),
+			$hooked = $this->_have( $hook . $type );
+			$this->_add( $type, $item );
+			$this->_add( $hook . $type, true );
+
+			if ( ! did_action( $hook ) ) {
+				$hooked || add_action(
+					$hook,
+					array( $this, $type_callback ),
 					100 + $priority // Load custom styles a bit later than core styles.
 				);
-				$this->_add( 'css', $item );
 			} else {
-				$this->_have( 'js' ) || add_action(
-					'admin_enqueue_scripts',
-					array( $this, '_enqueue_script_callback' ),
-					100 + $priority // Load custom scripts a bit later than core scripts.
-				);
-				$this->_add( 'js', $item );
+				$this->$type_callback();
 			}
 		}
 	}
@@ -333,11 +360,14 @@ class TheLib_1_0_13 {
 	 * @private
 	 * @param  string $hook The current admin page that is rendered.
 	 */
-	public function _enqueue_style_callback( $hook ) {
+	public function _enqueue_style_callback( $hook = '' ) {
 		$items = $this->_get( 'css' );
+
+		if ( empty( $hook ) ) { $hook = 'front'; }
+
 		foreach ( $items as $item ) {
 			extract( $item ); // url, alias, onpage
-			if ( '' !== $onpage && $hook != $onpage ) { continue; }
+			if ( '' !== $onpage && $hook !== $onpage ) { continue; }
 
 			if ( empty( $url ) ) {
 				wp_enqueue_style( $alias );
@@ -354,17 +384,40 @@ class TheLib_1_0_13 {
 	 * @private
 	 * @param  string $hook The current admin page that is rendered.
 	 */
-	public function _enqueue_script_callback( $hook ) {
+	public function _enqueue_script_callback( $hook = '' ) {
 		$items = $this->_get( 'js' );
+
+		$data = $this->_get( 'js_data' );
+		$this->_clear( 'js_data' );
+
+		if ( empty( $hook ) ) { $hook = 'front'; }
+
 		foreach ( $items as $item ) {
 			extract( $item ); // url, alias, onpage
-			if ( '' !== $onpage && $hook != $onpage ) { continue; }
 
-			if ( empty( $url ) ) {
-				wp_enqueue_script( $alias );
-			} else {
-				wp_enqueue_script( $alias, $url, array( 'jquery' ), false, true );
+			if ( '' !== $onpage && $hook !== $onpage ) { continue; }
+
+			// Load the Media-library functions.
+			if ( 'wpmu:media' === $url ) {
+				wp_enqueue_media();
+				continue;
 			}
+
+			// Register script if it has an URL.
+			if ( ! empty( $url ) ) {
+				wp_register_script( $alias, $url, array( 'jquery' ), false, true );
+			}
+
+			// Append javascript data to the script output.
+			if ( ! empty( $data ) ) {
+				foreach ( $data as $item ) {
+					wp_localize_script( $alias, $item[0], $item[1] );
+				}
+				$data = false;
+			}
+
+			// Enqueue the script for output in the page footer.
+			wp_enqueue_script( $alias );
 		}
 	}
 
@@ -599,5 +652,198 @@ class TheLib_1_0_13 {
 		}
 
 		return $Url;
+	}
+
+	/**
+	 * Adds a value to the data collection in the user session.
+	 *
+	 * @since  1.0.15
+	 * @param  string $key The key of the value.
+	 * @param  mixed $value Value to store.
+	 */
+	public function store_add( $key, $value ) {
+		$this->_sess_add( 'store:' . $key, $value );
+	}
+
+	/**
+	 * Returns the current data array of the specified value from user session.
+	 *
+	 * @since  1.0.15
+	 * @param  string $key The key of the value.
+	 * @return array The value, or an empty array if no value was assigned yet.
+	 */
+	public function store_get( $key ) {
+		$vals = $this->_sess_get( 'store:' . $key );
+		foreach ( $vals as $key => $val ) {
+			if ( null === $val ) { unset( $vals[ $key ] ); }
+		}
+		$vals = array_values( $vals );
+		return $vals;
+	}
+
+	/**
+	 * Returns the current data array of the specified value from user session
+	 * and then clears the values from the session.
+	 *
+	 * @since  1.0.15
+	 * @param  string $key The key of the value.
+	 * @return array The value, or an empty array if no value was assigned yet.
+	 */
+	public function store_get_clear( $key ) {
+		$val = $this->store_get( $key );
+		$this->_sess_clear( 'store:' . $key );
+		return $val;
+	}
+
+	/**
+	 * If the specified variable is an array it will be returned. Otherwise
+	 * an empty array is returned.
+	 *
+	 * @since  1.0.14
+	 * @param  mixed $val1 Value that maybe is an array.
+	 * @param  mixed $val2 Optional, Second value that maybe is an array.
+	 * @return array
+	 */
+	public function get_array( &$val1, $val2 = array() ) {
+		if ( is_array( $val1 ) ) {
+			return $val1;
+		} else if ( is_array( $val2 ) ) {
+			return $val2;
+		} else {
+			return array();
+		}
+	}
+
+	/**
+	 * Checks if the given array contains all the specified fields.
+	 * If fields are not defined then they will be added to the source array
+	 * with the boolean value false.
+	 *
+	 * This function is used to initialize optional fields.
+	 * It is optimized and tested to yield best performance.
+	 *
+	 * @since  1.0.14
+	 * @param  Array|Object $arr The array or object to check.
+	 * @param  strings|Array $fields List of fields to check for.
+	 * @return int Number of missing fields that were initialized.
+	 */
+	public function load_fields( &$arr, $fields ) {
+		$missing = 0;
+		$is_obj = false;
+
+		if ( is_object( $arr ) ) { $is_obj = true; }
+		else if ( ! is_array( $arr ) ) { return -1; }
+
+		if ( ! is_array( $fields ) ) {
+			$fields = func_get_args();
+			array_shift( $fields ); // Remove $arr from the field list.
+		}
+
+		foreach ( $fields as $field ) {
+			if ( $is_obj ) {
+				if ( ! isset( $arr->$field ) ) {
+					$arr->$field = false;
+					$missing += 1;
+				}
+			} else {
+				if ( ! isset( $arr[ $field ] ) ) {
+					$arr[ $field ] = false;
+					$missing += 1;
+				}
+			}
+		}
+
+		return $missing;
+	}
+
+	/**
+	 * Short function for WDev()->load_fields( $_POST, ... )
+	 *
+	 * @since  1.0.14
+	 * @param  strings|Array <param list>
+	 * @return int Number of missing fields that were initialized.
+	 */
+	public function load_post_fields( $fields ) {
+		$fields = is_array( $fields ) ? $fields : func_get_args();
+		return $this->load_fields( $_POST, $fields );
+	}
+
+	/**
+	 * Short function for WDev()->load_fields( $_REQUEST, ... )
+	 *
+	 * @since  1.0.14
+	 * @param  strings|Array <param list>
+	 * @return int Number of missing fields that were initialized.
+	 */
+	public function load_request_fields( $fields ) {
+		$fields = is_array( $fields ) ? $fields : func_get_args();
+		return $this->load_fields( $_REQUEST, $fields );
+	}
+
+	/**
+	 * Displays a debug message at the current position on the page.
+	 *
+	 * @since  1.0.14
+	 * @param mixed <dynamic> Each param will be dumped
+	 */
+	public function debug() {
+		static $Need_styles = true;
+
+		if ( ( ! defined( 'WDEV_DEBUG' ) || ! WDEV_DEBUG )
+			&& ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG )
+		) { return; }
+
+		if ( $Need_styles ) {
+			?>
+			<style>
+			.wdev-debug {
+				break: both;
+				border: 1px solid #C00;
+				background: rgba(255, 200, 200, 0.8);
+				padding: 10px;
+				margin: 10px;
+				position: relative;
+				z-index: 99999;
+				box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+				font-size: 12px;
+			}
+			.wdev-debug:before {
+				content: 'DEBUG';
+				font-size: 11px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				color: #FFF;
+				background-color: #D88;
+				padding: 2px 8px;
+			}
+			.wdev-debug .wdev-debug-wrap {
+				box-shadow: 0 1px 5px rgba(0,0,0,0.18);
+			}
+			.wdev-debug pre {
+				font-size: 12px !important;
+				margin: 1px 0 !important;
+				background: rgba(255, 200, 200, 0.8);
+			}
+			</style>
+			<?php
+			$Need_styles = false;
+		}
+
+		echo '<div class="wdev-debug"><div class="wdev-debug-wrap">';
+		foreach ( func_get_args() as $param ) {
+			var_dump( $param );
+		}
+		echo '<table class="wdev-trace" cellspacing="0" cellpadding="2" border="1">';
+		foreach ( debug_backtrace() as $id => $item ) {
+			printf(
+				'<tr><td>%1$s</td><td>%2$s : %3$s</td></tr>',
+				$id,
+				@$item['file'],
+				@$item['line']
+			);
+		}
+		echo '</table>';
+		echo '</div></div>';
 	}
 };

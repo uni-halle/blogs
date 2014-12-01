@@ -16,6 +16,7 @@
  *   09. WordPress Tab-box
  *   10. Select2
  *   11. On Off Switch
+ *   12. Confirmation
  *   99. General Styles
  */
 /**
@@ -805,6 +806,43 @@
 
 .wpmui-toggle-checkbox:checked + .wpmui-toggle-label .wpmui-toggle-switch {
   right: 0px;
+}
+
+/**
+ * =============================================================================
+ * == 12. CONFIRMATION
+ * =============================================================================
+ */
+.wmui-confirm-modal {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99998;
+  background: #000;
+  opacity: .4;
+}
+
+.wpmui-confirm-box {
+  top: 25%;
+  width: 580px;
+  padding: 20px 20px 0;
+  left: 50%;
+  margin-left: -310px;
+  /* Include the padding! */
+  z-index: 99999;
+  background: #FFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.wpmui-confirm-box .wpmui-confirm-btn {
+  margin: 10px -20px 0px;
+  padding: 10px 20px;
+  text-align: right;
+  background: #FAFAFA;
+  border-top: 1px solid #E5E5E5;
+}
+.wpmui-confirm-box .wpmui-confirm-btn button {
+  margin-left: 10px;
 }
 
 /**
