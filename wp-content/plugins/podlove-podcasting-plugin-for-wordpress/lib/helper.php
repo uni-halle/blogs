@@ -79,6 +79,10 @@ function get_setting( $namespace, $name ) {
 	return $options[ $name ];
 }
 
+function save_setting( $namespace, $name, $values ) {
+	update_option( 'podlove_' . $namespace, array( $name => $values ) );
+}
+
 function get_landing_page_url() {
 	$landing_page = \Podlove\get_setting('website', 'landing_page');
 
@@ -554,6 +558,7 @@ function locales() {
 		'es-GT' => "Spanish - Guatemala",
 		'en-ZW' => "English - Zimbabwe",
 		'es-HN' => "Spanish - Honduras",
+		'eo' => "Esperanto",
 		'et' => "Estonian",
 		'es-MX' => "Spanish - Mexico",
 		'et-EE' => "Estonian - Estonia",
