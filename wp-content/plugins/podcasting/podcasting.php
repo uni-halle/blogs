@@ -1,25 +1,23 @@
 <?php
-
 /*
 Plugin Name: Podcasting Plugin by TSG
-Version: 3.1.1
+Version: 3.1.4
 Plugin URI: http://podcastingplugin.com/
 Description: Podcasting enhances WordPress' existing podcast support by adding multiple iTunes-compatible feeds, media players, and an easy to use interface.
 Author: TSG (The Software Group)
 Author URI: http://podcastingplugin.com/
 */
 
-define('PODCASTING_VERSION', '3.1,1');
+define('TSG_DEAULT_FORMAT', 'default-format');
+
+define('PODCASTING_VERSION', '3.1.4');
 
 //Make sure this is FALSE for release
 define('TSG_DEBUG', FALSE);
 
-define('TSG_DEAULT_FORMAT', 'default-format');
-
 # Register Podcasting's taxonomy
 function build_taxonomies() {
-    register_taxonomy('podcast_format', 'custom_field');
-      
+        register_taxonomy('podcast_format', 'custom_field');
 }
 
 function podcast_plugin_activate() {
@@ -28,6 +26,7 @@ function podcast_plugin_activate() {
     add_option( 'Activated_Plugin', 'podcasting_plugin' ); 
 
 }
+
 register_activation_hook( __FILE__, 'podcast_plugin_activate' );
 
 add_action( 'init', 'build_taxonomies', 0 );
@@ -63,9 +62,9 @@ include_once('podcasting-redirect.php');
  */
 function podcasting_install() {
 	# Setup the default taxonomy
-	$status = wp_insert_term('Default Format', 'podcast_format');
+//	$status = wp_insert_term('Default Format', 'podcast_format');
     
-    tsg_podcasting_var_dump($status);
+//    tsg_podcasting_var_dump($status);
 	
 	# Add Podcasting options to the database
 	add_option('pod_title', get_option('blogname'), "The podcast's title");

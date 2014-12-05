@@ -33,18 +33,25 @@ class PodcastingSettings
 	 */
 	function addPodcastingSettings() {
     
-        if ( is_admin() && get_option( 'Activated_Plugin' ) == 'podcasting_plugin' ) {
+    
+        // If it's the first time through add the default format
+        if ( is_admin() && (get_option( 'Activated_Plugin' ) == 'podcasting_plugin') ) {
     
             delete_option( 'Activated_Plugin' );
-    
-            /* do stuff once right after activation */
-        	// Update taxonomy
-        	$args = array('slug' => TSG_DEAULT_FORMAT );
-            wp_insert_term("Default", 'podcast_format', $args);
             
-        	// Update explicit
-        	$pod_explicits["default"] = "no";
-        	update_option(TSG_DEAULT_FORMAT, serialize($pod_explicits));
+            // make sure the default format does not already exist
+            $term = term_exists(TSG_DEAULT_FORMAT, 'podcast_format');
+            if( $term == 0 || $term == null  )
+            {
+                /* do stuff once right after activation */
+            	// Update taxonomy
+            	$args = array('slug' => TSG_DEAULT_FORMAT );
+                wp_insert_term("Default", 'podcast_format', $args);
+                
+            	// Update explicit
+            	$pod_explicits["default"] = "no";
+            	update_option(TSG_DEAULT_FORMAT, serialize($pod_explicits));
+            }
         }            
     
 		# Register Podcasting's settings
@@ -54,7 +61,6 @@ class PodcastingSettings
 			register_setting('podcasting', 'pod_disable_enclose', '');
             
             register_setting('podcasting', 'pod_cat', '');
-            
             
             //iTunes Options                        
 			register_setting('podcasting', 'pod_itunes_summary', '');
