@@ -1,7 +1,7 @@
 === Weather Underground ===
 Tags: weather, weather.com, wunderground, weather underground, weatherbug, forecast, Yahoo! Weather, wp-weather, wp weather, local weather, weather man, weather widget, cool weather, accuweather, get weather, wordpress weather
 Requires at least: 3.6
-Tested up to: 4.0
+Tested up to: 4.0.1
 Stable tag: trunk
 Contributors: katzwebdesign, katzwebservices
 Donate link: https://katz.co
@@ -93,7 +93,18 @@ Weather Underground has been very gracious and has provided the plugin with free
 
 If you are upgrading the plugin, your forecast will look different. Version 2.x made lots of changes as to how the forecast is displayed. If you want to go back after upgrading, you can [download the previous version here](https://downloads.wordpress.org/plugin/wunderground.1.2.5.1.zip).
 
-= 2.0.10 on October 26 =
+= 2.0.11 on December 4 =
+* Fixed: Fatal error when no location is set in shortcode
+* Fixed: Link to Wunderground now goes to forecast URL, not the weather station URL
+* Fixed: Support lowercase `language` parameters in the shortcode (`fr`, not only `FR`)
+* Fixed: Japanese Wunderground subdomain (nihongo.wunderground.com)
+* Fixed: Duplicate forecasts in Horizontal Table layout ([reported here](https://github.com/katzwebservices/Wunderground/issues/12))
+* Fix: Remove erroneous PHP code in `<table>` tag
+* Tweak: Make icon names case insensitive. Before, icon names were case sensitive, so `incredible` didn't work, since the plugin expected `Incredible`. ([reported here](https://github.com/katzwebservices/Wunderground/issues/13))
+* Tweak: Replace `<table cellspacing="0">` with CSS
+* Added Bulgarian translation - thanks [@cocacoli4ko](https://www.transifex.com/accounts/profile/cocacoli4ko/)!
+
+= 2.0.10 on October 24 =
 * Added: Missing font files
 
 = 2.0.9 on October 22 =
@@ -210,8 +221,15 @@ If you are upgrading the plugin, your forecast will look different. Version 2.x 
 
 If you are upgrading the plugin, your forecast will look different. Version 2.x made lots of changes as to how the forecast is displayed. If you want to go back after upgrading, you can [download the previous version here](https://downloads.wordpress.org/plugin/wunderground.1.2.5.1.zip).
 
-= 2.0.10 on October 26 =
-* Added: Missing font files
+= 2.0.11 on December 4 =
+* Fixed: Fatal error when no location is set in shortcode
+* Fixed: Link to Wunderground now goes to forecast URL, not the weather station URL
+* Fixed: Support lowercase `language` parameters in the shortcode (`fr`, not only `FR`)
+* Fixed: Japanese Wunderground subdomain (nihongo.wunderground.com)
+* Fixed: Duplicate forecasts in Horizontal Table layout ([reported here](https://github.com/katzwebservices/Wunderground/issues/12))
+* Fix: Remove erroneous PHP code in `<table>` tag
+* Tweak: Make icon names case insensitive. Before, icon names were case sensitive, so `incredible` didn't work, since the plugin expected `Incredible`. ([reported here](https://github.com/katzwebservices/Wunderground/issues/13))
+* Tweak: Replace `<table cellspacing="0">` with CSS
 
 = 2.0.9 on October 22 =
 * Added: Caching of forecast output HTML. This makes the plugin use fewer server resources when displaying the forecast.
