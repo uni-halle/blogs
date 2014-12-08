@@ -6,11 +6,11 @@ Tags:              Google Maps, OpenStreetMap, OSM, bing maps, googlemaps, googl
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.3
-Tested up to:      4.0
-Stable tag:        3.9.4
+Tested up to:      4.0.1
+Stable tag:        3.9.5
 License:           GPLv2
 
-Pin, organize & show your favorite places & tracks through OpenStreetMap, Google Maps, KML, Bing Maps, APIs or Augmented-Reality browsers
+The most comprehensive & user-friendly mapping solution for WordPress
 
 == Description ==
 Maps Marker allows you to pin, organize and share your favorite places & tracks through your WordPress powered site easily. You can use maps from OpenStreetMap, Google Maps, Google Earth, Bing Maps or custom maps and additionally display your spots in innovative ways like through augmented-reality browsers.
@@ -53,6 +53,8 @@ For even more features please try "Maps Marker Pro" - demo maps including admin 
 * [support for setting global maximum zoom level to 21 (tiles from basemaps with lower native zoom levels will be upscaled automatically)](https://www.mapsmarker.com/v1.5p)
 * [duplicate markers](https://www.mapsmarker.com/v1.5.1p)
 * [improved accessibility/screen reader support by using proper alt texts](https://www.mapsmarker.com/v1.9.2p)
+* [support for duplicating layer maps (without assigned markers)](https://www.mapsmarker.com/v1.9.3p)
+* [bulk actions for layers (duplicate, delete layer only, delete & re-assign markers)](https://www.mapsmarker.com/v1.9.3p)
 * priority support
 
 The free version includes a pro upgrader which allows you to start a free 30 day trial easily. 
@@ -306,10 +308,10 @@ MapsMarker &reg; - registration pending
 Copyright 2011-2014, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.9.4 =
-bugfix and compatibility release - see https://www.mapsmarker.com/v3.9.4 for more details
+= v3.9.5 =
+layer management enhancements & bugfixes - see https://www.mapsmarker.com/v3.9.5 for more details
 
 == Changelog ==
-[blog post with details about v3.9.4](https://www.mapsmarker.com/v3.9.4)
+[blog post with details about v3.9.5](https://www.mapsmarker.com/v3.9.5)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

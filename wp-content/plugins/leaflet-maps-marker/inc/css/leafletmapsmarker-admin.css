@@ -1,4 +1,5 @@
 /*Marker-Tabelle*/
+.fixed .check-column { width: 2%; }
 .fixed .column-id { width: 4%; }
 .fixed .column-type { width: 5%; }
 .fixed .column-markername { width: 20%; }

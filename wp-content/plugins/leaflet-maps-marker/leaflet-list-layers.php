@@ -21,9 +21,29 @@ $columnsortorder_input = isset($_GET['order']) ? esc_sql($_GET['order']) : $lmm_
 $columnsortorder = (in_array($columnsortorder_input, $columnsortorder_values)) ? $columnsortorder_input : $lmm_options[ 'misc_layer_listing_sort_sort_order' ];
 $table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
 $table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
-$layerlist = $wpdb->get_results( "SELECT * FROM `$table_name_layers` WHERE `id` > 0 order by `$columnsort` $columnsortorder", ARRAY_A );
-$lcount = intval($wpdb->get_var('SELECT COUNT(*)-1 FROM '.$table_name_layers));
+
+$action = isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '');
+$searchtext = isset($_POST['searchtext']) ? '%' .esc_sql($_POST['searchtext']) . '%' : (isset($_GET['searchtext']) ? '%' . esc_sql($_GET['searchtext']) : '') . '%';
+if ($action == 'search') {
+	$layersearchnonce = isset($_POST['_wpnonce']) ? $_POST['_wpnonce'] : '';
+	if (! wp_verify_nonce($layersearchnonce, 'layersearch-nonce') ) die('<br/>'.__('Security check failed - please call this function from the according admin page!','lmm').'');
+	$lcount = intval($wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM `$table_name_layers` WHERE id like '%s' OR name like '%s' OR address like '%s'", $searchtext, $searchtext, $searchtext)));
+	$layerlist = $wpdb->get_results( $wpdb->prepare("SELECT * FROM `$table_name_layers` WHERE id like '%s' OR name like '%s' OR address like '%s' order by $columnsort $columnsortorder", $searchtext, $searchtext, $searchtext), ARRAY_A);
+} else {
+	$layerlist = $wpdb->get_results( "SELECT * FROM `$table_name_layers` WHERE `id`>0 order by `$columnsort` $columnsortorder", ARRAY_A );
+	$lcount = intval($wpdb->get_var('SELECT COUNT(*)-1 FROM '.$table_name_layers));
+}
 ?>
+<div style="float:right;">
+<?php $nonce= wp_create_nonce  ('layersearch-nonce'); ?>
+	<form method="post">
+		<?php wp_nonce_field('layersearch-nonce'); ?>
+		<input type="hidden" name="action" value="search" />
+		<input type="text" id="searchtext" name="searchtext" value="<?php echo (isset($_POST['searchtext']) != NULL) ? htmlspecialchars(stripslashes($_POST['searchtext'])) : "" ?>"/>
+		<input type="submit" class="button" name="searchsubmit" value="<?php _e('Search layers', 'lmm') ?>"/>
+	</form>
+	<?php echo $showall = (isset($_POST['searchtext']) != NULL) ? "<a style=\"text-decoration:none;\" href=\"" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_layers\">" . __('list all layers','lmm') . "</a>" : ""; ?>
+</div>
 
 <div style="display:inline;">
 <p>
@@ -45,6 +65,7 @@ if ($getorder == 'asc') { $sortordericon = 'asc'; } else { $sortordericon = 'des
 <table cellspacing="0" class="wp-list-table widefat fixed">
   <thead>
   <tr>
+	<th class="manage-column column-cb check-column" scope="col"><input type="checkbox" disabled="disabled"></th>
     <th class="manage-column column-id sortable <?php echo $sortordericon; ?>" id="id" scope="col"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_layers&orderby=id&order=<?php echo $sortorder; ?>"><span>ID</span><span class="sorting-indicator"></span></a></th>
     <th class="manage-column column-type sortable <?php echo $sortordericon; ?>" id="type" scope="col"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_layers&orderby=multi_layer_map&order=<?php echo $sortorder; ?>"><span><?php _e('Type', 'lmm') ?></span><span class="sorting-indicator"></span></a></th>
     <th class="manage-column column-layername sortable <?php echo $sortordericon; ?>" id="name" scope="col"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_layers&orderby=name&order=<?php echo $sortorder; ?>"><span><?php _e('Name', 'lmm') ?></span><span class="sorting-indicator"></span></a></th>
@@ -89,7 +110,8 @@ if ($getorder == 'asc') { $sortordericon = 'asc'; } else { $sortordericon = 'des
   </thead>
   <tfoot>
   <tr>
-     <th class="manage-column column-id sortable <?php echo $sortordericon; ?>" scope="col"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_layers&orderby=id&order=<?php echo $sortorder; ?>"><span>ID</span><span class="sorting-indicator"></span></a></th>
+	<th class="manage-column column-cb check-column" scope="col"><input type="checkbox" disabled="disabled"></th>
+    <th class="manage-column column-id sortable <?php echo $sortordericon; ?>" scope="col"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_layers&orderby=id&order=<?php echo $sortorder; ?>"><span>ID</span><span class="sorting-indicator"></span></a></th>
     <th class="manage-column column-type sortable <?php echo $sortordericon; ?>" id="type" scope="col"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_layers&orderby=multi_layer_map&order=<?php echo $sortorder; ?>"><span><?php _e('Type', 'lmm') ?></span><span class="sorting-indicator"></span></a></th>
     <th class="manage-column column-layername sortable <?php echo $sortordericon; ?>" scope="col"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_layers&orderby=name&order=<?php echo $sortorder; ?>"><span><?php _e('Name', 'lmm') ?></span><span class="sorting-indicator"></span></a></th>
 	<?php if ((isset($lmm_options[ 'misc_layer_listing_columns_address' ] ) == TRUE ) && ( $lmm_options[ 'misc_layer_listing_columns_address' ] == 1 )) { ?>
@@ -141,7 +163,7 @@ if ($getorder == 'asc') { $sortordericon = 'asc'; } else { $sortordericon = 'des
 		{
 		$markercount = 0; //info: needed for multi-layer-map count-bug
 		if (current_user_can( $lmm_options[ 'capabilities_delete' ])) {
-			$delete_link_layer = '<div style="float:right;"><a onclick="if ( confirm( \'' . esc_attr__('Do you really want to delete this layer?','lmm') . ' (ID ' . $row['id'] . ')\' ) ) { return true;}return false;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&action=delete&id=' . $row['id'] . '&_wpnonce=' . $layernonce . '" class="submit delete">' . __('delete layer','lmm') . '</a></div>';
+			$delete_link_layer = '<div style="float:right;"><a style="color:red;" onclick="if ( confirm( \'' . esc_attr__('Do you really want to delete this layer?','lmm') . ' (ID ' . $row['id'] . ')\' ) ) { return true;}return false;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&action=delete&id=' . $row['id'] . '&_wpnonce=' . $layernonce . '">' . __('delete layer','lmm') . '</a></div>';
 		} else {
 			$delete_link_layer = '';
 		}
@@ -196,9 +218,10 @@ if ($getorder == 'asc') { $sortordericon = 'asc'; } else { $sortordericon = 'des
 		 $column_updatedon = ((isset($lmm_options[ 'misc_layer_listing_columns_updatedon' ] ) == TRUE ) && ( $lmm_options[ 'misc_layer_listing_columns_updatedon' ] == 1 )) ? '<td class="lmm-border">' . $row['updatedon'] . '</td>' : '';
 		 $add_new_marker_to_layer = ( $row['multi_layer_map'] == 0 ) ? '&nbsp;&nbsp;|&nbsp;&nbsp;<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker&addtoLayer=' . $row['id'] . '&Layername=' . urlencode(stripslashes($row['name'])) . '" style="text-decoration:none;">' . __('add new marker to this layer','lmm') . '</a>' : '';
 		echo '<tr valign="middle" class="alternate" id="link-' . $row['id'] . '">
+		<th class="check-column" scope="row" style="border-bottom:1px solid #DFDFDF;"><input type="checkbox" value="' . $row['id'] . '" name="checkedlayers[]" disabled="disabled"></th>
 		<td class="lmm-border">'.$row['id'].'</td>
 		<td class="lmm-border">'.$multi_layer_map_type.'</td>
-		<td class="lmm-border"><strong><a title="' . esc_attr__('Edit', 'lmm') . ' &laquo;' . htmlspecialchars($row['name']) . '&raquo;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id=' . $row['id'] . '" class="row-title">' . stripslashes(htmlspecialchars($row['name'])) . '</a></strong><br><div class="row-actions"><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id=' . $row['id'] . '">' . __('edit layer','lmm') . '</a></span>'. $add_new_marker_to_layer . $delete_link_layer . '</div></td>
+		<td class="lmm-border"><strong><a title="' . esc_attr__('Edit', 'lmm') . ' &laquo;' . htmlspecialchars($row['name']) . '&raquo;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id=' . $row['id'] . '" class="row-title">' . stripslashes(htmlspecialchars($row['name'])) . '</a></strong><br><div class="row-actions"><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id=' . $row['id'] . '">' . __('edit layer','lmm') . '</a>&nbsp;&nbsp;|&nbsp;&nbsp;<span style="color:#ccc;" title="' . esc_attr__('Feature available in pro version only','lmm') . '">' . __('duplicate','lmm') . '</span></span>'. $add_new_marker_to_layer . $delete_link_layer . '</div></td>
 		  ' . $column_address . '
 		<td style="text-align:center;" class="lmm-border"><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_layer&id=' . $row['id'] . '#assigned_markers" title="' . esc_attr__('show markers assigned to this layer','lmm') . '">'.$markercount.'</a></td>
 		  ' . $column_layercenter . '
@@ -223,6 +246,27 @@ if ($getorder == 'asc') { $sortordericon = 'asc'; } else { $sortordericon = 'des
 ?>
   </tbody>
 </table>
+
+<table cellspacing="0" style="width:auto;margin-top:20px;" class="wp-list-table widefat fixed bookmarks">
+<tr><td>
+<p><b><?php _e('Bulk actions for selected layers','lmm') ?></b> <a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ; ?>"><img src="<?php  echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" width="70" height="15" /></a></p>
+<p><input type="checkbox" id="duplicateselected" name="duplicateselected" disabled="disabled" /> <label for="duplicateselected"><?php _e('duplicate layer only','lmm') ?></label></p>
+<p><input type="checkbox" id="deleteselected" name="deleteselected" disabled="disabled" /> <label for="deleteselected"><?php _e('delete layer and assigned markers','lmm') ?></label></p>
+<?php 
+$layerlist = $wpdb->get_results('SELECT * FROM `'.$table_name_layers.'` WHERE `id` > 0 AND `multi_layer_map` = 0', ARRAY_A); 
+?>
+<input type="checkbox" id="deleteassignselected" name="deleteassignselected" disabled="disabled" /> <label for="deleteassignselected"><?php _e('delete layer and assign markers to the following layer:','lmm') ?></label>
+<select id="layer" name="layer">
+<option value="0"><?php _e('unassigned','lmm') ?></option>
+<?php
+	foreach ($layerlist as $row)
+	echo '<option value="' . $row['id'] . '" disabled="disabled">' . stripslashes(htmlspecialchars($row['name'])) . ' (ID ' . $row['id'] . ')</option>';
+?>
+</select><br/>
+<input class="button-secondary" type="submit" value="<?php _e('submit', 'lmm') ?>" style="margin: 0 0 5px 18px;" disabled="disabled" />
+</td></tr></table>
+</form>
+
 <script type="text/javascript">
 //info: show all API links on click on simplified editor
 (function($) {

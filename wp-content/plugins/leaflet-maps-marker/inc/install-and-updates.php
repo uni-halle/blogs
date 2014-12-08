@@ -9,46 +9,46 @@ add_option('leafletmapsmarker_redirect', 'true'); //redirect to marker creation 
 
 //info: check and update db-structure for markers and layers table - not done in 'init' as needed for switches between free and pro edition
 require_once(ABSPATH . 'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'upgrade.php');
-//info: create/update marker table
+//info: create/update marker table; no backticks for dbdelta()!
 $table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 $sql_markers_table = "CREATE TABLE " . $table_name_markers . " (
-	`id` int(6) unsigned NOT NULL AUTO_INCREMENT,
-	`markername` varchar(255) NOT NULL,
-	`basemap` varchar(25) NOT NULL,
-	`layer` int(6) unsigned NOT NULL,
-	`lat` decimal(9,6) NOT NULL,
-	`lon` decimal(9,6) NOT NULL,
-	`icon` varchar(255) NOT NULL,
-	`popuptext` text NOT NULL,
-	`zoom` int(2) NOT NULL,
-	`openpopup` tinyint(1) NOT NULL,
-	`mapwidth` int(4) NOT NULL,
-	`mapwidthunit` varchar(2) NOT NULL,
-	`mapheight` int(4) NOT NULL,
-	`panel` tinyint(1) NOT NULL,
-	`createdby` varchar(30) NOT NULL,
-	`createdon` datetime NOT NULL,
-	`updatedby` varchar(30) DEFAULT NULL,
-	`updatedon` datetime DEFAULT NULL,
-	`controlbox` int(1) NOT NULL,
-	`overlays_custom` int(1) NOT NULL,
-	`overlays_custom2` int(1) NOT NULL,
-	`overlays_custom3` int(1) NOT NULL,
-	`overlays_custom4` int(1) NOT NULL,
-	`wms` tinyint(1) NOT NULL,
-	`wms2` tinyint(1) NOT NULL,
-	`wms3` tinyint(1) NOT NULL,
-	`wms4` tinyint(1) NOT NULL,
-	`wms5` tinyint(1) NOT NULL,
-	`wms6` tinyint(1) NOT NULL,
-	`wms7` tinyint(1) NOT NULL,
-	`wms8` tinyint(1) NOT NULL,
-	`wms9` tinyint(1) NOT NULL,
-	`wms10` tinyint(1) NOT NULL,
-	`kml_timestamp` datetime DEFAULT NULL,
-	`address` varchar(255) NOT NULL,
-	`gpx_url` varchar(2083) NOT NULL,
-	`gpx_panel` tinyint(1) NOT NULL,
+	id int(6) unsigned NOT NULL AUTO_INCREMENT,
+	markername varchar(255) NOT NULL,
+	basemap varchar(25) NOT NULL,
+	layer int(6) unsigned NOT NULL,
+	lat decimal(9,6) NOT NULL,
+	lon decimal(9,6) NOT NULL,
+	icon varchar(255) NOT NULL,
+	popuptext text NOT NULL,
+	zoom int(2) NOT NULL,
+	openpopup tinyint(1) NOT NULL,
+	mapwidth int(4) NOT NULL,
+	mapwidthunit varchar(2) NOT NULL,
+	mapheight int(4) NOT NULL,
+	panel tinyint(1) NOT NULL,
+	createdby varchar(30) NOT NULL,
+	createdon datetime NOT NULL,
+	updatedby varchar(30) DEFAULT NULL,
+	updatedon datetime DEFAULT NULL,
+	controlbox int(1) NOT NULL,
+	overlays_custom int(1) NOT NULL,
+	overlays_custom2 int(1) NOT NULL,
+	overlays_custom3 int(1) NOT NULL,
+	overlays_custom4 int(1) NOT NULL,
+	wms tinyint(1) NOT NULL,
+	wms2 tinyint(1) NOT NULL,
+	wms3 tinyint(1) NOT NULL,
+	wms4 tinyint(1) NOT NULL,
+	wms5 tinyint(1) NOT NULL,
+	wms6 tinyint(1) NOT NULL,
+	wms7 tinyint(1) NOT NULL,
+	wms8 tinyint(1) NOT NULL,
+	wms9 tinyint(1) NOT NULL,
+	wms10 tinyint(1) NOT NULL,
+	kml_timestamp datetime DEFAULT NULL,
+	address varchar(255) NOT NULL,
+	gpx_url varchar(2083) NOT NULL,
+	gpx_panel tinyint(1) NOT NULL,
 	PRIMARY KEY  (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 dbDelta($sql_markers_table);
@@ -56,42 +56,42 @@ dbDelta($sql_markers_table);
 //info: create/update layer table
 $table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
 $sql_layers_table = "CREATE TABLE " . $table_name_layers . " (
-	`id` int(6) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(255) NOT NULL,
-	`basemap` varchar(25) NOT NULL,
-	`layerzoom` int(2) NOT NULL,
-	`mapwidth` int(4) NOT NULL,
-	`mapwidthunit` varchar(2) NOT NULL,
-	`mapheight` int(4) NOT NULL,
-	`panel` tinyint(1) NOT NULL,
-	`layerviewlat` decimal(9,6) NOT NULL,
-	`layerviewlon` decimal(9,6) NOT NULL,
-	`createdby` varchar(30) NOT NULL,
-	`createdon` datetime NOT NULL,
-	`updatedby` varchar(30) DEFAULT NULL,
-	`updatedon` datetime DEFAULT NULL,
-	`controlbox` int(1) NOT NULL,
-	`overlays_custom` int(1) NOT NULL,
-	`overlays_custom2` int(1) NOT NULL,
-	`overlays_custom3` int(1) NOT NULL,
-	`overlays_custom4` int(1) NOT NULL,
-	`wms` tinyint(1) NOT NULL,
-	`wms2` tinyint(1) NOT NULL,
-	`wms3` tinyint(1) NOT NULL,
-	`wms4` tinyint(1) NOT NULL,
-	`wms5` tinyint(1) NOT NULL,
-	`wms6` tinyint(1) NOT NULL,
-	`wms7` tinyint(1) NOT NULL,
-	`wms8` tinyint(1) NOT NULL,
-	`wms9` tinyint(1) NOT NULL,
-	`wms10` tinyint(1) NOT NULL,
-	`listmarkers` tinyint(1) NOT NULL,
-	`multi_layer_map` tinyint(1) NOT NULL,
-	`multi_layer_map_list` varchar(4000) DEFAULT NULL,
-	`address` varchar(255) NOT NULL,
-	`clustering` tinyint(1) unsigned NOT NULL,
-	`gpx_url` varchar(2083) NOT NULL,
-	`gpx_panel` tinyint(1) NOT NULL,
+	id int(6) unsigned NOT NULL AUTO_INCREMENT,
+	name varchar(255) NOT NULL,
+	basemap varchar(25) NOT NULL,
+	layerzoom int(2) NOT NULL,
+	mapwidth int(4) NOT NULL,
+	mapwidthunit varchar(2) NOT NULL,
+	mapheight int(4) NOT NULL,
+	panel tinyint(1) NOT NULL,
+	layerviewlat decimal(9,6) NOT NULL,
+	layerviewlon decimal(9,6) NOT NULL,
+	createdby varchar(30) NOT NULL,
+	createdon datetime NOT NULL,
+	updatedby varchar(30) DEFAULT NULL,
+	updatedon datetime DEFAULT NULL,
+	controlbox int(1) NOT NULL,
+	overlays_custom int(1) NOT NULL,
+	overlays_custom2 int(1) NOT NULL,
+	overlays_custom3 int(1) NOT NULL,
+	overlays_custom4 int(1) NOT NULL,
+	wms tinyint(1) NOT NULL,
+	wms2 tinyint(1) NOT NULL,
+	wms3 tinyint(1) NOT NULL,
+	wms4 tinyint(1) NOT NULL,
+	wms5 tinyint(1) NOT NULL,
+	wms6 tinyint(1) NOT NULL,
+	wms7 tinyint(1) NOT NULL,
+	wms8 tinyint(1) NOT NULL,
+	wms9 tinyint(1) NOT NULL,
+	wms10 tinyint(1) NOT NULL,
+	listmarkers tinyint(1) NOT NULL,
+	multi_layer_map tinyint(1) NOT NULL,
+	multi_layer_map_list varchar(4000) DEFAULT NULL,
+	address varchar(255) NOT NULL,
+	clustering tinyint(1) unsigned NOT NULL,
+	gpx_url varchar(2083) NOT NULL,
+	gpx_panel tinyint(1) NOT NULL,
 	PRIMARY KEY  (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 dbDelta($sql_layers_table);
@@ -288,7 +288,7 @@ if (get_option('leafletmapsmarker_version') == '1.9' ) {
 	update_option('leafletmapsmarker_version', '2.0');
 }
 if (get_option('leafletmapsmarker_version') == '2.0' ) {
-	add_option('leafletmapsmarker_update_info', 'show');
+	add_option('leafletmapsmarker_update_info', 'show'); //info: 1st time initialization
 	$save_defaults_for_new_options = new Class_leaflet_options();
 	$save_defaults_for_new_options->save_defaults_for_new_options();
 	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
@@ -855,6 +855,28 @@ if (get_option('leafletmapsmarker_version') == '3.9.3' ) {
 		update_option('leafletmapsmarker_version_before_update', '3.9.3');
 	}
 	update_option('leafletmapsmarker_version', '3.9.4');
+	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
+	if (get_option('leafletmapsmarker_redirect') == 'true')
+	{
+		update_option('leafletmapsmarker_redirect', 'false');
+		wp_redirect(LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade&first_run=true');
+	} else {
+		update_option('leafletmapsmarker_update_info', 'show');
+	}
+	//info: hide changelog for new installations
+	$version_before_update = get_option('leafletmapsmarker_version_before_update');
+	if ($version_before_update == '0') {
+			update_option('leafletmapsmarker_update_info', 'hide');
+	}
+}
+if (get_option('leafletmapsmarker_version') == '3.9.4' ) {
+	delete_transient( 'leafletmapsmarker_install_update_cache_v394');
+	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
+	if ( $version_before_update === FALSE ) {
+		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
+		update_option('leafletmapsmarker_version_before_update', '3.9.4');
+	}
+	update_option('leafletmapsmarker_version', '3.9.5');
 	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
 	if (get_option('leafletmapsmarker_redirect') == 'true')
 	{

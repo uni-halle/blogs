@@ -2,7 +2,7 @@
 //info: die if uninstall not called from Wordpress exit
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit ();
-$current_version = "v394"; //2do: change on each update to current version!
+$current_version = "v395"; //2do: change on each update to current version!
 if (is_multisite()) {
 	global $wpdb;
 	$blogs = $wpdb->get_results("SELECT `blog_id` FROM {$wpdb->blogs}", ARRAY_A);
@@ -10,6 +10,13 @@ if (is_multisite()) {
 		//info: delete transients (needed for reinstalls within validity of transients)
 		$schedule_transient = 'leafletmapsmarker_install_update_cache_' . $current_version;
 		delete_transient( $schedule_transient );
+
+		//info: delete WordPress pointer IDs in user_meta (dismissed_wp_pointers) for current user
+		$current_dismissed_wp_pointers = get_user_meta(get_current_user_id(), "dismissed_wp_pointers");
+		$replace_lmmv = preg_replace('/(lmmv(p)?(\\d)+(,)?)/',NULL,$current_dismissed_wp_pointers['0']);
+		$replace_lmmesw = preg_replace('/(lmmesw)(,)?/',NULL,$replace_lmmv);
+		$replace_without_end_coma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
+		update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_coma);
 
 		//info: dont remove files if pro version exists
 		if (!file_exists($lmm_pro_readme)) {
@@ -36,6 +43,13 @@ if (is_multisite()) {
 			//info: delete transients (needed for reinstalls within validity of transients)
 			$schedule_transient = 'leafletmapsmarker_install_update_cache_' . $current_version;
 			delete_transient( $schedule_transient );
+
+			//info: delete WordPress pointer IDs in user_meta (dismissed_wp_pointers) for current user
+			$current_dismissed_wp_pointers = get_user_meta(get_current_user_id(), "dismissed_wp_pointers");
+			$replace_lmmv = preg_replace('/(lmmv(p)?(\\d)+(,)?)/',NULL,$current_dismissed_wp_pointers['0']);
+			$replace_lmmesw = preg_replace('/(lmmesw)(,)?/',NULL,$replace_lmmv);
+			$replace_without_end_coma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
+			update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_coma);
 
 			//info: dont remove files if pro version exists
 			if (!file_exists($lmm_pro_readme)) {
@@ -69,6 +83,13 @@ else
 	//info: delete transients (needed for reinstalls within validity of transients)
 	$schedule_transient = 'leafletmapsmarker_install_update_cache_' . $current_version;
 	delete_transient( $schedule_transient );
+
+	//info: delete WordPress pointer IDs in user_meta (dismissed_wp_pointers) for current user
+	$current_dismissed_wp_pointers = get_user_meta(get_current_user_id(), "dismissed_wp_pointers");
+	$replace_lmmv = preg_replace('/(lmmv(p)?(\\d)+(,)?)/',NULL,$current_dismissed_wp_pointers['0']);
+	$replace_lmmesw = preg_replace('/(lmmesw)(,)?/',NULL,$replace_lmmv);
+	$replace_without_end_coma = preg_replace('/(,)$/',NULL,$replace_lmmesw);
+	update_user_meta( get_current_user_id(), 'dismissed_wp_pointers', $replace_without_end_coma);
 
 	//info: dont remove files if pro version exists
 	$lmm_pro_readme = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker-pro' . DIRECTORY_SEPARATOR . 'readme.txt';
