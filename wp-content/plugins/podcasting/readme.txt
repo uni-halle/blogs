@@ -4,26 +4,23 @@ Donate link: http://podcastingplugin.com/volunteer/
 Tags: podcast, itunes, podcasting, rss, feed, enclosure, mp3, video, castfeed, cloudcasting, cloudcasts
 Requires at least: 3.6
 Tested up to: 4.0.1
-Stable tag: 3.1.4
+Stable tag: 3.1.5
 
-The Podcasting plugin by TSG enhances WordPress' existing podcast support to 
-enhance iTunes support by adding multiple iTunes-compatible feeds and an on 
-page media players.
+Enhances WordPress' basic podcast support with enhance iTunes support by adding multiple iTunes-compatible feeds.
 
 == Description ==
 
 The Podcasting plugin by TSG brings complete podcasting support to WordPress. 
-Podcasting will take a file from somewhere on the web (either your site or another site) 
+This allows you to use any media file from somewhere on the web (either your site or another site) 
 and it will add it to an iTunes-based feed. 
-Podcasting also includes a player allowing visitors to your site to view the file on the web.
+The Podcasting plugin also includes player support allowing visitors to play the media file directly on your site.
 
 = Features =
 
-- Adds a dedicated Podcasting feed with full iTunes support
+- Adds a dedicated Podcasting feed with full iTunes support. All the data required to make the most of your iTunes podcast listing.
 - Includes the ability to have multiple podcasting feeds based on file format or other factors
-- Includes both an audio and video player for in-post listening/watching
-- Fully integrates with any existing enclosures already stored in WordPress
-- Offers a migration tool for users of podPress
+- Utilizes both an audio and video player for in-post listening/watching
+
 
 For more information, visit the [Podcasting plugin site](http://podcastingplugin.com/).
 
@@ -47,6 +44,10 @@ Please visit the [Podcasting plugin page](http://docs.podcastingplugin.com/scree
 5. The video player before an episode is playing.
 
 == Changelog ==
+= 3.1.5 =
+* Added save warning to newly created metaboxes
+*
+
 = 3.1.4 =
 * Make sure the default type does not already exit before adding
 * 

@@ -415,6 +415,10 @@ class PodcastingMetabox {
 		?>
 		<table cellpadding="4" class="pod_enclosure" id="new_enclosure_<?php echo $id; ?>">
 			<tr>
+				<th colspan="3"><h4>You MUST save your post in order for this to take affect<h5></th>
+
+			</tr>
+			<tr>
 				<td class="pod-title">File</td>
 				<td colspan="<?php echo ( $podcast_player || $podcast_video_player ) ? 2 : 3; ?>"><input type="text" name="pod_new_file_<?php echo $id; ?>" class="pod_file" value="<?php echo $url; ?>" readonly="readonly" /></td>
 

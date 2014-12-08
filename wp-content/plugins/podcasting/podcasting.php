@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Podcasting Plugin by TSG
-Version: 3.1.4
+Version: 3.1.5
 Plugin URI: http://podcastingplugin.com/
 Description: Podcasting enhances WordPress' existing podcast support by adding multiple iTunes-compatible feeds, media players, and an easy to use interface.
 Author: TSG (The Software Group)
@@ -10,7 +10,7 @@ Author URI: http://podcastingplugin.com/
 
 define('TSG_DEAULT_FORMAT', 'default-format');
 
-define('PODCASTING_VERSION', '3.1.4');
+define('PODCASTING_VERSION', '3.1.5');
 
 //Make sure this is FALSE for release
 define('TSG_DEBUG', FALSE);
