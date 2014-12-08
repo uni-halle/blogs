@@ -669,8 +669,12 @@ class blcTablePrinter {
 	 */
 	function column_new_url($link){
 		?>
-        <a href="<?php print esc_attr($link->url); ?>" target='_blank' class='blc-link-url' title="<?php echo esc_attr($link->url); ?>">
-        	<?php print $link->url; ?></a>
+        <a href="<?php print esc_attr(esc_url_raw($link->url)); ?>"
+		   target='_blank'
+		   class='blc-link-url'
+		   title="<?php echo esc_attr($link->url); ?>"
+		   data-editable-url="<?php echo esc_attr($link->url); ?>">
+        	<?php print esc_html($link->url); ?></a>
         <?php
     	//Output inline action links for the link/URL                  	
       	$actions = array();

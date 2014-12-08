@@ -359,7 +359,8 @@ jQuery(function($){
 
 		//Populate editor fields.
 		var urlElement = master.find('a.blc-link-url');
-		var urlInput = editRow.find('.blc-link-url-field').val(urlElement.attr('href'));
+		var linkUrl = urlElement.data('editable-url') || urlElement.attr('href');
+		var urlInput = editRow.find('.blc-link-url-field').val(linkUrl);
 
 		var titleInput = editRow.find('.blc-link-text-field');
 		var linkText = master.data('link-text'),
@@ -390,7 +391,7 @@ jQuery(function($){
 		if (canEditUrl && blc_suggestions_enabled && (master.hasClass('link-status-error') || master.hasClass('link-status-warning'))) {
 			editRow.find('.blc-url-replacement-suggestions').show();
 			var suggestionList = editRow.find('.blc-suggestion-list');
-			findReplacementSuggestions(urlElement.attr('href'), suggestionList);
+			findReplacementSuggestions(linkUrl, suggestionList);
 		}
 
 		editRow.find('.blc-update-link-button').prop('disabled', !(canEditUrl || canEditText));
@@ -544,7 +545,15 @@ jQuery(function($){
 			//Everything went well. Update the link row with the new values.
 
 			//Replace the displayed link URL with the new one.
-			master.find('a.blc-link-url').attr('href', response.url).text(response.url);
+			var urlElement = master.find('a.blc-link-url');
+			urlElement
+				.attr('href', response.url)
+				.text(response.url)
+				.data('editable-url', response.url)
+				.prop('title', response.url);
+			if ( typeof response['escaped_url'] != 'undefined' ) {
+				urlElement.attr('href', response.escaped_url)
+			}
 
 			//Save the new ID
 			replaceLinkId(linkId, response.new_link_id);

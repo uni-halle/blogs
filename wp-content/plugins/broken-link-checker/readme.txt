@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
 Tested up to: 4.0.1
-Stable tag: 1.10.1
+Stable tag: 1.10.3
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -97,6 +97,20 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.10.3 =
+ * Security: Filter link URLs before displaying them on the "Broken Links" page.
+ * Security: Prevent Editors and Administrators who don't have the "unfiltered_html" capability from creating "javascript:" URLs by editing existing links.
+
+= 1.10.2 =
+* Fixed an XSS vulnerability on the link checker settings page.
+* Fixed old YouTube embed code parsing - now it should pick up self-closing embed tags without an `<object>` wrapper.
+* Updated German translation.
+* Updated Simplified Chinese translation.
+* Link actions will now wrap properly on small screens.
+
+= 1.10.1 =
+* Fixed a database versioning issue that would cause multiple errors when upgrading from 1.9.5 to 1.10.
 
 = 1.10 =
 * Added a way to hide individual link actions like "Dismiss" and "Unlink".

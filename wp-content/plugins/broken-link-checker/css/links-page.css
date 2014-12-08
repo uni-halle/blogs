@@ -231,6 +231,11 @@ td.column-new-url {	/* The URL never wraps */
 	-o-text-overflow: ellipsis;
 }
 
+td.column-new-url .row-actions { /* However, the action links below the URL can wrap. */
+	word-wrap: normal;
+	white-space: normal;
+}
+
 .blc-link-editor {
     font-size: 1em;
     width: 95%;
