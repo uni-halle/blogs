@@ -531,15 +531,27 @@ class Osm_OpenLayers
       }
     ';
 
-    $Layer .= 'var data = {};';
-    $Layer .= 'var currentPopup;';
-    $Layer .= '
-      data.icon = new OpenLayers.Icon("'.OSM_PLUGIN_ICONS_URL.$Icon[name].'",
-        new OpenLayers.Size('.$Icon[width].','.$Icon[height].'),
-        new OpenLayers.Pixel('.$Icon[offset_width].', '.$Icon[offset_height].'));
-    ';   
-    
+    $Layer .= 'var '.$a_MapName.'Adata = [];';
+
     $NumOfMarker = count($a_MarkerArray);
+    for ($row = 0; $row < $NumOfMarker; $row++){
+      $Layer .= 'var Mdata = {};';
+
+      if ($a_MarkerArray[$row][Marker] != ""){
+        $Layer .= '
+          Mdata.icon = new OpenLayers.Icon("'.OSM_PLUGIN_ICONS_URL.$a_MarkerArray[$row][Marker].'",
+            new OpenLayers.Size(32,37),
+            new OpenLayers.Pixel(-16,-37));';   
+      }
+      else {
+        $Layer .= '
+          Mdata.icon = new OpenLayers.Icon("'.OSM_PLUGIN_ICONS_URL.$Icon[name].'",
+            new OpenLayers.Size('.$Icon[width].','.$Icon[height].'),
+            new OpenLayers.Pixel('.$Icon[offset_width].', '.$Icon[offset_height].'));';   
+      }
+      $Layer .= ''.$a_MapName.'Adata.push(Mdata);'; 
+    }
+
     for ($row = 0; $row < $NumOfMarker; $row++){
 
       // add the the backslashes
@@ -547,13 +559,13 @@ class Osm_OpenLayers
 
       $Layer .= 'var ll = new OpenLayers.LonLat('.$a_MarkerArray[$row][lon].','.$a_MarkerArray[$row][lat].').transform('.$a_MapName.'.displayProjection, '.$a_MapName.'.projection);';
 
-      $Layer .= 'var feature = new OpenLayers.Feature(MarkerLayer, ll, data);';         
+      $Layer .= 'var feature = new OpenLayers.Feature(MarkerLayer, ll, '.$a_MapName.'Adata['.$row.']);';         
       $Layer .= 'feature.closeBox = true;';
       $Layer .= 'feature.popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {"autoSize": true, minSize: new OpenLayers.Size('.$a_MarkerArray[$row][popup_width].','.$a_MarkerArray[$row][popup_height].'),"keepInMap": true } );';      
       $Layer .= 'feature.data.popupContentHTML = "'.$OSM_HTML_TEXT.'";';
       $Layer .= 'feature.data.overflow = "hidden";';
 
-      $Layer .= 'var marker = new OpenLayers.Marker(ll,data.icon.clone());';
+      $Layer .= 'var marker = new OpenLayers.Marker(ll,'.$a_MapName.'Adata['.$row.'].icon.clone());';
 
       $Layer .= 'marker.feature = feature;';
       if ($a_DoPopUp == 'true'){
