@@ -1187,6 +1187,14 @@ function wptouchShowProItems() {
 	jQuery( '.wptouch-free .pro-setting input, .wptouch-free .pro-setting select, .wptouch-free .pro-setting button, .wptouch-free .pro-setting textarea' ).prop( 'disabled', 'disabled' );
 }
 
+function wptouchSetupUpgradePage() {
+	wrapper_height = jQuery( window ).height();
+	jQuery( 'iframe#upgrade-license-area' ).height( wrapper_height - 150);
+}
+
+jQuery( window ).resize( function() {
+	wptouchSetupUpgradePage();
+});
 
 function wptouchAdminReady() {
 
@@ -1222,6 +1230,8 @@ function wptouchAdminReady() {
 	wptouchHandleThemePreview();
 
 	wptouchShowProItems();
+
+	wptouchSetupUpgradePage()
 }
 
 jQuery( document ).ready( function() {

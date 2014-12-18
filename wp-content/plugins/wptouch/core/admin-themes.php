@@ -73,7 +73,6 @@ function wptouch_the_theme() {
 	global $wptouch_cur_theme;
 
 	$wptouch_cur_theme = $wptouch_theme_iterator->the_item();
-
 	return apply_filters( 'wptouch_theme', $wptouch_cur_theme );
 }
 
@@ -281,6 +280,7 @@ function wptouch_get_theme_download_url() {
 
 function wptouch_get_theme_buy_url() {
 	global $wptouch_cur_theme;
+
 	if ( $wptouch_cur_theme && isset( $wptouch_cur_theme->buy_url ) ) {
 		return $wptouch_cur_theme->buy_url;
 	}

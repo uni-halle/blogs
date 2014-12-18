@@ -37,7 +37,7 @@ function wptouch_admin_build_menu( $network_only = false ) {
 		'manage_options',
 		wptouch_admin_get_root_slug(),
 		'',
-		WPTOUCH_ADMIN_URL . '/images/wptouch-admin-icon.png'
+		WPTOUCH_ADMIN_URL . '/images/wptouch-admin-icon-xmas.png'
 	);
 
 	// Iterate through available menus
@@ -84,7 +84,7 @@ function wptouch_add_page_section( $sub_page_name, $section_name, $section_slug,
 		}
 
 		$options[ $sub_page_name ]->sections[] = $section;
-	} 
+	}
 }
 
 function _wptouch_add_setting( $type, $name, $desc = '', $tooltip = '', $level = WPTOUCH_SETTING_BASIC, $version = false, $extra = false, $domain = '', $is_pro = false ) {

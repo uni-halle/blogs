@@ -1,7 +1,19 @@
 # Copyright (C) 2014 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.5.3\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2014-10-28 13:14:16+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2014-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr ""
+"Project-Id-Version: WPtouch Pro 3.5.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\n"
+"POT-Creation-Date: 2014-10-28 13:14:16+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-11-28 09:41-0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
@@ -40,12 +52,21 @@ msgid "No notifications"
 msgstr "Keine Benachrichtigungen"
 
 #: admin/html/plugin-area.php:10
-msgid "A new product version (%s) is available. %sRenew your license%s to download this update and receive additional product support."
-msgstr "Eine neue Produktversion (%s) ist verfügbar. %sErneuere deine Lizenz%s, um dieses Update herunterzuladen und um zusätzlichen Produktsupport zu erhalten."
+msgid ""
+"A new product version (%s) is available. %sRenew your license%s to download "
+"this update and receive additional product support."
+msgstr ""
+"Eine neue Produktversion (%s) ist verfügbar. %sErneuere deine Lizenz%s, um "
+"dieses Update herunterzuladen und um zusätzlichen Produktsupport zu erhalten."
 
 #: admin/html/plugin-area.php:12
-msgid "A new product version (%s) is available. Please %sactivate your license%s, or %spurchase a new license%s to enable updates and full product support."
-msgstr "Eine neue Produktversion (%s) ist verfügbar. Bitte %saktiviere deine Lizenz%s oder %serwerbe eine neue Lizenz%s, um Updates und vollen Produktsupport zu aktivieren."
+msgid ""
+"A new product version (%s) is available. Please %sactivate your license%s, "
+"or %spurchase a new license%s to enable updates and full product support."
+msgstr ""
+"Eine neue Produktversion (%s) ist verfügbar. Bitte %saktiviere deine Lizenz"
+"%s oder %serwerbe eine neue Lizenz%s, um Updates und vollen Produktsupport "
+"zu aktivieren."
 
 #: admin/pages/custom/wptouch-admin-license.php:9
 msgid "License Details"
@@ -61,7 +82,9 @@ msgstr "Sobald du aktivierst, wird diese Seite verborgen."
 
 #: admin/pages/custom/wptouch-admin-license.php:15
 msgid "It will only reappear if you reset your WPtouch Pro settings."
-msgstr "Es wird nur wieder erscheinen, wenn du deine WPtouch Pro-Einstellungen zurücksetzt."
+msgstr ""
+"Es wird nur wieder erscheinen, wenn du deine WPtouch Pro-Einstellungen "
+"zurücksetzt."
 
 #: admin/pages/custom/wptouch-admin-license.php:18
 msgid "Account E-Mail Address"
@@ -98,16 +121,24 @@ msgid "E-mail address or license key rejected"
 msgstr "E-Mail-Adresse oder Lizenzschlüssel abgelehnt"
 
 #: admin/pages/custom/wptouch-admin-license.php:45
-msgid "The wptouch.com server rejected your E-Mail address and/or License Key. Please check they are correct and try again."
-msgstr "Der Server von wptouch.com hat deine E-Mail-Adresse und/oder deinen Lizenzschlüssel abgelehnt. Bitte stelle sicher, dass sie richtig sind und versuche es erneut."
+msgid ""
+"The wptouch.com server rejected your E-Mail address and/or License Key. "
+"Please check they are correct and try again."
+msgstr ""
+"Der Server von wptouch.com hat deine E-Mail-Adresse und/oder deinen "
+"Lizenzschlüssel abgelehnt. Bitte stelle sicher, dass sie richtig sind und "
+"versuche es erneut."
 
 #: admin/pages/custom/wptouch-admin-license.php:49
 msgid "Your license has expired."
 msgstr "Deine Lizenz ist abgelaufen."
 
 #: admin/pages/custom/wptouch-admin-license.php:50
-msgid "%sRenew your license%s to continue to receive product updates and support."
-msgstr "%sErneuere deine Lizenz%s, um weiterhin Produktaktualisierungen und Support zu erhalten."
+msgid ""
+"%sRenew your license%s to continue to receive product updates and support."
+msgstr ""
+"%sErneuere deine Lizenz%s, um weiterhin Produktaktualisierungen und Support "
+"zu erhalten."
 
 #: admin/pages/custom/wptouch-admin-license.php:54
 msgid "No licenses remaining."
@@ -131,7 +162,8 @@ msgstr "Der Server ist nicht verfügbar."
 
 #: admin/pages/custom/wptouch-admin-license.php:62
 msgid "The wptouch.com server currently cannot authorize your License."
-msgstr "Der Server von wptouch.com kann deine Lizenz derzeit nicht autorisieren."
+msgstr ""
+"Der Server von wptouch.com kann deine Lizenz derzeit nicht autorisieren."
 
 #: admin/pages/custom/wptouch-admin-license.php:63
 msgid "Please %scontact us%s and let us know about it."
@@ -155,8 +187,12 @@ msgid "WPtouch Pro site title"
 msgstr "WPtouch Pro Website-Titel"
 
 #: admin/pages/wptouch-admin-general-settings.php:48
-msgid "If the title of your site is long, you can shorten it for display within WPtouch Pro themes."
-msgstr "Sollte der Titel deiner Website recht lang sein, dann kannst du ihn zum Anzeigen in den WPtouch Pro-Themen kürzen."
+msgid ""
+"If the title of your site is long, you can shorten it for display within "
+"WPtouch Pro themes."
+msgstr ""
+"Sollte der Titel deiner Website recht lang sein, dann kannst du ihn zum "
+"Anzeigen in den WPtouch Pro-Themen kürzen."
 
 #: admin/pages/wptouch-admin-general-settings.php:55
 msgid "Display %sPowered by WPtouch Pro%s in footer"
@@ -164,11 +200,16 @@ msgstr "%sPowered by WPtouch Pro%s in Fußzeile anzeigen"
 
 #: admin/pages/wptouch-admin-general-settings.php:66
 msgid "Use my WPtouch Pro referral code to earn commission"
-msgstr "Nutze meinen WPtouch Pro Empfehlungscode, um eine Provision zu erhalten"
+msgstr ""
+"Nutze meinen WPtouch Pro Empfehlungscode, um eine Provision zu erhalten"
 
 #: admin/pages/wptouch-admin-general-settings.php:67
-msgid "Licensed users of WPtouch Pro can earn a commission for each sale they generate from their mobile website"
-msgstr "Lizensierte Benutzer von WPtouch Pro können für jeden Verkauf, der durch ihre mobile Website generiert wurde, eine Provision erhalten"
+msgid ""
+"Licensed users of WPtouch Pro can earn a commission for each sale they "
+"generate from their mobile website"
+msgstr ""
+"Lizensierte Benutzer von WPtouch Pro können für jeden Verkauf, der durch "
+"ihre mobile Website generiert wurde, eine Provision erhalten"
 
 #: admin/pages/wptouch-admin-general-settings.php:75
 msgid "Site Title & Byline"
@@ -183,8 +224,12 @@ msgid "Language"
 msgstr "Sprache"
 
 #: admin/pages/wptouch-admin-general-settings.php:91
-msgid "The WPtouch Pro admin panel &amp; supported themes will be shown in this locale."
-msgstr "Das WPtouch Pro Admin Panel &amp; die unterstützten Themen werden an diesem Ort angezeigt."
+msgid ""
+"The WPtouch Pro admin panel &amp; supported themes will be shown in this "
+"locale."
+msgstr ""
+"Das WPtouch Pro Admin Panel &amp; die unterstützten Themen werden an diesem "
+"Ort angezeigt."
 
 #: admin/pages/wptouch-admin-general-settings.php:99
 msgid "Translate administration panel text"
@@ -232,7 +277,8 @@ msgstr "Benutzerdef. Slug oder URL"
 
 #: admin/pages/wptouch-admin-general-settings.php:153
 msgid "Enter a Slug (i.e. \"/home\") or a full URL path"
-msgstr "Gib einen Slug (z.B. \"/startseite\") oder einen vollständigen URL-Pfad ein"
+msgstr ""
+"Gib einen Slug (z.B. \"/startseite\") oder einen vollständigen URL-Pfad ein"
 
 #: admin/pages/wptouch-admin-general-settings.php:163
 msgid "Desktop / Mobile Switching"
@@ -251,8 +297,13 @@ msgid "Show switch link in mobile view"
 msgstr "Umschalt-Link in der mobilen Ansicht anzeigen"
 
 #: admin/pages/wptouch-admin-general-settings.php:178
-msgid "Will show toggle buttons in the theme's footer allowing users to switch to your desktop theme. Is not shown in Web-App Mode."
-msgstr "Wird die Umschalt-Buttons in der Fußzeile des Themas anzeigen und den Nutzern erlauben, auf ihr Desktop-Thema umzuschalten. Wird im Web-App-Modus nicht angezeigt."
+msgid ""
+"Will show toggle buttons in the theme's footer allowing users to switch to "
+"your desktop theme. Is not shown in Web-App Mode."
+msgstr ""
+"Wird die Umschalt-Buttons in der Fußzeile des Themas anzeigen und den "
+"Nutzern erlauben, auf ihr Desktop-Thema umzuschalten. Wird im Web-App-Modus "
+"nicht angezeigt."
 
 #: admin/pages/wptouch-admin-general-settings.php:185
 msgid "Choose the target for the mobile switch link"
@@ -271,8 +322,15 @@ msgid "Desktop theme switch buttons"
 msgstr "Desktop-Thema Umschalt-Buttons"
 
 #: admin/pages/wptouch-admin-general-settings.php:198
-msgid "Allows visitors to switch from your desktop theme to your mobile theme. You can also customize the placement of Switch buttons by placing the wptouch_desktop_switch_link() template tag somewhere in your desktop theme."
-msgstr "Erlaubt Besuchern von deinem Desktop-Thema auf dein mobiles Thema umzuschalten. Du kannst außerdem die Position der Umschalt-Buttons individualisieren, indem du den Link wptouch_desktop_switch_link() template tag irgendwo auf deinem Desktop-Thema platzierst."
+msgid ""
+"Allows visitors to switch from your desktop theme to your mobile theme. You "
+"can also customize the placement of Switch buttons by placing the "
+"wptouch_desktop_switch_link() template tag somewhere in your desktop theme."
+msgstr ""
+"Erlaubt Besuchern von deinem Desktop-Thema auf dein mobiles Thema "
+"umzuschalten. Du kannst außerdem die Position der Umschalt-Buttons "
+"individualisieren, indem du den Link wptouch_desktop_switch_link() template "
+"tag irgendwo auf deinem Desktop-Thema platzierst."
 
 #: admin/pages/wptouch-admin-general-settings.php:202
 msgid "Automatically inserted inline"
@@ -296,7 +354,9 @@ msgstr "HTML, JavaScript, Statistiken oder benutzerdef. Code"
 
 #: admin/pages/wptouch-admin-general-settings.php:220
 msgid "Enter any custom code here to be output in the theme footer."
-msgstr "Gib hier einen benutzerdef. Code ein, der in der Fußzeile des Themas angezeigt werden soll."
+msgstr ""
+"Gib hier einen benutzerdef. Code ein, der in der Fußzeile des Themas "
+"angezeigt werden soll."
 
 #: admin/pages/wptouch-admin-general-settings.php:230
 msgid "Custom Stylesheet"
@@ -308,7 +368,9 @@ msgstr "URL einer benutzerdef. CSS-Datei zum Laden"
 
 #: admin/pages/wptouch-admin-general-settings.php:237
 msgid "Useful if you have specific compatibility CSS you need to add."
-msgstr "Praktisch, wenn du eine spezifische CSS-Kompatibilität hast, die du hinzufügen musst."
+msgstr ""
+"Praktisch, wenn du eine spezifische CSS-Kompatibilität hast, die du "
+"hinzufügen musst."
 
 #: admin/pages/wptouch-admin-general-settings.php:247
 msgid "Shortcodes"
@@ -331,8 +393,12 @@ msgid "Do not load WPtouch Pro on these URLs/Pages"
 msgstr "Lade WPtouch Pro nicht auf diesen URLs/Seiten"
 
 #: admin/pages/wptouch-admin-general-settings.php:271
-msgid "Each permalink URL fragment should be on its own line and relative, e.g. \"/about\" or \"/products/store\""
-msgstr "Jedes Permalink URL-Fragment sollte sich auf seiner eigenen und dazugehörigen Zeile befinden, z.B. \"/über\" oder \"/produkte/store\""
+msgid ""
+"Each permalink URL fragment should be on its own line and relative, e.g. \"/"
+"about\" or \"/products/store\""
+msgstr ""
+"Jedes Permalink URL-Fragment sollte sich auf seiner eigenen und "
+"dazugehörigen Zeile befinden, z.B. \"/über\" oder \"/produkte/store\""
 
 #: admin/pages/wptouch-admin-general-settings.php:281
 msgid "Desktop Theme"
@@ -343,8 +409,12 @@ msgid "Try to include desktop theme functions.php file"
 msgstr "Versuche die Datei Desktop-Themen-Funktionen.php zu integrieren"
 
 #: admin/pages/wptouch-admin-general-settings.php:288
-msgid "This may be required for desktop themes with unique features that are not showing when WPtouch Pro is active."
-msgstr "Dies kann für Desktop-Themen mit eigenen Merkmalen notwendig sein, die nicht angezeigt werden, wenn WPtouch Pro aktiv ist."
+msgid ""
+"This may be required for desktop themes with unique features that are not "
+"showing when WPtouch Pro is active."
+msgstr ""
+"Dies kann für Desktop-Themen mit eigenen Merkmalen notwendig sein, die nicht "
+"angezeigt werden, wenn WPtouch Pro aktiv ist."
 
 #: admin/pages/wptouch-admin-general-settings.php:295
 msgid "Method to load file"
@@ -367,8 +437,12 @@ msgid "User-agents (line separated)"
 msgstr "User-Agents (getrennte Zeile)"
 
 #: admin/pages/wptouch-admin-general-settings.php:317
-msgid "Adding additional user-agents will force WPtouch Pro to be active for matching browsers."
-msgstr "Das Hinzufügen von zusätzlichen User-Agents wird WPtouch Pro zwingen aktiv zu sein, um die Browser aufeinander abzustimmen."
+msgid ""
+"Adding additional user-agents will force WPtouch Pro to be active for "
+"matching browsers."
+msgstr ""
+"Das Hinzufügen von zusätzlichen User-Agents wird WPtouch Pro zwingen aktiv "
+"zu sein, um die Browser aufeinander abzustimmen."
 
 #: admin/pages/wptouch-admin-general-settings.php:331
 msgid "Backup &amp; Import"
@@ -380,19 +454,30 @@ msgstr "Automatisch Einstellungen im %s-Ordner sichern"
 
 #: admin/pages/wptouch-admin-general-settings.php:339
 msgid "WPtouch Pro backups your settings each time they are saved."
-msgstr "WPtouch Pro erstellt ein Backup deiner Einstellungen bei jedem Mal, wenn du sie speicherst."
+msgstr ""
+"WPtouch Pro erstellt ein Backup deiner Einstellungen bei jedem Mal, wenn du "
+"sie speicherst."
 
 #: admin/pages/wptouch-admin-general-settings.php:352
 msgid "Tools &amp; Debug"
 msgstr "Tools &amp; Fehlersuche"
 
 #: admin/pages/wptouch-admin-general-settings.php:358
-msgid "Use jQuery 2.x in themes (faster for mobile devices) instead of WordPress' version"
-msgstr "jQuery 2.x in Themen (schneller für Mobilgeräte) anstelle der WordPress' Version verwenden"
+msgid ""
+"Use jQuery 2.x in themes (faster for mobile devices) instead of WordPress' "
+"version"
+msgstr ""
+"jQuery 2.x in Themen (schneller für Mobilgeräte) anstelle der WordPress' "
+"Version verwenden"
 
 #: admin/pages/wptouch-admin-general-settings.php:359
-msgid "jQuery 2.x is significantly smaller and faster than previous jQuery versions - may cause problems with other plugins, use carefully."
-msgstr "jQuery 2.x ist wesentlich kleiner und schneller als die vorherigen jQuery Versionen - kann zu Problemen mit anderen Plug-ins führen - vorsichtig verwenden."
+msgid ""
+"jQuery 2.x is significantly smaller and faster than previous jQuery versions "
+"- may cause problems with other plugins, use carefully."
+msgstr ""
+"jQuery 2.x ist wesentlich kleiner und schneller als die vorherigen jQuery "
+"Versionen - kann zu Problemen mit anderen Plug-ins führen - vorsichtig "
+"verwenden."
 
 #: admin/pages/wptouch-admin-general-settings.php:366
 msgid "Show load times and query counts in the footer"
@@ -408,7 +493,9 @@ msgstr "Fehlerprotokoll aktivieren"
 
 #: admin/pages/wptouch-admin-general-settings.php:375
 msgid "Creates a debug file to help diagnose installation issues."
-msgstr "Erstellt eine Fehlersuchdatei, die bei der Diagnose von Installationsproblemen hilft."
+msgstr ""
+"Erstellt eine Fehlersuchdatei, die bei der Diagnose von "
+"Installationsproblemen hilft."
 
 #: admin/pages/wptouch-admin-general-settings.php:386
 msgid "WordPress Plugins"
@@ -470,7 +557,9 @@ msgstr "Elternseitenelemente als Links aktivieren"
 
 #: admin/pages/wptouch-admin-menus.php:73
 msgid "If disabled, parent menu items will only toggle child items."
-msgstr "Falls dies deaktiviert ist, dann werden die Menüelemente der Elternseite nur Kindseitenelemete umschalten."
+msgstr ""
+"Falls dies deaktiviert ist, dann werden die Menüelemente der Elternseite nur "
+"Kindseitenelemete umschalten."
 
 #: admin/pages/wptouch-admin-menus.php:80
 msgid "Use menu icons"
@@ -642,8 +731,17 @@ msgstr "Deaktivieren"
 
 #: admin/settings/html/extension-browser.php:2
 #: admin/settings/html/theme-browser.php:2
-msgid "Your server configuration is preventing WPtouch Pro from installing and updating from the Cloud. %sPlease visit %sthis article%s to follow the steps to enable Cloud install, or you can manually download and install into the wptouch-data/%s directory."
-msgstr "Deine Serverkonfiguration hindert WPtouch Pro an der Installation und Aktualisierung mittels Cloud. %sBitte besuche %sdiesen Artikel%s, um den Schritten zu folgen, mit denen die Cloud-Installation aktiviert wird, oder du kannst die Daten manuell herunterladen und im Verzeichnis wptouch-data/%s installieren."
+msgid ""
+"Your server configuration is preventing WPtouch Pro from installing and "
+"updating from the Cloud. %sPlease visit %sthis article%s to follow the steps "
+"to enable Cloud install, or you can manually download and install into the "
+"wptouch-data/%s directory."
+msgstr ""
+"Deine Serverkonfiguration hindert WPtouch Pro an der Installation und "
+"Aktualisierung mittels Cloud. %sBitte besuche %sdiesen Artikel%s, um den "
+"Schritten zu folgen, mit denen die Cloud-Installation aktiviert wird, oder "
+"du kannst die Daten manuell herunterladen und im Verzeichnis wptouch-data/%s "
+"installieren."
 
 #: admin/settings/html/extension-browser.php:13
 msgid "Loading Cloud Extensions"
@@ -716,8 +814,13 @@ msgid "Gathering information about available icon sets..."
 msgstr "Informationen über verfügbare Symbol-Sets werden gesammelt..."
 
 #: admin/settings/html/installed_icon_sets.php:4 core/notifications.php:215
-msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue to enable installation of additional icon sets."
-msgstr "Das %s%s%s Verzeichnis ist derzeit nicht beschreibbar. %sBitte beseitigen Sie dieses Problem, um die Installation der zusätzlichen Symbol-Sets zu erlauben."
+msgid ""
+"The %s%s%s directory is not currently writable. %sPlease fix this issue to "
+"enable installation of additional icon sets."
+msgstr ""
+"Das %s%s%s Verzeichnis ist derzeit nicht beschreibbar. %sBitte beseitigen "
+"Sie dieses Problem, um die Installation der zusätzlichen Symbol-Sets zu "
+"erlauben."
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
 #: core/class-wptouch-pro.php:1596 core/class-wptouch-pro.php:1597
@@ -748,8 +851,11 @@ msgid "Enable %s"
 msgstr "%s aktivieren"
 
 #: admin/settings/html/plugin-compat-ajax.php:12
-msgid "When unchecked, %s will be disabled for users viewing your WPtouch Pro theme."
-msgstr "Wenn dies nicht angewählt ist, dann wird %s für Nutzer, die dein WPtouch Pro-Thema anschauen, deaktiviert sein."
+msgid ""
+"When unchecked, %s will be disabled for users viewing your WPtouch Pro theme."
+msgstr ""
+"Wenn dies nicht angewählt ist, dann wird %s für Nutzer, die dein WPtouch Pro-"
+"Thema anschauen, deaktiviert sein."
 
 #: admin/settings/html/plugin-compat-ajax.php:20
 msgid "No plugins to disable."
@@ -768,8 +874,11 @@ msgid "WordPress Page"
 msgstr "WordPress-Seite"
 
 #: admin/settings/html/restore.php:2
-msgid "Please paste your encoded settings below and save to restore your settings."
-msgstr "Bitte füge deine verschlüsselten Einstellungen unten ein und speicher sie ab, um deine Einstellungen wiederherzustellen."
+msgid ""
+"Please paste your encoded settings below and save to restore your settings."
+msgstr ""
+"Bitte füge deine verschlüsselten Einstellungen unten ein und speicher sie "
+"ab, um deine Einstellungen wiederherzustellen."
 
 #: admin/settings/html/theme-browser-item.php:10
 #: admin/settings/html/theme-browser-item.php:16
@@ -854,8 +963,12 @@ msgstr "%s Changelog"
 
 #: admin/settings/html/user-agent-list.php:4
 #: admin/settings/html/user-agent-list.php:6
-msgid "WPtouch Pro will be active when any of the following user-agents or user-agent combinations are matched"
-msgstr "WPtouch Pro wird aktiv sein, wenn einer der folgenden User-Agents oder User-Agent-Kombinationen getroffen werden"
+msgid ""
+"WPtouch Pro will be active when any of the following user-agents or user-"
+"agent combinations are matched"
+msgstr ""
+"WPtouch Pro wird aktiv sein, wenn einer der folgenden User-Agents oder User-"
+"Agent-Kombinationen getroffen werden"
 
 #: admin/settings/include/custom-latest-posts.php:14
 msgid "None (Use WordPress Settings)"
@@ -900,7 +1013,7 @@ msgstr "von"
 #: bauhaus/default/related-posts.php:4
 #: themes/foundation/default/related-posts.php:4
 msgid "Related"
-msgstr "Beiträge"
+msgstr "Ähnliche Beiträge"
 
 #: bauhaus/default/search.php:6 classic-redux/default/search.php:5
 #: themes/foundation/default/search.php:6
@@ -1014,7 +1127,9 @@ msgstr "Stil mit Menü-Animation"
 
 #: bauhaus/root-functions.php:284
 msgid "Bauhaus can show your menu off-canvas or in a drop-down."
-msgstr "Bauhaus kann dein Menü als einblendbares Randfenster oder als Dropdown-Liste anzeigen."
+msgstr ""
+"Bauhaus kann dein Menü als einblendbares Randfenster oder als Dropdown-Liste "
+"anzeigen."
 
 #: bauhaus/root-functions.php:288
 msgid "Off-canvas"
@@ -1317,8 +1432,12 @@ msgid "Alternate menu title (if used)"
 msgstr "Alternativ-Menütitel (falls vorhanden)"
 
 #: cms/root-functions.php:256
-msgid "If you use a second menu in CMS, this text will be used for the drop-down button title."
-msgstr "Wenn du ein zweites Menü in CMS verwendest, dann wird dieser Text für den Dropdown-Buttontitel verwendet."
+msgid ""
+"If you use a second menu in CMS, this text will be used for the drop-down "
+"button title."
+msgstr ""
+"Wenn du ein zweites Menü in CMS verwendest, dann wird dieser Text für den "
+"Dropdown-Buttontitel verwendet."
 
 #: cms/root-functions.php:286
 msgid "Static Front Page"
@@ -1329,16 +1448,25 @@ msgid "Static front page alternate content"
 msgstr "Statische Titelseite Alternativ-Inhalt"
 
 #: cms/root-functions.php:293
-msgid "Shows after the featured slider (if enabled), and replaces your Static Front Page content. HTML allowed."
-msgstr "Wird nach dem enthaltenen Schiebers angezeigt (falls aktiviert) und ersetzt den Inhalt deiner Statischen Titelseite. HTML erlaubt."
+msgid ""
+"Shows after the featured slider (if enabled), and replaces your Static Front "
+"Page content. HTML allowed."
+msgstr ""
+"Wird nach dem enthaltenen Schiebers angezeigt (falls aktiviert) und ersetzt "
+"den Inhalt deiner Statischen Titelseite. HTML erlaubt."
 
 #: core/addon-theme-installer.php:161
 msgid "No server support for directly downloading new Cloud packages."
-msgstr "Keine Serverunterstützung für den direkten Download neuer Cloud-Pakete."
+msgstr ""
+"Keine Serverunterstützung für den direkten Download neuer Cloud-Pakete."
 
 #: core/addon-theme-installer.php:166
-msgid "Unable to write to directory %s. Try relaxing permissions to allow writing to this location."
-msgstr "Verzeichnis %s kann nicht beschrieben werden. Versuche Einschränkungen zu lockern, um das Schreiben in dieses Verzeichnis zu erlauben."
+msgid ""
+"Unable to write to directory %s. Try relaxing permissions to allow writing "
+"to this location."
+msgstr ""
+"Verzeichnis %s kann nicht beschrieben werden. Versuche Einschränkungen zu "
+"lockern, um das Schreiben in dieses Verzeichnis zu erlauben."
 
 #: core/addon-theme-installer.php:171
 msgid "No server support for unzipping files."
@@ -1353,8 +1481,12 @@ msgid "Version %s"
 msgstr "Version %s"
 
 #: core/admin-ajax.php:197
-msgid "There is a temporary issue retrieving the change-log.  Please try again later."
-msgstr "Es gibt derzeit ein Problem beim Abfragen des Changelogs. Bitte versuche es später erneut."
+msgid ""
+"There is a temporary issue retrieving the change-log.  Please try again "
+"later."
+msgstr ""
+"Es gibt derzeit ein Problem beim Abfragen des Changelogs. Bitte versuche es "
+"später erneut."
 
 #: core/admin-menu.php:40
 msgid "Core Settings"
@@ -1393,8 +1525,12 @@ msgid "Mobile Page Template"
 msgstr "Vorlage der mobilen Seite"
 
 #: core/admin-render.php:25
-msgid "Your WPtouch Pro license has expired. Renew now at a discount to continue receiving product updates and support."
-msgstr "Deine WPtouch Pro-Lizenz ist abgelaufen. Erneuere sie jetzt zu einem günstigeren Preis, um weiterhin Produkt-Updates und Support zu erhalten."
+msgid ""
+"Your WPtouch Pro license has expired. Renew now at a discount to continue "
+"receiving product updates and support."
+msgstr ""
+"Deine WPtouch Pro-Lizenz ist abgelaufen. Erneuere sie jetzt zu einem "
+"günstigeren Preis, um weiterhin Produkt-Updates und Support zu erhalten."
 
 #: core/admin-render.php:26
 msgid "Renew Now"
@@ -1421,16 +1557,32 @@ msgid "Reset Settings"
 msgstr "Einstellungen zurücksetzen"
 
 #: core/class-wptouch-pro.php:354
-msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
-msgstr "Automatische Themen-Migration von Uploads/WPtouch-Datenverzeichnis fehlgeschlagen. Bitte verschiebe diese Dateien nach WP-Inhalt/WPtouch-Daten manuell oder %skontaktiere den Support%s, um dieses Problem zu melden."
+msgid ""
+"Automatic theme migration from uploads/wptouch-data directory failed. Please "
+"manually move these files to wp-content/wptouch-data, or %scontact support%s "
+"to address this issue."
+msgstr ""
+"Automatische Themen-Migration von Uploads/WPtouch-Datenverzeichnis "
+"fehlgeschlagen. Bitte verschiebe diese Dateien nach WP-Inhalt/WPtouch-Daten "
+"manuell oder %skontaktiere den Support%s, um dieses Problem zu melden."
 
 #: core/class-wptouch-pro.php:374
-msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
-msgstr "Wir konnten dein WPtouch-Thema von der Cloud nicht installieren. Bitte lies %sdiesen Artikel%s für weitere Informationen."
+msgid ""
+"We were unable to install your WPtouch theme from the Cloud. Please visit "
+"%sthis article%s for more information."
+msgstr ""
+"Wir konnten dein WPtouch-Thema von der Cloud nicht installieren. Bitte lies "
+"%sdiesen Artikel%s für weitere Informationen."
 
 #: core/class-wptouch-pro.php:378
-msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
-msgstr "Deine Server-Einstellung hindert WPtouch am Herunterladen deines aktiven Themas von der Cloud. Bitte lies %sdiesen Artikel%s für weitere Informationen zur Fehlerbehebung."
+msgid ""
+"Your server setup is preventing WPtouch from installing your active theme "
+"from the Cloud. Please visit %sthis article%s for more information on how to "
+"fix it."
+msgstr ""
+"Deine Server-Einstellung hindert WPtouch am Herunterladen deines aktiven "
+"Themas von der Cloud. Bitte lies %sdiesen Artikel%s für weitere "
+"Informationen zur Fehlerbehebung."
 
 #: core/class-wptouch-pro.php:590
 msgid "Unsupported Browser"
@@ -1441,24 +1593,38 @@ msgid "Theme Preview requires Chrome or Safari."
 msgstr "Thema-Vorschau erfordert Chrome oder Safari."
 
 #: core/class-wptouch-pro.php:592
-msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
-msgstr "Dies wird alle WPtouch Pro-Einstellungen zurücksetzen.\nBist du sicher?"
+msgid ""
+"This will reset all WPtouch Pro settings.\n"
+"Are you sure?"
+msgstr ""
+"Dies wird alle WPtouch Pro-Einstellungen zurücksetzen.\n"
+"Bist du sicher?"
 
 #: core/class-wptouch-pro.php:593
-msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
-msgstr "Dies wird alle WPtouch Pro Menü- und Symboleinstellungen zurücksetzen.\nBist du sicher?"
+msgid ""
+"This will reset all WPtouch Pro menu and icon settings.\n"
+"Are you sure?"
+msgstr ""
+"Dies wird alle WPtouch Pro Menü- und Symboleinstellungen zurücksetzen.\n"
+"Bist du sicher?"
 
 #: core/class-wptouch-pro.php:594
 msgid "Offline"
 msgstr "Offline"
 
 #: core/class-wptouch-pro.php:595
-msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
-msgstr "Du scheinst offline zu sein. Stelle eine Verbindung zum Internet her, um verfügbare BraveNewCloud-Elemente zu sehen."
+msgid ""
+"You appear to be offline. Connect to the internet to see available "
+"BraveNewCloud items."
+msgstr ""
+"Du scheinst offline zu sein. Stelle eine Verbindung zum Internet her, um "
+"verfügbare BraveNewCloud-Elemente zu sehen."
 
 #: core/class-wptouch-pro.php:596
 msgid "The item failed to download for this reason: %reason%"
-msgstr "Das Element konnte aus dem folgenden Grund nicht heruntergeladen werden: %reason%"
+msgstr ""
+"Das Element konnte aus dem folgenden Grund nicht heruntergeladen werden: "
+"%reason%"
 
 #: core/class-wptouch-pro.php:597
 msgid "You are about to reset your license information. Proceed?"
@@ -1502,20 +1668,31 @@ msgid "Preview Mode Enabled"
 msgstr "Vorschaumodus aktiviert"
 
 #: core/notifications.php:125
-msgid "Only logged-in admins can see the mobile theme right now. You can change this at any time in %sCore Settings%s under %sDisplay Mode%s."
-msgstr "Nur eingeloggte Admins können in diesem Moment das mobile Thema sehen. Du kannst dies zu jedem Zeitpunkt in den %sHaupteinstellungen%s unter %sAnzeigemodus%s ändern."
+msgid ""
+"Only logged-in admins can see the mobile theme right now. You can change "
+"this at any time in %sCore Settings%s under %sDisplay Mode%s."
+msgstr ""
+"Nur eingeloggte Admins können in diesem Moment das mobile Thema sehen. Du "
+"kannst dies zu jedem Zeitpunkt in den %sHaupteinstellungen%s unter "
+"%sAnzeigemodus%s ändern."
 
 #: core/notifications.php:133
 msgid "Theme Presentation Disabled"
 msgstr "Thema-Präsentation deaktiviert"
 
 #: core/notifications.php:134
-msgid "No one can see the mobile theme right now. You can change this at any time in %sCore Settings%s under %sDisplay Mode%s."
-msgstr "Niemand kann im Moment das mobile Thema sehen. Du kannst dies in den %sHaupteinstellungen%s unter %sAnzeigemodus%s ändern."
+msgid ""
+"No one can see the mobile theme right now. You can change this at any time "
+"in %sCore Settings%s under %sDisplay Mode%s."
+msgstr ""
+"Niemand kann im Moment das mobile Thema sehen. Du kannst dies in den "
+"%sHaupteinstellungen%s unter %sAnzeigemodus%s ändern."
 
 #: core/notifications.php:145
 msgid "WPtouch Pro prefers pretty permalinks to be enabled within WordPress."
-msgstr "WPtouch Pro bevorzugt, dass Pretty Permalinks innerhalb von WordPress aktiviert sind."
+msgstr ""
+"WPtouch Pro bevorzugt, dass Pretty Permalinks innerhalb von WordPress "
+"aktiviert sind."
 
 #: core/notifications.php:155
 msgid "WPtouch Pro will not work fully in safe mode."
@@ -1523,16 +1700,29 @@ msgstr "WPtouch Pro wird im abgesicherten Modus nicht vollständig arbeiten."
 
 #: core/notifications.php:165 core/notifications.php:175
 #: core/notifications.php:185
-msgid "Extra configuration is required. The plugin must be configured to exclude the user agents that WPtouch Pro uses."
-msgstr "Extra-Konfiguration ist erforderlich. Das Plugin muss konfiguriert werden, um die User Agent auszuschließen, die WPtouch Pro verwendet."
+msgid ""
+"Extra configuration is required. The plugin must be configured to exclude "
+"the user agents that WPtouch Pro uses."
+msgstr ""
+"Extra-Konfiguration ist erforderlich. Das Plugin muss konfiguriert werden, "
+"um die User Agent auszuschließen, die WPtouch Pro verwendet."
 
 #: core/notifications.php:195
-msgid "Extra configuration is required. Add paths to your active WPtouch Pro theme CSS and Javascript files as files to ignore in WPMinify."
-msgstr "Extra-Konfiguration ist erforderlich. Füge Pfade zu deinem aktiven WPtouch Pro Theme CSS und deinen Javascript-Dateien, als Dateien zum Ignorieren in WPMinify, hinzu."
+msgid ""
+"Extra configuration is required. Add paths to your active WPtouch Pro theme "
+"CSS and Javascript files as files to ignore in WPMinify."
+msgstr ""
+"Extra-Konfiguration ist erforderlich. Füge Pfade zu deinem aktiven WPtouch "
+"Pro Theme CSS und deinen Javascript-Dateien, als Dateien zum Ignorieren in "
+"WPMinify, hinzu."
 
 #: core/notifications.php:205
-msgid "This plugin may not work correctly in WPtouch Pro, and should be disabled in the Plugin Compatibility section."
-msgstr "Dieses Plugin wird in WPtouch Pro nicht korrekt funktionieren und sollte im Abschnitt für die Plugin-Kompatibilität deaktiviert werden."
+msgid ""
+"This plugin may not work correctly in WPtouch Pro, and should be disabled in "
+"the Plugin Compatibility section."
+msgstr ""
+"Dieses Plugin wird in WPtouch Pro nicht korrekt funktionieren und sollte im "
+"Abschnitt für die Plugin-Kompatibilität deaktiviert werden."
 
 #: core/notifications.php:214
 msgid "Icon Installation Issue"
@@ -1569,7 +1759,9 @@ msgstr "Kopfzeilen-Bild"
 
 #: hammock/root-functions.php:108 prose/root-functions.php:111
 msgid "Displayed behind header on pages and posts without featured images."
-msgstr "Wird hinter der Kopfzeile auf Seiten und Beiträgen ohne enthaltene Bilder angezeigt."
+msgstr ""
+"Wird hinter der Kopfzeile auf Seiten und Beiträgen ohne enthaltene Bilder "
+"angezeigt."
 
 #: hammock/root-functions.php:121 prose/root-functions.php:124
 msgid "Site Intro"
@@ -1650,7 +1842,9 @@ msgstr "Zwischenspeicher für Desktop-Benutzer erstellen"
 
 #: infinity-cache/infinity-cache.php:143
 msgid "If you are using another cache plugin such as W3, you can disable this."
-msgstr "Wenn du ein anderes Zwischenspeicher-Plugin wie z.B. W3 nutzt, kannst du dieses deaktivieren."
+msgstr ""
+"Wenn du ein anderes Zwischenspeicher-Plugin wie z.B. W3 nutzt, kannst du "
+"dieses deaktivieren."
 
 #: infinity-cache/infinity-cache.php:164
 msgid "Compress output using GZIP"
@@ -1661,8 +1855,11 @@ msgid "Maximum age of cached content"
 msgstr "Maximales Alter vom zwischengespeicherten Inhalt"
 
 #: infinity-cache/infinity-cache.php:175
-msgid "Each cached page will automatically be regenerated after this period elapses"
-msgstr "Jede zwischengespeicherte Seite wird automatisch neu generiert, nachdem dieser Zeitraum abläuft"
+msgid ""
+"Each cached page will automatically be regenerated after this period elapses"
+msgstr ""
+"Jede zwischengespeicherte Seite wird automatisch neu generiert, nachdem "
+"dieser Zeitraum abläuft"
 
 #: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
 #: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
@@ -1686,19 +1883,29 @@ msgstr "Täglich"
 
 #: infinity-cache/infinity-cache.php:203
 msgid "Disable caching for any of these matched URL fragments"
-msgstr "Zwischenspeicherung für jedes dieser übereinstimmenden URL-Fragmente deaktivieren"
+msgstr ""
+"Zwischenspeicherung für jedes dieser übereinstimmenden URL-Fragmente "
+"deaktivieren"
 
 #: infinity-cache/infinity-cache.php:204
-msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
-msgstr "Ein URL-Fragment pro Zeile hinzufügen, z.B. %s, um keine Seiten zwischenzuspeichern, die jedes URL-Fragment enthält"
+msgid ""
+"Add one URL fragment per line, i.e. %s, to not cache pages that contain each "
+"URL fragment"
+msgstr ""
+"Ein URL-Fragment pro Zeile hinzufügen, z.B. %s, um keine Seiten "
+"zwischenzuspeichern, die jedes URL-Fragment enthält"
 
 #: infinity-cache/infinity-cache.php:212
 msgid "Content Distribution Network Service"
 msgstr "Content Distribution Network Service"
 
 #: infinity-cache/infinity-cache.php:213
-msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
-msgstr "Die Verwendung eines Content Distribution Network (CDN) kann die Ansprechempfindlichkeit deiner Website beachtlich erhöhen."
+msgid ""
+"Using a content distribution network (CDN) can significantly enhance the "
+"responsiveness of your website."
+msgstr ""
+"Die Verwendung eines Content Distribution Network (CDN) kann die "
+"Ansprechempfindlichkeit deiner Website beachtlich erhöhen."
 
 #: infinity-cache/infinity-cache.php:218
 #: themes/foundation/modules/login/login-html.php:30
@@ -1710,8 +1917,12 @@ msgid "URL %d"
 msgstr "URL %d"
 
 #: infinity-cache/infinity-cache.php:227
-msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
-msgstr "Füge die URLs hinzu, die du für dein CDN konfiguriert hast, zum Beispiel http://cdn%d.mysite.com. Füge deine Domain für die Multisite auch hinzu."
+msgid ""
+"Add the URLs you have configured for your CDN, for example http://cdn%d."
+"mysite.com. Add your domain for multisite as well."
+msgstr ""
+"Füge die URLs hinzu, die du für dein CDN konfiguriert hast, zum Beispiel "
+"http://cdn%d.mysite.com. Füge deine Domain für die Multisite auch hinzu."
 
 #: infinity-cache/infinity-cache.php:249
 msgid "Infinity Cache"
@@ -1821,7 +2032,9 @@ msgid "Please use the shipping calculator to see available shipping methods."
 msgstr ""
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:78
-msgid "Please continue to the checkout and enter your full address to see if there are any available shipping methods."
+msgid ""
+"Please continue to the checkout and enter your full address to see if there "
+"are any available shipping methods."
 msgstr ""
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:82
@@ -1831,7 +2044,9 @@ msgstr ""
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:91
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:97
-msgid "There doesn&lsquo;t seem to be any available shipping methods. Please double check your address, or contact us if you need any help."
+msgid ""
+"There doesn&lsquo;t seem to be any available shipping methods. Please double "
+"check your address, or contact us if you need any help."
 msgstr ""
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:112
@@ -1852,7 +2067,9 @@ msgstr ""
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:69
 #: mobilestore/default/woocommerce/cart/totals.php:123
-msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgid ""
+"Note: Shipping and taxes are estimated%s and will be updated during checkout "
+"based on your billing and shipping information."
 msgstr ""
 
 #: mobilestore/default/woocommerce/cart/cart.php:51
@@ -1914,12 +2131,16 @@ msgstr ""
 
 #: mobilestore/default/woocommerce/cart/shipping-methods.php:76
 #: mobilestore/default/woocommerce/cart/totals.php:147
-msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
+msgid ""
+"Sorry, it seems that there are no available shipping methods for your "
+"location (%s)."
 msgstr ""
 
 #: mobilestore/default/woocommerce/cart/shipping-methods.php:76
 #: mobilestore/default/woocommerce/cart/totals.php:147
-msgid "If you require assistance or wish to make alternate arrangements please contact us."
+msgid ""
+"If you require assistance or wish to make alternate arrangements please "
+"contact us."
 msgstr ""
 
 #: mobilestore/default/woocommerce/cart/totals.php:22
@@ -1949,7 +2170,10 @@ msgid "(Includes %s)"
 msgstr ""
 
 #: mobilestore/default/woocommerce/cart/totals.php:135
-msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
+msgid ""
+"No shipping methods were found; please recalculate your shipping and enter "
+"your state/county and zip/postcode to ensure there are no other available "
+"methods for your location."
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/form-checkout.php:20
@@ -1969,7 +2193,9 @@ msgid "Shopped here before?"
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/form-login.php:23
-msgid "Enter your login details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section."
+msgid ""
+"Enter your login details in the boxes below. If you are a new customer "
+"please proceed to the Billing &amp; Shipping section."
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/form-pay.php:19
@@ -1992,7 +2218,10 @@ msgid "Payment"
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/form-pay.php:77
-msgid "Sorry, it seems that there are no available payment methods for your location. Please contact us if you require assistance or wish to make alternate arrangements."
+msgid ""
+"Sorry, it seems that there are no available payment methods for your "
+"location. Please contact us if you require assistance or wish to make "
+"alternate arrangements."
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/form-pay.php:87
@@ -2017,19 +2246,32 @@ msgid "Please fill in your details above to see available payment methods."
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/review-order.php:173
-msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgid ""
+"Sorry, it seems that there are no available payment methods for your state. "
+"Please contact us if you require assistance or wish to make alternate "
+"arrangements."
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/review-order.php:184
-msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
-msgstr "Da dein Browser kein JavaScript unterstützt oder es deaktiviert ist, stelle bitte unbedingt sicher, dass du auf <em>Gesamtpreis aktualisieren</em> klickst, bevor du deine Bestellung aufgibst. Es könnte ein höherer Betrag als der, der oben angegeben ist, von dir verlangt werden, wenn du nicht aktualisierst."
+msgid ""
+"Since your browser does not support JavaScript, or it is disabled, please "
+"ensure you click the <em>Update Totals</em> button before placing your "
+"order. You may be charged more than the amount stated above if you fail to "
+"do so."
+msgstr ""
+"Da dein Browser kein JavaScript unterstützt oder es deaktiviert ist, stelle "
+"bitte unbedingt sicher, dass du auf <em>Gesamtpreis aktualisieren</em> "
+"klickst, bevor du deine Bestellung aufgibst. Es könnte ein höherer Betrag "
+"als der, der oben angegeben ist, von dir verlangt werden, wenn du nicht "
+"aktualisierst."
 
 #: mobilestore/default/woocommerce/checkout/review-order.php:184
 msgid "Update totals"
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/review-order.php:194
-msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgid ""
+"I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
 msgstr ""
 
 #: mobilestore/default/woocommerce/checkout/review-order.php:200
@@ -2039,7 +2281,8 @@ msgstr "Bestellung absenden"
 #: mobilestore/default/woocommerce/emails/admin-new-order.php:13
 #: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
 msgid "You have received an order from %s. Their order is as follows:"
-msgstr "Du hast eine Bestellung von %s erhalten. Die Bestellung ist die folgende:"
+msgstr ""
+"Du hast eine Bestellung von %s erhalten. Die Bestellung ist die folgende:"
 
 #: mobilestore/default/woocommerce/emails/admin-new-order.php:17
 msgid "Order: %s"
@@ -2093,7 +2336,9 @@ msgstr ""
 
 #: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
 #: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
-msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
+msgid ""
+"Hi there. Your recent order on %s has been completed. Your order details are "
+"shown below for your reference:"
 msgstr ""
 
 #: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
@@ -2105,7 +2350,9 @@ msgstr ""
 
 #: mobilestore/default/woocommerce/emails/customer-invoice.php:16
 #: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
-msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
+msgid ""
+"An order has been created for you on %s. To pay for this order please use "
+"the following link: %s"
 msgstr ""
 
 #: mobilestore/default/woocommerce/emails/customer-invoice.php:16
@@ -2114,7 +2361,8 @@ msgstr ""
 
 #: mobilestore/default/woocommerce/emails/customer-new-account.php:14
 #: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
-msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
+msgid ""
+"Thanks for creating an account on %s. Your username is <strong>%s</strong>."
 msgstr ""
 
 #: mobilestore/default/woocommerce/emails/customer-new-account.php:16
@@ -2134,7 +2382,9 @@ msgstr ""
 
 #: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
 #: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
-msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
+msgid ""
+"Your order has been received and is now being processed. Your order details "
+"are shown below for your reference:"
 msgstr ""
 
 #: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
@@ -2543,7 +2793,8 @@ msgstr "Map-Adresse"
 
 #: open/root-functions.php:145
 msgid "Enter an address and a menu item for 'Our Location' will be shown."
-msgstr "Gib eine Adresse ein und ein Menüelement für 'Unser Standort' wird angezeigt."
+msgstr ""
+"Gib eine Adresse ein und ein Menüelement für 'Unser Standort' wird angezeigt."
 
 #: open/root-functions.php:157
 msgid "Call to Action"
@@ -2554,8 +2805,11 @@ msgid "Show call to action button at bottom of pages"
 msgstr "'Aufruf zum Handeln'-Button unten auf Seiten anzeigen"
 
 #: open/root-functions.php:164
-msgid "Give visitors a one-click action to follow and increase your conversions."
-msgstr "Gib Besuchern eine 1-Klick-Aktion zum Folgen und um die Stammbesuche zu erhöhen."
+msgid ""
+"Give visitors a one-click action to follow and increase your conversions."
+msgstr ""
+"Gib Besuchern eine 1-Klick-Aktion zum Folgen und um die Stammbesuche zu "
+"erhöhen."
 
 #: open/root-functions.php:171
 msgid "Button Label"
@@ -2567,7 +2821,9 @@ msgstr "Ziel-URL"
 
 #: open/root-functions.php:180
 msgid "Prefix your phone number with \"tel:\" to allow one-click phone calls."
-msgstr "Stelle das Vorzeichen \"Tel:\" vor deine Telefonnummer, um 1-Klick-Anrufe zu ermöglichen."
+msgstr ""
+"Stelle das Vorzeichen \"Tel:\" vor deine Telefonnummer, um 1-Klick-Anrufe zu "
+"ermöglichen."
 
 #: open/root-functions.php:192
 msgid "Hours"
@@ -2578,8 +2834,12 @@ msgid "Use built-in Hours feature"
 msgstr "Verwende die eingebaute Zeiten-Funktion"
 
 #: open/root-functions.php:199
-msgid "Add your hours and the current day's hours will appear on the homepage along with a menu item for 'Our Hours'."
-msgstr "Füge deine Stunden hinzu und die aktuellen Tagesstunden werden zusammen mit einem Menüelement 'Unsere Zeiten' auf der Homepage erscheinen."
+msgid ""
+"Add your hours and the current day's hours will appear on the homepage along "
+"with a menu item for 'Our Hours'."
+msgstr ""
+"Füge deine Stunden hinzu und die aktuellen Tagesstunden werden zusammen mit "
+"einem Menüelement 'Unsere Zeiten' auf der Homepage erscheinen."
 
 #: open/root-functions.php:207
 msgid "Will show as closed if left blank."
@@ -2587,7 +2847,8 @@ msgstr "Wird als geschlossen angezeigt, falls das Feld leer bleibt."
 
 #: open/root-functions.php:263
 msgid "Let visitors know about holidays, vacations, and other special hours"
-msgstr "Informiere die Besucher über Urlaub, Feiertage und andere besondere Zeiten"
+msgstr ""
+"Informiere die Besucher über Urlaub, Feiertage und andere besondere Zeiten"
 
 #: open/root-functions.php:356
 msgid "Main branding colour"
@@ -2634,8 +2895,12 @@ msgid "License Expired"
 msgstr "Lizenz abgelaufen"
 
 #: pro/professional.php:117
-msgid "Your product license has expired. Renew now to continue to receive feature and security updates."
-msgstr "Deine Produktlizenz ist abgelaufen. Erneuere sie jetzt, um weiterhin Funktions- und Sicherheits-Updates zu erhalten."
+msgid ""
+"Your product license has expired. Renew now to continue to receive feature "
+"and security updates."
+msgstr ""
+"Deine Produktlizenz ist abgelaufen. Erneuere sie jetzt, um weiterhin "
+"Funktions- und Sicherheits-Updates zu erhalten."
 
 #: pro/professional.php:123
 msgid "License Missing"
@@ -2650,12 +2915,20 @@ msgid "WPtouch Pro %s"
 msgstr "WPtouch Pro %s"
 
 #: pro/professional.php:138
-msgid "A new version of WPtouch Pro is available. Renew your license to re-enable product updates."
-msgstr "Eine neue Version von WPtouch Pro ist verfügbar. Erneuere deine Lizenz, um Produkt-Updates wieder zu aktivieren."
+msgid ""
+"A new version of WPtouch Pro is available. Renew your license to re-enable "
+"product updates."
+msgstr ""
+"Eine neue Version von WPtouch Pro ist verfügbar. Erneuere deine Lizenz, um "
+"Produkt-Updates wieder zu aktivieren."
 
 #: pro/professional.php:145
-msgid "A new version of WPtouch Pro is available. Please activate or purchase a license to enable product updates."
-msgstr "Eine neue Version von WPtouch Pro ist verfügbar. Bitte aktiviere oder erwirb eine Lizenz, um Produkt-Updates zu ermöglichen."
+msgid ""
+"A new version of WPtouch Pro is available. Please activate or purchase a "
+"license to enable product updates."
+msgstr ""
+"Eine neue Version von WPtouch Pro ist verfügbar. Bitte aktiviere oder erwirb "
+"eine Lizenz, um Produkt-Updates zu ermöglichen."
 
 #: pro/professional.php:153
 msgid "A new version of WPtouch Pro is available."
@@ -2675,15 +2948,24 @@ msgstr "Erweiterungs-Update verfügbar"
 
 #: pro/professional.php:182
 msgid "One or more updates are available for your installed extensions."
-msgstr "Ein oder mehr Updates sind für deine installierten Erweiterungen verfügbar."
+msgstr ""
+"Ein oder mehr Updates sind für deine installierten Erweiterungen verfügbar."
 
 #: pro/professional.php:195
-msgid "WPtouch Pro 3 cannot co-exist with WPtouch 1.x. Disable it first in the WordPress Plugins settings."
-msgstr "WPtouch Pro 3 kann nicht neben WPtouch 1.x existieren. Deaktiviere es zuerst in den WordPress Plugin-Einstellungen."
+msgid ""
+"WPtouch Pro 3 cannot co-exist with WPtouch 1.x. Disable it first in the "
+"WordPress Plugins settings."
+msgstr ""
+"WPtouch Pro 3 kann nicht neben WPtouch 1.x existieren. Deaktiviere es zuerst "
+"in den WordPress Plugin-Einstellungen."
 
 #: pro/professional.php:205
-msgid "WPtouch Pro 3 cannot co-exist with WPtouch Pro 2.x. Disable it first in the WordPress Plugins settings."
-msgstr "WPtouch Pro 3 kann nicht neben WPtouch 2.x existieren. Deaktiviere es zuerst in den WordPress Plugin-Einstellungen."
+msgid ""
+"WPtouch Pro 3 cannot co-exist with WPtouch Pro 2.x. Disable it first in the "
+"WordPress Plugins settings."
+msgstr ""
+"WPtouch Pro 3 kann nicht neben WPtouch 2.x existieren. Deaktiviere es zuerst "
+"in den WordPress Plugin-Einstellungen."
 
 #: pro/professional.php:299 pro/professional.php:323
 msgid "Unknown error"
@@ -2877,16 +3159,22 @@ msgid "Phone number"
 msgstr "Telefonnummer"
 
 #: simple/root-functions.php:212
-msgid "Enter a phone number and a homepage menu item for 'call us' will be shown."
-msgstr "Gib eine Telefonnummer an und ein Startseiten-Menüpunkt für 'Ruf uns an' wird angezeigt werden."
+msgid ""
+"Enter a phone number and a homepage menu item for 'call us' will be shown."
+msgstr ""
+"Gib eine Telefonnummer an und ein Startseiten-Menüpunkt für 'Ruf uns an' "
+"wird angezeigt werden."
 
 #: simple/root-functions.php:224
 msgid "Homepage Location"
 msgstr "Startseiten-Standort"
 
 #: simple/root-functions.php:231
-msgid "Enter an address and a homepage menu item for 'Our Location' will be shown."
-msgstr "Gib eine Adresse ein und ein Startseiten-Menüelement für 'Unser Standort' wird angezeigt werden."
+msgid ""
+"Enter an address and a homepage menu item for 'Our Location' will be shown."
+msgstr ""
+"Gib eine Adresse ein und ein Startseiten-Menüelement für 'Unser Standort' "
+"wird angezeigt werden."
 
 #: simple/root-functions.php:243
 msgid "Front Page Content"
@@ -2902,7 +3190,9 @@ msgstr "Zeigt oben das Titelseiten-Menü (falls aktiviert), HTML erlaubt."
 
 #: simple/root-functions.php:287
 msgid "Add a light noise effect to the drop-down menu and theme background"
-msgstr "Füge einen leichten Rauscheffekt zum Dropdown-Menü und dem Thema-Hintergrund hinzu."
+msgstr ""
+"Füge einen leichten Rauscheffekt zum Dropdown-Menü und dem Thema-Hintergrund "
+"hinzu."
 
 #: themes/foundation/default/404.php:6
 msgid "404 Not Found"
@@ -2910,7 +3200,9 @@ msgstr "404 Nicht gefunden"
 
 #: themes/foundation/default/404.php:8
 msgid "The post or page you requested is no longer available."
-msgstr "Der Beitrag oder die Seite, die du angefordert hast, ist nicht länger verfügbar."
+msgstr ""
+"Der Beitrag oder die Seite, die du angefordert hast, ist nicht länger "
+"verfügbar."
 
 #: themes/foundation/default/attachment.php:43
 msgid "&laquo; previous in gallery"
@@ -2930,7 +3222,8 @@ msgstr "Kommentar-Fehler"
 
 #: themes/foundation/default/formerror.php:8
 msgid "Please enter all fields correctly to post a comment."
-msgstr "Bitte alle Felder korrekt ausfüllen, um einen Kommentar zu veröffentlichen."
+msgstr ""
+"Bitte alle Felder korrekt ausfüllen, um einen Kommentar zu veröffentlichen."
 
 #: themes/foundation/default/formerror.php:9
 msgid "Go back"
@@ -3102,8 +3395,12 @@ msgid "Grayscale images (CSS 3 effect)"
 msgstr "Grauskalenbilder (CSS 3-Effekt)"
 
 #: themes/foundation/modules/featured/featured.php:309
-msgid "Featured slider images will be in grayscale for devices that support CSS filters."
-msgstr "Eingebaute Schieberbilder werden für Geräte in Grauskalen sein, die CSS-Filter unterstützen."
+msgid ""
+"Featured slider images will be in grayscale for devices that support CSS "
+"filters."
+msgstr ""
+"Eingebaute Schieberbilder werden für Geräte in Grauskalen sein, die CSS-"
+"Filter unterstützen."
 
 #: themes/foundation/modules/featured/featured.php:324
 msgid "Featured slider posts also show in listings"
@@ -3171,8 +3468,12 @@ msgid "Font style"
 msgstr "Schriftart"
 
 #: themes/foundation/modules/google-fonts/google-fonts.php:25
-msgid "Choose a Google font pairing designed for this theme, or default browser fonts."
-msgstr "Wähle eine Google-Schriftart-Kopplung, die für dieses Thema entwickelt wurde, oder die Standard-Schriftart des Browsers."
+msgid ""
+"Choose a Google font pairing designed for this theme, or default browser "
+"fonts."
+msgstr ""
+"Wähle eine Google-Schriftart-Kopplung, die für dieses Thema entwickelt "
+"wurde, oder die Standard-Schriftart des Browsers."
 
 #: themes/foundation/modules/login/login-html.php:7
 msgid "Remember Me"
@@ -3203,8 +3504,12 @@ msgid "Use fly-in login form"
 msgstr "PopUp-Anmeldeformular verwenden"
 
 #: themes/foundation/modules/login/login.php:39
-msgid "Will add login links and allow mobile visitors to login to your website from mobile devices"
-msgstr "Wird Anmelde-Links hinzufügen und es mobilen Besuchern erlauben, sich auf deiner Website von Mobilgeräten aus anzumelden"
+msgid ""
+"Will add login links and allow mobile visitors to login to your website from "
+"mobile devices"
+msgstr ""
+"Wird Anmelde-Links hinzufügen und es mobilen Besuchern erlauben, sich auf "
+"deiner Website von Mobilgeräten aus anzumelden"
 
 #: themes/foundation/modules/login/login.php:46
 msgid "Show \"Sign-up\" and \"Lost Password?\" links"
@@ -3228,7 +3533,7 @@ msgstr "Methode mit flexibler Breite"
 
 #: themes/foundation/modules/related-posts/related-posts.php:9
 msgid "Related Posts"
-msgstr "Verwandte Beiträge"
+msgstr "Ähnliche Beiträge"
 
 #: themes/foundation/modules/related-posts/related-posts.php:15
 msgid "Enable display of related content on single posts"
@@ -3260,15 +3565,21 @@ msgstr "Geteilte Links anzeigen"
 
 #: themes/foundation/modules/sharing/sharing.php:101
 msgid "Will show Facebook, Twitter, Google+ and Email buttons on single posts."
-msgstr "Wird Buttons für Facebook, Twitter, Google+ und E-Mail auf Einzelbeiträgen anzeigen."
+msgstr ""
+"Wird Buttons für Facebook, Twitter, Google+ und E-Mail auf Einzelbeiträgen "
+"anzeigen."
 
 #: themes/foundation/modules/sharing/sharing.php:108
 msgid "Show sharing links on pages"
 msgstr "Links zum Teilen auf Seiten anzeigen"
 
 #: themes/foundation/modules/sharing/sharing.php:109
-msgid "Will show Facebook, Twitter, Google+ and Email buttons on pages as well as single posts."
-msgstr "Wird Facebook, Twitter, Google+ und E-Mail-Buttons auf den Seiten und auf den einzelnen Beiträgen anzeigen."
+msgid ""
+"Will show Facebook, Twitter, Google+ and Email buttons on pages as well as "
+"single posts."
+msgstr ""
+"Wird Facebook, Twitter, Google+ und E-Mail-Buttons auf den Seiten und auf "
+"den einzelnen Beiträgen anzeigen."
 
 #: themes/foundation/modules/sharing/sharing.php:116
 msgid "Sharing links location"
@@ -3398,19 +3709,27 @@ msgid "Notice Message"
 msgstr "Mitteilung"
 
 #: themes/foundation/modules/webapp/webapp.php:43
-msgid "Show a notice message for iPhone, iPod touch & iPad visitors about my Web-App"
-msgstr "Zeige iPhone-, iPod Touch- & iPad-Besucher eine Mitteilung über meine Web-App"
+msgid ""
+"Show a notice message for iPhone, iPod touch & iPad visitors about my Web-App"
+msgstr ""
+"Zeige iPhone-, iPod Touch- & iPad-Besucher eine Mitteilung über meine Web-App"
 
 #: themes/foundation/modules/webapp/webapp.php:43
-msgid "WPtouch shows a notice bubble on 1st visit letting users know about your Web-App enabled website on iOS devices."
-msgstr "WPtouch zeigt eine Mitteilungsblase beim 1. Besuch und informiert die Nutzer über deine Web-App fähige Website auf iOS-Geräten."
+msgid ""
+"WPtouch shows a notice bubble on 1st visit letting users know about your Web-"
+"App enabled website on iOS devices."
+msgstr ""
+"WPtouch zeigt eine Mitteilungsblase beim 1. Besuch und informiert die Nutzer "
+"über deine Web-App fähige Website auf iOS-Geräten."
 
 #: themes/foundation/modules/webapp/webapp.php:44
 msgid "Notice message contents"
 msgstr "Mitteilungsinhalte"
 
 #: themes/foundation/modules/webapp/webapp.php:44
-msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
+msgid ""
+"[icon] is used to display the appropriate bookmark icon for your device. Do "
+"not remove it from your message."
 msgstr ""
 
 #: themes/foundation/modules/webapp/webapp.php:48
@@ -3486,7 +3805,9 @@ msgid "Language: "
 msgstr "Sprache:"
 
 #: themes/foundation/root-functions.php:139
-msgid "Install this Web-App on your homescreen: tap [icon] then \"Add to Home Screen\""
+msgid ""
+"Install this Web-App on your homescreen: tap [icon] then \"Add to Home Screen"
+"\""
 msgstr ""
 
 #: themes/foundation/root-functions.php:345
@@ -3494,8 +3815,11 @@ msgid "Number of posts in post listings"
 msgstr "Anzahl an Beiträgen in Beitragslisten"
 
 #: themes/foundation/root-functions.php:346
-msgid "Overrides the WordPress Reading settings for \"Blog pages show at most\""
-msgstr "Überschreibt die WordPress-Einstellungen unter Lesen für \"Blogseiten zeigen maximal\""
+msgid ""
+"Overrides the WordPress Reading settings for \"Blog pages show at most\""
+msgstr ""
+"Überschreibt die WordPress-Einstellungen unter Lesen für \"Blogseiten zeigen "
+"maximal\""
 
 #: themes/foundation/root-functions.php:353
 msgid "Excluded categories"
@@ -3531,7 +3855,9 @@ msgstr "Kommentare auf Seiten anzeigen"
 
 #: themes/foundation/root-functions.php:392
 msgid "Overrides the WordPress settings for showing comments on pages."
-msgstr "Überschreibt die WordPress-Einstellungen, um Kommentare auf den Seiten anzuzeigen."
+msgstr ""
+"Überschreibt die WordPress-Einstellungen, um Kommentare auf den Seiten "
+"anzuzeigen."
 
 #: themes/foundation/root-functions.php:402
 #: themes/foundation/root-functions.php:1136
@@ -3548,7 +3874,9 @@ msgstr "Symboltitel"
 
 #: themes/foundation/root-functions.php:422
 msgid "When visitors bookmark your website, this will be the title shown."
-msgstr "Wenn Besucher deine Website unter den Favoriten speichert, dann wird dieser Titel angezeigt."
+msgstr ""
+"Wenn Besucher deine Website unter den Favoriten speichert, dann wird dieser "
+"Titel angezeigt."
 
 #: themes/foundation/root-functions.php:433
 msgid "Android"
@@ -3579,8 +3907,15 @@ msgid "Enter your app's %sApp Store ID%s"
 msgstr "Gib die %sApp Store-ID%s deiner App ein"
 
 #: themes/foundation/root-functions.php:526
-msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
-msgstr "Der eindeutige Kennzeichner deiner App. Finde deine ID über den iTunes Link Maker: Suche nach deiner App. Im Link wird die ID deiner App angezeigt, diese besteht aus einer Nummer mit neun Ziffern zwischen id und ?mt. Zum Beispiel lautet die ID für Angry Birds 343200656."
+msgid ""
+"Your app's unique identifier. Find your ID from the iTunes Link Maker: "
+"Search for your app. In the link it provides, your app ID is the nine-digit "
+"number in between id and ?mt. For example Angry Birds's ID is 343200656."
+msgstr ""
+"Der eindeutige Kennzeichner deiner App. Finde deine ID über den iTunes Link "
+"Maker: Suche nach deiner App. Im Link wird die ID deiner App angezeigt, "
+"diese besteht aus einer Nummer mit neun Ziffern zwischen id und ?mt. Zum "
+"Beispiel lautet die ID für Angry Birds 343200656."
 
 #: themes/foundation/root-functions.php:538
 msgid "Theme Footer"
@@ -3591,8 +3926,12 @@ msgid "Custom footer content (HTML is allowed)"
 msgstr "Benutzerdef. Fußzeilen-Inhalt (HTML ist erlaubt)"
 
 #: themes/foundation/root-functions.php:541
-msgid "You can add custom footer content that will be displayed below the switch link."
-msgstr "Du kannst benutzerdef. Fußzeilen-Inhalt hinzufügen, der unter dem Umschalt-Link angezeigt werden wird."
+msgid ""
+"You can add custom footer content that will be displayed below the switch "
+"link."
+msgstr ""
+"Du kannst benutzerdef. Fußzeilen-Inhalt hinzufügen, der unter dem Umschalt-"
+"Link angezeigt werden wird."
 
 #: themes/foundation/root-functions.php:914
 msgid "search results for '%s'"
@@ -3653,8 +3992,11 @@ msgid "http://www.wptouch.com/"
 msgstr "http://www.wptouch.com/"
 
 #. Description of the plugin/theme
-msgid "The easy way to create great mobile experiences with your WordPress website."
-msgstr "Der einfache Weg tolle Mobil-Erfahrungen mit deiner WordPress-Website zu entwerfen."
+msgid ""
+"The easy way to create great mobile experiences with your WordPress website."
+msgstr ""
+"Der einfache Weg tolle Mobil-Erfahrungen mit deiner WordPress-Website zu "
+"entwerfen."
 
 #. Author of the plugin/theme
 msgid "BraveNewCode Inc."

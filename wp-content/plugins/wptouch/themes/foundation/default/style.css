@@ -464,12 +464,12 @@ to {
 
 .nav-controls a.prev-post:before {
 	content: '\e810';
-	font: normal normal 90% 'fontello';
+	font: normal normal 90% 'wptouch-icons';
 }
 
 .nav-controls a.next-post:after {
 	content: '\e811';
-	font: normal normal 90% 'fontello';
+	font: normal normal 90% 'wptouch-icons';
 }
 
 /* @end */
@@ -610,7 +610,7 @@ ul.dots li.active {
 .sharing-options .email-btn:before {
 	content: '\e818';
 	margin-right: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -618,7 +618,7 @@ ul.dots li.active {
 .sharing-options .facebook-btn:before {
 	content: '\e81e';
 	margin-right: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -626,7 +626,7 @@ ul.dots li.active {
 .sharing-options .twitter-btn:before {
 	content: '\e81b';
 	margin-right: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -634,7 +634,7 @@ ul.dots li.active {
 .sharing-options .google-btn:before {
 	content: '\e81c';
 	margin-right: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -642,7 +642,7 @@ ul.dots li.active {
 .sharing-options .pinterest-btn:before {
 	content: '\e823';
 	margin-right: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -674,7 +674,7 @@ ul.dots li.active {
 .rtl .sharing-options .email-btn:after {
 	content: '\e818';
 	margin-left: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -682,7 +682,7 @@ ul.dots li.active {
 .rtl .sharing-options .facebook-btn:after {
 	content: '\e81f';
 	margin-left: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -690,7 +690,7 @@ ul.dots li.active {
 .rtl .sharing-options .twitter-btn:after {
 	content: '\e81b';
 	margin-left: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -698,7 +698,7 @@ ul.dots li.active {
 .rtl .sharing-options .google-btn:after {
 	content: '\e81c';
 	margin-left: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -706,7 +706,7 @@ ul.dots li.active {
 .rtl .sharing-options .pinterest-btn:after {
 	content: '\e823';
 	margin-left: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -714,7 +714,7 @@ ul.dots li.active {
 .rtl .sharing-options .email-btn:after {
 	content: '\e818';
 	margin-left: 5px;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 }
@@ -776,7 +776,7 @@ body.web-app-mode #switch {
 }
 
 .not-found:after {
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	content: "\e83b";
 	display: block;
 	font-size: 400%;
@@ -1050,7 +1050,7 @@ form#commentform button#submit {
 
 .back-to-top:before {
 	content: "\e843";
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 	font-weight: normal;
 	font-style: normal;
 	padding-right: 5px;

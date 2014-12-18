@@ -1,5 +1,4 @@
 <?php
-
 function wptouch_settings_process( $wptouch_pro ) {
 	if ( isset( $wptouch_pro->post[ 'wptouch-reset-3' ] ) ) {
 		$wptouch_pro->verify_post_nonce();

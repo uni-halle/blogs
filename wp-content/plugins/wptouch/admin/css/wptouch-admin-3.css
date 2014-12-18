@@ -1,4 +1,4 @@
-/* @override 
+/* @override
 	http://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/wptouch-admin-3.css?ver=3.4.4
 	https://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/wptouch-admin-3.css?ver=3.4.9
 	http://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/wptouch-admin-3.css?ver=3.5
@@ -39,6 +39,16 @@
 	padding-top: 35px;
 	padding-bottom: 35px;
 }
+	.wptouch-pro_page_wptouch-admin-upgrade-license #wptouch-settings-area #wptouch-settings-content {
+		padding-top: 15px;
+		padding-bottom: 0;
+	}
+	.wptouch-pro_page_wptouch-admin-upgrade-license #wpbody-content {
+		padding-bottom: 20px;
+	}
+	.wptouch-pro_page_wptouch-admin-upgrade-license #wpfooter {
+		display: none;
+	}
 
 #wptouch-settings-area h2.logo-title {
 	font-size: 23px;
@@ -47,7 +57,7 @@
 	padding-bottom: 20px;
 	padding-left: 44px;
 	padding-top: 15px;
-	background: url(../images/title-icon.png) no-repeat 0 center;
+	background: url(../images/title-icon-xmas.png) no-repeat 0 center;
 	letter-spacing: -1px;
 }
 
@@ -2603,4 +2613,8 @@ textarea#homepage_message {
 	margin: auto;
 }
 
+}
+
+#wptouch-settings-area iframe header {
+	display: none;
 }

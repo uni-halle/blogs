@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.6
-Stable tag: 3.6.1
+Stable tag: 3.6.2
 Tested up to: 4.0
 License: GPLv2
 
@@ -39,6 +39,15 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.6.2 (December 11, 2014) =
+
+* Added: Upgrade your WPtouch Pro license from inside the plugin with instant upgrade activation if your site is web-accessible. (Pro Only)
+* Added: A little festive spirit!
+* Changed: Slimmed down plugin by moving screenshots out of the package.
+* Fixed: Typo in our URL - oops!
+* Fixed: Updated icon font with new icon & a new name to avoid conflicts with another plugin
+
 
 = Version 3.6.1 (November 20, 2014) =
 

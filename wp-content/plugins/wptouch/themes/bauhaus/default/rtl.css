@@ -72,7 +72,7 @@ body {
 .loop-link .comments:after {
 	content:"\e812";
 	display: block;
-	font: 30px 'fontello', sans-serif;
+	font: 30px 'wptouch-icons', sans-serif;
 	position: absolute;
 	left: 50%;
 	margin-left: -15px;

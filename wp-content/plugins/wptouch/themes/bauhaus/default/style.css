@@ -81,7 +81,7 @@ header img {
 #menu-toggle:after {
 	content: "\e80a";
 	display: block;
-	font: 110% 'fontello', sans-serif;
+	font: 110% 'wptouch-icons', sans-serif;
 	padding: 18px;
 }
 
@@ -94,7 +94,7 @@ header img {
 #search-toggle:after {
 	content: "\e809";
 	display: block;
-	font: 110% 'fontello', sans-serif;
+	font: 110% 'wptouch-icons', sans-serif;
 	padding: 18px;
 }
 
@@ -216,7 +216,7 @@ header img {
 	margin-left: 8px;
 	top: 2px;
 	position: relative;
-	font-family: 'fontello';
+	font-family: 'wptouch-icons';
 }
 
 .landscape #slider a p.heading-font, .landscape #slider a p.featured-date {
@@ -246,7 +246,7 @@ header img {
 #slider .comments-number:after {
 	content: "\e812";
 	display: block;
-	font: 36px 'fontello', sans-serif;
+	font: 36px 'wptouch-icons', sans-serif;
 	position: absolute;
 	top: 0;
 	left: -60%;
@@ -429,7 +429,7 @@ ul.dots {
 .loop-link .comments:after {
 	content: "\e812";
 	display: block;
-	font: 30px 'fontello', sans-serif;
+	font: 30px 'wptouch-icons', sans-serif;
 	position: absolute;
 	left: 50%;
 	margin-left: -15px;
@@ -827,7 +827,7 @@ form#commentform input, form#commentform textarea {
 
 .search span.select-wrap i.icon-caret-down {
 	content: "\e844";
-	font: 110% 'fontello', sans-serif;
+	font: 110% 'wptouch-icons', sans-serif;
 	position: relative;
 	z-index: 2;
 	top: 1px;

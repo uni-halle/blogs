@@ -1708,7 +1708,7 @@ class WPtouchProThree {
 
 			wp_enqueue_style( 'wptouch-admin-styles', $this->check_and_use_css_file( '/admin/css/wptouch-admin-3.css' ), false, WPTOUCH_VERSION );
 
-			wp_enqueue_style( 'wptouch-admin-fontello', $this->check_and_use_css_file( '/themes/foundation/modules/fontello/css/fontello.css' ), false, WPTOUCH_VERSION );
+			wp_enqueue_style( 'wptouch-admin-icons', $this->check_and_use_css_file( '/themes/foundation/modules/wptouch-icons/css/wptouch-icons.css' ), false, WPTOUCH_VERSION );
 
 			if ( wptouch_should_load_rtl() && file_exists( WPTOUCH_DIR . '/admin/css/rtl.css' ) ) {
 				WPTOUCH_DEBUG( WPTOUCH_INFO, 'Loading RTL stylesheet' );
@@ -2318,6 +2318,7 @@ class WPtouchProThree {
 
 	function setup_wptouch_admin_ajax() {
 		add_action( 'wp_ajax_wptouch_ajax', array( &$this, 'admin_ajax_handler' ) );
+		add_action( 'wp_ajax_nopriv_wptouch_ajax', array( &$this, 'admin_nopriv_ajax_handler' ) );
 	}
 
 	function admin_ajax_handler() {
@@ -2341,6 +2342,19 @@ class WPtouchProThree {
 		}
 
 		die;
+	}
+
+	function admin_nopriv_ajax_handler() {
+		if ( $this->post[ 'wptouch_action' ] == 'post_upgrade_refresh' ) {
+			$wptouch_nonce = $this->post['wptouch_ajax_nonce'];
+			if ( wp_verify_nonce( $wptouch_nonce, 'wptouch_ajax_callback' ) ) {
+				wptouch_check_api( true );
+				delete_site_transient( 'wptouch_license_upgrade_available' );
+				die( '1' );
+			} else {
+				die( 'Invalid nonce' );
+			}
+		}
 	}
 
 	function check_directories() {

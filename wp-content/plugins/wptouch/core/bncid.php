@@ -34,7 +34,26 @@ function wptouch_get_available_cloud_addons() {
 	return $wptouch_pro->bnc_api->get_all_available_addons();
 }
 
-function wptouch_check_api() {
+function wptouch_license_upgrade_available() {
+	$wptouch_license_upgrade_available = get_site_transient( 'wptouch_license_upgrade_available' );
+	if ( $wptouch_license_upgrade_available === false ) {
+		$total_licenses = wptouch_get_bloginfo( 'support_licenses_total' );
+		if ( $total_licenses < 1000 ) {
+			$wptouch_license_upgrade_available = 1;
+		} else { // Enterprise
+			$wptouch_license_upgrade_available = 0;
+		}
+		set_site_transient( 'wptouch_license_upgrade_available', $wptouch_license_upgrade_available, 15 * 60 );
+	}
+
+	if ( $wptouch_license_upgrade_available == 1 ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function wptouch_check_api( $force_refresh = false ) {
 	global $wptouch_pro;
 	$wptouch_pro->setup_bncapi();
 
@@ -43,10 +62,10 @@ function wptouch_check_api() {
 	$last_accepted = $bnc_settings->license_accepted;
 
 	$current_time = time();
-	if ( $current_time > $bnc_settings->next_update_check_time ) {
+	if ( $current_time > $bnc_settings->next_update_check_time || $force_refresh ) {
 		// Update next check time
 		$bnc_settings->next_update_check_time = $current_time + WPTOUCH_API_CHECK_INTERVAL;
-		$bnc_settings->save();	
+		$bnc_settings->save();
 
 		$result = $wptouch_pro->bnc_api->check_api();
 
@@ -66,13 +85,13 @@ function wptouch_check_api() {
 				// Check for the user's referral code
 				if ( isset( $result[ 'user_id'] ) ) {
 					$bnc_settings->referral_user_id = $result[ 'user_id' ];
-				}				
+				}
 			} else {
-				$bnc_settings->license_accepted = false;	
+				$bnc_settings->license_accepted = false;
 				$bnc_settings->license_accepted_time = 0;
 
 				if ( isset( $result[ 'license_expired' ] ) ) {
-					$bnc_settings->license_expired = $result[ 'license_expired' ];	
+					$bnc_settings->license_expired = $result[ 'license_expired' ];
 				} else {
 					$bnc_settings->license_expired = 0;
 				}
@@ -81,15 +100,15 @@ function wptouch_check_api() {
 					$bnc_settings->license_expiry_date = $result[ 'license_expiry_date' ];
 				} else {
 					$bnc_settings->license_expiry_date = 0;
-				}				
+				}
 			}
-		} 
+		}
 
-		$bnc_settings->save();	
+		$bnc_settings->save();
 	}
 
 	// We've changed license states here, so clear our theme and add-on transients
-	if ( $last_accepted != $bnc_settings->license_accepted ) {
+	if ( $last_accepted != $bnc_settings->license_accepted || $force_refresh ) {
 		delete_transient( '_wptouch_available_cloud_addons' );
 		delete_transient( '_wptouch_available_cloud_themes' );
 	}

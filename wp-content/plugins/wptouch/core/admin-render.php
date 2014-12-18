@@ -85,7 +85,7 @@
 		<?php } ?>
 		</div>
 	</div>
-	<?php if ( ( $_GET['page'] != 'wptouch-admin-touchboard' ) && ( $_GET['page'] != 'wptouch-admin-license' ) && ( $_GET['page'] != 'wptouch-admin-themes-and-addons' ) && ( $_GET['page'] != 'wptouch-admin-upgrade' ) ) { ?>
+	<?php if ( ( $_GET['page'] != 'wptouch-admin-touchboard' ) && ( $_GET['page'] != 'wptouch-admin-license' ) && ( $_GET['page'] != 'wptouch-admin-themes-and-addons' ) && ( $_GET['page'] != 'wptouch-admin-upgrade' ) &&  ( $_GET['page'] != 'wptouch-admin-upgrade-license' ) ) { ?>
 		<br /><br /><br /><!-- add some space above -->
 		<input type="submit" name="wptouch-submit-3" id="submit" class="button-primary" value="<?php _e( 'Save Changes', 'wptouch-pro' ); ?>" />
 		<input type="submit" name="wptouch-preview-theme" id="preview" class="preview-button button-secondary" value="<?php _e( "Preview Theme", "wptouch-pro" ); ?>" data-url="<?php wptouch_bloginfo( 'url' ); ?>/?wptouch_preview_theme=enabled"  />
