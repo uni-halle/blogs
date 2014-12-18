@@ -119,6 +119,9 @@ if ( !defined( 'ABSPATH' ) ) exit;
 						<input id="import_duplicates" name="import_duplicates" type="checkbox" value="1" <?php checked($data['import_duplicates'], 1); ?> /> <label for="import_duplicates" title="<?php _e('Checked: download the media with their full path in order to import media with identical names.', 'fgj2wp'); ?>"><?php _e('Import media with duplicate names', 'fgj2wp'); ?></label>
 						<br />
 						<input id="force_media_import" name="force_media_import" type="checkbox" value="1" <?php checked($data['force_media_import'], 1); ?> /> <label for="force_media_import" title="<?php _e('Checked: download the media even if it has already been imported. Unchecked: Download only media which were not already imported.', 'fgj2wp'); ?>" ><?php _e('Force media import. Keep unchecked except if you had previously some media download issues.', 'fgj2wp'); ?></label>
+						<br />
+						<?php _e('Timeout for each media:', 'fgj2wp'); ?>&nbsp;
+						<input id="timeout" name="timeout" type="text" size="5" value="<?php echo $data['timeout']; ?>" /> <?php _e('seconds', 'fgj2wp'); ?>
 					</div></td>
 				</tr>
 				<tr>
@@ -128,10 +131,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
 				<tr>
 					<th scope="row"><?php _e('Create pages:', 'fgj2wp'); ?></th>
 					<td><input id="import_as_pages" name="import_as_pages" type="checkbox" value="1" <?php checked($data['import_as_pages'], 1); ?> /> <label for="import_as_pages" ><?php _e('Import as pages instead of blog posts (without categories)', 'fgj2wp'); ?></label></td>
-				</tr>
-				<tr>
-					<th scope="row"><?php _e('Timeout for each media:', 'fgj2wp'); ?></th>
-					<td><input id="timeout" name="timeout" type="text" size="5" value="<?php echo $data['timeout']; ?>" /> <?php _e('seconds', 'fgj2wp'); ?></td>
 				</tr>
 				<tr>
 					<th scope="row">&nbsp;</th>
