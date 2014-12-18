@@ -5,7 +5,7 @@ Plugin Name: TimeZoneCalculator
 Plugin URI: http://www.bernhard-riedl.com/projects/
 Description: Calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
 Author: Dr. Bernhard Riedl
-Version: 3.20
+Version: 3.21
 Author URI: http://www.bernhard-riedl.com/
 */
 
@@ -310,7 +310,7 @@ class TimeZoneCalculator {
 
 		wp_register_script($this->get_prefix().'timezones', $this->get_plugin_url().'js/timezones.js', array('jquery'), '3.10');
 
-		wp_register_script($this->get_prefix().'selection_gui', $this->get_plugin_url().'js/selection_gui.js', array('jquery', 'jquery-ui-sortable', 'jquery-effects-highlight', $this->get_prefix().'utils', $this->get_prefix().'timezones'), '3.20');
+		wp_register_script($this->get_prefix().'selection_gui', $this->get_plugin_url().'js/selection_gui.js', array('jquery', 'jquery-ui-sortable', 'jquery-effects-highlight', $this->get_prefix().'utils', $this->get_prefix().'timezones'), '3.21');
 
 		wp_register_script($this->get_prefix().'settings_page', $this->get_plugin_url().'js/settings_page.js', array('jquery', $this->get_prefix().'selection_gui', $this->get_prefix().'utils'), '3.20');
 
@@ -1768,7 +1768,7 @@ class TimeZoneCalculator {
 		*/
 
 		if (!current_user_can($this->get_option('calculator_capability')))
-			wp_die(__('You do not have sufficient permissions to display this page.'));
+			wp_die(__('You do not have sufficient permissions to access this page.'), '', array('response' => 403));
 
 		/*
 		we handle a save call
@@ -1855,7 +1855,7 @@ class TimeZoneCalculator {
 		*/
 
 		if (!current_user_can($this->get_option('calculator_capability')))
-			wp_die(__('You do not have sufficient permissions to display this page.'));
+			wp_die(__('You do not have sufficient permissions to access this page.'), '', array('response' => 403));
 
 		/*
 		handle a save call
@@ -1966,7 +1966,7 @@ class TimeZoneCalculator {
 	*/
 
 	function head_meta() {
-		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.20\"/>\n");
+		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.21\"/>\n");
 	}
 
 	/*
@@ -2879,7 +2879,7 @@ class TimeZoneCalculator {
 		*/
 
 		if (!current_user_can($permissions))
-			wp_die(__('You do not have sufficient permissions to display this page.'));
+			wp_die(__('You do not have sufficient permissions to access this page.'), '', array('response' => 403));
 
 		/*
 		option-page html
@@ -2890,7 +2890,7 @@ class TimeZoneCalculator {
 
 		<?php call_user_func(array($this, 'callback_'.$section_prefix.'_intro')); ?>
 
-		<div id="<?php echo($this->get_prefix()); ?>menu" style="display:none"><ul class="subsubsub <?php echo($this->get_prefix(false)); ?>">
+		<nav role="navigation" id="<?php echo($this->get_prefix()); ?>menu" style="display:none"><ul class="subsubsub <?php echo($this->get_prefix(false)); ?>">
 		<?php
 
 		$menu='';
@@ -2902,7 +2902,7 @@ class TimeZoneCalculator {
 
 		echo($menu);
 		?>
-		</ul></div>
+		</ul></nav>
 
 		<div id="<?php echo($this->get_prefix()); ?>content" class="<?php echo($this->get_prefix()); ?>wrap">
 
@@ -3558,9 +3558,9 @@ class TimeZoneCalculator {
 					arrows
 					*/
 
-					$up_arrow='<div class="'.$this->get_prefix().'dashicons dashicons dashicons-arrow-up" onclick="'.$this->get_prefix().'move_element_up('.$counter.');" title="move element up"></div>';
-					$down_arrow='<div class="'.$this->get_prefix().'dashicons dashicons dashicons-arrow-down" style="margin-right:5px;" onclick="'.$this->get_prefix().'move_element_down('.$counter.');" title="move element down"></div>';
-					$move_arrow='<div class="'.$this->get_prefix().'dashicons dashicons dashicons-leftright" style="margin-right:15px;" onclick="'.$this->get_prefix().'move_element('.$counter.');" title="move element to other list"></div>';
+					$up_arrow='<div role="button" class="'.$this->get_prefix().'dashicons dashicons dashicons-arrow-up" onclick="'.$this->get_prefix().'move_element_up('.$counter.');" title="move element up"></div>';
+					$down_arrow='<div role="button" class="'.$this->get_prefix().'dashicons dashicons dashicons-arrow-down" style="margin-right:5px;" onclick="'.$this->get_prefix().'move_element_down('.$counter.');" title="move element down"></div>';
+					$move_arrow='<div role="button" class="'.$this->get_prefix().'dashicons dashicons dashicons-leftright" style="margin-right:15px;" onclick="'.$this->get_prefix().'move_element('.$counter.');" title="move element to other list"></div>';
 
 					/*
 					add listener for edit panel
@@ -3635,7 +3635,7 @@ class TimeZoneCalculator {
 
 			<div id="<?php echo($this->get_prefix()); ?>edit_header">
 				<label style="margin-left:1px; font-weight: 600;" for="<?php echo($this->get_prefix()); ?>edit_continent">TimeZone</label>
-				<div style="margin:4px 3px; float:right" class="<?php echo($this->get_prefix()); ?>dashicons dashicons dashicons-arrow-down" title="show details" onclick="<?php echo($this->get_prefix()); ?>toggle_element(this, '<?php echo($this->get_prefix()); ?>edit_details');"></div>
+				<div role="button" style="margin:4px 3px; float:right" class="<?php echo($this->get_prefix()); ?>dashicons dashicons dashicons-arrow-down" title="show details" onclick="<?php echo($this->get_prefix()); ?>toggle_element(this, '<?php echo($this->get_prefix()); ?>edit_details');"></div>
 			</div>
 
 			<?php $this->setting_timezone($this->get_prefix().'edit_'); ?>
@@ -4055,18 +4055,18 @@ class TimeZoneCalculator {
 		<div id="<?php echo($this->get_prefix()); ?>calculator_input" style="margin-right:20px">
 			<div class="<?php echo($this->get_prefix()); ?>calculator_row">
 				<div class="<?php echo($this->get_prefix()); ?>calculator_input_header">
-					<strong>TimeZone</strong>
+					<strong id="<?php echo($this->get_prefix()); ?>calculator_input_header_timezone">TimeZone</strong>
 				</div>
-				<div class="<?php echo($this->get_prefix()); ?>calculator_input_content">
+				<div class="<?php echo($this->get_prefix()); ?>calculator_input_content" role="group" aria-labelledby="<?php echo($this->get_prefix()); ?>calculator_input_header_timezone">
 					<?php $this->setting_timezone($this->get_prefix()); ?>
 				</div>
 			</div>
 
 			<div class="<?php echo($this->get_prefix()); ?>calculator_row">
 				<div class="<?php echo($this->get_prefix()); ?>calculator_input_header">
-					<strong>Date</strong>
+					<strong id="<?php echo($this->get_prefix()); ?>calculator_input_header_date">Date</strong>
 				</div>
-				<div class="<?php echo($this->get_prefix()); ?>calculator_input_content" style="display:table; width:100%">
+				<div class="<?php echo($this->get_prefix()); ?>calculator_input_content" style="display:table; width:100%" role="group" aria-labelledby="<?php echo($this->get_prefix()); ?>calculator_input_header_date">
 					<div style="display:table-row;">
 						<?php $this->setting_date($this->get_prefix(), false, $date_format); ?>
 					</div>
@@ -4075,9 +4075,9 @@ class TimeZoneCalculator {
 
 			<div class="<?php echo($this->get_prefix()); ?>calculator_row">
 				<div class="<?php echo($this->get_prefix()); ?>calculator_input_header">
-					<strong>Time</strong>
+					<strong id="<?php echo($this->get_prefix()); ?>calculator_input_header_time">Time</strong>
 				</div>
-				<div class="<?php echo($this->get_prefix()); ?>calculator_input_content">
+				<div class="<?php echo($this->get_prefix()); ?>calculator_input_content" role="group" aria-labelledby="<?php echo($this->get_prefix()); ?>calculator_input_header_time">
 					<?php $this->setting_time($this->get_prefix(), '', '', $time_format); ?>
 				</div>
 			</div>
@@ -4754,50 +4754,3 @@ class WP_Widget_TimeZoneCalculator extends WP_Widget {
 	}
 
 }
-
-/*
-UNINSTALL
-*/
-
-function timezonecalculator_uninstall() {
- 
-		/*
-		security check
-		*/
-
-		if (!current_user_can('manage_options'))
-			wp_die(__('You do not have sufficient permissions to manage options for this blog.'));
-
-		/*
-		delete option-array
-		*/
-
-		delete_option('timezonecalculator');
-
-		/*
-		delete widget-options
-		*/
-
-		delete_option('widget_timezonecalculator');
-
-		/*
-		delete calculator user-settings
-		*/
-
-		global $wpdb;
-
-		$q = "DELETE FROM $wpdb->usermeta WHERE $wpdb->usermeta.meta_key LIKE '%timezonecalculator_timezones%'";
-
-		$wpdb->query($q);
-
-		/*
-		delete timezones-cache transients
-		*/
-
-		$transient_name='timezonecalculator_js_array_'.get_locale();
-
-		delete_transient($transient_name);
-		delete_transient($transient_name.'_etc');
-	}
-
-register_uninstall_hook(__FILE__, 'timezonecalculator_uninstall');

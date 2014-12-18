@@ -522,9 +522,9 @@ function timezonecalculator_change_or_append_entry() {
 			into timezones list
 			*/
 
-			var up_arrow='<div class="timezonecalculator_dashicons dashicons dashicons-arrow-up" onclick="timezonecalculator_move_element_up('+next_tag_id+');" title="move element up"></div>';
-			var down_arrow='<div class="timezonecalculator_dashicons dashicons dashicons-arrow-down" style="margin-right:5px;" onclick="timezonecalculator_move_element_down('+next_tag_id+');" title="move element down"></div>';
-			var move_arrow='<div class="timezonecalculator_dashicons dashicons dashicons-leftright" style="margin-right:15px;" onclick="timezonecalculator_move_element('+next_tag_id+');" title="move element to other list"></div>';
+			var up_arrow='<div role="button" class="timezonecalculator_dashicons dashicons dashicons-arrow-up" onclick="timezonecalculator_move_element_up('+next_tag_id+');" title="move element up"></div>';
+			var down_arrow='<div role="button" class="timezonecalculator_dashicons dashicons dashicons-arrow-down" style="margin-right:5px;" onclick="timezonecalculator_move_element_down('+next_tag_id+');" title="move element down"></div>';
+			var move_arrow='<div role="button" class="timezonecalculator_dashicons dashicons dashicons-leftright" style="margin-right:15px;" onclick="timezonecalculator_move_element('+next_tag_id+');" title="move element to other list"></div>';
 
 			var options='<input type="hidden" value="'+ret+'" />';
 
