@@ -401,7 +401,7 @@
 #soundcloudIsGoldUsernameCarouselNav {
     text-align:center;
     padding-top:5px;
-    background:#FFF;
+    background-color: transparent;
 }
 #soundcloudIsGoldUsernameCarouselNav a {
 	background: url(./images/pag.png) 0 0 no-repeat transparent;
@@ -733,13 +733,13 @@ select.soundcloudMMInput option{
     display:none;
 }
 
-/*** ERROR XML ***/
-.soundcloudMMXmlError{
+/*** ERROR Json ***/
+.soundcloudMMJsonError{
     background:#EFEFEF;
     padding:2%;
     width:96%;
 }
-.soundcloudMMXmlError p{
+.soundcloudMMJsonError p{
     font-family: QuicksandBook,Verdana;
     font-size:130%;
     color:#333333;

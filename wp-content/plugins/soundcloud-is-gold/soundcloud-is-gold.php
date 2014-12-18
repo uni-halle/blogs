@@ -3,7 +3,7 @@
 Plugin Name: Soundcloud is Gold
 Plugin URI: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
 Description: <strong><a href="http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin">Soundcloud is gold</a></strong> integrates perfectly into wordpress. Browse through your soundcloud tracks, sets and favorites from the 'soundcloud is gold' tab with the post's 'upload media' popup window. Select, set and add track, sets or favorites to your post using the soundcloud player. Live Preview, easy, smart and straightforward. You can set default settings in the option page, choose your defaut soundcloud player (Mini, Standard, Artwork, html5), its width, extra classes for you CSS lovers and your favorite colors. You'll still be able to set players to different settings before adding to your post if you fancy a one off change. Now with Html5 player and Widget!
-Version: 2.2.2
+Version: 2.3.1
 Author: Thomas Michalak
 Author URI: http://www.mightymess.com/thomas-michalak
 License: GPL2 or Later
@@ -18,6 +18,11 @@ License: GPL2 or Later
 */
 
 define ('SIG_PLUGIN_DIR', WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__)) );
+//define( 'SIG_PLUGIN_DIR_HTTP', WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__)) );
+//define( 'SIG_PLUGIN_DIR', (is_ssl() ? str_replace('http:', 'https:', SIG_PLUGIN_DIR_HTTP) : SIG_PLUGIN_DIR_HTTP) );
+
+//$httpPrefix = (is_ssl() ? 'https' : 'http');
+
 require_once('soundcloud-is-gold-functions.php');
 
 /** Get Plugin Version **/
@@ -96,7 +101,7 @@ function soundcloud_is_gold_add_defaults() {
 	$soundcloudIsGoldDefaultUser = $soundcloudIsGoldDefaultUsers[array_rand($soundcloudIsGoldDefaultUsers, 1)][0];
 	if(get_option('soundcloud_is_gold_user')){
 	    $soundcloudIsGoldDefaultUser = get_option('soundcloud_is_gold_user');
-	    $userInfo = get_soundcloud_is_gold_api_response("http://api.soundcloud.com/users/".$soundcloudIsGoldDefaultUser.".xml?client_id=9rD2GrGrajkmkw5eYFDp2g");
+	    $userInfo = get_soundcloud_is_gold_api_response("http://api.soundcloud.com/users/".$soundcloudIsGoldDefaultUser.".json?client_id=9rD2GrGrajkmkw5eYFDp2g");
 	    $newUsername = (string)$userInfo['response']->permalink;
 	    $newUsernameImg = (string)$userInfo['response']->{'avatar-url'}[0];
 	    $soundcloudIsGoldDefaultUsers[$newUsername][0] = $newUsername;
@@ -151,11 +156,11 @@ function soundcloud_is_gold_options(){
     $soundcloudIsGoldClasses = isset($options['soundcloud_is_gold_classes']) ? $options['soundcloud_is_gold_classes'] : '';
     $soundcloudIsGoldColor = isset($options['soundcloud_is_gold_color']) ? $options['soundcloud_is_gold_color'] : ''; 
     
-    $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/tracks.xml?limit=1&client_id=9rD2GrGrajkmkw5eYFDp2g';
+    $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/tracks.json?limit=1&client_id=9rD2GrGrajkmkw5eYFDp2g';
     $soundcloudIsGoldApiResponse = get_soundcloud_is_gold_api_response($soundcloudIsGoldApiCall);
     if(isset($soundcloudIsGoldApiResponse['response']) && $soundcloudIsGoldApiResponse['response']){
 	foreach($soundcloudIsGoldApiResponse['response'] as $soundcloudMMLatestTrack){
-	    $soundcouldMMId = (string)$soundcloudMMLatestTrack->id;
+		$soundcouldMMId = (string)$soundcloudMMLatestTrack['id'];
 	}
     }
     $soundcouldMMShortcode = '[soundcloud id='.$soundcouldMMId.']';
@@ -251,8 +256,8 @@ function soundcloud_is_gold_options(){
 			</p>
                         <p class="soundcloudMMLoading soundcloudMMPreviewLoading" style="display:none"></p>
                         <?php else : ?>
-                        <!-- Error getting XML -->
-                        <div class="soundcloudMMXmlError"><p><?php echo $soundcloudIsGoldApiResponse['error'] ? $soundcloudIsGoldApiResponse['error'] : "Oups! There's been a error while getting the tracks from soundcloud. Please reload the page."?></p></div>
+                        <!-- Error getting Json -->
+                        <div class="soundcloudMMJsonError"><p><?php echo $soundcloudIsGoldApiResponse['error'] ? $soundcloudIsGoldApiResponse['error'] : "Oups! There's been a error while getting the tracks from soundcloud. Please reload the page."?></p></div>
                         <?php endif; ?>
                     </li>
                 </ul>

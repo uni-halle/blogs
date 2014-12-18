@@ -211,7 +211,7 @@ jQuery(document).ready(function($){
 	});
 	//Color
 	color = $('.soundcloudMMColor', parent).val();
-	user = $('.soundcloudIsGoldUserContainer div p').text();
+	user = $('#soundcloudIsGoldActiveUserContainer .soundcloudIsGoldUserContainer div p').text();
 	//Format
 	if($('.soundcloudMMWrapper').hasClass('sets')) format = 'sets';
 	else format = 'tracks';
