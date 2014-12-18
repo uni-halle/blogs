@@ -3,14 +3,14 @@
  * The main file!
  *
  * @package shareaholic
- * @version 7.6.0.4
+ * @version 7.6.0.5
  */
 
 /*
 Plugin Name: Shareaholic | share buttons, analytics, related content
 Plugin URI: https://shareaholic.com/publishers/
 Description: Whether you want to get people sharing, grow your fans, make money, or know who's reading your content, Shareaholic will help you get it done. See <a href="admin.php?page=shareaholic-settings">configuration panel</a> for more settings.
-Version: 7.6.0.4
+Version: 7.6.0.5
 Author: Shareaholic
 Author URI: https://shareaholic.com
 Text Domain: shareaholic
@@ -50,6 +50,7 @@ require_once(SHAREAHOLIC_DIR . '/admin.php');
 require_once(SHAREAHOLIC_DIR . '/public.php');
 require_once(SHAREAHOLIC_DIR . '/notifier.php');
 require_once(SHAREAHOLIC_DIR . '/deprecation.php');
+require_once(SHAREAHOLIC_DIR . '/cron.php');
 
 if (!class_exists('Shareaholic')) {
   /**
@@ -63,7 +64,7 @@ if (!class_exists('Shareaholic')) {
     const CM_API_URL = 'https://cm-web.shareaholic.com'; // uses static IPs for firewall whitelisting
     const REC_API_URL = 'http://recommendations.shareaholic.com';
 
-    const VERSION = '7.6.0.4';
+    const VERSION = '7.6.0.5';
 
     /**
      * Starts off as false so that ::get_instance() returns
@@ -128,6 +129,9 @@ if (!class_exists('Shareaholic')) {
 
       add_action('wp_before_admin_bar_render', array('ShareaholicUtilities', 'admin_bar_extended'));
       add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'ShareaholicUtilities::admin_plugin_action_links', -10);
+
+      // Add custom action to run Shareaholic cron job
+      add_action('shareaholic_remove_transients_hourly', array('ShareaholicCron', 'remove_transients'));
     }
 
     /**
@@ -189,6 +193,9 @@ if (!class_exists('Shareaholic')) {
             if (has_action('wp_ajax_nopriv_shareaholic_share_counts_api') && has_action('wp_ajax_shareaholic_share_counts_api')) {
               ShareaholicUtilities::share_counts_api_connectivity_check();
             }
+
+            // Activate the Shareaholic Cron job for existing plugin users
+            ShareaholicCron::activate();
           }
         }
       }
@@ -223,6 +230,9 @@ if (!class_exists('Shareaholic')) {
       if (!ShareaholicUtilities::get_version()) {
         ShareaholicUtilities::log_event("Install_Fresh");
       }
+
+      // Activate the Shareaholic Cron Job for new users
+      ShareaholicCron::activate();
     }
 
     /**
@@ -231,6 +241,7 @@ if (!class_exists('Shareaholic')) {
     public function deactivate() {
       ShareaholicUtilities::log_event("Deactivate");
       ShareaholicUtilities::clear_cache();
+      ShareaholicCron::deactivate();
     }
 
     /**

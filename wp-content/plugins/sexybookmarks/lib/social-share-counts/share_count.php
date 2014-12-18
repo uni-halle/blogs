@@ -40,13 +40,13 @@ abstract class ShareaholicShareCount {
         'callback' => 'facebook_count_callback',
       ),
       'twitter' => array(
-        'url' => 'http://cdn.api.twitter.com/1/urls/count.json?url=%s',
+        'url' => 'https://cdn.api.twitter.com/1/urls/count.json?url=%s',
         'method' => 'GET',
         'timeout' => 3,
         'callback' => 'twitter_count_callback',
       ),
       'linkedin' => array(
-        'url' => 'http://www.linkedin.com/countserv/count/share?format=json&url=%s',
+        'url' => 'https://www.linkedin.com/countserv/count/share?format=json&url=%s',
         'method' => 'GET',
         'timeout' => 3,
         'callback' => 'linkedin_count_callback',
@@ -67,7 +67,7 @@ abstract class ShareaholicShareCount {
         'callback' => 'delicious_count_callback',
       ),
       'pinterest' => array(
-        'url' => 'http://api.pinterest.com/v1/urls/count.json?url=%s&callback=f',
+        'url' => 'https://api.pinterest.com/v1/urls/count.json?url=%s&callback=f',
         'method' => 'GET',
         'timeout' => 3,
         'callback' => 'pinterest_count_callback',
@@ -79,13 +79,13 @@ abstract class ShareaholicShareCount {
         'callback' => 'buffer_count_callback',
       ),
       'stumbleupon' => array(
-        'url' => 'http://www.stumbleupon.com/services/1.01/badge.getinfo?url=%s',
+        'url' => 'https://www.stumbleupon.com/services/1.01/badge.getinfo?url=%s',
         'method' => 'GET',
         'timeout' => 1,
         'callback' => 'stumbleupon_count_callback',
       ),
       'reddit' => array(
-        'url' => 'http://buttons.reddit.com/button_info.json?url=%s',
+        'url' => 'https://buttons.reddit.com/button_info.json?url=%s',
         'method' => 'GET',
         'timeout' => 1,
         'callback' => 'reddit_count_callback',

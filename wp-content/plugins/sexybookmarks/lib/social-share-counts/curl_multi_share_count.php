@@ -65,11 +65,24 @@ class ShareaholicCurlMultiShareCount extends ShareaholicShareCount {
 
     // Run curl_multi only if there are some actual curl handles
     if(count($curl_handles) > 0) {
-      // execute the handles
+      // While we're still active, execute curl
       $running = NULL;
       do {
-        curl_multi_exec($multi_handle, $running);
-      } while($running > 0);
+        $mrc = curl_multi_exec($multi_handle, $running);
+      } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+
+      while ($running && $mrc == CURLM_OK) {
+        // Wait for activity on any curl-connection
+        if (curl_multi_select($multi_handle) == -1) {
+          usleep(1);
+        }
+
+        // Continue to exec until curl is ready to
+        // give us more data
+        do {
+          $mrc = curl_multi_exec($multi_handle, $running);
+        } while ($mrc == CURLM_CALL_MULTI_PERFORM);
+      }
 
       // handle the responses
       foreach($curl_handles as $service => $handle) {

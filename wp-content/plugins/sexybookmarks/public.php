@@ -367,7 +367,9 @@ class ShareaholicPublic {
     global $post, $wp_query;
     $page_type = ShareaholicUtilities::page_type();
     $is_list_page = $page_type == 'index' || $page_type == 'category';
-    $in_loop = in_the_loop();
+    $loop_start = did_action('loop_start');
+    $loop_end = did_action('loop_end');
+    $in_loop = $loop_start > $loop_end ? TRUE : FALSE;
 
     $link = trim($link);
 
@@ -402,13 +404,24 @@ class ShareaholicPublic {
    */
   public static function share_counts_api() {
     $debug_mode = isset($_GET['debug']) && $_GET['debug'] === '1';
-    $cache_key = 'shr_api_res-' . md5( $_SERVER['QUERY_STRING'] );
-    $result = get_transient($cache_key);
+    $url = isset($_GET['url']) ? $_GET['url'] : '';
+    $services = isset($_GET['services']) ? $_GET['services'] : array();
+    $services = self::parse_services($services);
+    $cache_key = 'shr_api_res-' . md5( $url );
+
+    if (empty($url) || empty($services)) {
+      $result = array();
+    } else {
+      $result = get_transient($cache_key);
+    }
+
     $has_curl_multi = self::has_curl();
 
-    if (!$result || $debug_mode) {
-      $url = isset($_GET['url']) ? $_GET['url'] : NULL;
-      $services = isset($_GET['services']) ? $_GET['services'] : NULL;
+    if (!$result || $debug_mode || !self::has_services_in_result($result, $services)) {
+      if (isset($result['services']) && !$debug_mode) {
+        $services = array_keys(array_flip(array_merge($result['services'], $services)));
+      }
+
       $result = array();
       $options = array();
 
@@ -437,6 +450,7 @@ class ShareaholicPublic {
         }
 
         if (isset($result['data']) && !$debug_mode) {
+          $result['services'] = $services;
           set_transient( $cache_key, $result, SHARE_COUNTS_CHECK_CACHE_LENGTH );
         }
       }
@@ -446,6 +460,49 @@ class ShareaholicPublic {
     header('Cache-Control: max-age=180'); // 3 minutes
     echo json_encode($result);
     exit;
+  }
+
+  /**
+   * Helper method to parse the list of social services to get share counts
+   */
+  public static function parse_services($services) {
+    $result = array();
+
+    if (empty($services) || !is_array($services)) {
+      return $result;
+    }
+
+    // make the set of services unique
+    $services = array_unique($services);
+
+    // only get the services we can get share counts for
+    $social_services = array_keys(ShareaholicSeqShareCount::get_services_config());
+
+    foreach($services as $service) {
+      if (in_array($service, $social_services)) {
+        array_push($result, $service);
+      }
+    }
+
+    return $result;
+  }
+
+  /**
+   * Helper method to check if the result has the requested services
+   */
+  public static function has_services_in_result($result, $services) {
+    if (!isset($result['services'])) {
+      return false;
+    }
+
+    $requested_services = $result['services'];
+    foreach($services as $service) {
+      if (!in_array($service, $requested_services)) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   /**
