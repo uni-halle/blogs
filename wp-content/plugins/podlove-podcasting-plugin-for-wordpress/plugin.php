@@ -211,6 +211,7 @@ add_action( 'init', array( '\Podlove\DuplicatePost', 'init' ) );
 
 add_action( 'admin_init', array( '\Podlove\Repair', 'init' ) );
 add_action( 'admin_init', array( '\Podlove\DeleteHeadRequests', 'init' ) );
+add_action( 'admin_init', array( '\Podlove\PhpDeprecationWarning', 'init' ) );
 
 // init cache (after plugins_loaded, so modules have a chance to hook)
 add_action( 'init', array( '\Podlove\Cache\TemplateCache', 'get_instance' ) );
@@ -391,11 +392,9 @@ add_action( 'update_option_permalink_structure', '\Podlove\run_system_report' );
 add_action( 'update_option_podlove', '\Podlove\run_system_report' );
 
 /**
- * Simple method to allow support for multiple urls per post.
- *
- * Add custom post meta 'podlove_alternate_url' with old url part to match.
+ * Handle configured redirects
  */
-function override404() {
+function handle_user_redirects() {
 	global $wpdb, $wp_query;
 
 	if ( is_admin() )
@@ -418,8 +417,8 @@ function override404() {
 			continue;
 
 		$parsed_url = parse_url($redirect['from']);
-		
 		$parsed_redirect_url = $parsed_url['path'];
+
 		if ( isset( $parsed_url['query'] ) )
 			$parsed_redirect_url .= "?" . $parsed_url['query'];
 
@@ -447,6 +446,18 @@ function override404() {
 			exit;
 		}
 	}
+}
+
+/**
+ * Simple method to allow support for multiple urls per post.
+ *
+ * Add custom post meta 'podlove_alternate_url' with old url part to match.
+ */
+function handle_episode_redirects($value='') {
+	global $wpdb, $wp_query;
+
+	if ( is_admin() )
+		return;
 
 	if ( ! $wp_query->is_404 )
 		return;
@@ -470,10 +481,10 @@ function override404() {
 			exit;
 		}
 	}
-
 }
-add_filter( 'template_redirect', '\Podlove\override404' );
 
+add_filter( 'template_redirect', '\Podlove\handle_user_redirects' );
+add_filter( 'template_redirect', '\Podlove\handle_episode_redirects' );
 
 function clear_all_caches() {
 
@@ -636,7 +647,7 @@ function podcast_permalink_proxy($query_vars) {
 	}
 
 	// No post request
-	if ( isset( $query_vars["preview"] ) || false == ( isset( $query_vars["name"] ) || isset( $query_vars["p"] ) ) )
+	if ( isset( $query_vars["preview"] ) || false === ( isset( $query_vars["name"] ) || isset( $query_vars["p"] ) ) )
 		return $query_vars;
 	
 	if ( ! isset( $query_vars["post_type"] ) || $query_vars["post_type"] == "post" )
@@ -656,7 +667,7 @@ function remove_trash_posts_from_the_posts($posts, $wp_query) {
 		return $posts;
 
 	// No post request
-	if ( isset( $wp_query->query["preview"] ) || false == ( isset( $wp_query->query["name"] ) || isset( $wp_query->query["p"] ) ) )
+	if ( isset( $wp_query->query["preview"] ) || false === ( isset( $wp_query->query["name"] ) || isset( $wp_query->query["p"] ) ) )
 		return $posts;
 
 	// Only check if we found more than 2 posts
