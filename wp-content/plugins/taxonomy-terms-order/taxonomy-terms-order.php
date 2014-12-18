@@ -3,7 +3,7 @@
 Plugin Name: Category Order and Taxonomy Terms Order
 Plugin URI: http://www.nsp-code.com
 Description: Category Order and Taxonomy Terms Order
-Version: 1.4.0
+Version: 1.4.1
 Author: Nsp-Code
 Author URI: http://www.nsp-code.com
 Author Email: electronice_delphi@yahoo.com
@@ -55,7 +55,7 @@ include_once(TOPATH . '/include/functions.php');
 add_action( 'plugins_loaded', 'to_load_textdomain'); 
 function to_load_textdomain() 
     {
-        load_plugin_textdomain('to', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang');
+        load_plugin_textdomain('tto', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/lang');
     }
     
 add_action('admin_print_scripts', 'TO_admin_scripts');
@@ -87,7 +87,7 @@ function TOPluginMenu()
         include (TOPATH . '/include/terms_walker.php');
         
         include (TOPATH . '/include/options.php'); 
-        add_options_page('Taxonomy Terms Order', '<img class="menu_tto" src="'. TOURL .'/images/menu-icon.png" alt="" />' . __('Taxonomy Terms Order', 'to'), 'manage_options', 'to-options', 'to_plugin_options');
+        add_options_page('Taxonomy Terms Order', '<img class="menu_tto" src="'. TOURL .'/images/menu-icon.png" alt="" />' . __('Taxonomy Terms Order', 'tto'), 'manage_options', 'to-options', 'to_plugin_options');
                 
         $options = get_option('tto_options');
         
@@ -113,9 +113,9 @@ function TOPluginMenu()
                     continue;                
                 
                 if ($post_type == 'post')
-                            add_submenu_page('edit.php', __('Taxonomy Order', 'to'), __('Taxonomy Order', 'to'), 'level_'.$options['level'], 'to-interface-'.$post_type, 'TOPluginInterface' );
+                            add_submenu_page('edit.php', __('Taxonomy Order', 'tto'), __('Taxonomy Order', 'tto'), 'level_'.$options['level'], 'to-interface-'.$post_type, 'TOPluginInterface' );
                             else
-                            add_submenu_page('edit.php?post_type='.$post_type, __('Taxonomy Order', 'to'), __('Taxonomy Order', 'to'), 'level_'.$options['level'], 'to-interface-'.$post_type, 'TOPluginInterface' );
+                            add_submenu_page('edit.php?post_type='.$post_type, __('Taxonomy Order', 'tto'), __('Taxonomy Order', 'tto'), 'level_'.$options['level'], 'to-interface-'.$post_type, 'TOPluginInterface' );
             }
     }
     

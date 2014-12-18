@@ -13,7 +13,7 @@ function to_plugin_options()
                 $options['autosort']    = isset($_POST['autosort'])     ? $_POST['autosort']    : '';
                 $options['adminsort']   = isset($_POST['adminsort'])    ? $_POST['adminsort']   : '';
                     
-                ?><div class="updated fade"><p><?php _e('Settings Saved', 'to') ?></p></div><?php
+                ?><div class="updated fade"><p><?php _e('Settings Saved', 'tto') ?></p></div><?php
 
                 update_option('tto_options', $options);   
             }
@@ -21,18 +21,18 @@ function to_plugin_options()
                     ?>
                       <div class="wrap"> 
                         <div id="icon-settings" class="icon32"></div>
-                            <h2><?php _e( "General Settings", 'to' ) ?></h2>
+                            <h2><?php _e( "General Settings", 'tto' ) ?></h2>
                             
                             <?php tto_info_box() ?>
                            
                             <form id="form_data" name="form" method="post">   
                                 <br />
-                                <h2 class="subtitle"><?php _e( "General", 'to' ) ?></h2>                              
+                                <h2 class="subtitle"><?php _e( "General", 'tto' ) ?></h2>                              
                                 <table class="form-table">
                                     <tbody>
                             
                                         <tr valign="top">
-                                            <th scope="row" style="text-align: right;"><label><?php _e( "Minimum Level to use this plugin", 'to' ) ?></label></th>
+                                            <th scope="row" style="text-align: right;"><label><?php _e( "Minimum Level to use this plugin", 'tto' ) ?></label></th>
                                             <td>
                                                 <select id="role" name="level">
                                                     <option value="0" <?php if ($options['level'] == "0") echo 'selected="selected"'?>><?php _e('Subscriber', 'tto') ?></option>
@@ -46,21 +46,21 @@ function to_plugin_options()
                                         
                                         
                                         <tr valign="top">
-                                            <th scope="row" style="text-align: right;"><label><?php _e( "Auto Sort", 'to' ) ?></label></th>
+                                            <th scope="row" style="text-align: right;"><label><?php _e( "Auto Sort", 'tto' ) ?></label></th>
                                             <td>
                                                 <select id="role" name="autosort">
                                                     <option value="0" <?php if ($options['autosort'] == "0") echo 'selected="selected"'?>><?php _e('OFF', 'tto') ?></option>
                                                     <option value="1" <?php if ($options['autosort'] == "1") echo 'selected="selected"'?>><?php _e('ON', 'tto') ?></option>
-                                                </select> *(<?php _e( "global setting", 'to' ) ?>)
+                                                </select> *(<?php _e( "global setting", 'tto' ) ?>)
                                             </td>
                                         </tr>
                                         
                                         <tr valign="top">
-                                            <th scope="row" style="text-align: right;"><label><?php _e( "Admin Sort", 'to' ) ?></label></th>
+                                            <th scope="row" style="text-align: right;"><label><?php _e( "Admin Sort", 'tto' ) ?></label></th>
                                             <td>
                                                 <label for="users_can_register">
                                                 <input type="checkbox" <?php if ($options['adminsort'] == "1") {echo ' checked="checked"';} ?> value="1" name="adminsort">
-                                                <?php _e("This will change the order of terms within the admin interface", 'to') ?>.</label>
+                                                <?php _e("This will change the order of terms within the admin interface", 'tto') ?>.</label>
                                             </td>
                                         </tr>
                                         
@@ -68,8 +68,8 @@ function to_plugin_options()
                                             <th scope="row" style="text-align: right;"></th>
                                             <td>
                                                 <br /><br /><br />
-                                <p><b><u><?php _e( "Autosort OFF", 'to' ) ?></u></b></p>                                                
-                                <p class="example"><?php _e('No query will be changed, the terms will appear in the original order. To retrieve the terms in the required order you must use the term_order on the orderby parameter', 'to') ?>:</p>
+                                <p><b><u><?php _e( "Autosort OFF", 'tto' ) ?></u></b></p>                                                
+                                <p class="example"><?php _e('No query will be changed, the terms will appear in the original order. To retrieve the terms in the required order you must use the term_order on the orderby parameter', 'tto') ?>:</p>
                                 <pre class="example">
 $argv = array(
                 'orderby'       =>  'term_order',
@@ -77,10 +77,10 @@ $argv = array(
                 );
 get_terms('category', $argv);
 </pre>
-                                <p><?php _e( "See more info on the get_terms usage", 'to' ) ?> <a href="http://codex.wordpress.org/Function_Reference/get_terms" target="_blank"><?php _e( "here", 'to' ) ?></a></p>
+                                <p><?php _e( "See more info on the get_terms usage", 'tto' ) ?> <a href="http://codex.wordpress.org/Function_Reference/get_terms" target="_blank"><?php _e( "here", 'tto' ) ?></a></p>
 
-                                <p><b><u><?php _e( "Autosort ON", 'to' ) ?></u></b></p> 
-                                <p class="example"><?php _e('The queries will be updated, all terms will appear in the order you manually defined. This is recommended if you don\'t want to change any theme code to apply the terms order', 'to') ?></p>
+                                <p><b><u><?php _e( "Autosort ON", 'tto' ) ?></u></b></p> 
+                                <p class="example"><?php _e('The queries will be updated, all terms will appear in the order you manually defined. This is recommended if you don\'t want to change any theme code to apply the terms order', 'tto') ?></p>
                                                    
                                             </td>
                                         </tr>
@@ -90,7 +90,7 @@ get_terms('category', $argv);
                                 
 
                                 <p class="submit">
-                                    <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Settings', 'to') ?>">
+                                    <input type="submit" name="Submit" class="button-primary" value="<?php _e('Save Settings', 'tto') ?>">
                                </p>
                             
                                 <input type="hidden" name="form_submit" value="true" />
