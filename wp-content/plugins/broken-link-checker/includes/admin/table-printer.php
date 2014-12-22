@@ -669,7 +669,7 @@ class blcTablePrinter {
 	 */
 	function column_new_url($link){
 		?>
-        <a href="<?php print esc_attr(esc_url_raw($link->url)); ?>"
+        <a href="<?php print esc_url($link->url); ?>"
 		   target='_blank'
 		   class='blc-link-url'
 		   title="<?php echo esc_attr($link->url); ?>"

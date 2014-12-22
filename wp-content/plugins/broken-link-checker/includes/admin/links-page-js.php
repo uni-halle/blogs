@@ -756,7 +756,7 @@ jQuery(function($){
 		echo esc_js(
 			html_entity_decode(
 				__("You are about to delete the current filter.\n'Cancel' to stop, 'OK' to delete", 'broken-link-checker'),
-				ENT_QUOTES | ENT_HTML401,
+				ENT_QUOTES,
 				get_bloginfo('charset')
 			)
 		);
@@ -780,7 +780,7 @@ jQuery(function($){
 				echo esc_js(  
 					html_entity_decode(
 						__("Are you sure you want to delete all posts, bookmarks or other items that contain any of the selected links? This action can't be undone.\n'Cancel' to stop, 'OK' to delete", 'broken-link-checker'),
-						ENT_QUOTES | ENT_HTML401,
+						ENT_QUOTES,
 						get_bloginfo('charset')
 					)
 				); 
@@ -794,7 +794,7 @@ jQuery(function($){
 				echo esc_js(  
 					html_entity_decode(
 						__("Are you sure you want to remove the selected links? This action can't be undone.\n'Cancel' to stop, 'OK' to remove", 'broken-link-checker'),
-						ENT_QUOTES | ENT_HTML401,
+						ENT_QUOTES,
 						get_bloginfo('charset')
 					)
 				); 

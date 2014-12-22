@@ -3,8 +3,8 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 4.0.1
-Stable tag: 1.10.3
+Tested up to: 4.1
+Stable tag: 1.10.4
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -97,6 +97,13 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.10.4 =
+* Tested on WordPress 4.1.
+* Fixed a "Use of undefined constant ENT_HTML401" notice showing up on sites running PHP 5.3 or older.
+* Fixed a double-escaping bug that could cause some link URLs to be displayed incorrectly.
+* Updated French translation.
+* Updated Dutch translation.
 
 = 1.10.3 =
  * Security: Filter link URLs before displaying them on the "Broken Links" page.
