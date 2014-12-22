@@ -12,17 +12,18 @@ class FreeGeoIP extends GeoIP {
 
     public static function query($ip) {
         $response = aam_Core_API::cURL('http://freegeoip.net/xml/' . $ip, false, true);
+        $geodata = null;
         if ($response['status'] == 'success') {
-            $data = simplexml_load_string($response['content']);
-            $geodata = (object) array(
-                'countryCode' => (string) $data->CountryCode,
-                'countryName' => (string) $data->CountryName,
-                'region' => (string) $data->RegionCode,
-                'city' => (string) $data->City,
-                'zip' => (string) $data->ZipCode
-            );
-        } else {
-            $geodata = null;
+            $data = @simplexml_load_string($response['content']);
+            if ($data) {
+                $geodata = (object) array(
+                    'countryCode' => (string) $data->CountryCode,
+                    'countryName' => (string) $data->CountryName,
+                    'region' => (string) $data->RegionCode,
+                    'city' => (string) $data->City,
+                    'zip' => (string) $data->ZipCode
+                );
+            }
         }
         
         return $geodata;

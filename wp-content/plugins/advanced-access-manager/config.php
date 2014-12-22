@@ -8,14 +8,17 @@
  */
 
 //AAM Version for Update purpose
-define('AAM_VERSION', '2.8.4');
+define('AAM_VERSION', '2.8.5');
 
 define('AAM_BASE_DIR', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 
 $base_url = WP_PLUGIN_URL . '/' . basename(AAM_BASE_DIR) . '/';
-if (force_ssl_admin() && (strpos($base_url, 'https') !== 0)) {
-    $base_url = str_replace('http', 'https', $base_url);
+if (strpos($base_url, 'https') === 0) {
+    $base_url = str_replace('https:', '', $base_url);
+} elseif (strpos($base_url, 'http') === 0) {
+    $base_url = str_replace('http:', '', $base_url);
 }
+
 define('AAM_BASE_URL', $base_url);
 
 define('AAM_TEMPLATE_DIR', AAM_BASE_DIR . 'view/html/');

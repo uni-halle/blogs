@@ -79,11 +79,9 @@ class AAM_Extension_ActivityLog extends AAM_Core_Extension {
     }
 
     /**
-     *
-     * @param type $username
-     * @param type $user
+     * 
      */
-    public function login($username, $user) {
+    public function login() {
         $this->getParent()->getUser()
                 ->getObject(aam_Control_Object_Activity::UID)->add(
                     time(),

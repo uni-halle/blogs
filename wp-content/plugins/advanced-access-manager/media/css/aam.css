@@ -854,3 +854,7 @@ a.aam-lock-big{
 .event-specifier{
     display:none;
 }
+
+.ui-accordion h4{
+    margin: 0;
+}
