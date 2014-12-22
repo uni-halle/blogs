@@ -4,67 +4,9 @@ Plugin Name: Smart Youtube PRO
 Plugin URI: http://www.prelovac.com/vladimir/wordpress-plugins/smart-youtube
 Description: Insert YouTube videos in posts, comments and RSS feeds with ease and full customization.
 Author: Vladimir Prelovac
-Version: 4.2.6
+Version: 4.3
 Author URI: http://www.prelovac.com/vladimir/
 
-
-To-Do: 
-
-- Is there a way to have smart youtube display multiple thumbnails of youtube videos in this fashion:
-http://wordpress.org/extend/plugins/my-youtube-playlist/
-
-The author of this plugin has done a good job in birthing the concept, but is unable to really do much by way of support or add features, e.g. highlight thumbnail currently playing, flexible grouping styles of thumbnails (horizontal, vertical listing) etc.
-
-- Wondering if there's a way to have smartyoutube generate a thumbnail of the youtube video that shows up as one of the thumbnail options for the article when someone shares the blog post?
-
-- Would it be possible to overwrite the global autoplay param in a post, something like httpv://www.youtube.com/watch?v=00000000&autoplay=true; I tried to add autoplay=1 but unfortunately in the resuling html it adds autoplay=0 (the global option) and also autoplay=1
-The result is no autoplay :(
-
-- Instead of editing the shortcut, we have copied from youtube.
-I would love to have a button,
-like insert Smart YouTube Video
-A dialogue box would pop up,
-and allow me to just simply paste the link.
-Then having check boxes on the side,
-which allow me to choose whether you would like HD or not.
-thus editing the link correctly.
-
-I find this would greatly help, especiall when I help create video blogs for community provider who have very little computer background.
-
-- Please add support for it on the BuddyPress Acitivity page, currently it just shows the url (which won't work because of the httpv and httpvh)
-
-- Was wondering if it was possible for you to have the plugin take the URL for the Youtube thumbnail for the video and place it into a user defined custom field. The plugin "YoutubeThumb2CustomField" but no longer works in WP 3.0 (network).
-
-- love to see vimeo support! i have video intensive site...love Vimeo
-
-Only issue is I would LOVE to add the widget into another sidebar and I do not see this possibility. Can you have multiple Smart YouTubes? 
-
-- 1. Adding few possibilities for posting videos into post � I have great production of videos but before end of 2009 all was in 320 x 240 and after end of 2009 I start publishing video in 640 x 480 resolution. I have adjusted player video for 640 x 480 but now 320 x 240 videos are stretched across all of player window.
-
-For changes to be easy implemented � I suggest adding 2 or even 3 possibilities for playing videos � like this:
-Your original code httpv://www.youtube.com/********************
-Another version of httpv#1://www.youtube.com/********************
-Another version of httpv#2://www.youtube.com/********************
-Another version of httpv#3://www.youtube.com/********************
-
-Adding #1 after v will allow us to predefine what will be size of player for #1 or number #2 or number #3 � I think it is good idea
-
-If you don�t put #1, #2, #3 player will be those which is default (without number) � in my case that is 640 x 480.
-
-2. If some video is for �personal use� which mean somebody must be log into you tube to see it, than I suggest making possibility for login for authors of those videos � If I put all my materials to be private (up to 25 people can see it) � than I cant publish them trough this way � and allowing authors to write theirs username and password will allow that those vides can be seen on my posts. That way I can protect all my archive of video on youtube, but allow those video can be visible on my blog � which can increase hits, visits and others possibility � that possibility is visible on this plug in http://tubepress.org/ where people can use its username and password for publishing all vides from if they have account on youtube
-
-
-- marinas javascript suggestion for hq videos
-- add editor button
-- The plugin places a preview image in the RSS feed which is great, but it links to the video on http://www.youtube.com. I would like to change it so the image links to the blog post so I can generate some traffic on my blog. 
-- localization
-- the images appear under the embedded Smart Youtube videos. Is there any way to edit the z-index for Smart Youtube CSS? I
-- would like to use multiple instances of the Smart YouTube plugin. I saw the reply that said to simply use multiple calls in one instance of the widget, but that doesn't let me choose different videos for different pages. 
-- was wondering if it's possible to get a vid and playlist in a custom page template?? Is it possible to add a preview image to search results?
-- I wondered if there were a way to bring the video to the forefront layer (perhaps z-index)? I know this actually breaks good design practice in my intended use, but have a look here:
-- However, on one page I have two videos and therefore I want to add a a parameter to the second video embed URL to _not_ start automatically. Something like httpv://www.youtube.com/watch?v=xyz123&autostart=off
-- Single videos work well from wordpress on the Iphone/ipod. Is there a way to make the playlists work, just getting the ? cube instead of image.
-- I would like to "inject" automatically this preview image url in a custom field, in each post, to auto-generate the thumb on my homepage with this image.
 */
 
 
@@ -86,7 +28,7 @@ class SmartYouTube_PRO {
 	}
 	
 	function __construct() {
-		$this->local_version = '1.0'; // TODO: Change this number???
+		$this->local_version = '4.3'; 
 		
 		$this->plugin_url = trailingslashit(plugins_url(null,__FILE__));
 	
@@ -116,8 +58,8 @@ class SmartYouTube_PRO {
 		add_action( 'admin_head', array( $this, 'plugin_header' ) );
 		if ( $this->options['ogimage'] == 'on' )
 			add_action( 'wp_head', array( $this, 'post_header' ) );
-		add_action( 'wp_print_scripts', array( $this, 'load_scripts' ) );
-		add_action( 'wp_print_styles', array( $this, 'load_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_styles' ) );
 		add_action( 'template_redirect', array( $this, 'mark_first_post_on_archive' ) );
 		
 		register_activation_hook(__FILE__, array($this, 'install' ) );
@@ -256,7 +198,7 @@ class SmartYouTube_PRO {
 			
 			$this->options['posts'] = ! isset( $_POST['disp_posts'] ) ? 'off' : 'on';
 			$this->options['comments'] = ! isset( $_POST['disp_comments'] ) ? 'off' : 'on';
-			$this->options['iframe'] = ! isset( $_POST['iframe'] ) ? 'off' : 'on';
+			$this->options['iframe'] = 'on';//! isset( $_POST['iframe'] ) ? 'off' : 'on';
 			$this->options['www'] = ! isset( $_POST['www'] ) ? 'off' : 'on';
 			$this->options['http'] = ! isset( $_POST['http'] ) ? 'off' : 'on';
 			
@@ -303,7 +245,7 @@ class SmartYouTube_PRO {
 		$disp_comments = $this->options['comments'] == 'on' ? 'checked="checked"' : '';
 		
 		$disp_privacy = $this->options['privacy'] ? 'checked="checked"' : '';
-		$iframe = $this->options['iframe'] =='on' ? 'checked="checked"' : '';
+		$iframe = 'on';//$this->options['iframe'] =='on' ? 'checked="checked"' : '';
 		$www = $this->options['www'] =='on' ? 'checked="checked"' : '';
 		$http = $this->options['http'] =='on' ? 'checked="checked"' : '';
 		$disp_loop = $this->options['loop'] ? 'checked="checked"' : '';
@@ -348,11 +290,24 @@ class SmartYouTube_PRO {
 	<a href="admin.php?page=syt_settings"><?php _e( 'Settings', 'smart-youtube' ); ?></a> &nbsp;|&nbsp; <a href="admin.php?page=syt_colorbox_options"><?php _e( 'Colorbox Options', 'smart-youtube' ); ?></a> &nbsp;|&nbsp; <a href="admin.php?page=syt_about"><?php _e( 'About', 'smart-youtube' ); ?></a>
 	<div id="poststuff" style="margin-top:10px;">
 		<div id="sideblock" style="float:right;width:270px;margin-left:10px;">
-			<iframe width=270 height=800 frameborder="0" src="http://www.prelovac.com/plugin/news.php?id=0&utm_source=plugin&utm_medium=plugin&utm_campaign=Smart%2BYoutube"></iframe>
+			<div class="ad">
+						<a href="https://managewp.com/?utm_source=Plugins&amp;utm_medium=Banner&amp;utm_content=mwp250_2&amp;utm_campaign=SmartYoutube" title="ManageWP.com - Manage your sites from one dashboard"><img src="<?php echo plugins_url('/i/mwp250_2.png', __FILE__) ?>" alt="ManageWP.com - Manage Multiple WordPress Sites"></a>
+				</div>
 		</div> 
 		<div id="mainblock" style="width:710px">
 			<div class="dbx-content">
-				<h2 id="usageHeader"><?php _e( 'Usage <span style="font-size:small">[<a href="#">view instructions</a>]</span>', 'smart-youtube' ); ?></h2>
+				<h2 id="usageHeader"><?php _e( 'Usage <span>[<a href="#">View full instructions</a>]</span>', 'smart-youtube' ); ?></h2>
+			
+				<h3>Basic Usage</h3>
+				<p>The plugin offers	more features than built-in WordPress video embed feature.</p>
+				<p>In order for the plugin to work you must change the pasted URL to either <strong>httpv://</strong> or <strong>httpvh://</strong> (HD video)</p>
+				
+				<p>For example:	<br/>
+				httpv://www.youtube.com/watch?v=OWfksMD4PAg
+				</p>
+				
+				
+			
 				<div id="usage" style="display:none">
 					<p><?php _e( 'To use the video in your posts, paste YouTube video URL with <strong>httpv://</strong> (notice the \'v\').', 'smart-youtube' ); ?> </p>
 					<p><?php _e( '<strong>Important:</strong> The URL should just be copied into your post normally and the letter \'v\' added, do not create a clickable link!', 'smart-youtube' ); ?></p>
@@ -376,8 +331,7 @@ class SmartYouTube_PRO {
 					<input type="hidden" id="_wpnonce" name="_wpnonce" value="<?php echo $nonce; ?>" />
 					<h2><?php _e( 'Options', 'smart-youtube' ); ?></h2>
 					<p><?php _e( 'Smart Youtube is powerful and free WordPress plugin for embeding videos into your blog. ', 'smart-youtube' ); ?></p>
-					
-					<p><?php _e( 'From the same author: <a href="http://managewp.com" target="_blank">ManageWP.com</a> - Wordpress service that helps you manage all your WordPress sites from one location.', 'smart-youtube' ); ?></p>
+										
 					<p><?php _e( 'You can adjust the way your embeded youtube videos behave in the options below.', 'smart-youtube' ); ?></p>
 					<h3><?php _e( 'Video settings', 'smart-youtube' ); ?></h3>
 					<div>
@@ -389,10 +343,7 @@ class SmartYouTube_PRO {
 						<label for="check4"><?php _e( 'Display videos in comments', 'smart-youtube' ); ?></label>
 					</div>
 					<br />
-					<div>
-						<input id="iframe" type="checkbox" name="iframe" <?php echo $iframe; ?> />
-						<label for="iframe"><?php _e( 'Use IFRAME embed code', 'smart-youtube' ); ?></label> [<a target="_blank" href="http://apiblog.youtube.com/2010/07/new-way-to-embed-youtube-videos.html">?</a>]
-					</div>
+					
 					<h3><?php _e( 'Video Appearence', 'smart-youtube' ); ?></h3>
 					<p class="instruct">
 						<?php _e( 'Video template. Default is just {video}.', 'smart-youtube' ); ?><br />
@@ -530,10 +481,7 @@ class SmartYouTube_PRO {
 					<input id="tag" type="text" name="tag" value="<?php echo $tag; ?>" />
 					<label for="tag"><?php _e( 'Custom code', 'smart-youtube' ); ?></label>
 					 
-					<h3><?php _e( 'WiziApp support', 'smart-youtube' ); ?></h3>
-					<p><?php _e( 'This will integrate your video seamlessly with WiziApp', 'smart-youtube' ); ?></p>
-					<input id="wiziapp" type="checkbox" name="wiziapp" <?php echo $wiziapp; ?> />
-					<label for="wiziapp"><?php _e( 'Enable WiziApp support', 'smart-youtube' ); ?></label>
+				
 					<h3><?php _e( 'xHTML validation', 'smart-youtube' ); ?></h3>
 					<p class="instruct"><?php _e( 'Enabling the option below will change default YouTube code to be xHTML valid. (videos may not work for Iphone users)', 'smart-youtube' ); ?></p>
 					<input id="valid" type="checkbox" name="valid" <?php echo $valid; ?> />
@@ -545,6 +493,10 @@ class SmartYouTube_PRO {
 					<label for="check2"><?php _e( 'Display video link in RSS feed', 'smart-youtube' ); ?></label><br />
 					<input id="check1" type="checkbox" name="disp_img" <?php echo $disp_img; ?> />
 					<label for="check1"><?php _e( 'Display video preview image in RSS feed', 'smart-youtube' ); ?></label>
+						<h3><?php _e( 'WiziApp support', 'smart-youtube' ); ?></h3>
+					<p><?php _e( 'This will integrate your video seamlessly with WiziApp', 'smart-youtube' ); ?></p>
+					<input id="wiziapp" type="checkbox" name="wiziapp" <?php echo $wiziapp; ?> />
+					<label for="wiziapp"><?php _e( 'Enable WiziApp support', 'smart-youtube' ); ?></label>
 					<div class="submit"><input type="submit" name="Submit" value="<?php _e( 'Update options', 'smart-youtube' ); ?>" /></div>
 				</form>
 			</div>
@@ -578,12 +530,15 @@ class SmartYouTube_PRO {
 		<a href="admin.php?page=syt_settings"><?php _e( 'Settings', 'smart-youtube' ); ?></a> &nbsp;|&nbsp; <a href="admin.php?page=syt_colorbox_options"><?php _e( 'Colorbox Options', 'smart-youtube' ); ?></a> &nbsp;|&nbsp; <a href="admin.php?page=syt_about"><?php _e( 'About', 'smart-youtube' ); ?></a>
 		<div id="poststuff" style="margin-top:10px;">
 			<div id="sideblock" style="float:right;width:270px;margin-left:10px;">		  
-				<iframe width=270 height=800 frameborder="0" src="http://www.prelovac.com/plugin/news.php?id=2&utm_source=plugin&utm_medium=plugin&utm_campaign=SEO%2BFriendly%2BImages%2BPRO"></iframe>
+				<div class="ad">
+						<a href="https://managewp.com/?utm_source=Plugins&amp;utm_medium=Banner&amp;utm_content=mwp250_2&amp;utm_campaign=SmartYoutube" title="ManageWP.com - Manage your sites from one dashboard"><img src="<?php echo plugins_url('/i/mwp250_2.png',__FILE__) ?>" alt="ManageWP.com - Manage Multiple WordPress Sites"></a>
+				</div>
 			</div>
 		</div>
 		<div id="mainblock" class="submit">
 			<div class="dbx-content">
 				<h2><?php _e( 'Colorbox Options', 'smart-youtube' ); ?></h2>
+				<p>If you enable Show video in Colorbox on the settings screen, your videos can be displayed in a beautiful ColorBox overlay. Choose a theme here.</p>
 				<br />
 				<form name="sytform" action="<?php echo $actionurl; ?>" method="post">
 					<input type="hidden" name="submitted" value="1" />
@@ -596,7 +551,7 @@ class SmartYouTube_PRO {
 						</select>
 					</div>
 					<div>
-						<label for="screenshot_image"><?php _e( 'Theme screenshot:', 'smart-youtube' ); ?></label>
+						<label for="screenshot_image"><?php _e( 'Theme preview', 'smart-youtube' ); ?></label>
 						<div id="screenshot_image">
 							<img src="<?php echo $this->plugin_url . '/screenshots/screenshot-' . $this->options['colorbox_theme'] . '.jpg'; ?>" />
 						</div>
@@ -620,7 +575,7 @@ class SmartYouTube_PRO {
 		$actionurl = stripslashes(htmlentities(strip_tags($_SERVER['REQUEST_URI'])));
 		$nonce = wp_create_nonce( 'smart-youtube' );
 		
-		$lic_msg = '<p>Welcome to ' . __( 'Smart YouTube PRO', 'smart-youtube' ) . '.</p>';
+		$lic_msg = '<p>Welcome to ' . __( 'Smart YouTube PRO', 'smart-youtube' ) . '.</p><p>Thank you for using my plugin, if you find it useful please <a href="https://wordpress.org/plugins/smart-youtube/">rate it</a>.</p>';
 	?>
 	<div class="wrap">
 		<?php screen_icon(); ?>
@@ -629,7 +584,9 @@ class SmartYouTube_PRO {
 		<div id="poststuff" style="margin-top:10px;">
 		
 			<div id="sideblock" style="float:right;width:270px;margin-left:10px;">		  
-				<iframe width=270 height=800 frameborder="0" src="http://www.prelovac.com/plugin/news.php?id=2&utm_source=plugin&utm_medium=plugin&utm_campaign=SEO%2BFriendly%2BImages%2BPRO"></iframe>
+				<div class="ad">
+						<a href="https://managewp.com/?utm_source=Plugins&amp;utm_medium=Banner&amp;utm_content=mwp250_2&amp;utm_campaign=SmartYoutube" title="ManageWP.com - Manage your sites from one dashboard"><img src="<?php echo plugins_url('/i/mwp250_2.png',__FILE__) ?>" alt="ManageWP.com - Manage Multiple WordPress Sites"></a>
+				</div>
 			</div>
 		</div>
 		<div id="mainblock" class="submit">
@@ -1422,6 +1379,7 @@ EOT;
 			foreach ( $saved as $key => $option ) {
 				$options[$key] = $option;
 			}
+			$options['iframe']='on';
 		}
 			  
 		if ( $saved != $options ) {
