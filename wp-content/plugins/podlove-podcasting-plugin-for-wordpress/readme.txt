@@ -3,7 +3,7 @@ Contributors: eteubert, chemiker
 Donate link: http://flattr.com/thing/728463/Podlove-Podcasting-Plugin-for-WordPress
 Tags: podlove, podcast, publishing, blubrry, podpress, powerpress, feed, audio, video, player
 Requires at least: 3.0
-Tested up to: 4.0.1
+Tested up to: 4.1
 Stable tag: trunk
 License: MIT
 
@@ -84,6 +84,13 @@ Find the setting Flattr > Advanced Settings > Flattrable content > Post Types an
 1. Click Activate Plugin to activate it.
 
 == Changelog ==
+
+= 1.12.1 =
+
+* fix: catch failed IP categorizations
+* fix: solve PHP notice
+* add custom icon to close template fullscreen mode
+* add custom contributor css to look nicely in twentyfifteen theme
 
 = 1.12 =
 
