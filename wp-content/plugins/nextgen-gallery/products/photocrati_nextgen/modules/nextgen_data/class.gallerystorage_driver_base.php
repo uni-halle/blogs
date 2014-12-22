@@ -490,22 +490,28 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                             $retval = in_array(image_type_to_mime_type($image_type), $valid_types);
                         }
                     }
-
                     else {
                         $file_info = @getimagesize($filename);
                         if (isset($file_info[2])) {
                             $retval = in_array(image_type_to_mime_type($file_info[2]), $valid_types);
                         }
-
-                        // We'll assume things are ok as there isn't much else we can do
-                        else $retval = TRUE;
                     }
                 }
 
                 // Is this a valid extension?
-                // TODO: Should we remove this?
                 else if (strpos($type, 'octet-stream') !== FALSE && preg_match($valid_regex, $type)) {
-                    $retval = TRUE;
+                    // If we can, we'll verify the mime type
+                    if (function_exists('exif_imagetype')) {
+                        if (($image_type = @exif_imagetype($filename)) !== FALSE) {
+                            $retval = in_array(image_type_to_mime_type($image_type), $valid_types);
+                        }
+                    }
+                    else {
+                        $file_info = @getimagesize($filename);
+                        if (isset($file_info[2])) {
+                            $retval = in_array(image_type_to_mime_type($file_info[2]), $valid_types);
+                        }
+                    }
                 }
             }
         }

@@ -34,6 +34,13 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
 		include_once('class.nextgen_basic_gallery_installer.php');
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_NextGen_Basic_Gallery_Installer');
     }
+    
+    function initialize()
+    {
+    	parent::initialize();
+    	$notices = C_Admin_Notification_Manager::get_instance();
+	    $notices->add('image_rotator_notice', 'C_Image_Rotator_Notice');
+    }
 
     function get_type_list()
     {
@@ -241,6 +248,36 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
 		$renderer = $this->get_registry()->get_utility('I_Displayed_Gallery_Renderer');
         return $renderer->display_images($params, $inner_content);
 	}    
+}
+
+class C_Image_Rotator_Notice
+{
+	static $_instance = NULL;
+	static function get_instance($name)
+	{
+		if (!self::$_instance) {
+			$klass = get_class();
+			self::$_instance = new $klass($name);
+		}
+		return self::$_instance;
+	}
+
+	function __construct($name)
+	{
+		$this->name = $name;
+	}
+
+	function render()
+	{
+		$link = __('this blog post', 'nggallery');
+		$link = "<a href='http://www.nextgen-gallery.com/flash-removed'>{$link}</a>";
+		return sprintf(__("Flash slideshow support has been removed from NextGEN Gallery. Please see %s for more information.", 'nggallery'), $link);
+	}
+
+	function is_dismissable()
+	{
+		return TRUE;
+	}
 }
 
 new M_NextGen_Basic_Gallery;

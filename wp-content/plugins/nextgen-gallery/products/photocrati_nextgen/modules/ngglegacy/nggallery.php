@@ -62,7 +62,6 @@ if (!class_exists('nggLoader')) {
 
 			// All credits to the tranlator
 			$this->translator  = '<p class="hint">'. __('<strong>Translation by : </strong><a target="_blank" href="http://www.nextgen-gallery.com/languages/">See here</a>', 'nggallery') . '</p>';
-			$this->translator .= '<p class="hint">'. __('<strong>This translation is not yet updated for Version 1.9.0</strong>. If you would like to help with translation, download the current po from the plugin folder and read <a href="http://www.nextgen-gallery.com/languages/">here</a> how you can translate the plugin.', 'nggallery') . '</p>';
 
 			// Content Filters
 			add_filter('ngg_gallery_name', 'sanitize_title');

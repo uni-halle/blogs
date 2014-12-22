@@ -1269,3 +1269,9 @@ body .ui-tooltip {
 .ui-autocomplete {
     z-index: 250;
 }
+
+/* WP 4.1-beta1 makes the accordion fonts & margin huge */
+h3.ui-accordion-header {
+    margin: 3px 0 0 0;
+    font-size: 13px;
+}

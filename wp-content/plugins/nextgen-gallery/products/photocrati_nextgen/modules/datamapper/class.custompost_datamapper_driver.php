@@ -255,6 +255,15 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 	{
 		$entity = new stdClass();
 
+		// Unserialize the post_content_filtered field
+		if (is_string($post->post_content_filtered)) {
+			if (($post_content = $this->object->unserialize($post->post_content_filtered))) {
+				foreach ($post_content as $key => $value) {
+					$post->$key = $value;
+				}
+			}
+		}
+
 		// Unserialize the post content field
 		if (is_string($post->post_content)) {
 			if (($post_content = $this->object->unserialize($post->post_content))) {
@@ -264,12 +273,15 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
 			}
 
 		}
-		unset($post->post_content);
 
-		// Copy all fields to the entity
+		// Copy post fields to entity
+		unset($post->post_content);
+		unset($post->post_content_filtered);
 		foreach ($post as $key => $value) {
 			$entity->$key = $value;
 		}
+
+
         $this->object->_convert_to_entity($entity);
 		return $model? $this->object->convert_to_model($entity) : $entity;
 	}

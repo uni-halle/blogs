@@ -101,6 +101,11 @@ class M_NextGen_Admin extends C_Base_Module
 
 		// Provides menu options for managing NextGEN Settings
 		add_action('admin_menu', array(&$this, 'add_menu_pages'), 999);
+		
+		$notices = C_Admin_Notification_Manager::get_instance();
+		add_action('init', array($notices, 'serve_ajax_request'));
+		add_action('admin_footer', array($notices, 'enqueue_scripts'));
+		add_action('all_admin_notices', array($notices, 'render'));
 	}
 
     function register_scripts()
@@ -150,7 +155,8 @@ class M_NextGen_Admin extends C_Base_Module
             'I_Form_Manager' => 'interface.form_manager.php',
             'I_Nextgen_Admin_Page' => 'interface.nextgen_admin_page.php',
             'I_Nextgen_Settings' => 'interface.nextgen_settings.php',
-            'I_Page_Manager' => 'interface.page_manager.php'
+            'I_Page_Manager' => 'interface.page_manager.php',
+            'C_Admin_Notification_Manager'  =>  'class.admin_notification_manager.php'
         );
     }
 }

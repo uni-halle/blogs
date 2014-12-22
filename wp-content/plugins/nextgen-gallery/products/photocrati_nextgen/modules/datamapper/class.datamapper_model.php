@@ -42,7 +42,7 @@ class C_DataMapper_Model extends C_Component
 
 
 	/**
-	 * Gets a property of the model
+	 * Gets a   property of the model
 	 */
 	function &__get($property_name)
 	{

@@ -20,6 +20,17 @@ class C_Display_Type_Mapper extends C_CustomPost_DataMapper_Driver
 		$this->add_mixin('Mixin_Display_Type_Mapper');
 		$this->implement('I_Display_Type_Mapper');
 		$this->set_model_factory_method($object_name);
+
+		// Define columns
+		$this->define_column('ID', 'BIGINT', 0);
+		$this->define_column('name', 'VARCHAR(255)');
+		$this->define_column('title', 'VARCHAR(255)');
+		$this->define_column('preview_image_relpath', 'VARCHAR(255)');
+		$this->define_column('default_source', 'VARCHAR(255)');
+		$this->define_column('view_order', 'BIGINT', NGG_DISPLAY_PRIORITY_BASE);
+
+		$this->add_serialized_column('settings');
+		$this->add_serialized_column('entity_types');
 	}
 
 	function initialize($context=FALSE)

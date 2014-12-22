@@ -552,7 +552,7 @@ class Mixin_Routing_App extends Mixin
 			$retval = $this->object->get_routed_url();
 		}
 
-		return $retval;
+		return esc_url($retval);
 	}
 
 	/**
@@ -617,7 +617,7 @@ class Mixin_Routing_App extends Mixin
 
         $retval = rtrim($retval, ' ?&');
 
-		return $retval;
+		return esc_url($retval);
 	}
 
 

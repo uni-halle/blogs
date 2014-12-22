@@ -14,7 +14,7 @@ class A_Other_Options_Forms extends Mixin
 		if (!is_multisite() || (is_multisite() && C_NextGen_Settings::get_instance()->get('wpmuStyle')))
 			$forms['styles'] = 'A_Styles_Form';
 
-		if (is_super_admin() && (!is_multisite() || (is_multisite() && C_NextGen_Settings::get_instance()->get('wpmuRoles'))))
+		if (is_super_admin() && (!is_multisite() || (is_multisite() && C_NextGen_Settings::get_instance()->get('wpmuRoles')))) {}
 			$forms['roles_and_capabilities'] = 'A_Roles_Form';
 
 		$forms += array(
@@ -23,7 +23,10 @@ class A_Other_Options_Forms extends Mixin
 			'lightbox_effects'		=>	'A_Lightbox_Manager_Form',
 			'watermarks'			=>	'A_Watermarks_Form',
 			'miscellaneous'			=>	'A_Miscellaneous_Form',
-            'reset'                 =>  'A_Reset_Form'
+		);
+
+		if (is_admin()) $forms += array(
+			'reset'                 =>  'A_Reset_Form'
 		);
 
 		$registry = $this->object->get_registry();

@@ -127,7 +127,7 @@ class Mixin_Page_Manager extends Mixin
 			}
 
 			// Are we to add a menu?
-			if ($properties['add_menu']) {
+			if ($properties['add_menu'] && current_user_can($permission)) {
 
 				add_submenu_page(
 					$properties['parent'],

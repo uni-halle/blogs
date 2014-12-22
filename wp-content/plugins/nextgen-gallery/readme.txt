@@ -1,8 +1,8 @@
 === NextGEN Gallery ===
 Contributors: photocrati
-Tags:gallery,image,images,photo,photos,picture,pictures,slideshow,flash,media,thumbnails,photo-albums,nextgen-gallery,nextgen
+Tags: nextgen, nextgen gallery, gallery, galleries, image, images, image gallery, photo, photos, photo gallery, picture, pictures, picture gallery, album, albums, photo albums, image album, media, media gallery, thumbnails, thumbnail gallery, thumbnail galleries, slideshow, slideshows, slideshow gallery, slideshow galleries, fancybox, lightbox, responsive, responsive gallery, responsive galleries, wordpress responsive gallery, nextcellent, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, best gallery plugin, free photo gallery, singlepic, image captions imagebrowser, watermarks, watermarking, photography, photographer
 Requires at least: 3.6.1
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv2
 
@@ -75,10 +75,6 @@ This program is free software; you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-** Please note **
-
-NextGEN Gallery's flash slideshow option is powered by the JW Image Rotator from Long Tail Video. The Image Rotator is provided free as part of our plugin package thanks to a special arrangement with Long Tail Video. Over time, we will be moving away from reliance on this file. For more information, see the Long Tail Video website: http://www.longtailvideo.com.
 
 == Installation ==
 
@@ -198,6 +194,13 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.0.66.37 - 12.18.2014 =
+* NEW:     Admin notice manager
+* Secured: Removed flash slideshow support
+* Secured: Image upload mechanism
+* Fixed:   Accordion styling in WordPress 4.1
+* Fixed:   Sorting images in WordPress 4.1
 
 = V2.0.66.33 - 11.24.2014 =
 * Fixed:   Broken NextGEN Pro ecommerce-related shortcodes
