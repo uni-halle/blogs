@@ -2,8 +2,8 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.6
-Stable tag: 3.6.2
-Tested up to: 4.0
+Stable tag: 3.6.3
+Tested up to: 4.1
 License: GPLv2
 
 Create a slick mobile WordPress website with just a few clicks.
@@ -39,6 +39,11 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.6.3 (December 18, 2014) =
+
+* Tested for compatibility with WordPress 4.1
+* Added: WPtouch Pro now auto-updates installed themes and extensions, ensuring your site is always completely up-to-date. Changes made to the theme will be saved (WPtouch Pro will create a new child theme with your changes) and custom themes are left unchanged. (Pro Only)
 
 = Version 3.6.2 (December 11, 2014) =
 

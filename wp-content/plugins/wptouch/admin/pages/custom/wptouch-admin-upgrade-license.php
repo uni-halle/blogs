@@ -5,6 +5,7 @@
 		$token = '';
 		$i = wp_nonce_tick();
 		$nonce = substr(wp_hash($i . '|' . $action . '|' . $uid . '|' . $token  , 'nonce'), -12, 10);
+		return $nonce;
 	}
 
 	$nonce = wptouch_create_anonymous_nonce( 'wptouch_ajax_callback' );

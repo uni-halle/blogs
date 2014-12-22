@@ -8,6 +8,7 @@ function wptouch_migration_is_theme_broken() {
 	}
 
 	$broken = ( !file_exists( WP_CONTENT_DIR . $settings->current_theme_location . '/'. $settings->current_theme_name ) );
+
 	return $broken;
 }
 
@@ -72,8 +73,8 @@ function wptouch_repair_active_theme_from_cloud( &$error_condition ) {
 		$result = $addon_installer->install( $theme_to_install->base, $theme_to_install->download_url, 'themes' );
 		if ( $result ) {
 			$wptouch_pro->repair_active_theme( WPTOUCH_BASE_CONTENT_DIR . '/themes', $settings->current_theme_friendly_name );
-		} 
-	}	
+		}
+	}
 
 	return $result;
 }
