@@ -5,10 +5,10 @@ Tags: contact form,database,contact form database,save contact form,form databas
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
-Tested up to: 4.0
-Stable tag: 2.8.21
+Tested up to: 4.1
+Stable tag: 2.8.22
 
-Saves submitted form data to the database. Export the data to a file and or short codes to display it.
+Saves submitted form data to the database. Export the data to a file or use short codes to display it.
 
 == Description ==
 
@@ -80,6 +80,9 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.8.23 =
+* Bug fix for Gravity Form integration. Sometimes field value was not captured where there are multiple fields of the same name but only one shown based on conditional field definition.
 
 = 2.8.22 =
 * Changed icon in admin panel
