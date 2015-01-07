@@ -1,17 +1,23 @@
 <?php
 /*
-Template Name: Links
-*/
+ * Template Name: Links
+ *
+ * The "Template Name:" bit above allows this to be selectable
+ * from a dropdown menu on the edit page screen.
+ *
+ * @package WordPress
+ * @subpackage Choco
+ */
 ?>
 
 <?php get_header(); ?>
 	<div class="post">
-		<h2>Links:</h2>
+		<h1><?php _e( 'Links:', 'choco' ); ?></h1>
 		<div class="entry">
-			<ul>
+			<ul class="links-list">
 				<?php wp_list_bookmarks(); ?>
 			</ul>
-		</div>
-	</div>
-	<?php get_sidebar(); ?>
+		</div><!-- .entry -->
+	</div><!-- .post -->
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

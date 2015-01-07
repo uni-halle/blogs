@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box Pro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-16 12:34+0545\n"
-"PO-Revision-Date: 2014-08-16 12:34+0545\n"
+"POT-Creation-Date: 2014-12-08 20:20+0545\n"
+"PO-Revision-Date: 2014-12-08 20:20+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Catch Themes <info@catchinternet.com>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -201,6 +201,7 @@ msgstr "<b>%</b> Risposte"
 msgid "Edit"
 msgstr "Modifica"
 
+#. translators: used between list items, there is a space after the comma
 #: ../content-featured.php:35 ../content-featured.php:44
 #: ../content-gallery.php:68 ../content-gallery.php:78 ../content-image.php:53
 #: ../content-image.php:62 ../content-quote.php:50 ../content-quote.php:60
@@ -350,14 +351,17 @@ msgstr "Menu secondario"
 msgid "Footer Menu"
 msgstr "Menu a piè pagina"
 
+#. translators: header image description
 #: ../functions.php:179
 msgid "Garden"
 msgstr "Giardino"
 
+#. translators: header image description
 #: ../functions.php:185
 msgid "Flower"
 msgstr "Fiori"
 
+#. translators: header image description
 #: ../functions.php:191
 msgid "Mountain"
 msgstr "Montagne"
@@ -403,11 +407,13 @@ msgstr "Articoli più nuovi <span class=\"meta-nav\">&rarr;</span>"
 msgid "Pingback:"
 msgstr "Pingback:"
 
+#. translators: 1: comment author, 2: date and time
 #: ../functions.php:640
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s il %2$s <span class=\"says\">ha scritto:</span>"
 
+#. translators: 1: date, 2: time
 #: ../functions.php:646
 #, php-format
 msgid "%1$s at %2$s"

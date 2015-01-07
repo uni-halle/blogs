@@ -1,6 +1,24 @@
 === Desk Mess Mirrored ===
-Changelog: April 13, 2014
+Changelog: October 19, 2014
+== Version 2.3 ==
+= Code =
+* Added BNS Login "Compatibility Code" to use dashicons instead of text
+* Dropped backward compatibility for `wp_title` with Desk Mess Mirrored Child-Themes based on version 2.1 and earlier
+* Removed `wp_list_bookmarks` section from `sidebar.php` template
+* Wrap `register_sidebar` calls in a function that is used as a callback for the `widgets_init` hook
+* Take into account what happens on the 404 page when returning no posts
 
+= CSS =
+* Aligned previous month text in default calendar widget to left
+* Stop Gravity Forms reCaptcha iframe from creating a blank area in the footer
+* Fixed mixed list bullets
+* Minor layout adjustments for widget items
+
+= Miscellaneous =
+* Code reformatting to better meet current WordPress Coding Standards
+* Adjusted screenshot size to be 880x660 pixels
+
+/** ------------------------------------------------------------------------- */
 == Version 2.2.4/2.2.4.1 ==
 = Code =
 * Added `dmm_post_meta_link_edit()` function with filter hooks for DRY purposes
@@ -14,7 +32,7 @@ Changelog: April 13, 2014
 
 = Miscellaneous =
 * Added `Textdomain` to theme header block
-* Change `fixed-width` theme tag to `fixed-layout`
+* Changed `fixed-width` theme tag to `fixed-layout`
 * Code reformatted to better meet the WordPress Coding Standards
 * Clean-up `readme.txt` file
 * Replaced screenshot with new 880 x 660 version (removed secondary screenshots)

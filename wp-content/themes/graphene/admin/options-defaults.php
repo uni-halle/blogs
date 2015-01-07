@@ -298,7 +298,6 @@ $graphene_defaults = array(
 	'disable_editor_style' 		=> false,
     
 	/* Advanced options */
-	'enable_preview' 			=> false,
 	'widget_hooks' 				=> array(),
 	'head_tags'					=> '',
 	'disable_css_generate'		=> false,

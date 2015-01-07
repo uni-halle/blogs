@@ -46,3 +46,25 @@
 	float: left;
 	margin: 3px 0 0 -5px;
 }
+.postbox .hndle {
+	padding: 6px 30px 7px 10px;
+}
+.toggle-all, 
+.toggle-all:visited,
+.toggle-options-wrapper a, 
+.toggle-options-wrapper a:visited {
+	margin-right: 10px;
+	margin-left: 0;
+}
+.toggle-options-wrapper {
+	float: right;
+	margin-right: 5px;
+	padding-right: 5px;
+	border-right: 1px solid #ddd;
+	margin-left: 0;
+	padding-left: 0;
+	border-left: none;
+}
+.inner-toggle-link {
+	float: left;
+}

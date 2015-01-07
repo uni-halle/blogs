@@ -19,8 +19,6 @@
 /* =Resets
 -------------------------------------------------------------- */
 
-html,
-body,
 h1,
 h2,
 h3,
@@ -43,9 +41,6 @@ fieldset {
 /* =Non-classed HTML elements
 -------------------------------------------------------------- */
 
-html {
-	background: #eee;
-}
 body {
 	color: #2c2b2b;
 	font: normal 12px/18px arial, sans-serif;
@@ -65,14 +60,6 @@ a:hover {
 /* =Container
 -------------------------------------------------------------- */
 
-.wp-editor {
-	padding: 10px;
-	min-height: 50%;
-	/* width: 620px; */
-	max-width: 95%;
-	margin: 10px auto;
-	background: #fff;
-}
 .wp-editor:hover {
 	cursor: text;
 }

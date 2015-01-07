@@ -1,191 +1,285 @@
 <?php
-wp_enqueue_script('jquery');// Include jquery
-automatic_feed_links();
+/**
+ * @package WordPress
+ * @subpackage Choco
+ *
+ * Set the content width based on the theme's design and stylesheet.
+ *
+ * Used to set the width of images and content. Should be equal to the width the theme
+ * is designed for, generally via the style.css stylesheet.
+ */
+if ( ! isset( $content_width ) )
+	$content_width = 645;
 
-register_sidebar(array(
-	'name'=>'sidebar',
-    'before_widget' => '<li id="%1$s" class="widget %2$s">',
-    'after_widget' => '</li>',
-    'before_title' => '<h2 class="widgettitle">',
-    'after_title' => '</h2>',
-));
+/** Tell WordPress to run choco_setup() when the 'after_setup_theme' hook is run. */
+add_action( 'after_setup_theme', 'choco_setup' );
 
-function attach_theme_settings() {
-	$theme_root = dirname(__FILE__) . DIRECTORY_SEPARATOR;
-	include_once($theme_root . 'lib/theme-options/theme-options.php');
-	include_once($theme_root . 'options/theme-options.php');
-	include_once($theme_root . 'options/navigation-options.php');
-	// include_once('options/theme-widgets.php');
+if ( ! function_exists( 'choco_setup' ) ):
+
+function choco_setup() {
+
+	// This theme styles the visual editor with editor-style.css to match the theme style.
+	add_editor_style();
+
+	// This theme uses post thumbnails
+	add_theme_support( 'post-thumbnails' );
+
+	// Add default posts and comments RSS feed links to head
+	add_theme_support( 'automatic-feed-links' );
+
+	// Make theme available for translation
+	// Translations can be filed in the /languages/ directory
+	load_theme_textdomain( 'choco', get_template_directory() . '/languages' );
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'primary' => __( 'Primary Navigation', 'choco' ),
+	) );
+
+	// This theme allows users to set a custom background
+	add_theme_support( 'custom-background' );
+
+	//Add support for Post Formats
+	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 }
+endif;
 
-attach_theme_settings();
+/**
+ * Enqueue scripts and styles
+ */
+function choco_scripts() {
+	wp_enqueue_style( 'choco', get_stylesheet_uri() );
 
-function print_comment($comment, $args, $depth) {
-	$GLOBALS['comment'] = $comment; ?>
-	<li <?php comment_class('comment'); ?>>
-		<div class="comment-body" id="comment-<?php comment_ID() ?>">
-			<?php echo get_avatar($comment, 70, get_bloginfo('stylesheet_directory') . '/images/avatar.gif'); ?>
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('jquery-touchSwipe', esc_url( get_stylesheet_directory_uri() ) . '/js/jquery.touchSwipe.min.js');
+	wp_enqueue_script('functions', esc_url( get_stylesheet_directory_uri() ) . '/js/functions.js');
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+		wp_enqueue_script( 'comment-reply' );
+}
+add_action( 'wp_enqueue_scripts', 'choco_scripts' );
+
+/**
+ * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
+ *
+ * To override this in a child theme, remove the filter and optionally add
+ * your own function tied to the wp_page_menu_args filter hook.
+ *
+ */
+function choco_page_menu_args( $args ) {
+	$args['show_home'] = true;
+	return $args;
+}
+add_filter( 'wp_page_menu_args', 'choco_page_menu_args' );
+
+/**
+ * Removes the default styles that are packaged with the Recent Comments widget.
+ *
+ * To override this in a child theme, remove the filter and optionally add your own
+ * function tied to the widgets_init action hook.
+ *
+ */
+function choco_remove_recent_comments_style() {
+	add_filter( 'show_recent_comments_widget_style', '__return_false' );
+}
+add_action( 'widgets_init', 'choco_remove_recent_comments_style' );
+/**
+ * Remove inline styles printed when the gallery shortcode is used.
+ *
+ * Galleries are styled by the theme's style.css. This is just
+ * a simple filter call that tells WordPress to not use the default styles.
+ *
+ */
+add_filter( 'use_default_gallery_style', '__return_false' );
+
+/**
+ * Deprecated way to remove inline styles printed when the gallery shortcode is used.
+ *
+ * This function is no longer needed or used. Use the use_default_gallery_style
+ * filter instead, as seen above.
+ *
+ */
+function choco_remove_gallery_css( $css ) {
+	return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
+}
+add_filter( 'gallery_style', 'choco_remove_gallery_css' );
+
+register_sidebar( array (
+		'name'			=> 'Sidebar',
+		'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		'after_widget'	=> '</li>',
+		'before_title'	=> '<h4 class="widgettitle">',
+		'after_title'	=> '</h4>',
+) );
+
+/**
+ *Changed wp_page_menu structure to get rid of the wrapped div and add menu_class arguments to <ul>
+ */
+function choco_add_menu_class ($page_markup) {
+	preg_match('/^<div class=\"([a-z0-9-_]+)\">/i', $page_markup, $matches);
+	$divclass = $matches[1];
+	$toreplace = array('<div class="'.$divclass.'">', '</div>');
+	$new_markup = str_replace($toreplace, '', $page_markup);
+	$new_markup = preg_replace('/^<ul>/i', '<ul class="'.$divclass.'">', $new_markup);
+	return $new_markup;
+}
+add_filter('wp_page_menu', 'choco_add_menu_class');
+
+function choco_print_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	switch ( $comment->comment_type ) :
+		case '' :
+	?>
+	<li <?php comment_class( 'comment' ); ?>>
+		<div class="comment-body" id="comment-<?php comment_ID(); ?>">
+			<?php echo get_avatar( $comment, 70 ); ?>
 			<p class="author">
-				<?php comment_author_link() ?>
+				<?php comment_author_link(); ?>
 			</p>
 			<p class="comment-meta">
-				<?php comment_date() ?> at <?php comment_time() ?>
+				<?php comment_date(); ?> at <?php comment_time(); ?>
 			</p>
 			<div class="comment-content">
-				<?php if ($comment->comment_approved == '0') : ?>
-			        <em><?php _e('Your comment is awaiting moderation.') ?></em><br />
-			    <?php endif; ?>
-			    
-				<?php comment_text() ?>
-				<div class="alignleft"><?php edit_comment_link(__('(Edit)'),'  ','') ?></div>
-				
+				<?php if ( $comment->comment_approved == '0' ) : ?>
+					<em><?php _e( 'Your comment is awaiting moderation.', 'choco' ); ?></em><br />
+				<?php endif; ?>
+
+				<?php comment_text(); ?>
+				<div class="alignleft"><?php edit_comment_link(__( 'Edit', 'choco' ),'  ','' ); ?></div>
+
 			</div>
 			<div class="reply">
-		        <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-		    </div>
+				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+			</div>
 			<div class="cl">&nbsp;</div>
 		</div>
 	<?php
+			break;
+		case 'pingback'  :
+		case 'trackback' :
+	?>
+	<li <?php comment_class( 'comment' ); ?>>
+		<div class="comment-body" id="comment-<?php comment_ID(); ?>">
+			<?php _e( 'Pingback:', 'choco' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'choco' ), ' ' ); ?></div>
+	<?php
+			break;
+	endswitch;
+
 }
 
-# crawls the pages tree up to top level page ancestor 
-# and returns that page as object
-function get_page_ancestor($page_id) {
-    $page_obj = get_page($page_id);
-    while($page_obj->post_parent!=0) {
-        $page_obj = get_page($page_obj->post_parent);
-    }
-    return get_page($page_obj->ID);
-}
+// Add the default Choco gravatar
+function choco_avatar ( $avatar_defaults ) {
+		$myavatar = get_stylesheet_directory_uri() . '/images/avatar.gif';
 
-$nav_limit = 10;
-function choco_print_pages_nav() {
-	global $post, $nav_limit;
-	$current_page_ancestor = get_page_ancestor($post->ID);
-	$excluded = get_option('header_nav_pages_exclude');
-	if ($excluded) {
-		$excluded_pages = "exclude=" . implode(',', $excluded);
-	} else {
-		$excluded_pages = '';
-	}
-	
-    $pages = get_pages("parent=0&child_of=0&sort_column=menu_order&$excluded_pages");
-    
-    $html = '';
-    
-    $i = 0;
-    foreach ($pages as $page) {
-        $subpages = get_pages('child_of=' . $page->ID . '&parent=' . $page->ID . '&sort_column=menu_order');
-        $has_dropdown = !empty($subpages) && get_option('enable_dropdown', 'yes')=='yes';
-    	$classes = array();
-    	if (is_page() && $current_page_ancestor->ID==$page->ID) {
-    		$classes[] = "current_page_item";
-    	}
-    	
-    	if ($has_dropdown) {
-    		$classes[] = "has_dropdown";
-    	}
-    	$html .= '<li class="' . implode(' ', $classes) . '">';
-    	$html .= '<a href="' . get_permalink($page->ID) . '"><span>';
-    		
-		if ($has_dropdown) {
-			$html .= '<span>' . apply_filters('the_title', $page->post_title) . '</span>';
-		} else {
-			$html .= apply_filters('the_title', $page->post_title);
-		}
-		
-    	$html .= '</span></a>';
-    	if ($has_dropdown) {
-    		$html .= choco_get_pages_nav_dropdown($page, intval(get_option('dropdown_depth', 2)));
-    	}
-    	
-    	$html .= '</li>';
-    	if ($i==$nav_limit) {
-    		break;
-    	}
-    	$i++;
-    }
-    echo $html;
-}
-function choco_get_pages_nav_dropdown($page, $max_levels, $current_level=1) {
-	$html = '';
-	$subpages = get_pages('child_of=' . $page->ID . '&parent=' . $page->ID . '&sort_columnm=enu_order');
-	if (count($subpages) > 0) {
-		$html .= '<div class="dropdown dd-level-' . $current_level . '"><ul>';
-    	foreach ($subpages as $subpage) {
-    		$html .= '<li>';
-    		$html .= '<a href="' . get_permalink($subpage->ID) . '">' . apply_filters('the_title', $subpage->post_title) . '</a>';
-    		if ($current_level < $max_levels) {
-    			$html .= choco_get_pages_nav_dropdown($subpage, $max_levels, $current_level + 1);
-    		}
-    		$html .= '</li>';
-    	}
-		$html .= '</ul></div>';
-	}
-	return $html;
-}
-function choco_print_categories_nav() {
-	global $nav_limit;
-    $excluded = get_option('header_nav_categories_exclude');
-	if ($excluded) {
-		$excluded_cats = "exclude=" . implode(',', $excluded);
-	} else {
-		$excluded_cats = '';
-	}
-	
-    $categories = get_categories("$excluded_cats");
-	
-    $html = '';
-    $i=0;
-    foreach ($categories as $category) {
-    	$classes = array();
-    	if (is_category($category->term_id)) {
-    		$classes[] = "current_page_item";
-    	}
-    	$html .= '<li class="' . implode(' ', $classes) . '"><a href="' . get_category_link($category->term_id) . '"><span>' . $category->name . '</span></a></li>';
-    	
-    	if ($i==$nav_limit) {
-    		break;
-    	}
-    	$i++;
-    	
-    }
-    echo $html;
-}
-function choco_print_header() {
-    $nav_type = get_option('nav_type');
-    if ($nav_type=='pages') {
-    	choco_print_pages_nav();
-    } else if ($nav_type=='categories') {
-    	choco_print_categories_nav();
-    } else /*shouldn't happen*/ {
-    	choco_print_pages_nav();
-    }
-}
-function choco_get_body_style() {
-    $bg_color = get_option('background_color', '#3A2820');
-    $bg_image = get_option('background_image');
-    $bg_repeat = get_option('background_repeat');
-    
-    $style = 'background: ' . $bg_color;
-    if ($bg_image) {
-    	$style .= ' url(' . $bg_image . ') center top ' . $bg_repeat;
-    }
-    $style .= ';';
-    
-    return $style;
-}
+		$avatar_defaults[$myavatar] = "Choco";
 
-function choco_get_theme_path() {
-	$map = array(
-		'Default Scheme'=>'default',
-		'Dark Scheme'=>'darkgray',
-		'Red Scheme'=>'red',
+		return $avatar_defaults;
+}
+add_filter( 'avatar_defaults', 'choco_avatar' );
+
+// Load up the theme options
+require( get_template_directory() . '/inc/theme-options.php' );
+
+/**
+ *  Get choco options
+ */
+function choco_get_options() {
+	$defaults = array(
+		'color_scheme' => 'default',
 	);
-	$theme = get_option('choco_color_scheme');
-	if (isset($map[$theme])) {
-		return $map[$theme];
-	}
-	return 'default';
+	$options = get_option( 'choco_theme_options', $defaults );
+	return $options;
 }
-?>
+
+/**
+ * Register our color schemes and add them to the style queue
+ */
+function choco_color_registrar() {
+	$options = choco_get_options();
+	$color_scheme = $options['color_scheme'];
+
+	if ( ! empty( $color_scheme ) ) {
+		wp_register_style( $color_scheme, get_template_directory_uri() . '/colors/' . $color_scheme . '/style.css', null, null );
+		wp_register_style( $color_scheme . '_rtl' , get_template_directory_uri() . '/colors/' . $color_scheme . '/rtl.css', null, null );
+		wp_enqueue_style( $color_scheme );
+
+		if ( 'rtl' == get_option( 'text_direction' ) ) {
+			wp_enqueue_style( $color_scheme . '_rtl' );
+		}
+
+	}
+}
+add_action( 'wp_enqueue_scripts', 'choco_color_registrar' );
+
+/**
+ * Adds custom classes to the array of body classes.
+ */
+function choco_body_classes( $classes ) {
+	$options = choco_get_options();
+	$color_scheme = $options['color_scheme'];
+	switch ( $color_scheme ) {
+		case 'darkgray' :
+			$classes[] = 'color-darkgray';
+			break;
+		case 'red' :
+			$classes[] = 'color-red';
+			break;
+		default :
+			$classes[] = 'color-default';
+			break;
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'choco_body_classes' );
+
+/**
+ * Appends post title to Aside and Quote posts
+ *
+ * @param string $content
+ * @return string
+ */
+function choco_conditional_title( $content ) {
+
+	if ( has_post_format( 'aside' ) || has_post_format( 'quote' ) ) {
+		if ( ! is_singular() )
+			$content .= the_title( '<h2 class="post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>', false );
+		else
+			$content .= the_title( '<h2 class="post-title">', '</h2>', false );
+	}
+
+	return $content;
+}
+add_filter( 'the_content', 'choco_conditional_title', 0 );
+
+/**
+ * Filters wp_title to print a neat <title> tag based on what is being viewed.
+ *
+ * @since Choco 0.1
+ */
+function choco_wp_title( $title, $sep ) {
+	global $page, $paged;
+
+	if ( is_feed() )
+		return $title;
+
+	// Add the blog name
+	$title .= get_bloginfo( 'name' );
+
+	// Add the blog description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		$title .= " $sep $site_description";
+
+	// Add a page number if necessary:
+	if ( $paged >= 2 || $page >= 2 )
+		$title .= " $sep " . sprintf( __( 'Page %s', 'choco' ), max( $paged, $page ) );
+
+	return $title;
+}
+add_filter( 'wp_title', 'choco_wp_title', 10, 2 );
+
+/**
+ * Load Jetpack compatibility file.
+ */
+if ( file_exists( get_template_directory() . '/inc/jetpack.php' ) )
+	require get_template_directory() . '/inc/jetpack.php';

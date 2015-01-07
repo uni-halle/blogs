@@ -333,7 +333,6 @@ function graphene_settings_validator( $input ){
 			
                 
 		if ( isset( $_POST['graphene_advanced'] ) ) {
-			$input['enable_preview'] = ( isset( $input['enable_preview'] ) ) ? true : false; 
 			$input['head_tags'] = trim( $input['head_tags'] );
 			
 			if ( isset( $input['widget_hooks'] ) && is_array( $input['widget_hooks'] ) ) {

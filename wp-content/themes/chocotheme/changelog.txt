@@ -1,2 +1,0 @@
-v0.04 -- 2010-02-24
-Fixed background image upload bug

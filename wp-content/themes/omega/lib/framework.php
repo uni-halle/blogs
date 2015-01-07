@@ -252,14 +252,6 @@ class Omega {
 		/* Adds core WordPress HTML5 support. */
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
 
-		/* Remove support for the the Breadcrumb Trail extension if the plugin is installed. */
-		if ( function_exists( 'breadcrumb_trail' ) )
-			remove_theme_support( 'breadcrumb-trail' );
-
-		/* Remove support for the the Cleaner Gallery extension if the plugin is installed. */
-		if ( function_exists( 'cleaner_gallery' ) )
-			remove_theme_support( 'cleaner-gallery' );
-
 		/* Remove support for the the Get the Image extension if the plugin is installed. */
 		if ( function_exists( 'get_the_image' ) )
 			remove_theme_support( 'get-the-image' );
@@ -267,10 +259,6 @@ class Omega {
 		/* Remove support for the Featured Header extension if the class exists. */
 		if ( class_exists( 'Featured_Header' ) )
 			remove_theme_support( 'featured-header' );
-
-		/* Remove support for the Random Custom Background extension if the class exists. */
-		if ( class_exists( 'Random_Custom_Background' ) )
-			remove_theme_support( 'random-custom-background' );
 	}
 
 	/**
@@ -345,17 +333,8 @@ class Omega {
 	 */
 	function extensions() {
 
-		/* Load the Breadcrumb Trail extension if supported. */
-		require_if_theme_supports( 'breadcrumb-trail', trailingslashit( OMEGA_EXTENSIONS ) . 'breadcrumb-trail.php' );
-
-		/* Load the Cleaner Gallery extension if supported. */
-		require_if_theme_supports( 'cleaner-gallery', trailingslashit( OMEGA_EXTENSIONS ) . 'cleaner-gallery.php' );
-
 		/* Load the Get the Image extension if supported. */
 		require_if_theme_supports( 'get-the-image', trailingslashit( OMEGA_EXTENSIONS ) . 'get-the-image.php' );
-
-		/* Load the Cleaner Caption extension if supported. */
-		require_if_theme_supports( 'cleaner-caption', trailingslashit( OMEGA_EXTENSIONS ) . 'cleaner-caption.php' );
 
 		/* Load the Loop Pagination extension if supported. */
 		require_if_theme_supports( 'loop-pagination', trailingslashit( OMEGA_EXTENSIONS ) . 'loop-pagination.php' );
@@ -368,9 +347,6 @@ class Omega {
 
 		/* Load the Featured Header extension if supported. */
 		require_if_theme_supports( 'featured-header', trailingslashit( OMEGA_EXTENSIONS ) . 'featured-header.php' );
-
-		/* Load the Random Custom Background extension if supported. */
-		require_if_theme_supports( 'random-custom-background', trailingslashit( OMEGA_EXTENSIONS ) . 'random-custom-background.php' );
 
 		/* Load the Color Palette extension if supported. */
 		require_if_theme_supports( 'color-palette', trailingslashit( OMEGA_EXTENSIONS ) . 'color-palette.php' );
@@ -393,8 +369,8 @@ class Omega {
 		/* Load custom comment extension. */
 		require_once( trailingslashit( OMEGA_EXTENSIONS ) . '/custom-comment.php' );
 
-		/* Load custom post extension. */
-		require_once( trailingslashit( OMEGA_EXTENSIONS ) . '/custom-post.php' );
+		/* Load custom post extension if supported. */
+		require_if_theme_supports( 'omega-custom-post', trailingslashit( OMEGA_EXTENSIONS ) . '/custom-post.php' );
 
 		/* Load  footer widgets extension if supported. */
 		require_if_theme_supports( 'omega-footer-widgets', trailingslashit( OMEGA_EXTENSIONS ) . '/footer-widgets.php' );

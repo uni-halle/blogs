@@ -428,7 +428,11 @@ function graphene_get_custom_colours( $hook_suffix = '', $force_all = false ){
 					);
 		$extra_args = array( graphene_hex_addition( $graphene_settings['bg_button'], -26), graphene_hex_addition( $graphene_settings['bg_button'], -52) );
 		$style .= graphene_build_style( $colours, $extra_args );
-		if ( is_admin() ) $style = str_replace( '.button', '.colour-preview .button', $style );
+		if ( is_admin() ) {
+			$style = str_replace( '.button', '.colour-preview .button', $style );
+			$style = str_replace( ' button', ' .colour-preview button', $style );
+			$style = str_replace( ' input[type="submit"]', ' .colour-preview input[type="submit"]', $style );
+		}
                 
         // Archive
 		$colours = array(

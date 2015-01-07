@@ -247,7 +247,7 @@ function graphene_options_general() {
                         <th scope="row">
                             <label for="frontpage_posts_cats"><?php _e( 'Front page posts categories', 'graphene' ); ?></label>
                         </th>
-                        <td>
+                        <td>                        
                             <select name="graphene_settings[frontpage_posts_cats][]" id="frontpage_posts_cats" multiple="multiple" class="select-multiple chzn-select" data-placeholder="<?php _e( 'Click to select categories or type to search', 'graphene' ); ?>">
                                 <?php /* Get the list of categories */ 
                                     $categories = get_categories( array( 'hide_empty' => false ) );
@@ -267,8 +267,6 @@ function graphene_options_general() {
                 <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
             </div>
         </div>
-        
-        <?php // disect_it($graphene_settings['frontpage_posts_cats']); ?>
         
         
         <?php /* Homepage panes options */ ?>
@@ -331,7 +329,7 @@ function graphene_options_general() {
                             <label for="homepage_panes_posts"><?php _e( 'Posts and/or pages to display', 'graphene' ); ?></label>
                         </th>
                         <td>
-                            <input type="text" name="graphene_settings[homepage_panes_posts]" id="homepage_panes_posts" value="<?php echo $graphene_settings['homepage_panes_posts']; ?>" size="10" class="code" /><br />
+                            <input type="text" name="graphene_settings[homepage_panes_posts]" id="homepage_panes_posts" value="<?php echo $graphene_settings['homepage_panes_posts']; ?>" size="10" class="widefat code" /><br />
                             <span class="description"><?php _e( 'Enter ID of posts and/or pages to be displayed, separated by comma. Example: <code>1,13,45,33</code>', 'graphene' ); ?></span>
                         </td>
                     </tr>                    

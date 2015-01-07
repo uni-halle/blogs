@@ -5,6 +5,19 @@
  * @package Simone
  */
 
+/**
+ * For child theme authors: To disable the styles and layouts from Simone properly, 
+ * add the following code to your child theme functions.php file:
+ *
+ * <?php
+ * add_action( 'wp_enqueue_scripts', 'dequeue_parent_theme_styles', 11 );
+ * function dequeue_parent_theme_styles() {
+ *     wp_dequeue_style( 'simone-parent-style' );
+ *     wp_dequeue_style( 'simone-layout' );
+ * }
+ *
+ */
+
 if ( ! function_exists( 'simone_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -60,10 +73,10 @@ function simone_setup() {
 	add_theme_support( 'post-formats', array( 'aside' ) );
 
 	// Setup the WordPress core custom background feature.
-	//add_theme_support( 'custom-background', apply_filters( 'simone_custom_background_args', array(
-	//	'default-color' => 'ffffff',
-	//	'default-image' => '',
-	//) ) );
+	add_theme_support( 'custom-background', apply_filters( 'simone_custom_background_args', array(
+		'default-color' => 'b2b2b2',
+		'default-image' => get_template_directory_uri() . '/images/pattern.svg',
+	) ) );
 
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
@@ -106,14 +119,31 @@ add_action( 'widgets_init', 'simone_widgets_init' );
  * Enqueue scripts and styles.
  */
 function simone_scripts() {
-	wp_enqueue_style( 'simone-style', get_stylesheet_uri() );
         
-        if (is_page_template('page-templates/page-nosidebar.php') || ! is_active_sidebar( 'sidebar-1' )) {
-            wp_enqueue_style( 'my-sinome-layout-style' , get_template_directory_uri() . '/layouts/no-sidebar.css');
+        // Get the current layout setting (sidebar left or right)
+        $simone_layout = get_option( 'layout_setting' );
+
+        // Load parent theme stylesheet even when child theme is active
+        if ( is_child_theme() ) {
+                wp_enqueue_style( 'simone-parent-style', trailingslashit( get_template_directory_uri() ) . 'style.css' );
         } else {
-            wp_enqueue_style( 'my-sinome-layout-style' , get_template_directory_uri() . '/layouts/content-sidebar.css');
+                wp_enqueue_style( 'simone-style', get_stylesheet_uri() );
         }
-        
+
+        if (is_page_template('page-templates/page-nosidebar.php') || ! is_active_sidebar( 'sidebar-1' )) {
+            wp_enqueue_style( 'simone-layout' , get_template_directory_uri() . '/layouts/no-sidebar.css' );
+        } elseif ( $simone_layout == 'left-sidebar' ) {
+            wp_enqueue_style( 'simone-layout' , get_template_directory_uri() . '/layouts/sidebar-content.css' );
+        } else {
+            wp_enqueue_style( 'simone-layout' , get_template_directory_uri() . '/layouts/content-sidebar.css' );
+
+        }
+
+        // Load child theme stylesheet
+        if ( is_child_theme() ) {
+                wp_enqueue_style( 'simone-style', get_stylesheet_uri() );
+        }
+
         // Lato http://www.google.com/fonts/specimen/Lato + PT Serif http://www.google.com/fonts/specimen/PT+Serif
         wp_enqueue_style( 'simone-google-fonts', '//fonts.googleapis.com/css?family=Lato:100,300,400,400italic,700,900,900italic|PT+Serif:400,700,400italic,700italic' );
         

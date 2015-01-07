@@ -1,0 +1,23 @@
+#wpcontent select option {
+	padding-right: 5px;
+}
+#choco-colors td {
+	padding-top: 15px;
+}
+#choco-colors label {
+	display: block;
+	float: left;
+	margin: 0 20px 20px 2px;
+	position: relative;
+}
+#choco-colors input {
+	margin: 0 0 10px;
+}
+#choco-colors span {
+	display: block;
+	width: 136px;
+}
+#choco-colors img {
+	display: block;
+	margin-left: -2px;
+}

@@ -8,13 +8,24 @@ Simone's design is focused on typography and aims to put the content front and c
 
 ### Translations
 Simone ships with English as the default language. Translations are available for:
+- Catalan (CA via Faleg)
+- Chinese (simplified) (zh_CN via Jerry Wang)
+- Dutch (nl_NL via Richard van Naamen)
 - Finnish (fi via Sami Keijonen)
 - French (fr_FR via Christine Rondeau)
 - German (de_DE via Caspar Hübinger)
 - Hungarian (hu_HU via Beata Kozma)
 - Italian (it_IT via  Giorgio Riccardi)
 - Norwegian Bokmål (nb_NO)
+- Persian / Farsi (fa_IR via Emad Navy)
+- Portugese (pt_PT via João Gomes)
+- Russian (ru_RU via Vladimir Samoletov)
+- Spanish (es_ES via Juan Pablo)
+- Swedish (se_SE via Ted Derneby)
+- Turkish (tr_TR via Mehmet Yurtar)
 
+### RTL language support
+Simone ships with full RTL language support. All relevant content is reversed including menus, menu position, search bars, and other features. Sidebar can be left in its default position or moved to the left through the customizer.
 
 ### Customizer options
 Extended options available from the Customizer:
@@ -23,9 +34,11 @@ Extended options available from the Customizer:
 2. Header text color
 3. Link color (changes link colors throughout the site including site title. Also sets color of .border-custom class.)
 4. Optional Header image of 1280px x 300px
+5. Sidebar position: Simone can be configured to display the sidebar on the right (default) or on the left.
+6. Archive display: Archive pages show excerpts by default. This can be changed to display full content.
 
 ### Widgetized areas
-1. Right sidebar, max content width 300px.
+1. Sidebar, max content width 300px.
 2. Footer, max content width 320px.
 
 ### Post Formats
@@ -59,6 +72,47 @@ Responsive featured images powered by [Picturefill](http://scottjehl.github.io/p
 Simone is named after philosopher [Simone de Beauvoir](http://en.wikipedia.org/wiki/Simone_de_Beauvoir)
 
 ## Changelog
+
+### 2.0.3
+- Fix html escaping in featured image alt text
+
+
+### 2.0.2
+- CSS cleanup and bugfix for RTL
+
+### 2.0.1
+- New translation for Turkish (courtesy of Mehmet Yurtar)
+- Updated translation for Simplified Chinese (courtesy of Jerry Wang)
+- Various CSS cleanup for sidebar left scenario
+
+### 2.0
+#### New features:
+- RTL language support
+- Custom background color and background image option in Customizer
+- Sidebar position option in Customizer
+- Index and archive content display (excerpt or content) in Customizer
+
+#### Updates:
+- New translation for Persian / Farsi (coursesy of Emad Navy)
+- New translation for Swedish (courtesy of Ted Derneby)
+- New method for loading of stylesheets when child theme is used.
+
+### 1.0.11
+- New translation for Catalan (courtesy of Faleg)
+- New translation for Dutch (courtesy of Richard van Naamen)
+
+### 1.0.10 
+- New translation for Simplified Chinese (courtesy of Jerry Wang)
+- Updated Portugese translation (courtesy of João Gomes)
+- Heavier font in site description for improved accessibility
+- Various code fixes and cleanups
+
+### 1.0.9
+- Font Awesome updated to 4.2.0
+- New social menu icons for Foursquare, JSFiddle, Reddit, SoundCloud, Stack Overflow, Vine, Yelp, WordPress.com
+- New translations for Spanish (courtesy of Juan Pablo), Portugese (courtesy of João Gomes), and Russian (courtesy of Vladimir Samoletov).
+- Various CSS and HTML updates.
+
 ### 1.0.8.1
 - New translations for Finnish (courtesy of Sami Keijonen) and Italian (courtesy of  Giorgio Riccardi).
 

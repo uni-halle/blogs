@@ -3,8 +3,6 @@
  * @package Customizr
  * @since Customizr 1.0
  */
-/* global _wpCustomizeWidgetsSettings */
-
 (function (wp, $) {
 
   var api = wp.customize;
@@ -179,13 +177,22 @@
         return 'excerpt' == to;
       }
     },
+    'tc_theme_options[tc_sticky_show_title_logo]' : {
+      controls: [
+        'tc_theme_options[tc_sticky_logo_upload]',
+      ],
+      callback: function (to) {
+        return '1' == to;
+      }
+    },
     'tc_theme_options[tc_sticky_header]' : {
       controls: [
         'tc_theme_options[tc_sticky_show_tagline]',
         'tc_theme_options[tc_sticky_show_title_logo]',
         'tc_theme_options[tc_sticky_shrink_title_logo]',
         'tc_theme_options[tc_sticky_show_menu]',
-        'tc_theme_options[tc_sticky_transparent_on_scroll]'
+        'tc_theme_options[tc_sticky_transparent_on_scroll]',
+        'tc_theme_options[tc_sticky_logo_upload]'
       ],
       callback: function (to) {
         return '1' == to;
@@ -222,75 +229,9 @@
       });
     });
   });
-  
 
-
-  /* CONTRIBUTION TO CUSTOMIZR */
-  if (  ! TCControlParams.HideDonate )
-    donate_block();
-
-  function donate_block() {
-    var html = '';
-    html += '  <div id="tc-donate-customizer">';
-    html += '    <span class="tc-close-request button">X</span>';           
-    html += '    <h3>Hi! This is <a href="https://twitter.com/nicguillaume" target="_blank">Nicolas</a>, developer of the Customizr theme :-).</h3>';
-    html += '    <span class="tc-notice"> I\'m doing my best to make Customizr the perfect free theme for you. If you think it helped you build a better web presence, please support it\'s continued development with a donation of $20, $50, ... .</span>';
-    html += '      <a class="tc-donate-link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=8CTH6YFDBQYGU" target="_blank" rel="nofollow">';
-    html += '        <img src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" alt="Make a donation for Customizr">';
-    html += '      </a>';
-    html += '     <div class="donate-alert">';
-    html += '       <p class="tc-notice">Once clicked the "Hide forever" button, this donation block will not be displayed anymore.<br/>Either you are using Customizr for personal or business purposes, any kind of sponsorship will be appreciated to support this free theme.<br/><strong>Already donator? Thanks, you rock!<br/><br/> Live long and prosper with Customizr!</strong></p>';
-    html += '       <span class="tc-hide-donate button">Hide forever</span>';
-    html += '       <span class="tc-cancel-hide-donate button">Let me think twice</span>';
-    html += '     </div>';
-    html += '  </div>';
-
-    $('#customize-info').append( html );
-
-     //BIND EVENTS
-    $('.tc-close-request').click( function(e) {
-      $('.donate-alert').slideToggle("fast");
-      $(this).hide();
-    });
-
-    $('.tc-hide-donate').click( function(e) {
-      DoAjaxSave();
-      setTimeout(function(){
-          $('#tc-donate-customizer').slideToggle("fast");
-      }, 200);
-    });
-
-    $('.tc-cancel-hide-donate').click( function(e) {
-      $('.donate-alert').slideToggle("fast");
-      setTimeout(function(){
-          $('.tc-close-request').show();
-      }, 200);
-    });
-  }//end of donate block
-
-
-  function  DoAjaxSave() {
-      var AjaxUrl         = TCControlParams.AjaxUrl,
-      query = {
-          action  : 'hide_donate',
-          TCnonce :  TCControlParams.TCNonce
-      },
-      request = $.post( AjaxUrl, query );
-      request.done( function( response ) {
-          // Check if the user is logged out.
-          if ( '0' === response ) {
-              return;
-          }
-          // Check for cheaters.
-          if ( '-1' === response ) {
-              return;
-          }
-      });
-  }//end of function
-
-
-  //FIRE SPECIFIC INPUT PLUGINS
-  $(function () {
+  //DOM READY SPECIFIC CONTROLS ACTIONS
+  $( function($) {
     /* CHECK */
     //init icheck only if not already initiated
     //exclude widget inputs
@@ -308,46 +249,57 @@
 
     /* SELECT */
     //Exclude skin
-    $('select[data-customize-setting-link]').not('select[data-customize-setting-link="tc_theme_options[tc_skin]"]').each( function() {
-      $(this).selecter({
-      //triggers a change event on the view, passing the newly selected value + index as parameters.
-      // callback : function(value, index) {
-      //   self.triggerSettingChange( window.event || {} , value, index); // first param is a null event.
-      // }
-      });
+    $('select[data-customize-setting-link]').not('select[data-customize-setting-link="tc_theme_options[tc_skin]"]')
+      .not('select[data-customize-setting-link="tc_theme_options[tc_fonts]"]')
+      .each( function() {
+        $(this).selecter({
+        //triggers a change event on the view, passing the newly selected value + index as parameters.
+        // callback : function(value, index) {
+        //   self.triggerSettingChange( window.event || {} , value, index); // first param is a null event.
+        // }
+        });
     });
 
-    //Skins handled with select2
-    function paintOptionElement(state) {
-        if (!state.id) return state.text; // optgroup
-        return '<span class="tc-select2-skin-color" style="background:' + $(state.element).data('hex') + '">' + $(state.element).data('hex') + '<span>';
-    }
+
+    //SKINS
     //http://ivaynberg.github.io/select2/#documentation
     $('select[data-customize-setting-link="tc_theme_options[tc_skin]"]').select2({
         minimumResultsForSearch: -1, //no search box needed
-        formatResult: paintOptionElement,
-        formatSelection: paintOptionElement,
+        formatResult: paintSkinOptionElement,
+        formatSelection: paintSkinOptionElement,
         escapeMarkup: function(m) { return m; }
-    })
-    .on("select2-highlight", function(e) {
+    }).on("select2-highlight", function(e) {
       //triggerChange = true @see val method doc here http://ivaynberg.github.io/select2/#documentation
       $(this).select2("val" , e.val, true );
     });
+    //Skins handled with select2
+    function paintSkinOptionElement(state) {
+        if (!state.id) return state.text; // optgroup
+        return '<span class="tc-select2-skin-color" style="background:' + $(state.element).data('hex') + '">' + $(state.element).data('hex') + '<span>';
+    }
+
+    //FONTS
+    $('select[data-customize-setting-link="tc_theme_options[tc_fonts]"]').select2({
+        minimumResultsForSearch: -1, //no search box needed
+        formatResult: paintFontOptionElement,
+        formatSelection: paintFontOptionElement,
+        escapeMarkup: function(m) { return m; }
+    }).on("select2-highlight", function(e) {
+      //triggerChange = true @see val method doc here http://ivaynberg.github.io/select2/#documentation
+      $(this).select2("val" , e.val, true );
+    });
+    function paintFontOptionElement(state) {
+        if ( ! state.id && ( -1 != state.text.indexOf('Google') ) )
+          return '<img class="tc-google-logo" src="http://www.google.com/images/logos/google_logo_41.png" height="20"/> Font pairs'; // google font optgroup
+        else if ( ! state.id )
+          return state.text;// optgroup different than google font
+        return '<span class="tc-select2-font">' + state.text + '<span>';
+    }
+    //Fixes the non closing bug for the select2 dropdown
+    $('#customize-controls').on('click' , function() { $('select[data-customize-setting-link]').select2("close"); } );
 
     /* NUMBER */
     $('input[type="number"]').stepper();
   });
 
-  $('.accordion-section').not('.control-panel').click( function () {
-    _recenter_current_section($(this));
-  });
-  function _recenter_current_section( section ) {
-    var $siblings               = section.siblings( '.open' );
-    //check if clicked element is above or below sibling with offset.top
-    if ( 0 !== $siblings.length &&  $siblings.offset().top < 0 ) {
-      $('.wp-full-overlay-sidebar-content').animate({
-            scrollTop:  - $('#customize-theme-controls').offset().top - $siblings.height() + section.offset().top + $('.wp-full-overlay-sidebar-content').offset().top
-      }, 700);
-    }
-  }//end of fn
 })( wp, jQuery );

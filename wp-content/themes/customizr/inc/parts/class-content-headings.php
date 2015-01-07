@@ -2,7 +2,7 @@
 /**
 * Headings actions
 *
-* 
+*
 * @package      Customizr
 * @subpackage   classes
 * @since        3.1.0
@@ -16,12 +16,12 @@ if ( ! class_exists( 'TC_headings' ) ) :
       static $instance;
       function __construct () {
         self::$instance =& $this;
-        //set actions and filters for single post and page headings
-        add_action( '__before_loop'             , array( $this , 'tc_set_single_post_page_heading_hooks') , 20 );
+        //set actions and filters for posts and page headings
+        add_action( 'wp'                            , array( $this , 'tc_set_post_page_heading_hooks') );
         //set actions and filters for archives headings
-        add_action( 'template_redirect'             , array( $this , 'tc_set_archives_heading_hooks') );
+        add_action( 'wp'                            , array( $this , 'tc_set_archives_heading_hooks') );
         //Set headings user options
-        add_action( 'template_redirect'             , array( $this , 'tc_set_headings_options') );
+        add_action( 'wp'                            , array( $this , 'tc_set_headings_options') );
       }
 
 
@@ -29,7 +29,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
       /**
       * @return void
       * set up hooks for archives headings
-      * callback of template_redirect
+      * callback of wp
       *
       * @package Customizr
       * @since Customizr 3.2.6
@@ -40,10 +40,10 @@ if ( ! class_exists( 'TC_headings' ) ) :
           return;
 
         //Headings for archives, authors, search, 404
-        add_action ( '__before_loop'                  , array( $this , 'tc_headings_view' ) );
+        add_action ( '__before_loop'                  , array( $this , 'tc_prepare_headings_view' ) );
         //Set archive icon with customizer options (since 3.2.0)
         add_filter ( 'tc_archive_icon'                , array( $this , 'tc_set_archive_icon' ) );
-        
+
         add_filter( 'tc_archive_header_class'         , array( $this , 'tc_archive_title_and_class_callback'), 10, 2 );
         add_filter( 'tc_headings_archive_html'        , array( $this , 'tc_archive_title_and_class_callback'), 10, 1 );
         global $wp_query;
@@ -55,25 +55,23 @@ if ( ! class_exists( 'TC_headings' ) ) :
 
       /**
       * @return void
-      * set up hooks for single post and page headings
-      * callback of template_redirect
+      * set up hooks for post and page headings
+      * callback of wp
       *
       * @package Customizr
       * @since Customizr 3.2.6
       */
-      function tc_set_single_post_page_heading_hooks() {
-        //don't display titles for some post formats
-        if( in_array( get_post_format(), apply_filters( 'tc_post_formats_with_no_header', TC_init::$instance -> post_formats_with_no_header ) ) )
-          return;
+      function tc_set_post_page_heading_hooks() {
 
         //by default don't display the title of the front page
-        if( apply_filters('tc_show_page_title', is_front_page() && 'page' == get_option( 'show_on_front' ) ) )
+        if( apply_filters('tc_hide_front_page_title', is_front_page() && 'page' == get_option( 'show_on_front' ) ) )
           return;
 
         //Set single post/page icon with customizer options (since 3.2.0)
         add_filter ( 'tc_content_title_icon'          , array( $this , 'tc_set_post_page_icon' ) );
-        //Headings for post, page, attachment
-        add_action ( '__before_content'               , array( $this , 'tc_headings_view' ) );
+        //Prepare the headings for post, page, attachment
+        add_action ( '__before_content'               , array( $this , 'tc_prepare_headings_view' ) );
+        //Populate heading with default content
         add_filter ( 'tc_headings_content_html'       , array( $this , 'tc_post_page_title_callback'), 10, 2 );
         //Create the Customizr title
         add_filter( 'the_title'                       , array( $this , 'tc_content_heading_title' ) , 0 );
@@ -81,11 +79,31 @@ if ( ! class_exists( 'TC_headings' ) ) :
         add_filter( 'the_title'                       , array( $this , 'tc_add_comment_bubble_after_title' ), 1 );
         //Add edit link
         add_filter( 'the_title'                       , array( $this , 'tc_add_edit_link_after_title' ), 2 );
+
+        //SOME DEFAULT OPTIONS
         //No hr if not singular
         if ( ! is_singular() )
           add_filter( 'tc_content_headings_separator' , '__return_false' );
+
+        //No heading if post with no heading
+        add_filter( 'tc_prepare_headings_view'        , array( $this, 'tc_post_formats_heading') , 100 );
+
       }
 
+
+      /**
+      * @return string or boolean
+      * Returns the heading html content or false
+      * callback of tc_headings_content_html
+      *
+      * @package Customizr
+      * @since Customizr 3.2.9
+      */
+      function tc_post_formats_heading( $_html ) {
+        if( in_array( get_post_format(), apply_filters( 'tc_post_formats_with_no_heading', TC_init::$instance -> post_formats_with_no_heading ) ) )
+          return;
+        return $_html;
+      }
 
 
       /**
@@ -95,12 +113,12 @@ if ( ! class_exists( 'TC_headings' ) ) :
       * @package Customizr
       * @since Customizr 3.1.0
       */
-      function tc_headings_view() {
+      function tc_prepare_headings_view() {
         $_heading_type = ( '__before_content' == current_filter() ) ? 'content' : 'archive';
         ob_start();
         ?>
         <header class="<?php echo implode( ' ' , apply_filters( "tc_{$_heading_type}_header_class", array('entry-header'), $_return_class = true ) ); ?>">
-          <?php 
+          <?php
             do_action( "__before_{$_heading_type}_title" );
             echo apply_filters( "tc_headings_{$_heading_type}_html", '' , $_heading_type );
             do_action( "__after_{$_heading_type}_title" );
@@ -111,7 +129,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
         <?php
         $html = ob_get_contents();
         if ($html) ob_end_clean();
-        echo apply_filters( 'tc_headings_view', $html );
+        echo apply_filters( 'tc_prepare_headings_view', $html );
       }//end of function
 
 
@@ -168,6 +186,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
       * @since Customizr 3.2.6
       */
       function tc_add_comment_bubble_after_title( $_title ) {
+
         //Must be in the loop and enabled by user
         if ( ! in_the_loop() || 0 == esc_attr( tc__f( '__get_option' , 'tc_comment_show_bubble' ) ) )
           return $_title;
@@ -179,10 +198,10 @@ if ( ! class_exists( 'TC_headings' ) ) :
         $comments_enabled                  = ( comments_open() && get_comments_number() != 0 && !post_password_required() && !is_page() ) ? true : $comments_enabled;
 
         if ( ! apply_filters( 'tc_comments_in_title', $comments_enabled )
-          || ! in_array( get_post_type(), apply_filters('tc_show_comment_bubbles_for_post_types' , array( 'post') ) ) )
+          || ! in_array( get_post_type(), apply_filters('tc_show_comment_bubbles_for_post_types' , array( 'post' , 'page') ) ) )
           return $_title;
 
-        $_default_bubble_comment                    = apply_filters( 
+        $_default_bubble_comment                    = apply_filters(
           'tc_bubble_comment',
           sprintf('<span class="tc-comment-bubble fs1 icon-bubble" %1$s></span><span class="inner">%2$s</span>',
             apply_filters( 'tc_comment_bubble_style' , ( 0 == get_comments_number() ) ? 'style="color:#ECECEC" ':'' ),
@@ -216,8 +235,8 @@ if ( ! class_exists( 'TC_headings' ) ) :
           return $_title;
 
         //when are we displaying the edit link?
-        $edit_enabled                      = ( (is_user_logged_in()) && current_user_can('edit_pages') && is_page() ) ? true : false;
-        $edit_enabled                      = ( (is_user_logged_in()) && current_user_can('edit_post' , get_the_ID() ) && ! is_page() ) ? true : $edit_enabled;
+        $edit_enabled                      = ( (is_user_logged_in()) && is_page() && current_user_can('edit_pages') ) ? true : false;
+        $edit_enabled                      = ( (is_user_logged_in()) && 0 !== get_the_ID() && current_user_can('edit_post' , get_the_ID() ) && ! is_page() ) ? true : $edit_enabled;
         if ( ! apply_filters( 'tc_edit_in_title', $edit_enabled ) )
           return $_title;
 
@@ -255,7 +274,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
       /**
       * Filter tc_archive_icon
       * @return  boolean
-      * 
+      *
       * @package Customizr
       * @since Customizr 3.2.0
       */
@@ -271,7 +290,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
       /**
       * Return 1) the archive title html content OR 2) the archive title class OR 3) the boolean
       * @return  boolean
-      * 
+      *
       * @package Customizr
       * @since Customizr 3.2.0
       */
@@ -319,7 +338,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
           );
           $content       = apply_filters( 'tc_search_results_header_content', $content );
         }
-        
+
         //author's posts page
         if ( !is_singular() && is_author() ) {
           //gets the user ID
@@ -328,7 +347,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
           $content    = sprintf( '<h1 class="%1$s">%2$s %3$s</h1>',
                   apply_filters( 'tc_archive_icon', 'format-icon' ),
                   apply_filters( 'tc_author_archive_title' , __( 'Author Archives :' , 'customizr' ) ),
-                  '<span class="vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( $user_id ) ) . '" title="' . esc_attr( get_the_author_meta( 'display_name' , $user_id ) ) . '" rel="me">' . get_the_author_meta( 'display_name' , $user_id ) . '</a></span>' 
+                  '<span class="vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( $user_id ) ) . '" title="' . esc_attr( get_the_author_meta( 'display_name' , $user_id ) ) . '" rel="me">' . get_the_author_meta( 'display_name' , $user_id ) . '</a></span>'
           );
           if ( apply_filters ( 'tc_show_author_meta' , get_the_author_meta( 'description', $user_id  ) ) ) {
             $content    .= sprintf('%1$s<div class="author-info"><div class="%2$s">%3$s</div></div>',
@@ -402,7 +421,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
       /**
       * @return void
       * set up user defined options
-      * callback of template_redirect
+      * callback of wp
       *
       * @package Customizr
       * @since Customizr 3.2.6
@@ -423,7 +442,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
       /**
       * Callback of tc_content_header_class
       * @return array of css classes
-      * 
+      *
       * @package Customizr
       * @since Customizr 3.2.6
       */
@@ -437,7 +456,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
       /**
       * Callback of tc_bubble_comment
       * @return string
-      * 
+      *
       * @package Customizr
       * @since Customizr 3.2.6
       */
@@ -447,7 +466,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
           return $_default;
         if ( 0 == get_comments_number() )
           return '';
- 
+
         return sprintf('<span class="tc-comment-bubble %3$s">%1$s %2$s</span>',
                   get_comments_number(),
                   sprintf( _n( 'comment' , 'comments' , get_comments_number(), 'customizr' ),
@@ -486,7 +505,7 @@ if ( ! class_exists( 'TC_headings' ) ) :
               }
             ";
           }
-          $_css .= " 
+          $_css .= "
             .comments-link .custom-bubble-one {
               position: relative;
               bottom: 28px;
@@ -549,6 +568,11 @@ if ( ! class_exists( 'TC_headings' ) ) :
           if ( 0 == esc_attr( tc__f( '__get_option' , 'tc_post_metas_update_notice_in_title' ) ) || ! in_array( get_post_type(), apply_filters('tc_show_update_notice_for_post_types' , array( 'post') ) ) )
               return $html;
 
+          //php version check for DateTime
+          //http://php.net/manual/fr/class.datetime.php
+          if ( version_compare( PHP_VERSION, '5.2.0' ) < 0 )
+            return $html;
+
           //Instantiates the different date objects
           $created = new DateTime( get_the_date('Y-m-d g:i:s') );
           $updated = new DateTime( get_the_modified_date('Y-m-d g:i:s') );
@@ -558,28 +582,28 @@ if ( ! class_exists( 'TC_headings' ) ) :
           //Creates the date_diff objects from dates
           $created_to_updated = TC_utils::$instance -> tc_date_diff( $created , $updated );
           $updated_to_today   = TC_utils::$instance -> tc_date_diff( $updated, $current );
-          
+
           //Check if the post has been updated since its creation
           $has_been_updated = ( $created_to_updated -> s > 0 || $created_to_updated -> i > 0 ) ? true : false;
-          
+
           //get the user defined interval in days
           $_interval = esc_attr( tc__f( '__get_option' , 'tc_post_metas_update_notice_interval' ) );
           $_interval = ( 0 != $_interval ) ? $_interval : 30;
-          
+
           //Check if the last update is less than n days old. (replace n by your own value)
           $has_recent_update = ( $has_been_updated && $updated_to_today -> days < $_interval ) ? true : false;
-          
+
           if ( ! $has_recent_update )
               return $html;
 
            //Add HTML after the title
           $recent_update = $has_recent_update ? 'Recently updated' : '';
-           
+
           //Return the modified title
           return apply_filters(
-              'tc_update_notice_in_title', 
+              'tc_update_notice_in_title',
               sprintf('%1$s &nbsp; <span class="tc-update-notice label %3$s">%2$s</span>',
-                  $html, 
+                  $html,
                   esc_attr( tc__f( '__get_option' , 'tc_post_metas_update_notice_text' ) ),
                   esc_attr( tc__f( '__get_option' , 'tc_post_metas_update_notice_format' ) )
               )

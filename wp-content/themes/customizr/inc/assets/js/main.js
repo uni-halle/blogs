@@ -5,17 +5,13 @@
 */
 //ON DOM READY
 jQuery(function ($) {
-    function g($) {
-        return ($.which > 0 || "mousedown" === $.type || "mousewheel" === $.type) && f.stop().off("scroll mousedown DOMMouseScroll mousewheel keyup", g);
-    }
-
     //fancybox with localized script variables
     var b = TCParams.FancyBoxState,
         c = TCParams.FancyBoxAutoscale;
     if ( 1 == b ) {
             $("a.grouped_elements").fancybox({
-            transitionIn: "elastic",
             transitionOut: "elastic",
+            transitionIn: "elastic",
             speedIn: 200,
             speedOut: 200,
             overlayShow: !1,
@@ -34,7 +30,7 @@ jQuery(function ($) {
                 $(this).attr('title',alt);
             }
          });
-	}
+    }
 
 
     //Slider with localized script variables
@@ -82,6 +78,9 @@ jQuery(function ($) {
     }
 
     //BACK TO TOP
+    function g($) {
+        return ($.which > 0 || "mousedown" === $.type || "mousewheel" === $.type) && f.stop().off("scroll mousedown DOMMouseScroll mousewheel keyup", g);
+    }
     //Stop the viewport animation if user interaction is detected
     var f = $("html, body");
     $(".back-to-top, .tc-btt-wrapper, .btt-arrow").on("click touchstart touchend", function ($) {
@@ -95,16 +94,39 @@ jQuery(function ($) {
             $.preventDefault();
     });
 
-    //displays the button on scroll
-    $(document).on( 'scroll', function() {
-        //console.log($(window));
-            if ( $(window).scrollTop() > 100 ) {
-                $('.tc-btt-wrapper').addClass('show');
-            } else {
-                $('.tc-btt-wrapper').removeClass('show');
-            }
-        }
-    );
+
+    //DISPLAY BACK TO TOP BUTTON ON SCROLL
+    function btt_scrolling_actions() {
+      if ( $(window).scrollTop() > 100 )
+        $('.tc-btt-wrapper').addClass('show');
+      else
+        $('.tc-btt-wrapper').removeClass('show');
+    }
+    //use of a timer instead of attaching handler directly to the window scroll event
+    //@uses TCParams.timerOnScrollAllBrowsers : boolean set to true by default
+    //http://ejohn.org/blog/learning-from-twitter/
+    //https://dannyvankooten.com/delay-scroll-handlers-javascript/
+    var btt_timer,
+        btt_increment = 1,//used to wait a little bit after the first user scroll actions to trigger the timer
+        btt_triggerHeight = 20; //0.5 * windowHeight;
+
+    $(window).scroll(function() {
+      if ( btt_timer) {
+          btt_increment++;
+          window.clearTimeout(btt_timer);
+      }
+      if ( 1 == TCParams.timerOnScrollAllBrowsers ) {
+          btt_timer = window.setTimeout(function() {
+              btt_scrolling_actions();
+           }, btt_increment > 5 ? 50 : 0 );
+      } else if ( $('body').hasClass('ie') ) {
+           btt_timer = window.setTimeout(function() {
+              btt_scrolling_actions();
+           }, btt_increment > 5 ? 50 : 0 );
+      }
+    });//end of window.scroll()
+
+
 
     //Detects browser with CSS
     // Chrome is Webkit, but Webkit is also Safari. If browser = ie + strips out the .0 suffix
@@ -114,12 +136,12 @@ jQuery(function ($) {
         $("body").addClass("safari");
     else if ( $.browser.msie || '8.0' === $.browser.version || '9.0' === $.browser.version || '10.0' === $.browser.version || '11.0' === $.browser.version )
         $("body").addClass("ie").addClass("ie" + $.browser.version.replace(/[.0]/g, ''));
-    
+
     //Adds version if browser = ie
     if ( $("body").hasClass("ie") )
         $("body").addClass($.browser.version);
 
-    
+
     //handle some dynamic hover effects
     $(".widget-front, article").hover(function () {
         $(this).addClass("hover");
@@ -163,12 +185,13 @@ jQuery(function ($) {
         wrapper             = $('#main-wrapper .container[role=main] > .column-content-wrapper'),
         content             = $("#main-wrapper .container .article-container"),
         left                = $("#main-wrapper .container " + LeftSidebarClass),
-        right               = $("#main-wrapper .container " + RightSidebarClass);
+        right               = $("#main-wrapper .container " + RightSidebarClass),
+        reordered           = false;
 
     function BlockPositions() {
         //15 pixels adjustement to avoid replacement before real responsive width
         WindowWidth = $(window).width();
-        if ( WindowWidth > 767 - 15 ) {
+        if ( WindowWidth > 767 - 15 && reordered ) {
             //$(window).width();
             if ( $(left).length ) {
                 $(left).detach();
@@ -179,7 +202,8 @@ jQuery(function ($) {
                 $(right).detach();
                 $(wrapper).append($(right));
             }
-        } else {
+            reordered = false; //this could stay in both if blocks instead
+        } else if ( ( WindowWidth <= 767 - 15 ) && ! reordered ) {
             if ( $(left).length ) {
                  $(left).detach();
                 $(content).detach();
@@ -189,14 +213,15 @@ jQuery(function ($) {
                 $(right).detach();
                 $(wrapper).append($(right));
             }
+            reordered = true; //this could stay in both if blocks instead
         }
-    }//end function*/
+    }//end function
 
     //Enable reordering if option is checked in the customizer.
     if ( 1 == TCParams.ReorderBlocks ) {
         //trigger the block positioning only when responsive
         WindowWidth = $(window).width();
-        if ( WindowWidth <= 767 - 15 ) {
+        if ( WindowWidth <= 767 - 15 && ! reordered ) {
             BlockPositions();
         }
 
@@ -204,7 +229,7 @@ jQuery(function ($) {
             setTimeout(BlockPositions, 200);
         });
     }
-    
+
 
     function centerImageInContainer(container , images){
         if ( ! $(images).length  )
@@ -212,11 +237,11 @@ jQuery(function ($) {
 
         $(images).each(function () {
             var container_width    = $(this).closest(container).width(),
-                container_height	= $(container).height(),
+                container_height    = $(container).height(),
                 // this will let us know the real img height
                 ratio = container_width / $(this).attr("width"),
                 real_img_height = ratio * $(this).attr("height");
-            
+
             // if our image has an height smaller than the container
             // stretch it (h & w) proportionally to reach the container height
             // and center it horizontally
@@ -232,7 +257,7 @@ jQuery(function ($) {
                 // center it horizontally
                 var pos_left = ( (container_width - new_img_width ) / 2 );
                 $(this).css("left", pos_left);
-                
+
                 // reset v-center flag and margin-top
                 if ( $(this).hasClass("v-center") ){
                     $(this).removeClass("v-center")
@@ -259,9 +284,9 @@ jQuery(function ($) {
                 $(this).css("top", pos_top);
                 // add v-center class flag
                 $(this).addClass("v-center");
-            }// end if-else                                      
+            }// end if-else
         });// end imgs each function
-        
+
     }// end centerImageInContainer
 
      //Enable slides centering if option is checked in the customizer.
@@ -291,7 +316,7 @@ jQuery(function ($) {
     }
     //Recenter the slider arrows
     $(window).resize(function(){
-    	_center_slider_arrows();
+        _center_slider_arrows();
     });
     _center_slider_arrows();
 
@@ -310,148 +335,195 @@ jQuery(function ($) {
     });
 
     //Slider swipe support with hammer.js
-	if ( 'function' == typeof($.fn.hammer) ) {
-		$('.carousel' ).each( function() {
-			$(this).hammer().on('swipeleft tap', function() {
-				$(this).carousel('next');
-			});
-			$(this).hammer().on('swiperight', function(){
+    if ( 'function' == typeof($.fn.hammer) ) {
+
+        //prevent propagation event from sensible children
+        $(".carousel input, .carousel button, .carousel textarea, .carousel select, .carousel a").
+            on("touchstart touchmove", function(ev) {
+                ev.stopPropagation();
+        });
+
+        $('.carousel' ).each( function() {
+            $(this).hammer().on('swipeleft tap', function() {
+                $(this).carousel('next');
+            });
+            $(this).hammer().on('swiperight', function(){
                 $(this).carousel('prev');
             });
-		});
-	}
+        });
+    }
+
+    //Handle dropdown on click for multi-tier menus
+    var $dropdown_ahrefs    = $('.tc-open-on-click .menu-item.menu-item-has-children > a'),
+        $dropdown_submenus  = $('.tc-open-on-click .dropdown .dropdown-submenu');
+
+
+    // go to the link if submenu is already opened
+    $dropdown_ahrefs.not('a' , $dropdown_submenus).on('tap click', function(evt) {
+        var href = $(this).attr('href');
+        if ( '#' != href && '' !== href )
+          return;
+        if ( $(this).next('.dropdown-menu').is(':visible') )
+          window.location = href;
+    });
+    // make sub-submenus dropdown on click work
+    $dropdown_submenus.each(function(){
+        var $parent = $(this),
+            $children = $parent.children('[data-toggle="dropdown"]');
+        $children.on('tap click', function(){
+            var submenu   = $(this).next('.dropdown-menu'),
+                openthis  = false,
+                href      = $(this).attr('href');
+            if ( ! $parent.hasClass('open') ) {
+              openthis = true;
+            } else {
+              if ( '#' != href && '' !== href )
+                window.location = href;
+            }
+            // close opened submenus
+            $($parent.parent()).children('.dropdown-submenu').each(function(){
+                $(this).removeClass('open');
+            });
+            if ( openthis )
+                $parent.addClass('open');
+
+            return false;
+        });
+    });
 });
 
 
 /* Sticky header since v3.2.0 */
 jQuery(function ($) {
-	var	   $tcHeader		= $('.tc-header'),
-			elToHide		= [], //[ '.social-block' , '.site-description' ],
-			isUserLogged	= $('body').hasClass('logged-in') || 0 !== $('#wpadminbar').length,
-			isCustomizing	= $('body').hasClass('is-customizing'),
-			customOffset	= +TCParams.stickyCustomOffset;
+    var    $tcHeader        = $('.tc-header'),
+            elToHide        = [], //[ '.social-block' , '.site-description' ],
+            isUserLogged    = $('body').hasClass('logged-in') || 0 !== $('#wpadminbar').length,
+            isCustomizing   = $('body').hasClass('is-customizing'),
+            customOffset    = +TCParams.stickyCustomOffset;
 
-	function _is_scrolling() {
-		return $('body').hasClass('sticky-enabled') ? true : false;
-	}
+    function _is_scrolling() {
+        return $('body').hasClass('sticky-enabled') ? true : false;
+    }
 
-	function _is_sticky_enabled() {
-		return $('body').hasClass('tc-sticky-header') ? true : false;
-	}
+    function _is_sticky_enabled() {
+        return $('body').hasClass('tc-sticky-header') ? true : false;
+    }
 
-	function _get_initial_offset() {
-		//initialOffset 	= ( 1 == isUserLogged &&  580 < $(window).width() ) ? $('#wpadminbar').height() : 0;
-		var initialOffset 	= 0;
-		if ( 1 == isUserLogged && ! isCustomizing ) {
-			if ( 580 < $(window).width() )
-				initialOffset = $('#wpadminbar').height();
-			else
-				initialOffset = ! _is_scrolling() ? $('#wpadminbar').height() : 0;
-		}
-		return initialOffset + customOffset;
-	}
+    function _get_initial_offset() {
+        //initialOffset     = ( 1 == isUserLogged &&  580 < $(window).width() ) ? $('#wpadminbar').height() : 0;
+        var initialOffset   = 0;
+        if ( 1 == isUserLogged && ! isCustomizing ) {
+            if ( 580 < $(window).width() )
+                initialOffset = $('#wpadminbar').height();
+            else
+                initialOffset = ! _is_scrolling() ? $('#wpadminbar').height() : 0;
+        }
+        return initialOffset + customOffset;
+    }
 
-	function _set_sticky_offsets() {
-		if ( ! _is_sticky_enabled() )
-			return;
+    function _set_sticky_offsets() {
+        if ( ! _is_sticky_enabled() )
+            return;
 
-		//Reset all values first
-		$tcHeader.css('top' , '');
-		$('.tc-header').css('height' , 'auto' );
-		$('#tc-reset-margin-top').css('margin-top' , '' ).show();
+        //Reset all values first
+        $tcHeader.css('top' , '');
+        $('.tc-header').css('height' , 'auto' );
+        $('#tc-reset-margin-top').css('margin-top' , '' ).show();
 
-		//What is the initial offset of the header ?
-		var	headerHeight 	= $tcHeader.height();
-		//set initial margin-top = initial offset + header's height
-		$('#tc-reset-margin-top').css('margin-top' , ( +headerHeight + customOffset ) + 10 + 'px' ); //10 = header bottom border
-	}
+        //What is the initial offset of the header ?
+        var headerHeight    = $tcHeader.height();
+        //set initial margin-top = initial offset + header's height
+        $('#tc-reset-margin-top').css('margin-top' , ( +headerHeight + customOffset ) + 10 + 'px' ); //10 = header bottom border
+    }
 
 
-	function _set_header_top_offset() {
-		//set header initial offset
-		$tcHeader.css('top' , _get_initial_offset() + 'px');
-	}
+    function _set_header_top_offset() {
+        //set header initial offset
+        $tcHeader.css('top' , _get_initial_offset() + 'px');
+    }
 
-	function _set_no_title_logo_class() {
-		if ( ! $('body').hasClass('sticky-enabled') ) {
-			$('.navbar-wrapper').addClass('span9').removeClass('span12');
-		} else {
-			$('.tc-title-logo-off .navbar-wrapper' , '.sticky-enabled').addClass('span12').removeClass('span9');
-			$('.tc-title-logo-on .navbar-wrapper' , '.sticky-enabled').addClass('span9').removeClass('span12');
-		}
-	}	
+    function _set_no_title_logo_class() {
+        if ( ! $('body').hasClass('sticky-enabled') ) {
+            $('.navbar-wrapper').addClass('span9').removeClass('span12');
+        } else {
+            $('.tc-title-logo-off .navbar-wrapper' , '.sticky-enabled').addClass('span12').removeClass('span9');
+            $('.tc-title-logo-on .navbar-wrapper' , '.sticky-enabled').addClass('span9').removeClass('span12');
+        }
+    }
 
-	//set site logo width and height if exists
-	//=> allow the CSS3 transition to be enabled
-	if ( _is_sticky_enabled() && 0 !== $('img' , '.site-logo').length ) {
-		var logoWidth 	= $('img' , '.site-logo').attr('width'),
-			logoHeight 	= $('img' , '.site-logo').attr('height');
-		$('img' , '.site-logo').css('height' , logoHeight +'px' ).css('width' , logoWidth +'px' );
-	}
+    //set site logo width and height if exists
+    //=> allow the CSS3 transition to be enabled
+    if ( _is_sticky_enabled() && 0 !== $('img' , '.site-logo').length ) {
+        $.each($('img', '.site-logo'), function(){
+            var logoWidth   = $(this).attr('width'),
+                logoHeight  = $(this).attr('height');
+            $(this).css('height' , logoHeight +'px' ).css('width' , logoWidth +'px' );
+        });
+    }
 
-	//LOADING ACTIONS
-	if ( _is_sticky_enabled() )
+    //LOADING ACTIONS
+    if ( _is_sticky_enabled() )
         setTimeout( function() { _refresh(); } , 20 );
-	if ( _is_sticky_enabled() && ! $('body').hasClass('sticky-enabled') )
+    if ( _is_sticky_enabled() && ! $('body').hasClass('sticky-enabled') )
         $('body').addClass("sticky-disabled");
 
-	//RESIZING ACTIONS
-	$(window).resize(function() {
-		if ( ! _is_sticky_enabled() )
-			return;
-		_set_sticky_offsets();
-		_set_header_top_offset();
-		_set_no_title_logo_class();
-	});
+    //RESIZING ACTIONS
+    $(window).resize(function() {
+        if ( ! _is_sticky_enabled() )
+            return;
+        _set_sticky_offsets();
+        _set_header_top_offset();
+        _set_no_title_logo_class();
+    });
 
-	function _refresh() {
-		setTimeout( function() {
-			_set_sticky_offsets();
-			_set_header_top_offset();
-			_set_no_title_logo_class();
-		} , 20 );
-		$(window).trigger('resize');
-	}
+    function _refresh() {
+        setTimeout( function() {
+            _set_sticky_offsets();
+            _set_header_top_offset();
+            _set_no_title_logo_class();
+        } , 20 );
+        $(window).trigger('resize');
+    }
 
-	//SCROLLING ACTIONS
-	var timer,
-		increment = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
+    //SCROLLING ACTIONS
+    var timer,
+        increment = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
 
-	//var windowHeight = $(window).height();  
-	var triggerHeight = 20; //0.5 * windowHeight;
+    //var windowHeight = $(window).height();
+    var triggerHeight = 20; //0.5 * windowHeight;
 
-	function _scrolling_actions() {
-		_set_header_top_offset();
-		_set_no_title_logo_class();
-		//process scrolling actions
-		if ( $(window).scrollTop() > triggerHeight ) {
+    function _scrolling_actions() {
+        _set_header_top_offset();
+        _set_no_title_logo_class();
+        //process scrolling actions
+        if ( $(window).scrollTop() > triggerHeight ) {
             $('body').addClass("sticky-enabled").removeClass("sticky-disabled");
-		}
-		else {
+        }
+        else {
             $('body').removeClass("sticky-enabled").addClass("sticky-disabled");
             setTimeout( function() { _refresh();} ,
                 $('body').hasClass('is-customizing') ? 100 : 20
-	       );
-		}
-	}
+           );
+        }
+    }
 
-	$(window).scroll(function() {
-		if ( ! _is_sticky_enabled() )
-			return;
-		//use a timer
-		if ( timer) {
-			increment++;
+    $(window).scroll(function() {
+        if ( ! _is_sticky_enabled() )
+            return;
+        //use a timer
+        if ( timer) {
+            increment++;
             window.clearTimeout(timer);
          }
-         
+
          if ( 1 == TCParams.timerOnScrollAllBrowsers ) {
             timer = window.setTimeout(function() {
                 _scrolling_actions();
-	         }, increment > 5 ? 50 : 0 );
+             }, increment > 5 ? 50 : 0 );
          } else if ( $('body').hasClass('ie') ) {
-	         timer = window.setTimeout(function() {
+             timer = window.setTimeout(function() {
                 _scrolling_actions();
-	         }, increment > 5 ? 50 : 0 );
-		}
-	});//end of window.scroll()
+             }, increment > 5 ? 50 : 0 );
+        }
+    });//end of window.scroll()
 });

@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Omega WordPress Theme\n"
-"POT-Creation-Date: 2014-07-01 11:57+0700\n"
-"PO-Revision-Date: 2014-07-01 11:57+0700\n"
+"POT-Creation-Date: 2014-09-15 14:16+0700\n"
+"PO-Revision-Date: 2014-09-15 14:16+0700\n"
 "Last-Translator: Hence Wijaya <hence.wijaya@gmail.com>\n"
 "Language-Team: ThemeHall <hello@themehall.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-KeywordsList: _e;__;esc_attr_e;esc_attr__;esc_html_e;esc_html__;_x;"
 "_n;_x:1,2c;_n:1,2;_;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../\n"
@@ -29,7 +29,7 @@ msgid ""
 "below."
 msgstr ""
 
-#: attachment-image.php:27 lib/hooks.php:227
+#: attachment-image.php:27 lib/hooks.php:238
 msgid "Pages:"
 msgstr ""
 
@@ -236,7 +236,7 @@ msgstr ""
 msgid "Content Character Limit"
 msgstr ""
 
-#: lib/classes/widget-featured-page.php:222 lib/extensions/custom-post.php:119
+#: lib/classes/widget-featured-page.php:222 lib/extensions/custom-post.php:123
 msgid "More Text"
 msgstr ""
 
@@ -369,7 +369,7 @@ msgstr ""
 msgid "No Content"
 msgstr ""
 
-#: lib/classes/widget-featured-posts.php:402 lib/extensions/custom-post.php:95
+#: lib/classes/widget-featured-posts.php:402 lib/extensions/custom-post.php:98
 msgid "Limit content to"
 msgstr ""
 
@@ -409,7 +409,7 @@ msgid "404 Not Found"
 msgstr ""
 
 #: lib/extensions/breadcrumb-trail.php:177
-#: lib/functions/template-general.php:276 lib/hooks.php:366
+#: lib/functions/template-general.php:276 lib/hooks.php:360
 msgid "Archives"
 msgstr ""
 
@@ -516,12 +516,12 @@ msgid "Something went wrong."
 msgstr ""
 
 #: lib/extensions/class-tgm-plugin-activation.php:169
-#: lib/extensions/class-tgm-plugin-activation.php:480
+#: lib/extensions/class-tgm-plugin-activation.php:479
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
 #: lib/extensions/class-tgm-plugin-activation.php:170
-#: lib/extensions/class-tgm-plugin-activation.php:1836
+#: lib/extensions/class-tgm-plugin-activation.php:1834
 msgid "Plugin activated successfully."
 msgstr ""
 
@@ -530,174 +530,174 @@ msgstr ""
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:507
-#: lib/extensions/class-tgm-plugin-activation.php:2048
+#: lib/extensions/class-tgm-plugin-activation.php:506
+#: lib/extensions/class-tgm-plugin-activation.php:2046
 msgid "Return to the Dashboard"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:535
+#: lib/extensions/class-tgm-plugin-activation.php:534
 #, php-format
 msgid "The following plugin was activated successfully: %s."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:694
+#: lib/extensions/class-tgm-plugin-activation.php:693
 msgid "Dismiss this notice"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1081
+#: lib/extensions/class-tgm-plugin-activation.php:1080
 msgid "External Link"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1086
+#: lib/extensions/class-tgm-plugin-activation.php:1085
 msgid "Private Repository"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1089
+#: lib/extensions/class-tgm-plugin-activation.php:1088
 msgid "Pre-Packaged"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1093
+#: lib/extensions/class-tgm-plugin-activation.php:1092
 msgid "WordPress Repository"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1096
+#: lib/extensions/class-tgm-plugin-activation.php:1095
 msgid "Required"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1096
+#: lib/extensions/class-tgm-plugin-activation.php:1095
 msgid "Recommended"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1099
+#: lib/extensions/class-tgm-plugin-activation.php:1098
 msgid "Not Installed"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1101
+#: lib/extensions/class-tgm-plugin-activation.php:1100
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1271
+#: lib/extensions/class-tgm-plugin-activation.php:1270
 #, php-format
 msgid ""
 "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
 "Dashboard\">Return to the Dashboard</a>"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1287
+#: lib/extensions/class-tgm-plugin-activation.php:1286
 msgid "Plugin"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1288
+#: lib/extensions/class-tgm-plugin-activation.php:1287
 msgid "Source"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1289
+#: lib/extensions/class-tgm-plugin-activation.php:1288
 msgid "Type"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1290
+#: lib/extensions/class-tgm-plugin-activation.php:1289
 msgid "Status"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1308
+#: lib/extensions/class-tgm-plugin-activation.php:1307
 msgid "Install"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1309
+#: lib/extensions/class-tgm-plugin-activation.php:1308
 msgid "Activate"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1534
+#: lib/extensions/class-tgm-plugin-activation.php:1532
 msgid "The following plugin was activated successfully:"
 msgid_plural "The following plugins were activated successfully:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1819
+#: lib/extensions/class-tgm-plugin-activation.php:1817
 msgid "Install package not available."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1820
+#: lib/extensions/class-tgm-plugin-activation.php:1818
 #, php-format
 msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1821
+#: lib/extensions/class-tgm-plugin-activation.php:1819
 msgid "Unpacking the package&#8230;"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1822
+#: lib/extensions/class-tgm-plugin-activation.php:1820
 msgid "Installing the plugin&#8230;"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1823
+#: lib/extensions/class-tgm-plugin-activation.php:1821
 msgid "Plugin install failed."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1824
+#: lib/extensions/class-tgm-plugin-activation.php:1822
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1835
+#: lib/extensions/class-tgm-plugin-activation.php:1833
 msgid "Plugin activation failed."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1945
+#: lib/extensions/class-tgm-plugin-activation.php:1943
 msgid ""
 "The installation and activation process is starting. This process may take a "
 "while on some hosts, so please be patient."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1946
+#: lib/extensions/class-tgm-plugin-activation.php:1944
 #, php-format
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1946
-#: lib/extensions/class-tgm-plugin-activation.php:1955
+#: lib/extensions/class-tgm-plugin-activation.php:1944
+#: lib/extensions/class-tgm-plugin-activation.php:1953
 msgid "Show Details"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1946
-#: lib/extensions/class-tgm-plugin-activation.php:1955
+#: lib/extensions/class-tgm-plugin-activation.php:1944
+#: lib/extensions/class-tgm-plugin-activation.php:1953
 msgid "Hide Details"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1947
+#: lib/extensions/class-tgm-plugin-activation.php:1945
 msgid "All installations and activations have been completed."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1948
+#: lib/extensions/class-tgm-plugin-activation.php:1946
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1952
+#: lib/extensions/class-tgm-plugin-activation.php:1950
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1953
+#: lib/extensions/class-tgm-plugin-activation.php:1951
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1954
+#: lib/extensions/class-tgm-plugin-activation.php:1952
 #, php-format
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1955
+#: lib/extensions/class-tgm-plugin-activation.php:1953
 #, php-format
 msgid "%1$s installed successfully."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1956
+#: lib/extensions/class-tgm-plugin-activation.php:1954
 msgid "All installations have been completed."
 msgstr ""
 
-#: lib/extensions/class-tgm-plugin-activation.php:1957
+#: lib/extensions/class-tgm-plugin-activation.php:1955
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
@@ -728,37 +728,41 @@ msgstr ""
 msgid "Logo"
 msgstr ""
 
+#: lib/extensions/custom-logo.php:71
+msgid "Favicon"
+msgstr ""
+
 #: lib/extensions/custom-post.php:20
 msgid "Posts"
 msgstr ""
 
-#: lib/extensions/custom-post.php:70
+#: lib/extensions/custom-post.php:72
 msgid "More Link Page Scroll"
 msgstr ""
 
-#: lib/extensions/custom-post.php:73
+#: lib/extensions/custom-post.php:75
 msgid ""
 "By default, clicking the .more-link anchor opens and scrolls the page to "
 "section of the document containing the named anchor. This section is where "
 "you put the <!--more--> tag within a post type."
 msgstr ""
 
-#: lib/extensions/custom-post.php:98
+#: lib/extensions/custom-post.php:101
 msgid ""
 "Select \"Display post excerpts\" will limit the text and strip all "
 "formatting from the text displayed. Set 0 characters will display the first "
 "55 words (default)"
 msgstr ""
 
-#: lib/extensions/custom-post.php:141
+#: lib/extensions/custom-post.php:146
 msgid "Include the Featured Image?"
 msgstr ""
 
-#: lib/extensions/custom-post.php:169
+#: lib/extensions/custom-post.php:175
 msgid "Image size"
 msgstr ""
 
-#: lib/extensions/custom-post.php:192
+#: lib/extensions/custom-post.php:199
 msgid "Enable single post Prev Next navigation links?"
 msgstr ""
 
@@ -778,17 +782,17 @@ msgstr ""
 
 #: lib/extensions/omega-child-page.php:10
 #: lib/extensions/omega-child-page.php:11
-#: lib/extensions/omega-child-page.php:61
-#: lib/extensions/omega-child-page.php:116
+#: lib/extensions/omega-child-page.php:48
+#: lib/extensions/omega-child-page.php:101
 msgid "Omega Child Themes"
 msgstr ""
 
-#: lib/extensions/omega-child-page.php:65
+#: lib/extensions/omega-child-page.php:52
 msgid ""
 "Personalize your Omega powered site with one of Omega child themes below"
 msgstr ""
 
-#: lib/extensions/omega-child-page.php:96
+#: lib/extensions/omega-child-page.php:81
 msgid "Child Themes"
 msgstr ""
 
@@ -800,21 +804,21 @@ msgstr ""
 msgid "Fonts"
 msgstr ""
 
-#: lib/extensions/theme-layouts.php:341
+#: lib/extensions/theme-layouts.php:351
 msgctxt "theme layout"
 msgid "Default"
 msgstr ""
 
-#: lib/extensions/theme-layouts.php:433 lib/extensions/theme-layouts.php:543
-#: lib/extensions/theme-layouts.php:628
+#: lib/extensions/theme-layouts.php:443 lib/extensions/theme-layouts.php:553
+#: lib/extensions/theme-layouts.php:638
 msgid "Layout"
 msgstr ""
 
-#: lib/extensions/theme-layouts.php:459
+#: lib/extensions/theme-layouts.php:469
 msgid "Layout is a theme-specific structure for the single view of the post."
 msgstr ""
 
-#: lib/extensions/theme-layouts.php:661
+#: lib/extensions/theme-layouts.php:671
 msgid "Global Layout"
 msgstr ""
 
@@ -839,7 +843,7 @@ msgid ""
 "another function."
 msgstr ""
 
-#: lib/functions/head.php:128
+#: lib/functions/head.php:104
 #, php-format
 msgid "%1$s Page %2$s"
 msgstr ""
@@ -940,51 +944,51 @@ msgstr ""
 msgid "(Untitled)"
 msgstr ""
 
-#: lib/hooks.php:55
+#: lib/hooks.php:59
 msgctxt "nav menu location"
 msgid "Primary"
 msgstr ""
 
-#: lib/hooks.php:70
+#: lib/hooks.php:74
 msgctxt "sidebar"
 msgid "Primary"
 msgstr ""
 
-#: lib/hooks.php:71
+#: lib/hooks.php:75
 msgid ""
 "The main sidebar. It is displayed on either the left or right side of the "
 "page based on the chosen layout."
 msgstr ""
 
-#: lib/hooks.php:153
+#: lib/hooks.php:157
 msgid "Copyright &#169; [the-year] [site-link]."
 msgstr ""
 
-#: lib/hooks.php:153
+#: lib/hooks.php:157
 msgid "Theme by [author-uri]."
 msgstr ""
 
-#: lib/hooks.php:339
+#: lib/hooks.php:333
 #, php-format
 msgid "Search Results for: %s"
 msgstr ""
 
-#: lib/hooks.php:349
+#: lib/hooks.php:343
 #, php-format
 msgid "Author: %s"
 msgstr ""
 
-#: lib/hooks.php:357
+#: lib/hooks.php:351
 #, php-format
 msgid "Day: %s"
 msgstr ""
 
-#: lib/hooks.php:360
+#: lib/hooks.php:354
 #, php-format
 msgid "Month: %s"
 msgstr ""
 
-#: lib/hooks.php:363
+#: lib/hooks.php:357
 #, php-format
 msgid "Year: %s"
 msgstr ""

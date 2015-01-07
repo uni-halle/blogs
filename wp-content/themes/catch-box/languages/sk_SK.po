@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-16 12:36+0545\n"
-"PO-Revision-Date: 2014-08-16 12:37+0545\n"
+"POT-Creation-Date: 2014-12-08 20:20+0545\n"
+"PO-Revision-Date: 2014-12-08 20:20+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: H.P. Brinkmann\n"
 "Language: sk_SK\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x;_ex;_n;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -200,6 +200,7 @@ msgstr "<b>%</b> Komentárov"
 msgid "Edit"
 msgstr "Upraviť"
 
+#. translators: used between list items, there is a space after the comma
 #: ../content-featured.php:35 ../content-featured.php:44
 #: ../content-gallery.php:68 ../content-gallery.php:78 ../content-image.php:53
 #: ../content-image.php:62 ../content-quote.php:50 ../content-quote.php:60
@@ -347,14 +348,17 @@ msgstr "Sekundárne menu"
 msgid "Footer Menu"
 msgstr "Menu v päte"
 
+#. translators: header image description
 #: ../functions.php:179
 msgid "Garden"
 msgstr "Záhrada"
 
+#. translators: header image description
 #: ../functions.php:185
 msgid "Flower"
 msgstr "Kvety"
 
+#. translators: header image description
 #: ../functions.php:191
 msgid "Mountain"
 msgstr "Hory"
@@ -400,11 +404,13 @@ msgstr "Novšie články <span class=\"meta-nav\">&rarr;</span>"
 msgid "Pingback:"
 msgstr "Pingback:"
 
+#. translators: 1: comment author, 2: date and time
 #: ../functions.php:640
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s na %2$s <span class=\"says\">povedal:</span>"
 
+#. translators: 1: date, 2: time
 #: ../functions.php:646
 #, php-format
 msgid "%1$s at %2$s"

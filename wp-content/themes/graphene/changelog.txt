@@ -4,6 +4,20 @@ http://www.khairul-syahir.com
 
 CHANGELOG
 
+Version 1.9.4
+	* Added Estonian (et) translation
+	* Fixed header image not appearing when search returns no result
+	* Fixed minor styling conflict in theme's options page
+	* Fixed minor styling issues in theme's options page for RTL sites
+	* Fixed undefined variable notice in certain cases
+	* Fixed an issue with theme news feed in the theme's options page
+	* Fixed missing "updated" microdata field for posts when date is not displayed
+	* Fixed minor issues with editor style
+	* Removed shortcodes from the theme as it is no longer allowed by WordPress Theme Review Team
+	* Removed option to preview site in Graphene Options page as this slows down the page load
+	* Removed use of deprecated function of add_custom_background()
+	* Removed use of deprecated function of add_custom_image_header()
+
 Version 1.9.3
 	* Fixed styling in the theme's options page to be compatible with WP 3.8
 	* Fixed several PHP notices (http://forum.graphene-theme.com/graphene-support/php-notices-in-errorlog)

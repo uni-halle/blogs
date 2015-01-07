@@ -2,11 +2,11 @@
 Theme Name: Desk Mess Mirrored
 Theme URI: http://buynowshop.com/themes/desk-mess-mirrored/
 Description: Marble desktop covered with a mix of old and new items, such as some vintage papers, a stainless steel pen, and, a hot cup of coffee! Now with more documentation and post-format support for the following types: asides, quotes and status! <strong>Please read the included changelog.txt, readme.txt, and support.txt files for details of the latest changes and important notices.</strong> Please note <strong>WordPress 3.4 is required</strong> for some functionality; also note the latest version of the Multi Child-Theme is available for download at http://buynowshop.com/themes/desk-mess-mirrored/multi too!
-Version: 2.2.4.1
+Version: 2.3
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 WordPress Required Version: 3.4
-WordPress Tested Version: 3.9
+WordPress Tested Version: 4.0
 Tags: brown, orange, silver, tan, light, two-columns, right-sidebar, fixed-layout, threaded-comments, sticky-post, custom-menu, custom-background
 Textdomain: desk-mess-mirrored
 License: GNU General Public License v2
@@ -191,6 +191,10 @@ table#wp-calendar tbody tr td a {
 	font-weight: bold;
 }
 
+table#wp-calendar tfoot tr td#prev {
+	text-align: left;
+}
+
 table#wp-calendar tfoot tr td#next {
 	text-align: right;
 }
@@ -229,6 +233,7 @@ li.widget_text div.textwidget div.wp-caption a img {
 /** Tag Cloud */
 div.tagcloud {
 	text-align: center;
+	padding: 0 15px;
 }
 
 /** End: Default Widgets ---------------------------------------------------- */
@@ -790,10 +795,6 @@ div#main-blog ul li.page_item, div#main-blog div#contact-us ul li {
 .post ul {
 	margin-left: 35px;
 	margin-bottom: 15px;
-}
-
-.post ul li {
-	list-style: disc;
 }
 
 .post ol {
@@ -1558,7 +1559,6 @@ li.widget #search-submit,
 	border: 1px solid #e3dccb;
 	color: #666;
 	font-size: 75%;
-	margin: 0 0 0 84px;
 	width: 85px;
 }
 
@@ -1619,6 +1619,7 @@ input.search-submit {
 
 .widget ul li {
 	background: url(images/listseparator.png) no-repeat 25% 100%;
+	list-style: none inside;
 	margin: 0;
 	padding: 5px 15px 10px 15px;
 }
@@ -1760,6 +1761,11 @@ img#wpstats {
 /* Jetpack - see http://tinyurl.com/jetpack-clear-issue */
 div.post div.sharing {
 	clear: both;
+}
+
+/* Stop Gravity Forms reCaptcha iframe from creating a blank area in the footer */
+body > iframe[src="about:blank"] {
+	display: none;
 }
 
 /* ---- BNS Plugins ---- */

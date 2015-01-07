@@ -3,13 +3,13 @@ Theme Name: Simone
 Theme URI: http://mor10.com/simone-wordpress-theme/
 Author: Morten Rand-Hendriksen
 Author URI: http://mor10.com/
-Description: Simone is a responsive, accessible, high-resolution theme featuring custom header and custom link colors, large images, and easy to read typography that scales to fit all screens. Other features include keyboard accessible navigation, optional social menu, sidebar- and footer widgets, no-sidebar page template, Aside post format, and collapsible author profile box. Simone is translation ready and ships in English with translations in Finnish, French, German, Hungarian, Italian, and Norwegian Bokmål.
-Version: 1.0.8.1
+Description: Simone is a responsive, accessible, high-resolution theme featuring custom header and custom link colors, large images, and easy to read typography that scales to fit all screens. Other features include keyboard accessible navigation, optional social menu, sidebar- and footer widgets, no-sidebar page template, Aside post format, and collapsible author profile box. Simone is translation ready and ships in English with translations in Catalan, Chinese (simplified), Dutch, Finnish, French, German, Hungarian, Italian, Norwegian Bokmål, Persian, Russian, Spanish, Swedish, and Turkish.
+Version: 2.0.3
 License: GNU General Public License
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: simone
 Domain Path: /languages/
-Tags: white, black, blue, light, one-column, two-columns, right-sidebar, responsive-layout, accessibility-ready, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post, threaded-comments, translation-ready
+Tags: white, black, blue, light, one-column, two-columns, right-sidebar, responsive-layout, accessibility-ready, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post, threaded-comments, translation-ready, rtl-language-support
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -33,21 +33,24 @@ and Blueprint http://www.blueprintcss.org/
 4.0 - Forms
 5.0 - Navigation
 	5.1 - Links
-	5.2 - Menus
+	5.2 - Main Menu
+        5.3 - Social Menu
+        5.4 - Paging Navigation
 6.0 - Accessibility
 7.0 - Alignments
 8.0 - Clearings
-9.0 - Widgets
-10.0 - Content
-	10.1 - Posts and pages
-        10.2 - Index and Archives
-	10.3 - Asides
-        10.4 - Image Attachments
-	10.5 - Comments
-        10.6 - Author Box
-11.0 - Infinite scroll
-12.0 - Media
-13.0 - Footer
+9.0 - Header
+10.0 - Widgets
+11.0 - Content
+	11.1 - Posts and pages
+        11.2 - Index and Archives
+	11.3 - Asides
+        11.4 - Image Attachments
+	11.5 - Comments
+        11.6 - Author Box
+12.0 - Infinite scroll
+13.0 - Media
+14.0 - Footer
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -84,9 +87,9 @@ html {
 	-moz-box-sizing:    border-box; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
 	box-sizing:         border-box;
 }
-body {
-	background: #fff;
-}
+
+body { background: #b2b2b2; }
+
 article,
 aside,
 details,
@@ -149,7 +152,6 @@ textarea {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    clear: right;
     font-weight: 900;
     font-family: 'Lato', sans-serif;
     color: #000;
@@ -382,7 +384,7 @@ a:active {
 }
 
 /*--------------------------------------------------------------
-5.2 Menus
+5.2 Main Menu
 --------------------------------------------------------------*/
 .main-navigation {
     position: relative;
@@ -572,7 +574,9 @@ a:active {
 
 } /* End responsive menu */
 
-/* Social Menu */
+/*--------------------------------------------------------------
+5.3 Social Menu
+--------------------------------------------------------------*/
 
 .menu-social ul {
     float: right;
@@ -602,15 +606,25 @@ a:active {
 
 .menu-social li a[href*="flickr.com"]::before { content: '\f16e'; }
 
+.menu-social li a[href*="foursquare.com"]::before { content: '\f180'; }
+
 .menu-social li a[href*="github.com"]::before { content: '\f09b'; }
 
 .menu-social li a[href*="plus.google.com"]::before { content: '\f0d5'; }
 
 .menu-social li a[href*="instagram.com"]::before { content: '\f16d'; }
 
+.menu-social li a[href*="jsfiddle.com"]::before { content: '\f1cc'; }
+
 .menu-social li a[href*="linkedin.com"]::before { content: '\f0e1'; }
 
 .menu-social li a[href*="pinterest.com"]::before { content: '\f0d2'; }
+
+.menu-social li a[href*="reddit.com"]::before { content: '\f1a1'; }
+
+.menu-social li a[href*="soundcloud.com"]::before { content: '\f1be'; }
+
+.menu-social li a[href*="stackoverflow.com"]::before { content: '\f16c'; }
 
 .menu-social li a[href*="tumblr.com"]::before { content: '\f173'; }
 
@@ -618,7 +632,15 @@ a:active {
 
 .menu-social li a[href*="vimeo.com"]::before { content: '\f194'; }
 
+.menu-social li a[href*="vine.co"]::before { content: '\f1ca'; }
+
+.menu-social li a[href*="yelp.com"]::before { content: '\f1e9'; }
+
 .menu-social li a[href*="youtube.com"]::before { content: '\f167'; }
+
+.menu-social li a[href*="wordpress.com"]::before { content: '\f19a'; }
+
+
 
 @media screen and (max-width: 600px) {
     #menu-social ul {
@@ -634,7 +656,9 @@ a:active {
     }
 }
 
-/* Paging navigation */
+/*--------------------------------------------------------------
+5.4 Paging Navigation
+--------------------------------------------------------------*/
 
 .site-main .comment-navigation,
 .site-main .paging-navigation,
@@ -844,7 +868,7 @@ a:focus.page-numbers{
 }
 
 .site-description {
-    font-weight: 100;
+    font-weight: 300;
     font-size: 20px;
     font-size: 2rem;
 }
@@ -949,7 +973,7 @@ a:focus.page-numbers{
 }
 
 /*--------------------------------------------------------------
-9.0 Widgets
+10.0 Widgets
 --------------------------------------------------------------*/
 .widget {
     margin: 0 0 4em;
@@ -1060,7 +1084,7 @@ a:focus.page-numbers{
     }
 }
 /*--------------------------------------------------------------
-10.0 Content
+11.0 Content
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 10.1 Posts and pages
@@ -1303,7 +1327,7 @@ blockquote cite {
 
 .category-list a {
     color: #333;
-    color: hsl(0, 0%, 10%);
+    color: hsl(0, 0%, 20%);
 }
 
 .category-list a:hover,
@@ -1373,7 +1397,7 @@ blockquote cite {
 .entry-footer i { margin-right: .5rem; }
 
 /*--------------------------------------------------------------
-10.2 Index and Archive
+11.2 Index and Archive
 --------------------------------------------------------------*/
 .taxonomy-description {
     padding-top: 2rem;
@@ -1403,12 +1427,12 @@ blockquote cite {
 .error404 .content-area { margin-top: 4rem; }
 
 /*--------------------------------------------------------------
-10.3 Asides
+11.3 Asides
 --------------------------------------------------------------*/
 .format-aside .entry-content { margin-top: 1em; }
 
 /*--------------------------------------------------------------
-10.4 Image Attachments
+11.4 Image Attachments
 --------------------------------------------------------------*/
 
 .attachment .entry-title { margin-top: .7em; }
@@ -1424,7 +1448,7 @@ blockquote cite {
 
 
 /*--------------------------------------------------------------
-10.5 Comments
+11.5 Comments
 --------------------------------------------------------------*/
 .comments-title {
     font-weight: 900;
@@ -1483,8 +1507,6 @@ ol.children { list-style-type: none; }
     font-family: 'Lato', sans-serif;
 }
 
-.comment-content a { word-wrap: break-word; }
-
 .comment-content ol { margin-left: 1.5em; }
 
 .bypostauthor > .comment-body {
@@ -1530,7 +1552,7 @@ ol.children { list-style-type: none; }
 .required { color: red; }
 
 /*--------------------------------------------------------------
-10.6 Author Box
+11.6 Author Box
 --------------------------------------------------------------*/
 .reveal-bio {
     max-width: 780px;
@@ -1628,7 +1650,7 @@ a.author-link {
 }
 
 /*--------------------------------------------------------------
-11.0 Infinite scroll
+12.0 Infinite scroll
 --------------------------------------------------------------*/
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
 .infinite-scroll .paging-navigation, /* Older / Newer Posts Navigation (always hidden) */
@@ -1641,7 +1663,7 @@ a.author-link {
 }
 
 /*--------------------------------------------------------------
-12.0 Media
+13.0 Media
 --------------------------------------------------------------*/
 .page-content img.wp-smiley,
 .entry-content img.wp-smiley,
@@ -1727,7 +1749,11 @@ object { max-width: 100%; }
 
 /* Featured Images */
 
-.single-post-thumbnail { background: #b2b2b2 url(images/pattern.svg) repeat; }
+.single-post-thumbnail { 
+    background-color: #b2b2b2;
+    background-image: url(images/pattern.svg);
+    background-repeat: repeat; 
+}
 
 .front-index-thumbnail { margin-bottom: -3.2em; }
 
@@ -1749,7 +1775,7 @@ object { max-width: 100%; }
 .small-index-thumbnail { margin-top: -1em; }
 
 /*--------------------------------------------------------------
-13 Footer
+14 Footer
 --------------------------------------------------------------*/
 
 .site-footer {

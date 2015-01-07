@@ -1,0 +1,275 @@
+/*
+Theme Name: Choco
+*/
+/*
+Used to style the TinyMCE editor.
+*/
+html .mceContentbody {
+	max-width:645px;
+}
+body.mceContentBody {
+	font-family: Arial, "Trebuchet MS", Sans-Serif;
+	color: #444;
+	line-height: 1.4;
+}
+p,
+dl,
+td,
+th,
+ul,
+ol,
+blockquote {
+	font-size: 13px;
+}
+tr th,
+thead th,
+label,
+tr th,
+thead th {
+	font-family: Arial, "Trebuchet MS", Sans-Serif;
+}
+pre {
+	font-family: "Courier 10 Pitch", Courier, monospace;
+}
+code, code var {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+body, input, textarea {
+	font-size: 13px;
+	line-height: 1.4;
+}
+hr {
+	background-color: #e7e7e7;
+	border:0;
+	height: 1px;
+	margin-bottom: 18px;
+	clear:both;
+}
+/* Text elements */
+p {
+	margin-bottom: 18px;
+}
+ul {
+	list-style: disc;
+	margin: 0 0 22px 20px;
+}
+ul ul {
+	list-style:circle;
+}
+ul ul ul{
+	list-style:square;
+}
+ol {
+	list-style: decimal;
+	margin: 0 0 22px 20px;
+}
+ol ol {
+	list-style:lower-roman;
+}
+ol ol ol {
+	list-style:lower-alpha;
+}
+ol ol ol ol {
+	list-style:lower-alpha;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-bottom:0;
+}
+dl {
+	margin:0 0 24px 0;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-bottom: 18px;
+}
+strong {
+	font-weight: bold;
+}
+cite,
+em,
+i {
+	font-style: italic;
+	border: none;
+}
+big {
+	font-size: 131.25%;
+}
+ins {
+	background: #ffffcc;
+	border: none;
+}
+del {
+	text-decoration: line-through;
+}
+blockquote {
+	font-style: italic;
+	padding: 0 3em;
+}
+blockquote cite,
+blockquote em,
+blockquote i {
+	font-style: normal;
+}
+pre {
+	background: #f7f7f7;
+	color: #222;
+	line-height: 18px;
+	margin-bottom: 18px;
+	padding: 1.5em;
+}
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+ins {
+	text-decoration: none;
+}
+sup,
+sub {
+	height: 0;
+	line-height: 1;
+	vertical-align: baseline;
+	position: relative;
+	font-size: 10px;
+}
+sup {
+	bottom: 1ex;
+}
+sub {
+	top: .5ex;
+}
+a:link {
+	color:#cd4517;
+}
+a:visited {
+	color:#cd4517;
+}
+a:active,
+a:hover {
+	color: #cd4517;
+}
+p,
+ul,
+ol,
+dd,
+pre,
+hr {
+	margin-bottom:18px;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-bottom:0;
+}
+pre,
+kbd,
+tt,
+var {
+	font-size: 13px;
+	line-height: 18px;
+}
+code {
+	font-size: 13px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 18px 0;
+	line-height: 1.5em;
+	font-weight: normal;
+}
+h1 {
+	font-size: 20px
+}
+h2 {
+	font-size: 18px;
+}
+h3 {
+	font-size: 16px;
+}
+h4 {
+	font-size: 14px;
+}
+h5 {
+	font-size: 12px;
+}
+h6 {
+	font-size: 10px;
+}
+table {
+	border: 1px solid #E7E7E7 !important;
+	text-align: left;
+	margin: 0 0 22px 0;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+tr th,
+thead th {
+	border: none !important;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 18px;
+	padding: 9px 24px;
+}
+tr td {
+	border: none !important;
+	border-top: 1px solid #e7e7e7 !important;
+	padding: 6px 24px;
+}
+img {
+	margin: 0;
+	max-width: 645px;
+}
+.alignleft,
+img.alignleft {
+	display: inline;
+	float: left;
+	margin: 5px 0 5px 15px;
+}
+.alignright,
+img.alignright {
+	display: inline;
+	float: right;
+	margin: 5px 15px 5px 0;
+}
+.aligncenter,
+img.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.wp-caption {
+	border: none;
+	background: #f1f1f1;
+	color: #888;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
+	margin: 6px;
+	padding: 4px;
+	-moz-border-radius: 0;
+	-khtml-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+.wp-caption img {
+	margin: 5px;
+}
+.wp-caption p.wp-caption-text {
+	margin: 0 0 4px;
+}
+.wp-smiley {
+	margin:0;
+}

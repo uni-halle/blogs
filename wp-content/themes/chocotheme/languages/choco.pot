@@ -1,0 +1,303 @@
+# Copyright (C) 2014 CSSMayo
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Choco 0.1-wpcom\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/theme/choco\n"
+"POT-Creation-Date: 2014-06-01 08:45:56+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: 404.php:10 archive.php:81
+msgid "Not Found"
+msgstr ""
+
+#: 404.php:12
+msgid ""
+"Apologies, but the page you requested could not be found. Perhaps searching "
+"will help."
+msgstr ""
+
+#: archive.php:16
+msgid "Category Archives: %s"
+msgstr ""
+
+#: archive.php:18
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: archive.php:21
+msgid "Author Archives: %s"
+msgstr ""
+
+#: archive.php:24
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: archive.php:26
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: archive.php:28
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#. #-#-#-#-#  choco.pot (Choco 0.1-wpcom)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: archive.php:30 sidebar.php:29
+msgid "Archives"
+msgstr ""
+
+#: archive.php:56
+msgid "About %s"
+msgstr ""
+
+#: archive.php:72 index.php:24 search.php:21
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: archive.php:73 index.php:25 search.php:22
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: archive.php:82 single.php:34
+msgid "Sorry, but nothing matched your search criteria."
+msgstr ""
+
+#: archives.php:14
+msgid "Archives by Month:"
+msgstr ""
+
+#: archives.php:19
+msgid "Archives by Subject:"
+msgstr ""
+
+#: comments.php:17
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: comments.php:35
+msgid "One response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:42 comments.php:61
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr ""
+
+#: comments.php:43 comments.php:62
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: comments.php:72
+msgid "Comments are closed."
+msgstr ""
+
+#: content.php:13
+msgid "All %s posts"
+msgstr ""
+
+#: content.php:32 content.php:47
+msgid "Permalink to %s"
+msgstr ""
+
+#: content.php:59 image.php:98 page.php:31
+msgid "Pages:"
+msgstr ""
+
+#: content.php:61 functions.php:144 functions.php:159 image.php:41
+#: image.php:53 image.php:102 page.php:32
+msgid "Edit"
+msgstr ""
+
+#: content.php:68
+msgid "Leave a comment"
+msgstr ""
+
+#: content.php:68
+msgid "1 Comment"
+msgstr ""
+
+#: content.php:68
+msgid "% Comments"
+msgstr ""
+
+#: content.php:69
+msgid "Posted by"
+msgstr ""
+
+#: content.php:69
+msgid "on"
+msgstr ""
+
+#: content.php:69
+msgid "in"
+msgstr ""
+
+#: content.php:73
+msgid "Tags:"
+msgstr ""
+
+#: footer.php:16
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: footer.php:18
+msgid "Entries (RSS)"
+msgstr ""
+
+#: footer.php:18
+msgid "and"
+msgstr ""
+
+#: footer.php:18
+msgid "Comments (RSS)"
+msgstr ""
+
+#: functions.php:36
+msgid "Primary Navigation"
+msgstr ""
+
+#: functions.php:140
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: functions.php:159
+msgid "Pingback:"
+msgstr ""
+
+#: functions.php:271
+msgid "Page %s"
+msgstr ""
+
+#: image.php:18
+msgid "<span class=\"%1$s\">By</span> %2$s"
+msgstr ""
+
+#: image.php:22
+msgid "View all posts by %s"
+msgstr ""
+
+#: image.php:31
+msgid ""
+"<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class="
+"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span>  "
+"at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> "
+"in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+#: image.php:47
+msgid ""
+"<span class=\"meta-prep meta-prep-entry-date\">Uploaded </span> at <a href="
+"\"%1$s\" title=\"Link to full-size image\">%2$s &times; %3$s</a>"
+msgstr ""
+
+#: image.php:96
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: inc/theme-options.php:25
+msgid "Theme Options"
+msgstr ""
+
+#: inc/theme-options.php:35
+msgid "Default"
+msgstr ""
+
+#: inc/theme-options.php:39
+msgid "Dark Gray"
+msgstr ""
+
+#: inc/theme-options.php:43
+msgid "Red"
+msgstr ""
+
+#: inc/theme-options.php:60
+msgid " Theme Options"
+msgstr ""
+
+#: inc/theme-options.php:63
+msgid "Options saved"
+msgstr ""
+
+#: inc/theme-options.php:77 inc/theme-options.php:79
+msgid "Color Scheme"
+msgstr ""
+
+#: inc/theme-options.php:112
+msgid "Save Options"
+msgstr ""
+
+#: links.php:15
+msgid "Links:"
+msgstr ""
+
+#: search.php:11
+msgid "Search results for"
+msgstr ""
+
+#: search.php:28
+msgid "No posts found. Try a different search?"
+msgstr ""
+
+#: searchform.php:11
+msgid "Search"
+msgstr ""
+
+#: sidebar.php:22
+msgid "Pages"
+msgstr ""
+
+#: sidebar.php:36
+msgid "Categories"
+msgstr ""
+
+#: sidebar.php:44
+msgid "Bookmarks"
+msgstr ""
+
+#: sidebar.php:52
+msgid "Meta"
+msgstr ""
+
+#: single.php:13 single.php:24
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr ""
+
+#: single.php:16 single.php:27
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Choco"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://cssmayo.com/freebies/free-wordpress-themes/chocotheme/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Stylish WordPress theme with two columns, right-sidebar, and three available "
+"color schemes."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "CSSMayo"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://cssmayo.com/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Links"
+msgstr ""

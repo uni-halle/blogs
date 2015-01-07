@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if( !defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -26,6 +26,7 @@ function get_responsive_breadcrumb_lists() {
 	} elseif ( ! is_search() ) {
 		responsive_breadcrumb_lists();
 	}
+
 }
 
 /**

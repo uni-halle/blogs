@@ -1,61 +1,52 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
-<head profile="http://gmpg.org/xfn/11">
-	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<title><?php wp_title('&laquo;', true, 'right'); ?> <?php bloginfo('name'); ?></title>
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
-	<!--[if IE 6]>
-		<style type="text/css" media="screen">
-			#footer p.rss { background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php bloginfo('stylesheet_directory'); ?>/images/ico-rss-2.png', sizingMethod='image'); }
-			#main-bot { height: 150px; }
-			.comment { height: 90px; }
-		</style>
-	<![endif]-->
-	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	<?php wp_head(); ?>
-	<script src="<?php bloginfo('stylesheet_directory'); ?>/js/fn.js" type="text/javascript" charset="utf-8"></script>
-	<!-- Theme -->
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/themes/<?php echo choco_get_theme_path(); ?>/style.css" type="text/css" media="all" />
-	<!--[if IE 6]>
-		<style type="text/css" media="screen">
-			#rss-link { background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php bloginfo('stylesheet_directory'); ?>/themes/<?php echo choco_get_theme_path(); ?>/images/ico-rss.png', sizingMethod='image'); }
-			.post .date .bg { background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php bloginfo('stylesheet_directory'); ?>/themes/<?php echo choco_get_theme_path(); ?>/images/date.png', sizingMethod='image'); }
-			#nav ul li.current_page_item a,
-			#nav ul li.current_page_item a span { background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php bloginfo('stylesheet_directory'); ?>/themes/<?php echo choco_get_theme_path(); ?>/images/nav-active.png', sizingMethod='scale'); }
-		</style>
-	<![endif]-->
+<?php
+/**
+ * The Header for our theme.
+ *
+ * Displays all of the <head> section and everything up till <div id="content">
+ *
+ * @package WordPress
+ * @subpackage Choco
+ */
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<title><?php wp_title( '|', true, 'right' ); ?></title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> style="<?php echo choco_get_body_style() ?>">
-<!-- Page -->
+<body <?php body_class(); ?>>
+
 <div id="page">
-	<!-- Header -->
-	<div id="header">
-		<!-- Logo -->
+<?php do_action( 'before' ); ?>
+	<header id="header" class="clear-fix">
 		<div id="logo">
-			<h1><a href="<?php echo get_option('home'); ?>"><?php bloginfo('name'); ?></a></h1>
-			<div class="description"><?php bloginfo('description'); ?></div>
-		</div>
-		<!-- END Logo -->
-		<!-- Main Navigation -->
+			<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'h3'; ?>
+			<<?php echo $heading_tag; ?> id="site-title">
+				<span>
+					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</span>
+			</<?php echo $heading_tag; ?>>
+			<div class="description"><?php bloginfo( 'description' ); ?></div>
+
+		</div><!-- #logo -->
+
 		<div id="nav">
-			<ul>
-				<?php choco_print_header() ?>
-			</ul>
-		</div>
-		<script type="text/javascript" charset="utf-8">
-			
-		</script>
-		<!-- END Main Navigation -->
-		<div class="cl">&nbsp;</div>
-	</div>
-	<!-- END Header -->
-	<!-- Main Block -->
+			<?php wp_nav_menu( array( 'container' => false, 'theme_location' => 'primary') ); ?>
+		</div><!-- #nav -->
+
+		<a href="#" class="open-sidebar">
+			<span></span>
+		</a>
+
+	</header><!-- #header -->
+
 	<div id="main">
-		<!-- RSS icon -->
-		<a href="<?php bloginfo('rss_url'); ?>" id="rss-link">RSS</a>
+		<a href="<?php bloginfo( 'rss_url' ); ?>" id="rss-link">RSS</a>
 		<div id="main-top">
-			<div id="main-bot">
-				<div class="cl">&nbsp;</div>
-				<!-- Content -->
-				<div id="content">
+			<div id="main-middle">
+				<div id="main-bot" class="clear-fix">
+					<div id="content">
+						<div class="content-inner">

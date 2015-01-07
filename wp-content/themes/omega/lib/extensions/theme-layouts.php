@@ -140,8 +140,18 @@ function theme_layouts_get_args() {
  */
 function theme_layouts_filter_layout( $theme_layout ) {
 
-	/* If viewing a singular post, get the post layout. */
-	if ( is_singular() )
+	$blog_layout = get_post_layout( get_option('page_for_posts') );
+	
+	if ( is_home() || is_archive()) {		
+		if ( $blog_layout != 'default')
+			$layout = $blog_layout;
+	} elseif ( is_singular( 'post' )) {
+		$post_layout = get_post_layout( get_queried_object_id() );
+		if ( $post_layout != 'default')
+			$layout = $post_layout;
+		elseif ( $blog_layout != 'default')
+			$layout = $blog_layout;
+	} elseif ( is_singular() ) /* If viewing a singular post, get the post layout. */
 		$layout = get_post_layout( get_queried_object_id() );
 
 	/* If viewing an author archive, get the user layout. */

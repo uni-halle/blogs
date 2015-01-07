@@ -34,15 +34,17 @@ if ( ! class_exists( 'TC_nav_walker' ) ) :
         $item_html = '';
         parent::start_el( $item_html, $item, $depth, $args);
 
-        if ( $item->is_dropdown && ( $depth === 0)) {
+        if ( $item->is_dropdown ) {
           //makes top menu not clickable (default bootstrap behaviour)
           $search         = '<a';
           $replace        = ( ! wp_is_mobile() && 'hover' == esc_attr( tc__f( '__get_option' , 'tc_menu_type' ) ) ) ? $search : '<a class="dropdown-toggle" data-toggle="dropdown" data-target="#"';
+          $replace       .= strpos($item_html, 'href=') ? '' : ' href="#"' ;
           $replace        = apply_filters( 'tc_menu_open_on_click', $replace , $search );
           $item_html      = str_replace( $search , $replace , $item_html);
 
           //adds arrows down
-          $item_html      = str_replace( '</a>' , ' <b class="caret"></b></a>' , $item_html);
+          if ( $depth === 0 )
+              $item_html      = str_replace( '</a>' , ' <b class="caret"></b></a>' , $item_html);
         }
         elseif (stristr( $item_html, 'li class="divider' )) {
           $item_html = preg_replace( '/<a[^>]*>.*?<\/a>/iU' , '' , $item_html);

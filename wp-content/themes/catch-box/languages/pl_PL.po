@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-16 12:36+0545\n"
-"PO-Revision-Date: 2014-08-16 12:36+0545\n"
+"POT-Creation-Date: 2014-12-08 20:20+0545\n"
+"PO-Revision-Date: 2014-12-08 20:20+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Piotrekkk\n"
 "Language: pl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -209,6 +209,7 @@ msgstr "<b>%</b> Odpowiedzi"
 msgid "Edit"
 msgstr "Edytuj"
 
+#. translators: used between list items, there is a space after the comma
 #: ../content-featured.php:35 ../content-featured.php:44
 #: ../content-gallery.php:68 ../content-gallery.php:78 ../content-image.php:53
 #: ../content-image.php:62 ../content-quote.php:50 ../content-quote.php:60
@@ -364,14 +365,17 @@ msgstr "Drugie menu"
 msgid "Footer Menu"
 msgstr "Menu w stopce"
 
+#. translators: header image description
 #: ../functions.php:179
 msgid "Garden"
 msgstr "Ogród"
 
+#. translators: header image description
 #: ../functions.php:185
 msgid "Flower"
 msgstr "Kwiaty"
 
+#. translators: header image description
 #: ../functions.php:191
 msgid "Mountain"
 msgstr "Góry"
@@ -417,11 +421,13 @@ msgstr "Nowsze wpisy <span class=\"meta-nav\">&rarr;</span>"
 msgid "Pingback:"
 msgstr "Pingback:"
 
+#. translators: 1: comment author, 2: date and time
 #: ../functions.php:640
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s, %2$s <span class=\"says\">:</span>"
 
+#. translators: 1: date, 2: time
 #: ../functions.php:646
 #, php-format
 msgid "%1$s at %2$s"

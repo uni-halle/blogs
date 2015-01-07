@@ -1,0 +1,34 @@
+#rss-link {
+	background-image: url(images/rtl/ico-rss.png);
+}
+#sidebar h4 {
+	background-image: url(images/rtl/widgettitle.jpg);
+	background-position:15px 0;
+}
+#sidebar ul ul li {
+	background-image: url(images/rtl/sidebar-list-arr.gif);
+}
+#sidebar #searchform .field-place {
+	background-image: url(images/rtl/searchform-field.gif);
+}
+#respond #submit {
+	background-image: url(images/rtl/button.gif);
+}
+#main:before,
+#main-middle:before {
+	background: -moz-linear-gradient(left,  rgba(222,164,105,0) 0%, rgba(222,164,105,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(222,164,105,0)), color-stop(100%,rgba(222,164,105,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  rgba(222,164,105,0) 0%,rgba(222,164,105,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  rgba(222,164,105,0) 0%,rgba(222,164,105,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgba(222,164,105,0) 0%,rgba(222,164,105,1) 100%); /* IE10+ */
+	background: linear-gradient(to right,  rgba(222,164,105,0) 0%,rgba(222,164,105,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00dea469', endColorstr='#dea469',GradientType=1 ); /* IE6-9 */
+}
+
+/* --- Responsive styles --- */
+@media only screen and (max-width: 1024px) {
+    /* =Sidebar
+	-------------------------------------------------------------- */
+
+    #sidebar { background-image: url(images/rtl/sidebar-bg.png); }
+}

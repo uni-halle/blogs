@@ -144,23 +144,22 @@ span[class*=tc-icon]:before {
 	display: block;
 	text-align: center;
 }
-.donate-alert {
+#tc-donate-customizer .donate-alert {
 	display: none;
 	clear: both;
-	background-color: #DFF0D8;
+	background-color: #27CDA5;
 	border-color: 1px solid #D6E9C6;
-	color: #468847;
+	color: #FFF;
 	padding: 10px;
 	margin-top: 0px;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 }
-.donate-alert p {
+#tc-donate-customizer .donate-alert p {
 	font-size: 12px;
 }
-.donate-alert .button {
+#tc-donate-customizer .donate-alert .button {
 	padding: 0 9px 1px;
 }
 
@@ -174,7 +173,7 @@ span[class*=tc-icon]:before {
 	margin: 0;
 	padding: 0 4px 0px;
 }
-.tc-hide-donate, .tc-cancel-hide-donate {
+#tc-donate-customizer .donate-alert .tc-hide-donate, #tc-donate-customizer .donate-alert .tc-cancel-hide-donate {
 	padding: 0 5px 1px;
 }
 
@@ -369,15 +368,73 @@ li#customize-control-tc_theme_options-tc_custom_css textarea {
     }
 }
 
+/* iCheck plugin Flat skin, grey
+----------------------------------- */
+.icheckbox_flat-grey,
+.iradio_flat-grey {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    background: url(img/grey.png) no-repeat;
+    border: none;
+    cursor: pointer;
+    top: 4px;
+    float: right;
+}
+
+.icheckbox_flat-grey {
+    background-position: 0 0;
+}
+    .icheckbox_flat-grey.checked {
+        background-position: -22px 0;
+    }
+    .icheckbox_flat-grey.disabled {
+        background-position: -44px 0;
+        cursor: default;
+    }
+    .icheckbox_flat-grey.checked.disabled {
+        background-position: -66px 0;
+    }
+
+.iradio_flat-grey {
+    background-position: -88px 0;
+}
+    .iradio_flat-grey.checked {
+        background-position: -110px 0;
+    }
+    .iradio_flat-grey.disabled {
+        background-position: -132px 0;
+        cursor: default;
+    }
+    .iradio_flat-grey.checked.disabled {
+        background-position: -154px 0;
+    }
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min-device-pixel-ratio: 1.5) {
+    .icheckbox_flat-grey,
+    .iradio_flat-grey {
+        background-image: url(img/grey@2x.png);
+        -webkit-background-size: 176px 22px;
+        background-size: 176px 22px;
+    }
+}
 
 
-/* 
- * Selecter v3.1.9 - 2014-09-02 
- * A jQuery plugin for replacing default select elements. Part of the Formstone Library. 
- * http://formstone.it/selecter/ 
- * 
- * Copyright 2014 Ben Plum; MIT Licensed 
- */ 
+/*
+ * Selecter v3.1.9 - 2014-09-02
+ * A jQuery plugin for replacing default select elements. Part of the Formstone Library.
+ * http://formstone.it/selecter/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
 .selecter-element { *left: -999999px; position: absolute; opacity: 0; }
 .selecter { display: block;float: right;margin: 2px 0;position: relative;width: 100%;z-index: 100; }
 .selecter .selecter-selected { background: #F9F9F9 url(img/jquery.fs.selecter-arrow.png) no-repeat right center; border: 1px solid #ccc; border-radius: 3px; color: #333; cursor: pointer; display: block; font-size: 13px; margin: 0; overflow: hidden; padding: 4px 4.6%; position: relative; text-overflow: clip; z-index: 49; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);height: auto;line-height: 18px;width: 90%; }
@@ -445,13 +502,13 @@ li#customize-control-tc_theme_options-tc_custom_css textarea {
 }
 
 
-/* 
- * Stepper v3.0.7 - 2014-05-07 
- * A jQuery plugin for cross browser number inputs. Part of the Formstone Library. 
- * http://formstone.it/stepper/ 
- * 
- * Copyright 2014 Ben Plum; MIT Licensed 
- */ 
+/*
+ * Stepper v3.0.7 - 2014-05-07
+ * A jQuery plugin for cross browser number inputs. Part of the Formstone Library.
+ * http://formstone.it/stepper/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
 .stepper { border-radius: 3px; margin: 0 0 10px 0; overflow: hidden; position: relative; width: 35%;float: left; clear: both;}
 .stepper .stepper-input { background: #F9F9F9; border: 1px solid #ccc; border-radius: 3px; color: #333; font-size: 13px; line-height: 1.2; margin: 0; overflow: hidden; padding: 5px 10px 5px!important; width: 100%!important; z-index: 49;	-moz-appearance: textfield;max-width: none!important;
 }
@@ -499,12 +556,6 @@ li#customize-control-tc_theme_options-tc_custom_css textarea {
 .wp-customizer .select2-container-active .select2-choices {
     border: 1px solid #1ABC9C;
 }
-.wp-customizer .select2-results .select2-highlighted {
-    background: #eee;
-}
-.wp-customizer .select2-results li em {
-    background: #F4F4F4;
-}
 .wp-customizer .select2-container .select2-choice > .select2-chosen {
 	margin-right: 0px;
 }
@@ -516,6 +567,12 @@ li#customize-control-tc_theme_options-tc_custom_css textarea {
 }
 .wp-customizer .select2-results .select2-result-label {
 	padding: 0;
+}
+.wp-customizer .select2-results .select2-highlighted {
+    background: #eee;
+}
+.wp-customizer .select2-results li em {
+    background: #F4F4F4;
 }
 .select2-results .tc-select2-skin-color {
 	padding: 8px 0px;
@@ -546,4 +603,121 @@ li#customize-control-tc_theme_options-tc_custom_css textarea {
 	-moz-box-shadow:none;
 	box-shadow: none;
 	/*font-size: 15px;*/
+}
+.tc-select2-font {
+  padding: 7px 7px 4px;
+  line-height: 20px;
+}
+.select2-results .select2-highlighted .tc-select2-font{
+  color: #555;
+}
+.select2-results li.select2-result-with-children>.select2-result-label {
+  font-weight: 700;
+  text-align: center;
+  padding-top: 3px;
+  line-height: 22px;
+}
+/* FONTS */
+#select2-results-4 {
+  padding: 0;
+  margin: 0;
+}
+#select2-results-4 .select2-results-dept-0 > div.select2-result-label {
+ height: 30px;
+ padding: 7px 7px 1px;
+ text-transform: uppercase;
+}
+#select2-results-4 li {
+  margin-bottom: 0;
+}
+#select2-results-4 li li {
+  line-height: 30px;
+}
+#select2-results-4 .select2-result-label {
+  border-bottom: 1px solid #E3E3E3;
+  text-overflow: ellipsis;
+}
+.tc-title-google-logo {
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 100;
+  padding: 2px 4px 0 20px;
+  top: 6px;
+}
+.tc-google-logo {
+  position: relative;
+  top: 6px;
+}
+
+
+/* Call to actions block */
+.tc-cta-wrap {
+  background-color: #FFF;
+  color: #666;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #EEE;
+  margin: 0;
+  padding: 4px 15px 4px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.tc-in-control-cta-wrap {
+  background-color: #FFF;
+  color: #666;
+  border-left: 0;
+  border-right: 0;
+  margin: 0;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  float: left;
+  clear: both;
+}
+
+.tc-cta .tc-cta-btn:hover {
+  background: #1B8D71;
+  color: #FFF;
+}
+
+.tc-cta .tc-cta-btn {
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 2px;
+  padding: 4px 14px;
+  background: #27CDA5;
+  display: inline-block;
+  color: #FFF;
+  -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 3px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 24px;
+  border: 1px solid #1B8D71;
+}
+
+.tc-cta .tc-cta-btn:active {
+  -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.in-sub-panel .tc-cta-wrap {
+  left: -300px;
 }

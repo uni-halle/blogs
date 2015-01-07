@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html <?php language_attributes( 'html' ); ?>>
+<html <?php language_attributes(); ?>>
 <head>
-<?php wp_head(); // Hook required for scripts, styles, and other <head> items. ?>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<title><?php wp_title( ' |', true, 'right' ); ?></title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?> <?php omega_attr( 'body' ); ?>>

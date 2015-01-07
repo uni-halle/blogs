@@ -1,0 +1,269 @@
+# Translation of Choco in Japanese
+# This file is distributed under the same license as the Choco package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2014-06-02 08:57:13+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Choco\n"
+
+msgid "Stylish WordPress theme with two columns, right-sidebar, and three available color schemes."
+msgstr "2カラム、右サイドバー、3色の配色を含むスタイリッシュな WordPress テーマ。"
+
+msgid "Links"
+msgstr "リンク"
+
+#: single.php:16 single.php:27
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr "&rarr;"
+
+#: single.php:13 single.php:24
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr "&larr;"
+
+#: sidebar.php:52
+msgid "Meta"
+msgstr "メタ情報"
+
+#: sidebar.php:44
+msgid "Bookmarks"
+msgstr "ブックマーク"
+
+#: sidebar.php:36
+msgid "Categories"
+msgstr "カテゴリー"
+
+#: sidebar.php:22
+msgid "Pages"
+msgstr "固定ページ"
+
+#: searchform.php:11
+msgid "Search"
+msgstr "検索"
+
+#: search.php:28
+msgid "No posts found. Try a different search?"
+msgstr "投稿は見つかりませんでした。新しい検索を試してみませんか ?"
+
+#: search.php:11
+msgid "Search results for"
+msgstr "検索結果:"
+
+#: inc/theme-options.php:112
+msgid "Save Options"
+msgstr "設定を保存"
+
+#: links.php:15
+msgid "Links:"
+msgstr "リンク:"
+
+#: inc/theme-options.php:63
+msgid "Options saved"
+msgstr "設定を保存しました"
+
+#: inc/theme-options.php:77 inc/theme-options.php:79
+msgid "Color Scheme"
+msgstr "配色 "
+
+#: inc/theme-options.php:60
+msgid " Theme Options"
+msgstr "テーマ設定"
+
+#: inc/theme-options.php:39
+msgid "Dark Gray"
+msgstr "ダークグレー"
+
+#: inc/theme-options.php:43
+msgid "Red"
+msgstr "赤"
+
+#: inc/theme-options.php:35
+msgid "Default"
+msgstr "デフォルト"
+
+#: inc/theme-options.php:25
+msgid "Theme Options"
+msgstr "テーマオプション"
+
+#: image.php:96
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "続きを読む <span class=\"meta-nav\">&rarr;</span>"
+
+#: image.php:31
+msgid "<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span>  at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
+msgstr "<span class=\"meta-prep meta-prep-entry-date\">投稿日: </span> <span class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> @ <a href=\"%3$s\" title=\"フルサイズ画像へのリンク\">%4$s &times; %5$s</a> | <a href=\"%6$s\" title=\"%7$s へ戻る\" rel=\"gallery\">%7$s</a>"
+
+#: image.php:47
+msgid "<span class=\"meta-prep meta-prep-entry-date\">Uploaded </span> at <a href=\"%1$s\" title=\"Link to full-size image\">%2$s &times; %3$s</a>"
+msgstr "<a href=\"%1$s\" title=\"フルサイズ画像へのリンク\">%2$s &times; %3$s</a>で<span class=\"meta-prep meta-prep-entry-date\">アップロード </span>"
+
+#: image.php:18
+msgid "<span class=\"%1$s\">By</span> %2$s"
+msgstr "<span class=\"%1$s\">投稿者:</span> %2$s"
+
+#: image.php:22
+msgid "View all posts by %s"
+msgstr "%s のすべての投稿を表示"
+
+#: functions.php:271
+msgid "Page %s"
+msgstr "ページ %s"
+
+#: functions.php:159
+msgid "Pingback:"
+msgstr "ピンバック:"
+
+#: functions.php:140
+msgid "Your comment is awaiting moderation."
+msgstr "あなたのコメントは承認待ちです。"
+
+#: functions.php:36
+msgid "Primary Navigation"
+msgstr "メインナビゲーション"
+
+#: footer.php:18
+msgid "Comments (RSS)"
+msgstr "コメント (RSS)"
+
+#: footer.php:18
+msgid "and"
+msgstr "と"
+
+#: footer.php:18
+msgid "Entries (RSS)"
+msgstr "投稿 (RSS)"
+
+#: footer.php:16
+msgid "Theme: %1$s by %2$s."
+msgstr "Theme: %1$s by %2$s."
+
+#: content.php:69
+msgid "in"
+msgstr "投稿先"
+
+#: content.php:73
+msgid "Tags:"
+msgstr "タグ:"
+
+#: content.php:69
+msgid "on"
+msgstr ": "
+
+#: content.php:69
+msgid "Posted by"
+msgstr "投稿者:"
+
+#: content.php:68
+msgid "% Comments"
+msgstr "%件のコメント"
+
+#: content.php:68
+msgid "1 Comment"
+msgstr "1件のコメント"
+
+#: content.php:68
+msgid "Leave a comment"
+msgstr "コメントする"
+
+#: content.php:61 functions.php:144 functions.php:159 image.php:41 image.php:53
+#: image.php:102 page.php:32
+msgid "Edit"
+msgstr "編集"
+
+#: content.php:59 image.php:98 page.php:31
+msgid "Pages:"
+msgstr "ページ:"
+
+#: content.php:13
+msgid "All %s posts"
+msgstr "すべての%s投稿"
+
+#: content.php:32 content.php:47
+msgid "Permalink to %s"
+msgstr "%s へのパーマリンク"
+
+#: comments.php:72
+msgid "Comments are closed."
+msgstr "コメントは受け付けていません。"
+
+#: comments.php:43 comments.php:62
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr "新しいコメント <span class=\"meta-nav\">&rarr;</span>"
+
+#: comments.php:35
+msgid "One response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "「%2$s」への%1$s件のフィードバック"
+
+#: comments.php:42 comments.php:61
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr "<span class=\"meta-nav\">&larr;</span> 昔のコメント"
+
+#: comments.php:17
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "この投稿はパスワードで保護されています。コメントを表示するにはパスワードを入力してください。"
+
+#: archives.php:14
+msgid "Archives by Month:"
+msgstr "月別アーカイブ:"
+
+#: archives.php:19
+msgid "Archives by Subject:"
+msgstr "話題別アーカイブ:"
+
+#: archive.php:82 single.php:34
+msgid "Sorry, but nothing matched your search criteria."
+msgstr "検索条件に合う結果が見つかりませんでした。"
+
+#: archive.php:73 index.php:25 search.php:22
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "新しい投稿 <span class=\"meta-nav\">&rarr;</span>"
+
+#: archive.php:72 index.php:24 search.php:21
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> 過去の投稿"
+
+#: archive.php:56
+msgid "About %s"
+msgstr "%s について"
+
+#: archive.php:30 sidebar.php:29
+msgid "Archives"
+msgstr "アーカイブ"
+
+#: archive.php:28
+msgid "Yearly Archives: %s"
+msgstr "年別アーカイブ: %s"
+
+#: archive.php:26
+msgid "Monthly Archives: %s"
+msgstr "月別アーカイブ: %s"
+
+#: archive.php:24
+msgid "Daily Archives: %s"
+msgstr "日別アーカイブ: %s"
+
+#: archive.php:21
+msgid "Author Archives: %s"
+msgstr "作成者別アーカイブ: %s"
+
+#: archive.php:18
+msgid "Tag Archives: %s"
+msgstr "タグ別アーカイブ: %s"
+
+#: 404.php:12
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr "リクエストされたページが存在しません。検索で見つかるかもしれません。"
+
+#: archive.php:16
+msgid "Category Archives: %s"
+msgstr "カテゴリー別アーカイブ: %s"
+
+#: 404.php:10 archive.php:81
+msgid "Not Found"
+msgstr "見つかりません"

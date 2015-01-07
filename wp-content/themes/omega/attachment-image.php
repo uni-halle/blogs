@@ -14,7 +14,7 @@
 						<h1 class="entry-title"><?php single_post_title(); ?></h1>
 					</header><!-- .entry-header -->
 
-					<div class="entry-content">
+					<div <?php omega_attr( 'entry-content' ); ?>>
 
 						<?php if ( has_excerpt() ) {
 							$src = wp_get_attachment_image_src( get_the_ID(), 'full' );
@@ -28,7 +28,7 @@
 
 					</div><!-- .entry-content -->
 
-				</article><!-- .hentry -->
+				</article><!-- .entry -->
 
 				<div class="attachment-meta">
 

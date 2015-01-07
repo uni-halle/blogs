@@ -30,6 +30,7 @@ function omega_customize_post_register( $wp_customize ) {
 			'default'              => 'full',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
+			'sanitize_callback'    => 'sanitize_text_field',
 		)
 	);
 
@@ -56,6 +57,7 @@ function omega_customize_post_register( $wp_customize ) {
 			'default'              => '1',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
+			'sanitize_callback'    => 'sanitize_text_field',
 		)
 	);
 
@@ -82,6 +84,7 @@ function omega_customize_post_register( $wp_customize ) {
 			'default'              => '0',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
+			'sanitize_callback'    => 'sanitize_text_field',
 		)
 	);
 
@@ -107,6 +110,7 @@ function omega_customize_post_register( $wp_customize ) {
 			'default'              => '[Read more...]',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
+			'sanitize_callback'    => 'sanitize_text_field',
 		)
 	);
 
@@ -129,6 +133,7 @@ function omega_customize_post_register( $wp_customize ) {
 			'default'              => '1',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
+			'sanitize_callback'    => 'sanitize_text_field',
 		)
 	);
 
@@ -151,6 +156,7 @@ function omega_customize_post_register( $wp_customize ) {
 			'default'              => 'large',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
+			'sanitize_callback'    => 'sanitize_text_field',
 		)
 	);
 
@@ -177,9 +183,10 @@ function omega_customize_post_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		"single_nav",
 		array(
-			'default'              => '0',
+			'default'              => '1',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
+			'sanitize_callback'    => 'sanitize_text_field',
 		)
 	);
 

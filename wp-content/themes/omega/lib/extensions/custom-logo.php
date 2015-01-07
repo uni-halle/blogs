@@ -23,14 +23,14 @@ function omega_customize_logo_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the 'custom_css' setting. */
+	/* Add the 'custom_logo' setting. */
 	$wp_customize->add_setting(
 		"custom_logo",
 		array(
 			'default'              => '',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
-			//'sanitize_callback'    => 'omega_customize_sanitize',
+			'sanitize_callback'    => 'sanitize_text_field',
 			//'sanitize_js_callback' => 'omega_customize_sanitize',
 			//'transport'            => 'postMessage',
 		)
@@ -49,4 +49,38 @@ function omega_customize_logo_register( $wp_customize ) {
 		)
 	);
 
+	/* Add the 'custom_favicon' setting. */
+	$wp_customize->add_setting(
+		"custom_favicon",
+		array(
+			'default'              => '',
+			'type'                 => 'theme_mod',
+			'capability'           => 'edit_theme_options',
+			'sanitize_callback'    => 'sanitize_text_field',
+			//'sanitize_js_callback' => 'omega_customize_sanitize',
+			//'transport'            => 'postMessage',
+		)
+	);
+
+	/* Add the textarea control for the 'custom_css' setting. */
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'custom_favicon',
+			array(
+				'label'    => esc_html__( 'Favicon', 'omega' ),
+				'section'  => 'title_tagline',
+				'settings' => "custom_favicon",
+			)
+		)
+	);
+
+}
+
+add_action( 'wp_head', 'omega_favicon' );
+add_action( 'admin_head', 'omega_favicon' );
+
+function omega_favicon() {
+	if ( $favicon = get_theme_mod( 'custom_favicon' ) )
+        echo '<link rel="shortcut icon" href="'.  esc_url( $favicon )  .'"/>'."\n";
 }

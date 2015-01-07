@@ -5,27 +5,6 @@ function graphene_options_advanced() {
         
     <input type="hidden" name="graphene_advanced" value="true" />    
     
-    <?php /* Site Preview */ ?>
-    <div class="postbox">
-        <div class="head-wrap">
-            <div title="Click to toggle" class="handlediv"><br /></div>
-            <?php graphene_docs_link( 'Preview_option' ); ?>
-            <h3 class="hndle"><?php _e( 'Preview', 'graphene' ); ?></h3>
-        </div>
-        <div class="panel-wrap inside">
-            <table class="form-table">
-                <tr>
-                    <td>
-                        <input type="checkbox" name="graphene_settings[enable_preview]" id="enable_preview" <?php checked( $graphene_settings['enable_preview'] ); ?> value="true" />
-                        <label for="enable_preview"><?php _e( 'Enable preview of your site on the Graphene Theme Options page', 'graphene' ); ?></label>
-                    </td>
-                </tr>
-            </table>
-            
-            <p class="submit clearfix"><input type="submit" class="button" value="<?php _e( 'Save All Options', 'graphene' ); ?>" /></p>
-        </div>
-    </div>
-    
     
     <?php /* Custom <head> tags */ ?>
     <div class="postbox">
@@ -67,6 +46,7 @@ function graphene_options_advanced() {
         <div class="panel-wrap inside">
         	<p><?php _e("This option enables you to place virtually any content to every nook and cranny in the theme, by attaching widget areas to the theme's action hooks.", 'graphene' ); ?></p>
             <p><?php _e("All action hooks available in the Graphene Theme are listed below. Click on the filename to display all the action hooks available in that file. Then, tick the checkbox next to an action hook to make a widget area available for that action hook.", 'graphene' ); ?></p>
+            <p><?php printf( __( 'To see a visual map showing where each action hook in Graphene is located, visit this page: %s', 'graphene' ), '<a href="http://demo.graphene-theme.com/graphene-hooks-map/" target="_blank">' . __( 'Graphene Action Hooks Map', 'graphene' ) . '</a>' ); ?></p>
             
             <ul class="graphene-action-hooks">    
                 <?php                

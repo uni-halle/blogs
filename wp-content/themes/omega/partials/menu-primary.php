@@ -17,6 +17,5 @@
 	?>
 
 	<?php do_action( 'omega_after_primary_menu' ); ?>
-
 	
 </nav><!-- .nav-primary -->

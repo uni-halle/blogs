@@ -131,13 +131,13 @@ function graphene_admin_scripts() {
     wp_enqueue_script( 'thickbox' );
 	wp_enqueue_script( 'graphene-admin-js' );
 	wp_localize_script( 'graphene-admin-js', 'grapheneAdminScript', array(
-		'preset_name'			=> __( 'What should we call this preset?', 'graphene' ),
-		'preset_name_req'		=> __( 'Preset name is required to save a preset.', 'graphene' ),
-		'preset_delete_confirm'	=> __( 'You are deleting this preset:', 'graphene' ),
-		'preset_select_file'	=> __( 'Please select the exported Graphene colour presets file to import.', 'graphene' ),
+		'preset_name'				=> __( 'What should we call this preset?', 'graphene' ),
+		'preset_name_req'			=> __( 'Preset name is required to save a preset.', 'graphene' ),
+		'preset_delete_confirm'		=> __( 'You are deleting this preset:', 'graphene' ),
+		'preset_select_file'		=> __( 'Please select the exported Graphene colour presets file to import.', 'graphene' ),
 		'chosen_no_search_result'	=> __( 'Oops, nothing found.', 'graphene' ),
-		'is_rtl'				=> is_rtl(),
-		'import_select_file'	=> __( 'Please select the exported Graphene options file to import.', 'graphene' ),
+		'is_rtl'					=> is_rtl(),
+		'import_select_file'		=> __( 'Please select the exported Graphene options file to import.', 'graphene' ),
 	));
     // wp_enqueue_script( 'wp-pointer' );
 	
@@ -319,7 +319,7 @@ function graphene_editor_width(){
 		jQuery(document).ready(function($) {
 			setTimeout( function(){
 				$('#content_ifr').contents().find('#tinymce').css( 'width', '<?php echo $content_width; ?>' );
-			}, 1000 );
+			}, 2000 );
 		});
 	</script>
     <?php

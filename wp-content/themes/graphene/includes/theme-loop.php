@@ -437,12 +437,12 @@ function graphene_post_date( $id = '' ){
 	if ( stristr( $style, 'icon' ) ) :
 	?>
     	<div class="date updated alpha <?php if ( $style == 'icon_plus_year' ) echo 'with-year'; ?>">
-        	<span class="value-title" title="<?php the_time( 'Y-m-d\TH:i' ); ?>" />
+        	<span class="value-title" title="<?php echo get_the_time( 'Y-m-d\TH:i' ); ?>" />
             <p class="default_date">
-            	<span class="month"><?php the_time( 'M' ); ?></span>
-                <span class="day"><?php the_time( 'd' ) ?></span>
+            	<span class="month"><?php echo get_the_time( 'M' ); ?></span>
+                <span class="day"><?php echo get_the_time( 'd' ) ?></span>
                 <?php if ( $style == 'icon_plus_year' ) : ?>
-	                <span class="year"><?php the_time( 'Y' ); ?></span>
+	                <span class="year"><?php echo get_the_time( 'Y' ); ?></span>
                 <?php endif; ?>
             </p>
             <?php do_action( 'graphene_post_date' ); ?>
@@ -453,8 +453,8 @@ function graphene_post_date( $id = '' ){
 	if ( $style == 'text' ) :
 	?>
     	<p class="post-date-inline updated">
-        	<span class="value-title" title="<?php the_time( 'Y-m-d\TH:i' ); ?>"></span>
-            <abbr class="published" title="<?php the_date( 'c' ); ?>"><?php the_time( get_option( 'date_format' ) ); ?></abbr>
+        	<span class="value-title" title="<?php echo get_the_time( 'Y-m-d\TH:i' ); ?>"></span>
+            <abbr class="published" title="<?php echo get_the_time( 'c' ); ?>"><?php echo get_the_time( get_option( 'date_format' ) ); ?></abbr>
             <?php do_action( 'graphene_post_date' ); ?>
         </p>
     <?php

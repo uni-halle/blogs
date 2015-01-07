@@ -1,0 +1,28 @@
+/*
+Theme Name: Choco
+*/
+/*
+Used to style the TinyMCE editor.
+*/
+html .mceContentBody {
+	direction:rtl;
+	unicode-bidi:embed;
+	float:right;
+}
+body.mceContentBody {
+	font-family: Arial, "Trebuchet MS", Sans-Serif;
+}
+ul {
+	margin: 0 20px 22px 0;
+}
+ol {
+	margin: 0 20px 22px 0;
+}
+.alignleft,
+img.alignleft {
+	margin: 5px 15px 5px 0;
+}
+.alignright,
+img.alignright {
+	margin: 5px 0 5px 15px;
+}

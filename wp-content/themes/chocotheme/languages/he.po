@@ -1,0 +1,270 @@
+# Translation of Choco in Hebrew
+# This file is distributed under the same license as the Choco package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2014-06-01 14:55:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Choco\n"
+
+msgid "Stylish WordPress theme with two columns, right-sidebar, and three available color schemes."
+msgstr ""
+
+msgid "Links"
+msgstr "קישורים"
+
+#: single.php:16 single.php:27
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr "&larr;"
+
+#: single.php:13 single.php:24
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr "&rarr;"
+
+#: sidebar.php:52
+msgid "Meta"
+msgstr "כלים"
+
+#: sidebar.php:44
+msgid "Bookmarks"
+msgstr "קישורים"
+
+#: sidebar.php:36
+msgid "Categories"
+msgstr "קטגוריות"
+
+#: sidebar.php:22
+msgid "Pages"
+msgstr "עמודים"
+
+#: searchform.php:11
+msgid "Search"
+msgstr "חיפוש"
+
+#: search.php:28
+msgid "No posts found. Try a different search?"
+msgstr "לא מצאתי רשומות מתאימות. רוצה לנסות חיפוש אחר?"
+
+#: search.php:11
+msgid "Search results for"
+msgstr "תוצאות חיפוש עבור"
+
+#: inc/theme-options.php:112
+msgid "Save Options"
+msgstr "שמירת הגדרות"
+
+#: links.php:15
+msgid "Links:"
+msgstr "קישורים: "
+
+#: inc/theme-options.php:63
+msgid "Options saved"
+msgstr "ההגדרות נשמרו"
+
+#: inc/theme-options.php:77 inc/theme-options.php:79
+msgid "Color Scheme"
+msgstr "ערכת צבעים"
+
+#: inc/theme-options.php:60
+msgid " Theme Options"
+msgstr "אפשרויות ערכת עיצוב"
+
+#: inc/theme-options.php:39
+msgid "Dark Gray"
+msgstr "אפור כהה"
+
+#: inc/theme-options.php:43
+msgid "Red"
+msgstr "אדום"
+
+#: inc/theme-options.php:35
+msgid "Default"
+msgstr "ברירת מחדל"
+
+#: inc/theme-options.php:25
+msgid "Theme Options"
+msgstr "אפשרויות"
+
+#: image.php:96
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "להמשיך לקרוא <span class=\"meta-nav\">&larr;</span>"
+
+#: image.php:31
+msgid "<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span>  at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
+msgstr "<span class=\"meta-prep meta-prep-entry-date\">פורסם </span> <span class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span>  ב-<a href=\"%3$s\" title=\"קישור לתמונה בגודל מלא\">%4$s &times; %5$s</a> ב-<a href=\"%6$s\" title=\"חזרה ל-%7$s\" rel=\"gallery\">%7$s</a>"
+
+#: image.php:47
+msgid "<span class=\"meta-prep meta-prep-entry-date\">Uploaded </span> at <a href=\"%1$s\" title=\"Link to full-size image\">%2$s &times; %3$s</a>"
+msgstr "<span class=\"meta-prep meta-prep-entry-date\">הועלה </span> ב-<a href=\"%1$s\" title=\"קישור לתמונה בגודל מלא\">%2$s &times; %3$s</a>"
+
+#: image.php:18
+msgid "<span class=\"%1$s\">By</span> %2$s"
+msgstr "<span class=\"%1$s\">מאת</span> %2$s"
+
+#: image.php:22
+msgid "View all posts by %s"
+msgstr "הצגת הרשומות של %s"
+
+#: functions.php:271
+msgid "Page %s"
+msgstr "עמוד %s"
+
+#: functions.php:159
+msgid "Pingback:"
+msgstr "פינגבק:"
+
+#: functions.php:140
+msgid "Your comment is awaiting moderation."
+msgstr "התגובה ממתינה לאישור."
+
+#: functions.php:36
+msgid "Primary Navigation"
+msgstr "ניווט ראשי"
+
+#: footer.php:18
+msgid "Comments (RSS)"
+msgstr "פיד RSS לתגובות"
+
+#: footer.php:18
+msgid "and"
+msgstr "וכן"
+
+#: footer.php:18
+msgid "Entries (RSS)"
+msgstr "פיד RSS לרשומות"
+
+#: footer.php:16
+msgid "Theme: %1$s by %2$s."
+msgstr "ערכת עיצוב: %1$s של %2$s"
+
+#: content.php:69
+msgid "in"
+msgstr "ב-"
+
+#: content.php:73
+msgid "Tags:"
+msgstr "תגים: "
+
+#: content.php:69
+msgid "on"
+msgstr "ב-"
+
+#: content.php:69
+msgid "Posted by"
+msgstr "פורסם ע\"י"
+
+#: content.php:68
+msgid "% Comments"
+msgstr "% תגובות"
+
+#: content.php:68
+msgid "1 Comment"
+msgstr "תגובה אחת"
+
+#: content.php:68
+msgid "Leave a comment"
+msgstr "השארת תגובה"
+
+#: content.php:61 functions.php:144 functions.php:159 image.php:41 image.php:53
+#: image.php:102 page.php:32
+msgid "Edit"
+msgstr "עריכה"
+
+#: content.php:59 image.php:98 page.php:31
+msgid "Pages:"
+msgstr ":עמודים"
+
+#: content.php:13
+msgid "All %s posts"
+msgstr "כל הרשומות של %s"
+
+#: content.php:32 content.php:47
+msgid "Permalink to %s"
+msgstr "קישור קבוע לרשומה %s"
+
+#: comments.php:72
+msgid "Comments are closed."
+msgstr "סגור לתגובות."
+
+#: comments.php:43 comments.php:62
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr "תגובות חדשות יותר <span class=\"meta-nav\">&rarr;</span>"
+
+#: comments.php:35
+msgid "One response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "תגובה אחת ל-&ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s תגובות ל-&ldquo;%2$s&rdquo;"
+
+#: comments.php:42 comments.php:61
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr "<span class=\"meta-nav\">&larr;</span> תגובות מוקדמות יותר"
+
+#: comments.php:17
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "זוהי רשומה מוגנת - נדרשת סיסמה כדי לקרוא את התגובות."
+
+#: archives.php:14
+msgid "Archives by Month:"
+msgstr "ארכיון רשומות לפי חודש:"
+
+#: archives.php:19
+msgid "Archives by Subject:"
+msgstr "ארכיון רשומות לפי נושא:"
+
+#: archive.php:82 single.php:34
+msgid "Sorry, but nothing matched your search criteria."
+msgstr "מצטערים, שום דבר לא תאם לקריטריון החיפוש שלך."
+
+#: archive.php:73 index.php:25 search.php:22
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "רשומות חדשות יותר <span class=\"meta-nav\">&larr;</span>"
+
+#: archive.php:72 index.php:24 search.php:21
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&rarr;</span> רשומות ישנות יותר"
+
+#: archive.php:56
+msgid "About %s"
+msgstr "אודות %s"
+
+#: archive.php:30 sidebar.php:29
+msgid "Archives"
+msgstr "ארכיון"
+
+#: archive.php:28
+msgid "Yearly Archives: %s"
+msgstr "ארכיון שנתי: %s"
+
+#: archive.php:26
+msgid "Monthly Archives: %s"
+msgstr "ארכיון חודשי: %s"
+
+#: archive.php:24
+msgid "Daily Archives: %s"
+msgstr "ארכיון יומי: %s"
+
+#: archive.php:21
+msgid "Author Archives: %s"
+msgstr "ארכיון רשומות מאת: %s&rlm;"
+
+#: archive.php:18
+msgid "Tag Archives: %s"
+msgstr "תגית: %s"
+
+#: 404.php:12
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr "לא מצאתי את העמוד שביקשת. אולי כדאי לנסות את החיפוש."
+
+#: archive.php:16
+msgid "Category Archives: %s"
+msgstr "קטגוריה: %s"
+
+#: 404.php:10 archive.php:81
+msgid "Not Found"
+msgstr "לא מצאתי"

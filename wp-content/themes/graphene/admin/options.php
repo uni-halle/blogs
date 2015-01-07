@@ -158,7 +158,7 @@ function graphene_options(){
             </div>
             <div class="panel-wrap inside">
                 <?php
-				$graphene_news = fetch_feed( array( 'http://www.khairul-syahir.com/topics/tag/graphene-theme/feed', 'http://www.graphene-theme.com/feed/' ) );
+				$graphene_news = fetch_feed( array( 'http://www.graphene-theme.com/feed/rss2/' ) );
 				if ( ! is_wp_error( $graphene_news ) ) {
 					$maxitems = $graphene_news->get_item_quantity( 3 );
 					$news_items = $graphene_news->get_items( 0, $maxitems );
@@ -309,17 +309,9 @@ function graphene_options(){
                 </form>
             </div>
         </div>
-            
-            
-         </div><!-- #side-wrap -->   
-         
-         <?php if ( $graphene_settings['enable_preview'] == true) : ?>
-         <div class="clear"></div>
-         <div class="icon32" id="icon-themes"><br /></div>
-         <h2><?php _e( 'Preview', 'graphene' ); ?></h2>
-         <p><?php _e( 'The preview will be updated when the "Save Options" button above is clicked.', 'graphene' ); ?></p>
-         <iframe src="<?php echo home_url( '?preview=true' ); ?>" width="95%" height="600" ></iframe>
-         <?php endif; ?>
+        
+        
+         </div><!-- #side-wrap -->
     </div><!-- #wrap -->
     
     
@@ -327,3 +319,36 @@ function graphene_options(){
 } // Closes the graphene_options() function definition 
 
 include( GRAPHENE_ROOTDIR . '/admin/options-import.php' );
+
+
+/**
+ * Admin notice
+ */
+function graphene_admin_notice_shortcodes() {
+	global $graphene_settings, $current_user; $user_id = $current_user->ID;
+	$screen = get_current_screen(); if ( $screen->id != $graphene_settings['hook_suffix'] ) return;
+
+    /* Check that the user hasn't already clicked to ignore the message */
+	if ( ! get_user_meta( $user_id, 'graphene_ignore_notice-shortcodes' ) ) : 
+	?>
+        <div class="update-nag">
+        	<p>
+            	<a class="alignright dismiss button" style="margin-left: 20px" href="<?php echo add_query_arg( 'graphene-dismiss-notice', 'shortcodes' ); ?>">Dismiss</a>
+            	<strong>IMPORTANT:</strong> Message blocks and pullquote shortcodes have been removed from the Graphene theme as required by the WordPress Theme Review Team. To continue using them, download and install the <a href="http://www.graphene-theme.com/?ddownload=3403" target="_blank">Graphene Shortcodes</a> plugin. <a href="http://www.graphene-theme.com/announcement/graphene-1-9-4-update/">Learn more &raquo;</a>
+            </p>
+        </div>
+	<?php
+	endif;
+}
+add_action( 'admin_notices', 'graphene_admin_notice_shortcodes' );
+
+
+function graphene_dismiss_notice() {
+	global $current_user; $user_id = $current_user->ID;
+	
+	/* If user clicks to ignore the notice, add that to their user meta */
+	if ( isset( $_GET['graphene-dismiss-notice'] ) ) {
+		 add_user_meta( $user_id, 'graphene_ignore_notice-' . trim( $_GET['graphene-dismiss-notice'] ), 'true', true );
+	}
+}
+add_action( 'admin_init', 'graphene_dismiss_notice' );

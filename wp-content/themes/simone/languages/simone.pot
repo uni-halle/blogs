@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Simone\n"
-"POT-Creation-Date: 2014-08-10 17:08-0800\n"
-"PO-Revision-Date: 2014-08-10 17:09-0800\n"
+"POT-Creation-Date: 2014-11-07 22:18-0800\n"
+"PO-Revision-Date: 2014-11-07 22:18-0800\n"
 "Last-Translator: \n"
 "Language-Team: lynda.com <mrh@lynda.com>\n"
 "Language: en\n"
@@ -39,6 +39,11 @@ msgstr ""
 #, php-format
 msgctxt "archive for a day"
 msgid "Posts from %s"
+msgstr ""
+
+#: archive.php:33
+msgctxt "Daily archives date format"
+msgid "F j, Y"
 msgstr ""
 
 #: archive.php:36
@@ -167,20 +172,20 @@ msgstr ""
 msgid "Read "
 msgstr ""
 
-#: content.php:72
+#: content.php:72 content.php:89
 msgctxt "First part of \"Read *article title* in title tag of Read more link"
 msgid "Read "
 msgstr ""
 
-#: content.php:72
+#: content.php:72 content.php:89
 msgid "Read <span aria-hidden=\"true\">the article</span>"
 msgstr ""
 
-#: content.php:79
+#: content.php:91
 msgid "Continue Reading "
 msgstr ""
 
-#: content.php:79
+#: content.php:91
 msgid "Continue Reading"
 msgstr ""
 
@@ -204,23 +209,23 @@ msgstr ""
 msgid "mor10.com"
 msgstr ""
 
-#: functions.php:55
+#: functions.php:68
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:56
+#: functions.php:69
 msgid "Social Menu"
 msgstr ""
 
-#: functions.php:85
+#: functions.php:98
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:94
+#: functions.php:107
 msgid "Footer Widgets"
 msgstr ""
 
-#: functions.php:95
+#: functions.php:108
 msgid ""
 "Footer widgets area appears, not surprisingly, in the footer of the site."
 msgstr ""
@@ -312,6 +317,44 @@ msgstr ""
 
 #: inc/customizer.php:65
 msgid "Link Color"
+msgstr ""
+
+#: inc/customizer.php:78
+msgid "Theme Options"
+msgstr ""
+
+#: inc/customizer.php:80
+msgid "Change the default display options for the theme."
+msgstr ""
+
+#: inc/customizer.php:101
+msgid "Sidebar position"
+msgstr ""
+
+#: inc/customizer.php:104
+msgid "Left sidebar"
+msgstr ""
+
+#: inc/customizer.php:105
+msgid "Right sidebar"
+msgstr ""
+
+#: inc/customizer.php:128
+msgid "Archive display"
+msgstr ""
+
+#: inc/customizer.php:129
+msgid ""
+"Display excerpts or full content with optional \"More\" tag in the blog "
+"index and archive pages."
+msgstr ""
+
+#: inc/customizer.php:132
+msgid "Excerpt"
+msgstr ""
+
+#: inc/customizer.php:133
+msgid "Full content"
 msgstr ""
 
 #: inc/extras.php:63

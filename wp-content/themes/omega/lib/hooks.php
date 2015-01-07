@@ -27,7 +27,9 @@ add_action( 'omega_footer', 'omega_footer_markup_close', 15 );
 /* load content */
 add_action( 'omega_content', 'omega_content');
 
+add_action( 'omega_before_loop', 'omega_archive_title'); 
 add_action( 'omega_after_loop', 'omega_content_nav'); 
+add_action( 'omega_after_loop', 'comments_template');  // Loads the comments.php template.  
 
 /* Add the title, byline, and entry meta before and after the entry.*/
 add_action( 'omega_before_entry', 'omega_entry_header' );
@@ -127,10 +129,15 @@ function omega_branding() {
 
 	/* Get the site title.  If it's not empty, wrap it with the appropriate HTML. */	
 	if ( $title = get_bloginfo( 'name' ) ) {		
-		if ( $logo = get_theme_mod( 'custom_logo' ) )
-			$title = sprintf( '<div itemscope itemtype="http://schema.org/Organization" class="site-title"><a itemprop="url" href="%1$s" title="%2$s" rel="home"><img itemprop="logo" src="%3$s"/></a></div>', home_url(), esc_attr( $title ), $logo );		
-		else
-			$title = sprintf( '<h2 class="site-title" itemprop="headline"><a href="%1$s" title="%2$s" rel="home">%3$s</a></h2>', home_url(), esc_attr( $title ), $title );		
+		if ( $logo = get_theme_mod( 'custom_logo' ) ) {
+			$title = sprintf( '<div itemscope itemtype="http://schema.org/Organization" class="site-title"><a itemprop="url" href="%1$s" title="%2$s" rel="home"><img itemprop="logo" alt="%3$s" src="%4$s"/></a></div>', home_url(), esc_attr( $title ), esc_attr( $title ), $logo );		
+		} else {
+			if (is_front_page()) {
+				$title = sprintf( '<h1 class="site-title" itemprop="headline"><a href="%1$s" title="%2$s" rel="home">%3$s</a></h1>', home_url(), esc_attr( $title ), $title );		
+			} else {
+				$title = sprintf( '<h2 class="site-title" itemprop="headline"><a href="%1$s" title="%2$s" rel="home">%3$s</a></h2>', home_url(), esc_attr( $title ), $title );		
+			}
+		}
 	}
 
 	/* Display the site title and apply filters for developers to overwrite. */
@@ -209,7 +216,9 @@ function omega_entry_header() {
 function omega_entry() {
 
 	if ( is_home() || is_archive() || is_search() ) {
-		
+	?>	
+		<div <?php omega_attr( 'entry-summary' ); ?>>
+	<?php 
 		if(get_theme_mod( 'post_thumbnail' )) {
 			get_the_image( array('attachment' => false, 'meta_key' => 'Thumbnail', 'default_size' => get_theme_mod( 'image_size' ) ) ); 
 		}
@@ -223,10 +232,18 @@ function omega_entry() {
 		else {
 			the_content( get_theme_mod( 'more_text' ) );
 		}
+	?>	
+		</div>
+	<?php 	
 	} else {
-
+	?>	
+		<div <?php omega_attr( 'entry-content' ); ?>>
+	<?php 	
 		the_content();
 		wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'omega' ) . '</span>', 'after' => '</p>' ) );
+	?>	
+		</div>
+	<?php 	
 	}
 
 }
@@ -307,28 +324,8 @@ function omega_disable_sidebars( $sidebars_widgets ) {
 	return $sidebars_widgets;
 }
 
-function omega_index_content() {
-	if ( have_posts() ) : 
-
-		/* Start the Loop */ 
-		while ( have_posts() ) : the_post(); 
-		
-			get_template_part( 'partials/content', get_post_format() );
-	
-		endwhile; 
-
-		do_action( 'omega_after_loop');	
-
-	else :
-
-		get_template_part( 'partials/no-results', 'index' );
-
-	endif;
-}
-
-function omega_content() {
-	if ( have_posts() ) : 
-		if(is_archive() || is_search() ) {
+function omega_archive_title() {
+	if(is_archive() || is_search() ) {
 	?>
 
 		<header class="page-header">
@@ -379,17 +376,21 @@ function omega_content() {
 			?>
 		</header><!-- .page-header -->
 
-		<?php 
-		}
+	<?php 
+	}
+}
+
+function omega_content() {
+	if ( have_posts() ) : 		
+
+		do_action( 'omega_before_loop');	
 
 		/* Start the Loop */ 
 		while ( have_posts() ) : the_post(); 
 				get_template_part( 'partials/content' );
 		endwhile; 
 		
-		do_action( 'omega_after_loop');	
-
-		comments_template(); // Loads the comments.php template.  
+		do_action( 'omega_after_loop');			
 
 	else : 
 			get_template_part( 'partials/no-results', 'archive' ); 

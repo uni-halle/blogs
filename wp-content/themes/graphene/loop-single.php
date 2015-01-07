@@ -77,6 +77,11 @@ if ( function_exists( 'get_post_format' ) ) {
 				<?php edit_post_link( sprintf( __( 'Edit %s', 'graphene' ), $post_type->labels->singular_name ), ' (', ')' ); ?>
 			</p>
 			<?php endif; ?>
+            
+            <?php /* Microdata field for "Updated" */ ?>
+            <?php if ( ! graphene_should_show_date() ) : ?>
+            <span class="updated"><span class="value-title" title="<?php the_time( 'Y-m-d\TH:i' ); ?>" /></span>
+            <?php endif; ?>
 			
 			<?php /* Inline post date */ ?>
 			<?php if ( graphene_post_date_setting( get_the_ID() ) == 'text' ) graphene_post_date(); ?>

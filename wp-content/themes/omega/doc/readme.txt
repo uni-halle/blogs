@@ -1,4 +1,4 @@
-Omega WordPress theme
+Omega WordPress Theme
 ---------------------
 Omega is a parent theme for WordPress and Omega child
 
@@ -14,30 +14,59 @@ Install
 
 License
 -------
-Omega WordPress theme, Copyright (C) 2013 themehall.com
-Omega WordPress theme is licensed under the GPL.
+Omega WordPress Theme, Copyright (C) 2013 themehall.com
+Omega WordPress Theme is licensed under the GPL.
 
-Resources - This theme makes use of
-------------------------------------
+Omega WordPress Theme, Copyright 2012 Joe Smith
+Ginger is distributed under the terms of the GNU GPL
 
-Hybrid Core - ​http://themehybrid.com/hybrid-core
-License: Distributed under the GNU General Public License, version 2 or later (GPL).
-Copyright: Justin Tadlock, justintadlock.com
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-underscores - http://underscores.me
-License: Distributed under the GNU General Public License, version 2 or later (GPL).
-Copyright: 2012-2013 Automattic, Inc, automattic.com
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-Genesis Framework - http://genesisframework.com
-License: Distributed under the GNU General Public License, version 2 or later (GPL).
-Copyright: Copyblogger Media LLC, copyblogger.com
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see .
 
-HTML5 Shiv v3.6 stable
-License: Dual licensed under the MIT or GPL Version 2 licenses
-Copyright: @afarkas @jdalton @jon_neal @rem
+Omega WordPress Theme is derived from Hybrid Core, Copyright Justin Tadlock, justintadlock.com.
+Hybrid Core is distributed under the terms of the GNU GPL
+
+Omega WordPress Theme incorporates code from Genesis Framework, Copyright Copyblogger Media LLC, copyblogger.com.
+Genesis Framework is distributed under the terms of the GNU GPL
+
+Omega WordPress Theme incorporates code from Underscores WordPress Theme, Copyright 2013 Automattic, Inc.
+Underscores WordPress Theme is distributed under the terms of the GNU GPL
+
+Omega WordPress Theme bundles the following third-party resources:
+
+HTML5 Shiv v3.6 stable, Copyright @afarkas @jdalton @jon_neal @rem
+HTML5 Shiv are dual licensed under the MIT or GPL Version 2 licenses
+Source: https://code.google.com/p/html5shiv/
+
+TGM Plugin Activation, Copyright (c) 2012, Thomas Griffin
+TGM Plugin Activation is distributed under the terms of the GNU GPL
+Source: https://github.com/thomasgriffin/TGM-Plugin-Activation
+
 
 Changelog
 ---------
+1.0.8
+- h1 for logo on homepage
+
+1.0.7
+- add alt to logo image
+- fix featured image layout for thumbnail
+
+1.0.6
+- add omega_before_loop action
+- add favicon
+- fixed blog layout option
+
 1.0.5
 - add omega_after_loop action
 

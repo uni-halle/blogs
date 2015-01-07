@@ -13,11 +13,6 @@
  * @author      Edward Caissie <edward.caissie@gmail.com>
  * @copyright   Copyright (c) 2009-2014, Edward Caissie
  *
- * @version     2.1
- * @date        December 3, 2012
- * Add DMM_HOME_DOMAIN constant for better future proofing
- * Removed DMM_Add_Body_Classes in favor of using BNS Body Classes
- *
  * @version     2.2.1
  * @date        April 21, 2013
  * Expanded use of DMM_HOME_DOMAIN constant
@@ -26,9 +21,13 @@
  * @date        November 16, 2013
  * Added DMM_SHOW_PAGE_PERMALINK constant
  *
- * @version	2.2.4
- * @date	April 13, 2014
+ * @version     2.2.4
+ * @date        April 13, 2014
  * Added `dmm_post_meta_link_edit()` function with filter hooks for DRY purposes
+ *
+ * @version     2.3
+ * @date        October 19, 2014
+ * Added BNS Login "Compatibility Code" to use dashicons instead of text
  */
 
 /** Define Desk Mess Mirrored "Home" domain */
@@ -93,7 +92,6 @@ function dmm_scripts_and_styles() {
 if ( ! function_exists( 'dmm_wp_title' ) ) {
 	/**
 	 * DMM WP Title
-	 *
 	 * Utilizes the `wp_title` filter to add text to the default output
 	 *
 	 * @link    http://codex.wordpress.org/Plugin_API/Filter_Reference/wp_title
@@ -101,83 +99,47 @@ if ( ! function_exists( 'dmm_wp_title' ) ) {
 	 * @package Desk_Mess_Mirrored
 	 * @since   2.0
 	 *
-	 * @version 2.0.3
-	 * @date    June 1, 2012
-	 * Refactor to more correctly use filter while maintaining backward-compatibility
+	 * @param   string $old_title - default title text
+	 * @param   string $sep       - separator character
+	 *
+	 * @return  string - new title text
 	 *
 	 * @version 2.2.3
 	 * @date    November 16, 2013
 	 * Removed unused $sep_location parameter
+	 *
+	 * @version 2.3
+	 * @date    October 13, 2014
+	 * Drop backward compatibility with Desk Mess Mirrored v2.1 and earlier (due to WPTRT requirements)
 	 */
-	if ( ( ! function_exists( 'wp_get_theme' ) ) || wp_get_theme()->get( 'Version' ) < '2.1' ) {
-		/**
-		 * Test version to maintain backward-compatibility with Child-Themes using `dmm_wp_title`
-		 * @todo Remove at version 2.3
-		 */
-		function dmm_wp_title() {
-			global $page, $paged;
-			/** Default title */
-			$dmm_title_text = wp_title( '|', false, 'right' ) . get_bloginfo( 'name' );
+	function dmm_wp_title( $old_title, $sep ) {
+		global $page, $paged;
+		/** Set initial title text */
+		$dmm_title_text = $old_title . get_bloginfo( 'name' );
+		/** Add wrapping spaces to separator character */
+		$sep = ' ' . $sep . ' ';
 
-			/** Add the blog description (tagline) for the home/front page. */
-			$site_tagline = get_bloginfo( 'description', 'display' );
-			if ( $site_tagline && ( is_home() || is_front_page() ) ) {
-				$dmm_title_text .= " | $site_tagline";
-			}
-			/** End if - site tagline */
-
-			/** Add a page number if necessary: */
-			if ( $paged >= 2 || $page >= 2 ) {
-				$dmm_title_text .= ' | ' . sprintf( __( 'Page %s', 'desk-mess-mirrored' ), max( $paged, $page ) );
-			}
-			/** End if - paged */
-
-			/** @var $dmm_wp_title string - title output */
-			$dmm_wp_title = apply_filters( 'wp_title', $dmm_title_text );
-			echo $dmm_wp_title;
-
+		/** Add the blog description (tagline) for the home/front page */
+		$site_tagline = get_bloginfo( 'description', 'display' );
+		if ( $site_tagline && ( is_home() || is_front_page() ) ) {
+			$dmm_title_text .= "$sep$site_tagline";
 		}
-		/** End function - dmm wp title */
-	} else {
-		/**
-		 * Use as filter input
-		 *
-		 * @param   string $old_title - default title text
-		 * @param   string $sep       - separator character
-		 *
-		 * @return  string - new title text
-		 */
-		function dmm_wp_title( $old_title, $sep ) {
-			global $page, $paged;
-			/** Set initial title text */
-			$dmm_title_text = $old_title . get_bloginfo( 'name' );
-			/** Add wrapping spaces to separator character */
-			$sep = ' ' . $sep . ' ';
+		/** End if - site tagline */
 
-			/** Add the blog description (tagline) for the home/front page */
-			$site_tagline = get_bloginfo( 'description', 'display' );
-			if ( $site_tagline && ( is_home() || is_front_page() ) ) {
-				$dmm_title_text .= "$sep$site_tagline";
-			}
-			/** End if - site tagline */
-
-			/** Add a page number if necessary */
-			if ( $paged >= 2 || $page >= 2 ) {
-				$dmm_title_text .= $sep . sprintf( __( 'Page %s', 'desk-mess-mirrored' ), max( $paged, $page ) );
-			}
-
-			/** End if - paged */
-
-			return $dmm_title_text;
-
+		/** Add a page number if necessary */
+		if ( $paged >= 2 || $page >= 2 ) {
+			$dmm_title_text .= $sep . sprintf( __( 'Page %s', 'desk-mess-mirrored' ), max( $paged, $page ) );
 		}
 
-		/** End function - dmm wp title */
+		/** End if - paged */
 
-		add_filter( 'wp_title', 'dmm_wp_title', 10, 2 );
+		return $dmm_title_text;
 
 	}
-	/** End if - function exists */
+
+	/** End function - dmm wp title */
+
+	add_filter( 'wp_title', 'dmm_wp_title', 10, 2 );
 
 }
 /** End if - function exists */
@@ -189,37 +151,48 @@ if ( ! function_exists( 'dmm_wp_title' ) ) {
  * @package Desk_Mess_Mirrored
  * @since   1.0
  *
+ * @uses    __
+ * @uses    register_sidebar
+ *
  * @version 2.0
  * Re-define each widget area separately to allow for descriptions to show end-user more details about each area
+ *
+ * @version 2.3
+ * @date    October 13, 2014
+ * Wrap `register_sidebar` calls in a function that is used as a callback for the `widgets_init` hook
  */
-register_sidebar(
-	array(
-		'description'   => __( 'Widget area 1 located in right sidebar. All default Desk Mess Mirrored theme sidebar content is placed here. If you drag and drop a new widget into this area you will replace *all* of the default sidebar content.', 'desk-mess-mirrored' ),
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</li>\n",
-		'before_title'  => '<h2 class="widgettitle">',
-		'after_title'   => "</h2>\n",
-	)
-);
-register_sidebar(
-	array(
-		'description'   => __( 'Widget area 2 located in the middle of the right sidebar beneath Sidebar 1. This area is empty by default', 'desk-mess-mirrored' ),
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</li>\n",
-		'before_title'  => '<h2 class="widgettitle">',
-		'after_title'   => "</h2>\n",
-	)
-);
-register_sidebar(
-	array(
-		'description'   => __( 'Widget area 3 located at the bottom of the right sidebar beneath Sidebar 2. This are is empty by default', 'desk-mess-mirrored' ),
-		'before_widget' => '<li id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</li>\n",
-		'before_title'  => '<h2 class="widgettitle">',
-		'after_title'   => "</h2>\n",
-	)
-);
-/** End Register Widget Areas */
+function dmm_register_widget_areas() {
+	register_sidebar(
+		array(
+			'description'   => __( 'Widget area 1 located in right sidebar. All default Desk Mess Mirrored theme sidebar content is placed here. If you drag and drop a new widget into this area you will replace *all* of the default sidebar content.', 'desk-mess-mirrored' ),
+			'before_widget' => '<li id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</li>\n",
+			'before_title'  => '<h2 class="widgettitle">',
+			'after_title'   => "</h2>\n",
+		)
+	);
+	register_sidebar(
+		array(
+			'description'   => __( 'Widget area 2 located in the middle of the right sidebar beneath Sidebar 1. This area is empty by default', 'desk-mess-mirrored' ),
+			'before_widget' => '<li id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</li>\n",
+			'before_title'  => '<h2 class="widgettitle">',
+			'after_title'   => "</h2>\n",
+		)
+	);
+	register_sidebar(
+		array(
+			'description'   => __( 'Widget area 3 located at the bottom of the right sidebar beneath Sidebar 2. This are is empty by default', 'desk-mess-mirrored' ),
+			'before_widget' => '<li id="%1$s" class="widget %2$s">',
+			'after_widget'  => "</li>\n",
+			'before_title'  => '<h2 class="widgettitle">',
+			'after_title'   => "</h2>\n",
+		)
+	);
+	/** End Register Widget Areas */
+}
+
+add_action( 'widgets_init', 'dmm_register_widget_areas' );
 
 
 /**
@@ -708,16 +681,27 @@ if ( ! function_exists( 'dmm_modified_post' ) ) {
  *
  * @internal Used simply for "DRY" efficiency
  *
+ * @uses     __
+ * @uses     _e
+ * @uses     esc_html
  * @uses     get_search_form
  * @uses     get_search_query
+ *
+ * @version  2.3
+ * @date     October 13, 2014
+ * Take into account what happens on the 404 page when returning no posts
  */
 function dmm_no_posts_found() {
-	?>
-	<h2>
-		<?php printf( __( 'Search Results for: %s', 'desk-mess-mirrored' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?>
-	</h2>
-	<p class="center"><?php _e( 'Sorry, but you are looking for something that is not here.', 'desk-mess-mirrored' ); ?></p>
-	<?php get_search_form();
+	if ( get_search_query() ) {
+		printf( __( '<h2>Search Results for: "%s"</h2>', 'desk-mess-mirrored' ), '<span>' . esc_html( get_search_query() ) . '</span>' );
+	} else {
+		_e( '<h2>There was no search performed.</h2>', 'desk-mess-mirrored' );
+	}
+
+	if ( get_search_query() ) {
+		_e( 'Would you like to search again?', 'desk-mess-mirrored' );
+	}
+	get_search_form();
 }
 
 /** End function - no posts found */
@@ -778,4 +762,15 @@ function dmm_post_meta_link_edit() {
  */
 if ( ! isset( $content_width ) ) {
 	$content_width = 580;
-} /** End if - not isset content width */
+}
+/** End if - not isset content width */
+
+/** Compatibility Code ------------------------------------------------------ */
+
+/** Call the wp-admin plugin code */
+require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+
+if ( is_plugin_active( 'bns-login/bns-login.php' ) ) {
+	add_filter( 'bns_login_dashed_set', '__return_true' );
+}
+/** End if - is plugin (BNS Login) active */

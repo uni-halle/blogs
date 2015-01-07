@@ -1,0 +1,123 @@
+body {
+	background: #340505;
+}
+#logo a {
+	color: #fff;
+}
+#header .description {
+	color: #eb5438;
+}
+#main {
+	background: #850112; 
+}
+#main-top {
+	border-color: #b55a53;
+}
+#main-middle {
+	background-color: #141414; 
+}
+#main-bot {
+	border-color: #79624b;
+}
+#main:before,
+#main-middle:before {
+	height: 1px;
+	width: 50px; 
+	background: -moz-linear-gradient(left,  rgba(222,164,105,1) 0%, rgba(222,164,105,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(222,164,105,1)), color-stop(100%,rgba(222,164,105,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* IE10+ */
+	background: linear-gradient(to right,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dea469', endColorstr='#00dea469',GradientType=1 ); /* IE6-9 */
+}
+#main:after,
+#main-middle:after {
+	height: 50px;
+	width: 1px; 
+	background: -moz-linear-gradient(top,  rgba(222,164,105,1) 0%, rgba(222,164,105,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(222,164,105,1)), color-stop(100%,rgba(222,164,105,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dea469', endColorstr='#00dea469',GradientType=0 ); /* IE6-9 */
+}
+#rss-link {
+	background-image: url(images/ico-rss.png);
+}
+#sidebar h4 {
+	background-image: url(images/widgettitle.jpg);
+	color: #400000;
+	text-shadow: #f0b492 0px 1px 1px;
+}
+#sidebar a {
+	color: #de5940;
+}
+#sidebar ul ul li {
+	background-image: url(images/sidebar-list-arr.gif);
+	border-bottom-color: #000;
+	border-top-color: #363636;
+}
+#sidebar .widgettitle label {
+	color: #400000;
+}
+#sidebar #searchform label {
+	color: #de5940;
+}
+#sidebar #searchform .field-place {
+	background-image: url(images/searchform-field.gif);
+}
+#sidebar #searchform .field-place .field {
+	color: #de5940;
+}
+#respond #submit {
+	background-image: url(images/button.gif);
+}
+.menu > li.selected,
+.menu > li.current_page_parent,
+.menu > li.current_page_item,
+.menu > li.current_page_ancestor,
+.menu > li.current-menu-parent,
+.menu > li.current-menu-item,
+.menu > li.current-menu-ancestor {
+	background-color: #c9452d;
+}
+#wp-calendar tbody tr td a {
+	border-color: #de5940;
+	color: #de5940;
+}
+
+/* --- Responsive styles --- */
+@media only screen and (max-width: 1024px) {
+	/* =Sidebar
+	-------------------------------------------------------------- */
+
+    #sidebar { background: url(images/sidebar-bg.png) repeat-y 0 0; }
+    #sidebar:before,
+    #sidebar:after {
+		background: -moz-linear-gradient(top,  rgba(222,164,105,1) 0%, rgba(222,164,105,0) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(222,164,105,1)), color-stop(100%,rgba(222,164,105,0))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(222,164,105,1) 0%,rgba(222,164,105,0) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dea469', endColorstr='#00dea469',GradientType=0 ); /* IE6-9 */
+	}
+
+	#sidebar .sidebar-nav > ul > .selected > a,
+	#sidebar .sidebar-nav > ul > .current_page_parent > a,
+	#sidebar .sidebar-nav > ul > .current_page_item > a,
+	#sidebar .sidebar-nav > ul > .current_page_ancestor > a,
+	#sidebar .sidebar-nav > ul > .current-menu-parent > a,
+	#sidebar .sidebar-nav > ul > .current-menu-item > a,
+	#sidebar .sidebar-nav > ul > .current-menu-ancestor > a {
+		background-color: #c9452d;
+		border-radius: 4px; 
+	}
+
+	#sidebar .sidebar-nav ul ul li.current-menu-item > a,
+	#sidebar .sidebar-nav ul ul li > a:hover {
+		color: #c9452d; 
+	}
+}

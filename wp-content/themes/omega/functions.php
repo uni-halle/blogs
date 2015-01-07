@@ -58,6 +58,9 @@ function omega_theme_setup() {
 	/* Enable wraps */
 	add_theme_support( 'omega-wraps' );
 
+	/* Enable custom post */
+	add_theme_support( 'omega-custom-post' );
+	
 	/* Enable custom css */
 	add_theme_support( 'omega-custom-css' );
 	

@@ -4,35 +4,11 @@
  */
 
 /* Adds common theme items to <head>. */
-add_action( 'wp_head', 'omega_meta_charset',  0 );
-add_action( 'wp_head', 'omega_doctitle',      0 );
 add_action( 'wp_head', 'omega_meta_viewport', 1 );
 add_action( 'wp_head', 'omega_link_pingback', 3 );
 
 /* Filter the WordPress title. */
 add_filter( 'wp_title', 'omega_wp_title', 1, 3 );
-
-/**
- * Adds the meta charset to the header.
- *
- * @since  0.9.0
- * @access public
- * @return void
- */
-function omega_meta_charset() {
-	echo '<meta charset="' . get_bloginfo( 'charset' ) . '" />' . "\n";
-}
-
-/**
- * Adds the title to the header.
- *
- * @since  0.9.0
- * @access public
- * @return void
- */
-function omega_doctitle() {
-	printf( "<title>%s</title>\n", wp_title( ':', false ) );
-}
 
 /**
  * Adds the meta viewport to the header.

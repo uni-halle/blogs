@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if( !defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -30,9 +30,10 @@ require( get_template_directory() . '/core/includes/classes/Responsive_Options.p
  */
 function responsive_admin_enqueue_scripts( $hook_suffix ) {
 	$template_directory_uri = get_template_directory_uri();
+	$suffix                 = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options.css', false, '1.0' );
-	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options.js', array( 'jquery' ), '1.0' );
+	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
+	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0' );
 }
 
 add_action( 'admin_print_styles-appearance_page_theme_options', 'responsive_admin_enqueue_scripts' );
@@ -53,7 +54,7 @@ function responsive_theme_options_add_page() {
 
 function responsive_inline_css() {
 	global $responsive_options;
-	if( !empty( $responsive_options['responsive_inline_css'] ) ) {
+	if ( !empty( $responsive_options['responsive_inline_css'] ) ) {
 		echo '<!-- Custom CSS Styles -->' . "\n";
 		echo '<style type="text/css" media="screen">' . "\n";
 		echo $responsive_options['responsive_inline_css'] . "\n";
@@ -65,7 +66,7 @@ add_action( 'wp_head', 'responsive_inline_css', 110 );
 
 function responsive_inline_js_head() {
 	global $responsive_options;
-	if( !empty( $responsive_options['responsive_inline_js_head'] ) ) {
+	if ( !empty( $responsive_options['responsive_inline_js_head'] ) ) {
 		echo '<!-- Custom Scripts -->' . "\n";
 		echo $responsive_options['responsive_inline_js_head'];
 		echo "\n";
@@ -76,7 +77,7 @@ add_action( 'wp_head', 'responsive_inline_js_head' );
 
 function responsive_inline_js_footer() {
 	global $responsive_options;
-	if( !empty( $responsive_options['responsive_inline_js_footer'] ) ) {
+	if ( !empty( $responsive_options['responsive_inline_js_footer'] ) ) {
 		echo '<!-- Custom Scripts -->' . "\n";
 		echo $responsive_options['responsive_inline_js_footer'];
 		echo "\n";
@@ -90,7 +91,7 @@ add_action( 'wp_footer', 'responsive_inline_js_footer' );
  */
 function responsive_theme_options_do_page() {
 
-	if( !isset( $_REQUEST['settings-updated'] ) ) {
+	if ( !isset( $_REQUEST['settings-updated'] ) ) {
 		$_REQUEST['settings-updated'] = false;
 	}
 
@@ -100,11 +101,10 @@ function responsive_theme_options_do_page() {
 
 	<div class="wrap">
 	<?php $theme_name = wp_get_theme() ?>
-	<?php screen_icon();
-	echo "<h2>" . $theme_name . " " . __( 'Theme Options', 'responsive' ) . "</h2>"; ?>
+	<?php echo "<h2>" . $theme_name . " " . __( 'Theme Options', 'responsive' ) . "</h2>"; ?>
 
 
-	<?php if( false !== $_REQUEST['settings-updated'] ) : ?>
+	<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
 		<div class="updated fade"><p><strong><?php _e( 'Options Saved', 'responsive' ); ?></strong></p></div>
 	<?php endif; ?>
 
@@ -471,7 +471,7 @@ function responsive_theme_options_do_page() {
 		)
 	) );
 
-	if( class_exists( 'Responsive_Pro_Options' ) ) {
+	if ( class_exists( 'Responsive_Pro_Options' ) ) {
 		$display = new Responsive_Pro_Options( $sections, $options );
 	}
 	else {
@@ -502,7 +502,7 @@ function responsive_theme_options_validate( $input ) {
 	global $responsive_options;
 	$defaults = responsive_get_option_defaults();
 
-	if( isset( $input['reset'] ) ) {
+	if ( isset( $input['reset'] ) ) {
 
 		$input = $defaults;
 
@@ -515,7 +515,7 @@ function responsive_theme_options_validate( $input ) {
 					'cta_button',
 					'front_page'
 				) as $checkbox ) {
-			if( !isset( $input[$checkbox] ) ) {
+			if ( !isset( $input[$checkbox] ) ) {
 				$input[$checkbox] = null;
 			}
 			$input[$checkbox] = ( $input[$checkbox] == 1 ? 1 : 0 );

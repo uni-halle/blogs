@@ -117,13 +117,10 @@ function graphene_setup() {
 	) );
 
 	// Add support for custom background
-	if ( graphene_is_wp_version( '3.4' ) )
-		add_theme_support( 'custom-background' );
-	else
-		add_custom_background();
+	global $wp_version;
+	add_theme_support( 'custom-background' ); 
 
 	/* Add support for custom header */
-	/* First define the constants for backward compat */
 	define( 'HEADER_TEXTCOLOR',    apply_filters( 'graphene_header_textcolor', '000000' ) );
 	define( 'HEADER_IMAGE',        apply_filters( 'graphene_default_header_image', '%s/images/headers/flow.jpg' ) );
 	define( 'HEADER_IMAGE_WIDTH',  apply_filters( 'graphene_header_image_width', graphene_grid_width( $graphene_settings['gutter_width'] * 2, 16 ) ) );
@@ -139,15 +136,9 @@ function graphene_setup() {
 		'wp-head-callback'    => '',
 		'admin-head-callback' => 'graphene_admin_header_style',
 	);
-
 	$args = apply_filters( 'graphene_custom_header_args', $args );
-
-	if ( function_exists( 'get_custom_header' ) ) {
-		add_theme_support( 'custom-header', $args );
-	} else {
-		// Compat: Versions of WordPress prior to 3.4.
-		add_custom_image_header( $args['wp-head-callback'], $args['admin-head-callback'] );
-	}
+	add_theme_support( 'custom-header', $args );
+	
 	set_post_thumbnail_size( $args['width'], $args['height'], true );
 
 	// Register default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.

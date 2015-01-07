@@ -30,7 +30,7 @@ function omega_customize_comment_register( $wp_customize ) {
 			'default'              => false,
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
-			//'sanitize_callback'    => 'omega_customize_sanitize',
+			'sanitize_callback'    => 'sanitize_text_field',
 			//'sanitize_js_callback' => 'omega_customize_sanitize',
 			//'transport'            => 'postMessage',
 		)
