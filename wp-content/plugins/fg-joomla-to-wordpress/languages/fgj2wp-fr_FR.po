@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-15 07:46+0100\n"
-"PO-Revision-Date: 2014-11-15 07:46+0100\n"
+"POT-Creation-Date: 2014-12-22 22:04+0100\n"
+"PO-Revision-Date: 2014-12-22 22:08+0100\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin_build_page.tpl.php:22
@@ -234,43 +234,43 @@ msgstr ""
 "Forcer l'import des médias. Laisser décoché sauf si vous avez auparavant "
 "rencontré des problèmes d'import de médias."
 
-#: admin_build_page.tpl.php:125
-msgid "Meta keywords:"
-msgstr "Mots-clefs :"
-
-#: admin_build_page.tpl.php:126
-msgid "Import meta keywords as tags"
-msgstr "Importer les meta keywords en tant que mots-clefs"
-
-#: admin_build_page.tpl.php:129
-msgid "Create pages:"
-msgstr "Créer des pages :"
-
-#: admin_build_page.tpl.php:130
-msgid "Import as pages instead of blog posts (without categories)"
-msgstr "Importer en tant que pages au lieu d'articles (sans les catégories)"
-
-#: admin_build_page.tpl.php:133
+#: admin_build_page.tpl.php:123
 msgid "Timeout for each media:"
 msgstr "Timeout pour chaque média :"
 
-#: admin_build_page.tpl.php:134
+#: admin_build_page.tpl.php:124
 msgid "seconds"
 msgstr "secondes"
 
-#: admin_build_page.tpl.php:138
+#: admin_build_page.tpl.php:128
+msgid "Meta keywords:"
+msgstr "Mots-clefs :"
+
+#: admin_build_page.tpl.php:129
+msgid "Import meta keywords as tags"
+msgstr "Importer les meta keywords en tant que mots-clefs"
+
+#: admin_build_page.tpl.php:132
+msgid "Create pages:"
+msgstr "Créer des pages :"
+
+#: admin_build_page.tpl.php:133
+msgid "Import as pages instead of blog posts (without categories)"
+msgstr "Importer en tant que pages au lieu d'articles (sans les catégories)"
+
+#: admin_build_page.tpl.php:137
 msgid "Save settings"
 msgstr "Enregistrer les paramètres"
 
-#: admin_build_page.tpl.php:139
+#: admin_build_page.tpl.php:138
 msgid "Import content from Joomla to WordPress"
 msgstr "Importer le contenu de Joomla vers WordPress"
 
-#: admin_build_page.tpl.php:146
+#: admin_build_page.tpl.php:145
 msgid "After the migration"
 msgstr "Après la migration"
 
-#: admin_build_page.tpl.php:149
+#: admin_build_page.tpl.php:148
 msgid ""
 "During the migration, prefixes have been added to the categories slugs to "
 "avoid categories duplicates. This button will remove these prefixes which "
@@ -280,63 +280,67 @@ msgstr ""
 "pour éviter les doublons. Ce bouton supprimera ces préfixes qui sont "
 "inutiles après la migration."
 
-#: admin_build_page.tpl.php:153
+#: admin_build_page.tpl.php:152
 msgid "Remove the prefixes from the categories"
 msgstr "Supprimer les préfixes des catégories"
 
-#: admin_build_page.tpl.php:158
+#: admin_build_page.tpl.php:157
 msgid "If you have links between articles, you need to modify internal links."
 msgstr ""
 "Si vous avez des liens entre articles, vous avez besoin de modifier les "
 "liens internes."
 
-#: admin_build_page.tpl.php:162
+#: admin_build_page.tpl.php:161
 msgid "Modify internal links"
 msgstr "Modifier les liens internes"
 
-#: admin_build_page.tpl.php:170
+#: admin_build_page.tpl.php:169
 msgid "Do you need extra features?"
 msgstr "Vous avez besoin de fonctionnalités supplémentaires ?"
 
-#: admin_build_page.tpl.php:172
+#: admin_build_page.tpl.php:171
 msgid "authors and all users migration"
 msgstr "migration des auteurs et de tous les utilisateurs"
 
-#: admin_build_page.tpl.php:173
+#: admin_build_page.tpl.php:172
 msgid "menus migration"
 msgstr "migration des menus"
 
-#: admin_build_page.tpl.php:174
+#: admin_build_page.tpl.php:173
 msgid "HTML modules migration"
 msgstr "migration des modules HTML"
 
-#: admin_build_page.tpl.php:175
+#: admin_build_page.tpl.php:174
 msgid "SEO: keeps Joomla IDs or redirects standard Joomla URLs"
 msgstr "SEO : garde les IDs de Joomla ou redirige les URLs standards de Joomla"
 
-#: admin_build_page.tpl.php:176
+#: admin_build_page.tpl.php:175
 msgid "SEO: Keeps meta description and meta keywords"
 msgstr "SEO : Garde les meta description et meta keywords"
 
-#: admin_build_page.tpl.php:177
+#: admin_build_page.tpl.php:176
 msgid "SEO: Keeps sh404sef, JoomSEF and OpenSEF URLs"
 msgstr "SEO : garde les URLs sh404sef, JoomSEF et OpenSEF"
 
-#: admin_build_page.tpl.php:178
+#: admin_build_page.tpl.php:177
 msgid "Joomla views counts migration"
 msgstr "migration des compteurs de vues de Joomla"
 
-#: admin_build_page.tpl.php:179
+#: admin_build_page.tpl.php:178
 msgid "Joomla 1.0 compatible"
 msgstr "compatible Joomla 1.0"
 
-#: admin_build_page.tpl.php:180
+#: admin_build_page.tpl.php:179
 msgid "Joomla 2.5+ featured images"
 msgstr "images d'intro de Joomla 2.5+"
 
-#: admin_build_page.tpl.php:181
+#: admin_build_page.tpl.php:180
 msgid "Joomla 3.1+ tags"
 msgstr "mots-clefs de Joomla 3.1+"
+
+#: admin_build_page.tpl.php:181
+msgid "Joomla contacts"
+msgstr "contacts Joomla"
 
 #: admin_build_page.tpl.php:182
 msgid "Mambo 4.5 and 4.6 compatible"
@@ -395,22 +399,18 @@ msgid "JEvents events"
 msgstr "évènements JEvents"
 
 #: admin_build_page.tpl.php:196
-msgid "Contact Directory contacts"
-msgstr "contacts de Contact Directory"
-
-#: admin_build_page.tpl.php:197
 msgid "Docman documents"
 msgstr "documents Docman"
 
-#: admin_build_page.tpl.php:198
+#: admin_build_page.tpl.php:197
 msgid "Virtuemart e-commerce"
 msgstr "boutique en ligne Virtuemart"
 
-#: admin_build_page.tpl.php:199
+#: admin_build_page.tpl.php:198
 msgid "JReviews reviews"
 msgstr "revues JReviews"
 
-#: admin_build_page.tpl.php:204
+#: admin_build_page.tpl.php:203
 msgid ""
 "Please note that some of these features need an add-on in addition to the "
 "Premium version."
@@ -418,7 +418,7 @@ msgstr ""
 "Veuillez noter que certaines de ces fonctionnalités nécessitent un module "
 "supplémentaire en plus de la version Premium."
 
-#: admin_build_page.tpl.php:207
+#: admin_build_page.tpl.php:206
 msgid ""
 "If you found this plugin useful and it saved you many hours or days, please "
 "rate it on <a href=\"http://wordpress.org/extend/plugins/fg-joomla-to-"
@@ -431,7 +431,7 @@ msgstr ""
 "WordPress</a>. Vous pouvez aussi faire une donation en utilisant le bouton "
 "ci-dessous."
 
-#: admin_build_page.tpl.php:226
+#: admin_build_page.tpl.php:225
 msgid ""
 "All new imported posts or pages and their comments will be deleted from "
 "WordPress."
@@ -439,11 +439,11 @@ msgstr ""
 "Tous les nouveaux articles ou pages importés vont être supprimés de "
 "WordPress."
 
-#: admin_build_page.tpl.php:229
+#: admin_build_page.tpl.php:228
 msgid "All content will be deleted from WordPress."
 msgstr "Toutes les données vont être supprimées de WordPress."
 
-#: admin_build_page.tpl.php:232
+#: admin_build_page.tpl.php:231
 msgid "Please select a remove option."
 msgstr "Veuillez sélectionner une option de suppression."
 
@@ -823,12 +823,12 @@ msgid "JEvents add-on"
 msgstr "du module JEvents"
 
 #: modules_check.php:115
-msgid "some Contact Directory contacts"
-msgstr "des contacts de Contact Directory"
+msgid "some contacts"
+msgstr "des contacts"
 
 #: modules_check.php:115
-msgid "Contact Directory add-on"
-msgstr "module Contact Directory"
+msgid "Contact Manager add-on"
+msgstr "du module Contact Manager"
 
 #: modules_check.php:119
 msgid "some Docman documents"
@@ -874,6 +874,15 @@ msgid "%d link"
 msgid_plural "%d links"
 msgstr[0] "%d lien"
 msgstr[1] "%d liens"
+
+#~ msgid "Contact Directory contacts"
+#~ msgstr "contacts de Contact Directory"
+
+#~ msgid "some Contact Directory contacts"
+#~ msgstr "des contacts de Contact Directory"
+
+#~ msgid "Contact Directory add-on"
+#~ msgstr "module Contact Directory"
 
 #~ msgid "des fichiers joints"
 #~ msgstr "des fichiers joints"

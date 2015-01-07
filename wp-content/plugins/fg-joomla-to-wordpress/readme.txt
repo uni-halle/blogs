@@ -3,8 +3,8 @@ Contributors: Frédéric GILLES
 Plugin Uri: http://wordpress.org/extend/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, wordpress, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews
 Requires at least: 3.0
-Tested up to: WP 4.0.1
-Stable tag: 1.42.0
+Tested up to: WP 4.1.0
+Stable tag: 1.43.0
 License: GPLv2
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 
@@ -14,7 +14,7 @@ A plugin to migrate categories, posts, tags, images and other medias from Joomla
 
 This plugin migrates sections, categories, posts, images, medias and tags from Joomla to Wordpress.
 
-It has been tested with **Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2 and 3.3** and **Wordpress 4.0** on huge databases (72 000+ posts). It is compatible with multisite installations.
+It has been tested with **Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2 and 3.3** and **Wordpress 4.1** on huge databases (72 000+ posts). It is compatible with multisite installations.
 
 Major features include:
 
@@ -73,7 +73,7 @@ The Premium version allows the use of add-ons that enhance functionality:
 * Phocagallery
 * Joom!Fish translations to WPML
 * JEvents events
-* Contact Directory
+* Contact Manager
 * Docman
 * Virtuemart
 * JReviews
@@ -108,6 +108,10 @@ These modules can be purchased on: http://www.fredericgilles.net/fg-joomla-to-wo
 * You can run the migration again. It will continue where it stopped.
 * You can add: `define('WP_MEMORY_LIMIT', '512M');` in your wp-config.php file to increase the memory allowed by WordPress
 * You can also increase the memory limit in php.ini if you have write access to this file (ie: memory_limit = 1G).
+
+= I get a blank screen and the import seems to be stopped =
+
+* Same as above
 
 = The media are not imported =
 
@@ -145,6 +149,10 @@ sudo service apache2 reload
 
 * It comes from MySQL 4.0. It will work if you move your database to MySQL 5.0 before running the migration.
 
+= I get this error "Parse error: syntax error, unexpected T_PAAMAYIM_NEKUDOTAYIM" =
+
+* You must use at least PHP 5.3 on your WordPress site.
+
 = None image get transferred into the WordPress uploads folder. I'm using Xampp on Windows. =
 
 * Xampp puts the htdocs in the applications folder which is write protected. You need to move the htdocs to a writeable folder.
@@ -175,6 +183,10 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * other can be translated
 
 == Changelog ==
+
+= 1.43.0 =
+* FAQ updated
+* Tested with WordPress 4.1
 
 = 1.42.0 =
 * Tweak: Don't display the timeout field if the medias are skipped
@@ -526,6 +538,10 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 1.43.0 =
+FAQ updated
+Tested with WordPress 4.1
 
 = 1.42.0 =
 Tweak: Don't display the timeout field if the medias are skipped

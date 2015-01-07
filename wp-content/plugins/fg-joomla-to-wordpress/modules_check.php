@@ -110,9 +110,9 @@ if ( !class_exists('fgj2wp_modules', false) ) {
 					'fg-joomla-to-wordpress-premium-jevents-module/fgj2wp-jevents.php',
 					sprintf($message_addon, __('some JEvents events', 'fgj2wp'), $premium_url, $premium_url . 'jevents/', __('JEvents add-on', 'fgj2wp'))
 				),
-				array('contactdirectory_contacts', 0,
-					'fg-joomla-to-wordpress-premium-contactdirectory-module/fgj2wp-contactdirectory.php',
-					sprintf($message_addon, __('some Contact Directory contacts', 'fgj2wp'), $premium_url, $premium_url . 'contactdirectory/', __('Contact Directory add-on', 'fgj2wp'))
+				array('contact_details', 0,
+					'fg-joomla-to-wordpress-premium-contactmanager-module/fgj2wp-contactmanager.php',
+					sprintf($message_addon, __('some contacts', 'fgj2wp'), $premium_url, $premium_url . 'contact-manager/', __('Contact Manager add-on', 'fgj2wp'))
 				),
 				array('docman', 0,
 					'fg-joomla-to-wordpress-premium-docman-module/fgj2wp-docman.php',

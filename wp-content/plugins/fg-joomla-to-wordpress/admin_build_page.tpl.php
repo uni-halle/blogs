@@ -178,6 +178,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 			<li><?php _e('Joomla 1.0 compatible', 'fgj2wp'); ?></li>
 			<li><?php _e('Joomla 2.5+ featured images', 'fgj2wp'); ?></li>
 			<li><?php _e('Joomla 3.1+ tags', 'fgj2wp'); ?></li>
+			<li><?php _e('Joomla contacts', 'fgj2wp'); ?></li>
 			<li><?php _e('Mambo 4.5 and 4.6 compatible', 'fgj2wp'); ?></li>
 			<li><?php _e('K2 content', 'fgj2wp'); ?></li>
 			<li><?php _e('EasyBlog content', 'fgj2wp'); ?></li>
@@ -192,7 +193,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
 			<li><?php _e('Phocagallery images', 'fgj2wp'); ?></li>
 			<li><?php _e('Joom!Fish translations to WPML', 'fgj2wp'); ?></li>
 			<li><?php _e('JEvents events', 'fgj2wp'); ?></li>
-			<li><?php _e('Contact Directory contacts', 'fgj2wp'); ?></li>
 			<li><?php _e('Docman documents', 'fgj2wp'); ?></li>
 			<li><?php _e('Virtuemart e-commerce', 'fgj2wp'); ?></li>
 			<li><?php _e('JReviews reviews', 'fgj2wp'); ?></li>
