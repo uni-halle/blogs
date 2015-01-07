@@ -33,14 +33,10 @@ define ("Osm_OSM_LibraryLocation", OSM_PLUGIN_URL.'js/OSM/openlayers/OpenStreetM
   define ("Osm_Stamen_Tiles_b", 'http://b.tile.stamen.com/');
   define ("Osm_Stamen_Tiles_c", 'http://c.tile.stamen.com/');
 // OpenLayers scripts
-//define ("Osm_OL_LibraryLocation", 'http://www.openlayers.org/api/OpenLayers.js');
-//define ("Osm_OL_LibraryLocation", 'http://openlayers.org/api/2.12/OpenLayers.js');
 define ("Osm_OL_LibraryPath", OSM_PLUGIN_URL.'js/OL/2.13.1/');
 define ("Osm_OL_LibraryLocation", OSM_PLUGIN_URL."js/OL/2.13.1/OpenLayers.js");
 
-// http://ol3js.org/en/master/build/ol.css
-// http://ol3js.org/en/v3.0.0-beta.1/build/ol.js
-define ("Osm_OL_3_CSS", 'http://ol3js.org/en/v3.0.0-beta.1/build/ol.css');
+define ("Osm_OL_3_CSS", 'http://ol3js.org/en/master/css/ol.css');
 define ("Osm_OL_3_LibraryLocation", 'http://ol3js.org/en/master/build/ol.js');
 
 // Google
@@ -55,7 +51,7 @@ define ("Osm_harbours_LibraryLocation", OSM_PLUGIN_URL.'js/OSeaM/harbours.js');
 define ("Osm_map_utils_LibraryLocation", OSM_PLUGIN_URL.'js/OSeaM/map_utils.js');
 define ("Osm_utilities_LibraryLocation", OSM_PLUGIN_URL.'js/OSeaM/utilities.js');
 // OpenWeather scripts
-define ("Osm_openweather_LibraryLocation", 'http://openweathermap.org/js/OWM.OpenLayers.1.3.4.js');
+define ("Osm_openweather_LibraryLocation", 'http://openweathermap.org/js/OWM.OpenLayers.1.3.6.js');
 
 
 

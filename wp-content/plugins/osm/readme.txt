@@ -1,9 +1,9 @@
 === OSM - OpenStreetMap ===
 Contributors: MiKa
-Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, Open Layers, Open Street Map, CloudMade, marker, POI, geocode, geotagging, location, Route, Tracks, WMS, OpenWeatherMap, Weather, OpenSeaMap, stamen, toner, watercolor, basemap, ssl, exif, meta, widget
+Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, Open Layers, Open Street Map, CloudMade, marker, POI, geocode, geotagging, location, Route, Tracks, WMS, OpenWeatherMap, Weather, OpenSeaMap, stamen, basemap, ssl, exif, meta, widget
 Requires at least: 2.8
-Tested up to: 4.0.1
-Stable tag: 2.9.1
+Tested up to: 4.1
+Stable tag: 2.9.2
 
 Customize maps in your post, pages and widgets. Add geotag to your blog and site. Use GPX, KML, CSV, TXT ... 
 
@@ -69,6 +69,12 @@ There must be not format tag (like href ...) in the shortcode.
 
 
 == Changelog ==
+= 2.9.2 =
+* FIX: icon size for geotagged post / pages
+* FIX: generate map type at shortcodegenerator
+* NEW: add customfield for icon at shortcodegenerator
+* NEW: some new icons
+* CHANGE: generate width in percentage instead of pixels
 = 2.9.1 =
 * FIX: OpenWeatherMap
 * NEW: individual icons in map with all geotagged posts / pages

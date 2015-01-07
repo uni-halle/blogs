@@ -3,13 +3,13 @@
 Plugin Name: OSM
 Plugin URI: http://wp-osm-plugin.HanBlog.net
 Description: Embeds maps in your blog and adds geo data to your posts.  Find samples and a forum on the <a href="http://wp-osm-plugin.HanBlog.net">OSM plugin page</a>.  
-Version: 2.9.1
+Version: 2.9.2
 Author: MiKa
 Author URI: http://www.HanBlog.net
 Minimum WordPress Version Required: 2.8
 */
 
-/*  (c) Copyright 2014  Michael Kang
+/*  (c) Copyright 2015  Michael Kang
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ Minimum WordPress Version Required: 2.8
 */
 load_plugin_textdomain('OSM-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 
-define ("PLUGIN_VER", "V2.9.1");
+define ("PLUGIN_VER", "V2.9.2");
 
 // modify anything about the marker for tagged posts here
 // instead of the coding.
@@ -77,8 +77,6 @@ define ('SERVER_WP_ENQUEUE', 2);
 
 define('OSM_PRIV_WP_CONTENT_URL', site_url() . '/wp-content' );
 define('OSM_PRIV_WP_CONTENT_DIR', content_url() . 'wp-content' );
-//define('OSM_PRIV_WP_PLUGIN_URL', OSM_PRIV_WP_CONTENT_URL. '/plugins' );
-//define('OSM_PRIV_WP_PLUGIN_DIR', OSM_PRIV_WP_CONTENT_DIR . '/plugins' );
 define('OSM_PRIV_WP_PLUGIN_URL', plugins_url() );
 define('OSM_PRIV_WP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -211,7 +209,8 @@ function osm_map_create_function( $post ) {
         <option value="mic_blue_mobilephonetower_01.png"><?php _e('Mobilephonetower','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
         <option value="mic_orange_hiking_01.png"><?php _e('Hiking','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
         <option value="mic_blue_bridge_old_01.png"><?php _e('Bridge','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
-    </select><br>
+        <option value="mic_black_memorial_01.png"><?php _e('Memorial','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+    </select> ( <a href="http://wp-osm-plugin.hanblog.net/wp-osm-plugin-icons/" target="_blank"> icons</a> )<br>
     <b>4. <?php _e('map type','OSM-plugin') ?></b>:
     <select name="osm_map_type">
         <option value="Mapnik">OpenStreetMap</option>
@@ -438,7 +437,6 @@ class Osm
        $CustomFieldName = get_option('osm_custom_field','OSM_geo_data');        
        $recentPosts = new WP_Query();
        $recentPosts->query('meta_key='.$CustomFieldName.'&post_status=publish'.'&showposts=-1'.'&post_type='.$a_post_type.'');
-//     $recentPosts->query('meta_key='.$CustomFieldName.'&post_status=publish'.'&post_type=page');
        while ($recentPosts->have_posts()) : $recentPosts->the_post();
          $Data = get_post_meta($post->ID, $CustomFieldName, true);
          // remove space before and after comma
@@ -712,7 +710,7 @@ class Osm
  // add OSM-config page to Settings
   function admin_menu($not_used){
   // place the info in the plugin settings page
-    add_options_page(__('OpenStreetMap Manager', 'Osm'), __('OSM', 'Osm'), 5, basename(__FILE__), array('Osm', 'options_page_osm'));
+    add_options_page(__('OpenStreetMap Manager', 'Osm'), __('OSM', 'Osm'), 'manage_options', basename(__FILE__), array('Osm', 'options_page_osm'));
   }
   
   // ask WP to handle the loading of scripts

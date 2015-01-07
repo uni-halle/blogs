@@ -234,7 +234,7 @@
             define ('OL_LIBS_LOADED', 1);
         }
   
-      if ($type == 'Mapnik' || $type == 'mapnik_ssl' || $type == 'Osmarender' || $type == 'basemap_at' || $type == 'stamen_watercolor' || $type == 'stamen_toner' || $type == 'CycleMap' || $type == 'AllOsm' || $type == 'Ext'){
+      if ($type == 'Mapnik' || $type == 'mapnik_ssl' || $type == 'Osmarender' || $type == 'basemap_at' || $type == 'stamen_watercolor' || $type == 'stamen_toner' || $type == 'CycleMap' || $type == 'OSMRoadsMap' || $type == 'AllOsm' || $type == 'Ext'){
         if(!defined('OSM_LIBS_LOADED')) {
           $output .= '<script type="text/javascript" src="'.Osm_OSM_LibraryLocation.'"></script>';
           define ('OSM_LIBS_LOADED', 1);

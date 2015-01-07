@@ -81,7 +81,8 @@ class Osm_icon
     "mic_blue_marina-2_01.png"  => array("height"=>37,"width"=>"32","offset_height"=>"-37","offset_width"=>"-16"),	
     "mic_green_palm-tree-export_01.png"  => array("height"=>37,"width"=>"32","offset_height"=>"-37","offset_width"=>"-16"),	
     "mic_blue_shower_01.png"  => array("height"=>37,"width"=>"32","offset_height"=>"-37","offset_width"=>"-16"),	
-    "mic_blue_lighthouse-2_01.png"  => array("height"=>37,"width"=>"32","offset_height"=>"-37","offset_width"=>"-16"),	
+    "mic_blue_lighthouse-2_01.png"  => array("height"=>37,"width"=>"32","offset_height"=>"-37","offset_width"=>"-16"),
+    "mic_black_memorial_01.png"  => array("height"=>37,"width"=>"32","offset_height"=>"-37","offset_width"=>"-16"),	
   );
 
   if ($Icons[$a_IconName]["height"] == ''){
@@ -128,7 +129,7 @@ class Osm_icon
     $a_IconName == "mic_brown_harbor_01.png" || $a_IconName == "mic_green_resort_01.png" ||
     $a_IconName == "mic_brown_fourbyfour_01.png" || $a_IconName == "mic_blue_marina-2_01.png" ||
     $a_IconName == "mic_green_palm-tree-export_01.png" || $a_IconName == "mic_blue_shower_01.png" ||
-    $a_IconName == "mic_blue_lighthouse-2_01.png"
+    $a_IconName == "mic_blue_lighthouse-2_01.png" || $a_IconName == "mic_black_memorial_01.png"
 ){
     return 1;
    }
