@@ -348,17 +348,17 @@ $DMSGuestbookContent .= "<div class='css_guestbook_font_color'>"; }
 							name, email, gravatar, url, date, ip, message, flag, guestbook, spam, additional
 							)
 							VALUES (
-							'" . mysql_real_escape_string($nname) . "',
-							'" . mysql_real_escape_string($_REQUEST['gbemail']) . "',
-							'" . mysql_real_escape_string($gravataremail) . "',
-							'" . mysql_real_escape_string($newurl) . "',
-							'" . mysql_real_escape_string($date) . "',
-							'" . mysql_real_escape_string($ip) . "',
-							'" . mysql_real_escape_string($mmu) . "',
+							'" . esc_sql($nname) . "',
+							'" . esc_sql($_REQUEST['gbemail']) . "',
+							'" . esc_sql($gravataremail) . "',
+							'" . esc_sql($newurl) . "',
+							'" . esc_sql($date) . "',
+							'" . esc_sql($ip) . "',
+							'" . esc_sql($mmu) . "',
 							'" . sprintf("%d", $var_admin_review) . "',
 							'" . sprintf("%d", $var_multi_gb_id) . "',
 							'" . sprintf("%d", $spam_detect) . "',
-							'" . mysql_real_escape_string($_REQUEST['gbadditional']) . "')")
+							'" . esc_sql($_REQUEST['gbadditional']) . "')")
 							or die (__("Database not available!", "dmsguestbook"));
 
 							$abspath = str_replace("\\","/", ABSPATH);

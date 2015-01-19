@@ -5,7 +5,7 @@
 Plugin Name: DMSGuestbook
 Plugin URI: http://danielschurter.net/
 Description: Create and customize your own guestbook.
-Version: 1.17.4
+Version: 1.17.5
 Author: Daniel M. Schurter
 Author URI: http://danielschurter.net/
 */
@@ -25,9 +25,9 @@ These fields are affected:
 define('BASE64', "0");
 
 /* DMSGuestbook version */
-define('DMSGUESTBOOKVERSION', "1.17.4");
+define('DMSGUESTBOOKVERSION', "1.17.5");
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-	
+		
 	$_REQUEST['restore_options'] 	= (isset($_REQUEST['restore_options'])) ? $_REQUEST['restore_options'] : '';
 	
 	/* menu (DMSGuestbook, Manage) */
@@ -79,10 +79,8 @@ define('DMSGUESTBOOKVERSION', "1.17.4");
 		add_submenu_page( 'dmsguestbook' , __('phpinfo', 'dmsguestbook'), __('phpinfo', 'dmsguestbook'), $Role1,
 		'phpinfo', 'dmsguestbook3_meta_description_option_page');
 		}
-	}
-
-
-
+	}	
+	
 	/* create db while the activation process */
 	add_action('activate_dmsguestbook/admin.php', 'dmsguestbook_install');
 
@@ -107,6 +105,7 @@ define('DMSGUESTBOOKVERSION', "1.17.4");
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 /* DMSGuestbook adminpage main function */
+
 
 function dmsguestbook_meta_description_option_page() {
 
@@ -187,7 +186,7 @@ function dmsguestbook_meta_description_option_page() {
 	  	additional varchar(50) NOT NULL,
 	  	flag int(2) NOT NULL,
 	  	UNIQUE KEY id (id)
-	  	)" . mysql_real_escape_string($_REQUEST['collate']) . "");
+	  	)" . esc_sql($_REQUEST['collate']) . "");
 	  	$abspath = str_replace("\\","/", ABSPATH);
 	  	require_once($abspath . 'wp-admin/upgrade-functions.php');
 	  	dbDelta($sql);
@@ -1906,93 +1905,30 @@ if($_REQUEST['advanced']==1) {
 
 	clearstatcache();
 	$color3=settablecolor(3,0);
-	unset($buffer);
 	
-	$buffer 				= (isset($buffer)) ? $buffer : '';
-	$save_advanced_button 	= (isset($save_advanced_button)) ? $save_advanced_button : '';
-	$valid_file 			= (isset($valid_file)) ? $valid_file : '';
-	$_REQUEST['file'] 		= (isset($_REQUEST['file'])) ? $_REQUEST['file'] : '';
+	echo "<b style='font-size:20px;'>" . __("Language settings", "dmsguestbook") . "</b><br /><br />";
 	
-	echo "<b style='font-size:20px;'>" . __("Language settings", "dmsguestbook") . "</b><br />";
+	echo "<b>Installed languages:</b><br /><br />";
+	
 	$abspath = str_replace("\\","/", ABSPATH);
 
 		if ($handle = opendir($abspath . 'wp-content/plugins/dmsguestbook/language/')) {
     		/* language */
     		while (false !== ($file = readdir($handle))) {
         		if ($file != "." && $file != ".." && $file != "mo") {
-        			if($file=="README.txt") {
-           			echo "<a style='color:#bb0000;' href='admin.php?page=dmsguestbook&advanced=1&folder=language/&file=$file'>$file</a>, ";
+        			if($file!="README.txt") {
+           			echo "<div>$file</div>";
         			}
-        			else 	{
-        					echo "<a href='admin.php?page=dmsguestbook&advanced=1&folder=language/&file=$file'>$file</a>, ";
-        					}
         		}
     		}
     		echo "<br />";
     		closedir($handle);
 		}
-
-
-if($_REQUEST['file']!="") {
-
-	clearstatcache();
-
-	/* check the file variable for language text file */
-	if(preg_match('/^[a-z0-9_]+\.+(txt)/i', "$_REQUEST[file]")==1) {
-	$file=$_REQUEST['file'];
-
-	if(file_exists($abspath . "wp-content/plugins/dmsguestbook/language/" . $file)) {
-	$folder="language/";
-	$valid_file=1;
-	$save_advanced_button = check_writable($folder, $file);
-	} else
-	  		{
-	  		$valid_file=0;
-	  		echo "<br /><b>" . __("File not found!", "dmsguestbook") . "</b>";
-	  		}
-	}
-
-
-	/* error handling */
-	if($file=="") {
-	echo "<br /><b>" . __("Not a valid file, must be a language file with .txt prefix.") . "</b>";
-	}
-
-
-		if ($valid_file==1) {
-		$handle = @fopen ($abspath . "wp-content/plugins/dmsguestbook/" . $folder . $file, "r");
-			while (!feof($handle)) {
-    		$buffer .= fgets($handle, 4096);
-			}
-		fclose ($handle);
-		}
-
-
+	echo "<b>All language files can be edited with a text editor in your DMSGuestbook plugin folder: (../plugins/dmsguestbook/language)</b><br /><br />";
+	echo "<br />";
+	
 }
-
-	$showfiledata = htmlentities($buffer, ENT_QUOTES);
-
-?>
-	<br />
-	<table style="border:0px solid #000000; width:100%;background-color:#<?php echo $color3; ?>;" cellspacing="0" cellpadding="0">
-	  <tr>
-		<form name="form0" method="post" action="<?php echo $location;?>">
-		<td><textarea style="width:99%; height:500px;" name="advanced_data"><?php echo $showfiledata;?></textarea></td>
-	  </tr>
-		<input name="action" value="save_advanced_data" type="hidden" />
-	  	<input name="folder" value="<?php echo $folder; ?>" type="hidden" />
-	  	<input name="file" value="<?php echo $file; ?>" type="hidden" />
-	  <tr>
-		<td style="text-align:center;"><?php echo $save_advanced_button;?></td>
-  	  </tr>
-  		</form>
-	  </tr>
-	 </table>
-<?php
-}
-?>
-	 </div>
-<?php
+	 echo "</div>";
 	}
 }	/* end of DMSGuestbook adminpage main function */
 
@@ -2137,7 +2073,7 @@ if($_REQUEST['file']!="") {
 				     }
 		}
 		$save_to_db = str_replace("\"", "&amp;quot;", $save_to_db);
-		update_option("DMSGuestbook_options", mysql_real_escape_string($save_to_db));
+		update_option("DMSGuestbook_options", esc_sql($save_to_db));
 		message("<b>" . __("saved", "dmsguestbook") . "...</b>",300,800);
 
 		/* save to dmsguestbook.css if is writable */
@@ -2159,31 +2095,6 @@ if($_REQUEST['file']!="") {
 	default_option();
 	}
 
-	/* save advanced */
-	if ($POSTVARIABLE['action'] =='save_advanced_data') {
-	$abspath = str_replace("\\","/", ABSPATH);
-
-	/* check the folder variable */
-	if($POSTVARIABLE['folder']=="language/"){
-	$folder="language/";
-	} else {$folder="";}
-
-	/* check the file variable xxxx.txt */
-	if(preg_match('/^[a-z0-9]+\.+(txt)/i', $POSTVARIABLE['file'])==1) {
-	$file=$POSTVARIABLE['file'];
-	} else {$file="";}
-
-		clearstatcache();
-		if (file_exists($abspath . "wp-content/plugins/dmsguestbook/" . $folder . $file)) {
-		$handle = fopen($abspath . "wp-content/plugins/dmsguestbook/" . $folder . $file, "w");
-
-		$writetofile = str_replace("\\", "", $POSTVARIABLE['advanced_data']);
-
-		fwrite($handle, $writetofile);
-		fclose($handle);
-		message("<b>" . __("saved", "dmsguestbook") . "...</b>",300,800);
-		} else {message("<br /><b>" . __("File not found!", "dmsguestbook") . "</b>",300,800);}
-	}
 
 
 
@@ -2279,7 +2190,7 @@ function dmsguestbook2_meta_description_option_page() {
 		$table_name = $wpdb->prefix . "dmsguestbook";
 		$table_posts = $wpdb->prefix . "posts";
 
-		/* count all search database entries / mysql_query */
+		/* count all search database entries / $wpdb->query */
     	$query0 = $wpdb->get_results("SELECT * FROM $table_name $search_param $editor $flag");
     	$num_rows0 = $wpdb->num_rows;
 
@@ -2726,7 +2637,7 @@ function dmsguestbook2_meta_description_option_page() {
 		$query1 = $wpdb->get_results("SELECT * FROM $table_name WHERE spam = '1'");
     	$num_rows1 = $wpdb->num_rows;
 
-		/* count all search database entries / mysql_query */
+		/* count all search database entries / $wpdb->query */
     	$query0 = $wpdb->get_results("SELECT * FROM $table_name WHERE spam = '1' ORDER BY id " . sprintf("%s", $options["sortitem"]) . " LIMIT
 		" . sprintf("%d", $_REQUEST['from']) . "," . sprintf("%d", $gb_step) . ";");
     	$num_rows0 = $wpdb->num_rows;
@@ -2925,16 +2836,16 @@ function dmsguestbook2_meta_description_option_page() {
 
 		$table_name = $wpdb->prefix . "dmsguestbook";
 		$updatedata = $wpdb->query("UPDATE $table_name SET
-		name 		= 	'" . mysql_real_escape_string(addslashes($_REQUEST['gb_name'])) . "',
-		email 		= 	'" . mysql_real_escape_string($_REQUEST['gb_email']) . "',
-		url 		= 	'" . mysql_real_escape_string($_REQUEST['gb_url']) . "',
-		ip	 		= 	'" . mysql_real_escape_string($_REQUEST['gb_ip']) . "',
-		message 	= 	'" . mysql_real_escape_string(addslashes($gbmessage)) ."',
+		name 		= 	'" . esc_sql(addslashes($_REQUEST['gb_name'])) . "',
+		email 		= 	'" . esc_sql($_REQUEST['gb_email']) . "',
+		url 		= 	'" . esc_sql($_REQUEST['gb_url']) . "',
+		ip	 		= 	'" . esc_sql($_REQUEST['gb_ip']) . "',
+		message 	= 	'" . esc_sql(addslashes($gbmessage)) ."',
 		guestbook	=	'" . sprintf("%d", $_REQUEST['gb_guestbook']) . "',
 		additional	=	'" . $_REQUEST['gb_additional'] . "',
 		flag		=	'" . sprintf("%d", $_REQUEST['gb_flag']) . "'
 		WHERE id = '" . sprintf("%d", $_REQUEST['id']) . "' ");
-  		$update = mysql_query($updatedata);
+  		$update = $wpdb->query($updatedata);
 
 		if(strlen($_REQUEST['gb_date'])!=0) {
 		$part0 = explode(",", $_REQUEST['gb_date']);
@@ -2953,7 +2864,7 @@ function dmsguestbook2_meta_description_option_page() {
 			$updatedata2 = $wpdb->query("UPDATE $table_name SET
 			date 		= 	'$timestamp'
 			WHERE id = '" . sprintf("%d", $_REQUEST['id']) . "'");
-  			$update2 = mysql_query($updatedata2);
+  			$update2 = $wpdb->query($updatedata2);
 		}
 		message("<b>" . sprintf(__("Dataset (%) was saved", "dmsguestbook"), $_REQUEST['id']) . "</b>", 50, 800);
 	}
@@ -2966,7 +2877,7 @@ function dmsguestbook2_meta_description_option_page() {
 	$dataset="";
 		for($c=0; $c<count($_REQUEST['selectpost']); $c++) {
 		$deletedata = $wpdb->query("DELETE FROM $table_name WHERE id = '" . sprintf("%d", "{$_REQUEST['selectpost'][$c]}") . "'");
-		$delete = mysql_query($deletedata);
+		$delete = $wpdb->query($deletedata);
 		$dataset .= "{$_REQUEST['selectpost'][$c]}, ";
 		}
 
@@ -2980,7 +2891,7 @@ function dmsguestbook2_meta_description_option_page() {
 	if($_REQUEST['action'] == 'deletepost') {
 	$table_name = $wpdb->prefix . "dmsguestbook";
 		$deletedata = $wpdb->query("DELETE FROM $table_name WHERE id = '" . sprintf("%d", "$_REQUEST[id]") . "'");
-		$delete = mysql_query($deletedata);
+		$delete = $wpdb->query($deletedata);
 		message("<b>" . sprintf(__("Dataset (%) was deleted", "dmsguestbook"), $_REQUEST['id']) . "...</b>", 50, 800);
 	}
 
@@ -2988,7 +2899,7 @@ function dmsguestbook2_meta_description_option_page() {
 	if($_REQUEST['action'] == 'deleteallpost') {
 	$table_name = $wpdb->prefix . "dmsguestbook";
 		$deletealldata = $wpdb->query("DELETE FROM $table_name WHERE spam = '1'");
-		$delete = mysql_query($deletealldata);
+		$delete = $wpdb->query($deletealldata);
 		message("<b>" . __("All Dataset were deleted", "dmsguestbook") . "...</b>", 140, 800);
 	}
 
@@ -2998,7 +2909,7 @@ function dmsguestbook2_meta_description_option_page() {
 		$updatedata3 = $wpdb->query("UPDATE $table_name SET
 		spam 		= 	'1'
 		WHERE id = '" . sprintf("%d", $_REQUEST['id']) . "'");
-  		$update3 = mysql_query($updatedata3);
+  		$update3 = $wpdb->query($updatedata3);
 		SpamHam($_REQUEST['id'], "spam");
 	}
 
@@ -3011,7 +2922,7 @@ function dmsguestbook2_meta_description_option_page() {
 			$updatedata4 = $wpdb->query("UPDATE $table_name SET
 			spam 		= 	'1'
 			WHERE id = '" . sprintf("%d", "{$_REQUEST['selectpost'][$c]}") . "'");
-  			$update4 = mysql_query($updatedata4);
+  			$update4 = $wpdb->query($updatedata4);
   			SpamHam("{$_REQUEST['selectpost'][$c]}", "spam");
   		}
 	}
@@ -3024,7 +2935,7 @@ function dmsguestbook2_meta_description_option_page() {
 			$updatedata4 = $wpdb->query("UPDATE $table_name SET
 			spam 		= 	'0'
 			WHERE id = '" . sprintf("%d", "{$_REQUEST['selectpost'][$c]}") . "'");
-  			$update4 = mysql_query($updatedata4);
+  			$update4 = $wpdb->query($updatedata4);
   			SpamHam("{$_REQUEST['selectpost'][$c]}", "ham");
   		}
 	}
@@ -3035,7 +2946,7 @@ function dmsguestbook2_meta_description_option_page() {
 		$updatedata4 = $wpdb->query("UPDATE $table_name SET
 		spam 		= 	'0'
 		WHERE id = '" . sprintf("%d", "$_REQUEST[id]") . "'");
-  		$update4 = mysql_query($updatedata4);
+  		$update4 = $wpdb->query($updatedata4);
   		SpamHam($_REQUEST['id'], "ham");
 	}
 
@@ -3045,7 +2956,7 @@ function dmsguestbook2_meta_description_option_page() {
 		$updatedata5 = $wpdb->query("UPDATE $table_name SET
 		flag 		= 	'" . sprintf("%d", "$_REQUEST[flag]") . "'
 		WHERE id = '" . sprintf("%d", "$_REQUEST[id]") . "'");
-  		$update5 = mysql_query($updatedata5);
+  		$update5 = $wpdb->query($updatedata5);
 	}
 
 	/* multi set admin review set hidden */
@@ -3055,7 +2966,7 @@ function dmsguestbook2_meta_description_option_page() {
 			$updatedata6 = $wpdb->query("UPDATE $table_name SET
 			flag 		= 	'1'
 			WHERE id = '" . sprintf("%d", "{$_REQUEST['selectpost'][$c]}") . "'");
-  			$update6 = mysql_query($updatedata6);
+  			$update6 = $wpdb->query($updatedata6);
   		}
 	}
 
@@ -3066,7 +2977,7 @@ function dmsguestbook2_meta_description_option_page() {
 			$updatedata7 = $wpdb->query("UPDATE $table_name SET
 			flag 		= 	'0'
 			WHERE id = '" . sprintf("%d", "{$_REQUEST['selectpost'][$c]}") . "'");
-  			$update7 = mysql_query($updatedata7);
+  			$update7 = $wpdb->query($updatedata7);
   		}
 	}
 
@@ -3708,21 +3619,7 @@ return $options;
 	}
 
 
-	/* advanced file */
-	function check_writable($folder, $file) {
-	$abspath = str_replace("\\","/", ABSPATH);
-		if(is_writable($abspath . "wp-content/plugins/dmsguestbook/" . $folder . $file)) {
-		echo "<br />$_REQUEST[file] <font style='color:#00bb00;'>" . __("is writable!", "dmsguestbook") . "</font><br />" . sprintf(__("Set %s readonly again when your finished to customize!", "dmsguestbook"), $file);
-		$save_advanced_button = "<input class='button-primary action' style='font-weight:bold; margin:10px 0px; width:250px;' type='submit' value='" . __("Save", "dmsguestbook") . "' />";
-		return $save_advanced_button;
-		}
-		else {
-	         echo "<br />" . sprintf(__("%s is <font style='color:#bb0000;'>not writable!", "dmsguestbook"), $_REQUEST['file']) . "
-	         </font><br />" . sprintf(__("Set the write permission for %s to customize this file.", "dmsguestbook"), $_REQUEST['file']);
-	         return $save_advanced_button="";
-	         }
 
-	}
 
 
 	/* missing options */
@@ -3929,4 +3826,5 @@ return $options;
 		}
 	return $role;
 	}
+
 ?>

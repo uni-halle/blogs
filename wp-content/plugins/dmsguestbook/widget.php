@@ -43,16 +43,16 @@ function widget_dmsguestbook_init() {
 				/* prevent XSS */
 				$remove_tags="(\<textarea\>||\<\/textarea\>)";
 
-				$newoptions['title'] = mysql_real_escape_string(preg_replace("/[[:punct:]]/", "", $POSTVARIABLE['DMSGuestbook_title']));
+				$newoptions['title'] = esc_sql(preg_replace("/[[:punct:]]/", "", $POSTVARIABLE['DMSGuestbook_title']));
 				$newoptions['guestbook_id'] = sprintf("%s", $POSTVARIABLE['DMSGuestbook_guestbook_id']);
 				$newoptions['entries'] = sprintf("%d", $POSTVARIABLE['DMSGuestbook_entries']);
 				$newoptions['wordcut'] = sprintf("%d", $POSTVARIABLE['DMSGuestbook_wordcut']);
-				$newoptions['dateformat'] = mysql_real_escape_string(preg_replace("/[\"\'\`\´\/\\\\]/i", "", $POSTVARIABLE['DMSGuestbook_dateformat']));
+				$newoptions['dateformat'] = esc_sql(preg_replace("/[\"\'\`\´\/\\\\]/i", "", $POSTVARIABLE['DMSGuestbook_dateformat']));
 				$newoptions['gravatar_rating'] = sprintf("%s", $POSTVARIABLE['DMSGuestbook_gravatar_rating']);
 				$newoptions['gravatar_size'] = sprintf("%d", $POSTVARIABLE['DMSGuestbook_gravatar_size']);
-				$newoptions['widget_header'] = mysql_real_escape_string(preg_replace("/$remove_tags/", "", $POSTVARIABLE['DMSGuestbook_widget_header']));
-				$newoptions['widget_data'] = mysql_real_escape_string(preg_replace("/$remove_tags/", "", $POSTVARIABLE['DMSGuestbook_widget_data']));
-				$newoptions['widget_footer'] = mysql_real_escape_string(preg_replace("/$remove_tags/", "", $POSTVARIABLE['DMSGuestbook_widget_footer']));
+				$newoptions['widget_header'] = esc_sql(preg_replace("/$remove_tags/", "", $POSTVARIABLE['DMSGuestbook_widget_header']));
+				$newoptions['widget_data'] = esc_sql(preg_replace("/$remove_tags/", "", $POSTVARIABLE['DMSGuestbook_widget_data']));
+				$newoptions['widget_footer'] = esc_sql(preg_replace("/$remove_tags/", "", $POSTVARIABLE['DMSGuestbook_widget_footer']));
 				}
 
 			if ($options != $newoptions) {
