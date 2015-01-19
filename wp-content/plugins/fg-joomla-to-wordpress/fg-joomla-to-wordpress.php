@@ -3,7 +3,7 @@
  * Plugin Name: FG Joomla to WordPress
  * Plugin Uri:  http://wordpress.org/plugins/fg-joomla-to-wordpress/
  * Description: A plugin to migrate categories, posts, images and medias from Joomla to WordPress
- * Version:     1.43.0
+ * Version:     1.43.2
  * Author:      Frédéric GILLES
  */
 
@@ -1613,26 +1613,30 @@ SQL;
 				);
 				$posts = get_posts($args);
 				foreach ( $posts as $post ) {
+					$post = apply_filters('fgj2wp_post_get_post', $post); // Used to translate the links
 					$content = $post->post_content;
 					if ( preg_match_all('#<a(.*?)href="(.*?)"(.*?)>#', $content, $matches, PREG_SET_ORDER) > 0 ) {
 						if ( is_array($matches) ) {
-							foreach ($matches as $match ) {
+							foreach ( $matches as $match ) {
 								$link = $match[2];
 								list($link_without_anchor, $anchor_link) = $this->split_anchor_link($link); // Split the anchor link
 								// Is it an internal link ?
 								if ( $this->is_internal_link($link_without_anchor) ) {
 									$meta_key_value = $this->get_joomla_id_in_link($link_without_anchor);
+									$joomla_id = $meta_key_value['meta_value'];
 									// Can we find an ID in the link ?
-									if ( $meta_key_value['meta_value'] != 0 ) {
+									if ( $joomla_id != 0 ) {
 										// Get the linked post
 										$linked_posts = get_posts(array(
 											'numberposts'	=> 1,
 											'post_type'		=> 'any',
 											'meta_key'		=> $meta_key_value['meta_key'],
-											'meta_value'	=> $meta_key_value['meta_value'],
+											'meta_value'	=> $joomla_id,
 										));
 										if ( count($linked_posts) > 0 ) {
-											$new_link = get_permalink($linked_posts[0]->ID);
+											$linked_post_id = $linked_posts[0]->ID;
+											$linked_post_id = apply_filters('fgj2wp_post_get_post_by_joomla_id', $linked_post_id, $post); // Used to get the ID of the translated post
+											$new_link = get_permalink($linked_post_id);
 											if ( !empty($anchor_link) ) {
 												$new_link .= '#' . $anchor_link;
 											}
