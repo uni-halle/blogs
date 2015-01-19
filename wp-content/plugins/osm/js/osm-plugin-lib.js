@@ -64,6 +64,103 @@ function osm_setLinePoints(a_tileLayer, a_lineLayer, a_strw, a_strcol, a_stropac
 
 // Clickhandler / Shorcode generator
 
+function osm_getIconSize(a_IconName){
+  Icon = new Object();
+  if (a_IconName.match('mic_')) {
+    Icon["height"] = "37";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-37";
+    Icon["offset_width"] = "-16";
+  }
+  else if (a_IconName.match('wpttemp')){
+    Icon["height"] = "24";
+    Icon["width"] = "24";
+    Icon["offset_height"] = "-24";
+    Icon["offset_width"] = "-0";
+  }
+  else if ((a_IconName == "camping.png") || (a_IconName == "friends.png") || (a_IconName == "guest_house.png") || (a_IconName == "home.png") || (a_IconName == "toilets.png")  || (a_IconName == "hotel.png")){
+    Icon["height"] = "32";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-16";
+    Icon["offset_width"] = "-16";
+  }
+  else if ((a_IconName == "hostel.png") || (a_IconName == "restaurant.png")){
+    Icon["height"] = "24";
+    Icon["width"] = "24";
+    Icon["offset_height"] = "-12";
+    Icon["offset_width"] = "-12";
+  }
+  else if (a_IconName == "marker_blue.png"){
+    Icon["height"] = "24";
+    Icon["width"] = "24";
+    Icon["offset_height"] = "-24";
+    Icon["offset_width"] = "0";
+  }
+  else if (a_IconName == "airport.png"){
+    Icon["height"] = "32";
+    Icon["width"] = "31";
+    Icon["offset_height"] = "-16";
+    Icon["offset_width"] = "-16";
+  }
+  else if (a_IconName == "bicycling.png"){
+    Icon["height"] = "19";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-9";
+    Icon["offset_width"] = "-16";
+  }
+  else if (a_IconName == "bus.png"){
+    Icon["height"] = "32";
+    Icon["width"] = "26";
+    Icon["offset_height"] = "-16";
+    Icon["offset_width"] = "-13";
+  }
+  else if (a_IconName == "car.png"){
+    Icon["height"] = "18";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-16";
+    Icon["offset_width"] = "-9";
+  }
+  else if (a_IconName == "geocache.png"){
+    Icon["height"] = "25";
+    Icon["width"] = "25";
+    Icon["offset_height"] = "-12";
+    Icon["offset_width"] = "-12";
+  }
+  else if (a_IconName == "motorbike.png"){
+    Icon["height"] = "23";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-12";
+    Icon["offset_width"] = "-16";
+  }
+  else if (a_IconName == "services.png"){
+    Icon["height"] = "28";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-14";
+    Icon["offset_width"] = "-16";
+  }
+  else if (a_IconName == "styria_linux.png"){
+    Icon["height"] = "50";
+    Icon["width"] = "36";
+    Icon["offset_height"] = "-25";
+    Icon["offset_width"] = "-18";
+  }
+  else if (a_IconName == "marker_posts.png"){
+    Icon["height"] = "2";
+    Icon["width"] = "2";
+    Icon["offset_height"] = "-1";
+    Icon["offset_width"] = "-1";
+  }
+  else {
+    Icon["height"] = "32";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-16";
+    Icon["offset_width"] = "-16";
+  }
+  return Icon;
+}
+
+// Clickhandler / Shorcode generator
+
 function osm_getRadioValue(a_Form){
   if (a_Form == "Markerform"){
     for (var i=0; i < document.Markerform.Art.length; i++){

@@ -3,7 +3,7 @@
 Plugin Name: OSM
 Plugin URI: http://wp-osm-plugin.HanBlog.net
 Description: Embeds maps in your blog and adds geo data to your posts.  Find samples and a forum on the <a href="http://wp-osm-plugin.HanBlog.net">OSM plugin page</a>.  
-Version: 2.9.2
+Version: 2.9.3
 Author: MiKa
 Author URI: http://www.HanBlog.net
 Minimum WordPress Version Required: 2.8
@@ -27,7 +27,7 @@ Minimum WordPress Version Required: 2.8
 */
 load_plugin_textdomain('OSM-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 
-define ("PLUGIN_VER", "V2.9.2");
+define ("PLUGIN_VER", "V2.9.3");
 
 // modify anything about the marker for tagged posts here
 // instead of the coding.
@@ -170,22 +170,20 @@ function osm_map_create_function( $post ) {
         <option value="none"><?php _e('none','OSM-plugin') ?></option>
         <option value="wpttemp-green.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
         <option value="wpttemp-red.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+        <option value="wpttemp-yellow.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
         <option value="marker_blue.png"><?php _e('Marker','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
-        <option value="wpttemp-yellow.png"><?php _e('Marker','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
-        <option value="car.png"><?php _e('Car','OSM-plugin') ?></option>
-        <option value="bus.png"><?php _e('Bus','OSM-plugin') ?></option>
-        <option value="bicycling.png"><?php _e('Bicycling','OSM-plugin') ?></option>
-        <option value="airport.png"><?php _e('Airport','OSM-plugin') ?></option>
-        <option value="motorbike.png"><?php _e('Motorbike','OSM-plugin') ?></option>
-        <option value="hostel.png"><?php _e('Hostel','OSM-plugin') ?></option>
-        <option value="guest_house.png"><?php _e('Guesthouse','OSM-plugin') ?></option>
-        <option value="camping.png"><?php _e('Camping','OSM-plugin') ?></option>
-        <option value="geocache.png"><?php _e('Geocache','OSM-plugin') ?></option>
-        <option value="styria_linux.png"><?php _e('Styria Tux','OSM-plugin') ?></option>
+        <option value="mic_black_pinother_01.png"><?php _e('Pin #1','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_pin-export_01.png"><?php _e('Pin #2','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_red_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+        <option value="mic_green_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="mic_blue_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>       
         <option value="mic_photo_icon.png"><?php _e('Camera','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option> 
         <option value="mic_yel_restaurant_chinese_01.png"><?php _e('Chin. restaurant','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
         <option value="mic_yel_icecream_01.png"><?php _e('Icecream','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
         <option value="mic_yel_campingtents_01.png"><?php _e('Campingtents','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="mic_green_campingcar_01.png"><?php _e('Campingcar','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="mic_brown_pickup_camper_01.png"><?php _e('Pickup camper','OSM-plugin');echo ' ';_e('brown','OSM-plugin') ?></option>
         <option value="mic_toilets_disability_01.png"><?php _e('Toilets disability','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
         <option value="mic_shark_icon.png"><?php _e('Shark','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
         <option value="mic_red_pizzaria_01.png"><?php _e('Pizzaria','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
@@ -204,12 +202,22 @@ function osm_map_create_function( $post ) {
         <option value="mic_blue_toilets_01.png"><?php _e('Toilets','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
         <option value="mic_blue_scubadiving_01.png"><?php _e('Scubadiving','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
         <option value="mic_orange_motorbike_01.png"><?php _e('Motorbike','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
-        <option value="mich_orange_sailing_1.png"><?php _e('Sailing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_orange_sailing_1.png"><?php _e('Sailing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
         <option value="mic_orange_fishing_01.png"><?php _e('Fishing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
         <option value="mic_blue_mobilephonetower_01.png"><?php _e('Mobilephonetower','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
         <option value="mic_orange_hiking_01.png"><?php _e('Hiking','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
         <option value="mic_blue_bridge_old_01.png"><?php _e('Bridge','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
         <option value="mic_black_memorial_01.png"><?php _e('Memorial','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="car.png"><?php _e('Car','OSM-plugin') ?></option>
+        <option value="bus.png"><?php _e('Bus','OSM-plugin') ?></option>
+        <option value="bicycling.png"><?php _e('Bicycling','OSM-plugin') ?></option>
+        <option value="airport.png"><?php _e('Airport','OSM-plugin') ?></option>
+        <option value="motorbike.png"><?php _e('Motorbike','OSM-plugin') ?></option>
+        <option value="hostel.png"><?php _e('Hostel','OSM-plugin') ?></option>
+        <option value="guest_house.png"><?php _e('Guesthouse','OSM-plugin') ?></option>
+        <option value="camping.png"><?php _e('Camping','OSM-plugin') ?></option>
+        <option value="geocache.png"><?php _e('Geocache','OSM-plugin') ?></option>
+        <option value="styria_linux.png"><?php _e('Styria Tux','OSM-plugin') ?></option>
     </select> ( <a href="http://wp-osm-plugin.hanblog.net/wp-osm-plugin-icons/" target="_blank"> icons</a> )<br>
     <b>4. <?php _e('map type','OSM-plugin') ?></b>:
     <select name="osm_map_type">

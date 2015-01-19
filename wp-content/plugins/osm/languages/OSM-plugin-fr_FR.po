@@ -1,0 +1,408 @@
+# Fichier de langue de OSM-plugin for wordpress.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the OSM-plugin package.
+# Tounoki <nico.public@ouvaton.org>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-20 07:42+0200\n"
+"PO-Revision-Date: 2013-05-21 14:23+0100\n"
+"Last-Translator: Tounoki <nico.public@ouvaton.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: osm-error-msg.php:11
+msgid "gcStats plugin is not activated!"
+msgstr "Le plugin gcStats n'est pas activé !"
+
+#: osm-error-msg.php:12
+msgid "gcStats plugin has to be updated (If-Version)!"
+msgstr "Le plugin gcStats doit être mis à jour (If-Version) !"
+
+#: osm-error-msg.php:13
+msgid "gcStats plugin do not have any entries for this user!"
+msgstr "Le plugin gcStats ne comporte pas d'entrée pour cet utilisateur !"
+
+#: osm-error-msg.php:15
+msgid "Extra Comment Field plugin is not activated!"
+msgstr "Le plugin Extra Comment Field n'est pas activé !"
+
+#: osm-error-msg.php:17
+msgid "Not all options updated!"
+msgstr "Toutes les options ne sont pas mises à jour !"
+
+#: osm-error-msg.php:18
+msgid "Options updated!"
+msgstr "Les options ont été mises à jour"
+
+#: osm-error-msg.php:19
+msgid "Map Zoomlevel out of range or invalid! (using defaultvalue)"
+msgstr "Le niveau de zoom est invalide ! (utiliser defaultvalue)"
+
+#: osm-error-msg.php:20
+msgid "Lat or Lon is out of range or invalid (using defaultvalue)!"
+msgstr "Lat ou Lon sont invalides ! (utiliser defaultvalue)"
+
+#: osm-error-msg.php:21
+msgid "Map width or height is out of range or invalid (using defaultsize)!"
+msgstr "Les valeurs width ou height  de la carte sont invalides ! (utiliser defaultsize)"
+
+#: osm-error-msg.php:22
+msgid "Did not get latitude [missing argument @ OSM_getCoordinateLat]"
+msgstr "Absence de latitude [missing argument @ OSM_getCoordinateLat]"
+
+#: osm-error-msg.php:23
+msgid "Did not get longitude [missing argument @ OSM_getCoordinateLong]"
+msgstr "Absence de longitude [missing argument @ OSM_getCoordinateLong]"
+
+#: osm-error-msg.php:24
+msgid "If you define a marker, the width and height has to be defined as well!"
+msgstr "Si vous utilisez un marqueur, la largeur et la hauteur doivent être définies !"
+
+#: osm-error-msg.php:25
+msgid "Use the argument import instead of marker_all_posts!"
+msgstr "Utilisez l'argument import à la place de marker_all_posts !"
+
+#: osm-error-msg.php:26
+msgid "Import type is unknown!"
+msgstr "Type de import inconnu !"
+
+#: osm-error-msg.php:27
+msgid "Invalid marker_name!"
+msgstr "marker_name invalide !"
+
+#: osm-error-msg.php:29
+msgid "Could not load OSM library, check LoadLibraryMode @ wp-content/plugins/osm/osm-config.php!"
+msgstr "Echec lors du chargement de la bibliothèque OSM, vérifiez LoadLibraryMode @ wp-content/plugins/osm/osm-config.php !"
+
+#: osm-error-msg.php:30
+msgid "Invalid usage of control tag!"
+msgstr "mauvais usage du tag de control !"
+
+#: osm-error-msg.php:31
+msgid "Num of Gpx files does not match to num of Gpx colours!"
+msgstr "Le Num du fichier gpx ne correspond pas au Num de la couleur du fichier"
+
+#: osm-error-msg.php:32
+msgid "Missing the routingservice at marker_routing argument!"
+msgstr "Vous n'avez pas indiqué de service de calcul d'itinéraire pour l'argument marker_routing !"
+
+#: osm-options.php:18
+msgid "How to add a map to your post/page"
+msgstr "Comment ajouter une carte à vos articles/pages"
+
+#: osm-options.php:20
+msgid "choose a marker if you want to"
+msgstr "choisir un marqueur si vous le souhaitez"
+
+#: osm-options.php:21
+msgid "add a gpx file and/or marker file if you want to"
+msgstr "ajouter un fichier gpx et/ou un fichier de marqueurs si vous le souhaitez"
+
+#: osm-options.php:22
+msgid "add a border around the map and or some controls if you want to"
+msgstr "ajouter une bordure autour de la carte et/ou des éléments de contrôle si vous le souhaitez"
+
+#: osm-options.php:23
+msgid "click on the map to generate the shortcode (if you chose a marker it is placed where you clicked)"
+msgstr "cliquer sur la carte pour générer le shortcode à insérer dans vos pages (si vous avez choisi d'afficher un marqueur, il sera positionné à l'endroit où vous cliquez)"
+
+#: osm-options.php:24
+msgid "copy the shortcode from below the map and paste it in your post/page"
+msgstr "copier le shortcode affiché sous la carte et coller le dans votre article/page"
+
+#: osm-options.php:25
+msgid "delete the argument - type - if you want all osm maps to be available"
+msgstr "effacer l'argument -type- pour rendre disponibles tous les types de cartes OSM"
+
+#: osm-options.php:26
+msgid "add other arguments to insert tracks, points ... or modify mapsize ... if needed"
+msgstr "si besoin, ajouter d'autres arguments pour insérer des traces, des points... ou modifier la taille de la carte..."
+
+#: osm-options.php:27
+msgid "do not save any of your personal data in the plugins/osm folder but in the upload folder!"
+msgstr "ne sauvegarder aucune données personnelles dans le dossier plugins/osm mais dans le dossier upload !"
+
+#: osm-options.php:33
+msgid "If you want to add a marker choose one of the supported:"
+msgstr "Si vous souhaitez ajouter un marqueur, choisissez-en un parmi les suivants :"
+
+#: osm-options.php:34
+msgid "the marker is placed where you click into the map"
+msgstr "le marqueur sera placé à l'endroit où vous cliquerez sur la carte"
+
+#: osm-options.php:35
+msgid "alternativly you can also add privat marker from the upload folder (see "
+msgstr "vous pouvez ajouter un marqueur personnalisé enregistré dans le dossier upload (voir "
+
+#: osm-options.php:67
+msgid "If you want to add a text to your marker change the text here"
+msgstr "Pour ajouter un texte au marqueur, changez ce texte"
+
+#: osm-options.php:69
+msgid "1st row of markertext: "
+msgstr "1ère colonne du fichier markertext :"
+
+#: osm-options.php:70
+msgid "2nd row of markertext: "
+msgstr "2nde colonne du fichier markertext :"
+
+#: osm-options.php:71
+msgid "3rd row of markertext: "
+msgstr "3ème colonne du fichier markertext :"
+
+#: osm-options.php:72
+msgid "4th row of markertext: "
+msgstr "4ème colonne du fichier markertext :"
+
+#: osm-options.php:77
+msgid "Add a link in the marker to route to your marker: "
+msgstr "Pour ajouter un lien de calcul d'itinéraire à votre marqueur, sélectionner un des services ci-dessous :"
+
+#: osm-options.php:78
+msgid "OpenRouteService   "
+msgstr "OpenRouteService"
+
+#: osm-options.php:79
+msgid "YourNavigation   "
+msgstr "YourNavigation"
+
+#: osm-options.php:80
+msgid "CloudMade "
+msgstr "CloudMade"
+
+#: osm-options.php:83
+msgid "If you want to add a gpx-track add it:"
+msgstr "Pour ajouter une trace GPX :"
+
+#: osm-options.php:85
+msgid "copy the gpx file via FTP to your upload-folder"
+msgstr "copier le fichier GPX par FTP dans votre dossier d'upload"
+
+#: osm-options.php:86
+msgid "paste the local URL of gpx file here: "
+msgstr "coller l'adresse URL locale de votre fichier GPX ici :"
+
+#: osm-options.php:90
+msgid "colour of your gpx-track: "
+msgstr "couleur de votre trace GPX :"
+
+#: osm-options.php:91
+#: osm-options.php:107
+msgid "red "
+msgstr "rouge"
+
+#: osm-options.php:92
+#: osm-options.php:108
+msgid "green "
+msgstr "verte"
+
+#: osm-options.php:93
+#: osm-options.php:109
+msgid "blue "
+msgstr "bleu"
+
+#: osm-options.php:94
+#: osm-options.php:110
+msgid "black "
+msgstr "noir"
+
+#: osm-options.php:98
+msgid "If you want to add a marker file add it:"
+msgstr "Pour ajouter un fichier de marqueurs :"
+
+#: osm-options.php:100
+msgid "copy the marker file via FTP to your upload-folder"
+msgstr "copier le fichier de marqueurs par FTP dans votre dossier upload"
+
+#: osm-options.php:101
+msgid "paste the local URL of marker file here: "
+msgstr "copier l'adresse URL locale de votre fichier de marqueurs ici :"
+
+#: osm-options.php:104
+msgid "If you want to add a border around the map choose the colour:"
+msgstr "Pour ajouter une bordure autour de la carte, choisissez la couleur :"
+
+#: osm-options.php:106
+msgid "colour of a thin solid border:"
+msgstr "colour de la bordure (trait plein fin)"
+
+#: osm-options.php:113
+msgid "If you want to add some controls to your map add it here:"
+msgstr "Pour ajouter des boîtes de contrôle à votre carte :"
+
+#: osm-options.php:117
+msgid "scaleline  "
+msgstr "échelle"
+
+#: osm-options.php:118
+msgid "mouse position"
+msgstr "position de la souris"
+
+#: osm-options.php:123
+msgid "Choose the style of the controls: "
+msgstr "Choisissez le style des éléments de contrôle :"
+
+#: osm-options.php:125
+msgid "default theme   "
+msgstr "thème par défaut"
+
+#: osm-options.php:128
+msgid "dark theme   "
+msgstr "thème sombre"
+
+#: osm-options.php:130
+msgid "/uploads/osm/theme/"
+msgstr "/uploads/osm/theme/"
+
+#: osm-options.php:134
+msgid "Misc. settings:"
+msgstr "Paramètres divers :"
+
+#: osm-options.php:136
+msgid "z-index: 0"
+msgstr "z-index: 0"
+
+#: osm-options.php:140
+msgid "Adjust the map and click into the map to get your shortcode below the map"
+msgstr "Sélectionner la zone géographique à afficher sur la carte et cliquer dessus pour générer votre shortcode sous la carte"
+
+#: osm-options.php:141
+msgid "select the area and zoomlevel on the map (get a zoomwindow with shift and mousebutton)"
+msgstr "sélectionner la zone à afficher et le niveau de zoom sur la carte (pour zoomer : MAJ + clic gauche)"
+
+#: osm-options.php:142
+msgid "choose your maptype with this icon "
+msgstr "choisissez le type de carte affichée grâce à cette icône"
+
+#: osm-options.php:142
+msgid "in the map (google maps will have a license pop up in yor post/page)"
+msgstr "sur la carte (les cartes Google afficheront les informations de licence sur votre article/page)"
+
+#: osm-options.php:143
+msgid "your inputs (gpx-file, marker,...) are not displayed in this map but in your post/page "
+msgstr "vos ajouts (fichier gpx, marqueurs...) ne sont pas affichés sur cette carte mais le seront sur votre article/page"
+
+#: osm-options.php:144
+msgid "you can modify your inputs and click again into the map to generate another shortcode "
+msgstr "vous pouvez modifier vos ajouts et cliquer à nouveau sur la carte pour générer le nouveau shortcode"
+
+#: osm-options.php:148
+#: osm.php:192
+msgid "Copy the shortcode and paste it into the content of your post/article: "
+msgstr "Faites un copier/coller du shortcode dans la section contenu de votre article/page :"
+
+#: osm-options.php:149
+#: osm.php:193
+msgid "If you click into the map the shortcode is displayed instead of this text"
+msgstr "Après avoir cliqué sur la carte, le shortcode remplacera ce texte"
+
+#: osm-options.php:150
+msgid "NOTE: For OpenSeaMap just modify the type to type=\"OpenSeaMap\" manually in the generated shortcode!"
+msgstr "Note : pour afficher la carte OpenSeaMap, modifier simplement l'argument type dans le shortcode généré type=\"OpenSeaMap\" !"
+
+#: osm-options.php:151
+msgid "Some usefull sites for this plugin:"
+msgstr "Quelques sites ressources pour ce plugin :"
+
+#: osm-options.php:153
+msgid "for advanced samples visit the "
+msgstr "pour des exemples avancés, voir "
+
+#: osm-options.php:154
+msgid "for detailed information about usage visit the "
+msgstr "pour des informations sur l'utilisation, voir "
+
+#: osm-options.php:155
+msgid "for questions, bugs and other feedback visit the"
+msgstr "pour les questions, bugs et retours, voir "
+
+#: osm-options.php:156
+msgid "find news and articles about the plugin at the "
+msgstr "pour les nouvelles et articles à propos de ce plugin, voir "
+
+#: osm-options.php:157
+msgid "download the last version at WordPress.org "
+msgstr "télécharger la dernière version sur WordPress.org"
+
+#: osm-options.php:159
+msgid "If you want to express thanks for this plugin ..."
+msgstr "Pour exprimer votre gratitude ;o)"
+
+#: osm-options.php:161
+msgid "do not donate money but submit a photo at the "
+msgstr "ne donnez pas d'argent mais envoyez plutôt une photo sur le "
+
+#: osm-options.php:161
+msgid "project."
+msgstr "projet."
+
+#: osm-options.php:162
+msgid "put a link to the osm-plugin page on your site "
+msgstr "mettez un lien vers osm-plugin sur votre site "
+
+#: osm-options.php:163
+msgid "or simply leave a message with a link to your page at "
+msgstr "ou simplement, laissez un message avec un lien vers votre page à "
+
+#: osm-options.php:164
+msgid "post an article about "
+msgstr "écrivez un article sur ce plugin "
+
+#: osm-options.php:164
+msgid " on your blog."
+msgstr " sur votre blog."
+
+#: osm-options.php:165
+msgid "give this plugin a good ranking at "
+msgstr "votez pour ce plugin sur "
+
+#: osm-options.php:168
+msgid "How to geotag your post/page "
+msgstr "Comment geo-tagger vos articles/pages "
+
+#: osm-options.php:170
+msgid "Choose a Custom Field name here."
+msgstr "Choisissez un champs personnalisé ici."
+
+#: osm-options.php:171
+msgid "Add the geoaddress to this Custom Field in your post/page."
+msgstr "Ajoutez les coordonnées géographiques dans ce champs sur vos pages/articles."
+
+#: osm-options.php:174
+msgid "Custom Field Name"
+msgstr "Nom du champs personnalisé"
+
+#: osm-options.php:179
+msgid "Map Zoomlevel for the PHP Link (1-17)"
+msgstr "Niveau de zoom pour le lien en PHP (1-17)"
+
+#: osm-options.php:183
+msgid "Update Options"
+msgstr "Mise à jour des options"
+
+#: osm.php:142
+msgid "OSM plugin added: GPX / KML"
+msgstr "Le plugin OSM a ajouté : GPX / KML"
+
+#: osm.php:212
+msgid "Accepted MIME types: PDF, DOC/DOCX"
+msgstr "Types MIME acceptés : PDF, DOC/DOCX"
+
+#: osm.php:932
+msgid "Route from your location to this place"
+msgstr "Calcul de l'itinéraire de votre emplacement à ce lieu"
+
+#: osm.php:1077
+msgid "OpenStreetMap Manager"
+msgstr "OpenStreetMap Manager"
+
+#: osm.php:1077
+msgid "OSM"
+msgstr "OSM"
+
