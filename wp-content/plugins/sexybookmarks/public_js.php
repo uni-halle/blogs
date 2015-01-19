@@ -24,6 +24,9 @@ class ShareaholicPublicJS {
   public static function get_page_config() {
     $config = array(
       'apps' => array(),
+      'endpoints' => array(
+        'local_recs_url' => admin_url('admin-ajax.php') . '?action=shareaholic_permalink_related'
+      )
     );
     $functions_map = self::get_function_definitions();
     $share_buttons = self::get_share_buttons_config();
