@@ -998,6 +998,112 @@ function wptouch_fdn_ordered_cat_list( $num, $include_count = true, $taxonomy = 
 	echo $closing_tag;
 }
 
+function wptouch_fdn_hierarchical_cat_list( $num, $include_count = true, $taxonomy = 'category', $opening_tag = '<ul>', $closing_tag = '</ul>' ) {
+	$walker = new WPtouchProMainNavMenuWalker;
+	$defaults = array(
+		'number' => $num,
+		'show_option_all' => false,
+		'show_option_none' => false,
+		'orderby' => 'name',
+		'order' => 'ASC',
+		'style' => 'list',
+		'show_count' => $include_count,
+		'hide_empty' => 1,
+		'use_desc_for_title' => 1,
+		'child_of' => 0,
+		'feed' => '',
+		'feed_type' => '',
+		'feed_image' => '',
+		'exclude' => '',
+		'exclude_tree' => '',
+		'current_category' => 0,
+		'hierarchical' => true,
+		'title_li' => false,
+		'echo' => 1,
+		'depth' => 0,
+		'taxonomy' => $taxonomy,
+		'walker' => new WPtouchProCategoryWalker
+	);
+
+	$r = wp_parse_args( $args, $defaults );
+
+	if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] )
+		$r['pad_counts'] = true;
+
+	if ( true == $r['hierarchical'] ) {
+		$r['exclude_tree'] = $r['exclude'];
+		$r['exclude'] = '';
+	}
+
+	if ( ! isset( $r['class'] ) )
+		$r['class'] = ( 'category' == $r['taxonomy'] ) ? 'categories' : $r['taxonomy'];
+
+	if ( ! taxonomy_exists( $r['taxonomy'] ) ) {
+		return false;
+	}
+
+	$show_option_all = $r['show_option_all'];
+	$show_option_none = $r['show_option_none'];
+
+	$categories = get_categories( $r );
+
+	$output = '';
+
+	if ( empty( $categories ) ) {
+		if ( ! empty( $show_option_none ) ) {
+			if ( 'list' == $r['style'] ) {
+				$output .= '<li class="cat-item-none">' . $show_option_none . '</li>';
+			} else {
+				$output .= $show_option_none;
+			}
+		}
+	} else {
+		$output = $opening_tag;
+
+		if ( ! empty( $show_option_all ) ) {
+			$posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
+			$posts_page = esc_url( $posts_page );
+			if ( 'list' == $r['style'] ) {
+				$output .= "<li class='cat-item-all'><a href='$posts_page'>$show_option_all</a></li>";
+			} else {
+				$output .= "<a href='$posts_page'>$show_option_all</a>";
+			}
+		}
+
+		if ( empty( $r['current_category'] ) && ( is_category() || is_tax() || is_tag() ) ) {
+			$current_term_object = get_queried_object();
+			if ( $current_term_object && $r['taxonomy'] === $current_term_object->taxonomy ) {
+				$r['current_category'] = get_queried_object_id();
+			}
+		}
+
+		if ( $r['hierarchical'] ) {
+			$depth = $r['depth'];
+		} else {
+			$depth = -1; // Flat.
+		}
+		$output .= walk_category_tree( $categories, $depth, $r );
+
+		$output .= '</ul>';
+	}
+
+	/**
+	 * Filter the HTML output of a taxonomy list.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $output HTML output.
+	 * @param array  $args   An array of taxonomy-listing arguments.
+	 */
+	$html = apply_filters( 'wp_list_categories', $output, $args );
+
+	if ( $r['echo'] ) {
+		echo $html;
+	} else {
+		return $html;
+	}
+}
+
 function wptouch_fdn_ordered_tag_list( $num ) {
 	global $wpdb;
 

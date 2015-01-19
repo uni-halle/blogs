@@ -878,6 +878,7 @@ class WPtouchProThree {
 						if ( isset( $_FILES[ 'myfile' ] ) ) {
 							$temp_name = $_FILES[ 'myfile' ][ 'tmp_name' ];
 							$real_name = $_FILES[ 'myfile' ][ 'name' ];
+							$real_name = str_replace( ' ', '-', $real_name );
 							$destination_file = WPTOUCH_CUSTOM_UPLOAD_DIRECTORY . '/' . $real_name;
 							if ( file_exists( $destination_file ) ) {
 								unlink( $destination_file );
@@ -904,6 +905,7 @@ class WPtouchProThree {
 						if ( isset( $_FILES[ 'myfile' ] ) ) {
 							$temp_name = $_FILES[ 'myfile' ][ 'tmp_name' ];
 							$real_name = $_FILES[ 'myfile' ][ 'name' ];
+							$real_name = str_replace( ' ', '-', $real_name );
 							$destination_file = WPTOUCH_CUSTOM_ICON_DIRECTORY . '/' . $real_name;
 							if ( file_exists( $destination_file ) ) {
 								unlink( $destination_file );

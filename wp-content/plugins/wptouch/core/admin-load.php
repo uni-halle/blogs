@@ -37,7 +37,7 @@ function wptouch_admin_build_menu( $network_only = false ) {
 		'manage_options',
 		wptouch_admin_get_root_slug(),
 		'',
-		WPTOUCH_ADMIN_URL . '/images/wptouch-admin-icon-xmas.png'
+		WPTOUCH_ADMIN_URL . '/images/wptouch-admin-icon.png'
 	);
 
 	// Iterate through available menus

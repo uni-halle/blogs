@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.6
-Stable tag: 3.6.3
+Stable tag: 3.6.5
 Tested up to: 4.1
 License: GPLv2
 
@@ -39,6 +39,14 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.6.5 (January 8, 2015) =
+
+* Added: Better support for Nextgen Gallery for sites using the Responsive Images extension. (Pro Only)
+* Changed: Updated localizations – Arabic, Chinese (Simplified & Traditional), Danish, Dutch, French, German, Greek, Hindi, Indonesian, Italian, Japanese, Korean, Russian, Swedish, Thai, Turkish, Vietnamese
+* Changed: Change spaces in uploaded logo & startup image filenames to dashes to prevent display issues
+* Changed: Removed festive icons
+* Fixed: Spelling of devanagari in Advanced Type (Pro Only)
 
 = Version 3.6.3 (December 18, 2014) =
 
