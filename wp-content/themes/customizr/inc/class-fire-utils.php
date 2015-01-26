@@ -66,13 +66,12 @@ if ( ! class_exists( 'TC_utils' ) ) :
         $this -> db_options       = (array) get_option( TC___::$tc_option_group );
 
         //What was the theme version when the user started to use Customizr?
-        //new install = tc_skin option is not set yet
+        //new install = no options yet
         //very high duration transient, this transient could actually be an option but as per the themes guidelines, too much options are not allowed.
-        $_db_options = $this -> db_options;
-        if ( ! isset( $_db_options['tc_skin'] ) || ! esc_attr( get_transient( 'started_using_customizr' ) ) ) {
+        if ( 1 >= count( $this -> db_options ) || ! esc_attr( get_transient( 'started_using_customizr' ) ) ) {
           set_transient(
             'started_using_customizr',
-            sprintf('%s|%s' , ! isset( $_db_options['tc_skin'] ) ? 'with' : 'before', CUSTOMIZR_VER ),
+            sprintf('%s|%s' , 1 >= count( $this -> db_options ) ? 'with' : 'before', CUSTOMIZR_VER ),
             60*60*24*9999
           );
         }
@@ -85,11 +84,26 @@ if ( ! class_exists( 'TC_utils' ) ) :
       * @package Customizr
       * @since Customizr 3.1.23
       */
-      function tc_get_skin_color() {
-          $_skin_map    = TC_init::$instance -> skin_color_map;
-          $_active_skin =  str_replace('.min.', '.', basename( TC_init::$instance -> tc_active_skin() ) );
-          //falls back to blue3 ( default #27CDA5 ) if not defined
-        return ( false != $_active_skin && isset($_skin_map[$_active_skin]) ) ? $_skin_map[$_active_skin] : '#27CDA5';
+      function tc_get_skin_color( $_what = null ) {
+        $_color_map    = TC_init::$instance -> skin_color_map;
+        $_active_skin =  str_replace('.min.', '.', basename( TC_init::$instance -> tc_active_skin() ) );
+        //falls back to blue3 ( default #27CDA5 ) if not defined
+        $_to_return = array( '#27CDA5', '#1b8d71' );
+
+        switch ($_what) {
+          case 'all':
+            $_to_return = ( is_array($_color_map) ) ? $_color_map : array();
+          break;
+
+          case 'pair':
+            $_to_return = ( false != $_active_skin && is_array($_color_map[$_active_skin]) ) ? $_color_map[$_active_skin] : $_to_return;
+          break;
+
+          default:
+            $_to_return = ( false != $_active_skin && isset($_color_map[$_active_skin][0]) ) ? $_color_map[$_active_skin][0] : $_to_return[0];
+          break;
+        }
+        return apply_filters( 'tc_get_skin_color' , $_to_return , $_what );
       }
 
 
@@ -250,18 +264,15 @@ if ( ! class_exists( 'TC_utils' ) ) :
       * @since Customizr 1.0
       */
       function tc_get_the_ID()  {
-          global $wp_version;
-          if ( version_compare( $wp_version, '3.4.1', '<=' ) )
-            {
-              $tc_id            = get_the_ID();
-            }
-            else
-            {
-              $queried_object   = get_queried_object();
-              $tc_id            = ! is_null( get_post() ) ? get_the_ID() : null;
-              $tc_id            = ( isset ($queried_object -> ID) ) ? $queried_object -> ID : $tc_id;
-            }
-          return ( is_404() || is_search() || is_archive() ) ? null : $tc_id;
+        global $wp_version;
+        if ( in_the_loop() || version_compare( $wp_version, '3.4.1', '<=' ) ) {
+          $tc_id            = get_the_ID();
+        } else {
+          $queried_object   = get_queried_object();
+          $tc_id            = ! is_null( get_post() ) ? get_the_ID() : null;
+          $tc_id            = ( isset ($queried_object -> ID) ) ? $queried_object -> ID : $tc_id;
+        }
+        return ( is_404() || is_search() || is_archive() ) ? null : $tc_id;
       }
 
 
@@ -597,6 +608,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
     * @return array Values with extension first and mime type.
     */
     function tc_check_filetype( $filename, $mimes = null ) {
+      $filename = basename( $filename );
       if ( empty($mimes) )
         $mimes = get_allowed_mime_types();
       $type = false;
@@ -692,6 +704,9 @@ if ( ! class_exists( 'TC_utils' ) ) :
     * @since Customizr 3.2.9
     */
     function tc_user_started_before_version( $_version ) {
+      if ( ! get_transient( 'started_using_customizr' ) )
+        return false;
+
       $_start_version_infos = explode('|', esc_attr( get_transient( 'started_using_customizr' ) ) );
       if ( ! is_array( $_start_version_infos ) )
         return false;
