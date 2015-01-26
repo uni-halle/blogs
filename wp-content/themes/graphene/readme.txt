@@ -105,12 +105,3 @@ Our gratitude to these image authors who have allowed us to include their royalt
 == OTHER NOTES ==
 
 To display codes within the <code> element with the preformatted styling, include the class attribute class="block". Example: <code class="block">some code here</code>.
-
-
-== SHORTCODES ==
-
-To make it easy to style your content for visitors, a number of shortcodes have been included in the Graphene theme.
-
-Since these shortcodes and corresponding style declarations as well as the icons used for them are all defined and located in the Graphene theme, switching to another theme will retain the shortcodes inside your content, but they will no longer be applied any styling on the front-end. That is, they will appear in the front-end exactly as they do in the Editor, which is text wrapped inside the opening and closing shortcode tags.
-
-If you would like to retain the formatting on the front end as well after you have switched themes, follow through this guide on the theme's documentation wiki: http://docs.graphene-theme.com/Message_blocks_shortcodes 

@@ -300,7 +300,7 @@ function graphene_sidebar_notice( $sidebar_name = '' ){
 	$html = '<p>';
 	$html .= sprintf( __( 'You haven\'t placed any widget into this widget area. Go to %1$s and place some widgets in the widget area called %2$s.', 'graphene' ), '<em>' . __( 'WP Admin > Appearance > Widgets', 'graphene' ) . '</em>', '<strong>' . $sidebar_name . '</strong>' ) . '</p>';
 	$html .= '<p>' . __( "This notice will not be displayed to your site's visitors.", 'graphene' ) . '</p>';
-	echo warning_block_shortcode_handler( array(), apply_filters( 'graphene_sidebar_notice', $html, $sidebar_name ) );
+	echo '<div class="warning_block message-block alert alert-warning" role="alert">' . apply_filters( 'graphene_sidebar_notice', $html, $sidebar_name ) . '</div>';
 }
 
 

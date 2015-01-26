@@ -4,6 +4,9 @@ http://www.khairul-syahir.com
 
 CHANGELOG
 
+Version 1.9.4.1
+	* Fixed fatal error when using column layout with empty sidebars
+
 Version 1.9.4
 	* Added Estonian (et) translation
 	* Fixed header image not appearing when search returns no result
