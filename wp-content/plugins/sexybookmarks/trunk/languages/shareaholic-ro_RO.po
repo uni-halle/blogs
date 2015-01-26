@@ -4,26 +4,26 @@ msgstr ""
 "v7.5.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-01-07 13:01+0200\n"
-"Last-Translator: Plantekno Tarım Teknolojileri <info@plantekno.com>\n"
+"PO-Revision-Date: 2014-10-11 19:22+0200\n"
+"Last-Translator: admin <jay@shareaholic.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.4\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Textdomain-Support: yes\n"
-"Language: tr_TR\n"
+"Language: ro_RO\n"
 "X-Poedit-SearchPath-0: .\n"
 
 # @ shareaholic
 #: admin.php:196
 msgid "Shareaholic Settings"
-msgstr "Shareaholic Ayarları"
+msgstr "Setari Shareaholic"
 
 # @ shareaholic
 #. translators: plugin header field 'Author'
@@ -34,30 +34,28 @@ msgstr "Shareaholic"
 # @ shareaholic
 #: admin.php:205 admin.php:206 utilities.php:130
 msgid "App Manager"
-msgstr "Uygulama Yöneticisi"
+msgstr "App Manager"
 
 # @ shareaholic
 #: admin.php:213 admin.php:214
 msgid "Advanced Settings"
-msgstr "Gelişmiş Ayarlar"
+msgstr "Setari Avansate"
 
 # @ shareaholic
 #: admin.php:229 admin.php:298
 msgid "Settings successfully saved"
-msgstr "Ayarlar başarıyla kaydedildi"
+msgstr "Setarile au fost salvate cu Succes"
 
 # @ shareaholic
 #: admin.php:292
 msgid "Settings successfully reset. Refresh this page to complete the reset."
-msgstr ""
-"Ayarlar başarıyla sıfırlandı. Sıfırlamayı tamamlamak için bu sayfayı "
-"yenileyiniz."
+msgstr "Setarile au fost Resetate. Referesh pentru a finaliza."
 
 # @ shareaholic
 #. translators: plugin header field 'Name'
 #: shareaholic.php:0
 msgid "Shareaholic | share buttons, analytics, related content"
-msgstr "Shareaholic | paylaşım düğmeleri, analizler, ilgili içerik"
+msgstr "Shareaholic | butoane sociale, analytics, continut similar/recomandat"
 
 # @ shareaholic
 #. translators: plugin header field 'PluginURI'
@@ -74,10 +72,9 @@ msgid ""
 "href=\"admin.php?page=shareaholic-settings\">configuration panel</a> for "
 "more settings."
 msgstr ""
-"Eğer insanların paylaşmalarını, fanlarını arttırmayı, para kazanmayı veya "
-"kimlerin sizin yazılarınızı okuduğunu bilmek istiyorsan, Shareaholic size "
-"yardımcı olacaktır. Daha fazla ayarlamalar yapmak için <a href=\"admin.php?"
-"page=shareaholic-settings\">yapılandırma paneline</a> bir göz atın."
+"Shareaholic Te ajuta sa faci oameni sa Sheruiasca :) Vezi <a href=\"admin."
+"php?page=shareaholic-settings\">configuration panel</a> pentru mai multe "
+"satari."
 
 # @ shareaholic
 #. translators: plugin header field 'AuthorURI'
@@ -94,12 +91,12 @@ msgstr "7.5.1.0"
 # @ shareaholic
 #: templates/advanced_settings.php:3
 msgid "Shareaholic: Advanced Settings"
-msgstr "Shareaholic: Gelişmiş Ayarlar"
+msgstr "Shareaholic: Setari Avansate"
 
 # @ shareaholic
 #: templates/advanced_settings.php:7
 msgid "You rarely should need to edit the settings on this page."
-msgstr "Bu sayfadaki ayarları nadiren düzenlemeye ihtiyaç duymalısınız. "
+msgstr "Rar este nevoie sa modifici setarile de pe aceasta pagina"
 
 # @ shareaholic
 #: templates/advanced_settings.php:7
@@ -108,52 +105,48 @@ msgid ""
 "clear any WordPress caching plugins (if you are using one, like W3 Total "
 "Cache or WP Super Cache)."
 msgstr ""
-"Herhangi bir Shareaholic gelişmiş ayarlarını değiştirdiğinizde, eğer "
-"WordPress önbellekleme programlarından birini (Örneğin; W3 Total Cache veya "
-"WP Super Cache eklentisi gibi) kullanıyorsanız çerezleri silmeniz önerilir."
+"Dupa ce schimbi setarile avansate, ar fi bien sa resetezi cache-ul wordpress "
+"[ asta daca folosesti vre-unu ]"
 
 # @ shareaholic
 #: templates/advanced_settings.php:14
 msgid "Advanced"
-msgstr "Gelişmiş"
+msgstr "Avansat"
 
 # @ shareaholic
 #: templates/advanced_settings.php:19
 msgid "Disable Analytics"
-msgstr "Analizleri Devre Dışı Bırak"
+msgstr "Dezactiveaza Statisticile"
 
 # @ shareaholic
 #: templates/advanced_settings.php:19
 msgid "(it is recommended NOT to disable analytics)"
-msgstr "(Analizleri devre dışı bırakmanız önerilmez)"
+msgstr "[ nu e recomandat sa dezactivezi statisticile ]"
 
 # @ shareaholic
 #: templates/advanced_settings.php:25
 msgid "Disable <code>Open Graph</code> tags"
-msgstr "<code>Open Graph</code> etiketlerini devre dışı bırak."
+msgstr "Dezactiveaza tag-urile <code>Open Graph</code>"
 
 # @ shareaholic
 #: templates/advanced_settings.php:25
 msgid "(it is recommended NOT to disable open graph tags)"
-msgstr "(Open graph etiketlerini devre dışı bırakmanız önerilmez)"
+msgstr "[ nu e recomandat sa dezactivezi open graph ]"
 
 # @ shareaholic
 #: templates/advanced_settings.php:31
 msgid "Disable Admin Bar Menu (requires page refresh)"
-msgstr "Admin Bar Menüsünü Devre Dışı Bırak (sayfayı yenilemelisiniz)"
+msgstr "Dezactiveaza Admin Bar Menu [ va trebui sa refresh ]"
 
 # @ shareaholic
 #: templates/advanced_settings.php:37
 msgid "Disable Debugger (it is recommended NOT to disable the debugger)"
-msgstr ""
-"Hata Ayıklayıcıyı Devre Dışı Bırak (Bu özelliği devre dışı bırakmanız "
-"önerilmez)"
+msgstr "Dezactiveaza Debugger-ul [ nu e recomandat ]"
 
 # @ shareaholic
 #: templates/advanced_settings.php:43
 msgid "Disable server-side Share Counts API"
-msgstr ""
-"Sunucu taraflı Paylaşım Sayıcı API'yi (Share Counts API) devre dışı bırak"
+msgstr "Dezactiveaza API Server Side"
 
 # @ shareaholic
 #: templates/advanced_settings.php:43
@@ -161,53 +154,53 @@ msgid ""
 "(unless there are issues with calling the service, it is recommended NOT to "
 "disable this API)"
 msgstr ""
-"(Arama servisi ile ilgili bir hata olmazsa, bu API'yi devre dışı bırakmanız "
-"önerilmez)"
+"[ nu e recomandat sa dezactivezi API, decat daca sunt probleme la apelarea "
+"WebService ]"
 
 # @ shareaholic
 #: templates/advanced_settings.php:45 templates/settings.php:101
 msgid "Saving Changes..."
-msgstr "Değişiklikler kaydediliyor..."
+msgstr "Se Salveaza Modificarile..."
 
 # @ shareaholic
 #: templates/advanced_settings.php:45 templates/settings.php:101
 msgid "Save Changes"
-msgstr "Değişiklikleri Kaydet"
+msgstr "Salveaza Modificarile"
 
 # @ shareaholic
 #: templates/advanced_settings.php:53
 msgid "Server Connectivity"
-msgstr "Sunucu Bağlanabilirliği"
+msgstr "Conexiune la Server"
 
 # @ shareaholic
 #: templates/advanced_settings.php:55
 msgid "All Shareaholic servers are reachable"
-msgstr "Tüm Shareaholic sunucularına ulaşılabilir"
+msgstr "Toate serverele sunt accesibile"
 
 # @ shareaholic
 #: templates/advanced_settings.php:56
 msgid "Shareaholic should be working correctly."
-msgstr "Shareaholic doğru bir şekilde çalışıyor olmalı."
+msgstr "Shareaholic ar trebui sa functioneze normal"
 
 # @ shareaholic
 #: templates/advanced_settings.php:56
 msgid "All Shareaholic servers are accessible."
-msgstr "Tüm Shareaholic sunucularına erişilebilir."
+msgstr "Toate serverele sunt accesibile"
 
 # @ shareaholic
 #: templates/advanced_settings.php:58
 msgid "Unable to reach any Shareaholic server"
-msgstr "Herhangi bir Shareaholic sunucusuna ulaşılamıyor"
+msgstr "Nu se face conexiunea la serverele Shareaholic"
 
 # @ shareaholic
 #: templates/advanced_settings.php:58 templates/advanced_settings.php:65
 msgid "Checking..."
-msgstr "Kontrol ediliyor..."
+msgstr "Verific..."
 
 # @ shareaholic
 #: templates/advanced_settings.php:58 templates/advanced_settings.php:65
 msgid "Re-check"
-msgstr "Tekrar Kontrol Et"
+msgstr "Reverificare"
 
 # @ default
 #: templates/advanced_settings.php:59
@@ -220,35 +213,31 @@ msgid ""
 "information about Shareaholic and firewalls</a>. Let us <a href=\"#\" "
 "onclick=\"%s\">know</a> too, so we can follow up!"
 msgstr ""
-"Bir network problemi veya güvenlik duvarı sebepli olarak sizin web "
-"sunucunuzdan Shareaholic.com'a olan tüm bağlantılar engellenmektedir. "
-"<strong>Bu problem çözülünceye kadar Shareaholic stabil olarak "
-"çalışmayacaktır.</strong> Lütfen web sunucu firması ile veya güvenlik duvarı "
-"yöneticisi ile iletişime geçiniz. Aynı zamanda onlara(sunucu firmasına) "
-"güvenlik duvarı ve Shareaholic hakkında <a href=\"%s\" target=\"_blank\"> "
-"bilgisini ulaştırınız. Bizi de <a href=\"#\" onclick=\"%s\">bilgilendiriniz</"
-"a>, böylelikle biz de takipte olabiliriz."
+"Conexiunile inre Serverul tau Web si Serverele Shareaholic sunt intrerupte. "
+"<strong>Shareaholic nu va functiona corect pana ce aceste probleme nu vor fi "
+"remediate.</strong> Contactati administratorul serverului si oferitile "
+"aceasta informatie despre Sharahilic, si firewall-uri <a href=\"%s\" target="
+"\"_blank\">. Ca sa ne tineti la curent <a href=\"#\" onclick=\"%s\">know</a>"
 
 # @ shareaholic
 #: templates/advanced_settings.php:62
 msgid "Server-side Share Counts API is reachable"
-msgstr "Sunucu taraflı Paylaşım Sayıcı API (Share Counts API) ulaşılabilir"
+msgstr "Api Server Side sunt Accesibile"
 
 # @ shareaholic
 #: templates/advanced_settings.php:63
 msgid "The server-side Share Counts API should be working correctly."
-msgstr ""
-"Sunucu tarafı Paylaşım Sayıcı API (Share Counts API) doğru çalışıyor olmalı."
+msgstr "Server Side API ar trebui sa functineze normal"
 
 # @ shareaholic
 #: templates/advanced_settings.php:63
 msgid "All servers and services needed by the API are accessible."
-msgstr "Tüm sunucular ve servisler API tarafından ulaşılabilir olmalı."
+msgstr "Toate serverele si servicile de care este nevoie sunt accesibile"
 
 # @ shareaholic
 #: templates/advanced_settings.php:65
 msgid "Unable to reach the server-side Share Count API"
-msgstr "Sunucu taraflı Paylaşım Sayıcı API'ye (Share Counts API) ulaşılamıyor"
+msgstr "Nu se paote face conexiunea la API"
 
 # @ default
 #: templates/advanced_settings.php:66
@@ -262,58 +251,51 @@ msgid ""
 "above, Shareaholic will default to using client-side APIs for share counts "
 "successfully -- so nothing to worry about!"
 msgstr ""
-"Bağlantı veya güvenlik duvarı hatası sebebi ile sunucunuz ile Paylaşım "
-"Sayıcı API (Share Count APIs) arasında bağlantı kurulamıyor. <strong>Bu "
-"problem çözülene kadar API doğru şekilde çalışmayacaktır.</strong> Eğer bu "
-"problem hala devam ederse, lütfen bizimle iletişime <a href=\"#\" onclick="
-"\"%s\"> geçiniz. Bu arada, eğer sunucu taraflı Paylaşım Sayıcı API (Share "
-"Counts API) ayarlarını yukarıdaki gelişmiş ayarlardan kapatırsanız, "
-"Shareaholic paylaşım sayıcılarının doğru çalışması için müşteri taraflı API "
-"kullanımı için mevcut sistemi kullanacaktır. -- yani korkulacak bir durum "
-"yok!"
+"Conexiunile inre Serverul tau Web si API Shareaholic sunt intrerupte. "
+"<strong>Shareaholic nu va functiona corect pana ce aceste probleme nu vor fi "
+"remediate.</strong> Daca mai inampinati aceasta problema <a href=\"#\" "
+"onclick=\"%s\">us</a>  si tinem legatura ! Intre timp daca dezactivati API "
+"din Setarile Avansate Shareaholic va continua ca foloseasca API-urile Client "
+"Side. Deci nue  nici o problema!"
 
 # @ shareaholic
 #: templates/advanced_settings.php:73
 msgid "Your Shareaholic Site ID"
-msgstr "Shareaholic ID Numaranız"
+msgstr "ID-ul pagini voastre"
 
 # @ shareaholic
 #: templates/advanced_settings.php:77
 msgid "Not set."
-msgstr "Ayarlı değil."
+msgstr "Ne este setat."
 
 # @ shareaholic
 #: templates/advanced_settings.php:87
 msgid "Reset"
-msgstr "Sıfırla"
+msgstr "Reset"
 
 # @ shareaholic
 #: templates/advanced_settings.php:88
 msgid ""
 "This will reset all of your settings and start you from scratch. This can "
 "not be undone."
-msgstr ""
-"Bu işlem sizin tüm ayarlarınızı sıfırlayacak ve herşeye baştan başlamanıza "
-"sebep olacaktır. Bu işlem geri alınamaz!"
+msgstr "Se vor reseta satarile si va trebui reluat totul de la inceput."
 
 # @ shareaholic
 #: templates/advanced_settings.php:90
 msgid "Resetting Plugin..."
-msgstr "Eklenti Sıfırlanıyor..."
+msgstr "Se reseteaza Plugin-ul"
 
 # @ shareaholic
 #: templates/advanced_settings.php:90
 msgid "Reset Plugin"
-msgstr "Eklentiyi Sıfırla"
+msgstr "Plugin Resetat"
 
 # @ shareaholic
 #: templates/deprecation_warnings.php:6
 msgid ""
 "will be deprecated SOON. Please update the code found in the following files "
 "at your convenience:"
-msgstr ""
-"yakın zamanda reddedilecektir. Lütfen sıradaki dosya içerisindeki kodları "
-"uygun bir zamanda güncelleyiniz: "
+msgstr "Faceti update la codul gasit."
 
 # @ shareaholic
 #: templates/failed_to_create_api_key.php:6
@@ -323,13 +305,13 @@ msgid ""
 "Action required: You've installed Shareaholic for WordPress.  We're ready "
 "when you are. %sGet started now &raquo;%s"
 msgstr ""
-"Eylem Gerekli: Wordpress'iniz için Shareaholic eklentisini kurdunuz. Siz "
-"hazırsanız, biz de hazırız. %sŞimdi başlayın &raquo;%s"
+"Ai instalat Shareaholic pentru WordPress. Suntem gata de pornire %sAcum "
+"&raquo;%s"
 
 # @ shareaholic
 #: templates/failed_to_create_api_key_modal.php:2
 msgid "Setup Shareaholic"
-msgstr "Shareaholic'i Kurun"
+msgstr "Instaleaza Shareaholic"
 
 # @ shareaholic
 #: templates/failed_to_create_api_key_modal.php:7
@@ -338,20 +320,18 @@ msgid ""
 "WordPress right now. This is usually temporary. Please revisit this section "
 "after a few minutes or click \"retry\" now."
 msgstr ""
-"Görüldüğü üzere şu an Wordpress Shareaholic ayarlamalarında bazı problemler "
-"yaşıyoruz. Bu genellikle geçici bir sorundur. Lütfen bir kaç dakika "
-"içerisinde bu bölümü tekrar ziyaret ediniz veya hemen şimdi \"tekrar deneyin"
-"\"."
+"Sunt probleme la instalarea Shareaholic momentan. Acest lucru este de obicei "
+"temporar. Reveniti inc ateva minute sau  click \"reincearca\" acum."
 
 # @ shareaholic
 #: templates/failed_to_create_api_key_modal.php:12
 msgid "Retry"
-msgstr "Tekrar dene"
+msgstr "Reincearca"
 
 # @ shareaholic
 #: templates/failed_to_create_api_key_modal.php:15
 msgid "or, try again later."
-msgstr "ya da, daha sonra tekrar deneyin."
+msgstr "sau incearca mai tarziu."
 
 # @ shareaholic
 #: templates/failed_to_create_api_key_modal.php:19
@@ -360,17 +340,16 @@ msgid ""
 "If you continue to get this prompt for more than a few hours, try to check "
 "server connectivity or reset the plugin in %sadvanced settings%s."
 msgstr ""
-"Eğer bu iletiyi birkaç saattir hala almaya devam ediyorsanız, %sGelişmiş "
-"ayarlardan%s sunucuyu test etmeye veya eklentiyi sıfırlamayı deneyin."
+"Daca intampini aceasta problema de mai mutl de cateva ore, incearca sa "
+"Resetezi Conexiunile cu Serverele, sau reseteaza setarie Plugin-ului din "
+"%ssetariel avansate%s."
 
 # @ shareaholic
 #: templates/failed_to_create_api_key_modal.php:19
 #, php-format
 msgid ""
 "Also, if you have a question or have a bug to report, please %slet us know%s."
-msgstr ""
-"Eğer bir sorunuz veya hata bildirime ihtiyacınız varsa, lütfen %sbize "
-"iletiniz%s."
+msgstr "Iar daca ai o intrebare sau ai gasit un Bug te rog sa %sne spui%s."
 
 # @ shareaholic
 #: templates/footer.php:8
@@ -379,33 +358,33 @@ msgid ""
 "If you like our work, show some love and %sgive us a good rating%s. Made "
 "with much love in Boston, Massachusetts."
 msgstr ""
-"Çalışmamızı beğendi iseniz, lütfen biraz sevginizi göstererek bize %siyi bir "
-"puan verin%s. Boston, Massachusetts'dan daha fazla sevgiler."
+"Dca Apreciezi munca noastra, te rugam sa %sne dai o nota buna%s. Acest "
+"plugin a fost facut cu mult drag in Boston, Massachusetts."
 
 # @ shareaholic
 #: templates/meta_boxes.php:6
 msgid "Hide Share Buttons"
-msgstr "Paylaşım Butonlarını Gizle"
+msgstr "Ascunde butoanele de Share"
 
 # @ shareaholic
 #: templates/meta_boxes.php:16
 msgid "Hide Related Content"
-msgstr "İlgili İçeriği Gizle"
+msgstr "Ascune Continutul Recomandat"
 
 # @ shareaholic
 #: templates/meta_boxes.php:26
 msgid "Exclude from Related Content"
-msgstr "İlgili İçerikten Hariç Tut"
+msgstr "Exclude din Continut Recomandat"
 
 # @ shareaholic
 #: templates/meta_boxes.php:36
 msgid "Do not include Open Graph tags"
-msgstr "Open Graph etiketlerini dahil etme"
+msgstr "Nu include tag-uri Open Graph"
 
 # @ shareaholic
 #: templates/settings.php:3
 msgid "Shareaholic: App Manager"
-msgstr "Shareaholic: Uygulama Yöneticisi"
+msgstr "Shareaholic: App Manager"
 
 # @ shareaholic
 #: templates/settings.php:22
@@ -414,8 +393,8 @@ msgid ""
 "First time here? Read %sUnderstanding the new Shareaholic for WordPress "
 "interface and configuration settings.%s"
 msgstr ""
-"İlk kez mi buradasın? Lütfen inceleyin: %sWordpress için Shareaholic "
-"arayüzünü ve özelleştirme ayarlarını anlamak.%s"
+"Folosesti pentru prima data acest Plugin? Citeste %sUnderstanding the new "
+"Shareaholic for WordPress interface and configuration settings.%s"
 
 # @ shareaholic
 #: templates/settings.php:22
@@ -425,14 +404,13 @@ msgid ""
 "and need help, have a question or have a bug to report, please %slet us know"
 "%s."
 msgstr ""
-"Eğer Shareaholic eklentisini WordPress için eski sürümden yenisine "
-"güncelliyorsanız ve bu konuda yardıma veya hata bildirimine ihtiyacınız "
-"varsa lütfen %sbize bildiriniz%s."
+"Daca faci update de la o versiuen anterioara si ai nevoie de ajutor, sau ai "
+"o problema ori ai gasit un bug, te rugam  %sspune%s."
 
 # @ shareaholic
 #: templates/settings.php:25
 msgid "Related Content"
-msgstr "İlgili İçerik"
+msgstr "Continut Recomandat"
 
 # @ shareaholic
 #: templates/settings.php:26
@@ -440,39 +418,38 @@ msgid ""
 "Pick where you want Related Content to be displayed. Click \"Customize\" to "
 "customize look & feel, themes, block lists, etc."
 msgstr ""
-"İlgili içeriğin nerede görüleceğini belirleyiniz. \"Özelleştirmeye\" "
-"tıklayarak temanızın, blok listenizin v.b. şeyleri inceleyerek "
-"özelleştirebilirsiniz."
+"Alege unde vrei sa fie afisat Continutul Recomandat. Click \"Personalizeaza"
+"\"pentru a personaliza felul inc are arata, temele, etc"
 
 # @ shareaholic
 #: templates/settings.php:44 templates/settings.php:87
 msgid "Customize"
-msgstr "Özelleştirin"
+msgstr "Personalizeaza"
 
 # @ shareaholic
 #: templates/settings.php:52
 msgid "Edit Related Content Settings"
-msgstr "İlgili İçerik Ayarlarını Düzenleyiniz"
+msgstr "Editeaza Continutul Recomandat"
 
 # @ shareaholic
 #: templates/settings.php:54
 msgid "Status:"
-msgstr "Durum:"
+msgstr "Status:"
 
 # @ shareaholic
 #: templates/settings.php:58
 msgid "Processing"
-msgstr "İşleniyor..."
+msgstr "Se proceseaza"
 
 # @ shareaholic
 #: templates/settings.php:60
 msgid "Ready"
-msgstr "Hazır"
+msgstr "Gata"
 
 # @ shareaholic
 #: templates/settings.php:67
 msgid "Share Buttons"
-msgstr "Paylaşım Butonları"
+msgstr "Butoane de Share"
 
 # @ shareaholic
 #: templates/settings.php:68
@@ -480,19 +457,18 @@ msgid ""
 "Pick where you want your buttons to be displayed. Click \"Customize\" to "
 "customize look & feel, themes, share counters, alignment, etc."
 msgstr ""
-"Butonların nerede görüleceğini belirleyiniz. \"Özelleştirmeye\" tıklayarak "
-"temanızın, paylaşım sayılarınızın, hizalamalarınızın v.b. şeyleri "
-"inceleyerek özelleştirebilirsiniz."
+"Alege unde vrei sa fie afisat butoanele. Click \"Personalizeaza\"pentru a "
+"personaliza."
 
 # @ shareaholic
 #: templates/settings.php:95
 msgid "Edit Share Button Settings"
-msgstr "Paylaşım Butonları Ayarlarını Düzenleyin"
+msgstr "Editeaza Setarile Butoanelor"
 
 # @ shareaholic
 #: templates/terms_of_service_modal.php:2
 msgid "Thanks for Installing!"
-msgstr "Yükleme için Teşekkürler!"
+msgstr "Multumim"
 
 # @ shareaholic
 #: templates/terms_of_service_modal.php:4
@@ -500,16 +476,15 @@ msgstr "Yükleme için Teşekkürler!"
 msgid ""
 "%sShareaholic%s gives you the essential tools you need to become a "
 "successful publisher."
-msgstr ""
-"%sShareaholic%s başarılı bir yayıncı olmanız için size gerekli olan araçları "
-"vermektedir."
+msgstr "%sShareaholic%s i-ti ofera uneltele necesare pentru a publica"
 
 # @ shareaholic
 #: templates/terms_of_service_modal.php:8
 #, php-format
 msgid "%sShare buttons%s enables your readers to spread your content."
 msgstr ""
-"%sPaylaşım butonları%s okuyucularınızın içeriğinizi yaymasını sağlayacaktır."
+"%sbutoanele de Share%s permite utilizatorilor sa share-uiasca continutul de "
+"pe pagina ta."
 
 # @ shareaholic
 #: templates/terms_of_service_modal.php:12
@@ -518,21 +493,20 @@ msgid ""
 "%sRelated content%s keeps people on your site and turns visitors into "
 "readers."
 msgstr ""
-"%sİlgili içerik%s geri dönen ziyaretçilerinizi ve insanların sitenizde "
-"kalmasını sağlayacaktır."
+"%sContinutuyl Recomandat%s ajuta la conversia vizitatorilor in cititior."
 
 # @ shareaholic
 #: templates/terms_of_service_modal.php:16
 #, php-format
 msgid "%sAnalytics%s gives you all the insights you need to grow your site."
 msgstr ""
-"%sAnalizler%s size büyütmeniz için ihtiyacınız olan tüm ipuçlarını "
-"verecektir."
+"%sStatisticile%s ofera o privire de ansamblu asupra evolutiei paginii sau "
+"site-ului tau"
 
 # @ shareaholic
 #: templates/terms_of_service_modal.php:20
 msgid "Get Started »"
-msgstr "Başlayın »"
+msgstr "Incepe Acum »"
 
 # @ shareaholic
 #: templates/terms_of_service_modal.php:21
@@ -541,28 +515,31 @@ msgid ""
 "By clicking \"Get Started\" you agree to Shareholic's %sTerms of Service%s "
 "and %sPrivacy Policy%s."
 msgstr ""
-"\"Başla\"ya tıkladığınızda Shareaholic %sHizmet Şartlarını%s ve %sGizlilik "
-"Politikalarını%s kabul etmiş sayılırsınız."
+"By clicking \"Get Started\" you agree to Shareholic's %sTerms of Service%s "
+"and %sPrivacy Policy%s."
 
 # @ shareaholic
 #: templates/why_to_sign_up.php:2
 msgid "Sign up for a FREE Shareaholic account to unlock more features."
-msgstr "Daha fazla özellik açmak için ücretsiz Shareaholic hesabı edinin."
+msgstr ""
+"Inregistreaza=te la Shareaholic gratuit si ai acces la mai multe "
+"functionalitati"
 
 # @ shareaholic
 #: templates/why_to_sign_up.php:4
+#, fuzzy
 msgid "Get the Floated Share Buttons app"
-msgstr "Yüzen Paylaşım Butonları uygulamasını edinin"
+msgstr "Get the Floated Share Buttons app"
 
 # @ shareaholic
 #: templates/why_to_sign_up.php:5
 msgid "Monetize your site, plus lots more!"
-msgstr "Sitenizi paraya çevirin, daha çok kazanın!"
+msgstr "Monetizeaza site-ul tau, plus alte avantaje!"
 
 # @ shareaholic
 #: templates/why_to_sign_up.php:7
 msgid "Unlock more features, for free"
-msgstr "Ücretsiz olarak daha fazla özelliği kullanılabilir hale getirin"
+msgstr "Acceseaza mai multe Functionalitati"
 
 # @ shareaholic
 #: templates/why_to_sign_up.php:9
@@ -570,36 +547,35 @@ msgid ""
 "Click the button above to sign up or log in to your free Shareaholic "
 "account. It takes just seconds to sign up and it's free!"
 msgstr ""
-"Ücretsiz Shareaholic hesabınıza giriş yapmak veya yeni bir hesap oluşturmak "
-"için yukarıdaki butona tıklayınız. Üye olmak sadece bir kaç saniyenizi "
-"alacaktır, ayrıca ücretsiz!"
+"click pe butonul de mai sus ca sa intri in contul tau Sharreaholic. Dureaza "
+"cateva secunde si e gratuit."
 
 # @ shareaholic
 #: templates/why_to_sign_up.php:14
 msgid "Shareaholic Helpdesk"
-msgstr "Shareaholic Yardım Masası"
+msgstr "Asistenta Shareaholic"
 
 # @ shareaholic
 #: templates/why_to_sign_up.php:15
 msgid "Submit a Language Translation"
-msgstr "Bir Dil Çevirisi Gönderiniz"
+msgstr "Trimite o traducere"
 
 # @ shareaholic
 #: templates/why_to_sign_up.php:16
 msgid "Get the Shareaholic Browser Add-on"
-msgstr "Shareaholic Add-on Uygulamasını Edinin"
+msgstr "Shareaholic Browser Add-on"
 
 # @ shareaholic
 #: utilities.php:96
 msgid "Settings"
-msgstr "Ayarlar"
+msgstr "Setari"
 
 # @ shareaholic
 #: utilities.php:137
 msgid "General Settings"
-msgstr "Genel Ayarlar"
+msgstr "Setari Generale"
 
 # @ shareaholic
 #: utilities.php:144
 msgid "FAQ & Support"
-msgstr "S.S.S & Destek"
+msgstr "Intyrebari si Asistenta"
