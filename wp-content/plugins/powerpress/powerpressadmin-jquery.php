@@ -13,7 +13,7 @@ function powerpress_add_blubrry_redirect($program_keyword)
 	for( $x = 1; $x <= 3; $x++ )
 	{
 		$field = sprintf('redirect%d', $x);
-		if( !empty($Settings[$field]) && !stristr($Settings[$field], 'podtrac.com') )
+		if( !empty($Settings[$field]) && stripos($Settings[$field], 'podtrac.com') === false )
 			$NewSettings[$field] = '';
 	}
 	$NewSettings['redirect1'] = $RedirectURL.'/';
@@ -209,7 +209,7 @@ function powerpress_admin_jquery_init()
 			
 			$results =  powerpress_json_decode($json_data);
 				
-			$FeedSlug = $_GET['podcast-feed'];
+			$FeedSlug = sanitize_title($_GET['podcast-feed']);
 			powerpress_admin_jquery_header( __('Select Media', 'powerpress'), true );
 ?>
 <script language="JavaScript" type="text/javascript"><!--
@@ -249,11 +249,11 @@ function DeleteMedia(File)
 					$message = '';
 					if( !empty($results['quota']['expires']['expired']) )
 					{
-						$message = '<p>'. sprintf( __('Media hosting service expired on %s.', 'powerpress'), $results['quota']['expires']['readable_date']) . '</p>';
+						$message = '<p>'. sprintf( __('Media hosting service expired on %s.', 'powerpress'), esc_attr($results['quota']['expires']['readable_date'])) . '</p>';
 					}
 					else
 					{
-						$message = '<p>'. sprintf( __('Media hosting service will expire on %s.', 'powerpress'), $results['quota']['expires']['readable_date']) . '</p>';
+						$message = '<p>'. sprintf( __('Media hosting service will expire on %s.', 'powerpress'), esc_attr($results['quota']['expires']['readable_date'])) . '</p>';
 					}
 					
 					$message .= '<p style="text-align: center;"><strong><a href="'. $results['quota']['expires']['renew_link'] .'" target="_blank" style="text-decoration: underline;">'. __('Renew Media Hosting Service', 'powerpress') . '</a></strong></p>';
@@ -796,9 +796,9 @@ while( list($value,$desc) = each($Programs) )
 				powerpress_admin_jquery_footer();
 				exit;
 			}
-			
-			$File = (isset($_GET['File'])?$_GET['File']:false);
-			$Message = (isset($_GET['Message'])?$_GET['Message']:false);
+			// sanitize_title esc_attr esc_html powerpress_esc_html
+			$File = (isset($_GET['File'])? htmlspecialchars($_GET['File']):false);
+			$Message = (isset($_GET['Message'])? htmlspecialchars($_GET['Message']):'');
 			
 			powerpress_admin_jquery_header( __('Upload Complete', 'powerpress') );
 			echo '<h2>'. __('Uploader', 'powerpress') .'</h2>';
@@ -815,7 +815,7 @@ while( list($value,$desc) = each($Programs) )
 			<p style="text-align: center;"><a href="#" onclick="self.parent.tb_remove();"><?php echo __('Close', 'powerpress'); ?></a></p>
 			<?php
 			
-			if( $Message == '' )
+			if( empty($Message) )
 			{
 ?>
 <script language="JavaScript" type="text/javascript"><!--

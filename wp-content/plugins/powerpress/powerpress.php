@@ -3,7 +3,7 @@
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
 Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> adds podcasting support to your blog. Features include: media player, 3rd party statistics, iTunes integration, Blubrry Services (Media Statistics and Hosting) integration and a lot more.
-Version: 6.0
+Version: 6.0.1
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Change Log:
@@ -32,7 +32,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '6.0' );
+define('POWERPRESS_VERSION', '6.0.1' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -99,9 +99,6 @@ $powerpress_feed = NULL; // DO NOT CHANGE
 
 function powerpress_content($content)
 {
-	if( empty($GLOBALS['powerpress_wp_head_completed']) )
-		return $content;
-	
 	global $post, $g_powerpress_excerpt_post_id;
 	
 	if( defined('PODPRESS_VERSION') || isset($GLOBALS['podcasting_player_id']) || isset($GLOBALS['podcast_channel_active']) || defined('PODCASTING_VERSION') )
@@ -129,13 +126,29 @@ function powerpress_content($content)
 	if( !empty($GeneralSettings['disable_appearance']) )
 		return $content;
 		
+	// check for themes/plugins where we know we need to do this...
+	if( !empty($GLOBALS['fb_ver']) && version_compare($GLOBALS['fb_ver'], '1.0',  '<=')	) {
+		$GeneralSettings['player_aggressive'] = 1;
+	}
+	if( defined('JETPACK__VERSION') && version_compare(JETPACK__VERSION, '2.0',  '>=')	) {
+		$GeneralSettings['player_aggressive'] = 1;
+	}
+	
 	if( !empty($GeneralSettings['player_aggressive']) )
 	{
-		if( strstr($content, '<!--powerpress_player-->') !== false )
-			return $content; // The players were already added to the content
-		
-		if( $g_powerpress_excerpt_post_id > 0 )
-			$g_powerpress_excerpt_post_id = 0; // Hack, set this to zero so it always goes past...
+		if( $GeneralSettings['player_aggressive'] == 2 ) // If we do not have theme issues then lets keep this logic clean. and only display playes after the wp_head only
+		{
+			if( empty($GLOBALS['powerpress_wp_head_completed']) )
+				return $content;
+		}
+		else
+		{
+			if( strstr($content, '<!--powerpress_player-->') !== false )
+				return $content; // The players were already added to the content
+			
+			if( $g_powerpress_excerpt_post_id > 0 )
+				$g_powerpress_excerpt_post_id = 0; // Hack, set this to zero so it always goes past...
+		}
 	}
 	
 	// Problem: If the_excerpt is used instead of the_content, both the_exerpt and the_content will be called here.
@@ -309,10 +322,10 @@ function powerpress_content($content)
 	switch( $GeneralSettings['display_player'] )
 	{
 		case 1: { // Below posts
-			return $content.$new_content.( !empty($GeneralSettings['player_aggressive']) ?'<!--powerpress_player-->':'');
+			return $content.$new_content.( !empty($GeneralSettings['player_aggressive']) && $GeneralSettings['player_aggressive'] == 1 ?'<!--powerpress_player-->':'');
 		}; break;
 		case 2: { // Above posts
-			return ( !empty($GeneralSettings['player_aggressive']) ?'<!--powerpress_player-->':'').$new_content.$content;
+			return ( !empty($GeneralSettings['player_aggressive']) && $GeneralSettings['player_aggressive'] == 1 ?'<!--powerpress_player-->':'').$new_content.$content;
 		}; break;
 	}
 	return $content;

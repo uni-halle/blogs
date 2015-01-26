@@ -3,17 +3,27 @@
 if( !function_exists('add_action') )
 	die("access denied.");
 	
+function powerpress_esc_html($escape)
+{
+	if( is_array($escape) )
+	{
+		while( list($index,$value)  = each($escape) )
+			$escape[ $index ] = powerpress_esc_html($value);
+	}
+	return esc_html($escape);
+}
+	
 function powerpress_page_message_add_error($msg, $classes='inline')
 {
 	global $g_powerpress_page_message;
-	$g_powerpress_page_message .= '<div class="error powerpress-error '.$classes.'">'. $msg . '</div>';
+	$g_powerpress_page_message .= '<div class="error powerpress-error '.$classes.'">'. esc_html($msg) . '</div>';
 }
 
 function powerpress_page_message_add_notice($msg, $classes='inline')
 {
 	global $g_powerpress_page_message;
 	// Always pre-pend, since jQuery will re-order with first as last.
-	$g_powerpress_page_message = '<div class="updated fade powerpress-notice '.$classes.'">'. $msg . '</div>' . $g_powerpress_page_message;
+	$g_powerpress_page_message = '<div class="updated fade powerpress-notice '.$classes.'">'. esc_html($msg) . '</div>' . $g_powerpress_page_message;
 }
 
 
@@ -88,9 +98,9 @@ function powerpress_admin_init()
 		powerpress_page_message_add_error( __('Another podcasting plugin has been detected, PowerPress is currently disabled.', 'powerpress') );
 	
 	global $wp_version;
-	$VersionDiff = version_compare($wp_version, 3.0);
+	$VersionDiff = version_compare($wp_version, 3.6);
 	if( $VersionDiff < 0 )
-		powerpress_page_message_add_error( __('Blubrry PowerPress requires Wordpress version 3.0 or greater.', 'powerpress') );
+		powerpress_page_message_add_error( __('Blubrry PowerPress requires Wordpress version 3.6 or greater.', 'powerpress') );
 	
 	// Check for incompatible plugins:
 	if( isset($GLOBALS['objWPOSFLV']) && is_object($GLOBALS['objWPOSFLV']) )
@@ -113,10 +123,10 @@ function powerpress_admin_init()
 		// Save the posted value in the database
 		$Feed = (isset($_POST['Feed'])?$_POST['Feed']:false);
 		$General = (isset($_POST['General'])?$_POST['General']:false);
-		$FeedSlug = (isset($_POST['feed_slug'])?$_POST['feed_slug']:false);
-		$Category = (isset($_POST['cat'])?$_POST['cat']:false);
-		$term_taxonomy_id = (isset($_POST['ttid'])?$_POST['ttid']:false);
-		$podcast_post_type = (isset($_POST['podcast_post_type'])?$_POST['podcast_post_type']:false);
+		$FeedSlug = (isset($_POST['feed_slug'])?esc_attr($_POST['feed_slug']):false);
+		$Category = (isset($_POST['cat'])?intval($_POST['cat']):false);
+		$term_taxonomy_id = (isset($_POST['ttid'])?intval($_POST['ttid']):false);
+		$podcast_post_type = (isset($_POST['podcast_post_type'])?esc_attr($_POST['podcast_post_type']):false);
 		
 		// New iTunes image
 		if( !empty($_POST['itunes_image_checkbox']) )
@@ -546,9 +556,6 @@ function powerpress_admin_init()
 				$PowerPressSearchToggle = $_POST['PowerPressSearchToggle'];
 				if( empty($PowerPressSearchToggle['seo_feed_title']) )
 					$General['seo_feed_title'] = 0;
-				
-				
-				// ADDITIONAL GENERAL SETTINGS SET HERE
 			}
 			
 			if( !empty($_POST['action']) && $_POST['action'] == 'powerpress-save-tags' )
@@ -750,11 +757,11 @@ function powerpress_admin_init()
 				} else */
 				if( $key == '' )
 				{
-					powerpress_page_message_add_error( sprintf(__('Feed slug "%s" is not valid.', 'powerpress'), $_POST['feed_slug']) );
+					powerpress_page_message_add_error( sprintf(__('Feed slug "%s" is not valid.', 'powerpress'), esc_html($_POST['feed_slug']) ) );
 				}
 				else if( in_array($key, $wp_rewrite->feeds)  && !isset($Settings['custom_feeds'][ $key ]) ) // If it is a system feed or feed created by something else
 				{
-					powerpress_page_message_add_error( sprintf(__('Feed slug "%s" is not available.', 'powerpress'), $key) );
+					powerpress_page_message_add_error( sprintf(__('Feed slug "%s" is not available.', 'powerpress'), esc_html($key) ) );
 				}
 				else
 				{
@@ -764,7 +771,7 @@ function powerpress_admin_init()
 					add_feed($key, 'powerpress_do_podcast_feed'); // Before we flush the rewrite rules we need to add the new custom feed...
 					$wp_rewrite->flush_rules();
 					
-					powerpress_page_message_add_notice( sprintf(__('Podcast Feed "%s" added, please configure your new feed now.', 'powerpress'), $value) );
+					powerpress_page_message_add_notice( sprintf(__('Podcast Feed "%s" added, please configure your new feed now.', 'powerpress'), esc_html($value) ) );
 					$_GET['action'] = 'powerpress-editfeed';
 					$_GET['feed_slug'] = $key;
 				}
@@ -784,7 +791,7 @@ function powerpress_admin_init()
 				
 			
 				$taxonomy_type = ( isset($_POST['taxonomy'])? $_POST['taxonomy'] : $_GET['taxonomy'] );
-				$term_ID = ( isset($_POST['term'])? $_POST['term'] : $_GET['term'] );
+				$term_ID = intval( isset($_POST['term'])? $_POST['term'] : $_GET['term'] );
 				
 				
 				$term_object = get_term( $term_ID, $taxonomy_type, OBJECT, 'edit');
@@ -868,11 +875,11 @@ function powerpress_admin_init()
 				} else */
 				if( empty($feed_slug) )
 				{
-					powerpress_page_message_add_error( sprintf(__('Feed slug "%s" is not valid.', 'powerpress'), $_POST['feed_slug']) );
+					powerpress_page_message_add_error( sprintf(__('Feed slug "%s" is not valid.', 'powerpress'), esc_html($_POST['feed_slug']) ) );
 				}
 				else if( empty($post_type) )
 				{
-					powerpress_page_message_add_error( sprintf(__('Post Type is invalid.', 'powerpress'), $post_type) );
+					powerpress_page_message_add_error( __('Post Type is invalid.', 'powerpress') );
 				}
 				// TODO:
 				//else if( in_array($feed_slug, $wp_rewrite->feeds)  && !isset($Settings['custom_feeds'][ $key ]) ) // If it is a system feed or feed created by something else
@@ -969,7 +976,7 @@ function powerpress_admin_init()
 			}; break;
 			case 'powerpress-addcategoryfeed': {
 				check_admin_referer('powerpress-add-taxonomy-feed');
-				$cat_ID = $_GET['cat'];
+				$cat_ID = intval($_GET['cat']);
 				
 				$Settings = get_option('powerpress_general');
 				$category = get_category($cat_ID);
@@ -1033,7 +1040,7 @@ function powerpress_admin_init()
 				}
 			}; break;
 			case 'powerpress-delete-category-feed': {
-				$cat_ID = $_GET['cat'];
+				$cat_ID = intval($_GET['cat']);
 				check_admin_referer('powerpress-delete-category-feed-'.$cat_ID);
 				
 				$Settings = get_option('powerpress_general');
@@ -1048,7 +1055,7 @@ function powerpress_admin_init()
 				powerpress_page_message_add_notice( __('Removed podcast settings for category feed successfully.', 'powerpress') );
 			}; break;
 			case 'powerpress-delete-taxonomy-feed': {
-				$tt_ID = $_GET['ttid'];
+				$tt_ID = intval($_GET['ttid']);
 				check_admin_referer('powerpress-delete-taxonomy-feed-'.$tt_ID);
 				
 				$Settings = get_option('powerpress_taxonomy_podcasting');
@@ -1063,8 +1070,9 @@ function powerpress_admin_init()
 			}; break;
 			case 'powerpress-delete-posttype-feed': {
 			
-				$feed_slug = $_GET['feed_slug'];
-				$post_type = $_GET['podcast_post_type'];
+				// check admin referer prevents xss
+				$feed_slug = esc_attr($_GET['feed_slug']);
+				$post_type = esc_attr($_GET['podcast_post_type']);
 				check_admin_referer('powerpress-delete-posttype-feed-'.$post_type .'_'.$feed_slug);
 		
 				$Settings = get_option('powerpress_posttype_'.$post_type);
@@ -1244,6 +1252,7 @@ function powerpress_save_settings($SettingsNew=false, $field = 'powerpress_gener
 	// Save general settings
 	if( $SettingsNew )
 	{
+		
 		$Settings = get_option($field);
 		if( !is_array($Settings) )
 			$Settings = array();
@@ -1251,6 +1260,8 @@ function powerpress_save_settings($SettingsNew=false, $field = 'powerpress_gener
 			$Settings[$key] = $value;
 		if( $field == 'powerpress_general' && !isset($Settings['timestamp']) )
 			$Settings['timestamp'] = time();
+			
+		
 			
 		// Special case fields, if they are empty, we can delete them., this will keep the Settings array uncluttered
 		if( isset($Settings['feed_links']) && $Settings['feed_links'] == 0 ) // If set to default value, no need to save it in the database
@@ -1299,6 +1310,8 @@ function powerpress_save_settings($SettingsNew=false, $field = 'powerpress_gener
 				unset($Settings['taxonomy_podcasting']);
 			if( isset($Settings['playlist_player']) && empty($Settings['playlist_player']) )
 				unset($Settings['playlist_player']);	
+			if( isset($Settings['seo_feed_title']) && empty($Settings['seo_feed_title']) )
+				unset($Settings['seo_feed_title']);
 		}
 		else // Feed or player settings...
 		{
@@ -1495,6 +1508,8 @@ function powerpress_admin_menu()
 					continue;
 				
 				$FeedCustom = get_option('powerpress_feed_'.$feed_slug);
+				$feed_slug = esc_attr($feed_slug);
+				
 						
 				reset($post_types);
 				while( list($null,$post_type) = each($post_types) )
@@ -1504,7 +1519,7 @@ function powerpress_admin_menu()
 						continue;
 					
 					if( empty($FeedSlugPostTypesArray[ $feed_slug ][ $post_type ]) )
-						add_meta_box('powerpress-'.$feed_slug, __('Podcast Episode for Custom Channel', 'powerpress') .': '.$feed_title, 'powerpress_meta_box', $post_type, 'normal');
+						add_meta_box('powerpress-'.$feed_slug, __('Podcast Episode for Custom Channel', 'powerpress') .': '. esc_attr($feed_title), 'powerpress_meta_box', $post_type, 'normal');
 				}
 			}
 			reset($Powerpress['custom_feeds']);
@@ -2940,7 +2955,8 @@ function powerpress_admin_page_customfeeds()
 			powerpress_admin_page_header('powerpress/powerpressadmin_customfeeds.php');
 			require_once( POWERPRESS_ABSPATH .'/powerpressadmin-editfeed.php');
 			require_once( POWERPRESS_ABSPATH .'/powerpressadmin-basic.php');
-			powerpress_admin_editfeed('channel', $_GET['feed_slug']);
+			$feed_slug = esc_attr($_GET['feed_slug']);
+			powerpress_admin_editfeed('channel', $feed_slug);
 			powerpress_admin_page_footer();
 		}; break;
 		default: {
@@ -2962,7 +2978,7 @@ function powerpress_admin_page_categoryfeeds()
 			powerpress_admin_page_header('powerpress/powerpressadmin_categoryfeeds.php');
 			require_once( POWERPRESS_ABSPATH .'/powerpressadmin-editfeed.php');
 			require_once( POWERPRESS_ABSPATH .'/powerpressadmin-basic.php');
-			powerpress_admin_editfeed('category', $_GET['cat']);
+			powerpress_admin_editfeed('category', intval($_GET['cat']) );
 			powerpress_admin_page_footer();
 		}; break;
 		default: {
@@ -2986,7 +3002,7 @@ function powerpress_admin_page_taxonomyfeeds()
 				powerpress_admin_page_header('powerpress/powerpressadmin_taxonomyfeeds.php');
 				require_once( POWERPRESS_ABSPATH .'/powerpressadmin-editfeed.php');
 				require_once( POWERPRESS_ABSPATH .'/powerpressadmin-basic.php');
-				powerpress_admin_editfeed('ttid', $_GET['ttid']);
+				powerpress_admin_editfeed('ttid', intval($_GET['ttid']));
 				powerpress_admin_page_footer();
 			}
 		}; break;
@@ -3012,7 +3028,9 @@ function powerpress_admin_page_posttypefeeds()
 				powerpress_admin_page_header('powerpress/powerpressadmin_posttypefeeds.php');
 				require_once( POWERPRESS_ABSPATH .'/powerpressadmin-editfeed.php');
 				require_once( POWERPRESS_ABSPATH .'/powerpressadmin-basic.php');
-				powerpress_admin_editfeed('post_type', $_GET['podcast_post_type'], $_GET['feed_slug']);
+				$post_type = esc_attr( $_GET['podcast_post_type'] );
+				$feed_slug = esc_attr( $_GET['feed_slug'] );
+				powerpress_admin_editfeed('post_type', $post_type, $feed_slug);
 				powerpress_admin_page_footer();
 				
 			}
@@ -4270,4 +4288,3 @@ require_once( POWERPRESS_ABSPATH .'/powerpressadmin-jquery.php');
 // Only include the dashboard when appropriate.
 require_once( POWERPRESS_ABSPATH .'/powerpressadmin-dashboard.php');
 
-?>

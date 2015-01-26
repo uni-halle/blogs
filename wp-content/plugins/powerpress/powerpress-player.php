@@ -699,7 +699,7 @@ function powerpressplayer_player_other($content, $media_url, $EpisodeData = arra
 				$cover_image = powerpress_get_root_url() . 'play_video_default.jpg';
 				
 			$content .= '<div class="powerpress_player" id="powerpress_player_'. $player_id .'">';
-			$firefox = (stristr($_SERVER['HTTP_USER_AGENT'], 'firefox') !== false );
+			$firefox = (stripos($_SERVER['HTTP_USER_AGENT'], 'firefox') !== false );
 			
 			if( (!$cover_image && !$firefox ) || $autoplay ) // if we don't have a cover image or we're supposed to auto play the media anyway...
 			{
@@ -1312,6 +1312,12 @@ MediaElement.js Video Player
 */
 function powerpressplayer_build_mediaelementvideo($media_url, $EpisodeData=array(), $embed = false )
 {
+	if( !function_exists('wp_video_shortcode') )
+	{
+		// Return the HTML5 video shortcode instead
+		return powerpressplayer_build_html5video($media_url, $EpisodeData, $embed);
+	}
+	
 	$player_id = powerpressplayer_get_next_id();
 	$cover_image = '';
 	$player_width = '';
@@ -1429,6 +1435,12 @@ MediaElement.js Audio Player
 */
 function powerpressplayer_build_mediaelementaudio($media_url, $EpisodeData=array(), $embed = false )
 {
+	if( !function_exists('wp_audio_shortcode') )
+	{
+		// Return the HTML5 audio shortcode instead
+		return powerpressplayer_build_html5audio($media_url, $EpisodeData, $embed);
+	}
+	
 	$player_id = powerpressplayer_get_next_id();
 	$autoplay = false;
 	// Episode Settings

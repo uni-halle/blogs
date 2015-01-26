@@ -135,7 +135,7 @@ jQuery(document).ready(function($) {
 
 
 <input type="hidden" id="powerpress_advanced_mode" name="General[advanced_mode_2]" value="1" />
-<input type="hidden" id="save_tab_pos" name="tab" value="<?php echo (empty($_POST['tab'])?0:$_POST['tab']); ?>" />
+<input type="hidden" id="save_tab_pos" name="tab" value="<?php echo (empty($_POST['tab'])?0: intval($_POST['tab']) ); ?>" />
 
 <div id="powerpress_admin_header">
 <h2><?php echo __('Blubrry PowerPress Settings', 'powerpress'); ?></h2> 
@@ -755,11 +755,11 @@ function powerpressadmin_edit_blubrry_services($General, $action_url = false, $a
 		// Check that the redirect is in the settings...
 		$RedirectURL = 'http://media.blubrry.com/'.$General['blubrry_program_keyword'].'/';
 		$Error = true;
-		if( stristr($General['redirect1'], $RedirectURL ) )
+		if( stripos($General['redirect1'], $RedirectURL ) !== false )
 			$Error = false;
-		else if( stristr($General['redirect2'], $RedirectURL ) )
+		else if( stripos($General['redirect2'], $RedirectURL ) !== false )
 			$Error = false;
-		else if( stristr($General['redirect3'], $RedirectURL ) )
+		else if( stripos($General['redirect3'], $RedirectURL ) !== false )
 			$Error = false;
 		if( $Error )
 		{
@@ -837,7 +837,7 @@ function powerpressadmin_edit_media_statistics($General)
 	if( !isset($General['redirect3']) )
 		$General['redirect3'] = '';
 		
-	$StatsIntegrationURL = false;
+	$StatsIntegrationURL = '';
 	if( !empty($General['blubrry_program_keyword']) )
 		$StatsIntegrationURL = 'http://media.blubrry.com/'.$General['blubrry_program_keyword'].'/';
 ?>
@@ -855,7 +855,7 @@ function powerpressadmin_edit_media_statistics($General)
 			<?php echo __('Redirect URL 1', 'powerpress'); ?> 
 			</th>
 			<td>
-			<input type="text" style="width: 60%;" name="<?php if( stristr($General['redirect1'], $StatsIntegrationURL) ) echo 'NULL[redirect1]'; else echo 'General[redirect1]'; ?>" value="<?php echo esc_attr($General['redirect1']); ?>" onChange="return CheckRedirect(this);" maxlength="250" <?php if( stristr($General['redirect1'], $StatsIntegrationURL) ) { echo ' readOnly="readOnly"';  $StatsIntegrationURL = false; } ?> /> 
+			<input type="text" style="width: 60%;" name="<?php if( stripos($General['redirect1'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect1]'; else echo 'General[redirect1]'; ?>" value="<?php echo esc_attr($General['redirect1']); ?>" onChange="return CheckRedirect(this);" maxlength="250" <?php if( stripos($General['redirect1'], $StatsIntegrationURL) !== false ) { echo ' readOnly="readOnly"';  $StatsIntegrationURL = false; } ?> /> 
 			</td>
 			</tr>
 			</table>
@@ -874,7 +874,7 @@ function powerpressadmin_edit_media_statistics($General)
 			<?php echo __('Redirect URL 2', 'powerpress'); ?> 
 			</th>
 			<td>
-			<input type="text"  style="width: 60%;" name="<?php if( stristr($General['redirect2'], $StatsIntegrationURL) ) echo 'NULL[redirect2]'; else echo 'General[redirect2]'; ?>" value="<?php echo esc_attr($General['redirect2']); ?>" onblur="return CheckRedirect(this);" maxlength="250" <?php if( stristr($General['redirect2'], $StatsIntegrationURL) ) { echo ' readOnly="readOnly"';  $StatsIntegrationURL = false; } ?> />
+			<input type="text"  style="width: 60%;" name="<?php if( stripos($General['redirect2'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect2]'; else echo 'General[redirect2]'; ?>" value="<?php echo esc_attr($General['redirect2']); ?>" onblur="return CheckRedirect(this);" maxlength="250" <?php if( stripos($General['redirect2'], $StatsIntegrationURL) !== false ) { echo ' readOnly="readOnly"';  $StatsIntegrationURL = false; } ?> />
 			</td>
 			</tr>
 			</table>
@@ -892,7 +892,7 @@ function powerpressadmin_edit_media_statistics($General)
 			<?php echo __('Redirect URL 3', 'powerpress'); ?> 
 			</th>
 			<td>
-			<input type="text" style="width: 60%;" name="<?php if( stristr($General['redirect3'], $StatsIntegrationURL) ) echo 'NULL[redirect3]'; else echo 'General[redirect3]'; ?>" value="<?php echo esc_attr($General['redirect3']); ?>" onblur="return CheckRedirect(this);" maxlength="250" <?php if( stristr($General['redirect3'], $StatsIntegrationURL) ) echo ' readOnly="readOnly"'; ?> />
+			<input type="text" style="width: 60%;" name="<?php if( stripos($General['redirect3'], $StatsIntegrationURL) !== false ) echo 'NULL[redirect3]'; else echo 'General[redirect3]'; ?>" value="<?php echo esc_attr($General['redirect3']); ?>" onblur="return CheckRedirect(this);" maxlength="250" <?php if( stripos($General['redirect3'], $StatsIntegrationURL) !== false ) echo ' readOnly="readOnly"'; ?> />
 			</td>
 			</tr>
 			</table>
@@ -934,7 +934,7 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 		$General['subscribe_label'] = '';	
 		
 		
-	
+	/*
 	$Players = array('podcast'=>__('Default Podcast (podcast)', 'powerpress') );
 	if( isset($General['custom_feeds']) )
 	{
@@ -945,6 +945,7 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 			$Players[$podcast_slug] = sprintf('%s (%s)', $podcast_title, $podcast_slug);
 		}
 	}
+	*/
 
 ?>
 
@@ -1081,7 +1082,7 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 <td>
 	<select name="General[player_aggressive]" class="bpp_input_med">
 <?php
-$linkoptions = array(0=>__('No, everything is working', 'powerpress'), 1=>__('Yes, please try to fix', 'powerpress') );
+$linkoptions = array(0=>__('No, everything is working', 'powerpress'), 1=>__('Yes, please try to fix', 'powerpress'), 2=>__('Yes, alternative fix', 'powerpress') );
 	
 while( list($value,$desc) = each($linkoptions) )
 	echo "\t<option value=\"$value\"". ($General['player_aggressive']==$value?' selected':''). ">$desc</option>\n";

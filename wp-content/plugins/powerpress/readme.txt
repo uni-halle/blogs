@@ -1,9 +1,9 @@
 === Blubrry PowerPress Podcasting plugin ===
 Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, itunes, enclosure, zune, iphone, youtube, viddler, blip.tv, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, webm, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, simple podcasting, seriously simple podcasting, seriously-simple-podcasting, podlove, podcast.de
-Requires at least: 3.0
+Requires at least: 3.6
 Tested up to: 4.1
-Stable tag: 6.0
+Stable tag: 6.0.1
 Donate link: http://create.blubrry.com/
 License: GPLv2 or later
 
@@ -191,6 +191,18 @@ To install Blubrry PowerPress manually, follow these steps:
 * We are looking for beta testers! If you would like to beta test future versions of PowerPress, please [contact us](http://www.blubrry.com/contact.php) with your name and email.
 
 
+= 6.0.1 =
+* Released on 1/25/2015
+* Duration detection option now works for sites running PHP 5.2 (If you can, please upgrade your PHP, but we understand that some situations warrant running outdated software)
+* Tweaked CSS for subscribe sidebar widget font color to always be white.
+* Changed the new 6.0 logic that prevents players from being added until after the wp_head is called, we now ignore when having theme issues option is selected to fix custom theme logic that may happen before wp_head.
+* Added additional "Having Theme Issues" option, alternative logic to try to fix the situation where the player and/or links does not appear with some themes and plugins.
+* Even though PowerPress 6.0 requires WordPress 3.6+, code has been added to prevent error messages in the event plugin updated on older version of WordPress.
+* Fixed bug where malicious code could be injected into the edit existing category podcasting page. Thanks [Netsparker](https://www.netsparker.com) for reporting the issue.
+* Fixed bug with Podcasting SEO settings where Episode Titles could not be disabled.
+* Fixed bug where Godaddy customers using PHP 5.4 were getting a blank screen for the PowerPress Settings page due to a bug in the stristr() function. Godaddy is aware of the problem and working on a fix. In the mean time we've replaced calls to stristr() with preg_match().
+* Podcast Republic now uses the podcast feed URL for subscriptions (rather than the iTunes URL).
+
 
 = 6.0 =
 * Released on 12/19/2014
@@ -216,7 +228,7 @@ To install Blubrry PowerPress manually, follow these steps:
 * Updated the getid3 library to latest version, PowerPress now includes ogg duration detection support for "Speex" or "vorbis".
 * We are no longer detecting if the sample rate is optimal, we're no longer worried about Flash playback.
 * Removed Flow Player, Simple Flash, AudioPlay and Flash Mp3 Maxi players. These flash players are no longer supported.
-* New MediaElement.js Audio player max width setting added. Player will now display full with otherwise. Player is now responsive, the width will shrink or stretch for the screen.
+* New MediaElement.js Audio player max width setting added. Player will now display full width otherwise. Player is now responsive, the width will shrink or stretch for the screen.
 * Improved MediaElement.js Video player width and height settings. Player will now display full width, or as styled by the theme's CSS if width and height are blank. Player is now responsive, the width will shrink or stretch for the screen, the height can be set with a blank width to allow for the player to fit different screens.
 * We are now warning users not to use Flash based players in the player selection screens.
 * Added option to set stats redirect at the channel/post type level. Requires a define `CHANNEL_STATS_REDIRECT` and/or `POST_TYPE_STATS_REDIRECT` in the wp-config.php file.
@@ -240,7 +252,7 @@ To install Blubrry PowerPress manually, follow these steps:
 * Brazilian Portuguese translation for v6.0+ by [Leo Lopes from Radiofobia](http://radiofobia.com.br/).
 
 
-== 5.0.10 ==
+= 5.0.10 =
 * Released on 12/16/2014
 * Update your copy of PowerPress to version 5.0.9 immediately
 * Due to concerns of possible security exploits, the FlowPlayer flash based player has been removed from PowerPress as of version 5.0.10. PowerPress users are strongly encouraged to update their copy of PowerPress immediately.
