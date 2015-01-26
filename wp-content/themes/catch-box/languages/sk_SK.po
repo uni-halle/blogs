@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 20:20+0545\n"
-"PO-Revision-Date: 2014-12-08 20:20+0545\n"
+"POT-Creation-Date: 2015-01-12 22:48+0545\n"
+"PO-Revision-Date: 2015-01-12 22:48+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: H.P. Brinkmann\n"
 "Language: sk_SK\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x;_ex;_n;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -71,7 +71,7 @@ msgstr "F Y"
 msgid "Yearly Archives: %s"
 msgstr "Ročný archív: %s"
 
-#: ../archive.php:26
+#: ../archive.php:26 ../inc/theme-options.php:1340
 msgid "Y"
 msgstr "Y"
 
@@ -137,7 +137,7 @@ msgstr "U tohoto článku nemôžete pridávať komentáre."
 #: ../content-aside.php:16 ../content-featured.php:14
 #: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
 #: ../content-link.php:16 ../content-quote.php:14 ../content-status.php:15
-#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:829
+#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:848
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permalink pre %s"
@@ -163,7 +163,7 @@ msgstr "%"
 
 #: ../content-aside.php:33 ../content-gallery.php:32 ../content-image.php:27
 #: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
-#: ../content.php:55 ../functions.php:375
+#: ../content.php:55 ../functions.php:394
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Celý článok <span class=\"meta-nav\">&rarr;</span>"
 
@@ -195,8 +195,8 @@ msgstr "<b>%</b> Komentárov"
 #: ../content-aside.php:50 ../content-featured.php:51
 #: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
 #: ../content-page.php:27 ../content-quote.php:78 ../content-single.php:64
-#: ../content-status.php:51 ../content.php:100 ../functions.php:623
-#: ../functions.php:651 ../image.php:97
+#: ../content-status.php:51 ../content.php:100 ../functions.php:642
+#: ../functions.php:670 ../image.php:97
 msgid "Edit"
 msgstr "Upraviť"
 
@@ -265,7 +265,7 @@ msgstr ""
 "Autor:  </span> <span class=\"author vcard\"><a class=\"url fn n\" href="
 "\"%4$s\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 
-#: ../content-image.php:45 ../functions.php:689
+#: ../content-image.php:45 ../functions.php:708
 #, php-format
 msgid "View all posts by %s"
 msgstr "Zobraziť všetky články od : %s "
@@ -336,95 +336,95 @@ msgstr "Zvýraznené"
 msgid "Footer menu"
 msgstr "Menu v päte"
 
-#: ../functions.php:109
+#: ../functions.php:111
 msgid "Primary Menu"
 msgstr "Hlavné menu"
 
-#: ../functions.php:110
+#: ../functions.php:112
 msgid "Secondary Menu"
 msgstr "Sekundárne menu"
 
-#: ../functions.php:111
+#: ../functions.php:113
 msgid "Footer Menu"
 msgstr "Menu v päte"
 
 #. translators: header image description
-#: ../functions.php:179
+#: ../functions.php:181
 msgid "Garden"
 msgstr "Záhrada"
 
 #. translators: header image description
-#: ../functions.php:185
+#: ../functions.php:187
 msgid "Flower"
 msgstr "Kvety"
 
 #. translators: header image description
-#: ../functions.php:191
+#: ../functions.php:193
 msgid "Mountain"
 msgstr "Hory"
 
-#: ../functions.php:343
+#: ../functions.php:347
 #, php-format
 msgid "Page %s"
 msgstr "Stránka  %s"
 
-#: ../functions.php:444
+#: ../functions.php:463
 msgid "Main Sidebar"
 msgstr "Hlavný sidebar"
 
-#: ../functions.php:453
+#: ../functions.php:472
 msgid "Footer Area One"
 msgstr "Päta 1"
 
-#: ../functions.php:455 ../functions.php:465 ../functions.php:475
+#: ../functions.php:474 ../functions.php:484 ../functions.php:494
 msgid "An optional widget area for your site footer"
 msgstr "Miesto pre widget, ktorý bude zobrazený v päte"
 
-#: ../functions.php:463
+#: ../functions.php:482
 msgid "Footer Area Two"
 msgstr "Päta 2"
 
-#: ../functions.php:473
+#: ../functions.php:492
 msgid "Footer Area Three"
 msgstr "Päta 3"
 
-#: ../functions.php:507 ../functions.php:536 ../single.php:15
+#: ../functions.php:526 ../functions.php:555 ../single.php:15
 msgid "Post navigation"
 msgstr "Navigácia v príspevku"
 
-#: ../functions.php:515 ../functions.php:544
+#: ../functions.php:534 ../functions.php:563
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Staršie články"
 
-#: ../functions.php:516 ../functions.php:545
+#: ../functions.php:535 ../functions.php:564
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Novšie články <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../functions.php:623
+#: ../functions.php:642
 msgid "Pingback:"
 msgstr "Pingback:"
 
 #. translators: 1: comment author, 2: date and time
-#: ../functions.php:640
+#: ../functions.php:659
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s na %2$s <span class=\"says\">povedal:</span>"
 
 #. translators: 1: date, 2: time
-#: ../functions.php:646
+#: ../functions.php:665
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s v %2$s"
 
-#: ../functions.php:655
+#: ../functions.php:674
 msgid "Your comment is awaiting moderation."
 msgstr "Váš komentár čaká na schválenie."
 
-#: ../functions.php:664
+#: ../functions.php:683
 msgid "Reply <span>&darr;</span>"
 msgstr "Odpoveď <span>&darr;</span>"
 
-#: ../functions.php:683
+#: ../functions.php:702
 #, php-format
 msgid ""
 "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
@@ -439,67 +439,33 @@ msgstr ""
 "span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title="
 "\"%6$s\" rel=\"author\">%7$s</a></span></span>"
 
-#: ../functions.php:741
+#: ../functions.php:760
 msgid "ID"
 msgstr "ID"
 
-#: ../functions.php:967
+#: ../functions.php:986
 msgid "Name"
 msgstr "Meno"
 
-#: ../functions.php:969 ../inc/theme-options.php:889
+#: ../functions.php:988 ../inc/theme-options.php:887
 msgid "Email"
 msgstr "E-Mail"
 
-#: ../functions.php:1346
+#: ../functions.php:1365
 msgid "Primary menu"
 msgstr "Primárne menu"
 
-#: ../functions.php:1348 ../functions.php:1381
+#: ../functions.php:1367 ../functions.php:1400
 msgid "Skip to primary content"
 msgstr "Preskočiť k primárnemu obsahu."
 
-#: ../functions.php:1349 ../functions.php:1382
+#: ../functions.php:1368 ../functions.php:1401
 msgid "Skip to secondary content"
 msgstr "Preskočiť k sekundárnemu obsahu."
 
-#: ../functions.php:1379
+#: ../functions.php:1398
 msgid "Secondary menu"
 msgstr "Sekundárne menu"
-
-#: ../functions.php:1401
-msgid "Copyright &copy;"
-msgstr "Copyright &copy;"
-
-#: ../functions.php:1405
-msgid ". All Rights Reserved."
-msgstr "Všetky práva vyhradené."
-
-#: ../functions.php:1408
-msgid "http://wordpress.org/"
-msgstr "http://wordpress.org/"
-
-#: ../functions.php:1408
-msgid "Powered by WordPress"
-msgstr "Poháňané WordPressom"
-
-#: ../functions.php:1408
-#, php-format
-msgid "Powered by %s"
-msgstr "Poháňané %s"
-
-#: ../functions.php:1410 ../inc/theme-options.php:631
-msgid "http://catchthemes.com/"
-msgstr "http://catchthemes.com/"
-
-#: ../functions.php:1410
-msgid "Theme Catch Box by Catch Themes"
-msgstr "Téma Catch Box od  Catch Themes"
-
-#: ../functions.php:1410
-#, php-format
-msgid "Theme: %s"
-msgstr "Šablóna: %s"
 
 #: ../image.php:15
 msgid "Image navigation"
@@ -526,265 +492,269 @@ msgstr ""
 "span> v <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; "
 "%5$s</a> v <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
 
-#: ../inc/theme-options.php:84
+#: ../inc/theme-options.php:87
 msgid "Favicon URL"
 msgstr "Favicon URL"
 
-#: ../inc/theme-options.php:93
+#: ../inc/theme-options.php:96
 msgid "Web Clip Icon URL"
 msgstr "Web Clip Icon URL"
 
-#: ../inc/theme-options.php:102
+#: ../inc/theme-options.php:105
 msgid "Color Scheme"
 msgstr "Farebná schéma"
 
-#: ../inc/theme-options.php:110
+#: ../inc/theme-options.php:113
 msgid "Link Color"
 msgstr "Farba odkazov"
 
-#: ../inc/theme-options.php:118
+#: ../inc/theme-options.php:121
 msgid "Default Layout"
 msgstr "Základné rozloženie"
 
-#: ../inc/theme-options.php:126
+#: ../inc/theme-options.php:129
 msgid "Content layout"
 msgstr "Rozloženie obsahu"
 
-#: ../inc/theme-options.php:134
+#: ../inc/theme-options.php:137
 msgid "Excerpt Length in Words"
 msgstr "Presná dĺžka podľa počtu slov"
 
-#: ../inc/theme-options.php:142
+#: ../inc/theme-options.php:145
 msgid "Feed Redirect URL"
 msgstr "Presmerovanie"
 
-#: ../inc/theme-options.php:150
+#: ../inc/theme-options.php:153
 msgid "Move Site Title and Tagline?"
 msgstr "Presunúť nadpis a popis stránky?"
 
-#: ../inc/theme-options.php:158
+#: ../inc/theme-options.php:161
 msgid "Default Display Text in Search"
 msgstr "Základné zobrazovanie textu vo vyhľadávaní"
 
-#: ../inc/theme-options.php:166
+#: ../inc/theme-options.php:169
 msgid "Disable Search in Header?"
 msgstr "Zrušiť vyhľadávanie v hlavičke?"
 
-#: ../inc/theme-options.php:174
+#: ../inc/theme-options.php:177
 msgid "Enable Secondary & Footer Menu in Mobile Devices?"
 msgstr "Zapnúť sekundárne & menu pre pätu v mobilných zariadeniach?"
 
-#: ../inc/theme-options.php:182
+#: ../inc/theme-options.php:185
 msgid "Custom CSS Styles"
 msgstr "Vlastné CSS štýlovanie"
 
-#: ../inc/theme-options.php:219 ../inc/theme-options.php:220
-#: ../inc/theme-options.php:658
+#: ../inc/theme-options.php:222 ../inc/theme-options.php:223
+#: ../inc/theme-options.php:656
 msgid "Theme Options"
 msgstr "Nastavenie šablóny"
 
-#: ../inc/theme-options.php:242
+#: ../inc/theme-options.php:245
+msgid "Insert as Favicon"
+msgstr "Insert as Favicon"
+
+#: ../inc/theme-options.php:245
 msgid "Add/Change Favicon"
 msgstr "Pridať/zmeniť Favicon"
 
-#: ../inc/theme-options.php:256
+#: ../inc/theme-options.php:259
+msgid "Insert as Web Clip Icon"
+msgstr "Insert as Web Clip Icon"
+
+#: ../inc/theme-options.php:259
 msgid "Add/Change Web Clip Icon"
 msgstr "Pridať/zmeniť Web Clip Icon"
 
-#: ../inc/theme-options.php:270
+#: ../inc/theme-options.php:273
 msgid "Light"
 msgstr "Svetlé"
 
-#: ../inc/theme-options.php:276
+#: ../inc/theme-options.php:279
 msgid "Dark"
 msgstr "Tmavé"
 
-#: ../inc/theme-options.php:282
+#: ../inc/theme-options.php:285
 msgid "Blue"
 msgstr "Modré"
 
-#: ../inc/theme-options.php:288
+#: ../inc/theme-options.php:291
 msgid "Green"
 msgstr "Zelené"
 
-#: ../inc/theme-options.php:294
+#: ../inc/theme-options.php:297
 msgid "Red"
 msgstr "Červené"
 
-#: ../inc/theme-options.php:300
+#: ../inc/theme-options.php:303
 msgid "Brown"
 msgstr "Hnedé"
 
-#: ../inc/theme-options.php:306
+#: ../inc/theme-options.php:309
 msgid "Orange"
 msgstr "Orange"
 
-#: ../inc/theme-options.php:325
+#: ../inc/theme-options.php:328
 msgid "Content on left"
 msgstr "Obsah na ľavej strane"
 
-#: ../inc/theme-options.php:330
+#: ../inc/theme-options.php:333
 msgid "Content on right"
 msgstr "Obsah na pravej strane"
 
-#: ../inc/theme-options.php:335
+#: ../inc/theme-options.php:338
 msgid "One-column, no sidebar"
 msgstr "Jeden stĺpec, bez sidebaru"
 
-#: ../inc/theme-options.php:353
+#: ../inc/theme-options.php:356
 msgid "Show excerpt"
 msgstr "Zobraziť výpis"
 
-#: ../inc/theme-options.php:358
+#: ../inc/theme-options.php:361
 msgid "Show full content"
 msgstr "Zobraziť celý obsah článku"
 
-#: ../inc/theme-options.php:459
-msgid "Select a Color"
-msgstr "Vybrať farbu"
-
-#: ../inc/theme-options.php:462
-#, php-format
-msgid "Default color: %s"
-msgstr "Základné farby: %s"
-
-#: ../inc/theme-options.php:478
+#: ../inc/theme-options.php:476
 msgid "Words"
 msgstr "Slová"
 
-#: ../inc/theme-options.php:506
+#: ../inc/theme-options.php:504
 msgid "Check to move above the Header/Logo Image"
 msgstr "Zaškrknúť pre presunutie Hlavy/Loga hore"
 
-#: ../inc/theme-options.php:536
+#: ../inc/theme-options.php:534
 msgid "Check to Disable"
 msgstr "Nezobrazovať"
 
-#: ../inc/theme-options.php:551
+#: ../inc/theme-options.php:549
 msgid "Check to Enable"
 msgstr "Umožniť zobrazenie"
 
-#: ../inc/theme-options.php:565
+#: ../inc/theme-options.php:563
 msgid "CSS Tutorial from W3Schools."
 msgstr "CSS Tutorial od W3Schools"
 
-#: ../inc/theme-options.php:565
+#: ../inc/theme-options.php:563
 msgid "http://www.w3schools.com/css/default.asp"
 msgstr "http://www.w3schools.com/css/default.asp"
 
-#: ../inc/theme-options.php:565
+#: ../inc/theme-options.php:563
 msgid "CSS Tutorial"
 msgstr "CSS Tutorial"
 
-#: ../inc/theme-options.php:565
+#: ../inc/theme-options.php:563
 msgid "Click Here to Read"
 msgstr "Čítať"
 
-#: ../inc/theme-options.php:629
+#: ../inc/theme-options.php:627
 msgid "Theme Options By"
 msgstr "Nastavenie témy"
 
-#: ../inc/theme-options.php:631 ../inc/theme-options.php:632
+#: ../inc/theme-options.php:629
+msgid "http://catchthemes.com/"
+msgstr "http://catchthemes.com/"
+
+#: ../inc/theme-options.php:629 ../inc/theme-options.php:630
+#: ../inc/theme-options.php:1382
 msgid "Catch Themes"
 msgstr "Catch Themes"
 
-#: ../inc/theme-options.php:638
+#: ../inc/theme-options.php:636
 msgid "http://catchthemes.com/themes/catch-box-pro/"
 msgstr "http://catchthemes.com/themes/catch-box-pro/"
 
-#: ../inc/theme-options.php:638
+#: ../inc/theme-options.php:636
 msgid "Upgrade to Catch Box Pro"
 msgstr "Upgradovať na Catch Box Pro"
 
-#: ../inc/theme-options.php:643
+#: ../inc/theme-options.php:641
 msgid "http://catchthemes.com/donate/"
 msgstr "http://catchthemes.com/donate/"
 
-#: ../inc/theme-options.php:643
+#: ../inc/theme-options.php:641
 msgid "Donate"
 msgstr "Prispieť"
 
-#: ../inc/theme-options.php:644
+#: ../inc/theme-options.php:642
 msgid "http://catchthemes.com/support/"
 msgstr "http://catchthemes.com/"
 
-#: ../inc/theme-options.php:644
+#: ../inc/theme-options.php:642
 msgid "Support"
 msgstr "Podpora"
 
-#: ../inc/theme-options.php:645
+#: ../inc/theme-options.php:643
 msgid "http://catchthemes.com/support-forum/forum/catch-box-public/"
 msgstr "http://catchthemes.com/support-forum/forum/catch-box-public/"
 
-#: ../inc/theme-options.php:645
+#: ../inc/theme-options.php:643
 msgid "Support Forum"
 msgstr "Fórum podpory"
 
-#: ../inc/theme-options.php:646
+#: ../inc/theme-options.php:644
 msgid "http://catchthemes.com/theme-instructions/catch-box/"
 msgstr "http://catchthemes.com/theme-instructions/catch-box/"
 
-#: ../inc/theme-options.php:646
+#: ../inc/theme-options.php:644
 msgid "Theme Instructions"
 msgstr "Nastavenie šablóny"
 
-#: ../inc/theme-options.php:647
+#: ../inc/theme-options.php:645
 msgid "https://www.facebook.com/catchthemes/"
 msgstr "https://www.facebook.com/catchthemes/"
 
-#: ../inc/theme-options.php:647
+#: ../inc/theme-options.php:645
 msgid "Like Catch Themes on Facebook"
 msgstr "Like Catch Themes na Facebooku"
 
-#: ../inc/theme-options.php:647 ../inc/theme-options.php:782
+#: ../inc/theme-options.php:645 ../inc/theme-options.php:780
 msgid "Facebook"
 msgstr "Facebook"
 
-#: ../inc/theme-options.php:648
+#: ../inc/theme-options.php:646
 msgid "https://twitter.com/catchthemes/"
 msgstr "https://twitter.com/catchthemes/"
 
-#: ../inc/theme-options.php:648
+#: ../inc/theme-options.php:646
 msgid "Follow Catch Themes on Twitter"
 msgstr "Sleduj Catch Themes na Twitteri"
 
-#: ../inc/theme-options.php:648 ../inc/theme-options.php:787
+#: ../inc/theme-options.php:646 ../inc/theme-options.php:785
 msgid "Twitter"
 msgstr "Twitter"
 
-#: ../inc/theme-options.php:649
+#: ../inc/theme-options.php:647
 msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
 msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
 
-#: ../inc/theme-options.php:649
+#: ../inc/theme-options.php:647
 msgid "Rate us 5 Star on WordPress"
 msgstr "Ohodnoť nás 5-timi hviezdičkami na WordPresse"
 
-#: ../inc/theme-options.php:649
+#: ../inc/theme-options.php:647
 msgid "5 Star Rating"
 msgstr "Hodnotenie 5 hviezdičiek"
 
-#: ../inc/theme-options.php:659
+#: ../inc/theme-options.php:657
 msgid "Featured Post Slider"
 msgstr "Slider zvýraznených článkov"
 
-#: ../inc/theme-options.php:660
+#: ../inc/theme-options.php:658
 msgid "Social Links"
 msgstr "Sociálne siete"
 
-#: ../inc/theme-options.php:661
+#: ../inc/theme-options.php:659
 msgid "Webmaster Tools"
 msgstr "Webmaster Tools"
 
-#: ../inc/theme-options.php:688
+#: ../inc/theme-options.php:686
 msgid "Slider Options"
 msgstr "Nastavenie slidera"
 
-#: ../inc/theme-options.php:692 ../inc/theme-options.php:694
+#: ../inc/theme-options.php:690 ../inc/theme-options.php:692
 msgid "Post Slider Tutorial"
 msgstr "Post Slider Tutorial"
 
-#: ../inc/theme-options.php:694
+#: ../inc/theme-options.php:692
 msgid ""
 "http://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
 "slider/"
@@ -792,34 +762,34 @@ msgstr ""
 "http://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
 "slider/"
 
-#: ../inc/theme-options.php:694
+#: ../inc/theme-options.php:692
 msgid "Click Here to Read Post Slider Tutorial"
 msgstr "Click Here to Read Post Slider Tutorial"
 
-#: ../inc/theme-options.php:698
+#: ../inc/theme-options.php:696
 msgid "Exclude Slider post from Home page posts:"
 msgstr ""
 "Vylúčiť príspevky, ktoré sú použité v slideri z výpisu článkou na domácej "
 "obrazovke: "
 
-#: ../inc/theme-options.php:700
+#: ../inc/theme-options.php:698
 msgid "Check to disable"
 msgstr "Nezobrazovať: "
 
-#: ../inc/theme-options.php:703
+#: ../inc/theme-options.php:701
 msgid "Number of Slides"
 msgstr "Počet slajdov"
 
-#: ../inc/theme-options.php:709
+#: ../inc/theme-options.php:707
 msgid "Featured Post ID"
 msgstr "ID zvýraznených článkov"
 
 # @ default
-#: ../inc/theme-options.php:711
+#: ../inc/theme-options.php:709
 msgid "Click Here To Edit"
 msgstr "Kliknite sem pre úpravu"
 
-#: ../inc/theme-options.php:717
+#: ../inc/theme-options.php:715
 msgid ""
 "<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
 "Featured Slider."
@@ -827,144 +797,144 @@ msgstr ""
 "<strong>Poznámka</strong>: Tu môžete napísať ID číslo článkov, podľa ktorého "
 "sa budú články v slideri zobrazovať."
 
-#: ../inc/theme-options.php:718 ../inc/theme-options.php:764
-#: ../inc/theme-options.php:901 ../inc/theme-options.php:942
+#: ../inc/theme-options.php:716 ../inc/theme-options.php:762
+#: ../inc/theme-options.php:899 ../inc/theme-options.php:940
 msgid "Save"
 msgstr "Uložiť"
 
-#: ../inc/theme-options.php:722
+#: ../inc/theme-options.php:720
 msgid "Slider Effect Options"
 msgstr "Nastavenie efektu prechodu medzi položkami v slideri"
 
-#: ../inc/theme-options.php:727
+#: ../inc/theme-options.php:725
 msgid "Transition Effect:"
 msgstr "Efekt prechodu:"
 
-#: ../inc/theme-options.php:732
+#: ../inc/theme-options.php:730
 msgid "fade"
 msgstr "zoslabnutie"
 
-#: ../inc/theme-options.php:733
+#: ../inc/theme-options.php:731
 msgid "wipe"
 msgstr "wipe"
 
-#: ../inc/theme-options.php:734
+#: ../inc/theme-options.php:732
 msgid "scrollUp"
 msgstr "Vymeniť z hora"
 
-#: ../inc/theme-options.php:735
+#: ../inc/theme-options.php:733
 msgid "scrollDown"
 msgstr "Vymeniť z dola"
 
-#: ../inc/theme-options.php:736
+#: ../inc/theme-options.php:734
 msgid "scrollLeft"
 msgstr "Vymeniť z ľava"
 
-#: ../inc/theme-options.php:737
+#: ../inc/theme-options.php:735
 msgid "scrollRight"
 msgstr "Vymeniť z prava"
 
-#: ../inc/theme-options.php:738
+#: ../inc/theme-options.php:736
 msgid "blindX"
 msgstr "roletaX"
 
-#: ../inc/theme-options.php:739
+#: ../inc/theme-options.php:737
 msgid "blindY"
 msgstr "roletaY"
 
-#: ../inc/theme-options.php:740
+#: ../inc/theme-options.php:738
 msgid "blindZ"
 msgstr "roletaZ"
 
-#: ../inc/theme-options.php:741
+#: ../inc/theme-options.php:739
 msgid "cover"
 msgstr "prekryť"
 
-#: ../inc/theme-options.php:742
+#: ../inc/theme-options.php:740
 msgid "shuffle"
 msgstr "Prehodiť"
 
-#: ../inc/theme-options.php:748
+#: ../inc/theme-options.php:746
 msgid "Transition Delay"
 msgstr "Doba statického zobrazenia"
 
-#: ../inc/theme-options.php:751 ../inc/theme-options.php:760
+#: ../inc/theme-options.php:749 ../inc/theme-options.php:758
 msgid "second(s)"
 msgstr "sekúnd"
 
-#: ../inc/theme-options.php:757
+#: ../inc/theme-options.php:755
 msgid "Transition Length"
 msgstr "Dĺžka trvania prechodu"
 
-#: ../inc/theme-options.php:793
+#: ../inc/theme-options.php:791
 msgid "Google +"
 msgstr "Google +"
 
-#: ../inc/theme-options.php:799
+#: ../inc/theme-options.php:797
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: ../inc/theme-options.php:805
+#: ../inc/theme-options.php:803
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: ../inc/theme-options.php:811
+#: ../inc/theme-options.php:809
 msgid "Youtube"
 msgstr "Youtube"
 
-#: ../inc/theme-options.php:817
+#: ../inc/theme-options.php:815
 msgid "RSS Feed"
 msgstr "RSS Feed"
 
-#: ../inc/theme-options.php:823
+#: ../inc/theme-options.php:821
 msgid "Deviantart"
 msgstr "Deviantart"
 
-#: ../inc/theme-options.php:829
+#: ../inc/theme-options.php:827
 msgid "Tumblr"
 msgstr "Tumblr"
 
-#: ../inc/theme-options.php:835
+#: ../inc/theme-options.php:833
 msgid "Vimeo"
 msgstr "Vimeo"
 
-#: ../inc/theme-options.php:841
+#: ../inc/theme-options.php:839
 msgid "Dribbble"
 msgstr "Dribbble"
 
-#: ../inc/theme-options.php:847
+#: ../inc/theme-options.php:845
 msgid "MySpace"
 msgstr "MySpace"
 
-#: ../inc/theme-options.php:853
+#: ../inc/theme-options.php:851
 msgid "Aim"
 msgstr "Aim"
 
-#: ../inc/theme-options.php:859
+#: ../inc/theme-options.php:857
 msgid "Flickr"
 msgstr "Flickr"
 
-#: ../inc/theme-options.php:865
+#: ../inc/theme-options.php:863
 msgid "Slideshare"
 msgstr "Slideshare"
 
-#: ../inc/theme-options.php:871
+#: ../inc/theme-options.php:869
 msgid "Instagram"
 msgstr "Instagram"
 
-#: ../inc/theme-options.php:877
+#: ../inc/theme-options.php:875
 msgid "Skype"
 msgstr "Skype"
 
-#: ../inc/theme-options.php:883
+#: ../inc/theme-options.php:881
 msgid "Soundcloud"
 msgstr "Soundcloud"
 
-#: ../inc/theme-options.php:894
+#: ../inc/theme-options.php:892
 msgid "Xing"
 msgstr "Xing"
 
-#: ../inc/theme-options.php:900
+#: ../inc/theme-options.php:898
 msgid ""
 "<strong>Note:</strong> Enter the url for correponding social networking "
 "website"
@@ -972,15 +942,15 @@ msgstr ""
 "<strong>Poznámka:</strong>Zadajte URL adresy pre dané profily na určených "
 "sociálnych sietiach."
 
-#: ../inc/theme-options.php:915
+#: ../inc/theme-options.php:913
 msgid "Header and Footer Code"
 msgstr "Kód v hlave a v päte"
 
-#: ../inc/theme-options.php:920
+#: ../inc/theme-options.php:918
 msgid "Code to display on Header"
 msgstr "Kód na zobrazenie v hlavičke"
 
-#: ../inc/theme-options.php:927
+#: ../inc/theme-options.php:925
 msgid ""
 "Note: Here you can put scripts from Google, Facebook etc. which will load on "
 "Header"
@@ -988,17 +958,37 @@ msgstr ""
 "Poznámka: Sem môžete vložiť kód z Google, Facebooku alebo iných, ktorý sa "
 "načíta v hlave"
 
-#: ../inc/theme-options.php:931
+#: ../inc/theme-options.php:929
 msgid "Code to display on Footer"
 msgstr "Kód pre zobrazenie v päte"
 
-#: ../inc/theme-options.php:938
+#: ../inc/theme-options.php:936
 msgid ""
 "Note: Here you can put scripts from Google, Facebook, Add This etc. which "
 "will load on footer"
 msgstr ""
 "Poznámka: Sem môžete vložiť kód z Google, Facebooku alebo iných, ktorý sa "
 "načíta v päte"
+
+#: ../inc/theme-options.php:1361
+msgid "WordPress"
+msgstr "WordPress"
+
+#: ../inc/theme-options.php:1371
+msgid "Theme: Catch Box by "
+msgstr "Theme: Catch Box by "
+
+#: ../inc/theme-options.php:1393
+msgid "Copyright"
+msgstr "Copyright"
+
+#: ../inc/theme-options.php:1393
+msgid "All Rights Reserved"
+msgstr "Všetky práva vyhradené"
+
+#: ../inc/theme-options.php:1408
+msgid "More Theme Options &raquo;"
+msgstr "More Theme Options &raquo;"
 
 #: ../inc/widgets.php:20
 msgid "Use this widget to add any type of Ad as a widget."
@@ -1063,6 +1053,33 @@ msgstr "Nasledujúci <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Viac v rovnakom štítku: %s"
+
+#~ msgid "Copyright &copy;"
+#~ msgstr "Copyright &copy;"
+
+#~ msgid ". All Rights Reserved."
+#~ msgstr "Všetky práva vyhradené."
+
+#~ msgid "http://wordpress.org/"
+#~ msgstr "http://wordpress.org/"
+
+#~ msgid "Powered by WordPress"
+#~ msgstr "Poháňané WordPressom"
+
+#~ msgid "Powered by %s"
+#~ msgstr "Poháňané %s"
+
+#~ msgid "Theme Catch Box by Catch Themes"
+#~ msgstr "Téma Catch Box od  Catch Themes"
+
+#~ msgid "Theme: %s"
+#~ msgstr "Šablóna: %s"
+
+#~ msgid "Select a Color"
+#~ msgstr "Vybrať farbu"
+
+#~ msgid "Default color: %s"
+#~ msgstr "Základné farby: %s"
 
 #~ msgid "http://facebook.com/catchthemes"
 #~ msgstr "http://facebook.com/catchthemes"

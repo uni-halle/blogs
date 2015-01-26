@@ -81,11 +81,6 @@ function catchbox_setup() {
 	 */
 	load_theme_textdomain( 'catchbox', get_template_directory() . '/languages' );
 	
-	$locale = get_locale();
-    $locale_file = get_template_directory().'/languages/$locale.php';
-    if (is_readable( $locale_file))
-		require_once( $locale_file);
-
 	/**
      * Add callback for custom TinyMCE editor stylesheets. (editor-style.css)
      * @see http://codex.wordpress.org/Function_Reference/add_editor_style
@@ -100,6 +95,13 @@ function catchbox_setup() {
 
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
+
+	/**
+	 * Setup title support for theme
+	 * Supported from WordPress version 4.1 onwards 
+	 * More Info: https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
+	 */
+	add_theme_support( 'title-tag' );	
 
 	/**
      * This feature enables custom-menus support for a theme.
@@ -315,39 +317,56 @@ function catchbox_admin_header_image() { ?>
 endif; // catchbox_admin_header_image
 
 
-if ( ! function_exists( 'catchbox_filter_wp_title' ) ) :
-/**
- * Creates a nicely formatted and more specific title element text
- * for output in head of document, based on current view.
- *
- * @param string $title Default title text for current view.
- * @param string $sep Optional separator.
- * @return string Filtered title.
- */
-function catchbox_filter_wp_title( $title, $sep ) {
-	global $page, $paged;
-
-	if ( is_feed() )
+if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
+	/**
+	* Filters wp_title to print a neat <title> tag based on what is being viewed.
+	*
+	* @param string $title Default title text for current view.
+	* @param string $sep Optional separator.
+	* @return string The filtered title.
+	*/
+	function catchbox_wp_title( $title, $sep ) {
+		if ( is_feed() ) {
+			return $title;
+		}
+		
+		global $page, $paged;
+		
+		// Add the blog name
+		$title .= get_bloginfo( 'name', 'display' );
+		
+		// Add the blog description for the home/front page.
+		$site_description = get_bloginfo( 'description', 'display' );
+		
+		if ( $site_description && ( is_home() || is_front_page() ) ) {
+			$title .= " $sep $site_description";
+		}
+		
+		// Add a page number if necessary:
+		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
+			$title .= " $sep " . sprintf( __( 'Page %s', '_s' ), max( $paged, $page ) );
+		}
+		
 		return $title;
+		
+	}
+		
+	add_filter( 'wp_title', 'catchbox_wp_title', 10, 2 );
 
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		$title = "$title $sep $site_description";
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'catchbox' ), max( $paged, $page ) );
-
-	return $title;	
-
-}
-endif; // catchbox_filter_wp_title
-
-add_filter( 'wp_title', 'catchbox_filter_wp_title', 10, 2 );
+	
+	/**
+	* Title shim for sites older than WordPress 4.1.
+	*
+	* @link https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
+	* @todo Remove this function when WordPress 4.3 is released.
+	*/
+	function catchbox_render_title() {
+	?>
+		<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<?php
+	}
+	add_action( 'wp_head', 'catchbox_render_title' );
+endif;
 
 
 /**
@@ -1396,20 +1415,18 @@ if ( ! function_exists( 'catchbox_footer_content' ) ) :
  *
  * @since Catch Box 2.5
  */
-function catchbox_footer_content() { ?>
-	<div class="copyright">
-		<?php esc_attr_e('Copyright &copy;', 'catchbox'); ?> <?php _e(date('Y')); ?>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
-            <?php bloginfo('name'); ?>
-        </a>
-        <?php esc_attr_e('. All Rights Reserved.', 'catchbox'); ?>
-    </div>
-    <div class="powered">
-        <a href="<?php echo esc_url( __( 'http://wordpress.org/', 'catchbox' ) ); ?>" title="<?php esc_attr_e( 'Powered by WordPress', 'catchbox' ); ?>" rel="generator"><?php printf( __( 'Powered by %s', 'catchbox' ), 'WordPress' ); ?></a>
-        <span class="sep"> | </span>
-        <a href="<?php echo esc_url( __( 'http://catchthemes.com/', 'catchbox' ) ); ?>" title="<?php esc_attr_e( 'Theme Catch Box by Catch Themes', 'catchbox' ); ?>" rel="designer"><?php printf( __( 'Theme: %s', 'catchbox' ), 'Catch Box' ); ?></a>
-    </div>
-<?php }
+function catchbox_footer_content() {
+	//delete_transient( 'catchbox_footer_content' );	
+	
+	if ( ( !$catchbox_footer_content = get_transient( 'catchbox_footer_content' ) ) ) {
+		echo '<!-- refreshing cache -->';
+		
+		$catchbox_footer_content = catchbox_assets();
+		
+    	set_transient( 'catchbox_footer_content', $catchbox_footer_content, 86940 );
+    }
+	echo $catchbox_footer_content;
+}
 endif; //catchbox_footer_content
 
 // Load footer content in  catchbox_site_generator hook 

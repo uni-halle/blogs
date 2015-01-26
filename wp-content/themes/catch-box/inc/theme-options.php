@@ -18,11 +18,14 @@
  */
 function catchbox_admin_enqueue_scripts( $hook_suffix ) {
 	wp_register_script( 'jquery-cookie', get_template_directory_uri() . '/js/jquery.cookie.min.js', array( 'jquery' ), '1.0', true );
-	wp_enqueue_style( 'catchbox-theme-options', get_template_directory_uri() . '/inc/theme-options.min.css', false, '2011-04-28' );
-	wp_enqueue_script( 'catchbox-theme-options', get_template_directory_uri() . '/inc/theme-options.min.js', array( 'jquery', 'jquery-ui-tabs', 'jquery-cookie', 'jquery-ui-sortable', 'jquery-ui-draggable', 'farbtastic' ), '2011-06-10' );
-	wp_enqueue_style( 'farbtastic' );
-	wp_enqueue_script( 'catchbox_upload', get_template_directory_uri().'/inc/add_image_scripts.js', array( 'jquery','media-upload','thickbox' ) );
-	wp_enqueue_style( 'thickbox' );
+	
+	wp_enqueue_style( 'catchbox-theme-options', get_template_directory_uri() . '/inc/theme-options.min.css', array( 'wp-color-picker' ), '2011-04-28' );
+	
+	wp_enqueue_script( 'catchbox-theme-options', get_template_directory_uri() . '/inc/theme-options.min.js', array( 'jquery', 'jquery-ui-tabs', 'jquery-cookie', 'jquery-ui-sortable', 'jquery-ui-draggable', 'wp-color-picker'	), '2011-06-10' );
+	
+	wp_enqueue_media();
+
+	wp_enqueue_script( 'catchbox_upload', get_template_directory_uri().'/inc/add_image_scripts.js', array( 'jquery') );
 }
 add_action( 'admin_print_styles-appearance_page_theme_options', 'catchbox_admin_enqueue_scripts' );
 
@@ -239,7 +242,7 @@ function catchbox_settings_field_favicon() {
 	$options = catchbox_get_theme_options();
 	?>
 	<input class="upload-url" type="text" name="catchbox_theme_options[fav_icon]" id="fav-icon" size="65" value="<?php if ( isset( $options[ 'fav_icon' ] ) ) echo esc_attr( $options[ 'fav_icon'] ); ?>" />
-    <input id="st_upload_button" class="st_upload_button button" name="wsl-image-add" type="button" value="<?php esc_attr_e( 'Add/Change Favicon','catchbox' );?>" />
+    <input ref="<?php esc_attr_e( 'Insert as Favicon','catchbox' );?>" class="catchbox_upload_image button" type="button" value="<?php esc_attr_e( 'Add/Change Favicon','catchbox' );?>" />
 	<?php
 }
 
@@ -253,7 +256,7 @@ function catchbox_settings_field_webclip() {
 	$options = catchbox_get_theme_options();
 	?>
 	<input class="upload-url" type="text" name="catchbox_theme_options[web_clip]" id="web-clip" size="65" value="<?php if ( isset( $options[ 'web_clip' ] ) ) echo esc_attr( $options[ 'web_clip'] ); ?>" />
-    <input id="st_upload_button" class="st_upload_button button" name="wsl-image-add" type="button" value="<?php esc_attr_e( 'Add/Change Web Clip Icon','catchbox' );?>" />
+    <input ref="<?php esc_attr_e( 'Insert as Web Clip Icon','catchbox' );?>" class="catchbox_upload_image button" type="button" value="<?php esc_attr_e( 'Add/Change Web Clip Icon','catchbox' );?>" />
 	<?php
 }
 
@@ -454,12 +457,7 @@ function catchbox_settings_field_color_scheme() {
 function catchbox_settings_field_link_color() {
 	$options = catchbox_get_theme_options();
 	?>
-	<input type="text" name="catchbox_theme_options[link_color]" id="link-color" value="<?php echo esc_attr( $options['link_color'] ); ?>" />
-	<a href="#" class="pickcolor hide-if-no-js" id="link-color-example"></a>
-	<input type="button" class="pickcolor button hide-if-no-js" value="<?php esc_attr_e( 'Select a Color', 'catchbox' ); ?>" />
-	<div id="colorPickerDiv" style="z-index: 100; background:#eee; border:1px solid #ccc; position:absolute; display:none;"></div>
-	<br />
-	<span><?php printf( __( 'Default color: %s', 'catchbox' ), '<span id="default-color">' . catchbox_get_default_link_color( $options['color_scheme'] ) . '</span>' ); ?></span>
+	<input type="text" name="catchbox_theme_options[link_color]" class="catchbox_color_picker" value="<?php echo esc_attr( $options['link_color'] ); ?>" data-default-color="<?php echo catchbox_get_default_link_color( $options['color_scheme'] )  ?>" />
 	<?php
 }
 
@@ -1330,3 +1328,91 @@ function catchbox_posts_invalidate_caches() {
 	delete_transient( 'catchbox_sliders' ); // Featured Slider
 }
 add_action( 'publish_post', 'catchbox_posts_invalidate_caches' ); // publish posts runs whenever posts are published or published posts are edited
+
+
+/**
+ * Function to display the current year.
+ *
+ * @uses date() Gets the current year.
+ * @return string
+ */
+function catchbox_the_year() {
+    return date( __( 'Y', 'catchbox' ) );
+}
+
+
+/**
+ * Function to display a link back to the site.
+ *
+ * @uses get_bloginfo() Gets the site link
+ * @return string
+ */
+function catchbox_site_link() {
+    return '<a href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" ><span>' . get_bloginfo( 'name', 'display' ) . '</span></a>';
+}
+
+
+/**
+ * Function to display a link to WordPress.org.
+ *
+ * @return string
+ */
+function catchbox_wp_link() {
+    return '<a href="http://wordpress.org" target="_blank" title="' . esc_attr__( 'WordPress', 'catchbox' ) . '"><span>' . __( 'WordPress', 'catchbox' ) . '</span></a>';
+}
+
+
+/**
+ * Function to display a link to Theme Link.
+ *
+ * @return string
+ */
+function catchbox_theme_name() {
+    return '<span class="theme-name">' . __( 'Theme: Catch Box by ', 'catchbox' ) . '</span>';    
+}
+
+
+/**
+ * Function to display a link to Theme Link.
+ *
+ * @return string
+ */
+function catchbox_theme_author() {
+    
+    return '<span class="theme-author"><a href="' . esc_url( 'http://catchthemes.com/' ) . '" target="_blank" title="' . esc_attr__( 'Catch Themes', 'catchbox' ) . '">' . __( 'Catch Themes', 'catchbox' ) . '</a></span>';
+
+}
+
+
+/**
+ * Function to display Catch Box assets
+ *
+ * @return string
+ */
+function catchbox_assets(){
+    $catchbox_content = '<div class="copyright">'. esc_attr__( 'Copyright', 'catchbox' ) . ' &copy; '. catchbox_the_year() . ' ' . catchbox_site_link() . '. ' . esc_attr__( 'All Rights Reserved', 'catchbox' ) . '.</div><div class="powered">'. catchbox_theme_name() . catchbox_theme_author() . '</div>';
+    return $catchbox_content;
+}
+
+
+/**
+ * Custom scripts and styles on Customizer for Catch Box
+ *
+ * @since Catch Box 3.3
+ */
+function catchbox_customize_scripts() {
+    wp_register_script( 'catchbox_customizer_custom', get_template_directory_uri() . '/inc/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
+
+    $catchbox_misc_links = array(
+                            'upgrade_link'              => esc_url( admin_url( 'themes.php?page=theme_options' ) ),
+                            'upgrade_text'              => __( 'More Theme Options &raquo;', 'catchbox' ),
+                            );
+
+    //Add More Theme Options Button
+    wp_localize_script( 'catchbox_customizer_custom', 'catchbox_misc_links', $catchbox_misc_links );
+
+    wp_enqueue_script( 'catchbox_customizer_custom' );
+
+    wp_enqueue_style( 'catchbox_customizer_custom', get_template_directory_uri() . '/inc/catchbox-customizer.css');
+}
+add_action( 'customize_controls_print_footer_scripts', 'catchbox_customize_scripts');
