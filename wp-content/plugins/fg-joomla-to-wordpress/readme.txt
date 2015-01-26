@@ -4,7 +4,7 @@ Plugin Uri: http://wordpress.org/extend/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, wordpress, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews
 Requires at least: 3.0
 Tested up to: WP 4.1.0
-Stable tag: 1.43.2
+Stable tag: 1.43.4
 License: GPLv2
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 
@@ -105,6 +105,7 @@ These modules can be purchased on: http://www.fredericgilles.net/fg-joomla-to-wo
 
 = The migration stops and I get the message: "Fatal error: Allowed memory size of XXXXXX bytes exhausted" or I get the message: “Internal server error" =
 
+* First, deactivate all the WordPress plugins except the ones used for the migration
 * You can run the migration again. It will continue where it stopped.
 * You can add: `define('WP_MEMORY_LIMIT', '512M');` in your wp-config.php file to increase the memory allowed by WordPress
 * You can also increase the memory limit in php.ini if you have write access to this file (ie: memory_limit = 1G).
@@ -183,6 +184,10 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * other can be translated
 
 == Changelog ==
+
+= 1.43.4 =
+* Fixed: Multisite: Links that contain ":" were corrupted
+* FAQ updated
 
 = 1.43.2 =
 * Tweak: Add hooks in the modify_links functions
@@ -541,6 +546,10 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 1.43.4 =
+Fixed: Multisite: Links that contain ":" were corrupted
+FAQ updated
 
 = 1.43.2 =
 Tweak: Add hooks in the modify_links functions
