@@ -33,7 +33,7 @@ msgstr "Τι υπάρχει στο WPtouch Pro;"
 
 #: admin/html/notification-center.php:9
 msgid "License upgrade available"
-msgstr ""
+msgstr "Διαθέσιμη αναβάθμιση άδειας χρήσης"
 
 #: admin/html/notification-center.php:14
 msgid "Notifications"
@@ -328,23 +328,23 @@ msgstr "Δώστε μια λίστα σύντομων κωδίκων χωρισ�
 
 #: admin/pages/wptouch-admin-general-settings.php:264
 msgid "Filter URLs"
-msgstr ""
+msgstr "Φιλτράρισμα δ/σεων URL"
 
 #: admin/pages/wptouch-admin-general-settings.php:270
 msgid "Limit the function of WPtouch Pro on specific URLs/Pages"
-msgstr ""
+msgstr "Να περιορίζεται η λειτουργία του WPtouch Pro σε συγκεκριμένες δ/νσεις URL/Σελίδες"
 
 #: admin/pages/wptouch-admin-general-settings.php:283
 msgid "Do not load WPtouch Pro on these URLs/pages"
-msgstr ""
+msgstr "Να μη φορτώνεται το WPtouch Pro σε αυτές τις δ/νσεις URL/Σελίδες"
 
 #: admin/pages/wptouch-admin-general-settings.php:284
 msgid "Only load WPtouch Pro on these URLs/pages"
-msgstr ""
+msgstr "Να φορτώνεται το WPtouch Pro μόνο σε αυτές τις δ/νσεις URL/Σελίδες"
 
 #: admin/pages/wptouch-admin-general-settings.php:290
 msgid "Apply filter to these URLs/Pages"
-msgstr ""
+msgstr "Να εφαρμόζεται το φίλτρο σε αυτές τις δ/νσεις URL/Σελίδες"
 
 #: admin/pages/wptouch-admin-general-settings.php:291
 #: multi-ads/multi-ads.php:274
@@ -880,99 +880,99 @@ msgstr "Καμία (να γίνεται χρήση των Ρυθμίσεων Wor
 
 #: advanced-type/advanced-type.php:26
 msgid "%sAdvanced Type for WPtouch Pro%s requires %s to be enabled on your server in order to load web fonts. Please contact your server administrator or web host to enable this function."
-msgstr ""
+msgstr "%sΗ Σύνθετη Οικογένεια Γραμματοσειρών για το WPtouch Pro%s απαιτεί την ενεργοποίηση της λειτουργίας %s στον διακομιστή σας, ώστε να είναι δυνατή η φόρτωση γραμματοσειρών Web. Επικοινωνήστε με τον διαχειριστή διακομιστή σας ή τον κεντρικό υπολογιστή Web για ενεργοποίησή της."
 
 #: advanced-type/advanced-type.php:80
 msgid "Load Fonts"
-msgstr ""
+msgstr "Φόρτωση γραμματοσειρών"
 
 #: advanced-type/advanced-type.php:81
 msgid "Could not load your fonts. Please check project/kit details and reload."
-msgstr ""
+msgstr "Αδύνατη η φόρτωση των γραμματοσειρών. Ελέγξτε τις λεπτομέρειες έργου/κιτ και φορτώστε εκ νέου."
 
 #: advanced-type/advanced-type.php:231 advanced-type/advanced-type.php:252
 msgid "Font Source"
-msgstr ""
+msgstr "Πηγή γραμματοσειρών"
 
 #: advanced-type/advanced-type.php:237 advanced-type/advanced-type.php:258
 msgid "Select the source for your web fonts"
-msgstr ""
+msgstr "Επιλέξτε πηγή των γραμματοσειρών Web"
 
 #: advanced-type/advanced-type.php:238
 msgid "Other options will become available once allow_url_fopen is enabled"
-msgstr ""
+msgstr "Αφού ενεργοποιηθεί το allow_url_fopen θα γίνουν διαθέσιμες άλλες επιλογές"
 
 #: advanced-type/advanced-type.php:242 advanced-type/advanced-type.php:263
 msgid "Theme Font Pairings (Configure in Theme Settings)"
-msgstr ""
+msgstr "Συνδυασμοί γραμματοσειρών θεμάτων (ρυθμίστε τους στις Ρυθμίσεις θεμάτων)"
 
 #: advanced-type/advanced-type.php:264
 msgid "Custom Google Fonts"
-msgstr ""
+msgstr "Προσαρμοσμένες γραμματοσειρές Google"
 
 #: advanced-type/advanced-type.php:275
 msgid "Kit ID"
-msgstr ""
+msgstr "ID κιτ"
 
 #: advanced-type/advanced-type.php:293
 msgid "Domain"
-msgstr ""
+msgstr "Τομέας"
 
 #: advanced-type/advanced-type.php:311
 msgid "Project"
-msgstr ""
+msgstr "Έργο"
 
 #: advanced-type/advanced-type.php:367
 msgid "Latin (Default)"
-msgstr ""
+msgstr "Λατινικά (προεπιλογή)"
 
 #: advanced-type/advanced-type.php:368
 msgid "Latin Extended"
-msgstr ""
+msgstr "Εκτεταμένα λατινικά"
 
 #: advanced-type/advanced-type.php:369
 msgid "Cyrillic"
-msgstr ""
+msgstr "Κυριλλικά"
 
 #: advanced-type/advanced-type.php:370
 msgid "Cyrillic Extended"
-msgstr ""
+msgstr "Εκτεταμένα κυριλλικά"
 
 #: advanced-type/advanced-type.php:371
 msgid "Greek"
-msgstr ""
+msgstr "Ελληνικά"
 
 #: advanced-type/advanced-type.php:372
 msgid "Greek Extended"
-msgstr ""
+msgstr "Εκτεταμένα ελληνικά"
 
 #: advanced-type/advanced-type.php:373
 msgid "Devangari"
-msgstr ""
+msgstr "Ντεβανάγκαρι"
 
 #: advanced-type/advanced-type.php:374
 msgid "Vietnamese"
-msgstr ""
+msgstr "Βιετναμικά"
 
 #: advanced-type/advanced-type.php:378
 msgid "Heading"
-msgstr ""
+msgstr "Επικεφαλίδα"
 
 #: advanced-type/advanced-type.php:379
 msgid "Body"
-msgstr ""
+msgstr "Σώμα"
 
 #: advanced-type/advanced-type.php:380
 msgid "Meta"
-msgstr ""
+msgstr "Μέτα"
 
 #: advanced-type/advanced-type.php:405
 msgid "Load subsets"
-msgstr ""
+msgstr "Φόρτωση υποσυνόλων"
 
 #: advanced-type/advanced-type.php:415
 msgid "Font Selection"
-msgstr ""
+msgstr "Επιλογή γραμματοσειράς"
 
 #: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
 #: classic-redux/default/header-bottom.php:55
@@ -2475,19 +2475,19 @@ msgstr "Αριθμός προϊόντων που εμφανίζονται ανά
 
 #: mobilestore/root-functions.php:411
 msgid "Product Pagination"
-msgstr ""
+msgstr "Σελιδοποίηση προϊόντος"
 
 #: mobilestore/root-functions.php:412
 msgid "Use AJAX load more or traditional numbered pagination."
-msgstr ""
+msgstr "Περισσότερη χρήση φόρτωσης AJAX ή παραδοσιακής σελιδοποίησης με αρίθμηση"
 
 #: mobilestore/root-functions.php:416
 msgid "Use AJAX load more"
-msgstr ""
+msgstr "Να γίνεται περισσότερη χρήση φόρτωσης AJAX"
 
 #: mobilestore/root-functions.php:417
 msgid "Use numbered pages"
-msgstr ""
+msgstr "Να γίνεται χρήση αριθμημένων σελίδων"
 
 #: mobilestore/root-functions.php:429
 msgid "Product Filters"
@@ -2551,7 +2551,7 @@ msgstr "Διευθύνσεις URL προς παράκαμψη"
 
 #: multi-ads/multi-ads.php:273
 msgid "Do not show ads on these URLs"
-msgstr ""
+msgstr "Να μην εμφανίζονται διαφημίσεις σε αυτές τις δ/νσεις URL"
 
 #: multi-ads/multi-ads.php:293
 msgid "Enabled"
@@ -2599,7 +2599,7 @@ msgstr "Εμφάνιση σε αποτελέσματα αναζήτησης"
 
 #: multi-ads/multi-ads.php:364
 msgid "Minimum characters in post/page to show ad."
-msgstr ""
+msgstr "Ελάχιστοι χαρακτήρες σε άρθρο/σελίδα για εμφάνιση διαφήμισης."
 
 #: open/default/front-page.php:25
 msgid "We&lsquo;re <em>open</em> every %s %s."
@@ -2828,19 +2828,19 @@ msgstr "Το WPtouch Pro 3 δεν μπορεί να συνυπάρχει με WP
 
 #: pro/professional.php:245
 msgid "WPtouch Pro: Theme &amp; Extension Updates Available"
-msgstr ""
+msgstr "WPtouch Pro: διαθέσιμες αναβαθμίσεις Θεμάτων &amp; Επεκτάσεων"
 
 #: pro/professional.php:246
 msgid "One or more updates are available for your installed themes and extensions."
-msgstr ""
+msgstr "Υπάρχουν μία ή περισσότερες διαθέσιμες αναβαθμίσεις για εγκατεστημένα θέματα και επεκτάσεις σας."
 
 #: pro/professional.php:248
 msgid "WPtouch Pro: Theme Updates Available"
-msgstr ""
+msgstr "WPtouch Pro: διαθέσιμες αναβαθμίσεις Θεμάτων"
 
 #: pro/professional.php:251
 msgid "WPtouch Pro: Extension Updates Available"
-msgstr ""
+msgstr "WPtouch Pro: διαθέσιμες αναβαθμίσεις Επεκτάσεων"
 
 #: pro/professional.php:378 pro/professional.php:402
 msgid "Unknown error"
@@ -2848,15 +2848,15 @@ msgstr "Άγνωστο σφάλμα"
 
 #: pro/professional.php:771
 msgid "%sYour customizations to %s have been saved as a new theme and the original reinstalled for your reference."
-msgstr ""
+msgstr "%sΟι προσαρμογές που πραγματοποιήσατε στο %s αποθηκεύτηκαν ως νέο θέμα και το πρωτότυπο επανεγκαταστάθηκε για το αρχείο σας."
 
 #: pro/professional.php:775
 msgid "WPtouch Pro: Some themes or extensions could not be auto-updated. Please check the WPtouch Pro Themes &amp; Extensions page to manually update them."
-msgstr ""
+msgstr "WPtouch Pro: δεν ήταν δυνατή η αυτόματη αναβάθμιση ορισμένων θεμάτων ή επεκτάσεων. Ελέγξτε τη σελίδα Θεμάτων &amp; Επεκτάσεων του WPtouch Pro για να τα αναβαθμίσετε μη αυτόματα."
 
 #: pro/professional.php:777
 msgid "WPtouch Pro: Your themes and extensions have been automatically updated. Thank you for updating WPtouch Pro!"
-msgstr ""
+msgstr "WPtouch Pro: τα θέματα και οι επεκτάσεις σας αναβαθμίστηκαν αυτόματα. Σας ευχαριστούμε που αναβαθμίσατε το WPtouch Pro!"
 
 #: prose/default/comments.php:20 prose/default/comments.php:26
 #: themes/foundation/default/comments.php:20
@@ -2975,7 +2975,7 @@ msgstr "Η φόρμα σχολίων δεν θα εμφανίζεται για �
 
 #: prose/root-functions.php:87
 msgid "Use featured image as the header background when viewing single posts"
-msgstr ""
+msgstr "Χρήση προβεβλημένης εικόνας ως φόντο κεφαλίδας κατά την προβολη μονών άρθρων"
 
 #: prose/root-functions.php:155
 msgid "Drop Caps"
@@ -3087,7 +3087,7 @@ msgstr "Το άρθρο ή η σελίδα που ζητήσατε δεν είν
 
 #: themes/foundation/default/attachment.php:10
 msgid "Back to %s"
-msgstr ""
+msgstr "Επιστροφή σε %s"
 
 #: themes/foundation/default/attachment.php:47
 msgid "&laquo; previous in gallery"
@@ -3119,7 +3119,7 @@ msgstr "Το σχόλιό σας αναμένει επόπτευση"
 
 #: themes/foundation/default/one-comment.php:21
 msgid "Reply"
-msgstr ""
+msgstr "Απάντηση"
 
 #: themes/foundation/default/switch-link.php:8
 msgid "mobile"
@@ -3316,7 +3316,7 @@ msgstr "Εμφάνιση άρθρων μιας συγκεκριμένης κατ
 
 #: themes/foundation/modules/featured/featured.php:356
 msgid "Show posts from a specific post type"
-msgstr ""
+msgstr "Εμφάνιση άρθρων ενός συγκεκριμένου τύπου"
 
 #: themes/foundation/modules/featured/featured.php:357
 msgid "Show only specific posts or pages"
@@ -3337,7 +3337,7 @@ msgstr "Μόνο αυτή η κατηγορία"
 
 #: themes/foundation/modules/featured/featured.php:381
 msgid "Only this post type"
-msgstr ""
+msgstr "Μόνο αυτός ο τύπος άρθρου"
 
 #: themes/foundation/modules/featured/featured.php:390
 msgid "Comma-separated list of post/page IDs"
@@ -3357,7 +3357,7 @@ msgstr "Στυλ γραμματοσειράς"
 
 #: themes/foundation/modules/google-fonts/google-fonts.php:35
 msgid "Choose a Google font pairing designed for this theme, or default browser fonts."
-msgstr "Διάλεξε έναν συνδυασμό γραμματοσειρών Google για αυτό το θέμα ή τις προεπιλεγμένες γραμματοσειρές του προγράμματος περιήγησης."
+msgstr "Διαλέξτε έναν συνδυασμό γραμματοσειρών Google για αυτό το θέμα ή τις προεπιλεγμένες γραμματοσειρές του προγράμματος περιήγησης."
 
 #: themes/foundation/modules/login/login-html.php:7
 msgid "Remember Me"
@@ -3421,7 +3421,7 @@ msgstr "Ενεργοποίηση εμφάνισης σχετικού περιε�
 
 #: themes/foundation/modules/related-posts/related-posts.php:23
 msgid "Ignore tags when identifying related posts"
-msgstr ""
+msgstr "Να αγνοούνται οι ετικέτες κατά την αναγνώριση σχετικών άρθρων"
 
 #: themes/foundation/modules/related-posts/related-posts.php:31
 msgid "Maximum number of related posts to show"
@@ -3533,7 +3533,7 @@ msgstr "Πλήρης διεύθυνση URL του προφίλ σας στο Li
 
 #: themes/foundation/modules/social-links/social-links.php:95
 msgid "Full URL to your Yelp profile"
-msgstr ""
+msgstr "Πλήρης δ/νση URL στο προφίλ σας στο Yelp"
 
 #: themes/foundation/modules/social-links/social-links.php:103
 msgid "E-Mail address"
@@ -3680,7 +3680,7 @@ msgstr "Γλώσσα:"
 
 #: themes/foundation/root-functions.php:139
 msgid "Install this Web-App on your home screen: tap [icon] then \"Add to Home Screen\""
-msgstr ""
+msgstr "Εγκατάσταση αυτής της εφαρμογής Web-App στην αρχική οθόνη σας: πατήστε το [icon] και ύστερα το \"Προσθήκη στην αρχική οθόνη\""
 
 #: themes/foundation/root-functions.php:347
 msgid "Number of posts in post listings"

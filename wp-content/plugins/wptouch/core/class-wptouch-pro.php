@@ -351,7 +351,7 @@ class WPtouchProThree {
 
 	function check_for_critical_notifications() {
 		if ( defined( 'WPTOUCH_MIGRATION_OLD_ISSUE' ) ) {
-			$this->add_critical_notification( sprintf( __( 'Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue.', 'wptouch-pro' ), '<a href="http://www.wptouch.com/support/">', '</a>' ) );
+			$this->add_critical_notification( sprintf( __( 'Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue.', 'wptouch-pro' ), '<a href="https://wptouch.freshdesk.com/">', '</a>' ) );
 		}
 	}
 
@@ -371,11 +371,11 @@ class WPtouchProThree {
 			if ( $this->can_perform_cloud_install( true ) ) {
 				echo '<div class="updated" id="repair-cloud-theme" style="display: none;"></div>';
 				echo '<div class="error" id="repair-cloud-failure" style="display: none;"><p>';
-				echo sprintf( __( 'We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information.', 'wptouch-pro' ), '<a href="http://www.wptouch.com/support/knowledgebase/themes-or-extensions-cannot-be-downloaded/">', '</a>' );
+				echo sprintf( __( 'We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information.', 'wptouch-pro' ), '<a href="https://wptouch.freshdesk.com/support/solutions/articles/5000525305-themes-or-extensions-cannot-be-downloaded">', '</a>' );
 				echo '</p></div>';
 			} else {
 				echo '<div class="error" id="repair-cloud-failure" style="margin-top: 10px;"><p>';
-				echo sprintf( __( 'Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it.', 'wptouch-pro' ), '<a href="http://www.wptouch.com/support/knowledgebase/themes-or-extensions-cannot-be-downloaded/">', '</a>' );
+				echo sprintf( __( 'Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it.', 'wptouch-pro' ), '<a href="https://wptouch.freshdesk.com/support/solutions/articles/5000525305-themes-or-extensions-cannot-be-downloaded">', '</a>' );
 				echo '</p></div>';
 			}
 		} else if ( $this->has_critical_notifications() ) {

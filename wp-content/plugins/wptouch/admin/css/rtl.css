@@ -367,6 +367,11 @@ body {
 ul.menu-tree li {
 	clear: right;
 }
+	ul.menu-tree li:before {
+		display:block;
+		content: '';
+		clear: both;
+	}
 
 ul.menu-tree li input {
 	right: auto;

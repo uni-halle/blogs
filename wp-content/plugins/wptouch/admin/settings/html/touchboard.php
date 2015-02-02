@@ -11,12 +11,10 @@
 				<li><a href="//www.wptouch.com/extensions/?utm_campaign=touchboard&utm_source=<?php echo WPTOUCH_UTM_SOURCE; ?>&utm_medium=web"><?php _e( 'Look at Pro Extensions', 'wptouch-pro' ); ?></a></li>
 				<li><a href="//www.wptouch.com/features/?utm_campaign=touchboard&utm_source=<?php echo WPTOUCH_UTM_SOURCE; ?>&utm_medium=web"><?php _e( 'Look at Pro Features', 'wptouch-pro' ); ?></a></li>
 			<?php } ?>
-			
+
 			<?php if ( !defined( 'WPTOUCH_IS_FREE' ) ) { ?>
-			<li><a href="//www.wptouch.com/support/" target="_blank"><?php _e( 'Product Support', 'wptouch-pro' ); ?></a></li>
-			<li><a href="//www.wptouch.com/support/knowledgebase/?utm_campaign=touchboard&utm_source=<?php echo WPTOUCH_UTM_SOURCE; ?>&utm_medium=web" target="_blank"><?php _e( 'Product Knowledgebase', 'wptouch-pro' ); ?></a></li>
-			<li><a href="//www.wptouch.com/support/profile/" target="_blank"><?php _e( 'Manage Account', 'wptouch-pro' ); ?></a></li>
-			<li><a href="//www.wptouch.com/support/" target="_blank"><?php _e( 'Manage License', 'wptouch-pro' ); ?></a></li>
+			<li><a href="//wptouch.freshdesk.com" target="_blank"><?php _e( 'Knowledgebase & Support', 'wptouch-pro' ); ?></a></li>
+			<li><a href="//www.wptouch.com/account/" target="_blank"><?php _e( 'Manage Account & License', 'wptouch-pro' ); ?></a></li>
 			<?php } else { ?>
 			<li><a href="//wptouch.s3.amazonaws.com/docs/WPtouch%20User%20Guide.pdf"><?php _e( 'WPtouch User Guide', 'wptouch-pro' ); ?></a></li>
 			<?php } ?>

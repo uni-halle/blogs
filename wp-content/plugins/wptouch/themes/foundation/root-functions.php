@@ -1025,7 +1025,11 @@ function wptouch_fdn_hierarchical_cat_list( $num, $include_count = true, $taxono
 		'walker' => new WPtouchProCategoryWalker
 	);
 
-	$r = wp_parse_args( $args, $defaults );
+	if ( isset( $args ) ) {
+		$r = wp_parse_args( $args, $defaults );
+	} else {
+		$r = $defaults;
+	}
 
 	if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] )
 		$r['pad_counts'] = true;
@@ -1095,7 +1099,7 @@ function wptouch_fdn_hierarchical_cat_list( $num, $include_count = true, $taxono
 	 * @param string $output HTML output.
 	 * @param array  $args   An array of taxonomy-listing arguments.
 	 */
-	$html = apply_filters( 'wp_list_categories', $output, $args );
+	$html = apply_filters( 'wp_list_categories', $output, $r );
 
 	if ( $r['echo'] ) {
 		echo $html;

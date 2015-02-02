@@ -33,7 +33,7 @@ msgstr "Was gibt's in WPtouch Pro?"
 
 #: admin/html/notification-center.php:9
 msgid "License upgrade available"
-msgstr ""
+msgstr "Lizenz-Upgrade verfügbar"
 
 #: admin/html/notification-center.php:14
 msgid "Notifications"
@@ -328,23 +328,23 @@ msgstr "Gib eine von Kommata getrennte Liste an Shortcodes zum Entfernen ein."
 
 #: admin/pages/wptouch-admin-general-settings.php:264
 msgid "Filter URLs"
-msgstr ""
+msgstr "URLs filtern"
 
 #: admin/pages/wptouch-admin-general-settings.php:270
 msgid "Limit the function of WPtouch Pro on specific URLs/Pages"
-msgstr ""
+msgstr "Die Fuktion von WPtouch Pro auf spezifischen  URLs/Seiten einschränken"
 
 #: admin/pages/wptouch-admin-general-settings.php:283
 msgid "Do not load WPtouch Pro on these URLs/pages"
-msgstr ""
+msgstr "WPtouch Pro auf diesen URLs/Seiten nicht laden"
 
 #: admin/pages/wptouch-admin-general-settings.php:284
 msgid "Only load WPtouch Pro on these URLs/pages"
-msgstr ""
+msgstr "WPtouch Pro nur auf diesen URLs/Seiten laden"
 
 #: admin/pages/wptouch-admin-general-settings.php:290
 msgid "Apply filter to these URLs/Pages"
-msgstr ""
+msgstr "Filter auf diese URLs/Seiten anwenden"
 
 #: admin/pages/wptouch-admin-general-settings.php:291
 #: multi-ads/multi-ads.php:274
@@ -880,99 +880,99 @@ msgstr "Keine (WordPress-Einstellungen verwenden)"
 
 #: advanced-type/advanced-type.php:26
 msgid "%sAdvanced Type for WPtouch Pro%s requires %s to be enabled on your server in order to load web fonts. Please contact your server administrator or web host to enable this function."
-msgstr ""
+msgstr "%sFortschrittlicher Typ für WPtouch Pro%s erfordert, dass %s auf deinem Server aktiviert ist, um Webschriften zu laden. Bitte kontaktiere deinen Server-Administrator oder Webhost, um diese Funktion zu aktivieren."
 
 #: advanced-type/advanced-type.php:80
 msgid "Load Fonts"
-msgstr ""
+msgstr "Schriftarten laden"
 
 #: advanced-type/advanced-type.php:81
 msgid "Could not load your fonts. Please check project/kit details and reload."
-msgstr ""
+msgstr "Deine Schriften konnten nicht geladen werden. Bitte prüfe die Projekt/Kit-Details und lade sie erneut."
 
 #: advanced-type/advanced-type.php:231 advanced-type/advanced-type.php:252
 msgid "Font Source"
-msgstr ""
+msgstr "Schriftquelle"
 
 #: advanced-type/advanced-type.php:237 advanced-type/advanced-type.php:258
 msgid "Select the source for your web fonts"
-msgstr ""
+msgstr "Wähle die Quelle für deine Webschriften"
 
 #: advanced-type/advanced-type.php:238
 msgid "Other options will become available once allow_url_fopen is enabled"
-msgstr ""
+msgstr "Weitere Optionen werden verfügbar, sobald allow_url_fopen aktiviert wurde"
 
 #: advanced-type/advanced-type.php:242 advanced-type/advanced-type.php:263
 msgid "Theme Font Pairings (Configure in Theme Settings)"
-msgstr ""
+msgstr "Themen-Schriftart-Kopplungen (In Themen-Einstellungen konfigurieren)"
 
 #: advanced-type/advanced-type.php:264
 msgid "Custom Google Fonts"
-msgstr ""
+msgstr "Benutzerdef. Google-Schriftarten"
 
 #: advanced-type/advanced-type.php:275
 msgid "Kit ID"
-msgstr ""
+msgstr "Kit-ID"
 
 #: advanced-type/advanced-type.php:293
 msgid "Domain"
-msgstr ""
+msgstr "Domäne"
 
 #: advanced-type/advanced-type.php:311
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #: advanced-type/advanced-type.php:367
 msgid "Latin (Default)"
-msgstr ""
+msgstr "Latein (Standard)"
 
 #: advanced-type/advanced-type.php:368
 msgid "Latin Extended"
-msgstr ""
+msgstr "Latein erweitert"
 
 #: advanced-type/advanced-type.php:369
 msgid "Cyrillic"
-msgstr ""
+msgstr "Kyrillisch"
 
 #: advanced-type/advanced-type.php:370
 msgid "Cyrillic Extended"
-msgstr ""
+msgstr "Kyrillisch erweitert"
 
 #: advanced-type/advanced-type.php:371
 msgid "Greek"
-msgstr ""
+msgstr "Griechisch"
 
 #: advanced-type/advanced-type.php:372
 msgid "Greek Extended"
-msgstr ""
+msgstr "Griechisch erweitert"
 
 #: advanced-type/advanced-type.php:373
 msgid "Devangari"
-msgstr ""
+msgstr "Devanagari"
 
 #: advanced-type/advanced-type.php:374
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamesisch"
 
 #: advanced-type/advanced-type.php:378
 msgid "Heading"
-msgstr ""
+msgstr "Überschrift"
 
 #: advanced-type/advanced-type.php:379
 msgid "Body"
-msgstr ""
+msgstr "Text"
 
 #: advanced-type/advanced-type.php:380
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: advanced-type/advanced-type.php:405
 msgid "Load subsets"
-msgstr ""
+msgstr "Subsets laden"
 
 #: advanced-type/advanced-type.php:415
 msgid "Font Selection"
-msgstr ""
+msgstr "Schriftauswahl"
 
 #: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
 #: classic-redux/default/header-bottom.php:55
@@ -2475,19 +2475,19 @@ msgstr "Produktanzahl, die pro Seite der Produktliste angezeigt wird"
 
 #: mobilestore/root-functions.php:411
 msgid "Product Pagination"
-msgstr ""
+msgstr "Produktnummerierung"
 
 #: mobilestore/root-functions.php:412
 msgid "Use AJAX load more or traditional numbered pagination."
-msgstr ""
+msgstr "AJAX verwenden, um mehr oder traditionelle Nummerierungen zu laden."
 
 #: mobilestore/root-functions.php:416
 msgid "Use AJAX load more"
-msgstr ""
+msgstr "Mit AJAX mehr laden"
 
 #: mobilestore/root-functions.php:417
 msgid "Use numbered pages"
-msgstr ""
+msgstr "Nummerierte Seiten verwenden"
 
 #: mobilestore/root-functions.php:429
 msgid "Product Filters"
@@ -2551,7 +2551,7 @@ msgstr "Ignorierte URLs"
 
 #: multi-ads/multi-ads.php:273
 msgid "Do not show ads on these URLs"
-msgstr ""
+msgstr "Auf diesen URLs keine Werbung anzeigen"
 
 #: multi-ads/multi-ads.php:293
 msgid "Enabled"
@@ -2599,7 +2599,7 @@ msgstr "Auf Suchergebnissen anzeigen"
 
 #: multi-ads/multi-ads.php:364
 msgid "Minimum characters in post/page to show ad."
-msgstr ""
+msgstr "Mindestzeichenmenge auf Beitrag/Seite, um Werbung anzuzeigen."
 
 #: open/default/front-page.php:25
 msgid "We&lsquo;re <em>open</em> every %s %s."
@@ -2828,19 +2828,19 @@ msgstr "WPtouch Pro 3 kann nicht neben WPtouch 2.x existieren. Deaktiviere es zu
 
 #: pro/professional.php:245
 msgid "WPtouch Pro: Theme &amp; Extension Updates Available"
-msgstr ""
+msgstr "WPtouch Pro: Thema- &amp; Erweiterungs-Updates verfügbar"
 
 #: pro/professional.php:246
 msgid "One or more updates are available for your installed themes and extensions."
-msgstr ""
+msgstr "Ein oder mehrere Updates sind für deine installierten Themen und Erweiterungen verfügbar."
 
 #: pro/professional.php:248
 msgid "WPtouch Pro: Theme Updates Available"
-msgstr ""
+msgstr "WPtouch Pro: Themen-Updates verfügbar"
 
 #: pro/professional.php:251
 msgid "WPtouch Pro: Extension Updates Available"
-msgstr ""
+msgstr "WPtouch Pro: Erweiterungs-Updates verfügbar"
 
 #: pro/professional.php:378 pro/professional.php:402
 msgid "Unknown error"
@@ -2848,15 +2848,15 @@ msgstr "Unbekannter Fehler"
 
 #: pro/professional.php:771
 msgid "%sYour customizations to %s have been saved as a new theme and the original reinstalled for your reference."
-msgstr ""
+msgstr "%sDeine Einstellungen für %s wurden als neues Thema gespeichert und das Original wurde als Referenz erneut installiert."
 
 #: pro/professional.php:775
 msgid "WPtouch Pro: Some themes or extensions could not be auto-updated. Please check the WPtouch Pro Themes &amp; Extensions page to manually update them."
-msgstr ""
+msgstr "WPtouch Pro: Einige Themen oder Erweiterungen konnten nicht automatisch aktualisiert werden. Bitte überprüfe die Seite WPtouch Pro Themen &amp; Erweiterungen, um diese manuell upzudaten."
 
 #: pro/professional.php:777
 msgid "WPtouch Pro: Your themes and extensions have been automatically updated. Thank you for updating WPtouch Pro!"
-msgstr ""
+msgstr "WPtouch Pro: Deine Themen und Erweiterungen wurden automatisch aktualisiert. Danke, dass du das WPtouch Pro Update geladen hast!"
 
 #: prose/default/comments.php:20 prose/default/comments.php:26
 #: themes/foundation/default/comments.php:20
@@ -2975,7 +2975,7 @@ msgstr "Kommentarfeld wird nicht für Beiträge erscheinen, bei denen die Kommen
 
 #: prose/root-functions.php:87
 msgid "Use featured image as the header background when viewing single posts"
-msgstr ""
+msgstr "Enthaltenes Bild als Überschrift-Hintergrund beim Ansehen einzelner Beiträge verwenden"
 
 #: prose/root-functions.php:155
 msgid "Drop Caps"
@@ -3087,7 +3087,7 @@ msgstr "Der Beitrag oder die Seite, die du angefordert hast, ist nicht länger v
 
 #: themes/foundation/default/attachment.php:10
 msgid "Back to %s"
-msgstr ""
+msgstr "Zurück zu %s"
 
 #: themes/foundation/default/attachment.php:47
 msgid "&laquo; previous in gallery"
@@ -3119,7 +3119,7 @@ msgstr "Dein Kommentar wartet auf Bestätigung"
 
 #: themes/foundation/default/one-comment.php:21
 msgid "Reply"
-msgstr ""
+msgstr "Antworten"
 
 #: themes/foundation/default/switch-link.php:8
 msgid "mobile"
@@ -3316,7 +3316,7 @@ msgstr "Beiträge von einer best. Kategorie anzeigen"
 
 #: themes/foundation/modules/featured/featured.php:356
 msgid "Show posts from a specific post type"
-msgstr ""
+msgstr "Beiträge eines bestimmten Beitragstyps anzeigen"
 
 #: themes/foundation/modules/featured/featured.php:357
 msgid "Show only specific posts or pages"
@@ -3337,7 +3337,7 @@ msgstr "Nur diese Kategorie"
 
 #: themes/foundation/modules/featured/featured.php:381
 msgid "Only this post type"
-msgstr ""
+msgstr "Nur diesen Beitragstyp"
 
 #: themes/foundation/modules/featured/featured.php:390
 msgid "Comma-separated list of post/page IDs"
@@ -3421,7 +3421,7 @@ msgstr "Anzeige von verwandten Inhalten auf einzelnen Beiträgen aktivieren"
 
 #: themes/foundation/modules/related-posts/related-posts.php:23
 msgid "Ignore tags when identifying related posts"
-msgstr ""
+msgstr "Tags ignorieren, wenn ähnliche Beiträge identifiziert werden"
 
 #: themes/foundation/modules/related-posts/related-posts.php:31
 msgid "Maximum number of related posts to show"
@@ -3533,7 +3533,7 @@ msgstr "Komplette URL deines LinkedIn-Profils"
 
 #: themes/foundation/modules/social-links/social-links.php:95
 msgid "Full URL to your Yelp profile"
-msgstr ""
+msgstr "Vollständige URL zu deinem Yelp-Profil"
 
 #: themes/foundation/modules/social-links/social-links.php:103
 msgid "E-Mail address"
@@ -3680,7 +3680,7 @@ msgstr "Sprache:"
 
 #: themes/foundation/root-functions.php:139
 msgid "Install this Web-App on your home screen: tap [icon] then \"Add to Home Screen\""
-msgstr ""
+msgstr "Installiere diese Web-App auf deiner Startseite: tippe auf [icon], dann \"Zur Startseite hinzufügen\""
 
 #: themes/foundation/root-functions.php:347
 msgid "Number of posts in post listings"

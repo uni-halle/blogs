@@ -33,7 +33,7 @@ msgstr "WPtouch Pro में क्या है?"
 
 #: admin/html/notification-center.php:9
 msgid "License upgrade available"
-msgstr ""
+msgstr "लाइसेंस अपग्रेड उपलब्ध"
 
 #: admin/html/notification-center.php:14
 msgid "Notifications"
@@ -880,7 +880,7 @@ msgstr "कोई नहीं (वर्डप्रेस सेटिंग�
 
 #: advanced-type/advanced-type.php:26
 msgid "%sAdvanced Type for WPtouch Pro%s requires %s to be enabled on your server in order to load web fonts. Please contact your server administrator or web host to enable this function."
-msgstr ""
+msgstr "%sWPtouch प्रो के उन्नत प्रकार%s को वेब फॉन्ट्स लोड करने के लिए आपके सर्वर पर%s सक्षम होने की आवश्यकता है. इस फ़ंक्शन सक्षम करने के लिए अपने सर्वर व्यवस्थापक या वेब होस्ट से संपर्क करें."
 
 #: advanced-type/advanced-type.php:80
 msgid "Load Fonts"
@@ -888,7 +888,7 @@ msgstr "फ़ॉन्ट लोड करें"
 
 #: advanced-type/advanced-type.php:81
 msgid "Could not load your fonts. Please check project/kit details and reload."
-msgstr ""
+msgstr "आपके फ़ॉन्ट लोड नहीं हो सके. कृपया प्रोजेक्ट/किट विवरण जाचें और पुनः लोड करें."
 
 #: advanced-type/advanced-type.php:231 advanced-type/advanced-type.php:252
 msgid "Font Source"
@@ -900,7 +900,7 @@ msgstr "कृपया अपने वेब फ़ॉन्ट के लि�
 
 #: advanced-type/advanced-type.php:238
 msgid "Other options will become available once allow_url_fopen is enabled"
-msgstr ""
+msgstr "एक बार Allow_url_fopen सक्षम होने पर अन्य विकल्प उपलब्ध हो जाएंगे"
 
 #: advanced-type/advanced-type.php:242 advanced-type/advanced-type.php:263
 msgid "Theme Font Pairings (Configure in Theme Settings)"
@@ -956,23 +956,23 @@ msgstr "वियतनामी"
 
 #: advanced-type/advanced-type.php:378
 msgid "Heading"
-msgstr ""
+msgstr "शीर्षक"
 
 #: advanced-type/advanced-type.php:379
 msgid "Body"
-msgstr ""
+msgstr "मुख्य भाग"
 
 #: advanced-type/advanced-type.php:380
 msgid "Meta"
-msgstr ""
+msgstr "मेटा"
 
 #: advanced-type/advanced-type.php:405
 msgid "Load subsets"
-msgstr ""
+msgstr "सब्सेट लोड करें"
 
 #: advanced-type/advanced-type.php:415
 msgid "Font Selection"
-msgstr ""
+msgstr "फ़ॉन्ट चयन"
 
 #: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
 #: classic-redux/default/header-bottom.php:55
@@ -2475,19 +2475,19 @@ msgstr "उत्पाद प्रविष्टि में उत्पा
 
 #: mobilestore/root-functions.php:411
 msgid "Product Pagination"
-msgstr ""
+msgstr "उत्पाद पृष्ठांकन"
 
 #: mobilestore/root-functions.php:412
 msgid "Use AJAX load more or traditional numbered pagination."
-msgstr ""
+msgstr "AJAX load more या पारंपरिक गिने पृष्ठांकन उपयोग करें."
 
 #: mobilestore/root-functions.php:416
 msgid "Use AJAX load more"
-msgstr ""
+msgstr "AJAX load more उपयोग करें."
 
 #: mobilestore/root-functions.php:417
 msgid "Use numbered pages"
-msgstr ""
+msgstr "गिने पेजों का उपयोग करें"
 
 #: mobilestore/root-functions.php:429
 msgid "Product Filters"
@@ -2551,7 +2551,7 @@ msgstr "उपेक्षित  URLs"
 
 #: multi-ads/multi-ads.php:273
 msgid "Do not show ads on these URLs"
-msgstr ""
+msgstr "इन URLs पर विज्ञापन नहीं दिखाएं"
 
 #: multi-ads/multi-ads.php:293
 msgid "Enabled"
@@ -2599,7 +2599,7 @@ msgstr "खोज परिणामों में प्रदर्शित
 
 #: multi-ads/multi-ads.php:364
 msgid "Minimum characters in post/page to show ad."
-msgstr ""
+msgstr "विज्ञापन दिखाने के लिए पोस्ट/पेज में न्यूनतम पात्र."
 
 #: open/default/front-page.php:25
 msgid "We&lsquo;re <em>open</em> every %s %s."
@@ -2828,19 +2828,19 @@ msgstr "WPtouch प्रो 3 और WPtouch प्रो 2.x.एक साथ 
 
 #: pro/professional.php:245
 msgid "WPtouch Pro: Theme &amp; Extension Updates Available"
-msgstr ""
+msgstr "WPtouch प्रो: थीम & amp; एक्सटेंशन अपडेट उपलब्ध"
 
 #: pro/professional.php:246
 msgid "One or more updates are available for your installed themes and extensions."
-msgstr ""
+msgstr "आपके स्थापित थीम और एक्सटेंशनों के लिए एक या अधिक अपडेट उपलब्ध हैं."
 
 #: pro/professional.php:248
 msgid "WPtouch Pro: Theme Updates Available"
-msgstr ""
+msgstr "WPtouch प्रो: थीम अपडेट उपलब्ध"
 
 #: pro/professional.php:251
 msgid "WPtouch Pro: Extension Updates Available"
-msgstr ""
+msgstr "WPtouch प्रो: एक्सटेंशन अपडेट उपलब्ध"
 
 #: pro/professional.php:378 pro/professional.php:402
 msgid "Unknown error"
@@ -2848,15 +2848,15 @@ msgstr "अज्ञात त्रुटि"
 
 #: pro/professional.php:771
 msgid "%sYour customizations to %s have been saved as a new theme and the original reinstalled for your reference."
-msgstr ""
+msgstr "%sआपके कस्टमाइज़ेशन को%s नई थीम के रूप में सहेजा गया है और मूल को आपके सन्दर्भ के लिए पुनर्स्थापित किया गया है."
 
 #: pro/professional.php:775
 msgid "WPtouch Pro: Some themes or extensions could not be auto-updated. Please check the WPtouch Pro Themes &amp; Extensions page to manually update them."
-msgstr ""
+msgstr "WPtouch प्रो: कुछ थीम और एक्सटेंशन को स्वचालित रूप से अद्यतन नहीं किया जा सका. WPtouch प्रो थीम &amp;; एक्सटेंशन पेज की जांच करें; और उन्हें स्वयं अपडेट करें."
 
 #: pro/professional.php:777
 msgid "WPtouch Pro: Your themes and extensions have been automatically updated. Thank you for updating WPtouch Pro!"
-msgstr ""
+msgstr "WPtouch प्रो: आपकी थीम और एक्सटेंशन को स्वचालित रूप से अद्यतन किया गया है. WPtouch प्रो को अपडेट करने के लिए धन्यवाद!"
 
 #: prose/default/comments.php:20 prose/default/comments.php:26
 #: themes/foundation/default/comments.php:20
@@ -2975,7 +2975,7 @@ msgstr "टिप्प्णी आफ के साथ टिप्प्ण�
 
 #: prose/root-functions.php:87
 msgid "Use featured image as the header background when viewing single posts"
-msgstr ""
+msgstr "जब एकल पोस्ट देखें तब शीर्षक पृष्ठभूमि के रूप में चित्रित छवि का प्रयोग करें"
 
 #: prose/root-functions.php:155
 msgid "Drop Caps"
@@ -3087,7 +3087,7 @@ msgstr "आपके द्वारा अनुरोधित पोस्ट
 
 #: themes/foundation/default/attachment.php:10
 msgid "Back to %s"
-msgstr ""
+msgstr "%s पर वापस जाएं"
 
 #: themes/foundation/default/attachment.php:47
 msgid "&laquo; previous in gallery"
@@ -3119,7 +3119,7 @@ msgstr "आपकी टिप्पणी मॉडरेशन की प्�
 
 #: themes/foundation/default/one-comment.php:21
 msgid "Reply"
-msgstr ""
+msgstr "उत्तर"
 
 #: themes/foundation/default/switch-link.php:8
 msgid "mobile"
@@ -3316,7 +3316,7 @@ msgstr "एक विशिष्ट श्रेणी से पोस्ट �
 
 #: themes/foundation/modules/featured/featured.php:356
 msgid "Show posts from a specific post type"
-msgstr ""
+msgstr "एक विशिष्ट पोस्ट प्रकार से पोस्ट दिखाएं"
 
 #: themes/foundation/modules/featured/featured.php:357
 msgid "Show only specific posts or pages"
@@ -3337,7 +3337,7 @@ msgstr "केवल यह श्रेणी"
 
 #: themes/foundation/modules/featured/featured.php:381
 msgid "Only this post type"
-msgstr ""
+msgstr "केवल इस पोस्ट के प्रकार"
 
 #: themes/foundation/modules/featured/featured.php:390
 msgid "Comma-separated list of post/page IDs"
@@ -3421,7 +3421,7 @@ msgstr "एकल पोस्ट पर संबंधित सामग्�
 
 #: themes/foundation/modules/related-posts/related-posts.php:23
 msgid "Ignore tags when identifying related posts"
-msgstr ""
+msgstr "संबंधित पोस्ट की पहचान होने पर टैग पर ध्यान न दें"
 
 #: themes/foundation/modules/related-posts/related-posts.php:31
 msgid "Maximum number of related posts to show"
@@ -3533,7 +3533,7 @@ msgstr "आपके लिंक्डइन प्रोफ़ाइल के
 
 #: themes/foundation/modules/social-links/social-links.php:95
 msgid "Full URL to your Yelp profile"
-msgstr ""
+msgstr "आपके Yelp प्रोफाइल के लिए पूर्ण URL"
 
 #: themes/foundation/modules/social-links/social-links.php:103
 msgid "E-Mail address"
@@ -3680,7 +3680,7 @@ msgstr "भाषा:"
 
 #: themes/foundation/root-functions.php:139
 msgid "Install this Web-App on your home screen: tap [icon] then \"Add to Home Screen\""
-msgstr ""
+msgstr "इस वेब-एप्लिकेशन को अपनी होम स्क्रीन पर इंस्टॉल करें: [icon] टैप करें और फिर \"होम स्क्रीन में जोड़ें\""
 
 #: themes/foundation/root-functions.php:347
 msgid "Number of posts in post listings"

@@ -23,7 +23,7 @@
 			<a href="http://www.wptouch.com/renew/?utm_campaign=renew-license-page&utm_source=wptouch&utm_medium=web" class="renew button" target="_blank"><?php _e( 'Renew License', 'wptouch-pro' ); ?></a>
 			<?php } else { ?>
 			<a href="#" class="activate button"><?php _e( 'Activate', 'wptouch-pro' ); ?></a>
-			<?php } ?>		
+			<?php } ?>
 			<?php if ( $settings->bncid || $settings->wptouch_license_key ) { ?>
 				<a href="#" class="clear-license button"><?php _e( 'Clear License', 'wptouch-pro' ); ?></a>
 			<?php } ?>
@@ -54,13 +54,13 @@
 			<?php _e( 'No licenses remaining.', 'wptouch-pro' ); ?>
 			<p><?php _e( 'You have used all your activations. What do you want to do?', 'wptouch-pro' ); ?></p>
 			<a href="http://www.wptouch.com/pricing/" class="button"><?php _e( 'Upgrade My License', 'wptouch-pro' ); ?></a>
-			<a href="http://www.wptouch.com/support/" class="button"><?php _e( 'Contact support for assistance', 'wptouch-pro' ); ?></a>
+			<a href="http://www.wptouch.com/account/" class="button"><?php _e( 'Contact support for assistance', 'wptouch-pro' ); ?></a>
 		</div>
 
 		<div id="server-issue-license" class="license-status">
 			<?php _e( 'The server is unavailable.', 'wptouch-pro' ); ?>
 			<p><?php _e( 'The wptouch.com server currently cannot authorize your License.', 'wptouch-pro' ); ?></p>
-			<p><?php echo sprintf( __( 'Please %scontact us%s and let us know about it.', 'wptouch-pro' ), '<a href="http://www.wptouch.com/support/">', '</a>' ); ?></p>
+			<p><?php echo sprintf( __( 'Please %scontact us%s and let us know about it.', 'wptouch-pro' ), '<a href="http://www.wptouch.com/account/">', '</a>' ); ?></p>
 		</div>
 	</div>
 </div>

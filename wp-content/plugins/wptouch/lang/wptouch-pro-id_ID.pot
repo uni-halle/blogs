@@ -33,7 +33,7 @@ msgstr "Ada apa di WPtouch Pro?"
 
 #: admin/html/notification-center.php:9
 msgid "License upgrade available"
-msgstr "Upgrade Lisensi tersedia"
+msgstr "Peningkatan Lisensi tersedia"
 
 #: admin/html/notification-center.php:14
 msgid "Notifications"
@@ -880,15 +880,15 @@ msgstr "Tak ada (Gunakan Pengaturan WordPress)"
 
 #: advanced-type/advanced-type.php:26
 msgid "%sAdvanced Type for WPtouch Pro%s requires %s to be enabled on your server in order to load web fonts. Please contact your server administrator or web host to enable this function."
-msgstr "%s Jenis Advanced untuk WPtouch Pro %s membutuhkan %s harus diaktifkan pada server Anda untuk memuat web font. Silahkan hubungi administrator server atau web host untuk mengaktifkan fungsi ini."
+msgstr "%sJenis Lanjutan untuk WPtouch Pro%s membutuhkan %s diaktifkan pada server Anda untuk memuat font web. Hubungilah administrator server atau hosting web untuk mengaktifkan fungsi ini."
 
 #: advanced-type/advanced-type.php:80
 msgid "Load Fonts"
-msgstr "Memuat Font"
+msgstr "Muat Font"
 
 #: advanced-type/advanced-type.php:81
 msgid "Could not load your fonts. Please check project/kit details and reload."
-msgstr "Tidak dapat memuat font Anda. Silakan periksa proyek/ detail perangkat dan isi ulang."
+msgstr "Tidak dapat memuat font Anda. Silakan periksa proyek/detail paket perangkat dan muat ulang."
 
 #: advanced-type/advanced-type.php:231 advanced-type/advanced-type.php:252
 msgid "Font Source"
@@ -900,23 +900,23 @@ msgstr "Pilih kode sumber untuk font web Anda"
 
 #: advanced-type/advanced-type.php:238
 msgid "Other options will become available once allow_url_fopen is enabled"
-msgstr "Pilihan lain akan tersedia setelah allow_url_fopen diaktifkan"
+msgstr "Opsi lain akan tersedia setelah allow_url_fopen diaktifkan"
 
 #: advanced-type/advanced-type.php:242 advanced-type/advanced-type.php:263
 msgid "Theme Font Pairings (Configure in Theme Settings)"
-msgstr "Tema Font Pairing (Konfigurasi dalam Pengaturan Tema)"
+msgstr "Perpaduan Font Tema (Konfigurasi dalam Pengaturan Tema)"
 
 #: advanced-type/advanced-type.php:264
 msgid "Custom Google Fonts"
-msgstr "Khusus Google Font"
+msgstr "Font Google Kustom"
 
 #: advanced-type/advanced-type.php:275
 msgid "Kit ID"
-msgstr "Perangkat Nomor Identifikasi"
+msgstr "ID Paket"
 
 #: advanced-type/advanced-type.php:293
 msgid "Domain"
-msgstr "Wilayah"
+msgstr "Bidang"
 
 #: advanced-type/advanced-type.php:311
 msgid "Project"
@@ -924,11 +924,11 @@ msgstr "Proyek"
 
 #: advanced-type/advanced-type.php:367
 msgid "Latin (Default)"
-msgstr "Latin (Gagal)"
+msgstr "Latin (Default)"
 
 #: advanced-type/advanced-type.php:368
 msgid "Latin Extended"
-msgstr "Latin Perpanjang"
+msgstr "Latin Extended"
 
 #: advanced-type/advanced-type.php:369
 msgid "Cyrillic"
@@ -936,15 +936,15 @@ msgstr "Cyrillic"
 
 #: advanced-type/advanced-type.php:370
 msgid "Cyrillic Extended"
-msgstr "Cyrillic Diperpanjang"
+msgstr "Cyrillic Extended"
 
 #: advanced-type/advanced-type.php:371
 msgid "Greek"
-msgstr "Yunani"
+msgstr "Greek"
 
 #: advanced-type/advanced-type.php:372
 msgid "Greek Extended"
-msgstr "Yunani Diperpanjang"
+msgstr "Greek Extended"
 
 #: advanced-type/advanced-type.php:373
 msgid "Devangari"
@@ -956,11 +956,11 @@ msgstr "Vietnam"
 
 #: advanced-type/advanced-type.php:378
 msgid "Heading"
-msgstr "Bagian atas"
+msgstr "Bagian Atas"
 
 #: advanced-type/advanced-type.php:379
 msgid "Body"
-msgstr "Tubuh"
+msgstr "Isi"
 
 #: advanced-type/advanced-type.php:380
 msgid "Meta"
@@ -968,7 +968,7 @@ msgstr "Meta"
 
 #: advanced-type/advanced-type.php:405
 msgid "Load subsets"
-msgstr "Memuat himpunan bagian"
+msgstr "Muat subset"
 
 #: advanced-type/advanced-type.php:415
 msgid "Font Selection"
@@ -2475,19 +2475,19 @@ msgstr "Jumlah produk yang ditampilkan per halaman dalam daftar produk"
 
 #: mobilestore/root-functions.php:411
 msgid "Product Pagination"
-msgstr "Produk Penyebutan halaman"
+msgstr "Pemberian Nomor Halaman Produk"
 
 #: mobilestore/root-functions.php:412
 msgid "Use AJAX load more or traditional numbered pagination."
-msgstr "Menggunakan AJAX beban lebih atau pagination nomor tradisional."
+msgstr "Gunakan AJAX untuk memuat tulisan lainnya atau gunakan pemberian nomor halaman secara tradisional."
 
 #: mobilestore/root-functions.php:416
 msgid "Use AJAX load more"
-msgstr "Menggunakan AJAX memuat lebih"
+msgstr "Gunakan AJAX untuk memuat tulisan lainnya"
 
 #: mobilestore/root-functions.php:417
 msgid "Use numbered pages"
-msgstr ""
+msgstr "Gunakan halaman yang bernomor"
 
 #: mobilestore/root-functions.php:429
 msgid "Product Filters"
@@ -2599,7 +2599,7 @@ msgstr "Tampilkan di daftar pencarian"
 
 #: multi-ads/multi-ads.php:364
 msgid "Minimum characters in post/page to show ad."
-msgstr "Karakter minimal dalam postingan/halaman untuk menampilkan iklan."
+msgstr "Karakter minimal dalam tulisan/halaman untuk menampilkan iklan."
 
 #: open/default/front-page.php:25
 msgid "We&lsquo;re <em>open</em> every %s %s."
@@ -2828,11 +2828,11 @@ msgstr "WPtouch Pro 3 tidak dapat berdampingan dengaa WPtouch 2.x. Nonaktifkan d
 
 #: pro/professional.php:245
 msgid "WPtouch Pro: Theme &amp; Extension Updates Available"
-msgstr "WPtouch Pro: Tema & amp; Ekstensi Updates Tersedia"
+msgstr "WPtouch Pro: Tema &amp; Pembaruan Ekstensi Tersedia"
 
 #: pro/professional.php:246
 msgid "One or more updates are available for your installed themes and extensions."
-msgstr "Satu atau lebih update yang tersedia untuk tema Anda diinstal dan ekstensi."
+msgstr "Satu pembaruan atau lebih tersedia untuk tema dan ekstensi tema Anda yang terinstal."
 
 #: pro/professional.php:248
 msgid "WPtouch Pro: Theme Updates Available"
@@ -2840,7 +2840,7 @@ msgstr "WPtouch Pro: Tema Pembaruan Tersedia"
 
 #: pro/professional.php:251
 msgid "WPtouch Pro: Extension Updates Available"
-msgstr "WPtouch Pro: Perpanjangan Update Tersedia"
+msgstr "WPtouch Pro: Pembaruan Esktensi Tersedia"
 
 #: pro/professional.php:378 pro/professional.php:402
 msgid "Unknown error"
@@ -2848,15 +2848,15 @@ msgstr "Galat tak diketahui"
 
 #: pro/professional.php:771
 msgid "%sYour customizations to %s have been saved as a new theme and the original reinstalled for your reference."
-msgstr "%s Kustomisasi Anda untuk %s telah disimpan sebagai tema baru dan asli diinstal ulang untuk referensi Anda."
+msgstr "%sKustomisasi Anda untuk%s telah disimpan sebagai tema baru dan yang asli diinstal ulang untuk referensi Anda."
 
 #: pro/professional.php:775
 msgid "WPtouch Pro: Some themes or extensions could not be auto-updated. Please check the WPtouch Pro Themes &amp; Extensions page to manually update them."
-msgstr "WPtouch Pro: Beberapa tema atau ekstensi tidak bisa auto-update. Silakan periksa WPtouch Pro Tema & amp; Halaman Ekstensi untuk memperbarui secara manual."
+msgstr "WPtouch Pro: Beberapa tema atau ekstensi tidak bisa diperbarui secara otomatis. Periksalah halaman Tema &amp Ekstensi WPtouch Pro untuk memperbarui secara manual."
 
 #: pro/professional.php:777
 msgid "WPtouch Pro: Your themes and extensions have been automatically updated. Thank you for updating WPtouch Pro!"
-msgstr "WPtouch Pro: Tema dan ekstensi Anda telah diperbarui secara otomatis. Terima kasih untuk memperbarui WPtouch Pro!"
+msgstr "WPtouch Pro: Tema dan ekstensi Anda telah diperbarui secara otomatis. Terima kasih untuk memperbarui WPtouch Pro Anda!"
 
 #: prose/default/comments.php:20 prose/default/comments.php:26
 #: themes/foundation/default/comments.php:20
@@ -2975,7 +2975,7 @@ msgstr "Kolom komentar tidak akan muncul untuk kiriman dengan komentar yang dima
 
 #: prose/root-functions.php:87
 msgid "Use featured image as the header background when viewing single posts"
-msgstr "Gunakan gambar fitur sebagai latar belakang bagian atas saat melihat postingan tunggal"
+msgstr "Gunakan gambar fitur sebagai latar belakang bagian atas saat melihat tulisan tunggal"
 
 #: prose/root-functions.php:155
 msgid "Drop Caps"
@@ -3316,7 +3316,7 @@ msgstr "Tampilkan kiriman dari kategori tertentu"
 
 #: themes/foundation/modules/featured/featured.php:356
 msgid "Show posts from a specific post type"
-msgstr "Tampilkan tulisan dari jenis pos tertentu"
+msgstr "Tampilkan tulisan dari jenis tulisan tertentu"
 
 #: themes/foundation/modules/featured/featured.php:357
 msgid "Show only specific posts or pages"
@@ -3337,7 +3337,7 @@ msgstr "Hanya kategori ini"
 
 #: themes/foundation/modules/featured/featured.php:381
 msgid "Only this post type"
-msgstr "Hanya ini jenis postingan"
+msgstr "Hanya jenis tulisan ini"
 
 #: themes/foundation/modules/featured/featured.php:390
 msgid "Comma-separated list of post/page IDs"
@@ -3345,7 +3345,7 @@ msgstr "Daftar ID kiriman/halaman yang dipisahkan-koma."
 
 #: themes/foundation/modules/google-fonts/google-fonts.php:20
 msgid "Browser Fonts"
-msgstr "Jenis Huruf Peramban"
+msgstr "Fon Browser"
 
 #: themes/foundation/modules/google-fonts/google-fonts.php:28
 msgid "Typography"
@@ -3357,7 +3357,7 @@ msgstr "Jenis font"
 
 #: themes/foundation/modules/google-fonts/google-fonts.php:35
 msgid "Choose a Google font pairing designed for this theme, or default browser fonts."
-msgstr "Pilih penyesuaian jenis huruf Google yang didesain untuk tema ini, atau jenis huruf browser standar."
+msgstr "Pilih penyesuaian fon Google yang didesain untuk tema ini, atau jenis huruf browser standar."
 
 #: themes/foundation/modules/login/login-html.php:7
 msgid "Remember Me"
@@ -3421,7 +3421,7 @@ msgstr "Aktifkan tampilan konten terkait pada kiriman tunggal"
 
 #: themes/foundation/modules/related-posts/related-posts.php:23
 msgid "Ignore tags when identifying related posts"
-msgstr "Abaikan tag ketika mengidentifikasi posting terkait"
+msgstr "Abaikan tag ketika mengidentifikasikan kiriman terkait"
 
 #: themes/foundation/modules/related-posts/related-posts.php:31
 msgid "Maximum number of related posts to show"
@@ -3680,7 +3680,7 @@ msgstr "Bahasa:"
 
 #: themes/foundation/root-functions.php:139
 msgid "Install this Web-App on your home screen: tap [icon] then \"Add to Home Screen\""
-msgstr "Menginstal ini Web-App pada layar rumah Anda: tekan [icon] kemudian \"Tambahkan ke Layar Awal\""
+msgstr "Instal ini Aplikasi Web ini pada layar awal Anda: tekan [icon] lalu \"Tambahkan ke Layar Awal\""
 
 #: themes/foundation/root-functions.php:347
 msgid "Number of posts in post listings"

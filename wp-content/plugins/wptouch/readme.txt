@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.6
-Stable tag: 3.6.5
+Stable tag: 3.6.6
 Tested up to: 4.1
 License: GPLv2
 
@@ -39,6 +39,18 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.6.6 (January 29, 2015) =
+
+* Added: The ability for themes and extensions to disable Web-App Mode. (Pro Only)
+* Added: If you set a custom excerpt for your posts, WPtouch will use it when it displays related posts. (Pro Only)
+* Changed: More localization updates (German, Greek, Hindi, and Indonesian)
+* Changed: More robust category listing
+* Changed: We moved support to the Freshdesk platform. All links have been updated to point to our new ticket & knowledgebase and the new My Account page. (Pro Only)
+* Changed: Web-App Mode is not compatible with off-site payment gateways. MobileStore no longer allows Web-App Mode to be used when no compatible gateways are found. (Pro Only)
+* Changed: MobileStore now allows selecting a custom latest posts page. (Pro Only)
+* Fixed: Bug in MobileStore where it was not possible to completely disable product filters once any had been selected. (Pro Only)
+* Fixed: Layout bug in menu on sites with sequential nested menu items.
 
 = Version 3.6.5 (January 8, 2015) =
 
