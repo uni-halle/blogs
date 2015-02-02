@@ -11,7 +11,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin used to add the responsive lightbox (overlay) effect to the current page images and create photo albums/gallery on your WordPress blog.
 == Description ==
-### [Best Responsive Lightbox (overlay) effect Plugin - Photo Albums - Image Gallery/Map Plugin](http://yepinol.com/lightbox-2-plugin-wordpress/)
+[**Best Responsive Lightbox (overlay) effect Plugin - Photo Albums - Image Gallery/Map Plugin**](http://yepinol.com/lightbox-2-plugin-wordpress/)
+
 From 2.1, the default view changed to Colorbox due to the license regulation by the plugin directory. This plugin used to add the lightbox (overlay) effect to the current page images on your WordPress blog. Used to overlay images on the current page. Extension of wp-jquery-lightbox. 
 
 Just install and sit back. This plugin enable image overlay lighbox effect for all the post images in your wordpress plugin. No configuration required.
@@ -42,7 +43,8 @@ Just install and sit back. This plugin enable image overlay lighbox effect for a
 > * [TROUBLESHOOTING: Please read the FAQ first if you are having problems](http://yepinol.com/wp-lightbox-2-faq/)
 > 
 
-
+= WP Lighbox 2 Needs Your Support =
+It is hard to continue development and support for this free plugin without contributions from users like you. If you enjoy using WP Lighbox 2 and find it useful, please consider [making a donation](http://onlinewebapplication.com/onlinewebapplication-com-donation/). Your donation will help encourage and support the plugin's continued development and better user support.
 
 = Full support =
 If you are unable to resolve your problem with the information provided in the FAQ please leave your comments or submit a support [request](http://onlinewebapplication.com/wp-lighbox-2-support-forums/).
@@ -101,6 +103,9 @@ WP Lightbox 2 [Link 1](http://onlinewebapplication.com/wp-lightbox-2/)<br />
 WP Lightbox 2 [Link 2](http://yepinol.com/lightbox-2-plugin-wordpress/)<br />
 
 == Changelog ==
+= 2.28.9.2.1 =
+* Fixed: Broken shortcodes with WordPress 4.1 Check [more details here](http://yepinol.com/lightbox-2-plugin-wordpress/).
+
 = 2.28.9.2 =
 * Compatible with wordpress 4.1 Check more details [here](http://yepinol.com/lightbox-2-plugin-wordpress/).
 
@@ -126,7 +131,7 @@ WP Lightbox 2 [Link 2](http://yepinol.com/lightbox-2-plugin-wordpress/)<br />
 * Fixed Responsiveness Issue [here](http://yepinol.com/lightbox-2-plugin-wordpress/).
 
 = 2.28.8.4 =
-* Compatible with wordpress 3.9. Check more details [here](http://yepinol.com/lightbox-2-plugin-wordpress/).
+* Compatible with wordpress 3.9.
 
 = 2.28.8.3 =
 * Fixed full screen image close issue [here](http://yepinol.com/lightbox-2-plugin-wordpress/).
@@ -203,6 +208,11 @@ Fixed PHP 5 comment bug that got reintroduced into plugin.
 * Lightbox display of Gallery.
 
 == Upgrade Notice ==
+= 2.28.9.2.1 =
+* Fixed: Broken shortcodes with WordPress 4.1
+
+* Compatible with wordpress 4.1
+
 = 2.28.9.2 =
 * Compatible with wordpress 4.1
 

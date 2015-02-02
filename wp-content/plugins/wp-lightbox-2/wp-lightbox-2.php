@@ -3,7 +3,7 @@
  * Plugin Name: WP Lightbox 2
  * Plugin URI: http://yepinol.com/lightbox-2-plugin-wordpress/
  * Description: This plugin used to add the lightbox (overlay) effect to the current page images on your WordPress blog.
- * Version:       2.28.9.2
+ * Version:       2.28.9.2.1
  * Author:        Pankaj Jha
  * Author URI:    http://onlinewebapplication.com/
  * License:       GNU General Public License, v2 (or newer)
@@ -55,7 +55,7 @@
 /*2.28.9.0 - Optimize: content grouping support and exclusion performance */
 /*2.28.9.1 - Compatible with wordpress 4.0.1*/
 /*2.28.9.2 - Compatible with wordpress 4.1*/
-
+/*2.28.9.2.1 - Fixed: Broken shortcodes with WordPress 4.1*/
 add_action( 'plugins_loaded', 'jqlb_init' );
 function jqlb_init() {
 	if(!defined('ULFBEN_DONATE_URL')){

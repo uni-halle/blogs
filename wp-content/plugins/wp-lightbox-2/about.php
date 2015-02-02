@@ -11,5 +11,6 @@
 	<h3> <a href='http://onlinewebapplication.com/wp-lighbox-2-support-forums/' target='_blank'>Forums/Discussion  </a></h3>
 	<h3> <a href='http://yepinol.com/wp-lightbox-2-plugin-wordpress-demo/' target='_blank'>WP Lightbox 2 Demo  </a></h3>
 	<h3> <a href='http://yepinol.com/wp-lightbox-2-faq/' target='_blank'>WP Lightbox 2 FAQ  </a></h3>
+	<h3> <a href='http://onlinewebapplication.com/onlinewebapplication-com-donation/' target='_blank'>Please Donate</a></h3>
 </div>"; 
 ?>
