@@ -25,8 +25,10 @@ class ShareaholicPublicJS {
     $config = array(
       'apps' => array(),
       'endpoints' => array(
-        'local_recs_url' => admin_url('admin-ajax.php') . '?action=shareaholic_permalink_related'
-      )
+        'local_recs_url' => admin_url('admin-ajax.php') . '?action=shareaholic_permalink_related',
+        'share_counts_url' => admin_url('admin-ajax.php') . '?action=shareaholic_share_counts_api'
+      ),
+      'user' => ShareaholicUtilities::user_info()
     );
     $functions_map = self::get_function_definitions();
     $share_buttons = self::get_share_buttons_config();

@@ -1291,4 +1291,38 @@ class ShareaholicUtilities {
       }
     }
    }
+
+  public static function user_info() {
+    $current_user = wp_get_current_user();
+
+    if ( !($current_user instanceof WP_User) || !is_user_logged_in()) {
+      return array();
+    }
+
+    $capabilities = $current_user->get_role_caps();
+    $roles = $current_user->roles;
+
+    return array(
+      'roles' => $current_user->roles,
+      'capabilities' => array(
+        'switch_themes' => $capabilities['switch_themes'],
+        'edit_themes' => $capabilities['edit_themes'],
+        'activate_plugins' => $capabilities['activate_plugins'],
+        'edit_plugins' => $capabilities['edit_plugins'],
+        'manage_options' => $capabilities['manage_options'],
+        'unfiltered_html' => $capabilities['unfiltered_html'],
+        'edit_dashboard' => $capabilities['edit_dashboard'],
+        'update_plugins' => $capabilities['update_plugins'],
+        'delete_plugins' => $capabilities['delete_plugins'],
+        'install_plugins' => $capabilities['install_plugins'],
+        'update_themes' => $capabilities['update_themes'],
+        'install_themes' => $capabilities['install_themes'],
+        'update_core' => $capabilities['update_core'],
+        'edit_theme_options' => $capabilities['edit_theme_options'],
+        'delete_themes' => $capabilities['delete_themes'],
+        'administrator' => $capabilities['administrator']
+      ),
+      'is_super_admin' => is_super_admin()
+    );
+  }
 }
