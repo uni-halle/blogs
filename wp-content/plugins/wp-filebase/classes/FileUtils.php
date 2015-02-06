@@ -89,7 +89,7 @@ static function IsValidImage($img, &$img_size = null) {
 
 static function FileHasImageExt($name) {	
 	$name = strtolower(substr($name, strrpos($name, '.') + 1));
-	return ($name == 'png' || $name == 'gif' || $name == 'jpg' || $name == 'jpeg' || $name == 'bmp' || $name == 'tif' || $name == 'tiff' || $name == 'psd');
+	return ($name == 'png' || $name == 'gif' || $name == 'jpg' || $name == 'jpeg' || $name == 'bmp');
 }
 
 
@@ -98,6 +98,7 @@ static function MoveDir($from, $to)
 {
 	require_once(ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php');
 	require_once(ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php');
+	
 	
 	$wp_filesystem = new WP_Filesystem_Direct(null);
 	
