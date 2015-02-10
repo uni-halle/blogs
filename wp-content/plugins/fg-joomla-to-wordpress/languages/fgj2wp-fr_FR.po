@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-22 22:04+0100\n"
-"PO-Revision-Date: 2014-12-22 22:08+0100\n"
+"POT-Creation-Date: 2015-02-10 11:38+0100\n"
+"PO-Revision-Date: 2015-02-10 11:41+0100\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin_build_page.tpl.php:22
@@ -410,7 +410,11 @@ msgstr "boutique en ligne Virtuemart"
 msgid "JReviews reviews"
 msgstr "revues JReviews"
 
-#: admin_build_page.tpl.php:203
+#: admin_build_page.tpl.php:199
+msgid "Mosets Tree directory"
+msgstr "annuaire Mosets Tree"
+
+#: admin_build_page.tpl.php:204
 msgid ""
 "Please note that some of these features need an add-on in addition to the "
 "Premium version."
@@ -418,7 +422,7 @@ msgstr ""
 "Veuillez noter que certaines de ces fonctionnalités nécessitent un module "
 "supplémentaire en plus de la version Premium."
 
-#: admin_build_page.tpl.php:206
+#: admin_build_page.tpl.php:207
 msgid ""
 "If you found this plugin useful and it saved you many hours or days, please "
 "rate it on <a href=\"http://wordpress.org/extend/plugins/fg-joomla-to-"
@@ -431,7 +435,7 @@ msgstr ""
 "WordPress</a>. Vous pouvez aussi faire une donation en utilisant le bouton "
 "ci-dessous."
 
-#: admin_build_page.tpl.php:225
+#: admin_build_page.tpl.php:226
 msgid ""
 "All new imported posts or pages and their comments will be deleted from "
 "WordPress."
@@ -439,11 +443,11 @@ msgstr ""
 "Tous les nouveaux articles ou pages importés vont être supprimés de "
 "WordPress."
 
-#: admin_build_page.tpl.php:228
+#: admin_build_page.tpl.php:229
 msgid "All content will be deleted from WordPress."
 msgstr "Toutes les données vont être supprimées de WordPress."
 
-#: admin_build_page.tpl.php:231
+#: admin_build_page.tpl.php:232
 msgid "Please select a remove option."
 msgstr "Veuillez sélectionner une option de suppression."
 
@@ -574,9 +578,7 @@ msgstr ""
 "vos paramètres. Et soyez certains que le serveur WordPress ait accès à la "
 "base de données de Joomla."
 
-#: fg-joomla-to-wordpress.php:339 fg-joomla-to-wordpress.php:1050
-#: fg-joomla-to-wordpress.php:1093 fg-joomla-to-wordpress.php:1137
-#: fg-joomla-to-wordpress.php:1188 weblinks.php:157 weblinks.php:197
+#: fg-joomla-to-wordpress.php:339 weblinks.php:157 weblinks.php:197
 msgid "Error:"
 msgstr "Erreur :"
 
@@ -627,42 +629,42 @@ msgid_plural "%d web links"
 msgstr[0] "%d lien"
 msgstr[1] "%d liens"
 
-#: fg-joomla-to-wordpress.php:749
+#: fg-joomla-to-wordpress.php:752
 #, php-format
 msgid "%d category imported"
 msgid_plural "%d categories imported"
 msgstr[0] "%d catégorie importée"
 msgstr[1] "%d catégories importées"
 
-#: fg-joomla-to-wordpress.php:757
+#: fg-joomla-to-wordpress.php:760
 #, php-format
 msgid "%d page imported"
 msgid_plural "%d pages imported"
 msgstr[0] "%d page importée"
 msgstr[1] "%d pages importées"
 
-#: fg-joomla-to-wordpress.php:761
+#: fg-joomla-to-wordpress.php:764
 #, php-format
 msgid "%d post imported"
 msgid_plural "%d posts imported"
 msgstr[0] "%d article importé"
 msgstr[1] "%d articles importés"
 
-#: fg-joomla-to-wordpress.php:763
+#: fg-joomla-to-wordpress.php:766
 #, php-format
 msgid "%d media imported"
 msgid_plural "%d medias imported"
 msgstr[0] "%d média importé"
 msgstr[1] "%d médias importés"
 
-#: fg-joomla-to-wordpress.php:768
+#: fg-joomla-to-wordpress.php:771
 #, php-format
 msgid "%d tag imported"
 msgid_plural "%d tags imported"
 msgstr[0] "%d mot-clef importé"
 msgstr[1] "%d mots-clefs importés"
 
-#: fg-joomla-to-wordpress.php:786
+#: fg-joomla-to-wordpress.php:789
 msgid "Don't forget to modify internal links."
 msgstr "N'oubliez pas de modifier les liens internes."
 
@@ -853,6 +855,14 @@ msgstr "des données JReviews"
 #: modules_check.php:131
 msgid "JReviews add-on"
 msgstr "du module JReviews"
+
+#: modules_check.php:135
+msgid "a Mosets Tree directory"
+msgstr "un annuaire Mosets Tree"
+
+#: modules_check.php:135
+msgid "Mosets Tree add-on"
+msgstr "du module Mosets Tree"
 
 #: weblinks.php:72
 #, php-format

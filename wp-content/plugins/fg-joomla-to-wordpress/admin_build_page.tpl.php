@@ -196,6 +196,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 			<li><?php _e('Docman documents', 'fgj2wp'); ?></li>
 			<li><?php _e('Virtuemart e-commerce', 'fgj2wp'); ?></li>
 			<li><?php _e('JReviews reviews', 'fgj2wp'); ?></li>
+			<li><?php _e('Mosets Tree directory', 'fgj2wp'); ?></li>
 		</ul>
 		<div style="text-align: center;">
 			<a href="http://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank"><img src="http://www.fredericgilles.net/wp-content/uploads/premium-version.png" alt="Buy Premium Version" /></a>

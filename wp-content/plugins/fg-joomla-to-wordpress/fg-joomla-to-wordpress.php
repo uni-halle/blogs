@@ -3,7 +3,7 @@
  * Plugin Name: FG Joomla to WordPress
  * Plugin Uri:  http://wordpress.org/plugins/fg-joomla-to-wordpress/
  * Description: A plugin to migrate categories, posts, images and medias from Joomla to WordPress
- * Version:     1.43.4
+ * Version:     1.44.0
  * Author:      Frédéric GILLES
  */
 
@@ -331,7 +331,7 @@ if ( !class_exists('fgj2wp', false) ) {
 				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
 				if ( is_object($query) ) {
 					foreach ( $query as $row ) {
-						$result = $row;
+						$result[] = $row;
 					}
 				}
 				
@@ -603,7 +603,7 @@ SQL;
 				";
 			}
 			$result = $this->joomla_query($sql);
-			$cat_count = is_array($result) && array_key_exists('nb', $result)? $result['nb'] : 0;
+			$cat_count = isset($result[0]['nb'])? $result[0]['nb'] : 0;
 			return $cat_count;
 		}
 		
@@ -619,7 +619,7 @@ SQL;
 				FROM ${prefix}sections s
 			";
 			$result = $this->joomla_query($sql);
-			$sections_count = is_array($result) && array_key_exists('nb', $result)? $result['nb'] : 0;
+			$sections_count = isset($result[0]['nb'])? $result[0]['nb'] : 0;
 			return $sections_count;
 		}
 		
@@ -636,7 +636,7 @@ SQL;
 				WHERE c.state >= -1 -- don't get the trash
 			";
 			$result = $this->joomla_query($sql);
-			$posts_count = is_array($result) && array_key_exists('nb', $result)? $result['nb'] : 0;
+			$posts_count = isset($result[0]['nb'])? $result[0]['nb'] : 0;
 			return $posts_count;
 		}
 		
@@ -652,7 +652,7 @@ SQL;
 				FROM ${prefix}users u
 			";
 			$result = $this->joomla_query($sql);
-			$users_count = is_array($result) && array_key_exists('nb', $result)? $result['nb'] : 0;
+			$users_count = isset($result[0]['nb'])? $result[0]['nb'] : 0;
 			return $users_count;
 		}
 		
@@ -674,7 +674,7 @@ SQL;
 				WHERE l.$published_field = 1
 			";
 			$result = $this->joomla_query($sql);
-			$weblinks_count = is_array($result) && array_key_exists('nb', $result)? $result['nb'] : 0;
+			$weblinks_count = isset($result[0]['nb'])? $result[0]['nb'] : 0;
 			return $weblinks_count;
 		}
 		
@@ -1029,29 +1029,17 @@ SQL;
 		 * @return array of Sections
 		 */
 		private function get_sections() {
-			global $joomla_db;
 			$sections = array();
-
-			try {
-				$prefix = $this->plugin_options['prefix'];
-				$sql = "
-					SELECT s.title, CONCAT('s', s.id, '-', IF(s.alias <> '', s.alias, s.name)) AS name, s.description
-					FROM ${prefix}sections s
-				";
-				$sql = apply_filters('fgj2wp_get_sections_sql', $sql, $prefix);
-				
-				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				if ( is_object($query) ) {
-					foreach ( $query as $row ) {
-						$sections[] = $row;
-					}
-				}
-				
-				$sections = apply_filters('fgj2wp_get_sections', $sections);
-				
-			} catch ( PDOException $e ) {
-				$this->display_admin_error(__('Error:', 'fgj2wp') . $e->getMessage());
-			}
+			
+			$prefix = $this->plugin_options['prefix'];
+			$sql = "
+				SELECT s.title, CONCAT('s', s.id, '-', IF(s.alias <> '', s.alias, s.name)) AS name, s.description
+				FROM ${prefix}sections s
+			";
+			$sql = apply_filters('fgj2wp_get_sections_sql', $sql, $prefix);
+			$sections = $this->joomla_query($sql);
+			$sections = apply_filters('fgj2wp_get_sections', $sections);
+			
 			return $sections;
 		}
 		
@@ -1061,40 +1049,28 @@ SQL;
 		 * @return array of Categories
 		 */
 		private function get_categories() {
-			global $joomla_db;
 			$categories = array();
-
-			try {
-				$prefix = $this->plugin_options['prefix'];
-				if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
-					$sql = "
-						SELECT c.title, CONCAT('c', c.id, '-', IF(c.alias <> '', c.alias, c.name)) AS name, c.description, CONCAT('s', s.id, '-', IF(s.alias <> '', s.alias, s.name)) AS parent
-						FROM ${prefix}categories c
-						INNER JOIN ${prefix}sections AS s ON s.id = c.section
-					";
-				} else {
-					$sql = "
-						SELECT c.title, CONCAT('c', c.id, '-', c.alias) AS name, c.description, CONCAT('c', cp.id, '-', cp.alias) AS parent
-						FROM ${prefix}categories c
-						INNER JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
-						WHERE c.extension = 'com_content'
-						ORDER BY c.lft
-					";
-				}
-				$sql = apply_filters('fgj2wp_get_categories_sql', $sql, $prefix);
-				
-				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				if ( is_object($query) ) {
-					foreach ( $query as $row ) {
-						$categories[] = $row;
-					}
-				}
-				
-				$categories = apply_filters('fgj2wp_get_categories', $categories);
-				
-			} catch ( PDOException $e ) {
-				$this->display_admin_error(__('Error:', 'fgj2wp') . $e->getMessage());
+			
+			$prefix = $this->plugin_options['prefix'];
+			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
+				$sql = "
+					SELECT c.title, CONCAT('c', c.id, '-', IF(c.alias <> '', c.alias, c.name)) AS name, c.description, CONCAT('s', s.id, '-', IF(s.alias <> '', s.alias, s.name)) AS parent
+					FROM ${prefix}categories c
+					INNER JOIN ${prefix}sections AS s ON s.id = c.section
+				";
+			} else {
+				$sql = "
+					SELECT c.title, CONCAT('c', c.id, '-', c.alias) AS name, c.description, CONCAT('c', cp.id, '-', cp.alias) AS parent
+					FROM ${prefix}categories c
+					INNER JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
+					WHERE c.extension = 'com_content'
+					ORDER BY c.lft
+				";
 			}
+			$sql = apply_filters('fgj2wp_get_categories_sql', $sql, $prefix);
+			$categories = $this->joomla_query($sql);
+			$categories = apply_filters('fgj2wp_get_categories', $categories);
+			
 			return $categories;
 		}
 		
@@ -1106,39 +1082,27 @@ SQL;
 		 * @return array of Categories
 		 */
 		public function get_component_categories($component, $cat_prefix) {
-			global $joomla_db;
 			$categories = array();
 			
-			try {
-				$prefix = $this->plugin_options['prefix'];
-				if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
-					$sql = "
-						SELECT c.title, CONCAT('$cat_prefix', c.id, '-', IF(c.alias <> '', c.alias, c.name)) AS name, c.description, CONCAT('$cat_prefix', cp.id, '-', IF(cp.alias <> '', cp.alias, cp.name)) AS parent
-						FROM ${prefix}categories c
-						LEFT JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
-						WHERE c.section = '$component'
-					";
-				} else {
-					$sql = "
-						SELECT c.title, CONCAT('$cat_prefix', c.id, '-', c.alias) AS name, c.description, CONCAT('$cat_prefix', cp.id, '-', cp.alias) AS parent
-						FROM ${prefix}categories c
-						LEFT JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
-						WHERE c.extension = '$component'
-						ORDER BY c.lft
-					";
-				}
-				$sql = apply_filters('fgj2wp_get_categories_sql', $sql, $prefix);
-				
-				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				if ( is_object($query) ) {
-					foreach ( $query as $row ) {
-						$categories[] = $row;
-					}
-				}
-				
-			} catch ( PDOException $e ) {
-				$this->display_admin_error(__('Error:', 'fgj2wp') . $e->getMessage());
+			$prefix = $this->plugin_options['prefix'];
+			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
+				$sql = "
+					SELECT c.title, CONCAT('$cat_prefix', c.id, '-', IF(c.alias <> '', c.alias, c.name)) AS name, c.description, CONCAT('$cat_prefix', cp.id, '-', IF(cp.alias <> '', cp.alias, cp.name)) AS parent
+					FROM ${prefix}categories c
+					LEFT JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
+					WHERE c.section = '$component'
+				";
+			} else {
+				$sql = "
+					SELECT c.title, CONCAT('$cat_prefix', c.id, '-', c.alias) AS name, c.description, CONCAT('$cat_prefix', cp.id, '-', cp.alias) AS parent
+					FROM ${prefix}categories c
+					LEFT JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
+					WHERE c.extension = '$component'
+					ORDER BY c.lft
+				";
 			}
+			$sql = apply_filters('fgj2wp_get_categories_sql', $sql, $prefix);
+			$categories = $this->joomla_query($sql);
 			return $categories;
 		}
 		
@@ -1149,47 +1113,36 @@ SQL;
 		 * @return array of Posts
 		 */
 		protected function get_posts($limit=1000) {
-			global $joomla_db;
 			$posts = array();
 			
 			$last_joomla_id = (int)get_option('fgj2wp_last_joomla_id'); // to restore the import where it left
-
-			try {
-				$prefix = $this->plugin_options['prefix'];
-				
-				// The "name" column disappears in version 1.6+
-				if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
-					$cat_field = "IF(c.alias <> '', c.alias, c.name)";
-				} else {
-					$cat_field = 'c.alias';
-				}
-				
-				// Hooks for adding extra cols and extra joins
-				$extra_cols = apply_filters('fgj2wp_get_posts_add_extra_cols', '');
-				$extra_joins = apply_filters('fgj2wp_get_posts_add_extra_joins', '');
-				
-				$sql = "
-					SELECT p.id, p.title, p.alias, p.introtext, p.fulltext, p.state, CONCAT('c', c.id, '-', $cat_field) AS category, p.modified, p.created AS `date`, p.attribs, p.metakey, p.metadesc, p.ordering
-					$extra_cols
-					FROM ${prefix}content p
-					LEFT JOIN ${prefix}categories AS c ON p.catid = c.id
-					$extra_joins
-					WHERE p.state >= -1 -- don't get the trash
-					AND p.id > '$last_joomla_id'
-					ORDER BY p.id
-					LIMIT $limit
-				";
-				$sql = apply_filters('fgj2wp_get_posts_sql', $sql, $prefix, $cat_field, $extra_cols, $extra_joins, $last_joomla_id, $limit);
-				
-				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				if ( is_object($query) ) {
-					foreach ( $query as $row ) {
-						$posts[] = $row;
-					}
-				}
-			} catch ( PDOException $e ) {
-				$this->display_admin_error(__('Error:', 'fgj2wp') . $e->getMessage());
+			
+			$prefix = $this->plugin_options['prefix'];
+			
+			// The "name" column disappears in version 1.6+
+			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
+				$cat_field = "IF(c.alias <> '', c.alias, c.name)";
+			} else {
+				$cat_field = 'c.alias';
 			}
+			
+			// Hooks for adding extra cols and extra joins
+			$extra_cols = apply_filters('fgj2wp_get_posts_add_extra_cols', '');
+			$extra_joins = apply_filters('fgj2wp_get_posts_add_extra_joins', '');
+
+			$sql = "
+				SELECT p.id, p.title, p.alias, p.introtext, p.fulltext, p.state, CONCAT('c', c.id, '-', $cat_field) AS category, p.modified, p.created AS `date`, p.attribs, p.metakey, p.metadesc, p.ordering
+				$extra_cols
+				FROM ${prefix}content p
+				LEFT JOIN ${prefix}categories AS c ON p.catid = c.id
+				$extra_joins
+				WHERE p.state >= -1 -- don't get the trash
+				AND p.id > '$last_joomla_id'
+				ORDER BY p.id
+				LIMIT $limit
+			";
+			$sql = apply_filters('fgj2wp_get_posts_sql', $sql, $prefix, $cat_field, $extra_cols, $extra_joins, $last_joomla_id, $limit);
+			$posts = $this->joomla_query($sql);
 			return $posts;
 		}
 		

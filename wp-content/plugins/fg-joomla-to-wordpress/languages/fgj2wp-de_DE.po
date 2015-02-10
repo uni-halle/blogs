@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-15 18:29+0100\n"
-"PO-Revision-Date: 2014-11-15 18:29+0100\n"
+"POT-Creation-Date: 2015-01-24 16:30+0100\n"
+"PO-Revision-Date: 2015-01-24 16:35+0100\n"
 "Last-Translator: Tobias Conrad <tobiasconrad@leupus.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -16,7 +16,7 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.3\n"
 "X-Poedit-SearchPath-0: .\n"
 
 # @ fgj2wp
@@ -252,51 +252,51 @@ msgstr ""
 "Forciere den Medien Import: Deaktiviert lassen, wenn Sie keine Probleme beim "
 "Medien übertragen hatten.<br />Es beschleunigt den Import."
 
+#: admin_build_page.tpl.php:123
+msgid "Timeout for each media:"
+msgstr "Zeitlimit für jede Mediendatei:"
+
+#: admin_build_page.tpl.php:124
+msgid "seconds"
+msgstr "Sekunden"
+
 # @ fgj2wp
-#: admin_build_page.tpl.php:125
+#: admin_build_page.tpl.php:128
 msgid "Meta keywords:"
 msgstr "Meta-Keywords:"
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:126
+#: admin_build_page.tpl.php:129
 msgid "Import meta keywords as tags"
 msgstr "Meta-Keywords als Tags/Schlagworte importieren"
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:129
+#: admin_build_page.tpl.php:132
 msgid "Create pages:"
 msgstr "Seiten erstellen:"
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:130
+#: admin_build_page.tpl.php:133
 msgid "Import as pages instead of blog posts (without categories)"
 msgstr ""
 "Beiträge als Seiten statt als Artikel importieren (Seiten haben keine "
 "Kategorien aber \"Elternseiten\")"
 
-#: admin_build_page.tpl.php:133
-msgid "Timeout for each media:"
-msgstr "Zeitlimit für jede Mediendatei:"
-
-#: admin_build_page.tpl.php:134
-msgid "seconds"
-msgstr "Sekunden"
-
-#: admin_build_page.tpl.php:138
+#: admin_build_page.tpl.php:137
 msgid "Save settings"
 msgstr "Speichere die Einstellungen"
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:139
+#: admin_build_page.tpl.php:138
 msgid "Import content from Joomla to WordPress"
 msgstr "Inhalte von Joomla nach WordPress importieren"
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:146
+#: admin_build_page.tpl.php:145
 msgid "After the migration"
 msgstr "Nach der Migration"
 
-#: admin_build_page.tpl.php:149
+#: admin_build_page.tpl.php:148
 msgid ""
 "During the migration, prefixes have been added to the categories slugs to "
 "avoid categories duplicates. This button will remove these prefixes which "
@@ -306,69 +306,73 @@ msgstr ""
 "Duplikate zu vermeiden. Diese Taste löscht diese Präfixe die nach dem Import "
 "nutzlos sind."
 
-#: admin_build_page.tpl.php:153
+#: admin_build_page.tpl.php:152
 msgid "Remove the prefixes from the categories"
 msgstr "Entfernt die unnötigen Kategorie Präfixe"
 
-#: admin_build_page.tpl.php:158
+#: admin_build_page.tpl.php:157
 msgid "If you have links between articles, you need to modify internal links."
 msgstr ""
 "Wenn Sie zwischen den Artikeln verlinkt haben, bitte klicken Sie \"interne "
 "Links anpassen\"."
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:162
+#: admin_build_page.tpl.php:161
 msgid "Modify internal links"
 msgstr "Interne Links anpassen"
 
-#: admin_build_page.tpl.php:170
+#: admin_build_page.tpl.php:169
 msgid "Do you need extra features?"
 msgstr "Benötigen Sie zusätzliche Funktionen?"
 
-#: admin_build_page.tpl.php:172
+#: admin_build_page.tpl.php:171
 msgid "authors and all users migration"
 msgstr "Autoren und alle Benutzer import"
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:173
+#: admin_build_page.tpl.php:172
 msgid "menus migration"
 msgstr "Menü Import"
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:174
+#: admin_build_page.tpl.php:173
 msgid "HTML modules migration"
 msgstr "HTML Modul Import"
 
-#: admin_build_page.tpl.php:175
+#: admin_build_page.tpl.php:174
 msgid "SEO: keeps Joomla IDs or redirects standard Joomla URLs"
 msgstr "SEO: Behält Joomla IDs oder leitet Standard Joomla URLs um!!"
 
-#: admin_build_page.tpl.php:176
+#: admin_build_page.tpl.php:175
 msgid "SEO: Keeps meta description and meta keywords"
 msgstr ""
 "Importiere die Meta-Beschreibung und die Meta-Schlüsselwörter. Nutzbar mit "
 "WordPress SEO by Yoast"
 
-#: admin_build_page.tpl.php:177
+#: admin_build_page.tpl.php:176
 msgid "SEO: Keeps sh404sef, JoomSEF and OpenSEF URLs"
 msgstr "SEO: Erhält sh404sef, JoomSEF und OpenSEF URLs"
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:178
+#: admin_build_page.tpl.php:177
 msgid "Joomla views counts migration"
 msgstr "Joomla Seitenaufrufe importieren"
 
-#: admin_build_page.tpl.php:179
+#: admin_build_page.tpl.php:178
 msgid "Joomla 1.0 compatible"
 msgstr "Joomla 1.0 kompatibel"
 
-#: admin_build_page.tpl.php:180
+#: admin_build_page.tpl.php:179
 msgid "Joomla 2.5+ featured images"
 msgstr "Joomla 2.5+ featured Bilder"
 
-#: admin_build_page.tpl.php:181
+#: admin_build_page.tpl.php:180
 msgid "Joomla 3.1+ tags"
 msgstr "Joomla 3.1+ Tags/Schlagwörter"
+
+#: admin_build_page.tpl.php:181
+msgid "Joomla contacts"
+msgstr "Joomla Kontakte"
 
 #: admin_build_page.tpl.php:182
 msgid "Mambo 4.5 and 4.6 compatible"
@@ -428,22 +432,18 @@ msgid "JEvents events"
 msgstr "einige JEvents Veranstaltungen"
 
 #: admin_build_page.tpl.php:196
-msgid "Contact Directory contacts"
-msgstr "einige Contact Directory Kontakte"
-
-#: admin_build_page.tpl.php:197
 msgid "Docman documents"
 msgstr "einige Docman Dokumente"
 
-#: admin_build_page.tpl.php:198
+#: admin_build_page.tpl.php:197
 msgid "Virtuemart e-commerce"
 msgstr "einen Virtuemart Onlineshop"
 
-#: admin_build_page.tpl.php:199
+#: admin_build_page.tpl.php:198
 msgid "JReviews reviews"
 msgstr "Bewertungen"
 
-#: admin_build_page.tpl.php:204
+#: admin_build_page.tpl.php:203
 msgid ""
 "Please note that some of these features need an add-on in addition to the "
 "Premium version."
@@ -452,7 +452,7 @@ msgstr ""
 "Version benötigen."
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:207
+#: admin_build_page.tpl.php:206
 msgid ""
 "If you found this plugin useful and it saved you many hours or days, please "
 "rate it on <a href=\"http://wordpress.org/extend/plugins/fg-joomla-to-"
@@ -466,7 +466,7 @@ msgstr ""
 "Spende zu geben."
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:226
+#: admin_build_page.tpl.php:225
 msgid ""
 "All new imported posts or pages and their comments will be deleted from "
 "WordPress."
@@ -475,11 +475,11 @@ msgstr ""
 "WordPress gelöscht werden."
 
 # @ fgj2wp
-#: admin_build_page.tpl.php:229
+#: admin_build_page.tpl.php:228
 msgid "All content will be deleted from WordPress."
 msgstr "Alle Wordpress Inhalte werden gelöscht!"
 
-#: admin_build_page.tpl.php:232
+#: admin_build_page.tpl.php:231
 msgid "Please select a remove option."
 msgstr "Bitte wählen Sie was gelöscht werde soll."
 
@@ -621,9 +621,9 @@ msgstr ""
 "Parameter. Und seien Sie sicher das der WordPress-Server auf die Joomla-"
 "Datenbank Zugriff hat."
 
-#: fg-joomla-to-wordpress.php:339 fg-joomla-to-wordpress.php:1050
-#: fg-joomla-to-wordpress.php:1093 fg-joomla-to-wordpress.php:1137
-#: fg-joomla-to-wordpress.php:1188 weblinks.php:157 weblinks.php:197
+#: fg-joomla-to-wordpress.php:339 fg-joomla-to-wordpress.php:1053
+#: fg-joomla-to-wordpress.php:1096 fg-joomla-to-wordpress.php:1140
+#: fg-joomla-to-wordpress.php:1191 weblinks.php:157 weblinks.php:197
 msgid "Error:"
 msgstr "Fehler:"
 
@@ -675,7 +675,7 @@ msgstr[0] "%d Web Link"
 msgstr[1] "%d Web Links"
 
 # @ fgj2wp
-#: fg-joomla-to-wordpress.php:749
+#: fg-joomla-to-wordpress.php:752
 #, php-format
 msgid "%d category imported"
 msgid_plural "%d categories imported"
@@ -683,7 +683,7 @@ msgstr[0] "Eine Kategorie importiert"
 msgstr[1] "%d Kategorien importiert"
 
 # @ fgj2wp
-#: fg-joomla-to-wordpress.php:757
+#: fg-joomla-to-wordpress.php:760
 #, php-format
 msgid "%d page imported"
 msgid_plural "%d pages imported"
@@ -691,7 +691,7 @@ msgstr[0] "%d Seite importiert"
 msgstr[1] "%d Seiten importiert"
 
 # @ fgj2wp
-#: fg-joomla-to-wordpress.php:761
+#: fg-joomla-to-wordpress.php:764
 #, php-format
 msgid "%d post imported"
 msgid_plural "%d posts imported"
@@ -699,7 +699,7 @@ msgstr[0] "Ein Beiträg importiert"
 msgstr[1] "%d Beiträge importiert"
 
 # @ fgj2wp
-#: fg-joomla-to-wordpress.php:763
+#: fg-joomla-to-wordpress.php:766
 #, php-format
 msgid "%d media imported"
 msgid_plural "%d medias imported"
@@ -707,7 +707,7 @@ msgstr[0] "Ein Medium importiert"
 msgstr[1] "%d Medien importiert"
 
 # @ fgj2wp
-#: fg-joomla-to-wordpress.php:768
+#: fg-joomla-to-wordpress.php:771
 #, php-format
 msgid "%d tag imported"
 msgid_plural "%d tags imported"
@@ -715,7 +715,7 @@ msgstr[0] "Ein Schlagwort importiert"
 msgstr[1] "%d Schlagworte importiert"
 
 # @ fgj2wp
-#: fg-joomla-to-wordpress.php:786
+#: fg-joomla-to-wordpress.php:789
 msgid "Don't forget to modify internal links."
 msgstr "Denken Sie daran die internen Links anzupassen."
 
@@ -878,12 +878,12 @@ msgid "JEvents add-on"
 msgstr "JEvents Erweiterung"
 
 #: modules_check.php:115
-msgid "some Contact Directory contacts"
-msgstr "einige Contact Directory Kontakte"
+msgid "some contacts"
+msgstr "einige Kontakte"
 
 #: modules_check.php:115
-msgid "Contact Directory add-on"
-msgstr "Contact Directory Erweiterung"
+msgid "Contact Manager add-on"
+msgstr "Contact Manager Erweiterung"
 
 #: modules_check.php:119
 msgid "some Docman documents"
@@ -931,6 +931,15 @@ msgid "%d link"
 msgid_plural "%d links"
 msgstr[0] "%d Link"
 msgstr[1] "%d Links"
+
+#~ msgid "Contact Directory contacts"
+#~ msgstr "einige Contact Directory Kontakte"
+
+#~ msgid "some Contact Directory contacts"
+#~ msgstr "einige Contact Directory Kontakte"
+
+#~ msgid "Contact Directory add-on"
+#~ msgstr "Contact Directory Erweiterung"
 
 # @ fgj2wp
 #~ msgid "Joomla version"

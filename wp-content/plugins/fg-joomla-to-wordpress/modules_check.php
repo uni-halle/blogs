@@ -110,7 +110,7 @@ if ( !class_exists('fgj2wp_modules', false) ) {
 					'fg-joomla-to-wordpress-premium-jevents-module/fgj2wp-jevents.php',
 					sprintf($message_addon, __('some JEvents events', 'fgj2wp'), $premium_url, $premium_url . 'jevents/', __('JEvents add-on', 'fgj2wp'))
 				),
-				array('contact_details', 0,
+				array('contact_details', 1,
 					'fg-joomla-to-wordpress-premium-contactmanager-module/fgj2wp-contactmanager.php',
 					sprintf($message_addon, __('some contacts', 'fgj2wp'), $premium_url, $premium_url . 'contact-manager/', __('Contact Manager add-on', 'fgj2wp'))
 				),
@@ -129,6 +129,10 @@ if ( !class_exists('fgj2wp_modules', false) ) {
 				array('jreviews_content', 0,
 					'fg-joomla-to-wordpress-premium-jreviews-module/fgj2wp-jreviews.php',
 					sprintf($message_addon, __('some JReviews data', 'fgj2wp'), $premium_url, $premium_url . 'jreviews/', __('JReviews add-on', 'fgj2wp'))
+				),
+				array('mt_links', 0,
+					'fg-joomla-to-wordpress-premium-mosetstree-module/fgj2wp-mosetstree.php',
+					sprintf($message_addon, __('a Mosets Tree directory', 'fgj2wp'), $premium_url, $premium_url . 'mosetstree/', __('Mosets Tree add-on', 'fgj2wp'))
 				),
 			);
 			foreach ( $modules as $module ) {
