@@ -6,6 +6,16 @@ For a detailed documentation and support please visit: http://www.elmastudio.de/
 Changelog:
 ------------------------------------------------------------------------------------------------------------
 
+
+Version 1.2 - 3rd February 2015
+--------------------------------
+- Enhancement: Updated theme tags
+- Enhancement: Updated custom search form in functions.php
+- New: Moved custom link color from theme options page to the customizer
+- New: Added theme support for title-tag in functions.php
+- New: Added the_archive_title and the_archive_description to archive.php
+
+
 Version 1.1 - 22th October 2013
 --------------------------------
 - Enhancement: General code updates and optimizations (see functions.php, includes/theme-options.php)
