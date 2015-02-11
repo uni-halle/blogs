@@ -44,7 +44,7 @@
  */
 do_action( 'catchbox_before' ); ?>
 
-<div id="page" class="hfeed">
+<div id="page" class="hfeed site">
 
 	<?php 
     /** 

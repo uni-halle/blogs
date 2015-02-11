@@ -1297,13 +1297,6 @@ function catchbox_print_link_color_style() {
 		section.recent-posts .other-recent-posts .comments-link a:hover {
 			border-color: <?php echo $link_color; ?>;
 		}
-		article.feature-image.small .entry-summary p a:hover,
-		.entry-header .comments-link a:hover,
-		.entry-header .comments-link a:focus,
-		.entry-header .comments-link a:active,
-		.feature-slider a.active {
-			background-color: <?php echo $link_color; ?>;
-		}
 	</style>
 <?php
 }
