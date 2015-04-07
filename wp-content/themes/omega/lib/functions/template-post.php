@@ -98,6 +98,53 @@ function omega_get_post_terms( $args = array() ) {
 	return $html;
 }
 
+/**
+ * Produces the link to the current post comments.
+ *
+ * Supported shortcode attributes are:
+ *   after (output after link, default is empty string),
+ *   before (output before link, default is empty string),
+ *   hide_if_off (hide link if comments are off, default is 'enabled' (true)),
+ *   more (text when there is more than 1 comment, use % character as placeholder
+ *     for actual number, default is '% Comments')
+ *   one (text when there is exactly one comment, default is '1 Comment'),
+ *   zero (text when there are no comments, default is 'Leave a Comment').
+ *
+ * Output passes through 'omega_post_comments_shortcode' filter before returning.
+ *
+ * @since 0.9.0
+ *
+ * @param array|string $atts Shortcode attributes. Empty string if no attributes.
+ * @return string Shortcode output
+ */
+function omega_post_comments( $atts = array() ) {
+
+	$defaults = array(
+		'after'       => '',
+		'before'      => '',
+		'hide_if_off' => 'enabled',
+		'more'        => __( '% Comments', 'omega' ),
+		'one'         => __( '1 Comment', 'omega' ),
+		'zero'        => __( 'Leave a Comment', 'omega' ),
+	);
+	$atts = shortcode_atts( $defaults, $atts, 'post_comments' );
+
+	if ( ( ! comments_open() ) && 'enabled' === $atts['hide_if_off'] )
+		return;
+
+	// Darn you, WordPress!
+	ob_start();
+	comments_number( $atts['zero'], $atts['one'], $atts['more'] );
+	$comments = ob_get_clean();
+
+	$comments = sprintf( '<a href="%s">%s</a>', get_comments_link(), $comments );
+
+	$output = '<span class="entry-comments-link">' . $atts['before'] . $comments . $atts['after'] . '</span>';
+
+	return apply_filters( 'omega_post_comments_shortcode', $output, $atts );
+
+}
+
 /* === Galleries === */
 
 /**

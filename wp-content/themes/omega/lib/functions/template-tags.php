@@ -23,7 +23,7 @@ function omega_content_nav() {
 			return;
 	}
 
-	if ( is_singular() && !get_theme_mod( 'single_nav' ) ) {
+	if ( is_singular() && !get_theme_mod( 'single_nav', 0 ) ) {
 		return;
 	}
 
@@ -36,7 +36,7 @@ function omega_content_nav() {
 	?>
 	<nav role="navigation" id="nav-below" class="navigation  <?php echo $nav_class; ?>">
 
-	<?php if ( is_single() && get_theme_mod( 'single_nav' ) ) : // navigation links for single posts ?>
+	<?php if ( is_single() && get_theme_mod( 'single_nav', 0 ) ) : // navigation links for single posts ?>
 
 		<?php previous_post_link( '<div class="nav-previous alignleft">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'omega' ) . '</span> %title' ); ?>
 		<?php next_post_link( '<div class="nav-next alignright">%link</div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'omega' ) . '</span>' ); ?>

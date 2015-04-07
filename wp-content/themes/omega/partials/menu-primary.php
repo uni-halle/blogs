@@ -6,7 +6,7 @@
 <nav class="nav-primary" <?php omega_attr( 'menu' ); ?>>
 	
 	<?php do_action( 'omega_before_primary_menu' ); ?>
-
+	
 	<?php 
 	wp_nav_menu( array(
 		'theme_location' => 'primary',

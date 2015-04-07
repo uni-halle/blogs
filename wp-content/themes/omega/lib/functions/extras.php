@@ -198,7 +198,7 @@ function get_the_content_limit( $max_characters, $more_link_text = '(more...)', 
 
 	//* More link?
 	if ( $more_link_text && !$no_more )  {
-		$link   = apply_filters( 'get_the_content_more_link', sprintf( '&#x02026; <a href="%s" class="more-link">%s</a>', get_permalink(), $more_link_text ), $more_link_text );
+		$link   = apply_filters( 'get_the_content_more_link', sprintf( '<span class="more"><a class="more-link" href="%s">%s</a></span>', get_permalink(), $more_link_text ), $more_link_text );
 		$output = sprintf( '<p>%s %s</p>', $content, $link );
 	} else {
 		$output = sprintf( '<p>%s</p>', $content );
@@ -227,7 +227,7 @@ function the_content_limit( $max_characters, $more_link_text = '(more...)', $str
 
 }
 
-if ( !get_theme_mod( 'more_scroll' )) {
+if ( !get_theme_mod( 'more_scroll', 1 )) {
 	add_filter( 'the_content_more_link', 'omega_remove_more_link_scroll' );
 }
 

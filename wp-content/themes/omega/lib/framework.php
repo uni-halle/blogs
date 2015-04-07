@@ -24,7 +24,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package   Omega
- * @author 	  ThemeHall <hello@themehall.com>
+ * @author 	  Hence Wijaya <hence.wijaya@gmail.com>
  * @copyright Copyright (c) 2013, themehall.com
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2013, Justin Tadlock
@@ -167,9 +167,6 @@ class Omega {
 		/* Load the context-based functions. */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'context.php' );
 
-		/* Load the core framework internationalization functions. */
-		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'i18n.php' );
-
 		/* Load the framework customize functions. */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'customize.php' );
 
@@ -191,9 +188,6 @@ class Omega {
 		/* Load the scripts functions. */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'scripts.php' );
 
-		/* Load the styles functions. */
-		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'styles.php' );
-
 		/* Load the utility functions. */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'utility.php' );
 
@@ -202,41 +196,20 @@ class Omega {
 	}
 
 	/**
-	 * Loads both the parent and child theme translation files.  If a locale-based functions file exists
-	 * in either the parent or child theme (child overrides parent), it will also be loaded.  All translation 
-	 * and locale functions files are expected to be within the theme's '/languages' folder, but the 
+	 * Loads theme translation files. All translation and locale functions files are expected to be within the theme's '/languages' folder, but the 
 	 * framework will fall back on the theme root folder if necessary.  Translation files are expected 
-	 * to be prefixed with the template or stylesheet path (example: 'templatename-en_US.mo').
+	 * to be prefixed with the template or stylesheet path (example: 'en_US.mo').
 	 *
 	 * @since  0.9.0
 	 * @access public
 	 * @return void
 	 */
 	function i18n() {
-		global $omega;
 
-		/* Get parent and child theme textdomains. */
-		$parent_textdomain = omega_get_parent_textdomain();
-		$child_textdomain  = omega_get_child_textdomain();
+		//load_theme_textdomain( 'omega', FALSE, OMEGA_LANGUAGES );
 
-		/* Load the framework textdomain. */
-		$omega->textdomain_loaded['omega'] = omega_load_framework_textdomain( 'omega' );
-
-		/* Load theme textdomain. */
-		$omega->textdomain_loaded[ $parent_textdomain ] = load_theme_textdomain( $parent_textdomain );
-
-		/* Load child theme textdomain. */
-		$omega->textdomain_loaded[ $child_textdomain ] = is_child_theme() ? load_child_theme_textdomain( $child_textdomain ) : false;
-
-		/* Get the user's locale. */
-		$locale = get_locale();
-
-		/* Locate a locale-specific functions file. */
-		$locale_functions = locate_template( array( "languages/{$locale}.php", "{$locale}.php" ) );
-
-		/* If the locale file exists and is readable, load it. */
-		if ( !empty( $locale_functions ) && is_readable( $locale_functions ) )
-			require_once( $locale_functions );
+		load_theme_textdomain( 'omega', get_template_directory() . '/languages' );
+		
 	}
 
 	/**
@@ -251,14 +224,6 @@ class Omega {
 
 		/* Adds core WordPress HTML5 support. */
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
-
-		/* Remove support for the the Get the Image extension if the plugin is installed. */
-		if ( function_exists( 'get_the_image' ) )
-			remove_theme_support( 'get-the-image' );
-
-		/* Remove support for the Featured Header extension if the class exists. */
-		if ( class_exists( 'Featured_Header' ) )
-			remove_theme_support( 'featured-header' );
 	}
 
 	/**
@@ -298,10 +263,6 @@ class Omega {
 		/* Load the theme settings functions */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'settings.php' );
 
-		/* Load the shortcodes if supported. */
-		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'shortcodes.php' );
-		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'shortcodes-post.php' );
-
 		/* Load the widgets if supported. */
 		require_if_theme_supports( 'omega-widgets', trailingslashit( OMEGA_FUNCTIONS ) . 'widgets.php' );
 
@@ -339,15 +300,6 @@ class Omega {
 		/* Load the Loop Pagination extension if supported. */
 		require_if_theme_supports( 'loop-pagination', trailingslashit( OMEGA_EXTENSIONS ) . 'loop-pagination.php' );
 
-		/* Load the Theme Layouts extension */
-		require_if_theme_supports( 'theme-layouts', trailingslashit( OMEGA_EXTENSIONS ) . 'theme-layouts.php' );
-
-		/* Load the Post Stylesheets extension if supported. */
-		require_if_theme_supports( 'post-stylesheets', trailingslashit( OMEGA_EXTENSIONS ) . 'post-stylesheets.php' );
-
-		/* Load the Featured Header extension if supported. */
-		require_if_theme_supports( 'featured-header', trailingslashit( OMEGA_EXTENSIONS ) . 'featured-header.php' );
-
 		/* Load the Color Palette extension if supported. */
 		require_if_theme_supports( 'color-palette', trailingslashit( OMEGA_EXTENSIONS ) . 'color-palette.php' );
 
@@ -372,8 +324,12 @@ class Omega {
 		/* Load custom post extension if supported. */
 		require_if_theme_supports( 'omega-custom-post', trailingslashit( OMEGA_EXTENSIONS ) . '/custom-post.php' );
 
-		/* Load  footer widgets extension if supported. */
+		/* Load footer widgets extension if supported. */
 		require_if_theme_supports( 'omega-footer-widgets', trailingslashit( OMEGA_EXTENSIONS ) . '/footer-widgets.php' );
+
+		/* Load custom footer extension if supported. */
+		require_if_theme_supports( 'custom-footer', trailingslashit( OMEGA_EXTENSIONS ) . '/custom-footer.php' );
+
 
 		/* Load the plugin Activation extension if supported. */
 		require_if_theme_supports( 'plugin-activation', trailingslashit( OMEGA_EXTENSIONS ) . 'class-tgm-plugin-activation.php' );

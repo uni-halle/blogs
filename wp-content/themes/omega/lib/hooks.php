@@ -13,6 +13,7 @@ add_action( 'wp_head', 'omega_styles' );
 
 /* Load the primary menu. */
 add_action( 'omega_before_header', 'omega_get_primary_menu' );
+add_action( 'omega_before_primary_menu', 'omega_menu_icon');
 
 /* Header actions. */
 add_action( 'omega_header', 'omega_header_markup_open', 5 );
@@ -38,10 +39,6 @@ add_action( 'omega_after_entry', 'omega_entry_footer' );
 
 /* Add the primary sidebars after the main content. */
 add_action( 'omega_after_main', 'omega_primary_sidebar' );
-
-/* Filter the sidebar widgets. */
-add_filter( 'sidebars_widgets', 'omega_disable_sidebars' );
-add_action( 'template_redirect', 'omega_one_column' );
 
 add_filter( 'omega_footer_insert', 'omega_default_footer_insert' );
 
@@ -89,10 +86,10 @@ function omega_register_sidebars() {
 function omega_set_default_theme_settings( $settings ) {
 
 	$settings = array(
-		'comments_pages'            => 0,
-		'content_archive'           => 'full',
-		'content_archive_limit'		=> 0,
-		'content_archive_thumbnail' => 1,
+		'comments_pages'       	=> 0,
+		'content_archive'       => 'full',
+		'content_archive_limit'	=> 0,
+		'post_thumbnail' 		=> 1,
 		'more_text'      		=> '[Read more...]',
 		'no_more_scroll'		=> 1,
 		'image_size'           	=> 'large',
@@ -132,7 +129,7 @@ function omega_branding() {
 		if ( $logo = get_theme_mod( 'custom_logo' ) ) {
 			$title = sprintf( '<div itemscope itemtype="http://schema.org/Organization" class="site-title"><a itemprop="url" href="%1$s" title="%2$s" rel="home"><img itemprop="logo" alt="%3$s" src="%4$s"/></a></div>', home_url(), esc_attr( $title ), esc_attr( $title ), $logo );		
 		} else {
-			if (is_front_page()) {
+			if (is_home()) {
 				$title = sprintf( '<h1 class="site-title" itemprop="headline"><a href="%1$s" title="%2$s" rel="home">%3$s</a></h1>', home_url(), esc_attr( $title ), $title );		
 			} else {
 				$title = sprintf( '<h2 class="site-title" itemprop="headline"><a href="%1$s" title="%2$s" rel="home">%3$s</a></h2>', home_url(), esc_attr( $title ), $title );		
@@ -159,7 +156,7 @@ function omega_branding() {
 function omega_default_footer_insert( $settings ) {
 
 	/* If there is a child theme active, use [child-link] shortcode to the $footer_insert. */
-	return '<p class="copyright">' . __( 'Copyright &#169; [the-year] [site-link].', 'omega' ) . '</p>' . "\n\n" . '<p class="credit">' . __( 'Theme by [author-uri].', 'omega' ) . '</p>';	
+	return '<p class="copyright">' . __( 'Copyright &#169; ', 'omega' ) . date_i18n( 'Y' ) . ' ' . omega_get_site_link() . '.</p>' . "\n\n" . '<p class="credit">' . __( 'Theme by ', 'omega' ) . omega_get_author_uri() . '.</p>';	
 
 }
 
@@ -184,6 +181,13 @@ function omega_footer_insert() {
  */
 function omega_get_primary_menu() {
 	get_template_part( 'partials/menu', 'primary' );
+}
+
+/**
+ * print menu icon
+ */
+function omega_menu_icon() {
+	echo '<a href="#" id="menu-icon" class="menu-icon"><span></span></a>';
 }
 
 /**
@@ -218,14 +222,14 @@ function omega_entry() {
 	if ( is_home() || is_archive() || is_search() ) {
 	?>	
 		<div <?php omega_attr( 'entry-summary' ); ?>>
-	<?php 
-		if(get_theme_mod( 'post_thumbnail' )) {
-			get_the_image( array('attachment' => false, 'meta_key' => 'Thumbnail', 'default_size' => get_theme_mod( 'image_size' ) ) ); 
+	<?php 		
+		if( get_theme_mod( 'post_thumbnail', 1 ) && has_post_thumbnail()) {
+			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_post_thumbnail(get_the_ID(), get_theme_mod( 'image_size' ), array('class' => get_theme_mod( 'image_size' )) ) );
 		}
 
-		if ( 'excerpts' === get_theme_mod( 'post_excerpt' ) ) {
-			if ( get_theme_mod( 'excerpt_chars_limit' ) )
-				the_content_limit( (int) get_theme_mod( 'excerpt_chars_limit' ), get_theme_mod( 'more_text' ) );
+		if ( 'excerpts' === get_theme_mod( 'post_excerpt', 'excerpts' ) ) {
+			if ( get_theme_mod( 'excerpt_chars_limit', 0 ) )
+				the_content_limit( (int) get_theme_mod( 'excerpt_chars_limit' ), get_theme_mod( 'more_text', '[Read more...]' ) );
 			else
 				the_excerpt();
 		}
@@ -250,7 +254,7 @@ function omega_entry() {
 
 
 function omega_excerpt_more( $more ) {
-	return ' ... <a class="more-link" href="'. get_permalink( get_the_ID() ) . '">' . get_theme_mod( 'more_text' ) . '</a>';
+	return ' ... <span class="more"><a class="more-link" href="'. get_permalink( get_the_ID() ) . '">' . get_theme_mod( 'more_text', '[Read more...]' ) . '</a></span>';
 }
 add_filter('excerpt_more', 'omega_excerpt_more');
 
@@ -262,11 +266,7 @@ function omega_entry_footer() {
 	if ( 'post' == get_post_type() ) {
 		get_template_part( 'partials/entry', 'footer' ); 
 	} 
-
-	if(is_singular()) {
-		echo omega_apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">[post_edit]</div>' );
-	}
-	
+		
 }
 
 /**
@@ -285,43 +285,6 @@ function omega_styles() {
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 	<![endif]-->
 <?php 
-}
-
-/**
- * Function for deciding which pages should have a one-column layout.
- */
-function omega_one_column() {
-
-	if ( !is_active_sidebar( 'primary' ) )
-		add_filter( 'theme_mod_theme_layout', 'omega_theme_layout_one_column' );
-
-	elseif ( is_attachment() && wp_attachment_is_image() && 'default' == get_post_layout( get_queried_object_id() ) )
-		add_filter( 'theme_mod_theme_layout', 'omega_theme_layout_one_column' );
-
-}
-
-
-/**
- * Filters 'get_theme_layout' by returning 'layout-1c'.
- */
-function omega_theme_layout_one_column( $layout ) {
-	return '1c';
-}
-
-
-/**
- * Disables sidebars if viewing a one-column page.
- */
-
-function omega_disable_sidebars( $sidebars_widgets ) {
-	global $wp_customize;
-
-	$customize = ( is_object( $wp_customize ) && $wp_customize->is_preview() ) ? true : false;
-
-	if ( !is_admin() && !$customize && '1c' == get_theme_mod( 'theme_layout' ) )
-		$sidebars_widgets['primary'] = false;
-
-	return $sidebars_widgets;
 }
 
 function omega_archive_title() {

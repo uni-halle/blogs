@@ -89,6 +89,23 @@ hr.div {
 	clear: both;
 }
 
+.available-theme {
+	width: 300px;
+	height: 130px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 100px 20px 0;
+	background: #ddd;
+	margin: 0 30px 30px 0;
+	float: left;
+	font-size: 30px;
+}
+
+.available-theme a {
+	text-decoration: none;
+	display: block;
+}
+
 @media only screen and (max-width: 900px) {
 	#wpbody-content #dashboard-widgets.columns-2 .col-1,
 	#wpbody-content #dashboard-widgets.columns-2 .col-2 {
@@ -97,5 +114,16 @@ hr.div {
 	#wpbody-content #dashboard-widgets .col-1 .meta-box-sortables,
 	#dashboard-widgets .meta-box-sortables {
 	    margin: 0;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.available-theme {
+		width: 87%;
+		height: 90px;
+		margin-right: 0px;
+		font-size: 26px;
+		display: block;
+		padding: 60px 20px 0;
 	}
 }
