@@ -4,9 +4,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-05 18:16+0545\n"
-"PO-Revision-Date: 2015-02-05 18:16+0545\n"
-"Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
+"POT-Creation-Date: 2015-03-18 20:20+0545\n"
+"PO-Revision-Date: 2015-03-18 20:20+0545\n"
+"Last-Translator: Johnny Eriksson <info@johnnysblogg.se>\n"
 "Language-Team: Johnny Eriksson <info@johnnysblogg.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -222,7 +222,7 @@ msgid ""
 "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
 "title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Det h&auml;r inl&auml;gget postades i %1$s och taggades %2$s. Skapa ett "
+"Det h&auml;r inl&auml;gget postades i %1$s och har etikett %2$s. Skapa ett "
 "bokm&auml;rke f&ouml;r <a href=\"%3$s\" title=\"Direktl&auml;nk till %4$s\" "
 "rel=\"bookmark\">direktl&auml;nken</a>."
 
@@ -257,7 +257,7 @@ msgstr "<span class=\"%1$s\">Postad i</span> %2$s"
 #: ../content.php:87
 #, php-format
 msgid "<span class=\"%1$s\">Tagged</span> %2$s"
-msgstr "<span class=\"%1$s\">Taggad</span> %2$s"
+msgstr "<span class=\"%1$s\">Etikett</span> %2$s"
 
 #: ../content-image.php:16
 msgid "Image"
@@ -308,7 +308,7 @@ msgid ""
 "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
 "\">permalink</a>."
 msgstr ""
-"Det h&auml;r inl&auml;gget postades i %1$s och taggades %2$s av <a href="
+"Det h&auml;r inl&auml;gget postades i %1$s och gavs etikett %2$s av <a href="
 "\"%6$s\">%5$s</a>. Skapa ett bokm&auml;rke f&ouml;r <a href=\"%3$s\" title="
 "\"Direktl&auml;nk till %4$s\" rel=\"bookmark\">direktl&auml;nken</a>."
 
@@ -540,11 +540,11 @@ msgstr "URL till feed-omdirigering"
 
 #: ../inc/theme-options.php:153
 msgid "Move Site Title and Tagline?"
-msgstr "Move Site Title and Tagline?"
+msgstr "Flytta sidans titel och slogan?"
 
 #: ../inc/theme-options.php:161
 msgid "Default Display Text in Search"
-msgstr "Default Display Text in Search"
+msgstr "F&ouml;rvald text i s&ouml;kf&auml;lt"
 
 #: ../inc/theme-options.php:169
 msgid "Disable Search in Header?"
@@ -552,7 +552,7 @@ msgstr "Avaktivera s&ouml;krutan i sidhuvudet?"
 
 #: ../inc/theme-options.php:177
 msgid "Enable Secondary & Footer Menu in Mobile Devices?"
-msgstr "Enable Secondary & Footer Menu in Mobile Devices?"
+msgstr "Aktivera sidomeny och sidfotsmeny f&ouml;r mobila enheter?"
 
 #: ../inc/theme-options.php:185
 msgid "Custom CSS Styles"
@@ -565,7 +565,7 @@ msgstr "Temainst&auml;llningar"
 
 #: ../inc/theme-options.php:245
 msgid "Insert as Favicon"
-msgstr "Insert as Favicon"
+msgstr "L&auml;gg till som Favicon"
 
 #: ../inc/theme-options.php:245
 msgid "Add/Change Favicon"
@@ -573,7 +573,7 @@ msgstr "L&auml;gg till/&Auml;ndra Favicon"
 
 #: ../inc/theme-options.php:259
 msgid "Insert as Web Clip Icon"
-msgstr "Insert as Web Clip Icon"
+msgstr "L&auml;gg till som Web Clip Icon"
 
 #: ../inc/theme-options.php:259
 msgid "Add/Change Web Clip Icon"
@@ -593,15 +593,15 @@ msgstr "Bl&aring;"
 
 #: ../inc/theme-options.php:291
 msgid "Green"
-msgstr "Green"
+msgstr "Gr&ouml;n"
 
 #: ../inc/theme-options.php:297
 msgid "Red"
-msgstr "Red"
+msgstr "R&ouml;d"
 
 #: ../inc/theme-options.php:303
 msgid "Brown"
-msgstr "Brown"
+msgstr "Brun"
 
 #: ../inc/theme-options.php:309
 msgid "Orange"
@@ -633,7 +633,7 @@ msgstr "ord"
 
 #: ../inc/theme-options.php:504
 msgid "Check to move above the Header/Logo Image"
-msgstr "Check to move above the Header/Logo Image"
+msgstr "Markera f&ouml;r att flytta ovanf&ouml;r sidhuvudsbild/-logotyp"
 
 #: ../inc/theme-options.php:534
 msgid "Check to Disable"
@@ -661,16 +661,16 @@ msgstr "Klicka h&auml;r f&ouml;r att l&auml;sa"
 
 #: ../inc/theme-options.php:627
 msgid "Theme Options By"
-msgstr "Theme Options By"
+msgstr "Temainst&auml;llningar av"
 
 #: ../inc/theme-options.php:629
 msgid "http://catchthemes.com/"
 msgstr "http://catchthemes.com/"
 
 #: ../inc/theme-options.php:629 ../inc/theme-options.php:630
-#: ../inc/theme-options.php:1375
+#: ../inc/theme-options.php:1385
 msgid "Catch Themes"
-msgstr "Catch teman"
+msgstr "Catch Themes"
 
 #: ../inc/theme-options.php:636
 msgid "http://catchthemes.com/themes/catch-box-pro/"
@@ -710,7 +710,7 @@ msgstr "http://catchthemes.com/theme-instructions/catch-box/"
 
 #: ../inc/theme-options.php:644
 msgid "Theme Instructions"
-msgstr "Theme Instructions"
+msgstr "Temainstruktioner"
 
 #: ../inc/theme-options.php:645
 msgid "https://www.facebook.com/catchthemes/"
@@ -718,7 +718,7 @@ msgstr "https://www.facebook.com/catchthemes/"
 
 #: ../inc/theme-options.php:645
 msgid "Like Catch Themes on Facebook"
-msgstr "Like Catch Themes on Facebook"
+msgstr "Gilla Catch Themes p&aring; Facebook"
 
 #: ../inc/theme-options.php:645 ../inc/theme-options.php:780
 msgid "Facebook"
@@ -730,7 +730,7 @@ msgstr "https://twitter.com/catchthemes/"
 
 #: ../inc/theme-options.php:646
 msgid "Follow Catch Themes on Twitter"
-msgstr "Follow Catch Themes on Twitter"
+msgstr "F&ouml;lj Catch Themes p&aring; Twitter"
 
 #: ../inc/theme-options.php:646 ../inc/theme-options.php:785
 msgid "Twitter"
@@ -742,15 +742,15 @@ msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
 
 #: ../inc/theme-options.php:647
 msgid "Rate us 5 Star on WordPress"
-msgstr "Rate us 5 Star on WordPress"
+msgstr "Ge oss 5 stj&auml;rnor p&aring; WordPress"
 
 #: ../inc/theme-options.php:647
 msgid "5 Star Rating"
-msgstr "5 Star Rating"
+msgstr "5 stj&auml;rnors omd&ouml;me"
 
 #: ../inc/theme-options.php:657
 msgid "Featured Post Slider"
-msgstr "Featured Post Slider"
+msgstr "Framh&auml;vt bildspel"
 
 #: ../inc/theme-options.php:658
 msgid "Social Links"
@@ -766,7 +766,7 @@ msgstr "Inst&auml;llningar f&ouml;r bildspel"
 
 #: ../inc/theme-options.php:690 ../inc/theme-options.php:692
 msgid "Post Slider Tutorial"
-msgstr "Post Slider Tutorial"
+msgstr "Handledning f&ouml;r bildspel"
 
 #: ../inc/theme-options.php:692
 msgid ""
@@ -778,7 +778,7 @@ msgstr ""
 
 #: ../inc/theme-options.php:692
 msgid "Click Here to Read Post Slider Tutorial"
-msgstr "Click Here to Read Post Slider Tutorial"
+msgstr "Klicka h&auml;r f&ouml;r att l&auml;sa handledning f&ouml;r bildspel"
 
 #: ../inc/theme-options.php:696
 msgid "Exclude Slider post from Home page posts:"
@@ -795,7 +795,7 @@ msgstr "Antal bilder"
 
 #: ../inc/theme-options.php:707
 msgid "Featured Post ID"
-msgstr "Featured Post ID"
+msgstr "Framh&auml;vd post ID"
 
 #: ../inc/theme-options.php:709
 msgid "Click Here To Edit"
@@ -956,55 +956,55 @@ msgstr ""
 
 #: ../inc/theme-options.php:913
 msgid "Header and Footer Code"
-msgstr "Header and Footer Code"
+msgstr "Sidhuvuds- och sidfotskod"
 
 #: ../inc/theme-options.php:918
 msgid "Code to display on Header"
-msgstr "Code to display on Header"
+msgstr "Kod som ska visas i sidhuvudet"
 
 #: ../inc/theme-options.php:925
 msgid ""
 "Note: Here you can put scripts from Google, Facebook etc. which will load on "
 "Header"
 msgstr ""
-"Note: Here you can put scripts from Google, Facebook etc. which will load on "
-"Header"
+"Anm&auml;rkning: H&auml;r kan du l&auml;gga script fr&aring; Google, "
+"Facebook etc som ska k&ouml;ras i sidhuvudet"
 
 #: ../inc/theme-options.php:929
 msgid "Code to display on Footer"
-msgstr "Code to display on Footer"
+msgstr "Kod som ska visas i sidfoten"
 
 #: ../inc/theme-options.php:936
 msgid ""
 "Note: Here you can put scripts from Google, Facebook, Add This etc. which "
 "will load on footer"
 msgstr ""
-"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
-"will load on footer"
+"Anm&auml;rkning: H&auml;r kan du l&auml;gga script fr&aring; Google, "
+"Facebook etc som ska k&ouml;ras i sidfoten"
 
-#: ../inc/theme-options.php:1333
+#: ../inc/theme-options.php:1343
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/theme-options.php:1354
+#: ../inc/theme-options.php:1364
 msgid "WordPress"
 msgstr "WordPress"
 
-#: ../inc/theme-options.php:1364
+#: ../inc/theme-options.php:1374
 msgid "Theme: Catch Box by "
-msgstr "Theme: Catch Box by "
+msgstr "Tema: Catch Box av "
 
-#: ../inc/theme-options.php:1386
+#: ../inc/theme-options.php:1396
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../inc/theme-options.php:1386
+#: ../inc/theme-options.php:1396
 msgid "All Rights Reserved"
-msgstr "All Rights Reserved"
+msgstr "Alla r&auml;ttigheter f&ouml;rbeh&aring;lls / All Rights Reserved"
 
-#: ../inc/theme-options.php:1401
+#: ../inc/theme-options.php:1411
 msgid "More Theme Options &raquo;"
-msgstr "More Theme Options &raquo;"
+msgstr "Fler temainst&auml;llningar &raquo;"
 
 #: ../inc/widgets.php:20
 msgid "Use this widget to add any type of Ad as a widget."
@@ -1072,7 +1072,7 @@ msgstr "Senare <span class=\"meta-nav\">&rarr;</span>"
 #: ../tag.php:16
 #, php-format
 msgid "Tag Archives: %s"
-msgstr "Tagg-arkiv: %s"
+msgstr "Etikett-arkiv: %s"
 
 #~ msgid "Copyright &copy;"
 #~ msgstr "Copyright &copy;"

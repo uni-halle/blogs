@@ -2,86 +2,89 @@
 # This file is distributed under the  GNU General Public License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Catch Box Pro\n"
+"Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-18 20:19+0545\n"
-"PO-Revision-Date: 2015-03-18 20:19+0545\n"
-"Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
-"Language-Team: Catch Themes <info@catchinternet.com>\n"
-"Language: it\n"
+"POT-Creation-Date: 2015-03-18 20:20+0545\n"
+"PO-Revision-Date: 2015-03-18 20:20+0545\n"
+"Last-Translator: Alexandr Baryshnyev <abb@eksi.net>\n"
+"Language-Team: Eksi.Net <info@eksi.net>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e;_x;_ex;_n;esc_attr_e;esc_attr__\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.7.1\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
 msgid "Error 404 - Page Not Found."
-msgstr "Errore 404 - Pagina non trovata"
+msgstr "Помилка 404 - Сторінку не знайдено."
 
 #: ../404.php:18
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
-msgstr "Sembra che non possiamo trovare quello che stai cercando."
+msgstr "Схоже на те, що неможливо знайти те, що ви шукаєте."
 
 #: ../404.php:19
 msgid "This might be because:"
-msgstr "Questo potrebbe essere dovuto:"
+msgstr "Це можливо тому, що:"
 
 #: ../404.php:20
 msgid ""
 "You have typed the web address incorrectly, or the page you were looking for "
 "may have been moved, updated or deleted."
 msgstr ""
-"L'indirizzo che hai inserito è sbagliato; oppure la pagina che stai cercando "
-"è stata postata, aggiornata o cancellata"
+"Ви набрали веб-адресу неправильно, або сторінка, яку ви шукаєте, можливо, "
+"була переміщєна, змінена або видалена."
 
 #: ../404.php:21
 msgid "Please try the following options instead:"
-msgstr "Per favore prova le seguenti opzioni:"
+msgstr "Будь ласка, спробуйте наступні налаштування замість старих:"
 
 #: ../404.php:22
 msgid ""
 "Check for a mis-typed URL error, then press the refresh button on your "
 "browser or Use the search box below."
 msgstr ""
-"Controlla per errori di battitura nella URL, quindi aggiorna la pagina; "
-"oppure prova ad usare la casella di ricerca qua sotto."
+"Перевірте, чи правильно ви ввели URL-адресу, а потім натисніть кнопку "
+"оновлення в браузері або скористайтеся формою пошуку, яка розміщена нижче."
 
 #: ../archive.php:22
 #, php-format
 msgid "Daily Archives: %s"
-msgstr "Archivio giornaliero: %s"
+msgstr "Архіви за день: %s"
 
 #: ../archive.php:24
 #, php-format
 msgid "Monthly Archives: %s"
-msgstr "Archivio mensile: %s"
+msgstr "Архіви за місяць: %s"
 
 #: ../archive.php:24
+msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
 #: ../archive.php:26
 #, php-format
 msgid "Yearly Archives: %s"
-msgstr "Archivio annuale: %s"
+msgstr "Архіви за рік: %s"
 
-#: ../archive.php:26 ../inc/theme-options.php:1343
+#: ../archive.php:26
+msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y"
 
 #: ../archive.php:28
 msgid "Blog Archives"
-msgstr "Archivio del blog"
+msgstr "Архіви сайту"
 
 #: ../archive.php:52 ../author.php:69 ../category.php:45 ../index.php:32
 #: ../page-blog.php:65 ../search.php:39 ../tag.php:45
 msgid "Nothing Found"
-msgstr "Nessun risultato trovato"
+msgstr "Нічого не знайдено"
 
 #: ../archive.php:56 ../author.php:73 ../category.php:49 ../index.php:36
 #: ../page-blog.php:69 ../tag.php:49
@@ -89,51 +92,53 @@ msgid ""
 "Apologies, but no results were found for the requested archive. Perhaps "
 "searching will help find a related post."
 msgstr ""
-"Ci scusiamo, ma non è stato trovato nessun articolo per l'archivio "
-"richiesto. Probabilmente una ricerca aiuterà a trovare articoli correlati."
+"Вибачте, але зазначений архів не знайдено. Можливо, пошук допоможе вам "
+"знайти відповідну публікацію."
 
 #: ../author.php:25
 #, php-format
 msgid "Author Archives: %s"
-msgstr "Archivio autore: %s"
+msgstr "Архіви авторів : %s"
 
 #: ../author.php:44 ../content-single.php:76
 #, php-format
 msgid "About %s"
-msgstr "A proposito di %s"
+msgstr "Про %s"
 
 #: ../category.php:16
 #, php-format
 msgid "Category Archives: %s"
-msgstr "Archivio di categoria: %s"
+msgstr "Архиви категорії: %s"
 
 #: ../comments.php:17
 msgid ""
 "This post is password protected. Enter the password to view any comments."
 msgstr ""
-"Questo articolo è protetto da password. Inserirci la password per vederlo "
-"assieme ai commenti."
+"Ця публікація захищена паролем. Введіть пароль для перегляду коментарів."
 
 #: ../comments.php:33
 #, php-format
 msgid "One thought on &ldquo;%2$s&rdquo;"
-msgstr "Un commento riguardo &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s коментар до сторінки &Prime;%2$s&Prime;"
+msgstr[1] "%1$s коментара до сторінки &Prime;%2$s&Prime;"
+msgstr[2] "%1$s коментарів до сторінки &Prime;%2$s&Prime;"
 
 #: ../comments.php:40 ../comments.php:60
 msgid "Comment navigation"
-msgstr "Navigazione dei commenti"
+msgstr "Пересування по комментарах"
 
 #: ../comments.php:41 ../comments.php:61
 msgid "&larr; Older Comments"
-msgstr "&larr; Commenti più vecchi"
+msgstr "&larr; Попередні комментарі"
 
 #: ../comments.php:42 ../comments.php:62
 msgid "Newer Comments &rarr;"
-msgstr "Commenti più nuovi &rarr;"
+msgstr "Наступні комментарі &rarr;"
 
 #: ../comments.php:72
 msgid "Comments are closed."
-msgstr "I commenti sono chiusi"
+msgstr "Коментування заборонено."
 
 #: ../content-aside.php:16 ../content-featured.php:14
 #: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
@@ -141,24 +146,26 @@ msgstr "I commenti sono chiusi"
 #: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:848
 #, php-format
 msgid "Permalink to %s"
-msgstr "Collegamento permanente a %s"
+msgstr "Постійне посилання на %s"
 
 #: ../content-aside.php:17
 msgid "Aside"
-msgstr "A margine"
+msgstr "Крім"
 
 #: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
 #: ../content-quote.php:24 ../content-status.php:21
 msgid "Reply"
-msgstr "Rispondi"
+msgstr "Відповідь"
 
 #: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
 #: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
 msgid "1"
 msgstr "1"
 
 #: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
 #: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
 msgid "%"
 msgstr "%"
 
@@ -166,32 +173,32 @@ msgstr "%"
 #: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
 #: ../content.php:55 ../functions.php:394
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Continua a leggere <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Читати далі <span class=\"meta-nav\">&rarr;</span>"
 
 #: ../content-aside.php:35 ../content-featured.php:24
 #: ../content-gallery.php:55 ../content-image.php:29 ../content-link.php:35
 #: ../content-page.php:19 ../content-quote.php:37 ../content-single.php:31
 #: ../content-status.php:36 ../content.php:57 ../image.php:87
 msgid "Pages:"
-msgstr "Pagine:"
+msgstr "Сторінки:"
 
 #: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
 #: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
 #: ../content.php:97
 msgid "Leave a reply"
-msgstr "Lascia un commento"
+msgstr "Залишити відповідь"
 
 #: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
 #: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
 #: ../content.php:97
 msgid "<b>1</b> Reply"
-msgstr "<b>1</b> Risposta"
+msgstr "<b>1</b> відповідь"
 
 #: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
 #: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
 #: ../content.php:97
 msgid "<b>%</b> Replies"
-msgstr "<b>%</b> Risposte"
+msgstr "<b>%</b> відповідей"
 
 #: ../content-aside.php:50 ../content-featured.php:51
 #: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
@@ -199,7 +206,7 @@ msgstr "<b>%</b> Risposte"
 #: ../content-status.php:51 ../content.php:100 ../functions.php:642
 #: ../functions.php:670 ../image.php:97
 msgid "Edit"
-msgstr "Modifica"
+msgstr "Редагувати"
 
 #. translators: used between list items, there is a space after the comma
 #: ../content-featured.php:35 ../content-featured.php:44
@@ -216,8 +223,9 @@ msgid ""
 "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
 "title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Questo articolo è pubblicato in %1$s e taggato %2$s. Questo è il suo <a href="
-"\"%3$s\" title=\"Link permanente a %4$s\">link permanente</a>."
+"Опубліковано у розділах: %1$s та помічено мітками: %2$s. <a href=\"%3$s\" "
+"title=\"Постійне посилання на %4$s\" rel=\"bookmark\">Постійне посилання для "
+"закладок</a>."
 
 #: ../content-featured.php:39
 #, php-format
@@ -225,33 +233,36 @@ msgid ""
 "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
 "\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Questo articolo è pubblicato in %1$s. Questo è il suo <a href=\"%3$s\" title="
-"\"Link permanente a %4$s\">link permanente</a>."
+"Опубліковано у розділах: %1$s. <a href=\"%3$s\" title=\"Постійне посилання "
+"на %4$s\" rel=\"bookmark\">Постійне посилання для закладок</a>."
 
 #: ../content-gallery.php:17
 msgid "Gallery"
-msgstr "Galleria"
+msgstr "Галерея"
 
 #: ../content-gallery.php:47
 #, php-format
 msgid "This gallery contains <a %1$s>%2$s photo</a>."
-msgstr "Questa galleria contiene <a %1$s>%2$s foto</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] "Цей альбом містить у собі <a %1$s>%2$s зображення</a>."
+msgstr[1] "Цей альбом містить у собі <a %1$s>%2$s зображень</a>."
+msgstr[2] "Цей альбом містить у собі <a %1$s>%2$s зображень</a>."
 
 #: ../content-gallery.php:72 ../content-image.php:57 ../content-quote.php:54
 #: ../content.php:75
 #, php-format
 msgid "<span class=\"%1$s\">Posted in</span> %2$s"
-msgstr "<span class=\"%1$s\">Pubblicato in</span> %2$s"
+msgstr "<span class=\"%1$s\">Опубліковано у розділах:</span> %2$s"
 
 #: ../content-gallery.php:84 ../content-image.php:65 ../content-quote.php:66
 #: ../content.php:87
 #, php-format
 msgid "<span class=\"%1$s\">Tagged</span> %2$s"
-msgstr "<span class=\"%1$s\">Taggato</span> %2$s"
+msgstr "<span class=\"%1$s\">Помічено мітками:</span> %2$s"
 
 #: ../content-image.php:16
 msgid "Image"
-msgstr "Immagine"
+msgstr "Зображення"
 
 #: ../content-image.php:40
 #, php-format
@@ -262,34 +273,34 @@ msgid ""
 "title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 msgstr ""
 "<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
-"\" pubdate>%3$s</time></a><span class=\"by-author\"><span class=\"sep\"> da "
-"</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
-"title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> "
+"автор </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s"
+"\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 
 #: ../content-image.php:45 ../functions.php:708
 #, php-format
 msgid "View all posts by %s"
-msgstr "Guarda tutti gli articoli di %s"
+msgstr "Продивитися всі публікації автора %s"
 
 #: ../content-link.php:17
 msgid "Link"
-msgstr "Collegamento"
+msgstr "Посилання"
 
 #: ../content-quote.php:15
 msgid "Quote"
-msgstr "Cita"
+msgstr "Цитата"
 
 #: ../content-single.php:21 ../content.php:28
 msgid "No Comments &darr;"
-msgstr "Nessun commento &darr;"
+msgstr "Нема коменарів &darr;"
 
 #: ../content-single.php:21 ../content.php:28
 msgid "1 Comment &darr;"
-msgstr "1 commento &darr;"
+msgstr "1 коментар &darr;"
 
 #: ../content-single.php:21 ../content.php:28
 msgid "% Comments &darr;"
-msgstr "% commenti &darr;"
+msgstr "% коментарів &darr;"
 
 #: ../content-single.php:47
 #, php-format
@@ -298,9 +309,9 @@ msgid ""
 "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
 "\">permalink</a>."
 msgstr ""
-"Questo articolo è pubblicato in %1$s e taggato %2$s da <a href=\"%6$s\">"
-"%5$s</a>. Questo è il suo <a href=\"%3$s\" title=\"Permalink to %4$s\" rel="
-"\"bookmark\">link permanente</a>."
+"Опубліковано у розділах: %1$s та помічено мітками: %2$s автором <a href="
+"\"%6$s\">%5$s</a>. <a href=\"%3$s\" title=\"Постійне посилання на %4$s\" rel="
+"\"bookmark\">Постійне посилання для закладок</a>."
 
 #: ../content-single.php:49
 #, php-format
@@ -308,9 +319,9 @@ msgid ""
 "This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a "
 "href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Questo articolo è pubblicato in %1$s da <a href=\"%6$s\">%5$s</a>Questo è il "
-"suo <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">link "
-"permanente</a>."
+"Опубліковано у розділах: %1$s автором <a href=\"%6$s\">%5$s</a>. <a href="
+"\"%3$s\" title=\"Постійне посилання на %4$s\" rel=\"bookmark\"> Постійне "
+"посилання для закладок</a>."
 
 #: ../content-single.php:51
 #, php-format
@@ -318,114 +329,115 @@ msgid ""
 "This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href="
 "\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
 msgstr ""
-"Questo articolo è pubblicato da <a href=\"%6$s\">%5$s</a>Questo è il suo <a "
-"href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">link permanente</"
-"a>."
+"Опубліковано автором <a href=\"%6$s\">%5$s</a>. <a href=\"%3$s\" title="
+"\"Постійне посилання на %4$s\" rel=\"bookmark\">Постійне посилання для "
+"закладок</a>."
 
 #: ../content-single.php:80
 #, php-format
 msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Guarda tutti gli articoli di %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+"Подивитися всі публікації автора %s <span class=\"meta-nav\">&rarr;</span>"
 
 #: ../content-status.php:16
 msgid "Status"
-msgstr "Stato"
+msgstr "Статус"
 
 #: ../content.php:16
 msgid "Featured"
-msgstr "In rilievo"
+msgstr "з розбудованими можливостями"
 
 #: ../footer.php:54
 msgid "Footer menu"
-msgstr "Menu a piè pagina"
+msgstr "Нижнє меню"
 
 #: ../functions.php:111
 msgid "Primary Menu"
-msgstr "Menu principale"
+msgstr "Головне меню"
 
 #: ../functions.php:112
 msgid "Secondary Menu"
-msgstr "Menu secondario"
+msgstr "Додаткове меню"
 
 #: ../functions.php:113
 msgid "Footer Menu"
-msgstr "Menu a piè pagina"
+msgstr "Нижнє меню"
 
 #. translators: header image description
 #: ../functions.php:181
 msgid "Garden"
-msgstr "Giardino"
+msgstr "сад"
 
 #. translators: header image description
 #: ../functions.php:187
 msgid "Flower"
-msgstr "Fiori"
+msgstr "квітка"
 
 #. translators: header image description
 #: ../functions.php:193
 msgid "Mountain"
-msgstr "Montagne"
+msgstr "гора"
 
 #: ../functions.php:347
 #, php-format
 msgid "Page %s"
-msgstr "Pagina %s"
+msgstr "Сторінка %s"
 
 #: ../functions.php:463
 msgid "Main Sidebar"
-msgstr "Barra laterale principale"
+msgstr "Головна бокова панель"
 
 #: ../functions.php:472
 msgid "Footer Area One"
-msgstr "Prima area a piè di pagina"
+msgstr "Перша нижня зона"
 
 #: ../functions.php:474 ../functions.php:484 ../functions.php:494
 msgid "An optional widget area for your site footer"
-msgstr "Un'area opzionale per dei widget a piè pagina"
+msgstr "Додаткова нижня зона для віджетів"
 
 #: ../functions.php:482
 msgid "Footer Area Two"
-msgstr "Seconda area a piè di pagina"
+msgstr "Друга нижня зона"
 
 #: ../functions.php:492
 msgid "Footer Area Three"
-msgstr "Terza area a piè di pagina"
+msgstr "Третя нижня зона"
 
 #: ../functions.php:526 ../functions.php:555 ../single.php:15
 msgid "Post navigation"
-msgstr "Navigazione articoli"
+msgstr "Пересування по публікаціях"
 
 #: ../functions.php:534 ../functions.php:563
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
-msgstr "<span class=\"meta-nav\">&larr;</span> Articoli più vecchi"
+msgstr "<span class=\"meta-nav\">&larr;</span> Попередні публікації"
 
 #: ../functions.php:535 ../functions.php:564
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Articoli più nuovi <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Наступні публікації <span class=\"meta-nav\">&rarr;</span>"
 
 #: ../functions.php:642
 msgid "Pingback:"
-msgstr "Pingback:"
+msgstr "Сповіщення (pingback):"
 
 #. translators: 1: comment author, 2: date and time
 #: ../functions.php:659
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
-msgstr "%1$s il %2$s <span class=\"says\">ha scritto:</span>"
+msgstr "%1$s %2$s <span class=\"says\">написав:</span>"
 
 #. translators: 1: date, 2: time
 #: ../functions.php:665
 #, php-format
 msgid "%1$s at %2$s"
-msgstr "%1$s alle %2$s"
+msgstr "%1$s о %2$s"
 
 #: ../functions.php:674
 msgid "Your comment is awaiting moderation."
-msgstr "Il tuo commento è in attesa della moderazione."
+msgstr "Ваш коментар очікує на підтвердження модератором."
 
 #: ../functions.php:683
 msgid "Reply <span>&darr;</span>"
-msgstr "Rispondi <span>&darr;</span>"
+msgstr "Відповідь <span>&darr;</span>"
 
 #: ../functions.php:702
 #, php-format
@@ -436,53 +448,52 @@ msgid ""
 "<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
 "\" rel=\"author\">%7$s</a></span></span>"
 msgstr ""
-"<span class=\"sep\">Pubblicato il </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"<span class=\"sep\">Опубліковано </span><a href=\"%1$s\" title=\"%2$s\" rel="
 "\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
-"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> da </span> "
-"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
-"\" rel=\"author\">%7$s</a></span></span>"
+"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> автором </"
+"span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title="
+"\"%6$s\" rel=\"author\">%7$s</a></span></span>"
 
 #: ../functions.php:760
 msgid "ID"
-msgstr "ID"
+msgstr "Ідентифікатор"
 
 #: ../functions.php:986
 msgid "Name"
-msgstr "Nome"
+msgstr "Им'я"
 
 #: ../functions.php:988 ../inc/theme-options.php:887
 msgid "Email"
-msgstr "Email"
+msgstr "Електронна пошта"
 
 #: ../functions.php:1365
 msgid "Primary menu"
-msgstr "Menu primario"
+msgstr "Первинне меню"
 
 #: ../functions.php:1367 ../functions.php:1400
 msgid "Skip to primary content"
-msgstr "Salta al contenuto principale"
+msgstr "Перейти до головного змісту"
 
 #: ../functions.php:1368 ../functions.php:1401
 msgid "Skip to secondary content"
-msgstr "Salta al contenuto secondario"
+msgstr "Перейти до додуткового змісту"
 
 #: ../functions.php:1398
 msgid "Secondary menu"
-msgstr "Menu secondario"
+msgstr "Додаткове меню"
 
 #: ../image.php:15
 msgid "Image navigation"
-msgstr "Navigazione immagini"
+msgstr "Пересування по зображеннях"
 
 #: ../image.php:16
 msgid "&larr; Previous"
-msgstr "&larr; Precedente"
+msgstr "&larr; Попереднє"
 
 #: ../image.php:17
 msgid "Next &rarr;"
-msgstr "Successiva &rarr;"
+msgstr "Наступне &rarr;"
 
-# Controllare questo
 #: ../image.php:27
 #, php-format
 msgid ""
@@ -491,168 +502,168 @@ msgid ""
 "at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> "
 "in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
 msgstr ""
-"<span class=\"meta-prep meta-prep-entry-date\">Pubblicato </span> <span "
+"<span class=\"meta-prep meta-prep-entry-date\">Опубліковано </span> <span "
 "class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></"
-"span> il <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; "
-"%5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</"
-"a>"
+"span> у <a href=\"%3$s\" title=\"Посилання на зображення повного розміру\">"
+"%4$s &times; %5$s</a> в <a href=\"%6$s\" title=\"Повернутися до %7$s\" rel="
+"\"gallery\">%8$s</a>"
 
 #: ../inc/theme-options.php:87
 msgid "Favicon URL"
-msgstr "URL della Favicon"
+msgstr "URL-адреса іконки Favicon "
 
 #: ../inc/theme-options.php:96
 msgid "Web Clip Icon URL"
-msgstr "URL dell'icona Web Clip"
+msgstr "URL-адреса іконки WebClip"
 
 #: ../inc/theme-options.php:105
 msgid "Color Scheme"
-msgstr "Schema di colori"
+msgstr "Колірна схема"
 
 #: ../inc/theme-options.php:113
 msgid "Link Color"
-msgstr "Colori dei link"
+msgstr "Колір посилань"
 
 #: ../inc/theme-options.php:121
 msgid "Default Layout"
-msgstr "Layout di default"
+msgstr "Макет за замовчуванням"
 
 #: ../inc/theme-options.php:129
 msgid "Content layout"
-msgstr "Layout del contenuto"
+msgstr "Макет змісту"
 
 #: ../inc/theme-options.php:137
 msgid "Excerpt Length in Words"
-msgstr "Lunghezza in parole dell'estratto"
+msgstr "Кількість слів у витягу перед посиланням \"Читати далі ...\""
 
 #: ../inc/theme-options.php:145
 msgid "Feed Redirect URL"
-msgstr "URL di redirezione dei feed"
+msgstr "Потік перенаправленнь (Feed Redirect) URL-адреси"
 
 #: ../inc/theme-options.php:153
 msgid "Move Site Title and Tagline?"
-msgstr "Move Site Title and Tagline?"
+msgstr "Перемістити Назву сайту (Title) та Гасло сайту (Tagline)?"
 
 #: ../inc/theme-options.php:161
 msgid "Default Display Text in Search"
-msgstr "Default Display Text in Search"
+msgstr "Текст за замовчуванням у формі пошуку"
 
 #: ../inc/theme-options.php:169
 msgid "Disable Search in Header?"
-msgstr "Disabilitare la ricerca nell'intestazione?"
+msgstr "Заборонити форму пошуку в заголовку?"
 
 #: ../inc/theme-options.php:177
 msgid "Enable Secondary & Footer Menu in Mobile Devices?"
-msgstr "Abilitare il menu secondario e nel piè di pagina?"
+msgstr "Дозволити показувати вторинне та нижнє меню для мобільних пристроїв?"
 
 #: ../inc/theme-options.php:185
 msgid "Custom CSS Styles"
-msgstr "Stile CSS personalizzato"
+msgstr "Додаткові стилі CSS теми"
 
 #: ../inc/theme-options.php:222 ../inc/theme-options.php:223
 #: ../inc/theme-options.php:656
 msgid "Theme Options"
-msgstr "Opzioni del tema"
+msgstr "Налаштування теми"
 
 #: ../inc/theme-options.php:245
 msgid "Insert as Favicon"
-msgstr "Insert as Favicon"
+msgstr "Вставити як іконку Favicon"
 
 #: ../inc/theme-options.php:245
 msgid "Add/Change Favicon"
-msgstr "Aggiungi/modifica la Favicon"
+msgstr "додати/змінити іконку Favicon"
 
 #: ../inc/theme-options.php:259
 msgid "Insert as Web Clip Icon"
-msgstr "Insert as Web Clip Icon"
+msgstr "Вставити як іконку WebClip"
 
 #: ../inc/theme-options.php:259
 msgid "Add/Change Web Clip Icon"
-msgstr "Aggiungi/modifica l'icona Web Clip"
+msgstr "додати /змінити іконку WebClip"
 
 #: ../inc/theme-options.php:273
 msgid "Light"
-msgstr "Chiaro"
+msgstr "Світлий"
 
 #: ../inc/theme-options.php:279
 msgid "Dark"
-msgstr "Scuro"
+msgstr "Темний"
 
 #: ../inc/theme-options.php:285
 msgid "Blue"
-msgstr "Blu"
+msgstr "Блакитний"
 
 #: ../inc/theme-options.php:291
 msgid "Green"
-msgstr "Green"
+msgstr "Зелений"
 
 #: ../inc/theme-options.php:297
 msgid "Red"
-msgstr "Red"
+msgstr "Червоний"
 
 #: ../inc/theme-options.php:303
 msgid "Brown"
-msgstr "Brown"
+msgstr "Коричневий"
 
 #: ../inc/theme-options.php:309
 msgid "Orange"
-msgstr "Orange"
+msgstr "Помаранчевий"
 
 #: ../inc/theme-options.php:328
 msgid "Content on left"
-msgstr "Contenuto a sinistra"
+msgstr "Вміст ліворуч"
 
 #: ../inc/theme-options.php:333
 msgid "Content on right"
-msgstr "Contenuto a destra"
+msgstr "Вміст праворуч"
 
 #: ../inc/theme-options.php:338
 msgid "One-column, no sidebar"
-msgstr "Una colonna, senza barra laterale"
+msgstr "Тільки головна колонка, без бокових панелей"
 
 #: ../inc/theme-options.php:356
 msgid "Show excerpt"
-msgstr "Mostra estratto"
+msgstr "Показувати витяг (початок тексту до посилання \"Читати далі ...\")"
 
 #: ../inc/theme-options.php:361
 msgid "Show full content"
-msgstr "Mostra l'intero contenuto"
+msgstr "Показати повний вміст"
 
 #: ../inc/theme-options.php:476
 msgid "Words"
-msgstr "Parole"
+msgstr "слів"
 
 #: ../inc/theme-options.php:504
 msgid "Check to move above the Header/Logo Image"
-msgstr "Check to move above the Header/Logo Image"
+msgstr "Відмітьте, якщо хочете перемістити Заголовок/Логотип вище"
 
 #: ../inc/theme-options.php:534
 msgid "Check to Disable"
-msgstr "Seleziona per disabilitare"
+msgstr "Відмітьте для заборони"
 
 #: ../inc/theme-options.php:549
 msgid "Check to Enable"
-msgstr "Seleziona per abilitare"
+msgstr "Відмітьте для дозволу."
 
 #: ../inc/theme-options.php:563
 msgid "CSS Tutorial from W3Schools."
-msgstr "Tutorial CSS su W3Schools."
+msgstr "CSS підручник від W3Schools."
 
 #: ../inc/theme-options.php:563
 msgid "http://www.w3schools.com/css/default.asp"
-msgstr "http://www.w3schools.com/css/default.asp"
+msgstr "http://htmlbook.ru/css/"
 
 #: ../inc/theme-options.php:563
 msgid "CSS Tutorial"
-msgstr "Utorial CSS"
+msgstr "Підручник з CSS"
 
 #: ../inc/theme-options.php:563
 msgid "Click Here to Read"
-msgstr "Clicca qua per leggere"
+msgstr "Натисніть для читання"
 
 #: ../inc/theme-options.php:627
 msgid "Theme Options By"
-msgstr "Theme Options By"
+msgstr "Налаштування теми від"
 
 #: ../inc/theme-options.php:629
 msgid "http://catchthemes.com/"
@@ -661,7 +672,7 @@ msgstr "http://catchthemes.com/"
 #: ../inc/theme-options.php:629 ../inc/theme-options.php:630
 #: ../inc/theme-options.php:1385
 msgid "Catch Themes"
-msgstr "Catch Themes"
+msgstr "&nbsp;&nbsp;Catch Themes"
 
 #: ../inc/theme-options.php:636
 msgid "http://catchthemes.com/themes/catch-box-pro/"
@@ -669,7 +680,7 @@ msgstr "http://catchthemes.com/themes/catch-box-pro/"
 
 #: ../inc/theme-options.php:636
 msgid "Upgrade to Catch Box Pro"
-msgstr "Aggiorna a Catch Box Pro"
+msgstr "Оновити безкоштовну тему до платної версії Catch Box Pro"
 
 #: ../inc/theme-options.php:641
 msgid "http://catchthemes.com/donate/"
@@ -677,7 +688,7 @@ msgstr "http://catchthemes.com/donate/"
 
 #: ../inc/theme-options.php:641
 msgid "Donate"
-msgstr "Dona ora"
+msgstr "Пожертвувати (англ.)"
 
 #: ../inc/theme-options.php:642
 msgid "http://catchthemes.com/support/"
@@ -685,7 +696,7 @@ msgstr "http://catchthemes.com/support/"
 
 #: ../inc/theme-options.php:642
 msgid "Support"
-msgstr "Supporto"
+msgstr "Підтримка теми (англ.)"
 
 #: ../inc/theme-options.php:643
 msgid "http://catchthemes.com/support-forum/forum/catch-box-public/"
@@ -693,7 +704,7 @@ msgstr "http://catchthemes.com/support-forum/forum/catch-box-public/"
 
 #: ../inc/theme-options.php:643
 msgid "Support Forum"
-msgstr "Support Forum"
+msgstr "Форум підтримки теми (англ.)"
 
 #: ../inc/theme-options.php:644
 msgid "http://catchthemes.com/theme-instructions/catch-box/"
@@ -701,7 +712,7 @@ msgstr "http://catchthemes.com/theme-instructions/catch-box/"
 
 #: ../inc/theme-options.php:644
 msgid "Theme Instructions"
-msgstr "Theme Instructions"
+msgstr "Інструкція з користування темою (англ.)"
 
 #: ../inc/theme-options.php:645
 msgid "https://www.facebook.com/catchthemes/"
@@ -709,11 +720,11 @@ msgstr "https://www.facebook.com/catchthemes/"
 
 #: ../inc/theme-options.php:645
 msgid "Like Catch Themes on Facebook"
-msgstr "Like Catch Themes on Facebook"
+msgstr "Лайкнути Catch Themes у Фейсбуці"
 
 #: ../inc/theme-options.php:645 ../inc/theme-options.php:780
 msgid "Facebook"
-msgstr "Facebook"
+msgstr "Фейсбук"
 
 #: ../inc/theme-options.php:646
 msgid "https://twitter.com/catchthemes/"
@@ -721,11 +732,11 @@ msgstr "https://twitter.com/catchthemes/"
 
 #: ../inc/theme-options.php:646
 msgid "Follow Catch Themes on Twitter"
-msgstr "Follow Catch Themes on Twitter"
+msgstr "Фоловити Catch Themes у Твіттері"
 
 #: ../inc/theme-options.php:646 ../inc/theme-options.php:785
 msgid "Twitter"
-msgstr "Twitter"
+msgstr "Твіттер"
 
 #: ../inc/theme-options.php:647
 msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
@@ -733,31 +744,31 @@ msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
 
 #: ../inc/theme-options.php:647
 msgid "Rate us 5 Star on WordPress"
-msgstr "Rate us 5 Star on WordPress"
+msgstr "Будь ласка, оцініть нас п&prime;ятьма зірками на сайті WordPress"
 
 #: ../inc/theme-options.php:647
 msgid "5 Star Rating"
-msgstr "5 Star Rating"
+msgstr "5-зіркова оцінка"
 
 #: ../inc/theme-options.php:657
 msgid "Featured Post Slider"
-msgstr "Featured Post Slider"
+msgstr "Розширена панель публікацій"
 
 #: ../inc/theme-options.php:658
 msgid "Social Links"
-msgstr "Link sociali"
+msgstr "Посилання на соціальні мережі"
 
 #: ../inc/theme-options.php:659
 msgid "Webmaster Tools"
-msgstr "Webmaster Tools"
+msgstr "Інструменти вебмастера"
 
 #: ../inc/theme-options.php:686
 msgid "Slider Options"
-msgstr "Opzioni dello slider"
+msgstr "Параметри слайд-шоу"
 
 #: ../inc/theme-options.php:690 ../inc/theme-options.php:692
 msgid "Post Slider Tutorial"
-msgstr "Post Slider Tutorial"
+msgstr "Підручник з користування розширеною панеллю публікацій"
 
 #: ../inc/theme-options.php:692
 msgid ""
@@ -769,104 +780,107 @@ msgstr ""
 
 #: ../inc/theme-options.php:692
 msgid "Click Here to Read Post Slider Tutorial"
-msgstr "Click Here to Read Post Slider Tutorial"
+msgstr ""
+"Натисніть тут для ознайомлення з підручником з користування розширеною "
+"панеллю публікацій"
 
 #: ../inc/theme-options.php:696
 msgid "Exclude Slider post from Home page posts:"
-msgstr "Escludi i post dello slider dalla pagina principale"
+msgstr ""
+"Видалити слайд-публікацію з числа публікацій на домашній сторінці сайту: "
 
 #: ../inc/theme-options.php:698
 msgid "Check to disable"
-msgstr "Seleziona per disabilitare"
+msgstr "Відмітьте для заборони"
 
 #: ../inc/theme-options.php:701
 msgid "Number of Slides"
-msgstr "Numero di slide"
+msgstr "Кількість слайдів"
 
 #: ../inc/theme-options.php:707
 msgid "Featured Post ID"
-msgstr "Featured Post ID"
+msgstr "Розширений ідентифікатор публікації"
 
 #: ../inc/theme-options.php:709
 msgid "Click Here To Edit"
-msgstr "Clicca qua per modificare"
+msgstr "Натисніть тут для редагування"
 
 #: ../inc/theme-options.php:715
 msgid ""
 "<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
 "Featured Slider."
 msgstr ""
-"<strong>Nota</strong>: qua puoi inserire gli ID degli articoli che verranno "
-"mostrati nello slider nella pagina principale."
+"<strong>Зауваження</strong>: Тут ви додаєте в публікацію ідентифікатор, який "
+"буде відібражатися на розширеній панелі домашньої сторінки"
 
 #: ../inc/theme-options.php:716 ../inc/theme-options.php:762
 #: ../inc/theme-options.php:899 ../inc/theme-options.php:940
 msgid "Save"
-msgstr "Salva"
+msgstr "Зберегти"
 
 #: ../inc/theme-options.php:720
 msgid "Slider Effect Options"
-msgstr "Effetti dello slider"
+msgstr "Налаштування слайд-ефектів"
 
 #: ../inc/theme-options.php:725
 msgid "Transition Effect:"
-msgstr "Effetto di transizione"
+msgstr "Ефект переходу:"
 
 #: ../inc/theme-options.php:730
 msgid "fade"
-msgstr "dissolvenza"
+msgstr "зникнення"
 
 #: ../inc/theme-options.php:731
 msgid "wipe"
-msgstr "wipe"
+msgstr "витирання"
 
 #: ../inc/theme-options.php:732
 msgid "scrollUp"
-msgstr "scorri in alto"
+msgstr "прокрутка догори"
 
 #: ../inc/theme-options.php:733
 msgid "scrollDown"
-msgstr "scorri in basso"
+msgstr "прокрутка вниз"
 
 #: ../inc/theme-options.php:734
 msgid "scrollLeft"
-msgstr "scorri a sinistra"
+msgstr "прокрутка ліворуч"
 
 #: ../inc/theme-options.php:735
 msgid "scrollRight"
-msgstr "scorri a destra"
+msgstr "прокрутка праворуч"
 
 #: ../inc/theme-options.php:736
 msgid "blindX"
-msgstr "sostituisci orizzontale"
+msgstr "прив&prime;язка X"
 
 #: ../inc/theme-options.php:737
 msgid "blindY"
-msgstr "sostituisci verticale"
+msgstr "прив&prime;язка Y"
 
 #: ../inc/theme-options.php:738
 msgid "blindZ"
-msgstr "sostituisci diagonale"
+msgstr "прив&prime;язка Z"
 
 #: ../inc/theme-options.php:739
 msgid "cover"
-msgstr "copri"
+msgstr "приховувати"
 
 #: ../inc/theme-options.php:740
 msgid "shuffle"
-msgstr "a caso"
+msgstr "перетасування"
 
 #: ../inc/theme-options.php:746
 msgid "Transition Delay"
-msgstr "Attesa tra le transizioni"
+msgstr "Затримка переходу"
 
 #: ../inc/theme-options.php:749 ../inc/theme-options.php:758
 msgid "second(s)"
-msgstr "secondi"
+msgstr "секунд"
 
 #: ../inc/theme-options.php:755
 msgid "Transition Length"
-msgstr "Durata della transizione"
+msgstr "Тривалість переходу"
 
 #: ../inc/theme-options.php:791
 msgid "Google +"
@@ -886,7 +900,7 @@ msgstr "Youtube"
 
 #: ../inc/theme-options.php:815
 msgid "RSS Feed"
-msgstr "Feed RSS"
+msgstr "RSS Feed"
 
 #: ../inc/theme-options.php:821
 msgid "Deviantart"
@@ -941,36 +955,40 @@ msgid ""
 "<strong>Note:</strong> Enter the url for correponding social networking "
 "website"
 msgstr ""
-"<strong>Nota:</strong> Inserire l'URL del sito di social network "
-"corrispondente"
+"<strong>Зауваження:</strong> Введіть URL-адресу, яка відповідає вашій "
+"соцільній мережі."
 
 #: ../inc/theme-options.php:913
 msgid "Header and Footer Code"
-msgstr "Header and Footer Code"
+msgstr "Коди для розміщення нагорі у заголовку та знизу у футері"
 
 #: ../inc/theme-options.php:918
 msgid "Code to display on Header"
-msgstr "Code to display on Header"
+msgstr "Коди, які будуть показані нагорі у заголовку"
 
 #: ../inc/theme-options.php:925
 msgid ""
 "Note: Here you can put scripts from Google, Facebook etc. which will load on "
 "Header"
 msgstr ""
-"Note: Here you can put scripts from Google, Facebook etc. which will load on "
-"Header"
+"Зауваження: Тут ви маєте можливість розмістити сценарії Google, Facebook та "
+"інші. які будуть завантажуватися нагорі у заголовку"
 
 #: ../inc/theme-options.php:929
 msgid "Code to display on Footer"
-msgstr "Code to display on Footer"
+msgstr "Коди, які будуть показані знизу у футері"
 
 #: ../inc/theme-options.php:936
 msgid ""
 "Note: Here you can put scripts from Google, Facebook, Add This etc. which "
 "will load on footer"
 msgstr ""
-"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
-"will load on footer"
+"Зауваження: Тут ви маєте можливість розмістити сценарії Google, Facebook та "
+"інші. які будуть завантажуватися знизу у футері"
+
+#: ../inc/theme-options.php:1343
+msgid "Y"
+msgstr "Y"
 
 #: ../inc/theme-options.php:1364
 msgid "WordPress"
@@ -978,112 +996,121 @@ msgstr "WordPress"
 
 #: ../inc/theme-options.php:1374
 msgid "Theme: Catch Box by "
-msgstr "Theme: Catch Box by "
+msgstr "Тема Catch Box від&nbsp;&nbsp;"
 
 #: ../inc/theme-options.php:1396
 msgid "Copyright"
-msgstr "Copyright"
+msgstr "Авторські права"
 
 #: ../inc/theme-options.php:1396
 msgid "All Rights Reserved"
-msgstr "Tutti i diritti riservati"
+msgstr "Усі права застережено"
 
 #: ../inc/theme-options.php:1411
 msgid "More Theme Options &raquo;"
-msgstr "More Theme Options &raquo;"
+msgstr "Додаткові параметри теми &raquo;"
 
 #: ../inc/widgets.php:20
 msgid "Use this widget to add any type of Ad as a widget."
-msgstr "Usa questo widget per aggiungere ogni tipo di pubblicità."
+msgstr "Використовуйте цей віджет для показу будь-якої реклами."
 
 #: ../inc/widgets.php:21
 msgid "Catch Box Adspace Widget"
-msgstr "Widget di Catch Box per la pubblicità"
+msgstr "Catch Box рекламний віджет"
 
 #: ../inc/widgets.php:38
 msgid "Title (optional):"
-msgstr "Titolo (opzionale):"
+msgstr "Титул (не обов'язково):"
 
 #: ../inc/widgets.php:43
 msgid "Ad Code:"
-msgstr "Codice della pubblicità"
+msgstr "Рекламні коди:"
 
 #: ../inc/widgets.php:49
 msgid "Image Url:"
-msgstr "URL immagine:"
+msgstr "URL-адреса зображення:"
 
 #: ../inc/widgets.php:53
 msgid "Link URL:"
-msgstr "URL link:"
+msgstr "URL-адреса посилання:"
 
 #: ../inc/widgets.php:57
 msgid "Alt text:"
-msgstr "Testo alternativo:"
+msgstr "Текст підказки:"
 
 #: ../search.php:15
 #, php-format
 msgid "Search Results for: %s"
-msgstr "Risultati di ricerca per: %s"
+msgstr "Результати пошуку: %s"
 
 #: ../search.php:43
 msgid ""
 "Sorry, but nothing matched your search criteria. Please try again with some "
 "different keywords."
 msgstr ""
-"Siamo spiacenti, ma non abbiamo trovato nulla che rispecchi i criteri di "
-"ricerca. Per favore prova nuovamente usando differenti parole chiave."
+"Вибачте, нічого не знайдено такого, що б відповідало вашому запиту. Будь "
+"ласка, спробуйте задати інші ключові слова."
 
 #: ../searchform.php:11
 msgid "Search"
-msgstr "Cerca"
+msgstr "Пошук"
 
 #: ../sidebar.php:28
 msgid "Archives"
-msgstr "Archivi"
+msgstr "Архіви"
 
 #: ../sidebar.php:37
 msgid "Meta"
-msgstr "Meta"
+msgstr "Мета"
 
 #: ../single.php:16
 msgid "<span class=\"meta-nav\">&larr;</span> Previous"
-msgstr "<span class=\"meta-nav\">&larr;</span> Precedenti"
+msgstr "<span class=\"meta-nav\">&larr;</span> Попередня публікація"
 
 #: ../single.php:17
 msgid "Next <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Successivi <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Наступна публікація <span class=\"meta-nav\">&rarr;</span>"
 
 #: ../tag.php:16
 #, php-format
 msgid "Tag Archives: %s"
-msgstr "Archivio tag: %s"
+msgstr "Архіви за ключовими словами: %s"
 
-#~ msgid "Copyright &copy;"
-#~ msgstr "Copyright &copy;"
+#~ msgid "F Y"
+#~ msgstr "F Y"
 
-#~ msgid ". All Rights Reserved."
-#~ msgstr ". Tutti i diritti riservati"
+#~ msgid "1"
+#~ msgstr "1"
 
-#~ msgid "http://wordpress.org/"
-#~ msgstr "http://it.wordpress.org/"
-
-#~ msgid "Powered by WordPress"
-#~ msgstr "Fornito da WordPress"
+#~ msgid "%"
+#~ msgstr "%"
 
 #~ msgid "Powered by %s"
-#~ msgstr "Fornito da %s"
+#~ msgstr "Працює на %s"
+
+#~ msgid "Copyright &copy;"
+#~ msgstr "Всі права застережено &copy;"
+
+#~ msgid ". All Rights Reserved."
+#~ msgstr "."
+
+#~ msgid "http://wordpress.org/"
+#~ msgstr "http://wordpress.org/"
+
+#~ msgid "Powered by WordPress"
+#~ msgstr "Працює на WordPress"
 
 #~ msgid "Theme Catch Box by Catch Themes"
-#~ msgstr "Tema Catch Box di Catch Themes"
+#~ msgstr "Тема Catch Box від Catch Themes"
 
 #~ msgid "Theme: %s"
-#~ msgstr "Tema: %s"
+#~ msgstr "Тема:  %s"
 
 #~ msgid "Select a Color"
-#~ msgstr "Seleziona un colore"
+#~ msgstr "Виберіть колір"
 
 #~ msgid "Default color: %s"
-#~ msgstr "Colore di default: %s"
+#~ msgstr "Колір по замовчуванню: %s"
 
 #~ msgid "http://facebook.com/catchthemes"
 #~ msgstr "http://facebook.com/catchthemes"
@@ -1092,7 +1119,7 @@ msgstr "Archivio tag: %s"
 #~ msgstr "https://twitter.com/catchthemes"
 
 #~ msgid "Settings saved."
-#~ msgstr "Opzioni salvate."
+#~ msgstr "Настройки сохранены."
 
 #~ msgid ""
 #~ "Some themes provide customization options that are grouped together on a "
@@ -1100,19 +1127,18 @@ msgstr "Archivio tag: %s"
 #~ "disappear, as they are theme-specific. Your current theme, Catch Box, "
 #~ "provides the following Theme Options:"
 #~ msgstr ""
-#~ "Qualche tema fornisce delle opzioni particolari che sono raccolte nella "
-#~ "schermata \"Opzioni del tema\". Se cambi tema, queste opzioni potrebbero "
-#~ "cambiare o scomparire, nel caso sian specifiche del tema. Il tuo tema "
-#~ "corrente, Catch Box, fornisce le seguenti opzioni:"
+#~ "Некоторые темы имеют варианты настроек, которые группируются на экране "
+#~ "настроек темы. Если вы меняете тему, параметры могут измениться или "
+#~ "исчезнуть, потому что они имеют конкретную тему. Ваша текущая тема, Catch "
+#~ "Box предоставляет следующие возможности темы:"
 
 #~ msgid ""
 #~ "<strong>Color Scheme</strong>: You can choose a color palette of \"Light"
 #~ "\" (light background with dark text) or \"Dark\" (dark background with "
 #~ "light text) for your site."
 #~ msgstr ""
-#~ "<strong>Schema di colori</strong>: Puoi scegliere uno schema di colori "
-#~ "\"Chiaro\" (sfondo chiaro con testo scuro) o \"Scuro\" (sfondo scuro con "
-#~ "testo chiaro) per il tuo sito."
+#~ "Вы можете выбрать цветовую палитру \"Light\" (светлый фон с темным "
+#~ "текстом) или \"Dark\" (темный фон со светлым текстом) для вашего сайта."
 
 #~ msgid ""
 #~ "<strong>Link Color</strong>: You can choose the color used for text links "
@@ -1120,46 +1146,46 @@ msgstr "Archivio tag: %s"
 #~ "visually by clicking the \"Select a Color\" button to pick from a color "
 #~ "wheel."
 #~ msgstr ""
-#~ "<strong>Colore dei link</strong>: puoi scegliere il colore usato per i "
-#~ "link testuali sul tuo sito. Puoi inserire un colore sia in HTML che in "
-#~ "codice esadecimale, oppure puoi sceglierlo visualmente cliccando sul "
-#~ "pulsante \"Seleziona un colore\"."
+#~ "<strong>Цвет ссылок</strong>: Вы можете выбрать цвет, используемый для "
+#~ "ссылок на сайте. Вы можете ввести HTML-цвета или шестнадцатеричный код, "
+#~ "или вы можете выбрать визуально, нажав \"Select a Color\" для выбора в "
+#~ "цветовом кругу."
 
 #~ msgid ""
 #~ "<strong>Default Layout</strong>: You can choose if you want your "
 #~ "site&#8217;s default layout to have a sidebar on the left, the right, or "
 #~ "not at all."
 #~ msgstr ""
-#~ "<strong>Layout di default</strong>: puoi scegliere se vuoi che il tuo "
-#~ "sito abbia di default una barra laterale a destra, sinistra o che non ce "
-#~ "l'abbia del tutto."
+#~ "<strong>Default Layout</strong>: Вы можете выбрать, макет вашего сайта "
+#~ "есть с боковой панелью с левой стороны, с правой стороны, или вообще без "
+#~ "боковых панелей"
 
 #~ msgid ""
 #~ "Remember to click \"Save Changes\" to save any changes you have made to "
 #~ "the theme options."
 #~ msgstr ""
-#~ "Ricorda di cliccare \"Salva le modifiche\" per salvare ogni cambiamento "
-#~ "che hai fatto alle opzioni del tema."
+#~ "Не забудьте нажать \"Save Changes\" , чтобы сохранить изменения, "
+#~ "внесенные в тему."
 
 #~ msgid "For more information:"
-#~ msgstr "Per maggiori informazioni:"
+#~ msgstr "Для получения дополнительной информации:"
 
 #~ msgid ""
 #~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
 #~ "target=\"_blank\">Documentation on Theme Options</a>"
 #~ msgstr ""
 #~ "<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
-#~ "target=\"_blank\">Documentazione delle opzioni del tema</a>"
+#~ "target=\"_blank\">Документация по настройке темы (англ.)</a>"
 
 #~ msgid ""
 #~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support "
 #~ "Forums</a>"
 #~ msgstr ""
-#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Forum di "
-#~ "supporto</a>"
+#~ "<a href=\"http://wordpress.org/support/\" target=\"_blank\">Форум "
+#~ "поддержки</a>"
 
 #~ msgid "Overview"
-#~ msgstr "Panoramica"
+#~ msgstr "Обзор"
 
 #~ msgid ""
 #~ "Slider Some themes provide customization options that are grouped "
@@ -1167,37 +1193,43 @@ msgstr "Archivio tag: %s"
 #~ "change or disappear, as they are theme-specific. Your current theme, "
 #~ "Catch Box, provides the following Theme Options:"
 #~ msgstr ""
-#~ "Qualche tema fornisce delle opzioni particolari che sono raccolte nella "
-#~ "schermata \"Opzioni del tema\". Se cambi tema, queste opzioni potrebbero "
-#~ "cambiare o scomparire, nel caso sian specifiche del tema. Il tuo tema "
-#~ "corrente, Catch Box, fornisce le seguenti opzioni:"
+#~ "Слайд-шоу некоторых темы предлагает варианты настроек, которые "
+#~ "группируются на экране настроек темы. Если вы меняете темы, параметры "
+#~ "могут измениться или исчезнуть, потому что они имеют конкретную тему. "
+#~ "Ваша текущая тема, Catch Box предоставляет следующие возможности темы:"
 
 #~ msgid "Webmaster Site Verification IDs"
-#~ msgstr "ID di verifica del sito"
+#~ msgstr "Webmaster Site Verification IDs"
 
 #~ msgid "Google Site Verification ID"
-#~ msgstr "ID di verifica di Google"
+#~ msgstr "Verification ID site Google"
 
 #~ msgid "Enter your Google ID number only"
-#~ msgstr "Inserisci solo il numero ID di Google"
+#~ msgstr "Введите только ваш Google ID "
 
 #~ msgid "Yahoo Site Verification ID"
-#~ msgstr "ID di verifica di Yahoo"
+#~ msgstr "Site de verification d'ID Yahoo"
 
 #~ msgid "Enter your Yahoo ID number only"
-#~ msgstr "Inserisci solo il numero ID di Yahoo"
+#~ msgstr "Введите только ваш Yahoo ID "
 
 #~ msgid "Bing Site Verification ID"
-#~ msgstr "ID di verifica di Bing"
+#~ msgstr "Site de Verification d'ID Bing"
 
 #~ msgid "Enter your Bing ID number only"
-#~ msgstr "Inserisci solo il numero ID di Bing"
+#~ msgstr "Введите только ваш Bing ID "
 
 #~ msgid "Webmaster Site Verification Code"
-#~ msgstr "Codice di verifica del sito"
+#~ msgstr "Site de verification de code Webmaster"
 
 #~ msgid "Analytics, site stats Header code"
-#~ msgstr "Codice di Analytics da mettere nel tag head"
+#~ msgstr "Аналитика, статистика сайта (загружается в заголовке сайта)"
 
 #~ msgid "Analytics, site stats footer code"
-#~ msgstr "Codice di Analytics da mettere nel piè di pagina"
+#~ msgstr "Аналитика, статистика сайта (загружается в подвале сайта)"
+
+#~ msgid "Viemo"
+#~ msgstr "Viemo"
+
+#~ msgid "Disable Sidebar Template"
+#~ msgstr "Désactiver la barre latérale"

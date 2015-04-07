@@ -727,19 +727,19 @@ function catchbox_body_classes( $classes ) {
 		$classes[] = 'single-author';
 	}
 	if ( $layout == 'content-sidebar' && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' )  && !is_page_template( 'page-onecolumn.php' ) ) {
-		$classes[] = 'content-sidebar';
+		$classes[] = 'right-sidebar';
 	}
 	elseif ( $layout == 'sidebar-content' && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' )  && !is_page_template( 'page-onecolumn.php' ) ) {
-		$classes[] = 'sidebar-content';
+		$classes[] = 'left-sidebar';
 	}
 	elseif ( $layout == 'content-onecolumn' || is_page_template( 'page-onecolumn.php' ) && !is_page_template( 'page-disable-sidebar.php' ) && !is_page_template( 'page-fullwidth.php' ) ) {
-		$classes[] = 'content-onecolumn';
+		$classes[] = 'no-sidebar one-column';
 	}		
 	elseif ( is_page_template( 'page-disable-sidebar.php' ) || is_attachment() ) {
-		$classes[] = 'singular';
+		$classes[] = 'no-sidebar';
 	}
 	elseif ( is_page_template( 'page-fullwidth.php' ) || is_attachment() ) {
-		$classes[] = 'fullwidth';	
+		$classes[] = 'no-sidebar full-width';
 	}	
 	return $classes;
 }

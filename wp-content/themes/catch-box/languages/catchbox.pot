@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-05 18:14+0545\n"
-"PO-Revision-Date: 2015-02-05 18:14+0545\n"
+"POT-Creation-Date: 2015-03-18 20:18+0545\n"
+"PO-Revision-Date: 2015-03-18 20:18+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Catch Themes <info@catchthemes.com>\n"
 "Language: en\n"
@@ -631,7 +631,7 @@ msgid "http://catchthemes.com/"
 msgstr ""
 
 #: ../inc/theme-options.php:629 ../inc/theme-options.php:630
-#: ../inc/theme-options.php:1375
+#: ../inc/theme-options.php:1385
 msgid "Catch Themes"
 msgstr ""
 
@@ -934,27 +934,27 @@ msgid ""
 "will load on footer"
 msgstr ""
 
-#: ../inc/theme-options.php:1333
+#: ../inc/theme-options.php:1343
 msgid "Y"
 msgstr ""
 
-#: ../inc/theme-options.php:1354
+#: ../inc/theme-options.php:1364
 msgid "WordPress"
 msgstr ""
 
-#: ../inc/theme-options.php:1364
+#: ../inc/theme-options.php:1374
 msgid "Theme: Catch Box by "
 msgstr ""
 
-#: ../inc/theme-options.php:1386
+#: ../inc/theme-options.php:1396
 msgid "Copyright"
 msgstr ""
 
-#: ../inc/theme-options.php:1386
+#: ../inc/theme-options.php:1396
 msgid "All Rights Reserved"
 msgstr ""
 
-#: ../inc/theme-options.php:1401
+#: ../inc/theme-options.php:1411
 msgid "More Theme Options &raquo;"
 msgstr ""
 
