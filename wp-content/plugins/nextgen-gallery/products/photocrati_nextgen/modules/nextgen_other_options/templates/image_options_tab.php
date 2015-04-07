@@ -5,7 +5,7 @@
 	<tr>
 		<td class="column1">
 			<label for="gallery_path">
-				<?php echo_h($gallery_path_label)?>
+				<?php esc_html_e($gallery_path_label)?>
 			</label>
 		</td>
 		<td colspan="2">
@@ -17,7 +17,7 @@
 				value="<?php echo esc_attr($gallery_path) ?>"
 			/>
 			<p class="description">
-				<?php echo_h($gallery_path_help)?>
+				<?php esc_html_e($gallery_path_help)?>
 			</p>
 		</td>
 	</tr>
@@ -27,7 +27,7 @@
 	<tr>
 		<td>
 			<label for="delete_images">
-				<?php echo_h($delete_image_files_label) ?>
+				<?php esc_html_e($delete_image_files_label) ?>
 			</label>
 		</td>
 		<td colspan="2">
@@ -45,14 +45,14 @@
                        value="0"
                        <?php checked(0, $delete_image_files); ?>/>
                 <label for="delete_images_no"><?php _e('No'); ?></label>
-                <?php echo_h($delete_image_files_help); ?>
+                <?php esc_html_e($delete_image_files_help); ?>
 			</p>
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<label for="automatic_resize">
-				<?php echo_h($automatic_resize_label)?>
+				<?php esc_html_e($automatic_resize_label)?>
 			</label>
 		</td>
 		<td colspan="2">
@@ -70,18 +70,18 @@
                        value="0"
                     <?php checked(0, $automatic_resize ? 1 : 0); ?>/>
                 <label for="automatic_resize_no"><?php _e('No'); ?></label>
-                <?php echo_h($automatic_resize_help); ?>
+                <?php esc_html_e($automatic_resize_help); ?>
             </p>
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<label for="resize_images">
-				<?php echo_h($resize_images_label) ?>
+				<?php esc_html_e($resize_images_label) ?>
 			</label>
 		</td>
 		<td class="column2">
-			<label for="image_width"><?php echo_h($resized_image_width_label)?></label>
+			<label for="image_width"><?php esc_html_e($resized_image_width_label)?></label>
 			<input
 				type="text"
 				id="image_width"
@@ -89,7 +89,7 @@
 				name="image_options[imgWidth]"
 				value="<?php echo esc_attr($resized_image_width) ?>"
 			/>
-			&nbsp;<label for="image_height"><?php echo_h($resized_image_height_label)?></label>
+			&nbsp;<label for="image_height"><?php esc_html_e($resized_image_height_label)?></label>
 			<input
 				type="text"
 				id="image_height"
@@ -100,12 +100,12 @@
 		</td>
 		<td>
 			<div class="column_wrapper">
-				<label for="image_quality"><?php echo_h($resized_image_quality_label)?></label>
+				<label for="image_quality"><?php esc_html_e($resized_image_quality_label)?></label>
 				<select id="image_quality" name="image_options[imgQuality]">
 				<?php for($i=100; $i>50; $i--): ?>
 					<option
 						<?php selected($i, $resized_image_quality) ?>
-						value="<?php echo_h($i)?>"><?php echo_h($i) ?>%</option>
+						value="<?php esc_attr_e($i)?>"><?php esc_html_e($i) ?>%</option>
 				<?php endfor ?>
 				</select>
 			</div>
@@ -114,18 +114,18 @@
 	<tr class="description_row">
 		<td class="column1"></td>
 		<td colspan="2">
-			<p class="description"><?php echo_h($resize_images_help) ?></p>
+			<p class="description"><?php esc_html_e($resize_images_help) ?></p>
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<label for="backup_images">
-				<?php echo_h($backup_images_label)?>
+				<?php esc_html_e($backup_images_label)?>
 			</label>
 		</td>
 		<td colspan="2">
 			<label for="backup_images_yes">
-				<?php echo_h($backup_images_yes_label)?>
+				<?php esc_html_e($backup_images_yes_label)?>
 			</label>
 			<input
 				id="backup_images_yes"
@@ -136,7 +136,7 @@
 			/>
 			&nbsp;
 			<label for="backup_images_no">
-				<?php echo_h($backup_images_no_label)?>
+				<?php esc_html_e($backup_images_no_label)?>
 			</label>
 			<input
 				id="backup_images_no"
@@ -150,26 +150,26 @@
 	<tr id="sorting_options_row">
 		<td class="column1">
 			<label for="image_sorting_order">
-				<?php echo_h($sorting_order_label) ?>
+				<?php esc_html_e($sorting_order_label) ?>
 			</label>
 		</td>
 		<td>
 			<select name="image_options[galSort]" id="image_sorting_order">
 				<?php foreach ($sorting_order_options as $label => $value): ?>
 				<option value="<?php echo esc_attr($value) ?>" <?php selected($value, $sorting_order)?>>
-					<?php echo_h($label) ?>
+					<?php esc_html_e($label) ?>
 				</option>
 				<?php endforeach ?>
 			</select>
 		</td>
 		<td class="column3">
 			<label for="image_sorting_direction">
-				<?php echo_h($sorting_direction_label) ?>
+				<?php esc_html_e($sorting_direction_label) ?>
 			</label>
 			<select name="image_options[galSortDir]" id="image_sorting_direction">
 			<?php foreach ($sorting_direction_options as $label => $value): ?>
 			<option value="<?php echo esc_attr($value) ?>" <?php selected($value, $sorting_direction)?>>
-				<?php echo_h($label) ?>
+				<?php esc_html_e($label) ?>
 			</option>
 			<?php endforeach ?>
 			</select>
@@ -178,7 +178,7 @@
 	<tr>
 		<td>
 			<label for="show_related_images">
-				<?php echo_h($show_related_images_label)?>
+				<?php esc_html_e($show_related_images_label)?>
 			</label>
 		</td>
 		<td colspan="2">
@@ -196,7 +196,7 @@
                        value="0"
                        <?php checked(0, $show_related_images); ?>/>
                 <label for="show_related_images_no"><?php _e('No'); ?></label>
-                <?php echo_h($show_related_images_help); ?>
+                <?php esc_html_e($show_related_images_help); ?>
 			</p>
 		</td>
 	</tr>
@@ -209,14 +209,14 @@
 				rel="related_images_advanced_form"
 				hidden_label="<?php echo esc_attr($related_images_hidden_label)?>"
 				active_label="<?php echo esc_attr($related_images_active_label)?>"
-			><?php echo_h($related_images_hidden_label) ?></a>
+			><?php esc_html_e($related_images_hidden_label) ?></a>
 		</td>
 	</tr>
 	<tbody id="related_images_advanced_form" class="hidden">
 		<tr>
 			<td>
 				<label for="match_related_images">
-					<?php echo_h($match_related_images_label) ?>
+					<?php esc_html_e($match_related_images_label) ?>
 				</label>
 			</td>
 			<td>
@@ -226,14 +226,14 @@
 						value="<?php echo esc_attr($value)?>"
 						<?php selected($value, $match_related_images)?>
 					>
-					<?php echo_h($label) ?>
+					<?php esc_html_e($label) ?>
 					</option>
 				<?php endforeach ?>
 				</select>
 			</td>
 			<td class="column3">
 				<label for="max_related_images">
-					<?php echo_h($max_related_images_label)?>
+					<?php esc_html_e($max_related_images_label)?>
 				</label>
 				<input
 					id="max_related_images"
@@ -246,7 +246,7 @@
 		<tr>
 			<td>
 				<label for="related_images_heading">
-					<?php echo_h($related_images_heading_label) ?>
+					<?php esc_html_e($related_images_heading_label) ?>
 				</label>
 			</td>
 			<td>

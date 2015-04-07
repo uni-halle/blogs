@@ -58,6 +58,25 @@ function foundation_webapp_settings( $page_options ) {
 
 		wptouch_add_page_section(
 			FOUNDATION_PAGE_WEB_APP,
+			__( 'Web App Title', 'wptouch-pro' ),
+			'admin_menu_homescreen_icons_options',
+			array(
+				wptouch_add_pro_setting(
+					'text',
+					'homescreen_icon_title',
+					__( 'Icon title', 'wptouch-pro' ),
+					__( 'When visitors bookmark your website, this will be the title shown.', 'wptouch-pro' ),
+					WPTOUCH_SETTING_BASIC,
+					'1.0'
+				),
+			),
+			$page_options,
+			FOUNDATION_SETTING_DOMAIN
+		);
+
+
+		wptouch_add_page_section(
+			FOUNDATION_PAGE_WEB_APP,
 			__( 'Notice Message', 'wptouch-pro' ),
 			'notice-message',
 			array(

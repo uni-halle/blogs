@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('POPE_VERSION')) { die('Use autoload.php'); }
+
 /**
  * Pope is a component-based framework. All classes should inherit this class.
  */
@@ -25,7 +27,18 @@ class C_Component extends ExtensibleObject
     {
 		$this->get_registry()->apply_adapters($this);
 		$this->adapted = TRUE;
+		register_shutdown_function(array(&$this, 'update_cache'));
+		$this->_method_map_cache = (array)C_Pope_Cache::get(
+            array($this->context, $this->_mixin_priorities, $this->_disabled_map),
+			$this->_method_map_cache
+		);
     }
+
+	// Updates the cache for this component
+	function update_cache()
+	{
+		C_Pope_Cache::set(array($this->context, $this->_mixin_priorities, $this->_disabled_map), $this->_method_map_cache);
+	}
 
 	/**
 	 * Determines if the component has one or more particular contexts assigned

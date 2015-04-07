@@ -75,7 +75,7 @@ class C_Photocrati_Cache
 		if (!self::$enabled) return NULL;
 		if (is_object($params)) $params = (array) $params;
 		if (is_array($params)) {
-			foreach ($params as &$param) $param = json_encode($param);
+			foreach ($params as &$param) $param = @json_encode($param);
 			$params = implode('', $params);
 		}
 
@@ -109,9 +109,6 @@ class C_Photocrati_Cache
 				if ($_wp_using_ext_object_cache) {
 					$keys = ($expired_only ? self::get_expired_key_list($group) : self::get_key_list($group));
 					foreach ($keys as $key) $cache->delete($key, FALSE);
-					$sql = $wpdb->prepare("DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", "%%{$cache->group}%%");
-					if ($expired_only) $sql .= " AND option_value < ".time();
-					$retval = $wpdb->query($sql);
 				}
 
 				// Transients are stored in the database
@@ -120,7 +117,6 @@ class C_Photocrati_Cache
 					if ($keys) {
 						$all_keys = array();
 						foreach ($keys as $value) {
-							$all_keys[] = "'{$cache->group}{$value}'";
 							$all_keys[] = "'_transient_timeout_{$value}'";
 							$all_keys[] = "'_transient_{$value}'";
 						}
@@ -171,40 +167,70 @@ class C_Photocrati_Cache
                         }
 					}
 				}
+
+				// removes all the just removed entries from the tracker entry
+				self::unset_tracker_expired_keys($group, $expired_only);
 			}
 		}
 
 		return $retval;
 	}
 
-	static function get_key_list($group=NULL, $strip_group_name=TRUE, $expired_only=FALSE)
+	static function get_key_list($group=NULL, $expired_only=FALSE)
 	{
-		global $wpdb;
-
+		$retval = array();
 		$cache = self::get_instance($group);
 
-		$sql = '';
-		if ($strip_group_name) {
-			$sql = $wpdb->prepare(
-				"SELECT REPLACE(option_name, %s, '') FROM {$wpdb->options} WHERE option_name LIKE %s",
-				$cache->group, '%'.$cache->group.'%'
-			);
-		}
-		else {
-			$sql = $wpdb->prepare(
-				"SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s",
-				'%'.$cache->group.'%'
-			);
+		$current = get_option($cache->group . 'tracker');
+		if (!is_array($current) || empty($current))
+			return $retval;
+
+		foreach ($current as $time => $keys) {
+			foreach ($keys as $ndx => $key) {
+				if ($expired_only && $time < time())
+					$retval[] = $key;
+				elseif (!$expired_only)
+					$retval[] = $key;
+			}
 		}
 
-		if ($expired_only) $sql .= " AND option_value < ".time();
-
-		return $wpdb->get_col($sql);
+		return $retval;
 	}
 
-	static function get_expired_key_list($group=NULL, $strip_group_name=TRUE)
+	/**
+	 * Updates group tracker option to remove expired keys
+	 *
+	 * @param string $group
+	 * @return array Currently active time/key array
+	 */
+	static function unset_tracker_expired_keys($group = NULL, $expired_only = FALSE)
 	{
-		return self::get_key_list($group, $strip_group_name, TRUE);
+		$retval = array();
+		$cache = self::get_instance($group);
+
+		$current = get_option($cache->group . 'tracker');
+
+		if (!is_array($current))
+			return $retval;
+
+		if (!$expired_only)
+			$current = array();
+		else {
+			foreach ($current as $time => $keys) {
+				if ($time < time())
+					unset($current[$time]);
+			}
+		}
+
+		delete_option($cache->group . 'tracker');
+		add_option($cache->group . 'tracker', $current, NULL, 'no');
+
+		return $current;
+	}
+
+	static function get_expired_key_list($group=NULL)
+	{
+		return self::get_key_list($group, TRUE);
 	}
 
 
@@ -228,6 +254,7 @@ class C_Photocrati_Cache
 
 	/**
 	 * Set an item in the cache using a particular key
+	 *
 	 * @param $key
 	 * @param $value
 	 * @return bool|int
@@ -237,29 +264,31 @@ class C_Photocrati_Cache
         if (!$ttl) $ttl = PHOTOCRATI_CACHE_TTL;
 
 		$retval = FALSE;
-		if (self::$enabled) {
-			if (is_array($key)) $key = self::generate_key($key);
-			if (self::$force_update OR $this->lookup($key, FALSE) === FALSE) {
+		if (self::$enabled)
+		{
+			if (is_array($key))
+				$key = self::generate_key($key);
+			if (self::$force_update OR $this->lookup($key, FALSE) === FALSE)
+			{
 				set_transient($key, $value, $ttl);
-                delete_option($this->group.$key);
-				add_option($this->group.$key, time()+$ttl, NULL, 'no');
+				$current = get_option($this->group . 'tracker');
+				delete_option($this->group . 'tracker');
+				if (!is_array($current))
+					$current = array();
+				$time = time();
+				$current[$time][] = $key;
+				add_option($this->group . 'tracker', $current, NULL, 'no');
 				$retval = $key;
 			}
 		}
 		return $retval;
 	}
 
-	function delete($key, $delete_ack=TRUE)
+	function delete($key)
 	{
-		if (self::$enabled) {
-			delete_transient($key);
-			if ($delete_ack) {
-				global $wpdb;
-				$sql = $wpdb->prepare("DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", $this->group.$key);
-				$wpdb->query($sql);
-			}
-			return TRUE;
-		}
-		else return FALSE;
+		if (self::$enabled)
+			return delete_transient($key);
+		else
+			return FALSE;
 	}
 }

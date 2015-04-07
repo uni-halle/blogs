@@ -352,7 +352,7 @@ static function SendFile($file_path, $args=array())
 	@error_reporting(0);
 	while(@ob_end_clean()){}
 	
-	$no_cache = WPFB_Core::$settings->http_nocache && ($cache_max_age <= 0);
+	$no_cache = WPFB_Core::$settings->http_nocache && ($cache_max_age != 0);
 	
 	@ini_set("zlib.output_compression", "Off");
 	
@@ -383,8 +383,11 @@ static function SendFile($file_path, $args=array())
 		header("Cache-Control: no-cache, must-revalidate, max-age=0");
 		header("Pragma: no-cache");
 		header("Expires: Wed, 11 Jan 1984 05:00:00 GMT");
-	} elseif($cache_max_age > 0)	
-		header("Cache-Control: must-revalidate, max-age=$cache_max_age");	
+	} elseif($cache_max_age > 0) {	
+		header("Cache-Control: must-revalidate, max-age=$cache_max_age");
+	} elseif($cache_max_age == -1) {	
+		header("Cache-Control: public");
+	}
 		
 	//header("Connection: close");
 	//header("Keep-Alive: timeout=5, max=100");
@@ -532,11 +535,12 @@ static function getHttpStreamContentLength($s)
 }
 static function SideloadFile($url, $dest_path, $progress_bar_or_callback=null)
 {
+	$is_local = parse_url($url,PHP_URL_SCHEME) === 'file' && is_readable($url);	
 	$rh = @fopen($url, 'rb'); // read binary
 	if($rh === false)
 		return array('error' => sprintf('Could not open URL %s!', $url). ' '.  print_r(error_get_last(), true));
 	
-	$total_size = self::getHttpStreamContentLength($rh);
+	$total_size = $is_local ? filesize($url) : self::getHttpStreamContentLength($rh);
 	
 	$fh = @fopen($dest_path, 'wb'); // write binary
 	if($fh === false) {

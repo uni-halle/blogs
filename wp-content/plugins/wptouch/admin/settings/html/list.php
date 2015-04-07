@@ -9,7 +9,7 @@
 	<?php wptouch_admin_the_setting_desc(); ?>
 </label>
 <?php if ( wptouch_admin_setting_has_tooltip() ) { ?>
-	<i class="wptouch-tooltip icon-info-sign" title="<?php wptouch_admin_the_setting_tooltip(); ?>"></i>
+	<i class="wptouch-tooltip wptouch-icon-info-sign" title="<?php wptouch_admin_the_setting_tooltip(); ?>"></i>
 <?php } ?>
 
 <?php if ( wptouch_admin_get_setting_level() == WPTOUCH_SETTING_ADVANCED ) { ?>

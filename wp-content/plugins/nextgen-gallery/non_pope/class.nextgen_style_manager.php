@@ -173,8 +173,7 @@ class C_NextGen_Style_Manager
 			}
 		}
 
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
-            $retval = str_replace('/', DIRECTORY_SEPARATOR, $retval);
+        $retval = str_replace('/', DIRECTORY_SEPARATOR, $retval);
 
 		return $retval;
 	}
@@ -185,11 +184,22 @@ class C_NextGen_Style_Manager
 	 */
 	function get_selected_stylesheet_url($selected=FALSE)
 	{
-		if (!$selected) $selected = $this->get_selected_stylesheet();
+		if (!$selected)
+            $selected = $this->get_selected_stylesheet();
+        $abspath = $this->find_selected_stylesheet_abspath($selected);
+
+        // default_dir is the only resource loaded from inside the plugin directory
+        $type = 'content';
+        $url = content_url();
+        if (0 === strpos($abspath, $this->default_dir))
+        {
+            $type = 'plugins';
+            $url = plugins_url();
+        }
 
 		$retval =  str_replace(
-			C_Fs::get_instance()->get_document_root('content'),
-            content_url(),
+			C_Fs::get_instance()->get_document_root($type),
+            $url,
 			$this->find_selected_stylesheet_abspath($selected)
 		);
 

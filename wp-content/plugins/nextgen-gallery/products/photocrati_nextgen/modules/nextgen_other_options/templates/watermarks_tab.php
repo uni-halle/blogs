@@ -2,7 +2,7 @@
 	<tr>
 		<td class="column1">
 			<label for="watermark_source">
-				<?php echo_h($watermark_source_label)?>
+				<?php esc_html_e($watermark_source_label)?>
 			</label>
 		</td>
 		<td>
@@ -12,7 +12,7 @@
 					<option
 						value="<?php echo esc_attr($value)?>"
 						<?php selected($value, $watermark_source) ?>
-						><?php echo_h($label)?></option>
+						><?php esc_html_e($label)?></option>
 				<?php endforeach ?>
 				</select>
 			</div>
@@ -87,7 +87,7 @@
 				hidden_label="<?php echo esc_attr($hidden_label)?>"
 				active_label="<?php echo esc_attr($active_label)?>"
 			>
-			<?php echo_h($hidden_label)?>
+			<?php esc_html_e($hidden_label)?>
 			</a>
 		</td>
 	</tr>

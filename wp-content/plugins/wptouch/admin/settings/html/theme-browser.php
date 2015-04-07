@@ -1,11 +1,13 @@
 <?php if ( !wptouch_can_cloud_install( true ) ) { ?>
-	<div class="cloud-update-issue"><i class="icon-cloud"></i> <?php echo sprintf( __( 'Your server configuration is preventing WPtouch Pro from installing and updating from the Cloud. %sPlease visit %sthis article%s to follow the steps to enable Cloud install, or you can manually download and install into the wptouch-data/%s directory.', 'wptouch-pro' ), '<br />', '<a href="https://wptouch.freshdesk.com/support/solutions/articles/5000537668-optimizing-caching-plugins-for-mobile-use">', '</a>', 'extensions' ); ?></div>
+	<div class="cloud-update-issue"><i class="wptouch-icon-cloud"></i> <?php echo sprintf( __( 'Your server configuration is preventing WPtouch Pro from installing and updating from the Cloud. %sPlease visit %sthis article%s to follow the steps to enable Cloud install, or you can manually download and install into the wptouch-data/%s directory.', 'wptouch-pro' ), '<br />', '<a href="https://support.wptouch.com/support/solutions/articles/5000525305-themes-or-extensions-cannot-be-downloaded">', '</a>', 'extensions' ); ?></div>
 <?php } ?>
 
 <?php
 	$cloud_themes = wptouch_get_available_cloud_themes();
-	foreach ( $cloud_themes as $theme => $details ) {
-		$cloud_themes[ $theme ] = $theme;
+	if ( $cloud_themes ) {
+		foreach ( $cloud_themes as $theme => $details ) {
+			$cloud_themes[ $theme ] = $theme;
+		}
 	}
 ?>
 

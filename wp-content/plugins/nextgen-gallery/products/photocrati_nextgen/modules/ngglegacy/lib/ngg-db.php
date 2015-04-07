@@ -1,5 +1,4 @@
 <?php
-if ( !class_exists('nggdb') ) :
 /**
  * NextGEN Gallery Database Class
  *
@@ -7,8 +6,8 @@ if ( !class_exists('nggdb') ) :
  *
  * @since 1.0.0
  */
-class nggdb {
-
+class nggdb
+{
     /**
      * Holds the list of all galleries
      *
@@ -79,140 +78,104 @@ class nggdb {
     }
 
     /**
-     * Get all the album and unserialize the content
+     * Get a gallery given its ID
      *
-     * @since 1.3.0
+     *
+     * @param int|string $id or $slug
+     * @return A nggGallery object (null if not found)
+     * @deprecated Use the C_Gallery_Mapper class instead
+     */
+    static function find_gallery( $id )
+    {
+	    // TODO: This method is only used by nggAdmin::set_gallery_preview(), which won't be
+	    // exist after ngglegacy uses the gallery storage component to import galleries from the FS.
+        $mapper = C_Gallery_Mapper::get_instance();
+	    return $mapper->find($id);
+    }
+
+	/**
+	 * Finds all galleries
+	 * @deprecated
+	 * @return array
+	 */
+	static function find_all_galleries()
+	{
+		$mapper = C_Gallery_Mapper::get_instance();
+		return $mapper->find_all();
+	}
+
+    /**
+     * Finds all albums
+     *
+     * @deprecated
      * @param string $order_by
      * @param string $order_dir
      * @param int $limit number of albums, 0 shows all albums
      * @param int $start the start index for paged albums
      * @return array $album
      */
-    function find_all_album( $order_by = 'id', $order_dir = 'ASC', $limit = 0, $start = 0) {
-        global $wpdb;
-
-        $order_dir = ( $order_dir == 'DESC') ? 'DESC' : 'ASC';
-        $limit_by  = ( $limit > 0 ) ? 'LIMIT ' . intval($start) . ',' . intval($limit) : '';
-        $this->albums = $wpdb->get_results("SELECT * FROM $wpdb->nggalbum ORDER BY {$order_by} {$order_dir} {$limit_by}" , OBJECT_K );
-
-        if ( !$this->albums )
-            return array();
-
-        // XXX nggdb is used statically, cannot inherit from Ngg_Serializable
-        $serializer = new Ngg_Serializable();
-
-        foreach ($this->albums as $key => $value) {
-            $this->albums[$key]->galleries = empty ($this->albums[$key]->sortorder) ? array() : (array) $serializer->unserialize($this->albums[$key]->sortorder)  ;
-            $this->albums[$key]->name = stripslashes( $this->albums[$key]->name );
-            $this->albums[$key]->albumdesc = stripslashes( $this->albums[$key]->albumdesc );
-            wp_cache_add($key, $this->albums[$key], 'ngg_album');
-        }
-
-        return $this->albums;
+    function find_all_album($order_by = 'id', $order_dir = 'ASC', $limit = '0', $start = '0')
+    {
+        $mapper = C_Album_Mapper::get_instance();
+        $mapper->select();
+        $mapper->where_and(array());
+        $mapper->order_by($order_by, $order_dir);
+        if ($limit > 0)
+            $mapper->limit($limit, $start);
+        return $mapper->run_query();
     }
 
     /**
-     * Get all the galleries
+     * Search for a filename
      *
-     * @param string $order_by
-     * @param string $order_dir
-     * @param bool $counter (optional) Select true  when you need to count the images
-     * @param int $limit number of paged galleries, 0 shows all galleries
-     * @param int $start the start index for paged galleries
-     * @param bool $exclude
-     * @return array $galleries
+     * @deprecated
+     * @param string $filename
+     * @param int (optional) $galleryID
+     * @return Array Result of the request
      */
-    function find_all_galleries($order_by = 'gid', $order_dir = 'ASC', $counter = false, $limit = 0, $start = 0, $exclude = true) {
-        global $wpdb;
-        $registry = C_Component_Registry::get_instance();
-        $storage  = $registry->get_utility('I_Gallery_Storage');
-
-        // Check for the exclude setting
-        $exclude_clause = ($exclude) ? ' AND exclude<>1 ' : '';
-        $order_dir = ( $order_dir == 'DESC') ? 'DESC' : 'ASC';
-        $limit_by  = ( $limit > 0 ) ? 'LIMIT ' . intval($start) . ',' . intval($limit) : '';
-        $this->galleries = $wpdb->get_results( "SELECT SQL_CALC_FOUND_ROWS * FROM $wpdb->nggallery ORDER BY {$order_by} {$order_dir} {$limit_by}", OBJECT_K );
-
-        // Count the number of galleries and calculate the pagination
-        if ($limit > 0) {
-            $this->paged['total_objects'] = intval ( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
-            $this->paged['objects_per_page'] = max ( count( $this->galleries ), $limit );
-            $this->paged['max_objects_per_page'] = ( $limit > 0 ) ? ceil( $this->paged['total_objects'] / intval($limit)) : 1;
+    function search_for_file($filename, $galleryID = false)
+    {
+        $retval = array();
+        $mapper = C_Image_Mapper::get_instance();
+        $mapper->select();
+        $mapper->where_and(array('filename = %s', $filename));
+        if ($galleryID)
+            $mapper->where_and(array('galleryid = %d', $galleryID));
+        foreach ($mapper->run_query() as $dbimage) {
+            $image = new C_Image_Wrapper($dbimage);
+            $retval[] = $image;
         }
-
-        if ( !$this->galleries )
-            return array();
-
-        // get the galleries information
-        foreach ($this->galleries as $key => $value) {
-            $galleriesID[] = $key;
-            // init the counter values
-            $this->galleries[$key]->counter = 0;
-            $this->galleries[$key]->title = stripslashes($this->galleries[$key]->title);
-            $this->galleries[$key]->galdesc  = stripslashes($this->galleries[$key]->galdesc);
-			$this->galleries[$key]->abspath = $storage->get_gallery_abspath($this->galleries[$key]);
-            wp_cache_add($key, $this->galleries[$key], 'ngg_gallery');
-        }
-
-        // if we didn't need to count the images then stop here
-        if ( !$counter )
-            return $this->galleries;
-
-        // get the counter values
-        $picturesCounter = $wpdb->get_results('SELECT galleryid, COUNT(*) as counter FROM '.$wpdb->nggpictures.' WHERE galleryid IN (\''.implode('\',\'', $galleriesID).'\') ' . $exclude_clause . ' GROUP BY galleryid', OBJECT_K);
-
-        if ( !$picturesCounter )
-            return $this->galleries;
-
-        // add the counter to the gallery objekt
-        foreach ($picturesCounter as $key => $value) {
-            $this->galleries[$value->galleryid]->counter = $value->counter;
-            wp_cache_set($value->galleryid, $this->galleries[$value->galleryid], 'ngg_gallery');
-        }
-
-        return $this->galleries;
+        return $retval;
     }
 
     /**
-     * Get a gallery given its ID
+     * Get random images from one or more gallery
      *
-     * @param int|string $id or $slug
-     * @return A nggGallery object (null if not found)
+     * @deprecated
+     * @param integer $number of images
+     * @param integer $galleryID optional a Gallery
+     * @return A nggImage object representing the image (null if not found)
      */
-    function find_gallery( $id ) {
-        global $wpdb;
-
-        if( is_numeric($id) ) {
-
-            if ( $gallery = wp_cache_get($id, 'ngg_gallery') )
-                return $gallery;
-
-            $gallery = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->nggallery WHERE gid = %d", $id ) );
-
-        } else
-            $gallery = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->nggallery WHERE slug = %s", $id ) );
-
-        // Build the object from the query result
-        if ($gallery) {
-            $registry = C_Component_Registry::get_instance();
-            $storage  = $registry->get_utility('I_Gallery_Storage');
-
-            // it was a bad idea to use a object, stripslashes_deep() could not used here, learn from it
-            $gallery->title = stripslashes($gallery->title);
-            $gallery->galdesc = stripslashes($gallery->galdesc);
-            $gallery->abspath = $storage->get_gallery_abspath($gallery);
-
-            //TODO:Possible failure , $id could be a number or name
-            wp_cache_add($id, $gallery, 'ngg_gallery');
-
-            return $gallery;
-        } else
-            return false;
+    function get_random_images($number = 1, $gallery_id = 0)
+    {
+        $mapper = C_Image_Mapper::get_instance();
+        $mapper->select();
+        $mapper->where_and(array('exclude != 1'));
+        if ($gallery_id !== 0)
+            $mapper->where_and(array('galleryid = %d', $gallery_id));
+        $mapper->order_by('rand()');
+        $mapper->limit($number, 0);
+        foreach ($mapper->run_query() as $dbimage) {
+            $image = new C_Image_Wrapper($dbimage);
+            $retval[] = $image;
+        }
+        return $retval;
     }
 
     /**
      * This function return all information about the gallery and the images inside
      *
+     * @deprecated
      * @param int|string $id or $name
      * @param string $order_by
      * @param string $order_dir (ASC |DESC)
@@ -222,56 +185,28 @@ class nggdb {
      * @param bool $json remove the key for associative array in json request
      * @return An array containing the nggImage objects representing the images in the gallery.
      */
-    function get_gallery($id, $order_by = 'sortorder', $order_dir = 'ASC', $exclude = true, $limit = 0, $start = 0, $json = false) {
+    static function get_gallery($id, $order_by = 'sortorder', $order_dir = 'ASC', $exclude = true, $limit = 0, $start = 0, $json = false)
+    {
+	    $retval = array();
 
-        global $wpdb;
-
-        // init the gallery as empty array
-        $gallery = array();
-        $i = 0;
-
-        // Check for the exclude setting
-        $exclude_clause = ($exclude) ? ' AND tt.exclude<>1 ' : '';
-
-        // Say no to any other value
-        $order_dir		= ( $order_dir == 'DESC') ? 'DESC' : 'ASC';
-        $order_by		= ( empty($order_by) ) ? 'sortorder' : $order_by;
-		$order_clause	= "ABS(tt.{$order_by}) {$order_dir}, tt.{$order_by} {$order_dir}";
-//		$order_clause	= "LENGTH(tt.{$order_by}) {$order_dir}, tt.{$order_by} {$order_dir}";
-
-        // Should we limit this query ?
-        $limit_by  = ( $limit > 0 ) ? 'LIMIT ' . intval($start) . ',' . intval($limit) : '';
-
-        // Query database
-        if( is_numeric($id) )
-            $result = $wpdb->get_results( $wpdb->prepare( "SELECT SQL_CALC_FOUND_ROWS tt.*, t.* FROM $wpdb->nggallery AS t INNER JOIN $wpdb->nggpictures AS tt ON t.gid = tt.galleryid WHERE t.gid = %d {$exclude_clause} ORDER BY {$order_clause} {$limit_by}", $id ), OBJECT_K );
+		$image_mapper = C_Image_Mapper::get_instance();
+        if (is_numeric($id))
+            $image_mapper->select()->where(array("galleryid = %d", $id));
         else
-            $result = $wpdb->get_results( $wpdb->prepare( "SELECT SQL_CALC_FOUND_ROWS tt.*, t.* FROM $wpdb->nggallery AS t INNER JOIN $wpdb->nggpictures AS tt ON t.gid = tt.galleryid WHERE t.slug = %s {$exclude_clause} ORDER BY {$order_clause} {$limit_by}", $id ), OBJECT_K );
+            $image_mapper->select()->where(array("slug = %s", $id));
+	    $image_mapper->order_by($order_by, $order_dir);
 
-        // Count the number of images and calculate the pagination
-        if ($limit > 0) {
-            $this->paged['total_objects'] = intval ( $wpdb->get_var( "SELECT FOUND_ROWS()" ) );
-            $this->paged['objects_per_page'] = max ( count( $result ), $limit );
-            $this->paged['max_objects_per_page'] = ( $limit > 0 ) ? ceil( $this->paged['total_objects'] / intval($limit)) : 1;
+	    if ($exclude) $image_mapper->where(array('exclude != %d', 1));
+
+	    if ($limit && $start) $image_mapper->limit($limit, $start);
+	    elseif ($limit) $image_mapper->limit($limit);
+
+        foreach ($image_mapper->run_query() as $dbimage) {
+            $image = new C_Image_Wrapper($dbimage);
+	        $retval[] = $image;
         }
 
-        // Build the object
-        if ($result) {
-
-            // Now added all image data
-            foreach ($result as $key => $value) {
-                // due to a browser bug we need to remove the key for associative array for json request
-                // (see http://code.google.com/p/chromium/issues/detail?id=883)
-                if ($json) $key = $i++;
-                $gallery[$key] = new nggImage( $value ); // keep in mind each request require 8-16 kb memory usage
-
-            }
-        }
-
-        // Could not add to cache, the structure is different to find_gallery() cache_add, need rework
-        //wp_cache_add($id, $gallery, 'ngg_gallery');
-
-        return $gallery;
+	    return $retval;
     }
 
     /**
@@ -700,20 +635,11 @@ class nggdb {
     /**
     * Delete an image entry from the database
     * @param integer $id is the Image ID
+    * @deprecated
     */
-    function delete_image( $id ) {
-        global $wpdb;
+    static function delete_image( $id ) {
 
-        // Delete the image
-        $result = $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->nggpictures WHERE pid = %d", $id) );
-
-        // Delete tag references
-        wp_delete_object_term_relationships( $id, 'ngg_tag');
-
-        // Remove from cache
-        wp_cache_delete( $id, 'ngg_image');
-
-        return $result;
+        return C_Image_Mapper::get_instance()->destroy($id);
     }
 
     /**
@@ -724,88 +650,45 @@ class nggdb {
      * @param bool $exclude do not show exluded images
      * @param int $galleryId Only look for images with this gallery id, or in all galleries if id is 0
      * @param string $orderby is one of "id" (default, order by pid), "date" (order by exif date), sort (order by user sort order)
+     * @deprecated
      * @return
      */
-    function find_last_images($page = 0, $limit = 30, $exclude = true, $galleryId = 0, $orderby = "id") {
-        global $wpdb;
+    static function find_last_images($page = 0, $limit = 30, $exclude = true, $galleryId = 0, $orderby = "id") {
+	    // Determine ordering
+	    $order_field        = $orderby;
+	    $order_direction    = 'DESC';
+	    switch ($orderby) {
+		    case 'date':
+		    case 'imagedate':
+		    case 'time':
+		    case 'datetime':
+			    $order_field = 'imagedate';
+			    $order_direction = 'DESC';
+			    break;
+		    case 'sort':
+		    case 'sortorder':
+			    $order_field = 'sortorder';
+			    $order_direction = 'ASC';
+			    break;
 
-        // Check for the exclude setting
-        $exclude_clause = ($exclude) ? ' AND exclude<>1 ' : '';
+	    }
 
-        // a limit of 0 makes no sense
-        $limit = ($limit == 0) ? 30 : $limit;
-        // calculate the offset based on the pagr number
-        $offset = (int) $page * $limit;
+		// Start query
+	    $mapper = C_Image_Mapper::get_instance();
+	    $mapper->select()->order_by($order_field, $order_direction);
 
-        $galleryId = (int) $galleryId;
-        $gallery_clause = ($galleryId === 0) ? '' : ' AND galleryid = ' . $galleryId . ' ';
+	    // Calculate limit and offset
+	    if (!$limit) $limit = 30;
+	    $offset = $page*$limit;
+	    if ($offset && $limit) $mapper->limit($limit, $offset);
 
-        // default order by pid
-        $order = 'pid DESC';
-        switch ($orderby) {
-            case 'date':
-                $order = 'imagedate DESC';
-                break;
-            case 'sort':
-                $order = 'sortorder ASC';
-                break;
-        }
+	    // Add exclusion clause
+	    if ($exclude) $mapper->where(array("exclude = %d"), 1);
 
-        $result = array();
-        $gallery_cache = array();
+	    // Add gallery clause
+	    if ($galleryId) $mapper->where(array("galleryid = %d"), $galleryId);
 
-        // Query database
-        $images = $wpdb->get_results("SELECT * FROM $wpdb->nggpictures WHERE 1=1 $exclude_clause $gallery_clause ORDER BY $order LIMIT $offset, $limit");
-
-        // Build the object from the query result
-        if ($images) {
-            foreach ($images as $key => $image) {
-
-                // cache a gallery , so we didn't need to lookup twice
-                if (!array_key_exists($image->galleryid, $gallery_cache))
-                    $gallery_cache[$image->galleryid] = nggdb::find_gallery($image->galleryid);
-
-                // Join gallery information with picture information
-                foreach ($gallery_cache[$image->galleryid] as $index => $value)
-                    $image->$index = $value;
-
-                // Now get the complete image data
-                $result[$key] = new nggImage( $image );
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     * nggdb::get_random_images() - Get an random image from one ore more gally
-     *
-     * @param integer $number of images
-     * @param integer $galleryID optional a Gallery
-     * @return A nggImage object representing the image (null if not found)
-     */
-    function get_random_images($number = 1, $galleryID = 0) {
-        global $wpdb;
-
-        $number = (int) $number;
-        $galleryID = (int) $galleryID;
-        $images = array();
-
-        // Query database
-        if ($galleryID == 0)
-            $result = $wpdb->get_results("SELECT t.*, tt.* FROM $wpdb->nggallery AS t INNER JOIN $wpdb->nggpictures AS tt ON t.gid = tt.galleryid WHERE tt.exclude != 1 ORDER by rand() limit $number");
-        else
-            $result = $wpdb->get_results("SELECT t.*, tt.* FROM $wpdb->nggallery AS t INNER JOIN $wpdb->nggpictures AS tt ON t.gid = tt.galleryid WHERE t.gid = $galleryID AND tt.exclude != 1 ORDER by rand() limit {$number}");
-
-        // Return the object from the query result
-        if ($result) {
-            foreach ($result as $image) {
-                $images[] = new nggImage( $image );
-            }
-            return $images;
-        }
-
-        return null;
+		return $mapper->run_query();
     }
 
     /**
@@ -818,7 +701,9 @@ class nggdb {
      * @return An array containing the nggImage objects representing the images in the album.
      */
     function find_images_in_album($album, $order_by = 'galleryid', $order_dir = 'ASC', $exclude = true) {
-        global $wpdb;
+        // TODO: This method is only used by the JSON API. Once it's removed, this method can be removed
+
+	    global $wpdb;
 
         if ( !is_object($album) )
             $album = nggdb::find_album( $album );
@@ -1000,42 +885,6 @@ class nggdb {
         return $result;
     }
 
-    /**
-     * search for a filename
-     *
-     * @since 1.4.0
-     * @param string $filename
-     * @param int (optional) $galleryID
-     * @return Array Result of the request
-     */
-    function search_for_file( $filename, $galleryID = false ) {
-        global $wpdb;
-
-        // If a search pattern is specified, load the posts that match
-        if ( !empty($filename) ) {
-            // added slashes screw with quote grouping when done early, so done later
-            $term = $wpdb->escape($filename);
-
-           	$where_clause = '';
-            if ( is_numeric($galleryID) ) {
-            	$id = (int) $galleryID;
-            	$where_clause = " AND tt.galleryid = {$id}";
-            }
-        }
-
-        // build the final query
-        $query = "SELECT t.*, tt.* FROM $wpdb->nggallery AS t INNER JOIN $wpdb->nggpictures AS tt ON t.gid = tt.galleryid WHERE tt.filename = '{$term}' {$where_clause} ORDER BY tt.pid ASC ";
-		$result = $wpdb->get_row($query);
-
-        // Return the object from the query result
-        if ($result) {
-        	$image = new nggImage( $result );
-            return $image;
-        }
-
-        return null;
-    }
-
 
     /**
      * Update or add meta data for an image
@@ -1125,7 +974,6 @@ class nggdb {
     }
 
 }
-endif;
 
 if ( ! isset($GLOBALS['nggdb']) ) {
     /**

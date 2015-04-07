@@ -1,15 +1,15 @@
 <?php
 
 /**
- * @title  Add action/filter for the upload tab 
+ * @title  Add action/filter for the upload tab
  * @author Alex Rabe
- * 
+ *
  */
 
 function ngg_wp_upload_tabs ($tabs) {
 
 	$newtab = array('nextgen' => __('NextGEN Gallery','nggallery'));
- 
+
     return array_merge($tabs,$newtab);
 }
 	
@@ -19,7 +19,7 @@ function media_upload_nextgen() {
 	
     // Not in use
     $errors = false;
-    
+
 	// Generate TinyMCE HTML output
 	if ( isset($_POST['send']) ) {
 		$keys = array_keys($_POST['send']);
@@ -46,7 +46,7 @@ function media_upload_nextgen() {
         $height = $displayed_gallery->display_settings['height'];
 
 		// Build output
-		if ($image['size'] == "thumbnail") 
+		if ($image['size'] == "thumbnail")
 			$html = "<img src='{$image['thumb']}' alt='{$alttext}' class='{$class}' />";
         else
             $html = '';
@@ -54,10 +54,10 @@ function media_upload_nextgen() {
 		// Wrap the link to the fullsize image around
 		$html = "<a {$thumbcode} href='{$image['url']}' title='{$clean_description}'>{$html}</a>";
 
-		if ($image['size'] == "full") 
+		if ($image['size'] == "full")
 			$html = "<img src='{$image['url']}' alt='{$alttext}' class='{$class}' />";
 		
-		if ($image['size'] == "singlepic") 
+		if ($image['size'] == "singlepic")
 			$html = "[singlepic id={$send_id} w={$width} h={$height} float={$image['align']}]";
 			
 		media_upload_nextgen_save_image();
@@ -85,7 +85,7 @@ function media_upload_nextgen_save_image() {
 		if ( !empty($_POST['image']) ) foreach ( $_POST['image'] as $image_id => $image ) {
 		
     		// create a unique slug
-            $image_slug = nggdb::get_unique_slug( sanitize_title( $image['alttext'] ), 'image' ); 
+            $image_slug = nggdb::get_unique_slug( sanitize_title( $image['alttext'] ), 'image' );
     		$wpdb->query( $wpdb->prepare ("UPDATE $wpdb->nggpictures SET image_slug= '%s', alttext= '%s', description = '%s' WHERE pid = %d", $image_slug, $image['alttext'], $image['description'], $image_id));
             wp_cache_delete($image_id, 'ngg_image');
 	}
@@ -131,7 +131,7 @@ function media_upload_nextgen_form($errors) {
 		
 ?>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 <!--
 	function NGGSetAsThumbnail(id, nonce){
 		var $link = jQuery('a#ngg-post-thumbnail-' + id);
@@ -158,9 +158,9 @@ function media_upload_nextgen_form($errors) {
 <form id="filter" action="" method="get">
 <input type="hidden" name="type" value="<?php echo esc_attr( $GLOBALS['type'] ); ?>" />
 <input type="hidden" name="tab" value="<?php echo esc_attr( $GLOBALS['tab'] ); ?>" />
-<?php 
+<?php
 if ($chromeless)
-{ 
+{
 ?>
 <input type="hidden" name="chromeless" value="<?php echo esc_attr( $chromeless ); ?>" />
 <?php	
@@ -286,7 +286,7 @@ if ($chromeless)
 				   </tr>
 			  </tbody></table>
 			</div>
-		<?php		  
+		<?php		
 		}
 	}
 	?>

@@ -1,6 +1,6 @@
 <?php
 
-if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
+if (!defined('POPE_VERSION')) { die('Use autoload.php'); }
 
 /**
  * A Module will register utilities and adapters to provide it's functionality,
@@ -9,7 +9,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
  * Registered an adapter for the I_Component_Factory interface to add new
  * factory methods is the most common use of an adapter.
  */
-abstract class C_Base_Module extends C_Component
+abstract class C_Base_Module
 {
     var $module_id;
     var $module_name;
@@ -19,24 +19,37 @@ abstract class C_Base_Module extends C_Component
     var $module_author;
     var $module_author_uri;
     var $module_type_list = null;
+	var $initialized = FALSE;
 
-    function __construct($context=FALSE)
+    function __construct()
     {
-    	if ($context)	{
-    		parent::__construct(__EXTOBJ_NO_INIT__, $context);
-    	}
-    	else {
-    		parent::__construct(__EXTOBJ_NO_INIT__);
-    	}
+        // TODO: This is here to be compatible with the theme. Once the theme doesn't make use of $this->object
+        // when it doesn't have to, we can remove this circular reference
+        $this->object = $this;
+
+    	@$this->define();
     }
+
+	function initialize()
+	{
+
+	}
+
+	function get_registry()
+	{
+		return C_Component_Registry::get_instance();
+	}
+
+	function _get_registry()
+	{
+		return C_Component_Registry::get_instance();
+	}
 
     /**
      * Defines the module
      */
     function define($id='pope-module', $name='Pope Module', $description='', $version='', $uri='', $author='', $author_uri='', $context=FALSE)
     {
-		parent::define($context);
-		$this->implement('I_Pope_Module');
 		$this->module_id = $id;
 		$this->module_name = $name;
 		$this->module_description = $description;
@@ -46,11 +59,22 @@ abstract class C_Base_Module extends C_Component
 		$this->module_author_uri = $author_uri;
 
 		$this->get_registry()->add_module($this->module_id, $this);
+    }
+
+	function load()
+	{
+		@include_once($this->get_package_abspath());
 
 		$this->_register_utilities();
 		$this->_register_adapters();
 		$this->_register_hooks();
-    }
+	}
+
+	function get_package_abspath()
+	{
+		$module_abspath = $this->get_registry()->get_module_path($this->module_id);
+		return str_replace('module.', 'package.module.', $module_abspath);
+	}
 
     /**
      * I/O can be expensive to run repeatedly, so when a module is created we cache a listing of every file provided

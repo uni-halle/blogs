@@ -65,7 +65,7 @@ class Wprelease
 		puts "rsync files ..."
 		# system "rsync --recursive --quiet --delete --exclude=wprelease.yml --exclude=.git --exclude=.wordpress_release --exclude=.gitmodules --exclude=.tags --exclude=.tags_sorted_by_file --exclude=podlove.sublime-workspace --exclude=podlove.sublime-project . #{@svn_dir}/trunk"
 		# system "grunt"
-		system "rsync ./ #{@svn_dir}/trunk --recursive --delete --delete-excluded --exclude=.git --exclude=#{@svn_dir} --exclude=.gitmodules --exclude=.tags --exclude=tags --exclude=.ctags --exclude=.tags_sorted_by_file --exclude=wprelease.yml --exclude=podlove.sublime-workspace --exclude=podlove.sublime-project --exclude=lib/modules/podlove_web_player/player/podlove-web-player/libs --exclude=vendor/bin --exclude=vendor/phpunit --exclude=vendor/symfony --exclude=node_modules --exclude=Gruntfile.js --exclude=phpunit.xml --exclude=test --exclude=Rakefile"
+		system "rsync ./ #{@svn_dir}/trunk --recursive --delete --delete-excluded --exclude=.git --exclude=#{@svn_dir} --exclude=.gitmodules --exclude=.tags --exclude=tags --exclude=.ctags --exclude=.tags_sorted_by_file --exclude=wprelease.yml --exclude=podlove.sublime-workspace --exclude=podlove.sublime-project --exclude=lib/modules/podlove_web_player/player/podlove-web-player/libs --exclude=vendor/bin --exclude=vendor/phpunit --exclude=node_modules --exclude=Gruntfile.js --exclude=phpunit.xml --exclude=test --exclude=Rakefile"
 
 		puts "committing changes to svn ..."
 
@@ -92,7 +92,7 @@ class Wprelease
 
 		if system("svn commit -m 'release'")
 			puts "create svn tag ..."
-			system "svn copy -m \"#{@version}\" http://plugins.svn.wordpress.org/#{@repo_slug}/trunk http://plugins.svn.wordpress.org/#{@repo_slug}/tags/#{@version}"
+			system "svn copy -m \"version #{@version}\" http://plugins.svn.wordpress.org/#{@repo_slug}/trunk http://plugins.svn.wordpress.org/#{@repo_slug}/tags/#{@version}"
 		else
 			puts "abort"
 		end

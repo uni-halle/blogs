@@ -52,7 +52,7 @@ shutterReloaded = {
 			shfile = L.href.slice(L.href.lastIndexOf('/')+1);
 			T = ( L.title && L.title != shfile ) ? L.title : '';
 
-			shutterLinks[i] = {link:L.href,num:inset,set:setid,title:T}
+			shutterLinks[i] = {link:L.href,num:inset,set:setid,title:T};
 			L.onclick = new Function('shutterReloaded.make("' + i + '");return false;');
 		}
 
@@ -156,7 +156,7 @@ shutterReloaded = {
 		WB = document.createElement('div');
 		WB.setAttribute('id','shWaitBar');
 		WB.style.top = t.Top + 'px';
-        WB.style.marginTop =(t.pgHeight/2) + 'px'
+        WB.style.marginTop =(t.pgHeight/2) + 'px';
 		WB.innerHTML = t.msgLoading;
 		S.appendChild(WB);
 	},
@@ -195,6 +195,12 @@ shutterReloaded = {
 			t.wHeight = ( (wiH - dbH) > 1 && (wiH - dbH) < 30 ) ? dbH : wiH;
 			t.wHeight = ( (t.wHeight - deH) > 1 && (t.wHeight - deH) < 30 ) ? deH : t.wHeight;
 		} else t.wHeight = ( deH > 0 ) ? deH : dbH;
+
+        // check & adjust for Wordpress admin bar
+        if (document.getElementsByTagName("body")[0].className.match(/admin-bar/)
+        &&  document.getElementById('wpadminbar') !== null) {
+            t.wHeight = t.wHeight - document.getElementById('wpadminbar').offsetHeight;
+        }
 
 		var deW = document.documentElement ? document.documentElement.clientWidth : 0;
 		var dbW = window.innerWidth ? window.innerWidth : document.body.clientWidth;
@@ -249,6 +255,13 @@ shutterReloaded = {
 
 		itop = (shHeight - TI.height) * 0.45;
 		mtop = (itop > 3) ? Math.floor(itop) : 3;
+
+        // check & adjust for Wordpress admin bar
+        if (document.getElementsByTagName("body")[0].className.match(/admin-bar/)
+        &&  document.getElementById('wpadminbar') !== null) {
+            mtop = mtop + document.getElementById('wpadminbar').offsetHeight;
+        }
+
 		D.style.top = t.Top + mtop + 'px';
 		W.style.visibility = 'visible';
 	},
@@ -269,7 +282,7 @@ shutterReloaded = {
 
 	handleArrowKeys : function(e) {
 	    var code = 0;
-	    if (!e) var e = window.event
+	    if (!e) var e = window.event;
 	    	if (e.keyCode) code = e.keyCode;
 	    	else if (e.which) code = e.which;
 
@@ -289,8 +302,8 @@ shutterReloaded = {
 			break;
 		 }
 	}
-}
-shutterOnload = function(){shutterReloaded.init('sh');}
+};
+shutterOnload = function(){shutterReloaded.init('sh');};
 
 if (typeof shutterOnload == 'function') {
 	if ('undefined' != typeof jQuery) jQuery(document).ready(function(){shutterOnload();});

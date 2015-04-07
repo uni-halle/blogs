@@ -2,7 +2,7 @@
     <tr>
         <td class="column1">
             <label for="activateCSS">
-                <?php echo_h($activateCSS_label); ?>
+                <?php esc_html_e($activateCSS_label); ?>
             </label>
         </td>
         <td colspan="2">
@@ -16,7 +16,7 @@
 	<tr id="tr_photocrati-nextgen_styles_activated_stylesheet" class="<?php echo ($activateCSS == 0 ? 'hidden' : ''); ?>">
 		<td class="column1">
 			<label for="activated_stylesheet">
-				<?php echo_h($select_stylesheet_label) ?>
+				<?php esc_html_e($select_stylesheet_label) ?>
 			</label>
 		</td>
 		<td>
@@ -28,7 +28,7 @@
 					author="<?php echo esc_attr($p['author'])?>"
 					version="<?php echo esc_attr($p['version'])?>"
 					<?php selected($value, $activated_stylesheet)?>
-				><?php echo_h($p['name'])?></option>
+				><?php esc_html_e($p['name'])?></option>
 			<?php endforeach ?>
 			</select>
             <p class="description">
@@ -52,14 +52,14 @@
 				rel="advanced_stylesheet_form"
 				hidden_label="<?php echo esc_attr($hidden_label)?>"
 				active_label="<?php echo esc_attr($active_label)?>">
-				<?php echo_h($hidden_label) ?>
+				<?php esc_html_e($hidden_label) ?>
 			</a>
 		</td>
 	</tr>
 	<tr class="hidden" id="advanced_stylesheet_form">
 		<td colspan="2">
 			<label for="cssfile_contents" class="align-to-top">
-				<?php echo_h($cssfile_contents_label)?>
+				<?php esc_html_e($cssfile_contents_label)?>
 			</label>
 			<p
 				class="description"

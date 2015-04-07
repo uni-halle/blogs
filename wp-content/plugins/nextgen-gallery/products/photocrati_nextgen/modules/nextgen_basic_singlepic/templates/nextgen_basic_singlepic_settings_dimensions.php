@@ -1,7 +1,7 @@
 <tr>
     <td>
         <label for='<?php echo esc_attr($display_type_name); ?>_image_dimensions'>
-            <?php echo_h($dimensions_label); ?>
+            <?php esc_html_e($dimensions_label); ?>
         </label>
     </td>
     <td>

@@ -2,3 +2,5 @@ wp-content/blogs.dir
 wp-content/aam
 wp-config.php
 cache
+*log.*
+_assets

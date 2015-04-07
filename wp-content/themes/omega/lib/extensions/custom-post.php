@@ -27,7 +27,7 @@ function omega_customize_post_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		"post_excerpt",
 		array(
-			'default'              => 'full',
+			'default'              => 'excerpts',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
 			'sanitize_callback'    => 'sanitize_text_field',
@@ -179,11 +179,10 @@ function omega_customize_post_register( $wp_customize ) {
 		)
 	);
 
-	/* Add the 'no_more_link_scroll' setting. */
+	/* Add the 'single_nav' setting. */
 	$wp_customize->add_setting(
 		"single_nav",
 		array(
-			'default'              => '1',
 			'type'                 => 'theme_mod',
 			'capability'           => 'edit_theme_options',
 			'sanitize_callback'    => 'sanitize_text_field',

@@ -133,7 +133,7 @@ jQuery(function($){
 				});
                 this.$el.append(option.render().el);
             }, this);
-			if (this.multiple) this.$el.prop('multiple', true);
+			if (this.multiple) this.$el.prop('multiple', true).attr('multiple', 'multiple');
 			if (this.width) this.$el.width(this.width);
             return this;
         },
@@ -161,7 +161,7 @@ jQuery(function($){
                     value:    this.value_field == 'id' ? this.model.id : this.model.get(this.value_field),
                 });
                 if (self.model.get('selected') == true) {
-                    this.$el.attr('selected', 'selected');
+					this.$el.prop('selected', true).attr('selected', 'selected');
                 }
                 return this;
             }
@@ -175,7 +175,7 @@ jQuery(function($){
 		initialize: function(options) {
             this.options = options || {};
 			this.collection = this.options.collection;
-			if (!this.options.multiple) this.options.include_blank = true;
+			this.options.include_blank = true;
 			this.select_tag = new Ngg.Views.SelectTag(this.options);
 			this.collection.on('change', this.selection_changed, this);
 		},
@@ -202,41 +202,22 @@ jQuery(function($){
 				var container = this.select_tag.$el.select2('container').detach();
 				this.$el.append(container);
 				this.$el.detach();
-
 			}
 			else this.select_tag.$el.select2(this.select2_opts);
 
-			// Hack for multi-select elements
-			if (this.options.multiple && this.collection.selected().length == 0)
-				this.select_tag.$el.select2('val', '');
+			// Ensure that values are pre-populated
+			if (this.options.multiple) {
+				var selected = [];
+				_.each(this.collection.selected_ids(), function(id){
+					selected.push(id.toString());
+				});
+				if (selected.length == 0) selected = '';
+				this.select_tag.$el.select2('val', selected);
+			}
+
 
 			// For IE, ensure that the text field has a width
 			this.$el.find('.select2-input').width(this.options.width-20);
-
-			// For IE8, ensure that the selection is being displayed
-			if (!this.options.multiple) {
-				var selected_value = this.$el.find('.select2-choice span:first');
-				if (selected_value.text().length == 0 && this.collection.selected().length > 0) {
-					var selected_item = this.collection.selected().pop();
-					selected_value.text(selected_item.get(this.select_tag.text_field));
-				}
-			}
-			else {
-				var selected_values = this.$el.find('.select2-search-choice');
-				if (this.collection.selected().length > 0 && selected_values.length == 0) {
-					this.select_tag.$el.select2('val', '');
-					var data = [];
-					var value_field = this.select_tag.value_field;
-					_.each(this.collection.selected(), function(item){
-						var value = value_field == 'id' ? item.id : item.get(value_field);
-						data.push({
-							id: 	value,
-							text: 	item.get(this.select_tag.text_field)
-						});
-					}, this);
-					this.select_tag.$el.select2('data', data);
-				}
-			}
 
 			return this;
 		}
@@ -772,13 +753,13 @@ jQuery(function($){
                 var preview_image_relpath = this.model.get('preview_image_relpath');
                 if (typeof installed_at_version == 'undefined') {
                     baseurl = photocrati_ajax.wp_site_url;
+                    baseurl = baseurl.replace(/(.*)\/index\.php$/i, "$1");
                     // those who installed 2.0.66.3 lack the 'installed_at_version' setting but have a
                     // plugin-relative path
                     if (preview_image_relpath.indexOf('/nextgen-gallery') == 0) {
                         baseurl = photocrati_ajax.wp_plugins_url;
                     }
                 }
-
 
 				var img = $('<img/>').attr({
 					src: baseurl + '/' + preview_image_relpath,
@@ -1438,7 +1419,7 @@ jQuery(function($){
 					self.displayed_gallery.set('id', id);
 					var editor = parent.tinyMCE.activeEditor;
 					var preview_url = ngg_displayed_gallery_preview_url + '/id--'+id;
-					var snippet = "<img class='ngg_displayed_gallery mceItem' src='" + preview_url + "'/>";
+					var snippet = "<img data-mce-placeholder='1' class='ngg_displayed_gallery mceItem' src='" + preview_url + "'/>";
 					if (editor.getContent().indexOf(preview_url) < 0)
 						editor.execCommand('mceInsertContent', false, snippet);
 					else {

@@ -263,6 +263,8 @@ function wptouch_the_mobile_switch_link() {
 function wptouch_get_mobile_switch_link() {
 	$settings = wptouch_get_settings();
 
+/*
+	TODO: Deprecated
 	switch( $settings->mobile_switch_link_target ) {
 		case 'current_page':
 			$link_target = $_SERVER['REQUEST_URI'];
@@ -274,8 +276,12 @@ function wptouch_get_mobile_switch_link() {
 			$link_target = '';
 			break;
 	}
+*/
+	$link_target = apply_filters( 'wptouch_mobile_switch_link_target', $_SERVER[ 'REQUEST_URI' ] );
 
-	return apply_filters( 'wptouch_mobile_switch_link', get_bloginfo( 'url' ) . '?wptouch_switch=desktop&amp;redirect=' . urlencode( $link_target ) );
+	$nonce = wp_create_nonce( 'wptouch_switch' );
+
+	return apply_filters( 'wptouch_mobile_switch_link', get_bloginfo( 'url' ) . '?wptouch_switch=desktop&amp;redirect=' . urlencode( $link_target ) . '&amp;nonce=' . $nonce );
 }
 
 function wptouch_use_mobile_switch_link() {

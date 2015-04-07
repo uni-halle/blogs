@@ -21,6 +21,7 @@ function nextgen_lightbox_filter_selector($, selector)
 			}
 			
 			selector = selector.not('.gallery_link');
+            selector.not('.use_imagebrowser_effect');
 		}
 		
 		return selector;

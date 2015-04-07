@@ -74,12 +74,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* tc addons */
 
-h1 { font-size: @honeFontSize; line-height: @honeFontSize } // ~38px
-h2 { font-size: @htwoFontSize; line-height: @htwoFontSize} // ~32px
-h3 { font-size: @hthreeFontSize; line-height: @hthreeFontSize} // ~24px
-h4 { font-size: @hfourFontSize; line-height: @hfourFontSize} // ~18px
-h5 { font-size: @hfiveFontSize; line-height: @hfiveFontSize } // 14px
-h6 { font-size: @hsixFontSize; line-height: @hsixFontSize } // ~12px
+h1 { font-size: @honeFontSize; line-height: @honeLineHeight  } // ~38px
+h2 { font-size: @htwoFontSize; line-height: @htwoLineHeight } // ~32px
+h3 { font-size: @hthreeFontSize; line-height: @hthreeLineHeight } // ~24px
+h4 { font-size: @hfourFontSize; line-height: @hfourLineHeight } // ~18px
+h5 { font-size: @hfiveFontSize; line-height: @hfiveLineHeight  } // 14px
+h6 { font-size: @hsixFontSize; line-height: @hsixLineHeight  } // ~12px
 
 /*
 h1,
@@ -204,7 +204,6 @@ abbr.initialism {
 blockquote {
   padding: 0 0 0 15px;
   margin: 0 0 @baseLineHeight;
-  border-left: 5px solid @BorderQuote;
   p {
     margin-bottom: 0;
     font-size: @baseFontSize * 1.25;

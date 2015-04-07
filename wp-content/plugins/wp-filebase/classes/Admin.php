@@ -13,7 +13,16 @@ static function InitClass()
 
 	wp_enqueue_style('widgets');
 
-	require_once(ABSPATH . 'wp-admin/includes/file.php');
+	require_once(ABSPATH . 'wp-admin/includes/file.php');	
+	
+	// make sure that either wp-filebase or wp-filebase pro is enabled bot not both!
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}	
+	if(is_plugin_active('wp-filebase-pro/wp-filebase.php'))		deactivate_plugins('wp-filebase/wp-filebase.php');	
+	
+	if(!empty($_GET['action']) && $_GET['action'] === 'install-extensions')
+		add_thickbox ();
 }
 
 static function SettingsSchema() { return wpfb_call('Settings','Schema'); }
@@ -235,7 +244,7 @@ static function InsertFile($data, $in_gui =false)
 		}
 	}
 	// check url
-	if($remote_upload && !preg_match('/^https?:\/\//', $data->file_remote_uri))	return array( 'error' => __('Only HTTP links are supported.', WPFB) );
+	if($remote_upload && !preg_match('/^(https?|file):\/\//', $data->file_remote_uri))	return array( 'error' => __('Only HTTP links are supported.', WPFB) );
 	
 	
 	// do some simple file stuff
@@ -320,10 +329,10 @@ static function InsertFile($data, $in_gui =false)
 
 			
 			if(!$upload_thumb && empty($data->file_thumbnail)) {		
-				if(!empty($info['comments']['picture'][0]['data']))
-					$cover_img =& $info['comments']['picture'][0]['data'];
-				elseif(!empty($info['id3v2']['APIC'][0]['data']))
-					$cover_img =& $info['id3v2']['APIC'][0]['data'];
+				if(!empty($file_info['comments']['picture'][0]['data']))
+					$cover_img =& $file_info['comments']['picture'][0]['data'];
+				elseif(!empty($file_info['id3v2']['APIC'][0]['data']))
+					$cover_img =& $file_info['id3v2']['APIC'][0]['data'];
 				else $cover_img = null;
 
 				// TODO unset pic in info?
@@ -402,6 +411,15 @@ static function ParseFileNameVersion($file_name, $file_version=null) {
 static function GetRemoteFileInfo($url)
 {
 	wpfb_loadclass('Download');
+
+	if(parse_url($url,PHP_URL_SCHEME) === 'file' && is_readable($url)) {
+		return array(
+			 'name' => basename($url),
+			 'size' => filesize($url),
+			 'type' => WPFB_Download::GetFileType($url),
+			 'time' => filemtime($url)
+		);
+	}
 	
 	$info = array();
 	$path = parse_url($url,PHP_URL_PATH);
@@ -872,27 +890,34 @@ public static function SettingsUpdated($old, &$new) {
 	return $messages;
 }
 
-static function RolesCheckList($field_name, $selected_roles=array(), $display_everyone=true) {
+static function UserSelector($field_name, $selected_user=null, $noone_label=false)
+{
+	self::RolesCheckList($field_name, empty($selected_user) ? array() : array('_u_'.$selected_user), $noone_label, true);
+}
+
+static function RolesCheckList($field_name, $selected_roles=array(), $display_everyone=true, $user_select=false) {
 	global $wp_roles;
-	$all_roles = $wp_roles->roles;
-	if(empty($selected_roles)) $selected_roles = array();
-	elseif(!is_array($selected_roles)) $selected_roles = explode('|', $selected_roles);
-	?>
-<div id="<?php echo $field_name; ?>-wrap" class=""><input value="" type="hidden" name="<?php echo $field_name; ?>[]" />
-	<ul id="<?php echo $field_name; ?>-list" class="wpfilebase-roles-checklist">
-<?php
-	if(!empty($display_everyone)) echo "<li id='{$field_name}_none'><label class='selectit'><input value='' type='checkbox' name='{$field_name}[]' id='in-{$field_name}_none' ".(empty($selected_roles)?"checked='checked'":"")." onchange=\"jQuery('[id^=in-$field_name-]').prop('checked', false);\" /> <i>".(is_string($display_everyone)?$display_everyone:__('Everyone',WPFB))."</i></label></li>";
-	foreach ( $all_roles as $role => $details ) {
-		$name = translate_user_role($details['name']);
-		$sel = in_array($role, $selected_roles);
-		echo "<li id='$field_name-$role'><label class='selectit'><input value='$role' type='checkbox' name='{$field_name}[]' id='in-$field_name-$role' ".($sel?"checked='checked'":""). /*" ".((empty($selected_roles)&&$display_everyone)? "disabled='disabled'":"").*/ " /> $name</label></li>";
-		if($sel) unset($selected_roles[array_search($role, $selected_roles)]); // rm role from array
+	if(!$user_select) {
+		$all_roles = $wp_roles->roles;
+		if(empty($selected_roles)) $selected_roles = array();
+		elseif(!is_array($selected_roles)) $selected_roles = explode('|', $selected_roles);
+		?>
+	<div id="<?php echo $field_name; ?>-wrap" class=""><input value="" type="hidden" name="<?php echo $field_name; ?>[]" />
+		<ul id="<?php echo $field_name; ?>-list" class="wpfilebase-roles-checklist">
+	<?php
+		if(!empty($display_everyone)) echo "<li id='{$field_name}_none'><label class='selectit'><input value='' type='checkbox' name='{$field_name}[]' id='in-{$field_name}_none' ".(empty($selected_roles)?"checked='checked'":"")." onchange=\"jQuery('[id^=in-$field_name-]').prop('checked', false);\" /> <i>".(is_string($display_everyone)?$display_everyone:__('Everyone',WPFB))."</i></label></li>";
+		foreach ( $all_roles as $role => $details ) {
+			$name = translate_user_role($details['name']);
+			$sel = in_array($role, $selected_roles);
+			echo "<li id='$field_name-$role'><label class='selectit'><input value='$role' type='checkbox' name='{$field_name}[]' id='in-$field_name-$role' ".($sel?"checked='checked'":""). /*" ".((empty($selected_roles)&&$display_everyone)? "disabled='disabled'":"").*/ " /> $name</label></li>";
+			if($sel) unset($selected_roles[array_search($role, $selected_roles)]); // rm role from array
+		}
 	}
 	
 	// other roles/users, that were not listed
 	foreach($selected_roles as $role) {
 		$name = substr($role,0,3) == '_u_' ? (substr($role, 3).' (user)') : $role;
-		echo "<li id='$field_name-$role'><label class='selectit'><input value='$role' type='checkbox' name='{$field_name}[]' id='in-$field_name-$role' checked='checked' /> $name</label></li>";
+		echo "<li id='$field_name-$role'><label class='selectit'><input value='$role' type='$inp_type' name='{$field_name}[]' id='in-$field_name-$role' checked='checked' /> $name</label></li>";
 	}
 	
 ?>
@@ -943,12 +968,16 @@ static function UploadDirIsLocked()
 	return file_exists($f) && ( (time()-filemtime($f)) < 120 ); // max lock for 120 seconds without update!
 }
 
+static function FuncIsDisabled($name) {
+	return strpos(@ini_get('disable_functions').','.@ini_get('suhosin.executor.func.blacklist').',', $name.',') !== false;
+}
+
 static function GetFileHash($filename)
 {
 	static $use_php_func = -1;
 	if(WPFB_Core::$settings->fake_md5) return '#'.substr(md5(filesize($filename)."-".filemtime($filename)), 1);
 	if($use_php_func === -1) {
-		$use_php_func = strpos(@ini_get('disable_functions').','.@ini_get('suhosin.executor.func.blacklist'), 'exec') !== false;
+		$use_php_func = self::FuncIsDisabled('exec');
 		@setlocale(LC_CTYPE, "en_US.UTF-8"); // avoid strip of UTF-8 chars in escapeshellarg()
 	}
 	if($use_php_func) return md5_file($filename);

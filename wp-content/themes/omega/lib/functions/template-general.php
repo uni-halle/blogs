@@ -435,3 +435,35 @@ function omega_404_title( $prefix = '', $display = true ) {
 
 	echo $title;
 }
+
+/**
+ * Produces the date of post publication.
+ *
+ * Supported attributes are:
+ *   after (output after link, default is empty string),
+ *   before (output before link, default is empty string),
+ *   format (date format, default is value in date_format option field),
+ *   label (text following 'before' output, but before date).
+ *
+ * Output passes through 'omega_get_post_date' filter before returning.
+ *
+ * @since 1.1.0
+ * @access public
+ * @param  string  $after
+ * @param  string  $before
+ * @param  string  $format
+ * @param  string  $label
+ * @return string
+ */
+
+function omega_get_post_date( $after = '', $before = '', $format = '', $label = '' ) {
+
+	if ($format == '') $format = get_option( 'date_format' );
+
+	$display = ( 'relative' === $format ) ? omega_human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) . ' ' . __( 'ago', 'omega' ) : get_the_time( $format );
+
+	$output = sprintf( '<time %s>', omega_get_attr( 'entry-published' ) ) . $before . $label . $display . $after . '</time>';
+
+	return apply_filters( 'omega_get_post_date', $output, $after, $before, $format, $label  );
+
+}

@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2014  Michael Kang (wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2015  Michael Kang (wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,72 +18,126 @@
 
 class Osm_OLJS3
 {
-  function addTileLayer($a_LayerName, $a_Type, $a_OverviewMapZoom, $a_MapControl, $a_ExtType, $a_ExtName, $a_ExtAddress, $a_ExtInit, $a_theme)
-  {
-    if ($a_Type == 'stamen_toner'){
-      $output .= 'var raster = new ol.layer.Tile({';
-      $output .= '  source: new ol.source.Stamen({layer: "toner"})';
-      $output .= '});';
+  function addTileLayer($a_LayerName, $a_Type, $a_OverviewMapZoom, $a_MapControl, $a_ExtType, $a_ExtName, $a_ExtAddress, $a_ExtInit, $a_theme){
+    Osm::traceText(DEBUG_INFO, "addTileLayer V3(".$a_LayerName.",".$a_Type.",".$a_OverviewMapZoom.")");
+    $TileLayer = '';
+    if ($a_Type == "osm"){
+      $TileLayer .= '
+      var raster = new ol.layer.Tile({
+        source: new ol.source.OSM({})
+      });';
     }
-    if ($a_Type == 'osm'){
-      $output .= 'var raster = new ol.layer.Tile({';
-      $output .= '  source: new ol.source.OSM()';
-      $output .= '});';
-    }
-    else {
-      //echo "ERROR with map_type";
-      echo "** Error ** unknown a_Type ";
-      echo $a_Type;
-    }
+    else if ($a_Type == "stamen_toner"){
+      $TileLayer .= '
+      var raster = new ol.layer.Tile({
+        source: new ol.source.Stamen({
+            attributions: [
+              new ol.Attribution({
+                html: "MAP tiles by <a href=\"http://stamen.com/\">Stamen Design</a>, " +
+                "under <a href=\"http://creativecommons.org/licenses/by/3.0/\">CC BY" +
+                " 3.0</a>."
+              }),
+              ol.source.OSM.ATTRIBUTION
+            ],
+            layer: "toner"
+          })
+        });
+      ';
+      }
+      else if ($a_Type == "stamen_watercolor"){
+        $TileLayer .= '
+          var raster = new ol.layer.Tile({
+            source: new ol.source.Stamen({layer: "watercolor"})
+          });';
+      }
+      else if ($a_Type == "stamen_terrain-labels"){
+        $TileLayer .= '
+        var raster = new ol.layer.Tile({
+          source: new ol.source.Stamen({layer: "terrain-labels"})
+        });';
+      }
+      else if ($a_Type == "openseamap"){
+        $TileLayer .= '
+          var raster = new ol.layer.Tile({
+            source: new ol.source.OSM()
+          });
+          var Layer2 = new ol.layer.Tile({ 
+            source: new ol.source.OSM({
+              attributions: [
+              new ol.Attribution({
+                html: "and &copy; " +
+                "<a href=\"http://www.openseamap.org/\">OpenSeaMap</a>"
+              }),
+              ol.source.OSM.ATTRIBUTION
+              ],
+              crossOrigin: null,
+              url: "http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"
+            })
+          });';
+      }
+      else {// unknwon => OSM map
+        $TileLayer .= '
+        var raster = new ol.layer.Tile({
+          source: new ol.source.OSM()
+        });';
+      }
+      return $TileLayer;
   }
 
   function addVectorLayer($a_LayerName, $a_FileName, $a_Colour, $a_Type)
   {
-    $output .= 'var style = {';
-    $output .= '  "Point": [new ol.style.Style({';
-    $output .= '    image: new ol.style.Circle({';
-    $output .= '      fill: new ol.style.Fill({';
-    $output .= '        color: "rgba(255,255,0,0.4)"';
-    $output .= '      }),';
-    $output .= '      radius: 5,';
-    $output .= '      stroke: new ol.style.Stroke({';
-    $output .= '        color: "#ff0",';
-    $output .= '        width: 1';
-    $output .= '      })';
-    $output .= '    })';
-    $output .= '  })],';
-    $output .= '  "LineString": [new ol.style.Style({';
-    $output .= '    stroke: new ol.style.Stroke({';
-    $output .= '      color: "#f00",';
-    $output .= '      width: 3';
-    $output .= '    })';
-    $output .= '  })],';
-    $output .= '  "MultiLineString": [new ol.style.Style({';
-    $output .= '    stroke: new ol.style.Stroke({';
-    $output .= '      color: "#0f0",';
-    $output .= '      width: 3';
-    $output .= '    })';
-    $output .= '  })]';
-    $output .= '};';
+    Osm::traceText(DEBUG_INFO, "addVectorLayer V3(".$a_LayerName.",".$a_Type.",".$a_OverviewMapZoom.")");
+    $VectorLayer = '';
+    $VectorLayer .= '
+    var style = {
+      "Point": [new ol.style.Style({
+        image: new ol.style.Circle({
+          fill: new ol.style.Fill({
+            color: "rgba(255,255,0,0.4)"
+          }),
+          radius: 5,
+          stroke: new ol.style.Stroke({
+            color: "#ff0",
+            width: 1
+          })
+        })
+      })],
+      "LineString": [new ol.style.Style({
+        stroke: new ol.style.Stroke({
+          color: "#f00",
+          width: 3
+        })
+      })],
+      "MultiLineString": [new ol.style.Style({
+        stroke: new ol.style.Stroke({
+          color: "#0f0",
+          width: 3
+        })
+      })]
+    };';
     if ($a_Type == 'GPX'){
-      $output .= 'var vector = new ol.layer.Vector({';
-      $output .= '  source: new ol.source.GPX({';
-      $output .= '    projection: "EPSG:3857",';
-      $output .= '    url:"'.$a_FileName.'"';
-      $output .= '  })';
- //   $output .= 'style: function(feature, resolution) {return style[feature.getGeometry().getType()];}';
-      $output .= '});';
+      $VectorLayer .= '
+      var vector = new ol.layer.Vector({
+        source: new ol.source.GPX({
+          projection: "EPSG:3857",
+          url:"'.$a_FileName.'"
+        })
+ /**    style: function(feature, resolution) {return style[feature.getGeometry().getType()];} */
+      });';
     }
-    if ($a_Type == 'KML'){
+    if ($a_Type == 'kml'){
       echo "KML Type";
-      $output .= 'var vector = new ol.layer.Vector({';
-      $output .= '  source: new ol.source.KML({';
-      $output .= '    projection: "EPSG:3857",';
-      $output .= '    url:"'.$a_FileName.'"';
-      $output .= '  })';
- //   $output .= 'style: function(feature, resolution) {return style[feature.getGeometry().getType()];}';
-      $output .= '});';
+      $VectorLayer .= '
+      var vector_kml = new ol.layer.Vector({
+        source: new ol.source.KML({
+          projection: "EPSG:3857",
+          url:"'.$a_FileName.'"
+        })
+ /**    style: function(feature, resolution) {return style[feature.getGeometry().getType()];}*/
+      });';
     }
+  return $VectorLayer;
   }
+
 }
 ?>

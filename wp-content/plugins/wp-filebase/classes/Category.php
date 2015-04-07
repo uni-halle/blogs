@@ -194,9 +194,20 @@ class WPFB_Category extends WPFB_Item {
 			case 'cat_num_files_total':	return $this->cat_num_files_total;
 			//case 'cat_required_level':	return ($this->cat_required_level - 1);
 			case 'cat_user_can_access': return $this->CurUserCanAccess();
+			case 'cat_user_can_edit': return $this->CurUserCanEdit();
 			case 'cat_edit_url':			return $this->GetEditUrl();
 			case 'uid':					return self::$tpl_uid;				
 		}
+		
+		// string length limit:
+		if(!isset($this->$name) && ($p=strpos($name, ':')) > 0) {
+			$maxlen = (int)substr($name, $p+1);
+			$name = substr($name, 0, $p);
+			$str = $this->get_tpl_var($name);			
+			if($maxlen > 3 && strlen($str) > $maxlen) $str = (function_exists('mb_substr') ? mb_substr($str, 0, $maxlen-3,'utf8') : mb_substr($str, 0, $maxlen-3)).'...';
+			return $str;
+		}
+		
 		return isset($this->$name) ? $this->$name : '';
     }
 	

@@ -45,7 +45,7 @@ class dc_jqaccordion {
 	function options(){}
 
 	function get_plugin_directory(){
-		return WP_PLUGIN_URL . '/jquery-vertical-accordion-menu';	
+		return plugins_url('',__FILE__);
 	}
 
 };

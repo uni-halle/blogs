@@ -1126,7 +1126,7 @@ class Class_leaflet_options {
 			'title'   => '',
 			'desc'    => 'Wikitude <img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-wikitude.png" width="14" height="14" />',
 			'type'    => 'checkbox',
-			'std'     => 1
+			'std'     => 0
 		);
 		$this->_settings['defaults_marker_panel_background_color'] = array(
 			'version' => '1.0',
@@ -1339,7 +1339,7 @@ class Class_leaflet_options {
 			'section' => 'mapdefaults-section5',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => '<strong>' . __('Only change the values below if you are not using marker or shadow icons from the <a href="http://mapicons.nicolasmollet.com" target="_blank">Map Icons Collection</a>!','lmm') . '</strong>',
+			'desc'    => '<strong>' . sprintf(__('Only change the values below if you are not using marker or shadow icons from the <a href="%1$s" target="_blank">Map Icons Collection</a>!','lmm'), 'https://mapicons.mapsmarker.com') . '</strong>',
 			'type'    => 'helptext'
 		);
 		$this->_settings['defaults_marker_icon_iconsize_x'] = array(
@@ -1960,7 +1960,7 @@ class Class_leaflet_options {
 			'title'   => '',
 			'desc'    => 'Wikitude <img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-wikitude.png" width="14" height="14" />',
 			'type'    => 'checkbox',
-			'std'     => 1
+			'std'     => 0
 		);
 		$this->_settings['defaults_layer_panel_background_color'] = array(
 			'version' => '1.0',
@@ -2895,6 +2895,24 @@ class Class_leaflet_options {
 			'std'     => '150',
 			'type'    => 'text-pro'
 		);
+		$this->_settings['minimap_collapsedWidth'] = array(
+			'version' => 'p2.1',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section17',
+			'title'   => 'collapsedWidth' . $pro_button_link,
+			'desc'    => __('The width of the toggle marker and the minimap when collapsed, in pixels.','lmm'),
+			'std'     => '19',
+			'type'    => 'text-pro'
+		);
+		$this->_settings['minimap_collapsedHeight'] = array(
+			'version' => 'p2.1',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section17',
+			'title'   => 'collapsedHeight' . $pro_button_link,
+			'desc'    => __('The height of the toggle marker and the minimap when collapsed, in pixels.','lmm'),
+			'std'     => '19',
+			'type'    => 'text-pro'
+		);
 		$this->_settings['minimap_zoomLevelOffset'] = array(
 			'version' => 'p1.0',
 			'pane'    => 'mapdefaults',
@@ -3768,7 +3786,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'basemaps-section1',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
+			'desc'    => '<span style="background:#f99755;display:block;padding:3px;text-decoration:none;width:635px;">' . sprintf(__('Warning: as Mapbox now requires to use a custom API access token, custom Mapbox basemaps will not work anymore if you registered your Mapbox account before January 2015.<br/>In case your Mapbox maps are broken, please switch to another basemap like OpenStreetMap or <a href="%1$s">upgrade to Maps Marker Pro</a>, which enables you to continue using custom Mapbox basemaps - even with accounts created after January 2015 (please also note that Mapbox might discontinue the usage of their old API for existing users in the long run too!).','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade') . '</span><br/>' . sprintf(__('A tutorial on how to configure Mapbox basemaps can be found at %1$s','lmm'), '<a href="https://www.mapsmarker.com/mapbox" target="_blank">https://www.mapsmarker.com/mapbox</a>') . '<br/><br/>' . __('If you want to change the name of the custom Mapbox basemap shown in the layer controlbox, please change the according settings at "Map Defaults" / "Names for default basemaps"','lmm') . '<br/><br/>' . __('If you want the custom Mapbox basemap not to be available in the layer controlbox for selection, please change the according settings at "Map Defaults" / "Available basemaps in control box"','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
 			'type'    => 'helptext'
 		);
 		$this->_settings['mapbox_user'] = array(
@@ -3776,7 +3794,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-section1',
 			'title'   => __( 'User', 'lmm' ),
-			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/<strong>mapbox</strong>/map/blue-marble-topo-jul',
+			'desc'    => __('extracted from Map ID within mapbox editor, e.g.','lmm') . '<strong>YourUsername</strong>.kpf3blj3',
 			'std'     => 'mapbox',
 			'type'    => 'text'
 		);
@@ -3784,10 +3802,19 @@ $this->_settings['clustering_helptext2'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-section1',
-			'title'   => __('map','lmm'),
-			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/mapbox/map/<strong>blue-marble-topo-jul</strong>',
+			'title'   => __('Style','lmm'),
+			'desc'    => __('extracted from Map ID within mapbox editor, e.g.','lmm') . 'YourUsername.<strong>kpf3blj3</strong>',
 			'std'     => 'blue-marble-topo-jul',
 			'type'    => 'text'
+		);
+		$this->_settings['mapbox_access_token'] = array(
+			'version' => 'p2.1',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-section1',
+			'title'   => __('API access token','lmm') . $pro_button_link,
+			'desc'    => __('Access to Mapbox web services requires an access token. The access token is used to associate requests to API resources with your account.','lmm'),
+			'std'     => '',
+			'type'    => 'text-pro'
 		);
 		$this->_settings['mapbox_minzoom'] = array(
 			'version' => '2.1',
@@ -3825,7 +3852,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'basemaps-section2',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
+			'desc'    => '<span style="background:#f99755;display:block;padding:3px;text-decoration:none;width:635px;">' . sprintf(__('Warning: as Mapbox now requires to use a custom API access token, custom Mapbox basemaps will not work anymore if you registered your Mapbox account before January 2015.<br/>In case your Mapbox maps are broken, please switch to another basemap like OpenStreetMap or <a href="%1$s">upgrade to Maps Marker Pro</a>, which enables you to continue using custom Mapbox basemaps - even with accounts created after January 2015 (please also note that Mapbox might discontinue the usage of their old API for existing users in the long run too!).','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade') . '</span><br/>' . sprintf(__('A tutorial on how to configure Mapbox basemaps can be found at %1$s','lmm'), '<a href="https://www.mapsmarker.com/mapbox" target="_blank">https://www.mapsmarker.com/mapbox</a>') . '<br/><br/>' . __('If you want to change the name of the custom Mapbox basemap shown in the layer controlbox, please change the according settings at "Map Defaults" / "Names for default basemaps"','lmm') . '<br/><br/>' . __('If you want the custom Mapbox basemap not to be available in the layer controlbox for selection, please change the according settings at "Map Defaults" / "Available basemaps in control box"','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
 			'type'    => 'helptext'
 		);
 		$this->_settings['mapbox2_user'] = array(
@@ -3833,7 +3860,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-section2',
 			'title'   => __( 'User', 'lmm' ),
-			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/<strong>mapbox</strong>/map/geography-class',
+			'desc'    => __('extracted from Map ID within mapbox editor, e.g.','lmm') . '<strong>YourUsername</strong>.kpf3blj3',
 			'std'     => 'mapbox',
 			'type'    => 'text'
 		);
@@ -3841,10 +3868,19 @@ $this->_settings['clustering_helptext2'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-section2',
-			'title'   => __('map','lmm'),
-			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/mapbox/map/<strong>geography-class</strong>',
+			'title'   => __('Style','lmm'),
+			'desc'    => __('extracted from Map ID within mapbox editor, e.g.','lmm') . 'YourUsername.<strong>kpf3blj3</strong>',
 			'std'     => 'geography-class',
 			'type'    => 'text'
+		);
+		$this->_settings['mapbox2_access_token'] = array(
+			'version' => 'p2.1',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-section2',
+			'title'   => __('API access token','lmm') . $pro_button_link,
+			'desc'    => __('Access to Mapbox web services requires an access token. The access token is used to associate requests to API resources with your account.','lmm'),
+			'std'     => '',
+			'type'    => 'text-pro'
 		);
 		$this->_settings['mapbox2_minzoom'] = array(
 			'version' => '2.1',
@@ -3882,7 +3918,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'basemaps-section3',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => __('After finishing the basemap configuration, please navigate to Settings / "Maps Defaults" / "Available basemaps in control box" and check the corresponding checkbox to make this basemap available in the layer control box!','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
+			'desc'    => '<span style="background:#f99755;display:block;padding:3px;text-decoration:none;width:635px;">' . sprintf(__('Warning: as Mapbox now requires to use a custom API access token, custom Mapbox basemaps will not work anymore if you registered your Mapbox account before January 2015.<br/>In case your Mapbox maps are broken, please switch to another basemap like OpenStreetMap or <a href="%1$s">upgrade to Maps Marker Pro</a>, which enables you to continue using custom Mapbox basemaps - even with accounts created after January 2015 (please also note that Mapbox might discontinue the usage of their old API for existing users in the long run too!).','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade') . '</span><br/>' . sprintf(__('A tutorial on how to configure Mapbox basemaps can be found at %1$s','lmm'), '<a href="https://www.mapsmarker.com/mapbox" target="_blank">https://www.mapsmarker.com/mapbox</a>') . '<br/><br/>' . __('If you want to change the name of the custom Mapbox basemap shown in the layer controlbox, please change the according settings at "Map Defaults" / "Names for default basemaps"','lmm') . '<br/><br/>' . __('If you want the custom Mapbox basemap not to be available in the layer controlbox for selection, please change the according settings at "Map Defaults" / "Available basemaps in control box"','lmm') . '<br/><br/><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-default-basemap-mapbox.jpg" width="400" height="230" />',
 			'type'    => 'helptext'
 		);
 		$this->_settings['mapbox3_user'] = array(
@@ -3890,7 +3926,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-section3',
 			'title'   => __( 'User', 'lmm' ),
-			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/<strong>mapbox</strong>/map/natural-earth-1',
+			'desc'    => __('extracted from Map ID within mapbox editor, e.g.','lmm') . '<strong>YourUsername</strong>.kpf3blj3',
 			'std'     => 'mapbox',
 			'type'    => 'text'
 		);
@@ -3898,10 +3934,19 @@ $this->_settings['clustering_helptext2'] = array(
 			'version' => '2.1',
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-section3',
-			'title'   => __('map','lmm'),
-			'desc'    => __('e.g.','lmm') . 'http://tiles.mapbox.com/mapbox/map/<strong>natural-earth-1</strong>',
+			'title'   => __('Style','lmm'),
+			'desc'    => __('extracted from Map ID within mapbox editor, e.g.','lmm') . 'YourUsername.<strong>kpf3blj3</strong>',
 			'std'     => 'natural-earth-1',
 			'type'    => 'text'
+		);
+		$this->_settings['mapbox3_access_token'] = array(
+			'version' => 'p2.1',
+			'pane'    => 'basemaps',
+			'section' => 'basemaps-section3',
+			'title'   => __('API access token','lmm') . $pro_button_link,
+			'desc'    => __('Access to Mapbox web services requires an access token. The access token is used to associate requests to API resources with your account.','lmm'),
+			'std'     => '',
+			'type'    => 'text-pro'
 		);
 		$this->_settings['mapbox3_minzoom'] = array(
 			'version' => '2.1',
@@ -4391,7 +4436,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'overlays-section2',
 			'title'   => __( 'Attribution', 'lmm' ),
 			'desc'    => '',
-			'std'     => 'Addresses: City of Vienna (<a href=&quot;http://data.wien.gv.at&quot; target=&quot;_blank&quot;>data.wien.gv.at</a>)',
+			'std'     => 'Addresses: City of Vienna (<a href=&quot;https://open.wien.at&quot; target=&quot;_blank&quot;>open.wien.at</a>)',
 			'type'    => 'text'
 		);
 		$this->_settings['overlays_custom_minzoom'] = array(
@@ -4506,7 +4551,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'overlays-section3',
 			'title'   => __( 'Attribution', 'lmm' ),
 			'desc'    => '',
-			'std'     => 'Addresses: City of Vienna (<a href=&quot;http://data.wien.gv.at&quot; target=&quot;_blank&quot;>data.wien.gv.at</a>)',
+			'std'     => 'Addresses: City of Vienna (<a href=&quot;https://open.wien.at&quot; target=&quot;_blank&quot;>open.wien.at</a>)',
 			'type'    => 'text'
 		);
 		$this->_settings['overlays_custom2_minzoom'] = array(
@@ -4620,7 +4665,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'overlays-section4',
 			'title'   => __( 'Attribution', 'lmm' ),
 			'desc'    => '',
-			'std'     => 'Addresses: City of Vienna (<a href=&quot;http://data.wien.gv.at&quot; target=&quot;_blank&quot;>data.wien.gv.at</a>)',
+			'std'     => 'Addresses: City of Vienna (<a href=&quot;https://open.wien.at&quot; target=&quot;_blank&quot;>open.wien.at</a>)',
 			'type'    => 'text'
 		);
 		$this->_settings['overlays_custom3_minzoom'] = array(
@@ -4735,7 +4780,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'overlays-section5',
 			'title'   => __( 'Attribution', 'lmm' ),
 			'desc'    => '',
-			'std'     => 'Addresses: City of Vienna (<a href=&quot;http://data.wien.gv.at&quot; target=&quot;_blank&quot;>data.wien.gv.at</a>)',
+			'std'     => 'Addresses: City of Vienna (<a href=&quot;https://open.wien.at&quot; target=&quot;_blank&quot;>open.wien.at</a>)',
 			'type'    => 'text'
 		);
 		$this->_settings['overlays_custom4_minzoom'] = array(
@@ -4959,7 +5004,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Name','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => '<a href=&quot;http://data.wien.gv.at/katalog/wc-anlagen.html&quot; target=&quot;_blank&quot;>OGD Vienna - Public Toilets</a>'
+			'std'     => '<a href=&quot;https://open.wien.at&quot; target=&quot;_blank&quot;>OGD Vienna - Public Toilets</a>'
 		);
 		$this->_settings['wms_wms_baseurl'] = array(
 			'version' => '1.0',
@@ -4968,7 +5013,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('baseURL','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => 'http://data.wien.gv.at/daten/wms'
+			'std'     => 'https://data.wien.gv.at/daten/wms'
 		);
 		$this->_settings['wms_wms_layers'] = array(
 			'version' => '1.0',
@@ -5026,7 +5071,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Attribution','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => 'WMS: City of Vienna (<a href=&quot;http://data.wien.gv.at&quot; target=&quot;_blank&quot;>http://data.wien.gv.at</a>)'
+			'std'     => 'WMS: City of Vienna (<a href=&quot;https://open.wien.at&quot; target=&quot;_blank&quot;>open.wien.gv.at</a>)'
 		);
 		$this->_settings['wms_wms_legend_enabled'] = array(
 			'version' => '1.1',
@@ -5101,7 +5146,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => '<a href="http://code.google.com/apis/kml/documentation/kmlreference.html#href" target="_blank">href</a>',
 			'desc'    => __('http-address of the KML-webservice of the WMS layer','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://data.wien.gv.at/daten/geo?version=1.3.0&service=WMS&request=GetMap&crs=EPSG:4326&bbox=48.10,16.16,48.34,16.59&width=1&height=1&layers=ogdwien:WCANLAGEOGD&styles=&format=application/vnd.google-earth.kml+xml'
+			'std'     => 'https://data.wien.gv.at/daten/geo?version=1.3.0&service=WMS&request=GetMap&crs=EPSG:4326&bbox=48.10,16.16,48.34,16.59&width=1&height=1&layers=ogdwien:WCANLAGEOGD&styles=&format=application/vnd.google-earth.kml+xml'
 		);
 		$this->_settings['wms_wms_kml_refreshMode'] = array(
 			'version' => '1.4.3',
@@ -5170,7 +5215,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Name','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => '<a href=&quot;http://data.wien.gv.at/katalog/aufzuege.html&quot; target=&quot;_blank&quot;>OGD Vienna - Elevators at stations</a>'
+			'std'     => '<a href=&quot;https://open.wien.at&quot; target=&quot;_blank&quot;>OGD Vienna - Elevators at stations</a>'
 		);
 		$this->_settings['wms_wms2_baseurl'] = array(
 			'version' => '1.0',
@@ -5179,7 +5224,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('baseURL','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => 'http://data.wien.gv.at/daten/wms'
+			'std'     => 'https://data.wien.gv.at/daten/wms'
 		);
 		$this->_settings['wms_wms2_layers'] = array(
 			'version' => '1.0',
@@ -5237,7 +5282,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Attribution','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => 'WMS: City of Vienna (<a href=&quot;http://data.wien.gv.at&quot; target=&quot;_blank&quot;>http://data.wien.gv.at</a>)'
+			'std'     => 'WMS: City of Vienna (<a href=&quot;https://open.wien.at&quot; target=&quot;_blank&quot;>http://open.wien.at</a>)'
 		);
 		$this->_settings['wms_wms2_legend_enabled'] = array(
 			'version' => '1.1',
@@ -5312,7 +5357,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => '<a href="http://code.google.com/apis/kml/documentation/kmlreference.html#href" target="_blank">href</a>',
 			'desc'    => __('http-address of the KML-webservice of the WMS layer','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://data.wien.gv.at/daten/geo?version=1.3.0&service=WMS&request=GetMap&crs=EPSG:4326&bbox=48.10,16.16,48.34,16.59&width=1&height=1&layers=ogdwien:AUFZUGOGD&styles=&format=application/vnd.google-earth.kml+xml'
+			'std'     => 'https://data.wien.gv.at/daten/geo?version=1.3.0&service=WMS&request=GetMap&crs=EPSG:4326&bbox=48.10,16.16,48.34,16.59&width=1&height=1&layers=ogdwien:AUFZUGOGD&styles=&format=application/vnd.google-earth.kml+xml'
 		);
 		$this->_settings['wms_wms2_kml_refreshMode'] = array(
 			'version' => '1.4.3',
@@ -5802,7 +5847,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Name','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => '<a href=&quot;http://discomap.eea.europa.eu/ArcGIS/rest/services/Noise/Noise_Dyna_LAEA/MapServer/460&quot; target=&quot;_blank&quot;>EEA - Airport Annual Traffic</a>'
+			'std'     => '<a href=&quot;http://discomap.eea.europa.eu/arcgis/rest/services/Land/LandscapeFragmentation_LAEA/MapServer&quot; target=&quot;_blank&quot;>EEA - Landscape fragmentation</a>'
 		);
 		$this->_settings['wms_wms5_baseurl'] = array(
 			'version' => '1.0',
@@ -5811,7 +5856,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('baseURL','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => 'http://discomap.eea.europa.eu/ArcGIS/services/Noise/Noise_Dyna_LAEA/MapServer/WMSServer'
+			'std'     => 'http://discomap.eea.europa.eu/arcgis/services/Land/LandscapeFragmentation_LAEA/MapServer/WmsServer?'
 		);
 		$this->_settings['wms_wms5_layers'] = array(
 			'version' => '1.0',
@@ -5820,7 +5865,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Layers','lmm'),
 			'desc'    => __('(required) Comma-separated list of WMS layers to show','lmm'),
 			'type'    => 'text',
-			'std'     => '8'
+			'std'     => '0'
 		);
 		$this->_settings['wms_wms5_styles'] = array(
 			'version' => '1.0',
@@ -5891,7 +5936,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Legend','lmm'),
 			'desc'    => __('URL of image which gets show when hovering the text "(Legend)" next to WMS attribution text','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://discomap.eea.europa.eu/ArcGIS/services/Noise/Noise_Dyna_LAEA/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=8'
+			'std'     => 'http://discomap.eea.europa.eu/arcgis/services/Land/LandscapeFragmentation_LAEA/MapServer/WmsServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=0'
 		);
 		$this->_settings['wms_wms5_subdomains_enabled'] = array(
 			'version' => '1.0',
@@ -5932,7 +5977,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('Does the WMS server support KML output?','lmm'),
 			'desc'    => '',
 			'type'    => 'radio',
-			'std'     => 'yes',
+			'std'     => 'no',
 			'choices' => array(
 				'yes' => __('yes','lmm'),
 				'no' => __('no','lmm')
@@ -6644,7 +6689,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Name','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => '<a href=&quot;http://discomap.eea.europa.eu/ArcGIS/rest/services/Bio/CDDA_Dyna_WGS84/MapServer&quot; target=&quot;_blank&quot;>EEA - Common Database on Designated Areas</a>'
+			'std'     => '<a href=&quot;http://discomap.eea.europa.eu/arcgis/rest/services/Land/UrbanAtlas_LAEA/MapServer&quot; target=&quot;_blank&quot;>EEA - Urban Outlines</a>'
 		);
 		$this->_settings['wms_wms9_baseurl'] = array(
 			'version' => '1.0',
@@ -6653,7 +6698,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('baseURL','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => 'http://discomap.eea.europa.eu/ArcGIS/services/Bio/CDDA_Dyna_WGS84/MapServer/WMSServer'
+			'std'     => 'http://discomap.eea.europa.eu/arcgis/services/Land/UrbanAtlas_LAEA/MapServer/WmsServer?'
 		);
 		$this->_settings['wms_wms9_layers'] = array(
 			'version' => '1.0',
@@ -6662,7 +6707,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Layers','lmm'),
 			'desc'    => __('(required) Comma-separated list of WMS layers to show','lmm'),
 			'type'    => 'text',
-			'std'     => '0'
+			'std'     => '4'
 		);
 		$this->_settings['wms_wms9_styles'] = array(
 			'version' => '1.0',
@@ -6720,7 +6765,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('Display legend?','lmm'),
 			'desc'    => '',
 			'type'    => 'radio',
-			'std'     => 'yes',
+			'std'     => 'no',
 			'choices' => array(
 				'yes' => __('Yes','lmm'),
 				'no' => __('No','lmm')
@@ -6733,7 +6778,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Legend','lmm'),
 			'desc'    => __('URL of image which gets show when hovering the text "(Legend)" next to WMS attribution text','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://discomap.eea.europa.eu/ArcGIS/services/Bio/CDDA_Dyna_WGS84/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=0'
+			'std'     => 'http://discomap.eea.europa.eu/arcgis/services/Land/UrbanAtlas_LAEA/MapServer/WmsServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=4'
 		);
 		$this->_settings['wms_wms9_subdomains_enabled'] = array(
 			'version' => '1.0',
@@ -6773,7 +6818,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('Does the WMS server support KML output?','lmm'),
 			'desc'    => '',
 			'type'    => 'radio',
-			'std'     => 'yes',
+			'std'     => 'no',
 			'choices' => array(
 				'yes' => __('yes','lmm'),
 				'no' => __('no','lmm')
@@ -6786,7 +6831,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => '<a href="http://code.google.com/apis/kml/documentation/kmlreference.html#href" target="_blank">href</a>',
 			'desc'    => __('http-address of the KML-webservice of the WMS layer','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://discomap.eea.europa.eu/ArcGIS/rest/services/Bio/CDDA_Dyna_WGS84/MapServer/generatekml?docName=&l%3A2=on&layers=2&layerOptions=nonComposite'
+			'std'     => ''
 		);
 		$this->_settings['wms_wms9_kml_refreshMode'] = array(
 			'version' => '1.4.3',
@@ -6854,7 +6899,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Name','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => '<a href=&quot;http://discomap.eea.europa.eu/ArcGIS/rest/services/Noise/Noise_Dyna_LAEA/MapServer&quot; target=&quot;_blank&quot;>EEA - Road noise Austria</a>'
+			'std'     => '<a href=&quot;http://discomap.eea.europa.eu/arcgis/rest/services/Bio/Article17_Dyna_WM/MapServer&quot; target=&quot;_blank&quot;>EEA - Bieogeographical Regions</a>'
 		);
 		$this->_settings['wms_wms10_baseurl'] = array(
 			'version' => '1.0',
@@ -6863,7 +6908,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('baseURL','lmm'),
 			'desc'    => '',
 			'type'    => 'text',
-			'std'     => 'http://discomap.eea.europa.eu/ArcGIS/services/Noise/Noise_Dyna_LAEA/MapServer/WMSServer'
+			'std'     => 'http://discomap.eea.europa.eu/arcgis/services/Bio/Article17_Dyna_WM/MapServer/WmsServer?'
 		);
 		$this->_settings['wms_wms10_layers'] = array(
 			'version' => '1.0',
@@ -6872,7 +6917,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Layers','lmm'),
 			'desc'    => __('(required) Comma-separated list of WMS layers to show','lmm'),
 			'type'    => 'text',
-			'std'     => '247'
+			'std'     => '1'
 		);
 		$this->_settings['wms_wms10_styles'] = array(
 			'version' => '1.0',
@@ -6944,7 +6989,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'    => __('Legend','lmm'),
 			'desc'    => __('URL of image which gets show when hovering the text "(Legend)" next to WMS attribution text','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://discomap.eea.europa.eu/ArcGIS/services/Noise/Noise_Dyna_LAEA/MapServer/WMSServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=247'
+			'std'     => 'http://discomap.eea.europa.eu/arcgis/services/Bio/Article17_Dyna_WM/MapServer/WmsServer?request=GetLegendGraphic%26version=1.3.0%26format=image/png%26layer=2'
 		);
 		$this->_settings['wms_wms10_subdomains_enabled'] = array(
 			'version' => '1.0',
@@ -6984,7 +7029,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('Does the WMS server support KML output?','lmm'),
 			'desc'    => '',
 			'type'    => 'radio',
-			'std'     => 'yes',
+			'std'     => 'no',
 			'choices' => array(
 				'yes' => __('yes','lmm'),
 				'no' => __('no','lmm')
@@ -6997,7 +7042,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => '<a href="http://code.google.com/apis/kml/documentation/kmlreference.html#href" target="_blank">href</a>',
 			'desc'    => __('http-address of the KML-webservice of the WMS layer','lmm'),
 			'type'    => 'text',
-			'std'     => 'http://discomap.eea.europa.eu/ArcGIS/rest/services/Noise/Noise_Dyna_LAEA/MapServer/generatekml?docName=&l%3A222=on&layers=222&layerOptions=nonComposite'
+			'std'     => ''
 		);
 		$this->_settings['wms_wms10_kml_refreshMode'] = array(
 			'version' => '1.4.3',
@@ -8504,6 +8549,7 @@ $this->_settings['clustering_helptext2'] = array(
 				'en_US' => __('English','lmm') . ' (en_US)',
 				'fr_FR' => __('French','lmm') . ' (fr_FR)',
 				'de_DE' => __('German','lmm') . ' (de_DE)',
+				'gl_ES' => __('Galician','lmm') . ' (gl_ES)',
 				'hi_IN' => __('Hindi','lmm') . ' (hi_IN)',
 				'hu_HU' => __('Hungarian','lmm') . ' (hu_HU)',
 				'id_ID' => __('Indonesian','lmm') . ' (id_ID)',
@@ -9988,7 +10034,7 @@ $this->_settings['clustering_helptext2'] = array(
 		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.10
-		if (get_option('leafletmapsmarker_version') == '3.9.5' )
+		if (get_option('leafletmapsmarker_version') == '3.9.7' )
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

@@ -1,6 +1,7 @@
+<?php ShareaholicAdmin::show_header(); ?>
 <div class='wrap'>
   <div id="icon-options-general" class="icon32"></div>
-  <h2><?php _e('Shareaholic: Advanced Settings', 'shareaholic'); ?></h2>
+  <h2><?php _e('Advanced Settings', 'shareaholic'); ?></h2>
   <div style="margin-top:20px;"></div>
     
   <div class='unit size4of5' style="min-height:300px;">

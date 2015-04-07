@@ -44,10 +44,7 @@ class M_Security extends C_Base_Module
             'C_Security_Token' => 'class.security_token.php',
             'C_Wordpress_Security_Actor' => 'class.wordpress_security_actor.php',
             'C_Wordpress_Security_Manager' => 'class.wordpress_security_manager.php',
-            'C_Wordpress_Security_Token' => 'class.wordpress_security_token.php',
-            'I_Security_Actor' => 'interface.security_actor.php',
-            'I_Security_Manager' => 'interface.security_manager.php',
-            'I_Security_Token' => 'interface.security_token.php'
+            'C_Wordpress_Security_Token' => 'class.wordpress_security_token.php'
         );
     }
 

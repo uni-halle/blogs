@@ -1,9 +1,9 @@
 <tr id='tr_<?php print esc_attr("{$display_type_name}_show_return_link"); ?>' class='<?php print !empty($hidden) ? 'hidden' : ''; ?>'>
     <td>
         <label for='<?php echo esc_attr($display_type_name); ?>_show_return_link' class="tooltip">
-            <?php echo_h($show_return_link_label); ?>
+            <?php esc_html_e($show_return_link_label); ?>
 			<span>
-				<?php echo_h($tooltip) ?>
+				<?php esc_html_e($tooltip) ?>
 			</span>
         </label>
     </td>

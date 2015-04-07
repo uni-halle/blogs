@@ -13,28 +13,24 @@
 			<?php } ?>
 
 			<?php if ( !defined( 'WPTOUCH_IS_FREE' ) ) { ?>
-			<li><a href="//wptouch.freshdesk.com" target="_blank"><?php _e( 'Knowledgebase & Support', 'wptouch-pro' ); ?></a></li>
+			<li><a href="//support.wptouch.com" target="_blank"><?php _e( 'Knowledgebase & Support', 'wptouch-pro' ); ?></a></li>
 			<li><a href="//www.wptouch.com/account/" target="_blank"><?php _e( 'Manage Account & License', 'wptouch-pro' ); ?></a></li>
 			<?php } else { ?>
 			<li><a href="//wptouch.s3.amazonaws.com/docs/WPtouch%20User%20Guide.pdf"><?php _e( 'WPtouch User Guide', 'wptouch-pro' ); ?></a></li>
 			<?php } ?>
+			<li><a href="//www.twitter.com/wptouch" target="_blank"><i class="wptouch-icon-twitter"></i> <?php _e( 'WPtouch on Twitter', 'wptouch-pro' ); ?> </a></li>
+			<li><a href="//www.facebook.com/bravenewcode" target="_blank"><i class="wptouch-icon-facebook-sign"></i> <?php _e( 'WPtouch on Facebook', 'wptouch-pro' ); ?></a></li>
 		</ul>
 	</div>
 
 	<div id="touchboard-news" class="overview-box-appearance">
 		<h3>
 			<?php _e( 'WPtouch News', 'wptouch-pro' ); ?>
-			<a href="//www.wptouch.com/blog/" target="_blank"><?php _e( 'Read More', 'wptouch-pro' ); ?> <i class="icon-external-link"></i></a>
+			<a href="//www.wptouch.com/blog/" target="_blank"><?php _e( 'Read More', 'wptouch-pro' ); ?> <i class="wptouch-icon-external-link"></i></a>
 		</h3>
 		<span id="ajax-news">
 			<!-- ajaxed news here -->
 		</span>
-		<h3>
-			WPtouch Updates:
-			<a href="//www.google.com/+BraveNewCode" target="_blank"><i class="icon-google-plus-sign"></i></a>
-			<a href="//www.facebook.com/bravenewcode" target="_blank"><i class="icon-facebook-sign"></i></a>
-			<a href="//www.twitter.com/wptouch" target="_blank"><i class="icon-twitter-sign"></i></a>
-		</h3>
 	</div><!-- touchboard-news -->
 </div><!-- over-right-side -->
 

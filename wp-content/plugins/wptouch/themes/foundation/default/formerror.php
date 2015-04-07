@@ -6,7 +6,7 @@
 				<?php _e( 'Comment Error', 'wptouch-pro' ); ?>
 			</h2>
 			<p><?php _e( 'Please enter all fields correctly to post a comment.', 'wptouch-pro' ); ?></p>
-			<p><center><a class="back-button button" href="#"><i class="icon-arrow-left"></i> <?php _e( 'Go back', 'wptouch-pro' ); ?></a></center></p>
+			<p><center><a class="back-button button" href="#"><i class="wptouch-icon-arrow-left"></i> <?php _e( 'Go back', 'wptouch-pro' ); ?></a></center></p>
 		</div>
 	</div> <!-- content -->
 

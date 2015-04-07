@@ -21,13 +21,30 @@ class RSS {
 		$episode_asset  = $feed->episode_asset();
 		$file_type      = $episode_asset->file_type();
 
-		add_filter( 'podlove_feed_enclosure', function ( $enclosure, $enclosure_url, $enclosure_file_size, $mime_type ) {
+		add_filter( 'podlove_feed_enclosure', function ( $enclosure, $enclosure_url, $enclosure_file_size, $mime_type, $media_file ) {
 
 			if ( $enclosure_file_size < 0 )
 				$enclosure_file_size = 0;
 
-			return sprintf( '<enclosure url="%s" length="%s" type="%s" />', $enclosure_url, $enclosure_file_size, $mime_type );
-		}, 10, 4 );
+			$dom = new \Podlove\DomDocumentFragment;
+			$element = $dom->createElement('enclosure');
+
+			$attributes = [
+				'url'    => $enclosure_url,
+				'length' => $enclosure_file_size,
+				'type'   => $mime_type
+			];
+
+			$attributes = apply_filters('podlove_feed_enclosure_attributes', $attributes, $media_file);
+
+			foreach ($attributes as $k => $v) {
+				$element->setAttribute($k, $v);
+			}
+
+			$dom->appendChild($element);
+
+			return (string) $dom;
+		}, 10, 5 );
 
 		override_feed_title( $feed );
 		override_feed_description( $feed );
@@ -96,6 +113,13 @@ class RSS {
 			'post__in'       => $feed->post_ids(),
 			'posts_per_page' => $posts_per_page
 		);
+
+		# The theme "getnoticed" globally overrides post_types in pre_get_posts.
+		# Fix: hook in after the theme and override it again.
+		# It's not bad practice because I *really* only want episodes in this feed.
+		add_action('pre_get_posts', function ($query) {
+		    $query->set('post_type', 'podcast');
+		}, 20);
 
 		/**
 		 * In feeds, WordPress ignores the 'posts_per_page' parameter 

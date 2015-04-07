@@ -46,8 +46,7 @@ class M_Widget extends C_Base_Module
             'C_Widget' => 'class.widget.php',
             'C_Widget_Gallery' => 'class.widget_gallery.php',
             'C_Widget_Mediarss' => 'class.widget_mediarss.php',
-            'C_Widget_Slideshow' => 'class.widget_slideshow.php',
-            'I_Widget' => 'interface.widget.php'
+            'C_Widget_Slideshow' => 'class.widget_slideshow.php'
         );
     }
 

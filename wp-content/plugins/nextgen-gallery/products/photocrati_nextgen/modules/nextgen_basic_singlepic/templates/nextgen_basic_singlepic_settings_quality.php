@@ -1,7 +1,7 @@
 <tr>
     <td>
         <label for='<?php echo esc_attr($display_type_name); ?>_quality'>
-            <?php echo_h($quality_label); ?>
+            <?php esc_html_e($quality_label); ?>
         </label>
     </td>
     <td>

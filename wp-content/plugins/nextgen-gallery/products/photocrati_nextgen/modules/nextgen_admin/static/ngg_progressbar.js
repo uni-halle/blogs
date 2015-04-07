@@ -54,7 +54,7 @@
             // Closes the progress bar
             close: function(delay){
                 if (typeof(delay) == 'undefined') delay = 1000;
-                var gritter     = this.find_gritter(window)
+                var gritter     = this.find_gritter(window);
                 var gritter_id  = this.gritter_id;
                 setTimeout(function(){
                     gritter.remove(gritter_id);

@@ -113,6 +113,7 @@ class ngg_Thumbnail {
      *
      */
     function ngg_Thumbnail($fileName,$no_ErrorImage = false) {
+
         //make sure the GD library is installed
     	if(!function_exists("gd_info")) {
         	echo 'You do not have the GD Library installed.  This class requires the GD library to function properly.' . "\n";
@@ -144,6 +145,8 @@ class ngg_Thumbnail {
 
         //if there are no errors, determine the file format
         if($this->error == false) {
+	        @ini_set('memory_limit', -1);
+
     		$data = @getimagesize($this->fileName);
     		if (isset($data) && is_array($data)) {
     		  $extensions = array('1' => 'GIF', '2' => 'JPG', '3' => 'PNG');

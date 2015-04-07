@@ -63,7 +63,9 @@ class CFDBViewWhatsInDB extends CFDBView {
         }
         if ($currSelection) {
             // Check for delete operation
-            if (isset($_POST['delete']) && $canEdit) {
+            if (isset($_POST['delete']) &&
+                    $canEdit &&
+                    check_admin_referer('delete-from-' . $currSelectionEscaped)) {
                 if (isset($_POST['submit_time'])) {
                     $submitTime = $_POST['submit_time'];
                     $wpdb->query(
@@ -92,7 +94,9 @@ class CFDBViewWhatsInDB extends CFDBView {
                     }
                 }
             }
-            else if (isset($_POST['delete_wpcf7']) && $canEdit) {
+            else if (isset($_POST['delete_wpcf7']) &&
+                    $canEdit &&
+                    check_admin_referer('delete_wpcf7-' . $currSelectionEscaped)) {
                 $plugin->delete_wpcf7_fields($currSelection);
                 $plugin->add_wpcf7_noSaveFields();
             }
@@ -238,6 +242,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                 <form action="" method="post">
                     <input name="form_name" type="hidden" value="<?php echo $currSelectionEscaped ?>"/>
                     <input name="all" type="hidden" value="y"/>
+                    <?php wp_nonce_field('delete-from-' . $currSelectionEscaped); ?>
                     <input name="delete" type="submit"
                            value="<?php _e('Delete All This Form\'s Records', 'contact-form-7-to-database-extension'); ?>"
                            onclick="return confirm('<?php _e('Are you sure you want to delete all the data for this form?', 'contact-form-7-to-database-extension')?>')"/>
@@ -245,6 +250,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                 <br/>
                     <form action="" method="post">
                         <input name="form_name" type="hidden" value="<?php echo $currSelectionEscaped ?>"/>
+                        <?php wp_nonce_field('delete_wpcf7-' . $currSelectionEscaped); ?>
                         <input name="delete_wpcf7" type="submit"
                                value="<?php _e('Remove _wpcf7 columns', 'contact-form-7-to-database-extension') ?>"/>
                     </form>
@@ -279,6 +285,8 @@ class CFDBViewWhatsInDB extends CFDBView {
                     $maxVisible = -1;
                 }
                 $menuJS = $this->createDatatableLengthMenuJavascriptString($maxVisible);
+
+                $sScrollX = $plugin->getOption('HorizontalScroll', 'true') == 'true' ? '"100%"' : '""';
                 ?>
             <script type="text/javascript" language="Javascript">
                 var oTable;
@@ -288,7 +296,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                         "aaSorting": [],
                         //"sScrollY": "400",
                         "bScrollCollapse": true,
-                        "sScrollX":"100%",
+                        "sScrollX": <?php echo $sScrollX ?>,
                         "iDisplayLength": <?php echo $maxVisible ?>,
                         "aLengthMenu": <?php echo $menuJS ?>
                         <?php
@@ -313,6 +321,7 @@ class CFDBViewWhatsInDB extends CFDBView {
         <form action="" method="post">
             <input name="form_name" type="hidden" value="<?php echo $currSelectionEscaped ?>"/>
                 <input name="delete" type="hidden" value="rows"/>
+                <?php wp_nonce_field('delete-from-' . $currSelectionEscaped); ?>
                 <?php
 
             }
@@ -336,7 +345,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                 if ($useDataTables) {
                     $options['id'] = $tableHtmlId;
                     $options['class'] = '';
-                    $options['style'] = "#$tableHtmlId td > div { max-height: 100px;  min-width:75px; overflow: auto; font-size: small; }"; // don't let cells get too tall
+                    $options['style'] = "#$tableHtmlId {padding:0;} #$tableHtmlId td > div { max-height: 100px;  min-width:75px; overflow: auto; font-size: small;}"; // don't let cells get too tall
                 }
                 $exporter->export($currSelection, $options);
                 ?>

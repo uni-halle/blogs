@@ -9,8 +9,8 @@ function wptouch_custom_latest_post_settings( $settings ) {
 			'',
 			'',
 			'',
-			WPTOUCH_SETTING_ADVANCED,
-			'1.0.4'
+			WPTOUCH_SETTING_BASIC,
+			'2.3.3'
 		);
 
 	return $settings;

@@ -7,11 +7,11 @@
 					<li>
 					<?php if ( !is_user_logged_in() ) { ?>
 					<a class="login-toggle tappable no-ajax" href="#">
-						<i class="icon-key"></i> Login
+						<i class="wptouch-icon-key"></i> Login
 					</a>
 				<?php } else { ?>
 					<a href="<?php echo wp_logout_url( esc_url_raw( $_SERVER['REQUEST_URI'] ) ); ?>" class="tappable" title="<?php _e( 'Logout', 'wptouch-pro' ); ?>">
-						<i class="icon-user"></i>
+						<i class="wptouch-icon-user"></i>
 						<?php _e( 'Logout', 'wptouch-pro' ); ?>
 					</a>
 				<?php } ?>
@@ -22,7 +22,7 @@
 	</div>
 
 <!-- Back Button for Web-App Mode -->
-<div class="icon-arrow-left back-button tappable"><!-- css-button --></div>
+<div class="wptouch-icon-arrow-left back-button tappable"><!-- css-button --></div>
 
 
 <div class="page-wrapper">

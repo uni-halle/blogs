@@ -4,6 +4,8 @@ use \Podlove\Model;
 
 class Templates {
 
+	use \Podlove\HasPageDocumentationTrait;
+
 	static $pagehook;
 	
 	public function __construct( $handle ) {
@@ -16,6 +18,9 @@ class Templates {
 			/* $menu_slug  */ 'podlove_templates_settings_handle',
 			/* $function   */ array( $this, 'page' )
 		);
+
+		$this->init_page_documentation(self::$pagehook);
+		
 		add_action( 'admin_init', array( $this, 'scripts_and_styles' ) );	
 
 		register_setting( Templates::$pagehook, 'podlove_template_assignment' );
@@ -50,9 +55,13 @@ class Templates {
 	private function view_template() {
 
 		echo sprintf(
-			__( 'Episode Templates are an easy way to keep the same structure in all your episodes. Create one and use the displayed %sShortcode%s as the episode content.', 'podlove' ),
-			'<a href="http://docs.podlove.org/ref/shortcodes.html" target="_blank">',
-			'</a>'
+			__( 'Episode Templates are an easy way to keep the same structure in all your episodes.
+				You can use %sShortcodes%s as well as %sPublisher Template Tags%s to customize your episodes.<br>
+				Please read the %sTemplating Guide%s to get started.
+				', 'podlove' ),
+			'<a href="http://docs.podlove.org/ref/shortcodes.html" target="_blank">', '</a>',
+			'<a href="http://docs.podlove.org/reference/template-tags/" target="_blank">', '</a>',
+			'<a href="http://docs.podlove.org/guides/understanding-templates/" target="_blank">', '</a>'
 		);
 
 		?>

@@ -13,4 +13,5 @@
     margin: 0pt 2px 2px 0px;
     padding: 1px;
     height: auto; /* silly, but without this the images will appear distorted with some WP themes */
+    float: left;
 }

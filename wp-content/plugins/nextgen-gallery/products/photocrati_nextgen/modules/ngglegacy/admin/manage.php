@@ -78,7 +78,7 @@ class nggManageGallery {
 			$image = $nggdb->find_image( $this->pid );
 			if ($image) {
 				if ($ngg->options['deleteImg']) {
-                    $storage = C_Component_Registry::get_instance()->get_utility('I_Gallery_Storage');
+                    $storage = $storage  = C_Gallery_Storage::get_instance();
                     $storage->delete_image($this->pid);
 				}
 				$mapper = C_Image_Mapper::get_instance();
@@ -97,10 +97,9 @@ class nggManageGallery {
 		if ($this->mode == 'recoverpic') {
 
 			check_admin_referer('ngg_recoverpicture');
-			$image = $nggdb->find_image( $this->pid );
+
             // bring back the old image
-			nggAdmin::recover_image($image);
-            nggAdmin::create_thumbnail($image);
+			nggAdmin::recover_image($this->pid);
 
             nggGallery::show_message(__('Operation successful. Please clear your browser cache.',"nggallery"));
 
@@ -187,9 +186,9 @@ class nggManageGallery {
 
 	function render_image_column_3($output='', $picture=array())
 	{
-		$image_url 		= nextgen_esc_url(add_query_arg('i', mt_rand(), $picture->imageURL));
-		$thumb_url		= nextgen_esc_url(add_query_arg('i', mt_rand(), $picture->thumbURL));
-		$filename	= esc_attr($picture->filename);
+		$image_url = add_query_arg('i', mt_rand(), $picture->imageURL);
+		$thumb_url = add_query_arg('i', mt_rand(), $picture->thumbURL);
+		$filename  = esc_attr($picture->filename);
 
 		$output = array();
 
@@ -579,29 +578,8 @@ class nggManageGallery {
 				// Delete gallery
 					if ( is_array($_POST['doaction']) ) {
                         $deleted = false;
-						foreach ( $_POST['doaction'] as $id ) {
-                			// get the path to the gallery
-                			$gallery = nggdb::find_gallery($id);
-                			if ($gallery){
-                				//TODO:Remove also Tag reference, look here for ids instead filename
-                				$imagelist = $wpdb->get_col("SELECT pid FROM $wpdb->nggpictures WHERE galleryid = '$gallery->gid' ");
-                				if ($ngg->options['deleteImg']) {
-                                    $storage = C_Component_Registry::get_instance()->get_utility('I_Gallery_Storage');
-                					if (is_array($imagelist)) {
-                						foreach ($imagelist as $pid) {
-                                            $storage->delete_image($pid);
-                						}
-                					}
-                                    // delete folder. abspath provided by nggdb::find_gallery()
-                                    $fs = C_Fs::get_instance();
-                                    @rmdir($fs->join_paths($gallery->abspath, 'thumbs'));
-                                    @rmdir($fs->join_paths($gallery->abspath, 'dynamic'));
-                                    @rmdir($gallery->abspath);
-                				}
-                			}
-                            do_action('ngg_delete_gallery', $id);
-                			$deleted = nggdb::delete_gallery( $id );
-  						}
+						$mapper = C_Gallery_Mapper::get_instance();
+						foreach ( $_POST['doaction'] as $id ) $deleted = $mapper->destroy($id);
 
 						if($deleted)
                             nggGallery::show_message(__('Gallery deleted successfully ', 'nggallery'));
@@ -692,7 +670,7 @@ class nggManageGallery {
 							$image = $nggdb->find_image( $imageID );
 							if ($image) {
 								if ($ngg->options['deleteImg']) {
-                                    $storage = C_Component_Registry::get_instance()->get_utility('I_Gallery_Storage');
+                                    $storage = C_Gallery_Storage::get_instance();
                                     $storage->delete_image($image->pid);
 								}
                                 do_action('ngg_delete_picture', $image->pid);

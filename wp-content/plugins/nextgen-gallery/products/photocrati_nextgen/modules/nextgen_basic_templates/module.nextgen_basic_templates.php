@@ -15,7 +15,7 @@ class M_NextGen_Basic_Templates extends C_Base_Module
 			'photocrati-nextgen_basic_templates',
 			'NextGen Basic Templates',
 			'Provides a NextGen-Legacy compatible thumbnail gallery for NextGEN Gallery',
-			'0.4',
+			'0.5',
 			'http://www.photocrati.com',
 			'Photocrati Media',
 			'http://www.photocrati.com'
@@ -43,7 +43,6 @@ class M_NextGen_Basic_Templates extends C_Base_Module
         return array(
             'A_Nextgen_Basic_Template_Form' => 'adapter.nextgen_basic_template_form.php',
             'C_Legacy_Template_Locator' => 'class.legacy_template_locator.php',
-            'I_Legacy_Template_Locator' => 'interface.legacy_template_locator.php',
             'Mixin_Nextgen_Basic_Templates' => 'mixin.nextgen_basic_templates.php'
         );
     }

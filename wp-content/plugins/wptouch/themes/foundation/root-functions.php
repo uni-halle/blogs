@@ -1,6 +1,6 @@
 <?php
 
-define( 'FOUNDATION_VERSION', '2.2' );
+define( 'FOUNDATION_VERSION', '2.3.3' );
 
 define( 'FOUNDATION_DIR', WPTOUCH_DIR . '/themes/foundation' );
 define( 'FOUNDATION_URL', WPTOUCH_URL . '/themes/foundation' );
@@ -411,24 +411,6 @@ function foundation_render_theme_settings( $page_options ) {
 	wptouch_add_sub_page( FOUNDATION_PAGE_HOMESCREEN_ICONS, 'foundation-page-homescreen-icons', $page_options );
 
 	/* Homescreen Icon Area */
-
-	wptouch_add_page_section(
-		FOUNDATION_PAGE_HOMESCREEN_ICONS,
-		__( 'Icon Title', 'wptouch-pro' ),
-		'admin_menu_homescreen_icons_options',
-		array(
-			wptouch_add_pro_setting(
-				'text',
-				'homescreen_icon_title',
-				__( 'Icon title', 'wptouch-pro' ),
-				__( 'When visitors bookmark your website, this will be the title shown.', 'wptouch-pro' ),
-				WPTOUCH_SETTING_BASIC,
-				'1.0'
-			),
-		),
-		$page_options,
-		FOUNDATION_SETTING_DOMAIN
-	);
 
 	wptouch_add_page_section(
 		FOUNDATION_PAGE_HOMESCREEN_ICONS,
@@ -972,10 +954,13 @@ function wptouch_fdn_ordered_cat_list( $num, $include_count = true, $taxonomy = 
 		}
 	}
 
+
 	echo $opening_tag;
 	$sql = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}term_taxonomy INNER JOIN {$wpdb->prefix}terms ON {$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id WHERE taxonomy = '{$taxonomy}' AND {$wpdb->prefix}term_taxonomy.term_id NOT IN ($excluded_cats) AND count >= 1 ORDER BY count DESC LIMIT 0, $num");
 
 	if ( $sql ) {
+		$sql = apply_filters( 'wptouch_ordered_cat_list_categories', $sql );
+
 		foreach ( $sql as $result ) {
 			if ( $result ) {
 				$link = get_term_link( (int) $result->term_id, $taxonomy );

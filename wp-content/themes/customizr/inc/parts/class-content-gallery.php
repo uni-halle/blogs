@@ -2,13 +2,13 @@
 /**
 * Gallery content filters
 *
-* 
+*
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0.5
-* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
+* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://themesandco.com/customizr
+* @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_gallery' ) ) :
@@ -25,7 +25,7 @@ if ( ! class_exists( 'TC_gallery' ) ) :
 
       /**
        * Gallery filter to enable lightbox navigation (based on the WP original gallery function)
-       * 
+       *
        * @package Customizr
        * @since Customizr 3.0.5
        */
@@ -33,9 +33,9 @@ if ( ! class_exists( 'TC_gallery' ) ) :
 
           if( ! apply_filters( 'tc_gallery_bool', true ) )
             return $output;
-          
-          
-          //add a filter for link markup 
+
+
+          //add a filter for link markup
           //add_filter( 'wp_get_attachment_link', array($this, 'tc_modify_attachment_link') , 20, 6 );
 
           //COPY OF WP FUNCTION IN media.php
@@ -157,7 +157,7 @@ if ( ! class_exists( 'TC_gallery' ) ) :
               <br style='clear: both;' />
             </div>\n";
 
-          //remove the filter for link markup 
+          //remove the filter for link markup
           //remove_filter( 'wp_get_attachment_link', array($this, 'tc_modify_attachment_link') , 20, 6 );
 
           return $output;
@@ -176,7 +176,7 @@ if ( ! class_exists( 'TC_gallery' ) ) :
         if( !apply_filters('tc_gallery_bool', true ) )
             return $markup;
 
-        $tc_fancybox = esc_attr( tc__f( '__get_option' , 'tc_fancybox' ) );
+        $tc_fancybox = esc_attr( TC_utils::$inst->tc_opt( 'tc_fancybox' ) );
 
         if ( $tc_fancybox == 1 && $permalink == false ) //add the filter only if link to the attachment file/image
           {
@@ -202,7 +202,7 @@ if ( ! class_exists( 'TC_gallery' ) ) :
                 $link_text = $_post->post_title;
                $markup      = '<a class="grouped_elements" rel="tc-fancybox-group" href="'.$url.'" title="'.$post_title.'">'.$link_text.'</a>';
           }
-        
+
 
         return $markup;
       }

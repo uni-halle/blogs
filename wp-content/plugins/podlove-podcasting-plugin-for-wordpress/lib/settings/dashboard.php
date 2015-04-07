@@ -4,6 +4,8 @@ use \Podlove\Model;
 
 class Dashboard {
 
+	use \Podlove\HasPageDocumentationTrait;
+
 	static $pagehook;
 
 	public function __construct() {
@@ -18,6 +20,8 @@ class Dashboard {
 			/* $menu_slug  */ \Podlove\Podcast_Post_Type::SETTINGS_PAGE_HANDLE,
 			/* $function   */ array( $this, 'settings_page' )
 		);
+
+		$this->init_page_documentation(self::$pagehook);
 
 		add_action( 'load-' . Dashboard::$pagehook, function () {
 			// Adding the meta boxes here, so they can be filtered by the user settings.
@@ -44,10 +48,19 @@ class Dashboard {
 		?>
 		<ul>
 			<li>
+				<a href="//podlove.org" target="_blank">podlove.org</a>
+			</li>
+			<li>
+				<a href="https://community.podlove.org/" target="_blank">Podlove Community</a>
+			</li>
+			<li>
+				<a href="//docs.podlove.org" target="_blank">Documentation &amp; Guides</a>
+			</li>
+			<li>
 				<a href="<?php echo admin_url( 'admin.php?page=podlove_Support_settings_handle' ) ?>">Report Bugs</a>
 			</li>
 			<li>
-				<a target="_blank" href="https://trello.com/board/podlove-publisher/508293f65573fa3f62004e0a">See what we're working on</a>
+				<a href="http://podlove.org/donations/" target="_blank">Donate</a>
 			</li>
 			<li>
 				<script type="text/javascript">

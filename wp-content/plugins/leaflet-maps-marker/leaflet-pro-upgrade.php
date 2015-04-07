@@ -324,6 +324,8 @@ if ( $action == NULL ) {
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.9.2p" target="_blank">' . __('improved accessibility/screen reader support by using proper alt texts','lmm') . '</a></li> 
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.9.3p" target="_blank">' . __('support for duplicating layer maps (without assigned markers)','lmm') . '</a></li> 
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.9.3p" target="_blank">' . __('bulk actions for layers (duplicate, delete layer only, delete & re-assign markers)','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.1p" target="_blank">' . __('support for custom Mapbox basemaps','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.1p" target="_blank">' . __('optimized editing workflow for marker maps - no more reloads needed due to AJAX support','lmm') . '</a></li> 
 				</ul>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>

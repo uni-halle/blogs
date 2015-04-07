@@ -4,6 +4,8 @@ window.Frame_Event_Publisher = {
 	received: [],
 	initialized: false,
 	children: {},
+    window: false,
+    ajax_handlers_setup: false,
 
 	is_parent: function(){
 		return self.parent.document === self.document;
@@ -14,12 +16,14 @@ window.Frame_Event_Publisher = {
 	},
 
 	setup_ajax_handlers: function() {
-		var publisher = this;
-		jQuery(document).ajaxComplete(function(e, xhr, settings) {
-			setTimeout(function() {
-				publisher.ajax_handler();
-			}, 0);
-		});
+        if (!this.ajax_handlers_setup) {
+            var publisher = this;
+            jQuery(document).ajaxComplete(function(e, xhr, settings) {
+                setTimeout(function() {
+                    publisher.ajax_handler();
+                }, 0);
+            });
+        }
 	},
 
     ajax_handler: function() {
@@ -28,7 +32,9 @@ window.Frame_Event_Publisher = {
 
 	initialize: function(){
 		this.setup_ajax_handlers();
-		if (this.id.length == 0) this.id = "Unknown";
+        this.window = window;
+        if (typeof(this.window.id) != 'undefined' && this.window.id.length != null && this.window.id.length > 0) this.id = this.window.id;
+        else this.id == 'Unknown';
 		this.received = this.get_events(document.cookie);
 		this.initialized = true;
 		if (this.is_parent()) this.emit(this.received, true);
@@ -41,15 +47,26 @@ window.Frame_Event_Publisher = {
 
 	broadcast: function(events, child){
 		if (!this.initialized) events = this.initialize();
-		if (this.is_child()) {
-			if (arguments.length <= 1) child = window;
-			this.find_parent(child).register_child(child.Frame_Event_Publisher);
-			this.notify_parent(events, child);
-		}
-		else {
-			if (arguments.length == 0) events = this.received;
-			this.notify_children(events);
-		}
+
+        if (this.id == "Unknown") {
+            this.initialized = false;
+            setTimeout(function(){
+                this.broadcast(events, child);
+            }, 100);
+        }
+        // Broad cast events
+        else {
+            if (this.is_child()) {
+                if (arguments.length <= 1) child = window;
+                this.find_parent(child).register_child(child.Frame_Event_Publisher);
+                this.notify_parent(events, child);
+            }
+            else {
+                if (arguments.length == 0) events = this.received;
+                this.notify_children(events);
+            }
+        }
+
 
 	},
 
@@ -155,8 +172,8 @@ window.Frame_Event_Publisher = {
 			}
 		});
 	}
-}
+};
 
 jQuery(function($){
-	Frame_Event_Publisher.broadcast();
+    Frame_Event_Publisher.broadcast();
 });

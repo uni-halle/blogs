@@ -37,7 +37,18 @@ $thumb->resize(350,350);
 $resizedPreviewInfo = $thumb->newDimensions;
 $thumb->destruct();
 
-$preview_image		= NGGALLERY_URLPATH . 'nggshow.php?pid=' . $picture->pid . '&amp;width=350&amp;height=350';
+// Generate a url to a preview image
+$storage            = C_Gallery_Storage::get_instance();
+$thumbnail_manager  = C_Dynamic_Thumbnails_Manager::get_instance();
+$dynamic_size       = $thumbnail_manager->get_size_name(array(
+	'width'     =>  350,
+	'height'    =>  350,
+
+));
+//$preview_image		= NGGALLERY_URLPATH . 'nggshow.php?pid=' . $picture->pid . '&amp;width=350&amp;height=350';
+$preview_image      = $storage->get_image_url($id, $dynamic_size);
+
+
 $imageInfo			= @getimagesize($picture->imagePath);
 $rr = round($imageInfo[0] / $resizedPreviewInfo['newWidth'], 2);
 

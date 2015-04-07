@@ -179,6 +179,7 @@ class C_NextGen_Shortcode_Manager
 		if (is_array($params))
 		{
 			foreach ($params as $key => &$val) {
+                $val = trim($val, "„“‚‘«»“”");
 				$val = preg_replace("/^(&[^;]+;)?(.*)/", '\2', $val);
 				$val = preg_replace("/(&[^;]+;)?$/", '', $val);
 			}

@@ -6,28 +6,16 @@
 * @copyright 	Copyright 2008-2011
 */
 class nggMediaRss {
-	
-	/**
-	 * Function called by the wp_head action to output the RSS link for medias
-	 */
+
 	function add_mrss_alternate_link() {
-		echo "<link id='MediaRSS' rel='alternate' type='application/rss+xml' title='NextGEN Gallery RSS Feed' href='" . nggMediaRss::get_mrss_url() . "' />\n";		
+		echo "<link id='MediaRSS' rel='alternate' type='application/rss+xml' title='NextGEN Gallery RSS Feed' href='" . nggMediaRss::get_mrss_url() . "' />\n";
 	}
-	
-	/**
-	 * Add the javascript required to enable PicLens/CoolIris support 
-	 */
-	function add_piclens_javascript() {
-        if (is_ssl())
-            wp_enqueue_script( 'piclens', 'https://lite.piclens.com/current/piclens_optimized.js', array(), false, true);
-		else
-            wp_enqueue_script( 'piclens', 'http://lite.piclens.com/current/piclens_optimized.js', array(), false, true);
-	}
+
 	
 	/**
 	 * Get the URL of the general media RSS
 	 */
-	function get_mrss_url() {	
+	static function get_mrss_url() {
 		return NGGALLERY_URLPATH . 'xml/media-rss.php';
 	}
 	
@@ -84,8 +72,8 @@ class nggMediaRss {
 		$ngg_options['galSort'] = ($ngg_options['galSort']) ? $ngg_options['galSort'] : 'pid';
 		$ngg_options['galSortDir'] = ($ngg_options['galSortDir'] == 'DESC') ? 'DESC' : 'ASC';
 	
-		$title = stripslashes(nggGallery::i18n($gallery->title));
-		$description = stripslashes(nggGallery::i18n($gallery->galdesc));
+		$title = stripslashes(M_I18N::translate($gallery->title));
+		$description = stripslashes(M_I18N::translate($gallery->galdesc));
 		$link = nggMediaRss::get_permalink($gallery->pageid);
 		$prev_link = ( $prev_gallery != null) ? nggMediaRss::get_gallery_mrss_url($prev_gallery->gid, true) : '';
 		$next_link = ( $next_gallery != null) ? nggMediaRss::get_gallery_mrss_url($next_gallery->gid, true) : '';
@@ -101,7 +89,7 @@ class nggMediaRss {
 	 */
 	function get_album_mrss($album) {
 
-		$title = stripslashes(nggGallery::i18n($album->name));
+		$title = stripslashes(M_I18N::translate($album->name));
 		$description = '';
 		$link = nggMediaRss::get_permalink(0);
 		$prev_link = '';
@@ -178,7 +166,7 @@ class nggMediaRss {
 	/**
 	 * Get the XML <atom:link self> node
 	 */
-	function get_self_node($link, $indent = "\t\t") {
+	static function get_self_node($link, $indent = "\t\t") {
 		return $indent . "<atom:link rel='self' href='" . htmlspecialchars($link) . "' type='application/rss+xml' />\n";
 	}
 	
@@ -201,31 +189,36 @@ class nggMediaRss {
 	 *
 	 * @param $image The image object
 	 */
-	function get_image_mrss_node($image, $indent = "\t\t" ) {		
-		$ngg_options = nggGallery::get_option('ngg_options');
+	function get_image_mrss_node($image, $indent = "\t\t" )
+	{
+		$settings = C_NextGen_Settings::get_instance();
+		$storage  = C_Gallery_Storage::get_instance();
+
+		$tags = wp_get_object_terms($image->pid, 'ngg_tag', 'fields=names');
+		if (is_array($tags)) $tags = implode(', ', $tags);
 		
-		$tags = $image->get_tags();
-		$tag_names = '';
-		foreach ($tags as $tag) {
-			$tag_names .= ($tag_names=='' ? $tag->name : ', ' . $tag->name);
+		$title      = html_entity_decode(stripslashes($image->alttext));
+		$desc       = html_entity_decode(stripslashes($image->description));
+		$image_url  = $storage->get_image_url($image);
+		$thumb_url  = $storage->get_thumb_url($image);
+
+		$thumbwidth = 80;
+		$thumbheight = 80;
+		if (($dimensions = $storage->get_thumb_dimensions($image))) {
+			$thumbwidth  = $dimensions['width'];
+			$thumbheight = $dimensions['height'];
 		}
 		
-		$title = html_entity_decode(stripslashes($image->alttext));
-		$desc = html_entity_decode(stripslashes($image->description));
-		
-		$thumbwidth = $ngg_options['thumbwidth'];
-		$thumbheight = ($ngg_options['thumbfix'] ? $ngg_options['thumbheight'] : $thumbwidth); 	
-		
 		$out  = $indent . "<item>\n";
-		$out .= $indent . "\t<title><![CDATA[" . nggGallery::i18n($title, 'pic_' . $image->pid . '_alttext') . "]]></title>\n";
-		$out .= $indent . "\t<description><![CDATA[" . nggGallery::i18n($desc, 'pic_' . $image->pid . '_description') . "]]></description>\n";
-		$out .= $indent . "\t<link><![CDATA[" . $image->get_permalink() . "]]></link>\n";
+		$out .= $indent . "\t<title><![CDATA[" . M_I18N::translate($title, 'pic_' . $image->pid . '_alttext') . "]]></title>\n";
+		$out .= $indent . "\t<description><![CDATA[" . M_I18N::translate($desc, 'pic_' . $image->pid . '_description') . "]]></description>\n";
+		$out .= $indent . "\t<link><![CDATA[" . nextgen_esc_url($image_url) . "]]></link>\n";
         $out .= $indent . "\t<guid>image-id:" . $image->pid . "</guid>\n";
-		$out .= $indent . "\t<media:content url='" . nextgen_esc_url($image->imageURL) . "' medium='image' />\n";
-		$out .= $indent . "\t<media:title><![CDATA[" . nggGallery::i18n($title, 'pic_' . $image->pid . '_alttext') . "]]></media:title>\n";
-		$out .= $indent . "\t<media:description><![CDATA[" . nggGallery::i18n($desc, 'pic_' . $image->pid . '_description') . "]]></media:description>\n";
-		$out .= $indent . "\t<media:thumbnail url='" . nextgen_esc_url($image->thumbURL) . "' width='" . $thumbwidth . "' height='" . $thumbheight . "' />\n";
-		$out .= $indent . "\t<media:keywords><![CDATA[" . nggGallery::i18n($tag_names) . "]]></media:keywords>\n";
+		$out .= $indent . "\t<media:content url='" . nextgen_esc_url($image_url) . "' medium='image' />\n";
+		$out .= $indent . "\t<media:title><![CDATA[" . M_I18N::translate($title, 'pic_' . $image->pid . '_alttext') . "]]></media:title>\n";
+		$out .= $indent . "\t<media:description><![CDATA[" . M_I18N::translate($desc, 'pic_' . $image->pid . '_description') . "]]></media:description>\n";
+		$out .= $indent . "\t<media:thumbnail url='" . nextgen_esc_url($thumb_url) . "' width='" . $thumbwidth . "' height='" . $thumbheight . "' />\n";
+		$out .= $indent . "\t<media:keywords><![CDATA[" . esc_html(M_I18N::translate($tags)) . "]]></media:keywords>\n";
 		$out .= $indent . "\t<media:copyright><![CDATA[Copyright (c) " . get_option("blogname") . " (" . site_url() . ")]]></media:copyright>\n";
 		$out .= $indent . "</item>\n";
 

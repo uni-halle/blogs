@@ -250,12 +250,12 @@ if ($getorder == 'asc') { $sortordericon = 'asc'; } else { $sortordericon = 'des
 <table cellspacing="0" style="width:auto;margin-top:20px;" class="wp-list-table widefat fixed bookmarks">
 <tr><td>
 <p><b><?php _e('Bulk actions for selected layers','lmm') ?></b> <a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ; ?>"><img src="<?php  echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" width="70" height="15" /></a></p>
-<p><input type="checkbox" id="duplicateselected" name="duplicateselected" disabled="disabled" /> <label for="duplicateselected"><?php _e('duplicate layer only','lmm') ?></label></p>
-<p><input type="checkbox" id="deleteselected" name="deleteselected" disabled="disabled" /> <label for="deleteselected"><?php _e('delete layer and assigned markers','lmm') ?></label></p>
+<p><input type="radio" id="duplicateselected" name="bulkactions-layers" value="duplicateselected" disabled="disabled" /> <label for="duplicateselected"><?php _e('duplicate layer only','lmm') ?></label></p>
+<p><input type="radio" id="deleteselected" name="bulkactions-layers" value="deleteselected" disabled="disabled" /> <label for="deleteselected"><?php _e('delete layer and assigned markers','lmm') ?></label></p>
 <?php 
 $layerlist = $wpdb->get_results('SELECT * FROM `'.$table_name_layers.'` WHERE `id` > 0 AND `multi_layer_map` = 0', ARRAY_A); 
 ?>
-<input type="checkbox" id="deleteassignselected" name="deleteassignselected" disabled="disabled" /> <label for="deleteassignselected"><?php _e('delete layer and assign markers to the following layer:','lmm') ?></label>
+<input type="radio" id="deleteassignselected" name="bulkactions-layers" value="deleteassignselected" disabled="disabled" /> <label for="deleteassignselected"><?php _e('delete layer and assign markers to the following layer:','lmm') ?></label>
 <select id="layer" name="layer">
 <option value="0"><?php _e('unassigned','lmm') ?></option>
 <?php

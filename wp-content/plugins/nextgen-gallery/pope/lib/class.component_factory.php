@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('POPE_VERSION')) { die('Use autoload.php'); }
+
 /**
  * A factory for hatching (instantiating) components
  */

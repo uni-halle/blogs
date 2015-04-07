@@ -27,9 +27,9 @@
 	<h2 class="post-title heading-font"><?php the_title(); ?></h2>
 
 	<?php if ( wptouch_should_load_rtl() ) { ?>
-		<i class="arrow icon-angle-left"></i>
+		<i class="arrow wptouch-icon-angle-left"></i>
 	<?php } else { ?>
-		<i class="arrow icon-angle-right"></i>
+		<i class="arrow wptouch-icon-angle-right"></i>
 	<?php } ?>
 	<span class="bottom-border"><!--css border--></span>
 </a>

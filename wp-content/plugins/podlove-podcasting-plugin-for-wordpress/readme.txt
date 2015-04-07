@@ -1,9 +1,9 @@
 === Podlove Podcast Publisher ===
 Contributors: eteubert, chemiker
-Donate link: http://flattr.com/thing/728463/Podlove-Podcasting-Plugin-for-WordPress
+Donate link: http://podlove.org/donations/
 Tags: podlove, podcast, publishing, blubrry, podpress, powerpress, feed, audio, video, player
 Requires at least: 3.0
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: trunk
 License: MIT
 
@@ -13,7 +13,7 @@ The one and only next generation podcast publishing system. Seriously. It's magi
 
 The Podlove Podcast Publisher is a workflow-oriented solution for serious podcasters that want to save time and get full control over their Podcast publishing process, their feeds and the integrity of their publication.
 
-The Publisher makes it easy to create highly expressive, efficient and super compatible podcast feeds with fine grained control over client behaviour (e.g. GUID control to replace faulty episodes and fore clients to reload) supporting all important meta data.
+The Publisher makes it easy to create highly expressive, efficient and super compatible podcast feeds with fine grained control over client behavior (e.g. GUID control to replace faulty episodes and for clients to reload) supporting all important meta data.
 
 The Publisher also makes multi-format publishing - embracing all modern and legacy audio and video codecs - a snap. By adopting simple file name conventions, the plugin allows the podcaster to provide individual feeds for certain use cases or audiences without adding work for the podcaster during the publishing process.
 
@@ -30,6 +30,14 @@ Development of the plugin is an open process. The current version is available o
 https://github.com/podlove/podlove-publisher
 
 Feel free to contribute and to fix errors or send improvements via github.
+
+Requires PHP 5.4+
+
+* Podlove Project: http://podlove.org/
+* Podlove Community: https://community.podlove.org/
+* Documentation: http://docs.podlove.org/
+* Bug Tracker: https://github.com/podlove/podlove-publisher/issues
+* Donate: http://podlove.org/donations/
 
 == Frequently Asked Questions ==
 
@@ -75,6 +83,10 @@ If you haven't already, get the official Flattr plugin here:
 
 Find the setting Flattr > Advanced Settings > Flattrable content > Post Types and check "podcast". Save changes. There is no step 3 ;)
 
+---
+
+This product includes GeoLite2 data created by MaxMind, available from http://www.maxmind.com.
+
 == Installation ==
 
 1. Download the Podlove Publisher Plugin to your desktop.
@@ -83,7 +95,131 @@ Find the setting Flattr > Advanced Settings > Flattrable content > Post Types an
 1. Go to Plugins screen and find the newly uploaded Plugin in the list.
 1. Click Activate Plugin to activate it.
 
+== Screenshots ==
+1. Custom episode post type separates media from your blog content.
+2. Download analytics provide you with all the data you ever wanted.
+3. The Publisher automatically checks the health of your media files.
+4. The mighty template engine gives you full control over the episode presentation.
+5. Includes the Podlove Subscribe Button, the easiest way for listeners to subscribe to your podcast.
+6. Includes the Podlove Web Player. One more thing: you can manage and present all contributors easily.
+
 == Changelog ==
+
+= 2.0.5 =
+
+* fix: template editor cursor position in Safari (by changing to a different theme that doesn't use bold styles)
+* fix: double escaped feed enclosure URLs when using non-pretty-permalinks
+
+= 2.0.4 =
+
+* fix: missing flattr attribute for contributors
+* fix: subscribe button description is properly wrapped in p-tags
+* fix: faulty valid file if check returns "unreachable" but includes a Content-Length header
+* fix: more thoughtful handling of ETags when validating files prevents failing updates
+* fix: "NaN" analytics should display properly now
+* fix: off-by-one display in analytics
+* fix: don't HTML-encode quotes in episode title/subtitle/summary since it leads to invalid feeds
+* add trakt.tv to the services list
+* add support for RSS channel image tag
+
+= 2.0.3 =
+
+*Allow Non-Admins to access Analytics*
+
+Analytics have a new capability called "podlove_read_analytics".
+You can provide access to, for example, editors, using the following code snippet:
+
+    function podsnip_add_capability() {
+        // default roles: editor, author, contributor, subscriber
+        $role = get_role('editor');
+        $role->add_cap('podlove_read_analytics');
+    }
+    add_action( 'admin_init', 'podsnip_add_capability');
+
+You can add snippets using the "Code Snippets" plugin.
+
+*Bugfixes*
+
+* fix: use proper HTTP method to create/update/delete templates
+* fix: don't remove URLs from chapter marks when saving
+* fix: optional episode form elements can be saved
+
+= 2.0.2 =
+
+* fix: include missing YAML library
+* fix: namespacing issue in uninstall procedure
+* fix: debug tracking example file must be downloadable
+
+= 2.0.1 =
+
+**Bugfixes**
+
+* fix: properly sanitize episode form data (fixes "A wild Backslash appears")
+
+**Enhancements**
+
+* format download numbers in episode list
+* remove check for PHP setting `allow_url_fopen` because we don't rely on it any more
+
+= 2.0.0 =
+
+**Download Analytics**
+
+You want to know more about who listens to your podcast? We got you covered.
+
+We spent months of research and prototyping to find a reliable way of tracking. We are confident that our approach works and produces trustworthy data. If you have not done so yet, you have to activate tracking in _Expert Settings -> Tracking_.
+
+If you are interested in all the technical details, head over to http://docs.podlove.org/guides/download-analytics/.
+
+But what you are seeing now is just the beginning. We have a plethora of ideas on how to give you even more insight into the data available. Stay tuned!
+
+We are curious what you think about the current analytics interface? What do you love? What do you hate? What do you miss? Head over to our new community site and share your thoughts: https://community.podlove.org/
+
+**Bugfixes**
+
+* fix: use `home_url()` instead of `site_url()` to generate tracking URLs
+* fix: tracking export does not get stuck forever when it fails once
+* fix: disappearing podcast description settings
+* fix: add function to repair button that removes duplicate episode entries
+* fix: template editor does not forget changes if you reselect a template after changing it
+* fix: improve uninstall routine
+* fix: wrong month when choosing Auphonic productions
+* fix: deactivate Jetpack's OpenGraph when the Publisher OpenGraph module is active
+
+**Other Changes**
+
+* add services: miiverse, prezi
+* add missing services via repair button
+* Bitlove: add `<bitlove:guid>` to RSS feed and use this to identify files
+* moved episode GUID regeneration into separate metabox because it's rarely required
+* always check media files when opening an episode edit page
+* move podcast cover art from media tab to description tab
+
+* Improved feed settings
+  * check for missing and duplicate slugs
+  * check for missing asset assignment
+  * show prominent warning for detected problems
+  * provide contextual help to better understand what's required and why
+
+**Removed Functionality**
+
+* removed module "Auphonic Production Data"
+* removed the following shortcodes (use [Template Tags](http://docs.podlove.org/reference/template-tags/) instead)
+  * `[podlove-episode-subtitle]`
+  * `[podlove-episode-summary]`
+  * `[podlove-episode-slug]`
+  * `[podlove-episode-duration]`
+  * `[podlove-episode-chapters]`
+  * `[podlove-episode field="..."]`
+  * `[podlove-podcast field="..."]`
+  * `[podlove-show field="..."]`
+  * `[podlove-podcast-license]`
+  * `[podlove-episode-license]`
+  * `[podlove-contributors]` (use `[podlove-episode-contributor-list]` instead)
+  * `[podlove-contributor-list]` (use `[podlove-episode-contributor-list]` instead)
+* removed the following template tags
+  * `{{ contributor.publicemail }}` (use social module instead)
+  * `{{ license.html }}` (use `{% include '@core/license.twig' %}` instead)
 
 = 1.12.1 =
 
@@ -1086,6 +1222,10 @@ A similar concept might return once we tackle stuff like seasons.
 * Enhancement: Remove pagination from formats settings page
 
 == Upgrade Notice ==
+
+= 2.0.0 =
+
+Upgrade only if you are on PHP 5.4 or higher.
 
 = 1.2.0-alpha =
 Before you update, delete all shows but one to ensure your important data stays. Watch out: Your feed URLs will change!

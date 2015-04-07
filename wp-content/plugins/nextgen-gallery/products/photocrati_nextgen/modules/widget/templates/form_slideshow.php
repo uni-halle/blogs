@@ -29,7 +29,7 @@
                 echo '<option value="' . $table->gid . '" ';
                 if ($table->gid == $instance['galleryid'])
                     echo 'selected="selected" ';
-                echo '>' . $table->name . '</option>';
+                echo '>' . $table->title . '</option>';
             }
         } ?>
     </select>

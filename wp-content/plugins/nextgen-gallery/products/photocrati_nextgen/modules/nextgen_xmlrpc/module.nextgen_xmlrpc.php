@@ -120,7 +120,7 @@ class M_NextGen_XmlRpc extends C_Base_Module
 			$gallery->gid = (string) $gallery->gid;
 
 			// Set other gallery properties
-			$image_counter = array_pop($image_mapper->select('DISTINCT COUNT(*) as counter')->where(array("galleryid = %d", $gallery->gid))->run_query(FALSE, TRUE));
+			$image_counter = array_pop($image_mapper->select('DISTINCT COUNT(*) as counter')->where(array("galleryid = %d", $gallery->gid))->run_query(FALSE, FALSE, TRUE));
 			$gallery->counter = $image_counter->counter;
 			$gallery->abspath = $storage->get_gallery_abspath($gallery);
 		}
@@ -254,7 +254,7 @@ class M_NextGen_XmlRpc extends C_Base_Module
 
 					// Upload the image
 					$storage	= C_Gallery_Storage::get_instance();
-                    $image		= $storage->upload_base64_image($gallery, $data['bits'], $data['name'], $data['image_id'], $data['override']);
+					$image		= $storage->upload_base64_image($gallery, $data['bits'], $data['name'], $data['image_id'], $data['override']);
 					if ($image) {
 						$storage = C_Gallery_Storage::get_instance();
 						$image->imageURL	= $storage->get_image_url($image);

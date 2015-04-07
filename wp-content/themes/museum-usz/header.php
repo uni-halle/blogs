@@ -1,7 +1,7 @@
 <?php
 
 /* load config to display the modifications accordingly */
-include( AP_CORE_OPTIONS );
+require( AP_CORE_OPTIONS );
 
 /* load parent's header file and add customization */
 require(dirname(__FILE__).'/../museum-core/header.php');

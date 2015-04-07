@@ -1,7 +1,7 @@
 <tr>
     <td>
         <label for='<?php echo esc_attr($display_type_name); ?>_link'>
-            <?php echo_h($link_label); ?>
+            <?php esc_html_e($link_label); ?>
         </label>
     </td>
     <td>

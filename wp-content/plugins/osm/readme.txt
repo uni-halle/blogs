@@ -1,9 +1,9 @@
 === OSM - OpenStreetMap ===
 Contributors: MiKa
-Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, Open Layers, Open Street Map, CloudMade, marker, POI, geocode, geotagging, location, Route, Tracks, WMS, OpenWeatherMap, Weather, OpenSeaMap, stamen, basemap, ssl, exif, meta, widget
+Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, Open Layers, Open Street Map, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, OpenWeatherMap, Weather, OpenSeaMap, stamen, basemap, exif, meta, widget
 Requires at least: 2.8
-Tested up to: 4.1
-Stable tag: 2.9.3
+Tested up to: 4.2
+Stable tag: 3.1.1
 
 Customize maps in your post, pages and widgets. Add geotag to your blog and site. Use GPX, KML, CSV, TXT ... 
 
@@ -29,13 +29,14 @@ Features of the OSM-plugin:
 * uses OpenLayers Library
 * SSL connection (https)
 
-Languages:
+Languages - thanks to:
 
 * English
 * Deutsch
 * Japanese [by Sykane]
 * French [by Tounoki]
 * Russian [by Вячеслав Стренадко/Vyacheslav Strenadko]
+* Italian [by Andrea Giacomelli]
 
 Licenses of the maps:
 
@@ -45,7 +46,6 @@ Licenses of the maps:
 * Stamen Maps: [Stamen License](http://maps.stamen.com)
 * BaseMap:  [BaseMap License](http://basemap.at)
 * Ext Maps: Depends on the map you are including - check it before including it!
-* Icons: [Map Icons Collection](http://mapicons.nicolasmollet.com/about/license/)  
 
 == Installation ==
 
@@ -69,6 +69,22 @@ There must be not format tag (like href ...) in the shortcode.
 
 
 == Changelog ==
+= 3.1 =
+* NEW: Marker in Map with OpenLayers 3 library
+* FIX: Security update
+* FIX: Replace routing ORS by OSRM
+= 3.1 =
+* NEW: replaced CC-By map icon collectin with CC0 map icons
+* NEW: widget for geotagged posts / pages with OpenLayers 3
+* NEW: gpx_file_list to show multiple kml files in one map 
+= 3.0 =
+* NEW: Included OpenLayers 3
+* NEW: New UI at add post / add page in metabox
+= 2.9.4 =
+* NEW: directly set geotag at edit post
+* NEW: icon added
+* NEW: italian translation
+* FIX: map image style
 = 2.9.3 =
 * NEW: icons added
 * NEW: icon preview at shortcode generator when you set a marker

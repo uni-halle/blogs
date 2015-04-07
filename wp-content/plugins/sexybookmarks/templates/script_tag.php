@@ -1,6 +1,8 @@
 <!-- This site is powered by Shareaholic - https://shareaholic.com -->
 <script type='text/javascript' data-cfasync='false'>
   //<![CDATA[
+    _SHR_SETTINGS = <?php echo json_encode($base_settings); ?>;
+
     (function() {
       var shr = document.createElement('script');
       shr.setAttribute('data-cfasync', 'false');

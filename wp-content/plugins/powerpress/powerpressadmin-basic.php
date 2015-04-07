@@ -140,7 +140,7 @@ jQuery(document).ready(function($) {
 <div id="powerpress_admin_header">
 <h2><?php echo __('Blubrry PowerPress Settings', 'powerpress'); ?></h2> 
 	<span class="powerpress-mode"><?php echo __('Advanced Mode', 'powerpress'); ?>
-		&nbsp; <a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_basic.php&amp;mode=simple"); ?>" id="powerpress_advanced_mode_button" class="button-primary"><?php echo __('Switch to simplified Default Mode', 'powerpress'); ?></a>
+		&nbsp; <a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_basic.php&amp;mode=simple"); ?>" id="powerpress_advanced_mode_button" class="button-primary"><?php echo __('Switch to Simple Mode', 'powerpress'); ?></a>
 	</span>
 </div>
 
@@ -1082,7 +1082,10 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 <td>
 	<select name="General[player_aggressive]" class="bpp_input_med">
 <?php
-$linkoptions = array(0=>__('No, everything is working', 'powerpress'), 1=>__('Yes, please try to fix', 'powerpress'), 2=>__('Yes, alternative fix', 'powerpress') );
+$linkoptions = array(0=>__('No, everything is working', 'powerpress'),
+		1=>__('Yes, please try to fix', 'powerpress'),
+		2=>__('Yes, alternative fix', 'powerpress'),
+		3=>__('Yes, excluding excerpts', 'powerpress') );
 	
 while( list($value,$desc) = each($linkoptions) )
 	echo "\t<option value=\"$value\"". ($General['player_aggressive']==$value?' selected':''). ">$desc</option>\n";

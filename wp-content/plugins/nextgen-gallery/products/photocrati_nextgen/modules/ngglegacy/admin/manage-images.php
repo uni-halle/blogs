@@ -52,7 +52,7 @@ function nggallery_picturelist($controller) {
 		$image_mapper = C_Image_Mapper::get_instance();
 
 		$total_number_of_images = count($image_mapper->select($image_mapper->get_primary_key_column())->
-			where(array("galleryid = %d", $act_gid))->run_query(FALSE, TRUE));
+			where(array("galleryid = %d", $act_gid))->run_query(FALSE, FALSE, TRUE));
 
 		$picturelist = $image_mapper->select()->
 			where(array("galleryid = %d", $act_gid))->
@@ -263,7 +263,6 @@ jQuery(document).ready( function($) {
 //-->
 </script>
 <div class="wrap">
-<?php //include('templates/social_media_buttons.php'); ?>
 <?php screen_icon( 'nextgen-gallery' ); ?>
 <?php if ($is_search) :?>
 <h2><?php printf( __('Search results for &#8220;%s&#8221;', 'nggallery'), esc_html( get_search_query() ) ); ?></h2>
@@ -283,7 +282,7 @@ jQuery(document).ready( function($) {
 <input type="hidden" name="page" value="manage-images" />
 
 <?php else :?>
-<h2><?php echo _n( 'Gallery', 'Galleries', 1, 'nggallery' ); ?> : <?php echo esc_html ( nggGallery::i18n($gallery->title) ); ?></h2>
+<h2><?php echo _n( 'Gallery', 'Galleries', 1, 'nggallery' ); ?> : <?php echo esc_html ( M_I18N::translate($gallery->title) ); ?></h2>
 
 <br style="clear: both;" />
 
@@ -292,10 +291,11 @@ jQuery(document).ready( function($) {
 <input type="hidden" name="page" value="manage-images" />
 
 <?php if ( nggGallery::current_user_can( 'NextGEN Edit gallery options' )) : ?>
-<div id="poststuff">
+<div id="poststuff" class="meta-box-sortables">
 	<?php wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false ); ?>
 	<div id="gallerydiv" class="postbox <?php echo postbox_classes('gallerydiv', 'ngg-manage-gallery'); ?>" >
-		<h3><?php _e('Gallery settings', 'nggallery') ?><small> (<?php _e('Click here for more settings', 'nggallery') ?>)</small></h3>
+        <div class="handlediv" title="<?php esc_attr_e('Click to toggle'); ?>"><br/></div>
+		<h3 class="hndl"><span><?php _e('Gallery settings', 'nggallery') ?><small> (<?php _e('Click here for more settings', 'nggallery') ?>)</small></span></h3>
 		<div class="inside">
 			<?php $controller->render_gallery_fields(); ?>
 
@@ -355,11 +355,15 @@ if($picturelist) {
 
 	$thumbsize 	= '';
 	$storage = C_Gallery_Storage::get_instance();
+    $gallery_mapper = C_Gallery_Mapper::get_instance();
 
 	if ($ngg->options['thumbfix'])
 		$thumbsize = 'width="' . $ngg->options['thumbwidth'] . '" height="' . $ngg->options['thumbheight'] . '"';
 
 	foreach($picturelist as $picture) {
+
+        if (empty($gallery) && $is_search)
+            $gallery = $gallery_mapper->find($picture->galleryid, FALSE);
 
 		//for search result we need to check the capatibiliy
 		if ( !nggAdmin::can_manage_this_gallery($gallery->author) && $is_search )

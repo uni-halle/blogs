@@ -1,10 +1,8 @@
 <?php
-define('__EXTOBJ_STATIC__', '__STATICALLY_CALLED__');
-define('__EXTOBJ_NO_INIT__', '__NO_INIT__');
 
-if (!defined('EXTENSIBLE_OBJECT_ENFORCE_INTERFACES')) {
-    define('EXTENSIBLE_OBJECT_ENFORCE_INTERFACES', TRUE);
-}
+include_once('class.pope_cache.php');
+
+define('__EXTOBJ_NO_INIT__', '__NO_INIT__');
 
 
 /**
@@ -78,29 +76,16 @@ class PopeHelpers
  */
 class ExtensibleObject extends PopeHelpers
 {
-    const METHOD_PROPERTY_RUN='run';
-    const METHOD_PROPERTY_RUN_POST_HOOKS='run_post_hooks';
-    const METHOD_PROPERTY_RUN_PRE_HOOKS='run_pre_hooks';
-    const METHOD_PROPERTY_RETURN_VALUE='return_value';
+	static $enforce_interfaces=TRUE;
 
-    var  $_mixins = array();
+    var  $_mixins 			= array();
     var  $_mixin_priorities = array();
-    var  $_pre_hooks = array();
-    var  $_global_pre_hooks = array();
-    var  $_global_post_hooks= array();
-    var  $_post_hooks = array();
     var  $_method_map_cache = array();
-    var  $_interfaces = array();
-    var  $_overrides = array();
-    var  $_aliases = array();
-    var  $_method_properties = array();
-    var  $_throw_error = TRUE;
+    var  $_disabled_map     = array();
+    var  $_interfaces		= array();
+    var  $_throw_error 		= TRUE;
     var  $_wrapped_instance = FALSE;
-	var	 $object = NULL;
-	var  $_disabled_pre_hooks = array();
-	var  $_disabled_post_hooks = array();
-	var  $_disabled_mixins = array();
-
+    var  $object            = NULL;
 
     /**
      * Defines a new ExtensibleObject. Any subclass should call this constructor.
@@ -111,142 +96,30 @@ class ExtensibleObject extends PopeHelpers
      */
     function __construct()
     {
-		// Mixins access their parent class by accessing $this->object.
-		// Sometimes users mistakenly use $this->object within the parent object
-		// itself. As it's becoming a common mistake, we define a $this->object
-		// property which points to the current instance (itself)
-		$this->object = $this;
+        // TODO This can be removed in the future. The Photocrati Theme currently requires this.
+        $this->object = $this;
 
-        $args = func_get_args();
-        $define_instance = TRUE;
-        $init_instance = TRUE;
+		$args = func_get_args();
 
-        // The first argument could be a flag to ExtensibleObject
-        // which indicates that only static-like methods will be called
-        if (count($args) >= 1) {
-            $first_arg = $args[0];
-            if (is_string($first_arg)) {
-            	switch ($first_arg) {
-            		case __EXTOBJ_STATIC__:
-            		{
-		              $define_instance = FALSE;
-		              $init_instance = FALSE;
-
-		              if (method_exists($this, 'define_class')) {
-						  $this->call_callback($this, 'define_class', $args);
-		              }
-		              elseif (method_exists($this, 'define_static')) {
-						  $this->call_callback($this, 'define_static', $args);
-		              }
-
-					  break;
-            		}
-            		case __EXTOBJ_NO_INIT__:
-            		{
-		              $init_instance = FALSE;
-
-            			break;
-            		}
-            	}
-            }
-        }
-
-        // Are we to define instance methods?
-        if ($define_instance)
-        {
-            if (method_exists($this, 'define_instance'))
-            {
-                $reflection = new ReflectionMethod($this, 'define_instance');
-                $reflection->invokeArgs($this, $args);
-                // call_user_func_array(array($this, 'define_instance'), $args);
-            }
-            elseif (method_exists($this, 'define')) {
-                $reflection = new ReflectionMethod($this, 'define');
-                $reflection->invokeArgs($this, $args);
-                // call_user_func_array(array($this, 'define'), $args);
-            }
-
-            if (EXTENSIBLE_OBJECT_ENFORCE_INTERFACES) $this->_enforce_interface_contracts();
-
-			if ($init_instance)
-            {
-                // Initialize the state of the object
-                if (method_exists($this, 'initialize')) {
-                    $reflection = new ReflectionMethod($this, 'initialize');
-                    $reflection->invokeArgs($this, $args);
-                    // call_user_func_array(array($this, 'initialize'), $args);
-                }
-            }
-        }
-    }
-
-	/**
-	 * Disabled prehooks for a particular method
-	 * @param string $method
-	 */
-	function disable_pre_hooks($method)
-	{
-		$this->_disabled_pre_hooks[] = $method;
-		return $this;
-	}
-
-
-	/**
-	 * Enable prehooks for a particular method
-	 * @param string $method
-	 */
-	function enable_pre_hooks($method)
-	{
-		$index = array_search($method, $this->_disabled_pre_hooks);
-		if ($index !== FALSE) {
-			unset($this->_disabled_pre_hooks[$index]);
+        // Define the instance
+		if (method_exists($this, 'define_instance'))
+		{
+			$reflection = new ReflectionMethod($this, 'define_instance');
+			$reflection->invokeArgs($this, $args);
 		}
-		return $this;
-	}
-
-	/**
-	 * Disabled posthooks for a particular method
-	 * @param string $method
-	 */
-	function disable_post_hooks($method)
-	{
-		$this->_disabled_post_hooks[] = $method;
-		return $this;
-	}
-
-
-	/**
-	 * Enable post-hooks for a particular method
-	 * @param string $method
-	 */
-	function enable_post_hooks($method)
-	{
-		$index = array_search($method, $this->_disabled_post_hooks);
-		if ($index !== FALSE) {
-			unset($this->_disabled_post_hooks[$index]);
+		elseif (method_exists($this, 'define')) {
+			$reflection = new ReflectionMethod($this, 'define');
+			$reflection->invokeArgs($this, $args);
 		}
-		return $this;
-	}
+		if (self::$enforce_interfaces) $this->_enforce_interface_contracts();
 
-	/**
-	 * Determines if post hooks are enabled for a particular method
-	 * @param string $method
-	 * @return bool
-	 */
-	function are_post_hooks_enabled($method)
-	{
-		return !empty($this->_post_hooks) && (!in_array($method, $this->_disabled_post_hooks));
-	}
-
-
-	/**
-	 * Determines if pre hooks are enabled for a particular method
-	 * @param string $method
-	 * @return bool
-	 */
-	function are_pre_hooks_enabled($method)
-	{
-		return !empty($this->_pre_hooks) && (!in_array($method, $this->_disabled_pre_hooks));
+		if (!isset($args[0]) || $args[0] != __EXTOBJ_NO_INIT__) {
+			// Initialize the state of the object
+			if (method_exists($this, 'initialize')) {
+				$reflection = new ReflectionMethod($this, 'initialize');
+				$reflection->invokeArgs($this, $args);
+			}
+		}
 	}
 
 
@@ -264,12 +137,13 @@ class ExtensibleObject extends PopeHelpers
 			// we might as well wait till the method is called to
 			// save memory. Instead, the _call() method calls the
 			// _instantiate_mixin() method below.
-			$this->_mixins[$class] = FALSE; // new $class();
+			$this->_mixins[$class] = NULL; // new $class();
 			array_unshift($this->_mixin_priorities, $class);
+
+			// Instantiate the mixin immediately, if requested
+			if ($instantiate) $this->_instantiate_mixin($class);
 			$this->_flush_cache();
 
-			// Should we instantiate the object now?
-			if ($instantiate) $this->_instantiate_mixin($class);
 		}
 		else $retval = FALSE;
 
@@ -284,7 +158,7 @@ class ExtensibleObject extends PopeHelpers
 	 */
 	function has_mixin($klass)
 	{
-		return (isset($this->_mixins[$klass]));
+		return array_key_exists($klass, $this->_mixins);
 	}
 
 
@@ -293,18 +167,18 @@ class ExtensibleObject extends PopeHelpers
      * @param string $class
      * @return mixed
      */
-    function _instantiate_mixin($class)
+    function &_instantiate_mixin($class)
     {
         $retval = FALSE;
-        if ($this->_mixins[$class])
+        if (isset($this->_mixins[$class]))
             $retval = $this->_mixins[$class];
         else {
             $obj= new $class();
-            $obj->object = &$this;
+            $obj->object = $this;
             $retval = $this->_mixins[$class] = &$obj;
             if (method_exists($obj, 'initialize')) $obj->initialize();
+			unset($obj->object);
         }
-
 
         return $retval;
     }
@@ -319,50 +193,14 @@ class ExtensibleObject extends PopeHelpers
     {
         unset($this->_mixins[$class]);
         $index = array_search($class, $this->_mixin_priorities);
-        if ($index !== FALSE) {
-            unset($this->_mixin_priorities[$index]);
-			foreach ($this->_disabled_mixins as $method => $disabled_mixins) {
-				$index = array_search($class, $disabled_mixins);
-				if (is_int($index)) unset($this->_disabled_mixins[$method][$index]);
-			}
-            $this->_flush_cache();
-        }
-
+		unset($this->_mixin_priorities[$index]);
+		$this->_flush_cache();
     }
 
 
     function remove_mixin($class)
     {
         $this->del_mixin($class);
-    }
-
-
-    /**
-     * Replaces an extension methods with that of another class.
-     * @param string $method
-     * @param string $class
-     * @param string $new_method
-     */
-    function replace_method($method, $class, $new_method=FALSE)
-    {
-        if (!$new_method) $new_method = $method;
-        $this->_overrides[$method] = $class;
-        $this->add_pre_hook($method, "replacement_{$method}_{$class}_{$new_method}", $class, $new_method);
-        $this->_flush_cache();
-
-    }
-
-
-    /**
-     * Restores a method that was replaced by a former call to replace_method()
-     * @param string $method
-     */
-    function restore_method($method)
-    {
-        $class = $this->_overrides[$method];
-        unset($this->_overrides[$method]);
-        $this->del_pre_hook($method, $class);
-        $this->_flush_cache();
     }
 
 
@@ -376,19 +214,21 @@ class ExtensibleObject extends PopeHelpers
 
 		// If it's cached, then we've got it easy
 		if ($this->is_cached($method)) {
-
-			$object = $this->_method_map_cache[$method];
-			$retval = get_class($object);
+			$klass = $this->_method_map_cache[$method];
+			return $return_obj ? $this->_instantiate_mixin($klass) : $klass;
 		}
 
 		// Otherwise, we have to look it up
 		else {
-            foreach ($this->get_mixin_priorities($method) as $klass) {
-                $object = $this->_instantiate_mixin($klass);
-                if (method_exists($object, $method)) {
-                    $retval = $return_obj ? $object : get_class($object);
-                    $this->_cache_method($object, $method);
-                    break;
+			foreach ($this->_mixin_priorities as $class_name) {
+				if (method_exists($class_name, $method) && !$this->is_mixin_disabled_for($method, $class_name)) {
+					$object = $this->_instantiate_mixin($class_name);
+					$this->_cache_method($class_name, $method);
+					$retval =  $return_obj ? $object : $class_name;
+					break;
+				}
+                elseif (!class_exists($class_name)) {
+                    throw new RuntimeException("{$class_name} does not exist.");
                 }
             }
 		}
@@ -396,6 +236,37 @@ class ExtensibleObject extends PopeHelpers
 		return $retval;
 	}
 
+    function is_mixin_disabled_for($method, $mixin_klass)
+    {
+        $retval = FALSE;
+
+        if (isset($this->_disabled_map[$method])) {
+            $retval = in_array($mixin_klass, $this->_disabled_map[$method]);
+        }
+
+        return $retval;
+    }
+
+    function disable_mixin_for($method, $mixin_klass)
+    {
+        if (!isset($this->_disabled_map[$method])) {
+            $this->_disabled_map[$method] = array($mixin_klass);
+        }
+        else if (!in_array($mixin_klass, $this->_disabled_map[$method])) {
+            array_push($this->_disabled_map[$method], $mixin_klass);
+        }
+
+        unset($this->_method_map_cache[$method]);
+    }
+
+    function enable_mixin_for($method, $mixin_klass)
+    {
+        if (isset($this->_disabled_map[$method])) {
+            if (($index = array_search($mixin_klass, $this->_disabled_map[$method])) !== FALSE) {
+                unset($this->_disabled_map[$method][$index]);
+            }
+        }
+    }
 
     /**
      * When an ExtensibleObject is instantiated, it checks whether all
@@ -430,142 +301,6 @@ class ExtensibleObject extends PopeHelpers
         $this->_interfaces[] = $interface;
     }
 
-
-    /**
-     * Adds a hook that gets executed before every method call
-     * @param string $name
-     * @param string $class
-     * @param string $hook_method
-     */
-    function add_global_pre_hook($name, $class, $hook_method)
-    {
-        $this->add_pre_hook('*', $name, $class, $hook_method);
-    }
-
-    /**
-     * Adds a hook that gets executed after every method call
-     *
-     * @param string $name
-     * @param string $class
-     * @param string $hook_method
-     */
-    function add_global_post_hook($name, $class, $hook_method)
-    {
-        $this->add_pre_hook('*', $name, $class, $hook_method);
-    }
-
-
-    /**
-     * Adds a hook that will get executed before a particular method call
-     * @param string $method
-     * @param string $name
-     * @param string $class
-     * @param string $hook_method
-     */
-    function add_pre_hook($method, $name, $class, $hook_method=FALSE)
-    {
-        if (!$hook_method) $hook_method = $method;
-
-        // Is this a global pre hook?
-        if ($method == '*') {
-            $this->_global_pre_hooks[$name] = array(
-                new $class,
-                $hook_method
-            );
-        }
-
-        // This is a method-specific pre hook
-        else {
-            if (!isset($this->_pre_hooks[$method])) {
-                $this->_pre_hooks[$method] = array();
-            }
-
-            $this->_pre_hooks[$method][$name] = array(
-                new $class,
-                $hook_method
-            );
-        }
-    }
-
-
-    /**
-     * Adds a hook to be called after a particular method call
-     * @param string $method
-     * @param string $hook_name
-     * @param string $class
-     * @param string $hook_method
-     */
-    function add_post_hook($method, $hook_name, $class, $hook_method=FALSE)
-    {
-        // Is this a global post hook?
-        if ($method == '*') {
-            $this->_post_hooks[$hook_name] = array(
-              new $class,
-                $hook_method
-            );
-        }
-
-        // This is a method-specific post hook
-        else {
-            if (!$hook_method) $hook_method = $method;
-
-            if (!isset($this->_post_hooks[$method])) {
-                $this->_post_hooks[$method] = array();
-            }
-
-            $this->_post_hooks[$method][$hook_name] = array(
-                new $class,
-                $hook_method
-            );
-        }
-    }
-
-
-    /**
-     * Deletes a hook that's executed before the specified method
-     * @param string $method
-     * @param string $name
-     */
-    function del_pre_hook($method, $name)
-    {
-
-        unset($this->_pre_hooks[$method][$name]);
-    }
-
-    /**
-     * Deletes all pre hooks registered
-    **/
-    function del_pre_hooks($method=FALSE)
-    {
-        if (!$method)
-            $this->_pre_hooks = array();
-        else
-            unset($this->_pre_hooks[$method]);
-    }
-
-
-    /**
-     * Deletes a hook that's executed after the specified method
-     * @param string $method
-     * @param string $name
-     */
-    function del_post_hook($method, $name)
-    {
-        unset($this->_post_hooks[$method][$name]);
-    }
-
-    /**
-     * Deletes all post hooks
-     */
-    function del_post_hooks($method=FALSE)
-    {
-        if (!$method)
-            $this->_post_hooks = array();
-        else
-            unset($this->_post_hooks[$method]);
-    }
-
-
     /**
      * Wraps a class within an ExtensibleObject class.
      * @param string $klass
@@ -594,7 +329,7 @@ class ExtensibleObject extends PopeHelpers
 
     /**
      * Returns the name of the class which this ExtensibleObject wraps
-     * @return object
+     * @return string
      */
     function &get_wrapped_instance()
     {
@@ -657,7 +392,9 @@ class ExtensibleObject extends PopeHelpers
     function &__get($property)
     {
 		$retval = NULL;
-        if ($this->is_wrapper()) {
+
+		if ($property == 'object') return $this;
+		else if ($this->is_wrapper()) {
 			try {
 				$reflected_prop = new ReflectionProperty($this->_wrapped_instance, $property);
 
@@ -706,6 +443,7 @@ class ExtensibleObject extends PopeHelpers
     function &__set($property, $value)
     {
 		$retval = NULL;
+
         if ($this->is_wrapper()) {
 			try {
 				$reflected_prop = new ReflectionProperty($this->_wrapped_instance, $property);
@@ -754,93 +492,30 @@ class ExtensibleObject extends PopeHelpers
      */
     function __call($method, $args)
     {
-        $this->reset_method_properties($method, $args);
+		$retval = NULL;
 
-        // Run pre hooks?
-        if ($this->are_pre_hooks_enabled($method) && $this->get_method_property($method, self::METHOD_PROPERTY_RUN_PRE_HOOKS)) {
+		if (($this->get_mixin_providing($method))) {
+			$retval = $this->_exec_cached_method($method, $args);
+		}
 
-            // Combine global and method-specific pre hooks
-            $prehooks = $this->_global_pre_hooks;
-            if (isset($this->_pre_hooks[$method])) {
-                $prehooks = array_merge($prehooks, $this->_pre_hooks[$method]);
-            }
-
-            // Apply each hook
-            foreach ($prehooks as $hook_name => $hook) {
-				$method_args = $this->get_method_property($method, 'arguments', $args);
-                $this->_run_prehook(
-					$hook_name,
-					$method,
-					$hook[0],
-					$hook[1],
-					$method_args
+		// This is NOT a wrapped class, and no extensions provide the method
+		else {
+			// Perhaps this is a wrapper and the wrapped object
+			// provides this method
+			if ($this->is_wrapper() && $this->wrapped_class_provides($method))
+			{
+				$object = $this->add_wrapped_instance_method($method);
+				$retval = call_user_func_array(
+					array(&$object, $method),
+					$args
 				);
-            }
-        }
+			}
+			elseif ($this->_throw_error) {
+				throw new Exception("`{$method}` not defined for " . get_class());
+			}
+		}
 
-        // Are we to run the actual method? A pre hook might have told us
-        // not to
-        if ($this->get_method_property($method, self::METHOD_PROPERTY_RUN) && !isset($this->_overrides[$method]))
-        {
-            if (($this->get_mixin_providing($method))) {
-                $this->set_method_property(
-                    $method,
-                    self::METHOD_PROPERTY_RETURN_VALUE,
-                    $this->_exec_cached_method($method, $this->get_method_property($method, 'arguments'))
-                );
-            }
-
-            // This is NOT a wrapped class, and no extensions provide the method
-            else {
-                // Perhaps this is a wrapper and the wrapped object
-                // provides this method
-                if ($this->is_wrapper() && $this->wrapped_class_provides($method))
-                {
-                    $object = $this->add_wrapped_instance_method($method);
-                    $this->set_method_property(
-                        $method,
-                        self::METHOD_PROPERTY_RETURN_VALUE,
-                        call_user_func_array(
-                            array(&$object, $method),
-                            $this->get_method_property($method, 'arguments')
-                        )
-                    );
-                }
-                elseif ($this->_throw_error) {
-                    throw new Exception("`{$method}` not defined for " . get_class());
-                }
-                else {
-                    return FALSE;
-                }
-            }
-        }
-
-        // Are we to run post hooks? A pre hook might have told us not to
-        if ($this->are_post_hooks_enabled($method) && $this->get_method_property($method, self::METHOD_PROPERTY_RUN_POST_HOOKS)) {
-
-            // Combine global and method-specific post hooks
-            $posthooks = $this->_global_post_hooks;
-            if (isset($this->_post_hooks[$method])) {
-                $posthooks = array_merge($posthooks, $this->_post_hooks[$method]);
-            }
-
-            // Apply each hook
-            foreach ($posthooks as $hook_name => $hook) {
-				$method_args = $this->get_method_property($method, 'arguments', $args);
-                $this->_run_post_hook(
-					$hook_name,
-					$method,
-					$hook[0],
-					$hook[1],
-					$method_args
-				);
-            }
-        }
-
-		// Get return value, clear all method properties, and then return
-        $retval = $this->get_method_property($method, self::METHOD_PROPERTY_RETURN_VALUE);
-		$this->remove_method_properties($method);
-		return $retval;
+        return $retval;
     }
 
 
@@ -873,8 +548,7 @@ class ExtensibleObject extends PopeHelpers
 			$body = str_replace('$this->object->$', '$this->object->', $body);
 
 			// Define method for mixin
-			$wrapped_klass = get_class($this->get_wrapped_instance());
-			$mixin_klass = "Mixin_AutoGen_{$wrapped_klass}_{$method}";
+			$mixin_klass = "Mixin_AutoGen_{$method}";
 			if (!class_exists($mixin_klass)) {
 				eval("class {$mixin_klass} extends Mixin{
 					{$body}
@@ -882,7 +556,7 @@ class ExtensibleObject extends PopeHelpers
 			}
 			$this->add_mixin($mixin_klass);
 			$retval = $this->_instantiate_mixin($mixin_klass);
-			$this->_cache_method($retval, $method);
+			$this->_cache_method($mixin_klass, $method);
 
 		}
 
@@ -919,47 +593,13 @@ class ExtensibleObject extends PopeHelpers
 
     /**
      * Caches the path to the extension which provides a particular method
-     * @param string $object
+     * @param string $klass
      * @param string $method
      */
-    function _cache_method($object, $method)
+    function _cache_method($klass, $method)
     {
-        $this->_method_map_cache[$method] = $object;
+        $this->_method_map_cache[$method] = $klass;
     }
-
-
-	/**
-	 * Gets a list of mixins by their priority, excluding disabled mixins
-	 * @param string $method
-	 * @return array
-	 */
-	function get_mixin_priorities($method)
-	{
-		$retval = array();
-		foreach ($this->_mixin_priorities as $mixin) {
-			if ($this->is_mixin_disabled($method, $mixin))
-                continue;
-			$retval[] = $mixin;
-		}
-		return $retval;
-	}
-
-
-	/**
-	 * Determines if a mixin is disabled for a particular method
-	 * @param string $method
-	 * @param string $mixin
-	 * @return boolean
-	 */
-	function is_mixin_disabled($method, $mixin)
-	{
-		$retval = FALSE;
-		if (isset($this->_disabled_mixins[$method]))
-			if (in_array($mixin, $this->_disabled_mixins[$method]) !== FALSE)
-				$retval = TRUE;
-		return $retval;
-	}
-
 
     /**
      * Flushes the method cache
@@ -1001,138 +641,6 @@ class ExtensibleObject extends PopeHelpers
         return $retval;
     }
 
-
-    /**
-     * Runs a particular pre hook for the specified method. The return value
-     * is assigned to the "[hook_name]_prehook_retval" method property
-     * @param string $hook_name
-     * @param string $method_called
-     * @param Ext $object
-     * @param string $hook_method
-     *
-     */
-    function _run_prehook($hook_name, $method_called, $object, $hook_method, &$args)
-    {
-        $object->object = &$this;
-        $object->method_called = $method_called;
-
-        // Are we STILL to execute pre hooks? A pre-executed hook might have changed this
-        if ($this->get_method_property($method_called, 'run_pre_hooks'))
-        {
-            $reflection = new ReflectionMethod($object, $hook_method);
-            $this->set_method_property(
-                $method_called,
-                $hook_name . '_prehook_retval',
-                $reflection->invokeArgs($object, $args)
-            );
-        }
-    }
-
-    /**
-     * Runs the specified post hook for the specified method
-     * @param string $hook_name
-     * @param string $method_called
-     * @param Ext $object
-     * @param string $hook_method
-     */
-    function _run_post_hook($hook_name, $method_called, $object, $hook_method, &$args)
-    {
-        $object->object = &$this;
-        $object->method_called = $method_called;
-
-        // Are we STILL to execute post hooks? A post-executed hook might have changed this
-        if ($this->get_method_property($method_called, 'run_post_hooks'))
-        {
-            $reflection = new ReflectionMethod($object, $hook_method);
-            $this->set_method_property(
-                $method_called,
-                $hook_name . '_post_hook_retval',
-                $reflection->invokeArgs($object, $args)
-            );
-        }
-    }
-
-    /**
-     * Returns TRUE if a pre-hook has been registered for the specified method
-     * @param string $method
-     * @return boolean
-     */
-    function have_prehook_for($method, $name = null)
-    {
-        if (is_null($name)) {
-            return isset($this->_pre_hooks[$method]);
-        } else {
-            return isset($this->_pre_hooks[$method][$name]);
-        }
-
-    }
-
-
-    /**
-     * Returns TRUE if a posthook has been registered for the specified method
-     * @param string $method
-     * @return boolean
-     */
-    function have_posthook_for($method, $name = null)
-    {
-        $retval = FALSE;
-
-        if (isset($this->_post_hooks[$method])) {
-            if (!$name) $retval = TRUE;
-            else $retval = isset($this->_post_hooks[$method][$name]);
-        }
-
-        return $retval;
-    }
-
-	/**
-	 * Disables a mixin for a particular method. This ensures that even though
-	 * mixin provides a particular method, it won't be used to provide the
-	 * implementation
-	 * @param string $method
-	 * @param string $klass
-	 */
-	function disable_mixin($method, $klass)
-	{
-		unset($this->_method_map_cache[$method]);
-		if (!isset($this->_disabled_mixins[$method])) {
-			$this->_disabled_mixins[$method] = array();
-		}
-		$this->_disabled_mixins[$method][] = $klass;
-	}
-
-
-	/**
-	 * Enable a mixin for a particular method, that was previously disabled
-	 * @param string $method
-	 * @param string $klass
-	 */
-	function enable_mixin($method, $klass)
-	{
-		unset($this->_method_map_cache[$method]);
-		if (isset($this->_disabled_mixins[$method])) {
-			$index = array_search($klass, $this->_disabled_mixins[$method]);
-			if ($index !== FALSE) unset($this->_disabled_mixins[$method][$index]);
-		}
-	}
-
-
-	/**
-	 * Gets a list of mixins that are currently disabled for a particular method
-	 * @see disable_mixin()
-	 * @param string $method
-	 * @return array
-	 */
-	function get_disabled_mixins_for($method)
-	{
-		$retval = array();
-		if (isset($this->_disabled_mixins[$method])) {
-			$retval =  $this->_disabled_mixins[$method];
-		}
-		return $retval;
-	}
-
-
     /**
      * Executes a cached method
      * @param string $method
@@ -1141,92 +649,12 @@ class ExtensibleObject extends PopeHelpers
      */
     function _exec_cached_method($method, $args=array())
     {
-        $object = $this->_method_map_cache[$method];
-        $object->object = &$this;
+        $klass = $this->_method_map_cache[$method];
+		$object = $this->_instantiate_mixin($klass);
+        $object->object = $this;
         $reflection = new ReflectionMethod($object, $method);
         return $reflection->invokeArgs($object, $args);
     }
-
-
-    /**
-     * Sets the value of a method property
-     * @param string $method
-     * @param string $property
-     * @param mixed $value
-     */
-    function set_method_property($method, $property, $value)
-    {
-        if (!isset($this->_method_properties[$method])) {
-            $this->_method_properties[$method] = array();
-        }
-
-        return $this->_method_properties[$method][$property] = $value;
-    }
-
-
-    /**
-     * Gets the value of a method property
-     * @param string $method
-     * @param string $property
-     */
-    function get_method_property($method, $property, $default=NULL)
-    {
-        $retval = NULL;
-
-        if (isset($this->_method_properties[$method][$property])) {
-            $retval = $this->_method_properties[$method][$property];
-        }
-
-		if (is_null($retval)) $retval=$default;
-
-        return $retval;
-    }
-
-
-    /**
-     * Clears all method properties to have their default values. This is called
-     * before every method call (before pre-hooks)
-     * @param string $method
-     */
-    function reset_method_properties($method, $args=array())
-    {
-        $this->_method_properties[$method] = array(
-            'run'               => TRUE,
-            'run_pre_hooks'     => TRUE,
-            'run_post_hooks'    => TRUE,
-			'arguments'			=> $args
-        );
-    }
-
-	/**
-	 * Removes the cache of the method properties
-	 * @param $method
-	 */
-	function remove_method_properties($method)
-	{
-		unset($this->_method_properties[$method]);
-	}
-
-	/**
-	 * Gets all method properties
-	 * @return array
-	 */
-	function get_method_properties($method)
-	{
-		return $this->_method_properties[$method];
-	}
-
-	/**
-	 * Sets all method properties
-	 * @param $method
-	 * @param $props
-	 */
-	function set_method_properties($method, $props)
-	{
-		foreach ($props as $key => $value) {
-			$this->set_method_property($method, $key, $value);
-		}
-	}
 
     /**
      * Returns TRUE if the ExtensibleObject has decided to implement a
@@ -1283,6 +711,34 @@ class ExtensibleObject extends PopeHelpers
             return $methods;
         }
     }
+
+    function get_parent_mixin_providing($method, $return_obj=FALSE, $levels=1)
+    {
+        $disabled_mixins = array();
+
+        for ($i=0; $i<$levels; $i++) {
+            if (($klass = $this->get_mixin_providing($method))) {
+                $this->disable_mixin_for($method, $klass);
+                $disabled_mixins[] = $klass;
+
+                // Get the method map cache
+                $orig_method_map = $this->_method_map_cache;
+                $this->_method_map_cache = (array)C_Pope_Cache::get(
+                    array($this->context, $this->_mixin_priorities, $this->_disabled_map),
+                    $this->_method_map_cache
+                );
+            }
+        }
+
+        $retval = $this->get_mixin_providing($method, $return_obj);
+
+        // Re-enable mixins
+        foreach ($disabled_mixins as $klass) {
+            $this->enable_mixin_for($method, $klass);
+        }
+
+        return $retval;
+    }
 }
 
 
@@ -1316,39 +772,41 @@ class Mixin extends PopeHelpers
     {
         $retval = NULL;
 
-        // To simulate a 'parent' call, we remove the current extension from the
-        // ExtensibleObject that is providing the method's implementation, re-emit
-        // the call on the instance to trigger the implementation from the previously
-        // added extension, and then restore things by re-adding the current extension.
-        // It's complicated, but it works.
-
-        // We need to determine the name of the extension. Because PHP 5.2 is
-        // missing get_called_class(), we have to look it up in the backtrace
-        $backtrace = debug_backtrace();
-        $klass = get_class($backtrace[0]['object']);
-
-		// Get the method properties. We'll store this afterwards.
-		$props = $this->object->get_method_properties($method);
+        // To simulate a 'parent' call, we remove the current mixin providing the
+		// implementation.
+        $klass = $this->object->get_mixin_providing($method);
 
 		// Perform the routine described above...
-		$this->object->disable_pre_hooks($method);
-		$this->object->disable_post_hooks($method);
-		$this->object->disable_mixin($method, $klass);
+        $this->object->disable_mixin_for($method, $klass);
+
+		// Get the method map cache
+		$orig_method_map = $this->object->_method_map_cache;
+		$this->object->_method_map_cache = (array)C_Pope_Cache::get(
+			array($this->object->context, $this->object->_mixin_priorities, $this->object->_disabled_map),
+			$this->object->_method_map_cache
+		);
 
         // Call anchor
         $args = func_get_args();
 
         // Remove $method parameter
         array_shift($args);
+
+        // Execute the method
         $retval = $this->object->call_method($method, $args);
 
-		// Re-enable hooks
-		$this->object->enable_pre_hooks($method);
-		$this->object->enable_post_hooks($method);
-		$this->object->enable_mixin($method, $klass);
+		// Cache the method map for this configuration of mixins
+		C_Pope_Cache::set(
+            array($this->object->context, $this->object->_mixin_priorities, $this->object->_disabled_map),
+			$this->object->_method_map_cache
+		);
 
-		// Re-set all method properties
-		$this->object->set_method_properties($method, $props);
+		// Re-enable mixins;
+//		$this->object->add_mixin($klass);
+        $this->object->enable_mixin_for($method, $klass);
+
+		// Restore the original method map
+		$this->object->_method_map_cache = $orig_method_map;
 
         return $retval;
     }
@@ -1378,42 +836,3 @@ class Mixin extends PopeHelpers
         return $this->object->$property;
     }
 }
-
-/**
- * An extension which has the purpose of being used as a hook
- */
-class Hook extends Mixin
-{
-    // Similiar to a mixin's call_parent method.
-    // If a hook needs to call the method that it applied the
-    // Hook n' Anchor pattern to, then this method should be called
-    function call_anchor()
-    {
-		// Disable hooks, so that we call the anchor point
-		$this->object->disable_pre_hooks($this->method_called);
-		$this->object->disable_post_hooks($this->method_called);
-
-        // Call anchor
-        $args = func_get_args();
-        $retval = $this->object->call_method($this->method_called, $args);
-
-		// Re-enable hooks
-		$this->object->enable_pre_hooks($this->method_called);
-		$this->object->enable_post_hooks($this->method_called);
-
-		return $retval;
-    }
-
-    /**
-     * Provides an alias for call_anchor, as there's no parent
-     * to call in the context of a hook.
-     */
-    function call_parent($method)
-    {
-        $args = func_get_args();
-        return call_user_func_array(
-            array(&$this, 'call_anchor'),
-            $args
-        );
-    }
-};

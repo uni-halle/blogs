@@ -3,9 +3,12 @@
 /*
 {
 	Module: photocrati-dynamic_stylesheet,
-	Depends: { photocrati-mvc, photocrati-lzw }
+	Depends: { photocrati-mvc }
 }
  */
+
+if (!defined('NGG_INLINE_DYNAMIC_CSS')) define('NGG_INLINE_DYNAMIC_CSS', TRUE);
+
 class M_Dynamic_Stylesheet extends C_Base_Module
 {
 	function define($context=FALSE)
@@ -21,7 +24,6 @@ class M_Dynamic_Stylesheet extends C_Base_Module
 			$context
 		);
 
-		include_once('class.dynamic_stylesheet_installer.php');
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_Dynamic_Stylesheet_Installer');
 	}
 
@@ -32,22 +34,48 @@ class M_Dynamic_Stylesheet extends C_Base_Module
 		);
 	}
 
-	function _register_adapters()
+    function _register_hooks()
+    {
+        add_action('ngg_routes', array(&$this, 'define_routes'));
+	    add_filter('ngg_non_minified_files', array(&$this, 'do_not_minify'), 10, 2);
+    }
+
+	function do_not_minify($path, $module)
 	{
-		$this->get_registry()->add_adapter(
-			'I_Router', 'A_Dynamic_Stylesheet_Routes'
-		);
+		$retval = FALSE;
+
+		if ($module == $this->module_id) $retval = TRUE;
+
+		return $retval;
 	}
+
+    function define_routes($router)
+    {
+        $app = $router->create_app('/nextgen-dcss');
+        $app->rewrite('/{\d}/{*}', '/index--{1}/data--{2}');
+        $app->route('/', 'I_Dynamic_Stylesheet#index');
+    }
 
     function get_type_list()
     {
         return array(
-            'A_Dynamic_Stylesheet_Routes' 		=> 'adapter.dynamic_stylesheet_routes.php',
 			'C_Dynamic_Stylesheet_Installer'	=> 'class.dynamic_stylesheet_installer.php',
-            'C_Dynamic_Stylesheet_Controller' 	=> 'class.dynamic_stylesheet_controller.php',
-            'I_Dynamic_Stylesheet' 				=> 'interface.dynamic_stylesheet.php'
+            'C_Dynamic_Stylesheet_Controller' 	=> 'class.dynamic_stylesheet_controller.php'
         );
     }
+}
+
+class C_Dynamic_Stylesheet_Installer
+{
+	function __construct()
+	{
+		$this->settings = C_NextGen_Settings::get_instance();
+	}
+
+	function install()
+	{
+		$this->settings->set_default_value('dynamic_stylesheet_slug', 'nextgen-dcss');
+	}
 }
 
 new M_Dynamic_Stylesheet;

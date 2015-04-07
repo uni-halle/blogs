@@ -19,7 +19,7 @@ class WPtouchSettings extends stdClass {
 class WPtouchDefaultSettings30 extends WPtouchSettings {
 	function WPtouchDefaultSettings30() {
 		// Basic or advanced mode
-		$this->settings_mode = WPTOUCH_SETTING_BASIC;
+/* TODO: Deprecated		$this->settings_mode = WPTOUCH_SETTING_BASIC;*/
 		$this->display_mode = 'normal';
 
 		// Setup - General
@@ -30,17 +30,16 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 			$this->show_wptouch_in_footer = true;
 		}
 
-		$this->add_referral_code = false;
-
 		// Setup - Desktop / Mobile Switching
-		$this->desktop_is_first_view = false;
+/* TODO: Deprecated		$this->desktop_is_first_view = false;*/
 		$this->show_switch_link = true;
 		$this->switch_link_method = 'automatic';
-		$this->mobile_switch_link_target = 'current_page';
+/* TODO: Deprecated		$this->mobile_switch_link_target = 'current_page';*/
 
 		// Setup - Regionalization
 		$this->force_locale = 'auto';
-		$this->translate_admin = true;
+		/* TODO: Remove deprecated setting
+		$this->translate_admin = true;*/
 
 		// Setup - Statistics
 		$this->custom_stats_code = '';
@@ -55,23 +54,20 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 
 		// Setup - Tools and Debug
 		$this->use_jquery_2 = false;
-		$this->show_footer_load_times = false;
-		// Depreciated in 3.1
+		/* TODO: Deprecated $this->show_footer_load_times = false;*/
+		// Deprecated in 3.1
 		$this->preview_mode = 'off';
 
 		// Setup - Compatibility
 		$this->include_functions_from_desktop_theme = false;
 		$this->functions_php_loading_method = 'translate';
 
+		$this->enable_shortcode_compatibility = false;
+		$this->shortcode_compatibility_method = 'remove_shortcodes';
 		$this->remove_shortcodes = '';
-		if ( isset( $this->ignore_urls ) ) {
-			$this->enable_url_filter = true;
-			$this->filtered_urls = $this->ignore_urls;
-		} else {
-			$this->enable_url_filter = false;
-			$this->filtered_urls = '';
-		}
-		$this->url_filter_behaviour = 'exclude_urls';
+
+		$this->url_filter_behaviour = 'disabled';
+		$this->filtered_urls = '';
 		$this->custom_user_agents = '';
 
 		// Default Theme

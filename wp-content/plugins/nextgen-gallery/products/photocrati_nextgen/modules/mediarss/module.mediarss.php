@@ -20,11 +20,6 @@ class M_MediaRss extends C_Base_Module
 		);
 	}
 
-	function _register_adapters()
-	{
-		$this->get_registry()->add_adapter('I_Router', 'A_MediaRss_Routes');
-	}
-
 	function _register_utilities()
 	{
 		$this->get_registry()->add_utility(
@@ -32,12 +27,28 @@ class M_MediaRss extends C_Base_Module
 		);
 	}
 
+    function _register_hooks()
+    {
+        add_action('ngg_routes', array(&$this, 'define_routes'));
+    }
+
+    function define_routes($router)
+    {
+        $app = $router->create_app('/nextgen-mediarss');
+        $app->route(
+            '/',
+            array(
+                'controller' => 'I_MediaRSS_Controller',
+                'action'  => 'index',
+                'context' => FALSE
+            )
+        );
+    }
+
     function get_type_list()
     {
         return array(
-            'A_Mediarss_Routes' => 'adapter.mediarss_routes.php',
-            'C_Mediarss_Controller' => 'class.mediarss_controller.php',
-            'I_Mediarss_Controller' => 'interface.mediarss_controller.php'
+            'C_Mediarss_Controller' => 'class.mediarss_controller.php'
         );
     }
 

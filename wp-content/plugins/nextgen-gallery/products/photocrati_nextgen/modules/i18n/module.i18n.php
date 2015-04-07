@@ -26,6 +26,7 @@ class M_I18N extends C_Base_Module
         $this->get_registry()->add_adapter('I_Image_Mapper', 'A_I18N_Image_Translation');
         $this->get_registry()->add_adapter('I_Album_Mapper', 'A_I18N_Album_Translation');
         $this->get_registry()->add_adapter('I_Gallery_Mapper', 'A_I18N_Gallery_Translation');
+        $this->get_registry()->add_adapter('I_Displayed_Gallery', 'A_I18N_Displayed_Gallery_Translation');
 
         // qTranslate requires we disable "Hide Untranslated Content" during routed app requests like
         // photocrati-ajax, when uploading new images, or retrieving dynamically altered (watermarked) images
@@ -109,7 +110,7 @@ class M_I18N extends C_Base_Module
     {
         if (function_exists('icl_register_string'))
         {
-            $gallery = $this->get_registry()->get_utility('I_Gallery_Mapper')->find($gallery_id);
+            $gallery = C_Gallery_Mapper::get_instance()->find($gallery_id);
             if ($gallery)
             {
                 icl_register_string('plugin_ngg', 'gallery_' . $gallery->{$gallery->id_field} . '_name', $gallery->title, TRUE);
@@ -190,9 +191,56 @@ class M_I18N extends C_Base_Module
         return $in;
     }
 
+    static function mb_pathinfo($path, $options=null)
+    {
+        $ret = array(
+            'dirname' => '',
+            'basename' => '',
+            'extension' => '',
+            'filename' => ''
+        );
+        $pathinfo = array();
+        if (preg_match('%^(.*?)[\\\\/]*(([^/\\\\]*?)(\.([^\.\\\\/]+?)|))[\\\\/\.]*$%im', $path, $pathinfo))
+        {
+            if (array_key_exists(1, $pathinfo))
+                $ret['dirname'] = $pathinfo[1];
+            if (array_key_exists(2, $pathinfo))
+                $ret['basename'] = $pathinfo[2];
+            if (array_key_exists(5, $pathinfo))
+                $ret['extension'] = $pathinfo[5];
+            if (array_key_exists(3, $pathinfo))
+                $ret['filename'] = $pathinfo[3];
+        }
+        switch ($options) {
+            case PATHINFO_DIRNAME:
+            case 'dirname':
+                return $ret['dirname'];
+            case PATHINFO_BASENAME:
+            case 'basename':
+                return $ret['basename'];
+            case PATHINFO_EXTENSION:
+            case 'extension':
+                return $ret['extension'];
+            case PATHINFO_FILENAME:
+            case 'filename':
+                return $ret['filename'];
+            default:
+                return $ret;
+        }
+    }
+
+    static function mb_basename($path)
+    {
+        $separator = " qq ";
+        $path = preg_replace("/[^ ]/u", $separator . "\$0" . $separator, $path);
+        $base = basename($path);
+        return str_replace($separator, "", $base);
+    }
+
     function get_type_list()
     {
         return array(
+            'A_I18N_Displayed_Gallery_Translation' => 'adapter.i18n_displayed_gallery_translation.php',
             'A_I18N_Image_Translation' => 'adapter.i18n_image_translation.php',
             'A_I18N_Album_Translation' => 'adapter.i18n_album_translation.php',
             'A_I18N_Gallery_Translation' => 'adapter.i18n_gallery_translation.php',

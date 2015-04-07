@@ -3,9 +3,9 @@ Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 3.6
-Tested up to: 4.0
-Last Updated: 2014-Nov-11
-Stable tag: tags/3.3.2
+Tested up to: 4.1.1
+Last Updated: 2015-Mar-6
+Stable tag: tags/3.3.3
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -151,7 +151,7 @@ If you love the plugin, [please consider purchasing a Premium Module](http://awp
 
 == Credits ==
 
-Copyright 2009-14 awpcp.com
+Copyright 2009-15 awpcp.com
 
 AWPCP Classifieds icons courtesy of http://www.famfamfam.com/lab/icons/silk/
 dcfunctions.php used with permission under GPL by Dan Caragea http://www.datemill.com
@@ -211,6 +211,9 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+
+= Version 3.3.3 =
+* Fix problem with image uploads that allowed for non-image files to be uploaded instead.  Strict extension checking enabled.  Security problem if left unpatched.
 
 = Version 3.3.2 =
 * Allow users to choose thumbnail position in Latest Ads and other widgets

@@ -3,8 +3,8 @@ Theme Name: Catch Box
 Theme URI: http://catchthemes.com/themes/catchbox
 Author: Catch Themes
 Author URI: http://catchthemes.com
-Description: Catch Box is simple, lightweight, box shaped, and adaptable WordPress Theme for bloggers and professionals. It is based on HTML5, CSS3 and Responsive Web Design to view in various devices. 10 Best Reasons to use Catch Box Theme. 1. Responsive Web Design, 2. Custom Menus (Primary, Secondary and Footer menus), 3. Theme Options for light, dark, blue, green, red, brown and orange color scheme, custom link colors, three layout choices, two content choices between excerpt and content option in homepage, feed redirection, custom css styles, 4. Featured Sliders where you can define number of slides and post IDs, 5. Social Links (Facebook, Twitter, RSS, Linkedin, Pinterest, etc), 6. Webmaster Tools (Google, Yahoo and Bing site verification ID, Header and Footer codes), 7. Custom Backgrounds, 8. Custom Header, 9. Catchbox Adspace widget to add any type of Advertisements, and 10. Support popular plugins. Multilingual Ready (WPML) and also currently translated in Brazilian Portuguese, Spanish, Danish, German, French, Polish, Czech, Croatian, Italian, Swedish, Russian, Arabic, Serbian, Dutch, Persian, Hungarian, Slovak, Japanese, Bosnian, Catalan and Romanian. Theme Support at http://catchthemes.com/support/
-Version: 3.4
+Description: Catch Box is simple, lightweight, box shaped, and adaptable WordPress Theme for bloggers and professionals. It is based on HTML5, CSS3 and Responsive Web Design to view in various devices. 10 Best Reasons to use Catch Box Theme. 1. Responsive Web Design, 2. Custom Menus (Primary, Secondary and Footer menus), 3. Theme Options for light, dark, blue, green, red, brown and orange color scheme, custom link colors, three layout choices, two content choices between excerpt and content option in homepage, feed redirection, custom css styles, 4. Featured Sliders where you can define number of slides and post IDs, 5. Social Links (Facebook, Twitter, RSS, Linkedin, Pinterest, etc), 6. Webmaster Tools (Google, Yahoo and Bing site verification ID, Header and Footer codes), 7. Custom Backgrounds, 8. Custom Header, 9. Catchbox Adspace widget to add any type of Advertisements, and 10. Support popular plugins. Multilingual Ready (WPML) and also currently translated in Brazilian Portuguese, Spanish, Danish, German, French, Polish, Czech, Croatian, Italian, Swedish, Russian, Arabic, Serbian, Dutch, Persian, Hungarian, Slovak, Japanese, Bosnian, Catalan, Romanian and Ukrainian. Theme Support at http://catchthemes.com/support/
+Version: 3.5.1
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: dark, light, blue, white, black, gray, green, red, brown, orange, one-column, two-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -103,7 +103,8 @@ footer, header, hgroup, menu, nav, section {
 }
 /* No Sidebar */
 .no-sidebar #primary,
-.woocommerce-nosidebar #primary {
+.woocommerce-nosidebar #primary,
+.error404 #primary {
 	margin: 0;
 	width: 100%;
 }
@@ -867,7 +868,8 @@ a:hover {
 .entry-meta a {
 	font-weight: bold;
 }
-.page .entry-content {
+.page .entry-content,
+.error404 .entry-content {
 	padding: 1em 0 0;
 }
 .entry-content h1 {
@@ -1290,11 +1292,6 @@ article.format-status .entry-content {
 #content .error404 {
     padding: 3em 5%;
 }
-.error404 .entry-title {
-	font-size: 36px;
-	font-weight: bold;
-	line-height: 48px;
-}
 blockquote.pull {
 	font-size: 21px;
 	font-weight: bold;
@@ -1497,12 +1494,13 @@ blockquote.pull {
 	background: #f9f9f9;
 	border: 1px solid #ccc;
 	border-width: 1px 0;
-	margin: 0 -30.55% 2em;
 	overflow: hidden;
 	padding: 2em 8.9%;
 }
 .error404 #main #s {
-	width: 95%;
+    display: block;
+    margin: 0 auto;
+    width: 85%;
 }
 .error404 #main .widget {
 	clear: none;
@@ -3112,6 +3110,7 @@ Responsive Style
 		width: 600px;
 	}
 	.logo-wrap {
+		display: block;
 		float: none;
 		text-align: center;
 	}
@@ -3339,6 +3338,9 @@ Responsive Style
 	#nav-slider .nav-next {
 		display: none;
 	}
+	.error404 #main #s {
+	    width: 80%;
+	}	
 	/* Controllers */
 	#controllers {
 		display: block;

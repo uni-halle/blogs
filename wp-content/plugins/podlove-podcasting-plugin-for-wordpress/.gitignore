@@ -6,3 +6,5 @@ composer.phar
 node_modules/*
 vendor/*
 test/config.yml
+bower_components
+doc

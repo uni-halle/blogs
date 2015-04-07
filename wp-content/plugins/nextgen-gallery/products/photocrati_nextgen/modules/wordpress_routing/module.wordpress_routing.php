@@ -8,7 +8,7 @@
  ***/
 class M_WordPress_Routing extends C_Base_Module
 {
-    static $_use_canonical_redirect = TRUE;
+	static $_use_canonical_redirect = TRUE;
     static $_use_old_slugs          = TRUE;
 
     function define()
@@ -17,7 +17,7 @@ class M_WordPress_Routing extends C_Base_Module
 			'photocrati-wordpress_routing',
 			'WordPress Routing',
 			"Integrates the MVC module's routing implementation with WordPress",
-			'0.5',
+			'0.6',
 			'http://www.nextgen-gallery.com',
 			'Photocrati Media',
 			'http://www.photocrati.com'
@@ -26,12 +26,13 @@ class M_WordPress_Routing extends C_Base_Module
 
 	function _register_adapters()
 	{
+        $this->get_registry()->add_adapter('I_Router', 'A_WordPress_Base_Url');
 		$this->get_registry()->add_adapter('I_Router', 'A_WordPress_Router');
         $this->get_registry()->add_adapter('I_Routing_App', 'A_WordPress_Routing_App');
 	}
 
-    function _register_hooks()
-    {
+	function _register_hooks()
+	{
         add_action('template_redirect', array(&$this, 'restore_request_uri'), 1);
 
         // These two things cause conflicts in NGG. So we temporarily
@@ -43,8 +44,7 @@ class M_WordPress_Routing extends C_Base_Module
         if (has_action('template_redirect', 'redirect_canonical')) {
             remove_action( 'template_redirect', 'redirect_canonical');
         }
-    }
-
+	}
 
     /**
      * When WordPress sees a url like http://foobar.com/nggallery/page/2/, it thinks that it is an
@@ -53,9 +53,14 @@ class M_WordPress_Routing extends C_Base_Module
      */
     function restore_request_uri()
 	{
-		if (isset($_SERVER['ORIG_REQUEST_URI'])) {
-            $request_uri    = $_SERVER['ORIG_REQUEST_URI'];
+		if (isset($_SERVER['ORIG_REQUEST_URI']))
+        {
+            $request_uri = $_SERVER['ORIG_REQUEST_URI'];
             $_SERVER['UNENCODED_URL'] = $_SERVER['HTTP_X_ORIGINAL_URL'] = $_SERVER['REQUEST_URI'] = $request_uri;
+
+            if (isset($_SERVER['ORIG_PATH_INFO'])) {
+                $_SERVER['PATH_INFO'] = $_SERVER['ORIG_PATH_INFO'];
+            }
 		}
         // this is the proper behavior but it causes problems with WPML
         else {
@@ -67,7 +72,8 @@ class M_WordPress_Routing extends C_Base_Module
     function get_type_list()
     {
         return array(
-            'A_Wordpress_Router' => 'adapter.wordpress_router.php',
+            'A_WordPress_Base_Url'    => 'adapter.wordpress_base_url.php',
+            'A_Wordpress_Router'      => 'adapter.wordpress_router.php',
             'A_Wordpress_Routing_App' => 'adapter.wordpress_routing_app.php'
         );
     }

@@ -1,14 +1,11 @@
-/* @override
-	http://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/wptouch-admin-3.css?ver=3.4.4
-	https://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/wptouch-admin-3.css?ver=3.4.9
-	http://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/wptouch-admin-3.css?ver=3.5
-*/
+/* @override http://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/wptouch-admin-3.css?ver=3.7.5 */
 
 /* @group General */
 
 #wpadminbar, #wptouch-settings-area {
 	-webkit-font-smoothing: antialiased;
 }
+
 
 #wptouch-settings-area {
 	font-size: 13px;
@@ -83,6 +80,10 @@
 	font-size: 9px;
 	display: inline-block;
 	overflow: hidden;
+}
+
+#wptouch-settings-area .wptouch-section .advanced {
+	display: none;
 }
 
 #wptouch-settings-area .wptouch-section .pro a {
@@ -739,7 +740,8 @@ html[xmlns] .clearfix {
 	filter: alpha(opacity=40);
 	opacity: 0.4;
 	position: relative;
-	top: 1px;
+	top: 3px;
+	font-size: 16px;
 }
 
 .theme-tag.wptouch-tooltip {
@@ -803,6 +805,7 @@ h3.popover-title {
 
 #wptouch-settings-area .radio-group {
 	clear: both;
+	margin-bottom: 25px;
 }
 
 #wptouch-settings-area .radio-group label {
@@ -829,6 +832,7 @@ h3.popover-title {
 	font-size: 100%;
 	height: auto;
 }
+
 
 #wptouch-settings-area textarea {
 	margin-top: 5px;
@@ -861,10 +865,10 @@ input#preview.disabled {
 	padding-top: 10px;
 	padding-right: 18px;
 	padding-bottom: 10px;
-	font-weight: bold;
 	font-size: 15px;
 	text-transform: capitalize;
 	float: left;
+	font-weight: 400;
 }
 
 #wptouch-settings-area .wptouch-section ul.padded {
@@ -993,9 +997,9 @@ input#preview.disabled {
 }
 
 #touchboard-news ul li {
-	padding: 0 15px;
+	padding-right: 15px;
+	padding-left: 15px;
 	margin: 0;
-	background-color: #fff;
 }
 
 #touchboard-news ul li:after {
@@ -1008,7 +1012,7 @@ input#preview.disabled {
 
 #touchboard-news ul li .date {
 	padding-top: 8px;
-	color: rgba(0,0,0,0.41);
+	color: rgba(0,0,0,0.50);
 	font-size: 10px;
 	text-transform: uppercase;
 	font-weight: normal;
@@ -1020,6 +1024,9 @@ input#preview.disabled {
 	color: #666;
 	font-size: 13px;
 	line-height: 1.3;
+	display: block;
+	padding-bottom: 10px;
+	padding-top: 10px;
 }
 
 #touchboard-news ul li a {
@@ -1029,15 +1036,7 @@ input#preview.disabled {
 	line-height: 1.3em;
 }
 
-.overview-right-wrap h3:last-child {
-	border-bottom-style: none;
-	border-top: 1px solid #E5E5E5;
-	position: absolute;
-	z-index: 1;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
+
 
 .overview-right-wrap h3 a {
 	font-weight: normal;
@@ -1049,14 +1048,10 @@ input#preview.disabled {
 .overview-right-wrap h3 i {
 	position: relative;
 	bottom: 0;
-	font-size: 10px;
+	font-size: 11px;
 }
 
-.overview-right-wrap h3:last-child i {
-	margin-right: 7px;
-	margin-left: 7px;
-	font-size: 16px;
-}
+
 
 /* @end */
 
@@ -1091,11 +1086,11 @@ input#preview.disabled {
 }
 
 #plugin-compat-setting.nano {
-	height: 300px;
+	height: 280px;
 	border: 1px solid #e5e5e5;
 	border-radius: 2px;
-	width: 75%;
 	background-color: #fff;
+	margin-top: 5px;
 }
 
 #plugin-compat-setting.nano p {
@@ -1117,7 +1112,7 @@ input#preview.disabled {
 }
 
 #plugin-compat-setting.nano li:nth-child(odd) {
-	background-color: #fbfbfb;
+	border-bottom: 1px solid #f8f7f9;
 }
 
 #plugin-compat-setting label {
@@ -1261,6 +1256,10 @@ input#preview.disabled {
 
 #wptouch-settings-area #webapp_notice_message {
 	height: 50px;
+}
+
+#setting-webapp_mode_unavailable input {
+	display: none;
 }
 
 .uploader {
@@ -2468,7 +2467,7 @@ textarea#homepage_message {
 
 /* @end */
 
-/* @group WordPress 3.8 */
+/* @group WordPress 3.8+ Admin Themes */
 
 /* @group Coffee */
 
@@ -2609,16 +2608,8 @@ textarea#homepage_message {
 }
 
 #touchboard-left {
-	width: auto;
-	margin: auto;
+	width: auto !important;
+	margin: auto !important;
 }
 
-}
-
-#wptouch-settings-area iframe header {
-	display: none;
-}
-
-#setting-webapp_mode_unavailable input {
-	display: none;
 }

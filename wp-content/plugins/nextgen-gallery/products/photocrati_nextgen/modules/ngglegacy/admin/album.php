@@ -253,17 +253,56 @@ class nggManageAlbum {
 			nggGallery::show_message(__('Update Successfully','nggallery'));
 	}
 
+	function get_available_preview_images($album)
+	{
+		$retval = array();
+
+		if ($album && isset($album->sortorder) && $album->sortorder) {
+			$galleries = array();
+			$albums = array();
+			foreach ($album->sortorder as $item) {
+				if (is_numeric($item)) $galleries[] = $item;
+				else $albums[] = $item;
+			}
+
+			$image_mapper = C_Image_Mapper::get_instance();
+			$retval += $image_mapper->select('DISTINCT *')->where(array("galleryid IN %s", $galleries))->where('exclude != 1')->run_query();
+			foreach ($albums as $subalbum) $retval += $this->get_available_preview_images($subalbum);
+		}
+		else {
+            // enforce a reasonable limit on how many images to offer
+            $retval = C_Image_Mapper::get_instance()
+                ->select()
+                ->where_and(array())
+                ->limit(intval(C_NextGen_Settings::get_instance()->get('maximum_entity_count', 500)))
+                ->run_query();
+		}
+
+		return $retval;
+	}
+
 	function output() {
 
 	global $wpdb, $nggdb;
 
 	if (isset($_REQUEST['act_album'])) $this->currentID = intval($_REQUEST['act_album']);
 
+	$album = $this->_get_album($this->currentID);
+
+	// Generate JSON for autocomplete of preview images
+	$preview_images = $this->get_available_preview_images($album);
+
+
 	//TODO:Code MUST be optimized, how to flag a used gallery better ?
 	$used_list = $this->get_used_galleries();
 
-	$album = $this->_get_album($this->currentID);
+
 ?>
+<style type="text/css">
+	.select2-container {max-width: 580px; }
+	.select2-drop { max-width: 580px; }
+	.select2-choice { max-width: 580;}
+</style>
 
 <script type="text/javascript">
 
@@ -289,8 +328,8 @@ jQuery(document).ready(
 			});
 		}
 
-        jQuery("#previewpic").nggAutocomplete( {
-            type: 'image',domain: "<?php echo home_url('index.php', is_ssl() ? 'https' : 'http'); ?>",width: "95%"
+        $("#previewpic").select2({
+	        width: '100%'
         });
 
 		jQuery('#selectContainer').sortable( {
@@ -399,7 +438,6 @@ function showDialog() {
 </script>
 
 <div class="wrap album" id="wrap" >
-	<?php //include('templates/social_media_buttons.php'); ?>
     <?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php esc_html_e('Manage Albums', 'nggallery') ?></h2>
 	<form id="selectalbum" method="POST" onsubmit="ngg_serialize()" accept-charset="utf-8">
@@ -544,17 +582,13 @@ function showDialog() {
 	  	<tr>
 	    	<th>
 	    		<?php esc_html_e('Select a preview image:', 'nggallery'); ?><br />
-					<select id="previewpic" name="previewpic" style="width:95%" >
-                        <?php if ($album->previewpic == 0) ?>
-		                <option value="0"><?php esc_html_e('No picture', 'nggallery'); ?></option>
-						<?php
-                            if ($album->previewpic == 0)
-                                echo '<option value="0" selected="selected">' . __('No picture', 'nggallery') . '</option>';
-                            else {
-                                $picture = nggdb::find_image($album->previewpic);
-                                echo '<option value="' . $picture->pid . '" selected="selected" >'. $picture->pid . ' - ' . ( empty($picture->alltext) ? esc_attr( $picture->filename ) : esc_attr( $picture->alltext ) ) .' </option>'."\n";
-                            }
-						?>
+					<select id="previewpic" name="previewpic" data-placeholder="<?php esc_attr_e(__('No picture', 'nggallery'))?>">
+						<?php foreach ($preview_images as $image): ?>
+							<option value="<?php esc_attr_e($image->pid)?>" <?php selected($album->previewpic, $image->pid) ?>>
+								<?php $label = $image->alttext ? $image->alttext : $image->filename; ?>
+								<?php esc_html_e($image->pid)?> - <?php esc_html_e($label)?>
+							</option>
+						<?php endforeach ?>
 					</select>
 	    	</th>
 	  	</tr>
@@ -670,13 +704,13 @@ function showDialog() {
 				<div class="innerhandle">
 					<div class="item_top ' . $class . '">
 						<a href="#" class="min" title="close">[-]</a>
-						ID: ' . $obj['id'] . ' | ' . wp_html_excerpt( esc_html ( nggGallery::i18n( $obj['title'] ) ) , 25) . '
+						ID: ' . $obj['id'] . ' | ' . wp_html_excerpt( esc_html ( M_I18N::translate( $obj['title'] ) ) , 25) . '
 					</div>
 					<div class="itemContent">
 							' . $preview_image . '
-							<p><strong>' . __('Name', 'nggallery') . ' : </strong>' . esc_html ( nggGallery::i18n( $obj['name'] ) ). '</p>
-							<p><strong>' . __('Title', 'nggallery') . ' : </strong>' . esc_html ( nggGallery::i18n( $obj['title'] ) ) . '</p>
-							<p><strong>' . __('Page', 'nggallery'). ' : </strong>' . esc_html ( nggGallery::i18n( $obj['pagenname'] ) ) . '</p>
+							<p><strong>' . __('Name', 'nggallery') . ' : </strong>' . esc_html ( M_I18N::translate( $obj['name'] ) ). '</p>
+							<p><strong>' . __('Title', 'nggallery') . ' : </strong>' . esc_html ( M_I18N::translate( $obj['title'] ) ) . '</p>
+							<p><strong>' . __('Page', 'nggallery'). ' : </strong>' . esc_html ( M_I18N::translate( $obj['pagenname'] ) ) . '</p>
 							' . apply_filters('ngg_display_album_item_content', '', $obj) . '
 						</div>
 				</div>

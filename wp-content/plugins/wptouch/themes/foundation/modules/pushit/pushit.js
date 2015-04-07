@@ -116,6 +116,31 @@ var prefix = (function() {
 //			settings.container.off( 'touchmove' );
 		}
 
+		function repositionPushIt(){
+			var currentWindow = jQuery( window );
+			currentWindow.resize( function(){
+
+				// Move the right menu if it exists to a new position outside the viewport right
+				if ( settings.rightMenu.length ) {
+					settings.viewportWidth = currentWindow.width();
+					settings.rightMenu.css( 'left', settings.viewportWidth + 'px' );
+				}
+
+				// Hide the menu if the aspect changes
+				if ( settings.lastAspect != getAspect() ) {
+					settings.lastAspect = getAspect();
+
+
+					// Close the menu on a rotate— no need to have the browser choke on render
+					if ( jQuery( '.pushit-active' ).length ) {
+						pushitOverlay.trigger( 'click' );
+						cleanUpPushit();
+					}
+
+				}
+			});
+		}
+
 		function togglePushIt( clicked ){
 			settings.pushed = clicked;
 			direction = whichPushIt( clicked );
@@ -186,23 +211,7 @@ var prefix = (function() {
 			settings.container.toggleClass( settings.containerClass );
 		}
 
-		// Close the menu on a rotate— no need to have the browser choke on render
-		var currentWindow = jQuery( window );
-		currentWindow.resize( function(){
-			if ( settings.lastAspect != getAspect() ) {
-				settings.lastAspect = getAspect();
-
-				if ( jQuery( '.pushit-active' ).length ) {
-					pushitOverlay.trigger( 'click' );
-					cleanUpPushit();
-				}
-
-				if ( settings.rightMenu.length ) {
-					settings.viewportWidth = currentWindow.width();
-					settings.rightMenu.css( 'left', settings.viewportWidth + 'px' );
-				}
-			}
-		});
+		repositionPushIt();
 
 		// Toggle menu
 		settings.menuBtn.on( 'click.pushit-button', function( e ) {

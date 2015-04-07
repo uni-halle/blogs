@@ -825,7 +825,7 @@ form#commentform input, form#commentform textarea {
 	font-size: 100%;
 }
 
-.search span.select-wrap i.icon-caret-down {
+.search span.select-wrap i.wptouch-icon-caret-down {
 	content: "\e844";
 	font: 110% 'wptouch-icons', sans-serif;
 	position: relative;

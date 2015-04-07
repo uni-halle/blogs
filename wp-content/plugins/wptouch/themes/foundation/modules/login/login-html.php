@@ -12,11 +12,11 @@ $login_args = array(
 ?>
 
 <div class="wptouch-login-wrap">
-	<i class="login-close icon-remove-sign"></i>
+	<i class="login-close wptouch-icon-remove-sign"></i>
 	<div class='wptouch-login-inner'>
 
 		<h3>
-			<i class='icon-key'></i> 
+			<i class='wptouch-icon-key'></i>
 			<?php _e( 'Login', 'wptouch-pro' ); ?>
 		</h3>
 

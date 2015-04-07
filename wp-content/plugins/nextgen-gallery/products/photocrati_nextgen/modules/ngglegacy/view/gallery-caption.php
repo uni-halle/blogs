@@ -25,15 +25,6 @@ Follow variables are useable :
 	</div>
 <?php } ?>
 
-<?php if ($gallery->show_piclens) { ?>
-	<!-- Piclense link -->
-	<div class="piclenselink">
-		<a class="piclenselink" href="<?php echo nextgen_esc_url($gallery->piclens_link) ?>">
-			<?php _e('[View with PicLens]','nggallery'); ?>
-		</a>
-	</div>
-<?php } ?>
-	
 	<!-- Thumbnails -->
     <?php $i = 0; ?>
 	<?php foreach ( $images as $image ) : ?>
@@ -42,11 +33,6 @@ Follow variables are useable :
 		<div class="ngg-gallery-thumbnail" >
 			<a href="<?php echo nextgen_esc_url($image->imageURL) ?>"
                title="<?php echo esc_attr($image->description) ?>"
-               data-src="<?php echo nextgen_esc_url($image->imageURL) ?>"
-               data-thumbnail="<?php echo nextgen_esc_url($image->thumbnailURL); ?>"
-               data-image-id="<?php echo esc_attr($image->pid); ?>"
-               data-title="<?php echo esc_attr($image->alttext); ?>"
-               data-description="<?php echo esc_attr($image->description); ?>"
                <?php echo $image->thumbcode ?> >
 				<?php if ( !$image->hidden ) { ?>
 				<img title="<?php echo esc_attr($image->alttext) ?>" alt="<?php echo esc_attr($image->alttext) ?>" src="<?php echo nextgen_esc_url($image->thumbnailURL) ?>" <?php echo $image->size ?> />

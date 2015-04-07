@@ -577,17 +577,20 @@ if (!empty($action)) {
 				<input style="margin:1px 0 0 1px;" id="default_icon" type="radio" name="icon" value="" checked />
 				</div>
 				<?php
-				  $iconlist = array();
-				  $dir = opendir(LEAFLET_PLUGIN_ICONS_DIR);
-				  while ($file = readdir($dir)) {
-					if ($file === false)
-					  break;
-					if ($file != "." and $file != "..")
-					  if (!is_dir($dir.$file) && ((substr($file, count($file)-5, 4) == '.png') || (substr($file, count($file)-5, 4) == '.jpg') || (substr($file, count($file)-5, 4) == '.gif')))
-						$iconlist[] = $file;
-				  }
-				  closedir($dir);
-				  sort($iconlist);
+				$iconlist = array();
+				$dir = opendir(LEAFLET_PLUGIN_ICONS_DIR);
+				while ($file = readdir($dir)) {
+					if ($file === false) {
+						break;
+					}
+					if ($file != "." and $file != "..") {
+						if (!is_dir($dir.$file) && ((substr($file, count($file)-5, 4) == '.png') || (substr($file, count($file)-5, 4) == '.jpg') || (substr($file, count($file)-5, 4) == '.gif'))) {
+							$iconlist[] = $file;
+						}
+					}
+				}
+				closedir($dir);
+				sort($iconlist);
 				foreach ($iconlist as $row)
 				  echo '<div style="text-align:center;float:left;line-height:0px;margin-bottom:3px;"><label for="' . $row . '"><img id="iconpreview" src="' . LEAFLET_PLUGIN_ICONS_URL . '/' . $row . '" title="' . $row . '" alt="' . $row . '" width="32" height="37" /></label><br/><input style="margin:1px 0 0 1px;" id="' . $row . '" type="radio" name="icon" value="' . $row . '" /></div>';
 				?>
@@ -872,7 +875,7 @@ if (!empty($action)) {
 				<form method="post">
 				<input type="hidden" name="action" value="listmarkers-layer" />
 				<?php wp_nonce_field('tool-nonce'); ?>
-				<strong><?php _e('Display a list of markers under the map','lmm') ?></strong>
+				<strong><?php _e('Display a list of markers below the map','lmm') ?></strong>
 			</td>
 			<td style="vertical-align:middle;" class="lmm-border">
 				<input id="layermaps_listmarkers_yes" type="radio" name="listmarkers-layer" value="1" checked />

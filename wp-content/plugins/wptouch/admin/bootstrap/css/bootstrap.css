@@ -868,7 +868,7 @@ input[type="submit"].btn.btn-mini {
   padding: 9px 15px;
   border-bottom: 1px solid #eee;
 }
-.modal-header .close {
+#wptouch-settings-area .modal-header .close {
   margin-top: 2px;
 }
 .modal-header h3 {
@@ -1190,7 +1190,7 @@ input[type="submit"].btn.btn-mini {
 .carousel-caption p {
   margin-bottom: 0;
 }
-.close {
+#wptouch-settings-area .close {
   float: right;
   font-size: 20px;
   font-weight: bold;
@@ -1200,14 +1200,14 @@ input[type="submit"].btn.btn-mini {
   opacity: 0.2;
   filter: alpha(opacity=20);
 }
-.close:hover {
+#wptouch-settings-area .close:hover {
   color: #000000;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.4;
   filter: alpha(opacity=40);
 }
-button.close {
+#wptouch-settings-area button.close {
   padding: 0;
   cursor: pointer;
   background: transparent;

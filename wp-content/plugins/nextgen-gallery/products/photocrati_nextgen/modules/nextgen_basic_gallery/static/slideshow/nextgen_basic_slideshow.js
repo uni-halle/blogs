@@ -29,7 +29,7 @@ jQuery.fn.nggShowSlideshow = function(args) {
         self.show();
         
         if (placeholder) {
-        	self.prepend('<img class="image-placeholder" src="' + placeholder + '" width="' + s.width + '" height="' + s.height + '" style="width: ' + s.width + 'px; height: ' + s.height + 'px;" />');
+        	self.prepend('<img class="image-placeholder" src="' + placeholder + '" width="' + s.width + '" height="' + s.height + '" style="width: ' + s.width + 'px; height: auto;" />');
         }
 
         if (self.children().length > 1) {

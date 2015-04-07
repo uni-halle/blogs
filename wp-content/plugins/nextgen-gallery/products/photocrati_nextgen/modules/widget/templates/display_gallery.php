@@ -1,6 +1,6 @@
 <?php
-$controller = C_Component_Registry::get_instance()->get_utility('I_Display_Type_Controller');
-$storage    = C_Component_Registry::get_instance()->get_utility('I_Gallery_Storage');
+$controller = C_Display_Type_Controller::get_instance();
+$storage    = C_Gallery_Storage::get_instance();
 
 $effect_code = $controller->get_effect_code($gallery->displayed_gallery);
 $settings    = $gallery->displayed_gallery->get_entity()->display_settings;

@@ -3,7 +3,7 @@
         <label for='<?php echo esc_attr($display_type_name); ?>_gallery_width'
                class="tooltip"
                title="<?php echo $gallery_dimensions_tooltip; ?>">
-            <?php echo_h($gallery_dimensions_label); ?>
+            <?php esc_html_e($gallery_dimensions_label); ?>
         </label>
     </td>
     <td>

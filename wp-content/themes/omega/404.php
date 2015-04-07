@@ -7,7 +7,7 @@
 
 get_header(); ?>
 
-	<main class="content"  role="main">
+	<main class="<?php echo omega_apply_atomic( 'main_class', 'content' );?>"  role="main">
 
 			<section class="error-404 not-found">
 				<header class="page-header">

@@ -17,30 +17,34 @@ class M_NextGen_Basic_Tagcloud extends C_Base_Module
 			NGG_BASIC_TAGCLOUD,
             'NextGen Basic Tagcloud',
             'Provides a tagcloud for NextGEN Gallery',
-            '0.9',
+            '0.11',
             'http://www.photocrati.com',
             'Photocrati Media',
             'http://www.photocrati.com'
         );
 
-		include_once('class.nextgen_basic_tagcloud_installer.php');
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_NextGen_Basic_Tagcloud_Installer');
+    }
+
+    function initialize()
+    {
+        parent::initialize();
+        if (is_admin()) {
+            $forms = C_Form_Manager::get_instance();
+            $forms->add_form(
+                NGG_DISPLAY_SETTINGS_SLUG, NGG_BASIC_TAGCLOUD
+            );
+        }
+
     }
 
     function _register_utilities()
     {
-        $this->get_registry()->add_utility('I_Taxonomy_Controller', 'C_Taxonomy_Controller');
+        if (!is_admin()) $this->get_registry()->add_utility('I_Taxonomy_Controller', 'C_Taxonomy_Controller');
     }
 
     function _register_adapters()
     {
-        // Provides settings fields and frontend rendering
-        $this->get_registry()->add_adapter(
-            'I_Display_Type_Controller',
-            'A_NextGen_Basic_Tagcloud_Controller',
-            $this->module_id
-        );
-
         // Provides validation for the display type
         $this->get_registry()->add_adapter(
             'I_Display_Type',
@@ -53,18 +57,6 @@ class M_NextGen_Basic_Tagcloud extends C_Base_Module
 			'A_NextGen_Basic_TagCloud_Mapper'
 		);
 
-		// Add routing for ngglegacy routes
-		$this->get_registry()->add_adapter(
-			'I_Routing_App',
-			'A_NextGen_Basic_TagCloud_Routes'
-		);
-
-		// Add legacy urls
-		$this->get_registry()->add_adapter(
-			'I_Routing_App',
-			'A_NextGen_Basic_TagCloud_Urls'
-		);
-
         if (M_Attach_To_Post::is_atp_url() || is_admin())
         {
             // Adds a display settings form
@@ -73,31 +65,48 @@ class M_NextGen_Basic_Tagcloud extends C_Base_Module
                 'A_NextGen_Basic_TagCloud_Form',
                 $this->module_id
             );
-            // Provides the forms for the settings
+        }
+
+        if (!is_admin()) {
+            // Provides settings fields and frontend rendering
             $this->get_registry()->add_adapter(
-                'I_Form_Manager',
-                'A_NextGen_Basic_TagCloud_Forms'
+                'I_Display_Type_Controller',
+                'A_NextGen_Basic_Tagcloud_Controller',
+                $this->module_id
+            );
+
+            // Add legacy urls
+            $this->get_registry()->add_adapter(
+                'I_Routing_App',
+                'A_NextGen_Basic_TagCloud_Urls'
             );
         }
     }
 
 	function _register_hooks()
 	{
-        if (!defined('NGG_DISABLE_LEGACY_SHORTCODES') || !NGG_DISABLE_LEGACY_SHORTCODES)
-        {
+        if (!is_admin() && (!defined('NGG_DISABLE_LEGACY_SHORTCODES') || !NGG_DISABLE_LEGACY_SHORTCODES)) {
             C_NextGen_Shortcode_Manager::add('tagcloud', array(&$this, 'render_shortcode'));
-        }
-        C_NextGen_Shortcode_Manager::add('nggtagcloud', array(&$this, 'render_shortcode'));
+            C_NextGen_Shortcode_Manager::add('nggtagcloud', array(&$this, 'render_shortcode'));
 
-        add_filter(
-            'the_posts',
-            array(
-                $this->get_registry()->get_utility('I_Taxonomy_Controller'),
-                'detect_ngg_tag'),
-            -10,
-            2
-        );
+            add_filter(
+                'the_posts',
+                array(
+                    C_Taxonomy_Controller::get_instance(),
+                    'detect_ngg_tag'),
+                -10,
+                2
+            );
+        }
+
+        add_action('ngg_routes', array(&$this, 'define_routes'));
 	}
+
+    function define_routes($router)
+    {
+        $slug = '/'.C_NextGen_Settings::get_instance()->router_param_slug;
+        $router->rewrite("{*}{$slug}{*}/tags/{\\w}{*}", "{1}{$slug}{2}/gallerytag--{3}{4}");
+    }
 
     /**
      * Gets a value from the parameter array, and if not available, uses the default value
@@ -124,7 +133,7 @@ class M_NextGen_Basic_Tagcloud extends C_Base_Module
         $params['source']       = $this->_get_param('source', 'tags', $params);
         $params['display_type'] = $this->_get_param('display_type', NGG_BASIC_TAGCLOUD, $params);
 
-		$renderer = $this->get_registry()->get_utility('I_Displayed_Gallery_Renderer');
+		$renderer = C_Displayed_Gallery_Renderer::get_instance();
         return $renderer->display_images($params, $inner_content);
     }
 
@@ -134,15 +143,32 @@ class M_NextGen_Basic_Tagcloud extends C_Base_Module
             'A_Nextgen_Basic_Tagcloud' => 'adapter.nextgen_basic_tagcloud.php',
             'A_Nextgen_Basic_Tagcloud_Controller' => 'adapter.nextgen_basic_tagcloud_controller.php',
             'A_Nextgen_Basic_Tagcloud_Form' => 'adapter.nextgen_basic_tagcloud_form.php',
-            'A_Nextgen_Basic_Tagcloud_Forms' => 'adapter.nextgen_basic_tagcloud_forms.php',
             'C_NextGen_Basic_Tagcloud_Installer' => 'class.nextgen_basic_tagcloud_installer.php',
             'A_Nextgen_Basic_Tagcloud_Mapper' => 'adapter.nextgen_basic_tagcloud_mapper.php',
-            'A_Nextgen_Basic_Tagcloud_Routes' => 'adapter.nextgen_basic_tagcloud_routes.php',
             'A_Nextgen_Basic_Tagcloud_Urls' => 'adapter.nextgen_basic_tagcloud_urls.php',
-            'I_Taxonomy_Controller' => 'interface.taxonomy_controller.php',
             'C_Taxonomy_Controller' => 'class.taxonomy_controller.php'
         );
     }
+}
+
+class C_NextGen_Basic_Tagcloud_Installer extends C_Gallery_Display_Installer
+{
+	/**
+	 * Installs the display type for NextGEN Basic Tagcloud
+	 */
+	function install()
+	{
+		$this->install_display_type(
+			NGG_BASIC_TAGCLOUD, array(
+				'title'					=>	__('NextGEN Basic TagCloud', 'nggallery'),
+				'entity_types'			=>	array('image'),
+				'preview_image_relpath'	=>	'photocrati-nextgen_basic_tagcloud#preview.gif',
+				'default_source'		=>	'tags',
+				'view_order' => NGG_DISPLAY_PRIORITY_BASE + 100
+			)
+
+		);
+	}
 }
 
 new M_NextGen_Basic_Tagcloud();

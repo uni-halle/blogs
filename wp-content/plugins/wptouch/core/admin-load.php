@@ -130,13 +130,14 @@ function wptouch_admin_render_menu() {
 	include( WPTOUCH_DIR . '/core/admin-render.php' );
 }
 
+/*	TODO: Deprecated
 function wptouch_admin_can_render_setting( $setting ) {
 	// Check the admin complexity level, i.e. Beginner, Advanced
 	$admin_level = wptouch_get_quick_setting_value( 'wptouch_pro', 'settings_mode' );
 
 	return ( $admin_level >= $setting->level );
 }
-
+*/
 function wptouch_admin_render_setting( $setting ) {
 	require_once( WPTOUCH_DIR . '/core/settings.php' );
 
@@ -251,8 +252,9 @@ function wptouch_admin_render_custom_page( $slug = false ) {
 	$panel_options = do_action( 'wptouch_admin_page_render_custom', $admin_panel_name );
 }
 
+/* TODO: Deprecated
 function wptouch_section_has_visible_settings( $section ) {
-	$viewable_settings = 0;
+	$viewable_settings = 1;
 
 	$settings = wptouch_get_settings();
 
@@ -267,7 +269,7 @@ function wptouch_section_has_visible_settings( $section ) {
 
 	return ( $viewable_settings > 0 );
 }
-
+*/
 
 function wptouch_admin_panel_get_classes( $classes = false ) {
 	if ( $classes ) {

@@ -11,9 +11,7 @@ get_header(); ?>
 
 		<?php 
 		do_action( 'omega_before_content' );
-
 		do_action( 'omega_content' );
-
 		do_action( 'omega_after_content' );
 		?>
 

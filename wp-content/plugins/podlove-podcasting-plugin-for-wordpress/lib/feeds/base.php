@@ -91,6 +91,36 @@ function override_feed_head( $hook, $podcast, $feed, $format ) {
 		echo $feed->get_alternate_links();
 	}, 9 );
  	
+ 	// add rss image
+	add_action( $hook, function() use ( $podcast ) {
+
+		$image = [
+			'url'   => $podcast->cover_image,
+			'title' => $podcast->title,
+			'link'  => apply_filters( 'podlove_feed_link', \Podlove\get_landing_page_url() )
+		];
+		$image = apply_filters('podlove_feed_image', $image);
+
+		if (!$image['url'])
+			return;
+
+		$dom = new \Podlove\DomDocumentFragment;
+		$image_tag = $dom->createElement('image');
+		
+		foreach ($image as $tag_name => $tag_text) {
+			if ($tag_text) {
+				$tag = $dom->createElement($tag_name);
+				$tag_text = $dom->createTextNode($tag_text);
+				$tag->appendChild($tag_text);
+				$image_tag->appendChild($tag);
+			}
+		}
+
+		$dom->appendChild($image_tag);
+
+		echo (string) $dom;
+	} );
+
 	add_action( $hook, function () use ( $podcast, $feed, $format ) {
 		echo PHP_EOL;
 
@@ -194,7 +224,6 @@ function override_feed_entry( $hook, $podcast, $feed, $format ) {
 			} else {
 				$enclosure_url = $episode->enclosure_url( $feed->episode_asset(), "feed", $feed->slug );
 			}
-			$enclosure_url = htmlentities($enclosure_url);
 
 			$chapters = new \Podlove\Feeds\Chapters( $episode );
 			$chapters->render( 'inline' );
@@ -208,7 +237,7 @@ function override_feed_entry( $hook, $podcast, $feed, $format ) {
 			));
 			$xml .= apply_filters( 'podlove_deep_link', $deep_link, $feed );
 			
-			$xml .= apply_filters( 'podlove_feed_enclosure', '', $enclosure_url, $enclosure_file_size, $format->mime_type );
+			$xml .= apply_filters( 'podlove_feed_enclosure', '', $enclosure_url, $enclosure_file_size, $format->mime_type, $file );
 
 			$duration = sprintf( '<itunes:duration>%s</itunes:duration>', $episode->get_duration( 'HH:MM:SS' ) );
 			$xml .= apply_filters( 'podlove_feed_itunes_duration', $duration );

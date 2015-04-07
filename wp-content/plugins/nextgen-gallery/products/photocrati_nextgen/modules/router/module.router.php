@@ -13,13 +13,12 @@ class M_Router extends C_Base_Module
 			'photocrati-router',
 			'Router for Pope',
 			'Provides routing capabilities for Pope modules',
-			'0.6',
+			'0.7',
 			'http://www.photocrati.com',
 			'Photocrati Media',
 			'http://www.photocrati.com'
 		);
 
-		include_once('class.router_installer.php');
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_Router_Installer');
 	}
 
@@ -41,12 +40,20 @@ class M_Router extends C_Base_Module
             'C_Router' => 'class.router.php',
             'C_Http_Response_Controller' => 'class.http_response_controller.php',
             'C_Routing_App' => 'class.routing_app.php',
-            'I_Router' => 'interface.router.php',
-            'I_Http_Response' => 'interface.http_response.php',
-            'I_Routing_App' => 'interface.routing_app.php',
             'Mixin_Url_Manipulation' => 'mixin.url_manipulation.php'
         );
     }
+}
+
+class C_Router_Installer
+{
+	function install()
+	{
+		$settings = C_NextGen_Settings::get_instance();
+		$settings->set_default_value('router_param_separator', '--');
+		$settings->set_default_value('router_param_prefix', '');
+		$settings->set_default_value('router_param_slug', 'nggallery');
+	}
 }
 
 new M_Router;

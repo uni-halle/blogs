@@ -11,7 +11,7 @@
                 name="<?php print esc_attr($display_type_name . '[' . $name . ']'); ?>"
                 class="<?php print esc_attr($display_type_name . '_' . $name); ?>">
             <?php foreach ($options as $key => $val) { ?>
-                <option value='<?php print esc_attr($key); ?>' <?php selected($key, $value); ?>><?php print htmlentities(_($val)); ?></option>
+                <option value='<?php print esc_attr($key); ?>' <?php selected($key, $value); ?>><?php print esc_html__($val); ?></option>
             <?php } ?>
         </select>
     </td>

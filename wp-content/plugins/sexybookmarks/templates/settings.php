@@ -1,16 +1,12 @@
+<?php ShareaholicAdmin::show_header(); ?>
 <div class='wrap'>
 <div id="icon-options-general" class="icon32"></div>
-<h2><?php echo sprintf(__('Shareaholic: App Manager', 'shareaholic')); ?></h2>
+<h2><?php echo sprintf(__('App Manager', 'shareaholic')); ?></h2>
 
 <div class='reveal-modal' id='editing_modal'>
   <div id='iframe_container' class='bg-loading-img' allowtransparency='true'></div>
   <a class="close-reveal-modal">&#215;</a>
 </div>
-
-<script>
-window.first_part_of_url = '<?php echo Shareaholic::URL . '/publisher_tools/' . $settings['api_key']?>/';
-window.verification_key = '<?php echo $settings['verification_key'] ?>'
-</script>
 
 <div class='unit size3of5'>
   <form name="settings" method="post" action="<?php echo $action; ?>">
@@ -38,7 +34,7 @@ window.verification_key = '<?php echo $settings['verification_key'] ?>'
               <?php } ?>>
               <label for="recommendations_<?php echo "{$page_type}_below_content" ?>"><?php echo ucfirst($position) ?> Content</label>
               <button data-app='recommendations'
-                      data-location_id='<?php echo $location_id ?>'
+                      data-location_id='<?php echo intval($location_id); ?>'
                       data-href="recommendations/locations/{{id}}/edit"
                       class="mll btn btn-success">
               <?php _e('Customize', 'shareaholic'); ?></button>
@@ -81,7 +77,7 @@ window.verification_key = '<?php echo $settings['verification_key'] ?>'
             <?php } ?>>
             <label for="share_buttons_<?php echo "{$page_type}_{$position}_content" ?>"><?php echo ucfirst($position) ?> Content</label>
             <button data-app='share_buttons'
-                    data-location_id='<?php echo $location_id ?>'
+                    data-location_id='<?php echo intval($location_id); ?>'
                     data-href='share_buttons/locations/{{id}}/edit'
                     class="mll btn btn-success">
             <?php _e('Customize', 'shareaholic'); ?></button>

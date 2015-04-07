@@ -1,12 +1,12 @@
 === Plugin Name ===
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
-Requires at least: 3.6
-Stable tag: 3.6.6
-Tested up to: 4.1
+Requires at least: 3.8
+Stable tag: 3.7.5.3
+Tested up to: 4.1.1
 License: GPLv2
 
-Create a slick mobile WordPress website with just a few clicks.
+Make your WordPress website mobile-friendly with just a few clicks.
 
 == Description ==
 
@@ -16,11 +16,11 @@ The administration panel allows you to customize many aspects of its appearance,
 
 The theme also includes the ability for visitors to switch between the theme on your mobile WordPress website and your website's regular theme.
 
-**Now Available: WPtouch Pro + BraveNewCloud**
+**Go Pro for support and enhanced themes & features**
 
-With six themes and three new extensions installed & updated right from our new BraveNewCloud service, it's the best WPtouch yet!
+WPtouch Pro includes a variety of enhanced themes for blogs, businesses, and WooCommerce retailers; extensions that add rich advertising options, advanced web font controls, caching, and more; and of course top-notch one-on-one support from our professional team.
 
-For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wptouch-front-readme&utm_medium=web&utm_source=wordpressdotorg "WPtouch.com").  You may also be interested in [Response](http://wpresponse.com/), a new BraveNewCode service that seamlessly integrates with WPtouch.
+For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wptouch-front-readme&utm_medium=web&utm_source=wordpressdotorg "WPtouch.com"). You may also be interested in [Response](http://wpresponse.com/), a new BraveNewCode service that seamlessly integrates with WPtouch.
 
 'WPtouch' & ’WPtouch Pro' are trademarks of BraveNewCode Inc.
 
@@ -39,6 +39,33 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.7.5.3 (March 30, 2015) =
+
+* Fixed: Bug with saving filtered URL fragments
+
+= Version 3.7.5 (March 23, 2015) =
+
+* Added: wptouch-icons-old module for compatibility with custom themes that haven't migrated their icon classnames.
+* Added: Improved compatibility with page builder plugin (process posts and pages for alternate mobile content when the_content is filtered). (Pro Only)
+* Added: Improved compatibility with custom add to cart links in MobileStore. (Pro Only)
+* Changed: Plugin repository description and labels.
+* Changed: Simplified admin (eliminated basic/advanced admin mode switching) and streamlined settings.
+* Changed: Labels no longer translated to placeholders for select controls in MobileStore. (Pro Only)
+* Changed: Removed 'upgrade available' and 'notifications' buttons from admin.
+* Fixed: Applying 'wptouch_settings_override_defaults' filter to default settings.
+* Fixed: Notice in MobileStore when WooCommerce is not active. (Pro Only)
+
+= Version 3.7.3 (March 5, 2015) =
+
+* Changed: Further refinement of icon sets, ensuring compatibility with Simple Social Icons plugin and other sources of icon fonts.
+* Fixed: Reply link was being displayed beside comments with nested comments enabled, even when comments were closed.
+
+= Version 3.7 (February 25, 2015) =
+
+* Added: Overhauled support for shortcodes provided by desktop themes. WPtouch Pro can now optionally load content from WordPress with shortcodes processed. (Pro Only)
+* Fixed: Bug in URL-based filtering
+* Fixed: Possible hidden redirect exploit on mobile/desktop switcher
 
 = Version 3.6.6 (January 29, 2015) =
 

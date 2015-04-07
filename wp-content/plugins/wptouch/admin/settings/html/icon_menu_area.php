@@ -28,7 +28,7 @@
 					}
 				?>
 			</select>
-			<i class="wptouch-tooltip icon-info-sign" data-original-title="<?php _e( 'Active menus used in this theme.', 'wptouch-pro' ); ?>"></i>
+			<i class="wptouch-tooltip wptouch-icon-info-sign" data-original-title="<?php _e( 'Active menus used in this theme.', 'wptouch-pro' ); ?>"></i>
 		</div>
 		<div id="menu-area">
 			<div class="context-info clearfix">

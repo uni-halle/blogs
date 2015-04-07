@@ -27,6 +27,28 @@ class MediaFile extends Base {
 		return EpisodeAsset::find_by_id( $this->episode_asset_id );
 	}
 
+	/**
+	 * Find one downloadable example file.
+	 * 
+	 * - JOIN episode to avoid dead media files
+	 * - ORDER BY e.id DESC, mf.id ASC: get a recent episode and the first asset, which is probably an audio file
+	 */
+	public static function find_example() {
+		return self::find_one_by_sql("
+			SELECT
+				mf.*
+			FROM
+				" . MediaFile::table_name() . " mf
+				JOIN " . EpisodeAsset::table_name() . " a ON a.id = mf.`episode_asset_id`
+				JOIN " . Episode::table_name() . " e ON e.id = mf.`episode_id`
+			WHERE
+				a.`downloadable` 
+				AND mf.size > 0
+			ORDER BY e.id DESC, mf.id ASC
+			LIMIT 0,1
+		");
+	}
+
 	public static function find_or_create_by_episode_id_and_episode_asset_id( $episode_id, $episode_asset_id ) {
 		
 		if ( ! $file = self::find_by_episode_id_and_episode_asset_id( $episode_id, $episode_asset_id ) ) {
@@ -97,7 +119,7 @@ class MediaFile extends Base {
 					$path = '?download_media_file=' . $this->id;
 					$path = $this->add_ptm_parameters($path, $params);
 				}
-				return site_url($path);
+				return home_url($path);
 				break;
 			default:
 				// tracking is off, return raw URL
@@ -199,11 +221,11 @@ class MediaFile extends Base {
 		// do not change the filesize if http_code = 0
 		// aka "an error occured I don't know how to deal with" (probably timeout)
 		// => change to proper handling once "Conflicts" are introduced
-		if ( $http_code && $http_code !== 304 )
+		if ( podlove_is_resolved_and_reachable_http_status($http_code) && $http_code !== 304 )
 			$this->size = $header['download_content_length'];
 
 		if ( $this->size <= 0 )
-			$this->etag = '';
+			$this->etag = NULL;
 
 		return $header;
 	}
@@ -240,18 +262,16 @@ class MediaFile extends Base {
 			);
 		}
 
-		// look for ETag and safe for later
-		if ( preg_match( '/ETag:\s*"([^"]+)"/i', $response['response'], $matches ) ) {
-			$this->etag = $matches[1];
-		}
-
 		// skip validation if ETag did not change
 		if ( (int) $header["http_code"] === 304 ) {
-			// Log::get()->addInfo(
-			// 	'Validating media file: File Not Modified.',
-			// 	array( 'media_file_id' => $this->id )
-			// );
 			return;
+		}
+
+		// look for ETag and safe for later
+		if (podlove_is_resolved_and_reachable_http_status($header["http_code"]) && preg_match( '/ETag:\s*"([^"]+)"/i', $response['response'], $matches )) {
+			$this->etag = $matches[1];
+		} else {
+			$this->etag = NULL;
 		}
 
 		do_action( 'podlove_media_file_content_has_changed', $this->id );
@@ -313,20 +333,7 @@ class MediaFile extends Base {
 			curl_setopt( $curl, CURLOPT_MAXREDIRS, 5 );         // maximum number of redirects
 		}
 
-		curl_setopt(
-			$curl,
-			CURLOPT_USERAGENT,
-			sprintf(
-				'PHP/%s (; ) cURL/%s(OpenSSL/%s; zlib/%s) Wordpress/%s (; ) %s/%s (; )',
-				phpversion(),
-				$curl_version['version'],
-				$curl_version['ssl_version'],
-				$curl_version['libz_version'],
-				get_bloginfo( 'version' ),
-				\Podlove\get_plugin_header( 'Name' ),
-				\Podlove\get_plugin_header( 'Version' )
-			)
-		);
+		curl_setopt( $curl, CURLOPT_USERAGENT, \Podlove\Http\Curl::user_agent() );
 		
 		$response        = curl_exec( $curl );
 		$response_header = curl_getinfo( $curl );

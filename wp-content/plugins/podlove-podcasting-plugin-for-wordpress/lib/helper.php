@@ -46,6 +46,10 @@ function get_blog_prefix() {
 	return $blog_prefix;
 }
 
+function get_help_link($tab_id, $title = '<sup>?</sup>') {
+	return sprintf('<a href="#" data-podlove-help="%s">%s</a>', $tab_id, $title);
+}
+
 function get_setting( $namespace, $name ) {
 	
 	$defaults = array(
@@ -134,6 +138,20 @@ function slugify($slug) {
 	$slug = str_replace("%2F", "/", $slug);
 
 	return empty($slug) ? 'n-a' : $slug;
+}
+
+function cache_for($cache_key, $callback, $duration = 31536000 /* 1 year */)
+{
+	if (($value = get_transient($cache_key)) !== FALSE) {
+		return $value;
+	} else {
+		$value = call_user_func($callback);
+		
+		if ($value !== FALSE)
+			set_transient($cache_key, $value, $duration);
+
+		return $value;
+	}
 }
 
 namespace Podlove\Form;

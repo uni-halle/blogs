@@ -30,23 +30,26 @@ class nggMeta{
      * @param bool $onlyEXIF parse only exif if needed
      * @return
      */
-    function nggMeta($pic_id, $onlyEXIF = false) {
+    function nggMeta($image_or_id, $onlyEXIF = false) {
 
-        //get the path and other data about the image
-        $this->image = nggdb::find_image( $pic_id );
+	    if (is_int($image_or_id)) {
+		    //get the path and other data about the image
+		    $this->image = C_Image_Mapper::get_instance()->find( $image_or_id);
+	    }
+	    else $this->image = $image_or_id;
 
-        $this->image = apply_filters( 'ngg_find_image_meta', $this->image  );
+	    $imagePath = C_Gallery_Storage::get_instance()->get_image_abspath($this->image);
 
-        if ( !file_exists( $this->image->imagePath ) )
+        if ( !file_exists($imagePath ) )
             return false;
 
-        $this->size = @getimagesize ( $this->image->imagePath , $metadata );
+        $this->size = @getimagesize ( $imagePath , $metadata );
 
         if ($this->size && is_array($metadata)) {
 
             // get exif - data
             if ( is_callable('exif_read_data'))
-                $this->exif_data = @exif_read_data($this->image->imagePath , 0, true );
+                $this->exif_data = @exif_read_data($imagePath , 0, true );
 
             // stop here if we didn't need other meta data
             if ($onlyEXIF)
@@ -58,7 +61,7 @@ class nggMeta{
 
             // get the xmp data in a XML format
             if ( is_callable('xml_parser_create'))
-                $this->xmp_data = $this->extract_XMP($this->image->imagePath );
+                $this->xmp_data = $this->extract_XMP($imagePath );
 
             return true;
         }
@@ -502,6 +505,8 @@ class nggMeta{
 
 		$date = time();
 
+	    $imagePath = C_Gallery_Storage::get_instance()->get_image_abspath($this->image);
+
 		// Try XMP first
 		if (isset($this->xmp_array['created_timestamp'])) {
 			$date = @strtotime($this->xmp_array['created_timestamp']);
@@ -522,8 +527,8 @@ class nggMeta{
 		}
 
 		// If all else fails, use the file creation time
-		else if ($this->image->imagePath) {
-			$date = @filectime($this->image->imagePath);
+		else if ($imagePath) {
+			$date = @filectime($imagePath);
 		}
 
 		// Failback

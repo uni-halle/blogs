@@ -1,3 +1,6 @@
+// Give this window an ID
+this.id = 'ngg-attach_to_post';
+
 // Provides a function to close the TinyMCE popup window
 function close_attach_to_post_window()
 {

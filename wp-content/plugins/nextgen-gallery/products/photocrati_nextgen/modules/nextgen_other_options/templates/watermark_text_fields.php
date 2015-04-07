@@ -1,25 +1,25 @@
 <tr>
 	<td class="column1 align-to-top">
 		<label for="watermark_text">
-			<?php echo_h($watermark_text_label)?>
+			<?php esc_html_e($watermark_text_label)?>
 		</label>
 	</td>
 	<td>
-		<textarea name="watermark_options[wmText]" id="watermark_text"><?php echo_h($watermark_text)?></textarea>
+		<textarea name="watermark_options[wmText]" id="watermark_text"><?php esc_html_e($watermark_text)?></textarea>
 	</td>
 </tr>
 
 <tr>
 	<td>
 		<label for="watermark_opacity">
-			<?php echo_h($opacity_label)?>
+			<?php esc_html_e($opacity_label)?>
 		</label>
 	</td>
 	<td>
 		<select name="watermark_options[wmOpaque]" id="watermark_opacity">
 		<?php for ($i=200; $i>1; $i--): ?>
 			<option <?php selected($i, $opacity)?>>
-				<?php echo_h($i)?>
+				<?php esc_html_e($i)?>
 			</option>
 		<?php endfor ?>
 		</select>%
@@ -29,14 +29,14 @@
 <tr>
 	<td class="column1">
 		<label for="font_family">
-			<?php echo_h($font_family_label); ?>
+			<?php esc_html_e($font_family_label); ?>
 		</label>
 	</td>
 	<td>
 		<select id="font_family" name="watermark_options[wmFont]">
 		<?php foreach ($fonts as $font): ?>
 			<option <?php selected($font, $font_family); ?>>
-				<?php echo_h($font); ?>
+				<?php esc_html_e($font); ?>
 			</option>
 		<?php endforeach ?>
 		</select>
@@ -46,13 +46,13 @@
 <tr>
 	<td>
 		<label for="watermark_font_size">
-			<?php echo_h($font_size_label)?>
+			<?php esc_html_e($font_size_label)?>
 		</label>
 	</td>
 	<td>
 		<select name="watermark_options[wmSize]" id="watermark_font_size">
             <?php for($i=0; $i<200; $i++) { ?>
-                <option <?php selected($i, (int)$font_size) ?>><?php echo_h($i)?></option>
+                <option <?php selected($i, (int)$font_size) ?>><?php esc_html_e($i)?></option>
             <?php } ?>
 		</select>px
 	</td>
@@ -61,7 +61,7 @@
 <tr>
 	<td class="align-to-top">
 		<label for="font_color">
-			<?php echo_h($font_color_label)?>
+			<?php esc_html_e($font_color_label)?>
 		</label>
 	</td>
 	<td>

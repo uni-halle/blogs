@@ -51,6 +51,18 @@ class ShareaholicAdmin {
   }
 
   /**
+   * Renders footer
+   */
+  public static function show_header() {
+    $settings = ShareaholicUtilities::get_settings();
+    $settings['base_link'] = Shareaholic::URL . '/publisher_tools/' . $settings['api_key'] . '/';
+    $settings['website_settings_link'] = $settings['base_link'] . 'websites/edit?verification_key=' . $settings['verification_key'];
+    ShareaholicUtilities::load_template('header', array(
+      'settings' => $settings
+    ));
+  }
+
+  /**
    * Renders SnapEngage
    */
   public static function include_snapengage() {
@@ -85,6 +97,19 @@ class ShareaholicAdmin {
   public static function add_location() {
     $location = $_POST['location'];
     $app_name = $location['app_name'];
+
+    // if location id is not numeric throw bad request
+    // or user lacks permissions
+    // or does not have the nonce token
+    // otherwise forcibly change it to a number
+    if (!wp_verify_nonce( $_REQUEST['nonce'], 'shareaholic_add_location') ||
+        !current_user_can('publish_posts') || !is_numeric($location['id'])) {
+      header('HTTP/1.1 400 Bad Request', true, 400);
+      die();
+    } else {
+      $location['id'] = intval($location['id']);
+    }
+
     ShareaholicUtilities::update_options(array(
       'location_name_ids' => array(
         $app_name => array(

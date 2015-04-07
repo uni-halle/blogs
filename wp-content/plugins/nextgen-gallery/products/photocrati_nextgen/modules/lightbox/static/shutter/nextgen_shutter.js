@@ -4,8 +4,8 @@ jQuery(function($) {
         selector.addClass('shutterset');
         window.shutterSettings = {
             imageCount: true,
-            msgLoading: ngg_lightbox_i18n.msgLoading,
-            msgClose: ngg_lightbox_i18n.msgClose
+            msgLoading: nextgen_shutter_i18n.msgLoading,
+            msgClose: nextgen_shutter_i18n.msgClose
         };
         shutterReloaded.init();
     };

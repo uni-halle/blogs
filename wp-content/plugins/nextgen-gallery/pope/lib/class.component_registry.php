@@ -1,12 +1,22 @@
 <?php
 
+if (!defined('POPE_VERSION')) { die('Use autoload.php'); }
+
+
 /**
  *  A registry of registered products, modules, adapters, and utilities.
+ *
+ *
+ *  How the registry gets initialized:
+ * 1) Each product tells the registry where to find products and modules
+ * 2) We load all products
  */
 class C_Component_Registry
 {
     static  $_instance = NULL;
-    var     $_meta_info = array(); /* Contains a cached mapping of module_id -> module_info (including the path the module was installed to) */
+	var     $_searched_paths = array();
+	var     $_blacklist = array();
+	var     $_meta_info = array();
     var     $_default_path = NULL;
     var     $_modules = array();
     var     $_products = array();
@@ -16,13 +26,14 @@ class C_Component_Registry
     var     $_module_type_cache_count = 0;
 
 
+
     /**
      * This is a singleton object
      */
     private function __construct()
     {
-			// Create an autoloader
-			spl_autoload_register(array($this, '_module_autoload'), TRUE);
+        // Create an autoloader
+        spl_autoload_register(array($this, '_module_autoload'), TRUE);
     }
 
 
@@ -39,130 +50,58 @@ class C_Component_Registry
         return self::$_instance;
     }
 
-    /**
-     * Saves the registry to disk
-     * @param string $config_file
-     */
-    function save($config_file)
-    {
-        $fp = FALSE;
-        $retval = TRUE;
+	function require_module_file($module_file_abspath)
+	{
+		// We don't include (require) module files that have the same name. This
+		// avoids loading module.autoupdate.php from two products
+		static $already_required = array();
+		$relpath = basename($module_file_abspath);
+		if (!in_array($relpath, $already_required)) {
+			@require_once($module_file_abspath);
+			$already_required[] = $relpath;
+		}
+	}
 
-        try {
-            $fp = fopen($config_file, 'w');
-            fwrite($fp, json_encode(array(
-                'modules' => $this->_modules,
-                'products' => $this->_products,
-                'adapters' => $this->_adapters,
-                'utilities'=> $this->_utilities
-            )));
-        }
-        catch (Exception $e) {
-            if ($fp) fclose($fp);
-            $retval = FALSE;
-        }
-        if ($fp) fclose($fp);
+	function has_searched_path_before($abspath)
+	{
+		return in_array($abspath, $this->_searched_paths);
+	}
 
-        return $retval;
-    }
-
-
-    function load($config_file)
-    {
-        $fp = FALSE;
-        $retval = TRUE;
-
-        try {
-            $fp = fopen($config_file);
-            $json = json_decode(fread($fp), TRUE);
-            $this->_modules = array_merge($this->_modules, $json['modules']);
-            $this->_products = array_merge($this->_products, $json['products']);
-            $this->_adapters = array_merge($this->_adapters, $json['adapters']);
-            $this->_utilities = array_merge($this->_utilities, $json['utilities']);
-        }
-        catch (Exception $e) {
-            if ($fp) fclose($fp);
-            $retval = FALSE;
-        }
-        if ($fp) fclose($fp);
-
-        return $retval;
-    }
+	function mark_as_searched_path($abspath)
+	{
+		$this->_searched_paths[] = $abspath;
+	}
 
 
     /**
      * Adds a path in the search paths for loading modules
      * @param string $path
-     * @param bool $recurse - note, it will only recurse 1 level in the hierarchy
+     * @param bool $recurse - TRUE, FALSE, or the number of levels to recurse
      * @param bool $load_all - loads all modules found in the path
      */
     function add_module_path($path, $recurse = false, $load_all = false)
     {
-    	if ($this->get_default_module_path() == null)
-    	{
-    		$this->set_default_module_path($path);
-    	}
+	    if (!$recurse || (!$this->has_searched_path_before($path))) {
 
-    	$scan = $this->_scan_module_path($path, $recurse);
+		    // If no default module path has been set, then set one now
+		    if ($this->get_default_module_path() == null)  {
+			    $this->set_default_module_path($path);
+		    }
 
-    	if ($scan != null)
-    	{
-    		$this->_meta_info = array_merge($this->_meta_info, $scan);
+		    // We we've been passed a module file, then include it
+		    if (@file_exists($path) && is_file($path)) {
+			    $this->require_module_file($path);
+		    }
 
-    		if ($load_all)
-    		{
-    			$module_list = array_keys($scan);
-    			$load_list = array();
-    			$count = count($module_list);
-    			$ret = true;
+		    // Recursively find product and module files in this path
+		    else foreach ($this->find_product_and_module_files($path, $recurse) as $file_abspath) {
+			    $this->require_module_file($file_abspath);
+		    }
 
-    			for ($i = 0; $i < $count; $i++)
-    			{
-    				$module_id = $module_list[$i];
-    				$info = isset($scan[$module_id]) ? $scan[$module_id] : null;
-  					$before_index = null;
+		    $this->mark_as_searched_path($path);
+	    }
 
-    				if (isset($info['before-list']))
-    				{
-    					$before_list = $info['before-list'];
-
-    					foreach ($before_list as $before_module)
-    					{
-    						$load_index = array_search($before_module, $load_list);
-
-    						if ($load_index !== false)
-    						{
-    							if ($before_index === null || $load_index < $before_index)
-    							{
-    								$before_index = $load_index;
-    							}
-    						}
-    					}
-    				}
-
-  					if ($before_index !== null)
-  					{
-  						array_splice($load_list, $before_index, 0, array($module_id));
-  					}
-  					else
-  					{
-  						$load_list[] = $module_id;
-  					}
-    			}
-
-    			foreach ($load_list as $module_id)
-    			{
-    			  $loaded = $this->load_module($module_id);
-    				$ret = $ret && $loaded;
-    			}
-
-    			return $ret;
-    		}
-
-    		return true;
-    	}
-
-    	return false;
+	    if ($load_all) $this->load_all_modules();
     }
 
 
@@ -172,7 +111,7 @@ class C_Component_Registry
      */
     function get_default_module_path()
     {
-    	return $this->_default_path;
+        return $this->_default_path;
     }
 
 
@@ -182,7 +121,7 @@ class C_Component_Registry
      */
     function set_default_module_path($path)
     {
-    	$this->_default_path = $path;
+        $this->_default_path = $path;
     }
 
 
@@ -193,15 +132,15 @@ class C_Component_Registry
      */
     function get_module_path($module_id)
     {
-    	if (isset($this->_meta_info[$module_id])) {
-    		$info = $this->_meta_info[$module_id];
+        if (isset($this->_meta_info[$module_id])) {
+            $info = $this->_meta_info[$module_id];
 
-    		if (isset($info['path'])) {
-    			return $info['path'];
-    		}
-    	}
+            if (isset($info['path'])) {
+                return $info['path'];
+            }
+        }
 
-    	return null;
+        return null;
     }
 
 
@@ -212,15 +151,20 @@ class C_Component_Registry
      */
     function get_module_dir($module_id)
     {
-    	$path = $this->get_module_path($module_id);
+        $path = $this->get_module_path($module_id);
 
-    	if ($path != null) {
-    		return dirname($path);
-    	}
+        if ($path != null) {
+            return dirname($path);
+        }
 
-    	return null;
+        return null;
     }
 
+
+	function is_module_loaded($module_id)
+	{
+		return (isset($this->_meta_info[$module_id]) && isset($this->_meta_info[$module_id]['loaded']) && $this->_meta_info[$module_id]['loaded']);
+	}
 
     /**
      * Loads a module's code according to its dependency list
@@ -228,22 +172,30 @@ class C_Component_Registry
      */
     function load_module($module_id)
     {
-    	return $this->_load_module_internal($module_id);
+        $retval = FALSE;
+
+	    if (($module = $this->get_module($module_id)) && !$this->is_module_loaded($module_id) && !$this->is_blacklisted($module_id)) {
+			$module->load();
+		    $retval = $this->_meta_info[$module_id]['loaded'] = TRUE;
+
+	    }
+
+	    return $retval;
     }
 
     function load_all_modules($type = null)
     {
-    	$modules = $this->get_known_module_list();
-    	$ret = true;
+        $modules = $this->get_known_module_list();
+        $ret = true;
 
-    	foreach ($modules as $module_id)
-    	{
-    		if ($type == null || $this->get_module_meta($module_id, 'type') == $type) {
-    			$ret = $this->load_module($module_id) && $ret;
-    		}
-    	}
+        foreach ($modules as $module_id)
+        {
+            if ($type == null || $this->get_module_meta($module_id, 'type') == $type) {
+                $ret = $this->load_module($module_id) && $ret;
+            }
+        }
 
-    	return $ret;
+        return $ret;
     }
 
 
@@ -253,31 +205,32 @@ class C_Component_Registry
      */
     function initialize_module($module_id)
     {
-		$retval = FALSE;
-    	if (isset($this->_modules[$module_id])) {
-    		$module = $this->_modules[$module_id];
+        $retval = FALSE;
 
-    		if (!$module->initialized) {
-				if ($module->has_method('initialize'))
-					$module->initialize();
+        if (isset($this->_modules[$module_id])) {
+            $module = $this->_modules[$module_id];
 
-    			$module->initialized = true;
-    		}
-			$retval = TRUE;
-    	}
-		return $retval;
+            if ($this->is_module_loaded($module_id) && !$module->initialized) {
+                if (method_exists($module, 'initialize'))
+                    $module->initialize();
+
+                $module->initialized = true;
+            }
+            $retval = TRUE;
+        }
+        return $retval;
     }
 
 
-	/**
-	 * Initializes an already loaded product
-	 * @param string $product_id
-	 * @return bool
-	 */
-	function initialize_product($product_id)
-	{
-		return $this->initialize_module($product_id);
-	}
+    /**
+     * Initializes an already loaded product
+     * @param string $product_id
+     * @return bool
+     */
+    function initialize_product($product_id)
+    {
+        return $this->initialize_module($product_id);
+    }
 
 
     /**
@@ -285,12 +238,12 @@ class C_Component_Registry
      */
     function initialize_all_modules()
     {
-    	$module_list = $this->get_module_list();
+        $module_list = $this->get_loaded_module_list();
 
-    	foreach ($module_list as $module_id)
-    	{
-    		$this->initialize_module($module_id);
-    	}
+        foreach ($module_list as $module_id)
+        {
+            $this->initialize_module($module_id);
+        }
     }
 
 
@@ -301,9 +254,19 @@ class C_Component_Registry
      */
     function add_module($module_id, $module_object)
     {
-    	if (!isset($this->_modules[$module_id])) {
-    		$this->_modules[$module_id] = $module_object;
-    	}
+        if (!isset($this->_modules[$module_id])) {
+            $this->_modules[$module_id] = $module_object;
+        }
+
+	    if (!isset($this->_meta_info[$module_id])) {
+		    $klass = new ReflectionClass($module_object);
+
+		    $this->_meta_info[$module_id] = array(
+			    'path'      =>  $klass->getFileName(),
+			    'type'      =>  $klass->isSubclassOf('C_Base_Product') ? 'product' : 'module',
+			    'loaded'    =>  FALSE
+		    );
+	    }
     }
 
 
@@ -313,9 +276,9 @@ class C_Component_Registry
      */
     function del_module($module_id)
     {
-    	if (isset($this->_modules[$module_id])) {
-    		unset($this->_modules[$module_id]);
-    	}
+        if (isset($this->_modules[$module_id])) {
+            unset($this->_modules[$module_id]);
+        }
     }
 
 
@@ -326,41 +289,131 @@ class C_Component_Registry
      */
     function get_module($module_id)
     {
-    	if (isset($this->_modules[$module_id])) {
-    		return $this->_modules[$module_id];
-    	}
+        if (isset($this->_modules[$module_id])) {
+            return $this->_modules[$module_id];
+        }
 
-    	return null;
+        return null;
     }
 
     function get_module_meta($module_id, $meta_name)
     {
-    	$meta = $this->get_module_meta_list($module_id);
+        $meta = $this->get_module_meta_list($module_id);
 
-    	if (isset($meta[$meta_name])) {
-    		return $meta[$meta_name];
-    	}
+        if (isset($meta[$meta_name])) {
+            return $meta[$meta_name];
+        }
 
-    	return null;
+        return null;
     }
 
     function get_module_meta_list($module_id)
     {
-    	if (isset($this->_meta_info[$module_id])) {
-    		return $this->_meta_info[$module_id];
-    	}
+        if (isset($this->_meta_info[$module_id])) {
+            return $this->_meta_info[$module_id];
+        }
 
-    	return null;
+        return null;
     }
 
     /**
-     * Retrieves a list of instantiated module ids
+     * Retrieves a list of instantiated module ids, in their "loaded" order as defined by a product
      * @return array
      */
-    function get_module_list()
+    function get_module_list($for_product_id=FALSE)
     {
-    	return array_keys($this->_modules);
+	    $retval = $module_list = array();
+
+
+        // As of Feb 10, 2015, there's no standard way across Pope products to an "ordered" list of modules
+        // that the product provides.
+        //
+        // The "standard" going forward will insist that all Product classes will provide either:
+        // A) a static property called "modules"
+        // B) an instance method called "define_modules", which returns a list of modules, and as well, sets
+        //    a static property called "modules'.
+        //
+        // IMPORTANT!
+        // The Photocrati Theme, as of version 4.1.8, doesn't follow this standard. But both NextGEN Pro and Plus do.
+
+        // Following the standard above, collect all modules provided by a product
+        $problematic_product_id = FALSE;
+        foreach ($this->get_product_list() as $product_id) {
+
+            // Try getting the list of modules using the "standard" described above
+            $obj = $this->get_product($product_id);
+            try{
+                $klass = new ReflectionClass($obj);
+                $modules = $klass->getStaticPropertyValue('modules');
+                if (!$modules && method_exists($obj, 'define_modules')) {
+                    $obj->define_modules();
+                    $modules = $klass->getStaticPropertyValue('modules');
+                }
+                $module_list[$product_id] = $modules;
+            }
+
+            // We've encountered a product that doesn't follow the standard. For these exceptions, we'll have to
+            // make an educated guess - if the module path is in the product's default module path, we know that
+            // it belongs to the product
+            catch (ReflectionException $ex) {
+                $product_path = $this->get_product_module_path($product_id);
+                $modules = array();
+                foreach ($this->_modules as $module_id => $module) {
+                    if (strpos($this->get_module_path($module_id), $product_path) !== FALSE) {
+                        $modules[] = $module_id;
+                    }
+                }
+                $module_list[$product_id] = $modules;
+
+                // Did our educated guess work?
+                if (!$modules) $problematic_product_id = $product_id;
+            }
+        }
+
+        // If we have a problematic product, that is, one that we can't find it's ordered list of modules
+        // that it provides, then we have one last fallback: get a list of modules that Pope is aware of, but hasn't
+        // added to $module_list[$product_id] yet
+        if ($problematic_product_id) {
+            $modules = array();
+            foreach (array_keys($this->_modules) as $module_id) {
+                $assigned = FALSE;
+                foreach (array_keys($module_list) as $product_id) {
+                    if (in_array($module_id, $module_list[$product_id])) {
+                        $assigned =TRUE;
+                        break;
+                    }
+                }
+                if (!$assigned) $modules[] = $module_id;
+            }
+            $module_list[$problematic_product_id] = $modules;
+        }
+
+        // Now that we know which products provide which modules, we can serve the request.
+        if (!$for_product_id) {
+            foreach (array_values($module_list) as $modules) {
+                $retval = array_merge($retval, $modules);
+            }
+        }
+        else $retval = $module_list[$for_product_id];
+
+        // Final fallback...if all else fails, just return the list of all modules
+        // that Pope is aware of
+        if (!$retval) $retval = array_keys($this->_modules);
+
+
+        return $retval;
     }
+
+	function get_loaded_module_list()
+	{
+		$retval = array();
+
+		foreach ($this->get_module_list() as $module_id) {
+			if ($this->is_module_loaded($module_id)) $retval[] = $module_id;
+		}
+
+		return $retval;
+	}
 
     /**
      * Retrieves a list of registered module ids, including those that aren't loaded (i.e. get_module() call with those unloaded ids will fail)
@@ -368,18 +421,18 @@ class C_Component_Registry
      */
     function get_known_module_list()
     {
-    	return array_keys($this->_meta_info);
+        return array_keys($this->_meta_info);
     }
 
 
     function load_product($product_id)
     {
-    	return $this->load_module($product_id);
+        return $this->load_module($product_id);
     }
 
     function load_all_products()
     {
-    	return $this->load_all_modules('product');
+        return $this->load_all_modules('product');
     }
 
     /**
@@ -389,9 +442,9 @@ class C_Component_Registry
      */
     function add_product($product_id, $product_object)
     {
-    	if (!isset($this->_products[$product_id])) {
-    		$this->_products[$product_id] = $product_object;
-    	}
+        if (!isset($this->_products[$product_id])) {
+            $this->_products[$product_id] = $product_object;
+        }
     }
 
 
@@ -401,9 +454,9 @@ class C_Component_Registry
      */
     function del_product($product_id)
     {
-    	if (isset($this->_products[$product_id])) {
-    		unset($this->_products[$product_id]);
-    	}
+        if (isset($this->_products[$product_id])) {
+            unset($this->_products[$product_id]);
+        }
     }
 
 
@@ -414,31 +467,31 @@ class C_Component_Registry
      */
     function get_product($product_id)
     {
-    	if (isset($this->_products[$product_id])) {
-    		return $this->_products[$product_id];
-    	}
+        if (isset($this->_products[$product_id])) {
+            return $this->_products[$product_id];
+        }
 
-    	return null;
+        return null;
     }
 
     function get_product_meta($product_id, $meta_name)
     {
-    	$meta = $this->get_product_meta_list($product_id);
+        $meta = $this->get_product_meta_list($product_id);
 
-    	if (isset($meta[$meta_name])) {
-    		return $meta[$meta_name];
-    	}
+        if (isset($meta[$meta_name])) {
+            return $meta[$meta_name];
+        }
 
-    	return null;
+        return null;
     }
 
     function get_product_meta_list($product_id)
     {
-    	if (isset($this->_meta_info[$product_id]) && $this->_meta_info[$product_id]['type'] == 'product') {
-    		return $this->_meta_info[$product_id];
-    	}
+        if (isset($this->_meta_info[$product_id]) && $this->_meta_info[$product_id]['type'] == 'product') {
+            return $this->_meta_info[$product_id];
+        }
 
-    	return null;
+        return null;
     }
 
 
@@ -449,17 +502,26 @@ class C_Component_Registry
      */
     function get_product_module_path($product_id)
     {
-    	if (isset($this->_meta_info[$product_id])) {
-    		$info = $this->_meta_info[$product_id];
+        if (isset($this->_meta_info[$product_id])) {
+            $info = $this->_meta_info[$product_id];
 
-    		if (isset($info['product-module-path'])) {
-    			return $info['product-module-path'];
-    		}
-    	}
+            if (isset($info['product-module-path'])) {
+                return $info['product-module-path'];
+            }
+        }
 
-    	return null;
+        return null;
     }
 
+	function blacklist_module_file($relpath)
+	{
+		if (!in_array($relpath, $this->_blacklist)) $this->_blacklist[] = $relpath;
+	}
+
+	function is_blacklisted($filename)
+	{
+		return in_array($filename, $this->_blacklist);
+	}
 
     /**
      * Sets the module installation path for a specific product (Note: this is just the generic root container path for modules of this product)
@@ -468,9 +530,9 @@ class C_Component_Registry
      */
     function set_product_module_path($product_id, $module_path)
     {
-    	if (isset($this->_meta_info[$product_id])) {
-    		$this->_meta_info[$product_id]['product-module-path'] = $module_path;
-    	}
+        if (isset($this->_meta_info[$product_id])) {
+            $this->_meta_info[$product_id]['product-module-path'] = $module_path;
+        }
     }
 
 
@@ -480,7 +542,7 @@ class C_Component_Registry
      */
     function get_product_list()
     {
-    	return array_keys($this->_products);
+        return array_keys($this->_products);
     }
 
     /**
@@ -489,18 +551,18 @@ class C_Component_Registry
      */
     function get_known_product_list()
     {
-    	$list = array_keys($this->_meta_info);
-    	$return = array();
+        $list = array_keys($this->_meta_info);
+        $return = array();
 
-    	foreach ($list as $module_id)
-    	{
-    		if ($this->get_product_meta_list($module_id) != null)
-    		{
-    			$return[] = $module_id;
-    		}
-    	}
+        foreach ($list as $module_id)
+        {
+            if ($this->get_product_meta_list($module_id) != null)
+            {
+                $return[] = $module_id;
+            }
+        }
 
-    	return $return;
+        return $return;
     }
 
 
@@ -551,6 +613,8 @@ class C_Component_Registry
                 unset($this->_adapters[$interface][$context][$index]);
             }
         }
+
+
     }
 
 
@@ -570,8 +634,8 @@ class C_Component_Registry
                 // Determine what context apply to the current component
                 $applied_contexts = array('all');
                 if ($component->context) {
-					$applied_contexts[] = $component->context;
-					$applied_contexts = $this->_flatten_array($applied_contexts);
+                    $applied_contexts[] = $component->context;
+                    $applied_contexts = $this->_flatten_array($applied_contexts);
                 }
 
                 // Iterate through each of the components contexts and apply the
@@ -579,7 +643,7 @@ class C_Component_Registry
                 foreach ($applied_contexts as $context) {
                     if (isset($contexts[$context])) {
                         foreach ($contexts[$context] as $adapter) {
-                            $component->add_mixin($adapter, TRUE);
+                            $component->add_mixin($adapter, FALSE);
                         }
                     }
 
@@ -633,16 +697,16 @@ class C_Component_Registry
         }
     }
 
-	/**
-	 * Gets the class name of the component providing a utility implementation
-	 * @param string $interface
-	 * @param string|array $context
-	 * @return string
-	 */
-	function get_utility_class_name($interface, $context=FALSE)
-	{
-		return $this->_retrieve_utility_class($interface, $context);
-	}
+    /**
+     * Gets the class name of the component providing a utility implementation
+     * @param string $interface
+     * @param string|array $context
+     * @return string
+     */
+    function get_utility_class_name($interface, $context=FALSE)
+    {
+        return $this->_retrieve_utility_class($interface, $context);
+    }
 
 
     /**
@@ -656,226 +720,104 @@ class C_Component_Registry
     {
         if (!$context) $context='all';
         $class = $this->_retrieve_utility_class($interface, $context);
-		return call_user_func("{$class}::get_instance", $context);
-    }
-
-
-	/**
-	 * Flattens an array of arrays to a single array
-	 * @param array $array
-	 * @param array $parent (optional)
-	 * @param bool $exclude_duplicates (optional - defaults to TRUE)
-	 * @return array
-	 */
-	function _flatten_array($array, $parent=NULL, $exclude_duplicates=TRUE)
-	{
-		if (is_array($array)) {
-
-			// We're to add each element to the parent array
-			if ($parent) {
-				foreach ($array as $index => $element) {
-					foreach ($this->_flatten_array($array) as $sub_element) {
-						if ($exclude_duplicates) {
-							if (!in_array($sub_element, $parent)) {
-								$parent[] = $sub_element;
-							}
-						}
-						else $parent[] = $sub_element;
-					}
-				}
-				$array = $parent;
-			}
-
-			// We're starting the process..
-			else {
-				$index = 0;
-				while (isset($array[$index])) {
-					$element = $array[$index];
-					if (is_array($element)) {
-						$array = $this->_flatten_array($element, $array);
-						unset($array[$index]);
-					}
-					$index += 1;
-				}
-				$array = array_values($array);
-			}
-		}
-		else {
-			$array = array($array);
-		}
-
-		return $array;
-	}
-
-
-    /**
-     * Returns a list of paths under a specific location, optionally by regex matching their names
-     * @param string $path starting path
-     * @param string $regex matched against file basename, not full path
-     * @param int $recurse recurse level
-     */
-		function _get_file_list($path, $recurse = null, $regex = null)
-		{
-			$path = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $path);
-			$file_list = array();
-
-			if (is_dir($path)) {
-
-				if ($dh = opendir($path)) {
-
-					if (substr($path, -1) != DIRECTORY_SEPARATOR) {
-						$path .= DIRECTORY_SEPARATOR;
-					}
-
-					rewinddir($dh);
-
-					while (($file = readdir($dh)) !== false) {
-						if ($file != '.' && $file != '..') {
-							$file_path = $path . $file;
-
-							if ($regex == null || preg_match($regex, $file)) {
-								$file_list[] = $file_path;
-							}
-
-							if ($recurse > 0) {
-								$file_list = array_merge($file_list, $this->_get_file_list($file_path, $recurse - 1, $regex));
-							}
-						}
-					}
-
-					closedir($dh);
-				}
-			}
-
-			return $file_list;
-		}
-
-    /**
-     * Searches a path for valid module definitions and stores their dependency lists
-     * @param string $path
-     * @param bool $recurse - note, it will only recurse 1 level in the hierarchy
-     */
-    function _scan_module_path($path, $recurse = false)
-    {
-	  	$path = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $path);
-	  	$base = basename($path);
-	  	$regex = '/^(?:module|product)\\..*\\.php$/';
-    	$result = array();
-
-    	if (is_file($path) && preg_match($regex, $base))
-    	{
-    		$result[] = $path;
-    	}
-    	else
-    	{
-    		$result = $this->_get_file_list($path, $recurse ? 1 : 0, $regex);
-    	}
-
-    	if ($result != null)
-    	{
-    		$scan = array();
-
-    		foreach ($result as $module_path)
-    		{
-    			$module_dir = basename(dirname($module_path));
-
-    			if (strpos($module_dir, '__') === 0)
-    			{
-    				continue;
-    			}
-
-    			// XXX might be necessary to use fopen/fread for very large module files
-    			$module_content = file_get_contents($module_path);
-    			$match = null;
-
-    			if (preg_match('/\/(?:\*)+\s*\{\s*(?P<type>Module|Product):\s*(?P<id>[\w-_]+)\s*(?:,\s*Depends:\s*\{(?P<depends>.*)\})?\s*(,\s*Before:\s*\{(?P<before>.*)\})?\s*\}/m', $module_content, $match) > 0)
-    			{
-    				$module_type = $match['type'];
-    				$module_id = $match['id'];
-    				$module_deps = isset($match['depends']) ? $match['depends'] : null;
-    				$module_before = isset($match['before']) ? $match['before'] : null;
-    				$module_info = array('type' => strtolower($module_type), 'id' => $module_id, 'path' => $module_path);
-
-    				if ($module_deps != null)
-    				{
-    					$module_deps = array_map('trim', explode(',', $module_deps));
-    					$module_info['dependency-list'] = $module_deps;
-    				}
-
-    				if ($module_before != null)
-    				{
-    					$module_before = array_map('trim', explode(',', $module_before));
-    					$module_info['before-list'] = $module_before;
-    				}
-
-    				$scan[$module_id] = $module_info;
-    			}
-				else die("{$module_path} is not a valid Pope module");
-    		}
-
-    		return $scan;
-    	}
-
-    	return null;
+        return call_user_func("{$class}::get_instance", $context);
     }
 
 
     /**
-     * Loads a module's code according to its dependency list and taking into consideration circular references
-     * @param string $module_id
-     * @param array $load_path
+     * Flattens an array of arrays to a single array
+     * @param array $array
+     * @param array $parent (optional)
+     * @param bool $exclude_duplicates (optional - defaults to TRUE)
+     * @return array
      */
-    function _load_module_internal($module_id, $load_path = null)
+    function _flatten_array($array, $parent=NULL, $exclude_duplicates=TRUE)
     {
-    	if ($this->get_module($module_id) != null)
-    	{
-    		// Module already loaded
-    		return true;
-    	}
+        if (is_array($array)) {
 
-    	if (!is_array($load_path))
-    	{
-    		$load_path = (array) $load_path;
-    	}
-
-    	if (isset($this->_meta_info[$module_id]))
-    	{
-    		$module_info = $this->_meta_info[$module_id];
-
-    		if (isset($module_info['dependency-list']))
-    		{
-    			$module_deps = $module_info['dependency-list'];
-                        $load_path[] = $module_id;
-
-    			foreach ($module_deps as $module_dep_id)
-    			{
-    				if (in_array($module_dep_id, $load_path))
-    				{
-    					// Circular reference
-    					continue;
-    				}
-
-    				if (!$this->_load_module_internal($module_dep_id, $load_path))
-    				{
-    					return false;
-    				}
-    			}
-    		}
-                if (isset($module_info['path']))
-                {
-                        $module_path = $module_info['path'];
-
-                        if (is_file($module_path))
-                        {
-                                include_once($module_path);
-
-                                return true;
+            // We're to add each element to the parent array
+            if ($parent) {
+                foreach ($array as $index => $element) {
+                    foreach ($this->_flatten_array($array) as $sub_element) {
+                        if ($exclude_duplicates) {
+                            if (!in_array($sub_element, $parent)) {
+                                $parent[] = $sub_element;
+                            }
                         }
+                        else $parent[] = $sub_element;
+                    }
                 }
-    	}
+                $array = $parent;
+            }
 
-    	return false;
+            // We're starting the process..
+            else {
+                $index = 0;
+                while (isset($array[$index])) {
+                    $element = $array[$index];
+                    if (is_array($element)) {
+                        $array = $this->_flatten_array($element, $array);
+                        unset($array[$index]);
+                    }
+                    $index += 1;
+                }
+                $array = array_values($array);
+            }
+        }
+        else {
+            $array = array($array);
+        }
+
+        return $array;
     }
+
+	function find_product_and_module_files($abspath, $recursive=FALSE)
+	{
+		$retval = array();
+		static $recursive_level = 0;
+		$recursive_level++;
+
+		$abspath = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $abspath);
+		$contents = @scandir($abspath);
+		if ($contents) foreach ($contents as $filename) {
+			if ($filename == '.' || $filename == '..') continue;
+			$filename_abspath = $abspath.DIRECTORY_SEPARATOR.$filename;
+
+			// Is this a subdirectory?
+			// We don't use is_dir(), as it's less efficient than just checking for a 'dot' in the filename.
+			// The problem is that we're assuming that our directories won't contain a 'dot'.
+			if ($recursive && strpos($filename, '.') === FALSE) {
+
+				// The recursive parameter can either be set to TRUE or the number of levels to navigate
+				// If we reach the max number of recursive levels we're supported to navigate, then we try
+				// to guess if there's a module or product file under the directory with the same name as
+				// the directory
+				if ($recursive === TRUE || (is_int($recursive) && $recursive_level <= $recursive)) {
+					$retval = array_merge($retval, $this->find_product_and_module_files($filename_abspath, $recursive));
+				}
+
+				elseif (@file_exists(($module_abspath = $filename_abspath.DIRECTORY_SEPARATOR.'module.'.$filename.'.php'))) {
+					$filename = 'module.'.$filename.'.php';
+					$filename_abspath = $module_abspath;
+				}
+				elseif (@file_exists(($product_abspath = $filename_abspath.DIRECTORY_SEPARATOR.'product.'.$filename.'.php'))) {
+					$filename = 'product.'.$filename.'.php';
+					$filename_abspath = $module_abspath;
+				}
+
+			}
+
+ 			if ((strpos($filename, 'module.') === 0 OR strpos($filename, 'product.') === 0) AND !$this->is_blacklisted($filename)) {
+                $retval[] = $filename_abspath;
+            }
+		}
+
+		$this->mark_as_searched_path($abspath);
+
+		$recursive_level--;
+
+		return $retval;
+	}
 
 
     /**
@@ -911,33 +853,44 @@ class C_Component_Registry
      */
     function _module_autoload($name)
     {
-    	if ($this->_module_type_cache == null || count($this->_modules) > $this->_module_type_cache_count)
-    	{
-    		$this->_module_type_cache_count = count($this->_modules);
-      	$modules = $this->_modules;
-      	
-      	foreach ($modules as $module_id => $module)
-      	{
-      		$dir = $this->get_module_dir($module_id);
-      		$type_list = $module->get_type_list();
-      		
-      		foreach ($type_list as $type => $filename)
-      		{
-      			$this->_module_type_cache[strtolower($type)] = $dir . DIRECTORY_SEPARATOR . $filename;
-      		}
-      	}
-    	}
-    	
-    	$name = strtolower($name);
-    	
-    	if (isset($this->_module_type_cache[$name]))
-    	{
-    		$module_filename = $this->_module_type_cache[$name];
-    		
-    		if (file_exists($module_filename))
-    		{
-					include_once($module_filename);
-    		}
-    	}
+	    // Pope classes are always prefixed
+	    if (strpos($name, 'C_') !== 0 && strpos($name, 'A_') !== 0 && strpos($name, 'Mixin_') !== 0) {
+		    return;
+	    }
+
+        if ($this->_module_type_cache == null || count($this->_modules) > $this->_module_type_cache_count)
+        {
+            $this->_module_type_cache_count = count($this->_modules);
+            $modules = $this->_modules;
+
+            $keys = array();
+            foreach ($modules as $mod => $properties) $keys[$mod] = $properties->module_version;
+            if (!($this->_module_type_cache = C_Pope_Cache::get($keys, array()))) {
+                foreach ($modules as $module_id => $module)
+                {
+                    $dir = $this->get_module_dir($module_id);
+                    $type_list = $module->get_type_list();
+
+                    foreach ($type_list as $type => $filename)
+                    {
+                        $this->_module_type_cache[strtolower($type)] = $dir . DIRECTORY_SEPARATOR . $filename;
+                    }
+                }
+                C_Pope_Cache::set($keys, $this->_module_type_cache);
+            }
+            elseif (is_object($this->_module_type_cache)) $this->_module_type_cache = get_object_vars($this->_module_type_cache);
+        }
+
+        $name = strtolower($name);
+
+        if (isset($this->_module_type_cache[$name]))
+        {
+            $module_filename = $this->_module_type_cache[$name];
+
+            if (file_exists($module_filename))
+            {
+                require_once($module_filename);
+            }
+        }
     }
 }

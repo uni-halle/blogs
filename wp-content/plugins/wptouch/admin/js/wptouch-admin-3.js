@@ -662,7 +662,7 @@ function wptouchHandlePluginCompat() {
 				jQuery( '#plugin-compat-setting.nano' ).nanoScroller({
 					preventPageScrolling: true
 				});
-				jQuery( '#plugin-compat-setting' ).find( 'i.wptouch-tooltip' ).tooltip( { placement:'right' } );
+				//jQuery( '#plugin-compat-setting' ).find( 'i.wptouch-tooltip' ).tooltip( { placement:'right' } );
 			},
 			0 );
 		});
@@ -752,9 +752,9 @@ function wptouchSetupRadios() {
 function wptouchRefreshOverviewHeight(){
 	if ( jQuery( '#touchboard-news' ).length ) {
 		if ( jQuery( '.wptouch-free' ).length ) {
-			var leftHeight = ( jQuery( '#touchboard-left' ).height() - 216 );
+			var leftHeight = ( jQuery( '#touchboard-left' ).height() - 240 );
 		} else {
-			var leftHeight = ( jQuery( '#touchboard-left' ).height() - 192 );
+			var leftHeight = ( jQuery( '#touchboard-left' ).height() - 190 );
 		}
 		jQuery( '#touchboard-news' ).height( leftHeight );
 	}
@@ -774,21 +774,35 @@ function wptouchRefreshScrollers(){
 	}, 0 );
 }
 
+function toggle_remove_shortcodes( myTarget ) {
+	if ( jQuery( '#enable_shortcode_compatibility' ).attr( 'checked' ) && jQuery( '#setting-shortcode_compatibility_method input:checked' ).val() == 'remove_shortcodes' ) {
+		jQuery( '#setting-remove_shortcodes' ).show();
+	} else {
+		jQuery( '#setting-remove_shortcodes' ).hide();
+	}
+}
 
 function wptouchSetupAdminToggles() {
 	// Enable iOS Web-App Mode
-	wptouchCheckToggle( '#webapp_mode_enabled', '#setting-webapp_enable_persistence, #section-notice-message, #section-iphone-startup-screen, #section-retina-iphone-startup-screen, #section-iphone-5-startup-screen, #section-iphone-6-startup-screen, #section-iphone-6plus-startup-screen, #section-ipad-mini-and-ipad-startup-screens, #setting-webapp_ignore_urls, #setting-webapp_external_message, #section-retina-ipad-startup-screens' );
+	wptouchCheckToggle( '#webapp_mode_enabled', '#section-admin_menu_homescreen_icons_options, #setting-webapp_enable_persistence, #section-notice-message, #section-iphone-startup-screen, #section-retina-iphone-startup-screen, #section-iphone-5-startup-screen, #section-iphone-6-startup-screen, #section-iphone-6plus-startup-screen, #section-ipad-mini-and-ipad-startup-screens, #setting-webapp_ignore_urls, #setting-webapp_external_message, #section-retina-ipad-startup-screens' );
 	// Show a notice message for iPhone, iPod touch & iPad visitors about Web-App Mode
 	wptouchCheckToggle( '#webapp_show_notice', '#setting-webapp_notice_message, #setting-webapp_notice_expiry_days' );
 	// Include functions.php from Desktop theme method
 	wptouchCheckToggle( '#include_functions_from_desktop_theme', '#setting-functions_php_loading_method' );
 	// Filter URLS
-	wptouchCheckToggle( '#enable_url_filter', '#setting-url_filter_behaviour, #setting-filtered_urls' );
+	//wptouchCheckToggle( '#enable_url_filter', '#setting-url_filter_behaviour, #setting-filtered_urls' );
 	// Cache menu settings (advanced)
 	wptouchCheckToggle( '#show_share', '#setting-share_location, #setting-share_colour_scheme' );
 	wptouchCheckToggle( '#automatically_backup_settings', '#setting-backup' );
 
+	wptouchCheckToggle( '#enable_shortcode_compatibility', '#setting-shortcode_compatibility_method' );
+
+	var shortcode_method = jQuery( '#setting-shortcode_compatibility_method' );
+	jQuery( 'input', shortcode_method ).on( 'change', function() { toggle_remove_shortcodes(); } );
+	jQuery( '#enable_shortcode_compatibility' ).on( 'change', function() { toggle_remove_shortcodes(); } );
+	jQuery( 'input[checked]', shortcode_method ).trigger( 'change' );
 }
+
 
 function wptouchHandleDownloadSettings() {
 	var downloadSettingsButton = jQuery( 'button#backup' );
@@ -950,7 +964,7 @@ function wptouchLoadTouchBoardArea() {
 			var ajaxParams = {};
 			wptouchAdminAjax( 'load-touchboard-area', ajaxParams, function( result ) {
 				touchboard.html( result );
-				setTimeout( function(){ wptouchAdminResize(); }, 200 );
+				setTimeout( function(){ wptouchAdminResize(); }, 220 );
 			});
 		}
 	}
@@ -966,7 +980,7 @@ function wptouchLoadUpgradeArea() {
 		var ajaxParams = {};
 		wptouchAdminAjax( 'load-upgrade-area', ajaxParams, function( result ) {
 			upgrade.html( result );
-			setTimeout( function(){ wptouchAdminResize(); }, 200 );
+			setTimeout( function(){ wptouchAdminResize(); }, 220 );
 		});
 	}
 }
@@ -1154,10 +1168,6 @@ function wptouchLoadAddons() {
 	}
 }
 
-function wptouchAdminHandleGeneral() {
-	wptouchCheckToggle( '#show_wptouch_in_footer', '#setting-add_referral_code' );
-}
-
 function wptouchHandleThemePreview() {
 	function triggerPreview( targetImage ) {
 		jQuery( '#' + targetImage.attr( 'id' ) + '-preview' ).trigger( 'click' );
@@ -1203,7 +1213,6 @@ function wptouchAdminReady() {
 	wptouchHandleLicensePanel();
 	wptouchHandleMenuArea();
 	wptouchHandleIconDragDrop();
-	wptouchAdminHandleGeneral();
 
 	wptouchSetupHomescreenUploaders();
 	wptouchHandleCustomIconUpload();

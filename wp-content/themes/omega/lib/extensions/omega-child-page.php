@@ -19,28 +19,32 @@ if ( is_admin() ) {
 	function omega_child_themes_list() {
 
 		$omegachilds = array(
+			 	array( 'name' => 'Church+',
+			 		   'url' => 'http://themehall.com/product/churchplus'),
+			 	array( 'name' => 'Composer',
+			 		   'url' => 'https://themehall.com/composer-one-column-omega-child-theme'),
 			 	array( 'name' => 'Alpha',
-			 		   'url' => 'http://themehall.com/alpha-first-omega-child-theme'),
+			 		   'url' => 'https://themehall.com/alpha-first-omega-child-theme'),
 			 	array( 'name' => 'Beta',
-			 		   'url' => 'http://themehall.com/beta-second-omega-child-theme'),
+			 		   'url' => 'https://themehall.com/beta-second-omega-child-theme'),
 			 	array( 'name' => 'Omega Child',
-			 		   'url' => 'http://themehall.com/product/omega-child'),
-			 	array( 'name' => 'Church',
-			 		   'url' => 'http://themehall.com/free-responsive-church-theme-wordpress'),
+			 		   'url' => 'https://themehall.com/product/omega-child'),
 			 	array( 'name' => 'Custom',
-			 		   'url' => 'http://themehall.com/custom-free-omega-child-theme-wordpress'),
+			 		   'url' => 'https://themehall.com/custom-free-omega-child-theme-wordpress'),
 			 	array( 'name' => 'Mobile',
-			 		   'url' => 'http://themehall.com/mobile-theme-mobile-friendly-start'),
+			 		   'url' => 'https://themehall.com/mobile-theme-mobile-friendly-start'),
 			 	array( 'name' => 'Magazine',
-			 		   'url' => 'http://themehall.com/responsive-magazine-theme'),
+			 		   'url' => 'https://themehall.com/responsive-magazine-theme'),
 			 	array( 'name' => 'Shopping',
-			 		   'url' => 'http://themehall.com/shopping-ecommerce-wordpress-theme'),
+			 		   'url' => 'https://themehall.com/shopping-ecommerce-wordpress-theme'),
 			 	array( 'name' => 'Family',
-			 		   'url' => 'http://themehall.com/free-responsive-family-wordpress-theme'),
+			 		   'url' => 'https://themehall.com/free-responsive-family-wordpress-theme'),
 			 	array( 'name' => 'Hotel',
-			 		   'url' => 'http://themehall.com/hotel-wordpress-theme'),
+			 		   'url' => 'https://themehall.com/hotel-wordpress-theme'),
 			 	array( 'name' => 'Sans-serif',
-			 		   'url' => 'http://wordpress.org/themes/sans-serif')			 	
+			 		   'url' => 'https://wordpress.org/themes/sans-serif'),
+			 	array( 'name' => 'Sumo',
+			 		   'url' => 'https://wordpress.org/themes/sumo')			 	
 			 );
 		?>
 	 	<div class="wrap">

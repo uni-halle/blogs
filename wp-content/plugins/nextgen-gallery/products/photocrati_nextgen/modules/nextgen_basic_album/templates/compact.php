@@ -20,7 +20,7 @@
                 <a class="ngg-album-desc"
                    title="<?php echo esc_attr($gallery->title); ?>"
                    href="<?php echo nextgen_esc_url($gallery->pagelink); ?>"
-                   <?php echo $max_width; ?>>
+                    <?php echo $max_width; ?>>
                     <?php echo_safe_html($gallery->title); ?>
                 </a>
             </h4>

@@ -50,7 +50,7 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 		echo '&nbsp;&nbsp;&nbsp;' . __('Icon width','lmm') . ': <input style="width:31px;" type="text" value="' . $instance['lmm-widget-iconsize'] . '" name="' . $this->get_field_name('lmm-widget-iconsize') . '" id="' . $this->get_field_id('lmm-widget-iconsize') . '" class="widefat" />%</p>';
 		echo '<hr style="border:0;height:1px;background-color:#d8d8d8;">';
 		$showpopuptext = $instance['lmm-widget-showpopuptext'];
-		echo '<p><label for="lmm-widget-showpopuptext">' . __('Show popuptext (no HTML)', 'lmm') . ':&nbsp;</label>';
+		echo '<p><label for="lmm-widget-showpopuptext">' . __('Show popuptext', 'lmm') . ':&nbsp;</label>';
 		echo '<input type="checkbox" name="' . $this->get_field_name('lmm-widget-showpopuptext') . '" ' . checked($showpopuptext, 'on', false) . ' /></p>';
 		echo '<hr style="border:0;height:1px;background-color:#d8d8d8;">';
 		$linktarget = $instance['lmm-widget-linktarget'];
@@ -93,21 +93,27 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 		echo '<input type="checkbox" name="' . $this->get_field_name('lmm-widget-georss') . '" ' . checked($georss, 'on', false) . ' /></p>';
 		$attributionlink = $instance['lmm-widget-attributionlink'];
 		echo '<p><label for="lmm-widget-attributionlink">' . __('Show attribution link', 'lmm') . ':&nbsp;</label>';
-		echo '<input type="checkbox" name="' . $this->get_field_name('lmm-widget-attributionlink') . '" ' . checked($attributionlink, 'on', false) . ' disabled="disabled" readonly="readonly" style="display:inline;" />&nbsp;&nbsp;&nbsp;<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-banner-small.png" width="68" height="9" border="0"></a></p>';
+		echo '<input type="checkbox" name="' . $this->get_field_name('lmm-widget-attributionlink') . '" ' . checked($attributionlink, 'on', false) . ' disabled="disabled" readonly="readonly" />&nbsp;&nbsp;&nbsp;<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-banner-small.png" width="68" height="9" border="0"></a></p>';
 	}//info: END function form($instance)
 	public function update($new_instance, $old_instance) {
 		$instance = $old_instance;
-		if ( ($instance['lmm-widget-attributionlink'] == 'off') ) {
+		if ( isset($instance['lmm-widget-attributionlink']) && ($instance['lmm-widget-attributionlink'] == 'off') ) {
 			$new_instance = wp_parse_args((array) $new_instance, array(
 				'lmm-widget-title' => __('Recent markers','lmm'),
 				'lmm-widget-howmany' => '5',
-				'lmm-widget-attributionlink' => 'off'
+				'lmm-widget-attributionlink' => 'off',
+				'lmm-widget-showpopuptext' => 'off',
+				'lmm-widget-createdon' => 'off',
+				'lmm-widget-separatorline' => 'off'
 			));
 		} else {
 			$new_instance = wp_parse_args((array) $new_instance, array(
 				'lmm-widget-title' => __('Recent markers','lmm'),
 				'lmm-widget-howmany' => '5',
-				'lmm-widget-attributionlink' => 'on'
+				'lmm-widget-attributionlink' => 'on',
+				'lmm-widget-showpopuptext' => 'off',
+				'lmm-widget-createdon' => 'off',
+				'lmm-widget-separatorline' => 'off'
 			));
 		}
 		$instance['lmm-widget-title'] = (string) strip_tags($new_instance['lmm-widget-title']);
@@ -167,7 +173,30 @@ class Class_leaflet_recent_marker_widget extends WP_Widget {
 					echo htmlspecialchars(stripslashes($row['markername']));
 				}
 				if (!empty($instance['lmm-widget-showpopuptext'])) {
-					$popuptext = (!empty($row['popuptext'])) ? '<br/>' . stripslashes(strip_tags($row['popuptext'])) : '';
+					$sanitize_popuptext_from = array(
+						'#<ul(.*?)>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
+						'#</li>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
+						'#</li>(\s)*(<br\s*/?>)*(\s)*</ul>#si',
+						'#<ol(.*?)>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
+						'#</li>(\s)*(<br\s*/?>)*(\s)*</ol>#si',
+						'#(<br\s*/?>){1}\s*<ul(.*?)>#si',
+						'#(<br\s*/?>){1}\s*<ol(.*?)>#si',
+						'#</ul>\s*(<br\s*/?>){1}#si',
+						'#</ol>\s*(<br\s*/?>){1}#si',
+					);
+					$sanitize_popuptext_to = array(
+						'<ul$1><li$5>',
+						'</li><li$4>',
+						'</li></ul>',
+						'<ol$1><li$5>',
+						'</li></ol>',
+						'<ul$2>',
+						'<ol$2>',
+						'</ul>',
+						'</ol>'
+					);
+					$mpopuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', do_shortcode($row['popuptext']))));
+					$popuptext = (!empty($row['popuptext'])) ? '<br/>' . $mpopuptext_sanitized : '';
 					echo $popuptext;
 				}
 				if (!empty($instance['lmm-widget-createdon'])) {

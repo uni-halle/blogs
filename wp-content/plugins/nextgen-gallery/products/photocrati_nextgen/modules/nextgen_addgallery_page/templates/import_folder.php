@@ -13,11 +13,15 @@
             $(window).data('ready', true);
         else return;
 
+	    // Post params
+	    var browse_params = <?php echo $browse_sec_token->get_json() ?>;
+	    browse_params.action = 'browse_folder';
+
         // Render file browser
         $('#file_browser').fileTree({
             root:           '/',
             script:         photocrati_ajax.url,
-            post_params:    {action: 'browse_folder', token: ''}
+            post_params:    browse_params
         }, function(file){
             selected_folder = file;
             $('#file_browser a').each(function(){
@@ -42,11 +46,11 @@
             });
 
             // Start importing process
-            var post_params = {
-                action: 'import_folder',
-                folder: selected_folder,
-                keep_location: $('#import_keep_location').is(":checked") ? 'on' : 'off'
-            };
+	        var post_params = <?php echo $import_sec_token->get_json()?>;
+	        post_params.action = 'import_folder';
+	        post_params.folder = selected_folder;
+	        post_params.keep_location =  $('#import_keep_location').is(":checked") ? 'on' : 'off';
+
             $.post(photocrati_ajax.url, post_params, function(response){
                 if (typeof(response) != 'object') response = JSON.parse(response);
                 if (typeof(response.error) == 'string') {

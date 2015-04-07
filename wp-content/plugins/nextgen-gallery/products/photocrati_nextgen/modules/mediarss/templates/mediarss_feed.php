@@ -1,9 +1,9 @@
 <?php echo('<?xml version="1.0" encoding="UTF-8"?>');?>
 <rss version='2.0' xmlns:media='http://search.yahoo.com/mrss/'>
 	<channel>
-		<generator><![CDATA[<?php echo_h($generator)?>]]></generator>
-		<title><?php echo_h($feed_title) ?></title>
-		<description><?php echo_h($feed_description) ?></description>
+		<generator><![CDATA[<?php esc_html_e($generator)?>]]></generator>
+		<title><?php esc_html_e($feed_title) ?></title>
+		<description><?php esc_html_e($feed_description) ?></description>
 		<link><![CDATA[<?php echo nextgen_esc_url($feed_link)?>]]></link>
 		<?php foreach($images as $image): ?>
 		<?php
@@ -14,20 +14,20 @@
 			$height		= $thumb_size['height'];
 		?>
 		<item>
-			<title><![CDATA[<?php echo_h($image->alttext)?>]]></title>
-			<description><![CDATA[<?php echo_h($image->description)?>]]></description>
+			<title><![CDATA[<?php esc_html_e($image->alttext)?>]]></title>
+			<description><![CDATA[<?php esc_html_e($image->description)?>]]></description>
 			<link><![CDATA[<?php echo nextgen_esc_url($image_url)?>]]></link>
-			<guid>image-id:<?php echo_h($image->id_field)?></guid>
+			<guid>image-id:<?php esc_html_e($image->id_field)?></guid>
 			<media:content url="<?php echo nextgen_esc_url($image_url)?>" medium="image" />
-			<media:title><![CDATA[<?php echo_h($image->alttext)?>]]></media:title>
+			<media:title><![CDATA[<?php esc_html_e($image->alttext)?>]]></media:title>
 			<?php if (isset($description)): ?>
-			<media:description><![CDDATA[<?php echo_h($image->description)?>]]></media:description>
+			<media:description><![CDDATA[<?php esc_html_e($image->description)?>]]></media:description>
 			<?php endif ?>
-			<media:thumbnail width="<?php echo esc_attr($width)?>" height="<?php echo esc_attr($height)?>" url="<?php echo nextgen_esc_url($thumb_url) ?>"/>
+			<media:thumbnail width="<?php esc_attr_e($width)?>" height="<?php esc_attr_e($height)?>" url="<?php echo nextgen_esc_url($thumb_url) ?>"/>
 			<?php if (isset($tagnames)): ?>
-			<media:keywords><![CDATA[<?php echo_h($tagnames)?>]]></media:keywords>
+			<media:keywords><![CDATA[<?php esc_html_e($tagnames)?>]]></media:keywords>
 			<?php endif ?>
-			<media:copyright><![CDATA[<?php echo_h($copyright)?>]]></media:copyright>
+			<media:copyright><![CDATA[<?php esc_html_e($copyright)?>]]></media:copyright>
 		</item>
 		<?php endforeach ?>
 	</channel>
