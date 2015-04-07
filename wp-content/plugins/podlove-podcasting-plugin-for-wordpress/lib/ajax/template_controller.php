@@ -17,26 +17,22 @@ class TemplateController {
 
 	public static function get() {
 
-		$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+		$id = isset($_REQUEST['id']) ? (int) $_REQUEST['id'] : 0;
 
-		if ($template = Template::find_by_id($id)) {
-			$response = [
-				'id'      => $template->id,
-				'title'   => $template->title,
-				'content' => $template->content,
-			];
-		} else {
-			$response = [];
-		}
+		$template = Template::find_by_id($id);
 
-		Ajax::respond_with_json($response);
+		Ajax::respond_with_json(array(
+			'id'      => $template->id,
+			'title'   => $template->title,
+			'content' => $template->content,
+		));
 	}
 
 	public static function update() {
 
-		$id      = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-		$title   = filter_input(INPUT_POST, 'title');
-		$content = filter_input(INPUT_POST, 'content');
+		$id      = isset($_REQUEST['id']) ? (int) $_REQUEST['id'] : 0;
+		$title   = isset($_REQUEST['title']) ? $_REQUEST['title'] : "";
+		$content = isset($_REQUEST['content']) ? $_REQUEST['content'] : "";
 
 		if (!$id || !$title)
 			Ajax::respond_with_json(array("success" => false));
@@ -60,7 +56,7 @@ class TemplateController {
 
 	public static function delete() {
 		
-		$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+		$id = isset($_REQUEST['id']) ? (int) $_REQUEST['id'] : 0;
 		$template = Template::find_by_id($id);
 
 		if (!$id || !$template) {

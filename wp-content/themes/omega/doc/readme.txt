@@ -2,7 +2,7 @@ Omega WordPress Theme
 ---------------------
 Omega is a parent theme for WordPress and Omega child
 
-Created by Hence Wijaya, https://themehall.com
+Created by themehall.com, http://themehall.com
 
 
 Install
@@ -52,27 +52,9 @@ TGM Plugin Activation, Copyright (c) 2012, Thomas Griffin
 TGM Plugin Activation is distributed under the terms of the GNU GPL
 Source: https://github.com/thomasgriffin/TGM-Plugin-Activation
 
-jQuery Superfish Menu, Copyright (c) 2013 Joel Birch
-jQuery Superfish Menu is distributed under the terms of the GNU GPL & MIT
-Source: http://users.tpg.com.au/j_birch/plugins/superfish/
-
-TinyNav, Copyright (c) 2011-2012 Viljami Salminen.
-TinyNav is licensed under the MIT license
-Source: http://tinynav.viljamis.com
 
 Changelog
 ---------
-
-1.1.1
-- add add_theme_support( "title-tag" )
-- fix custom_css sanitation
-
-1.1.0
-- fix omega_attr_entry_content schema property
-- remove shortcode from theme
-- remove get the image theme support, please use this instead https://wordpress.org/plugins/get-the-image/
-- add menu.js
-
 1.0.8
 - h1 for logo on homepage
 

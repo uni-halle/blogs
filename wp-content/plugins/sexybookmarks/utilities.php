@@ -134,7 +134,7 @@ class ShareaholicUtilities {
    	$wp_admin_bar->add_menu(array(
    		'parent' => 'wp_shareaholic_adminbar_menu',
    		'id' => 'wp_shareaholic_adminbar_submenu-general',
-   		'title' => __('Website Settings', 'shareaholic'),
+   		'title' => __('General Settings', 'shareaholic'),
    		'href' => 'https://shareaholic.com/publisher_tools/'.self::get_option('api_key').'/verify?verification_key='.self::get_option('verification_key').'&redirect_to='.'https://shareaholic.com/publisher_tools/'.self::get_option('api_key').'/websites/edit?verification_key='.self::get_option('verification_key'),
    		'meta' => Array( 'target' => '_blank' )
    	));
@@ -1204,7 +1204,7 @@ class ShareaholicUtilities {
    *
    */
    public static function share_counts_api_connectivity_check() {
-
+      
     // if we already checked and it is successful, then do not call the API again
     $share_counts_connect_check = self::get_option('share_counts_connect_check');
     if (isset($share_counts_connect_check) && $share_counts_connect_check == 'SUCCESS') {
@@ -1299,25 +1299,30 @@ class ShareaholicUtilities {
       return array();
     }
 
-    $user_caps = $current_user->get_role_caps();
+    $capabilities = $current_user->get_role_caps();
+    $roles = $current_user->roles;
 
-    $caps = array('switch_themes', 'edit_themes', 'activate_plugins',
-      'edit_plugins', 'manage_options', 'unfiltered_html', 'edit_dashboard',
-      'update_plugins', 'delete_plugins', 'install_plugins', 'update_themes',
-      'install_themes', 'update_core', 'edit_theme_options', 'delete_themes',
-      'administrator'
-    );
-
-    $user_info = array(
+    return array(
       'roles' => $current_user->roles,
-      'capabilities' => array(),
+      'capabilities' => array(
+        'switch_themes' => $capabilities['switch_themes'],
+        'edit_themes' => $capabilities['edit_themes'],
+        'activate_plugins' => $capabilities['activate_plugins'],
+        'edit_plugins' => $capabilities['edit_plugins'],
+        'manage_options' => $capabilities['manage_options'],
+        'unfiltered_html' => $capabilities['unfiltered_html'],
+        'edit_dashboard' => $capabilities['edit_dashboard'],
+        'update_plugins' => $capabilities['update_plugins'],
+        'delete_plugins' => $capabilities['delete_plugins'],
+        'install_plugins' => $capabilities['install_plugins'],
+        'update_themes' => $capabilities['update_themes'],
+        'install_themes' => $capabilities['install_themes'],
+        'update_core' => $capabilities['update_core'],
+        'edit_theme_options' => $capabilities['edit_theme_options'],
+        'delete_themes' => $capabilities['delete_themes'],
+        'administrator' => $capabilities['administrator']
+      ),
       'is_super_admin' => is_super_admin()
     );
-
-    foreach($caps as $cap) {
-      $user_info['capabilities'][$cap] = isset($user_caps[$cap]) ? $user_caps[$cap] : '';
-    }
-
-    return $user_info;
   }
 }

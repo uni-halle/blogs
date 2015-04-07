@@ -12,7 +12,6 @@
 					<span class="post-date"><?php wptouch_the_time(); ?> &bull;</span>
 					<span class="post-author"><?php _e( 'By', 'wptouch-pro' ); ?> <?php the_author(); ?></span>
 				</div>
-				
 				<?php wptouch_the_content(); ?>
 			</div>
 

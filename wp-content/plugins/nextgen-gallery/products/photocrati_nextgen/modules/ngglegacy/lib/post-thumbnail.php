@@ -64,9 +64,10 @@ class nggPostThumbnail {
 				$iframe_src = add_query_arg('tab', 'nextgen', $iframe_src);
 				$iframe_src = add_query_arg('chromeless', '1', $iframe_src);
 				$iframe_src = add_query_arg('TB_iframe', '1', $iframe_src);
-
-	   		    $set_thumbnail_link = '<p class="hide-if-no-js"><a title="' . esc_attr__( 'Set NextGEN featured image', 'nggallery' ) . '" href="' . nextgen_esc_url( $iframe_src ) . '" id="set-ngg-post-thumbnail" class="thickbox">%s</a></p>';
-			    $content .= sprintf($set_thumbnail_link, esc_html__( 'Set NextGEN featured image', 'nggallery' ));
+			
+			  $set_thumbnail_link = '<p class="hide-if-no-js"><a title="' . esc_attr__( 'Set NextGEN featured image', 'nggallery' ) . '" href="' . nextgen_esc_url( $iframe_src ) . '" id="set-ngg-post-thumbnail" class="thickbox">%s</a></p>';
+			  
+			  $content .= sprintf($set_thumbnail_link, esc_html__( 'Set NextGEN featured image', 'nggallery' ));
 			}
 			
 			return $content;
@@ -180,8 +181,9 @@ class nggPostThumbnail {
 
 		if ($thumbnail_id != null)
 		{
-		    $imap = C_Image_Mapper::get_instance();
-		    $storage  = C_Gallery_Storage::get_instance();
+			$registry = C_Component_Registry::get_instance();
+		  $imap = $registry->get_utility('I_Image_Mapper');
+		  $storage  = $registry->get_utility('I_Gallery_Storage');
 		  
 		  $image = $imap->find($thumbnail_id);
 		
@@ -216,7 +218,7 @@ class nggPostThumbnail {
 					$url = $storage->get_full_url($image);
 					
 					$target_relpath = null;
-					$target_basename = M_I18n::mb_basename($image_abspath);
+					$target_basename = basename($image_abspath);
 					
 					if (strpos($image_abspath, $gallery_abspath) === 0)
 					{
@@ -240,7 +242,7 @@ class nggPostThumbnail {
 					{
 						$count++;
 						
-						$pathinfo = M_I18n::mb_pathinfo($target_path);
+						$pathinfo = pathinfo($target_path);
 						$dirname = $pathinfo['dirname'];
 						$filename = $pathinfo['filename'];
 						$extension = $pathinfo['extension'];

@@ -28,7 +28,7 @@
 						</option>
 					<?php } ?>
 				</select>
-				<i class="wptouch-icon-caret-down"></i>
+				<i class="icon-caret-down"></i>
 			</span>
 		<?php } ?>
 	</div>

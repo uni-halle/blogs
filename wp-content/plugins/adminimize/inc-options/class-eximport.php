@@ -37,13 +37,13 @@ class Adminimize_Eximport {
 		
 		add_action( 'mw_adminimize_after_settings_form', array( $this, 'get_im_export_part' ) );
 	}
-
+	
 	/**
 	 * Handler for the action 'init'. Instantiates this class.
-	 *
+	 * 
 	 * @access  public
 	 * @since   02/15/2013
-	 * @return Adminimize_Eximport|null $classobj
+	 * @return  $classobj
 	 */
 	public static function get_object() {
 		
@@ -166,16 +166,15 @@ class Adminimize_Eximport {
 		header( 'Content-type: ' . $filetype . '; charset=' . get_option('blog_charset'), TRUE );
 		flush();
 	}
-
+	
 	/**
 	 * Import XML and update settings
-	 *
+	 * 
 	 * @access  public
 	 * @since   2.0.0
-	 *
-	 * @param bool|string $filename
-	 *
+	 * @param   string $filename
 	 * @uses    current_user_can, wp_die, is_plugin_active_for_network, update_site_option, update_option
+	 * @return  void
 	 */
 	public function import_file( $filename = FALSE ) {
 		

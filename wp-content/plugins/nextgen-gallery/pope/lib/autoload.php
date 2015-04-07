@@ -1,8 +1,7 @@
 <?php
 
 if (!defined('POPE_VERSION')) {
-	define('POPE_VERSION', '0.10');
-	require_once('class.pope_cache.php');
+	define('POPE_VERSION', '0.6');
 	require_once('class.extensibleobject.php');
 	require_once('interface.component.php');
 	require_once('class.component.php');

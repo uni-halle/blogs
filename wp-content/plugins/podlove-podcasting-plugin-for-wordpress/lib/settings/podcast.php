@@ -7,8 +7,6 @@ use \Podlove\Settings\Podcast\Tab;
 
 class Podcast {
 
-	use \Podlove\HasPageDocumentationTrait;
-
 	static $pagehook;
 	private $tabs;
 	
@@ -22,8 +20,6 @@ class Podcast {
 			/* $menu_slug  */ 'podlove_settings_podcast_handle',
 			/* $function   */ array( $this, 'page' )
 		);
-
-		$this->init_page_documentation(self::$pagehook);
 
 		add_settings_section(
 			/* $id 		 */ 'podlove_podcast_general',

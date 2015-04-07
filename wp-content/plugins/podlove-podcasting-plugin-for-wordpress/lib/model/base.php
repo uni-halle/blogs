@@ -141,13 +141,13 @@ abstract class Base
 
 	public static function find_all_by_property( $property, $value ) {
 		return self::find_all_by_sql(
-			'SELECT * FROM ' . self::table_name() . ' WHERE ' . $property .  ' = \'' . esc_sql($value) . '\''
+			'SELECT * FROM ' . self::table_name() . ' WHERE ' . $property .  ' = \'' . $value . '\''
 		);
 	}
 
 	public static function find_one_by_property( $property, $value ) {
 		return self::find_one_by_sql(
-			'SELECT * FROM ' . self::table_name() . ' WHERE ' . $property .  ' = \'' . esc_sql($value) . '\' LIMIT 0,1'
+			'SELECT * FROM ' . self::table_name() . ' WHERE ' . $property .  ' = \'' . $value . '\' LIMIT 0,1'
 		);
 	}
 
@@ -374,7 +374,7 @@ abstract class Base
 		global $wpdb;
 
 		if ( $this->$p !== NULL && $this->$p !== '' ) {
-			return sprintf( "%s = '%s'", $p, esc_sql($this->$p) );
+			return sprintf( "%s = '%s'", $p, $this->$p );
 		} else {
 			return "$p = NULL";
 		}
@@ -485,7 +485,7 @@ abstract class Base
 	    	$wpdb->query( 'ALTER TABLE ' . self::table_name() . ' AUTO_INCREMENT = 1' );  
 	}
 
-	protected static function find_one_by_sql($sql) {
+	private static function find_one_by_sql($sql) {
 		global $wpdb;
 		
 		$class = get_called_class();
@@ -505,7 +505,7 @@ abstract class Base
 		return $model;
 	}
 
-	protected static function find_all_by_sql($sql) {
+	private static function find_all_by_sql($sql) {
 		global $wpdb;
 		
 		$class = get_called_class();

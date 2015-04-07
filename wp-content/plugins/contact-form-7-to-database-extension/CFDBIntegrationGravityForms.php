@@ -70,13 +70,9 @@ class CFDBIntegrationGravityForms {
             return true;
         }
         foreach ($form['fields'] as $field) {
-
-            // Gravity Forms 1.8.5 $field was an array
-            // Gravity Forms 1.9.1.2 $field is an object
-            if (is_object($field)) {
-                $field = (array)$field;
+            if (!is_array($field)) {
+                continue;
             }
-
             $fieldName = $field['label'];
 
             if (!empty($field['inputs']) && is_array($field['inputs'])) {
@@ -109,24 +105,19 @@ class CFDBIntegrationGravityForms {
                 $fieldId = $field['id'];
                 switch ($field['type']) {
                     case 'list' :
-                        $list = unserialize($entry[$fieldId]);
-                        if ($list) {
-                            $postedData[$fieldName] = implode('|', $list);
-                        } else {
-                            if (!isset($postedData[$fieldName]) || $postedData[$fieldName] === '') { // handle duplicate empty hidden fields
-                                // List - value is serialized array
-                                $valueArray = @unserialize($entry[$fieldId]);
-                                if (is_array($valueArray)) {
-                                    //$postedData[$fieldName] = '';
-                                    // Array of (Array of column-name => value)
-                                    $tmpArray = array();
-                                    foreach ($valueArray as $listArray) {
-                                        $tmpArray[] = implode(',', array_values($listArray));
-                                    }
-                                    $postedData[$fieldName] = implode('|', $tmpArray);
-                                } else {
-                                    $postedData[$fieldName] = $entry[$fieldId];
+                        if (!isset($postedData[$fieldName]) || $postedData[$fieldName] === '') { // handle duplicate empty hidden fields
+                            // List - value is serialized array
+                            $valueArray = @unserialize($entry[$fieldId]);
+                            if (is_array($valueArray)) {
+                                //$postedData[$fieldName] = '';
+                                // Array of (Array of column-name => value)
+                                $tmpArray = array();
+                                foreach ($valueArray as $listArray) {
+                                    $tmpArray[] = implode(',', array_values($listArray));
                                 }
+                                $postedData[$fieldName] = implode('|', $tmpArray);
+                            } else {
+                                $postedData[$fieldName] = $entry[$fieldId];
                             }
                         }
                         break;

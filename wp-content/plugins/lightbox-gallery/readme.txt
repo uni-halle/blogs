@@ -3,8 +3,8 @@ Contributors: Hiroaki Miyashita
 Donate link: http://wpgogo.com/development/lightbox-gallery.html
 Tags: lightbox, gallery, galleries, image, images, album, photo, photos, picture, pictures, jQuery, Highslide, Colorbox
 Requires at least: 2.5
-Tested up to: 4.1.1
-Stable tag: 0.8.1
+Tested up to: 3.5.1
+Stable tag: 0.7.4
 License: GPLv2 or later
 
 The Lightbox Gallery plugin changes the view of galleries to the lightbox.
@@ -34,7 +34,6 @@ Localization
 * Spanish (es_ES) - [Daniel Tarrero](http://www.bluebrain.es/)
 * Danish (da_DK) - [Jacob Voldby](http://www.clmedia.dk)
 * German (de_DE) - Michael Wruck and Tacitus Media
-* Farsi (fa_IR) - [Ehsan Razavi](http://webdata.in/)
 * French (fr_FR) - [BenLeTibetain](http://www.benletibetain.net/)
 * Hindi (hi_IN) - [Outshine Solutions](http://outshinesolutions.com/web-hosting/web-hosting-india.html)
 * Croatian (hr) - [Tomislav Konestabo](http://aciddot.com/)
@@ -77,10 +76,6 @@ Just add rel="lightbox" into "a" tag. Here is a sample.
 
 If you would like to handle galleries separately, add different class names 
 into [gallery]. ex) [gallery class="gallery2"]
-
-* Java Script does not seem to be loading?
-
-Check out your theme has `wp_head()` in the header and `wp_footer()` in ther footer.
 
 == Screenshots ==
 
@@ -136,17 +131,6 @@ If you would like not to show the navigation, set `0`. The default is `1`.
 [gallery num="10" pagenavi="0"]
 
 == Changelog ==
-
-= 0.8.1 =
-* Backward compatibility: caption loading.
-* Code cleaning.
-
-= 0.8 =
-* Responsive output.
-* Gallery code renewal.
-
-= 0.7.5 =
-* Farsi (fa_IR) - Ehsan Razavi
 
 = 0.7.4 =
 * Bugfix: support for WordPress 3.5.

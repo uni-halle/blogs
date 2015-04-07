@@ -39,7 +39,6 @@ switch ( $action = $_REQUEST['action'] ) {
 			 'sort' => array(),
 			 			 'onselect' => null,
 			 'idp' => null,
-			 'tpl' => null,
 		));
 		
 		$args['cats_only'] === 'false' && $args['cats_only'] = false;

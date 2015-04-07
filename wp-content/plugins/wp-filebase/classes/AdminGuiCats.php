@@ -137,8 +137,7 @@ static function Display()
 				'base' => add_query_arg( 'pagenum', '%#%' ),
 				'format' => '',
 				'total' => ceil(count(WPFB_Category::GetCats($extra_sql)) / $catsperpage),
-				'current' => $pagenum,
-				'add_args' => array() // necessary!
+				'current' => $pagenum
 			));
 
 			if ( $page_links )

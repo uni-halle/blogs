@@ -3,8 +3,6 @@ namespace Podlove\Settings;
 
 class FileType {
 	
-	use \Podlove\HasPageDocumentationTrait;
-	
 	public function __construct( $handle ) {
 		add_action( 'admin_init', array( $this, 'process_form' ) );
 	}

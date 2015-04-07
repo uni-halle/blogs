@@ -1,7 +1,7 @@
 <?php
 while(!is_file('wp-load.php')){
-	if(is_dir('../')) chdir('../');
-	else die('Error: Could not construct path to wp-load.php - please check <a href="https://www.mapsmarker.com/path-error">https://www.mapsmarker.com/path-error</a> for more details');
+  if(is_dir('../')) chdir('../');
+  else die('Error: Could not construct path to wp-load.php - please check <a href="http://mapsmarker.com/path-error">http://mapsmarker.com/path-error</a> for more details');
 }
 include( 'wp-load.php' );
 if (get_option('leafletmapsmarker_update_info') == 'show') {
@@ -41,174 +41,6 @@ hr{color:#E6DB55}
 </style></head><body>
 <?php
 /*****************************************************************************************/
-echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.7') . '</strong> - ' . $text_b . ' 15.03.2015 (<a href="https://www.mapsmarker.com/v3.9.7" target="_blank">' . $text_c . '</a>):</p>
-<table>
-<tr><td>' . $new . '</td><td>
-<a href="https://www.mapsmarker.com/2015/03/09/map-icons-collection/" target="_blank">Map Icons Collection now hosted on mapicons.mapsmarker.com</a>
-</td></tr>
-<tr><td>' . $new . '</td><td>
-<a href="https://www.mapsmarker.com/2015/02/28/mobile-version-of-mapsmarker-com-launched/" target="_blank">mobile version of mapsmarker.com launched</a>
-</td></tr>
-<tr><td>' . $new . '</td><td>
-show warning message in dynamic changelog if server uses outdated and potentially insecure PHP version (<5.4) - supporting <a href="http://www.wpupdatephp.com/" target="_blank">wpupdatephp.com</a>
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-improved sanitising of GeoJSON, GeoRSS, KML, Wikitude API input parameters
-</td></tr>
-<tr><td>' . $fixed . '</td><td>
-PHP undefined index warnings when adding new recent marker widget
-</td></tr>
-<tr><td colspan="2">
-<p><strong>' . $text_d . '</a></p></strong>
-<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Czech translation thanks to Viktor Kleiner and Vlad Kuzba, <a href="http://kuzbici.eu" target="_blank">http://kuzbici.eu</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated German translation
-</td></tr>
-<tr><td colspan="2">
-<p><strong>' . $text_f . '</a></p></strong>
-</td></tr>	
-</table>'.PHP_EOL;
-
-if ( (version_compare($lmm_version_old,"3.9.6","<")) && ( $lmm_version_old > '0' ) ) {
-echo '<p><hr noshade size="1"/></p>';
-echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.6') . '</strong> - ' . $text_b . ' 21.02.2015 (<a href="https://www.mapsmarker.com/v3.9.6" target="_blank">' . $text_c . '</a>):</p>
-<table>
-<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
-<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">optimized editing workflow for marker maps - no more reloads needed due to AJAX support</a>
-</td></tr>
-<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
-<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">CSS classes and labels for GPX panel data (thx caneblu!)</a>
-</td></tr>
-<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
-update Mapbox integration to API v4 <span style="font-weight:bold;color:red;">(attention is needed if you are using custom Mapbox styles! <a href="https://www.mapsmarker.com/mapbox" target="_blank">show details</a>)</span>
-</td></tr>
-<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
-enhance duplicate markers-bulk action to allow reassigning duplicate markers to different layers (thx Fran!)
-</td></tr>
-<tr><td>' . $new . '</td><td>
-added CSS class .lmm-listmarkers-markername to allow better styling (thx Christian!)
-</td></tr>
-<tr><td>' . $new . '</td><td>
-improved SEO for fullscreen maps by adding Settings->General->"Site Title" to end of &lt;title&gt;-tag
-</td></tr>
-<tr><td>' . $new . '</td><td>
-HTML in popuptexts is now also parsed in recent marker widgets (thx Oleg!)
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-link to changelog on mapsmarker.com for update pointer if dynamic changelog has already been hidden
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-strip invisible control chars from GeoJSON array as this could break maps
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-strip invisible control chars from Wikitude API as this could break the JSON array
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-show complete troubleshooting link on frontend only if map could not be loaded to users with manage_options-capability (thx Moti!)
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-use custom name instead of MD5-hash for dashboard RSS item cache file to prevent false identification as malware by WordFence (thx matiasgt!)
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-disable location input field on backend until Google Places search has been fully loaded
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-hide Wikitude API endpoint links in map panels by default as they are not relevant to map viewers (for new installations only)
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-use site name for Wikitude augmented-reality world name if layer=all to enhance findability within Wikitude app
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-updated jQuery select2 addon to v3.5.2
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-updated jQuery UI custom theme for datepicker to v1.11.2
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-allow full layer selection on marker edit pages after button "add new marker to this layer" has been clicked on layer edit pages
-</td></tr>
-<tr><td>' . $changed . '</td><td>
-use radio boxes instead of checkboxes for bulk actions on "list all markers" page (thx Fran!)
-</td></tr>
-<tr><td>' . $fixed . '</td><td>
-PHP warnings on marker edit page if option "add directions to popuptext" was set to false
-</td></tr>
-<tr><td>' . $fixed . '</td><td>
-incomplete dynamic preview of popuptexts on marker edit pages if position of marker was changed via mouse click
-</td></tr>
-<tr><td>' . $fixed . '</td><td>
-broken maps if negative lat/lon values for maps created by shortcodes directly were used (thx Keith!)
-</td></tr>
-<tr><td>' . $fixed . '</td><td>
-Wikitude API endpoint for all maps did not deliver any results if a layer with ID 1 did not exist (thx Maurizio!)
-</td></tr>
-<tr><td>' . $fixed . '</td><td>
-dynamic preview: switching controlbox status to "collapsed" was broken if saved controlbox status was "expanded"
-</td></tr>
-<tr><td>' . $fixed . '</td><td>
-replaced 3 broken EEA default WMS layers 5/9/10 (for new installs only in order not to overwrite custom WMS settings)
-</td></tr>
-<tr><td>' . $fixed . '</td><td>
-occasionally frozen zoom control buttons and broken map panning on marker maps using Google Maps basemaps
-</td></tr>
-<tr><td colspan="2">
-<p><strong>' . $text_d . '</a></p></strong>
-<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Croatian translation thanks to Neven Pausic, <a href="http://www.airsoft-hrvatska.com" target="_blank">http://www.airsoft-hrvatska.com</a>, Alan Benic and Marijan Rajic, <a href="http://www.proprint.hr" target="_blank">http://www.proprint.hr</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Czech translation thanks to Viktor Kleiner and Vlad Kuzba, <a href="http://kuzbici.eu" target="_blank">http://kuzbici.eu</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Dutch translation thanks to Patrick Ruers, <a href="http://www.stationskwartiersittard.nl" target="_blank">http://www.stationskwartiersittard.nl</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated French translation thanks to Vincèn Pujol, <a href="http://www.skivr.com" target="_blank">http://www.skivr.com</a> and Rodolphe Quiedeville, <a href="http://rodolphe.quiedeville.org" target="_blank">http://rodolphe.quiedeville.org</a>, Fx Benard, <a href="http://wp-translator.com" target="_blank">http://wp-translator.com</a>, cazal cédric, <a href="http://www.cedric-cazal.com" target="_blank">http://www.cedric-cazal.com</a>, Fabian Hurelle, <a href="http://hurelle.fr" target="_blank">http://hurelle.fr</a> and Thomas Guignard, <a href="http://news.timtom.ch" target="_blank">http://news.timtom.ch</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-Galician translation thanks to Fernando Coello, <a href="http://www.indicepublicidad.com" target="_blank">http://www.indicepublicidad.com</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated German translation
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Italian translation thanks to Luca Barbetti, <a href="http://twitter.com/okibone" target="_blank">http://twitter.com/okibone</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Japanese translations thanks to <a href="http://twitter.com/higa4" target="_blank">Shu Higash</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Latvian translation thanks to Juris Orlovs, <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Polish translation thanks to Pawel Wyszy&#324;ski, <a href="http://injit.pl" target="_blank">http://injit.pl</a>, Tomasz Rudnicki, <a href="http://www.kochambieszczady.pl" target="_blank"></a> and Robert Pawlak
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Romanian translation thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Spanish translation thanks to Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Spanish/Mexico translation thanks to Victor Guevera, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Eze Lazcano
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Turkish translation thanks to Emre Erkan, <a href="http://www.karalamalar.net" target="_blank">http://www.karalamalar.net</a> and Mahir Tosun, <a href="http://www.bozukpusula.com" target="_blank">http://www.bozukpusula.com</a>
-</td></tr>
-<tr><td>' . $transl . '</td><td>
-updated Swedish translation thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://20x.se" target="_blank">http://20x.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a>
-</td></tr>
-</table>'.PHP_EOL;
-}
-
-if ( (version_compare($lmm_version_old,"3.9.5","<")) && ( $lmm_version_old > '0' ) ) {
-echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.5') . '</strong> - ' . $text_b . ' 06.12.2014 (<a href="https://www.mapsmarker.com/v3.9.5" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
@@ -235,9 +67,6 @@ database cleanup: remove expired update pointer IDs from user_meta-table (dismis
 <tr><td>' . $changed . '</td><td>
 improved security for mapsmarker.com (support for Perfect Forward Secrecy, TLS 1.2 & SHA-256 certificate hashes) 
 </td></tr>
-<tr><td>' . $changed . '</td><td>
-sanitize custom CSS for images in popups
-</td></tr>
 <tr><td>' . $fixed . '</td><td>
 HTML lang attribute on fullscreen maps set to $locale instead of de-DE (thx sprokt!)
 </td></tr>
@@ -252,7 +81,7 @@ removed backticks for dbdelta()-SQL statements to prevent PHP error log entries 
 <p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
-updated French translation thanks to Vincèn Pujol, <a href="http://www.skivr.com" target="_blank">http://www.skivr.com</a> and Rodolphe Quiedeville, <a href="http://rodolphe.quiedeville.org" target="_blank">http://rodolphe.quiedeville.org</a>, Fx Benard, <a href="http://wp-translator.com" target="_blank">http://wp-translator.com</a>, cazal cédric, <a href="http://www.cedric-cazal.com" target="_blank">http://www.cedric-cazal.com</a>, Fabian Hurelle, <a href="http://hurelle.fr" target="_blank">http://hurelle.fr</a> and Thomas Guignard, <a href="http://news.timtom.ch" target="_blank">http://news.timtom.ch</a>
+updated French translation thanks to Vincèn Pujol, <a href="http://www.skivr.com" target="_blank">http://www.skivr.com</a> and Rodolphe Quiedeville, <a href="http://rodolphe.quiedeville.org" target="_blank">http://rodolphe.quiedeville.org</a>, Fx Benard, <a href="http://wp-translator.com" target="_blank">http://wp-translator.com</a>, cazal cédric, <a href="http://www.cedric-cazal.com" target="_blank">http://www.cedric-cazal.com</a> and Fabian Hurelle, <a href="http://hurelle.fr" target="_blank">http://hurelle.fr</a>
 </td></tr>
 <tr><td>' . $transl . '</td><td>
 updated German translation
@@ -267,7 +96,6 @@ updated Spanish translation thanks to Alvaro Lara, <a href="http://www.alvarolar
 updated Spanish/Mexico translation thanks to Victor Guevera, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Eze Lazcano
 </td></tr>
 </table>'.PHP_EOL;
-}
 
 if ( (version_compare($lmm_version_old,"3.9.4","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
@@ -3498,7 +3326,7 @@ echo '</div>';
 /*************************************************************************************************************************************/
 /* 2do: change version numbers and date in first line on each update and add if ( ($lmm_version_old < 'x.x' ) ){ to old changelog
 *************************************************************************************************************************************
-echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.x') . '</strong> - ' . $text_b . ' xx.08.2015 (<a href="https://www.mapsmarker.com/v3.x" target="_blank">' . $text_c . '</a>):</p>
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.x') . '</strong> - ' . $text_b . ' xx.08.2014 (<a href="https://www.mapsmarker.com/v3.x" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
 <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"></a>

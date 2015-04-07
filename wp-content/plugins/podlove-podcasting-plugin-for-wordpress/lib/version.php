@@ -40,7 +40,7 @@
 namespace Podlove;
 use \Podlove\Model;
 
-define( __NAMESPACE__ . '\DATABASE_VERSION', 95 );
+define( __NAMESPACE__ . '\DATABASE_VERSION', 90 );
 
 add_action( 'admin_init', '\Podlove\maybe_run_database_migrations' );
 add_action( 'admin_init', '\Podlove\run_database_migrations', 5 );
@@ -953,26 +953,6 @@ function run_migrations_for_version( $version ) {
 			update_option('podlove_redirects', array( 'podlove_setting_redirect' => $redirect_settings ));
 		break;
 		case 83:
-			\Podlove\Model\DownloadIntentClean::build();
-			
-			$alterations = array(
-				'ALTER TABLE `%s` ADD COLUMN `bot` TINYINT',
-				'ALTER TABLE `%s` ADD COLUMN `client_name` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `client_version` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `client_type` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `os_name` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `os_version` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `device_brand` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `device_model` VARCHAR(255)',
-			);
-
-			foreach ($alterations as $sql) {
-				$wpdb->query( sprintf($sql, Model\UserAgent::table_name()) );
-			}
-
-			Model\UserAgent::reparse_all();
-		break;
-		case 84:
 			delete_option('podlove_tpl_cache_keys');
 		break;
 		case 85:
@@ -1062,64 +1042,6 @@ function run_migrations_for_version( $version ) {
 		break;
 		case 90:
 			\Podlove\Modules\Base::activate( 'subscribe_button' );
-		break;
-		case 91:
-			$c = new \Podlove\Modules\Social\Model\Service;
-			$c->title = 'Miiverse';
-			$c->category = 'social';
-			$c->type = 'miiverse';
-			$c->description = 'Miiverse Account';
-			$c->logo = 'miiverse-128.png';
-			$c->url_scheme = 'https://miiverse.nintendo.net/users/%account-placeholder%';
-			$c->save();
-		break;
-		case 92:
-			$c = new \Podlove\Modules\Social\Model\Service;
-			$c->title = 'Prezi';
-			$c->category = 'social';
-			$c->type = 'prezi';
-			$c->description = 'Prezis';
-			$c->logo = 'prezi-128.png';
-			$c->url_scheme = 'http://prezi.com/user/%account-placeholder%';
-			$c->save();
-		break;
-		case 93:
-			// podlove_init_user_agent_refresh();
-			// do nothing instead, because see 94 below
-		break;
-		case 94:
-			// this is a duplicate of migration 83 but it looks like that didn't work.
-			Model\DownloadIntentClean::build();
-			
-			$alterations = array(
-				'ALTER TABLE `%s` ADD COLUMN `bot` TINYINT',
-				'ALTER TABLE `%s` ADD COLUMN `client_name` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `client_version` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `client_type` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `os_name` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `os_version` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `device_brand` VARCHAR(255)',
-				'ALTER TABLE `%s` ADD COLUMN `device_model` VARCHAR(255)',
-			);
-
-			foreach ($alterations as $sql) {
-				$wpdb->query( sprintf($sql, Model\UserAgent::table_name()) );
-			}
-
-			podlove_init_user_agent_refresh();
-
-			// manually trigger intent cron after user agents are parsed
-			// parameter to make sure WP does not skip it due to 10 minute rule
-			wp_schedule_single_event(time() + 120 , 'podlove_cleanup_download_intents', ['really' => true]);
-			// manually trigger average cron after intents are calculated
-			wp_schedule_single_event(time() + 240, 'recalculate_episode_download_average', ['really' => true]);
-		break;
-		case 95:
-			// add missing flattr column
-			$wpdb->query( sprintf(
-				'ALTER TABLE `%s` ADD COLUMN `flattr` VARCHAR(255) AFTER `avatar`',
-				\Podlove\Modules\Contributors\Model\Contributor::table_name()
-			) );
 		break;
 	}
 

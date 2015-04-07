@@ -22,6 +22,7 @@ class M_Frame_Communication extends C_Base_Module
 			$context
 		);
 
+        include_once('class.frame_communication_option_handler.php');
         C_NextGen_Settings::get_instance()->add_option_handler('C_Frame_Communication_Option_Handler', array(
            'frame_event_cookie_name',
         ));
@@ -45,7 +46,7 @@ class M_Frame_Communication extends C_Base_Module
 
 	function enqueue_admin_scripts()
 	{
-		$router = C_Router::get_instance();
+		$router = $this->get_registry()->get_utility('I_Router');
 
 		wp_register_script(
 			'frame_event_publisher',
@@ -61,17 +62,10 @@ class M_Frame_Communication extends C_Base_Module
     {
         return array(
             'C_Frame_Communication_Option_Handler'	=> 'class.frame_communication_option_handler.php',
-            'C_Frame_Event_Publisher' 			    => 'class.frame_event_publisher.php'
+            'C_Frame_Event_Publisher' 			    => 'class.frame_event_publisher.php',
+            'I_Frame_Event_Publisher' 			    => 'interface.frame_event_publisher.php'
         );
     }
-}
-
-class C_Frame_Communication_Option_Handler
-{
-	function get($key, $default='X-Frame-Events')
-	{
-		return 'X-Frame-Events';
-	}
 }
 
 new M_Frame_Communication();

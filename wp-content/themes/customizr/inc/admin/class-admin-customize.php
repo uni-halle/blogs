@@ -6,9 +6,9 @@
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0
-* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
+* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://presscustomizr.com/customizr
+* @link         http://themesandco.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_customize' ) ) :
@@ -235,10 +235,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
 		        apply_filters('tc_js_customizer_control_params' ,
 			        array(
 			        	'themeFolder' 		=> get_template_directory_uri(),
-                //can be hacked to override the preview params when a custom skin is used
-                //array( 'skinName' => 'custom-skin-#40542.css', 'fullPath' => 'http://....' )
-                'customSkin'      => apply_filters( 'tc_custom_skin_preview_params' , array( 'skinName' => '', 'fullPath' => '' ) ),
-                'fontPairs'       => TC_utils::$inst -> tc_get_font( 'list' ),
+                'fontPairs'       => TC_utils::$instance -> tc_get_font( 'list' ),
                 'fontSelectors'   => TC_init::$instance -> font_selectors
 			        )
 			       )
@@ -309,8 +306,8 @@ if ( ! class_exists( 'TC_customize' ) ) :
 			        	'AjaxUrl'       => admin_url( 'admin-ajax.php' ),
 			        	'TCNonce' 			=> wp_create_nonce( 'tc-customizer-nonce' ),
                 'themeName'     => TC___::$theme_name,
-                'HideDonate'    => TC_utils::$inst->tc_opt('tc_hide_donate'),
-                'ShowCTA'       => ( true == TC_utils::$inst->tc_opt('tc_hide_donate') && ! get_transient ('tc_cta') ) ? true : false
+                'HideDonate'    => tc__f('__get_option' ,'tc_hide_donate'),
+                'ShowCTA'       => ( true == tc__f('__get_option' ,'tc_hide_donate') && ! get_transient ('tc_cta') ) ? true : false
 			        )
 			    )
 	        );
@@ -411,18 +408,6 @@ if ( ! class_exists( 'TC_customize' ) ) :
           <?php
             printf('<span class="tc-notice">%1$s</span><a class="tc-cta-btn" href="%2$s" title="%3$s" target="_blank">%3$s &raquo;</a>',
               __( "Add unlimited featured pages with Customizr Pro" , 'customizr' ),
-              sprintf('%sextension/customizr-pro/', TC_WEBSITE ),
-              __( "Discover Customizr Pro" , 'customizr' )
-            );
-          ?>
-        </div>
-      </script>
-      <script type="text/template" id="footer_cta">
-        <div class="tc-cta tc-in-control-cta-wrap">
-        <hr/>
-          <?php
-            printf('<span class="tc-notice">%1$s</span><a class="tc-cta-btn" href="%2$s" title="%3$s" target="_blank">%3$s &raquo;</a>',
-              __( "Customize your footer credits with Customizr Pro" , 'customizr' ),
               sprintf('%sextension/customizr-pro/', TC_WEBSITE ),
               __( "Discover Customizr Pro" , 'customizr' )
             );

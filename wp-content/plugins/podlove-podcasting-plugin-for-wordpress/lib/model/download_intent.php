@@ -1,13 +1,6 @@
 <?php
 namespace Podlove\Model;
 
-/**
- * Raw download intent data.
- * 
- * If you want to run analytics queries, you probably want to use
- * the DownloadIntentClean table.
- * 
- */
 class DownloadIntent extends Base {
 
 	public function add_geo_data($ip_string) {

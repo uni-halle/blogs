@@ -165,7 +165,16 @@ function wptouchFdnSetupjQuery() {
 
   	// jQuery function webkitSlideToggle()
 	jQuery.fn.webkitSlideToggle = function() {
-		this.toggle();
+		if ( wptouchFdnIsiOS6() ) {
+			if ( !this.hasClass( 'slide-in' ) ) {
+				this.removeClass( 'slide-out' ).addClass( 'slide-in' ).show();
+			} else {
+				this.removeClass( 'slide-in' ).addClass( 'slide-out' );
+				setTimeout( function(){ jQuery( '.slide-out' ).hide(); }, 480 );
+			}
+		} else {
+			this.toggle();
+		}
   	}
 
 	// jQuery function viewportCenter()

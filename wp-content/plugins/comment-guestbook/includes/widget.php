@@ -419,7 +419,8 @@ class CGB_Widget extends WP_Widget {
 				else {
 					// Handle the tag
 					$tagName = $match[1][0];
-					if('/' == $tag[1]) {
+					if('/' == $tag[1])
+					{
 						// This is a closing tag
 						$openingTag = array_pop($tags);
 						assert($openingTag == $tagName); // check that tags are properly nested

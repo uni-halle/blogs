@@ -196,9 +196,6 @@ class Episode extends Base implements Licensable {
 		return $duration->get( $format );
 	}
 
-	/**
-	 * @todo episode should not know about cache; better: $cache->delete_for($episode) 
-	 */
 	public function delete_caches() {
 
 		// delete caches for current episode

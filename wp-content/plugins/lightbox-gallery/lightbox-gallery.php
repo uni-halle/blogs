@@ -4,11 +4,11 @@ Plugin Name: Lightbox Gallery
 Plugin URI: http://wpgogo.com/development/lightbox-gallery.html
 Description: The Lightbox Gallery plugin changes the view of galleries to the lightbox.
 Author: Hiroaki Miyashita
-Version: 0.8.1
+Version: 0.7.4
 Author URI: http://wpgogo.com/
 */
 
-/*  Copyright 2009 -2015 Hiroaki Miyashita
+/*  Copyright 2009 -2013 Hiroaki Miyashita
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -310,11 +310,11 @@ function lightbox_gallery_admin() {
 	if ( !isset($options['global_settings']['lightbox_gallery_loading_type']) ) $options['global_settings']['lightbox_gallery_loading_type'] = 'lightbox';
 ?>
 <p><label for="lightbox_gallery_loading_type"><?php _e('Choose the gallery loading type', 'lightbox-gallery'); ?></label>:<br />
-<label><input type="radio" name="lightbox_gallery_loading_type" id="lightbox_gallery_loading_type" value="colorbox"<?php checked('colorbox', $options['global_settings']['lightbox_gallery_loading_type']); ?> /> <?php _e('Colorbox', 'lightbox-gallery'); ?></label><br />
+<input type="radio" name="lightbox_gallery_loading_type" id="lightbox_gallery_loading_type" value="colorbox"<?php checked('colorbox', $options['global_settings']['lightbox_gallery_loading_type']); ?> /> <?php _e('Colorbox', 'lightbox-gallery'); ?><br />
 <?php
 	if ( file_exists(ABSPATH . '/' . PLUGINDIR . '/' . $plugin_dir . '/js/jquery.lightbox.js') || file_exists(TEMPLATEPATH.'/jquery.lightbox.js') ) :
 ?>
-<label><input type="radio" name="lightbox_gallery_loading_type" id="lightbox_gallery_loading_type" value="lightbox"<?php checked('lightbox', $options['global_settings']['lightbox_gallery_loading_type']); ?> /> <?php _e('Lightbox', 'lightbox-gallery'); ?></label><br />
+<input type="radio" name="lightbox_gallery_loading_type" id="lightbox_gallery_loading_type" value="lightbox"<?php checked('lightbox', $options['global_settings']['lightbox_gallery_loading_type']); ?> /> <?php _e('Lightbox', 'lightbox-gallery'); ?><br />
 <?php
 	else :
 ?>
@@ -325,7 +325,7 @@ function lightbox_gallery_admin() {
 	endif;
 	if ( file_exists(ABSPATH . '/' . PLUGINDIR . '/' . $plugin_dir . '/js/highslide.js') || file_exists(TEMPLATEPATH.'/highslide.js') ) :
 ?>
-<label><input type="radio" name="lightbox_gallery_loading_type" id="lightbox_gallery_loading_type" value="highslide"<?php checked('highslide', $options['global_settings']['lightbox_gallery_loading_type']); ?> /> <?php _e('Highslide JS', 'lightbox-gallery'); ?></label><br />
+<input type="radio" name="lightbox_gallery_loading_type" id="lightbox_gallery_loading_type" value="highslide"<?php checked('highslide', $options['global_settings']['lightbox_gallery_loading_type']); ?> /> <?php _e('Highslide JS', 'lightbox-gallery'); ?><br />
 <ul style="list-style-type:disc; padding-left:1.2em;">
 <li><?php echo sprintf(__('Caution: Highslide JS is licensed under a Creative Commons Attribution-NonCommercial 2.5 License. You need the author\'s permission to use Highslide JS on commercial websites. <a href="%s" target="_blank">Please look at the author\'s website.</a>', 'lightbox-gallery'), 'http://highslide.com/'); ?></li>
 </ul>
@@ -514,14 +514,13 @@ function lightbox_gallery($attr) {
 	
 	$page = isset($wp_query->query_vars['page']) ? $wp_query->query_vars['page'] : 1;
 		
-	$html5 = current_theme_supports( 'html5', 'gallery' );
 	extract(shortcode_atts(array(
 		'order'      => 'ASC',
 		'orderby'    => 'menu_order ID',
 		'id'         => $post->ID,
-		'itemtag'    => $html5 ? 'figure'     : 'dl',
-		'icontag'    => $html5 ? 'div'        : 'dt',
-		'captiontag' => $html5 ? 'figcaption' : 'dd',
+		'itemtag'    => 'dl',
+		'icontag'    => 'dt',
+		'captiontag' => 'dd',
 		'columns'    => $columns,
 		'size'       => $size,
 		'include'    => '',
@@ -591,8 +590,8 @@ function lightbox_gallery($attr) {
 
 	$gallery_style = $gallery_div = '';
 	if ( empty($options['global_settings']['lightbox_gallery_disable_column_css']) ) :
-	if ( apply_filters( 'use_default_gallery_style', ! $html5 ) )
-	$gallery_style = "
+	if ( apply_filters( 'use_default_gallery_style', true ) )
+		$gallery_style = "
 		<style type='text/css'>
 			#{$selector} {
 				margin: auto;
@@ -631,7 +630,7 @@ function lightbox_gallery($attr) {
 // <![CDATA[
 	jQuery(document).ready(function () {
 		jQuery(".'.$class.' a").attr("rel","'.$class.'");	
-		jQuery(\'a[rel="'.$class.'"]\').colorbox({maxWidth:"95%", maxHeight:"95%",title: function(){ return jQuery(this).children().attr("alt"); }});
+		jQuery(\'a[rel="'.$class.'"]\').colorbox({title: function(){ return jQuery(this).children().attr("alt"); }});
 	});
 // ]]>
 </script>'."\n";
@@ -674,31 +673,22 @@ function lightbox_gallery($attr) {
 			elseif ( $options['global_settings']['lightbox_gallery_loading_type'] == 'colorbox' ) :
 				$output .= ' rel="'.$class.'"';
 			endif;
-			$attachment->_wp_attachment_image_alt = !empty($attachment->_wp_attachment_image_alt) ? $attachment->_wp_attachment_image_alt : $attachment->post_excerpt;
-			$output .= '><img src="'.$thumbnail_link[0].'" width="'.$thumbnail_link[1].'" height="'.$thumbnail_link[2].'" alt="'.esc_attr($attachment->_wp_attachment_image_alt).'" /></a>
+			$output .= '><img src="'.$thumbnail_link[0].'" width="'.$thumbnail_link[1].'" height="'.$thumbnail_link[2].'" alt="'.esc_attr($attachment->post_excerpt).'" /></a>
 </'.$icontag.'>';
 			if ( $captiontag && (trim($attachment->post_excerpt) || trim($attachment->post_content) || isset($metadata)) ) {
 				$output .= '<'.$captiontag.' class="gallery-caption" id="caption'.$attachment->ID.'">';
 				if($attachment->post_excerpt) $output .= '<span class="imagecaption">'.$attachment->post_excerpt . "</span><br />\n";
 				if($attachment->post_content) $output .= '<span class="imagedescription">'.$attachment->post_content . "</span><br />\n";
-				if( !empty($metadata) ) $output .= '<span class="imagemeta">'.$metadata.'</span>';
+				if($metadata) $output .= '<span class="imagemeta">'.$metadata.'</span>';
 				$output .= '</'.$captiontag.'>';
 			}
 			$output .= '</'.$itemtag.'>';
-			if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
+			if ( $columns > 0 && ++$i % $columns == 0 )
 				$output .= '<br style="clear: both" />';
-			}
 		}
 	}
-
-	if ( ! $html5 && $columns > 0 && $i % $columns !== 0 ) {
-		$output .= "
-			<br style='clear: both' />";
-	}
-		
-	$output .= "
-		</div>\n";
-
+	
+	$output .= '<br style="clear: both" /></div>';
 	$output .= wp_link_pages_for_lightbox_gallery(array('before' => $before, 'after' => $after, 'link_before' => $link_before, 'link_after' => $link_after, 'next_or_number' => $next_or_number, 'nextpagelink' => $nextpagelink, 'previouspagelink' => $previouspagelink, 'pagelink' => $pagelink, 'page' => $page, 'numpages' => $numpages, 'pagenavi' => $pagenavi));
 
 	return $output;

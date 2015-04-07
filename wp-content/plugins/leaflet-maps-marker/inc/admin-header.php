@@ -200,10 +200,10 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 	if ( (get_option('leafletmapsmarker_update_info') == 'show') && ($page != 'leafletmapsmarker_pro_upgrade') ){
 		$lmm_version_old = get_option( 'leafletmapsmarker_version_before_update' );
 		$lmm_version_new = get_option( 'leafletmapsmarker_version' );
+		$lmm_changelog_new_version = '<a href="https://www.mapsmarker.com/v' . $lmm_version_new . '" target="_blank" style="text-decoration:none;">https://www.mapsmarker.com/v' . $lmm_version_new . '</a>';
+		$lmm_full_changelog = '<a href="https://www.mapsmarker.com/changelog" target="_blank" style="text-decoration:none;">https://www.mapsmarker.com/changelog</a>';
+
 		echo '<div style="border-radius:3px;border-color:#E6DB55;background-color:#FFFFE0;margin:10px 0 5px;padding:0 0.6em;border-style:solid;border-width:1px;">';
-		if (version_compare(phpversion(),"5.4","<")){
-			echo '<p><div style="border:2px solid red;background-color:#ffde00;padding:5px;">' . sprintf(__('Warning: your server uses the outdated PHP version %1$s, which is not updated anymore and potentially insecure!<br/>PHP version %2$s is now the recommended version for WordPress (but it does not hurt to get updated to PHP %3$s or higher already).<br/>Read more information about how you can update at %4$s','lmm'), phpversion(), '5.4', '5.5', '<a href="http://www.wpupdatephp.com/update/" target="_blank" style="text-decoration:none;">http://www.wpupdatephp.com/</a>') . '</div></p>';
-		}
 		if ($lmm_version_old == 0) {
 			echo '<p><span style="font-weight:bold;font-size:125%;">' . sprintf(__('Leaflet Maps Marker has been successfully updated to version %1s!','lmm'), $lmm_version_new) . '</span></p>';
 		} else {

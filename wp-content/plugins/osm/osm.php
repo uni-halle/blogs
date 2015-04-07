@@ -3,9 +3,9 @@
 Plugin Name: OSM
 Plugin URI: http://wp-osm-plugin.HanBlog.net
 Description: Embeds maps in your blog and adds geo data to your posts.  Find samples and a forum on the <a href="http://wp-osm-plugin.HanBlog.net">OSM plugin page</a>.  
-Version: 3.1.1
+Version: 2.9.3
 Author: MiKa
-Author URI: http://MiKa.HanBlog.net
+Author URI: http://www.HanBlog.net
 Minimum WordPress Version Required: 2.8
 */
 
@@ -27,7 +27,7 @@ Minimum WordPress Version Required: 2.8
 */
 load_plugin_textdomain('OSM-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 
-define ("PLUGIN_VER", "V3.1.1");
+define ("PLUGIN_VER", "V2.9.3");
 
 // modify anything about the marker for tagged posts here
 // instead of the coding.
@@ -99,9 +99,7 @@ if (@(!include('osm-config.php'))){
 }
 
 // do not edit this
-//define ("Osm_TraceLevel", DEBUG_ERROR);
-define ("Osm_TraceLevel", DEBUG_OFF);
-
+define ("Osm_TraceLevel", DEBUG_ERROR);
 //define ("Osm_TraceLevel", DEBUG_INFO);
 
 // If the function exists this file is called as upload_mimes.
@@ -120,29 +118,6 @@ if ( ! function_exists( 'osm_restrict_mime_types' ) ) {
     $mime_types['kml'] = 'text/kml';
     return $mime_types;
   }
-}
-
-function saveGeotagAndPic(){
-
-  $latlon  = $_POST['lat'].','.$_POST['lon'];
-  $icon    = $_POST['icon'];
-  $post_id = $_POST['post_id'];
-  $nonce   = $_POST['geotag_nonce'];
-
-  if (!wp_verify_nonce($nonce, 'osm_geotag_nonce')){
-    echo "Error: Bad ajax request";
-  }
-  else {
-    echo "Saved geotag!";
-    $CustomField =  get_option('osm_custom_field','OSM_geo_data');
-    delete_post_meta($post_id, $CustomField);
-    delete_post_meta($post_id, "OSM_geo_icon");
-    add_post_meta($post_id, $CustomField, $latlon, true );
-    if ($icon != ""){
-      add_post_meta($post_id, "OSM_geo_icon", $icon, true );	
-    }
-  }
-  wp_die();
 }
 
 // If the function exists this file is called as post-upload-ui.
@@ -164,7 +139,129 @@ if ( ! function_exists( 'osm_restrict_mime_types_hint' ) ) {
 //hook to create the meta box
 add_action( 'add_meta_boxes', 'osm_map_create' );
 
-include('osm-metabox.php');
+function osm_map_create() {
+  //create a custom meta box
+  $screens = array( 'post', 'page' );
+  foreach ($screens as $screen) {
+    add_meta_box( 'osm-sc-meta', 'WP OSM Plugin shortcode generator', 'osm_map_create_function', $screen, 'normal', 'high' );
+  }
+}
+
+function osm_map_create_function( $post ) {
+?>
+    <p>
+    <b>1. <?php _e('Generate','OSM-plugin') ?></b>:
+    <select name="osm_mode">
+        <option value="sc_gen">OSM shortcode</option>
+        <option value="geotagging">geotag</option>
+    </select>
+    <br>
+    OSM shortcode options: <br>
+    <b>2. <?php _e('Add markers','OSM-plugin') ?></b>: 
+    <select name="osm_import">
+        <option value="none"><?php _e('none','OSM-plugin') ?></option>
+        <option value="single"><?php _e('single marker','OSM-plugin') ?></option>
+        <option value="osm_l"><?php _e('all geotagged posts','OSM-plugin') ?></option>
+        <option value="exif_m"><?php _e('photos (EXIF) in post/page','OSM-plugin') ?></option>
+    </select>
+    <br>
+    <b>3. <?php _e('marker icon','OSM-plugin') ?></b>:
+    <select name="osm_marker">
+        <option value="none"><?php _e('none','OSM-plugin') ?></option>
+        <option value="wpttemp-green.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="wpttemp-red.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+        <option value="wpttemp-yellow.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="marker_blue.png"><?php _e('Marker','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_black_pinother_01.png"><?php _e('Pin #1','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_pin-export_01.png"><?php _e('Pin #2','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_red_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+        <option value="mic_green_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="mic_blue_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>       
+        <option value="mic_photo_icon.png"><?php _e('Camera','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option> 
+        <option value="mic_yel_restaurant_chinese_01.png"><?php _e('Chin. restaurant','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="mic_yel_icecream_01.png"><?php _e('Icecream','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="mic_yel_campingtents_01.png"><?php _e('Campingtents','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="mic_green_campingcar_01.png"><?php _e('Campingcar','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="mic_brown_pickup_camper_01.png"><?php _e('Pickup camper','OSM-plugin');echo ' ';_e('brown','OSM-plugin') ?></option>
+        <option value="mic_toilets_disability_01.png"><?php _e('Toilets disability','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_shark_icon.png"><?php _e('Shark','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_red_pizzaria_01.png"><?php _e('Pizzaria','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+        <option value="mic_parasailing_01.png"><?php _e('Parasailing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_green_horseriding_01.png"><?php _e('Horseriding','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="mic_cycling_icon.png"><?php _e('Cycling','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_coldfoodcheckpoint_01.png"><?php _e('Coldfookcheckpoint','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_blue_tweet_01.png"><?php _e('Tweet','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_blue_information_01.png"><?php _e('Information','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_blue_horseriding_01.png"><?php _e('Horserinding','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_black_train_01.png"><?php _e('Train','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_steamtrain_01.png"><?php _e('Steamtrain','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_powerplant_01.png"><?php _e('Powerplant','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_parking_bicycle-2_01.png"><?php _e('Bicycle Parking','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_cctv_01.png"><?php _e('cctv','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_blue_toilets_01.png"><?php _e('Toilets','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_blue_scubadiving_01.png"><?php _e('Scubadiving','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_orange_motorbike_01.png"><?php _e('Motorbike','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_orange_sailing_1.png"><?php _e('Sailing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_orange_fishing_01.png"><?php _e('Fishing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_blue_mobilephonetower_01.png"><?php _e('Mobilephonetower','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_orange_hiking_01.png"><?php _e('Hiking','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_blue_bridge_old_01.png"><?php _e('Bridge','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_black_memorial_01.png"><?php _e('Memorial','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="car.png"><?php _e('Car','OSM-plugin') ?></option>
+        <option value="bus.png"><?php _e('Bus','OSM-plugin') ?></option>
+        <option value="bicycling.png"><?php _e('Bicycling','OSM-plugin') ?></option>
+        <option value="airport.png"><?php _e('Airport','OSM-plugin') ?></option>
+        <option value="motorbike.png"><?php _e('Motorbike','OSM-plugin') ?></option>
+        <option value="hostel.png"><?php _e('Hostel','OSM-plugin') ?></option>
+        <option value="guest_house.png"><?php _e('Guesthouse','OSM-plugin') ?></option>
+        <option value="camping.png"><?php _e('Camping','OSM-plugin') ?></option>
+        <option value="geocache.png"><?php _e('Geocache','OSM-plugin') ?></option>
+        <option value="styria_linux.png"><?php _e('Styria Tux','OSM-plugin') ?></option>
+    </select> ( <a href="http://wp-osm-plugin.hanblog.net/wp-osm-plugin-icons/" target="_blank"> icons</a> )<br>
+    <b>4. <?php _e('map type','OSM-plugin') ?></b>:
+    <select name="osm_map_type">
+        <option value="Mapnik">OpenStreetMap</option>
+        <option value="CycleMap">CycleMap</option>
+        <option value="OpenSeaMap">OpenSeaMap</option>
+        <option value="OpenWeatherMap">OpenWeatherMap</option>
+        <option value="basemap_at">BaseMap</option>
+        <option value="stamen_watercolor">Stamen Watercolor</option>
+        <option value="stamen_toner">Stamen Toner</option>
+    </select>
+    <b>5. <?php _e('OSM control theme','OSM-plugin') ?></b>: 
+    <select name="osm_theme">
+        <option value="none"><?php _e('none','OSM-plugin') ?></option>
+        <option value="blue"><?php _e('blue','OSM-plugin') ?></option>
+        <option value="dark"><?php _e('dark','OSM-plugin') ?></option>
+        <option value="orange"><?php _e('orange','OSM-plugin') ?></option>
+    </select>
+    <br>
+    <b>6. 
+    <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
+          $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
+      echo $link;
+    ?>
+    </b>
+    </p>
+<?php echo Osm::sc_showMap(array('msg_box'=>'metabox_sc_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
+<!--  <br><b><font color="#FF0000"> -->
+  <?php 
+/*
+    $url = 'http://wordpress.org/support/view/plugin-reviews/osm'; 
+        $link = sprintf( __( 'There are neither a donation button nor a pay version. If you like OSM, support it with YOUR RATE <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
+      echo $link;
+*/    ?>
+<!--  </font></b> 
+    <br> -->
+    <?php /* _e('This red message will disappear again with OSM Plugin V2.8!','OSM-plugin') */ ?>
+    <br>
+  <h3><span style="color:green"><?php _e('Copy the generated shortcode/customfield/argument: ','OSM-plugin') ?></span></h3>
+  <div id="ShortCode_Div"><?php _e('If you click into the map this text is replaced','OSM-plugin') ?>
+  </div><br>
+  <?php
+}
+
 include('osm-oljs2.php');
 include('osm-oljs3.php');
 include('osm-icon.php');
@@ -185,11 +282,10 @@ class Osm
     add_action('admin_menu', array(&$this, 'admin_menu'));
     add_action('wp_print_scripts',array(&$this, 'show_enqueue_script'));
     add_action('widgets_init', 'register_osm_widget' );
-    add_action('wp_ajax_act_saveGeotag', 'saveGeotagAndPic');
 
     // add the WP shortcode
     add_shortcode('osm_map',array(&$this, 'sc_showMap'));
-    add_shortcode('osm_map_v3',array(&$this, 'sc_OL3JS'));
+    add_shortcode('osm_ol3js',array(&$this, 'sc_OL3JS'));
     add_shortcode('osm_image',array(&$this, 'sc_showImage'));
     add_shortcode('osm_info',array(&$this, 'sc_info'));
   }
@@ -264,7 +360,8 @@ class Osm
 	
     // name of the custom field to store Long and Lat
     // for the geodata of the post
-    $osm_custom_field  = get_option('osm_custom_field','OSM_geo_data');
+    $osm_custom_field  = get_option('osm_custom_field','OSM_geo_data');                                                  
+
     // zoomlevel for the link the OSM page
     $osm_zoom_level    = get_option('osm_zoom_level','7');
 			
@@ -274,8 +371,8 @@ class Osm
   // put meta tags into the head section
   function wp_head($not_used)
   { 
-    global $wp_query;
-    global $post;
+	global $wp_query;
+	global $post;
 
     $lat = '';
     $lon = '';
@@ -398,7 +495,6 @@ class Osm
          // how many tags do we have in this post?
          $NumOfGeoTagsInPost = count($GeoData_Array);
          $PostMarker = get_post_meta($post->ID, 'OSM_geo_icon', true);
-         $PostMarker = Osm_icon::replaceOldIcon($PostMarker);
          for ($TagNum = 0; $TagNum < $NumOfGeoTagsInPost; $TagNum++){
            list($tag_lat, $tag_lon) = explode(',', $GeoData_Array[$TagNum]); 
            list($tag_lat, $tag_lon) = $this->checkLatLongRange('$marker_all_posts',$tag_lat, $tag_lon);
@@ -644,7 +740,7 @@ class Osm
           define ('OL_LIBS_LOADED', 1);
           define ('GOOGLE_LIBS_LOADED', 1);
 	}
-	 else{
+	else{
 	  // Errormsg is traced at another place
 	}	
   }
@@ -658,8 +754,6 @@ function register_osm_widget() {
     register_widget( 'OSM_Tagged_Widget' );
 }
 
-
-
 $pOsm = new Osm();
 
 function OSM_isGeotagged(){
@@ -667,6 +761,7 @@ function OSM_isGeotagged(){
   //$Data = get_post_meta($post->ID, 'OSM_geo_data', true); 
   $CustomFieldName = get_option('osm_custom_field','OSM_geo_data');
   $Data = get_post_meta($post->ID, $CustomFieldName, true); 
+  $PostMarker = get_post_meta($post->ID, 'OSM_geo_icon', true);
   $Data = preg_replace('/\s*,\s*/', ',',$Data);
   // get pairs of coordination
   $GeoData_Array = explode( ' ', $Data );
@@ -776,7 +871,7 @@ function OSM_displayOpenStreetMapExt($a_widht, $a_hight, $a_zoom, $a_type, $a_co
                  'marker_height'  => $a_marker_height,
                  'marker_width'   => $a_marker_width,
                  'marker'         => OSM_getCoordinateLat("osm") . ',' . OSM_getCoordinateLong("osm") . ',' . $a_marker_text,
-	         'control'        => $a_control,
+	         	 'control'        => $a_control,
                  'marker_focus'   => $a_marker_focus,
                  'theme'          => $a_theme,
                  'marker_routing' => $a_routing);

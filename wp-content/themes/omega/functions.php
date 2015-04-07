@@ -12,30 +12,45 @@ new Omega();
  */
 function omega_theme_setup() {
 
-	//remove_theme_mods();
-
 	/* Load omega functions */
 	require get_template_directory() . '/lib/hooks.php';
+	
+	/* The best thumbnail/image script ever. */
+	add_theme_support( 'get-the-image' );
 	
 	/* Load scripts. */
 	add_theme_support( 
 		'omega-scripts', 
 		array( 'comment-reply' ) 
 	);
-
-	add_theme_support( "title-tag" );
-	
-	add_theme_support( 'post-thumbnails' );
 	
 	add_theme_support( 'omega-theme-settings' );
 
 	add_theme_support( 'omega-content-archives' );
+
+	/* Enable custom template hierarchy. */
+	//add_theme_support( 'omega-template-hierarchy' );
+
+	/* Enable theme layouts (need to add stylesheet support). */
+	add_theme_support( 
+		'theme-layouts', 
+		array(
+			'1c'        => __( 'Content',           'omega' ),
+			'2c-l'      => __( 'Content / Sidebar', 'omega' ),
+			'2c-r'      => __( 'Sidebar / Content', 'omega' )
+		),
+		array( 'default' => is_rtl() ? '2c-r' :'2c-l', 'customize' => true ) 
+	);
+	
 		
 	/* implement editor styling, so as to make the editor content match the resulting post output in the theme. */
 	add_editor_style();
 
 	/* Support pagination instead of prev/next links. */
 	add_theme_support( 'loop-pagination' );	
+
+	/* Better captions for themes to style. */
+	add_theme_support( 'cleaner-caption' );
 
 	/* Add default posts and comments RSS feed links to <head>.  */
 	add_theme_support( 'automatic-feed-links' );
@@ -54,6 +69,7 @@ function omega_theme_setup() {
 
 	/* Enable child themes page */
 	add_theme_support( 'omega-child-page' );
+
 
 	/* Handle content width for embeds and images. */
 	omega_set_content_width( 640 );

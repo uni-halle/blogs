@@ -2,21 +2,21 @@
 /**
 * Widgets factory : registered the different widgetized areas
 * The default widget areas are defined as properties of the TC_utils class in class-fire-utils.php
-* TC_utils::$inst -> sidebar_widgets for left and right sidebars
-* TC_utils::$inst -> footer_widgets for the footer
+* TC_utils::$instance -> sidebar_widgets for left and right sidebars
+* TC_utils::$instance -> footer_widgets for the footer
 * The widget area are then fired in the class below
-*
+* 
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0
-* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
+* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://presscustomizr.com/customizr
+* @link         http://themesandco.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_widgets' ) ) :
   class TC_widgets {
-
+    
         //Access any method or var of the class with classname::$instance -> var or method():
         static $instance;
 
@@ -28,9 +28,9 @@ if ( ! class_exists( 'TC_widgets' ) ) :
 
         /**
         * Registers the widget areas
-        *
+        * 
         * @package Customizr
-        * @since Customizr 3.0
+        * @since Customizr 3.0 
         */
         function tc_widgets_factory() {
           //default Customizr filtered args

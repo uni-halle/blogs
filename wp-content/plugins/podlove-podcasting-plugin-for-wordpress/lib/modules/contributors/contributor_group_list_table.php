@@ -15,16 +15,16 @@ class Contributor_Group_List_Table extends \Podlove\List_Table {
 	}
 	
 
-	public function column_title( $group ) {
+	public function column_title( $role ) {
 		$actions = array(
-			'edit'   => Settings\GenericEntitySettings::get_action_link( 'group', $group->id, __( 'Edit', 'podlove' ) ),
-			'delete' => Settings\GenericEntitySettings::get_action_link( 'group', $group->id, __( 'Delete', 'podlove' ), 'confirm_delete' )
+			'edit'   => Settings\ContributorGroups::get_action_link( $role, __( 'Edit', 'podlove' ) ),
+			'delete' => Settings\ContributorGroups::get_action_link( $role, __( 'Delete', 'podlove' ), 'confirm_delete' )
 		);
 	
 		return sprintf( '%1$s %2$s',
-		    Settings\GenericEntitySettings::get_action_link( 'group', $group->id, $group->title ),
+		    Settings\ContributorRoles::get_action_link( $role, $role->title ),
 		    $this->row_actions( $actions )
-		) . '<input type="hidden" class="group_id" value="' . $group->id . '">';;
+		) . '<input type="hidden" class="group_id" value="' . $role->id . '">';;
 	}
 
 	public function column_slug( $role ) {

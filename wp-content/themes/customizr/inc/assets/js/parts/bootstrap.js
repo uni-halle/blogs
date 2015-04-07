@@ -1651,16 +1651,13 @@ var TCParams = TCParams || {};
 
       //@tc adddon
       //give the revealed sub menu the height of the visible viewport
-      if ( ! this.$element.hasClass('nav-collapse') )
-          return;
-
-      if ( TCParams && 1 == TCParams.dropdowntoViewport )
+      if ( 1 == TCParams.dropdowntoViewport )
       {
         var tcVisible = $('body').hasClass('sticky-enabled') ? $(window).height() : ($(window).height() - $('.navbar-wrapper').offset().top);
         tcVisible = ( tcVisible - 90 ) > 80 ? tcVisible - 90 : 300;
         this.$element.css('max-height' , tcVisible + 'px');
       }
-      else if ( TCParams && 1 != TCParams.dropdowntoViewport && 1 == TCParams.stickyHeader )
+      else if ( 1 != TCParams.dropdowntoViewport && 1 == TCParams.stickyHeader )
       {
         //trigger click on back to top if sticky enabled
         if ( 0 != $('.back-to-top').length ) {
@@ -1685,7 +1682,7 @@ var TCParams = TCParams || {};
       this.$element[dimension](0)
 
       //@tc adddon
-      if ( TCParams && 1 != TCParams.dropdowntoViewport && 1 == TCParams.stickyHeader ) {
+      if ( 1 != TCParams.dropdowntoViewport && 1 == TCParams.stickyHeader ) {
         $('body').addClass('tc-sticky-header');
       }
     }
@@ -1870,7 +1867,7 @@ var TCParams = TCParams || {};
     }
 
   , slide: function (type, next) {
-      if(!$.support.transition && this.$element.hasClass('customizr-slide')) {
+      if(!$.support.transition && this.$element.hasClass('slide')) {
          this.$element.find('.item').stop(true, true); //Finish animation and jump to end.
       }
       var $active = this.$element.find('.item.active')
@@ -1902,12 +1899,9 @@ var TCParams = TCParams || {};
         })
       }
 
-      if ($.support.transition && this.$element.hasClass('customizr-slide')) {
+      if ($.support.transition && this.$element.hasClass('slide')) {
         this.$element.trigger(e)
         if (e.isDefaultPrevented()) return
-        //tc addon => trigger slide event to img
-        if ( 0 !== $next.find('img').length )
-          $next.find('img').trigger('slide');
         $next.addClass(type)
         $next[0].offsetWidth // force reflow
         $active.addClass(direction)
@@ -1916,14 +1910,9 @@ var TCParams = TCParams || {};
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
           that.sliding = false
-          setTimeout(function () {
-            that.$element.trigger('slid');
-            //tc addon => trigger slid event to img
-            if ( 0 !== $next.find('img').length )
-              $next.find('img').trigger('slid');
-          }, 0)
+          setTimeout(function () { that.$element.trigger('slid') }, 0)
         })
-      } else if(!$.support.transition && this.$element.hasClass('customizr-slide')) {
+      } else if(!$.support.transition && this.$element.hasClass('slide')) {
           this.$element.trigger(e)
           if (e.isDefaultPrevented()) return
           $active.animate({left: (direction == 'right' ? '100%' : '-100%')}, 600, function(){

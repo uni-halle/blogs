@@ -298,9 +298,7 @@
 			media.mixin.removeAllPlayers();
 			this.$( 'audio, video' ).each( function (i, elem) {
 				var el = media.view.MediaDetails.prepareSrc( elem );
-				setTimeout( function() {
-					new MediaElementPlayer( el, media.mixin.mejsSettings );
-				}, 0 );
+				new MediaElementPlayer( el, media.mixin.mejsSettings );
 			} );
 		}
 	});

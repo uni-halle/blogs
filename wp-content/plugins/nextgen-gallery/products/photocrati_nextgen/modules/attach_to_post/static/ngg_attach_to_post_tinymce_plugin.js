@@ -1,10 +1,5 @@
 // Self-executing function to create and register the TinyMCE plugin
 (function(siteurl) {
-    window.id = 'wordpress-post-page';
-
-    tinyMCE.addI18n('en.ngg_attach_to_post', {
-        title: 'Attach NextGEN Gallery to Post'
-    });
 
 	// Create the plugin. We'll register it afterwards
 	tinymce.create('tinymce.plugins.NextGEN_AttachToPost', {
@@ -38,7 +33,6 @@
             editor.windowManager.open = function(one, two) {
                 var modal = editor.windowManager.nggOldOpen(one, two);
                 modal.on('close', self.wm_close_event);
-                return modal;
             };
 
 			// Register a new TinyMCE command
@@ -84,13 +78,11 @@
             }
 		},
 
-        wm_close_event: function(e) {
-            if (e.target._id == 'ngg_attach_to_post_dialog') {
-                // Restore scrolling for the main content window when the attach to post interface is closed
-                jQuery('html,body').css('overflow', 'auto');
-                tinyMCE.activeEditor.selection.select(tinyMCE.activeEditor.dom.select('p')[0]);
-                tinyMCE.activeEditor.selection.collapse(0);
-            }
+        wm_close_event: function() {
+            // Restore scrolling for the main content window when the attach to post interface is closed
+            jQuery('html,body').css('overflow', 'auto');
+            tinyMCE.activeEditor.selection.select(tinyMCE.activeEditor.dom.select('p')[0]);
+            tinyMCE.activeEditor.selection.collapse(0);
         },
 
 		/**
@@ -100,7 +92,7 @@
 			// Determine the attach to post url
 			var attach_to_post_url = nextgen_gallery_attach_to_post_url;
             if (typeof(id) != 'undefined') {
-				attach_to_post_url += "&id=" + this.id;
+				attach_to_post_url += "?id=" + this.id;
             }
 
 			var win = window;

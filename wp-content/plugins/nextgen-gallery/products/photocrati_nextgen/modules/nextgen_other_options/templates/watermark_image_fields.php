@@ -3,7 +3,7 @@
 		<label for="watermark_image_url"
                title="<?php echo esc_attr($watermark_image_text); ?>"
                class="tooltip">
-			<?php esc_html_e($image_url_label)?>
+			<?php echo_h($image_url_label)?>
 		</label>
 	</td>
 	<td>

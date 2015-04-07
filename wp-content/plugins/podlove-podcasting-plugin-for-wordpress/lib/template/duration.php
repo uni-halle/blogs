@@ -22,6 +22,9 @@ class Duration extends Wrapper {
 	// Accessors
 	// /////////
 
+	/**
+	 * @deprecated since 1.10.3
+	 */
 	public function __toString() {
 		return $this->hours()
 		     . ":" . self::lfill( $this->minutes(), 2, 0 )

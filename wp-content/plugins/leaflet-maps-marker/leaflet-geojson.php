@@ -5,7 +5,7 @@
 //info: construct path to wp-load.php
 while(!is_file('wp-load.php')) {
 	if(is_dir('..' . DIRECTORY_SEPARATOR)) chdir('..' . DIRECTORY_SEPARATOR);
-	else die('Error: Could not construct path to wp-load.php - please check <a href="https://www.mapsmarker.com/path-error">https://www.mapsmarker.com/path-error</a> for more details');
+	else die('Error: Could not construct path to wp-load.php - please check <a href="http://mapsmarker.com/path-error">http://mapsmarker.com/path-error</a> for more details');
 }
 include( 'wp-load.php' );
 //info: get callback parameters for JSONP
@@ -45,7 +45,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 	}
 	if (isset($_GET['layer'])) {
 		$layer_prepared = esc_sql(strtolower($_GET['layer']));
-		$layer = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\","(",")"), "", $layer_prepared); //info: not intval() cause otherwise $layer=0 when creating new layer and showing all markers with layer id = 0
+		$layer = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\"), "", $layer_prepared); //info: not intval() cause otherwise $layer=0 when creating new layer and showing all markers with layer id = 0
 		$q = '';
 		if (($layer_prepared == 'all') || ($layer_prepared == '*')) {
 			$q = '';
@@ -95,7 +95,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				if ($full == 1) {
 					echo '"markerid":"'.$marker['mid'].'",'.PHP_EOL;
 				}
-					echo '"markername":"' . wp_specialchars_decode(stripslashes(esc_js(preg_replace('/[\x00-\x1F\x7F]/', '', $marker['mmarkername'])))) . '",'.PHP_EOL;
+					echo '"markername":"' . wp_specialchars_decode(stripslashes(esc_js($marker['mmarkername']))) . '",'.PHP_EOL;
 				if ($full == 1) {
 					echo '"basemap":"'.$marker['mbasemap'].'",'.PHP_EOL;
 					echo '"lat":"'.$marker['mlat'].'",'.PHP_EOL;
@@ -106,7 +106,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 					$marker_full_url = ($marker['micon'] == NULL) ? LEAFLET_PLUGIN_URL . "leaflet-dist/images/marker.png" : LEAFLET_PLUGIN_ICONS_URL . "/" . $marker['micon'];
 					echo '"iconUrl":"'.$marker_full_url.'",'.PHP_EOL;
 				}
-				$maddress = stripslashes(str_replace('"', '\'', preg_replace('/[\x00-\x1F\x7F]/', '', $marker['maddress'])));
+				$maddress = stripslashes(str_replace('"', '\'', $marker['maddress']));
 				if ( ($full == 0) && ($lmm_options['directions_popuptext_panel'] == 'yes') ) {
 					echo '"address":"'.$maddress.'",'.PHP_EOL;
 				} else if ($full == 1) {
@@ -134,14 +134,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 					'</ul>',
 					'</ol>'
 				);
-				//info: remove control chars & sanitize output
-				$mpopuptext = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, 
-								stripslashes(
-									str_replace("\\\\","/", 
-									str_replace('"', '\'', 
-									preg_replace('/[\x00-\x1F\x7F]/', '',
-									preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])
-								)))));
+				$mpopuptext = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(str_replace("\\\\","/", str_replace('"', '\'', preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])))));
 				if ($lmm_options['directions_popuptext_panel'] == 'yes') {
 
 					$mpopuptext_css = ($marker['mpopuptext'] != NULL) ? "border-top:1px solid #f0f0e7;padding-top:5px;margin-top:5px;clear:both;" : "";
@@ -179,7 +172,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 					echo '"marker-updatedby":"' . stripslashes($marker['mupdatedby']) . '",'.PHP_EOL;
 					echo '"marker-updatedon":"' . stripslashes($marker['mupdatedon']) . '",'.PHP_EOL;
 					echo '"layerid":"'.$marker['mlayer'].'",'.PHP_EOL;
-					echo '"layername":"' . stripslashes(preg_replace('/[\x00-\x1F\x7F]/', '', $marker['lname'])) . '",'.PHP_EOL;
+					echo '"layername":"' . stripslashes($marker['lname']) . '",'.PHP_EOL;
 					echo '"layer-createdby":"' . $marker['lcreatedby'] . '",'.PHP_EOL;
 					echo '"layer-createdon":"' . $marker['lcreatedon'] . '",'.PHP_EOL;
 					echo '"layer-updatedby":"' . stripslashes($marker['lupdatedby']) . '",'.PHP_EOL;
@@ -209,7 +202,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 		if ($callback != NULL) { echo ');'; }
 	} elseif (isset($_GET['marker'])) {
 		$markerid_prepared = esc_sql(strtolower($_GET['marker']));
-		$markerid = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\","(",")"), "", $markerid_prepared);
+		$markerid = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\"), "", $markerid_prepared);
 		if (($markerid_prepared == 'all') || ($markerid_prepared == '*')) {
 			$q = '';
 		} else {
@@ -257,7 +250,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			echo '{'.PHP_EOL;
 			if ($full == 1) {
 				echo '"markerid":"'.$marker['mid'].'",'.PHP_EOL;
-				echo '"markername":"' . wp_specialchars_decode(stripslashes(esc_js(preg_replace('/[\x00-\x1F\x7F]/', '', $marker['mmarkername'])))) . '",'.PHP_EOL;
+				echo '"markername":"' . wp_specialchars_decode(stripslashes(esc_js($marker['mmarkername']))) . '",'.PHP_EOL;
 				echo '"basemap":"'.$marker['mbasemap'].'",'.PHP_EOL;
 				echo '"lat":"'.$marker['mlat'].'",'.PHP_EOL;
 				echo '"lon":"'.$marker['mlon'].'",'.PHP_EOL;
@@ -267,7 +260,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				$marker_full_url = ($marker['micon'] == NULL) ? LEAFLET_PLUGIN_URL . "leaflet-dist/images/marker.png" : LEAFLET_PLUGIN_ICONS_URL . "/" . $marker['micon'];
 				echo '"iconUrl":"'.$marker_full_url.'",'.PHP_EOL;
 			}
-			$maddress = stripslashes(str_replace('"', '\'', preg_replace('/[\x00-\x1F\x7F]/', '', $marker['maddress'])));
+			$maddress = stripslashes(str_replace('"', '\'', $marker['maddress']));
 			if ( ($full == 0) && ($lmm_options['directions_popuptext_panel'] == 'yes') ) {
 				echo '"address":"'.$maddress.'",'.PHP_EOL;
 			} else if ($full == 1) {
@@ -299,14 +292,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 					'</ul>',
 					'</ol>'
 				);
-				//info: remove control chars & sanitize output
-				$mpopuptext = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, 
-								stripslashes(
-									str_replace("\\\\","/", 
-									str_replace('"', '\'', 
-									preg_replace('/[\x00-\x1F\x7F]/', '',
-									preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])
-								)))));
+				$mpopuptext = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(str_replace("\\\\","/", str_replace('"', '\'', preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])))));
 				$mpopuptext = $mpopuptext . "<div class='popup-directions' style='" . $mpopuptext_css . "'>" . $maddress . " (";
 
 				if ($lmm_options['directions_provider'] == 'googlemaps') {
@@ -341,7 +327,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				echo '"marker-updatedby":"' . stripslashes($marker['mupdatedby']) . '",'.PHP_EOL;
 				echo '"marker-updatedon":"' . stripslashes($marker['mupdatedon']) . '",'.PHP_EOL;
 				echo '"layerid":"'.$marker['mlayer'].'",'.PHP_EOL;
-				echo '"layername":"' . stripslashes(preg_replace('/[\x00-\x1F\x7F]/', '', $marker['lname'])) . '",'.PHP_EOL;
+				echo '"layername":"' . stripslashes($marker['lname']) . '",'.PHP_EOL;
 				echo '"layer-createdby":"' . $marker['lcreatedby'] . '",'.PHP_EOL;
 				echo '"layer-createdon":"' . $marker['lcreatedon'] . '",'.PHP_EOL;
 				echo '"layer-updatedby":"' . stripslashes($marker['lupdatedby']) . '",'.PHP_EOL;

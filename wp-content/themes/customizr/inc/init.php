@@ -27,9 +27,9 @@ endif;
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0
-* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
+* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://presscustomizr.com/customizr
+* @link         http://themesandco.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC___' ) ) :
@@ -112,7 +112,6 @@ if ( ! class_exists( 'TC___' ) ) :
                                     array('inc/parts', 'post_thumbnails'),
                                     array('inc/parts', 'post'),
                                     array('inc/parts', 'post_list'),
-                                    array('inc/parts', 'post_list_grid'),
                                     array('inc/parts', 'post_metas'),
                                     array('inc/parts', 'post_navigation'),
                                     array('inc/parts', 'sidebar'),
@@ -126,10 +125,12 @@ if ( ! class_exists( 'TC___' ) ) :
             );//end of filters
 
             //check the context
-            if ( file_exists( sprintf( '%sinc/init-pro.php' , TC_BASE ) ) && 'customizr-pro' == self::$theme_name )
+            if ( file_exists( sprintf( '%sinc/init-pro.php' , TC_BASE ) ) && 'customizr-pro' == self::$theme_name ) {
               require_once( sprintf( '%sinc/init-pro.php' , TC_BASE ) );
-
-            self::$tc_option_group = 'tc_theme_options';
+              self::$tc_option_group = 'tc_theme_options';
+            } else {
+              self::$tc_option_group = 'tc_theme_options';
+            }
 
             //theme class groups instanciation
             $this -> tc__ ( $this -> tc_core );
@@ -211,25 +212,14 @@ if ( ! class_exists( 'TC___' ) ) :
         function tc_is_customizing() {
           //checks if is customizing : two contexts, admin and front (preview frame)
           global $pagenow;
-          $bool = false;
-          if ( is_admin() && isset( $pagenow ) && 'customize.php' == $pagenow )
-            $bool = true;
-          if ( ! is_admin() && isset($_REQUEST['wp_customize']) )
-            $bool = true;
-          if ( $this -> tc_doing_customizer_ajax() )
-            $bool = true;
-          return $bool;
+          $_is_customizing = false;
+          if ( is_admin() && isset( $pagenow ) && 'customize.php' == $pagenow ) {
+            $_is_customizing = true;
+          } else if ( ! is_admin() && isset($_REQUEST['wp_customize']) ) {
+            $_is_customizing = true;
+          }
+          return $_is_customizing;
         }
-
-
-        /**
-        * Returns a boolean
-        * @since  3.3.2
-        */
-        function tc_doing_customizer_ajax() {
-          return isset( $_POST['customized'] ) && ( defined( 'DOING_AJAX' ) && DOING_AJAX );
-        }
-
     }//end of class
 endif;
 

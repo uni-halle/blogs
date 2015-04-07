@@ -13,15 +13,8 @@
 		value.bind( function( to ) {
 			if ( TCPreviewParams && TCPreviewParams.themeFolder ) {
 				//add a new link to the live stylesheet instead of replacing the actual skin link => avoid the flash of unstyle content during the skin load
-				var $skin_style_element = ( 0 === $('#live-skin-css').length ) ? $('<link>' , { id : 'live-skin-css' , rel : 'stylesheet'}) : $('#live-skin-css'),
-            skinName = to.replace('.css' , '.min.css'),
-            skinURL = [ TCPreviewParams.themeFolder , '/inc/assets/css/' , skinName ].join('');
-
-        //check if the customSkin param is filtered
-        if ( TCPreviewParams.customSkin && TCPreviewParams.customSkin.skinName && TCPreviewParams.customSkin.fullPath )
-          skinURL = to == TCPreviewParams.customSkin.skinName ? TCPreviewParams.customSkin.fullPath : skinURL;
-
-        $skin_style_element.attr('href' , skinURL );
+				var $skin_style_element = ( 0 === $('#live-skin-css').length ) ? $('<link>' , { id : 'live-skin-css' , rel : 'stylesheet'}) : $('#live-skin-css');
+				$skin_style_element.attr('href' , [ TCPreviewParams.themeFolder , '/inc/assets/css/' , to.replace('.css' , '.min.css') ].join('') );
 				if (  0 === $('#live-skin-css').length )
 					$('head').append($skin_style_element);
 			}
@@ -63,10 +56,7 @@
 	//featured page button text
 	wp.customize( 'tc_theme_options[tc_featured_page_button_text]' , function( value ) {
 		value.bind( function( to ) {
-            if ( to )
-                $( '.fp-button' ).html( to ).removeClass( 'hidden');
-            else
-                $( '.fp-button' ).addClass( 'hidden' );
+			$( '.fp-button' ).html( to );
 		} );
 	} );
 
@@ -99,10 +89,6 @@
 	//Icons : page
 	wp.customize( 'tc_theme_options[tc_show_page_title_icon]' , function( value ) {
 		value.bind( function( to ) {
-      //disable if grid customizer on
-      if ( $('.tc-gc').length )
-        return;
-
 			if ( false === to ) {
 				$('.entry-title' , '.page').removeClass('format-icon');
 			}
@@ -127,9 +113,6 @@
 	//Icons : Archive title
 	wp.customize( 'tc_theme_options[tc_show_archive_title_icon]' , function( value ) {
 		value.bind( function( to ) {
-      //disable if grid customizer on
-      if ( $('.tc-gc').length )
-        return;
 			if ( false === to ) {
 				$('archive h1.entry-title, .blog h1.entry-title, .search h1, .author h1').removeClass('format-icon');
 			}
@@ -142,10 +125,6 @@
 	//Icons : Posts in lists titles
 	wp.customize( 'tc_theme_options[tc_show_post_list_title_icon]' , function( value ) {
 		value.bind( function( to ) {
-      //disable if grid customizer on
-      if ( $('.tc-gc').length )
-        return;
-
 			if ( false === to ) {
 				$('.archive article .entry-title, .blog article .entry-title, .search article .entry-title, .author article .entry-title').removeClass('format-icon');
 			}
@@ -225,9 +204,7 @@
 	});
 	wp.customize( 'tc_theme_options[tc_post_list_thumb_height]' , function( value ) {
 		value.bind( function( to ) {
-			$('.tc-rectangular-thumb').css('max-height' , to + 'px');
-      if ( 0 !== $('.tc-rectangular-thumb').find('img').length )
-        $('.tc-rectangular-thumb').find('img').trigger('refresh-height');//listened by the jsimgcentering $ plugin
+			$('.tc-rectangular-thumb').css('max-height' , to + 'px').trigger('refresh-height');
 		} );
 	});
 	wp.customize( 'tc_theme_options[tc_single_post_thumb_height]' , function( value ) {
@@ -417,10 +394,7 @@
 		value.bind( function( to ) {
 			$('#option-custom-css').remove();
 			var $style_element = ( 0 === $('#live-custom-css').length ) ? $('<style>' , { id : 'live-custom-css'}) : $('#live-custom-css');
-			//sanitize string => remove html tags
-      to = to.replace(/(<([^>]+)>)/ig,"");
-
-      if (  0 === $('#live-custom-css').length )
+			if (  0 === $('#live-custom-css').length )
 				$('head').append($style_element.html(to));
 			else
 				$style_element.html(to);
@@ -456,10 +430,11 @@
 			$('#custom-bubble-color').remove();
 			var $style_element	= $('<style>' , { id : 'custom-bubble-color'}),
 				bubble_live_css = '';
-
+			//default bubble
+			bubble_live_css += '.comments-link .fs1 {color:' + to + ';}';
 			//custom bubble
-			bubble_live_css += '.comments-link .tc-comment-bubble {border-color:' + to + ';color:' + to + '}';
-			bubble_live_css += '.comments-link .tc-comment-bubble:before {border-color:' + to + '}';
+			bubble_live_css += '.comments-link .custom-bubble-one {border-color:' + to + ';color:' + to + '}';
+			bubble_live_css += '.comments-link .custom-bubble-one:before {border-color:' + to + ' rgba(0, 0, 0, 0);}';
 			$('head').append($style_element.html(bubble_live_css));
 		} );
 	} );
@@ -576,6 +551,8 @@
       }
     } );
   } );
+
+
   wp.customize( 'tc_theme_options[tc_ext_link_target]' , function( value ) {
     value.bind( function( to ) {
       if ( false !== to ) {
@@ -591,30 +568,7 @@
     } );
   } );
 
-  //GRID
-  wp.customize( 'tc_theme_options[tc_grid_shadow]' , function( value ) {
-    value.bind( function( to ) {
-      if ( false !== to )
-        $('.article-container').addClass('tc-grid-shadow');
-      else
-        $('.article-container').removeClass('tc-grid-shadow');
-    } );
-  });
-  wp.customize( 'tc_theme_options[tc_grid_bottom_border]' , function( value ) {
-    value.bind( function( to ) {
-      if ( false !== to )
-        $('.article-container').addClass('tc-grid-border');
-      else
-        $('.article-container').removeClass('tc-grid-border');
-    } );
-  });
-  wp.customize( 'tc_theme_options[tc_grid_icons]' , function( value ) {
-    value.bind( function( to ) {
-      if ( false === to )
-        $('.tc-grid-icon').each( function() { $(this).fadeOut(); } );
-      else
-        $('.tc-grid-icon').each( function() { $(this).fadeIn(); } );
-    } );
-  });
+
+
 
 } )( jQuery );

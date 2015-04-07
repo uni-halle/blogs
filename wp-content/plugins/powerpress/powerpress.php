@@ -3,7 +3,7 @@
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
 Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> adds podcasting support to your blog. Features include: media player, 3rd party statistics, iTunes integration, Blubrry Services (Media Statistics and Hosting) integration and a lot more.
-Version: 6.0.2
+Version: 6.0.1
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Change Log:
@@ -32,7 +32,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '6.0.2' );
+define('POWERPRESS_VERSION', '6.0.1' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -127,14 +127,11 @@ function powerpress_content($content)
 		return $content;
 		
 	// check for themes/plugins where we know we need to do this...
-	if( empty($GeneralSettings['player_aggressive']) )
-	{
-		if( !empty($GLOBALS['fb_ver']) && version_compare($GLOBALS['fb_ver'], '1.0',  '<=')	) {
-			$GeneralSettings['player_aggressive'] = 1;
-		}
-		if( defined('JETPACK__VERSION') && version_compare(JETPACK__VERSION, '2.0',  '>=')	) {
-			$GeneralSettings['player_aggressive'] = 3;
-		}
+	if( !empty($GLOBALS['fb_ver']) && version_compare($GLOBALS['fb_ver'], '1.0',  '<=')	) {
+		$GeneralSettings['player_aggressive'] = 1;
+	}
+	if( defined('JETPACK__VERSION') && version_compare(JETPACK__VERSION, '2.0',  '>=')	) {
+		$GeneralSettings['player_aggressive'] = 1;
 	}
 	
 	if( !empty($GeneralSettings['player_aggressive']) )
@@ -149,11 +146,8 @@ function powerpress_content($content)
 			if( strstr($content, '<!--powerpress_player-->') !== false )
 				return $content; // The players were already added to the content
 			
-			if( $GeneralSettings['player_aggressive'] != 3 && $g_powerpress_excerpt_post_id > 0 )
+			if( $g_powerpress_excerpt_post_id > 0 )
 				$g_powerpress_excerpt_post_id = 0; // Hack, set this to zero so it always goes past...
-				
-			if( $GeneralSettings['player_aggressive'] == 3 )
-				$GeneralSettings['player_aggressive'] = 1; // remainder of the system will function as normal
 		}
 	}
 	
@@ -496,7 +490,7 @@ function powerpress_rss2_head()
 	else if( powerpress_is_custom_podcast_feed() ) // If we're handling a custom podcast feed...
 	{
 		$CustomFeed = get_option('powerpress_feed_'.$feed_slug); // Get the custom podcast feed settings saved in the database
-		$Feed = powerpress_merge_empty_feed_settings($CustomFeed, $Feed, ($feed_slug == 'podcast') );
+		$Feed = powerpress_merge_empty_feed_settings($CustomFeed, $Feed);
 	}
 	
 	if( !isset($Feed['url']) || trim($Feed['url']) == '' )
@@ -515,18 +509,6 @@ function powerpress_rss2_head()
 		echo 'mode="simple" ';
 	else
 		echo 'mode="advanced" ';
-		
-	if( defined('POWERPRESS_DEBUG') )
-	{
-		if( !empty($powerpress_feed['category']) )
-			echo 'category="'.$powerpress_feed['category'].'" ';
-		if( !empty($powerpress_feed['term_taxonomy_id']) )
-			echo 'ttid="'.$powerpress_feed['term_taxonomy_id'].'" ';
-		if( !empty($powerpress_feed['post_type']) )
-			echo 'posttype="'.$powerpress_feed['post_type'].'" ';
-		if( !empty($powerpress_feed['feed-slug']) )
-			echo 'feedslug="'.$powerpress_feed['feed-slug'].'" ';
-	}
 	echo '-->'.PHP_EOL;
 		
 	// add the itunes:new-feed-url tag to feed
@@ -1080,7 +1062,7 @@ add_filter('wp_title_rss', 'powerpress_wp_title_rss');
 
 function powerpress_the_title_rss($title)
 {
-	$new_title = $title;
+	$new_title = '';
 	$GeneralSettings = get_option('powerpress_general');
 	// If it is a custom podcast channel...
 	if( !empty($GeneralSettings['seo_feed_title']) )
@@ -1092,27 +1074,31 @@ function powerpress_the_title_rss($title)
 		
 		// Get the episode specific title...
 		$EpisodeData = powerpress_get_enclosure_data(get_the_ID(), $feed_slug);
-		if( !empty($EpisodeData['feed_title']) )
-		{
-			$feed_title = ent2ncr( $EpisodeData['feed_title'] );
-			$feed_title = strip_tags( $feed_title );
-			$feed_title = esc_html( $feed_title );
+		if( empty($EpisodeData['feed_title']) )
+			return $title;
 			
-			//switch( $GeneralSettings['custom_feed_title'] )
-			switch( $GeneralSettings['seo_feed_title'] )
-			{
-				case 1: { // Replaces title
-					$new_title = $feed_title;
-				}; break;
-				case 2: { // Prefixes title
-					$new_title = $feed_title . ' ' . $title;
-				}; break;
-				case 3: { // Postfixes title
-					$new_title = $title . ' ' . $feed_title;
-				}; break;
-			}
+		$feed_title = ent2ncr( $EpisodeData['feed_title'] );
+		$feed_title = strip_tags( $feed_title );
+		$feed_title = esc_html( $feed_title );
+		if( empty($GeneralSettings['custom_feed_title']) )
+			$GeneralSettings['custom_feed_title'] = 0;
+		
+		switch( $GeneralSettings['custom_feed_title'] )
+		{
+			case 1: { // Replaces title
+				$new_title = $feed_title;
+			}; break;
+			case 2: { // Prefixes title
+				$new_title = $feed_title . ' ' . $title;
+			}; break;
+			case 3: { // Postfixes title
+				$new_title = $title . ' ' . $feed_title;
+			}; break;
 		}
 	}
+	
+	if( empty($new_title) )
+		$new_title = $title;
 	
 	if( !empty($GeneralSettings['seo_append_show_title']) )
 	{
@@ -2268,11 +2254,8 @@ function powerpress_get_root_url()
 
 function powerpress_format_itunes_value($value, $tag)
 {
-	if( !defined('POWERPRESS_DISABLE_ITUNES_UTF8') ) // If not defined or it is false
-	{
-		if( !defined('DB_CHARSET') || DB_CHARSET != 'utf8' ) // Check if the string is UTF-8
-			$value = utf8_encode($value); // If it is not, convert to UTF-8 then decode it...
-	}
+	if( !defined('DB_CHARSET') || DB_CHARSET != 'utf8' ) // Check if the string is UTF-8
+		$value = utf8_encode($value); // If it is not, convert to UTF-8 then decode it...
 	
 	// Code added to solve issue with KimiliFlashEmbed plugin and also remove the shortcode for the WP Audio Player
 	// 99.9% of the time this code will not be necessary

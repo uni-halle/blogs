@@ -338,11 +338,10 @@ class WJ_Import extends WYSIJA_object {
 			if($rows_to_read!=0 && $i> $rows_to_read) return $data;
 
 			// str_getcsv only exists in php5 and is a faster and cleaner function than our csv_explode
-			if (!function_exists('str_getcsv') || strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+			if (!function_exists('str_getcsv')) {
 				$data[] = $this->_lines_explode($csv_line, $delimiter, $enclosure);
 			} else {
 				$data[] = str_getcsv($csv_line, $delimiter, $enclosure);
-
 			}
 
 			$i++;

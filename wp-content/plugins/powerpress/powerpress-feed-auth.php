@@ -15,16 +15,12 @@
 			$user = $_SERVER['PHP_AUTH_USER'];
 			$password = $_SERVER['PHP_AUTH_PW'];
 			
+			$user = wp_authenticate($user, $password);
 			
-			
-			$userObj = wp_authenticate($user, $password);
-			
-			
-			
-			if( !is_wp_error($userObj) )
+			if( !is_wp_error($user) )
 			{
 				// Check capability...
-				if( $userObj->has_cap( $FeedSettings['premium'] ) )
+				if( $user->has_cap( $FeedSettings['premium'] ) )
 					return; // Nice, let us continue...
 				
 				powerpress_feed_auth_basic( $FeedSettings['title'], __('Access Denied', 'powerpress') );

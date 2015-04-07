@@ -373,16 +373,17 @@ add_filter('gallery_style', create_function('$a', 'return "
  */
 function yoko_customize_css() {
     ?>
-	<style type="text/css" id="yoko-themeoptions-css">
-		a {color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>;}
-		#content .single-entry-header h1.entry-title {color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>!important;}
-		input#submit:hover {background-color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>!important;}
-		#content .page-entry-header h1.entry-title {color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>!important;}
-		.searchsubmit:hover {background-color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>!important;}
+	<style type="text/css" id="ponsonby-themeoptions-css">
+		a {color: <?php echo get_theme_mod('link_color'); ?>!important;}
+		#content .single-entry-header h1.entry-title {color: <?php echo get_theme_mod('link_color'); ?>!important;}
+		input#submit:hover {background-color: <?php echo get_theme_mod('link_color'); ?>!important;}
+		#content .page-entry-header h1.entry-title {color: <?php echo get_theme_mod('link_color'); ?>!important;}
+		.searchsubmit:hover {background-color: <?php echo get_theme_mod('link_color'); ?>!important;}
 	</style>
     <?php
 }
 add_action( 'wp_head', 'yoko_customize_css');
+
 
 /**
  * Customizer additions

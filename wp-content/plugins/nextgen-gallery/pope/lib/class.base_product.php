@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('POPE_VERSION')) { die('Use autoload.php'); }
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 /**
  * A Product is a collection of modules with some meta data.

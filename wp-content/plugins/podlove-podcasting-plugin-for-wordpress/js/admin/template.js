@@ -40,8 +40,8 @@
 			};
 
 			var activate = function () {
-				$title.val(this.title);
-				editor.getSession().setValue(this.content);
+				$title.val(title);
+				editor.getSession().setValue(content);
 			};
 
 			return {
@@ -54,7 +54,7 @@
 			}
 		};
 
-		editor.setTheme("ace/theme/chrome");
+		editor.setTheme("ace/theme/github");
 		editor.getSession().setMode("ace/mode/twig");
 		editor.getSession().setUseWrapMode(true);
 
@@ -92,23 +92,18 @@
 
 			$("li.active a", $navigation).append(saving_icon);
 
-			$.ajax(ajaxurl, {
-				dataType: 'json',
-				type: 'POST',
-				data: {
-					id: template_id,
-					title: template_title,
-					content: template_content,
-					action: 'podlove-template-update'
-				},
-				success: function(data, status, xhr) {
-					save_button.blur();
-					$("li.active a i", $navigation).remove();
-					if (!data.success) {
-						console.log("Error: Could not save template.");
-					} else {
-						templates[template_id].markAsSaved();
-					}
+			$.getJSON(ajaxurl, {
+				id: template_id,
+				title: template_title,
+				content: template_content,
+				action: 'podlove-template-update'
+			}, function(data) {
+				save_button.blur();
+				$("li.active a i", $navigation).remove();
+				if (!data.success) {
+					console.log("Error: Could not save template.");
+				} else {
+					templates[template_id].markAsSaved();
 				}
 			});
 
@@ -149,16 +144,13 @@
 
 		$(".add a", $navigation).click(function(e) {
 
-			$.ajax(ajaxurl, {
-				dataType: 'json',
-				type: 'POST',
-				data: { action: 'podlove-template-create' },
-				success: function(data, status, xhr) {
-					$("ul", $navigation)
-						.append("<li><a href=\"#\" data-id=\"" + data.id + "\"><span class='filename'>new template</span>&nbsp;</a></li>");
-					$("ul li:last a", $navigation).click();
-					$title.focus();
-				}
+			$.getJSON(ajaxurl, {
+				action: 'podlove-template-create'
+			}, function(data) {
+				$("ul", $navigation)
+					.append("<li><a href=\"#\" data-id=\"" + data.id + "\"><span class='filename'>new template</span>&nbsp;</a></li>");
+				$("ul li:last a", $navigation).click();
+				$title.focus();
 			});
 
 			e.preventDefault();
@@ -168,23 +160,17 @@
 			var template_id = $("li.active a", $navigation).data('id');
 
 			if (window.confirm("Delete template?")) {
-
-				$.ajax(ajaxurl, {
-					dataType: 'json',
-					type: 'POST',
-					data: {
-						id: template_id,
-						action: 'podlove-template-delete'
-					},
-					success: function(data, status, xhr) {
-						if (data.success) {
-							$("li a[data-id=" + template_id + "]", $navigation)
-								.closest("li")
-								.remove();
-							$("li:first a", $navigation).click();
-						} else {
-							console.log("Error: Could not delete template.");
-						}
+				$.getJSON(ajaxurl, {
+					id: template_id,
+					action: 'podlove-template-delete'
+				}, function(data) {
+					if (data.success) {
+						$("li a[data-id=" + template_id + "]", $navigation)
+							.closest("li")
+							.remove();
+						$("li:first a", $navigation).click();
+					} else {
+						console.log("Error: Could not delete template.");
 					}
 				});
 			}

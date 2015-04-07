@@ -4,6 +4,7 @@ define('FASTLOAD', true);
 require_once('wpfb-load.php');
 wpfb_loadclass('Core','File','Category','Download');
 
+
 $item = null;
 
 if(isset($_GET['fid'])) {
@@ -14,7 +15,7 @@ if(isset($_GET['fid'])) {
 		if(file_exists($img = $img_path.'crystal/default.png')
 			|| file_exists($img = $img_path.'default.png')
 			|| file_exists($img = $img_path.'blank.gif')
-		) WPFB_Download::SendFile($img, array('cache_max_age' => -1)); //was 3600 * 12
+		) WPFB_Download::SendFile($img, array('cache_max_age' => 3600 * 12));
 		exit;
 	}
 	
@@ -34,4 +35,4 @@ if(empty($item->file_thumbnail) && empty($item->cat_icon))
 }
 
 // send thumbnail
-WPFB_Download::SendFile($item->GetThumbPath(), array('cache_max_age' => -1)); // was 3600 * 12
+WPFB_Download::SendFile($item->GetThumbPath(), array('cache_max_age' => 3600 * 12));

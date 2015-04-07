@@ -27,7 +27,8 @@ class M_Fs extends C_Base_Module
     function get_type_list()
     {
         return array(
-            'C_Fs' => 'class.fs.php'
+            'C_Fs' => 'class.fs.php',
+            'I_Fs' => 'interface.fs.php'
         );
     }
 }

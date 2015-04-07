@@ -2,8 +2,8 @@
 Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, itunes, enclosure, zune, iphone, youtube, viddler, blip.tv, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, webm, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, simple podcasting, seriously simple podcasting, seriously-simple-podcasting, podlove, podcast.de
 Requires at least: 3.6
-Tested up to: 4.1.1
-Stable tag: 6.0.2
+Tested up to: 4.1
+Stable tag: 6.0.1
 Donate link: http://create.blubrry.com/
 License: GPLv2 or later
 
@@ -19,7 +19,7 @@ Blubrry PowerPress brings the essential features for podcasting to WordPress. De
 - Integrated HTML5 Media Players: Audio/video Web players with embed support from sites such as YouTube.
 - Subscribe tools: Create subscribe page with our exclusive subscribe shortcode embed and subscribe sidebar widget optimized for responsive websites, high-resolution screens and Apple Retina displays.
 - Podcasting SEO: Improve discovery of your podcast on search engines such as Google, and with the iTunes podcast directory.
-- Advanced and Simple modes: Simplify settings using only the defaults, or harness all the potential of podcasting with Advanced Mode.
+- Advanced and default mode: Simplify settings using only the defaults, or harness all the potential of podcasting with Advanced Mode.
 - Media modifiers: Easily add, modify and remove podcasts from blog posts and pages.
 - Migration tools: Quickly migrate from PodPress, Blogger or Movable Type without losing episodes.
 - Multi-podcast support: Create separate podcasts by category (Category Podcasting) or by media format (Podcast Channels).
@@ -119,16 +119,6 @@ We now offer one-on-one consulting via GoToMeeting, Skype or phone.
 
 == Frequently Asked Questions ==
 
-= Compatible Themes and Plugins =
-Most themes and plugins are compatible with PowerPress. PowerPress is developed and tested using the default themes packaged with WordPress including twentyten, twentytwelve, twentythirteen, twentyfourteen, twentyfifteen, and all future versions. These themes use WordPress best practices and adhere to theme rules set by WordPress.org. Any child theme based on these themes should also work without issue.
-
-If you are having a problem, try [Diagnosing Feed and/or Player Issues](http://create.blubrry.com/resources/powerpress/using-powerpress/diagnosing-feed-andor-player-issues-with-powerpress/).
-
-If you are having a problem specifically with the player and links, try the "Having issues?" option under PowerPress Settings > Appearance tab. Visit [Resolving Plugin or Theme Conflicts](http://create.blubrry.com/resources/powerpress/powerpress-settings/media-appearance/plugin-theme-conflict-issues/) for details.
-
-= Premium themes compatible with PowerPress =
-[Appendipity Podcast Pro theme](https://www.appendipity.com/themes/podcast-pro-theme/?aid=13) is is designed specifically to take advantage of built-in features, settings and podcast episode meta data in PowerPress. The Blubrry team works with the Appendipity team during beta testing and major WordPress releases to make sure the Podcast Pro theme and PowerPress work together seamlessly.
-
 
  = Related Plugins =
  The following plugins may be used in conjunction with PowerPress.
@@ -199,26 +189,6 @@ To install Blubrry PowerPress manually, follow these steps:
 = Next Major Release Announcements =
 * PowerPress 6.0+ is no longer be compatible with WordPress 3.0.x through 3.5.x. Please upgrade to the latest version of WordPress to install future versions of PowerPress.
 * We are looking for beta testers! If you would like to beta test future versions of PowerPress, please [contact us](http://www.blubrry.com/contact.php) with your name and email.
-
-
-= 6.0.2 =
-* Released on 3/21/2015
-* Fixed bug where specific global podcast settings are not applied when podcast channel settings iTunes new feed URL or feed maximizer option were configured then deleted afterward. This only effected settings if you deleted the default podcast feed.
-* Added wp-config define option `POWERPRESS_DISABLE_ITUNES_UTF8`, when set to true PowerPress will not convert iTunes values to UTF-8. This is for the very small number of folks who are not using UTF-8 in their website.
-* The subscribe shortcode embed attributes are now strictly enforced. If you enter a category or a podcast channel and it does not exist, the shortcode will be empty and will no longer fall-back to the main podcast settings.
-* The subscribe shortcode embed specifying a category not displaying category fixed (thanks elembemedia for bringing to our attention)
-* Subscribe links below player for category podcasts now works but only if you select 1 category. 2 or more categories complicates things.
-* Added logic to fix situation with JetPack and automatic excerpts. Manual excerpts or regular content pages are not affected. (Thanks grahamharper for the details!)
-* Added new "Having Issues?" option "Yes, excluding excerpts", will apply player and links fix logic except when the_excerpt filter is called first.
-* AudioObject and VideoObject descriptions are now set using the blog post if no itunes subtitle is set.
-* Fixed Episode Titles bug, if you did not set a custom episode title the program title was not appended.
-* Fixed "Feature Episode" bug, unchecking the option will now properly save.
-* Fixed playlist player date attribute not applying when set to false (thanks trb310 for pointing out the issue!)
-* Danish translation updated, thanks [Team Blogos](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=280)!
-* Added new subscribe embed attribute "heading", you can now customize the "Subscribe to" label, e.g. add "the" to the Subscribe to label `[powerpress_subscribe heading="Subscribe to the"`
-* Added new define `POWERPRESS_DEBUG` for PowerPress debugging.
-* Coming in PowerPress 6.1 we will allow podcasters who use category podcasting to set one of their category podcasts as the "Default". This podcast category will replace the default podcast feed. This will solve a number of complications Category podcasting has in regards to slug name collisions as well as in-page features like the subscribe links.
-* Coming in PowerPress 6.1 Podcasting SEO field options will be customizable.
 
 
 = 6.0.1 =

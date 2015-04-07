@@ -4,8 +4,6 @@ use \Podlove\Model;
 
 class Support {
 
-	use \Podlove\HasPageDocumentationTrait;
-
 	static $pagehook;
 	
 	public function __construct( $handle ) {
@@ -18,8 +16,6 @@ class Support {
 			/* $menu_slug  */ 'podlove_Support_settings_handle',
 			/* $function   */ array( $this, 'page' )
 		);
-
-		$this->init_page_documentation(self::$pagehook);
 	}
 
 	public function page() {

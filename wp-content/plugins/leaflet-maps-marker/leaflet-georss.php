@@ -5,7 +5,7 @@
 //info: construct path to wp-load.php
 while(!is_file('wp-load.php')) {
 	if(is_dir('..' . DIRECTORY_SEPARATOR)) chdir('..' . DIRECTORY_SEPARATOR);
-	else die('Error: Could not construct path to wp-load.php - please check <a href="https://www.mapsmarker.com/path-error">https://www.mapsmarker.com/path-error</a> for more details');
+	else die('Error: Could not construct path to wp-load.php - please check <a href="http://mapsmarker.com/path-error">http://mapsmarker.com/path-error</a> for more details');
 }
 include( 'wp-load.php' );
 $format = (isset($_GET['format']) == TRUE ) ? $_GET['format'] : '';
@@ -33,7 +33,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 	
 	if (isset($_GET['layer'])) {
 		$layer_prepared = esc_sql(strtolower($_GET['layer']));
-		$layer = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\","(",")"), "", $layer_prepared);
+		$layer = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\"), "", $layer_prepared);
 
 		$q = '';
 		if (($layer_prepared == 'all') || ($layer_prepared == '*')) {
@@ -211,7 +211,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 	} //info: end isset($_GET['layer'])
 	elseif (isset($_GET['marker'])) {
 		$markerid_prepared = esc_sql(strtolower($_GET['marker']));
-		$markerid = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\","(",")"), "", $markerid_prepared);
+		$markerid = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\"), "", $markerid_prepared);
 
 		if (($markerid_prepared == 'all') || ($markerid_prepared == '*')) {
 			$q = '';

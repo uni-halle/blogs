@@ -10,18 +10,16 @@
 		if(true || !isset($file_tpls['filebrowser_admin'])) {
 			$file_tpls['filebrowser_admin'] = 
 				'%file_small_icon% '.
-				'%file_display_name% (%file_size%) '.
-				'<!-- IF %file_user_can_edit% --><a href="%file_edit_url%" class="edit" onclick="wpfbFBEditFile(event)">%\'Edit\'%</a><!-- ENDIF -->'
+				'%file_display_name% (%file_size%) <a href="%file_edit_url%" class="edit" onclick="wpfbFBEditFile(event)">Edit</a>'
 			;
 			WPFB_Core::SetFileTpls($file_tpls);
-			//WPFB_Admin::ParseTpls();
+			WPFB_Admin::ParseTpls();
 		}
 		
 		if(true || !isset($cat_tpls['filebrowser_admin'])) {
 			$cat_tpls['filebrowser_admin'] = 
-				'<span class="cat-icon" style="background-image:url(\'%cat_icon_url%\');"><span class="cat-icon-overlay"></span></span>'.
-				'%cat_name% '.
-				'<!-- IF %cat_user_can_edit% --><a href="%cat_edit_url%" class="edit" onclick="wpfbFBEditCat(event)">%\'Edit\'%</a><!-- ENDIF -->'
+				'<span class="cat-icon" style="background-image:url(%cat_icon_url%);"><span class="cat-icon-overlay"></span></span>'.
+				'%cat_name% <a href="%cat_edit_url%" class="edit" onclick="wpfbFBEditCat(event)">Edit</a> '
 			;			
 			WPFB_Core::SetCatTpls($cat_tpls);
 			WPFB_Admin::ParseTpls();
@@ -41,7 +39,7 @@
 ?>
 	 </div>
 <script>
-	function wpfbFBEditCat(e) {
+	function wpfbFBEditFile(e) {
 		e.stopPropagation();
 	}
 	

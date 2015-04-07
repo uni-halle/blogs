@@ -89,7 +89,7 @@ $sql_layers_table = "CREATE TABLE " . $table_name_layers . " (
 	multi_layer_map tinyint(1) NOT NULL,
 	multi_layer_map_list varchar(4000) DEFAULT NULL,
 	address varchar(255) NOT NULL,
-	`clustering` tinyint(1) unsigned NOT NULL,
+	clustering tinyint(1) unsigned NOT NULL,
 	gpx_url varchar(2083) NOT NULL,
 	gpx_panel tinyint(1) NOT NULL,
 	PRIMARY KEY  (id)
@@ -877,32 +877,6 @@ if (get_option('leafletmapsmarker_version') == '3.9.4' ) {
 		update_option('leafletmapsmarker_version_before_update', '3.9.4');
 	}
 	update_option('leafletmapsmarker_version', '3.9.5');
-}
-if (get_option('leafletmapsmarker_version') == '3.9.5' ) {
-	//info: delete SimplePie MD5 cache file with random name to avoid WAF wrong positives
-	$lmm_upload_dir = wp_upload_dir();
-	$icons_directory = $lmm_upload_dir['basedir'] . DIRECTORY_SEPARATOR . "leaflet-maps-marker-icons" . DIRECTORY_SEPARATOR;
-	if (is_dir($icons_directory)) {
-		foreach(glob($icons_directory.'*.spc') as $v){
-			unlink($v);
-		}
-	}
-	delete_transient( 'leafletmapsmarker_install_update_cache_v395');
-	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
-	if ( $version_before_update === FALSE ) {
-		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
-		update_option('leafletmapsmarker_version_before_update', '3.9.5');
-	}
-	update_option('leafletmapsmarker_version', '3.9.6');
-}
-if (get_option('leafletmapsmarker_version') == '3.9.6' ) {
-	delete_transient( 'leafletmapsmarker_install_update_cache_v396');
-	$version_before_update = get_transient( 'leafletmapsmarker_version_before_update' );
-	if ( $version_before_update === FALSE ) {
-		set_transient( 'leafletmapsmarker_version_before_update', 'MapsMarker-transient-for-dynamic-changelog', 60 );
-		update_option('leafletmapsmarker_version_before_update', '3.9.6');
-	}
-	update_option('leafletmapsmarker_version', '3.9.7');
 	//info: redirect to create marker page only on first plugin activation, otherwise redirect is also done on bulk plugin activations
 	if (get_option('leafletmapsmarker_redirect') == 'true')
 	{

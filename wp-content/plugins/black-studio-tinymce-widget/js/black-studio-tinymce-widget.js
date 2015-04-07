@@ -271,9 +271,6 @@ var bstw;
 
 		// Deactivate editor on drag & drop operations
 		$( document ).on( 'sortstart',  function( event, ui ) {
-			if ( event !== null && ( ! $( ui.item ).is( '.widget' ) || $( ui.item ).is( '.ui-draggable' ) ) ) {
-				return;
-			}
 			var open_widgets_selectors = [
 				'body.wp-customizer .expanded > div[id*=black-studio-tinymce].widget', // Theme Customizer
 				'.widget-liquid-right div[id*=black-studio-tinymce].widget.open' // Widgets page
@@ -292,7 +289,7 @@ var bstw;
 			}
 		});
 		$( document ).on( 'sortupdate',  function( event, ui ) {
-			if ( event !== null && ( ! $( ui.item ).is( '.widget' ) || $( ui.item ).is( '.ui-draggable' ) ) ) {
+			if ( event !== null && $( ui.item ).is( '.ui-draggable' ) ) {
 				return;
 			}
 			$( 'body' ).addClass( 'wait' );
@@ -303,7 +300,7 @@ var bstw;
 				$( 'body' ).removeClass( 'wait' );
 			}, 1000 );
 		});
-
+		
 		// External events
 		if ( 'object' === typeof bstw_data.activate_events && bstw_data.activate_events.length > 0 ) {
 			$( document ).on( bstw_data.activate_events.join( ' ' ), function( event ) {

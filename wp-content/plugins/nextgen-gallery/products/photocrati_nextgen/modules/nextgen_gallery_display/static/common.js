@@ -1,75 +1,75 @@
-(function($) {
-    window.NggPaginatedGallery = function(displayed_gallery_id, container) {
+(function($){
+    window.NggPaginatedGallery = function(displayed_gallery_id, container, links) {
         this.displayed_gallery_id = displayed_gallery_id;
-        this.container            = $(container);
-        this.container_name       = container;
+        this.links                = links;
+        this.container            = container;
 
-        this.get_displayed_gallery_obj = function() {
-            var index = 'gallery_' + this.displayed_gallery_id;
-            if (typeof(window.galleries[index]) == 'undefined') {
+        this.get_displayed_gallery_obj = function(){
+            var index = 'gallery_'+this.displayed_gallery_id;
+            if (typeof(window.galleries[index]) == 'undefined')
                 return false;
-            } else {
+            else
                 return window.galleries[index];
-            }
         };
 
-        this.enable_ajax_pagination = function() {
-            var self = this;
-            // Attach a click event handler for each pagination link to adjust the request to be sent via XHR
-            $('body').on('click', 'a.ngg-browser-prev, a.ngg-browser-next', function (event) {
 
-                var skip = true;
-                $(this).parents(container).each(function() {
-                    if ($(this).data('nextgen-gallery-id') != self.displayed_gallery_id) {
-                        return true;
-                    }
-                    skip = false;
+        this.enable_ajax_pagination = function(){
+            var transient_id = this.get_displayed_gallery_obj().transient_id;
+            var obj         = this;
+
+            // Attach a click event handler for each pagination link to
+            // adjust the request to be sent via XHR
+            this.links.each(function(){
+                var $link = $(this);
+                $link.click(function(e){
+                    e.preventDefault();
+
+                    // Describe AJAX request
+                    var request = {
+                        action: 'render_displayed_gallery',
+                        displayed_gallery_id: transient_id,
+                        ajax_referrer: $link.attr('href')
+                    };
+
+                    // Notify the user that we're busy
+                    obj.do_ajax(request);
                 });
+            });
+        };
 
-                if (!skip) {
-                    event.preventDefault();
-                } else {
-                    return;
-                }
+        this.do_ajax = function(request){
+
+            var container    = this.container;
+            var self         = this;
+
+            // Adjust the user notification
+            window['ngg_ajax_operaton_count']++;
+            $('body, a').css('cursor', 'wait');
+
+            // Send the AJAX request
+            $.post(photocrati_ajax.url, request, function(response){
 
                 // Adjust the user notification
-                window['ngg_ajax_operaton_count']++;
-                $('body, a').css('cursor', 'wait');
+                window['ngg_ajax_operaton_count']--;
+                if (window['ngg_ajax_operaton_count'] <= 0) {
+                    window['ngg_ajax_operaton_count'] = 0;
+                    $('body, a').css('cursor', 'auto');
+                }
 
-                // Send the AJAX request
-                $.get($(this).attr('href'), function (response) {
-                    window['ngg_ajax_operaton_count']--;
-                    if (window['ngg_ajax_operaton_count'] <= 0) {
-                        window['ngg_ajax_operaton_count'] = 0;
-                        $('body, a').css('cursor', 'auto');
-                    }
-
-                    if (response) {
-                        var html = $(response);
-                        var replacement = false;
-                        html.find(self.container_name).each(function() {
-                            if (replacement) {
-                                return true;
-                            }
-                            if ($(this).data('nextgen-gallery-id') != self.displayed_gallery_id) {
-                                return true;
-                            }
-                            replacement = $(this);
-                        });
-                        if (replacement) {
-                            self.container.each(function () {
-                                if ($(this).data('nextgen-gallery-id') != self.displayed_gallery_id) {
-                                    return true;
-                                }
-                                $(this).html(replacement.html());
-                                return true;
-                            });
-
-                            // Let the user know that we've refreshed the content
-                            $(document).trigger('refreshed');
+                // Ensure that the server returned JSON
+                if (typeof(response) != 'object') response = JSON.parse(response);
+                if (response) {
+                    container.each(function() {
+                        if ($(this).data('nextgen-gallery-id') != self.displayed_gallery_id) {
+                            return true;
                         }
-                    }
-                });
+                        $(this).replaceWith(response.html);
+                        return true;
+                    });
+
+                    // Let the user know that we've refreshed the content
+                    $(document).trigger('refreshed');
+                }
             });
         };
 

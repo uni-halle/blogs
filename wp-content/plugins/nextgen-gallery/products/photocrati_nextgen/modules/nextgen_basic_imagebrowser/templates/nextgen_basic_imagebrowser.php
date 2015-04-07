@@ -66,7 +66,11 @@
 </div>
 <?php $this->end_element(); ?>
 <script type='text/javascript'>
-	jQuery(function($) {
-		new NggPaginatedGallery('<?php echo $displayed_gallery->id() ?>', '.ngg-imagebrowser');
+	jQuery(function($){
+		new NggPaginatedGallery(
+			'<?php echo $displayed_gallery->id() ?>',
+			$('.ngg-imagebrowser'),
+			$('#<?php echo $anchor ?> .ngg-browser-prev, #<?php echo $anchor ?> .ngg-browser-next')
+		)
 	});
 </script>

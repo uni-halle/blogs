@@ -22,7 +22,6 @@ jQuery(function ($) {
   //In controls call to action
   _render_wfc_cta();
   _render_fpu_cta();
-  _render_footer_cta();
 
   function _render_donate_block() {
     // Grab the HTML out of our template tag and pre-compile it.
@@ -56,34 +55,26 @@ jQuery(function ($) {
 
   function _render_main_cta() {
     // Grab the HTML out of our template tag and pre-compile it.
-    var _cta = _.template(
+    var main_cta = _.template(
         $( "script#main_cta" ).html()
     );
-    $('#customize-info').after( _cta() );
+    $('#customize-info').after( main_cta() );
   }
 
   function _render_wfc_cta() {
     // Grab the HTML out of our template tag and pre-compile it.
-    var _cta = _.template(
+    var wfc_cta = _.template(
         $( "script#wfc_cta" ).html()
     );
-    $('li[id*="tc_body_font_size"]').append( _cta() );
+    $('li[id*="tc_body_font_size"]').append( wfc_cta() );
   }
 
   function _render_fpu_cta() {
     // Grab the HTML out of our template tag and pre-compile it.
-    var _cta = _.template(
+    var fpu_cta = _.template(
         $( "script#fpu_cta" ).html()
     );
-    $('li[id*="tc_featured_text_three"]').append( _cta() );
-  }
-
-  function _render_footer_cta() {
-    // Grab the HTML out of our template tag and pre-compile it.
-    var _cta = _.template(
-        $( "script#footer_cta" ).html()
-    );
-    $('li[id*="tc_show_back_to_top"]').append( _cta() );
+    $('li[id*="tc_featured_text_three"]').append( fpu_cta() );
   }
 
   function _ajax_save() {

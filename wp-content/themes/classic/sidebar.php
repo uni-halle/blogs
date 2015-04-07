@@ -15,16 +15,16 @@
 	<?php wp_list_categories('title_li=' . __('Categories:')); ?>
  <li id="search">
    <label for="s"><?php _e('Search:'); ?></label>
-   <form id="searchform" method="get" action="<?php bloginfo('url'); ?>">
+   <form id="searchform" method="get" action="<?php bloginfo('home'); ?>">
 	<div>
 		<input type="text" name="s" id="s" size="15" /><br />
-		<input type="submit" value="<?php esc_attr_e('Search'); ?>" />
+		<input type="submit" value="<?php _e('Search'); ?>" />
 	</div>
 	</form>
  </li>
  <li id="archives"><?php _e('Archives:'); ?>
 	<ul>
-	 <?php wp_get_archives(array('type' => 'monthly')); ?>
+	 <?php wp_get_archives('type=monthly'); ?>
 	</ul>
  </li>
  <li id="meta"><?php _e('Meta:'); ?>

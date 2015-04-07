@@ -102,11 +102,23 @@ function osm_getIconSize(a_IconName){
     Icon["offset_height"] = "-16";
     Icon["offset_width"] = "-16";
   }
+  else if (a_IconName == "bicycling.png"){
+    Icon["height"] = "19";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-9";
+    Icon["offset_width"] = "-16";
+  }
   else if (a_IconName == "bus.png"){
     Icon["height"] = "32";
     Icon["width"] = "26";
     Icon["offset_height"] = "-16";
     Icon["offset_width"] = "-13";
+  }
+  else if (a_IconName == "car.png"){
+    Icon["height"] = "18";
+    Icon["width"] = "32";
+    Icon["offset_height"] = "-16";
+    Icon["offset_width"] = "-9";
   }
   else if (a_IconName == "geocache.png"){
     Icon["height"] = "25";
@@ -196,27 +208,6 @@ function osm_getRadioValue(a_Form){
     return "undefined";
   }
   return "not implemented";
-}
-
-function osm_saveGeotag(){
-  if ((osm_ajax_object.lat == '') || (osm_ajax_object.lon == '')){
-    alert('Place geotag in the map before save');
-  }
-  else
-  {
-    var data = {
-      action: 'act_saveGeotag',
-      lat: osm_ajax_object.lat,
-      lon: osm_ajax_object.lon,
-      icon: osm_ajax_object.icon,
-      post_id: osm_ajax_object.post_id,
-      geotag_nonce: osm_ajax_object.geotag_nonce
-    };
-    jQuery.post(osm_ajax_object.ajax_url, data, function(response) {
-      div = document.getElementById("Geotag_Div");
-      div.innerHTML = response;
-    });
-  }
 }
 
 function getTileURL(bounds) {

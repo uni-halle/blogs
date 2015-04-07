@@ -223,9 +223,7 @@ function wptouch_get_desktop_switch_link() {
 		$redirect_location = esc_url_raw( $_SERVER['REQUEST_URI'], array( 'http', 'https' ) );
 	}
 
-	$nonce = wp_create_nonce( 'wptouch_switch' );
-
-	return apply_filters( 'wptouch_desktop_switch_link', get_bloginfo( 'url' ) . '?wptouch_switch=mobile&amp;redirect=' . urlencode( $redirect_location ) . '&amp;nonce=' . $nonce );
+	return apply_filters( 'wptouch_desktop_switch_link', get_bloginfo( 'url' ) . '?wptouch_switch=mobile&amp;redirect=' . urlencode( $redirect_location ) );
 }
 
 if ( defined( 'WPTOUCH_IS_FREE' ) ) {

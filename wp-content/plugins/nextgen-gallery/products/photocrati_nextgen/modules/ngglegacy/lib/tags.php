@@ -13,7 +13,7 @@ class nggTags {
 	/**
 	 * Copy tags
 	 */
-	static function copy_tags($src_pid, $dest_pid) {
+	function copy_tags($src_pid, $dest_pid) {
 		$tags = wp_get_object_terms( $src_pid, 'ngg_tag', 'fields=ids' );
 		$tags = array_map('intval', $tags);
 		wp_set_object_terms( $dest_pid, $tags, 'ngg_tag', true );
@@ -24,7 +24,7 @@ class nggTags {
 	/**
 	 * Rename tags
 	 */
-	static function rename_tags($old = '', $new = '') {
+	function rename_tags($old = '', $new = '') {
 
 		$return_value = array(
 			'status' => 'ok',
@@ -155,7 +155,7 @@ class nggTags {
 	/**
 	 * Delete tags
 	 */
-	static function delete_tags($delete) {
+	function delete_tags($delete) {
 		$return_value = array(
 			'status' => 'ok',
 			'message' => ''
@@ -191,14 +191,12 @@ class nggTags {
 		}
 
         do_action('ngg_manage_tags', $delete_tags);
-
-        return $return_value;
 	}
 
 	/**
 	 * Edit tag slug given the name of the tag
 	 */
-	static function edit_tag_slug( $names = '', $slugs = '' ) {
+	function edit_tag_slug( $names = '', $slugs = '' ) {
 		$return_value = array(
 			'status' => 'ok',
 			'message' => ''
@@ -255,14 +253,14 @@ class nggTags {
 	/**
 	 * Get a list of the tags used by the images
 	 */
-	static function find_all_tags() {
+	function find_all_tags() {
 		return get_terms('ngg_tag', '');
 	}
 
 	/**
 	 *
 	 */
-	static function find_tags( $args = '', $skip_cache = false ) {
+	function find_tags( $args = '', $skip_cache = false ) {
 		$taxonomy = 'ngg_tag';
 
 		if ( $skip_cache == true ) {
@@ -303,7 +301,7 @@ class nggTags {
 	 * @param string $mode could be 'ASC' or 'RAND'
 	 * @return array of images
 	 */
-	static function find_images_for_tags($taglist, $mode = "ASC") {
+	function find_images_for_tags($taglist, $mode = "ASC") {
 		// return the images based on the tag
 		global $wpdb;
 
@@ -336,7 +334,7 @@ class nggTags {
 	/**
 	* Return one image based on the tag. Required for a tag based album overview
 	*/
-	static function get_album_images($taglist) {
+	function get_album_images($taglist) {
 		global $wpdb;
 
 		$taxonomy = 'ngg_tag';

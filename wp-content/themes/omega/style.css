@@ -1,20 +1,20 @@
 /*
 Theme Name: Omega
-Theme URI: https://themehall.com/omega
+Theme URI: http://themehall.com/omega
 Author: ThemeHall
-Author URI: https://themehall.com
+Author URI: http://themehall.com
 Description: Omega theme is a Responsive WordPress theme framework, serving as a robust WordPress Parent Theme. Omega theme supports HTML5 and schema.org code, the semantic foundation for SEO best practices. Omega theme is designed to be simple, yet powerful, flexible to create any type of site you want via omega child theme. The framework allows theme designers to quickly build child themes without having to code complex functionality for features that are often needed in themes.  Omega framework does these things for theme developers / designers to allow them to get back to what matters the most:  developing and designing themes. Child Themes handle all the markup, style, and scripts while the framework handles the logic.
-Version: 1.1.1
+Version: 1.0.8
 License: GNU General Public License
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: white, light, gray, black, two-columns, right-sidebar, fixed-layout, theme-options, custom-menu, threaded-comments, microformats, sticky-post, featured-image-header, flexible-header, translation-ready, responsive-layout, fluid-layout, featured-images, photoblogging
+Tags: white, light, gray, black, two-columns, one-column, right-sidebar, left-sidebar, full-width-template, fixed-layout, theme-options, custom-menu, threaded-comments, microformats, sticky-post, featured-image-header, flexible-header, translation-ready, responsive-layout, fluid-layout, featured-images, photoblogging
 Text Domain: omega
-Domain Path: /languages
 
 Omega WordPress theme, Copyright (C) 2013 themehall.com
 Omega WordPress theme is licensed under the GPL.
 
 */
+
 
 /* Baseline Reset (normalize.css 2.1.2)
 	Link: http://necolas.github.com/normalize.css/
@@ -81,12 +81,12 @@ html {
 }
 
 body {
-	color: #333;
+	color: #555;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 16px;	
 	font-weight: 400;
 	line-height: 1.625;
-	background-color: #fff;	
+	background-color: #fff;
 }
 
 a,
@@ -114,13 +114,13 @@ textarea:focus {
 }
 
 a {
-	color: #333;
+	color: #000;
 	text-decoration: none;
 }
 
 a:hover,
 a:focus {
-	color: #008CBA;
+	color: #666;
 	text-decoration: none;
 }
 
@@ -268,7 +268,7 @@ h6 {
 	font-weight: normal;
 	line-height: 1.2;
 	margin: 0;
-	margin-bottom: 22px;
+	margin-bottom: 16px;
 	padding: 0;
 }
 
@@ -359,7 +359,8 @@ button:hover,
 input:hover[type="button"],
 input:hover[type="reset"],
 input:hover[type="submit"] {
-	background: #008CBA;
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */	
 }
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -375,10 +376,6 @@ Structure and Layout
 /* Site Containers
 --------------------------------------------- */
 
-.site-container {
-	position: relative;
-}
-
 .wrap {
 	margin: 0 auto;
 	max-width: 980px;
@@ -386,15 +383,29 @@ Structure and Layout
 
 .site-inner {	
 	clear: both;
-	padding-top: 50px;
+	padding-top: 40px;
 }
 
 /* Column Widths and Positions
 --------------------------------------------- */
 
+/* Content */
+
 .content {
 	float: left;
 	width: 600px;
+}
+
+.layout-2c-r .content {
+	float: right;
+}
+
+.layout-2c-l .content {
+	float: left;
+}
+
+.layout-1c .content {
+	width: 100%;
 }
 
 /* Primary Sidebar */
@@ -402,7 +413,14 @@ Structure and Layout
 .sidebar-primary {
 	float: right;
 	width: 300px;
-	padding-top: 10px;
+}
+
+.layout-1c .sidebar-primary {
+	display: none;
+}
+
+.layout-2c-r .sidebar-primary {
+	float: left;
 }
 
 .sidebar-primary a {
@@ -542,6 +560,15 @@ img.alignright,
 	line-height: 1.2;
 }
 
+.entry-title a,
+.sidebar .widget-title a {
+	color: #555;
+}
+
+.entry-title a:hover {
+	color: #666;
+}
+
 .archive-title {
 	font-size: 20px;
 	margin-bottom: 24px;
@@ -551,11 +578,11 @@ img.alignright,
 Site Header
 ---------------------------------------------------------------------------------------------------- */
 .site-header {
-	background: none repeat scroll 0 0 #F7F7F7;
+	background: none repeat scroll 0 0 #F5F5F5;
 }
 
 .site-header > .wrap {
-	padding: 50px 0;
+	padding: 40px 0;
 }
 
 /* Title Area
@@ -574,7 +601,7 @@ Site Header
 .site-title {
 	font-size: 45px;
 	line-height: 1;
-	margin: 0 0 10px;
+	margin: 0 0 8px;
 }
 
 .site-title a,
@@ -583,11 +610,10 @@ Site Header
 }
 
 .site-description {
-	color: #606060;
-	font-family: Georgia, serif;
-	font-size: 18px;
-	font-style: italic;
+	color: #666;
+	font-size: 16px;
 	font-weight: 300;
+	line-height: 1;
 	margin: 0;
 }
 
@@ -615,6 +641,7 @@ Site Navigation
 
 .omega-nav-menu a {
 	border: none;
+	color: #666;
 	display: block;
 	padding: 28px 24px;
 	position: relative;
@@ -630,7 +657,7 @@ Site Navigation
 	-moz-transition:    opacity .4s ease-in-out;
 	-ms-transition:     opacity .4s ease-in-out;
 	-o-transition:      opacity .4s ease-in-out;
-	transition:         opacity .4s ease-in-out;	
+	transition:         opacity .4s ease-in-out;
 	width: 200px;
 	z-index: 99;
 }
@@ -666,24 +693,19 @@ Content Area
 --------------------------------------------- */
 
 .entry {
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 .entry-content {
 	word-wrap: break-word;
 }
 
-.entry-content a,
-.entry-summary a {
+.entry-content a {
 	text-decoration: underline;
 }
 
 .entry-content img.wp-post-image {
 	margin-bottom: 15px;
-}
-
-.entry-summary img {
-	margin-bottom: 24px;
 }
 
 .entry-summary img.medium,
@@ -718,13 +740,12 @@ Content Area
 	padding: 0px 0px 8px;
 }
 
-.entry-comments-link::before {
-	content: "\2014";
-	margin: 0 6px 0 2px;
+.entry-footer .entry-meta a {
+	display: inline-block;
 }
 
-span.post_tag::before {
-	content: "|";
+.entry-comments-link::before {
+	content: "\2014";
 	margin: 0 6px 0 2px;
 }
 
@@ -795,7 +816,7 @@ span.post_tag::before {
 
 .entry-comments a,
 #respond a {
-	text-decoration: underline;
+	border-bottom: 1px solid #ddd;
 }
 
 .entry-comments .comment-author {
@@ -882,7 +903,7 @@ Sidebars
 .sidebar li,
 .footer-widgets li {
 	list-style-type: none;
-	margin-bottom: 8px;
+	margin-bottom: 6px;
 	padding: 0;
 	word-wrap: break-word;
 }
@@ -892,7 +913,7 @@ Sidebars
 }
 
 .sidebar .widget {
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 .sidebar .search-form {
@@ -999,7 +1020,7 @@ Media Queries
 
 	.omega-nav-menu li {
 		float: none;
-	}	
+	}
 
 	.omega-nav-menu,
 	.site-description,
@@ -1014,6 +1035,11 @@ Media Queries
 
 	.omega-nav-menu li.right {
 		display: none;
+	}
+
+	.entry-footer .entry-meta {
+		margin: 0;
+		padding-top: 12px;
 	}
 
 	.sidebar-primary {
@@ -1034,107 +1060,15 @@ Media Queries
 		float: none;
 	}
 
-	/* responsive menu */
-	.menu-icon {
-		position: absolute;
-		z-index: 9;
-		top: 0px;
-		right: 0px;
-		display: block;
-		width: 24px;
-		margin: 17px;
-		text-indent: -999px;
-		height: 20px;
-	    border-top:4px solid #333;
-	    border-bottom:4px solid #333;
-	    opacity: 0.8;
-	}
-	 
-	.menu-icon:before {
-	    content:"";
-	    position:absolute;
-	    top:4px;
-	    left:0;
-	    width:100%;
-	    border-top:4px solid #333;
-	}
-
-	.menu-icon:hover {
-		opacity: 1;
-	}
-
-	ul.menu-primary {
-		position: static;
-		display: none;
-		width: 100%;
-	}
-
-	/*Create vertical spacing*/
-	ul.menu-primary li {
-		margin-bottom: 1px;
-	}
-	/*Make all menu links full width*/
-	ul.menu-primary li, ul.menu-primary li a {
-		width: 100%;
-	}
-
-	/*Display the dropdown on hover*/
-	ul.menu-primary li .sub-menu {
-		left: auto;
-		opacity: 1;
-		display: block;
-		position: relative;
-		width: 100%;
-	}
-
-	ul.menu-primary ul ul {
-	    padding: 0px;
-	    margin: 0;
-	}
-
-	ul.menu-primary a {
-		padding-top: 16px;
-		padding-bottom: 16px;
-		border-bottom: 1px solid #eee;
-	}
-
-	ul.menu-primary a:hover {
-		background-color: #f7f7f7;
-		color: #111;
-	}
-
-	ul.menu-primary ul a {
-		padding-left: 25px;
-	}
-
-	ul.menu-primary ul ul a {
-		padding-left: 50px;
-	}
-	
-	.nav-primary .wrap:hover ul.menu-primary {
-	    display: block;
-	}
 }
 
 @media only screen and (max-width: 768px) {
 	.entry-footer .entry-meta a {
-	    line-height: 1.8;
+	    line-height: 2;
 	}
 
-	.entry-title {
-	    font-size: 24px;
-	}
-
-	h1 {
-		font-size: 24px;
-	}
-
-	h2 {
-		font-size: 23px;
-	}
-
-	h3 {
-		font-size: 22px;
+	.entry-meta {
+	    font-size: 17px;
 	}
 }
 
