@@ -1,0 +1,625 @@
+
+* {
+
+ margin: 0;
+
+ padding: 0;
+
+}
+
+html {
+
+ font-size: 100%;
+
+}
+
+body {
+
+ font-size: 1em;
+
+ font-family: 'Roboto Slab', serif;
+
+ font-weight: 300;
+
+ text-decoration: none;
+
+ background-color: white;
+
+ background-image: url(img/main_bg.png);
+
+}
+
+a {
+
+ outline: 0!important;
+
+ color: #320a10;
+
+}
+
+a:hover {
+
+ color: white;
+
+}
+
+
+
+/*Absolventen*/
+article.bild-rechts {
+ overflow: hiden;
+}
+article.bild-rechts > figure {
+ float: right;
+ box-sizing: border-box;
+width: 30%;
+}
+article.bild-rechts > figure > figcaption ul {
+list-style-type: none;
+ font-size: 0.8rem;
+ 
+}
+article.bild-rechts > figure > figcaption span {
+background-color: blue;
+ display: block;
+ width: 12rem;
+ color: white;
+ margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+article.bild-rechts > div.post_content {
+width: 70%;
+  box-sizing: border-box;
+ float: left;
+ padding-right: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Hauptmenu*/
+
+#main_nav {} #nav_ul {
+
+ list-style-type: none;
+
+ position: absolute;
+
+ bottom: 1.7rem;
+
+ right: 2rem;
+
+}
+
+#main_nav ul li {
+
+ display: inline-block;
+
+}
+
+#main_nav ul li:before {
+
+ position: relative;
+
+ top: 1.1rem;
+
+ display: block;
+
+ content: " ";
+
+ width: 0;
+
+ height: 0;
+
+ border-style: solid;
+
+ border-width: 4px 0 4px 4px;
+
+ border-color: transparent transparent transparent white;
+
+}
+
+.menu-item-object-page  a {
+
+ font-size: 0.8rem;
+
+ background-color: #f2231a;
+
+ color: white;
+
+ padding: 0.2rem 0.8rem;
+
+ margin: 0;
+
+}
+
+/*Menu Toggle Button*/
+
+#menutoggle {
+
+ position: absolute;
+
+ right: 0px;
+
+ top: 2.2rem;
+
+ width: 50px;
+
+ height: 40px;
+
+ border: 3px solid #f2231a;
+
+ border-radius: 5px;
+
+ background-color: #f2231a;
+
+ display: none;
+
+ cursor: pointer;
+
+}
+
+#menutoggle span {
+
+ display: block;
+
+ width: 90%;
+
+ height: 2px;
+
+ background-color: white;
+
+ margin: 0 auto;
+
+ margin-top: 7px;
+
+}
+
+/* MAIN LAYOUT*/
+
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0px;
+}
+
+main {
+
+ display: block;
+
+}
+
+header {
+
+ position: relative;
+
+ background: white;
+
+}
+
+.container {
+
+ background-color: white;
+
+}
+
+.main_section {
+
+ padding-top: 2rem;
+
+ padding-bottom: 2rem;
+
+}
+
+.main_section > p {
+
+ margin-bottom: 4rem;
+
+}
+
+#main_nav {
+
+ position: relative;
+
+}
+
+/*Footer*/
+
+.footer {
+
+text-align: center;
+
+ height: auto;
+
+ background-color: #f2231a;
+
+ padding: 2rem;
+
+}
+
+.footer ul li {
+
+ display: inline-block;
+
+ margin-left: 1rem;
+
+ font-size: 0.8rem;
+
+}
+
+.footer a {
+
+ line-height: 2.6;
+
+ color: white;
+
+}
+
+/*120 layout*/
+
+.willkommen-120 {
+
+ background-color: #f77b76;
+
+ padding: 1rem 10rem;
+
+}
+
+.willkommen-120 p {
+
+ color: white;
+
+ font-size: 1rem;
+
+ text-align: center;
+
+ line-height: 1.6;
+
+}
+
+.main_content_container {
+
+ padding: 0 4rem;
+
+ background: white;
+
+ width: 100%;
+
+}
+
+.main_content_container h1 {
+
+ color: #f2231a;
+
+ font-size: 3rem;
+
+ font-weight: 100;
+
+ border-bottom: 2px dashed #566fc2;
+
+ padding-bottom: 1rem;
+
+ margin-bottom: 4rem;
+
+}
+
+.block_grundstyle {
+
+ font-size: 1.5rem;
+
+ text-transform: uppercase;
+
+ background-color: #f2231a;
+
+ color: white;
+
+ padding: 0.2rem 1rem;
+
+ line-height: 1.5;
+
+}
+
+.post_date {
+
+ margin-top: 1rem;
+
+ margin-bottom: 2rem;
+
+ font-size: 0.7rem;
+
+}
+
+.main_content_container i {
+
+ background-color: #566fc2;
+
+ margin-top: 0.6rem;
+
+ padding: 0.3rem 0.8rem;
+
+ color: white;
+
+}
+
+.post_content {
+
+ line-height: 2;
+
+}
+
+.main_content_container article {
+
+ margin-bottom: 3rem;
+
+ padding-bottom: 1rem;
+
+ border-bottom: 1px dashed #566fc2;
+
+}
+
+/*Mediaquerys (Responsive Regeln)*/
+
+@media (max-width: 940px) {
+
+ #menutoggle {
+
+  display: block;
+
+  top: 2.2rem;
+
+  right: 1.7rem;
+
+ }
+
+ #nav_ul {
+
+  position: static;
+
+  background-color: #f2231a;
+
+  overflow: hidden;
+
+  height: 0;
+
+  transition: all 0.2s ;
+
+  width: 100%;
+
+ }
+
+ #main_nav ul li {
+
+  display: block;
+
+  margin-top: 0.3rem;
+
+  text-align: center;
+
+  border-bottom: 1px dashed #f3a4a0;
+
+  padding-bottom: 0.7rem;
+
+  width: 100%;
+
+ }
+
+ #main_nav ul li:before {
+
+  border-color: transparent transparent transparent transparent;
+
+ }
+
+ .menu-item-object-page  a {
+
+  font-size: 1.4rem;
+
+  text-transform: uppercase;
+
+  background-color: #f2231a;
+
+  color: white;
+
+  width: 100%;
+
+ }
+
+}
+
+@media (max-width: 320px) {}@media (max-width: 480px) {
+
+ .logo > img {
+
+  direction: block;
+
+  width: 100%;
+
+ }
+
+ #menutoggle {
+
+  display: block;
+
+  right: 1rem!important;
+
+  top: 0.8rem!important;
+
+ }
+
+}
+
+@media (max-width: 600px) {
+
+ .logo > img {
+
+  direction: block;
+
+  width: 100%;
+
+  position: relative;
+
+  left: -2rem;
+
+ }
+
+ #menutoggle {
+
+  background-color: white;
+
+ }
+
+ #menutoggle > span {
+
+  background-color: red;
+
+ }
+
+}
+
+@media (max-width: 768px) {}@media (max-width: 991px) {
+
+ #infotext>a {
+
+  display: block;
+
+  margin: 0 auto;
+
+ }
+
+ .slider_overlay {
+
+  padding: 2rem;
+
+ }
+
+ .slider_overlay h2 {
+
+  font-size: 2rem;
+
+ }
+
+ .slider_overlay p {
+
+  font-size: 1.2rem;
+
+  width: 90%;
+
+ }
+
+ .glyphicon-chevron-down {
+
+  display: none;
+
+  font-size: 1rem;
+
+ }
+
+ .slider_overlay hr {
+
+  width: 50%;
+
+  margin: 2rem auto;
+
+  display: none;
+
+ }
+
+ .willkommen-120 {
+
+  padding: 2rem;
+
+ }
+
+ .willkommen-120 > p {
+
+  text-align: left;
+
+ }
+
+}
+
+@media (max-width: 1200px) {
+
+ #nav_ul {
+
+  position: static;
+
+  display: block;
+
+  margin: 0 auto;
+
+ }
+
+ #menutoggle {
+
+  display: block;
+
+  top: 2.2rem;
+
+  right: 1.7rem;
+
+ }
+
+ #nav_ul {
+
+  position: static;
+
+  background-color: #f2231a;
+
+  overflow: hidden;
+
+  height: 0;
+
+  transition: all 0.2s;
+
+  width: 100%;
+
+ }
+
+ #main_nav ul li {
+
+  display: block;
+
+  margin-top: 0.3rem;
+
+  text-align: center;
+
+  border-bottom: 1px dashed #f3a4a0;
+
+  padding-bottom: 0.7rem;
+
+  width: 100%;
+
+ }
+
+ #main_nav ul li:before {
+
+  border-color: transparent transparent transparent transparent;
+
+ }
+
+.menu-item-object-page  a {
+
+  font-size: 1.4rem;
+
+  text-transform: uppercase;
+
+  background-color: #f2231a;
+
+  color: white;
+
+  width: 100%;
+
+ }
+
+}
