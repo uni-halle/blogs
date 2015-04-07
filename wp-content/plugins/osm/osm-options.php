@@ -26,41 +26,64 @@
 </ol>
 <br>
 
-<table border="0">
-<form name="Markerform" action="">
 <h3><?php _e('If you want to add a marker choose one of the supported:','OSM-plugin') ?></h3>
   <li><?php _e('the marker is placed where you click into the map','OSM-plugin') ?></li>
-  <li><?php _e('alternativly you can also add privat marker from the upload folder (see ','OSM-plugin') ?> <a target="_new" href="http://wp-osm-plugin.hanblog.net/exsamples/display-a-marker/">osm plugin page</a>)</li>
-  <colgroup>
-    <col width="120">
-    <col width="120">
-    <col width="120">
-    <col width="120">
-    <col width="120">
-  </colgroup>
- <tr>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/marker_blue.png" alt="<?php _e('Blue Marker','OSM-plugin') ?>"><br><input type="radio" name="Art" value="marker_blue.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/wpttemp-green.png" alt="<?php _e('Green Waypoint','OSM-plugin') ?>"><br><input type="radio" name="Art" value="wpttemp-green.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/wpttemp-red.png" alt="<?php _e('Red Waypoint','OSM-plugin') ?>"><br><input type="radio" name="Art" value="wpttemp-red.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/wpttemp-yellow.png" alt="<?php _e('Yellow Marker','OSM-plugin') ?>"><br><input type="radio" name="Art" value="wpttemp-yellow.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/geocache.png" alt="<?php _e('Geocache','OSM-plugin') ?>"><br><input type="radio" name="Art" value="geocache.png"></p></td>
- </tr>
- <tr>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/car.png" alt="<?php _e('Car','OSM-plugin') ?>"><br><input type="radio" name="Art" value="car.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/bus.png" alt="<?php _e('Bus','OSM-plugin') ?>"><br><input type="radio" name="Art" value="bus.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/bicycling.png" alt="<?php _e('Bicycling Waypoint','OSM-plugin') ?>"><br><input type="radio" name="Art" value="bicycling.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/airport.png" alt="<?php _e('Airport','OSM-plugin') ?>"><br><input type="radio" name="Art" value="airport.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/motorbike.png" alt="<?php _e('Motorbike','OSM-plugin') ?>"><br><input type="radio" name="Art" value="motorbike.png"></p></td>
- </tr>
- <tr>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/hotel.png" alt="<?php _e('Hotel','OSM-plugin') ?>"><br><input type="radio" name="Art" value="hotel.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/hostel.png" alt="<?php _e('Hostel','OSM-plugin') ?>"><br><input type="radio" name="Art" value="hostel.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/guest_house.png" alt="<?php _e('Guesthouse','OSM-plugin') ?>"><br><input type="radio" name="Art" value="guest_house.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/camping.png" alt="<?php _e('Camping','OSM-plugin') ?>"><br><input type="radio" name="Art" value="camping.png"></p></td>
-  <td align="center"><p><img src="<?php echo OSM_PLUGIN_URL ?>/icons/styria_linux.png" alt="<?php _e('Styria Tux','OSM-plugin') ?>"><br><input type="radio" name="Art" value="styria_linux.png"></p></td>
- </tr>
+<form name="Markerform" action="">
+    <select name="osm_marker">
+        <option value="none"><?php _e('none','OSM-plugin') ?></option>
+        <option value="wpttemp-green.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="wpttemp-red.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+        <option value="wpttemp-yellow.png"><?php _e('Waypoint','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="marker_blue.png"><?php _e('Marker','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_black_pinother_01.png"><?php _e('Pin #1','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_pin-export_01.png"><?php _e('Pin #2','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_red_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+        <option value="mic_green_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="mic_blue_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>       
+        <option value="mic_photo_icon.png"><?php _e('Camera','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option> 
+        <option value="mic_yel_restaurant_chinese_01.png"><?php _e('Chin. restaurant','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="mic_yel_icecream_01.png"><?php _e('Icecream','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="mic_yel_campingtents_01.png"><?php _e('Campingtents','OSM-plugin');echo ' ';_e('yellow','OSM-plugin') ?></option>
+        <option value="mic_green_campingcar_01.png"><?php _e('Campingcar','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="mic_brown_pickup_camper_01.png"><?php _e('Pickup camper','OSM-plugin');echo ' ';_e('brown','OSM-plugin') ?></option>
+        <option value="mic_toilets_disability_01.png"><?php _e('Toilets disability','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_shark_icon.png"><?php _e('Shark','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_red_pizzaria_01.png"><?php _e('Pizzaria','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+        <option value="mic_parasailing_01.png"><?php _e('Parasailing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_green_horseriding_01.png"><?php _e('Horseriding','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+        <option value="mic_cycling_icon.png"><?php _e('Cycling','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_coldfoodcheckpoint_01.png"><?php _e('Coldfookcheckpoint','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_blue_tweet_01.png"><?php _e('Tweet','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_blue_information_01.png"><?php _e('Information','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_blue_horseriding_01.png"><?php _e('Horserinding','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_black_train_01.png"><?php _e('Train','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_steamtrain_01.png"><?php _e('Steamtrain','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_powerplant_01.png"><?php _e('Powerplant','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_parking_bicycle-2_01.png"><?php _e('Bicycle Parking','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_black_cctv_01.png"><?php _e('cctv','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="mic_blue_toilets_01.png"><?php _e('Toilets','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_blue_scubadiving_01.png"><?php _e('Scubadiving','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_orange_motorbike_01.png"><?php _e('Motorbike','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_orange_sailing_1.png"><?php _e('Sailing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_orange_fishing_01.png"><?php _e('Fishing','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_blue_mobilephonetower_01.png"><?php _e('Mobilephonetower','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_orange_hiking_01.png"><?php _e('Hiking','OSM-plugin');echo ' ';_e('orange','OSM-plugin') ?></option>
+        <option value="mic_blue_bridge_old_01.png"><?php _e('Bridge','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+        <option value="mic_black_memorial_01.png"><?php _e('Memorial','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+        <option value="car.png"><?php _e('Car','OSM-plugin') ?></option>
+        <option value="bus.png"><?php _e('Bus','OSM-plugin') ?></option>
+        <option value="bicycling.png"><?php _e('Bicycling','OSM-plugin') ?></option>
+        <option value="airport.png"><?php _e('Airport','OSM-plugin') ?></option>
+        <option value="motorbike.png"><?php _e('Motorbike','OSM-plugin') ?></option>
+        <option value="hostel.png"><?php _e('Hostel','OSM-plugin') ?></option>
+        <option value="guest_house.png"><?php _e('Guesthouse','OSM-plugin') ?></option>
+        <option value="camping.png"><?php _e('Camping','OSM-plugin') ?></option>
+        <option value="geocache.png"><?php _e('Geocache','OSM-plugin') ?></option>
+        <option value="styria_linux.png"><?php _e('Styria Tux','OSM-plugin') ?></option>
+    </select>
 </form>
-</table>
+  <li><?php _e('alternativly you can also add privat marker from the upload folder (see ','OSM-plugin') ?> <a target="_new" href="http://wp-osm-plugin.hanblog.net/exsamples/display-a-marker/">osm plugin page</a>)</li>
 
 <h3><?php _e('If you want to add a text to your marker change the text here','OSM-plugin') ?></h3>
 <form name="Markertextform">
@@ -73,30 +96,24 @@
 
 <form name="Naviform" action="">
 <?php _e('Add a link in the marker to route to your marker: ','OSM-plugin') ?> <br>
-<img src="<?php echo OSM_PLUGIN_URL ?>/icons/ORS_01.png" alt="OpenRouteService"><input type="radio" name="Navi_Link" value="ors"> <span><?php _e('OpenRouteService   ','OSM-plugin') ?> </span>
 <img src="<?php echo OSM_PLUGIN_URL ?>/icons/YN_01.png" alt="YourNavigation"><input type="radio" name="Navi_Link" value="yn"> <span><?php _e('YourNavigation   ','OSM-plugin') ?> </span>
 <img src="<?php echo OSM_PLUGIN_URL ?>/icons/OSRM_01.png" alt="Open Source Routing Machine"><input type="radio" name="Navi_Link" value="osrm"> <span><?php _e('Open Source Routing Machine ','OSM-plugin') ?> </span>
 </form>
 
-<h3><?php _e('If you want to add a gpx-track add it:','OSM-plugin') ?></h3>
-<form name="GPXfileform" action="">
-  <li><?php _e('copy the gpx file via FTP to your upload-folder','OSM-plugin') ?></li>
-  <li><?php _e('paste the local URL of gpx file here: ','OSM-plugin') ?> <input name="GpxFile" type="text" size="30" maxlength="200" value="http://"></li>
-</form>
 
-<form name="GPXcolourform" action="">
-<li> <?php _e('colour of your gpx-track: ','OSM-plugin') ?> 
-  <input type="radio" name="Gpx_colour" value="red"> <span style="color:red"><?php _e('red ','OSM-plugin') ?>  </span>
-  <input type="radio" name="Gpx_colour" value="green"> <span style="color:green"><?php _e('green ','OSM-plugin') ?> </span>
-  <input type="radio" name="Gpx_colour" value="blue"> <span style="color:blue"><?php _e('blue ','OSM-plugin') ?> </span>
-  <input type="radio" name="Gpx_colour" value="black"> <span style="color:black"><?php _e('black ','OSM-plugin') ?> </span>
-</li>
-</form>
-
-<h3><?php _e('If you want to add a marker file add it:','OSM-plugin') ?></h3>
-<form name="Markerfileform" action="">
-  <li><?php _e('copy the marker file via FTP to your upload-folder','OSM-plugin') ?></li>
-  <li><?php _e('paste the local URL of marker file here: ','OSM-plugin') ?><input name="MarkerFile" type="text" size="30" maxlength="200" value="http://"></li>
+<h3><?php _e('If you want to add a file (KML, GPX, TXT):','OSM-plugin') ?></h3>
+<form name="Addfileform" action="">
+  <select name="osm_add_file">
+    <option value="none"><?php _e('none','OSM-plugin') ?></option>
+    <option value="kml"><?php _e('KML file','OSM-plugin') ?></option>
+    <option value="gpx_red"><?php _e('GPX file','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
+    <option value="gpx_green"><?php _e('GPX file','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
+    <option value="gpx_blue"><?php _e('GPX file','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
+    <option value="gpx_black"><?php _e('GPX file','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
+    <option value="text"><?php _e('text file','OSM-plugin') ?></option>
+    </select>
+    <br>
+    <?php _e('paste the local URL of file here: ','OSM-plugin') ?><input name="FileURL" type="text" size="30" maxlength="200" value="http://">
 </form>
 
 <h3><?php _e('If you want to add a border around the map choose the colour:','OSM-plugin') ?></h3>
@@ -121,6 +138,8 @@
 <?php _e('Choose the style of the controls: ','OSM-plugin') ?> <br>
 <img src="<?php echo OSM_PLUGIN_URL ?>/themes/ol/zoom-world-mini.png" alt="OpenLayers default theme"><input type="radio" name="Cntrl_style" value="ol"> 
 <span><?php _e('default theme   ','OSM-plugin') ?> </span>
+<img src="<?php echo OSM_PLUGIN_URL ?>/themes/ol_orange/zoom-world-mini.png" alt="OpenLayers orange theme"><input type="radio" name="Cntrl_style" value="ol_orange"> 
+<span><?php _e('orange   ','OSM-plugin') ?> </span>
 <img src="<?php echo OSM_PLUGIN_URL ?>/themes/dark/zoom-world-mini.png" alt="dark theme">
 <input type="radio" name="Cntrl_style" value="dark"> 
 <span><?php _e('dark theme   ','OSM-plugin') ?> </span>

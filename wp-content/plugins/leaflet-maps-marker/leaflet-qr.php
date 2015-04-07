@@ -5,7 +5,7 @@
 //info: construct path to wp-load.php
 while(!is_file('wp-load.php')) {
 	if(is_dir('..' . DIRECTORY_SEPARATOR)) chdir('..' . DIRECTORY_SEPARATOR);
-	else die('Error: Could not construct path to wp-load.php - please check <a href="http://mapsmarker.com/path-error">http://mapsmarker.com/path-error</a> for more details');
+	else die('Error: Could not construct path to wp-load.php - please check <a href="https://www.mapsmarker.com/path-error">https://www.mapsmarker.com/path-error</a> for more details');
 }
 include( 'wp-load.php' );
 //info: check if plugin is active (didnt use is_plugin_active() due to problems reported by users)

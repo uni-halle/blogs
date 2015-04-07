@@ -39,7 +39,7 @@ function wpfb_fbDOMModHandle<?php echo $jss ?>() {
 				catch(e) {}
 			}
 		}).bind('dragover', function(e){
-			var li = jQuery(e.currentTarget), id = wpfb_fileBrowserTargetId(e,'cat'), dt = e.originalEvent.dataTransfer;
+			var id = wpfb_fileBrowserTargetId(e,'cat'), dt = e.originalEvent.dataTransfer;
 			var hasFiles = wpfb_dtContains(dt,"Files");
 			var hasWpfbItem = wpfb_dtContains(dt,"application/x-wpfilebase-item");			
 			if(!hasFiles && !hasWpfbItem)
@@ -50,7 +50,7 @@ function wpfb_fbDOMModHandle<?php echo $jss ?>() {
 			var cat_id = wpfb_fileBrowserTargetId(e,'cat'), cur_id = wpfb_fbDragCat<?php echo $jss ?>;
 			if(cur_id !== cat_id && cat_id > 0) {			
 				jQuery('#'+idp+'cat-'+cur_id).css({backgroundColor: ''});
-				if(ok) li.css({backgroundColor: 'yellow'});
+				if(ok) jQuery('#'+idp+'cat-'+id).css({backgroundColor: 'yellow'});
 				wpfb_fbDragCat<?php echo $jss ?> = ok?cat_id:0;
 			}
 			
@@ -65,8 +65,7 @@ function wpfb_fbDOMModHandle<?php echo $jss ?>() {
 				e.originalEvent.dataTransfer.dropEffect = 'move';
 			}
 		}).bind('dragleave', function(e){
-			var li = jQuery(e.currentTarget);
-			li.css({backgroundColor: ''});
+			jQuery(e.currentTarget).css({backgroundColor: ''});
 			wpfb_fbDragCat<?php echo $jss ?> = 0;			
 		}).bind('drop', function(e){		
 			var li = jQuery(e.currentTarget), id = wpfb_fileBrowserTargetId(e,'cat'), dt = e.originalEvent.dataTransfer;
@@ -75,33 +74,31 @@ function wpfb_fbDOMModHandle<?php echo $jss ?>() {
 			
 			e.stopPropagation();
 			
+			var idp = wpfb_getFileBrowserIDP('<?php echo $id ?>');
+			
 			var tid = dt.getData("application/x-wpfilebase-item").split('-');		
 			if(!tid || tid.length !== 2)
 				return false;
 			
-			li.css({backgroundColor: ''});
+			jQuery('#'+idp+'cat-'+id).css({backgroundColor: '', cursor:'wait'});
 			wpfb_fbDragCat<?php echo $jss ?> = 0;
-			
-			li.css({cursor:'wait'});
 			
 			jQuery.ajax({url: wpfbConf.ajurl, type: "POST", dataType: "json",
 				data: {action:"change-category",new_cat_id:id,id:tid[1],type:tid[0]},				
 				success: (function(data){
-					console.log(data);
 					if(data.error == false) {
-						var idp = wpfb_getFileBrowserIDP('<?php echo $id ?>');
 						var dLi = jQuery('#'+idp+tid.join('-')); // the dragged
 						if(li.hasClass('expandable')) {
 							dLi.remove();
 							jQuery('.hitarea',li).click();
 						} else {
-							dLi.appendTo(li.children('ul').first());
+							dLi.appendTo(jQuery('#'+idp+'cat-'+id).children('ul').first());
 						}
 					} else {
 						alert(data.error);
 					}
 				}),
-				complete: (function() { li.css({cursor:''}); })
+				complete: (function() { jQuery('#'+idp+'cat-'+id).css({cursor:''}); })
 			});			
 		});
 <?php } /* drag_drop */ ?>

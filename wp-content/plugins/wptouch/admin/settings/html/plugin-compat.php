@@ -1,4 +1,4 @@
-<label class="plugins"><?php _e( "Choose which plugins to include in your mobile theme", "wptouch-pro" ); ?></label>
+<label class="plugins"><?php _e( "Choose which plugins are loaded for mobile requests", "wptouch-pro" ); ?></label>
 <?php include( WPTOUCH_DIR . '/include/html/pro.php' ); ?>
 
 <div id="plugin-compat-setting" class="nano">

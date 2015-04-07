@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-04 06:25+0100\n"
-"PO-Revision-Date: 2015-02-04 06:31+0100\n"
+"POT-Creation-Date: 2015-03-16 21:06+0100\n"
+"PO-Revision-Date: 2015-03-16 21:07+0100\n"
 "Last-Translator: Jacob Rodriguez <jacob@xelso.com>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -467,48 +467,50 @@ msgstr ""
 "Importar categorías, artículos y medios (imágenes, adjuntos) desde la base "
 "de datos de Joomla para WordPress."
 
-#: fg-joomla-to-wordpress.php:130
+#: fg-joomla-to-wordpress.php:132
 msgid "The wp-content directory must be writable."
 msgstr "El directorio wp-content debe tener permiso de escritura"
 
-#: fg-joomla-to-wordpress.php:138 fg-joomla-to-wordpress.php:172
+#: fg-joomla-to-wordpress.php:140 fg-joomla-to-wordpress.php:174
 msgid "WordPress content removed"
 msgstr "Contenido de wordpress eliminado"
 
-#: fg-joomla-to-wordpress.php:140 fg-joomla-to-wordpress.php:174
+#: fg-joomla-to-wordpress.php:142 fg-joomla-to-wordpress.php:176
 msgid "Couldn't remove content"
 msgstr "No se pudo eliminar el contenido"
 
-#: fg-joomla-to-wordpress.php:150
+#: fg-joomla-to-wordpress.php:152
 msgid "Settings saved"
 msgstr "Configuración guardada"
 
-#: fg-joomla-to-wordpress.php:190
+#: fg-joomla-to-wordpress.php:192
 msgid "Prefixes removed from categories"
 msgstr "Prefijos eliminados de las categorías"
 
-#: fg-joomla-to-wordpress.php:199
+#: fg-joomla-to-wordpress.php:201
 #, php-format
 msgid "%d internal link modified"
 msgid_plural "%d internal links modified"
 msgstr[0] "%d enlace interno modificado"
 msgstr[1] "%d enlaces internos modificados"
 
-#: fg-joomla-to-wordpress.php:216
+#: fg-joomla-to-wordpress.php:218
 msgid "Import Joomla (FG)"
 msgstr "Importar Joomla (FG)"
 
-#: fg-joomla-to-wordpress.php:217
+#: fg-joomla-to-wordpress.php:219
 msgid ""
 "This plugin will import sections, categories, posts, medias (images, "
 "attachments) and web links from a Joomla database into WordPress.<br /"
-">Compatible with Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2 and 3.3."
+">Compatible with Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2, 3.3 and "
+"3.4."
 msgstr ""
-"Este plugin importará secciones, categorias, artículos y medios (imágenes, "
-"adjuntos) desde la base datos de Joomla para WordPress.<br />Compatible con "
-"las versiones de Joomla 1.5, 1.6, 1.7, 2.5, 3.0, 3.1 , 3.2 y 3.3"
+"Este plugin importará secciones, categorias, artículos , medios (imágenes, "
+"adjuntos) y enlaces webs desde la base datos de Joomla para WordPress.<br /"
+">Compatible con las versiones de Joomla 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2, "
+"3.3 y 3.4."
 
-#: fg-joomla-to-wordpress.php:218
+#: fg-joomla-to-wordpress.php:220
 msgid ""
 "For any issue, please read the <a href=\"http://wordpress.org/plugins/fg-"
 "joomla-to-wordpress/faq/\" target=\"_blank\">FAQ</a> first."
@@ -517,50 +519,50 @@ msgstr ""
 "plugins/fg-joomla-to-wordpress/faq/\" target=\"_blank\">respuestas a "
 "preguntas frecuentes</a> primero."
 
-#: fg-joomla-to-wordpress.php:223 fg-joomla-to-wordpress.php:566
+#: fg-joomla-to-wordpress.php:225 fg-joomla-to-wordpress.php:568
 #, php-format
 msgid "%d category"
 msgid_plural "%d categories"
 msgstr[0] "%d categoría"
 msgstr[1] "%d categorías"
 
-#: fg-joomla-to-wordpress.php:224
+#: fg-joomla-to-wordpress.php:226
 #, php-format
 msgid "%d post"
 msgid_plural "%d posts"
 msgstr[0] "%d artículo"
 msgstr[1] "%d artículos"
 
-#: fg-joomla-to-wordpress.php:225
+#: fg-joomla-to-wordpress.php:227
 #, php-format
 msgid "%d page"
 msgid_plural "%d pages"
 msgstr[0] "%d página"
 msgstr[1] "%d páginas"
 
-#: fg-joomla-to-wordpress.php:226
+#: fg-joomla-to-wordpress.php:228
 #, php-format
 msgid "%d media"
 msgid_plural "%d medias"
 msgstr[0] "%d medio"
 msgstr[1] "%d medios"
 
-#: fg-joomla-to-wordpress.php:227
+#: fg-joomla-to-wordpress.php:229
 #, php-format
 msgid "%d tag"
 msgid_plural "%d tags"
 msgstr[0] "%d etiqueta"
 msgstr[1] "%d etiquetas"
 
-#: fg-joomla-to-wordpress.php:264
+#: fg-joomla-to-wordpress.php:266
 msgid "Instructions"
 msgstr "Instrucciones"
 
-#: fg-joomla-to-wordpress.php:270
+#: fg-joomla-to-wordpress.php:272
 msgid "Options"
 msgstr "Opciones"
 
-#: fg-joomla-to-wordpress.php:274
+#: fg-joomla-to-wordpress.php:276
 msgid ""
 "<a href=\"http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" target="
 "\"_blank\">FAQ</a>"
@@ -568,11 +570,11 @@ msgstr ""
 "<a href=\"http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" target="
 "\"_blank\">respuestas a preguntas frecuentes</a>"
 
-#: fg-joomla-to-wordpress.php:304
+#: fg-joomla-to-wordpress.php:306
 msgid "PDO is required. Please enable it."
 msgstr "PDO es requerido. Por favor habilítelo"
 
-#: fg-joomla-to-wordpress.php:313 fg-joomla-to-wordpress.php:529
+#: fg-joomla-to-wordpress.php:315 fg-joomla-to-wordpress.php:531
 msgid ""
 "Couldn't connect to the Joomla database. Please check your parameters. And "
 "be sure the WordPress server can access the Joomla database."
@@ -581,15 +583,15 @@ msgstr ""
 "parámetros y asegúrese que el servidor de WordPress puede acceder a la base "
 "de datos de Joomla."
 
-#: fg-joomla-to-wordpress.php:339 weblinks.php:157 weblinks.php:197
+#: fg-joomla-to-wordpress.php:341 weblinks.php:188
 msgid "Error:"
 msgstr "Error:"
 
-#: fg-joomla-to-wordpress.php:522
+#: fg-joomla-to-wordpress.php:524
 msgid "Connected with success to the Joomla database"
 msgstr "Conectado satisfactoriamente a la base de datos de Joomla."
 
-#: fg-joomla-to-wordpress.php:543
+#: fg-joomla-to-wordpress.php:545
 msgid ""
 "Your version of Joomla (probably 1.0) is not supported by this plugin. "
 "Please consider upgrading to the <a href=\"http://www.fredericgilles.net/fg-"
@@ -599,74 +601,74 @@ msgstr ""
 "Por favor considere actualizar a la <a href=\"http://www.fredericgilles.net/"
 "fg-joomla-to-wordpress/\" target=\"_blank\">Versión Premium</a>."
 
-#: fg-joomla-to-wordpress.php:556
+#: fg-joomla-to-wordpress.php:558
 msgid "Joomla data found:"
 msgstr "contenido de Joomla encontrado"
 
-#: fg-joomla-to-wordpress.php:561
+#: fg-joomla-to-wordpress.php:563
 #, php-format
 msgid "%d section"
 msgid_plural "%d sections"
 msgstr[0] "%d sección"
 msgstr[1] "%d secciones"
 
-#: fg-joomla-to-wordpress.php:570
+#: fg-joomla-to-wordpress.php:572
 #, php-format
 msgid "%d article"
 msgid_plural "%d articles"
 msgstr[0] "%d artículo"
 msgstr[1] "%d artículos"
 
-#: fg-joomla-to-wordpress.php:574
+#: fg-joomla-to-wordpress.php:576
 #, php-format
 msgid "%d user"
 msgid_plural "%d users"
 msgstr[0] "%d usuario"
 msgstr[1] "%d usuarios"
 
-#: fg-joomla-to-wordpress.php:578
+#: fg-joomla-to-wordpress.php:581
 #, php-format
 msgid "%d web link"
 msgid_plural "%d web links"
 msgstr[0] "%d enlace web"
 msgstr[1] "%d enlaces web"
 
-#: fg-joomla-to-wordpress.php:752
+#: fg-joomla-to-wordpress.php:756
 #, php-format
 msgid "%d category imported"
 msgid_plural "%d categories imported"
 msgstr[0] "%d categoría importada"
 msgstr[1] "%d categorías importadas"
 
-#: fg-joomla-to-wordpress.php:760
+#: fg-joomla-to-wordpress.php:764
 #, php-format
 msgid "%d page imported"
 msgid_plural "%d pages imported"
 msgstr[0] "%d página importada"
 msgstr[1] "%d páginas importadas"
 
-#: fg-joomla-to-wordpress.php:764
+#: fg-joomla-to-wordpress.php:768
 #, php-format
 msgid "%d post imported"
 msgid_plural "%d posts imported"
 msgstr[0] "%d artículo importado "
 msgstr[1] "%d artículos importados "
 
-#: fg-joomla-to-wordpress.php:766
+#: fg-joomla-to-wordpress.php:770
 #, php-format
 msgid "%d media imported"
 msgid_plural "%d medias imported"
 msgstr[0] "%d medio importado"
 msgstr[1] "%d medios importados"
 
-#: fg-joomla-to-wordpress.php:771
+#: fg-joomla-to-wordpress.php:775
 #, php-format
 msgid "%d tag imported"
 msgid_plural "%d tags imported"
 msgstr[0] "%d etiqueta importada"
 msgstr[1] "%d etiquetas importadas"
 
-#: fg-joomla-to-wordpress.php:789
+#: fg-joomla-to-wordpress.php:793
 msgid "Don't forget to modify internal links."
 msgstr "No olvide modificar los enlaces internos."
 
@@ -866,26 +868,37 @@ msgstr ""
 msgid "Mosets Tree add-on"
 msgstr ""
 
-#: weblinks.php:72
+#: weblinks.php:75
 #, php-format
 msgid "%d links category imported"
 msgid_plural "%d links categories imported"
 msgstr[0] "%d enlace a la categoría importado"
 msgstr[1] "%d enlaces a las categorías importados"
 
-#: weblinks.php:244
+#: weblinks.php:238
 #, php-format
 msgid "%d web link imported"
 msgid_plural "%d web links imported"
 msgstr[0] "%d enlace web (hipervínculo) importado"
 msgstr[1] "%d enlaces web (hipervínculos) importados"
 
-#: weblinks.php:257
+#: weblinks.php:251
 #, php-format
 msgid "%d link"
 msgid_plural "%d links"
 msgstr[0] "%d enlace"
 msgstr[1] "%d enlaces"
+
+#~ msgid ""
+#~ "This plugin will import sections, categories, posts, medias (images, "
+#~ "attachments) and web links from a Joomla database into WordPress.<br /"
+#~ ">Compatible with Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2 and "
+#~ "3.3."
+#~ msgstr ""
+#~ "Este plugin importará secciones, categorias, artículos y medios "
+#~ "(imágenes, adjuntos) desde la base datos de Joomla para WordPress.<br /"
+#~ ">Compatible con las versiones de Joomla 1.5, 1.6, 1.7, 2.5, 3.0, 3.1 , "
+#~ "3.2 y 3.3"
 
 #~ msgid "Contact Directory contacts"
 #~ msgstr "contactos Contact Directory"

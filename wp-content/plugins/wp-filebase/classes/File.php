@@ -418,6 +418,7 @@ class WPFB_File extends WPFB_Item {
 			
 			//case 'file_required_level':	return ($this->file_required_level - 1);
 			case 'file_user_can_access': return $this->CurUserCanAccess();
+			case 'file_user_can_edit': return $this->CurUserCanEdit();
 			
 			case 'file_description':	return nl2br($this->file_description);
 			case 'file_tags':			return esc_html(str_replace(',',', ',trim($this->file_tags,',')));
@@ -545,21 +546,24 @@ class WPFB_File extends WPFB_Item {
 		// external hooks
 		do_action( 'wpfilebase_file_downloaded', $this->file_id );
 		
-		// download or redirect
-		$bw = 'bitrate_' . ($logged_in?'registered':'unregistered');
-		if($this->IsLocal())
-			WPFB_Download::SendFile($this->GetLocalPath(), array(
+		$url = $this->GetRemoteUri();
+		$is_local_remote = !empty($url) && parse_url($url,PHP_URL_SCHEME) === 'file' && is_readable($url);	
+		
+		// download or redirect		
+		if($this->IsLocal() || $is_local_remote) {
+			$bw = 'bitrate_' . ($logged_in?'registered':'unregistered');
+			WPFB_Download::SendFile($is_local_remote ? $url : $this->GetLocalPath(), array(
 				'bandwidth' => WPFB_Core::$settings->$bw,
 				'etag' => $this->file_hash,
 				'md5_hash' => WPFB_Core::$settings->fake_md5 ? null : $this->file_hash, // only send real md5
 				'force_download' => $this->file_force_download,
 				'cache_max_age' => 10
 			));
-		else {
+		} else {
 			//header('HTTP/1.1 301 Moved Permanently');
 			header('Cache-Control: no-store, no-cache, must-revalidate');
 			header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
-			header('Location: '.$this->GetRemoteUri());
+			header('Location: '.$url);
 		}
 		
 		exit;

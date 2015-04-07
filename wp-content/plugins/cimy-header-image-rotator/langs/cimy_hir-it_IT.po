@@ -1,0 +1,339 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cimy Header Image Rotator\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-27 13:09-0800\n"
+"PO-Revision-Date: 2013-01-27 14:05-0800\n"
+"Last-Translator: Marco Cimmino <cimmino.marco@gmail.com>\n"
+"Language-Team:  <cimmino.marco@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: /var/www/wp-content/plugins/cimy-header-image-rotator\n"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:166
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:788
+msgid "Main"
+msgstr "Principale"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:168
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:790
+#, php-format
+msgid "Config #%d"
+msgstr "Configurazione #%d"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:334
+msgid "The plugin could not find or open the above image directory. Please make sure you have created a folder called 'Cimy_Header_Images' (without the quote marks) in your wp-content folder."
+msgstr "Il plugin non riesce a trovare o aprire la directory di cui sopra. Per favore assicurati che sia stata creata una directory chiamata 'Cimy_Header_Images' (senza le virgolette) nella tua directory wp-content"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:336
+msgid "There are no pictures in your image folder. Please add some images for the plugin to work."
+msgstr "Non ci sono immagini nella tua directory. Per favore aggiungi qualche immagine per fare funzionare il plugin."
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:890
+msgid "Support the Cimy Project"
+msgstr "Supporta il progetto Cimy"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:898
+msgid "This plug-in is the results of hours of development to add new features, support new WordPress versions and fix bugs, please donate money if saved you from spending all these hours!"
+msgstr "Questo plug-in è il risultato di ore di sviluppo per aggiungere nuove funzionalità, supportare nuove versioni di WordPress e mettere a posto i bug, per favore dona un po' di denaro se ti ha risparmiato tutte queste ore!"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:915
+msgid "Add one configuration"
+msgstr "Aggiungi una configurazione"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:917
+msgid "Delete current configuration"
+msgstr "Cancella la configurazione corrente"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:932
+msgid "Name:"
+msgstr "Nome:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:937
+msgid "Load the pictures from:"
+msgstr "Usa le immagini:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:941
+#, php-format
+msgid "Theme's default [%d pictures]"
+msgstr "Default dal tema [%d immagini]"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:945
+#, php-format
+msgid "Theme's uploaded [%d pictures]"
+msgstr "Caricate dal tema [%d immagini]"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:949
+#, php-format
+msgid "Plug-in's uploaded [%d pictures]"
+msgstr "Caricate dal plug-in [%d immagini]"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:954
+msgid "Swap rate:"
+msgstr "Ritmo di alternanza"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:957
+msgid "Seconds"
+msgstr "Secondi"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:958
+msgid "Minutes"
+msgstr "Minuti"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:959
+msgid "Hours"
+msgstr "Ore"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:960
+msgid "Days"
+msgstr "Giorni"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:961
+msgid "Weeks"
+msgstr "Settimane"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:962
+msgid "Months"
+msgstr "Mesi"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:969
+msgid "This setting determines the interval at which your header images rotate."
+msgstr "Questa opzione determina l'intervallo con cui ruotano le immagini."
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:976
+msgid "DIV ID:"
+msgstr "ID DIV:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:978
+msgid "Border:"
+msgstr "Bordo:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:983
+msgid "Width:"
+msgstr "Larghezza:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:985
+msgid "Height:"
+msgstr "Altezza:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:990
+msgid "Fade effect:"
+msgstr "Effetto dissolvenza:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:992
+msgid "smaller value means faster fade (0=disabled)"
+msgstr "a valori piccoli dissolvenza più veloce (0=disabilitato)"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:995
+msgid "Double fade (Better experience with pictures that have transparent background)"
+msgstr "Doppia dissolvenza (migliora l'effetto con la presenza di immagini con sfondo transparente)"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:998
+msgid "Adapt the container's size to the window's size (Requires browser page refresh)"
+msgstr "Adatta la dimensione del contenitore alla dimensione della finestra (richiede il refresh della pagina del browser)"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1003
+msgid "Static"
+msgstr "Statico"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1008
+msgid "Slide effect:"
+msgstr "Effetto scorrimento:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1012
+msgid "Note that swap rate is ignored in this case and if you get no images then you have to reduce the size of the div and/or lower the speed value"
+msgstr "Notare che il ritmo di alternanza è ignorato in questo caso e se si non si vede alcuna immagine allora bisogna ridurre la grandezza del div e/o diminuire il valore della velocità"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1016
+msgid "Speed:"
+msgstr "Velocità:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1018
+msgid "pixels/second"
+msgstr "pixel/secondo"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1022
+msgid "From UP to DOWN"
+msgstr "Dall'ALTO verso il BASSO"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1026
+msgid "From DOWN to UP"
+msgstr "Dal BASSO verso l'ALTO"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1031
+msgid "From LEFT to RIGHT"
+msgstr "Da SINISTRA verso DESTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1036
+msgid "From RIGHT to LEFT"
+msgstr "Da DESTRA verso SINISTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1041
+msgid "Ken Burns effect:"
+msgstr "Effetto Ken Burns:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1045
+msgid "From TOP LEFT"
+msgstr "Dall'ALTO a SINISTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1046
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1048
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1053
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1055
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1060
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1062
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1067
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1069
+msgid "Zoom:"
+msgstr "Zoom:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1047
+msgid "to BOTTOM RIGHT"
+msgstr "verso il BASSO a DESTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1052
+msgid "From BOTTOM RIGHT"
+msgstr "Dal BASSO a DESTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1054
+msgid "to TOP LEFT"
+msgstr "verso l'ALTO a SINISTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1059
+msgid "From TOP RIGHT"
+msgstr "Dall'ALTO a DESTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1061
+msgid "to BOTTOM LEFT"
+msgstr "verso il BASSO a SINISTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1066
+msgid "From BOTTOM LEFT"
+msgstr "Dal BASSO a SINISTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1068
+msgid "to TOP RIGHT"
+msgstr "verso l'ALTO a DESTRA"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1073
+msgid "Start always from the first picture"
+msgstr "Inizia sempre dalla prima immagine"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1076
+msgid "Start from the picture in the time frame assigned, ie: if you want a 'one picture per day'"
+msgstr "Inizia dall'immagine assegnata allo slot di tempo, per esempio se si vuole: 'una immagine al giorno'"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1080
+msgid "Shuffle images"
+msgstr "Rotazione immagini casuale"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1085
+msgid "Images link:"
+msgstr "Link immagini:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1090
+msgid "Clicking on links open new tab/window:"
+msgstr "Cliccando sui link apre un nuovo tab/finestra:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1093
+msgid "No"
+msgstr ""
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1094
+msgid "Yes"
+msgstr ""
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1100
+msgid "Images caption:"
+msgstr "Didascalia immagini:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1104
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1262
+msgid "Save Changes"
+msgstr ""
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1116
+msgid "Copy following code in your theme where you want image rotation:"
+msgstr "Copia il seguente codice nel tuo tema dove intendi avere l'immagine che ruota:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1118
+msgid "Loading images..."
+msgstr "Caricamento immagini...."
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1156
+msgid "<strong>Note 1:</strong> image rotation will be available only for users with JavaScript enabled on their browsers"
+msgstr "<strong>Nota 1:</strong> la rotazione dell'immagine sar&agrave; a disposizione solo per gli utenti con JavaScript abilitato nel browser"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1167
+msgid "Images path:"
+msgstr "Percorso immagini:"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1178
+msgid "Images"
+msgstr "Carica immagine"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1183
+msgid "Please upload an image with one of the following extensions"
+msgstr "Per favore invia una immagine con una delle seguenti estensioni"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1184
+msgid "Upload image"
+msgstr "Carica immagine"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1188
+msgid "There have been some problems uploading the image"
+msgstr "Ci sono stati dei problemi nel caricamento dell'immagine"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1190
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1249
+msgid "The file name contains some illegal characters, please rename it and upload it again"
+msgstr "Il nome del file contiene alcuni caratteri illegali, per favore rinominalo e caricalo nuovamente"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1196
+msgid "Web server cannot write on images directory, check permissions"
+msgstr "Il server web non pu&ograve; scrivere nella directory delle immagini, controlla i permessi"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1200
+msgid "Web server can write on images directory"
+msgstr "Il server web pu&ograve; scrivere nella directory delle immagini"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1215
+msgid "Cannot open images directory. Please make sure that you create it and web server has read permission over it."
+msgstr "Non &egrave; possibile aprire la directory delle immagini. Per favore contolla che esista e che il server web abbia il permesso di lettura su di essa."
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1218
+msgid "Could not find any pictures."
+msgstr "Nessuna immagine."
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1221
+msgid "Click on pictures to view..."
+msgstr "Clicca sulle immagini per vederle..."
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1226
+#, fuzzy
+msgid "Delete"
+msgstr "Cancella file"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1227
+msgid "File name"
+msgstr "Nome file"
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1228
+msgid "Link"
+msgstr ""
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1229
+msgid "Caption"
+msgstr ""
+
+#: /var/www/wp-content/plugins/cimy-header-image-rotator/cimy_header_image_rotator.php:1246
+msgid "Delete file"
+msgstr "Cancella file"
+

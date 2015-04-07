@@ -122,7 +122,7 @@ function foundation_social_links_settings( $page_options ) {
 }
 
 function foundation_social_show_one_link( $href, $social_service, $friendly ) {
-	$link = '<li><a href="' . $href . '" class="social-footer-badges no-ajax icon-' . $social_service . '" role="button" title="' . $friendly . '" target="_blank"></a></li>';
+	$link = '<li><a href="' . $href . '" class="social-footer-badges no-ajax wptouch-icon-' . $social_service . '" role="button" title="' . $friendly . '" target="_blank"></a></li>';
 
 	$link_data = new stdClass;
 	$link_data->href = $href;

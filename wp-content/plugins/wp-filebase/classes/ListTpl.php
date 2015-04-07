@@ -234,8 +234,8 @@ class WPFB_ListTpl {
 		
 		if($page_break && !$this->current_list->hide_pagenav) {
 			$pagenav = paginate_links( array(
-				'base' => add_query_arg( 'wpfb_list_page', '%_%'),
-				'format' => '%#%',
+				'base' => add_query_arg( 'wpfb_list_page', '%#%'),
+				'format' => '',
 				'total' => ceil($num_total_files / $this->current_list->page_limit),
 				'current' => empty($_GET['wpfb_list_page']) ? 1 : absint($_GET['wpfb_list_page']),
 				 'add_args' => array() // necessary!

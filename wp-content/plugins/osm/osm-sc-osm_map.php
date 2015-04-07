@@ -34,6 +34,8 @@
     'gpx_colour_list' => 'NoColourList',
     'kml_file'  => 'NoFile',           // 'absolut address'          
     'kml_colour'=> 'NoColour',
+    'kml_file_list'   => 'NoFileList',
+    'kml_colour_list' => 'NoColourList',
     // are there markers in the map wished loaded from a file
     'marker_file'     => 'NoFile', // 'absolut address'
     'marker_file_proxy' => 'NoFile', // 'absolut address'
@@ -142,7 +144,7 @@
       $long  = $lon;
     }
 
-
+    $marker_name = Osm_icon::replaceOldIcon($marker_name);
     if (Osm_icon::isOsmIcon($marker_name) == 1){
        $Icon = Osm_icon::getIconsize($marker_name);
        $Icon["name"]  = $marker_name;
@@ -221,8 +223,10 @@
       $output .= '.olControlNoSelect {z-index: '.$z_index.'+1.'.' !important;}';    
       $output .= '.olControlAttribution {z-index: '.$z_index.'+1.'.' !important;}';
     }      
-    $output .= '#'.$MapName.' {clear: both; padding: 0px; margin: 0px; border: 0px; width: 100%; height: 100%; margin-top:0px; margin-right:0px;margin-left:0px; margin-bottom:0px; left: 0px;}';
-    $output .= '#'.$MapName.' img{clear: both; padding: 0px; margin: 0px; border: 0px; width: 100%; height: 100%; position: absolute; margin-top:0px; margin-right:0px;margin-left:0px; margin-bottom:0px;}';
+    $output .= '#'.$MapName.' {clear: both; padding: 0px; margin: 0px; border: 0px; width: 100%; height: 100%; margin-top:0px; margin-right:0px;margin-left:0px; margin-bottom:0px; left: 0px; border-radius:0px;
+box-shadow: none;}';
+    $output .= '#'.$MapName.' img{clear: both; padding: 0px; margin: 0px; border: 0px; width: 100%; height: 100%; position: absolute; margin-top:0px; margin-right:0px;margin-left:0px; margin-bottom:0px; border-radius:0px;
+box-shadow: none;}';
     $output .= '</style>';
 
     $output .= '<div id="'.$MapName.'" class="OSM_Map" style="width:'.$width_str.'; height:'.$height_str.'; overflow:hidden;padding:0px;border:'.$map_border.';">';
@@ -286,8 +290,9 @@
 
     // add a clickhandler if needed
     $msg_box = strtolower($msg_box);
-    if ( $msg_box == 'sc_gen' || $msg_box == 'lat_long' || $msg_box == 'metabox_sc_gen'){
-      $output .= Osm_OpenLayers::AddClickHandler($MapName, $msg_box);
+    if ( $msg_box == 'sc_gen' || $msg_box == 'lat_long' || $msg_box == 'metabox_marker_sc_gen'|| $msg_box == 'metabox_file_sc_gen' || $msg_box == 'metabox_geotag_sc_gen' || $msg_box == 'metabox_geometry_sc_gen'|| $msg_box == 'metabox_geotag_gen'){
+      global $post;
+      $output .= Osm_OpenLayers::AddClickHandler($MapName, $msg_box, $post->ID);
     }
 
     // Add the Layer with GPX Track
@@ -319,6 +324,21 @@
     // Add the Layer with KML Track
     if ($kml_file != 'NoFile'){ 
       $output .= Osm_OpenLayers::addVectorLayer($MapName, $kml_file,$kml_colour,'KML');
+    }
+
+    if ($kml_file_list != 'NoFileList'){
+      $KmlFileListArray   = explode( ',', $kml_file_list ); 
+      $KmlColourListArray = explode( ',', $kml_colour_list);
+      $this->traceText(DEBUG_INFO, "(NumOfGpxFiles: ".sizeof($KmlFileListArray)." NumOfGpxColours: ".sizeof($KmlColourListArray).")!");
+
+      for($x=0;$x<sizeof($KmlFileListArray);$x++){
+        $KmlName = basename($KmlFileListArray[$x], ".kml");
+        $output .= Osm_OpenLayers::addVectorLayer($MapName, $KmlFileListArray[$x],$KmlColourListArray[$x],'KML');
+        }
+
+      if (($kml_colour_list != "NoColourList") && (sizeof($KmlFileListArray) == sizeof($KmlColourListArray))){
+        $this->traceText(DEBUG_ERROR, "e_kml_list_error");
+      }
     }
 
     // Add the marker here which we get from the file
@@ -387,13 +407,14 @@
      // set the center of the map to the first geotag
      $lat = $temp_lat;
      $long = $temp_lon;
-
+     $PostMarker = Osm_icon::replaceOldIcon($PostMarker);
      if (Osm_icon::isOsmIcon($PostMarker) == 1){
        $Icon = Osm_icon::getIconsize($PostMarker);
        $Icon["name"]  = $PostMarker;
      }
      else {
-      $this->traceText(DEBUG_ERROR, "e_not_osm_icon");
+      $this->traceText(DEBUG_INFO, "e_not_osm_icon");
+      $this->traceText(DEBUG_INFO, $PostMarker);
      }
 
      list($temp_lat, $temp_lon) = Osm::checkLatLongRange('Marker',$temp_lat, $temp_lon); 
@@ -413,7 +434,7 @@
      $GeoData_Array = explode( ' ', $Data );
      list($temp_lat, $temp_lon) = explode(',', $GeoData_Array[0]); 
      $DoPopUp = 'false';
-
+     $PostMarker = Osm_icon::replaceOldIcon($PostMarker);
      if (Osm_icon::isOsmIcon($PostMarker) == 1){
        $Icon = Osm_icon::getIconsize($PostMarker);
        $Icon["name"]  = $PostMarker;
@@ -459,13 +480,10 @@
      $marker_routing = strtolower($marker_routing);
      if ($marker_routing != 'no') { 
        $temp_popup .= '<br><div class="route"><a href="';
-       if ($marker_routing == 'ors' || $marker_routing == 'openrouteservice') {  
-         $temp_popup .= 'http://openrouteservice.org/index.php?end=' . $temp_lon . ',' . $temp_lat . '&zoom=' . $zoom . '&pref=Fastest&lang=' . substr(get_locale(),0,2) . '&noMotorways=false&noTollways=false';
-       } 
-       elseif ($marker_routing == 'yn' || $marker_routing == 'yournavigation') {  
+       if ($marker_routing == 'yn' || $marker_routing == 'yournavigation') {  
          $temp_popup .= 'http://yournavigation.org/?tlat=' . $temp_lat . '&tlon=' . $temp_lon;
        }
-       elseif ($marker_routing == 'osrm' || $marker_routing == 'cm' || $marker_routing == 'cloudmade') {
+       elseif ($marker_routing == 'ors' || $marker_routing == 'openrouteservice' || $marker_routing == 'osrm' || $marker_routing == 'cm' || $marker_routing == 'cloudmade') {
          $temp_popup .= 'http://map.project-osrm.org/?dest=' . $temp_lat . ',' . $temp_lon;
        }
        else {

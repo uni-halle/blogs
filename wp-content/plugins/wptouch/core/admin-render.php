@@ -1,8 +1,13 @@
 <form method="post" action=""<?php if ( strpos( $_SERVER['REQUEST_URI'], 'wptouch-admin-license' ) !== false ) echo ' autocomplete="off"'; ?>>
 	<div id="wptouch-settings-area" class="<?php wptouch_admin_panel_classes( array( 'wrap', 'clearfix' ) ); ?>">
 
-		<?php if ( $_GET['page'] != 'wptouch-admin-license' ) { ?>
-			<?php include_once( WPTOUCH_ADMIN_DIR . '/html/notification-center.php' ); ?>
+		<?php if ( defined( 'WPTOUCH_IS_FREE' ) && $_GET['page'] != 'wptouch-admin-upgrade' ) { ?>
+		<div class="dropdown notifications">
+			<button id="upgrade-to-pro" class="button button-primary" type="button" data-target="<?php echo admin_url( 'admin.php?page=wptouch-admin-upgrade' ); ?>">
+				<?php _e( 'What\'s in WPtouch Pro?', 'wptouch-pro' ); ?>
+			</button>
+		</div>
+			<?php // TODO: Deprecated include_once( WPTOUCH_ADMIN_DIR . '/html/notification-center.php' ); ?>
 		<?php } ?>
 
 		<h2 class="logo-title">
@@ -59,7 +64,17 @@
 					<?php foreach( $page_info->sections as $section ) { ?>
 						<div class="wptouch-section"<?php if ( $section->name ) { ?> id="section-<?php echo $section->slug; ?>"<?php } ?>>
 						<?php if ( $section->name ) { ?>
-							<?php if ( wptouch_section_has_visible_settings( $section ) ) { ?>
+							<h3><?php echo $section->name; ?> </h3>
+							<ul class="padded">
+							<?php foreach( $section->settings as $setting ) { ?>
+								<li class="wptouch-setting<?php if ( $setting->is_pro ) echo " pro-setting"; ?>" id="setting-<?php echo wptouch_convert_to_class_name( $setting->name ); ?>">
+									<?php wptouch_admin_render_setting( $setting ); ?>
+								</li>
+							<?php } ?>
+							</ul>
+
+							<?php /* TODO: Deprecated
+							if ( wptouch_section_has_visible_settings( $section ) ) { ?>
 								<h3><?php echo $section->name; ?> </h3>
 								<ul class="padded">
 								<?php foreach( $section->settings as $setting ) { ?>
@@ -70,7 +85,7 @@
 									<?php } ?>
 								<?php } ?>
 								</ul>
-							<?php } ?>
+							<?php }*/ ?>
 						<?php } else { ?>
 							<?php // custom areas ?>
 							<?php foreach( $section->settings as $setting ) { ?>

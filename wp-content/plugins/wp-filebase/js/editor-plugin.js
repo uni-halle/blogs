@@ -273,6 +273,15 @@ function initEditorPlugin()
 	
 		if (!autoAttachFiles && theEditor && theEditor.getContent().search(/\[wpfilebase\s+tag\s*=\s*['"]attachments['"]/) != -1)
 			jQuery('#no-auto-attach-note').hide(); 	// no notice if attachments tag is in	
+		
+		jQuery('form.insert').on('submit', function(e){
+			var sb = jQuery("a.button-primary").filter(":visible").first();
+			if(sb.length) {
+				sb.click();
+				return false;
+			}
+			return true;
+		});
 	}
 	
 	refreshTrees();

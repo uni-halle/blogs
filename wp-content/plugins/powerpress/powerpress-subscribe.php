@@ -26,29 +26,21 @@ function powerpresssubscribe_get_itunes_url($Settings)
 function powerpresssubscribe_get_settings($ExtraData)
 {
 	$GeneralSettings = get_option('powerpress_general');
-	//if( !empty($GeneralSettings['taxonomy_podcasting']) )
-	//	return false; // Feature not available for taxonomy podcasting
 	
 	$feed_slug = (empty($ExtraData['feed'])?'podcast': $ExtraData['feed']);
-	//$feed_slug = (empty($ExtraData['channel'])?$feed_slug: $ExtraData['channel']);
 	$post_type = (empty($ExtraData['post_type'])?false: $ExtraData['post_type']);
 	$category_id = (empty($ExtraData['cat_id'])?false: $ExtraData['cat_id']);
 	$taxonomy_term_id = (empty($ExtraData['taxonomy_term_id'])?false: $ExtraData['taxonomy_term_id']);
 	
-	if( empty($ExtraData['type']) ) // Make sure this value is set
-		$ExtraData['type'] = '';
+	if( empty($ExtraData['subscribe_type']) ) // Make sure this value is set
+		$ExtraData['subscribe_type'] = '';
 	
-	switch( $ExtraData['type'] )
+	switch( $ExtraData['subscribe_type'] )
 	{
 		case 'post_type': {
 			$category_id = 0;
 			$taxonomy_term_id = 0;
 		};
-		case 'channel': {
-			$category_id = 0;
-			$taxonomy_term_id = 0;
-			$post_type = 0;
-		}; break;
 		case 'category': {
 			$feed_slug = 'podcast';
 			$taxonomy_term_id = 0;
@@ -59,22 +51,17 @@ function powerpresssubscribe_get_settings($ExtraData)
 			$category_id = 0;
 			$post_type = 0;
 		}; break;
+		case 'channel': 
 		case 'general': 
 		default: {
-			$feed_slug = $feed_slug;
 			$category_id = 0;
 			$post_type = 0;
 			$taxonomy_term_id = 0;
 		}; break;
-	}	
-	
-	if( !empty($GeneralSettings['taxonomy_podcasting']) )
-	{
-		// TODO! Taxonomy Podcasting subscription options
 	}
-		
+	
 	// We need to know if category podcasting is enabled, if it is then we may need to dig deeper for this info....
-	if( !empty($GeneralSettings['cat_casting']) && $feed_slug == 'podcast' && (empty($ExtraData['type']) || $ExtraData['type'] == 'category' ) )
+	if( !empty($GeneralSettings['cat_casting']) && $feed_slug == 'podcast' && (empty($ExtraData['subscribe_type']) || $ExtraData['subscribe_type'] == 'category' ) )
 	{
 		if( !$category_id && is_category() )
 		{
@@ -106,28 +93,48 @@ function powerpresssubscribe_get_settings($ExtraData)
 				return $Settings;
 			}
 		}
+		
+		if($ExtraData['subscribe_type'] == 'category') // If we specifically wanted a category, then we need to return false so we don't miss-represent
+		{
+			return false;
+		}
 		// let fall through to find better settings
 	}
 	
-	// Post Type Podcasting
-	if( !empty($GeneralSettings['posttype_podcasting']) )
+	// Taxonomy
+	if( $ExtraData['subscribe_type'] == 'ttid' )
 	{
-		if( empty($post_type) && !empty($ExtraData['id']) )
-			$post_type = get_post_type( $ExtraData['id'] );
-		
-		switch( $post_type )
+		if( !empty($GeneralSettings['taxonomy_podcasting']) )
 		{
-			case 'page':
-			case 'post':
-			{
-				// SWEET, CARRY ON!
-			}; break;
-			default: {
-				// TODO
-				// $url = get_post_type_archive_feed_link($post_type, $feed_slug);
-				return false; // Not suported for now
-			}; break;
+			// TODO! Taxonomy Podcasting subscription options
 		}
+		return false;
+	}
+	
+	// Post Type Podcasting
+	if( $ExtraData['subscribe_type'] == 'post_type' )
+	{
+		if( !empty($GeneralSettings['posttype_podcasting']) )
+		{
+			if( empty($post_type) && !empty($ExtraData['id']) )
+				$post_type = get_post_type( $ExtraData['id'] );
+			
+			switch( $post_type )
+			{
+				case 'page':
+				case 'post':
+				{
+					// SWEET, CARRY ON!
+				}; break;
+				default: {
+					// TODO
+					// $url = get_post_type_archive_feed_link($post_type, $feed_slug);
+					return false; // Not suported for now
+				}; break;
+			}
+		}
+		
+		return false;
 	}
 	
 	
@@ -249,6 +256,7 @@ function powerpress_subscribe_shortcode( $attr ) {
 		'feed_url'=>'', // provide subscribe widget for specific RSS feed
 		'itunes_url'=>'', // provide subscribe widget for specific iTunes subscribe URL
 		'image_url'=>'', // provide subscribe widget for specific iTunes subscribe URL
+		'heading'=>'', // heading label for 
 		
 		// Appearance attributes
 		'itunes_button'=>'', // Set to 'true' to use only the iTunes button
@@ -265,7 +273,41 @@ function powerpress_subscribe_shortcode( $attr ) {
 		$attr['slug'] = $attr['channel'];
 	else if( empty($attr['slug']) )
 		$attr['slug'] = 'podcast';
+	
+	// Set empty args to prevent warnings
+	if( !isset($attr['term_taxonomy_id']) )
+		$attr['term_taxonomy_id'] = '';
+	if( !isset($attr['category_id']) )
+		$attr['category_id'] = '';
+	if( !isset($attr['post_type']) )
+		$attr['post_type'] = '';
 
+	$subscribe_type = '';
+	$category_id = '';
+		
+	if(!empty($attr['category']) )
+	{
+		$CategoryObj = false;
+		if( preg_match('/^[0-9]*$/', $attr['category']) ) // If it is a numeric ID, lets try finding it by ID first...
+			$CategoryObj = get_term_by('id', $attr['category'], 'category');
+		if( empty($CategoryObj) )
+			$CategoryObj = get_term_by('name', $attr['category'], 'category');
+		if( empty($CategoryObj) )
+			$CategoryObj = get_term_by('slug', $attr['category'], 'category');
+		if( !empty($CategoryObj) )
+		{
+			$category_id = $CategoryObj->term_id;
+		}
+	}
+	
+	if( !empty($attr['category']) )
+		$subscribe_type = 'category';
+	if( !empty($attr['term_taxonomy_id']) )
+		$subscribe_type = 'ttid';
+	if( !empty($attr['post_type']) )
+		$subscribe_type = 'post_type';
+	if( !empty($attr['slug']) && $attr['slug'] != 'podcast' )
+		$subscribe_type = 'channel';
 
 	$Settings = array();
 	if( !empty($attr['feed_url']) )
@@ -274,18 +316,25 @@ function powerpress_subscribe_shortcode( $attr ) {
 	}
 	else
 	{
-		$Settings = powerpresssubscribe_get_settings(  array('feed'=>$attr['slug'], 'taxonomy_term_id'=>$attr['term_taxonomy_id'], 'cat_id'=>$attr['category'], 'post_type'=>$attr['post_type']) );
+		$Settings = powerpresssubscribe_get_settings(  array('feed'=>$attr['slug'], 'taxonomy_term_id'=>$attr['term_taxonomy_id'], 'cat_id'=>$category_id, 'post_type'=>$attr['post_type'], 'subscribe_type'=>$subscribe_type) );
 	}
 	
-	if( !empty($attr['title']) )
+	// Podcast title handling
+	if( isset($attr['title']) && empty($attr['title']) && isset($Settings['title']) )
+		unset( $Settings['title'] ); // Special case, if the title is unset, then it shuld not be displayed
+	else if( !empty($attr['title']) )
 		$Settings['title'] = $attr['title'];
+	else if( !isset($Settings['title']) )
+		$Settings['title'] = ''; // This way the title can be detected
+	
 	if( !empty($attr['itunes_url']) )
 		$Settings['itunes_url'] = $attr['itunes_url'];
 	if( !empty($attr['style']) )
 		$Settings['style'] = $attr['style'];
 	if( !empty($attr['image_url']) )
 		$Settings['image_url'] = $attr['image_url'];	
-		
+	if( isset($attr['heading']) ) // If a custom heading is set
+		$Settings['heading'] = $attr['heading'];
 		
 	if( empty($Settings) )
 		return '';	
@@ -333,7 +382,7 @@ function powerpress_do_subscribe_widget($settings)
 		return '';
 	}
 	
-	if( empty($settings['title']) )
+	if( isset($settings['title']) && empty($settings['title']) )
 	{
 		$settings['title'] = get_bloginfo('name');
 	}
@@ -358,7 +407,11 @@ function powerpress_do_subscribe_widget($settings)
 	$html .= '<div class="pp-sub-widget pp-sub-widget-'. $settings['style'] .'">';
 	if( !empty($settings['title']) )
 	{
-		$html .= '<div class="pp-sub-h">'.  __('Subscribe to', 'powerpress') .'</div>';
+		if( !isset($settings['heading']) )
+				$settings['heading'] = __('Subscribe to', 'powerpress');
+			
+		if( !empty($settings['heading']) ) {
+			$html .= '<div class="pp-sub-h">'.  htmlspecialchars($settings['heading']) .'</div>'; }
 		$html .= '<h2 class="pp-sub-t">'.  htmlspecialchars( $settings['title'] ) .'</h2>';
 	}
 	else
@@ -366,7 +419,7 @@ function powerpress_do_subscribe_widget($settings)
 		$settings['title'] = ''; // Make sure it's an empty string
 	}
 			$html .= '<div class="pp-sub-bx">';
-				$html .= '<img class="pp-sub-l" src="'. htmlspecialchars( $settings['image_url'] ) .'" alt="'.  htmlspecialchars( $settings['title'] ) .'" />';
+				$html .= '<img class="pp-sub-l" src="'. htmlspecialchars( $settings['image_url'] ) .'" '. (!empty($settings['title'])?' title="'.  htmlspecialchars($settings['title']).'" ':'') .'/>';
 				$html .= '<div class="pp-sub-btns">';
 				if( !empty($settings['itunes_url']) ) {
 					$html .= '<a href="'.  htmlspecialchars( $settings['itunes_url'] ) .'" class="pp-sub-btn pp-sub-itunes"><span class="pp-sub-ic"></span>'.  htmlspecialchars( __('on iTunes', 'powerpress') ) .'</a>';

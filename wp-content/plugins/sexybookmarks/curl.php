@@ -94,6 +94,10 @@ class ShareaholicCurl {
     else {
       if(is_array($response) && array_key_exists('body', $response)) {
         $body = $response['body'];
+
+        // strip out any BOM appended characters
+        $body = self::strip_utf8_bom($body);
+
         $response['body'] = ShareaholicUtilities::object_to_array(json_decode($body)) ?
           ShareaholicUtilities::object_to_array(json_decode($body)) : $body;
         return $response;
@@ -205,6 +209,27 @@ class ShareaholicCurl {
     } else {
       return false;
     }
+  }
+
+  /**
+   * Sometimes the response from APIs begins with BOM (byte order mark) which
+   * makes it difficult to parse JSON responses.
+   *
+   * If it exists, remove it and return the cleaned up string
+   *
+   * @param {String} $str the string to strip BOM
+   * @return {String} the stripped out string if BOM exists
+   */
+  private static function strip_utf8_bom($str) {
+    // create binary string for BOM
+    $bom = pack("CCC", 0xef, 0xbb, 0xbf);
+
+    // binary safe compare the BOM with the string
+    if (0 === strncmp($str, $bom, 3)) {
+      return substr($str, 3);
+    }
+
+    return $str;
   }
 }
 

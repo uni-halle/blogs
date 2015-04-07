@@ -135,7 +135,7 @@ function wptouch_admin_handle_ajax( $wptouch_pro, $ajax_action ) {
 			if ( defined( 'WPTOUCH_IS_FREE' ) ) {
 				$content = wp_remote_get( 'http://wptouch-pro-3.s3.amazonaws.com/WPtouchBoard/free/page.xhtml' );
 			} else {
-				$content = wp_remote_get( 'http://wptouch-pro-3.s3.amazonaws.com/WPtouchBoard/pro/3.5/page.xhtml' );
+				$content = wp_remote_get( 'http://wptouch-pro-3.s3.amazonaws.com/WPtouchBoard/pro/page.xhtml' );
 			}
 
 			if ( !is_wp_error( $content ) ) {

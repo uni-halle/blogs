@@ -78,6 +78,15 @@ function awpcp_upload_file( $file, $constraints, &$error=false, $action='upload'
 		return false;
 	}
 
+	$extension = strtolower( awpcp_get_file_extension( $filename ) );
+	$allowed_extensions = array( 'gif', 'jpg', 'jpeg', 'png' );
+
+	if ( ! ( in_array( $extension, $allowed_extensions ) ) ) {
+		$error = _x( 'The file %s has an invalid extension and was rejected.', 'upload files', 'AWPCP' );
+		$error = sprintf( $error, '<strong>' . $filename . '</strong>' );
+		return false;
+	}
+
 	$paths = awpcp_get_uploads_directories();
 
 	if ( ! file_exists( $tmpname ) ) {

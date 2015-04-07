@@ -1,0 +1,43 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+#fgj2wp_admin_page {
+    float: left;
+}
+#fgj2wp_settings {
+    float: left;
+    max-width: 724px;
+}
+#fgj2wp_database_info {
+    border: 1px solid #cccccc;
+    background: #faebd7;
+    margin: 10px;
+    padding: 2px 10px;
+}
+#fgj2wp_extra_features {
+    float: left;
+    width: 300px;
+}
+#fgj2wp_extra_features ul {
+    list-style: disc inside;
+}
+.center {
+    text-align: center;
+}
+#fgj2wp_paypal_donate {
+    margin-top: 20px;
+}
+#fgj2wp_help_options h2 {
+    margin-top: 30px;
+}
+#fgj2wp_help_options p {
+    margin-left: 30px;
+}
+#fgj2wp_help_options ul {
+    margin-left: 60px;
+}
+.fgj2wp_premium_feature {
+    color: #58b6fc;
+}

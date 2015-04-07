@@ -260,7 +260,7 @@
 #wpfb-support-col {
 	/*float: right;*/
 	
-	width: 150px;
+	width: 170px;
 	/*height: 300px;*/
 	
 	/*
@@ -275,7 +275,7 @@
 	z-index: 100;
 	position:absolute;
 	right: 0px;
-	top: 40px;
+	top: 7px;
 	
 	border-width:1px;
 	border-style:solid;
@@ -288,6 +288,12 @@
 	-khtml-border-top-left-radius:8px;
 	border-bottom-left-radius:8px;
 	border-top-left-radius:8px;
+	
+	opacity: 0.7;
+}
+
+#wpfb-support-col:hover, #wpfb-support-col:focus {
+	opacity: 1;
 }
 
 #wpfb-support-col h3 {
@@ -552,22 +558,22 @@ ul.treeview span.cat-icon-overlay {
 
 ul.treeview span.googledrivesync span.cat-icon-overlay,
 .files td.column-name div.file-icon-overlay.googledrivesync {
-	background-image: url('../extras/google-api/drive.png');
+	background-image: url('../../wpfb-google-drive/drive.png');
 }
 
 ul.treeview span.dropboxsync span.cat-icon-overlay,
 .files td.column-name div.file-icon-overlay.dropboxsync {
-	background-image: url('../extras/dropbox/dropbox.png');
+	background-image: url('../../wpfb-dropbox/dropbox.png');
 }
 
 ul.treeview span.s3sync span.cat-icon-overlay,
 .files td.column-name div.file-icon-overlay.s3sync {
-	background-image: url('../extras/amazons3/s3.png');
+	background-image: url('../../wpfb-s3/s3.png');
 }
 
 ul.treeview span.onedrivesync span.cat-icon-overlay,
 .files td.column-name div.file-icon-overlay.onedrivesync {
-	background-image: url('../extras/onedrive/onedrive.png');
+	background-image: url('../../wpfb-onedrive/onedrive.png');
 }
 
 .files td.column-name div.file-icon-overlay {
@@ -582,3 +588,34 @@ ul.treeview span.onedrivesync span.cat-icon-overlay,
 }
 
 
+#wpfb-tools .button span.new-exts {
+	display: block;
+	position: relative;
+   bottom: 75px;
+   left: 44px;
+   border-radius: 6px;
+   
+	width: 42px;
+	height: initial;
+	
+	margin: 0;
+	padding: 0;
+	
+   text-align: center;
+   font-weight: bold; 
+	text-transform: uppercase;
+	font-size: 0.8em;
+}
+
+
+.plugin-card span.wpfb-pro {
+	border-radius: 20px;
+	display: inline-block;
+	width: 25px;
+	line-height: 25px;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 9px;
+	opacity: 0.7;
+	cursor: default;
+}

@@ -22,14 +22,8 @@ class ShareaholicPublicJS {
    * @return string The stringified version of the page config
    */
   public static function get_page_config() {
-    $config = array(
-      'apps' => array(),
-      'endpoints' => array(
-        'local_recs_url' => admin_url('admin-ajax.php') . '?action=shareaholic_permalink_related',
-        'share_counts_url' => admin_url('admin-ajax.php') . '?action=shareaholic_share_counts_api'
-      ),
-      'user' => ShareaholicUtilities::user_info()
-    );
+    $config = self::get_base_settings();
+    $config['apps'] = array();
     $functions_map = self::get_function_definitions();
     $share_buttons = self::get_share_buttons_config();
 
@@ -48,6 +42,19 @@ class ShareaholicPublicJS {
       $json_string = str_replace('"' . $placeholder . '"', $implementation, $json_string);
     }
     return $json_string;
+  }
+
+
+  /**
+   * Return a base set of settings for the Shareaholic JS or Publisher SDK
+   */
+  public static function get_base_settings() {
+    return array(
+      'endpoints' => array(
+        'local_recs_url' => admin_url('admin-ajax.php') . '?action=shareaholic_permalink_related',
+        'share_counts_url' => admin_url('admin-ajax.php') . '?action=shareaholic_share_counts_api'
+      )
+    );
   }
 
   /**

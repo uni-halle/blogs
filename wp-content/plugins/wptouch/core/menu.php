@@ -84,10 +84,15 @@ function wptouch_show_menu(
 
 	$parent_link_class = 'parent-links';
 
-	if ( !$settings->enable_parent_items ) {
+	if ( defined( 'WPTOUCH_MENU_LINK_PARENT_ITEMS' ) && WPTOUCH_MENU_LINK_PARENT_ITEMS == false ) {
 		$parent_link_class = 'no-parent-links';
 	}
 
+/*	TODO: Deprecated
+	if ( !$settings->enable_parent_items ) {
+		$parent_link_class = 'no-parent-links';
+	}
+*/
 	if ( $nav_menu_walker == false ) {
 		$nav_menu_walker = new WPtouchProMainNavMenuWalker( $settings->enable_menu_icons );
 	}

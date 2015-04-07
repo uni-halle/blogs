@@ -5,7 +5,7 @@ static $page_content = '';
 
 static $sort_fields_file = null;
 static $sort_fields_cat = null;
-		
+
 
 static function ProcessShortCode($args, $content = null, $tag = null)
 {
@@ -167,6 +167,7 @@ static function FileBrowser(&$content, $root_cat_id=0, $cur_cat_id=0 )
 		self::FileBrowserList($content, $root_cat, array_merge($args, array(
 			 'open_cats' => $parents
 			  			 		)));
+		
 			
 		$content .= '</ul><div style="clear:both;"></div>';
 		
@@ -215,7 +216,7 @@ static function GetTreeItems($parent_id, $args=array())
 		$idp_cat = $args['idp'].'cat-';
 		$idp_file = $args['idp'].'file-';
 		
-		$file_tpl = $cat_tpl = ($is_admin = !empty($args['is_admin'])) ? 'filebrowser_admin' : 'filebrowser';
+		$file_tpl = $cat_tpl = !empty($args['tpl']) ? $args['tpl'] : (($is_admin = !empty($args['is_admin'])) ? 'filebrowser_admin' : 'filebrowser');
 		
 		
 		if($parent_id > 0 && (is_null($cat=WPFB_Category::GetCat($parent_id)) || !$cat->CurUserCanAccess())) {
@@ -267,6 +268,7 @@ static function GetTreeItems($parent_id, $args=array())
 					 . '<a href="#" style="text-decoration:none;" class="add-file"><span style="'
 					 . ($browser ? ('font-size:'.$is.'px;width:'.$is.'px'):'font-size:200%').';line-height:0;vertical-align:sub;display:inline-block;text-align:center;">+</span>'.__('Add File',WPFB).'</a>'					 ,
 					'hasChildren'=>false,
+					 'classes'=>'add-item'
 				);
 		} elseif($parent_id == 0 && $catsel && $i == 0) {
 			return array((object)array(
@@ -481,7 +483,7 @@ private static function initFileTreeView($id=null, $base=0)
 	?>
 <script type="text/javascript">
 //<![CDATA[
-function wpfb_initfb<?php echo $jss ?>() {	jQuery("#<?php echo $id ?>").treeview(wpfb_fbsets<?php echo $jss ?>={url: "<?php echo WPFB_PLUGIN_URI."wpfb-ajax.php" ?>",
+function wpfb_initfb<?php echo $jss ?>() {	jQuery("#<?php echo $id ?>").treeview(wpfb_fbsets<?php echo $jss ?>={url: "<?php echo WPFB_Core::$ajax_url ?>",
 ajax:{data:<?php echo json_encode($ajax_data); ?>,type:"post",error:function(x,status,error){if(error) alert(error);},complete:function(x,status){if(typeof(wpfb_setupLinks)=='function')wpfb_setupLinks();}},
 animated: "medium"}).data("settings",wpfb_fbsets<?php echo $jss ?>);
 }

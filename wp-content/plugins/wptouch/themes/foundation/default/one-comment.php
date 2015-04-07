@@ -17,7 +17,7 @@
 			<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation', 'wptouch-pro' ); ?>&hellip;</p>
 		<?php endif; ?>
 		<?php comment_text(); ?>
-		<?php if ( $settings->allow_nested_comment_replies ) { ?>
+		<?php if ( comments_open() && $settings->allow_nested_comment_replies ) { ?>
 			<p><a href="<?php echo esc_url( add_query_arg( 'replytocom', $comment->comment_ID ) ) . '#respond'; ?>"><?php _e( 'Reply' ); ?></a></p>
 		<?php } ?>
 	</div>

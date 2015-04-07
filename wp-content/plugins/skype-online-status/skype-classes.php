@@ -118,7 +118,7 @@ class Skype_Status_Widget extends WP_Widget {
 
 		<p style="clear:both;font-size:78%;font-weight:lighter;">* <?php _e('Leave blank to use the default options as you defined on the <a href="options-general.php?page=skype-status.php">Skype Online Status Settings</a> page.', 'skype-online-status'); //printf(__('Leave blank to use the default options as you defined on the %1$s page.', 'skype-online-status'), '<a href="'.admin_url('options-general.php?page='.SOSPLUGINBASENAME).'">'.__('Settings').'</a>'); ?><br />
 		** <?php _e('You can use some basic HTML here like &lt;br /&gt; for new line.', 'skype-online-status'); ?><br />
-		*** <?php printf(__('Set to %1$s if you do not have %2$s or %3$s.', 'skype-online-status'), __('No'), '<a href="https://support.skype.com/en/category/ONLINE_NUMBER_SKYPEIN/" target="_blank">'.__('SkypeIn','skype-online-status').'</a><img src="http://www.ftjcfx.com/image-3049686-10520919" width="1" height="1" border="0"/>', '<a href="https://support.skype.com/en/category/VOICEMAIL/" target="_blank">'.__('Skype Voicemail','skype-online-status').'</a><img src="http://www.ftjcfx.com/image-3049686-10423078" width="1" height="1" border="0"/>'); ?></p>
+		*** <?php printf(__('Set to %1$s if you do not have %2$s or %3$s.', 'skype-online-status'), __('No'), '<a href="https://support.skype.com/en/category/ONLINE_NUMBER_SKYPEIN/" target="_blank">'.__('SkypeIn','skype-online-status').'</a><img src="//www.ftjcfx.com/image-3049686-10520919" width="1" height="1" border="0"/>', '<a href="https://support.skype.com/en/category/VOICEMAIL/" target="_blank">'.__('Skype Voicemail','skype-online-status').'</a><img src="//www.ftjcfx.com/image-3049686-10423078" width="1" height="1" border="0"/>'); ?></p>
 <?php
 	}
 }
@@ -147,7 +147,8 @@ class Skype_Online_Status {
 	private static $add_script;
 
 	protected static $whats_new = "<p>
-	* Admin changes, popup positioning fix and Basque translation.
+	* SSL compat (as far as possible)<br/>
+	* Prevent skype.com redirect or error message from showing
 	</p>";
 
 	protected static $avail_languages;
@@ -445,7 +446,7 @@ class Skype_Online_Status {
 		add_filter( 'http_request_timeout', create_function('', 'return 3;') );
 
 		$tmp = wp_remote_fopen('http://mystatus.skype.com/'.$skypeid.$format);
-		if ( !$tmp || strpos($tmp, 'Error') || strpos($tmp, 'PNG') ) return 'error';
+		if ( !$tmp || strpos($tmp, 'html') || strpos($tmp, 'Error') || strpos($tmp, 'PNG') ) return 'error';
 		else $contents = str_replace("\n", "", $tmp);
 
 		if ($contents!="") 

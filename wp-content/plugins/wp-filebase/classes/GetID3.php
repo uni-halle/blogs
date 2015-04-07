@@ -18,6 +18,10 @@ class WPFB_GetID3 {
 		return self::$engine;
 	}
 	
+	private static function xml2Text($content) {
+		return trim(esc_html(preg_replace('! +!', ' ',strip_tags(str_replace('<',' <',$content)))));
+	}
+	
 	static function AnalyzeFile($file)
 	{
 		@ini_set('max_execution_time', '0');

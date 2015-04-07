@@ -83,13 +83,10 @@ if ($mcount > intval($lmm_options[ 'markers_per_page' ])) {
 <div class="wrap">
 	<?php include('inc' . DIRECTORY_SEPARATOR . 'admin-header.php'); ?>
 	<?php
-	$deleteselected = isset($_POST['deleteselected']) ? '1' : '0';
-	$assignselected = isset($_POST['assignselected']) ? '1' : '0';
+	$deleteselected = ( isset($_POST['bulkactions-markers']) && ($_POST['bulkactions-markers'] == 'deleteselected') ) ? '1' : '0';
+	$assignselected = ( isset($_POST['bulkactions-markers']) && ($_POST['bulkactions-markers'] == 'assignselected') ) ? '1' : '0';
 	$massactionnonce = isset($_POST['_wpnonce']) ? $_POST['_wpnonce'] : (isset($_GET['_wpnonce']) ? $_GET['_wpnonce'] : '');
-	if ( ($deleteselected == '1') && ($assignselected == '1') ) {
-		echo '<p><div class="error" style="padding:10px;">' . __('Please only select one bulk action','lmm') . ' </div>';
-		echo '<p><a class=\'button-secondary\' href=\'' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_markers\'>' . __('list all markers','lmm') . '</a>&nbsp;&nbsp;&nbsp;<a class=\'button-secondary\' href=\'' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_marker\'>' . __('add new maker','lmm') . '</a></p>';
-	} else if ( ($deleteselected == '1') && isset($_POST['checkedmarkers']) ) {
+	if ( ($deleteselected == '1') && isset($_POST['checkedmarkers']) ) {
 		if (! wp_verify_nonce($massactionnonce, 'massaction-nonce') ) die('<br/>'.__('Security check failed - please call this function from the according admin page!','lmm').'');
 		$checked_markers_prepared = implode(",", $_POST['checkedmarkers']);
 		$checked_markers = preg_replace('/[a-z|A-Z| |\=]/', '', $checked_markers_prepared);
@@ -331,16 +328,24 @@ if ($mcount > intval($lmm_options[ 'markers_per_page' ])) {
 		<p>
 		<table>
 		<tr><td style="margin:0;padding:0;border:none;">
-		<input type="checkbox" id="duplicateselected" name="duplicateselected" disabled="disabled" /> <label for="duplicateselected"><?php _e('duplicate','lmm') ?></label></td>
+		<input type="radio" id="duplicateselected" name="bulkactions-markers" value="duplicateselected" disabled="disabled" /> <label for="duplicateselected"><?php _e('duplicate and assign to the following layer:','lmm') ?></label>
+		<select id="layer-duplicate" name="layer-duplicate">
+		<option value="unchanged"><?php _e('same layer as original marker','lmm') ?></option>
+		<option value="0"><?php _e('unassigned','lmm') ?></option>
+		<?php
+			$layerlist = $wpdb->get_results('SELECT * FROM `'.$table_name_layers.'` WHERE `id` > 0 AND `multi_layer_map` = 0', ARRAY_A);
+			foreach ($layerlist as $row)
+			echo '<option value="' . $row['id'] . '">' . stripslashes(htmlspecialchars($row['name'])) . ' (ID ' . $row['id'] . ')</option>';
+		?>
+		</select></td>
 		<td style="margin:0;padding:1px 0 0 5px;border:none;"><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') ; ?>"><img src="<?php  echo LEAFLET_PLUGIN_URL ?>inc/img/help-pro-feature.png" width="70" height="15" /></a>
 		</td></tr>
 		</table>
 		</p>
 		<?php if (current_user_can( $lmm_options[ 'capabilities_delete' ])) { ?>
-		<p><input type="checkbox" id="deleteselected" name="deleteselected" /> <label for="deleteselected"><?php _e('delete','lmm') ?></label></p>
+		<p><input type="radio" id="deleteselected" name="bulkactions-markers" value="deleteselected" /> <label for="deleteselected"><?php _e('delete','lmm') ?></label></p>
 		<?php } ?>
-		<?php $layerlist = $wpdb->get_results('SELECT * FROM `'.$table_name_layers.'` WHERE `id` > 0 AND `multi_layer_map` = 0', ARRAY_A); ?>
-		<input type="checkbox" id="assignselected" name="assignselected" /> <label for="assignselected"><?php _e('assign to the following layer:','lmm') ?></label>
+		<input type="radio" id="assignselected"  name="bulkactions-markers" value="assignselected" /> <label for="assignselected"><?php _e('assign to the following layer:','lmm') ?></label>
 		<select id="layer" name="layer">
 		<option value="0"><?php _e('unassigned','lmm') ?></option>
 		<?php

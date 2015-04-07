@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: Lightbox Gallery\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-28 02:04+0900\n"
-"PO-Revision-Date: 2012-04-28 02:04+0900\n"
+"PO-Revision-Date: 2015-02-16 17:39+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Japanese\n"
-"X-Poedit-Country: JAPAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-KeywordsList: __;_e;_c\n"
 "X-Poedit-Basepath: ../\n"
+"Language: ja_JP\n"
+"X-Generator: Poedit 1.6.6\n"
 "X-Poedit-SearchPath-0: lightbox-gallery\n"
 
 #: lightbox-gallery/lightbox-gallery.php:229
@@ -67,8 +67,16 @@ msgstr "Lightbox"
 
 #: lightbox-gallery/lightbox-gallery.php:317
 #, php-format
-msgid "Due to the license regulation by the plugin directory, it is impossible to include `jquery.lightbox.js`. Just <a href=\"%s\" target=\"_blank\">download</a> the lightbox script and put `jquery.lightbox.js` into `/lightbox-gallery/js/`."
-msgstr "プラグインディレクトリのライセンス規制のため、`jquery.lightbox.js` を含めることができなくなりました。lightbox のスクリプトを<a href=\"%s\" target=\"_blank\">ダウンロード</a>し、`jquery.lightbox.js`を`/lightbox-gallery/js/`に設置してください。"
+msgid ""
+"Due to the license regulation by the plugin directory, it is impossible to "
+"include `jquery.lightbox.js`. Just <a href=\"%s\" target=\"_blank"
+"\">download</a> the lightbox script and put `jquery.lightbox.js` into `/"
+"lightbox-gallery/js/`."
+msgstr ""
+"プラグインディレクトリのライセンス規制のため、`jquery.lightbox.js` を含めるこ"
+"とができなくなりました。lightbox のスクリプトを<a href=\"%s\" target=\"_blank"
+"\">ダウンロード</a>し、`jquery.lightbox.js`を`/lightbox-gallery/js/`に設置し"
+"てください。"
 
 #: lightbox-gallery/lightbox-gallery.php:323
 msgid "Highslide JS"
@@ -76,20 +84,37 @@ msgstr "Highslide JS"
 
 #: lightbox-gallery/lightbox-gallery.php:325
 #, php-format
-msgid "Caution: Highslide JS is licensed under a Creative Commons Attribution-NonCommercial 2.5 License. You need the author's permission to use Highslide JS on commercial websites. <a href=\"%s\" target=\"_blank\">Please look at the author's website.</a>"
-msgstr "注意： Highslide JSは、Creative Commons 表示-非営利 2.5 一般のライセンスです。Highslide JSを商用ウェブサイトで使用するには著作者の許可が必要です。<a href=\"%s\" target=\"_blank\">著作者のウェブサイトをご覧ください。</a>"
+msgid ""
+"Caution: Highslide JS is licensed under a Creative Commons Attribution-"
+"NonCommercial 2.5 License. You need the author's permission to use Highslide "
+"JS on commercial websites. <a href=\"%s\" target=\"_blank\">Please look at "
+"the author's website.</a>"
+msgstr ""
+"注意： Highslide JSは、Creative Commons 表示-非営利 2.5 一般のライセンスで"
+"す。Highslide JSを商用ウェブサイトで使用するには著作者の許可が必要です。<a "
+"href=\"%s\" target=\"_blank\">著作者のウェブサイトをご覧ください。</a>"
 
 #: lightbox-gallery/lightbox-gallery.php:331
 #, php-format
-msgid "You can change the lightbox view to the highslide. Just <a href=\"%s\" target=\"_blank\">download</a> the highslide script and put `highslide.js` into `/lightbox-gallery/js/`."
-msgstr "Lightbox の表示を highslide に変更できます。highslide のスクリプトを<a href=\"%s\" target=\"_blank\">ダウンロード</a>し、`highslide.js`を`/lightbox-gallery/js/`に設置してください。"
+msgid ""
+"You can change the lightbox view to the highslide. Just <a href=\"%s\" "
+"target=\"_blank\">download</a> the highslide script and put `highslide.js` "
+"into `/lightbox-gallery/js/`."
+msgstr ""
+"Lightbox の表示を highslide に変更できます。highslide のスクリプトを<a href="
+"\"%s\" target=\"_blank\">ダウンロード</a>し、`highslide.js`を`/lightbox-"
+"gallery/js/`に設置してください。"
 
 #: lightbox-gallery/lightbox-gallery.php:339
-msgid "In case that you would like to use the lightbox in certain categories (comma-deliminated)"
+msgid ""
+"In case that you would like to use the lightbox in certain categories (comma-"
+"deliminated)"
 msgstr "特定のカテゴリーでLightboxを使用したい場合（カンマ区切り）"
 
 #: lightbox-gallery/lightbox-gallery.php:343
-msgid "In case that you would like to use the lightbox in certain pages (comma-deliminated)"
+msgid ""
+"In case that you would like to use the lightbox in certain pages (comma-"
+"deliminated)"
 msgstr "特定のページでLightboxを使用したい場合（カンマ区切り）"
 
 #: lightbox-gallery/lightbox-gallery.php:347
@@ -169,8 +194,12 @@ msgid "Script Auto Download"
 msgstr "スクリプト自動ダウンロード"
 
 #: lightbox-gallery/lightbox-gallery.php:416
-msgid "Just push the button and `jquery.lightbox.js` and `highslide.js` will be downloaded automatically."
-msgstr "このボタンを押すだけで、`jquery.lightbox.js` と `jquery.lightbox.js` を自動的にダウンロードします。"
+msgid ""
+"Just push the button and `jquery.lightbox.js` and `highslide.js` will be "
+"downloaded automatically."
+msgstr ""
+"このボタンを押すだけで、`jquery.lightbox.js` と `highslide.js` を自動的にダウ"
+"ンロードします。"
 
 #: lightbox-gallery/lightbox-gallery.php:418
 msgid "Download Scripts &raquo;"
@@ -181,16 +210,25 @@ msgid "Donation"
 msgstr "寄付"
 
 #: lightbox-gallery/lightbox-gallery.php:429
-msgid "If you liked this plugin, please make a donation via paypal! Any amount is welcome. Your support is much appreciated."
-msgstr "このプラグインをお気に召しましたら、Paypalよりご寄付をよろしくお願いいたします。"
+msgid ""
+"If you liked this plugin, please make a donation via paypal! Any amount is "
+"welcome. Your support is much appreciated."
+msgstr ""
+"このプラグインをお気に召しましたら、Paypalよりご寄付をよろしくお願いいたしま"
+"す。"
 
 #: lightbox-gallery/lightbox-gallery.php:443
 msgid "CMS x WP"
 msgstr "CMS×WP"
 
 #: lightbox-gallery/lightbox-gallery.php:445
-msgid "There are much more plugins which are useful for developing business websites such as membership sites or ec sites. You could totally treat WordPress as CMS by use of CMS x WP plugins."
-msgstr "会員制サイトやECサイトなどのビジネスサイト構築に役立つプラグインが盛りだくさん。CMS×WPのプラグインで WordPress が CMS として大いに活躍します。"
+msgid ""
+"There are much more plugins which are useful for developing business "
+"websites such as membership sites or ec sites. You could totally treat "
+"WordPress as CMS by use of CMS x WP plugins."
+msgstr ""
+"会員制サイトやECサイトなどのビジネスサイト構築に役立つプラグインが盛りだくさ"
+"ん。CMS×WPのプラグインで WordPress が CMS として大いに活躍します。"
 
 #: lightbox-gallery/lightbox-gallery.php:446
 msgid "WordPress plugin sales site: CMS x WP"

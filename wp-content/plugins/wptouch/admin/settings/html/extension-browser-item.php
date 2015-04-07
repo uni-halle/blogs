@@ -34,9 +34,9 @@
 		<?php if ( wptouch_cloud_addon_update_available() ) { ?>
 			<?php if ( !defined( 'WPTOUCH_IS_FREE' ) && wptouch_is_site_licensed() ) { ?>
 				<?php if ( wptouch_can_cloud_install( false ) ) { ?>
-				<a class="button-primary upgrade" href="#" data-name="<?php wptouch_the_addon_base(); ?>" data-url="<?php wptouch_the_addon_download_url(); ?>" data-loading-text="<i class='icon-cloud-download'></i><?php _e( 'Updating...', 'wptouch-pro' ); ?>"><i class="icon-cloud-download"></i><?php echo sprintf( __( 'Upgrade to %s', 'wptouch-pro' ), wptouch_cloud_addon_get_update_version() ); ?></a>
+				<a class="button-primary upgrade" href="#" data-name="<?php wptouch_the_addon_base(); ?>" data-url="<?php wptouch_the_addon_download_url(); ?>" data-loading-text="<i class='icon-cloud-download'></i><?php _e( 'Updating...', 'wptouch-pro' ); ?>"><i class="wptouch-icon-cloud-download"></i><?php echo sprintf( __( 'Upgrade to %s', 'wptouch-pro' ), wptouch_cloud_addon_get_update_version() ); ?></a>
 				<?php } else { ?>
-				<a class="button-primary cant-upgrade" href="<?php wptouch_the_addon_download_url(); ?>"><i class="icon-download"></i> <?php echo sprintf( __( 'Download %s Update', 'wptouch-pro' ), wptouch_cloud_addon_get_update_version() ); ?></a>
+				<a class="button-primary cant-upgrade" href="<?php wptouch_the_addon_download_url(); ?>"><i class="wptouch-icon-download"></i> <?php echo sprintf( __( 'Download %s Update', 'wptouch-pro' ), wptouch_cloud_addon_get_update_version() ); ?></a>
 				<?php } ?>
 			<?php } ?>
 		<?php } ?>
@@ -51,7 +51,7 @@
 		<p class="info">
 			<?php if ( !wptouch_is_addon_in_cloud() ) { ?>
 			<?php echo sprintf( __( 'Extension location: %s', 'wptouch-pro' ), wptouch_get_addon_location() ); ?>
-			<i class="wptouch-tooltip icon-info-sign" title="<?php _e( 'Relative to your WordPress wp-content directory.', 'wptouch-pro' ); ?>"></i>
+			<i class="wptouch-tooltip wptouch-icon-info-sign" title="<?php _e( 'Relative to your WordPress wp-content directory.', 'wptouch-pro' ); ?>"></i>
 			<?php } ?>
 			<br />
 		</p>
@@ -77,9 +77,9 @@
 					<?php if ( current_user_can( 'install_plugins' ) ) { ?>
 					<li>
 						<?php if ( wptouch_can_cloud_install( false ) ) { ?>
-						<a class="button-primary download" href="#" data-name="<?php wptouch_the_addon_base(); ?>" data-url="<?php wptouch_the_addon_download_url(); ?>" data-loading-text="<i class='icon-cloud-download'></i><?php _e( 'Downloading...', 'wptouch-pro' ); ?>"><i class="icon-cloud-download"></i><?php _e( 'Install', 'wptouch-pro' ); ?></a>
+						<a class="button-primary download" href="#" data-name="<?php wptouch_the_addon_base(); ?>" data-url="<?php wptouch_the_addon_download_url(); ?>" data-loading-text="<i class='icon-cloud-download'></i><?php _e( 'Downloading...', 'wptouch-pro' ); ?>"><i class="wptouch-icon-cloud-download"></i><?php _e( 'Install', 'wptouch-pro' ); ?></a>
 						<?php } else { ?>
-						<a class="button-primary" href="<?php wptouch_the_addon_download_url(); ?>"><i class="icon-cloud-download"></i> <?php _e( 'Download', 'wptouch-pro' ); ?></a>
+						<a class="button-primary" href="<?php wptouch_the_addon_download_url(); ?>"><i class="wptouch-icon-cloud-download"></i> <?php _e( 'Download', 'wptouch-pro' ); ?></a>
 						<?php } ?>
 					</li>
 					<?php } ?>

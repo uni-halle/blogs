@@ -93,7 +93,7 @@ if (is_plugin_active('wp-external-links/wp-external-links.php') ) {
 	$plugin_options = get_option('wp_external_links-main');
 	if (!strpos($plugin_options['ignore'], 'mapsmarker.com')) { $ignore_list .= 'mapsmarker.com<br/>'; }
 	if (!strpos($plugin_options['ignore'], 'leafletjs.com')) { $ignore_list .= 'leafletjs.com<br/>'; }
-	if (!strpos($plugin_options['ignore'], 'mapicons.nicolasmollet.com')) { $ignore_list .= 'mapicons.nicolasmollet.com<br/>'; }
+	if (!strpos($plugin_options['ignore'], 'mapicons.mapsmarker.com')) { $ignore_list .= 'mapicons.mapsmarker.com<br/>'; }
 	if (!strpos($plugin_options['ignore'], 'visualead.com')) { $ignore_list .= 'visualead.com<br/>'; }
 	if (!strpos($plugin_options['ignore'], 'openstreetmap.org')) { $ignore_list .= 'openstreetmap.org<br/>'; }
 	if (!strpos($plugin_options['ignore'], 'mapquest.com')) { $ignore_list .= 'mapquest.com<br/>'; }
@@ -127,5 +127,9 @@ if (is_plugin_active('sucuri-scanner/sucuri.php') ) {
 	if ($cp == 1) {
 		echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin %1$s which is causing maps to break! To fix this, please navigate to <a href="%2$s">Sucuri Security / Hardening</a> and click on the button "Revert hardening" in the section "Restrict wp-content access".','lmm'), '"Sucuri Security"', LEAFLET_WP_ADMIN_URL . 'admin.php?page=sucuriscan_hardening' ) . '</div></p>';
 	}
+}
+//info: check if custom mapbox basemaps are used
+if ( ($lmm_options[ 'mapbox_user' ] != 'mapbox') || ($lmm_options[ 'mapbox2_user' ] != 'mapbox') || ($lmm_options[ 'mapbox3_user' ] != 'mapbox') ) {
+	echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: as Mapbox now requires to use a custom API access token, custom Mapbox basemaps will not work anymore if you registered your Mapbox account after January 2015.<br/>In case your Mapbox maps are broken, please switch to another basemap like OpenStreetMap or <a href="%1$s">upgrade to Maps Marker Pro</a>, which enables you to continue using custom Mapbox basemaps - even with accounts created after January 2015 (please also note that Mapbox might discontinue the usage of their old API for existing users in the long run too!).','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade') . '</div></p>';
 }
 ?>

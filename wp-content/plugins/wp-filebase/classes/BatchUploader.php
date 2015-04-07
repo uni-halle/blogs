@@ -20,7 +20,7 @@ class WPFB_BatchUploader {
 	
 	
 	public function Display()
-	{		
+	{	
 		WPFB_Core::PrintJS();
 		wp_print_scripts('utils'); // setUserSetting
 		?>
@@ -32,7 +32,10 @@ class WPFB_BatchUploader {
 		<form method="POST" action="" class="validate" name="batch_presets">
 			 <h2><?php _e('Upload Presets',WPFB); ?></h2> 
 			<?php
-									self::DisplayUploadPresets($this->prefix);				
+				 {
+					self::DisplayUploadPresets($this->prefix);
+					//wp_nonce_field('batch-presets'); // TODO validate this!
+				}
 			?>
 		</form>
 		</div>

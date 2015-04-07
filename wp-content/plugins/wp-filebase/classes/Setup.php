@@ -198,6 +198,8 @@ static function RemoveOptions()
 	
 	delete_option('wpfb_css');
 	
+	delete_metadata('user', 0, 'wpfb_ext_tagtime', '', true);
+	
 	// delete old options too
 	$options = WPFB_Admin::SettingsSchema();
 	foreach($options as $opt_name => $opt_data)
@@ -403,7 +405,9 @@ static function SetupDBTables($old_ver=null)
 	{
 		if($sql{0} == '@') {
 			$sql = substr($sql, 1);
-			@mysql_query($sql, $wpdb->dbh);
+			$wpdb->suppress_errors();
+			$wpdb->query($sql);
+			$wpdb->suppress_errors(false);
 		} else {
 			$wpdb->query($sql);
 		}
@@ -566,7 +570,14 @@ static function ProtectUploadPath()
 }
 
 static function OnActivateOrVerChange($old_ver=null) {
-	global $wpdb;
+	global $wpdb;	
+	
+	// make sure that either wp-filebase or wp-filebase pro is enabled bot not both!
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}	
+	if(is_plugin_active('wp-filebase-pro/wp-filebase.php'))		deactivate_plugins('wp-filebase/wp-filebase.php');	
+	
 	wpfb_loadclass('Admin','File','Category');
 	self::SetupDBTables($old_ver);
 	$old_options = get_option(WPFB_OPT_NAME);
@@ -604,7 +615,7 @@ static function OnActivateOrVerChange($old_ver=null) {
 	
 	flush_rewrite_rules();
 	
-	delete_option('wpfilebase_dismiss_support_ending');
+	//delete_option('wpfilebase_dismiss_support_ending');
 }
 
 static function OnDeactivate() {
@@ -612,7 +623,9 @@ static function OnDeactivate() {
 	
 	self::UnProtectUploadPath();
 	
-	delete_option('wpfilebase_dismiss_support_ending');
+	//delete_option('wpfilebase_dismiss_support_ending');
+	
+	delete_option('wpfb_license_nag');
 	
 	if(get_option('wpfb_uninstall')) {
 		self::RemoveOptions();
@@ -627,6 +640,8 @@ static function OnDeactivate() {
 		delete_option('wpfilebase_rsyncs');
 		
 		delete_option('wpfb_uninstall');
+		
+		delete_option('wpfilebase_dismiss_support_ending');
 	}
 }
 

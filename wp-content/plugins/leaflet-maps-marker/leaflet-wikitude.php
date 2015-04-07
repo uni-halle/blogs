@@ -5,7 +5,7 @@
 //info: construct path to wp-load.php
 while(!is_file('wp-load.php')) {
 	if(is_dir('..' . DIRECTORY_SEPARATOR)) chdir('..' . DIRECTORY_SEPARATOR);
-	else die('Error: Could not construct path to wp-load.php - please check <a href="http://mapsmarker.com/path-error">http://mapsmarker.com/path-error</a> for more details');
+	else die('Error: Could not construct path to wp-load.php - please check <a href="https://www.mapsmarker.com/path-error">https://www.mapsmarker.com/path-error</a> for more details');
 }
 include( 'wp-load.php' );
 //info: check if plugin is active (didnt use is_plugin_active() due to problems reported by users)
@@ -31,16 +31,16 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 	$table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
 	$ar_wikitude_provider_name_sanitized = strtolower(preg_replace(array('/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'), array('_', '.', ''), wp_kses($lmm_options[ 'ar_wikitude_provider_name' ], $allowedtags)));
 	if (isset($_GET['layer'])) {
-		$layer_prepared = esc_sql($_GET['layer']);
-		$layer = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\"," ","!","/"), "", $layer_prepared);
+		$layer_prepared = esc_sql(strtolower($_GET['layer']));
+		$layer = str_replace(array("b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\"," ","!","/","(",")"), "", $layer_prepared);
 		if ($layer == NULL) { die(); }
 		
 		$maxNumberOfPois = isset($_GET['maxNumberOfPois']) ? intval($_GET['maxNumberOfPois']) : intval($lmm_options[ 'ar_wikitude_maxnumberpois' ]);
 
 		if ($layer == '*' or $layer == 'all') {
 			//info: no exact results, but better than getting no results on calling Wikitude ARML links which might confuse users
-			$first_marker_lat = $wpdb->get_var('SELECT `lat` FROM `'.$table_name_markers.'` WHERE `id` = 1');
-			$first_marker_lon = $wpdb->get_var('SELECT `lon` FROM `'.$table_name_markers.'` WHERE `id` = 1');
+			$first_marker_lat = $wpdb->get_var('SELECT `lat` FROM `'.$table_name_markers.'`');
+			$first_marker_lon = $wpdb->get_var('SELECT `lon` FROM `'.$table_name_markers.'`');
 			$latUser = isset($_GET['latitude']) ? floatval($_GET['latitude']) : $first_marker_lat;
 			$lonUser = isset($_GET['longitude']) ? floatval($_GET['longitude']) : $first_marker_lon;
 		} else {
@@ -105,16 +105,16 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			echo '<Document>'.PHP_EOL;
 			echo '<ar:provider id="' . $ar_wikitude_provider_name_sanitized . '">'.PHP_EOL;
 
-			if ( (($layer == '*' || $layer == 'all') || (count($checkedlayers) > 1) ) || ($mlm_check == 1) ) {
-				$layername = __('layer','lmm') . ' ID ' . $layer;
+			if ($layer == '*' || $layer == 'all') {
+				if (get_bloginfo('name') != NULL) {
+					$layername = get_bloginfo('name');
+				} else {
+					$layername = __('layer','lmm') . ' ID ' . $layer;
+				}
+			} else 	if ((count($checkedlayers) > 1) || ($mlm_check == 1)) {
+				$layername = get_bloginfo('name') . ' - ' . __('layer','lmm') . ' ID ' . $layer;
 			} else {
 				$layername = $wpdb->get_var($wpdb->prepare("SELECT l.name FROM `$table_name_layers` as l WHERE l.id = %d", intval($layer)));
-			}
-			if ($layername == NULL) { 
-				$layername = get_bloginfo('name');
-				if ($layername == NULL) { //info: as Wikitude does not accept empty name
-					$layername = __('layer','lmm') . ' ID ' . $layer; 
-				}
 			}
 
 			echo '<ar:name><![CDATA[' . $layername . ']]></ar:name>'.PHP_EOL;
@@ -141,6 +141,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				echo '<Placemark id=\'' . $marker['mid'] . '\'>'.PHP_EOL;
 				echo '<ar:provider><![CDATA[' . $ar_wikitude_provider_name_sanitized . ']]></ar:provider>'.PHP_EOL;
 				echo '<name><![CDATA[' . stripslashes($marker['mmarkername']) . ']]></name>'.PHP_EOL;
+				//info: remove control chars & sanitize output
 				$sanitize_popuptext_from = array(
 					'#<ul(.*?)>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
 					'#</li>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
@@ -163,7 +164,13 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 					'</ul>',
 					'</ol>'
 				);
-				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])));
+				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, 
+								stripslashes(
+									str_replace("\\\\","/", 
+									str_replace('"', '\'', 
+									preg_replace('/[\x00-\x1F\x7F]/', '',
+									preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])
+				)))));
 				echo '<description><![CDATA[' . $popuptext_sanitized . ']]></description>'.PHP_EOL;
 				echo '<wikitude:info>'.PHP_EOL;
 				echo '<wikitude:markerIconUrl><![CDATA[' . $micon_url . ']]></wikitude:markerIconUrl>'.PHP_EOL;
@@ -219,16 +226,16 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			echo '<Document>'.PHP_EOL;
 			echo '<ar:provider id="' . $ar_wikitude_provider_name_sanitized . '">'.PHP_EOL;
 
-			if ( (($layer == '*' || $layer == 'all') || (count($checkedlayers) > 1) ) || ($mlm_check == 1) ) {
-				$layername = __('layer','lmm') . ' ID ' . $layer;
+			if ($layer == '*' || $layer == 'all') {
+				if (get_bloginfo('name') != NULL) {
+					$layername = get_bloginfo('name');
+				} else {
+					$layername = __('layer','lmm') . ' ID ' . $layer;
+				}
+			} else 	if ((count($checkedlayers) > 1) || ($mlm_check == 1)) {
+				$layername = get_bloginfo('name') . ' - ' . __('layer','lmm') . ' ID ' . $layer;
 			} else {
 				$layername = $wpdb->get_var($wpdb->prepare("SELECT l.name FROM `$table_name_layers` as l WHERE l.id = %d", intval($layer)));
-			}
-			if ($layername == NULL) { 
-				$layername = get_bloginfo('name');
-				if ($layername == NULL) { //info: as Wikitude does not accept empty name
-					$layername = __('layer','lmm') . ' ID ' . $layer; 
-				}
 			}
 
 			echo '<ar:name><![CDATA[' . $layername . ']]></ar:name>'.PHP_EOL;
@@ -255,6 +262,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				echo '<Placemark id=\'' . $marker['mid'] . '\'>'.PHP_EOL;
 				echo '<ar:provider><![CDATA[' . $ar_wikitude_provider_name_sanitized . ']]></ar:provider>'.PHP_EOL;
 				echo '<name><![CDATA[' . stripslashes($marker['mmarkername']) . ']]></name>'.PHP_EOL;
+				//info: remove control chars & sanitize output
 				$sanitize_popuptext_from = array(
 					'#<ul(.*?)>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
 					'#</li>(\s)*(<br\s*/?>)*(\s)*<li(.*?)>#si',
@@ -277,7 +285,13 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 					'</ul>',
 					'</ol>'
 				);
-				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, stripslashes(preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])));
+				$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, 
+								stripslashes(
+									str_replace("\\\\","/", 
+									str_replace('"', '\'', 
+									preg_replace('/[\x00-\x1F\x7F]/', '',
+									preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $marker['mpopuptext'])
+				)))));
 				echo '<description><![CDATA[' . $popuptext_sanitized . ']]></description>'.PHP_EOL;
 				echo '<wikitude:info>'.PHP_EOL;
 				echo '<wikitude:markerIconUrl><![CDATA[' . $micon_url . ']]></wikitude:markerIconUrl>'.PHP_EOL;
@@ -297,8 +311,8 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			echo '</kml>';
 		}
 	} elseif (isset($_GET['marker'])) {
-		$markerid_prepared = esc_sql($_GET['marker']);
-		$markerid = str_replace(array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\"," ","!","/","*"), "", $markerid_prepared);
+		$markerid_prepared = esc_sql(strtolower($_GET['marker']));
+		$markerid = str_replace(array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","$","%","#","-","_","'","\"","\\"," ","!","/","*","(",")"), "", $markerid_prepared);
 		if ($markerid == NULL) { die(); }
 		
 		$markers = explode(',', $markerid);

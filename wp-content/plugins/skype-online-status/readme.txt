@@ -3,8 +3,8 @@ Contributors: RavanH
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Online%20Status&item_number=2%2e8&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8&lc=us
 Tags: skype, skype button, online, status, online status, widget, widgets, post, posts, quicktag, tinymce, tinymce3, im, skype-button
 Requires at least: 2.9
-Tested up to: 3.9
-Stable tag: 2.9.5
+Tested up to: 4.2
+Stable tag: 2.9.7
 
 Unlimited, highly customizable and accessible (!) Skype buttons through widgets, post shortcode/quicktag and template tags.
 
@@ -16,7 +16,7 @@ This WordPress plugin allows you to add one or multiple, highly customizable and
 
 The Skype Status admin page and Skype Widget options are adequately annotated but there is also a **Quick Guide** section with lots of information on all the possible ways to get you blog Skyped. If you still cannot get it working the way you want to, find a Skype link to the developer on the Notes & Live Support section.
 
-Button themes are mostly based on the themes you can find on [Skype's button wizard page http://www.skype.com/share/buttons/wizard.html "Skype buttons") but more feature rich, like showing your online status in the alt text of the image, more accessible (!) and much more customizable, like setting your own Status texts in your blogs language. Even a button to invoke normal phone calls or multichats or conference calls is possible!
+Button themes are mostly based on the themes you can find on Skype's button wizard page http://www.skype.com/en/features/skype-buttons/ but more feature rich, like showing your online status in the alt text of the image, more accessible (!) and much more customizable, like setting your own Status texts in your blogs language. Even a button to invoke normal phone calls or multichats or conference calls is possible!
 
 = Which version? =
 
@@ -56,10 +56,10 @@ New translations and their Authors will be mentioned here.
 
 Top donators making my continued work possible:
 
-- **Claudio Cosmaro** [SocialHosting.net http://socialhosting.net)
-- **G. Pelzer** Life is a journey. [Life Coaching http://vivocoaching.com/)
-- **Yamisi Daniel, USA** What could you do with more time? [inTouch Virtual Assistance http://www.intouchva.com/)
-- **Michelle Vandepas, USA** Live Your life's Purpose. [Divine Purpose unleashed http://divinepurposeunleashed.com/)
+- **Claudio Cosmaro** Social Hosting http://socialhosting.net/
+- **G. Pelzer** Life is a journey. Life Coaching http://vivocoaching.com/
+- **Yamisi Daniel, USA** What could you do with more time? inTouch Virtual Assistance http://www.intouchva.com/
+- **Michelle Vandepas, USA** Live Your life's Purpose. Divine Purpose Unleashed http://divinepurposeunleashed.com/
 
 
 == Installation ==
@@ -165,10 +165,16 @@ When reporting bugs, please describe as carefully as possible and provide inform
 
 == Upgrade Notice ==
 
-= 2.9.4 =
-Admin changes and Basque translation
+= 2.9.7 =
+SSL compat (as far as possible) + prevent skype.com redirect/error from showing
 
 == Changelog ==
+
+= 2.9.7 =
+* FIX: Prevent skype.com redirect/error from showing
+
+= 2.9.6 =
+* Modifications for SSL compat (as far as possible)
 
 = 2.9.5 =
 * Strip "live:" and "@live.com" from Skype ID to prevent parse error from Skype server. Still waiting for real fix by Microsoft.

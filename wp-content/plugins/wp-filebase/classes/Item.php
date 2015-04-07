@@ -334,13 +334,12 @@ class WPFB_Item {
 		if($this->is_category)
 		{
 			// add mtime for cache updates
-			return empty($this->cat_icon) ? (WP_CONTENT_URL.WPFB_Core::$settings->folder_icon) : WPFB_PLUGIN_URI."wp-filebase_thumb.php?cid=$this->cat_id&t=".@filemtime($this->GetThumbPath());
-			//return empty($this->cat_icon) ? (($size=='small')?(WP_CONTENT_URL.WPFB_Core::$settings->folder_icon):(WPFB_PLUGIN_URI.'images/crystal_cat.png')) : WPFB_PLUGIN_URI."wp-filebase_thumb.php?cid=$this->cat_id&t=".@filemtime($this->GetThumbPath());
+			return empty($this->cat_icon) ? (WP_CONTENT_URL.WPFB_Core::$settings->folder_icon) : WPFB_Core::PluginUrl("wp-filebase_thumb.php?cid=$this->cat_id&t=".@filemtime($this->GetThumbPath()));
 		}
 
 		if(!empty($this->file_thumbnail) /* && file_exists($this->GetThumbPath())*/) // speedup
 		{
-			return WPFB_PLUGIN_URI . 'wp-filebase_thumb.php?fid='.$this->file_id.'&name='.$this->file_thumbnail; // name var only for correct caching!
+			return WPFB_Core::PluginUrl('wp-filebase_thumb.php?fid='.$this->file_id.'&name='.$this->file_thumbnail); // name var only for correct caching!
 		}
 				
 		$type = $this->GetType();
@@ -356,7 +355,7 @@ class WPFB_Item {
 		if(file_exists(WP_CONTENT_DIR.$custom_folder.$type.'.png'))
 			return WP_CONTENT_URL.$custom_folder.$type.'.png';
 		
-
+		// todo: cache file_exists
 		if(file_exists($img_path . 'crystal/' . $ext . '.png'))
 			return $img_url . 'crystal/' . $ext . '.png';
 		if(file_exists($img_path . 'crystal/' . $type . '.png'))
@@ -451,7 +450,6 @@ class WPFB_Item {
 		if(!$new_cat) $new_cat_id = 0;
 		
 		$cat_changed = $new_cat_id != $old_cat_id;
-		$name_changed = $new_name != $old_name;
 		
 		if($cat_changed && $new_cat_id > 0 && $this->IsAncestorOf($new_cat)) {
 			return array( 'error' => __('Cannot move category into a sub-category of itself.',WPFB));
@@ -537,7 +535,7 @@ class WPFB_Item {
 				@chmod($thumb_path, octdec(WPFB_PERM_FILE));
 			}
 			
-			$all_files = ($this->GetId()>0) ? $this->GetChildFiles(true) : array(); // all children files (recursively)
+			$all_files = ($this->is_file || $this->GetId()>0) ? $this->GetChildFiles(true) : array(); // all children files (recursively)
 			if(!empty($all_files)) foreach($all_files as $file) {
 				if($cat_changed) {
 					if($old_cat) $old_cat->NotifyFileRemoved($file); // notify parent cat to remove files

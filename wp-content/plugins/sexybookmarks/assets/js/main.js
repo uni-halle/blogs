@@ -132,6 +132,7 @@
             data: data,
             success: function(data, status, jqxhr) {
                 data['action'] = 'shareaholic_add_location';
+                data['nonce'] = window.shareaholic_add_location_nonce;
                 button.data('location_id', data['location']['id']);
                 Shareaholic.disable_buttons();
                 Shareaholic.submit_to_admin(data, function(stuff) {

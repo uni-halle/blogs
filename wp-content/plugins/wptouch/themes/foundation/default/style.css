@@ -1,5 +1,5 @@
 /* @group Reset */
-body [class^="icon-"]:before, body [class*=" icon-"]:before {
+body [class^="wptouch-icon-"]:before, body [class*=" wptouch-icon-"]:before {
 	width: auto;
 }
 
@@ -780,6 +780,7 @@ body.web-app-mode #switch {
 	content: "\e83b";
 	display: block;
 	font-size: 400%;
+	line-height: 150%;
 }
 
 .not-found-text {
