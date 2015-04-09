@@ -3,8 +3,8 @@ Contributors: Hiroaki Miyashita
 Donate link: http://wpgogo.com/development/lightbox-gallery.html
 Tags: lightbox, gallery, galleries, image, images, album, photo, photos, picture, pictures, jQuery, Highslide, Colorbox
 Requires at least: 2.5
-Tested up to: 4.1.1
-Stable tag: 0.8.1
+Tested up to: 4.2
+Stable tag: 0.8.2
 License: GPLv2 or later
 
 The Lightbox Gallery plugin changes the view of galleries to the lightbox.
@@ -55,14 +55,15 @@ If you have translated into your language, please let me know.
 
 == Installation ==
 
-1. Edit the `lightbox-gallery.js` and check the path of line 2 according to your settings.
-2. Copy the `lightbox-gallery` directory into your `wp-content/plugins` directory
-3. Activate the plugin through the 'Plugins' menu in WordPress
-4. There may exist localized images in 'images' directory. Replace default images with them.
-5. That's it! :)
+1. Activate the plugin through the 'Plugins' menu in WordPress
+2. Just upload images and write down the [gallery] shortcode in the post content. 
+3. That's it! :)
 
 Lightbox Gallery will load 'lightbox-gallery.css' and 'lightbox-gallery.js' from your theme's directory if they exist. 
 If they don't exist, they will just load the default 'lightbox-gallery.css' and 'lightbox-gallery.js' that come with Lightbox Gallery. This will allow you to upgrade Lightbox Gallery without worrying about overwriting your lightbox gallery styles that you have created.
+
+* Edit the `lightbox-gallery.js` and check the path of line 2 according to your settings.
+* There may exist localized images in 'images' directory. Replace default images with them.
 
 == Frequently Asked Questions ==
 * How can I make regular images appear in a lightbox without [gallery] shortcode?
@@ -136,6 +137,9 @@ If you would like not to show the navigation, set `0`. The default is `1`.
 [gallery num="10" pagenavi="0"]
 
 == Changelog ==
+
+= 0.8.2 =
+* CSS loading in a child theme.
 
 = 0.8.1 =
 * Backward compatibility: caption loading.
