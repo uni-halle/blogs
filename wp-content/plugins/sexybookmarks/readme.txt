@@ -2,8 +2,8 @@
 Contributors: shareaholic
 Tags: sexybookmarks, shareaholic, shareholic, facebook, twitter, linkedin, URL Shortener, bitly, tinyurl, Goo.gl, Google+1, Google Analytics, Google Plus, Google, Instapaper, Wish List, Digg, Gmail, Google Bookmarks, Translate, Tumblr, AIM, Yahoo Messenger, Delicious, StumbleUpon, mister wong, evernote, add this, addtoany, share this, sharethis, share and follow, share and enjoy, sharing is sexy, sharing is caring, yahoo, reddit, hackernews, houzz, yummly, tweet button, twitter button, fark, buffer, myspace, orkut, netlog, hubspot, weheartit, printfriendly, yammer, wanelo, pinterest, google translate, bookmarks, social, email button, social share, socialize, sociable, sharebar, bookmark button, share button, social bookmarking, bookmarks menu, bookmarking, share, seo, analytics, stats, sharing, facebook like, facebook recommend, WPMU, mutisite, sumome, shortcode, yaarp, yarpp, nrelate, outbrain, linkwithin, related content, related posts, related, popular posts, popular, thumbnails, recommendations
 Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 7.6.1.1
+Tested up to: 4.1.1
+Stable tag: 7.6.1.2
 
 The easiest, most effective way to grow your website traffic, effectively engage your audience, monetize, and gain insights for free.
 
@@ -168,6 +168,9 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 7.6.1.2 =
+* [Bugfix](https://wordpress.org/support/topic/shareaholic-plugin-integration-issue): Added a check to see if data object exists before trying to access it
 
 = 7.6.1.1 =
 * Enhancement: Added Shareaholic navigation bar to the Shareaholic settings pages
@@ -1194,8 +1197,11 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 
 == Upgrade Notice ==
 
+= 7.6.1.2 = 
+Bug fixes.
+
 = 7.6.1.1 =
-Added Shareaholic navigation bar to the Shareaholic settings pages
+Added Shareaholic navigation bar to the Shareaholic settings pages.
 
 = 7.6.1.0 =
 Fix for security vulnerability. Upgrade immediately.

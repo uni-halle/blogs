@@ -218,7 +218,9 @@ class ShareaholicPublic {
       // Article Author Name      
       if ($post->post_author) {
         $article_author_data = get_userdata($post->post_author);
-        $article_author_name = $article_author_data->display_name;
+        if ($article_author_data) {
+          $article_author_name = $article_author_data->display_name;
+        }
       }
       if (!empty($article_author_name)) {
         echo "<meta name='shareaholic:article_author_name' content='" . $article_author_name . "' />\n";
