@@ -2,10 +2,10 @@
 Contributors: wpdevart
 Plugin Site: http://wpdevart.com
 Donate link: http://wpdevart.com/wordpress-lightbox-plugin
-Tags: lightbox, WP Lightbox, image, photo, picture, colorbox,  photo albums, slideshow, image map, flash, gallery, JQuery slideshow, nextgen, page, photo, photo album, photo albums, photo gallery, Photo Slider, photos, picture, pictures, plugin, plugin for gallery, plugin gallery, portfolio, responsive gallery, seo image, thumbnail, widget, wordpress gallery plugin, wordpress portfolio plugin, wp gallery, wp gallery plugin,  Galleria, gallery, Gallery Plugin, google, grid gallery, lightbox popup, Nivo Lightbox, responsive lightbox, light box, wordpress lightbox, social lightbox, lightbox gallery, video lightbox, gallery lightbox, wordpress image lightbox, Lightbox slider, image lightbox, lightbox pop, Jquery lightbox, css3 lightbox, lightbox photo, popup lightbox, wordpress lightbox gallery, lightbox images, wordpress video lightbox, lightbox youtube, prettyphoto lightbox, overlay, lightbox for youtube, lightview, onclick popup, shadowbox, modal, popup box, slimbox, popup, pop-up, popup window, popups, popup form, wordpress popup, optin popup, full page popup, jquery popup, custom popup, popup video, aweber, Responsive Popup, on click popup, hover, simple popup, image popup, quick popup, video popup, popup over, lightbox message, lightbox effect, style lightbox, photo lightbox, slideshow lightbox, wordpress lightbox image, exit lightbox, wp video lightbox, wordpress lightbox slider, wordpress responsive lightbox slideshow, comments lightbox, meta slider lightbox, image thumbnail lightbox, Notification Lightbox, fancybox lightbox, flickr lightbox gallery, lightbox plus, flickr lightbox, colorbox lightbox, yahoo        
+Tags: lightbox, image, gallery, photo gallery, lightbox popup, responsive lightbox, wordpress lightbox, lightbox gallery, gallery lightbox, wordpress image lightbox, image lightbox, popup lightbox, 
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 3.0.1
+Stable tag: 3.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -128,6 +128,10 @@ We also recommend you to take a look for this useful plugins - [WordPress Mainte
 5.  [WordPress Lightbox](https://wordpress.org/plugins/wp-lightbox-2) Front-end     
 
 == Changelog ==
+
+= 3.0.3 =
+
+Tags issue fixed
 
 = 3.0.0 =
 
