@@ -3,7 +3,7 @@ Contributors: neoxx
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=J6ZGWTZT4M29U
 Tags: time, date, timezone, calendar, world clock, clock, travel, widget, sidebar, dashboard, shortcode, multisite, multi-site, ajax, javascript, jquery, bar, admin bar
 Requires at least: 3.8
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: trunk
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -179,6 +179,10 @@ Position of the clock in the Admin Bar (see `wp-includes/class-wp-admin-bar.php`
 
 Receives an array which is used for the calculator-page function call to `$timezonecalculator->output($params)`. `display`, `use_container` will automatically be set to true.
 
+`timezonecalculator_calculator_timezone`
+
+Receives a timezone-string which is used for the calculator-page.
+
 `timezonecalculator_calculator_format_date`
 
 Receives an array whereas each entry represents a date-format. The first date-format will be used as display-format in the textfield.
@@ -212,6 +216,12 @@ This is a general code clean-up. - Please note that for TimeZoneCalculator v3.00
 This is not only a feature but also a security update. - Thus, I'd strongly recommend all users of TimeZoneCalculator which have at least an environment of WordPress 2.8 or higher and PHP 5 to install this version!
 
 == Changelog ==
+
+= 3.30 =
+
+* remember last used timezone in calculator
+* added support link
+* set 403 http-status code for unauthorized ajax-calls
 
 = 3.21 =
 

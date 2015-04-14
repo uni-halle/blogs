@@ -5,14 +5,14 @@ Plugin Name: TimeZoneCalculator
 Plugin URI: http://www.bernhard-riedl.com/projects/
 Description: Calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
 Author: Dr. Bernhard Riedl
-Version: 3.21
+Version: 3.30
 Author URI: http://www.bernhard-riedl.com/
 */
 
 /*
-Copyright 2005-2014 Dr. Bernhard Riedl
+Copyright 2005-2015 Dr. Bernhard Riedl
 
-Inspirations & Proof-Reading 2007-2014
+Inspirations & Proof-Reading 2007-2015
 by Veronika Grascher
 
 This program is free software:
@@ -94,6 +94,8 @@ class TimeZoneCalculator {
 		'format_datetime' => 'Y-m-d H:i',
 		'use_container' => true,
 		'display' => true,
+
+		'display_sponsored_link' => true
 	);
 
 	/*
@@ -132,7 +134,9 @@ class TimeZoneCalculator {
 
 		'debug_mode' => false,
 
-		'section' => 'selection_gui'
+		'section' => 'selection_gui',
+
+		'display_sponsored_link' => true
 	);
 
 	/*
@@ -221,7 +225,8 @@ class TimeZoneCalculator {
 				'all_users_can_view_timezones' => 'All users can view timezones',
 				'view_timezones_capability' => 'Capability to view timezones',
 				'view_other_users_timezones_capability' => 'Capability to view timezones-selection of other users',
-				'debug_mode' => 'Enable Debug-Mode'
+				'debug_mode' => 'Enable Debug-Mode',
+				'display_sponsored_link' => 'Support your free TimeZoneCalculator by adding a link to it\'s sponsor'
 			)
 		),
 		'preview' => array(
@@ -720,7 +725,8 @@ class TimeZoneCalculator {
 			'prefer_user_timezones',
 			'include_wordpress_clock_admin_bar',
 			'all_users_can_view_timezones',
-			'debug_mode'
+			'debug_mode',
+			'display_sponsored_link'
 		);
 
 		foreach ($check_fields as $check_field) {
@@ -1176,7 +1182,7 @@ class TimeZoneCalculator {
 		*/
 
 		if (!$this->get_option('all_users_can_view_timezones') && !current_user_can($this->get_option('view_timezones_capability')))
-			die('-1');
+			wp_die(-1, '', array('response' => 403));
 
 		$security_string=$action.str_replace(array('\n', "\n"), '', $query_string);
 
@@ -1709,6 +1715,20 @@ class TimeZoneCalculator {
 		$_REQUEST['action']=$this->get_prefix().'output';
 
 		$this->do_ajax_refresh(false);
+
+		if (!empty($_REQUEST['query_string'])) {
+			$params=wp_parse_args($_REQUEST['query_string']);
+
+			if (!empty($params) && array_key_exists('query_timezone', $params)) {
+				try {
+					new DateTimeZone($params['query_timezone']);
+
+					update_user_option($user_ID, $this->get_prefix().'calculator_timezone', $params['query_timezone']);
+				}
+				catch(Exception $e) {}
+			}
+		}
+
 		exit;
 	}
 
@@ -1966,7 +1986,7 @@ class TimeZoneCalculator {
 	*/
 
 	function head_meta() {
-		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.21\"/>\n");
+		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.30\"/>\n");
 	}
 
 	/*
@@ -2466,6 +2486,20 @@ class TimeZoneCalculator {
 			}
 		}
 
+		if ($this->get_option('display_sponsored_link') && $params['display_sponsored_link']) {
+			if (strpos($params['before_list'], '<ul')!==false)
+				$ret_val.='<li style="list-style-type:none">';
+			else
+				$ret_val.='<p>';
+
+			$ret_val.='Find hotels in these timezones using <a target="_blank" href="https://hipmunk.com/">Hipmunk hotels</a>.';
+
+			if (strpos($params['before_list'], '<ul')!==false)
+ 				$ret_val.='</li>';
+			else
+				$ret_val.='</p>';
+		}
+
 		$ret_val.=$params['after_list'];
 
 		if ($params['use_container'])
@@ -2489,7 +2523,8 @@ class TimeZoneCalculator {
 				'after_list',
 				'format_timezone',
 				'format_datetime',
-				'format_container'
+				'format_container',
+				'display_sponsored_link'
 			);
 
 			$query_string='';
@@ -2565,7 +2600,8 @@ class TimeZoneCalculator {
 
 			'before_list' => '',
 			'after_list' => '',
-			'format_timezone' => $format_timezone
+			'format_timezone' => $format_timezone,
+			'display_sponsored_link' => false
 		);
 
 		$filtered_params=apply_filters($this->get_prefix().$filter, $unfiltered_params);
@@ -3419,17 +3455,10 @@ class TimeZoneCalculator {
 	outputs support paragraph
 	*/
 
-	private function support() {
-		global $user_identity; ?>
-		<h3>Support</h3>
-		<?php echo($user_identity); ?>, if you would like to support the development of <?php echo($this->get_nicename()); ?>, you can invite me for a <a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=J6ZGWTZT4M29U">virtual pizza</a> for my work. <?php echo(convert_smilies(':)')); ?><br /><br />
+	private function support() { ?>
+		<h3>Info</h3>
 
-		<a class="<?php echo($this->get_prefix()); ?>button_donate" title="Donate to <?php echo($this->get_nicename()); ?>" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=J6ZGWTZT4M29U">Donate</a><br /><br />
-
-		Maybe you also want to <?php if (current_user_can('manage_links') && ((!has_filter('default_option_link_manager_enabled') || get_option( 'link_manager_enabled')))) { ?><a href="link-add.php"><?php } ?>add a link<?php if (current_user_can('manage_links') && ((!has_filter('default_option_link_manager_enabled') || get_option( 'link_manager_enabled')))) { ?></a><?php } ?> to <a target="_blank" href="http://www.bernhard-riedl.com/projects/">http://www.bernhard-riedl.com/projects/</a>.<?php if(strpos($_SERVER['HTTP_HOST'], 'journeycalculator.com')===false) { ?><br /><br />
-
-		Plan your travels with the free <a target="_blank" href="https://www.journeycalculator.com/">JourneyCalculator</a> which is based on TimeZoneCalculator.<?php } ?>
-<br /><br />
+		Plan your travels with the free <a target="_blank" href="https://www.journeycalculator.com/">JourneyCalculator</a> which is based on TimeZoneCalculator.<br /><br />
 	<?php }
 
 	/*
@@ -3969,6 +3998,8 @@ class TimeZoneCalculator {
 			<li>As it may be a privacy invasion to provide someone with access to a certain user's timezones-selection, you can define in addition the <em><a target="_blank" href="https://codex.wordpress.org/Roles_and_Capabilities">Capability</a> to view timezones-selection of other users</em>. In others words, if Alice wants to access Bob's timezones-selection, she needs to have both of the mentioned capabilities.</li>
 
 			<li>The <em>Debug Mode</em> can be used to have a look on the actions undertaken by <?php echo($this->get_nicename()); ?> and to investigate unexpected behaviour.</li>
+
+			<li>Last but not least you can decide whether you want to support TimeZoneCalculator's development by showing a link to our sponsor <a target="_blank" href="https://hipmunk.com/">Hipmunk</a>.</li>
 		</ul>
 
 		<input type="hidden" <?php echo($this->get_setting_name_and_id('section')); ?> value="<?php echo($this->get_option('section')); ?>" />
@@ -3996,6 +4027,10 @@ class TimeZoneCalculator {
 
 	function setting_debug_mode($params=array()) {
 		$this->setting_checkfield('debug_mode', 'options');
+	}
+
+	function setting_display_sponsored_link($params=array()) {
+		$this->setting_checkfield('display_sponsored_link', 'options');
 	}
 
 	/*
@@ -4045,6 +4080,16 @@ class TimeZoneCalculator {
 	*/
 
 	function callback_calculator_calculator() {
+		global $user_ID;
+
+		/*
+		load current user's details
+		*/
+
+		get_currentuserinfo();
+
+		$timezone=apply_filters($this->get_prefix().'calculator_timezone', get_user_option($this->get_prefix().'calculator_timezone', $user_ID));
+
 		$date_format=apply_filters($this->get_prefix().'calculator_format_date', array($this->get_default('format_datetime')));
 
 		$time_format=apply_filters($this->get_prefix().'calculator_format_time',  $this->get_default('format_datetime'));
@@ -4058,7 +4103,7 @@ class TimeZoneCalculator {
 					<strong id="<?php echo($this->get_prefix()); ?>calculator_input_header_timezone">TimeZone</strong>
 				</div>
 				<div class="<?php echo($this->get_prefix()); ?>calculator_input_content" role="group" aria-labelledby="<?php echo($this->get_prefix()); ?>calculator_input_header_timezone">
-					<?php $this->setting_timezone($this->get_prefix()); ?>
+					<?php $this->setting_timezone($this->get_prefix(), $timezone); ?>
 				</div>
 			</div>
 
