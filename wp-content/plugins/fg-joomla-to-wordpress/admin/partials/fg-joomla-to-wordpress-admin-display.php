@@ -31,7 +31,7 @@
 			
 			<table class="form-table">
 				<tr>
-					<th scope="row"><?php _e('If you want to rerun the import, you must empty the WordPress content with the button hereafter.', 'fgj2wp'); ?></th>
+					<th scope="row"><?php _e('If you want to restart the import from scratch, you must empty the WordPress content with the button hereafter.', 'fgj2wp'); ?></th>
 					<td><input type="radio" name="empty_action" id="empty_action_newposts" value="newposts" /> <label for="empty_action_newposts"><?php _e('Remove only new imported posts', 'fgj2wp'); ?></label><br />
 					<input type="radio" name="empty_action" id="empty_action_all" value="all" /> <label for="empty_action_all"><?php _e('Remove all WordPress content', 'fgj2wp'); ?></label><br />
 					<?php submit_button( __('Empty WordPress content', 'fgj2wp'), 'primary', 'empty' ); ?></td>
@@ -174,36 +174,35 @@
 			<li><?php _e('HTML modules migration', 'fgj2wp'); ?></li>
 			<li><?php _e('SEO: keeps Joomla IDs or redirects standard Joomla URLs', 'fgj2wp'); ?></li>
 			<li><?php _e('SEO: Keeps meta description and meta keywords', 'fgj2wp'); ?></li>
-			<li><?php _e('SEO: Keeps sh404sef, JoomSEF and OpenSEF URLs', 'fgj2wp'); ?></li>
-			<li><?php _e('Joomla views counts migration', 'fgj2wp'); ?></li>
+			<li><?php _e('SEO: Keeps sh404sef, JoomSEF and OpenSEF URLs', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Joomla views counts migration', 'fgj2wp'); ?><sup>*</sup></li>
 			<li><?php _e('Joomla 1.0 compatible', 'fgj2wp'); ?></li>
 			<li><?php _e('Joomla 2.5+ featured images', 'fgj2wp'); ?></li>
 			<li><?php _e('Joomla 3.1+ tags', 'fgj2wp'); ?></li>
-			<li><?php _e('Joomla contacts', 'fgj2wp'); ?></li>
+			<li><?php _e('Joomla contacts', 'fgj2wp'); ?><sup>*</sup></li>
 			<li><?php _e('Mambo 4.5 and 4.6 compatible', 'fgj2wp'); ?></li>
-			<li><?php _e('K2 content', 'fgj2wp'); ?></li>
-			<li><?php _e('EasyBlog content', 'fgj2wp'); ?></li>
-			<li><?php _e('Kunena forum to bbPress', 'fgj2wp'); ?></li>
-			<li><?php _e('Flexicontent content', 'fgj2wp'); ?></li>
-			<li><?php _e('Zoo content', 'fgj2wp'); ?></li>
-			<li><?php _e('Jcomments and Jomcomment comments', 'fgj2wp'); ?></li>
-			<li><?php _e('Joomlatags tags', 'fgj2wp'); ?></li>
-			<li><?php _e('Attachments', 'fgj2wp'); ?></li>
-			<li><?php _e('Rokbox images', 'fgj2wp'); ?></li>
-			<li><?php _e('JoomGallery images', 'fgj2wp'); ?></li>
-			<li><?php _e('Phocagallery images', 'fgj2wp'); ?></li>
-			<li><?php _e('Joom!Fish translations to WPML', 'fgj2wp'); ?></li>
-			<li><?php _e('JEvents events', 'fgj2wp'); ?></li>
-			<li><?php _e('Docman documents', 'fgj2wp'); ?></li>
-			<li><?php _e('Virtuemart e-commerce', 'fgj2wp'); ?></li>
-			<li><?php _e('JReviews reviews', 'fgj2wp'); ?></li>
-			<li><?php _e('Mosets Tree directory', 'fgj2wp'); ?></li>
+			<li><?php _e('K2 content', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('EasyBlog content', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Kunena forum to bbPress', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Flexicontent content', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Zoo content', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Jcomments and Jomcomment comments', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Joomlatags tags', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Attachments', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Rokbox images', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('JoomGallery images', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Phocagallery images', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Joom!Fish translations to WPML', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('JEvents events', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Docman documents', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Virtuemart e-commerce', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('JReviews reviews', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Mosets Tree directory', 'fgj2wp'); ?><sup>*</sup></li>
 		</ul>
 		<div class="center">
 			<a href="http://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank"><img src="http://www.fredericgilles.net/wp-content/uploads/premium-version.png" alt="Buy Premium Version" /></a>
 		</div>
-		<p><?php _e('Please note that some of these features need an add-on in addition to the Premium version.', 'fgj2wp'); ?>
-		</p>
+		<p><sup>*</sup><?php _e('This feature needs an add-on in addition to the Premium version.', 'fgj2wp'); ?></p>
 		<hr />
 		<p><?php _e('If you found this plugin useful and it saved you many hours or days, please rate it on <a href="http://wordpress.org/extend/plugins/fg-joomla-to-wordpress/">FG Joomla to WordPress</a>. You can also make a donation using the button below.', 'fgj2wp'); ?></p>
 		

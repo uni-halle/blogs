@@ -100,10 +100,6 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		 */
 		public function init() {
 			register_importer('fgj2wp', __('Joomla (FG)', 'fgj2wp'), __('Import categories, articles and medias (images, attachments) from a Joomla database into WordPress.', 'fgj2wp'), array($this, 'dispatch'));
-
-			// Suspend the cache during the migration to avoid exhausted memory problem
-			wp_suspend_cache_addition(true);
-			wp_suspend_cache_invalidation(true);
 		}
 
 		/**
@@ -126,7 +122,11 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		 * Dispatch the actions
 		 */
 		public function dispatch() {
-			set_time_limit(7200);
+			set_time_limit(7200); // Timeout = 2 hours
+
+			// Suspend the cache during the migration to avoid exhausted memory problem
+			wp_suspend_cache_addition(true);
+			wp_suspend_cache_invalidation(true);
 
 			// Default values
 			$this->plugin_options = array(
@@ -955,7 +955,7 @@ SQL;
 							$featured_image = '';
 							list($featured_image, $post) = apply_filters('fgj2wp_pre_import_media', array($featured_image, $post));
 							// Import media
-							$result = $this->import_media($featured_image . $post['introtext'] . $post['fulltext'], $post_date);
+							$result = $this->import_media_from_content($featured_image . $post['introtext'] . $post['fulltext'], $post_date);
 							$post_media = $result['media'];
 							$media_count += $result['media_count'];
 						} else {
@@ -1247,113 +1247,35 @@ SQL;
 		}
 
 		/**
-		 * Import post medias
+		 * Import post medias from content
 		 *
 		 * @param string $content post content
 		 * @param date $post_date Post date (for storing media)
+		 * @param array $options Options
 		 * @return array:
 		 * 		array media: Medias imported
 		 * 		int media_count:   Medias count
 		 */
-		public function import_media($content, $post_date, $options=array()) {
+		public function import_media_from_content($content, $post_date, $options=array()) {
 			$media = array();
 			$media_count = 0;
 			$matches = array();
 			$alt_matches = array();
-
-			$import_external = ($this->plugin_options['import_external'] == 1) || (isset($options['force_external']) && $options['force_external'] );
-
-			if ( preg_match_all('#<(img|a)(.*?)(src|href)="(.*?)"(.*?)>#s', $content, $matches, PREG_SET_ORDER) > 0 ) {
+			
+			if ( preg_match_all('#<(img|a)(.*?)(src|href)="(.*?)"(.*?)>#', $content, $matches, PREG_SET_ORDER) > 0 ) {
 				if ( is_array($matches) ) {
 					foreach ($matches as $match ) {
 						$filename = $match[4];
-						$filename = str_replace("%20", " ", $filename); // for filenames with spaces
-						if ( strpos($filename, '/') === 0 ) {
-							// Remove the / at the beginning of the filename
-							$filename = substr($filename, 1);
-						}
 						$other_attributes = $match[2] . $match[5];
-
-						$filetype = wp_check_filetype($filename);
-						if ( empty($filetype['type']) || ($filetype['type'] == 'text/html') ) { // Unrecognized file type
-							continue;
+						// Image Alt
+						$image_alt = '';
+						if (preg_match('#alt="(.*?)"#', $other_attributes, $alt_matches) ) {
+							$image_alt = wp_strip_all_tags(stripslashes($alt_matches[1]), true);
 						}
-
-						// Upload the file from the Joomla web site to WordPress upload dir
-						if ( preg_match('/^http/', $filename) ) {
-							if ( $import_external || // External file 
-								preg_match('#^' . $this->plugin_options['url'] . '#', $filename) // Local file
-							) {
-								$old_filename = $filename;
-							} else {
-								continue;
-							}
-						} else {
-							$old_filename = untrailingslashit($this->plugin_options['url']) . '/' . $filename;
-						}
-						$old_filename = str_replace(" ", "%20", $old_filename); // for filenames with spaces
-						$date = strftime('%Y/%m', strtotime($post_date));
-						$uploads = wp_upload_dir($date);
-						$new_upload_dir = $uploads['path'];
-
-						$new_filename = $filename;
-						if ( $this->plugin_options['import_duplicates'] == 1 ) {
-							// Images with duplicate names
-							$new_filename = preg_replace('#.*images/stories/#', '', $new_filename);
-							$new_filename = preg_replace('#.*media/k2#', 'k2', $new_filename);
-							$new_filename = str_replace('http://', '', $new_filename);
-							$new_filename = str_replace('/', '_', $new_filename);
-						}
-
-						$basename = basename($new_filename);
-						$new_full_filename = $new_upload_dir . '/' . $basename;
-
-						// print "Copy \"$old_filename\" => $new_full_filename<br />";
-						if ( ! @$this->remote_copy($old_filename, $new_full_filename) ) {
-							$error = error_get_last();
-							$error_message = $error['message'];
-							$this->display_admin_error("Can't copy $old_filename to $new_full_filename : $error_message");
-							continue;
-						}
-
-						$post_name = preg_replace('/\.[^.]+$/', '', $basename);
-
-						// If the attachment does not exist yet, insert it in the database
-						$attachment = $this->get_attachment_from_name($post_name);
-						if ( !$attachment ) {
-							$attachment_data = array(
-								'guid'				=> $uploads['url'] . '/' . $basename, 
-								'post_date'			=> $post_date,
-								'post_mime_type'	=> $filetype['type'],
-								'post_name'			=> $post_name,
-								'post_title'		=> $post_name,
-								'post_status'		=> 'inherit',
-								'post_content'		=> '',
-							);
-							$attach_id = wp_insert_attachment($attachment_data, $new_full_filename);
-							$attachment = get_post($attach_id);
-							$post_name = $attachment->post_name; // Get the real post name
+						$attachment_id = $this->import_media($image_alt, $filename, $post_date, $options);
+						if ( $attachment_id !== false ) {
 							$media_count++;
-						}
-						$attach_id = $attachment->ID;
-
-						$media[$filename] = array(
-							'id'	=> $attach_id,
-							'name'	=> $post_name,
-						);
-
-						if ( preg_match('/image/', $filetype['type']) ) { // Images
-							// you must first include the image.php file
-							// for the function wp_generate_attachment_metadata() to work
-							require_once(ABSPATH . 'wp-admin/includes/image.php');
-							$attach_data = wp_generate_attachment_metadata( $attach_id, $new_full_filename );
-							wp_update_attachment_metadata( $attach_id, $attach_data );
-
-							// Image Alt
-							if (preg_match('#alt="(.*?)"#', $other_attributes, $alt_matches) ) {
-								$image_alt = wp_strip_all_tags(stripslashes($alt_matches[1]), true);
-								update_post_meta($attach_id, '_wp_attachment_image_alt', addslashes($image_alt)); // update_meta expects slashed
-							}
+							$media[$filename] = $attachment_id;
 						}
 					}
 				}
@@ -1363,7 +1285,110 @@ SQL;
 				'media_count'	=> $media_count
 			);
 		}
+		
+		/**
+		 * Import a media
+		 *
+		 * @param string $name Image name
+		 * @param string $filename Image URL
+		 * @param date $date Date
+		 * @param array $options Options
+		 * @return int attachment ID or false
+		 */
+		public function import_media($name, $filename, $date, $options=array()) {
+			if ( $date == '0000-00-00 00:00:00' ) {
+				$date = date('Y-m-d H:i:s');
+			}
+			$import_external = ($this->plugin_options['import_external'] == 1) || (isset($options['force_external']) && $options['force_external'] );
+			
+			$filename = str_replace("%20", " ", $filename); // for filenames with spaces
+			
+			$filetype = wp_check_filetype($filename);
+			if ( empty($filetype['type']) || ($filetype['type'] == 'text/html') ) { // Unrecognized file type
+				return false;
+			}
 
+			// Upload the file from the PrestaShop web site to WordPress upload dir
+			if ( preg_match('/^http/', $filename) ) {
+				if ( $import_external || // External file 
+					preg_match('#^' . $this->plugin_options['url'] . '#', $filename) // Local file
+				) {
+					$old_filename = $filename;
+				} else {
+					return false;
+				}
+			} else {
+				$old_filename = trailingslashit($this->plugin_options['url']) . $filename;
+			}
+			$old_filename = str_replace(" ", "%20", $old_filename); // for filenames with spaces
+			$img_dir = strftime('%Y/%m', strtotime($date));
+			$uploads = wp_upload_dir($img_dir);
+			$new_upload_dir = $uploads['path'];
+
+			$new_filename = $filename;
+			if ( $this->plugin_options['import_duplicates'] == 1 ) {
+				// Images with duplicate names
+				$new_filename = preg_replace('#.*images/stories/#', '', $new_filename);
+				$new_filename = preg_replace('#.*media/k2#', 'k2', $new_filename);
+				$new_filename = str_replace('http://', '', $new_filename);
+				$new_filename = str_replace('/', '_', $new_filename);
+			}
+
+			$basename = basename($new_filename);
+			$new_full_filename = $new_upload_dir . '/' . $basename;
+
+//			print "Copy \"$old_filename\" => $new_full_filename<br />";
+			if ( ! @$this->remote_copy($old_filename, $new_full_filename) ) {
+				$error = error_get_last();
+				$error_message = $error['message'];
+				$this->display_admin_error("Can't copy $old_filename to $new_full_filename : $error_message");
+				return false;
+			}
+			
+			$post_name = !empty($name)? $name : preg_replace('/\.[^.]+$/', '', $basename);
+			
+			// If the attachment does not exist yet, insert it in the database
+			$attachment_id = 0;
+			$attachment = $this->get_attachment_from_name($post_name);
+			if ( $attachment ) {
+				$attached_file = basename(get_attached_file($attachment->ID));
+				if ( $attached_file == $basename ) { // Check if the filename is the same (in case of the legend is not unique)
+					$attachment_id = $attachment->ID;
+				}
+			}
+			if ( $attachment_id == 0 ) {
+				$attachment_data = array(
+					'guid'				=> $uploads['url'] . '/' . $basename, 
+					'post_date'			=> $date,
+					'post_mime_type'	=> $filetype['type'],
+					'post_name'			=> $post_name,
+					'post_title'		=> $post_name,
+					'post_status'		=> 'inherit',
+					'post_content'		=> '',
+				);
+				$attachment_id = wp_insert_attachment($attachment_data, $new_full_filename);
+			}
+			
+			if ( !empty($attachment_id) ) {
+				if ( preg_match('/image/', $filetype['type']) ) { // Images
+					// you must first include the image.php file
+					// for the function wp_generate_attachment_metadata() to work
+					require_once(ABSPATH . 'wp-admin/includes/image.php');
+					$attach_data = wp_generate_attachment_metadata( $attachment_id, $new_full_filename );
+					wp_update_attachment_metadata($attachment_id, $attach_data);
+
+					// Image Alt
+					if ( !empty($name) ) {
+						$image_alt = wp_strip_all_tags(stripslashes($name), true);
+						update_post_meta($attachment_id, '_wp_attachment_image_alt', addslashes($image_alt)); // update_meta expects slashed
+					}
+				}
+				return $attachment_id;
+			} else {
+				return false;
+			}
+		}
+		
 		/**
 		 * Check if the attachment exists in the database
 		 *
@@ -1426,24 +1451,23 @@ SQL;
 
 				// Get the attachments attributes
 				$attachments_found = false;
-				foreach ( $post_media as $old_filename => &$media_var ) {
-					$post_media_name = $media_var['name'];
-					$attachment = $this->get_attachment_from_name($post_media_name);
-					if ( $attachment ) {
-						$media_var['attachment_id'] = $attachment->ID;
-						$media_var['old_filename_without_spaces'] = str_replace(" ", "%20", $old_filename); // for filenames with spaces
-						if ( preg_match('/image/', $attachment->post_mime_type) ) {
-							// Image
-							$image_src = wp_get_attachment_image_src($attachment->ID, 'full');
-							$media_var['new_url'] = $image_src[0];
-							$media_var['width'] = $image_src[1];
-							$media_var['height'] = $image_src[2];
-						} else {
-							// Other media
-							$media_var['new_url'] = wp_get_attachment_url($attachment->ID);
-						}
-						$attachments_found = true;
+				$medias = array();
+				foreach ( $post_media as $old_filename => $attachment_id ) {
+					$media = array();
+					$media['attachment_id'] = $attachment_id;
+					$media['old_filename_without_spaces'] = str_replace(" ", "%20", $old_filename); // for filenames with spaces
+					if ( preg_match('/image/', get_post_mime_type($attachment_id)) ) {
+						// Image
+						$image_src = wp_get_attachment_image_src($attachment_id, 'full');
+						$media['new_url'] = $image_src[0];
+						$media['width'] = $image_src[1];
+						$media['height'] = $image_src[2];
+					} else {
+						// Other media
+						$media['new_url'] = wp_get_attachment_url($attachment_id);
 					}
+					$medias[$old_filename] = $media;
+					$attachments_found = true;
 				}
 				if ( $attachments_found ) {
 
@@ -1473,8 +1497,8 @@ SQL;
 							foreach ( $matches as $match ) {
 								$old_filename = str_replace('%20', ' ', $match[2]); // For filenames with %20
 								$link_type = ($match[1] == 'src')? 'img': 'a';
-								if ( array_key_exists($old_filename, $post_media) ) {
-									$media = $post_media[$old_filename];
+								if ( array_key_exists($old_filename, $medias) ) {
+									$media = $medias[$old_filename];
 									if ( array_key_exists('new_url', $media) ) {
 										if ( (strpos($new_link, $old_filename) > 0) || (strpos($new_link, $media['old_filename_without_spaces']) > 0) ) {
 											$new_link = preg_replace('#('.$old_filename.'|'.$media['old_filename_without_spaces'].')#', $media['new_url'], $new_link, 1);
@@ -1549,15 +1573,14 @@ SQL;
 		 *
 		 * @param int $post_id Post ID
 		 * @param array $post_data Post data
-		 * @param array $post_media Post medias
+		 * @param array $post_media Post medias IDs
 		 * @param boolean $set_featured_image Set the featured image?
 		 */
 		public function add_post_media($post_id, $post_data, $post_media, $set_featured_image=true) {
 			$thumbnail_is_set = false;
 			if ( is_array($post_media) ) {
-				foreach ( $post_media as $media ) {
-					$post_media_name = $media['name'];
-					$attachment = $this->get_attachment_from_name($post_media_name);
+				foreach ( $post_media as $attachment_id ) {
+					$attachment = get_post($attachment_id);
 					if ( !empty($attachment) ) {
 						$attachment->post_parent = $post_id; // Attach the post to the media
 						$attachment->post_date = $post_data['post_date'] ;// Define the media's date
@@ -1565,7 +1588,7 @@ SQL;
 
 						// Set the featured image. If not defined, it is the first image of the content.
 						if ( $set_featured_image && !$thumbnail_is_set ) {
-							set_post_thumbnail($post_id, $attachment->ID);
+							set_post_thumbnail($post_id, $attachment_id);
 							$thumbnail_is_set = true;
 						}
 					}
