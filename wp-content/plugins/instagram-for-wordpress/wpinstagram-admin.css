@@ -15,7 +15,6 @@
 	overflow: hidden;
 }
 
-
 #instagram-plugin-instructions dl dd textarea {
 	width: 98%;
 	height: 100px;
@@ -60,13 +59,15 @@
 .lboxWrapper .lboxFrame {
 	position: fixed;
 	margin: 0px;
-	width: 800px;
+	width: 500px;
 	z-index: 100001;
 	height: 400px;
 	padding: 20px;
 	left: 50%;
-	margin-left: -410px;
+	margin-left: -260px;
 	background: #FFF;
+	border: 1px solid #E5E5E5;
+	box-shadow: 0px 1px 1px rgba(0,0,0,0.04);
 }
 
 .lboxWrapper .lboxFrame iframe {
@@ -84,7 +85,7 @@
 	font-weight: bold;
 	right: 0px;
 	color: #FFF;
-	text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.04);
 	cursor: pointer;
 }
 
@@ -93,10 +94,13 @@
 	text-align: center;
 	padding-left: 0px !important;
 	padding-right: 0px !important;
-	margin: 5px 0px 10px 0px !important;
+	margin: 0px 0px 15px 0px !important;
+	font-weight: bold;
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.04);
 }
 
-.simpleSetupButton.button-secondary, .simpleSetupButton.button-secondary:hover {
+.simpleSetupButton.button-secondary, 
+.simpleSetupButton.button-secondary:hover {
 	background: #FF4545;
 	color: #000;
 	font-weight: bold;
@@ -106,4 +110,287 @@
 hr.divider {
 	border: 0px none;
 	border-top: 1px solid #CCC;
+}
+
+.instagram-widget-admin-form .widefat.short {
+	width: 100px;
+}
+
+.instagram-widget-admin-form .widefat.half {
+	width: 49%;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+
+.instagram-widget-admin-form .widefat.half:nth-of-type(2n+1) {
+	margin-right: 1%;
+}
+
+.instagram-widget-admin-form label {
+	display: block;
+	font-size: 14px;
+	position: relative;
+	padding-bottom: 4px;
+}
+
+.instagram-widget-admin-form p:first-of-type {
+	margin-top: 0px;
+}
+
+.instagram-widget-admin-form label .help-icon {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 20px;
+	text-align: right;
+	overflow: hidden;
+}
+
+.instagram-widget-admin-form label .help-icon .block {
+	display: block;
+	opacity: 0;
+	transition: opacity 0.3s;
+	width: 250px;
+	padding: 8px 10px 10px 10px;
+	color: #FFF;
+	text-align: left;
+	background: rgba(0,0,0,0.7);
+	font-size: 11px;
+	border-radius: 3px;
+	position: absolute;
+	right: -5px;
+	top: 26px;
+}
+
+.instagram-widget-admin-form label .help-icon .block .block-arrow {
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid rgba(0,0,0,0.7);
+	position: absolute;
+	right: 8px;
+	top: -8px;
+}
+
+.instagram-widget-admin-form label .help-icon:hover {
+	overflow: visible;
+}
+
+.instagram-widget-admin-form label .help-icon:hover .block {
+	opacity: 1;
+}
+
+.instagram-widget-admin-form input[type="button"] {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+.tabs-panel {
+	top: 1px;
+	position: relative;
+	display: none;
+	border: 1px solid #DFDFDF;
+	background: #FDFDFD;
+	z-index: 1;
+	padding: 10px;
+	margin-bottom: 7px;
+	height: 305px;
+}
+
+.tabs-panel.active {
+	display: block;
+}
+
+li.tabber a:focus {
+	box-shadow: none;
+}
+
+li.tabber {
+	border: 1px solid transparent;
+}
+
+li.tabber.active {
+	border: 1px #DFDFDF solid;
+	background: #FDFDFD;
+	position: relative;
+	z-index: 2;
+	border-bottom: 0px none;
+}
+
+li.tabber.error {
+	background: #EACCCC;
+}
+
+li.tabber.error a {
+	color: #a94442;
+}
+
+.instagram-widget-admin-form p.error input, .instagram-widget-admin-form p.error select {
+	background: #EACCCC;
+	color: #a94442;
+}
+
+.instagram-widget-admin-form p .errorMessage {
+	display: none;
+	position: absolute;
+	background: #EACCCC;
+	color: #A94442;
+	padding: 5px;
+	right: 100%;
+	width: 200px;
+	border-radius: 3px;
+	margin-top: 23px;
+	margin-right: 5px;
+}
+
+.instagram-widget-admin-form p .errorMessage .block-arrow {
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 8px solid #EACCCC;
+	position: absolute;
+	right: -8px;
+	top: 8px;
+}
+
+.instagram-widget-admin-form p.error .errorMessage {
+	display: block;
+}
+
+.instagram-widget-admin-form .linkBar {
+	float: right;
+	width: 40%;
+	height: 285px;
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+	padding: 10px;
+	background: #fafafa;
+}
+
+.instagram-widget-admin-form .contactMessage {
+	width: 50%;
+}
+
+.instagram-widget-admin-form .linkBar ul {
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+.instagram-widget-admin-form .linkBar li.break {
+	padding-top: 3px;
+	margin-bottom: 6px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.instagram-widget-admin-form .linkBar li:first-of-type {
+	font-weight: bold;
+}
+
+.lboxContent h2 {
+	margin-top: 0px;
+}
+
+.instagram-widget-powered-by {
+	float: right;
+}
+
+.instagram-widget-powered-by a {
+	background: url('img/logo.png') no-repeat center right;
+	background-size: contain;
+	width: 100px;
+	height: 24px;
+	display: block;
+}
+
+/* nasty hack, it would be nice if wordpress put a class with the widget name onto the wrapper for each widget */
+
+#widget-wpinstagram-widget-1-savewidget,
+#widget-wpinstagram-widget-2-savewidget,
+#widget-wpinstagram-widget-3-savewidget,
+#widget-wpinstagram-widget-4-savewidget,
+#widget-wpinstagram-widget-5-savewidget,
+#widget-wpinstagram-widget-6-savewidget,
+#widget-wpinstagram-widget-7-savewidget,
+#widget-wpinstagram-widget-8-savewidget,
+#widget-wpinstagram-widget-9-savewidget,
+#widget-wpinstagram-widget-10-savewidget,
+#widget-wpinstagram-widget-11-savewidget,
+#widget-wpinstagram-widget-12-savewidget,
+#widget-wpinstagram-widget-13-savewidget,
+#widget-wpinstagram-widget-14-savewidget,
+#widget-wpinstagram-widget-15-savewidget,
+#widget-wpinstagram-widget-16-savewidget,
+#widget-wpinstagram-widget-17-savewidget,
+#widget-wpinstagram-widget-18-savewidget,
+#widget-wpinstagram-widget-19-savewidget,
+#widget-wpinstagram-widget-20-savewidget,
+#widget-wpinstagram-widget-21-savewidget,
+#widget-wpinstagram-widget-22-savewidget,
+#widget-wpinstagram-widget-23-savewidget,
+#widget-wpinstagram-widget-24-savewidget,
+#widget-wpinstagram-widget-25-savewidget,
+#widget-wpinstagram-widget-26-savewidget,
+#widget-wpinstagram-widget-27-savewidget {
+	display: none;
+}
+
+#otherUserResults {
+        position: absolute;
+        border: 1px solid #DDD;
+	box-shadow: inset 0px 1px 2px rgba(0,0,0,0.07);
+	color: #333;
+        border-top: 0px none;
+        top: 52px;
+        left: 0px;
+	right: 0px;
+        display: none;
+        background: #FFF;
+        z-index: 10;
+        max-height: 189px;
+        overflow: hidden;  
+}
+
+#otherUserResults div {  
+	padding: 3px 5px;
+	font-size: 14px;
+}
+
+#otherUserResults div:hover {
+	background: #2ea2cc;
+	cursor: pointer;
+	color: #FFF;
+}
+
+#otherUserResults.visible {
+        display: block;   
+}
+
+#anotherUser {
+	position: relative;
+}
+
+.wpinstagram-error {
+	margin-top: 15px;
+        text-align: center;
+        background: #fcf8e3; /* Old browsers */
+        background: -moz-linear-gradient(top,  #fcf8e3 0%, #f8efc0 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcf8e3), color-stop(100%,#f8efc0)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #fcf8e3 0%,#f8efc0 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #fcf8e3 0%,#f8efc0 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #fcf8e3 0%,#f8efc0 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #fcf8e3 0%,#f8efc0 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf8e3', endColorstr='#f8efc0',GradientType=0 ); /* IE6-9 */
+        color: #000;
+        border: 1px solid #f5e79e;
+        border-radius: 3px;
+        padding: 10px;
+}
+
+.wpinstagram-error b {
+        color: #000;
+        font-size: 110%;
+}
+
+.wpinstagram-error-description {
+        margin-bottom: 0px !important;
 }

@@ -8,23 +8,43 @@
   $height = 350;
   $padding = 5;
     
-  if ($settings['width']) {
-    $width = $settings['width'];
+  if ($settings->settings['width']) {
+    $width = $settings->settings['width'];
   }
-  if ($settings['height']) {
-    $height = $settings['height'];
+  if ($settings->settings['height']) {
+    $height = $settings->settings['height'];
   }    
-  if ($settings['padding']) {
-    $padding = $settings['padding'];
+  if ($settings->settings['padding']) {
+    $padding = $settings->settings['padding'];
+  }
+  
+  if ($settings->settings['responsive'] === 'yes') {
+   $width = 100;
+   $height = 100;
+   $padding = 2;
   }
     
   #how big?
   $imageWidth = $width;
   #its hip to be a square
   $imageHeight = $imageWidth;
+  
+  if ($settings->settings['responsive'] === 'yes') {
+    $imageWidth         = '100%';
+    $imageHeight        = 'auto';
+    $width              .= '%';
+    $height             .= 'auto';
+    $padding            .= '%';
+  } else {
+    $imageWidth         .= 'px';
+    $imageHeight        .= 'px';
+    $width              .= 'px';
+    $height             .= 'px';
+    $padding            .= 'px';
+  }
 ?>
   
-<ul class="wpinstagram wpinstagram-slideshow live" style="width: <?php print $width ?>px; height: <?php print $width ?>px;">
+<ul class="wpinstagram wpinstagram-slideshow live <?php if ($settings->settings['responsive'] === 'yes') { echo "responsive"; } ?>" style="width: <?php print $width ?>; height: <?php print $width ?>;">
   <?php
     foreach ($images as $image) {
     
@@ -38,22 +58,27 @@
        $url = $image['image_large'];
      }     
   ?>  
-    <li style="width: <?php print $imageWidth ?>px; height: <?php print $imageHeight ?>px; margin-bottom: <?php print $padding ?>px !important;">
-      <a class="mainI" href="http://ink361.com/app/photo/ig-<?php print $image['id'] ?>"
-         data-user-url="http://ink361.com/app/photo/ig-<?php print $image['id'] ?>"
+    <li style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-bottom: <?php print $padding ?>;">
+      <a class="mainI" 
+         href="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
+         data-user-url="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
          data-original="<?php print $image['image_large'] ?>"
-         title="<?php print $image['title'] ?>"
+         title="<?php print htmlspecialchars($image['title']) ?>"
          rel="<?php print $image['id'] ?>"
-         data-onclick="http://ink361/com/app/photo/ig-<?php print $image['id'] ?>"
+         data-onclick="http://ink361/com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
          >
          
-         <img src="<?php print $url ?>" style="width: <?php print $imageWidth ?>px; height: <?php print $imageHeight ?>px; margin-bottom: <?php print $padding ?>px;">
-
+         <img src="<?php print $url ?>" style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-bottom: <?php print $padding ?>;">
       </a>
-      <div class="social">
-        <a class="facebook" href="javascript:fbshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
-        <a class="twitter" href="javascript:twtshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
-      </div>
+      <span class="wpcaption">
+        <?php print $image['parsedtitle'] ?>
+      </span> 
+      <?php if ($settings->settings['sharing'] === 'yes') { ?>
+       <div class="social">
+         <a class="facebook" href="javascript:fbshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
+         <a class="twitter" href="javascript:twtshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
+       </div>
+      <?php } ?>
     </li>
   <?php
     } #END FOREACH
@@ -62,11 +87,11 @@
 <div style="clear: both; padding-bottom: 10px;"></div>
 <?php
  $delay = 1000;
- if ($settings['delay']) {
-  $delay = (int)$settings['delay'] * 1000;
+ if ($settings->settings['delay']) {
+  $delay = (int)$settings->settings['delay'] * 1000;
  }
 
- if ($settings['transition'] && $settings['transition'] == 'vert') {
+ if ($settings->settings['transition'] && $settings->settings['transition'] == 'vert') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -74,7 +99,7 @@
   });
  </script>
 <?php
- } else if ($settings['transition'] && $settings['transition'] == 'horz') {
+ } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'horz') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -82,7 +107,7 @@
   });
  </script>
 <?php
- } else if ($settings['transition'] && $settings['transition'] == 'shuffle') {
+ } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'shuffle') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -90,7 +115,7 @@
   });
  </script>
 <?php
- } else if ($settings['transition'] && $settings['transition'] == 'zoom') {
+ } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'zoom') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -98,7 +123,7 @@
   });
  </script>
 <?php
- } else if ($settings['transition'] && $settings['transition'] == 'turndown') {
+ } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'turndown') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -106,7 +131,7 @@
   });
  </script>
 <?php
- } else if ($settings['transition'] && $settings['transition'] == 'fold') {
+ } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'fold') {
 ?>
  <script>
   jQuery(document).ready(function($) {

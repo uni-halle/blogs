@@ -2,8 +2,8 @@
 Contributors: jbenders
 Tags: widgets, photos, instagram
 Requires at least: 3.0
-Tested up to: 3.8.1
-Stable tag: 1.0.6
+Tested up to: 4.1.1
+Stable tag: 2.0.1
 
 A comprehensive sidebar widget that can show your latest photos, tagged
 photos, your favourite photos, your feed, other users photos. Can be shown
@@ -15,13 +15,21 @@ A comprehensive sidebar widget that can show your latest photos, tagged
 photos, your favourite photos, your feed, other users photos. Can be shown
 in three ways with a Grid, Grid with paging and slideshow options.
 
-To get started add the Instagram Widget to your sidebar and click the setup
-button.
+To get started drag and drop the Instagram Widget into one of your widget
+areas and then click the Connect To Instagram button.
+
+You can find your widget management area under your Appearance menu.
 
 == Screenshots ==
 
-1. Setup view in WordPress administration panel ( Appearance > Widgets )
-2. Setup view in WordPress administration panel ( Appearance > Widgets )
+1. Configuration form -> Content to display
+2. Configuration form -> Content to display (another user with search drop
+down)
+3. Configuration form -> Content to display (multiple tag selection)
+4. Configuration form -> Display settings
+5. Configuration form -> Display settings (slideshow)
+6. Configuration form -> Advanced settings
+7. Drag and drop the widget to embed it
 
 == Installation ==
 
@@ -33,7 +41,27 @@ Installation as usual.
 4. Click setup and follow the instructions
 5. Enjoy!
 
+For more installation options please refer to
+http://wordpress.ink361.com/help/installing
+
 == Changelog ==
+
+= 2.0.1 =
+* Replaced remote setting storage with local settings.
+* Replaced widget configuration form.
+* Added verbose warning mode.
+* Added responsive mode.
+* Added enable/disable social icons.
+* Added cache timeout option.
+* Added fixes for detecting access token issues.
+* Simplified installation process.
+* Fixed a number of installation issues.
+* Fixes unique widget identifier issues.
+* Created new website (http://wordpress.ink361.com)
+* Created new help resources.
+* Created customization guide.
+* Fixed a number of display issues for fancybox.
+* Fixed a number of typos.
 
 = 1.0.6 = 
 * Fix for poor error responses returned from widget service.

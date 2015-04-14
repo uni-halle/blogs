@@ -7,44 +7,76 @@
   $rows = 3;
   $cols = 3;
     
-  if ($settings['rows']) {
-    $rows = $settings['rows'];
+  if ($settings->settings['rows']) {
+    $rows = $settings->settings['rows'];
   }    
-  if ($settings['cols']) {
-    $cols = $settings['cols'];
+  if ($settings->settings['cols']) {
+    $cols = $settings->settings['cols'];
   }
     
   $currentCol = 0;
   $currentRow = 0;
     
   #lets calculate our size
-  $width = 300;
-  $height = 350;
+  $width = 220;
+  $height = 220;
   $padding = 5;
     
-  if ($settings['width']) {
-    $width = $settings['width'];
+  if ($settings->settings['width']) {
+    $width = $settings->settings['width'];
   }
-  if ($settings['height']) {
-    $height = $settings['height'];
+  if ($settings->settings['height']) {
+    $height = $settings->settings['height'];
   }    
-  if ($settings['padding']) {
-    $padding = $settings['padding'];
+  if ($settings->settings['padding']) {
+    $padding = $settings->settings['padding'];
+  }
+  
+  if ($settings->settings['responsive'] === 'yes') {
+    $width = 100;
+    $height = 100;
+    $padding = 2;
   }
     
   #how big?
   $imageWidth = ($width - (($cols - 1) * $padding)) / $cols;
+  $liWidth = $imageWidth;
   #its hip to be a square
   $imageHeight = $imageWidth;
+  $liHeight = $imageHeight;
+  
+  if ($settings->settings['responsive'] === 'yes') {
+    $liWidth 		.= '%';
+    $liHeight 		= 'auto';
+    $imageWidth 	= '100%';
+    $imageHeight 	= 'auto';
+    $width 		.= '%';
+    $height 		.= 'auto';
+    $padding 		.= '%';
+  } else {
+    $liWidth		.= 'px';
+    $liHeight		.= 'px';
+    $imageWidth 	.= 'px';
+    $imageHeight 	.= 'px';
+    $width 		.= 'px';
+    $height 		.= 'px';
+    $padding 		.= 'px';
+  }
 ?>
   
-<ul class="wpinstagram live" style="width: <?php print $width ?>px; height: <?php print $height ?>px;">
+<ul class="wpinstagram live <?php if ($settings->settings['responsive'] === 'yes') { echo "responsive"; } ?>" style="width: <?php print $width ?>; height: <?php print $height ?>;">
   <?php
     $count=0;
     foreach ($images as $image) {
       $imagePadding = $padding;
       if ($currentCol == $cols - 1) {
         $imagePadding = 0;
+      
+        if ($settings->settings['responsive'] === 'yes') {
+          $imagePadding .= '%';
+        } else {
+          $imagePadding .= 'px';
+        }
       }      
       
       $count++;
@@ -62,21 +94,27 @@
   ?>
     
   
-    <li class="paged <?php print $this->id . '-all' ?> <?php print $this->id . '-page-' . $page ?>" style="width: <?php print $imageWidth ?>px; height: <?php print $imageHeight ?>px; margin-right: <?php print $imagePadding ?>px !important; margin-bottom: <?php print $padding ?>px !important;">
-      <a class="mainI" href="http://ink361.com/app/photo/ig-<?php print $image['id'] ?>"
-         data-user-url="http://ink361.com/app/photo/ig-<?php print $image['id'] ?>"
+    <li class="paged <?php print $settings->uid . '-all' ?> <?php print $settings->uid . '-page-' . $page ?>" style="width: <?php print $liWidth ?>; height: <?php print $liHeight ?>; margin-right: <?php print $imagePadding ?>; margin-bottom: <?php print $padding ?>;">
+      <a class="mainI" 
+         href="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
+         data-user-url="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos"
          data-original="<?php print $image['image_large'] ?>"
-         title="<?php print $image['title'] ?>"
+         title="<?php print htmlspecialchars($image['title']) ?>"
          rel="<?php print $image['id'] ?>"
-         data-onclick="http://ink361/com/app/photo/ig-<?php print $image['id'] ?>"
+         data-onclick="http://ink361/com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/<? print $image['id'] ?>"
          >
          
-         <img src="<?php print $url ?>" style="width: <?php print $imageWidth ?>px; height: <?php print $imageHeight ?>px; margin-right: <?php print $imagePadding ?>px; margin-bottom: <?php print $padding ?>px;">
+         <img src="<?php print $url ?>" style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-right: <?php print $imagePadding ?>; margin-bottom: <?php print $padding ?>;">
       </a>         
-      <div class="social">
-        <a class="facebook" href="javascript:fbshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
-        <a class="twitter" href="javascript:twtshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
-      </div>
+      <span class="wpcaption">
+        <?php print $image['parsedtitle'] ?>
+      </span>
+      <?php if ($settings->settings['sharing'] === 'yes') { ?>
+        <div class="social">
+          <a class="facebook" href="javascript:fbshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
+          <a class="twitter" href="javascript:twtshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
+        </div>
+      <?php } ?>
     </li>
   <?php
       $currentCol++;
@@ -98,7 +136,7 @@
     
     for ($i = 1; $i <= $pages; $i++) {
      ?>
-     <a href="javascript:gotoPage<?php print str_replace($this->id, '-', '') ?>(<?php print $i ?>);" class="page">
+     <a href="javascript:gotoPage<?php print $settings->uid ?>(<?php print $i ?>);" class="page">
       <?php print $i ?>
      </a>
      <?php
@@ -108,16 +146,16 @@
 <div style="clear: both;"></div>
 
 <script>
-  function gotoPage<?php print str_replace($this->id, '-', '') ?>(page) {
-    var prePended = '.<?php print $this->id . '-page-' ?>';
-    var allIMG = '.<?php print $this->id . '-all' ?>';
+  function gotoPage<?php print $settings->uid ?>(page) {
+    var prePended = '.<?php print $settings->uid . '-page-' ?>';
+    var allIMG = '.<?php print $settings->uid . '-all' ?>';
     
     jQuery(allIMG).removeClass('visible');
     jQuery(prePended + page).addClass('visible');
   }
   
   jQuery(document).ready(function() {
-    gotoPage<?php print str_replace($this->id, '-', '') ?>(1);
+    gotoPage<?php print $settings->uid ?>(1);
   });
 </script>
 

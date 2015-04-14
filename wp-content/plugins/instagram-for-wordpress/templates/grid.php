@@ -7,38 +7,64 @@
   $rows = 3;
   $cols = 3;
     
-  if ($settings['rows']) {
-    $rows = $settings['rows'];
+  if ($settings->settings['rows']) {
+    $rows = $settings->settings['rows'];
   }    
-  if ($settings['cols']) {
-    $cols = $settings['cols'];
+  if ($settings->settings['cols']) {
+    $cols = $settings->settings['cols'];
   }
     
   $currentCol = 0;
   $currentRow = 0;
     
   #lets calculate our size
-  $width = 300;
-  $height = 350;
+  $width = 220;
+  $height = 220;
   $padding = 5;
     
-  if ($settings['width']) {
-    $width = $settings['width'];
+  if ($settings->settings['width']) {
+    $width = $settings->settings['width'];
   }
-  if ($settings['height']) {
-    $height = $settings['height'];
+  if ($settings->settings['height']) {
+    $height = $settings->settings['height'];
   }    
-  if ($settings['padding']) {
-    $padding = $settings['padding'];
+  if ($settings->settings['padding']) {
+    $padding = $settings->settings['padding'];
   }
-    
+
+  if ($settings->settings['responsive'] === 'yes') {
+   $width = 100;
+   $height = 100;
+   $padding = 2;
+  }
+  
   #how big?
   $imageWidth = ($width - (($cols - 1) * $padding)) / $cols;
+  $liWidth = $imageWidth;
   #its hip to be a square
   $imageHeight = $imageWidth;
+  $liHeight = $imageHeight;
+
+  if ($settings->settings['responsive'] === 'yes') {
+    $liWidth            .= '%';
+    $liHeight           = 'auto';
+    $imageWidth         = '100%';
+    $imageHeight        = 'auto';
+    $width              .= '%';
+    $height             .= 'auto';
+    $padding            .= '%';
+  } else {
+    $liWidth            .= 'px';
+    $liHeight           .= 'px';
+    $imageWidth         .= 'px';
+    $imageHeight        .= 'px';
+    $width              .= 'px';
+    $height             .= 'px';
+    $padding            .= 'px';
+  }
 ?>
   
-<ul class="wpinstagram live" style="width: <?php print $width ?>px; height: <?php print $height ?>px;">
+<ul class="wpinstagram live <?php if ($settings->settings['responsive'] === 'yes') { echo "responsive"; } ?>" style="width: <?php print $width ?>; height: <?php print $height ?>;">
   <?php
     foreach ($images as $image) {
       $imagePadding = $padding;
@@ -56,23 +82,27 @@
         $url = $image['image_large'];
       }   
   ?>
-    
-  
-    <li style="width: <?php print $imageWidth ?>px; height: <?php print $imageHeight ?>px; margin-right: <?php print $imagePadding ?>px !important; margin-bottom: <?php print $padding ?>px !important;">
-      <a class="mainI" href="http://ink361.com/app/photo/ig-<?php print $image['id'] ?>"
-         data-user-url="http://ink361.com/app/photo/ig-<?php print $image['id'] ?>"
+
+    <li style="width: <?php print $liWidth ?>; height: <?php print $liHeight ?>; margin-right: <?php print $imagePadding ?>; margin-bottom: <?php print $padding ?>;">
+      <a class="mainI" 
+         href="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
+         data-user-url="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos"
          data-original="<?php print $image['image_large'] ?>"
-         title="<?php print $image['title'] ?>"
+         title="<?php print htmlspecialchars($image['title']) ?>"
          rel="<?php print $image['id'] ?>"
-         data-onclick="http://ink361/com/app/photo/ig-<?php print $image['id'] ?>"
-         >
-         
-         <img src="<?php print $url ?>" style="width: <?php print $imageWidth ?>px; height: <?php print $imageHeight ?>px; margin-right: <?php print $imagePadding ?>px; margin-bottom: <?php print $padding ?>px;">
-      </a>         
-      <div class="social">
-        <a class="facebook" href="javascript:fbshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
-        <a class="twitter" href="javascript:twtshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
-      </div>
+         data-onclick="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
+         >                  
+         <img src="<?php print $url ?>" style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-right: <?php print $imagePadding ?>; margin-bottom: <?php print $padding ?>;">
+      </a>                  
+      <span class="wpcaption">
+        <?php print $image['parsedtitle'] ?>
+      </span>  
+      <?php if ($settings->settings['sharing'] === 'yes') { ?>
+        <div class="social">
+          <a class="facebook" href="javascript:fbshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
+          <a class="twitter" href="javascript:twtshare('http://ink361.com/app/photo/ig-<?php print $image['id'] ?>');"></a>
+        </div>
+      <?php } ?>
     </li>
   <?php
       $currentCol++;

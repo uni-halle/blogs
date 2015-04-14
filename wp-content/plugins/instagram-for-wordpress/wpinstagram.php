@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 1.0.6
+	Version: 2.0.1
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -31,41 +31,50 @@ function load_wpinstagram_footer(){
 	?>
 	<script>
 	        jQuery(document).ready(function($) {
-	                $("ul.wpinstagram").find("a").each(function(i, e) {
-                        	e = $(e);
-                	        e.attr('data-href', e.attr('href'));
-        	                e.attr('href', e.attr('data-original'));
-	                });
+	        	try {
+		                $("ul.wpinstagram").find("a").each(function(i, e) {
+		                       	e = $(e);
+        	        	        e.attr('data-href', e.attr('href'));
+        		                e.attr('href', e.attr('data-original'));
+		                });
 
-                	$("ul.wpinstagram.live").find("a.mainI").fancybox({
-        	                "transitionIn":                 "elastic",
-	                        "transitionOut":                "elastic",
-                        	"easingIn":                     "easeOutBack",
-                	        "easingOut":                    "easeInBack",
-        	                "titlePosition":                "over",   
-	                        "padding":                              0,
-                        	"hideOnContentClick":   "false",
-                	        "type":                                 "image",   
-        	                titleFormat:                    function(x, y, z) {
+        	        	$("ul.wpinstagram.live").find("a.mainI").fancybox({
+	        	                "transitionIn":                 "elastic",
+	                        	"transitionOut":                "elastic",
+                        		"easingIn":                     "easeOutBack",
+                		        "easingOut":                    "easeInBack",
+        		                "titlePosition":                "over",   
+		                        "padding":                              0,
+                        		"hideOnContentClick":   "false",
+                		        "type":                                 "image",   
+        		                titleFormat:                    function(x, y, z) {
+        		                        var html = '<div id="fancybox-title-over">';
 	
-        	                        var html = '<div id="fancybox-title-over">';
-	
-                	                if (x && x.length > 0) {  
-        	                                html += x + ' - ';
-	                                }
+	                	                if (x && x.length > 0) {  
+	                	                	x = x.replace(/^#([0-9a-zA-Z\u4E00-\u9FA5\-_]+)/g, '<a href="http://ink361.com/app/tag/$1" alt="View Instagram tag #$1" title="View Instagram tag #$1" target="_blank">#$1</a>');
+	                	                	x = x.replace(/[ ]#([0-9a-zA-Z\u4E00-\u9FA5\-_]+)/g, ' <a href="http://ink361.com/app/tag/$1" alt="View Instagram tag #$1" title="View Instagram tag #$1" target="_blank">#$1</a>');
+	                	                
+        	                        	        html += x + ' - ';
+	                        	        }
 
-                                	html += '<a href="http://ink361.com/">Instagram</a> web interface</div>';
-                        	        return html;
-                	        }
-        	        });
+                        	        	html += '<a href="http://ink361.com" target="_blank" alt="INK361 Instagram web viewer" title="INK361 Instagram web viewer">INK361 Instagram web viewer</a></div>';
+                	        	        return html;
+        	        	        }
+	        	        });
 
-	                jQuery('#fancybox-content').live('click', function(x) {
-        	                var src = $(this).find('img').attr('src');
-	                        var a = $("ul.wpinstagram.live").find('a.[href="' + src + '"]').attr('data-user-url');
-                  		
-                	        document.getElementById('igTracker').src=$('ul.wpinstagram').find('a[href="' + src + '"]').attr('data-onclick');
-        	                window.open(a, '_blank');
-	                })
+		                jQuery('#fancybox-content').live('click', function(x) {
+        	                	var src = $(this).find('img').attr('src');
+	                	        var a = $("ul.wpinstagram.live").find('a.[href="' + src + '"]').attr('data-user-url');                  		
+                		        document.getElementById('igTracker').src=$('ul.wpinstagram').find('a[href="' + src + '"]').attr('data-onclick');
+        		                window.open(a, '_blank');
+		                });
+			} catch(error) {
+				$("ul.wpinstagram").find("a").each(function(i, e) {
+		                       	e = $(e);
+        	        	        e.attr('href', e.attr('data-href'));
+        	        	        e.attr('target', '_blank');
+				});
+			}
         	});
 	</script>
 	<?php
@@ -73,116 +82,206 @@ function load_wpinstagram_footer(){
 
 class WPInstagram_Widget extends WP_Widget {
 	function WPInstagram_Widget($args=array()){
-		$width = '220';
-		$height = '220';
-	
-		$widget_ops = array('description' => __('Displays Instagrams', 'wpinstagram'));		
-		$control_ops = array('id_base' => 'wpinstagram-widget');
-	
-		$this->wpinstagram_path = plugin_dir_url( __FILE__);
-		$this->WP_Widget('wpinstagram-widget', __('Instagram Widget', 'wpinstagram'), $widget_ops, $control_ops);
-		
-		$withfancybox = false;
-		if(in_array('fancybox-for-wordpress/fancybox.php',(array)get_option($this->id . 'active_plugins',array()))==false) {
+	        $width = '220';
+                $height = '220';
+        
+                $widget_ops = array('description' => __('Displays Instagrams', 'wpinstagram'));
+                $control_ops = array('id_base' => 'wpinstagram-widget');
+        
+                $this->wpinstagram_path = plugin_dir_url( __FILE__);
+                $this->WP_Widget('wpinstagram-widget', __('Instagram Widget', 'wpinstagram'), $widget_ops, $control_ops);
+                
+                $withfancybox = false;
+                if(in_array('fancybox-for-wordpress/fancybox.php',(array)get_option($this->id . 'active_plugins',array()))==false) {
                         $withfancybox = true;
-		}                
-
-		if (is_active_widget('', '', 'wpinstagram-widget') && !is_admin()) {		
-			wp_enqueue_script("jquery");
-		        wp_enqueue_script("jquery.easing", $this->wpinstagram_path."js/jquery.easing-1.3.pack.js", Array('jquery'), null);
-		        wp_enqueue_script("jquery.cycle", $this->wpinstagram_path."js/jquery.cycle.all.js", Array('jquery'), null);
-			wp_enqueue_style('wpinstagram', $this->wpinstagram_path . 'wpinstagram.css', Array(), '0.5');		
-			if ($withfancybox) {
-				wp_enqueue_script("fancybox", $this->wpinstagram_path."js/jquery.fancybox-1.3.4.pack.js", Array('jquery'), null);
-	                        wp_enqueue_style("fancybox-css", $this->wpinstagram_path."js/fancybox/jquery.fancybox-1.3.4.min.css?1", Array(), null);
-	                        wp_enqueue_script("jquery.mousewhell", $this->wpinstagram_path."js/jquery.mousewheel-3.0.4.pack.js", Array('jquery'), null);
-	                        add_action('wp_footer', 'load_wpinstagram_footer');
-			}
+                }
+                
+                if (is_admin()) {
+	                $this->handleTables();
 		}
+
+                if (is_active_widget('', '', 'wpinstagram-widget') && !is_admin()) {            
+                        wp_enqueue_script("jquery");
+                        wp_enqueue_script("jquery.easing", $this->wpinstagram_path."js/jquery.easing-1.3.pack.js", Array('jquery'), null);
+                        wp_enqueue_script("jquery.cycle", $this->wpinstagram_path."js/jquery.cycle.all.js", Array('jquery'), null);
+                        wp_enqueue_style('wpinstagram', $this->wpinstagram_path . 'wpinstagram.css', Array(), '0.5');
+                        if ($withfancybox) {
+                                wp_enqueue_script("fancybox", $this->wpinstagram_path."js/jquery.fancybox-1.3.4.pack.js", Array('jquery'), null);
+                                wp_enqueue_style("fancybox-css", $this->wpinstagram_path."js/fancybox/jquery.fancybox-1.3.4.min.css", Array(), null);
+                                wp_enqueue_script("jquery.mousewhell", $this->wpinstagram_path."js/jquery.mousewheel-3.0.4.pack.js", Array('jquery'), null);
+                                add_action('wp_footer', 'load_wpinstagram_footer');
+                        }
+                }
 	}
 		
 	function widget($args, $instance) {
-		extract($args);
-		
-		echo $before_widget;
-		
-		#determine our settings
-		$settings = get_option($this->id . 'settings');
-		$updated = (int) get_option($this->id . 'last_updated');
-		
-		#settings cache of 1 hour
-		
-		if (!$settings || !$updated || ($updated < (time() - 3600))) {
-			#grab our settings
-			$response = wp_remote_get("http://wordpress.ink361.com/fetch?widget=" . get_option($this->id . 'token'));
-		
-			if (is_wp_error($response) || !(($response['response']['code'] < 400 && $response['response']['code'] >= 200))) {
-				#oh dear, better log something here
-			} else {
-				$data = json_decode($response['body'], true);
-								
-				if ($data['data'] && $data['data']['settings'] && $data['data']['settings']) {
-					update_option($this->id . 'settings', $data['data']['settings']);
-					update_option($this->id . 'last_updated', time());
-					
-					$settings = get_option($this->id . 'settings');
-				}
-			}			
-		}
-		
-		if (!$settings['display']) {
-			$settings['display'] = 'self';
-		}
-		
-		if (!$settings['access_token']) {
-			#its no use, display nothing
-			return null;
-		}
-		
-		#have we got a cache?
-		$cached = json_decode(get_option($this->id . 'result_cache'), true);
-		$cache_time = get_option($this->id . 'cache_time');
-		$shown = false;
-		
-		if ($cached && $cache_time && $cache_time > (time() - 3600)) {
-			$shown = $this->_display_results($cached, $settings, true);
-		}
+		extract($args);		
 
-		if (!$shown) {
-			#what display type
-			if ($settings['display'] == 'self') {
-				#our own pictures
-				$this->_display_user('self', $settings);
-			} else if ($settings['display'] == 'tag' && $settings['tag']) {
-				#a single tag
-				$this->_display_tag($settings['tag'], $settings);
-			} else if ($settings['display'] == 'likes') {
-				#our likes
-				$this->_display_likes($settings);
-			} else if ($settings['display'] == 'feed') {
-				#our feed
-				$this->_display_feed($settings);
-			} else if ($settings['display'] == 'popular') {
-				$this->_display_popular($settings);
-			} else if ($settings['display'] == 'user' && $settings['user']) {
-				#another users photos
-				$this->_display_user($settings['user'], $settings);			
-			} else if ($settings['display'] == 'tags') {
-				#multiple tags
-				$this->_display_tags($settings['tag1'], $settings['tag2'], $settings['tag3'], $settings['tag4'], $settings);
-			} else {
-				#no idea
+		if ($instance['db_id']) {
+			global $wpdb;
+	
+			$details = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . $this->_tablePrefix() . "widget WHERE uid=%s", $instance['db_id']));		
+
+			if (sizeof($details) > 0) {
+				$details = $details[0];
+				
+				$details->settings = unserialize($details->settings);
+				
+				if (is_bool($details->settings)) {
+					$details->settings = array();
+				}
+				
+				#ensure we have all of our values
+				$details->settings = $this->_confirmDefaults($details->settings);								
+				
+				#is our cache valid
+				if ($details->cache_time !== NULL && $details->cache_time !== '') {				
+					$time = DateTime::createFromFormat('Y-m-d H:i:s', $details->cache_time);
+					
+					#need to get it from the DB as it may run on a different timezone setting
+					$fromDB = $wpdb->get_results("SELECT NOW() as dbtime");
+					
+					$now = DateTime::createFromFormat('Y-m-d H:i:s', $fromDB[0]->dbtime);
+					
+					$interval = new DateInterval('PT' . $this->_defaultCacheTime() . 'S');
+					
+					if ($details->cache_timeout !== NULL && $details->cache_timeout !== '') {
+						$interval = new DateInterval('PT' . $details->cache_timeout . 'S');
+					}
+
+					if ($time->add($interval) > $now) {
+						#cache time is valid, confirm cached value matches what we expect
+						if ($details->result_cache !== NULL && $details->result_cache !== '') {
+							$cached = json_decode($details->result_cache, true);
+							
+							if (is_array($cached) && sizeof($cached) > 0) {
+								#should be ok, we can always add more checks later
+								$this->_display_results($cached, $details, true);
+								return;
+							}														
+						}
+					}
+				}
+		
+				if ($details->token && $details->token !== '') {
+					if ($details->settings['display'] == 'self') {
+						$this->_display_user('self', $details);					
+					} else if ($details->settings['display'] == 'likes') {
+						$this->_display_likes($details);
+					} else if ($details->settings['display'] == 'feed') {
+						$this->_display_feed($details);
+					} else if ($details->settings['display'] == 'popular') {
+						$this->_display_popular($details);					
+					} else if ($details->settings['display'] == 'user') {
+						$this->_display_user($details->settings['user'], $details);
+					} else if ($details->settings['display'] == 'tags') {
+						error_log("Hello world!");
+						$this->_display_tags($details->settings['tag1'], 
+								     $details->settings['tag2'], 
+								     $details->settings['tag3'], 
+								     $details->settings['tag4'], 
+								     $details);
+					}
+				}				
 			}
 		}
-		
-		echo $after_widget;
-	}
+        }
 
+	
+	function form($instance) {
+		wp_enqueue_script("jquery");
+		wp_enqueue_script("lightbox", plugin_dir_url(__FILE__)."js/lightbox.js", Array('jquery'), null);
+
+		$details = NULL;
+
+		if ($instance['db_id']) {
+			global $wpdb;
+	
+			$details = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . $this->_tablePrefix() . "widget WHERE uid=%s", $instance['db_id']));		
+			
+			if (sizeof($details) > 0) {
+				$details = $details[0];
+				
+				$details->settings = unserialize($details->settings);
+				
+				if (is_bool($details->settings)) {
+					$details->settings = array();
+				}
+				
+				#ensure we have all of our values
+				$details->settings = $this->_confirmDefaults($details->settings);
+				
+				if ($details->error_detected > 0) {
+					require(plugin_dir_path(__FILE__) . 'templates/errorBackend.php');
+				}
+			}
+		}
+
+		require(plugin_dir_path(__FILE__) . 'templates/setupButton.php');
+		
+		return;
+	}
+	
+	function update($new_instance, $old_instance){
+		$instance = $new_instance;
+		global $wpdb;
+		
+		#new version
+		if (!$old_instance['db_id']) {
+			#create new uid in db
+			error_log("Creating new db_id");
+			
+			$wpdb->get_results($wpdb->prepare("INSERT INTO " . $this->_tablePrefix() . "widget (localid, setup, last_modified, cache_timeout) VALUES (%s, 0, NOW(), %s)", $this->id, $this->_defaultCacheTime()));
+			$result = $wpdb->get_results("SELECT last_insert_id() as uid");
+						
+			$instance['db_id'] = $result[0]->uid;
+		} else {
+			$instance['db_id'] = $old_instance['db_id'];
+		}
+		
+		if ($_POST['instance_token']) {
+			$wpdb->get_results($wpdb->prepare("UPDATE " . $this->_tablePrefix() . "widget SET error_detected=0, setup=1, token=%s, last_modified=NOW() WHERE uid=%s", $_POST['instance_token'], $instance['db_id']));
+		}
+		
+		#compile our settings if we have them
+		if ($_POST['title']) { #we always have our title
+			$settings = array(
+				"title"		=> stripslashes($_POST['title']),
+				"user"		=> $_POST['user'],
+				"username" 	=> stripslashes($_POST['username']),
+				"tag1"		=> stripslashes($_POST['tag1']),
+				"tag2"		=> stripslashes($_POST['tag2']),
+				"tag3"		=> stripslashes($_POST['tag3']),
+				"tag4"		=> stripslashes($_POST['tag4']),
+				"width"		=> stripslashes($_POST['width']),
+				"height"	=> stripslashes($_POST['height']),
+				"delay"		=> stripslashes($_POST['delay']),
+				"display"	=> $_POST['display'],
+				"method"	=> $_POST['method'],
+				"cols"		=> $_POST['cols'],
+				"rows"		=> $_POST['rows'],
+				"transition"	=> $_POST['transition'],
+				"responsive"	=> $_POST['responsive'],
+				"sharing"	=> $_POST['sharing'],
+				"verbose"	=> $_POST['verbose'],
+			);
+			
+			$cacheTimeout = NULL;
+			if ($_POST['cache_duration']) {
+				$cacheTimeout = $_POST['cache_duration'];
+			}
+			
+			$wpdb->get_results($wpdb->prepare("UPDATE " . $this->_tablePrefix() . "widget SET settings=%s, cache_timeout=%s, cache_time=NULL, last_modified=NOW() WHERE uid=%s", serialize($settings), $cacheTimeout, $instance['db_id']));
+		}
+		
+		return $instance;
+	}
+        
 	function _display_popular($settings) {
 		$images = array();
 
-		if ($settings['access_token']) {
-			$url = "https://api.instagram.com/v1/media/popular?count=50&access_token=" . $settings['access_token'];
+		if ($settings->token) {
+			$url = "https://api.instagram.com/v1/media/popular?count=50&access_token=" . $settings->token;
 			
 			$response = wp_remote_get($url, array('sslverify' => apply_filters('https_local_ssl_verify', false)));
 			if (!is_wp_error($response) && $response['response']['code'] < 400 && $response['response']['code'] >= 200) {
@@ -190,20 +289,26 @@ class WPInstagram_Widget extends WP_Widget {
 				if ($data['meta']['code'] == 200) {
 					foreach ($data['data'] as $item) {
 						if (isset($item['caption']['text'])) {
-							$image_title = $item['user']['username'] . ': &quot;' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '&quot;';
+							$image_title = '@' . $item['user']['username'] . ': "' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '"';
 						} else if (!isset($item['caption']['text'])) {
-							$image_title = "Instagram by " . $item['user']['username'];
+							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
 						$images[] = array(
 							"id"		=> $item['id'],
 							"title"		=> $image_title,
+							"parsedtitle"	=> $this->_parse_title($image_title),
+							"user"		=> $item['user']['id'],
+							"username"	=> $item['user']['username'],
 							"image_small"	=> $item['images']['thumbnail']['url'],
 							"image_middle"	=> $item['images']['low_resolution']['url'],
 							"image_large"	=> $item['images']['standard_resolution']['url'],
 						);
 					}
 				}							
+			} else {
+				$this->_handle_error_response($response, $settings);
+				return;
 			}			
 		}
 		
@@ -213,8 +318,8 @@ class WPInstagram_Widget extends WP_Widget {
 	function _display_feed($settings) {
 		$images = array();
 
-		if ($settings['access_token']) {
-			$url = "https://api.instagram.com/v1/users/self/feed?count=50&access_token=" . $settings['access_token'];
+		if ($settings->token) {
+			$url = "https://api.instagram.com/v1/users/self/feed?count=50&access_token=" . $settings->token;
 			
 			$response = wp_remote_get($url, array('sslverify' => apply_filters('https_local_ssl_verify', false)));
 			if (!is_wp_error($response) && $response['response']['code'] < 400 && $response['response']['code'] >= 200) {
@@ -222,20 +327,26 @@ class WPInstagram_Widget extends WP_Widget {
 				if ($data['meta']['code'] == 200) {
 					foreach ($data['data'] as $item) {
 						if (isset($item['caption']['text'])) {
-							$image_title = $item['user']['username'] . ': &quot;' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '&quot;';
+							$image_title = '@' . $item['user']['username'] . ': "' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '"';
 						} else if (!isset($item['caption']['text'])) {
-							$image_title = "Instagram by " . $item['user']['username'];
+							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
 						$images[] = array(
 							"id"		=> $item['id'],
-							"title"		=> $image_title,
+							"title"		=> $image_title,							
+							"parsedtitle"	=> $this->_parse_title($image_title),
+							"user"		=> $item['user']['id'],
+							"username"	=> $item['user']['username'],
 							"image_small"	=> $item['images']['thumbnail']['url'],
 							"image_middle"	=> $item['images']['low_resolution']['url'],
 							"image_large"	=> $item['images']['standard_resolution']['url'],
 						);
 					}
 				}							
+			} else {
+				$this->_handle_error_response($response, $settings);
+				return;
 			}			
 		}
 		
@@ -245,8 +356,8 @@ class WPInstagram_Widget extends WP_Widget {
 	function _display_likes($settings) {
 		$images = array();
 		
-		if ($settings['access_token']) {
-			$url = "https://api.instagram.com/v1/users/self/media/liked?count=50&access_token=" . $settings['access_token'];
+		if ($settings->token) {
+			$url = "https://api.instagram.com/v1/users/self/media/liked?count=50&access_token=" . $settings->token;
 			
 			$response = wp_remote_get($url, array('sslverify' => apply_filters('https_local_ssl_verify', false)));
 			if (!is_wp_error($response) && $response['response']['code'] < 400 && $response['response']['code'] >= 200) {
@@ -254,20 +365,26 @@ class WPInstagram_Widget extends WP_Widget {
 				if ($data['meta']['code'] == 200) {
 					foreach ($data['data'] as $item) {
 						if (isset($item['caption']['text'])) {
-							$image_title = $item['user']['username'] . ': &quot;' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '&quot;';
+							$image_title = '@' . $item['user']['username'] . ': "' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '"';
 						} else if (!isset($item['caption']['text'])) {
-							$image_title = "Instagram by " . $item['user']['username'];
+							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
 						$images[] = array(
 							"id"		=> $item['id'],
 							"title"		=> $image_title,
+							"parsedtitle"	=> $this->_parse_title($image_title),
+							"user"		=> $item['user']['id'],
+							"username"	=> $item['user']['username'],
 							"image_small"	=> $item['images']['thumbnail']['url'],
 							"image_middle"	=> $item['images']['low_resolution']['url'],
 							"image_large"	=> $item['images']['standard_resolution']['url'],
 						);
 					}
 				}							
+			} else {
+				$this->_handle_error_response($response, $settings);
+				return;
 			}			
 		}
 		
@@ -278,29 +395,35 @@ class WPInstagram_Widget extends WP_Widget {
 		$images = array();
 		$user = str_replace("ig-", "", $user);
 		
-		if ($settings['access_token']) {
-			$url = "https://api.instagram.com/v1/users/" . $user . "/media/recent?count=50&access_token=" . $settings['access_token'];
+		if ($settings->token) {
+			$url = "https://api.instagram.com/v1/users/" . $user . "/media/recent?count=50&access_token=" . $settings->token;
 			
-			$response = wp_remote_get($url, array('sslverify' => apply_filters('https_local_ssl_verify', false)));
+			$response = wp_remote_get($url, array('sslverify' => apply_filters('https_local_ssl_verify', false)));									
 			if (!is_wp_error($response) && $response['response']['code'] < 400 && $response['response']['code'] >= 200) {
 				$data = json_decode($response['body'], true);
 				if ($data['meta']['code'] == 200) {
 					foreach ($data['data'] as $item) {
 						if (isset($item['caption']['text'])) {
-							$image_title = $item['user']['username'] . ': &quot;' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '&quot;';
+							$image_title = '@' . $item['user']['username'] . ': "' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '"';
 						} else if (!isset($item['caption']['text'])) {
-							$image_title = "Instagram by " . $item['user']['username'];
+							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
 						$images[] = array(
 							"id"		=> $item['id'],
 							"title"		=> $image_title,
+							"parsedtitle"	=> $this->_parse_title($image_title),
+							"user"		=> $item['user']['id'],
+							"username"	=> $item['user']['username'],
 							"image_small"	=> $item['images']['thumbnail']['url'],
 							"image_middle"	=> $item['images']['low_resolution']['url'],
 							"image_large"	=> $item['images']['standard_resolution']['url'],
 						);
 					}
 				}							
+			} else {
+				$this->_handle_error_response($response, $settings);
+				return;
 			}
 		}
 		
@@ -330,8 +453,7 @@ class WPInstagram_Widget extends WP_Widget {
 		return $this->_display_results($images, $settings, false);
 	}
 	
-	function _display_tag($tag, $settings) {
-		
+	function _display_tag($tag, $settings) {		
 		return $this->_display_results($this->_get_tagged_photos($tag, $settings), $settings, false);
 	}
 	
@@ -340,8 +462,8 @@ class WPInstagram_Widget extends WP_Widget {
 		$tag = str_replace("#", "", $tag);
 		$images = array();
 		
-		if ($settings['access_token']) {
-			$url = "https://api.instagram.com/v1/tags/" . $tag . "/media/recent?count=50&access_token=" . $settings['access_token'];
+		if ($settings->token) {
+			$url = "https://api.instagram.com/v1/tags/" . $tag . "/media/recent?count=50&access_token=" . $settings->token;
 			
 			$response = wp_remote_get($url, array('sslverify' => apply_filters('https_local_ssl_verify', false)));
 			if (!is_wp_error($response) && $response['response']['code'] < 400 && $response['response']['code'] >= 200) {
@@ -349,38 +471,98 @@ class WPInstagram_Widget extends WP_Widget {
 				if ($data['meta']['code'] == 200) {
 					foreach ($data['data'] as $item) {
 						if (isset($item['caption']['text'])) {
-							$image_title = $item['user']['username'] . ': &quot;' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '&quot;';
+							$image_title = '@' . $item['user']['username'] . ': "' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '"';
 						} else if (!isset($item['caption']['text'])) {
-							$image_title = "Instagram by " . $item['user']['username'];
+							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
 						$images[] = array(
 							"id"		=> $item['id'],
 							"title"		=> $image_title,
+							"parsedtitle"	=> $this->_parse_title($image_title),
+							"user"		=> $item['user']['id'],
+							"username"	=> $item['user']['username'],
 							"image_small"	=> $item['images']['thumbnail']['url'],
 							"image_middle"	=> $item['images']['low_resolution']['url'],
 							"image_large"	=> $item['images']['standard_resolution']['url'],
 						);
 					}
 				}				
+			} else {
+				$this->_handle_error_response($response, $settings);
+				return;
 			}
 		}	
 		
 		return $images;
 	}
 	
+	function _handle_error_response($response, $settings) {
+		$code = -9999;
+		$error = "";
+	
+		if (is_wp_error($response)) {
+			$error = "An unknown error occurred, please make sure that your Wordpress installation can access remote resources.";
+		} else {
+			if (array_key_exists('response', $response)) {
+				if (array_key_exists('code', $response['response'])) {
+			 		$code = $response['response']['code'];
+				}
+			}
+			if (array_key_exists('meta', $response) && array_key_exists('error_message', $response['meta'])) {
+				$error = $response['meta']['error_message'];
+			}
+			if (array_key_exists('error_message', $response)) {
+				$error = $response['error_message'];
+			}
+		}
+
+		#standard messages
+		if ($code === 400) {
+			$error = 'Your access token has expired! Please login to your administration to reset your token.';
+			$code = 1;
+		}
+		
+		if ($code === 429) {
+			$error = 'You have reached your API request limit, consider adjusting your cache timeout value in your administration.';
+			$code = 2;
+		}
+		
+		$this->_display_error($error, $code, $settings);
+	}
+	
+	function _display_error($error, $code, $settings) {
+		if ($settings->settings['verbose'] === 'yes') {
+			require(plugin_dir_path(__FILE__) . 'templates/errorFrontend.php');
+			
+			if ($code > 0) {
+				#set the error detected flag
+				global $wpdb;				
+				$wpdb->get_results($wpdb->prepare("UPDATE " . $this->_tablePrefix() . "widget SET error_detected=%s WHERE uid=%s", $code, $settings->uid));
+			}
+		} else {
+			#log it into our error log instead
+			error_log($error);
+		}
+	}
+	
 	function _display_results($images, $settings, $fromCache) {
 		#now lets cache our images		
 		if (!$fromCache) {
-			update_option($this->id . 'result_cache', json_encode($images));
-			update_option($this->id . 'cache_time', time());
+			global $wpdb;
+			
+			$wpdb->get_results($wpdb->prepare("UPDATE " . $this->_tablePrefix() . "widget SET result_cache=%s, cache_time=NOW() WHERE uid=%s", json_encode($images), $settings->uid));
+			
+			if ($settings->error_detected == 2) {
+				$wpdb->get_results($wpdb->prepare("UPDATE " . $this->_tablePrefix() . "widget SET error_detected=0 WHERE uid=%s", $settings->uid));
+			}
 		}
 		
-		if (!$settings['method'] || $settings['method'] == 'grid') {
+		if (!$settings->settings['method'] || $settings->settings['method'] == 'grid') {
 			require(plugin_dir_path(__FILE__) . 'templates/grid.php');								
-		} else if ($settings['method'] == 'grid-page') {
+		} else if ($settings->settings['method'] == 'grid-page') {
 			require(plugin_dir_path(__FILE__) . 'templates/gridPage.php');										
-		} else if ($settings['method'] == 'slideshow') {
+		} else if ($settings->settings['method'] == 'slideshow') {
 			require(plugin_dir_path(__FILE__) . 'templates/slideshow.php');										
 		}
 		
@@ -391,105 +573,274 @@ class WPInstagram_Widget extends WP_Widget {
 		}
 	}
 
-	function update($new_instance, $old_instance){
-		$instance = $new_instance;
-		
-		update_option($this->id . 'settings', null);
-		update_option($this->id . 'result_cache', null);
+        function _parse_title($title) {
+        	$title = preg_replace('/#([0-9a-zA-Z\-_]+)/i', '<a href="http://ink361.com/app/tag/$1" alt="View Instagram tag $1" title="View Instagram tag $1" target="_blank">#$1</a>', $title);
+        	$title = preg_replace('/[ ]#([0-9a-zA-Z\-_]+)/i', '<a href="http://ink361.com/app/tag/$1" alt="View Instagram tag $1" title="View Instagram tag $1" target="_blank">#$1</a>', $title);
+        
+        	return $title;
+        }
+
+	function _tablePrefix($args=array()) {
+		extract($args);
 	
-		return $instance;
+		return 'igwidget_';
+	}
+	
+	function _defaultCacheTime($args=array()) {
+		extract($args);
+		
+		#5 minutes by default
+		return 300;
 	}
 
-	function form($instance) {
-		#new version
+	function _tableDescription($args=array()) {
+		extract($args);
 		
-		if (!array_key_exists('token', $instance) || !$instance['token']) {
-			$instance['token'] = get_option($this->id . 'token');			
-		}
+		return array(
+			$this->_tablePrefix() . 'widget' => array(
+				'uid' 	=> array(
+					'type' 	=> 'int(11)',
+					'null' 	=> false,
+					'pk' 	=> true,
+					'auto'	=> true,
+				),
+				'localid' => array(
+					'type' 	=> 'varchar(255)',
+					'null' 	=> false,
+				),
+				'token'	=> array(
+					'type' 	=> 'varchar(255)',
+					'null'	=> true,
+				),
+				'setup' => array(
+					'type'	=> 'int(1)',
+					'null'	=> false,
+				),
+				'error_detected' => array(
+					'type'	=> 'int(1)',
+					'null'	=> true,
+				),
+				'settings' => array(
+					'type'	=> 'text',
+					'null'	=> true,
+				),
+				'last_modified' => array(
+					'type' 	=> 'datetime',
+					'null'	=> true,
+				),
+				'result_cache' => array(
+					'type' 	=> 'mediumtext',
+					'null'	=> true,
+				),
+				'cache_time' => array(
+					'type' 	=> 'datetime',
+					'null'	=> true,
+				),
+				'cache_timeout' => array(
+					'type' 	=> 'int(9)',
+					'null'	=> true,
+				),
+			),
+		);
+	}
+	
+	function _describeTable($name) {
+		global $wpdb;
 		
-		if (!array_key_exists('token', $instance) || !$instance['token']) {
-			#configure our options - wordpress needs a way to save an instances values directly, it just doesn't work right now		
-			add_option($this->id . 'token', null, false, false);
-			add_option($this->id . 'account', null, false, false);
-			add_option($this->id . 'setup', null, false, false);
-			add_option($this->id . 'waiting', null, false, false);
-			add_option($this->id . 'settings', null, false, false);
-			add_option($this->id . 'last_updated', null, false, false);
-			add_option($this->id . 'result_cache', null, false, false);
-			add_option($this->id . 'cache_time', null, false, false);
-			
-			#issue with token, get token
-			
-			$account = get_option('wpaccount');
-			$url = "http://wordpress.ink361.com/init";			
-			if ($account) {
-				$url .= "?account=" . $account;
-			}			
-			$response = wp_remote_get($url);
-			
-			if (is_wp_error($response) || !(($response['response']['code'] < 400 && $response['response']['code'] >= 200))) {
-				require(plugin_dir_path(__FILE__) . 'templates/initError.php');
-				return;	
-			} else {
-				#its all good. Thanks for making me write php
-				$data = json_decode($response['body'], true);
-
-				if ($data['meta'] && $data['meta']['code'] && $data['meta']['code'] == "200") {
-					#nice, lets see if our token is in there
-					if ($data['data'] && $data['data']['widget'] && $data['data']['account']) {
-						#good, lets save that mother
-						$instance['token'] = $data['data']['widget'];
-						$instance['account'] = $data['data']['account'];
-						
-						update_option($this->id . 'token', $instance['token']);
-						update_option('wpaccount', $instance['account']);
-					} else {
-						require(plugin_dir_path(__FILE__) . 'templates/initError.php');								
-						return;	
-					}				
-				} else {
-					require(plugin_dir_path(__FILE__) . 'templates/initError.php');				
-					return;
-				}
-			}
-		}
+		$ret = array();		
+		$result = $wpdb->get_results("DESC $name");
 		
-		if (!array_key_exists('setup', $instance) || !$instance['setup']) {
-			$instance['setup'] = get_option($this->id . 'setup');
-		}		
-		if (!array_key_exists('waiting', $instance) || !$instance['waiting']) {
-			$instance['waiting'] = get_option($this->id . 'waiting');
-		}
-
-		if (!array_key_exists('setup', $instance) || !$instance['setup']) {
-			#fetch out widget settings to determine if its been setup
-			$response = wp_remote_get("http://wordpress.ink361.com/fetch?widget=" . $instance['token']);
-		
-			if (is_wp_error($response) || !(($response['response']['code'] < 400 && $response['response']['code'] >= 200))) {
-				require(plugin_dir_path(__FILE__) . 'templates/initError.php');
-				return;
-			} else {
-				$data = json_decode($response['body'], true);
-				if ($data['data'] && $data['data']['settings'] && $data['data']['settings']['setup']) {
-					$instance['setup'] = true;
-					update_option($this->id . 'setup', $instance['setup']);
-				} else if ($data['data'] && $data['data']['settings'] && $data['data']['settings']['access_token']) {
-					$instance['waiting'] = true;
-					update_option($this->id . 'waiting', $instance['waiting']);			
-				}
-			}
-		}
-		
-		wp_enqueue_script("jquery");
-		wp_enqueue_script("lightbox", plugin_dir_url(__FILE__)."js/lightbox.js", Array('jquery'), null);
-				
-		if (!array_key_exists('setup', $instance) || !$instance['setup']) {				
-			require(plugin_dir_path(__FILE__) . 'templates/setupButton.php');
+		if (sizeof($result) == 0) {
+			return NULL;
 		} else {
-			require(plugin_dir_path(__FILE__) . 'templates/configureButton.php');
+			foreach ($result as $column) {
+				$fields = array();
+
+				#type
+				$fields['type'] = strtolower($column->Type);
+				#null				
+				if (strtolower($fields->Null) === 'no') {
+					$fields['null'] = false;
+				} else {
+					$fields['null'] = true;
+				}
+				#pk
+				if (strtolower($fields->Key) === 'pri') {
+					$fields['pk'] = true;
+				} else {
+					$fields['pk'] = false;
+				}
+				#auto
+				if (strtolower($fields->Extra) === 'auto_increment') {
+					$fields['auto'] = true;
+				} else {
+					$fields['auto'] = false;
+				}
+
+				$ret[$column->Field] = $fields;
+			}
 		}				
 		
-		return;
+		return $ret;
+	}
+	
+	function handleTables($args=array()) {
+		global $wpdb;
+		
+		extract($args);
+		
+		$tables = $this->_tableDescription();
+		
+		foreach ($tables as $name => $description) {
+			$currentTable = $this->_describeTable($name);		
+			
+			if (is_null($currentTable)) {
+				#make the table!
+				$query = "CREATE TABLE $name (";
+				
+				foreach ($description as $columnName => $columnDetails) {
+					$query .= " $columnName ";
+					if ($columnDetails['type']) {
+						$query .= $columnDetails['type'] . ' ';
+					} else {
+						$query .= ' varchar(255) ';
+					}
+					
+					if ($columnDetails['null']) {
+						$query .= ' NULL ';
+					} else {
+						$query .= ' NOT NULL ';
+					}
+					
+					if ($columnDetails['auto']) {
+						$query .= ' auto_increment ';
+					}
+					
+					if ($columnDetails['pk']) {
+						$query .= ' primary key ';
+					}
+					
+					$query .= ', ';
+				}
+				
+				$query = substr($query, 0, -2);
+				$query .= ")";
+				$result = $wpdb->get_results($query);
+			} else {
+				#compare the columns to see if we need to add one
+				foreach ($description as $columnName => $columnDetails) {
+					$found = false;
+					foreach ($currentTable as $currentName => $currentDetails) {
+						if ($currentName === $columnName) {
+							$found = true;
+						}
+					}
+					
+					if ($found === false) {
+						$query = "ALTER TABLE $name ADD COLUMN ";
+						
+						$query .= " $columnName ";
+						if ($columnDetails['type']) {
+							$query .= $columnDetails['type'] . ' ';
+						} else {
+							$query .= ' varchar(255) ';
+						}
+					
+						if ($columnDetails['null']) {
+							$query .= ' NULL ';
+						} else {
+							$query .= ' NOT NULL ';
+						}
+					
+						if ($columnDetails['auto']) {
+							$query .= ' auto_increment ';
+						}
+						
+						if ($columnDetails['pk']) {
+							$query .= ' primary key ';
+						}
+						
+						$result = $wpdb->get_results($query);
+					}
+				}
+			}
+		}
+	}
+	
+	function _confirmDefaults($settings) {
+		if (!array_key_exists("title", $settings) 	|| $settings['title'] === '') {
+			$settings['title'] 	= 'My Instagrams';
+		}
+		
+		if (!array_key_exists("user", $settings)) {
+			$settings['user'] 	= '';
+		}
+		
+		if (!array_key_exists("username", $settings)) {
+			$settings['username'] 	= '';
+		}
+		
+		if (!array_key_exists("tag1", $settings)) {
+			$settings['tag1'] 	= '';
+		}
+		
+		if (!array_key_exists("tag2", $settings)) {
+			$settings['tag2']	= '';
+		}
+
+		if (!array_key_exists("tag3", $settings)) {
+			$settings['tag3']	= '';
+		}
+		
+		if (!array_key_exists("tag4", $settings)) {
+			$settings['tag4']	= '';
+		}
+		
+		if (!array_key_exists("width", $settings) 	|| $settings['width'] === '') {
+			$settings['width'] 	= '220';
+		}
+		
+		if (!array_key_exists("height", $settings) 	|| $settings['height'] === '') {
+			$settings['height'] 	= '220';
+		}
+		
+		if (!array_key_exists("delay", $settings) 	|| $settings['delay'] === '') {
+			$settings['delay'] 	= '4';
+		}
+		
+		if (!array_key_exists("display", $settings) 	|| $settings['display'] === '') {
+			$settings['display'] 	= 'self';
+		}
+		
+		if (!array_key_exists("method", $settings) 	|| $settings['method'] === '') {
+			$settings['method'] 	= 'grid';
+		}
+		
+		if (!array_key_exists("cols", $settings) 	|| $settings['cols'] === '') {
+			$settings['cols'] 	= '3';
+		}
+		
+		if (!array_key_exists("rows", $settings) 	|| $settings['rows'] === '') {
+			$settings['rows'] 	= '3';
+		}
+		
+		if (!array_key_exists("transition", $settings) 	|| $settings['transition'] === '') {
+			$settings['transition'] = 'vert';
+		}
+		
+		if (!array_key_exists("responsive", $settings) 	|| $settings['responsive'] === '') {
+			$settings['responsive'] = 'yes';
+		}
+		
+		if (!array_key_exists("sharing", $settings)	|| $settings['sharing'] === '') {
+			$settings['sharing'] = 'yes';
+		}
+		
+		if (!array_key_exists("verbose", $settings)	|| $settings['verbose'] === '') {
+			$settings['verbose'] = 'yes';
+		}
+		
+		return $settings;
 	}
 }
 ?>
