@@ -7,7 +7,7 @@
 * @subpackage   classes
 * @since        3.0
 * @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
-* @copyright    Copyright (c) 2013, Nicolas GUILLAUME
+* @copyright    Copyright (c) 2013-2015, Nicolas GUILLAUME
 * @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -907,7 +907,7 @@ if ( ! class_exists( 'TC_meta_boxes' ) ) :
                           </td>
                           <td style="vertical-align:middle" class="">
                               <?php if( $button_text != null) : ?>
-                                <p class="btn btn-large btn-primary"><?php echo $button_text; ?></a>
+                                <p class="btn btn-large btn-primary"><?php echo $button_text; ?></p>
                               <?php endif; ?>
                           </td>
                            <td style="vertical-align:middle" class="">

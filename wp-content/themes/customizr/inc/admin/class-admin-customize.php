@@ -7,7 +7,7 @@
 * @subpackage   classes
 * @since        3.0
 * @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
-* @copyright    Copyright (c) 2013, Nicolas GUILLAUME
+* @copyright    Copyright (c) 2013-2015, Nicolas GUILLAUME
 * @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -17,9 +17,22 @@ if ( ! class_exists( 'TC_customize' ) ) :
     public $control_translations;
 
     function __construct () {
+      global $wp_version;
+      //check if WP version >= 3.4 to include customizer functions
+      //Shall we really keep this ?
+      if ( ! version_compare( $wp_version, '3.4' , '>=' ) ) {
+        add_action( 'admin_menu'                    , array( $this , 'tc_add_fallback_page' ));
+        return;
+      }
+
       self::$instance =& $this;
   		//add control class
-  		add_action ( 'customize_register'				                , array( $this , 'tc_add_controls_class' ) ,10,1);
+  		add_action ( 'customize_register'				                , array( $this , 'tc_add_controls_class' ) ,10,1);        
+
+  		//add grid/post list buttons
+  		add_action( '__before_setting_control'    , array( $this , 'tc_render_grid_control_link') );
+  		add_action( '__before_setting_control'    , array( $this , 'tc_render_link_to_grid') );
+
   		//control scripts and style
   		add_action ( 'customize_controls_enqueue_scripts'	      , array( $this , 'tc_customize_controls_js_css' ));
   		//add the customizer built with the builder below
@@ -210,7 +223,23 @@ if ( ! class_exists( 'TC_customize' ) ) :
 		}//end of customize generator function
 
 
+        /**
+        * hook __before_setting_control (declared in class-controls.php)
+        * @echo clickable text
+        */
+        function tc_render_grid_control_link( $set_id ) {
+          if ( false !== strpos( $set_id, 'tc_post_list_show_thumb' ) )
+            printf('<span class="tc-grid-toggle-controls" title="%1$s">%1$s</span>' , __('More grid design options' , 'customizr'));
+        }
 
+        /**
+        * hook __before_setting_control (declared in class-controls.php)
+        * @echo link
+        */
+        function tc_render_link_to_grid( $set_id ) {
+          if ( false !== strpos( $set_id, 'tc_front_layout' ) )
+            printf('<span class="button tc-navigate-to-post-list" title="%1$s">%1$s &raquo;</span>' , __('Jump to the blog design options' , 'customizr') );
+        }
 
 
 		/**
@@ -331,6 +360,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
     	$options['tc_hide_donate'] = true;
     	update_option( 'tc_theme_options', $options );
       set_transient( 'tc_cta', 'cta_waiting' , 60*60*24 );
+      wp_die();
     }
 
 
@@ -429,6 +459,61 @@ if ( ! class_exists( 'TC_customize' ) ) :
           ?>
         </div>
       </script>
+      <script type="text/template" id="rate-czr">
+        <?php
+        $_is_pro = 'customizr-pro' == TC___::$theme_name;
+          printf( '<span class="tc-rate-link">%1$s %2$s, <br/>%3$s <a href="%4$s" title="%5$s" class="tc-stars" target="_blank">%6$s</a> %7$s</span>',
+            __( 'If you like' , 'customizr' ),
+            ! $_is_pro ? __( 'the Customizr theme' , 'customizr') : __( 'the Customizr pro theme' , 'customizr'),
+            __( 'we would love to receive a' , 'customizr' ),
+            ! $_is_pro ? 'https://' . 'wordpress.org/support/view/theme-reviews/customizr?filter=5' : sprintf('%sextension/customizr-pro/#comments', TC_WEBSITE ),
+            __( 'Review the Customizr theme' , 'customizr' ),
+            '&#9733;&#9733;&#9733;&#9733;&#9733;',
+            __( 'rating. Thanks :) !' , 'customizr')
+          );
+        ?>
+      </script>
+      <?php
+    }
+
+
+
+    /**
+    * Add fallback admin page.
+    * @package Customizr
+    * @since Customizr 1.1
+    */
+    function tc_add_fallback_page() {
+        $theme_page = add_theme_page(
+            __( 'Upgrade WP' , 'customizr' ),   // Name of page
+            __( 'Upgrade WP' , 'customizr' ),   // Label in menu
+            'edit_theme_options' ,          // Capability required
+            'upgrade_wp.php' ,             // Menu slug, used to uniquely identify the page
+            array( $this , 'tc_fallback_admin_page' )         //function to be called to output the content of this page
+        );
+    }
+
+
+
+
+    /**
+    * Render fallback admin page.
+    * @package Customizr
+    * @since Customizr 1.1
+    */
+    function tc_fallback_admin_page() {
+      ?>
+        <div class="wrap upgrade_wordpress">
+          <div id="icon-options-general" class="icon32"><br></div>
+          <h2><?php _e( 'This theme requires WordPress 3.4+' , 'customizr' ) ?> </h2>
+          <br />
+          <p style="text-align:center">
+            <a style="padding: 8px" class="button-primary" href="<?php echo admin_url().'update-core.php' ?>" title="<?php _e( 'Upgrade Wordpress Now' , 'customizr' ) ?>">
+            <?php _e( 'Upgrade Wordpress Now' , 'customizr' ) ?></a>
+            <br /><br />
+          <img src="<?php echo TC_BASE_URL . 'screenshot.png' ?>" alt="Customizr" />
+          </p>
+        </div>
       <?php
     }
 

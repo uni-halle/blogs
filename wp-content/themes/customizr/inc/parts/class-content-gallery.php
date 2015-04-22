@@ -7,7 +7,7 @@
 * @subpackage   classes
 * @since        3.0.5
 * @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
-* @copyright    Copyright (c) 2013, Nicolas GUILLAUME
+* @copyright    Copyright (c) 2013-2015, Nicolas GUILLAUME
 * @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -135,12 +135,18 @@ if ( ! class_exists( 'TC_gallery' ) ) :
           $i = 0;
           foreach ( $attachments as $id => $attachment ) {
 
-            $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+            if ( isset($attr['link']) && 'file' == $attr['link'] )
+              $img = wp_get_attachment_link($id, $size, false, false);
+            elseif ( isset($attr['link'] ) )
+              // case link == none
+              $img =  wp_get_attachment_image($id, $size);
+            else // link to the attachment page
+              $img = wp_get_attachment_link($id, $size, true, false);
 
             $output .= "<{$itemtag} class='gallery-item'>";
             $output .= "
               <{$icontag} class='gallery-icon'>
-                $link
+                $img
               </{$icontag}>";
             if ( $captiontag && trim($attachment->post_excerpt) ) {
               $output .= "
