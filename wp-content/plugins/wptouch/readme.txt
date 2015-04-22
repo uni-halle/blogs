@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.8
-Stable tag: 3.7.5.3
+Stable tag: 3.7.6
 Tested up to: 4.1.1
 License: GPLv2
 
@@ -39,6 +39,19 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.7.6 (April 20, 2015) =
+
+* Added: Improved SEO compatibility
+* Added: Web-App Mode support for Chrome on Android (Pro Only)
+* Added: Support for overriding admin translation when localization is selected (add define( 'WPTOUCH_ADMIN_IGNORE_LOCALIZATION', true );  to wp-config.php)
+* Changed: Colour picker is now more resilient
+* Changed: Homescreen icon now recommends 192x192 (best size for high-DPI devices, backwards compatible)
+* Changed: Web App Mode's persistence feature now fiters out more logout URLs (Pro Only)
+* Fixed: Bootstrap instance no longer attempts to load glyphicon image
+* Fixed: Occasional Infinity Cache/theme switch conflict (Pro Only)
+* Fixed: Rare issue with MobileStore/Web App Mode (Pro Only)
+* Fixed: add_query_arg/remove_query_arg vulnerability
 
 = Version 3.7.5.3 (March 30, 2015) =
 

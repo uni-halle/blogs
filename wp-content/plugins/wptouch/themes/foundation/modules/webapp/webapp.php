@@ -34,7 +34,7 @@ function foundation_webapp_settings( $page_options ) {
 			__( 'Settings', 'wptouch-pro' ),
 			'foundation-web-app-settings',
 			array(
-				wptouch_add_pro_setting( 'checkbox', 'webapp_mode_enabled', __( 'Enable iOS Web-App Mode', 'wptouch-pro' ), '', WPTOUCH_SETTING_BASIC, '1.0' ),
+				wptouch_add_pro_setting( 'checkbox', 'webapp_mode_enabled', __( 'Enable Web-App Mode', 'wptouch-pro' ), '', WPTOUCH_SETTING_BASIC, '1.0' ),
 				wptouch_add_pro_setting(
 					'checkbox',
 					'webapp_enable_persistence',

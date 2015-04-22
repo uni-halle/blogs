@@ -23,7 +23,8 @@ function foundation_base_get_script_deps() {
 		$script_deps[] = 'foundation_infinite_scroll';
 	}
 
-	if ( defined( 'WPTOUCH_MODULE_WEBAPP_INSTALLED' ) && $settings->webapp_mode_enabled ) {
+	$wam_allowed = apply_filters( 'wptouch_allow_wam', true );
+	if ( defined( 'WPTOUCH_MODULE_WEBAPP_INSTALLED' ) && ( $wam_allowed && $settings->webapp_mode_enabled ) ) {
 		$script_deps[] = 'foundation_webapp';
 	}
 

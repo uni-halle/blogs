@@ -5,6 +5,9 @@ function wptouch_should_load_rtl() {
 
 	if ( is_admin() ) {
 		$settings = wptouch_get_settings();
+		if ( defined( 'WPTOUCH_ADMIN_IGNORE_LOCALIZATION' ) ) {
+			return false;
+		}
 		/* TODO: Remove deprecated setting
 		if ( !$settings->translate_admin ) {
 			return false;

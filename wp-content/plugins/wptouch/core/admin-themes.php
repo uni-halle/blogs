@@ -297,12 +297,12 @@ function wtouch_the_theme_activate_link_url() {
 }
 
 function wptouch_get_theme_activate_link_url() {
-	return add_query_arg( array(
+	return esc_url( add_query_arg( array(
 		'admin_command' => 'activate_theme',
 		'theme_name' => urlencode( wptouch_get_theme_title() ),
 		'theme_location' => urlencode( wptouch_get_theme_location() ),
 		'admin_menu_nonce' => wptouch_admin_menu_get_nonce()
-	) );
+	) ) );
 }
 
 function wtouch_the_theme_copy_link_url() {
@@ -310,12 +310,12 @@ function wtouch_the_theme_copy_link_url() {
 }
 
 function wptouch_get_theme_copy_link_url() {
-	return add_query_arg( array(
+	return esc_url( add_query_arg( array(
 		'admin_command' => 'copy_theme',
 		'theme_name' => urlencode( wptouch_get_theme_title() ),
 		'theme_location' => urlencode( wptouch_get_theme_location() ),
 		'admin_menu_nonce' => wptouch_admin_menu_get_nonce()
-	) );
+	) ) );
 }
 
 function wptouch_the_theme_delete_link_url() {
@@ -323,12 +323,12 @@ function wptouch_the_theme_delete_link_url() {
 }
 
 function wptouch_get_theme_delete_link_url() {
-	return add_query_arg( array(
+	return esc_url( add_query_arg( array(
 		'admin_command' => 'delete_theme',
 		'theme_name' => urlencode( wptouch_get_theme_title() ),
 		'theme_location' => urlencode( wptouch_get_theme_location() ),
 		'admin_menu_nonce' => wptouch_admin_menu_get_nonce()
-	) );
+	) ) );
 }
 
 global $wptouch_theme_previews;

@@ -791,6 +791,15 @@ class WPtouchProThree {
 		if ( isset( $this->get['wptouch_switch'] ) ) {
 			$expires_time = time()+3600*24*365; // 365 days
 			setcookie( WPTOUCH_COOKIE, $this->get['wptouch_switch'], $expires_time );
+
+			if ( isset( $_COOKIE[ WPTOUCH_CACHE_COOKIE ] ) ) {
+				if ( $this->get[ 'wptouch_switch' ] == 'desktop' ) {
+					setcookie ( WPTOUCH_CACHE_COOKIE, 'mobile-desktop', $expires_time );
+				} else {
+					setcookie ( WPTOUCH_CACHE_COOKIE, 'mobile', $expires_time );
+				}
+			}
+
 			if ( isset( $this->get[ 'nonce' ] ) && wp_verify_nonce( $this->get[ 'nonce' ], 'wptouch_switch' ) ) {
 				$this->redirect_to_page( $this->get['redirect'] );
 			}
@@ -1971,11 +1980,11 @@ class WPtouchProThree {
 
 			if ( $use_lang_file ) {
 				$can_load = true;
-				/* TODO: Remove deprecated setting
-				if ( is_admin() && !$settings->translate_admin ) {
+
+				if ( is_admin() && defined( 'WPTOUCH_ADMIN_IGNORE_LOCALIZATION' ) ) {
 					$can_load = false;
 				}
-				*/
+
 
 				if ( $can_load ) {
 					load_plugin_textdomain( 'wptouch-pro', false, $use_lang_rel_path );

@@ -7,7 +7,7 @@ function wptouchDoPreview() {
 			} else {
 				linkLocation = linkLocation + '&wptouch_preview_theme=enabled';
 			}
-			jQuery( this ).attr( 'href', linkLocation );
+			jQuery( this ).attr( 'href', linkLocation ).attr( 'rel', 'nofollow' );
 		}
 	});
 }

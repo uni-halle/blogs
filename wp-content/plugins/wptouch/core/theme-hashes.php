@@ -24,6 +24,7 @@
 		'1.4.3' => 'a2bbb9fd63161d740ee4779f50be1d12',
 		'1.4.4' => 'a6b49ebd3b34b3529d211c4d995199ac',
 		'1.4.5' => 'cb109aa4cfee47198e374329894d8c25',
+		'1.4.6' => 'c192c19a98c9e9177884316ef1cb1042',
 	);
 
 	$theme_hashes[ 'classic-redux' ] = array(
@@ -39,6 +40,7 @@
 		'1.3' => '7fba6b6f2c3bd3412f55d8959cae9fac',
 		'1.4' => '23318952284387cc4e2062239f82990d',
 		'1.4.1' => '32bdec6c054d6ed42abd6b2246a1aa06',
+		'1.4.2' => '3c0f16de172748293c52c50f170f3b4e',
 	);
 
 	$theme_hashes[ 'cms' ] = array(
@@ -52,6 +54,7 @@
 		'1.2.1' => '8c3e54890c22b88aac224d5c962136a5',
 		'1.3' => 'aa4bd2515f8ccddef0312bdb39aba269',
 		'1.3.1' => '13fae407661ef76ea1d8ee01acce08d1',
+		'1.3.2' => '98fa6422fa189e565e8bb4065d35cf72',
 	);
 
 	$theme_hashes[ 'mobilestore' ] = array(
@@ -61,6 +64,13 @@
 		'1.0.3' => 'd3e8407bb1c4e4328d650758aa46781c',
 		'1.0.4' => '9372b8c3ddb6557d396f4dda72a9be28',
 		'1.0.5' => 'f6c5ccc8494695c57b0eddea59e6f598',
+		'1.0.6' => '54bbcce22d5609e31f087d8a00e16d41',
+		'1.0.7' => 'f920d74d1645e267db18325a7a0fa937',
+		'1.0.8' => '9f7b9bf4a8596beb3d5b5ab27d704868',
+		'1.0.9' => 'f8d91a6078ff4e2dcad0a42c0474dbf6',
+		'1.0.10' => '56abeb5e3b30e765de80b5e6b698c9ab',
+		'1.0.11' => '1020590d5c5a921083098608cd02300f',
+		'1.0.11.1' => '28e40f15d3da632803eaad7e9a8dcf77',
 	);
 
 	$theme_hashes[ 'open' ] = array(
@@ -74,6 +84,7 @@
 		'1.3' => '396ec143446e6413f892c95d5a6b5965',
 		'1.3.1' => '78420456e2f127c27cb7567924df9c95',
 		'1.3.2' => '03eda3733c29a2228239e56d98b834d1',
+		'1.3.3' => 'f6962eaee5dd3ea6e52836ae49ca13c4',
 	);
 
 	$theme_hashes[ 'prose' ] = array(
@@ -86,6 +97,7 @@
 		'1.4.2' => '9d4f94418a450288341e75a80877bbb2',
 		'1.4.3' => 'ce93e41884372662c0bb0b900708df4b',
 		'1.4.4' => '063642cb8af83cb93ccd3203bb15e904',
+		'1.4.5' => '6d1f850aa7852c66c414c4e5a45a3e5d',
 	);
 
 	$theme_hashes[ 'simple' ] = array(
@@ -98,6 +110,7 @@
 		'1.3' => '32978e355948e904d85fcdeefed551c1',
 		'1.4' => '96a39ff02f2690ce0b119e4818d5e0aa',
 		'1.4.1' => '8874e8aefad7adc5175258e241d7a89a',
+		'1.4.2' => '2bc55ec89aa30fdef0552bec4303bfbf',
 	);
 
 	return $theme_hashes;

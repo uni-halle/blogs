@@ -87,6 +87,29 @@ function wptouch_make_css_friendly( $name ) {
 	return strtolower( str_replace( ' ', '-', $name ) );
 }
 
+function wptouch_canonical_link() {
+	$settings = foundation_get_settings();
+	$wordpress_posts_page = get_option( 'page_for_posts' );
+	$wptouch_posts_page = $settings->latest_posts_page;
+	$on_wptouch_posts_page = false;
+
+	if ( $wptouch_posts_page != 'none' ) {
+		$on_wptouch_posts_page = get_permalink() == get_permalink( $wptouch_posts_page );
+	}
+
+	if ( is_home() && !$on_wptouch_posts_page ) {
+		if ( $wordpress_posts_page != 0 ) {
+			$permalink = get_permalink( $wordpress_posts_page );
+		} else {
+			$permalink = site_url() . '/';
+		}
+	} else {
+		$permalink = get_permalink();
+	}
+
+	echo '<link rel="canonical" href="' . $permalink . '" />';
+}
+
 function wptouch_the_title() {
 	echo wptouch_get_title();
 }

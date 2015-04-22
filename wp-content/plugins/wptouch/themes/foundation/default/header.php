@@ -5,16 +5,12 @@
 		<title><?php wp_title( ' | ', true, 'right' ); ?></title>
 		<?php wptouch_head(); ?>
 		<?php
+			if ( !is_single() && !is_archive() && !is_page() && !is_search() ) {
+				wptouch_canonical_link();
+			}
+
 			if ( isset( $_REQUEST[ 'wptouch_preview_theme' ] ) ) {
-				$query_vars = $_REQUEST;
-				if ( isset( $query_vars[ 'wptouch_preview_theme' ] ) ) {
-					unset( $query_vars[ 'wptouch_preview_theme' ] );
-				}
-				echo '<link rel="canonical" href="' . substr( $_SERVER[ 'REQUEST_URI' ], 0, strpos( $_SERVER[ 'REQUEST_URI' ], '?' ) );
-				if ( count( $query_vars ) > 0 ) {
-					echo '?' . http_build_query( $query_vars );
-				}
-				echo '" />';
+				echo '<meta name="robots" content="noindex" />';
 			}
 		?>
 	</head>
