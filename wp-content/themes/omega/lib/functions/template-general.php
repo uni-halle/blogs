@@ -73,7 +73,7 @@ function omega_get_theme_link() {
 	/* Translators: Theme name. */
 	$title = sprintf( __( '%s WordPress Theme', 'omega' ), $name );
 
-	return sprintf( '<a class="theme-link" href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
+	return sprintf( '<a class="theme-link" rel="nofollow" href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
 }
 
 /**
@@ -91,7 +91,8 @@ function omega_get_author_uri() {
 	/* Translators: Theme name. */
 	$title = sprintf( __( '%s', 'omega' ), $name );
 
-	return sprintf( '<a class="theme-link" href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
+	$nofollow = is_child_theme() ? 'rel="nofollow"' : '';
+	return sprintf( '<a class="theme-link" %s href="%s" title="%s">%s</a>', $nofollow, esc_url( $uri ), esc_attr( $title ), $name );
 }
 
 /**
@@ -125,6 +126,19 @@ function omega_get_child_theme_link() {
 	$title = sprintf( __( '%s WordPress Theme', 'omega' ), $name );
 
 	return sprintf( '<a class="child-link" href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
+}
+
+/**
+ * Returns theme name.
+ *
+ * @since  1.1.2
+ * @access public
+ * @return string
+ */
+function omega_get_theme_name() {
+
+	$theme = wp_get_theme();
+	return $theme->display( 'Name', false, true );
 }
 
 /**

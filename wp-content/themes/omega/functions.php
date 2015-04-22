@@ -15,15 +15,13 @@ function omega_theme_setup() {
 	//remove_theme_mods();
 
 	/* Load omega functions */
-	require get_template_directory() . '/lib/hooks.php';
+	require get_template_directory() . '/lib/functions/hooks.php';
 	
 	/* Load scripts. */
 	add_theme_support( 
 		'omega-scripts', 
 		array( 'comment-reply' ) 
 	);
-
-	add_theme_support( "title-tag" );
 	
 	add_theme_support( 'post-thumbnails' );
 	

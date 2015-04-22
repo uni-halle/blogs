@@ -156,7 +156,7 @@ function omega_branding() {
 function omega_default_footer_insert( $settings ) {
 
 	/* If there is a child theme active, use [child-link] shortcode to the $footer_insert. */
-	return '<p class="copyright">' . __( 'Copyright &#169; ', 'omega' ) . date_i18n( 'Y' ) . ' ' . omega_get_site_link() . '.</p>' . "\n\n" . '<p class="credit">' . __( 'Theme by ', 'omega' ) . omega_get_author_uri() . '.</p>';	
+	return '<p class="copyright">' . __( 'Copyright &#169; ', 'omega' ) . date_i18n( 'Y' ) . ' ' . get_bloginfo( 'name' ) . '.</p>' . "\n\n" . '<p class="credit">' . omega_get_theme_name() . __( ' WordPress Theme by ', 'omega' ) . omega_get_author_uri() . '.</p>';	
 
 }
 
@@ -224,14 +224,20 @@ function omega_entry() {
 		<div <?php omega_attr( 'entry-summary' ); ?>>
 	<?php 		
 		if( get_theme_mod( 'post_thumbnail', 1 ) && has_post_thumbnail()) {
-			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_post_thumbnail(get_the_ID(), get_theme_mod( 'image_size' ), array('class' => get_theme_mod( 'image_size' )) ) );
+
+			if ( ! class_exists( 'Get_The_Image' ) ) {
+				apply_filters ( 'omega_featured_image' , printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), get_the_post_thumbnail(get_the_ID(), get_theme_mod( 'image_size' ), array('class' => get_theme_mod( 'image_size' )) ) ));
+			} else {
+				get_the_image( array( 'size' => get_theme_mod( 'image_size' ) ) );		
+			}	
 		}
 
 		if ( 'excerpts' === get_theme_mod( 'post_excerpt', 'excerpts' ) ) {
-			if ( get_theme_mod( 'excerpt_chars_limit', 0 ) )
+			if ( get_theme_mod( 'excerpt_chars_limit', 0 ) ) {
 				the_content_limit( (int) get_theme_mod( 'excerpt_chars_limit' ), get_theme_mod( 'more_text', '[Read more...]' ) );
-			else
+			} else {
 				the_excerpt();
+			}
 		}
 		else {
 			the_content( get_theme_mod( 'more_text' ) );
@@ -263,9 +269,7 @@ add_filter('excerpt_more', 'omega_excerpt_more');
  */
 function omega_entry_footer() {
 
-	if ( 'post' == get_post_type() ) {
-		get_template_part( 'partials/entry', 'footer' ); 
-	} 
+	if ( 'post' == get_post_type() ) get_template_part( 'partials/entry', 'footer' ); 	
 		
 }
 

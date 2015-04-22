@@ -21,6 +21,10 @@ if ( is_admin() ) {
 		$omegachilds = array(
 			 	array( 'name' => 'Church+',
 			 		   'url' => 'http://themehall.com/product/churchplus'),
+			 	array( 'name' => 'Composer+',
+			 		   'url' => 'https://themehall.com/product/composer-plus'),
+			 	array( 'name' => 'Custom Footer',
+			 		   'url' => 'https://themehall.com/product/omega-custom-footer-plugin'),
 			 	array( 'name' => 'Composer',
 			 		   'url' => 'https://themehall.com/composer-one-column-omega-child-theme'),
 			 	array( 'name' => 'Alpha',

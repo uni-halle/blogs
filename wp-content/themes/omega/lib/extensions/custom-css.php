@@ -79,9 +79,10 @@ function omega_customize_css_register( $wp_customize ) {
 			$wp_customize,
 			'custom_css',
 			array(
-				'label'    => '',
-				'section'  => 'css',
-				'settings' => "custom_css",
+				'label'   		=> '',
+				'section'  		=> 'css',
+				'placeholder' 	=> '.classname {	background: #fff;}',
+				'settings' 		=> "custom_css",
 			)
 		)
 	);

@@ -102,9 +102,6 @@ class Omega {
 	 */
 	function constants() {
 
-		/* Sets the framework version number. */
-		define( 'OMEGA_VERSION', '0.9.0' );
-
 		/* Sets the path to the parent theme directory. */
 		define( 'THEME_DIR', get_template_directory() );
 

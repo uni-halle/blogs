@@ -63,6 +63,10 @@ Source: http://tinynav.viljamis.com
 Changelog
 ---------
 
+1.1.2
+- add placeholder attribute to Omega_Customize_Control_Textarea class
+- add nofollow to footer link
+
 1.1.1
 - add add_theme_support( "title-tag" )
 - fix custom_css sanitation
