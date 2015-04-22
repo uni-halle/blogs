@@ -72,7 +72,7 @@ h3.widget-title {
 .sub-menu li:nth-child(even) a {background: #e1d9d8 !important;}
 
 a[href^="mailto:"]{
-	background:  transparent url(http://www.dev.diskurslabor.de/wp-content/uploads/2013/11/mail.png) center left no-repeat;
+	/*background:  transparent url(http://www.dev.diskurslabor.de/wp-content/uploads/2013/11/mail.png) center left no-repeat;*/
 	display: inline-block;
 	padding-left: 20px;
 	line-height: 15px;
@@ -206,6 +206,13 @@ h2.site-description {
 h1.site-title img {
 	float: left;
 	width: 980px;
+}
+
+.page-template-template-fullwidth .content,
+.singular-page-25 .content,
+.archive .content,
+.singular-post .content {
+  width: 100%;
 }
 
 

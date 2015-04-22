@@ -39,7 +39,7 @@ function beta_site_description($desc) {
  * Enqueue scripts and styles
  */
 function beta_scripts() {
-	wp_enqueue_style('lato-font', 'http://fonts.googleapis.com/css?family=Ubuntu:400,700');
+	wp_enqueue_style('ubuntu-font', '//fonts.googleapis.com/css?family=Ubuntu:400,700');
 }
 
 add_action( 'wp_enqueue_scripts', 'beta_scripts' );
