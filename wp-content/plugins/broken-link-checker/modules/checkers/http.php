@@ -362,7 +362,7 @@ class blcCurlHttp extends blcHttpCheckerBase {
 
 		if ( !$nobody && ($content !== false) && $result['broken'] ) {
 			$log .= "Response HTML\n" . str_repeat('=', 16) . "\n";
-			$log .= htmlentities($content);
+			$log .= htmlentities(substr($content, 0, 2048));
 		}
 
         if ( !empty($result['broken']) && !empty($result['timeout']) ) {
