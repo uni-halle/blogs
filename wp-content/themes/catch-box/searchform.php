@@ -14,7 +14,7 @@ else {
 	$search_text = esc_attr( $options['search_display_text'] );
 }
 ?>
-	<form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+	<form method="get" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
         <label for="s" class="assistive-text"><?php echo $search_text; ?></label>
         <input type="text" class="field" name="s" id="s" placeholder="<?php echo $search_text; ?>" />
         <input type="submit" class="submit" name="submit" id="searchsubmit" value="<?php echo $search_text; ?>" />
