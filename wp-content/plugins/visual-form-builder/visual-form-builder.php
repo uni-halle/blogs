@@ -4,11 +4,11 @@ Plugin Name: Visual Form Builder
 Description: Dynamically build forms using a simple interface. Forms include jQuery validation, a basic logic-based verification system, and entry tracking.
 Author: Matthew Muro
 Author URI: http://matthewmuro.com
-Version: 2.8.1
+Version: 2.8.2
 */
 
 // Version number to output as meta tag
-define( 'VFB_VERSION', '2.8.1' );
+define( 'VFB_VERSION', '2.8.2' );
 
 /*
 This program is free software; you can redistribute it and/or modify
@@ -78,6 +78,38 @@ class Visual_Form_Builder{
 	 * @access protected
 	 */
 	protected $post_max_vars = false;
+
+	/**
+	 * field_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $field_table_name;
+
+	/**
+	 * form_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $form_table_name;
+
+	/**
+	 * entries_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $entries_table_name;
+
+	/**
+	 * load_dev_files
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $load_dev_files;
 
 	/**
 	 * Constructor. Register core filters and actions.
@@ -1767,20 +1799,19 @@ class Visual_Form_Builder{
 			<div id="vfb-sidebar">
 				<div id="vfb-upgrade-column">
 					<div class="vfb-pro-upgrade">
-				    	<h2><a href="http://vfbpro.com">Visual Form Builder Pro</a></h2>
+				    	<h2><a href="http://vfbpro.com">VFB Pro</a></h2>
 				        <p class="vfb-pro-call-to-action">
-				        	<a class="vfb-btn vfb-btn-inverse" href="http://vfbpro.com/pricing" target="_blank"><?php _e( 'View Pricing' , 'visual-form-builder'); ?></a>
-				        	<a class="vfb-btn vfb-btn-primary" href="http://store.vfbpro.com" target="_blank"><?php _e( 'Buy Now' , 'visual-form-builder'); ?></a>
+				        	<a class="vfb-btn vfb-btn-inverse" href="http://vfbpro.com/pages/pricing" target="_blank"><?php _e( 'View Pricing' , 'visual-form-builder'); ?></a>
+				        	<a class="vfb-btn vfb-btn-primary" href="http://vfbpro.com/pages/pricing" target="_blank"><?php _e( 'Buy Now' , 'visual-form-builder'); ?></a>
 				        </p>
 				        <p class="vfb-pro-call-to-action">
 				        	<a class="button" href="http://demo.vfbpro.com" target="_blank"><?php _e( 'Try the Free Live Demo &rarr;' , 'visual-form-builder'); ?></a>
 				        </p>
 				        <h3><?php _e( 'New Features' , 'visual-form-builder'); ?></h3>
 				        <ul>
-				        	<li><a href="http://vfbpro.com/add-ons"><?php _e( 'Now with Add-Ons' , 'visual-form-builder'); ?></a></li>
+				        	<li><a href="http://vfbpro.com/collections/add-ons"><?php _e( 'Now with Add-Ons' , 'visual-form-builder'); ?></a></li>
 				            <li><?php _e( 'Akismet Support' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'reCAPTCHA' , 'visual-form-builder'); ?></li>
-				            <li><?php _e( 'Nested Drag and Drop' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Conditional Logic' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( '10+ new Form Fields' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Complete Entries Management' , 'visual-form-builder'); ?></li>
@@ -1792,19 +1823,18 @@ class Visual_Form_Builder{
 				            <li><?php _e( 'Data &amp; Form Migration' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Scheduling' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Limit Form Entries' , 'visual-form-builder'); ?></li>
-				            <li><?php _e( 'Simple PayPal Integration' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Form Paging' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Live Preview' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Custom Capabilities' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Automatic Updates' , 'visual-form-builder'); ?></li>
 				        </ul>
 
-				        <p><a href="http://vfbpro.com/features"><?php _e( 'View all features' , 'visual-form-builder'); ?></a></p>
+				        <p><a href="http://vfbpro.com/pages/features"><?php _e( 'View all features' , 'visual-form-builder'); ?></a></p>
 				    </div> <!-- .vfb-pro-upgrade -->
 
 			   		<h3><?php _e( 'Promote Visual Form Builder' , 'visual-form-builder'); ?></h3>
 			        <ul id="promote-vfb">
-			        	<li id="twitter"><?php _e( 'Follow me on Twitter' , 'visual-form-builder'); ?>: <a href="http://twitter.com/#!/matthewmuro">@matthewmuro</a></li>
+			        	<li id="twitter"><?php _e( 'Follow VFB Pro on Twitter' , 'visual-form-builder'); ?>: <a href="http://twitter.com/#!/vfbpro">@vfbpro</a></li>
 			            <li id="star"><a href="http://wordpress.org/extend/plugins/visual-form-builder/"><?php _e( 'Rate Visual Form Builder on WordPress.org' , 'visual-form-builder'); ?></a></li>
 			            <li id="paypal">
 			                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G87A9UN9CLPH4&lc=US&item_name=Visual%20Form%20Builder&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" width="74" height="21"></a>

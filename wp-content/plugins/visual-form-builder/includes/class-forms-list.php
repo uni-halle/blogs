@@ -5,7 +5,36 @@
  * @since 1.2
  */
 class VisualFormBuilder_Forms_List extends WP_List_Table {
+	/**
+	 * field_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $field_table_name;
 
+	/**
+	 * form_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $form_table_name;
+
+	/**
+	 * entries_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $entries_table_name;
+
+	/**
+	 * errors
+	 *
+	 * @var mixed
+	 * @access public
+	 */
 	public $errors;
 
 	function __construct(){

@@ -12,6 +12,30 @@ function vfb_register_widgets() {
  * @since 2.7
  */
 class VisualFormBuilder_Widget extends WP_Widget {
+	/**
+	 * field_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $field_table_name;
+
+	/**
+	 * form_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $form_table_name;
+
+	/**
+	 * entries_table_name
+	 *
+	 * @var mixed
+	 * @access public
+	 */
+	public $entries_table_name;
+
 	public function __construct(){
 		global $wpdb;
 
