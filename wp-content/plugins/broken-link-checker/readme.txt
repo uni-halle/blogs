@@ -3,8 +3,8 @@ Contributors: whiteshadow
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6P9S6CE3SRSW
 Tags: links, broken, maintenance, blogroll, custom fields, admin, comments, posts
 Requires at least: 3.2
-Tested up to: 4.2-beta
-Stable tag: 1.10.6
+Tested up to: 4.2
+Stable tag: 1.10.7
 
 This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found. 
 
@@ -97,6 +97,9 @@ To upgrade your installation
 1. Reactivate the plugin. Your settings will be retained from the previous version.
 
 == Changelog ==
+
+= 1.10.7 =
+* Tested up to WordPress 4.2.
 
 = 1.10.6 =
 * Fixed a serious CSRF/XSS vulnerability.
