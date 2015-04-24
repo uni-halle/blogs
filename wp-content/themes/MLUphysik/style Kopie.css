@@ -1517,10 +1517,3 @@ width: 150px;
 	   .post32 .post  {padding: 0 !important;margin: 0 !important;}
    }
    
-    .flexslider .slides img {
-margin-top: -20px;
- }
-.flexslider .slides > li {
-text-align: center;
-font-size: 10px;
-}
