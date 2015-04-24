@@ -58,7 +58,7 @@ class SlideshowPluginSlideshowStylesheet
 			{
 				wp_enqueue_style(
 					'slideshow-jquery-image-gallery-ajax-stylesheet_' . $stylesheetKey,
-					admin_url('admin-ajax.php?action=slideshow_jquery_image_gallery_load_stylesheet&style=' . $stylesheetKey),
+					admin_url('admin-ajax.php?action=slideshow_jquery_image_gallery_load_stylesheet&style=' . $stylesheetKey, 'admin'),
 					array(),
 					$stylesheetValue['version']
 				);
@@ -80,6 +80,9 @@ class SlideshowPluginSlideshowStylesheet
 	 */
 	public static function enqueueStylesheet($name = null)
 	{
+		$enqueueDynamicStylesheet = true;
+		$version                  = SlideshowPluginMain::$version;
+
 		if (isset($name))
 		{
 			// Try to get the custom style's version
@@ -98,23 +101,35 @@ class SlideshowPluginSlideshowStylesheet
 			}
 			else
 			{
-				$name    = str_replace('.css', '', $name);
-				$version = SlideshowPluginMain::$version;
+				$enqueueDynamicStylesheet = false;
+				$name                     = str_replace('.css', '', $name);
 			}
 		}
 		else
 		{
-			$name    = 'style-light';
-			$version = SlideshowPluginMain::$version;
+			$enqueueDynamicStylesheet = false;
+			$name                     = 'style-light';
 		}
 
 		// Enqueue stylesheet
-		wp_enqueue_style(
-			'slideshow-jquery-image-gallery-ajax-stylesheet_' . $name,
-			admin_url('admin-ajax.php?action=slideshow_jquery_image_gallery_load_stylesheet&style=' . $name),
-			array(),
-			$version
-		);
+		if ($enqueueDynamicStylesheet)
+		{
+			wp_enqueue_style(
+				'slideshow-jquery-image-gallery-ajax-stylesheet_' . $name,
+				admin_url('admin-ajax.php?action=slideshow_jquery_image_gallery_load_stylesheet&style=' . $name, 'admin'),
+				array(),
+				$version
+			);
+		}
+		else
+		{
+			wp_enqueue_style(
+				'slideshow-jquery-image-gallery-stylesheet_' . $name,
+				SlideshowPluginMain::getPluginUrl() . '/css/' . $name . '.css',
+				array(),
+				$version
+			);
+		}
 
 		return array($name, $version);
 	}
@@ -172,10 +187,16 @@ class SlideshowPluginSlideshowStylesheet
 	 */
 	public static function getStylesheet($styleName)
 	{
-		// Get custom stylesheet, of the default stylesheet if the custom stylesheet does not exist
-		$stylesheet = get_option($styleName, '');
+		// Get custom style keys
+		$customStyleKeys = array_keys(get_option(SlideshowPluginGeneralSettings::$customStyles, array()));
 
-		if (strlen($stylesheet) <= 0)
+		// Match $styleName against custom style keys
+		if (in_array($styleName, $customStyleKeys))
+		{
+			// Get custom stylesheet
+			$stylesheet = get_option($styleName, '');
+		}
+		else
 		{
 			$stylesheetFile = SlideshowPluginMain::getPluginPath() . DIRECTORY_SEPARATOR . 'style' . DIRECTORY_SEPARATOR . 'SlideshowPlugin' . DIRECTORY_SEPARATOR . $styleName . '.css';
 
@@ -187,7 +208,7 @@ class SlideshowPluginSlideshowStylesheet
 			// Get contents of stylesheet
 			ob_start();
 			include($stylesheetFile);
-			$stylesheet .= ob_get_clean();
+			$stylesheet = ob_get_clean();
 		}
 
 		// Replace the URL placeholders with actual URLs and add a unique identifier to separate stylesheets
