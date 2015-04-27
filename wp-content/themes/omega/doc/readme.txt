@@ -63,6 +63,9 @@ Source: http://tinynav.viljamis.com
 Changelog
 ---------
 
+1.1.3
+- update TGM_Plugin_Activation class
+
 1.1.2
 - add placeholder attribute to Omega_Customize_Control_Textarea class
 - add nofollow to footer link

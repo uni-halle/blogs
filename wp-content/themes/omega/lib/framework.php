@@ -176,9 +176,6 @@ class Omega {
 		/* Load media-related functions. */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'media.php' );
 
-		/* Load the metadata functions. */
-		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'meta.php' );
-
 		/* Load the sidebar functions. */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'sidebars.php' );
 

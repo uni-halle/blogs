@@ -15,28 +15,11 @@ add_action( 'admin_menu', 'omega_admin_setup' );
  */
 function omega_admin_setup() {
 
-	/* Load the post meta boxes on the new post and edit post screens. */
-	add_action( 'load-post.php', 'omega_admin_load_post_meta_boxes' );
-	add_action( 'load-post-new.php', 'omega_admin_load_post_meta_boxes' );
-
 	/* Registers admin stylesheets for the framework. */
 	add_action( 'admin_enqueue_scripts', 'omega_admin_register_styles', 1 );
 
 	/* Loads admin stylesheets for the framework. */
 	add_action( 'admin_enqueue_scripts', 'omega_admin_enqueue_styles' );
-}
-
-/**
- * Loads the core post meta box files on the 'load-post.php' action hook.  Each meta box file is only loaded if 
- * the theme declares support for the feature.
- *
- * @since 0.9.0
- * @return void
- */
-function omega_admin_load_post_meta_boxes() {
-
-	/* Load the post template meta box. */
-	require_if_theme_supports( 'omega-template-hierarchy', trailingslashit( OMEGA_ADMIN ) . 'meta-box-post-template.php' );
 }
 
 /**
