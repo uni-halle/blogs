@@ -1308,7 +1308,7 @@ SQL;
 				return false;
 			}
 
-			// Upload the file from the PrestaShop web site to WordPress upload dir
+			// Upload the file from the Joomla web site to WordPress upload dir
 			if ( preg_match('/^http/', $filename) ) {
 				if ( $import_external || // External file 
 					preg_match('#^' . $this->plugin_options['url'] . '#', $filename) // Local file
@@ -1345,7 +1345,8 @@ SQL;
 				return false;
 			}
 			
-			$post_name = !empty($name)? $name : preg_replace('/\.[^.]+$/', '', $basename);
+			$post_title = !empty($name)? $name : preg_replace('/\.[^.]+$/', '', $basename);
+			$post_name = sanitize_title($post_title);
 			
 			// If the attachment does not exist yet, insert it in the database
 			$attachment_id = 0;
@@ -1362,7 +1363,7 @@ SQL;
 					'post_date'			=> $date,
 					'post_mime_type'	=> $filetype['type'],
 					'post_name'			=> $post_name,
-					'post_title'		=> $post_name,
+					'post_title'		=> $post_title,
 					'post_status'		=> 'inherit',
 					'post_content'		=> '',
 				);
