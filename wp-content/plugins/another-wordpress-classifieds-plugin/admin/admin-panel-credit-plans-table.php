@@ -2,6 +2,10 @@
 
 class AWPCP_CreditPlansTable extends WP_List_Table {
 
+    private $page;
+    private $items_per_page;
+    private $total_items;
+
     public function __construct($page, $args=array()) {
         $args = array_merge(array('plural' => 'awpcp-credit-plans'), $args);
         parent::__construct($args);
