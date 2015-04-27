@@ -27,7 +27,7 @@ class AVH_EC_Core
 		 */
 		$catgrp = & AVH_EC_Singleton::getInstance('AVH_EC_Category_Group');
 
-		$this->version = '3.9.3';
+		$this->version = '4.0.0';
 		$this->comment = '<!-- AVH Extended Categories version ' . $this->version . ' | http://blog.avirtualhome.com/wordpress-plugins/ -->';
 		$this->db_options_core = 'avhec';
 		$this->db_options_tax_meta = 'avhec-tax_meta';

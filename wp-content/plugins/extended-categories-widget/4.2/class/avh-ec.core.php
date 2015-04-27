@@ -34,7 +34,7 @@ class AVH_EC_Core
          */
         $catgrp = & AVH_EC_Singleton::getInstance('AVH_EC_Category_Group');
 
-        $this->version = '4.0.0';
+        $this->version = '3.10.0-dev.1';
         $this->comment = '<!-- AVH Extended Categories version ' . $this->version . ' | http://blog.avirtualhome.com/wordpress-plugins/ -->';
         $this->db_options_core = 'avhec';
         $this->db_options_tax_meta = 'avhec-tax_meta';
@@ -343,10 +343,14 @@ class AVH_EC_Core
             $tab_index_attribute = ' tabindex="' . $tab_index . '"';
         }
 
-        $categories = get_terms($taxonomy, $r);
-        $name = esc_attr($name);
-        $class = esc_attr($class);
-        $id = $id ? esc_attr($id) : $name;
+        // Avoid clashes with the 'name' param of get_terms().
+        $get_terms_args = $r;
+        unset( $get_terms_args['name'] );
+        $categories = get_terms( $r['taxonomy'], $get_terms_args );
+        
+        $name = esc_attr($r['name']);
+        $class = esc_attr($r['class']);
+        $id = $r['id'] ? esc_attr($r['id']) : $name;
 
         if (!$r['hide_if_empty'] || !empty($categories)) {
             $output = "<select name='$name' id='$id' class='$class' $tab_index_attribute>\n";
