@@ -13,6 +13,7 @@
 }
 
 .menu-tree li {
+	clear: both;
 	position: relative;
 	line-height: 100%;
 }
@@ -93,6 +94,7 @@ ul.menu-tree.no-parent-links span, ul.menu-tree ul span {
 
 .menu-tree ul li {
 	border-style: none !important;
+	clear: both;
 	padding-left: 15px;
 }
 

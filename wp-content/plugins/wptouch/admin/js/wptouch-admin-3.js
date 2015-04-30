@@ -905,6 +905,7 @@ function wptouchSetupColorPicker() {
 		});
 	}
 
+	jQuery( '.fdn-colors' ).find( '.dropdown, .wpbody-content, .wpbody' ).off();
 	jQuery( '.fdn-colors' ).find( '.dropdown' ).each( function() {
 		var thisSection = jQuery( this );
 		jQuery( this ).find( 'a.tabbed' ).click( function( e ) {

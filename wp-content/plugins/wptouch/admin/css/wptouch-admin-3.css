@@ -1,4 +1,3 @@
-/* @override http://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/wptouch-admin-3.css?ver=3.7.5 */
 
 /* @group General */
 
@@ -1148,6 +1147,8 @@ input#preview.disabled {
 
 #section-foundation-colors .fdn-colors .dropdown {
 	width: 50%;
+	height: auto;
+	overflow: visible;
 }
 
 #section-foundation-colors .fdn-colors .dropdown-toggle span {
@@ -1164,6 +1165,7 @@ input#preview.disabled {
 }
 
 #section-foundation-colors .fdn-colors .dropdown-menu {
+	min-height: 200px;
 	min-width: 340px;
 	max-width: 340px;
 	background-color: #eee;

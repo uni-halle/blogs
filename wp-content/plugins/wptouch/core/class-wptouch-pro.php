@@ -833,7 +833,7 @@ class WPtouchProThree {
 					}
 
 					foreach( $url_list as $url ) {
-						if ( strpos( trim( $server_url, '\/' ), trim( $url, '\/' ) ) !== false ) {
+						if ( ( $url == '/' && $server_url == '/' ) || strpos( trim( $server_url, '\/' ), trim( $url, '\/' ) ) !== false ) {
 							if ( $settings->url_filter_behaviour == 'exclude_urls' ) { // Excluding URLs - kill mobile if the URL is matched
 								$block_mobile = true;
 							} elseif( $settings->url_filter_behaviour == 'exclusive_urls' ) { // Exclusive URLs - kill mobile if the URL is *not* matched

@@ -53,7 +53,6 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 		$this->automatically_backup_settings = true;
 
 		// Setup - Tools and Debug
-		$this->use_jquery_2 = false;
 		/* TODO: Deprecated $this->show_footer_load_times = false;*/
 		// Deprecated in 3.1
 		$this->preview_mode = 'off';

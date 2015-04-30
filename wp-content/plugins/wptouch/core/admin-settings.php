@@ -93,4 +93,6 @@ function wptouch_settings_process( $wptouch_pro ) {
 			wptouch_backup_settings();
 		}
 	}
+
+	do_action( 'wptouch_admin_save_settings_completed' );
 }
