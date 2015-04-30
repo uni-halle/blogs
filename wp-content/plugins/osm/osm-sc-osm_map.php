@@ -290,7 +290,7 @@ box-shadow: none;}';
 
     // add a clickhandler if needed
     $msg_box = strtolower($msg_box);
-    if ( $msg_box == 'sc_gen' || $msg_box == 'lat_long' || $msg_box == 'metabox_marker_sc_gen'|| $msg_box == 'metabox_file_sc_gen' || $msg_box == 'metabox_geotag_sc_gen' || $msg_box == 'metabox_geometry_sc_gen'|| $msg_box == 'metabox_geotag_gen'){
+    if ( $msg_box == 'sc_gen' || $msg_box == 'lat_long' || $msg_box == 'metabox_marker_sc_gen'|| $msg_box == 'metabox_file_sc_gen' || $msg_box == 'metabox_geotag_sc_gen' || $msg_box == 'metabox_geometry_sc_gen'|| $msg_box == 'metabox_geotag_gen' || $msg_box == 'metabox_file_list_sc_gen'){
       global $post;
       $output .= Osm_OpenLayers::AddClickHandler($MapName, $msg_box, $post->ID);
     }

@@ -84,58 +84,63 @@ class Osm_OLJS3
       return $TileLayer;
   }
 
-  function addVectorLayer($a_LayerName, $a_FileName, $a_Colour, $a_Type)
+  function addVectorLayer($a_MapName, $a_FileName, $a_Colour, $a_Type, $a_Counter, $a_MarkerName)
   {
     Osm::traceText(DEBUG_INFO, "addVectorLayer V3(".$a_LayerName.",".$a_Type.",".$a_OverviewMapZoom.")");
     $VectorLayer = '';
     $VectorLayer .= '
-    var style = {
+    var style'.$a_Counter.' = {
       "Point": [new ol.style.Style({
-        image: new ol.style.Circle({
-          fill: new ol.style.Fill({
-            color: "rgba(255,255,0,0.4)"
-          }),
-          radius: 5,
-          stroke: new ol.style.Stroke({
-            color: "#ff0",
-            width: 1
+          image: new ol.style.Icon({
+            anchor: [0.5, 41],
+            anchorXUnits: "fraction",
+            anchorYUnits: "pixels",
+            opacity: 0.75,
+            src: "'.OSM_PLUGIN_ICONS_URL.$a_MarkerName.'"
           })
-        })
       })],
+	  	  
       "LineString": [new ol.style.Style({
         stroke: new ol.style.Stroke({
-          color: "#f00",
-          width: 3
+          color: "'.$a_Colour.'",
+          width: 8
         })
       })],
       "MultiLineString": [new ol.style.Style({
         stroke: new ol.style.Stroke({
-          color: "#0f0",
-          width: 3
+          color: "'.$a_Colour.'",
+          width: 4
         })
       })]
     };';
-    if ($a_Type == 'GPX'){
+	
+	
+    if ($a_Type == 'gpx'){
       $VectorLayer .= '
-      var vector = new ol.layer.Vector({
+      var vectorL = new ol.layer.Vector({
         source: new ol.source.GPX({
-          projection: "EPSG:3857",
-          url:"'.$a_FileName.'"
-        })
- /**    style: function(feature, resolution) {return style[feature.getGeometry().getType()];} */
+		  projection: "EPSG:3857",
+		  url:"'.$a_FileName.'"
+        }),
+ /**       style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+		    color: "'.$a_Colour.'", 
+			width: 2})
+        })*/
+		style: function(feature, resolution) {return style'.$a_Counter.'[feature.getGeometry().getType()];}
       });';
     }
     if ($a_Type == 'kml'){
-      echo "KML Type";
       $VectorLayer .= '
-      var vector_kml = new ol.layer.Vector({
+      var vectorL = new ol.layer.Vector({
         source: new ol.source.KML({
           projection: "EPSG:3857",
           url:"'.$a_FileName.'"
-        })
- /**    style: function(feature, resolution) {return style[feature.getGeometry().getType()];}*/
+        }),
+     style: function(feature, resolution) {return style[feature.getGeometry().getType()];}
       });';
     }
+	$VectorLayer .= $a_MapName.'.addLayer(vectorL);';
   return $VectorLayer;
   }
 

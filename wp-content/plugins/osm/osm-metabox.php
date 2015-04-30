@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2015  MiKa (wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2015  MiKa (http://wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ function osm_map_create() {
   $screens = array( 'post', 'page' );
   foreach ($screens as $screen) {
     add_meta_box( 'osm-sc-meta', 'WP OSM Plugin shortcode generator', 'osm_map_create_shortcode_function', $screen, 'normal', 'high' );
-  add_meta_box( 'osm-geotag-meta', 'WP OSM Plugin geotag', 'osm_geotag_post_function', $screen, 'side', 'core' );
+    add_meta_box( 'osm-geotag-meta', 'WP OSM Plugin geotag', 'osm_geotag_post_function', $screen, 'side', 'core' );
   }
 }
 
@@ -76,7 +76,8 @@ function osm_map_create_shortcode_function( $post ) {
 <div class="tabs">
   <ul class="tab-links">
     <li class="active"><a href="#tab_marker"><?php _e('Marker','OSM-plugin') ?></a></li>
-    <li><a href="#tab_file">KML | GPX | TXT</a></li>
+    <li><a href="#tab_file_list">GPX</a></li>
+	<li><a href="#tab_file">KML | TXT</a></li>
     <li><a href="#tab_geotag"><?php _e('Geotagged','OSM-plugin') ?></a></li>
     <li><a href="#tab_about"><?php _e('About','OSM-plugin') ?></a></li>
   </ul>
@@ -103,6 +104,24 @@ function osm_map_create_shortcode_function( $post ) {
       <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_marker_sc_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
     </div> <!-- id="tab_marker" -->
 
+	<div id="tab_file_list" class="tab">
+      <b>1. <?php _e('Map type','OSM-plugin') ?></b>:
+      <select name="osm_file_list_map_type">
+      <?php include('osm-maptype-select.php'); ?>
+      </select>
+      <b>2. <?php _e('Color','OSM-plugin') ?></b>: 
+      <select name="osm_file_list_color">
+      <?php include('osm-color-select.php'); ?>
+      </select><br><br>
+      <b>3. <?php _e('Paste the local URL of file here: ','OSM-plugin') ?></b><br>
+      <?php _e('Do not save any of your personal data in the plugins/osm folder but in the upload folder!','OSM-plugin') ?><br>
+      <input name="osm_file_list_URL" type="text" size="30" maxlength="200" value="../../../../wp-content/uploads/YOUR-FILE"><br><br>
+      <b>4. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
+      $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
+      echo $link;?></b><br><br>
+      <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_file_list_sc_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
+     </div> <!-- id="tab_file_list" -->
+	
     <div id="tab_file" class="tab">
       <b>1. <?php _e('Map type','OSM-plugin') ?></b>:
       <select name="osm_file_map_type">

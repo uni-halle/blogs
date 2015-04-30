@@ -2,19 +2,19 @@
 
     extract(shortcode_atts(array(
     // size of the map
-    'width'   => '100%', 
-    'height'  => '300',
+    'width'      => '100%', 
+    'height'     => '300',
     'map_center' => '58.213, 6.378',
-    'zoom'    => '4',
-    'kml_file'=> 'NoFile',
-    'type'      => 'Osm',
-    'jsname'  => 'dummy',
+    'zoom'       => '4',
+	'file_list'  => 'NoFile',
+	'file_color_list'  => 'NoColor',
+    'type'       => 'Osm',
+    'jsname'     => 'dummy',
     'marker_latlon'  => 'No',
     'map_border'  => '2px solid grey',
     'marker_name' => 'NoName'
     ), $atts));
     $VectorLayer_Marker = 'NO';
-    $VectorLayer_File = 'NO';
     $type = strtolower($type);
 
     $map_center = preg_replace('/\s*,\s*/', ',',$map_center);
@@ -90,43 +90,7 @@
     else {
       $output .= file_get_contents($jsname);
     }
-    if ($kml_file != "NoFile"){
-      $VectorLayer_File = "kml";
-      $showMapInfoDiv = 1;
 
-      $output .= '
-        var style = {
-          "Point": [new ol.style.Style({
-             image: new ol.style.Circle({
-               fill: new ol.style.Fill({
-                 color: "rgba(255,255,0,0.4)"
-               }),
-               radius: 5,
-               stroke: new ol.style.Stroke({
-                 color: "#ff0",
-                 width: 1
-               })
-             })
-           })],
-           "LineString": [new ol.style.Style({
-             stroke: new ol.style.Stroke({
-               color: "#f00",
-               width: 3
-             })
-           })],
-           "MultiLineString": [new ol.style.Style({
-             stroke: new ol.style.Stroke({
-               color: "#0f0",
-               width: 3
-             })
-           })]
-         };
-       ';
-       $Colour = "green";
-       $LayerName = "LayerName";
-
-       $output .= Osm_OLJS3::addVectorLayer($LayerName, $kml_file, $Colour, "kml");
-    }
     if (strtolower($marker_latlon) == 'osm_geotag'){ 
       $VectorLayer_Marker = $marker_latlon;
       global $post;
@@ -263,7 +227,7 @@
     else if ($type == "basemap_at"){
       $output .= '
 
-      var template = "{Layer}/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg";
+      var template = "{Layer}/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png";
       var urls_basemap = [
         "http://maps1.wien.gv.at/basemap/" + template,
         "http://maps2.wien.gv.at/basemap/" + template,
@@ -317,7 +281,7 @@
        attributions: [
          new ol.Attribution({
            html: "Tiles &copy; " +
-           "<a href=\"https://www.basemap.at/\">basemap.at</a>"
+           "<a href=\"http://www.basemap.at/\">basemap.at</a>"
          }),
          ol.source.OSM.ATTRIBUTION
       ],
@@ -349,7 +313,139 @@
       });
       ';
     }
-    if (($VectorLayer_Marker != "NO") ){
+
+    if ($file_list != "NoFile"){
+	  $VectorLayer_Marker = 'NO';
+      $FileListArray   = explode( ',', $file_list ); 
+	  $FileColorListArray = explode( ',', $file_color_list);
+	  $this->traceText(DEBUG_INFO, "(NumOfFiles: ".sizeof($FileListArray)." NumOfColours: ".sizeof($FileColorListArray).")!");
+	  if ((sizeof($FileColorListArray) > 0) && (sizeof($FileColorListArray) != sizeof($FileListArray))){
+        $this->traceText(DEBUG_ERROR, "e_gpx_list_error");
+	  }
+	  else{
+        for($x=0;$x<sizeof($FileListArray);$x++){
+          $temp = explode(".",$FileListArray[$x]);
+		  $FileType = strtolower($temp[(count($temp)-1)]);
+		  if (($FileType == "gpx")||($FileType == "kml")){
+		    if (sizeof($FileColorListArray) == 0){$Color = "blue";}
+			else {$Color = $FileColorListArray[$x];}
+			$gpx_marker_name = "mic_blue_pinother_02.png";
+			if ($Color == "blue"){$gpx_marker_name = "mic_blue_pinother_02.png";}
+			else if ($Color == "red"){$gpx_marker_name = "mic_red_pinother_02.png";}
+			else if ($Color == "green"){$gpx_marker_name = "mic_green_pinother_02.png";}
+			else if ($Color == "black"){$gpx_marker_name = "mic_black_pinother_02.png";}
+		    $output .= Osm_OLJS3::addVectorLayer($MapName, $FileListArray[$x], $Color, $FileType, $x, $gpx_marker_name);
+			}
+		  else {
+            $this->traceText(DEBUG_ERROR, "e_gpx_type_error");
+			echo "ERROR";
+		  }
+        }
+        $showMapInfoDiv = 0;
+
+$output .= '
+
+		    var element = document.createElement("div");
+            element.className = "popup_div";
+            
+
+            var popup = new ol.Overlay({
+              element: element,
+              positioning: "bottom-center",
+              stopEvent: false
+            });
+            '.$MapName.'.addOverlay(popup);
+
+        var ClickdisplayFeatureInfo = function(a_evt) {
+		
+		  var lonlat = ol.proj.transform(a_evt.coordinate, "EPSG:3857", "EPSG:4326");
+          var lon = lonlat[0];
+          var lat = lonlat[1];
+
+		  pixel = a_evt.pixel;
+		
+          var features = [];
+          '.$MapName.'.forEachFeatureAtPixel(pixel, function(feature, layer) {
+            features.push(feature);
+          });
+          if (features.length > 0) {
+            var name_str, desc_str, info = [];
+            var i, ii;
+            for (i = 0, ii = features.length; i < ii; ++i) {
+			  if (features[i].get("name")){
+                name_str = "<span style=\"font-weight:bold; background-color: white\">" + features[i].get("name");
+				desc_str = features[i].get("desc");
+                name_str = name_str + "</span>";
+			  }
+			  else{
+			    name_str = "" + "</span>";
+			  }
+			  info.push(name_str);
+            }
+			
+			element.innerHTML = info.join("<br>") || "(unknown)";
+            var coord = a_evt.coordinate;
+            popup.setPosition(coord);
+            $(document.getElementById("popup_div")).popover({
+              "placement": "top",
+              "html": true,
+              "content": "test - FOR ME !!!!"
+            });
+			$(document.getElementById("popup_div")).popover("show");
+            /**$("element").popover("show");*/
+          } else {
+		    element.innerHTML = "";
+            $("element").popover("destroy");
+          }
+        };
+
+        var displayFeatureInfo = function(pixel) {
+          var features = [];
+          '.$MapName.'.forEachFeatureAtPixel(pixel, function(feature, layer) {
+            features.push(feature);
+          });
+          if (features.length > 0) {
+            var name_str, desc_str, info = [];
+            var i, ii;
+            for (i = 0, ii = features.length; i < ii; ++i) {
+              name_str = "<span style=\"font-weight:bold\">" + features[i].get("name") + "</span>";
+              desc_str = features[i].get("desc");
+              name_str = name_str + "<br>" + desc_str;
+              info.push(name_str);
+            }
+            document.getElementById("'.$MapInfoDiv.'").innerHTML = info.join("<br>") || "(unknown)";
+            '.$MapName.'.getTarget().style.cursor = "pointer";
+          } else {
+            document.getElementById("'.$MapInfoDiv.'").innerHTML = "Move the mouse over the icons <br>&nbsp;";
+            '.$MapName.'.getTarget().style.cursor = "pointer";
+          }
+        };
+        $('.$MapName.'.getViewport()).on("mousemove", function(evt) {
+          var pixel = '.$MapName.'.getEventPixel(evt.originalEvent);
+          displayFeatureInfo(pixel);
+        });
+        '.$MapName.'.on("singleclick", function(evt) {ClickdisplayFeatureInfo(evt);}); 
+		
+		
+		
+      '.$MapName.'.on("pointermove", function(e) {
+        if (e.dragging) {
+          $(element).popover("destroy");
+          return;
+        }
+        var pixel = '.$MapName.'.getEventPixel(e.originalEvent);
+        var hit = '.$MapName.'.hasFeatureAtPixel(pixel);
+        '.$MapName.'.getTarget().style.cursor = hit ? "pointer" : "";
+      });
+		
+		
+';
+		
+	  }
+    } // $file_list != "NoFile"
+
+
+    if ($VectorLayer_Marker != 'NO'){
       $output .= '
       '.$MapName.'.addLayer(vectorMarkerLayer);';
       if ($VectorLayer_Marker_PopUp == "1") {
@@ -399,41 +495,8 @@
       });';
       }
     }
-    if ($VectorLayer_File != "NO"){
-      $output .= '
-        '.$MapName.'.addLayer(vector_kml);
-      ';
+    
 
-       $output .= '
-        var displayFeatureInfo = function(pixel) {
-          var features = [];
-          '.$MapName.'.forEachFeatureAtPixel(pixel, function(feature, layer) {
-            features.push(feature);
-          });
-          if (features.length > 0) {
-            var name_str, desc_str, info = [];
-            var i, ii;
-            for (i = 0, ii = features.length; i < ii; ++i) {
-              name_str = "<span style=\"font-weight:bold\">" + features[i].get("name") + "</span>";
-              desc_str = features[i].get("description");
-              name_str = name_str + "<br>" + desc_str;
-              info.push(name_str);
-            }
-            document.getElementById("'.$MapInfoDiv.'").innerHTML = info.join("<br>") || "(unknown)";
-            '.$MapName.'.getTarget().style.cursor = "pointer";
-          } else {
-            document.getElementById("'.$MapInfoDiv.'").innerHTML = "Move the mouse over the icons <br>&nbsp;";
-          '.$MapName.'.getTarget().style.cursor = "pointer";
-        }
-      };
-    ';
-    $output .= '
-      $('.$MapName.'.getViewport()).on("mousemove", function(evt) {
-        var pixel = '.$MapName.'.getEventPixel(evt.originalEvent);
-        displayFeatureInfo(pixel);
-      });
-      '.$MapName.'.on("singleclick", function(evt) {displayFeatureInfo(evt.pixel);});';
-    }
     $output .= '})(jQuery)';
     $output .= '/* ]]> */';
     $output .= ' </script>';

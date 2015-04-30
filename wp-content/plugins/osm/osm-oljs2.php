@@ -230,7 +230,7 @@ class Osm_OpenLayers
       $Layer .= '} ';
       $Layer .= 'var layerosm = new OpenLayers.Layer.OSM.Mapnik("Mapnik");';
       $Layer .= 'var layerbasemap_at = new OpenLayers.Layer.WMTS({
-                   url: "'.Osm_BaseMap_Tiles.'{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
+                   url: "'.Osm_BaseMap_Tiles.'{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png",
                    name: "basemap.at",
                    layer: "geolandbasemap",
                    style: "normal",
@@ -242,7 +242,7 @@ class Osm_OpenLayers
                   });
       ';
       $Layer .= 'layerbasemap_at.metadata = {link: "http://www.basemap.at/"};';
-      $Layer .= 'var layerOSM_Attr = new OpenLayers.Layer.Vector("OSM-plugin",{attribution:"<a href=\"http://mapicons.nicolasmollet.com/\">Icon</a> and <a href=\"http://basemap.at\">basemap.at</a> and <a href=\"http://wp-osm-plugin.hanblog.net\">OSM-Plugin</a>"});';
+      $Layer .= 'var layerOSM_Attr = new OpenLayers.Layer.Vector("OSM-plugin",{attribution:"<a href=\"http://basemap.at\">basemap.at</a> and <a href=\"http://wp-osm-plugin.hanblog.net\">OSM-Plugin</a>"});';
       $Layer .= ''.$a_LayerName.'.addLayers([layerbasemap_at, layerosm, layerOSM_Attr]);';
       $Layer .= ''.$a_LayerName.'.addControl(new OpenLayers.Control.LayerSwitcher());';
     }
@@ -317,7 +317,7 @@ class Osm_OpenLayers
       }
       else if (($a_Type == 'Ext') || ($a_Type == 'ext')) {
         $Layer .= 'var lmap = new OpenLayers.Layer.'.$a_ExtType.'("'.$a_ExtName.'","'.$a_ExtAddress.'",{'.$a_ExtInit.', attribution: "OpenLayers with"});';
-        $Layer .= 'var layerOSM_Attr = new OpenLayers.Layer.Vector("OSM-plugin",{attribution:"<a href=\"http://mapicons.nicolasmollet.com/\">Icon</a> and <a href=\"http://wp-osm-plugin.hanblog.net\">OSM plugin</a>"});';
+        $Layer .= 'var layerOSM_Attr = new OpenLayers.Layer.Vector("OSM-plugin",{attribution:"<a href=\"http://wp-osm-plugin.hanblog.net\">OSM plugin</a>"});';
         $Layer .= ''.$a_LayerName.'.addLayers([lmap,layerOSM_Attr]);';
       }
     }
@@ -548,6 +548,42 @@ class Osm_OpenLayers
         markerslayer.addMarker(new OpenLayers.Marker(icon_lonlat,click_icon.clone()));
       }';
     }
+    else if( $a_msgBox == 'metabox_file_list_sc_gen'){
+    $Layer .= ' 
+	
+      var FileList_ColorField  = "";
+      var FileList_TypeField   = "";
+      var FileList_MapTypeField = "";
+      var FileList_FileField = "";
+	  var FileList_FileUrl = document.post.osm_file_list_URL.value;
+	  
+	  if (document.post.osm_file_list_map_type.value != "Mapnik"){
+        FileList_MapTypeField = " type=\"" + document.post.osm_file_list_map_type.value + "\""; 
+      }
+	  
+	  if (document.post.osm_file_list_color.value != "none"){
+        FileList_ColorField = " file_color_list=\"" + document.post.osm_file_list_color.value + "\""; 
+      }
+	  
+	  FileList_FileField = " file_list=\""+ FileList_FileUrl + "\"";
+	   
+	  GenTxt = "[osm_map_v3 map_center=\"" + Centerlonlat.lat + "," + Centerlonlat.lon + "\" zoom=\"" + zoom + "\" width=\"100%\" height=\"450\" " + FileList_FileField + FileList_MapTypeField + FileList_ColorField + "]";
+
+      div = document.getElementById("ShortCode_Div");
+      div.innerHTML = GenTxt;
+    ';
+    $Layer .= ' 
+      markerslayer.clearMarkers();
+      if ((((document.post.osm_import.value == "single") || (document.post.osm_import.value == "none")) || (document.post.osm_mode.value == "geotagging")) && (document.post.osm_marker.value != "none")){
+        var icon_Obj = osm_getIconSize(MarkerName);
+        var icon_size = new OpenLayers.Size(icon_Obj.width,icon_Obj.height);
+        var icon_offset = new OpenLayers.Pixel(icon_Obj.offset_width, icon_Obj.offset_height);
+        var icon_url = "'.OSM_PLUGIN_ICONS_URL.'" + MarkerName;
+        var click_icon = new OpenLayers.Icon(icon_url,icon_size,icon_offset); 
+        var icon_lonlat = new OpenLayers.LonLat(Clicklonlat.lon,Clicklonlat.lat).transform('.$a_MapName.'.displayProjection, '.$a_MapName.'.projection);
+        markerslayer.addMarker(new OpenLayers.Marker(icon_lonlat,click_icon.clone()));
+      }';
+    }	
     else if( $a_msgBox == 'metabox_file_sc_gen'){
     $Layer .= ' 
       var ThemeField  = "";
