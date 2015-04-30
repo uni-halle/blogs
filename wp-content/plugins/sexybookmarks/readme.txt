@@ -1,9 +1,9 @@
 === Shareaholic | share buttons, related posts, social analytics & more ===
 Contributors: shareaholic
-Tags: sexybookmarks, shareaholic, shareholic, facebook, twitter, linkedin, URL Shortener, bitly, tinyurl, Goo.gl, Google+1, Google Analytics, Google Plus, Google, Instapaper, Wish List, Digg, Gmail, Google Bookmarks, Translate, Tumblr, AIM, Yahoo Messenger, Delicious, StumbleUpon, mister wong, evernote, add this, addtoany, share this, sharethis, share and follow, share and enjoy, sharing is sexy, sharing is caring, yahoo, reddit, hackernews, houzz, yummly, tweet button, twitter button, fark, buffer, myspace, orkut, netlog, hubspot, weheartit, printfriendly, yammer, wanelo, pinterest, google translate, bookmarks, social, email button, social share, socialize, sociable, sharebar, bookmark button, share button, social bookmarking, bookmarks menu, bookmarking, share, seo, analytics, stats, sharing, facebook like, facebook recommend, WPMU, mutisite, sumome, shortcode, yaarp, yarpp, nrelate, outbrain, linkwithin, related content, related posts, related, popular posts, popular, thumbnails, recommendations
+Tags: sexybookmarks, shareaholic, shareholic, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, analytics, social media, social plugin
 Requires at least: 3.0
-Tested up to: 4.1.1
-Stable tag: 7.6.1.2
+Tested up to: 4.2.1
+Stable tag: 7.6.1.4
 
 The easiest, most effective way to grow your website traffic, effectively engage your audience, monetize, and gain insights for free.
 
@@ -20,15 +20,16 @@ Shareaholic is an **all-in-one content amplification and monetization platform**
 * [Shareable Images](https://blog.shareaholic.com/image-share-buttons/) (Pinterest "pin it" button for images)
 * Bonus: [EU / UK Cookie Compliance Banner App](https://blog.shareaholic.com/cookie-consent-banner-app/)
 * Localized in 15+ languages
-* Related Content support for post keywords specified in "All in One SEO Pack", "WordPress SEO by Yoast", etc plugins
+* Related Content support for post keywords specified in the "All in One SEO Pack", "WordPress SEO by Yoast", "Add Meta Tags", etc plugins
 
 = Share Buttons =
 
 Make it 1-click easy for your visitors to share your content with their friends with Shareaholic's award winning Share Buttons.
 
-* Full support for Facebook, Twitter, Pinterest, Google Plus, etc
 * Share Counters for Twitter, Facebook, LinkedIn, Pinterest, Buffer, Google Plus, etc
 * Official support for Google's URL shortener (goo.gl) and Google Analytics
+* Supported URL Shorteners: Bitly (including custom tracking), J.mp, TinyURL, Goo.gl, Shr.lc
+* Full support for: Facebook, Twitter, Pinterest, Google Plus, Reddit, LinkedIn, Gmail, Delicious, OneNote, Evernote, Stumbleupon, Digg, Tumblr, Hootsuite, Buffer, Fancy, Wanelo, Yummly, WeHeartIt, Flipboard, Printfriendly, Amazon Wishlist, Instapaper, Pocket, Odnoklassniki, Houzz, Hacker News, Inbound.org, Vk, etc
 
 [Share Buttons](https://shareaholic.com/publishers/sharing/) (demo)
 
@@ -54,7 +55,7 @@ Provides you with important actionable metrics including insights into popular p
 
 = You're in Great Company =
 
-Shareaholic is used and trusted by hundreds of thousands of websites like yours and touches over 400 million people each month. Designed and built with all the love in the world in Boston, Massachusetts.
+Shareaholic is used and trusted by hundreds of thousands of websites like yours and touches over 450 million people each month. Designed and built with all the love in the world in Boston, Massachusetts.
 
 = Support =
 
@@ -168,6 +169,12 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 7.6.1.4 =
+* Minor enhancements
+
+= 7.6.1.3 =
+* Bugfix: Redefined what is considered a shareable page
 
 = 7.6.1.2 =
 * [Bugfix](https://wordpress.org/support/topic/shareaholic-plugin-integration-issue): Added a check to see if data object exists before trying to access it
@@ -1197,7 +1204,13 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 
 == Upgrade Notice ==
 
-= 7.6.1.2 = 
+= 7.6.1.4 =
+Minor enhancements.
+
+= 7.6.1.3 =
+Bug fixes.
+
+= 7.6.1.2 =
 Bug fixes.
 
 = 7.6.1.1 =

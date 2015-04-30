@@ -198,7 +198,11 @@ class ShareaholicPublic {
       if ($article_visibility == 'draft' || $article_visibility == 'auto-draft' || $article_visibility == 'future' || $article_visibility == 'pending'){
         echo "<meta name='shareaholic:shareable_page' content='false' />\n";
         $article_visibility = 'draft';
-      } else if ($article_visibility == 'private' || $post->post_password != '' || is_attachment()) {
+      } else if ($article_visibility == 'private' || $post->post_password != '') {
+        echo "<meta name='shareaholic:shareable_page' content='false' />\n";
+        $article_visibility = 'private';
+      } else if (is_attachment()) {
+        // attachments are shareable but not recommendable
         echo "<meta name='shareaholic:shareable_page' content='true' />\n";
         $article_visibility = 'private';
       } else {
