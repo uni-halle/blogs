@@ -5934,7 +5934,7 @@ msgstr "<strong>ERREUR</strong>&nbsp;: votre compte a été marqué comme étant
 msgid "Sidebar %d"
 msgstr "Colonne latérale %d"
 
-#: wp-includes/wp-db.php:2835
+#: wp-includes/wp-db.php:2949
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>ERREUR</strong>&nbsp;: WordPress %1$s requiert MySQL %2$s ou une version supérieure."
 
