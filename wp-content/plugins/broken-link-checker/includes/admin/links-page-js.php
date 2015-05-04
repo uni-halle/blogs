@@ -615,11 +615,12 @@ jQuery(function($){
 		}
 
 		var newLinkText = null,
-			linkTextField = editRow.find('.blc-link-text-field');
+			linkTextField = editRow.find('.blc-link-text-field'),
+			oldLinkText = master.data('link-text');
 		if (!linkTextField.prop('readonly')) {
 			newLinkText = linkTextField.val();
-			//Empty text = leave the text unchanged.
-			if (newLinkText == '') {
+			//Empty or identical to the original = leave the text unchanged.
+			if ((newLinkText === '') || (newLinkText === oldLinkText)) {
 				newLinkText = null;
 			}
 		}

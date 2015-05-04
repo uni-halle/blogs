@@ -708,7 +708,7 @@ class blcLinkQuery {
 				"<li><a href='tools.php?page=view-broken-links&filter_id=%s' %s>%s</a> <span class='count'>(<span class='%s'>%d</span>)</span>",
 				esc_attr($filter),
 				$class,
-				htmlentities($data['name']),
+				esc_html($data['name']),
 				$number_class,
 				$data['count']
 			);
