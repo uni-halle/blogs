@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-04-23 15:23:09+0000\n"
+"PO-Revision-Date: 2015-05-02 10:34:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,83 +11,83 @@ msgstr ""
 "Project-Id-Version: Administration\n"
 
 #. translators: 1: Term splitting guide link
-#: wp-admin/about.php:115
+#: wp-admin/about.php:123
 msgid "Terms shared across multiple taxonomies will be split when one of them is updated. Find out more in the <a href=\"%1$s\">Plugin Developer Handbook</a>."
 msgstr "I termini condivisi da più tassonomie verranno divisi quando uno dei termini viene aggiornato. Maggiori informazioni nel <a href=\"%1$s\">Plugin Developer Handbook</a>. (in inglese)"
 
-#: wp-admin/about.php:52
+#: wp-admin/about.php:60
 msgid "Clip it, edit it, publish it. Get familiar with the new and improved Press This. From the <a href=\"%s\">Tools</a> menu, add Press This to your browser bookmark bar or your mobile device home screen. Once installed you can share your content with lightning speed. Sharing your favorite videos, images, and content has never been this fast or this easy."
 msgstr "Ritaglia, modifica, pubblica. Impara a conoscere il nuovo e migliorato Press This. Dal menu <a href=\"%s\">Strumenti</a>, aggiungi Press This alla barra dei preferiti del tuo browser oppure alla schermata principale del tuo dispositivo mobile. Una volta installato potrai condividere i tuoi contenuti alla velocità della luce. Condividere i tuoi video, immagini e contenuti preferiti non è mai stato così facile e veloce."
 
-#: wp-admin/about.php:71
+#: wp-admin/about.php:79
 msgid "Writing in WordPress, whatever your language, just got better. WordPress 4.2 supports a host of new characters out-of-the-box, including native Chinese, Japanese, and Korean characters, musical and mathematical symbols, and hieroglyphs."
 msgstr "La scrittura in WordPress, qualsiasi sia la tua lingua, è ancora migliorata. WordPress 4.2 supporta nativamente un nuovo insieme di caratteri, che comprendono i caratteri Cinesi, Giapponesi e Coreani, simboli musicali e matematici ed anche geroglifici."
 
 #. translators: 1: heart emoji, 2: frog face emoji, 3, monkey emoji, 4: pizza
 #. emoji, 5: Emoji Codex link
-#: wp-admin/about.php:74
+#: wp-admin/about.php:82
 msgid "Don&#8217;t use any of those characters? You can still have fun &mdash; emoji are now available in WordPress! Get creative and decorate your content with %1$s, %2$s, %3$s, %4$s, and all the many other <a href=\"%5$s\">emoji</a>."
 msgstr "Non utilizzi nessuno di questi caratteri? Puoi ancora divertirti &mdash; in WordPress sono ora disponibili gli emoji! Sii creativo e abbellisci il tuo contenuto con %1$s, %2$s, %3$s, %4$s e tutti gli <a href=\"%5$s\">emoji</a> disponibili."
 
-#: wp-admin/about.php:83
+#: wp-admin/about.php:91
 msgid "Browse and preview your installed themes from the Customizer. Make sure the theme looks great with <em>your</em> content, before it debuts on your site. "
 msgstr "Scorri e visualizza dal Personalizzatore in anteprima i temi che hai installato. Assicurati che il tema appaia ottimale con <em>i tuoi</em> contenuti prima di farlo debuttare sul tuo sito. "
 
-#: wp-admin/about.php:93
+#: wp-admin/about.php:101
 msgid "Goodbye boring loading screen, hello smooth and simple plugin updates. Click <em>Update&nbsp;Now</em> and watch the magic happen."
 msgstr "Addio alla noiosa schermata di caricamento, benvenuti agli aggiornamenti dei plugin più semplici e lineari. Fai clic su <em>Aggiorna&nbsp;ora</em> e guarda come avviene la magia."
 
-#: wp-admin/about.php:92
+#: wp-admin/about.php:100
 msgid "Streamlined plugin updates"
 msgstr "Aggiornamento plugin in linea"
 
 #. translators: %s wp.a11y.speak()
-#: wp-admin/about.php:108
+#: wp-admin/about.php:116
 msgid "You can now send audible notifications to screen readers in JavaScript with %s. Pass it a string, and an update will be sent to a dedicated ARIA live notifications area."
 msgstr "Ora puoi inviare tramite JavaScript notifiche udibili ad uno screen reader tramite %s. Passagli una stringa ed un aggiornamento verrà inviato ad una area ARIA dedicata alle notifiche in tempo reale."
 
 #. translators: 1: WP_Query, 2: WP_Comment_Query, 3: WP_User_Query
-#: wp-admin/about.php:121
+#: wp-admin/about.php:129
 msgid "%1$s, %2$s, and %3$s now support complex ordering with named meta query clauses."
 msgstr "%1$s, %2$s e %3$s ora supportano ordinamenti complessi con query con clausole con nomi di metadati."
 
-#: wp-admin/about.php:88
+#: wp-admin/about.php:96
 msgid "Paste links from Tumblr.com and Kickstarter and watch them magically appear right in the editor. With every release, your publishing and editing experience get closer together."
 msgstr "Incolla un link da Tumblr.com o da Kickstarter e  appariranno magicamente all’interno dell'editor. Ad ogni rilascio, è ancora più ravvicinata l’esperienza di scrittura e di pubblicazione."
 
-#: wp-admin/about.php:70
+#: wp-admin/about.php:78
 msgid "Extended character support"
 msgstr "Supporto esteso carattere"
 
-#: wp-admin/about.php:87
+#: wp-admin/about.php:95
 msgid "Even more embeds"
 msgstr "Ancora più embed"
 
-#: wp-admin/about.php:103
+#: wp-admin/about.php:111
 msgid "Database character encoding has changed from utf8 to utf8mb4, which adds support for a whole range of new 4-byte characters."
 msgstr "La codifica carattere del database è cambiata da  utf8 a utf8mb4, aggiungendo il supporto a un'intera gamma di nuovi caratteri a 4-byte."
 
-#: wp-admin/about.php:105
+#: wp-admin/about.php:113
 msgid "JavaScript accessibility"
 msgstr "Accessibilità JavaScript"
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:120
 msgid "Shared term splitting"
 msgstr "Divisione dei term condivisi"
 
-#: wp-admin/about.php:118
+#: wp-admin/about.php:126
 msgid "Complex query ordering"
 msgstr "Ordinamento complesso delle query"
 
-#: wp-admin/about.php:82
+#: wp-admin/about.php:90
 msgid "Switch themes in the Customizer"
 msgstr "Cambia i temi nel personalizzatore"
 
-#: wp-admin/about.php:51
+#: wp-admin/about.php:59
 msgid "An easier way to share content"
 msgstr "Una via più semplice per condividere contenuti"
 
-#: wp-admin/about.php:102
+#: wp-admin/about.php:110
 msgid "utf8mb4 support"
 msgstr "Supporto a utf8mb4 "
 
@@ -95,7 +95,7 @@ msgstr "Supporto a utf8mb4 "
 msgid "Thank you for updating! WordPress %s helps you communicate and share, globally."
 msgstr "Grazie per aver aggiornato! WordPress %s ti aiuta a comunicare e condividere globalmente."
 
-#: wp-admin/about.php:74
+#: wp-admin/about.php:82
 msgid "https://codex.wordpress.org/Emoji"
 msgstr "https://codex.wordpress.org/Emoji"
 
@@ -623,7 +623,7 @@ msgstr ""
 msgid "You can log out of other devices, such as your phone or a public computer, by clicking the Log Out of All Other Sessions button."
 msgstr "Puoi disconnetterti da altri dispositivi, come il tuo telefono o un computer pubblico, cliccando il pulsante \"Esci da tutte le altre sessioni\"."
 
-#: wp-admin/about.php:53 wp-admin/tools.php:48
+#: wp-admin/about.php:61 wp-admin/tools.php:48
 msgid "Drag the bookmarklet below to your bookmarks bar. Then, when you&#8217;re on a page you want to share, simply &#8220;press&#8221; it."
 msgstr "Trascina il bookmarklet sotto la tua barra preferiti. Quindi, quando sei su una pagina che vuoi condividere, semplicemente &#8220;fai clic&#8221; su di essa."
 
@@ -2925,13 +2925,13 @@ msgstr "Puoi scegliere se permettere o meno la navigazione del tuo sito da parte
 msgid "More Actions"
 msgstr "Altre azioni"
 
-#: wp-admin/includes/dashboard.php:1333
-msgid "Turn comments on or off"
-msgstr "Attivare o disattivare i commenti"
-
 #: wp-admin/includes/dashboard.php:1335
 msgid "Learn more about getting started"
 msgstr "Maggiori informazioni su come iniziare"
+
+#: wp-admin/includes/dashboard.php:1333
+msgid "Turn comments on or off"
+msgstr "Attiva o disattiva i commenti"
 
 #: wp-admin/includes/media.php:2757
 msgid "File URL:"
@@ -3002,17 +3002,9 @@ msgstr "Aggiungere altre pagine"
 msgid "Add a blog post"
 msgstr "Aggiungere un articolo"
 
-#: wp-admin/includes/dashboard.php:1311
-msgid "Write your first blog post"
-msgstr "Scrivere il tuo primo articolo"
-
 #: wp-admin/includes/dashboard.php:1312
 msgid "Add an About page"
 msgstr "Aggiungere una pagina Info"
-
-#: wp-admin/includes/dashboard.php:1314
-msgid "View your site"
-msgstr "Visualizzare il tuo sito"
 
 #: wp-admin/includes/meta-boxes.php:297
 msgid "Uploaded on: <b>%1$s</b>"
@@ -3035,10 +3027,6 @@ msgstr "Il gruppo di opzioni \"%s\" è stato rimosso. Utilizza un altro gruppo d
 #: wp-admin/includes/dashboard.php:1292
 msgid "Get Started"
 msgstr "Come iniziare"
-
-#: wp-admin/setup-config.php:312
-msgid "After you&#8217;ve done that, click &#8220;Run the install.&#8221;"
-msgstr "Una volta che hai teminato fai clic su &#8220;Esegui installazione.&#8221;"
 
 #: wp-admin/options-reading.php:148 wp-admin/options-reading.php:168
 msgid "Discourage search engines from indexing this site"
@@ -3096,6 +3084,18 @@ msgstr "Benvenuto in WordPress %1$s. Verrai reindirizzato alla schermata Informa
 #: wp-admin/includes/dashboard.php:299
 msgid "Search Engines Discouraged"
 msgstr "Motori di ricerca bloccati"
+
+#: wp-admin/includes/dashboard.php:1314
+msgid "View your site"
+msgstr "Visualizza il tuo sito"
+
+#: wp-admin/includes/dashboard.php:1311
+msgid "Write your first blog post"
+msgstr "Scrivi il tuo primo articolo"
+
+#: wp-admin/setup-config.php:312
+msgid "After you&#8217;ve done that, click &#8220;Run the install.&#8221;"
+msgstr "Una volta che hai teminato fai clic su &#8220;Eseguire l&#8217;installazione.&#8221;"
 
 #: wp-admin/includes/plugin-install.php:226
 msgid "Your WordPress.org username:"
@@ -3898,10 +3898,6 @@ msgstr "Si deve essere membri di almeno un sito per poter utilizzare questa pagi
 msgid "Global Settings"
 msgstr "Impostazioni globali"
 
-#: wp-admin/setup-config.php:164
-msgid "Your MySQL username"
-msgstr "Nome utente MYSQL"
-
 #: wp-admin/setup-config.php:143
 msgid "Let&#8217;s go!"
 msgstr "Iniziamo!"
@@ -3916,17 +3912,9 @@ msgctxt "example password"
 msgid "password"
 msgstr "password"
 
-#: wp-admin/setup-config.php:169
-msgid "&hellip;and your MySQL password."
-msgstr "&hellip;è la password MySQL."
-
 #: wp-admin/setup-config.php:172
 msgid "Database Host"
 msgstr "Host del database"
-
-#: wp-admin/setup-config.php:174
-msgid "You should be able to get this info from your web host, if <code>localhost</code> does not work."
-msgstr "Se <code>localhost</code> non funziona, si dovrà ottenere questa informazione dal proprio fornitore di hosting."
 
 #: wp-admin/setup-config.php:177
 msgid "Table Prefix"
@@ -3935,10 +3923,6 @@ msgstr "Prefisso tabella"
 #: wp-admin/setup-config.php:133
 msgid "Database host"
 msgstr "Host del database"
-
-#: wp-admin/setup-config.php:313 wp-admin/setup-config.php:344
-msgid "Run the install"
-msgstr "Esegui ed installa"
 
 #: wp-admin/setup-config.php:130
 msgid "Database name"
@@ -3952,10 +3936,6 @@ msgstr "Nome utente del database"
 msgid "Database password"
 msgstr "Password del database"
 
-#: wp-admin/setup-config.php:134
-msgid "Table prefix (if you want to run more than one WordPress in a single database)"
-msgstr "Prefisso tabelle (se si desidera eseguire più WordPress con un solo database)"
-
 #: wp-admin/setup-config.php:157
 msgid "Database Name"
 msgstr "Nome database"
@@ -3963,14 +3943,6 @@ msgstr "Nome database"
 #: wp-admin/setup-config.php:82
 msgid "WordPress &rsaquo; Setup Configuration File"
 msgstr "WordPress &rsaquo; Impostazione del file di configurazione"
-
-#: wp-admin/setup-config.php:159
-msgid "The name of the database you want to run WP in."
-msgstr "Il nome del database che si vuole utilizzare con WP"
-
-#: wp-admin/setup-config.php:179
-msgid "If you want to run multiple WordPress installations in a single database, change this."
-msgstr "Modificare questa voce se si desidera eseguire più installazioni di WordPress su un singolo database."
 
 #: wp-admin/setup-config.php:306
 msgid "You can create the <code>wp-config.php</code> manually and paste the following text into it."
@@ -3988,9 +3960,37 @@ msgstr "Il file 'wp-config.php' esiste già. Se occorre azzerare una qualsiasi c
 msgid "The file 'wp-config.php' already exists one level above your WordPress installation. If you need to reset any of the configuration items in this file, please delete it first. You may try <a href='install.php'>installing now</a>."
 msgstr "Il file 'wp-config.php' esiste già ad un livello superiore a quello dell'installazione di WordPress. Se occorre azzerare una qualsiasi configurazione diq eusto file, prima cancellarlo. &Egrave; possibile provare ora <a href='install.php'>l'instllazione</a>."
 
+#: wp-admin/setup-config.php:313 wp-admin/setup-config.php:344
+msgid "Run the install"
+msgstr "Eseguire l&#8217;installazione"
+
+#: wp-admin/setup-config.php:179
+msgid "If you want to run multiple WordPress installations in a single database, change this."
+msgstr "Modifica questa voce se desideri eseguire più installazioni di WordPress su un singolo database."
+
+#: wp-admin/setup-config.php:174
+msgid "You should be able to get this info from your web host, if <code>localhost</code> does not work."
+msgstr "Se <code>localhost</code> non funziona, dovrai ottenere questa informazione dal tuo fornitore di hosting."
+
+#: wp-admin/setup-config.php:169
+msgid "&hellip;and your MySQL password."
+msgstr "&hellip;e la tua password MySQL."
+
+#: wp-admin/setup-config.php:159
+msgid "The name of the database you want to run WP in."
+msgstr "Il nome del database che vuoi utilizzare con WP."
+
+#: wp-admin/setup-config.php:164
+msgid "Your MySQL username"
+msgstr "Il tuo nome utente MySQL."
+
+#: wp-admin/setup-config.php:134
+msgid "Table prefix (if you want to run more than one WordPress in a single database)"
+msgstr "Prefisso tabelle (se desideri eseguire più WordPress con un solo database)"
+
 #: wp-admin/setup-config.php:128
 msgid "Welcome to WordPress. Before getting started, we need some information on the database. You will need to know the following items before proceeding."
-msgstr "Benvenuti in WordPress. Prima di iniziare occorrono alcune informazioni sul database. Prima di procedere occorre conoscere i seguenti elementi."
+msgstr "Benvenuti in WordPress. Prima di iniziare abbiamo bisogno di alcune informazioni sul database. Devi conoscere i seguenti dati prima di procedere."
 
 #: wp-admin/maint/repair.php:30
 msgid "To allow use of this page to automatically repair database problems, please add the following line to your <code>wp-config.php</code> file. Once this line is added to your config, reload this page."
@@ -4147,14 +4147,14 @@ msgstr "Visualizza la Barra strumenti quando si visualizza il sito"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:159
+#: wp-admin/about.php:167
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>La versione %1$s</strong> corregge un problema di sicurezza e %2$s bug."
 msgstr[1] "<strong>La versione %1$s</strong> corregge un problema di sicurezza e %2$s bug."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:155
+#: wp-admin/about.php:163
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>La versione %1$s</strong> corregge %2$s bug."
@@ -4162,13 +4162,13 @@ msgstr[1] "<strong>La versione %1$s</strong> corregge %2$s bug."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:163
+#: wp-admin/about.php:171
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>La versione %1$s</strong> corregge alcuni problemi di sicurezza e %2$s bug."
 msgstr[1] "<strong>La versione %1$s</strong> corregge alcuni problemi di sicurezza e %2$s bug."
 
-#: wp-admin/about.php:166
+#: wp-admin/about.php:47 wp-admin/about.php:174
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Per ulteriori informazioni consulta <a href=\"%s\">le note di versione</a>."
 
@@ -4180,26 +4180,26 @@ msgstr "Benvenuti nella Bacheca di WordPress! Questa è la pagina che vedrai qua
 msgid "What&#8217;s New"
 msgstr "Che novità ci sono"
 
-#: wp-admin/about.php:147
+#: wp-admin/about.php:44 wp-admin/about.php:155
 msgid "Security Release"
 msgid_plural "Security Releases"
 msgstr[0] "Aggiornamento di sicurezza"
 msgstr[1] "Aggiornamenti di sicurezza"
 
-#: wp-admin/about.php:146
+#: wp-admin/about.php:154
 msgid "Maintenance Release"
 msgid_plural "Maintenance Releases"
 msgstr[0] "Aggiornamento di manutenzione"
 msgstr[1] "Aggiornamenti di manutenzione"
 
-#: wp-admin/about.php:148
+#: wp-admin/about.php:156
 msgid "Maintenance and Security Release"
 msgid_plural "Maintenance and Security Releases"
 msgstr[0] "Aggiornamento di sicurezza e manutenzione"
 msgstr[1] "Aggiornamenti di sicurezza e manutenzione"
 
 #. translators: 1: WordPress version number.
-#: wp-admin/about.php:151
+#: wp-admin/about.php:45 wp-admin/about.php:159
 msgid "<strong>Version %1$s</strong> addressed a security issue."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues."
 msgstr[0] "<strong>La versione %1$s</strong> corregge un problema di sicurezza."
@@ -4213,7 +4213,7 @@ msgstr "Questa pagina permette di scegliere la propria struttura di permalink pr
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Benvenuto in WordPress%1$s. <a href=\"%2$s\"> Ulteriori informazioni</a>."
 
-#: wp-admin/about.php:130
+#: wp-admin/about.php:138
 msgid "Return to Updates"
 msgstr "Torna alla pagina Aggiornamenti"
 
@@ -4509,11 +4509,11 @@ msgstr "Probabile inclusione diretta di wp-admin/includes/template.php allo scop
 msgid "Welcome to WordPress %s"
 msgstr "Benvenuto su WordPress %s"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:142
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Vai a Dashboard &rarr; Home"
 
-#: wp-admin/about.php:130
+#: wp-admin/about.php:138
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Ritorna a Bacheca &rarr; Aggiornamenti"
 
@@ -4525,13 +4525,13 @@ msgstr "WordPress è creato da un team internazionale di appassionati."
 msgid "Core Developers"
 msgstr "Sviluppatori principali"
 
-#: wp-admin/about.php:98
+#: wp-admin/about.php:106
 msgid "Under the Hood"
 msgstr "Sotto il cofano"
 
 #: wp-admin/includes/dashboard.php:1293 wp-admin/includes/dashboard.php:1295
 msgid "Customize Your Site"
-msgstr "Personalizzare il proprio sito"
+msgstr "Personalizza il tuo sito"
 
 #: wp-admin/user-edit.php:191
 msgid "Profile updated."
@@ -6514,7 +6514,7 @@ msgstr "Vai alla pagina del profilo"
 
 #: wp-admin/includes/upgrade.php:80
 msgid "Your chosen password."
-msgstr "La password scelta"
+msgstr "La password che hai scelto."
 
 #: wp-admin/post.php:275
 msgid "You are not allowed to move this item out of the Trash."
@@ -6728,7 +6728,7 @@ msgstr "Password, due volte"
 
 #: wp-admin/install.php:130
 msgid "A password will be automatically generated for you if you leave this blank."
-msgstr "Sarà generata una password automaticamente se verrà lasciato vuoto questo campo."
+msgstr "Se lasci questo campo vuoto, la password sarà generata automaticamente."
 
 #: wp-admin/includes/class-wp-upgrader-skins.php:368
 msgid "Updating Theme %1$s (%2$d/%3$d)"
@@ -6780,7 +6780,7 @@ msgstr "Utente già esistente. La password è stata ereditata."
 
 #: wp-admin/includes/upgrade.php:95
 msgid "The password you chose during the install."
-msgstr "La password scelta durante l'installazione"
+msgstr "La password che hai scelto durante l&#8217;installazione."
 
 #: wp-admin/plugins.php:118 wp-admin/update-core.php:225
 #: wp-admin/update-core.php:287 wp-admin/update-core.php:591
@@ -6837,7 +6837,7 @@ msgstr "Cancella plugin"
 msgid "Inactive:"
 msgstr "Non attivo:"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:142
 msgid "Go to Dashboard"
 msgstr "Vai alla bacheca"
 
@@ -7153,29 +7153,9 @@ msgstr "<strong>ERRORE</strong>: inserisci un indirizzo e-mail"
 msgid "WordPress &rsaquo; Installation"
 msgstr "WordPress &rsaquo; Installazione"
 
-#: wp-admin/install.php:141
-msgid "Your E-mail"
-msgstr "Tua e-mail"
-
-#: wp-admin/install.php:143
-msgid "Double-check your email address before continuing."
-msgstr "Controlla attentamente l'indirizzo e-mail prima di continuare."
-
 #: wp-admin/install.php:150
 msgid "Install WordPress"
 msgstr "Installa WordPress"
-
-#: wp-admin/install.php:220
-msgid "Information needed"
-msgstr "Servono delle informazioni"
-
-#: wp-admin/install.php:274
-msgid "Success!"
-msgstr "Successo!"
-
-#: wp-admin/install.php:276
-msgid "WordPress has been installed. Were you expecting more steps? Sorry to disappoint."
-msgstr "WordPress è stato installato. Non vi sono altri passi? Spiacenti di deludervi. :)"
 
 #: wp-admin/link-add.php:15
 msgid "Add New Link"
@@ -8277,10 +8257,6 @@ msgstr "Quando un commento contiene una di queste parole, nel testo, nel nome, n
 msgid "When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
 msgstr "Quando un commento contiene una di queste parole, nel testo, nel nome, nella URL, nella e-mail o nell'IP, verrà posto nella <a href=\"moderation.php\">coda di moderazione</a>. Inserire una singola parola o IP per riga. Verranno cercate corrispondenze anche all'interno delle parole, quindi &#8220;press&#8221;  troverà una corrispondenza in &#8220;WordPress&#8221;."
 
-#: wp-admin/install.php:221
-msgid "Please provide the following information. Don&#8217;t worry, you can always change these settings later."
-msgstr "Prima di iniziare, abbiamo bisogno di alcune informazioni. Non preoccuparsi, si potrà sempre cambiarle in seguito."
-
 #: wp-admin/includes/class-wp-upgrader.php:2670 wp-admin/update-core.php:427
 msgid "Installation Failed"
 msgstr "Installazione non riuscita"
@@ -8425,6 +8401,30 @@ msgstr "Aggiorna temi"
 #: wp-admin/includes/upgrade.php:169
 msgid "Hello world!"
 msgstr "Ciao mondo!"
+
+#: wp-admin/install.php:274
+msgid "Success!"
+msgstr "Congratulazioni!"
+
+#: wp-admin/install.php:276
+msgid "WordPress has been installed. Were you expecting more steps? Sorry to disappoint."
+msgstr "WordPress è stato installato. Ti aspettavi altri passaggi? Spiacenti di deluderti. :)"
+
+#: wp-admin/install.php:141
+msgid "Your E-mail"
+msgstr "La tua e-mail"
+
+#: wp-admin/install.php:143
+msgid "Double-check your email address before continuing."
+msgstr "Controlla attentamente il tuo indirizzo e-mail prima di continuare."
+
+#: wp-admin/install.php:221
+msgid "Please provide the following information. Don&#8217;t worry, you can always change these settings later."
+msgstr "Inserisci le seguenti informazioni. Non preoccuparti, potrai sempre cambiarle in seguito."
+
+#: wp-admin/install.php:220
+msgid "Information needed"
+msgstr "Informazioni necessarie"
 
 #: wp-admin/users.php:104 wp-admin/users.php:121
 msgid "You can&#8217;t edit that user."
@@ -10437,7 +10437,7 @@ msgstr "Azioni di Gruppo"
 msgid "Bulk Edit"
 msgstr "Modifica di Gruppo"
 
-#: wp-admin/about.php:56 wp-admin/tools.php:16 wp-admin/tools.php:40
+#: wp-admin/about.php:64 wp-admin/tools.php:16 wp-admin/tools.php:40
 #: wp-admin/tools.php:51
 msgid "Press This"
 msgstr "Press This"

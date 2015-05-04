@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-04-22 19:04:55+0000\n"
+"PO-Revision-Date: 2015-05-02 10:30:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1531,7 +1531,7 @@ msgstr "L'argomento %s della query deve avere un valore."
 
 #: wp-includes/user.php:2224
 msgid "Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
-msgstr "Suggerimento: La password dovrebbe essere lunga almeno sette caratteri. Per renderla pi&ugrave; resistente utilizza lettere maiuscole e minuscole, numeri e simboli come ! \" ? $ % ^ &amp; )."
+msgstr "Suggerimento: la password dovrebbe essere lunga almeno sette caratteri. Per renderla pi&ugrave; sicura utilizza lettere maiuscole e minuscole, numeri e simboli come ! \" ? $ % ^ &amp; )."
 
 #: wp-includes/media.php:3097
 msgid "Create Audio Playlist"
@@ -6090,7 +6090,7 @@ msgstr "Il tema padre è mancante. Installare il tema padre \"%s\"."
 msgid "<strong>ERROR</strong>: Your account has been marked as a spammer."
 msgstr "<strong>ERRORE</strong>: l'account è stato contrassegnato come un account spammer."
 
-#: wp-includes/wp-db.php:2835
+#: wp-includes/wp-db.php:2949
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>ERRORE</strong>: WordPress %1$s richiede MySQL %2$s o superiore"
 
@@ -6218,10 +6218,6 @@ msgstr "Password persa"
 msgid "Password Lost and Found"
 msgstr "Ufficio oggetti smarriti - Password"
 
-#: wp-login.php:759 wp-login.php:942
-msgid "Lost your password?"
-msgstr "È stata persa la password?"
-
 #: wp-includes/default-widgets.php:550
 msgid "Automatically add paragraphs"
 msgstr "Aggiungi automaticamente paragrafi"
@@ -6310,6 +6306,10 @@ msgstr "Accedi nuovamente"
 #: wp-includes/default-widgets.php:410
 msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
 msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> degli Articoli"
+
+#: wp-login.php:759 wp-login.php:942
+msgid "Lost your password?"
+msgstr "Hai dimenticato la tua password?"
 
 #: wp-includes/post.php:122
 msgid "Scheduled <span class=\"count\">(%s)</span>"

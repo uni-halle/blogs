@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-04-23 15:23:09+0000\n"
+"PO-Revision-Date: 2015-05-02 22:25:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5359,10 +5359,6 @@ msgstr "Es ist eine Aktualisierung der Datenbank notwendig"
 msgid "WordPress has been updated! Before we send you on your way, we have to update your database to the newest version."
 msgstr "WordPress wurde aktualisiert! Ehe du dich drauf stürzen kannst, müssen wir nur noch deine Datenbank auf die neueste Version bringen."
 
-#: wp-admin/upgrade.php:91
-msgid "The update process may take a little while, so please be patient."
-msgstr "Der Updateprozess beginnt. Dies kann eine Weile dauern, hab bitte etwas Geduld."
-
 #: wp-admin/upgrade.php:92
 msgid "Update WordPress Database"
 msgstr "WordPress-Datenbank aktualisieren"
@@ -5374,6 +5370,10 @@ msgstr "Aktualisierung erfolgreich"
 #: wp-admin/upgrade.php:103
 msgid "Your WordPress database has been successfully updated!"
 msgstr "Deine WordPress-Datenbank wurde erfolgreich aktualisiert."
+
+#: wp-admin/upgrade.php:91
+msgid "The update process may take a little while, so please be patient."
+msgstr "Der Updateprozess beginnt. Dies kann eine Weile dauern, hab' bitte etwas Geduld."
 
 #: wp-admin/includes/update.php:287
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a>. <em>Automatic update is unavailable for this plugin.</em>"
@@ -5523,7 +5523,7 @@ msgstr "Erneut prüfen"
 
 #: wp-admin/includes/class-wp-upgrader-skins.php:221
 msgid "The update process is starting. This process may take a while on some hosts, so please be patient."
-msgstr "Der Updateprozess beginnt. Dies kann eine Weile dauern, hab bitte etwas Geduld."
+msgstr "Der Updateprozess beginnt. Dies kann eine Weile dauern, hab' bitte etwas Geduld."
 
 #: wp-admin/includes/user.php:437
 msgid "You&rsquo;re using the auto-generated password for your account. Would you like to change it to something easier to remember?"
