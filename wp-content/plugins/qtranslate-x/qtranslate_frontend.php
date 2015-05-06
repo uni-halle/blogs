@@ -24,10 +24,7 @@ function qtranxf_head(){
 	global $q_config;
 
 	if( $q_config['header_css_on'] ){
-		$header_css = qtranxf_front_header_css();
-		echo '<style type="text/css">'.PHP_EOL;
-		echo $header_css;
-		echo '</style>'.PHP_EOL;
+		echo '<style type="text/css">' . PHP_EOL .$q_config['header_css'].'</style>'. PHP_EOL;
 	}
 	do_action('qtranslate_head_add_css');//not really needed?
 
@@ -37,6 +34,7 @@ function qtranxf_head(){
 	// set links to translations of current page
 	//$lang=$q_config['language'];
 	//echo "\n<meta http-equiv=\"Content-Language\" content=\"".str_replace('_','-',$q_config['locale'][$lang])."\" />\n"; //obsolete way 
+	echo '<meta name="generator" content="qTranslate-X '.QTX_VERSION.'" />'.PHP_EOL;
 	foreach($q_config['enabled_languages'] as $language) {
 		//if($language != qtranxf_getLanguage())//standard requires them all
 		echo '<link hreflang="'.$language.'" href="'.qtranxf_convertURL('',$language,false,true).'" rel="alternate" />'.PHP_EOL;
@@ -86,13 +84,15 @@ function qtranxf_wp_get_nav_menu_items( $items, $menu, $args )
 	$title='Language';//[none|Language|Current]
 	$current=true;//[shown|hidden]
 	$flags=true;//[none|all|items]
+	$lang_names=true;//names=[shown|hidden]
+	$colon=true;//[shown|hidden]
 	$topflag=true;
 	$itemsmodified=false;
 	foreach($items as $key => $item)
 	{
-		//qtranxf_dbg_echo('qtranxf_wp_get_nav_menu_items: $item->url: ',$item->url);
-		//qtranxf_dbg_echo('qtranxf_wp_get_nav_menu_items: $item: ',$item);
-		//qtranxf_dbg_echo('qtranxf_wp_get_nav_menu_items: item: '.$item->title.'; p='.$item->menu_item_parent.'; ID='.$item->ID);
+		//qtranxf_dbg_log('qtranxf_wp_get_nav_menu_items: $item->url: ',$item->url);
+		//qtranxf_dbg_log('qtranxf_wp_get_nav_menu_items: $item: ',$item);
+		//qtranxf_dbg_log('qtranxf_wp_get_nav_menu_items: item: '.$item->title.'; p='.$item->menu_item_parent.'; ID='.$item->ID);
 		$qtransLangSw = isset( $item->url ) && stristr( $item->url, 'qtransLangSw' ) !== FALSE;
 		if(!$qtransLangSw){
 			$item_title=qtranxf_use_language($language, $item->title, false, true);
@@ -111,14 +111,12 @@ function qtranxf_wp_get_nav_menu_items( $items, $menu, $args )
 				}
 			}
 		}
-		//qtranxf_dbg_echo('passed item: '.$item->title.'; p='.$item->menu_item_parent);
 
 		$item->post_content=qtranxf_use_language($language, $item->post_content, false, true);
 		$item->post_title=qtranxf_use_language($language, $item->post_title, false, true);
 		$item->post_excerpt=qtranxf_use_language($language, $item->post_excerpt, false, true);
 		$item->description=qtranxf_use_language($language, $item->description, false, true);
 		if(isset($item->attr_title)) $item->attr_title=qtranxf_use_language($language, $item->attr_title, false, true);
-		//qtranxf_dbg_echo('qtranxf_wp_get_nav_menu_items: $item: ',$item);
 
 		if($itemid<$item->ID) $itemid=$item->ID;
 		if($menu_order<$item->menu_order) $menu_order=$item->menu_order;
@@ -134,13 +132,22 @@ function qtranxf_wp_get_nav_menu_items( $items, $menu, $args )
 				if($flags) $topflag=(stripos($pars['flags'],'items')===FALSE);
 				else $topflag=false;
 			}
+			if(isset($pars['names'])){
+				$lang_names = (stripos($pars['names'],'hid')===FALSE);
+			}
 			if(isset($pars['title'])){
 				$title=$pars['title'];
 				if(stripos($pars['title'],'no')!==FALSE) $title='';
 				if(!$topflag && empty($title)) $title='Language';
 			}
+			if(isset($pars['colon'])){
+				$colon = (stripos($pars['colon'],'hid')===FALSE);
+			}
 			if(isset($pars['current'])){
 				$current=(stripos($pars['current'],'hid')===FALSE);
+			}
+			if( !$lang_names && !$flags ){
+				$flags = true;
 			}
 		}
 		if($type=='AL'){
@@ -159,16 +166,29 @@ function qtranxf_wp_get_nav_menu_items( $items, $menu, $args )
 			}elseif(stripos($title,'Current')!==FALSE){
 				$item->title=$q_config['language_name'][$toplang];
 			}else{
-				$item->title=__('Language','qtranslate');
+				$blocks = qtranxf_get_language_blocks($item->title);
+				if(count($blocks)<=1){//no customization is done
+					$item->title = __('Language', 'qtranslate');
+					if($item->title == 'Language') $item->title = qtranxf_translate_wp('Language');
+				}else{
+					$item->title = qtranxf_use_block($toplang, $blocks);
+				}
 			}
 			$item->url=null;
 		}
 		if($topflag){
-			if(!empty($item->title)) $item->title.=':&nbsp;';
-			$item->title.='<img src="'.$flag_location.$q_config['flag'][$toplang].'" alt="'.$q_config['language_name'][$toplang].' '.__('Flag', 'qtranslate').'" />';
+			if(!empty($item->title)){
+				if($colon) $item->title.=':';
+				$item->title.='&nbsp;';
+			}
+			$item->title.='<img src="'.$flag_location.$q_config['flag'][$toplang].'" alt="'.$q_config['language_name'][$toplang].'" />';//.' '.__('Flag', 'qtranslate')
 		}
+		if(empty($item->attr_title))
+			$item->attr_title = $q_config['language_name'][$toplang];
 		//$item->classes[] = 'qtranxs_flag_'.$language;
 		$item->classes[] = 'qtranxs-lang-menu';
+		$item->classes[] = 'qtranxs-lang-menu-'.$toplang;
+		//qtranxf_dbg_log('qtranxf_wp_get_nav_menu_items: top $item: ',$item);
 		$qtransmenu = $item;
 	}
 	//if(	$itemsmodified ) qtranxf_remove_detached_children($items);
@@ -190,9 +210,13 @@ function qtranxf_wp_get_nav_menu_items( $items, $menu, $args )
 		$item->object_id=$qtransmenu->object_id;
 		$item->type='custom';
 		$item->type_label='Custom';
-		$item->title=$q_config['language_name'][$lang];
+		$item->title='';
 		if($flags){
-			$item->title='<img src="'.$flag_location.$q_config['flag'][$lang].'" alt="'.$q_config['language_name'][$lang].' '.__('Flag', 'qtranslate').'" />&nbsp;'.$item->title;
+			$item->title='<img src="'.$flag_location.$q_config['flag'][$lang].'" alt="'.$q_config['language_name'][$lang].'" />';
+		}
+		if($lang_names){
+			if($flags) $item->title .= '&nbsp;';
+			$item->title .= $q_config['language_name'][$lang];
 		}
 		$item->post_title=$item->title;
 		$item->post_name='language-menuitem-'.$lang;
@@ -200,12 +224,14 @@ function qtranxf_wp_get_nav_menu_items( $items, $menu, $args )
 			$item->url=qtranxf_convertURL($url, $lang, false, true);
 			$item->url=esc_url($item->url);//not sure if this is needed
 		}
+		$item->attr_title = $q_config['language_name'][$lang];
 		$item->classes=array();
 		//$item->classes[] = 'qtranxs_flag_'.$lang;
 		$item->classes[] = 'qtranxs-lang-menu-item';
+		$item->classes[] = 'qtranxs-lang-menu-item-'.$lang;
 		$items[]=$item;
 		++$menu->count;
-		//qtranxf_dbg_echo('qtranxf_wp_get_nav_menu_items: $item',$item);
+		//qtranxf_dbg_log('qtranxf_wp_get_nav_menu_items: language menu $item',$item);
 	}
 	return $items;
 }
@@ -215,7 +241,7 @@ add_filter( 'wp_get_nav_menu_items',  'qtranxf_wp_get_nav_menu_items', 20, 3 );
 function qtranxf_wp_setup_nav_menu_item($menu_item) {
 	global $q_config;
 	if($menu_item->title==='test'){
-		//echo "qtranxf_wp_setup_nav_menu_item: '$text'<br>\n";
+		//echo "qtranxf_wp_setup_nav_menu_item: '$text'<br/>\n";
 		//qtranxf_dbg_echo('menu_item:',$menu_item,true);
 		//qtranxf_dbg_echo('menu_item->title:'.$menu_item->title);
 		//$menu_item->title='test';//is in use
@@ -507,6 +533,19 @@ function qtranxf_trim_words( $text, $num_words, $more, $original_text ) {
 }
 
 /**
+ * @since 3.2.9.9.6
+ * Delete translated post_meta cache for all languages.
+ * Cache may have a few languages, if it is persistent.
+ */
+function qtranxf_cache_delete_postmeta($object_id) {
+	global $q_config;
+	foreach($q_config['enabled_languages'] as $lang){
+		$cache_key_lang = 'post_meta' . $lang;
+		wp_cache_delete($object_id, $cache_key_lang);
+	}
+}
+
+/**
  * @since 3.2.3 translation of postmeta
  */
 function qtranxf_filter_postmeta($original_value, $object_id, $meta_key = '', $single = false){
@@ -515,15 +554,26 @@ function qtranxf_filter_postmeta($original_value, $object_id, $meta_key = '', $s
 		//qtranxf_dbg_log('qtranxf_filter_postmeta: too early: $object_id='.$object_id.'; $meta_key',$meta_key,true);
 		return $original_value;
 	}
+	//qtranxf_dbg_log('qtranxf_filter_postmeta: $object_id='.$object_id.'; $meta_key=',$meta_key);
 
 	$meta_type = 'post';
 	$lang = $q_config['language'];
 	$cache_key = $meta_type . '_meta';
 	$cache_key_lang = $cache_key . $lang;
-	$meta_cache = wp_cache_get( $object_id, $cache_key_lang );
+
+	$meta_cache_wp = wp_cache_get($object_id, $cache_key);
+	if($meta_cache_wp){
+		//if there is wp cache, then we check if there is qtx cache
+		$meta_cache = wp_cache_get( $object_id, $cache_key_lang );
+	}else{
+		//reset qtx cache, since it would not be valid in the absence of wp cache
+		qtranxf_cache_delete_postmeta($object_id);
+		$meta_cache = null;
+	}
 	if( !$meta_cache ){
-		$meta_cache = wp_cache_get($object_id, $cache_key);
-		if ( !$meta_cache ) {
+		if ( $meta_cache_wp ) {
+			$meta_cache = $meta_cache_wp;
+		}else{
 			$meta_cache = update_meta_cache( $meta_type, array( $object_id ) );
 			$meta_cache = $meta_cache[$object_id];
 		}
@@ -553,11 +603,36 @@ function qtranxf_filter_postmeta($original_value, $object_id, $meta_key = '', $s
 		}
 		//qtranxf_dbg_log('qtranxf_filter_postmeta: $object_id='.$object_id.'; $meta_cache  after:',$meta_cache);
 
-		wp_cache_add( $object_id, $meta_cache, $cache_key_lang );
+		wp_cache_set( $object_id, $meta_cache, $cache_key_lang );
 	}
 
-	if(!$meta_key)
+	if(!$meta_key){
+		if($single){
+	/**
+	  @since 3.2.9.9.7
+	  The code executed after a call to this filter in /wp-includes/meta.php,
+	  in function get_metadata, is apparently designed having non-empty $meta_key in mind:
+
+	  	if ( $single && is_array( $check ) ){
+	  		return $check[0];
+	  	}else
+	  		return $check;
+
+	  Following the logic of the code "if ( !$meta_key ) return $meta_cache;",
+		a few lines below in the same function, the code above rather have to be:
+
+	  	if ( $meta_key && $single && is_array( $check ) ){
+	  		return $check[0];
+	  	}else
+	  		return $check;
+
+	  The line below offsets this imperfection.
+	  If WP ever fixes that place, this block of code will have to be removed.
+	 */
+			return array($meta_cache);
+		}
 		return $meta_cache;
+	}
 
 	if(isset($meta_cache[$meta_key]))
 		return $meta_cache[$meta_key];
@@ -568,6 +643,18 @@ function qtranxf_filter_postmeta($original_value, $object_id, $meta_key = '', $s
 		return array();
 }
 add_filter('get_post_metadata', 'qtranxf_filter_postmeta', 5, 4);
+
+/**
+ * @since 3.2.9.9.6
+ * Delete translated post_meta cache for all languages on cache update.
+ * Cache may have a few languages, if it is persistent.
+ */
+function qtranxf_updated_postmeta( $meta_id, $object_id, $meta_key, $meta_value ) {
+	//may be optimized to replace the key needed
+	qtranxf_cache_delete_postmeta($object_id);
+	//qtranxf_dbg_log('qtranxf_updated_postmeta(meta_id='.$meta_id.', object_id='.$object_id.', meta_key='.$meta_key.', meta_value='.$meta_value.'): cache_key_lang=',$cache_key_lang);
+}
+add_action('updated_postmeta', 'qtranxf_updated_postmeta', 5, 4);
 
 function qtranxf_checkCanonical($redirect_url, $requested_url) {
 	global $q_config;
@@ -599,8 +686,34 @@ function qtranxf_convertBlogInfoURL($url, $what) {
 }
 add_filter('bloginfo_url', 'qtranxf_convertBlogInfoURL',10,2);
 
+//function qtranxf_gettext($translated_text, $text, $domain) {
+function qtranxf_gettext($translated_text) {
+	//same as qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage
+	global $q_config;
+	//if(!isset($q_config['language'])){
+	//	//qtranxf_dbg_log('$q_config[language] is not set:',debug_backtrace());
+	//	return $translated_text;
+	//}
+	return qtranxf_use($q_config['language'], $translated_text, false);
+}
+
+//function qtranxf_gettext_with_context($translated_text, $text, $context, $domain) {
+function qtranxf_gettext_with_context($translated_text) {
+	//same as qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage
+	global $q_config;
+	//if(!isset($q_config['language'])){
+	//	//qtranxf_dbg_log('$q_config[language] is not set:',debug_backtrace());
+	//	return $translated_text;
+	//}
+	return qtranxf_use($q_config['language'], $translated_text, false);
+}
+
 //qtranxf_optionFilter();
 //add_filter('wp_head', 'qtranxf_add_css');
+
+// Hooks (execution time critical filters)
+add_filter('gettext', 'qtranxf_gettext',0);
+add_filter('gettext_with_context', 'qtranxf_gettext_with_context',0);
 
 // Compability with Default Widgets
 add_filter('widget_title', 'qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage',0);

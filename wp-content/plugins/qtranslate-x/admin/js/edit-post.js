@@ -23,6 +23,8 @@ qTranslateConfig.js={
 
 		qtx.addCustomContentHooks(form);
 
+		qtx.addDisplayHooksByClass('gallery_caption',form);
+
 		// Slug
 		function convertURL(url,lang)
 		{
@@ -101,11 +103,8 @@ qTranslateConfig.js={
 		if( !qTranslateConfig.page_config.anchors)
 			qTranslateConfig.page_config.anchors = ['post','postexcerpt'];//,'slugdiv'
 
+		qtx.addLanguageSwitchAfterListener(this.setSlugLanguage);
+
 		return true;
-	}
-,
-	onTabSwitch: function(lang,qtx)
-	{
-		this.setSlugLanguage(lang);
 	}
 };

@@ -4,22 +4,60 @@ function qtranxf_detect_admin_language($url_info) {
 	global $q_config;
 	$cs=null;
 	$lang=null;
-	if(isset($_COOKIE[QTX_COOKIE_NAME_ADMIN])){
+
+	/** @since 3.2.9.9.6
+	 * Detect language from $_POST['WPLANG'].
+	 */
+	if(isset($_POST['WPLANG'])){
+		// User is switching the language using "Site Language" field on page /wp-admin/options-general.php
+		$wplang = sanitize_text_field($_POST['WPLANG']);
+		if(empty($wplang)) $wplang = 'en';
+		foreach($q_config['enabled_languages'] as $language){
+			if($q_config['locale'][$language] != $wplang) continue;
+			$lang = $language;
+			break;
+		}
+		if(!$lang){
+			$lang=substr($wplang,0,2);
+			$lang=qtranxf_resolveLangCase($lang,$cs);
+		}
+	}
+
+	if(!$lang && isset($_COOKIE[QTX_COOKIE_NAME_ADMIN])){
 		$lang=qtranxf_resolveLangCase($_COOKIE[QTX_COOKIE_NAME_ADMIN],$cs);
 		$url_info['lang_cookie_admin'] = $lang;
 	}
+
 	if(!$lang){
-		$locale = get_locale();
-		$url_info['locale'] = $locale;
-		$lang = qtranxf_resolveLangCase(substr($locale,0,2),$cs);
-		$url_info['lang_locale'] = $lang;
-		if(!$lang) $lang = $q_config['default_language'];
+		//$locale = get_locale();
+		//$url_info['locale'] = $locale;
+		//$lang = qtranxf_resolveLangCase(substr($locale,0,2),$cs);
+		//$url_info['lang_locale'] = $lang;
+		//if(!$lang)
+		$lang = $q_config['default_language'];
 	}
 	$url_info['doing_front_end'] = false;
 	$url_info['lang_admin'] = $lang;
 	return $url_info;
 }
 add_filter('qtranslate_detect_admin_language','qtranxf_detect_admin_language');
+
+function qtranxf_array_compare($a,$b) {
+	if( !is_array($a) || !is_array($b) ) return false;
+	if(count($a)!=count($b)) return false;
+	//can be optimized
+	$diff_a=array_diff($a,$b);
+	$diff_b=array_diff($b,$a);
+	return empty($diff_a) && empty($diff_b);
+}
+
+function qtranxf_join_texts($texts,$sep) {
+	switch($sep){
+		//case '<': return qtranxf_join_c($texts);//no longer in use
+		case 'byline': return qtranxf_join_byline($texts);
+		default: return qtranxf_join_b($texts);
+	}
+}
 
 function qtranxf_convert_to_b($text) {
 	$blocks = qtranxf_get_language_blocks($text);
@@ -136,6 +174,7 @@ function qtranxf_convert_to_b_no_closing_deep($text) {
 
 function qtranxf_convert_database($action){
 	global $wpdb;
+	@set_time_limit(0);
 	$wpdb->show_errors();
 	qtranxf_convert_database_options($action);
 	qtranxf_convert_database_posts($action);
@@ -367,6 +406,16 @@ function qtranxf_updateTermLibrary() {
 	}
 }
 
+function qtranxf_stripSlashesIfNecessary($str) {
+	/**
+	 * @since 3.2.9.8.4 WordPress now always supplies slashed data
+	 */
+	//if(1==get_magic_quotes_gpc()) {
+		$str = stripslashes($str);
+	//}
+	return $str;
+}
+
 function qtranxf_updateTermLibraryJoin() {
 	global $q_config;
 	if(!isset($_POST['action'])) return;
@@ -398,16 +447,42 @@ function qtranxf_edit_terms($term_id, $taxonomy){
 	//qtranxf_dbg_log('qtranxf_edit_terms: $name='.$name);
 }
 add_action('edit_terms','qtranxf_edit_terms');
+
+//function qtranxf_gettext($translated_text, $text, $domain) {
+function qtranxf_gettext($translated_text) {
+	//same as qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage
+	$blocks = qtranxf_get_language_blocks($translated_text);
+	if(count($blocks)<=1)//no language is encoded in the $text, the most frequent case
+		return $translated_text;
+	global $q_config;
+	//qtranxf_dbg_log('qtranxf_gettext: $translated_text=',$translated_text,true);
+	return $translated_text;
+	//return qtranxf_use_block($q_config['language'], $blocks);
+	//return qtranxf_use($q_config['language'], $translated_text, false);
+}
+
+//function qtranxf_gettext_with_context($translated_text, $text, $context, $domain) {
+function qtranxf_gettext_with_context($translated_text) {
+	return qtranxf_gettext($translated_text);
+}
+add_filter('gettext', 'qtranxf_gettext',0);
+add_filter('gettext_with_context', 'qtranxf_gettext_with_context',0);
 */
+
+function qtranxf_getLanguageEdit() {
+	global $q_config;
+	return isset($_COOKIE['qtrans_edit_language']) ? $_COOKIE['qtrans_edit_language'] : $q_config['language'];
+}
 
 function qtranxf_language_columns($columns) {
 	return array(
+		'code' => _x('Code', 'Two-letter Language Code meant.', 'qtranslate'),
 		'flag' => __('Flag', 'qtranslate'),
 		'name' => __('Name', 'qtranslate'),
 		'status' => __('Action', 'qtranslate'),
-		'status2' => '',
-		'status3' => ''
-		);
+		'status2' => __('Edit', 'qtranslate'),
+		'status3' => __('Stored', 'qtranslate')
+	);
 }
 
 function qtranxf_languageColumnHeader($columns){
@@ -424,18 +499,63 @@ function qtranxf_languageColumnHeader($columns){
 function qtranxf_languageColumn($column) {
 	global $q_config, $post;
 	if ($column == 'language') {
+		$missing_languages = null;
 		$available_languages = qtranxf_getAvailableLanguages($post->post_content);
-		$missing_languages = array_diff($q_config['enabled_languages'], $available_languages);
-		$available_languages_name = array();
-		foreach($available_languages as $language) {
-			$available_languages_name[] = $q_config['language_name'][$language];
+		if($available_languages === FALSE){
+			echo _x('Languages are not set', 'Appears in the column "Languages" on post listing pages, when content has no language tags yet.', 'qtranslate');
+		}else{
+			$missing_languages = array_diff($q_config['enabled_languages'], $available_languages);
+			$available_languages_name = array();
+			$language_names = null;
+			foreach($available_languages as $language) {
+				if(isset($q_config['language_name'][$language])){
+					$language_name = $q_config['language_name'][$language];
+				}else{
+					if(!$language_names) $language_names = qtranxf_default_language_name();
+					$language_name = isset($language_names[$language]) ? $language_names[$language] : __('Unknown Language', 'qtranslate');
+					$language_name .= ' ('.__('Not enabled', 'qtranslate').')';
+				}
+				$available_languages_name[] = $language_name;
+			}
+			$available_languages_names = join(', ', $available_languages_name);
+			echo apply_filters('qtranslate_available_languages_names',$available_languages_names);
 		}
-		$available_languages_names = join(", ", $available_languages_name);
-		
-		echo apply_filters('qtranslate_available_languages_names',$available_languages_names);
 		do_action('qtranslate_languageColumn', $available_languages, $missing_languages);
 	}
 	return $column;
+}
+
+function qtranxf_fetch_file_selection($dir,$suffix='.css'){
+	//qtranxf_dbg_log('qtranxf_fetch_file_selection: dir:',$dir);
+	$files = array();
+	$dir_handle = @opendir($dir);
+	if(!$dir_handle) return false;
+	while (false !== ($file = readdir($dir_handle))) {
+		if(!qtranxf_endsWith($file,$suffix)) continue;
+		$nm = basename($file, $suffix);
+		if(!$nm) continue;
+		$nm = str_replace('_',' ',$nm);
+		if(qtranxf_endsWith($nm,'.min')){
+			$nm = substr($nm,-4);
+			$files[$nm] = $file;
+		}elseif(!isset($files[$nm])){
+			$files[$nm] = $file;
+		}
+	}
+	ksort($files);
+	//qtranxf_dbg_log('qtranxf_fetch_file_selection: files:',$files);
+	return $files;
+}
+
+function qtranxf_fixAdminBar($wp_admin_bar) {
+	global $wp_admin_bar;
+	if(!isset($wp_admin_bar)) return;
+	$nodes=$wp_admin_bar->get_nodes();
+	//qtranxf_dbg_echo('$nodes:',$nodes);
+	if(!isset($nodes)) return;//sometimes $nodes is NULL
+	foreach($nodes as $node) {
+		$wp_admin_bar->add_node(qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage($node));
+	}
 }
 
 function qtranxf_admin_list_cats($text) {
@@ -574,7 +694,38 @@ function qtranxf_add_admin_filters(){
 		break;
 	}
 }
-qtranxf_add_admin_filters();
+
+function qtranxf_del_admin_filters(){
+	global $q_config;
+	remove_filter('the_editor', 'qtranxf_the_editor');
+}
+
+/**
+ * Get the currently selected admin color scheme (to be used for generated CSS)
+ * @return array
+ */
+function qtranxf_get_user_admin_color() {
+	global $_wp_admin_css_colors;
+	$user_id = get_current_user_id();
+	$user_admin_color = get_user_meta( $user_id, 'admin_color', true );
+	if(!$user_admin_color){ //ajax calls do not have user authenticated?
+		$user_admin_color = 'fresh';
+	}
+	return $_wp_admin_css_colors[$user_admin_color]->colors;
+}
+
+/**
+ * @since 3.3
+ * @return true if post type is listed in option 'Post Types'.
+ */
+function qtranxf_post_type_optional($post_type) {
+	switch($post_type){
+		case 'revision':
+		case 'nav_menu_item':
+			return false; //no option for this type
+		default: return true;
+	}
+}
 
 add_filter('manage_language_columns', 'qtranxf_language_columns');
 add_filter('manage_posts_columns', 'qtranxf_languageColumnHeader');

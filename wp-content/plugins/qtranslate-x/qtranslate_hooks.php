@@ -24,15 +24,16 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 function qtranxf_localeForCurrentLanguage($locale){
 	global $q_config;
-	if( !isset($q_config['language']) ) return $locale;
+	//if( !isset($q_config['language']) ) return $locale;
 	// try to figure out the correct locale
+	$windows_locale = qtranxf_default_windows_locale(); //$q_config['windows_locale'];
 	$lang = $q_config['language'];
 	$locale_lang=$q_config['locale'][$lang];
 	$locale = array();
 	$locale[] = $locale_lang.".utf8";
 	$locale[] = $locale_lang."@euro";
 	$locale[] = $locale_lang;
-	$locale[] = $q_config['windows_locale'][$lang];
+	$locale[] = $windows_locale[$lang];
 	$locale[] = $lang;
 
 	// return the correct locale and most importantly set it (wordpress doesn't, which is bad)
@@ -83,39 +84,6 @@ function qtranxf_fixSearchForm($form) {
 }
 */
 
-function qtranxf_fixAdminBar($wp_admin_bar) {
-	global $wp_admin_bar;
-	if(!isset($wp_admin_bar)) return;
-	$nodes=$wp_admin_bar->get_nodes();
-	//qtranxf_dbg_echo('$nodes:',$nodes);
-	if(!isset($nodes)) return;//sometimes $nodes is NULL
-	foreach($nodes as $node) {
-		$wp_admin_bar->add_node(qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage($node));
-	}
-}
-
-//function qtranxf_gettext($translated_text, $text, $domain) {
-function qtranxf_gettext($translated_text) {
-	//same as qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage
-	global $q_config;
-	if(!isset($q_config['language'])){
-		//qtranxf_dbg_log('$q_config[language] is not set:',debug_backtrace());
-		return $translated_text;
-	}
-	return qtranxf_use($q_config['language'], $translated_text, false);
-}
-
-//function qtranxf_gettext_with_context($translated_text, $text, $context, $domain) {
-function qtranxf_gettext_with_context($translated_text) {
-	//same as qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage
-	global $q_config;
-	if(!isset($q_config['language'])){
-		//qtranxf_dbg_log('$q_config[language] is not set:',debug_backtrace());
-		return $translated_text;
-	}
-	return qtranxf_use($q_config['language'], $translated_text, false);
-}
-
 // Hooks for Plugin compatibility
 /*
 //no need any more since $_SERVER['REQUEST_URI'] is no longer modified.
@@ -154,15 +122,18 @@ add_filter( 'wp_trim_words', 'qtranxf_trim_words', 0, 4);
 // add_action('category_add_form', 'qtranxf_modifyTermFormFor');
 // add_action('post_tag_add_form', 'qtranxf_modifyTermFormFor');
 // add_action('link_category_add_form', 'qtranxf_modifyTermFormFor');
-add_action('plugins_loaded', 'qtranxf_init_language', 2);//user is not authenticated yet
 add_action('init', 'qtranxf_init');//user is authenticated
 add_action('widgets_init', 'qtranxf_widget_init');
 
-// Hooks (execution time critical filters) 
-add_filter('gettext', 'qtranxf_gettext',0);
-add_filter('gettext_with_context', 'qtranxf_gettext_with_context',0);
-//add_filter('gettext', 'qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage',0);
-//add_filter('gettext_with_context', 'qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage',0);
+
+// Hooks (execution time critical filters)
+
+/*
+ * since 3.2.9.9.4 gettext* filters moved to frontend.php
+ * they should not be needed on admin side and they, in particular, broke WPBakery Visual Composer in raw Editor Mode.
+*/
+//add_filter('gettext', 'qtranxf_gettext',0);
+//add_filter('gettext_with_context', 'qtranxf_gettext_with_context',0);
 
 add_filter('sanitize_title', 'qtranxf_useRawTitle',0, 3);
 
@@ -239,7 +210,4 @@ add_filter('comment_notification_text', 'qtranxf_useCurrentLanguageIfNotFoundUse
 add_filter('comment_notification_headers', 'qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage');
 add_filter('comment_notification_subject', 'qtranxf_useCurrentLanguageIfNotFoundUseDefaultLanguage');
 
-// add_filter('the_editor', 'qtranxf_modifyRichEditor');
-//add_filter('admin_footer', 'qtranxf_modifyExcerpt');
-//add_filter('bloginfo_url', 'qtranxf_convertBlogInfoURL',10,2);
 add_filter('core_version_check_locale', 'qtranxf_versionLocale');

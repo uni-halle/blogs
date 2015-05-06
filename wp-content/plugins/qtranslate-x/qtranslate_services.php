@@ -533,7 +533,7 @@ function qts_UpdateOrder($order_id) {
 			$post->post_title = qtranxf_join_b($title);
 			$post->post_content = qtranxf_join_b($content);
 			$wpdb->show_errors();
-			$wpdb->query('UPDATE '.$wpdb->posts.' SET post_title="'.mysql_real_escape_string($post->post_title).'", post_content = "'.mysql_real_escape_string($post->post_content).'" WHERE ID = "'.$post->ID.'"');
+			$wpdb->query($wpdb->prepare('UPDATE '.$wpdb->posts.' SET post_title = %s, post_content = %s WHERE ID = %d', $post->post_title, $post->post_content, $post->ID));
 			wp_cache_add($post->ID, $post, 'posts');
 			unset($orders[$key]);
 		}
@@ -570,7 +570,10 @@ function qts_service() {
 	$service_settings = get_option('qts_service_settings');
 	// Detect available Languages and possible target languages
 	$available_languages = qtranxf_getAvailableLanguages($post->post_content);
-	if(sizeof($available_languages)==0) {
+	if($available_languages === FALSE && !empty($post->post_content)){
+		$available_languages = array($q_config['default_language']);
+	}
+	if($available_languages === FALSE || sizeof($available_languages)==0) {
 		$error = __('The requested Post has no content, no Translation possible.', 'qtranslate');
 	}
 
@@ -850,7 +853,7 @@ if(!empty($message)) {
 		</div>
 	</div>
 	<div class="postbox closed">
-		<div class="handlediv" title="<?php _e('Click to toggle'); ?>" onclick="jQuery(this).parent().removeClass('closed');jQuery(this).hide();"><br></div>
+		<div class="handlediv" title="<?php _e('Click to toggle'); ?>" onclick="jQuery(this).parent().removeClass('closed');jQuery(this).hide();"><br/></div>
 		<h3 class="hndle"><?php _e('Review Article', 'qtranslate'); ?></h3>
 		<div class="inside">
 			<textarea name="qts_content_preview" id="qts_content_preview" readonly="readonly"><?php echo $post_content; ?></textarea>
@@ -917,7 +920,7 @@ function qts_quote() {
 		}
 	} else {
 		$content = '<p>'.__('An error occured!', 'qtranslate');
-		if(isset($answer['error'])) $content .= '<br>'.$answer['message'];
+		if(isset($answer['error'])) $content .= '<br/>'.$answer['message'];
 		$content .= '</p>';
 	}
 	if($mode == 'full') {
