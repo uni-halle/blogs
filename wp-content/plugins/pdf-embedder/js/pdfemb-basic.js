@@ -5,3 +5,12 @@ function pdfembGetPDF(url, callback) {
 
 };
 
+function pdfembWantMobile($, divContainer, wantWidth, wantHeight) {
+	return false;
+}
+
+function pdfembMakeMobile($, wantMobile, innerdiv) {
+}
+
+function pdfembAddMoreToolbar($, toolbar, divContainer) {
+}

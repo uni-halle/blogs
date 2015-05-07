@@ -4,7 +4,94 @@ div.pdfemb-viewer {
 	line-height: 1;
 	margin: 0px;
 	padding: 0px;
+	border: 1px solid black;
 	position: relative;
+}
+
+div.pdfemb-inner-div {
+	overflow: hidden;
+	line-height: 1;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	position: relative;
+	background-color: lightGrey;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
+div.pdfemb-inner-div-wantmobile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background-color: lightgray;
+    opacity: 0.5;
+}
+
+div.pdfemb-inner-div-wantmobile-fswrap {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+div.pdfemb-wantmobile-fsarea {
+    position: relative;
+    width: 80%;
+    margin: 40% auto 0 auto;
+    padding: 10px;
+    height: 20%;
+    max-height: 35px;
+    text-align: center;
+    opacity: 1;
+    cursor: pointer;
+
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border:4px solid #363600;
+    background-color:#C5BDCF;
+    -webkit-box-shadow: #B3B3B3 8px 8px 8px;
+    -moz-box-shadow: #B3B3B3 8px 8px 8px;
+    box-shadow: #B3B3B3 8px 8px 8px;
+
+    color: black;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    font-size: 16px;
+    line-height: 110%;
+}
+
+.grab-to-pan-grab {
+  cursor: move !important;
+  cursor: -webkit-grab !important;
+  cursor: -moz-grab !important;
+  cursor: grab !important;
+}
+
+.grab-to-pan-grab {
+  cursor: move !important;
+  cursor: -webkit-grab !important;
+  cursor: -moz-grab !important;
+  cursor: grab !important;
+}
+.grab-to-pan-grab *:not(input):not(textarea):not(button):not(select):not(:link) {
+  cursor: inherit !important;
+}
+.grab-to-pan-grab:active,
+.grab-to-pan-grabbing {
+  cursor: move !important;
+  cursor: -webkit-grabbing !important;
+  cursor: -moz-grabbing !important;
+  cursor: grabbing !important;
+
+  z-index: 50000; /* should be higher than anything else in PDF.js! */
 }
 
 div.pdfemb-loadingmsg {
@@ -13,11 +100,12 @@ div.pdfemb-loadingmsg {
 }
 
 div.pdfemb-viewer canvas {
-	
+	position: relative;
 	top: 0px; 
 	bottom: 0px;
 	margin: 0px;
 	padding: 0px;
+	display: inline-block;
 }
 
 div.pdfemb-toolbar {
@@ -28,18 +116,26 @@ div.pdfemb-toolbar {
 	 
     background-color: grey; 
     width: 100%;
-    
-    display: none;	
+}
+
+div.pdfemb-toolbar-fixed {
+    display: block;
+    position: absolute;
+}
+
+div.pdfemb-toolbar-hover {
+    display: none;
+    position: absolute;
 }
 
 div.pdfemb-toolbar-top {
-	position: absolute;
+
 	top: 0px;
 	left: 0px;
 }
 
 div.pdfemb-toolbar-bottom {
-	position: absolute;
+
 	bottom: 0px;
 	left: 0px;
 }
@@ -91,4 +187,26 @@ div.pdfemb-errormsg {
 	padding: 5px;
 	text-align: center;
 	vertical-align: middle;
+}
+
+.pdfemb-fsp-wrapper {
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: none;
+}
+
+.pdfemb-fsp-content {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0px;
+    left: 0px;
 }

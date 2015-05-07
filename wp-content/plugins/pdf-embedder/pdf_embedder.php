@@ -4,7 +4,7 @@
  * Plugin Name: PDF Embedder
  * Plugin URI: http://wp-pdf.com/
  * Description: Embed PDFs straight into your posts and pages, with flexible width and height. No third-party services required. 
- * Version: 1.2.1
+ * Version: 2.0
  * Author: Dan Lester
  * Author URI: http://wp-pdf.com/
  * License: GPL3
@@ -33,7 +33,8 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 	public function pdfemb_wp_enqueue_scripts() {
 		if (!$this->useminified()) {
 			wp_register_script( 'pdfemb_versionspecific_pdf_js', $this->my_plugin_url().'js/pdfemb-basic.js');
-			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/pdfemb-embed-pdf.js', array('pdfemb_versionspecific_pdf_js', 'jquery') );
+			wp_register_script( 'pdfemb_grabtopan_js', $this->my_plugin_url().'js/grabtopan-basic.js');
+			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/pdfemb-embed-pdf.js', array('pdfemb_versionspecific_pdf_js', 'pdfemb_grabtopan_js', 'jquery') );
 		}
 		else {
 			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/all-pdfemb-basic.min.js', array('jquery') );
@@ -62,15 +63,35 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 	protected function pdfemb_mainsection_text() {
 		parent::pdfemb_mainsection_text();
 		?>
+
+		<hr /><br />
+		
+		<h2>Mobile-friendly embedding using PDF Embedder Premium</h2>
+		<p>This free version of the plugin should work on most mobile browsers, but it will be cumbersome for users with small screens - it is difficult to position 
+		the document entirely within the screen, and your users' fingers may catch the entire browser page when they're trying only to move about the document...</p>
+
+		<p>Our <b>PDF Embedder Premium</b> plugin solves this problem with an intelligent 'full screen' mode. 
+		When the document is smaller than a certain width, the document displays only as a 'thumbnail' with a large 'View in Full Screen' button for the 
+		user to click when they want to study your document. 
+		This opens up the document so it has the full focus of the mobile browser, and the user can move about the document without hitting other parts of 
+		the web page by mistake. Click Exit to return to the regular web page.
+		</p>
+
+		<p>See our website <a href="http://wp-pdf.com/premium/?utm_source=PDF%20Settings%20Premium&utm_medium=freemium&utm_campaign=Freemium">wp-pdf.com</a> for more 
+		details and purchase options.
+		</p>
+
+		<br />
 		<h2>Protect your PDFs using PDF Embedder Secure</h2>
-		<p>Our premium PDF Embedder Secure plugin provides the same simple but elegant viewer for your website visitors, with the added protection that 
-		it is difficult for them to download or print the original PDF document.</p>
+		<p>Our <b>PDF Embedder Premium Secure</b> plugin provides the same simple but elegant viewer for your website visitors, with the added protection that 
+		it is difficult for users to download or print the original PDF document.</p>
 
 		<p>This means that your PDF is unlikely to be shared outside your site where you have no control over who views, prints, or shares it.</p>
 
-		<p>See our website <a href="http://wp-pdf.com/secure/?utm_source=PDF%20Settings&utm_medium=freemium&utm_campaign=Freemium">wp-pdf.com</a> for more 
+		<p>See our website <a href="http://wp-pdf.com/secure/?utm_source=PDF%20Settings%20Secure&utm_medium=freemium&utm_campaign=Freemium">wp-pdf.com</a> for more 
 		details and purchase options.
 		</p>
+		
 		<?php
 	}
 	

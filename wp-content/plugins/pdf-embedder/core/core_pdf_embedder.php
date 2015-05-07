@@ -81,7 +81,7 @@ class core_pdf_embedder {
 		$width = isset($atts['width']) ? $atts['width'] : 'max';
 		$height = isset($atts['height']) ? $atts['height'] : 'auto';
 		
-		$extra_style = isset($atts['border']) ? "border: ".esc_attr($atts['border']).";" : "border:1px solid black; ";
+		$extra_style = "";
 		if (is_numeric($width)) {
 			$extra_style .= "width: ".$width."px; ";
 		}
@@ -91,13 +91,23 @@ class core_pdf_embedder {
 		
 		$toolbar = isset($atts['toolbar']) && in_array($atts['toolbar'], array('top', 'bottom', 'both')) ? $atts['toolbar'] : 'bottom';
 		
+		$toolbar_fixed = isset($atts['toolbarfixed']) && $atts['toolbarfixed'] == 'on' ? 'on' : 'off';
+		
 		$returnhtml = '<div class="pdfemb-viewer" data-pdf-url="'.esc_attr($this->modify_pdfurl($url)).'" style="'.esc_attr($extra_style).'" '
-						.'data-width="'.esc_attr($width).'" data-height="'.esc_attr($height).'" data-toolbar="'.$toolbar.'"></div>';
+						.'data-width="'.esc_attr($width).'" data-height="'.esc_attr($height).'" ';
+		
+		$returnhtml .= $this->extra_shortcode_attrs($atts, $content);
+						
+		$returnhtml .= ' data-toolbar="'.$toolbar.'" data-toolbar-fixed="'.$toolbar_fixed.'"></div>';
 		
 		if (!is_null($content)) {
 			$returnhtml .= do_shortcode($content);
 		}
 		return $returnhtml;
+	}
+	
+	protected function extra_shortcode_attrs($atts, $content=null) {
+		return '';
 	}
 	
 	// ADMIN OPTIONS
