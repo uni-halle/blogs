@@ -478,7 +478,7 @@ SelectEmbedField(<?php echo $General['episode_box_embed']; ?>);
 	if( !empty($General['hide_warnings']) )
 		$AdvanecdOptions = true;
 		
-	$DefaultMediaURL = (defined('POWERPRESS_DEFAULT_MEDIA_URL')? POWERPRESS_CUSTOM_MEDIA_URL :false);
+	$DefaultMediaURL = false;
 	
 	if( !empty($General['default_url']) )
 		$DefaultMediaURL = true;
@@ -489,7 +489,7 @@ SelectEmbedField(<?php echo $General['episode_box_embed']; ?>);
 <?php } ?>
 <!-- start advanced features -->
 <div id="advanced_basic_options" <?php echo ($AdvanecdOptions?'':'style="display:none;"'); ?>>
-<?php if( $DefaultMediaURL ) { ?>
+<?php if( $DefaultMediaURL || defined('POWERPRESS_DEFAULT_MEDIA_URL') ) { ?>
 <table class="form-table">
 <tr valign="top">
 <th scope="row"><?php echo __('Default Media URL', 'powerpress'); ?></th> 
@@ -1409,7 +1409,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <input type="text" id="itunes_image" name="Feed[itunes_image]" style="width: 60%;" value="<?php echo esc_attr( !empty($FeedSettings['itunes_image'])? $FeedSettings['itunes_image']:''); ?>" maxlength="250" />
 <a href="#" onclick="javascript: window.open( document.getElementById('itunes_image').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
-<p><?php echo __('iTunes image must be at least 1400 x 1400 pixels in .jpg or .png format. iTunes image must not exceed 2048 x 2048 pixels and must use RGB color space.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/itunes.jpg
+<p><?php echo __('iTunes image must be at least 1400 x 1400 pixels in .jpg or .png format. iTunes image must not exceed 3000 x 3000 pixels and must use RGB color space.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/itunes.jpg
  </p>
 
 <p><strong><?php echo __('A square 1400 x 1400 pixel image in .jpg format is recommended.', 'powerpress'); ?></strong></p>

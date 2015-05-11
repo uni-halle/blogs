@@ -2,8 +2,8 @@
 Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, itunes, enclosure, zune, iphone, youtube, viddler, blip.tv, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, webm, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, simple podcasting, seriously simple podcasting, seriously-simple-podcasting, podlove, podcast.de
 Requires at least: 3.6
-Tested up to: 4.1.1
-Stable tag: 6.0.2
+Tested up to: 4.2.2
+Stable tag: 6.0.3
 Donate link: http://create.blubrry.com/
 License: GPLv2 or later
 
@@ -199,6 +199,16 @@ To install Blubrry PowerPress manually, follow these steps:
 = Next Major Release Announcements =
 * PowerPress 6.0+ is no longer be compatible with WordPress 3.0.x through 3.5.x. Please upgrade to the latest version of WordPress to install future versions of PowerPress.
 * We are looking for beta testers! If you would like to beta test future versions of PowerPress, please [contact us](http://www.blubrry.com/contact.php) with your name and email.
+
+
+= 6.0.3 =
+* Released on 5/7/2015
+* Added define option `POWERPRESS_DEFAULT_MEDIA_URL` to enable the default media URL field.
+* Fixed notice messages being printed when populating category podcasting settings (thanks slapdashcast for bringing to our attention)
+* iTunes image requirements updated, 3000x3000 is now the maximum (previously 2048x2048) for iTunes artwork. 1400x1400 is still the recommended size.
+* Added [Subscribe on Android](http://subscribeonandroid.com/), the one-click subscribe protocol for Android. There are currently 6 Android apps that support Subscribe on Android one-click with more to follow in the coming weeks.
+* PowerPress Playlist Player SQLi injection vulnerability fixed (Thanks Ben Bidner, Security Wrangler @ Automattic.com!)
+* Subscribe tools now use the esc_attr, esc_url and esc_html native WordPress functions (rather than htmlspecialchars).
 
 
 = 6.0.2 =
