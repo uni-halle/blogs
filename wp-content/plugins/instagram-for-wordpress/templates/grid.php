@@ -7,10 +7,10 @@
   $rows = 3;
   $cols = 3;
     
-  if ($settings->settings['rows']) {
+  if (array_key_exists("rows", $settings->settings) && $settings->settings['rows']) {
     $rows = $settings->settings['rows'];
   }    
-  if ($settings->settings['cols']) {
+  if (array_key_exists("cols", $settings->settings) && $settings->settings['cols']) {
     $cols = $settings->settings['cols'];
   }
     
@@ -22,17 +22,17 @@
   $height = 220;
   $padding = 5;
     
-  if ($settings->settings['width']) {
+  if (array_key_exists("width", $settings->settings) && $settings->settings['width']) {
     $width = $settings->settings['width'];
   }
-  if ($settings->settings['height']) {
+  if (array_key_exists("height", $settings->settings) && $settings->settings['height']) {
     $height = $settings->settings['height'];
   }    
-  if ($settings->settings['padding']) {
+  if (array_key_exists("padding", $settings->settings) && $settings->settings['padding']) {
     $padding = $settings->settings['padding'];
   }
 
-  if ($settings->settings['responsive'] === 'yes') {
+  if (array_key_exists("responsive", $settings->settings) && $settings->settings['responsive'] === 'yes') {
    $width = 100;
    $height = 100;
    $padding = 2;
@@ -45,7 +45,7 @@
   $imageHeight = $imageWidth;
   $liHeight = $imageHeight;
 
-  if ($settings->settings['responsive'] === 'yes') {
+  if (array_key_exists("responsive", $settings->settings) && $settings->settings['responsive'] === 'yes') {
     $liWidth            .= '%';
     $liHeight           = 'auto';
     $imageWidth         = '100%';
@@ -64,7 +64,7 @@
   }
 ?>
   
-<ul class="wpinstagram live <?php if ($settings->settings['responsive'] === 'yes') { echo "responsive"; } ?>" style="width: <?php print $width ?>; height: <?php print $height ?>;">
+<ul class="wpinstagram live <?php if (array_key_exists("responsive", $settings->settings) && $settings->settings['responsive'] === 'yes') { echo "responsive"; } ?>" style="width: <?php print $width ?>; height: <?php print $height ?>;">
   <?php
     foreach ($images as $image) {
       $imagePadding = $padding;

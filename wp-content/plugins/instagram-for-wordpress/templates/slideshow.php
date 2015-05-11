@@ -8,17 +8,17 @@
   $height = 350;
   $padding = 5;
     
-  if ($settings->settings['width']) {
+  if (array_key_exists("width", $settings->settings) && $settings->settings['width']) {
     $width = $settings->settings['width'];
   }
-  if ($settings->settings['height']) {
+  if (array_key_exists("height", $settings->settings) && $settings->settings['height']) {
     $height = $settings->settings['height'];
   }    
-  if ($settings->settings['padding']) {
+  if (array_key_exists("padding", $settings->settings) && $settings->settings['padding']) {
     $padding = $settings->settings['padding'];
   }
   
-  if ($settings->settings['responsive'] === 'yes') {
+  if (array_key_exists("responsive", $settings->settings) && $settings->settings['responsive'] === 'yes') {
    $width = 100;
    $height = 100;
    $padding = 2;
@@ -29,7 +29,7 @@
   #its hip to be a square
   $imageHeight = $imageWidth;
   
-  if ($settings->settings['responsive'] === 'yes') {
+  if (array_key_exists("responsive", $settings->settings) && $settings->settings['responsive'] === 'yes') {
     $imageWidth         = '100%';
     $imageHeight        = 'auto';
     $width              .= '%';
@@ -44,7 +44,7 @@
   }
 ?>
   
-<ul class="wpinstagram wpinstagram-slideshow live <?php if ($settings->settings['responsive'] === 'yes') { echo "responsive"; } ?>" style="width: <?php print $width ?>; height: <?php print $width ?>;">
+<ul class="wpinstagram wpinstagram-slideshow live <?php if (array_key_exists("responsive", $settings->settings) && $settings->settings['responsive'] === 'yes') { echo "responsive"; } ?>" style="width: <?php print $width ?>; height: <?php print $width ?>;">
   <?php
     foreach ($images as $image) {
     
@@ -91,7 +91,7 @@
   $delay = (int)$settings->settings['delay'] * 1000;
  }
 
- if ($settings->settings['transition'] && $settings->settings['transition'] == 'vert') {
+ if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'vert') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -99,7 +99,7 @@
   });
  </script>
 <?php
- } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'horz') {
+ } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'horz') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -107,7 +107,7 @@
   });
  </script>
 <?php
- } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'shuffle') {
+ } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'shuffle') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -115,7 +115,7 @@
   });
  </script>
 <?php
- } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'zoom') {
+ } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'zoom') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -123,7 +123,7 @@
   });
  </script>
 <?php
- } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'turndown') {
+ } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'turndown') {
 ?>
  <script>
   jQuery(document).ready(function($) {
@@ -131,7 +131,7 @@
   });
  </script>
 <?php
- } else if ($settings->settings['transition'] && $settings->settings['transition'] == 'fold') {
+ } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'fold') {
 ?>
  <script>
   jQuery(document).ready(function($) {
