@@ -2,99 +2,94 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Slideshow Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 09:46+0100\n"
-"PO-Revision-Date: 2015-04-29 09:46+0100\n"
-"Last-Translator: Manuel Ballesta Ruiz <mbruiz1967@mbrsolution.com>\n"
+"POT-Creation-Date: 2014-08-19 11:56+0100\n"
+"PO-Revision-Date: 2014-08-19 11:57+0100\n"
+"Last-Translator: Håkon Sigland <sigland@gmail.com>\n"
 "Language-Team: Stefan Boonstra <wordpress@stefanboonstra.com>\n"
-"Language: es_ES\n"
+"Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
-"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
-"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
-"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
-"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../\n"
 "X-Generator: Poedit 1.5.7\n"
-"X-Loco-Target-Locale: es_ES\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: classes/SlideshowPluginGeneralSettings.php:82
 #: classes/SlideshowPluginGeneralSettings.php:83
 #: views/SlideshowPluginGeneralSettings/general-settings.php:14
 msgid "General Settings"
-msgstr "Configuración General"
+msgstr "Generelle innstillinger"
 
 #: classes/SlideshowPluginGeneralSettings.php:150
 msgid "New"
-msgstr "Nuevo"
+msgstr "Ny"
 
 #: classes/SlideshowPluginGeneralSettings.php:151
 msgid "Are you sure you want to delete this custom style?"
-msgstr "¿Seguro que quieres borrar este estilo personalizado?"
+msgstr "Vil du slette denne tilpassede stilen?"
 
 #: classes/SlideshowPluginGeneralSettings.php:196
 #: classes/SlideshowPluginInstaller.php:803
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:6
 msgid "Light"
-msgstr "Claro"
+msgstr "Lys"
 
 #: classes/SlideshowPluginGeneralSettings.php:197
 #: classes/SlideshowPluginInstaller.php:803
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:7
 msgid "Dark"
-msgstr "Obscuro"
+msgstr "Mørk"
 
 #: classes/SlideshowPluginGeneralSettings.php:353
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:57
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:143
 msgid "Untitled"
-msgstr "Sin titulo"
+msgstr "Uten navn"
 
 #: classes/SlideshowPluginInstaller.php:800
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:472
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:111
 #: views/SlideshowPluginSlideshowSlide/backend_video.php:43
 msgid "Yes"
-msgstr "Sí"
+msgstr "Ja"
 
 #: classes/SlideshowPluginInstaller.php:801
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:473
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:112
 #: views/SlideshowPluginSlideshowSlide/backend_video.php:44
 msgid "No"
-msgstr "No"
+msgstr "Nei"
 
 #: classes/SlideshowPluginInstaller.php:803
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:610
 msgid "The style used for this slideshow"
-msgstr "El estilo usado para esta diapositiva"
+msgstr "Stilen brukt i denne framvisningen"
 
 #: classes/SlideshowPluginInstaller.php:803
 msgid "Custom"
-msgstr "Personalizar"
+msgstr "Tilpasset"
 
 #: classes/SlideshowPluginInstaller.php:804
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:126
 msgid "Custom style editor"
-msgstr "Editor de estilo personalizado"
+msgstr "Tilpasset stilredigerer"
 
 #: classes/SlideshowPluginInstaller.php:805
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:518
 msgid "Animation used for transition between slides"
-msgstr "Animación para las transiciones entre las diapositivas"
+msgstr "Overgangsanimasjon mellom lysbilder"
 
 #: classes/SlideshowPluginInstaller.php:805
 msgid "Slide"
-msgstr "Diapositiva"
+msgstr "Lysbilde"
 
 #: classes/SlideshowPluginInstaller.php:805
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Fade"
-msgstr "Fundido"
+msgstr "Ton ned"
 
 #: classes/SlideshowPluginInstaller.php:805
 #: classes/SlideshowPluginInstaller.php:806
@@ -105,27 +100,27 @@ msgstr "Fundido"
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:549
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:550
 msgid "Animation"
-msgstr "Animación"
+msgstr "Animasjon"
 
 #: classes/SlideshowPluginInstaller.php:806
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:519
 msgid "Number of seconds the slide takes to slide in"
-msgstr "Núero de segundos que tarda la diapositiva en entrar"
+msgstr "Antall sekunder lysbildet skal gli inn"
 
 #: classes/SlideshowPluginInstaller.php:807
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:520
 msgid "Number of seconds the description takes to slide in"
-msgstr "Número de segundos que tarda la descripción en entrar"
+msgstr "Antall sekunder beskrivelsen bruker på å gli inn"
 
 #: classes/SlideshowPluginInstaller.php:808
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:521
 msgid "Seconds between changing slides"
-msgstr "Segundos entre cada diapositiva"
+msgstr "Sekunder til neste lysbilde"
 
 #: classes/SlideshowPluginInstaller.php:809
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:522
 msgid "Number of slides to fit into one slide"
-msgstr "Número de imágenes/videos/texto dentro de cada diapositiva"
+msgstr "Antall lysbilder tilpasset til et lysbilde"
 
 #: classes/SlideshowPluginInstaller.php:809
 #: classes/SlideshowPluginInstaller.php:810
@@ -144,39 +139,37 @@ msgstr "Número de imágenes/videos/texto dentro de cada diapositiva"
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:558
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:559
 msgid "Display"
-msgstr "Mostrar"
+msgstr "Vis"
 
 #: classes/SlideshowPluginInstaller.php:810
 msgid "Width of the slideshow, set to parent&#39;s width on 0"
-msgstr "Ancho de la diapositiva. ajustado el ancho a 0 para el padre&#39;s"
+msgstr "Bredde på lysbildeshowet, set to parent&#39;s width on 0"
 
 #: classes/SlideshowPluginInstaller.php:811
 msgid "Height of the slideshow"
-msgstr "Altura de la presentación de diapositivas"
+msgstr "Høyde på lysbildeshowet"
 
 #: classes/SlideshowPluginInstaller.php:812
 msgid "Height of the description boxes"
-msgstr "Altura de las cajas de Descripción"
+msgstr "Høyde på beskrivelsesboksene"
 
 #: classes/SlideshowPluginInstaller.php:813
 msgid "Fit image into slide (stretching it)"
-msgstr "Adaptar la diapositiva (estirarla)"
+msgstr "Tilpass bilde til lysbilde (strekk det)"
 
 #: classes/SlideshowPluginInstaller.php:814
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:529
 msgid "Show title and description"
-msgstr "Mostrar título y descripción"
+msgstr "Vis tittel og beskrivelse"
 
 #: classes/SlideshowPluginInstaller.php:815
 msgid "Hide description box, it will pop up when a mouse hovers over the slide"
-msgstr ""
-"Esconder la caja de descripción, se mostrará cuando el puntero esté sobre la "
-"diapositiva"
+msgstr "Skjul beskrivelse, vil vises når musen beveges over lysbildet"
 
 #: classes/SlideshowPluginInstaller.php:816
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:531
 msgid "Automatically slide to the next slide"
-msgstr "Pasar automáticamente a la siguiente diapositiva"
+msgstr "Automatisk overgang til neste lysbilde"
 
 #: classes/SlideshowPluginInstaller.php:816
 #: classes/SlideshowPluginInstaller.php:817
@@ -192,136 +185,133 @@ msgstr "Pasar automáticamente a la siguiente diapositiva"
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:567
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:568
 msgid "Control"
-msgstr "Control"
+msgstr "Kontroll"
 
 #: classes/SlideshowPluginInstaller.php:817
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:532
 msgid "Return to the beginning of the slideshow after last slide"
-msgstr "Regresar al inicio de las diapositivas, al llegar al final"
+msgstr "Gå tilbake til begynnelsen av showet etter siste lysbilde"
 
 #: classes/SlideshowPluginInstaller.php:818
 msgid "Activate buttons (so the user can scroll through the slides)"
-msgstr ""
-"Activar botones (para que el usuario pueda desplazarse entre las "
-"diapositivas)"
+msgstr "Aktiver knapper (så brukeren kan klikke gjennom lysbildene)"
 
 #: classes/SlideshowPluginInstaller.php:819
 msgid "Show control panel (play and pause button)"
-msgstr "Mostrar panel de control (botones de play y pausa)"
+msgstr "Vis kontrollpanel (spill av og pause-knapp)"
 
 #: classes/SlideshowPluginPostType.php:45
 msgid "Slideshows"
-msgstr "Diapositivas"
+msgstr "Lysbildeshow"
 
 #: classes/SlideshowPluginPostType.php:46
 #: views/SlideshowPluginWidget/form.php:7
 msgid "Slideshow"
-msgstr "Diapositiva"
+msgstr "Lysbildeshow"
 
 #: classes/SlideshowPluginPostType.php:47
 msgid "Add New Slideshow"
-msgstr "Agregar Nueva Diapositiva"
+msgstr "Legg til nytt lysbildeshow"
 
 #: classes/SlideshowPluginPostType.php:48
 msgid "Edit slideshow"
-msgstr "Editar diapositiva"
+msgstr "Rediger lysbildeshow"
 
 #: classes/SlideshowPluginPostType.php:49
 msgid "New slideshow"
-msgstr "Nueva diapositiva"
+msgstr "Nytt lysbildeshow"
 
 #: classes/SlideshowPluginPostType.php:50
 msgid "View slideshow"
-msgstr "Ver diapositivas"
+msgstr "Vis lysbildeshow"
 
 #: classes/SlideshowPluginPostType.php:51
 msgid "Search slideshows"
-msgstr "Buscar diapositivas"
+msgstr "Søk i lysbildeshow"
 
 #: classes/SlideshowPluginPostType.php:52
 #: classes/SlideshowPluginPostType.php:53
 msgid "No slideshows found"
-msgstr "No se encontraron diapositivas"
+msgstr "Ikke noe lysbildeshow funnet"
 
 #: classes/SlideshowPluginPostType.php:98
 msgid "Information"
-msgstr "Información"
+msgstr "Informasjon"
 
 #: classes/SlideshowPluginPostType.php:107
 msgid "Slides List"
-msgstr "Lista de diapositivas"
+msgstr "Lysbildeliste"
 
 #: classes/SlideshowPluginPostType.php:116
 msgid "Slideshow Style"
-msgstr "Estilo de las diapositivas"
+msgstr "Lysbildeshow stil"
 
 #: classes/SlideshowPluginPostType.php:125
 msgid "Slideshow Settings"
-msgstr "Configuración de las diapositivas"
+msgstr "Lysbildeshow innstillinger"
 
 #: classes/SlideshowPluginPostType.php:173
 msgid "Slideshow created"
-msgstr "Diapositiva creada"
+msgstr "Lysbildeshow opprettet"
 
 #: classes/SlideshowPluginPostType.php:177
 msgid "Slideshow updated"
-msgstr "Diapositiva actualizada"
+msgstr "Lysbildeshow oppdatert"
 
 #: classes/SlideshowPluginPostType.php:224
 #: classes/SlideshowPluginSlideInserter.php:238
 #: views/SlideshowPluginPostType/slides.php:2
 msgid "Insert"
-msgstr "Insertar"
+msgstr "Sett inn"
 
 #: classes/SlideshowPluginPostType.php:232
 msgid "Open all"
-msgstr "Abrir todos"
+msgstr "Åpne alle"
 
 #: classes/SlideshowPluginPostType.php:234
 msgid "Close all"
-msgstr "Cerrar todos"
+msgstr "Lukk alle"
 
 #: classes/SlideshowPluginPostType.php:240
 #: views/SlideshowPluginPostType/slides.php:10
 msgid "Add slides to this slideshow by using one of the buttons above."
-msgstr "Agrega una diapositiva usando uno de los botones de arriba. "
+msgstr "Legg til lysbilder i dette showet ved å bruke en av knappene over."
 
 #: classes/SlideshowPluginPostType.php:320
 msgid "Duplicate"
-msgstr "Duplicar "
+msgstr "Dupliser"
 
 #: classes/SlideshowPluginPostType.php:371
 msgid "Copy"
-msgstr "Copiar"
+msgstr "Kopier"
 
 #: classes/SlideshowPluginShortcode.php:148
 msgid "No slideshow selected."
-msgstr "No se ha seleccionado ninguna diapositiva"
+msgstr "Ikke noe lysbildeshow valgt."
 
 #: classes/SlideshowPluginSlideInserter.php:194
 msgid "More results loaded"
-msgstr "Mas resultados agregados"
+msgstr "Flere resultater innlastet"
 
 #: classes/SlideshowPluginSlideInserter.php:249
 msgid "Load more results"
-msgstr "Cargar más resultados"
+msgstr "Last inn flere resultater"
 
 #: classes/SlideshowPluginSlideInserter.php:260
 msgid "No images were found, click here to upload some."
-msgstr "No se encontraron imágenes, da clic para subir algunas."
+msgstr "Ingen bilder funnet, klikk her for å laste opp."
 
 #: classes/SlideshowPluginSlideInserter.php:332
 msgid "Are you sure you want to delete this slide?"
-msgstr "¿Estás seguro de que quieres borrar esta diapositiva?"
+msgstr "Er du sikker du vil slette dette lysbildet?"
 
 #: classes/SlideshowPluginSlideInserter.php:333
 msgid "Insert image slide"
-msgstr "Insertar imagen en una diapositiva "
+msgstr "Sett inn bilde"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:523
 msgid "Maximum width. When maximum width is 0, maximum width is ignored"
-msgstr ""
-"Ancho máximo. Cuando la anchura máxima es 0, la anchura máxima se ignora"
+msgstr "Max bredde. Når max bredde er 0, blir max bredde ignorert."
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:524
 msgid "http://en.wikipedia.org/wiki/Aspect_ratio_(image)"
@@ -329,7 +319,7 @@ msgstr "http://en.wikipedia.org/wiki/Aspect_ratio_(image)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:524
 msgid "More info"
-msgstr "Mas información "
+msgstr "Mer informasjon"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:524
 #, php-format
@@ -337,202 +327,195 @@ msgid ""
 "Proportional relationship%s between slideshow's width and height (width:"
 "height)"
 msgstr ""
-"Relación%s proporcional entre la anchura y la altura de diapositivas "
-"(anchura:altura)"
+"Proporsjonal relasjon%s mellom lysbildeshowets bredde og høyde (bredde:høyde)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:525
 msgid "Slideshow's height"
-msgstr "Altura de Diapositiva"
+msgstr "Lysbildeshowets høyde"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:526
 msgid "Image behaviour"
-msgstr "El comportamiento de la imagen "
+msgstr "Bildeoppførsel"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:527
 msgid "Shrink slideshow's height when width shrinks"
-msgstr "Reducir la altura de diapositivas cuando la anchura se reduce"
+msgstr "Reduser lysbildeshowets høyde når bredde reduseres"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:528
 msgid ""
 "Enable responsiveness (Shrink slideshow's width when page's width shrinks)"
-msgstr ""
-"Habilitar diseño responsivos (Reduce el ancho de diapositivas cuando el "
-"ancho de la página se contrae)"
+msgstr "Aktiver dynamisk bredde (reduser bredde når sidens bredde reduseres)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:530
 msgid "Hide description box, pop up when mouse hovers over"
-msgstr ""
-"Ocultar el cuadro de descripción, aparecerá cuando el ratón pase por encima"
+msgstr "Skjul beskrivelse, vises når musen beveges over"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:533
 msgid "Pause slideshow when mouse hovers over"
-msgstr "Pausa la diapositiva cuando el ratón pase por encima"
+msgstr "Sett lysbildeshow på pause når musen beveges over"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:534
 msgid "Activate navigation buttons"
-msgstr "Activar los botones de navegación "
+msgstr "Aktiver navigasjonsknapper"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:535
 msgid "Hide navigation buttons, show when mouse hovers over"
-msgstr ""
-"Ocultar los botones de navegación, mostrar cuando el ratón pase por encima"
+msgstr "Skjul navigasjonsknapper, vises når musen beveges over"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:536
 msgid "Activate pagination"
-msgstr "Activar las paginas "
+msgstr "Aktiver sidenummer"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:537
 msgid "Hide pagination, show when mouse hovers over"
-msgstr "Esconder las paginas, mostrar el ratón pase por encima "
+msgstr "Skjul sidenummer, vises når musen beveges over"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:538
 msgid "Activate control panel (play and pause button)"
-msgstr "Activar el panel de control (reproducción y botón de pausa)"
+msgstr "Aktiver kontrollpanel (spill- og pauseknapp)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:539
 msgid "Hide control panel, show when mouse hovers over"
-msgstr "Ocultar el panel de control, mostrar cuando el ratón pase por encima "
+msgstr "Skjul kontrollpanel, vises når musen beveges over"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:540
 msgid "Wait until the next slide has loaded before showing it"
-msgstr ""
-"Espere hasta que la siguiente diapositiva se ha cargado antes de mostrarlo"
+msgstr "Vent til neste lysbilde er lastet før det vises"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:541
 msgid "Show a loading icon until the first slide appears"
-msgstr "Mostrar un icono de carga hasta que aparezca la primera diapositiva"
+msgstr "Vis et innlastingsikon til første lysbilde vises"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:542
 msgid "Randomize slides"
-msgstr "Diapositivas aleatorias"
+msgstr "Tilfeldig rekkefølge på lysbilder"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:543
 #, php-format
 msgid "Avoid content filter (disable if '%s' is shown)"
-msgstr "Evitar filtro de contenido (desactivar si '%s' se muestra)"
+msgstr "Unngå innholdsfilter (deaktiver hvis '%s' vises)"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Slide Left"
-msgstr "Deslice a la izquierda"
+msgstr "Gli venstre"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Slide Right"
-msgstr "Deslice a la derecha "
+msgstr "Gli høyre"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Slide Up"
-msgstr "Deslice hacia arriba"
+msgstr "Gli opp"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Slide Down"
-msgstr "Deslice hacia abajo "
+msgstr "Gli ned"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Cross Fade"
-msgstr "Fundido Encadenado"
+msgstr ""
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Direct Fade"
-msgstr "Fundido en Directo"
+msgstr "Direkte nedtoning"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:547
 msgid "Random Animation"
-msgstr "Animación Sin Orden "
+msgstr "Tilfeldig animasjon"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:555
 msgid "Natural and centered"
-msgstr "Natural y centrado"
+msgstr "Naturlig og sentrert"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:555
 msgid "Crop to fit"
-msgstr "Recortar para ajustarse"
+msgstr "Beskjær for å passe"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:555
 msgid "Stretch to fit"
-msgstr "Estirar para caber"
+msgstr "Strekk for å passe"
 
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:569
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:570
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:571
 #: classes/SlideshowPluginSlideshowSettingsHandler.php:572
 msgid "Miscellaneous"
-msgstr "Misceláneo"
+msgstr "Annet"
 
 #: classes/SlideshowPluginWidget.php:23
 msgid "Enables you to show your slideshows in the widget area of your website."
-msgstr "Permite que puedas mostrar las diapositivas en el área de los Widgets"
+msgstr ""
+"Gjør deg i stand til å vise lysbildeshow i widgetområdet på nettsiden din."
 
 #: classes/SlideshowPluginWidget.php:29
 msgid "Slideshow Widget"
-msgstr "Widget de diapositiva"
+msgstr "Lysbildeshow widget"
 
 #: views/SlideshowPlugin/slideshow.php:23
 msgid "Play"
-msgstr "Reproducir"
+msgstr "Spill av"
 
 #: views/SlideshowPlugin/slideshow.php:23
 msgid "Pause"
-msgstr "Pausa"
+msgstr "Pause"
 
 #: views/SlideshowPlugin/slideshow.php:25
 msgid "Previous"
-msgstr "Perviamente"
+msgstr "Forrige"
 
 #: views/SlideshowPlugin/slideshow.php:26
 msgid "Next"
-msgstr "Proxima"
+msgstr "Neste"
 
 #: views/SlideshowPlugin/slideshow.php:28
 msgid "Go to slide"
-msgstr "Ir a diapositiva"
+msgstr "Gå til lysbilde"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:46
 msgid "Default stylesheets"
-msgstr "Hojas de estilo por defecto"
+msgstr "Standard stiler"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:60
 msgid "Create a new custom style from this style"
-msgstr "Crear un nuevo estilo personalizado de este estilo"
+msgstr "Lag en ny tilpasset stil fra denne stilen"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:62
 msgid "Customize"
-msgstr "Personalizar"
+msgstr "Tilpass"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:76
 msgid "Custom stylesheets"
-msgstr "Hojas de estilo personalizadas"
+msgstr "Tilpassede stiler"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:89
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:172
 msgid "Edit this style"
-msgstr "Edita este estilo "
+msgstr "Rediger denne stilen"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:91
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:174
 #: views/SlideshowPluginPostType/slides.php:138
 #: views/SlideshowPluginSlideshowSlide/backend_attachment.php:112
 msgid "Edit"
-msgstr "Editar"
+msgstr "Rediger"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:98
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:181
 msgid "Delete this style"
-msgstr "Borrar este estilo"
+msgstr "Slett denne stilen"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:100
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:183
 msgid "Delete"
-msgstr "Borrar"
+msgstr "Slett"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:110
 msgid "Click 'Customize' to create a new custom stylesheet."
-msgstr ""
-"Haga clic en \"Personalizar\" para crear una nueva hoja de estilo "
-"personalizado."
+msgstr "Klikk 'Tilpass' for å lage en ny tilpasset stil"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:130
 msgid "Select a stylesheet to start customizing it."
-msgstr "Seleccione una hoja de estilo para comenzar a personalizarlo. "
+msgstr "Velg en stil for å tilpasse det"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:139
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:192
@@ -546,16 +529,16 @@ msgstr "Seleccione una hoja de estilo para comenzar a personalizarlo. "
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:80
 #: views/SlideshowPluginWidget/form.php:2
 msgid "Title"
-msgstr "Título"
+msgstr "Tittel"
 
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:148
 #: views/SlideshowPluginGeneralSettings/custom-styles-tab.php:200
 msgid "Style"
-msgstr "Estilo"
+msgstr "Stil"
 
 #: views/SlideshowPluginGeneralSettings/default-slideshow-settings-tab.php:11
 msgid "Note"
-msgstr "Nota"
+msgstr "Notat"
 
 #: views/SlideshowPluginGeneralSettings/default-slideshow-settings-tab.php:18
 #, php-format
@@ -564,95 +547,93 @@ msgid ""
 "therefore do not alter any existing ones. To adapt a slideshow's settings, "
 "%sclick here.%s"
 msgstr ""
-"Los ajustes establecidos en esta página sólo se aplican a presentaciones de "
-"diapositivas de nueva creación y, por tanto, no afectan a los ya existentes. "
-"Para adaptar la configuración de una presentación de diapositivas, %shaga "
-"clic aquí.%s"
+"Innstillingene på denne siden vil bare påvirke nye lysbildeshow og vil ikke "
+"endre allerede eksisterende. For å tilpasse innstillingene for et "
+"lysbildeshow, %sklikk her.%s"
 
 #: views/SlideshowPluginGeneralSettings/default-slideshow-settings-tab.php:29
 #: views/SlideshowPluginGeneralSettings/general-settings.php:15
 msgid "Default Slideshow Settings"
-msgstr "Ajustes por defecto de diapositivas"
+msgstr "Standard lysbildeshowinnstillinger"
 
 #: views/SlideshowPluginGeneralSettings/default-slideshow-settings-tab.php:41
 #: views/SlideshowPluginPostType/settings.php:12
 msgid "settings"
-msgstr "configuración"
+msgstr "innstillinger"
 
 #: views/SlideshowPluginGeneralSettings/default-slideshow-settings-tab.php:77
 msgid "Default Slideshow Stylesheet"
-msgstr "Ajustes de estilos por defecto"
+msgstr "Standard lysbildeshowstil"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:11
 msgid "Add slideshows"
-msgstr "Agregar diapositivas"
+msgstr "Legg til lysbildeshow"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:12
 msgid "Edit slideshows"
-msgstr "Editar diapositivas "
+msgstr "Rediger lysbildeshow"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:13
 msgid "Delete slideshows"
-msgstr "Borrar diapositivas "
+msgstr "Slett lysbildeshow"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:20
 msgid "User Capabilities"
-msgstr "Capacidades de usuario"
+msgstr "Brukermuligheter"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:22
 msgid "Select the user roles that will able to perform certain actions."
-msgstr ""
-"Seleccione la categoria del usuario que pueda realizar ciertas acciones."
+msgstr "Velg brukerrollene som kan utføre spesielle handlinger"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:38
 msgid "Untitled role"
-msgstr "Categoria sin titulo"
+msgstr "Rolle uten navn"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:65
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Innstillinger"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:69
 msgid "Stylesheet location"
-msgstr "Ubicación de estilos"
+msgstr "Stilsett plassering"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:72
 msgid "top"
-msgstr "arriba "
+msgstr "topp"
 
 #: views/SlideshowPluginGeneralSettings/general-settings-tab.php:73
 msgid "bottom"
-msgstr "fondo"
+msgstr "bunn"
 
 #: views/SlideshowPluginGeneralSettings/general-settings.php:16
 msgid "Custom Styles"
-msgstr "Estilos personalizados "
+msgstr "Tilpassede stiler"
 
 #: views/SlideshowPluginPostType/information.php:1
 msgid ""
 "To use this slideshow in your website either add this piece of shortcode to "
 "your posts or pages"
 msgstr ""
-"Para utilizar estas diapositivas en la página, copia este código y pégalo en "
-"el editor de la página o entrada"
+"For å bruke dette lysbildeshowet på din hjemmeside, enten legg denne "
+"kortkoden til ditt innlegg eller side"
 
 #: views/SlideshowPluginPostType/information.php:5
 msgid ""
 "Or add this piece of code to where ever in your website you want to place "
 "the slideshow"
 msgstr ""
-"O agregue este fragmento de código a donde quiera en su sitio web que desea "
-"colocar la diapositiva"
+"Eller legg til denne koden hvor du ønsker å plassere lysbildeshowet på din "
+"hjemmeside"
 
 #: views/SlideshowPluginPostType/information.php:9
 #, php-format
 msgid "Or go to the %swidgets page%s and show the slideshow as a widget."
-msgstr "Ve al %sárea de widgets%s y muestra las Diapositivas como Widget"
+msgstr "Eller gå til %swidgetsiden%s og vil lysbildeshowet som en widget."
 
 #: views/SlideshowPluginPostType/settings.php:26
 #: views/SlideshowPluginPostType/style-settings.php:11
 msgid "Default"
-msgstr "Por defecto"
+msgstr "Standard"
 
 #: views/SlideshowPluginPostType/slides.php:54
 #: views/SlideshowPluginPostType/slides.php:191
@@ -660,7 +641,7 @@ msgstr "Por defecto"
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:9
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:69
 msgid "Text slide"
-msgstr "Diapositiva de Texto"
+msgstr "Tekstlysbilde"
 
 #: views/SlideshowPluginPostType/slides.php:61
 #: views/SlideshowPluginPostType/slides.php:150
@@ -671,14 +652,14 @@ msgstr "Diapositiva de Texto"
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:165
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:95
 msgid "Description"
-msgstr "Descripción"
+msgstr "Beskrivelse"
 
 #: views/SlideshowPluginPostType/slides.php:63
 #: views/SlideshowPluginPostType/slides.php:200
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:51
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:113
 msgid "Background color"
-msgstr "Color de fondo"
+msgstr "Bakgrunnsfarge"
 
 #: views/SlideshowPluginPostType/slides.php:68
 #: views/SlideshowPluginPostType/slides.php:155
@@ -700,7 +681,7 @@ msgstr "URL"
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:183
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:124
 msgid "Open URL in"
-msgstr "Abrir el URL en"
+msgstr "Åpne URL i"
 
 #: views/SlideshowPluginPostType/slides.php:72
 #: views/SlideshowPluginPostType/slides.php:159
@@ -711,7 +692,7 @@ msgstr "Abrir el URL en"
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:185
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:126
 msgid "Same window"
-msgstr "Misma ventana"
+msgstr "Samme vindu"
 
 #: views/SlideshowPluginPostType/slides.php:73
 #: views/SlideshowPluginPostType/slides.php:160
@@ -722,7 +703,7 @@ msgstr "Misma ventana"
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:186
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:127
 msgid "New window"
-msgstr "Ventana nueva"
+msgstr "Nytt vindu"
 
 #: views/SlideshowPluginPostType/slides.php:90
 #: views/SlideshowPluginPostType/slides.php:230
@@ -730,14 +711,14 @@ msgstr "Ventana nueva"
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:94
 #: views/SlideshowPluginSlideshowSlide/backend_video.php:26
 msgid "Video slide"
-msgstr "Diapositiva de Video"
+msgstr "Videolysbilde"
 
 #: views/SlideshowPluginPostType/slides.php:95
 #: views/SlideshowPluginPostType/slides.php:235
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:103
 #: views/SlideshowPluginSlideshowSlide/backend_video.php:35
 msgid "Youtube Video ID"
-msgstr "Video de YouTube"
+msgstr "Youtube Video ID"
 
 #: views/SlideshowPluginPostType/slides.php:133
 #: views/SlideshowPluginPostType/slides.php:255
@@ -746,15 +727,15 @@ msgstr "Video de YouTube"
 #: views/SlideshowPluginSlideshowSlide/backend_attachment.php:101
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:135
 msgid "Image slide"
-msgstr "Diapositiva de Imagen"
+msgstr "Bildelysbilde"
 
 #: views/SlideshowPluginPostType/slides.php:171
 msgid ""
 "An error occurred while loading this slide, and it will not be present in "
 "the slideshow"
 msgstr ""
-"Ha ocurrido un error miestras se cargaba esta diapositiva y no puede ser "
-"presentada"
+"En feil oppsto ved innlasting av dette lysbildet, og det vil ikke vises i "
+"lysbildeshowet"
 
 #: views/SlideshowPluginPostType/slides.php:177
 #: views/SlideshowPluginPostType/slides.php:218
@@ -767,16 +748,16 @@ msgstr ""
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:138
 #: views/SlideshowPluginSlideshowSlide/backend_video.php:49
 msgid "Delete slide"
-msgstr "Borrar diapositiva"
+msgstr "Slett lysbilde"
 
 #: views/SlideshowPluginPostType/style-settings.php:22
 #, php-format
 msgid "Custom styles can be created and customized %shere%s."
-msgstr "Estilos personalizados se pueden crear y personalizar %saquí%s."
+msgstr "Tilpassede stiler kan opprettes og tilpasses %sher%s."
 
 #: views/SlideshowPluginPostType/support-plugin.php:3
 msgid "Help to keep this plugin free!"
-msgstr "¡Ayuda a que este plugin sea gratis!"
+msgstr "Hjelp til med å holde denne pluginen gratis!"
 
 #: views/SlideshowPluginPostType/support-plugin.php:6
 msgid ""
@@ -785,60 +766,59 @@ msgid ""
 "consider making a small donation to the plugin or rating it as 5-stars on "
 "Wordpress.org. Thank you in advance!"
 msgstr ""
-"Con el fin de mantenerlo siempre con las características más recientes, el "
-"apoyo foro, y correcciones de errores, mucha motivación es necesaria. Por lo "
-"tanto estoy pidiendo amablemente que consideren hacer una pequeña donación "
-"al plugin o que califiquen como 5 estrellas en Wordpress.org. ¡Gracias de "
-"antemano!"
+"For å fortsette å gi dere de nyeste funksjonene, oppdateringer og bugfikser "
+"trengs det mye motivasjon. Derfor spør jeg dere vennlig om å gi en liten "
+"donasjon til pluginen eller å gi den en 5-stjernes rangering på Wordpress."
+"org. På forhånd takk!"
 
 #: views/SlideshowPluginPostType/support-plugin.php:15
 msgid "Rate on Wordpress.org"
-msgstr "Calificar en Wordpress.org"
+msgstr "Rangér på Wordpress.org"
 
 #: views/SlideshowPluginPostType/support-plugin.php:24
 msgid "Frequently Asked Questions (FAQ)"
-msgstr "Preguntas Frecuentes (PF)"
+msgstr "Ofte spurte spørsmål (FAQ)"
 
 #: views/SlideshowPluginShortcode/shortcode-inserter.php:4
-#: views/SlideshowPluginShortcode/shortcode-inserter.php:13
-#: views/SlideshowPluginShortcode/shortcode-inserter.php:24
-msgid "Insert a Slideshow"
-msgstr "Insertar una Diapositiva"
-
+#: views/SlideshowPluginShortcode/shortcode-inserter.php:9
 #: views/SlideshowPluginShortcode/shortcode-inserter.php:18
-#: views/SlideshowPluginShortcode/shortcode-inserter.php:57
+msgid "Insert a Slideshow"
+msgstr "Sett inn et lysbildeshow"
+
+#: views/SlideshowPluginShortcode/shortcode-inserter.php:12
+#: views/SlideshowPluginShortcode/shortcode-inserter.php:51
 msgid "Insert Slideshow"
-msgstr "Insertar Diapositiva"
+msgstr "Sett inn lysbildeshow"
 
-#: views/SlideshowPluginShortcode/shortcode-inserter.php:33
+#: views/SlideshowPluginShortcode/shortcode-inserter.php:27
 msgid "Select a slideshow"
-msgstr "Seleccionar una diapositiva"
+msgstr "Velg lysbildeshow"
 
-#: views/SlideshowPluginShortcode/shortcode-inserter.php:42
+#: views/SlideshowPluginShortcode/shortcode-inserter.php:36
 #: views/SlideshowPluginWidget/form.php:12
 msgid "Untitled slideshow"
-msgstr "Diapositiva sin título"
+msgstr "Lysbildeshow uten navn"
 
-#: views/SlideshowPluginShortcode/shortcode-inserter.php:62
+#: views/SlideshowPluginShortcode/shortcode-inserter.php:56
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Avbryt"
 
-#: views/SlideshowPluginShortcode/shortcode-inserter.php:73
+#: views/SlideshowPluginShortcode/shortcode-inserter.php:67
 #, php-format
 msgid ""
 "It seems you haven't created any slideshows yet. %sYou can create a "
 "slideshow here!%s"
 msgstr ""
-"Parece que no has creado ninguna diapositiva aún. %s¡Puedes crear una "
-"diapositiva aquí!%s"
+"Det ser ut til at du ikke har laget noe lysbildeshow ennå. %sDu kan lage et "
+"lysbildeshow her!%s"
 
 #: views/SlideshowPluginSlideInserter/search-popup.php:6
 msgid "Search"
-msgstr "Buscar"
+msgstr "Søk"
 
 #: views/SlideshowPluginSlideInserter/search-popup.php:7
 msgid "Search images by title or ID"
-msgstr "Buscar imágenes por título o ID"
+msgstr "Søk bilder etter tittel eller ID"
 
 #: views/SlideshowPluginSlideshowSlide/backend_attachment.php:90
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:4
@@ -847,39 +827,42 @@ msgstr "Buscar imágenes por título o ID"
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:58
 #: views/SlideshowPluginSlideshowSlide/backend_video.php:21
 msgid "Click to toggle"
-msgstr "Haga clic para activar"
+msgstr "Klikk for å skifte"
 
 #: views/SlideshowPluginSlideshowSlide/backend_attachment.php:160
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:69
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:190
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:131
 msgid "Don't let search engines follow link"
-msgstr "No permitas que los motores de búsquedas sigan el enlace "
+msgstr "Ikke la søkemotorer følge linken"
 
 #: views/SlideshowPluginSlideshowSlide/backend_attachment.php:168
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:197
 msgid "Alternative text"
-msgstr "Texto alternativo"
+msgstr "Alternativ tekst"
 
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:48
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:110
 msgid "Text color"
-msgstr "Color de Texto "
+msgstr "Tekst farge"
 
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:53
 #: views/SlideshowPluginSlideshowSlide/backend_text.php:115
 msgid "(Leave empty for a transparent background)"
-msgstr "(Dejar vacio para un fondo transparente) "
+msgstr "(La stå tom for gjennomsiktig bakgrunn)"
 
 #: views/SlideshowPluginSlideshowSlide/backend_templates.php:110
 #: views/SlideshowPluginSlideshowSlide/backend_video.php:42
 msgid "Show related videos"
-msgstr "Ensena vídeos relacionados"
+msgstr "Vis beslektede videoer"
 
 #: views/SlideshowPluginUpload/upload-button.php:1
 msgid "Upload/Manage Images"
-msgstr "Cargar/Administrar Imágenes"
+msgstr "Last opp/Håndtér bilder"
 
 #: views/SlideshowPluginWidget/form.php:9
 msgid "Random Slideshow"
-msgstr "Diapositivas Aleatorias"
+msgstr "Tilfeldig lysbildeshow"
+
+#~ msgid "Leave any field open to use default value."
+#~ msgstr "Een veld dat open wordt gelaten neemt de standaardwaarde aan."
