@@ -13,5 +13,5 @@
     data-text-color="#<?php echo $text_color; ?>"
     data-bg-color="#<?php echo $bg_color; ?>">
   </div>
-  <script>(function() {var s = document.getElementsByTagName("script")[0],rdb = document.createElement("script"); rdb.type = "text/javascript"; rdb.async = true; rdb.src = document.location.protocol + "//www.readability.com/embed.js"; s.parentNode.insertBefore(rdb, s); })();</script>
+  <script>(function() {var s = document.getElementsByTagName("script")[0],rdb = document.createElement("script"); rdb.type = "text/javascript"; rdb.async = true; rdb.src = "//d370mdr42phnax.cloudfront.net/embed/embed.js"; s.parentNode.insertBefore(rdb, s); })();</script>
 </p>

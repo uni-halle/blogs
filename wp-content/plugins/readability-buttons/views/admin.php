@@ -48,5 +48,5 @@
 </p>
 
 <p style="color: #3a87ad; background: #d9edf7; padding: 4px !important; border: 1px solid #bce8f1; border-radius: 2px; font-size: 12px; float: left; clear: left;">
-	<?php _e( '<strong>Like this plugin?</strong> Consider <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=VJRCEYRS8GTYE&lc=C2&item_name=Plugin%20Donation&button_subtype=services&currency_code=USD&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHosted" target="_blank">donating</a>. Check out my <a href="http://profiles.wordpress.org/sparanoid/" target="_blank">other plugins</a>, too.', 'instagram-badges' ); ?>
+	<?php _e( '<strong>Like this plugin?</strong> Consider <a href="http://sparanoid.com/donate/" target="_blank">donating</a>. Check out my <a href="http://profiles.wordpress.org/sparanoid/#content-plugins" target="_blank">other plugins</a>, too.', 'instagram-badges' ); ?>
 </p>
