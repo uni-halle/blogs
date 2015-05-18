@@ -37,21 +37,15 @@
 		<hgroup>
 			<div class="hgroup-inner">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/logo.gif"></a>
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/09/jandl-verjandlungen1.jpg">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/stueck-morgenstern.jpg">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/stueck-goethe.jpg">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/stueck-liebeslust.jpg">
-				<img src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/uploads/2014/08/stueck-schwitters.jpg">
 			</div>
 		</hgroup>
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+			<button class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></button>
 			<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-			<?php //get_all_category_ids() ?>
 		</nav><!-- #site-navigation -->
-
+		
 		<?php if ( get_header_image() ) : ?>
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php header_image(); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" /></a>
 		<?php endif; ?>
