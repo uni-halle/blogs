@@ -18,7 +18,9 @@
 			else
 				$id = 'method='.$method.self::parameterToString($parameter);
 			if ( 
-				in_array( $method, array( 'API.getPiwikVersion', 'SitesManager.getJavascriptTag', 'SitesManager.getAllSites', 'SitesManager.getSitesIdFromSiteUrl', 'SitesManager.addSite', 'SitesManager.updateSite', 'SitesManager.getSitesWithAtLeastViewAccess' ) ) ||
+				in_array( $method, array( 'API.getPiwikVersion', 'SitesManager.getJavascriptTag', 'SitesManager.getSitesWithAtLeastViewAccess', 'SitesManager.getSitesIdFromSiteUrl', 'SitesManager.addSite', 'SitesManager.updateSite', 'SitesManager.getSitesWithAtLeastViewAccess' ) ) ||
+				!isset( $parameter['date'] ) ||
+				!isset( $parameter['period'] ) ||
 				substr($parameter['date'], 0, 4) == 'last' ||
 				$parameter['date'] == 'today' ||
 				( $parameter['period'] == 'day' && $parameter['date'] == date('Ymd') ) ||
@@ -55,6 +57,10 @@
 				}
 				return self::$results[$id];
 			} else return false;
+		}
+		
+		public function getDebug($id) {
+			return isset( self::$debug[$id] )? self::$debug[$id] : false;
 		}
 		
 		protected function buildURL($config, $urlDecode = false) {

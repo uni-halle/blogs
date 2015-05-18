@@ -89,7 +89,7 @@ class Settings extends \WP_Piwik\Admin {
 		if (! function_exists ( 'curl_init' ) && ! ini_get ( 'allow_url_fopen' ))
 			$this->showBox ( 'error', 'no', __ ( 'Neither cURL nor fopen are available. So WP-Piwik can not use the HTTP API and not connect to Piwik Pro.' ) . ' ' . sprintf ( '<a href="%s">%s.</a>', 'https://wordpress.org/plugins/wp-piwik/faq/', __ ( 'More information', 'wp-piwik' ) ) );
 		
-		$description = sprintf ( '%s<br /><strong>%s:</strong> %s<br /><strong>%s:</strong> %s<br /><strong>%s:</strong> %s', __ ( 'You can choose between three connection methods:', 'wp-piwik' ), __ ( 'Self-hosted (HTTP API, default)', 'wp-piwik' ), __ ( 'This is the default option for a self-hosted Piwik and should work for most configurations. WP-Piwik will connect to Piwk using http(s).', 'wp-piwik' ), __ ( 'Self-hosted (PHP API)', 'wp-piwik' ), __ ( 'Choose this, if your self-hosted Piwik and WordPress are running on the same machine and you know the full server path to your Piwik instance.', 'wp-piwik' ), __ ( 'Cloud-hosted (Piwik Pro)', 'wp-piwik' ), __ ( 'If you are using a cloud-hosted Piwik by Piwik Pro, you can simply use this option.', 'wp-piwik' ) );
+		$description = sprintf ( '%s<br /><strong>%s:</strong> %s<br /><strong>%s:</strong> %s<br /><strong>%s:</strong> %s', __ ( 'You can choose between three connection methods:', 'wp-piwik' ), __ ( 'Self-hosted (HTTP API, default)', 'wp-piwik' ), __ ( 'This is the default option for a self-hosted Piwik and should work for most configurations. WP-Piwik will connect to Piwik using http(s).', 'wp-piwik' ), __ ( 'Self-hosted (PHP API)', 'wp-piwik' ), __ ( 'Choose this, if your self-hosted Piwik and WordPress are running on the same machine and you know the full server path to your Piwik instance.', 'wp-piwik' ), __ ( 'Cloud-hosted (Piwik Pro)', 'wp-piwik' ), __ ( 'If you are using a cloud-hosted Piwik by Piwik Pro, you can simply use this option.', 'wp-piwik' ) );
 		$this->showSelect ( 'piwik_mode', __ ( 'Piwik Mode', 'wp-piwik' ), array (
 				'disabled' => __ ( 'Disabled (WP-Piwik will not connect to Piwik)', 'wp-piwik' ),
 				'http' => __ ( 'Self-hosted (HTTP API, default)', 'wp-piwik' ),
@@ -107,7 +107,11 @@ class Settings extends \WP_Piwik\Admin {
 		if (! self::$wpPiwik->isNetworkMode() ) {
 			$this->showCheckbox ( 'auto_site_config', __ ( 'Auto config', 'wp-piwik' ), __ ( 'Check this to automatically choose your blog from your Piwik sites by URL. If your blog is not added to Piwik yet, WP-Piwik will add a new site.', 'wp-piwik' ), false, '$j(\'tr.wp-piwik-auto-option\').toggle(\'hidden\');' . ($piwikSiteId ? '$j(\'#site_id\').val(' . $piwikSiteId . ');' : '') );
 			if (self::$wpPiwik->isConfigured ()) {
-				$piwikSiteDetails = self::$wpPiwik->getPiwikSiteDetails ();
+				$piwikSiteList = self::$wpPiwik->getPiwikSiteDetails ();
+				if (is_array($piwikSiteList))
+					foreach ($piwikSiteList as $details)
+						$piwikSiteDetails[$details['idsite']] = $details;
+				unset($piwikSiteList);
 				if (($piwikSiteId == 'n/a'))
 					$piwikSiteDescription = 'n/a';
 				elseif (! self::$settings->getGlobalOption ( 'auto_site_config' ))
@@ -117,7 +121,7 @@ class Settings extends \WP_Piwik\Admin {
 				echo '<tr class="wp-piwik-auto-option' . (! self::$settings->getGlobalOption ( 'auto_site_config' ) ? ' hidden' : '') . '"><th scope="row">' . __ ( 'Determined site', 'wp-piwik' ) . ':</th><td>' . $piwikSiteDescription . '</td></tr>';
 				if (is_array ( $piwikSiteDetails ))
 					foreach ( $piwikSiteDetails as $key => $siteData )
-						$siteList [$key] = $siteData ['name'] . ' (' . $siteData ['main_url'] . ')';
+						$siteList [$siteData['idsite']] = $siteData ['name'] . ' (' . $siteData ['main_url'] . ')';
 					if (isset($siteList))
 						$this->showSelect ( 'site_id', __ ( 'Select site', 'wp-piwik' ), $siteList, 'Choose the Piwik site corresponding to this blog.', '', self::$settings->getGlobalOption ( 'auto_site_config' ), 'wp-piwik-auto-option', true, false );
 			}
@@ -236,7 +240,7 @@ class Settings extends \WP_Piwik\Admin {
 		
 		$this->showCheckbox ( 'track_across', __ ( 'Track subdomains in the same website', 'wp-piwik' ), __ ( 'Adds *.-prefix to cookie domain.', 'wp-piwik' ) . ' ' . sprintf ( __ ( 'See %sPiwik documentation%s.', 'wp-piwik' ), '<a href="https://developer.piwik.org/guides/tracking-javascript-guide#tracking-subdomains-in-the-same-website">', '</a>' ), $isNotGeneratedTracking, $fullGeneratedTrackingGroup );
 		
-		$this->showCheckbox ( 'track_across_alias', __ ( 'Do not count subdomians as outlink', 'wp-piwik' ), __ ( 'Adds *.-prefix to tracked domain.', 'wp-piwik' ) . ' ' . sprintf ( __ ( 'See %sPiwik documentation%s.', 'wp-piwik' ), '<a href="https://developer.piwik.org/guides/tracking-javascript-guide#outlink-tracking-exclusions">', '</a>' ), $isNotGeneratedTracking, $fullGeneratedTrackingGroup );
+		$this->showCheckbox ( 'track_across_alias', __ ( 'Do not count subdomains as outlink', 'wp-piwik' ), __ ( 'Adds *.-prefix to tracked domain.', 'wp-piwik' ) . ' ' . sprintf ( __ ( 'See %sPiwik documentation%s.', 'wp-piwik' ), '<a href="https://developer.piwik.org/guides/tracking-javascript-guide#outlink-tracking-exclusions">', '</a>' ), $isNotGeneratedTracking, $fullGeneratedTrackingGroup );
 		
 		$this->showCheckbox ( 'track_feed', __ ( 'Track RSS feeds', 'wp-piwik' ), __ ( 'Enable to track posts in feeds via tracking pixel.', 'wp-piwik' ), $isNotTracking, $fullGeneratedTrackingGroup . ' wp-piwik-track-option-manually' );
 		
@@ -538,7 +542,7 @@ class Settings extends \WP_Piwik\Admin {
 				_e('enabled','wp-piwik');
 			?></strong>.</li>
 		</ol>
-		<p><a href="<?php echo admin_url( 'options-general.php?page='.$_GET['page'].'&testscript=1' ); ?>">Run testscript</a>. <a href="<?php echo admin_url( 'options-general.php?page='.$_GET['page'].'&sitebrowser=1' ); ?>">Sitebrowser</a>.</p>
+		<p><a href="<?php echo admin_url( (self::$settings->checkNetworkActivation () ? 'network/settings' : 'options-general').'.php?page='.$_GET['page'].'&testscript=1' ); ?>">Run testscript</a>. <a href="<?php echo admin_url( 'options-general.php?page='.$_GET['page'].'&sitebrowser=1' ); ?>">Sitebrowser</a>.</p>
 		<h3><?php _e('Latest support threads on WordPress.org', 'wp-piwik'); ?></h3><?php 
 		$supportThreads = $this->readRSSFeed('http://wordpress.org/support/rss/plugin/wp-piwik');
 		if (!empty($supportThreads)) {
@@ -593,20 +597,23 @@ class Settings extends \WP_Piwik\Admin {
 			echo '`WP-Piwik '.self::$wpPiwik->getPluginVersion()."\nMode: ".self::$settings->getGlobalOption('piwik_mode')."\n\n";
 		?>Test 1/3: global.getPiwikVersion<?php 
 			$GLOBALS ['wp-piwik_debug'] = true;
-			$id = \WP_Piwik\Request::register ( 'API.getPiwikVersion' );
+			$id = \WP_Piwik\Request::register ( 'API.getPiwikVersion', array() );
 			echo "\n\n"; var_dump( self::$wpPiwik->request( $id ) ); echo "\n";
+			var_dump( self::$wpPiwik->request( $id, true ) ); echo "\n";
 			$GLOBALS ['wp-piwik_debug'] = false;
 		?>Test 2/3: SitesManager.getSitesWithAtLeastViewAccess<?php 
 			$GLOBALS ['wp-piwik_debug'] = true;
-			$id = \WP_Piwik\Request::register ( 'SitesManager.getSitesWithAtLeastViewAccess' );
+			$id = \WP_Piwik\Request::register ( 'SitesManager.getSitesWithAtLeastViewAccess', array() );
 			echo "\n\n"; var_dump( self::$wpPiwik->request( $id ) ); echo "\n"; 
+			var_dump( self::$wpPiwik->request( $id, true ) ); echo "\n";
 			$GLOBALS ['wp-piwik_debug'] = false;
-		?>Test 3/3: SitesManager.getSitesWithAtLeastViewAccess<?php 
+		?>Test 3/3: SitesManager.getSitesIdFromSiteUrl<?php 
 			$GLOBALS ['wp-piwik_debug'] = true;
 			$id = \WP_Piwik\Request::register ( 'SitesManager.getSitesIdFromSiteUrl', array (
 				'url' => get_bloginfo ( 'url' )
 			) );
-			echo "\n\n";  var_dump( self::$wpPiwik->request( $id ) ); echo "`";
+			echo "\n\n";  var_dump( self::$wpPiwik->request( $id ) ); echo "\n";
+			var_dump( self::$wpPiwik->request( $id, true ) ); echo "`";
 			$GLOBALS ['wp-piwik_debug'] = false;
 		?></textarea>
 		<?php } else echo '<p>Please configure WP-Piwik first.</p>'; ?>
