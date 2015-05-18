@@ -1,0 +1,358 @@
+Changelog Legend:
+----
+
+[+] = Added
+[*] = Changed
+[^] = Moved
+[=] = No Changes
+[x] = Deleted
+[!] = Bugs
+
+----
+
+(4/22/2015) - 1.2.9.5
+[!] Fix bug where save notices were showing up 3 times
+
+----
+
+(4/19/2015) - 1.2.9.4
+[+] Add filter to page header size: generate_page_header_default_size
+[*] Screenshot updated
+[*] Add Sections add-on to options page
+[*] Add SiteOrigin Page Builder compatibility 
+[+] Greek language added (thanks Manolis!!)
+
+----
+
+(4/8/2015) - 1.2.9.3
+[*] Admin option messages improved
+[*] Menu dropdown arrows built in to avoid javascript jump
+[+] Active footer widget number class added to <body>
+[+] Italian translation added (thanks, Roberto!!)
+[*] Superfish navigation updated
+[+] Add filter to pagination mid-size: generate_pagination_mid_size
+
+----
+
+(3/17/2015) - 1.2.9.2
+[+] Fix error in description
+[*] Add item to changelog
+
+----
+
+(3/17/2015) - 1.2.9.1
+[+] generate_more_tag filter added
+[*] Revert back to media query inside mobile.css due to minifying/caching issues
+[!] Fix bug regarding dropdown menus on mobile
+[+] Danish translation added
+[*] Admin page (Appearance > GeneratePress) improved
+
+----
+
+(3/9/2015) - 1.2.9
+[*] Font Awesome updated to 4.3.0
+[+] Comic Sans MS added to font list
+[*] Calculate $content_width variable based on layout
+[+] Get layout of current page with generate_get_layout()
+[+] generate_sidebar_layout filter added
+[*] Clean up page header function
+[*] Move page header functions to template-tags.php
+[+] WooCommerce styles cleaned up
+[+] bbPress styles cleaned up
+[+] Norwegian translation added (thanks, Olaf!!)
+[*] HTML structure changed to include left sidebar before right sidebar
+[*] Various code cleaned up and optimized
+[+] Support for more post formats added
+[*] Microdata warnings and errors cleaned up
+[*] Mobile breakpoint removed from mobile.css and added to enqueue function
+[*] Show read more link when using more tag, even when blog content is set to show excerpts
+[+] Czech language added (thanks, Jirí!!)
+[!] Fixed bug where mobile menu didn't move to below header from sidebar
+[!] Fixed bug in IE10 where navigation search text is invisible
+
+----
+
+(2/8/2015) - 1.2.8
+[+] Portuguese translation added
+[!] Fix navigation search translation issue
+[!] $content_width variable now working correctly
+[+] Image caption width decreased to real image width
+
+----
+
+(1/25/2015) - 1.2.7
+[+] Font fallback set - use generate_fallback_font filter to change it
+[x] Remove filter dealing with wp_title
+[+] Re-add theme support for title-tag
+[*] Mobile menu handling improved
+[+] Added fallback fonts
+
+----
+
+(1/23/2015) - 1.2.6
+[!] Fix bug affecting mobile menu when superfish is disabled
+[!] Fix bug affecting mobile dropdowns when no menu is set
+[!] Fix bug causing title tag to show double site title and tagline
+[x] scripts.js removed as only js in there was superfish stuff - added to superfish.js
+
+----
+
+(1/19/2015) - 1.2.5
+[*] Mobile menu dropdowns now require arrow click to expand
+[+] Close icon added to mobile menu when opened
+[+] Add search title to navigation search
+[+] Finnish translation started (thanks, Olli!)
+[+] content-link.php added for "Link" post format
+[*] Title removed from blog posts with "Status" post format
+[*] Footer entry meta packed into one clean function
+[+] New filter add to logo href: generate_logo_href
+[*] Comment avatar container removed
+[+] Hooks added to no-results.php template
+[+] generate_after_entry_content hook added
+[+] generate_before_archive_title hook added to archive.php
+[+] generate_after_archive_title hook added to archive.php
+[+] generate_after_archive_description hook added to archive.php
+[*] German translation updated (thanks Rudi!)
+[*] Change version of child theme stylesheet when changed
+[!] Show post images on all custom post types
+[+] Add theme support for the <title> tag
+[+] Polish translation added (thanks Wojciech!)
+[*] Author avatar increased in size
+
+----
+
+(12/14/2014) - 1.2.4
+[+] Add filter to mobile menu label: generate_mobile_menu_label
+[+] More fonts added to typography
+[*] Typography performance increased
+[!] Fix error on some servers when getting list of Google Fonts
+[+] Add filter for typography subsets
+[+] Class added to mobile menu label
+[!] Fixed bug with navigation search on mobile when centered
+
+----
+
+(11/16/2014) - 1.2.3
+[*] Hide default widgets if Secondary Navigation is set to that sidebar
+[*] Unsemantic CSS structure cleaned up considerably
+[!] Translation files updated so search placeholder is correctly translated
+[*] Adjust mobile breakpoints to include portrait tablets
+[+] Add Disqus compatibility
+[*] Alter look of no-results.php to match other pages
+[+] Russian translation added
+[!] Mobile bug fixed when menu is centered
+[!] Fix bug that causes pagination not to show up sometimes
+[*] Screenshot updated
+
+----
+
+(10/21/2014) - 1.2.2
+[+] Spanish translation added
+[+] Only admins can see Sidebar and Footer Widget metaboxes - capability is filterable (generate_metabox_capability)
+[!] Fix bug causing non-Google fonts to be ignored when chosen
+
+----
+
+(10/14/2014) - 1.2.1
+[x] Remove class added to <body> by mistake
+
+----
+
+(10/14/2014) - 1.2.0
+[!] Fix bug that takes footer widget setting from latest post and applies to the blog
+[*] Tweaks made to .alignleft and .alignright on mobile
+[*] Include FontAwesome in theme instead of CDN
+[+] Add sanitization for typography options
+[*] Change separator spacing from padding to margin
+[+] Added French translation
+[+] Added filters for widget titles: generate_start_widget_title and generate_end_widget_title
+[*] When navigation search is clicked, move close icon to far right if navigation is centered
+[+] Classes added to <body> for header and navigation alignment
+[*] Cleaned up some code
+[+] Added hook after starting <main> tag and before closing </main> tag
+[*] Allow sidebar and footer widget metabox on all post types
+[+] New Hook: generate_paging_navigation
+[*] Change navigation search from line-height to height to fix Chrome issue
+[*] Header/Logo upload uses Media Library
+
+----
+
+(9/28/2014) - 1.1.9
+[!] Active/focus styles added to form button CSS
+[*] Fix messed up layout in IE8 and below
+[+] Add filters to search widget
+[+] Filters added to comment labels
+[*] Translation file updated
+
+----
+
+(9/20/2014) - 1.1.8
+[x] Remove login from footer
+[!] Fix mobile bug with alignleft and alignright classes
+[*] Make Google Fonts call more robust
+[*] Tweak made to navigation search bar
+[+] Add BuddyPress compatibility
+[+] Translation files updated
+[+] Addon constants added for ease of translating
+
+----
+
+(9/8/2014) - 1.1.7
+[+] Remove use of constants for template directory
+
+----
+
+(9/6/2014) - 1.1.6
+[*] Added some function_exists checks to some important places
+[*] Disable some of the addon notices if GP Premium is installed
+
+----
+
+(9/6/2014) - 1.1.5
+[*] FontAwesome updated to latest version
+[*] Some addon changes
+
+----
+
+(9/6/2014) - 1.1.4
+[*] Language .pot files updated
+[*] Some default styling modified
+[*] Improved wp_nav_menu compatibility
+[*] Adjustments made to sub-navigation font size
+[!] Fixed broken link to caption background
+[!] Fixed warning when using One Container content layout
+[*] Open Sans is now the default font
+[+] Body font options added to Customizer
+[!] Fix issue with MailPoet success message disappearing
+[+] New blog post pagination introduced (numbered)
+[!] Fix jumping with navigation arrows on load
+[+] Add ability to add search bar to navigation
+[!] Fix bug where footer widgets won't show on forums
+[+] Mobile icon added to mobile Menu button
+
+----
+
+(8/25/2014) - 1.1.3
+[x] Removed verification.php
+[*] Included jQuery UI Smoothness in theme for customizer
+
+----
+
+(8/24/2014) - 1.1.2
+[+] Added support for WooCommerce
+[+] Added filter to output of fonts in css call
+[*] Changed 404 layout to match other pages
+[+] Added filters to 404 title and content
+[!] Fixed bug when navigation in sidebar causing it to reach outside container
+[!] Fix text inputs and textareas on mobile
+[*] Reduced navigation dropdown hoverintent value
+[*] Removed center nav and center header options and replaced with alignment dropdowns
+
+---- 
+
+(8/7/2014) - 1.1.1
+
+[!] PHP notice removed from left sidebar on no results page
+[!] .site-logo given max-width of 100% for mobile reasons
+[*] Adjustments to default typography settings
+[*] Remove default sidebar widgets if navigation is set in that sidebar
+[*] Adjustments to default color settings
+
+----
+
+(7/31/2014) - 1.1.0
+
+[+] Added generate_main_class to <main> container to allow adding of classes
+[x] Removed extra empty CSS file - using is_child_theme instead
+[*] Cleaned up some CSS
+[+] Move navigation below header on mobile devices if originally in a sidebar
+[+] German translation added
+[+] GENERATE_DISABLE_MOBILE constant added to remove mobile responsive functionality
+[+] Added wrapper surrounding site logo
+[+] Added focus and active attributes to link color on hover
+[*] Header widget set to a max-width of 50% of the header
+[*] Couple mobile tweaks - center header and menu toggle
+[+] Subtle CSS transition added to links
+[*] Bundled skip-link-focus.fix.js with scripts.js to cut down on http requests
+[+] generate_inside_navigation hook added
+[*] Moved $content_width inside after_setup_theme action
+[!] Fixed bug causing single post specific sidebar layouts not to work
+[+] Filters added to sidebar widths for easy alteration
+
+----
+
+(7/9/2014) - 1.0.9
+
+[+] .pot file added for translation
+[+] Compatibility added for Generate Spacing addon
+[+] Option for a 5th footer widget
+[*] File cleanup
+[*] Customize.php generated CSS moved above enqueued child theme css
+[*] Changes made to better sane defaults
+
+----
+
+(6/18/2014) - 1.0.8
+
+[+] Sanitization for all Customizer options
+[!] Allow transparent header background
+[*] Hide title, hide tagline and logo options moved into generate_settings db entry
+[!] Fix bug regarding deleting options in GeneratePress options page
+[*] Screenshot updated
+
+----
+
+(6/7/2014) - 1.0.7
+
+[*] Page header on single post moved within content
+[+] Single Post Layout setting added
+[+] Blog post content setting added - show full post or excerpt
+[+] Hook added after entry header
+
+----
+
+(5/30/2014) - 1.0.6
+
+[!] Fixed major bug causing Customizer options to disappear
+[+] Additional tags
+[+] More hooks
+
+----
+
+(5/23/2014) - 1.0.5
+[*] Theme defaults changed from global variable to function: generate_get_defaults()
+[+] Addons file added to add default styles and fonts when addons aren't installed
+[+] Added instruction on how to save and activate addon license keys
+[x] Featured image removed from attachment template
+[!] Remove page header container if no page header is set (removes unnecessary gap)
+
+----
+
+(5/20/2014) - 1.0.4
+[*] Readme.txt updated
+[*] Screenshot updated
+
+----
+
+(5/19/2014) - 1.0.3
+[x] Script options
+
+----
+
+(5/19/2014) - 1.0.2
+[+] Page header can be added using the Featured Image option
+[x] Activated message deleted
+[!] Fixed broken caption background URL in CSS
+[*] Bottom padding removed from last header widget
+[*] Screenshot updated
+
+----
+
+(5/16/2014) - 1.0.1
+[!] Fixed mobile menu when centered
+[*] Screenshot updated
+
+----
+
+(04/26/2014) - 1.0
+Initial Release

@@ -1,0 +1,103 @@
+.generate-metabox label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.generate-metabox textarea {
+	width: 100%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	min-height: 200px;
+}
+
+.js .generate-metabox.postbox .hndle {
+	cursor: inherit;
+}
+
+.generate-metabox .clear {
+	padding-top: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #DDD;
+}
+
+.generate-metabox .clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.inactive {
+	background: #444;
+    color: #FFFFFF;
+	font-size:12px;
+	display: inline-block;
+	margin-right:5px;
+	margin-bottom: 5px;
+}
+
+.inactive a,
+.inactive a:visited,
+.inactive a:hover,
+.active a,
+.active a:visited,
+.active a:hover {
+	color:#FFF;
+	text-decoration: none;
+	padding: 6px 8px;
+	display: inline-block;
+}
+
+.inactive.need-license {
+	background: orange;
+}
+
+.active {
+	background: green;
+    color: #FFFFFF;
+	font-size:12px;
+	display: inline-block;
+	margin-right:5px;
+	margin-bottom: 5px;
+}
+
+.addon-container {
+	margin-bottom:5px;
+}
+
+.addon-title {
+	display: block;
+	font-weight: bold;
+	font-size:16px;
+	margin-bottom:10px;
+}
+
+.addon-active img {
+	opacity: 1;
+}
+
+.addon-inactive img {
+	opacity: 0.3;
+}
+
+.addon-active img,
+.addon-inactive img {
+	margin:5px;
+}
+
+.wp-list-table.addons tr:nth-child(2n) {
+	background: #FFF;
+}
+.wp-list-table.addons td,
+.wp-list-table.email td {
+	vertical-align: middle;
+}
+
+.appearance_page_generate-options .updated,
+.appearance_page_generate-options .error {
+	max-width: 1071px;
+	margin-right: 5px;
+	margin-top: 25px;
+	margin-left: 12px;
+}

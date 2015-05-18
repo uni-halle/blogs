@@ -1,0 +1,900 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GeneratePress\n"
+"POT-Creation-Date: 2015-04-04 15:17-0800\n"
+"PO-Revision-Date: 2015-04-18 16:50+0200\n"
+"Last-Translator: Manolis Tzanidakis <mtzanidakis@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: el\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Ωχ! Αυτή η σελίδα δεν μπορεί να βρεθεί."
+
+#: 404.php:22
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Δε βρέθηκε κάτι σε αυτή την τοποθεσία. Ίσως να δοκιμάζατε κάποιον από τους "
+"παρακάτω συνδέσμους ή να κάνατε μία αναζήτηση;"
+
+#: archive.php:33
+#, php-format
+msgid "About %s"
+msgstr "Σχετικά με %s"
+
+#: archive.php:41
+#, php-format
+msgid "Day: %s"
+msgstr "Ημέρα: %s"
+
+#: archive.php:44
+#, php-format
+msgid "Month: %s"
+msgstr "Μήνας: %s"
+
+#: archive.php:47
+#, php-format
+msgid "Year: %s"
+msgstr "Έτος: %s"
+
+#: archive.php:50
+msgid "Asides"
+msgstr "Επιμέρους"
+
+#: archive.php:53
+msgid "Images"
+msgstr "Εικόνες"
+
+#: archive.php:56
+msgid "Videos"
+msgstr "Βίντεο"
+
+#: archive.php:59
+msgid "Quotes"
+msgstr "Αποσπάσματα"
+
+#: archive.php:62
+msgid "Links"
+msgstr "Σύνδεσμοι"
+
+#: archive.php:65 sidebar-left.php:39 sidebar.php:38
+msgid "Archives"
+msgstr "Αρχείο"
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Μία σκέψη για το &quot;%2$s&quot;"
+msgstr[1] "%1$s σκέψεις για το &ldquo;%2$s&rdquo;"
+
+#: comments.php:36 comments.php:56
+msgid "Comment navigation"
+msgstr "Πλοήγηση στα σχόλια"
+
+#: comments.php:37 comments.php:57
+msgid "&larr; Older Comments"
+msgstr "&larr;  Παλαιότερα σχόλια."
+
+#: comments.php:38 comments.php:58
+msgid "Newer Comments &rarr;"
+msgstr "Νεότερα Σχόλια &rarr;"
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "Τα σχόλια είναι κλειστά."
+
+#: comments.php:73
+msgid "Name"
+msgstr "Όνομα"
+
+#: comments.php:74
+msgid "Email"
+msgstr "Email"
+
+#: comments.php:75 inc/options.php:70
+msgid "Website"
+msgstr "Ιστότοπος"
+
+#: comments.php:80
+#, php-format
+msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
+msgstr "Πρέπει να <a href=\"%s\">συνδεθείτε</a> για να σχολιάσετε."
+
+#: comments.php:81
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Συνδεθήκατε ως <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title="
+"\"Αποσύνδεση από αυτό το λογαριασμό\">Αποσύνδεση;</a>"
+
+#: comments.php:86
+msgid "Leave a Comment"
+msgstr "Γράψτε ένα Σχόλιο"
+
+#: comments.php:87
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Απαντήστε στο %s"
+
+#: comments.php:88
+msgid "Cancel reply"
+msgstr "Ακύρωση απάντησης"
+
+#: comments.php:89
+msgid "Post Comment"
+msgstr "Δημοσίευση Σχολίου"
+
+#: content-link.php:29 content-page.php:20 content-single.php:21
+#: content.php:41 image.php:56
+msgid "Pages:"
+msgstr "Σελίδες:"
+
+#: content-page.php:26 content-single.php:32 image.php:78
+#: inc/template-tags.php:117 inc/template-tags.php:137
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: footer.php:50 functions.php:145
+msgid "Footer Widget 1"
+msgstr "Μονάδες Υποσέλιδου 1"
+
+#: footer.php:52 footer.php:66 footer.php:80 footer.php:94 footer.php:108
+msgid "Replace this widget content by going to <a href=\""
+msgstr ""
+"Αντικαταστήστε το περιεχόμενο αυτής της μονάδας πηγαίνοντας στο <a href=\""
+
+#: footer.php:53 footer.php:67 footer.php:81 footer.php:95 footer.php:109
+msgid "To remove or choose the number of footer widgets, go to <a href=\""
+msgstr ""
+"Για να αφαιρέσετε ή να επιλέξετε τον αριθμό των μονάδων υποσέλιδου, "
+"μεταβείτε στο <a href=\""
+
+#: footer.php:64 functions.php:153
+msgid "Footer Widget 2"
+msgstr "Μονάδες Υποσέλιδου 2"
+
+#: footer.php:78 functions.php:161
+msgid "Footer Widget 3"
+msgstr "Μονάδες Υποσέλιδου 3"
+
+#: footer.php:92 functions.php:169
+msgid "Footer Widget 4"
+msgstr "Μονάδες Υποσέλιδου 4"
+
+#: footer.php:106 functions.php:177
+msgid "Footer Widget 5"
+msgstr "Μονάδες Υποσέλιδου 5"
+
+#: functions.php:53
+msgid "Primary Menu"
+msgstr "Πρωτεύων Μενού"
+
+#: functions.php:121 inc/customizer.php:347 inc/metaboxes.php:57
+#: inc/sanitize.php:184
+msgid "Right Sidebar"
+msgstr "Δεξιά Sidebar"
+
+#: functions.php:129 inc/customizer.php:346 inc/metaboxes.php:61
+#: inc/sanitize.php:183
+msgid "Left Sidebar"
+msgstr "Αριστερή Sidebar"
+
+#: functions.php:137
+msgid "Header"
+msgstr "Κεφαλίδα"
+
+#: functions.php:256 searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: functions.php:349 inc/options.php:185
+msgid "Copyright"
+msgstr "Copyright"
+
+#: functions.php:357 inc/options.php:24 inc/options.php:65
+msgid "GeneratePress"
+msgstr "GeneratePress"
+
+#: functions.php:357
+msgid "Proudly powered by WordPress"
+msgstr "Υπερήφανα βασισμένο στο WordPress"
+
+#: functions.php:357
+msgid "WordPress"
+msgstr "WordPress"
+
+#: image.php:24
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+msgstr ""
+"Δημοσιεύθηκε στις <span class=\"entry-date\"><time class=\"entry-date\" "
+"datetime=\"%1$s\">%2$s</time></span> στο <a href=\"%3$s\" title=\"Σύνδεσμος "
+"στην εικόνα πλήρους μεγέθους\">%4$s &times; %5$s</a> στο <a href=\"%6$s\" "
+"title=\"Επιστροφή στο %7$s\" rel=\"gallery\">%8$s</a>"
+
+#: image.php:64 inc/template-tags.php:80 inc/template-tags.php:86
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: image.php:65 inc/template-tags.php:81 inc/template-tags.php:90
+msgid "Next"
+msgstr "Επόμενο"
+
+#: image.php:69
+#, php-format
+msgid ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
+"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
+"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Δημοσιεύστε ένα σχόλιο"
+"\">Δημοσιεύστε ένα σχόλιο</a> ή αφήστε ένα trackback: <a class=\"trackback-"
+"link\" href=\"%s\" title=\"Σύνδεσμος Trackback για το άρθρο σας\" rel="
+"\"trackback\">Σύνδεσμος Trackback</a>."
+
+#: image.php:71
+#, php-format
+msgid ""
+"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+msgstr ""
+"Τα σχόλια είναι κλειστά, αλλά μπορείτε να αφήσετε ένα trackback: <a class="
+"\"trackback-link\" href=\"%s\" title=\"Σύνδεσμος trackback για το άρθρο σας"
+"\" rel=\"trackback\">Σύνδεσμος Trackback</a>."
+
+#: image.php:73
+msgid ""
+"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
+"\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+"Τα trackbacks είναι κλειστά, αλλά μπορείτε να <a class=\"comment-link\" href="
+"\"#respond\" title=\"Δημοσιεύσετε ένα σχόλιο\">δημοσιεύσετε ένα σχόλιο</a>."
+
+#: image.php:75
+msgid "Both comments and trackbacks are currently closed."
+msgstr "Τα σχόλια και τα trackbacks είναι κλειστά."
+
+#: inc/addons/typography.php:285 inc/options.php:158
+msgid "Typography"
+msgstr "Τυπογραφία"
+
+#: inc/addons/typography.php:307
+msgid "Body"
+msgstr "Σώμα"
+
+#: inc/addons/typography.php:329
+msgid "Font weight"
+msgstr "Πάχος γραμματοσειράς"
+
+#: inc/addons/typography.php:353
+msgid "Text transform"
+msgstr "Μετασχηματισμός κειμένου"
+
+#: inc/addons/typography.php:376
+msgid "Font size"
+msgstr "Μέγεθος γραμματοσειράς"
+
+#: inc/addons/typography.php:393 inc/customizer.php:175 inc/customizer.php:674
+msgid "More Settings"
+msgstr "Περισσότερες Ρυθμίσεις"
+
+#: inc/addons/typography.php:396
+#, php-format
+msgid "Looking to add more typography settings?<br /> %s."
+msgstr ""
+"Επιθυμείτε να προσθέσετε περισσότερες ρυθμίσεις της τυπογραφίας;<br /> %s."
+
+#: inc/addons/typography.php:400
+msgid "Check out Generate Typography"
+msgstr "Δείτε το Generate Typography"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:34
+msgid "Default fonts"
+msgstr "Προεπιλεγμένες γραμματοσειρές"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:53
+msgid "Google fonts"
+msgstr "Γραμματοσειρές Google"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:63
+msgid "Font family"
+msgstr "Οικογένεια γραμματοσειράς"
+
+#: inc/controls.php:24
+msgid "Width"
+msgstr "Πλάτος"
+
+#: inc/controls.php:52
+msgid "Select Image"
+msgstr "Επιλέξτε Εικόνα"
+
+#: inc/controls.php:52
+msgid "Use Image"
+msgstr "Χρήση Εικόνας"
+
+#: inc/controls.php:52
+msgid "Upload"
+msgstr "Ανεβάστε"
+
+#: inc/controls.php:53
+msgid "Remove"
+msgstr "Κατάργηση"
+
+#: inc/customizer.php:22
+msgid "Header Content"
+msgstr "Περιεχόμενο Κεφαλίδας"
+
+#: inc/customizer.php:25
+msgid "Set Front Page"
+msgstr "Ορισμός Αρχικής Σελίδας"
+
+#: inc/customizer.php:28
+msgid "Set Navigation"
+msgstr "Ορισμός Πλοήγησης"
+
+#: inc/customizer.php:46
+msgid "Hide site title"
+msgstr "Απόκρυψη τίτλου ιστοτόπου"
+
+#: inc/customizer.php:65
+msgid "Hide site tagline"
+msgstr "Απόκρυψη σλόγκαν ιστοτόπου"
+
+#: inc/customizer.php:85
+msgid "Logo"
+msgstr "Λογότυπο"
+
+#: inc/customizer.php:98 inc/options.php:138
+msgid "Colors"
+msgstr "Χρώματα"
+
+#: inc/customizer.php:109
+msgid "Base Colors"
+msgstr "Βασικά Χρώματα"
+
+#: inc/customizer.php:121
+msgid "Background Color"
+msgstr "Χρώμα Φόντου"
+
+#: inc/customizer.php:126
+msgid "Text Color"
+msgstr "Χρώμα Κειμένου"
+
+#: inc/customizer.php:131
+msgid "Link Color"
+msgstr "Χρώμα Συνδέσμου"
+
+#: inc/customizer.php:136
+msgid "Link Color Hover"
+msgstr "Χρώμα Hover Συνδέσμου"
+
+#: inc/customizer.php:141
+msgid "Link Color Visited"
+msgstr "Χρώμα Συνδέσμου που έχει Επισκεφθεί"
+
+#: inc/customizer.php:178
+#, php-format
+msgid "Looking to add more color settings?<br /> %s."
+msgstr "Επιθυμείτε να προσθέσετε περισσότερες ρυθμίσεις χρώματος;<br /> %s."
+
+#: inc/customizer.php:182
+msgid "Check out Generate Colors"
+msgstr "Δείτε το Generate Colors"
+
+#: inc/customizer.php:197
+msgid "Layout"
+msgstr "Διάταξη"
+
+#: inc/customizer.php:199
+msgid "Allows you to edit your theme's layout."
+msgstr "Σας επιτρέπει να επεξεργαστείτε τη διάταξη του θέματος σας."
+
+#: inc/customizer.php:219
+msgid "Container Width"
+msgstr "Πλάτος Δοχείου"
+
+#: inc/customizer.php:246
+msgid "Header Layout"
+msgstr "Διάταξη Κεφαλίδας"
+
+#: inc/customizer.php:249 inc/customizer.php:312 inc/customizer.php:577
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:239
+msgid "Fluid / Full Width"
+msgstr "Ρευστό / Πλήρες Πλάτος"
+
+#: inc/customizer.php:250 inc/customizer.php:313 inc/customizer.php:578
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:240
+msgid "Contained"
+msgstr "Περιέχεται"
+
+#: inc/customizer.php:277
+msgid "Header Alignment"
+msgstr "Στοίχιση Κεφαλίδας"
+
+#: inc/customizer.php:280 inc/customizer.php:378 inc/sanitize.php:145
+msgid "Left"
+msgstr "Αριστερά"
+
+#: inc/customizer.php:281 inc/customizer.php:379 inc/sanitize.php:146
+msgid "Center"
+msgstr "Κέντρο"
+
+#: inc/customizer.php:282 inc/customizer.php:380 inc/sanitize.php:147
+msgid "Right"
+msgstr "Δεξιά"
+
+#: inc/customizer.php:309
+msgid "Navigation Layout"
+msgstr "Διάταξη Πλοήγησης"
+
+#: inc/customizer.php:340
+msgid "Navigation Position"
+msgstr "Θέση Πλοήγησης"
+
+#: inc/customizer.php:343 inc/sanitize.php:180
+msgid "Below Header"
+msgstr "Κάτω από την Κεφαλίδα"
+
+#: inc/customizer.php:344 inc/sanitize.php:181
+msgid "Above Header"
+msgstr "Πάνω από την Κεφαλίδα"
+
+#: inc/customizer.php:345 inc/sanitize.php:182
+msgid "Float Right"
+msgstr "Δεξιά Πλεύση"
+
+#: inc/customizer.php:348 inc/sanitize.php:185
+msgid "No Navigation"
+msgstr "Χωρίς Πλοήγηση"
+
+#: inc/customizer.php:375
+msgid "Navigation Alignment"
+msgstr "Στοίχιση Πλοήγησης"
+
+#: inc/customizer.php:407
+msgid "Navigation Search"
+msgstr "Αναζήτηση Πλοήγησης"
+
+#: inc/customizer.php:410 inc/sanitize.php:163
+msgid "Enabled"
+msgstr "Ενεργό"
+
+#: inc/customizer.php:411 inc/sanitize.php:164
+msgid "Disabled"
+msgstr "Ανενεργό"
+
+#: inc/customizer.php:438
+msgid "Content Layout"
+msgstr "Διάταξη Περιεχομένου"
+
+#: inc/customizer.php:441 inc/sanitize.php:201
+msgid "Separate Containers"
+msgstr "Ξεχωριστά Δοχεία"
+
+#: inc/customizer.php:442 inc/sanitize.php:202
+msgid "One Container"
+msgstr "Ένα Δοχείο"
+
+#: inc/customizer.php:469 inc/metaboxes.php:20
+msgid "Sidebar Layout"
+msgstr "Διάταξη Sidebar"
+
+#: inc/customizer.php:472 inc/customizer.php:507 inc/customizer.php:542
+#: inc/sanitize.php:218
+msgid "Sidebar / Content"
+msgstr "Sidebar / Περιεχόμενο"
+
+#: inc/customizer.php:473 inc/customizer.php:508 inc/customizer.php:543
+#: inc/sanitize.php:219
+msgid "Content / Sidebar"
+msgstr "Περιεχόμενο / Sidebar"
+
+#: inc/customizer.php:474 inc/customizer.php:509 inc/customizer.php:544
+#: inc/metaboxes.php:67 inc/sanitize.php:220
+msgid "Content (no sidebars)"
+msgstr "Περιεχόμενο (χωρίς πλαϊνές μπάρες)"
+
+#: inc/customizer.php:475 inc/customizer.php:510 inc/customizer.php:545
+#: inc/sanitize.php:221
+msgid "Sidebar / Content / Sidebar"
+msgstr "Sidebar / Περιεχόμενο / Sidebar"
+
+#: inc/customizer.php:476 inc/customizer.php:511 inc/customizer.php:546
+#: inc/sanitize.php:222
+msgid "Sidebar / Sidebar / Content"
+msgstr "Sidebar / Sidebar / Περιεχόμενο"
+
+#: inc/customizer.php:477 inc/customizer.php:512 inc/customizer.php:547
+#: inc/sanitize.php:223
+msgid "Content / Sidebar / Sidebar"
+msgstr "Περιεχόμενο / Sidebar / Sidebar"
+
+#: inc/customizer.php:504
+msgid "Blog Sidebar Layout"
+msgstr "Διάταξη Sidebar Ιστολογίου"
+
+#: inc/customizer.php:539
+msgid "Single Post Sidebar Layout"
+msgstr "Διάταξη Sidebar Άρθρου"
+
+#: inc/customizer.php:574
+msgid "Footer Layout"
+msgstr "Διάταξη Υποσέλιδου"
+
+#: inc/customizer.php:605 inc/metaboxes.php:125
+msgid "Footer Widgets"
+msgstr "Μονάδες Υποσέλιδου"
+
+#: inc/customizer.php:627 inc/options.php:203
+msgid "Blog"
+msgstr "Ιστολόγιο"
+
+#: inc/customizer.php:653
+msgid "Blog Post Content"
+msgstr "Περιεχόμενο Άρθρου"
+
+#: inc/customizer.php:656 inc/sanitize.php:277
+msgid "Show full post"
+msgstr "Προβολή πλήρους άρθρου"
+
+#: inc/customizer.php:657 inc/sanitize.php:278
+msgid "Show excerpt"
+msgstr "Προβολή αποσπάσματος"
+
+#: inc/customizer.php:677
+#, php-format
+msgid "Looking to add more blog settings?<br /> %s."
+msgstr "Επιθυμείτε να προσθέσετε περισσότερες ρυθμίσεις ιστολογίου;<br /> %s."
+
+#: inc/customizer.php:681
+msgid "Check out Generate Blog"
+msgstr "Δείτε το Generate Blog"
+
+#: inc/customizer.php:702
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: inc/customizer.php:738
+msgid "Addon available"
+msgstr "Διαθέσιμο πρόσθετο"
+
+#: inc/customizer.php:796
+msgid "Addons Available! Take a look"
+msgstr "Διαθέσιμα Πρόσθετα! Ρίξτε μια ματιά"
+
+#: inc/metaboxes.php:55
+msgid "Global Layout Settings"
+msgstr "Ρυθμίσεις Καθολικής Διάταξης"
+
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
+msgid "Content"
+msgstr "Περιεχόμενο"
+
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: inc/metaboxes.php:65
+msgid "No Sidebars"
+msgstr "Χωρίς Sidebars"
+
+#: inc/metaboxes.php:69
+msgid "Both Sidebars"
+msgstr "Αμφότερα Sidebars"
+
+#: inc/metaboxes.php:73
+msgid "Both Sidebars on Left"
+msgstr "Αμφότερα Sidebars στα Αριστερά"
+
+#: inc/metaboxes.php:77
+msgid "Both Sidebars on Right"
+msgstr "Αμφότερα Sidebars στα Δεξιά"
+
+#: inc/metaboxes.php:160
+msgid "Global Footer Widget Settings"
+msgstr "Καθολικές Ρυθμίσεις Μονάδων Υποσέλιδου"
+
+#: inc/metaboxes.php:162 inc/metaboxes.php:164
+msgid "0 Widgets"
+msgstr "0 Μονάδες"
+
+#: inc/metaboxes.php:166 inc/metaboxes.php:168
+msgid "1 Widget"
+msgstr "1 Μονάδα"
+
+#: inc/metaboxes.php:170 inc/metaboxes.php:172
+msgid "2 Widgets"
+msgstr "2 Μονάδες"
+
+#: inc/metaboxes.php:174 inc/metaboxes.php:176
+msgid "3 Widgets"
+msgstr "3 Μονάδες"
+
+#: inc/metaboxes.php:178 inc/metaboxes.php:180
+msgid "4 Widgets"
+msgstr "4 Μονάδες"
+
+#: inc/metaboxes.php:182 inc/metaboxes.php:184
+msgid "5 Widgets"
+msgstr "5 Μονάδες"
+
+#: inc/navigation.php:88
+msgid "Menu"
+msgstr "Μενού"
+
+#: inc/navigation.php:89
+msgid "Skip to content"
+msgstr "Μετάβαση στο περιεχόμενο"
+
+#: inc/options.php:68
+msgid "Version"
+msgstr "Έκδοση"
+
+#: inc/options.php:69
+msgid "Author"
+msgstr "Συγγραφέας"
+
+#: inc/options.php:75
+msgid "Customize"
+msgstr "Προσαρμογή"
+
+#: inc/options.php:77 inc/options.php:131
+msgid "Add-ons"
+msgstr "Πρόσθετα"
+
+#: inc/options.php:79
+msgid ""
+"Please help support development of the GeneratePress by buying me a coffee :)"
+msgstr ""
+"Παρακαλώ βοηθήστε στην ανάπτυξη του GeneratePress αγοράζοντας μου έναν "
+"καφέ :)"
+
+#: inc/options.php:79
+msgid "Buy me a coffee :)"
+msgstr "Αγοράστε μου έναν καφέ :)"
+
+#: inc/options.php:87
+msgid "Add-on Updates"
+msgstr "Αναβαθμίσεις Προσθέτων"
+
+#: inc/options.php:92
+msgid "Looks like you don't have any Add-ons! <a href=\""
+msgstr "Φαίνεται ότι δεν έχετε Πρόσθετα! <a href=\""
+
+#: inc/options.php:111
+msgid "Delete Customizer Settings"
+msgstr "Διαγραφή Ρυθμίσεων Προσαρμογέα"
+
+#: inc/options.php:114
+msgid ""
+"<strong>Warning:</strong> Clicking this button will delete your settings set "
+"in the <a href=\""
+msgstr ""
+"<strong>Προσοχή:</strong> Πατώντας αυτό το κουμπί θα διαγραφούν οι ρυθμίσεις "
+"που έχετε ορίσει στο <a href=\""
+
+#: inc/options.php:115
+msgid "You may want to export your settings before deleting them forever."
+msgstr ""
+"Πιθανόν να θέλετε να εξάγετε τις ρυθμίσεις σας πριν από την οριστική "
+"διαγραφή τους."
+
+#: inc/options.php:120
+msgid "Delete Default Customizer Settings"
+msgstr "Διαγραφή Προεπιλεγμένων Ρυθμίσεων Προσαρμογέα"
+
+#: inc/options.php:167
+msgid "Page Header"
+msgstr "Κεφαλίδα Σελίδας"
+
+#: inc/options.php:176
+msgid "Import / Export"
+msgstr "Εισαγωγή / Εξαγωγή"
+
+#: inc/options.php:194
+msgid "Disable Elements"
+msgstr "Απενεργοποίηση Στοιχείων"
+
+#: inc/options.php:212
+msgid "Hooks"
+msgstr "Άγκιστρα"
+
+#: inc/options.php:221
+msgid "Spacing"
+msgstr "Απόσταση"
+
+#: inc/options.php:230
+msgid "Backgrounds"
+msgstr "Φόντα"
+
+#: inc/options.php:239
+msgid "Secondary Nav"
+msgstr "Δευτερεύουσα Πλοήγηση"
+
+#: inc/options.php:253 inc/options.php:260
+msgid "Not activated."
+msgstr "Απενεργοποιημένο."
+
+#: inc/options.php:255 inc/options.php:262
+msgid "Activated."
+msgstr "Ενεργοποιημένο."
+
+#: inc/options.php:310
+msgid "Settings saved."
+msgstr "Οι ρυθμίσεις αποθηκεύθηκαν."
+
+#: inc/options.php:314
+msgid "Import successful."
+msgstr "Εισαγωγή επιτυχής."
+
+#: inc/options.php:318
+msgid "Settings removed."
+msgstr "Οι ρυθμίσεις αφαιρέθηκαν."
+
+#: inc/template-tags.php:39
+msgid "&larr; Previous"
+msgstr "&larr; Προηγούμενη"
+
+#: inc/template-tags.php:40
+msgid "Next &rarr;"
+msgstr "Επόμενη &rarr;"
+
+#: inc/template-tags.php:76
+msgid "Post navigation"
+msgstr "Πλοήγηση άρθρων"
+
+#: inc/template-tags.php:86
+msgid "Older posts"
+msgstr "Παλαιότερα άρθρα"
+
+#: inc/template-tags.php:90
+msgid "Newer posts"
+msgstr "Νεότερα άρθρα"
+
+#: inc/template-tags.php:117
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/template-tags.php:128
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+#: inc/template-tags.php:134
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr "%1$s στο %2$s"
+
+#: inc/template-tags.php:151
+msgid "Your comment is awaiting moderation."
+msgstr "Το σχόλιό σας αναμένει έγκριση."
+
+#: inc/template-tags.php:239
+#, php-format
+msgid ""
+"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+msgstr ""
+"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+
+#: inc/template-tags.php:246
+msgid "by"
+msgstr "από την/τον"
+
+#: inc/template-tags.php:248
+#, php-format
+msgid "View all posts by %s"
+msgstr "Προβολή όλων των δημοσιεύσεων από την/τον %s"
+
+#: inc/template-tags.php:261 inc/template-tags.php:271
+msgid "Read more"
+msgstr "Διαβάστε περισσότερα"
+
+#: inc/template-tags.php:378
+msgctxt "label"
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: inc/template-tags.php:424 inc/template-tags.php:432
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ","
+
+#: inc/template-tags.php:427
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr "Κατηγορίες"
+
+#: inc/template-tags.php:435
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr "Ετικέτες"
+
+#: inc/template-tags.php:446
+msgctxt "Used before full size attachment link."
+msgid "Full size"
+msgstr "Πλήρες μέγεθος"
+
+#: inc/template-tags.php:455
+msgid "Leave a comment"
+msgstr "Γράψτε ένα Σχόλιο"
+
+#: inc/template-tags.php:455
+msgid "1 Comment"
+msgstr "1 Σχόλιο"
+
+#: inc/template-tags.php:455
+msgid "% Comments"
+msgstr "% Σχόλια"
+
+#: no-results.php:15
+msgid "Nothing Found"
+msgstr "Δεν βρέθηκε κάτι"
+
+#: no-results.php:22
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Έτοιμοι για τη δημοσίευση του πρώτου σας άρθρου; <a href=\"%1$s\">Ξεκινήστε "
+"εδώ</a> ."
+
+#: no-results.php:26
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Λυπούμαστε, αλλά δεν υπάρχουν οι όροι της αναζήτησης σας. Παρακαλούμε "
+"δοκιμάστε ξανά με διαφορετικές λέξεις-κλειδιά."
+
+#: no-results.php:31
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Φαίνεται ότι δεν μπορούμε να βρούμε αυτό που ψάχνετε. Ίσως η αναζήτηση "
+"μπορεί να βοηθήσει."
+
+#: search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Αποτελέσματα Αναζήτησης για: %s"
+
+#: searchform.php:10 searchform.php:11
+msgctxt "label"
+msgid "Search for:"
+msgstr "Αναζήτηση για:"
+
+#: searchform.php:11
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Αναζήτηση &hellip;"
+
+#: sidebar-left.php:46 sidebar.php:45
+msgid "Meta"
+msgstr "Meta"

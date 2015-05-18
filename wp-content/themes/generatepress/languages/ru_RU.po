@@ -1,0 +1,938 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GeneratePress\n"
+"POT-Creation-Date: 2014-10-14 17:50-0800\n"
+"PO-Revision-Date: 2015-02-04 21:51+0300\n"
+"Last-Translator: mikei <mmich@live.ca>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru_RU\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Страница не найдена."
+
+#: 404.php:22
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr "По этому адресу ничего нет. Попробуйте одну из ссылок ниже или поиск."
+
+#: archive.php:32
+#, php-format
+msgid "About %s"
+msgstr "Об авторе %s"
+
+#: archive.php:40
+#, php-format
+msgid "Day: %s"
+msgstr "День: %s"
+
+#: archive.php:43
+#, php-format
+msgid "Month: %s"
+msgstr "Месяц: %s"
+
+#: archive.php:46
+#, php-format
+msgid "Year: %s"
+msgstr "Год: %s"
+
+#: archive.php:49
+msgid "Asides"
+msgstr "Заметки"
+
+#: archive.php:52
+msgid "Images"
+msgstr "Изображения"
+
+#: archive.php:55
+msgid "Videos"
+msgstr "Видео"
+
+#: archive.php:58
+msgid "Quotes"
+msgstr "Цитаты"
+
+#: archive.php:61
+msgid "Links"
+msgstr "Ссылки"
+
+#: archive.php:64 sidebar-left.php:23 sidebar.php:23
+msgid "Archives"
+msgstr "Архивы"
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Один комментарий на &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s комментарий на &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s комментариев на &ldquo;%2$s&rdquo;"
+
+#: comments.php:36 comments.php:56
+msgid "Comment navigation"
+msgstr "Навигация по комментариям"
+
+#: comments.php:37 comments.php:57
+msgid "&larr; Older Comments"
+msgstr "&larr; Предыдущие комментарии"
+
+#: comments.php:38 comments.php:58
+msgid "Newer Comments &rarr;"
+msgstr "Новые комментарии &rarr;"
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "Обсуждение закрыто"
+
+#: comments.php:73
+msgid "Name"
+msgstr "Имя"
+
+#: comments.php:74 inc/addons.php:102
+msgid "Email"
+msgstr "Email"
+
+#: comments.php:75 inc/options.php:75
+msgid "Website"
+msgstr "Вебсайт"
+
+#: comments.php:80
+#, php-format
+msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
+msgstr "Вы должны <a href=\"%1$s\">войти в систему</a>, чтобы комментировать."
+
+#: comments.php:81
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Авторизован, как <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Выйти "
+"из системы\">Выйти?</a>"
+
+#: comments.php:86
+msgid "Leave a Comment"
+msgstr "Оставить комментарий"
+
+#: comments.php:87
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Ответить %s"
+
+#: comments.php:88
+msgid "Cancel reply"
+msgstr "Отменить ответ"
+
+#: comments.php:89
+msgid "Post Comment"
+msgstr "Отправить комментарий"
+
+#: content-page.php:20 content-single.php:22 content.php:36 image.php:56
+msgid "Pages:"
+msgstr "Страницы:"
+
+#: content-page.php:26 content-single.php:54 image.php:78
+#: inc/template-tags.php:119 inc/template-tags.php:141
+msgid "Edit"
+msgstr "Редактировать"
+
+#. translators: used between list items, there is a space after the comma
+#: content-single.php:31 content-single.php:34 content.php:47 content.php:57
+msgid ", "
+msgstr ","
+
+#: content.php:51 content.php:61
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: content.php:68
+msgid "Leave a comment"
+msgstr "Оставить комментарий"
+
+#: content.php:68
+msgid "1 Comment"
+msgstr "1 комментарий"
+
+#: content.php:68
+msgid "% Comments"
+msgstr "% комментариев"
+
+#: footer.php:50 functions.php:138
+msgid "Footer Widget 1"
+msgstr "Виджет 1 - Футер"
+
+#: footer.php:52 footer.php:66 footer.php:80 footer.php:94 footer.php:108
+msgid "Replace this widget content by going to <a href=\""
+msgstr "Чтобы заменить содержание виджета, следуйте <a href=\""
+
+#: footer.php:53 footer.php:67 footer.php:81 footer.php:95 footer.php:109
+msgid "To remove or choose the number of footer widgets, go to <a href=\""
+msgstr "Чтобы выбрать количество виджетов, следуйте <a href=\""
+
+#: footer.php:64 functions.php:146
+msgid "Footer Widget 2"
+msgstr "Виджет 2 - Футер"
+
+#: footer.php:78 functions.php:154
+msgid "Footer Widget 3"
+msgstr "Виджет 3 - Футер"
+
+#: footer.php:92 functions.php:162
+msgid "Footer Widget 4"
+msgstr "Виджет 4 - Футер"
+
+#: footer.php:106 functions.php:170
+msgid "Footer Widget 5"
+msgstr "Виджет 5 - Футер"
+
+#: functions.php:52
+msgid "Primary Menu"
+msgstr "Основное меню"
+
+#: functions.php:114 inc/customizer.php:347 inc/metaboxes.php:49
+#: inc/sanitize.php:165
+msgid "Right Sidebar"
+msgstr "Правая колонка"
+
+#: functions.php:122 inc/customizer.php:346 inc/metaboxes.php:53
+#: inc/sanitize.php:164
+msgid "Left Sidebar"
+msgstr "Левая колонка"
+
+#: functions.php:130
+msgid "Header"
+msgstr "Хедер"
+
+#: functions.php:338 inc/options.php:120
+msgid "Copyright"
+msgstr "Copyright"
+
+#: functions.php:346 inc/options.php:24 inc/options.php:47
+msgid "GeneratePress"
+msgstr "GeneratePress"
+
+#: functions.php:346
+msgid "Proudly powered by WordPress"
+msgstr "Работает на WordPress"
+
+#: functions.php:346
+msgid "WordPress"
+msgstr "WordPress"
+
+#: image.php:24
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+msgstr ""
+"Опубликовано <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+
+#: image.php:64 inc/template-tags.php:82 inc/template-tags.php:88
+msgid "Previous"
+msgstr "Предыдущее"
+
+#: image.php:65 inc/template-tags.php:83 inc/template-tags.php:92
+msgid "Next"
+msgstr "Следующее"
+
+#: image.php:69
+#, php-format
+msgid ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
+"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
+"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment"
+"\">Отправить комментарий</a> или трекбек: <a class=\"trackback-link\" href="
+"\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback "
+"URL</a>."
+
+#: image.php:71
+#, php-format
+msgid ""
+"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+msgstr ""
+"Обсуждение закрыто, но Вы можете оставить трекбек: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+
+#: image.php:73
+msgid ""
+"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
+"\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+"Трекбеки закрыты, но Вы можете <a class=\"comment-link\" href=\"#respond\" "
+"title=\"Post a comment\">комментировать</a>."
+
+#: image.php:75
+msgid "Both comments and trackbacks are currently closed."
+msgstr "И коммментарии и трекбеки закрыты"
+
+#: inc/addons.php:81
+msgid "verified"
+msgstr "Проверено"
+
+#: inc/addons.php:84
+msgid "unverified"
+msgstr "Не проверено"
+
+#: inc/addons.php:87
+msgid "Activate"
+msgstr "Активировать"
+
+#: inc/addons.php:90
+msgid "Activate All"
+msgstr "Активировать все"
+
+#: inc/addons.php:93
+msgid "Deactivate"
+msgstr "Деактивировать"
+
+#: inc/addons.php:96
+msgid ""
+"Please activate the email you purchased your addons with below in order to "
+"receive future updates."
+msgstr ""
+"Пожалуйста активируйте емэйл, с которым Вы приобрели эти аддоны, чтобы "
+"получать обновления"
+
+#: inc/addons.php:99
+msgid "Addon"
+msgstr "Аддон"
+
+#: inc/addons.php:105
+msgid "Status"
+msgstr "Статус"
+
+#: inc/addons.php:108
+msgid "Action"
+msgstr "Действие"
+
+#: inc/addons.php:111
+msgid "Verify Email"
+msgstr "Подтвердить емэйл"
+
+#: inc/addons.php:114
+msgid "Refresh"
+msgstr "Обновить"
+
+#: inc/addons.php:117 inc/options.php:73
+msgid "Version"
+msgstr "Версия"
+
+#: inc/addons.php:120
+msgid "Disable"
+msgstr "Отключить"
+
+#: inc/addons.php:123
+msgid "Enable"
+msgstr "Включить"
+
+#: inc/addons/typography.php:271 inc/options.php:93
+msgid "Typography"
+msgstr "Типографика"
+
+#: inc/addons/typography.php:293
+msgid "Body"
+msgstr "Body"
+
+#: inc/addons/typography.php:315
+msgid "Font weight"
+msgstr "Вес шрифта"
+
+#: inc/addons/typography.php:339
+msgid "Text transform"
+msgstr "Трансформация шрифта"
+
+#: inc/addons/typography.php:362
+msgid "Font size"
+msgstr "размер шрифта"
+
+#: inc/addons/typography.php:379 inc/customizer.php:175 inc/customizer.php:674
+msgid "More Settings"
+msgstr "Больше установок"
+
+#: inc/addons/typography.php:382
+#, php-format
+msgid "Looking to add more typography settings?<br /> %s."
+msgstr "Хотите больше установок типографики?<br /> %s."
+
+#: inc/addons/typography.php:386
+msgid "Check out Generate Typography"
+msgstr "Посмотреть Generate Typography"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:49
+msgid "Font family"
+msgstr "Семейство шрифта"
+
+#: inc/controls.php:24
+msgid "Width"
+msgstr "Ширина"
+
+#: inc/controls.php:52
+msgid "Select Image"
+msgstr "Выбрать изображение"
+
+#: inc/controls.php:52
+msgid "Use Image"
+msgstr "использовать изображение"
+
+#: inc/controls.php:52
+msgid "Upload"
+msgstr "Загрузить"
+
+#: inc/controls.php:53
+msgid "Remove"
+msgstr "Удалить"
+
+#: inc/customizer.php:22
+msgid "Header Content"
+msgstr "Содержание хедера"
+
+#: inc/customizer.php:25
+msgid "Set Front Page"
+msgstr "Установки главой страницы"
+
+#: inc/customizer.php:28
+msgid "Set Navigation"
+msgstr "Установки навигации"
+
+#: inc/customizer.php:46
+msgid "Hide site title"
+msgstr "Спрятать заголовок сайта"
+
+#: inc/customizer.php:65
+msgid "Hide site tagline"
+msgstr "Спрятать слоган"
+
+#: inc/customizer.php:85
+msgid "Logo"
+msgstr "Логотип"
+
+#: inc/customizer.php:98 inc/options.php:83
+msgid "Colors"
+msgstr "Цвета"
+
+#: inc/customizer.php:109
+msgid "Base Colors"
+msgstr "Базовый цвет"
+
+#: inc/customizer.php:121
+msgid "Background Color"
+msgstr "Цвет фона"
+
+#: inc/customizer.php:126
+msgid "Text Color"
+msgstr "Цвет текста"
+
+#: inc/customizer.php:131
+msgid "Link Color"
+msgstr "Цвет ссылок"
+
+#: inc/customizer.php:136
+msgid "Link Color Hover"
+msgstr "Цвет ссылок при наведении"
+
+#: inc/customizer.php:141
+msgid "Link Color Visited"
+msgstr "Цвет посещенной ссылки"
+
+#: inc/customizer.php:178
+#, php-format
+msgid "Looking to add more color settings?<br /> %s."
+msgstr "Хотите больше установок цвета?<br /> %s."
+
+#: inc/customizer.php:182
+msgid "Check out Generate Colors"
+msgstr "Посмотреть Generate Colors"
+
+#: inc/customizer.php:197
+msgid "Layout"
+msgstr "Компоновка"
+
+#: inc/customizer.php:199
+msgid "Allows you to edit your theme's layout."
+msgstr "Эта секция позволяет изменять компоновку сайта"
+
+#: inc/customizer.php:219
+msgid "Container Width"
+msgstr "Ширина контейнера"
+
+#: inc/customizer.php:246
+msgid "Header Layout"
+msgstr "Компоновка хедера"
+
+#: inc/customizer.php:249 inc/customizer.php:312 inc/customizer.php:577
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:220
+msgid "Fluid / Full Width"
+msgstr "Полная ширина"
+
+#: inc/customizer.php:250 inc/customizer.php:313 inc/customizer.php:578
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:221
+msgid "Contained"
+msgstr "Ограниченный"
+
+#: inc/customizer.php:277
+msgid "Header Alignment"
+msgstr "Выравнивание содержания хедера"
+
+#: inc/customizer.php:280 inc/customizer.php:378 inc/sanitize.php:126
+msgid "Left"
+msgstr "Слева"
+
+#: inc/customizer.php:281 inc/customizer.php:379 inc/sanitize.php:127
+msgid "Center"
+msgstr "По центру"
+
+#: inc/customizer.php:282 inc/customizer.php:380 inc/sanitize.php:128
+msgid "Right"
+msgstr "Справа"
+
+#: inc/customizer.php:309
+msgid "Navigation Layout"
+msgstr "Компоновка меню"
+
+#: inc/customizer.php:340
+msgid "Navigation Position"
+msgstr "Расположение меню"
+
+#: inc/customizer.php:343 inc/sanitize.php:161
+msgid "Below Header"
+msgstr "Под хедером"
+
+#: inc/customizer.php:344 inc/sanitize.php:162
+msgid "Above Header"
+msgstr "Над хедером"
+
+#: inc/customizer.php:345 inc/sanitize.php:163
+msgid "Float Right"
+msgstr "Справа"
+
+#: inc/customizer.php:348 inc/sanitize.php:166
+msgid "No Navigation"
+msgstr "Нигде"
+
+#: inc/customizer.php:375
+msgid "Navigation Alignment"
+msgstr "Выранивание меню"
+
+#: inc/customizer.php:407
+msgid "Navigation Search"
+msgstr "Поиск в меню"
+
+#: inc/customizer.php:410 inc/sanitize.php:144
+msgid "Enabled"
+msgstr "Включить"
+
+#: inc/customizer.php:411 inc/sanitize.php:145
+msgid "Disabled"
+msgstr "Отключить"
+
+#: inc/customizer.php:438
+msgid "Content Layout"
+msgstr "Компоновка содержания"
+
+#: inc/customizer.php:441 inc/sanitize.php:182
+msgid "Separate Containers"
+msgstr "Отдельные контейнеры"
+
+#: inc/customizer.php:442 inc/sanitize.php:183
+msgid "One Container"
+msgstr "Один контейнер"
+
+#: inc/customizer.php:469 inc/metaboxes.php:12
+msgid "Sidebar Layout"
+msgstr "Расположение боковых колонок"
+
+#: inc/customizer.php:472 inc/customizer.php:507 inc/customizer.php:542
+#: inc/sanitize.php:199
+msgid "Sidebar / Content"
+msgstr "Колонка / Контент"
+
+#: inc/customizer.php:473 inc/customizer.php:508 inc/customizer.php:543
+#: inc/sanitize.php:200
+msgid "Content / Sidebar"
+msgstr "Контент / Колонка"
+
+#: inc/customizer.php:474 inc/customizer.php:509 inc/customizer.php:544
+#: inc/metaboxes.php:59 inc/sanitize.php:201
+msgid "Content (no sidebars)"
+msgstr "Контент на полную ширину"
+
+#: inc/customizer.php:475 inc/customizer.php:510 inc/customizer.php:545
+#: inc/sanitize.php:202
+msgid "Sidebar / Content / Sidebar"
+msgstr "Колонка / Контент / Колонка"
+
+#: inc/customizer.php:476 inc/customizer.php:511 inc/customizer.php:546
+#: inc/sanitize.php:203
+msgid "Sidebar / Sidebar / Content"
+msgstr "Колонка / Колонка / Контент"
+
+#: inc/customizer.php:477 inc/customizer.php:512 inc/customizer.php:547
+#: inc/sanitize.php:204
+msgid "Content / Sidebar / Sidebar"
+msgstr "Контент / Колонка / Колонка"
+
+#: inc/customizer.php:504
+msgid "Blog Sidebar Layout"
+msgstr "Расположение боковых колонок блога"
+
+#: inc/customizer.php:539
+msgid "Single Post Sidebar Layout"
+msgstr "Боковые панели статьи"
+
+#: inc/customizer.php:574
+msgid "Footer Layout"
+msgstr "Компоновка футера"
+
+#: inc/customizer.php:605 inc/metaboxes.php:109
+msgid "Footer Widgets"
+msgstr "Виджеты футера"
+
+#: inc/customizer.php:627 inc/options.php:138
+msgid "Blog"
+msgstr "Блог"
+
+#: inc/customizer.php:653
+msgid "Blog Post Content"
+msgstr "Содержание статьи блога"
+
+#: inc/customizer.php:656 inc/sanitize.php:258
+msgid "Show full post"
+msgstr "Показать полную статью"
+
+#: inc/customizer.php:657 inc/sanitize.php:259
+msgid "Show excerpt"
+msgstr "Показать выдержку"
+
+#: inc/customizer.php:677
+#, php-format
+msgid "Looking to add more blog settings?<br /> %s."
+msgstr "Хотите больше возможностей блога?<br /> %s."
+
+#: inc/customizer.php:681
+msgid "Check out Generate Blog"
+msgstr "Посмотреть Generate Blog"
+
+#: inc/customizer.php:702
+msgid "Default"
+msgstr "По умолчанию"
+
+#: inc/customizer.php:738
+msgid "Addon available"
+msgstr "Есть аддон"
+
+#: inc/customizer.php:788
+msgid "Addons Available! Take a look"
+msgstr "Есть аддон! Посмотреть"
+
+#: inc/extras.php:407
+#, php-format
+msgid "Page %s"
+msgstr "Страница %s"
+
+#: inc/metaboxes.php:47
+msgid "Global Layout Settings"
+msgstr "Компоновка всего сайта"
+
+#: inc/metaboxes.php:51 inc/metaboxes.php:55 inc/metaboxes.php:63
+#: inc/metaboxes.php:67 inc/metaboxes.php:71
+msgid "Content"
+msgstr "Контент"
+
+#: inc/metaboxes.php:51 inc/metaboxes.php:55 inc/metaboxes.php:63
+#: inc/metaboxes.php:67 inc/metaboxes.php:71
+msgid "Sidebar"
+msgstr "Боковая колонка"
+
+#: inc/metaboxes.php:57
+msgid "No Sidebars"
+msgstr "Без боковых колонок"
+
+#: inc/metaboxes.php:61
+msgid "Both Sidebars"
+msgstr "Обе колонки"
+
+#: inc/metaboxes.php:65
+msgid "Both Sidebars on Left"
+msgstr "Обе колонки слева"
+
+#: inc/metaboxes.php:69
+msgid "Both Sidebars on Right"
+msgstr "Обе колонки справа"
+
+#: inc/metaboxes.php:144
+msgid "Global Footer Widget Settings"
+msgstr "Расположение виджетов в футере "
+
+#: inc/metaboxes.php:146 inc/metaboxes.php:148
+msgid "0 Widgets"
+msgstr "0 виджетов"
+
+#: inc/metaboxes.php:150 inc/metaboxes.php:152
+msgid "1 Widget"
+msgstr "1 виджет"
+
+#: inc/metaboxes.php:154 inc/metaboxes.php:156
+msgid "2 Widgets"
+msgstr "2 виджета"
+
+#: inc/metaboxes.php:158 inc/metaboxes.php:160
+msgid "3 Widgets"
+msgstr "3 виджета"
+
+#: inc/metaboxes.php:162 inc/metaboxes.php:164
+msgid "4 Widgets"
+msgstr "4 виджета"
+
+#: inc/metaboxes.php:166 inc/metaboxes.php:168
+msgid "5 Widgets"
+msgstr "5 виджетов"
+
+#: inc/navigation.php:88
+msgid "Menu"
+msgstr "Меню"
+
+#: inc/navigation.php:89
+msgid "Skip to content"
+msgstr "Перейти к контенту"
+
+#: inc/options.php:57
+msgid "Import successful."
+msgstr "Импорт успешен"
+
+#: inc/options.php:61
+msgid "Settings removed."
+msgstr "Установки удалены"
+
+#: inc/options.php:65
+msgid "Settings saved."
+msgstr "Установки сохранены"
+
+#: inc/options.php:70
+msgid "Information"
+msgstr "Информация"
+
+#: inc/options.php:74
+msgid "Author"
+msgstr "Автор"
+
+#: inc/options.php:78 inc/options.php:222
+msgid "Addons"
+msgstr "Аддоны"
+
+#: inc/options.php:102
+msgid "Page Header"
+msgstr "Хедер страницы"
+
+#: inc/options.php:111
+msgid "Import / Export"
+msgstr "Импорт / экспорт"
+
+#: inc/options.php:129
+msgid "Disable Elements"
+msgstr "Отключить элементы"
+
+#: inc/options.php:147
+msgid "Hooks"
+msgstr "Hooks"
+
+#: inc/options.php:156
+msgid "Spacing"
+msgstr "Расстояния"
+
+#: inc/options.php:165
+msgid "Backgrounds"
+msgstr "Фоны"
+
+#: inc/options.php:174
+msgid "Secondary Nav"
+msgstr "Дполнительное меню"
+
+#: inc/options.php:188 inc/options.php:201
+msgid "Not activated."
+msgstr "Не активировано."
+
+#: inc/options.php:192 inc/options.php:205
+msgid "Activated and unverified. Please activate below."
+msgstr "Активировано, но не подтверждено. Пожалуйста подтвердите. "
+
+#: inc/options.php:194 inc/options.php:207
+msgid "Activated and verified."
+msgstr "Активировано и подтверждено."
+
+#: inc/options.php:220
+msgid "Customizer"
+msgstr "Настройка"
+
+#: inc/options.php:224
+msgid ""
+"Please help support development of the GeneratePress by buying me a coffee :)"
+msgstr "Пожалуйста поддержите разработку GeneratePress кофем :)"
+
+#: inc/options.php:224
+msgid "Buy me a coffee :)"
+msgstr "Купить мне кофе :)"
+
+#: inc/options.php:232
+msgid "Addon Activation"
+msgstr "Активация аддона"
+
+#: inc/options.php:237
+msgid "Looks like you don't have any Addons! <a href=\""
+msgstr "Похоже у вас еще нет аддонов! <a href=\""
+
+#: inc/options.php:254
+msgid "Delete Customizer Settings"
+msgstr "Удалить все настройки"
+
+#: inc/options.php:257
+msgid ""
+"<strong>Warning:</strong> Clicking this button will delete your settings set "
+"in the <a href=\""
+msgstr ""
+"<strong>Предупреждение:</strong> Нажатие этой кнопки удалит все ваши "
+"настройки <a href=\""
+
+#: inc/options.php:258
+msgid "You may want to export your settings before deleting them forever."
+msgstr "Вы можете экспортировать все настройки перед удалением."
+
+#: inc/options.php:263
+msgid "Delete Default Customizer Settings"
+msgstr "Удалить настройки по-умолчанию"
+
+#: inc/template-tags.php:39
+msgid "&larr; Previous"
+msgstr "&larr; Предыдущие"
+
+#: inc/template-tags.php:40
+msgid "Next &rarr;"
+msgstr "Следущие &rarr;"
+
+#: inc/template-tags.php:78
+msgid "Post navigation"
+msgstr "Навигация по статьям"
+
+#: inc/template-tags.php:88
+msgid "Older posts"
+msgstr "Старые статьи"
+
+#: inc/template-tags.php:92
+msgid "Newer posts"
+msgstr "Новые статьи"
+
+#: inc/template-tags.php:119
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/template-tags.php:132
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+#: inc/template-tags.php:138
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr "%1$s at %2$s"
+
+#: inc/template-tags.php:155
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации."
+
+#: inc/template-tags.php:243
+#, php-format
+msgid ""
+"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+msgstr ""
+"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+
+#: inc/template-tags.php:250
+msgid "by"
+msgstr "по"
+
+#: inc/template-tags.php:252
+#, php-format
+msgid "View all posts by %s"
+msgstr "Посмотреть все статьи по %s"
+
+#: inc/template-tags.php:266
+msgid "Read more"
+msgstr "Подробнее"
+
+#: inc/template-tags.php:309
+msgctxt "label"
+msgid "Search"
+msgstr "Поиск"
+
+#: no-results.php:13
+msgid "Nothing Found"
+msgstr "Ничего не найдено"
+
+#: no-results.php:20
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Готовы опубликовать статью? <a href=\"%1$s\">Начинать здесь</a>."
+
+#: no-results.php:24
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Никаких соответствий поисковому запросу не найдено. Попробуйте другие "
+"ключевые слова. "
+
+#: no-results.php:29
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr "Мы не можем найти то, что Вы ищите. Попробуйте поиск."
+
+#: search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Результаты поиска: %s"
+
+#: searchform.php:10 searchform.php:11
+msgctxt "label"
+msgid "Search for:"
+msgstr "Поиск:"
+
+#: searchform.php:11
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Поиск &hellip;"
+
+#: searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr "Поиск"
+
+#: sidebar-left.php:30 sidebar.php:30
+msgid "Meta"
+msgstr "Мета"
