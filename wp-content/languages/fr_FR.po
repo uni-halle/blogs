@@ -146,7 +146,7 @@ msgstr "Image suggérée #%d"
 msgid "A term with the name already exists with this parent."
 msgstr "Un terme avec ce nom existe déjà avec ce parent."
 
-#: wp-includes/taxonomy.php:4173
+#: wp-includes/taxonomy.php:4169
 msgid "Could not split shared term."
 msgstr "Impossible de séparer les termes partagés."
 
@@ -735,7 +735,7 @@ msgstr "(Aucune information)"
 
 #. translators: %s: taxonomy label, %l: list of terms formatted as per
 #. $term_template
-#: wp-includes/taxonomy.php:4483
+#: wp-includes/taxonomy.php:4479
 msgid "%s: %l."
 msgstr "%s&nbsp;: %l."
 
@@ -4689,7 +4689,7 @@ msgstr "Désapprouvé"
 msgid "Duplicate comment detected; it looks as though you&#8217;ve already said that!"
 msgstr "Détection d&rsquo;un doublon&nbsp;: il semble que vous avez déjà envoyé ce commentaire&nbsp!"
 
-#: wp-includes/comment.php:2368
+#: wp-includes/comment.php:2375
 msgid "Could not update comment status"
 msgstr "Impossible de mettre à jour le statut du commentaire"
 
@@ -5883,7 +5883,7 @@ msgid "Invalid Taxonomy"
 msgstr "Taxinomie invalide"
 
 #: wp-includes/taxonomy.php:1318 wp-includes/taxonomy.php:3382
-#: wp-includes/taxonomy.php:4351
+#: wp-includes/taxonomy.php:4347
 msgid "Empty Term"
 msgstr "Pas de terme"
 
@@ -5906,7 +5906,7 @@ msgstr "Impossible d&rsquo;insérer le terme dans la base de données"
 msgid "The slug &#8220;%s&#8221; is already in use by another term"
 msgstr "L&rsquo;identifiant « %s » est déjà utilisé par un autre terme"
 
-#: wp-includes/taxonomy.php:4554
+#: wp-includes/taxonomy.php:4550
 msgid "Invalid object ID"
 msgstr "Identifiant d&rsquo;objet non valide."
 
@@ -5934,7 +5934,7 @@ msgstr "<strong>ERREUR</strong>&nbsp;: votre compte a été marqué comme étant
 msgid "Sidebar %d"
 msgstr "Colonne latérale %d"
 
-#: wp-includes/wp-db.php:2949
+#: wp-includes/wp-db.php:2991
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>ERREUR</strong>&nbsp;: WordPress %1$s requiert MySQL %2$s ou une version supérieure."
 

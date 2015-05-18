@@ -152,7 +152,7 @@ msgstr "<strong>エラー</strong>: 入力されたユーザー名 <strong>%1$s<
 msgid "A term with the name already exists in this taxonomy."
 msgstr "このタクソノミー内にすでに同じ名前の項目があります。"
 
-#: wp-includes/taxonomy.php:4173
+#: wp-includes/taxonomy.php:4169
 msgid "Could not split shared term."
 msgstr "共有タームを分割することはできません。"
 
@@ -733,7 +733,7 @@ msgstr "(ラベルなし)"
 
 #. translators: %s: taxonomy label, %l: list of terms formatted as per
 #. $term_template
-#: wp-includes/taxonomy.php:4483
+#: wp-includes/taxonomy.php:4479
 msgid "%s: %l."
 msgstr "%s: %l。"
 
@@ -5831,7 +5831,7 @@ msgid "Saving Draft&#8230;"
 msgstr "下書きを保存しています&#8230;"
 
 #: wp-includes/taxonomy.php:1318 wp-includes/taxonomy.php:3382
-#: wp-includes/taxonomy.php:4351
+#: wp-includes/taxonomy.php:4347
 msgid "Empty Term"
 msgstr "キーワードなし"
 
@@ -6103,7 +6103,7 @@ msgstr "ログイン名が入力されていないため、ユーザーを作成
 msgid "The parent theme is missing. Please install the \"%s\" parent theme."
 msgstr "親テーマが見つかりません。\"%s\" の親テーマをインストールしてください。"
 
-#: wp-includes/wp-db.php:2949
+#: wp-includes/wp-db.php:2991
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>エラー</strong>: WordPress %1$s には MySQL %2$s 以上が必要です。"
 
@@ -6173,7 +6173,7 @@ msgstr "リンクの説明を表示"
 msgid "Show Link Name"
 msgstr "リンクの名前を表示"
 
-#: wp-includes/comment.php:2368
+#: wp-includes/comment.php:2375
 msgid "Could not update comment status"
 msgstr "コメントの状態を更新できませんでした"
 
@@ -6257,7 +6257,7 @@ msgstr "次へ &raquo;"
 msgid "Could not insert term into the database"
 msgstr "キーワードをデータベースに挿入できませんでした"
 
-#: wp-includes/taxonomy.php:4554
+#: wp-includes/taxonomy.php:4550
 msgid "Invalid object ID"
 msgstr "無効なオブジェクト ID"
 
