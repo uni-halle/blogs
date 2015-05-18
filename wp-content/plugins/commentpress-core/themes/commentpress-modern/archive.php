@@ -18,14 +18,14 @@
 
 <?php
 
-// until WordPress supports a locate_theme_file() function, use filter
-$page_navigation = apply_filters(
+// first try to locate using WP method
+$cp_page_navigation = apply_filters(
 	'cp_template_page_navigation',
-	get_template_directory() . '/assets/templates/page_navigation.php'
+	locate_template( 'assets/templates/page_navigation.php' )
 );
 
-// always include
-include( $page_navigation );
+// load it if we find it
+if ( $cp_page_navigation != '' ) load_template( $cp_page_navigation, false );
 
 ?>
 
@@ -64,20 +64,18 @@ include( $page_navigation );
 
 			<?php
 
-			// if we've elected to show the meta...
+			// default to hidden
+			$cp_meta_visibility = ' style="display: none;"';
+
+			// overrideif we've elected to show the meta...
 			if ( commentpress_get_post_meta_visibility( get_the_ID() ) ) {
-
-			?>
-			<div class="search_meta">
-
-				<?php commentpress_echo_post_meta(); ?>
-
-			</div>
-			<?php
-
+				$cp_meta_visibility = '';
 			}
 
 			?>
+			<div class="search_meta"<?php echo $cp_meta_visibility; ?>>
+				<?php commentpress_echo_post_meta(); ?>
+			</div>
 
 			<?php the_excerpt() ?>
 
@@ -111,7 +109,7 @@ include( $page_navigation );
 <?php
 
 // include page_navigation again
-include( $page_navigation );
+if ( $cp_page_navigation != '' ) load_template( $cp_page_navigation, false );
 
 ?>
 </div><!-- /page_nav_lower -->

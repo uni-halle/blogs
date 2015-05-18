@@ -559,7 +559,7 @@ body.admin-bar #navigation
 	position: relative;
 	width: 54%;
 	z-index: 500;
-	background-color: #ccc;
+	/* background-color: #ccc; */
 }
 
 #sidebar
@@ -1153,6 +1153,21 @@ p.comment_activity_date
 	font-family: sans-serif;
 	font-style: normal;
 	text-decoration: none;
+}
+
+.comment_permalink_copy
+{
+	display: block;
+	width: 1em;
+	height: 1em;
+	float: left;
+	margin: 0 0.3em 0 0;
+}
+
+.comment_permalink_copy:before
+{
+	font-family: "dashicons";
+	content: "\f103";
 }
 
 .comment-identifier .comment-edit a,
@@ -1846,8 +1861,8 @@ div.multipager.multipager_all a:hover span.multipager_link
 	font-family: sans-serif;
 	color: #666;
 	margin-top: 1em;
-	padding-top: 2em;
-	padding-bottom: 1em;
+	padding-top: 1em;
+	padding-bottom: 0;
 	border-top: 1px solid #ddd;
 }
 
@@ -1865,6 +1880,26 @@ body.search-results .post p.postmetadata
 	margin-bottom: 0;
 	border-top: none;
 }
+
+/* New style categories */
+.entry-category-meta
+{
+	border-top: 1px solid #ddd;
+	font-size: 80%;
+	font-family: sans-serif;
+	color: #666;
+	margin-top: 1em;
+	padding-top: 1em;
+	padding-bottom: 0;
+}
+
+.post .entry-category-meta p
+{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
 
 
 
@@ -3080,6 +3115,248 @@ body.tinymce-4 #commentform #wp-comment-wrap textarea
 	width: 100%;
 	margin: 0;
 }
+
+/* copied from /wp-admin/css/common.css to hide text on media close button */
+.screen-reader-text, .screen-reader-text span, .ui-helper-hidden-accessible
+{
+	position: absolute;
+	margin: -1px;
+	padding: 0;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	border: 0;
+}
+
+/* link modal is prefixed with #wp-link-wrap */
+#wp-link-wrap
+{
+	font-family: "Open Sans", sans-serif;
+	color: #444;
+}
+
+#wp-link-wrap #link-options
+{
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+#wp-link-wrap .howto
+{
+	font-size: 13px;
+	line-height: 1.5;
+	color: #666;
+	font-style: italic;
+	display: block;
+}
+
+#wp-link-wrap input[type="text"],
+#wp-link-wrap input[type="password"],
+#wp-link-wrap input[type="checkbox"],
+#wp-link-wrap input[type="color"],
+#wp-link-wrap input[type="date"],
+#wp-link-wrap input[type="datetime"],
+#wp-link-wrap input[type="datetime-local"],
+#wp-link-wrap input[type="email"],
+#wp-link-wrap input[type="month"],
+#wp-link-wrap input[type="number"],
+#wp-link-wrap input[type="password"],
+#wp-link-wrap input[type="search"],
+#wp-link-wrap input[type="radio"],
+#wp-link-wrap input[type="tel"],
+#wp-link-wrap input[type="text"],
+#wp-link-wrap input[type="time"],
+#wp-link-wrap input[type="url"],
+#wp-link-wrap input[type="week"],
+#wp-link-wrap select,
+#wp-link-wrap textarea
+{
+	margin: 1px;
+	padding: 3px 5px;
+	border: 1px solid #ddd;
+	-webkit-box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.07 );
+	box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.07 );
+	background-color: #fff;
+	color: #32373c;
+	outline: none;
+	-webkit-transition: 0.05s border-color ease-in-out;
+	transition: 0.05s border-color ease-in-out;
+}
+
+#wp-link-wrap input[type="checkbox"],
+#wp-link-wrap input[type="radio"]
+{
+	border: 1px solid #b4b9be;
+	background: #fff;
+	color: #555;
+	clear: none;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 0;
+	height: 16px;
+	margin: -4px 4px 0 0;
+	outline: 0;
+	padding: 0 !important;
+	text-align: center;
+	vertical-align: middle;
+	width: 16px;
+	min-width: 16px;
+	-webkit-appearance: none;
+	-webkit-box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.1 );
+	box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.1 );
+	-webkit-transition: .05s border-color ease-in-out;
+	transition: .05s border-color ease-in-out;
+}
+
+#wp-link-wrap input[type="checkbox"]:checked:before,
+#wp-link-wrap input[type="radio"]:checked:before {
+	float: left;
+	display: inline-block;
+	vertical-align: middle;
+	width: 16px;
+	font: normal 21px/1 'dashicons';
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#wp-link-wrap input[type="checkbox"]:checked:before {
+	content: '\f147';
+	margin: -3px 0 0 -4px;
+	color: #1e8cbe;
+}
+
+#wp-link-wrap #search-panel
+{
+	font-size: 13px;
+	line-height: 1.4em;
+}
+
+#wp-link-wrap #search-panel .alternate
+{
+	background-color: #f9f9f9;
+}
+
+#wp-link-wrap .submitbox .submitdelete
+{
+	text-decoration: none;
+	padding: 1px 2px;
+	color: #a00;
+	font-size: 13px;
+}
+
+
+
+/*
+--------------------------------------------------------------------------------
+Compatibility with WordPress Front-end Editor
+--------------------------------------------------------------------------------
+*/
+
+body.fee #content
+{
+	padding-top: 3%;
+}
+
+body.fee .cp_feature_image
+{
+}
+
+body.fee-on .fee-thumbnail.fee-empty
+{
+	min-height: 0;
+}
+
+body.fee-on .fee-insert-thumbnail
+{
+	top: 40px;
+	left: 12%;
+}
+
+body.fee .cp_feature_image .fee-thumbnail.fee-empty + .cp_featured_title
+{
+	position: relative;
+	padding: 6% 0 0 0;
+}
+
+body.fee .cp_feature_image .fee-thumbnail.fee-empty + .cp_featured_title .cp_featured_title_inner
+{
+	padding: 0 12%;
+}
+
+body.fee .cp_feature_image .fee-thumbnail.fee-empty + .cp_featured_title .cp_featured_title_inner h2.post_title
+{
+	margin: 1em 0 0 0;
+}
+
+.fee-url
+{
+	font-size: 50%;
+	text-transform: lowercase;
+}
+
+.fee-url ins,
+body.fee.fee-on .fee-title,
+body.fee.fee-on .fee-content-body
+{
+	background-color: #f4f4f4;
+}
+
+body.fee.fee-on .fee-title.mce-edit-focus,
+body.fee.fee-on .fee-content-body.mce-edit-focus
+{
+	background-color: transparent;
+}
+
+
+/* metaboxes */
+body.fee .metabox_container
+{
+	font-family: sans-serif;
+	font-size: 80%;
+	padding: 2%;
+	background-color: #dadada;
+}
+
+body.fee .metabox_container label
+{
+	text-transform: uppercase;
+}
+
+
+/* toggle button */
+#container #navigation .paragraph_wrapper.editor_toggle_wrapper
+{
+	display: block;
+}
+
+.paragraph_wrapper.editor_toggle_wrapper .editor_toggle
+{
+	margin: 0px 4%;
+	padding: 4% 0 5% 0;
+}
+
+
+
+
+
+/*
+--------------------------------------------------------------------------------
+Compatibility with CommentPress infinite scroll
+--------------------------------------------------------------------------------
+*/
+
+.cp_next_page_loading_wrapper
+{
+	padding: 40px 0;
+}
+
+.page_wrapper + .page_wrapper
+{
+	margin-top: 60px;
+}
+
 
 
 

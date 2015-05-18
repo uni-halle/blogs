@@ -34,6 +34,10 @@ if ( isset( $post->ID ) ) {
 
 
 
+<?php do_action( 'commentpress_before_comments_container' ); ?>
+
+
+
 <div class="comments_container"<?php echo $comments_post_identifier; ?>>
 
 
@@ -51,6 +55,9 @@ if ( isset( $post->ID ) ) {
 
 <?php
 
+// allow plugins to precede comment form
+do_action( 'commentpress_before_comment_form' );
+
 // because AJAX may be routed via admin or front end
 if ( defined( 'DOING_AJAX' ) AND DOING_AJAX ) {
 
@@ -58,22 +65,29 @@ if ( defined( 'DOING_AJAX' ) AND DOING_AJAX ) {
 
 } else {
 
-	// until WordPress supports a locate_theme_file() function, use filter
-	$include = apply_filters(
+	// first try to locate using WP method
+	$cp_comment_form = apply_filters(
 		'cp_template_comment_form',
-		get_template_directory() . '/assets/templates/comment_form.php'
+		locate_template( 'assets/templates/comment_form.php' )
 	);
 
-	// include comment form
-	include( $include );
+	// load it if we find it
+	if ( $cp_comment_form != '' ) load_template( $cp_comment_form );
 
 }
+
+// allow plugins to follow comment form
+do_action( 'commentpress_after_comment_form' );
 
 ?>
 
 
 
 </div><!-- /comments_container -->
+
+
+
+<?php do_action( 'commentpress_after_comments_container' ); ?>
 
 
 

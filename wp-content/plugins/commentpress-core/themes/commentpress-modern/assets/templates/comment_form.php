@@ -20,8 +20,30 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) AND 'comment_form.php' == basename($_SER
 
 
 
-// access post
+// access globals
 global $post;
+
+// get user data
+$user = wp_get_current_user();
+$user_identity = $user->exists() ? $user->display_name : '';
+
+// check force state (this is for infinite scroll)
+$cp_force_form = apply_filters( 'commentpress_force_comment_form', false );
+
+// init identifying class
+$forced_class = '';
+
+// optionally override
+if ( $cp_force_form ) {
+
+	// init classes
+	$forced_classes = array( 'cp_force_displayed' );
+	if ( 'open' != $post->comment_status ) $forced_classes[] = 'cp_force_closed';
+
+	// build class attribute
+	$forced_class = ' class="' . implode( ' ', $forced_classes ) . '"';
+
+}
 
 ?>
 
@@ -29,11 +51,11 @@ global $post;
 
 <!-- comment_form.php -->
 
-<?php if ('open' == $post->comment_status) : ?>
+<?php if ( 'open' == $post->comment_status OR $cp_force_form ) : ?>
 
 
 
-<div id="respond_wrapper">
+<div id="respond_wrapper"<?php echo $forced_class; ?>>
 
 
 
@@ -52,7 +74,7 @@ global $post;
 	__( 'Leave a Reply to %s', 'commentpress-core' )
 ); ?></h4>
 
-<?php if ( get_option('comment_registration') AND !$user_ID ) : ?>
+<?php if ( get_option('comment_registration') AND ! is_user_logged_in() ) : ?>
 
 	<p><?php
 
@@ -71,7 +93,15 @@ global $post;
 	$show_comment_form = apply_filters( 'commentpress_show_comment_form', true );
 
 	// how did we do?
-	if ( $show_comment_form ) { ?>
+	if ( $show_comment_form ) {
+
+		// get required status
+		$req = get_option( 'require_name_email' );
+
+		// get commenter
+		$commenter = wp_get_current_commenter();
+
+		?>
 
 		<form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="commentform">
 
@@ -79,20 +109,20 @@ global $post;
 
 			<legend class="off-left"><?php _e( 'Your details', 'commentpress-core' ); ?></legend>
 
-			<?php if ( $user_ID ) : ?>
+			<?php if ( is_user_logged_in() ) : ?>
 
 				<p class="author_is_logged_in"><?php _e( 'Logged in as', 'commentpress-core' ); ?> <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a> &rarr; <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php _e( 'Log out of this account', 'commentpress-core' ); ?>"><?php _e( 'Log out', 'commentpress-core' ); ?></a></p>
 
 			<?php else : ?>
 
 				<p><label for="author"><small><?php _e( 'Name', 'commentpress-core' ); ?><?php if ($req) echo ' <span class="req">('.__( 'required', 'commentpress-core' ).')</span>'; ?></small></label><br />
-				<input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="30"<?php if ($req) echo ' aria-required="true"'; ?> /></p>
+				<input type="text" name="author" id="author" value="<?php echo esc_attr( $commenter['comment_author'] ); ?>" size="30"<?php if ($req) echo ' aria-required="true"'; ?> /></p>
 
 				<p><label for="email"><small><?php _e( 'Mail (will not be published)', 'commentpress-core' ); ?><?php if ($req) echo ' <span class="req">('.__( 'required', 'commentpress-core' ).')</span>'; ?></small></label><br />
-				<input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="30"<?php if ($req) { echo ' aria-required="true"'; } ?> /></p>
+				<input type="text" name="email" id="email" value="<?php echo esc_attr(  $commenter['comment_author_email'] ); ?>" size="30"<?php if ($req) { echo ' aria-required="true"'; } ?> /></p>
 
 				<p class="author_not_logged_in"><label for="url"><small><?php _e( 'Website', 'commentpress-core' ); ?></small></label><br />
-				<input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="30" /></p>
+				<input type="text" name="url" id="url" value="<?php echo esc_attr( $commenter['comment_author_url'] ); ?>" size="30" /></p>
 
 			<?php endif; ?>
 
@@ -105,7 +135,7 @@ global $post;
 			<label for="comment" class="off-left"><?php _e( 'Comment', 'commentpress-core' ); ?></label>
 			<?php
 
-			// in functions.php
+			// in theme-functions.php
 			if ( false === commentpress_add_wp_editor() ) {
 
 				?>
