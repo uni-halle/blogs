@@ -12,7 +12,7 @@ class WP_Piwik {
 	 *
 	 * @var Runtime environment variables
 	 */
-	private static $intRevisionId = 100000, $version = '0.10.0.3', $blog_id, $pluginBasename = NULL, $logger, $settings, $request;
+	private static $intRevisionId = 2015051101, $version = '0.10.0.5', $blog_id, $pluginBasename = NULL, $logger, $settings, $request;
 	
 	/**
 	 * Constructor class to configure and register all WP-Piwik components
@@ -54,10 +54,6 @@ class WP_Piwik {
 	 */
 	private function addActions() {
 		if ( is_admin () ) {
-			add_action ( 'admin_notices', array (
-					$this,
-					'showNotices' 
-			) );
 			add_action ( 'admin_menu', array (
 					$this,
 					'buildAdminMenu' 
@@ -75,6 +71,10 @@ class WP_Piwik {
 					'addPostMetaboxes' 
 			) );
 			if ($this->isNetworkMode ()) {
+				add_action ( 'network_admin_notices', array (
+						$this,
+						'showNotices' 
+				) );
 				add_action ( 'network_admin_menu', array (
 						$this,
 						'buildNetworkAdminMenu' 
@@ -86,8 +86,12 @@ class WP_Piwik {
 				add_action ( 'update_site_option_siteurl', array (
 						$this,
 						'onSiteUrlChange' 
-				) );
+				) );				
 			} else {
+				add_action ( 'admin_notices', array (
+						$this,
+						'showNotices' 
+				) );
 				add_action ( 'update_option_blogname', array (
 						$this,
 						'onBlogNameChange' 
@@ -198,7 +202,7 @@ class WP_Piwik {
 		self::$logger->log ( 'Running WP-Piwik uninstallation' );
 		if (! defined ( 'WP_UNINSTALL_PLUGIN' ))
 			exit ();
-		delete_option ( 'wp-piwik-notices' );
+		delete_site_option ( 'wp-piwik-notices' );
 		self::$settings->resetSettings ( true );
 	}
 	
@@ -207,7 +211,7 @@ class WP_Piwik {
 	 */
 	private function updatePlugin() {
 		self::$logger->log ( 'Upgrade WP-Piwik to ' . self::$version );
-		$patches = glob ( dirname ( __FILE__ ) . DIRECTORY_SEPARATOR . 'update' . DIRECTORY_SEPARATOR . '*.php' );
+		$patches = glob ( dirname ( __FILE__ ) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'update' . DIRECTORY_SEPARATOR . '*.php' );
 		if (is_array ( $patches )) {
 			sort ( $patches );
 			foreach ( $patches as $patch ) {
@@ -233,13 +237,13 @@ class WP_Piwik {
 	 *        	set to true if the message should persist (default: false)
 	 */
 	private function addNotice($type, $subject, $text, $stay = false) {
-		$notices = get_option ( 'wp-piwik-notices', array () );
+		$notices = get_site_option ( 'wp-piwik-notices', array () );
 		$notices [$type] = array (
 				'subject' => $subject,
 				'text' => $text,
 				'stay' => $stay 
 		);
-		update_option ( 'wp-piwik-notices', $notices );
+		update_site_option ( 'wp-piwik-notices', $notices );
 	}
 	
 	/**
@@ -249,14 +253,14 @@ class WP_Piwik {
 	 */
 	public function showNotices() {
 		$link = sprintf ( '<a href="' . $this->getSettingsURL () . '">%s</a>', __ ( 'Settings', 'wp-piwik' ) );
-		if ($notices = get_option ( 'wp-piwik-notices' )) {
+		if ($notices = get_site_option ( 'wp-piwik-notices' )) {
 			foreach ( $notices as $type => $notice ) {
 				printf ( '<div class="updated fade"><p>%s <strong>%s:</strong> %s: %s</p></div>', $notice ['subject'], __ ( 'Important', 'wp-piwik' ), $notice ['text'], $link );
 				if (! $notice ['stay'])
 					unset ( $notices [$type] );
 			}
 		}
-		update_option ( 'wp-piwik-notices', $notices );
+		update_site_option ( 'wp-piwik-notices', $notices );
 	}
 	
 	/**
@@ -591,6 +595,9 @@ class WP_Piwik {
 	 * @return boolean Is WP-Piwik installed?
 	 */
 	private function isInstalled() {
+		$oldSettings = get_site_option ( 'wp-piwik_global-settings', false );
+		if ($oldSettings && isset( $oldSettings['revision'] ))
+			self::$settings->setGlobalOption ( 'revision', $oldSettings['revision'] );
 		return self::$settings->getGlobalOption ( 'revision' );
 	}
 	
@@ -845,7 +852,7 @@ class WP_Piwik {
 	 * @return array updated list of column settings
 	 */
 	public function onScreenLayoutColumns($columns, $screen) {
-		if ($screen == $this->statsPageId)
+		if (isset( $this->statsPageId ) && $screen == $this->statsPageId)
 			$columns [$this->statsPageId] = 3;
 		return $columns;
 	}
@@ -938,7 +945,8 @@ class WP_Piwik {
 				'range' => false,
 				'key' => 'sum_daily_nb_uniq_visitors' 
 		), $attributes );
-		new \WP_Piwik\Shortcode ( $attributes, $this, self::$settings );
+		$shortcodeObject = new \WP_Piwik\Shortcode ( $attributes, $this, self::$settings );
+		return $shortcodeObject->get();
 	}
 	
 	/**
@@ -1062,7 +1070,8 @@ class WP_Piwik {
 				'mergeAliasUrls' => self::$settings->getGlobalOption ( 'track_across_alias' ) ? 1 : 0,
 				'disableCookies' => self::$settings->getGlobalOption ( 'disable_cookies' ) ? 1 : 0 
 		) );
-		$result = html_entity_decode ( $this->request ( $id ) );
+		$code = $this->request ( $id );
+		$result = !is_array( $code ) ? html_entity_decode ( $code ) : '<!-- '.serialize($code).' -->';
 		self::$logger->log ( 'Delivered tracking code: ' . $result );
 		$result = WP_Piwik\TrackingCode::prepareTrackingCode ( $result, self::$settings, self::$logger );
 		self::$settings->setOption ( 'tracking_code', $result ['script'], $blogId );
