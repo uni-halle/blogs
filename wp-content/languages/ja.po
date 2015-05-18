@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-04-30 06:14:18+0000\n"
+"PO-Revision-Date: 2015-05-15 08:56:11+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +43,7 @@ msgstr "<a target=”_blank\" href=\"http://wpdocs.sourceforge.jp/Debugging_a_Wo
 
 #: wp-includes/admin-bar.php:130
 msgid "https://codex.wordpress.org/"
-msgstr "http://wpdocs.sourceforge.jp/"
+msgstr "http://wpdocs.osdn.jp/"
 
 #. translators: 1: the id argument, 2: sidebar name, 3: recommended id value
 #: wp-includes/widgets.php:823
@@ -1492,6 +1492,15 @@ msgstr "動画プレイリストに追加"
 msgid "Invalid menu ID."
 msgstr "無効なメニュー ID です。"
 
+#: wp-includes/user.php:2224
+msgid "Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
+msgstr "ヒント: パスワードは少なくとも7文字以上であるべきです。より強固にするためには大文字と小文字、数字、 ! \" ? $ % ^ &amp; ) のような記号を使いましょう。"
+
+#: wp-includes/update.php:119 wp-includes/update.php:295
+#: wp-includes/update.php:457
+msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
+msgstr "予期しないエラーが発生しました。WordPress.org かこのサーバーの設定に何か問題があるかもしれません。問題が続くようであれば、<a href=\"https://ja.forums.wordpress.org/\">サポートフォーラム</a>を参照してみてください。"
+
 #: wp-includes/wp-db.php:1045
 msgid ""
 "<h1>Can&#8217;t select database</h1>\n"
@@ -1510,11 +1519,7 @@ msgstr ""
 "<li>ユーザー <code>%2$s</code> にデータベース <code>%1$s</code> を利用する権限がありますか ?</li>\n"
 "<li>一部のシステムでは <code>username_%1$s</code> のように、データベース名の前にユーザー名が接頭辞として追加されます。これが問題ではありませんか ?</li>\n"
 "</ul>\n"
-"<p>もしデータベースの設置方法が分からない場合は<strong>ご利用中のホスティングサービスに連絡</strong>してください。それでもうまく行かなければ、<a href=\"http://ja.forums.wordpress.org/\">WordPress サポートフォーラム</a>でヘルプを得られるかもしれません。</p>"
-
-#: wp-includes/user.php:2224
-msgid "Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
-msgstr "ヒント: パスワードは少なくとも7文字以上であるべきです。より強固にするためには大文字と小文字、数字、 ! \" ? $ % ^ &amp; ) のような記号を使いましょう。"
+"<p>もしデータベースの設置方法が分からない場合は<strong>ご利用中のホスティングサービスに連絡</strong>してください。それでもうまく行かなければ、<a href=\"https://ja.forums.wordpress.org/\">WordPress サポートフォーラム</a>でヘルプを得られるかもしれません。</p>"
 
 #: wp-includes/wp-db.php:1489
 msgid ""
@@ -1536,7 +1541,7 @@ msgstr ""
 "        <li>正しいホスト名を入力しているか確認してください。</li>\n"
 "        <li>データベースサーバーが動作中か確認してください。</li>\n"
 "</ul>\n"
-"<p>こうした用語が何を意味するのか分からない場合は、ご利用中のホスティングサービスに連絡してください。それでも助けが必要な場合はいつでも <a href='http://ja.forums.wordpress.org/'>WordPress サポートフォーラム</a>を使うことができます。</p>\n"
+"<p>こうした用語が何を意味するのか分からない場合は、ご利用中のホスティングサービスに連絡してください。それでも助けが必要な場合はいつでも <a href='https://ja.forums.wordpress.org/'>WordPress サポートフォーラム</a>を使うことができます。</p>\n"
 
 #. translators: used to join items in a list with more than 2 items
 #: wp-includes/formatting.php:3686
@@ -1553,22 +1558,9 @@ msgstr "%s, %s"
 msgid "%s and %s"
 msgstr "%s, %s"
 
-#: wp-includes/update.php:119 wp-includes/update.php:295
-#: wp-includes/update.php:457
-msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
-msgstr "予期しないエラーが発生しました。WordPress.org かこのサーバーの設定に何か問題があるかもしれません。問題が続くようであれば、<a href=\"http://ja.forums.wordpress.org/\">サポートフォーラム</a>を参照してみてください。"
-
 #: wp-includes/wp-db.php:1216
 msgid "The query argument of %s must have a placeholder."
 msgstr "%s のクエリー引数にはプレースホルダーが必要です。"
-
-#: wp-includes/admin-bar.php:138 wp-login.php:800
-msgid "https://wordpress.org/support/"
-msgstr "http://ja.forums.wordpress.org/"
-
-#: wp-includes/admin-bar.php:146
-msgid "https://wordpress.org/support/forum/requests-and-feedback"
-msgstr "http://ja.forums.wordpress.org/forum/2"
 
 #: wp-includes/class-wp-customize-widgets.php:601
 msgid "Move down"
@@ -1805,6 +1797,14 @@ msgstr "ペースト機能がプレーンテキストモードになりました
 #: wp-includes/class-wp-customize-widgets.php:608
 msgid "Select an area to move this widget into:"
 msgstr "ウィジェットを移動するエリアを選択:"
+
+#: wp-includes/admin-bar.php:146
+msgid "https://wordpress.org/support/forum/requests-and-feedback"
+msgstr "https://ja.forums.wordpress.org/forum/2"
+
+#: wp-includes/admin-bar.php:138 wp-login.php:800
+msgid "https://wordpress.org/support/"
+msgstr "https://ja.forums.wordpress.org/"
 
 #: wp-includes/class-wp-editor.php:955
 msgid "Column group"

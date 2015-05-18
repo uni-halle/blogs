@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-04-23 23:18:50+0000\n"
+"PO-Revision-Date: 2015-05-15 08:57:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -91,33 +91,33 @@ msgstr "utf8mb4 のサポート"
 msgid "Complex query ordering"
 msgstr "複雑なクエリの順序"
 
+#: wp-admin/about.php:86
+msgid "https://codex.wordpress.org/Emoji"
+msgstr "http://wpdocs.osdn.jp/%E7%B5%B5%E6%96%87%E5%AD%97"
+
 #: wp-admin/about.php:29 wp-admin/credits.php:85 wp-admin/freedoms.php:22
 msgid "Thank you for updating! WordPress %s helps you communicate and share, globally."
 msgstr "更新していただき、ありがとうございます。WordPress %s ではグローバルにコミュニケーションし、共有することができます。"
 
-#: wp-admin/about.php:86
-msgid "https://codex.wordpress.org/Emoji"
-msgstr "http://wpdocs.sourceforge.jp/%E7%B5%B5%E6%96%87%E5%AD%97"
-
 #: wp-admin/includes/meta-boxes.php:549
 msgid "Trackbacks are a way to notify legacy blog systems that you&#8217;ve linked to them. If you link other WordPress sites, they&#8217;ll be notified automatically using <a href=\"https://codex.wordpress.org/Introduction_to_Blogging#Managing_Comments\" target=\"_blank\">pingbacks</a>, no other action necessary."
-msgstr "トラックバックは、レガシー的なブログシステムに対してリンクしたことを知らせる通知機能です。他の WordPress サイトにリンクすると、自動的に<a href=\"http://wpdocs.sourceforge.jp/%E3%83%96%E3%83%AD%E3%82%B0%E5%85%A5%E9%96%80#.E3.82.B3.E3.83.A1.E3.83.B3.E3.83.88.E3.83.A2.E3.83.87.E3.83.AC.E3.83.BC.E3.82.B7.E3.83.A7.E3.83.B3\" target=\"_blank\">ピンバック</a>によって通知され、他には何もする必要はありません。"
+msgstr "トラックバックは、レガシー的なブログシステムに対してリンクしたことを知らせる通知機能です。他の WordPress サイトにリンクすると、自動的に<a href=\"http://wpdocs.osdn.jp/%E3%83%96%E3%83%AD%E3%82%B0%E5%85%A5%E9%96%80#.E3.82.B3.E3.83.A1.E3.83.B3.E3.83.88.E3.83.A2.E3.83.87.E3.83.AC.E3.83.BC.E3.82.B7.E3.83.A7.E3.83.B3\" target=\"_blank\">ピンバック</a>によって通知され、他には何もする必要はありません。"
 
 #: wp-admin/options-general.php:135
 msgid "Enter the address here if you <a href=\"https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory\">want your site home page to be different from your WordPress installation directory.</a>"
 msgstr "<a href=\"https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory\">サイトのホームページを WordPress のインストールディレクトリとは異なるものにした</a>ければ、ここにアドレスを入力してください。"
 
-#: wp-admin/options-permalink.php:183
-msgid "By default WordPress uses web <abbr title=\"Universal Resource Locator\">URL</abbr>s which have question marks and lots of numbers in them; however, WordPress offers you the ability to create a custom URL structure for your permalinks and archives. This can improve the aesthetics, usability, and forward-compatibility of your links. A <a href=\"https://codex.wordpress.org/Using_Permalinks\">number of tags are available</a>, and here are some examples to get you started."
-msgstr "WordPress はデフォルトでは ? マークや数字を含む <abbr title=\"Universal Resource Locator\">URL</abbr> を使用しますが、パーマリンクやアーカイブにカスタム URL 構造を使うこともできるようになっています。URL をカスタマイズすることで、リンクの美しさや使いやすさ、そして前方互換性を改善できます。<a href=\"http://wpdocs.sourceforge.jp/パーマリンクの使い方\">利用できるタグはいろいろあります</a>が、以下にいくつか例をご紹介します。"
-
 #: wp-admin/revision.php:119
 msgid "<a href=\"https://codex.wordpress.org/Revision_Management\" target=\"_blank\">Revisions Management</a>"
-msgstr "<a href=\"http://wpdocs.sourceforge.jp/Revision_Management\" target=\"_blank\">リビジョン管理</a>"
+msgstr "<a href=\"http://wpdocs.osdn.jp/Revision_Management\" target=\"_blank\">リビジョン管理</a>"
+
+#: wp-admin/options-permalink.php:183
+msgid "By default WordPress uses web <abbr title=\"Universal Resource Locator\">URL</abbr>s which have question marks and lots of numbers in them; however, WordPress offers you the ability to create a custom URL structure for your permalinks and archives. This can improve the aesthetics, usability, and forward-compatibility of your links. A <a href=\"https://codex.wordpress.org/Using_Permalinks\">number of tags are available</a>, and here are some examples to get you started."
+msgstr "WordPress はデフォルトでは ? マークや数字を含む <abbr title=\"Universal Resource Locator\">URL</abbr> を使用しますが、パーマリンクやアーカイブにカスタム URL 構造を使うこともできるようになっています。URL をカスタマイズすることで、リンクの美しさや使いやすさ、そして前方互換性を改善できます。<a href=\"http://wpdocs.osdn.jp/パーマリンクの使い方\">利用できるタグはいろいろあります</a>が、以下にいくつか例をご紹介します。"
 
 #: wp-admin/edit-form-advanced.php:351
 msgid "You can also embed media from many popular websites including Twitter, YouTube, Flickr and others by pasting the media URL on its own line into the content of your post/page. Please refer to the Codex to <a href=\"https://codex.wordpress.org/Embeds\">learn more about embeds</a>."
-msgstr "メディアの URL を貼り付けるだけで、簡単に Twitter、YouTube、Flickr などの外部サイトで管理されているメディアを投稿や固定ページの本文に埋め込むことができます。この<a href=\"http://wpdocs.sourceforge.jp/Embeds\">埋め込み機能についてもっと知りたい</a>なら Codex を参照してください。"
+msgstr "メディアの URL を貼り付けるだけで、簡単に Twitter、YouTube、Flickr などの外部サイトで管理されているメディアを投稿や固定ページの本文に埋め込むことができます。この<a href=\"http://wpdocs.osdn.jp/Embeds\">埋め込み機能についてもっと知りたい</a>なら Codex を参照してください。"
 
 #: wp-admin/includes/dashboard.php:1335
 msgid "https://codex.wordpress.org/First_Steps_With_WordPress"
@@ -1501,10 +1501,6 @@ msgctxt "theme"
 msgid "Details &amp; Preview"
 msgstr "詳細 &amp; プレビュー"
 
-#: wp-admin/maint/repair.php:103
-msgid "https://wordpress.org/support/forum/how-to-and-troubleshooting"
-msgstr "http://ja.forums.wordpress.org/forum/1"
-
 #: wp-admin/users.php:252
 msgid "Delete all content."
 msgstr "すべてのコンテンツを消去します。"
@@ -1533,6 +1529,10 @@ msgstr "<strong>ボックスのコントロール</strong> - ボックスを開�
 msgid "Remove allows you to remove a user from your site. It does not delete their content. You can also remove multiple users at once by using Bulk Actions."
 msgstr "「削除」を使うとサイトからユーザーを削除できます。そのユーザーのコンテンツは削除されません。また、一括操作で複数のユーザーを一度に削除することもできます。"
 
+#: wp-admin/maint/repair.php:103
+msgid "https://wordpress.org/support/forum/how-to-and-troubleshooting"
+msgstr "https://ja.forums.wordpress.org/forum/1"
+
 #: wp-admin/revision.php:78
 msgid "&larr; Return to post editor"
 msgstr "&larr; 投稿エディターに戻る"
@@ -1542,26 +1542,6 @@ msgstr "&larr; 投稿エディターに戻る"
 #: wp-admin/credits.php:164
 msgid "https://make.wordpress.org/"
 msgstr "https://make.wordpress.org/"
-
-#: wp-admin/comment.php:60 wp-admin/custom-background.php:97
-#: wp-admin/custom-header.php:124 wp-admin/edit-comments.php:136
-#: wp-admin/edit-form-advanced.php:313 wp-admin/edit-form-advanced.php:329
-#: wp-admin/edit-form-advanced.php:345 wp-admin/edit-link-form.php:66
-#: wp-admin/edit-tags.php:242 wp-admin/edit.php:212 wp-admin/edit.php:233
-#: wp-admin/export.php:54 wp-admin/import.php:29 wp-admin/index.php:89
-#: wp-admin/link-manager.php:61 wp-admin/media-new.php:57 wp-admin/media.php:84
-#: wp-admin/my-sites.php:49 wp-admin/nav-menus.php:545
-#: wp-admin/options-discussion.php:47 wp-admin/options-general.php:105
-#: wp-admin/options-media.php:35 wp-admin/options-permalink.php:46
-#: wp-admin/options-reading.php:70 wp-admin/options-writing.php:46
-#: wp-admin/plugin-editor.php:142 wp-admin/plugin-install.php:88
-#: wp-admin/plugins.php:392 wp-admin/revision.php:120
-#: wp-admin/theme-editor.php:43 wp-admin/theme-install.php:98
-#: wp-admin/themes.php:92 wp-admin/tools.php:29 wp-admin/update-core.php:502
-#: wp-admin/upload.php:65 wp-admin/upload.php:202 wp-admin/user-edit.php:55
-#: wp-admin/user-new.php:184 wp-admin/users.php:63 wp-admin/widgets.php:74
-msgid "<a href=\"https://wordpress.org/support/\" target=\"_blank\">Support Forums</a>"
-msgstr "<a href=\"http://ja.forums.wordpress.org/\" target=\"_blank\">サポートフォーラム</a>"
 
 #: wp-admin/includes/meta-boxes.php:198
 msgid "Browse revisions"
@@ -1594,6 +1574,26 @@ msgstr "日時を編集"
 #: wp-admin/includes/ajax-actions.php:1668
 msgid "Type"
 msgstr "タイプ"
+
+#: wp-admin/comment.php:60 wp-admin/custom-background.php:97
+#: wp-admin/custom-header.php:124 wp-admin/edit-comments.php:136
+#: wp-admin/edit-form-advanced.php:313 wp-admin/edit-form-advanced.php:329
+#: wp-admin/edit-form-advanced.php:345 wp-admin/edit-link-form.php:66
+#: wp-admin/edit-tags.php:242 wp-admin/edit.php:212 wp-admin/edit.php:233
+#: wp-admin/export.php:54 wp-admin/import.php:29 wp-admin/index.php:89
+#: wp-admin/link-manager.php:61 wp-admin/media-new.php:57 wp-admin/media.php:84
+#: wp-admin/my-sites.php:49 wp-admin/nav-menus.php:545
+#: wp-admin/options-discussion.php:47 wp-admin/options-general.php:105
+#: wp-admin/options-media.php:35 wp-admin/options-permalink.php:46
+#: wp-admin/options-reading.php:70 wp-admin/options-writing.php:46
+#: wp-admin/plugin-editor.php:142 wp-admin/plugin-install.php:88
+#: wp-admin/plugins.php:392 wp-admin/revision.php:120
+#: wp-admin/theme-editor.php:43 wp-admin/theme-install.php:98
+#: wp-admin/themes.php:92 wp-admin/tools.php:29 wp-admin/update-core.php:502
+#: wp-admin/upload.php:65 wp-admin/upload.php:202 wp-admin/user-edit.php:55
+#: wp-admin/user-new.php:184 wp-admin/users.php:63 wp-admin/widgets.php:74
+msgid "<a href=\"https://wordpress.org/support/\" target=\"_blank\">Support Forums</a>"
+msgstr "<a href=\"https://ja.forums.wordpress.org/\" target=\"_blank\">サポートフォーラム</a>"
 
 #: wp-admin/update-core.php:486
 msgid "In most cases, WordPress will automatically apply maintenance and security updates in the background for you."
@@ -5563,11 +5563,11 @@ msgstr "%1$sと%2$sが登録されています。"
 
 #: wp-admin/includes/dashboard.php:954
 msgid "http://wordpress.org/news/feed/"
-msgstr "http://ja.wordpress.org/feed/"
+msgstr "https://ja.wordpress.org/feed/"
 
 #: wp-admin/includes/dashboard.php:945
 msgid "http://wordpress.org/news/"
-msgstr "http://ja.wordpress.org/"
+msgstr "https://ja.wordpress.org/"
 
 #: wp-admin/options-discussion.php:86
 msgid "(Signup has been disabled. Only members of this site can comment.)"
