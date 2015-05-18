@@ -6,7 +6,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
 Tested up to: 4.2.1
-Stable tag: 2.8.36
+Stable tag: 2.8.37
 
 Saves submitted form data to the database. Export the data to a file or use short codes to display it.
 
@@ -83,6 +83,9 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.8.38 =
+* NaturalSortByMultiField transform now supports up to 10 fields to sort on
 
 = 2.8.37 =
 * Now captures form submission from Caldera Forms
