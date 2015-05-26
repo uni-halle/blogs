@@ -22,8 +22,13 @@ function generate_customize_register( $wp_customize ) {
 	$wp_customize->get_section('title_tagline')->title = __( 'Header Content', 'generate' );
 	$wp_customize->get_control('blogdescription')->priority = 3;
 	$wp_customize->get_control('blogname')->priority = 1;
-	$wp_customize->get_section('static_front_page')->title = __( 'Set Front Page', 'generate' );
-	$wp_customize->get_section('static_front_page')->priority = 10;
+	
+	$static_front_page = wp_list_pages( array( 'echo' => false ) );
+	if ( ! empty( $static_front_page ) ) :
+		$wp_customize->get_section('static_front_page')->title = __( 'Set Front Page', 'generate' );
+		$wp_customize->get_section('static_front_page')->priority = 10;
+	endif;
+	
 	$wp_customize->get_section('nav')->priority = 5;
 	$wp_customize->get_section('nav')->title = __( 'Set Navigation', 'generate' );
 	$wp_customize->remove_section('background_image');
@@ -148,7 +153,7 @@ function generate_customize_register( $wp_customize ) {
 				'default' => $color['default'],
 				'type' => 'option', 
 				'capability' => 'edit_theme_options',
-				'sanitize_callback' => 'sanitize_hex_color'
+				'sanitize_callback' => 'generate_sanitize_hex_color'
 			)
 		);
 		// CONTROLS
@@ -735,7 +740,7 @@ if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Generate_Customi
 					echo '<span class="get-addon">' . sprintf(
 								'<a href="%1$s" target="_blank">%2$s</a>',
 								esc_url( $this->url ),
-								__('Addon available','generate')
+								__('Add-on available','generate')
 							) . '</span>';
 					echo '<p class="description" style="margin-top:5px;">' . $this->description . '</p>';
 					break;
@@ -793,7 +798,7 @@ function generate_customize_preview_js()
 		return;
 	?>
 	<script>
-		jQuery('#customize-info').append('<span class="get-addon" style="display:block;"><a style="display:block;padding-left: 15px;padding-right:0;" href="<?php echo esc_url('http://generatepress.com/addons');?>" target="_blank"><?php _e('Addons Available! Take a look','generate');?> &rarr;</a></span>');
+		jQuery('#customize-info').append('<span class="get-addon" style="display:block;"><a style="display:block;padding-left: 15px;padding-right:0;" href="<?php echo esc_url('http://generatepress.com/addons');?>" target="_blank"><?php _e('Add-ons Available! Take a look','generate');?> &rarr;</a></span>');
 	</script>
 	<?php
 }

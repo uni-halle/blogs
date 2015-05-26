@@ -12,7 +12,7 @@ $generate_settings = wp_parse_args(
 	<div class="inside-article">
 		<?php do_action( 'generate_before_content'); ?>
 		<header class="entry-header">
-			<h2 class="entry-title" itemprop="headline"><a href="<?php echo esc_url( generate_get_link_url() ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<?php the_title( sprintf( '<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url( generate_get_link_url() ) ), '</a></h2>' ); ?>
 		</header><!-- .entry-header -->
 		<?php do_action( 'generate_after_entry_header'); ?>
 		

@@ -32,6 +32,9 @@ function generate_body_classes( $classes )
 	// Get the layout
 	$layout = generate_get_layout();
 	
+	// Get the footer widgets
+	$widgets = generate_get_footer_widgets();
+	
 	// Let us know if a featured image is being used
 	if ( has_post_thumbnail() ) :
 		$classes[] = 'featured-image-active';
@@ -42,7 +45,7 @@ function generate_body_classes( $classes )
 	$classes[] = ( $generate_settings['nav_position_setting'] ) ? $generate_settings['nav_position_setting'] : 'nav-below-header';
 	$classes[] = ( $generate_settings['header_layout_setting'] ) ? $generate_settings['header_layout_setting'] : 'fluid-header';
 	$classes[] = ( $generate_settings['content_layout_setting'] ) ? $generate_settings['content_layout_setting'] : 'separate-containers';
-	$classes[] = ( '' !== $generate_settings['footer_widget_setting'] ) ? 'active-footer-widgets-' . $generate_settings['footer_widget_setting'] : 'active-footer-widgets-3';
+	$classes[] = ( '' !== $widgets ) ? 'active-footer-widgets-' . $widgets : 'active-footer-widgets-3';
 	
 	// Navigation alignment class
 	if ( $generate_settings['nav_alignment_setting'] == 'left' ) :

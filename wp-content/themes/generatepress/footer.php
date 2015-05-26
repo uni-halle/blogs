@@ -14,37 +14,24 @@
 <div <?php generate_footer_class(); ?>>
 	<?php 
 	do_action('generate_before_footer_content');
-	global $post;
-	$generate_settings = wp_parse_args( 
-		get_option( 'generate_settings', array() ), 
-		generate_get_defaults() 
-	);
-	$stored_meta = '';
-	if ( isset( $post ) ) :
-		$stored_meta = get_post_meta( $post->ID, '_generate-footer-widget-meta', true );
-	endif;
 	
-	// Don't run the function unless we're on a page it applies to
-	if ( ! is_singular() ) :
-		$stored_meta = '';
-	endif;
+	// Get how many widgets to show
+	$widgets = generate_get_footer_widgets();
 	
-	if ( '' !== $stored_meta && false !== $stored_meta ) :
-		$generate_settings['footer_widget_setting'] = $stored_meta;
-	endif;
+	if ( !empty( $widgets ) && 0 !== $widgets ) : 
 	
-	if ( !empty( $generate_settings['footer_widget_setting'] ) && 0 !== $generate_settings['footer_widget_setting'] ) : 
+		// Set up the widget width
 		$widget_width = '';
-		if ( $generate_settings['footer_widget_setting'] == 1 ) $widget_width = '100';
-		if ( $generate_settings['footer_widget_setting'] == 2 ) $widget_width = '50';
-		if ( $generate_settings['footer_widget_setting'] == 3 ) $widget_width = '33';
-		if ( $generate_settings['footer_widget_setting'] == 4 ) $widget_width = '25';
-		if ( $generate_settings['footer_widget_setting'] == 5 ) $widget_width = '20';
+		if ( $widgets == 1 ) $widget_width = '100';
+		if ( $widgets == 2 ) $widget_width = '50';
+		if ( $widgets == 3 ) $widget_width = '33';
+		if ( $widgets == 4 ) $widget_width = '25';
+		if ( $widgets == 5 ) $widget_width = '20';
 		?>
 		<div id="footer-widgets" class="site footer-widgets">
 			<div class="inside-footer-widgets grid-container grid-parent">
-				<?php if ( $generate_settings['footer_widget_setting'] >= 1 ) : ?>
-					<div class="footer-widget-1 grid-parent grid-<?php echo $widget_width; ?>">
+				<?php if ( $widgets >= 1 ) : ?>
+					<div class="footer-widget-1 grid-parent grid-<?php echo apply_filters( 'footer_widget_1_width', $widget_width ); ?>">
 						<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-1')): ?>
 							<aside class="widget inner-padding widget_text">
 								<h4 class="widget-title"><?php _e('Footer Widget 1','generate');?></h4>			
@@ -57,8 +44,8 @@
 					</div>
 				<?php endif;
 				
-				if ( $generate_settings['footer_widget_setting'] >= 2 ) : ?>
-				<div class="footer-widget-2 grid-parent grid-<?php echo $widget_width; ?>">
+				if ( $widgets >= 2 ) : ?>
+				<div class="footer-widget-2 grid-parent grid-<?php echo apply_filters( 'footer_widget_2_width', $widget_width ); ?>">
 					<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-2')): ?>
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 2','generate');?></h4>			
@@ -71,8 +58,8 @@
 				</div>
 				<?php endif;
 				
-				if ( $generate_settings['footer_widget_setting'] >= 3 ) : ?>
-				<div class="footer-widget-3 grid-parent grid-<?php echo $widget_width; ?>">
+				if ( $widgets >= 3 ) : ?>
+				<div class="footer-widget-3 grid-parent grid-<?php echo apply_filters( 'footer_widget_3_width', $widget_width ); ?>">
 					<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-3')): ?>
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 3','generate');?></h4>			
@@ -85,8 +72,8 @@
 				</div>
 				<?php endif;
 				
-				if ( $generate_settings['footer_widget_setting'] >= 4 ) : ?>
-				<div class="footer-widget-4 grid-parent grid-<?php echo $widget_width; ?>">
+				if ( $widgets >= 4 ) : ?>
+				<div class="footer-widget-4 grid-parent grid-<?php echo apply_filters( 'footer_widget_4_width', $widget_width ); ?>">
 					<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-4')): ?>
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 4','generate');?></h4>			
@@ -99,8 +86,8 @@
 				</div>
 				<?php endif;
 				
-				if ( $generate_settings['footer_widget_setting'] >= 5 ) : ?>
-				<div class="footer-widget-5 grid-parent grid-<?php echo $widget_width; ?>">
+				if ( $widgets >= 5 ) : ?>
+				<div class="footer-widget-5 grid-parent grid-<?php echo apply_filters( 'footer_widget_5_width', $widget_width ); ?>">
 					<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-5')): ?>
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 5','generate');?></h4>			

@@ -113,11 +113,11 @@
 	}
 	
 	.sf-menu .menu-item-has-children > a:first-child,
-	.sf-menu .page-item-has-children > a:first-child {
+	.sf-menu .page_item_has_children > a:first-child {
 		padding-right: 1em;
 	}
 	.sf-menu .menu-item-has-children > a:first-child:after,
-	.sf-menu .page-item-has-children > a:first-child:after {
+	.sf-menu .page_item_has_children > a:first-child:after {
 		display: none;
 	}
 	

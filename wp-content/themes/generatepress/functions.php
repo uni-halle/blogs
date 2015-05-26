@@ -5,7 +5,7 @@
  * @package Generate
  */
 	
-define( 'GENERATE_VERSION', '1.2.9.5');
+define( 'GENERATE_VERSION', '1.2.9.6');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -260,9 +260,6 @@ function generate_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	if ( is_singular() && wp_attachment_is_image() ) {
-		wp_enqueue_script( 'generate-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
-	}
 }
 
 /**
@@ -311,6 +308,40 @@ function generate_get_layout()
 	
 	// Finally, return the layout
 	return apply_filters( 'generate_sidebar_layout', $layout );
+}
+
+/**
+ * Get the footer widgets for the current page
+ */
+function generate_get_footer_widgets()
+{
+	// Get current post
+	global $post;
+	
+	// Get Customizer options
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	// Set up the footer widget variable
+	$widgets = $generate_settings['footer_widget_setting'];
+	
+	// Get the individual footer widget metabox value
+	$widgets_meta = ( isset( $post ) ) ? get_post_meta( $post->ID, '_generate-footer-widget-meta', true ) : '';
+	
+	// If we're not on a single page or post, the metabox hasn't been set
+	if ( ! is_singular() ) :
+		$widgets_meta = '';
+	endif;
+	
+	// If we have a metabox option set, use it
+	if ( '' !== $widgets_meta && false !== $widgets_meta ) :
+		$widgets = $widgets_meta;
+	endif;
+	
+	// Finally, return the layout
+	return apply_filters( 'generate_footer_widgets', $widgets );
 }
 
 /**
@@ -430,63 +461,6 @@ function generate_base_css()
 }
 
 /** 
- * Moving standalone db entries to generate_settings db entry
- * @since 1.0.8
- */
-add_action('after_setup_theme', 'generate_update_db_entries');
-function generate_update_db_entries() 
-{
-	
-	$generate_settings = get_option('generate_settings');
-	
-	//Grab options
-	$generate_hide_title = get_theme_mod( 'generate_title' );
-	$generate_hide_tagline = get_theme_mod( 'generate_tagline' );
-	$generate_logo = get_theme_mod( 'generate_logo' );
-	
-	if ( !empty( $generate_settings['center_nav'] ) ) :
-		$generate_new_alignment = array();
-		$generate_new_alignment['nav_alignment_setting'] = 'center';
-		$generate_new_alignment['center_nav'] = '';
-		$generate_new_alignment_settings = wp_parse_args( $generate_new_alignment, $generate_settings );
-		update_option( 'generate_settings', $generate_new_alignment_settings );
-	endif;
-	
-	if ( !empty( $generate_settings['center_header'] ) ) :
-		$generate_new_alignment = array();
-		$generate_new_alignment['header_alignment_setting'] = 'center';
-		$generate_new_alignment['center_header'] = '';
-		$generate_new_alignment_settings = wp_parse_args( $generate_new_alignment, $generate_settings );
-		update_option( 'generate_settings', $generate_new_alignment_settings );
-	endif;
-
-	if ( !empty( $generate_hide_title ) || !empty( $generate_hide_tagline ) || !empty( $generate_logo ) ) {
-	
-		// Set up array
-		$generate_new_entries = array();
-		
-		if ( !empty( $generate_hide_title ) ) {
-			$generate_new_entries['hide_title'] = $generate_hide_title;
-		}
-		
-		if ( !empty( $generate_hide_tagline ) ) {
-			$generate_new_entries['hide_tagline'] = $generate_hide_tagline;
-		}
-		
-		if ( !empty( $generate_logo ) ) {
-			$generate_new_entries['logo'] = $generate_logo;
-		}
-		
-		// Update options based on the above
-		$generate_new_entry_settings = wp_parse_args( $generate_new_entries, $generate_settings );
-		update_option( 'generate_settings', $generate_new_entry_settings );
-		remove_theme_mod( 'generate_title' );
-		remove_theme_mod( 'generate_tagline' );
-		remove_theme_mod( 'generate_logo' );
-	}
-}
-
-/** 
  * Add viewport to wp_head
  * Decide whether mobile viewport should be added or fixed width viewport
  * @since 1.1.0
@@ -586,14 +560,17 @@ function generate_smart_content_width()
 	$right_sidebar_width = apply_filters( 'generate_right_sidebar_width', '25' );
 	$left_sidebar_width = apply_filters( 'generate_left_sidebar_width', '25' );
 	
+	// Get the layout
+	$layout = generate_get_layout();
+	
 	// Find the real content width
-	if ( 'left-sidebar' == generate_get_layout() ) {
+	if ( 'left-sidebar' == $layout ) {
 		// If left sidebar is present
 		$content_width = $generate_settings['container_width'] * ( ( 100 - $left_sidebar_width ) / 100 );
-	} elseif ( 'right-sidebar' == generate_get_layout() ) {
+	} elseif ( 'right-sidebar' == $layout ) {
 		// If right sidebar is present
 		$content_width = $generate_settings['container_width'] * ( ( 100 - $right_sidebar_width ) / 100 );
-	} elseif ( 'no-sidebar' == generate_get_layout() ) {
+	} elseif ( 'no-sidebar' == $layout ) {
 		// If no sidebars are present
 		$content_width = $generate_settings['container_width'];
 	} else {

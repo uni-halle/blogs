@@ -284,3 +284,19 @@ function generate_sanitize_blog_excerpt( $input ) {
         return 'full';
     }
 }
+
+/**
+ * Sanitize colors
+ * Allow blank value
+ * @since 1.2.9.6
+ */
+function generate_sanitize_hex_color( $color ) {
+    if ( '' === $color )
+        return '';
+ 
+    // 3 or 6 hex digits, or the empty string.
+    if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
+        return $color;
+ 
+    return '';
+}

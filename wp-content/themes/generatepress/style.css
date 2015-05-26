@@ -3,8 +3,8 @@ Theme Name: GeneratePress
 Theme URI: http://generatepress.com
 Author: Thomas Usborne
 Author URI: http://edge22.com
-Description: GeneratePress is a fast, lightweight, mobile responsive WordPress theme built with speed, SEO and usability in mind. Create your website just the way you want it using the Customizer and see the changes take place right in front of you before you publish. GeneratePress is mobile responsive, W3C Markup Validated, Schema.org microdata integrated, search engine friendly, cross browser compatible (including IE8+), WooCommerce compatible, BuddyPress compatible and 100% translatable. GeneratePress has 8 widget areas, 5 navigation positions, 5 sidebar layouts and much more. Navigate to Appearance > Customize to start customizing! Available in English, German, Portuguese, Spanish, Russian, French, Norwegian, Polish, Czech, Danish, Italian and Greek! See more at http://generatepress.com
-Version: 1.2.9.5
+Description: GeneratePress is a fast, lightweight, mobile responsive WordPress theme built with speed, SEO and usability in mind. Create your website just the way you want it using the Customizer and see the changes take place right in front of you before you publish. GeneratePress is mobile responsive, W3C Markup Validated, Schema.org microdata integrated, search engine friendly, cross browser compatible (including IE8+), WooCommerce compatible, BuddyPress compatible and 100% translatable. GeneratePress has 8 widget areas, 5 navigation positions, 5 sidebar layouts and much more. Navigate to Appearance > Customize to start customizing! Available in English, German, Portuguese, Spanish, Russian, French, Norwegian, Polish, Czech, Danish, Italian and Greek! See more and check out our awesome add-ons at http://generatepress.com
+Version: 1.2.9.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: generate
@@ -327,19 +327,6 @@ input[type="file"] {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-}
-
-/* Links */
-a {
-	color: royalblue;
-}
-a:visited {
-	color: purple;
-}
-a:hover,
-a:focus,
-a:active {
-	color: midnightblue;
 }
 
 /* Alignment */

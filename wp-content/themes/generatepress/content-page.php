@@ -10,7 +10,7 @@
 	<div class="inside-article">
 		<?php do_action( 'generate_before_content'); ?>
 		<header class="entry-header">
-			<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
+			<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
 		</header><!-- .entry-header -->
 		<?php do_action( 'generate_after_entry_header'); ?>
 		<div class="entry-content" itemprop="text">

@@ -96,8 +96,37 @@
 
 .appearance_page_generate-options .updated,
 .appearance_page_generate-options .error {
-	max-width: 1071px;
-	margin-right: 5px;
+	max-width: 1120px;
+	margin-left: 2px;
 	margin-top: 25px;
-	margin-left: 12px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.addon-metabox {
+	text-align: center;
+}
+
+.customize-button a.button,
+.customize-button a.button:visited {
+	font-size: 25px;
+	padding: 10px 20px;
+	line-height: normal;
+	height: auto;
+	width: 100%;
+	text-align: center;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.customize-button {
+	margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+	.hide-on-mobile {
+		display: none;
+	}
 }

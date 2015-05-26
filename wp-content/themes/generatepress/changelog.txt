@@ -10,6 +10,19 @@ Changelog Legend:
 
 ----
 
+(5/9/2015) - 1.2.9.6
+[+] Get footer widgets of current page with generate_get_footer_widgets()
+[+] generate_footer_widgets filter added
+[*] Large Customize button added to admin
+[+] Filters added to footer widget widths: footer_widget_1_width, footer_widget_2_width, footer_widget_3_width, footer_widget_4_width, footer_widget_5_width
+[*] CSS adjusted to show dropdown arrow when no theme location is set
+[*] Remove image attachment specific functions - rarely used
+[x] generate_update_db_entries() removed. If upgrading from 1.0.8 or below, reset your header and navigation alignment in Customizer.
+[*] Allow blank values for base colors
+[!] Fix PHP warning in Customizer when no pages exist
+
+----
+
 (4/22/2015) - 1.2.9.5
 [!] Fix bug where save notices were showing up 3 times
 

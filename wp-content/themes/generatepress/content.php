@@ -12,7 +12,7 @@ $generate_settings = wp_parse_args(
 	<div class="inside-article">
 		<?php do_action( 'generate_before_content'); ?>
 		<header class="entry-header">
-			<h2 class="entry-title" itemprop="headline"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<?php the_title( sprintf( '<h2 class="entry-title" itemprop="headline"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 			<?php if ( 'post' == get_post_type() ) : ?>
 			<div class="entry-meta">
 				<?php generate_posted_on(); ?>
