@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-10 09:37:46+0000\n"
+"PO-Revision-Date: 2015-05-23 17:17:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6174,10 +6174,6 @@ msgstr "Questa funzionalità richiede frame in linea. Si hanno i frame disabilit
 msgid "An error has occurred, which probably means the feed is down. Try again later."
 msgstr "Si è verificato un errore; probabilmente il feed non è attivo. Riprovare più tardi.</li>"
 
-#: wp-includes/functions.php:3510
-msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
-msgstr "%1$s è stao richiamato conun argomento che è <strong>deprecato</strong> dalla versione %2$s senza alcuna alternativa disponibile."
-
 #: wp-includes/functions.php:3508
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s! %3$s"
 msgstr "%1$s è stato chiamato con un argomento <strong>deprecato</strong> dalla versione %2$s! %3$s."
@@ -6306,6 +6302,10 @@ msgstr "Accedi nuovamente"
 #: wp-includes/default-widgets.php:410
 msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
 msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> degli Articoli"
+
+#: wp-includes/functions.php:3510
+msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
+msgstr "%1$s è stato richiamato con un argomento che è <strong>deprecato</strong> dalla versione %2$s senza alcuna alternativa disponibile."
 
 #: wp-login.php:759 wp-login.php:942
 msgid "Lost your password?"
