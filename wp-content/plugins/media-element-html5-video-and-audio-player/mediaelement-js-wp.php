@@ -175,7 +175,7 @@ function mejs_settings_page() {
 }
 
 
-define('MEDIAELEMENTJS_DIR', WP_PLUGIN_URL.'/media-element-html5-video-and-audio-player/mediaelement/');
+define('MEDIAELEMENTJS_DIR', plugin_dir_url(__FILE__).'mediaelement/');
 // Javascript 
 function mejs_add_scripts(){
     if (!is_admin()){
