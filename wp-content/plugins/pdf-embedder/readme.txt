@@ -3,7 +3,7 @@ Contributors: danlester
 Tags: doc, docx, pdf, office, powerpoint, google, document, embed, intranet
 Requires at least: 3.3
 Tested up to: 4.2
-Stable tag: 2.0
+Stable tag: 2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,7 +27,9 @@ When you insert into your post, it will appear in the editor as a 'shortcode' as
 
 [pdf-embedder url="https://mysite.com/wp-content/uploads/2015/01/Plan-Summary.pdf"]
 
-See [Frequently Asked Questions](https://wordpress.org/plugins/pdf-embedder/faq/) for information about sizing options plus other ways to customize the shortcodes.
+You can change the default appearance - e.g. width, and toolbar position/appearance through **Settings -> PDF Embedder**.
+
+To override your site-wide defaults on an individual embed, see the [Plugin Instructions](http://wp-pdf.com/free-instructions/?utm_source=PDF%20Readme%20Instructions&utm_medium=freemium&utm_campaign=Freemium) for information about sizing options plus other ways to customize the shortcodes.
 
 = Mobile-friendly embedding using PDF Embedder Premium =
 
@@ -65,41 +67,22 @@ Always include your full shortcode, plus links to the relevant pages, and screen
 We may occasionally be able to respond to support queries posted on the 'Support' forum here on the wordpress.org
 plugin page, but we recommend sending us an email instead if possible.
 
-= How can I change the Size? =
+= How can I change the Size or customize the Toolbar? =
 
-You can optionally override width and height as follows:
-
-[pdf-embedder url="https://mysite.com/wp-content/uploads/2015/01/Plan-Summary.pdf" **width="500"**]
-
-Note the default value for width is 'max'.
+See Settings -> PDF Embedder in your WordPress admin to change site-wide defaults. You can also override individual embeds by modifying the shortcode.
 
 Resizing works as follows:
 
 * If width='max' the width will take as much space as possible within its parent container (e.g. column within your page).
-* If width='auto' the width will be equal to the 'natural' width of the PDF document contents (i.e. whatever width the PDF says it should be by default).
 * If width is a number (e.g. width='500') then it will display at that number of pixels wide.
 
 *In all cases, if the parent container is narrower than the width calculated above, then the document width will be reduced to the size of the container.*
 
 The height will be calculated so that the document fits naturally, given the width already calculated.
 
-It is possible to specify a fixed height (e.g. height="200"), in which case the document may be cut off vertically. 
-The height will be reduced to fit if it is larger than needed to display the document correctly.
+The Next/Prev toolbar can appear at the top or bottom of the document (or both), and it can either appear only when the user hovers over the document or it can be fixed at all times.
 
-= Can I customize the Toolbar? =
-
-_Toolbar Location_
-
-Add toolbar="[top|bottom|both]" to the shortcode to change the location of the Next/Prev toolbar (default is 'bottom').
-
-E.g. [pdf-embedder url="https://mysite.com/wp-content/uploads/2015/01/Plan-Summary.pdf" **toolbar="top"**]
-
-_Toolbar Fixed/Hover_
-
-Add toolbarfixed="on" (default is 'off') to keep the toolbar open at all times rather than only when the user hovers over the document. 
-Note this of course extends the length of your embedded area.
-
-E.g. [pdf-embedder url="https://mysite.com/wp-content/uploads/2015/01/Plan-Summary.pdf" **toolbarfixed="on"**]
+See the [Plugin Instructions](http://wp-pdf.com/free-instructions/?utm_source=PDF%20Readme%20FAQ&utm_medium=freemium&utm_campaign=Freemium) for more details about sizing and toolbar options.
 
 = Can I improve the viewing experience for mobile users? =
 
@@ -135,6 +118,10 @@ the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
 
 == Changelog ==
+
+= 2.1 =
+
+Settings -> PDF Embedder page so you can now set site-wide defaults for width, height, and toolbar location/appearance.
 
 = 2.0 =
 

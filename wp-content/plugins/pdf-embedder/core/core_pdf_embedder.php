@@ -77,21 +77,35 @@ class core_pdf_embedder {
 		$url = $atts['url'];
 		
 		$this->insert_scripts();
+
+        // Get defaults
+
+        $options = $this->get_option_pdfemb();
 		
-		$width = isset($atts['width']) ? $atts['width'] : 'max';
+		$width = isset($atts['width']) ? $atts['width'] : $options['pdfemb_width'];
 		$height = isset($atts['height']) ? $atts['height'] : 'auto';
 		
 		$extra_style = "";
 		if (is_numeric($width)) {
 			$extra_style .= "width: ".$width."px; ";
 		}
+        elseif ($width!='max' && $width!='auto') {
+            $width = 'max';
+        }
+
 		if (is_numeric($height)) {
 			$extra_style .= "height: ".$height."px; ";
 		}
 		
-		$toolbar = isset($atts['toolbar']) && in_array($atts['toolbar'], array('top', 'bottom', 'both')) ? $atts['toolbar'] : 'bottom';
+		$toolbar = isset($atts['toolbar']) && in_array($atts['toolbar'], array('top', 'bottom', 'both')) ? $atts['toolbar'] : $options['pdfemb_toolbar'];
+        if (!in_array($toolbar, array('top', 'bottom', 'both'))) {
+            $toolbar = 'bottom';
+        }
 		
-		$toolbar_fixed = isset($atts['toolbarfixed']) && $atts['toolbarfixed'] == 'on' ? 'on' : 'off';
+		$toolbar_fixed = isset($atts['toolbarfixed']) ? $atts['toolbarfixed'] : $options['pdfemb_toolbarfixed'];
+        if (!in_array($toolbar_fixed, array('on', 'off'))) {
+            $toolbar_fixed = 'off';
+        }
 		
 		$returnhtml = '<div class="pdfemb-viewer" data-pdf-url="'.esc_attr($this->modify_pdfurl($url)).'" style="'.esc_attr($extra_style).'" '
 						.'data-width="'.esc_attr($width).'" data-height="'.esc_attr($height).'" ';
@@ -141,8 +155,11 @@ class core_pdf_embedder {
 	}
 	
 	public function pdfemb_options_do_page() {
-	
-		$submit_page = is_multisite() ? 'edit.php?action='.$this->get_options_menuname() : 'options.php';
+
+        wp_enqueue_script( 'pdfemb_admin_js', $this->my_plugin_url().'js/admin/pdfemb-admin.js', array('jquery') );
+        wp_enqueue_style( 'pdfemb_admin_css', $this->my_plugin_url().'css/pdfemb-admin.css' );
+
+        $submit_page = is_multisite() ? 'edit.php?action='.$this->get_options_menuname() : 'options.php';
 	
 		if (is_multisite()) {
 			$this->pdfemb_options_do_network_errors();
@@ -151,61 +168,188 @@ class core_pdf_embedder {
 			  
 		<div>
 		
-		<h2>PDF Embedder setup</h2>
-		
-		<div id="pdfemb-tablewrapper">
-		
-		<?php $this->pdfemb_mainsection_text(); ?>
+    		<h2>PDF Embedder setup</h2>
 
-		<form action="<?php echo $submit_page; ?>" method="post" id="pdfemb_form">
+            <p>To use the plugin, just embed PDFs in the same way as you would normally embed images in your posts/pages - but try with a PDF file instead.</p>
+            <p>From the post editor, click Add Media, and then drag-and-drop your PDF file into the media library.
+                When you insert the PDF into your post, it will automatically embed using the plugin's viewer.</p>
+
+
+            <div id="pdfemb-tablewrapper">
+
+            <div id="pdfemb-tableleft" class="pdfemb-tablecell">
+
+                <h2 id="pdfemb-tabs" class="nav-tab-wrapper">
+                    <a href="#main" id="main-tab" class="nav-tab nav-tab-active">Main Settings</a>
+                    <a href="#mobile" id="mobile-tab" class="nav-tab">Mobile</a>
+                    <a href="#secure" id="secure-tab" class="nav-tab">Secure</a>
+                    <?php $this->draw_more_tabs(); ?>
+                </h2>
+
+                <form action="<?php echo $submit_page; ?>" method="post" id="pdfemb_form" enctype="multipart/form-data" >
+
+        <?php
+
+        echo '<div id="main-section" class="pdfembtab active">';
+        $this->pdfemb_mainsection_text();
+        echo '</div>';
+
+        echo '<div id="mobile-section" class="pdfembtab">';
+        $this->pdfemb_mobilesection_text();
+        echo '</div>';
+
+        echo '<div id="secure-section" class="pdfembtab">';
+        $this->pdfemb_securesection_text();
+        echo '</div>';
+
+        settings_fields($this->get_options_pagename());
 		
-		<?php 
-		settings_fields($this->get_options_pagename());
-		
-		$this->pdfemb_options_submit();
 		?>
+
+                    <p class="submit">
+                        <input type="submit" value="Save Changes" class="button button-primary" id="submit" name="submit">
+                    </p>
 				
-		</form>
-		</div>
+                </form>
+            </div>
+
+        </div>
 		
 		</div>  <?php
 	}
-	
-	// Override elsewhere
+
+    protected function draw_more_tabs() {
+    }
+
+
+    // Override elsewhere
 	protected function pdfemb_mainsection_text() {
+        $options = $this->get_option_pdfemb();
 		?>
-		<p>There are no settings to configure in PDF Embedder.</p>
-		<p>To use the plugin, just embed PDFs in the same way as you would normally embed images in your posts/pages - but try with a PDF file instead.</p>
-		<p>From the post editor, click Add Media, and then drag-and-drop your PDF file into the media library. 
-		When you insert the PDF into your post, it will automatically embed using the plugin's viewer.</p>
-		<?php
+
+
+        <h2>Default Viewer Settings</h2>
+
+        <label for="input_pdfemb_width" class="textinput">Width</label>
+        <input id='input_pdfemb_width' class='textinput' name='<?php echo $this->get_options_name(); ?>[pdfemb_width]' size='10' type='text' value='<?php echo esc_attr($options['pdfemb_width']); ?>' />
+		<br class="clear"/>
+
+        <label for="input_pdfemb_height" class="textinput">Height</label>
+        <input id='input_pdfemb_height' class='textinput' name='<?php echo $this->get_options_name(); ?>[pdfemb_height]' size='10' type='text' value='<?php echo esc_attr($options['pdfemb_height']); ?>' />
+        <br class="clear"/>
+
+        <p class="desc big"><i>Enter <b>max</b> or an integer number of pixels</i></p>
+
+        <br class="clear"/>
+
+        <label for="pdfemb_toolbar" class="textinput">Toolbar Location</label>
+        <select name='<?php echo $this->get_options_name(); ?>[pdfemb_toolbar]' id='pdfemb_toolbar' class='select'>
+            <option value="top" <?php echo $options['pdfemb_toolbar'] == 'top' ? 'selected' : ''; ?>>Top</option>
+            <option value="bottom" <?php echo $options['pdfemb_toolbar'] == 'bottom' ? 'selected' : ''; ?>>Bottom</option>
+            <option value="both" <?php echo $options['pdfemb_toolbar'] == 'both' ? 'selected' : ''; ?>>Both</option>
+        </select>
+        <br class="clear" />
+        <br class="clear" />
+
+        <label for="pdfemb_toolbarfixed" class="textinput">Toolbar Hover</label>
+        <span>
+        <input type="radio" name='<?php echo $this->get_options_name(); ?>[pdfemb_toolbarfixed]' id='pdfemb_toolbarfixed_off' class='radio' value="off" <?php echo $options['pdfemb_toolbarfixed'] == 'off' ? 'checked' : ''; ?> />
+        <label for="pdfemb_toolbarfixed_off" class="radio">Toolbar appears only on hover over document</label>
+        </span>
+        <br/>
+        <span>
+        <input type="radio" name='<?php echo $this->get_options_name(); ?>[pdfemb_toolbarfixed]' id='pdfemb_toolbarfixed_on' class='radio' value="on" <?php echo $options['pdfemb_toolbarfixed'] == 'on' ? 'checked' : ''; ?> />
+        <label for="pdfemb_toolbarfixed_on" class="radio">Toolbar always visible</label>
+        </span>
+        <br class="clear" />
+        <br class="clear" />
+
+        <p>You can override these defaults for specific embeds by modifying the shortcodes - see <a href="<?php echo $this->get_instructions_url(); ?>" target="_blank">instructions</a>.</p>
+
+        <?php
 	}
-	
-	protected function pdfemb_options_submit() {
-	?>
-		<p class="submit">
-			<input type="submit" value="Save Changes" class="button button-primary" id="submit" name="submit">
-		</p>
-	<?php
-	}
-	
+
+    protected function get_instructions_url() {
+        return 'http://wp-pdf.com/free-instructions/?utm_source=PDF%20Settings%20Main&utm_medium=freemium&utm_campaign=Freemium';
+    }
+
+    protected function pdfemb_mobilesection_text() {
+    }
+
+    protected function pdfemb_securesection_text()
+    {
+        ?>
+
+        <h2>Protect your PDFs using PDF Embedder Secure</h2>
+        <p>Our <b>PDF Embedder Premium Secure</b> plugin provides the same simple but elegant viewer for your website visitors, with the added protection that
+            it is difficult for users to download or print the original PDF document.</p>
+
+        <p>This means that your PDF is unlikely to be shared outside your site where you have no control over who views, prints, or shares it.</p>
+
+        <p>See our website <a href="http://wp-pdf.com/secure/?utm_source=PDF%20Settings%20Secure&utm_medium=freemium&utm_campaign=Freemium">wp-pdf.com</a> for more
+            details and purchase options.
+        </p>
+
+        <?php
+    }
+
 	public function pdfemb_options_validate($input) {
 		$newinput = Array();
-		$newinput['pdfemb_version'] = $this->PLUGIN_VERSION;
+
+        $newinput['pdfemb_width'] = isset($input['pdfemb_width']) ? trim(strtolower($input['pdfemb_width'])) : 'max';
+        if (!is_numeric($newinput['pdfemb_width']) && $newinput['pdfemb_width']!='max' && $newinput['pdfemb_width']!='auto') {
+            add_settings_error(
+                'pdfemb_width',
+                'widtherror',
+                self::get_error_string('pdfemb_width|widtherror'),
+                'error'
+            );
+        }
+
+        $newinput['pdfemb_height'] = isset($input['pdfemb_height']) ? trim(strtolower($input['pdfemb_height'])) : 'max';
+        if (!is_numeric($newinput['pdfemb_height']) && $newinput['pdfemb_height']!='max' && $newinput['pdfemb_height']!='auto') {
+            add_settings_error(
+                'pdfemb_height',
+                'heighterror',
+                self::get_error_string('pdfemb_height|heighterror'),
+                'error'
+            );
+        }
+
+        if (isset($input['pdfemb_toolbar']) && in_array($input['pdfemb_toolbar'], array('top', 'bottom', 'both'))) {
+            $newinput['pdfemb_toolbar'] = $input['pdfemb_toolbar'];
+        }
+        else {
+            $newinput['pdfemb_toolbar'] = 'bottom';
+        }
+
+        if (isset($input['pdfemb_toolbarfixed']) && in_array($input['pdfemb_toolbarfixed'], array('on', 'off'))) {
+            $newinput['pdfemb_toolbarfixed'] = $input['pdfemb_toolbarfixed'];
+        }
+
+        $newinput['pdfemb_version'] = $this->PLUGIN_VERSION;
 		return $newinput;
 	}
 	
 	protected function get_error_string($fielderror) {
+        $local_error_strings = Array(
+            'pdfemb_width|widtherror' => 'Width must be "max" or an integer (number of pixels)',
+            'pdfemb_height|heighterror' => 'Height must be "max" or an integer (number of pixels)'
+        );
+        if (isset($local_error_strings[$fielderror])) {
+            return $local_error_strings[$fielderror];
+        }
+
 		return 'Unspecified error';
 	}
-	
+
 	public function pdfemb_save_network_options() {
 		check_admin_referer( $this->get_options_pagename().'-options' );
 	
 		if (isset($_POST[$this->get_options_name()]) && is_array($_POST[$this->get_options_name()])) {
 			$inoptions = $_POST[$this->get_options_name()];
 			
-			$outoptions = $this->gdm_options_validate($inoptions);
+			$outoptions = $this->pdfemb_options_validate($inoptions);
 			
 			$error_code = Array();
 			$error_setting = Array();
@@ -262,13 +406,23 @@ class core_pdf_embedder {
 	}
 	
 	// OPTIONS
-	
+
+    protected function get_options_name() {
+        return 'pdfemb';
+    }
+
 	protected function get_default_options() {
-		return Array('pdfemb_version' => $this->PLUGIN_VERSION);
+		return Array(
+            'pdfemb_width' => 'max',
+            'pdfemb_height' => 'max',
+            'pdfemb_toolbar' => 'bottom',
+            'pdfemb_toolbarfixed' => 'off',
+            'pdfemb_version' => $this->PLUGIN_VERSION
+        );
 	}
 	
 	protected $pdfemb_options = null;
-	protected function get_option_dbe() {
+	protected function get_option_pdfemb() {
 		if ($this->pdfemb_options != null) {
 			return $this->pdfemb_options;
 		}
@@ -285,7 +439,12 @@ class core_pdf_embedder {
 		$this->pdfemb_options = $option;
 		return $this->pdfemb_options;
 	}
-	
+
+	protected function save_option_pdfemb($option) {
+		update_site_option($this->get_options_name(), $option);
+		$this->pdfemb_options = $option;
+	}
+
 	// ADMIN
 	
 	public function pdfemb_admin_init() {
@@ -304,6 +463,21 @@ class core_pdf_embedder {
 	// Override in Premium
 	public function pdfemb_init() {
 	}
+
+    public function pdfemb_plugin_action_links( $links, $file ) {
+        if ($file == $this->my_plugin_basename()) {
+            $links = $this->extra_plugin_action_links($links);
+
+            $settings_link = '<a href="' . $this->get_settings_url() . '">Settings</a>';
+            array_unshift($links, $settings_link);
+        }
+
+        return $links;
+    }
+
+    protected function extra_plugin_action_links( $links ) {
+        return $links;
+    }
 	
 	protected function add_actions() {
 
@@ -323,6 +497,8 @@ class core_pdf_embedder {
 			if (is_multisite()) {
 				add_action('network_admin_edit_'.$this->get_options_menuname(), array($this, 'pdfemb_save_network_options'));
 			}
+
+            add_filter(is_multisite() ? 'network_admin_plugin_action_links' : 'plugin_action_links', array($this, 'pdfemb_plugin_action_links'), 10, 2 );
 		}
 	}
 
