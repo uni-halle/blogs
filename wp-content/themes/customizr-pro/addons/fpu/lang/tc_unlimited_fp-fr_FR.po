@@ -1,0 +1,409 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Unlimited FP\n"
+"POT-Creation-Date: 2014-04-29 11:06+0100\n"
+"PO-Revision-Date: 2014-04-29 11:07+0100\n"
+"Last-Translator: Nicolas <contact@presscustomizr.com>\n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../back/classes/class_back_fpu.php:32
+msgid "Settings"
+msgstr "Options"
+
+#: ../back/classes/class_controls_fpu.php:32
+#: ../back/classes/class_controls_fpu.php:216
+msgid "Location, number &amp; layout"
+msgstr "Position, nombre et disposition"
+
+#: ../back/classes/class_controls_fpu.php:33
+#: ../back/classes/class_controls_fpu.php:217
+msgid "Main colors"
+msgstr "Couleurs principales"
+
+#: ../back/classes/class_controls_fpu.php:34
+#: ../back/classes/class_controls_fpu.php:218
+msgid "Thumbnails"
+msgstr "Vignettes"
+
+#: ../back/classes/class_controls_fpu.php:35
+msgid "Title and excerpt"
+msgstr "Titre et extrait"
+
+#: ../back/classes/class_controls_fpu.php:36
+#: ../back/classes/class_controls_fpu.php:220
+msgid "Buttons"
+msgstr "Boutons"
+
+#: ../back/classes/class_controls_fpu.php:37
+#: ../back/classes/class_controls_fpu.php:221
+msgid "Featured pages selection"
+msgstr "Choix du contenu en une"
+
+#: ../back/classes/class_controls_fpu.php:219
+msgid "Titles and excerpts"
+msgstr "Titres et extraits"
+
+#: ../back/classes/activation/class_activation_key.php:54
+#, php-format
+msgid "%1$s Key"
+msgstr "%1$s clé"
+
+#: ../back/classes/activation/class_activation_key.php:61
+msgid "Activation key"
+msgstr "Clé d'activation"
+
+#: ../back/classes/activation/class_activation_key.php:65
+msgid "Enter your activation key"
+msgstr "Saisissez votre clé d'activation"
+
+#: ../back/classes/activation/class_activation_key.php:71
+msgid "Activate key"
+msgstr "Activer la clé"
+
+#: ../back/classes/activation/class_activation_key.php:75
+msgid "active"
+msgstr "active"
+
+#: ../back/classes/activation/class_activation_key.php:76
+msgid "Deactivate Key"
+msgstr "Désactiver la clé"
+
+#: ../back/classes/activation/class_activation_key.php:78
+msgid "Activate Key"
+msgstr "Activer la clé"
+
+#: ../front/classes/class_front_fpu.php:199
+msgid "Edit Featured Pages"
+msgstr "Editer votre contenu en une"
+
+#: ../front/classes/class_front_fpu.php:258
+msgid "Customizer screen"
+msgstr "WordPress Customizer"
+
+#: ../front/classes/class_front_fpu.php:258
+msgid "here"
+msgstr "ici"
+
+#: ../front/classes/class_front_fpu.php:262
+msgid "Featured page"
+msgstr "Pages en une"
+
+#: ../front/classes/class_front_fpu.php:265
+#, php-format
+msgid ""
+"Featured page description text : use the page or post excerpt or set your "
+"own custom text in the WordPress customizer screen %s."
+msgstr ""
+"Texte des pages/post : utilisez l'extrait WordPress automatique ou un texte "
+"personnalisé %s."
+
+#: ../utils/classes/class_utils_fpu.php:164
+msgid "Before header"
+msgstr "Avant haut de page"
+
+#: ../utils/classes/class_utils_fpu.php:165
+msgid "After main menu"
+msgstr "Après le menu principal"
+
+#: ../utils/classes/class_utils_fpu.php:166
+msgid "After header"
+msgstr "Après le haut de page"
+
+#: ../utils/classes/class_utils_fpu.php:167
+msgid "Before featured posts"
+msgstr "Avant les billets en une"
+
+#: ../utils/classes/class_utils_fpu.php:168
+msgid "After featured posts"
+msgstr "Après les billets en une"
+
+#: ../utils/classes/class_utils_fpu.php:169
+msgid "Before main wrapper"
+msgstr "Avant le bloc principal"
+
+#: ../utils/classes/class_utils_fpu.php:170
+msgid "After main wrapper"
+msgstr "Après le boc principal"
+
+#: ../utils/classes/class_utils_fpu.php:171
+msgid "Before content"
+msgstr "Avant le contenu"
+
+#: ../utils/classes/class_utils_fpu.php:172
+msgid "Before footer"
+msgstr "Avant le pied de page"
+
+#: ../utils/classes/class_utils_fpu.php:173
+msgid "Custom location"
+msgstr "Emplacement personnalisé"
+
+#: ../utils/classes/class_utils_fpu.php:321
+msgid "Home featured page one"
+msgstr "Première page en une"
+
+#: ../utils/classes/class_utils_fpu.php:322
+msgid "Home featured page two"
+msgstr "Deuxième page en une"
+
+#: ../utils/classes/class_utils_fpu.php:323
+msgid "Home featured page three"
+msgstr "Troisième page en une"
+
+#: ../utils/classes/class_utils_fpu.php:326
+msgid "Featured text one (200 char. max)"
+msgstr "Texte de la première page (200 car. max)"
+
+#: ../utils/classes/class_utils_fpu.php:327
+msgid "Featured text two (200 char. max)"
+msgstr "Texte de la deuxième page (200 car. max)"
+
+#: ../utils/classes/class_utils_fpu.php:328
+msgid "Featured text three (200 char. max)"
+msgstr "Texte de la troisième page (200 car. max)"
+
+#: ../utils/classes/class_utils_fpu.php:347
+#, php-format
+msgid "Custom featured page %1$s"
+msgstr "Page personnalisée %1$s"
+
+#: ../utils/classes/class_utils_fpu.php:364
+#, php-format
+msgid "Featured text %1$s (200 car. max)"
+msgstr "Text de la page %1$s"
+
+#: ../utils/classes/class_utils_fpu.php:367
+msgid ""
+"You need to select a page/post first. Leave this field empty if you want to "
+"use the excerpt. You can include HTML tags."
+msgstr ""
+"Choisissez d'abord une page/un billet. Laissez ce champ vide si vous "
+"souhaitez utiliser l'extrait automatique. HTML possible."
+
+#: ../utils/classes/class_utils_fpu.php:379
+msgid " &#45; Select &#45; "
+msgstr " &#45; Choisir &#45; "
+
+#: ../utils/classes/class_utils_fpu.php:380
+msgid "Blue"
+msgstr "Bleu"
+
+#: ../utils/classes/class_utils_fpu.php:381
+msgid "Green"
+msgstr "Vert"
+
+#: ../utils/classes/class_utils_fpu.php:382
+msgid "Yellow"
+msgstr "Jaune"
+
+#: ../utils/classes/class_utils_fpu.php:383
+msgid "Orange"
+msgstr "Orange"
+
+#: ../utils/classes/class_utils_fpu.php:384
+msgid "Red"
+msgstr "Rouge"
+
+#: ../utils/classes/class_utils_fpu.php:385
+msgid "Purple"
+msgstr "Violet"
+
+#: ../utils/classes/class_utils_fpu.php:386
+msgid "Grey"
+msgstr "Gris"
+
+#: ../utils/classes/class_utils_fpu.php:387
+msgid "Light grey"
+msgstr "Gris clair"
+
+#: ../utils/classes/class_utils_fpu.php:388
+msgid "Black"
+msgstr "Noir"
+
+#: ../utils/classes/class_utils_fpu.php:414
+msgid "Featured Pages"
+msgstr "Pages en une"
+
+#: ../utils/classes/class_utils_fpu.php:416
+msgid "Customize your featured pages"
+msgstr "Customisez votre contenu à la une"
+
+#: ../utils/classes/class_utils_fpu.php:441
+msgid "Display home featured pages area"
+msgstr "Afficher le block des pages en une"
+
+#: ../utils/classes/class_utils_fpu.php:445
+msgid "Enable"
+msgstr "Activer"
+
+#: ../utils/classes/class_utils_fpu.php:446
+msgid "Disable"
+msgstr "Désactiver"
+
+#: ../utils/classes/class_utils_fpu.php:455
+msgid "Select a location"
+msgstr "Choisir un emplacement"
+
+#: ../utils/classes/class_utils_fpu.php:466
+msgid "Define a custom hook to display your featured pages"
+msgstr "Définir un hook personnalisé."
+
+#: ../utils/classes/class_utils_fpu.php:469
+msgid ""
+"Add your custom hook in this field whithout any quotes, space or special "
+"characters (it will be stripped out) . Ex : my_custom_hook. Then in your "
+"WordPress template, simply add <?php do_action(\"my_custom_hook\") ?> where "
+"you want to display your featured pages."
+msgstr ""
+"Ecrivez votre hook dans ce champ sans caratères spéciaux, apostrophes ou "
+"espaces (ils seront supprimés). Ex : mon_custom_hook. Puis ajoutez le code "
+"suivant dans votre template WordPress  <?php do_action(\"mon_custom_hook\") ?"
+"> ."
+
+#: ../utils/classes/class_utils_fpu.php:478
+msgid "Featured pages number"
+msgstr "Nombre de pages en une"
+
+#: ../utils/classes/class_utils_fpu.php:484
+msgid ""
+"1) Set a number of featured pages. 2) Save and refresh the page 3) Edit your "
+"featured pages"
+msgstr ""
+"1) Choisissez un nombre de pages, 2) Enregistrer et rafraîchissez cet écran, "
+"3) Editez vos pages ci-dessous"
+
+#: ../utils/classes/class_utils_fpu.php:491
+msgid "Featured pages layout"
+msgstr "Pages par lignes"
+
+#: ../utils/classes/class_utils_fpu.php:495
+msgid "1 block by line"
+msgstr "1 bloc par ligne"
+
+#: ../utils/classes/class_utils_fpu.php:496
+msgid "2 blocks by line"
+msgstr "2 pages par ligne"
+
+#: ../utils/classes/class_utils_fpu.php:497
+msgid "3 blocks by line"
+msgstr "3 pages par ligne"
+
+#: ../utils/classes/class_utils_fpu.php:498
+msgid "4 blocks by line"
+msgstr "4 pages par ligne"
+
+#: ../utils/classes/class_utils_fpu.php:510
+msgid "Background color"
+msgstr "Couleur d'arrière plan"
+
+#: ../utils/classes/class_utils_fpu.php:520
+msgid "Enable random colors"
+msgstr "Activer les couleurs aléatoires"
+
+#: ../utils/classes/class_utils_fpu.php:523
+msgid ""
+"This option will apply a beautiful flat design look to your front page with "
+"random colors"
+msgstr ""
+"Cette option applique un look type \"Flat Design\" avec des couleurs "
+"aléatoires."
+
+#: ../utils/classes/class_utils_fpu.php:532
+msgid "Display thumbnails"
+msgstr "Afficher les vignettes"
+
+#: ../utils/classes/class_utils_fpu.php:535
+msgid ""
+"The images are set with the \"featured image\" of each pages or posts. "
+"Uncheck the option above to disable the featured images."
+msgstr ""
+"Les vignettes sont les \"images à la une\" de vos pages/billets. Décocher "
+"cette option pour désactiver les vignettes."
+
+#: ../utils/classes/class_utils_fpu.php:543
+#: ../utils/classes/class_utils_fpu.php:589
+#: ../utils/classes/class_utils_fpu.php:646
+msgid "Override random colors"
+msgstr "Utiliser en priorité (si les couleurs aléatoires sont activées)"
+
+#: ../utils/classes/class_utils_fpu.php:546
+msgid "If enabled, your page/post thumbnail will override the random color."
+msgstr "Cette option affiche les images en priorité."
+
+#: ../utils/classes/class_utils_fpu.php:555
+msgid "Display titles"
+msgstr "Afficher les titres"
+
+#: ../utils/classes/class_utils_fpu.php:566
+msgid "Display excerpts"
+msgstr "Afficher les extraits"
+
+#: ../utils/classes/class_utils_fpu.php:579
+msgid "Title/excerpt color"
+msgstr "Couleurs du titre et extrait"
+
+#: ../utils/classes/class_utils_fpu.php:592
+msgid "If enabled, your custom color will override the random color."
+msgstr "La couleur personnalisée sera utilisée en priorité."
+
+#: ../utils/classes/class_utils_fpu.php:601
+msgid "Limit excerpt to 200 chars."
+msgstr "Limiter l'extrait à 200 car."
+
+#: ../utils/classes/class_utils_fpu.php:604
+msgid ""
+"Uncheck this option if you want to disable the default limit of the excerpt."
+msgstr ""
+"Décocher cette option pour désactiver la limite de caractères pour l'extrait."
+
+#: ../utils/classes/class_utils_fpu.php:613
+msgid "Display buttons"
+msgstr "Afficher les boutons"
+
+#: ../utils/classes/class_utils_fpu.php:620
+msgid "Read more &raquo;"
+msgstr "Plus &raquo;"
+
+#: ../utils/classes/class_utils_fpu.php:622
+msgid "Button text"
+msgstr "Text des boutons"
+
+#: ../utils/classes/class_utils_fpu.php:633
+msgid "Select a button style"
+msgstr "Choisir un style de bouton"
+
+#: ../utils/classes/class_utils_fpu.php:649
+msgid "If enabled, your custom button style will override the random color."
+msgstr "La couleur personnalisée sera utilisée en priorité."
+
+#: ../utils/classes/class_utils_fpu.php:660
+msgid "Button text color"
+msgstr "Couleur du texte du bouton"
+
+#~ msgid ""
+#~ "The <strong>%1$s</strong> plugin can not be used with a theme (or a "
+#~ "parent theme) different than Customizr with a version less than v3.1.0."
+#~ msgstr ""
+#~ "Le plugin <strong>%1$s</strong> doit être utilisé avec Customizr (version "
+#~ "3.1+) comme theme principal ou parent."
+
+#~ msgid "License Key"
+#~ msgstr "Clé"
+
+#~ msgid "Show titles"
+#~ msgstr "Afficher les titres"
+
+#~ msgid "Skin Generator"
+#~ msgstr "Générateur de skins"
+
+#~ msgid "Skin color picker"
+#~ msgstr "Selectionner une couleur pour votre skin"

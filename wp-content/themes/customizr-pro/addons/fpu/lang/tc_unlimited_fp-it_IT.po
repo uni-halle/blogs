@@ -1,0 +1,567 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Unlimited FP\n"
+"POT-Creation-Date: 2015-03-20 11:21+0100\n"
+"PO-Revision-Date: 2015-03-20 11:38+0100\n"
+"Last-Translator: Rocco Aliberti\n"
+"Language-Team: Nicolas G. <contact@presscustomizr.com>\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../back/classes/activation/class_activation_key.php:54
+#, php-format
+msgid "%1$s Key"
+msgstr "Chiave %1$s"
+
+#: ../back/classes/activation/class_activation_key.php:61
+msgid "Activation key"
+msgstr "Chiave d'attivazione"
+
+#: ../back/classes/activation/class_activation_key.php:65
+msgid "Enter your activation key"
+msgstr "Inserisci la tua chiave di attivazione"
+
+#: ../back/classes/activation/class_activation_key.php:71
+msgid "Activate key"
+msgstr "Attiva chiave"
+
+#: ../back/classes/activation/class_activation_key.php:75
+msgid "active"
+msgstr "attiva"
+
+#: ../back/classes/activation/class_activation_key.php:76
+msgid "Deactivate Key"
+msgstr "Disattiva chiave"
+
+#: ../back/classes/activation/class_activation_key.php:78
+msgid "Activate Key"
+msgstr "Attiva chiave"
+
+#: ../back/classes/class_back_fpu.php:51
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: ../back/classes/class_back_fpu.php:52
+msgid "System infos"
+msgstr "Informazioni di Sistema"
+
+#: ../back/classes/class_back_system_info.php:47
+#: ../back/classes/class_back_system_info.php:48
+msgid "System Info"
+msgstr "Informazioni di Sistema"
+
+#: ../back/classes/class_back_system_info.php:80
+msgid "System Information"
+msgstr "Informazioni di Sistema"
+
+#: ../back/classes/class_back_system_info.php:82
+msgid ""
+"To copy the system info, click below then press Ctrl + C (PC) or Cmd + C "
+"(Mac)."
+msgstr ""
+"Per copiare le informazioni di sistema, clicca nel box sottostante poi premi "
+"Ctrl + C (PC) or Cmd + C (Mac)."
+
+#: ../back/classes/class_controls_fpu.php:32
+#: ../back/classes/class_controls_fpu.php:216
+msgid "Location, number &amp; layout"
+msgstr "Posizione, numero &amp; layout"
+
+#: ../back/classes/class_controls_fpu.php:33
+#: ../back/classes/class_controls_fpu.php:217
+msgid "Main colors"
+msgstr "Colori principali"
+
+#: ../back/classes/class_controls_fpu.php:34
+#: ../back/classes/class_controls_fpu.php:218
+msgid "Thumbnails"
+msgstr "Immagini in miniatura"
+
+#: ../back/classes/class_controls_fpu.php:35
+msgid "Title and excerpt"
+msgstr "Titolo ed estratto"
+
+#: ../back/classes/class_controls_fpu.php:36
+#: ../back/classes/class_controls_fpu.php:220
+msgid "Buttons"
+msgstr "Pulsanti"
+
+#: ../back/classes/class_controls_fpu.php:37
+#: ../back/classes/class_controls_fpu.php:221
+msgid "Featured pages selection"
+msgstr "Selezione delle Pagine in evidenza"
+
+#: ../back/classes/class_controls_fpu.php:219
+msgid "Titles and excerpts"
+msgstr "Titoli ed estratti"
+
+#: ../front/classes/class_front_fpu.php:182
+msgid "Edit Featured Pages"
+msgstr "Modifica Pagine in Evidenza"
+
+#: ../front/classes/class_front_fpu.php:244
+msgid "Customizer screen"
+msgstr "Schermata Personalizza"
+
+#: ../front/classes/class_front_fpu.php:244
+msgid "here"
+msgstr "qui"
+
+#: ../front/classes/class_front_fpu.php:248
+msgid "Featured page"
+msgstr "Pagina in evidenza"
+
+#: ../front/classes/class_front_fpu.php:251
+#, php-format
+msgid ""
+"Featured page description text : use the page or post excerpt or set your "
+"own custom text in the WordPress customizer screen %s."
+msgstr ""
+"Testo descrizione della pagina in evidenza: usa l'estratto della pagina o "
+"dell'articolo, oppure imposta il tuo testo personalizzato nella schermata "
+"Personalizza di Wordpress %s."
+
+#: ../front/classes/class_front_fpu.php:349
+msgid "Edit"
+msgstr "Modifica"
+
+#: ../tc_unlimited_featured_pages.php:363
+#, php-format
+msgid ""
+"The <strong>%s</strong> plugin must be disabled since it is included in this "
+"theme. Open the <a href=\"%s\">plugins page</a> to desactivate it."
+msgstr ""
+"Il plugin <strong>%s</strong> deve essere disabilitato in quanto già incluso "
+"in questo tema. Vai alla <a href=\"%s\">pagina dei plugin</a> per "
+"disabilitarlo."
+
+#: ../utils/classes/class_utils_fpu.php:164
+msgid "Before header"
+msgstr "Prima della testata"
+
+#: ../utils/classes/class_utils_fpu.php:165
+msgid "After main menu"
+msgstr "Dopo il menù principale"
+
+#: ../utils/classes/class_utils_fpu.php:166
+msgid "After header"
+msgstr "Dopo la testata"
+
+#: ../utils/classes/class_utils_fpu.php:167
+msgid "Before featured posts"
+msgstr "Prima degli articoli in evidenza"
+
+#: ../utils/classes/class_utils_fpu.php:168
+msgid "After featured posts"
+msgstr "Dopo gli articoli in evidenza"
+
+#: ../utils/classes/class_utils_fpu.php:169
+msgid "Before main wrapper"
+msgstr "Prima del contenitore principale"
+
+#: ../utils/classes/class_utils_fpu.php:170
+msgid "After main wrapper"
+msgstr "Dopo il contenitore principale"
+
+#: ../utils/classes/class_utils_fpu.php:171
+msgid "Before content"
+msgstr "Prima del contenuto"
+
+#: ../utils/classes/class_utils_fpu.php:172
+msgid "Before footer"
+msgstr "Prima del piè di pagina"
+
+#: ../utils/classes/class_utils_fpu.php:173
+msgid "Custom location"
+msgstr "Posizione personalizzata"
+
+#: ../utils/classes/class_utils_fpu.php:325
+msgid "Home featured page one"
+msgstr "Pagina in evidenza uno"
+
+#: ../utils/classes/class_utils_fpu.php:326
+msgid "Home featured page two"
+msgstr "Pagina in evidenza due"
+
+#: ../utils/classes/class_utils_fpu.php:327
+msgid "Home featured page three"
+msgstr "Pagina in evidenza tre"
+
+#: ../utils/classes/class_utils_fpu.php:330
+msgid "Featured text one (200 char. max)"
+msgstr "Testo in evidenza uno (200 car. max)"
+
+#: ../utils/classes/class_utils_fpu.php:331
+msgid "Featured text two (200 char. max)"
+msgstr "Testo in evidenza due (200 car. max)"
+
+#: ../utils/classes/class_utils_fpu.php:332
+msgid "Featured text three (200 char. max)"
+msgstr "Testo in evidenza tre (200 car. max)"
+
+#: ../utils/classes/class_utils_fpu.php:351
+#, php-format
+msgid "Custom featured page %1$s"
+msgstr "Pagina in evidenza personalizzata %1$s"
+
+#: ../utils/classes/class_utils_fpu.php:368
+#, php-format
+msgid "Featured text %1$s (200 car. max)"
+msgstr "Testo in evidenza %1$s (200 car. max)"
+
+#: ../utils/classes/class_utils_fpu.php:371
+msgid ""
+"You need to select a page/post first. Leave this field empty if you want to "
+"use the excerpt. You can include HTML tags."
+msgstr ""
+"E' necessario selezionare prima una pagina o un articolo. Lascia questo "
+"campo vuoto se vuoi utilizzare l'estratto. Puoi includere tag HTML."
+
+#: ../utils/classes/class_utils_fpu.php:383
+msgid " &#45; Select &#45; "
+msgstr " &#45; Seleziona &#45; "
+
+#: ../utils/classes/class_utils_fpu.php:384
+msgid "Blue"
+msgstr "Blu"
+
+#: ../utils/classes/class_utils_fpu.php:385
+msgid "Green"
+msgstr "Verde"
+
+#: ../utils/classes/class_utils_fpu.php:386
+msgid "Yellow"
+msgstr "Giallo"
+
+#: ../utils/classes/class_utils_fpu.php:387
+msgid "Orange"
+msgstr "Arancione"
+
+#: ../utils/classes/class_utils_fpu.php:388
+msgid "Red"
+msgstr "Rosso"
+
+#: ../utils/classes/class_utils_fpu.php:389
+msgid "Purple"
+msgstr "Viola"
+
+#: ../utils/classes/class_utils_fpu.php:390
+msgid "Grey"
+msgstr "Grigio"
+
+#: ../utils/classes/class_utils_fpu.php:391
+msgid "Light grey"
+msgstr "Grigio chiaro"
+
+#: ../utils/classes/class_utils_fpu.php:392
+msgid "Black"
+msgstr "Nero"
+
+#: ../utils/classes/class_utils_fpu.php:418
+msgid "Featured Pages"
+msgstr "Pagine in Evidenza"
+
+#: ../utils/classes/class_utils_fpu.php:420
+msgid "Customize your featured pages"
+msgstr "Personalizza le tue pagine in evidenza"
+
+#: ../utils/classes/class_utils_fpu.php:451
+msgid "Display home featured pages area"
+msgstr "Mostra l'area delle pagine in evidenza nella pagina iniziale"
+
+#: ../utils/classes/class_utils_fpu.php:455
+msgid "Enable"
+msgstr "Abilita"
+
+#: ../utils/classes/class_utils_fpu.php:456
+msgid "Disable"
+msgstr "Disabilita"
+
+#: ../utils/classes/class_utils_fpu.php:465
+msgid "Select a location"
+msgstr "Scegli una posizione"
+
+#: ../utils/classes/class_utils_fpu.php:476
+msgid "Define a custom hook to display your featured pages"
+msgstr ""
+"Definisci un hook personalizzato per mostrare le tue pagine in evidenza"
+
+#: ../utils/classes/class_utils_fpu.php:479
+msgid ""
+"Add your custom hook in this field whithout any quotes, space or special "
+"characters (it will be stripped out) . Ex : my_custom_hook. Then in your "
+"WordPress template, simply add <?php do_action(\"my_custom_hook\") ?> where "
+"you want to display your featured pages."
+msgstr ""
+"Aggiungi il tuo hook personalizzato in questo campo senza virgolette, spazi "
+"or caratteri speciali (verranno eliminati). Es: mio_hook . Quindi nel tuo "
+"template, aggiungi solo <?php do_action(\"mio_hook\") ?> nel punto in cui "
+"vuoi mostrare le pagine in evidenza."
+
+#: ../utils/classes/class_utils_fpu.php:488
+msgid "Featured pages number"
+msgstr "Numero di pagine in evidenza"
+
+#: ../utils/classes/class_utils_fpu.php:494
+msgid ""
+"1) Set a number of featured pages. 2) Save and refresh the page 3) Edit your "
+"featured pages"
+msgstr ""
+"1) Imposta un numero di immagini in evidenza. 2) Salva e aggiorna la pagina "
+"3) Edita le tue pagine in evidenza"
+
+#: ../utils/classes/class_utils_fpu.php:501
+msgid "Featured pages layout"
+msgstr "Layout delle Pagine in evidenza"
+
+#: ../utils/classes/class_utils_fpu.php:505
+msgid "1 block by line"
+msgstr "1 blocco per linea"
+
+#: ../utils/classes/class_utils_fpu.php:506
+msgid "2 blocks by line"
+msgstr "2 blocchi per linea"
+
+#: ../utils/classes/class_utils_fpu.php:507
+msgid "3 blocks by line"
+msgstr "3 blocchi per linea"
+
+#: ../utils/classes/class_utils_fpu.php:508
+msgid "4 blocks by line"
+msgstr "4 blocchi per linea"
+
+#: ../utils/classes/class_utils_fpu.php:517
+msgid "Disable reordering for devices > 768px (portrait width of tablets) "
+msgstr ""
+"Disabilita il riordinamento per i dispositivi > 768px ( tablet con portrait "
+"layout)"
+
+#: ../utils/classes/class_utils_fpu.php:520
+msgid ""
+"Check this box if you want to display 4 FP by lines on tablet's portrait "
+"layout"
+msgstr ""
+"Spunta questa casella se vuoi mostrare 4 Pagine in evidenza per riga sui "
+"tablet con portrait layout"
+
+#: ../utils/classes/class_utils_fpu.php:532
+msgid "Background color"
+msgstr "Colore dello sfondo"
+
+#: ../utils/classes/class_utils_fpu.php:541
+msgid "Enable random colors"
+msgstr "Abilita colori casuali"
+
+#: ../utils/classes/class_utils_fpu.php:544
+msgid ""
+"This option will apply a beautiful flat design look to your front page with "
+"random colors"
+msgstr ""
+"Questa opzione applicherà un bellissimo design minimalista alla tua pagina "
+"iniziale con colori casuali"
+
+#: ../utils/classes/class_utils_fpu.php:553
+msgid "Display thumbnails"
+msgstr "Mostra miniature"
+
+#: ../utils/classes/class_utils_fpu.php:556
+msgid ""
+"The images are set with the \"featured image\" of each pages or posts. "
+"Uncheck the option above to disable the featured images."
+msgstr ""
+"Le immagini sono impostate con le \"immagini in evidenza\" di ciascuna "
+"pagina o articolo. Deseleziona l'opzione per disabilitare le immagini in "
+"evidenza."
+
+#: ../utils/classes/class_utils_fpu.php:564
+#: ../utils/classes/class_utils_fpu.php:635
+#: ../utils/classes/class_utils_fpu.php:692
+msgid "Override random colors"
+msgstr "Annulla colori casuali"
+
+#: ../utils/classes/class_utils_fpu.php:567
+msgid ""
+"If this option is checked and you have enable the random color option, your "
+"page/post thumbnail will be displayed instead of the random color."
+msgstr ""
+"Se attiva, e hai abilitato l'opzione per i colori casuali, la miniatura "
+"della pagina/articolo annullerà il colore casuale."
+
+#: ../utils/classes/class_utils_fpu.php:573
+msgid "Thumbnails shape"
+msgstr "Forma delle immagini in miniatura"
+
+#: ../utils/classes/class_utils_fpu.php:577
+msgid "Rounded, expand on hover"
+msgstr "Circolare, espansione al passaggio del mouse"
+
+#: ../utils/classes/class_utils_fpu.php:578
+msgid "Rounded, no expansion"
+msgstr "Circolare, nessuna espansione"
+
+#: ../utils/classes/class_utils_fpu.php:579
+msgid "Squared, expand on hover"
+msgstr "Quadrata, espansione al passaggio del mouse"
+
+#: ../utils/classes/class_utils_fpu.php:580
+msgid "Squared, no expansion"
+msgstr "Quadrata, nessuna espansione"
+
+#: ../utils/classes/class_utils_fpu.php:589
+msgid "Dynamic thumbnails centering on any devices"
+msgstr "Centraggio automatico delle immagini su ogni dispositivo"
+
+#: ../utils/classes/class_utils_fpu.php:593
+msgid ""
+"This option dynamically centers your images on any devices vertically or "
+"horizontally (without stretching them) according to their initial dimensions."
+msgstr ""
+"Quest'opzione centra dinamicamente le tue immagini in ogni dispositivo, sia "
+"verticalmente che orizzontalmente (senza deformarle) in accordo con le loro "
+"dimensioni iniziali."
+
+#: ../utils/classes/class_utils_fpu.php:601
+msgid "Display titles"
+msgstr "Mostra titoli"
+
+#: ../utils/classes/class_utils_fpu.php:612
+msgid "Display excerpts"
+msgstr "Mostra estratti"
+
+#: ../utils/classes/class_utils_fpu.php:625
+msgid "Title/excerpt color"
+msgstr "Colore del titolo/estratto"
+
+#: ../utils/classes/class_utils_fpu.php:638
+msgid "If enabled, your custom color will override the random color."
+msgstr "Se attiva, il colore personalizzato annullerà il colore casuale."
+
+#: ../utils/classes/class_utils_fpu.php:647
+msgid "Limit excerpt to 200 chars."
+msgstr "Limita l'estratto a 200 caratteri."
+
+#: ../utils/classes/class_utils_fpu.php:650
+msgid ""
+"Uncheck this option if you want to disable the default limit of the excerpt."
+msgstr ""
+"Deseleziona  questa opzione se vuoi disabilitare il limite prestabilito "
+"dell'estratto."
+
+#: ../utils/classes/class_utils_fpu.php:659
+msgid "Display buttons"
+msgstr "Mostra i pulsanti"
+
+#: ../utils/classes/class_utils_fpu.php:666
+msgid "Read more &raquo;"
+msgstr "Scopri di più &raquo;"
+
+#: ../utils/classes/class_utils_fpu.php:668
+msgid "Button text"
+msgstr "Testo del pulsante"
+
+#: ../utils/classes/class_utils_fpu.php:679
+msgid "Select a button style"
+msgstr "Scegli uno stile per il pulsante"
+
+#: ../utils/classes/class_utils_fpu.php:695
+msgid "If enabled, your custom button style will override the random color."
+msgstr ""
+"Se attiva, lo stile personalizzato del pulsante annullerà il colore casuale."
+
+#: ../utils/classes/class_utils_fpu.php:706
+msgid "Button text color"
+msgstr "Colore del testo del pulsante"
+
+#, fuzzy
+#~ msgid "Various images settings"
+#~ msgstr "Réglages page d'accueil"
+
+#, fuzzy
+#~ msgid "Ajust the slider size"
+#~ msgstr "Texte de description (sous le titre) de la diapositive"
+
+#, fuzzy
+#~ msgid "Choose a font"
+#~ msgstr "Choisir une page"
+
+#~ msgid "Slide Entry"
+#~ msgstr "Diapositive"
+
+#~ msgid "Edit Slide Entry"
+#~ msgstr "Modifier la diapositive"
+
+#~ msgid "Search Slide Entries"
+#~ msgstr "Rechercher dans les diapositives"
+
+#~ msgid "Edit Slider Name"
+#~ msgstr "Modifier le nom du diporama"
+
+#~ msgid "Front Page Widget Area One"
+#~ msgstr "Première zone de widgets de page d'accueil"
+
+#~ msgid "Front Page Widget Area Two"
+#~ msgstr "Deuxième zone de widgets de page d'accueil"
+
+#~ msgid "Front Page Widget Area Three"
+#~ msgstr "Troisième zone de widgets de page d'accueil"
+
+#~ msgid "If this field is empty, it will display an excerpt of the page."
+#~ msgstr "Si le champ est vide, un extrait de la page est affiché."
+
+#~ msgid "Force logo to fit in the left header block"
+#~ msgstr "Forcer le redimensionnement du logo dans le bloc gauche du header"
+
+#~ msgid ""
+#~ "Force default layout for all posts and pages (including front page and "
+#~ "pages/posts with a specific layout)"
+#~ msgstr ""
+#~ "Forcer la structure par défaut pour toutes les pages du sites (y compris "
+#~ "la page d'accueil ainsi que les pages et billets qui ont une structure "
+#~ "spécifique)"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "%"
+#~ msgstr "%"
+
+#~ msgid "Manage widgets"
+#~ msgstr "Gérer les widgets"
+
+#~ msgid "Right"
+#~ msgstr "Droite"
+
+#~ msgid "Left"
+#~ msgstr "Gauche"
+
+#~ msgid "View details &raquo;"
+#~ msgstr "Voir les détails &raquo;"
+
+#~ msgid "Length of the excerpt (default 200)"
+#~ msgstr "Longueur de l'extrait (200 car. par défaut)"
+
+#~ msgid "Theme Options"
+#~ msgstr "Options du thème"
+
+#~ msgid " checked=\"checked\""
+#~ msgstr " "
+
+#~ msgid "Sample Checkbox"
+#~ msgstr "Exemple"
+
+#~ msgid ""
+#~ "Appears on posts and pages except the optional Front Page template, which "
+#~ "has its own widgets"
+#~ msgstr "Affichée dans les posts et les pages, hormis l"
