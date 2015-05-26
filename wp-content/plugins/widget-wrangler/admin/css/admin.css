@@ -103,7 +103,7 @@ hr.ww-hr {
 	display: none;
 }
 #ww-post-edit-message {
-	display: none;
+	visibility: hidden;
 	padding: 4px 8px;
 	margin: 6px 0px 12px;
 	background: #FFFFEE;
@@ -231,7 +231,13 @@ label.ww-preset-checkbox input {
 .ww-presets {
 	padding: 12px 0px 16px;
 }
-#ww-post-preset { border-bottom: 1px solid #666;padding-top: 8px; }
+.ww-inner {
+	padding: 12px;
+}
+#ww-add-new-widget h2 {
+	margin: 0;
+}
+#ww-post-preset, #ww-add-new-widget { border-bottom: 1px solid #666;padding-top: 8px; }
 #ww-post-preset p { padding-left: 20px; }
 
 #ww-post-preset .description {
@@ -474,6 +480,9 @@ li.ww-corral-sort-item{
 	color: #222222;
 	box-shadow: 0 1px 0 #FFFFFF;
 	text-shadow: 0 1px 0 #FFFFFF;
+}
+li.ww-item:hover {
+	background-color: #f9f9f9;
 }
 
 .ww-widget-weight {

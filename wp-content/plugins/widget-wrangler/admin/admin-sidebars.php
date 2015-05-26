@@ -67,8 +67,7 @@ class WW_Sidebars_Admin  {
     global $wp_registered_sidebars;
     
     $altered_sidebars = $this->ww->get_altered_sidebars(true);
-    
-    //$this->ww->__d($altered_sidebars);
+
     ob_start();
     ?>
       <div id='ww-alter-sidebar-page'>

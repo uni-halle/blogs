@@ -2,7 +2,7 @@
 Contributors: daggerhart
 Tags: widget, admin, widgets, administration, sidebar, manage
 Requires at least: 3
-Tested up to: 4.1.1
+Tested up to: 4.2.2
 Stable tag: trunk
 
 A plugin for managing the display of widgets on a page by page basis. Using widgets as a post type.
@@ -99,6 +99,14 @@ When you Copy a WordPress widget, it creates a new widget post in the Widget Wra
 1. Widget Wrangler Corral Widget
 
 == Changelog ==
+
+= 2.2.1 =
+
+* Bug fix: Fixed row index collisions for sortable widgets
+
+= 2.2.0 =
+
+* Feature: Widgets can be added multiple times in multiple corrals.
 
 = 2.1.6 =
 
@@ -297,4 +305,4 @@ Initial Release
 
 == Upgrade Notice ==
 
-2.1.6 Bug fixes: Widget edit page with custom query and tinymce button.
+2.2.1 Feature & bugfix: Now able to add widget more than once, and to more than one corral.

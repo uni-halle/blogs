@@ -27,7 +27,7 @@ WidgetWrangler.sortable.update_widget_weights = function(){
 	$.each(lists, function(){
 		var this_list = $(this).children(".ww-item");
 			$.each(this_list, function(i){
-				$(this).children(".ww-widget-weight").val(i+1);// stop working in 3.2:  .attr("disabled","");
+				$(this).children(".ww-widget-weight").val(i+1);
 			});
 	});
 }
@@ -36,7 +36,7 @@ WidgetWrangler.sortable.update_widget_weights = function(){
  * Indicate changes have occured
  */
 WidgetWrangler.sortable.message = function() {
-	$('#ww-post-edit-message').show();
+	$('#ww-post-edit-message').css('visibility', 'visible');
 }
 
 /*
@@ -54,20 +54,23 @@ WidgetWrangler.sortable.refresh_all = function() {
     },
     stop: function(event, ui){
       ui.item.removeClass('ww-dragging');
-    },
-		update: function(event,ui){
-			var active_widgets = $(this).children(".ww-item");
-			var corral_name = $(this).attr("name");
-			 $.each(active_widgets, function(i){
-					$(this).children("select").val(corral_name);
-			});
-			WidgetWrangler.sortable.toggle_no_widgets();
-			WidgetWrangler.sortable.update_widget_weights();
-			WidgetWrangler.sortable.message();
-		}
-	}).disableSelection();
+    }
+	})
+    .on('sortupdate', function(event,ui){
+      var active_widgets = $(this).children(".ww-item");
+      var corral_name = $(this).attr("name");
+      $.each(active_widgets, function(i){
+        $(this).children("select").val(corral_name);
+      });
+      WidgetWrangler.sortable.toggle_no_widgets();
+      WidgetWrangler.sortable.update_widget_weights();
+      WidgetWrangler.sortable.message();
+    })
+    .disableSelection();
 	
-	
+
+
+
 	var selects = $("#widget-wrangler-form .nojs select");
 	$.each(selects, function(){
 		$(this).parent('.ww-item').removeClass('nojs');
@@ -84,11 +87,8 @@ WidgetWrangler.sortable.refresh_all = function() {
 				
 				var this_list = $("#ww-corral-"+select_val+"-items").children(".ww-item");
 			}
-			else
-			{
-				$(this).siblings('.ww-widget-weight').val('').parent('.ww-item').clone().addClass('nojs disabled').appendTo("#ww-disabled-items").children(".ww-widget-weight").attr("disabled","disabled");
+			else {
 				$(this).parent('.ww-item').remove();
-				$("#ww-disabled-items select[name='"+select_name+"']").val(select_val);
 			}
 			WidgetWrangler.sortable.update_widget_weights();
 			WidgetWrangler.sortable.toggle_no_widgets();
@@ -196,12 +196,57 @@ WidgetWrangler.ajax = {
   }
 };
 
-$(document).ready(function(){
-	WidgetWrangler.ajax.init();
-});
+  /**
+   * Add any widget to any corral any number of times
+   */
+  WidgetWrangler.addWidget = {
+    row_template: wp.template('add-widget'),
+
+    // starting row index large to avoid collisions
+    // decremented as widgets are added
+    row_index: 10000,
+
+    init: function(){
+      $('#ww-add-new-widget-button').click( function(){
+        var $widget = $('#ww-add-new-widget-widget');
+        var $corral = $('#ww-add-new-widget-corral');
+
+        if ( $widget.val() === '0' ){}
+        else if ( $corral.val() === '0' ){}
+        else {
+          WidgetWrangler.addWidget.add(
+            {
+              ID: $widget.val(),
+              post_title: $widget.find('option:selected').text()
+            },
+            $corral.val(),
+            0
+          );
+        }
+      });
+    },
+
+    add: function( widget, corral_slug, weight ){
+      var $sortable_corral = $('#ww-corral-'+corral_slug+'-items');
+
+      // replace all occurrences of tokens in template
+      var row = WidgetWrangler.addWidget.row_template()
+        .replace(/__widget-ID__/g, widget.ID )
+        .replace(/__widget-post_title__/g, widget.post_title )
+        .replace(/__widget-corral_slug__/g, corral_slug )
+        .replace(/__widget-weight__/g, weight)
+        .replace(/__ROW-INDEX__/g, corral_slug + '-' + WidgetWrangler.addWidget.row_index);
+
+      WidgetWrangler.addWidget.row_index--;
+
+      $sortable_corral.prepend(row).trigger('sortupdate');
+    }
+  };
 
 $(document).ready(function(){
+	WidgetWrangler.ajax.init();
 	WidgetWrangler.sortable.init();
+  WidgetWrangler.addWidget.init();
 });
 
 })(jQuery);

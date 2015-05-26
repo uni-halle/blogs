@@ -74,7 +74,7 @@ class WW_Taxonomies {
    */
   function _find_taxonomy_widgets($tax_data){
     if (isset($tax_data->data['preset_id']) && $tax_data->data['preset_id'] != 0){
-      $preset = $this->ww->presets->get_preset($term_data->data['preset_id']);
+      $preset = $this->ww->presets->get_preset($tax_data->data['preset_id']);
       $this->ww->presets->current_preset_id = $preset->id;
       $widgets = $preset->widgets;
     }

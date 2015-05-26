@@ -94,7 +94,7 @@ class WW_Taxonomies_Admin {
        // allow for presets
       if ($tax_data = $this->ww->_extras_get($where))
       {
-        if ($tax_data->data['override_default']){
+        if ( isset( $tax_data->data['override_default'] ) ){
           $override_default_checked = 'checked="checked"';
         }
         

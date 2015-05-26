@@ -30,8 +30,7 @@ class Widget_Wrangler_Admin {
     include_once WW_PLUGIN_DIR.'/admin/admin-settings.php';
     include_once WW_PLUGIN_DIR.'/admin/admin-shortcode-tinymce.php';
     include_once WW_PLUGIN_DIR.'/admin/admin-taxonomies.php';
-    
-    //include_once WW_PLUGIN_DIR.'/includes/EDD_SL_Plugin_Updater.php';
+    include_once WW_PLUGIN_DIR.'/admin/sortable.php';
     
     global $widget_wrangler;
     $this->ww = $widget_wrangler;
@@ -88,8 +87,6 @@ class Widget_Wrangler_Admin {
   
   // WordPress hook 'admin_init'
   function wp_admin_init(){
-    //$this->init_updater();
-    
     add_action( 'widget_wrangler_form_meta' , array( $this, 'ww_form_meta' ) );
           
     // Add metabox to enabled post_types
@@ -112,28 +109,6 @@ class Widget_Wrangler_Admin {
   function init_sortable_widgets(){
     add_action( 'admin_enqueue_scripts', array( $this, '_sortable_widgets_js' ) );
     add_action( 'admin_head', array( $this, '_admin_css' ) );
-  }
-  
-  //
-  function init_updater(){
-    // setup the updater
-    $ww_edd_updater = new EDD_SL_Plugin_Updater( WW_PRO_URL, __FILE__, array( 
-        'version' 	=> WW_VERSION,
-        'license' 	=> trim( get_option( 'ww_pro_license_key' ) ), 
-        'item_name' => WW_PRO_NAME, 
-        'author' 	=> 'Jonathan Daggerhart'
-      )
-    );
-    
-    $folder = basename( WW_PLUGIN_DIR );
-    $file = basename( WW_PLUGIN_FILE );
-    $update_message_hook = "in_plugin_update_message-{$folder}/{$file}";
-    add_action( $update_message_hook, array( $this, '_update_message' ), 10, 2 );
-  }
-  
-  //
-  function _update_message(){
-    // show an html change log, or something
   }
 
   //
@@ -256,32 +231,21 @@ class Widget_Wrangler_Admin {
     // we need to find and save the data
     $all_widgets = $this->ww->get_all_widgets(array('publish', 'draft'));
     $active_widgets = array();
-    
-    $i = 1;
-    // loop through all widgets looking for those submitted
-    foreach($all_widgets as $key => $widget){
-      if ( isset( $submitted_widget_data[ $widget->ID ] ) ) {
-        $weight = $submitted_widget_data[$widget->ID]["weight"];
 
-        $sidebar_slug = $submitted_widget_data[$widget->ID]["sidebar"];
+	foreach ($submitted_widget_data as $key => $details){
+		// get rid of any hashes
+		if ( isset( $all_widgets[ $details['id'] ] ) && isset( $details['weight'] ) && isset( $details['sidebar'] ) ){
+			// if something was submitted without a weight, make it neutral
+			if ($details['weight'] < 1) {
+				$details['weight'] = $key;
+			}
 
-        // if something was submitted without a weight, make it neutral
-        if ($weight < 1) {
-          $weight = $i;
-        }
-
-        // add it to the active widgets list
-        if ($sidebar_slug && ( $sidebar_slug != 'disabled' )) {
-          $active_widgets[$sidebar_slug][] = array(
-            'id'     => $widget->ID,
-            'weight' => $weight,
-          );
-        }
-      }
-      $i++;
-    }
-    
-    // what we have
+			$active_widgets[ $details['sidebar'] ][] = array(
+				'id' => $details['id'],
+				'weight' => $details['weight'],
+			);
+		}
+	}
     return serialize($active_widgets);
   }
   
@@ -291,8 +255,8 @@ class Widget_Wrangler_Admin {
    * Provide Widget Wrangler selection when editing a page
    */
   function _sortable_widgets_meta_box($post = NULL){
-    $active_widgets = (!empty($this->ww->page_widgets)) ? maybe_unserialize($this->ww->page_widgets) : array();
-    print $this->theme_sortable_widgets($active_widgets);
+	$sortable = new WW_Admin_Sortable();
+	print $sortable->box_wrapper( $this->ww->page_widgets );
   }
     
   //
@@ -305,191 +269,7 @@ class Widget_Wrangler_Admin {
       <?php
     }
   }
-  
-  //
-  function theme_sortable_widgets($active_widgets){
-    // meta_box interior
-    ?>
-      <div id="widget-wrangler-form-meta">
-        <?php do_action('widget_wrangler_form_meta'); ?>
-        <input value='true' type='hidden' name='widget-wrangler-edit' />
-        <input type='hidden' name='ww_noncename' id='ww_noncename' value='<?php print wp_create_nonce( plugin_basename(__FILE__) ) ; ?>' />
-      </div>
-      
-      <div id="widget-wrangler-form-wrapper">
-        <div id='widget-wrangler-form' class='new-admin-panel'>
-          <div class='outer'>
-            
-            <div id="widget_wrangler_form_top">
-              <?php do_action('widget_wrangler_form_top'); ?>
-            </div>
-            
-            <div id='ww-post-edit-message'>* <?php _e("Widget changes will not be updated until you save.", 'widgetwrangler'); ?>"</div>
-            
-            <?php print $this->theme_sortable_sidebars($active_widgets); ?>
-            
-            <div id="widget_wrangler_form_bottom">
-              <?php do_action('widget_wrangler_form_bottom'); ?>
-            </div>
-            
-          </div>
-        </div>
-      </div>
-    <?php
-  }
 
-  /*
-   * Theme the output for editing widgets on a page
-   */
-  function theme_sortable_sidebars($active_widgets)
-  {
-    $sorted_widgets = $this->get_sortable_widgets($active_widgets);
-    ob_start();
-    
-    // loop through sidebars and add active widgets to list
-    foreach($this->ww->corrals as $corral_slug => $corral_name)
-    {
-      $no_widgets_style = '';
-      // open the list
-      ?>
-      <div id="ww-corral-<?php print $corral_slug; ?>-wrapper" class="ww-sortable-corral-wrapper">
-        <h4 class="ww-sortable-widgets-corral-title"><?php print $corral_name; ?></h4>
-        <ul name='<?php print $corral_slug; ?>' id='ww-corral-<?php print $corral_slug; ?>-items' class='inner ww-sortable' width='100%'>
-          <?php
-            if (isset($sorted_widgets['active'][$corral_slug]) &&
-                is_array($sorted_widgets['active'][$corral_slug]))
-            {
-              // hide the 'no widgets' list item if widgets exist
-              $no_widgets_style = "style='display: none;'";
-              
-              print implode('', $sorted_widgets['active'][$corral_slug]);
-            }
-          ?>
-          <li class='ww-no-widgets' <?php print $no_widgets_style; ?>><?php _e("No Widgets in this corral.", 'widgetwrangler'); ?></li>
-        </ul>
-      </div>
-      <?php
-    }
-  
-    // disabled list
-    ?>
-    <div id="ww-corral-disabled-wrapper" class="ww-sortable-corral-wrapper">
-      <h4 class="ww-sortable-widgets-corral-title">Disabled</h4>
-      <ul name='disabled' id='ww-disabled-items' class='inner ww-sortable' width='100%'>
-        <?php
-          $no_widgets_style = '';
-          // loop through and add disabled widgets to list
-          if (!empty($sorted_widgets['disabled'])){
-            // hide the 'no widgets' list item if widgets exist
-            $no_widgets_style = "style='display: none;'";
-            
-            print implode('', $sorted_widgets['disabled']);
-          }
-        ?>
-        <li class='ww-no-widgets' <?php print $no_widgets_style; ?>><?php _e("No disabled Widgets", 'widgetwrangler'); ?></li>
-      </ul>
-    </div>
-    <?php
-  
-    return ob_get_clean();
-  }
-  
-  /*
-   * Put all widgets into an array separating active widgets from disabled widgets
-   *  with active widgets in a sidebar
-   *
-   * like so,
-   * $sorted_widgets['active'][$sidebar_slug][$weight] = $this->theme_single_sortable_widget($widget, $sidebar_slug, $weight);
-   */
-  function get_sortable_widgets($active_widgets)
-  {
-    $all_widgets = $this->ww->get_all_widgets(array('publish', 'draft'));
-    $sidebars = $this->ww->corrals;
-    $sorted_widgets = array('active' => array(), 'disabled' => array());
-  
-    // loop through $all_widgets, so we can know which widgets are disabled
-    $i = 0;
-    foreach($all_widgets as $widget){
-      // hide widget from wrangler if applicable
-      if (!empty($widget->hide_from_wrangler)){
-        continue;
-      }
-      
-      // fix widgets with no title
-      if ($widget->post_title == ""){
-        $widget->post_title = sprintf( __('(no title) - Slug: %1$s - ID: %2$s', 'widgetwrangler'), $widget->post_name, $widget->ID );
-      }
-      
-      $keys = $this->_array_searchRecursive($widget->ID, $active_widgets);
-      
-      // setup initial info
-      $corral_slug = $keys[0];
-      $active_widget_index = (isset($keys[1])) ? $keys[1] : NULL;
-      
-      // get sidebar_slug for this widget, default to disabled
-      if ($corral_slug == '' || (!array_key_exists($corral_slug, $sidebars))){
-        $corral_slug = "disabled";
-      }
-      
-      // get weight, default to $i
-      if (($corral_slug != 'disabled') &&
-          !is_null($active_widget_index) &&
-          isset($active_widgets[$corral_slug][$active_widget_index]['weight']))
-      {
-        $weight = $active_widgets[$corral_slug][$active_widget_index]['weight'];
-      }
-      else {
-        $weight = $i;
-      }
-      
-      // place into sorted array
-      if ($corral_slug == 'disabled'){
-        $sorted_widgets['disabled'][] = $this->theme_single_sortable_widget($widget, $corral_slug, $weight);
-      }
-      else{
-        $sorted_widgets['active'][$corral_slug][$weight] = $this->theme_single_sortable_widget($widget, $corral_slug, $weight);
-      }
-  
-      $i++;
-    }
-    
-    // sort each sidebar's widgets
-    foreach($sorted_widgets['active'] as $corral_slug => $unsorted_widgets){
-      if ($sorted_widgets['active'][$corral_slug]){
-        ksort($sorted_widgets['active'][$corral_slug]);
-      }
-    }
-    
-    return $sorted_widgets;
-  }
-  
-  /*
-   * Single wortable widget form
-   */
-  function theme_single_sortable_widget($widget, $corral_slug, $weight)
-  {        
-    ob_start();
-    ?>
-      <li class='ww-item <?php print $corral_slug; ?> nojs' width='100%'>
-        <input  name='ww-data[widgets][<?php print $widget->ID; ?>][weight]' type='text' class='ww-widget-weight'  size='2' value='<?php print $weight; ?>' />
-        <input  name='ww-data[widgets][<?php print $widget->ID; ?>][id]' type='hidden' class='ww-widget-id' value='<?php print $widget->ID; ?>' />
-        <select name='ww-data[widgets][<?php print $widget->ID; ?>][sidebar]'>
-          <option value='disabled'>Disabled</option>
-          <?php
-          foreach($this->ww->corrals as $this_corral_slug => $corral_name){
-            $selected = ($this_corral_slug == $corral_slug) ? "selected='selected'" : '';
-            ?>
-            <option name='<?php print $this_corral_slug; ?>' value='<?php print $this_corral_slug; ?>' <?php print $selected; ?>><?php print $corral_name; ?></option>
-            <?php
-          }
-          ?>
-        </select>
-        <?php print $widget->post_title; ?> <?php print (($widget->post_status == 'draft') ? '- <em>('.__('draft', 'widgetwrangler').')</em>': ''); ?> <?php print (($widget->display_logic_enabled) ? '- <em>('.__('display logic', 'widgetwrangler').')</em>': ''); ?>
-      </li>
-    <?php
-    return ob_get_clean();
-  }
-  
   /*
    * Hook into saving a page
    * Save the post meta for this post
@@ -512,7 +292,7 @@ class Widget_Wrangler_Admin {
     
     // verify this came from the our screen and with proper authorization,
     // because save_post can be triggered at other times
-    if ( isset($_POST['ww_noncename']) && !wp_verify_nonce( $_POST['ww_noncename'], plugin_basename(__FILE__) )) {
+    if ( ! isset( $_POST['ww-sortable-list-box'] ) || ! wp_verify_nonce( $_POST['ww-sortable-list-box'], 'widget-wrangler-sortable-list-box-save' ) ) {
       return $post_id;
     }
     
@@ -520,12 +300,11 @@ class Widget_Wrangler_Admin {
     if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
       return $post_id;
     }
-  
-    
+
     // OK, we're authenticated:
     // we need to find and save the data
     $widgets = $this->_serialize_widgets($_POST['ww-data']['widgets']);
-    
+
     // allow other plugins to modify the widgets or save other things
     $widgets = apply_filters('widget_wrangler_save_widgets_alter', $widgets);
     
@@ -597,8 +376,8 @@ class Widget_Wrangler_Admin {
   function _sortable_widgets_js(){
     wp_enqueue_script('ww-sortable-widgets',
                     WW_PLUGIN_URL.'admin/js/sortable-widgets.js',
-                    array('jquery-ui-core', 'jquery-ui-sortable'),
-                    false,
+                    array('jquery-ui-core', 'jquery-ui-sortable', 'wp-util'),
+                    WW_SCRIPT_VERSION,
                     true);
     $data = $this->_json_data();
     wp_localize_script( 'ww-sortable-widgets', 'WidgetWrangler', array('l10n_print_after' => 'WidgetWrangler = '.$data.';') );	
@@ -611,7 +390,7 @@ class Widget_Wrangler_Admin {
     wp_enqueue_script('ww-editing-widget',
                     WW_PLUGIN_URL.'admin/js/editing-widget.js',
                     array('jquery'),
-                    false,
+                    WW_SCRIPT_VERSION,
                     true);
   }
   

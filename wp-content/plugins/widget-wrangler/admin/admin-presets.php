@@ -280,8 +280,15 @@ class WW_Presets_Admin  {
     $all_presets     = $this->ww->presets->get_all_presets();
     $this_preset     = $this->ww->presets->get_preset($preset_id);
     $preset_variety  = $this->ww->presets->preset_varieties[$this_preset->variety];
-    
-    ob_start();
+
+
+	  // themes draggable widgets
+	  $sortable = new WW_Admin_Sortable();
+
+	  // need to remove the normal preset form_top. can't select preset for preset
+	  remove_action( 'widget_wrangler_form_top', array( $this, 'ww_form_top' ));
+
+	  ob_start();
     ?>
     <div class='wrap'>
       <form id="widget-wrangler-form" action='edit.php?post_type=widget&page=presets&ww_action=handle_button&noheader=true' method='post' name='widget-wrangler-form'>				
@@ -372,12 +379,18 @@ class WW_Presets_Admin  {
             <input type="hidden" name="preset-id" value="<?php print $preset_id; ?>" />
             <input type="hidden" name="preset-variety" value="<?php print $preset_variety['slug']; ?>" /> 
             
-            <div class="ww-admin-tab-inner">            
+            <div class="ww-admin-tab-inner">
+
+			<div id="widget_wrangler_form_top">
+				<?php
+				// TODO, dry this action up
+				do_action('widget_wrangler_form_top');
+				?>
+			</div>
+			<div id='ww-post-edit-message'>* <?php _e("Widget changes will not be updated until you save.", 'widgetwrangler'); ?>"</div>
+
               <div id="preset-widgets">
-                <?php
-                  // themes draggable widgets
-                  print $this->ww->admin->theme_sortable_sidebars($this_preset->widgets);
-                ?>
+                <?php print $sortable->theme_sortable_corrals( $this_preset->widgets ); ?>
               </div>
             </div>
           </div>
