@@ -3595,6 +3595,19 @@ $this->_settings['clustering_helptext2'] = array(
 				'false' => __('false','lmm')
 			)
 		);
+		$this->_settings['geolocate_autostart'] = array(
+			'version' => 'p2.3',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section20',
+			'title'   => __('Autostart','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('If set to true, geolocation will start automatically on each map (backend and frontend).<br/>For infos on how to start geolocation automatically for selected maps only, please see <a href="%1$S" target="_blank">this changelog</a>.','lmm'), 'https://www.mapsmarker.com/v2.3p'),
+			'type'    => 'radio-pro',
+			'std'     => 'false',
+			'choices' => array(
+				'true' => __('true','lmm'),
+				'false' => __('false','lmm')
+			)
+		);
 		$this->_settings['geolocate_icon'] = array(
 			'version' => 'p1.9',
 			'pane'    => 'mapdefaults',
@@ -8564,6 +8577,7 @@ $this->_settings['clustering_helptext2'] = array(
 				'ro_RO' => __('Romanian','lmm') . ' (ro_RO)',
 				'ru_RU' => __('Russian','lmm') . ' (ru_RU)',
 				'sk_SK' => __('Slovak','lmm') . ' (sk_SK)',
+				'sl_SL' => __('Slovenian','lmm') . ' (sl_SL)',
 				'sv_SE' => __('Swedish','lmm') . ' (sv_SE)',
 				'es_ES' => __('Spanish','lmm') . ' (es_ES)',
 				'es_MX' => __('Spanish','lmm') . ' (es_MX)',
@@ -10034,7 +10048,7 @@ $this->_settings['clustering_helptext2'] = array(
 		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.10
-		if (get_option('leafletmapsmarker_version') == '3.9.7' )
+		if (get_option('leafletmapsmarker_version') == '3.9.8' )
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

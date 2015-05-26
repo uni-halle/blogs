@@ -41,6 +41,69 @@ hr{color:#E6DB55}
 </style></head><body>
 <?php
 /*****************************************************************************************/
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.8') . '</strong> - ' . $text_b . ' 23.05.2015 (<a href="https://www.mapsmarker.com/v3.9.8" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">new option to automatically start geolocation globally on all maps</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">added javascript variables <i>mapid_js</i> and <i>mapname_js</i> to ease the re-usage of javascript-function from outside the plugin</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">new 3d logo for Maps Marker Pro :-)</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+<a href="https://www.mapsmarker.com/maptiler" target="_blank">new tutorial: how to create custom basemaps using MapTiler</a>
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+updated customer area on mapsmarker.com as well as switching to PHP 5.6 - please report any issues!
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+<a href="https://siteorigin.com/" target="_blank">SiteOrigin</a> fixed a plugin conflict by releasing <a href="https://wordpress.org/plugins/siteorigin-panels/" target="_blank">Page Builder v2.1</a>
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Slovenian (sl_SL) translation thanks to Anna Dukan, <a href="http://www.unisci24.com/blog/" target="_blank">http://www.unisci24.com/blog/</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated French translation thanks to Vincèn Pujol, <a href="http://www.skivr.com" target="_blank">http://www.skivr.com</a> and Rodolphe Quiedeville, <a href="http://rodolphe.quiedeville.org" target="_blank">http://rodolphe.quiedeville.org</a>, Fx Benard, <a href="http://wp-translator.com" target="_blank">http://wp-translator.com</a>, cazal cédric, <a href="http://www.cedric-cazal.com" target="_blank">http://www.cedric-cazal.com</a>, Fabian Hurelle, <a href="http://hurelle.fr" target="_blank">http://hurelle.fr</a> and Thomas Guignard, <a href="http://news.timtom.ch" target="_blank">http://news.timtom.ch</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Latvian translation thanks to Juris Orlovs, <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://drommemila.no" target="_blank">http://drommemila.no</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Romanian translation thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Spanish translation thanks to David Ramí­rez, <a href="http://www.hiperterminal.com/" target="_blank">http://www.hiperterminal.com</a>, Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Swedish translation thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://20x.se" target="_blank">http://20x.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Vietnamese (vi) translation thanks to Hoai Thu, <a href="http://bizover.net" target="_blank">http://bizover.net</a>
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_f . '</a></p></strong>
+<tr><td>' . $issue . '</td><td>
+Internet Explorer can crash with WordPress 4.2 to 4.2.2 due to Emoji conflict (<a href="https://core.trac.wordpress.org/ticket/32305" target="_blank">details</a>) - planned to be fixed with WordPress 4.2.3, workaround until WordPress 4.2.3 is available: <a href="https://wordpress.org/plugins/disable-emojis/" target="_blank"">disable Emojis</a>
+</td></tr>
+</table>'.PHP_EOL;
+
+if ( (version_compare($lmm_version_old,"3.9.7","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.7') . '</strong> - ' . $text_b . ' 15.03.2015 (<a href="https://www.mapsmarker.com/v3.9.7" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -72,6 +135,7 @@ updated German translation
 <p><strong>' . $text_f . '</a></p></strong>
 </td></tr>	
 </table>'.PHP_EOL;
+}
 
 if ( (version_compare($lmm_version_old,"3.9.6","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';

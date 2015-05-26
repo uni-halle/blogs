@@ -31,7 +31,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-help-credits.php') { die (
 	</p>
 	<h3 style="font-size:23px;"><?php _e('Trademarks and copyright','lmm') ?></h3>
 	<p>
-	MapsMarker<sup style="font-size:75%;">&reg;</sup> - registration pending<br/>
+	MapsMarker<sup style="font-size:75%;">&reg;</sup><br/>
 	Copyright &copy; 2011-<?php echo date('Y'); ?>, MapsMarker.com e.U., All Rights Reserved
 	</p>
 	<h3 style="font-size:23px;"><?php _e('Translations','lmm') ?></h3>
@@ -64,13 +64,14 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-help-credits.php') { die (
 		<li>- Japanese (ja) thanks to Shu Higashi, <a href="http://twitter.com/higa4" target="_blank">@higa4</a></li>
 		<li>- Korean (ko_KR) thanks to Andy Park, <a href="http://wcpadventure.com" target="_blank">http://wcpadventure.com</a></li>
 		<li>- Latvian (lv) thanks to Juris Orlovs, <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a></li>
-		<li>- Norwegian/Bokmål (nb_NO) translation thanks to Inge Tang, <a href="http://drommemila.no" target="_blank">http://drommemila.no</a></li>
+		<li>- Norwegian/Bokmål (nb_NO) translation thanks to Inge Tang, <a href="http://ingetang.com" target="_blank">http://ingetang.com</a></li>
 		<li>- Polish (pl_PL) thanks to Pawel Wyszy&#324;ski, <a href="http://injit.pl" target="_blank">http://injit.pl</a>, Tomasz Rudnicki, <a href="http://www.kochambieszczady.pl" target="_blank"></a> and Robert Pawlak</li>
 		<li>- Portuguese (pt_BR) thanks to Andre Santos, <a href="http://pelaeuropa.com.br" target="_blank">http://pelaeuropa.com.br</a> and Antonio Hammerl</li>
 		<li>- Portuguese (pt_PT) thanks to Joao Campos, <a href="http://www.all-about-portugal.com" target="_blank">http://www.all-about-portugal.com</a></li>
 		<li>- Romanian (ro_RO) thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a></li>
 		<li>- Russian (ru_RU) thanks to Ekaterina Golubina, (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a></li>
 		<li>- Slovak (sk_SK) thanks to Zdenko Podobny</a></li>
+		<li>- Slovenian (sl_SL) thanks to Anna Dukan, <a href="http://www.unisci24.com/blog/" target="_blank">http://www.unisci24.com/blog/</a></li>
 		<li>- Swedish (sv_SE) thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://20x.se" target="_blank">http://20x.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a></li>
 		<li>- Spanish (es_ES) thanks to David Ramírez, <a href="http://www.hiperterminal.com" target="_blank">http://www.hiperterminal.com</a> &amp; Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes</li>
 		<li>- Spanish/Mexico (es_MX) thanks to Victor Guevera, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Eze Lazcano</li>

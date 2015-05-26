@@ -6,8 +6,8 @@ Tags:              Google Maps, OpenStreetMap, OSM, bing maps, googlemaps, googl
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.3
-Tested up to:      4.2-beta1
-Stable tag:        3.9.7
+Tested up to:      4.2.2
+Stable tag:        3.9.8
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -181,6 +181,7 @@ If you want to compare the free and pro version side by side, please visit [http
 * Romanian (ro_RO) translation thanks to Arian, Daniel Codrea and Flo Bejgu, http://www.inboxtranslation.com
 * Russian (ru_RU) thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies) and Vyacheslav Strenadko
 * Slovak (sk_SK) thanks to Zdenko Podobny
+* Slovenian (sl_SL) thanks to Anna Dukan
 * Spanish (es_ES) thanks to David Ramirez, Alvaro Lara, Ricardo Viteri and Juan Valdes
 * Spanish (es_MX) thanks to Victor Guevara and Eze Lazcano
 * Swedish (sv_SE) thanks to Swedish translation thanks to Olof Odier, Tedy Warsitha, Dan Paulsson, Elger Lindgren and Anton Andreasson
@@ -320,14 +321,14 @@ This program is free software; you can redistribute it and/or modify it under th
 For more information on translations of the plugin and how to contribute a new translation, please visit [https://www.mapsmarker.com/languages](https://www.mapsmarker.com/languages).
 
 = Trademark and copyright =
-MapsMarker &reg; - registration pending
+MapsMarker &reg;
 Copyright 2011-2015, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.9.7 =
-security improvements - see https://www.mapsmarker.com/v3.9.7 for more details
+= v3.9.8 =
+translations updates and compatibility fixes - see https://www.mapsmarker.com/v3.9.8 for more details
 
 == Changelog ==
-[blog post with details about v3.9.7](https://www.mapsmarker.com/v3.9.7)
+[blog post with details about v3.9.8](https://www.mapsmarker.com/v3.9.8)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

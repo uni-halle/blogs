@@ -84,8 +84,11 @@ if (is_plugin_active('root-relative-urls/sb_root_relative_urls.php') ) {
 }
 //info: Page Builder by SiteOrigin plugin incompatibility
 if (is_plugin_active('siteorigin-panels/siteorigin-panels.php') ) {
-	if ($lmm_options['misc_javascript_header_footer'] == 'footer') {
-		echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: you are using the Plugin %1$s which is causing maps to break! To fix this, please navigate to <a href="%2$s">Settings / Misc / General Settings</a> and set the Option "Where to insert Javascript files on frontend?" to "header (+ inline javascript)".','lmm'), '"Page Builder by SiteOrigin"', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc' ) . '</div></p>';
+	$pagebuilder_metadata = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'siteorigin-panels' . DIRECTORY_SEPARATOR . 'siteorigin-panels.php');
+	if (version_compare($pagebuilder_metadata['Version'],"2.1","<")){
+		if ($lmm_options['misc_javascript_header_footer_pro'] == 'footer') {
+			echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: you are using the Plugin %1$s which is causing maps to break! To fix this, please navigate to <a href="%2$s">Settings / Misc / General Settings</a> and set the Option "Where to insert Javascript files on frontend?" to "header (+ inline javascript)".','lmm'), '"Page Builder by SiteOrigin"', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_settings#lmm-misc' ) . '</div></p>';
+		}
 	}
 }
 //info: plugin WP External Links
