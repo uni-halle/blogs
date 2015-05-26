@@ -3,8 +3,8 @@ Contributors: sumobi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EFUPMPEZPGW7L
 Tags: image gallery, image, galleries, simple, easy, sumobi
 Requires at least: 3.5
-Tested up to: 3.9 alpha
-Stable tag: 1.1.1
+Tested up to: 4.2.2
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,10 +106,13 @@ In your WordPress admin under Settings -> Media
 
 == Upgrade Notice ==
 
-= 1.1.1 =
-Easy Image Gallery is no longer bundled with fancyBox 2 as non GPL software is not allowed on the WP repo. If you have a license of fancyBox 2, simply install the free Easy Image Gallery Extend plugin here: http://sumobi.com/shop/easy-image-gallery-extend/ and it will be added to the plugin's settings again.
+Updated PrettyPhoto JavaScript file to v3.1.6 and fixed captions that had quotes inside them
 
 == Changelog ==
+
+= 1.1.2 =
+* Fix: Added esc_attr to title attribute. Captions that included quotes were getting cut off.
+* Fix: Updated PrettyPhoto JavaScript file to v3.1.6
 
 = 1.1.1 =
 * Fix: Missing slash on path to CSS file when plugin's CSS is overridden from a child theme
