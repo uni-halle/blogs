@@ -376,8 +376,8 @@ function wpcirrusInit( $shortcode=false, $args){
 
 
 function wpcirrusLoadCSS(){
-	$url = WP_PLUGIN_URL . '/wp-cirrus/cirrusCloud.css';
-	$style = WP_PLUGIN_DIR . '/wp-cirrus/cirrusCloud.css';
+	$url = plugin_dir_url(__FILE__) . 'cirrusCloud.css';
+	$style = plugin_dir_path(__FILE__) . 'cirrusCloud.css';
 	if ( file_exists($style) ) {
 		wp_register_style('wpcirrus-cloudStyle', $url, array(), WP_CIRR_VERSION);
 		wp_enqueue_style( 'wpcirrus-cloudStyle');
@@ -385,8 +385,8 @@ function wpcirrusLoadCSS(){
 }
 
 function wpcirrusLoadScript(){
-	$url = WP_PLUGIN_URL . '/wp-cirrus/wp_cirrus_gwt/wp_cirrus_gwt.nocache.js';
-	$script = WP_PLUGIN_DIR . '/wp-cirrus/wp_cirrus_gwt/wp_cirrus_gwt.nocache.js';
+	$url = plugin_dir_url(__FILE__) . 'wp_cirrus_gwt/wp_cirrus_gwt.nocache.js';
+	$script = plugin_dir_path(__FILE__) . 'wp_cirrus_gwt/wp_cirrus_gwt.nocache.js';
 	if ( file_exists($script) ) {
 		wp_register_script('wpcirrus-cloudScript', $url, array(), WP_CIRR_VERSION);
 		wp_enqueue_script('wpcirrus-cloudScript');
