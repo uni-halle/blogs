@@ -1,0 +1,774 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/skype-online-status\n"
+"POT-Creation-Date: 2008-08-09 14:44+0000\n"
+"PO-Revision-Date: 2012-03-09 17:35-0000\n"
+"Last-Translator: Tsunamy <xr600patr@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: skype-admin.php:11
+msgid "Your Skype Online Status database settings have been cleared from the database for removal of this plugin!"
+msgstr "As suas configurações de banco de dados on-line Skype estado foram eliminados do banco de dados com a remoção desse plugin!"
+
+#: skype-admin.php:11
+msgid "You can still resave the old settings shown below to (partly) undo this action but custom widget settings will be reverted to default."
+msgstr "Você ainda pode salvar novamente as configurações antigas mostradas abaixo para (parcialmente) desfazer essa acção, mas configurações do widget personalizadas será revertida para o padrão."
+
+#: skype-admin.php:11
+#: skype-admin.php:232
+#: skype-admin.php:233
+msgid "Are you sure?"
+msgstr "Tem a certeza?"
+
+#: skype-admin.php:15
+msgid "Go to the <a href=\"plugins.php\">Plugins page</a> and deactivate it."
+msgstr "Vá para a <a href=\"plugins.php\">Plugins page</a> e desactivei-o."
+
+#: skype-admin.php:16
+msgid "Please, keep in mind that any WP theme template file changes you have made, can not be undone through this process. Also, any post quicktags that have been inserted in posts will (harmlessly) remain there. If you changed your mind about removing this plugin, just resave the settings NOW (or all your settings will be lost) or revert to default settings at the bottom of this page."
+msgstr "Por favor, tenha em mente que qualquer tema WP alterações no modelo de arquivo que você fez, não pode ser desfeita através deste processo. Além disso, quaisquer Quicktags pós que foram inseridos em posts vão (inofensiva) continuam lá. Se você mudou de idéia sobre como remover esse plugin, apenas salve as configurações NOW (ou todas as suas configurações serão perdidas) ou voltar ao padrão configurações na parte inferior desta página."
+
+#: skype-admin.php:20
+msgid "Skype Online Status plugin has been upgraded to version "
+msgstr "Skype Plugin Status Online foi actualizado para a versão mais recente"
+
+#: skype-admin.php:20
+msgid "Please, verify your settings now."
+msgstr "Por favor, verifique as configurações agora."
+
+#: skype-admin.php:20
+msgid "What's new?"
+msgstr "O que há de novo?"
+
+#: skype-admin.php:20
+msgid "Latest:"
+msgstr "Últimas:"
+
+#: skype-admin.php:20
+msgid "Recent:"
+msgstr "Recente:"
+
+#: skype-admin.php:25
+#, php-format
+msgid "Skype Online Status plugin version %s has been installed!"
+msgstr "Skype versão do plugin Status Online %s foi instalado!"
+
+#: skype-admin.php:26
+msgid "Please, adapt the default settings to your personal preference so you can start using Skype buttons anywhere on your site."
+msgstr "Por favor, adaptar as configurações padrão para sua preferência pessoal para que você possa começar a usar botões Skype em qualquer lugar em seu site."
+
+#: skype-admin.php:27
+#, php-format
+msgid "Read the %s section for more instructions."
+msgstr "Leia o %s secção para obter mais instruções."
+
+#: skype-admin.php:27
+#: skype-admin.php:174
+#: skype-admin.php:246
+#: skype-admin.php:289
+#: skype-admin.php:438
+#: skype-admin.php:453
+msgid "Quick Guide"
+msgstr "Guia Rápido"
+
+#: skype-admin.php:38
+#: skype-admin.php:40
+#: skype-admin.php:42
+#: skype-admin.php:154
+#: skype-admin.php:243
+#: skype-admin.php:298
+#: skype-admin.php:196
+#: skype-status.php:69
+#: skype-status.php:194
+msgid "Skype Online Status"
+msgstr "Skype Online Status"
+
+#: skype-admin.php:48
+msgid "Your server settings prevent this plugin from reading your online status from the remote Skype server."
+msgstr "As configurações do seu servidor evitar este plugin de ler o seu status online do Skype servidor remoto."
+
+#: skype-admin.php:48
+msgid "Please, check if your server INI settings <strong>allow_url_fopen</strong> is set to ON or ask your server admin / hosting provider to take care of this.<br /><br />With <strong>allow_url_fopen</strong> OFF, the plugin will function like normal except for some of the advanced features concerning online status messages. Skype button themes that also show your online status by way of images (that are provided by the same Skype server) will still do so."
+msgstr "Por favor, verifique se suas configurações INI servidor <strong>allow_url_fopen</strong>é definido como ON ou pergunte ao seu servidor admin / provedor de hospedagem para cuidar do presente.<br /><br />Com <strong>allow_url_fopen</strong> OFF, o plugin irá funcionar como normal, exepto por algumas das características avançadas sobre as mensagens de status on-line. Botão e Temas  do Skype, que também mostram seu status on-line por meio de imagens (que são fornecidos pelo servidor do Skype mesmo) ainda fazê-lo."
+
+#: skype-admin.php:50
+msgid "Reading your online status from the remote Skype server has been disabled (SOSALLOWURLFOPEN set to FALSE in skype-status.php). As a result, some of the advanced options will not be available."
+msgstr "Lendo o seu status online a partir do servidor Skype remoto foi desativado (SOSALLOWURLFOPEN set to FALSE in skype-status.php).Como resultado, algumas das opções avançadas não estará disponível."
+
+#: skype-admin.php:95
+msgid "Options updated!"
+msgstr "Opções Actualizada!"
+
+#: skype-admin.php:100
+msgid "Options reset!"
+msgstr "Opções de Reset!"
+
+#: skype-admin.php:121
+msgid "Please, wait while page has loaded completely.<br /> When the Skype server at http://mystatus.skype.com/ is slow or down, this might take a while..."
+msgstr "Por favor, aguarde enquanto a página tenha carregado completamente.<br />Quando o servidor do Skype em é lenta ou está em baixo, isso pode demorar um pouco ...http://mystatus.skype.com/"
+
+#: skype-admin.php:181
+#: skype-admin.php:246
+#: skype-admin.php:540
+msgid "Notes &amp; Live Support"
+msgstr "Notas &amp; Suporte ao Vivo"
+
+#: skype-admin.php:190
+msgid "Resources"
+msgstr "Recursos"
+
+#: skype-admin.php:196
+msgid "Google Group"
+msgstr "Grupo do Google"
+
+#: skype-admin.php:196
+msgid "Skype Buttons"
+msgstr "Os botões do Skype"
+
+#: skype-admin.php:197
+msgid "Skype buttons wizard"
+msgstr "Skype  assistente de botões"
+
+#: skype-admin.php:198
+#, php-format
+msgid "View %s's online status on the Skype server"
+msgstr "Ver %s's status online no servidor Skype"
+
+#: skype-admin.php:199
+msgid "Edit Privacy Options in your Skype client"
+msgstr "Editar opções de privacidade no seu cliente Skype"
+
+#: skype-admin.php:200
+msgid "Skype Affiliate Program"
+msgstr "Programa de Afiliados Skype"
+
+#: skype-admin.php:210
+msgid "Donations"
+msgstr "Doações"
+
+#: skype-admin.php:215
+msgid "All donations are much appreciated and will (without objection) be mentioned here as a way of expressing my gratitude."
+msgstr "Todas as doações são muito apreciadas e (sem objecção) vai ser mencionado aqui como uma forma de expressar a minha gratidão."
+
+#: skype-admin.php:217
+msgid "Donorlist"
+msgstr "Lista de Doadores"
+
+#: skype-admin.php:218
+msgid "Do you want your name and/or link up there too? Or just appreciate my work?"
+msgstr "Quer que o seu nome e / ou link lá em cima também? Ou apenas apreciar o meu trabalho?"
+
+#: skype-admin.php:219
+msgid "Donate with PayPal - it's fast, free and secure!"
+msgstr "Doações com PayPal - é rápido, grátis e seguro!"
+
+#: skype-admin.php:220
+msgid "Thanks!"
+msgstr "Obrigado!"
+
+#: skype-admin.php:223
+msgid "Current theme"
+msgstr "Tema Actual"
+
+#: skype-admin.php:224
+#: skype-admin.php:275
+#: skype-admin.php:280
+#: skype-admin.php:281
+#: skype-admin.php:282
+#: skype-admin.php:316
+#: skype-admin.php:318
+#: skype-admin.php:323
+#: skype-admin.php:333
+#: skype-admin.php:337
+#: skype-admin.php:347
+#: skype-admin.php:436
+#: skype-admin.php:438
+#: skype-admin.php:442
+msgid "Custom..."
+msgstr "Personalizado ..."
+
+#: skype-admin.php:232
+#: skype-admin.php:233
+msgid "WARNING !"
+msgstr "ATENÇÃO!"
+
+#: skype-admin.php:232
+msgid "All your personal settings will be overwritten with the plugin default settings, including Skype ID, User name and Theme."
+msgstr "Todas as suas configurações pessoais serão substituídos com as configurações padrão de plugins, incluindo Skype ID, nome de membros e Tema."
+
+#: skype-admin.php:233
+msgid "All your Skype Online Status AND widget settings will be cleared from the database so the plugin can be COMPLETELY removed. All Skype buttons on your blog will be deactivated."
+msgstr "Todas as configurações de seu status online Skype e widget serão apagados da base de dados de modo que o plugin pode ser completamente removido. Todos os botões do Skype em seu blog seram desactivados."
+
+#: skype-admin.php:241
+msgid "Define all your <em>default</em> Skype Status settings here."
+msgstr "Definir todos os seus <em>default</em>configurações status do Skype aqui."
+
+#: skype-admin.php:242
+#, php-format
+msgid "Start simply by setting the basics like %1$s, %2$s and the button %3$s you want to show on your blog."
+msgstr "Comece simplesmente definindo os conceitos básicos como %1$s, %2$s e o botão %3$s que você quer mostrar em seu site."
+
+#: skype-admin.php:242
+#: skype-admin.php:253
+#: skype-widget.php:148
+msgid "Skype ID"
+msgstr "Skype ID"
+
+#: skype-admin.php:242
+#: skype-admin.php:254
+#: skype-widget.php:152
+msgid "Full Name"
+msgstr "Nome Completo"
+
+#: skype-admin.php:242
+#: skype-admin.php:270
+#: skype-admin.php:281
+#: skype-admin.php:436
+#: skype-admin.php:438
+#: skype-widget.php:171
+msgid "Theme"
+msgstr "Tema"
+
+#: skype-admin.php:243
+#, php-format
+msgid "Then activate the Skype Status Widget on your <a href=\"widgets.php\">Widgets</a> page or use the Skype Status quicktag button %s in the WYSIWYG editor (TinyMCE) to place the Skype Online Status button in any post or page."
+msgstr "Em seguida, activar o widget de Status do Skype em seu <a href=\"widgets.php\">Widgets</a> página ou use o botão quicktag Estado do Skype %s no editor WYSIWYG (TinyMCE) para colocar o botão Status Online do Skype em qualquer post ou página."
+
+#: skype-admin.php:244
+msgid "Later on, you can fine-tune everything until it fits just perfectly on you pages."
+msgstr "Depois, você pode ajustar tudo até que se encaixa perfeitamente em você apenas páginas."
+
+#: skype-admin.php:245
+#: skype-admin.php:267
+#: skype-admin.php:337
+msgid "Note:"
+msgstr "Nota:"
+
+#: skype-admin.php:245
+msgid "Some basic settings may be overridden per Widget settings or when calling the Skype button with a template function."
+msgstr "Algumas configurações básicas podem ser substituídas por configurações do widget ou ao chamar o botão do Skype com uma função de modelo."
+
+#: skype-admin.php:246
+#, php-format
+msgid "Read more about configuring this plugin and more ways to trigger Skype Online Status buttons on your blog in the %s section. If you have any remaining questions, see the <strong>Notes &amp; Live Support</strong> page to get help."
+msgstr "Leia mais maneiras sobre como configurar este plugin e mais para acionar os botões do Skype status on-line em seu blog na %s secção. Se você ainda tiver alguma dúvida, consulte o <strong>Notas&amp;Suporte ao Vivo</strong> página para obter ajuda."
+
+#: skype-admin.php:248
+#: skype-admin.php:291
+msgid "back to top"
+msgstr "voltar ao topo"
+
+#: skype-admin.php:250
+#: skype-admin.php:436
+#: skype-admin.php:438
+msgid "Basic Options"
+msgstr "Opções básicas"
+
+#: skype-admin.php:252
+msgid "Skype"
+msgstr "Skype"
+
+#: skype-admin.php:253
+#: skype-admin.php:254
+#: skype-admin.php:259
+#: skype-admin.php:281
+#: skype-admin.php:310
+#: skype-admin.php:311
+#: skype-admin.php:321
+#: skype-admin.php:436
+#: skype-admin.php:442
+#: skype-status.php:55
+#: skype-widget.php:148
+#: skype-widget.php:152
+#: skype-widget.php:156
+#: skype-widget.php:160
+#: skype-widget.php:171
+msgid ": "
+msgstr ": "
+
+#: skype-admin.php:253
+msgid "Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!"
+msgstr "Basta escrever o seu ID do Skype. Ou ... Se você se desejar que o botão para chamar um Multichat Skype ou chamada de conferência, entre mais de um ID Skype separados com um ponto e vírgula  (<strong>;</strong>). Você também pode inserir um número de telefone regular (começando com um <strong>+</strong> seguido pelo código do país; nota que os chamadores precisa ter %s para chamar). Ela só tudo depende do que você deseja alcançar!"
+
+#: skype-admin.php:253
+msgid "SkypeOut"
+msgstr "Skype Out"
+
+#: skype-admin.php:253
+msgid "SkypeIn"
+msgstr "SkypeIn"
+
+#: skype-admin.php:253
+msgid "Skype Voicemail"
+msgstr "Skype Voicemail"
+
+#: skype-admin.php:254
+msgid "Your full name as you want it to appear in Skype links, link-titles and image alt-texts on your blog."
+msgstr "Seu nome completo como você quer que ele apareça nos links do Skype, link-títulos e imagem alt-textos no seu blog."
+
+#: skype-admin.php:257
+#: skype-admin.php:259
+msgid "Function"
+msgstr "Função"
+
+#: skype-admin.php:258
+msgid "Some of the button themes will show your online status in an icon/image, without having a specific function assigned. This means you can select what the button should do when clicked by a visitor."
+msgstr "Alguns dos temas botão irá mostrar seu status online em um ícone / imagem, sem ter uma função específica atribuída. Isto significa que você pode seleccionar o que o botão deve fazer quando clicado por um visitante."
+
+#: skype-admin.php:259
+#: skype-admin.php:321
+#, php-format
+msgid "for the %s tag"
+msgstr "para o %s tag"
+
+#: skype-admin.php:267
+#, php-format
+msgid "This setting will only be used in the '%1$s' theme templates, or in your own custom template when the tags %2$s and %3$s are used."
+msgstr "Esta configuração será usada apenas na '%1$s' templates temáticos, ou em seu próprio modelo personalizado quando as tags %2$s e %3$s são utilizados."
+
+#: skype-admin.php:273
+msgid "Preview theme template:"
+msgstr "Preview de tema Template:"
+
+#: skype-admin.php:275
+msgid " (edit under advanced options)"
+msgstr "(editar nas opções avançadas)"
+
+#: skype-admin.php:280
+#, php-format
+msgid "Start with <strong>selecting one of the predefined theme templates</strong> to load into the database. Hover over the options to see a preview. You might later select %1$s to edit the template in the text field under %2$s."
+msgstr "Comece com <strong>selecionar um dos modelos temáticos pré-definidos</strong>para carregar no banco de dados. Passe o mouse sobre as opções para ver um preview. Você pode depois seleccione %1$s para editar o modelo no campo de texto em %2$s."
+
+#: skype-admin.php:280
+#: skype-admin.php:282
+#: skype-admin.php:295
+#: skype-admin.php:318
+#: skype-admin.php:347
+#: skype-admin.php:403
+#: skype-admin.php:442
+msgid "Advanced Options"
+msgstr "Opções Avançadas"
+
+#: skype-admin.php:280
+#: skype-admin.php:282
+#: skype-admin.php:435
+msgid "Custom Template"
+msgstr "Molde feito sob encomenda"
+
+#: skype-admin.php:280
+#, php-format
+msgid "If you cannot find a suitable theme, check out <a href=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>. Select your options there and copy/paste the output into the textarea under %s."
+msgstr "Se você não consegue encontrar um tema adequado, veja <a href=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>Selecione as opções lá e copiar / colar o resultado no text area sob %s."
+
+#: skype-admin.php:280
+#: skype-admin.php:347
+#: skype-admin.php:403
+msgid "Display"
+msgstr "Exibir"
+
+#: skype-admin.php:282
+#, php-format
+msgid "When %1$s is selected, you can edit the template to your liking below at %2$s under %3$s. When you make changes to that field but select another theme template here, those changes will be overwriten by the new template!"
+msgstr "Quando %1$s for selecionada, você pode editar o modelo ao seu gosto abaixo de %2$s em %3$s. Quando você faz alterações a esse campo, mas seleccionar outro modelo tema aqui, essas alterações serão overwriten pelo novo modelo!"
+
+#: skype-admin.php:282
+#: skype-admin.php:436
+msgid "Customize currently loaded template"
+msgstr "Personalize modelo actualmente carregado"
+
+#: skype-admin.php:289
+#, php-format
+msgid "If you have your basic settings correct and there is a Skype button visible on blog, you can fine-tune it's appearance and function with the advanced settings. Each option is annotated but you can read more in the %s section."
+msgstr "Se você tiver as configurações básicas correta e não há um botão Skype visível no blog, você pode afinar a sua aparência e função com as configurações avançadas. Cada opção é anotada, mas você pode ler mais na  %s secção."
+
+#: skype-admin.php:297
+msgid "Post content"
+msgstr "Públicar conteúdo"
+
+#: skype-admin.php:298
+#, php-format
+msgid "When writing posts you can insert a Skype button with a simple quicktag %1$s or %2$s but to make life even easier, a small button on the WYSIWYG editor can do it for you. Check this option to show %3$s or uncheck to hide it. You may still insert the quicktag  in the HTML code of your post or page content manually."
+msgstr "Ao escrever mensagens que você pode inserir um botão do Skype com um simples quicktag %1$s e %2$s mas para tornar a vida ainda mais fácil, um pequeno botão no editor WYSIWYG pode fazer isso por você. Marque esta opção para mostrar %3$s ou desmarque para ocultá-la. Você ainda pode inserir o quicktag no código HTML do seu post ou conteúdo da página manualmente."
+
+#: skype-admin.php:299
+msgid "Use <strong>Skype Status quicktag button</strong> in the RTE for posts."
+msgstr "Usar <strong>Estado do Botão de Skype</strong> na RTE para os posts."
+
+#: skype-admin.php:302
+#: skype-admin.php:442
+msgid "Display &amp; Function"
+msgstr "Exibir &amp; Função"
+
+#: skype-admin.php:303
+msgid "These settings define which options should be used to replace their respective tag (if present) in the selected template file. If unchecked, the tags will be blanked out."
+msgstr "Estas configurações definem quais opções devem ser usadas para substituir sua respectiva tag (se houver) no arquivo de modelo selecionado. Se nada for feito, as tags serão apagado."
+
+#: skype-admin.php:305
+#, php-format
+msgid "Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
+msgstr "Usar %1$sno botão drop-down. Deixe desmarcada se você não tem %2$s ou %3$s."
+
+#: skype-admin.php:305
+#: skype-status.php:112
+msgid "Leave me voicemail"
+msgstr "Deixe-me no voicemail"
+
+#: skype-admin.php:306
+#, php-format
+msgid "Use %1$s (define below) for %2$s tags."
+msgstr "Usar %1$s (definir abaixo) para %2$s tags."
+
+#: skype-admin.php:306
+msgid "Action text"
+msgstr "Texto de Acção"
+
+#: skype-admin.php:307
+#, php-format
+msgid "Use %s link."
+msgstr "Utilize o link %s."
+
+#: skype-admin.php:307
+msgid "Download Skype now!"
+msgstr "Baixe o Skype agora!"
+
+#: skype-admin.php:309
+msgid "Place link on a new line."
+msgstr "Ligação local em uma nova linha."
+
+#: skype-admin.php:310
+msgid "Link text"
+msgstr "O texto do link"
+
+#: skype-admin.php:311
+msgid "Link URL"
+msgstr "URL do Link "
+
+#: skype-admin.php:313
+msgid "Default Skype link"
+msgstr "Ligação padrão do Skype "
+
+#: skype-admin.php:314
+msgid "Skype main page"
+msgstr "Página principal Skype"
+
+#: skype-admin.php:315
+msgid "Skype download page"
+msgstr "Skype página de download"
+
+#: skype-admin.php:318
+msgid "Leave to Default if you are generous and think downloads should create some small possible revenue for the developer of this plugin -- that's me, thanks! :) -- but if you think open source developers are greedy bastards and should go away, select one of the other options -- just kidding, feel free... Really! You can always donate on the Notes & Live Support section ;)."
+msgstr "Deixar para padrão se você é generoso e pensar em downloads deve criar alguma receita pequena possível para o desenvolvedor deste plugin - que sou eu, obrigado! :) - Mas se você acha que os desenvolvedores de código aberto são bastardos gananciosos e deve ir embora, seleccione uma das outras opções - só brincando, não hesite ... Realmente! Você pode sempre doar nas Notas & Live Support secção;)."
+
+#: skype-admin.php:318
+#, php-format
+msgid "If you want to create your own link (say you have a Commission Junction, TradeDoubler or ValueCommerce account, read more on http://www.skype.com/partners/affiliate/) to get possible revenue from downloads yourself, select %1$s and paste the link code in the textarea under %2$s below."
+msgstr "Se você quiser criar o seu próprio link (digamos que você tenha uma Comissão Junction, TradeDoubler ou conta ValueCommerce, leia mais sobre http://www.skype.com/partners/affiliate/) para obter a receita possível de downloads mesmo, seleccione %1$s e cole o código do link no textarea sob %2$s abaixo"
+
+#: skype-admin.php:318
+#: skype-admin.php:441
+msgid "Custom Download Link"
+msgstr "Link do Download Personalizado"
+
+#: skype-admin.php:321
+#: skype-admin.php:337
+#: skype-admin.php:347
+#: skype-admin.php:403
+msgid "Status texts"
+msgstr "Textos de Status"
+
+#: skype-admin.php:322
+#: skype-admin.php:331
+#: skype-admin.php:333
+#: skype-admin.php:337
+#: skype-admin.php:403
+msgid "Disabled"
+msgstr "Desactivado"
+
+#: skype-admin.php:331
+#, php-format
+msgid "If you select %1$s, the tags %2$s, %3$s and %4$s in the button template will be ignored."
+msgstr "Se você selecionar %1$s, as tags %2$s, %3$s e %4$s no modelo de botão será ignorado."
+
+#: skype-admin.php:333
+#, php-format
+msgid "When security settings on your server are too tight (<strong>safe_mode</strong> enabled, <strong>open_basedir</strong> restictions or <strong>allow_url_fopen</strong> being disabled), your status does not show or the Skype button doesn't load and you find an error like \"Warning: file_get_contents() [function.file-get-contents]: URL file-access is disabled in the server configuration...\" in the server log files, use either %1$s or %1$s here."
+msgstr "Quando as configurações de segurança em seu servidor são muito apertadas (<strong>safe_mode</strong> habilitado, <strong>open_basedir</strong> restrito ou <strong>allow_url_fopen</strong> being disabled), o seu estado não mostra ou o botão Skype não carrega e você encontrar um erro como \"Warning: file_get_contents() [function.file-get-contents]: URL de acesso ao arquivo está desativado na configuração do servidor...\" nos arquivos de log do servidor, use um %1$s ou %1$s aqui."
+
+#: skype-admin.php:337
+msgid "The security settings on your server are too tight for the online status to be read from the Skype server."
+msgstr "As configurações de segurança em seu servidor estão muito apertadas para o status on-line para ser lido a partir do servidor do Skype."
+
+#: skype-admin.php:337
+#, php-format
+msgid "It is advised to set %1$s to %2$s here untill you (or your server admin) change the server INI <strong>allow_url_fopen</strong> and related setting."
+msgstr "Aconselha-se a definir %1$s para %2$s aqui até que você (ou seu administrador do servidor) mudar o INI servidor <strong>allow_url_fopen</strong> e configuração relacionada."
+
+#: skype-admin.php:337
+#, php-format
+msgid "You can also select %1$s but only the %2$s status text will be available."
+msgstr "Você também pode seleccionar %1$s mas apenas o %2$s texto de status estará disponível."
+
+#: skype-admin.php:337
+#: skype-admin.php:372
+msgid "Error"
+msgstr "Erro"
+
+#: skype-admin.php:343
+msgid "Custom Status texts"
+msgstr "Textos personalizados de status"
+
+#: skype-admin.php:344
+#, php-format
+msgid "Text that will replace the %s tag depending on actual online status."
+msgstr "O texto que irá substituir o %s marcar dependendo do status online real."
+
+#: skype-admin.php:347
+#, php-format
+msgid "Please, change %1$s to %2$s under %3$s (above) for these options to become available first."
+msgstr "Por favor, altere %1$s para %2$s em %3$s (supra) para estas opções para se tornar disponível em primeiro lugar."
+
+#: skype-admin.php:355
+msgid "Status"
+msgstr "Estado"
+
+#: skype-admin.php:356
+msgid "Value"
+msgstr "Valor"
+
+#: skype-admin.php:357
+#: skype-admin.php:386
+#: skype-admin.php:414
+msgid "Text"
+msgstr "Texto"
+
+#: skype-admin.php:373
+msgid "(none)"
+msgstr "(nenhum)"
+
+#: skype-admin.php:380
+msgid "Tag texts"
+msgstr "Tag textos"
+
+#: skype-admin.php:381
+msgid "Define texts to replace their respective template tags relating to the Skype button action."
+msgstr "Definir textos para substituir suas tags de template respectivos relacionadas com a acção do botão Skype."
+
+#: skype-admin.php:384
+msgid "Action"
+msgstr "Acção"
+
+#: skype-admin.php:385
+#: skype-admin.php:413
+msgid "Tag"
+msgstr "Tag"
+
+#: skype-admin.php:403
+#, php-format
+msgid "Please, change %1$s under %3$s (above) to any value other than %2$s for the following options to become available first."
+msgstr "Por favor, altere %1$s em %3$s (acima) para qualquer valor diferente de %2$s para as seguintes opções para se tornar disponíveis primeiro."
+
+#: skype-admin.php:412
+msgid "Other"
+msgstr "Outro"
+
+#: skype-admin.php:417
+msgid "First seperator"
+msgstr "Primeiro separador "
+
+#: skype-admin.php:422
+msgid "My status"
+msgstr "Meu Estado"
+
+#: skype-admin.php:427
+msgid "Second seperator"
+msgstr "Segundo separador"
+
+#: skype-admin.php:436
+#, php-format
+msgid "The currently selected template has been loaded into the database. You can edit it here if you like, but be sure to select %1$s under %2$s or your changes will be lost."
+msgstr "O modelo actualmente seleccionado tenha sido carregado na base de dados. Você pode editá-lo aqui, se quiser, mas não se esqueça de seleccionar %1$s em %2$s ou suas alterações serão perdidas."
+
+#: skype-admin.php:438
+msgid "Available tags:"
+msgstr "Tags disponíveis:"
+
+#: skype-admin.php:438
+msgid "Available markers:"
+msgstr "Marcadores disponíveis:"
+
+#: skype-admin.php:438
+#, php-format
+msgid "See %s for more instructions."
+msgstr "Ver %s para mais instruções."
+
+#: skype-admin.php:438
+#, php-format
+msgid "Oh, and did I mention this? Changes to the template will only be loaded when the option %1$s under %2$s is selected!"
+msgstr "Ah, e eu mencionei isso? Alterações no modelo somente pode ser carregado quando a opção %1$s em %2$s está selecionada!"
+
+#: skype-admin.php:442
+#, php-format
+msgid "If you are a <a href=\"http://www.skype.com/partners/affiliate/\">Skype Affiliate</a> select %1$s under %2$s (above) and paste your link/banner code (HTML/Javascript) here."
+msgstr "Se você é um <a href=\"http://www.skype.com/partners/affiliate/\">Afiliado Skype</a> selecionar %1$s em %2$s (acima) e cole seu link / banner código (HTML / Javascript) aqui."
+
+#: skype-admin.php:442
+msgid "Link/Banner Code"
+msgstr "Link / código do banner"
+
+#: skype-status.php:46
+msgid "Skype Test Call"
+msgstr "Skype chamada de teste"
+
+#: skype-status.php:54
+msgid " - "
+msgstr " - "
+
+#: skype-status.php:58
+msgid "&raquo; Get Skype, call free!"
+msgstr "&raquo; Obtenha o Skype, Ligue Grátis!"
+
+#: skype-status.php:64
+msgid "My status is"
+msgstr "Meu estado é"
+
+#: skype-status.php:65
+#: skype-status.php:80
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#: skype-status.php:81
+msgid "Offline"
+msgstr "Desligado"
+
+#: skype-status.php:82
+msgid "Online"
+msgstr "Ligado"
+
+#: skype-status.php:83
+msgid "Away"
+msgstr "Longe"
+
+#: skype-status.php:84
+msgid "Not available"
+msgstr "Não Está Disponível"
+
+#: skype-status.php:85
+msgid "Do not disturb"
+msgstr "Não perturbe"
+
+#: skype-status.php:87
+msgid "Skype me!"
+msgstr "Skype me!"
+
+#: skype-status.php:93
+msgid "English"
+msgstr "Inglês"
+
+#: skype-status.php:94
+msgid "French"
+msgstr "Francês"
+
+#: skype-status.php:95
+msgid "German"
+msgstr "Alemão"
+
+#: skype-status.php:96
+msgid "Japanese"
+msgstr "Japonês"
+
+#: skype-status.php:97
+msgid "Chinese"
+msgstr "Chinês"
+
+#: skype-status.php:98
+msgid "Taiwanese"
+msgstr "Tailandês"
+
+#: skype-status.php:99
+msgid "Portuguese"
+msgstr "Português"
+
+#: skype-status.php:100
+msgid "Brazilian"
+msgstr "Brasileiro"
+
+#: skype-status.php:101
+msgid "Italian"
+msgstr "Italiano"
+
+#: skype-status.php:102
+msgid "Spanish"
+msgstr "Espanhol"
+
+#: skype-status.php:103
+msgid "Polish"
+msgstr "Polaco"
+
+#: skype-status.php:104
+msgid "Swedish"
+msgstr "Sueco"
+
+#: skype-status.php:108
+msgid "Call me!"
+msgstr "Ligue-me!"
+
+#: skype-status.php:109
+msgid "Add me to Skype"
+msgstr "Adicione-me ao Skype"
+
+#: skype-status.php:110
+msgid "Chat with me"
+msgstr "Converse comigo"
+
+#: skype-status.php:111
+msgid "View my profile"
+msgstr "Ver o meu perfil"
+
+#: skype-status.php:113
+msgid "Send me a file"
+msgstr "Envie-me um arquivo"
+
+#: skype-status.php:194
+msgid "Skype Status"
+msgstr "Estado do Skype"
+
+#: skype-widget.php:156
+msgid "Text before button"
+msgstr "Texto antes de botão"
+
+#: skype-widget.php:160
+msgid "Text after button"
+msgstr "Texto após o botão"
+
+#: skype-widget.php:164
+msgid "Use Voicemail?"
+msgstr "Use Voicemail?"
+
+#: skype-widget.php:165
+#: skype-widget.php:172
+msgid "Default"
+msgstr "Origem"
+
+#: skype-widget.php:177
+msgid "Leave blank to use the default options as you defined on the <a href=\"options-general.php?page=skype-status.php\">Skype Online Status Settings</a> page."
+msgstr "Deixe em branco para usar as opções padrão que você definiu no <a href=\"options-general.php?page=skype-status.php\"> Skype on-line configurações de status</a>página."
+
+#: skype-widget.php:178
+msgid "You can use some basic HTML here like &lt;br /&gt; for new line."
+msgstr "Você pode usar um pouco de HTML básico aqui como &lt;br /&gt; para a nova linha."
+
+#: skype-widget.php:179
+#, php-format
+msgid "Set to %s if you do not have a SkypeIn account or SkypeVoicemail."
+msgstr "Definir para %s se você não tiver uma conta Skype In ou Skype Voice mail."
+

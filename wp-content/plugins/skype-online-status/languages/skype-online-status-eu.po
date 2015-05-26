@@ -1,0 +1,912 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Skype Online Status x.x.x\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-22 23:54+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Silvia Ribés <silviaribes.net@gmail.com>\n"
+"Language-Team: Silvia Ribes <silviaribes.net@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Basque\n"
+"X-Poedit-Country: SPAIN\n"
+
+#: ../skype-admin.php:10
+msgid "Skype"
+msgstr "Skype"
+
+#: ../skype-admin.php:11
+#: ../skype-admin.php:492
+#: ../skype-classes.php:101
+msgid "Skype ID"
+msgstr "Skype IDa"
+
+#: ../skype-admin.php:11
+#: ../skype-admin.php:14
+#: ../skype-admin.php:22
+#: ../skype-admin.php:30
+#: ../skype-admin.php:65
+#: ../skype-admin.php:82
+#: ../skype-admin.php:83
+#: ../skype-admin.php:186
+#: ../skype-admin.php:193
+#: ../skype-admin.php:206
+#: ../skype-admin.php:307
+#: ../skype-admin.php:309
+#: ../skype-admin.php:310
+#: ../skype-classes.php:101
+#: ../skype-classes.php:104
+#: ../skype-classes.php:107
+#: ../skype-classes.php:110
+#: ../skype-classes.php:113
+#: ../skype-classes.php:236
+msgid ": "
+msgstr ":"
+
+#: ../skype-admin.php:12
+#, php-format
+msgid "Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!"
+msgstr "Sartu Skype IDa. Txat anitzakoa edo solasaldi telefoniko bat sortu nahi baduzu, idatzi Skype ID bat baino gehiago, beti ere puntu eta komaz (<strong>;</strong>) banaturik. Telefono zenbakia ere idatzi dezakezu. Gogoratu '+' idatzi behar duzula herrialde kodea baino lehen. Kontuan hartu deitzaileak %s behar duela deitu ahal izateko."
+
+#: ../skype-admin.php:12
+#: ../skype-admin.php:306
+#: ../skype-admin.php:307
+msgid "SkypeOut"
+msgstr "SkypeOut"
+
+#: ../skype-admin.php:14
+#: ../skype-admin.php:492
+#: ../skype-classes.php:104
+msgid "Full Name"
+msgstr "Izen-abizenak"
+
+#: ../skype-admin.php:15
+msgid "Your full name as you want it to appear in Skype links, link-titles and image alt-texts on your blog."
+msgstr "Idatzi zeure izena (Skypeko esteketan, estekaren tituluetan eta alt-testuetan agertuko dena)."
+
+#: ../skype-admin.php:19
+#: ../skype-admin.php:22
+#: ../skype-admin.php:186
+#: ../skype-admin.php:188
+#: ../skype-admin.php:492
+#: ../skype-classes.php:110
+msgid "Theme"
+msgstr "Gaia"
+
+#: ../skype-admin.php:21
+#, php-format
+msgid "Start with <strong>selecting one of the predefined theme templates</strong> to load into the database. Change the options to see a preview. You might later select %1$s to edit the template in the text field under %2$s."
+msgstr "Hasteko, <strong>erabaki aurredefinitutako gai-txantiloi bat</strong> datu-basean kargatzeko. Aldatu aukerak aurrebista ikusteko. Geroago, %1$s hautatu dezakezu testu eremuko txantiloa editatzeko (%2$s)."
+
+#: ../skype-admin.php:21
+#: ../skype-admin.php:22
+#: ../skype-admin.php:23
+#: ../skype-admin.php:67
+#: ../skype-admin.php:77
+#: ../skype-admin.php:79
+#: ../skype-admin.php:88
+#: ../skype-admin.php:90
+#: ../skype-admin.php:98
+#: ../skype-admin.php:186
+#: ../skype-admin.php:188
+#: ../skype-admin.php:193
+#: ../skype-admin.php:236
+#: ../skype-admin.php:263
+msgid "Custom..."
+msgstr "Pertsonalizatua..."
+
+#: ../skype-admin.php:21
+#: ../skype-admin.php:23
+#: ../skype-admin.php:24
+#: ../skype-admin.php:90
+#: ../skype-admin.php:98
+#: ../skype-admin.php:153
+#: ../skype-admin.php:193
+#: ../skype-classes.php:596
+msgid "Advanced Options"
+msgstr "Aukera aurreratuak"
+
+#: ../skype-admin.php:21
+#: ../skype-admin.php:23
+#: ../skype-admin.php:185
+msgid "Custom Template"
+msgstr "Txantiloi pertsonalizatua"
+
+#: ../skype-admin.php:23
+#, php-format
+msgid "When %1$s is selected, you can edit the template to your liking below at %2$s under %3$s. When you make changes to that field but select another theme template here, those changes will be overwriten by the new template!"
+msgstr "%1$s aukera hautatuz gero, txantiloia nahi duzun erara editatu dezakezu %2$s fitxan (%3$s(e)n). Eremu horretan aldaketak egin eta gero, beste txantiloi gaia aukeratzen baduzu, txantiloi berriak egindako aldaketak ezabatuko ditu!"
+
+#: ../skype-admin.php:23
+#: ../skype-admin.php:186
+msgid "Customize currently loaded template"
+msgstr "Pertsonalizatu kargatutako azken txantiloia"
+
+#: ../skype-admin.php:24
+#, php-format
+msgid "If you cannot find a suitable theme, check out <a href=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>. Select your options there and copy/paste the output into the textarea under %s."
+msgstr "Gai aproposik aurkitzen ez baduzu, bota iezaiozu begirada bat honi: <a href<t1/>=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>. Hautatu zure aukerak, kopiatu irteera eta itsatsi %s ataleko testu eremuan."
+
+#: ../skype-admin.php:24
+#: ../skype-admin.php:98
+#: ../skype-admin.php:153
+msgid "Display"
+msgstr "Bistaratzea"
+
+#: ../skype-admin.php:28
+#: ../skype-admin.php:30
+msgid "Function"
+msgstr "Funtzioa"
+
+#: ../skype-admin.php:29
+msgid "Some of the button themes will show your online status in an icon/image, without having a specific function assigned. This means you can select what the button should do when clicked by a visitor."
+msgstr "Botoi-gai batzuek konexio-egoera erakutsiko dute ikono edo argazki baten bidez, nahiz eta funtzio espezifikorik ez eman. Horrek esan nahi du zeuk erabaki ahal duzula botoiak zer egingo duen bisitari batek klikatzean."
+
+#: ../skype-admin.php:38
+#: ../skype-admin.php:79
+#: ../skype-admin.php:260
+#: ../skype-admin.php:495
+msgid "Note:"
+msgstr "Oharra:"
+
+#: ../skype-admin.php:38
+#, php-format
+msgid "This setting will only be used in the '%1$s' theme templates, or in your own custom template when the tags %2$s and %3$s are used."
+msgstr "Ezarpen hau '%1$s' gai txantiloietan besterik ez da eskuragarri izango; edo zuk pertsonalizatutako txantiloietan %2$s eta %3$s etiketak erabiltzean."
+
+#: ../skype-admin.php:42
+#: ../skype-admin.php:197
+#: ../skype-admin.php:245
+msgid "Save Changes"
+msgstr "Gorde aldaketak"
+
+#: ../skype-admin.php:45
+#, php-format
+msgid "If you have your basic settings correct and there is a Skype button visible on blog, you can fine-tune it's appearance and function with the advanced settings. Each option is annotated but you can read more in the %s section."
+msgstr "Oinarrizko ezarpenak ondo badituzu, eta Skype-botoia blogean ikusgai badago, futzioa eta itxura doitu ditzakezu ezarpen aurreratuak erabiliz. Aukera bakoitzak bere oharra du; honi buruz gehiago irakurtzeko, ikusi %s."
+
+#: ../skype-admin.php:45
+#: ../skype-admin.php:188
+#: ../skype-admin.php:226
+#: ../skype-admin.php:370
+#: ../skype-admin.php:496
+#: ../skype-quickguide-notes.php:6
+msgid "Quick Guide"
+msgstr "Gida azkarra"
+
+#: ../skype-admin.php:47
+#: ../skype-admin.php:200
+#: ../skype-quickguide-notes.php:13
+#: ../skype-quickguide-notes.php:28
+#: ../skype-quickguide-notes.php:47
+#: ../skype-quickguide-notes.php:94
+#: ../skype-quickguide-notes.php:108
+#: ../skype-quickguide-notes.php:121
+#: ../skype-quickguide-notes.php:130
+#: ../skype-quickguide-notes.php:135
+#: ../skype-quickguide-notes.php:139
+msgid "Top"
+msgstr "Goian"
+
+#: ../skype-admin.php:54
+msgid "Post content"
+msgstr "Bidali edukia"
+
+#: ../skype-admin.php:55
+#, php-format
+msgid "When writing posts you can insert a Skype button with a simple quicktag %1$s or %2$s but to make life even easier, a small button on the WYSIWYG editor can do it for you. Check this option to show %3$s or uncheck to hide it. You may still insert the quicktag  in the HTML code of your post or page content manually."
+msgstr "Edukia idaztean Skype-botoi bat gehitu dezakezu %1$s edo %2$s etiketa-azkarra erabiliz; WYSIWYG editorean dagoen botoi txiki bat sakatuz gauza bera lortuko duzu erosoago. Markatu aukera hori %3$s erakusteko. Desmarkatu ezkutatu nahi baduzu. Hala ere, etiketa-azkarra eskuz txertatu dezakezu sarreran edo orriaren edukiaren HTML kodean."
+
+#: ../skype-admin.php:55
+#: ../skype-admin.php:206
+#: ../skype-admin.php:273
+#: ../skype-admin.php:346
+#: ../skype-admin.php:381
+#: ../skype-admin.php:383
+#: ../skype-admin.php:385
+#: ../skype-admin.php:493
+#: ../skype-classes.php:537
+#: ../skype-quickguide-notes.php:115
+#: ../skype-quickguide-notes.php:124
+msgid "Skype Online Status"
+msgstr "Skype Online Status"
+
+#: ../skype-admin.php:56
+msgid "Use <strong>Skype Status quicktag button</strong> in the RTE for posts."
+msgstr "Erabili <strong>Skype egoeraren etiketa-azkarraren botoia</strong> RTE editorean sarrerentzako."
+
+#: ../skype-admin.php:60
+#: ../skype-admin.php:193
+msgid "Display &amp; Function"
+msgstr "Bistaratzea eta funtzioa"
+
+#: ../skype-admin.php:61
+msgid "These settings define which options should be used to replace their respective tag (if present) in the selected template file. If unchecked, the tags will be blanked out."
+msgstr "Ezarpen hauek definitzen dute zein aukera erabili behar den dagokion etiketa (hau existitzen bada) ordezkatzeko hautatutako txantiloiaren fitxategian. Desmarkatuta badaude, etiketen edukia ezabatuko da."
+
+#: ../skype-admin.php:62
+#, php-format
+msgid "Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
+msgstr "Erabili %1$s goitibeherako botoian. Utzi markatu gabe %2$s edo %3$s eduki ezean."
+
+#: ../skype-admin.php:62
+#: ../skype-classes.php:292
+msgid "Leave me voicemail"
+msgstr "Ahotsezko mezu bat utzi"
+
+#: ../skype-admin.php:62
+#: ../skype-admin.php:308
+#: ../skype-admin.php:309
+#: ../skype-classes.php:121
+msgid "SkypeIn"
+msgstr "SkypeIn"
+
+#: ../skype-admin.php:62
+#: ../skype-admin.php:310
+#: ../skype-classes.php:121
+msgid "Skype Voicemail"
+msgstr "Skype-ahotsezko mezua"
+
+#: ../skype-admin.php:64
+#, php-format
+msgid "Use %1$s (define below) for %2$s tags."
+msgstr "Erabili %$s (definitu behean) %2$s etiketarako."
+
+#: ../skype-admin.php:64
+msgid "Action text"
+msgstr "Akzio-testua"
+
+#: ../skype-admin.php:65
+#: ../skype-admin.php:79
+#: ../skype-admin.php:98
+#: ../skype-admin.php:153
+msgid "Status texts"
+msgstr "Egoera-testuak"
+
+#: ../skype-admin.php:65
+#, php-format
+msgid "for the %s tag"
+msgstr "%s etiketarako"
+
+#: ../skype-admin.php:66
+#: ../skype-admin.php:75
+#: ../skype-admin.php:77
+#: ../skype-admin.php:79
+#: ../skype-admin.php:153
+msgid "Disabled"
+msgstr "Desgaitua"
+
+#: ../skype-admin.php:75
+#, php-format
+msgid "If you select %1$s, the tags %2$s, %3$s and %4$s in the button template will be ignored."
+msgstr "%1$s hautatzen baduzu, ez dira kontuan hartuko hurrengo txantiloi botoiaren etiketak: %2$s, %3$s eta %4$s."
+
+#: ../skype-admin.php:77
+#, php-format
+msgid "When security settings on your server are too tight (<strong>safe_mode</strong> enabled, <strong>open_basedir</strong> restictions or <strong>allow_url_fopen</strong> being disabled), your status does not show or the Skype button doesn't load and you find an error like \"Warning: file_get_contents() [function.file-get-contents]: URL file-access is disabled in the server configuration...\" in the server log files, use either %1$s or %2$s here."
+msgstr "Zerbitzarian segurtasun ezarpenak oso altuak badira (<strong>safe_mode</strong> gaituta, <strong>open_basedir</strong> mugatuta edo <strong>allow_url_fopen</strong> desgaituta), zure egoera agertzen ez bada, Skype-botoia kargatzen ez bada, edo \"warning\" abisu-mezu bat agertzen bada zerbitzariaren erregistro-fitxategietan, erabili %1$s edo %2$s."
+
+#: ../skype-admin.php:79
+#: ../skype-admin.php:391
+msgid "The security settings on your server are too tight for the online status to be read from the Skype server."
+msgstr "Zerbitzariaren segurtasun ezarpenak zorrotzegiak dira eta Skypeko zerbitzarian ezin da konexio-egoera irakurri."
+
+#: ../skype-admin.php:79
+#, php-format
+msgid "It is advised to set %1$s to %2$s here untill this is fixed."
+msgstr "Gomendagarria da %1$s-%2$s markatzea hau finkatu arte."
+
+#: ../skype-admin.php:79
+#, php-format
+msgid "You can also select %1$s but only the %2$s status text will be available."
+msgstr "%1$s ere markatu dezakezu, baina %1$s egoera-testua besterik ez da eskuragarri egongo."
+
+#: ../skype-admin.php:79
+#: ../skype-admin.php:123
+msgid "Error"
+msgstr "Errorea"
+
+#: ../skype-admin.php:80
+#, php-format
+msgid "Use %s link."
+msgstr "Erabili esteka hau: %s."
+
+#: ../skype-admin.php:80
+msgid "Download Skype now!"
+msgstr "Deskargatu Skype orain!"
+
+#: ../skype-admin.php:81
+msgid "Place link on a new line."
+msgstr "Jarri esteka beste lerro batean."
+
+#: ../skype-admin.php:82
+msgid "Link text"
+msgstr "Estekaren testua"
+
+#: ../skype-admin.php:83
+msgid "Link URL"
+msgstr "Estekaren URL"
+
+#: ../skype-admin.php:85
+msgid "Default affiliate link"
+msgstr "Afiliatu esteka lehenetsia"
+
+#: ../skype-admin.php:86
+msgid "Skype main page"
+msgstr "Skypen orri nagusi"
+
+#: ../skype-admin.php:87
+msgid "Skype download page"
+msgstr "Skype deskargatzeko web-orria"
+
+#: ../skype-admin.php:90
+msgid "Leave to Default if you are generous and think downloads should create some small possible revenue for the developer of this plugin -- that's me, thanks! :) -- but if you think open source developers are greedy bastards and should go away, select one of the other options -- just kidding, feel free... Really! You can always donate on the Notes & Live Support section ;)."
+msgstr "Eskuzabala bazara eta uste baduzu plugin hau deskargatzen den bakoitzean garatzaileari (hau da, niri :), eskerrik asko!) zer edozer eman beharko zaiola, markatu Lehenetsia; uste baduzu, berriz, iturburu garatzaileak diruzale kabroi hutsak garela, eta alde egin behar dugula, hautatu beste aukera bat. Txantxa da, egin nahi duzuna, benetan! Dirua eman dezakezu nahi duzunean \"Ohar eta zuzeneko euskarria\" atalean ;)"
+
+#: ../skype-admin.php:90
+#, php-format
+msgid "If you want to create your own link to get possible revenue from downloads yourself, select %1$s and paste the link code in the textarea under %2$s below."
+msgstr "Deskargatzeagatik diru-sartzeak lortzeko esteka propio bat sortu nahi baduzu zeure web-orrian, markatu %1$s eta kopiatu estekaren kodea testu eremuan %2$s(a)ren azpian."
+
+#: ../skype-admin.php:90
+#: ../skype-admin.php:192
+msgid "Custom Download Link"
+msgstr "Pertsonalizatu deskargatzeko esteka"
+
+#: ../skype-admin.php:94
+msgid "Custom Status texts"
+msgstr "Pertsonalizatu egoera-testua"
+
+#: ../skype-admin.php:95
+#, php-format
+msgid "Text that will replace the %s tag depending on actual online status."
+msgstr "Hau da, konexio-egoeraren arabera, %s etiketa ordezkatuko duen testua."
+
+#: ../skype-admin.php:98
+#, php-format
+msgid "Please, change %1$s to %2$s under %3$s (above) for these options to become available first."
+msgstr "%1$s aldatu %2$s aukerara %3$sn (gainean) aukera hauek eskuragarri izateko."
+
+#: ../skype-admin.php:106
+msgid "Status"
+msgstr "Egoera"
+
+#: ../skype-admin.php:107
+msgid "Value"
+msgstr "Balioa"
+
+#: ../skype-admin.php:108
+#: ../skype-admin.php:136
+#: ../skype-admin.php:164
+msgid "Text"
+msgstr "Testua"
+
+#: ../skype-admin.php:124
+msgid "(none)"
+msgstr "(bat ere ez)"
+
+#: ../skype-admin.php:130
+msgid "Tag texts"
+msgstr "Testu-etiketak"
+
+#: ../skype-admin.php:131
+msgid "Define texts to replace their respective template tags relating to the Skype button action."
+msgstr "Definitu testuak dagokien txantiloiaren etiketak ordezkatzeko (Skype-botoiaren akzioari erreferentzia egiten dioten etiketak)."
+
+#: ../skype-admin.php:134
+msgid "Action"
+msgstr "Akzioa"
+
+#: ../skype-admin.php:135
+#: ../skype-admin.php:163
+msgid "Tag"
+msgstr "Etiketa"
+
+#: ../skype-admin.php:153
+#, php-format
+msgid "Please, change %1$s under %3$s (above) to any value other than %2$s for the following options to become available first."
+msgstr "Aldatu %1$s (%3$s atalean) beste balio batera (%2$s ez ezik) aukera hauek eskuragarri bihurtzeko."
+
+#: ../skype-admin.php:162
+msgid "Other"
+msgstr "Beste bat"
+
+#: ../skype-admin.php:167
+msgid "First seperator"
+msgstr "Lehenengo bereizlea"
+
+#: ../skype-admin.php:172
+msgid "Second seperator"
+msgstr "Bigarren bereizlea"
+
+#: ../skype-admin.php:177
+msgid "My status"
+msgstr "Nire egoera"
+
+#: ../skype-admin.php:186
+#, php-format
+msgid "The currently selected template has been loaded into the database. You can edit it here if you like, but be sure to select %1$s under %2$s or your changes will be lost."
+msgstr "Hautatu duzun azken txantiloia kargatu egin da datu-basean. Hemen editatu dezakezu, baina %1$s %2$s(a)n markatzen ez baduzu, egin dituzun aldaketak galduko dituzu."
+
+#: ../skype-admin.php:186
+#: ../skype-admin.php:188
+#: ../skype-classes.php:549
+msgid "Basic Options"
+msgstr "Aukera orokorrak"
+
+#: ../skype-admin.php:188
+msgid "Available tags:"
+msgstr "Etiketa eskuragarriak:"
+
+#: ../skype-admin.php:188
+msgid "Available markers:"
+msgstr "Markatzaile eskuragarriak:"
+
+#: ../skype-admin.php:188
+#, php-format
+msgid "See %s for more instructions."
+msgstr "Ikusi %s argibide gehiago irakurtzeko."
+
+#: ../skype-admin.php:188
+#, php-format
+msgid "Oh, and did I mention this? Changes to the template will only be loaded when the option %1$s under %2$s is selected!"
+msgstr "Ai, eta aipatu dut hau? Txantiloian egindako aldaketak bakarrik kargatuko dira %2$s(a)n %1$s aukera markatuta baduzu!"
+
+#: ../skype-admin.php:193
+#, php-format
+msgid "If you are a <a href=\"%1$s\">Skype Affiliate</a> select %2$s at %3$s (above) and paste your link/banner code (HTML/Javascript) here."
+msgstr "<a href=\"%1$s\">Skype harpideduna</a> bazara, %3$s(e)an (gainean) hautatu %2$s, eta itsatsi zure esteka/iragarkiaren kodea (HTML/Javascript) hemen."
+
+#: ../skype-admin.php:193
+msgid "Link/Banner Code"
+msgstr "Esteka/iragarkiaren kodea"
+
+#: ../skype-admin.php:206
+#: ../skype-admin.php:273
+#: ../skype-quickguide-notes.php:115
+#: ../skype-quickguide-notes.php:124
+msgid "WordPress Support"
+msgstr "WordPress-eko euskarria"
+
+#: ../skype-admin.php:210
+msgid "More..."
+msgstr "Gehiago..."
+
+#: ../skype-admin.php:223
+msgid "Options"
+msgstr "Aukerak"
+
+#: ../skype-admin.php:229
+#: ../skype-admin.php:496
+#: ../skype-quickguide-notes.php:100
+msgid "Notes &amp; Live Support"
+msgstr "Oharrak eta zuzeneko euskarria"
+
+#: ../skype-admin.php:234
+msgid "Current theme"
+msgstr "Uneko txantiloia"
+
+#: ../skype-admin.php:238
+#: ../skype-classes.php:341
+msgid "Skype button disabled:"
+msgstr "Skype-botoia desgaituta:"
+
+#: ../skype-admin.php:238
+#: ../skype-classes.php:341
+msgid "Missing Skype ID."
+msgstr "Skype IDa ez da aurkitzen."
+
+#: ../skype-admin.php:249
+msgid "WARNING !"
+msgstr "KONTUZ!"
+
+#: ../skype-admin.php:260
+msgid "The preview button uses the Skype Test Call service to allow testing its function."
+msgstr "Aurrebista botoiak Skypen deia probatzeko zerbitzua erabiltzen du bere funtzioa probatu ahal izateko."
+
+#: ../skype-admin.php:263
+msgid " (edit under advanced options)"
+msgstr "(editatu aukera aurreratuak erabiliz)"
+
+#: ../skype-admin.php:273
+msgid "For all support questions and suggestions, please go to"
+msgstr "Galderak eta iradokizunak egiteko:"
+
+#: ../skype-admin.php:274
+#, php-format
+msgid "For <strong>feature requests</strong> or general help with <strong>WordPress</strong> or <strong>hosting</strong>, please contact <em>RavanH</em> via e-mail %s or Skype chat:"
+msgstr "<strong>Ezaugarriei buruzko eskaerak</strong> egiteko, <strong>WordPress</strong> plataforma edo <strong>ostalari zerbitzuari</strong> buruzko zalantza orokorrak argitzeko, jarri harremanetan <em>RavanH</em> garatzailearekin posta elektronikoaren bidez edo Skype-txata erabiliz:"
+
+#: ../skype-admin.php:283
+msgid "Translations"
+msgstr "Itzulpenak"
+
+#: ../skype-admin.php:284
+msgid "Translation contributions are highly appreciated. Authors of new translations or updates will be mentioned here."
+msgstr "Itzulpen ekarpenak izugarri eskertzen dira. Itzulpen berriak edo eguneratzeak egiten dituzten itzultzaileen izenak hemen agertuko dira."
+
+#: ../skype-admin.php:288
+msgid "Want to make your own translation too? Read the <a href=\"http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt\">translation instructions</a> included with this plugin to get started."
+msgstr "Zuk ere itzulpena egin nahi duzu? Irakurri plugin honen fitxategietan dagoen itzulpen gida: http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt"
+
+#: ../skype-admin.php:290
+msgid "Donations"
+msgstr "Dirua emateko"
+
+#: ../skype-admin.php:291
+msgid "All donations are much appreciated and will (without objection) be mentioned here as a way of expressing my gratitude."
+msgstr "Emate guztiak asko eskertzen dira eta, hori erakusteko, emaileen izenak hemen agertuko dira objekzio barik."
+
+#: ../skype-admin.php:295
+msgid "Please <strong>rate this plugin</strong> at <a href=\"http://wordpress.org/extend/plugins/skype-online-status/\">WordPress</a>"
+msgstr "<strong>Baloratu plugin hau</strong> <a href=\"http://wordpress.org/extend/plugins/skype-online-status/\">WordPress</a> helbidean."
+
+#: ../skype-admin.php:296
+msgid "Do you want your name and/or link up there too? Or just appreciate my work?"
+msgstr "Nahi duzu zure izena edota esteka hemen agertzea? Edo nik egindako lana eskertzea?"
+
+#: ../skype-admin.php:297
+msgid "Donate with PayPal - it's fast, free and secure!"
+msgstr "Eman dirua PayPal zerbitzuaren bidez; erraza, askea eta segurua da!"
+
+#: ../skype-admin.php:298
+msgid "Thanks!"
+msgstr "Eskerrik asko!"
+
+#: ../skype-admin.php:307
+msgid "Call any phone directly from Skype."
+msgstr "Deitu zuzenean edozein telefonotara Skypen bidez."
+
+#: ../skype-admin.php:309
+msgid "Your personal online number."
+msgstr "Zure zenbaki pertsonala linean."
+
+#: ../skype-admin.php:310
+msgid "Never miss a call!"
+msgstr "Ez galdu dei bat inoiz!"
+
+#: ../skype-admin.php:312
+msgid "Accessories: Get the most out of Skype!"
+msgstr "Gehigarriak: aprobetxatu zeure Skype ahalik eta gehien!"
+
+#: ../skype-admin.php:324
+msgid "Skype Buttons"
+msgstr "Skype-botoiak"
+
+#: ../skype-admin.php:325
+msgid "Skype buttons wizard"
+msgstr "Skype-botoien laguntzailea"
+
+#: ../skype-admin.php:326
+#, php-format
+msgid "View %s's online status on the Skype server"
+msgstr "Ikusi %s's-(a)ren konexio-egoera Skypen zerbitzarian"
+
+#: ../skype-admin.php:327
+msgid "Edit Privacy Options in your Skype client"
+msgstr "Editatu Pribatutasun aukerak zure Skypen bezeroan"
+
+#: ../skype-admin.php:354
+msgid "Your Skype Online Status database settings have been cleared from the database for removal of this plugin!"
+msgstr "Plugin hau ezabatzeagatik, Skype Online Status datu-baseko ezarpenak ezabatu egin dira datu-basetik!"
+
+#: ../skype-admin.php:354
+msgid "You can still resave the old settings shown below to (partly) undo this action but custom widget settings will be reverted to default."
+msgstr "Akzio hau deuseztatzen baduzu, zeneuzkan ezarpenak (behean agertzen direnak) berreskuratu ditzakezu, baina trepeta pertsonalizatuaren ezarpenak lehengoratuko dira."
+
+#: ../skype-admin.php:354
+msgid "Are you sure?"
+msgstr "Ziur al zaude?"
+
+#: ../skype-admin.php:356
+msgid "Deactivate this plugin"
+msgstr "Desaktibatu plugina"
+
+#: ../skype-admin.php:356
+msgid "Deactivate"
+msgstr "Desaktibatu"
+
+#: ../skype-admin.php:358
+msgid "Go to the <a href=\"plugins.php\">Plugins page</a> and deactivate it."
+msgstr "Joan <a href=\"plugins.php\">Plugin-orrira</a> eta desaktibatu."
+
+#: ../skype-admin.php:363
+msgid "Skype Online Status plugin has been upgraded to version "
+msgstr "Skype Online Status pluginaren bertsioa berritu egin da"
+
+#: ../skype-admin.php:363
+msgid "Please, verify your settings now."
+msgstr "Egiaztatu zure ezarpenak."
+
+#: ../skype-admin.php:363
+msgid "What's new?"
+msgstr "Zelan?"
+
+#: ../skype-admin.php:368
+#, php-format
+msgid "Skype Online Status plugin version %s has been installed!"
+msgstr "Skype Online Status pluginaren %s bertsioa instalatu egin da!"
+
+#: ../skype-admin.php:369
+msgid "Please, adapt the default settings to your personal preference so you can start using Skype buttons anywhere on your site."
+msgstr "Moldatu ezarpen lehenetsiak nahi duzun erara eta Skype botoiak erabili ahal izango duzu webguneko edozein tokitan."
+
+#: ../skype-admin.php:370
+#, php-format
+msgid "Read the %s section for more instructions."
+msgstr "Irakurri %s atala laguntza gehiago behar baduzu."
+
+#: ../skype-admin.php:381
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a>."
+msgstr "%1$s bertsio berri bat badago. <a href=\"%2$s\">%3$s bertsioa deskargatzeko</a>."
+
+#: ../skype-admin.php:383
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> <em>automatic upgrade unavailable for this plugin</em>."
+msgstr "%1$s bertsio berri bat badago. <a href=\"%2$s\">%3$s bertsio deskargatzeko</a> <em>ez dago plugin honen bertsioa automatikoki berritzerik </em>."
+
+#: ../skype-admin.php:385
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> or <a href=\"%4$s\">upgrade automatically</a>."
+msgstr "%1$s bertsio berri bat badago. <a href=\"%2$s\">Bertsio %3$s deskargatu</a> edo <a href=\"%4$s\">berritu automatikoki</a>."
+
+#: ../skype-admin.php:391
+msgid "Please, check if one of the following options can be met -or- ask your server admin / hosting provider to take care of this."
+msgstr "Bila ezazu aukera hauetariko bat edo eskatu laguntza zure zerbitzariaren administratzaileari edo ostalariaren hornitzaileari."
+
+#: ../skype-admin.php:391
+msgid "Install and activate cURL libraries on the server (preferred)"
+msgstr "Instalatu eta aktibatu cURL liburutegiak zerbitzarian (hobetsia)"
+
+#: ../skype-admin.php:391
+msgid "Upgrade PHP to a version that includes fsockopen (PHP 4+)"
+msgstr "Berritu PHP fsockopen (PHP 4+) daukan bertsio batera."
+
+#: ../skype-admin.php:391
+msgid "Change INI setting <strong>allow_url_fopen</strong> to ON (not advised)"
+msgstr "Aldatu INI ezarpenak <strong>allow_url_fopen</strong> 'Aktibatu' sakatuz (ez da aholkatzen)"
+
+#: ../skype-admin.php:391
+msgid "Reading your online status from the remote Skype server has been disabled. As a result, some of the advanced options will not be available. However, Skype button themes that also show your online status by way of images (that are provided by the same Skype server) will still do so."
+msgstr "Zure konexio-egoera irakurtzeko aukera Skypen urruneko zerbitzaritik desaktibatu da. Hori dela eta, aukera aurreratu batzuk ez dira eskuragarri egongo. Hala ere, irudiz bidez, zure konexio-egoera erakusten duten Skype-botoiaren gaiek (Skype zerbitzariak hornitutakoek) funtzio hori egiten jarraituko dute."
+
+#: ../skype-admin.php:395
+msgid "Please, wait while page has loaded completely.<br /> When the Skype server at http://mystatus.skype.com/ is slow or down, this might take a while..."
+msgstr "Itxaron orria kargatu arte.<br /> Zerbitzaria (http://mystatus.skype.com/) motel badabil edo ez badabil, itxaroteko denbora luzeagoa izan daiteke."
+
+#: ../skype-admin.php:439
+msgid "Options updated!"
+msgstr "Aukerak kargatu egin dira!"
+
+#: ../skype-admin.php:445
+msgid "Options reset!"
+msgstr "Aukerak berrezarri egin dira!"
+
+#: ../skype-admin.php:452
+#: ../skype-classes.php:218
+msgid "Skype Test Call"
+msgstr "Skype probatzeko deia"
+
+#: ../skype-admin.php:491
+msgid "Define all your <em>default</em> Skype Status settings here."
+msgstr "Definitu hemen <em>aurredefinitutako</em> Skype Online ezarpen guztiak."
+
+#: ../skype-admin.php:492
+#, php-format
+msgid "Start simply by setting the basics like %1$s, %2$s and the button %3$s you want to show on your blog."
+msgstr "Hasteko, doitu oinarrizko elementu batzuk (%1$s edo %2$s, esaterako), baita blogean agertzea nahi duzun %3$s-botoia ere."
+
+#: ../skype-admin.php:493
+#, php-format
+msgid "Then activate the Skype Status Widget on your <a href=\"widgets.php\">Widgets</a> page or use the Skype Status quicktag button %s in the WYSIWYG editor (TinyMCE) to place the Skype Online Status button in any post or page."
+msgstr "Skype Online Status botoia ezarri ahal izateko zure blogeko edozein sarrerratan, aktibatu Skype Online trepeta <a href=\"widgets.php\">Trepetak</a>-orrian edo erabili Skype Online etiketa-azkarraren botoia (%s) WYSIWYG editorean (TinyMCE)."
+
+#: ../skype-admin.php:494
+msgid "Later on, you can fine-tune everything until it fits just perfectly on you pages."
+msgstr "Hurrengoan, ezaugarri guztiak doitu ditzakezu zure orriaren itxurara."
+
+#: ../skype-admin.php:495
+msgid "Some basic settings may be overridden per Widget settings or when calling the Skype button with a template function."
+msgstr "baliteke trepeta-ezarpenek oinarrizko ezarpen batzuk gainidaztea. Gauza bera gerta daiteke, Skype-botoia deitzean, txantiloi funtzio bat erabiliz gero."
+
+#: ../skype-admin.php:496
+#, php-format
+msgid "Read more about configuring this plugin and more ways to trigger Skype buttons on your blog in the %1$s section. If you have any remaining questions, see the %2$s page to get help."
+msgstr "Irakurri gehiago plugin honen konfigurazioari buruz edo Skype-botoiak abiarazteko modu ezberdinei buruz %1$s atalean. Beste zalantzarik baduzu, joan %2$ orrira."
+
+#: ../skype-classes.php:13
+#: ../skype-classes.php:80
+#: ../skype-classes.php:537
+msgid "Skype Status"
+msgstr "Skype egoera"
+
+#: ../skype-classes.php:16
+msgid "Add a Skype Online Status button"
+msgstr "Gehitu Skype Online Status botoi bat"
+
+#: ../skype-classes.php:98
+msgid "Title:"
+msgstr "Izenburua:"
+
+#: ../skype-classes.php:107
+msgid "Text before button"
+msgstr "Botoiaren gainean agertuko den testua"
+
+#: ../skype-classes.php:111
+#: ../skype-classes.php:117
+msgid "Default"
+msgstr "Lehenetsia"
+
+#: ../skype-classes.php:113
+msgid "Text after button"
+msgstr "Botoiaren atzean agertuko den testua"
+
+#: ../skype-classes.php:116
+msgid "Use Voicemail?"
+msgstr "Ahotsezko mezua erabili?"
+
+#: ../skype-classes.php:117
+msgid "Yes"
+msgstr "Bai"
+
+#: ../skype-classes.php:117
+#: ../skype-classes.php:121
+msgid "No"
+msgstr "Ez"
+
+#: ../skype-classes.php:119
+msgid "Leave blank to use the default options as you defined on the <a href=\"options-general.php?page=skype-status.php\">Skype Online Status Settings</a> page."
+msgstr "Ez idatzi ezer lehenetsiko aukerak erabiltzeko (<a href=\"options-general.php?page=skype-status.php\">Skype Online Status ezarpenak</a> orrian definitu zenituenak)."
+
+#: ../skype-classes.php:120
+msgid "You can use some basic HTML here like &lt;br /&gt; for new line."
+msgstr "HTML oinarrizko kodea erabili dezakezu (&lt;br /&gt; lerro berri baterako, esaterako)."
+
+#: ../skype-classes.php:121
+#, php-format
+msgid "Set to %1$s if you do not have %2$s or %3$s."
+msgstr "Markatu %1$s %2$s edo %3$s ez baduzu."
+
+#: ../skype-classes.php:234
+msgid " - "
+msgstr "-"
+
+#: ../skype-classes.php:240
+msgid "&raquo; Get Skype, call free!"
+msgstr "Eskuratu Skype eta deitu dohainik!"
+
+#: ../skype-classes.php:249
+msgid "My status is"
+msgstr "Nire egoera hauxe da:"
+
+#: ../skype-classes.php:251
+#: ../skype-classes.php:277
+#: ../skype-classes.php:278
+msgid "Offline"
+msgstr "Lineaz kanpo"
+
+#: ../skype-classes.php:261
+msgid "English"
+msgstr "ingelesez"
+
+#: ../skype-classes.php:262
+msgid "French"
+msgstr "frantsesez"
+
+#: ../skype-classes.php:263
+msgid "German"
+msgstr "alemanez"
+
+#: ../skype-classes.php:264
+msgid "Japanese"
+msgstr "japonieraz"
+
+#: ../skype-classes.php:265
+msgid "Taiwanese"
+msgstr "taiwanieraz"
+
+#: ../skype-classes.php:266
+msgid "Chinese"
+msgstr "txineraz"
+
+#: ../skype-classes.php:267
+msgid "Brazilian"
+msgstr "brasildarrez"
+
+#: ../skype-classes.php:268
+msgid "Portuguese"
+msgstr "portugaleraz"
+
+#: ../skype-classes.php:269
+msgid "Italian"
+msgstr "italieraz"
+
+#: ../skype-classes.php:270
+msgid "Spanish"
+msgstr "gaztelaniaz"
+
+#: ../skype-classes.php:271
+msgid "Polish"
+msgstr "polonieraz"
+
+#: ../skype-classes.php:272
+msgid "Swedish"
+msgstr "suediaraz"
+
+#: ../skype-classes.php:279
+msgid "Online"
+msgstr "Linean"
+
+#: ../skype-classes.php:280
+msgid "Away"
+msgstr "Ez nago"
+
+#: ../skype-classes.php:281
+msgid "Not available"
+msgstr "Lanpetuta"
+
+#: ../skype-classes.php:282
+msgid "Do not disturb"
+msgstr "Ikusezina"
+
+#: ../skype-classes.php:284
+msgid "Skype me!"
+msgstr "Skype iezadazu!"
+
+#: ../skype-classes.php:288
+msgid "Call me!"
+msgstr "Dei iezadazu!"
+
+#: ../skype-classes.php:289
+msgid "Add me to Skype"
+msgstr "Gehitu nazazu Skypera"
+
+#: ../skype-classes.php:290
+msgid "Chat with me"
+msgstr "Txateatu nirekin"
+
+#: ../skype-classes.php:291
+msgid "View my profile"
+msgstr "Ikusi nire profila"
+
+#: ../skype-classes.php:293
+msgid "Send me a file"
+msgstr "Bidali fitxategi bat"
+
+#: ../skype-classes.php:550
+msgid "Sections"
+msgstr "Atalak"
+
+#: ../skype-classes.php:551
+msgid "Preview theme template:"
+msgstr "Aurreikusi txantiloi gaia:"
+
+#: ../skype-classes.php:552
+#: ../skype-quickguide-notes.php:103
+#: ../skype-quickguide-notes.php:123
+msgid "Support"
+msgstr "Euskarria"
+
+#: ../skype-classes.php:553
+msgid "Get more from Skype"
+msgstr "Atera iezaiozu Skyperi probetxua"
+
+#: ../skype-classes.php:554
+msgid "Resources"
+msgstr "Baliabideak"
+
+#: ../skype-classes.php:573
+msgid "Settings"
+msgstr "Ezarpenak"
+
+#: ../skype-classes.php:597
+msgid "Discussion"
+msgstr "Eztabaida"
+
+#: ../skype-classes.php:598
+#: ../skype-quickguide-notes.php:104
+msgid "Credits"
+msgstr "Kredituak"
+

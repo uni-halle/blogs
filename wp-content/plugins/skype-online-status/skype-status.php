@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Skype Online Status
+Plugin Name: Skype Legacy Buttons
 Plugin URI: http://status301.net/wordpress-plugins/skype-online-status/
 Description: Add multiple, highly customizable and accessible Skype buttons to post/page content (quick-tags), sidebar (unlimited number of widgets) or anywhere else (template code). Find documentation and advanced configuration options on the settings page or just go straight to your <a href="widgets.php">Widgets</a> page and add one there...  
 Text Domain: skype-online-status
 Domain Path: languages
-Version: 2.9.7
+Version: 3.0
 Author: RavanH
 Author URI: http://status301.net/
 */
@@ -32,28 +32,13 @@ Author URI: http://status301.net/
 */
 
 // Plugin version number and date
-define('SOSVERSION', '2.9.7');
-define('SOSVERSION_DATE', '2015-02-19');
-
-if (file_exists(dirname(__FILE__).'/skype-online-status'))
-	$skype_mu_dir = "/skype-online-status";
-else
-	$skype_mu_dir = "";
+define('SOSVERSION', '3.0');
+define('SOSVERSION_DATE', '2015-05-20');
 		
 // Plugin constants
-define('SOSPLUGINURL', plugins_url($skype_mu_dir, __FILE__));
-define('SOSPLUGINDIR', dirname(__FILE__).$skype_mu_dir);
+define('SOSPLUGINDIR', dirname(__FILE__));
 define('SOSPLUGINBASENAME', plugin_basename(__FILE__));
 define('SOSPLUGINFILE', basename(__FILE__));
-
-// Checks whether your server is capable and allowing the remote Skype status file to be read
-if (function_exists('curl_exec') || ini_get('allow_url_fopen'))
-	define('SOSREMOTE', TRUE);
-else 
-	define('SOSREMOTE', FALSE);
-
-// Print all Skype settings from the database at the bottom of the settings page for debugging (normally, leave to FALSE)
-define('SOSDATADUMP', FALSE);
 
 // load classes
 require_once(SOSPLUGINDIR . '/skype-classes.php');

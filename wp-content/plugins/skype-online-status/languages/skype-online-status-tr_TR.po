@@ -1,0 +1,1083 @@
+# Translation of the WordPress plugin   by .
+# Copyright (C) 2010
+# This file is distributed under the same license as the  package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Skype Online Status/2.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-22 23:54+0100\n"
+"PO-Revision-Date: 2013-02-26 12:19+0200\n"
+"Last-Translator: HakanEr <hakanerwptr@gmail.com>\n"
+"Language-Team: hakan er <hakanerwptr@gmail.com>\n"
+"Language: turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../skype-admin.php:10
+msgid "Skype"
+msgstr "Skype"
+
+#: ../skype-admin.php:11 ../skype-admin.php:492 ../skype-classes.php:101
+msgid "Skype ID"
+msgstr "Skype ID"
+
+#: ../skype-admin.php:11 ../skype-admin.php:14 ../skype-admin.php:22
+#: ../skype-admin.php:30 ../skype-admin.php:65 ../skype-admin.php:82
+#: ../skype-admin.php:83 ../skype-admin.php:186 ../skype-admin.php:193
+#: ../skype-admin.php:206 ../skype-admin.php:307 ../skype-admin.php:309
+#: ../skype-admin.php:310 ../skype-classes.php:101 ../skype-classes.php:104
+#: ../skype-classes.php:107 ../skype-classes.php:110 ../skype-classes.php:113
+#: ../skype-classes.php:236
+msgid ": "
+msgstr ": "
+
+#: ../skype-admin.php:12
+#, php-format
+msgid ""
+"Simply enter your Skype ID. Or... If you want the button to invoke a Skype "
+"multichat or conference call, enter more then one Skype ID seperated with a "
+"semi-colon (<strong>;</strong>). You may also enter a regular phone number "
+"(starting with a <strong>+</strong> followed by country code; note that "
+"callers need to have %s to call). It just all depends on what you want to "
+"achieve!"
+msgstr ""
+"Skype ID kimliğinizi ekleyin. Veya... Skype çoklu sohbet veya konferans "
+"çağrısı başlatmak için buton istiyorsanız, noktalı virgülle ayrılmış birden "
+"fazla Skype ID kimliği girin (<strong>;</strong>). Ayrıca, normal bir "
+"telefon numarası girebilirsiniz (<strong>+</strong> ile başlayan bir ülke "
+"kodu; çağrı yapmak için arayanlarda %s olması gerektiğini unutmayın). Bu "
+"sadece ne elde etmek istediğinize bağlıdır!"
+
+#: ../skype-admin.php:12 ../skype-admin.php:306 ../skype-admin.php:307
+msgid "SkypeOut"
+msgstr "SkypeOut"
+
+#: ../skype-admin.php:14 ../skype-admin.php:492 ../skype-classes.php:104
+msgid "Full Name"
+msgstr "Tam İsim"
+
+#: ../skype-admin.php:15
+msgid ""
+"Your full name as you want it to appear in Skype links, link-titles and "
+"image alt-texts on your blog."
+msgstr ""
+"Skype bağlantıları, bağlantı başlıkları ve resim alt-metinleri gibi "
+"blogunuzda görünmesini istediğiniz tam isminiz."
+
+#: ../skype-admin.php:19 ../skype-admin.php:22 ../skype-admin.php:186
+#: ../skype-admin.php:188 ../skype-admin.php:492 ../skype-classes.php:110
+msgid "Theme"
+msgstr "Tema"
+
+#: ../skype-admin.php:21
+#, php-format
+msgid ""
+"Start with <strong>selecting one of the predefined theme templates</strong> "
+"to load into the database. Change the options to see a preview. You might "
+"later select %1$s to edit the template in the text field under %2$s."
+msgstr ""
+"Veritabanına yüklemek için <strong>önceden tanımlı tema şablonlarından "
+"birini seçerek</strong> başlayın. Bir önizleme görmek için seçenekleri "
+"değiştirin. Daha sonra, %2$s altında bulunan metin alanındaki şablonu "
+"düzenlemek için %1$s seçebilirsiniz."
+
+#: ../skype-admin.php:21 ../skype-admin.php:22 ../skype-admin.php:23
+#: ../skype-admin.php:67 ../skype-admin.php:77 ../skype-admin.php:79
+#: ../skype-admin.php:88 ../skype-admin.php:90 ../skype-admin.php:98
+#: ../skype-admin.php:186 ../skype-admin.php:188 ../skype-admin.php:193
+#: ../skype-admin.php:236 ../skype-admin.php:263
+msgid "Custom..."
+msgstr "Kişisel..."
+
+#: ../skype-admin.php:21 ../skype-admin.php:23 ../skype-admin.php:24
+#: ../skype-admin.php:90 ../skype-admin.php:98 ../skype-admin.php:153
+#: ../skype-admin.php:193 ../skype-classes.php:596
+msgid "Advanced Options"
+msgstr "Gelişmiş Seçenekler"
+
+#: ../skype-admin.php:21 ../skype-admin.php:23 ../skype-admin.php:185
+msgid "Custom Template"
+msgstr "Kişisel Şablon"
+
+#: ../skype-admin.php:23
+#, php-format
+msgid ""
+"When %1$s is selected, you can edit the template to your liking below at "
+"%2$s under %3$s. When you make changes to that field but select another "
+"theme template here, those changes will be overwriten by the new template!"
+msgstr ""
+"%1$s seçildiğinde, %3$s altındaki %2$s bölümünden şablonu istediğiniz gibi "
+"düzenleyebilirsiniz. Eğer bu alanda değişiklik yapar fakat buradan başka bir "
+"tema şablonu seçerseniz, bu değişiklikler yeni şablon tarafından üzerine "
+"yazılacaktır!"
+
+#: ../skype-admin.php:23 ../skype-admin.php:186
+msgid "Customize currently loaded template"
+msgstr "Şu anda yüklü olan şablonu kişiselleştirin"
+
+#: ../skype-admin.php:24
+#, php-format
+msgid ""
+"If you cannot find a suitable theme, check out <a href=\"http://www.skype."
+"com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/"
+"buttons/wizard.html</a>. Select your options there and copy/paste the output "
+"into the textarea under %s."
+msgstr ""
+"Eğer uygun bir tema bulamıyorsanız, <a href=\"http://www.skype.com/share/"
+"buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/"
+"wizard.html</a> adresine göz atın. Oradan seçenekleri belirleyin ve %s "
+"altındaki metin alanı içine çıktıyı kopyala/yapıştır yapın."
+
+#: ../skype-admin.php:24 ../skype-admin.php:98 ../skype-admin.php:153
+msgid "Display"
+msgstr "Görüntüleme"
+
+#: ../skype-admin.php:28 ../skype-admin.php:30
+msgid "Function"
+msgstr "İşlev"
+
+#: ../skype-admin.php:29
+msgid ""
+"Some of the button themes will show your online status in an icon/image, "
+"without having a specific function assigned. This means you can select what "
+"the button should do when clicked by a visitor."
+msgstr ""
+"Bazı buton temaları, atanmış belirli bir işleve sahip olmaksızın bir simge/"
+"görsel ile çevrimiçi durumunuzu gösterecektir. Bu, bir ziyaretçi tarafından "
+"tıklandığında düğmenin ne yapması gerektiğini seçebileceğiniz anlamına gelir."
+
+#: ../skype-admin.php:38 ../skype-admin.php:79 ../skype-admin.php:260
+#: ../skype-admin.php:495
+msgid "Note:"
+msgstr "Not:"
+
+#: ../skype-admin.php:38
+#, php-format
+msgid ""
+"This setting will only be used in the '%1$s' theme templates, or in your own "
+"custom template when the tags %2$s and %3$s are used."
+msgstr ""
+"Bu ayar sadece '%1$s' tema şablonlarında veya kendi kişisel şablon "
+"etiketleri %2$s ve %3$s kullanıldığında kullanılacaktır."
+
+#: ../skype-admin.php:42 ../skype-admin.php:197 ../skype-admin.php:245
+msgid "Save Changes"
+msgstr "Değişiklikleri Kaydet"
+
+#: ../skype-admin.php:45
+#, php-format
+msgid ""
+"If you have your basic settings correct and there is a Skype button visible "
+"on blog, you can fine-tune it's appearance and function with the advanced "
+"settings. Each option is annotated but you can read more in the %s section."
+msgstr ""
+"Temel ayarlarınız doğruysa ve blog üzerinde görünür bir Skype butonu varsa, "
+"gelişmiş ayarlar ile onun görünüm ve işlevinin ince ayarını yapabilirsiniz. "
+"Her seçenek açıklamalıdır ama %s bölümünde daha fazla bilgi bulabilirsiniz."
+
+#: ../skype-admin.php:45 ../skype-admin.php:188 ../skype-admin.php:226
+#: ../skype-admin.php:370 ../skype-admin.php:496
+#: ../skype-quickguide-notes.php:6
+msgid "Quick Guide"
+msgstr "Hızlı Rehber"
+
+#: ../skype-admin.php:47 ../skype-admin.php:200
+#: ../skype-quickguide-notes.php:13 ../skype-quickguide-notes.php:28
+#: ../skype-quickguide-notes.php:47 ../skype-quickguide-notes.php:94
+#: ../skype-quickguide-notes.php:108 ../skype-quickguide-notes.php:121
+#: ../skype-quickguide-notes.php:130 ../skype-quickguide-notes.php:135
+#: ../skype-quickguide-notes.php:139
+msgid "Top"
+msgstr "Üst"
+
+#: ../skype-admin.php:54
+msgid "Post content"
+msgstr "Yazı içeriği"
+
+#: ../skype-admin.php:55
+#, php-format
+msgid ""
+"When writing posts you can insert a Skype button with a simple quicktag %1$s "
+"or %2$s but to make life even easier, a small button on the WYSIWYG editor "
+"can do it for you. Check this option to show %3$s or uncheck to hide it. You "
+"may still insert the quicktag  in the HTML code of your post or page content "
+"manually."
+msgstr ""
+"Yazı yazarken basit bir %1$s veya %2$s hızlı etiketi ile bir Skype butonu "
+"ekleyebilirsiniz fakat hayatı daha da kolaylaştırmak için, WYSIWYG editörü "
+"üzerindeki küçük bir buton bunu sizin için yapabilir. %3$s göstermek için bu "
+"seçeneği işaretleyin veya gizlemek için işaretini kaldırın. Yine de, elle "
+"yazı veya sayfa içeriğine HTML kodu ile hızlı etiket ekleyebilirsiniz."
+
+#: ../skype-admin.php:55 ../skype-admin.php:206 ../skype-admin.php:273
+#: ../skype-admin.php:346 ../skype-admin.php:381 ../skype-admin.php:383
+#: ../skype-admin.php:385 ../skype-admin.php:493 ../skype-classes.php:537
+#: ../skype-quickguide-notes.php:115 ../skype-quickguide-notes.php:124
+msgid "Skype Online Status"
+msgstr "Skype Online Status"
+
+#: ../skype-admin.php:56
+msgid "Use <strong>Skype Status quicktag button</strong> in the RTE for posts."
+msgstr ""
+"ZME içinde yazılar için <strong>Skype Durum hızlı etiketi butonunu</strong> "
+"kullanın."
+
+#: ../skype-admin.php:60 ../skype-admin.php:193
+msgid "Display &amp; Function"
+msgstr "Görünüm &amp; İşlev"
+
+#: ../skype-admin.php:61
+msgid ""
+"These settings define which options should be used to replace their "
+"respective tag (if present) in the selected template file. If unchecked, the "
+"tags will be blanked out."
+msgstr ""
+"Bu ayarlar, seçilen şablon dosyasında kendi etiketi (varsa) yerine hangi "
+"seçeneklerin kullanılması gerektiğini tanımlar. Eğer işaretli değilse, "
+"etiketler silinir."
+
+#: ../skype-admin.php:62
+#, php-format
+msgid ""
+"Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
+msgstr ""
+"Açılır menüde %1$s seçeneğini kullanın. Eğer %2$s veya %3$s sahip değilseniz "
+"işaretlemeyin."
+
+#: ../skype-admin.php:62 ../skype-classes.php:292
+msgid "Leave me voicemail"
+msgstr "Bana sesli mesaj bırak"
+
+#: ../skype-admin.php:62 ../skype-admin.php:308 ../skype-admin.php:309
+#: ../skype-classes.php:121
+msgid "SkypeIn"
+msgstr "SkypeIn"
+
+#: ../skype-admin.php:62 ../skype-admin.php:310 ../skype-classes.php:121
+msgid "Skype Voicemail"
+msgstr "Skype Sesli Mesaj"
+
+#: ../skype-admin.php:64
+#, php-format
+msgid "Use %1$s (define below) for %2$s tags."
+msgstr "%2$s etiketleri için %1$s (altta belirleyin) kullanın."
+
+#: ../skype-admin.php:64
+msgid "Action text"
+msgstr "Eylem metni"
+
+#: ../skype-admin.php:65 ../skype-admin.php:79 ../skype-admin.php:98
+#: ../skype-admin.php:153
+msgid "Status texts"
+msgstr "Durum metni"
+
+#: ../skype-admin.php:65
+#, php-format
+msgid "for the %s tag"
+msgstr "%s etiketi için"
+
+#: ../skype-admin.php:66 ../skype-admin.php:75 ../skype-admin.php:77
+#: ../skype-admin.php:79 ../skype-admin.php:153
+msgid "Disabled"
+msgstr "Devre Dışı"
+
+#: ../skype-admin.php:75
+#, php-format
+msgid ""
+"If you select %1$s, the tags %2$s, %3$s and %4$s in the button template will "
+"be ignored."
+msgstr ""
+"Eğer %1$s seçerseniz, buton şablonundaki %2$s, %3$s ve %4$s etiketleri göz "
+"ardı edilecektir."
+
+#: ../skype-admin.php:77
+#, php-format
+msgid ""
+"When security settings on your server are too tight (<strong>safe_mode</"
+"strong> enabled, <strong>open_basedir</strong> restictions or "
+"<strong>allow_url_fopen</strong> being disabled), your status does not show "
+"or the Skype button doesn't load and you find an error like \"Warning: "
+"file_get_contents() [function.file-get-contents]: URL file-access is "
+"disabled in the server configuration...\" in the server log files, use "
+"either %1$s or %2$s here."
+msgstr ""
+"Sunucu güvenlik ayarları çok sıkı olduğunda (<strong>safe_mode</strong> "
+"etkin, <strong>open_basedir</strong> kısıtlamaları veya "
+"<strong>allow_url_fopen</strong> devre dışı bırkılması), durumunuz görünmez "
+"veya Skype butonu yüklenmez ve sunucu günlük dosyalarında \"Warning: "
+"file_get_contents() [function.file-get-contents]: URL file-access is "
+"disabled in the server configuration...\" gibi bir hata bulursunuz, burada "
+"%1$s veya %2$s kullanın."
+
+#: ../skype-admin.php:79 ../skype-admin.php:391
+msgid ""
+"The security settings on your server are too tight for the online status to "
+"be read from the Skype server."
+msgstr ""
+"Sunucunuzdaki güvenlik ayarları Skype sunucusundan okunması gereken "
+"çevrimiçi durum için çok sıkı."
+
+#: ../skype-admin.php:79
+#, php-format
+msgid "It is advised to set %1$s to %2$s here untill this is fixed."
+msgstr "Bu düzelene kadar burada %2$s için %1$s ayarlanması tavsiye edilir."
+
+#: ../skype-admin.php:79
+#, php-format
+msgid ""
+"You can also select %1$s but only the %2$s status text will be available."
+msgstr "Ayrıca %1$s seçebilirsiniz fakat %2$s durum metni mevcut olacaktır."
+
+#: ../skype-admin.php:79 ../skype-admin.php:123
+msgid "Error"
+msgstr "Hata"
+
+#: ../skype-admin.php:80
+#, php-format
+msgid "Use %s link."
+msgstr "%s bağlantısı kullan."
+
+#: ../skype-admin.php:80
+msgid "Download Skype now!"
+msgstr "Şimdi Skype'ı indirin!"
+
+#: ../skype-admin.php:81
+msgid "Place link on a new line."
+msgstr "Bağlantıyı yeni bir satır üzerine yerleştirin."
+
+#: ../skype-admin.php:82
+msgid "Link text"
+msgstr "Bağlantı metni"
+
+#: ../skype-admin.php:83
+msgid "Link URL"
+msgstr "Bağlantı URL"
+
+#: ../skype-admin.php:85
+msgid "Default affiliate link"
+msgstr "Varsayılan ortaklık bağlantısı"
+
+#: ../skype-admin.php:86
+msgid "Skype main page"
+msgstr "Skype ana sayfa"
+
+#: ../skype-admin.php:87
+msgid "Skype download page"
+msgstr "Skype indirme sayfası"
+
+#: ../skype-admin.php:90
+msgid ""
+"Leave to Default if you are generous and think downloads should create some "
+"small possible revenue for the developer of this plugin -- that's me, "
+"thanks! :) -- but if you think open source developers are greedy bastards "
+"and should go away, select one of the other options -- just kidding, feel "
+"free... Really! You can always donate on the Notes & Live Support section ;)."
+msgstr ""
+"Eğer cömertseniz \"Varsayılan\" olarak bırakın ve bu eklenti geliştiricisi "
+"için indirmelerin bazı olası küçük gelirler oluşturacağını düşünün -- bu "
+"benim, teşekkürler! :) -- fakat eğer açık kaynak geliştiricilerinin açgözlü "
+"herifler olduğunu ve uzaklara gitmeleri gerektiğini düşünüyorsanız, diğer "
+"seçeneklerden birini seçin -- sadece şaka yapıyorum, istediğinizi yapmakta "
+"özgürsünüz... Gerçekten! Her zaman Notlar & Canlı Destek bölümünden bağış "
+"yapabilirsiniz ;)."
+
+#: ../skype-admin.php:90
+#, php-format
+msgid ""
+"If you want to create your own link to get possible revenue from downloads "
+"yourself, select %1$s and paste the link code in the textarea under %2$s "
+"below."
+msgstr ""
+"Eğer kendinize indirmelerden olası bir gelir elde etmek için kişisel "
+"bağlantı oluşturmak istiyorsanız, %1$s seçin ve aşağıdaki %2$s altındaki "
+"metin alanına bağlantı kodunu yapıştırın."
+
+#: ../skype-admin.php:90 ../skype-admin.php:192
+msgid "Custom Download Link"
+msgstr "Kişisel İndirme Bağlantısı"
+
+#: ../skype-admin.php:94
+msgid "Custom Status texts"
+msgstr "Kişisel Durum metinleri"
+
+#: ../skype-admin.php:95
+#, php-format
+msgid "Text that will replace the %s tag depending on actual online status."
+msgstr "Mevcut çevrimiçi durumuna göre %s etiketi yerini alacak metin."
+
+#: ../skype-admin.php:98
+#, php-format
+msgid ""
+"Please, change %1$s to %2$s under %3$s (above) for these options to become "
+"available first."
+msgstr ""
+"Lütfen, ilk kullanılabilir olması için bu seçeneklerde %3$s (yukarıda) "
+"altında %2$s ile %1$s değerlerini değiştirin."
+
+#: ../skype-admin.php:106
+msgid "Status"
+msgstr "Durum"
+
+#: ../skype-admin.php:107
+msgid "Value"
+msgstr "Değer"
+
+#: ../skype-admin.php:108 ../skype-admin.php:136 ../skype-admin.php:164
+msgid "Text"
+msgstr "Metin"
+
+#: ../skype-admin.php:124
+msgid "(none)"
+msgstr "(hiçbiri)"
+
+#: ../skype-admin.php:130
+msgid "Tag texts"
+msgstr "Etiket metni"
+
+#: ../skype-admin.php:131
+msgid ""
+"Define texts to replace their respective template tags relating to the Skype "
+"button action."
+msgstr ""
+"Skype buton eylemi ile ilgili kendi şablon etiketlerini değiştirmek için "
+"metinleri belirleyin."
+
+#: ../skype-admin.php:134
+msgid "Action"
+msgstr "Eylem"
+
+#: ../skype-admin.php:135 ../skype-admin.php:163
+msgid "Tag"
+msgstr "Etiket"
+
+#: ../skype-admin.php:153
+#, php-format
+msgid ""
+"Please, change %1$s under %3$s (above) to any value other than %2$s for the "
+"following options to become available first."
+msgstr ""
+"İlk kullanılabilir olması için alttaki seçenekleri %2$s dışında herhangi bir "
+"değere %3$s (yukarıda) altında %1$s değerini değiştirin."
+
+#: ../skype-admin.php:162
+msgid "Other"
+msgstr "Diğer"
+
+#: ../skype-admin.php:167
+msgid "First seperator"
+msgstr "İlk ayraç"
+
+#: ../skype-admin.php:172
+msgid "Second seperator"
+msgstr "İkinci ayraç"
+
+#: ../skype-admin.php:177
+msgid "My status"
+msgstr "Durumum"
+
+#: ../skype-admin.php:186
+#, php-format
+msgid ""
+"The currently selected template has been loaded into the database. You can "
+"edit it here if you like, but be sure to select %1$s under %2$s or your "
+"changes will be lost."
+msgstr ""
+"Mevcut seçili şablon veritabanı içine yüklendi. İsterseniz buradan "
+"değiştirebilirsiniz fakat %2$s altında %1$s seçtiğinizden emin olun, yoksa "
+"değişiklikler kaybolur."
+
+#: ../skype-admin.php:186 ../skype-admin.php:188 ../skype-classes.php:549
+msgid "Basic Options"
+msgstr "Temel Seçenekler"
+
+#: ../skype-admin.php:188
+msgid "Available tags:"
+msgstr "Kullanılabilir etiketler:"
+
+#: ../skype-admin.php:188
+msgid "Available markers:"
+msgstr "Kullanılabilir belirteçler:"
+
+#: ../skype-admin.php:188
+#, php-format
+msgid "See %s for more instructions."
+msgstr "Daha fazla talimat için %s bakın."
+
+#: ../skype-admin.php:188
+#, php-format
+msgid ""
+"Oh, and did I mention this? Changes to the template will only be loaded when "
+"the option %1$s under %2$s is selected!"
+msgstr ""
+"Ah, bundan bahsetmiş miydim? Şablon değişiklikleri sadece %2$s altındaki "
+"%1$s seçeneği seçildiğinde yüklenecektir!"
+
+#: ../skype-admin.php:193
+#, php-format
+msgid ""
+"If you are a <a href=\"%1$s\">Skype Affiliate</a> select %2$s at %3$s "
+"(above) and paste your link/banner code (HTML/Javascript) here."
+msgstr ""
+"Eğer <a href=\"%1$s\">Skype Satış Ortağı</a> iseniz %3$s (yukarıda) "
+"bölümünden %2$s seçin ve buraya bağlantı/banner kodunuzu (HTML/Javascript) "
+"yapıştırın."
+
+#: ../skype-admin.php:193
+msgid "Link/Banner Code"
+msgstr "Bağlantı/Banner Kodu"
+
+#: ../skype-admin.php:206 ../skype-admin.php:273
+#: ../skype-quickguide-notes.php:115 ../skype-quickguide-notes.php:124
+msgid "WordPress Support"
+msgstr "WordPress Destek"
+
+#: ../skype-admin.php:210
+msgid "More..."
+msgstr "Daha fazla..."
+
+#: ../skype-admin.php:223
+msgid "Options"
+msgstr "Seçenekler"
+
+#: ../skype-admin.php:229 ../skype-admin.php:496
+#: ../skype-quickguide-notes.php:100
+msgid "Notes &amp; Live Support"
+msgstr "Notlar &amp; Canlı Destek"
+
+#: ../skype-admin.php:234
+msgid "Current theme"
+msgstr "Mevcut tema"
+
+#: ../skype-admin.php:238 ../skype-classes.php:341
+msgid "Skype button disabled:"
+msgstr "Skype butonu devre dışı:"
+
+#: ../skype-admin.php:238 ../skype-classes.php:341
+msgid "Missing Skype ID."
+msgstr "Eksik Skype ID."
+
+#: ../skype-admin.php:249
+msgid "WARNING !"
+msgstr "UYARI !"
+
+#: ../skype-admin.php:260
+msgid ""
+"The preview button uses the Skype Test Call service to allow testing its "
+"function."
+msgstr ""
+"Önizleme butonu, işlevi test etmek için Skype Test Çağrısı hizmetini "
+"kullanır."
+
+#: ../skype-admin.php:263
+msgid " (edit under advanced options)"
+msgstr "(gelişmiş seçeneklerden düzenleyin)"
+
+#: ../skype-admin.php:273
+msgid "For all support questions and suggestions, please go to"
+msgstr "Tüm destek soruları ve önerileriniz için, lütfen buraya gidin"
+
+#: ../skype-admin.php:274
+#, php-format
+msgid ""
+"For <strong>feature requests</strong> or general help with "
+"<strong>WordPress</strong> or <strong>hosting</strong>, please contact "
+"<em>RavanH</em> via e-mail %s or Skype chat:"
+msgstr ""
+"<strong>Özellik istekleri</strong> veya <strong>WordPress</strong> ya da "
+"<strong>barındırma</strong> ile ilgili genel yardım için, lütfen e-posta "
+"yoluyla %s veya Skype sohbetiyle <em>RavanH</em> ile iletişim kurun:"
+
+#: ../skype-admin.php:283
+msgid "Translations"
+msgstr "Çeviriler"
+
+#: ../skype-admin.php:284
+msgid ""
+"Translation contributions are highly appreciated. Authors of new "
+"translations or updates will be mentioned here."
+msgstr ""
+"Çeviri katkıları son derece makbule geçer. Yeni çeviriler veya "
+"güncelleştirme yazarlarından burada bahsedilecektir."
+
+#: ../skype-admin.php:288
+msgid ""
+"Want to make your own translation too? Read the <a href=\"http://svn.wp-"
+"plugins.org/skype-online-status/trunk/languages/language-support.txt"
+"\">translation instructions</a> included with this plugin to get started."
+msgstr ""
+"Sizde kendi çevirinizi yapmak ister misiniz? Başlamak için, eklentiye dahil "
+"edilmiş olan <a href=\"http://svn.wp-plugins.org/skype-online-status/trunk/"
+"languages/language-support.txt\">çeviri talimatlarını</a> okuyun."
+
+#: ../skype-admin.php:290
+msgid "Donations"
+msgstr "Bağışlar"
+
+#: ../skype-admin.php:291
+msgid ""
+"All donations are much appreciated and will (without objection) be mentioned "
+"here as a way of expressing my gratitude."
+msgstr ""
+"Tüm bağışlar son derece makbule geçer ve bu benim teşekkürlerimi ifade "
+"etmenin bir yolu olarak burada (hiç itirazsız) söz edilecektir."
+
+#: ../skype-admin.php:295
+msgid ""
+"Please <strong>rate this plugin</strong> at <a href=\"http://wordpress.org/"
+"extend/plugins/skype-online-status/\">WordPress</a>"
+msgstr ""
+"Lütfen <a href=\"http://wordpress.org/extend/plugins/skype-online-status/"
+"\">WordPress</a> üzerinde <strong>bu eklentiye oy verin</strong>"
+
+#: ../skype-admin.php:296
+msgid ""
+"Do you want your name and/or link up there too? Or just appreciate my work?"
+msgstr ""
+"Sizin de isim ve/veya bağlantınızın yukarıda olmasını istiyor musunuz? Ya da "
+"sadece çalışmamı takdir etmek ister misiniz?"
+
+#: ../skype-admin.php:297
+msgid "Donate with PayPal - it's fast, free and secure!"
+msgstr "PayPal ile bağış yapın - o hızlı, ücretsiz ve güvenli!"
+
+#: ../skype-admin.php:298
+msgid "Thanks!"
+msgstr "Teşekkürler!"
+
+#: ../skype-admin.php:307
+msgid "Call any phone directly from Skype."
+msgstr "Skype'tan herhangi bir telefonu doğrudan arayın."
+
+#: ../skype-admin.php:309
+msgid "Your personal online number."
+msgstr "Kişisel çevrimiçi numaranız."
+
+#: ../skype-admin.php:310
+msgid "Never miss a call!"
+msgstr "Asla hiçbir aramayı kaçırmayın!"
+
+#: ../skype-admin.php:312
+msgid "Accessories: Get the most out of Skype!"
+msgstr "Aksesuarlar: Skype'tan en iyi şekilde yararlanın!"
+
+#: ../skype-admin.php:324
+msgid "Skype Buttons"
+msgstr "Skype Butonları"
+
+#: ../skype-admin.php:325
+msgid "Skype buttons wizard"
+msgstr "Skype buton sihirbazı"
+
+#: ../skype-admin.php:326
+#, php-format
+msgid "View %s's online status on the Skype server"
+msgstr "%s çevrimiçi durumunu Skype sunucusunda görüntüle"
+
+#: ../skype-admin.php:327
+msgid "Edit Privacy Options in your Skype client"
+msgstr "Skype istemcinizdeki Gizlilik Seçeneklerini düzenleyin"
+
+#: ../skype-admin.php:354
+msgid ""
+"Your Skype Online Status database settings have been cleared from the "
+"database for removal of this plugin!"
+msgstr ""
+"Skype Çevrimiçi Durum veritabanı ayarları, bu eklentinin kaldırılması için "
+"veritabanından silinmiştir!"
+
+#: ../skype-admin.php:354
+msgid ""
+"You can still resave the old settings shown below to (partly) undo this "
+"action but custom widget settings will be reverted to default."
+msgstr ""
+"Hala aşağıda gösterilen eski ayarları (kısmen) bu işlemi geri alarak yeniden "
+"kaydedebilirsiniz ancak kişisel bileşen ayarları varsayılana geri "
+"döndürülecek."
+
+#: ../skype-admin.php:354
+msgid "Are you sure?"
+msgstr "Emin misiniz?"
+
+#: ../skype-admin.php:356
+msgid "Deactivate this plugin"
+msgstr "Bu eklentiyi devre dışı bırak"
+
+#: ../skype-admin.php:356
+msgid "Deactivate"
+msgstr "Devre dışı bırak"
+
+#: ../skype-admin.php:358
+msgid "Go to the <a href=\"plugins.php\">Plugins page</a> and deactivate it."
+msgstr ""
+"<a href=\"plugins.php\">Eklentiler sayfasına</a> gidin ve onu devre dışı "
+"bırakın."
+
+#: ../skype-admin.php:363
+msgid "Skype Online Status plugin has been upgraded to version "
+msgstr "Skype Online Status eklentisi bu sürümüne yükseltildi "
+
+#: ../skype-admin.php:363
+msgid "Please, verify your settings now."
+msgstr "Lütfen ayarlarınızı şimdi doğrulayın."
+
+#: ../skype-admin.php:363
+msgid "What's new?"
+msgstr "Neler yeni?"
+
+#: ../skype-admin.php:368
+#, php-format
+msgid "Skype Online Status plugin version %s has been installed!"
+msgstr "Skype Online Status eklentisi sürüm %s yüklendi!"
+
+#: ../skype-admin.php:369
+msgid ""
+"Please, adapt the default settings to your personal preference so you can "
+"start using Skype buttons anywhere on your site."
+msgstr ""
+"Lütfen kişisel tercihinize varsayılan ayarları uyarlayın, böylece sitenizin "
+"her yerinde Skype butonlarını kullanmaya başlayabilirsiniz."
+
+#: ../skype-admin.php:370
+#, php-format
+msgid "Read the %s section for more instructions."
+msgstr "Daha fazla talimat için %s bölümü okuyun."
+
+#: ../skype-admin.php:381
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a>."
+msgstr ""
+"%1$s için yeni bir sürüm mevcut. <a href=\"%2$s\">Sürüm %3$s buradan "
+"indirin</a>."
+
+#: ../skype-admin.php:383
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a> <em>automatic upgrade unavailable for this plugin</em>."
+msgstr ""
+"%1$s için yeni bir sürüm mevcut. <a href=\"%2$s\">Sürüm %3$s buradan "
+"indirin</a>. <em>bu eklenti için otomatik yükseltme kullanılamaz</em>."
+
+#: ../skype-admin.php:385
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a> or <a href=\"%4$s\">upgrade automatically</a>."
+msgstr ""
+"%1$s için yeni bir sürüm mevcut. <a href=\"%2$s\">Sürüm %3$s buradan "
+"indirin</a> veya <a href=\"%4$s\">otomatik olarak yükseltin</a>."
+
+#: ../skype-admin.php:391
+msgid ""
+"Please, check if one of the following options can be met -or- ask your "
+"server admin / hosting provider to take care of this."
+msgstr ""
+"Lütfen aşağıdaki seçeneklerden birinin karşılanabileceğini kontrol edin -"
+"veya- bunu halletmesi için sunucu yönetici/barındırma sağlayıcınıza danışın."
+
+#: ../skype-admin.php:391
+msgid "Install and activate cURL libraries on the server (preferred)"
+msgstr ""
+"Sunucu (tercih edilen) üzerine cURL kütüphanelerini yükleyin ve etkinleştirin"
+
+#: ../skype-admin.php:391
+msgid "Upgrade PHP to a version that includes fsockopen (PHP 4+)"
+msgstr "Fsockopen içeren bir PHP sürümüne yükseltin (PHP 4+)"
+
+#: ../skype-admin.php:391
+msgid "Change INI setting <strong>allow_url_fopen</strong> to ON (not advised)"
+msgstr ""
+"INI ayarını <strong>allow_url_fopen</strong> ON olarak (tavsiye edilmez) "
+"değiştirin"
+
+#: ../skype-admin.php:391
+msgid ""
+"Reading your online status from the remote Skype server has been disabled. "
+"As a result, some of the advanced options will not be available. However, "
+"Skype button themes that also show your online status by way of images (that "
+"are provided by the same Skype server) will still do so."
+msgstr ""
+"Uzak Skype sunucusundan çevrimiçi durumunuzu okuma devre dışı bırakıldı. "
+"Sonuç olarak, gelişmiş bazı seçenekler kullanılabilir olmayacaktır. Ancak, "
+"aynı zamanda resimler yolu ile (aynı Skype sunucusu tarafından sağlanır) "
+"çevrimiçi durumunuzu göstermek için Skype buton temaları yine de bu işlevi "
+"yapacaktır."
+
+#: ../skype-admin.php:395
+msgid ""
+"Please, wait while page has loaded completely.<br /> When the Skype server "
+"at http://mystatus.skype.com/ is slow or down, this might take a while..."
+msgstr ""
+"Lütfen sayfa tamamen yüklenirken bekleyin.<br /> http://mystatus.skype.com/ "
+"üzerindeki Skype sunucusu kapalı veya yavaş olduğu zaman bu biraz zaman "
+"alabilir..."
+
+#: ../skype-admin.php:439
+msgid "Options updated!"
+msgstr "Seçenekler güncellendi!"
+
+#: ../skype-admin.php:445
+msgid "Options reset!"
+msgstr "Seçenekler sıfırlandı!"
+
+#: ../skype-admin.php:452 ../skype-classes.php:218
+msgid "Skype Test Call"
+msgstr "Skype Test Çağrısı"
+
+#: ../skype-admin.php:491
+msgid "Define all your <em>default</em> Skype Status settings here."
+msgstr "Buradan tüm <em>varsayılan</em> Skype Durum ayarlarını tanımlayın."
+
+#: ../skype-admin.php:492
+#, php-format
+msgid ""
+"Start simply by setting the basics like %1$s, %2$s and the button %3$s you "
+"want to show on your blog."
+msgstr ""
+"%1$s, %2$s ve blogunuzda göstermek istediğiniz buton %3$s gibi temelleri "
+"ayarlayarak kolayca başlayın."
+
+#: ../skype-admin.php:493
+#, php-format
+msgid ""
+"Then activate the Skype Status Widget on your <a href=\"widgets.php"
+"\">Widgets</a> page or use the Skype Status quicktag button %s in the "
+"WYSIWYG editor (TinyMCE) to place the Skype Online Status button in any post "
+"or page."
+msgstr ""
+"Sonra, <a href=\"widgets.php\">Bileşenler</a> sayfası üzerinden Skype Durum "
+"Bileşeninizi etkinleştirin veya herhangi bir yazı veya sayfaya Skype "
+"Çevrimiçi Durum butonu yerleştirmek için WYSIWYG düzenleyici (TinyMCE) "
+"içinde Skype Durum hızlı etiket butonunu %s kullanın."
+
+#: ../skype-admin.php:494
+msgid ""
+"Later on, you can fine-tune everything until it fits just perfectly on you "
+"pages."
+msgstr ""
+"Daha sonra, sayfalarınıza mükemmel oturacak şekilde her öğenin ince ayarını "
+"yapabilirsiniz."
+
+#: ../skype-admin.php:495
+msgid ""
+"Some basic settings may be overridden per Widget settings or when calling "
+"the Skype button with a template function."
+msgstr ""
+"Bazı temel ayarlar, Bileşen ayarlarının üzerine yazılabilir veya bir şablon "
+"işlevi ile Skype butonunu çağırırken onu geçersiz kılabilir."
+
+#: ../skype-admin.php:496
+#, php-format
+msgid ""
+"Read more about configuring this plugin and more ways to trigger Skype "
+"buttons on your blog in the %1$s section. If you have any remaining "
+"questions, see the %2$s page to get help."
+msgstr ""
+"%1$s bölümünden blogunuzda bu eklentiyi yapılandırmak ve Skype butonları "
+"ayarlamak hakkında daha fazla bilgi edinin. Eğer herhangi bir sorunuz varsa, "
+"yardım almak için %2$s sayfasına bakınız."
+
+#: ../skype-classes.php:13 ../skype-classes.php:80 ../skype-classes.php:537
+msgid "Skype Status"
+msgstr "Skype Durumu"
+
+#: ../skype-classes.php:16
+msgid "Add a Skype Online Status button"
+msgstr "Bir Skype Çevrimiçi Durum butonu ekle"
+
+#: ../skype-classes.php:98
+msgid "Title:"
+msgstr "Başlık:"
+
+#: ../skype-classes.php:107
+msgid "Text before button"
+msgstr "Buton öncesi metin"
+
+#: ../skype-classes.php:111 ../skype-classes.php:117
+msgid "Default"
+msgstr "Varsayılan"
+
+#: ../skype-classes.php:113
+msgid "Text after button"
+msgstr "Buton sonrası metin"
+
+#: ../skype-classes.php:116
+msgid "Use Voicemail?"
+msgstr "Sesli mesaj kullan?"
+
+#: ../skype-classes.php:117
+msgid "Yes"
+msgstr "Evet"
+
+#: ../skype-classes.php:117 ../skype-classes.php:121
+msgid "No"
+msgstr "Hayır"
+
+#: ../skype-classes.php:119
+msgid ""
+"Leave blank to use the default options as you defined on the <a href="
+"\"options-general.php?page=skype-status.php\">Skype Online Status Settings</"
+"a> page."
+msgstr ""
+"<a href=\"options-general.php?page=skype-status.php\">Skype Çevrimiçi Durum "
+"Ayarları</a> sayfasında tanımlandığınız varsayılan seçenekleri kullanmak "
+"için boş bırakın."
+
+#: ../skype-classes.php:120
+msgid "You can use some basic HTML here like &lt;br /&gt; for new line."
+msgstr ""
+"Burada yeni satır için &lt;br /&gt; gibi bazı temel HTML kodları "
+"kullanabilirsiniz."
+
+#: ../skype-classes.php:121
+#, php-format
+msgid "Set to %1$s if you do not have %2$s or %3$s."
+msgstr "Eğer %2$s veya %3$s yoksa %1$s olarak ayarlayın."
+
+#: ../skype-classes.php:234
+msgid " - "
+msgstr " - "
+
+#: ../skype-classes.php:240
+msgid "&raquo; Get Skype, call free!"
+msgstr "&raquo; Ücretsiz Skype arama alın!"
+
+#: ../skype-classes.php:249
+msgid "My status is"
+msgstr "Durumum"
+
+#: ../skype-classes.php:251 ../skype-classes.php:277 ../skype-classes.php:278
+msgid "Offline"
+msgstr "Çevrimdışı"
+
+#: ../skype-classes.php:261
+msgid "English"
+msgstr "İngilizce"
+
+#: ../skype-classes.php:262
+msgid "French"
+msgstr "Fransızca"
+
+#: ../skype-classes.php:263
+msgid "German"
+msgstr "Almanca"
+
+#: ../skype-classes.php:264
+msgid "Japanese"
+msgstr "Japonca"
+
+#: ../skype-classes.php:265
+msgid "Taiwanese"
+msgstr "Tayvanca"
+
+#: ../skype-classes.php:266
+msgid "Chinese"
+msgstr "Çince"
+
+#: ../skype-classes.php:267
+msgid "Brazilian"
+msgstr "Brezilya"
+
+#: ../skype-classes.php:268
+msgid "Portuguese"
+msgstr "Portekizce"
+
+#: ../skype-classes.php:269
+msgid "Italian"
+msgstr "İtalyanca"
+
+#: ../skype-classes.php:270
+msgid "Spanish"
+msgstr "İspanyolca"
+
+#: ../skype-classes.php:271
+msgid "Polish"
+msgstr "Polonyaca"
+
+#: ../skype-classes.php:272
+msgid "Swedish"
+msgstr "İsveççe"
+
+#: ../skype-classes.php:279
+msgid "Online"
+msgstr "Çevrimiçi"
+
+#: ../skype-classes.php:280
+msgid "Away"
+msgstr "Dışarıda"
+
+#: ../skype-classes.php:281
+msgid "Not available"
+msgstr "Uygun değil"
+
+#: ../skype-classes.php:282
+msgid "Do not disturb"
+msgstr "Rahatsız etmeyin"
+
+#: ../skype-classes.php:284
+msgid "Skype me!"
+msgstr "Beni Skype'la!"
+
+#: ../skype-classes.php:288
+msgid "Call me!"
+msgstr "Beni ara!"
+
+#: ../skype-classes.php:289
+msgid "Add me to Skype"
+msgstr "Beni Skype'a ekle"
+
+#: ../skype-classes.php:290
+msgid "Chat with me"
+msgstr "Benimle sohbet et"
+
+#: ../skype-classes.php:291
+msgid "View my profile"
+msgstr "Profilimi görüntüle"
+
+#: ../skype-classes.php:293
+msgid "Send me a file"
+msgstr "Bir dosya gönder"
+
+#: ../skype-classes.php:550
+msgid "Sections"
+msgstr "Bölümler"
+
+#: ../skype-classes.php:551
+msgid "Preview theme template:"
+msgstr "Tema şablonu önizlemesi:"
+
+#: ../skype-classes.php:552 ../skype-quickguide-notes.php:103
+#: ../skype-quickguide-notes.php:123
+msgid "Support"
+msgstr "Destek"
+
+#: ../skype-classes.php:553
+msgid "Get more from Skype"
+msgstr "Skype'dan daha fazlasını al"
+
+#: ../skype-classes.php:554
+msgid "Resources"
+msgstr "Kaynaklar"
+
+#: ../skype-classes.php:573
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: ../skype-classes.php:597
+msgid "Discussion"
+msgstr "Tartışma"
+
+#: ../skype-classes.php:598 ../skype-quickguide-notes.php:104
+msgid "Credits"
+msgstr "Katkıda bulunanlar"

@@ -1,0 +1,1163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Skype Online Status v2.9.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-01-20 17:05:22+0000\n"
+"Last-Translator: admin <beebeex@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%10>3 ? 2 : 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Croatian\n"
+"X-Poedit-Country: CROATIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: skype-admin.php:10
+#@ skype-online-status
+msgid "Skype"
+msgstr "Skype"
+
+#: skype-admin.php:11
+#: skype-admin.php:489
+#: skype-classes.php:101
+#@ skype-online-status
+msgid "Skype ID"
+msgstr "Skype ID"
+
+#: skype-admin.php:11
+#: skype-admin.php:14
+#: skype-admin.php:22
+#: skype-admin.php:30
+#: skype-admin.php:65
+#: skype-admin.php:82
+#: skype-admin.php:83
+#: skype-admin.php:191
+#: skype-admin.php:198
+#: skype-admin.php:211
+#: skype-admin.php:321
+#: skype-admin.php:322
+#: skype-admin.php:323
+#: skype-classes.php:101
+#: skype-classes.php:104
+#: skype-classes.php:107
+#: skype-classes.php:110
+#: skype-classes.php:113
+#: skype-classes.php:240
+#@ skype-online-status
+msgid ": "
+msgstr ": "
+
+#: skype-admin.php:12
+#, php-format
+#@ skype-online-status
+msgid "Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!"
+msgstr "Unesite svoj Skype ID. Ili ... ako želite tipku za pozivanje na Skype multichat ili konferencijski poziv, unesete više Skype ID-a odvojenih sa zarezom (<strong>; </ strong>). Također možete upisati redovni telefonski broj (počevši sa <strong> + </ strong> zatim pozivni broj zemlje, obratite pažnju da pozivatelji moraju imati %s za zvati). Ovisno o tome što želite postići!"
+
+#: skype-admin.php:12
+#: skype-admin.php:321
+#@ skype-online-status
+msgid "SkypeOut"
+msgstr "Izlaz sa Skypa"
+
+#: skype-admin.php:12
+#@ skype-online-status
+msgid "Note: The new Windows Live Skype IDs do not allow online status to be detected and are not supported by this plugin."
+msgstr "Napomena: Novi Windows Live Skype ID ne dopušta provjeru online statusa i nije podržan od strane ovog dodatka."
+
+#: skype-admin.php:14
+#: skype-admin.php:489
+#: skype-classes.php:104
+#@ skype-online-status
+msgid "Full Name"
+msgstr "Puno ime"
+
+#: skype-admin.php:15
+#@ skype-online-status
+msgid "Your full name as you want it to appear in Skype links, link-titles and image alt-texts on your blog."
+msgstr "Vaše ime i prezime, koje će se pojavljivati u Skype vezama, naslovima i  Alt-tekstovima slika na svom blogu."
+
+#: skype-admin.php:19
+#: skype-admin.php:22
+#: skype-admin.php:191
+#: skype-admin.php:193
+#: skype-admin.php:489
+#: skype-classes.php:110
+#@ skype-online-status
+msgid "Theme"
+msgstr "Tema"
+
+#: skype-admin.php:21
+#, php-format
+#@ skype-online-status
+msgid "Start with <strong>selecting one of the predefined theme templates</strong> to load into the database. Change the options to see a preview. You might later select %1$s to edit the template in the text field under %2$s."
+msgstr "Počnite sa <strong> odabirom jednog od predefiniranih tematskih predložaka </ strong> za učitati u bazu podataka. Promijenite mogućnosti za predpregled. Možda ćete kasnije odabrati %1$ za uređenje predložka u polju za unos teksta pod %2$ ."
+
+#: skype-admin.php:21
+#: skype-admin.php:22
+#: skype-admin.php:23
+#: skype-admin.php:67
+#: skype-admin.php:77
+#: skype-admin.php:79
+#: skype-admin.php:88
+#: skype-admin.php:90
+#: skype-admin.php:98
+#: skype-admin.php:191
+#: skype-admin.php:193
+#: skype-admin.php:198
+#: skype-admin.php:241
+#: skype-admin.php:268
+#@ skype-online-status
+msgid "Custom..."
+msgstr "Uredi..."
+
+#: skype-admin.php:21
+#: skype-admin.php:23
+#: skype-admin.php:24
+#: skype-admin.php:90
+#: skype-admin.php:98
+#: skype-admin.php:156
+#: skype-admin.php:198
+#: skype-classes.php:604
+#@ skype-online-status
+msgid "Advanced Options"
+msgstr "Napredne mogučnosti"
+
+#: skype-admin.php:21
+#: skype-admin.php:23
+#: skype-admin.php:190
+#@ skype-online-status
+msgid "Custom Template"
+msgstr "Vlastiti predložak"
+
+#: skype-admin.php:23
+#, php-format
+#@ skype-online-status
+msgid "When %1$s is selected, you can edit the template to your liking below at %2$s under %3$s. When you make changes to that field but select another theme template here, those changes will be overwriten by the new template!"
+msgstr "When %1$s is selected, you can edit the template to your liking below at %2$s under %3$s. When you make changes to that field but select another theme template here, those changes will be overwriten by the new template!"
+
+#: skype-admin.php:23
+#: skype-admin.php:191
+#@ skype-online-status
+msgid "Customize currently loaded template"
+msgstr "Prilagodi trenutno preuzet predložak"
+
+#: skype-admin.php:24
+#, php-format
+#@ skype-online-status
+msgid "If you cannot find a suitable theme, check out <a href=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>. Select your options there and copy/paste the output into the textarea under %s."
+msgstr "Ako ne možete pronaći odgovarajuću temu, provjerite na <a href=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>. Prilagodite temu  i copy / paste rezultat u textarea pod %s."
+
+#: skype-admin.php:24
+#: skype-admin.php:98
+#: skype-admin.php:156
+#@ skype-online-status
+msgid "Display"
+msgstr "Prikaži"
+
+#: skype-admin.php:28
+#: skype-admin.php:30
+#@ skype-online-status
+msgid "Function"
+msgstr "Funkcija"
+
+#: skype-admin.php:29
+#@ skype-online-status
+msgid "Some of the button themes will show your online status in an icon/image, without having a specific function assigned. This means you can select what the button should do when clicked by a visitor."
+msgstr "Neki od gumba u  teme će pokazati vaš mrežni status u ikoni / slici, bez da ima dodijeljenu određenu funkciju. To znači da možete odabrati što bi gumb  trebao učiniti kada je  kliknut od strane posjetitelja."
+
+#: skype-admin.php:38
+#: skype-admin.php:79
+#: skype-admin.php:106
+#: skype-admin.php:265
+#: skype-admin.php:492
+#@ skype-online-status
+msgid "Note:"
+msgstr "Napomena:"
+
+#: skype-admin.php:38
+#, php-format
+#@ skype-online-status
+msgid "This setting will only be used in the '%1$s' theme templates, or in your own custom template when the tags %2$s and %3$s are used."
+msgstr "Ova postavka će se koristiti samo u '%1$s' tematskih predložaka, ili u tvojem prilagođenom predložku kada se koriste tagovi %2$s i %3$s ."
+
+#: skype-admin.php:42
+#: skype-admin.php:202
+#: skype-admin.php:250
+#@ default
+msgid "Save Changes"
+msgstr ""
+
+#: skype-admin.php:45
+#, php-format
+#@ skype-online-status
+msgid "If you have your basic settings correct and there is a Skype button visible on blog, you can fine-tune it's appearance and function with the advanced settings. Each option is annotated but you can read more in the %s section."
+msgstr "Ako imate osnovne postavke točne i  gumb Skype je vidljiv na blogu,  još možete usavršiti taj izgled i funkciju s naprednim postavkama. Svaka opcija je označena, ali detalje možete pročitati više u %s sekciji."
+
+#: skype-admin.php:45
+#: skype-admin.php:193
+#: skype-admin.php:231
+#: skype-admin.php:367
+#: skype-admin.php:493
+#: skype-quickguide-notes.php:6
+#@ skype-online-status
+msgid "Quick Guide"
+msgstr "Skračene upute"
+
+#: skype-admin.php:47
+#: skype-admin.php:205
+#: skype-quickguide-notes.php:13
+#: skype-quickguide-notes.php:28
+#: skype-quickguide-notes.php:46
+#: skype-quickguide-notes.php:93
+#: skype-quickguide-notes.php:107
+#: skype-quickguide-notes.php:120
+#: skype-quickguide-notes.php:129
+#: skype-quickguide-notes.php:134
+#: skype-quickguide-notes.php:138
+#@ default
+msgid "Top"
+msgstr ""
+
+#: skype-admin.php:54
+#@ skype-online-status
+msgid "Post content"
+msgstr "Sadržaj Posta"
+
+#: skype-admin.php:55
+#, php-format
+#@ skype-online-status
+msgid "When writing posts you can insert a Skype button with a simple quicktag %1$s or %2$s but to make life even easier, a small button on the WYSIWYG editor can do it for you. Check this option to show %3$s or uncheck to hide it. You may still insert the quicktag  in the HTML code of your post or page content manually."
+msgstr "Prilikom pisanja poruke možete umetnuti gumb Skype s jednostavnim quicktag  %1$s ili %2$s , ali da bi si olakšali život , mali gumb na WYSIWYG editoru će učiniti to za vas. Provjerite ovu mogućnost prikaza %3$s ili uklanjanje oznake kako bi ga sakrili. Još uvijek možete ručno umetnuti quicktag u HTML kod svoje ​​poruke  ili u sadržaj stranice ."
+
+#. translators: plugin header field 'Name'
+#: skype-admin.php:55
+#: skype-admin.php:211
+#: skype-admin.php:278
+#: skype-admin.php:343
+#: skype-admin.php:378
+#: skype-admin.php:380
+#: skype-admin.php:382
+#: skype-admin.php:490
+#: skype-classes.php:545
+#: skype-quickguide-notes.php:114
+#: skype-quickguide-notes.php:123
+#: skype-status.php:0
+#@ skype-online-status
+msgid "Skype Online Status"
+msgstr "Status Skype Stanja"
+
+#: skype-admin.php:56
+#@ skype-online-status
+msgid "Use <strong>Skype Status quicktag button</strong> in the RTE for posts."
+msgstr "Koristi <strong>Skype Status quicktag button</strong> u RTE za poruke."
+
+#: skype-admin.php:60
+#: skype-admin.php:198
+#@ skype-online-status
+msgid "Display &amp; Function"
+msgstr "Display &amp; Function"
+
+#: skype-admin.php:61
+#@ skype-online-status
+msgid "These settings define which options should be used to replace their respective tag (if present) in the selected template file. If unchecked, the tags will be blanked out."
+msgstr "Ove postavke određuju koja opcija bi trebala biti korištena za zamjenu svoje odgovarajuće oznake (ako postoji) u odabranom predlošku. Ako se ne potvrdi, oznake će biti nevidljive."
+
+#: skype-admin.php:62
+#, php-format
+#@ skype-online-status
+msgid "Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
+msgstr "Koristi \\\" %1$s  \\\" u padajučoj tipki. Ostavi nečekirano ako nemaš %2$s ili %3$s."
+
+#: skype-admin.php:62
+#: skype-classes.php:296
+#@ skype-online-status
+msgid "Leave me voicemail"
+msgstr "Ostavi glasovnu poruku"
+
+#: skype-admin.php:62
+#: skype-admin.php:322
+#: skype-classes.php:121
+#@ skype-online-status
+msgid "SkypeIn"
+msgstr "Skype In"
+
+#: skype-admin.php:62
+#: skype-admin.php:323
+#: skype-classes.php:121
+#@ skype-online-status
+msgid "Skype Voicemail"
+msgstr "Skype glasovna poruka"
+
+#: skype-admin.php:64
+#, php-format
+#@ skype-online-status
+msgid "Use %1$s (define below) for %2$s tags."
+msgstr "Koristi %1$s (definirano ispod) za %2$s oznake."
+
+#: skype-admin.php:64
+#@ skype-online-status
+msgid "Action text"
+msgstr "Action tekst"
+
+#: skype-admin.php:65
+#: skype-admin.php:79
+#: skype-admin.php:98
+#: skype-admin.php:156
+#@ skype-online-status
+msgid "Status texts"
+msgstr "Tekst statusa"
+
+#: skype-admin.php:65
+#, php-format
+#@ skype-online-status
+msgid "for the %s tag"
+msgstr "za %s oznaku"
+
+#: skype-admin.php:66
+#: skype-admin.php:75
+#: skype-admin.php:77
+#: skype-admin.php:79
+#: skype-admin.php:156
+#@ skype-online-status
+msgid "Disabled"
+msgstr "Onemogućeno"
+
+#: skype-admin.php:75
+#, php-format
+#@ skype-online-status
+msgid "If you select %1$s, the tags %2$s, %3$s and %4$s in the button template will be ignored."
+msgstr "ako odaberete %1$s, oznake %2$s, %3$s i %4$su predlošku tipke bit će zanemarena."
+
+#: skype-admin.php:77
+#, php-format
+#@ skype-online-status
+msgid "When security settings on your server are too tight (<strong>safe_mode</strong> enabled, <strong>open_basedir</strong> restictions or <strong>allow_url_fopen</strong> being disabled), your status does not show or the Skype button doesn't load and you find an error like \"Warning: file_get_contents() [function.file-get-contents]: URL file-access is disabled in the server configuration...\" in the server log files, use either %1$s or %2$s here."
+msgstr "When security settings on your server are too tight (<strong>safe_mode</strong> enabled, <strong>open_basedir</strong> restictions or <strong>allow_url_fopen</strong> being disabled), your status does not show or the Skype button doesn't load and you find an error like \"Warning: file_get_contents() [function.file-get-contents]: URL file-access is disabled in the server configuration...\" in the server log files, use either %1$s or %2$s here."
+
+#: skype-admin.php:79
+#: skype-admin.php:388
+#@ skype-online-status
+msgid "The security settings on your server are too tight for the online status to be read from the Skype server."
+msgstr "Sigurnosne postavke vašeg poslužitelja su preuske za mrežnom statusu koje treba iščitati iz Skype poslužitelja. ?!?!"
+
+#: skype-admin.php:79
+#, php-format
+#@ skype-online-status
+msgid "It is advised to set %1$s to %2$s here untill this is fixed."
+msgstr "Savjetovano je da postavite %1$s na %2$s  ovdje dok se problem ne popravi."
+
+#: skype-admin.php:79
+#, php-format
+#@ skype-online-status
+msgid "You can also select %1$s but only the %2$s status text will be available."
+msgstr "Također možete odabrati %1$s , ali samo %2$s status tekst će biti na raspolaganju."
+
+#: skype-admin.php:79
+#: skype-admin.php:126
+#@ skype-online-status
+msgid "Error"
+msgstr "GREŠKA"
+
+#: skype-admin.php:80
+#, php-format
+#@ skype-online-status
+msgid "Use %s link."
+msgstr "Koristi %s link."
+
+#: skype-admin.php:80
+#@ skype-online-status
+msgid "Download Skype now!"
+msgstr "Preuzmi Skype !"
+
+#: skype-admin.php:81
+#@ skype-online-status
+msgid "Place link on a new line."
+msgstr "Postavite link na novu liniju."
+
+#: skype-admin.php:82
+#@ skype-online-status
+msgid "Link text"
+msgstr "Poveži (link) tekst"
+
+#: skype-admin.php:83
+#@ skype-online-status
+msgid "Link URL"
+msgstr "Poveži ( link) URL"
+
+#: skype-admin.php:85
+#@ skype-online-status
+msgid "Default affiliate link"
+msgstr "Default affiliate link"
+
+#: skype-admin.php:86
+#@ skype-online-status
+msgid "Skype main page"
+msgstr "Glavna Skype stranica"
+
+#: skype-admin.php:87
+#@ skype-online-status
+msgid "Skype download page"
+msgstr "Skype stranica preuzimanja"
+
+#: skype-admin.php:90
+#@ skype-online-status
+msgid "Leave to Default if you are generous and think downloads should create some small possible revenue for the developer of this plugin -- that's me, thanks! :) -- but if you think open source developers are greedy bastards and should go away, select one of the other options -- just kidding, feel free... Really! You can always donate on the Notes & Live Support section ;)."
+msgstr "Ostavite  Default ako su velikodušni i mislite da preuzimanja trebaju stvoriti neki mali mogući prihod za autora ovog dodatka - a to sam ja, hvala! :) - Ali ako mislite da su open source programeri pohlepni gadovi i treba ih od*bati, odaberite neku od drugih opcija... - samo se šalim, slobodno se koristite... Stvarno!  Uvijek možete donirati na odjeljku  Napomene & Podrška uživo."
+
+#: skype-admin.php:90
+#, php-format
+#@ skype-online-status
+msgid "If you want to create your own link to get possible revenue from downloads yourself, select %1$s and paste the link code in the textarea under %2$s below."
+msgstr "Ako želite napraviti svoj vlastiti link kako biste dobili neki prihod od preuzimanja za sebe, odaberite %1$  i zalijepite link kod u tekstualno polje ispod %2$  ispod."
+
+#: skype-admin.php:90
+#: skype-admin.php:197
+#@ skype-online-status
+msgid "Custom Download Link"
+msgstr "Osobni link za preuzimanje"
+
+#: skype-admin.php:94
+#@ skype-online-status
+msgid "Custom Status texts"
+msgstr "Tekst Osobnog statusa"
+
+#: skype-admin.php:95
+#, php-format
+#@ skype-online-status
+msgid "Text that will replace the %s tag depending on actual online status."
+msgstr "Tekst koji će zamijeniti %s oznake, ovisno o stvarno (online) statusu."
+
+#: skype-admin.php:98
+#, php-format
+#@ skype-online-status
+msgid "Please, change %1$s to %2$s under %3$s (above) for these options to become available first."
+msgstr "Molimo, promijenite %1$ u %2$  po %3$  (na gore) za te mogućnosti da postanu dostupne na prvom mjestu."
+
+#: skype-admin.php:106
+#@ skype-online-status
+msgid "These custom texts will not repace the texts in the status images, just the alt-texts or text links. When using custom texts, the status images will default to the English versions."
+msgstr "Ovi prilagođeni tekstovi neće zamjeniti tekstove u sliki statusa, nego samo Alt-tekstova ili tekst veze. Kada koristite prilagođene tekstove, slike statusa će ostati na engleskoj verziji."
+
+#: skype-admin.php:109
+#@ skype-online-status
+msgid "Status"
+msgstr "Stanje"
+
+#: skype-admin.php:110
+#@ skype-online-status
+msgid "Value"
+msgstr "Vrijednost"
+
+#: skype-admin.php:111
+#: skype-admin.php:139
+#: skype-admin.php:169
+#@ skype-online-status
+msgid "Text"
+msgstr "Tekst"
+
+#: skype-admin.php:127
+#@ skype-online-status
+msgid "(none)"
+msgstr "(nikaj)"
+
+#: skype-admin.php:133
+#@ skype-online-status
+msgid "Tag texts"
+msgstr "Tag tekst"
+
+#: skype-admin.php:134
+#@ skype-online-status
+msgid "Define texts to replace their respective template tags relating to the Skype button action."
+msgstr "Definiranje tekstova za zamijenu njihove oznake na predlošku koje se odnose na Skype gumb ."
+
+#: skype-admin.php:137
+#@ skype-online-status
+msgid "Action"
+msgstr "Action"
+
+#: skype-admin.php:138
+#: skype-admin.php:168
+#@ skype-online-status
+msgid "Tag"
+msgstr "Tag"
+
+#: skype-admin.php:156
+#, php-format
+#@ skype-online-status
+msgid "Please, change %1$s under %3$s (above) to any value other than %2$s for the following options to become available first."
+msgstr "Molimo, promijenite %1$  pod %3$  (gore) na bilo koju drugu od %2$  vrijednost za sljedeća mogućnost da postane dostupna na prvom mjestu."
+
+#: skype-admin.php:167
+#@ skype-online-status
+msgid "Other"
+msgstr "Slijedeće"
+
+#: skype-admin.php:172
+#@ skype-online-status
+msgid "First seperator"
+msgstr "Prvi rastavnik"
+
+#: skype-admin.php:177
+#@ skype-online-status
+msgid "Second seperator"
+msgstr "Drugi rastavnik"
+
+#: skype-admin.php:182
+#@ skype-online-status
+msgid "My status"
+msgstr "Moj status"
+
+#: skype-admin.php:191
+#, php-format
+#@ skype-online-status
+msgid "The currently selected template has been loaded into the database. You can edit it here if you like, but be sure to select %1$s under %2$s or your changes will be lost."
+msgstr "Trenutno odabrani predložak je unesen u bazu podataka. Možete ga urediti ovdje ako vam se sviđa, ali budite sigurni da odaberete %1$s  pod %2$s  ili će vaše  promjene biti izgubljene."
+
+#: skype-admin.php:191
+#: skype-admin.php:193
+#: skype-classes.php:557
+#@ skype-online-status
+msgid "Basic Options"
+msgstr "Osnovne opcije"
+
+#: skype-admin.php:193
+#@ skype-online-status
+msgid "Available tags:"
+msgstr "Dostupne oznake( tags):"
+
+#: skype-admin.php:193
+#@ skype-online-status
+msgid "Available markers:"
+msgstr "Dostupni markeri:"
+
+#: skype-admin.php:193
+#, php-format
+#@ skype-online-status
+msgid "See %s for more instructions."
+msgstr "Pogledaj % za više uputa."
+
+#: skype-admin.php:193
+#, php-format
+#@ skype-online-status
+msgid "Oh, and did I mention this? Changes to the template will only be loaded when the option %1$s under %2$s is selected!"
+msgstr "Oh, i jesam li spomenuo ovo? Promjene na predlošku će se učitati samo kada %1$  do %2$ je odabrana opcija !"
+
+#: skype-admin.php:198
+#, php-format
+#@ skype-online-status
+msgid "If you are a <a href=\"%1$s\">Skype Affiliate</a> select %2$s at %3$s (above) and paste your link/banner code (HTML/Javascript) here."
+msgstr "Ako ste  <a href=\"%1$s\">Skype Affiliate</a>  odabirite %2$  na %3$  (gore) i zalijepite link / banner kod (HTML / JavaScript) ovdje."
+
+#: skype-admin.php:198
+#@ skype-online-status
+msgid "Link/Banner Code"
+msgstr "Link/Banner Code"
+
+#: skype-admin.php:211
+#: skype-admin.php:278
+#: skype-quickguide-notes.php:114
+#: skype-quickguide-notes.php:123
+#@ skype-online-status
+msgid "WordPress Support"
+msgstr "WordPress podrška"
+
+#: skype-admin.php:215
+#@ default
+msgid "More..."
+msgstr ""
+
+#: skype-admin.php:228
+#@ default
+msgid "Options"
+msgstr ""
+
+#: skype-admin.php:234
+#: skype-admin.php:493
+#: skype-quickguide-notes.php:99
+#@ skype-online-status
+msgid "Notes &amp; Live Support"
+msgstr "Notes &amp; Live Support"
+
+#: skype-admin.php:239
+#@ skype-online-status
+msgid "Current theme"
+msgstr "Trenutna tema"
+
+#: skype-admin.php:243
+#: skype-classes.php:345
+#@ skype-online-status
+msgid "Skype button disabled:"
+msgstr "Skype tipka disabled:"
+
+#: skype-admin.php:243
+#: skype-classes.php:345
+#@ skype-online-status
+msgid "Missing Skype ID."
+msgstr "Nedostaje Skype ID."
+
+#: skype-admin.php:253
+#: skype-admin.php:254
+#@ skype-online-status
+msgid "WARNING !"
+msgstr "UPOZORENJE !"
+
+#: skype-admin.php:253
+#@ skype-online-status
+msgid "All your personal settings will be overwritten with the plugin default settings, including Skype ID, User name and Theme."
+msgstr "Sve vaše osobne postavke će biti prebrisane s  zadanim postavkama dodatka, uključujući Skype ID, korisničko ime i temu."
+
+#: skype-admin.php:253
+#: skype-admin.php:254
+#: skype-admin.php:351
+#@ skype-online-status
+msgid "Are you sure?"
+msgstr "Jesi siguran ?  Razmisli još malo!"
+
+#: skype-admin.php:253
+#@ skype-online-status
+msgid "Reset"
+msgstr "RESET"
+
+#: skype-admin.php:254
+#@ skype-online-status
+msgid "All your Skype Online Status AND widget settings will be cleared from the database so the plugin can be COMPLETELY removed. All Skype buttons on your blog will be deactivated."
+msgstr "Sve vaše Skype Online Status i postavke widgeta bit će izbrisane iz baze podataka, tako da plugin može biti potpuno uklonjen. Sve tipke Skype na tvom blogu će se deaktivirati."
+
+#: skype-admin.php:254
+#@ default
+msgid "Remove"
+msgstr ""
+
+#: skype-admin.php:265
+#@ skype-online-status
+msgid "The preview button uses the Skype Test Call service to allow testing its function."
+msgstr "Gumb Pregled koristi Skype Test Call uslugu da dopustiti testiranje svoje funkcije."
+
+#: skype-admin.php:268
+#@ skype-online-status
+msgid " (edit under advanced options)"
+msgstr "(uredi u naprednim opcijama)"
+
+#: skype-admin.php:278
+#@ skype-online-status
+msgid "For all support questions and suggestions, please go to"
+msgstr "Za sva pitanja i prijedloge za podršku, molimo vas da"
+
+#: skype-admin.php:279
+#, php-format
+#@ skype-online-status
+msgid "For <strong>feature requests</strong> or general help with <strong>WordPress</strong> or <strong>hosting</strong>, please contact <em>RavanH</em> via e-mail %s or Skype chat:"
+msgstr "Za <strong>feature requests</strong> ili opčenitu pomoč sa <strong>WordPress</strong> ili <strong>hosting</strong>, molimo kontaktirati  <em>RavanH</em> via e-mail %s or Skype chat:"
+
+#: skype-admin.php:288
+#@ skype-online-status
+msgid "Translations"
+msgstr "Prijevodi"
+
+#: skype-admin.php:289
+#@ skype-online-status
+msgid "Translation contributions are highly appreciated. Authors of new translations or updates will be mentioned here."
+msgstr "Doprinosi za Prevođenje vrlo su cijenjeni. Autori novih prijevoda ili ažuriranja će se ovdje spomenuti."
+
+#: skype-admin.php:293
+#@ skype-online-status
+msgid "Want to make your own translation too? Read the <a href=\"http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt\">translation instructions</a> included with this plugin to get started."
+msgstr "Želite li napraviti svoj vlastiti prijevod također? Pročitajte <a href=\"http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt\">translation instructions</a> uključenih u ovaj dodatak za početak rada.."
+
+#: skype-admin.php:295
+#@ skype-online-status
+msgid "Donations"
+msgstr "Donacije"
+
+#: skype-admin.php:296
+#@ skype-online-status
+msgid "All donations are much appreciated and will (without objection) be mentioned here as a way of expressing my gratitude."
+msgstr "Sve donacije su jako cijenjene i bit će (bez pogovora)  spomenute ovdje kao način izražavanja moje zahvalnosti."
+
+#: skype-admin.php:300
+#@ skype-online-status
+msgid "Please <strong>rate this plugin</strong> at <a href=\"http://wordpress.org/extend/plugins/skype-online-status/\">WordPress</a>"
+msgstr "Molimo Vas da  <strong>ocjenite ovaj dodatak</strong> at <a href=\"http://wordpress.org/extend/plugins/skype-online-status/\">WordPress</a>"
+
+#: skype-admin.php:301
+#@ skype-online-status
+msgid "Do you want your name and/or link up there too? Or just appreciate my work?"
+msgstr "Želite li svoje ime i / ili link tamo gore također? Ili samo cijeniti moj rad?"
+
+#: skype-admin.php:302
+#@ skype-online-status
+msgid "Donate with PayPal - it's fast, free and secure!"
+msgstr "Donirajte s PayPalom  - to je jednostavno, brzo i sigurno !"
+
+#: skype-admin.php:303
+#@ skype-online-status
+msgid "Thanks!"
+msgstr "Zahvaljujem !"
+
+#: skype-admin.php:318
+#@ skype-online-status
+msgid "Skype Buttons"
+msgstr "Skype tipke"
+
+#: skype-admin.php:319
+#, php-format
+#@ skype-online-status
+msgid "View %s's online status on the Skype server"
+msgstr "Pogledaj %s online status na Skype poslužitelju"
+
+#: skype-admin.php:320
+#@ skype-online-status
+msgid "Edit Privacy Options in your Skype client"
+msgstr "Uredi Opcije privatnosti u Skype klijentu"
+
+#: skype-admin.php:321
+#@ skype-online-status
+msgid "Call any phone directly from Skype."
+msgstr "Poziv na bilo koji telefon izravno iz Skype."
+
+#: skype-admin.php:322
+#@ skype-online-status
+msgid "Your personal online number."
+msgstr "Vaš osobni online broj."
+
+#: skype-admin.php:323
+#@ skype-online-status
+msgid "Never miss a call!"
+msgstr "Ne propustite nijedan poziv!"
+
+#: skype-admin.php:324
+#@ skype-online-status
+msgid "Group Video calling"
+msgstr "Grupni Video pozivi"
+
+#: skype-admin.php:351
+#@ skype-online-status
+msgid "Your Skype Online Status database settings have been cleared from the database for removal of this plugin!"
+msgstr "Vaše Skype Online Status postavke bit će izbrisana iz baze podataka ako uklonite ovaj dodatak!"
+
+#: skype-admin.php:351
+#@ skype-online-status
+msgid "You can still resave the old settings shown below to (partly) undo this action but custom widget settings will be reverted to default."
+msgstr "Još uvijek možete ponovno spremiti stare postavke prikazane u nastavku  (djelomično)  te poništiti ovu radnju, ali prilagođene postavke dodatka bit će vraćene na zadane."
+
+#: skype-admin.php:353
+#@ default
+msgid "Deactivate this plugin"
+msgstr ""
+
+#: skype-admin.php:353
+#@ default
+msgid "Deactivate"
+msgstr ""
+
+#: skype-admin.php:355
+#@ skype-online-status
+msgid "Go to the <a href=\"plugins.php\">Plugins page</a> and deactivate it."
+msgstr "Idi na <a href=\"plugins.php\">Plugins page</a>  i isključi ga."
+
+#: skype-admin.php:360
+#@ skype-online-status
+msgid "Skype Online Status plugin has been upgraded to version "
+msgstr "Skype Online Status plugin je nadograđen na verziju  "
+
+#: skype-admin.php:360
+#@ skype-online-status
+msgid "Please, verify your settings now."
+msgstr "Molimo, provjerite postavke."
+
+#: skype-admin.php:360
+#@ skype-online-status
+msgid "What's new?"
+msgstr "Kaj ima novo?"
+
+#: skype-admin.php:365
+#, php-format
+#@ skype-online-status
+msgid "Skype Online Status plugin version %s has been installed!"
+msgstr "Skype Online Status plugin version % s je instaliran!"
+
+#: skype-admin.php:366
+#@ skype-online-status
+msgid "Please, adapt the default settings to your personal preference so you can start using Skype buttons anywhere on your site."
+msgstr "Molimo, prilagodite zadane postavke po vašem osobnom izboru, tako da možete početi koristiti Skype tipke bilo gdje na vašojstranici."
+
+#: skype-admin.php:367
+#, php-format
+#@ skype-online-status
+msgid "Read the %s section for more instructions."
+msgstr "Pročitaj %s odjeljak za više uputa."
+
+#: skype-admin.php:378
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a>."
+msgstr ""
+
+#: skype-admin.php:380
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> <em>automatic upgrade unavailable for this plugin</em>."
+msgstr ""
+
+#: skype-admin.php:382
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> or <a href=\"%4$s\">upgrade automatically</a>."
+msgstr ""
+
+#: skype-admin.php:388
+#@ skype-online-status
+msgid "Please, check if one of the following options can be met -or- ask your server admin / hosting provider to take care of this."
+msgstr "Molimo, provjerite je li jedna od sljedećih opcija može biti ispunjen, ili pitajte svog poslužitelja admin / hosting providera da se brine o tome."
+
+#: skype-admin.php:388
+#@ skype-online-status
+msgid "Install and activate cURL libraries on the server (preferred)"
+msgstr "Instalirati i aktivirati  cURL biblioteke na poslužitelju (preferirana)"
+
+#: skype-admin.php:388
+#@ skype-online-status
+msgid "Upgrade PHP to a version that includes fsockopen (PHP 4+)"
+msgstr "Upgrade PHP na verziju koja uključuje i fsockopen (PHP 4+)"
+
+#: skype-admin.php:388
+#@ skype-online-status
+msgid "Change INI setting <strong>allow_url_fopen</strong> to ON (not advised)"
+msgstr "Promjeni INI setting <strong>allow_url_fopen</strong> to ON (not advised)"
+
+#: skype-admin.php:388
+#@ default
+msgid "Reading your online status from the remote Skype server has been disabled. As a result, some of the advanced options will not be available. However, Skype button themes that also show your online status by way of images (that are provided by the same Skype server) will still do so."
+msgstr ""
+
+#: skype-admin.php:392
+#@ skype-online-status
+msgid "Please, wait while page has loaded completely.<br /> When the Skype server at http://mystatus.skype.com/ is slow or down, this might take a while..."
+msgstr "Molimo, pričekajte dok se stranica učita u potpunosti. <br /> When the Skype server at http://mystatus.skype.com/ je spor ili isključen , to bi moglo potrajati ..."
+
+#: skype-admin.php:436
+#@ skype-online-status
+msgid "Options updated!"
+msgstr "Opcije su ažurirane !"
+
+#: skype-admin.php:442
+#@ skype-online-status
+msgid "Options reset!"
+msgstr "Opcije reset!"
+
+#: skype-admin.php:449
+#: skype-classes.php:222
+#@ skype-online-status
+msgid "Skype Test Call"
+msgstr "Skype Testni poziv"
+
+#: skype-admin.php:488
+#@ skype-online-status
+msgid "Define all your <em>default</em> Skype Status settings here."
+msgstr "Odredite sve svoje <em>default</em> Skype Status postavke ovdje."
+
+#: skype-admin.php:489
+#, php-format
+#@ skype-online-status
+msgid "Start simply by setting the basics like %1$s, %2$s and the button %3$s you want to show on your blog."
+msgstr "Započnite jednostavno postavljanjem osnova  kao %1$s, %2$s i tipke %3$s koju želite pokazati na svom blogu."
+
+#: skype-admin.php:490
+#, php-format
+#@ skype-online-status
+msgid "Then activate the Skype Status Widget on your <a href=\"widgets.php\">Widgets</a> page or use the Skype Status quicktag button %s in the WYSIWYG editor (TinyMCE) to place the Skype Online Status button in any post or page."
+msgstr "Zatim aktivirajte Skype Status widget na <a href=\"widgets.php\">Widgets</a>  ili koristite Skype Status quicktag tipka %s u editoru WYSIWYG (TinyMCE) za postaviti gumb Status Skype Online u post ili stranicu."
+
+#: skype-admin.php:491
+#@ skype-online-status
+msgid "Later on, you can fine-tune everything until it fits just perfectly on you pages."
+msgstr "Kasnije, možete ih fino podešavati sve dok se ne uklape baš savršeno na vašim stranicama."
+
+#: skype-admin.php:492
+#@ skype-online-status
+msgid "Some basic settings may be overridden per Widget settings or when calling the Skype button with a template function."
+msgstr "Neke osnovne postavke mogu bit pregažene po postavkama Widget ili kada zovete gumb Skype s funkcijom predloška."
+
+#: skype-admin.php:493
+#, php-format
+#@ skype-online-status
+msgid "Read more about configuring this plugin and more ways to trigger Skype buttons on your blog in the %1$s section. If you have any remaining questions, see the %2$s page to get help."
+msgstr "Pročitajte više o konfiguriranju ovag plugin i više načina da se aktiviraju Skype tipke na svom blogu u %1$s odjeljku. Ako imate bilo kakvih pitanja , pogledajte %2$s stranicu kako biste dobili pomoć."
+
+#: skype-classes.php:13
+#: skype-classes.php:80
+#: skype-classes.php:545
+#@ skype-online-status
+msgid "Skype Status"
+msgstr "Status na Skypu!"
+
+#: skype-classes.php:16
+#@ skype-online-status
+msgid "Add a Skype Online Status button"
+msgstr "Dodaj gumb Status Skype Online"
+
+#: skype-classes.php:98
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: skype-classes.php:107
+#@ skype-online-status
+msgid "Text before button"
+msgstr "Tekst prije gumba"
+
+#: skype-classes.php:111
+#: skype-classes.php:117
+#@ skype-online-status
+msgid "Default"
+msgstr "Zadano"
+
+#: skype-classes.php:113
+#@ skype-online-status
+msgid "Text after button"
+msgstr "Tekst iza tipke"
+
+#: skype-classes.php:116
+#@ skype-online-status
+msgid "Use Voicemail?"
+msgstr "Koristiti glasovnu poruku ?"
+
+#: skype-classes.php:117
+#@ default
+msgid "Yes"
+msgstr ""
+
+#: skype-classes.php:117
+#: skype-classes.php:121
+#@ default
+msgid "No"
+msgstr ""
+
+#: skype-classes.php:119
+#@ skype-online-status
+msgid "Leave blank to use the default options as you defined on the <a href=\"options-general.php?page=skype-status.php\">Skype Online Status Settings</a> page."
+msgstr "Ostavite prazno za koristiti opcije kako je definirano u <a href=\"options-general.php?page=skype-status.php\">Skype Online Status Settings</a> stranici."
+
+#: skype-classes.php:120
+#@ skype-online-status
+msgid "You can use some basic HTML here like &lt;br /&gt; for new line."
+msgstr "Možete koristiti neke osnove HTML-a poput &lt;br /&gt; for new line."
+
+#: skype-classes.php:121
+#, php-format
+#@ skype-online-status
+msgid "Set to %1$s if you do not have %2$s or %3$s."
+msgstr "Postavi na %1$s ako nemate %2$s or %3$s."
+
+#: skype-classes.php:238
+#@ skype-online-status
+msgid " - "
+msgstr "- "
+
+#: skype-classes.php:244
+#@ skype-online-status
+msgid "&raquo; Get Skype, call free!"
+msgstr "&raquo; Get Skype, call free!"
+
+#: skype-classes.php:253
+#@ skype-online-status
+msgid "My status is"
+msgstr "Moj status je "
+
+#: skype-classes.php:265
+#@ skype-online-status
+msgid "English"
+msgstr "Engleski"
+
+#: skype-classes.php:266
+#@ skype-online-status
+msgid "French"
+msgstr "Francuski"
+
+#: skype-classes.php:267
+#@ skype-online-status
+msgid "German"
+msgstr "Njemački"
+
+#: skype-classes.php:268
+#@ skype-online-status
+msgid "Japanese"
+msgstr "Japanski"
+
+#: skype-classes.php:269
+#@ skype-online-status
+msgid "Taiwanese"
+msgstr "Tajvanski"
+
+#: skype-classes.php:270
+#@ skype-online-status
+msgid "Chinese"
+msgstr "Kineski"
+
+#: skype-classes.php:271
+#@ skype-online-status
+msgid "Brazilian"
+msgstr "Brazilski"
+
+#: skype-classes.php:272
+#@ skype-online-status
+msgid "Portuguese"
+msgstr "Portugalski"
+
+#: skype-classes.php:273
+#@ skype-online-status
+msgid "Italian"
+msgstr "Talijanski"
+
+#: skype-classes.php:274
+#@ skype-online-status
+msgid "Spanish"
+msgstr "Španjolski"
+
+#: skype-classes.php:275
+#@ skype-online-status
+msgid "Polish"
+msgstr "Poljski"
+
+#: skype-classes.php:276
+#@ skype-online-status
+msgid "Swedish"
+msgstr "Švedski"
+
+#: skype-classes.php:281
+#: skype-classes.php:282
+#@ skype-online-status
+msgid "Offline"
+msgstr "Van mreže"
+
+#: skype-classes.php:283
+#@ skype-online-status
+msgid "Online"
+msgstr "Na mrreži"
+
+#: skype-classes.php:284
+#@ skype-online-status
+msgid "Away"
+msgstr "Odsutan"
+
+#: skype-classes.php:285
+#@ skype-online-status
+msgid "Not available"
+msgstr "Zauzet"
+
+#: skype-classes.php:286
+#@ skype-online-status
+msgid "Do not disturb"
+msgstr "Ne ometaj"
+
+#: skype-classes.php:288
+#@ skype-online-status
+msgid "Skype me!"
+msgstr "Skypaj me!"
+
+#: skype-classes.php:292
+#@ skype-online-status
+msgid "Call me!"
+msgstr "Nazovi me!"
+
+#: skype-classes.php:293
+#@ skype-online-status
+msgid "Add me to Skype"
+msgstr "Dodaj me na Skype"
+
+#: skype-classes.php:294
+#@ skype-online-status
+msgid "Chat with me"
+msgstr "Slobodan za Chat"
+
+#: skype-classes.php:295
+#@ skype-online-status
+msgid "View my profile"
+msgstr "Pogledaj moj profil"
+
+#: skype-classes.php:297
+#@ skype-online-status
+msgid "Send me a file"
+msgstr "pošalji mi dokument"
+
+#: skype-classes.php:558
+#@ skype-online-status
+msgid "Sections"
+msgstr "Odjeljak"
+
+#: skype-classes.php:559
+#@ skype-online-status
+msgid "Preview theme template:"
+msgstr "Predpregled predloška teme:"
+
+#: skype-classes.php:560
+#: skype-quickguide-notes.php:102
+#: skype-quickguide-notes.php:122
+#@ skype-online-status
+msgid "Support"
+msgstr "Podrška"
+
+#: skype-classes.php:561
+#@ skype-online-status
+msgid "Get more from Skype"
+msgstr "Još o skypu"
+
+#: skype-classes.php:562
+#@ skype-online-status
+msgid "Resources"
+msgstr "Resursi"
+
+#: skype-classes.php:581
+#@ default
+msgid "Settings"
+msgstr ""
+
+#: skype-classes.php:605
+#@ default
+msgid "Discussion"
+msgstr ""
+
+#: skype-classes.php:606
+#: skype-quickguide-notes.php:103
+#@ skype-online-status
+msgid "Credits"
+msgstr "Krediti"
+
+#. translators: plugin header field 'PluginURI'
+#: skype-status.php:0
+#@ skype-online-status
+msgid "http://status301.net/wordpress-plugins/skype-online-status/"
+msgstr "http://status301.net/wordpress-plugins/skype-online-status/"
+
+#. translators: plugin header field 'Description'
+#: skype-status.php:0
+#@ skype-online-status
+msgid "Add multiple, highly customizable and accessible Skype buttons to post/page content (quick-tags), sidebar (unlimited number of widgets) or anywhere else (template code). Find documentation and advanced configuration options on the settings page or just go straight to your <a href=\"widgets.php\">Widgets</a> page and add one there..."
+msgstr "Dodaj višestruke, vrlo prilagodljive i dostupne Skype tipke na post / sadržaj stranice (Quick-tags), sidebar (neograničen broj widgeta) ili bilo gdje drugdje (kod predloška). Nađi dokumentaciju i napredne mogućnosti konfiguracije na stranici za postavke ili jednostavno odi ravno u svoju <a href=\"widgets.php\">Widgets</a> i dodati tu ..."
+
+#. translators: plugin header field 'Author'
+#: skype-status.php:0
+#@ skype-online-status
+msgid "RavanH"
+msgstr "RavanH"
+
+#. translators: plugin header field 'AuthorURI'
+#: skype-status.php:0
+#@ skype-online-status
+msgid "http://status301.net/"
+msgstr "http://status301.net/"
+
+#. translators: plugin header field 'Version'
+#: skype-status.php:0
+#@ skype-online-status
+msgid "2.9.4"
+msgstr "2.9.4"
+
