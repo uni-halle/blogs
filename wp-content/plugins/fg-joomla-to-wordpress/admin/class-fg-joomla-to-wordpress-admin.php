@@ -1992,8 +1992,12 @@ SQL;
 
 				$sql = "SHOW COLUMNS FROM ${prefix}${table} LIKE '$column'";
 				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				$result = $query->fetch();
-				return !empty($result);
+				if ( $query !== false ) {
+					$result = $query->fetch();
+					return !empty($result);
+				} else {
+					return false;
+				}
 			} catch ( PDOException $e ) {}
 			return false;
 		}
@@ -2012,8 +2016,12 @@ SQL;
 
 				$sql = "SHOW TABLES LIKE '${prefix}${table}'";
 				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				$result = $query->fetch();
-				return !empty($result);
+				if ( $query !== false ) {
+					$result = $query->fetch();
+					return !empty($result);
+				} else {
+					return false;
+				}
 			} catch ( PDOException $e ) {}
 			return false;
 		}
