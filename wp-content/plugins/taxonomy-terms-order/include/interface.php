@@ -92,7 +92,7 @@
                                 ?>
                                 </tbody>
                             </table>
-                            <br /><br /> 
+                            <br />
                             <?php
                         }
                             ?>
@@ -163,7 +163,7 @@
                                 var serialize_data = serialize(mySortable);
                                                                                             
                                 jQuery.post( ajaxurl, { action:'update-taxonomy-order', order: serialize_data, taxonomy : '<?php echo  $taxonomy ?>' }, function() {
-                                    jQuery("#ajax-response").html('<div class="message updated fade"><p><?php _e( "Items Order Updates", 'tto' ) ?></p></div>');
+                                    jQuery("#ajax-response").html('<div class="message updated fade"><p><?php _e( "Items Order Updated", 'tto' ) ?></p></div>');
                                     jQuery("#ajax-response div").delay(3000).hide("slow");
                                 });
                             });

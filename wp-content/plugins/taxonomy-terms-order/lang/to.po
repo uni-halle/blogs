@@ -2,69 +2,76 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Category Order and Taxonomy Terms Order\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-06 17:32+0200\n"
-"PO-Revision-Date: 2012-07-06 17:32+0200\n"
-"Last-Translator: nsp-code <electronice_delphi@yahoo.com>\n"
+"POT-Creation-Date: 2015-05-22 19:58+0200\n"
+"PO-Revision-Date: 2015-05-22 19:58+0200\n"
+"Last-Translator: NspCode <electronice_delphi@yahoo.com>\n"
 "Language-Team: nsp-code <electronice_delphi@yahoo.com>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;_e\n"
-"X-Poedit-Basepath: D:\\htdocs\\develop\\advanced_post_types_order\\wp-content\\plugins\\taxonomy-terms-order\\\n"
-"X-Poedit-Language: english\n"
+"X-Poedit-Basepath: D:\\htdocs\\develop\\advanced_post_types_order\\wp-content"
+"\\plugins\\taxonomy-terms-order\\\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: include/functions.php:39
+msgid ""
+"Did you find this plugin useful? Please support our work with a donation or "
+"write an article about this plugin in your blog with a link to our site"
+msgstr ""
+
+#: include/functions.php:40
+msgid "Did you know there is available an advanced version of this plug-in?"
+msgstr ""
+
+#: include/functions.php:40
+msgid "Read more"
+msgstr ""
+
+#: include/functions.php:41 include/functions.php:42
+msgid "Check our"
+msgstr ""
+
+#: include/functions.php:41
+msgid ""
+"plugin which allow to custom sort categories and custom taxonomies terms per "
+"post basis"
+msgstr ""
+
+#: include/functions.php:42
+msgid "plugin which allow to custom sort all posts, pages, custom post types"
+msgstr ""
 
 #: include/interface.php:19
 msgid "Taxonomy Order"
 msgstr ""
 
-#: include/interface.php:52
-#: include/options.php:57
-msgid "Did you found useful this plug-in? Please support our work with a donation or write an article about this plugin in your blog with a link to our site"
+#: include/interface.php:27
+msgid ""
+"This plugin can't work without javascript, because it's use drag and drop "
+"and AJAX."
 msgstr ""
 
-#: include/interface.php:53
-#: include/options.php:58
-msgid "Did you know there is available a more advanced version of this plug-in?"
-msgstr ""
-
-#: include/interface.php:53
-#: include/options.php:58
-msgid "Read more"
-msgstr ""
-
-#: include/interface.php:54
-#: include/options.php:59
-msgid "Check our"
-msgstr ""
-
-#: include/interface.php:54
-#: include/options.php:59
-msgid "plugin which allow to custom sort all posts, pages, custom post types"
-msgstr ""
-
-#: include/interface.php:60
-msgid "This plugin can't work without javascript, because it's use drag and drop and AJAX."
-msgstr ""
-
-#: include/interface.php:96
+#: include/interface.php:63
 msgid "Taxonomies"
 msgstr ""
 
-#: include/interface.php:100
+#: include/interface.php:67
 msgid "Taxonomy Title"
 msgstr ""
 
-#: include/interface.php:100
+#: include/interface.php:67
 msgid "Total  Posts"
 msgstr ""
 
-#: include/interface.php:150
+#: include/interface.php:117
 msgid "Update"
 msgstr ""
 
-#: include/interface.php:199
-msgid "Items Order Updates"
+#: include/interface.php:166
+msgid "Items Order Updated"
 msgstr ""
 
 #: include/options.php:16
@@ -75,83 +82,88 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
-#: include/options.php:64
+#: include/options.php:30
 msgid "General"
 msgstr ""
 
-#: include/options.php:69
+#: include/options.php:35
 msgid "Minimum Level to use this plugin"
 msgstr ""
 
-#: include/options.php:72
+#: include/options.php:38
 msgid "Subscriber"
 msgstr ""
 
-#: include/options.php:73
+#: include/options.php:39
 msgid "Contributor"
 msgstr ""
 
-#: include/options.php:74
+#: include/options.php:40
 msgid "Author"
 msgstr ""
 
-#: include/options.php:75
+#: include/options.php:41
 msgid "Editor"
 msgstr ""
 
-#: include/options.php:76
+#: include/options.php:42
 msgid "Administrator"
 msgstr ""
 
-#: include/options.php:83
+#: include/options.php:49
 msgid "Auto Sort"
 msgstr ""
 
-#: include/options.php:86
+#: include/options.php:52
 msgid "OFF"
 msgstr ""
 
-#: include/options.php:87
+#: include/options.php:53
 msgid "ON"
 msgstr ""
 
-#: include/options.php:88
+#: include/options.php:54
 msgid "global setting"
 msgstr ""
 
-#: include/options.php:93
+#: include/options.php:59
 msgid "Admin Sort"
 msgstr ""
 
-#: include/options.php:97
+#: include/options.php:63
 msgid "This will change the order of terms within the admin interface"
 msgstr ""
 
-#: include/options.php:105
+#: include/options.php:71
 msgid "Autosort OFF"
 msgstr ""
 
-#: include/options.php:106
-msgid "No query will be changed, the terms will appear in the original order. To retrieve the terms in the required order you must use the term_order on the orderby parameter"
+#: include/options.php:72
+msgid ""
+"No query will be changed, the terms will appear in the original order. To "
+"retrieve the terms in the required order you must use the term_order on the "
+"orderby parameter"
 msgstr ""
 
-#: include/options.php:114
+#: include/options.php:80
 msgid "See more info on the get_terms usage"
 msgstr ""
 
-#: include/options.php:114
+#: include/options.php:80
 msgid "here"
 msgstr ""
 
-#: include/options.php:116
+#: include/options.php:82
 msgid "Autosort ON"
 msgstr ""
 
-#: include/options.php:117
-msgid "The queries will be updated, all terms will appear in the order you manually defined. This is recommended if you don't want to change any theme code to apply the terms order"
+#: include/options.php:83
+msgid ""
+"The queries will be updated, all terms will appear in the order you manually "
+"defined. This is recommended if you don't want to change any theme code to "
+"apply the terms order"
 msgstr ""
 
-#: include/options.php:127
+#: include/options.php:93
 msgid "Save Settings"
 msgstr ""
-
