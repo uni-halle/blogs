@@ -26,8 +26,7 @@ function nggallery_sortorder($galleryID = 0){
 				$wpdb->query("UPDATE $wpdb->nggpictures SET sortorder = '$sortindex' WHERE pid = $pic_id");
 				$sortindex++;
 			}
-
-			C_Photocrati_Cache::flush('displayed_gallery_rendering');
+			C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
 
 			do_action('ngg_gallery_sort', $galleryID);
 

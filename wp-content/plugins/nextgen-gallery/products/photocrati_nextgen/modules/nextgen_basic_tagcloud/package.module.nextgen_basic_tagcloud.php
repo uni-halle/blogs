@@ -20,7 +20,7 @@ class A_NextGen_Basic_Tagcloud_Controller extends Mixin
     {
         $display_settings = $displayed_gallery->display_settings;
         $application = C_Router::get_instance()->get_routed_app();
-        $tag = $this->param('gallerytag');
+        $tag = urldecode($this->param('gallerytag'));
         // we're looking at a tag, so show images w/that tag as a thumbnail gallery
         if (!is_home() && !empty($tag)) {
             return C_Displayed_Gallery_Renderer::get_instance()->display_images(array('source' => 'tags', 'container_ids' => array(esc_attr($tag)), 'display_type' => $display_settings['display_type'], 'original_display_type' => $displayed_gallery->display_type, 'original_settings' => $display_settings));
@@ -63,6 +63,15 @@ class A_NextGen_Basic_Tagcloud_Form extends Mixin_Display_Type_Form
     {
         return array('nextgen_basic_tagcloud_number', 'nextgen_basic_tagcloud_display_type');
     }
+    public function enqueue_static_resources()
+    {
+        $path = 'photocrati-nextgen_basic_tagcloud#settings.css';
+        wp_enqueue_style('nextgen_basic_tagcloud_settings-css', $this->get_static_url($path));
+        $atp = C_Attach_Controller::get_instance();
+        if (!is_null($atp)) {
+            $atp->mark_script($path);
+        }
+    }
     public function _render_nextgen_basic_tagcloud_number_field($display_type)
     {
         return $this->_render_number_field($display_type, 'number', __('Maximum number of tags', 'nggallery'), $display_type->settings['number']);
@@ -70,14 +79,15 @@ class A_NextGen_Basic_Tagcloud_Form extends Mixin_Display_Type_Form
     public function _render_nextgen_basic_tagcloud_display_type_field($display_type)
     {
         $types = array();
-        $skip_types = array('photocrati-nextgen_basic_tagcloud', 'photocrati-nextgen_basic_singlepic');
+        $skip_types = array(NGG_BASIC_TAGCLOUD, NGG_BASIC_SINGLEPIC, NGG_BASIC_COMPACT_ALBUM, NGG_BASIC_EXTENDED_ALBUM);
+        $skip_types = apply_filters('ngg_basic_tagcloud_excluded_display_types', $skip_types);
         $mapper = C_Display_Type_Mapper::get_instance();
         $display_types = $mapper->find_all();
         foreach ($display_types as $dt) {
             if (in_array($dt->name, $skip_types)) {
                 continue;
             }
-            $types[$dt->name] = str_replace('NextGEN Basic ', '', $dt->title);
+            $types[$dt->name] = $dt->title;
         }
         return $this->_render_select_field($display_type, 'display_type', __('Display type', 'nggallery'), $types, $display_type->settings['display_type'], __('The display type that the tagcloud will point its results to', 'nggallery'));
     }
@@ -164,11 +174,11 @@ class C_Taxonomy_Controller extends C_MVC_Controller
      */
     public function index_action($tag)
     {
-        $renderer = C_Displayed_Gallery_Renderer::get_instance();
-        $output = $renderer->display_images(array('source' => 'tags', 'container_ids' => $tag, 'slug' => $tag, 'display_type' => NGG_BASIC_THUMBNAILS));
-        // This strips extra whitespace and strips newlines. For some reason this is especially
-        // necessary on Wordpress taxonomy pages.
-        return trim(preg_replace('/\\s\\s+/', ' ', $output));
+        $mapper = C_Display_Type_Mapper::get_instance();
+        // Respect the global display type setting
+        $display_type = $mapper->find_by_name(NGG_BASIC_TAGCLOUD, TRUE);
+        $display_type = !empty($display_type->settings['display_type']) ? $display_type->settings['display_type'] : NGG_BASIC_THUMBNAILS;
+        return "[ngg_images source='tags' container_ids='{$tag}' slug='{$tag}' display_type='{$display_type}']";
     }
     /**
      * Determines if the current page is /ngg_tag/{*}
@@ -186,13 +196,15 @@ class C_Taxonomy_Controller extends C_MVC_Controller
             $wp_query = $wp_query_local;
         }
         // This appears to be necessary for multisite installations, but I can't imagine why. More hackery..
-        $tag = get_query_var('ngg_tag') ? get_query_var('ngg_tag') : get_query_var('name');
+        $tag = urldecode(get_query_var('ngg_tag') ? get_query_var('ngg_tag') : get_query_var('name'));
         if (!$this->ngg_tag_detection_has_run && !is_admin() && !empty($tag) && (stripos($wp->request, 'ngg_tag') === 0 || isset($wp_query->query_vars['page_id']) && $wp_query->query_vars['page_id'] === 'ngg_tag')) {
             $this->ngg_tag_detection_has_run = TRUE;
             // Wordpress somewhat-correctly generates several notices, so silence them as they're really unnecessary
             if (!defined('WP_DEBUG') || !WP_DEBUG) {
                 error_reporting(0);
             }
+            // Without this all url generated from this page lacks the /ngg_tag/(slug) section of the URL
+            add_filter('ngg_wprouting_add_post_permalink', '__return_false');
             // create in-code a fake post; we feed it back to Wordpress as the sole result of the "the_posts" filter
             $posts = NULL;
             $posts[] = $this->create_ngg_tag_post($tag);
@@ -212,15 +224,17 @@ class C_Taxonomy_Controller extends C_MVC_Controller
     }
     public function create_ngg_tag_post($tag)
     {
+        $title = sprintf(__('Images tagged &quot;%s&quot;', 'nggallery'), $tag);
+        $title = apply_filters('ngg_basic_tagcloud_title', $title, $tag);
         $post = new stdClass();
         $post->post_author = FALSE;
         $post->post_name = 'ngg_tag';
         $post->guid = get_bloginfo('wpurl') . '/' . 'ngg_tag';
-        $post->post_title = "Images tagged &quot;{$tag}&quot;";
+        $post->post_title = $title;
         $post->post_content = $this->index_action($tag);
         $post->ID = FALSE;
         $post->post_type = 'page';
-        $post->post_status = 'static';
+        $post->post_status = 'publish';
         $post->comment_status = 'closed';
         $post->ping_status = 'closed';
         $post->comment_count = 0;

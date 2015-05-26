@@ -819,6 +819,10 @@ msgstr ""
 msgid "The display type that the tagcloud will point its results to"
 msgstr ""
 
+#: products/photocrati_nextgen/modules/nextgen_basic_tagcloud/class.taxonomy_controller.php:114
+msgid "Images tagged &quot;%s&quot;"
+msgstr ""
+
 #: products/photocrati_nextgen/modules/nextgen_basic_tagcloud/module.nextgen_basic_tagcloud.php:163
 msgid "NextGEN Basic TagCloud"
 msgstr ""
@@ -1718,6 +1722,10 @@ msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:592
 msgid "Page Link to"
+msgstr ""
+
+#: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:616
+msgid "There are no pages to link to"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:611
@@ -2627,10 +2635,6 @@ msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/roles.php:26
 msgid "Select the lowest role which should be able to access the following capabilities. NextGEN Gallery supports the standard roles from WordPress."
-msgstr ""
-
-#: products/photocrati_nextgen/modules/ngglegacy/admin/roles.php:27
-msgid "For a more flexible user management you can use the"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/roles.php:31

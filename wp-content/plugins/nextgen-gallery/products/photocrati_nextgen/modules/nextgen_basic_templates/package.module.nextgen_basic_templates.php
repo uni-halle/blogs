@@ -199,7 +199,7 @@ class Mixin_Legacy_Template_Locator extends Mixin
      */
     public function get_template_directories()
     {
-        return array('Child Theme' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'nggallery' . DIRECTORY_SEPARATOR, 'Parent Theme' => get_template_directory() . DIRECTORY_SEPARATOR . 'nggallery' . DIRECTORY_SEPARATOR, 'NextGEN' => NGGALLERY_ABSPATH . 'view' . DIRECTORY_SEPARATOR);
+        return array('Child Theme' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'nggallery' . DIRECTORY_SEPARATOR, 'Parent Theme' => get_template_directory() . DIRECTORY_SEPARATOR . 'nggallery' . DIRECTORY_SEPARATOR, 'NextGEN Legacy' => NGGALLERY_ABSPATH . 'view' . DIRECTORY_SEPARATOR, 'NextGEN Overrides' => implode(DIRECTORY_SEPARATOR, array(WP_CONTENT_DIR, 'ngg', 'legacy', 'templates')));
     }
     /**
      * Returns an array of all available template files

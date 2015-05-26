@@ -76,8 +76,8 @@ class C_NextGen_Settings_Installer
 			'relatedHeading'   => '<h3>' . __('Related Images', 'nggallery') . ':</h3>', // subheading for related images
 
 			// Thumbnail Settings
-			'thumbwidth'   => 120,  // Thumb Width
-			'thumbheight'  => 90,   // Thumb height
+			'thumbwidth'   => 240,  // Thumb Width
+			'thumbheight'  => 160,   // Thumb height
 			'thumbfix'     => True, // Fix the dimension
 			'thumbquality' => 100,  // Thumb Quality
 

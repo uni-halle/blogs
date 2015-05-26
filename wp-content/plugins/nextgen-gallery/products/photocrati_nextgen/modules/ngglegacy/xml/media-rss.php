@@ -59,8 +59,13 @@ if ( $mode == 'last_pictures' ) {
         $first = current($galleries);
         $gid = $first->gid;
 	}
-	    
-	
+
+    // account for the the odd logic used in selecting galleries here
+    if ($gid == 1)
+        $gid = 0;
+    elseif ($gid > 1)
+        $gid--;
+
 	// Set the main gallery object
 	$gallery = $galleries[$gid];
 	

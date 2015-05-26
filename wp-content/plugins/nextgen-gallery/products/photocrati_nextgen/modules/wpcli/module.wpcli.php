@@ -44,17 +44,8 @@ if (class_exists('WP_CLI_Command')) {
          */
         function flush_cache($args, $assoc_args)
         {
-            C_Photocrati_Cache::flush('all');
+            C_Photocrati_Transient_Manager::flush();
             WP_CLI::success('Flushed all caches');
-        }
-
-        /**
-         * Flushes POPE code cache
-         */
-        function flush_pope_cache($args, $assoc_args)
-        {
-            C_Photocrati_Cache::flush('all', TRUE);
-            WP_CLI::success('Flushed all expired items from the cache');
         }
 
         /**

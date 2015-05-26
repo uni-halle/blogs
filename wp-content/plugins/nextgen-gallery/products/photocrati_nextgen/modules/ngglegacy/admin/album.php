@@ -599,13 +599,23 @@ function showDialog() {
                 if (!isset($album->pageid))
                     $album->pageid = 0;
 
+                ob_start();
                 wp_dropdown_pages(array(
                     'echo' => TRUE,
                     'name' => 'pageid',
                     'selected' => $album->pageid,
                     'show_option_none' => esc_html('Not linked', 'nggallery'),
                     'option_none_value' => 0
-                )); ?>
+                ));
+                $dropdown = ob_get_contents();
+                ob_end_clean();
+                if (!empty($dropdown))
+                    echo $dropdown;
+                else {
+                    echo '<input type="hidden" id="pageid" name="pageid" value="0"/>';
+                    esc_html_e('There are no pages to link to', 'nggallery');
+                }
+                ?>
             </th>
         </tr>
 

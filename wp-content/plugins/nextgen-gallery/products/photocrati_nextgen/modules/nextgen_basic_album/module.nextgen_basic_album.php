@@ -71,6 +71,8 @@ class M_NextGen_Basic_Album extends C_Base_Module
                 'I_Displayed_Gallery_Renderer',
                 'A_NextGen_Basic_Album_Routes'
             );
+
+            $this->get_registry()->add_adapter('I_MVC_View', 'A_NextGen_Album_Breadcrumbs');
         }
 
 
@@ -146,6 +148,7 @@ class M_NextGen_Basic_Album extends C_Base_Module
     function get_type_list()
     {
         return array(
+            'A_NextGen_Album_Breadcrumbs' => 'adapter.nextgen_album_breadcrumbs.php',
             'A_Nextgen_Basic_Album' => 'adapter.nextgen_basic_album.php',
             'A_Nextgen_Basic_Album_Controller' => 'adapter.nextgen_basic_album_controller.php',
             'A_Nextgen_Basic_Album_Mapper' => 'adapter.nextgen_basic_album_mapper.php',

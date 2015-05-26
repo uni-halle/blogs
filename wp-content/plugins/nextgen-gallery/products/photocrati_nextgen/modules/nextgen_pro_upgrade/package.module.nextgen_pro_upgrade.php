@@ -37,8 +37,8 @@ class A_NextGen_Pro_Upgrade_Controller extends Mixin
     public function index_action()
     {
         $this->object->enqueue_backend_resources();
-        $key = C_Photocrati_Cache::generate_key('nextgen_pro_upgrade_page');
-        if ($html = C_Photocrati_Cache::get('nextgen_pro_upgrade_page', FALSE)) {
+        $key = C_Photocrati_Transient_Manager::create_key('nextgen_pro_upgrade_page', 'html');
+        if ($html = C_Photocrati_Transient_Manager::fetch($key, FALSE)) {
             echo $html;
         } else {
             // Get page content
@@ -55,7 +55,7 @@ class A_NextGen_Pro_Upgrade_Controller extends Mixin
             $params = array('description' => $description, 'headline' => $headline);
             $html = $this->render_view($template, $params, TRUE);
             // Cache it
-            C_Photocrati_Cache::set($key, $html);
+            C_Photocrati_Transient_Manager::update($key, $html);
             // Render it
             echo $html;
         }

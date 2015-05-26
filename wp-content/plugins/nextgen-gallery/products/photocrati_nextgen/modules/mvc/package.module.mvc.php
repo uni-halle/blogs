@@ -10,15 +10,19 @@ class A_MVC_Fs extends Mixin
 {
     static $_lookups = array();
     static $_non_minified_modules = array();
+    public function _get_cache_key()
+    {
+        return C_Photocrati_Transient_Manager::create_key('MVC', 'find_static_abspath');
+    }
     public function initialize()
     {
         register_shutdown_function(array(&$this, 'cache_lookups'));
-        self::$_lookups = C_Photocrati_Cache::get('find_static_abspath', array(), 'MVC');
+        self::$_lookups = C_Photocrati_Transient_Manager::fetch($this->_get_cache_key(), array());
         self::$_non_minified_modules = apply_filters('ngg_non_minified_modules', array());
     }
     public function cache_lookups()
     {
-        C_Photocrati_Cache::set('find_static_abspath', self::$_lookups, 'MVC');
+        C_Photocrati_Transient_Manager::update($this->_get_cache_key(), self::$_lookups);
     }
     /**
      * Gets the absolute path to a static resource. If it doesn't exist, then NULL is returned
@@ -101,11 +105,15 @@ class A_MVC_Router extends Mixin
     public function initialize()
     {
         register_shutdown_function(array(&$this, 'cache_lookups'));
-        self::$_lookups = C_Photocrati_Cache::get('get_static_url', array(), 'MVC');
+        self::$_lookups = C_Photocrati_Transient_Manager::fetch($this->_get_cache_key(), array());
+    }
+    public function _get_cache_key()
+    {
+        return C_Photocrati_Transient_Manager::create_key('MVC', 'get_static_url');
     }
     public function cache_lookups()
     {
-        C_Photocrati_Cache::set('get_static_url', self::$_lookups, 'MVC');
+        C_Photocrati_Transient_Manager::update($this->_get_cache_key(), self::$_lookups);
     }
     public function _get_static_url_key($path, $module = FALSE)
     {
@@ -553,9 +561,45 @@ class Mixin_Mvc_View_Instance_Methods extends Mixin
         }
         // Append the suffix
         $path = $path . '.php';
-        $retval = $fs->join_paths($this->object->get_registry()->get_module_dir($module), $settings->mvc_template_dirname, $path);
+        // First check if the template is in the override dir
+        if (!($retval = $this->object->get_template_override_abspath($module, $path))) {
+            $retval = $fs->join_paths($this->object->get_registry()->get_module_dir($module), $settings->mvc_template_dirname, $path);
+        }
         if (!@file_exists($retval)) {
             throw new RuntimeException("{$retval} is not a valid MVC template");
+        }
+        return $retval;
+    }
+    public function get_template_override_dir($module = NULL)
+    {
+        $fs = C_Fs::get_instance();
+        $dir = $fs->join_paths(WP_CONTENT_DIR, 'ngg');
+        if (!@file_exists($dir)) {
+            wp_mkdir_p($dir);
+        }
+        $dir = $fs->join_paths($dir, 'modules');
+        if (!@file_exists($dir)) {
+            wp_mkdir_p($dir);
+        }
+        if ($module) {
+            $dir = $fs->join_paths($dir, $module);
+            if (!@file_exists($dir)) {
+                wp_mkdir_p($dir);
+            }
+            $dir = $fs->join_paths($dir, 'templates');
+            if (!@file_exists($dir)) {
+                wp_mkdir_p($dir);
+            }
+        }
+        return $dir;
+    }
+    public function get_template_override_abspath($module, $filename)
+    {
+        $fs = C_Fs::get_instance();
+        $retval = NULL;
+        $abspath = $fs->join_paths($this->object->get_template_override_dir($module), $filename);
+        if (@file_exists($abspath)) {
+            $retval = $abspath;
         }
         return $retval;
     }

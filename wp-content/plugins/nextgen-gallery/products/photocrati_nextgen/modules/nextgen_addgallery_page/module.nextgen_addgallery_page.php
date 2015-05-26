@@ -25,8 +25,10 @@ class M_NextGen_AddGallery_Page extends C_Base_Module
     function initialize()
     {
         $forms = C_Form_Manager::get_instance();
+        $settings = C_NextGen_Settings::get_instance();
         $forms->add_form(NGG_ADD_GALLERY_SLUG, 'upload_images');
-        if (!is_multisite()) $forms->add_form(NGG_ADD_GALLERY_SLUG, 'import_folder');
+        if (!is_multisite() || (is_multisite() && $settings->get('wpmuImportFolder')))
+            $forms->add_form(NGG_ADD_GALLERY_SLUG, 'import_folder');
     }
     
     function get_type_list()
@@ -49,9 +51,8 @@ class M_NextGen_AddGallery_Page extends C_Base_Module
             $this->get_registry()->add_adapter('I_Page_Manager', 'A_NextGen_AddGallery_Pages');
             $this->get_registry()->add_adapter('I_NextGen_Admin_Page', 'A_NextGen_AddGallery_Controller', NGG_ADD_GALLERY_SLUG);
             $this->get_registry()->add_adapter('I_Form', 'A_Upload_Images_Form', 'upload_images');
-            if (!is_multisite()) {
+            if (!is_multisite() || (is_multisite() && C_NextGen_Settings::get_instance()->get('wpmuImportFolder')))
                 $this->get_registry()->add_adapter('I_Form', 'A_Import_Folder_Form', 'import_folder');
-            }
         }
     }
 

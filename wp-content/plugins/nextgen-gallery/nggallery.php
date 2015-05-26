@@ -4,7 +4,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 /**
  * Plugin Name: NextGEN Gallery by Photocrati
  * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 12 million downloads.
- * Version: 2.0.79
+ * Version: 2.1.0
  * Author: Photocrati Media
  * Plugin URI: http://www.nextgen-gallery.com
  * Author URI: http://www.photocrati.com
@@ -40,7 +40,6 @@ if (!function_exists('nextgen_esc_url')) {
 			$url = wp_kses_normalize_entities( $url );
 			$url = str_replace( '&amp;', '&#038;', $url );
 			$url = str_replace( "'", '&#039;', $url );
-			$url = str_replace( '%', '%25', $url );
 			$url = str_replace( ' ', '%20', $url );
 		}
 
@@ -80,6 +79,7 @@ class C_NextGEN_Bootstrap
 	var $_pope_loaded = FALSE;
 	static $debug = FALSE;
 	var $minimum_ngg_pro_version = '2.0.5';
+    var $minimum_ngg_plus_version = '1.0.1';
 
 	static function shutdown($exception=NULL)
 	{
@@ -172,25 +172,11 @@ class C_NextGEN_Bootstrap
 	function _load_non_pope()
 	{
 		// Load caching component
-		include_once('non_pope/class.photocrati_cache.php');
-		C_Photocrati_Cache::get_instance();
-		C_Photocrati_Cache::get_instance('displayed_galleries');
-		C_Photocrati_Cache::get_instance('displayed_gallery_rendering');
+		include_once('non_pope/class.photocrati_transient_manager.php');
 
-		C_Photocrati_Cache::$enabled = PHOTOCRATI_CACHE;
-
-		if (isset($_REQUEST['ngg_flush'])) {
-			C_Photocrati_Cache::flush('all');
+		if (isset($_REQUEST['ngg_flush']) OR isset($_REQUEST['ngg_flush_expired'])) {
+			C_Photocrati_Transient_Manager::flush();
 			die("Flushed all caches");
-		}
-		elseif (isset($_REQUEST['ngg_force_update'])) {
-			C_Photocrati_Cache::$do_not_lookup = TRUE;
-			C_Photocrati_Cache::$force_update = TRUE;
-			$_SERVER['QUERY_STRING'] = str_replace('ngg_force_update=1', '', $_SERVER['QUERY_STRING']);
-		}
-		elseif (isset($_REQUEST['ngg_flush_expired'])) {
-			C_Photocrati_Cache::flush('all', TRUE);
-			die("Flushed all expired items from the cache");
 		}
 
 		// Load Settings Manager
@@ -304,7 +290,9 @@ class C_NextGEN_Bootstrap
 		$retval = TRUE;
 
         if (defined('NEXTGEN_GALLERY_PRO_VERSION')) $retval = FALSE;
-		if (defined('NGG_PRO_PLUGIN_VERSION') && version_compare(NGG_PRO_PLUGIN_VERSION, $this->minimum_ngg_pro_version) < 0) $retval = FALSE;
+        if (defined('NEXTGEN_GALLERY_PRO_PLUGIN_BASENAME') && !defined('NGG_PRO_PLUGIN_VERSION')) $retval = FALSE; // 1.0 - 1.0.6
+		if (defined('NGG_PRO_PLUGIN_VERSION')  && version_compare(NGG_PRO_PLUGIN_VERSION,  $this->minimum_ngg_pro_version)  < 0) $retval = FALSE;
+        if (defined('NGG_PLUS_PLUGIN_VERSION') && version_compare(NGG_PLUS_PLUGIN_VERSION, $this->minimum_ngg_plus_version) < 0) $retval = FALSE;
 
 		return $retval;
 	}
@@ -354,9 +342,11 @@ class C_NextGEN_Bootstrap
 		add_action('all_admin_notices', array(&$this, 'display_stylesheet_notice'));
 
 		// Delete displayed gallery transients periodically
-		add_filter('cron_schedules', array(&$this, 'add_ngg_schedule'));
-		add_action('ngg_delete_expired_transients', array(&$this, 'delete_expired_transients'));
-		add_action('wp', array(&$this, 'schedule_cron_jobs'));
+		if (NGG_CRON_ENABLED) {
+			add_filter('cron_schedules', array(&$this, 'add_ngg_schedule'));
+			add_action('ngg_delete_expired_transients', array(&$this, 'delete_expired_transients'));
+			add_action('wp', array(&$this, 'schedule_cron_jobs'));
+		}
 
 		// Update modules
 		add_action('init', array(&$this, 'update'), PHP_INT_MAX-1);
@@ -447,7 +437,7 @@ class C_NextGEN_Bootstrap
 	 */
 	function delete_expired_transients()
 	{
-		C_Photocrati_Cache::flush('all', TRUE);
+		C_Photocrati_Transient_Manager::flush();
 	}
 
 	/**
@@ -584,7 +574,7 @@ class C_NextGEN_Bootstrap
 		define('NGG_PRODUCT_URL', path_join(str_replace("\\", '/', NGG_PLUGIN_URL), 'products'));
 		define('NGG_MODULE_URL', path_join(str_replace("\\", '/', NGG_PRODUCT_URL), 'photocrati_nextgen/modules'));
 		define('NGG_PLUGIN_STARTED_AT', microtime());
-		define('NGG_PLUGIN_VERSION', '2.0.79');
+		define('NGG_PLUGIN_VERSION', '2.1.0');
 
 		if (!defined('NGG_HIDE_STRICT_ERRORS')) {
 			define('NGG_HIDE_STRICT_ERRORS', TRUE);
@@ -616,12 +606,16 @@ class C_NextGEN_Bootstrap
 			define('PHOTOCRATI_CACHE', TRUE);
 		}
 		if (!defined('PHOTOCRATI_CACHE_TTL')) {
-			define('PHOTOCRATI_CACHE_TTL', 3600);
+			define('PHOTOCRATI_CACHE_TTL', 1800);
 		}
 
 		// Cron job
 		if (!defined('NGG_CRON_SCHEDULE')) {
-			define('NGG_CRON_SCHEDULE', 1800);
+			define('NGG_CRON_SCHEDULE', 900);
+		}
+
+		if (!defined('NGG_CRON_ENABLED')) {
+			define('NGG_CRON_ENABLED', TRUE);
 		}
 
 		// Don't enforce interfaces

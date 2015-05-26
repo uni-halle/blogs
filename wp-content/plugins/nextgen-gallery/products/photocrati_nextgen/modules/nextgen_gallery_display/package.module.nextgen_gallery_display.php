@@ -998,7 +998,7 @@ class Mixin_Displayed_Gallery_Queries extends Mixin
             $retval = array_reverse($retval);
         }
         // Limit the entities
-        if ($limit && $offset) {
+        if ($limit) {
             $retval = array_slice($retval, $offset, $limit);
         }
         return $retval;
@@ -1245,10 +1245,11 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
      */
     public function to_transient()
     {
-        $group = 'displayed_galleries';
-        $key = C_Photocrati_Cache::generate_key($this->object->get_entity(), $group);
-        if (is_null(C_Photocrati_Cache::get($key, NULL, $group))) {
-            C_Photocrati_Cache::set($key, $this->object->get_entity(), $group, NGG_DISPLAYED_GALLERY_CACHE_TTL);
+        $params = $this->object->get_entity();
+        unset($params->transient_id);
+        $key = C_Photocrati_Transient_Manager::create_key('displayed_galleries', $params);
+        if (is_null(C_Photocrati_Transient_Manager::fetch($key, NULL))) {
+            C_Photocrati_Transient_Manager::update($key, $params, NGG_DISPLAYED_GALLERY_CACHE_TTL);
         }
         $this->object->transient_id = $key;
         if (!$this->object->id()) {
@@ -1266,8 +1267,19 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
         if (!$transient_id && isset($this->object->transient_id)) {
             $transient_id = $this->object->transient_id;
         }
-        if ($transient_id && ($transient = C_Photocrati_Cache::get($transient_id, FALSE, 'displayed_galleries'))) {
+        if ($transient_id && ($transient = C_Photocrati_Transient_Manager::fetch($transient_id, FALSE))) {
+            // Ensure that the transient is an object, not array
+            if (is_array($transient)) {
+                $obj = new stdClass();
+                foreach ($transient as $key => $value) {
+                    $obj->{$key} = $value;
+                }
+                $transient = $obj;
+            }
             $this->object->_stdObject = $transient;
+            // Ensure that the display settings are an array
+            $this->object->display_settings = $this->_object_to_array($this->object->display_settings);
+            // Ensure that we have the most accurate transient id
             $this->object->transient_id = $transient_id;
             if (!$this->object->id()) {
                 $this->object->id($transient_id);
@@ -1277,6 +1289,21 @@ class Mixin_Displayed_Gallery_Instance_Methods extends Mixin
             unset($this->object->transient_id);
             unset($this->object->_stdObject->transient_id);
             $this->object->to_transient();
+        }
+        return $retval;
+    }
+    public function _object_to_array($object)
+    {
+        $retval = $object;
+        if (is_object($retval)) {
+            $retval = get_object_vars($object);
+        }
+        if (is_array($retval)) {
+            foreach ($retval as $key => $val) {
+                if (is_object($val)) {
+                    $retval[$key] = $this->_object_to_array($val);
+                }
+            }
         }
         return $retval;
     }
@@ -1547,7 +1574,6 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
     {
         $retval = '';
         $lookup = TRUE;
-        $cache = C_Photocrati_Cache::get_instance('displayed_gallery_rendering');
         // Simply throwing our rendered gallery into a feed will most likely not work correctly.
         // The MediaRSS option in NextGEN is available as an alternative.
         if (!C_NextGen_Settings::get_instance()->galleries_in_feeds && is_feed()) {
@@ -1600,9 +1626,9 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
                 $key_params[] = get_option('permalink_structure');
             }
             // Try getting the rendered HTML from the cache
-            $key = $cache->generate_key($key_params);
+            $key = C_Photocrati_Transient_Manager::create_key('displayed_gallery_rendering', $key_params);
             if (NGG_RENDERING_CACHE_ENABLED) {
-                $html = $cache->lookup($key, FALSE);
+                $html = C_Photocrati_Transient_Manager::fetch($key, FALSE);
             }
             // Output debug messages
             if ($html) {
@@ -1626,11 +1652,10 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
             $retval .= $this->debug_msg('Rendering displayed gallery');
             $current_mode = $controller->get_render_mode();
             $controller->set_render_mode($mode);
-            $html = $controller->index_action($displayed_gallery, TRUE);
+            $html = apply_filters('ngg_displayed_gallery_rendering', $controller->index_action($displayed_gallery, TRUE), $displayed_gallery);
             if ($key != null) {
-                $cache->update($key, $html, NGG_RENDERING_CACHE_TTL);
+                C_Photocrati_Transient_Manager::update($key, $html, NGG_RENDERING_CACHE_TTL);
             }
-            $controller->set_render_mode($current_mode);
         }
         $retval .= $html;
         if (!$return) {

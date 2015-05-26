@@ -158,6 +158,11 @@ class nggPostThumbnail {
 	 */
 	function ajax_set_post_thumbnail() 
 	{
+		// This function does the following:
+		// 1) Check if the user is logged in and has permission to edit the post
+		// 2) Get the thumbnail id from the POST request. The thumbnail id is actually the NGG image id
+		// 3)]
+
 		global $post_ID;
 
 		// check for correct capability
@@ -178,138 +183,7 @@ class nggPostThumbnail {
 			die('0');
 		}
 
-		if ($thumbnail_id != null)
-		{
-		    $imap = C_Image_Mapper::get_instance();
-		    $storage  = C_Gallery_Storage::get_instance();
-		  
-		  $image = $imap->find($thumbnail_id);
-		
-			// for NGG we look for the image id
-			if ($image)
-			{
-				$image_id = $thumbnail_id;
-				
-				$args = array(
-					'post_type' => 'attachment',
-					'meta_key' => '_ngg_image_id',
-					'meta_compare' => '==',
-					'meta_value' => $image_id
-				);
-				
-				$upload_dir = wp_upload_dir();
-				$basedir = $upload_dir['basedir'];
-                $thumbs_dir = implode(DIRECTORY_SEPARATOR, array($basedir, 'ngg_featured'));
-				$gallery_abspath = $storage->get_gallery_abspath($image->galleryid);
-				$image_abspath = $storage->get_full_abspath($image);
-				$target_path = null;
-	
-				$posts = get_posts($args);
-				$attachment_id = null;
-				
-				if ($posts != null)
-				{
-					$attachment_id = $posts[0]->ID;
-				}
-				else
-				{
-					$url = $storage->get_full_url($image);
-					
-					$target_relpath = null;
-					$target_basename = M_I18n::mb_basename($image_abspath);
-					
-					if (strpos($image_abspath, $gallery_abspath) === 0)
-					{
-						$target_relpath = substr($image_abspath, strlen($gallery_abspath));
-					}
-					else if ($image->galleryid)
-					{
-						$target_relpath = path_join(strval($image->galleryid), $target_basename);
-					}
-					else
-					{
-						$target_relpath = $target_basename;
-					}
-					
-					$target_relpath = trim($target_relpath, '\\/');
-					$target_path = path_join($thumbs_dir, $target_relpath);
-					$max_count = 100;
-					$count = 0;
-					
-					while (file_exists($target_path) && $count <= $max_count)
-					{
-						$count++;
-						
-						$pathinfo = M_I18n::mb_pathinfo($target_path);
-						$dirname = $pathinfo['dirname'];
-						$filename = $pathinfo['filename'];
-						$extension = $pathinfo['extension'];
-						
-						$rand = mt_rand(1, 9999);
-						$basename = $filename . '_' . sprintf('%04d', $rand) . '.' . $extension;
-						
-						$target_path = path_join($dirname, $basename);
-					}
-					
-					if (file_exists($target_path))
-					{
-						// XXX handle very rare case in which $max_count wasn't enough?
-					}
-					
-					$target_dir = dirname($target_path);
-					
-					wp_mkdir_p($target_dir);
-					
-					if (@copy($image_abspath, $target_path))
-					{
-						$size = @getimagesize($target_path);
-						$image_type = ($size) ? $size['mime'] : 'image/jpeg';
-				
-						$title = sanitize_file_name($image->alttext);
-						$caption = sanitize_file_name($image->description);
-				
-						$attachment = array(
-							'post_title' => $title,
-							'post_content' => $caption,
-							'post_status' => 'attachment',
-							'post_parent' => 0,
-							'post_mime_type' => $image_type,
-							'guid' => $url
-						);
-
-						// Save the data
-						$attachment_id = wp_insert_attachment($attachment, $target_path);
-				
-						if ($attachment_id)
-						{
-							wp_update_attachment_metadata($attachment_id, wp_generate_attachment_metadata($attachment_id, $target_path));
-					
-							update_post_meta($attachment_id, '_ngg_image_id', $image_id);
-						}
-					}
-				}
-			
-				if ($attachment_id)
-				{
-					//$attachment = get_post($attachment_id);
-					//$attachment_meta = wp_get_attachment_metadata($attachment_id);
-					$attachment_file = get_attached_file($attachment_id);
-					$target_path = $attachment_file;
-					
-					if (filemtime($image_abspath) > filemtime($target_path))
-					{
-						if (@copy($image_abspath, $target_path))
-						{
-							wp_update_attachment_metadata($attachment_id, wp_generate_attachment_metadata($attachment_id, $target_path));
-						}
-					}
-					
-					die(strval($attachment_id));
-				}
-			}
-		}
-		
-		die('0');
+		die(strval(C_Gallery_Storage::get_instance()->set_post_thumbnail($post_ID, $thumbnail_id)));
 	}
 
 	/**

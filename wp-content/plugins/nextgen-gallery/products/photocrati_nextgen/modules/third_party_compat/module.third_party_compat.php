@@ -111,6 +111,7 @@ class M_Third_Party_Compat extends C_Base_Module
         add_filter('ngg_non_minified_modules', array($this, 'dont_minify_nextgen_pro_cssjs'));
         add_filter('run_ngg_resource_manager', array(&$this, 'check_woocommerce_download'));
         add_filter('run_ngg_resource_manager', array(&$this, 'check_wpecommerce_download'));
+        add_filter('run_ngg_resource_manager', array(&$this, 'check_mafs_download'));
 
         // WPML fix
         if (class_exists('SitePress')) {
@@ -121,6 +122,19 @@ class M_Third_Party_Compat extends C_Base_Module
 
         // TODO: Only needed for NGG Pro 1.0.10 and lower
         add_action('the_post', array(&$this, 'add_ngg_pro_page_parameter'));
+    }
+
+    /**
+     * Determine if the requested URL is a Multiverso Advanced File Sharing download and adjust the resource manager
+     *
+     * @param bool $valid_request
+     * @return bool
+     */
+    function check_mafs_download($valid_request = TRUE)
+    {
+        if (function_exists('mv_install') && isset($_GET['upf']) && isset($_GET['id']))
+            $valid_request = FALSE;
+        return $valid_request;
     }
 
     /**
@@ -259,7 +273,7 @@ class M_Third_Party_Compat extends C_Base_Module
 
         global $wp_filter;
 
-        if (empty($wp_filter['init'][2]))
+        if (empty($wp_filter['init'][2]) && empty($wp_filter['after_setup_theme'][1]))
             return;
 
         foreach ($wp_filter['init'][2] as $id => $filter) {
@@ -272,6 +286,13 @@ class M_Third_Party_Compat extends C_Base_Module
                 continue;
 
             remove_action('init', array($object, 'js_load'), 2);
+        }
+
+        foreach ($wp_filter['after_setup_theme'][1] as $id => $filter) {
+            if ($id !== 'wpml_installer_instance_delegator')
+                continue;
+
+            remove_action('after_setup_theme', 'wpml_installer_instance_delegator', 1);
         }
     }
 
@@ -452,12 +473,16 @@ class M_Third_Party_Compat extends C_Base_Module
      */
     function dont_minify_nextgen_pro_cssjs($modules_to_not_minify)
     {
-        if (defined('NGG_PRO_PLUGIN_VERSION')) {
-            $modules_to_not_minify += P_Photocrati_NextGen_Pro::$modules;
-        }
-        else if (defined('NGG_PLUS_PLUGIN_VERSION')) {
-            $modules_to_not_minify += P_Photocrati_NextGen_Plus::$modules;
-        }
+
+	    // TODO: once Pro 2.1.30 is widely circulated, we don't need to use
+	    // the installer. We can use the component registry to fetch the product
+	    // and call the product's get_modules_to_load() function
+	    $installer = new C_NextGen_Product_Installer;
+
+        if (defined('NGG_PRO_PLUGIN_VERSION') && class_exists('P_Photocrati_NextGen_Pro'))
+	        $modules_to_not_minify += $installer->get_modules_to_load_for('photocrati-nextgen-pro');
+        else if (defined('NGG_PLUS_PLUGIN_VERSION') && class_exists('P_Photocrati_NextGen_Plus'))
+	        $modules_to_not_minify += $installer->get_modules_to_load_for('photocrati-nextgen-plus');
 
         return $modules_to_not_minify;
     }

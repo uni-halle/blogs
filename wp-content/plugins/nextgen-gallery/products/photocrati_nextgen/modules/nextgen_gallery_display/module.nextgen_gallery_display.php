@@ -507,10 +507,7 @@ class C_Display_Type_Installer
 	 */
 	function uninstall($hard = FALSE)
 	{
-		// Flush displayed gallery cache
-		C_Photocrati_Cache::flush();
-		C_Photocrati_Cache::flush('displayed_galleries');
-		C_Photocrati_Cache::flush('displayed_gallery_rendering');
+		C_Photocrati_Transient_Manager::flush();
 
 		$this->uninstall_display_types();
 

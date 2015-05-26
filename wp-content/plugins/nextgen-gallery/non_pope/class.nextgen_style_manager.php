@@ -27,6 +27,11 @@ class C_NextGen_Style_Manager
 		// This is where all stylesheets should be stored
 		$this->add_directory($this->new_dir);
 
+		// We also check wp-content/ngg/styles
+		$this->add_directory(implode(DIRECTORY_SEPARATOR, array(
+			WP_CONTENT_DIR, 'ngg', 'styles'
+		)));
+
 		// We check the parent theme directory. Needed for child themes
 		$this->add_directory(rtrim(get_template_directory(), "/\\"), TRUE);
 

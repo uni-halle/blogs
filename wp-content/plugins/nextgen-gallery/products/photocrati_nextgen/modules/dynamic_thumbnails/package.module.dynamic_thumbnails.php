@@ -225,8 +225,7 @@ class Mixin_Dynamic_Thumbnails_Manager extends Mixin
     }
     public function get_image_url($image, $params)
     {
-        $router = C_Router::get_instance();
-        return $router->get_url($this->object->get_image_uri($image, $params), FALSE);
+        return C_Router::get_instance()->get_url($this->object->get_image_uri($image, $params), FALSE, 'root');
     }
     public function get_params_from_uri($uri)
     {

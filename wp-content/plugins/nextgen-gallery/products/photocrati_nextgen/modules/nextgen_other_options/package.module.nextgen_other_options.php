@@ -289,10 +289,7 @@ Choose [Cancel] to Stop, [OK] to proceed.', 'nggallery'), 'slug_field' => $this-
     {
         $cache = C_Cache::get_instance();
         $cache->flush_galleries();
-        C_Photocrati_Cache::flush();
-        C_Photocrati_Cache::flush('displayed_galleries');
-        C_Photocrati_Cache::flush('displayed_gallery_rendering');
-        C_Photocrati_Cache::flush('mvc');
+        C_Photocrati_Transient_Manager::flush();
     }
     public function save_action()
     {
@@ -307,7 +304,7 @@ Choose [Cancel] to Stop, [OK] to proceed.', 'nggallery'), 'slug_field' => $this-
             }
             // If the router slug has changed, then flush the cache
             if ($settings['router_param_slug'] != $this->object->get_model()->router_param_slug) {
-                C_Photocrati_Cache::flush();
+                C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
             }
             // Save both setting groups
             $this->object->get_model()->set($settings)->save();
@@ -356,7 +353,7 @@ Choose [Cancel] to Stop, [OK] to proceed.', 'nggallery')), TRUE);
     {
         global $wpdb;
         // Flush the cache
-        C_Photocrati_Cache::flush('all');
+        C_Photocrati_Transient_Manager::flush();
         // Uninstall the plugin
         $settings = C_NextGen_Settings::get_instance();
         if (defined('NGG_PRO_PLUGIN_VERSION') || defined('NEXTGEN_GALLERY_PRO_VERSION')) {

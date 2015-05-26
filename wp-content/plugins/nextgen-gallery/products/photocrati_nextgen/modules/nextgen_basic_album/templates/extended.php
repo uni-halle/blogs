@@ -18,5 +18,6 @@
             </div>
         </div>
     <?php } ?>
+    <?php echo $pagination ?>
 </div>
 <?php $this->end_element(); ?>

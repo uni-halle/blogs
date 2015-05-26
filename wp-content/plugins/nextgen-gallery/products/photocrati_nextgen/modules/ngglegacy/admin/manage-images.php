@@ -44,7 +44,7 @@ function nggallery_picturelist($controller) {
 
 		// look for pagination
         $_GET['paged'] = isset($_GET['paged']) && ($_GET['paged'] > 0) ? absint($_GET['paged']) : 1;
-		$items_per_page = 50;
+        $items_per_page = apply_filters('ngg_manage_images_items_per_page', 50);
 
 		$start = ( $_GET['paged'] - 1 ) * $items_per_page;
 

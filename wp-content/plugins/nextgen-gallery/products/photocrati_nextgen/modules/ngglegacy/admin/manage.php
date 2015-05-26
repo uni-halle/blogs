@@ -213,7 +213,7 @@ class nggManageGallery {
 
 		$output = array();
 
-		$output[] =  "<div><strong><a href='{$image_url}' class='thickbox' title='{$filename}'>{$caption}</a></strong></div>";
+		$output[] =  "<div><strong><a href='{$image_url}' class='thickbox' title='{$caption}'>{$filename}</a></strong></div>";
 		$output[] =  '<div class="meta">'. esc_html($date) . '</div>';
 		$output[] =  "<div class='meta'>{$pixels}</div>";
 		$output[] =  "<label for='exclude_{$picture->pid}'>";
@@ -825,36 +825,39 @@ class nggManageGallery {
 			nggAdmin::import_gallery($gallerypath, $this->gid);
 		}
 
-		if (isset ($_POST['addnewpage']))  {
-		// Add a new page
+        // Add a new page
+        if (isset ($_POST['addnewpage']))
+        {
+            check_admin_referer('ngg_updategallery');
 
-			check_admin_referer('ngg_updategallery');
+            $parent_id     = esc_attr($_POST['parent_id']);
+            $gallery_title = esc_attr($_POST['title']);
+            $mapper        = C_Gallery_Mapper::get_instance();
+            $gallery       = $mapper->find($this->gid);
+            $gallery_name  = $gallery->name;
 
-			$parent_id      = esc_attr($_POST['parent_id']);
-			$gallery_title  = esc_attr($_POST['title']);
-			$gallery_name   = $wpdb->get_var("SELECT name FROM $wpdb->nggallery WHERE gid = '$this->gid' ");
+            // Create a WP page
+            global $user_ID;
 
-			// Create a WP page
-			global $user_ID;
+            $page['post_type']    = 'page';
+            $page['post_content'] = '[nggallery id=' . $this->gid . ']';
+            $page['post_parent']  = $parent_id;
+            $page['post_author']  = $user_ID;
+            $page['post_status']  = 'publish';
+            $page['post_title']   = $gallery_title == '' ? $gallery_name : $gallery_title;
+            $page = apply_filters('ngg_add_new_page', $page, $this->gid);
 
-			$page['post_type']    = 'page';
-			$page['post_content'] = '[nggallery id=' . $this->gid . ']';
-			$page['post_parent']  = $parent_id;
-			$page['post_author']  = $user_ID;
-			$page['post_status']  = 'publish';
-			$page['post_title']   = $gallery_title == '' ? $gallery_name : $gallery_title;
-			$page = apply_filters('ngg_add_new_page', $page, $this->gid);
-
-			$gallery_pageid = wp_insert_post ($page);
-			if ($gallery_pageid != 0) {
-				$result = $wpdb->query("UPDATE $wpdb->nggallery SET title= '$gallery_title', pageid = '$gallery_pageid' WHERE gid = '$this->gid'");
-				wp_cache_delete($this->gid, 'ngg_gallery');
-                nggGallery::show_message( __('New gallery page ID','nggallery'). ' ' . $gallery_pageid . ' -> <strong>' . $gallery_title . '</strong> ' .__('created','nggallery') );
-			}
+            $gallery_pageid = wp_insert_post ($page);
+            if ($gallery_pageid != 0)
+            {
+                $gallery->pageid = $gallery_pageid;
+                $mapper->save($gallery);
+                nggGallery::show_message(__('New gallery page ID', 'nggallery') . ' ' . $gallery_pageid . ' -> <strong>' . $gallery_title . '</strong> ' . __('created','nggallery'));
+            }
 
             do_action('ngg_gallery_addnewpage', $this->gid);
-		}
-	}
+        }
+    }
 
    	/**
    	 * Publish a new post with the shortcode from the selected image

@@ -2,8 +2,8 @@
 Contributors: photocrati
 Tags: nextgen, nextgen gallery, gallery, galleries, image, images, image gallery, photo, photos, photo gallery, picture, pictures, picture gallery, album, albums, photo albums, image album, media, media gallery, thumbnails, thumbnail gallery, thumbnail galleries, slideshow, slideshows, slideshow gallery, slideshow galleries, fancybox, lightbox, responsive, responsive gallery, responsive galleries, wordpress responsive gallery, nextcellent, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, best gallery plugin, free photo gallery, singlepic, image captions imagebrowser, watermarks, watermarking, photography, photographer
 Requires at least: 3.6.1
-Tested up to: 4.1.1
-Stable tag: 2.0.79
+Tested up to: 4.2.2
+Stable tag: 2.1.0
 License: GPLv2
 
 The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 12 million downloads.
@@ -199,15 +199,65 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 == Changelog ==
 
-= V2.0.79 - 03.20.2015 =
-* Secured: Usage of find_in_set() mysql function
-
-= V2.0.77.3 - 03.12.2015 =
-* Secured: Upload images and importing galleries from folders
+= V2.1.0 - 05.18.2015 =
+* NEW:     Album breadcrumbs and pagination
+* NEW:     Ability to override builtin MVC templates
+* NEW:     Robust transient management
+* NEW:     Added the ability to set post thumbnails via XML-RPC module
+* NEW:     Added 'ngg_get_image_size_params' filter to control image generation
+* NEW:     Added 'ngg_basic_tagcloud_title' and 'ngg_basic_tagcloud_excluded_display_types' filters
+* NEW:     Added ngg_manage_images_items_per_page filter
+* NEW:     Added "ngg_get_image_url" filter
+* NEW:     Including Ukranian and Polish translations
+* NEW:     The ability to set template in widgets
+* Changed: Default thumbnail dimensions set to 240x160
+* Changed: Product now adheres to Pope 0.12 and provides get_modules_to_load()
+* Changed: Updated translations
+* Changed: Removed link to capsman plugin in Roles accordion
+* Changed: Taxnomies now use internationalized strings
+* Changed: Image date/time meta data fields are stored as UNIX timestamps
+* Secured: Uploading zips
+* Fixed:   Various PHP warnings and notices
+* Fixed:   Compatibility fixes for WPML
+* Fixed:   Ensure that backup image functionality fails gracefully
+* Fixed:   WP option 'ngg_do_upgrade' updated in every HTTP request
+* Fixed;   Empty $_SERVER['PATHINFO'] causing multiple routing issues
+* Fixed:   "Manage Galleries" display image alttext in the filename column
+* Fixed:   Various issues with the tag cloud display type
+* Fixed:   Integrity check when updating from 1.9.x
+* Fixed:   Image filenames substituting spaces for + which is only proper in the query string
+* Fixed:   Insert Gallery Window not working with nested levels of gzip compression
+* Fixed:   Imagebrowser as lightbox effect not working with pagination
+* Fixed:   Compatibility with MultiVerso Advanced File Sharing
+* Fixed:   "Add page" button not displaying on the next immediate page load
+* Fixed:   Double-escaping of non-latin characters
+* Fixed:   Imagebrowser pagination with custom templates
+* Fixed:   Custom CSS is enqueued late to ensure it's one of the last stylesheets loaded
+* Fixed:   Fixed watermarking PNG images
+* Fixed:   Using the "Import Metadata" bulk action overwrites existing data
+* Fixed:   Seconds were not retained from CaptureTime EXIF field
+* Fixed:   Conflicts created by our TinyMCE plugin
+* Fixed:   Image mapper setting gid to gallery name, not the unique ID
+* Fixed:   Restored nggdb->get_random_images(), nggdb->search_for_file, and nggdb->find_all_albums()
+* Fixed:   Allow gallery slug as parameter to nggdb::get_gallery()
+* Fixed:   Don't minify Plupload's i18n JavaScript
+* Fixed:   Custom template images not being given their full effect code attributes
 * Fixed:   When importing galleries from folders, allow symlinks
 * Fixed:   Use of C_Gallery_Mapper in C_Image_Wrapper
 * Fixed:   Properly handle themes that don't call wp_footer() or wp_print_footer_scripts()
 * Fixed:   Warning about missing style.php file on Network Admin -> Gallery page
+* Fixed:   Warning about getimagesize() failure when backing up an image
+
+= V2.0.78.1 - 03.12.2015 =
+* Changed: Image date/time meta data fields are stored as UNIX timestamps
+* Fixed:   When importing galleries from folders, allow symlinks
+* Fixed:   Use of C_Gallery_Mapper in C_Image_Wrapper
+* Fixed:   Properly handle themes that don't call wp_footer() or wp_print_footer_scripts()
+* Fixed:   Warning about missing style.php file on Network Admin -> Gallery page
+* Fixed:   Warning about getimagesize() failure when backing up an image
+
+= V2.0.78 - 03.12.2015 =
+* Secured: AJAX actions for uploading images and importing folders now uses nonce checks
 
 = V2.0.77 - 03.05.2015 =
 * NEW:     Added "ngg_get_image_url" filter

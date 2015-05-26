@@ -197,7 +197,7 @@ class Mixin_Album_Mapper extends Mixin
         $retval = $this->call_parent('_save_entity', $entity);
         if ($retval) {
             do_action('ngg_album_updated', $entity);
-            C_Photocrati_Cache::flush('displayed_gallery_rendering');
+            C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
         }
         return $retval;
     }
@@ -354,7 +354,7 @@ class Mixin_Gallery_Mapper extends Mixin
         $retval = $this->call_parent('_save_entity', $entity);
         if ($retval) {
             do_action('ngg_created_new_gallery', $entity->{$entity->id_field});
-            C_Photocrati_Cache::flush('displayed_gallery_rendering');
+            C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
         }
         return $retval;
     }
@@ -384,7 +384,7 @@ class Mixin_Gallery_Mapper extends Mixin
             }
             if ($retval) {
                 do_action('ngg_delete_gallery', $gallery);
-                C_Photocrati_Cache::flush('displayed_gallery_rendering');
+                C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
             }
         }
         return $retval;
@@ -515,7 +515,11 @@ class E_UploadException extends E_NggErrorException
         if (!$message) {
             $message = 'There was a problem uploading the file.';
         }
-        parent::__construct($message, $code, $previous);
+        if (PHP_VERSION_ID >= 50300) {
+            parent::__construct($message, $code, $previous);
+        } else {
+            parent::__construct($message, $code);
+        }
     }
 }
 class E_InsufficientWriteAccessException extends E_NggErrorException
@@ -542,7 +546,11 @@ class E_NoSpaceAvailableException extends E_NggErrorException
         if (!$message) {
             $message = 'You have exceeded your storage capacity. Please remove some files and try again.';
         }
-        parent::__construct($message, $code, $previous);
+        if (PHP_VERSION_ID >= 50300) {
+            parent::__construct($message, $code, $previous);
+        } else {
+            parent::__construct($message, $code);
+        }
     }
 }
 class E_No_Image_Library_Exception extends E_NggErrorException
@@ -552,7 +560,11 @@ class E_No_Image_Library_Exception extends E_NggErrorException
         if (!$message) {
             $message = 'The site does not support the GD Image library. Please ask your hosting provider to enable it.';
         }
-        parent::__construct($message, $code, $previous);
+        if (PHP_VERSION_ID >= 50300) {
+            parent::__construct($message, $code, $previous);
+        } else {
+            parent::__construct($message, $code);
+        }
     }
 }
 class Mixin_GalleryStorage_Driver_Base extends Mixin
@@ -639,12 +651,14 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
     }
     /**
      * Backs up an image file
+     *
      * @param int|object $image
      */
     public function backup_image($image)
     {
         $retval = FALSE;
-        if ($image_path = $this->object->get_image_abspath($image)) {
+        $image_path = $this->object->get_image_abspath($image);
+        if ($image_path && @file_exists($image_path)) {
             $retval = copy($image_path, $this->object->get_backup_abspath($image));
             // Store the dimensions of the image
             if (function_exists('getimagesize')) {
@@ -653,8 +667,11 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                     $image = $mapper->find($image);
                 }
                 if ($image) {
-                    $dimensions = getimagesize($retval);
-                    $image->meta_data['backup'] = array('filename' => basename($retval), 'width' => $dimensions[0], 'height' => $dimensions[1], 'generated' => microtime());
+                    if (!property_exists($image, 'meta_data')) {
+                        $image->meta_data = array();
+                    }
+                    $dimensions = getimagesize($image_path);
+                    $image->meta_data['backup'] = array('filename' => basename($image_path), 'width' => $dimensions[0], 'height' => $dimensions[1], 'generated' => microtime());
                     $mapper->save($image);
                 }
             }
@@ -943,7 +960,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
             if (isset($file_info['type'])) {
                 $type = strtolower($file_info['type']);
                 $valid_types = array('image/gif', 'image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png');
-                $valid_regex = '/\\.(jpg|jpeg|gif|png)$/';
+                $valid_regex = '/\\.(jpg|jpeg|gif|png)$/i';
                 // Is this a valid type?
                 if (in_array($type, $valid_types)) {
                     // If we can, we'll verify the mime type
@@ -1120,7 +1137,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
             }
             $retval = $image;
             // Create or update the database record
-            $image->alttext = M_I18n::mb_basename($original_filename, '.' . M_I18n::mb_pathinfo($original_filename, PATHINFO_EXTENSION));
+            $image->alttext = str_replace('.' . M_I18n::mb_pathinfo($original_filename, PATHINFO_EXTENSION), '', M_I18n::mb_basename($original_filename));
             $image->galleryid = $this->object->_get_gallery_id($gallery);
             $image->filename = $filename;
             $image->image_slug = nggdb::get_unique_slug(sanitize_title_with_dashes($image->alttext), 'image');
@@ -1219,7 +1236,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                 if ($gallery_id) {
                     $retval = array('gallery_id' => $gallery_id, 'image_ids' => array());
                     foreach ($files as $file) {
-                        if (!preg_match('/\\.(jpg|jpeg|gif|png)/i', $file)) {
+                        if (!preg_match('/\\.(jpg|jpeg|gif|png)$/i', $file)) {
                             continue;
                         }
                         $file_abspath = $fs->join_paths($abspath, $file);
@@ -1230,7 +1247,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                             // Create the database record ... TODO cleanup, some duplication here from upload_base64_image
                             $factory = C_Component_Factory::get_instance();
                             $image = $factory->create('image');
-                            $image->alttext = sanitize_title_with_dashes(M_I18n::mb_basename($file_abspath, '.' . M_I18n::mb_pathinfo($file_abspath, PATHINFO_EXTENSION)));
+                            $image->alttext = sanitize_title_with_dashes(str_replace('.' . M_I18n::mb_pathinfo($file_abspath, PATHINFO_EXTENSION), '', M_I18n::mb_basename($file_abspath)));
                             $image->galleryid = $this->object->_get_gallery_id($gallery_id);
                             $image->filename = M_I18n::mb_basename($file_abspath);
                             $image->image_slug = nggdb::get_unique_slug(sanitize_title_with_dashes($image->alttext), 'image');
@@ -1547,22 +1564,13 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
      */
     public function generate_image_clone($image_path, $clone_path, $params)
     {
-        $width = isset($params['width']) ? $params['width'] : NULL;
-        $height = isset($params['height']) ? $params['height'] : NULL;
-        $quality = isset($params['quality']) ? $params['quality'] : NULL;
-        $type = isset($params['type']) ? $params['type'] : NULL;
         $crop = isset($params['crop']) ? $params['crop'] : NULL;
         $watermark = isset($params['watermark']) ? $params['watermark'] : NULL;
         $reflection = isset($params['reflection']) ? $params['reflection'] : NULL;
         $rotation = isset($params['rotation']) ? $params['rotation'] : NULL;
         $flip = isset($params['flip']) ? $params['flip'] : NULL;
-        $crop_frame = isset($params['crop_frame']) ? $params['crop_frame'] : NULL;
         $destpath = NULL;
         $thumbnail = NULL;
-        $quality = 100;
-        // Do this before anything else can modify the original -- $detailed_size
-        // may hold IPTC metadata we need to write to our clone
-        $size = getimagesize($image_path, $detailed_size);
         $result = $this->object->calculate_image_clone_result($image_path, $clone_path, $params);
         // XXX this should maybe be removed and extra settings go into $params?
         $settings = C_NextGen_Settings::get_instance();
@@ -1571,7 +1579,6 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
             $image_dir = dirname($image_path);
             $clone_path = $result['clone_path'];
             $clone_dir = $result['clone_directory'];
-            $clone_suffix = $result['clone_suffix'];
             $clone_format = $result['clone_format'];
             $format_list = $this->object->get_image_format_list();
             // Ensure target directory exists, but only create 1 subdirectory
@@ -1627,10 +1634,6 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                         }
                         $destpath_info = M_I18n::mb_pathinfo($destpath);
                         $destpath_extension = $destpath_info['extension'];
-                        $destpath_extension_str = null;
-                        if ($destpath_extension != null) {
-                            $destpath_extension_str = '.' . $destpath_extension;
-                        }
                         if (strtolower($destpath_extension) != strtolower($clone_format_extension)) {
                             $destpath_dir = $destpath_info['dirname'];
                             $destpath_basename = $destpath_info['filename'];
@@ -1841,7 +1844,7 @@ class Mixin_Gallery_Image_Mapper extends Mixin
             $image = $image->{$image->id_field};
         }
         wp_delete_object_term_relationships($image, 'ngg_tag');
-        C_Photocrati_Cache::flush();
+        C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
         return $retval;
     }
     public function _save_entity($entity)
@@ -1855,7 +1858,7 @@ class Mixin_Gallery_Image_Mapper extends Mixin
             if (!isset($entity->meta_data['saved'])) {
                 nggAdmin::import_MetaData($image_id);
             }
-            C_Photocrati_Cache::flush('displayed_gallery_rendering');
+            C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
         }
         return $retval;
     }
@@ -1927,7 +1930,7 @@ class Mixin_Gallery_Image_Mapper extends Mixin
             $this->object->_set_default_value($entity, 'alttext', $alttext);
         }
         // Set unique slug
-        if (isset($entity->alttext) && !isset($entity->image_slug)) {
+        if (isset($entity->alttext) && empty($entity->image_slug)) {
             $entity->image_slug = nggdb::get_unique_slug(sanitize_title_with_dashes($entity->alttext), 'image');
         }
         // Ensure that the exclude parameter is an integer or boolean-evaluated
@@ -2465,7 +2468,7 @@ class C_NextGen_Metadata extends C_Component
         if ($this->size && is_array($metadata)) {
             // get exif - data
             if (is_callable('exif_read_data')) {
-                $this->exif_data = @exif_read_data($this->file_path, 0, TRUE);
+                $this->exif_data = @exif_read_data($this->file_path, NULL, TRUE);
             }
             // stop here if we didn't need other meta data
             if ($onlyEXIF) {
@@ -2531,8 +2534,8 @@ class C_NextGen_Metadata extends C_Component
         }
         if (!is_array($this->exif_array)) {
             $meta = array();
-            if (isset($this->exif_data['EXIF'])) {
-                $exif = $this->exif_data['EXIF'];
+            $exif = isset($this->exif_array['EXIF']) ? $this->exif_array['EXIF'] : array();
+            if (count($exif)) {
                 if (!empty($exif['FNumber'])) {
                     $meta['aperture'] = 'F ' . round($this->exif_frac2dec($exif['FNumber']), 2);
                 }
@@ -2540,13 +2543,13 @@ class C_NextGen_Metadata extends C_Component
                     $meta['camera'] = trim($exif['Model']);
                 }
                 if (!empty($exif['DateTimeDigitized'])) {
-                    $meta['created_timestamp'] = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $this->exif_date2ts($exif['DateTimeDigitized']));
+                    $meta['created_timestamp'] = $this->exif_date2ts($exif['DateTimeDigitized']);
                 } else {
                     if (!empty($exif['DateTimeOriginal'])) {
-                        $meta['created_timestamp'] = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $this->exif_date2ts($exif['DateTimeOriginal']));
+                        $meta['created_timestamp'] = $this->exif_date2ts($exif['DateTimeOriginal']);
                     } else {
                         if (!empty($exif['FileDateTime'])) {
-                            $meta['created_timestamp'] = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $this->exif_date2ts($exif['FileDateTime']));
+                            $meta['created_timestamp'] = $this->exif_date2ts($exif['FileDateTime']);
                         }
                     }
                 }
@@ -2626,10 +2629,13 @@ class C_NextGen_Metadata extends C_Component
     // convert the exif date format to a unix timestamp
     public function exif_date2ts($str)
     {
-        // seriously, who formats a date like 'YYYY:MM:DD hh:mm:ss'?
-        @(list($date, $time) = explode(' ', trim($str)));
-        @(list($y, $m, $d) = explode(':', $date));
-        return strtotime("{$y}-{$m}-{$d} {$time}");
+        $retval = is_numeric($str) ? $str : @strtotime($str);
+        if (!$retval && $str) {
+            @(list($date, $time) = explode(' ', trim($str)));
+            @(list($y, $m, $d) = explode(':', $date));
+            $retval = strtotime("{$y}-{$m}-{$d} {$time}");
+        }
+        return $retval;
     }
     /**
      * nggMeta::readIPTC() - IPTC Data Information for EXIF Display
@@ -2772,7 +2778,7 @@ class C_NextGen_Metadata extends C_Component
                     switch ($key) {
                         case 'xap:CreateDate':
                         case 'xap:ModifyDate':
-                            $this->xmp_array[$value] = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), strtotime($xmlarray[$key]));
+                            $this->xmp_array[$value] = strtotime($xmlarray[$key]);
                             break;
                         default:
                             $this->xmp_array[$value] = $xmlarray[$key];
@@ -2815,6 +2821,9 @@ class C_NextGen_Metadata extends C_Component
         if ($value = $this->get_XMP($object)) {
             return $value;
         }
+        if ($object == 'created_timestamp' && ($d = $this->get_IPTC('created_date')) && ($t = $this->get_IPTC('created_time'))) {
+            return $this->exif_date2ts($d . ' ' . $t);
+        }
         if ($value = $this->get_IPTC($object)) {
             return $value;
         }
@@ -2845,25 +2854,11 @@ class C_NextGen_Metadata extends C_Component
     public function get_date_time()
     {
         $date = time();
-        // Try XMP first
-        if (isset($this->xmp_array['created_timestamp'])) {
-            $date = @strtotime($this->xmp_array['created_timestamp']);
-        } else {
-            if (isset($this->exif_array['created_timestamp'])) {
-                $date = @strtotime($this->exif_array['created_timestamp']);
-            } else {
-                if (isset($this->iptc_array['created_date'])) {
-                    $date = $this->iptc_array['created_date'];
-                    if (isset($this->iptc_array['created_time'])) {
-                        $date .= " {$this->iptc_array['created_time']}";
-                    }
-                    $date = @strtotime($date);
-                } else {
-                    if ($this->image->imagePath) {
-                        $date = @filectime($this->image->imagePath);
-                    }
-                }
-            }
+        // Try getting the created_timestamp field
+        $date = $this->exif_date2ts($this->get_META('created_timestamp'));
+        if (!$date) {
+            $image_path = C_Gallery_Storage::get_instance()->get_backup_abspath($this->image);
+            $date = @filectime($image_path);
         }
         // Failback
         if (!$date) {
@@ -3066,7 +3061,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
         if ($image_abspath) {
             // encode the filename: because filesystems will let you name things like%@this.jpg
             $parts = M_I18n::mb_pathinfo($image_abspath);
-            $parts['basename'] = urlencode($parts['basename']);
+            $parts['basename'] = rawurlencode($parts['basename']);
             $image_abspath = $parts['dirname'] . DIRECTORY_SEPARATOR . $parts['basename'];
             $doc_root = $fs->get_document_root('gallery');
             if ($doc_root != null) {
@@ -3132,6 +3127,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
         if (is_numeric($image)) {
             $image = $this->object->_image_mapper->find($image);
         }
+        $params = apply_filters('ngg_get_image_size_params', $params, $size, $image);
         // Ensure we have a valid image
         if ($image) {
             $settings = C_NextGen_Settings::get_instance();
@@ -3398,6 +3394,95 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
             $retval = TRUE;
         }
         return $retval;
+    }
+    public function set_post_thumbnail($post, $image)
+    {
+        $attachment_id = null;
+        // Get the post id
+        $post_id = $post;
+        if (is_object($post)) {
+            if (property_exists($post, 'ID')) {
+                $post_id = $post->ID;
+            } elseif (property_exists($post, 'post_id')) {
+                $post_id = $post->post_id;
+            }
+        } elseif (is_array($post)) {
+            if (isset($post['ID'])) {
+                $post_id = $post['ID'];
+            } elseif (isset($post['post_id'])) {
+                $post_id = $post['post_id'];
+            }
+        }
+        // Get the image object
+        if (is_int($image)) {
+            $image = C_Image_Mapper::get_instance()->find($image);
+        }
+        // Do we have what we need?
+        if ($image && is_int($post_id)) {
+            $args = array('post_type' => 'attachment', 'meta_key' => '_ngg_image_id', 'meta_compare' => '==', 'meta_value' => $image->{$image->id_field});
+            $upload_dir = wp_upload_dir();
+            $basedir = $upload_dir['basedir'];
+            $thumbs_dir = implode(DIRECTORY_SEPARATOR, array($basedir, 'ngg_featured'));
+            $gallery_abspath = $this->object->get_gallery_abspath($image->galleryid);
+            $image_abspath = $this->object->get_full_abspath($image);
+            $target_path = null;
+            $copy_image = TRUE;
+            // Have we previously set the post thumbnail?
+            if ($posts = get_posts($args)) {
+                $attachment_id = $posts[0]->ID;
+                $attachment_file = get_attached_file($attachment_id);
+                $target_path = $attachment_file;
+                if (filemtime($image_abspath) > filemtime($target_path)) {
+                    $copy_image = TRUE;
+                }
+            } else {
+                $url = $this->object->get_full_url($image);
+                $target_relpath = null;
+                $target_basename = M_I18n::mb_basename($image_abspath);
+                if (strpos($image_abspath, $gallery_abspath) === 0) {
+                    $target_relpath = substr($image_abspath, strlen($gallery_abspath));
+                } else {
+                    if ($image->galleryid) {
+                        $target_relpath = path_join(strval($image->galleryid), $target_basename);
+                    } else {
+                        $target_relpath = $target_basename;
+                    }
+                }
+                $target_relpath = trim($target_relpath, '\\/');
+                $target_path = path_join($thumbs_dir, $target_relpath);
+                $max_count = 100;
+                $count = 0;
+                while (file_exists($target_path) && $count <= $max_count) {
+                    $count++;
+                    $pathinfo = M_I18n::mb_pathinfo($target_path);
+                    $dirname = $pathinfo['dirname'];
+                    $filename = $pathinfo['filename'];
+                    $extension = $pathinfo['extension'];
+                    $rand = mt_rand(1, 9999);
+                    $basename = $filename . '_' . sprintf('%04d', $rand) . '.' . $extension;
+                    $target_path = path_join($dirname, $basename);
+                }
+                if (file_exists($target_path)) {
+                }
+                $target_dir = dirname($target_path);
+                wp_mkdir_p($target_dir);
+            }
+            if ($copy_image) {
+                @copy($image_abspath, $target_path);
+                if (!$attachment_id) {
+                    $size = @getimagesize($target_path);
+                    $image_type = $size ? $size['mime'] : 'image/jpeg';
+                    $title = sanitize_file_name($image->alttext);
+                    $caption = sanitize_file_name($image->description);
+                    $attachment = array('post_title' => $title, 'post_content' => $caption, 'post_status' => 'attachment', 'post_parent' => 0, 'post_mime_type' => $image_type, 'guid' => $url);
+                    $attachment_id = wp_insert_attachment($attachment, $target_path);
+                }
+                update_post_meta($attachment_id, '_ngg_image_id', $image->{$image->id_field});
+                wp_update_attachment_metadata($attachment_id, wp_generate_attachment_metadata($attachment_id, $target_path));
+                set_post_thumbnail($post_id, $attachment_id);
+            }
+        }
+        return $attachment_id;
     }
     /**
      * Copies (or moves) images into another gallery

@@ -49,7 +49,7 @@ class nggMeta{
 
             // get exif - data
             if ( is_callable('exif_read_data'))
-                $this->exif_data = @exif_read_data($imagePath , 0, true );
+                $this->exif_data = @exif_read_data($imagePath , NULL, TRUE);
 
             // stop here if we didn't need other meta data
             if ($onlyEXIF)
@@ -121,19 +121,19 @@ class nggMeta{
 
             $meta= array();
 
-            if ( isset($this->exif_data['EXIF']) ) {
-                $exif = $this->exif_data['EXIF'];
+	        $exif = isset($this->exif_array['EXIF']) ? $this->exif_array['EXIF'] : array();
+	        if (count($exif)) {
 
                 if (!empty($exif['FNumber']))
                     $meta['aperture'] = 'F ' . round( $this->exif_frac2dec( $exif['FNumber'] ), 2 );
                 if (!empty($exif['Model']))
                     $meta['camera'] = trim( $exif['Model'] );
                 if (!empty($exif['DateTimeDigitized']))
-                    $meta['created_timestamp'] = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $this->exif_date2ts($exif['DateTimeDigitized']));
+                    $meta['created_timestamp'] = $this->exif_date2ts($exif['DateTimeDigitized']);
                 else if (!empty($exif['DateTimeOriginal']))
-                    $meta['created_timestamp'] = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $this->exif_date2ts($exif['DateTimeOriginal']));
+                    $meta['created_timestamp'] = $this->exif_date2ts($exif['DateTimeOriginal']);
 				else if (!empty($exif['FileDateTime']))
-					$meta['created_timestamp'] = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $this->exif_date2ts($exif['FileDateTime']));
+					$meta['created_timestamp'] = $this->exif_date2ts($exif['FileDateTime']);
                 if (!empty($exif['FocalLength']))
                     $meta['focal_length'] = $this->exif_frac2dec( $exif['FocalLength'] ) . __(' mm','nggallery');
                 if (!empty($exif['ISOSpeedRatings']))
@@ -204,13 +204,17 @@ class nggMeta{
     }
 
     // convert the exif date format to a unix timestamp
-    function exif_date2ts($str) {
-        // seriously, who formats a date like 'YYYY:MM:DD hh:mm:ss'?
-        @list( $date, $time ) = explode( ' ', trim($str) );
-        @list( $y, $m, $d ) = explode( ':', $date );
+	function exif_date2ts($str)
+	{
+		$retval = is_numeric($str) ? $str : @strtotime($str);
+		if (!$retval && $str) {
+			@list( $date, $time ) = explode( ' ', trim($str) );
+			@list( $y, $m, $d ) = explode( ':', $date );
+			$retval =  strtotime( "{$y}-{$m}-{$d} {$time}" );
 
-        return strtotime( "{$y}-{$m}-{$d} {$time}" );
-    }
+		}
+		return $retval;
+	}
 
     /**
      * nggMeta::readIPTC() - IPTC Data Information for EXIF Display
@@ -390,7 +394,7 @@ class nggMeta{
                     switch ($key) {
                         case 'xap:CreateDate':
                         case 'xap:ModifyDate':
-                            $this->xmp_array[$value] = date_i18n(get_option('date_format').' '.get_option('time_format'), strtotime($xmlarray[$key]));
+                            $this->xmp_array[$value] = $this->exif_date2ts($xmlarray[$key]);
                             break;
                         default :
                             $this->xmp_array[$value] = $xmlarray[$key];
@@ -427,21 +431,24 @@ class nggMeta{
      * @param string $object
      * @return mixed $value
      */
-    function get_META($object = false) {
+	function get_META($object = false) {
 
-        // defined order first look into database, then XMP, IPTC and EXIF.
-        if ($value = $this->get_saved_meta($object))
-            return $value;
-        if ($value = $this->get_XMP($object))
-            return $value;
-        if ($value = $this->get_IPTC($object))
-            return $value;
-        if ($value = $this->get_EXIF($object))
-            return $value;
+		// defined order first look into database, then XMP, IPTC and EXIF.
+		if ($value = $this->get_saved_meta($object))
+			return $value;
+		if ($value = $this->get_XMP($object))
+			return $value;
+		if ($object == 'created_timestamp' && ($d = $this->get_IPTC('created_date')) && ($t = $this->get_IPTC('created_time'))) {
+			return $this->exif_date2ts($d . ' '.$t);
+		}
+		if ($value = $this->get_IPTC($object))
+			return $value;
+		if ($value = $this->get_EXIF($object))
+			return $value;
 
-        // nothing found ?
-        return false;
-    }
+		// nothing found ?
+		return false;
+	}
 
     /**
      * nggMeta::i8n_name() -  localize the tag name
@@ -501,44 +508,24 @@ class nggMeta{
      * Return the Timestamp from the image , if possible it's read from exif data
      * @return int
      */
-    function get_date_time() {
+	function get_date_time() {
 
 		$date = time();
 
-	    $imagePath = C_Gallery_Storage::get_instance()->get_image_abspath($this->image);
-
-		// Try XMP first
-		if (isset($this->xmp_array['created_timestamp'])) {
-			$date = @strtotime($this->xmp_array['created_timestamp']);
-		}
-
-		// Then EXIF
-		else if (isset($this->exif_array['created_timestamp'])) {
-			$date = @strtotime($this->exif_array['created_timestamp']);
-		}
-
-		// Then IPTC
-		else if (isset($this->iptc_array['created_date'])) {
-			$date = $this->iptc_array['created_date'];
-			if (isset($this->iptc_array['created_time'])) {
-				$date .= " {$this->iptc_array['created_time']}";
-			}
-			$date = @strtotime($date);
-		}
-
-		// If all else fails, use the file creation time
-		else if ($imagePath) {
-			$date = @filectime($imagePath);
+		$date = $this->exif_date2ts($this->get_META('created_timestamp'));
+		if (!$date) {
+			$image_path = C_Gallery_Storage::get_instance()->get_backup_abspath($this->image);
+			$date = @filectime($image_path);
 		}
 
 		// Failback
 		if (!$date) $date = time();
 
-        // Return the MySQL format
-        $date_time = date( 'Y-m-d H:i:s', $date);
+		// Return the MySQL format
+		$date_time = date( 'Y-m-d H:i:s', $date);
 
-        return $date_time;
-    }
+		return $date_time;
+	}
 
     /**
      * This function return the most common metadata, via a filter we can add more

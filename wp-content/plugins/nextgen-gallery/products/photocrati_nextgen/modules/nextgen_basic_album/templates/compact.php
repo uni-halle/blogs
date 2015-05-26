@@ -34,5 +34,6 @@
         </div>
     <?php } ?>
     <br class="ngg-clear"/>
+    <?php echo $pagination ?>
 </div>
 <?php $this->end_element(); ?>

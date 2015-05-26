@@ -323,7 +323,7 @@ class C_Component_Registry
     function get_module_list($for_product_id=FALSE)
     {
 	    $retval = $module_list = array();
-
+		// As of May 1, 2015, there's a new standard. A product will provide get_provided_modules() and get_modules_to_load().
 
         // As of Feb 10, 2015, there's no standard way across Pope products to an "ordered" list of modules
         // that the product provides.
@@ -344,11 +344,20 @@ class C_Component_Registry
             $obj = $this->get_product($product_id);
             try{
                 $klass = new ReflectionClass($obj);
-                $modules = $klass->getStaticPropertyValue('modules');
-                if (!$modules && method_exists($obj, 'define_modules')) {
-                    $obj->define_modules();
-                    $modules = $klass->getStaticPropertyValue('modules');
+	            if ($klass->hasMethod('get_modules_to_load')) {
+		            $modules = $obj->get_modules_to_load();
+	            }
+	            elseif ($klass->hasProperty('modules')) {
+		            $modules = $klass->getStaticPropertyValue('modules');
+	            }
+
+                if (!$modules && $klass->hasMethod('define_modules')) {
+	                $modules = $obj->define_modules();
+	                if ($klass->hasProperty('modules')) {
+		                $modules = $klass->getStaticPropertyValue('modules');
+	                }
                 }
+
                 $module_list[$product_id] = $modules;
             }
 

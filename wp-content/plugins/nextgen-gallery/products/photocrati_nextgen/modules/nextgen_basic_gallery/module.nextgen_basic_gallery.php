@@ -43,8 +43,6 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
             $forms->add_form(NGG_DISPLAY_SETTINGS_SLUG, NGG_BASIC_SLIDESHOW);
         }
 
-	    $notices = C_Admin_Notification_Manager::get_instance();
-	    $notices->add('image_rotator_notice', 'C_Image_Rotator_Notice');
     }
 
     function get_type_list()
@@ -339,38 +337,6 @@ class C_NextGen_Basic_Gallery_Installer extends C_Gallery_Display_Installer
 				'view_order' => NGG_DISPLAY_PRIORITY_BASE + 10
 			)
 		);
-	}
-}
-
-class C_Image_Rotator_Notice
-{
-	static $_instance = NULL;
-	static function get_instance($name)
-	{
-		if (!self::$_instance) {
-			$klass = get_class();
-			self::$_instance = new $klass($name);
-		}
-		return self::$_instance;
-	}
-
-	function __construct($name)
-	{
-		$this->name = $name;
-	}
-
-	function render()
-	{
-		$link = 'http://www.nextgen-gallery.com/flash-removed';
-		return sprintf(
-            __("Flash slideshow support has been removed from NextGEN Gallery. Please see <a href='%s'>this blog post</a> for more information.", 'nggallery'),
-            $link
-        );
-	}
-
-	function is_dismissable()
-	{
-		return TRUE;
 	}
 }
 

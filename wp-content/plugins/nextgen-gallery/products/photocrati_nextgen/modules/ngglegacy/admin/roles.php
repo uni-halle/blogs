@@ -23,8 +23,9 @@ if ( !empty($_POST) ) {
 
 ?>
 	<div class="wrap">
-	<p><?php _e('Select the lowest role which should be able to access the following capabilities. NextGEN Gallery supports the standard roles from WordPress.', 'nggallery') ?> <br />
-	   <?php _e('For a more flexible user management you can use the', 'nggallery') ?> <a href="http://wordpress.org/extend/plugins/capsman/" target="_blank">Capability Manager</a>.</p>
+	<p>
+        <?php _e('Select the lowest role which should be able to access the following capabilities. NextGEN Gallery supports the standard roles from WordPress.', 'nggallery') ?> <br />
+    </p>
 		<?php wp_nonce_field('ngg_addroles') ?>
 			<table class="form-table">
 			<tr valign="top">

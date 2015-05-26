@@ -24,6 +24,7 @@
 			<?php endforeach ?>
 		</div>
 
+        <div id="adminmenu" style="display:none;" data-wp-responsive="true"></div>
 		<?php wp_print_footer_scripts() ?>
 	</body>
 </html>

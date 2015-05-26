@@ -12,6 +12,7 @@ body {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
 	opacity: 0.0;
+    height: 100%;
 }
 
 .entity_errors {
@@ -33,6 +34,11 @@ body {
 	border: 0px;
 	background: none;
 	min-height: 100%;
+    overflow: hidden;
+}
+
+#attach_to_post_tabs div.main_menu_tab {
+    overflow: hidden;
 }
 
 .ui-tabs-panel {
