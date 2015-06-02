@@ -3,7 +3,7 @@ Contributors: jbenders
 Tags: widgets, photos, instagram
 Requires at least: 3.0
 Tested up to: 4.2.2
-Stable tag: 2.0.2
+Stable tag: 2.0.4
 
 A comprehensive sidebar widget that can show your latest photos, tagged
 photos, your favourite photos, your feed, other users photos. Can be shown
@@ -11,12 +11,11 @@ in three ways with a Grid, Grid with paging and slideshow options.
 
 == Description ==
 
-A comprehensive sidebar widget that can show your latest photos, tagged
-photos, your favourite photos, your feed, other users photos. Can be shown
-in three ways with a Grid, Grid with paging and slideshow options.
+The best Instagram widget for your Wordpress website or blog is now here! Built by one of the world's largest Instagram browsers INK361, this comprehensive widget that can showcase your Instagram account in the way you want with comprehensive customisation features.
 
-To get started drag and drop the Instagram Widget into one of your widget
-areas and then click the Connect To Instagram button.
+Display your latest photos, tagged photos, your favourite photos, your feed, or other users photos. Our widget can be set up to fit any website or blog in three ways - with a Grid, Grid with paging and slideshow options.
+
+To get started, download and activate our widget from this page or within the Wordpress plugin interface. Drag and drop the Instagram Widget into one of your widget areas and then click on the Connect To Instagram button.
 
 You can find your widget management area under your Appearance menu.
 
@@ -45,6 +44,19 @@ For more installation options please refer to
 http://wordpress.ink361.com/help/installing
 
 == Changelog ==
+
+= 2.0.5 =
+* Fix for warnings on line 32 of the plugin.
+* Removed DateTime dependency.
+
+= 2.0.4 =
+* Added configuration guide notifications to make installation easier.
+
+= 2.0.3 =
+* Fixed image quality problem on slideshow.
+* Added cumulative and restrictive option on tagged photos display.
+* Added custom titles to widget configuration to allow easy identification of widgets.
+* Fixed configuration lightbox in Customizer
 
 = 2.0.2 =
 * Fixed an issue with the database table checking method

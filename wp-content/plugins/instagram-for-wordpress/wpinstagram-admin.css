@@ -32,8 +32,7 @@
 	bottom: 0px;
 	top: 0px;
 	opacity: 0;
-	filter: alpha(opacity=0);
-	z-index: 150;
+	filter: alpha(opacity=0);	
 	display: none;
 }
 
@@ -41,9 +40,10 @@
 	display: block;
 	opacity: 1;
 	filter: alpha(opacity=100);
+	z-index: 999999;
 }
 
-.lboxWrapper .lboxOverlay {
+.lboxWrapper .lboxOverlay, #lboxWrapper .lboxOverlay {
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -56,28 +56,28 @@
 	cursor: pointer;
 }
 
-.lboxWrapper .lboxFrame {
+.lboxWrapper .lboxFrame, #lboxWrapper .lboxFrame {
 	position: fixed;
 	margin: 0px;
 	width: 500px;
 	z-index: 100001;
-	height: 400px;
+	height: 440px;
 	padding: 20px;
 	left: 50%;
-	margin-left: -260px;
+	margin-left: -280px;
 	background: #FFF;
 	border: 1px solid #E5E5E5;
 	box-shadow: 0px 1px 1px rgba(0,0,0,0.04);
 }
 
-.lboxWrapper .lboxFrame iframe {
+.lboxWrapper .lboxFrame iframe, #lboxWrapper .lboxFrame iframe {
 	width: 800px;
 	height: 400px;
 	border: 0px none;
 	overflow: hidden;
 }
 
-.lboxWrapper .lboxClose {
+.lboxWrapper .lboxClose, #lboxWrapper .lboxClose {
 	position: absolute;
 	top: -30px;
 	line-height: 25px;
@@ -195,7 +195,7 @@ hr.divider {
 	z-index: 1;
 	padding: 10px;
 	margin-bottom: 7px;
-	height: 305px;
+	height: 345px;
 }
 
 .tabs-panel.active {
@@ -393,4 +393,124 @@ li.tabber.error a {
 
 .wpinstagram-error-description {
         margin-bottom: 0px !important;
+}
+
+.instagram_activate {
+	border: 1px solid #111;
+	border-radius: 3px;
+	background: #212121;			
+	padding: 5px 15px 5px 5px;
+	margin: 15px 0px;
+	position: relative;	
+	color: #FFF;					
+}
+
+.instagram_activate .instagram_bg {
+	background: url('img/logo-white.png') no-repeat center right;
+	background-size: auto 75%;
+}
+
+.instagram_activate .instagram_button {
+	background: #517FA4; 
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+	padding: 9px 0px 8px 0px;
+	color: #FFF;
+	border-radius: 3px;
+	border: 5px solid #555;
+	width: 266px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.instagram_activate .instagram_description {
+	display: inline-block;
+	font-size: 15px;
+	padding-left: 35px;
+}
+
+.instagram_setup_instructions {
+	position: relative;
+}
+
+.instagram_setup_img {
+	overflow: hidden;
+	position: absolute;
+	width: 45%;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	height: 410px;
+	transition: width 0.4s ease;
+	z-index: 2;
+	border: 1px solid #DDD;
+	border-radius: 3px;
+}
+
+.instagram_setup_img img {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	height: 410px;
+}
+
+.instagram_setup_img:hover {
+	width: 100%;
+}
+
+.instagram_setup_img_message {
+	z-index: 10;
+	opacity: 1;
+	background: rgba(0,0,0,0.6);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;	
+	display: table-cell;
+	text-align: center;	
+	color: #FFF;
+	transition: opacity 0.4s ease;
+}
+
+.instagram_setup_img_message div {
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	text-align: center;
+	left: 0px;
+	right: 0px;
+}
+
+.instagram_setup_img:hover .instagram_setup_img_message {
+	opacity: 0;
+}
+
+.instagram_setup_text {
+	z-index: 1;
+	position: absolute;
+	left: 48%;
+	right: 0px;
+	top: 0px;
+	height: 410px;
+}
+
+.instagram_setup_text p:first-of-type {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.instagram_setup_text a.instagram_setup_button {
+	background: #517FA4; 
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+	padding: 9px 0px 8px 0px;
+	color: #FFF;
+	border-radius: 3px;			
+	cursor: pointer;
+	text-decoration: none;	
+	display: block;
 }

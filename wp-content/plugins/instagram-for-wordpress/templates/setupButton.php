@@ -7,7 +7,7 @@
     </p>
   
     <input type="button" value="Configure Widget" onclick="openSetup<?php print $instance['db_id'] ?>();" class="simpleSetupButton button-primary" id="setupButton<?php print $instance['db_id'] ?>">
-
+    
     <div id="hiddenFields<?php print $instance['db_id'] ?>" style="display: none;">
       <!-- default values -->
       <input type="hidden" name="title" 	value="<?php print htmlspecialchars($details->settings['title']) ?>">
@@ -28,7 +28,53 @@
       <input type="hidden" name="responsive"	value="<?php				print $details->settings['responsive']?>">
       <input type="hidden" name="sharing"	value="<?php				print $details->settings['sharing']?>">
       <input type="hidden" name="verbose"	value="<?php				print $details->settings['verbose']?>">
+      <input type="hidden" name="tagCompare" value="<?php     print htmlspecialchars($details->settings['tagCompare']) ?>">
     </div>
+    
+    <?php
+        $customTitle = 'Instagram Widget';
+      
+        if ($details->settings['display'] === 'self') {
+          $customTitle = 'Your Instagram Photos';
+        } else if ($details->settings['display'] === 'likes') {
+          $customTitle = 'Your favourite Instagram Photos';
+        } else if ($details->settings['display'] === 'feed') {
+          $customTitle = 'Your Instagram feed';
+        } else if ($details->settings['display'] === 'popular') {
+          $customTitle = 'Popular on Instagram';
+        } else if ($details->settings['display'] === 'user') {
+          $customTitle = '@' . $details->settings['username'] . " Instagrams"; 
+        } else if ($details->settings['display'] === 'tags') {
+          $customTitle = 'Instagrams tagged: ';
+          
+          $previous = 0;
+          if ($details->settings['tag1'] && $details->settings['tag1'] !== '') {
+            $customTitle .= $details->settings['tag1'];
+            $previous = 1;
+          } 
+          if ($details->settings['tag2'] && $details->settings['tag2'] !== '') {
+            if ($previous === 1) {
+              $customTitle .= ', ';
+            }
+            $customTitle .= $details->settings['tag2'];
+            $previous = 1;
+          }
+          if ($details->settings['tag3'] && $details->settings['tag3'] !== '') {
+            if ($previous === 1) {
+              $customTitle .= ', ';
+            }
+            $customTitle .= $details->settings['tag3'];
+            $previous = 1;
+          }
+          if ($details->settings['tag4'] && $details->settings['tag4'] !== '') {
+            if ($previous === 1) {
+              $customTitle .= ', ';
+            }
+            $customTitle .= $details->settings['tag4'];
+            $previous = 1;
+          }
+        }        
+    ?>
 
     <div id="setupForm<?php print $instance['db_id'] ?>" style="display: none;">
       <?php require("formHeader.php") ?>
@@ -113,26 +159,43 @@
             </p>
             <div id="otherUserResults"></div>
           </div>
-          <p id="tags">
-            <span class="errorMessage">
-              <span class="block-arrow"></span>
-              You must enter atleast 1 tag.
-            </span>
-            
-            <label>
-              Tags to show
-              <span class="help-icon dashicons dashicons-info">
-                <span class="block">
-                  <span class="block-arrow"></span>
-                  Enter up to 4 tags to display photos from. You can enter only 1 tag if you wish.
-                </span>
+          <div id="tags">
+            <p style="margin-bottom: 0px;">
+              <span class="errorMessage">
+                <span class="block-arrow"></span>
+                You must enter atleast 1 tag.
               </span>
-            </label>
-            <input type="text" class="widefat half" name="tag1" value="<?php print htmlspecialchars($details->settings['tag1']) ?>">
-            <input type="text" class="widefat half" name="tag2" value="<?php print htmlspecialchars($details->settings['tag2']) ?>">
-            <input type="text" class="widefat half" name="tag3" value="<?php print htmlspecialchars($details->settings['tag3']) ?>">
-            <input type="text" class="widefat half" name="tag4" value="<?php print htmlspecialchars($details->settings['tag4']) ?>">      
-          </p>
+              
+              <label>
+                Tags to show
+                <span class="help-icon dashicons dashicons-info">
+                  <span class="block">
+                    <span class="block-arrow"></span>
+                    Enter up to 4 tags to display photos from. You can enter only 1 tag if you wish.
+                  </span>
+                </span>
+              </label>
+              <input type="text" class="widefat half" name="tag1" value="<?php print htmlspecialchars($details->settings['tag1']) ?>">
+              <input type="text" class="widefat half" name="tag2" value="<?php print htmlspecialchars($details->settings['tag2']) ?>">
+              <input type="text" class="widefat half" name="tag3" value="<?php print htmlspecialchars($details->settings['tag3']) ?>">
+              <input type="text" class="widefat half" name="tag4" value="<?php print htmlspecialchars($details->settings['tag4']) ?>">      
+            </p>
+            <p style="margin-top: 0px;">
+              <label>
+                Search method
+                <span class="help-icon dashicons dashicons-info">
+                  <span class="block">
+                    <span class="block-arrow"></span>
+                    Should the tag search method be cumulative or restrictive?
+                  </span>
+                </span>
+              </label>                
+              <select name="tagCompare" class="widefat">
+                <option value="cumulative" <?php if ($details->settings['tagCompare'] === 'cumulative') { echo "SELECTED"; } ?>>Cumulative (OR)</option>
+                <option value="restrictive" <?php if ($details->settings['tagCompare'] === 'restrictive') { echo "SELECTED"; } ?>>Restrictive (AND)</option>
+              </select>
+            </p>
+          </div>
       
           <input type="button" class="button button-primary widget-control-save right" onclick="savePlugin<?php print $instance['db_id'] ?>(true);" value="Save">
         </div>
@@ -367,6 +430,15 @@
   <?php } ?>
 
   <script>
+    function customiseTitle<?php print $instance['db_id'] ?>(title) {
+      try {
+        var elem  = jQuery('#setupButton<?php print $instance['db_id'] ?>');
+        elem.parent().parent().parent().parent().find('h4').html(title);
+      } catch(e) {
+        
+      }
+    }
+    
     function savePlugin<?php print $instance['db_id'] ?>(close) {            
       if (copyFields<?php print $instance['db_id'] ?>()) {
         jQuery('#setupButton<?php print $instance['db_id'] ?>').parent().parent().find('input[type=submit]').click();
@@ -399,7 +471,7 @@
       //our dropdown search
       jQuery('#otherUser').keyup(function(event) {
         setTimeout(function() {
-          searchUserHandler();
+          searchUserHandler<?php print $instance['db_id'] ?>();
         }, 200);
       });
       jQuery('#otherUser').blur(function(event) {
@@ -599,8 +671,8 @@
         }, 100);
       }
     
-      if (!window.searchUserHandler) {
-        window.searchUserHandler = function() {
+      if (!window.searchUserHandler<?php print $instance['db_id'] ?>) {
+        window.searchUserHandler<?php print $instance['db_id'] ?> = function() {
           var keywords = jQuery('#otherUser').val();
                  
           if (keywords.length > 2) {
@@ -644,7 +716,10 @@
           jQuery('#otherUserResults').html('<div class="noResults">Nobody found</div>');
           jQuery('#otherUserResults').addClass('visible');                         
         }
-      }        
+      }   
+      
+      //customise with our title
+      customiseTitle<?php print $instance['db_id'] ?>('<?php print $customTitle ?>');
     });
   </script>
 <?php

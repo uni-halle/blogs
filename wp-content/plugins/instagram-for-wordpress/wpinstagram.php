@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 2.0.2
+	Version: 2.0.5
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -13,18 +13,32 @@ if(!defined('INSTAGRAM_PLUGIN_URL')) {
 }
 
 function wpinstagram_admin_register_head() {
-    $siteurl = get_option('siteurl');
-    $url = plugins_url('wpinstagram-admin.css', __FILE__);
-    wp_enqueue_style('wpinstagram-admin.css', $url);
+    $siteurl = get_option('siteurl');       
 }
 
 add_action('admin_head', 'wpinstagram_admin_register_head');
 add_action('widgets_init', 'load_wpinstagram');
 add_option('instagram-widget-cache', null, false, false);
 add_option('wpaccount', null, false, false);
+add_action('admin_notices', 'wpinstagram_show_instructions');
 
 function load_wpinstagram() {
 	register_widget('WPInstagram_Widget');
+}
+
+function wpinstagram_show_instructions() {
+	global $wpdb;
+	
+	$results = $wpdb->get_results("SELECT * FROM igwidget_widget");
+	
+	if (sizeof($results) == 0) {	
+		$url = plugins_url('wpinstagram-admin.css', __FILE__); 
+		wp_enqueue_style('wpinstagram-admin.css', $url);
+		wp_enqueue_script("jquery");
+		wp_enqueue_script("lightbox", plugin_dir_url(__FILE__)."js/lightbox.js", Array('jquery'), null);
+		
+		require(plugin_dir_path(__FILE__) . 'templates/setupInstructions.php');		
+	}
 }
 
 function load_wpinstagram_footer(){
@@ -86,8 +100,8 @@ class WPInstagram_Widget extends WP_Widget {
                 $height = '220';
         
                 $widget_ops = array('description' => __('Displays Instagrams', 'wpinstagram'));
-                $control_ops = array('id_base' => 'wpinstagram-widget');
-        
+                $control_ops = array('id_base' => 'wpinstagram-widget');        
+		
                 $this->wpinstagram_path = plugin_dir_url( __FILE__);
                 $this->WP_Widget('wpinstagram-widget', __('Instagram Widget', 'wpinstagram'), $widget_ops, $control_ops);
                 
@@ -98,7 +112,7 @@ class WPInstagram_Widget extends WP_Widget {
                 
                 if (is_admin()) {
 	                $this->handleTables();
-		}
+				}
 
                 if (is_active_widget('', '', 'wpinstagram-widget') && !is_admin()) {            
                         wp_enqueue_script("jquery");
@@ -136,20 +150,20 @@ class WPInstagram_Widget extends WP_Widget {
 				
 				#is our cache valid
 				if ($details->cache_time !== NULL && $details->cache_time !== '') {				
-					$time = DateTime::createFromFormat('Y-m-d H:i:s', $details->cache_time);
+					$time = strtotime($details->cache_time);
 					
 					#need to get it from the DB as it may run on a different timezone setting
 					$fromDB = $wpdb->get_results("SELECT NOW() as dbtime");
 					
-					$now = DateTime::createFromFormat('Y-m-d H:i:s', $fromDB[0]->dbtime);
+					$now = strtotime($fromDB[0]->dbtime);										
 					
-					$interval = new DateInterval('PT' . $this->_defaultCacheTime() . 'S');
+					$interval = $this->_defaultCacheTime();
 					
 					if ($details->cache_timeout !== NULL && $details->cache_timeout !== '') {
-						$interval = new DateInterval('PT' . $details->cache_timeout . 'S');
-					}
-
-					if ($time->add($interval) > $now) {
+						$interval = $details->cache_timeout;
+					}					
+					
+					if ($time + $interval > $now) {
 						#cache time is valid, confirm cached value matches what we expect
 						if ($details->result_cache !== NULL && $details->result_cache !== '') {
 							$cached = json_decode($details->result_cache, true);
@@ -175,20 +189,21 @@ class WPInstagram_Widget extends WP_Widget {
 					} else if ($details->settings['display'] == 'user') {
 						$this->_display_user($details->settings['user'], $details);
 					} else if ($details->settings['display'] == 'tags') {
-						error_log("Hello world!");
 						$this->_display_tags($details->settings['tag1'], 
 								     $details->settings['tag2'], 
 								     $details->settings['tag3'], 
 								     $details->settings['tag4'], 
+									 $details->settings['tagCompare'],
 								     $details);
 					}
 				}				
 			}
 		}
-        }
-
+    }
 	
-	function form($instance) {
+	function form($instance) {		
+		$url = plugins_url('wpinstagram-admin.css', __FILE__); 
+		wp_enqueue_style('wpinstagram-admin.css', $url);
 		wp_enqueue_script("jquery");
 		wp_enqueue_script("lightbox", plugin_dir_url(__FILE__)."js/lightbox.js", Array('jquery'), null);
 
@@ -253,6 +268,7 @@ class WPInstagram_Widget extends WP_Widget {
 				"tag2"		=> stripslashes($_POST['tag2']),
 				"tag3"		=> stripslashes($_POST['tag3']),
 				"tag4"		=> stripslashes($_POST['tag4']),
+				"tagCompare"=> stripslashes($_POST['tagCompare']),
 				"width"		=> stripslashes($_POST['width']),
 				"height"	=> stripslashes($_POST['height']),
 				"delay"		=> stripslashes($_POST['delay']),
@@ -430,22 +446,68 @@ class WPInstagram_Widget extends WP_Widget {
 		return $this->_display_results($images, $settings, false);
 	}
 	
-	function _display_tags($tag1, $tag2, $tag3, $tag4, $settings) {
+	function _display_tags($tag1, $tag2, $tag3, $tag4, $compareMethod, $settings) {
 		$images = array();
+		
+		$numRequired = 0;
 		
 		#BEHOLD MY EFFICIENT WAY OF GETTING MANY TAGS!
 		if ($tag1 && $tag1 != '' && $tag1 != 'None') {
 			$images += $this->_get_tagged_photos($tag1, $settings);
+			$numRequired++;
 		}
 		if ($tag2 && $tag2 != '' && $tag2 != 'None') {
 			$images += $this->_get_tagged_photos($tag2, $settings);
+			$numRequired++;
 		}
 		if ($tag3 && $tag3 != '' && $tag3 != 'None') {
 			$images += $this->_get_tagged_photos($tag3, $settings);
+			$numRequired++;
 		}
 		if ($tag4 && $tag4 != '' && $tag4 != 'None') {
 			$images += $this->_get_tagged_photos($tag4, $settings);
+			$numRequired++;
 		}
+		
+		#restrict if required
+		if ($compareMethod === 'restrictive') {
+			$new = array();
+			
+			foreach ($images as $image) {
+				$numFound = 0;
+				 				
+				if (is_array($image['tags'])) {
+					foreach ($image['tags'] as $imageTag) {						
+						if ($tag1 && $tag1 !== '' && $tag1 !== 'None') {
+							if ($imageTag === $tag1) {
+								$numFound++;
+							}
+						}
+						if ($tag2 && $tag2 !== '' && $tag2 !== 'None') {
+							if ($imageTag === $tag2) {
+								$numFound++;
+							}
+						}
+						if ($tag3 && $tag3 !== '' && $tag3 !== 'None') {
+							if ($imageTag === $tag3) {
+								$numFound++;								
+							}
+						}
+						if ($tag4 && $tag4 !== '' && $tag4 !== 'None') {
+							if ($imageTag === $tag4) {
+								$numFound++;
+							}
+						}												
+					}
+				}
+				
+				if ($numFound === $numRequired) {
+					$new[] = $image;	
+				}
+			}
+						
+			$images = $new;
+		}				
 		
 		#jumble them up
 		shuffle($images);
@@ -485,6 +547,7 @@ class WPInstagram_Widget extends WP_Widget {
 							"image_small"	=> $item['images']['thumbnail']['url'],
 							"image_middle"	=> $item['images']['low_resolution']['url'],
 							"image_large"	=> $item['images']['standard_resolution']['url'],
+							"tags"			=> $item['tags'],
 						);
 					}
 				}				
@@ -794,6 +857,10 @@ class WPInstagram_Widget extends WP_Widget {
 		
 		if (!array_key_exists("tag4", $settings)) {
 			$settings['tag4']	= '';
+		}
+		
+		if (!array_key_exists("tagCompare", $settings)) {
+			$settings['tagCompare'] = 'cumulative';
 		}
 		
 		if (!array_key_exists("width", $settings) 	|| $settings['width'] === '') {

@@ -49,14 +49,7 @@
     foreach ($images as $image) {
     
      #determine photo to use for best quality
-     $url = $image['image_small'];
-     if ($imageWidth <= 150) {
-       $url = $image['image_small'];
-     } else if ($imageWidth <= 306) {
-       $url = $image['image_middle'];
-     } else {
-       $url = $image['image_large'];
-     }     
+     $url = $image['image_large'];
   ?>  
     <li style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-bottom: <?php print $padding ?>;">
       <a class="mainI" 
