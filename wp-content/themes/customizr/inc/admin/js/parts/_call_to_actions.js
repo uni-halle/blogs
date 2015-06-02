@@ -6,7 +6,6 @@ jQuery(function ($) {
   /* CONTRIBUTION TO CUSTOMIZR */
   var donate_displayed  = false,
       is_pro            = 'customizr-pro' == TCControlParams.themeName;
-
   if (  ! TCControlParams.HideDonate && ! is_pro ) {
     _render_donate_block();
     donate_displayed = true;
@@ -98,7 +97,8 @@ jQuery(function ($) {
       var AjaxUrl         = TCControlParams.AjaxUrl,
       query = {
           action  : 'hide_donate',
-          TCnonce :  TCControlParams.TCNonce
+          TCnonce :  TCControlParams.TCNonce,
+          wp_customize : 'on'
       },
       request = $.post( AjaxUrl, query );
       request.done( function( response ) {

@@ -58,9 +58,8 @@ if ( ! class_exists( 'TC_utils' ) ) :
       function tc_wp_filters() {
         add_filter( 'the_content'                         , array( $this , 'tc_fancybox_content_filter' ) );
         if ( esc_attr( TC_utils::$inst->tc_opt( 'tc_img_smart_load' ) ) ) {
-          add_filter( 'the_content'                       , array( $this , 'tc_parse_imgs' ) );
+          add_filter( 'the_content'                       , array( $this , 'tc_parse_imgs' ), 20 );
           add_filter( 'tc_thumb_html'                     , array( $this , 'tc_parse_imgs' ) );
-          add_filter( 'post_gallery'                      , array( $this , 'tc_parse_imgs' ), 30 );
         }
         add_filter( 'wp_title'                            , array( $this , 'tc_wp_title' ), 10, 2 );
       }
@@ -102,12 +101,11 @@ if ( ! class_exists( 'TC_utils' ) ) :
             $matches[3]
           );
         else
-          return sprintf('<img %1$s src="%2$s" data-src="%3$s" %4$s><noscript><img %1$s src="%5$s" %4$s></noscript>',
+          return sprintf('<img %1$s src="%2$s" data-src="%3$s" %4$s>',
             $matches[1],
             $_placeholder,
             $matches[2],
-            $matches[3],
-            $matches[0]
+            $matches[3]
           );
       }
 
@@ -277,22 +275,29 @@ if ( ! class_exists( 'TC_utils' ) ) :
 
         //do we have to use the default ?
         $__options = $_db_options;
+        $_default_val = false;
         if ( $use_default ) {
           $_defaults      = $this -> default_options;
+          if ( isset($_defaults[$option_name]) )
+            $_default_val = $_defaults[$option_name];
           $__options      = wp_parse_args( $_db_options, $_defaults );
         }
 
-        //return false boolean if does not exist, just like WP does
+        //assign false value if does not exist, just like WP does
         $_single_opt    = isset($__options[$option_name]) ? $__options[$option_name] : false;
 
-        //contx retro compat
+        //contx retro compat => falls back to default val if contx like option detected
         //important note : tc_slider is not impacted by contx
         if ( $option_name != 'tc_sliders' ) {
           if ( is_array( $_single_opt ) && ! class_exists( 'TC_contx' ) )
-            $_single_opt = isset($_single_opt['all_cx']) ? $_single_opt['all_cx'] : false;
+            $_single_opt = $_default_val;
         }
 
-        return apply_filters( "tc_opt_{$option_name}" , $_single_opt , $option_name , $option_group );
+        //allow contx filtering globally
+        $_single_opt = apply_filters( "tc_opt" , $_single_opt , $option_name , $option_group, $_default_val );
+
+        //allow single option filtering
+        return apply_filters( "tc_opt_{$option_name}" , $_single_opt , $option_name , $option_group, $_default_val );
       }
 
 

@@ -15,25 +15,56 @@
 if ( ! class_exists( 'TC_utils_settings_map' ) ) :
   class TC_utils_settings_map {
 
-      //Access any method or var of the class with classname::$instance -> var or method():
-      static $instance;
-      private $is_wp_version_before_4_0;
+    //Access any method or var of the class with classname::$instance -> var or method():
+    static $instance;
+    private $is_wp_version_before_4_0;
 
-      function __construct () {
-          self::$instance =& $this;
+    function __construct () {
+        self::$instance =& $this;
 
-          //update remove section map, since 3.2.0
-          add_filter ( 'tc_remove_section_map'                , array( $this , 'tc_update_remove_sections') );
-          //update section map, since 3.2.0
-          add_filter ( 'tc_add_section_map'                   , array( $this , 'tc_update_section_map') );
-          //update setting_control_map
-          add_filter ( 'tc_add_setting_control_map'           , array( $this , 'tc_update_setting_control_map'), 100 );
-          //update setting_control_map with post list design, v3.2.18+
-          add_filter ( 'tc_add_setting_control_map'           , array( $this , 'tc_grid_map'), 101 );
-          //declare a private property to check wp version >= 4.0
-          global $wp_version;
-          $this -> is_wp_version_before_4_0 = ( ! version_compare( $wp_version, '4.0', '>=' ) ) ? true : false;
-      }//end of construct
+        //update remove section map, since 3.2.0
+        add_filter ( 'tc_remove_section_map'                , array( $this , 'tc_update_remove_sections') );
+        //theme switcher's enabled when user opened the customizer from the theme's page
+        add_filter ( 'tc_remove_section_map'                , array( $this , 'tc_set_theme_switcher_visibility') );
+        //update section map, since 3.2.0
+        add_filter ( 'tc_add_section_map'                   , array( $this , 'tc_update_section_map') );
+        //update setting_control_map
+        add_filter ( 'tc_add_setting_control_map'           , array( $this , 'tc_update_setting_control_map'), 100 );
+        //update setting_control_map with post list design, v3.2.18+
+        add_filter ( 'tc_add_setting_control_map'           , array( $this , 'tc_grid_map'), 101 );
+        //declare a private property to check wp version >= 4.0
+        global $wp_version;
+        $this -> is_wp_version_before_4_0 = ( ! version_compare( $wp_version, '4.0', '>=' ) ) ? true : false;
+    }//end of construct
+
+
+
+    /**
+    * Print the themes section (themes switcher) when previewing the themes from wp-admin/themes.php
+    * hook : tc_remove_section_map
+    */
+    function tc_set_theme_switcher_visibility( $_sections) {
+      //Don't do anything is in preview frame
+      //=> because once the preview is ready, a postMessage is sent to the panel frame to refresh the sections and panels
+      if ( TC___::$instance -> tc_is_customize_preview_frame() )
+        return $_sections;
+
+      //when user access the theme switcher from the admin bar
+      $_theme_switcher_requested = false;
+      if ( isset( $_GET['autofocus'] ) ) {
+        $autofocus = wp_unslash( $_GET['autofocus'] );
+        if ( is_array( $autofocus ) && isset($autofocus['section']) ) {
+          $_theme_switcher_requested = 'themes' == $autofocus['section'];
+        }
+      }
+
+      if ( isset($_GET['theme']) || ! isset($_sections['remove_section']) || $_theme_switcher_requested )
+        return $_sections;
+
+      array_push( $_sections['remove_section'] , 'themes' );
+      return $_sections;
+    }
+
 
 
     /**
@@ -407,7 +438,14 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'choices'    =>  $this -> tc_build_skin_list(),
                                 'transport'   =>  'postMessage',
               ),
-
+              'tc_theme_options[tc_skin_random]' => array(
+                                'default'   => 0,
+                                'control'   => 'TC_controls',
+                                'label'     => __('Randomize the skin', 'customizr'),
+                                'section'   => 'tc_skins_settings',
+                                'type'      => 'checkbox',
+                                'notice'    => __( 'Apply a random color skin on each page load.' , 'customizr' )
+              ),
               'tc_theme_options[tc_minified_skin]'  =>  array(
                                 'default'       => 1,
                                 'control'   => 'TC_controls' ,
@@ -972,6 +1010,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
     /**
     * Update initial remove section map defined in class-fire-utils.php.
     * (nav and title_tagline sections are added back in tc_update_section_map() )
+    * hook : tc_remove_section_map
     * @package Customizr
     * @since Customizr 3.2.0
     */
@@ -993,6 +1032,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
     /**
     * Update initial section map defined in class-fire-utils.php.
     * Add panel parameter (since WP4.0)
+    * hook : tc_add_section_map
     * @package Customizr
     * @since Customizr 3.2.0
     */
@@ -1140,6 +1180,12 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                             'description' =>  __( 'Set up comments options' , 'customizr' ),
                                             'panel'   => 'tc-content-panel'
                         ),
+                        'tc_post_navigation_settings'          => array(
+                                            'title'     =>  __( 'Post/Page Navigation' , 'customizr' ),
+                                            'priority'    =>  $this -> is_wp_version_before_4_0 ? 30 : 65,
+                                            'description' =>  __( 'Set up post/page navigation options' , 'customizr' ),
+                                            'panel'   => 'tc-content-panel'
+                        ),
                         'tc_footer_global_settings'          => array(
                                             'title'     =>  __( 'Footer global settings' , 'customizr' ),
                                             'priority'    =>  $this -> is_wp_version_before_4_0 ? 40 : 10,
@@ -1165,7 +1211,8 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
 
 
     /**
-    * Update initial setting_control map defined in class-fire-utils.php.
+    * Update initial setting_control map
+    * hook : tc_add_setting_control_map
     *
     * @package Customizr
     * @since Customizr 3.2.0
@@ -1941,7 +1988,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'default'       => 1,
                                 'label'         => __('Enable Lightbox effect in galleries' , 'customizr'),
                                 'control'       => 'TC_controls' ,
-                                'notice'         => __( "Apply lightbox effects to galleries images ( if the Lightbox options is enabled in Global Settings > Image Settings)." , "customizr" ),
+                                'notice'         => __( "Apply lightbox effects to galleries images" , "customizr" ),
                                 'section'       => 'tc_galleries_settings' ,
                                 'type'          => 'checkbox',
                                 'priority'      => 1
@@ -1962,7 +2009,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'title'         => __( 'Drop caps', 'customizr'),
                                 'label'         => __('Enable drop caps' , 'customizr'),
                                 'control'       => 'TC_controls' ,
-                                'notice'         => __( "Apply a drop cap to the first paragraph of your post / page content." , "customizr" ),
+                                'notice'         => __( "Apply a drop cap to the first paragraph of your post / page content" , "customizr" ),
                                 'section'       => 'tc_paragraphs_settings' ,
                                 'type'          => 'checkbox',
                                 'priority'      => 1
@@ -2101,6 +2148,45 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'notice'      =>__( 'By default, WordPress displays the past comments, even if comments are disabled in posts or pages. Unchecking this option allows you to not display this comment history.' , 'customizr' )
               ),
 
+              /* Post navigation */
+              'tc_theme_options[tc_show_post_navigation]'  =>  array(
+                                'default'       => 1,
+                                'control'     => 'TC_controls' ,
+                                'label'         => __( "Display posts navigation" , "customizr" ),
+                                'section'       => 'tc_post_navigation_settings' ,
+                                'type'          => 'checkbox',
+                                'notice'    => __( 'When this option is checked, the posts navigation is displayed below the posts' , 'customizr' ),
+                                'priority'      => 5,
+                                'transport'   => 'postMessage'
+              ),
+              'tc_theme_options[tc_show_post_navigation_page]'  =>  array(
+                                'default'       => 0,
+                                'control'     => 'TC_controls' ,
+                                'title'         => __( 'Select the contexts' , 'customizr' ),
+                                'label'         => __( "Display navigation in pages" , "customizr" ),
+                                'section'       => 'tc_post_navigation_settings' ,
+                                'type'          => 'checkbox',
+                                'priority'      => 10,
+                                'transport'   => 'postMessage'
+              ),
+              'tc_theme_options[tc_show_post_navigation_single]'  =>  array(
+                                'default'       => 1,
+                                'control'     => 'TC_controls' ,
+                                'label'         => __( "Display posts navigation in single posts" , "customizr" ),
+                                'section'       => 'tc_post_navigation_settings' ,
+                                'type'          => 'checkbox',
+                                'priority'      => 20,
+                                'transport'   => 'postMessage'
+              ),
+              'tc_theme_options[tc_show_post_navigation_archive]'  =>  array(
+                                'default'       => 1,
+                                'control'     => 'TC_controls' ,
+                                'label'         => __( "Display posts navigation in post lists (archives, blog page, categories, search results ..)" , "customizr" ),
+                                'section'       => 'tc_post_navigation_settings' ,
+                                'type'          => 'checkbox',
+                                'priority'      => 25,
+                                'transport'   => 'postMessage'
+              ),
               /* Footer */
               'tc_theme_options[tc_show_back_to_top]'  =>  array(
                                 'default'       => 1,

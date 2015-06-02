@@ -314,7 +314,7 @@ if ( ! class_exists( 'TC___' ) ) :
     * @return  boolean
     * @since  3.3+
     */
-    private function tc_is_customize_left_panel() {
+    function tc_is_customize_left_panel() {
       global $pagenow;
       return is_admin() && isset( $pagenow ) && 'customize.php' == $pagenow;
     }
@@ -325,17 +325,22 @@ if ( ! class_exists( 'TC___' ) ) :
     * @return  boolean
     * @since  3.3+
     */
-    private function tc_is_customize_preview_frame() {
+    function tc_is_customize_preview_frame() {
       return ! is_admin() && isset($_REQUEST['wp_customize']);
     }
 
 
     /**
+    * Always include wp_customize or customized in the custom ajax action triggered from the customizer
+    * => it will be detected here on server side
+    * typical example : the donate button
+    *
     * @return boolean
     * @since  3.3.2
     */
     function tc_doing_customizer_ajax() {
-      return isset( $_POST['customized'] ) && ( defined( 'DOING_AJAX' ) && DOING_AJAX );
+      $_is_ajaxing_from_customizer = isset( $_POST['customized'] ) || isset( $_POST['wp_customize'] );
+      return $_is_ajaxing_from_customizer && ( defined( 'DOING_AJAX' ) && DOING_AJAX );
     }
 
   }//end of class

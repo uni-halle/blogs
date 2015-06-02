@@ -27,7 +27,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
 
       self::$instance =& $this;
   		//add control class
-  		add_action ( 'customize_register'				                , array( $this , 'tc_add_controls_class' ) ,10,1);        
+  		add_action ( 'customize_register'				                , array( $this , 'tc_add_controls_class' ) ,10,1);
 
   		//add grid/post list buttons
   		add_action( '__before_setting_control'    , array( $this , 'tc_render_grid_control_link') );
@@ -338,13 +338,31 @@ if ( ! class_exists( 'TC_customize' ) ) :
 			        	'AjaxUrl'       => admin_url( 'admin-ajax.php' ),
 			        	'TCNonce' 			=> wp_create_nonce( 'tc-customizer-nonce' ),
                 'themeName'     => TC___::$theme_name,
-                'HideDonate'    => TC_utils::$inst->tc_opt('tc_hide_donate'),
+                'HideDonate'    => $this -> tc_get_hide_donate_status(),
                 'ShowCTA'       => ( true == TC_utils::$inst->tc_opt('tc_hide_donate') && ! get_transient ('tc_cta') ) ? true : false
 			        )
 			    )
 	        );
 
 		}
+
+
+    /**
+    * Donate visibility
+    * callback of wp_ajax_hide_donate*
+    * @package Customizr
+    * @since Customizr 3.1.14
+    */
+    function tc_get_hide_donate_status() {
+      //is customizr the current active theme?
+      //=> check the existence of is_theme_active for backward compatibility (may be useless because introduced in 3.4... )
+      $_is_customizr_active = method_exists( $GLOBALS['wp_customize'], 'is_theme_active' ) && $GLOBALS['wp_customize'] -> is_theme_active();
+      $_options = get_option('tc_theme_options');
+      $_user_started_customize = false !== $_options || ! empty( $_options );
+
+      //shall we hide donate ?
+      return ! $_user_started_customize || ! $_is_customizr_active || TC_utils::$inst->tc_opt('tc_hide_donate');
+    }
 
 
 
