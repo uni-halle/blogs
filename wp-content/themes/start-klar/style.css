@@ -1,0 +1,65 @@
+/*
+Theme Name: Start-Klar
+Description: Theme für Projekt Start-Klar
+Version: 1.0
+Author: Robert Jäckel
+Template:customizr-pro 
+*/
+@import url("../customizr-pro/style.css");
+
+
+
+.fpc-widget-front,
+.fpc-marketing .fpc-widget-front h2
+{ text-align: left; }
+.fpc-widget-front > p { margin: 0; }
+footer#footer {background: #eee; }
+footer#footer a, footer#footer p { color: #111; }
+
+.tc-header {
+    border-top: 10px solid #94b34c;
+}
+.navbar .btn-navbar {
+   background-color: #005133;
+  background-image: linear-gradient(to bottom, #94b34c, #005133);
+}
+.navbar .btn-navbar:focus,
+.navbar .btn-navbar:hover {
+   background-color: #94b34c;
+}
+.tc-sidebar .current-menu-item a {
+    color: #222;
+}
+.tc-header .current-menu-ancestor>a,
+.tc-header .current-menu-item>a {
+font-weight: bold;
+}
+.widget.widget_nav_menu li::before,
+.widget h3::before {
+    color: #005133;
+}
+
+.fpc-container.fpc-marketing .fpc-widget-front h2 {
+    color: #94b34c !important;
+}
+.fpc-container .fpc-widget-front > p {
+    color: #222 !important;
+}
+
+.alignleft, article h2, article h3 { clear:both; }
+
+article a img.alignleft { border: 1px solid #94c34c; padding: 10px; }
+
+article a[id] { position: relative; bottom: 1em; }
+
+
+   article .ui-tabs-nav *,
+   article .ui-tabs-nav {padding:0; margin: 0; text-align: right;}
+   article .ui-tabs-nav { display: block; }
+   article .ui-tabs-nav li { display: inline-block; float: left;}
+   /*article .ui-tabs-nav li:nth-child(2) { float: right; }*/
+   article .ui-tabs-nav a { bottom:0; border: 1px solid #94b34c; float: left; padding: .5em 1.5em; margin-right: .25em; margin-bottom: -1px; color: #94b34c; border-radius: 2px 2px 0 0;}
+   article .ui-tabs-panel {clear: both; border: 1px solid #94b34c; padding: .75em 1em; border-radius: 0 2px 2px 2px; }
+   article .ui-tabs-active a { background: #94b34c; color: #fff;}
+
+
