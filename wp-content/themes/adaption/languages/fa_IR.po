@@ -1,18 +1,26 @@
-# Translation of Adaption in French (Canada)
+# Translation of Adaption in Persian
 # This file is distributed under the same license as the Adaption package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2014-07-12 03:25:01+0000\n"
+"PO-Revision-Date: 2015-05-12 04:51:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/0.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/1.0-alpha-1000\n"
 "Project-Id-Version: Adaption\n"
 
+#: functions.php:90
+msgid "Mobile Widgets"
+msgstr ""
+
+#. Description of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid "A theme that adapts to your content, making sure it looks good on any device. Full width featured images make your content stand out. This theme adapts as add widgets with a 3rd column added to the layout."
 msgstr ""
 
+#. Author of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid "Automattic"
 msgstr ""
 
@@ -23,19 +31,19 @@ msgstr ""
 
 #: inc/template-tags.php:109
 msgid " (Edit)"
-msgstr ""
+msgstr " (ویرایش)"
 
 #: inc/template-tags.php:147
 msgid "<span class=\"posted-on\">Posted on %1$s</span><span class=\"byline\"> by %2$s</span>"
-msgstr "<span class=\"posted-on\">Publié le %1$s</span><span class=\"byline\"> par %2$s</span>"
+msgstr "<span class=\"posted-on\">منتشرشده در %1$s</span><span class=\"byline\"> بدست %2$s</span>"
 
 #: inc/template-tags.php:158
 msgid "<span class=\"posted-on\">Posted on %1$s</span>"
-msgstr "<span class=\"posted-on\">Publié le %1$s</span>"
+msgstr "<span class=\"posted-on\">منتشرشده در %1$s</span>"
 
 #: search.php:16
 msgid "Search Results for: %s"
-msgstr "Résultats de recherche pour : %s"
+msgstr "نتایج جست‌وجو برای: %s"
 
 #: inc/template-tags.php:102
 msgid "%s "
@@ -43,11 +51,11 @@ msgstr "%s"
 
 #: inc/template-tags.php:99
 msgid "Your comment is awaiting moderation."
-msgstr "Votre commentaire est en attente de modération."
+msgstr "دیدگاه شما چشم به راه بررسی است."
 
 #: inc/template-tags.php:82
 msgid "Pingback:"
-msgstr "Ping :"
+msgstr "بازتاب: "
 
 #: inc/template-tags.php:60
 msgctxt "Next post link"
@@ -61,15 +69,15 @@ msgstr "<span class=\"meta-nav\">&larr;</span> %title"
 
 #: inc/template-tags.php:56
 msgid "Post navigation"
-msgstr "Navigation des articles"
+msgstr "ناوبری نوشته"
 
 #: inc/template-tags.php:31
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Articles ultérieurs <span class=\"meta-nav\">&rarr;</span>"
+msgstr "نوشته‌های تازه‌تر <span class=\"meta-nav\">&rarr;</span>"
 
 #: inc/template-tags.php:27
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
-msgstr "<span class=\"meta-nav\">&larr;</span> Articles Précédents"
+msgstr "<span class=\"meta-nav\">&larr;</span> نوشته‌های پیشین"
 
 #: inc/extras.php:116
 msgid "Read more <span class=\"screen-reader-text\">%1s</span>"
@@ -77,69 +85,76 @@ msgstr ""
 
 #: inc/template-tags.php:23
 msgid "Posts navigation"
-msgstr "Navigation des articles"
+msgstr "ناوبری نوشته‌ها"
 
 #: inc/extras.php:66
 msgid "Page %s"
-msgstr "Page %s"
+msgstr "صفحهٔ %s"
 
-#: header.php:38 header.php:101
+#: header.php:38 header.php:93
 msgid "Skip to content"
-msgstr "Aller au contenu principal"
+msgstr "پرش به محتوا"
 
 #: functions.php:44
 msgid "Social Links Menu"
-msgstr "Menu des Liens Sociaux"
+msgstr "گزینگان پیوندهای اجتماعی"
 
 #: functions.php:72
 msgid "Sidebar One"
-msgstr "Colonne latérale un"
+msgstr "نوار کناری یک"
 
 #: functions.php:81
 msgid "Sidebar Two"
-msgstr "Colonne latérale deux"
+msgstr "نوار کناری دو"
 
-#: functions.php:104
+#. translators: If there are characters in your language that are not supported
+#. by Arimo, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:113
 msgctxt "Arimo sans-serif font: on or off"
 msgid "on"
 msgstr ""
 
-#: functions.php:112
+#. translators: To add an additional Armio character subsets,
+#. * translate this to 'greek', 'cyrillic' or 'vietnamese'.
+#. * Do not translate these strings into your own langauge.
+#: functions.php:121
 msgctxt "Arimo: add new subset (cyrillic, greek, vietnamese)"
 msgid "no-subset"
 msgstr ""
 
 #: functions.php:43
 msgid "Primary Menu"
-msgstr "Menu principal"
+msgstr "گزینگان اصلی"
 
 #: footer.php:18
 msgid "Theme: %1$s by %2$s."
-msgstr "Thème %1$s par %2$s."
+msgstr "پوسته: %1$s کاری از %2$s."
 
 #: footer.php:16
 msgid "Proudly powered by %s"
-msgstr "Fièrement propulsé par %s"
+msgstr "با افتخار، نیرو گرفته از %s"
 
 #: content.php:69
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
-msgstr "Lire la suite <span class=\"meta-nav\">&rarr;</span>"
+msgstr "به خواندن ادامه دهید <span class=\"meta-nav\">&rarr;</span>"
 
 #: content.php:22
 msgid "% Comments"
-msgstr "% commentaires"
+msgstr "% دیدگاه"
 
 #: content.php:22
 msgid "1 Comment"
-msgstr "Un commentaire"
+msgstr "۱ دیدگاه"
 
 #: content.php:22
 msgid "Leave a comment"
-msgstr "Laisser un commentaire"
+msgstr "بیان دیدگاه"
 
+#. translators: used between list items, there is a space after the comma
 #: content-single.php:60 content.php:82
 msgid " "
-msgstr ""
+msgstr " "
 
 #: content-single.php:66 content.php:87
 msgid "%1$s"
@@ -147,110 +162,110 @@ msgstr "%1$s"
 
 #: content-single.php:32 content.php:40
 msgid "All %s posts"
-msgstr "Tous les articles de %s"
+msgstr "همهٔ %s نوشته"
 
 #: content-single.php:38
 msgid " Edit"
-msgstr "Éditer"
+msgstr "ویرایش"
 
+#. translators: used between list items, there is a space after the comma
 #: content-single.php:24 content.php:30
 msgid ", "
-msgstr ", "
+msgstr "، "
 
 #: content-single.php:13 content.php:13
 msgid "Permalink to %s"
-msgstr "Permalien vers %s"
+msgstr "پایاپیوند به %s"
 
 #: content-page.php:23 inc/template-tags.php:82
 msgid "Edit"
-msgstr "Modifier"
+msgstr "ویرایش"
 
 #: content-page.php:18 content-single.php:52 content.php:72
 msgid "Pages:"
-msgstr "Pages :"
+msgstr "صفحه‌ها:"
 
 #: content-none.php:28
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "Le contenu demandé n&rsquo;a pu être trouvé. Pourquoi ne pas lancer une recherche? "
+msgstr "به نظر می‌آید ما نمی‌توانیم آنچه به دنبالش هستید بیابیم. احتمالا جست‌وجو می‌تواند کمک کند."
 
 #: content-none.php:23
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr "Désolé, mais rien ne correspond à vos critères. Réessayez en modifiant les termes de recherche."
+msgstr "متأسفانه، هیچ‌چیزی با عبارت‌های جستجوی شما مطابقت نداشت. لطفاً دوباره با چند کلیدواژهٔ متفاوت تلاش کنید."
 
 #: content-none.php:19
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr "Vous êtes prêt à publier votre premier article? <a href=\"%1$s\">Commencez ici</a>."
+msgstr "آمادهٔ انتشار نخستین نوشتهٔ خود هستید؟ <a href=\"%1$s\">از اینجا بیآغازید</a>."
 
 #: content-none.php:13
 msgid "Nothing Found"
-msgstr "Inaccessible"
+msgstr "چیزی پیدا نشد"
 
 #: comments.php:63
 msgid "Comments are closed."
-msgstr "Les commentaires sont fermés."
+msgstr "دیدگاه‌ها بسته شده‌اند."
 
 #: comments.php:39 comments.php:53
 msgid "Newer Comments &rarr;"
-msgstr "Commentaires ultérieurs &rarr;"
+msgstr "دیدگاه‌های تازه‌تر &rarr;"
 
 #: comments.php:38 comments.php:52
 msgid "&larr; Older Comments"
-msgstr "&larr; Commentaires antérieurs"
+msgstr "&larr; دیدگاه‌های پیشین"
 
 #: comments.php:37 comments.php:51
 msgid "Comment navigation"
-msgstr "Navigation des commentaires"
+msgstr "ناوبری دیدگاه"
 
 #: comments.php:30
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "Une réflexion sur &ldquo;%2$s&rdquo;"
-msgstr[1] "%1$s réflexions sur &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s نظر برای &ldquo;%2$s&rdquo;"
 
 #: archive.php:63
 msgid "Chats"
-msgstr "Clavardages"
+msgstr "گفتگوها"
 
 #: archive.php:66
 msgid "Archives"
-msgstr "Archives"
+msgstr "بایگانی"
 
 #: archive.php:60
 msgid "Audios"
-msgstr "Audios"
+msgstr "صوت‌ها"
 
 #: archive.php:57
 msgid "Statuses"
-msgstr "États"
+msgstr "وضعیت‌ها"
 
 #: archive.php:54
 msgid "Links"
-msgstr "Liens"
+msgstr "پیوندها"
 
 #: archive.php:51
 msgid "Quotes"
-msgstr "Citations"
+msgstr "گفتاورد"
 
 #: archive.php:48
 msgid "Videos"
-msgstr "Vidéos"
+msgstr "ویدئوها"
 
 #: archive.php:45
 msgid "Images"
-msgstr "Images"
+msgstr "تصویرها"
 
 #: archive.php:39
 msgid "Asides"
-msgstr "Apartés"
+msgstr "کلمات قصار"
 
 #: archive.php:42
 msgid "Galleries"
-msgstr "Galeries"
+msgstr "گالری‌ها"
 
 #: archive.php:36
 msgid "Year: %s"
-msgstr "Année&nbsp;: %s"
+msgstr "سال: %s"
 
 #: archive.php:36
 msgctxt "yearly archives date format"
@@ -264,28 +279,29 @@ msgstr "F Y"
 
 #: archive.php:33
 msgid "Month: %s"
-msgstr "Mois&nbsp;: %s"
+msgstr "ماه: %s"
 
 #: archive.php:30
 msgid "Day: %s"
-msgstr "Jour&nbsp;: %s"
+msgstr "روز: %s"
 
 #: archive.php:27
 msgid "Author: %s"
-msgstr "Auteur : %s"
+msgstr "نویسنده: %s"
 
+#. translators: %1$s: smiley
 #: 404.php:44
 msgid "Try looking in the monthly archives. %1$s"
-msgstr "Nous vous suggérons de parcourir les archives mensuelles. %1$s"
+msgstr "بد نیست نگاهی به بایگانی ماهانه بیندازید. %1$s"
 
 #: 404.php:27
 msgid "Most Used Categories"
-msgstr "Catégories les plus utilisées"
+msgstr "پراستفاده‌ترین دسته‌ها"
 
 #: 404.php:19
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
-msgstr "Aucun contenu n&rsquo; a été trouvé à l&rsquo;adresse demandée. Pourquoi ne pas essayer l&rsquo;un des liens ci-dessouss, ou encore, lancer une recherche?"
+msgstr "به نظر می‌رسد چیزی در این مکان نیست. شاید بخواهید یکی از پیوندهای زیر یا جست‌وجو را آزمایش کنید."
 
 #: 404.php:15
 msgid "Oops! That page can&rsquo;t be found."
-msgstr "Oups! Cette page est introuvable."
+msgstr "اوه! امکان یافتن صفحه نیست."

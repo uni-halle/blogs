@@ -7,12 +7,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/0.1\n"
+"X-Generator: GlotPress/1.0-alpha-1000\n"
 "Project-Id-Version: Adaption\n"
 
+#: functions.php:90
+msgid "Mobile Widgets"
+msgstr ""
+
+#. Description of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid "A theme that adapts to your content, making sure it looks good on any device. Full width featured images make your content stand out. This theme adapts as add widgets with a 3rd column added to the layout."
 msgstr ""
 
+#. Author of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid "Automattic"
 msgstr ""
 
@@ -83,7 +91,7 @@ msgstr "Yazı naviqasiyaları"
 msgid "Page %s"
 msgstr "Səhifə %s"
 
-#: header.php:38 header.php:101
+#: header.php:38 header.php:93
 msgid "Skip to content"
 msgstr "Mühtəviyyata keç"
 
@@ -99,12 +107,18 @@ msgstr "Yan menyu Bir"
 msgid "Sidebar Two"
 msgstr "Yan menyu İki"
 
-#: functions.php:104
+#. translators: If there are characters in your language that are not supported
+#. by Arimo, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:113
 msgctxt "Arimo sans-serif font: on or off"
 msgid "on"
 msgstr ""
 
-#: functions.php:112
+#. translators: To add an additional Armio character subsets,
+#. * translate this to 'greek', 'cyrillic' or 'vietnamese'.
+#. * Do not translate these strings into your own langauge.
+#: functions.php:121
 msgctxt "Arimo: add new subset (cyrillic, greek, vietnamese)"
 msgid "no-subset"
 msgstr ""
@@ -137,6 +151,7 @@ msgstr "1 Şərh"
 msgid "Leave a comment"
 msgstr "Bir şərh yazın"
 
+#. translators: used between list items, there is a space after the comma
 #: content-single.php:60 content.php:82
 msgid " "
 msgstr ""
@@ -153,6 +168,7 @@ msgstr "bütün %s  yazıları"
 msgid " Edit"
 msgstr "Redaktə et"
 
+#. translators: used between list items, there is a space after the comma
 #: content-single.php:24 content.php:30
 msgid ", "
 msgstr ","
@@ -274,6 +290,7 @@ msgstr "Gün: %s"
 msgid "Author: %s"
 msgstr "Müəllif: %s"
 
+#. translators: %1$s: smiley
 #: 404.php:44
 msgid "Try looking in the monthly archives. %1$s"
 msgstr "Aylıq arxivlərə baxmağı yoxlayın. %1$s"

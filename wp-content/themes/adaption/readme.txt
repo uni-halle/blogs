@@ -45,6 +45,8 @@ You can add a multitude of social site links to a icon by following these steps:
 3. The Secondary Sidebar is 20%.
 
 == Changelog ==
+1.0.6 : Made RTL styles work properly on larger screens
+1.0.5 : Fix toggle menus on mobile devices when post content includes embedded multimedia
 1.0.4 : Fixes navigation issue with padding on larger screens
 1.0.3 : Update read more link spelling mistake and google fonts
 1.0.2 : Updated version number due to pot file

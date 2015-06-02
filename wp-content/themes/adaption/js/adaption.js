@@ -45,7 +45,7 @@
             });
         }
 
-    $(window).on('load', showBlock);
+    	$(document).on('ready', showBlock);
     });
 
     /**

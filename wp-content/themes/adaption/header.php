@@ -25,7 +25,7 @@
 		<?php if ( ( has_nav_menu( 'social' ) ) || ( has_nav_Menu( 'primary') ) ) : ?>
 			<div id="mobile-link"></div><!-- #mobile-link -->
 		<?php endif; ?>
-		<?php if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) : ?>
+		<?php if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
 			<div id="widget-link"></div><!-- #widget-link -->
 		<?php endif; ?>
 
@@ -53,21 +53,13 @@
 			<?php endif; ?>
 		</div><!-- #mobile-block-->
 
-		<?php if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) : ?>
+		<?php if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
 			<div id="widget-block">
 
 				<div class="widget-areas">
-					<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+					<?php if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
 						<div class="widget-area">
-							<?php dynamic_sidebar( 'sidebar-1' ); ?>
-						</div><!-- .widget-area -->
-					<?php endif; ?>
-				</div><!-- .widgets-areas -->
-
-				<div class="widget-areas">
-					<?php if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
-						<div class="widget-area">
-							<?php dynamic_sidebar( 'sidebar-2' ); ?>
+							<?php dynamic_sidebar( 'sidebar-3' ); ?>
 						</div><!-- .widget-area -->
 					<?php endif; ?>
 				</div><!-- .widgets-areas -->
@@ -117,11 +109,9 @@
 
 		<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
 			<div class="widget-areas">
-				<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-					<div class="widget-area">
-						<?php dynamic_sidebar( 'sidebar-1' ); ?>
-					</div><!-- .widget-area -->
-				<?php endif; ?>
+				<div class="widget-area">
+					<?php dynamic_sidebar( 'sidebar-1' ); ?>
+				</div><!-- .widget-area -->
 			</div><!-- .widgets-areas -->
 		<?php endif; ?>
 

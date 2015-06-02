@@ -1,26 +1,21 @@
 /*
 Theme Name: Adaption
-Theme URI: http://adaptiondemo.wordpress.com/
+Theme URI: https://wordpress.com/themes/adaption/
+Description: A theme that adapts to your content, making sure it looks good on any device. Full width featured images make your content stand out. This theme adapts as add widgets with a 3rd column added to the layout.
+Version: 1.0.6
 Author: Automattic
 Author URI: http://themes.wordpress.com/
-Description: A theme that adapts to your content, making sure it looks good on any device. Full width featured images make your content stand out. This theme adapts as add widgets with a 3rd column added to the layout.
-Version: 1.0.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: adaption
-Domain Path: /languages/
 Tags: black, white, red, three-columns, two-columns, responsive-layout, fluid-layout, custom-colors, custom-header, custom-menu, editor-style, post-formats, rtl-language-support, sticky-post, translation-ready, photoblogging, custom-background
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
-Adaption is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
-
-Resetting and rebuilding styles have been helped along thanks to the fine work of
-Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
-along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
-and Blueprint http://www.blueprintcss.org/
+Adaption is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
 */
+
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -718,6 +713,24 @@ img.aligncenter {
   margin: 0;
   padding: 0;
 }
+.main-navigation ul ul li:first-child a {
+  padding: 10px 20px 10px 40px;
+}
+.main-navigation ul ul li:last-child a {
+  padding: 10px 20px 10px 40px;
+}
+.main-navigation ul ul ul li:first-child a {
+  padding: 10px 20px 10px 60px;
+}
+.main-navigation ul ul ul li:last-child a {
+  padding: 10px 20px 10px 60px;
+}
+.main-navigation ul ul ul ul li:first-child a {
+  padding: 10px 20px 10px 80px;
+}
+.main-navigation ul ul ul ul li:last-child a {
+  padding: 10px 20px 10px 80px;
+}
 .main-navigation ul ul li a {
   opacity: 0.7;
   padding-left: 40px;
@@ -726,29 +739,11 @@ img.aligncenter {
   background: #a00101;
   opacity: 1;
 }
-.main-navigation ul ul li:first-child a {
-  padding: 10px 20px 10px 40px;
-}
-.main-navigation ul ul li:last-child a {
-  padding: 10px 20px 10px 40px;
-}
 .main-navigation ul ul ul li a {
   padding-left: 60px;
 }
-.main-navigation ul ul ul li:first-child a {
-  padding: 10px 20px 10px 60px;
-}
-.main-navigation ul ul ul li:last-child a {
-  padding: 10px 20px 10px 60px;
-}
 .main-navigation ul ul ul ul li a {
   padding-left: 80px;
-}
-.main-navigation ul ul ul ul li:first-child a {
-  padding: 10px 20px 10px 80px;
-}
-.main-navigation ul ul ul ul li:last-child a {
-  padding: 10px 20px 10px 80px;
 }
 .main-navigation ul ul {
   top: 0;
@@ -761,12 +756,6 @@ img.aligncenter {
 .main-navigation li a:hover {
   background: #a00101;
   color: white;
-}
-.main-navigation li:first-child a {
-  padding: 20px 20px 10px 20px;
-}
-.main-navigation li:last-child a {
-  padding: 10px 20px 20px 20px;
 }
 .main-navigation a,
 .main-navigation a:visited {
@@ -933,67 +922,85 @@ img.aligncenter {
   margin-right: 0;
 }
 
-.social-links ul a[href*="wordpress.org"]:before,
-.social-links ul a[href*="wordpress.com"]:before {
-  content: "\f205";
+.social-links ul a[href*='wordpress.org']:before,
+.social-links ul a[href*='wordpress.com']:before {
+    content: '\f205';
 }
-
-.social-links ul a[href*="facebook.com"]:before {
-  content: "\f204";
+.social-links ul a[href*='facebook.com']:before {
+    content: '\f204';
 }
-
-.social-links ul a[href*="twitter.com"]:before {
-  content: "\f202";
+.social-links ul a[href*='twitter.com']:before {
+    content: '\f202';
 }
-
-.social-links ul a[href*="dribbble.com"]:before {
-  content: "\f201";
+.social-links ul a[href*='dribbble.com']:before {
+    content: '\f201';
 }
-
-.social-links ul a[href*="plus.google.com"]:before {
-  content: "\f206";
+.social-links ul a[href*='plus.google.com']:before {
+    content: '\f206';
 }
-
-.social-links ul a[href*="pinterest.com"]:before {
-  content: "\f209";
+.social-links ul a[href*='pinterest.com']:before {
+    content: '\f209';
 }
-
-.social-links ul a[href*="github.com"]:before {
-  content: "\f200";
+.social-links ul a[href*='github.com']:before {
+    content: '\f200';
 }
-
-.social-links ul a[href*="tumblr.com"]:before {
-  content: "\f214";
+.social-links ul a[href*='tumblr.com']:before {
+    content: '\f214';
 }
-
-.social-links ul a[href*="youtube.com"]:before {
-  content: "\f213";
+.social-links ul a[href*='youtube.com']:before {
+    content: '\f213';
 }
-
-.social-links ul a[href*="flickr.com"]:before {
-  content: "\f211";
+.social-links ul a[href*='flickr.com']:before {
+    content: '\f211';
 }
-
-.social-links ul a[href*="vimeo.com"]:before {
-  content: "\f212";
+.social-links ul a[href*='vimeo.com']:before {
+    content: '\f212';
 }
-
-.social-links ul a[href*="instagram.com"]:before {
-  content: "\f215";
+.social-links ul a[href*='instagram.com']:before {
+    content: '\f215';
 }
-
-.social-links ul a[href*="codepen.io"]:before {
-  content: "\f216";
+.social-links ul a[href*='codepen.io']:before {
+    content: '\f216';
 }
-
-.social-links ul a[href*="linkedin.com"]:before {
-  content: "\f207";
+.social-links ul a[href*='linkedin.com']:before {
+    content: '\f207';
 }
-
-.social-links ul a[href*="/feed"]:before {
-  content: "\f413";
+.social-links ul a[href*='foursquare.com']:before {
+    content: '\f226';
 }
-
+.social-links ul a[href*='reddit.com']:before {
+    content: '\f222';
+}
+.social-links ul a[href*='digg.com']:before {
+    content: '\f221';
+}
+.social-links ul a[href*='getpocket.com']:before {
+    content: '\f224';
+}
+.social-links ul a[href*='path.com']:before {
+    content: '\f219';
+}
+.social-links ul a[href*='stumbleupon.com']:before {
+    content: '\f223';
+}
+.social-links ul a[href*='spotify.com']:before {
+    content: '\f515';
+}
+.social-links ul a[href*='twitch.tv']:before {
+    content: '\f516';
+}
+.social-links ul a[href*='dropbox.com']:before {
+    content: '\f225';
+}
+.social-links ul a[href*='/feed']:before {
+    content: '\f413';
+}
+.social-links ul a[href*='skype']:before {
+    content: '\f220';
+}
+.social-links ul a[href*='mailto']:before {
+    content: '\f410';
+}
 .social-links ul a:before {
   background: #666;
   content: "\f415";
@@ -1001,8 +1008,8 @@ img.aligncenter {
 
 #mobile-panel {
   background: #cf000f;
-  height: 45px;
   overflow: hidden;
+  padding: 0 0 10px 0;
   width: 100%;
 }
 
@@ -1307,6 +1314,10 @@ body {
   border-bottom: 1px solid #eee;
   margin: 0;
   padding: 0 20px;
+}
+
+.hentry:last-child {
+  border-bottom: none;
 }
 
 .page-header {
@@ -1650,6 +1661,11 @@ span.infinite-loader .spinner {
   #comments {
     padding: 40px;
   }
+
+  .page-header{
+    margin: 0 40px;
+    padding: 0 0 60px 0;
+  }
 }
 /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
 @media only screen and (min-width: 64.063em) {
@@ -1824,6 +1840,10 @@ span.infinite-loader .spinner {
 
   #comments {
     padding: 40px;
+  }
+  .page-header{
+    margin: 0 40px;
+    padding: 0 0 60px 0;
   }
 }
 /* min-width 1025px, large screens */

@@ -1,14 +1,14 @@
-# Copyright (C) 2014 Automattic
+# Copyright (C) 2015 Automattic
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Adaption 1.0.3-wpcom\n"
+"Project-Id-Version: Adaption 1.0.4-wpcom\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/adaption\n"
-"POT-Creation-Date: 2014-07-17 03:31:09+00:00\n"
+"POT-Creation-Date: 2015-02-25 03:43:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -215,10 +215,14 @@ msgstr ""
 msgid "Sidebar Two"
 msgstr ""
 
+#: functions.php:90
+msgid "Mobile Widgets"
+msgstr ""
+
 #. translators: If there are characters in your language that are not supported
 #. 	   by Arimo, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:104
+#: functions.php:113
 msgctxt "Arimo sans-serif font: on or off"
 msgid "on"
 msgstr ""
@@ -226,12 +230,12 @@ msgstr ""
 #. translators: To add an additional Armio character subsets,
 #. 		 * translate this to 'greek', 'cyrillic' or 'vietnamese'.
 #. 		 * Do not translate these strings into your own langauge.
-#: functions.php:112
+#: functions.php:121
 msgctxt "Arimo: add new subset (cyrillic, greek, vietnamese)"
 msgid "no-subset"
 msgstr ""
 
-#: header.php:38 header.php:101
+#: header.php:38 header.php:93
 msgid "Skip to content"
 msgstr ""
 
@@ -305,14 +309,17 @@ msgid "Search Results for: %s"
 msgstr ""
 
 #. Theme Name of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid "Adaption"
 msgstr ""
 
 #. Theme URI of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid "http://adaptiondemo.wordpress.com/"
 msgstr ""
 
 #. Description of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid ""
 "A theme that adapts to your content, making sure it looks good on any "
 "device. Full width featured images make your content stand out. This theme "
@@ -320,9 +327,11 @@ msgid ""
 msgstr ""
 
 #. Author of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid "Automattic"
 msgstr ""
 
 #. Author URI of the plugin/theme
+#: wp-content/themes/pub/adaption/style.css
 msgid "http://themes.wordpress.com/"
 msgstr ""

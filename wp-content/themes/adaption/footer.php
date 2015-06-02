@@ -15,7 +15,7 @@
 				<?php do_action( 'adaption_credits' ); ?>
 				<a href="http://wordpress.org/" rel="generator"><?php printf( __( 'Proudly powered by %s', 'adaption' ), 'WordPress' ); ?></a>
 				<span class="sep"> | </span>
-				<?php printf( __( 'Theme: %1$s by %2$s.', 'adaption' ), 'Adaption', '<a href="http://automattic.com/" rel="designer">Automattic</a>' ); ?>
+				<?php printf( __( 'Theme: %1$s by %2$s.', 'adaption' ), 'Adaption', '<a href="http://themes.wordpress.com/themes/adaption" rel="designer">WordPress.com</a>' ); ?>
 			</div><!-- .site-info -->
 
 		</footer><!-- #colophon .site-footer -->
