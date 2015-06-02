@@ -6,915 +6,1015 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Skype Online Status NL\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-22 23:54+0100\n"
-"PO-Revision-Date: 2012-12-23 00:03+0100\n"
+"POT-Creation-Date: 2015-05-27 22:21+0100\n"
+"PO-Revision-Date: 2015-05-27 22:25+0100\n"
 "Last-Translator: RavanH <ravanhagen@gmail.com>\n"
 "Language-Team: RavanH <ravanhagen@gmail.com>\n"
-"Language: \n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Dutch\n"
-"X-Poedit-Country: NETHERLANDS\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.7.5\n"
 
 #: ../skype-admin.php:10
-msgid "Skype"
-msgstr "Skype"
-
-#: ../skype-admin.php:11
-#: ../skype-admin.php:492
-#: ../skype-classes.php:101
-msgid "Skype ID"
-msgstr "Skype ID"
-
-#: ../skype-admin.php:11
-#: ../skype-admin.php:14
-#: ../skype-admin.php:22
-#: ../skype-admin.php:30
-#: ../skype-admin.php:65
-#: ../skype-admin.php:82
-#: ../skype-admin.php:83
-#: ../skype-admin.php:186
-#: ../skype-admin.php:193
-#: ../skype-admin.php:206
-#: ../skype-admin.php:307
-#: ../skype-admin.php:309
-#: ../skype-admin.php:310
-#: ../skype-classes.php:101
-#: ../skype-classes.php:104
-#: ../skype-classes.php:107
-#: ../skype-classes.php:110
-#: ../skype-classes.php:113
-#: ../skype-classes.php:236
-msgid ": "
-msgstr ":"
-
-#: ../skype-admin.php:12
-#, php-format
-msgid "Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!"
-msgstr "Voer eenvoudigweg je Skype ID in. Of... Als je de knop een multichat of conferentie oproep wil laten doen, voer dan meerdere ID's in gescheiden door een punt-komma (<strong>;</strong>). Je kunt ook een normaal telefoonnummer (beginnend met <strong>+</strong> gevolgd door de landcode; let op: bezoekers hebben %s nodig om te bellen) invoeren. Het ligt er maar aan wat je wil bereiken!"
-
-#: ../skype-admin.php:12
-#: ../skype-admin.php:306
-#: ../skype-admin.php:307
-msgid "SkypeOut"
-msgstr "SkypeOut"
-
-#: ../skype-admin.php:14
-#: ../skype-admin.php:492
-#: ../skype-classes.php:104
-msgid "Full Name"
-msgstr "Volledige naam"
-
-#: ../skype-admin.php:15
-msgid "Your full name as you want it to appear in Skype links, link-titles and image alt-texts on your blog."
-msgstr "De volledige naam zoals je die op de Skype koppelingen, titels en alt-tekst op je site wil tonen."
-
-#: ../skype-admin.php:19
-#: ../skype-admin.php:22
-#: ../skype-admin.php:186
-#: ../skype-admin.php:188
-#: ../skype-admin.php:492
-#: ../skype-classes.php:110
-msgid "Theme"
-msgstr "Thema"
-
-#: ../skype-admin.php:21
-#, php-format
-msgid "Start with <strong>selecting one of the predefined theme templates</strong> to load into the database. Change the options to see a preview. You might later select %1$s to edit the template in the text field under %2$s."
-msgstr "Begin met <strong>selecteren van een voorgedefinieerd sjabloon</strong> om in de database te laden. Verander de opties om een voorbeeld te zien. Je kunt later %1$s selecteren om het sjabloon in het tekstveld onder %2$s te bewerken."
-
-#: ../skype-admin.php:21
-#: ../skype-admin.php:22
-#: ../skype-admin.php:23
-#: ../skype-admin.php:67
-#: ../skype-admin.php:77
-#: ../skype-admin.php:79
-#: ../skype-admin.php:88
-#: ../skype-admin.php:90
-#: ../skype-admin.php:98
-#: ../skype-admin.php:186
-#: ../skype-admin.php:188
-#: ../skype-admin.php:193
-#: ../skype-admin.php:236
-#: ../skype-admin.php:263
-msgid "Custom..."
-msgstr "Aangepast..."
-
-#: ../skype-admin.php:21
-#: ../skype-admin.php:23
-#: ../skype-admin.php:24
-#: ../skype-admin.php:90
-#: ../skype-admin.php:98
-#: ../skype-admin.php:153
-#: ../skype-admin.php:193
-#: ../skype-classes.php:596
-msgid "Advanced Options"
-msgstr "Geavanceerde instellingen"
-
-#: ../skype-admin.php:21
-#: ../skype-admin.php:23
-#: ../skype-admin.php:185
-msgid "Custom Template"
-msgstr "Aangepast Sjabloon"
-
-#: ../skype-admin.php:23
-#, php-format
-msgid "When %1$s is selected, you can edit the template to your liking below at %2$s under %3$s. When you make changes to that field but select another theme template here, those changes will be overwriten by the new template!"
-msgstr "Als %1$s is geselecteerd, kun je het sjabloon naar eigen inzicht bewerken bij %2$s onder %3$s. Als je daar veranderingen doet en hier een ander sjabloon kiest dan worden ze met de nieuwe sjabloon overschreven!"
-
-#: ../skype-admin.php:23
-#: ../skype-admin.php:186
-msgid "Customize currently loaded template"
-msgstr "Pas het huidige geladen sjabloon aan"
-
-#: ../skype-admin.php:24
-#, php-format
-msgid "If you cannot find a suitable theme, check out <a href=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>. Select your options there and copy/paste the output into the textarea under %s."
-msgstr "Als je geen geschikt thema kunt vinden, kijk op <a href=\"http://www.skype.com/share/buttons/wizard.html\" target=\"_blank\">http://www.skype.com/share/buttons/wizard.html</a>. Selecteer je keuze daar en kopieer/plak de uitkomst in het tekstveld onder %s."
-
-#: ../skype-admin.php:24
-#: ../skype-admin.php:98
-#: ../skype-admin.php:153
-msgid "Display"
-msgstr "Weergave"
-
-#: ../skype-admin.php:28
-#: ../skype-admin.php:30
-msgid "Function"
-msgstr "Functie"
-
-#: ../skype-admin.php:29
-msgid "Some of the button themes will show your online status in an icon/image, without having a specific function assigned. This means you can select what the button should do when clicked by a visitor."
-msgstr "Enkele knop-thema's zullen je online status in een afbeelding weergeven zonder dat er een specifieke functie is toegewezen. Dit betekent dat je hier kunt instellen wat er gebeurt bij een klik van een bezoeker."
-
-#: ../skype-admin.php:38
-#: ../skype-admin.php:79
-#: ../skype-admin.php:260
-#: ../skype-admin.php:495
-msgid "Note:"
-msgstr "Let op:"
-
-#: ../skype-admin.php:38
-#, php-format
-msgid "This setting will only be used in the '%1$s' theme templates, or in your own custom template when the tags %2$s and %3$s are used."
-msgstr "Deze optie wordt alleen bij '%1$s' sjablonen gebruikt, of in je aangepaste sjabloon als de tags %2$s en %3$s worden gebruikt."
-
-#: ../skype-admin.php:42
-#: ../skype-admin.php:197
-#: ../skype-admin.php:245
-msgid "Save Changes"
-msgstr "Opslaan"
-
-#: ../skype-admin.php:45
-#, php-format
-msgid "If you have your basic settings correct and there is a Skype button visible on blog, you can fine-tune it's appearance and function with the advanced settings. Each option is annotated but you can read more in the %s section."
-msgstr "Als je deze basis-instellingen in orde hebt en er een Skype knop op de site zichtbaar is, kun je het uiterlijk en functie fijn-afstellen onder geavanceerde instellingen. Elke optie is van commentaar voorzien maar je kunt meer in de %s sectie lezen."
-
-#: ../skype-admin.php:45
-#: ../skype-admin.php:188
-#: ../skype-admin.php:226
-#: ../skype-admin.php:370
-#: ../skype-admin.php:496
-#: ../skype-quickguide-notes.php:6
-msgid "Quick Guide"
-msgstr "Snelgids"
-
-#: ../skype-admin.php:47
-#: ../skype-admin.php:200
-#: ../skype-quickguide-notes.php:13
-#: ../skype-quickguide-notes.php:28
-#: ../skype-quickguide-notes.php:47
-#: ../skype-quickguide-notes.php:94
-#: ../skype-quickguide-notes.php:108
-#: ../skype-quickguide-notes.php:121
-#: ../skype-quickguide-notes.php:130
-#: ../skype-quickguide-notes.php:135
-#: ../skype-quickguide-notes.php:139
-msgid "Top"
-msgstr "Boven"
-
-#: ../skype-admin.php:54
 msgid "Post content"
 msgstr "Post inhoud"
 
-#: ../skype-admin.php:55
+#: ../skype-admin.php:11
 #, php-format
-msgid "When writing posts you can insert a Skype button with a simple quicktag %1$s or %2$s but to make life even easier, a small button on the WYSIWYG editor can do it for you. Check this option to show %3$s or uncheck to hide it. You may still insert the quicktag  in the HTML code of your post or page content manually."
-msgstr "Bij het schrijven dan posts kun je Skype knoppen met een simpele quicktag %1$s of %2$s maar om het leven eenvoudiger te maken, kan de WYSIWYG editor het voor je doen. Activeer deze optie om %3$s weer te geven. Zonder dat, kun je altijd handmatig de quicktag code in posts en pagina's invoeren."
+msgid ""
+"When writing posts you can insert a Skype button with a simple quicktag %1$s "
+"or %2$s but to make life even easier, a small button on the WYSIWYG editor "
+"can do it for you. Check this option to show %3$s or uncheck to hide it. You "
+"may still insert the quicktag  in the HTML code of your post or page content "
+"manually."
+msgstr ""
+"Bij het schrijven dan posts kun je Skype knoppen met een simpele quicktag "
+"%1$s of %2$s maar om het leven eenvoudiger te maken, kan de WYSIWYG editor "
+"het voor je doen. Activeer deze optie om %3$s weer te geven. Zonder dat, kun "
+"je altijd handmatig de quicktag code in posts en pagina's invoeren."
 
-#: ../skype-admin.php:55
-#: ../skype-admin.php:206
-#: ../skype-admin.php:273
-#: ../skype-admin.php:346
-#: ../skype-admin.php:381
-#: ../skype-admin.php:383
-#: ../skype-admin.php:385
-#: ../skype-admin.php:493
-#: ../skype-classes.php:537
-#: ../skype-quickguide-notes.php:115
-#: ../skype-quickguide-notes.php:124
-msgid "Skype Online Status"
-msgstr "Skype Online Status"
+#: ../skype-admin.php:11 ../skype-admin.php:195 ../skype-admin.php:263
+#: ../skype-admin.php:328 ../skype-admin.php:363 ../skype-admin.php:365
+#: ../skype-admin.php:367 ../skype-admin.php:481 ../skype-classes.php:575
+#: ../skype-quickguide-notes.php:114 ../skype-quickguide-notes.php:123
+msgid "Skype Legacy Buttons"
+msgstr "Skype Legacy Buttons"
 
-#: ../skype-admin.php:56
-msgid "Use <strong>Skype Status quicktag button</strong> in the RTE for posts."
-msgstr "Gebruik de <strong>Skype Status quicktag knop</strong> in de post/pagina RTE."
+#: ../skype-admin.php:12
+msgid "Use <strong>Skype shortcode button</strong> in the RTE for posts."
+msgstr ""
+"Gebruik de <strong>Skype shortcode knop</strong> in de post/pagina RTE."
 
-#: ../skype-admin.php:60
-#: ../skype-admin.php:193
+#: ../skype-admin.php:16 ../skype-admin.php:182 ../skype-admin.php:502
 msgid "Display &amp; Function"
 msgstr "Weergave &amp; Functie"
 
-#: ../skype-admin.php:61
-msgid "These settings define which options should be used to replace their respective tag (if present) in the selected template file. If unchecked, the tags will be blanked out."
-msgstr "De instellingen bepalen welke opties gebruikt moeten worden om hun tag (indien aanwezig) te vervangen in het geselecteerde sjabloon. Uitgeschakeld zullen de tags vervallen."
+#: ../skype-admin.php:17
+msgid ""
+"These settings define which options should be used to replace their "
+"respective tag (if present) in the selected template file. If unchecked, the "
+"tags will be blanked out."
+msgstr ""
+"De instellingen bepalen welke opties gebruikt moeten worden om hun tag "
+"(indien aanwezig) te vervangen in het geselecteerde sjabloon. Uitgeschakeld "
+"zullen de tags vervallen."
 
-#: ../skype-admin.php:62
+#: ../skype-admin.php:18
 #, php-format
-msgid "Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
-msgstr "Gebruik %1$s in een Dropdown knop. Schakel dit uit als je geen %2$s of %3$s hebt."
+msgid ""
+"Use %1$s in dropdown button. Leave unchecked if you do not have %2$s or %3$s."
+msgstr ""
+"Gebruik %1$s in een Dropdown knop. Schakel dit uit als je geen %2$s of %3$s "
+"hebt."
 
-#: ../skype-admin.php:62
-#: ../skype-classes.php:292
+#: ../skype-admin.php:18 ../skype-classes.php:315
 msgid "Leave me voicemail"
 msgstr "Spreek een bericht in"
 
-#: ../skype-admin.php:62
-#: ../skype-admin.php:308
-#: ../skype-admin.php:309
-#: ../skype-classes.php:121
+#: ../skype-admin.php:18 ../skype-admin.php:307 ../skype-classes.php:114
 msgid "SkypeIn"
 msgstr "SkypeIn"
 
-#: ../skype-admin.php:62
-#: ../skype-admin.php:310
-#: ../skype-classes.php:121
+#: ../skype-admin.php:18 ../skype-admin.php:308 ../skype-classes.php:114
 msgid "Skype Voicemail"
 msgstr "Skype Voicemail"
 
-#: ../skype-admin.php:64
+#: ../skype-admin.php:21
 #, php-format
 msgid "Use %1$s (define below) for %2$s tags."
 msgstr "Gebruik %1$s (definieer hieronder) voor %2$s tags."
 
-#: ../skype-admin.php:64
+#: ../skype-admin.php:21
 msgid "Action text"
 msgstr "Actie tekst"
 
-#: ../skype-admin.php:65
-#: ../skype-admin.php:79
-#: ../skype-admin.php:98
-#: ../skype-admin.php:153
-msgid "Status texts"
-msgstr "Status tekst"
+#: ../skype-admin.php:23
+msgid "Use local images instead of the ones hosted on the Skype servers."
+msgstr ""
+"Gebruik lokale bestanden in plaats van die zijn gehost op de Skype servers."
 
-#: ../skype-admin.php:65
-#, php-format
-msgid "for the %s tag"
-msgstr "voor de %s tag"
+#: ../skype-admin.php:25
+msgid "Use schemeless URLs / protocol relative paths for TLS compatibility."
+msgstr ""
+"Gebruik geen URL schema (protocol-relatief pad) voor SSL compatibiliteit."
 
-#: ../skype-admin.php:66
-#: ../skype-admin.php:75
-#: ../skype-admin.php:77
-#: ../skype-admin.php:79
-#: ../skype-admin.php:153
-msgid "Disabled"
-msgstr "Uitgeschakeld"
-
-#: ../skype-admin.php:75
-#, php-format
-msgid "If you select %1$s, the tags %2$s, %3$s and %4$s in the button template will be ignored."
-msgstr "Als je %1$s selecteert, zullen de tags %2$s, %3$s en %4$s in het sjabloon worden genegeerd."
-
-#: ../skype-admin.php:77
-#, php-format
-msgid "When security settings on your server are too tight (<strong>safe_mode</strong> enabled, <strong>open_basedir</strong> restictions or <strong>allow_url_fopen</strong> being disabled), your status does not show or the Skype button doesn't load and you find an error like \"Warning: file_get_contents() [function.file-get-contents]: URL file-access is disabled in the server configuration...\" in the server log files, use either %1$s or %2$s here."
-msgstr "Als de beveiligingsinstellingen op je server te streng zijn (<strong>safe_mode</strong> aan, <strong>open_basedir</strong> restricties or <strong>allow_url_fopen</strong> uitgeschakeld), je status of de Skype knop niet weergegeven wordt  en er een error als \"Warning: file_get_contents() [function.file-get-contents]: URL file-access is disabled in the server configuration...\" in het server log-bestand verschijnt, gebruik hier dan %1$s of %2$s."
-
-#: ../skype-admin.php:79
-#: ../skype-admin.php:391
-msgid "The security settings on your server are too tight for the online status to be read from the Skype server."
-msgstr "De beveiligingsinstellingen op je server zijn te strikt om de online status van de Skype server te lezen."
-
-#: ../skype-admin.php:79
-#, php-format
-msgid "It is advised to set %1$s to %2$s here untill this is fixed."
-msgstr "Het is aangeraden om %2$s bij %1$s in te stellen tot dit veranderd is."
-
-#: ../skype-admin.php:79
-#, php-format
-msgid "You can also select %1$s but only the %2$s status text will be available."
-msgstr "Je kunt ook  %1$s selecteren maar alleen de %2$s status tekst zal beschikbaar zijn."
-
-#: ../skype-admin.php:79
-#: ../skype-admin.php:123
-msgid "Error"
-msgstr "Foutmelding"
-
-#: ../skype-admin.php:80
+#: ../skype-admin.php:61
 #, php-format
 msgid "Use %s link."
 msgstr "Gebruik %s koppeling."
 
-#: ../skype-admin.php:80
+#: ../skype-admin.php:61
 msgid "Download Skype now!"
 msgstr "Installeer Skype nu!"
 
-#: ../skype-admin.php:81
+#: ../skype-admin.php:62
 msgid "Place link on a new line."
 msgstr "Plaats koppeling op nieuwe regel."
 
-#: ../skype-admin.php:82
+#: ../skype-admin.php:63
 msgid "Link text"
 msgstr "Koppelingstekst"
 
-#: ../skype-admin.php:83
+#: ../skype-admin.php:63 ../skype-admin.php:64 ../skype-admin.php:175
+#: ../skype-admin.php:182 ../skype-admin.php:195 ../skype-admin.php:306
+#: ../skype-admin.php:307 ../skype-admin.php:308 ../skype-admin.php:493
+#: ../skype-admin.php:496 ../skype-admin.php:499 ../skype-classes.php:94
+#: ../skype-classes.php:97 ../skype-classes.php:100 ../skype-classes.php:103
+#: ../skype-classes.php:106
+msgid ": "
+msgstr ":"
+
+#: ../skype-admin.php:64
 msgid "Link URL"
 msgstr "Koppelings-URL"
 
-#: ../skype-admin.php:85
+#: ../skype-admin.php:66
 msgid "Default affiliate link"
 msgstr "Standaard affiliate koppeling"
 
-#: ../skype-admin.php:86
+#: ../skype-admin.php:67
 msgid "Skype main page"
 msgstr "Skype hoofdpagina"
 
-#: ../skype-admin.php:87
+#: ../skype-admin.php:68
 msgid "Skype download page"
 msgstr "Skype download-pagina"
 
-#: ../skype-admin.php:90
-msgid "Leave to Default if you are generous and think downloads should create some small possible revenue for the developer of this plugin -- that's me, thanks! :) -- but if you think open source developers are greedy bastards and should go away, select one of the other options -- just kidding, feel free... Really! You can always donate on the Notes & Live Support section ;)."
-msgstr "Laat ingesteld op Standaard als je genereus bent en vindt dat downloads een kleine bron van inkomsten mogen vormen voor de ontwikkelaar van deze plugin -- dat ben ik, dank! :) -- maar als je vindt dat open source ontwikkelaars gulzige zakken zijn en weg moeten, kies dan één van de andere opties... Geintje. Voel je vrij! Je kunt altijd een donatie doen ;)."
+#: ../skype-admin.php:69 ../skype-admin.php:71 ../skype-admin.php:175
+#: ../skype-admin.php:177 ../skype-admin.php:182 ../skype-admin.php:252
+#: ../skype-admin.php:499 ../skype-admin.php:500 ../skype-admin.php:501
+msgid "Custom..."
+msgstr "Aangepast..."
 
-#: ../skype-admin.php:90
+#: ../skype-admin.php:71
+msgid ""
+"Leave to Default if you are generous and think downloads should create some "
+"small possible revenue for the developer of this plugin. Or you could donate "
+"with the PayPal button on this page. -- Thanks! :)"
+msgstr ""
+"Laat ingesteld op Standaard als je genereus bent en vindt dat downloads een "
+"kleine bron van inkomsten mogen vormen voor de ontwikkelaar van deze plugin. "
+"Je zou ook een donatie doen met de PayPal knop op deze pagina.  -- Dank! :)"
+
+#: ../skype-admin.php:71
 #, php-format
-msgid "If you want to create your own link to get possible revenue from downloads yourself, select %1$s and paste the link code in the textarea under %2$s below."
-msgstr "Als je je eigen koppeling wil maken om zelf mogelijke inkomsten uit downloads te krijgen, selecteer dan %1$s en plak de koppelingscode in het tekstveld hieronder bij %2$s."
+msgid ""
+"If you want to create your own link to get possible revenue from downloads "
+"yourself, select %1$s and paste the link code in the textarea under %2$s "
+"below."
+msgstr ""
+"Als je je eigen koppeling wil maken om zelf mogelijke inkomsten uit "
+"downloads te krijgen, selecteer dan %1$s en plak de koppelingscode in het "
+"tekstveld hieronder bij %2$s."
 
-#: ../skype-admin.php:90
-#: ../skype-admin.php:192
+#: ../skype-admin.php:71 ../skype-admin.php:182 ../skype-admin.php:500
+#: ../skype-admin.php:501 ../skype-admin.php:502 ../skype-classes.php:628
+msgid "Advanced Options"
+msgstr "Geavanceerde instellingen"
+
+#: ../skype-admin.php:71 ../skype-admin.php:181
 msgid "Custom Download Link"
 msgstr "Aangepaste Download Koppeling"
 
-#: ../skype-admin.php:94
-msgid "Custom Status texts"
-msgstr "Aangepaste Status teksten"
-
-#: ../skype-admin.php:95
-#, php-format
-msgid "Text that will replace the %s tag depending on actual online status."
-msgstr "Tekst die afhankelijk van je online status, de %s tag zal vervangen."
-
-#: ../skype-admin.php:98
-#, php-format
-msgid "Please, change %1$s to %2$s under %3$s (above) for these options to become available first."
-msgstr "Verander eerst %1$s in %2$s bij %3$s (hierboven) om deze opties beschikbaar te maken."
-
-#: ../skype-admin.php:106
-msgid "Status"
-msgstr "Status"
-
-#: ../skype-admin.php:107
-msgid "Value"
-msgstr "Waarde"
-
-#: ../skype-admin.php:108
-#: ../skype-admin.php:136
-#: ../skype-admin.php:164
-msgid "Text"
-msgstr "Tekst"
-
-#: ../skype-admin.php:124
-msgid "(none)"
-msgstr "(geen)"
-
-#: ../skype-admin.php:130
+#: ../skype-admin.php:117
 msgid "Tag texts"
 msgstr "Tag teksten"
 
-#: ../skype-admin.php:131
-msgid "Define texts to replace their respective template tags relating to the Skype button action."
-msgstr "Definieer teksten die hun respectievelijke sjabloon-tags gerelateerd aan Skype-knop acties, moeten vervangen."
+#: ../skype-admin.php:118
+msgid ""
+"Define texts to replace their respective template tags relating to the Skype "
+"button action."
+msgstr ""
+"Definieer teksten die hun respectievelijke sjabloon-tags gerelateerd aan "
+"Skype-knop acties, moeten vervangen."
 
-#: ../skype-admin.php:134
+#: ../skype-admin.php:121
 msgid "Action"
 msgstr "Actie"
 
-#: ../skype-admin.php:135
-#: ../skype-admin.php:163
+#: ../skype-admin.php:122 ../skype-admin.php:152
 msgid "Tag"
 msgstr "Tag"
 
-#: ../skype-admin.php:153
-#, php-format
-msgid "Please, change %1$s under %3$s (above) to any value other than %2$s for the following options to become available first."
-msgstr "Verander eerst %1$s bij %3$s (hierboven) naar elke waarde behalve %2$s om de volgende opties beschikbaar te maken."
+#: ../skype-admin.php:123 ../skype-admin.php:153
+msgid "Text"
+msgstr "Tekst"
 
-#: ../skype-admin.php:162
+#: ../skype-admin.php:151
 msgid "Other"
 msgstr "Andere"
 
-#: ../skype-admin.php:167
-msgid "First seperator"
-msgstr "Eerste scheidingsteken"
+#: ../skype-admin.php:156
+msgid "Separator"
+msgstr "Scheidingsteken"
 
-#: ../skype-admin.php:172
-msgid "Second seperator"
-msgstr "Tweede scheidingsteken"
+#: ../skype-admin.php:174 ../skype-admin.php:500 ../skype-admin.php:501
+msgid "Custom Template"
+msgstr "Aangepast Sjabloon"
+
+#: ../skype-admin.php:175
+#, php-format
+msgid ""
+"The currently selected template has been loaded into the database. You can "
+"edit it here if you like, but be sure to select %1$s under %2$s or your "
+"changes will be lost."
+msgstr ""
+"Het huidige geselecteerde sjabloon is in de database geladen, Je kunt het "
+"hier bewerken als je wil maar vergeet niet %1$s bij %2$s te selecteren "
+"anders worden veranderingen niet opgeslagen."
+
+#: ../skype-admin.php:175 ../skype-admin.php:177 ../skype-admin.php:480
+#: ../skype-admin.php:499 ../skype-classes.php:103
+msgid "Theme"
+msgstr "Thema"
+
+#: ../skype-admin.php:175 ../skype-admin.php:500
+msgid "Customize currently loaded template"
+msgstr "Pas het huidige geladen sjabloon aan"
 
 #: ../skype-admin.php:177
-msgid "My status"
-msgstr "Mijn status"
-
-#: ../skype-admin.php:186
-#, php-format
-msgid "The currently selected template has been loaded into the database. You can edit it here if you like, but be sure to select %1$s under %2$s or your changes will be lost."
-msgstr "Het huidige geselecteerde sjabloon is in de database geladen, Je kunt het hier bewerken als je wil maar vergeet niet %1$s bij %2$s te selecteren anders worden veranderingen niet opgeslagen."
-
-#: ../skype-admin.php:186
-#: ../skype-admin.php:188
-#: ../skype-classes.php:549
-msgid "Basic Options"
-msgstr "Basis Opties"
-
-#: ../skype-admin.php:188
 msgid "Available tags:"
 msgstr "Beschikbare tags:"
 
-#: ../skype-admin.php:188
+#: ../skype-admin.php:177
 msgid "Available markers:"
 msgstr "Beschikbare markers:"
 
-#: ../skype-admin.php:188
+#: ../skype-admin.php:177
 #, php-format
 msgid "See %s for more instructions."
 msgstr "Zie %s voor meer instructies."
 
-#: ../skype-admin.php:188
-#, php-format
-msgid "Oh, and did I mention this? Changes to the template will only be loaded when the option %1$s under %2$s is selected!"
-msgstr "Oh, en had ik al gezegd dat veranderingen aan het sjabloon alleen opgeslagen worden als de optie %1$s bij %2$s is geselecteerd?"
+#: ../skype-admin.php:177 ../skype-admin.php:215 ../skype-admin.php:352
+#: ../skype-admin.php:484 ../skype-admin.php:503
+#: ../skype-quickguide-notes.php:6
+msgid "Quick Guide"
+msgstr "Snelgids"
 
-#: ../skype-admin.php:193
+#: ../skype-admin.php:177
 #, php-format
-msgid "If you are a <a href=\"%1$s\">Skype Affiliate</a> select %2$s at %3$s (above) and paste your link/banner code (HTML/Javascript) here."
-msgstr "Als je een <a href=\"%1$s\">Skype Affiliate</a> bent, selecteer dan %2$s bij %3$s (hierboven)  en plak hier je link/banner code (HTML/Javascript)."
+msgid ""
+"Oh, and did I mention this? Changes to the template will only be loaded when "
+"the option %1$s under %2$s is selected!"
+msgstr ""
+"Oh, en had ik al gezegd dat veranderingen aan het sjabloon alleen opgeslagen "
+"worden als de optie %1$s bij %2$s is geselecteerd?"
 
-#: ../skype-admin.php:193
+#: ../skype-admin.php:182
+#, php-format
+msgid ""
+"If you are a <a href=\"%1$s\">Skype Affiliate</a> select %2$s at %3$s "
+"(above) and paste your link/banner code (HTML/Javascript) here."
+msgstr ""
+"Als je een <a href=\"%1$s\">Skype Affiliate</a> bent, selecteer dan %2$s bij "
+"%3$s (hierboven)  en plak hier je link/banner code (HTML/Javascript)."
+
+#: ../skype-admin.php:182
 msgid "Link/Banner Code"
 msgstr "Link/Banner Code"
 
-#: ../skype-admin.php:206
-#: ../skype-admin.php:273
-#: ../skype-quickguide-notes.php:115
-#: ../skype-quickguide-notes.php:124
+#: ../skype-admin.php:186 ../skype-admin.php:235
+msgid "Save Changes"
+msgstr "Opslaan"
+
+#: ../skype-admin.php:189 ../skype-quickguide-notes.php:13
+#: ../skype-quickguide-notes.php:28 ../skype-quickguide-notes.php:46
+#: ../skype-quickguide-notes.php:93 ../skype-quickguide-notes.php:107
+#: ../skype-quickguide-notes.php:120 ../skype-quickguide-notes.php:129
+#: ../skype-quickguide-notes.php:134 ../skype-quickguide-notes.php:138
+msgid "Top"
+msgstr "Boven"
+
+#: ../skype-admin.php:195 ../skype-admin.php:263
+#: ../skype-quickguide-notes.php:114 ../skype-quickguide-notes.php:123
 msgid "WordPress Support"
 msgstr "WordPress Ondersteuning"
 
-#: ../skype-admin.php:210
+#: ../skype-admin.php:199
 msgid "More..."
 msgstr "Meer..."
 
-#: ../skype-admin.php:223
-msgid "Options"
-msgstr "Opties"
+#: ../skype-admin.php:218 ../skype-admin.php:484
+msgid "Notes"
+msgstr "N.B."
 
-#: ../skype-admin.php:229
-#: ../skype-admin.php:496
-#: ../skype-quickguide-notes.php:100
-msgid "Notes &amp; Live Support"
-msgstr "Notities &amp; Ondersteuning"
-
-#: ../skype-admin.php:234
-msgid "Current theme"
-msgstr "Huidig thema"
-
-#: ../skype-admin.php:238
-#: ../skype-classes.php:341
-msgid "Skype button disabled:"
-msgstr "Skype knoppen uitgeschakeld:"
-
-#: ../skype-admin.php:238
-#: ../skype-classes.php:341
-msgid "Missing Skype ID."
-msgstr "Ontbrekende Skype ID."
-
-#: ../skype-admin.php:249
+#: ../skype-admin.php:239
 msgid "WARNING !"
 msgstr "WAARSCHUWING!"
 
-#: ../skype-admin.php:260
-msgid "The preview button uses the Skype Test Call service to allow testing its function."
-msgstr "De voorbeeld-knop gebruikt de Skype Test dienst zodat je de functie kunt testen."
-
-#: ../skype-admin.php:263
+#: ../skype-admin.php:252
 msgid " (edit under advanced options)"
 msgstr "(bewerken onder gevorderde opties)"
 
-#: ../skype-admin.php:273
+#: ../skype-admin.php:257 ../skype-admin.php:483 ../skype-admin.php:494
+msgid "Note:"
+msgstr "Let op:"
+
+#: ../skype-admin.php:257
+msgid ""
+"The preview button uses the Skype Test Call service to allow testing its "
+"function."
+msgstr ""
+"De voorbeeld-knop gebruikt de Skype Test dienst zodat je de functie kunt "
+"testen."
+
+#: ../skype-admin.php:263
 msgid "For all support questions and suggestions, please go to"
 msgstr "Voor alle hulpvragen en suggesties, ga naar"
 
-#: ../skype-admin.php:274
+#: ../skype-admin.php:264
 #, php-format
-msgid "For <strong>feature requests</strong> or general help with <strong>WordPress</strong> or <strong>hosting</strong>, please contact <em>RavanH</em> via e-mail %s or Skype chat:"
-msgstr "Voor <strong>feature requests</strong> of algemene hulp met <strong>WordPress</strong> of <strong>hosting</strong>, neem contact op met <em>RavanH</em> via e-mail %s of Skype chat:"
+msgid ""
+"For <strong>feature requests</strong> or general help with "
+"<strong>WordPress</strong> or <strong>hosting</strong>, please contact "
+"<em>RavanH</em> via e-mail %s or Skype chat:"
+msgstr ""
+"Voor <strong>feature requests</strong> of algemene hulp met "
+"<strong>WordPress</strong> of <strong>hosting</strong>, neem contact op met "
+"<em>RavanH</em> via e-mail %s of Skype chat:"
 
-#: ../skype-admin.php:283
+#: ../skype-admin.php:273
 msgid "Translations"
 msgstr "Vertalingen"
 
-#: ../skype-admin.php:284
-msgid "Translation contributions are highly appreciated. Authors of new translations or updates will be mentioned here."
-msgstr "Bijdrage van een vertaling wordt zeer gewaardeerd. Auteurs van vertalingen worden hier vermeldt."
+#: ../skype-admin.php:274
+msgid ""
+"Translation contributions are highly appreciated. Authors of new "
+"translations or updates will be mentioned here."
+msgstr ""
+"Bijdrage van een vertaling wordt zeer gewaardeerd. Auteurs van vertalingen "
+"worden hier vermeldt."
 
-#: ../skype-admin.php:288
-msgid "Want to make your own translation too? Read the <a href=\"http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt\">translation instructions</a> included with this plugin to get started."
-msgstr "Je eigen vertaling maken? Lees de bijgevoegde <a href=\"http://svn.wp-plugins.org/skype-online-status/trunk/languages/language-support.txt\">translation instructions</a> (in het Engels) om aan de slag te gaan."
+#: ../skype-admin.php:278
+msgid ""
+"Want to make your own translation too? Read the <a href=\"http://svn.wp-"
+"plugins.org/skype-online-status/trunk/languages/language-support.txt"
+"\">translation instructions</a> included with this plugin to get started."
+msgstr ""
+"Je eigen vertaling maken? Lees de bijgevoegde <a href=\"http://svn.wp-"
+"plugins.org/skype-online-status/trunk/languages/language-support.txt"
+"\">translation instructions</a> (in het Engels) om aan de slag te gaan."
 
-#: ../skype-admin.php:290
+#: ../skype-admin.php:280
 msgid "Donations"
 msgstr "Donaties"
 
-#: ../skype-admin.php:291
-msgid "All donations are much appreciated and will (without objection) be mentioned here as a way of expressing my gratitude."
-msgstr "Alle donaties zijn zeer welkom en zullen (zonder bezwaar) hier vernoemd worden om mijn dank te uiten."
+#: ../skype-admin.php:281
+msgid ""
+"All donations are much appreciated and will (without objection) be mentioned "
+"here as a way of expressing my gratitude."
+msgstr ""
+"Alle donaties zijn zeer welkom en zullen (zonder bezwaar) hier vernoemd "
+"worden om mijn dank te uiten."
 
-#: ../skype-admin.php:295
-msgid "Please <strong>rate this plugin</strong> at <a href=\"http://wordpress.org/extend/plugins/skype-online-status/\">WordPress</a>"
-msgstr "Geef je <strong>waardering van deze plugin</strong> op <a href=\"http://wordpress.org/extend/plugins/skype-online-status/\">WordPress</a>"
+#: ../skype-admin.php:285
+msgid ""
+"Please <strong>rate this plugin</strong> at <a href=\"https://wordpress.org/"
+"plugins/skype-online-status/\">WordPress</a>"
+msgstr ""
+"Geef je <strong>waardering van deze plugin</strong> op <a href=\"http://"
+"wordpress.org/plugins/skype-online-status/\">WordPress</a>"
 
-#: ../skype-admin.php:296
-msgid "Do you want your name and/or link up there too? Or just appreciate my work?"
+#: ../skype-admin.php:286
+msgid ""
+"Do you want your name and/or link up there too? Or just appreciate my work?"
 msgstr "Wil je je naam en/of link hier ook? Of waardeer je mijn werk gewoon?"
 
-#: ../skype-admin.php:297
+#: ../skype-admin.php:287
 msgid "Donate with PayPal - it's fast, free and secure!"
 msgstr "Doneer via PayPal - snel, gratis en veilig!"
 
-#: ../skype-admin.php:298
+#: ../skype-admin.php:288
 msgid "Thanks!"
 msgstr "Dank!"
 
-#: ../skype-admin.php:307
-msgid "Call any phone directly from Skype."
-msgstr "Bel ieder telefoonnummer direct met Skype."
-
-#: ../skype-admin.php:309
-msgid "Your personal online number."
-msgstr "Je persoonlijke online nummer."
-
-#: ../skype-admin.php:310
-msgid "Never miss a call!"
-msgstr "Mis geen enkele oproep!"
-
-#: ../skype-admin.php:312
-msgid "Accessories: Get the most out of Skype!"
-msgstr "Accessoires: Haal het maximale uit Skype!"
-
-#: ../skype-admin.php:324
+#: ../skype-admin.php:303 ../skype-classes.php:575
 msgid "Skype Buttons"
 msgstr "Skype Knoppen"
 
-#: ../skype-admin.php:325
-msgid "Skype buttons wizard"
-msgstr "Skype knoppen wizard"
-
-#: ../skype-admin.php:326
-#, php-format
-msgid "View %s's online status on the Skype server"
-msgstr "Bekijk %s online status op de Skype server"
-
-#: ../skype-admin.php:327
+#: ../skype-admin.php:305
 msgid "Edit Privacy Options in your Skype client"
 msgstr "Bewerk Privacy opties in je Skype client"
 
-#: ../skype-admin.php:354
-msgid "Your Skype Online Status database settings have been cleared from the database for removal of this plugin!"
-msgstr "Je Skype Online Status instellingen zijn uit de database gewist zodat de plugin volledig verwijderd kan worden!"
+#: ../skype-admin.php:306 ../skype-admin.php:494
+msgid "SkypeOut"
+msgstr "SkypeOut"
 
-#: ../skype-admin.php:354
-msgid "You can still resave the old settings shown below to (partly) undo this action but custom widget settings will be reverted to default."
-msgstr "Je kunt nu nog de oude instellingen hieronder opnieuw opslaan om deze actie (gedeeltelijk) ongedaan te maken. Alleen je gepersonaliseerde widget instellingen blijven gereset."
+#: ../skype-admin.php:306
+msgid "Call any phone directly from Skype."
+msgstr "Bel ieder telefoonnummer direct met Skype."
 
-#: ../skype-admin.php:354
+#: ../skype-admin.php:307
+msgid "Your personal online number."
+msgstr "Je persoonlijke online nummer."
+
+#: ../skype-admin.php:308
+msgid "Never miss a call!"
+msgstr "Mis geen enkele oproep!"
+
+#: ../skype-admin.php:309
+msgid "Group Video calling"
+msgstr "Video Groepsgesprek"
+
+#: ../skype-admin.php:336
+msgid ""
+"Your Skype Legacy Buttons database settings have been cleared from the "
+"database for removal of this plugin!"
+msgstr ""
+"Je Skype Knop instellingen zijn uit de database gewist zodat de plugin "
+"volledig verwijderd kan worden!"
+
+#: ../skype-admin.php:336
+msgid ""
+"You can still resave the old settings shown below to (partly) undo this "
+"action but custom widget settings will be reverted to default."
+msgstr ""
+"Je kunt nu nog de oude instellingen hieronder opnieuw opslaan om deze actie "
+"(gedeeltelijk) ongedaan te maken. Alleen je gepersonaliseerde widget "
+"instellingen blijven gereset."
+
+#: ../skype-admin.php:336
 msgid "Are you sure?"
 msgstr "Weet je het zeker?"
 
-#: ../skype-admin.php:356
+#: ../skype-admin.php:338
 msgid "Deactivate this plugin"
 msgstr "Plugin deactiveren"
 
-#: ../skype-admin.php:356
+#: ../skype-admin.php:338
 msgid "Deactivate"
 msgstr "Deactiveren"
 
-#: ../skype-admin.php:358
+#: ../skype-admin.php:340
 msgid "Go to the <a href=\"plugins.php\">Plugins page</a> and deactivate it."
-msgstr "Ga naar <a href=\"plugins.php\">Plugins pagina</a> en deactiveer de plugin."
+msgstr ""
+"Ga naar <a href=\"plugins.php\">Plugins pagina</a> en deactiveer de plugin."
 
-#: ../skype-admin.php:363
-msgid "Skype Online Status plugin has been upgraded to version "
-msgstr "Skype Online Status is opgewaardeerd to versie "
+#: ../skype-admin.php:345
+msgid "Skype Legacy Buttons plugin has been upgraded to version "
+msgstr "Skype Legacy Buttons is opgewaardeerd tot versie "
 
-#: ../skype-admin.php:363
+#: ../skype-admin.php:345
 msgid "Please, verify your settings now."
 msgstr "Controleer nu je instellingen, ajb."
 
-#: ../skype-admin.php:363
+#: ../skype-admin.php:345
 msgid "What's new?"
 msgstr "Wat is er nieuw?"
 
-#: ../skype-admin.php:368
+#: ../skype-admin.php:350
 #, php-format
-msgid "Skype Online Status plugin version %s has been installed!"
-msgstr "Skype Online Status plugin versie %s is geïnstalleerd!"
+msgid "Skype Legacy Buttons plugin version %s has been installed!"
+msgstr "Skype Legacy Buttons plugin versie %s is geïnstalleerd!"
 
-#: ../skype-admin.php:369
-msgid "Please, adapt the default settings to your personal preference so you can start using Skype buttons anywhere on your site."
-msgstr "Pas de standaard instellingen aan naar je voorkeur zodat je kunt beginnen met het plaatsen van Skype knoppen op je blog."
+#: ../skype-admin.php:351
+msgid ""
+"Please, adapt the default settings to your personal preference so you can "
+"start using Skype buttons anywhere on your site."
+msgstr ""
+"Pas de standaard instellingen aan naar je voorkeur zodat je kunt beginnen "
+"met het plaatsen van Skype knoppen op je blog."
 
-#: ../skype-admin.php:370
+#: ../skype-admin.php:352
 #, php-format
 msgid "Read the %s section for more instructions."
 msgstr "Lees de %s sectie voor meer instructies."
 
-#: ../skype-admin.php:381
+#: ../skype-admin.php:363
 #, php-format
-msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a>."
-msgstr "Er is een nieuwe versie van %1$s beschikbaar. <a href=\"%2$s\">Download versie %3$s hier</a>."
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a>."
+msgstr ""
+"Er is een nieuwe versie van %1$s beschikbaar. <a href=\"%2$s\">Download "
+"versie %3$s hier</a>."
 
-#: ../skype-admin.php:383
+#: ../skype-admin.php:365
 #, php-format
-msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> <em>automatic upgrade unavailable for this plugin</em>."
-msgstr "Er is een nieuwe versie van %1$s beschikbaar. <a href=\"%2$s\">Download versie %3$s hier</a> <em>automatische upgrade is niet beschikbaar</em>."
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a> <em>automatic upgrade unavailable for this plugin</em>."
+msgstr ""
+"Er is een nieuwe versie van %1$s beschikbaar. <a href=\"%2$s\">Download "
+"versie %3$s hier</a> <em>automatische upgrade is niet beschikbaar</em>."
 
-#: ../skype-admin.php:385
+#: ../skype-admin.php:367
 #, php-format
-msgid "There is a new version of %1$s available. <a href=\"%2$s\">Download version %3$s here</a> or <a href=\"%4$s\">upgrade automatically</a>."
-msgstr "Er is een nieuwe versie van %1$s beschikbaar. <a href=\"%2$s\">Download versie %3$s hier</a> of <a href=\"%4$s\">upgrade automatisch</a>."
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\">Download version "
+"%3$s here</a> or <a href=\"%4$s\">upgrade automatically</a>."
+msgstr ""
+"Er is een nieuwe versie van %1$s beschikbaar. <a href=\"%2$s\">Download "
+"versie %3$s hier</a> of <a href=\"%4$s\">upgrade automatisch</a>."
 
-#: ../skype-admin.php:391
-msgid "Please, check if one of the following options can be met -or- ask your server admin / hosting provider to take care of this."
-msgstr "Controleer of aan de volgende kunnen voorwaarden worden voldaan -of- vraag de server admin / hosting provider om het te doen."
-
-#: ../skype-admin.php:391
-msgid "Install and activate cURL libraries on the server (preferred)"
-msgstr "Installeer en activeer de cURL bibliotheek op de server (aanbevolen)"
-
-#: ../skype-admin.php:391
-msgid "Upgrade PHP to a version that includes fsockopen (PHP 4+)"
-msgstr "Upgrade PHP naar een versie met fsockopen (PHP4+)"
-
-#: ../skype-admin.php:391
-msgid "Change INI setting <strong>allow_url_fopen</strong> to ON (not advised)"
-msgstr "Verander INI instelling <strong>allow_url_fopen</strong> naar ON (afgeraden)"
-
-#: ../skype-admin.php:391
-msgid "Reading your online status from the remote Skype server has been disabled. As a result, some of the advanced options will not be available. However, Skype button themes that also show your online status by way of images (that are provided by the same Skype server) will still do so."
-msgstr "Het lezen van je online status van de Skype server is uitgeschakeld. Dientengevolge zijn enkele geavanceerde opties niet beschikbaar. Echter, Skype knoppen die je online status ook door middel van een afbeelding (geleverd door diezelfde Skype server) laten zien, zullen dit nog steeds doen."
-
-#: ../skype-admin.php:395
-msgid "Please, wait while page has loaded completely.<br /> When the Skype server at http://mystatus.skype.com/ is slow or down, this might take a while..."
-msgstr "Wacht tot de pagina volledig is geladen.<br /> Als de Skype server http://mystatus.skype.com/ straag of onbereikbaar is, kan dit even duren..."
-
-#: ../skype-admin.php:439
+#: ../skype-admin.php:433
 msgid "Options updated!"
 msgstr "Opties aangepast!"
 
-#: ../skype-admin.php:445
+#: ../skype-admin.php:439
 msgid "Options reset!"
 msgstr "Opties gereset!"
 
-#: ../skype-admin.php:452
-#: ../skype-classes.php:218
+#: ../skype-admin.php:445 ../skype-classes.php:240
 msgid "Skype Test Call"
 msgstr "Skype Test Oproep"
 
-#: ../skype-admin.php:491
-msgid "Define all your <em>default</em> Skype Status settings here."
-msgstr "Definieer hier al je <em>standaard</em> Skype Status instellingen."
+#: ../skype-admin.php:479
+msgid "Define all your <em>default</em> Skype settings here."
+msgstr "Definieer hier al je <em>standaard</em> Skype instellingen."
 
-#: ../skype-admin.php:492
+#: ../skype-admin.php:480
 #, php-format
-msgid "Start simply by setting the basics like %1$s, %2$s and the button %3$s you want to show on your blog."
-msgstr "Begin met het instellen van de basis zoals %1$s, %2$s en %3$s die je op je blog wil tonen."
+msgid ""
+"Start simply by setting the basics like %1$s, %2$s and the button %3$s you "
+"want to show on your blog."
+msgstr ""
+"Begin met het instellen van de basis zoals %1$s, %2$s en %3$s die je op je "
+"blog wil tonen."
 
-#: ../skype-admin.php:493
+#: ../skype-admin.php:480 ../skype-admin.php:493 ../skype-classes.php:94
+msgid "Skype ID"
+msgstr "Skype ID"
+
+#: ../skype-admin.php:480 ../skype-admin.php:496 ../skype-classes.php:97
+msgid "Full Name"
+msgstr "Volledige naam"
+
+#: ../skype-admin.php:481
 #, php-format
-msgid "Then activate the Skype Status Widget on your <a href=\"widgets.php\">Widgets</a> page or use the Skype Status quicktag button %s in the WYSIWYG editor (TinyMCE) to place the Skype Online Status button in any post or page."
-msgstr "Activeer dan de Skype Status widget op je <a href=\"widgets.php\">Widgets</a> pagina of gebruik de Skype Status quicktag knop %s in de WYSIWIG editor (TinyMCE) om een Skype Online Status knop in een post of pagina te plaatsen."
+msgid ""
+"Then activate a Skype Button widget on your <a href=\"widgets.php\">Widgets</"
+"a> page or use the Skype shortcode button %s in the WYSIWYG editor (TinyMCE) "
+"to place a Skype legacy button in any post or page."
+msgstr ""
+"Activeer dan de Skype Knop widget op je <a href=\"widgets.php\">Widgets</a> "
+"pagina of gebruik de Skype shortcode knop %s in de WYSIWIG editor (TinyMCE) "
+"om een Skype Online Status knop in een post of pagina te plaatsen."
 
-#: ../skype-admin.php:494
-msgid "Later on, you can fine-tune everything until it fits just perfectly on you pages."
+#: ../skype-admin.php:482
+msgid ""
+"Later on, you can fine-tune everything until it fits just perfectly on you "
+"pages."
 msgstr "Later kun je alles fijn-afstellen tot het perfect op je website past."
 
-#: ../skype-admin.php:495
-msgid "Some basic settings may be overridden per Widget settings or when calling the Skype button with a template function."
-msgstr "Enkele basisinstellingen kunnen per Widget of tempate tag aangepast worden."
+#: ../skype-admin.php:483
+msgid ""
+"Some basic settings may be overridden per Widget settings or when calling "
+"the Skype button with a template function."
+msgstr ""
+"Enkele basisinstellingen kunnen per Widget of tempate tag aangepast worden."
 
-#: ../skype-admin.php:496
+#: ../skype-admin.php:484
 #, php-format
-msgid "Read more about configuring this plugin and more ways to trigger Skype buttons on your blog in the %1$s section. If you have any remaining questions, see the %2$s page to get help."
-msgstr "Lees meer over het instellen en manieren om Skype Online Status knoppen op je blog te tonen in de %1$s sectie. Als je daarna nog vragen hebt, kijk dan op de %2$s sectie voor hulp."
+msgid ""
+"Read more about configuring this plugin and more ways to trigger Skype "
+"buttons on your blog in the %1$s section. If you have any remaining "
+"questions, see the %2$s page to get help."
+msgstr ""
+"Lees meer over het instellen en manieren om Skype Online Status knoppen op "
+"je blog te tonen in de %1$s sectie. Als je daarna nog vragen hebt, kijk dan "
+"op de %2$s sectie voor hulp."
 
-#: ../skype-classes.php:13
-#: ../skype-classes.php:80
-#: ../skype-classes.php:537
-msgid "Skype Status"
-msgstr "Skype Status"
+#: ../skype-admin.php:494
+#, php-format
+msgid ""
+"Simply enter your Skype ID. Or... If you want the button to invoke a Skype "
+"multichat or conference call, enter more then one Skype ID seperated with a "
+"semi-colon (<strong>;</strong>). You may also enter a regular phone number "
+"(starting with a <strong>+</strong> followed by country code; note that "
+"callers need to have %s to call). It just all depends on what you want to "
+"achieve!"
+msgstr ""
+"Voer eenvoudigweg je Skype ID in. Of... Als je de knop een multichat of "
+"conferentie oproep wil laten doen, voer dan meerdere ID's in gescheiden door "
+"een punt-komma (<strong>;</strong>). Je kunt ook een normaal telefoonnummer "
+"(beginnend met <strong>+</strong> gevolgd door de landcode; let op: "
+"bezoekers hebben %s nodig om te bellen) invoeren. Het ligt er maar aan wat "
+"je wil bereiken!"
+
+#: ../skype-admin.php:497
+msgid ""
+"Your full name as you want it to appear in Skype links, link-titles and "
+"image alt-texts on your blog."
+msgstr ""
+"De volledige naam zoals je die op de Skype koppelingen, titels en alt-tekst "
+"op je site wil tonen."
+
+#: ../skype-admin.php:500
+#, php-format
+msgid ""
+"When %1$s is selected, you can edit the template to your liking below at "
+"%2$s under %3$s. When you make changes to that field but select another "
+"theme template here, those changes will be overwriten by the new template!"
+msgstr ""
+"Als %1$s is geselecteerd, kun je het sjabloon naar eigen inzicht bewerken "
+"bij %2$s onder %3$s. Als je daar veranderingen doet en hier een ander "
+"sjabloon kiest dan worden ze met de nieuwe sjabloon overschreven!"
+
+#: ../skype-admin.php:501
+#, php-format
+msgid ""
+"Start with <strong>selecting one of the predefined theme templates</strong> "
+"to load into the database. Change the options to see a preview. You might "
+"later select %1$s to edit the template in the text field under %2$s."
+msgstr ""
+"Begin met <strong>selecteren van een voorgedefinieerd sjabloon</strong> om "
+"in de database te laden. Verander de opties om een voorbeeld te zien. Je "
+"kunt later %1$s selecteren om het sjabloon in het tekstveld onder %2$s te "
+"bewerken."
+
+#: ../skype-admin.php:502
+#, php-format
+msgid ""
+"If you cannot find a suitable theme, check out <a href=\"http://www.skype."
+"com/en/features/skype-buttons/\" target=\"_blank\">http://www.skype.com/en/"
+"features/skype-buttons/</a>. Select your options there and copy/paste the "
+"output into the textarea under %s."
+msgstr ""
+"Als je geen geschikt thema kunt vinden, kijk op <a href=\"http://www.skype."
+"com/en/features/skype-buttons/\" target=\"_blank\">http://www.skype.com/en/"
+"features/skype-buttons/</a>. Selecteer je keuze daar en kopieer/plak de "
+"uitkomst in het tekstveld onder %s."
+
+#: ../skype-admin.php:503
+#, php-format
+msgid ""
+"If you have your basic settings correct and there is a Skype button visible "
+"on blog, you can fine-tune it's appearance and function with the advanced "
+"settings. Each option is annotated but you can read more in the %s section."
+msgstr ""
+"Als je deze basis-instellingen in orde hebt en er een Skype knop op de site "
+"zichtbaar is, kun je het uiterlijk en functie fijn-afstellen onder "
+"geavanceerde instellingen. Elke optie is van commentaar voorzien maar je "
+"kunt meer in de %s sectie lezen."
+
+#: ../skype-classes.php:13 ../skype-classes.php:73
+msgid "Skype Button"
+msgstr "Skype Knop"
 
 #: ../skype-classes.php:16
-msgid "Add a Skype Online Status button"
-msgstr "Voeg een Skype Online Status knop toe"
+msgid "Add a Skype legacy button"
+msgstr "Voeg een Skype Legacy knop toe"
 
-#: ../skype-classes.php:98
+#: ../skype-classes.php:91
 msgid "Title:"
 msgstr "Titel:"
 
-#: ../skype-classes.php:107
+#: ../skype-classes.php:100
 msgid "Text before button"
 msgstr "Tekst vóór knop"
 
-#: ../skype-classes.php:111
-#: ../skype-classes.php:117
+#: ../skype-classes.php:104 ../skype-classes.php:110
 msgid "Default"
 msgstr "Default"
 
-#: ../skype-classes.php:113
+#: ../skype-classes.php:106
 msgid "Text after button"
 msgstr "Tekst ná knop"
 
-#: ../skype-classes.php:116
+#: ../skype-classes.php:109
 msgid "Use Voicemail?"
 msgstr "Gebruik Voicemail?"
 
-#: ../skype-classes.php:117
+#: ../skype-classes.php:110
 msgid "Yes"
 msgstr "Ja"
 
-#: ../skype-classes.php:117
-#: ../skype-classes.php:121
+#: ../skype-classes.php:110 ../skype-classes.php:114
 msgid "No"
 msgstr "Nee"
 
-#: ../skype-classes.php:119
-msgid "Leave blank to use the default options as you defined on the <a href=\"options-general.php?page=skype-status.php\">Skype Online Status Settings</a> page."
-msgstr "Laat blanco om de standaard opties te gebruiken zoals ingesteld op de <a href=\"options-general.php?page=skype-status.php\">Skype Online Status Settings</a> pagina."
+#: ../skype-classes.php:112
+msgid ""
+"Leave blank to use the default options as you defined on the <a href="
+"\"options-general.php?page=skype-status.php\">Skype Settings</a> page."
+msgstr ""
+"Laat blanco om de standaard opties te gebruiken zoals ingesteld op de <a "
+"href=\"options-general.php?page=skype-status.php\">Skype Settings</a> pagina."
 
-#: ../skype-classes.php:120
+#: ../skype-classes.php:113
 msgid "You can use some basic HTML here like &lt;br /&gt; for new line."
-msgstr "Je kunt hier basale HTML gebruiken zoals &lt;br /&gt; voor een nieuwe regel."
+msgstr ""
+"Je kunt hier basale HTML gebruiken zoals &lt;br /&gt; voor een nieuwe regel."
 
-#: ../skype-classes.php:121
+#: ../skype-classes.php:114
 #, php-format
 msgid "Set to %1$s if you do not have %2$s or %3$s."
 msgstr "Gebruik %1$s als je geen %2$s of %3$s hebt."
 
-#: ../skype-classes.php:234
+#: ../skype-classes.php:257
 msgid " - "
 msgstr " - "
 
-#: ../skype-classes.php:240
+#: ../skype-classes.php:268
 msgid "&raquo; Get Skype, call free!"
 msgstr "&raquo; Bel gratis met Skype!"
 
-#: ../skype-classes.php:249
-msgid "My status is"
-msgstr "Mijn status is"
-
-#: ../skype-classes.php:251
-#: ../skype-classes.php:277
-#: ../skype-classes.php:278
-msgid "Offline"
-msgstr "Offline"
-
-#: ../skype-classes.php:261
-msgid "English"
-msgstr "Engels"
-
-#: ../skype-classes.php:262
-msgid "French"
-msgstr "Frans"
-
-#: ../skype-classes.php:263
-msgid "German"
-msgstr "Duits"
-
-#: ../skype-classes.php:264
-msgid "Japanese"
-msgstr "Japans"
-
-#: ../skype-classes.php:265
-msgid "Taiwanese"
-msgstr "Taiwanees"
-
-#: ../skype-classes.php:266
-msgid "Chinese"
-msgstr "Chinees"
-
-#: ../skype-classes.php:267
-msgid "Brazilian"
-msgstr "Braziliaans"
-
-#: ../skype-classes.php:268
-msgid "Portuguese"
-msgstr "Portugees"
-
-#: ../skype-classes.php:269
-msgid "Italian"
-msgstr "Italiaans"
-
-#: ../skype-classes.php:270
-msgid "Spanish"
-msgstr "Spaans"
-
-#: ../skype-classes.php:271
-msgid "Polish"
-msgstr "Pools"
-
-#: ../skype-classes.php:272
-msgid "Swedish"
-msgstr "Zweeds"
-
-#: ../skype-classes.php:279
-msgid "Online"
-msgstr "Online"
-
-#: ../skype-classes.php:280
-msgid "Away"
-msgstr "Weg"
-
-#: ../skype-classes.php:281
-msgid "Not available"
-msgstr "Niet beschikbaar"
-
-#: ../skype-classes.php:282
-msgid "Do not disturb"
-msgstr "Niet storen"
-
-#: ../skype-classes.php:284
-msgid "Skype me!"
-msgstr "Skype me!"
-
-#: ../skype-classes.php:288
+#: ../skype-classes.php:311
 msgid "Call me!"
 msgstr "Bel me!"
 
-#: ../skype-classes.php:289
+#: ../skype-classes.php:312
 msgid "Add me to Skype"
 msgstr "Toevoegen aan Skype"
 
-#: ../skype-classes.php:290
+#: ../skype-classes.php:313
 msgid "Chat with me"
 msgstr "Chatten"
 
-#: ../skype-classes.php:291
+#: ../skype-classes.php:314
 msgid "View my profile"
 msgstr "Bekijk m'n profiel"
 
-#: ../skype-classes.php:293
+#: ../skype-classes.php:316
 msgid "Send me a file"
 msgstr "Stuur een bestand"
 
-#: ../skype-classes.php:550
+#: ../skype-classes.php:362
+msgid "Skype button disabled:"
+msgstr "Skype knoppen uitgeschakeld:"
+
+#: ../skype-classes.php:362
+msgid "Missing Skype ID."
+msgstr "Ontbrekende Skype ID."
+
+#: ../skype-classes.php:587
 msgid "Sections"
 msgstr "Secties"
 
-#: ../skype-classes.php:551
-msgid "Preview theme template:"
-msgstr "Voorbeeld thema sjabloon:"
+#: ../skype-classes.php:588
+msgid "Preview"
+msgstr "Voorbeschouwing"
 
-#: ../skype-classes.php:552
-#: ../skype-quickguide-notes.php:103
-#: ../skype-quickguide-notes.php:123
+#: ../skype-classes.php:589 ../skype-quickguide-notes.php:102
+#: ../skype-quickguide-notes.php:122
 msgid "Support"
 msgstr "Ondersteuning"
 
-#: ../skype-classes.php:553
+#: ../skype-classes.php:590
 msgid "Get more from Skype"
 msgstr "Meer van Skype"
 
-#: ../skype-classes.php:554
+#: ../skype-classes.php:591
 msgid "Resources"
 msgstr "Bronnen"
 
-#: ../skype-classes.php:573
+#: ../skype-classes.php:610
 msgid "Settings"
 msgstr "Instellingen"
 
-#: ../skype-classes.php:597
+#: ../skype-classes.php:629
 msgid "Discussion"
 msgstr "Discussie"
 
-#: ../skype-classes.php:598
-#: ../skype-quickguide-notes.php:104
+#: ../skype-classes.php:630 ../skype-quickguide-notes.php:103
 msgid "Credits"
 msgstr "Erkenning"
+
+#: ../skype-quickguide-notes.php:99
+msgid "Notes &amp; Live Support"
+msgstr "Notities &amp; Ondersteuning"
+
+#~ msgid "Custom Status texts"
+#~ msgstr "Aangepaste Status teksten"
+
+#~ msgid "Text that will replace the %s tag depending on actual online status."
+#~ msgstr ""
+#~ "Tekst die afhankelijk van je online status, de %s tag zal vervangen."
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Value"
+#~ msgstr "Waarde"
+
+#~ msgid "View %s's online status on the Skype server"
+#~ msgstr "Bekijk %s online status op de Skype server"
+
+#~ msgid "Skype Status"
+#~ msgstr "Skype Status"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Display"
+#~ msgstr "Weergave"
+
+#~ msgid "Function"
+#~ msgstr "Functie"
+
+#~ msgid ""
+#~ "Some of the button themes will show your online status in an icon/image, "
+#~ "without having a specific function assigned. This means you can select "
+#~ "what the button should do when clicked by a visitor."
+#~ msgstr ""
+#~ "Enkele knop-thema's zullen je online status in een afbeelding weergeven "
+#~ "zonder dat er een specifieke functie is toegewezen. Dit betekent dat je "
+#~ "hier kunt instellen wat er gebeurt bij een klik van een bezoeker."
+
+#~ msgid ""
+#~ "This setting will only be used in the '%1$s' theme templates, or in your "
+#~ "own custom template when the tags %2$s and %3$s are used."
+#~ msgstr ""
+#~ "Deze optie wordt alleen bij '%1$s' sjablonen gebruikt, of in je "
+#~ "aangepaste sjabloon als de tags %2$s en %3$s worden gebruikt."
+
+#~ msgid "Skype Online Status"
+#~ msgstr "Skype Online Status"
+
+#~ msgid "Status texts"
+#~ msgstr "Status tekst"
+
+#~ msgid "for the %s tag"
+#~ msgstr "voor de %s tag"
+
+#~ msgid "Disabled"
+#~ msgstr "Uitgeschakeld"
+
+#~ msgid ""
+#~ "If you select %1$s, the tags %2$s, %3$s and %4$s in the button template "
+#~ "will be ignored."
+#~ msgstr ""
+#~ "Als je %1$s selecteert, zullen de tags %2$s, %3$s en %4$s in het sjabloon "
+#~ "worden genegeerd."
+
+#~ msgid ""
+#~ "When security settings on your server are too tight (<strong>safe_mode</"
+#~ "strong> enabled, <strong>open_basedir</strong> restictions or "
+#~ "<strong>allow_url_fopen</strong> being disabled), your status does not "
+#~ "show or the Skype button doesn't load and you find an error like "
+#~ "\"Warning: file_get_contents() [function.file-get-contents]: URL file-"
+#~ "access is disabled in the server configuration...\" in the server log "
+#~ "files, use either %1$s or %2$s here."
+#~ msgstr ""
+#~ "Als de beveiligingsinstellingen op je server te streng zijn "
+#~ "(<strong>safe_mode</strong> aan, <strong>open_basedir</strong> "
+#~ "restricties or <strong>allow_url_fopen</strong> uitgeschakeld), je status "
+#~ "of de Skype knop niet weergegeven wordt  en er een error als \"Warning: "
+#~ "file_get_contents() [function.file-get-contents]: URL file-access is "
+#~ "disabled in the server configuration...\" in het server log-bestand "
+#~ "verschijnt, gebruik hier dan %1$s of %2$s."
+
+#~ msgid ""
+#~ "The security settings on your server are too tight for the online status "
+#~ "to be read from the Skype server."
+#~ msgstr ""
+#~ "De beveiligingsinstellingen op je server zijn te strikt om de online "
+#~ "status van de Skype server te lezen."
+
+#~ msgid "It is advised to set %1$s to %2$s here untill this is fixed."
+#~ msgstr ""
+#~ "Het is aangeraden om %2$s bij %1$s in te stellen tot dit veranderd is."
+
+#~ msgid ""
+#~ "You can also select %1$s but only the %2$s status text will be available."
+#~ msgstr ""
+#~ "Je kunt ook  %1$s selecteren maar alleen de %2$s status tekst zal "
+#~ "beschikbaar zijn."
+
+#~ msgid "Error"
+#~ msgstr "Foutmelding"
+
+#~ msgid ""
+#~ "Please, change %1$s to %2$s under %3$s (above) for these options to "
+#~ "become available first."
+#~ msgstr ""
+#~ "Verander eerst %1$s in %2$s bij %3$s (hierboven) om deze opties "
+#~ "beschikbaar te maken."
+
+#~ msgid "(none)"
+#~ msgstr "(geen)"
+
+#~ msgid ""
+#~ "Please, change %1$s under %3$s (above) to any value other than %2$s for "
+#~ "the following options to become available first."
+#~ msgstr ""
+#~ "Verander eerst %1$s bij %3$s (hierboven) naar elke waarde behalve %2$s om "
+#~ "de volgende opties beschikbaar te maken."
+
+#~ msgid "First seperator"
+#~ msgstr "Eerste scheidingsteken"
+
+#~ msgid "My status"
+#~ msgstr "Mijn status"
+
+#~ msgid "Basic Options"
+#~ msgstr "Basis Opties"
+
+#~ msgid "Options"
+#~ msgstr "Opties"
+
+#~ msgid "Current theme"
+#~ msgstr "Huidig thema"
+
+#~ msgid "Accessories: Get the most out of Skype!"
+#~ msgstr "Accessoires: Haal het maximale uit Skype!"
+
+#~ msgid "Skype buttons wizard"
+#~ msgstr "Skype knoppen wizard"
+
+#~ msgid ""
+#~ "Please, check if one of the following options can be met -or- ask your "
+#~ "server admin / hosting provider to take care of this."
+#~ msgstr ""
+#~ "Controleer of aan de volgende kunnen voorwaarden worden voldaan -of- "
+#~ "vraag de server admin / hosting provider om het te doen."
+
+#~ msgid "Install and activate cURL libraries on the server (preferred)"
+#~ msgstr ""
+#~ "Installeer en activeer de cURL bibliotheek op de server (aanbevolen)"
+
+#~ msgid "Upgrade PHP to a version that includes fsockopen (PHP 4+)"
+#~ msgstr "Upgrade PHP naar een versie met fsockopen (PHP4+)"
+
+#~ msgid ""
+#~ "Change INI setting <strong>allow_url_fopen</strong> to ON (not advised)"
+#~ msgstr ""
+#~ "Verander INI instelling <strong>allow_url_fopen</strong> naar ON "
+#~ "(afgeraden)"
+
+#~ msgid ""
+#~ "Reading your online status from the remote Skype server has been "
+#~ "disabled. As a result, some of the advanced options will not be "
+#~ "available. However, Skype button themes that also show your online status "
+#~ "by way of images (that are provided by the same Skype server) will still "
+#~ "do so."
+#~ msgstr ""
+#~ "Het lezen van je online status van de Skype server is uitgeschakeld. "
+#~ "Dientengevolge zijn enkele geavanceerde opties niet beschikbaar. Echter, "
+#~ "Skype knoppen die je online status ook door middel van een afbeelding "
+#~ "(geleverd door diezelfde Skype server) laten zien, zullen dit nog steeds "
+#~ "doen."
+
+#~ msgid ""
+#~ "Please, wait while page has loaded completely.<br /> When the Skype "
+#~ "server at http://mystatus.skype.com/ is slow or down, this might take a "
+#~ "while..."
+#~ msgstr ""
+#~ "Wacht tot de pagina volledig is geladen.<br /> Als de Skype server http://"
+#~ "mystatus.skype.com/ straag of onbereikbaar is, kan dit even duren..."
+
+#~ msgid "My status is"
+#~ msgstr "Mijn status is"
+
+#~ msgid "Offline"
+#~ msgstr "Offline"
+
+#~ msgid "English"
+#~ msgstr "Engels"
+
+#~ msgid "French"
+#~ msgstr "Frans"
+
+#~ msgid "German"
+#~ msgstr "Duits"
+
+#~ msgid "Japanese"
+#~ msgstr "Japans"
+
+#~ msgid "Taiwanese"
+#~ msgstr "Taiwanees"
+
+#~ msgid "Chinese"
+#~ msgstr "Chinees"
+
+#~ msgid "Brazilian"
+#~ msgstr "Braziliaans"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugees"
+
+#~ msgid "Italian"
+#~ msgstr "Italiaans"
+
+#~ msgid "Spanish"
+#~ msgstr "Spaans"
+
+#~ msgid "Polish"
+#~ msgstr "Pools"
+
+#~ msgid "Swedish"
+#~ msgstr "Zweeds"
+
+#~ msgid "Online"
+#~ msgstr "Online"
+
+#~ msgid "Away"
+#~ msgstr "Weg"
+
+#~ msgid "Not available"
+#~ msgstr "Niet beschikbaar"
+
+#~ msgid "Do not disturb"
+#~ msgstr "Niet storen"
+
+#~ msgid "Skype me!"
+#~ msgstr "Skype me!"
+
+#~ msgid "Preview theme template:"
+#~ msgstr "Voorbeeld thema sjabloon:"
 
 #~ msgid "Set to %s if you do not have a SkypeIn account or SkypeVoicemail."
 #~ msgstr "Stel in op %s als je geen SkypeIn account of SkypeVoicemail hebt."

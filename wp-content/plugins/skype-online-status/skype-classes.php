@@ -70,7 +70,7 @@ class Skype_Status_Widget extends WP_Widget {
 
 	function form( $instance ) {
 		$defaults = array ( 
-			'title' => __('Skype Status', 'skype-online-status'),	// Widget title
+			'title' => __('Skype Button', 'skype-online-status'),	// Widget title
 			'skype_id' => '',			// Skype ID to replace {skypeid} in template files
 			'user_name' => '',			// User name to replace {username} in template files
 			'button_theme' => '',			// Theme to be used, value must match a filename (without extention) from the /plugins/skype_status/templates/ directory or leave blank
@@ -109,7 +109,7 @@ class Skype_Status_Widget extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('use_voicemail'); ?>"><?php _e('Use Voicemail?', 'skype-online-status'); ?></label>*** 
 		<select class="select" id="<?php echo $this->get_field_id('use_voicemail'); ?>" name="<?php echo $this->get_field_name('use_voicemail'); ?>"><option value=""<?php if ($instance['use_voicemail'] == '') echo " selected=\"selected\"" ?>><?php _e('Default', 'skype-online-status'); ?></option><option value="on"<?php if ($instance['use_voicemail'] == 'on') echo " selected=\"selected\"" ?>><?php _e('Yes'); ?></option><option value="off"<?php if ($instance['use_voicemail'] == 'off') echo " selected=\"selected\"" ?>><?php _e('No'); ?></option></select></p>
 
-		<p style="clear:both;font-size:78%;font-weight:lighter;">* <?php _e('Leave blank to use the default options as you defined on the <a href="options-general.php?page=skype-status.php">Skype Online Status Settings</a> page.', 'skype-online-status'); //printf(__('Leave blank to use the default options as you defined on the %1$s page.', 'skype-online-status'), '<a href="'.admin_url('options-general.php?page='.SOSPLUGINBASENAME).'">'.__('Settings').'</a>'); ?><br />
+		<p style="clear:both;font-size:78%;font-weight:lighter;">* <?php _e('Leave blank to use the default options as you defined on the <a href="options-general.php?page=skype-status.php">Skype Settings</a> page.', 'skype-online-status'); //printf(__('Leave blank to use the default options as you defined on the %1$s page.', 'skype-online-status'), '<a href="'.admin_url('options-general.php?page='.SOSPLUGINBASENAME).'">'.__('Settings').'</a>'); ?><br />
 		** <?php _e('You can use some basic HTML here like &lt;br /&gt; for new line.', 'skype-online-status'); ?><br />
 		*** <?php printf(__('Set to %1$s if you do not have %2$s or %3$s.', 'skype-online-status'), __('No'), '<a href="https://support.skype.com/en/category/ONLINE_NUMBER_SKYPEIN/" target="_blank">'.__('SkypeIn','skype-online-status').'</a><img src="//www.ftjcfx.com/image-3049686-10520919" width="1" height="1" border="0"/>', '<a href="https://support.skype.com/en/category/VOICEMAIL/" target="_blank">'.__('Skype Voicemail','skype-online-status').'</a><img src="//www.ftjcfx.com/image-3049686-10423078" width="1" height="1" border="0"/>'); ?></p>
 <?php
@@ -225,7 +225,7 @@ class Skype_Online_Status {
 
 		add_shortcode('skype-status', array(__CLASS__, 'shortcode_callback'));
 
-		add_action('wp_head', create_function('', 'echo \'<style type="text/css">#skypedetectionswf{position:fixed;top:0px;left:-10px}#skypeCheckNotice{position:fixed!important}</style>\';'));
+		add_action('wp_head', array(__CLASS__, 'print_style'));
 
 		// http://scribu.net/wordpress/optimal-script-loading.html
 		wp_register_script('skypecheck', plugins_url('/js/skypeCheck.js', __FILE__), '', SOSVERSION, true);
@@ -317,12 +317,12 @@ class Skype_Online_Status {
 		);
 	
 		//build status texts
-		foreach (self::$avail_statusmsg as $key => $value) {
+/*		foreach (self::$avail_statusmsg as $key => $value) {
 			$fullkey = "status_".$key."_text";
 			$default_values[$fullkey] = $value;
 		}
 		unset($value);
-
+*/
 		//build function texts
 		foreach (self::$avail_functions as $key => $value) {
 			$fullkey = $key."_text";
@@ -535,6 +535,13 @@ class Skype_Online_Status {
 			return array ( "select" => $select );
 		else
 			return false;
+	}
+
+	// echo styles in header
+	public static function print_style() {
+		
+		echo '<style type="text/css">#skypeDropdown-transparent,#skypeDropdown-white{z-index:1}#skypedetectionswf{position:fixed;top:0px;left:-10px}#skypeCheckNotice{position:fixed !important}</style>';
+
 	}
 
 	// skypeCheck script in footer

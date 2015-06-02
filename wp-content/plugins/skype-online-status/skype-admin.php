@@ -68,12 +68,12 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 							<option value="skype_downloadpage"<?php if ( Skype_Online_Status::$config['getskype_link'] == "skype_downloadpage" ) print " selected=\"selected\"" ?>><?php _e('Skype download page', 'skype-online-status') ?></option>
 							<option value="custom_link"<?php if ( Skype_Online_Status::$config['getskype_link'] == "custom_link" ) print " selected=\"selected\"" ?>><?php _e('Custom...', 'skype-online-status') ?></option>
 						</select> <a href="#linkurl_info" class="info">?</a> </p>
-						<blockquote id="linkurl_info" style="display:none"><em><?php _e('Leave to Default if you are generous and think downloads should create some small possible revenue for the developer of this plugin -- that\'s me, thanks! :) -- but if you think open source developers are greedy bastards and should go away, select one of the other options -- just kidding, feel free... Really! You can always donate on the Notes section ;).', 'skype-online-status');?> <?php printf(__('If you want to create your own link to get possible revenue from downloads yourself, select %1$s and paste the link code in the textarea under %2$s below.', 'skype-online-status'),"<strong>".__('Custom...', 'skype-online-status')."</strong>","<strong>".__('Advanced Options', 'skype-online-status')." / ".__('Custom Download Link', 'skype-online-status')."</strong>") ?></em></blockquote>
+						<blockquote id="linkurl_info" style="display:none"><em><?php _e('Leave to Default if you are generous and think downloads should create some small possible revenue for the developer of this plugin. Or you could donate with the PayPal button on this page. -- Thanks! :)', 'skype-online-status');?> <?php printf(__('If you want to create your own link to get possible revenue from downloads yourself, select %1$s and paste the link code in the textarea under %2$s below.', 'skype-online-status'),"<strong>".__('Custom...', 'skype-online-status')."</strong>","<strong>".__('Advanced Options', 'skype-online-status')." / ".__('Custom Download Link', 'skype-online-status')."</strong>") ?></em></blockquote>
 		</fieldset>
 
 <!--		<fieldset class="options">
-			<h4><?php _e('Custom Status texts', 'skype-online-status') ?></h4>
-			<p><?php printf(__('Text that will replace the %s tag depending on actual online status.', 'skype-online-status'),"{status}"); 
+			<h4><?php //_e('Custom Status texts', 'skype-online-status') ?></h4>
+			<p><?php //printf(__('Text that will replace the %s tag depending on actual online status.', 'skype-online-status'),"{status}"); 
 
 /*	if (Skype_Online_Status::$config['use_status'] != "custom") { 
 		echo " " . sprintf(__('Please, change %1$s to %2$s under %3$s (above) for these options to become available first.', 'skype-online-status'),"<strong>".__('Status texts', 'skype-online-status')."</strong>","<strong>".__('Custom...', 'skype-online-status')."</strong>","<strong>".__('Advanced Options', 'skype-online-status')." / ".__('Display', 'skype-online-status')."</strong>");
@@ -84,14 +84,15 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 		$status_style = ""; 
 //	}
 	?>
-				<br /><?php _e('Note:', 'skype-online-status') ?> <?php _e('These custom texts will not repace the texts in the status images, just the alt-texts or text links. When using custom texts, the status images will default to the English versions.', 'skype-online-status'); ?></p>
+				<br /><?php //_e('Note:', 'skype-online-status') ?> <?php //_e('These custom texts will not repace the texts in the status images, just the alt-texts or text links. When using custom texts, the status images will default to the English versions.', 'skype-online-status'); ?></p>
 				<table style="margin-left:5px;margin-top:10px">
 					<tr>
-						<th><?php _e('Status', 'skype-online-status') ?></th>
-						<th><?php _e('Value', 'skype-online-status') ?></th>
-						<th><?php _e('Text', 'skype-online-status') ?></th>
+						<th><?php //_e('Status', 'skype-online-status') ?></th>
+						<th><?php //_e('Value', 'skype-online-status') ?></th>
+						<th><?php //_e('Text', 'skype-online-status') ?></th>
 					</tr>
-				<?php foreach (Skype_Online_Status::$avail_statusmsg as $key => $value) {
+				<?php /*
+				foreach (Skype_Online_Status::$avail_statusmsg as $key => $value) {
 				echo '
 					<tr>
 						<td><label for="status_'.$key.'_text">';
@@ -102,7 +103,8 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 				echo '"'.$status_readonly.' style="'.$status_style.'" /></td>
 					</tr>';
 				} 
-				unset($value) ?> 
+				unset($value);
+				*/ ?> 
 					<tr>
 						<td><label for="status_error_text"><?php //_e('Error', 'skype-online-status') ?></label></td>
 						<td><?php //_e('(none)', 'skype-online-status') ?></td>
@@ -299,7 +301,7 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 		?>
 			<ul>
 				<li><a target="_blank" href="http://www.skype.com/en/features/skype-buttons/create-skype-buttons/"><?php _e('Skype Buttons','skype-online-status') ?></a></li>
-				<li><a target="_blank" class="thickbox thickbox-preview" href="http://mystatus.skype.com/<?php echo Skype_Online_Status::$config['skype_id'] ?>?TB_iframe=true&amp;width=130&amp;=60"><?php printf(__('View %s\'s online status on the Skype server','skype-online-status'),Skype_Online_Status::$config['skype_id']) ?></a></li>
+<!--				<li><a target="_blank" class="thickbox thickbox-preview" href="http://mystatus.skype.com/<?php echo Skype_Online_Status::$config['skype_id'] ?>?TB_iframe=true&amp;width=130&amp;=60"><?php // printf(__('View %s\'s online status on the Skype server','skype-online-status'),Skype_Online_Status::$config['skype_id']) ?></a></li> -->
 				<li><a target="_blank" class="thickbox thickbox-preview" href="http://c.skype.com/i/legacy/images/share/buttons/privacy_shot.jpg"><?php _e('Edit Privacy Options in your Skype client','skype-online-status') ?></a></li>
 				<li><a target="_blank" href="https://support.skype.com/category/CALLING_PHONES_SKYPEOUT/" title="<?php _e('SkypeOut','skype-online-status') ?>"><?php _e('SkypeOut','skype-online-status'); _e(': ','skype-online-status'); _e('Call any phone directly from Skype.','skype-online-status') ?></a></li>
 				<li><a target="_blank" href="https://support.skype.com/category/ONLINE_NUMBER_SKYPEIN/" title="<?php _e('SkypeIn','skype-online-status') ?>"><?php _e('SkypeIn','skype-online-status'); _e(': ','skype-online-status'); _e('Your personal online number.','skype-online-status') ?></a></li>
@@ -474,9 +476,9 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 
 	  <iframe frameborder="0" scrolling="no" allowtransparency="yes" style="float:right;margin:0 0 0 5px;padding:0;border:0;width:450px;height:220px;background-color:transparent" src="//status301.net/skype-online-status/ads/?ad=top&amp;ref=<?php echo rawurlencode( $_SERVER['HTTP_HOST'] ); ?>" id="ad_big"></iframe>
 
-	  <p style="text-align:justify"><?php _e('Define all your <em>default</em> Skype Status settings here.', 'skype-online-status') ?> 
+	  <p style="text-align:justify"><?php _e('Define all your <em>default</em> Skype settings here.', 'skype-online-status') ?> 
 		<?php printf(__('Start simply by setting the basics like %1$s, %2$s and the button %3$s you want to show on your blog.', 'skype-online-status'),"<strong>".__('Skype ID', 'skype-online-status')."</strong>","<strong>".__('Full Name', 'skype-online-status')."</strong>","<strong>".__('Theme', 'skype-online-status')."</strong>") ?> 
-		<?php printf(__('Then activate the Skype Status Widget on your <a href="widgets.php">Widgets</a> page or use the Skype Status quicktag button %s in the WYSIWYG editor (TinyMCE) to place a Skype legacy button in any post or page.', 'skype-online-status'),'<img src="'.plugins_url('/skype_button.gif', __FILE__).'" alt="'.__('Skype Legacy Buttons', 'skype-online-status').'" style="vertical-align:text-bottom;" />') ?> 
+		<?php printf(__('Then activate a Skype Button widget on your <a href="widgets.php">Widgets</a> page or use the Skype shortcode button %s in the WYSIWYG editor (TinyMCE) to place a Skype legacy button in any post or page.', 'skype-online-status'),'<img src="'.plugins_url('/skype_button.gif', __FILE__).'" alt="'.__('Skype Legacy Buttons', 'skype-online-status').'" style="vertical-align:text-bottom;" />') ?> 
 		<?php _e('Later on, you can fine-tune everything until it fits just perfectly on you pages.', 'skype-online-status') ?><br />
 		<?php _e('Note:', 'skype-online-status') ?> <?php _e('Some basic settings may be overridden per Widget settings or when calling the Skype button with a template function.', 'skype-online-status') ?></p>
 	  <p style="text-align:justify"><?php printf(__('Read more about configuring this plugin and more ways to trigger Skype buttons on your blog in the %1$s section. If you have any remaining questions, see the %2$s page to get help.', 'skype-online-status'),"<strong>".__('Quick Guide', 'skype-online-status')."</strong>","<strong>".__('Notes', 'skype-online-status')."</strong>") ?></p>
@@ -489,7 +491,7 @@ class Skype_Online_Status_Admin extends Skype_Online_Status {
 
 		<fieldset class="options">
 			<p><label for="skype_id"><strong><?php _e('Skype ID', 'skype-online-status'); _e(': ', 'skype-online-status') ?></strong></label><input type="text" name="skype_id" id="skype_id" value="<?php echo Skype_Online_Status::$config['skype_id'] ?>" /> <a href="#skypeid_info" class="info">?</a></p>
-			<blockquote id="skypeid_info" style="display:none"><em><?php printf(__('Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!','skype-online-status'),'<a href="https://support.skype.com/en/category/CALLING_PHONES_SKYPEOUT/" title="SkypeOut">'.__('SkypeOut','skype-online-status').'</a>') ?> <?php _e('Note:', 'skype-online-status') ?> <?php _e('The new Windows Live Skype IDs do not allow online status to be detected and are not supported by this plugin.', 'skype-online-status') ?></em></blockquote>
+			<blockquote id="skypeid_info" style="display:none"><em><?php printf(__('Simply enter your Skype ID. Or... If you want the button to invoke a Skype multichat or conference call, enter more then one Skype ID seperated with a semi-colon (<strong>;</strong>). You may also enter a regular phone number (starting with a <strong>+</strong> followed by country code; note that callers need to have %s to call). It just all depends on what you want to achieve!','skype-online-status'),'<a href="https://support.skype.com/en/category/CALLING_PHONES_SKYPEOUT/" title="SkypeOut">'.__('SkypeOut','skype-online-status').'</a>') ?> <?php _e('Note:', 'skype-online-status') ?></em></blockquote>
 
 			<p><label for="user_name"><strong><?php _e('Full Name', 'skype-online-status'); _e(': ', 'skype-online-status') ?></strong></label><input type="text" style="width: 250px;" name="user_name" id="user_name" value="<?php echo stripslashes(htmlspecialchars(Skype_Online_Status::$config['user_name'])) ?>" /> <a href="#username_info" class="info">?</a></p>
 			<blockquote id="username_info" style="display:none"><em><?php _e('Your full name as you want it to appear in Skype links, link-titles and image alt-texts on your blog.', 'skype-online-status') ?></em></blockquote>

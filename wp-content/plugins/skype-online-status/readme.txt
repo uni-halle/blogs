@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravan
 Tags: skype, skype button, call, support, widget, widgets, post, posts, quicktag, tinymce, tinymce3, im, skype-button
 Requires at least: 3.1
 Tested up to: 4.2
-Stable tag: 3.0
+Stable tag: 3.0.1
 
 Unlimited, highly customizable and accessible (!) Skype buttons through widgets, post shortcode/quicktag and template tags.
 
@@ -25,7 +25,7 @@ Since version 2.6.4.0, Skype Online Status is ready for internationalization. An
 - **Bulgarian** * Nikolay Nikolov http://en.chat4o.com/ (version 2.8.2)
 - **Croatian** * Saša http://lasersko-graviranje.bisa.hr (version 2.9.4)
 - **Danish** * Georg S. Adamsen http://wordpress.blogos.dk/2009/03/18/skype-online-status/ (version 2.8.2)
-- **Dutch** * R.A. van Hagen http://status301.net/ (version 2.8.7)
+- **Dutch** * R.A. van Hagen http://status301.net/ (version 3.0)
 - **Estonian** * Iflexion Design http://iflexion.com/ (version 2.7)
 - **Finnish** * Jani Alha http://www.wysiwyg.fi/ (version 2.8.5)
 - **French** * Emmanuelle Traduction http://www.translatonline.com/ (version 2.8.2)
@@ -153,6 +153,10 @@ When reporting bugs, please describe as carefully as possible and provide inform
 Removed status button templates and functionality because Skype dropped support!
 
 == Changelog ==
+
+= 3.0.1 =
+* Translation strings updated
+* FIX: z-index for dropdown going under form input elements, props to brit77
 
 = 3.0 =
 * Removed status button templates and functionality because Skype dropped support

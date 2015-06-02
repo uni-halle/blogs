@@ -2,4 +2,4 @@
 #skypeTransparentDrp img{border:none !important;margin:0 !important;padding:0 !important;display:inline}
 #skypeTransparentDrp div#skypeDropdown-transparent{margin:0 !important;padding:0 !important;clear:both !important;text-indent:0 !important;line-height:0 !important;border:none !important}
 #skypeDropdown-transparent a{display:block !important;margin:0 !important;padding:0 !important;text-indent:0!important;line-height:0 !important;border:none !important}
-#skypeTransparentDrp > div#skypeDropdown-transparent{position: absolute;}
+#skypeTransparentDrp > div#skypeDropdown-transparent{position: absolute}
