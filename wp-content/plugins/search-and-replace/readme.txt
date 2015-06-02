@@ -3,8 +3,8 @@ Contributors: Bueltge, inpsyde
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RHWH8VG798CSC
 Tags: database, mysql, search, replace, admin, security
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: trunk
+Tested up to: 4.2.2
+Stable tag: 2.7.1
 License: GPLv2+
 
 A simple search for find strings in your database and replace the string.
@@ -40,6 +40,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v1.7.1 (2015-05-28) =
+* Fix for changes on database collate since WordPress version 4.2
+* Fix to reduce backslashes in search and replace string
+
 = v1.7.0 (2014-09-14) =
 * Exclude serialized data from replace function (maybe we reduce the support)
 * Add hint, if is serialized data on the result table
@@ -69,7 +73,7 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 = v2.6.1 (01/25/2011) =
 * Feature: Add Signups-Table for WP MU
-* Maintenance: check for tables, PHP Warning fix 
+* Maintenance: check for tables, PHP Warning fix
 
 = v2.6.0 (01/03/2011) =
 * Feature: add an new search for find strings (maybe a new way for search strings)
