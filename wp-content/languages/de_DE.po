@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-17 18:19:04+0000\n"
+"PO-Revision-Date: 2015-05-28 23:38:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2044,17 +2044,17 @@ msgid_plural "%s weeks"
 msgstr[0] "%s Woche"
 msgstr[1] "%s Wochen"
 
-#: wp-includes/formatting.php:2570
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s Monat"
-msgstr[1] "%s Monate"
-
 #: wp-includes/formatting.php:2575
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s Jahr"
-msgstr[1] "%s Jahre"
+msgstr[1] "%s Jahren"
+
+#: wp-includes/formatting.php:2570
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s Monat"
+msgstr[1] "%s Monaten"
 
 #: wp-includes/nav-menu.php:668 wp-includes/nav-menu.php:731
 #: wp-includes/post-template.php:1388 wp-includes/post-template.php:1478
@@ -5253,41 +5253,6 @@ msgstr "Freitag"
 msgid "Saturday"
 msgstr "Samstag"
 
-#. translators: one-letter abbreviation of the weekday
-#: wp-includes/locale.php:107
-msgid "S_Sunday_initial"
-msgstr "S_Sonntag_initial"
-
-#. translators: one-letter abbreviation of the weekday
-#: wp-includes/locale.php:108
-msgid "M_Monday_initial"
-msgstr "M_Montag_initial"
-
-#. translators: one-letter abbreviation of the weekday
-#: wp-includes/locale.php:109
-msgid "T_Tuesday_initial"
-msgstr "D_Dienstag_initial"
-
-#. translators: one-letter abbreviation of the weekday
-#: wp-includes/locale.php:110
-msgid "W_Wednesday_initial"
-msgstr "M_Mittwoch_initial"
-
-#. translators: one-letter abbreviation of the weekday
-#: wp-includes/locale.php:111
-msgid "T_Thursday_initial"
-msgstr "D_Donnerstag_initial"
-
-#. translators: one-letter abbreviation of the weekday
-#: wp-includes/locale.php:112
-msgid "F_Friday_initial"
-msgstr "F_Freitag_initial"
-
-#. translators: one-letter abbreviation of the weekday
-#: wp-includes/locale.php:113
-msgid "S_Saturday_initial"
-msgstr "S_Samstag_initial"
-
 #. translators: three-letter abbreviation of the weekday
 #: wp-includes/locale.php:120
 msgid "Sun"
@@ -5382,66 +5347,6 @@ msgstr "November"
 #: wp-includes/locale.php:140 wp-includes/locale.php:155
 msgid "December"
 msgstr "Dezember"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:144
-msgid "Jan_January_abbreviation"
-msgstr "Jan_Januar_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:145
-msgid "Feb_February_abbreviation"
-msgstr "Feb_Februar_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:146
-msgid "Mar_March_abbreviation"
-msgstr "Mrz_März_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:147
-msgid "Apr_April_abbreviation"
-msgstr "Apr_April_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:148
-msgid "May_May_abbreviation"
-msgstr "Mai_Mai_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:149
-msgid "Jun_June_abbreviation"
-msgstr "Jun_Juni_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:150
-msgid "Jul_July_abbreviation"
-msgstr "Jul_Juli_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:151
-msgid "Aug_August_abbreviation"
-msgstr "Aug_August_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:152
-msgid "Sep_September_abbreviation"
-msgstr "Sep_September_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:153
-msgid "Oct_October_abbreviation"
-msgstr "Okt_Oktober_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:154
-msgid "Nov_November_abbreviation"
-msgstr "Nov_November_abbreviation"
-
-#. translators: three-letter abbreviation of the month
-#: wp-includes/locale.php:155
-msgid "Dec_December_abbreviation"
-msgstr "Dez_Dezember_abbreviation"
 
 #: wp-includes/locale.php:162
 msgid "am"
@@ -6312,6 +6217,101 @@ msgstr "Weiter"
 #: wp-includes/script-loader.php:266
 msgid "Crunching&hellip;"
 msgstr "Verarbeiten&#160;&hellip;"
+
+#. translators: one-letter abbreviation of the weekday
+#: wp-includes/locale.php:113
+msgid "S_Saturday_initial"
+msgstr "S"
+
+#. translators: one-letter abbreviation of the weekday
+#: wp-includes/locale.php:112
+msgid "F_Friday_initial"
+msgstr "F"
+
+#. translators: one-letter abbreviation of the weekday
+#: wp-includes/locale.php:111
+msgid "T_Thursday_initial"
+msgstr "D"
+
+#. translators: one-letter abbreviation of the weekday
+#: wp-includes/locale.php:110
+msgid "W_Wednesday_initial"
+msgstr "M"
+
+#. translators: one-letter abbreviation of the weekday
+#: wp-includes/locale.php:109
+msgid "T_Tuesday_initial"
+msgstr "D"
+
+#. translators: one-letter abbreviation of the weekday
+#: wp-includes/locale.php:108
+msgid "M_Monday_initial"
+msgstr "M"
+
+#. translators: one-letter abbreviation of the weekday
+#: wp-includes/locale.php:107
+msgid "S_Sunday_initial"
+msgstr "S"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:144
+msgid "Jan_January_abbreviation"
+msgstr "Jan"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:145
+msgid "Feb_February_abbreviation"
+msgstr "Feb"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:146
+msgid "Mar_March_abbreviation"
+msgstr "Mrz"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:147
+msgid "Apr_April_abbreviation"
+msgstr "Apr"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:148
+msgid "May_May_abbreviation"
+msgstr "Mai"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:149
+msgid "Jun_June_abbreviation"
+msgstr "Jun"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:150
+msgid "Jul_July_abbreviation"
+msgstr "Jul"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:151
+msgid "Aug_August_abbreviation"
+msgstr "Aug"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:152
+msgid "Sep_September_abbreviation"
+msgstr "Sep"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:153
+msgid "Oct_October_abbreviation"
+msgstr "Okt"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:154
+msgid "Nov_November_abbreviation"
+msgstr "Nov"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/locale.php:155
+msgid "Dec_December_abbreviation"
+msgstr "Dez"
 
 #: wp-includes/script-loader.php:577
 msgid "Could not set that as the thumbnail image. Try a different attachment."

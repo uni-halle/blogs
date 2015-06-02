@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-02 22:25:58+0000\n"
+"PO-Revision-Date: 2015-05-26 19:07:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5616,13 +5616,13 @@ msgid_plural "%s sites"
 msgstr[0] "%s Seite"
 msgstr[1] "%s Seiten"
 
-#: wp-admin/includes/dashboard.php:945
-msgid "http://wordpress.org/news/"
-msgstr "http://blog.wpde.org/"
-
 #: wp-admin/includes/dashboard.php:954
 msgid "http://wordpress.org/news/feed/"
-msgstr "http://blog.wpde.org/feed/"
+msgstr "http://de.wordpress.org/category/release/feed/"
+
+#: wp-admin/includes/dashboard.php:945
+msgid "http://wordpress.org/news/"
+msgstr "https://de.wordpress.org/category/release/"
 
 #: wp-admin/options-discussion.php:86
 msgid "(Signup has been disabled. Only members of this site can comment.)"

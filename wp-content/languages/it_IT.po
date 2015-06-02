@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-23 17:17:36+0000\n"
+"PO-Revision-Date: 2015-05-31 19:34:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1964,10 +1964,6 @@ msgstr "In <code>%1$s</code> utilizzare il metodo <code>%2$s</code> non la funzi
 msgid "ERROR: This is not a valid feed template."
 msgstr "ERRORE: questo non è un template per i feed valido."
 
-#: wp-includes/post-template.php:1632
-msgid "This content is password protected. To view it please enter your password below:"
-msgstr "Il contenuto è protetto da password. Per visualizzarlo inserisci qui sotto la password:"
-
 #. translators: This is a comma-separated list of very common words that should
 #. be excluded from a search, like a, an, and the. These are usually called
 #. "stopwords". You should not simply translate these individual words into
@@ -1977,6 +1973,10 @@ msgstr "Il contenuto è protetto da password. Per visualizzarlo inserisci qui so
 msgctxt "Comma-separated list of search stopwords in your language"
 msgid "about,an,are,as,at,be,by,com,for,from,how,in,is,it,of,on,or,that,the,this,to,was,what,when,where,who,will,with,www"
 msgstr "su,un,uno,una,sono,siete,come,alle,allo,alla,essere,di,da,per,in,con,per,tra,fra,come,è,egli,ella,essi,loro,il,al,le,lo,oppure,questo,quello,queste,questi,quelli,quelle,a,era,eri,erano,cosa,quando,dove,chi,www"
+
+#: wp-includes/post-template.php:1632
+msgid "This content is password protected. To view it please enter your password below:"
+msgstr "Il contenuto è protetto da password. Per visualizzarlo inserisci di seguito la password:"
 
 #: wp-includes/class-http.php:1114 wp-includes/class-http.php:1530
 msgid "Failed to write request to temporary file."
