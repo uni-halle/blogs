@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-07 21:53+0545\n"
-"PO-Revision-Date: 2015-04-07 21:53+0545\n"
+"POT-Creation-Date: 2015-05-27 08:12-0500\n"
+"PO-Revision-Date: 2015-05-27 08:12-0500\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: H.P. Brinkmann\n"
 "Language: sk_SK\n"
@@ -443,27 +443,27 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-#: ../functions.php:986
+#: ../functions.php:983
 msgid "Name"
 msgstr "Meno"
 
-#: ../functions.php:988 ../inc/theme-options.php:887
+#: ../functions.php:985 ../inc/theme-options.php:887
 msgid "Email"
 msgstr "E-Mail"
 
-#: ../functions.php:1365
+#: ../functions.php:1362
 msgid "Primary menu"
 msgstr "Primárne menu"
 
-#: ../functions.php:1367 ../functions.php:1400
+#: ../functions.php:1364 ../functions.php:1397
 msgid "Skip to primary content"
 msgstr "Preskočiť k primárnemu obsahu."
 
-#: ../functions.php:1368 ../functions.php:1401
+#: ../functions.php:1365 ../functions.php:1398
 msgid "Skip to secondary content"
 msgstr "Preskočiť k sekundárnemu obsahu."
 
-#: ../functions.php:1398
+#: ../functions.php:1395
 msgid "Secondary menu"
 msgstr "Sekundárne menu"
 
@@ -1033,13 +1033,27 @@ msgstr "Bohužial som nič nenašiel. Skúste zadať iné kľúčové slová."
 msgid "Search"
 msgstr "Vyhľadávanie"
 
-#: ../sidebar.php:28
+#: ../sidebar.php:29
+msgid "Primary Sidebar Widget Area"
+msgstr ""
+
+#: ../sidebar.php:31
+msgid ""
+"This is the Primary Sidebar Widget Area if you are using a two column site "
+"layout option."
+msgstr ""
+
+#: ../sidebar.php:32
+#, php-format
+msgid ""
+"By default it will load Search and Archives widgets as shown below. You can "
+"add widget to this area by visiting your <a href=\"%s\">Widgets Panel</a> "
+"which will replace default widgets."
+msgstr ""
+
+#: ../sidebar.php:38
 msgid "Archives"
 msgstr "Archív"
-
-#: ../sidebar.php:37
-msgid "Meta"
-msgstr "Ďalšie"
 
 #: ../single.php:16
 msgid "<span class=\"meta-nav\">&larr;</span> Previous"
@@ -1053,6 +1067,9 @@ msgstr "Nasledujúci <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Viac v rovnakom štítku: %s"
+
+#~ msgid "Meta"
+#~ msgstr "Ďalšie"
 
 #~ msgid "Copyright &copy;"
 #~ msgstr "Copyright &copy;"

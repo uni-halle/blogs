@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-07 21:51+0545\n"
-"PO-Revision-Date: 2015-04-07 21:51+0545\n"
+"POT-Creation-Date: 2015-05-27 08:11-0500\n"
+"PO-Revision-Date: 2015-05-27 08:11-0500\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Catch Themes Team <info@catchthemes.com>\n"
 "Language: bs\n"
@@ -459,27 +459,27 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-#: ../functions.php:986
+#: ../functions.php:983
 msgid "Name"
 msgstr "Naziv"
 
-#: ../functions.php:988 ../inc/theme-options.php:887
+#: ../functions.php:985 ../inc/theme-options.php:887
 msgid "Email"
 msgstr "Email"
 
-#: ../functions.php:1365
+#: ../functions.php:1362
 msgid "Primary menu"
 msgstr "Glavni meni"
 
-#: ../functions.php:1367 ../functions.php:1400
+#: ../functions.php:1364 ../functions.php:1397
 msgid "Skip to primary content"
 msgstr "Preskoči do primarnog sadržaja"
 
-#: ../functions.php:1368 ../functions.php:1401
+#: ../functions.php:1365 ../functions.php:1398
 msgid "Skip to secondary content"
 msgstr "Preskoči do sekundarnog sadržaja"
 
-#: ../functions.php:1398
+#: ../functions.php:1395
 msgid "Secondary menu"
 msgstr "Sekundarnog meni"
 
@@ -1052,13 +1052,27 @@ msgstr ""
 msgid "Search"
 msgstr "Traži"
 
-#: ../sidebar.php:28
+#: ../sidebar.php:29
+msgid "Primary Sidebar Widget Area"
+msgstr ""
+
+#: ../sidebar.php:31
+msgid ""
+"This is the Primary Sidebar Widget Area if you are using a two column site "
+"layout option."
+msgstr ""
+
+#: ../sidebar.php:32
+#, php-format
+msgid ""
+"By default it will load Search and Archives widgets as shown below. You can "
+"add widget to this area by visiting your <a href=\"%s\">Widgets Panel</a> "
+"which will replace default widgets."
+msgstr ""
+
+#: ../sidebar.php:38
 msgid "Archives"
 msgstr "Arhive"
-
-#: ../sidebar.php:37
-msgid "Meta"
-msgstr "Meta"
 
 #: ../single.php:16
 msgid "<span class=\"meta-nav\">&larr;</span> Previous"
@@ -1072,6 +1086,9 @@ msgstr "Sljedeća <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Arhive oznaka: %s"
+
+#~ msgid "Meta"
+#~ msgstr "Meta"
 
 #~ msgid "Copyright &copy;"
 #~ msgstr "Copyright &copy;"

@@ -1,5 +1,9 @@
 == Changelog ==
 
+Version 3.5.3
+* Added helper text and default widget when there is no widget is sidebar
+* Updated genericons to version 3.3
+
 Version 3.5.2
 * Bug Fixed: Changed search form id searchform to class searchform (Reported by Lorentz)
 * Bug Fixed: Responsive menu image not showing in mobile devices

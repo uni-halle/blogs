@@ -22,8 +22,18 @@ if ( $layout == 'content-onecolumn' || $layout == 'no-sidebar' || is_page_templa
 else :
 ?>
 		<div id="secondary" class="widget-area" role="complementary">
-			<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
-
+			<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) :
+				//Helper Text
+				if ( current_user_can( 'edit_theme_options' ) ) { ?>
+					<aside id="widget-default-text" class="widget widget_text">
+			           	<h3 class="widget-title"><?php _e( 'Primary Sidebar Widget Area', 'catchbox' ); ?></h3>
+	           			<div class="textwidget">
+	                   		<p><?php _e( 'This is the Primary Sidebar Widget Area if you are using a two column site layout option.', 'catchbox' ); ?></p>
+	                   		<p><?php printf( __( 'By default it will load Search and Archives widgets as shown below. You can add widget to this area by visiting your <a href="%s">Widgets Panel</a> which will replace default widgets.', 'catchbox' ), admin_url( 'widgets.php' ) ); ?></p>
+	                 	</div>
+		       		</aside><!-- #widget-default-text -->
+				<?php
+				} ?>
 				<aside id="archives" class="widget">
 					<h3 class="widget-title"><?php _e( 'Archives', 'catchbox' ); ?></h3>
                     <div class="widget-content">
@@ -33,15 +43,8 @@ else :
                     </div>
 				</aside>
 
-				<aside id="meta" class="widget">
-					<h3 class="widget-title"><?php _e( 'Meta', 'catchbox' ); ?></h3>
-                    <div class="widget-content">
-                        <ul>
-                            <?php wp_register(); ?>
-                            <li><?php wp_loginout(); ?></li>
-                            <?php wp_meta(); ?>
-                        </ul>
-                  	</div>
+				<aside id="default-search" class="widget widget_search">
+					<?php get_search_form(); ?>
 				</aside>
 
 			<?php endif; // end sidebar widget area ?>

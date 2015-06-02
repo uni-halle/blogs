@@ -909,11 +909,8 @@ function catchbox_scripts_method() {
 	// Loads our main stylesheet.
 	wp_enqueue_style( 'catchbox-style', get_stylesheet_uri() );
 	
-	/**
-	 * Add Genericons font, used in the main stylesheet.
-	 */	
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.0.3' );	
-	
+	//For genericons
+	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', false, '3.3' );
 	
 	/**
 	 * Loads up Scroll Up script
