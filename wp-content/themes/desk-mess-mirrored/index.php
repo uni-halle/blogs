@@ -11,14 +11,14 @@
  *
  * @link        http://buynowshop.com/themes/desk-mess-mirrored/
  * @link        https://github.com/Cais/desk-mess-mirrored/
- * @link        http://wordpress.org/extend/themes/desk-mess-mirrored/
+ * @link        https://wordpress.org/themes/desk-mess-mirrored/
  *
  * @internal    REQUIRES WordPress version 3.4
- * @internal    Tested up to WordPress version 4.0
+ * @internal    Tested up to WordPress version 4.2.2
  *
- * @version     2.3
+ * @version     2.4
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2014, Edward Caissie
+ * @copyright   Copyright (c) 2009-2015, Edward Caissie
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License version 2, as published by the
@@ -48,18 +48,22 @@ get_header(); ?>
 		<div id="content">
 
 			<div id="main-blog">
-				<?php
-				if ( have_posts() ) {
+
+				<?php if ( have_posts() ) {
+
 					while ( have_posts() ) {
 						the_post();
 						get_template_part( 'desk-mess-mirrored', get_post_format() );
 					}
-					/** End while - have posts */
+
 					get_template_part( 'dmm-navigation' );
+
 				} else {
+
 					dmm_no_posts_found();
-				} /** End if - have posts */
-				?>
+
+				} ?>
+
 			</div>
 			<!--end main blog-->
 

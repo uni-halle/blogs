@@ -1,5 +1,8 @@
 === Desk Mess Mirrored ===
-Changelog: October 19, 2014
+Last revised: May 15, 2015
+- moved back to `readme.txt` file
+
+/** ------------------------------------------------------------------------- */
 == Version 2.3 ==
 = Code =
 * Added BNS Login "Compatibility Code" to use dashicons instead of text

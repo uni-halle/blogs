@@ -8,10 +8,10 @@
  *
  * @link        http://buynowshop.com/themes/desk-mess-mirrored/
  * @link        https://github.com/Cais/desk-mess-mirrored/
- * @link        http://wordpress.org/extend/themes/desk-mess-mirrored/
+ * @link        https://wordpress.org/themes/desk-mess-mirrored/
  *
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2014, Edward Caissie
+ * @copyright   Copyright (c) 2009-2015, Edward Caissie
  *
  * @version     2.0
  * @date        December 11, 2012
@@ -24,22 +24,26 @@
 get_header(); ?>
 
 	<div id="maintop"></div>
+
 	<div id="wrapper">
 		<div id="content">
+
 			<div id="main-blog">
 
-				<?php
-				if ( have_posts() ) {
+				<?php if ( have_posts() ) {
+
 					while ( have_posts() ) {
 						the_post();
 						get_template_part( 'desk-mess-mirrored', get_post_format() );
 					}
-					/** End while - have posts */
+
 					get_template_part( 'dmm-navigation' );
+
 				} else {
+
 					dmm_no_posts_found();
-				} /** End if - have posts */
-				?>
+
+				} ?>
 
 			</div>
 			<!--end main blog-->
@@ -47,6 +51,7 @@ get_header(); ?>
 			<?php get_sidebar(); ?>
 
 			<div class="clear"></div>
+
 		</div>
 		<!--end content-->
 	</div><!--end wrapper-->

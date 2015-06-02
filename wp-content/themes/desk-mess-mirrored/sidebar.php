@@ -7,10 +7,10 @@
  *
  * @link        http://buynowshop.com/themes/desk-mess-mirrored/
  * @link        https://github.com/Cais/desk-mess-mirrored/
- * @link        http://wordpress.org/extend/themes/desk-mess-mirrored/
+ * @link        https://wordpress.org/themes/desk-mess-mirrored/
  *
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2014, Edward Caissie
+ * @copyright   Copyright (c) 2009-2015, Edward Caissie
  *
  * @version     2.2.4
  * @date        April 13, 2014
@@ -74,7 +74,7 @@
 						</ul>
 					</li><!-- widget meta -->
 
-				<?php endif; /** End if - Sidebar-1 Widget area */ ?>
+				<?php endif; ?>
 
 				<?php if ( dynamic_sidebar( 'sidebar-2' ) ) : else : endif; ?>
 				<?php if ( dynamic_sidebar( 'sidebar-3' ) ) : else : endif; ?>
