@@ -797,6 +797,10 @@ form#commentform input, form#commentform textarea {
 	border-top-left-radius: 12px;
 }
 
+form#commentform input {
+	margin-right: 5px;
+}
+
 .dark-post-head form#commentform button#submit {
 	color: rgba(255,255,255,.8);
 	-webkit-border-radius: 4px;

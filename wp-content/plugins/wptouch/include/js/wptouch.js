@@ -32,13 +32,8 @@ function doWPtouchReady() {
 		};
 
 		WPtouchAjax( 'handle_shortcode', params, function( response ) {
-			if ( response == 'WPTOUCH_NO_SHORTCODE' ) {
-				// No desktop shortcode, show the original one
-				shortcodeDiv.hide();
-				jQuery( '.wptouch-orig-content' ).show();
-			} else {
-				shortcodeDiv.html( response );
-			}
+			shortcodeDiv.html( response );
+			jQuery( document ).trigger( 'wptouch_ajax_content_loaded' );
 		});
 	}
 }

@@ -66,14 +66,14 @@ function wptouch_render_menu_page( $page_options ) {
 		__( 'Menu Options', 'wptouch-pro' ),
 		'setup-menu-parent-items',
 		array(
-/*	TODO: Deprecated	wptouch_add_setting(
+			wptouch_add_setting(
 				'checkbox',
 				'enable_parent_items',
 				__( 'Enable parent items as links', 'wptouch-pro' ),
 				__( 'If disabled, parent menu items will only toggle child items.', 'wptouch-pro' ),
 				WPTOUCH_SETTING_BASIC,
-				'3.0.2'
-			),*/
+				'3.7.8'
+			),
 			wptouch_add_setting(
 				'checkbox',
 				'enable_menu_icons',

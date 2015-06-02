@@ -1,15 +1,15 @@
 # Copyright (C) 2015 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.6.4\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2015-01-05 15:57:04+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2015-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr "Project-Id-Version: WPtouch Pro 3.7.7\nReport-Msgid-Bugs-To: http://wordpress.org/support/plugin/wptouch-pro-3\nPOT-Creation-Date: 2015-04-28 17:16:54+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2015-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
 msgstr "Bantuan WPtouch & Tautan Akun"
 
 #: admin/html/help.php:3
-msgid "Support Forums"
-msgstr "Forum Dukungan"
+msgid "Support"
+msgstr "Dukungan"
 
 #: admin/html/help.php:4
 msgid "Documentation"
@@ -27,7 +27,7 @@ msgstr "BraveNewCode pada Twitter"
 msgid "Plugin Licensing Terms"
 msgstr "Persyaratan Pelisensian Plugin"
 
-#: admin/html/notification-center.php:5
+#: admin/html/notification-center.php:5 core/admin-render.php:7
 msgid "What's in WPtouch Pro?"
 msgstr "Ada apa di WPtouch Pro?"
 
@@ -154,312 +154,259 @@ msgstr "Kompatibilitas"
 msgid "Auto-detect"
 msgstr "Deteksi-otomatis"
 
-#: admin/pages/wptouch-admin-general-settings.php:47
+#: admin/pages/wptouch-admin-general-settings.php:49
 msgid "WPtouch Pro site title"
 msgstr "Judul Situs WPtouch Pro"
 
-#: admin/pages/wptouch-admin-general-settings.php:48
+#: admin/pages/wptouch-admin-general-settings.php:50
 msgid "If the title of your site is long, you can shorten it for display within WPtouch Pro themes."
 msgstr "Jika judul situs Anda panjang, Anda dapat memendekkannya untuk tampilan dalam tema WPtouch Pro."
 
-#: admin/pages/wptouch-admin-general-settings.php:55
+#: admin/pages/wptouch-admin-general-settings.php:57
 msgid "Display %sPowered by WPtouch Pro%s in footer"
 msgstr "Tampilan %sDipersembahkan oleh WPtouch Pro%s di catatan kaki"
 
 #: admin/pages/wptouch-admin-general-settings.php:66
-msgid "Use my WPtouch Pro referral code to earn commission"
-msgstr "Gunakan kode referensi WPtouch Pro untuk mendapatkan komisi"
-
-#: admin/pages/wptouch-admin-general-settings.php:67
-msgid "Licensed users of WPtouch Pro can earn a commission for each sale they generate from their mobile website"
-msgstr "Pengguna berlisensi WPtouch Pro bisa mendapatkan komisi untuk setiap penjualan yang mereka hasilkan dari situs web mobile mereka"
-
-#: admin/pages/wptouch-admin-general-settings.php:75
 msgid "Site Title & Byline"
 msgstr "Judul Situs & Keterangan"
 
-#: admin/pages/wptouch-admin-general-settings.php:84
+#: admin/pages/wptouch-admin-general-settings.php:75
 msgid "Regionalization"
 msgstr "Regionalisasi"
 
-#: admin/pages/wptouch-admin-general-settings.php:90
+#: admin/pages/wptouch-admin-general-settings.php:81
 msgid "Language"
 msgstr "Bahasa"
 
-#: admin/pages/wptouch-admin-general-settings.php:91
+#: admin/pages/wptouch-admin-general-settings.php:82
 msgid "The WPtouch Pro admin panel &amp; supported themes will be shown in this locale."
 msgstr "Tema panel admin WPtouch Pro &amp; yang didukung akan ditampilkan di lokal ini."
 
-#: admin/pages/wptouch-admin-general-settings.php:99
-msgid "Translate administration panel text"
-msgstr "Terjemahkan teks panel administrasi"
-
-#: admin/pages/wptouch-admin-general-settings.php:110
+#: admin/pages/wptouch-admin-general-settings.php:103
 msgid "Display Mode"
 msgstr "Mode Tampilan"
 
+#: admin/pages/wptouch-admin-general-settings.php:109
+msgid "Mobile theme is visible to"
+msgstr "Tema mobile terlihat untuk"
+
+#: admin/pages/wptouch-admin-general-settings.php:114
+msgid "All Visitors"
+msgstr "Semua Pengunjung"
+
+#: admin/pages/wptouch-admin-general-settings.php:115
+msgid "Site administrators"
+msgstr "Administrator situs"
+
 #: admin/pages/wptouch-admin-general-settings.php:116
-msgid "Theme Display"
-msgstr "Tampilan Tema"
+msgid "Nobody (disable WPtouch Pro)"
+msgstr "Tak seorang pun (nonaktifkan WPtouch Pro)"
 
-#: admin/pages/wptouch-admin-general-settings.php:121
-msgid "Normal (active for all mobile visitors)"
-msgstr "Normal (aktif bagi semua pengunjung mobile)"
-
-#: admin/pages/wptouch-admin-general-settings.php:122
-msgid "Preview (active only for logged-in site administrators)"
-msgstr "Pratinjau (aktif hanya bagi administrator situs yang masuk)"
-
-#: admin/pages/wptouch-admin-general-settings.php:123
-msgid "Disabled (mobile theme will never show)"
-msgstr "Dinonaktifkan (tema mobile tidak akan pernah ditampilkan)"
-
-#: admin/pages/wptouch-admin-general-settings.php:132
+#: admin/pages/wptouch-admin-general-settings.php:125
 msgid "Landing Page"
 msgstr "Halaman Arahan"
 
-#: admin/pages/wptouch-admin-general-settings.php:138
+#: admin/pages/wptouch-admin-general-settings.php:131
 msgid "WPtouch Pro landing page"
 msgstr "Halaman arahan WPtouch Pro"
 
-#: admin/pages/wptouch-admin-general-settings.php:143
-msgid "Default (same as WordPress)"
-msgstr "Standar (sama seperti WordPress)"
+#: admin/pages/wptouch-admin-general-settings.php:136
+msgid "Default (same as desktop visitors)"
+msgstr "Standar (sama dengan pengunjung dekstop)"
 
-#: admin/pages/wptouch-admin-general-settings.php:144
-msgid "Select from WordPress pages"
-msgstr "Pilih dari halaman WordPress"
+#: admin/pages/wptouch-admin-general-settings.php:137
+msgid "Redirect to a page"
+msgstr "Alihkan ke halaman"
 
-#: admin/pages/wptouch-admin-general-settings.php:152
+#: admin/pages/wptouch-admin-general-settings.php:138
+msgctxt "Refers to a custom landing page"
+msgid "Redirect to a custom URL"
+msgstr "Alihkan ke URL kustom"
+
+#: admin/pages/wptouch-admin-general-settings.php:145
 msgid "Custom Slug or URL"
 msgstr "Slug atau URL Tersuai"
 
-#: admin/pages/wptouch-admin-general-settings.php:153
+#: admin/pages/wptouch-admin-general-settings.php:146
 msgid "Enter a Slug (i.e. \"/home\") or a full URL path"
 msgstr "Masukkan Slug (misalnya \"/beranda\") or atau jejak URL penuh"
 
-#: admin/pages/wptouch-admin-general-settings.php:163
+#: admin/pages/wptouch-admin-general-settings.php:156
 msgid "Desktop / Mobile Switching"
 msgstr "Pemindahan Desktop/Mobile"
 
-#: admin/pages/wptouch-admin-general-settings.php:169
-msgid "1st time visitors see desktop theme"
-msgstr "Pertama kali pengunjung melihat tema desktop"
-
-#: admin/pages/wptouch-admin-general-settings.php:170
-msgid "Your regular theme will be shown to 1st time mobile visitors."
-msgstr "Tema reguler Anda akan ditampilkan bagi pengunjung mobile yang pertama kali."
-
-#: admin/pages/wptouch-admin-general-settings.php:177
+#: admin/pages/wptouch-admin-general-settings.php:171
 msgid "Show switch link in mobile view"
 msgstr "Tampilkan tautan berpindah dalam tampilan mobile"
 
-#: admin/pages/wptouch-admin-general-settings.php:178
+#: admin/pages/wptouch-admin-general-settings.php:172
 msgid "Will show toggle buttons in the theme's footer allowing users to switch to your desktop theme. Is not shown in Web-App Mode."
 msgstr "Akan menampilkan tombol beralih di catatan kaki tema, memungkinkan pengguna untuk berpindah ke tema desktop Anda. Tidak ditampilkan di Mode Aplikasi Web."
 
-#: admin/pages/wptouch-admin-general-settings.php:185
-msgid "Choose the target for the mobile switch link"
-msgstr "Pilih target untuk tautan tombol mobile"
-
-#: admin/pages/wptouch-admin-general-settings.php:190
-msgid "Current page"
-msgstr "Halaman saat ini"
-
-#: admin/pages/wptouch-admin-general-settings.php:191
-msgid "Home page"
-msgstr "Beranda"
-
-#: admin/pages/wptouch-admin-general-settings.php:197
+#: admin/pages/wptouch-admin-general-settings.php:192
 msgid "Desktop theme switch buttons"
 msgstr "Tombol berpindah tema desktop"
 
-#: admin/pages/wptouch-admin-general-settings.php:198
+#: admin/pages/wptouch-admin-general-settings.php:193
 msgid "Allows visitors to switch from your desktop theme to your mobile theme. You can also customize the placement of Switch buttons by placing the wptouch_desktop_switch_link() template tag somewhere in your desktop theme."
 msgstr "Mungkinkan pengunjung untuk berpindah dari tema desktop Anda ke tema mobile Anda. Anda juga dapat menyesuaikan penempatan tombol Berpindah dengan menempatkan tag templat wptouch_desktop_switch_link() di suatu tempat di tema desktop Anda."
 
-#: admin/pages/wptouch-admin-general-settings.php:202
+#: admin/pages/wptouch-admin-general-settings.php:197
 msgid "Automatically inserted inline"
 msgstr "Garis dimasukkan secara otomatis"
 
-#: admin/pages/wptouch-admin-general-settings.php:203
-msgid "Automatically inserted with AJAX (better for caching)"
-msgstr "Otomatis dimasukkan dengan AJAX (baik untuk caching)"
+#: admin/pages/wptouch-admin-general-settings.php:198
+msgid "Automatically inserted with AJAX"
+msgstr "Dimasukkan secara otomatis dengan AJAX"
 
-#: admin/pages/wptouch-admin-general-settings.php:204
+#: admin/pages/wptouch-admin-general-settings.php:199
 msgid "Template tag"
 msgstr "Tag templat"
 
-#: admin/pages/wptouch-admin-general-settings.php:213
+#: admin/pages/wptouch-admin-general-settings.php:208
 msgid "Custom Code"
 msgstr "Kode Tersuai"
 
-#: admin/pages/wptouch-admin-general-settings.php:219
+#: admin/pages/wptouch-admin-general-settings.php:214
 msgid "HTML, JavaScript, statistics or custom code"
 msgstr "HTML, JavaScript, statistik atau kode khusus"
 
-#: admin/pages/wptouch-admin-general-settings.php:220
+#: admin/pages/wptouch-admin-general-settings.php:215
 msgid "Enter any custom code here to be output in the theme footer."
 msgstr "Masukkan kode khusus di sini untuk menjadi output di catatan kaki tema."
 
-#: admin/pages/wptouch-admin-general-settings.php:230
+#: admin/pages/wptouch-admin-general-settings.php:226
 msgid "Custom Stylesheet"
 msgstr "Kertas Gaya Tersuai"
 
-#: admin/pages/wptouch-admin-general-settings.php:236
+#: admin/pages/wptouch-admin-general-settings.php:232
 msgid "URL to a custom CSS file to load"
 msgstr "URL ke berkas CSS tersuai untuk dimuat"
 
-#: admin/pages/wptouch-admin-general-settings.php:237
+#: admin/pages/wptouch-admin-general-settings.php:233
 msgid "Useful if you have specific compatibility CSS you need to add."
 msgstr "Berguna jika Anda memiliki kompatibilitas CSS yang perlu Anda tambahkan."
 
-#: admin/pages/wptouch-admin-general-settings.php:247
+#: admin/pages/wptouch-admin-general-settings.php:244
 msgid "Shortcodes"
 msgstr "Shortcode"
 
-#: admin/pages/wptouch-admin-general-settings.php:253
+#: admin/pages/wptouch-admin-general-settings.php:250
+msgid "Enable shortcode handling"
+msgstr "Aktifkan penanganan kode singkat"
+
+#: admin/pages/wptouch-admin-general-settings.php:251
+msgid "For shortcodes registered by your desktop theme"
+msgstr "Untuk kode singkat yang didaftarkan berdasarkan tema desktop Anda"
+
+#: admin/pages/wptouch-admin-general-settings.php:258
+msgid "Shortcode handling"
+msgstr "Penanganan kode singkat"
+
+#: admin/pages/wptouch-admin-general-settings.php:263
+msgid "Load content as output by desktop theme (you may need to load CSS/JavaScript)"
+msgstr "Muat konten sebagai hasil berdasarkan tema desktop (Anda mungkin perlu memuat CSS/JavaScript)"
+
+#: admin/pages/wptouch-admin-general-settings.php:264
+msgid "Remove selected shortcodes from content"
+msgstr "Hapus kode singkat yang dipilih dari konten"
+
+#: admin/pages/wptouch-admin-general-settings.php:270
 msgid "Remove these shortcodes when WPtouch Pro is active"
 msgstr "Hilangkan kode pendek (shortcode) ini saat WPtouch Pro aktif"
 
-#: admin/pages/wptouch-admin-general-settings.php:254
+#: admin/pages/wptouch-admin-general-settings.php:271
 msgid "Enter a comma separated list of shortcodes to remove."
 msgstr "Masukkan daftar kode pendek (shortcode) yang dipisahkan oleh koma untuk menghapus."
 
-#: admin/pages/wptouch-admin-general-settings.php:264
+#: admin/pages/wptouch-admin-general-settings.php:281
 msgid "Filter URLs"
 msgstr "Filter URL"
 
-#: admin/pages/wptouch-admin-general-settings.php:270
-msgid "Limit the function of WPtouch Pro on specific URLs/Pages"
-msgstr "Batasi fungsi WPtouch Pro pada URL/Halaman tertentu"
+#: admin/pages/wptouch-admin-general-settings.php:295
+msgid "Load WPtouch Pro for"
+msgstr "Muat WPtouch Pro untuk"
 
-#: admin/pages/wptouch-admin-general-settings.php:283
-msgid "Do not load WPtouch Pro on these URLs/pages"
-msgstr "Jangan memuat WPtouch Pro pada URL/halaman ini"
+#: admin/pages/wptouch-admin-general-settings.php:300
+msgid "All URLs on my site"
+msgstr "Semua URL di situs saya"
 
-#: admin/pages/wptouch-admin-general-settings.php:284
-msgid "Only load WPtouch Pro on these URLs/pages"
-msgstr "Hanya muat WPtouch Pro pada URL/halaman ini"
+#: admin/pages/wptouch-admin-general-settings.php:301
+msgid "All URLs/pages except:"
+msgstr "Semua URL/halaman kecuali:"
 
-#: admin/pages/wptouch-admin-general-settings.php:290
+#: admin/pages/wptouch-admin-general-settings.php:302
+msgid "Only these URLs/pages:"
+msgstr "Hanya URL/halaman ini:"
+
+#: admin/pages/wptouch-admin-general-settings.php:308
 msgid "Apply filter to these URLs/Pages"
 msgstr "Terapkan filter untuk URL/Halaman ini"
 
-#: admin/pages/wptouch-admin-general-settings.php:291
+#: admin/pages/wptouch-admin-general-settings.php:309
 #: multi-ads/multi-ads.php:274
 msgid "Each permalink URL fragment should be on its own line and relative, e.g. \"/about\" or \"/products/store\""
 msgstr "Tiap fragmen URL tautan (permalink permanen), harus berada di jalur dan relatifnya sendiri, misalnya \"/tentang\" atau \"/produk/toko\""
 
-#: admin/pages/wptouch-admin-general-settings.php:309
+#: admin/pages/wptouch-admin-general-settings.php:329
 msgid "Desktop Theme"
 msgstr "Tema Desktop"
 
-#: admin/pages/wptouch-admin-general-settings.php:315
+#: admin/pages/wptouch-admin-general-settings.php:335
 msgid "Try to include desktop theme functions.php file"
 msgstr "Coba untuk mencakup berkas functions.php tema desktop"
 
-#: admin/pages/wptouch-admin-general-settings.php:316
+#: admin/pages/wptouch-admin-general-settings.php:336
 msgid "This may be required for desktop themes with unique features that are not showing when WPtouch Pro is active."
 msgstr "Ini mungkin diperlukan untuk tema desktop yang dengan fitur unik yang tidak terlihat saat WPtouch Pro aktif."
 
-#: admin/pages/wptouch-admin-general-settings.php:323
+#: admin/pages/wptouch-admin-general-settings.php:343
 msgid "Method to load file"
 msgstr "Metode untuk memuat berkas"
 
-#: admin/pages/wptouch-admin-general-settings.php:328
+#: admin/pages/wptouch-admin-general-settings.php:348
 msgid "Include file directly"
 msgstr "Sertakan berkas secara langsung"
 
-#: admin/pages/wptouch-admin-general-settings.php:329
+#: admin/pages/wptouch-admin-general-settings.php:349
 msgid "Translate and create new files"
 msgstr "Terjemahkan dan buat berkas baru"
 
-#: admin/pages/wptouch-admin-general-settings.php:338
+#: admin/pages/wptouch-admin-general-settings.php:359
 msgid "Custom User-Agents"
 msgstr "Agen-Pengguna Tersuai"
 
-#: admin/pages/wptouch-admin-general-settings.php:344
+#: admin/pages/wptouch-admin-general-settings.php:365
 msgid "User-agents (line separated)"
 msgstr "Agen-Pengguna (dipisahkan garis)"
 
-#: admin/pages/wptouch-admin-general-settings.php:345
+#: admin/pages/wptouch-admin-general-settings.php:366
 msgid "Adding additional user-agents will force WPtouch Pro to be active for matching browsers."
 msgstr "Menambahkan agen-pengguna tambahan akan memaksa WPtouch Pro untuk diaktifkan untuk browser yang sesuai."
 
-#: admin/pages/wptouch-admin-general-settings.php:359
+#: admin/pages/wptouch-admin-general-settings.php:415
 msgid "Backup &amp; Import"
 msgstr "Impor &amp; Cadangan"
 
-#: admin/pages/wptouch-admin-general-settings.php:365
+#: admin/pages/wptouch-admin-general-settings.php:421
 msgid "Automatically backup settings to the %s folder"
 msgstr "Secara otomatis mencadangkan pengaturan ke berkas %s"
 
-#: admin/pages/wptouch-admin-general-settings.php:367
+#: admin/pages/wptouch-admin-general-settings.php:423
 msgid "WPtouch Pro backups your settings each time they are saved."
 msgstr "WPtouch Pro membuat cadangan pengaturan Anda setiap kali pengaturan disimpan."
 
-#: admin/pages/wptouch-admin-general-settings.php:380
-msgid "Tools &amp; Debug"
-msgstr "Peralatan &amp; Debug"
-
-#: admin/pages/wptouch-admin-general-settings.php:386
-msgid "Use jQuery 2.x in themes (faster for mobile devices) instead of WordPress' version"
-msgstr "Gunakan jQuery 2.x dalam tema (lebih cepat untuk perangkat mobile) bukan versi WordPress"
-
-#: admin/pages/wptouch-admin-general-settings.php:387
-msgid "jQuery 2.x is significantly smaller and faster than previous jQuery versions - may cause problems with other plugins, use carefully."
-msgstr "jQuery 2.x lebih kecil dan lebih cepat secara signifikan dari versi sebelumnya jQuery - dapat menyebabkan masalah dengan plugin lain, gunakan dengan berhati-hati."
-
-#: admin/pages/wptouch-admin-general-settings.php:394
-msgid "Show load times and query counts in the footer"
-msgstr "Tampilkan waktu muat dan hitungan permintaan dalam catatan kaki"
-
-#: admin/pages/wptouch-admin-general-settings.php:395
-msgid "Helps you find slow pages/posts on your site."
-msgstr "Membantu Anda menemukan halaman/kiriman yang lambat pada situs Anda."
-
-#: admin/pages/wptouch-admin-general-settings.php:402
-msgid "Enable debug log"
-msgstr "Aktifkan catatan debug"
-
-#: admin/pages/wptouch-admin-general-settings.php:403
-msgid "Creates a debug file to help diagnose installation issues."
-msgstr "Membuat berkas debug untuk membantu mendiagnosa masalah instalasi."
-
-#: admin/pages/wptouch-admin-general-settings.php:414
+#: admin/pages/wptouch-admin-general-settings.php:436
 msgid "WordPress Plugins"
 msgstr "Plugin WordPress"
-
-#: admin/pages/wptouch-admin-general-settings.php:427
-msgid "Admin Mode"
-msgstr "Mode Admin"
-
-#: admin/pages/wptouch-admin-general-settings.php:433
-msgid "Admin panel settings shown"
-msgstr "Pengaturan panel admin ditampilkan"
-
-#: admin/pages/wptouch-admin-general-settings.php:438
-msgid "Default"
-msgstr "Standar"
-
-#: admin/pages/wptouch-admin-general-settings.php:439
-#: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
-#: admin/settings/html/checklist.php:13
-#: admin/settings/html/custom-latest-posts.php:4
-#: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
-#: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
-#: admin/settings/html/text.php:8 admin/settings/html/textarea.php:9
-msgid "Advanced"
-msgstr "Lanjutan"
 
 #: admin/pages/wptouch-admin-menus.php:3
 msgid "Theme Menus"
 msgstr "Menu Tema"
 
 #: admin/pages/wptouch-admin-menus.php:4
-msgid "Menu Setup"
-msgstr "Pengaturan Menu"
+msgid "Menu Icons"
+msgstr "Ikon Menu"
 
 #: admin/pages/wptouch-admin-menus.php:5
 msgid "Icon Upload & Sets"
@@ -471,7 +418,7 @@ msgstr "Halaman WordPress"
 
 #: admin/pages/wptouch-admin-menus.php:28
 #: admin/settings/html/icon_menu_area.php:6
-#: infinity-cache/infinity-cache.php:217
+#: infinity-cache/infinity-cache.php:228
 #: themes/foundation/modules/advertising/advertising.php:29
 #: themes/foundation/modules/media/media.php:59
 msgid "None"
@@ -480,14 +427,6 @@ msgstr "Tidak ada"
 #: admin/pages/wptouch-admin-menus.php:66
 msgid "Menu Options"
 msgstr "Opsi Menu"
-
-#: admin/pages/wptouch-admin-menus.php:72
-msgid "Enable parent items as links"
-msgstr "Aktifkan butir-butir induk sebagai tautan"
-
-#: admin/pages/wptouch-admin-menus.php:73
-msgid "If disabled, parent menu items will only toggle child items."
-msgstr "Jika dinonaktifkan, menu induk hanya akan mengaktifkan butir-butir anak."
 
 #: admin/pages/wptouch-admin-menus.php:80
 msgid "Use menu icons"
@@ -525,6 +464,15 @@ msgstr "Unduh Berkas Cadangan"
 #: admin/settings/html/backup.php:2
 msgid "Restore Backup File"
 msgstr "Pulihkan Berkas Cadangan"
+
+#: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
+#: admin/settings/html/checklist.php:13
+#: admin/settings/html/custom-latest-posts.php:4
+#: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
+#: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
+#: admin/settings/html/text.php:8 admin/settings/html/textarea.php:9
+msgid "Advanced"
+msgstr "Lanjutan"
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:7
 #: admin/settings/html/checklist.php:15
@@ -566,7 +514,7 @@ msgid "Upload Icon"
 msgstr "Unggah Ikon"
 
 #: admin/settings/html/custom_icon_upload.php:4
-#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:601
+#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:699
 msgid "Upload Complete!"
 msgstr "Unggahan Selesai!"
 
@@ -678,7 +626,6 @@ msgstr "Reset"
 #: classic-redux/default/header-bottom.php:23
 #: classic-redux/default/header-bottom.php:34
 #: classic-redux/default/header-bottom.php:114
-#: hammock/default/header-bottom.php:40
 #: mobilestore/default/header-bottom.php:57 prose/default/header-bottom.php:21
 #: scaffold/default/header-bottom.php:13
 msgid "Menu"
@@ -737,7 +684,7 @@ msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue t
 msgstr "Saat ini direktori %s%s%s tidak dapat ditulis. %sSilakan perbaiki masalah ini untuk mengaktifkan instalasi dari set ikon tambahan."
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:1606 core/class-wptouch-pro.php:1607
+#: core/class-wptouch-pro.php:1730 core/class-wptouch-pro.php:1731
 #: core/config.php:54
 msgid "Custom Icons"
 msgstr "Ikon tersuai"
@@ -760,21 +707,16 @@ msgid "Pro"
 msgstr "Pro"
 
 #: admin/settings/html/plugin-compat-ajax.php:11
-#: themes/foundation/modules/custom-posts/custom-posts.php:152
-msgid "Enable %s"
-msgstr "Aktifkan %s"
-
-#: admin/settings/html/plugin-compat-ajax.php:12
-msgid "When unchecked, %s will be disabled for users viewing your WPtouch Pro theme."
-msgstr "Saat tidak ditandai, %s akan dinonaktifkan bagi pengguna melihat tema WPtouch Anda."
+msgid "%s"
+msgstr "%s"
 
 #: admin/settings/html/plugin-compat-ajax.php:20
 msgid "No plugins to disable."
 msgstr "Tidak ada plugin untuk dinonaktifkan."
 
 #: admin/settings/html/plugin-compat.php:1
-msgid "Choose which plugins to include in your mobile theme"
-msgstr "Pilih plugin untuk dimasukkan dalam tema mobile Anda"
+msgid "Choose which plugins are loaded for mobile requests"
+msgstr "Pilih plugin mana yang dimuat untuk permintaan ponsel"
 
 #: admin/settings/html/plugin-compat.php:7
 msgid "Your active plugin list is refreshing"
@@ -813,7 +755,7 @@ msgstr "Beli Sekarang"
 msgid "Copy"
 msgstr "Salin"
 
-#: admin/settings/html/theme-browser.php:22
+#: admin/settings/html/theme-browser.php:24
 msgid "Loading Cloud Themes"
 msgstr "Memuat Tema Awan"
 
@@ -838,24 +780,24 @@ msgid "Look at Pro Features"
 msgstr "Lihat Fitur Pro"
 
 #: admin/settings/html/touchboard.php:16
-msgid "Product Support"
-msgstr "Dukungan Produk"
+msgid "Knowledgebase & Support"
+msgstr "Dokumentasi Data & Dukungan"
 
 #: admin/settings/html/touchboard.php:17
-msgid "Product Knowledgebase"
-msgstr "Basis Pengetahuan Produk"
-
-#: admin/settings/html/touchboard.php:18
-msgid "Manage Account"
-msgstr "Atur Akun"
+msgid "Manage Account & License"
+msgstr "Mengelola Akun & Lisensi"
 
 #: admin/settings/html/touchboard.php:19
-msgid "Manage License"
-msgstr "Atur Lisensi"
-
-#: admin/settings/html/touchboard.php:21
 msgid "WPtouch User Guide"
 msgstr "Panduan Pengguna WPtouch"
+
+#: admin/settings/html/touchboard.php:21
+msgid "WPtouch on Twitter"
+msgstr "WPtouch di Twitter"
+
+#: admin/settings/html/touchboard.php:22
+msgid "WPtouch on Facebook"
+msgstr "WPtouch di Facebook"
 
 #: admin/settings/html/touchboard.php:28
 msgid "WPtouch News"
@@ -865,7 +807,7 @@ msgstr "Berita WPtouch"
 msgid "Read More"
 msgstr "Baca Lainnya"
 
-#: admin/settings/html/touchboard.php:47
+#: admin/settings/html/touchboard.php:41
 msgid "%s Change Log"
 msgstr "Catatan Perubahan %s"
 
@@ -882,102 +824,101 @@ msgstr "Tak ada (Gunakan Pengaturan WordPress)"
 msgid "%sAdvanced Type for WPtouch Pro%s requires %s to be enabled on your server in order to load web fonts. Please contact your server administrator or web host to enable this function."
 msgstr "%sJenis Lanjutan untuk WPtouch Pro%s membutuhkan %s diaktifkan pada server Anda untuk memuat font web. Hubungilah administrator server atau hosting web untuk mengaktifkan fungsi ini."
 
-#: advanced-type/advanced-type.php:80
+#: advanced-type/advanced-type.php:84
 msgid "Load Fonts"
 msgstr "Muat Font"
 
-#: advanced-type/advanced-type.php:81
+#: advanced-type/advanced-type.php:85
 msgid "Could not load your fonts. Please check project/kit details and reload."
 msgstr "Tidak dapat memuat font Anda. Silakan periksa proyek/detail paket perangkat dan muat ulang."
 
-#: advanced-type/advanced-type.php:231 advanced-type/advanced-type.php:252
+#: advanced-type/advanced-type.php:235 advanced-type/advanced-type.php:256
 msgid "Font Source"
 msgstr "Sumber Font"
 
-#: advanced-type/advanced-type.php:237 advanced-type/advanced-type.php:258
+#: advanced-type/advanced-type.php:241 advanced-type/advanced-type.php:262
 msgid "Select the source for your web fonts"
 msgstr "Pilih kode sumber untuk font web Anda"
 
-#: advanced-type/advanced-type.php:238
+#: advanced-type/advanced-type.php:242
 msgid "Other options will become available once allow_url_fopen is enabled"
 msgstr "Opsi lain akan tersedia setelah allow_url_fopen diaktifkan"
 
-#: advanced-type/advanced-type.php:242 advanced-type/advanced-type.php:263
+#: advanced-type/advanced-type.php:246 advanced-type/advanced-type.php:267
 msgid "Theme Font Pairings (Configure in Theme Settings)"
 msgstr "Perpaduan Font Tema (Konfigurasi dalam Pengaturan Tema)"
 
-#: advanced-type/advanced-type.php:264
+#: advanced-type/advanced-type.php:268
 msgid "Custom Google Fonts"
 msgstr "Font Google Kustom"
 
-#: advanced-type/advanced-type.php:275
+#: advanced-type/advanced-type.php:279
 msgid "Kit ID"
 msgstr "ID Paket"
 
-#: advanced-type/advanced-type.php:293
+#: advanced-type/advanced-type.php:297
 msgid "Domain"
 msgstr "Bidang"
 
-#: advanced-type/advanced-type.php:311
+#: advanced-type/advanced-type.php:315
 msgid "Project"
 msgstr "Proyek"
 
-#: advanced-type/advanced-type.php:367
+#: advanced-type/advanced-type.php:371
 msgid "Latin (Default)"
 msgstr "Latin (Default)"
 
-#: advanced-type/advanced-type.php:368
+#: advanced-type/advanced-type.php:372
 msgid "Latin Extended"
 msgstr "Latin Extended"
 
-#: advanced-type/advanced-type.php:369
+#: advanced-type/advanced-type.php:373
 msgid "Cyrillic"
 msgstr "Cyrillic"
 
-#: advanced-type/advanced-type.php:370
+#: advanced-type/advanced-type.php:374
 msgid "Cyrillic Extended"
 msgstr "Cyrillic Extended"
 
-#: advanced-type/advanced-type.php:371
+#: advanced-type/advanced-type.php:375
 msgid "Greek"
 msgstr "Greek"
 
-#: advanced-type/advanced-type.php:372
+#: advanced-type/advanced-type.php:376
 msgid "Greek Extended"
 msgstr "Greek Extended"
 
-#: advanced-type/advanced-type.php:373
-msgid "Devangari"
-msgstr "Devangari"
+#: advanced-type/advanced-type.php:377
+msgid "Devanagari"
+msgstr "Devanagari"
 
-#: advanced-type/advanced-type.php:374
+#: advanced-type/advanced-type.php:378
 msgid "Vietnamese"
 msgstr "Vietnam"
 
-#: advanced-type/advanced-type.php:378
+#: advanced-type/advanced-type.php:382
 msgid "Heading"
 msgstr "Bagian Atas"
 
-#: advanced-type/advanced-type.php:379
+#: advanced-type/advanced-type.php:383
 msgid "Body"
 msgstr "Isi"
 
-#: advanced-type/advanced-type.php:380
+#: advanced-type/advanced-type.php:384
 msgid "Meta"
 msgstr "Meta"
 
-#: advanced-type/advanced-type.php:405
+#: advanced-type/advanced-type.php:409
 msgid "Load subsets"
 msgstr "Muat subset"
 
-#: advanced-type/advanced-type.php:415
+#: advanced-type/advanced-type.php:419
 msgid "Font Selection"
 msgstr "Seleksi Font"
 
 #: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
 #: classic-redux/default/header-bottom.php:55
-#: hammock/default/header-bottom.php:82 scaffold/default/header-bottom.php:35
-#: simple/default/header-bottom.php:26
+#: scaffold/default/header-bottom.php:35 simple/default/header-bottom.php:26
 msgid "Logout"
 msgstr "Keluar"
 
@@ -989,8 +930,8 @@ msgstr "Cari situs web ini"
 
 #: bauhaus/default/header-bottom.php:49 bio/default/header-bottom.php:14
 #: bio/default/header-bottom.php:25 classic-redux/default/header-bottom.php:48
-#: classic-redux/default/header-bottom.php:80
-#: mobilestore/default/header-bottom.php:84
+#: classic-redux/default/header-bottom.php:80 cms/root-functions.php:233
+#: mobilestore/default/header-bottom.php:83
 #: scaffold/default/header-bottom.php:14 scaffold/default/header-bottom.php:25
 msgid "Search"
 msgstr "Cari"
@@ -1060,12 +1001,11 @@ msgid "Header Menu"
 msgstr "Menu Kepala"
 
 #: bauhaus/root-functions.php:127 bio/root-functions.php:89
-#: classic-redux/root-functions.php:100 cms/root-functions.php:125
-#: cms/root-functions.php:134 hammock/root-functions.php:168
-#: mobilestore/root-functions.php:195 mobilestore/root-functions.php:207
-#: open/root-functions.php:353 prose/root-functions.php:207
-#: scaffold/root-functions.php:77 simple/root-functions.php:61
-#: simple/root-functions.php:72
+#: classic-redux/root-functions.php:100 cms/root-functions.php:127
+#: cms/root-functions.php:136 mobilestore/root-functions.php:246
+#: mobilestore/root-functions.php:258 open/root-functions.php:353
+#: prose/root-functions.php:207 scaffold/root-functions.php:77
+#: simple/root-functions.php:61 simple/root-functions.php:72
 msgid "Choose a menu"
 msgstr "Pilih menu"
 
@@ -1074,10 +1014,9 @@ msgid "Main menu selection"
 msgstr "Pilihan menu utama"
 
 #: bauhaus/root-functions.php:135 bio/root-functions.php:97
-#: classic-redux/root-functions.php:108 cms/root-functions.php:141
-#: hammock/root-functions.php:176 open/root-functions.php:361
-#: prose/root-functions.php:215 scaffold/root-functions.php:85
-#: simple/root-functions.php:80
+#: classic-redux/root-functions.php:108 cms/root-functions.php:143
+#: open/root-functions.php:361 prose/root-functions.php:215
+#: scaffold/root-functions.php:85 simple/root-functions.php:80
 msgid "Theme background"
 msgstr "Latar belakang tema"
 
@@ -1086,10 +1025,10 @@ msgid "Header & Menu"
 msgstr "Judul & Menu"
 
 #: bauhaus/root-functions.php:137 bio/root-functions.php:98
-#: classic-redux/root-functions.php:109 cms/root-functions.php:142
-#: hammock/root-functions.php:178 mobilestore/root-functions.php:239
-#: open/root-functions.php:362 prose/root-functions.php:217
-#: scaffold/root-functions.php:86 simple/root-functions.php:81
+#: classic-redux/root-functions.php:109 cms/root-functions.php:144
+#: mobilestore/root-functions.php:290 open/root-functions.php:362
+#: prose/root-functions.php:217 scaffold/root-functions.php:86
+#: simple/root-functions.php:81
 msgid "Links"
 msgstr "Tautan"
 
@@ -1216,14 +1155,14 @@ msgstr "Tambahkan kemampuan Pencarian di tajuk situs."
 msgid "Use infinite scrolling for blog"
 msgstr "Gunakan bergulir tak terbatas untuk blog"
 
-#: bio/root-functions.php:87 hammock/root-functions.php:166
-#: mobilestore/root-functions.php:193 open/root-functions.php:351
-#: prose/root-functions.php:205 scaffold/root-functions.php:75
+#: bio/root-functions.php:87 mobilestore/root-functions.php:244
+#: open/root-functions.php:351 prose/root-functions.php:205
+#: scaffold/root-functions.php:75
 msgid "Primary Menu"
 msgstr "Menu Utama"
 
-#: bio/root-functions.php:90 hammock/root-functions.php:169
-#: open/root-functions.php:354 scaffold/root-functions.php:78
+#: bio/root-functions.php:90 open/root-functions.php:354
+#: scaffold/root-functions.php:78
 msgid "Menus are awesome!"
 msgstr "Menunya luar biasa!"
 
@@ -1233,8 +1172,6 @@ msgid "Tweets"
 msgstr "Tweet"
 
 #: classic-redux/default/header-bottom.php:53
-#: hammock/default/header-bottom.php:80
-#: mobilestore/default/woocommerce/shop/form-login.php:31
 #: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:24
 #: themes/foundation/modules/login/login-html.php:20
 msgid "Login"
@@ -1244,12 +1181,12 @@ msgstr "Masuk"
 msgid "Follow %s on Twitter"
 msgstr "ikuti %s di Twitter"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:67
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "newer posts"
 msgstr "kiriman lebih baru"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:59
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "older posts"
 msgstr "kiriman lebih lama"
@@ -1286,10 +1223,11 @@ msgid "Written by %s"
 msgstr "Ditulis oleh %s"
 
 #: classic-redux/root-functions.php:6 classic-redux/root-functions.php:363
+#: mobilestore/root-functions.php:7 mobilestore/root-functions.php:539
 msgid "Tablets"
 msgstr "Tablet"
 
-#: classic-redux/root-functions.php:107 cms/root-functions.php:140
+#: classic-redux/root-functions.php:107 cms/root-functions.php:142
 #: open/root-functions.php:360 simple/root-functions.php:79
 msgid "Header background"
 msgstr "Latar belakang kepala"
@@ -1306,7 +1244,7 @@ msgstr "Gunakan sudut yang membulat"
 msgid "Show page title areas on pages"
 msgstr "Tampilkan area judul halaman pada halaman"
 
-#: classic-redux/root-functions.php:369
+#: classic-redux/root-functions.php:369 mobilestore/root-functions.php:545
 msgid "Add tablet support"
 msgstr "Tambahkan dukungan tablet"
 
@@ -1346,16 +1284,16 @@ msgstr "Tanpa kategori atau tag"
 msgid "Max categories / tags"
 msgstr "Kategori/tag maks."
 
-#: classic-redux/root-functions.php:435 cms/root-functions.php:268
+#: classic-redux/root-functions.php:435 cms/root-functions.php:289
 #: simple/root-functions.php:281
 msgid "CSS Effects"
 msgstr "Efek CSS"
 
-#: classic-redux/root-functions.php:441 cms/root-functions.php:274
+#: classic-redux/root-functions.php:441 cms/root-functions.php:295
 msgid "Add a noise effect to the header and theme background"
 msgstr "Tambahkan efek suara di latar belakang kepala dan tema"
 
-#: classic-redux/root-functions.php:442 cms/root-functions.php:275
+#: classic-redux/root-functions.php:442 cms/root-functions.php:296
 #: simple/root-functions.php:288
 msgid "Will apply the effect overtop of any background image you upload."
 msgstr "Akan menerapkan efek menimpa gambar latar belakang yang Anda unggah. ."
@@ -1364,19 +1302,19 @@ msgstr "Akan menerapkan efek menimpa gambar latar belakang yang Anda unggah. ."
 msgid "menu"
 msgstr "menu"
 
-#: cms/default/header-bottom.php:24
+#: cms/default/header-bottom.php:26
 msgid "login"
 msgstr "masuk"
 
-#: cms/default/header-bottom.php:28
+#: cms/default/header-bottom.php:30
 msgid "logout"
 msgstr "keluar"
 
-#: cms/default/header-bottom.php:41 simple/default/footer-top.php:3
+#: cms/default/header-bottom.php:44 simple/default/footer-top.php:3
 msgid "search this website"
 msgstr "cari situs web ini."
 
-#: cms/default/header-bottom.php:42 simple/default/footer-top.php:5
+#: cms/default/header-bottom.php:45 simple/default/footer-top.php:5
 msgid "search"
 msgstr "Cari"
 
@@ -1384,63 +1322,67 @@ msgstr "Cari"
 msgid "By"
 msgstr "Oleh"
 
-#: cms/root-functions.php:51
+#: cms/root-functions.php:54
 msgid "Alt Menu"
 msgstr "Menu Alt"
 
-#: cms/root-functions.php:123
+#: cms/root-functions.php:125
 msgid "Main Menu"
 msgstr "Menu Utama"
 
-#: cms/root-functions.php:132
+#: cms/root-functions.php:134
 msgid "Alternate Menu"
 msgstr "Menu Alternatif"
 
-#: cms/root-functions.php:180
+#: cms/root-functions.php:182
 msgid "Show featured images on single posts"
 msgstr "Tunjukkan gambar ditampilkan dalam kiriman tunggal"
 
-#: cms/root-functions.php:197
+#: cms/root-functions.php:199
 msgid "Show titles on pages"
 msgstr "Tunjukkan tajuk pada halaman"
 
-#: cms/root-functions.php:212
+#: cms/root-functions.php:214
 msgid "Category Slider"
 msgstr "Penggeser Kategori"
 
-#: cms/root-functions.php:218
+#: cms/root-functions.php:220
 msgid "Enable category slider"
 msgstr "Aktifkan penggeser kategori"
 
-#: cms/root-functions.php:231 simple/root-functions.php:262
+#: cms/root-functions.php:239
+msgid "Enable search"
+msgstr "Aktifkan pencarian"
+
+#: cms/root-functions.php:252 simple/root-functions.php:262
 msgid "Tiled Background Image"
 msgstr "Gambar Latar Belakang Kotak-kotak"
 
-#: cms/root-functions.php:237 simple/root-functions.php:268
+#: cms/root-functions.php:258 simple/root-functions.php:268
 msgid "(Scaled for retina displays)"
 msgstr "(Ditingkatkan untuk menampilkan retina)"
 
-#: cms/root-functions.php:249
+#: cms/root-functions.php:270
 msgid "Alternate Menu Title"
 msgstr "Judul Menu Alternatif"
 
-#: cms/root-functions.php:255
+#: cms/root-functions.php:276
 msgid "Alternate menu title (if used)"
 msgstr "Judul menu alternatif (jika dipakai)"
 
-#: cms/root-functions.php:256
+#: cms/root-functions.php:277
 msgid "If you use a second menu in CMS, this text will be used for the drop-down button title."
 msgstr "Jika Anda menggunakan menu kedua di CMS, teks ini akan digunakan untuk judul tombol jatuh-turun."
 
-#: cms/root-functions.php:286
+#: cms/root-functions.php:307
 msgid "Static Front Page"
 msgstr "Halaman Depan Statis"
 
-#: cms/root-functions.php:292
+#: cms/root-functions.php:313
 msgid "Static front page alternate content"
 msgstr "Konten alternatif halaman depan statis"
 
-#: cms/root-functions.php:293
+#: cms/root-functions.php:314
 msgid "Shows after the featured slider (if enabled), and replaces your Static Front Page content. HTML allowed."
 msgstr "Menampilkan setelah penggeser fitur (jika diaktifkan), dan menggantikan konten Halaman Depan Statis Anda. HTML diizinkan."
 
@@ -1504,100 +1446,100 @@ msgstr "Tingkatkan ke Pro"
 msgid "Mobile Page Template"
 msgstr "Templat Halaman Mobile"
 
-#: core/admin-render.php:25
+#: core/admin-render.php:30
 msgid "Your WPtouch Pro license has expired. Renew now at a discount to continue receiving product updates and support."
 msgstr "WPtouch Pro Lisensi Anda telah berakhir. Perbarui sekarang dengan harga diskon untuk terus menerima pembaruan dan dukungan produk."
 
-#: core/admin-render.php:26
+#: core/admin-render.php:31
 msgid "Renew Now"
 msgstr "Perbarui Sekarang"
 
-#: core/admin-render.php:33
+#: core/admin-render.php:38
 msgid "This copy of %s is currently unlicensed!"
 msgstr "Salinan %s ini tidak berlisensi!"
 
-#: core/admin-render.php:35
+#: core/admin-render.php:40
 msgid "Add a license %s"
 msgstr "Tambahkan %s lisensi"
 
-#: core/admin-render.php:90
+#: core/admin-render.php:105
 msgid "Save Changes"
 msgstr "Simpan Perubahan"
 
-#: core/admin-render.php:91
+#: core/admin-render.php:106
 msgid "Preview Theme"
 msgstr "Pratinjau Tema"
 
-#: core/admin-render.php:92
+#: core/admin-render.php:107
 msgid "Reset Settings"
 msgstr "Reset Pengaturan"
 
-#: core/class-wptouch-pro.php:354
+#: core/class-wptouch-pro.php:452
 msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
 msgstr "Migrasi tema otomatis dari uploads/wptouch-data directory failed. Silakan pindahkan secara manual berkas ini ke to wp-content/wptouch-data, atau %scontact support%s untuk menangani masalah ini."
 
-#: core/class-wptouch-pro.php:374
+#: core/class-wptouch-pro.php:472
 msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
 msgstr "Kami tidak dapat menginstal tema WPTouch Anda dari Awan. Silakan hubungi  %sartikel ini%s untuk informasi lengkap."
 
-#: core/class-wptouch-pro.php:378
+#: core/class-wptouch-pro.php:476
 msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
 msgstr "Konfigurasi server Anda mencegah WPtouch dari menginstal tema aktif dari Cloud. Silakan kunjungi %sartikel ini%s untuk informasi lebih lanjut tentang cara memperbaikinya."
 
-#: core/class-wptouch-pro.php:593
+#: core/class-wptouch-pro.php:691
 msgid "Unsupported Browser"
 msgstr "Browser Tidak Didukung"
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:692
 msgid "Theme Preview requires Chrome or Safari."
 msgstr "Pratinjau Tema memerlukan browser Chrome atau Safari."
 
-#: core/class-wptouch-pro.php:595
+#: core/class-wptouch-pro.php:693
 msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
 msgstr "Ini akan mengatur ulang semua pengaturan WPtouch Pro settings.\nAnda yakin?"
 
-#: core/class-wptouch-pro.php:596
+#: core/class-wptouch-pro.php:694
 msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
 msgstr "Ini akan mengatur ulang semua menu dan ikon WPtouch Pro settings.\nAnda yakin?"
 
-#: core/class-wptouch-pro.php:597
+#: core/class-wptouch-pro.php:695
 msgid "Offline"
 msgstr "Offline"
 
-#: core/class-wptouch-pro.php:598
+#: core/class-wptouch-pro.php:696
 msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
 msgstr "Anda terlihat offline. Menghubunglah ke internet untuk melihat item BraveNewCloud yang tersedia."
 
-#: core/class-wptouch-pro.php:599
+#: core/class-wptouch-pro.php:697
 msgid "The item failed to download for this reason: %reason%"
 msgstr "Gagal mengunduhnya karena alasan ini: %reason%"
 
-#: core/class-wptouch-pro.php:600
+#: core/class-wptouch-pro.php:698
 msgid "You are about to reset your license information. Proceed?"
 msgstr "Anda hendak mengatur ulang informasi lisensi Anda.  Lanjutkan?"
 
-#: core/class-wptouch-pro.php:602
+#: core/class-wptouch-pro.php:700
 msgid "Upload Failed: Not a valid image."
 msgstr "Gagal Unggah: Bukan gambar yang valid."
 
-#: core/class-wptouch-pro.php:603
+#: core/class-wptouch-pro.php:701
 msgid "Click to view theme demo"
 msgstr "Klik untuk melihat demo tema"
 
-#: core/class-wptouch-pro.php:1177
-#: themes/foundation/modules/webapp/webapp.php:12
+#: core/class-wptouch-pro.php:1301
+#: themes/foundation/modules/webapp/webapp.php:34
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: core/class-wptouch-pro.php:1213
+#: core/class-wptouch-pro.php:1337
 msgid "%s Changelog"
 msgstr "Log perubahan %s"
 
-#: core/class-wptouch-pro.php:2405
+#: core/class-wptouch-pro.php:2532
 msgid "Directory Problem"
 msgstr "Masalah Direktori"
 
-#: core/class-wptouch-pro.php:2406
+#: core/class-wptouch-pro.php:2533
 msgid "One or more required directories could not be created"
 msgstr "Satu atau lebih direktori yang dibutuhkan tidak dapat dibuat"
 
@@ -1608,6 +1550,10 @@ msgstr "ponsel cerdas"
 #: core/globals.php:199
 msgid "tablet"
 msgstr "tablet"
+
+#: core/menu-walkers.php:288
+msgid "Feed for all posts filed under %s"
+msgstr "Umpan untuk semua kiriman disimpan di %s"
 
 #: core/notifications.php:124
 msgid "Preview Mode Enabled"
@@ -1650,52 +1596,6 @@ msgstr "Mungkin Plugin ini tidak bekerja dengan benar di WPtouch Pro, dan harus 
 msgid "Icon Installation Issue"
 msgstr "Masalah instalasi ikon"
 
-#: hammock/default/functions.php:10 prose/default/functions.php:33
-msgid "Load more from this collection"
-msgstr "Muat lainnya dari koleksi ini"
-
-#: hammock/default/header-bottom.php:38 prose/default/header-bottom.php:19
-msgid "Collections"
-msgstr "Koleksi"
-
-#: hammock/default/header-bottom.php:41 prose/default/header-bottom.php:22
-msgid "Options"
-msgstr "Opsi"
-
-#: hammock/root-functions.php:61 prose/root-functions.php:76
-msgid "Show categories as \"collections\" in menu"
-msgstr "Tunjukkan kategori sebagai \"koleksi\" di menu"
-
-#: hammock/root-functions.php:72 prose/root-functions.php:98
-msgid "Maximum number of items in categories/collections"
-msgstr "Jumlah maksimum butir dalam kategori/koleksi"
-
-#: hammock/root-functions.php:88
-msgid "Animate the featured image on posts"
-msgstr "Menghidupkan gambar yang ditampilkan di kiriman"
-
-#: hammock/root-functions.php:102 open/root-functions.php:119
-#: prose/root-functions.php:117
-msgid "Header Image"
-msgstr "Gambar Header"
-
-#: hammock/root-functions.php:108 prose/root-functions.php:123
-msgid "Displayed behind header on pages and posts without featured images."
-msgstr "Ditampilkan di belakang header pada laman dan kiriman tanpa gambar ditampilkan."
-
-#: hammock/root-functions.php:121 prose/root-functions.php:136
-msgid "Site Intro"
-msgstr "Intro Situs"
-
-#: hammock/root-functions.php:127 prose/root-functions.php:142
-msgid "Displayed on post listing page below site name."
-msgstr "Ditampilkan pada laman daftar kiriman di bawah nama situs."
-
-#: hammock/root-functions.php:177 prose/root-functions.php:216
-#: themes/foundation/root-functions.php:11
-msgid "Branding"
-msgstr "Pencitraan Merek"
-
 #: include/add-ons/wordtwit-pro.php:179
 #: themes/foundation/modules/twitter/twitter.php:42
 msgid "%d second ago"
@@ -1732,11 +1632,7 @@ msgstr "Versi Desktop"
 msgid "Switch To Mobile Version"
 msgstr "Pindah Ke Versi Mobile"
 
-#: include/html/footer.php:8
-msgid "Powered by %s%s%s"
-msgstr "Dipersembahkan oleh %s%s%s"
-
-#: include/html/footer.php:10
+#: include/html/footer.php:7
 msgid "Powered by<br/>%s%s%s"
 msgstr "Didukung oleh<br/>%s%s%s"
 
@@ -1748,169 +1644,181 @@ msgstr "%d pertanyaan dalam %0.1f ml dtk"
 msgid "Default Template"
 msgstr "Templat Stanadar"
 
-#: infinity-cache/infinity-cache.php:66 infinity-cache/infinity-cache.php:241
+#: infinity-cache/infinity-cache.php:70 infinity-cache/infinity-cache.php:252
 msgid "Purge Page Cache"
 msgstr "Bersihkan Tembolok Halaman"
 
-#: infinity-cache/infinity-cache.php:134
+#: infinity-cache/infinity-cache.php:145
 msgid "Enable Infinity Cache"
 msgstr "Aktifkan Tembolok Selamanya"
 
-#: infinity-cache/infinity-cache.php:142
+#: infinity-cache/infinity-cache.php:153
 msgid "Create cache for desktop users"
 msgstr "Buat tembolok untuk pengguna desktop"
 
-#: infinity-cache/infinity-cache.php:143
+#: infinity-cache/infinity-cache.php:154
 msgid "If you are using another cache plugin such as W3, you can disable this."
 msgstr "Jika Anda menggunakan plugin tembolok lain seperti W3, Anda dapat menonaktifkan ini."
 
-#: infinity-cache/infinity-cache.php:164
+#: infinity-cache/infinity-cache.php:175
 msgid "Compress output using GZIP"
 msgstr "Kompres output dengan menggunakan GZIP"
 
-#: infinity-cache/infinity-cache.php:174
+#: infinity-cache/infinity-cache.php:185
 msgid "Maximum age of cached content"
 msgstr "Usia maksimum konten tembolok"
 
-#: infinity-cache/infinity-cache.php:175
+#: infinity-cache/infinity-cache.php:186
 msgid "Each cached page will automatically be regenerated after this period elapses"
 msgstr "Setiap halaman tembolok secara otomatis akan dibuat ulang setelah periode ini berlalu"
 
-#: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
-#: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
-#: infinity-cache/infinity-cache.php:183
+#: infinity-cache/infinity-cache.php:190 infinity-cache/infinity-cache.php:191
+#: infinity-cache/infinity-cache.php:192 infinity-cache/infinity-cache.php:193
+#: infinity-cache/infinity-cache.php:194
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d jam"
 msgstr[1] "%d jam"
 
-#: infinity-cache/infinity-cache.php:190
+#: infinity-cache/infinity-cache.php:201
 msgid "Remove stale cache file interval"
 msgstr "Hapus berkas interval tembolok yang basi"
 
-#: infinity-cache/infinity-cache.php:195
+#: infinity-cache/infinity-cache.php:206
 msgid "Hourly"
 msgstr "Setiap jam"
 
-#: infinity-cache/infinity-cache.php:196
+#: infinity-cache/infinity-cache.php:207
 msgid "Daily"
 msgstr "Setiap hari"
 
-#: infinity-cache/infinity-cache.php:203
+#: infinity-cache/infinity-cache.php:214
 msgid "Disable caching for any of these matched URL fragments"
 msgstr "Nonaktifkan penyimpanan cache untuk salah satu fragmen URL yang cocok"
 
-#: infinity-cache/infinity-cache.php:204
+#: infinity-cache/infinity-cache.php:215
 msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
 msgstr "Tambahkan satu fragmen URL per baris, yaitu %s, untuk tidak menyimpan tembolok halaman yang berisi setiap fragmen URL"
 
-#: infinity-cache/infinity-cache.php:212
+#: infinity-cache/infinity-cache.php:223
 msgid "Content Distribution Network Service"
 msgstr "Distribusi Konten Layanan Jaringan"
 
-#: infinity-cache/infinity-cache.php:213
+#: infinity-cache/infinity-cache.php:224
 msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
 msgstr "Menggunakan jaringan distribusi konten (CDN) dapat secara signifikan meningkatkan respon dari situs web Anda."
 
-#: infinity-cache/infinity-cache.php:218
+#: infinity-cache/infinity-cache.php:229
 #: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr "Daftar"
 
-#: infinity-cache/infinity-cache.php:226
+#: infinity-cache/infinity-cache.php:237
 msgid "URL %d"
 msgstr "URL %d"
 
-#: infinity-cache/infinity-cache.php:227
+#: infinity-cache/infinity-cache.php:238
 msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
 msgstr "Tambahkan URL Anda telah dikonfigurasi untuk CDN Anda, misalnya http://cdn%d.mysite.com. Tambahkan domain Anda untuk multi-situs juga."
 
-#: infinity-cache/infinity-cache.php:249
+#: infinity-cache/infinity-cache.php:260
 msgid "Infinity Cache"
 msgstr "Tembolok Selamanya"
 
-#: infinity-cache/infinity-cache.php:636
+#: infinity-cache/infinity-cache.php:651
 msgid "An example for this URL is: %s%s%s."
 msgstr "Contoh untuk URL ini adalah: %s%s%s."
 
-#: mobile-content/mobile-content.php:20
+#: mobile-content/mobile-content.php:25
 msgid "WPtouch Alternate Mobile Content"
 msgstr "Konten Mobile Alternatif WPtouch"
 
-#: mobile-content/mobile-content.php:38
-msgid "Mobile Content"
-msgstr "Konten Mobile"
-
-#: mobile-content/mobile-content.php:44
+#: mobile-content/mobile-content.php:50
 msgid "Enable mobile content display"
 msgstr "Aktifkan tampilan konten mobile"
 
-#: mobilestore/default/functions.php:121
+#: mobile-content/mobile-content.php:58
+msgid "Mobile Content"
+msgstr "Konten Mobile"
+
+#: mobilestore/default/functions.php:127
 #: mobilestore/default/woocommerce/checkout/form-login.php:16
 msgid "Login now"
 msgstr "Masuk sekarang"
 
-#: mobilestore/default/functions.php:122
+#: mobilestore/default/functions.php:128
 msgid "Close"
 msgstr "Tutup"
 
-#: mobilestore/default/functions.php:123
+#: mobilestore/default/functions.php:129
 msgid "Add Company Name"
 msgstr "Tambahkan Nama Perusahaan"
 
-#: mobilestore/default/functions.php:124
+#: mobilestore/default/functions.php:130
 msgid "Add Order Notes"
 msgstr "Tambahkan Catatan Pesanan"
 
-#: mobilestore/default/functions.php:125
+#: mobilestore/default/functions.php:131
 msgid "CVC"
 msgstr "CVC"
 
-#: mobilestore/default/functions.php:186
+#: mobilestore/default/functions.php:192
 msgid "view more products"
 msgstr "lihat produk lainnya"
 
-#: mobilestore/default/functions.php:204
+#: mobilestore/default/functions.php:210
 msgid "Added to cart"
 msgstr "Ditambahkan ke keranjang"
 
-#: mobilestore/default/header-bottom.php:9
+#: mobilestore/default/functions.php:389
+msgid "More"
+msgstr "Lainnya"
+
+#: mobilestore/default/header-bottom.php:10
 msgid "Product Categories"
 msgstr "Kategori Produk"
 
-#: mobilestore/default/header-bottom.php:15
+#: mobilestore/default/header-bottom.php:16
 msgid "Recently Viewed"
 msgstr "Baru Dilihat"
 
-#: mobilestore/default/header-bottom.php:20
+#: mobilestore/default/header-bottom.php:21
 msgid "Site Menu"
 msgstr "Menu Situs"
 
-#: mobilestore/default/header-bottom.php:72
+#: mobilestore/default/header-bottom.php:71
 msgid "Cart"
 msgstr "Keranjang"
 
-#: mobilestore/default/header-bottom.php:82
+#: mobilestore/default/header-bottom.php:81
 msgid "Search the store"
 msgstr "Pencarian toko"
 
-#: mobilestore/default/header-bottom.php:87
+#: mobilestore/default/header-bottom.php:86
 msgid "Recent Searches"
 msgstr "Pencarian Baru"
 
-#: mobilestore/default/header-bottom.php:87
+#: mobilestore/default/header-bottom.php:86
 msgid "Clear"
 msgstr "Hapus"
 
-#: mobilestore/default/header-bottom.php:104
+#: mobilestore/default/header-bottom.php:134
+msgid "Most Popular Products"
+msgstr "Produk Terpopuler"
+
+#: mobilestore/default/header-bottom.php:147
+msgid "%s: Most Popular"
+msgstr "%s: Terpopuler"
+
+#: mobilestore/default/header-bottom.php:168
 msgid "Back to blog index"
 msgstr "Kembali ke indeks blog"
 
-#: mobilestore/default/header-bottom.php:118
+#: mobilestore/default/header-bottom.php:180
 msgid "sorting"
 msgstr "mengurutkan"
 
-#: mobilestore/default/header-bottom.php:119
+#: mobilestore/default/header-bottom.php:181
 msgid "filter by"
 msgstr "filter berdasarkan"
 
@@ -1938,7 +1846,6 @@ msgid "Please continue to the checkout and enter your full address to see if the
 msgstr "Silakan lanjutkan ke pembayaran dan masukkan alamat lengkap Anda untuk melihat metode pengiriman yang tersedia."
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:82
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:68
 msgid "Please fill in your details to see available shipping methods."
 msgstr "Harap isi data Anda untuk melihat metode pengiriman yang tersedia."
 
@@ -1948,23 +1855,19 @@ msgid "There doesn&lsquo;t seem to be any available shipping methods. Please dou
 msgstr "Tampaknya tidak ada metode pengiriman yang tersedia. Harap periksa ulang alamat Anda, atau hubungi kami jika Anda memerlukan bantuan."
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:112
-#: mobilestore/default/woocommerce/cart/totals.php:46
 msgid "Shipping"
 msgstr "Pengiriman"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:19
-#: mobilestore/default/woocommerce/cart/totals.php:28
-#: mobilestore/default/woocommerce/checkout/review-order.php:25
+#: mobilestore/default/woocommerce/checkout/review-order.php:68
 msgid "Cart Subtotal"
 msgstr "Subtotal Keranjang"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:66
-#: mobilestore/default/woocommerce/cart/totals.php:121
 msgid " (taxes estimated for %s)"
 msgstr "(pajak diperkirakan untuk %s)"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:69
-#: mobilestore/default/woocommerce/cart/totals.php:123
 msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
 msgstr "Catatan: Pengiriman dan pajak diperkirakan%s dan akan diperbarui selama pembayaran berdasarkan penagihan dan informasi pengiriman."
 
@@ -1987,17 +1890,15 @@ msgstr "Kupon"
 
 #: mobilestore/default/woocommerce/cart/cart.php:93
 #: mobilestore/default/woocommerce/checkout/form-coupon.php:20
-#: mobilestore/default/woocommerce/checkout/review-order.php:41
 msgid "Coupon code"
 msgstr "Kode Kupon"
 
 #: mobilestore/default/woocommerce/cart/cart.php:93
 #: mobilestore/default/woocommerce/checkout/form-coupon.php:20
-#: mobilestore/default/woocommerce/checkout/review-order.php:43
 msgid "Apply"
 msgstr "Terapkan"
 
-#: mobilestore/default/woocommerce/cart/cart.php:111
+#: mobilestore/default/woocommerce/cart/cart.php:110
 msgid "Proceed to Checkout"
 msgstr "Lanjutkan ke Pembayaran"
 
@@ -2021,50 +1922,6 @@ msgstr "Subtotal"
 msgid "Checkout"
 msgstr "Pembayaran"
 
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:32
-msgid "Free"
-msgstr "Gratis"
-
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
-#: mobilestore/default/woocommerce/cart/totals.php:147
-msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
-msgstr "Maaf, tampaknya tidak ada metode pengiriman yang tersedia untuk lokasi Anda (%s)."
-
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
-#: mobilestore/default/woocommerce/cart/totals.php:147
-msgid "If you require assistance or wish to make alternate arrangements please contact us."
-msgstr "Jika Anda memerlukan bantuan atau ingin membuat pengaturan alternatif harap hubungi kami."
-
-#: mobilestore/default/woocommerce/cart/totals.php:22
-msgid "Cart Totals"
-msgstr "Total Keranjang"
-
-#: mobilestore/default/woocommerce/cart/totals.php:35
-msgid "Cart Discount"
-msgstr "Diskon Keranjang"
-
-#: mobilestore/default/woocommerce/cart/totals.php:35
-#: mobilestore/default/woocommerce/cart/totals.php:83
-msgid "[Remove]"
-msgstr "[Hapus]"
-
-#: mobilestore/default/woocommerce/cart/totals.php:83
-msgid "Order Discount"
-msgstr "Diskon Pesanan"
-
-#: mobilestore/default/woocommerce/cart/totals.php:92
-#: mobilestore/default/woocommerce/checkout/review-order.php:94
-msgid "Order Total"
-msgstr "Total Pesanan"
-
-#: mobilestore/default/woocommerce/cart/totals.php:105
-msgid "(Includes %s)"
-msgstr "(Termasuk %s)"
-
-#: mobilestore/default/woocommerce/cart/totals.php:135
-msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
-msgstr "Tidak ada metode pengiriman yang ditemukan; harap kalkulasi ulang pengiriman Anda dan masukkan provinsi dan kode pos Anda untuk memastikan bahwa tidak ada metode lain yang tersedia untuk lokasi Anda."
-
 #: mobilestore/default/woocommerce/checkout/form-checkout.php:20
 msgid "You must be logged in to checkout."
 msgstr "Anda harus masuk saat pembayaran."
@@ -2086,12 +1943,7 @@ msgid "Enter your login details in the boxes below. If you are a new customer pl
 msgstr "Masukkan rincian masuk Anda di kotak di bawah. Jika Anda adalah pelanggan baru silahkan lanjutkan ke bagian Pembayaran & amp; Pengiriman."
 
 #: mobilestore/default/woocommerce/checkout/form-pay.php:19
-#: mobilestore/default/woocommerce/checkout/review-order.php:18
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:22
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:23
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:27
-#: mobilestore/default/woocommerce/emails/customer-note.php:27
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:23
+#: mobilestore/default/woocommerce/checkout/review-order.php:31
 #: mobilestore/default/woocommerce/order/order-details.php:20
 msgid "Product"
 msgstr "Produk"
@@ -2120,224 +1972,47 @@ msgstr "Kirim ke alamat yang berbeda?"
 msgid "Additional Information"
 msgstr "Informasi Tambahan"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:19
+#: mobilestore/default/woocommerce/checkout/payment.php:30
+#: mobilestore/default/woocommerce/checkout/review-order.php:161
+msgid "Please fill in your details above to see available payment methods."
+msgstr "Isilah data Anda di atas untuk melihat metode pembayaran yang tersedia."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:32
+#: mobilestore/default/woocommerce/checkout/review-order.php:163
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Maaf, tampaknya tidak ada metode pembayaran yang tersedia untuk provinsi/negara bagian Anda. Hubungilah kami jika Anda memerlukan bantuan atau ingin membuat pengaturan alternatif."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:43
+#: mobilestore/default/woocommerce/checkout/review-order.php:174
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr "Karena peramban Anda tidak mendukung JavaScript, atau dinonaktifkan, pastikan Anda mengkelik tombol <em>Perbarui Total</em> sebelum menempatkan pesanan Anda. Anda mungkin akan dikenakan biaya lebih dari jumlah yang ditetapkan di atas jika Anda gagal untuk melakukannya."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:43
+#: mobilestore/default/woocommerce/checkout/review-order.php:174
+msgid "Update totals"
+msgstr "Perbarui total"
+
+#: mobilestore/default/woocommerce/checkout/payment.php:54
+#: mobilestore/default/woocommerce/checkout/review-order.php:191
+msgid "I&rsquo;ve read and accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr "Saya telah membaca dan menerima <a href=\"%s\" target=\"_blank\">persyaratan &amp; ketentuan</a>"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:32
 #: mobilestore/default/woocommerce/order/order-details.php:21
 msgid "Total"
 msgstr "Total"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:171
-msgid "Please fill in your details above to see available payment methods."
-msgstr "Isilah data Anda di atas untuk melihat metode pembayaran yang tersedia."
+#: mobilestore/default/woocommerce/checkout/review-order.php:115
+msgid "Order Total"
+msgstr "Total Pesanan"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:173
-msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
-msgstr "Maaf, tampaknya tidak ada metode pembayaran yang tersedia untuk provinsi/negara bagian Anda. Hubungilah kami jika Anda memerlukan bantuan atau ingin membuat pengaturan alternatif."
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:184
-msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
-msgstr "Karena peramban Anda tidak mendukung JavaScript, atau dinonaktifkan, pastikan Anda mengkelik tombol <em>Perbarui Total</em> sebelum menempatkan pesanan Anda. Anda mungkin akan dikenakan biaya lebih dari jumlah yang ditetapkan di atas jika Anda gagal untuk melakukannya."
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:184
-msgid "Update totals"
-msgstr "Perbarui total"
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:194
-msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
-msgstr "Saya menerima <a href=\"%s\" target=\"_blank\">persyaratan &amp; ketentuan</a>"
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:200
+#: mobilestore/default/woocommerce/checkout/review-order.php:181
 msgid "Place order"
 msgstr "Tempatkan pesanan"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:13
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
-msgid "You have received an order from %s. Their order is as follows:"
-msgstr "Anda telah menerima pesanan dari %s. Pesanan mereka adalah sebagai berikut:"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:17
-msgid "Order: %s"
-msgstr "Pesanan: %s"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:23
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:24
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:28
-#: mobilestore/default/woocommerce/emails/customer-note.php:28
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:24
-msgid "Quantity"
-msgstr "Kuantitas"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:24
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:25
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:29
-#: mobilestore/default/woocommerce/emails/customer-note.php:29
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:25
-msgid "Price"
-msgstr "Harga"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:50
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:51
-#: mobilestore/default/woocommerce/emails/customer-note.php:55
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:51
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:38
-msgid "Customer details"
-msgstr "Tentang pelanggan"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:53
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:54
-#: mobilestore/default/woocommerce/emails/customer-note.php:58
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:54
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:41
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:41
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:49
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:41
-msgid "Email:"
-msgstr "Email:"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:56
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:57
-#: mobilestore/default/woocommerce/emails/customer-note.php:61
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:57
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:44
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:44
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:52
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:44
-msgid "Tel:"
-msgstr "Tel:"
-
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
-msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
-msgstr "Hai. Pesanan terakhir Anda di %s telah selesai. Rincian pesanan Anda akan ditampilkan di bawah ini untuk referensi Anda:"
-
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:22
-#: mobilestore/default/woocommerce/emails/customer-note.php:22
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:18
-msgid "Order:"
-msgstr "Pesanan:"
-
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
-msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
-msgstr "Pesanan telah dibuat untuk Anda pada %s. Untuk membayar pesanan ini gunakanlah tautan berikut ini:%s"
-
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
-msgid "pay"
-msgstr "bayar"
-
-#: mobilestore/default/woocommerce/emails/customer-new-account.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
-msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
-msgstr "Terima kasih untuk membuat akun di %s. Nama pengguna Anda adalah  .<strong>%s</strong>."
-
-#: mobilestore/default/woocommerce/emails/customer-new-account.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:15
-msgid "You can access your account area here: %s."
-msgstr "Anda dapat mengakses akun Anda di sini: %s."
-
-#: mobilestore/default/woocommerce/emails/customer-note.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:13
-msgid "Hello, a note has just been added to your order:"
-msgstr "Halo, catatan baru saja ditambahkan ke dalam pesanan Anda:"
-
-#: mobilestore/default/woocommerce/emails/customer-note.php:18
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:21
-msgid "For your reference, your order details are shown below."
-msgstr "Untuk referensi Anda, rincian perintah Anda ditampilkan di bawah."
-
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
-msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
-msgstr "Pesanan telah diterima dan sekarang sedang diproses. Detail pesanan ditampilkan di bawah ini untuk referensi:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:13
-msgid "Someone requested that the password be reset for the following account:"
-msgstr "Seseorang meminta agar kata sandi diatur ulang untuk akun berikut ini:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:15
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:15
-msgid "Username: %s"
-msgstr "Nama Pengguna: %s"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:16
-msgid "If this was a mistake, just ignore this email and nothing will happen."
-msgstr "Jika ini sebuah kesalahan, abaikan saja email ini dan tak ada sesuatu pun yang akan terjadi."
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:17
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:17
-msgid "To reset your password, visit the following address:"
-msgstr "Untuk mengatur ulang kata sandi Anda, kunjungi alamat berikut ini:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:20
-msgid "Click here to reset your password"
-msgstr "Klik di sini untuk mengatur ulang kata sandi Anda"
-
-#: mobilestore/default/woocommerce/emails/email-addresses.php:18
-#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:12
-msgid "Billing address"
-msgstr "Alamat penagihan"
-
-#: mobilestore/default/woocommerce/emails/email-addresses.php:28
-#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:17
-msgid "Shipping address"
-msgstr "Alamat pengiriman"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:34
-msgid "This product is no longer available"
-msgstr "Produk ini tidak lagi tersedia"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:76
-msgid "Download %d:"
-msgstr "Unduh %d:"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:78
-msgid "Download:"
-msgstr "Unduh:"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:19
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:19
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:27
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:19
-msgid "Order number: %s"
-msgstr "Nomor pesanan: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:21
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:28
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:20
-msgid "Order date: %s"
-msgstr "Tanggal pesanan: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
-msgid "jS F Y"
-msgstr "jS F Y"
-
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:38
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:46
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:38
-#: mobilestore/default/woocommerce/order/order-details.php:97
-msgid "Your details"
-msgstr "Rincian Anda"
-
-#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:28
-msgid "Quantity: %s"
-msgstr "Kuantitas: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:31
-msgid "Cost: %s"
-msgstr "Biaya: %s"
 
 #: mobilestore/default/woocommerce/loop/no-products-found.php:14
 msgid "No products were found matching your search."
 msgstr "Tidak ditemukan produk yang sesuai dengan pencarian Anda."
-
-#: mobilestore/default/woocommerce/loop-shop.php:40
-msgid "No products found which match your selection."
-msgstr "Tidak ditemukan yang cocok dengan pilihan Anda."
 
 #: mobilestore/default/woocommerce/myaccount/my-account.php:19
 msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
@@ -2374,6 +2049,10 @@ msgstr "Tampilan"
 msgid "Download file%s"
 msgstr "Unduh file%s"
 
+#: mobilestore/default/woocommerce/order/order-details.php:97
+msgid "Your details"
+msgstr "Rincian Anda"
+
 #: mobilestore/default/woocommerce/order/order-details.php:101
 msgid "Email"
 msgstr "Email"
@@ -2395,133 +2074,115 @@ msgstr "Tidak Ada"
 msgid "Shipping Address"
 msgstr "Alamat Pengiriman"
 
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:63
-msgid "Products tagged &ldquo;"
-msgstr "Produk ditandai &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:91
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:190
-msgid "Search results for &ldquo;"
-msgstr "Hasil penelusuran untuk &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:148
-msgid "Error 404"
-msgstr "Kesalahan 404"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:194
-msgid "Posts tagged &ldquo;"
-msgstr "Kiriman ditandai &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:199
-msgid "Author:"
-msgstr "Penulis:"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:204
-#: themes/foundation/root-functions.php:1092
-msgid "Page"
-msgstr "Halaman"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:20
-msgid "Username or email"
-msgstr "Nama pengguna atau email"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:24
-msgid "Password"
-msgstr "Kata sandi"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:33
-msgid "Lost Password?"
-msgstr "Lupa Kata Sandi?"
-
 #: mobilestore/root-functions.php:6
 msgid "Store"
 msgstr "Simpan"
 
-#: mobilestore/root-functions.php:196
+#: mobilestore/root-functions.php:98
+msgid "Web-App Mode has been disabled because your site does not have any supported payment gateways.%sSee %s for further information."
+msgstr "Web-App Mode telah dinonaktifkan karena situs Anda tidak memiliki gateway pembayaran yang didukung.%sLihat%s untuk informasi lebih lanjut."
+
+#: mobilestore/root-functions.php:247
 msgid "Off-Canvas left menu"
 msgstr "Menu kiri luar kanvas"
 
-#: mobilestore/root-functions.php:205
+#: mobilestore/root-functions.php:256
 msgid "Footer Menu"
 msgstr "Menu Catatan Kaki"
 
-#: mobilestore/root-functions.php:208
+#: mobilestore/root-functions.php:259
 msgid "Menu shown in the MobileStore footer"
 msgstr "Menu yang ditampilkan di catatan kaki MobileStore"
 
-#: mobilestore/root-functions.php:215
+#: mobilestore/root-functions.php:266
 msgid "Menu & Cart Background"
 msgstr "Latar Belakang Menu & Keranjang"
 
-#: mobilestore/root-functions.php:218
+#: mobilestore/root-functions.php:269
 msgid "Header & Footer Background"
 msgstr "Latar Belakang Judul & Catatan kaki"
 
-#: mobilestore/root-functions.php:270
+#: mobilestore/root-functions.php:322
 msgid "Primary Actions & Purchase Flow"
 msgstr "Tindakan Dasar & Arus Pembelian"
 
-#: mobilestore/root-functions.php:281
+#: mobilestore/root-functions.php:333
 msgid "Highlight Color"
 msgstr "Warna Sorotan"
 
-#: mobilestore/root-functions.php:397
+#: mobilestore/root-functions.php:449
 msgid "Product Listing"
 msgstr "Daftar Produk"
 
-#: mobilestore/root-functions.php:403
+#: mobilestore/root-functions.php:455
 msgid "Number of products shown per page in product listings"
 msgstr "Jumlah produk yang ditampilkan per halaman dalam daftar produk"
 
-#: mobilestore/root-functions.php:411
+#: mobilestore/root-functions.php:463
 msgid "Product Pagination"
 msgstr "Pemberian Nomor Halaman Produk"
 
-#: mobilestore/root-functions.php:412
+#: mobilestore/root-functions.php:464
 msgid "Use AJAX load more or traditional numbered pagination."
 msgstr "Gunakan AJAX untuk memuat tulisan lainnya atau gunakan pemberian nomor halaman secara tradisional."
 
-#: mobilestore/root-functions.php:416
+#: mobilestore/root-functions.php:468
 msgid "Use AJAX load more"
 msgstr "Gunakan AJAX untuk memuat tulisan lainnya"
 
-#: mobilestore/root-functions.php:417
+#: mobilestore/root-functions.php:469
 msgid "Use numbered pages"
 msgstr "Gunakan halaman yang bernomor"
 
-#: mobilestore/root-functions.php:429
+#: mobilestore/root-functions.php:475
+msgid "Show top-selling products on homepage"
+msgstr "Tampilkan produk terlaris di halaman beranda"
+
+#: mobilestore/root-functions.php:476
+msgid "Adds a carousel with the 10 best selling products on the store homepage"
+msgstr "Tambahkan tampilan berjalan dengan 10 produk terlaris di halaman beranda toko"
+
+#: mobilestore/root-functions.php:489
 msgid "Product Filters"
 msgstr "Filter Produk"
 
-#: mobilestore/root-functions.php:435
+#: mobilestore/root-functions.php:495
 msgid "Show WooCommerce product filters for"
 msgstr "Tampilkan filter produk WooCommerce untuk"
 
-#: mobilestore/root-functions.php:450
+#: mobilestore/root-functions.php:510
 msgid "Site Sidebar"
 msgstr "Bilah Sisi Situs"
 
-#: mobilestore/root-functions.php:456
+#: mobilestore/root-functions.php:516
 msgid "Show category menu in sidebar"
 msgstr "Tampilkan menu kategori di bilah sisi"
 
-#: mobilestore/root-functions.php:464
+#: mobilestore/root-functions.php:524
 msgid "Show recently viewed products in sidebar"
 msgstr "Tampilkan produk yang baru dilihat di bilah samping"
 
-#: mobilestore/root-functions.php:548
+#: mobilestore/root-functions.php:566
+msgid "Featured Categories (Tablet)"
+msgstr "Kategori Unggulan (Tablet)"
+
+#: mobilestore/root-functions.php:572
+msgid "List best-selling products from these categories on the homepage"
+msgstr "Daftarkan produk terlaris dari kategori ini di halaman beranda"
+
+#: mobilestore/root-functions.php:682
 msgid "Site logo display size"
 msgstr "Ukuran tampilan logo situs"
 
-#: mobilestore/root-functions.php:553
+#: mobilestore/root-functions.php:687
 msgid "Short (default)"
 msgstr "Pendek (standar)"
 
-#: mobilestore/root-functions.php:554
+#: mobilestore/root-functions.php:688
 msgid "Tall (longer vertically for square logos)"
 msgstr "Panjang (lebih panjang secara vertikal untuk logo persegi)"
 
-#: mobilestore/root-functions.php:561
+#: mobilestore/root-functions.php:695
 msgid "Show site description in large header"
 msgstr "Tampilkan deskripsi situs dalam judul besar"
 
@@ -2609,12 +2270,12 @@ msgstr "Kami&lsquo; <em>buka</em> setiap %s %s."
 msgid "Sorry, we&lsquo;re <em>closed</em> every %s."
 msgstr "Maaf, kamie&lsquo; <em>tutup</em> setiap %s."
 
-#: open/default/functions.php:18 open/default/location.php:5
+#: open/default/functions.php:20 open/default/location.php:5
 #: simple/default/front-page.php:20
 msgid "Our Location"
 msgstr "Lokasi Kami"
 
-#: open/default/functions.php:22 open/default/hours.php:5
+#: open/default/functions.php:24 open/default/hours.php:5
 msgid "Our Hours"
 msgstr "Jam Kami"
 
@@ -2669,6 +2330,10 @@ msgstr "Slogan"
 #: open/root-functions.php:106
 msgid "Displayed below your logo on the homepage."
 msgstr "Ditampilkan di bawah logo Anda di laman beranda."
+
+#: open/root-functions.php:119 prose/root-functions.php:117
+msgid "Header Image"
+msgstr "Gambar Header"
 
 #: open/root-functions.php:125
 msgid "Displayed behind header on pages."
@@ -2758,11 +2423,11 @@ msgstr "Teks untuk menunjukkan ke visitor terdekat"
 msgid "Encoded Location"
 msgstr "Lokasi Dikodekan"
 
-#: pro/modules/webapp/webapp.php:129
+#: pro/modules/webapp/webapp.php:133
 msgid "External link— open it in the browser?"
 msgstr "Tautan eksternal — buka dalam browser?"
 
-#: pro/modules/webapp/webapp.php:130
+#: pro/modules/webapp/webapp.php:134
 msgid "File link— Do you want to open it in the browser?"
 msgstr "Tautam berkas— Anda ingin membukanya di dalam browser?"
 
@@ -2905,6 +2570,10 @@ msgstr "Situs web"
 msgid "Publish"
 msgstr "Publikasikan"
 
+#: prose/default/functions.php:33
+msgid "Load more from this collection"
+msgstr "Muat lainnya dari koleksi ini"
+
 #: prose/default/functions.php:34
 msgid "%d minute"
 msgstr "%d menit"
@@ -2924,6 +2593,14 @@ msgstr "%d menit tersisa"
 #: prose/default/functions.php:38
 msgid "Share post"
 msgstr "Bagikan kiriman"
+
+#: prose/default/header-bottom.php:19
+msgid "Collections"
+msgstr "Koleksi"
+
+#: prose/default/header-bottom.php:22
+msgid "Options"
+msgstr "Opsi"
 
 #: prose/default/header-bottom.php:43
 msgid "Reading Text Size"
@@ -2973,9 +2650,29 @@ msgstr "Tampilkan komentar ketika sedang membaca kiriman"
 msgid "Comment form will not appear for posts with comments turned off."
 msgstr "Kolom komentar tidak akan muncul untuk kiriman dengan komentar yang dimatikan."
 
+#: prose/root-functions.php:76
+msgid "Show categories as \"collections\" in menu"
+msgstr "Tunjukkan kategori sebagai \"koleksi\" di menu"
+
 #: prose/root-functions.php:87
 msgid "Use featured image as the header background when viewing single posts"
 msgstr "Gunakan gambar fitur sebagai latar belakang bagian atas saat melihat tulisan tunggal"
+
+#: prose/root-functions.php:98
+msgid "Maximum number of items in categories/collections"
+msgstr "Jumlah maksimum butir dalam kategori/koleksi"
+
+#: prose/root-functions.php:123
+msgid "Displayed behind header on pages and posts without featured images."
+msgstr "Ditampilkan di belakang header pada laman dan kiriman tanpa gambar ditampilkan."
+
+#: prose/root-functions.php:136
+msgid "Site Intro"
+msgstr "Intro Situs"
+
+#: prose/root-functions.php:142
+msgid "Displayed on post listing page below site name."
+msgstr "Ditampilkan pada laman daftar kiriman di bawah nama situs."
 
 #: prose/root-functions.php:155
 msgid "Drop Caps"
@@ -2989,27 +2686,31 @@ msgstr "Gunakan pembesar huruf awal di awal setiap kiriman blog."
 msgid "Off-canvas menu for Prose"
 msgstr "Menu luar kanvas untuk Prosa"
 
-#: responsive-images/responsive-images.php:101
+#: prose/root-functions.php:216 themes/foundation/root-functions.php:11
+msgid "Branding"
+msgstr "Pencitraan Merek"
+
+#: responsive-images/responsive-images.php:107
 msgid "Responsive Images"
 msgstr "Gambar responsif"
 
-#: responsive-images/responsive-images.php:107
+#: responsive-images/responsive-images.php:113
 msgid "Include desktop optimizations for mobile devices"
 msgstr "Mencakup optimasi desktop untuk perangkat mobile"
 
-#: responsive-images/responsive-images.php:108
+#: responsive-images/responsive-images.php:114
 msgid "Normally only images on mobile are optimized"
 msgstr "Biasanya hanya gambar di mobile yang dioptimasi"
 
-#: responsive-images/responsive-images.php:115
+#: responsive-images/responsive-images.php:121
 msgid "Performance preference"
 msgstr "Preferensi kinerja"
 
-#: responsive-images/responsive-images.php:120
+#: responsive-images/responsive-images.php:126
 msgid "Optimize for page speed"
 msgstr "Optimalkan untuk kecepatan halaman"
 
-#: responsive-images/responsive-images.php:121
+#: responsive-images/responsive-images.php:127
 msgid "Optimize for quality"
 msgstr "Optimalkan untuk kualitas"
 
@@ -3214,7 +2915,7 @@ msgstr "Taksonomi"
 msgid "Search results"
 msgstr "Hasil pencarian"
 
-#: themes/foundation/modules/base/base.php:69
+#: themes/foundation/modules/base/base.php:70
 msgid "Loading"
 msgstr "Memuat"
 
@@ -3225,6 +2926,10 @@ msgstr "Pratinjau Tema"
 #: themes/foundation/modules/base/preview-bar.php:3
 msgid "Reload"
 msgstr "Muat ulang"
+
+#: themes/foundation/modules/custom-posts/custom-posts.php:152
+msgid "Enable %s"
+msgstr "Aktifkan %s"
 
 #: themes/foundation/modules/custom-posts/custom-posts.php:164
 msgid "Custom Post Support"
@@ -3543,22 +3248,22 @@ msgstr "Alamat email"
 msgid "Full URL to your RSS feed"
 msgstr "URL penuh ke umpan RSS Anda"
 
-#: themes/foundation/modules/tablets/tablets.php:35
+#: themes/foundation/modules/tablets/tablets.php:45
 msgid "iPad"
 msgstr "iPad"
 
-#: themes/foundation/modules/tablets/tablets.php:41
-#: themes/foundation/modules/webapp/webapp.php:73
-#: themes/foundation/modules/webapp/webapp.php:91
-#: themes/foundation/modules/webapp/webapp.php:109
-#: themes/foundation/modules/webapp/webapp.php:128
-#: themes/foundation/modules/webapp/webapp.php:146
-#: themes/foundation/modules/webapp/webapp.php:165
-#: themes/foundation/modules/webapp/webapp.php:173
-#: themes/foundation/modules/webapp/webapp.php:191
-#: themes/foundation/modules/webapp/webapp.php:199
+#: themes/foundation/modules/tablets/tablets.php:51
+#: themes/foundation/modules/webapp/webapp.php:113
+#: themes/foundation/modules/webapp/webapp.php:131
+#: themes/foundation/modules/webapp/webapp.php:149
+#: themes/foundation/modules/webapp/webapp.php:168
+#: themes/foundation/modules/webapp/webapp.php:186
+#: themes/foundation/modules/webapp/webapp.php:205
+#: themes/foundation/modules/webapp/webapp.php:213
+#: themes/foundation/modules/webapp/webapp.php:231
+#: themes/foundation/modules/webapp/webapp.php:239
+#: themes/foundation/root-functions.php:423
 #: themes/foundation/root-functions.php:441
-#: themes/foundation/root-functions.php:459
 msgid "%d by %d pixels (PNG)"
 msgstr "%d x %d piksel (PNG)"
 
@@ -3570,87 +3275,103 @@ msgstr "Dinonaktifkan"
 msgid "Twitter account to use for Tweet display"
 msgstr "Akun Twitter digunakan untuk tampilan Tweet"
 
-#: themes/foundation/modules/webapp/webapp.php:15
-msgid "Enable iOS Web-App Mode"
-msgstr "Aktifkan Mode Aplikasi Web iOS"
+#: themes/foundation/modules/webapp/webapp.php:16
+msgid "Web-App Mode Unavailable"
+msgstr "Mode Aplikasi Web Tidak Tersedia"
 
-#: themes/foundation/modules/webapp/webapp.php:19
+#: themes/foundation/modules/webapp/webapp.php:37
+msgid "Enable Web-App Mode"
+msgstr "Memungkinkan Mode Aplikasi-Web"
+
+#: themes/foundation/modules/webapp/webapp.php:41
 msgid "Enable persistence"
 msgstr "Aktifkan persistensi"
 
-#: themes/foundation/modules/webapp/webapp.php:20
+#: themes/foundation/modules/webapp/webapp.php:42
 msgid "Loads the last visited URL for visitors on open."
 msgstr "Muat URL yang terakhir dikunjungi bagi pengunjung pada terbuka."
 
-#: themes/foundation/modules/webapp/webapp.php:27
+#: themes/foundation/modules/webapp/webapp.php:49
 msgid "URLs to ignore in Web-App Mode"
 msgstr "URL untuk diabaikan dalam Mode Aplikasi-Web"
 
-#: themes/foundation/modules/webapp/webapp.php:40
+#: themes/foundation/modules/webapp/webapp.php:61
+msgid "Web App Title"
+msgstr "Judul Aplikasi Web"
+
+#: themes/foundation/modules/webapp/webapp.php:67
+msgid "Icon title"
+msgstr "Judul ikon"
+
+#: themes/foundation/modules/webapp/webapp.php:68
+msgid "When visitors bookmark your website, this will be the title shown."
+msgstr "Saat  pengunjung menandai (bookmark) situs web Anda, ini akan menjadi judul yang ditampilkan."
+
+#: themes/foundation/modules/webapp/webapp.php:80
 msgid "Notice Message"
 msgstr "Pesan Peringatan"
 
-#: themes/foundation/modules/webapp/webapp.php:43
+#: themes/foundation/modules/webapp/webapp.php:83
 msgid "Show a notice message for iPhone, iPod touch & iPad visitors about my Web-App"
 msgstr "Tampilkan pesan pemberitahuan untuk pengunjung iPhone, iPod touch, & iPad tentang Aplikasi-Web saya"
 
-#: themes/foundation/modules/webapp/webapp.php:43
+#: themes/foundation/modules/webapp/webapp.php:83
 msgid "WPtouch shows a notice bubble on 1st visit letting users know about your Web-App enabled website on iOS devices."
 msgstr "WPtouch menampilkan gelembung pemberitahuan pada kunjungan pertama untuk memberi tahu pengguna tentang situs web Anda yang mengaktifkan Aplikasi-Web pada perangkat iOS."
 
-#: themes/foundation/modules/webapp/webapp.php:44
+#: themes/foundation/modules/webapp/webapp.php:84
 msgid "Notice message contents"
 msgstr "Konten isi pemberitahuan"
 
-#: themes/foundation/modules/webapp/webapp.php:44
+#: themes/foundation/modules/webapp/webapp.php:84
 msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
 msgstr "[icon] digunakan untuk menampilkan ikon penunjuk yang sesuai untuk perangkat Anda. Jangan menghapusnya dari pesan Anda."
 
-#: themes/foundation/modules/webapp/webapp.php:48
+#: themes/foundation/modules/webapp/webapp.php:88
 msgid "the notice message will be shown again for visitors"
 msgstr "pesan pemberitahuan tersebut akan ditampilkan lagi untuk pengunjung"
 
-#: themes/foundation/modules/webapp/webapp.php:53
+#: themes/foundation/modules/webapp/webapp.php:93
 msgid "1 day until"
 msgstr "1 hari sampai"
 
-#: themes/foundation/modules/webapp/webapp.php:54
+#: themes/foundation/modules/webapp/webapp.php:94
 msgid "7 days until"
 msgstr "7 hari sampai"
 
-#: themes/foundation/modules/webapp/webapp.php:55
+#: themes/foundation/modules/webapp/webapp.php:95
 msgid "1 month until"
 msgstr "1 bulan sampai"
 
-#: themes/foundation/modules/webapp/webapp.php:56
+#: themes/foundation/modules/webapp/webapp.php:96
 msgid "Every time"
 msgstr "Setiap waktu"
 
-#: themes/foundation/modules/webapp/webapp.php:67
+#: themes/foundation/modules/webapp/webapp.php:107
 msgid "iPhone Startup Screen"
 msgstr "Layar Aktivasi iPhone"
 
-#: themes/foundation/modules/webapp/webapp.php:85
+#: themes/foundation/modules/webapp/webapp.php:125
 msgid "Retina iPhone Startup Screen"
 msgstr "Layar Aktivasi Retina iPhone"
 
-#: themes/foundation/modules/webapp/webapp.php:103
+#: themes/foundation/modules/webapp/webapp.php:143
 msgid "iPhone 5 Startup Screen"
 msgstr "Layar Pengaktifan iPhone 5"
 
-#: themes/foundation/modules/webapp/webapp.php:122
+#: themes/foundation/modules/webapp/webapp.php:162
 msgid "iPhone 6 Startup Screen"
 msgstr "Layar Pembuka iPhone 6"
 
-#: themes/foundation/modules/webapp/webapp.php:140
+#: themes/foundation/modules/webapp/webapp.php:180
 msgid "iPhone 6+ Startup Screen"
 msgstr "Layar Pembuka iPhone 6+"
 
-#: themes/foundation/modules/webapp/webapp.php:159
+#: themes/foundation/modules/webapp/webapp.php:199
 msgid "iPad Mini and iPad Startup Screens"
 msgstr "Layar Aktivasi iPad Mini dan iPad"
 
-#: themes/foundation/modules/webapp/webapp.php:185
+#: themes/foundation/modules/webapp/webapp.php:225
 msgid "Retina iPad Startup Screens"
 msgstr "Layar Memulai iPad Retina"
 
@@ -3727,123 +3448,115 @@ msgid "Overrides the WordPress settings for showing comments on pages."
 msgstr "Ganti pengaturan Wordpress untuk menampilkan komentar pada halaman."
 
 #: themes/foundation/root-functions.php:404
-#: themes/foundation/root-functions.php:1141
+#: themes/foundation/root-functions.php:1237
 msgid "Pages"
 msgstr "Halaman"
 
 #: themes/foundation/root-functions.php:417
-msgid "Icon Title"
-msgstr "Judul Ikon"
-
-#: themes/foundation/root-functions.php:423
-msgid "Icon title"
-msgstr "Judul ikon"
-
-#: themes/foundation/root-functions.php:424
-msgid "When visitors bookmark your website, this will be the title shown."
-msgstr "Saat  pengunjung menandai (bookmark) situs web Anda, ini akan menjadi judul yang ditampilkan."
+msgid "Low Resolution"
+msgstr "Resolusi Rendah"
 
 #: themes/foundation/root-functions.php:435
-msgid "Android"
-msgstr "Android"
+msgid "High Resolution"
+msgstr "Resolusi Tinggi"
 
-#: themes/foundation/root-functions.php:453
-msgid "iPhone & iPod touch"
-msgstr "iPhone & iPod touch"
-
-#: themes/foundation/root-functions.php:489
+#: themes/foundation/root-functions.php:471
 msgid "Theme Colors"
 msgstr "Warna Tema"
 
-#: themes/foundation/root-functions.php:501
+#: themes/foundation/root-functions.php:483
 msgid "(Scaled by themes to fit logo areas as needed)"
 msgstr "(Diukur berdasarkan tema untuk mengisi area logo jika diperlukan)"
 
-#: themes/foundation/root-functions.php:512
+#: themes/foundation/root-functions.php:494
 msgid "Site Logo"
 msgstr "Logo Situs"
 
-#: themes/foundation/root-functions.php:521
+#: themes/foundation/root-functions.php:503
 msgid "Smart App Banner"
 msgstr "Spanduk Aplikasi Cerdas"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:509
 msgid "Enter your app's %sApp Store ID%s"
 msgstr "Masukkan %sApp Store ID%s aplikasi Anda"
 
-#: themes/foundation/root-functions.php:528
+#: themes/foundation/root-functions.php:510
 msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
 msgstr "Identifikasi unik aplikasi Anda. Cari ID Anda dari iTunes Link Maker: Cari aplikasi Anda. Dalam tautan itu tersedia, ID aplikasi Anda adalah angka sembilan digit di antara id dan ?mt. Misalnya ID Angry Birds adalah 343200656."
 
-#: themes/foundation/root-functions.php:540
+#: themes/foundation/root-functions.php:522
 msgid "Theme Footer"
 msgstr "Catatan Kaki Tema"
 
-#: themes/foundation/root-functions.php:543
+#: themes/foundation/root-functions.php:525
 msgid "Custom footer content (HTML is allowed)"
 msgstr "Konten catatan kaki tersuai (HTML diperbolehkan)"
 
-#: themes/foundation/root-functions.php:543
+#: themes/foundation/root-functions.php:525
 msgid "You can add custom footer content that will be displayed below the switch link."
 msgstr "Anda dapat menambahkan konten catatan kaki khusus yang akan ditampilkan di bawah penukar tautan pemindah."
 
-#: themes/foundation/root-functions.php:919
+#: themes/foundation/root-functions.php:902
 msgid "search results for '%s'"
 msgstr "hasil pencarian untuk '%s'"
 
-#: themes/foundation/root-functions.php:921
+#: themes/foundation/root-functions.php:904
 msgid "%sCategories &rsaquo;%s %s"
 msgstr "%sKategori &rsaquo;%s %s"
 
-#: themes/foundation/root-functions.php:923
+#: themes/foundation/root-functions.php:906
 msgid "Tags &rsaquo; %s"
 msgstr "Label &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:925
-#: themes/foundation/root-functions.php:927
-#: themes/foundation/root-functions.php:929
+#: themes/foundation/root-functions.php:908
+#: themes/foundation/root-functions.php:910
+#: themes/foundation/root-functions.php:912
 msgid "Archives &rsaquo; %s"
 msgstr "Pencapaian &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:944
+#: themes/foundation/root-functions.php:927
 msgid "Load more from this category"
 msgstr "Muat lainnya dari kategori ini"
 
-#: themes/foundation/root-functions.php:946
+#: themes/foundation/root-functions.php:929
 msgid "Load more tagged like this"
 msgstr "Muat lainnya yang ditandai seperti ini"
 
-#: themes/foundation/root-functions.php:948
+#: themes/foundation/root-functions.php:931
 msgid "Load more from this day"
 msgstr "Muat lainnya dari hari ini"
 
-#: themes/foundation/root-functions.php:950
+#: themes/foundation/root-functions.php:933
 msgid "Load more from this month"
 msgstr "Muat lainnya dari bulan ini"
 
-#: themes/foundation/root-functions.php:952
+#: themes/foundation/root-functions.php:935
 msgid "Load more from this year"
 msgstr "Muat lainnya dari tahun ini"
 
-#: themes/foundation/root-functions.php:954
+#: themes/foundation/root-functions.php:937
 msgid "Load more in this section"
 msgstr "Muat lainnya dalam bagian ini"
 
-#: themes/foundation/root-functions.php:956
+#: themes/foundation/root-functions.php:939
 msgid "Load more entries"
 msgstr "Muat entri lainnya"
 
-#: themes/foundation/root-functions.php:1090
+#: themes/foundation/root-functions.php:1186
 msgid "Post"
 msgstr "Kirim"
+
+#: themes/foundation/root-functions.php:1188
+msgid "Page"
+msgstr "Halaman"
 
 #. Plugin Name of the plugin/theme
 msgid "WPtouch Pro"
 msgstr "WPtouch Pro"
 
-#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.6.4)  #-#-#-#-#
+#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.7.7)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.6.4)  #-#-#-#-#
+#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.7.7)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://www.wptouch.com/"
 msgstr "http://www.wptouch.com/"

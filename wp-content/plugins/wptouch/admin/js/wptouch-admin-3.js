@@ -82,6 +82,7 @@ function wptouchHandleLicensePanel() {
 						setTimeout( function(){
 							jQuery( success ).fadeIn();
 						}, 1000 );
+						setTimeout(function(){ window.location.href = '?page=wptouch-admin-touchboard'; }, 1250 );
 					} else if ( result == '2' ) {
 						// rejected license
 						wptouchProgressBarError( progressBar );

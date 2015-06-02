@@ -1,15 +1,15 @@
 # Copyright (C) 2015 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.6.4\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2015-01-05 15:57:04+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2015-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr "Project-Id-Version: WPtouch Pro 3.7.7\nReport-Msgid-Bugs-To: http://wordpress.org/support/plugin/wptouch-pro-3\nPOT-Creation-Date: 2015-04-28 17:16:54+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2015-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
 msgstr "Trợ giúp WPtouch & Đường dẫn tài khoản"
 
 #: admin/html/help.php:3
-msgid "Support Forums"
-msgstr "Hỗ trợ các diễn đàn"
+msgid "Support"
+msgstr "Hỗ trợ"
 
 #: admin/html/help.php:4
 msgid "Documentation"
@@ -27,7 +27,7 @@ msgstr "BraveNewCode trên Twitter"
 msgid "Plugin Licensing Terms"
 msgstr "Điều khoản cấp phép trình nhúng"
 
-#: admin/html/notification-center.php:5
+#: admin/html/notification-center.php:5 core/admin-render.php:7
 msgid "What's in WPtouch Pro?"
 msgstr "Có gì ở phiên bản WPtouch Pro?"
 
@@ -154,312 +154,259 @@ msgstr "Tương thích"
 msgid "Auto-detect"
 msgstr "Tự động dò tìm"
 
-#: admin/pages/wptouch-admin-general-settings.php:47
+#: admin/pages/wptouch-admin-general-settings.php:49
 msgid "WPtouch Pro site title"
 msgstr "Tiêu đề trang WPtouch Pro"
 
-#: admin/pages/wptouch-admin-general-settings.php:48
+#: admin/pages/wptouch-admin-general-settings.php:50
 msgid "If the title of your site is long, you can shorten it for display within WPtouch Pro themes."
 msgstr "Nếu tiêu đề của trang quá dài, bạn có thể rút ngắn nó để hiển thị trong các chủ đề của WPtouch Pro."
 
-#: admin/pages/wptouch-admin-general-settings.php:55
+#: admin/pages/wptouch-admin-general-settings.php:57
 msgid "Display %sPowered by WPtouch Pro%s in footer"
 msgstr "Hiển thị %sĐược hỗ trợ bởi WPtouch Pro%s ở chân trang"
 
 #: admin/pages/wptouch-admin-general-settings.php:66
-msgid "Use my WPtouch Pro referral code to earn commission"
-msgstr "Sử dụng mã tham chiếu WPtouch Pro của tôi để nhận hoa hồng"
-
-#: admin/pages/wptouch-admin-general-settings.php:67
-msgid "Licensed users of WPtouch Pro can earn a commission for each sale they generate from their mobile website"
-msgstr "Những người dùng có giấy phép của WPtouch Pro có thể nhận được tiền hoa hồng cho mỗi lần bán hàng họ tạo ra từ trang web di động của mình"
-
-#: admin/pages/wptouch-admin-general-settings.php:75
 msgid "Site Title & Byline"
 msgstr "Tiêu đề trang & Tên tác giả"
 
-#: admin/pages/wptouch-admin-general-settings.php:84
+#: admin/pages/wptouch-admin-general-settings.php:75
 msgid "Regionalization"
 msgstr "Sự phân vùng"
 
-#: admin/pages/wptouch-admin-general-settings.php:90
+#: admin/pages/wptouch-admin-general-settings.php:81
 msgid "Language"
 msgstr "Ngôn ngữ"
 
-#: admin/pages/wptouch-admin-general-settings.php:91
+#: admin/pages/wptouch-admin-general-settings.php:82
 msgid "The WPtouch Pro admin panel &amp; supported themes will be shown in this locale."
 msgstr "Các chủ đề được hỗ trợ của thanh quản trị WPtouch Pro &amp; sẽ được hiển thị trong khu vực này."
 
-#: admin/pages/wptouch-admin-general-settings.php:99
-msgid "Translate administration panel text"
-msgstr "Dịch văn bản trên bảng quản trị"
-
-#: admin/pages/wptouch-admin-general-settings.php:110
+#: admin/pages/wptouch-admin-general-settings.php:103
 msgid "Display Mode"
 msgstr "Chế độ Hiển thị"
 
+#: admin/pages/wptouch-admin-general-settings.php:109
+msgid "Mobile theme is visible to"
+msgstr "Chủ đề di động hiển thị đối với"
+
+#: admin/pages/wptouch-admin-general-settings.php:114
+msgid "All Visitors"
+msgstr "Tất cả khách truy cập"
+
+#: admin/pages/wptouch-admin-general-settings.php:115
+msgid "Site administrators"
+msgstr "Quản trị viên trang web"
+
 #: admin/pages/wptouch-admin-general-settings.php:116
-msgid "Theme Display"
-msgstr "Hiển thị Chủ đề"
+msgid "Nobody (disable WPtouch Pro)"
+msgstr "Không có ai (tắt WPtouch Pro)"
 
-#: admin/pages/wptouch-admin-general-settings.php:121
-msgid "Normal (active for all mobile visitors)"
-msgstr "Bình thường (hoạt động với tất cả khách truy cập di động)"
-
-#: admin/pages/wptouch-admin-general-settings.php:122
-msgid "Preview (active only for logged-in site administrators)"
-msgstr "Xem trước (chỉ hoạt động với quan trị viên trang web đang đăng nhập)"
-
-#: admin/pages/wptouch-admin-general-settings.php:123
-msgid "Disabled (mobile theme will never show)"
-msgstr "Đã tắt (chủ đề di động sẽ không hiển thị)"
-
-#: admin/pages/wptouch-admin-general-settings.php:132
+#: admin/pages/wptouch-admin-general-settings.php:125
 msgid "Landing Page"
 msgstr "Trang Chuyển tiếp"
 
-#: admin/pages/wptouch-admin-general-settings.php:138
+#: admin/pages/wptouch-admin-general-settings.php:131
 msgid "WPtouch Pro landing page"
 msgstr "Trang chuyển WPtouch Pro"
 
-#: admin/pages/wptouch-admin-general-settings.php:143
-msgid "Default (same as WordPress)"
-msgstr "Mặc định (giống như WordPress)"
+#: admin/pages/wptouch-admin-general-settings.php:136
+msgid "Default (same as desktop visitors)"
+msgstr "Mặc định (giống như khách truy cập hình nền chính)"
 
-#: admin/pages/wptouch-admin-general-settings.php:144
-msgid "Select from WordPress pages"
-msgstr "Chọn từ các trang WordPress"
+#: admin/pages/wptouch-admin-general-settings.php:137
+msgid "Redirect to a page"
+msgstr "Chuyển hướng tới trang"
 
-#: admin/pages/wptouch-admin-general-settings.php:152
+#: admin/pages/wptouch-admin-general-settings.php:138
+msgctxt "Refers to a custom landing page"
+msgid "Redirect to a custom URL"
+msgstr "Chuyển hướng đến URL tùy chỉnh"
+
+#: admin/pages/wptouch-admin-general-settings.php:145
 msgid "Custom Slug or URL"
 msgstr "Tùy chỉnh Slug hoặc URL"
 
-#: admin/pages/wptouch-admin-general-settings.php:153
+#: admin/pages/wptouch-admin-general-settings.php:146
 msgid "Enter a Slug (i.e. \"/home\") or a full URL path"
 msgstr "Nhập một Slug (tức là. \"/home\") hoặc một đường dẫn URL đầy đủ"
 
-#: admin/pages/wptouch-admin-general-settings.php:163
+#: admin/pages/wptouch-admin-general-settings.php:156
 msgid "Desktop / Mobile Switching"
 msgstr "Chuyển đổi Máy bàn/ Di động"
 
-#: admin/pages/wptouch-admin-general-settings.php:169
-msgid "1st time visitors see desktop theme"
-msgstr "Những khách truy cập lần đầu thấy chủ đề màn hình chính"
-
-#: admin/pages/wptouch-admin-general-settings.php:170
-msgid "Your regular theme will be shown to 1st time mobile visitors."
-msgstr "Chủ đề quen thuộc của bạn sẽ được hiển thị cho những khách viếng thăm di động lần đầu."
-
-#: admin/pages/wptouch-admin-general-settings.php:177
+#: admin/pages/wptouch-admin-general-settings.php:171
 msgid "Show switch link in mobile view"
 msgstr "Hiện đường dẫn chuyển đổi ở chế độ xem di động"
 
-#: admin/pages/wptouch-admin-general-settings.php:178
+#: admin/pages/wptouch-admin-general-settings.php:172
 msgid "Will show toggle buttons in the theme's footer allowing users to switch to your desktop theme. Is not shown in Web-App Mode."
 msgstr "Sẽ hiển thị các nút toggle trong chân trang chủ đề cho phép người dùng để chuyển sang chủ đề màn hình chính. Không được hiển thị ở chế độ Web-Ứng dụng."
 
-#: admin/pages/wptouch-admin-general-settings.php:185
-msgid "Choose the target for the mobile switch link"
-msgstr "Chọn đích cho đường dẫn chuyển đổi di động"
-
-#: admin/pages/wptouch-admin-general-settings.php:190
-msgid "Current page"
-msgstr "Trang hiện thời"
-
-#: admin/pages/wptouch-admin-general-settings.php:191
-msgid "Home page"
-msgstr "Trang chủ"
-
-#: admin/pages/wptouch-admin-general-settings.php:197
+#: admin/pages/wptouch-admin-general-settings.php:192
 msgid "Desktop theme switch buttons"
 msgstr "Các nút chuyển đổi chủ đề màn hình chính."
 
-#: admin/pages/wptouch-admin-general-settings.php:198
+#: admin/pages/wptouch-admin-general-settings.php:193
 msgid "Allows visitors to switch from your desktop theme to your mobile theme. You can also customize the placement of Switch buttons by placing the wptouch_desktop_switch_link() template tag somewhere in your desktop theme."
 msgstr "Cho phép những người truy cập chuyển từ chủ đề màn hình chính sang chủ đề di động của bạn. Bạn cũng có thể tùy chỉnh vị trí của các nút Chuyển đổi bằng cách đặt tag khuôn mẫu wptouch_desktop_switch_link() ở vị trí nào đó trong chủ đề màn hình chính của bạn."
 
-#: admin/pages/wptouch-admin-general-settings.php:202
+#: admin/pages/wptouch-admin-general-settings.php:197
 msgid "Automatically inserted inline"
 msgstr "Được tự động chèn vào trang"
 
-#: admin/pages/wptouch-admin-general-settings.php:203
-msgid "Automatically inserted with AJAX (better for caching)"
-msgstr "Được tự động chèn bằng AJAX (tốt hơn cho lưu trữ)"
+#: admin/pages/wptouch-admin-general-settings.php:198
+msgid "Automatically inserted with AJAX"
+msgstr "Được tự động chèn bằng AJAX"
 
-#: admin/pages/wptouch-admin-general-settings.php:204
+#: admin/pages/wptouch-admin-general-settings.php:199
 msgid "Template tag"
 msgstr "Tag khuôn mẫu"
 
-#: admin/pages/wptouch-admin-general-settings.php:213
+#: admin/pages/wptouch-admin-general-settings.php:208
 msgid "Custom Code"
 msgstr "Mã Tùy Chỉnh"
 
-#: admin/pages/wptouch-admin-general-settings.php:219
+#: admin/pages/wptouch-admin-general-settings.php:214
 msgid "HTML, JavaScript, statistics or custom code"
 msgstr "HTML, JavaScript, thống kê hoặc mã tùy chọn"
 
-#: admin/pages/wptouch-admin-general-settings.php:220
+#: admin/pages/wptouch-admin-general-settings.php:215
 msgid "Enter any custom code here to be output in the theme footer."
 msgstr "Nhập bất cứ mã tùy chỉnh ở đây để được xuất ra trong chân trang chủ đề."
 
-#: admin/pages/wptouch-admin-general-settings.php:230
+#: admin/pages/wptouch-admin-general-settings.php:226
 msgid "Custom Stylesheet"
 msgstr "Tùy chỉnh kiểu bảng biểu"
 
-#: admin/pages/wptouch-admin-general-settings.php:236
+#: admin/pages/wptouch-admin-general-settings.php:232
 msgid "URL to a custom CSS file to load"
 msgstr "URL đến một tập tin CSS tùy chỉnh để tải"
 
-#: admin/pages/wptouch-admin-general-settings.php:237
+#: admin/pages/wptouch-admin-general-settings.php:233
 msgid "Useful if you have specific compatibility CSS you need to add."
 msgstr "Hữu ích nếu bạn có CSS tương thích cụ thể bạn cần để thêm vào."
 
-#: admin/pages/wptouch-admin-general-settings.php:247
+#: admin/pages/wptouch-admin-general-settings.php:244
 msgid "Shortcodes"
 msgstr "Các mã ngắn"
 
-#: admin/pages/wptouch-admin-general-settings.php:253
+#: admin/pages/wptouch-admin-general-settings.php:250
+msgid "Enable shortcode handling"
+msgstr "Bật tính năng xử lý mã ngắn"
+
+#: admin/pages/wptouch-admin-general-settings.php:251
+msgid "For shortcodes registered by your desktop theme"
+msgstr "Dành cho các mã ngắn được đăng ký bằng chủ đề màn hình chính của bạn"
+
+#: admin/pages/wptouch-admin-general-settings.php:258
+msgid "Shortcode handling"
+msgstr "Xử lý mã ngắn"
+
+#: admin/pages/wptouch-admin-general-settings.php:263
+msgid "Load content as output by desktop theme (you may need to load CSS/JavaScript)"
+msgstr "Tải nội dung dưới dạng đầu ra bằng chủ đề nền chính (bạn có thể cần tải CSS/JavaScript)"
+
+#: admin/pages/wptouch-admin-general-settings.php:264
+msgid "Remove selected shortcodes from content"
+msgstr "Xóa các mã ngắn đã chọn khỏi nội dung"
+
+#: admin/pages/wptouch-admin-general-settings.php:270
 msgid "Remove these shortcodes when WPtouch Pro is active"
 msgstr "Xóa những mã ngắn này khi WPtouch đang hoạt động"
 
-#: admin/pages/wptouch-admin-general-settings.php:254
+#: admin/pages/wptouch-admin-general-settings.php:271
 msgid "Enter a comma separated list of shortcodes to remove."
 msgstr "Nhập danh sách chia tách bằng dấu phẩy của các mã ngắn để xóa."
 
-#: admin/pages/wptouch-admin-general-settings.php:264
+#: admin/pages/wptouch-admin-general-settings.php:281
 msgid "Filter URLs"
 msgstr "Lọc các URL"
 
-#: admin/pages/wptouch-admin-general-settings.php:270
-msgid "Limit the function of WPtouch Pro on specific URLs/Pages"
-msgstr "Hạn chế chức năng của WPtouch Pro trên các URL/Trang cụ thể"
+#: admin/pages/wptouch-admin-general-settings.php:295
+msgid "Load WPtouch Pro for"
+msgstr "Tải WPtouch Pro cho"
 
-#: admin/pages/wptouch-admin-general-settings.php:283
-msgid "Do not load WPtouch Pro on these URLs/pages"
-msgstr "Không tải WPtouch Pro trên các URL/trang này"
+#: admin/pages/wptouch-admin-general-settings.php:300
+msgid "All URLs on my site"
+msgstr "Toàn bộ URL trên trang web của tôi"
 
-#: admin/pages/wptouch-admin-general-settings.php:284
-msgid "Only load WPtouch Pro on these URLs/pages"
-msgstr "Chỉ tải WPtouch Pro trên các URL/trang này"
+#: admin/pages/wptouch-admin-general-settings.php:301
+msgid "All URLs/pages except:"
+msgstr "Tất cả URL/trang web ngoại trừ:"
 
-#: admin/pages/wptouch-admin-general-settings.php:290
+#: admin/pages/wptouch-admin-general-settings.php:302
+msgid "Only these URLs/pages:"
+msgstr "Chỉ các URL/trang web này:"
+
+#: admin/pages/wptouch-admin-general-settings.php:308
 msgid "Apply filter to these URLs/Pages"
 msgstr "Áp dụng bộ lọc cho các URL/trang này"
 
-#: admin/pages/wptouch-admin-general-settings.php:291
+#: admin/pages/wptouch-admin-general-settings.php:309
 #: multi-ads/multi-ads.php:274
 msgid "Each permalink URL fragment should be on its own line and relative, e.g. \"/about\" or \"/products/store\""
 msgstr "Mỗi đoạn của đường dẫn cố định ULR nên ở trên chính dòng của nó và ở vị trí tương đối, ví dụ \"/about\" hoặc \"/products/store\""
 
-#: admin/pages/wptouch-admin-general-settings.php:309
+#: admin/pages/wptouch-admin-general-settings.php:329
 msgid "Desktop Theme"
 msgstr "Màn hình chính"
 
-#: admin/pages/wptouch-admin-general-settings.php:315
+#: admin/pages/wptouch-admin-general-settings.php:335
 msgid "Try to include desktop theme functions.php file"
 msgstr "Thử gộp tập tin các chức năng chủ đề màn hình .php"
 
-#: admin/pages/wptouch-admin-general-settings.php:316
+#: admin/pages/wptouch-admin-general-settings.php:336
 msgid "This may be required for desktop themes with unique features that are not showing when WPtouch Pro is active."
 msgstr "Điều này có thể cần cho các chủ đề màn hình chính với những tính năng độc đáo mà sẽ không được hiển thị khi WPtouch Pro đang hoạt động."
 
-#: admin/pages/wptouch-admin-general-settings.php:323
+#: admin/pages/wptouch-admin-general-settings.php:343
 msgid "Method to load file"
 msgstr "Phương pháp tải tập tin"
 
-#: admin/pages/wptouch-admin-general-settings.php:328
+#: admin/pages/wptouch-admin-general-settings.php:348
 msgid "Include file directly"
 msgstr "Gồm tập tin trực tiếp"
 
-#: admin/pages/wptouch-admin-general-settings.php:329
+#: admin/pages/wptouch-admin-general-settings.php:349
 msgid "Translate and create new files"
 msgstr "Dịch và tạo các tập tin mới"
 
-#: admin/pages/wptouch-admin-general-settings.php:338
+#: admin/pages/wptouch-admin-general-settings.php:359
 msgid "Custom User-Agents"
 msgstr "Tùy chỉnh Người dùng - Đại lý"
 
-#: admin/pages/wptouch-admin-general-settings.php:344
+#: admin/pages/wptouch-admin-general-settings.php:365
 msgid "User-agents (line separated)"
 msgstr "Người dùng-đại lý (tách dòng)"
 
-#: admin/pages/wptouch-admin-general-settings.php:345
+#: admin/pages/wptouch-admin-general-settings.php:366
 msgid "Adding additional user-agents will force WPtouch Pro to be active for matching browsers."
 msgstr "Bổ sung thêm người dùng-đại lý sẽ buộc WPtouch phải hoạt động để khớp các trình duyệt."
 
-#: admin/pages/wptouch-admin-general-settings.php:359
+#: admin/pages/wptouch-admin-general-settings.php:415
 msgid "Backup &amp; Import"
 msgstr "Sao lưu &amp; Nhập"
 
-#: admin/pages/wptouch-admin-general-settings.php:365
+#: admin/pages/wptouch-admin-general-settings.php:421
 msgid "Automatically backup settings to the %s folder"
 msgstr "Tự động sao lưu cài đặt đến thư mục %s"
 
-#: admin/pages/wptouch-admin-general-settings.php:367
+#: admin/pages/wptouch-admin-general-settings.php:423
 msgid "WPtouch Pro backups your settings each time they are saved."
 msgstr "WPtouch Pro sao lưu các cài đặt của bạn mỗi lần chúng được lưu."
 
-#: admin/pages/wptouch-admin-general-settings.php:380
-msgid "Tools &amp; Debug"
-msgstr "Công cụ &amp; Sửa lỗi"
-
-#: admin/pages/wptouch-admin-general-settings.php:386
-msgid "Use jQuery 2.x in themes (faster for mobile devices) instead of WordPress' version"
-msgstr "Sử dụng jQuery 2.x trong các chủ đề (nhanh hơn đối với các thiết bị di động) thay vì phiên bản WordPress"
-
-#: admin/pages/wptouch-admin-general-settings.php:387
-msgid "jQuery 2.x is significantly smaller and faster than previous jQuery versions - may cause problems with other plugins, use carefully."
-msgstr "jQuery 2.x nhỏ gọn và nhanh hơn các phiên bản jQuery trước rất nhiều - có thể gây ra các lỗi với các trình nhúng khác, sử dụng thận trọng."
-
-#: admin/pages/wptouch-admin-general-settings.php:394
-msgid "Show load times and query counts in the footer"
-msgstr "Hiển thị số lần tải và số lần đếm truy vấn ở chân trang"
-
-#: admin/pages/wptouch-admin-general-settings.php:395
-msgid "Helps you find slow pages/posts on your site."
-msgstr "Giúp bạn tìm các trang/băng đăng chậm trên trang của bạn."
-
-#: admin/pages/wptouch-admin-general-settings.php:402
-msgid "Enable debug log"
-msgstr "Bật nhật ký sửa lỗi"
-
-#: admin/pages/wptouch-admin-general-settings.php:403
-msgid "Creates a debug file to help diagnose installation issues."
-msgstr "Tạo tập tin sửa lỗi để giúp chuẩn đoán các lỗi cài đặt."
-
-#: admin/pages/wptouch-admin-general-settings.php:414
+#: admin/pages/wptouch-admin-general-settings.php:436
 msgid "WordPress Plugins"
 msgstr "Các trình nhúng WordPress"
-
-#: admin/pages/wptouch-admin-general-settings.php:427
-msgid "Admin Mode"
-msgstr "Chế độ quản trị"
-
-#: admin/pages/wptouch-admin-general-settings.php:433
-msgid "Admin panel settings shown"
-msgstr "Cài đặt bảng quản trị được hiển thị"
-
-#: admin/pages/wptouch-admin-general-settings.php:438
-msgid "Default"
-msgstr "Mặc định"
-
-#: admin/pages/wptouch-admin-general-settings.php:439
-#: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
-#: admin/settings/html/checklist.php:13
-#: admin/settings/html/custom-latest-posts.php:4
-#: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
-#: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
-#: admin/settings/html/text.php:8 admin/settings/html/textarea.php:9
-msgid "Advanced"
-msgstr "Nâng cao"
 
 #: admin/pages/wptouch-admin-menus.php:3
 msgid "Theme Menus"
 msgstr "Trình đơn chủ đề"
 
 #: admin/pages/wptouch-admin-menus.php:4
-msgid "Menu Setup"
-msgstr "Cài đặt Trình đơn"
+msgid "Menu Icons"
+msgstr "Biểu tượng menu"
 
 #: admin/pages/wptouch-admin-menus.php:5
 msgid "Icon Upload & Sets"
@@ -471,7 +418,7 @@ msgstr "Các trang WordPress"
 
 #: admin/pages/wptouch-admin-menus.php:28
 #: admin/settings/html/icon_menu_area.php:6
-#: infinity-cache/infinity-cache.php:217
+#: infinity-cache/infinity-cache.php:228
 #: themes/foundation/modules/advertising/advertising.php:29
 #: themes/foundation/modules/media/media.php:59
 msgid "None"
@@ -480,14 +427,6 @@ msgstr "Không"
 #: admin/pages/wptouch-admin-menus.php:66
 msgid "Menu Options"
 msgstr "Tùy chọn Trình đơn"
-
-#: admin/pages/wptouch-admin-menus.php:72
-msgid "Enable parent items as links"
-msgstr "Bật các hạng mục cấp trên như các đường dẫn"
-
-#: admin/pages/wptouch-admin-menus.php:73
-msgid "If disabled, parent menu items will only toggle child items."
-msgstr "Nếu đã tắt, các hạng mục trình đơn cấp trên sẽ chỉ đảo các hạng mục con."
 
 #: admin/pages/wptouch-admin-menus.php:80
 msgid "Use menu icons"
@@ -525,6 +464,15 @@ msgstr "Tải xuống tập tin sao lưu"
 #: admin/settings/html/backup.php:2
 msgid "Restore Backup File"
 msgstr "Khôi phục tập tin sao lưu"
+
+#: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
+#: admin/settings/html/checklist.php:13
+#: admin/settings/html/custom-latest-posts.php:4
+#: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
+#: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
+#: admin/settings/html/text.php:8 admin/settings/html/textarea.php:9
+msgid "Advanced"
+msgstr "Nâng cao"
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:7
 #: admin/settings/html/checklist.php:15
@@ -566,7 +514,7 @@ msgid "Upload Icon"
 msgstr "Biểu tượng tải lên"
 
 #: admin/settings/html/custom_icon_upload.php:4
-#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:601
+#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:699
 msgid "Upload Complete!"
 msgstr "Hoàn tất Tải lên!"
 
@@ -678,7 +626,6 @@ msgstr "Cài đặt lại"
 #: classic-redux/default/header-bottom.php:23
 #: classic-redux/default/header-bottom.php:34
 #: classic-redux/default/header-bottom.php:114
-#: hammock/default/header-bottom.php:40
 #: mobilestore/default/header-bottom.php:57 prose/default/header-bottom.php:21
 #: scaffold/default/header-bottom.php:13
 msgid "Menu"
@@ -737,7 +684,7 @@ msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue t
 msgstr "Hướng dẫn %s%s%s hiện không thể ghi được. %sVui lòng sửa lỗi này để bật chế độ cài đặt của các bộ biểu tượng bổ sung."
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:1606 core/class-wptouch-pro.php:1607
+#: core/class-wptouch-pro.php:1730 core/class-wptouch-pro.php:1731
 #: core/config.php:54
 msgid "Custom Icons"
 msgstr "Các biểu tượng tùy chỉnh"
@@ -760,21 +707,16 @@ msgid "Pro"
 msgstr "Pro"
 
 #: admin/settings/html/plugin-compat-ajax.php:11
-#: themes/foundation/modules/custom-posts/custom-posts.php:152
-msgid "Enable %s"
-msgstr "Bật %s"
-
-#: admin/settings/html/plugin-compat-ajax.php:12
-msgid "When unchecked, %s will be disabled for users viewing your WPtouch Pro theme."
-msgstr "Khi chưa được kiểm tra, %s sẽ bị tắt đối với những người dùng đang xem chủ đề WPtouch Pro của bạn."
+msgid "%s"
+msgstr "%s"
 
 #: admin/settings/html/plugin-compat-ajax.php:20
 msgid "No plugins to disable."
 msgstr "Không có trình nhúng để tắt."
 
 #: admin/settings/html/plugin-compat.php:1
-msgid "Choose which plugins to include in your mobile theme"
-msgstr "Chọn các trình nhúng để thêm vào trong chủ đề di động của bạn"
+msgid "Choose which plugins are loaded for mobile requests"
+msgstr "Chọn các trình nhúng được tải cho yêu cầu di động"
 
 #: admin/settings/html/plugin-compat.php:7
 msgid "Your active plugin list is refreshing"
@@ -813,7 +755,7 @@ msgstr "Mua ngay"
 msgid "Copy"
 msgstr "Sao chép"
 
-#: admin/settings/html/theme-browser.php:22
+#: admin/settings/html/theme-browser.php:24
 msgid "Loading Cloud Themes"
 msgstr "Đang tải các chủ đề đám mây"
 
@@ -838,24 +780,24 @@ msgid "Look at Pro Features"
 msgstr "Hãy xem các Tính năng Pro"
 
 #: admin/settings/html/touchboard.php:16
-msgid "Product Support"
-msgstr "Hỗ trợ Sản phẩm"
+msgid "Knowledgebase & Support"
+msgstr "Cơ sở kiến thức & Hỗ trợ"
 
 #: admin/settings/html/touchboard.php:17
-msgid "Product Knowledgebase"
-msgstr "Nền tảng Kiến thức về Sản phẩm"
-
-#: admin/settings/html/touchboard.php:18
-msgid "Manage Account"
-msgstr "Quản lý Tài khoản"
+msgid "Manage Account & License"
+msgstr "Quản lý Tài khoản & Giấy phép"
 
 #: admin/settings/html/touchboard.php:19
-msgid "Manage License"
-msgstr "Quản lý Giấy phép"
-
-#: admin/settings/html/touchboard.php:21
 msgid "WPtouch User Guide"
 msgstr "Hướng dẫn Người dùng WPtouch"
+
+#: admin/settings/html/touchboard.php:21
+msgid "WPtouch on Twitter"
+msgstr "WPtouch trên Twitter"
+
+#: admin/settings/html/touchboard.php:22
+msgid "WPtouch on Facebook"
+msgstr "WPtouch trên Facebook"
 
 #: admin/settings/html/touchboard.php:28
 msgid "WPtouch News"
@@ -865,7 +807,7 @@ msgstr "Tin tức WPtouch"
 msgid "Read More"
 msgstr "Đọc thêm"
 
-#: admin/settings/html/touchboard.php:47
+#: admin/settings/html/touchboard.php:41
 msgid "%s Change Log"
 msgstr "Nhật ký thay đổi của %s"
 
@@ -882,102 +824,101 @@ msgstr "Không (Sử dụng Cài đặt WordPress)"
 msgid "%sAdvanced Type for WPtouch Pro%s requires %s to be enabled on your server in order to load web fonts. Please contact your server administrator or web host to enable this function."
 msgstr "%sKiểu Nâng cao dành cho WPtouch Pro%s cần %s được kích hoạt trên máy chủ của bạn để tải phông chữ của web. Hãy liên hệ quản trị viên máy chủ hoặc máy chủ trang web của bạn để kích hoạt chức năng này."
 
-#: advanced-type/advanced-type.php:80
+#: advanced-type/advanced-type.php:84
 msgid "Load Fonts"
 msgstr "Tải phông chữ"
 
-#: advanced-type/advanced-type.php:81
+#: advanced-type/advanced-type.php:85
 msgid "Could not load your fonts. Please check project/kit details and reload."
 msgstr "Không thể tải phông chữ của bạn. Hãy kiểm trang chi tiết dự án/bộ kit và tải lại."
 
-#: advanced-type/advanced-type.php:231 advanced-type/advanced-type.php:252
+#: advanced-type/advanced-type.php:235 advanced-type/advanced-type.php:256
 msgid "Font Source"
 msgstr "Nguồn phông chữ"
 
-#: advanced-type/advanced-type.php:237 advanced-type/advanced-type.php:258
+#: advanced-type/advanced-type.php:241 advanced-type/advanced-type.php:262
 msgid "Select the source for your web fonts"
 msgstr "Chọn nguồn cho các phông chữ trên trang web của bạn"
 
-#: advanced-type/advanced-type.php:238
+#: advanced-type/advanced-type.php:242
 msgid "Other options will become available once allow_url_fopen is enabled"
 msgstr "Các tùy chọn khác sẽ trở nên khả dụng khi đã kích hoạt allow_url_fopen"
 
-#: advanced-type/advanced-type.php:242 advanced-type/advanced-type.php:263
+#: advanced-type/advanced-type.php:246 advanced-type/advanced-type.php:267
 msgid "Theme Font Pairings (Configure in Theme Settings)"
 msgstr "Các cặp phông chữ chủ đề (Tạo cấu hình trong Cài đặt Chủ đề)"
 
-#: advanced-type/advanced-type.php:264
+#: advanced-type/advanced-type.php:268
 msgid "Custom Google Fonts"
 msgstr "Tùy chỉnh phông chữ của Google"
 
-#: advanced-type/advanced-type.php:275
+#: advanced-type/advanced-type.php:279
 msgid "Kit ID"
 msgstr "ID bộ"
 
-#: advanced-type/advanced-type.php:293
+#: advanced-type/advanced-type.php:297
 msgid "Domain"
 msgstr "Miền"
 
-#: advanced-type/advanced-type.php:311
+#: advanced-type/advanced-type.php:315
 msgid "Project"
 msgstr "Dự án"
 
-#: advanced-type/advanced-type.php:367
+#: advanced-type/advanced-type.php:371
 msgid "Latin (Default)"
 msgstr "Latin (Mặc định)"
 
-#: advanced-type/advanced-type.php:368
+#: advanced-type/advanced-type.php:372
 msgid "Latin Extended"
 msgstr "Latin Mở rộng"
 
-#: advanced-type/advanced-type.php:369
+#: advanced-type/advanced-type.php:373
 msgid "Cyrillic"
 msgstr "Bảng chữ cái Kirin"
 
-#: advanced-type/advanced-type.php:370
+#: advanced-type/advanced-type.php:374
 msgid "Cyrillic Extended"
 msgstr "Bảng chữ cái Kirin mở rộng"
 
-#: advanced-type/advanced-type.php:371
+#: advanced-type/advanced-type.php:375
 msgid "Greek"
 msgstr "Tiếng Hy Lạp"
 
-#: advanced-type/advanced-type.php:372
+#: advanced-type/advanced-type.php:376
 msgid "Greek Extended"
 msgstr "Tiếng Hy Lạp mở rộng"
 
-#: advanced-type/advanced-type.php:373
-msgid "Devangari"
-msgstr "Devangari"
+#: advanced-type/advanced-type.php:377
+msgid "Devanagari"
+msgstr "Devanagari"
 
-#: advanced-type/advanced-type.php:374
+#: advanced-type/advanced-type.php:378
 msgid "Vietnamese"
 msgstr "Tiếng Việt"
 
-#: advanced-type/advanced-type.php:378
+#: advanced-type/advanced-type.php:382
 msgid "Heading"
 msgstr "Tiêu đề"
 
-#: advanced-type/advanced-type.php:379
+#: advanced-type/advanced-type.php:383
 msgid "Body"
 msgstr "Thân bài"
 
-#: advanced-type/advanced-type.php:380
+#: advanced-type/advanced-type.php:384
 msgid "Meta"
 msgstr "Meta"
 
-#: advanced-type/advanced-type.php:405
+#: advanced-type/advanced-type.php:409
 msgid "Load subsets"
 msgstr "Tải các tập hợp con"
 
-#: advanced-type/advanced-type.php:415
+#: advanced-type/advanced-type.php:419
 msgid "Font Selection"
 msgstr "Chọn Phông chữ"
 
 #: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
 #: classic-redux/default/header-bottom.php:55
-#: hammock/default/header-bottom.php:82 scaffold/default/header-bottom.php:35
-#: simple/default/header-bottom.php:26
+#: scaffold/default/header-bottom.php:35 simple/default/header-bottom.php:26
 msgid "Logout"
 msgstr "Đăng xuất"
 
@@ -989,8 +930,8 @@ msgstr "Tìm kiếm trang web này"
 
 #: bauhaus/default/header-bottom.php:49 bio/default/header-bottom.php:14
 #: bio/default/header-bottom.php:25 classic-redux/default/header-bottom.php:48
-#: classic-redux/default/header-bottom.php:80
-#: mobilestore/default/header-bottom.php:84
+#: classic-redux/default/header-bottom.php:80 cms/root-functions.php:233
+#: mobilestore/default/header-bottom.php:83
 #: scaffold/default/header-bottom.php:14 scaffold/default/header-bottom.php:25
 msgid "Search"
 msgstr "Tìm kiếm"
@@ -1060,12 +1001,11 @@ msgid "Header Menu"
 msgstr "Trình đơn Đầu trang"
 
 #: bauhaus/root-functions.php:127 bio/root-functions.php:89
-#: classic-redux/root-functions.php:100 cms/root-functions.php:125
-#: cms/root-functions.php:134 hammock/root-functions.php:168
-#: mobilestore/root-functions.php:195 mobilestore/root-functions.php:207
-#: open/root-functions.php:353 prose/root-functions.php:207
-#: scaffold/root-functions.php:77 simple/root-functions.php:61
-#: simple/root-functions.php:72
+#: classic-redux/root-functions.php:100 cms/root-functions.php:127
+#: cms/root-functions.php:136 mobilestore/root-functions.php:246
+#: mobilestore/root-functions.php:258 open/root-functions.php:353
+#: prose/root-functions.php:207 scaffold/root-functions.php:77
+#: simple/root-functions.php:61 simple/root-functions.php:72
 msgid "Choose a menu"
 msgstr "Chọn một trình đơn"
 
@@ -1074,10 +1014,9 @@ msgid "Main menu selection"
 msgstr "Lựa chọn trình đơn chính"
 
 #: bauhaus/root-functions.php:135 bio/root-functions.php:97
-#: classic-redux/root-functions.php:108 cms/root-functions.php:141
-#: hammock/root-functions.php:176 open/root-functions.php:361
-#: prose/root-functions.php:215 scaffold/root-functions.php:85
-#: simple/root-functions.php:80
+#: classic-redux/root-functions.php:108 cms/root-functions.php:143
+#: open/root-functions.php:361 prose/root-functions.php:215
+#: scaffold/root-functions.php:85 simple/root-functions.php:80
 msgid "Theme background"
 msgstr "Nền chủ đề"
 
@@ -1086,10 +1025,10 @@ msgid "Header & Menu"
 msgstr "Đầu trang & Trình đơn"
 
 #: bauhaus/root-functions.php:137 bio/root-functions.php:98
-#: classic-redux/root-functions.php:109 cms/root-functions.php:142
-#: hammock/root-functions.php:178 mobilestore/root-functions.php:239
-#: open/root-functions.php:362 prose/root-functions.php:217
-#: scaffold/root-functions.php:86 simple/root-functions.php:81
+#: classic-redux/root-functions.php:109 cms/root-functions.php:144
+#: mobilestore/root-functions.php:290 open/root-functions.php:362
+#: prose/root-functions.php:217 scaffold/root-functions.php:86
+#: simple/root-functions.php:81
 msgid "Links"
 msgstr "Đường dẫn"
 
@@ -1216,14 +1155,14 @@ msgstr "Thêm khả năng Tìm kiếm ở đầu trang web."
 msgid "Use infinite scrolling for blog"
 msgstr "Sử dụng chức năng cuộn vô hạn dành cho blog"
 
-#: bio/root-functions.php:87 hammock/root-functions.php:166
-#: mobilestore/root-functions.php:193 open/root-functions.php:351
-#: prose/root-functions.php:205 scaffold/root-functions.php:75
+#: bio/root-functions.php:87 mobilestore/root-functions.php:244
+#: open/root-functions.php:351 prose/root-functions.php:205
+#: scaffold/root-functions.php:75
 msgid "Primary Menu"
 msgstr "Trình đơn chính"
 
-#: bio/root-functions.php:90 hammock/root-functions.php:169
-#: open/root-functions.php:354 scaffold/root-functions.php:78
+#: bio/root-functions.php:90 open/root-functions.php:354
+#: scaffold/root-functions.php:78
 msgid "Menus are awesome!"
 msgstr "Các trình đơn thật là tuyệt vời!"
 
@@ -1233,8 +1172,6 @@ msgid "Tweets"
 msgstr "Tweets"
 
 #: classic-redux/default/header-bottom.php:53
-#: hammock/default/header-bottom.php:80
-#: mobilestore/default/woocommerce/shop/form-login.php:31
 #: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:24
 #: themes/foundation/modules/login/login-html.php:20
 msgid "Login"
@@ -1244,12 +1181,12 @@ msgstr "Đăng nhập"
 msgid "Follow %s on Twitter"
 msgstr "Theo dõi %s trên Twitter"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:67
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "newer posts"
 msgstr "các bài đăng mới hơn"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:59
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "older posts"
 msgstr "các bài đăng cũ hơn"
@@ -1286,10 +1223,11 @@ msgid "Written by %s"
 msgstr "Được viết bởi %s"
 
 #: classic-redux/root-functions.php:6 classic-redux/root-functions.php:363
+#: mobilestore/root-functions.php:7 mobilestore/root-functions.php:539
 msgid "Tablets"
 msgstr "Máy tính bảng"
 
-#: classic-redux/root-functions.php:107 cms/root-functions.php:140
+#: classic-redux/root-functions.php:107 cms/root-functions.php:142
 #: open/root-functions.php:360 simple/root-functions.php:79
 msgid "Header background"
 msgstr "Nền phụ đầu trang"
@@ -1306,7 +1244,7 @@ msgstr "Sử dụng các góc tròn"
 msgid "Show page title areas on pages"
 msgstr "Hiển thị các vùng tiêu đề trang trên các trang"
 
-#: classic-redux/root-functions.php:369
+#: classic-redux/root-functions.php:369 mobilestore/root-functions.php:545
 msgid "Add tablet support"
 msgstr "Thêm hỗ trợ máy tính bảng"
 
@@ -1346,16 +1284,16 @@ msgstr "Không có các danh mục hoặc tag"
 msgid "Max categories / tags"
 msgstr "Danh mục/tag tối đa"
 
-#: classic-redux/root-functions.php:435 cms/root-functions.php:268
+#: classic-redux/root-functions.php:435 cms/root-functions.php:289
 #: simple/root-functions.php:281
 msgid "CSS Effects"
 msgstr "Các hiệu ứng CSS"
 
-#: classic-redux/root-functions.php:441 cms/root-functions.php:274
+#: classic-redux/root-functions.php:441 cms/root-functions.php:295
 msgid "Add a noise effect to the header and theme background"
 msgstr "Thêm hiệu ứng nhiễu vào đầu trang và nền chủ đề"
 
-#: classic-redux/root-functions.php:442 cms/root-functions.php:275
+#: classic-redux/root-functions.php:442 cms/root-functions.php:296
 #: simple/root-functions.php:288
 msgid "Will apply the effect overtop of any background image you upload."
 msgstr "Sẽ áp dụng hiệu ứng vào phần trên cùng của bất cứ ảnh nền nào mà bạn tải lên."
@@ -1364,19 +1302,19 @@ msgstr "Sẽ áp dụng hiệu ứng vào phần trên cùng của bất cứ �
 msgid "menu"
 msgstr "trình đơn"
 
-#: cms/default/header-bottom.php:24
+#: cms/default/header-bottom.php:26
 msgid "login"
 msgstr "đăng nhập"
 
-#: cms/default/header-bottom.php:28
+#: cms/default/header-bottom.php:30
 msgid "logout"
 msgstr "đăng xuất"
 
-#: cms/default/header-bottom.php:41 simple/default/footer-top.php:3
+#: cms/default/header-bottom.php:44 simple/default/footer-top.php:3
 msgid "search this website"
 msgstr "tìm kiếm trang web này"
 
-#: cms/default/header-bottom.php:42 simple/default/footer-top.php:5
+#: cms/default/header-bottom.php:45 simple/default/footer-top.php:5
 msgid "search"
 msgstr "tìm kiếm"
 
@@ -1384,63 +1322,67 @@ msgstr "tìm kiếm"
 msgid "By"
 msgstr "Bởi"
 
-#: cms/root-functions.php:51
+#: cms/root-functions.php:54
 msgid "Alt Menu"
 msgstr "Trình đơn Alt"
 
-#: cms/root-functions.php:123
+#: cms/root-functions.php:125
 msgid "Main Menu"
 msgstr "Trình đơn Chính"
 
-#: cms/root-functions.php:132
+#: cms/root-functions.php:134
 msgid "Alternate Menu"
 msgstr "Trình đơn thay thế"
 
-#: cms/root-functions.php:180
+#: cms/root-functions.php:182
 msgid "Show featured images on single posts"
 msgstr "Hiển thị các ảnh đặc trưng trên các bài đăng đơn lẻ"
 
-#: cms/root-functions.php:197
+#: cms/root-functions.php:199
 msgid "Show titles on pages"
 msgstr "Hiển thị các tiêu đề trên các trang"
 
-#: cms/root-functions.php:212
+#: cms/root-functions.php:214
 msgid "Category Slider"
 msgstr "Thanh trượt danh mục"
 
-#: cms/root-functions.php:218
+#: cms/root-functions.php:220
 msgid "Enable category slider"
 msgstr "Bật thanh trượt danh mục"
 
-#: cms/root-functions.php:231 simple/root-functions.php:262
+#: cms/root-functions.php:239
+msgid "Enable search"
+msgstr "Bật chế độ tìm kiếm"
+
+#: cms/root-functions.php:252 simple/root-functions.php:262
 msgid "Tiled Background Image"
 msgstr "Ảnh nền đã được đặt tiêu đề"
 
-#: cms/root-functions.php:237 simple/root-functions.php:268
+#: cms/root-functions.php:258 simple/root-functions.php:268
 msgid "(Scaled for retina displays)"
 msgstr "(Đã chia tỷ lệ cho màn hình retina)"
 
-#: cms/root-functions.php:249
+#: cms/root-functions.php:270
 msgid "Alternate Menu Title"
 msgstr "Tiêu đề Trình đơn Xen kẽ"
 
-#: cms/root-functions.php:255
+#: cms/root-functions.php:276
 msgid "Alternate menu title (if used)"
 msgstr "Tiêu đề trình đơn xen kẽ (nếu sử dụng)"
 
-#: cms/root-functions.php:256
+#: cms/root-functions.php:277
 msgid "If you use a second menu in CMS, this text will be used for the drop-down button title."
 msgstr "Nếu bạn đang sử dụng trình đơn phụ trong CMS, văn bản này sẽ được sử dụng cho tiêu đề nút thả xuống."
 
-#: cms/root-functions.php:286
+#: cms/root-functions.php:307
 msgid "Static Front Page"
 msgstr "Trang Trước Tĩnh"
 
-#: cms/root-functions.php:292
+#: cms/root-functions.php:313
 msgid "Static front page alternate content"
 msgstr "Nội dung xen kẽ trang trước tĩnh"
 
-#: cms/root-functions.php:293
+#: cms/root-functions.php:314
 msgid "Shows after the featured slider (if enabled), and replaces your Static Front Page content. HTML allowed."
 msgstr "Hiển thị sau thanh trượt tính năng (nếu được bật), và thay thế nội dung Trang Trước Tĩnh. Cho phép HTML."
 
@@ -1504,100 +1446,100 @@ msgstr "Nâng cấp lên Pro"
 msgid "Mobile Page Template"
 msgstr "Mẫu Trang Di Động"
 
-#: core/admin-render.php:25
+#: core/admin-render.php:30
 msgid "Your WPtouch Pro license has expired. Renew now at a discount to continue receiving product updates and support."
 msgstr "Giấy phép WPtouch Pro của bạn vừa hết hạn. Gia hạn ngay với giá chiết khấu để tiếp tục nhận được các bản cập nhật và sự hỗ trợ về sản phẩm."
 
-#: core/admin-render.php:26
+#: core/admin-render.php:31
 msgid "Renew Now"
 msgstr "Gia hạn ngay"
 
-#: core/admin-render.php:33
+#: core/admin-render.php:38
 msgid "This copy of %s is currently unlicensed!"
 msgstr "Hiện bạn sao của %s chưa được cấp phép!"
 
-#: core/admin-render.php:35
+#: core/admin-render.php:40
 msgid "Add a license %s"
 msgstr "Thêm giấy phép %s"
 
-#: core/admin-render.php:90
+#: core/admin-render.php:105
 msgid "Save Changes"
 msgstr "Lưu các thay đổi"
 
-#: core/admin-render.php:91
+#: core/admin-render.php:106
 msgid "Preview Theme"
 msgstr "Xem trước chủ đề"
 
-#: core/admin-render.php:92
+#: core/admin-render.php:107
 msgid "Reset Settings"
 msgstr "Đặt Lại Cài Đặt"
 
-#: core/class-wptouch-pro.php:354
+#: core/class-wptouch-pro.php:452
 msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
 msgstr "Việc di trú chủ đề tự động từ đường dẫn các tập tin tải lên/wptouch-dữ liệu đã thất bại. Hãy di chuyển những tập tin này bằng tay đến wp-nội dung/wptouch-dữ liệu hoặc %shỗ trợ liên lạc%s để thông báo lỗi này."
 
-#: core/class-wptouch-pro.php:374
+#: core/class-wptouch-pro.php:472
 msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
 msgstr "Chúng tôi không thể cài đặt chủ đề WPtouch của bạn từ Đám mây. Vui lòng truy cập %sbài báo này%s để biết thông tin chi tiết."
 
-#: core/class-wptouch-pro.php:378
+#: core/class-wptouch-pro.php:476
 msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
 msgstr "Cài đặt máy chủ của bạn đang ngăn chặn WPtouch cài đặt chủ đề hiệu lực của bạn từ Đám mây. Vui lòng truy cập %sbài viết này%s để biết thông tin chi tiết về cách thức khắc phục nó."
 
-#: core/class-wptouch-pro.php:593
+#: core/class-wptouch-pro.php:691
 msgid "Unsupported Browser"
 msgstr "Trình duyệt không được hỗ trợ"
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:692
 msgid "Theme Preview requires Chrome or Safari."
 msgstr "Chế độ Xem trước chủ đề yêu cầu sử dụng trình duyệt Chrome hoặc Safari."
 
-#: core/class-wptouch-pro.php:595
+#: core/class-wptouch-pro.php:693
 msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
 msgstr "Việc này sẽ đặt lại tất cả cài đặt WPtouch Pro.\nBạn chắc chứ?"
 
-#: core/class-wptouch-pro.php:596
+#: core/class-wptouch-pro.php:694
 msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
 msgstr "Việc này sẽ đặt lại mọi trình đơn và cài đặt biểu tượng của WPtouch Pro.\nBạn chắc chứ?"
 
-#: core/class-wptouch-pro.php:597
+#: core/class-wptouch-pro.php:695
 msgid "Offline"
 msgstr "Ngoại tuyến"
 
-#: core/class-wptouch-pro.php:598
+#: core/class-wptouch-pro.php:696
 msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
 msgstr "Bạn có vẻ đã ngoại tuyến. Kết nối với Internet để xem các hạng mục BraveNewCloud có sẵn."
 
-#: core/class-wptouch-pro.php:599
+#: core/class-wptouch-pro.php:697
 msgid "The item failed to download for this reason: %reason%"
 msgstr "Không thể tải xuống hạng mục này vì lý do này: %reason%"
 
-#: core/class-wptouch-pro.php:600
+#: core/class-wptouch-pro.php:698
 msgid "You are about to reset your license information. Proceed?"
 msgstr "Bạn đang định cài đặt lại thông tin giấy phép của mình. Tiếp tục?"
 
-#: core/class-wptouch-pro.php:602
+#: core/class-wptouch-pro.php:700
 msgid "Upload Failed: Not a valid image."
 msgstr "Tải lên thất bại: Không phải ảnh hợp lệ."
 
-#: core/class-wptouch-pro.php:603
+#: core/class-wptouch-pro.php:701
 msgid "Click to view theme demo"
 msgstr "Bấm để xem bản mẫu chủ đề"
 
-#: core/class-wptouch-pro.php:1177
-#: themes/foundation/modules/webapp/webapp.php:12
+#: core/class-wptouch-pro.php:1301
+#: themes/foundation/modules/webapp/webapp.php:34
 msgid "Settings"
 msgstr "Thiết lập"
 
-#: core/class-wptouch-pro.php:1213
+#: core/class-wptouch-pro.php:1337
 msgid "%s Changelog"
 msgstr "%s Nhật ký thay đổi"
 
-#: core/class-wptouch-pro.php:2405
+#: core/class-wptouch-pro.php:2532
 msgid "Directory Problem"
 msgstr "Lỗi Đường Dẫn"
 
-#: core/class-wptouch-pro.php:2406
+#: core/class-wptouch-pro.php:2533
 msgid "One or more required directories could not be created"
 msgstr "Không thể tạo một hoặc nhiều các đường dẫn theo yêu cầu"
 
@@ -1608,6 +1550,10 @@ msgstr "điện thoại thông minh"
 #: core/globals.php:199
 msgid "tablet"
 msgstr "máy tính bảng"
+
+#: core/menu-walkers.php:288
+msgid "Feed for all posts filed under %s"
+msgstr "Nguồn cấp cho tất cả bài đăng được sắp xếp trong %s"
 
 #: core/notifications.php:124
 msgid "Preview Mode Enabled"
@@ -1650,52 +1596,6 @@ msgstr "Trình nhúng này có thể không hoạt động đúng cách trong WP
 msgid "Icon Installation Issue"
 msgstr "Lỗi Cài đặt Biểu tượng"
 
-#: hammock/default/functions.php:10 prose/default/functions.php:33
-msgid "Load more from this collection"
-msgstr "Tải thêm cho bộ sưu tập này"
-
-#: hammock/default/header-bottom.php:38 prose/default/header-bottom.php:19
-msgid "Collections"
-msgstr "Bộ sưu tập"
-
-#: hammock/default/header-bottom.php:41 prose/default/header-bottom.php:22
-msgid "Options"
-msgstr "Tùy chọn"
-
-#: hammock/root-functions.php:61 prose/root-functions.php:76
-msgid "Show categories as \"collections\" in menu"
-msgstr "Hiển thị các danh mục như \"Bộ sưu tập\" trong trình đơn"
-
-#: hammock/root-functions.php:72 prose/root-functions.php:98
-msgid "Maximum number of items in categories/collections"
-msgstr "Số lượng tốt đa các mục trong danh mục/bộ sưu tập"
-
-#: hammock/root-functions.php:88
-msgid "Animate the featured image on posts"
-msgstr "Tạo hiệu ứng cho ảnh đặc sắc trên các bài đăng"
-
-#: hammock/root-functions.php:102 open/root-functions.php:119
-#: prose/root-functions.php:117
-msgid "Header Image"
-msgstr "Ảnh Đầu trang"
-
-#: hammock/root-functions.php:108 prose/root-functions.php:123
-msgid "Displayed behind header on pages and posts without featured images."
-msgstr "Được hiển thị phía sau đầu trang trên các trang và bài đăng mà không có ảnh đặc sắc."
-
-#: hammock/root-functions.php:121 prose/root-functions.php:136
-msgid "Site Intro"
-msgstr "Giới thiệu trang web"
-
-#: hammock/root-functions.php:127 prose/root-functions.php:142
-msgid "Displayed on post listing page below site name."
-msgstr "Được hiển thị trên trang liệt kê bài đăng phía sau tên trang web."
-
-#: hammock/root-functions.php:177 prose/root-functions.php:216
-#: themes/foundation/root-functions.php:11
-msgid "Branding"
-msgstr "Nhãn hiệu"
-
 #: include/add-ons/wordtwit-pro.php:179
 #: themes/foundation/modules/twitter/twitter.php:42
 msgid "%d second ago"
@@ -1732,11 +1632,7 @@ msgstr "Phiên bản máy để bàn"
 msgid "Switch To Mobile Version"
 msgstr "Chuyển đổi thành phiên bản di động"
 
-#: include/html/footer.php:8
-msgid "Powered by %s%s%s"
-msgstr "Hỗ trợ bởi %s%s%s"
-
-#: include/html/footer.php:10
+#: include/html/footer.php:7
 msgid "Powered by<br/>%s%s%s"
 msgstr "Được hỗ trợ bởi <br/>%s%s%s"
 
@@ -1748,169 +1644,181 @@ msgstr "%d truy vấn trong %0.1f phút"
 msgid "Default Template"
 msgstr "Mẫu Trang Mặc Định"
 
-#: infinity-cache/infinity-cache.php:66 infinity-cache/infinity-cache.php:241
+#: infinity-cache/infinity-cache.php:70 infinity-cache/infinity-cache.php:252
 msgid "Purge Page Cache"
 msgstr "Cache Trang Dọn Dẹp"
 
-#: infinity-cache/infinity-cache.php:134
+#: infinity-cache/infinity-cache.php:145
 msgid "Enable Infinity Cache"
 msgstr "Bật Cache vô hạn"
 
-#: infinity-cache/infinity-cache.php:142
+#: infinity-cache/infinity-cache.php:153
 msgid "Create cache for desktop users"
 msgstr "Tạo cache cho người dùng máy tính để bàn"
 
-#: infinity-cache/infinity-cache.php:143
+#: infinity-cache/infinity-cache.php:154
 msgid "If you are using another cache plugin such as W3, you can disable this."
 msgstr "Nếu bạn đang sử dụng trình nhúng cache khác như W3, bạn có thể tắt chức năng này."
 
-#: infinity-cache/infinity-cache.php:164
+#: infinity-cache/infinity-cache.php:175
 msgid "Compress output using GZIP"
 msgstr "Nén đầu ra bằng GZIP"
 
-#: infinity-cache/infinity-cache.php:174
+#: infinity-cache/infinity-cache.php:185
 msgid "Maximum age of cached content"
 msgstr "Tuổi thọ tối đa của nội dung cache"
 
-#: infinity-cache/infinity-cache.php:175
+#: infinity-cache/infinity-cache.php:186
 msgid "Each cached page will automatically be regenerated after this period elapses"
 msgstr "Mỗi trang được lưu trên cache sẽ được sinh ra tự động sau khi khoảng thời gian này kết thúc"
 
-#: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
-#: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
-#: infinity-cache/infinity-cache.php:183
+#: infinity-cache/infinity-cache.php:190 infinity-cache/infinity-cache.php:191
+#: infinity-cache/infinity-cache.php:192 infinity-cache/infinity-cache.php:193
+#: infinity-cache/infinity-cache.php:194
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d giờ"
 msgstr[1] "%d giờ"
 
-#: infinity-cache/infinity-cache.php:190
+#: infinity-cache/infinity-cache.php:201
 msgid "Remove stale cache file interval"
 msgstr "Xóa khoảng tập tin cache cũ"
 
-#: infinity-cache/infinity-cache.php:195
+#: infinity-cache/infinity-cache.php:206
 msgid "Hourly"
 msgstr "Hàng giờ"
 
-#: infinity-cache/infinity-cache.php:196
+#: infinity-cache/infinity-cache.php:207
 msgid "Daily"
 msgstr "Hàng ngày"
 
-#: infinity-cache/infinity-cache.php:203
+#: infinity-cache/infinity-cache.php:214
 msgid "Disable caching for any of these matched URL fragments"
 msgstr "Tắt lưu trữ cache đối với bất cứ phân đoạn URL trùng khớp này"
 
-#: infinity-cache/infinity-cache.php:204
+#: infinity-cache/infinity-cache.php:215
 msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
 msgstr "Thêm một phân đoạn URL trên dòng, tức là %s, đến các trang cache không chứa mỗi phân đoạn URL"
 
-#: infinity-cache/infinity-cache.php:212
+#: infinity-cache/infinity-cache.php:223
 msgid "Content Distribution Network Service"
 msgstr "Dịch vụ Mạng Phân phối Nội dung"
 
-#: infinity-cache/infinity-cache.php:213
+#: infinity-cache/infinity-cache.php:224
 msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
 msgstr "Sử dụng mạng phân phối nội dung (CDN) có thể tăng cường mạnh mẽ sự phản hồi của trang web của bạn."
 
-#: infinity-cache/infinity-cache.php:218
+#: infinity-cache/infinity-cache.php:229
 #: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr "Đăng ký"
 
-#: infinity-cache/infinity-cache.php:226
+#: infinity-cache/infinity-cache.php:237
 msgid "URL %d"
 msgstr "URL %d"
 
-#: infinity-cache/infinity-cache.php:227
+#: infinity-cache/infinity-cache.php:238
 msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
 msgstr "Thêm các URL bạn vừa cấp hình cho CDN của bạn, ví dụ http://cdn%d.mysite.com. Thêm tên miền cho đa trang web của bạn."
 
-#: infinity-cache/infinity-cache.php:249
+#: infinity-cache/infinity-cache.php:260
 msgid "Infinity Cache"
 msgstr "Cache vô hạn"
 
-#: infinity-cache/infinity-cache.php:636
+#: infinity-cache/infinity-cache.php:651
 msgid "An example for this URL is: %s%s%s."
 msgstr "Một ví dụ cho URL này là: %s%s%s."
 
-#: mobile-content/mobile-content.php:20
+#: mobile-content/mobile-content.php:25
 msgid "WPtouch Alternate Mobile Content"
 msgstr "Nội dung Di động Thay thế của WPtouch"
 
-#: mobile-content/mobile-content.php:38
-msgid "Mobile Content"
-msgstr "Nội dung Di động"
-
-#: mobile-content/mobile-content.php:44
+#: mobile-content/mobile-content.php:50
 msgid "Enable mobile content display"
 msgstr "Bật chế độ hiển thị nội dung di động"
 
-#: mobilestore/default/functions.php:121
+#: mobile-content/mobile-content.php:58
+msgid "Mobile Content"
+msgstr "Nội dung Di động"
+
+#: mobilestore/default/functions.php:127
 #: mobilestore/default/woocommerce/checkout/form-login.php:16
 msgid "Login now"
 msgstr "Đăng nhập ngay"
 
-#: mobilestore/default/functions.php:122
+#: mobilestore/default/functions.php:128
 msgid "Close"
 msgstr "Đóng"
 
-#: mobilestore/default/functions.php:123
+#: mobilestore/default/functions.php:129
 msgid "Add Company Name"
 msgstr "Thêm tên công ty"
 
-#: mobilestore/default/functions.php:124
+#: mobilestore/default/functions.php:130
 msgid "Add Order Notes"
 msgstr "Thêm ghi chú đơn hàng"
 
-#: mobilestore/default/functions.php:125
+#: mobilestore/default/functions.php:131
 msgid "CVC"
 msgstr "CVC"
 
-#: mobilestore/default/functions.php:186
+#: mobilestore/default/functions.php:192
 msgid "view more products"
 msgstr "xem thêm sản phẩm"
 
-#: mobilestore/default/functions.php:204
+#: mobilestore/default/functions.php:210
 msgid "Added to cart"
 msgstr "Đã thêm vào giỏ hàng"
 
-#: mobilestore/default/header-bottom.php:9
+#: mobilestore/default/functions.php:389
+msgid "More"
+msgstr "Xem thêm"
+
+#: mobilestore/default/header-bottom.php:10
 msgid "Product Categories"
 msgstr "Danh mục sản phẩm"
 
-#: mobilestore/default/header-bottom.php:15
+#: mobilestore/default/header-bottom.php:16
 msgid "Recently Viewed"
 msgstr "Đã xem gần đây"
 
-#: mobilestore/default/header-bottom.php:20
+#: mobilestore/default/header-bottom.php:21
 msgid "Site Menu"
 msgstr "Trình đơn trang"
 
-#: mobilestore/default/header-bottom.php:72
+#: mobilestore/default/header-bottom.php:71
 msgid "Cart"
 msgstr "Giỏ hàng"
 
-#: mobilestore/default/header-bottom.php:82
+#: mobilestore/default/header-bottom.php:81
 msgid "Search the store"
 msgstr "Tìm kiếm gian hàng"
 
-#: mobilestore/default/header-bottom.php:87
+#: mobilestore/default/header-bottom.php:86
 msgid "Recent Searches"
 msgstr "Tìm kiếm gần đây"
 
-#: mobilestore/default/header-bottom.php:87
+#: mobilestore/default/header-bottom.php:86
 msgid "Clear"
 msgstr "Xóa"
 
-#: mobilestore/default/header-bottom.php:104
+#: mobilestore/default/header-bottom.php:134
+msgid "Most Popular Products"
+msgstr "Sản phẩm phổ biến nhất"
+
+#: mobilestore/default/header-bottom.php:147
+msgid "%s: Most Popular"
+msgstr "%s: Phổ biến nhất"
+
+#: mobilestore/default/header-bottom.php:168
 msgid "Back to blog index"
 msgstr "Trở về mục lục blog"
 
-#: mobilestore/default/header-bottom.php:118
+#: mobilestore/default/header-bottom.php:180
 msgid "sorting"
 msgstr "sắp xếp"
 
-#: mobilestore/default/header-bottom.php:119
+#: mobilestore/default/header-bottom.php:181
 msgid "filter by"
 msgstr "lọc theo"
 
@@ -1938,7 +1846,6 @@ msgid "Please continue to the checkout and enter your full address to see if the
 msgstr "Vui lòng tiếp tục việc thanh toán và nhập địa chỉ đầy đủ của bạn để xem có sẵn phương thức vận chuyển nào không."
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:82
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:68
 msgid "Please fill in your details to see available shipping methods."
 msgstr "Vui lòng nhập thông tin chi tiết của bạn để xem các phương thức vận chuyển có sẵn."
 
@@ -1948,23 +1855,19 @@ msgid "There doesn&lsquo;t seem to be any available shipping methods. Please dou
 msgstr "Có vẻ như không có sẵn bất cứ phương thức vận chuyển nào. Vui lòng kiểm tra kỹ địa chỉ của bạn, hoặc liên hệ với chúng tôi nếu bạn cần bất cứ sự trợ giúp nào."
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:112
-#: mobilestore/default/woocommerce/cart/totals.php:46
 msgid "Shipping"
 msgstr "Vận chuyển"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:19
-#: mobilestore/default/woocommerce/cart/totals.php:28
-#: mobilestore/default/woocommerce/checkout/review-order.php:25
+#: mobilestore/default/woocommerce/checkout/review-order.php:68
 msgid "Cart Subtotal"
 msgstr "Tổng từng phần của giỏ hàng"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:66
-#: mobilestore/default/woocommerce/cart/totals.php:121
 msgid " (taxes estimated for %s)"
 msgstr "(thuế tạm tính cho %s)"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:69
-#: mobilestore/default/woocommerce/cart/totals.php:123
 msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
 msgstr "Lưu ý: Phí vận chuyển và thuế tạm tính là %s và sẽ được cập nhật trong quá trình thanh toán dựa trên thông tin hóa đơn và vận chuyển của bạn."
 
@@ -1987,17 +1890,15 @@ msgstr "Phiếu giảm giá"
 
 #: mobilestore/default/woocommerce/cart/cart.php:93
 #: mobilestore/default/woocommerce/checkout/form-coupon.php:20
-#: mobilestore/default/woocommerce/checkout/review-order.php:41
 msgid "Coupon code"
 msgstr "Mã giảm giá"
 
 #: mobilestore/default/woocommerce/cart/cart.php:93
 #: mobilestore/default/woocommerce/checkout/form-coupon.php:20
-#: mobilestore/default/woocommerce/checkout/review-order.php:43
 msgid "Apply"
 msgstr "Áp dụng"
 
-#: mobilestore/default/woocommerce/cart/cart.php:111
+#: mobilestore/default/woocommerce/cart/cart.php:110
 msgid "Proceed to Checkout"
 msgstr "Tiếp tục thanh toán"
 
@@ -2021,50 +1922,6 @@ msgstr "Tổng từng phần"
 msgid "Checkout"
 msgstr "Thanh toán"
 
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:32
-msgid "Free"
-msgstr "Miễn phí"
-
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
-#: mobilestore/default/woocommerce/cart/totals.php:147
-msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
-msgstr "Rất tiếc, có vẻ như không có phương thức vận chuyển khả dụng nào cho địa điểm của bạn (%s)."
-
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
-#: mobilestore/default/woocommerce/cart/totals.php:147
-msgid "If you require assistance or wish to make alternate arrangements please contact us."
-msgstr "Nếu bạn cần sự trợ giúp hoặc muốn sử dụng phương thức vận chuyển khác, vui lòng liên hệ với chúng tôi."
-
-#: mobilestore/default/woocommerce/cart/totals.php:22
-msgid "Cart Totals"
-msgstr "Tổng tiền của giỏ hàng"
-
-#: mobilestore/default/woocommerce/cart/totals.php:35
-msgid "Cart Discount"
-msgstr "Giảm giá giỏ hàng"
-
-#: mobilestore/default/woocommerce/cart/totals.php:35
-#: mobilestore/default/woocommerce/cart/totals.php:83
-msgid "[Remove]"
-msgstr "[Xóa bỏ]"
-
-#: mobilestore/default/woocommerce/cart/totals.php:83
-msgid "Order Discount"
-msgstr "Giảm giá đơn hàng"
-
-#: mobilestore/default/woocommerce/cart/totals.php:92
-#: mobilestore/default/woocommerce/checkout/review-order.php:94
-msgid "Order Total"
-msgstr "Tổng đơn hàng"
-
-#: mobilestore/default/woocommerce/cart/totals.php:105
-msgid "(Includes %s)"
-msgstr "(Bao gồm %s)"
-
-#: mobilestore/default/woocommerce/cart/totals.php:135
-msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
-msgstr "Không tìm thấy phương thức vận chuyển nào; vui lòng tính lại mục vận chuyển và nhập bang/hạt và mã zip/mã bưu điện để chắc chắn rằng không còn phương thức khác cho địa điểm của bạn."
-
 #: mobilestore/default/woocommerce/checkout/form-checkout.php:20
 msgid "You must be logged in to checkout."
 msgstr "Bạn phải đăng nhập để thanh toán."
@@ -2086,12 +1943,7 @@ msgid "Enter your login details in the boxes below. If you are a new customer pl
 msgstr "Nhập chi tiết đăng nhập của bạn vào hộp thoại dưới đây. Nếu bạn là khách hàng mới, vui lòng hoàn tất mục Lập hóa đơn &amp; Vận chuyển."
 
 #: mobilestore/default/woocommerce/checkout/form-pay.php:19
-#: mobilestore/default/woocommerce/checkout/review-order.php:18
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:22
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:23
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:27
-#: mobilestore/default/woocommerce/emails/customer-note.php:27
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:23
+#: mobilestore/default/woocommerce/checkout/review-order.php:31
 #: mobilestore/default/woocommerce/order/order-details.php:20
 msgid "Product"
 msgstr "Sản phẩm"
@@ -2120,224 +1972,47 @@ msgstr "Vận chuyển đến địa chỉ khác?"
 msgid "Additional Information"
 msgstr "Thông tin bổ sung"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:19
+#: mobilestore/default/woocommerce/checkout/payment.php:30
+#: mobilestore/default/woocommerce/checkout/review-order.php:161
+msgid "Please fill in your details above to see available payment methods."
+msgstr "Vui lòng nhập thông tin chi tiết của bạn để xem phương thức thanh toán khả dụng."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:32
+#: mobilestore/default/woocommerce/checkout/review-order.php:163
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Rất tiếc, có vẻ như không có phương thức thanh toán nào khả dụng cho bang của bạn. Vui lòng liên hệ với chúng tôi nếu bạn cần sự trợ giúp hoặc muốn thanh toán bằng hình thức khác."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:43
+#: mobilestore/default/woocommerce/checkout/review-order.php:174
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr "Vì trình duyệt của bạn không hỗ trợ JavaScript, hoặc nó đã bị tắt, vui lòng chắc rằng bạn bấm nút <em>Cập nhật Tổng tiền</em> trước khi bạn đặt đơn hàng của mình. Bạn có thể phải trả nhiều hơn số tiền đã tính nếu bạn không làm như vậy."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:43
+#: mobilestore/default/woocommerce/checkout/review-order.php:174
+msgid "Update totals"
+msgstr "Cập nhật số tổng"
+
+#: mobilestore/default/woocommerce/checkout/payment.php:54
+#: mobilestore/default/woocommerce/checkout/review-order.php:191
+msgid "I&rsquo;ve read and accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr "Tôi&rsquo; đã đọc và chấp thuận <a href=\"%s\" target=\"_blank\">điều khoản &amp; điều kiện</a>"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:32
 #: mobilestore/default/woocommerce/order/order-details.php:21
 msgid "Total"
 msgstr "Tổng"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:171
-msgid "Please fill in your details above to see available payment methods."
-msgstr "Vui lòng nhập thông tin chi tiết của bạn để xem phương thức thanh toán khả dụng."
+#: mobilestore/default/woocommerce/checkout/review-order.php:115
+msgid "Order Total"
+msgstr "Tổng đơn hàng"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:173
-msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
-msgstr "Rất tiếc, có vẻ như không có phương thức thanh toán nào khả dụng cho bang của bạn. Vui lòng liên hệ với chúng tôi nếu bạn cần sự trợ giúp hoặc muốn thanh toán bằng hình thức khác."
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:184
-msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
-msgstr "Vì trình duyệt của bạn không hỗ trợ JavaScript, hoặc nó đã bị tắt, vui lòng chắc rằng bạn bấm nút <em>Cập nhật Tổng tiền</em> trước khi bạn đặt đơn hàng của mình. Bạn có thể phải trả nhiều hơn số tiền đã tính nếu bạn không làm như vậy."
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:184
-msgid "Update totals"
-msgstr "Cập nhật số tổng"
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:194
-msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
-msgstr "Tôi chấp nhận các <a href=\"%s\" target=\"_blank\">điều khoản &amp; điều kiện</a>"
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:200
+#: mobilestore/default/woocommerce/checkout/review-order.php:181
 msgid "Place order"
 msgstr "Đặt đơn hàng"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:13
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
-msgid "You have received an order from %s. Their order is as follows:"
-msgstr "Bạn vừa nhận được đơn hàng từ %s. Đơn hàng của họ cụ thể như sau:"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:17
-msgid "Order: %s"
-msgstr "Đơn hàng: %s"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:23
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:24
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:28
-#: mobilestore/default/woocommerce/emails/customer-note.php:28
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:24
-msgid "Quantity"
-msgstr "Số lượng"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:24
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:25
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:29
-#: mobilestore/default/woocommerce/emails/customer-note.php:29
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:25
-msgid "Price"
-msgstr "Giá"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:50
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:51
-#: mobilestore/default/woocommerce/emails/customer-note.php:55
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:51
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:38
-msgid "Customer details"
-msgstr "Thông tin khách hàng"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:53
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:54
-#: mobilestore/default/woocommerce/emails/customer-note.php:58
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:54
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:41
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:41
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:49
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:41
-msgid "Email:"
-msgstr "Email:"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:56
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:57
-#: mobilestore/default/woocommerce/emails/customer-note.php:61
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:57
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:44
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:44
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:52
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:44
-msgid "Tel:"
-msgstr "ĐT:"
-
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
-msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
-msgstr "Xin chào. Đơn hàng gần đây của bạn trên %s đã được hoàn tất. Chi tiết đơn hàng của bạn được hiển thị dưới đây để bạn tham khảo."
-
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:22
-#: mobilestore/default/woocommerce/emails/customer-note.php:22
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:18
-msgid "Order:"
-msgstr "Đơn hàng:"
-
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
-msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
-msgstr "Một đơn hàng vừa được tạo cho bạn trên %s. Để thanh toán đơn hàng này, vui lòng sử dụng liên kết sau: %s"
-
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
-msgid "pay"
-msgstr "thanh toán"
-
-#: mobilestore/default/woocommerce/emails/customer-new-account.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
-msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
-msgstr "Cảm ơn đã tạo tài khoản trên %s. Tên người dùng của bạn là <strong>%s</strong>."
-
-#: mobilestore/default/woocommerce/emails/customer-new-account.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:15
-msgid "You can access your account area here: %s."
-msgstr "Bạn có thể truy cập vào khu vực tài khoản của mình tại đây: %s."
-
-#: mobilestore/default/woocommerce/emails/customer-note.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:13
-msgid "Hello, a note has just been added to your order:"
-msgstr "Xin chào, một lưu ý vừa được thêm vào đơn hàng của bạn."
-
-#: mobilestore/default/woocommerce/emails/customer-note.php:18
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:21
-msgid "For your reference, your order details are shown below."
-msgstr "Dành để tham khảo, chi tiết đơn hàng của bạn được hiển thị dưới đây."
-
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
-msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
-msgstr "Đơn hàng của bạn đã được nhận và hiện đang được xử lý. Bạn có thể tham khảo chi tiết đơn hàng của mình như dưới đây:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:13
-msgid "Someone requested that the password be reset for the following account:"
-msgstr "Ai đó đã yêu cầu thiết lập lại mật khẩu cho tài khoản sau đây:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:15
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:15
-msgid "Username: %s"
-msgstr "Tên người dùng: %s"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:16
-msgid "If this was a mistake, just ignore this email and nothing will happen."
-msgstr "Nếu đây là một sự nhầm lẫn, chỉ cần bỏ qua bức thư này và sẽ không có chuyện gì xảy ra."
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:17
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:17
-msgid "To reset your password, visit the following address:"
-msgstr "Để thiết lập lại mật khẩu của bạn, hãy truy cập địa chỉ sau đây:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:20
-msgid "Click here to reset your password"
-msgstr "Bấm vào đây để thiết lập lại mật khẩu của bạn"
-
-#: mobilestore/default/woocommerce/emails/email-addresses.php:18
-#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:12
-msgid "Billing address"
-msgstr "Địa chỉ viết hóa đơn"
-
-#: mobilestore/default/woocommerce/emails/email-addresses.php:28
-#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:17
-msgid "Shipping address"
-msgstr "Địa chỉ nhận hàng:"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:34
-msgid "This product is no longer available"
-msgstr "Sản phẩm này không có sẵn"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:76
-msgid "Download %d:"
-msgstr "Tải xuống %d:"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:78
-msgid "Download:"
-msgstr "Tải xuống:"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:19
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:19
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:27
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:19
-msgid "Order number: %s"
-msgstr "Số đơn hàng: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:21
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:28
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:20
-msgid "Order date: %s"
-msgstr "Ngày đơn hàng: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
-msgid "jS F Y"
-msgstr "jS F Y"
-
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:38
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:46
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:38
-#: mobilestore/default/woocommerce/order/order-details.php:97
-msgid "Your details"
-msgstr "Chi tiết của bạn"
-
-#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:28
-msgid "Quantity: %s"
-msgstr "Số lượng: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:31
-msgid "Cost: %s"
-msgstr "Chi phí: %s"
 
 #: mobilestore/default/woocommerce/loop/no-products-found.php:14
 msgid "No products were found matching your search."
 msgstr "Không tìm thấy sản phẩm nào phù hợp với tìm kiếm của bạn."
-
-#: mobilestore/default/woocommerce/loop-shop.php:40
-msgid "No products found which match your selection."
-msgstr "Không tìm thấy sản phẩm nào phù hợp với lựa chọn của bạn."
 
 #: mobilestore/default/woocommerce/myaccount/my-account.php:19
 msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
@@ -2374,6 +2049,10 @@ msgstr "Xem"
 msgid "Download file%s"
 msgstr "Tải xuống tập tin%s"
 
+#: mobilestore/default/woocommerce/order/order-details.php:97
+msgid "Your details"
+msgstr "Chi tiết của bạn"
+
 #: mobilestore/default/woocommerce/order/order-details.php:101
 msgid "Email"
 msgstr "Email"
@@ -2395,133 +2074,115 @@ msgstr "N/A"
 msgid "Shipping Address"
 msgstr "Địa chỉ nhận hàng"
 
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:63
-msgid "Products tagged &ldquo;"
-msgstr "Sản phẩm được gắn thẻ &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:91
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:190
-msgid "Search results for &ldquo;"
-msgstr "Tìm kiếm kết quả cho &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:148
-msgid "Error 404"
-msgstr "Lỗi 404"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:194
-msgid "Posts tagged &ldquo;"
-msgstr "Bài đăng được gắn thẻ &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:199
-msgid "Author:"
-msgstr "Tác giả:"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:204
-#: themes/foundation/root-functions.php:1092
-msgid "Page"
-msgstr "Trang"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:20
-msgid "Username or email"
-msgstr "Tên người dùng hoặc email"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:24
-msgid "Password"
-msgstr "Mật khẩu"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:33
-msgid "Lost Password?"
-msgstr "Mất mật khẩu?"
-
 #: mobilestore/root-functions.php:6
 msgid "Store"
 msgstr "Cửa hàng"
 
-#: mobilestore/root-functions.php:196
+#: mobilestore/root-functions.php:98
+msgid "Web-App Mode has been disabled because your site does not have any supported payment gateways.%sSee %s for further information."
+msgstr "Vừa tắt chế độ Web-Ứng dụng vì trang web của bạn không có bất kỳ cổng thanh toán được hỗ trợ nào.%sXem %s thông tin chi tiết."
+
+#: mobilestore/root-functions.php:247
 msgid "Off-Canvas left menu"
 msgstr "Trình đơn bên trái dàn trải"
 
-#: mobilestore/root-functions.php:205
+#: mobilestore/root-functions.php:256
 msgid "Footer Menu"
 msgstr "Trình đơn chân trang"
 
-#: mobilestore/root-functions.php:208
+#: mobilestore/root-functions.php:259
 msgid "Menu shown in the MobileStore footer"
 msgstr "Trình đơn hiển thị trong chân trang MobileStore"
 
-#: mobilestore/root-functions.php:215
+#: mobilestore/root-functions.php:266
 msgid "Menu & Cart Background"
 msgstr "Hình nền Trình đơn & Giỏ hàng"
 
-#: mobilestore/root-functions.php:218
+#: mobilestore/root-functions.php:269
 msgid "Header & Footer Background"
 msgstr "Hình nền Đầu trang & Chân trang"
 
-#: mobilestore/root-functions.php:270
+#: mobilestore/root-functions.php:322
 msgid "Primary Actions & Purchase Flow"
 msgstr "Thao tác Ban đầu & Luồng mua bán"
 
-#: mobilestore/root-functions.php:281
+#: mobilestore/root-functions.php:333
 msgid "Highlight Color"
 msgstr "Màu sắc nổi bật"
 
-#: mobilestore/root-functions.php:397
+#: mobilestore/root-functions.php:449
 msgid "Product Listing"
 msgstr "Danh sách sản phẩm"
 
-#: mobilestore/root-functions.php:403
+#: mobilestore/root-functions.php:455
 msgid "Number of products shown per page in product listings"
 msgstr "Số lượng sản phẩm hiển thị/trang trong danh sách sản phẩm"
 
-#: mobilestore/root-functions.php:411
+#: mobilestore/root-functions.php:463
 msgid "Product Pagination"
 msgstr "Phân trang sản phẩm"
 
-#: mobilestore/root-functions.php:412
+#: mobilestore/root-functions.php:464
 msgid "Use AJAX load more or traditional numbered pagination."
 msgstr "Sử dụng AJAX để tải thêm hoặc cách phân trang đánh số kiểu truyền thống."
 
-#: mobilestore/root-functions.php:416
+#: mobilestore/root-functions.php:468
 msgid "Use AJAX load more"
 msgstr "Sử dụng AJAX để tải thêm"
 
-#: mobilestore/root-functions.php:417
+#: mobilestore/root-functions.php:469
 msgid "Use numbered pages"
 msgstr "Sử dụng các trang đã đánh số"
 
-#: mobilestore/root-functions.php:429
+#: mobilestore/root-functions.php:475
+msgid "Show top-selling products on homepage"
+msgstr "Hiển thị sản phẩm bán chạy nhất trên trang chủ"
+
+#: mobilestore/root-functions.php:476
+msgid "Adds a carousel with the 10 best selling products on the store homepage"
+msgstr "Thêm băng chuyền với 10 sản phẩm bán chạy nhất trên trang chủ cửa hàng"
+
+#: mobilestore/root-functions.php:489
 msgid "Product Filters"
 msgstr "Bộ lọc Sản phẩm"
 
-#: mobilestore/root-functions.php:435
+#: mobilestore/root-functions.php:495
 msgid "Show WooCommerce product filters for"
 msgstr "Hiển thị bộ lọc sản phẩm WooCommerce cho"
 
-#: mobilestore/root-functions.php:450
+#: mobilestore/root-functions.php:510
 msgid "Site Sidebar"
 msgstr "Thanh bên của trang"
 
-#: mobilestore/root-functions.php:456
+#: mobilestore/root-functions.php:516
 msgid "Show category menu in sidebar"
 msgstr "Hiển thị trình đơn danh mục ở thanh bên"
 
-#: mobilestore/root-functions.php:464
+#: mobilestore/root-functions.php:524
 msgid "Show recently viewed products in sidebar"
 msgstr "Hiển thị sản phẩm được xem gần đây trong thanh bên"
 
-#: mobilestore/root-functions.php:548
+#: mobilestore/root-functions.php:566
+msgid "Featured Categories (Tablet)"
+msgstr "Danh mục Nổi bật (Máy tính bảng)"
+
+#: mobilestore/root-functions.php:572
+msgid "List best-selling products from these categories on the homepage"
+msgstr "Lập danh sách sản phẩm bán chạy nhất từ các danh mục này trên trang chủ"
+
+#: mobilestore/root-functions.php:682
 msgid "Site logo display size"
 msgstr "Kích thước hiển thị lô-gô trang"
 
-#: mobilestore/root-functions.php:553
+#: mobilestore/root-functions.php:687
 msgid "Short (default)"
 msgstr "Ngắn (mặc định)"
 
-#: mobilestore/root-functions.php:554
+#: mobilestore/root-functions.php:688
 msgid "Tall (longer vertically for square logos)"
 msgstr "Dài (dài dọc xuống cho các lô-gô vuông)"
 
-#: mobilestore/root-functions.php:561
+#: mobilestore/root-functions.php:695
 msgid "Show site description in large header"
 msgstr "Hiển thị mô tả trang trong đầu trang lớn"
 
@@ -2609,12 +2270,12 @@ msgstr "Chúng tôi&lsquo;re <em>mở</em> cứ mỗi %s %s.."
 msgid "Sorry, we&lsquo;re <em>closed</em> every %s."
 msgstr "Rất tiếc, chúng tôi&lsquo;<em>đã đóng</em> mọi %s."
 
-#: open/default/functions.php:18 open/default/location.php:5
+#: open/default/functions.php:20 open/default/location.php:5
 #: simple/default/front-page.php:20
 msgid "Our Location"
 msgstr "Vị trí của chúng tôi"
 
-#: open/default/functions.php:22 open/default/hours.php:5
+#: open/default/functions.php:24 open/default/hours.php:5
 msgid "Our Hours"
 msgstr "Các giờ của chúng tôi"
 
@@ -2669,6 +2330,10 @@ msgstr "Dòng đánh dấu"
 #: open/root-functions.php:106
 msgid "Displayed below your logo on the homepage."
 msgstr "Được hiển thị dưới biểu trương của bạn trên trang chủ."
+
+#: open/root-functions.php:119 prose/root-functions.php:117
+msgid "Header Image"
+msgstr "Ảnh Đầu trang"
 
 #: open/root-functions.php:125
 msgid "Displayed behind header on pages."
@@ -2758,11 +2423,11 @@ msgstr "Tin nhắn để hiển thị cho khách truy cập gần đấy"
 msgid "Encoded Location"
 msgstr "Địa điểm được mã hóa"
 
-#: pro/modules/webapp/webapp.php:129
+#: pro/modules/webapp/webapp.php:133
 msgid "External link— open it in the browser?"
 msgstr "Đường dẫn ngoại vi - mở nó trên trình duyệt?"
 
-#: pro/modules/webapp/webapp.php:130
+#: pro/modules/webapp/webapp.php:134
 msgid "File link— Do you want to open it in the browser?"
 msgstr "Đường dẫn tập tin - Bạn có muốn mở nó trong trình duyệt?"
 
@@ -2905,6 +2570,10 @@ msgstr "Trang web"
 msgid "Publish"
 msgstr "Xuất bản"
 
+#: prose/default/functions.php:33
+msgid "Load more from this collection"
+msgstr "Tải thêm cho bộ sưu tập này"
+
 #: prose/default/functions.php:34
 msgid "%d minute"
 msgstr "%d phút"
@@ -2924,6 +2593,14 @@ msgstr "còn %d phút"
 #: prose/default/functions.php:38
 msgid "Share post"
 msgstr "Chia sẻ bài đăng"
+
+#: prose/default/header-bottom.php:19
+msgid "Collections"
+msgstr "Bộ sưu tập"
+
+#: prose/default/header-bottom.php:22
+msgid "Options"
+msgstr "Tùy chọn"
 
 #: prose/default/header-bottom.php:43
 msgid "Reading Text Size"
@@ -2973,9 +2650,29 @@ msgstr "Hiển thị bình luận khi đang đọc bài đăng"
 msgid "Comment form will not appear for posts with comments turned off."
 msgstr "Mẫu bình luận sẽ không xuất hiện đối với các bài đăng có bình luận đã tắt."
 
+#: prose/root-functions.php:76
+msgid "Show categories as \"collections\" in menu"
+msgstr "Hiển thị các danh mục như \"Bộ sưu tập\" trong trình đơn"
+
 #: prose/root-functions.php:87
 msgid "Use featured image as the header background when viewing single posts"
 msgstr "Sử dụng ảnh đặc trưng làm hình nền đầu trang khi xem các bài đăng đơn lẻ"
+
+#: prose/root-functions.php:98
+msgid "Maximum number of items in categories/collections"
+msgstr "Số lượng tốt đa các mục trong danh mục/bộ sưu tập"
+
+#: prose/root-functions.php:123
+msgid "Displayed behind header on pages and posts without featured images."
+msgstr "Được hiển thị phía sau đầu trang trên các trang và bài đăng mà không có ảnh đặc sắc."
+
+#: prose/root-functions.php:136
+msgid "Site Intro"
+msgstr "Giới thiệu trang web"
+
+#: prose/root-functions.php:142
+msgid "Displayed on post listing page below site name."
+msgstr "Được hiển thị trên trang liệt kê bài đăng phía sau tên trang web."
 
 #: prose/root-functions.php:155
 msgid "Drop Caps"
@@ -2989,27 +2686,31 @@ msgstr "Dùng chữ hoa thụt thấp ở đầu mỗi bài đăng trên blog."
 msgid "Off-canvas menu for Prose"
 msgstr "Trình đơn dàn trải cho Prose"
 
-#: responsive-images/responsive-images.php:101
+#: prose/root-functions.php:216 themes/foundation/root-functions.php:11
+msgid "Branding"
+msgstr "Nhãn hiệu"
+
+#: responsive-images/responsive-images.php:107
 msgid "Responsive Images"
 msgstr "Các hình ảnh Phản hồi"
 
-#: responsive-images/responsive-images.php:107
+#: responsive-images/responsive-images.php:113
 msgid "Include desktop optimizations for mobile devices"
 msgstr "Bao gồm các quá trình tối ưu máy tính để bàn từ các thiết bị di động"
 
-#: responsive-images/responsive-images.php:108
+#: responsive-images/responsive-images.php:114
 msgid "Normally only images on mobile are optimized"
 msgstr "Thông thường chỉ các ảnh trên di động mới được tối ưu hóa"
 
-#: responsive-images/responsive-images.php:115
+#: responsive-images/responsive-images.php:121
 msgid "Performance preference"
 msgstr "Ưu tiên hoạt động"
 
-#: responsive-images/responsive-images.php:120
+#: responsive-images/responsive-images.php:126
 msgid "Optimize for page speed"
 msgstr "Tối ưu tốc độ trang web"
 
-#: responsive-images/responsive-images.php:121
+#: responsive-images/responsive-images.php:127
 msgid "Optimize for quality"
 msgstr "Tối ưu chất lượng"
 
@@ -3214,7 +2915,7 @@ msgstr "Nguyên tắc phân loại"
 msgid "Search results"
 msgstr "Kết quả tìm kiếm"
 
-#: themes/foundation/modules/base/base.php:69
+#: themes/foundation/modules/base/base.php:70
 msgid "Loading"
 msgstr "Đang tải"
 
@@ -3225,6 +2926,10 @@ msgstr "Xem trước Chủ đề"
 #: themes/foundation/modules/base/preview-bar.php:3
 msgid "Reload"
 msgstr "Tải lại"
+
+#: themes/foundation/modules/custom-posts/custom-posts.php:152
+msgid "Enable %s"
+msgstr "Bật %s"
 
 #: themes/foundation/modules/custom-posts/custom-posts.php:164
 msgid "Custom Post Support"
@@ -3543,22 +3248,22 @@ msgstr "Địa chỉ e-mail"
 msgid "Full URL to your RSS feed"
 msgstr "URL đầy đủ đến nguồn cấp RSS của bạn"
 
-#: themes/foundation/modules/tablets/tablets.php:35
+#: themes/foundation/modules/tablets/tablets.php:45
 msgid "iPad"
 msgstr "iPad"
 
-#: themes/foundation/modules/tablets/tablets.php:41
-#: themes/foundation/modules/webapp/webapp.php:73
-#: themes/foundation/modules/webapp/webapp.php:91
-#: themes/foundation/modules/webapp/webapp.php:109
-#: themes/foundation/modules/webapp/webapp.php:128
-#: themes/foundation/modules/webapp/webapp.php:146
-#: themes/foundation/modules/webapp/webapp.php:165
-#: themes/foundation/modules/webapp/webapp.php:173
-#: themes/foundation/modules/webapp/webapp.php:191
-#: themes/foundation/modules/webapp/webapp.php:199
+#: themes/foundation/modules/tablets/tablets.php:51
+#: themes/foundation/modules/webapp/webapp.php:113
+#: themes/foundation/modules/webapp/webapp.php:131
+#: themes/foundation/modules/webapp/webapp.php:149
+#: themes/foundation/modules/webapp/webapp.php:168
+#: themes/foundation/modules/webapp/webapp.php:186
+#: themes/foundation/modules/webapp/webapp.php:205
+#: themes/foundation/modules/webapp/webapp.php:213
+#: themes/foundation/modules/webapp/webapp.php:231
+#: themes/foundation/modules/webapp/webapp.php:239
+#: themes/foundation/root-functions.php:423
 #: themes/foundation/root-functions.php:441
-#: themes/foundation/root-functions.php:459
 msgid "%d by %d pixels (PNG)"
 msgstr "%d trên %d điểm ảnh(PNG)"
 
@@ -3570,87 +3275,103 @@ msgstr "Đã vô hiệu hóa"
 msgid "Twitter account to use for Tweet display"
 msgstr "Tài khoản Twitter để sử dụng cho màn hình Tweet"
 
-#: themes/foundation/modules/webapp/webapp.php:15
-msgid "Enable iOS Web-App Mode"
-msgstr "Bật chế độ Web-Ứng dụng của iOS"
+#: themes/foundation/modules/webapp/webapp.php:16
+msgid "Web-App Mode Unavailable"
+msgstr "Chế độ Web-Ứng dụng không khả dụng"
 
-#: themes/foundation/modules/webapp/webapp.php:19
+#: themes/foundation/modules/webapp/webapp.php:37
+msgid "Enable Web-App Mode"
+msgstr "Bật chế độ Web-Ứng dụng"
+
+#: themes/foundation/modules/webapp/webapp.php:41
 msgid "Enable persistence"
 msgstr "Bật chế độ ổn định"
 
-#: themes/foundation/modules/webapp/webapp.php:20
+#: themes/foundation/modules/webapp/webapp.php:42
 msgid "Loads the last visited URL for visitors on open."
 msgstr "Tải URL đã truy cập lần cuối cho khách truy cập khi mở lên."
 
-#: themes/foundation/modules/webapp/webapp.php:27
+#: themes/foundation/modules/webapp/webapp.php:49
 msgid "URLs to ignore in Web-App Mode"
 msgstr "URL để bỏ qua trong chế độ Web-Ứng dụng"
 
-#: themes/foundation/modules/webapp/webapp.php:40
+#: themes/foundation/modules/webapp/webapp.php:61
+msgid "Web App Title"
+msgstr "Tiêu đề ứng dụng web"
+
+#: themes/foundation/modules/webapp/webapp.php:67
+msgid "Icon title"
+msgstr "Tiêu đề biểu tượng"
+
+#: themes/foundation/modules/webapp/webapp.php:68
+msgid "When visitors bookmark your website, this will be the title shown."
+msgstr "Khi người truy cập tạo dấu trang trang web của bạn, đây chính là tiêu đề được hiển thị."
+
+#: themes/foundation/modules/webapp/webapp.php:80
 msgid "Notice Message"
 msgstr "Tin nhắn thông báo"
 
-#: themes/foundation/modules/webapp/webapp.php:43
+#: themes/foundation/modules/webapp/webapp.php:83
 msgid "Show a notice message for iPhone, iPod touch & iPad visitors about my Web-App"
 msgstr "Hiển thị tin nhắn thông báo cho các khách truy cập bằng iPhone, iPod touch & iPad về chế độ Web-Ứng dụng của tôi"
 
-#: themes/foundation/modules/webapp/webapp.php:43
+#: themes/foundation/modules/webapp/webapp.php:83
 msgid "WPtouch shows a notice bubble on 1st visit letting users know about your Web-App enabled website on iOS devices."
 msgstr "WPtouch hiển thị thông báo nổi lên trong lần truy cập đầu nhằm báo cho người dùng biết về trang web đã bật chế độ Web-Ứng dụng của bạn trên các thiết bị iOS."
 
-#: themes/foundation/modules/webapp/webapp.php:44
+#: themes/foundation/modules/webapp/webapp.php:84
 msgid "Notice message contents"
 msgstr "Nội dung tin nhắn thông báo"
 
-#: themes/foundation/modules/webapp/webapp.php:44
+#: themes/foundation/modules/webapp/webapp.php:84
 msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
 msgstr "[icon] được sử dụng để hiển thị biểu tượng dấu trang phù hợp cho thiết bị của bạn. Không xóa bỏ nó khỏi tin nhắn của bạn."
 
-#: themes/foundation/modules/webapp/webapp.php:48
+#: themes/foundation/modules/webapp/webapp.php:88
 msgid "the notice message will be shown again for visitors"
 msgstr "tin nhắn thông báo sẽ được hiển thị lại cho những người truy cập"
 
-#: themes/foundation/modules/webapp/webapp.php:53
+#: themes/foundation/modules/webapp/webapp.php:93
 msgid "1 day until"
 msgstr "1 ngày cho đến"
 
-#: themes/foundation/modules/webapp/webapp.php:54
+#: themes/foundation/modules/webapp/webapp.php:94
 msgid "7 days until"
 msgstr "7 ngày cho đến"
 
-#: themes/foundation/modules/webapp/webapp.php:55
+#: themes/foundation/modules/webapp/webapp.php:95
 msgid "1 month until"
 msgstr "1 tháng cho đến"
 
-#: themes/foundation/modules/webapp/webapp.php:56
+#: themes/foundation/modules/webapp/webapp.php:96
 msgid "Every time"
 msgstr "Mọi lần"
 
-#: themes/foundation/modules/webapp/webapp.php:67
+#: themes/foundation/modules/webapp/webapp.php:107
 msgid "iPhone Startup Screen"
 msgstr "Màn hình khởi động iPhone"
 
-#: themes/foundation/modules/webapp/webapp.php:85
+#: themes/foundation/modules/webapp/webapp.php:125
 msgid "Retina iPhone Startup Screen"
 msgstr "Màn hình Khởi động iPhone Retina"
 
-#: themes/foundation/modules/webapp/webapp.php:103
+#: themes/foundation/modules/webapp/webapp.php:143
 msgid "iPhone 5 Startup Screen"
 msgstr "Màn hình Khởi động iPhone 5"
 
-#: themes/foundation/modules/webapp/webapp.php:122
+#: themes/foundation/modules/webapp/webapp.php:162
 msgid "iPhone 6 Startup Screen"
 msgstr "Màn hình Khởi động iPhone 6"
 
-#: themes/foundation/modules/webapp/webapp.php:140
+#: themes/foundation/modules/webapp/webapp.php:180
 msgid "iPhone 6+ Startup Screen"
 msgstr "Màn hình Khởi động iPhone 6+"
 
-#: themes/foundation/modules/webapp/webapp.php:159
+#: themes/foundation/modules/webapp/webapp.php:199
 msgid "iPad Mini and iPad Startup Screens"
 msgstr "Màn hình khởi động iPad Mini và iPad"
 
-#: themes/foundation/modules/webapp/webapp.php:185
+#: themes/foundation/modules/webapp/webapp.php:225
 msgid "Retina iPad Startup Screens"
 msgstr "Màn hình khởi động iPad Retina"
 
@@ -3727,123 +3448,115 @@ msgid "Overrides the WordPress settings for showing comments on pages."
 msgstr "Ghi đè cài đặt của WordPress để hiển thị các bình luận trên các trang."
 
 #: themes/foundation/root-functions.php:404
-#: themes/foundation/root-functions.php:1141
+#: themes/foundation/root-functions.php:1237
 msgid "Pages"
 msgstr "Trang"
 
 #: themes/foundation/root-functions.php:417
-msgid "Icon Title"
-msgstr "Tiêu đề Biểu tượng"
-
-#: themes/foundation/root-functions.php:423
-msgid "Icon title"
-msgstr "Tiêu đề biểu tượng"
-
-#: themes/foundation/root-functions.php:424
-msgid "When visitors bookmark your website, this will be the title shown."
-msgstr "Khi người truy cập tạo dấu trang trang web của bạn, đây chính là tiêu đề được hiển thị."
+msgid "Low Resolution"
+msgstr "Độ phân giải thấp"
 
 #: themes/foundation/root-functions.php:435
-msgid "Android"
-msgstr "Android"
+msgid "High Resolution"
+msgstr "Độ phân giải cao"
 
-#: themes/foundation/root-functions.php:453
-msgid "iPhone & iPod touch"
-msgstr "iPhone & iPod touch"
-
-#: themes/foundation/root-functions.php:489
+#: themes/foundation/root-functions.php:471
 msgid "Theme Colors"
 msgstr "Các màu sắc chủ đề"
 
-#: themes/foundation/root-functions.php:501
+#: themes/foundation/root-functions.php:483
 msgid "(Scaled by themes to fit logo areas as needed)"
 msgstr "(Các chủ đề được chia tỷ lệ để phù hợp với khu vực biểu trưng khi cần)"
 
-#: themes/foundation/root-functions.php:512
+#: themes/foundation/root-functions.php:494
 msgid "Site Logo"
 msgstr "Biểu trưng của Trang"
 
-#: themes/foundation/root-functions.php:521
+#: themes/foundation/root-functions.php:503
 msgid "Smart App Banner"
 msgstr "Biểu ngữ ứng dụng thông minh"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:509
 msgid "Enter your app's %sApp Store ID%s"
 msgstr "Nhập %sID kho ứng dụng %s của ứng dụng của bạn"
 
-#: themes/foundation/root-functions.php:528
+#: themes/foundation/root-functions.php:510
 msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
 msgstr "Ứng dụng của bạn là trình định danh độc nhất. Tìm ID của bạn từ iTunes Link Maker: Tìm kiếm ứng dụng của bạn. Trong đường dẫn nó cung cấp, ID ứng dụng của bạn là một số có 9 chữ số nằm giữa id và ?mt. Ví dụ ID của trò Angry Birds là 343200656."
 
-#: themes/foundation/root-functions.php:540
+#: themes/foundation/root-functions.php:522
 msgid "Theme Footer"
 msgstr "Chân trang chủ đề"
 
-#: themes/foundation/root-functions.php:543
+#: themes/foundation/root-functions.php:525
 msgid "Custom footer content (HTML is allowed)"
 msgstr "Tùy chỉnh nội dung chân trang (HTML được cho phép)"
 
-#: themes/foundation/root-functions.php:543
+#: themes/foundation/root-functions.php:525
 msgid "You can add custom footer content that will be displayed below the switch link."
 msgstr "Bạn có thể tùy chỉnh nội dung chân trang sẽ được hiển thị dưới đường dẫn chuyển đổi."
 
-#: themes/foundation/root-functions.php:919
+#: themes/foundation/root-functions.php:902
 msgid "search results for '%s'"
 msgstr "các kết quả tìm kiếm cho '%s'"
 
-#: themes/foundation/root-functions.php:921
+#: themes/foundation/root-functions.php:904
 msgid "%sCategories &rsaquo;%s %s"
 msgstr "%sCác danh mục &rsaquo;%s %s"
 
-#: themes/foundation/root-functions.php:923
+#: themes/foundation/root-functions.php:906
 msgid "Tags &rsaquo; %s"
 msgstr "Tags &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:925
-#: themes/foundation/root-functions.php:927
-#: themes/foundation/root-functions.php:929
+#: themes/foundation/root-functions.php:908
+#: themes/foundation/root-functions.php:910
+#: themes/foundation/root-functions.php:912
 msgid "Archives &rsaquo; %s"
 msgstr "Lưu trữ &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:944
+#: themes/foundation/root-functions.php:927
 msgid "Load more from this category"
 msgstr "Tải thêm từ danh mục này"
 
-#: themes/foundation/root-functions.php:946
+#: themes/foundation/root-functions.php:929
 msgid "Load more tagged like this"
 msgstr "Tải thêm các bài được tag như bài này"
 
-#: themes/foundation/root-functions.php:948
+#: themes/foundation/root-functions.php:931
 msgid "Load more from this day"
 msgstr "Tải thêm từ ngày này"
 
-#: themes/foundation/root-functions.php:950
+#: themes/foundation/root-functions.php:933
 msgid "Load more from this month"
 msgstr "Tải thêm từ tháng này"
 
-#: themes/foundation/root-functions.php:952
+#: themes/foundation/root-functions.php:935
 msgid "Load more from this year"
 msgstr "Tải thêm từ năm nay"
 
-#: themes/foundation/root-functions.php:954
+#: themes/foundation/root-functions.php:937
 msgid "Load more in this section"
 msgstr "Tải thêm trong phần này"
 
-#: themes/foundation/root-functions.php:956
+#: themes/foundation/root-functions.php:939
 msgid "Load more entries"
 msgstr "Tải thêm các mục nhập"
 
-#: themes/foundation/root-functions.php:1090
+#: themes/foundation/root-functions.php:1186
 msgid "Post"
 msgstr "Đăng"
+
+#: themes/foundation/root-functions.php:1188
+msgid "Page"
+msgstr "Trang"
 
 #. Plugin Name of the plugin/theme
 msgid "WPtouch Pro"
 msgstr "WPtouch Pro"
 
-#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.6.4)  #-#-#-#-#
+#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.7.7)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.6.4)  #-#-#-#-#
+#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.7.7)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://www.wptouch.com/"
 msgstr "http://www.wptouch.com/"

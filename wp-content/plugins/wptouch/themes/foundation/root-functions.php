@@ -1,6 +1,5 @@
 <?php
-
-define( 'FOUNDATION_VERSION', '2.3.3' );
+define( 'FOUNDATION_VERSION', '2.3.4' );
 
 define( 'FOUNDATION_DIR', WPTOUCH_DIR . '/themes/foundation' );
 define( 'FOUNDATION_URL', WPTOUCH_URL . '/themes/foundation' );
@@ -116,6 +115,7 @@ function foundation_setting_defaults( $settings ) {
 	// General
 	$settings->video_handling_type = 'fitvids';
 	$settings->latest_posts_page = 'none';
+	$settings->allow_zoom = false;
 	$settings->logo_image = '';
 
 	// Login
@@ -331,9 +331,13 @@ function foundation_get_category_list() {
 }
 
 function foundation_setup_viewport(){
-	echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />';
-	// iPhone 5
-	echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" media="(device-height: 568px)" />';
+	$settings = foundation_get_settings();
+
+	if ( $settings->allow_zoom == true ) {
+		echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, user-scalable=yes, width=device-width" />';
+	} else {
+		echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />';
+	}
 }
 
 function foundation_render_theme_settings( $page_options ) {
@@ -407,6 +411,27 @@ function foundation_render_theme_settings( $page_options ) {
 		$page_options,
 		FOUNDATION_SETTING_DOMAIN
 	);
+
+	$foundation_zoom_settings = array(
+		wptouch_add_setting(
+			'checkbox',
+			'allow_zoom',
+			__( 'Allow page zooming', 'wptouch-pro' ),
+			__( '' ),
+			WPTOUCH_SETTING_BASIC,
+			'2.3.4'
+		)
+	);
+
+	wptouch_add_page_section(
+		FOUNDATION_PAGE_GENERAL,
+		__( 'Page Zoom', 'wptouch-pro' ),
+		'foundation-zoom',
+		$foundation_zoom_settings,
+		$page_options,
+		FOUNDATION_SETTING_DOMAIN
+	);
+
 
 	wptouch_add_sub_page( FOUNDATION_PAGE_HOMESCREEN_ICONS, 'foundation-page-homescreen-icons', $page_options );
 
@@ -799,7 +824,7 @@ function wptouch_fdn_iOS_7() {
 If we're on iOS8
 */
 function wptouch_fdn_iOS_8() {
-	if ( strpos( $_SERVER['HTTP_USER_AGENT'],'iPhone OS 10_' ) || strpos( $_SERVER['HTTP_USER_AGENT'],'iPhone OS 8_' ) ) {
+	if ( strpos( $_SERVER['HTTP_USER_AGENT'],'iPhone OS 7_' ) || strpos( $_SERVER['HTTP_USER_AGENT'],'iPhone OS 8_' ) ) {
 		return true;
 	} else {
 		return false;

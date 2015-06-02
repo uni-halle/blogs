@@ -124,7 +124,7 @@ function fdnAdminReady() {
 	}
 
 	// Custom Post Types Show/Hide
-	wptouchCheckToggle( '#enable_custom_post_types', '#section-foundation-web-custom-post-types' );
+	wptouchCheckToggle( '#enable_custom_post_types', '#setting-custom_post_types_in_post_index, #section-foundation-web-custom-post-types' );
 
 	fdnAdminCheckFeatured();
 

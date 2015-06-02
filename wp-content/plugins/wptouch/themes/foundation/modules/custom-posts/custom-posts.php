@@ -130,6 +130,7 @@ function wptouch_custom_posts_get_list( $remove_defaults = true ) {
 
 function wptouch_custom_posts_default_settings( $defaults ) {
 	$defaults->enable_custom_post_types = false;
+	$defaults->custom_post_types_in_post_index = true;
 	$defaults->enabled_custom_post_types = '';
 
 	return $defaults;
@@ -172,6 +173,14 @@ function wptouch_custom_posts_render_theme_settings( $page_options ) {
 					WPTOUCH_SETTING_BASIC,
 					'1.0'
 				),
+				wptouch_add_setting(
+					'checkbox',
+					'custom_post_types_in_post_index',
+					__( 'Include custom post-type posts in blog index', 'wptouch-pro' ),
+					'',
+					WPTOUCH_SETTING_BASIC,
+					'1.0'
+				),
 			),
 			$page_options,
 			FOUNDATION_SETTING_DOMAIN
@@ -207,44 +216,46 @@ function wptouch_custom_posts_pre_get_posts( $query ) {
 		if ( wptouch_is_mobile_theme_showing() ) {
 			$settings = foundation_get_settings();
 
-			$post_types = wptouch_custom_posts_get_list( true );
-			if ( $post_types && count( $post_types )  ) {
-				$post_type_array = get_option( 'wptouch_custom_post_types' );
+			if ( $settings->custom_post_types_in_post_index || ( !is_home() && !is_page() ) ) {
+				$post_types = wptouch_custom_posts_get_list( true );
+				if ( $post_types && count( $post_types )  ) {
+					$post_type_array = get_option( 'wptouch_custom_post_types' );
 
-				if ( is_array( $post_type_array ) ) {
-					$post_type_array = array_flip( $post_type_array );
-				} else {
-					$post_type_array = array();
-				}
-			}
-
-			if ( count( $post_type_array ) ) {
-				// Determine the original post type in the query
-				$original_post_type = false;
-				if ( isset( $query->queried_object ) ) {
-					$original_post_type = $query->queried_object->post_type;
-				} else if ( isset( $query->query_vars['post_type'] ) ) {
-					$original_post_type = $query->query_vars['post_type'];
-				}
-
-				if ( $original_post_type ) {
-					$page_for_posts = get_option( 'page_for_posts' );
-					if ( isset( $query->queried_object_id ) && ( $query->queried_object_id == $page_for_posts ) ) {
-						// we're on the posts page
-						$custom_post_types = apply_filters( 'wptouch_custom_posts_pre_get', array_merge( array( 'post' ), $post_type_array ) );
+					if ( is_array( $post_type_array ) ) {
+						$post_type_array = array_flip( $post_type_array );
 					} else {
-						if ( !is_array( $original_post_type ) ) {
-							$original_post_type = array( $original_post_type );
-						}
+						$post_type_array = array();
+					}
+				}
 
-						$custom_post_types = apply_filters( 'wptouch_custom_posts_pre_get', array_merge( $original_post_type, $post_type_array ) );
+				if ( count( $post_type_array ) ) {
+					// Determine the original post type in the query
+					$original_post_type = false;
+					if ( isset( $query->queried_object ) ) {
+						$original_post_type = $query->queried_object->post_type;
+					} else if ( isset( $query->query_vars['post_type'] ) ) {
+						$original_post_type = $query->query_vars['post_type'];
 					}
 
-					$query->set( 'post_type', $custom_post_types );
-				} else {
-					// We're on the home page or possibly another page for a normal site
-					$custom_post_types = apply_filters( 'wptouch_custom_posts_pre_get', array_merge( array( 'post' ), $post_type_array ) );
-					$query->set( 'post_type', $custom_post_types );
+					if ( $original_post_type ) {
+						$page_for_posts = get_option( 'page_for_posts' );
+						if ( isset( $query->queried_object_id ) && ( $query->queried_object_id == $page_for_posts ) ) {
+							// we're on the posts page
+							$custom_post_types = apply_filters( 'wptouch_custom_posts_pre_get', array_merge( array( 'post' ), $post_type_array ) );
+						} else {
+							if ( !is_array( $original_post_type ) ) {
+								$original_post_type = array( $original_post_type );
+							}
+
+							$custom_post_types = apply_filters( 'wptouch_custom_posts_pre_get', array_merge( $original_post_type, $post_type_array ) );
+						}
+
+						$query->set( 'post_type', $custom_post_types );
+					} else {
+						// We're on the home page or possibly another page for a normal site
+						$custom_post_types = apply_filters( 'wptouch_custom_posts_pre_get', array_merge( array( 'post' ), $post_type_array ) );
+						$query->set( 'post_type', $custom_post_types );
+					}
 				}
 			}
 		}

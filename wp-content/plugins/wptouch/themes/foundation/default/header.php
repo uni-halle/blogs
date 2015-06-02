@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html <?php language_attributes(); ?>>
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<title><?php wp_title( ' | ', true, 'right' ); ?></title>
@@ -9,7 +9,7 @@
 				wptouch_canonical_link();
 			}
 
-			if ( isset( $_REQUEST[ 'wptouch_preview_theme' ] ) ) {
+			if ( isset( $_REQUEST[ 'wptouch_preview_theme' ] ) || isset( $_REQUEST[ 'wptouch_switch' ] ) )  {
 				echo '<meta name="robots" content="noindex" />';
 			}
 		?>

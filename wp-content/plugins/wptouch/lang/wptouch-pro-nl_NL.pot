@@ -1,15 +1,15 @@
 # Copyright (C) 2015 WPtouch Pro
 # This file is distributed under the same license as the WPtouch Pro package.
 msgid ""
-msgstr "Project-Id-Version: WPtouch Pro 3.6.4\nReport-Msgid-Bugs-To: http://wordpress.org/tag/wptouch-pro-3\nPOT-Creation-Date: 2015-01-05 15:57:04+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2015-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
+msgstr "Project-Id-Version: WPtouch Pro 3.7.7\nReport-Msgid-Bugs-To: http://wordpress.org/support/plugin/wptouch-pro-3\nPOT-Creation-Date: 2015-04-28 17:16:54+00:00\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPO-Revision-Date: 2015-MO-DA HO:MI+ZONE\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\n"
 
 #: admin/html/help.php:1
 msgid "WPtouch Help & Account Links"
 msgstr "WPtouch Help & Account links"
 
 #: admin/html/help.php:3
-msgid "Support Forums"
-msgstr "Ondersteuningsforums"
+msgid "Support"
+msgstr "Support"
 
 #: admin/html/help.php:4
 msgid "Documentation"
@@ -27,7 +27,7 @@ msgstr "BraveNewCode op Twitter"
 msgid "Plugin Licensing Terms"
 msgstr "Plugin licentievoorwaarden"
 
-#: admin/html/notification-center.php:5
+#: admin/html/notification-center.php:5 core/admin-render.php:7
 msgid "What's in WPtouch Pro?"
 msgstr "Wat zit er in WPtouch Pro?"
 
@@ -154,312 +154,259 @@ msgstr "Compatibiliteit"
 msgid "Auto-detect"
 msgstr "Automatisch detecteren"
 
-#: admin/pages/wptouch-admin-general-settings.php:47
+#: admin/pages/wptouch-admin-general-settings.php:49
 msgid "WPtouch Pro site title"
 msgstr "WPtouch Pro sitetitel"
 
-#: admin/pages/wptouch-admin-general-settings.php:48
+#: admin/pages/wptouch-admin-general-settings.php:50
 msgid "If the title of your site is long, you can shorten it for display within WPtouch Pro themes."
 msgstr "Als de titel van je site te lang is, kan je het verkorten voor weergave in WPtouch Pro thema's."
 
-#: admin/pages/wptouch-admin-general-settings.php:55
+#: admin/pages/wptouch-admin-general-settings.php:57
 msgid "Display %sPowered by WPtouch Pro%s in footer"
 msgstr "Weergave %sPowered by WPtouch Pro%s in voettekst"
 
 #: admin/pages/wptouch-admin-general-settings.php:66
-msgid "Use my WPtouch Pro referral code to earn commission"
-msgstr "Gebruik mijn WPtouch Pro verwijzingscode om commissie te verdienen"
-
-#: admin/pages/wptouch-admin-general-settings.php:67
-msgid "Licensed users of WPtouch Pro can earn a commission for each sale they generate from their mobile website"
-msgstr "Gebruikers met een licentie van WPtouch Pro kunnen een commissie verdienen met elke verkoop die zij genereren uit hun mobiele website"
-
-#: admin/pages/wptouch-admin-general-settings.php:75
 msgid "Site Title & Byline"
 msgstr "Sitetitel & Naamregel"
 
-#: admin/pages/wptouch-admin-general-settings.php:84
+#: admin/pages/wptouch-admin-general-settings.php:75
 msgid "Regionalization"
 msgstr "Regionalisering"
 
-#: admin/pages/wptouch-admin-general-settings.php:90
+#: admin/pages/wptouch-admin-general-settings.php:81
 msgid "Language"
 msgstr "Taal"
 
-#: admin/pages/wptouch-admin-general-settings.php:91
+#: admin/pages/wptouch-admin-general-settings.php:82
 msgid "The WPtouch Pro admin panel &amp; supported themes will be shown in this locale."
 msgstr "Het WPtouch Pro adminpaneel &amp; ondersteunde thema's worden getoond in deze locale."
 
-#: admin/pages/wptouch-admin-general-settings.php:99
-msgid "Translate administration panel text"
-msgstr "Vertaal administratie paneeltekst"
-
-#: admin/pages/wptouch-admin-general-settings.php:110
+#: admin/pages/wptouch-admin-general-settings.php:103
 msgid "Display Mode"
 msgstr "Modus weergeven"
 
+#: admin/pages/wptouch-admin-general-settings.php:109
+msgid "Mobile theme is visible to"
+msgstr "Mobiele thema is zichtbaar voor"
+
+#: admin/pages/wptouch-admin-general-settings.php:114
+msgid "All Visitors"
+msgstr "Alle bezoekers"
+
+#: admin/pages/wptouch-admin-general-settings.php:115
+msgid "Site administrators"
+msgstr "Sitebeheerders"
+
 #: admin/pages/wptouch-admin-general-settings.php:116
-msgid "Theme Display"
-msgstr "Thema-weergave"
+msgid "Nobody (disable WPtouch Pro)"
+msgstr "Niemand (WPtouch Pro uitschakelen)"
 
-#: admin/pages/wptouch-admin-general-settings.php:121
-msgid "Normal (active for all mobile visitors)"
-msgstr "Normaal (actief voor alle mobiele bezoekers)"
-
-#: admin/pages/wptouch-admin-general-settings.php:122
-msgid "Preview (active only for logged-in site administrators)"
-msgstr "Preview (alleen actief voor aangemelde sitebeheerders)"
-
-#: admin/pages/wptouch-admin-general-settings.php:123
-msgid "Disabled (mobile theme will never show)"
-msgstr "Uitgeschakeld (mobiel-thema zal nooit worden getoond)"
-
-#: admin/pages/wptouch-admin-general-settings.php:132
+#: admin/pages/wptouch-admin-general-settings.php:125
 msgid "Landing Page"
 msgstr "Landingspagina"
 
-#: admin/pages/wptouch-admin-general-settings.php:138
+#: admin/pages/wptouch-admin-general-settings.php:131
 msgid "WPtouch Pro landing page"
 msgstr "WPtouch Pro bestemmingspagina"
 
-#: admin/pages/wptouch-admin-general-settings.php:143
-msgid "Default (same as WordPress)"
-msgstr "Standaard (hetzelfde als WordPress)"
+#: admin/pages/wptouch-admin-general-settings.php:136
+msgid "Default (same as desktop visitors)"
+msgstr "Standaard (zelfde als desktopbezoekers)"
 
-#: admin/pages/wptouch-admin-general-settings.php:144
-msgid "Select from WordPress pages"
-msgstr "Selecteer uit WordPress pagina's"
+#: admin/pages/wptouch-admin-general-settings.php:137
+msgid "Redirect to a page"
+msgstr "Omleiden naar een pagina"
 
-#: admin/pages/wptouch-admin-general-settings.php:152
+#: admin/pages/wptouch-admin-general-settings.php:138
+msgctxt "Refers to a custom landing page"
+msgid "Redirect to a custom URL"
+msgstr "Omleiden naar een aangepaste URL"
+
+#: admin/pages/wptouch-admin-general-settings.php:145
 msgid "Custom Slug or URL"
 msgstr "Aangepaste slug of URL"
 
-#: admin/pages/wptouch-admin-general-settings.php:153
+#: admin/pages/wptouch-admin-general-settings.php:146
 msgid "Enter a Slug (i.e. \"/home\") or a full URL path"
 msgstr "Een slug invoeren (bijv. \"/home\") of een volledige URL"
 
-#: admin/pages/wptouch-admin-general-settings.php:163
+#: admin/pages/wptouch-admin-general-settings.php:156
 msgid "Desktop / Mobile Switching"
 msgstr "Desktop / Mobiel schakelen"
 
-#: admin/pages/wptouch-admin-general-settings.php:169
-msgid "1st time visitors see desktop theme"
-msgstr "1e keer bezoekers zien bureaubladthema"
-
-#: admin/pages/wptouch-admin-general-settings.php:170
-msgid "Your regular theme will be shown to 1st time mobile visitors."
-msgstr "Je gewone thema zal aan 1e keer mobiele bezoekers getoond worden."
-
-#: admin/pages/wptouch-admin-general-settings.php:177
+#: admin/pages/wptouch-admin-general-settings.php:171
 msgid "Show switch link in mobile view"
 msgstr "Toon schakellink in mobiele weergave"
 
-#: admin/pages/wptouch-admin-general-settings.php:178
+#: admin/pages/wptouch-admin-general-settings.php:172
 msgid "Will show toggle buttons in the theme's footer allowing users to switch to your desktop theme. Is not shown in Web-App Mode."
 msgstr "Zal schakelknoppen tonen in voettekst van de thema zodat gebruikers over kunnen schakelen naar je desktop thema. Wordt niet weergegeven in Web-App modus."
 
-#: admin/pages/wptouch-admin-general-settings.php:185
-msgid "Choose the target for the mobile switch link"
-msgstr "Kies het doel voor de mobiele schakellink"
-
-#: admin/pages/wptouch-admin-general-settings.php:190
-msgid "Current page"
-msgstr "Huidige pagina"
-
-#: admin/pages/wptouch-admin-general-settings.php:191
-msgid "Home page"
-msgstr "Homepagina"
-
-#: admin/pages/wptouch-admin-general-settings.php:197
+#: admin/pages/wptouch-admin-general-settings.php:192
 msgid "Desktop theme switch buttons"
 msgstr "Desktop thema schakelknoppen"
 
-#: admin/pages/wptouch-admin-general-settings.php:198
+#: admin/pages/wptouch-admin-general-settings.php:193
 msgid "Allows visitors to switch from your desktop theme to your mobile theme. You can also customize the placement of Switch buttons by placing the wptouch_desktop_switch_link() template tag somewhere in your desktop theme."
 msgstr "Laat bezoekers van je desktop thema naar je mobiele thema omschakelen. Je kan de plaatsing van schakelknoppen ook aanpassen door de wptouch_desktop_switch_link() sjabloontag ergens in je desktop thema te plaatsen."
 
-#: admin/pages/wptouch-admin-general-settings.php:202
+#: admin/pages/wptouch-admin-general-settings.php:197
 msgid "Automatically inserted inline"
 msgstr "Automatisch inline ingevoegd"
 
-#: admin/pages/wptouch-admin-general-settings.php:203
-msgid "Automatically inserted with AJAX (better for caching)"
-msgstr "Automatisch ingevoegd met AJAX (beter voor cachen)"
+#: admin/pages/wptouch-admin-general-settings.php:198
+msgid "Automatically inserted with AJAX"
+msgstr "Automatisch ingevoegd met AJAX"
 
-#: admin/pages/wptouch-admin-general-settings.php:204
+#: admin/pages/wptouch-admin-general-settings.php:199
 msgid "Template tag"
 msgstr "Sjabloontag"
 
-#: admin/pages/wptouch-admin-general-settings.php:213
+#: admin/pages/wptouch-admin-general-settings.php:208
 msgid "Custom Code"
 msgstr "Aangepaste code"
 
-#: admin/pages/wptouch-admin-general-settings.php:219
+#: admin/pages/wptouch-admin-general-settings.php:214
 msgid "HTML, JavaScript, statistics or custom code"
 msgstr "HTML, JavaScript, statistieken of aangepaste code"
 
-#: admin/pages/wptouch-admin-general-settings.php:220
+#: admin/pages/wptouch-admin-general-settings.php:215
 msgid "Enter any custom code here to be output in the theme footer."
 msgstr "Voer een aangepaste code hier in om in de voettekst van de thema uit te voeren."
 
-#: admin/pages/wptouch-admin-general-settings.php:230
+#: admin/pages/wptouch-admin-general-settings.php:226
 msgid "Custom Stylesheet"
 msgstr "Aangepaste stylesheet"
 
-#: admin/pages/wptouch-admin-general-settings.php:236
+#: admin/pages/wptouch-admin-general-settings.php:232
 msgid "URL to a custom CSS file to load"
 msgstr "URL naar een aangepast CSS-bestand om te laden"
 
-#: admin/pages/wptouch-admin-general-settings.php:237
+#: admin/pages/wptouch-admin-general-settings.php:233
 msgid "Useful if you have specific compatibility CSS you need to add."
 msgstr "Handig als je specifieke compatibiliteit CSS moet toevoegen."
 
-#: admin/pages/wptouch-admin-general-settings.php:247
+#: admin/pages/wptouch-admin-general-settings.php:244
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: admin/pages/wptouch-admin-general-settings.php:253
+#: admin/pages/wptouch-admin-general-settings.php:250
+msgid "Enable shortcode handling"
+msgstr "Shortcode afhandeling inschakelen"
+
+#: admin/pages/wptouch-admin-general-settings.php:251
+msgid "For shortcodes registered by your desktop theme"
+msgstr "Voor shortcodes die door je desktopthema zijn geregistreerd"
+
+#: admin/pages/wptouch-admin-general-settings.php:258
+msgid "Shortcode handling"
+msgstr "Shortcode afhandeling"
+
+#: admin/pages/wptouch-admin-general-settings.php:263
+msgid "Load content as output by desktop theme (you may need to load CSS/JavaScript)"
+msgstr "Laad inhoud als output van desktopthema (misschien moet je daarvoor CSS/JavaScript laden)"
+
+#: admin/pages/wptouch-admin-general-settings.php:264
+msgid "Remove selected shortcodes from content"
+msgstr "Verwijder geselecteerde shortcodes uit inhoud"
+
+#: admin/pages/wptouch-admin-general-settings.php:270
 msgid "Remove these shortcodes when WPtouch Pro is active"
 msgstr "Verwijder deze shortcodes wanneer WPtouch Pro actief is"
 
-#: admin/pages/wptouch-admin-general-settings.php:254
+#: admin/pages/wptouch-admin-general-settings.php:271
 msgid "Enter a comma separated list of shortcodes to remove."
 msgstr "Een door komma's gescheiden lijst van shortcodes om te verwijderen invoeren."
 
-#: admin/pages/wptouch-admin-general-settings.php:264
+#: admin/pages/wptouch-admin-general-settings.php:281
 msgid "Filter URLs"
 msgstr "Filter URLs"
 
-#: admin/pages/wptouch-admin-general-settings.php:270
-msgid "Limit the function of WPtouch Pro on specific URLs/Pages"
-msgstr "Beperk de werking van WPtouch Pro op specifieke URLs/Pagina's"
+#: admin/pages/wptouch-admin-general-settings.php:295
+msgid "Load WPtouch Pro for"
+msgstr "Laad WPtouch Pro voor"
 
-#: admin/pages/wptouch-admin-general-settings.php:283
-msgid "Do not load WPtouch Pro on these URLs/pages"
-msgstr "Laad WPtouch Pro niet op deze URLs/pagina's"
+#: admin/pages/wptouch-admin-general-settings.php:300
+msgid "All URLs on my site"
+msgstr "Alle URLs op mijn site"
 
-#: admin/pages/wptouch-admin-general-settings.php:284
-msgid "Only load WPtouch Pro on these URLs/pages"
-msgstr "Laad WPtouch Pro alleen op deze URLs/pagina's"
+#: admin/pages/wptouch-admin-general-settings.php:301
+msgid "All URLs/pages except:"
+msgstr "Alle URLs/pagina's behalve:"
 
-#: admin/pages/wptouch-admin-general-settings.php:290
+#: admin/pages/wptouch-admin-general-settings.php:302
+msgid "Only these URLs/pages:"
+msgstr "Alleen deze URLs/pagina's:"
+
+#: admin/pages/wptouch-admin-general-settings.php:308
 msgid "Apply filter to these URLs/Pages"
 msgstr "Pas filter toe op deze URLs/Pagina's"
 
-#: admin/pages/wptouch-admin-general-settings.php:291
+#: admin/pages/wptouch-admin-general-settings.php:309
 #: multi-ads/multi-ads.php:274
 msgid "Each permalink URL fragment should be on its own line and relative, e.g. \"/about\" or \"/products/store\""
 msgstr "Elk permalink URL-fragment moet op zijn eigen lijn zijn en relatief, bijv. \"/over\" of \"/producten/winkel\""
 
-#: admin/pages/wptouch-admin-general-settings.php:309
+#: admin/pages/wptouch-admin-general-settings.php:329
 msgid "Desktop Theme"
 msgstr "Bureaubladthema"
 
-#: admin/pages/wptouch-admin-general-settings.php:315
+#: admin/pages/wptouch-admin-general-settings.php:335
 msgid "Try to include desktop theme functions.php file"
 msgstr "Probeer de bureaublad thema functions.php bestand te omvatten"
 
-#: admin/pages/wptouch-admin-general-settings.php:316
+#: admin/pages/wptouch-admin-general-settings.php:336
 msgid "This may be required for desktop themes with unique features that are not showing when WPtouch Pro is active."
 msgstr "Dit kan nodig zijn voor desktop thema's met unieke kenmerken die niet worden weergegeven wanneer WPtouch Pro actief is."
 
-#: admin/pages/wptouch-admin-general-settings.php:323
+#: admin/pages/wptouch-admin-general-settings.php:343
 msgid "Method to load file"
 msgstr "Methode om bestand te laden"
 
-#: admin/pages/wptouch-admin-general-settings.php:328
+#: admin/pages/wptouch-admin-general-settings.php:348
 msgid "Include file directly"
 msgstr "Bestand direct meerekenen"
 
-#: admin/pages/wptouch-admin-general-settings.php:329
+#: admin/pages/wptouch-admin-general-settings.php:349
 msgid "Translate and create new files"
 msgstr "Vertalen en nieuwe bestanden creëren"
 
-#: admin/pages/wptouch-admin-general-settings.php:338
+#: admin/pages/wptouch-admin-general-settings.php:359
 msgid "Custom User-Agents"
 msgstr "Aangepaste gebruikersagenten"
 
-#: admin/pages/wptouch-admin-general-settings.php:344
+#: admin/pages/wptouch-admin-general-settings.php:365
 msgid "User-agents (line separated)"
 msgstr "Gebruikersagenten (lijn gescheiden)"
 
-#: admin/pages/wptouch-admin-general-settings.php:345
+#: admin/pages/wptouch-admin-general-settings.php:366
 msgid "Adding additional user-agents will force WPtouch Pro to be active for matching browsers."
 msgstr "Het toevoegen van extra gebruikersagenten zal WPtouch Pro dwingen om actief te zijn voor het overeenkomen van browsers."
 
-#: admin/pages/wptouch-admin-general-settings.php:359
+#: admin/pages/wptouch-admin-general-settings.php:415
 msgid "Backup &amp; Import"
 msgstr "Back-up &amp; Importeren"
 
-#: admin/pages/wptouch-admin-general-settings.php:365
+#: admin/pages/wptouch-admin-general-settings.php:421
 msgid "Automatically backup settings to the %s folder"
 msgstr "Automatisch een back-up maken van de instellingen naar de %s map"
 
-#: admin/pages/wptouch-admin-general-settings.php:367
+#: admin/pages/wptouch-admin-general-settings.php:423
 msgid "WPtouch Pro backups your settings each time they are saved."
 msgstr "WPtouch Pro maakt een back-up van je instellingen elke keer dat ze worden opgeslagen."
 
-#: admin/pages/wptouch-admin-general-settings.php:380
-msgid "Tools &amp; Debug"
-msgstr "Tools &amp; debug"
-
-#: admin/pages/wptouch-admin-general-settings.php:386
-msgid "Use jQuery 2.x in themes (faster for mobile devices) instead of WordPress' version"
-msgstr "Gebruik jQuery 2.x in thema's (sneller op mobiele toestellen) in plaats van de WordPress-versie"
-
-#: admin/pages/wptouch-admin-general-settings.php:387
-msgid "jQuery 2.x is significantly smaller and faster than previous jQuery versions - may cause problems with other plugins, use carefully."
-msgstr "jQuery 2.x is significant kleiner en sneller dar de vorige jQuery-versies - kan problemen geven met andere plugins, gebruik voorzichtig."
-
-#: admin/pages/wptouch-admin-general-settings.php:394
-msgid "Show load times and query counts in the footer"
-msgstr "Toon laadtijden en query-aantallen in de voettekst"
-
-#: admin/pages/wptouch-admin-general-settings.php:395
-msgid "Helps you find slow pages/posts on your site."
-msgstr "Helpt jje langzame pagina's/berichten op je site te vinden."
-
-#: admin/pages/wptouch-admin-general-settings.php:402
-msgid "Enable debug log"
-msgstr "Debuglog inschakelen"
-
-#: admin/pages/wptouch-admin-general-settings.php:403
-msgid "Creates a debug file to help diagnose installation issues."
-msgstr "Creëert een debug-bestand om het diagnostiseren van installatieproblemen te helpen."
-
-#: admin/pages/wptouch-admin-general-settings.php:414
+#: admin/pages/wptouch-admin-general-settings.php:436
 msgid "WordPress Plugins"
 msgstr "WordPress plugins"
-
-#: admin/pages/wptouch-admin-general-settings.php:427
-msgid "Admin Mode"
-msgstr "Adminmodus"
-
-#: admin/pages/wptouch-admin-general-settings.php:433
-msgid "Admin panel settings shown"
-msgstr "Adminpanel instellingen weergegeven"
-
-#: admin/pages/wptouch-admin-general-settings.php:438
-msgid "Default"
-msgstr "Standaard"
-
-#: admin/pages/wptouch-admin-general-settings.php:439
-#: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
-#: admin/settings/html/checklist.php:13
-#: admin/settings/html/custom-latest-posts.php:4
-#: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
-#: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
-#: admin/settings/html/text.php:8 admin/settings/html/textarea.php:9
-msgid "Advanced"
-msgstr "Geavanceerd"
 
 #: admin/pages/wptouch-admin-menus.php:3
 msgid "Theme Menus"
 msgstr "Thema-menu's"
 
 #: admin/pages/wptouch-admin-menus.php:4
-msgid "Menu Setup"
-msgstr "Instelmenu"
+msgid "Menu Icons"
+msgstr "Menupictogrammen"
 
 #: admin/pages/wptouch-admin-menus.php:5
 msgid "Icon Upload & Sets"
@@ -471,7 +418,7 @@ msgstr "WordPress pagina's"
 
 #: admin/pages/wptouch-admin-menus.php:28
 #: admin/settings/html/icon_menu_area.php:6
-#: infinity-cache/infinity-cache.php:217
+#: infinity-cache/infinity-cache.php:228
 #: themes/foundation/modules/advertising/advertising.php:29
 #: themes/foundation/modules/media/media.php:59
 msgid "None"
@@ -480,14 +427,6 @@ msgstr "Geen"
 #: admin/pages/wptouch-admin-menus.php:66
 msgid "Menu Options"
 msgstr "Menu-opties"
-
-#: admin/pages/wptouch-admin-menus.php:72
-msgid "Enable parent items as links"
-msgstr "Schakel ouder-items in als links"
-
-#: admin/pages/wptouch-admin-menus.php:73
-msgid "If disabled, parent menu items will only toggle child items."
-msgstr "Indien uitgeschakeld, zullen oudermenu-items alleen wisselen met kind-items."
 
 #: admin/pages/wptouch-admin-menus.php:80
 msgid "Use menu icons"
@@ -525,6 +464,15 @@ msgstr "Download back-upbestand"
 #: admin/settings/html/backup.php:2
 msgid "Restore Backup File"
 msgstr "Back-upbestand herstellen"
+
+#: admin/settings/html/button.php:5 admin/settings/html/checkbox.php:6
+#: admin/settings/html/checklist.php:13
+#: admin/settings/html/custom-latest-posts.php:4
+#: admin/settings/html/list.php:16 admin/settings/html/numeric.php:12
+#: admin/settings/html/post_type.php:13 admin/settings/html/radiolist.php:13
+#: admin/settings/html/text.php:8 admin/settings/html/textarea.php:9
+msgid "Advanced"
+msgstr "Geavanceerd"
 
 #: admin/settings/html/button.php:6 admin/settings/html/checkbox.php:7
 #: admin/settings/html/checklist.php:15
@@ -566,7 +514,7 @@ msgid "Upload Icon"
 msgstr "Icoon uploaden"
 
 #: admin/settings/html/custom_icon_upload.php:4
-#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:601
+#: admin/settings/html/image-upload.php:15 core/class-wptouch-pro.php:699
 msgid "Upload Complete!"
 msgstr "Upload voltooid!"
 
@@ -678,7 +626,6 @@ msgstr "Resetten"
 #: classic-redux/default/header-bottom.php:23
 #: classic-redux/default/header-bottom.php:34
 #: classic-redux/default/header-bottom.php:114
-#: hammock/default/header-bottom.php:40
 #: mobilestore/default/header-bottom.php:57 prose/default/header-bottom.php:21
 #: scaffold/default/header-bottom.php:13
 msgid "Menu"
@@ -737,7 +684,7 @@ msgid "The %s%s%s directory is not currently writable. %sPlease fix this issue t
 msgstr "De %s%s%s map is momenteel niet schrijfbaar. %sGelieve dit probleem te corrigeren om de installatie van extra icoon sets in te schakelen."
 
 #: admin/settings/html/installed_icon_sets_ajax.php:4
-#: core/class-wptouch-pro.php:1606 core/class-wptouch-pro.php:1607
+#: core/class-wptouch-pro.php:1730 core/class-wptouch-pro.php:1731
 #: core/config.php:54
 msgid "Custom Icons"
 msgstr "Aangepaste iconen"
@@ -760,21 +707,16 @@ msgid "Pro"
 msgstr "Pro"
 
 #: admin/settings/html/plugin-compat-ajax.php:11
-#: themes/foundation/modules/custom-posts/custom-posts.php:152
-msgid "Enable %s"
-msgstr "%s inschakelen"
-
-#: admin/settings/html/plugin-compat-ajax.php:12
-msgid "When unchecked, %s will be disabled for users viewing your WPtouch Pro theme."
-msgstr "Indien niet aangevinkt, zal %s uitgeschakeld worden voor gebruikers die je WPtouch Pro thema bekijken."
+msgid "%s"
+msgstr "%s"
 
 #: admin/settings/html/plugin-compat-ajax.php:20
 msgid "No plugins to disable."
 msgstr "Geen plugins om uit te schakelen."
 
 #: admin/settings/html/plugin-compat.php:1
-msgid "Choose which plugins to include in your mobile theme"
-msgstr "Kies welke plugins je aan je mobiele thema wilt toevoegen"
+msgid "Choose which plugins are loaded for mobile requests"
+msgstr "Kies welke plugins zijn geladen voor mobiele aanvragen"
 
 #: admin/settings/html/plugin-compat.php:7
 msgid "Your active plugin list is refreshing"
@@ -813,7 +755,7 @@ msgstr "Koop nu"
 msgid "Copy"
 msgstr "Kopiëren"
 
-#: admin/settings/html/theme-browser.php:22
+#: admin/settings/html/theme-browser.php:24
 msgid "Loading Cloud Themes"
 msgstr "Cloud thema's worden geladen"
 
@@ -838,24 +780,24 @@ msgid "Look at Pro Features"
 msgstr "Bekijk Pro-functies"
 
 #: admin/settings/html/touchboard.php:16
-msgid "Product Support"
-msgstr "Product ondersteuning"
+msgid "Knowledgebase & Support"
+msgstr "Kenniscentrum & Support"
 
 #: admin/settings/html/touchboard.php:17
-msgid "Product Knowledgebase"
-msgstr "Product kennisbank"
-
-#: admin/settings/html/touchboard.php:18
-msgid "Manage Account"
-msgstr "Account beheren"
+msgid "Manage Account & License"
+msgstr "Beheer Account & Licentie"
 
 #: admin/settings/html/touchboard.php:19
-msgid "Manage License"
-msgstr "Beheer licentie"
-
-#: admin/settings/html/touchboard.php:21
 msgid "WPtouch User Guide"
 msgstr "WPtouch Gebruikershandleiding"
+
+#: admin/settings/html/touchboard.php:21
+msgid "WPtouch on Twitter"
+msgstr "WPtouch op Twitter"
+
+#: admin/settings/html/touchboard.php:22
+msgid "WPtouch on Facebook"
+msgstr "WPtouch op Facebook"
 
 #: admin/settings/html/touchboard.php:28
 msgid "WPtouch News"
@@ -865,7 +807,7 @@ msgstr "WPtouch Nieuws"
 msgid "Read More"
 msgstr "Lees meer"
 
-#: admin/settings/html/touchboard.php:47
+#: admin/settings/html/touchboard.php:41
 msgid "%s Change Log"
 msgstr "%s Changelog"
 
@@ -882,102 +824,101 @@ msgstr "Geen (Gebruik WordPress Instellingen)"
 msgid "%sAdvanced Type for WPtouch Pro%s requires %s to be enabled on your server in order to load web fonts. Please contact your server administrator or web host to enable this function."
 msgstr "%sGeavanceerd type voor WPtouch Pro%s vereist %s om op je server ingeschakeld te staan om web lettertypes te laden. Neem contact met de beheerder van je server of met je web host op om deze functie in te schakelen."
 
-#: advanced-type/advanced-type.php:80
+#: advanced-type/advanced-type.php:84
 msgid "Load Fonts"
 msgstr "Lettertypes laden"
 
-#: advanced-type/advanced-type.php:81
+#: advanced-type/advanced-type.php:85
 msgid "Could not load your fonts. Please check project/kit details and reload."
 msgstr "Kon je lettertypes niet laden. Controleer de project/kit details en laad opnieuw."
 
-#: advanced-type/advanced-type.php:231 advanced-type/advanced-type.php:252
+#: advanced-type/advanced-type.php:235 advanced-type/advanced-type.php:256
 msgid "Font Source"
 msgstr "Bron lettertype"
 
-#: advanced-type/advanced-type.php:237 advanced-type/advanced-type.php:258
+#: advanced-type/advanced-type.php:241 advanced-type/advanced-type.php:262
 msgid "Select the source for your web fonts"
 msgstr "Selecteer de bron voor je web lettertypes"
 
-#: advanced-type/advanced-type.php:238
+#: advanced-type/advanced-type.php:242
 msgid "Other options will become available once allow_url_fopen is enabled"
 msgstr "Andere opties komen beschikbaar als allow_url_fopen is ingeschakeld"
 
-#: advanced-type/advanced-type.php:242 advanced-type/advanced-type.php:263
+#: advanced-type/advanced-type.php:246 advanced-type/advanced-type.php:267
 msgid "Theme Font Pairings (Configure in Theme Settings)"
 msgstr "Thema stel lettertypes (Configureren in Thema Instellingen)"
 
-#: advanced-type/advanced-type.php:264
+#: advanced-type/advanced-type.php:268
 msgid "Custom Google Fonts"
 msgstr "Google lettertypes aanpassen"
 
-#: advanced-type/advanced-type.php:275
+#: advanced-type/advanced-type.php:279
 msgid "Kit ID"
 msgstr "Kit ID"
 
-#: advanced-type/advanced-type.php:293
+#: advanced-type/advanced-type.php:297
 msgid "Domain"
 msgstr "Domein"
 
-#: advanced-type/advanced-type.php:311
+#: advanced-type/advanced-type.php:315
 msgid "Project"
 msgstr "Project"
 
-#: advanced-type/advanced-type.php:367
+#: advanced-type/advanced-type.php:371
 msgid "Latin (Default)"
 msgstr "Latijn (Standaard)"
 
-#: advanced-type/advanced-type.php:368
+#: advanced-type/advanced-type.php:372
 msgid "Latin Extended"
 msgstr "Latin uitgebreid"
 
-#: advanced-type/advanced-type.php:369
+#: advanced-type/advanced-type.php:373
 msgid "Cyrillic"
 msgstr "Cyrillisch"
 
-#: advanced-type/advanced-type.php:370
+#: advanced-type/advanced-type.php:374
 msgid "Cyrillic Extended"
 msgstr "Cyrillisch uitgebreid"
 
-#: advanced-type/advanced-type.php:371
+#: advanced-type/advanced-type.php:375
 msgid "Greek"
 msgstr "Grieks"
 
-#: advanced-type/advanced-type.php:372
+#: advanced-type/advanced-type.php:376
 msgid "Greek Extended"
 msgstr "Grieks uitgebreid"
 
-#: advanced-type/advanced-type.php:373
-msgid "Devangari"
-msgstr "Devangari"
+#: advanced-type/advanced-type.php:377
+msgid "Devanagari"
+msgstr "Devanagari"
 
-#: advanced-type/advanced-type.php:374
+#: advanced-type/advanced-type.php:378
 msgid "Vietnamese"
 msgstr "Vietnamees"
 
-#: advanced-type/advanced-type.php:378
+#: advanced-type/advanced-type.php:382
 msgid "Heading"
 msgstr "Kop"
 
-#: advanced-type/advanced-type.php:379
+#: advanced-type/advanced-type.php:383
 msgid "Body"
 msgstr "Hoofdtekst"
 
-#: advanced-type/advanced-type.php:380
+#: advanced-type/advanced-type.php:384
 msgid "Meta"
 msgstr "Meta"
 
-#: advanced-type/advanced-type.php:405
+#: advanced-type/advanced-type.php:409
 msgid "Load subsets"
 msgstr "Laad subsets"
 
-#: advanced-type/advanced-type.php:415
+#: advanced-type/advanced-type.php:419
 msgid "Font Selection"
 msgstr "Selectie lettertype"
 
 #: bauhaus/default/header-bottom.php:13 bauhaus/default/header-bottom.php:15
 #: classic-redux/default/header-bottom.php:55
-#: hammock/default/header-bottom.php:82 scaffold/default/header-bottom.php:35
-#: simple/default/header-bottom.php:26
+#: scaffold/default/header-bottom.php:35 simple/default/header-bottom.php:26
 msgid "Logout"
 msgstr "Uitloggen"
 
@@ -989,8 +930,8 @@ msgstr "Zoek deze website"
 
 #: bauhaus/default/header-bottom.php:49 bio/default/header-bottom.php:14
 #: bio/default/header-bottom.php:25 classic-redux/default/header-bottom.php:48
-#: classic-redux/default/header-bottom.php:80
-#: mobilestore/default/header-bottom.php:84
+#: classic-redux/default/header-bottom.php:80 cms/root-functions.php:233
+#: mobilestore/default/header-bottom.php:83
 #: scaffold/default/header-bottom.php:14 scaffold/default/header-bottom.php:25
 msgid "Search"
 msgstr "Zoeken"
@@ -1060,12 +1001,11 @@ msgid "Header Menu"
 msgstr "Koptekst menu"
 
 #: bauhaus/root-functions.php:127 bio/root-functions.php:89
-#: classic-redux/root-functions.php:100 cms/root-functions.php:125
-#: cms/root-functions.php:134 hammock/root-functions.php:168
-#: mobilestore/root-functions.php:195 mobilestore/root-functions.php:207
-#: open/root-functions.php:353 prose/root-functions.php:207
-#: scaffold/root-functions.php:77 simple/root-functions.php:61
-#: simple/root-functions.php:72
+#: classic-redux/root-functions.php:100 cms/root-functions.php:127
+#: cms/root-functions.php:136 mobilestore/root-functions.php:246
+#: mobilestore/root-functions.php:258 open/root-functions.php:353
+#: prose/root-functions.php:207 scaffold/root-functions.php:77
+#: simple/root-functions.php:61 simple/root-functions.php:72
 msgid "Choose a menu"
 msgstr "Kies een menu"
 
@@ -1074,10 +1014,9 @@ msgid "Main menu selection"
 msgstr "Hoofdmenu selectie"
 
 #: bauhaus/root-functions.php:135 bio/root-functions.php:97
-#: classic-redux/root-functions.php:108 cms/root-functions.php:141
-#: hammock/root-functions.php:176 open/root-functions.php:361
-#: prose/root-functions.php:215 scaffold/root-functions.php:85
-#: simple/root-functions.php:80
+#: classic-redux/root-functions.php:108 cms/root-functions.php:143
+#: open/root-functions.php:361 prose/root-functions.php:215
+#: scaffold/root-functions.php:85 simple/root-functions.php:80
 msgid "Theme background"
 msgstr "Thema-achtergrond"
 
@@ -1086,10 +1025,10 @@ msgid "Header & Menu"
 msgstr "Koptekst & menu"
 
 #: bauhaus/root-functions.php:137 bio/root-functions.php:98
-#: classic-redux/root-functions.php:109 cms/root-functions.php:142
-#: hammock/root-functions.php:178 mobilestore/root-functions.php:239
-#: open/root-functions.php:362 prose/root-functions.php:217
-#: scaffold/root-functions.php:86 simple/root-functions.php:81
+#: classic-redux/root-functions.php:109 cms/root-functions.php:144
+#: mobilestore/root-functions.php:290 open/root-functions.php:362
+#: prose/root-functions.php:217 scaffold/root-functions.php:86
+#: simple/root-functions.php:81
 msgid "Links"
 msgstr "Links"
 
@@ -1216,14 +1155,14 @@ msgstr "Voegt zoekmogelijkheid in de sitekoptekst toe."
 msgid "Use infinite scrolling for blog"
 msgstr "Gebruik oneindig bladeren voor blog"
 
-#: bio/root-functions.php:87 hammock/root-functions.php:166
-#: mobilestore/root-functions.php:193 open/root-functions.php:351
-#: prose/root-functions.php:205 scaffold/root-functions.php:75
+#: bio/root-functions.php:87 mobilestore/root-functions.php:244
+#: open/root-functions.php:351 prose/root-functions.php:205
+#: scaffold/root-functions.php:75
 msgid "Primary Menu"
 msgstr "Primair menu"
 
-#: bio/root-functions.php:90 hammock/root-functions.php:169
-#: open/root-functions.php:354 scaffold/root-functions.php:78
+#: bio/root-functions.php:90 open/root-functions.php:354
+#: scaffold/root-functions.php:78
 msgid "Menus are awesome!"
 msgstr "Menu's zijn geweldig!"
 
@@ -1233,8 +1172,6 @@ msgid "Tweets"
 msgstr "Tweets"
 
 #: classic-redux/default/header-bottom.php:53
-#: hammock/default/header-bottom.php:80
-#: mobilestore/default/woocommerce/shop/form-login.php:31
 #: scaffold/default/header-bottom.php:33 simple/default/header-bottom.php:24
 #: themes/foundation/modules/login/login-html.php:20
 msgid "Login"
@@ -1244,12 +1181,12 @@ msgstr "Inloggen"
 msgid "Follow %s on Twitter"
 msgstr "Volg %s op Twitter"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:67
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "newer posts"
 msgstr "nieuwere berichten"
 
-#: classic-redux/default/index.php:34 cms/default/header-bottom.php:59
+#: classic-redux/default/index.php:34 cms/default/header-bottom.php:63
 #: open/default/index.php:45 themes/foundation/default/index.php:33
 msgid "older posts"
 msgstr "oudere berichten"
@@ -1286,10 +1223,11 @@ msgid "Written by %s"
 msgstr "Geschreven door %s"
 
 #: classic-redux/root-functions.php:6 classic-redux/root-functions.php:363
+#: mobilestore/root-functions.php:7 mobilestore/root-functions.php:539
 msgid "Tablets"
 msgstr "Tabletten"
 
-#: classic-redux/root-functions.php:107 cms/root-functions.php:140
+#: classic-redux/root-functions.php:107 cms/root-functions.php:142
 #: open/root-functions.php:360 simple/root-functions.php:79
 msgid "Header background"
 msgstr "Koptekst-achtergrond"
@@ -1306,7 +1244,7 @@ msgstr "Gebruik afgeronde hoeken"
 msgid "Show page title areas on pages"
 msgstr "Toon paginatitel gebieden op de pagina's"
 
-#: classic-redux/root-functions.php:369
+#: classic-redux/root-functions.php:369 mobilestore/root-functions.php:545
 msgid "Add tablet support"
 msgstr "Tablet ondersteuning toevoegen"
 
@@ -1346,16 +1284,16 @@ msgstr "Geen categorieën of tags"
 msgid "Max categories / tags"
 msgstr "Max categorieën / tags"
 
-#: classic-redux/root-functions.php:435 cms/root-functions.php:268
+#: classic-redux/root-functions.php:435 cms/root-functions.php:289
 #: simple/root-functions.php:281
 msgid "CSS Effects"
 msgstr "CSS Effecten"
 
-#: classic-redux/root-functions.php:441 cms/root-functions.php:274
+#: classic-redux/root-functions.php:441 cms/root-functions.php:295
 msgid "Add a noise effect to the header and theme background"
 msgstr "Voeg een geluidseffect toe op de koptekst-en thema-achtergrond"
 
-#: classic-redux/root-functions.php:442 cms/root-functions.php:275
+#: classic-redux/root-functions.php:442 cms/root-functions.php:296
 #: simple/root-functions.php:288
 msgid "Will apply the effect overtop of any background image you upload."
 msgstr "Zal het effect toepassen bovenop elke achtergrond afbeelding die je uploadt."
@@ -1364,19 +1302,19 @@ msgstr "Zal het effect toepassen bovenop elke achtergrond afbeelding die je uplo
 msgid "menu"
 msgstr "menu"
 
-#: cms/default/header-bottom.php:24
+#: cms/default/header-bottom.php:26
 msgid "login"
 msgstr "inloggen"
 
-#: cms/default/header-bottom.php:28
+#: cms/default/header-bottom.php:30
 msgid "logout"
 msgstr "uitloggen"
 
-#: cms/default/header-bottom.php:41 simple/default/footer-top.php:3
+#: cms/default/header-bottom.php:44 simple/default/footer-top.php:3
 msgid "search this website"
 msgstr "zoek deze website"
 
-#: cms/default/header-bottom.php:42 simple/default/footer-top.php:5
+#: cms/default/header-bottom.php:45 simple/default/footer-top.php:5
 msgid "search"
 msgstr "zoeken"
 
@@ -1384,63 +1322,67 @@ msgstr "zoeken"
 msgid "By"
 msgstr "Door"
 
-#: cms/root-functions.php:51
+#: cms/root-functions.php:54
 msgid "Alt Menu"
 msgstr "Alt-menu"
 
-#: cms/root-functions.php:123
+#: cms/root-functions.php:125
 msgid "Main Menu"
 msgstr "Hoofdmenu"
 
-#: cms/root-functions.php:132
+#: cms/root-functions.php:134
 msgid "Alternate Menu"
 msgstr "Alternatief menu"
 
-#: cms/root-functions.php:180
+#: cms/root-functions.php:182
 msgid "Show featured images on single posts"
 msgstr "Toon aanbevolen afbeeldingen op enkele berichten"
 
-#: cms/root-functions.php:197
+#: cms/root-functions.php:199
 msgid "Show titles on pages"
 msgstr "Toon titels op pagina's"
 
-#: cms/root-functions.php:212
+#: cms/root-functions.php:214
 msgid "Category Slider"
 msgstr "Categorie schuifbalk"
 
-#: cms/root-functions.php:218
+#: cms/root-functions.php:220
 msgid "Enable category slider"
 msgstr "Categorie schuifbalk inschakelen"
 
-#: cms/root-functions.php:231 simple/root-functions.php:262
+#: cms/root-functions.php:239
+msgid "Enable search"
+msgstr "Zoeken inschakelen"
+
+#: cms/root-functions.php:252 simple/root-functions.php:262
 msgid "Tiled Background Image"
 msgstr "Betegelde achtergrond afbeelding"
 
-#: cms/root-functions.php:237 simple/root-functions.php:268
+#: cms/root-functions.php:258 simple/root-functions.php:268
 msgid "(Scaled for retina displays)"
 msgstr "(Geschaald voor retina-schermen)"
 
-#: cms/root-functions.php:249
+#: cms/root-functions.php:270
 msgid "Alternate Menu Title"
 msgstr "Alternatieve menutitel"
 
-#: cms/root-functions.php:255
+#: cms/root-functions.php:276
 msgid "Alternate menu title (if used)"
 msgstr "Alternatieve menutitel (indien gebruikt)."
 
-#: cms/root-functions.php:256
+#: cms/root-functions.php:277
 msgid "If you use a second menu in CMS, this text will be used for the drop-down button title."
 msgstr "Als je een secundair menu in CMS gebruikt, zal deze tekst worden gebruikt voor de vervolgkeuzeknop titel."
 
-#: cms/root-functions.php:286
+#: cms/root-functions.php:307
 msgid "Static Front Page"
 msgstr "Statische Voorpagina"
 
-#: cms/root-functions.php:292
+#: cms/root-functions.php:313
 msgid "Static front page alternate content"
 msgstr "Statische voorpagina alternatieve inhoud"
 
-#: cms/root-functions.php:293
+#: cms/root-functions.php:314
 msgid "Shows after the featured slider (if enabled), and replaces your Static Front Page content. HTML allowed."
 msgstr "Wordt getoond na de aanbevolen schuifbalk (indien ingeschakeld), en vervangt je statische voorpagina inhoud. HTML is toegestaan​​."
 
@@ -1504,100 +1446,100 @@ msgstr "Upgraden naar Pro"
 msgid "Mobile Page Template"
 msgstr "Mobiele-paginasjabloon"
 
-#: core/admin-render.php:25
+#: core/admin-render.php:30
 msgid "Your WPtouch Pro license has expired. Renew now at a discount to continue receiving product updates and support."
 msgstr "Je WPtouch Pro licentie is verlopen. Hernieuw nu met korting om updates en ondersteuning te blijven krijgen."
 
-#: core/admin-render.php:26
+#: core/admin-render.php:31
 msgid "Renew Now"
 msgstr "Nu hernieuwen"
 
-#: core/admin-render.php:33
+#: core/admin-render.php:38
 msgid "This copy of %s is currently unlicensed!"
 msgstr "Deze kopie van %s heeft momenteel geen licentie!"
 
-#: core/admin-render.php:35
+#: core/admin-render.php:40
 msgid "Add a license %s"
 msgstr "Een %s licentie toevoegen"
 
-#: core/admin-render.php:90
+#: core/admin-render.php:105
 msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
-#: core/admin-render.php:91
+#: core/admin-render.php:106
 msgid "Preview Theme"
 msgstr "Previewthema"
 
-#: core/admin-render.php:92
+#: core/admin-render.php:107
 msgid "Reset Settings"
 msgstr "Resetinstellingen"
 
-#: core/class-wptouch-pro.php:354
+#: core/class-wptouch-pro.php:452
 msgid "Automatic theme migration from uploads/wptouch-data directory failed. Please manually move these files to wp-content/wptouch-data, or %scontact support%s to address this issue."
 msgstr "Automatische thema-migratie van uploads/wptouch-data map is mislukt. Gelieve deze bestanden naar wp-content/wptouch-data handmatig te verplaatsen of %sneem contact op met ondersteuning%s om dit probleem op te lossen."
 
-#: core/class-wptouch-pro.php:374
+#: core/class-wptouch-pro.php:472
 msgid "We were unable to install your WPtouch theme from the Cloud. Please visit %sthis article%s for more information."
 msgstr "We konden je WPtouch thema niet installeren vanuit de Cloud. Gelieve %sdit artikel%s te lezen voor meer informatie."
 
-#: core/class-wptouch-pro.php:378
+#: core/class-wptouch-pro.php:476
 msgid "Your server setup is preventing WPtouch from installing your active theme from the Cloud. Please visit %sthis article%s for more information on how to fix it."
 msgstr "Je server belet WPtouch om je actieve thema van de Cloud te installeren. Bekijk %sdit artikel%s voor meer informatie over hoe je dit kunt oplossen."
 
-#: core/class-wptouch-pro.php:593
+#: core/class-wptouch-pro.php:691
 msgid "Unsupported Browser"
 msgstr "Niet-ondersteunde browser"
 
-#: core/class-wptouch-pro.php:594
+#: core/class-wptouch-pro.php:692
 msgid "Theme Preview requires Chrome or Safari."
 msgstr "Thema-preview vereist Chrome of Safari."
 
-#: core/class-wptouch-pro.php:595
+#: core/class-wptouch-pro.php:693
 msgid "This will reset all WPtouch Pro settings.\nAre you sure?"
 msgstr "Dit zal alle WPtouch Pro instellingen resetten.\nWeet je het zeker?"
 
-#: core/class-wptouch-pro.php:596
+#: core/class-wptouch-pro.php:694
 msgid "This will reset all WPtouch Pro menu and icon settings.\nAre you sure?"
 msgstr "Dit zal alle WPtouch Pro menu-en icooninstellingen resetten.\nWeet je het zeker?"
 
-#: core/class-wptouch-pro.php:597
+#: core/class-wptouch-pro.php:695
 msgid "Offline"
 msgstr "Offline"
 
-#: core/class-wptouch-pro.php:598
+#: core/class-wptouch-pro.php:696
 msgid "You appear to be offline. Connect to the internet to see available BraveNewCloud items."
 msgstr "Je lijkt offline te zijn. Verbind met het internet om de beschikbare BraveNewCloud items te zien."
 
-#: core/class-wptouch-pro.php:599
+#: core/class-wptouch-pro.php:697
 msgid "The item failed to download for this reason: %reason%"
 msgstr "Het item kon niet downloaden om deze reden:%reden%"
 
-#: core/class-wptouch-pro.php:600
+#: core/class-wptouch-pro.php:698
 msgid "You are about to reset your license information. Proceed?"
 msgstr "Je staat op het punt om je licentie opnieuw in te stellen. Doorgaan?"
 
-#: core/class-wptouch-pro.php:602
+#: core/class-wptouch-pro.php:700
 msgid "Upload Failed: Not a valid image."
 msgstr "Uploaden mislukt: Geen geldige afbeelding."
 
-#: core/class-wptouch-pro.php:603
+#: core/class-wptouch-pro.php:701
 msgid "Click to view theme demo"
 msgstr "Klik om thema-demo te bekijken"
 
-#: core/class-wptouch-pro.php:1177
-#: themes/foundation/modules/webapp/webapp.php:12
+#: core/class-wptouch-pro.php:1301
+#: themes/foundation/modules/webapp/webapp.php:34
 msgid "Settings"
 msgstr "Instellingen"
 
-#: core/class-wptouch-pro.php:1213
+#: core/class-wptouch-pro.php:1337
 msgid "%s Changelog"
 msgstr "%s Changelog"
 
-#: core/class-wptouch-pro.php:2405
+#: core/class-wptouch-pro.php:2532
 msgid "Directory Problem"
 msgstr "Mapprobleem"
 
-#: core/class-wptouch-pro.php:2406
+#: core/class-wptouch-pro.php:2533
 msgid "One or more required directories could not be created"
 msgstr "Een of meer vereiste mappen konden niet worden gecreëerd"
 
@@ -1608,6 +1550,10 @@ msgstr "smartphone"
 #: core/globals.php:199
 msgid "tablet"
 msgstr "tablet"
+
+#: core/menu-walkers.php:288
+msgid "Feed for all posts filed under %s"
+msgstr "Feed voor alle posts opgeslagen in %s"
 
 #: core/notifications.php:124
 msgid "Preview Mode Enabled"
@@ -1650,52 +1596,6 @@ msgstr "Deze plugin werkt mogelijk niet goed in WPtouch Pro, en moet worden uitg
 msgid "Icon Installation Issue"
 msgstr "Icoon-installatie probleem"
 
-#: hammock/default/functions.php:10 prose/default/functions.php:33
-msgid "Load more from this collection"
-msgstr "Meer van deze verzameling laden"
-
-#: hammock/default/header-bottom.php:38 prose/default/header-bottom.php:19
-msgid "Collections"
-msgstr "Verzamelingen"
-
-#: hammock/default/header-bottom.php:41 prose/default/header-bottom.php:22
-msgid "Options"
-msgstr "Opties"
-
-#: hammock/root-functions.php:61 prose/root-functions.php:76
-msgid "Show categories as \"collections\" in menu"
-msgstr "Toon categorieën als \"verzamelingen\" in menu"
-
-#: hammock/root-functions.php:72 prose/root-functions.php:98
-msgid "Maximum number of items in categories/collections"
-msgstr "Maximum aantal items in categorieën/verzamelingen"
-
-#: hammock/root-functions.php:88
-msgid "Animate the featured image on posts"
-msgstr "Animeer de beschikbare afbeelding op berichten"
-
-#: hammock/root-functions.php:102 open/root-functions.php:119
-#: prose/root-functions.php:117
-msgid "Header Image"
-msgstr "Koptekst afbeelding"
-
-#: hammock/root-functions.php:108 prose/root-functions.php:123
-msgid "Displayed behind header on pages and posts without featured images."
-msgstr "Weergegeven achter de koptekst op pagina's en berichten, zonder beschikbare afbeelding."
-
-#: hammock/root-functions.php:121 prose/root-functions.php:136
-msgid "Site Intro"
-msgstr "Site intro"
-
-#: hammock/root-functions.php:127 prose/root-functions.php:142
-msgid "Displayed on post listing page below site name."
-msgstr "Weergegeven op de overzichtspagina van berichten, onder de naam van de site."
-
-#: hammock/root-functions.php:177 prose/root-functions.php:216
-#: themes/foundation/root-functions.php:11
-msgid "Branding"
-msgstr "Branding"
-
 #: include/add-ons/wordtwit-pro.php:179
 #: themes/foundation/modules/twitter/twitter.php:42
 msgid "%d second ago"
@@ -1732,11 +1632,7 @@ msgstr "Bureaubladversie"
 msgid "Switch To Mobile Version"
 msgstr "Schakel naar mobiele versie"
 
-#: include/html/footer.php:8
-msgid "Powered by %s%s%s"
-msgstr "Powered by %s%s%s"
-
-#: include/html/footer.php:10
+#: include/html/footer.php:7
 msgid "Powered by<br/>%s%s%s"
 msgstr "Powered by<br/>%s%s%s"
 
@@ -1748,169 +1644,181 @@ msgstr "%d zoekopdrachten in %0.1f mn"
 msgid "Default Template"
 msgstr "Standaard sjabloon"
 
-#: infinity-cache/infinity-cache.php:66 infinity-cache/infinity-cache.php:241
+#: infinity-cache/infinity-cache.php:70 infinity-cache/infinity-cache.php:252
 msgid "Purge Page Cache"
 msgstr "Maak paginacache leeg"
 
-#: infinity-cache/infinity-cache.php:134
+#: infinity-cache/infinity-cache.php:145
 msgid "Enable Infinity Cache"
 msgstr "Infinity cache inschakelen"
 
-#: infinity-cache/infinity-cache.php:142
+#: infinity-cache/infinity-cache.php:153
 msgid "Create cache for desktop users"
 msgstr "Creëer cache voor desktop gebruikers"
 
-#: infinity-cache/infinity-cache.php:143
+#: infinity-cache/infinity-cache.php:154
 msgid "If you are using another cache plugin such as W3, you can disable this."
 msgstr "Als je een andere cache-plugin zoals W3 gebruikt, kan je deze uitschakelen."
 
-#: infinity-cache/infinity-cache.php:164
+#: infinity-cache/infinity-cache.php:175
 msgid "Compress output using GZIP"
 msgstr "Comprimeer output met GZIP"
 
-#: infinity-cache/infinity-cache.php:174
+#: infinity-cache/infinity-cache.php:185
 msgid "Maximum age of cached content"
 msgstr "Maximumleeftijd van de inhoud in de cache"
 
-#: infinity-cache/infinity-cache.php:175
+#: infinity-cache/infinity-cache.php:186
 msgid "Each cached page will automatically be regenerated after this period elapses"
 msgstr "Elke pagina in het cachegeheugen wordt automatisch geregenereerd nadat deze periode verloopt"
 
-#: infinity-cache/infinity-cache.php:179 infinity-cache/infinity-cache.php:180
-#: infinity-cache/infinity-cache.php:181 infinity-cache/infinity-cache.php:182
-#: infinity-cache/infinity-cache.php:183
+#: infinity-cache/infinity-cache.php:190 infinity-cache/infinity-cache.php:191
+#: infinity-cache/infinity-cache.php:192 infinity-cache/infinity-cache.php:193
+#: infinity-cache/infinity-cache.php:194
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d uur"
 msgstr[1] "%d uur"
 
-#: infinity-cache/infinity-cache.php:190
+#: infinity-cache/infinity-cache.php:201
 msgid "Remove stale cache file interval"
 msgstr "Verwijder verouderd cachebestand-interval"
 
-#: infinity-cache/infinity-cache.php:195
+#: infinity-cache/infinity-cache.php:206
 msgid "Hourly"
 msgstr "Ieder uur"
 
-#: infinity-cache/infinity-cache.php:196
+#: infinity-cache/infinity-cache.php:207
 msgid "Daily"
 msgstr "Dagelijks"
 
-#: infinity-cache/infinity-cache.php:203
+#: infinity-cache/infinity-cache.php:214
 msgid "Disable caching for any of these matched URL fragments"
 msgstr "Cachen voor elk van deze URL-fragmenten diie overeenkomen uitschakelen"
 
-#: infinity-cache/infinity-cache.php:204
+#: infinity-cache/infinity-cache.php:215
 msgid "Add one URL fragment per line, i.e. %s, to not cache pages that contain each URL fragment"
 msgstr "Voeg een URL-fragment per regel toe, d.w.z %s, om de pagina's die elk URL-fragment bevatten niet te cachen"
 
-#: infinity-cache/infinity-cache.php:212
+#: infinity-cache/infinity-cache.php:223
 msgid "Content Distribution Network Service"
 msgstr "Inhouddistributie netwerkdienst"
 
-#: infinity-cache/infinity-cache.php:213
+#: infinity-cache/infinity-cache.php:224
 msgid "Using a content distribution network (CDN) can significantly enhance the responsiveness of your website."
 msgstr "Het gebruik van een inhouddistributie netwerk (CDN) kan het reactievermogen van je website aanzienlijk verbeteren."
 
-#: infinity-cache/infinity-cache.php:218
+#: infinity-cache/infinity-cache.php:229
 #: themes/foundation/modules/login/login-html.php:30
 msgid "Sign-up"
 msgstr "Aanmelden"
 
-#: infinity-cache/infinity-cache.php:226
+#: infinity-cache/infinity-cache.php:237
 msgid "URL %d"
 msgstr "URL %d"
 
-#: infinity-cache/infinity-cache.php:227
+#: infinity-cache/infinity-cache.php:238
 msgid "Add the URLs you have configured for your CDN, for example http://cdn%d.mysite.com. Add your domain for multisite as well."
 msgstr "Voeg de URLs toe die je voor je CDN hebt geconfigureerd, bijvoorbeeld http://cdn%d.mysite.com. Voeg ook je domein toe voor meerdere locaties."
 
-#: infinity-cache/infinity-cache.php:249
+#: infinity-cache/infinity-cache.php:260
 msgid "Infinity Cache"
 msgstr "Infinity cache"
 
-#: infinity-cache/infinity-cache.php:636
+#: infinity-cache/infinity-cache.php:651
 msgid "An example for this URL is: %s%s%s."
 msgstr "Een voobeeld voor deze URL is: %s%s%s."
 
-#: mobile-content/mobile-content.php:20
+#: mobile-content/mobile-content.php:25
 msgid "WPtouch Alternate Mobile Content"
 msgstr "WPtouch alternatieve mobiele-inhoud"
 
-#: mobile-content/mobile-content.php:38
-msgid "Mobile Content"
-msgstr "Mobiele-inhoud"
-
-#: mobile-content/mobile-content.php:44
+#: mobile-content/mobile-content.php:50
 msgid "Enable mobile content display"
 msgstr "Schakel mobiele-inhoud weergave in"
 
-#: mobilestore/default/functions.php:121
+#: mobile-content/mobile-content.php:58
+msgid "Mobile Content"
+msgstr "Mobiele-inhoud"
+
+#: mobilestore/default/functions.php:127
 #: mobilestore/default/woocommerce/checkout/form-login.php:16
 msgid "Login now"
 msgstr "Nu inloggen"
 
-#: mobilestore/default/functions.php:122
+#: mobilestore/default/functions.php:128
 msgid "Close"
 msgstr "Afsluiten"
 
-#: mobilestore/default/functions.php:123
+#: mobilestore/default/functions.php:129
 msgid "Add Company Name"
 msgstr "Bedrijfsnaam toevoegen"
 
-#: mobilestore/default/functions.php:124
+#: mobilestore/default/functions.php:130
 msgid "Add Order Notes"
 msgstr "Bestellingsgegevens toevoegen"
 
-#: mobilestore/default/functions.php:125
+#: mobilestore/default/functions.php:131
 msgid "CVC"
 msgstr "CVC"
 
-#: mobilestore/default/functions.php:186
+#: mobilestore/default/functions.php:192
 msgid "view more products"
 msgstr "meer producten bekijken"
 
-#: mobilestore/default/functions.php:204
+#: mobilestore/default/functions.php:210
 msgid "Added to cart"
 msgstr "Toegevoegd aan winkelwagen"
 
-#: mobilestore/default/header-bottom.php:9
+#: mobilestore/default/functions.php:389
+msgid "More"
+msgstr "Meer"
+
+#: mobilestore/default/header-bottom.php:10
 msgid "Product Categories"
 msgstr "Productcategorieën"
 
-#: mobilestore/default/header-bottom.php:15
+#: mobilestore/default/header-bottom.php:16
 msgid "Recently Viewed"
 msgstr "Recent bekeken"
 
-#: mobilestore/default/header-bottom.php:20
+#: mobilestore/default/header-bottom.php:21
 msgid "Site Menu"
 msgstr "Site-menu"
 
-#: mobilestore/default/header-bottom.php:72
+#: mobilestore/default/header-bottom.php:71
 msgid "Cart"
 msgstr "Winkelwagen"
 
-#: mobilestore/default/header-bottom.php:82
+#: mobilestore/default/header-bottom.php:81
 msgid "Search the store"
 msgstr "Zoek in winkel"
 
-#: mobilestore/default/header-bottom.php:87
+#: mobilestore/default/header-bottom.php:86
 msgid "Recent Searches"
 msgstr "Recent zoekopdrachten"
 
-#: mobilestore/default/header-bottom.php:87
+#: mobilestore/default/header-bottom.php:86
 msgid "Clear"
 msgstr "Wissen"
 
-#: mobilestore/default/header-bottom.php:104
+#: mobilestore/default/header-bottom.php:134
+msgid "Most Popular Products"
+msgstr "Populairste producten"
+
+#: mobilestore/default/header-bottom.php:147
+msgid "%s: Most Popular"
+msgstr "%s: Populairste"
+
+#: mobilestore/default/header-bottom.php:168
 msgid "Back to blog index"
 msgstr "Terug naar blog-index"
 
-#: mobilestore/default/header-bottom.php:118
+#: mobilestore/default/header-bottom.php:180
 msgid "sorting"
 msgstr "sorteren"
 
-#: mobilestore/default/header-bottom.php:119
+#: mobilestore/default/header-bottom.php:181
 msgid "filter by"
 msgstr "filteren op"
 
@@ -1938,7 +1846,6 @@ msgid "Please continue to the checkout and enter your full address to see if the
 msgstr "Ga naar de check-out en voer je volledige adres in om te kijken of er verzendmethodes beschikbaar zijn."
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:82
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:68
 msgid "Please fill in your details to see available shipping methods."
 msgstr "Vul je gegevens in om de beschikbare verzendmethodes te bekijken."
 
@@ -1948,23 +1855,19 @@ msgid "There doesn&lsquo;t seem to be any available shipping methods. Please dou
 msgstr "Er lijkt geen enkele verzendmethode beschikbaar te zijn. Check je adres nog een keer, of neem contact met ons op als je hulp nodig hebt."
 
 #: mobilestore/default/woocommerce/cart/cart-shipping.php:112
-#: mobilestore/default/woocommerce/cart/totals.php:46
 msgid "Shipping"
 msgstr "Verzendkosten"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:19
-#: mobilestore/default/woocommerce/cart/totals.php:28
-#: mobilestore/default/woocommerce/checkout/review-order.php:25
+#: mobilestore/default/woocommerce/checkout/review-order.php:68
 msgid "Cart Subtotal"
 msgstr "Subtotaal winkelwagen"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:66
-#: mobilestore/default/woocommerce/cart/totals.php:121
 msgid " (taxes estimated for %s)"
 msgstr "(geschatte belasting voor %s)"
 
 #: mobilestore/default/woocommerce/cart/cart-totals.php:69
-#: mobilestore/default/woocommerce/cart/totals.php:123
 msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
 msgstr "Let op: Verzendkosten en belasting worden geschat op%s en worden tijdens de check-out op je factuur en verzendinformatie geüpdatet."
 
@@ -1987,17 +1890,15 @@ msgstr "Coupon"
 
 #: mobilestore/default/woocommerce/cart/cart.php:93
 #: mobilestore/default/woocommerce/checkout/form-coupon.php:20
-#: mobilestore/default/woocommerce/checkout/review-order.php:41
 msgid "Coupon code"
 msgstr "Couponcode"
 
 #: mobilestore/default/woocommerce/cart/cart.php:93
 #: mobilestore/default/woocommerce/checkout/form-coupon.php:20
-#: mobilestore/default/woocommerce/checkout/review-order.php:43
 msgid "Apply"
 msgstr "Toepassen"
 
-#: mobilestore/default/woocommerce/cart/cart.php:111
+#: mobilestore/default/woocommerce/cart/cart.php:110
 msgid "Proceed to Checkout"
 msgstr "Doorgaan naar Check-out"
 
@@ -2021,50 +1922,6 @@ msgstr "Subtotaal"
 msgid "Checkout"
 msgstr "Check-out"
 
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:32
-msgid "Free"
-msgstr "Gratis"
-
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
-#: mobilestore/default/woocommerce/cart/totals.php:147
-msgid "Sorry, it seems that there are no available shipping methods for your location (%s)."
-msgstr "Sorry, er blijkt geen verzendmethode voor je locatie (%s) beschikbaar te zijn."
-
-#: mobilestore/default/woocommerce/cart/shipping-methods.php:76
-#: mobilestore/default/woocommerce/cart/totals.php:147
-msgid "If you require assistance or wish to make alternate arrangements please contact us."
-msgstr "Als je hulp nodig hebt of een andere regeling wilt treffen, neem dan contact met ons op."
-
-#: mobilestore/default/woocommerce/cart/totals.php:22
-msgid "Cart Totals"
-msgstr "Winkelwagen totalen"
-
-#: mobilestore/default/woocommerce/cart/totals.php:35
-msgid "Cart Discount"
-msgstr "Winkelwagen korting"
-
-#: mobilestore/default/woocommerce/cart/totals.php:35
-#: mobilestore/default/woocommerce/cart/totals.php:83
-msgid "[Remove]"
-msgstr "[Verwijderen]"
-
-#: mobilestore/default/woocommerce/cart/totals.php:83
-msgid "Order Discount"
-msgstr "Bestellingskorting"
-
-#: mobilestore/default/woocommerce/cart/totals.php:92
-#: mobilestore/default/woocommerce/checkout/review-order.php:94
-msgid "Order Total"
-msgstr "Totaal bestelling"
-
-#: mobilestore/default/woocommerce/cart/totals.php:105
-msgid "(Includes %s)"
-msgstr "(Inclusief %s)"
-
-#: mobilestore/default/woocommerce/cart/totals.php:135
-msgid "No shipping methods were found; please recalculate your shipping and enter your state/county and zip/postcode to ensure there are no other available methods for your location."
-msgstr "Er zijn geen verzendmethodes gevonden; bereken je verzendkosten opnieuw en voer je land en je postcode in om er zeker van te zijn dat er geen andere verzendmethodes beschikbaar zijn."
-
 #: mobilestore/default/woocommerce/checkout/form-checkout.php:20
 msgid "You must be logged in to checkout."
 msgstr "Je moet zijn ingelogd om uit te checken."
@@ -2086,12 +1943,7 @@ msgid "Enter your login details in the boxes below. If you are a new customer pl
 msgstr "Voer je logingegevens in het tekstvak hier onder in. Als je een nieuwe klant bent, ga dan naar Facturering &amp; Verzend sectie."
 
 #: mobilestore/default/woocommerce/checkout/form-pay.php:19
-#: mobilestore/default/woocommerce/checkout/review-order.php:18
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:22
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:23
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:27
-#: mobilestore/default/woocommerce/emails/customer-note.php:27
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:23
+#: mobilestore/default/woocommerce/checkout/review-order.php:31
 #: mobilestore/default/woocommerce/order/order-details.php:20
 msgid "Product"
 msgstr "Product"
@@ -2120,224 +1972,47 @@ msgstr "Naar een ander adres sturen?"
 msgid "Additional Information"
 msgstr "Aanvullende informatie"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:19
+#: mobilestore/default/woocommerce/checkout/payment.php:30
+#: mobilestore/default/woocommerce/checkout/review-order.php:161
+msgid "Please fill in your details above to see available payment methods."
+msgstr "Vul hierboven je gegevens in om de beschikbare betaalmethodes te bekijken."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:32
+#: mobilestore/default/woocommerce/checkout/review-order.php:163
+msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
+msgstr "Sorry, er blijkt geen betaalmethodes voor je locatie beschikbaar te zijn. Als je hulp nodig hebt of een andere regeling wilt treffen, neem dan contact met ons op."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:43
+#: mobilestore/default/woocommerce/checkout/review-order.php:174
+msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
+msgstr "Je browser ondersteunt JavaScript niet, of is uitgeschakeld. Zorg ervoor dat je op de <em>Update Totalen</em> knop klikt, voordat je je bestelling plaatst. Er kan je meer in rekening worden gebracht, als je dat niet doet."
+
+#: mobilestore/default/woocommerce/checkout/payment.php:43
+#: mobilestore/default/woocommerce/checkout/review-order.php:174
+msgid "Update totals"
+msgstr "Update Totalen"
+
+#: mobilestore/default/woocommerce/checkout/payment.php:54
+#: mobilestore/default/woocommerce/checkout/review-order.php:191
+msgid "I&rsquo;ve read and accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
+msgstr "I&rsquo;heeft de <a href=\"%s\" target=\"_blank\">voorwaarden &amp; condities</a> gelezen en geaccepteerd"
+
+#: mobilestore/default/woocommerce/checkout/review-order.php:32
 #: mobilestore/default/woocommerce/order/order-details.php:21
 msgid "Total"
 msgstr "Totaal"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:171
-msgid "Please fill in your details above to see available payment methods."
-msgstr "Vul hierboven je gegevens in om de beschikbare betaalmethodes te bekijken."
+#: mobilestore/default/woocommerce/checkout/review-order.php:115
+msgid "Order Total"
+msgstr "Totaal bestelling"
 
-#: mobilestore/default/woocommerce/checkout/review-order.php:173
-msgid "Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements."
-msgstr "Sorry, er blijkt geen betaalmethodes voor je locatie beschikbaar te zijn. Als je hulp nodig hebt of een andere regeling wilt treffen, neem dan contact met ons op."
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:184
-msgid "Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so."
-msgstr "Je browser ondersteunt JavaScript niet, of is uitgeschakeld. Zorg ervoor dat je op de <em>Update Totalen</em> knop klikt, voordat je je bestelling plaatst. Er kan je meer in rekening worden gebracht, als je dat niet doet."
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:184
-msgid "Update totals"
-msgstr "Update Totalen"
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:194
-msgid "I  accept the <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
-msgstr "Ik accepteer de <a href=\"%s\" target=\"_blank\">gebruiksrechtovereenkomst &amp; voorwaarden</a>"
-
-#: mobilestore/default/woocommerce/checkout/review-order.php:200
+#: mobilestore/default/woocommerce/checkout/review-order.php:181
 msgid "Place order"
 msgstr "Plaats bestelling"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:13
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:13
-msgid "You have received an order from %s. Their order is as follows:"
-msgstr "Je hebt een bestelling ontvangen van %s. Hun bestelling is als volgt:"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:17
-msgid "Order: %s"
-msgstr "Bestelling: %s"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:23
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:24
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:28
-#: mobilestore/default/woocommerce/emails/customer-note.php:28
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:24
-msgid "Quantity"
-msgstr "Hoeveelheid"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:24
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:25
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:29
-#: mobilestore/default/woocommerce/emails/customer-note.php:29
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:25
-msgid "Price"
-msgstr "Prijs"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:50
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:51
-#: mobilestore/default/woocommerce/emails/customer-note.php:55
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:51
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:38
-msgid "Customer details"
-msgstr "Klantengegevens"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:53
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:54
-#: mobilestore/default/woocommerce/emails/customer-note.php:58
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:54
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:41
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:41
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:49
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:41
-msgid "Email:"
-msgstr "E-mail:"
-
-#: mobilestore/default/woocommerce/emails/admin-new-order.php:56
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:57
-#: mobilestore/default/woocommerce/emails/customer-note.php:61
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:57
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:44
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:44
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:52
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:44
-msgid "Tel:"
-msgstr "Tel:"
-
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:13
-msgid "Hi there. Your recent order on %s has been completed. Your order details are shown below for your reference:"
-msgstr "Hallo. Je recente bestelling van %s is voltooid. Je bestellingsgegevens zijn hieronder weergegeven ter referentie:"
-
-#: mobilestore/default/woocommerce/emails/customer-completed-order.php:18
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:22
-#: mobilestore/default/woocommerce/emails/customer-note.php:22
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:18
-msgid "Order:"
-msgstr "Bestelling:"
-
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:14
-msgid "An order has been created for you on %s. To pay for this order please use the following link: %s"
-msgstr "Er is een bestelling voor je geplaatst op %s. Ga om de bestelling te betalen naar de volgende link: %s"
-
-#: mobilestore/default/woocommerce/emails/customer-invoice.php:16
-msgid "pay"
-msgstr "betalen"
-
-#: mobilestore/default/woocommerce/emails/customer-new-account.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:13
-msgid "Thanks for creating an account on %s. Your username is <strong>%s</strong>."
-msgstr "Bedankt voor het aanmaken van een account op %s. Je gebruikersnaam is <strong>%s</strong>."
-
-#: mobilestore/default/woocommerce/emails/customer-new-account.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-new-account.php:15
-msgid "You can access your account area here: %s."
-msgstr "Je krijgt hier toegang tot het gedeelte van je account: %s."
-
-#: mobilestore/default/woocommerce/emails/customer-note.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:13
-msgid "Hello, a note has just been added to your order:"
-msgstr "Hallo, er is zojuist een notitie aan je bestelling toegevoegd:"
-
-#: mobilestore/default/woocommerce/emails/customer-note.php:18
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:21
-msgid "For your reference, your order details are shown below."
-msgstr "Ter referentie zijn de gegevens van je bestelling hieronder weergegeven."
-
-#: mobilestore/default/woocommerce/emails/customer-processing-order.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:13
-msgid "Your order has been received and is now being processed. Your order details are shown below for your reference:"
-msgstr "Je bestelling is ontvangen en wordt nu verwerkt. Ter referentie zijn de gegevens van je bestelling hieronder weergegeven:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:14
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:13
-msgid "Someone requested that the password be reset for the following account:"
-msgstr "Iemand heeft verzocht om het wachtwoord van het volgende account opnieuw in te stellen:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:15
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:15
-msgid "Username: %s"
-msgstr "Gebruikersnaam: %s"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:16
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:16
-msgid "If this was a mistake, just ignore this email and nothing will happen."
-msgstr "Als dit een fout was, negeer dan deze e-mail. Dan zal er niets gebeuren."
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:17
-#: mobilestore/default/woocommerce/emails/plain/customer-reset-password.php:17
-msgid "To reset your password, visit the following address:"
-msgstr "Om je wachtwoord opnieuw in te stellen, ga je naar het volgende adres:"
-
-#: mobilestore/default/woocommerce/emails/customer-reset-password.php:20
-msgid "Click here to reset your password"
-msgstr "Klik hier om je wachtwoord opnieuw in te stellen"
-
-#: mobilestore/default/woocommerce/emails/email-addresses.php:18
-#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:12
-msgid "Billing address"
-msgstr "Factuuradres"
-
-#: mobilestore/default/woocommerce/emails/email-addresses.php:28
-#: mobilestore/default/woocommerce/emails/plain/email-addresses.php:17
-msgid "Shipping address"
-msgstr "Verzendadres"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:34
-msgid "This product is no longer available"
-msgstr "Dit product is niet meer beschikbaar"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:76
-msgid "Download %d:"
-msgstr "Download %d:"
-
-#: mobilestore/default/woocommerce/emails/email-order-items.php:78
-msgid "Download:"
-msgstr "Download:"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:19
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:19
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:27
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:19
-msgid "Order number: %s"
-msgstr "Bestellingsnummer: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:20
-#: mobilestore/default/woocommerce/emails/plain/customer-invoice.php:21
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:28
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:20
-msgid "Order date: %s"
-msgstr "Bestellingsdatum: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/admin-new-order.php:20
-msgid "jS F Y"
-msgstr "jM D J"
-
-#: mobilestore/default/woocommerce/emails/plain/customer-completed-order.php:38
-#: mobilestore/default/woocommerce/emails/plain/customer-note.php:46
-#: mobilestore/default/woocommerce/emails/plain/customer-processing-order.php:38
-#: mobilestore/default/woocommerce/order/order-details.php:97
-msgid "Your details"
-msgstr "Je gegevens"
-
-#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:28
-msgid "Quantity: %s"
-msgstr "Hoeveelheid: %s"
-
-#: mobilestore/default/woocommerce/emails/plain/email-order-items.php:31
-msgid "Cost: %s"
-msgstr "Kosten: %s"
 
 #: mobilestore/default/woocommerce/loop/no-products-found.php:14
 msgid "No products were found matching your search."
 msgstr "Er zijn geen producten gevonden, die met je zoekopdrachten overeenkomen."
-
-#: mobilestore/default/woocommerce/loop-shop.php:40
-msgid "No products found which match your selection."
-msgstr "Er zijn geen producten gevonden, die met je keuze overeenkomen."
 
 #: mobilestore/default/woocommerce/myaccount/my-account.php:19
 msgid "Hello <strong>%1$s</strong> (not %1$s? <a href=\"%2$s\">Sign out</a>)."
@@ -2374,6 +2049,10 @@ msgstr "Bekijken"
 msgid "Download file%s"
 msgstr "Download bestand%s"
 
+#: mobilestore/default/woocommerce/order/order-details.php:97
+msgid "Your details"
+msgstr "Je gegevens"
+
 #: mobilestore/default/woocommerce/order/order-details.php:101
 msgid "Email"
 msgstr "E-mail"
@@ -2395,133 +2074,115 @@ msgstr "N.V.T."
 msgid "Shipping Address"
 msgstr "Verzendadres"
 
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:63
-msgid "Products tagged &ldquo;"
-msgstr "Producten gelabeld &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:91
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:190
-msgid "Search results for &ldquo;"
-msgstr "Zoekresultaten voor &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:148
-msgid "Error 404"
-msgstr "Fout 404"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:194
-msgid "Posts tagged &ldquo;"
-msgstr "Brichten gelabeld &ldquo;"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:199
-msgid "Author:"
-msgstr "Auteur:"
-
-#: mobilestore/default/woocommerce/shop/breadcrumb.php:204
-#: themes/foundation/root-functions.php:1092
-msgid "Page"
-msgstr "Pagina"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:20
-msgid "Username or email"
-msgstr "Gebruikersnaam of e-mail"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:24
-msgid "Password"
-msgstr "Wachtwoord"
-
-#: mobilestore/default/woocommerce/shop/form-login.php:33
-msgid "Lost Password?"
-msgstr "Wachtwoord kwijt?"
-
 #: mobilestore/root-functions.php:6
 msgid "Store"
 msgstr "Winkel"
 
-#: mobilestore/root-functions.php:196
+#: mobilestore/root-functions.php:98
+msgid "Web-App Mode has been disabled because your site does not have any supported payment gateways.%sSee %s for further information."
+msgstr "Web-App Modus is uitgeschakeld omdat je site geen betalingsmethoden ondersteunt.%sBekijk %s voor meer informatie."
+
+#: mobilestore/root-functions.php:247
 msgid "Off-Canvas left menu"
 msgstr "Off-Canvas linker menu"
 
-#: mobilestore/root-functions.php:205
+#: mobilestore/root-functions.php:256
 msgid "Footer Menu"
 msgstr "Voettekst menu"
 
-#: mobilestore/root-functions.php:208
+#: mobilestore/root-functions.php:259
 msgid "Menu shown in the MobileStore footer"
 msgstr "Menu getoond in de voettekst van de MobieleWinkel"
 
-#: mobilestore/root-functions.php:215
+#: mobilestore/root-functions.php:266
 msgid "Menu & Cart Background"
 msgstr "Menu & Winkelwagen achtergrond"
 
-#: mobilestore/root-functions.php:218
+#: mobilestore/root-functions.php:269
 msgid "Header & Footer Background"
 msgstr "Koptekst & voettekst achtergrond"
 
-#: mobilestore/root-functions.php:270
+#: mobilestore/root-functions.php:322
 msgid "Primary Actions & Purchase Flow"
 msgstr "Primaire acties & Aankoop flow"
 
-#: mobilestore/root-functions.php:281
+#: mobilestore/root-functions.php:333
 msgid "Highlight Color"
 msgstr "Markeerkleur"
 
-#: mobilestore/root-functions.php:397
+#: mobilestore/root-functions.php:449
 msgid "Product Listing"
 msgstr "Productoverzicht"
 
-#: mobilestore/root-functions.php:403
+#: mobilestore/root-functions.php:455
 msgid "Number of products shown per page in product listings"
 msgstr "Aantal producten dat per pagina in het productoverzicht wordt getoond"
 
-#: mobilestore/root-functions.php:411
+#: mobilestore/root-functions.php:463
 msgid "Product Pagination"
 msgstr "Product paginering"
 
-#: mobilestore/root-functions.php:412
+#: mobilestore/root-functions.php:464
 msgid "Use AJAX load more or traditional numbered pagination."
 msgstr "Gebruik AJAX laadt meer of traditioneel genummerde paginering."
 
-#: mobilestore/root-functions.php:416
+#: mobilestore/root-functions.php:468
 msgid "Use AJAX load more"
 msgstr "Gebruik AJAX laadt meer"
 
-#: mobilestore/root-functions.php:417
+#: mobilestore/root-functions.php:469
 msgid "Use numbered pages"
 msgstr "Gebruik genummerde pagina's"
 
-#: mobilestore/root-functions.php:429
+#: mobilestore/root-functions.php:475
+msgid "Show top-selling products on homepage"
+msgstr "Toon best verkopende producten op startpagina"
+
+#: mobilestore/root-functions.php:476
+msgid "Adds a carousel with the 10 best selling products on the store homepage"
+msgstr "Voegt op de startpagina van de winkel een carrousel toe met de 10 best verkopende producten"
+
+#: mobilestore/root-functions.php:489
 msgid "Product Filters"
 msgstr "Productfilters"
 
-#: mobilestore/root-functions.php:435
+#: mobilestore/root-functions.php:495
 msgid "Show WooCommerce product filters for"
 msgstr "Toon WooCommerce-productfilters voor"
 
-#: mobilestore/root-functions.php:450
+#: mobilestore/root-functions.php:510
 msgid "Site Sidebar"
 msgstr "Zijbalk site"
 
-#: mobilestore/root-functions.php:456
+#: mobilestore/root-functions.php:516
 msgid "Show category menu in sidebar"
 msgstr "Toon categorieënmenu in zijbalk"
 
-#: mobilestore/root-functions.php:464
+#: mobilestore/root-functions.php:524
 msgid "Show recently viewed products in sidebar"
 msgstr "Toon recent bekeken producten in zijbalk"
 
-#: mobilestore/root-functions.php:548
+#: mobilestore/root-functions.php:566
+msgid "Featured Categories (Tablet)"
+msgstr "Beschikbare categorieën (Tablet)"
+
+#: mobilestore/root-functions.php:572
+msgid "List best-selling products from these categories on the homepage"
+msgstr "Zet best verkopende producten van deze categorieën op de startpagina"
+
+#: mobilestore/root-functions.php:682
 msgid "Site logo display size"
 msgstr "Afmeting weergave logo"
 
-#: mobilestore/root-functions.php:553
+#: mobilestore/root-functions.php:687
 msgid "Short (default)"
 msgstr "Kort (standaard)"
 
-#: mobilestore/root-functions.php:554
+#: mobilestore/root-functions.php:688
 msgid "Tall (longer vertically for square logos)"
 msgstr "Hoog (verticaal langer voor vierkante logo's)"
 
-#: mobilestore/root-functions.php:561
+#: mobilestore/root-functions.php:695
 msgid "Show site description in large header"
 msgstr "Toon beschrijving van site in grotere koptekst"
 
@@ -2609,12 +2270,12 @@ msgstr "We&lsquo;re <em>zijn</em> van %s %s open."
 msgid "Sorry, we&lsquo;re <em>closed</em> every %s."
 msgstr "Sorry, we&lsquo;re <em>zijn</em> om %s gesloten."
 
-#: open/default/functions.php:18 open/default/location.php:5
+#: open/default/functions.php:20 open/default/location.php:5
 #: simple/default/front-page.php:20
 msgid "Our Location"
 msgstr "Onze locatie"
 
-#: open/default/functions.php:22 open/default/hours.php:5
+#: open/default/functions.php:24 open/default/hours.php:5
 msgid "Our Hours"
 msgstr "Onze openingstijden"
 
@@ -2669,6 +2330,10 @@ msgstr "Slogan"
 #: open/root-functions.php:106
 msgid "Displayed below your logo on the homepage."
 msgstr "Op de startpagina onder je logo weergegeven."
+
+#: open/root-functions.php:119 prose/root-functions.php:117
+msgid "Header Image"
+msgstr "Koptekst afbeelding"
 
 #: open/root-functions.php:125
 msgid "Displayed behind header on pages."
@@ -2758,11 +2423,11 @@ msgstr "Tekst om bezoekers in de buurt te tonen"
 msgid "Encoded Location"
 msgstr "Gecodeerde locatie"
 
-#: pro/modules/webapp/webapp.php:129
+#: pro/modules/webapp/webapp.php:133
 msgid "External link— open it in the browser?"
 msgstr "Externe link— openen in de browser?"
 
-#: pro/modules/webapp/webapp.php:130
+#: pro/modules/webapp/webapp.php:134
 msgid "File link— Do you want to open it in the browser?"
 msgstr "Bestandslink— Wil je het in de browser openen?"
 
@@ -2905,6 +2570,10 @@ msgstr "Website"
 msgid "Publish"
 msgstr "Publiceren"
 
+#: prose/default/functions.php:33
+msgid "Load more from this collection"
+msgstr "Meer van deze verzameling laden"
+
 #: prose/default/functions.php:34
 msgid "%d minute"
 msgstr "%d minuut"
@@ -2924,6 +2593,14 @@ msgstr "%d minuten over"
 #: prose/default/functions.php:38
 msgid "Share post"
 msgstr "Bericht delen"
+
+#: prose/default/header-bottom.php:19
+msgid "Collections"
+msgstr "Verzamelingen"
+
+#: prose/default/header-bottom.php:22
+msgid "Options"
+msgstr "Opties"
 
 #: prose/default/header-bottom.php:43
 msgid "Reading Text Size"
@@ -2973,9 +2650,29 @@ msgstr "Toon opmerkingen tijdens het lezen van berichten"
 msgid "Comment form will not appear for posts with comments turned off."
 msgstr "Het opmerkingenformulier verschijnt niet bij berichten waarbij opmerkingen is uitgeschakeld."
 
+#: prose/root-functions.php:76
+msgid "Show categories as \"collections\" in menu"
+msgstr "Toon categorieën als \"verzamelingen\" in menu"
+
 #: prose/root-functions.php:87
 msgid "Use featured image as the header background when viewing single posts"
 msgstr "Gebruik beschikbare afbeeling als de achtergrondkop als je enekel berichten bekijkt"
+
+#: prose/root-functions.php:98
+msgid "Maximum number of items in categories/collections"
+msgstr "Maximum aantal items in categorieën/verzamelingen"
+
+#: prose/root-functions.php:123
+msgid "Displayed behind header on pages and posts without featured images."
+msgstr "Weergegeven achter de koptekst op pagina's en berichten, zonder beschikbare afbeelding."
+
+#: prose/root-functions.php:136
+msgid "Site Intro"
+msgstr "Site intro"
+
+#: prose/root-functions.php:142
+msgid "Displayed on post listing page below site name."
+msgstr "Weergegeven op de overzichtspagina van berichten, onder de naam van de site."
 
 #: prose/root-functions.php:155
 msgid "Drop Caps"
@@ -2989,27 +2686,31 @@ msgstr "Gebruik een decoratief initiaal aan het begin van elk blogbericht."
 msgid "Off-canvas menu for Prose"
 msgstr "Off-canvas menu voor Prose"
 
-#: responsive-images/responsive-images.php:101
+#: prose/root-functions.php:216 themes/foundation/root-functions.php:11
+msgid "Branding"
+msgstr "Branding"
+
+#: responsive-images/responsive-images.php:107
 msgid "Responsive Images"
 msgstr "Responsieve afbeeldingen"
 
-#: responsive-images/responsive-images.php:107
+#: responsive-images/responsive-images.php:113
 msgid "Include desktop optimizations for mobile devices"
 msgstr "Inclusief desktopoptimalisaties voor mobiele apparaten"
 
-#: responsive-images/responsive-images.php:108
+#: responsive-images/responsive-images.php:114
 msgid "Normally only images on mobile are optimized"
 msgstr "Gewoonlijk worden alleen afbeeldingen op een mobiel geoptimaliseerd"
 
-#: responsive-images/responsive-images.php:115
+#: responsive-images/responsive-images.php:121
 msgid "Performance preference"
 msgstr "Prestatievoorkeur"
 
-#: responsive-images/responsive-images.php:120
+#: responsive-images/responsive-images.php:126
 msgid "Optimize for page speed"
 msgstr "Optimaliseren voor paginasnelheid"
 
-#: responsive-images/responsive-images.php:121
+#: responsive-images/responsive-images.php:127
 msgid "Optimize for quality"
 msgstr "Optimaliseren voor kwaliteit"
 
@@ -3214,7 +2915,7 @@ msgstr "Taxonomie"
 msgid "Search results"
 msgstr "Zoekresultaten"
 
-#: themes/foundation/modules/base/base.php:69
+#: themes/foundation/modules/base/base.php:70
 msgid "Loading"
 msgstr "Wordt geladen"
 
@@ -3225,6 +2926,10 @@ msgstr "Thema-preview"
 #: themes/foundation/modules/base/preview-bar.php:3
 msgid "Reload"
 msgstr "Herladen"
+
+#: themes/foundation/modules/custom-posts/custom-posts.php:152
+msgid "Enable %s"
+msgstr "%s inschakelen"
 
 #: themes/foundation/modules/custom-posts/custom-posts.php:164
 msgid "Custom Post Support"
@@ -3543,22 +3248,22 @@ msgstr "E-mailadres"
 msgid "Full URL to your RSS feed"
 msgstr "Volledige URL naar je RSS-feed"
 
-#: themes/foundation/modules/tablets/tablets.php:35
+#: themes/foundation/modules/tablets/tablets.php:45
 msgid "iPad"
 msgstr "iPad"
 
-#: themes/foundation/modules/tablets/tablets.php:41
-#: themes/foundation/modules/webapp/webapp.php:73
-#: themes/foundation/modules/webapp/webapp.php:91
-#: themes/foundation/modules/webapp/webapp.php:109
-#: themes/foundation/modules/webapp/webapp.php:128
-#: themes/foundation/modules/webapp/webapp.php:146
-#: themes/foundation/modules/webapp/webapp.php:165
-#: themes/foundation/modules/webapp/webapp.php:173
-#: themes/foundation/modules/webapp/webapp.php:191
-#: themes/foundation/modules/webapp/webapp.php:199
+#: themes/foundation/modules/tablets/tablets.php:51
+#: themes/foundation/modules/webapp/webapp.php:113
+#: themes/foundation/modules/webapp/webapp.php:131
+#: themes/foundation/modules/webapp/webapp.php:149
+#: themes/foundation/modules/webapp/webapp.php:168
+#: themes/foundation/modules/webapp/webapp.php:186
+#: themes/foundation/modules/webapp/webapp.php:205
+#: themes/foundation/modules/webapp/webapp.php:213
+#: themes/foundation/modules/webapp/webapp.php:231
+#: themes/foundation/modules/webapp/webapp.php:239
+#: themes/foundation/root-functions.php:423
 #: themes/foundation/root-functions.php:441
-#: themes/foundation/root-functions.php:459
 msgid "%d by %d pixels (PNG)"
 msgstr "%d met %d pixels (PNG)"
 
@@ -3570,87 +3275,103 @@ msgstr "Uitgeschakeld"
 msgid "Twitter account to use for Tweet display"
 msgstr "Twitter-account om te gebruiken voor Tweet weergave"
 
-#: themes/foundation/modules/webapp/webapp.php:15
-msgid "Enable iOS Web-App Mode"
-msgstr "Schakel iOS Web-App Modus in"
+#: themes/foundation/modules/webapp/webapp.php:16
+msgid "Web-App Mode Unavailable"
+msgstr "Web-App Modus niet beschikbaar"
 
-#: themes/foundation/modules/webapp/webapp.php:19
+#: themes/foundation/modules/webapp/webapp.php:37
+msgid "Enable Web-App Mode"
+msgstr "Web-appmodus inschakelen"
+
+#: themes/foundation/modules/webapp/webapp.php:41
 msgid "Enable persistence"
 msgstr "Persistentie inschakelen"
 
-#: themes/foundation/modules/webapp/webapp.php:20
+#: themes/foundation/modules/webapp/webapp.php:42
 msgid "Loads the last visited URL for visitors on open."
 msgstr "Laadt de laatst bezochte URL voor bezoekers op openen."
 
-#: themes/foundation/modules/webapp/webapp.php:27
+#: themes/foundation/modules/webapp/webapp.php:49
 msgid "URLs to ignore in Web-App Mode"
 msgstr "URL's om te negeren in de Web-App modus"
 
-#: themes/foundation/modules/webapp/webapp.php:40
+#: themes/foundation/modules/webapp/webapp.php:61
+msgid "Web App Title"
+msgstr "Web App Titel"
+
+#: themes/foundation/modules/webapp/webapp.php:67
+msgid "Icon title"
+msgstr "Icoontitel"
+
+#: themes/foundation/modules/webapp/webapp.php:68
+msgid "When visitors bookmark your website, this will be the title shown."
+msgstr "Wanneer bezoekers je website als favoriet opslaan, zal dit de getoonde titel zijn."
+
+#: themes/foundation/modules/webapp/webapp.php:80
 msgid "Notice Message"
 msgstr "Kennisgevingsbericht"
 
-#: themes/foundation/modules/webapp/webapp.php:43
+#: themes/foundation/modules/webapp/webapp.php:83
 msgid "Show a notice message for iPhone, iPod touch & iPad visitors about my Web-App"
 msgstr "Toon een mededelingsbericht voor iPhone, iPod touch en iPad bezoekers over my Web-App"
 
-#: themes/foundation/modules/webapp/webapp.php:43
+#: themes/foundation/modules/webapp/webapp.php:83
 msgid "WPtouch shows a notice bubble on 1st visit letting users know about your Web-App enabled website on iOS devices."
 msgstr "WPtouch toont een berichtmelding op je 1e bezoek om gebruikers te laten weten over je Web-App ingeschakelde website op iOS-apparaten."
 
-#: themes/foundation/modules/webapp/webapp.php:44
+#: themes/foundation/modules/webapp/webapp.php:84
 msgid "Notice message contents"
 msgstr "Melding berichtinhoud"
 
-#: themes/foundation/modules/webapp/webapp.php:44
+#: themes/foundation/modules/webapp/webapp.php:84
 msgid "[icon] is used to display the appropriate bookmark icon for your device. Do not remove it from your message."
 msgstr "[icon] wordt gebruikt om het juiste bladwijzerpictogram op jouw toestel weer te geven. Verwijder het niet uit je bericht."
 
-#: themes/foundation/modules/webapp/webapp.php:48
+#: themes/foundation/modules/webapp/webapp.php:88
 msgid "the notice message will be shown again for visitors"
 msgstr "De berichtmelding zal opnieuw getoond worden voor bezoekers"
 
-#: themes/foundation/modules/webapp/webapp.php:53
+#: themes/foundation/modules/webapp/webapp.php:93
 msgid "1 day until"
 msgstr "1 dag tot"
 
-#: themes/foundation/modules/webapp/webapp.php:54
+#: themes/foundation/modules/webapp/webapp.php:94
 msgid "7 days until"
 msgstr "7 dagen tot"
 
-#: themes/foundation/modules/webapp/webapp.php:55
+#: themes/foundation/modules/webapp/webapp.php:95
 msgid "1 month until"
 msgstr "1 maand tot"
 
-#: themes/foundation/modules/webapp/webapp.php:56
+#: themes/foundation/modules/webapp/webapp.php:96
 msgid "Every time"
 msgstr "Iedere keer"
 
-#: themes/foundation/modules/webapp/webapp.php:67
+#: themes/foundation/modules/webapp/webapp.php:107
 msgid "iPhone Startup Screen"
 msgstr "iPhone startscherm"
 
-#: themes/foundation/modules/webapp/webapp.php:85
+#: themes/foundation/modules/webapp/webapp.php:125
 msgid "Retina iPhone Startup Screen"
 msgstr "Retina iPhone startscherm"
 
-#: themes/foundation/modules/webapp/webapp.php:103
+#: themes/foundation/modules/webapp/webapp.php:143
 msgid "iPhone 5 Startup Screen"
 msgstr "iPhone 5 startscherm"
 
-#: themes/foundation/modules/webapp/webapp.php:122
+#: themes/foundation/modules/webapp/webapp.php:162
 msgid "iPhone 6 Startup Screen"
 msgstr "iPhone 6 beginscherm"
 
-#: themes/foundation/modules/webapp/webapp.php:140
+#: themes/foundation/modules/webapp/webapp.php:180
 msgid "iPhone 6+ Startup Screen"
 msgstr "iPhone 6+ beginscherm"
 
-#: themes/foundation/modules/webapp/webapp.php:159
+#: themes/foundation/modules/webapp/webapp.php:199
 msgid "iPad Mini and iPad Startup Screens"
 msgstr "iPad Mini en iPad startschermen"
 
-#: themes/foundation/modules/webapp/webapp.php:185
+#: themes/foundation/modules/webapp/webapp.php:225
 msgid "Retina iPad Startup Screens"
 msgstr "Retina iPad opstartschermen"
 
@@ -3727,123 +3448,115 @@ msgid "Overrides the WordPress settings for showing comments on pages."
 msgstr "Overschrijft de WordPress instellingen voor het tonen van reacties op pagina's."
 
 #: themes/foundation/root-functions.php:404
-#: themes/foundation/root-functions.php:1141
+#: themes/foundation/root-functions.php:1237
 msgid "Pages"
 msgstr "Pagina's"
 
 #: themes/foundation/root-functions.php:417
-msgid "Icon Title"
-msgstr "Icoontitel"
-
-#: themes/foundation/root-functions.php:423
-msgid "Icon title"
-msgstr "Icoontitel"
-
-#: themes/foundation/root-functions.php:424
-msgid "When visitors bookmark your website, this will be the title shown."
-msgstr "Wanneer bezoekers je website als favoriet opslaan, zal dit de getoonde titel zijn."
+msgid "Low Resolution"
+msgstr "Lage resolutie"
 
 #: themes/foundation/root-functions.php:435
-msgid "Android"
-msgstr "Android"
+msgid "High Resolution"
+msgstr "Hoge resolutie"
 
-#: themes/foundation/root-functions.php:453
-msgid "iPhone & iPod touch"
-msgstr "iPhone & iPod touch"
-
-#: themes/foundation/root-functions.php:489
+#: themes/foundation/root-functions.php:471
 msgid "Theme Colors"
 msgstr "Thema-kleuren"
 
-#: themes/foundation/root-functions.php:501
+#: themes/foundation/root-functions.php:483
 msgid "(Scaled by themes to fit logo areas as needed)"
 msgstr "(Geschaald door thema's om in logo-gebieden te passen indien nodig)"
 
-#: themes/foundation/root-functions.php:512
+#: themes/foundation/root-functions.php:494
 msgid "Site Logo"
 msgstr "Site-logo"
 
-#: themes/foundation/root-functions.php:521
+#: themes/foundation/root-functions.php:503
 msgid "Smart App Banner"
 msgstr "Smart App Banner"
 
-#: themes/foundation/root-functions.php:527
+#: themes/foundation/root-functions.php:509
 msgid "Enter your app's %sApp Store ID%s"
 msgstr "Voeg de %sApp Store ID%s van je app in"
 
-#: themes/foundation/root-functions.php:528
+#: themes/foundation/root-functions.php:510
 msgid "Your app's unique identifier. Find your ID from the iTunes Link Maker: Search for your app. In the link it provides, your app ID is the nine-digit number in between id and ?mt. For example Angry Birds's ID is 343200656."
 msgstr "De unieke identificatiecode van je app. Zoek je ID bij de iTunes Link Maker: Zoek naar je app. In de link die je ontvangt, is je app ID het negen-cijferig getal tussen id en ?mt. Bijvoorbeeld; het ID van Angry Birds is 343200656."
 
-#: themes/foundation/root-functions.php:540
+#: themes/foundation/root-functions.php:522
 msgid "Theme Footer"
 msgstr "Thema voettekst"
 
-#: themes/foundation/root-functions.php:543
+#: themes/foundation/root-functions.php:525
 msgid "Custom footer content (HTML is allowed)"
 msgstr "Aangepaste voettekstinhoud (HTML is toegestaan)"
 
-#: themes/foundation/root-functions.php:543
+#: themes/foundation/root-functions.php:525
 msgid "You can add custom footer content that will be displayed below the switch link."
 msgstr "Je kunt aangepaste voettekst-inhoud toevoegen die onder de schakellink getoond zal worden."
 
-#: themes/foundation/root-functions.php:919
+#: themes/foundation/root-functions.php:902
 msgid "search results for '%s'"
 msgstr "zoekresultaten voor '%s'"
 
-#: themes/foundation/root-functions.php:921
+#: themes/foundation/root-functions.php:904
 msgid "%sCategories &rsaquo;%s %s"
 msgstr "%sCategorieën &rsaquo;%s %s"
 
-#: themes/foundation/root-functions.php:923
+#: themes/foundation/root-functions.php:906
 msgid "Tags &rsaquo; %s"
 msgstr "Tags &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:925
-#: themes/foundation/root-functions.php:927
-#: themes/foundation/root-functions.php:929
+#: themes/foundation/root-functions.php:908
+#: themes/foundation/root-functions.php:910
+#: themes/foundation/root-functions.php:912
 msgid "Archives &rsaquo; %s"
 msgstr "Archieven &rsaquo; %s"
 
-#: themes/foundation/root-functions.php:944
+#: themes/foundation/root-functions.php:927
 msgid "Load more from this category"
 msgstr "Laad meer uit deze categorie"
 
-#: themes/foundation/root-functions.php:946
+#: themes/foundation/root-functions.php:929
 msgid "Load more tagged like this"
 msgstr "Laad meer die getagd zijn zoals deze"
 
-#: themes/foundation/root-functions.php:948
+#: themes/foundation/root-functions.php:931
 msgid "Load more from this day"
 msgstr "Laad meer van deze dag"
 
-#: themes/foundation/root-functions.php:950
+#: themes/foundation/root-functions.php:933
 msgid "Load more from this month"
 msgstr "Laad meer van deze maand"
 
-#: themes/foundation/root-functions.php:952
+#: themes/foundation/root-functions.php:935
 msgid "Load more from this year"
 msgstr "Laad meer van dit jaar"
 
-#: themes/foundation/root-functions.php:954
+#: themes/foundation/root-functions.php:937
 msgid "Load more in this section"
 msgstr "Laad meer in deze sectie"
 
-#: themes/foundation/root-functions.php:956
+#: themes/foundation/root-functions.php:939
 msgid "Load more entries"
 msgstr "Laad meer items"
 
-#: themes/foundation/root-functions.php:1090
+#: themes/foundation/root-functions.php:1186
 msgid "Post"
 msgstr "Bericht"
+
+#: themes/foundation/root-functions.php:1188
+msgid "Page"
+msgstr "Pagina"
 
 #. Plugin Name of the plugin/theme
 msgid "WPtouch Pro"
 msgstr "WPtouch Pro"
 
-#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.6.4)  #-#-#-#-#
+#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.7.7)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.6.4)  #-#-#-#-#
+#. #-#-#-#-#  wptouch-pro-3.pot (WPtouch Pro 3.7.7)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://www.wptouch.com/"
 msgstr "http://www.wptouch.com/"

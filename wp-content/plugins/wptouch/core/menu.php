@@ -118,7 +118,7 @@ function wptouch_get_menu_icon( $page_id ) {
 	global $wptouch_pro;
 
 	if ( $page_id == false ) {
-		$page_id = wptouch_get_menu_id();
+		return wptouch_get_site_default_icon();
 	}
 
 	$menu_icon = get_post_meta( $page_id, '_wptouch_pro_menu_item_icon', true );

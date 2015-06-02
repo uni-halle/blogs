@@ -195,7 +195,7 @@ function wptouch_render_general_page( $page_options ) {
 				'3.0',
 				array(
 					'automatic' => __( 'Automatically inserted inline', 'wptouch-pro' ),
-					'ajax' => __( 'Automatically inserted with AJAX (better for caching)', 'wptouch-pro' ),
+					'ajax' => __( 'Automatically inserted with AJAX', 'wptouch-pro' ),
 					'template_tag' => __( 'Template tag', 'wptouch-pro' )
 				)
 			)
@@ -374,7 +374,7 @@ function wptouch_render_general_page( $page_options ) {
 		),
 		$page_options
 	);
-/*
+/* TODO: rip out any code related to these old settings!
 	wptouch_add_page_section(
 		WPTOUCH_ADMIN_SETUP_GENERAL,
 		__( 'JavaScript', 'wptouch-pro' ),

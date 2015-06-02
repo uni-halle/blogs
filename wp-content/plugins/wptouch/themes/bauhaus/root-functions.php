@@ -1,6 +1,6 @@
 <?php
 
-define( 'BAUHAUS_THEME_VERSION', '1.4.6' );
+define( 'BAUHAUS_THEME_VERSION', '1.4.7' );
 define( 'BAUHAUS_SETTING_DOMAIN', 'bauhaus' );
 define( 'BAUHAUS_DIR', wptouch_get_bloginfo( 'theme_root_directory' ) );
 define( 'BAUHAUS_URL', wptouch_get_bloginfo( 'theme_root_url' ) );
@@ -107,7 +107,6 @@ function bauhaus_theme_init() {
 			'spinjs',
 			'tappable',
 			'fastclick',
-			'tappable',
 			'concat'
 		)
 	);

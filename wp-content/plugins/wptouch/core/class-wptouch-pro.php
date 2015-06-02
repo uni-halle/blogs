@@ -257,9 +257,9 @@ class WPtouchProThree {
 
 		$this->check_for_critical_notifications();
 
-		if ( is_admin() ) {
-			add_action( 'admin_menu', array( &$this, 'add_notification_icon' ) );
-		}
+		// if ( is_admin() ) {
+		// 	add_action( 'admin_menu', array( &$this, 'add_notification_icon' ) );
+		// }
 	}
 
 	function desktop_shortcode_magic( $content ) {
@@ -833,7 +833,7 @@ class WPtouchProThree {
 					}
 
 					foreach( $url_list as $url ) {
-						if ( ( $url == '/' && $server_url == '/' ) || strpos( trim( $server_url, '\/' ), trim( $url, '\/' ) ) !== false ) {
+						if ( ( $url == '/' && $server_url == '/' ) || ( $url != '/' && strpos( trim( $server_url, '\/' ), trim( $url, '\/' ) ) !== false ) ) {
 							if ( $settings->url_filter_behaviour == 'exclude_urls' ) { // Excluding URLs - kill mobile if the URL is matched
 								$block_mobile = true;
 							} elseif( $settings->url_filter_behaviour == 'exclusive_urls' ) { // Exclusive URLs - kill mobile if the URL is *not* matched
@@ -1275,10 +1275,15 @@ class WPtouchProThree {
 				if ( get_magic_quotes_gpc() ) {
 					if ( is_array( $value ) ) {
 						$new_value = array();
-						foreach( $value as $x ) {
-							$new_value[] = @stripslashes( $x );
+						foreach( $value as $val_key => $x ) {
+							if ( !is_array( $x ) ) {
+								$new_value[ $val_key ] = @stripslashes( $x );
+							} else {
+								foreach ( $x as $x_key => $x_val ) {
+									$new_value[ $val_key ][ $x_key ] = @stripslashes( $x_val );
+								}
+							}
 						}
-
 						$this->post[ $key ] = $new_value;
 					} else {
 						$this->post[ $key ] = @stripslashes( $value );
@@ -1430,7 +1435,7 @@ class WPtouchProThree {
 	function get_addon_directories() {
 		$addon_directories = array();
 
-		$addon_directories[] = array( WPTOUCH_DIR . '/extensions', WPTOUCH_URL . '/extensions' );
+		$addon_directories[] = array( WPTOUCH_BASE_CONTENT_DIR . '/extensions', WPTOUCH_BASE_CONTENT_URL . '/extensions' );
 
 		return apply_filters( 'wptouch_addon_directories', $addon_directories );
 	}
