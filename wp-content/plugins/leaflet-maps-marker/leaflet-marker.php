@@ -562,8 +562,15 @@ if ( $edit_status == 'updated') {
 						global $wp_version;
 						$lmm_options = get_option( 'leafletmapsmarker_options' );
 						$defaults_marker_popups_maxwidth = intval($lmm_options['defaults_marker_popups_maxwidth'] + 1);
-						$defaults_marker_popups_image_css = urlencode(htmlspecialchars($lmm_options['defaults_marker_popups_image_css']));						
-						$custom_tinymce_css = LEAFLET_PLUGIN_URL . 'inc/css/leafletmapsmarker-admin-tinymce.php?defaults_marker_popups_maxwidth=' . $defaults_marker_popups_maxwidth . '&defaults_marker_popups_image_css=' . $defaults_marker_popups_image_css . '&wordpress_version='.$wp_version.'&timestamp='.time();
+						$defaults_marker_popups_image_css = urlencode(htmlspecialchars($lmm_options['defaults_marker_popups_image_css']));
+						//info: to prevent potential XSS attacks
+						$transient_tinymce_custom_css = get_transient( 'leafletmapsmarker_tinymce_custom_css' );
+						if ( $transient_tinymce_custom_css === FALSE ) {
+							$rand_number = substr(md5('123'.rand()), 0, 8);
+							set_transient( 'leafletmapsmarker_tinymce_custom_css', $rand_number, 60*10 );
+							$transient_tinymce_custom_css = get_transient( 'leafletmapsmarker_tinymce_custom_css' );
+						}			
+						$custom_tinymce_css = LEAFLET_PLUGIN_URL . 'inc/css/leafletmapsmarker-admin-tinymce.php?defaults_marker_popups_maxwidth=' . $defaults_marker_popups_maxwidth . '&defaults_marker_popups_image_css=' . $defaults_marker_popups_image_css . '&wordpress_version='.$wp_version.'&timestamp='.time().'&transient=' . $transient_tinymce_custom_css;
 						if ( ! empty( $mce_css ) ) {
 							$mce_css .= ',';
 						}

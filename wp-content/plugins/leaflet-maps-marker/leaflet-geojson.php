@@ -9,7 +9,7 @@ while(!is_file('wp-load.php')) {
 }
 include( 'wp-load.php' );
 //info: get callback parameters for JSONP
-$callback = (isset($_GET['callback']) == TRUE ) ? $_GET['callback'] : '';
+$callback = (isset($_GET['callback']) == TRUE ) ? preg_replace( '/[^a-zA-Z0-9_]/', '', $_GET['callback']) : '';
 //info: check if plugin is active (didnt use is_plugin_active() due to problems reported by users)
 function lmm_is_plugin_active( $plugin ) {
 	$active_plugins = get_option('active_plugins');

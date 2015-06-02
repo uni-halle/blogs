@@ -41,6 +41,36 @@ hr{color:#E6DB55}
 </style></head><body>
 <?php
 /*****************************************************************************************/
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.9') . '</strong> - ' . $text_b . ' 29.05.2015 (<a href="https://www.mapsmarker.com/v3.9.9" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td>' . $new . '</td><td>
+add support for displaying maps in bootstrap tabs
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+optimized install- and update routine script (less database queries needed)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+3 potential XSS vulnerabilities discovered by <a href="https://www.stateoftheinternet.com/security-cybersecurity.html" target="_blank">Akamai</a> - many thanks for the responsible disclosure!
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://drommemila.no" target="_blank">http://drommemila.no</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_f . '</a></p></strong>
+<tr><td>' . $issue . '</td><td>
+Internet Explorer can crash with WordPress 4.2 to 4.2.2 due to Emoji conflict (<a href="https://core.trac.wordpress.org/ticket/32305" target="_blank">details</a>) - planned to be fixed with WordPress 4.2.3, workaround until WordPress 4.2.3 is available: <a href="https://wordpress.org/plugins/disable-emojis/" target="_blank"">disable Emojis</a>
+</td></tr>
+</table>'.PHP_EOL;
+
+if ( (version_compare($lmm_version_old,"3.9.8","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.8') . '</strong> - ' . $text_b . ' 23.05.2015 (<a href="https://www.mapsmarker.com/v3.9.8" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
@@ -101,6 +131,7 @@ updated Vietnamese (vi) translation thanks to Hoai Thu, <a href="http://bizover.
 Internet Explorer can crash with WordPress 4.2 to 4.2.2 due to Emoji conflict (<a href="https://core.trac.wordpress.org/ticket/32305" target="_blank">details</a>) - planned to be fixed with WordPress 4.2.3, workaround until WordPress 4.2.3 is available: <a href="https://wordpress.org/plugins/disable-emojis/" target="_blank"">disable Emojis</a>
 </td></tr>
 </table>'.PHP_EOL;
+}
 
 if ( (version_compare($lmm_version_old,"3.9.7","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';

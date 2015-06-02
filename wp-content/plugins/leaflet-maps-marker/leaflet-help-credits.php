@@ -25,7 +25,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-help-credits.php') { die (
 	<p>
 		<a style="background:#f99755;display:block;padding:5px 5px 5px 10px;text-decoration:none;color:#2702c6;margin:10px 0;" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade"><?php _e('If you want to get dedicated 1:1 support from the plugin author, please upgrade to the pro version. Click here to find out how you can start a free 30-day-trial easily','lmm'); ?></a>
 	</p>
-	<h3 style="font-size:23px;"><?php _e('Licence','lmm') ?></h3>
+	<h3 style="font-size:23px;"><?php _e('License','lmm') ?></h3>
 	<p>
 		<?php _e('Good news, this plugin is free for everyone! Since it is released under the GPL2, you can use it free of charge on your personal or commercial blog.<br/>Anyway if you enjoy using this plugin, please consider upgrading to the pro version.','lmm') ?>
 	</p>
@@ -88,13 +88,13 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-help-credits.php') { die (
 		<li>- OpenStreetMap: <a href="http://wiki.openstreetmap.org/wiki/OpenStreetMap_License" target="_blank">OpenStreetMap License</a></li>
 		<li>- Datasource OGD Vienna maps: Stadt Wien - <a href="http://data.wien.gv.at" target="_blank">http://data.wien.gv.at</a></li>
 		<li>- Address autocompletion powered by <a href="https://developers.google.com/places/documentation/autocomplete" target="_blank">Google Places API</a></li>
-		<li>- Jquery TimePicker by Trent Richardson, <a href="http://trentrichardson.com/examples/timepicker/" target="_blank">http://trentrichardson.com/examples/timepicker/</a>, licence: GPL</li>
+		<li>- Jquery TimePicker by Trent Richardson, <a href="http://trentrichardson.com/examples/timepicker/" target="_blank">http://trentrichardson.com/examples/timepicker/</a>, license: GPL</li>
 		<li>- <a href="https://mapicons.mapsmarker.com" target="_blank">Map Icons Collection</a> by Nicolas Mollet</li>
-		<li>- Map center icon by <a href="http://glyphish.com/" target="_blank">Joseph Wain</a>, licence: Creative Commons Attribution (by)</li>
+		<li>- Map center icon by <a href="http://glyphish.com/" target="_blank">Joseph Wain</a>, license: Creative Commons Attribution (by)</li>
 		<li>- Question Mark Icon by <a href="http://www.randomjabber.com/" target="_blank">RandomJabber</a></li>
-		<li>- Images for changelog from <a href="http://www.mozilla.org/en-US/firefox/11.0/releasenotes/">Firefox release notes</a>, licence: Creative Commons Attribution ShareAlike (CC BY-SA 3.0)</li>
-		<li>- Plus-, json-, layer-, language- &amp; csv-export-icon from <a href="http://p.yusukekamiyamane.com/" target="_blank">Yusuke Kamiyamane</a>, licence: Creative Commons Attribution (by)</li>
-		<li>- Home-Icon from <a href="http://prothemedesign.com/" target="_blank">Pro Theme Design</a>, licence: Creative Commons Attribution (by)</li>
+		<li>- Images for changelog from <a href="http://www.mozilla.org/en-US/firefox/11.0/releasenotes/">Firefox release notes</a>, license: Creative Commons Attribution ShareAlike (CC BY-SA 3.0)</li>
+		<li>- Plus-, json-, layer-, language- &amp; csv-export-icon from <a href="http://p.yusukekamiyamane.com/" target="_blank">Yusuke Kamiyamane</a>, license: Creative Commons Attribution (by)</li>
+		<li>- Home-Icon from <a href="http://prothemedesign.com/" target="_blank">Pro Theme Design</a>, license: Creative Commons Attribution (by)</li>
 		<li>- Editor-Switch-Icon by AMAZIGH Aneglus, license: GNU/GPL</li>
 		<li>- Submenu icons from <a href="http://bijou.im/" target="_blank">Bijou</a> and <a href="http://somerandomdude.com/work/iconic/" target="_blank">Iconic</a> icon sets (GPL)</li>
 		<li>- Import/Export icons by <a href="http://momentumdesignlab.com/" target="_blank">Momenticons</a>, license: Creative Commons Attribution (by)</li>

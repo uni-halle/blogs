@@ -72,7 +72,7 @@ function lmm_getLatLng($address) {
 	return $response;
 }
 $lmm_options = get_option( 'leafletmapsmarker_options' );
-$callback = isset($_POST['callback']) ? $_POST['callback'] : (isset($_GET['callback']) ? $_GET['callback'] : $lmm_options['api_json_callback']);
+$callback = isset($_POST['callback']) ? preg_replace( '/[^a-zA-Z0-9_]/', '', $_POST['callback']) : (isset($_GET['callback']) ? preg_replace( '/[^a-zA-Z0-9_]/', '', $_GET['callback']) : $lmm_options['api_json_callback']);
 $format = ( isset($_POST['format']) && ( ($_POST['format'] == 'json') || ($_POST['format'] == 'xml')) ) ? $_POST['format'] : ( isset($_GET['format']) && ( ($_GET['format'] == 'json') || ($_GET['format'] == 'xml') ) ? $_GET['format'] : $lmm_options['api_default_format']);
 
 //info: API authentication functions

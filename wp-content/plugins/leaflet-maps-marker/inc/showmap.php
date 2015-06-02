@@ -891,7 +891,13 @@ function resizeMap() {
 		$lmmjs_out .= "}
 resizeMap();".PHP_EOL;
 	//info: fix for loading maps in jQuery UI tabs & jQuery Mobile
-	$lmmjs_out .= "if (typeof jQuery.ui != 'undefined') {
+	$lmmjs_out .= "if (typeof jQuery().modal == 'function') {
+		".$mapname_js.".invalidateSize();
+		$('a[data-toggle=\"tab\"]').on('shown.bs.tab', function (e) {
+			".$mapname_js.".invalidateSize();
+		});
+	}
+	if (typeof jQuery.ui != 'undefined') {
 	".$mapname_js.".invalidateSize();
 	$('.ui-tabs').on('tabsactivate', function(event, ui) {
 		".$mapname_js.".invalidateSize();

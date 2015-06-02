@@ -7,7 +7,7 @@ Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
 Requires at least: 3.3
 Tested up to:      4.2.2
-Stable tag:        3.9.8
+Stable tag:        3.9.9
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -325,10 +325,10 @@ MapsMarker &reg;
 Copyright 2011-2015, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.9.8 =
-translations updates and compatibility fixes - see https://www.mapsmarker.com/v3.9.8 for more details
+= v3.9.9 =
+Bootstrap tab support and security fixes - see https://www.mapsmarker.com/v3.9.9 for more details
 
 == Changelog ==
-[blog post with details about v3.9.8](https://www.mapsmarker.com/v3.9.8)
+[blog post with details about v3.9.9](https://www.mapsmarker.com/v3.9.9)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

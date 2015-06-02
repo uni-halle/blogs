@@ -11,7 +11,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'admin-footer.php') { die ("Please 
 
 <table cellpadding="5" cellspacing="0" style="margin-top:20px;border:1px solid #ccc;width:100%;background:#F9F9F9;">
   <tr>
-    <td valign="center"><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" target="_blank" title="<?php esc_attr_e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker-pro.png" width="65" height="65" alt="pro-logo" style="padding:5px 10px 0 10px;" /></a></div>
+    <td valign="center"><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php esc_attr_e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker-pro.png" width="65" height="65" alt="pro-logo" style="padding:5px 10px 0 10px;" /></a></div>
 	<p>
 	<a style="background:#f99755;display:block;padding:5px;text-decoration:none;color:#2702c6;margin:15px 0 10px 85px;width:800px;text-align:center;" href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade"><?php _e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?></a>
 	<a style="text-decoration:none;" href="https://www.mapsmarker.com" target="_blank"><img src="<?php echo LEAFLET_PLUGIN_URL; ?>inc/img/icon-website-home.png" width="16" height="16" alt="mapsmarker.com"> MapsMarker.com</a>&nbsp;

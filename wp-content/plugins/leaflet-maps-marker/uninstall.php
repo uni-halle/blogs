@@ -2,7 +2,7 @@
 //info: die if uninstall not called from Wordpress exit
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit ();
-$current_version = "v398"; //2do: change on each update to current version!
+$current_version = "v399"; //2do: change on each update to current version!
 if (is_multisite()) {
 	global $wpdb;
 	$blogs = $wpdb->get_results("SELECT `blog_id` FROM {$wpdb->blogs}", ARRAY_A);
@@ -21,6 +21,7 @@ if (is_multisite()) {
 		//info: dont remove files if pro version exists
 		if (!file_exists($lmm_pro_readme)) {
 			delete_transient( 'leafletmapsmarker_version_before_update' );
+			delete_transient('leafletmapsmarker_tinymce_custom_css');
 			delete_option('leafletmapsmarker_options');
 			delete_option('leafletmapsmarker_version');
 			delete_option('leafletmapsmarker_version_before_update');
@@ -54,6 +55,7 @@ if (is_multisite()) {
 			//info: dont remove files if pro version exists
 			if (!file_exists($lmm_pro_readme)) {
 				delete_transient( 'leafletmapsmarker_version_before_update' );
+				delete_transient('leafletmapsmarker_tinymce_custom_css');
 				delete_option('leafletmapsmarker_options');
 				delete_option('leafletmapsmarker_version');
 				delete_option('leafletmapsmarker_version_before_update');
@@ -95,6 +97,7 @@ else
 	$lmm_pro_readme = WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker-pro' . DIRECTORY_SEPARATOR . 'readme.txt';
 	if (!file_exists($lmm_pro_readme)) {
 		delete_transient( 'leafletmapsmarker_version_before_update' );
+		delete_transient('leafletmapsmarker_tinymce_custom_css');
 		delete_option('leafletmapsmarker_options');
 		delete_option('leafletmapsmarker_version');
 		delete_option('leafletmapsmarker_version_before_update');
