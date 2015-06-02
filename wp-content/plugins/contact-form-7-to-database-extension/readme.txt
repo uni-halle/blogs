@@ -6,7 +6,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
 Tested up to: 4.2.1
-Stable tag: 2.8.37
+Stable tag: 2.9
 
 Saves submitted form data to the database. Export the data to a file or use short codes to display it.
 
@@ -83,6 +83,13 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.9.1 =
+8 Fix for some cases where cannot delete row in administration page
+
+= 2.9 =
+* Additional HTML-injection protections
+* New option when Editor is installed [cfdb-datatable edit="cells"] enables editing of table cells but not column headers
 
 = 2.8.38 =
 * NaturalSortByMultiField transform now supports up to 10 fields to sort on
@@ -522,6 +529,12 @@ See "Database Options" -> "Save Cookie Data with Form Submissions" and "Save onl
 * Initial Revision.
 
 == Upgrade Notice ==
+
+= 2.9.1 =
+For users of the CFDB Editor, CFDB 2.9.x will require and upgrade of the CFDB Editor 1.4 as well. See admin notice after upgrade of CFDB.
+
+= 2.9 =
+For users of the CFDB Editor, CFDB 2.9 will require and upgrade of the CFDB Editor 1.4 as well. See admin notice after upgrade of CFDB.
 
 = 1.6 =
 New cool DataTable

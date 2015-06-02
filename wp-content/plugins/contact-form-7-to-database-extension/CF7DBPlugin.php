@@ -382,6 +382,9 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         add_action('wp_ajax_nopriv_cfdb-login', array(&$this, 'ajaxLogin'));
         add_action('wp_ajax_cfdb-login', array(&$this, 'ajaxLogin'));
 
+        add_action('wp_ajax_nopriv_cfdb-cleanup', array(&$this, 'ajaxCleanup'));
+        add_action('wp_ajax_cfdb-cleanup', array(&$this, 'ajaxCleanup'));
+
         // Shortcode to add a table to a page
         $sc = new CFDBShortcodeTable();
         $sc->register(array('cf7db-table', 'cfdb-table')); // cf7db-table is deprecated
@@ -549,10 +552,10 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
             $time = strtotime($submitTime);
         }
         if ($invalid === $time) {
-            _e('Invalid: ', 'contact-form-7-to-database-extension');
+            echo htmlspecialchars(__('Invalid: ', 'contact-form-7-to-database-extension'));
         }
         else {
-            _e('Valid: ', 'contact-form-7-to-database-extension');
+            echo htmlspecialchars(__('Valid: ', 'contact-form-7-to-database-extension'));
         }
 
         echo "'$submitTime' = $time";
@@ -560,6 +563,38 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         if ($invalid !== $time) {
             echo " = " . $this->formatDate($time);
         }
+        die();
+    }
+
+    public function ajaxCleanup() {
+        if (!$this->canUserDoRoleOption('CanChangeSubmitData')) {
+            die();
+        }
+        header('Content-Type: text/plain; charset=UTF-8');
+        header("Pragma: no-cache");
+        header("Expires: Thu, 01 Jan 1970 00:00:00 GMT");
+        echo htmlspecialchars(__('Checking for conflicting entries. This may take a few minutes.', 'contact-form-7-to-database-extension'));
+        echo "\n";
+        require_once('CFDBCleanupData.php');
+        $cleanup = new CFDBCleanupData($this);
+
+        echo htmlspecialchars(__('Phase 1 of 3...', 'contact-form-7-to-database-extension'));
+        $count = $cleanup->cleanupForms();
+        echo htmlspecialchars(__('Database entries fixed: ', 'contact-form-7-to-database-extension'));
+        echo ($count);
+        echo "\n";
+
+        echo htmlspecialchars(__('Phase 2 of 3...', 'contact-form-7-to-database-extension'));
+        $count = $cleanup->deleteEmptyEntries();
+        echo htmlspecialchars(__('Database entries fixed: ', 'contact-form-7-to-database-extension'));
+        echo ($count);
+        echo "\n";
+
+        echo htmlspecialchars(__('Phase 3 of 3...', 'contact-form-7-to-database-extension'));
+        $count = $cleanup->cleanupEntries();
+        echo htmlspecialchars(__('Database entries fixed: ', 'contact-form-7-to-database-extension'));
+        echo ($count);
+        echo "\n";
         die();
     }
 
@@ -936,11 +971,11 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
      */
     public function whatsInTheDBPage() {
         if (isset($_REQUEST['submit_time'])) {
-            $submitTime = htmlspecialchars($_REQUEST['submit_time']);
+            $submitTime = $_REQUEST['submit_time'];
             require_once('ExportEntry.php');
             $exp = new ExportEntry();
             if (isset($_REQUEST['form_name']) && !empty($_REQUEST['form_name'])) {
-                $form = $_REQUEST['form_name'];
+                $form = stripslashes($_REQUEST['form_name']);
             } else {
                 global $wpdb;
                 $table = $this->getSubmitsTableName();
@@ -949,11 +984,11 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
             }
 
             ?>
-            <form action="<?php echo get_admin_url() . 'admin.php?page=' . $this->getDBPageSlug() . "&form_name=$form" ?>" method="post">
-                <input name="form_name" type="hidden" value="<?php echo $form ?>"/>
-                <input name="<?php echo $submitTime ?>" type="hidden" value="row"/>
-                <?php wp_nonce_field('delete-from-' . htmlspecialchars($_REQUEST['form_name'])); ?>
-                <button id="delete" name="delete" onclick="this.form.submit();"><?php _e('Delete', 'contact-form-7-to-database-extension')?></button>
+            <form action="<?php echo get_admin_url() . 'admin.php?page=' . $this->getDBPageSlug() . "&form_name=" . urlencode($form) ?>" method="post">
+                <input name="form_name" type="hidden" value="<?php echo htmlspecialchars($form) ?>"/>
+                <input name="<?php echo htmlspecialchars($submitTime) ?>" type="hidden" value="row"/>
+                <?php wp_nonce_field('delete-from-' . $form); ?>
+                <button id="delete" name="delete" onclick="this.form.submit();"><?php echo htmlspecialchars(__('Delete', 'contact-form-7-to-database-extension')); ?></button>
             </form>
             <?php
             $exp->export($form, array('submit_time' => $submitTime));
@@ -1203,14 +1238,17 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         if (!$this->isEditorActive()) {
             return;
         }
-        $requiredEditorVersion = '1.3.1';
+        $requiredEditorVersion = '1.4';
         $editorData = $this->getEditorPluginData();
         if (isset($editorData['Version'])) {
             if (version_compare($editorData['Version'], $requiredEditorVersion) == -1) {
+                $editorPluginName = version_compare($editorData['Version'], '1.4', '<') ? 'Contact Form to DB Extension Edit' : 'Contact Form DB Editor';
                 ?>
-                <div id="message" class="error">Plugin <strong>Contact Form to DB Extension Edit</strong> should be updated.
-                    <a target="_cfdbeditupgrade" href="http://cfdbplugin.com/?page_id=939">Get the upgrade</a><br/>
-                    Current version: <?php echo $editorData['Version']; ?>, Needed version: <?php echo $requiredEditorVersion; ?>
+                <div id="message" class="error">
+                    <?php echo htmlentities(__('Plugin should be updated: ', 'contact-form-7-to-database-extension')); ?><strong><?php echo $editorPluginName ?></strong><br/>
+                    <?php echo htmlentities(__('Current version: ', 'contact-form-7-to-database-extension')); echo $editorData['Version']; ?><br/>
+                    <?php echo htmlentities(__('Minimum required version: ', 'contact-form-7-to-database-extension')); echo $requiredEditorVersion; ?><br/>
+                    <a target="_cfdbeditupgrade" href="http://cfdbplugin.com/?page_id=939"><?php echo htmlentities(__('Download the latest version', 'contact-form-7-to-database-extension')); ?></a>
                 </div>
             <?php
             }
