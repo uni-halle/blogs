@@ -113,13 +113,16 @@ function generate_settings_page()
 							<h3 class="hndle"><?php _e('Delete Customizer Settings','generate');?></h3>
 							<div class="inside">
 												
-								<p><?php _e( '<strong>Warning:</strong> Clicking this button will delete your settings set in the <a href="' . admin_url('customize.php') . '">Customizer</a> area.','generate' ); ?></p>
-								<p><?php _e( 'You may want to export your settings before deleting them forever.','generate');?></p>
+								<p><?php _e( '<strong>Warning:</strong> Deleting your <a href="' . admin_url('customize.php') . '">Customizer</a> settings can not be undone.','generate' ); ?></p>
+								<p><?php _e( 'Consider using our Import/Export add-on to export your settings before deleting them.','generate');?></p>
 								<form method="post">
 									<p><input type="hidden" name="generate_reset_customizer" value="generate_reset_customizer_settings" /></p>
 									<p>
-										<?php wp_nonce_field( 'generate_reset_customizer_nonce', 'generate_reset_customizer_nonce' ); ?>
-										<?php submit_button( __( 'Delete Default Customizer Settings', 'generate' ), 'button', 'submit', false ); ?>
+										<?php 
+										$warning = 'return confirm("' . __( 'Warning: This will delete your settings.','generate' ) . '")';
+										wp_nonce_field( 'generate_reset_customizer_nonce', 'generate_reset_customizer_nonce' );
+										submit_button( __( 'Delete Default Customizer Settings', 'generate' ), 'button', 'submit', false, array( 'onclick' => $warning ) ); 
+										?>
 									</p>
 										
 								</form>

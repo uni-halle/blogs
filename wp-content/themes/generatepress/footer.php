@@ -31,7 +31,7 @@
 		<div id="footer-widgets" class="site footer-widgets">
 			<div class="inside-footer-widgets grid-container grid-parent">
 				<?php if ( $widgets >= 1 ) : ?>
-					<div class="footer-widget-1 grid-parent grid-<?php echo apply_filters( 'footer_widget_1_width', $widget_width ); ?>">
+					<div class="footer-widget-1 grid-parent grid-<?php echo apply_filters( 'generate_footer_widget_1_width', $widget_width ); ?>">
 						<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-1')): ?>
 							<aside class="widget inner-padding widget_text">
 								<h4 class="widget-title"><?php _e('Footer Widget 1','generate');?></h4>			
@@ -45,7 +45,7 @@
 				<?php endif;
 				
 				if ( $widgets >= 2 ) : ?>
-				<div class="footer-widget-2 grid-parent grid-<?php echo apply_filters( 'footer_widget_2_width', $widget_width ); ?>">
+				<div class="footer-widget-2 grid-parent grid-<?php echo apply_filters( 'generate_footer_widget_2_width', $widget_width ); ?>">
 					<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-2')): ?>
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 2','generate');?></h4>			
@@ -59,7 +59,7 @@
 				<?php endif;
 				
 				if ( $widgets >= 3 ) : ?>
-				<div class="footer-widget-3 grid-parent grid-<?php echo apply_filters( 'footer_widget_3_width', $widget_width ); ?>">
+				<div class="footer-widget-3 grid-parent grid-<?php echo apply_filters( 'generate_footer_widget_3_width', $widget_width ); ?>">
 					<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-3')): ?>
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 3','generate');?></h4>			
@@ -73,7 +73,7 @@
 				<?php endif;
 				
 				if ( $widgets >= 4 ) : ?>
-				<div class="footer-widget-4 grid-parent grid-<?php echo apply_filters( 'footer_widget_4_width', $widget_width ); ?>">
+				<div class="footer-widget-4 grid-parent grid-<?php echo apply_filters( 'generate_footer_widget_4_width', $widget_width ); ?>">
 					<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-4')): ?>
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 4','generate');?></h4>			
@@ -87,7 +87,7 @@
 				<?php endif;
 				
 				if ( $widgets >= 5 ) : ?>
-				<div class="footer-widget-5 grid-parent grid-<?php echo apply_filters( 'footer_widget_5_width', $widget_width ); ?>">
+				<div class="footer-widget-5 grid-parent grid-<?php echo apply_filters( 'generate_footer_widget_5_width', $widget_width ); ?>">
 					<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-5')): ?>
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 5','generate');?></h4>			

@@ -5,7 +5,7 @@
  * @package Generate
  */
 	
-define( 'GENERATE_VERSION', '1.2.9.6');
+define( 'GENERATE_VERSION', '1.2.9.8');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -233,7 +233,8 @@ function generate_scripts() {
 		get_option( 'generate_settings', array() ), 
 		generate_get_defaults() 
 	);
-
+	
+	// Stylesheets
 	wp_enqueue_style( 'generate-style-grid', get_template_directory_uri() . '/css/unsemantic-grid.css', false, GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-style', get_template_directory_uri() . '/style.css', false, GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-mobile-style', get_template_directory_uri() . '/css/mobile.css', false, GENERATE_VERSION, 'all' );
@@ -244,16 +245,17 @@ function generate_scripts() {
 	wp_enqueue_style( 'superfish', get_template_directory_uri() . '/css/superfish.css', false, GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css', false, '4.3.0', 'all' );
 
-	// Generate scripts
+	// Scripts
 	wp_enqueue_script( 'generate-navigation', get_template_directory_uri() . '/js/navigation.js', array(), GENERATE_VERSION, true );
 	wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.js', array('jquery'), GENERATE_VERSION, true );
 	wp_enqueue_script( 'hoverIntent', get_template_directory_uri() . '/js/hoverIntent.js', array('superfish'), GENERATE_VERSION, true );
 
 	if ( 'enable' == $generate_settings['nav_search'] ) {
 		wp_enqueue_script( 'generate-navigation-search', get_template_directory_uri() . '/js/navigation-search.js', array('jquery'), GENERATE_VERSION, true );
-		wp_localize_script( 'generate-navigation-search', 'generateSearch', array(
-			'search' => _x( 'Search', 'submit button', 'generate' ),
-		) );
+	}
+	
+	if ( 'nav-left-sidebar' == $generate_settings['nav_position_setting'] || 'nav-right-sidebar' == $generate_settings['nav_position_setting'] ) {
+		wp_enqueue_script( 'generate-move-navigation', get_template_directory_uri() . '/js/move-navigation.js', array('jquery'), GENERATE_VERSION, true );
 	}
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

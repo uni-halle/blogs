@@ -51,6 +51,9 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			'entry_meta_text_color' => '#888888',
 			'entry_meta_link_color' => '#666666',
 			'entry_meta_link_color_hover' => '#1E73BE',
+			'h1_color' => '',
+			'h2_color' => '',
+			'h3_color' => '',
 			'sidebar_widget_background_color' => '#FFFFFF',
 			'sidebar_widget_text_color' => '#3a3a3a',
 			'sidebar_widget_link_color' => '',
@@ -291,6 +294,21 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			// Entry meta links hover
 			'.entry-meta a:hover' => array(
 				'color' => $generate_settings['entry_meta_link_color_hover']
+			),
+			
+			// Heading 1 (H1) color
+			'h1' => array(
+				'color' => $generate_settings['h1_color']
+			),
+			
+			// Heading 2 (H2) color
+			'h2' => array(
+				'color' => $generate_settings['h2_color']
+			),
+			
+			// Heading 3 (H3) color
+			'h3' => array(
+				'color' => $generate_settings['h3_color']
 			),
 			
 			// Sidebar widget

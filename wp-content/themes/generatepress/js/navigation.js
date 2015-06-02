@@ -41,10 +41,11 @@ jQuery(window).load(function($) {
         if( ! mobile.is( ':visible' ) && !sf.hasClass('sf-js-enabled') ) {
 			if (typeof jQuery.fn.superfish !== 'undefined' && jQuery.isFunction(jQuery.fn.superfish)) {
 				// you only want SuperFish to be re-enabled once (sf.hasClass)
-				jQuery( '.main-nav > ul' ).superfish({
+				sf.superfish({
 					delay:       500,                            // one second delay on mouseout
 					animation:   {opacity:'show',height:'show'},  // fade-in and slide-down animation
-					speed:       'fast'                          // faster animation speed
+					speed:       'fast',                          // faster animation speed
+					cssArrows:   false
 				});
 			}
         } else if ( mobile.is( ':visible' ) ) {

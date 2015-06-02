@@ -10,6 +10,30 @@ Changelog Legend:
 
 ----
 
+(5/29/2015) - 1.2.9.8
+[*] Adjust superfish menu dropdown selector
+[*] Update superfish.js menu
+[*] Update HTML5Shiv.js
+
+----
+
+(5/28/2015) - 1.2.9.7
+[+] Romanian translation added (thanks, Adrian!!)
+[+] Add warning to delete customizer settings button
+[!] Fix arrow direction of navigation in left sidebar
+[*] Adjust wording in "Delete Customizer Settings" section.
+[+] Add generate_header_items() function so we can overwrite it in child theme easily
+[*] Add search icon to navigation using function instead of JS to avoid jumping
+[+] Add new hook inside mobile menu: generate_inside_mobile_menu
+[!] Fix weird invisible text issue in Chrome
+[*] Remove gaps between centered menu items in Safari
+[*] Russian translated updated (thanks, Alexey!!)
+[+] Add post meta to Link post format
+[*] Change footer widget width filters to include generate_ at the start of the name. If you've used these filters, please change the filter name accordingly.
+[+] Add built-in class for menu items to float right (social media icons etc..): menu-item-float-right
+
+----
+
 (5/9/2015) - 1.2.9.6
 [+] Get footer widgets of current page with generate_get_footer_widgets()
 [+] generate_footer_widgets filter added

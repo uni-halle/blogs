@@ -43,6 +43,7 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 			'widget_title_font_weight' => 'normal',
 			'widget_title_font_transform' => 'none',
 			'widget_title_font_size' => '20',
+			'widget_content_font_size' => '17',
 			'font_heading_1' => 'inherit',
 			'heading_1_weight' => '300',
 			'heading_1_transform' => 'none',
@@ -142,6 +143,11 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 				'font-weight' => $generate_settings['widget_title_font_weight'],
 				'text-transform' => $generate_settings['widget_title_font_transform'],
 				'font-size' => $generate_settings['widget_title_font_size'] . 'px'
+			),
+			
+			// Widget font size
+			'.sidebar .widget, .footer-widgets .widget' => array(
+				'font-size' => $generate_settings['widget_content_font_size'] . 'px'
 			),
 			
 			// Heading 1 font
@@ -263,7 +269,7 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
         $fonts_url = add_query_arg( $font_args, '//fonts.googleapis.com/css' );
 		
 		if ( $google_fonts ) { 
-			wp_enqueue_style('generate-fonts', $fonts_url, false, GENERATE_VERSION, 'all' );
+			wp_enqueue_style('generate-fonts', $fonts_url );
 		}
 	}
 endif;

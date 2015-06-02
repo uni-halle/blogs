@@ -325,8 +325,35 @@ function generate_navigation_search()
 	<form role="search" method="get" class="search-form navigation-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 		<input type="search" class="search-field" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" title="<?php _ex( 'Search', 'label', 'generate' ); ?>">
 	</form>
-	
 	<?php
+}
+endif;
+
+if ( ! function_exists( 'generate_menu_search_icon' ) ) :
+/**
+ * Add search icon to primary menu if set
+ *
+ * @since 1.2.9.7
+ */
+add_filter( 'wp_nav_menu_items','generate_menu_search_icon', 10, 2 );
+function generate_menu_search_icon( $nav, $args ) 
+{
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	// If the search icon isn't enabled, return the regular nav
+	if ( 'enable' !== $generate_settings['nav_search'] )
+		return $nav;
+	
+	// If our primary menu is set, add the search icon
+    if( $args->theme_location == 'primary' )
+        return $nav . '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generate' ) . '"><a href="#"><i class="fa fa-search"></i></a></li>';
+	
+	// Our primary menu isn't set, return the regular nav
+	// In this case, the search icon is added to the generate_menu_fallback() function in navigation.php
+    return $nav;
 }
 endif;
 
@@ -336,38 +363,9 @@ if ( ! function_exists( 'generate_entry_meta' ) ) :
  *
  * @since 1.2.5
  */
-function generate_entry_meta() {
-
-	// Commented out for now - will be added later
-	// if ( in_array( get_post_type(), array( 'post', 'attachment' ) ) ) {
-		// $time_string = '<time class="entry-date published" datetime="%1$s" itemprop="datePublished">%2$s</time>';
-
-		// if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			// $time_string = '<time class="entry-date published" datetime="%1$s" itemprop="datePublished">%2$s</time><time class="updated" datetime="%3$s" itemprop="dateModified">%4$s</time>';
-		// }
-
-		// $time_string = sprintf( $time_string,
-			// esc_attr( get_the_date( 'c' ) ),
-			// get_the_date(),
-			// esc_attr( get_the_modified_date( 'c' ) ),
-			// get_the_modified_date()
-		// );
-
-		// printf( '<span class="posted-on"><span class="screen-reader-text">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
-			// _x( 'Posted on', 'Used before publish date.', 'generate' ),
-			// esc_url( get_permalink() ),
-			// $time_string
-		// );
-	// }
-
+function generate_entry_meta() 
+{
 	if ( 'post' == get_post_type() ) {
-		// if ( is_singular() || is_multi_author() ) {
-			// printf( '<span class="byline"><span class="author vcard" itemtype="http://schema.org/Person" itemscope="itemscope" itemprop="author"><span class="screen-reader-text">%1$s </span><a class="url fn n" href="%2$s">%3$s</a></span></span>',
-				// _x( 'Author', 'Used before post author name.', 'generate' ),
-				// esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-				// get_the_author()
-			// );
-		// }
 
 		$categories_list = get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'generate' ) );
 		if ( $categories_list ) {
@@ -459,5 +457,49 @@ function generate_get_link_url() {
 	$has_url = get_url_in_content( get_the_content() );
 
 	return $has_url ? $has_url : apply_filters( 'the_permalink', get_permalink() );
+}
+endif;
+
+if ( ! function_exists( 'generate_header_items' ) ) :
+/**
+ * Build the header
+ *
+ * Wrapping this into a function allows us to customize the order in a child theme
+ *
+ * @since 1.2.9.7
+ */
+function generate_header_items() 
+{
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	// Header widget
+	if ( is_active_sidebar('header') ) : ?>
+		<div class="header-widget">
+			<?php dynamic_sidebar( 'header' ); ?>
+		</div>
+	<?php endif;
+		
+	// Site title and tagline
+	if ( empty( $generate_settings['hide_title'] ) || empty( $generate_settings['hide_tagline'] ) ) : ?>
+		<div class="site-branding">
+			<?php if ( empty( $generate_settings['hide_title'] ) ) : ?>
+				<p class="main-title" itemprop="headline"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+			<?php endif;
+				
+			if ( empty( $generate_settings['hide_tagline'] ) ) : ?>
+				<p class="site-description"><?php echo html_entity_decode( bloginfo( 'description' ) ); ?></p>
+			<?php endif; ?>
+		</div>
+	<?php endif;
+	
+	// Site logo
+	if ( ! empty( $generate_settings['logo'] ) ) : ?>
+		<div class="site-logo">
+			<a href="<?php echo apply_filters( 'generate_logo_href' , esc_url( home_url( '/' ) ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="header-image" src="<?php echo $generate_settings['logo']; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a>
+		</div>
+	<?php endif;
 }
 endif;

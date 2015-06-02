@@ -1,13 +1,13 @@
 /*
- * jQuery Superfish Menu Plugin
- * Copyright (c) 2013 Joel Birch
+ * jQuery Superfish Menu Plugin - v1.7.5
+ * Copyright (c) 2014 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
  *	http://www.opensource.org/licenses/mit-license.php
  *	http://www.gnu.org/licenses/gpl.html
  */
 
-(function ($, w) {
+;(function ($, w) {
 	"use strict";
 
 	var methods = (function () {
@@ -261,10 +261,9 @@
 
 })(jQuery, window);
 
-
 jQuery(document).ready(function($) {
 
-	$( '.main-nav > ul' ).superfish({
+	$( 'ul.sf-menu' ).superfish({
 		delay:       500,
 		animation:   {opacity:'show',height:'show'}, 
 		speed:       'fast',

@@ -1,7 +1,5 @@
 jQuery(document).ready(function($) {
 	
-	$('.main-navigation .menu').append('<li class="search-item" title="' + generateSearch.search + '"><a href="#"><i class="fa fa-search"></i></a></li>');
-	
     $(".search-item a").click(function(){
         if ($('.navigation-search').is(":visible")) {
             $(this).parent().removeClass('current-menu-item');

@@ -33,6 +33,16 @@
 	border-top-color: inherit;
 }
 
+.both-left .widget-area .sf-menu li .sf-with-ul:after,
+.left-sidebar .widget-area .sf-menu li .sf-with-ul:after,
+.both-sidebars .widget-area .inside-left-sidebar .sf-menu li .sf-with-ul:after {
+  margin-top: -5px;
+  margin-right: -3px;
+  border-color: transparent;
+  border-left-color: inherit; /* edit this to suit design (no rgba in IE8) */
+  opacity: 1;
+}
+
 /*** ESSENTIAL STYLES ***/
 .sf-menu, .sf-menu * {
 	margin: 0;
