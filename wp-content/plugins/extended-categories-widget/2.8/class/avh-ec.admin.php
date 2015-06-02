@@ -813,7 +813,11 @@ class AVH_EC_Admin
 		}
 
 		if (isset($_POST['btnReturnParent'])) {
-			$parentsParent = $wpdb->get_row("SELECT parent FROM $wpdb->term_taxonomy WHERE term_id = " . $_POST['hdnParentID'], ARRAY_N);
+            $parentsParent = $wpdb->get_row(
+                $wpdb->prepare('SELECT parent FROM $wpdb->term_taxonomy WHERE term_id = %d', $_POST['hdnParentID']),
+                ARRAY_N
+            )
+            ;
 			$parentID = $parentsParent[0];
 		}
 
