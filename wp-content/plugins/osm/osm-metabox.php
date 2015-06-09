@@ -41,7 +41,7 @@ function osm_geotag_post_function( $post ) {
   <?php include('osm-marker-select.php'); ?>
   </select><br>
   <b>2. <?php _e('Click into the map for geotag!','OSM-plugin') ?></b>:
-  <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_geotag_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'mapnik_ssl', 'width'=>'100%','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition')); ?><br>
+  <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_geotag_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'100%','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition')); ?><br>
   <div id="Geotag_Div"><br></div><br>
   <a class="button" onClick="osm_saveGeotag();"> <?php _e('Save','OSM-plugin')?> </a><br><br>
   <?php
@@ -76,8 +76,8 @@ function osm_map_create_shortcode_function( $post ) {
 <div class="tabs">
   <ul class="tab-links">
     <li class="active"><a href="#tab_marker"><?php _e('Marker','OSM-plugin') ?></a></li>
-    <li><a href="#tab_file_list">GPX</a></li>
-	<li><a href="#tab_file">KML | TXT</a></li>
+    <li><a href="#tab_file_list">GPX | KML</a></li>
+	<li><a href="#tab_file">TXT</a></li>
     <li><a href="#tab_geotag"><?php _e('Geotagged','OSM-plugin') ?></a></li>
     <li><a href="#tab_about"><?php _e('About','OSM-plugin') ?></a></li>
   </ul>
@@ -101,7 +101,7 @@ function osm_map_create_shortcode_function( $post ) {
       <b>4. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
       $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
       echo $link; ?></b><br><br>
-      <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_marker_sc_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
+      <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_marker_sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
     </div> <!-- id="tab_marker" -->
 
 	<div id="tab_file_list" class="tab">
@@ -119,7 +119,7 @@ function osm_map_create_shortcode_function( $post ) {
       <b>4. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
       $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
       echo $link;?></b><br><br>
-      <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_file_list_sc_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
+      <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_file_list_sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
      </div> <!-- id="tab_file_list" -->
 	
     <div id="tab_file" class="tab">
@@ -141,7 +141,7 @@ function osm_map_create_shortcode_function( $post ) {
       <b>5. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
       $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
       echo $link;?></b><br><br>
-      <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_file_sc_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
+      <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_file_sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
      </div> <!-- id="tab_file" -->
  
      <div id="tab_geotag" class="tab">
@@ -175,7 +175,7 @@ function osm_map_create_shortcode_function( $post ) {
        <b>6. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
        $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
        echo $link; ?><br><br></b>
-       <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_geotag_sc_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
+       <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_geotag_sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
      </div> <!-- id="tab_geotag" -->
  
      <div id="tab_about" class="tab">

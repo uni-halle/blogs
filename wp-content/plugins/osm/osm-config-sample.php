@@ -1,4 +1,13 @@
 <?php
+// replace >True< with >False< if you want to disable it
+define ("OSM_enable_Ajax", True);
+
+// change them for shortcode generatgor & geotagger
+// to your location
+define ("OSM_default_lat", 48.856614);
+define ("OSM_default_lon", 2.352222);
+define ("OSM_default_zoom", 3);
+
 // SERVER_EMBEDDED   ... loaded by the plugin for each map (default)
 // SERVER_WP_ENQUEUE ... registered and loaded by WordPress
 define ("Osm_LoadLibraryMode", SERVER_EMBEDDED); 
@@ -36,11 +45,10 @@ define ("Osm_OSM_LibraryLocation", OSM_PLUGIN_URL.'js/OSM/openlayers/OpenStreetM
 define ("Osm_OL_LibraryPath", OSM_PLUGIN_URL.'js/OL/2.13.1/');
 define ("Osm_OL_LibraryLocation", OSM_PLUGIN_URL."js/OL/2.13.1/OpenLayers.js");
 
-//define ("Osm_OL_3_CSS", 'http://openlayers.org/en/v3.2.1/css/ol.css');
-//define ("Osm_OL_3_LibraryLocation", 'http://openlayers.org/en/v3.2.1/build/ol.js');
-
-define ("Osm_OL_3_LibraryLocation", OSM_PLUGIN_URL."js/OL/3.3/ol.js");
-define ("Osm_OL_3_CSS", OSM_PLUGIN_URL."js/OL/3.3/css/ol.css");
+define ("Osm_OL_3_LibraryLocation", OSM_PLUGIN_URL."js/OL/3.5/ol.js");
+define ("Osm_OL_3_CSS", OSM_PLUGIN_URL."js/OL/3.5/css/ol.css");
+define ("Osm_OL_3_Ext_LibraryLocation", OSM_PLUGIN_URL."js/osm-v3-plugin-lib.js");
+define ("Osm_OL_3_Ext_CSS", OSM_PLUGIN_URL."css/osm_map_v3.css");
 
 // Google
 if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) {

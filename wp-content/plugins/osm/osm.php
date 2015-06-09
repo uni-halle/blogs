@@ -3,7 +3,7 @@
 Plugin Name: OSM
 Plugin URI: http://wp-osm-plugin.HanBlog.net
 Description: Embeds maps in your blog and adds geo data to your posts.  Find samples and a forum on the <a href="http://wp-osm-plugin.HanBlog.net">OSM plugin page</a>.  
-Version: 3.2.1
+Version: 3.3.1
 Author: MiKa
 Author URI: http://MiKa.HanBlog.net
 Minimum WordPress Version Required: 2.8
@@ -27,7 +27,7 @@ Minimum WordPress Version Required: 2.8
 */
 load_plugin_textdomain('OSM-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 
-define ("PLUGIN_VER", "V3.2.1");
+define ("PLUGIN_VER", "V3.3.1");
 
 // modify anything about the marker for tagged posts here
 // instead of the coding.
@@ -161,9 +161,11 @@ if ( ! function_exists( 'osm_restrict_mime_types_hint' ) ) {
 	}
 }
 
-//hook to create the meta box
-add_action( 'add_meta_boxes', 'osm_map_create' );
-
+// hook to create the meta box
+// enable in osm-config-sample.php
+if (OSM_enable_Ajax){
+  add_action( 'add_meta_boxes', 'osm_map_create' );
+}
 include('osm-metabox.php');
 include('osm-oljs2.php');
 include('osm-oljs3.php');
@@ -321,9 +323,7 @@ class Osm
     $seconds = count($exifCoord) > 2 ? OSM::gps2Num($exifCoord[2]) : 0;
 
     $flip = ($hemi == 'W' or $hemi == 'S') ? -1 : 1;
-
     return $flip * ($degrees + $minutes / 60 + $seconds / 3600);
-
   }
   
  
@@ -568,7 +568,17 @@ class Osm
       $Lon = $a_Long;
     }
     return array($Lat,$Lon);
+}
+
+
+  // check Lat and Long
+  function getCustomFieldData()
+  {
+    Osm::traceText(DEBUG_INFO, "getCustomFieldData");
+    //todo
+    return array($MarkerName, $FirstLat,$FirstLong);
   }
+
     
   // check Lat and Long
   function checkLatLongRange($a_CallingId, $a_Lat, $a_Long, $a_traceError = "yes")

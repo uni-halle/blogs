@@ -2,8 +2,8 @@
 Contributors: MiKa
 Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, Open Layers, Open Street Map, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, OpenWeatherMap, Weather, OpenSeaMap, stamen, basemap, exif, meta, widget
 Requires at least: 2.8
-Tested up to: 4.2.1
-Stable tag: 3.2.1
+Tested up to: 4.2.2
+Stable tag: 3.3.1
 
 Customize maps in your post, pages and widgets. Add geotag to your blog and site. Use GPX, KML, CSV, TXT ... 
 
@@ -69,6 +69,13 @@ There must be not format tag (like href ...) in the shortcode.
 
 
 == Changelog ==
+= 3.3.1 =
+* FIX: wrong icons at osm_map_v3 shortcode
+= 3.3 =
+* NEW: update to OpenLayers 3.5
+* NEW: support KML files with osm_map_v3 shortcode
+* NEW: Change default lon & lat for geotagger & shortcode generator
+* NEW: Define to disable -404 Forbidden You don't have permission to access- error
 = 3.2.1 =
 * FIX: basemap.at
 = 3.2 =

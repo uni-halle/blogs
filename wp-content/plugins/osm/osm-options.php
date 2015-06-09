@@ -160,7 +160,7 @@
   <li> <?php _e('your inputs (gpx-file, marker,...) are not displayed in this map but in your post/page ','OSM-plugin') ?></li>
   <li> <?php _e('you can modify your inputs and click again into the map to generate another shortcode ','OSM-plugin') ?></li> 
 <br> 
-<?php echo Osm::sc_showMap(array('msg_box'=>'sc_gen','lat'=>'50','long'=>'18.5','zoom'=>'3', 'type'=>'AllOsm', 'width'=>'600','height'=>'450', 'map_border'=>'thin solid blue', 'control'=>'mouseposition,scaleline')); ?>
+<?php echo Osm::sc_showMap(array('msg_box'=>'sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'AllOsm', 'width'=>'600','height'=>'450', 'map_border'=>'thin solid blue', 'control'=>'mouseposition,scaleline')); ?>
 <br>
 <h3><span style="color:green"> >> <?php _e('Copy the shortcode and paste it into the content of your post/article: ','OSM-plugin') ?></span></h3>
 <div id="ShortCode_Div"><?php _e('If you click into the map the shortcode is displayed instead of this text','OSM-plugin') ?></div><br>
