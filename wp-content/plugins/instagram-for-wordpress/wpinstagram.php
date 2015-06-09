@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 2.0.5
+	Version: 2.0.7
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -27,9 +27,16 @@ function load_wpinstagram() {
 }
 
 function wpinstagram_show_instructions() {
+	global $pagenow;		
+	
+	if ($pagenow !== 'plugins.php' && $pagenow !== 'widgets.php') {
+		return;		
+	}
+	
 	global $wpdb;
 	
 	$results = $wpdb->get_results("SELECT * FROM igwidget_widget");
+	$displayedMessage = 0;
 	
 	if (sizeof($results) == 0) {	
 		$url = plugins_url('wpinstagram-admin.css', __FILE__); 
@@ -37,8 +44,41 @@ function wpinstagram_show_instructions() {
 		wp_enqueue_script("jquery");
 		wp_enqueue_script("lightbox", plugin_dir_url(__FILE__)."js/lightbox.js", Array('jquery'), null);
 		
-		require(plugin_dir_path(__FILE__) . 'templates/setupInstructions.php');		
-	}
+		require(plugin_dir_path(__FILE__) . 'templates/setupInstructions.php');
+		
+		$displayedMessage = 1;		
+	} else {
+		$settings = $wpdb->get_results("SELECT * FROM igwidget_global_settings WHERE name='firstRun' and value <= DATE_SUB(now(), INTERVAL 7 DAY)");
+		
+		if (sizeof($settings) == 0) {
+			#has it been set yet?
+			$check = $wpdb->get_results("SELECT * FROM igwidget_global_settings WHERE name='firstRun'");
+			
+			if (sizeof($check) == 0) {				
+				#create it
+				$wpdb->get_results("INSERT INTO igwidget_global_settings (name, value) VALUES ('firstRun', NOW())");
+			}
+		} else {
+			#have we been disabled?
+			$disabled = $wpdb->get_results("SELECT * FROM igwidget_global_settings WHERE name='disabledMessage'");
+			
+			if (sizeof($disabled) == 0) {	
+				#have we received a request to remove the message?								
+				if (isset($_POST['instagram_widget_disable_message']) || isset($_GET['instagram_widget_disable_message'])) {
+					$wpdb->get_results("INSERT INTO igwidget_global_settings (name, value) VALUES ('disabledMessage', '1')");
+				} else {
+					#need to show header
+					$url = plugins_url('wpinstagram-admin.css', __FILE__); 
+					wp_enqueue_style('wpinstagram-admin.css', $url);
+					wp_enqueue_script("jquery");
+					wp_enqueue_script("lightbox", plugin_dir_url(__FILE__)."js/lightbox.js", Array('jquery'), null);
+					
+					require(plugin_dir_path(__FILE__) . 'templates/reviewInstructions.php');	
+					$displayedMessage = 1;				
+				}				
+			}	
+		}
+	}	
 }
 
 function load_wpinstagram_footer(){
@@ -95,37 +135,39 @@ function load_wpinstagram_footer(){
 }
 
 class WPInstagram_Widget extends WP_Widget {
+	private $sqlErrorShown = 0;
+	
 	function WPInstagram_Widget($args=array()){
-	        $width = '220';
-                $height = '220';
-        
-                $widget_ops = array('description' => __('Displays Instagrams', 'wpinstagram'));
-                $control_ops = array('id_base' => 'wpinstagram-widget');        
-		
-                $this->wpinstagram_path = plugin_dir_url( __FILE__);
-                $this->WP_Widget('wpinstagram-widget', __('Instagram Widget', 'wpinstagram'), $widget_ops, $control_ops);
-                
-                $withfancybox = false;
-                if(in_array('fancybox-for-wordpress/fancybox.php',(array)get_option($this->id . 'active_plugins',array()))==false) {
-                        $withfancybox = true;
-                }
-                
-                if (is_admin()) {
-	                $this->handleTables();
-				}
+    	$width = '220';
+        $height = '220';
 
-                if (is_active_widget('', '', 'wpinstagram-widget') && !is_admin()) {            
-                        wp_enqueue_script("jquery");
-                        wp_enqueue_script("jquery.easing", $this->wpinstagram_path."js/jquery.easing-1.3.pack.js", Array('jquery'), null);
-                        wp_enqueue_script("jquery.cycle", $this->wpinstagram_path."js/jquery.cycle.all.js", Array('jquery'), null);
-                        wp_enqueue_style('wpinstagram', $this->wpinstagram_path . 'wpinstagram.css', Array(), '0.5');
-                        if ($withfancybox) {
-                                wp_enqueue_script("fancybox", $this->wpinstagram_path."js/jquery.fancybox-1.3.4.pack.js", Array('jquery'), null);
-                                wp_enqueue_style("fancybox-css", $this->wpinstagram_path."js/fancybox/jquery.fancybox-1.3.4.min.css", Array(), null);
-                                wp_enqueue_script("jquery.mousewhell", $this->wpinstagram_path."js/jquery.mousewheel-3.0.4.pack.js", Array('jquery'), null);
-                                add_action('wp_footer', 'load_wpinstagram_footer');
-                        }
+        $widget_ops = array('description' => __('Displays Instagrams', 'wpinstagram'));
+        $control_ops = array('id_base' => 'wpinstagram-widget');        
+
+        $this->wpinstagram_path = plugin_dir_url( __FILE__);
+        $this->WP_Widget('wpinstagram-widget', __('Instagram Widget', 'wpinstagram'), $widget_ops, $control_ops);
+        
+        $withfancybox = false;
+        if(in_array('fancybox-for-wordpress/fancybox.php',(array)get_option($this->id . 'active_plugins',array()))==false) {
+                $withfancybox = true;
+        }
+        
+        if (is_admin()) {
+            $this->handleTables();
+		}
+
+        if (is_active_widget('', '', 'wpinstagram-widget') && !is_admin()) {            
+                wp_enqueue_script("jquery");
+                wp_enqueue_script("jquery.easing", $this->wpinstagram_path."js/jquery.easing-1.3.pack.js", Array('jquery'), null);
+                wp_enqueue_script("jquery.cycle", $this->wpinstagram_path."js/jquery.cycle.all.js", Array('jquery'), null);
+                wp_enqueue_style('wpinstagram', $this->wpinstagram_path . 'wpinstagram.css', Array(), '0.5');
+                if ($withfancybox) {
+                        wp_enqueue_script("fancybox", $this->wpinstagram_path."js/jquery.fancybox-1.3.4.pack.js", Array('jquery'), null);
+                        wp_enqueue_style("fancybox-css", $this->wpinstagram_path."js/fancybox/jquery.fancybox-1.3.4.min.css", Array(), null);
+                        wp_enqueue_script("jquery.mousewhell", $this->wpinstagram_path."js/jquery.mousewheel-3.0.4.pack.js", Array('jquery'), null);
+                        add_action('wp_footer', 'load_wpinstagram_footer');
                 }
+        }
 	}
 		
 	function widget($args, $instance) {
@@ -178,23 +220,25 @@ class WPInstagram_Widget extends WP_Widget {
 				}
 		
 				if ($details->token && $details->token !== '') {
-					if ($details->settings['display'] == 'self') {
+					if ($details->settings['display'] === 'self') {
 						$this->_display_user('self', $details);					
-					} else if ($details->settings['display'] == 'likes') {
+					} else if ($details->settings['display'] === 'likes') {
 						$this->_display_likes($details);
-					} else if ($details->settings['display'] == 'feed') {
+					} else if ($details->settings['display'] === 'feed') {
 						$this->_display_feed($details);
-					} else if ($details->settings['display'] == 'popular') {
+					} else if ($details->settings['display'] === 'popular') {
 						$this->_display_popular($details);					
-					} else if ($details->settings['display'] == 'user') {
+					} else if ($details->settings['display'] === 'user') {
 						$this->_display_user($details->settings['user'], $details);
-					} else if ($details->settings['display'] == 'tags') {
+					} else if ($details->settings['display'] === 'tags') {
 						$this->_display_tags($details->settings['tag1'], 
 								     $details->settings['tag2'], 
 								     $details->settings['tag3'], 
 								     $details->settings['tag4'], 
 									 $details->settings['tagCompare'],
 								     $details);
+					} else if ($details->settings['display'] === 'location') {
+						$this->_display_location($details->settings['latitude'], $details->settings['longitude'], $details);
 					}
 				}				
 			}
@@ -261,25 +305,28 @@ class WPInstagram_Widget extends WP_Widget {
 		#compile our settings if we have them
 		if ($_POST['title']) { #we always have our title
 			$settings = array(
-				"title"		=> stripslashes($_POST['title']),
-				"user"		=> $_POST['user'],
-				"username" 	=> stripslashes($_POST['username']),
-				"tag1"		=> stripslashes($_POST['tag1']),
-				"tag2"		=> stripslashes($_POST['tag2']),
-				"tag3"		=> stripslashes($_POST['tag3']),
-				"tag4"		=> stripslashes($_POST['tag4']),
-				"tagCompare"=> stripslashes($_POST['tagCompare']),
-				"width"		=> stripslashes($_POST['width']),
-				"height"	=> stripslashes($_POST['height']),
-				"delay"		=> stripslashes($_POST['delay']),
-				"display"	=> $_POST['display'],
-				"method"	=> $_POST['method'],
-				"cols"		=> $_POST['cols'],
-				"rows"		=> $_POST['rows'],
+				"title"			=> stripslashes($_POST['title']),
+				"user"			=> $_POST['user'],
+				"username" 		=> stripslashes($_POST['username']),
+				"tag1"			=> stripslashes($_POST['tag1']),
+				"tag2"			=> stripslashes($_POST['tag2']),
+				"tag3"			=> stripslashes($_POST['tag3']),
+				"tag4"			=> stripslashes($_POST['tag4']),
+				"tagCompare"	=> stripslashes($_POST['tagCompare']),
+				"width"			=> stripslashes($_POST['width']),
+				"height"		=> stripslashes($_POST['height']),
+				"delay"			=> stripslashes($_POST['delay']),
+				"display"		=> $_POST['display'],
+				"method"		=> $_POST['method'],
+				"cols"			=> $_POST['cols'],
+				"rows"			=> $_POST['rows'],
 				"transition"	=> $_POST['transition'],
 				"responsive"	=> $_POST['responsive'],
-				"sharing"	=> $_POST['sharing'],
-				"verbose"	=> $_POST['verbose'],
+				"sharing"		=> $_POST['sharing'],
+				"verbose"		=> $_POST['verbose'],
+				"location"		=> stripslashes($_POST['location']),
+				"latitude"		=> stripslashes($_POST['latitude']),
+				"longitude"		=> stripslashes($_POST['longitude']),
 			);
 			
 			$cacheTimeout = NULL;
@@ -292,6 +339,45 @@ class WPInstagram_Widget extends WP_Widget {
 		
 		return $instance;
 	}
+	
+	function _display_location($latitude, $longitude, $settings) {
+		$images = array();
+
+		if ($settings->token) {						
+			$url = "https://api.instagram.com/v1/media/search?count=50&distance=5000&lat=" . $latitude . "&lng=" . $longitude . "&access_token=" . $settings->token;						
+			
+			$response = wp_remote_get($url, array('sslverify' => apply_filters('https_local_ssl_verify', false)));
+			if (!is_wp_error($response) && $response['response']['code'] < 400 && $response['response']['code'] >= 200) {
+				$data = json_decode($response['body'], true);
+								
+				if ($data['meta']['code'] == 200) {
+					foreach ($data['data'] as $item) {
+						if (isset($item['caption']['text'])) {
+							$image_title = '@' . $item['user']['username'] . ': "' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '"';
+						} else if (!isset($item['caption']['text'])) {
+							$image_title = "Instagram by @" . $item['user']['username'];
+						}
+						
+						$images[] = array(
+							"id"		=> $item['id'],
+							"title"		=> $image_title,
+							"parsedtitle"	=> $this->_parse_title($image_title),
+							"user"		=> $item['user']['id'],
+							"username"	=> $item['user']['username'],
+							"image_small"	=> $item['images']['thumbnail']['url'],
+							"image_middle"	=> $item['images']['low_resolution']['url'],
+							"image_large"	=> $item['images']['standard_resolution']['url'],
+						);
+					}
+				}							
+			} else {
+				$this->_handle_error_response($response, $settings);
+				return;
+			}			
+		}
+		
+		return $this->_display_results($images, $settings, false);
+	}		
         
 	function _display_popular($settings) {
 		$images = array();
@@ -636,12 +722,12 @@ class WPInstagram_Widget extends WP_Widget {
 		}
 	}
 
-        function _parse_title($title) {
-        	$title = preg_replace('/#([0-9a-zA-Z\-_]+)/i', '<a href="http://ink361.com/app/tag/$1" alt="View Instagram tag $1" title="View Instagram tag $1" target="_blank">#$1</a>', $title);
-        	$title = preg_replace('/[ ]#([0-9a-zA-Z\-_]+)/i', '<a href="http://ink361.com/app/tag/$1" alt="View Instagram tag $1" title="View Instagram tag $1" target="_blank">#$1</a>', $title);
-        
-        	return $title;
-        }
+    function _parse_title($title) {
+    	$title = preg_replace('/#([0-9a-zA-Z\-_]+)/i', '<a href="http://ink361.com/app/tag/$1" alt="View Instagram tag $1" title="View Instagram tag $1" target="_blank">#$1</a>', $title);
+    	$title = preg_replace('/[ ]#([0-9a-zA-Z\-_]+)/i', '<a href="http://ink361.com/app/tag/$1" alt="View Instagram tag $1" title="View Instagram tag $1" target="_blank">#$1</a>', $title);
+    
+    	return $title;
+    }
 
 	function _tablePrefix($args=array()) {
 		extract($args);
@@ -704,6 +790,22 @@ class WPInstagram_Widget extends WP_Widget {
 					'null'	=> true,
 				),
 			),
+			$this->_tablePrefix() . 'global_settings' => array(
+				'uid'	=> array(
+					'type' 	=> 'int(11)',
+					'null' 	=> false,
+					'pk' 	=> true,
+					'auto'	=> true,
+				),
+				'name'	=> array(
+					'type'	=> 'varchar(255)',
+					'null'	=> true,
+				),
+				'value'	=> array(
+					'type'	=> 'text',
+					'null'	=> true,	
+				),
+			),
 		);
 	}
 	
@@ -745,6 +847,96 @@ class WPInstagram_Widget extends WP_Widget {
 		}				
 		
 		return $ret;
+	}
+	
+	function _displaySQLError($args=array()) {
+		if ($this->sqlErrorShown === 0) {		
+			require(plugin_dir_path(__FILE__) . 'templates/sqlError.php');			
+		}
+		$this->sqlErrorShown = 1;
+	}
+	
+	function _getCreateTableSQL($args=array()) {
+		$commands = '';
+		
+		$tables = $this->_tableDescription();
+		
+		foreach ($tables as $name => $description) {
+			$currentTable = $this->_describeTable($name);
+			
+			if (is_null($currentTable)) {
+				$query = "CREATE TABLE $name (";
+				
+				foreach ($description as $columnName => $columnDetails) {
+					$query .= " $columnName ";
+					if ($columnDetails['type']) {
+						$query .= $columnDetails['type'] . ' ';
+					} else {
+						$query .= ' varchar(255) ';
+					}
+					
+					if ($columnDetails['null']) {
+						$query .= ' NULL ';
+					} else {
+						$query .= ' NOT NULL ';
+					}
+					
+					if ($columnDetails['auto']) {
+						$query .= ' auto_increment ';
+					}
+					
+					if ($columnDetails['pk']) {
+						$query .= ' primary key ';
+					}
+					
+					$query .= ', ';
+				}
+				
+				$query = substr($query, 0, -2);
+				$query .= ");";		
+				
+				$commands .= $query . "\n";		
+			} else {
+				#compare the columns to see if we need to add one
+				foreach ($description as $columnName => $columnDetails) {
+					$found = false;
+					foreach ($currentTable as $currentName => $currentDetails) {
+						if ($currentName === $columnName) {
+							$found = true;
+						}
+					}
+					
+					if ($found === false) {
+						$query = "ALTER TABLE $name ADD COLUMN ";
+						
+						$query .= " $columnName ";
+						if ($columnDetails['type']) {
+							$query .= $columnDetails['type'] . ' ';
+						} else {
+							$query .= ' varchar(255) ';
+						}
+					
+						if ($columnDetails['null']) {
+							$query .= ' NULL ';
+						} else {
+							$query .= ' NOT NULL ';
+						}
+					
+						if ($columnDetails['auto']) {
+							$query .= ' auto_increment ';
+						}
+						
+						if ($columnDetails['pk']) {
+							$query .= ' primary key ';
+						}
+						
+						$commands .= $query . ";\n";
+					}
+				}
+			}
+		}
+		
+		return $commands;
 	}
 	
 	function handleTables($args=array()) {
@@ -789,6 +981,13 @@ class WPInstagram_Widget extends WP_Widget {
 				$query = substr($query, 0, -2);
 				$query .= ")";
 				$result = $wpdb->get_results($query);
+				
+				#check the result
+				$check = $this->_describeTable($name);
+				
+				if (is_null($check)) {
+					$this->_displaySQLError();
+				}
 			} else {
 				#compare the columns to see if we need to add one
 				foreach ($description as $columnName => $columnDetails) {
@@ -905,6 +1104,24 @@ class WPInstagram_Widget extends WP_Widget {
 		
 		if (!array_key_exists("verbose", $settings)	|| $settings['verbose'] === '') {
 			$settings['verbose'] = 'yes';
+		}
+		
+		if (!array_key_exists("location", $settings)) {
+			$settings['location'] = '';
+			$settings['latitude'] = '';
+			$settings['longitude'] = '';
+		}
+		
+		if (!array_key_exists('latitude', $settings)) {
+			$settings['location'] = '';
+			$settings['latitude'] = '';
+			$settings['longitude'] = '';
+		}
+		
+		if (!array_key_exists('longitude', $settings)) {
+			$settings['location'] = '';
+			$settings['latitude'] = '';
+			$settings['longitude'] = '';			
 		}
 		
 		return $settings;

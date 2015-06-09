@@ -1,4 +1,4 @@
-<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">	
+<div class="updated instagram_misc_message" style="padding: 0; margin: 0; border: none; background: none;">	
 	<div class="instagram_activate">
 		<div class="instagram_bg">
 			<div class="instagram_button" onclick="displayInstagramSetupInstructions();">

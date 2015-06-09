@@ -334,7 +334,7 @@ li.tabber.error a {
 	display: none;
 }
 
-#otherUserResults {
+#otherUserResults, #locationResults {
         position: absolute;
         border: 1px solid #DDD;
 	box-shadow: inset 0px 1px 2px rgba(0,0,0,0.07);
@@ -350,22 +350,22 @@ li.tabber.error a {
         overflow: hidden;  
 }
 
-#otherUserResults div {  
+#otherUserResults div, #locationResults div {  
 	padding: 3px 5px;
 	font-size: 14px;
 }
 
-#otherUserResults div:hover {
+#otherUserResults div:hover, #locationResults div:hover {
 	background: #2ea2cc;
 	cursor: pointer;
 	color: #FFF;
 }
 
-#otherUserResults.visible {
+#otherUserResults.visible, #locationResults.visible {
         display: block;   
 }
 
-#anotherUser {
+#anotherUser, #location {
 	position: relative;
 }
 
@@ -393,6 +393,20 @@ li.tabber.error a {
 
 .wpinstagram-error-description {
         margin-bottom: 0px !important;
+}
+
+.wpinstagram_widget_loader {
+	background: url('img/ajax-loader.gif') no-repeat center center;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	right: 5px;
+	top: 30px;
+	display: none;
+}
+
+.wploading .wpinstagram_widget_loader {
+	display: block;
 }
 
 .instagram_activate {
@@ -513,4 +527,39 @@ li.tabber.error a {
 	cursor: pointer;
 	text-decoration: none;	
 	display: block;
+}
+
+.instagram_activate .instagram_button.instagram_review_button {
+	background-image: url('img/star.png');
+	background-position: -20px center;
+	background-repeat: no-repeat;
+	background-size: 60px auto;
+}
+
+.instagram_review .instagram_hide_review {
+	float: right;
+	padding-top: 23px;
+	padding-right: 145px;
+}
+
+.instagram_review .instagram_hide_review a {
+	font-size: 12px;
+	color: #EEE;
+	text-decoration: underline;
+}
+
+.instagram_review .instagram_hide_review a:hover {
+	text-decoration: none;
+	color: #FFF;
+}
+
+.instagram_setup_instructions p.code {
+	padding: 10px;
+	background: #DDD;
+	border: 1px solid #D1D1D1;
+	border-radius: 4px;	
+	display: block;
+	width: 480px;
+	height: 250px;
+	overflow: auto;	
 }

@@ -39,6 +39,19 @@ ul.wpinstagram li a {
 	text-decoration: underline;
 }
 
+#fancybox-wrap {
+	width: auto !important;
+}
+
+#fancybox-title {
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+#fancybox-outer:hover #fancybox-title {
+	opacity: 1;
+}
+
 .wpinstagram-slideshow {
 	overflow: hidden;
 }

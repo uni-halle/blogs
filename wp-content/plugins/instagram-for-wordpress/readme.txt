@@ -3,17 +3,17 @@ Contributors: jbenders
 Tags: widgets, photos, instagram
 Requires at least: 3.0
 Tested up to: 4.2.2
-Stable tag: 2.0.4
+Stable tag: 2.0.7
 
 A comprehensive sidebar widget that can show your latest photos, tagged
-photos, your favourite photos, your feed, other users photos. Can be shown
+photos, photos from a location, your favourite photos, your feed, other users photos. Can be shown
 in three ways with a Grid, Grid with paging and slideshow options.
 
 == Description ==
 
 The best Instagram widget for your Wordpress website or blog is now here! Built by one of the world's largest Instagram browsers INK361, this comprehensive widget that can showcase your Instagram account in the way you want with comprehensive customisation features.
 
-Display your latest photos, tagged photos, your favourite photos, your feed, or other users photos. Our widget can be set up to fit any website or blog in three ways - with a Grid, Grid with paging and slideshow options.
+Display your latest photos, tagged photos, photos from a place or location, your favourite photos, your feed, or other users photos. Our widget can be set up to fit any website or blog in three ways - with a Grid, Grid with paging and slideshow options.
 
 To get started, download and activate our widget from this page or within the Wordpress plugin interface. Drag and drop the Instagram Widget into one of your widget areas and then click on the Connect To Instagram button.
 
@@ -44,6 +44,19 @@ For more installation options please refer to
 http://wordpress.ink361.com/help/installing
 
 == Changelog ==
+
+= 2.0.7 =
+* Fixed javascript conflicts in admin.
+* Fixed alignment of close button on fancybox lightbox
+* Added on-hover visible captions on fancybox
+* Improved review bar visibility by removing it from all admin pages apart from plugins/widgets
+* Added error message when database restrictions stop widget from functioning
+
+= 2.0.6 =
+* Added new location method to show images from a specific location.
+* Added review bar.
+* Improved drop down autocompletes by adding loading animation.
+* Removed joe editor backup files from repo.
 
 = 2.0.5 =
 * Fix for warnings on line 32 of the plugin.
