@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Widget Wrangler package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Widget Wrangler 2.2.0\n"
+"Project-Id-Version: Widget Wrangler 2.2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/widget-wrangler\n"
-"POT-Creation-Date: 2015-05-23 22:29:19+00:00\n"
+"POT-Creation-Date: 2015-06-03 11:30:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,21 +12,21 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin/admin-clone.php:77
+#: admin/admin-clone.php:84
 msgid "Cloned from"
 msgstr ""
 
-#: admin/admin-clone.php:112
+#: admin/admin-clone.php:119
 msgid "Copy a Widget"
 msgstr ""
 
-#: admin/admin-clone.php:113
+#: admin/admin-clone.php:120
 msgid ""
 "Here you can copy (instantiate) an existing WordPress widget into Widget "
 "Wrangler."
 msgstr ""
 
-#: admin/admin-clone.php:114
+#: admin/admin-clone.php:121
 msgid ""
 "Click on the title of the widget you would like to copy, fill in the "
 "widget's form according to your needs and click 'Create'. This will create "
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Slug"
 msgstr ""
 
-#: admin/admin-corrals.php:194 admin/admin-presets.php:400
+#: admin/admin-corrals.php:194 admin/admin-presets.php:408
 msgid "Delete"
 msgstr ""
 
@@ -102,15 +102,15 @@ msgstr ""
 msgid "Save Order"
 msgstr ""
 
-#: admin/admin-presets.php:241
+#: admin/admin-presets.php:249
 msgid "Widget Preset"
 msgstr ""
 
-#: admin/admin-presets.php:244
+#: admin/admin-presets.php:252
 msgid "- No Preset -"
 msgstr ""
 
-#: admin/admin-presets.php:259
+#: admin/admin-presets.php:267
 msgid ""
 "Select the Widget Preset you would like to control widgets on this page. To "
 "allow this page to control its own widgets, select '- No Preset -'. If you "
@@ -118,160 +118,160 @@ msgid ""
 "'- No Preset -' on save."
 msgstr ""
 
-#: admin/admin-presets.php:301
+#: admin/admin-presets.php:309
 msgid "Edit Preset"
 msgstr ""
 
-#: admin/admin-presets.php:345
+#: admin/admin-presets.php:353
 msgid "Create New Preset"
 msgstr ""
 
-#: admin/admin-presets.php:368
+#: admin/admin-presets.php:376
 msgid "Name:"
 msgstr ""
 
-#: admin/admin-presets.php:372
+#: admin/admin-presets.php:380
 msgid "Type:"
 msgstr ""
 
-#: admin/admin-presets.php:390 admin/sortable.php:39
+#: admin/admin-presets.php:398 admin/sortable.php:39
 msgid "Widget changes will not be updated until you save."
 msgstr ""
 
-#: admin/admin-settings.php:143
+#: admin/admin-settings.php:153
 msgid "General"
 msgstr ""
 
-#: admin/admin-settings.php:144
+#: admin/admin-settings.php:154
 msgid "Setup how Widget Wrangler works with other WordPress content."
 msgstr ""
 
-#: admin/admin-settings.php:148
+#: admin/admin-settings.php:158
 msgid "Post Type"
 msgstr ""
 
-#: admin/admin-settings.php:149
+#: admin/admin-settings.php:159
 msgid ""
 "Post type settings control the widget post_type registered by this plugin."
 msgstr ""
 
-#: admin/admin-settings.php:153
+#: admin/admin-settings.php:163
 msgid "Tools"
 msgstr ""
 
-#: admin/admin-settings.php:154
+#: admin/admin-settings.php:164
 msgid "Actions that will modify Widget Wrangler data."
 msgstr ""
 
-#: admin/admin-settings.php:158
+#: admin/admin-settings.php:168
 msgid "Pro License"
 msgstr ""
 
-#: admin/admin-settings.php:159
+#: admin/admin-settings.php:169
 msgid ""
 "Widget Wrangler Pro provides new features for site developers that can "
 "drastically increase efficiency in widget management for complex sites or "
 "needs."
 msgstr ""
 
-#: admin/admin-settings.php:170
+#: admin/admin-settings.php:180
 msgid "Post Types"
 msgstr ""
 
-#: admin/admin-settings.php:171
+#: admin/admin-settings.php:181
 msgid "Select which post types can control widgets individually."
 msgstr ""
 
-#: admin/admin-settings.php:177
+#: admin/admin-settings.php:187
 msgid "Taxonomies"
 msgstr ""
 
-#: admin/admin-settings.php:178
+#: admin/admin-settings.php:188
 msgid "Select which taxonomies can control widgets individually."
 msgstr ""
 
-#: admin/admin-settings.php:185
+#: admin/admin-settings.php:195
 msgid "Theme Compatibility"
 msgstr ""
 
-#: admin/admin-settings.php:191
+#: admin/admin-settings.php:201
 msgid "tinyMCE Shortcode Button"
 msgstr ""
 
-#: admin/admin-settings.php:198
+#: admin/admin-settings.php:208
 msgid "HTML Override Elements"
 msgstr ""
 
-#: admin/admin-settings.php:199
+#: admin/admin-settings.php:209
 msgid ""
 "Allowed elements for override a widget's html output.  Place one element per "
 "line."
 msgstr ""
 
-#: admin/admin-settings.php:207
+#: admin/admin-settings.php:217
 msgid ""
 "This version of Widget Wrangler has been upgraded from 1.x. If you have "
 "created templates with the previous version, you should leave this checked."
 msgstr ""
 
-#: admin/admin-settings.php:209
+#: admin/admin-settings.php:219
 msgid ""
 "This version of Widget Wrangler was not upgraded from 1.x, you should not "
 "need this setting."
 msgstr ""
 
-#: admin/admin-settings.php:213
+#: admin/admin-settings.php:223
 msgid "Legacy Template Suggestions"
 msgstr ""
 
-#: admin/admin-settings.php:222
+#: admin/admin-settings.php:232
 msgid "Capabilities"
 msgstr ""
 
-#: admin/admin-settings.php:229
+#: admin/admin-settings.php:239
 msgid "Exclude from search"
 msgstr ""
 
-#: admin/admin-settings.php:250 admin/admin-settings.php:549
+#: admin/admin-settings.php:260 admin/admin-settings.php:559
 msgid "Setup Theme"
 msgstr ""
 
-#: admin/admin-settings.php:253
+#: admin/admin-settings.php:263
 msgid ""
 "If you click this button, Widget Wrangler will create a Corral for each "
 "WordPress sidebar you have, and place a Widget Wrangler Corral Widget into "
 "each WordPress Sidebar."
 msgstr ""
 
-#: admin/admin-settings.php:258
+#: admin/admin-settings.php:268
 msgid "Mass Reset"
 msgstr ""
 
-#: admin/admin-settings.php:261
+#: admin/admin-settings.php:271
 msgid ""
 "If you click this button, all pages will lose their assigned widget settings "
 "and will fall back on the default preset."
 msgstr ""
 
-#: admin/admin-settings.php:266
+#: admin/admin-settings.php:276
 msgid "Reset settings to default"
 msgstr ""
 
-#: admin/admin-settings.php:269
+#: admin/admin-settings.php:279
 msgid ""
 "If you click this button, Widget Wrangler settings will be reset to their "
 "default state.  This will not affect Corral or Widget data."
 msgstr ""
 
-#: admin/admin-settings.php:276
+#: admin/admin-settings.php:286
 msgid "License Key"
 msgstr ""
 
-#: admin/admin-settings.php:279
+#: admin/admin-settings.php:289
 msgid "Enter your license key below."
 msgstr ""
 
-#: admin/admin-settings.php:472
+#: admin/admin-settings.php:482
 msgid ""
 "If checked, widgets will include WordPress sidebar settings for the "
 "registered sidebar.  ie, $before_widget, $before_title, $after_title, "
@@ -279,33 +279,33 @@ msgid ""
 "administration page for managing the current theme's registered sidebar html."
 msgstr ""
 
-#: admin/admin-settings.php:481
+#: admin/admin-settings.php:491
 msgid "Enable tinyMCE shortcode button"
 msgstr ""
 
-#: admin/admin-settings.php:490
+#: admin/admin-settings.php:500
 msgid "Enable template suggestions from Widget Wrangler 1.x"
 msgstr ""
 
-#: admin/admin-settings.php:504
+#: admin/admin-settings.php:514
 msgid "Simple"
 msgstr ""
 
-#: admin/admin-settings.php:504
+#: admin/admin-settings.php:514
 msgid ""
 "Widgets can be Created and Edited by anyone who can edit Posts.  Anyone who "
 "can edit a Page can change the Widgets displayed on that Page."
 msgstr ""
 
-#: admin/admin-settings.php:511
+#: admin/admin-settings.php:521
 msgid "Advanced"
 msgstr ""
 
-#: admin/admin-settings.php:511
+#: admin/admin-settings.php:521
 msgid "Change the capability_type for this post_type."
 msgstr ""
 
-#: admin/admin-settings.php:513
+#: admin/admin-settings.php:523
 msgid ""
 "This is primarily for incorporating third party permission systems. A simple "
 "use of this setting would be to change the Capability Type to 'page'.  This "
@@ -313,140 +313,140 @@ msgid ""
 "and edit widgets."
 msgstr ""
 
-#: admin/admin-settings.php:516
+#: admin/admin-settings.php:526
 msgid "Capability Type"
 msgstr ""
 
-#: admin/admin-settings.php:525
+#: admin/admin-settings.php:535
 msgid "If checked, widgets will be excluded from search results."
 msgstr ""
 
-#: admin/admin-settings.php:534
+#: admin/admin-settings.php:544
 msgid "Rewrite slug"
 msgstr ""
 
-#: admin/admin-settings.php:539
+#: admin/admin-settings.php:549
 msgid "Query var"
 msgstr ""
 
-#: admin/admin-settings.php:549
+#: admin/admin-settings.php:559
 msgid ""
 "Are you sure you want to reset your WordPress sidebars and widget wrangler "
 "corrals?"
 msgstr ""
 
-#: admin/admin-settings.php:557
+#: admin/admin-settings.php:567
 msgid "Reset All Widgets to Default"
 msgstr ""
 
-#: admin/admin-settings.php:557
+#: admin/admin-settings.php:567
 msgid "Are you sure you want to Reset widget settings on all pages?"
 msgstr ""
 
-#: admin/admin-settings.php:565
+#: admin/admin-settings.php:575
 msgid "Reset Settings"
 msgstr ""
 
-#: admin/admin-settings.php:565
+#: admin/admin-settings.php:575
 msgid "Are you sure you want to Reset Settings?"
 msgstr ""
 
-#: admin/admin-settings.php:575
+#: admin/admin-settings.php:585
 msgid "active"
 msgstr ""
 
-#: admin/admin-settings.php:575
+#: admin/admin-settings.php:585
 msgid "inactive"
 msgstr ""
 
-#: admin/admin-settings.php:577
+#: admin/admin-settings.php:587
 msgid "Activate License"
 msgstr ""
 
-#: admin/admin-settings.php:580
+#: admin/admin-settings.php:590
 msgid "Deactivate License"
 msgstr ""
 
-#: admin/admin-settings.php:594
+#: admin/admin-settings.php:604
 msgid "About Widget Wrangler Pro"
 msgstr ""
 
-#: admin/admin-settings.php:596
+#: admin/admin-settings.php:606
 msgid ""
 "Widget Wrangler Pro offers new features for a whole new level of control "
 "over your widgets.  Manage the widgets on archive (category) pages, create "
 "as many presets as you want, and many more!"
 msgstr ""
 
-#: admin/admin-settings.php:597
+#: admin/admin-settings.php:607
 msgid "View Pro Features"
 msgstr ""
 
-#: admin/admin-settings.php:619
+#: admin/admin-settings.php:629
 msgid "Widget Wrangler %s Settings"
 msgstr ""
 
-#: admin/admin-settings.php:635
+#: admin/admin-settings.php:645
 msgid "Widget Wrangler %s"
 msgstr ""
 
-#: admin/admin-sidebars.php:86
+#: admin/admin-sidebars.php:88
 msgid "Alter Sidebar"
 msgstr ""
 
-#: admin/admin-sidebars.php:90
+#: admin/admin-sidebars.php:92
 msgid "Before Widget"
 msgstr ""
 
-#: admin/admin-sidebars.php:94
+#: admin/admin-sidebars.php:96
 msgid "Before Title"
 msgstr ""
 
-#: admin/admin-sidebars.php:98
+#: admin/admin-sidebars.php:100
 msgid "After Title"
 msgstr ""
 
-#: admin/admin-sidebars.php:102
+#: admin/admin-sidebars.php:104
 msgid "After Widget"
 msgstr ""
 
-#: admin/admin-sidebars.php:107
+#: admin/admin-sidebars.php:109
 msgid "View Original"
 msgstr ""
 
-#: admin/admin-sidebars.php:130
+#: admin/admin-sidebars.php:132
 msgid "Wordpress Sidebars"
 msgstr ""
 
-#: admin/admin-sidebars.php:131
+#: admin/admin-sidebars.php:133
 msgid "Alter existing sidebars registered by the current theme."
 msgstr ""
 
-#: admin/admin-sidebars.php:137
+#: admin/admin-sidebars.php:139
 msgid "Update Sidebars"
 msgstr ""
 
-#. #-#-#-#-#  widget-wrangler.pot (Widget Wrangler 2.2.0)  #-#-#-#-#
+#. #-#-#-#-#  widget-wrangler.pot (Widget Wrangler 2.2.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/admin-taxonomies.php:120 admin/admin-taxonomies.php:198
+#: admin/admin-taxonomies.php:125 admin/admin-taxonomies.php:203
 #: common/wp-posttype-widget.php:58
 msgid "Widget Wrangler"
 msgstr ""
 
-#: admin/admin-taxonomies.php:121
+#: admin/admin-taxonomies.php:126
 msgid ""
 "Here you can override the default widgets for all terms in this taxonomy."
 msgstr ""
 
-#: admin/admin-taxonomies.php:127
+#: admin/admin-taxonomies.php:132
 msgid "Save Widgets"
 msgstr ""
 
-#: admin/admin-taxonomies.php:139
+#: admin/admin-taxonomies.php:144
 msgid "Enable these widgets as the default widgets for terms in this taxonomy."
 msgstr ""
 
-#: admin/admin-taxonomies.php:198
+#: admin/admin-taxonomies.php:203
 msgid "for this term only"
 msgstr ""
 
@@ -492,7 +492,7 @@ msgid ""
 "to add it. Click the button Add Widget to Corral."
 msgstr ""
 
-#: admin/widget-wrangler-admin.php:214 admin/widget-wrangler-admin.php:215
+#: admin/widget-wrangler-admin.php:191 admin/widget-wrangler-admin.php:192
 msgid "%s"
 msgstr ""
 

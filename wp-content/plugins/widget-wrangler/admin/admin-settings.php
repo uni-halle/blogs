@@ -87,14 +87,22 @@ class WW_Settings_Admin  {
   function __construct(){
     add_filter('ww_settings_form_items', array( $this, '_default_settings_form_items' ) );
     add_filter('ww_settings_form_tabs', array( $this, '_default_settings_form_tabs' ) );
+    add_action( 'init', array( $this, 'wp_init' ) );
+    add_action( 'admin_init', array( $this, 'wp_admin_init' ) );
+    add_action( 'admin_menu', array( $this, 'wp_admin_menu' ) );
   }
-  
-  // hook init
+
+  /**
+   * Implements action 'init'
+   */
   function wp_init(){
     $this->_preprocess_settings_form_items();
     $this->_preprocess_settings_form_tabs();
   }
-  
+
+  /**
+   * Implements action 'admin_init'
+   */
   function wp_admin_init(){
     if ( isset($_GET['post_type']) && 'widget' == $_GET['post_type'] &&
          isset($_GET['page']) && strpos($_GET['page'], 'settings') !== FALSE )
@@ -103,8 +111,10 @@ class WW_Settings_Admin  {
       //$this->_process_settings_form_tabs();
     }
   }
-  
-  // hook admin menu
+
+  /**
+   * Implements action 'admin_menu'
+   */
   function wp_admin_menu(){
     $page_title = 'Settings';
     $this->page_hook = add_submenu_page($this->ww->admin->parent_slug, $page_title, $page_title, $this->ww->admin->capability, 'settings', array( $this, '_menu_router' ));

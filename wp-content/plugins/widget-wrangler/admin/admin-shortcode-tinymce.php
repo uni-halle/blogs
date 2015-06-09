@@ -11,7 +11,14 @@ function ww_shortcode_tinymce_admin_addon($addons){
 
 
 class WW_Shortcode_Tinymce_Admin  {
-  
+
+  function __construct(){
+    add_action( 'admin_init', array( $this, 'wp_admin_init' ) );
+  }
+
+  /**
+   * Implements action 'admin_init'
+   */
   function wp_admin_init(){
     // shortcode inserter
     if (!empty($this->ww->settings['shortcode_tinymce']) &&
@@ -20,31 +27,35 @@ class WW_Shortcode_Tinymce_Admin  {
     {
       add_action('admin_head', array($this, 'wp_admin_head'));
 
-	  // Add specific CSS class by filter
-	  add_filter( 'admin_body_class', array( $this, 'wp_admin_body_class' ) );
-	}
+      // Add specific CSS class by filter
+      add_filter( 'admin_body_class', array( $this, 'wp_admin_body_class' ) );
+    }
   }
 
+  /**
+   * Implements action 'admin_body_class'
+   */
   function wp_admin_body_class( $classes ){
-	$classes.= ' widget-wrangler-tinymce-button ';
-
-	return $classes;
+    $classes.= ' widget-wrangler-tinymce-button ';
+    return $classes;
   }
 
+  /**
+   * Implements action 'admin_head'
+   */
   function wp_admin_head(){
-	// Don't bother doing this stuff if the current user lacks permissions
-	if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') )
-		return;
+    // Don't bother doing this stuff if the current user lacks permissions
+    if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') ){
+      return;
+    }
 
-   // Add only in Rich Editor mode
-	if ( get_user_option('rich_editing') == 'true') {
-	// TODO:  disabled because of tinymce update to 4.x.  Rewrite button
-
-	  add_filter('mce_external_plugins', array($this, 'mce_external_plugins_widgets'));
-	  //you can use the filters mce_buttons_2, mce_buttons_3 and mce_buttons_4
-	  //to add your button to other toolbars of your tinymce
-	  add_filter('mce_buttons', array($this, 'mce_buttons_widgets_listbox'));
-	  }
+    // Add only in Rich Editor mode
+    if ( get_user_option('rich_editing') == 'true') {
+      add_filter('mce_external_plugins', array($this, 'mce_external_plugins_widgets'));
+      //you can use the filters mce_buttons_2, mce_buttons_3 and mce_buttons_4
+      //to add your button to other toolbars of your tinymce
+      add_filter('mce_buttons', array($this, 'mce_buttons_widgets_listbox'));
+    }
   }
 
   function mce_buttons_widgets_listbox($buttons){

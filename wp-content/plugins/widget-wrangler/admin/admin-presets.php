@@ -21,7 +21,15 @@ class WW_Presets_Admin  {
   public $page_hook;
   public $current_preset_id = 0;
   public $new_preset_id = FALSE;
-  
+
+  function __construct(){
+    add_action( 'admin_init', array( $this, 'wp_admin_init' ) );
+    add_action( 'admin_menu', array( $this, 'wp_admin_menu' ) );
+  }
+
+  /**
+   * Implements action 'admin_init'
+   */
   function wp_admin_init(){
     add_action( 'widget_wrangler_form_top', array( $this, 'ww_form_top' ));
     add_action( 'wp_ajax_ww_form_ajax', array( $this, 'ww_form_ajax' ) );
@@ -33,7 +41,14 @@ class WW_Presets_Admin  {
       $this->ww->admin->init_sortable_widgets();
     }
   }
-  
+
+  //
+  function wp_admin_menu(){
+    $page_title = 'Presets';
+
+    $this->page_hook = add_submenu_page($this->ww->admin->parent_slug, $page_title, $page_title, $this->ww->admin->capability, 'presets', array( $this, '_menu_router' ));
+  }
+
   //
   function ww_save_widgets_alter($widgets){
     // '0' handles itself
@@ -60,13 +75,6 @@ class WW_Presets_Admin  {
     $this->ww->presets->new_preset_id = $new_preset_id;
     
     return $widgets;
-  }
-  
-  //
-  function wp_admin_menu(){
-    $page_title = 'Presets';
-
-    $this->page_hook = add_submenu_page($this->ww->admin->parent_slug, $page_title, $page_title, $this->ww->admin->capability, 'presets', array( $this, '_menu_router' ));
   }
 
   /*

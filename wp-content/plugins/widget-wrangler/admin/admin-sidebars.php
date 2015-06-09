@@ -15,10 +15,12 @@ class WW_Sidebars_Admin  {
   public $page_hook;
   
   function __construct(){
+    add_action( 'admin_menu', array( $this, 'wp_admin_menu' ) );
   }
-  function wp_init(){}
-  function wp_admin_init(){}
-  
+
+  /**
+   * Implements action 'admin_menu'
+   */
   function wp_admin_menu(){
     if ($this->ww->settings['theme_compat']) {
       $page_title = 'Sidebars';

@@ -100,6 +100,10 @@ When you Copy a WordPress widget, it creates a new widget post in the Widget Wra
 
 == Changelog ==
 
+= 2.2.2 =
+
+* Warning fix: looking through non-array warning
+
 = 2.2.1 =
 
 * Bug fix: Fixed row index collisions for sortable widgets
@@ -305,4 +309,4 @@ Initial Release
 
 == Upgrade Notice ==
 
-2.2.1 Feature & bugfix: Now able to add widget more than once, and to more than one corral.
+2.2.2 Warning fix: looping through non-array

@@ -14,9 +14,9 @@ function ww_corrals_admin_addon($addons){
 class WW_Corrals_Admin  {
   public $page_hook;
   
-  function __construct(){}
-  function wp_init(){}
-  function wp_admin_init(){}
+  function __construct(){
+    add_action( 'admin_menu', array( $this, 'wp_admin_menu' ) );
+  }
   
   function wp_admin_menu(){
     $page_title = 'Corrals';

@@ -4,7 +4,7 @@ Plugin Name: Widget Wrangler
 Plugin URI: http://www.wranglerplugins.com
 Description: Widget Wrangler gives the WordPress admin a clean interface for managing widgets on a page by page basis. It also provides widgets as a post type, the ability to clone existing WordPress widgets, and granular control over widget templates.
 Author: Jonathan Daggerhart
-Version: 2.2.1
+Version: 2.2.2
 Author URI: http://daggerhart.com
 Text Domain: widgetwrangler
 Domain Path: /languages
@@ -25,7 +25,7 @@ License: GPL2
 
 // versioning for now
 define('WW_VERSION', 2);
-define('WW_SCRIPT_VERSION', '2.2.1');
+define('WW_SCRIPT_VERSION', '2.2.2');
 define('WW_PRO_NAME', 'Widget Wrangler Pro' );
 define('WW_PRO_URL', 'http://wranglerplugins.com' ); 
 
@@ -253,22 +253,6 @@ class Widget_Wrangler {
     // give access to the ww object
     foreach ($addons as $addon_name => $addon){
       $addon->ww = $this;
-    }
-  
-    // auto-add some common hooks
-    foreach ($addons as $addon){
-      // wp hook name => addon method name
-      $auto_hooks = array(
-        'init' => 'wp_init',
-        'admin_init' => 'wp_admin_init',
-        'admin_menu' => 'wp_admin_menu',
-      );
-      
-      foreach ($auto_hooks as $wp_hook => $addon_method){
-        if (method_exists( $addon, $addon_method ) ) {
-          add_action( $wp_hook, array( $addon, $addon_method ) );
-        }
-      }
     }
     
     $this->addons = $addons;

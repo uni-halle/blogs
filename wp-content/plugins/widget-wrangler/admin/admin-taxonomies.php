@@ -12,7 +12,12 @@ function ww_taxonomies_admin_addon($addons){
  *
  */
 class WW_Taxonomies_Admin {
-  
+
+  function __construct(){
+    add_action( 'admin_init', array( $this, 'wp_admin_init' ) );
+    add_action( 'admin_menu', array( $this, 'wp_admin_menu' ) );
+  }
+
   //
   function wp_admin_init(){
     // saving widgets 

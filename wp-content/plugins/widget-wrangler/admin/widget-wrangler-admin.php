@@ -13,8 +13,8 @@ actions
   
 */
 
-/*
- *
+/**
+ * Class Widget_Wrangler_Admin
  */
 class Widget_Wrangler_Admin {
   public $addons = array();
@@ -37,9 +37,12 @@ class Widget_Wrangler_Admin {
     
     // get all our admin addons
     $this->_gather_addons();
-    
-    // initialize the wp hooks for this and addons
-    $this->add_hooks();
+
+    add_action( 'admin_init', array( $this, 'wp_admin_init' ) );
+
+    // this is the best hook i could find that ensures we're editing a post
+    // and the global $post object is available
+    add_action( 'add_meta_boxes', array( $this->ww, 'find_all_page_widgets' ), -99 );
   }
   
   //
@@ -50,39 +53,13 @@ class Widget_Wrangler_Admin {
     $addons = apply_filters( 'Widget_Wrangler_Admin_Addons', $this->addons );
     
     // give access to the ww object
-    foreach ($addons as $addon_name => $addon){
-      $addon->ww = $widget_wrangler;
-    }
-    
-    $this->addons = $addons;
-  }
-    
-  //
-  // add common wp hooks for addons if they implement them with certain method names
-  //  - wp_{hook_name}
-  // 
-  function add_hooks(){
-    add_action( 'admin_init', array( $this, 'wp_admin_init' ) );
-    
-    // this is the best hook i could find that ensures we're editing a post
-    // and the global $post object is available
-    add_action( 'add_meta_boxes', array( $this->ww, 'find_all_page_widgets' ), -99 );
-    
-    // auto-add common wp hooks
-    foreach ($this->addons as $addon){
-      // wp hook name => addon method name
-      $auto_hooks = array(
-        'init' => 'wp_init',
-        'admin_init' => 'wp_admin_init',
-        'admin_menu' => 'wp_admin_menu',
-      );
-      
-      foreach ($auto_hooks as $wp_hook => $addon_method){
-        if (method_exists( $addon, $addon_method ) ) {
-          add_action( $wp_hook, array( $addon, $addon_method ) );
-        }
+    if ( ! empty( $addons ) ){
+      foreach ($addons as $addon_name => $addon){
+        $addon->ww = $widget_wrangler;
       }
-    }  
+    }
+
+    $this->addons = $addons;
   }
   
   // WordPress hook 'admin_init'
@@ -232,20 +209,23 @@ class Widget_Wrangler_Admin {
     $all_widgets = $this->ww->get_all_widgets(array('publish', 'draft'));
     $active_widgets = array();
 
-	foreach ($submitted_widget_data as $key => $details){
-		// get rid of any hashes
-		if ( isset( $all_widgets[ $details['id'] ] ) && isset( $details['weight'] ) && isset( $details['sidebar'] ) ){
-			// if something was submitted without a weight, make it neutral
-			if ($details['weight'] < 1) {
-				$details['weight'] = $key;
-			}
+    if ( ! empty( $submitted_widget_data ) ) {
+      foreach ( $submitted_widget_data as $key => $details ) {
+        // get rid of any hashes
+        if ( isset( $all_widgets[ $details['id'] ] ) && isset( $details['weight'] ) && isset( $details['sidebar'] ) ) {
+          // if something was submitted without a weight, make it neutral
+          if ( $details['weight'] < 1 ) {
+            $details['weight'] = $key;
+          }
 
-			$active_widgets[ $details['sidebar'] ][] = array(
-				'id' => $details['id'],
-				'weight' => $details['weight'],
-			);
-		}
-	}
+          $active_widgets[ $details['sidebar'] ][] = array(
+            'id'     => $details['id'],
+            'weight' => $details['weight'],
+          );
+        }
+      }
+    }
+
     return serialize($active_widgets);
   }
   

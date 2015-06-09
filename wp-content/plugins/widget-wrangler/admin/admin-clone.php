@@ -13,7 +13,14 @@ function ww_clone_admin_addon($addons){
  */
 class WW_Clone_Admin  {
   public $page_hook;
-  
+
+  function __construct(){
+    add_action( 'admin_menu', array( $this, 'wp_admin_menu' ) );
+  }
+
+  /**
+   * Implements action 'admin_menu'
+   */
   function wp_admin_menu(){
     $page_title = 'Copy WP Widget';
 
