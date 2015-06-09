@@ -2,8 +2,8 @@
 Contributors: IntenseDebate, automattic, beaulebens
 Tags: widget, profile, community, avatars, spam, notification, email, threaded, comments, intense debate, intensedebate, intense, debate, comment system, moderation
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 2.9.5
+Tested up to: 4.2.2
+Stable tag: 2.9.6
 
 IntenseDebate comments enhance and encourage conversation on your blog.  Build your reader community, increase your comments, & boost pageviews.
 
@@ -11,6 +11,8 @@ IntenseDebate comments enhance and encourage conversation on your blog.  Build y
 IntenseDebate Comments enhance and encourage conversation on your blog or website. Custom integration with your WordPress admin panel makes moderation a piece of cake. Comment threading, reply-by-email, user accounts and reputations, comment voting, along with Twitter and friendfeed integrations enrich your readers' experience and make more of the internet aware of your blog and comments which drives traffic to you!
 
 Full comment and account data sync between Intense Debate and WordPress ensures that you will always have your comments stored locally on your own server.
+
+**Note: IntenseDebate is currently being maintained, but not actively developed.**
 
 == Installation ==
 *Note: As is the case when installing any new plugin, it's always a good idea to backup your blog data before installing.*
@@ -25,7 +27,7 @@ In order for our plugin to work properly, our servers need to be able to get in 
 
 1. You're attempting to install IntenseDebate on a local development server - your site must be online on the "public" internet
 2. Your site is password protected (.htaccess or similar)
-3. Your server is behind a firewall or 
+3. Your server is behind a firewall or
 4. A caching plugin might be configured incorrectly
 
 For further assistance, please contact IntenseDebate support at support@intensedebate.com
@@ -36,11 +38,11 @@ Comments made in IntenseDebate are automatically backed-up to your WordPress com
 = What about SEO? =
 IntenseDebate outputs the standard WordPress comments enabling your comments to still be indexed by search engines that ignore JavaScript, while ensuring that visitors surfing with JavaScript disabled will be able to interact with comments made in IntenseDebate. Readers with JS disabled can comment in the original WP system and those comments will be imported into IntenseDebate.
 
-= How do I sync my accounts? = 
+= How do I sync my accounts? =
 After installing and activating the IntenseDebate plugin you will need to update your account settings in your Plugin Settings page and either create an IntenseDebate account or login to your IntenseDebate account. Your data synchronization and comment import will start as soon as you have successfully logged in.
 
 **Please Note:**
-Your comments may take several hours to import. The time of your import is dependent on how many other import requests we are receiving in addition to how many comments are currently being imported. 
+Your comments may take several hours to import. The time of your import is dependent on how many other import requests we are receiving in addition to how many comments are currently being imported.
 
 == Screenshots ==
 1. An example of the comment system itself.  Notice all the extra goodies like user profile information, reputation, threaded comments, comment voting, RSS feeds for everything, and more!
@@ -51,6 +53,10 @@ Your comments may take several hours to import. The time of your import is depen
 6. Final step of the registration process - a few helpful links to get you started getting the most out of your new IntenseDebate comment system.
 
 == Changelog ==
+= 2.9.6 =
+* Clean up warnings in WP_DEBUG mode
+* Minor cosmetic tweaks to better align with modern wp-admin
+
 = 2.9.5 =
 * Wrap JS output in an anonymous function to avoid variable conflicts
 
@@ -90,7 +96,7 @@ Your comments may take several hours to import. The time of your import is depen
 * Added widgets for recent comments, top commenters, site comment stats, and most commented posts
 
 = 2.7 =
-* Added ability to explicitly log in as a WordPress.com user 
+* Added ability to explicitly log in as a WordPress.com user
 * Added basic connection diagnostics during installation
 * More robust detection/loading of JSON libraries
 
