@@ -2,13 +2,15 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.9
-Stable tag: 3.7.9
+Stable tag: 3.7.9.1
 Tested up to: 4.2.2
 License: GPLv2
 
+Make your WordPress website mobile-friendly with just a few clicks.
+
 == Description ==
 
-WPtouch is a mobile plugin for WordPress that automatically adds a simple and elegant mobile theme for mobile visitors to your WordPress website. Recommended by Google, it will instantly enable a mobile-friendly version of your website that passes the Google Mobile test, and ensure your SEO rankings do not drop due to not having a mobile-friendly website.
+WPtouch is a mobile plugin for WordPress that automatically adds a simple and elegant mobile theme for mobile visitors to your WordPress website. Recommended by Google, it will instantly enable a mobile-friendly version of your website that passes the Google Mobile test, and ensure your SEO rankings do not drop due to not having a mobile-friendly website. For more information about using WPtouch to achieve Google mobile-friendly status, please read our [comprehensive mobile-friendly guide](http://wptouch.s3.amazonaws.com/WPtouch%20-%20Make%20Your%20Website%20Mobile-Friendly.pdf).
 
 The administration panel allows you to customize many aspects of its appearance, and deliver a *fast*, user-friendly and stylish version of your site to your mobile visitors, without modifying *a single bit of code*.  Your regular desktop theme is left intact, and will continue to show for your non-mobile visitors.
 
@@ -35,6 +37,11 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.7.9.1 (June 4, 2015) =
+
+* Changed: Significant update to user’s guide
+* Fixed: Bug in Bauhaus that caused off-canvas menu to slide out from left instead of right
 
 = Version 3.7.9 (May 28, 2015) =
 
@@ -1235,7 +1242,7 @@ If you are using a caching plugin, you will need to configure it to work properl
 
 1. If you have “Browser Cache” enabled, please disable ‘Set expires header’ in the Browser cache settings to prevent Desktop/Mobile switch link issues.
 2. Go to the “Page Cache” settings under the Performance tab.
-3. Copy the list of mobile user agents found below.
+3. Copy the list of mobile user agents found in our list of “User agent list for configuring cache plugins“.
 4. If you have added support for additional mobile devices in WPtouch’s Compatibility > Custom User Agents field, you must also include those user agents in the “Rejected User 5. Agents” area in W3 Total Cache.
 5. Scroll down to the “Rejected User Agents” field and paste the list of WPtouch default user agents, adding one per line.
 Save your changes.
@@ -1254,7 +1261,7 @@ Ensure that W3 Total Cache is selected in the plugins list in the Compatibility 
 Note: The native support for the free version of WPtouch found in WP Super Cache (under the “Plugins” tab) must be disabled to prevent conflicts in WPtouch.
 
 1. In the Advanced tab of the WP Super Cache settings select “Mobile Device Support”* and click “Update Status”.
-2. Still in the Advanced tab, scroll down to the “Rejected User Agents” area. Paste the entire list of mobile user agents found below into the field and click “Save UA Strings”.
+2. Still in the Advanced tab, scroll down to the “Rejected User Agents” area. Paste the entire list of mobile user agents found in our list of “User agent list for configuring cache plugins” into the field and click “Save UA Strings”.
 3. If you have added support for additional mobile devices in WPtouch’s Compatibility > Custom User Agents field, you must also include those user agents in the “Rejected User Agents” area in WP Super Cache.
 4. In the “Contents” tab, click “Delete Cache” and “Delete Expired” to delete pages that were likely cached before adding the new list of rejected user agents.
 5. Ensure that WP Super Cache is selected in the plugins list in the Compatibility section of the WPtouch admin panel.
@@ -1268,28 +1275,6 @@ Please see the user manual for additional information.
 = WP Engine =
 
 Please contact WPEngine and ask them to exclude the user agents found in the “User agent list for configuring cache plugins“.
-
-= User Agent List =
-
-Use the following to configure your cache plugin to work with WPtouch:
-
-iPhone
-iPod
-Android
-BB10
-BlackBerry
-webOS
-IEMobile/7.0
-IEMobile/9.0
-IEMobile/10.0
-MSIE 10.0
-iPad
-PlayBook
-Xoom 
-P160U
-SCH-I800
-Nexus 7
-Touch
 
 == Upgrade Notice ==
 

@@ -24,7 +24,6 @@
 <!-- Back Button for Web-App Mode -->
 <div class="wptouch-icon-arrow-left back-button tappable"><!-- css-button --></div>
 
-
 <div class="page-wrapper">
 
 	<header id="header-title-logo">
