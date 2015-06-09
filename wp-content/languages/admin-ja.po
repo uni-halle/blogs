@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-15 08:57:03+0000\n"
+"PO-Revision-Date: 2015-06-07 07:33:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -998,6 +998,14 @@ msgstr ""
 "-- WordPress 運営チーム\n"
 "https://ja.wordpress.org/\n"
 
+#: wp-admin/index.php:72
+msgid "<strong>WordPress News</strong> - Latest news from the official WordPress project, the <a href=\"https://planet.wordpress.org/\">WordPress Planet</a>, and popular and recent plugins."
+msgstr "<strong>WordPress ニュース</strong> - 公式 WordPress プロジェクトニュースや<a href=\"https://ja.forums.wordpress.org/\">WordPress 日本語版フォーラム</a>からの最新投稿、人気または最新のプラグイン情報。"
+
+#: wp-admin/index.php:74
+msgid "<strong>WordPress News</strong> - Latest news from the official WordPress project, the <a href=\"https://planet.wordpress.org/\">WordPress Planet</a>."
+msgstr "<strong>WordPress ニュース</strong> - 公式 WordPress プロジェクトニュースや<a href=\"https://ja.forums.wordpress.org/\">WordPress 日本語版フォーラム</a>からの最新投稿。"
+
 #: wp-admin/themes.php:145
 msgid "You cannot delete a theme while it has an active child theme."
 msgstr "使用中の子テーマがあるテーマは削除できません。"
@@ -1031,14 +1039,6 @@ msgstr "ミステリーパーソン"
 msgid "Usernames can have only alphanumeric characters, spaces, underscores, hyphens, periods, and the @ symbol."
 msgstr "ユーザー名には、半角英数字、スペース、下線、ハイフン、ピリオド、アットマーク (@) のみが使用できます。"
 
-#: wp-admin/index.php:74
-msgid "<strong>WordPress News</strong> - Latest news from the official WordPress project, the <a href=\"https://planet.wordpress.org/\">WordPress Planet</a>."
-msgstr "<strong>WordPress ニュース</strong> - 公式 WordPress プロジェクトニュースや<a href=\"http://ja.forums.wordpress.org/\">WordPress 日本語版フォーラム</a>からの最新投稿。"
-
-#: wp-admin/index.php:72
-msgid "<strong>WordPress News</strong> - Latest news from the official WordPress project, the <a href=\"https://planet.wordpress.org/\">WordPress Planet</a>, and popular and recent plugins."
-msgstr "<strong>WordPress ニュース</strong> - 公式 WordPress プロジェクトニュースや<a href=\"http://ja.forums.wordpress.org/\">WordPress 日本語版フォーラム</a>からの最新投稿、人気または最新のプラグイン情報。"
-
 #: wp-admin/options-general.php:92
 msgid "You can set the language, and the translation files will be automatically downloaded and installed (available if your filesystem is writable)."
 msgstr "言語を設定すると翻訳ファイルが自動的にダウンロード・インストールされます (ファイルの書き込みが可能な場合のみ)。"
@@ -1051,13 +1051,13 @@ msgstr "テーマカスタマイザーからウィジェットを追加・編集
 msgid "Enable full-height editor and distraction-free functionality."
 msgstr "最大行表示エディターと集中執筆モード機能を有効化します。"
 
-#: wp-admin/includes/dashboard.php:987
-msgid "https://planet.wordpress.org/feed/"
-msgstr "http://ja.forums.wordpress.org/rss.php"
-
 #: wp-admin/includes/dashboard.php:978
 msgid "https://planet.wordpress.org/"
-msgstr "http://ja.forums.wordpress.org/"
+msgstr "https://ja.forums.wordpress.org/"
+
+#: wp-admin/includes/dashboard.php:987
+msgid "https://planet.wordpress.org/feed/"
+msgstr "https://ja.forums.wordpress.org/rss.php"
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:497
 msgid "Untested with your version of WordPress"
