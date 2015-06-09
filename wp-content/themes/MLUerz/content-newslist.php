@@ -26,6 +26,7 @@
 
 		<?php
 			the_title( '<h2 class="entry-title">', '</h2>' );
+           if ( is_single() ) { the_post_navigation();	}
 		?>
 	</header><!-- .entry-header -->
 

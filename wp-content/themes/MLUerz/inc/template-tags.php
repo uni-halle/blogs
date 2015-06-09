@@ -341,16 +341,35 @@ function webItemExists($url) {
 }
 
 /**
- * Add category image
+ * get attachment-image from filepath or -name
+ *
+ * @return string the category image
+ */
+function get_attachment_id_from_src ($image_src,$filepath=TRUE) {
+		global $wpdb;
+		$image_src = $filepath ? $image_src : '%/'.$image_src;
+		$query = "SELECT ID FROM {$wpdb->posts} WHERE guid LIKE '$image_src'";
+		$id = $wpdb->get_var($query);
+		return $id;
+
+	}
+/**
+ * Add category image by Dateiname
  *
  * @return string the category image
  */
 function olg_category_image() {
-$cur_cat_id = get_cat_id( single_cat_title("",false) );
-	$imgDir = content_url();
+	/*
+	$cur_cat_img = get_page_by_title( "cat_$cur_cat_id" );
+		$attachment_id = $cur_cat_img->ID;
+	echo "<div class=col3>$cur_cat_id,$attachment_id</div>";
+	*/
+	$cur_cat_id = get_cat_id( single_cat_title("",false) );
+	//$imgDir = content_url().'/uploads/';
 
-	if ( ($cur_cat_id) && (webItemExists($imgDir .'/uploads/cat_'.$cur_cat_id.'.jpg')) ) {
-		$attachment_id = get_attachment_id_from_src ($imgDir .'/uploads/cat_'.$cur_cat_id.'.jpg');
+	if ($cur_cat_id) {
+		$attachment_id = get_attachment_id_from_src ('cat_'.$cur_cat_id.'.jpg', false);
+		if ($attachment_id){
 		$large_image_url = wp_get_attachment_image_src( $attachment_id, 'large' );
 		$data = wp_prepare_attachment_for_js( $attachment_id );
 //$field = $data[$field];
@@ -361,15 +380,9 @@ $cur_cat_id = get_cat_id( single_cat_title("",false) );
 		wp_get_attachment_image($attachment_id, 'thumbnail', false ,array('title' => $image_caption) ).
 		'</a><p class="csc-textpic-caption">' . $image_caption . '</p></div></div></div>';
 	echo $highslideHtml;
+		}
 
 	}
 	
+	
 }
-function get_attachment_id_from_src ($image_src) {
-
-		global $wpdb;
-		$query = "SELECT ID FROM {$wpdb->posts} WHERE guid='$image_src'";
-		$id = $wpdb->get_var($query);
-		return $id;
-
-	}

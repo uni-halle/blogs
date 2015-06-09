@@ -17,13 +17,17 @@
 	<?php
 		// Post thumbnail.
 		twentyfifteen_post_thumbnail();
-	?>
+		if ( is_single() ) { the_post_navigation();	}
+		?>
 	</div></div>
 
 	<header class="entry-header">
-
 		<?php
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			if ( is_single() ) :
+				the_title( sprintf( '<h1 class="entry-title">', esc_url( twentyfifteen_get_link_url() ) ), '</h1>' );
+			else :
+				the_title( sprintf( '<h2>', esc_url( twentyfifteen_get_link_url() ) ), '</h2>' );
+			endif;
 		?>
 	</header><!-- .entry-header -->
 
@@ -31,8 +35,7 @@
 		<?php
 			/* translators: %s: Name of current post */
 			the_content(__('Read more...'));
-
-			wp_link_pages( array(
+wp_link_pages( array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
 				'after'       => '</div>',
 				'link_before' => '<span>',

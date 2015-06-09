@@ -11,14 +11,23 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php twentyfifteen_post_thumbnail(); ?>
+	<!-- #col3: Statische Spalte des Inhaltsbereiches -->
+    <div class="col3">
+      <div class="col3_content" class="clearfix" >
+<?php
+		// Post thumbnail.
+		twentyfifteen_post_thumbnail();
+		if ( is_single() ) { the_post_navigation();	}		
+		
+	?>
+</div></div>
 
 	<header class="entry-header">
 		<?php
 			if ( is_single() ) :
-				the_title( sprintf( '<h1 class="entry-title"><a href="%s">', esc_url( twentyfifteen_get_link_url() ) ), '</a></h1>' );
+				the_title( sprintf( '<h1 class="entry-title">', esc_url( twentyfifteen_get_link_url() ) ), '</h1>' );
 			else :
-				the_title( sprintf( '<h2 class="entry-title"><a href="%s">', esc_url( twentyfifteen_get_link_url() ) ), '</a></h2>' );
+				the_title( sprintf( '<h2>', esc_url( twentyfifteen_get_link_url() ) ), '</h2>' );
 			endif;
 		?>
 	</header>
@@ -52,9 +61,10 @@
 	?>
 
 	<footer class="entry-footer">
-		<?php twentyfifteen_entry_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer>
 	<!-- .entry-footer -->
+	
+	
 
 </article><!-- #post-## -->
