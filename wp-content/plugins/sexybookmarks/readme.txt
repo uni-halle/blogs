@@ -3,7 +3,7 @@ Contributors: shareaholic
 Tags: sexybookmarks, shareaholic, shareholic, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, analytics, social media, social plugin
 Requires at least: 3.0
 Tested up to: 4.2.1
-Stable tag: 7.6.1.4
+Stable tag: 7.6.1.5
 
 The easiest, most effective way to grow your website traffic, effectively engage your audience, monetize, and gain insights for free.
 
@@ -169,6 +169,9 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 7.6.1.5 =
+* Enhancement: added support for Yummly and Fancy server-side share counts
 
 = 7.6.1.4 =
 * Minor enhancements
@@ -1203,6 +1206,9 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Initial release!
 
 == Upgrade Notice ==
+
+= 7.6.1.5 =
+* Enhancement: added support for Yummly and Fancy server-side share counts
 
 = 7.6.1.4 =
 Minor enhancements.

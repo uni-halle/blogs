@@ -20,6 +20,9 @@ window.shareaholic_add_location_nonce = '<?php echo wp_create_nonce("shareaholic
       <nav class="header-nav">
       </nav>
       <ul class="user-nav js-logged-out" style="display:none;">
+        <div class="hiring">
+          <a href="https://shareaholic.com/careers?utm_source=univ_header_wp_plugin&utm_medium=link&utm_campaign=careers" target="_blank">We're Hiring</a>
+        </div>
         <li><a href="#" class="btn dark-green js-action-signup">Sign Up Free</a></li>
         <li><a href="#" class="btn js-action-login">Log In</a></li>
       </ul>
@@ -39,6 +42,9 @@ window.shareaholic_add_location_nonce = '<?php echo wp_create_nonce("shareaholic
           <li><a href="#" class="help js-action-help" target="_blank">Help</a></li>
         </ul>
         <img class="avatar js-avatar">
+        <div class="hiring">
+          <a href="https://shareaholic.com/careers?utm_source=univ_header_wp_plugin&utm_medium=link&utm_campaign=careers" target="_blank">We're Hiring</a>
+        </div>
       </div>
       <!-- Mobile Start -->
       <a href="#" class="mobile-menu-link"><span class="fa fa-bars"></span></a>
