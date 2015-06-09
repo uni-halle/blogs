@@ -1,6 +1,6 @@
 <?php echo $message; ?>
 
-<div class="updated">
+<div class="awpcp-updated updated">
     <p>
         <?php $msg = _x("Thank you for using Another Wordpress Classifieds Plugin, the #1 Wordpress Classifieds Plugin.  Please direct support requests, enhancement ideas and bug reports to the %s.",
                             '... to the <a>AWPCP Support Website link</a>',
@@ -10,7 +10,7 @@
 </div>
 
 <?php if ($hasextrafieldsmodule == 1 && !($extrafieldsversioncompatibility == 1)): ?>
-<div id="message" class="updated fade">
+<div id="message" class="awpcp-updated updated fade">
     <p>
         <?php _e("The version of the extra fields module that you are using is not compatible with this version of Another Wordpress Classifieds Plugin.", "AWPCP"); ?>
         <a href="http://www.awpcp.com/contact/"><?php _e("Please request updated Extra Fields module files", "AWPCP"); ?></a>.
@@ -33,7 +33,7 @@
     </ul>
 
     <p>
-        <a class="button-primary button" href="<?php echo add_query_arg('page', 'awpcp-admin-settings', admin_url('admin.php')); ?>">
+        <a class="button-primary button" href="<?php echo esc_url( add_query_arg( 'page', 'awpcp-admin-settings', admin_url( 'admin.php' ) ) ); ?>">
             <?php _e("Restore the Classifieds pages to fix the conflict.", "AWPCP"); ?>
         </a>
     </p>
@@ -64,11 +64,11 @@
                         <?php $msg = __("You have not configured your Listing fees. Go to %s to set up your listing fees. Once that is completed, if you are running in pay mode, the options will automatically appear on the listing form for users to fill out.", "AWPCP"); ?>
                     <?php endif; ?>
                     <?php $url = add_query_arg('page', 'awpcp-admin-fees', admin_url('admin.php')); ?>
-                    <p><?php echo sprintf($msg, sprintf('<a href="%s">%s</a>', $url, __('Fees', 'AWPCP'))); ?></p>
+                    <p><?php echo sprintf( $msg, sprintf( '<a href="%s">%s</a>', esc_url( $url ), __( 'Fees', 'AWPCP' ) ) ); ?></p>
                 <?php else: ?>
                     <?php $msg = __("You currently have your system configured to run in free mode. To change to 'pay' mode go to %s and Check the box labeled 'Charge Listing Fee? (Pay Mode).'", "AWPCP"); ?>
                     <?php $url = add_query_arg(array('page' => 'awpcp-admin-settings', 'g' => 'payment-settings'), admin_url('admin.php')); ?>
-                    <p><?php echo sprintf($msg, sprintf('<a href="%s">%s</a>', $url, __('Payment Options', 'AWPCP'))); ?></p>
+                    <p><?php echo sprintf( $msg, sprintf( '<a href="%s">%s</a>', esc_url( $url ), __( 'Payment Options', 'AWPCP' ) ) ); ?></p>
                 <?php endif; ?>
                 </div>
 
@@ -105,7 +105,7 @@
                 <div style="border-top:1px solid #dddddd;">
                     <?php $msg = __("You have not categories defined. Go to the %s section to set up your categories.", "AWPCP"); ?>
                     <?php $url = add_query_arg('page', 'Cofigure3', admin_url('admin.php')); ?>
-                    <p><?php echo sprintf($msg, sprintf('<a href="%s">%s</a>', $url, __('Manage Categories', 'AWPCP'))); ?></p>
+                    <p><?php echo sprintf( $msg, sprintf( '<a href="%s">%s</a>', esc_url( $url ), __( 'Manage Categories', 'AWPCP' ) ) ); ?></p>
                 </div>
 
                 <?php endif; ?>
@@ -114,7 +114,7 @@
                 <div style="border-top:1px solid #dddddd;">
                     <?php $msg = __("You currently have your system configured to run in pay mode. To change to 'free' mode go to %s and uncheck the box labeled 'Charge Listing Fee? (Pay Mode).'", "AWPCP"); ?>
                     <?php $url = add_query_arg(array('page' => 'awpcp-admin-settings', 'g' => 'payment-settings'), admin_url('admin.php')); ?>
-                    <p><?php echo sprintf($msg, sprintf('<a href="%s">%s</a>', $url, __('Payment Options', 'AWPCP'))); ?></p>
+                    <p><?php echo sprintf( $msg, sprintf( '<a href="%s">%s</a>', esc_url( $url ), __( 'Payment Options', 'AWPCP' ) ) ); ?></p>
                 </div>
                 <?php endif; ?>
 
@@ -125,7 +125,7 @@
             <div class="inside">
                 <?php $href = admin_url( 'admin.php?page=awpcp-admin-settings' ); ?>
                 <?php _e( 'AWPCP is highly customizable. Use the next button to go to the Settings section to fit AWPCP to your needs.', 'AWPCP' ); ?>
-                <a href="<?php echo $href; ?>" class="button-primary"><?php _e( 'Configure AWPCP', 'AWPCP' ); ?></a>
+                <a href="<?php echo esc_url( $href ); ?>" class="button-primary"><?php _e( 'Configure AWPCP', 'AWPCP' ); ?></a>
             </div>
         </div>
 

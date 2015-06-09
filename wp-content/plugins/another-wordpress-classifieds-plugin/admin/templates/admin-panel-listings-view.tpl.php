@@ -1,7 +1,7 @@
 <div style="padding:20px" class="postbox">
     <div style="padding:4px 0px;; margin-bottom:5px;">
 
-        <?php if (awpcp_current_user_is_admin()): ?>
+        <?php if ( awpcp_current_user_is_moderator() ): ?>
         <strong><?php _e('Access Key', 'AWPCP'); ?></strong>: <?php echo $ad->get_access_key(); ?>
         <?php endif; ?>
 

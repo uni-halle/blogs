@@ -19,7 +19,7 @@ require_once(AWPCP_DIR . '/admin/admin-panel-users.php');
 class AWPCP_Admin {
 
 	public function __construct() {
-		$this->title = _x('AWPCP Classifieds Management System', 'awpcp admin menu', 'AWPCP');
+		$this->title = awpcp_admin_page_title();
 		$this->menu = _x('Classifieds', 'awpcp admin menu', 'AWPCP');
 
 		// not a page, but an extension to the Users table
@@ -56,9 +56,13 @@ class AWPCP_Admin {
 
 
 	public function notices() {
-		if ( ! awpcp_current_user_is_admin() ) return;
+		if ( ! awpcp_current_user_is_admin() ) {
+			return;
+		}
 
-		if ( awpcp_request_param( 'page', false ) == 'awpcp-admin-upgrade' ) return;
+		if ( awpcp_request_param( 'page', false ) == 'awpcp-admin-upgrade' ) {
+			return;
+		}
 
 		if ( get_option( 'awpcp-pending-manual-upgrade' ) ) {
 			ob_start();
@@ -71,7 +75,10 @@ class AWPCP_Admin {
 			return;
 		}
 
-		if (get_awpcp_option('show-quick-start-guide-notice')) {
+		$show_quick_start_quide_notice = get_awpcp_option( 'show-quick-start-guide-notice' );
+		$show_drip_autoresponder = get_awpcp_option( 'show-drip-autoresponder' );
+
+		if ( $show_quick_start_quide_notice && is_awpcp_admin_page() && ! $show_drip_autoresponder ) {
 			ob_start();
 				include(AWPCP_DIR . '/admin/templates/admin-quick-start-guide-notice.tpl.php');
 				$html = ob_get_contents();
@@ -157,8 +164,8 @@ class AWPCP_Admin {
 			$duplicated_pages = '<strong>' . join( '</strong>, <strong>', $wp_pages ) . '</strong>';
 
 			$message = _n( count( $wp_pages),
-						  'Page %1$s has the same name as the %2$s. That will cause page %1$s to become unreachable. Please make sure you don\'t have duplicate page names.',
-						  'Pages %1$s have the same name as the %2$s. That will cause pages %1$s to become unreachable. Please make sure you don\'t have duplicate page names.',
+						  'Page %1$s has the same name as the AWPCP %2$s. That will cause WordPress page %1$s to become unreachable. The %2$s is dynamic; you don\'t need to create a real WordPress page to show the list of cateogries, the plugin will generate it for you. If the WordPress page was created to show the default list of AWPCP categories, you can delete it and this error message will go away. Otherwise, please make sure you don\'t have duplicate page names.',
+						  'Pages %1$s have the same name as the AWPCP %2$s. That will cause WordPress pages %1$s to become unreachable. The %2$s is dynamic; you don\'t need to create a real WordPress page to show the list of cateogries, the plugin will generate it for you. If the WordPress pages were created to show the default list of AWPCP categories, you can delete them and this error message will go away. Otherwise, please make sure you don\'t have duplicate page names.',
 						  'AWPCP' );
 			$message = sprintf( $message, $duplicated_pages, $view_categories_label );
 
@@ -181,7 +188,10 @@ class AWPCP_Admin {
 	}
 
 	private function get_manage_credits_section_url() {
-		return add_query_arg( 'action', 'awpcp-manage-credits', admin_url( 'users.php' ) );
+		$full_url = add_query_arg( 'action', 'awpcp-manage-credits', admin_url( 'users.php' ) );
+		$relative_url = str_replace( get_site_url(), '', $full_url );
+
+		return $relative_url;
 	}
 
 	/**
@@ -231,7 +241,14 @@ class AWPCP_Admin {
 			$parts = array($this->title, $this->menu, $this->upgrade->page);
 			$page = add_submenu_page('awpcp-admin-uninstall', $parts[0], $parts[1], $capability, $parts[2], array($this->home, 'dispatch'), MENUICO);
 
-			$page = add_submenu_page($parent, __('Configure General Options', 'AWPCP'), __('Settings', 'AWPCP'), $capability, 'awpcp-admin-settings', array($this->settings, 'dispatch'));
+			$page = add_submenu_page(
+				$parent,
+				awpcp_admin_page_title( __( 'Settings', 'AWPCP' ) ),
+				__( 'Settings', 'AWPCP' ),
+				$capability,
+				'awpcp-admin-settings',
+				array( $this->settings, 'dispatch' )
+			);
 			add_action('admin_print_styles-' . $page, array($this->settings, 'scripts'));
 
 			$parts = array($this->credit_plans->title, $this->credit_plans->menu, $this->credit_plans->page);
@@ -247,16 +264,29 @@ class AWPCP_Admin {
 			$page = add_submenu_page($parent, $parts[0], $parts[1], $capability, $parts[2], array($this->fees, 'dispatch'));
 			add_action('admin_print_styles-' . $page, array($this->fees, 'scripts'));
 
-			// $parts = array($this->categories->title, $this->categories->menu, $this->categories->page);
-			// $page = add_submenu_page($parent, $parts[0], $parts[1], $capability, $parts[2], array($this->categories, 'dispatch'));
-			// add_action('admin_print_styles-' . $page, array($this->categories, 'scripts'));
+			add_submenu_page(
+				$parent,
+				awpcp_admin_page_title( __( 'Manage Categories', 'AWPCP' ) ),
+				__( 'Categories', 'AWPCP' ),
+				$capability,
+				'awpcp-admin-categories',
+				'awpcp_opsconfig_categories'
+			);
 
-			add_submenu_page($parent, __('Add/Edit Categories', 'AWPCP'), __('Categories', 'AWPCP'), $capability, 'awpcp-admin-categories', 'awpcp_opsconfig_categories');
-
-			$parts = array($this->listings->title, $this->listings->menu, $this->listings->page);
-			$page = add_submenu_page($parent, $parts[0], $parts[1], $capability, 'awpcp-listings', array($this->listings, 'dispatch'));
+			$page = add_submenu_page(
+				$parent,
+				$this->listings->title,
+				$this->listings->menu,
+				'manage_classifieds_listings',
+				'awpcp-listings',
+				array( $this->listings, 'dispatch' )
+			);
 			add_action('admin_print_styles-' . $page, array($this->listings, 'scripts'));
-			// add_submenu_page($parent, 'Manage Ad Listings', 'Listings', $capability, 'Manage1', 'awpcp_manage_viewlistings');
+
+			$this->form_fields = awpcp_form_fields_admin_page();
+			$parts = array( $this->form_fields->title, $this->form_fields->menu, $this->form_fields->page );
+			$page = add_submenu_page( $parent, $parts[0], $parts[1], $capability, 'awpcp-form-fields', array( $this->form_fields, 'dispatch' ) );
+			add_action( 'admin_print_styles-' . $page, array( $this->form_fields, 'scripts' ) );
 
 			// allow plugins to define additional sub menu entries
 			do_action('awpcp_admin_add_submenu_page', $parent, $capability);
@@ -407,36 +437,36 @@ function awpcp_admin_categories_render_category_items($categories, &$children, $
 function awpcp_admin_categories_render_category_item($category, $level, $start, $per_page) {
 	global $hascaticonsmodule, $awpcp_imagesurl;
 
-	if ( function_exists('get_category_icon') ) {
-		$category_icon = get_category_icon( $category->id );
+	if ( function_exists( 'awpcp_get_category_icon' ) ) {
+		$category_icon = awpcp_get_category_icon( $category );
 	}
 
 	if ( isset( $category_icon ) && !empty( $category_icon ) && function_exists( 'awpcp_category_icon_url' )  ) {
 		$caticonsurl = awpcp_category_icon_url( $category_icon );
-		$thecategoryicon = '<img style="vertical-align:middle;margin-right:5px;" src="%s" alt="%s" border="0" />';
+		$thecategoryicon = '<img style="vertical-align:middle;margin-right:5px;max-height:16px" src="%s" alt="%s" border="0" />';
 		$thecategoryicon = sprintf( $thecategoryicon, esc_url( $caticonsurl ), esc_attr( $category->name ) );
 	} else {
 		$thecategoryicon = '';
 	}
 
 	$params = array( 'page' => 'awpcp-admin-categories', 'cat_ID' => $category->id );
-	$admin_listings_url = add_query_arg( $params, admin_url( 'admin.php' ) );
+	$admin_listings_url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
 
 	$thecategory_parent_id = $category->parent;
 	$thecategory_parent_name = stripslashes(get_adparentcatname($thecategory_parent_id));
 	$thecategory_order = $category->order ? $category->order : 0;
 	$thecategory_name = sprintf( '%s%s<a href="%s">%s</a>', str_repeat( '&mdash;&nbsp;', $level ),
 															$thecategoryicon,
-															$admin_listings_url,
+															esc_url( $admin_listings_url ),
 															esc_attr( stripslashes( $category->name ) ) );
 
 	$totaladsincat = total_ads_in_cat( $category->id );
 
 	$params = array( 'cat_ID' => $category->id, 'offset' => $start, 'results' => $per_page );
-	$admin_categories_url = add_query_arg( $params, awpcp_get_admin_categories_url() );
+	$admin_categories_url = add_query_arg( urlencode_deep( $params ), awpcp_get_admin_categories_url() );
 
 	if ($hascaticonsmodule == 1 && is_installed_category_icon_module()) {
-		$url = add_query_arg( 'action', 'managecaticon', $admin_categories_url );
+		$url = esc_url( add_query_arg( 'action', 'managecaticon', $admin_categories_url ) );
 		$managecaticon = "<a href=\"$url\"><img src=\"$awpcp_imagesurl/icon_manage_ico.png\" alt=\"";
 		$managecaticon.= __("Manage Category Icon", "AWPCP");
 		$managecaticon.= "\" title=\"" . __("Manage Category Icon", "AWPCP") . "\" border=\"0\"/></a>";
@@ -454,9 +484,9 @@ function awpcp_admin_categories_render_category_item($category, $level, $start, 
 	$row.= "<td style=\"border-bottom:1px dotted #dddddd;font-weight:normal;\">$thecategory_parent_name</td>";
 	$row.= "<td style=\"border-bottom:1px dotted #dddddd;font-weight:normal;\">$thecategory_order</td>";
 	$row.= "<td style=\"border-bottom:1px dotted #dddddd;font-size:smaller;font-weight:normal;\">";
-	$url = add_query_arg( 'action', 'editcat', $admin_categories_url );
+	$url = esc_url( add_query_arg( 'action', 'editcat', $admin_categories_url ) );
 	$row.= "<a href=\"$url\"><img src=\"$awpcp_imagesurl/edit_ico.png\" alt=\"$awpcpeditcategoryword\" title=\"$awpcpeditcategoryword\" border=\"0\"/></a>";
-	$url = add_query_arg( 'action', 'delcat', $admin_categories_url );
+	$url = esc_url( add_query_arg( 'action', 'delcat', $admin_categories_url ) );
 	$row.= "<a href=\"$url\"><img src=\"$awpcp_imagesurl/delete_ico.png\" alt=\"$awpcpdeletecategoryword\" title=\"$awpcpdeletecategoryword\" border=\"0\"/></a>";
 	$row.= $managecaticon;
 	$row.= "</td>";
@@ -545,21 +575,11 @@ function awpcp_opsconfig_categories() {
 		}
 
 		if ( $action == 'managecaticon' ) {
-			$output .= "<div class=\"wrap\"><h2>";
-			$output .= __("AWPCP Classifieds Management System Categories Management","AWPCP");
-			$output .= "</h2>
-			";
+			$return = apply_filters( 'awpcp-custom-manage-categories-action', '', $cat_ID );
 
-			global $awpcp_plugin_path;
-
-			if ($hascaticonsmodule == 1) {
-				if (is_installed_category_icon_module()) {
-					$output .= load_category_icon_management_page($defaultid=$cat_ID,$offset,$results);
-				}
+			if ( $return ) {
+				return;
 			}
-
-			$output .= "</div>";
-			return $output;
 		}
 
 		if ( $action == 'setcategoryicon' ) {
@@ -595,12 +615,19 @@ function awpcp_opsconfig_categories() {
 			$action = $aeaction = null;
 		}
 
-		$category_name=get_adcatname($cat_ID);
-		$category_order=get_adcatorder($cat_ID);
-		$category_order = ($category_order != 0 ? $category_order : 0);
-		$cat_parent_ID=get_cat_parent_ID($cat_ID);
+		try {
+			$category = awpcp_categories_collection()->get( $cat_ID );
 
-		$add_label = __( 'Ad A New Category', 'AWPCP' );
+			$category_name = $category->name;
+			$category_order = $category->order;
+			$cat_parent_ID = $category->parent;
+		} catch ( AWPCP_Exception $e ) {
+			$category_name = null;
+			$category_order = null;
+			$cat_parent_ID = null;
+		}
+
+		$add_label = __( 'Add A New Category', 'AWPCP' );
 		$add_url = awpcp_get_admin_categories_url();
 		$addnewlink = '<a class="" title="%1$s" href="%2$s"" accesskey="s">%1$s</a>';
 		$addnewlink = sprintf( $addnewlink, $add_label, $add_url );
@@ -631,21 +658,22 @@ function awpcp_opsconfig_categories() {
 						$movetocat=1;
 					}
 
-					$movetoname=get_adcatname($movetocat);
-					if ( empty($movetoname) )
-					{
-						$movetoname=__("Untitled","AWPCP");
+					try {
+						$move_to_category = awpcp_categories_collection()->get( $movetocat );
+						$movetoname = $move_to_category->name;
+					} catch ( AWPCP_Exception $e ) {
+						$movetoname = __( 'Untitled', 'AWPCP' );
 					}
 
 					$promptmovetocat="<p>";
 					$promptmovetocat.=__("The category contains ads. If you do not select a category to move them to the ads will be moved to:","AWPCP");
 					$promptmovetocat.="<b>$movetoname</b></p>";
 
-					$defaultcatname=get_adcatname($catid=1);
-
-					if ( empty($defaultcatname) )
-					{
-						$defaultcatname=__("Untitled","AWPCP");
+					try {
+						$move_to_category = awpcp_categories_collection()->get( 1 );
+						$defaultcatname = $move_to_category->name;
+					} catch ( AWPCP_Exception $e ) {
+						$defaultcatname = __( 'Untitled', 'AWPCP' );
 					}
 
 					if (category_has_children($cat_ID))
@@ -700,9 +728,9 @@ function awpcp_opsconfig_categories() {
 			}
 			else
 			{
-				$categorynameinput="<p style=\"background:transparent url($awpcp_imagesurl/delete_ico.png) left center no-repeat;padding-left:20px;\">";
+				$categorynameinput="<span style=\"background:transparent url($awpcp_imagesurl/delete_ico.png) left center no-repeat;padding-left:20px;\">";
 				$categorynameinput.=__("Category to Delete","AWPCP");
-				$categorynameinput.=": $category_name</p>";
+				$categorynameinput.=": $category_name</span>";
 				$selectinput="<p style=\"background:#D54E21;padding:3px;color:#ffffff;\">$thecategoryparentname</p>";
 				$submitbuttoncode="<input type=\"submit\" class=\"button-primary button\" name=\"createeditadcategory\" value=\"$aeword2\" />";
 			}
@@ -711,10 +739,9 @@ function awpcp_opsconfig_categories() {
 		{
 			$section_icon_style = "background:transparent url($awpcp_imagesurl/edit_ico.png) left center no-repeat;padding-left:20px;";
 
-			$categorynameinput = "<p>";
-			$categorynameinput.=__("Category to Edit","AWPCP");
+			$categorynameinput = __("Category to Edit","AWPCP");
 			$categorynameinput.=": $category_name ";
-			$categorynamefield = "<input name=\"category_name\" id=\"cat_name\" type=\"text\" class=\"inputbox\" value=\"$category_name\" size=\"40\" style=\"width: 220px\"/>";
+			$categorynamefield = "<input name=\"category_name\" id=\"cat_name\" type=\"text\" class=\"inputbox\" value=\"$category_name\" size=\"40\" style=\"width: 90%\"/>";
 			$selectinput="<select name=\"category_parent_id\"><option value=\"0\">";
 			$selectinput.=__("Make This a Top Level Category","AWPCP");
 			$selectinput.="</option>";
@@ -727,9 +754,8 @@ function awpcp_opsconfig_categories() {
 		else {
 			$section_icon_style = "background:transparent url($awpcp_imagesurl/post_ico.png) left center no-repeat;padding-left:20px;";
 
-			$categorynameinput="<p>";
-			$categorynameinput .= __( 'Enter the category name', 'AWPCP' );
-			$categorynamefield ="<input name=\"category_name\" id=\"cat_name\" type=\"text\" class=\"inputbox\" value=\"$category_name\" size=\"40\" style=\"width: 220px\"/>";
+			$categorynameinput = __( 'Enter the category name', 'AWPCP' );
+			$categorynamefield ="<input name=\"category_name\" id=\"cat_name\" type=\"text\" class=\"inputbox\" value=\"$category_name\" size=\"40\" style=\"width: 90%\"/>";
 			$selectinput="<select name=\"category_parent_id\"><option value=\"0\">";
 			$selectinput.=__("Make This a Top Level Category","AWPCP");
 			$selectinput.="</option>";
@@ -742,7 +768,7 @@ function awpcp_opsconfig_categories() {
 
 		// Start the page display
 		$output .= "<div class=\"wrap\"><h2>";
-		$output .= __("AWPCP Classifieds Management System Categories Management","AWPCP");
+		$output .= awpcp_admin_page_title( __( 'Manage Categories', 'AWPCP' ) );
 		$output .= "</h2>";
 		if (isset($message) && !empty($message))
 		{
@@ -753,9 +779,9 @@ function awpcp_opsconfig_categories() {
 		$output .= $sidebar;
 
 		if (empty($sidebar)) {
-			$output .= "<div style=\"padding:10px;\"><p>";
+			$output .= "<div style=\"padding:10px;\">";
 		} else {
-			$output .= "<div style=\"padding:10px; width: 75%\"><p>";
+			$output .= "<div style=\"padding:10px; width: 75%\">";
 		}
 
 		$output .= "<b>";
@@ -793,22 +819,23 @@ function awpcp_opsconfig_categories() {
 			  <input type=\"hidden\" name=\"offset\" value=\"$offset\" />
 			  <input type=\"hidden\" name=\"results\" value=\"$results\" />
 
-			<p style=\"line-height: 1.3em; $section_icon_style\"> $aeword1</p>
-			<table width=\"75%\" cellpadding=\"5\"><tr>
-			<td>$categorynameinput</td>
-			<td>$aeword3</td>
-			<td>$aeword4</td>
-			</tr>
-			<tr>
-			<td>$categorynamefield</td>
-			<td>$selectinput</td>
-			<td>$orderinput</td>
-			</tr>
+			<span style=\"line-height: 1.3em; $section_icon_style\"> $aeword1</span>
+			<table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin: 15px 0 12px\">
+				<tr>
+					<th style=\"text-align: left; padding-bottom: 4px; width: 40%\">$categorynameinput</th>
+					<th style=\"text-align: left; padding-bottom: 4px; width: 25%\">$aeword3</th>
+					<th style=\"text-align: left; padding-bottom: 4px; width: 20%\">$aeword4</th>
+				</tr>
+				<tr>
+					<td>$categorynamefield</td>
+					<td>$selectinput</td>
+					<td>$orderinput</td>
+				</tr>
 			</table>
 
 			$promptmovetocat
 
-			<p style=\"margin-top:5px;\" class=\"submit\">$submitbuttoncode $addnewlink</p>
+			<div style=\"margin-top:5px;\">$submitbuttoncode $addnewlink</div>
 			 </form>
 			 </div>";
 
@@ -1189,7 +1216,7 @@ function awpcp_handle_admin_requests() {
 			$themessagetoprint=__("No changes made to categories.","AWPCP");
 		}
 
-		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">$themessagetoprint</div>";
+		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"awpcp-updated updated fade\">$themessagetoprint</div>";
 		$clearform=1;
 	}
 
@@ -1232,7 +1259,7 @@ function awpcp_handle_admin_requests() {
 			$themessagetoprint=__("The categories have not been moved because you did not indicate where you want the categories to be moved to","AWPCP");
 		}
 
-		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">$themessagetoprint</div>";
+		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"awpcp-updated updated fade\">$themessagetoprint</div>";
 	}
 
 	// Delete multiple categories
@@ -1242,7 +1269,7 @@ function awpcp_handle_admin_requests() {
 		$tbl_ads = $wpdb->prefix . "awpcp_ads";
 
 		// First get the array of categories to be deleted
-		$categoriestodelete=clean_field($_REQUEST['category_to_delete_or_move']);
+		$categoriestodelete = (array) clean_field($_REQUEST['category_to_delete_or_move']);
 
 		// Next get the value of move/delete ads
 		if ( isset($_REQUEST['movedeleteads']) && !empty($_REQUEST['movedeleteads']) )
@@ -1329,7 +1356,9 @@ function awpcp_handle_admin_requests() {
 
 		}
 
-		$message="<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"updated fade\">$themessagetoprint</div>";
+		if ( isset( $themessagetoprint ) ) {
+			$message= "<div style=\"background-color: rgb(255, 251, 204);\" id=\"message\" class=\"awpcp-updated updated fade\">$themessagetoprint</div>";
+		}
 	}
 }
 
@@ -1366,7 +1395,11 @@ function awpcp_admin_sidebar_output($html, $float) {
 
 	$premium_modules = $awpcp->get_premium_modules_information();
 	foreach ($premium_modules as $module) {
-		if ($module['installed']) {
+		if ( isset( $module['private'] ) && $module['private'] ) {
+			continue;
+		}
+
+		if ( $module['installed'] ) {
 			$modules['premium']['installed'][] = $module;
 		} else {
 			$modules['premium']['not-installed'][] = $module;

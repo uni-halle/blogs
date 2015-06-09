@@ -28,7 +28,7 @@ class AWPCP_SendToFacebookHelper {
         }
 
         $this->do_facebook_request( $listing,
-                                    '/' . $this->facebook_config->get( 'page_id' ) . '/links',
+                                    '/' . $this->facebook_config->get( 'page_id' ) . '/feed',
                                     'POST' );
 
         $this->listings_metadata->set( $listing->ad_id, 'sent-to-facebook', true );
@@ -57,6 +57,14 @@ class AWPCP_SendToFacebookHelper {
         }
     }
 
+    /**
+     * Users should choose Friends (or something more public), not Only Me, when the application
+     * request the permission, to avoid error:
+     *
+     * OAuthException: (#200) Insufficient permission to post to target on behalf of the viewer.
+     *
+     * http://stackoverflow.com/a/19653226/201354
+     */
     public function send_listing_to_facebook_group( $listing ) {
         $this->facebook_config->set_access_token( 'user_token' );
 

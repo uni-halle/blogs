@@ -1,5 +1,5 @@
 <?php $page_id = 'awpcp-admin-csv-importer' ?>
-<?php $page_title = __('AWPCP Classifieds Management System: Import Ad', 'AWPCP') ?>
+<?php $page_title = awpcp_admin_page_title( __( 'Import Listings', 'AWPCP' ) ); ?>
 
 <?php include(AWPCP_DIR . '/admin/templates/admin-panel-header.tpl.php') ?>
 
@@ -169,8 +169,8 @@
 				</table>
 
 				<p class="submit">
-					<input type="submit" class="button" name="import_type" value="<?php echo esc_html( __( 'Test Import', 'AWPCP' ) ); ?>"></input>
-					<input type="submit" class="button-primary button" name="import_type" value="<?php echo esc_html( __( 'Import', 'AWPCP' ) ); ?>"></input>
+					<input type="submit" class="button" name="do_test_import" value="<?php echo esc_html( __( 'Test Import', 'AWPCP' ) ); ?>"></input>
+					<input type="submit" class="button-primary button" name="do_import" value="<?php echo esc_html( __( 'Import', 'AWPCP' ) ); ?>"></input>
 				</p>
 			</form>
 		</div><!-- end of .awpcp-main-content -->

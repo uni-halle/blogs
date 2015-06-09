@@ -6,7 +6,7 @@
  */
 class AWPCP_Facebook {
 
-    const GRAPH_URL = 'https://graph.facebook.com/v2.0';
+    const GRAPH_API_VERSION = 'v2.3';
 
 	private static $instance = null;
     private $access_token = '';
@@ -28,49 +28,39 @@ class AWPCP_Facebook {
         $app_access_token = '';
 
         if ( !$app_id || !$app_secret ) {
-            $errors[] = __( 'Missing app ID/secret.', 'AWPCP' );
-        } else {
-            // Check App ID + secret.
-            $res = $this->api_request( '/oauth/access_token',
-                                       'GET',
-                                       array( 'client_id' => $app_id,
-                                              'client_secret' => $app_secret,
-                                              'grant_type' => 'client_credentials' ),
-                                       true,
-                                       false );
-            parse_str( $res, $parts );
+            $errors[] = __( 'Missing App ID an Secret.', 'AWPCP' );
+            return;
+        }
 
-            if ( !array_key_exists( 'access_token', $parts ) ) {
-                $res = json_decode( $res );
-                $errors[] = $res->error->message;
-            } else {
-                $app_access_token = $parts['access_token'];
+        if ( ! $user_id || ! $user_token ) {
+            $errors[] = __( 'Missing a valid User Access Token.', 'AWPCP' );
+            return;
+        }
+
+        $this->set_access_token( 'user_token' );
+        $response = $this->api_request( '/me/permissions', 'GET', array() );
+
+        if ( ! $response && is_object( $response->last_error ) ) {
+            $errors[] = $this->last_error->message;
+            return;
+        }
+
+        if ( ! $response || ! isset( $response->data ) ) {
+            $errors[] = __( 'Could not validate User Access Token. Are you connected to the internet?', 'AWPCP' );
+            return;
+        }
+
+        $permissions = array();
+
+        foreach ( $response->data as $entry ) {
+            if ( $entry->status == 'granted' ) {
+                $permissions[] = $entry->permission;
             }
         }
 
-        if ( !$user_id || !$user_token ) {
-            $errors[] = __( 'Missing a valid User Access Token.', 'AWPCP' );
-        } else {
-            $this->set_access_token( $app_access_token );
-            $res = $this->api_request( '/debug_token',
-                                       'GET',
-                                       array( 'input_token' => $user_token ) );
-
-            if ( !$res || !isset( $res->data ) ) {
-                $errors[] = __( 'Could not validate User Access Token. Are you connected to the internet?', 'AWPCP' );
-            } else {
-                $token_info = $res->data;
-
-                if ( !$token_info->is_valid ) {
-                    $errors[] = __( 'User Access Token is not valid for current app. Maybe you de-authorized the app or the token expired? Try clicking "Obtain an access token from Facebook" again.', 'AWPCP' );
-                } else {
-                    if ( !in_array( 'manage_pages', $token_info->scopes ) || ( !in_array( 'publish_stream', $token_info->scopes ) && !in_array( 'publish_actions', $token_info->scopes ) ) )
-                        $errors[] = __( 'User Access Token is valid but doesn\'t have the permissions required for AWPCP integration (publish_stream and manage_pages).', 'AWPCP' );
-                }
-
-                if ( $token_info->user_id != $user_id )
-                    $errors[] = __( 'User Access Token user id does not match stored user id.', 'AWPCP' );
-            }
+        if ( ! in_array( 'manage_pages', $permissions ) || ( ! in_array( 'publish_pages', $permissions ) && ! in_array( 'publish_actions', $permissions ) ) ) {
+            $errors[] = __( 'User Access Token is valid but doesn\'t have the permissions required for AWPCP integration (publish_pages, publis_actions and manage_pages).', 'AWPCP' );
+            return;
         }
 
         if ( !$page_token || !$page_id ) {
@@ -226,7 +216,7 @@ class AWPCP_Facebook {
     }
 
     public function get_login_url( $redirect_uri = '', $scope = '' ) {
-        return sprintf( 'https://www.facebook.com/v2.0/dialog/oauth?client_id=%s&redirect_uri=%s&scope=%s',
+        return sprintf( 'https://www.facebook.com/' . self::GRAPH_API_VERSION . '/dialog/oauth?client_id=%s&redirect_uri=%s&scope=%s',
                         $this->get( 'app_id' ),
                         urlencode( $redirect_uri ),
                         urlencode( $scope )
@@ -250,21 +240,20 @@ class AWPCP_Facebook {
                                         'GET',
                                         array( 'redirect_uri' => $redirect_uri,
                                                'code' => $code ),
-                                        true,
-                                        false );
+            true
+        );
 
-        if ( $response ) {
-            parse_str( $response, $parts );
-            return isset( $parts['access_token'] ) ? $parts['access_token'] : '';
+        if ( $response && isset( $response->access_token ) ) {
+            return $response->access_token;
+        } else {
+            return '';
         }
-
-        return '';
     }
 
     public function api_request( $path, $method = 'GET', $args = array(), $notoken=false, $json_decode=true ) {
         $this->last_error = '';
 
-        $url = self::GRAPH_URL . '/' . ltrim( $path, '/' );
+        $url = 'https://graph.facebook.com/' . self::GRAPH_API_VERSION . '/' . ltrim( $path, '/' );
         $url .= '?client_id=' . $this->get( 'app_id' );
         $url .= '&client_secret=' . $this->get( 'app_secret' );
 

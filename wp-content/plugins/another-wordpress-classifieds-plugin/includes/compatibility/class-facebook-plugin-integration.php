@@ -2,12 +2,11 @@
 
 class AWPCP_FacebookPluginIntegration {
 
-    private $meta;
+    private $metadata;
 
     public function should_generate_opengraph_tags( $should, $meta ) {
-        $this->meta = $meta;
-
         if ( class_exists( 'Facebook_Loader' ) ) {
+            $this->metadata = $meta->get_listing_metadata();
             add_action( 'fb_meta_tags', array( $this, 'meta_tags' ), 10, 2 );
             return false;
         }
@@ -16,6 +15,6 @@ class AWPCP_FacebookPluginIntegration {
     }
 
     public function meta_tags( $meta_tags, $post ) {
-        return $this->meta->get_meta_tags();
+        return $this->metadata;
     }
 }

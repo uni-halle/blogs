@@ -138,7 +138,7 @@ class AWPCP_CategoriesListWalker extends Walker {
         $element = '[category-icon]<a class="[category-class]" href="[category-url]">[category-name]</a> [listings-count][js-handler]';
         $element = str_replace( '[category-icon]', $this->render_category_icon( $category ), $element );
         $element = str_replace( '[category-class]', $depth == 0 ? 'toplevelitem' : '', $element );
-        $element = str_replace( '[category-url]', esc_attr( url_browsecategory( $category->id ) ), $element );
+        $element = str_replace( '[category-url]', esc_attr( url_browsecategory( $category ) ), $element );
         $element = str_replace( '[category-name]', esc_attr( $category->name ), $element );
         $element = str_replace( '[listings-count]', $this->render_listings_count( $category ), $element );
         $element = str_replace( '[js-handler]', $this->render_js_handler( $depth ), $element );
@@ -163,11 +163,11 @@ class AWPCP_CategoriesListWalker extends Walker {
     }
 
     private function render_category_icon( $category ) {
-        if ( ! function_exists( 'get_category_icon' ) || ! function_exists( 'awpcp_category_icon_url' ) ) {
+        if ( ! function_exists( 'awpcp_get_category_icon' ) || ! function_exists( 'awpcp_category_icon_url' ) ) {
             return '';
         }
 
-        $category_icon_filename = get_category_icon( $category->id );
+        $category_icon_filename = awpcp_get_category_icon( $category );
 
         if ( empty( $category_icon_filename ) ) {
             return '';

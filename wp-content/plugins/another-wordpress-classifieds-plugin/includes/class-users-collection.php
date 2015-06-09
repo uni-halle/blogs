@@ -16,7 +16,7 @@ class AWPCP_UsersCollection {
     }
 
     /**
-     * @since next-release
+     * @since 3.3.2
      */
     public function get( $user_id ) {
         $user = $this->find_by_id( $user_id );
@@ -95,8 +95,10 @@ class AWPCP_UsersCollection {
                 $profile_info = maybe_unserialize( $information->meta_value );
                 $users[ $information->ID ]->address = awpcp_array_data( 'address', '', $profile_info );
                 $users[ $information->ID ]->phone = awpcp_array_data( 'phone', '', $profile_info );
-                $users[ $information->ID ]->city = awpcp_array_data( 'city', '', $profile_info );
+                $users[ $information->ID ]->country = awpcp_array_data( 'country', '', $profile_info );
                 $users[ $information->ID ]->state = awpcp_array_data( 'state', '', $profile_info );
+                $users[ $information->ID ]->city = awpcp_array_data( 'city', '', $profile_info );
+                $users[ $information->ID ]->county = awpcp_array_data( 'county', '', $profile_info );
             } else {
                 $users[ $information->ID ]->{$information->meta_key} = $information->meta_value;
             }

@@ -39,7 +39,7 @@ abstract class AWPCP_FileActionAjaxHandker extends AWPCP_AjaxHandler {
     protected function verify_user_is_allowed_to_perform_file_action( $file, $listing ) {
         $nonce = $this->request->post( 'nonce' );
 
-        if ( ! wp_verify_nonce( $nonce, 'manage-listing-files-' . $listing->ad_id ) ) {
+        if ( ! wp_verify_nonce( $nonce, 'awpcp-manage-listing-media-' . $listing->ad_id ) ) {
             throw new AWPCP_Exception( "You are not allowed to perform this action.", 'AWPCP' );
         }
 
@@ -54,24 +54,18 @@ abstract class AWPCP_FileActionAjaxHandker extends AWPCP_AjaxHandler {
     protected abstract function do_file_action( $file, $listing );
 }
 
-function awpcp_set_image_as_primary_ajax_handler() {
-    return new AWPCP_SetImageAsPrimaryAjaxHandler( awpcp_media_api(), awpcp_files_collection(), awpcp_listings_collection(), awpcp_request(), awpcp_ajax_response() );
+function awpcp_set_file_as_primary_ajax_handler() {
+    return new AWPCP_SetFileAsPrimaryAjaxHandler( awpcp_media_api(), awpcp_files_collection(), awpcp_listings_collection(), awpcp_request(), awpcp_ajax_response() );
 }
 
-class AWPCP_SetImageAsPrimaryAjaxHandler extends AWPCP_FileActionAjaxHandker {
+class AWPCP_SetFileAsPrimaryAjaxHandler extends AWPCP_FileActionAjaxHandker {
 
     protected function do_file_action( $file, $listing ) {
-        return $this->media->set_ad_primary_image( $listing, $file );
-    }
-
-    protected function verify_user_is_allowed_to_perform_file_action( $file, $listing ) {
-        parent::verify_user_is_allowed_to_perform_file_action( $file, $listing );
-
-        if ( ! $file->is_image() ) {
-            throw new AWPCP_Exception( 'The selected file is not an image.', 'AWPCP' );
+        if ( $file->is_image() ) {
+            return $this->media->set_ad_primary_image( $listing, $file );
+        } else {
+            return apply_filters( 'awpcp-set-file-as-primary', false, $file, $listing );
         }
-
-        return true;
     }
 }
 
@@ -102,5 +96,26 @@ class AWPCP_DeleteFileAjaxHandler extends AWPCP_FileActionAjaxHandker {
 
     protected function do_file_action( $file, $listing ) {
         return $this->media->delete( $file );
+    }
+}
+
+function awpcp_update_file_status_ajax_handler() {
+    return new AWPCP_UpdateFileStatusAjaxHandler(
+        awpcp_media_api(),
+        awpcp_files_collection(),
+        awpcp_listings_collection(),
+        awpcp_request(),
+        awpcp_ajax_response()
+    );
+}
+
+class AWPCP_UpdateFileStatusAjaxHandler extends AWPCP_FileActionAjaxHandker {
+
+    protected function do_file_action( $file, $listing ) {
+        if ( $this->request->param( 'action' ) == 'awpcp-approve-file' ) {
+            return $this->media->approve( $file );
+        } else {
+            return $this->media->reject( $file );
+        }
     }
 }

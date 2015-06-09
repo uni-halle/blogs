@@ -1,12 +1,11 @@
 /*global AWPCP*/
 AWPCP.run('awpcp/page-place-ads', [
     'jquery',
-    'knockout',
-    'awpcp/file-manager',
+    'awpcp/media-center',
     'awpcp/settings',
-    'awpcp/jquery-userfield'
-],
-function( $, ko, FileManager, settings ) {
+    'awpcp/jquery-userfield',
+    'awpcp/jquery-validate-methods'
+], function( $, MediaCenter, settings ) {
     var AWPCP = jQuery.AWPCP = jQuery.extend({}, jQuery.AWPCP, AWPCP);
 
     $.AWPCP.PaymentTermsTable = function(table) {
@@ -20,10 +19,12 @@ function( $, ko, FileManager, settings ) {
 
         $.subscribe('/category/updated', function(event, dropdown, category) {
             if ($.contains(dropdown.closest('form').get(0), self.table.get(0))) {
-                if (category) {
-                    self.category = category;
-                    self.update();
+                if ( category === null && ! settings.get( 'hide-all-payment-terms-if-no-category-is-selected' ) ) {
+                    return;
                 }
+
+                self.category = category;
+                self.update();
             }
         });
 
@@ -46,7 +47,9 @@ function( $, ko, FileManager, settings ) {
                 }
 
                 // filter by category
-                if (self.category) {
+                if ( self.category === null && settings.get( 'hide-all-payment-terms-if-no-category-is-selected' ) ) {
+                    return true;
+                } else if (self.category) {
                     categories = $.parseJSON(term.attr('data-categories'));
                     if ($.isArray(categories)) {
                         categories = $.map(categories, function(category) {
@@ -164,9 +167,9 @@ function( $, ko, FileManager, settings ) {
         }).trigger('keyup');
     };
 
-    $.AWPCP.validate();
-
     $(function() {
+        $.AWPCP.validate();
+
         var pages = [], container, form;
 
         pages.push('.awpcp-buy-subscription');
@@ -212,8 +215,9 @@ function( $, ko, FileManager, settings ) {
 
                 container.find('[autocomplete-field], [dropdown-field]').userfield();
 
-                $.noop(new $.AWPCP.DatepickerField(container.find('[name="start_date"]')));
-                $.noop(new $.AWPCP.DatepickerField(container.find('[name="end_date"]')));
+                $( '[datepicker-placeholder]' ).each( function() {
+                    $.noop( new $.AWPCP.DatepickerField( $(this).siblings('[name]:hidden') ) );
+                } );
 
                 // display and control characters allowed for the Ad title
                 $.noop(new $.AWPCP.RestrictedLengthField(container.find('[name="ad_title"]')));
@@ -231,35 +235,34 @@ function( $, ko, FileManager, settings ) {
         /* Upload Images Form */
 
         (function() {
-            var form = container.find('.awpcp-upload-images-form');
-
-            if (form.length) {
-                var data = settings.get( 'file-manager-data' );
-                ko.applyBindings( new FileManager( data.nonce, data.files, data.options ), $('.awpcp-file-manager').get( 0 ) );
-
-                var radios = form.find('.uploadform :radio').change(function() {
-                    radios.closest('li').removeClass('primary').addClass('not-primary');
-                    $(this).closest('li').removeClass('not-primary').addClass('primary');
-                });
-            }
+            $( '.awpcp-media-center' ).StartMediaCenter( {
+                mediaManagerOptions: settings.get( 'media-manager-data' ),
+                mediaUploaderOptions: settings.get( 'media-uploader-data' )
+            } );
         })();
 
         /* Deleta Ad Form */
 
         (function() {
-            var form = container.find('.awpcp-delete-ad-form'),
+            var form = container.find('.awpcp-listing-action-delete-ad-form'),
                 submit = form.find(':submit'),
-                confirmation = form.find('.confirm');
+                confirmationMessage = form.find('.awpcp-listing-action-form-confirmation'),
+                cancelButton = form.find('.awpcp-listing-action-form-cancel-button'),
+                hiddenElements = $().add(confirmationMessage).add(cancelButton);
+
             if (form.length) {
                 form.submit(function(event) {
                     if (!submit.data('submit')) {
                         event.preventDefault();
-                        confirmation.show();
+                        form.addClass( 'is-active' );
+                        hiddenElements.removeClass( 'is-hidden' );
                         form.append($('<input type="hidden" name="confirm" value="true">'));
                         submit.data('submit', true);
                     }
-                }).find('.confirm:button').click(function() {
-                    confirmation.hide();
+                });
+                cancelButton.click(function() {
+                    form.removeClass( 'is-active' );
+                    hiddenElements.addClass( 'is-hidden' );
                     form.find('[name="confirm"]').remove();
                     submit.data('submit', false);
                 });

@@ -57,7 +57,7 @@ class AWPCP_PaymentsAPI {
                 'action' => $action,
                 'awpcp-txn' => $transaction->id
             );
-            return add_query_arg($params, home_url('index.php'));
+            return add_query_arg( urlencode_deep( $params ), home_url('index.php'));
         }
     }
 
@@ -71,10 +71,6 @@ class AWPCP_PaymentsAPI {
 
     public function get_cancel_url($transaction) {
         return $this->get_url('cancel', $transaction);
-    }
-
-    public function get_currency() {
-        return strtoupper(get_awpcp_option('displaycurrencycode'));
     }
 
     public function payments_enabled() {
@@ -261,6 +257,27 @@ class AWPCP_PaymentsAPI {
 
     /* Transactions Management */
 
+    public function get_transaction() {
+        return $this->get_transaction_with_method( 'find_by_id' );
+    }
+
+    private function get_transaction_with_method( $method_name ) {
+        if ( ! isset( $this->current_transaction ) ) {
+            $this->current_transaction = null;
+        }
+
+        if ( is_null( $this->current_transaction ) ) {
+            $transaction_id = $this->request->param( 'transaction_id' );
+            $this->current_transaction = call_user_func( array( 'AWPCP_Payment_Transaction', $method_name ), $transaction_id );
+        }
+
+        return $this->current_transaction;
+    }
+
+    public function get_or_create_transaction() {
+        return $this->get_transaction_with_method( 'find_or_create' );
+    }
+
     /**
      * TODO: should throw an exception if the status can't be set
      */
@@ -387,7 +404,7 @@ class AWPCP_PaymentsAPI {
             $url = $transaction->get('redirect', $transaction->get('success-redirect'));
             $url = add_query_arg('step', 'payment-completed', $url);
             $url = add_query_arg('transaction_id', $transaction->id, $url);
-            wp_redirect($url);
+            wp_redirect( esc_url_raw( $url ) );
         }
 
         exit();
@@ -578,7 +595,7 @@ class AWPCP_PaymentsAPI {
                 $html = $this->render_checkout_payment_template($result['output'], $message, $transaction);
             } else if ($integration === AWPCP_PaymentGateway::INTEGRATION_CUSTOM_FORM) {
                 $html = $result['output'];
-            } else if ($integration === AWPCP_PaymentGateway::INTEGRATINO_REDIRECT) {
+            } else if ($integration === AWPCP_PaymentGateway::INTEGRATION_REDIRECT) {
                 $html = $result['output'];
             }
         }

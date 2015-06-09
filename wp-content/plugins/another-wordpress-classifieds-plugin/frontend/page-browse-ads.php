@@ -15,7 +15,7 @@ class AWPCP_BrowseAdsPage extends AWPCP_Page {
 
     public function url($params=array()) {
         $url = awpcp_get_page_url('browse-ads-page-name');
-        return add_query_arg($params, $url);
+        return add_query_arg( urlencode_deep( $params ), $url );
     }
 
     public function dispatch() {
@@ -48,30 +48,32 @@ class AWPCP_BrowseAdsPage extends AWPCP_Page {
     }
 
     private function render_listings_from_category( $category_id ) {
-        global $wpdb;
-
-        if ($category_id == -1 || empty($category_id)) {
-            $conditions = array();
-        } else {
-            $sql = '( ad_category_id = %1$d OR ad_category_parent_id = %1$d )';
-            $conditions[] = $wpdb->prepare( $sql,  $category_id );
-            $conditions[] = 'disabled = 0';
-        }
-
-        $order = get_awpcp_option('groupbrowseadsby');
+        $query = array(
+            'category_id' => $category_id,
+            'limit' => absint( awpcp_request_param( 'results', get_awpcp_option( 'adresultsperpage', 10 ) ) ),
+            'offset' => absint( awpcp_request_param( 'offset', 0 ) ),
+            'orderby' => get_awpcp_option( 'groupbrowseadsby' ),
+        );
 
         if ( $category_id == -1 ) {
             $message = __( "No specific category was selected for browsing so you are viewing listings from all categories." , "AWPCP" );
-            $output = awpcp_print_message( $message ) . awpcp_display_ads( join( ' AND ', $conditions ), '', '', $order, 'cat');
+
+            $output = awpcp_print_message( $message );
+            $output.= awpcp_display_listings_in_page( $query, 'browse-listings' );
         } else {
-            $output = awpcp_display_ads( join( ' AND ', $conditions ), '', '', $order, 'cat');
+            $output = awpcp_display_listings_in_page( $query, 'browse-listings' );
         }
 
         return $output;
     }
 
     protected function render_all_listings() {
-        $order = get_awpcp_option( 'groupbrowseadsby' );
-        return awpcp_display_ads( '', '', '', $order, 'ad');
+        $query = array(
+            'limit' => absint( awpcp_request_param( 'results', get_awpcp_option( 'adresultsperpage', 10 ) ) ),
+            'offset' => absint( awpcp_request_param( 'offset', 0 ) ),
+            'orderby' => get_awpcp_option( 'groupbrowseadsby' ),
+        );
+
+        return awpcp_display_listings_in_page( $query, 'browse-listings' );
     }
 }

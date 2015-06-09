@@ -26,14 +26,9 @@ abstract class AWPCP_Module {
     public abstract function required_awpcp_version_notice();
 
     public function load_textdomain() {
-        load_plugin_textdomain( $this->textdomain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        awpcp_load_plugin_textdomain( $this->file, $this->textdomain );
     }
 
-    /**
-     * TODO: run module_setup() on init, instead of plugins_loaded.
-     *  Let's try to move all initialization code to run on init, we'll
-     *  figure out later if we need to execute anything before that.
-     */
     public function setup() {
         if ( ! $this->is_up_to_date() ) {
             $this->install_or_upgrade();
@@ -43,7 +38,10 @@ abstract class AWPCP_Module {
             return;
         }
 
-        $this->module_setup();
+        // run before module_setup() in new modules and init() in old modules
+        add_action( 'init', array( $this, 'load_dependencies' ), 9 );
+        // run before load_dependencies() in new modules and init() in old modules
+        add_action( 'init', array( $this, 'setup_module' ), 11 );
     }
 
     protected function is_up_to_date() {
@@ -57,6 +55,22 @@ abstract class AWPCP_Module {
 
     public function install_or_upgrade() {
         // overwrite in children classes if necessary
+    }
+
+    public function load_dependencies() {
+        // overwrite in children classes if necessary
+    }
+
+    /**
+     * Released versions of some modules define module_setup() as a protected method.
+     * We now need that method to be public to run it on init using add_action(), but
+     * changing the access level in this class causes Fatal errors if those modules
+     * are activated. This method is just a workaround.
+     *
+     * @since 3.4
+     */
+    public function setup_module() {
+        return $this->module_setup();
     }
 
     protected function module_setup() {

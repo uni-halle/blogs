@@ -22,7 +22,9 @@ function($, ko, settings) {
                 progress = 100 * (recordsCount - recordsLeft) / recordsCount;
             }
 
-            return progress + '%';
+            progress = Math.round( progress * 100 ) / 100;
+
+            return '' + progress + '%';
         }, this).extend({ throttle: 1 });
     }
 

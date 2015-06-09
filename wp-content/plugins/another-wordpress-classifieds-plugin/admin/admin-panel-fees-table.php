@@ -85,11 +85,12 @@ class AWPCP_FeesTable extends WP_List_Table {
 
     public function prepare_items() {
         $query = $this->parse_query();
-        $this->total_items = AWPCP_Fee::query(array_merge(array('fields' => 'count'), $query));
+
+        $total_items = AWPCP_Fee::query(array_merge(array('fields' => 'count'), $query));
         $this->items = AWPCP_Fee::query(array_merge(array('fields' => '*'), $query));
 
         $this->set_pagination_args(array(
-            'total_items' => $this->total_items,
+            'total_items' => $total_items,
             'per_page' => $this->items_per_page
         ));
 

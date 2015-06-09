@@ -5,12 +5,11 @@
  */
 class AWPCP_AllInOneSEOPackPluginIntegration {
 
-    private $meta_tags;
+    private $metadata;
 
     public function should_generate_opengraph_tags( $should, $meta ) {
-        $this->meta_tags = $meta->get_meta_tags();
-
         if ( class_exists( 'All_in_One_SEO_Pack_Opengraph' ) ) {
+            $this->metadata = $meta->get_listing_metadata();
             add_filter( 'aiosp_opengraph_meta', array( $this, 'meta_tag_value' ), 10, 3 );
             return false;
         }
@@ -31,19 +30,19 @@ class AWPCP_AllInOneSEOPackPluginIntegration {
     private function facebook_meta_tag_value( $name, $value ) {
         switch ( $name ) {
             case 'title':
-                $value = $this->meta_tags['http://ogp.me/ns#title'];
+                $value = $this->metadata['http://ogp.me/ns#title'];
                 break;
             case 'description':
-                $value = $this->meta_tags['http://ogp.me/ns#description'];
+                $value = $this->metadata['http://ogp.me/ns#description'];
                 break;
             case 'type':
-                $value = $this->meta_tags['http://ogp.me/ns#type'];
+                $value = $this->metadata['http://ogp.me/ns#type'];
                 break;
             case 'url':
-                $value = $this->meta_tags['http://ogp.me/ns#url'];
+                $value = $this->metadata['http://ogp.me/ns#url'];
                 break;
             case 'thumbnail':
-                $value = $this->meta_tags['http://ogp.me/ns#image'];
+                $value = $this->metadata['http://ogp.me/ns#image'];
                 break;
         }
 
@@ -53,7 +52,7 @@ class AWPCP_AllInOneSEOPackPluginIntegration {
     private function twitter_meta_tag_value( $name, $value ) {
         switch ( $name ) {
             case 'description':
-                $value = $this->meta_tags['http://ogp.me/ns#description'];
+                $value = $this->metadata['http://ogp.me/ns#description'];
                 break;
         }
 

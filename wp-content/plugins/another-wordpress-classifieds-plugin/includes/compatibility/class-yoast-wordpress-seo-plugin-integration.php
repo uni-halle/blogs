@@ -1,14 +1,25 @@
 <?php
 
+function awpcp_yoast_wordpress_seo_plugin_integration() {
+    return new AWPCP_YoastWordPressSEOPluginIntegration( awpcp_tag_renderer() );
+}
+
 class AWPCP_YoastWordPressSEOPluginIntegration {
 
     private $meta;
+    private $current_listing;
     private $image_already_processed;
 
-    public function should_generate_opengraph_tags( $should, AWPCP_Meta $meta ) {
-        $this->meta = $meta;
+    private $tag_renderer;
 
+    public function __construct( $tag_renderer ) {
+        $this->tag_renderer = $tag_renderer;
+    }
+
+    public function should_generate_opengraph_tags( $should, AWPCP_Meta $meta ) {
         if ( defined( 'WPSEO_VERSION' ) && class_exists( 'WPSEO_OpenGraph' ) ) {
+            $this->metadata = $meta->get_listing_metadata();
+
             add_filter( 'wpseo_opengraph_type', array( $this, 'og_type' ) );
             add_filter( 'wpseo_opengraph_title', array( $this, 'og_title' ) );
             add_filter( 'wpseo_opengraph_desc', array( $this, 'og_description' ) );
@@ -26,33 +37,27 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
     }
 
     public function og_type() {
-        $tags = $this->meta->get_meta_tags();
-        return $tags['http://ogp.me/ns#type'];
+        return $this->metadata['http://ogp.me/ns#type'];
     }
 
     public function og_title() {
-        $tags = $this->meta->get_meta_tags();
-        return $tags['http://ogp.me/ns#title'];
+        return $this->metadata['http://ogp.me/ns#title'];
     }
 
     public function og_description() {
-        $tags = $this->meta->get_meta_tags();
-        return $tags['http://ogp.me/ns#description'];
+        return $this->metadata['http://ogp.me/ns#description'];
     }
 
     public function og_url() {
-        $tags = $this->meta->get_meta_tags();
-        return $tags['http://ogp.me/ns#url'];
+        return $this->metadata['http://ogp.me/ns#url'];
     }
 
     public function og_published_time() {
-        $tags = $this->meta->get_meta_tags();
-        return $tags['http://ogp.me/ns/article#published_time'];
+        return $this->metadata['http://ogp.me/ns/article#published_time'];
     }
 
     public function og_modified_time() {
-        $tags = $this->meta->get_meta_tags();
-        return $tags['http://ogp.me/ns/article#modified_time'];
+        return $this->metadata['http://ogp.me/ns/article#modified_time'];
     }
 
     public function og_image( $image ) {
@@ -61,9 +66,8 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
     }
 
     private function get_image_src( $default = '' ) {
-        $tags = $this->meta->get_meta_tags();
-        if ( isset( $tags['http://ogp.me/ns#image'] ) ) {
-            return $tags['http://ogp.me/ns#image'];
+        if ( isset( $this->metadata['http://ogp.me/ns#image'] ) ) {
+            return $this->metadata['http://ogp.me/ns#image'];
         } else {
             return $default;
         }
@@ -85,11 +89,11 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
     }
 
     private function render_image_src_link( $image_src ) {
-        return $this->meta->render_tag( 'link', array( 'rel' => 'image_src', 'href' => $image_src ) );
+        return $this->tag_renderer->render_tag( 'link', array( 'rel' => 'image_src', 'href' => $image_src ) );
     }
 
     private function render_og_image_tag( $image_src ) {
-        return $this->meta->render_tag( 'meta', array( 'property' => 'og:image', 'content' => $image_src ) );
+        return $this->tag_renderer->render_tag( 'meta', array( 'property' => 'og:image', 'content' => $image_src ) );
     }
 
     public function should_generate_rel_canonical( $should ) {
@@ -126,7 +130,14 @@ class AWPCP_YoastWordPressSEOPluginIntegration {
     }
 
     public function build_title( $title ) {
-        global $sep;
-        return $this->meta->title_builder->build_title( $title, $sep, '' );
+        if ( function_exists( 'wpseo_replace_vars' ) ) {
+            $separator = wpseo_replace_vars( '%%sep%%', array() );
+        } else if ( isset( $GLOBALS['sep'] ) ) {
+            $separator = $GLOBALS['sep'];
+        } else {
+            $separator = '';
+        }
+
+        return $this->meta->title_builder->build_title( $title, $separator, '' );
     }
 }

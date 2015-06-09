@@ -62,66 +62,112 @@ class AWPCP_DefaultCAPTCHA extends AWPCP_CAPTCHA {
     }
 }
 
-
 class AWPCP_reCAPTCHA extends AWPCP_CAPTCHA {
 
-    public function __construct($public_key, $private_key) {
+    private $site_key;
+    private $secret_key;
+    private $request;
+
+    public function __construct( $site_key, $secret_key, $request ) {
         parent::__construct();
 
-        // lazy load reCAPTCHA to avoid conflicts with other plugins
-        if ( !function_exists( 'recaptcha_get_html' ) ) {
-            require_once( AWPCP_DIR . '/vendors/recaptcha/recaptchalib.php' );
+        $this->site_key = $site_key;
+        $this->secret_key = $secret_key;
+
+        $this->request = $request;
+    }
+
+    public function render() {
+        if ( empty( $this->site_key ) ) {
+            return $this->missing_key_message();
         }
 
-        $this->public_key = $public_key;
-        $this->private_key = $private_key;
+        wp_enqueue_script(
+            'awpcp-recaptcha',
+            'https://www.google.com/recaptcha/api.js?onload=AWPCPreCAPTCHAonLoadCallback&render=explicit',
+            array( 'awpcp' ),
+            'v2',
+            true
+        );
+
+        return $this->get_recaptcha_html( $this->site_key );
     }
 
     private function missing_key_message() {
         $message = __( 'To use reCAPTCHA you must get an API key from %s.', 'AWPCP' );
-        $link = sprintf( '<a href="%1$s">%1$s</a>', 'https://www.google.com/recaptcha/admin/create' );
+        $link = sprintf( '<a href="%1$s">%1$s</a>', 'https://www.google.com/recaptcha/admin' );
         return sprintf( $message, $link );
     }
 
-    private function missing_ip_message() {
-        return __( 'For security reasons, you must pass the remote ip to reCAPTCHA.', 'AWPCP' );
-    }
-
-    public function render() {
-        if ( empty( $this->public_key ) ) {
-            return $this->missing_key_message();
-        }
-
-        return recaptcha_get_html( $this->public_key );
+    private function get_recaptcha_html( $site_key ) {
+        return '<div class="g-recaptcha awpcp-recaptcha" data-sitekey="' . esc_attr( $site_key ) . '"></div>';
     }
 
     public function validate(&$error='') {
-        if ( empty( $this->private_key ) ) {
+        if ( empty( $this->secret_key ) ) {
             $error = $this->missing_key_message();
             return false;
         }
 
-        $response = recaptcha_check_answer( $this->private_key,
-                                            $_SERVER['REMOTE_ADDR'],
-                                            awpcp_post_param( 'recaptcha_challenge_field' ),
-                                            awpcp_post_param( 'recaptcha_response_field' ) );
+        $response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', array(
+            'body' => array(
+                'secret' => $this->secret_key,
+                'response' => $this->request->post( 'g-recaptcha-response' ),
+                $_SERVER['REMOTE_ADDR'],
+            ),
+        ) );
 
-        if ( !$response->is_valid ) {
-            $error = __( "The characters in the image weren't entered correctly. Please try it again.", 'AWPCP' );
+        if ( is_wp_error( $response ) ) {
+            $message = __( 'There was an error trying to verify the reCAPTCHA answer. <reCAPTCHA-error>', 'AWPCP' );
+            $error = str_replace( 'reCAPTCHA-error', $response->get_error_message(), $message );
+            return false;
         }
 
-        return $response->is_valid;
+        $json = json_decode( $response['body'], true );
+
+        if ( $json['success'] ) {
+            return true;
+        } else if ( $json['error-codes'] ) {
+            $error = $this->process_error_codes( $json['error-codes'] );
+            return false;
+        } else {
+            $error = __( "Your answers couldn't be verified by the reCAPTCHA server.", 'AWPCP' );
+            return false;
+        }
+    }
+
+    private function process_error_codes( $error_codes ) {
+        $errors = array();
+
+        foreach ( $error_codes as $error_code ) {
+            switch( $error_code ) {
+                case 'missing-input-secret':
+                    $errors[] = _x( 'The secret parameter is missing', 'recaptcha-error', 'AWPCP' );
+                    break;
+                case 'invalid-input-secret':
+                    $errors[] = _x( 'The secret parameter is invalid or malformed.', 'recaptcha-error', 'AWPCP' );
+                    break;
+                case 'missing-input-response':
+                    $errors[] = _x( 'The response parameter is missing.', 'recaptcha-error', 'AWPCP' );
+                    break;
+                case 'invalid-input-response':
+                default:
+                    $errors[] = _x( 'The response parameter is invalid or malformed.', 'recaptcha-error', 'AWPCP' );
+                    break;
+            }
+        }
+
+        return implode( ' ', $errors );
     }
 }
-
 
 function awpcp_create_captcha($type='default') {
     switch ($type) {
         case 'recaptcha':
-            $public_key = get_awpcp_option( 'recaptcha-public-key' );
-            $private_key = get_awpcp_option( 'recaptcha-private-key' );
+            $site_key = get_awpcp_option( 'recaptcha-public-key' );
+            $secret_key = get_awpcp_option( 'recaptcha-private-key' );
 
-            return new AWPCP_reCAPTCHA( $public_key, $private_key );
+            return new AWPCP_reCAPTCHA( $site_key, $secret_key, awpcp_request() );
 
         case 'default':
         default:

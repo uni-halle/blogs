@@ -15,6 +15,7 @@ define('AWPCP_TABLE_PAYMENTS', $wpdb->prefix . 'awpcp_payments');
 define('AWPCP_TABLE_CREDIT_PLANS', $wpdb->prefix . 'awpcp_credit_plans');
 define('AWPCP_TABLE_PAGES', $wpdb->prefix . "awpcp_pages");
 define('AWPCP_TABLE_PAGENAME', $wpdb->prefix . "awpcp_pagename");
+define('AWPCP_TABLE_TASKS', $wpdb->prefix . "awpcp_tasks");
 
 define('AWPCP_TABLE_ADSETTINGS', $wpdb->prefix . "awpcp_adsettings");
 define('AWPCP_TABLE_ADPHOTOS', $wpdb->prefix . "awpcp_adphotos");
@@ -158,6 +159,18 @@ class AWPCP_Installer {
             `meta_value` LONGTEXT,
             PRIMARY KEY  (`meta_id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
+
+        $this->create_tasks_table =
+        "CREATE TABLE IF NOT EXISTS " . AWPCP_TABLE_TASKS . " (
+            `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+            `name` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            `status` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'new',
+            `priority` INT(10) UNSIGNED NOT NULL DEFAULT 0,
+            `execute_after` DATETIME NOT NULL,
+            `metadata` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+            `created_at` DATETIME NOT NULL,
+            PRIMARY KEY  (`id`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
     }
 
     public static function instance() {
@@ -167,18 +180,16 @@ class AWPCP_Installer {
         return AWPCP_Installer::$instance;
     }
 
+    /**
+     * @deprecated 3.4
+     */
     public function activate() {
-        $this->install();
-        flush_rewrite_rules();
+        _deprecated_function( __FUNCTION__, '3.4', 'install_or_upgrade' );
+        return $this->install_or_upgrade();
     }
 
-    /**
-     * Creates AWPCP tables.
-     *
-     * If is not a fresh install it calls $this->upgrade().
-     */
-    public function install() {
-        global $awpcp, $wpdb, $awpcp_db_version;
+    public function install_or_upgrade() {
+        global $awpcp_db_version;
 
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
@@ -186,9 +197,20 @@ class AWPCP_Installer {
 
         // if table exists, this is an upgrade
         if ( $installed_version !== false && awpcp_table_exists( AWPCP_TABLE_CATEGORIES ) ) {
-            return $this->upgrade( $installed_version, $awpcp_db_version );
+            $this->upgrade( $installed_version, $awpcp_db_version );
+        } else {
+            $this->install( $awpcp_db_version );
         }
 
+        update_option( 'awpcp-installed-or-upgraded', true );
+        update_option( 'awpcp-flush-rewrite-rules', true );
+    }
+
+    /**
+     * Creates AWPCP tables.
+     */
+    public function install( $version ) {
+        global $awpcp, $wpdb;
 
         // create Categories table
         $sql = "CREATE TABLE IF NOT EXISTS " . AWPCP_TABLE_CATEGORIES . " (
@@ -256,6 +278,8 @@ class AWPCP_Installer {
         // create Credit Plans table
         dbDelta($this->create_credit_plans_table);
 
+        dbDelta( $this->create_tasks_table );
+
 
         // insert deafult category
         $category = $wpdb->get_results( 'SELECT * FROM ' . AWPCP_TABLE_CATEGORIES . ' WHERE category_id = 1' );
@@ -287,9 +311,10 @@ class AWPCP_Installer {
             $wpdb->insert(AWPCP_TABLE_ADFEES, $data);
         }
 
+        $result = update_option( 'awpcp_db_version', $version );
 
-        $result = update_option('awpcp_db_version', $awpcp_db_version);
         $awpcp->settings->update_option('show-quick-start-guide-notice', true, true);
+        $awpcp->settings->update_option( 'show-drip-autoresponder', true, true );
 
         do_action('awpcp_install');
 
@@ -411,6 +436,12 @@ class AWPCP_Installer {
         }
         if ( version_compare( $oldversion, '3.3.2' ) < 0 ) {
             $this->upgrade_to_3_3_2( $oldversion );
+        }
+        if ( version_compare( $oldversion, '3.3.3' ) < 0 ) {
+            $this->upgrade_to_3_3_3( $oldversion );
+        }
+        if ( version_compare( $oldversion, '3.4' ) < 0 ) {
+            $this->upgrade_to_3_4( $oldversion );
         }
 
         do_action('awpcp_upgrade', $oldversion, $newversion);
@@ -1082,12 +1113,29 @@ class AWPCP_Installer {
     }
 
     private function upgrade_to_3_3_2( $oldversion ) {
+        // fix media mime type
         global $wpdb;
 
         $files_with_empty_mime_type = $wpdb->get_var( 'SELECT COUNT(id) FROM ' . AWPCP_TABLE_MEDIA . " WHERE mime_type = ''" );
 
         if ( $files_with_empty_mime_type > 0 ) {
             update_option( 'awpcp-enable-fix-media-mime-type-upgrde', true );
+        }
+
+        // create tasks table
+        dbDelta( $this->create_tasks_table );
+    }
+
+    private function upgrade_to_3_3_3( $oldversion ) {
+        update_option( 'awpcp-flush-rewrite-rules', true );
+    }
+
+    private function upgrade_to_3_4( $oldversion ) {
+        $show_currency_symbol = awpcp()->settings->get_option( 'show-currency-symbol' );
+        if ( is_numeric( $show_currency_symbol ) && $show_currency_symbol ) {
+            awpcp()->settings->update_option( 'show-currency-symbol', 'show-currency-symbol-on-left' );
+        } else if ( is_numeric( $show_currency_symbol ) ) {
+            awpcp()->settings->update_option( 'show-currency-symbol', 'do-not-show-currency-symbol' );
         }
     }
 }

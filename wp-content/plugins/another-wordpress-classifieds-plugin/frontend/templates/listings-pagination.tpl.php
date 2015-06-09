@@ -1,6 +1,6 @@
 <div class="pager">
     <form class="awpcp-pagination-form" method="get">
-        <?php foreach ($params as $name => $value): ?>
+        <?php foreach ( array_filter( awpcp_flatten_array( $params ) ) as $name => $value ): ?>
         <input type="hidden" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value) ?>" />
         <?php endforeach; ?>
         <table>

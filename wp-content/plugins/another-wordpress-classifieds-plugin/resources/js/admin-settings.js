@@ -1,6 +1,8 @@
-if (typeof jQuery !== 'undefined') {
+/*global AWPCP*/
+AWPCP.run( 'awpcp/admin-settings', [ 'jquery', 'awpcp/settings-validator' ],
+function( $, SettingsValidator ) {
 
-    (function($, undefined) {
+    (function() {
 
         $.AWPCP.DateTimeSettings = function(element) {
             var self = this;
@@ -91,12 +93,17 @@ if (typeof jQuery !== 'undefined') {
             }
         });
 
-    })(jQuery);
+    })();
 
-    (function($, undefined) {
+    (function() {
         $(function() {
             var table = $('#x-date-time-format-american').closest('table');
             $.noop(new $.AWPCP.DateTimeSettings(table));
+
+            $( '#awpcp-admin-settings .settings-form' ).each( function() {
+                SettingsValidator.setup( $(this) );
+            } );
         });
-    })(jQuery);
-}
+    })();
+
+} );

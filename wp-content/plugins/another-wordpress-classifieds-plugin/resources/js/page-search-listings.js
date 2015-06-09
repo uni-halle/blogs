@@ -1,10 +1,13 @@
-(function($, undefined) {
-
-    var AWPCP = jQuery.AWPCP = jQuery.extend({}, jQuery.AWPCP, AWPCP);
-
-    $.AWPCP.validate();
+/*global AWPCP*/
+AWPCP.run( 'awpcp/page-search-listings', [
+    'jquery',
+    'awpcp/jquery-validate-methods'
+], function($) {
+    var AWPCP = $.AWPCP = $.extend({}, $.AWPCP, AWPCP);
 
     $(function() {
+        $.AWPCP.validate();
+
         var container = $('.awpcp-search-ads'), form, fields;
 
         /* Search Ads Form */
@@ -39,6 +42,10 @@
                 messages: $.AWPCP.l10n('page-search-ads'),
                 onfocusout: false
             });
+
+            $( '[datepicker-placeholder]' ).each( function() {
+                $.noop( new $.AWPCP.DatepickerField( $(this).siblings('[name]:hidden') ) );
+            } );
         }
     });
-})(jQuery);
+} );

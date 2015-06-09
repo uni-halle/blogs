@@ -147,7 +147,7 @@ class AWPCP_BasePage extends AWPCP_Page {
     }
 
     private function handle_page_exception( $exception ) {
-        $this->errors = array_merge( $this->errors, $exception->get_errors() );
+        $this->errors = array_merge( $exception->get_errors(), $this->errors );
         $this->render_page_error();
     }
 

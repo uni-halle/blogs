@@ -87,38 +87,8 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
     }
 
     private function render_item( $item, $instance, $html_class ) {
-        $url = url_showad($item->ad_id);
-        $title = sprintf('<a href="%s">%s</a>', $url, stripslashes($item->ad_title));
-
-        if (!$instance['show-images']) {
-            return sprintf('<li class="%s">%s</li>', $html_class, $title);
-        } else {
-            return $this->render_item_with_thumbnail( $item, $title, $url, $instance, $html_class );
-        }
-    }
-
-    private function render_item_with_thumbnail( $item, $item_title, $item_url, $instance, $html_class ) {
-        global $awpcp_imagesurl;
-
-        $images_are_allowed = get_awpcp_option( 'imagesallowdisallow' ) == 1;
-        $image = awpcp_media_api()->get_ad_primary_image( $item );
-
-        if ( ! is_null( $image ) && $images_are_allowed ) {
-            $image_url = $image->get_url();
-        } else if ( $instance['show-blank'] && $images_are_allowed ) {
-            $image_url = "$awpcp_imagesurl/adhasnoimage.png";
-        } else {
-            $image_url = '';
-        }
-
-        if ( empty( $image_url ) ) {
-            $html_image = '';
-        } else {
-            $html_image = sprintf( '<a class="self" href="%1$s"><img src="%2$s" alt="%3$s" /></a>',
-                                   $item_url,
-                                   $image_url,
-                                   esc_attr( $item->ad_title ) );
-        }
+        $item_url = url_showad( $item->ad_id );
+        $item_title = sprintf( '<a href="%s">%s</a>', $item_url, stripslashes( $item->ad_title ) );
 
         if ($instance['show-title']) {
             $html_title = sprintf( '<div class="awpcp-listing-title">%s</div>', $item_title );
@@ -130,9 +100,13 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
             $excerpt = stripslashes( awpcp_utf8_substr( $item->ad_details, 0, 50 ) ) . "...";
             $read_more = sprintf( '<a class="awpcp-widget-read-more" href="%s">[%s]</a>', $item_url, __( 'Read more', 'AWPCP' ) );
             $html_excerpt = sprintf( '<div class="awpcp-listings-widget-item-excerpt">%s%s</div>', $excerpt, $read_more );
+        } else {
+            $html_excerpt = '';
         }
 
-        if ( $images_are_allowed ) {
+        $html_image = $this->render_item_image( $item, $instance );
+
+        if ( ! empty( $html_image ) ) {
             $template = '<li class="awpcp-listings-widget-item %1$s"><div class="awpcplatestbox clearfix"><div class="awpcplatestthumb clearfix">%2$s</div>%3$s %4$s</div></li>';
         } else {
             $template = '<li class="awpcp-listings-widget-item %1$s"><div class="awpcplatestbox clearfix">%3$s %4$s</div></li>';
@@ -141,11 +115,36 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
         return sprintf( $template, $html_class, $html_image, $html_title, $html_excerpt );
     }
 
+    protected function render_item_image( $item, $instance ) {
+        global $awpcp_imagesurl;
+
+        $show_images = $instance['show-images'] && awpcp_are_images_allowed();
+        $image = awpcp_media_api()->get_ad_primary_image( $item );
+
+        if ( ! is_null( $image ) && $show_images ) {
+            $image_url = $image->get_url();
+        } else if ( $instance['show-blank'] && $show_images ) {
+            $image_url = "$awpcp_imagesurl/adhasnoimage.png";
+        } else {
+            $image_url = '';
+        }
+
+        if ( empty( $image_url ) ) {
+            $html_image = '';
+        } else {
+            $html_image = sprintf( '<a class="awpcp-listings-widget-item-listing-link self" href="%1$s"><img src="%2$s" alt="%3$s" /></a>',
+                                   url_showad( $item->ad_id ),
+                                   $image_url,
+                                   esc_attr( $item->ad_title ) );
+        }
+
+        return apply_filters( 'awpcp-listings-widget-listing-thumbnail', $html_image, $item );
+    }
+
     protected function query($instance) {
         return array(
             'conditions' => array( "ad_title <> ''" ),
             'args' => array(
-                'order' => array( 'ad_postdate DESC', 'ad_id DESC' ),
                 'limit' => $instance['limit']
             )
         );
@@ -181,7 +180,6 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
         $instance['show-title'] = absint($new_instance['show-title']);
         $instance['show-excerpt'] = absint($new_instance['show-excerpt']);
         $instance['show-images'] = absint($new_instance['show-images']);
-        $instance['show-blank'] = absint($new_instance['show-blank']);
         $instance['show-blank'] = absint($new_instance['show-blank']);
         $instance['thumbnail-position-in-desktop'] = sanitize_text_field( $new_instance['thumbnail-position-in-desktop'] );
         $instance['thumbnail-position-in-mobile'] = sanitize_text_field( $new_instance['thumbnail-position-in-mobile'] );

@@ -2,6 +2,8 @@
 
 class AWPCP_Ad {
 
+	public $ad_id;
+
 	static function from_object($object) {
 		$ad = new AWPCP_Ad;
 
@@ -167,7 +169,12 @@ class AWPCP_Ad {
 	 * @since 3.0
 	 */
 	public static function get_enabled_ads($args=array(), $conditions=array()) {
+        if ( ! isset( $args['order'] ) ) {
+            $args['order'] = self::get_order_conditions( get_awpcp_option( 'groupbrowseadsby' ) );
+        }
+
         $conditions = self::get_where_conditions($conditions);
+
         return self::query(array_merge($args, array('where' => join(' AND ', $conditions))));
 	}
 
@@ -477,9 +484,9 @@ class AWPCP_Ad {
 
 		do_action('awpcp_before_delete_ad', $this);
 
-		$images = awpcp_media_api()->find_images_by_ad_id( $this->ad_id );
-		foreach ($images as $image) {
-			awpcp_media_api()->delete( $image );
+		$media = awpcp_media_api()->find_by_ad_id( $this->ad_id );
+		foreach ( $media as $file ) {
+			awpcp_media_api()->delete( $file );
 		}
 
 		$query = 'DELETE FROM ' . AWPCP_TABLE_AD_REGIONS . ' WHERE ad_id = %d';
@@ -629,27 +636,13 @@ class AWPCP_Ad {
 		$this->renewed_date = current_time('mysql');
 
 		// if Ad is disabled lets see if we can enable it
-		if ($this->disabled && $this->should_be_enabled() ) {
+		if ($this->disabled && awpcp_should_enable_existing_listing( $this ) ) {
 			$this->enable();
 		} else if ( $this->disabled ) {
 			$this->clear_disabled_date();
 		}
 
 		return true;
-	}
-
-	/**
-	 * @since 3.2.2
-	 */
-	public function should_be_enabled() {
-		return awpcp_calculate_ad_disabled_state( $this->ad_id ) ? false : true;
-	}
-
-	/**
-	 * @since 3.2.2
-	 */
-	public function should_be_disabled() {
-		return ! $this->should_be_enabled();
 	}
 
 	public function clear_disabled_date() {
@@ -787,12 +780,16 @@ class AWPCP_Ad {
 
 	/**
 	 * @since  3.0-beta22
+	 * @deprecated 3.4. Use awpcp_listings_api()->flag().
 	 */
 	public function flag() {
 		$this->flagged = 1;
 		return $this->save();
 	}
 
+	/**
+	 * @deprecated 3.4. Use awpcp_listings_api()->unflag().
+	 */
 	public function unflag() {
 		$this->flagged = 0;
 		return $this->save();

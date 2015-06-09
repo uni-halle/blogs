@@ -1,3 +1,3 @@
-<?php foreach ( $errors as $errors ): ?>
-    <?php echo awpcp_print_error( $errors ); ?>
+<?php foreach ( $errors as $error ): ?>
+    <?php echo awpcp_print_error( $error ); ?>
 <?php endforeach ?>

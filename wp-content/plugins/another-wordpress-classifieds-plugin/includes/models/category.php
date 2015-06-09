@@ -164,11 +164,13 @@ class AWPCP_CategoriesCollection {
     }
 
     private function get_category_data( $category ) {
-        return array(
+        $category_data = array(
             'category_name' => $category->name,
             'category_parent_id' => $category->parent,
             'category_order' => $category->order,
         );
+
+        return apply_filters( 'awpcp-category-data', $category_data, $category );
     }
 
     private function throw_database_exception( $message ) {
@@ -249,19 +251,27 @@ class AWPCP_CategoriesCollection {
 
     /**
      * @throws AWPCP_Exception if no category is found.
-     * @since next-release
+     * @since 3.3.2
      */
     public function get( $category_id ) {
+        if ( $category_id <= 0 ) {
+            $this->throw_no_category_was_found_with_id_exception( $category_id );
+        }
+
         $results = AWPCP_Category::query( array(
             'where' => $this->db->prepare( 'category_id = %d', $category_id )
         ) );
 
         if ( empty( $results ) ) {
-            $message = __( 'No category was found with ID: %d', 'AWPCP' );
-            throw new AWPCP_Exception( sprintf( $message, $category_id ) );
+            $this->throw_no_category_was_found_with_id_exception( $category_id );
         }
 
         return array_shift( $results );
+    }
+
+    private function throw_no_category_was_found_with_id_exception( $category_id ) {
+        $message = __( 'No category was found with ID: %d', 'AWPCP' );
+        throw new AWPCP_Exception( sprintf( $message, $category_id ) );
     }
 
     /**

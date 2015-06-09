@@ -14,6 +14,7 @@ class AWPCP_Compatibility {
         }
 
         $this->load_content_aware_sidebars_integration();
+        $this->load_woocommerce_integration();
     }
 
     private function load_plugin_integration_used_in_frontend_screens() {
@@ -23,10 +24,13 @@ class AWPCP_Compatibility {
         add_filter( 'awpcp-should-generate-opengraph-tags', array( $all_in_one_seo_pack_plugin_integration, 'should_generate_opengraph_tags' ), 10, 2 );
         add_filter( 'awpcp-should-generate-rel-canonical', array( $all_in_one_seo_pack_plugin_integration, 'should_generate_rel_canonical' ), 10, 2 );
 
-        $yoast_wordpress_seo_plugin_integration = new AWPCP_YoastWordPressSEOPluginIntegration();
-        add_filter( 'awpcp-should-generate-opengraph-tags', array( $yoast_wordpress_seo_plugin_integration, 'should_generate_opengraph_tags' ), 10, 2 );
-        add_filter( 'awpcp-should-generate-rel-canonical', array( $yoast_wordpress_seo_plugin_integration, 'should_generate_rel_canonical' ), 10, 2 );
-        add_filter( 'awpcp-should-generate-title', array( $yoast_wordpress_seo_plugin_integration, 'should_generate_title' ), 10, 2 );
+        $integration = awpcp_yoast_wordpress_seo_plugin_integration();
+        add_filter( 'awpcp-should-generate-opengraph-tags', array( $integration, 'should_generate_opengraph_tags' ), 10, 2 );
+        add_filter( 'awpcp-should-generate-rel-canonical', array( $integration, 'should_generate_rel_canonical' ), 10, 2 );
+        add_filter( 'awpcp-should-generate-title', array( $integration, 'should_generate_title' ), 10, 2 );
+
+        $integration = awpcp_add_meta_tags_plugin_integration();
+        add_filter( 'awpcp-should-generate-opengraph-tags', array( $integration, 'should_generate_opengraph_tags' ), 10, 2 );
     }
 
     private function load_content_aware_sidebars_integration() {
@@ -35,5 +39,10 @@ class AWPCP_Compatibility {
             require_once( AWPCP_DIR . '/includes/compatibility/class-content-aware-sidebars-categories-walker.php' );
             add_filter( 'cas-module-pre-deploy', 'awpcp_register_content_aware_sidebars_listings_categories_module' );
         }
+    }
+
+    private function load_woocommerce_integration() {
+        $woocommerce_integration = awpcp_woocommerce_plugin_integration();
+        add_filter( 'woocommerce_prevent_admin_access', array( $woocommerce_integration, 'filter_prevent_admin_access' ) );
     }
 }

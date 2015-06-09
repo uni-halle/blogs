@@ -1,3 +1,9 @@
+<?php
+    if ( isset( $transaction ) && get_awpcp_option( 'show-create-listing-form-steps' ) ) {
+        echo awpcp_render_listing_form_steps( 'finish', $transaction );
+    }
+?>
+
 <?php if (!is_admin()): ?>
     <?php if ($edit): ?>
     <?php echo awpcp_print_message(__("Your changes have been saved.", 'AWPCP')); ?>

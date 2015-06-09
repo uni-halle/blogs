@@ -12,7 +12,7 @@
     }
 ?>
 
-<form class="awpcp-search-ads-form" method="post" action="<?php echo esc_attr( $page->url() ); ?>"name="myform">
+<form class="awpcp-search-ads-form" method="get" action="<?php echo esc_attr( $page->url() ); ?>"name="myform">
     <?php foreach($hidden as $name => $value): ?>
     <input type="hidden" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value); ?>" />
     <?php endforeach ?>
@@ -63,13 +63,18 @@
         'maxRegions' => ($ui['allow-user-to-search-in-multiple-regions'] ? 10 : 1),
     );
 
-    $selector = new AWPCP_MultipleRegionSelector( $form['regions'], $options );
+    $selector = awpcp_multiple_region_selector( $form['regions'], $options );
     echo $selector->render( 'search', array(), $errors );
     ?>
 
-    <?php if ($ui['module-extra-fields']): ?>
-    <?php echo awpcp_extra_fields_render_form(array(), $form, 'search', $errors); ?>
-    <?php endif ?>
+    <?php
+        echo awpcp_form_fields()->render_fields(
+            $form,
+            $errors,
+            null,
+            array( 'category' => 0, 'action' => 'search' )
+        );
+    ?>
 
     <input type="submit" class="button" value="<?php echo esc_attr( _x( 'Start Search', 'ad search form', "AWPCP" ) ); ?>" />
 </form>

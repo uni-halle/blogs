@@ -15,6 +15,6 @@ class AWPCP_BrowseCategoriesPage extends AWPCP_BrowseAdsPage {
 
     public function url($params=array()) {
         $url = awpcp_get_page_url('browse-categories-page-name');
-        return add_query_arg($params, $url);
+        return add_query_arg( urlencode_deep( $params ), $url );
     }
 }

@@ -181,6 +181,9 @@ class AWPCP_PaymentTermsTable {
     }
 
     public function render() {
+        $option_name = 'hide-all-payment-terms-if-no-category-is-selected';
+        awpcp()->js->set( $option_name, awpcp_parse_bool( get_awpcp_option( $option_name ) ) );
+
         ob_start();
             include(AWPCP_DIR . '/frontend/templates/payments-payment-terms-table.tpl.php');
             $html = ob_get_contents();

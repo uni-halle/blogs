@@ -2,19 +2,19 @@
 
 class AWPCP_Listings_Table extends WP_List_Table {
 
-    private $selected_category_id;
-
-    private $page;
     private $params;
+    private $selected_category_id;
     private $items_per_page;
     private $total_items;
 
-    public function __construct($page) {
-        parent::__construct(array('plural' => 'awpcp-listings'));
+    private $page;
+
+    public function __construct( $page, $params = array() ) {
+        parent::__construct( array_merge( array( 'plural' => 'awpcp-listings' ), $params ) );
         $this->page = $page;
     }
 
-    private function parse_query() {
+    private function load_items_from_query() {
         global $wpdb;
 
         $user = wp_get_current_user();
@@ -36,25 +36,22 @@ class AWPCP_Listings_Table extends WP_List_Table {
             'paged' => 1,
         ), $_REQUEST);
 
-        $conditions = array('1 = 1');
-        $join = array();
+        $query = array();
 
-        if (!awpcp_current_user_is_admin()) {
-            $conditions[] = sprintf('user_id = %d', wp_get_current_user()->ID);
+        if ( ! awpcp_current_user_is_moderator() ) {
+            $query['user_id'] = wp_get_current_user()->ID;
         }
 
         try {
-            $search_by_conditions_parser = awpcp_listings_table_search_by_condition_parser();
-            $search_by_condition = $search_by_conditions_parser->parse( $params['search-by'], $params['s']);
-            $conditions[] = $search_by_condition;
+            $conditions = awpcp_listings_table_search_by_condition_parser()->parse( $params['search-by'], $params['s']);
+            $query = array_merge( $query, (array) $conditions );
         } catch (Exception $e) {
-            // TODO: ignore?
+            // ignore
         }
 
         if ( ! empty( $this->selected_category_id ) ) {
-            $category = AWPCP_Category::find_by_id( $this->selected_category_id );
-            $sql = '( ' . AWPCP_TABLE_ADS . '.ad_category_id = %d OR ' . AWPCP_TABLE_ADS . '.ad_category_parent_id = %d )';
-            $conditions[] = $wpdb->prepare( $sql, $category->id, $category->id );
+            $query['category_id'] = $this->selected_category_id;
+            $query['include_listings_in_children_categories'] = true;
         }
 
         $show_unpaid = false;
@@ -62,32 +59,37 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
         switch ($params['filterby']) {
             case 'is-featured':
-                $conditions[] = AWPCP_TABLE_ADS . '.is_featured_ad = 1';
+                $query['featured'] = true;
                 break;
 
             case 'flagged':
-                $conditions[] = AWPCP_TABLE_ADS . '.flagged = 1';
+                $query['flagged'] = true;
                 break;
 
             case 'unpaid':
-                $conditions[] = AWPCP_TABLE_ADS . ".payment_status = 'Unpaid'";
+                $query['payment_status'] = 'Unpaid';
                 $show_unpaid = true;
-                $show_non_verified = true;
                 break;
 
             case 'non-verified':
-                $conditions[] = AWPCP_TABLE_ADS . '.verified = 0';
+                $query['verified'] = false;
                 $show_non_verified = true;
                 break;
 
             case 'awaiting-approval':
-                $conditions[] = AWPCP_TABLE_ADS . '.disabled = 1';
-                $conditions[] = AWPCP_TABLE_ADS . '.disabled_date IS NULL';
+                $show_awaiting_approval = true;
                 break;
 
             case 'images-awaiting-approval':
-                $sql = 'JOIN ' . AWPCP_TABLE_MEDIA . ' ON (' . AWPCP_TABLE_MEDIA . '.ad_id = ' . AWPCP_TABLE_ADS . '.ad_id AND ' . AWPCP_TABLE_MEDIA . '.status = %s)';
-                $join[] = $wpdb->prepare( $sql, AWPCP_Media::STATUS_AWAITING_APPROVAL );
+                $query['have_media_awaiting_approval'] = true;
+                break;
+
+            case 'new':
+                $query['reviewed'] = false;
+                break;
+
+            case 'expired':
+                $show_expired = true;
                 break;
 
             case 'completed':
@@ -95,70 +97,52 @@ class AWPCP_Listings_Table extends WP_List_Table {
                 break;
         }
 
-        if ( ! $show_unpaid ) {
-            $conditions[] = AWPCP_TABLE_ADS . ".payment_status != 'Unpaid'";
-        }
-
-        if ( ! $show_non_verified ) {
-            $conditions[] = AWPCP_TABLE_ADS . '.verified = 1';
-        }
-
         switch($params['orderby']) {
             case 'title':
-                $orderby = AWPCP_TABLE_ADS . '.ad_title';
-                break;
-
-            case 'star-date':
-                $orderby = AWPCP_TABLE_ADS . '.ad_start_date';
-                break;
-
+            case 'start-date':
             case 'end-date':
-                $orderby = AWPCP_TABLE_ADS . '.ad_enddate';
-                break;
-
             case 'renewed-date':
-                $orderby = sprintf( AWPCP_TABLE_ADS . '.renewed_date %1$s, ' . AWPCP_TABLE_ADS . '.ad_startdate %1$s, ' . AWPCP_TABLE_ADS . '.ad_id', $params['order'] );
-                break;
-
             case 'status':
-                $orderby = sprintf( AWPCP_TABLE_ADS . '.disabled %1$s, ' . AWPCP_TABLE_ADS . '.ad_startdate %1$s, ' . AWPCP_TABLE_ADS . '.ad_id', $params['order'] );
-                break;
-
             case 'payment-term':
-                $orderby = sprintf( AWPCP_TABLE_ADS . '.adterm_id %1$s, ' . AWPCP_TABLE_ADS . '.ad_startdate %1$s, ' . AWPCP_TABLE_ADS . '.ad_id', $params['order'] );
-                break;
-
             case 'payment-status':
-                $orderby = sprintf( AWPCP_TABLE_ADS . '.payment_status %1$s, ' . AWPCP_TABLE_ADS . '.ad_startdate %1$s, ' . AWPCP_TABLE_ADS . '.ad_id', $params['order'] );
-                break;
-
             case 'featured-ad':
-                $orderby = sprintf( AWPCP_TABLE_ADS . '.is_featured_ad %1$s, ' . AWPCP_TABLE_ADS . '.ad_startdate %1$s, ' . AWPCP_TABLE_ADS . '.ad_id', $params['order'] );
-                break;
-
             case 'owner':
-                $orderby = sprintf( AWPCP_TABLE_ADS . '.user_id %1$s, ' . AWPCP_TABLE_ADS . '.ad_startdate %1$s, ' . AWPCP_TABLE_ADS . '.ad_id', $params['order'] );
+                $query['orderby'] = $params['orderby'];
                 break;
 
             default:
-                $orderby = AWPCP_TABLE_ADS . '.ad_startdate';
+                $query['orderby'] = 'start-date';
                 break;
         }
 
-        return array(
-            'join' => implode( ' ', $join ),
-            'where' => join(' AND ', $conditions),
-            'order' => array( "$orderby {$params['order']}" ),
-            'offset' => $this->items_per_page * ($params['paged'] - 1),
-            'limit' => $this->items_per_page
-        );
+        $query['order'] = $params['order'];
+        $query['offset'] = $this->items_per_page * ( $params['paged'] - 1 );
+        $query['limit'] = $this->items_per_page;
+
+        $listings = awpcp_listings_collection();
+
+        if ( isset( $show_expired ) && $show_expired ) {
+            $this->total_items = $listings->count_expired_listings_with_query( $query );
+            $this->items = $listings->find_expired_listings_with_query( $query );
+        } else if ( isset( $show_awaiting_approval ) && $show_awaiting_approval ) {
+            $this->total_items = $listings->count_listings_awaiting_approval_with_query( $query );
+            $this->items = $listings->find_listings_awaiting_approval_with_query( $query );
+        } else if ( $show_non_verified ) {
+            $this->total_items = $listings->count_successfully_paid_listings_with_query( $query );
+            $this->items = $listings->find_successfully_paid_listings_with_query( $query );
+        } else if ( $show_unpaid ) {
+            $this->total_items = $listings->count_listings_with_query( $query );
+            $this->items = $listings->find_listings_with_query( $query );
+        } else {
+            $this->total_items = $listings->count_valid_listings_with_query( $query );
+            $this->items = $listings->find_valid_listings_with_query( $query );
+        }
+
+        $this->set_pagination_args( array( 'total_items' => $this->total_items, 'per_page' => $this->items_per_page ) );
     }
 
     public function prepare_items() {
-        $query = $this->parse_query();
-
-        $this->total_items = AWPCP_Ad::query(array_merge(array('fields' => 'count'), $query));
-        $this->items = AWPCP_Ad::query(array_merge(array('fields' => 'DISTINCT ' . AWPCP_TABLE_ADS . '.*'), $query));
+        $this->load_items_from_query();
 
         if (awpcp_request_param('filterby') == 'category') {
             $category = AWPCP_Category::find_by_id(awpcp_request_param('category'));
@@ -166,11 +150,6 @@ class AWPCP_Listings_Table extends WP_List_Table {
                 awpcp_flash(sprintf(__('Showing Ads from %s category.', 'AWPCP'), "<strong>{$category->name}</strong>"));
             }
         }
-
-        $this->set_pagination_args(array(
-            'total_items' => $this->total_items,
-            'per_page' => $this->items_per_page
-        ));
 
         $this->_column_headers = array($this->get_columns(), array(), $this->get_sortable_columns());
     }
@@ -196,7 +175,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
             $columns['featured'] = __( 'Featured', 'AWPCP' );
         }
 
-        if ( awpcp_current_user_is_admin() ) {
+        if ( awpcp_current_user_is_moderator() ) {
             $columns['owner'] = __('Owner', 'AWPCP');
         }
 
@@ -241,24 +220,28 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
     public function get_views() {
         $filters = array(
+            'new' => 'new',
+            'expired' => 'expired',
+            'awaiting-approval' => 'awaiting-approval',
+            'images-awaiting-approval' => 'images-awaiting-approval',
             'is-featured' => 'featured-ads',
             'flagged' => 'flagged-ads',
             'unpaid' => 'unpaid-ads',
             'non-verified' => 'non-verified-ads',
-            'awaiting-approval' => 'awaiting-approval',
-            'images-awaiting-approval' => 'images-awaiting-approval',
             'completed' => 'completed',
         );
 
         $selected = awpcp_array_data($this->params['filterby'], 'completed', $filters);
 
         $views = array(
+            'new' => array( __( 'New', 'AWPCP' ), $this->page->url( array( 'filterby' => 'new', 'filter' => true ) ) ),
+            'expired' => array( __( 'Expired', 'AWPCP' ), $this->page->url( array( 'filterby' => 'expired', 'filter' => true ) ) ),
+            'awaiting-approval' => array( __( 'Ads Awaiting Approval', 'AWPCP' ), $this->page->url( array( 'filterby' => 'awaiting-approval', 'filter' => true ) ) ),
+            'images-awaiting-approval' => array( __( 'Images Awaiting Approval', 'AWPCP' ), $this->page->url( array( 'filterby' => 'images-awaiting-approval', 'filter' => true ) ) ),
             'featured-ads' => array(__('Featured', 'AWPCP'), $this->page->url(array('filterby' => 'is-featured', 'filter' => true))),
             'flagged-ads'  => array(__('Flagged', 'AWPCP'), $this->page->url(array('filterby' => 'flagged', 'filter' => true))),
             'unpaid-ads' => array(__('Unpaid', 'AWPCP'), $this->page->url(array('filterby' => 'unpaid', 'filter' => true))),
             'non-verified-ads' => array( __( 'Unverified', 'AWPCP' ), $this->page->url( array( 'filterby' => 'non-verified', 'filter' => true ) ) ),
-            'awaiting-approval' => array( __( 'Ads Awaiting Approval', 'AWPCP' ), $this->page->url( array( 'filterby' => 'awaiting-approval', 'filter' => true ) ) ),
-            'images-awaiting-approval' => array( __( 'Images Awaiting Approval', 'AWPCP' ), $this->page->url( array( 'filterby' => 'images-awaiting-approval', 'filter' => true ) ) ),
             'completed' => array( __( 'Completed', 'AWPCP' ), $this->page->url( array( 'filterby' => 'completed', 'filter' => false ) ) ),
         );
 

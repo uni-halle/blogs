@@ -7,8 +7,7 @@ class AWPCP_ListingsTableSearchByIdCondition {
     }
 
     public function create( $search_term ) {
-        global $wpdb;
-        return $wpdb->prepare( AWPCP_TABLE_ADS . '.ad_id = %d', (int) $search_term );
+        return array( 'id' => absint( $search_term ) );
     }
 }
 

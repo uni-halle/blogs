@@ -16,7 +16,6 @@ class AWPCP_SecureURLRedirectionHandler {
         foreach ( $pages as $page ) {
             $page_id = awpcp_get_page_id_by_ref( $page );
             if ( $page_id && is_page( $page_id ) ) {
-                // throw new Exception( sprintf( 'page: %s, id: %d', $page, awpcp_get_page_id_by_ref( $page ) ) );
                 $force_secure_url = true;
                 break;
             }

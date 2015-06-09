@@ -10,6 +10,28 @@ function awpcp_request() {
 class AWPCP_Request {
 
     /**
+     * List extracted from http://stackoverflow.com/a/14536035/201354
+     */
+    private static $bot_user_agents_keywords = array(
+        // https://developers.facebook.com/docs/sharing/best-practices#crawl
+        'facebookexternalhit',
+        'facebot',
+        // https://support.google.com/webmasters/answer/1061943?hl=en
+        'googlebot', 'mediapartners-google', 'adsbot-google',
+        // http://www.bing.com/webmaster/help/which-crawlers-does-bing-use-8c184ec0
+        'bingbot', 'msnbot', 'msnbot-media', 'adidxbot', 'bingpreview',
+        // https://help.yahoo.com/kb/search/slurp-crawling-page-sln22600.html
+        'yahoo! slurp',
+        'crawler',
+        'baiduspider',
+        '80legs',
+        'ia_archiver',
+        'voyager',
+        'curl',
+        'wget',
+    );
+
+    /**
      * @tested
      * @since 3.0.2
      */
@@ -130,5 +152,10 @@ class AWPCP_Request {
         global $current_user;
         get_currentuserinfo();
         return $current_user;
+    }
+
+    public function is_bot() {
+        $regexp = '/' . implode( '|', self::$bot_user_agents_keywords ) . '/';
+        return (bool) preg_match( $regexp, strtolower( $_SERVER['HTTP_USER_AGENT'] ) );
     }
 }

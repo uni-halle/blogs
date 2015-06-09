@@ -78,14 +78,14 @@
         </div>
 
         <div class="awpcp-form-spacer clearfix">
-            <label for="awpcp-billing-addres-1"><?php _e('Address Line 1', 'AWPCP'); ?></label>
-            <input class="textfield required" id="awpcp-billing-addres-1" type="text" size="50" name="address_1" value="<?php echo esc_attr( awpcp_array_data('address_1', '', $data ) ); ?>" data-bind="value: address_1">
+            <label for="awpcp-billing-address-1"><?php _e('Address Line 1', 'AWPCP'); ?></label>
+            <input class="textfield required" id="awpcp-billing-address-1" type="text" size="50" name="address_1" value="<?php echo esc_attr( awpcp_array_data('address_1', '', $data ) ); ?>" data-bind="value: address_1">
             <?php echo awpcp_form_error('address_1', $errors); ?>
         </div>
 
         <div class="awpcp-form-spacer clearfix">
-            <label for="awpcp-billing-addres-2"><?php _e('Address Line 2', 'AWPCP'); ?></label>
-            <input class="textfield" id="awpcp-billing-addres-2" type="text" size="50" name="address_2" value="<?php echo esc_attr( awpcp_array_data('address_2', '', $data ) ); ?>" data-bind="value: address_2">
+            <label for="awpcp-billing-address-2"><?php _e('Address Line 2', 'AWPCP'); ?></label>
+            <input class="textfield" id="awpcp-billing-address-2" type="text" size="50" name="address_2" value="<?php echo esc_attr( awpcp_array_data('address_2', '', $data ) ); ?>" data-bind="value: address_2">
         </div>
 
         <div class="awpcp-form-spacer clearfix" data-bind="visible: show_state_field">

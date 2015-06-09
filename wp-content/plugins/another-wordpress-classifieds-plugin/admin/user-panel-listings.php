@@ -29,7 +29,7 @@ class AWPCP_UserListings extends AWPCP_Admin_Listings {
     }
 
     public function renew_ad() {
-        if ( awpcp_current_user_is_admin() ) {
+        if ( awpcp_current_user_is_moderator() ) {
             return parent::renew_ad();
         } else {
             $page = new AWPCP_UserListingsRenewAd();

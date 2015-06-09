@@ -1,7 +1,7 @@
 <?php
 
 function awpcp_meta() {
-    return new AWPCP_Meta( awpcp_page_title_builder(), awpcp_request() );
+    return new AWPCP_Meta( awpcp_page_title_builder(), awpcp_meta_tags_generator(), awpcp_request() );
 }
 
 
@@ -12,14 +12,14 @@ class AWPCP_Meta {
     public $category_id = null;
 
     public $title_builder;
+    private $meta_tags_genertor;
     private $request = null;
-
-    private $meta_tags;
 
     private $doing_opengraph = false;
 
-    public function __construct( $title_builder, $request ) {
+    public function __construct( $title_builder, $meta_tags_genertor, $request ) {
         $this->title_builder = $title_builder;
+        $this->meta_tags_genertor = $meta_tags_genertor;
         $this->request = $request;
 
         add_action( 'template_redirect', array( $this, 'configure' ) );
@@ -42,7 +42,7 @@ class AWPCP_Meta {
         $this->ad_id = absint( $this->request->get_ad_id() );
 
         if ( $this->ad_id === 0 ) {
-            return;
+            return null;
         }
 
         $this->ad = AWPCP_Ad::find_by_id( $this->ad_id );
@@ -150,30 +150,6 @@ class AWPCP_Meta {
         return true;
     }
 
-    private function remove_filter( $filter, $class ) {
-        global $wp_filter;
-
-        if ( !isset( $wp_filter[ $filter ] ) ) return;
-
-        if ( !class_exists( $class ) ) return;
-
-        $id = false;
-        foreach ( $wp_filter[ $filter ] as $priority => $functions ) {
-            foreach ( $functions as  $idx => $item ) {
-                if ( is_array( $item['function'] ) && $item['function'][0] instanceof $class) {
-                    $id = $idx;
-                    break;
-                }
-            }
-
-            if ($id) break;
-        }
-
-        if ($id) {
-            unset( $wp_filter[ $filter ][ $priority ][ $id ] );
-        }
-    }
-
     private function remove_wp_title_filter() {
         remove_filter( 'wp_title', array( $this->title_builder, 'build_title' ), 10, 3 );
     }
@@ -181,72 +157,38 @@ class AWPCP_Meta {
     // The function to add the page meta and Facebook meta to the header of the index page
     // https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F108.166.84.26%2F%25253Fpage_id%25253D5%252526id%25253D3&t=Ad+in+Rackspace+1.8.9.4+(2)
     public function opengraph() {
-        // http://wiki.whatwg.org/wiki/FAQ#Should_I_close_empty_elements_with_.2F.3E_or_.3E.3F
-        $CLOSE = current_theme_supports('html5') ? '>' : ' />';
+        $metadata = $this->get_listing_metadata();
 
-        $meta_tags = $this->get_meta_tags();
+        $meta_tags = array_merge(
+            $this->meta_tags_genertor->generate_basic_meta_tags( $metadata ),
+            $this->meta_tags_genertor->generate_opengraph_meta_tags( $metadata )
+        );
 
-        // TODO: handle integration with other plugins
-        echo $this->render_tag( 'meta', array( 'name' => 'title', 'content' => $meta_tags['http://ogp.me/ns#title'] ) );
-        echo $this->render_tag( 'meta', array( 'name' => 'description', 'content' => $meta_tags['http://ogp.me/ns#description'] ) );
-
-        echo $this->render_tag( 'meta', array( 'property' => 'og:type', 'content' => $meta_tags['http://ogp.me/ns#type'] ) );
-        echo $this->render_tag( 'meta', array( 'property' => 'og:url', 'content' => $meta_tags['http://ogp.me/ns#url'] ) );
-        echo $this->render_tag( 'meta', array( 'property' => 'og:title', 'content' => $meta_tags['http://ogp.me/ns#title'] ) );
-        echo $this->render_tag( 'meta', array( 'property' => 'og:description', 'content' => $meta_tags['http://ogp.me/ns#description'] ) );
-
-        echo $this->render_tag( 'meta', array( 'property' => 'article:published_time', 'content' => $meta_tags['http://ogp.me/ns/article#published_time'] ) );
-        echo $this->render_tag( 'meta', array( 'property' => 'article:modified_time', 'content' => $meta_tags['http://ogp.me/ns/article#modified_time'] ) );
-
-        foreach ( $meta_tags as $property => $content ) {
-            if ( $property === 'http://ogp.me/ns#image' ) {
-                echo $this->render_tag( 'meta', array( 'property' => 'og:image', 'content' => $content ) );
-            }
-        }
-
-        if ( isset( $meta_tags['http://ogp.me/ns#image'] ) ) {
-            // this helps Facebook determine which image to put next to the link
-            echo $this->render_tag( 'link', array( 'rel' => 'image_src', 'href' => $meta_tags['http://ogp.me/ns#image'] ) );
+        foreach ( $meta_tags as $tag ) {
+            echo $tag . PHP_EOL;
         }
     }
 
-    public function get_meta_tags() {
-        if ( ! empty( $this->meta_tags ) ) {
-            return $this->meta_tags;
-        }
-
-        $charset = get_bloginfo('charset');
-
-        $this->meta_tags = array(
+    public function get_listing_metadata() {
+        $metadata = array(
             'http://ogp.me/ns#type' => 'article',
             'http://ogp.me/ns#url' => $this->properties['url'],
             'http://ogp.me/ns#title' => $this->properties['title'],
-            'http://ogp.me/ns#description' => htmlspecialchars( $this->properties['description'], ENT_QUOTES, $charset ),
-            'http://ogp.me/ns/article#published_time' => $this->properties['published-time'],
-            'http://ogp.me/ns/article#modified_time' => $this->properties['modified-time'],
+            'http://ogp.me/ns#description' => htmlspecialchars( $this->properties['description'], ENT_QUOTES, get_bloginfo('charset') ),
+            'http://ogp.me/ns/article#published_time' => awpcp_datetime( 'c', $this->properties['published-time'] ),
+            'http://ogp.me/ns/article#modified_time' => awpcp_datetime( 'c', $this->properties['modified-time'] ),
         );
 
         foreach ( $this->properties['images'] as $k => $image ) {
-            $this->meta_tags['http://ogp.me/ns#image'] = $image;
+            $metadata['http://ogp.me/ns#image'] = $image;
             break;
         }
 
         if ( empty( $this->properties['images'] ) ) {
-            $this->meta_tags['http://ogp.me/ns#image'] = AWPCP_URL . '/resources/images/adhasnoimage.png';
+            $metadata['http://ogp.me/ns#image'] = AWPCP_URL . '/resources/images/adhasnoimage.png';
         }
 
-        return $this->meta_tags;
-    }
-
-    public function render_tag( $tag_name, $attributes ) {
-        $pieces = array();
-
-        foreach ( $attributes as $attribute_name => $attribute_value ) {
-            $pieces[] = sprintf( '%s="%s"', $attribute_name, esc_attr( $attribute_value ) );
-        }
-
-        // http://wiki.whatwg.org/wiki/FAQ#Should_I_close_empty_elements_with_.2F.3E_or_.3E.3F
-        return '<' . $tag_name . ' ' . implode( ' ', $pieces ) . ( current_theme_supports('html5') ? '>' : ' />') . PHP_EOL;
+        return $metadata;
     }
 
     public function get_the_date( $the_date, $d = '' ) {
@@ -273,7 +215,7 @@ class AWPCP_Meta {
 
         // disable OpenGraph meta tags in Show Ad page
         if ($this->doing_opengraph) {
-            $this->remove_filter( 'su_head', 'SU_OpenGraph' );
+            awpcp_remove_filter( 'su_head', 'SU_OpenGraph' );
         }
     }
 

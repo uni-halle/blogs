@@ -29,20 +29,26 @@
 // are we overwriting WordPress styles?
 // A: In the admin only .ghost remains applied,
 //    all other are overwritten by WordPress styles.
-.updated {
-    border-color: #E6DB55;
-}
-.error {
-    background-color: #FFEBE8;
-    border-color: #CC0000;
-}
-.info {
-    background-color: #A2C9DB;
-}
-.ghost {
-    display: none;
+.awpcp-message {
+    &.updated {
+        border-color: #E6DB55;
+    }
+    &.error {
+        background-color: #FFEBE8;
+        border-color: #CC0000;
+    }
+    &.info {
+        background-color: #A2C9DB;
+    }
+    &.ghost {
+        display: none;
+    }
 }
 
+.awpcp-updated {
+    border-color: #E6DB55;
+    display: block !important;
+}
 .awpcp-error {
     background-color: #FFEBE8;
     border-color: #CC0000;

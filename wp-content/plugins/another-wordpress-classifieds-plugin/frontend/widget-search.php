@@ -40,7 +40,7 @@ class AWPCP_Search_Widget extends WP_Widget {
             $options = array_combine( $names, $names );
         }
 
-        $selected = stripslashes_deep( awpcp_post_param( 'searchname', null ) );
+        $selected = stripslashes_deep( awpcp_request_param( 'searchname', null ) );
 
         return $this->select( $options, __('Find ads by Contact Name', "AWPCP"), 'searchname', $selected, __( 'All Contact Names', 'AWPCP' ) );
     }
@@ -49,8 +49,8 @@ class AWPCP_Search_Widget extends WP_Widget {
      * @since 3.0.2
      */
     private function render_region_fields( $instance ) {
-        if ( isset( $_POST['regions'][0] ) ) {
-            $regions = array( stripslashes_deep( $_POST['regions'][0] ) );
+        if ( isset( $_REQUEST['regions'][0] ) ) {
+            $regions = array( stripslashes_deep( $_REQUEST['regions'][0] ) );
         } else {
             $regions = array();
         }
@@ -67,7 +67,7 @@ class AWPCP_Search_Widget extends WP_Widget {
             ),
         );
 
-        $selector = new AWPCP_MultipleRegionSelector( $regions, $options );
+        $selector = awpcp_multiple_region_selector( $regions, $options );
         echo $selector->render( 'search', array(), array() );
     }
 
@@ -75,8 +75,8 @@ class AWPCP_Search_Widget extends WP_Widget {
      * @since 3.0.2
      */
     private function render_region_field( $label, $options, $name ) {
-        if ( isset( $_POST['regions'][0][ $name ] ) ) {
-            $selected = stripslashes_deep( $_POST['regions'][0][ $name ] );
+        if ( isset( $_REQUEST['regions'][0][ $name ] ) ) {
+            $selected = stripslashes_deep( $_REQUEST['regions'][0][ $name ] );
         } else {
             $selected = null;
         }
@@ -125,10 +125,16 @@ class AWPCP_Search_Widget extends WP_Widget {
 
         echo '<div class="awpcp-search-listings-widget">';
 		echo $before_widget . $before_title . $title . $after_title;
-		echo '<div align="center"><form method=\'post\' action="'.url_searchads().'">';
+		echo '<div align="center"><form method=\'get\' action="'.url_searchads().'">';
+
+        $url_params = wp_parse_args( parse_url( url_searchads(), PHP_URL_QUERY ) );
+        foreach ( $url_params as $param => $value ) {
+            echo '<input type="hidden" name="' . esc_attr( $param ) . '" value="' . esc_attr( $value ) . '" />';
+        }
+
         echo '<input type="hidden" name="a" value="dosearch"/>';
 
-		$keywordphrase = stripslashes_deep(awpcp_post_param('keywordphrase'));
+		$keywordphrase = stripslashes_deep( awpcp_request_param( 'keywordphrase' ) );
 
 		if ($instance['show_keyword'] == 1) {
 			echo '<label for="awpcp-search-keywordphrase">' . __('Search by keyword', "AWPCP") . '</label>';
@@ -143,7 +149,7 @@ class AWPCP_Search_Widget extends WP_Widget {
 		if ($instance['show_category'] == 1) {
 			$label = __('Search by Category', "AWPCP");
 			$name = 'searchcategory';
-			$selected = stripslashes_deep(awpcp_post_param($name, null));
+			$selected = stripslashes_deep( awpcp_request_param( $name, null ) );
 
 			$dropdown = new AWPCP_CategoriesDropdown();
 			echo $dropdown->render( array(
@@ -155,7 +161,7 @@ class AWPCP_Search_Widget extends WP_Widget {
             ) );
 		}
 
-		echo '<div class="submit"><input class="button" type="submit" value="Search"></div>';
+		echo '<div class="submit"><input class="button" type="submit" value="' . __( 'Search', 'AWPCP' ) . '"></div>';
         echo '</form></div>';
         echo '</div>';
 		echo $after_widget;

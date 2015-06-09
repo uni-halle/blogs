@@ -27,13 +27,11 @@
 
 			<?php endif ?>
 
-			<div>
-				<form method="post">
-					<?php wp_nonce_field('awpcp-restore-pages'); ?>
-					<?php _e('If you are having problems with your plugin pages, you can delete them and use the Restore button to have the plugin create them again.', 'AWPCP') ?>
-					<input type="submit" value="Restore" class="button-primary" id="submit" name="restore-pages">
-				</form>
-			</div>
+			<form method="post">
+				<?php wp_nonce_field('awpcp-restore-pages'); ?>
+				<div><?php _e('If you are having problems with your plugin pages, you can delete them and use the Restore button to have the plugin create them again.', 'AWPCP') ?></div>
+				<input type="submit" value="<?php echo esc_attr( __( 'Restore Pages', 'AWPCP' ) ); ?>" class="button-primary" id="submit" name="restore-pages">
+			</form>
 
 					</div>
 				</div>

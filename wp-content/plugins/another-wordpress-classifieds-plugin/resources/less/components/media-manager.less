@@ -1,0 +1,192 @@
+#classiwrapper, .awpcp-media-center {
+
+    .awpcp-uploaded-files-group {
+        padding-bottom: 1px;
+    }
+    .awpcp-uploaded-files-group-title {
+        background: #EEE;
+        border: 1px solid #DDD;
+        font-size: 1.2em;
+        margin: 10px 0;
+        padding: 4px;
+        text-align: center;
+    }
+
+    .awpcp-uploaded-files-list {
+        margin-bottom: 10px;
+    }
+
+    /* Uploaded File */
+
+    .awpcp-uploaded-file {
+        background: #EEE;
+        border: 1px solid #E2E2E2;
+        float: left;
+        list-style-type: none;
+        margin: 0 5px 10px;
+        width: 180px;
+        padding: 3px;
+        position: relative;
+        text-align: center;
+    }
+
+    .awpcp-uploaded-file-thumbnail-container {
+        background: #E2E2E2;
+        margin-bottom: 10px;
+
+        img {
+            border-radius: 0;
+            box-shadow: none;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    .is-disabled .awpcp-uploaded-file-thumbnail-container img {
+        opacity: 0.5;
+    }
+
+    .awpcp-uploaded-file-primary-label {
+        position: absolute;
+        bottom: -23px;
+        height: 20px;
+        background: #B6E2AF;
+        font-size: 11px;
+        padding: 0 6px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        width: 144px;
+        box-sizing: border-box;
+        line-height: 18px;
+        left: 50%;
+        margin-left: -72px;
+    }
+
+    /* Uploaded File States */
+
+    .is-primary {
+        background: #B6E2AF;
+        border: 3px solid #86CC7C;
+        padding: 1px;
+    }
+
+    .is-awaiting-approval {
+        background: @attachment_awaiting_approval_background;
+        border-color: #E6E6C8;
+    }
+    .is-rejected {
+        background: @attachment_rejected_background;
+        border-color: #FC9393;
+    }
+    .is-approved {
+        // background: @attachment_approved_background;
+    }
+
+    /* Uploaded File Actions */
+
+    .awpcp-uploaded-files-table {
+        margin: 0;
+
+        td {
+            padding: 3px;
+            vertical-align: middle;
+        }
+
+        .awpcp-uploaded-file {
+            float: none;
+            border: none;
+            margin: 0;
+            padding: 0;
+            width: auto;
+        }
+
+        .awpcp-uploaded-file-name {
+            padding-left: 8px;
+            text-align: left;
+        }
+    }
+
+    /* Uploaded File Actions */
+
+    .awpcp-uploaded-file-actions {
+        padding-top: 5px;
+    }
+
+    .awpcp-uploaded-file-action {
+        float: left;
+        border: 1px solid #E2E2E2;
+        border-radius: 2px;
+        margin-right: 2px;
+        background: #FBFBFB;
+
+        a, label {
+            background: transparent center center no-repeat;
+            cursor: pointer;
+            display: block;
+            height: 22px;
+            line-height: 22px;
+            width: 25px;
+        }
+        &:hover {
+            border-color: #B3B3B3;
+            background-color: #D8D8D8;
+        }
+    }
+    .is-primary .awpcp-uploaded-file-action {
+        background: #ECF6EA;
+        border-color: #9BCE93;
+
+        &:hover {
+            background: #A5D69D;
+        }
+    }
+
+    .awpcp-uploaded-file-change-status-action label {
+        padding: 0 4px;
+        width: auto;
+    }
+
+    .awpcp-uploaded-file-set-as-primary-action {
+        span {
+            display: block;
+        }
+        a {
+            background-image: @not_primary_image_icon_url;
+        }
+    }
+    .is-primary .awpcp-uploaded-file-set-as-primary-action a {
+        background-image: @primary_image_icon_url;
+    }
+
+    .awpcp-uploaded-file-delete-action a {
+        background-image: @delete_image_icon_url;
+    }
+
+    .awpcp-uploaded-file-approve-action a {
+        background-image: @approve_attachment_icon_url;
+    }
+
+    .awpcp-uploaded-file-reject-action a {
+        background-image: @reject_attachment_icon_url;
+    }
+
+    .awpcp-uploaded-file-loading-icon {
+        background: none !important;
+        border: none !important;
+    }
+
+    .awpcp-uploaded-file-spinner {
+        background-color: #fff;
+        margin: -25px -10px;
+        padding: 1px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 12px;
+    }
+
+    /* Uploaded Video Actions */
+
+    .awpcp-uploaded-video-delete-action a {
+        background-image: @delete_video_icon_url;
+    }
+}

@@ -38,7 +38,7 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
 
     public function url($params=array()) {
         $url = awpcp_get_page_url('reply-to-ad-page-name');
-        return add_query_arg($params, $url);
+        return add_query_arg( urlencode_deep( $params ), $url );
     }
 
     public function dispatch() {
@@ -46,9 +46,9 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
 
         $awpcp = awpcp();
         $awpcp->js->localize( 'page-reply-to-ad', array(
-            'sender_name' => __( 'Please enter your name.', 'AWPCP' ),
-            'sender_email' => __( 'Please enter your email address.', 'AWPCP' ),
-            'message' => __( 'The message cannot be empty.', 'AWPCP' ),
+            'awpcp_sender_name' => __( 'Please enter your name.', 'AWPCP' ),
+            'awpcp_sender_email' => __( 'Please enter your email address.', 'AWPCP' ),
+            'awpcp_contact_message' => __( 'The message cannot be empty.', 'AWPCP' ),
             'captcha' => __( 'Please type in the result of the operation.', 'AWPCP' ),
         ) );
 
@@ -81,9 +81,9 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
 
     protected function get_posted_data() {
         $posted_data = array(
-            'sender_name' => awpcp_request_param('sender_name'),
-            'sender_email' => awpcp_request_param('sender_email'),
-            'message' => awpcp_request_param('message'),
+            'awpcp_sender_name' => awpcp_request_param('awpcp_sender_name'),
+            'awpcp_sender_email' => awpcp_request_param('awpcp_sender_email'),
+            'awpcp_contact_message' => awpcp_request_param('awpcp_contact_message'),
         );
 
         if ( is_user_logged_in() ) {
@@ -100,38 +100,38 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
         $user_information = awpcp_users_collection()->find_by_id( get_current_user_id() );
 
         if ( isset( $user_information->display_name ) && ! empty( $user_information->display_name ) ) {
-            $posted_data['sender_name'] = $user_information->display_name;
+            $posted_data['awpcp_sender_name'] = $user_information->display_name;
         } else if ( isset( $user_information->user_login ) && ! empty( $user_information->user_login ) ) {
-            $posted_data['sender_name'] = $user_information->user_login;
+            $posted_data['awpcp_sender_name'] = $user_information->user_login;
         } else if ( isset( $user_information->username ) && ! empty( $user_information->username ) ) {
-            $posted_data['sender_name'] = $user_information->username;
+            $posted_data['awpcp_sender_name'] = $user_information->username;
         }
 
-        $posted_data['sender_email'] = $user_information->user_email;
+        $posted_data['awpcp_sender_email'] = $user_information->user_email;
 
         return $posted_data;
     }
 
     protected function validate_posted_data($data, &$errors=array()) {
-        if (empty($data['sender_name'])) {
-            $errors['sender_name'] = __('Please enter your name.', 'AWPCP');
+        if (empty($data['awpcp_sender_name'])) {
+            $errors['awpcp_sender_name'] = __('Please enter your name.', 'AWPCP');
         }
 
-        if (empty($data['sender_email'])) {
-            $errors['sender_email'] = __('Please enter your email.', 'AWPCP');
-        } else if (!isValidEmailAddress($data['sender_email'])) {
+        if (empty($data['awpcp_sender_email'])) {
+            $errors['awpcp_sender_email'] = __('Please enter your email.', 'AWPCP');
+        } else if (!isValidEmailAddress($data['awpcp_sender_email'])) {
             $errors['ad_contact_email'] = __("The email address you entered was not a valid email address. Please check for errors and try again.", "AWPCP");
         }
 
-        if (empty($data['message'])) {
-            $errors['message'] = __('There was no text in your message. Please enter a message.', 'AWPCP');
+        if (empty($data['awpcp_contact_message'])) {
+            $errors['awpcp_contact_message'] = __('There was no text in your message. Please enter a message.', 'AWPCP');
         }
 
         if (get_awpcp_option('useakismet')) {
             $spam_filter = awpcp_listing_reply_spam_filter();
 
             if ( $spam_filter->is_spam( $data ) ) {
-                $errors['message'] = __( 'Your message was flagged as spam. Please contact the administrator of this site.', 'AWPCP' );
+                $errors['awpcp_contact_message'] = __( 'Your message was flagged as spam. Please contact the administrator of this site.', 'AWPCP' );
             }
         }
 
@@ -190,9 +190,9 @@ class AWPCP_ReplyToAdPage extends AWPCP_Page {
         $ad_title = $ad->get_title();
         $ad_url = url_showad($ad->ad_id);
 
-        $sender_name = stripslashes($form['sender_name']);
-        $sender_email = stripslashes($form['sender_email']);
-        $message = awpcp_strip_html_tags(stripslashes($form['message']));
+        $sender_name = stripslashes($form['awpcp_sender_name']);
+        $sender_email = stripslashes($form['awpcp_sender_email']);
+        $message = awpcp_strip_html_tags(stripslashes($form['awpcp_contact_message']));
 
 
         if (get_awpcp_option('usesenderemailinsteadofadmin')) {

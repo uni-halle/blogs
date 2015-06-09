@@ -1,12 +1,31 @@
 <?php
 
+function awpcp_multiple_region_selector( $regions, $options ) {
+    return awpcp_multiple_region_selector_with_template( $regions, $options, 'default' );
+}
+
+function awpcp_multiple_region_selector_with_template( $regions, $options, $template_name ) {
+    if ( $template_name == 'form-table' ) {
+        $template = AWPCP_DIR . '/templates/admin/profile/contact-information-region-selector.tpl.php';
+    } else {
+        $template = AWPCP_DIR . '/frontend/templates/html-widget-multiple-region-selector.tpl.php';
+    }
+
+    $selector = new AWPCP_MultipleRegionSelector( $regions, $options );
+    $selector->set_template( $template );
+
+    return $selector;
+}
 
 class AWPCP_MultipleRegionSelector {
+
+    private $template = '';
 
     public $options = array();
     public $regions = array();
 
-    public function AWPCP_MultipleRegionSelector($regions, $options) {
+    public function __construct( $regions, $options ) {
+
         // we need at least one region, even if its empty
         if ( empty( $regions ) ) {
             $this->regions = array( array(
@@ -32,6 +51,10 @@ class AWPCP_MultipleRegionSelector {
         ) );
 
         $this->options['maxRegions'] = max( $this->options['maxRegions'], count( $regions ) );
+    }
+
+    public function set_template( $template ) {
+        $this->template = $template;
     }
 
     private function get_region_fields( $context ) {
@@ -142,8 +165,8 @@ class AWPCP_MultipleRegionSelector {
         ) );
 
         ob_start();
-            include( AWPCP_DIR . '/frontend/templates/html-widget-multiple-region-selector.tpl.php' );
-            $html = ob_get_contents();
+        include( $this->template );
+        $html = ob_get_contents();
         ob_end_clean();
 
         return $html;

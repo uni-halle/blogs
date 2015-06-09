@@ -386,8 +386,8 @@ function _create_pager( $item_count, $offset, $results, $tpname ) {
 			}
 		} else {
 			$href_params = array_merge($params, array('offset' => ($i-1) * $results, 'results' => $results));
-			$href = add_query_arg($href_params, $tpname);
-			$myreturn.= sprintf('<a href="%s">%d</a>&nbsp;', esc_attr($href), esc_attr($i));
+			$href = add_query_arg( urlencode_deep( $href_params ), $tpname );
+			$myreturn.= sprintf( '<a href="%s">%d</a>&nbsp;', esc_url( $href ), esc_attr( $i ) );
 		}
 	}
 
@@ -395,20 +395,20 @@ function _create_pager( $item_count, $offset, $results, $tpname ) {
 		//Subtract 2, page is 1-based index, results is 0-based, must compensate for 2 pages here
 		if ( (($current_page-2) * $results) < $results) {
 			$href_params = array_merge($params, array('offset' => 0, 'results' => $results));
-			$href = add_query_arg($href_params, $tpname);
+			$href = add_query_arg( urlencode_deep( $href_params ), $tpname );
 		} else {
 			$href_params = array_merge($params, array('offset' => ($current_page-2) * $results, 'results' => $results));
-			$href = add_query_arg($href_params, $tpname);
+			$href = add_query_arg( urlencode_deep( $href_params ), $tpname );
 		}
-		$prev = sprintf('<a href="%s">&laquo;</a>&nbsp;', esc_attr($href));
+		$prev = sprintf( '<a href="%s">&laquo;</a>&nbsp;', esc_url( $href ) );
 	} else {
 		$prev = '';
 	}
 
 	if ( $offset != (($total_pages-1)*$results) ) {
 		$href_params = array_merge($params, array('offset' => $current_page * $results, 'results' => $results));
-		$href = add_query_arg($href_params, $tpname);
-		$next = sprintf('<a href="%s">&raquo;</a>&nbsp;', esc_attr($href));
+		$href = add_query_arg( urlencode_deep( $href_params ), $tpname );
+		$next = sprintf( '<a href="%s">&raquo;</a>&nbsp;', esc_url( $href ) );
 	} else {
 		$next = '';
 	}
@@ -453,7 +453,7 @@ function awpcp_pagination_options( $selected=10 ) {
 }
 
 /**
- * @since next-release
+ * @since 3.3.2
  */
 function awpcp_build_pagination_options( $options, $selected ) {
 	array_unshift( $options, 0 );
@@ -471,7 +471,7 @@ function awpcp_build_pagination_options( $options, $selected ) {
 }
 
 /**
- * @since next-release
+ * @since 3.3.2
  */
 function awpcp_default_pagination_options( $selected = 10 ) {
 	$default_options = awpcp()->settings->get_option_default_value( 'pagination-options' );
@@ -507,8 +507,8 @@ function unix2dos($mystring) {
  * TODO: move to AWPCP_Email?
  */
 function awpcp_send_email($from,$to,$subject,$message, $html=false, $attachments=array(), $bcc='') {
-	$separator='Next.Part.331925654896717'.mktime();
-	$att_separator='NextPart.is_a_file9817298743'.mktime();
+	$separator='Next.Part.331925654896717'.time();
+	$att_separator='NextPart.is_a_file9817298743'.time();
 	$headers="From: $from\n";
 	$headers.="MIME-Version: 1.0\n";
 	if (!empty($bcc)) {

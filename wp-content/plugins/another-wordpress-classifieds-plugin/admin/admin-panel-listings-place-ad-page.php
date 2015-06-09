@@ -12,8 +12,10 @@ class AWPCP_AdminListingsPlaceAd extends AWPCP_Place_Ad_Page {
     public function __construct($page=false, $title=false) {
         parent::__construct();
 
+        $default_title = awpcp_admin_page_title( __( 'Place Ad', 'AWPCP' ), __( 'Manage Listings', 'AWPCP' ) );
+
         $this->page = $page ? $page : 'awpcp-admin-listings-place-ad';
-        $this->title = $title ? $title : __('AWPCP Classifieds Management System - Manage Ad Listings - Place Ad', 'AWPCP');
+        $this->title = $title ? $title : $default_title;
     }
 
     public function show_sidebar() {

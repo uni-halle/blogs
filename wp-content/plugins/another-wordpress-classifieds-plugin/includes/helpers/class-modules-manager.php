@@ -45,11 +45,11 @@ class AWPCP_ModulesManager {
         $this->verify_version_compatibility( $module );
 
         if ( $this->is_premium_module( $module ) ) {
-            $this->settings->add_license_setting( $module->name, $module->slug );
+            // $this->settings->add_license_setting( $module->name, $module->slug );
             // $this->verify_license_status( $module );
         }
 
-        $this->handle_module_updates( $module );
+        // $this->handle_module_updates( $module );
         $module->setup( $this->plugin );
     }
 
@@ -107,6 +107,8 @@ class AWPCP_ModulesManager {
     }
 
     private function handle_module_updates( $module ) {
+        // TODO: maybe we don't need to pass the license.
+        // Maybe we can have the Modules Updater fetch it when necessary.
         $license = $this->licenses_manager->get_module_license( $module->slug );
         $this->modules_updater->watch( $module, $license );
     }
@@ -188,7 +190,7 @@ class AWPCP_ModulesManager {
     }
 
     private function show_module_no_registered_notice( $module_name ) {
-        $message = __( 'Yikes, there has been a mistake. It looks like you have an outdated version of AWPCP <module-name> module. Please contact customer support and ask for a newer version. Please also include a reference to this error in your message.', 'AWPCP' );
+        $message = __( 'Yikes, there has been a mistake. It looks like you have an outdated version of AWPCP <module-name> module or you need a newer version of AWPCP to use that module. Please contact customer support and ask for an update. Please also include a reference to this error in your message.', 'AWPCP' );
         $message = str_replace( '<module-name>', '<strong>' . $module_name . '</strong>', $message );
 
         return awpcp_print_error( $message );

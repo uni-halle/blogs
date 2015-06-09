@@ -77,6 +77,6 @@ class AWPCP_ListingPaymentTransactionHandler {
     }
 
     private function should_enable_listing( $listing, $transaction ) {
-        return awpcp_calculate_ad_disabled_state( null, $transaction ) ? false : true;
+        return awpcp_should_enable_new_listing_with_payment_status( $listing, $transaction->payment_status );
     }
 }

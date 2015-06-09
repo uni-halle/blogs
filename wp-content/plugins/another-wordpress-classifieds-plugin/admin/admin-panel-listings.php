@@ -17,7 +17,8 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
     public function __construct($page=false, $title=false) {
         $page = $page ? $page : 'awpcp-admin-listings';
-        $title = $title ? $title : __('AWPCP Classifieds Management System - Manage Ad Listings', 'AWPCP');
+        $title = $title ? $title : awpcp_admin_page_title( __( 'Manage Listings', 'AWPCP' ) );
+
         parent::__construct($page, $title, __('Listings', 'AWPCP'));
 
         $this->table = null;
@@ -80,14 +81,15 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
     }
 
     public function actions($ad, $filter=false) {
-        $admin = awpcp_current_user_is_admin();
+        $is_moderator = awpcp_current_user_is_moderator();
+
         $actions = array();
 
         $actions['view'] = array(__('View', 'AWPCP'), $this->url(array('action' => 'view', 'id' => $ad->ad_id)));
         $actions['edit'] = array(__('Edit', 'AWPCP'), $this->url(array('action' => 'edit', 'id' => $ad->ad_id)));
         $actions['trash'] = array(__('Delete', 'AWPCP'), $this->url(array('action' => 'delete', 'id' => $ad->ad_id)));
 
-        if ($admin) {
+        if ( $is_moderator ) {
             if ($ad->disabled)
                 $actions['enable'] = array(__('Enable', 'AWPCP'), $this->url(array('action' => 'enable', 'id' => $ad->ad_id)));
             else
@@ -118,11 +120,11 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             $label = __( 'Manage Images', 'AWPCP' );
             $url = $this->url(array('action' => 'manage-images', 'id' => $ad->ad_id));
             $actions['manage-images'] = array($label, array('', $url, " ($images)"));
-        } else if (get_awpcp_option('imagesallowdisallow') == 1) {
+        } else if ( awpcp_are_images_allowed() ) {
             $actions['add-image'] = array(__('Add Images', 'AWPCP'), $this->url(array('action' => 'add-image', 'id' => $ad->ad_id)));
         }
 
-        if ( $admin && ! $ad->disabled ) {
+        if ( $is_moderator && ! $ad->disabled ) {
             $fb = AWPCP_Facebook::instance();
             if ( ! awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook' ) && $fb->get( 'page_id' ) ) {
                 $actions['send-to-facebook'] = array(
@@ -145,6 +147,13 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
         $actions = apply_filters( 'awpcp-admin-listings-table-actions', $actions, $ad, $this );
 
+        if ( $is_moderator && isset( $_REQUEST['filterby'] ) && $_REQUEST['filterby'] == 'new' ) {
+            $actions['mark-reviewed'] = array(
+                __( 'Mark Reviewed', 'AWPCP' ),
+                $this->url( array( 'action' => 'mark-reviewed', 'id' => $ad->ad_id ) ),
+            );
+        }
+
         if (is_array($filter)) {
             $actions = array_intersect_key($actions, array_combine($filter, $filter));
         }
@@ -156,7 +165,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         $this->id = awpcp_request_param('id', false);
         $action = $this->get_current_action();
 
-        $protected_actions = array(
+        $moderator_actions = array(
             'enable', 'approvead', 'bulk-enable',
             'disable', 'rejectad', 'bulk-disable',
             'remove-featured', 'bulk-remove-featured',
@@ -164,6 +173,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             'mark-verified',
             'mark-paid',
             'send-key',
+            'mark-reviewed',
             'bulk-renew',
             'send-to-facebook', 'bulk-send-to-facebook',
             'unflag',
@@ -172,14 +182,18 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             'approve-file', 'reject-file',
         );
 
-        if (!awpcp_current_user_is_admin() && in_array($action, $protected_actions)) {
+        if ( ! awpcp_current_user_is_moderator() && in_array( $action, $moderator_actions ) ) {
             awpcp_flash(_x('You do not have sufficient permissions to perform that action.', 'admin listings', 'AWPCP'), 'error');
             $action = 'index';
         }
 
+        return $this->render_page( $action );
+    }
+
+    private function render_page( $action ) {
         switch ($action) {
             case 'view':
-                return $this->view_ad();
+                return $this->listing_action( 'view_ad' );
                 break;
 
             case 'place-ad':
@@ -236,6 +250,10 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
                 return $this->make_non_featured_ad();
                 break;
 
+            case 'mark-reviewed':
+                return $this->listing_action( 'mark_reviewed' );
+                break;
+
             case 'send-key':
                 return $this->send_access_key();
                 break;
@@ -248,7 +266,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             case 'approvepic':
             case 'approve-file':
             case 'reject-file':
-                return $this->manage_images();
+                return $this->listing_action( 'manage_images' );
                 break;
 
             case 'bulk-delete':
@@ -265,37 +283,50 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
                 break;
 
             default:
-                awpcp_flash("Unknown action: $action", 'error');
-                return $this->index();
+                return $this->handle_custom_listing_actions( $action );
                 break;
         }
     }
 
-    public function view_ad() {
-        $ad = AWPCP_Ad::find_by_id($this->id);
+    private function listing_action( $callback ) {
+        $listing_id = awpcp_request()->get_ad_id();
 
-        if (is_null($ad)) {
-            if ($this->id)
-                $message = __("The specified Ad doesn't exists.", 'AWPCP');
-            else
-                $message = __("No Ad ID was specified.", 'AWPCP');
-            awpcp_flash($message, 'error');
-            return $this->redirect('index');
+        if ( empty( $listing_id ) ) {
+            awpcp_flash( __( 'No Ad ID was specified.', 'AWPCP' ), 'error' );
+            return $this->redirect( 'index' );
         }
 
-        $category_id = get_adcategory($ad->ad_id);
-        $category_url = $this->url(array('showadsfromcat_id' => $category_id));
+        try {
+            $listing = awpcp_listings_collection()->get( $listing_id );
+        } catch ( AWPCP_Exception $e ) {
+            awpcp_flash( __( "The specified Ad doesn't exists.", 'AWPCP' ), 'error' );
+            return $this->redirect( 'index' );
+        }
+
+        return call_user_func( array( $this, $callback ), $listing );
+    }
+
+    public function view_ad( $ad ) {
+        $category_name = get_adcatname( $ad->ad_category_id );
+        $category_url = $this->url( array( 'showadsfromcat_id' => $ad->ad_category_id ) );
+
         $content = showad($ad->ad_id, $omitmenu=1);
-        $links = $this->links($this->actions($ad, array('edit', 'enable', 'disable',
-                                                        'spam', 'make-featured', 'remove-featured')));
+        $links = $this->links(
+            $this->actions(
+                $ad,
+                array( 'edit', 'enable', 'disable', 'spam', 'make-featured', 'remove-featured' )
+            )
+        );
 
         $params = array(
             'ad' => $ad,
             'category' => array(
-                'name' => get_adcatname($category_id),
-                'url' => $category_url),
+                'name' => $category_name,
+                'url' => $category_url,
+            ),
             'links' => $links,
-            'content' => $content);
+            'content' => $content,
+        );
 
         $template = AWPCP_DIR . '/admin/templates/admin-panel-listings-view.tpl.php';
 
@@ -396,7 +427,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
     public function unflag_ad() {
         $ad = AWPCP_Ad::find_by_id($this->id);
 
-        if ($result = $ad->unflag()) {
+        if ( $result = awpcp_listings_api()->unflag_listing( $ad ) ) {
             awpcp_flash(__('The Ad has been unflagged.', 'AWPCP'));
         }
 
@@ -489,6 +520,15 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         );
     }
 
+    public function mark_reviewed( $listing ) {
+        if ( awpcp_update_ad_meta( $listing->ad_id, 'reviewed', true ) ) {
+            awpcp_flash( sprintf( __( 'The listing was marked as reviewed.', 'AWPCP' ), esc_html( $recipient ) ) );
+        } else {
+            awpcp_flash( sprintf( __( "The listing couldn't marked as reviewed.", 'AWPCP' ), esc_html( $recipient ) ) );
+        }
+        return $this->redirect( 'index' );
+    }
+
     public function send_access_key() {
         global $nameofsite;
 
@@ -515,9 +555,29 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         return $this->redirect('index');
     }
 
-    public function manage_images() {
-        wp_enqueue_script( 'awpcp-admin-attachments' );
-        echo awpcp_media_manager()->dispatch( $this );
+    public function manage_images( $listing ) {
+        $allowed_files = awpcp_listing_upload_limits()->get_listing_upload_limits( $listing );
+
+        $params = array(
+            'listing' => $listing,
+            'files' => awpcp_media_api()->find_by_ad_id( $listing->ad_id ),
+            'media_manager_configuration' => array(
+                'nonce' => wp_create_nonce( 'awpcp-manage-listing-media-' . $listing->ad_id ),
+                'allowed_files' => $allowed_files,
+                'show_admin_actions' => awpcp_current_user_is_moderator(),
+            ),
+            'media_uploader_configuration' => array(
+                'listing_id' => $listing->ad_id,
+                'nonce' => wp_create_nonce( 'awpcp-upload-media-for-listing-' . $listing->ad_id ),
+                'allowed_files' => $allowed_files,
+            ),
+            'urls' => array(
+                'view-listing' => $this->url( array( 'action' => 'view', 'id' => $listing->ad_id ) ),
+                'listings' => $this->url( array( 'id' => null ) ),
+            ),
+        );
+
+        echo $this->render( AWPCP_DIR . '/templates/admin/listings-media-center.tpl.php', $params );
     }
 
     public function delete_ad() {
@@ -532,31 +592,60 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         if (!wp_verify_nonce(awpcp_request_param('_wpnonce'), 'bulk-awpcp-listings'))
             return $this->index();
 
-        $current_user_is_admin = awpcp_current_user_is_admin();
         $user = wp_get_current_user();
         $selected = awpcp_request_param('selected');
 
         $deleted = 0;
         $failed = 0;
+        $non_existent = 0;
+        $unauthorized = 0;
+        $not_allowed_for_moderators = 0;
         $total = count( $selected );
 
         foreach ($selected as $id) {
-            if ( AWPCP_Ad::belongs_to_user($id, $user->ID) || $current_user_is_admin ) {
-                $errors = array();
-                deletead($id, '', '', $force=true, $errors);
+            try {
+                $listing = awpcp_listings_collection()->get( $id );
+            } catch ( AWPCP_Exception $e ) {
+                $non_existent = $non_existent + 1;
+                continue;
+            }
 
-                if (empty($errors)) {
-                    $deleted = $deleted + 1;
-                } else {
-                    $failed = $failed + 1;
-                }
+            if ( ! awpcp_listing_authorization()->is_current_user_allowed_to_edit_listing( $listing ) ) {
+                $unauthorized = $unauthorized + 1;
+                continue;
+            }
+
+            if ( awpcp_current_user_is_moderator() && $listing->user_id != $user->ID ) {
+                $not_allowed_for_moderators = $not_allowed_for_moderators + 1;
+                continue;
+            }
+
+            $errors = array();
+            deletead( $id, '', '', $force=true, $errors );
+
+            if ( empty( $errors ) ) {
+                $deleted = $deleted + 1;
+            } else {
+                $failed = $failed + 1;
             }
         }
 
         if ( $deleted > 0 && $failed > 0 ) {
             awpcp_flash( sprintf( __( '%d of %d Ads were deleted. %d generated errors.', 'AWPCP' ), $deleted,$total, $failed ) );
-        } else {
+        } else if ( $deleted > 0 ) {
             awpcp_flash( sprintf( __( '%d of %d Ads were deleted.', 'AWPCP' ), $deleted, $total ) );
+        }
+
+        if ( $non_existent > 0 ) {
+            awpcp_flash( sprintf( __( "%d of %d Ads don't exist.", 'AWPCP' ), $non_existent, $total ), 'error' );
+        }
+
+        if ( $unauthorized > 0 ) {
+            awpcp_flash( sprintf( __( "%d of %d Ads weren't deleted because you are not authorized.", 'AWPCP' ), $non_existent, $total ), 'error' );
+        }
+
+        if ( $not_allowed_for_moderators > 0 ) {
+            awpcp_flash( sprintf( __( "%d of %d Ads weren't deleted because Moderator uses are not allowed to use Bulk Delete operation to remove other users listings.", 'AWPCP' ), $not_allowed_for_moderators, $total ), 'error' );
         }
 
         return $this->redirect('index');
@@ -569,30 +658,32 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
     }
 
     public function index() {
-        $template = AWPCP_DIR . '/admin/templates/admin-panel-listings.tpl.php';
-        $this->table->prepare_items();
+        $table = $this->get_table();
 
-        echo $this->render($template, array('table' => $this->table));
+        $table->prepare_items();
+        $template = AWPCP_DIR . '/admin/templates/admin-panel-listings.tpl.php';
+
+        echo $this->render( $template, array( 'table' => $table ) );
     }
 
     public function ajax() {
-        global $current_user;
-        get_currentuserinfo();
-
         $id = awpcp_post_param('id', 0);
-        $is_admin_user = awpcp_current_user_is_admin();
 
-        // if user can't modify this Ad, do nothing and show list of ads
-        if (!$is_admin_user && !AWPCP_Ad::belongs_to_user($id, $current_user->ID)) {
+        try {
+            $listing = awpcp_listings_collection()->get( $id );
+        } catch ( AWPCP_Exception $e ) {
+            $message = _x( "The specified Ad doesn't exists.", 'ajax delete ad', 'AWPCP' );
+            $response = json_encode( array( 'status' => 'error', 'message' => $message ) );
+            return $this->ajax_response( $response );
+        }
+
+        if ( ! awpcp_listing_authorization()->is_current_user_allowed_to_edit_listing( $listing ) ) {
             return false;
         }
 
         $errors = array();
 
-        if (is_null(AWPCP_Ad::find_by_id($id))) {
-            $message = _x("The specified Ad doesn't exists.", 'ajax delete ad', 'AWPCP');
-            $response = json_encode(array('status' => 'error', 'message' => $message));
-        } else if (isset($_POST['remove'])) {
+        if ( isset( $_POST['remove'] ) ) {
             $result = deletead($id, $adkey='', $editemail='', $force=true, $errors);
 
             if (empty($errors)) {
@@ -601,7 +692,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
                 $response = json_encode(array('status' => 'error', 'message' => join('<br/>', $errors)));
             }
         } else {
-            $columns = $is_admin_user ? 10 : 10;
+            $columns = 10;
             ob_start();
                 include(AWPCP_DIR . '/admin/templates/delete_form.tpl.php');
                 $html = ob_get_contents();
@@ -609,8 +700,32 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
             $response = json_encode(array('status' => 'success', 'html' => $html));
         }
 
+        return $this->ajax_response( $response );
+    }
+
+    private function ajax_response( $response ) {
         header('Content-Type: application/json');
         echo $response;
         exit();
+    }
+
+    private function handle_custom_listing_actions( $action ) {
+        try {
+            $listing = awpcp_listings_collection()->get( $this->id );
+        } catch ( AWPCP_Exception $e ) {
+            awpcp_flash( __( "The specified listing doesn't exists.", 'AWPCP' ), 'error' );
+            return $this->index();
+        }
+
+        $output = apply_filters( "awpcp-custom-admin-listings-table-action-$action", null, $listing );
+
+        if ( is_null( $output ) ) {
+            awpcp_flash("Unknown action: $action", 'error');
+            return $this->index();
+        } else if ( is_array( $output ) && isset( $output['redirect'] ) ) {
+            return $this->render_page( $output['redirect'] );
+        } else {
+            return $output;
+        }
     }
 }

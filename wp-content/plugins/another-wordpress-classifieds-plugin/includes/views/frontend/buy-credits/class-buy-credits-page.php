@@ -83,7 +83,7 @@ class AWPCP_BuyCreditsPage extends AWPCP_BasePage {
 
         if ( ! is_null( $transaction ) && $transaction->is_payment_completed() ) {
             if ( ! $transaction->was_payment_successful() ) {
-                $this->errors = array_merge( $this->errors, $transaction->errors );
+                $this->errors = array_merge( $this->errors, awpcp_flatten_array( $transaction->errors ) );
                 $message = __('The payment associated with this transaction failed (see reasons below).', 'AWPCP');
 
                 throw new AWPCP_Exception( $message );

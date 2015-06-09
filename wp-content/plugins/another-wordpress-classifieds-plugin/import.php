@@ -130,7 +130,7 @@ class AWPCP_CSV_Importer {
 			}
 		}
 
-		$header = $parsed[0];
+		$header = array_map( 'trim', $parsed[0] );
 
 		if (in_array('images', $header) && empty($zip)) {
 			$errors[] = __( 'Image file names were found but no ZIP was provided.', 'AWPCP' );
@@ -239,7 +239,9 @@ class AWPCP_CSV_Importer {
 			// }
 
 			foreach ($this->columns as $key => $column) {
-				$value = awpcp_array_data($key, '', $data);
+				// DO NOT USE awpcp_array_data BECAUSE IT WILL TREAT '0' AS
+				// AN EMPTY VALUE
+				$value = isset( $data[ $key ] ) ? $data[ $key ] : '';
 
 				$_errors = array();
 				if ($key == 'username') {
@@ -381,6 +383,10 @@ class AWPCP_CSV_Importer {
 
 		if ( $import_dir ) {
 			$this->remove_images( $import_dir, $images_created );
+		}
+
+		if ( $this->ads_imported > 0 && ! $test_import ) {
+			do_action( 'awpcp-listings-imported' );
 		}
 	}
 

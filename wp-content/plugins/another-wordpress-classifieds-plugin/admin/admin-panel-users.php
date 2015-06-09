@@ -48,10 +48,10 @@ class AWPCP_AdminUsers {
 
                 if (awpcp_current_user_is_admin()) {
                     $url = add_query_arg('action', 'credit', awpcp_current_url());
-                    $actions['credit'] = "<a class='credit' href='" . $url . "'>" . __('Add Credit', 'AWPCP') . "</a>";
+                    $actions['credit'] = "<a class='credit' href='" .  esc_url( $url ) . "'>" . __('Add Credit', 'AWPCP') . "</a>";
 
                     $url = add_query_arg('action', 'debit', awpcp_current_url());
-                    $actions['debit'] = "<a class='debit' href='" . $url . "'>" . __('Remove Credit', 'AWPCP') . "</a>";
+                    $actions['debit'] = "<a class='debit' href='" . esc_url( $url ) . "'>" . __('Remove Credit', 'AWPCP') . "</a>";
                 }
 
                 $table = $this->get_table();

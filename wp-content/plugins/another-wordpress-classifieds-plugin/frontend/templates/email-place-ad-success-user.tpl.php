@@ -4,11 +4,9 @@
 <?php _e("Listing URL", "AWPCP") ?>: <?php echo urldecode( url_showad( $ad->ad_id ) ); ?> 
 <?php _e("Listing ID", "AWPCP") ?>: <?php echo $ad->ad_id ?> 
 <?php _e("Listing Edit Email", "AWPCP") ?>: <?php echo $ad->ad_contact_email ?> 
-<?php if ( get_awpcp_option( 'include-ad-access-key' ) ): ?>
+<?php if ( $include_listing_access_key ): ?>
 <?php _e( "Listing Edit Key", "AWPCP" ); ?>: <?php echo $ad->get_access_key(); ?> 
 <?php endif; ?>
-
-<?php $blog_name = awpcp_get_blog_name(); ?>
 
 <?php if ($transaction): ?>
 <?php echo sprintf( __( "%s Transaction", "AWPCP" ), $blog_name ); ?>: <?php echo $transaction->id ?> 
@@ -21,16 +19,20 @@
 <?php   if ( $show_total_credits ): ?>
 <?php echo esc_html( __( 'Order Total (credits)', 'AWPCP' ) ); ?>: <?php echo esc_html( $total_credits ); ?> 
 <?php   endif; ?>
+
 <?php endif ?>
+<?php if ( $include_edit_listing_url ): ?>
+<?php _e( 'The next link will take you to a page where you can edit the listing:', 'AWPCP' ); ?> 
 
+<?php echo awpcp_get_edit_listing_url( $ad ); ?> 
 
+<?php endif; ?>
 <?php if (!empty($message)): ?>
 <?php _e('Additional Details', 'AWPCP') ?> 
 
 <?php echo $message ?> 
+
 <?php endif ?>
-
-
 <?php echo sprintf(__("If you have questions about your listing contact %s. Thank you for your business.", 'AWPCP'), $admin_email) ?> 
 
 <?php echo $blog_name; ?> 

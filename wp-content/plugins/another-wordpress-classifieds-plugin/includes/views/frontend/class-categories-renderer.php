@@ -58,7 +58,6 @@ class AWPCP_CategoriesRenderer {
                 return $output;
         }
 
-
         throw new AWPCP_Exception( 'No cache entry was found.' );
     }
 

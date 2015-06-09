@@ -114,7 +114,7 @@ class AWPCP_Payment_Transaction {
         $query = sprintf("%s ORDER BY id ASC", $query);
 
         if ($fields == 'count') {
-            return $wpdb->get_var($query, ARRAY_A);
+            return $wpdb->get_var( $query );
         } else {
             $results = array();
             foreach ($wpdb->get_results($query, ARRAY_A) as $item) {
@@ -487,7 +487,13 @@ class AWPCP_Payment_Transaction {
     }
 
     public function user_has_enough_credit(&$balance=null) {
-        if ( awpcp_user_is_admin( $this->user_id ) ) return true;
+        if ( awpcp_current_user_is_admin() ) {
+            return true;
+        }
+
+        if ( awpcp_user_is_admin( $this->user_id ) ) {
+            return true;
+        }
 
         $totals = $this->get_totals();
         $credits = $totals['credits'];

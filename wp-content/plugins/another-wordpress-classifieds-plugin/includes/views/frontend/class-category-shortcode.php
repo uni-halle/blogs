@@ -30,12 +30,6 @@ class AWPCP_CategoryShortcode {
     private function render_shortcode_content( $attrs ) {
         extract( $attrs );
 
-        // request param overrides shortcode param
-        $items_per_page = $this->request->param( 'results', $items_per_page );
-        // set the number of items per page, to make sure both the shortcode handler
-        // and the awpcp_display_ads function are using the same value
-        $_REQUEST['results'] = $_GET['results'] = $items_per_page;
-
         $category = $id > 0 ? AWPCP_Category::find_by_id( $id ) : null;
         $children = awpcp_parse_bool( $children );
 
@@ -44,25 +38,33 @@ class AWPCP_CategoryShortcode {
         }
 
         if ( $children ) {
-            $before = awpcp_categories_list_renderer()->render( array( 'parent_category_id' => $category->id, 'show_listings_count' => true ) );
+            $categories_list = awpcp_categories_list_renderer()->render( array(
+                'parent_category_id' => $category->id,
+                'show_listings_count' => true,
+            ) );
+
+            $options = array(
+                'before_pagination' => array(
+                    10 => array(
+                        'categories-list' => $categories_list,
+                    ),
+                ),
+            );
         } else {
-            $before = '';
+            $options = array();
         }
 
-        if ( $children ) {
-            $where = '( ad_category_id=%1$d OR ad_category_parent_id = %1$d ) AND disabled = 0';
-        } else {
-            $where = 'ad_category_id=%1$d AND disabled = 0';
-        }
-        $where = $this->db->prepare( $where, $category->id );
-
-        $order = get_awpcp_option( 'groupbrowseadsby' );
+        $query = array(
+            'category_id' => $category->id,
+            'include_listings_in_children_categories' => $children,
+            'limit' => absint( $this->request->param( 'results', $items_per_page ) ),
+            'offset' => absint( $this->request->param( 'offset', 0 ) ),
+            'orderby' => get_awpcp_option( 'groupbrowseadsby' ),
+        );
 
         // required so awpcp_display_ads shows the name of the current category
         $_REQUEST['category_id'] = $category->id;
 
-        $base_url = sprintf( 'custom:%s', awpcp_current_url() );
-
-        return awpcp_display_ads( $where, '', '', $order, $base_url, $before );
+        return awpcp_display_listings_in_page( $query, 'category-shortcode', $options );
     }
 }

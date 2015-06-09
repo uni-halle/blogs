@@ -70,6 +70,10 @@ class AWPCP_ModulesUpdater {
             return $plugins_information;
         }
 
+        if ( ! is_object( $information ) ) {
+            return $plugins_information;
+        }
+
         if ( version_compare( $module['instance']->version , $information->new_version, '<' ) ) {
             $plugins_information->response[ $module['basename'] ] = $information;
         } else {

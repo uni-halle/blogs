@@ -1,9 +1,9 @@
 <div class="postbox">
     <div class="inside">
         <ul class="awpcp-admin-manage-links">
-            <li class="label">Manage Links:</li>
-            <li><a href="<?php echo $urls['view-listing']; ?>">View Listing</a></li>
-            <li><a href="<?php echo $urls['listings']; ?>">Return to Listings</a></li>
+            <li class="label"><?php _x( 'Manage Links', 'media-manager', 'AWPCP' ); ?>:</li>
+            <li><a href="<?php echo $urls['view-listing']; ?>"><?php _x( 'View Listing', 'media-manager', 'AWPCP' ); ?></a></li>
+            <li><a href="<?php echo $urls['listings']; ?>"><?php _x( 'Return to Listings', 'media-manager', 'AWPCP' ); ?></a></li>
         </ul>
     </div>
 </div>

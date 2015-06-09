@@ -11,7 +11,7 @@ class AWPCP_AdminCreditPlans extends AWPCP_AdminPageWithTable {
 
     public function __construct() {
         $page = 'awpcp-admin-credit-plans';
-        $title = __('AWPCP Classifieds Management System - Manage Credit Plans', 'AWPCP');
+        $title = awpcp_admin_page_title( __( 'Manage Credit Plans', 'AWPCP' ) );
         $menu = __('Credit Plans', 'AWPCP');
 
         parent::__construct($page, $title, $menu);

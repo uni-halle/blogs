@@ -1,6 +1,11 @@
-.is-hidden {
+.is-hidden,
+// necessary to override some theme's stylesheets
+.is-hidden[type="reset"],
+.is-hidden[type="button"],
+.is-hidden[type="submit"], {
     display: none;
 }
+
 .is-visible-inline-block {
     display: inline-block !important;
 }

@@ -85,15 +85,13 @@
          * @return {[type]} [description]
          */
         validate: function(defaults) {
-            // if there are reCAPTCHA fields in the page, make them required
-            $('[name="recaptcha_response_field"]').addClass('required');
-
             $.extend($.validator.messages, $.AWPCP.get('default-validation-messages'));
 
             $.validator.addMethod('money', (function() {
                 var decimal = $.AWPCP.get('decimal-separator'),
                     thousands = $.AWPCP.get('thousands-separator'),
                     pattern = new RegExp('^-?(?:\\d+|\\d{1,3}(?:\\' + thousands + '\\d{3})+)?(?:\\' + decimal + '\\d+)?$');
+
                 return function(value, element) {
                     return this.optional(element) || pattern.test(value);
                 };
@@ -144,11 +142,11 @@
         });
     };
 
-    $.AWPCP.MainMenu = function(toggle) {
+    $.AWPCP.MainMenu = function(container) {
         var self = this;
 
-        self.toggle = $(toggle);
-        self.container = self.toggle.parent();
+        self.container = $(container);
+        self.toggle = self.container.find('.awpcp-menu-toggle');
 
         self.toggle.click(function() {
             self.container.toggleClass('toggle-on');
@@ -163,7 +161,7 @@
         });
 
         $('.awpcp-navigation').each(function() {
-            $.noop(new $.AWPCP.MainMenu($(this).find('.awpcp-menu-toggle')));
+            $.noop(new $.AWPCP.MainMenu($(this)));
         });
     });
 

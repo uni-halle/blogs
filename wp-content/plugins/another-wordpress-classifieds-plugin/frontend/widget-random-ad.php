@@ -10,14 +10,10 @@ class AWPCP_RandomAdWidget extends AWPCP_LatestAdsWidget {
     }
 
     protected function defaults() {
-        return array(
+        return wp_parse_args( array(
             'title' => __('Random Ads', 'AWPCP'),
-            'show-title' => 1,
-            'show-excerpt' => 1,
-            'show-images' => 1,
-            'show-blank' => 1,
             'limit' => 1,
-        );
+        ), parent::defaults() );
     }
 
     protected function query($instance) {
@@ -31,15 +27,5 @@ class AWPCP_RandomAdWidget extends AWPCP_LatestAdsWidget {
     public function form($instance) {
         $instance = array_merge($this->defaults(), $instance);
         include(AWPCP_DIR . '/frontend/templates/widget-latest-ads-form.tpl.php');
-    }
-
-    public function update($new_instance, $old_instance) {
-        $instance['title'] = strip_tags($new_instance['title']);
-        $instance['limit'] = strip_tags($new_instance['limit']);
-        $instance['show-title'] = absint($new_instance['show-title']);
-        $instance['show-excerpt'] = absint($new_instance['show-excerpt']);
-        $instance['show-images'] = absint($new_instance['show-images']);
-        $instance['show-blank'] = absint($new_instance['show-blank']);
-        return $instance;
     }
 }

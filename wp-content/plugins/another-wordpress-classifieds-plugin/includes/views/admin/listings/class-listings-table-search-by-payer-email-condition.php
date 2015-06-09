@@ -7,7 +7,6 @@ class AWPCP_ListingsTableSearchByPayerEmailCondition {
     }
 
     public function create( $search_term ) {
-        global $wpdb;
-        return $wpdb->prepare( AWPCP_TABLE_ADS . '.payer_email = %s', $search_term );
+        return array( 'payer_email' => $search_term );
     }
 }

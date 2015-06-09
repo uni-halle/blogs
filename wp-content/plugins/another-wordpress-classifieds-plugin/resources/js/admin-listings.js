@@ -1,20 +1,22 @@
-/*global ajaxurl, ko */
-
-if (jQuery !== undefined) {
-    (function($, undefined) {
+/*global AWPCP, ajaxurl, ko */
+AWPCP.run( 'awpcp/listing-admin-page', [
+    'jquery',
+    'awpcp/media-center',
+    'awpcp/settings'
+], function( $, MediaCenter, settings ) {
 
         var AWPCP = jQuery.AWPCP = jQuery.extend({}, jQuery.AWPCP, AWPCP);
 
-        /**
-         * handlers for Manage Images/Attachments page
-         */
+    /**
+     * handlers for Manage Images/Attachments page
+     */
 
-        $(function() {
-            var panel = $('#awpcp-admin-images'), form = panel.find('.awpcp-media-manager-upload-form');
-            if (form.length > 0) {
-                ko.applyBindings({ file: ko.observable() }, form.get(0));
-            }
-        });
+    $(function() {
+        $( '.awpcp-admin-listings .awpcp-media-center' ).StartMediaCenter( {
+            mediaManagerOptions: settings.get( 'media-manager-data' ),
+            mediaUploaderOptions: settings.get( 'media-uploader-data' )
+        } );
+    });
 
         /**
          * handlers for Listings page
@@ -76,5 +78,4 @@ if (jQuery !== undefined) {
             });
         });
 
-    })(jQuery);
-}
+} );

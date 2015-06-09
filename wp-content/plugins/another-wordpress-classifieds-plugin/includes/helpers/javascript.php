@@ -28,10 +28,6 @@ class AWPCP_JavaScript {
         }
     }
 
-    public function get_data() {
-        return $this->data;
-    }
-
     public function localize($context, $key, $value=null) {
         if ( is_array( $key ) && isset( $this->l10n[ $context ] ) ) {
             $this->l10n[ $context ] = array_merge( $this->l10n[ $context ], $key );
@@ -42,7 +38,37 @@ class AWPCP_JavaScript {
         }
     }
 
-    public function get_l10n() {
-        return $this->l10n;
+    /**
+     * @since 3.4
+     */
+    public function print_data() {
+        echo "\n";
+        echo "<script type=\"text/javascript\">\n";
+        echo "/* <![CDATA[ */\n";
+        echo "(function($, window){\n";
+
+        $this->print_variable( 'options', '__awpcp_js_data', $this->data );
+        $this->print_variable( 'localization', '__awpcp_js_l10n', $this->l10n );
+
+        echo "})(jQuery, window);";
+        echo "/* ]]> */\n";
+        echo "</script>\n";
+    }
+
+    private function print_variable( $property_name, $variable_name, $content ) {
+        echo "\twindow.$variable_name = " . json_encode( $this->encode_scalar_values( $content ) ) . ";\n";
+        echo "\tif ( typeof $.AWPCP !== 'undefined' ) {\n";
+        echo "\t\t$.extend( $.AWPCP.$property_name, $variable_name );\n";
+        echo "\t}\n";
+    }
+
+    private function encode_scalar_values( $values ) {
+        foreach ( $values as $key => $value ) {
+            if ( is_scalar( $value ) ) {
+                $values[ $key ] = html_entity_decode( (string) $value, ENT_QUOTES, 'UTF-8' );
+            }
+        }
+
+        return $values;
     }
 }

@@ -1,11 +1,11 @@
-=== Another Wordpress Classifieds Plugin ===
+=== Another WordPress Classifieds Plugin ===
 Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
-Requires at least: 3.8
-Tested up to: 4.2
-Last Updated: 2015-Apr-24
-Stable tag: tags/3.3.4
+Requires at least: 3.9
+Tested up to: 4.2.2
+Last Updated: 2015-Jun-3
+Stable tag: tags/3.5.1
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -14,11 +14,13 @@ AWPCP Classifieds:  Great for increasing retention to your site, adding revenue 
 
 [Main Site](http://awpcp.com/) | [Support Forum](http://awpcp.com/forum/) | [Documentation](http://awpcp.com/docs/) | [Showcase](http://awpcp.com/showcase/) | [Premium Modules](http://awpcp.com/premium-modules/)
 
-Add a classified ads section to your Wordpress site, quickly and easily.  
+Add a classified ads section to your WordPress site, quickly and easily.  
 Lots of features, very configurable.  Easy to setup.  Great support.
-We're the #1 Wordpress Classified Ads Plugin: 6+ years old and 225,000+ downloads!
+We're the #1 WordPress Classified Ads Plugin: 8+ years old and over 10,000 active sites
 
-NEW module(s):  [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?ref=wp) and [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
+NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-module?ref=wp)
+, [Restricted Categories](http://awpcp.com/premium-modules/restricted-categories-module?ref=wp) and [Ad Campaign Manager](http://awpcp.com/premium-modules/campaign-manager-module?ref=wp)
+
 
 = Features =
  = Ad Features =
@@ -41,9 +43,10 @@ NEW module(s):  [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?
     16. Auto-verify ads with email links to post immediately upon click
     17. Now allows ads to be 'Sent to Facebook' inside of ad management
     18. Support for displaying ad events in BuddyPress activity stream with [BuddyPress module](http://awpcp.com/premium-modules/buddypress-module?ref=wp)
+    19. Ads can be edited via front end, back end with or without registration (depending on settings)
  = Notification Features =
-    1. Allow posters to be notified of expiring ads
-    2. Allow admin to be notified when new ads are posted
+    1. Allow posters to be notified of expiring ads, renewals, and approvals of ads
+    2. Allow admin to be notified when new ads are posted, ads are edited and much more
     3. Classified ad users can contact the ad poster without exposing 
        the poster's email (blind email system, similar to Craigslist)
     4. Admin can (optionally) be notified of expiring ads
@@ -84,13 +87,14 @@ NEW module(s):  [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?
        paid ads vs. free ads
     4. Allow for image approval prior to posting
     5. Allow users to have a primary image for their ad
+    6. Now supports multi-image asynchronous loading
  = Premium Modules (Add on modules, not included with free plugin) =
     1. Category Icons (adds small icons to give visual cues to 
        your user for each category in AWPCP)
     2. Extra Fields (allows you to add any custom fields for display.  
        For example, if you have a pet-related board, you might have 
        "Sex", "Breed", and "Dam/Sire" as additional fields you require for display)
-       Now supports search in extra fields, too.
+       Now supports search and custom ordering of fields.
     3. Regions Control (allows you to restrict viewing of ads based on 
        locale, so users don't see items they aren't physically near them, 
        also allows customization of the region types, such as 
@@ -119,14 +123,21 @@ NEW module(s):  [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?
         on them.)
     11. Authorize.net Payment Gateway (allows users to purchase ads, 
         subscriptions and credit plans using Authorize.net)
-    12. **NEW** Attachments (allows users to attach PDFs, text files or other 
+    12. Attachments (allows users to attach PDFs, text files or other 
         images to their classifieds (great for job boards!))
-    13. **NEW** BuddyPress (allows users to manage their ads in the BuddyPress
+    13. BuddyPress (allows users to manage their ads in the BuddyPress
         profile directly, see events from ad posting in the activity stream and more)
+    14. **NEW** Mark as Sold (allows users to mark for sale items as sold to keep content
+        in your classifieds, but clarify availability)
+    15. **NEW** Restricted Categories (restrict content from users unless they accept a disclaimer from your site.)
+    16. **NEW** Ad Campaign Manager (put your own advertisements into the classifieds in 5 different positions)
 
 = Premium Module Links: =
-* **NEW** [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?ref=wp)
-* **NEW** [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
+* **NEW** [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-module?ref=wp)
+* **NEW** [Restricted Categories](http://awpcp.com/premium-modules/restricted-categories-module?ref=wp)
+* **NEW** [Ad Campaign Manager](http://awpcp.com/premium-modules/campaign-manager-module?ref=wp)
+* [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?ref=wp)
+* [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
 * [Comments/Ratings](http://awpcp.com/premium-modules/comments-ratings-module?ref=wp)
 * [Authorize.net Gateway](http://www.awpcp.com/premium-modules/authorizenet-payment-module?ref=wp)
 * [PayPal Pro Gateway](http://www.awpcp.com/premium-modules/paypalpro-payment-module?ref=wp)
@@ -142,7 +153,7 @@ NEW module(s):  [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?
 
 Or, just [Donate to AWPCP to Support further development](http://awpcp.com/donate?ref=wp)
 
-These are just some of the features of Another Wordpress Classifieds Plugin
+These are just some of the features of Another WordPress Classifieds Plugin
 
 For more information and support please visit [http://awpcp.com](http://awpcp.com?ref=wp)
 For plugin support please visit [http://forum.awpcp.com](http://forum.awpcp.com)
@@ -176,9 +187,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 == Installation ==
 = IMPORTANT = 
 
-Please backup your wordpress database before you install/uninstall/activate/deactivate/upgrade Another Wordpress Classifieds Plugin.
+Please backup your WordPress database before you install/uninstall/activate/deactivate/upgrade Another WordPress Classifieds Plugin.
 
-Pre-installation note: If you have previously tried other classified plugins and you plan to give the classifieds page created by Another Wordpress Classifieds Plugin the same name as previously used with other classifieds plugins you've installed, please make sure your database has been cleared of any entries in the wp_posts table where the post_name value and the post_title value are the same as the name you plan to give your classifieds page.
+Pre-installation note: If you have previously tried other classified plugins and you plan to give the classifieds page created by Another WordPress Classifieds Plugin the same name as previously used with other classifieds plugins you've installed, please make sure your database has been cleared of any entries in the wp_posts table where the post_name value and the post_title value are the same as the name you plan to give your classifieds page.
 For example, if your classifieds page will be named "Classifieds", you might have a wp_posts database entry post_title value of "Classifieds" and post_name value of "classifieds" still left over from previous installations of other classifieds plugins. 
 You need to check your database to make sure data from your previous classifieds plugins does not still exist. Specifically, you need to delete all entries from your wp_posts table where the post_title and post_name values are the same as what you plan to name your classifieds page.
 
@@ -211,9 +222,104 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+= Version 3.5.1 =
+- Use mb_strtoupper if available in _get_currency_code
+- Fix function that finds media thumbnails for sites not under single site directory structure
+- Make button's tooltip translatable in Delete Form.
 
-= Version 3.3.4 =
-* Fixed problem with 4.2 upgrade about url() function and non-object call error.  
+= Version 3.5 =
+* NEW: Allow users to remove the title of the entry from the listing URL 
+* NEW: Add settings to allow users to remove listing information from URL 
+* NEW: Asynchronous uploads for listing images and attachments.
+* NEW: Allow registered users to edit their own Ads without entering Ad key 
+* NEW: Add plugin integration for Add Meta Tags plugin
+* NEW: Add setting to control whether payment terms are shown when no category is selected 
+* Add is_awpcp_page() function.
+* Use lowercase filenames for newly uploaded files 
+* Move Window Title settings to Ad/Listings section.
+* Do not overwrite a page's post name if it is not the default one 
+* Flush Rewrite Rules if the post name of an AWPCP page changes 
+* Include URL to edit listing in the message sent when a listing is succesfully posted 
+* Add link to return to main AWPCP page to the Delete Ad confirmation screen 
+* Use GET, instead of POST, to send information from the Search Ads widget 
+* Use GET method instead of POST in Search Ads form 
+* Add functions to detect if a page including an AWPCP shortcode is being displayed 
+* Move URL and AWPCP pages related functions to a new file 
+* Added French translation
+* Add awpcp_is_email_address_allowed() function 
+* Add plugin integration for WooCommerce to avoid wp-admin lockdown 
+* Remove code to initialize session from AWPCP's main class 
+* Load translation files from an external directory 
+* Add support for reCAPTCHA v2 
+* Fix PHP Warning in Manage Categories admin screen 
+* Allow currency symbol to be removed from display 
+* Add missing translations 
+* Improve perfomance of main plugin handling a large amount of categories 
+* Update method to retrieve title separator in Yoast WordPress SEO integration 
+* Add support for reCAPTCHA v2 
+* Do not consider bot requests to calculate a listing's view count 
+* Allow WordPress Shortcodes in Single Ad page layout 
+* Add setings to control positioning of currency symbol 
+* Use site name as Sender name in Listing is about to expire email notification 
+* Update Facebook helper class to use version 2.3 of the Graph API 
+* Add option to send notification to administrators when a listing is flagged 
+* Add notifiction for images awaiting approval uploaded from Manage Images section 
+* Allow URLs without http:// and https:// in Form Fields 
+* Show Individual Listing's images as a gallery 
+* Fix shortcodes and widgets to show listings in user selected order 
+* Fix translation issue in Ad Detals step template 
+* Add 'status' attribute to ajax response for Delete Comment action 
+* Add function to generate unique file name for uploaded images 
+* Use date_i18n to generate localized dates 
+* Make 'Search' string translatable in Search Ads Widget 
+* Fix conflict with Private Message plugin 
+* Fix Place Ad form validation in frontend screens 
+* Fix typo in messages shown when images are pending approval.
+* Fix spelling error in admin area 
+* Fix typo in Payments API.
+* CSS fixes for File Manager component 
+* Fix PHP Notice in code used to upload files.
+* Fix conflict with imagesLoaded jQuery plugin 
+* Fix Random Ads Widget 
+* Fix MainMenu JS code to avoid mark up issues 
+* Show View Categories menu item when viewing the list of listings 
+* Fix appearance of responsive tables in mobile devices 
+* Show listing excerpt in widgets, even if show-images is not enabled 
+* Fix function to generate Listing Verifiation URL 
+* Fix email validation code in Place Ad page 
+* Further improvements to appearance of responsive tables in mobile devices 
+* Remove PHP Notice caused trying to access a property of a non-object.
+* Avoid scheduling more than one job for clearing a listing's Facebook Cache 
+* Avoid PHP Warnings triggered when the setting for Secure URLs is enabled 
+* Schedule Clear Ad Facebook Cache events to be executed 5 minutes after the current time 
+* Fix typo in Extra Fields module.
+* Always try to find region options for regions dropdowns 
+* Fix slow query trying to filter listings by region 
+* Rename CSS class clearboth to awpcp-clearboth 
+* Use activate_plugins intead of install_plugins as the admin capability 
+* Fix bug handling item price in Listing Importer 
+* Clear categories list cache after listings are imported 
+* Add awpcp-updated CSS class to avoid collisions with theme's styles 
+* Prevent configuration conflict in Payment Settings 
+* Remove incorrect use of ARRAY_A in PaymentTransaction::query 
+* Update awpcp_pagination function to avoid printing too many page links 
+* Fix PHP Warning in Manage Categories admin screen 
+* Fix broken Search Listings form when permalinks are disabled 
+* Fix broken form in Search Listings Widget when permalinks are disabled 
+* Do not show a dropdown of regions when Region Control is not installed 
+* Fix unexpected "amount of credit in your account is not enough" error 
+* Fix translation error for 'Terms of Service:' 
+* Fix bug in Listings Finder causing listings to disappear from admin and frontend 
+* Define undefined variables in WP List Table sub-classes and AWPCP_Page 
+* Do not pre-select a user in the Ad Owner listing when editing a listing 
+* Make Listing Owner field optional if User Registration is off 
+* Fix bug in Import Listing screens affecting non-english websites 
+* Fix broken navigation in pagination links and category selector 
+* Fix bug in Categories Dropdown 
+* Fix bug in Settings Validator code 
+* Fix error presentation in Buy Credits page 
+* Use a relative URL for the Manage Credit menu item 
+* Namespace rules for messages in plugin's stylesheet
 
 = Version 3.3.3 =
 * Fix problem with image uploads that allowed for non-image files to be uploaded instead.  Strict extension checking enabled.  Security problem if left unpatched.

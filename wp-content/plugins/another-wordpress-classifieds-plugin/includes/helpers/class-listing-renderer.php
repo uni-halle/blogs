@@ -3,19 +3,6 @@
 /**
  * @since 3.3
  */
-function awpcp_get_listing_renderer() {
-    $renderer = apply_filters( 'awpcp-get-listing-renderer', null );
-
-    if ( is_null( $renderer ) ) {
-        $renderer = awpcp_listing_renderer();
-    }
-
-    return $renderer;
-}
-
-/**
- * @since 3.3
- */
 function awpcp_listing_renderer() {
     return new AWPCP_ListingRenderer();
 }
@@ -24,6 +11,7 @@ function awpcp_listing_renderer() {
  * @since 3.3
  */
 class AWPCP_ListingRenderer {
+
     public function get_view_listing_link( $listing ) {
         $url = $this->get_view_listing_url( $listing );
         $title = $listing->get_title();
@@ -33,5 +21,14 @@ class AWPCP_ListingRenderer {
 
     public function get_view_listing_url( $listing ) {
         return url_showad( $listing->ad_id );
+    }
+
+    public function get_edit_listing_url( $listing ) {
+        return awpcp_get_edit_listing_url( $listing );
+    }
+
+    public function get_delete_listing_url( $listing ) {
+        $url = $this->get_edit_listing_url( $listing );
+        return apply_filters( 'awpcp-delete-listing-url', $url, $listing );
     }
 }

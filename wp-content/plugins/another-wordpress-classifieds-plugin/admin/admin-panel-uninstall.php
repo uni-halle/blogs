@@ -8,7 +8,7 @@ class AWPCP_Admin_Uninstall extends AWPCP_AdminPage {
     public function AWPCP_Admin_Uninstall() {
         parent::__construct(
             'awpcp-admin-uninstall',
-            __('Uninstall AWPCP Classifieds Management System', 'AWPCP'),
+            awpcp_admin_page_title( __( 'Uninstall', 'AWPCP' ) ),
             __('Uninstall', 'AWPCP'));
     }
 

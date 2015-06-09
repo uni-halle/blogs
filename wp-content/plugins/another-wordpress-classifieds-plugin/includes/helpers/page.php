@@ -20,7 +20,7 @@ class AWPCP_Page {
     }
 
     public function url($params=array()) {
-        $url = add_query_arg($params, awpcp_current_url());
+        $url = add_query_arg( urlencode_deep( $params ), awpcp_current_url());
         return $url;
     }
 

@@ -34,65 +34,85 @@
                     <ul>
                         <li class="li_link">
                             <img style="align:left" src="<?php echo $url; ?>/resources/images/new.gif"/>
+                            <a style="color:#145200;" href="http://awpcp.com/premium-modules/campaign-manager-module/?ref=panel" target="_blank">
+                                <?php _e( 'Campaign Manager', 'AWPCP' ); ?>
+                            </a>
+                        </li>
+                        <li class="li_link">
+                            <img style="align:left" src="<?php echo $url; ?>/resources/images/new.gif"/>
+                            <a style="color:#145200;" href="http://awpcp.com/premium-modules/mark-as-sold-module/?ref=panel" target="_blank">
+                                <?php _e( 'Mark as Sold', 'AWPCP' ); ?>
+                            </a>
+                        </li>
+                        <li class="li_link">
+                            <img style="align:left" src="<?php echo $url; ?>/resources/images/new.gif"/>
+                            <a style="color:#145200;" href="http://awpcp.com/premium-modules/restricted-categories-module/?ref=panel" target="_blank">
+                                <?php _e( 'Restricted Categories', 'AWPCP' ); ?>
+                            </a>
+                        </li>
+                        <li class="li_link">
+                            <a style="color:#145200;" href="http://awpcp.com/premium-modules/buddypress-module/?ref=panel" target="_blank">
+                                <?php _e( 'BuddyPress Listings', 'AWPCP' ); ?>
+                            </a>
+                        </li>
+                        <li class="li_link">
                             <a style="color:#145200;" href="http://awpcp.com/premium-modules/comments-ratings-module/?ref=panel" target="_blank">
-                                <?php _e('Comments/Ratings Module', 'AWPCP'); ?>
+                                <?php _e('Comments/Ratings', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
-                            <img style="align:left" src="<?php echo $url; ?>/resources/images/new.gif"/>
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/authorizenet-payment-module/?ref=panel" target="_blank">
-                                <?php _e('Authorize.Net Module', 'AWPCP'); ?>
+                                <?php _e('Authorize.Net', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
-                            <img style="align:left" src="<?php echo $url; ?>/resources/images/new.gif"/>
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/paypalpro-payment-module/?ref=panel" target="_blank">
-                                <?php _e('PayPal Pro Module', 'AWPCP'); ?>
+                                <?php _e('PayPal Pro', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/coupon-module/?ref=panel" target="_blank">
-                                <?php _e('Coupon/Discount Module', 'AWPCP'); ?>
+                                <?php _e('Coupon/Discount', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/subscriptions-module/?ref=panel" target="_blank">
-                                <?php _e('Subscriptions Module', 'AWPCP'); ?>
+                                <?php _e('Subscriptions', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/fee-per-category-module/?ref=panel" target="_blank">
-                                <?php _e('Fee Per Category Module', 'AWPCP'); ?>
+                                <?php _e('Fee Per Category', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/featured-ads-module/?ref=panel" target="_blank">
-                                <?php _e('Featured Ads Module', 'AWPCP'); ?>
+                                <?php _e('Featured Ads', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/extra-fields-module/?ref=panel" target="_blank">
-                                <?php _e('Extra Fields Module', 'AWPCP'); ?>
+                                <?php _e('Extra Fields', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/category-icons-module/?ref=panel" target="_blank">
-                                <?php _e('Category Icons Premium Module', 'AWPCP'); ?>
+                                <?php _e('Category Icons', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/regions-control-module/?ref=panel" target="_blank">
-                                <?php _e('Regions Control Module', 'AWPCP'); ?>
+                                <?php _e('Regions Control', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/google-checkout-module/?ref=panel" target="_blank">
-                                <?php _e('Google Checkout Payment Module', 'AWPCP'); ?>
+                                <?php _e('Google Checkout Payments', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">
                             <a style="color:#145200;" href="http://www.awpcp.com/premium-modules/rss-module/?ref=panel" target="_blank">
-                                <?php _e('RSS Module', 'AWPCP'); ?>
+                                <?php _e('RSS', 'AWPCP'); ?>
                             </a>
                         </li>
                         <li class="li_link">

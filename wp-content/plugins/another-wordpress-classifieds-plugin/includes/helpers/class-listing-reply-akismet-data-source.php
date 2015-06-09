@@ -13,9 +13,9 @@ class AWPCP_ListingReplyAkismetDataSource {
     public function get_request_data( $subject ) {
         return array(
             'comment_type' => 'comment',
-            'comment_author' => $subject['sender_name'],
-            'comment_author_email' => $subject['sender_email'],
-            'comment_content' => $subject['message'],
+            'comment_author' => $subject['awpcp_sender_name'],
+            'comment_author_email' => $subject['awpcp_sender_email'],
+            'comment_content' => $subject['awpcp_contact_message'],
             'permalink' => url_showad( $subject['ad_id'] ),
         );
     }

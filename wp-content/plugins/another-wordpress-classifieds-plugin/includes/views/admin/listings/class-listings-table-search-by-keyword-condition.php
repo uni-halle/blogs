@@ -7,7 +7,6 @@ class AWPCP_ListingsTableSearchByKeywordCondition {
     }
 
     public function create( $search_term ) {
-        global $wpdb;
-        return $wpdb->prepare( 'MATCH ( ' . AWPCP_TABLE_ADS . '.ad_title, ' . AWPCP_TABLE_ADS . '.ad_details) AGAINST (%s)', $search_term );
+        return array( 'keyword' => $search_term );
     }
 }

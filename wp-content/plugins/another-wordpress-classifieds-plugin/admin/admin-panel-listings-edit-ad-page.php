@@ -12,8 +12,10 @@ class AWPCP_AdminListingsEditAd extends AWPCP_EditAdPage {
     public function __construct($page=false, $title=false) {
         parent::__construct();
 
+        $default_title = awpcp_admin_page_title( __( 'Edit Ad', 'AWPCP' ), __( 'Manage Listings', 'AWPCP' ) );
+
+        $this->title = $title ? $title : $default_title;
         $this->page = $page ? $page : 'awpcp-admin-listings-edit-ad';
-        $this->title = $title ? $title : __('AWPCP Classifieds Management System - Manage Ad Listings - Edit Ad', 'AWPCP');
     }
 
     public function show_sidebar() {

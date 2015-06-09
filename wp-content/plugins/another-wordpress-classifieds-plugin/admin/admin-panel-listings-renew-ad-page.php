@@ -12,8 +12,10 @@ class AWPCP_AdminListingsRenewAd extends AWPCP_RenewAdPage {
     public function __construct($page=false, $title=false) {
         parent::__construct();
 
+        $default_title = awpcp_admin_page_title( __( 'Renew Ad', 'AWPCP' ), __( 'Manage Listings', 'AWPCP' ) );
+
         $this->page = $page ? $page : 'awpcp-admin-listings-renew-ad';
-        $this->title = $title ? $title : __('AWPCP Classifieds Management System - Manage Ad Listings - Renew Ad', 'AWPCP');
+        $this->title = $title ? $title : $default_title;
     }
 
     public function show_sidebar() {

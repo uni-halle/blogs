@@ -1,7 +1,5 @@
 <div class="metabox-holder">
 
-	<?php echo awpcp_print_message( __( 'Facebook Integration is in beta. Please let us know if you experience any problems or have feature suggestions.', 'AWPCP' ), array( 'updated', 'below-h2', 'highlight' ) ); ?>
-
 	<div class="postbox">
 		<h3 class="hndle"><span><?php _e('Facebook Integration', 'AWPCP') ?></span></h3>
 		<div class="inside">

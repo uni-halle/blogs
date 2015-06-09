@@ -1,8 +1,14 @@
 <?php if ( get_awpcp_option( 'freepay' ) == 1 ): ?>
-<h2><?php echo esc_html( _x( 'Select Payment/Category', 'place ad order step', 'AWPCP' ) ); ?></h2>
+<h2><?php echo esc_html( _x( 'Select Category and Payment Term', 'place ad order step', 'AWPCP' ) ); ?></h2>
 <?php else: ?>
 <h2><?php echo esc_html( _x( 'Select Category', 'place ad order step', 'AWPCP' ) ); ?></h2>
 <?php endif; ?>
+
+<?php
+    if ( get_awpcp_option( 'show-create-listing-form-steps' ) ) {
+        echo awpcp_render_listing_form_steps( 'select-category' );
+    }
+?>
 
 <?php foreach ($messages as $message): ?>
     <?php echo awpcp_print_message($message); ?>
@@ -27,7 +33,7 @@
         <?php echo awpcp_form_error('category', $form_errors); ?>
     </p>
 
-    <?php if (awpcp_current_user_is_admin()): ?>
+    <?php if (awpcp_current_user_is_moderator()): ?>
     <h3><?php echo esc_html( _x( 'Please select the owner for this Ad', 'place ad order step', 'AWPCP' ) ); ?></h3>
     <p class="awpcp-form-spacer">
         <?php

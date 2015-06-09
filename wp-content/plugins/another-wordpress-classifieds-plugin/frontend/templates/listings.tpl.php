@@ -10,7 +10,7 @@
     <?php echo join('', $before_content); ?>
 
     <?php echo $pagination_block; ?>
-    <div class="awpcp-listings clearboth"><?php echo join( '', $items ); ?></div>
+    <div class="awpcp-listings awpcp-clearboth"><?php echo join( '', $items ); ?></div>
     <?php echo $pagination_block; ?>
 
     <?php echo join('', $after_content); ?>

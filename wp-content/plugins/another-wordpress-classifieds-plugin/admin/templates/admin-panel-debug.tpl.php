@@ -1,12 +1,12 @@
 <?php if (!$download): ?>
 	<?php $page_id = 'awpcp-admin-debug' ?>
-	<?php $page_title = __('AWPCP Debug', 'AWPCP') ?>
+	<?php $page_title = awpcp_admin_page_title( __( 'Debug', 'AWPCP' ) ); ?>
 
 	<?php include(AWPCP_DIR . '/admin/templates/admin-panel-header.tpl.php') ?>
 <?php endif ?>
 
 		<?php $msg = _x('This information can help AWPCP Developers to debug possible problems. If you are submitting a bug report please <strong><a href="%s">Download the Debug Information</a></strong> and attach it to your bug report or take a minute to copy the information below to <a href="http://fpaste.org" target="_blank">http://fpaste.org</a> and provide the resulting URL in your report.', 'debug page', 'AWPCP') ?>
-		<p><?php echo sprintf( $msg, add_query_arg( 'download', 'debug page', esc_attr( awpcp_current_url() ) ) ); ?></p>
+		<p><?php echo sprintf( $msg, esc_url( add_query_arg( 'download', 'debug page', awpcp_current_url() ) ) ); ?></p>
 
 		<?php $title_pages = _x('AWPCP Pages', 'debug page', 'AWPCP') ?>
 		<?php $title_php_info = _x('PHP Info', 'debug page', 'AWPCP') ?>

@@ -118,7 +118,7 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
     ) );
 
 	$preview = $preview === true || 'preview' == awpcp_array_data('adstatus', '', $_GET);
-	$isadmin = awpcp_current_user_is_admin();
+	$is_moderator = awpcp_current_user_is_moderator();
 	$messages = array();
 
 	$permastruc = get_option('permalink_structure');
@@ -153,7 +153,7 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 			}
 
 			if (is_null($ad)) {
-				$message = __("Sorry, that Ad is no available. Please try browsing or searching existing ads.", "AWPCP");
+				$message = __( 'Sorry, that listing is not available. Please try browsing or searching existing listings.', 'AWPCP' );
 				return '<div id="classiwrapper">' . awpcp_print_error($message) . '</div><!--close classiwrapper-->';
 			}
 
@@ -169,7 +169,7 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 			$output = '<div id="classiwrapper">%s%s<!--awpcp-single-ad-layout-->%s</div><!--close classiwrapper-->';
 			$output = sprintf( $output, $content_before_page, $omitmenu ? '' : awpcp_menu_items(), $content_after_page );
 
-			if (!$isadmin && !$is_ad_owner && !$preview && $ad->disabled == 1) {
+			if (!$is_moderator && !$is_ad_owner && !$preview && $ad->disabled == 1) {
 				$message = __('The Ad you are trying to view is pending approval. Once the Administrator approves it, it will be active and visible.', 'AWPCP');
 				return str_replace( '<!--awpcp-single-ad-layout-->', awpcp_print_error( $message ), $output );
 			}
@@ -178,7 +178,7 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 				$messages[] = awpcp_print_message( __( 'Your email address was successfully verified.', 'AWPCP' ) );
 			}
 
-			if ($show_messages && $isadmin && $ad->disabled == 1) {
+			if ($show_messages && $is_moderator && $ad->disabled == 1) {
 				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the Administrator) and the author can see it.', 'AWPCP');
 				$messages[] = awpcp_print_error($message);
 			} else if ( $show_messages && ( $is_ad_owner || $preview ) && ! $ad->verified ) {
@@ -189,24 +189,43 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 				$messages[] = awpcp_print_error($message);
 			}
 
-			$layout = get_awpcp_option('awpcpshowtheadlayout');
-			if (empty($layout)) {
-				$layout = awpcp()->settings->get_option_default_value('awpcpshowtheadlayout');
-			}
-			$layout = apply_filters('awpcp-single-ad-layout', $layout, $ad);
-
+            $layout = awpcp_get_listing_single_view_layout( $ad );
 			$layout = awpcp_do_placeholders( $ad, $layout, 'single' );
 
 			$output = str_replace( '<!--awpcp-single-ad-layout-->', join('', $messages) . $layout, $output );
 			$output = apply_filters('awpcp-show-ad', $output, $adid);
 
-			$ad->visit();
+			if ( ! awpcp_request()->is_bot() ) {
+				$ad->visit();
+			}
+
 			$ad->save();
 		}
-
 	} else {
-		$output = awpcp_display_ads( '', '', '', get_awpcp_option( 'groupbrowseadsby' ), '' );
+		$query = array(
+            'limit' => absint( awpcp_request_param( 'results', get_awpcp_option( 'adresultsperpage', 10 ) ) ),
+            'offset' => absint( awpcp_request_param( 'offset', 0 ) ),
+			'orderby' => get_awpcp_option( 'groupbrowseadsby' ),
+		);
+
+		$output = awpcp_display_listings_in_page( $query, 'show-listing' );
 	}
 
 	return $output;
+}
+
+function awpcp_get_listing_single_view_layout( $listing ) {
+    $layout = get_awpcp_option( 'awpcpshowtheadlayout' );
+
+    if ( empty( $layout ) ) {
+        $layout = awpcp()->settings->get_option_default_value( 'awpcpshowtheadlayout' );
+    }
+
+    $layout = apply_filters( 'awpcp-single-ad-layout', $layout, $listing );
+
+    if ( get_awpcp_option( 'allow-wordpress-shortcodes-in-single-template' ) ) {
+        $layout = do_shortcode( $layout );
+    }
+
+    return $layout;
 }

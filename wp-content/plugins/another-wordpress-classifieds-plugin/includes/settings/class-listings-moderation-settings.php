@@ -8,7 +8,25 @@ class AWPCP_ListingsModerationSettings {
         $key = $settings->add_section( 'listings-settings', __( 'Moderation', 'AWPCP' ), 'moderation', 10, array( $settings, 'section' ) );
 
         $settings->add_setting( $key, 'onlyadmincanplaceads', __( 'Only admin can post Ads', 'AWPCP' ), 'checkbox', 0, __( 'If checked only administrator users will be allowed to post Ads.', 'AWPCP' ) );
-        $settings->add_setting( $key, 'adapprove', __( 'Disable Ad until admin approves', 'AWPCP' ), 'checkbox', 0, __( 'New Ads will be in a disabled status, not visible to visitors, until the administrator approves them.', 'AWPCP' ) );
+
+        $settings->add_setting(
+            $key,
+            'adapprove',
+            __( 'Disable listings until administrator approves', 'AWPCP' ),
+            'checkbox',
+            0,
+            __( 'New Ads will be in a disabled status, not visible to visitors, until the administrator approves them.', 'AWPCP' )
+        );
+
+        $settings->add_setting(
+            $key,
+            'disable-edited-listings-until-admin-approves',
+            __( 'Disable listings until administrator approves modifications', 'AWPCP' ),
+            'checkbox',
+            $settings->get_option( 'adapprove' ),
+            __( 'Listings will be in a disabled status after the owners modifies them and until the administrator approves them.', 'AWPCP' )
+        );
+
         $settings->add_setting( $key, 'enable-ads-pending-payment', __( 'Enable paid ads that are pending payment.', 'AWPCP' ), 'checkbox', get_awpcp_option( 'disablependingads', 1 ), __( 'Enable paid ads that are pending payment.', 'AWPCP' ) );
         $settings->add_setting( $key, 'enable-email-verification', __( 'Have non-registered users verify the email address used to post new Ads', 'AWPCP' ), 'checkbox', 0, __( 'A message with an email verification link will be sent to the email address used in the contact information. New Ads will remain disabled until the user clicks the verification link.', 'AWPCP' ) );
         $settings->add_setting( $key, 'email-verification-first-threshold', __( 'Number of days before the verification email is sent again', 'AWPCP' ), 'textfield', 5, '' );

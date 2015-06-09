@@ -1,6 +1,6 @@
 <?php $page_id = 'awpcp-admin-settings' ?>
 <?php $page_class = "$page_id awpcp-$group->slug"; ?>
-<?php $page_title = sprintf(__('AWPCP %s Settings', 'AWPCP'), $group->name) ?>
+<?php $page_title = awpcp_admin_page_title( sprintf( __( '%s Settings', 'AWPCP' ), $group->name ) ); ?>
 
 <?php include(AWPCP_DIR . '/admin/templates/admin-panel-header.tpl.php') ?>
 
@@ -10,7 +10,7 @@
 			<?php foreach ($groups as $g): ?>
 				<?php $href = add_query_arg(array('g' => $g->slug), awpcp_current_url()); ?>
 				<?php $active = $group->slug == $g->slug ? 'nav-tab nav-tab-active' : 'nav-tab'; ?>
-				<a href="<?php echo $href ?>" class="<?php echo $active ?>"><?php echo $g->name ?></a>
+				<a href="<?php echo esc_url( $href ); ?>" class="<?php echo esc_attr( $active ) ?>"><?php echo $g->name ?></a>
 			<?php endforeach ?>
 			</h2>
 

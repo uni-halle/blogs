@@ -308,25 +308,7 @@ function awpcp_get_datetime_format() {
 	return $format;
 }
 
-
-
 /**
- * TODO: consider using date_i18n
- * Returns the given date as MySQL date string, Unix timestamp or
- * using a custom format.
- *
- * @since 2.0.7
- * @param $format 	'mysql', 'timestamp', or first arguemnt for date() function.
- * @deprecated	since 3.0.2, use awpcp_datetime()
- */
-function awpcp_time($date=null, $format='mysql') {
-	_deprecated_function( __FUNCTION__, '3.0.2', 'awpcp_datetime()' );
-	return awpcp_datetime( $format, $date );
-}
-
-
-/**
- * TODO: consider using date_i18n
  * Returns the given date as MySQL date string, Unix timestamp or
  * using a custom format.
  *
@@ -349,13 +331,13 @@ function awpcp_datetime( $format='mysql', $date=null ) {
 		case 'timestamp':
 			return $timestamp;
 		case 'awpcp':
-			return date( awpcp_get_datetime_format(), $timestamp) ;
+			return date_i18n( awpcp_get_datetime_format(), $timestamp) ;
 		case 'awpcp-date':
-			return date( awpcp_get_date_format(), $timestamp );
+			return date_i18n( awpcp_get_date_format(), $timestamp );
 		case 'awpcp-time':
-			return date( awpcp_get_time_format(), $timestamp );
+			return date_i18n( awpcp_get_time_format(), $timestamp );
 		default:
-			return date( $format, $timestamp );
+			return date_i18n( $format, $timestamp );
 	}
 }
 
@@ -394,44 +376,34 @@ function awpcp_is_mysql_date( $date ) {
  * @since 2.0.7
  */
 function awpcp_admin_capability() {
-	$roles = explode(',', get_awpcp_option('awpcpadminaccesslevel'));
-	if (in_array('editor', $roles))
-		return 'edit_pages';
-	// default to: only WP administrator users are AWPCP admins
-	return 'install_plugins';
+    return 'manage_classifieds';
 }
 
 /**
- * @since next-release
+ * @since 3.3.2
  */
 function awpcp_admin_roles_names() {
-    $configured_roles = explode( ',', get_awpcp_option( 'awpcpadminaccesslevel' ) );
-    if ( in_array( 'editor', $configured_roles ) ) {
-        return array( 'administrator', 'editor' );
-    } else {
-        return array( 'administrator' );
-    }
+    return awpcp_roles_and_capabilities()->get_administrator_roles_names();
 }
-
 
 /**
  * Check if current user is an Administrator according to
  * AWPCP settings.
  */
 function awpcp_current_user_is_admin() {
-    // If the current user is being setup before the "init" action has fired,
-    // strange (and difficult to debug) role/capability issues will occur.
-    if ( ! did_action( 'set_current_user' ) ) {
-        _doing_it_wrong( __FUNCTION__, "Trying to call awpcp_current_user_is_admin() before the current user has been set.", '3.3.1' );
-    }
+    return awpcp_roles_and_capabilities()->current_user_is_administrator();
+}
 
-	return current_user_can( awpcp_admin_capability() );
+/**
+ * @since 3.4
+ */
+function awpcp_current_user_is_moderator() {
+    return awpcp_roles_and_capabilities()->current_user_is_moderator();
 }
 
 
 function awpcp_user_is_admin($id) {
-	$capability = awpcp_admin_capability();
-	return user_can($id, $capability);
+    return awpcp_roles_and_capabilities()->user_is_administrator( $id );
 }
 
 
@@ -460,7 +432,6 @@ function awpcp_pagination($config, $url) {
 					   'results',
 					   'PHPSESSID',
 					   'aeaction',
-					   'category_id',
 					   'cat_ID',
 					   'action',
 					   'aeaction',
@@ -490,18 +461,38 @@ function awpcp_pagination($config, $url) {
 
 	$pages = ceil($total / $results);
 	$page = floor($offset / $results) + 1;
+    $items = array();
+    $radius = 5;
+
+    if ( ( $page - $radius ) > 2 ) {
+        $items[] = awpcp_render_pagination_item( '&laquo;&laquo;', 1, $results, $params, $url );
+    }
+
+    if ( ( $page - $radius ) > 1 ) {
+        $items[] = awpcp_render_pagination_item( '&laquo;', $page - $radius - 1, $results, $params, $url );
+    }
 
 	for ($i=1; $i <= $pages; $i++) {
-		if ($page == $i) {
-			$items[] = sprintf('%d', $i);
-		} else {
-			$href_params = array_merge($params, array('offset' => ($i-1) * $results, 'results' => $results));
-			$href = add_query_arg($href_params, $url);
-			$items[] = sprintf('<a href="%s">%d</a>', esc_attr($href), esc_attr($i));
-		}
+        if ( $page == $i ) {
+            $items[] = sprintf('%d', $i);
+        } else if ( $i < ( $page - $radius ) ) {
+            // pass
+        } else if ( $i > ( $page + $radius ) ) {
+            // pass
+        } else {
+            $items[] = awpcp_render_pagination_item( $i, $i, $results, $params, $url );
+        }
 	}
 
-	$pagination = join('', $items);
+    if ( $page < ( $pages - $radius ) ) {
+        $items[] = awpcp_render_pagination_item( '&raquo;', $page + $radius + 1, $results, $params, $url );
+    }
+
+    if ( ( $page + $radius ) < ( $pages - 1 ) ) {
+        $items[] = awpcp_render_pagination_item( '&raquo;&raquo;', $pages, $results, $params, $url );
+    }
+
+	$pagination = implode( '', $items );
 	$options = awpcp_pagination_options( $results );
 
 	ob_start();
@@ -512,6 +503,19 @@ function awpcp_pagination($config, $url) {
 	return $html;
 }
 
+function awpcp_render_pagination_item( $label, $page, $results_per_page, $params, $url ) {
+    $params = array_merge(
+        $params,
+        array(
+            'offset' => ( $page - 1 ) * $results_per_page,
+            'results' => $results_per_page,
+        )
+    );
+
+    $url = add_query_arg( urlencode_deep( $params ), $url );
+
+    return sprintf( '<a href="%s">%s</a>', esc_url( $url ), $label );
+}
 
 function awpcp_get_categories() {
 	global $wpdb;
@@ -1050,21 +1054,6 @@ function awpcp_get_ad_number_allowed_images($ad_id) {
 	return $allowed;
 }
 
-
-/**
- * @deprecated since 3.0.2 - use awpcp_media_api()->find_images_by_ad_id() instead
- */
-function awpcp_get_ad_images( $ad_id ) {
-	_deprecated_function( __FUNCTION__, '3.0.2', 'awpcp_media_api()->find_images_by_ad_id()' );
-
-	global $wpdb;
-
-	$query = "SELECT * FROM " . AWPCP_TABLE_ADPHOTOS . " ";
-	$query.= "WHERE ad_id=%d ORDER BY image_name ASC";
-
-	return $wpdb->get_results($wpdb->prepare($query, $ad_id));
-}
-
 /**
  * @deprecated 3.0.2 use $media->get_url()
  */
@@ -1176,11 +1165,10 @@ function awpcp_array_insert($array, $index, $key, $item, $where='before') {
 			array_splice($keys, min($p+1, count($keys)), 0, $key);
 
 		$array = array();
-		// create items array in proper order.
-		// the code below was the only way I find to insert an
-		// item in an arbitrary position of an array preserving
-		// keys. array_splice dropped the key of the inserted
-		// value.
+        // Create items array in proper order. The code below was the only
+        // way I found to insert an item in an arbitrary position of an
+        // array preserving keys. array_splice dropped the key of the inserted
+        // value.
 		foreach($keys as $key) {
 			$array[$key] = $all[$key];
 		}
@@ -1246,125 +1234,11 @@ function awpcp_insert_submenu_item_after($menu, $slug, $after) {
     }
 }
 
-
-/**
- * Check if the page identified by $refname exists.
- */
-function awpcp_find_page($refname) {
-	global $wpdb;
-
-	$query = 'SELECT posts.ID, page FROM ' . $wpdb->posts . ' AS posts ';
-	$query.= 'LEFT JOIN ' . AWPCP_TABLE_PAGES . ' AS pages ';
-	$query.= 'ON (posts.ID = pages.id) WHERE pages.page = %s';
-
-	$query = $wpdb->prepare($query, $refname);
-	$pages = $wpdb->get_results($query);
-
-	return $pages !== false && !empty($pages);
-}
-
-/**
- * Return name of current AWPCP page.
- *
- * This is part of an effor to put all AWPCP functions under
- * the same namespace.
- */
-function awpcp_get_main_page_name() {
-	return get_awpcp_option('main-page-name');
-}
-
-/**
- * Always return the full URL, even if AWPCP main page
- * is also the home page.
- */
-function awpcp_get_main_page_url() {
-	$id = awpcp_get_page_id_by_ref('main-page-name');
-
-	if (get_option('permalink_structure')) {
-		$url = home_url(get_page_uri($id));
-	} else {
-		$url = add_query_arg('page_id', $id, home_url());
-	}
-
-	return user_trailingslashit($url);
-}
-
 /**
  * @since 2.1.4
  */
 function awpcp_get_page_name($pagename) {
 	return get_awpcp_option($pagename);
-}
-
-/**
- * Returns a link to an AWPCP page identified by $pagename.
- *
- * Always return the full URL, even if the page is set as
- * the homepage.
- *
- * The returned URL has no trailing slash. However, if the
- * $trailinghslashit parameter is set to true, the returned URL
- * will be passed through user_trailingslashit() function.
- *
- * If permalinks are disabled, the home url will have
- * a trailing slash.
- *
- * @since 2.0.7
- */
-function awpcp_get_page_url($pagename, $trailingslashit=false) {
-	global $wp_rewrite;
-
-	$id = awpcp_get_page_id_by_ref($pagename);
-
-	if (get_option('permalink_structure')) {
-		$permalink = $wp_rewrite->get_page_permastruct();
-		$permalink = str_replace( '%pagename%', get_page_uri( $id ), $permalink );
-
-		$url = home_url( $permalink );
-		$url = $trailingslashit ? user_trailingslashit( $url ) : rtrim($url, '/');
-	} else {
-		$url = add_query_arg( 'page_id', $id, home_url('/') );
-	}
-
-	return $url;
-}
-
-/**
- * @since 3.0.2
- */
-function awpcp_get_view_categories_url() {
-    $permalinks = get_option('permalink_structure');
-    $main_page_id = awpcp_get_page_id_by_ref('main-page-name');
-    $page_name = get_awpcp_option('view-categories-page-name');
-    $slug = sanitize_title($page_name);
-
-    if ( !empty( $permalinks ) ) {
-        $url = sprintf( '%s/%s', trim( home_url( get_page_uri( $main_page_id ) ), '/' ), $slug );
-        $url = user_trailingslashit( $url );
-    } else {
-        $url = add_query_arg( array( 'page_id' => $main_page_id, 'layout' => 2 ), home_url('/') );
-    }
-
-    return $url;
-}
-
-
-/**
- * Returns a link that can be used to initiate the Ad Renewal process.
- *
- * @since 2.0.7
- */
-function awpcp_get_renew_ad_url($ad_id) {
-	$hash = awpcp_get_renew_ad_hash( $ad_id );
-	if ( get_awpcp_option( 'enable-user-panel' ) == 1 ) {
-		$url = awpcp_get_user_panel_url();
-		$url = add_query_arg( array( 'id' => $ad_id, 'action' => 'renew', 'awpcprah' => $hash ), $url );
-	} else {
-		$url = awpcp_get_page_url('renew-ad-page-name');
-		$url = add_query_arg( array( 'ad_id' => $ad_id, 'awpcprah' => $hash ), $url );
-	}
-
-	return $url;
 }
 
 /**
@@ -1384,29 +1258,6 @@ function awpcp_verify_renew_ad_hash( $ad_id, $hash ) {
 /**
  * @since 3.0.2
  */
-function awpcp_get_email_verification_url( $ad_id ) {
-	$hash = awpcp_get_email_verification_hash( $ad_id );
-
-    if ( get_option( 'permalink_structure' ) ) {
-        return home_url( "/awpcpx/listings/verify/{$ad_id}/$hash" );
-    } else {
-        $params = array(
-            'awpcpx' => true,
-            'module' => 'listings',
-            'action' => 'verify',
-            'awpcp-ad' => $ad_id,
-            'awpcp-hash' => $hash,
-        );
-
-        return add_query_arg( $params, home_url( 'index.php' ) );
-    }
-
-	return user_trailingslashit( $url );
-}
-
-/**
- * @since 3.0.2
- */
 function awpcp_get_email_verification_hash( $ad_id ) {
 	return wp_hash( sprintf( 'verify-%d', $ad_id ) );
 }
@@ -1416,132 +1267,6 @@ function awpcp_get_email_verification_hash( $ad_id ) {
  */
 function awpcp_verify_email_verification_hash( $ad_id, $hash ) {
 	return strcmp( awpcp_get_email_verification_hash( $ad_id ) , $hash ) === 0;
-}
-
-/**
- * Returns a link to the page where visitors can contact the Ad's owner
- *
- * @since  3.0.0
- */
-function awpcp_get_reply_to_ad_url($ad_id, $ad_title=null) {
-	$base_url = awpcp_get_page_url('reply-to-ad-page-name');
-	$permalinks = get_option('permalink_structure');
-	$url = false;
-
-	if (!is_null($ad_title)) {
-		$title = sanitize_title($ad_title);
-	} else {
-		$title = sanitize_title(AWPCP_Ad::find_by_id($ad_id)->ad_title);
-	}
-
-	if (get_awpcp_option('seofriendlyurls')) {
-		if (get_option('permalink_structure')) {
-			$url = sprintf("%s/%s/%s", $base_url, $ad_id, $title);
-			$url = user_trailingslashit($url);
-		}
-	}
-
-	if ($url === false) {
-		$base_url = user_trailingslashit($base_url);
-		$url = add_query_arg(array('i' => $ad_id), $base_url);
-	}
-
-	return $url;
-}
-
-/**
- * @since  3.0
- */
-function awpcp_get_admin_panel_url() {
-	return add_query_arg( 'page', 'awpcp.php', admin_url('admin.php'));
-}
-
-/**
- * @since 3.0.2
- */
-function awpcp_get_admin_settings_url( $group = false ) {
-	return add_query_arg( array( 'page' => 'awpcp-admin-settings', 'g' => $group ), admin_url( 'admin.php' ) );
-}
-
-/**
- * @since 3.2.1
- */
-function awpcp_get_admin_credit_plans_url() {
-	return add_query_arg( 'page', 'awpcp-admin-credit-plans', admin_url( 'admin.php' ) );
-}
-
-/**
- * @since 3.2.1
- */
-function awpcp_get_admin_fees_url() {
-	return add_query_arg( 'page', 'awpcp-admin-fees', admin_url( 'admin.php' ) );
-}
-
-/**
- * @since 3.0.2
- */
-function awpcp_get_admin_categories_url() {
-	return add_query_arg( 'page', 'awpcp-admin-categories', admin_url( 'admin.php' ) );
-}
-
-/**
- * @since  3.0
- */
-function awpcp_get_admin_upgrade_url() {
-	return add_query_arg( 'page', 'awpcp-admin-upgrade', admin_url('admin.php'));
-}
-
-/**
- * Returns a link to Manage Listings
- *
- * @since 2.1.4
- */
-function awpcp_get_admin_listings_url() {
-	return admin_url('admin.php?page=awpcp-listings');
-}
-
-/**
- * Returns a link to Ad Management (a.k.a User Panel).
- *
- * @since 2.0.7
- */
-function awpcp_get_user_panel_url( $params=array() ) {
-	return add_query_arg( $params, admin_url( 'admin.php?page=awpcp-panel' ) );
-}
-
-
-function awpcp_current_url() {
-	return (is_ssl() ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-}
-
-/**
- * Returns the domain used in the current request, optionally stripping
- * the www part of the domain.
- *
- * @since 2.0.6
- * @param $www 	boolean		true to include the 'www' part,
- *							false to attempt to strip it.
- */
-function awpcp_get_current_domain($www=true, $prefix='') {
-    _deprecated_function( __FUNCTION__, '3.2.3', 'awpcp_request()->domain( $include_www, $www_prefix_replacement )' );
-    return awpcp_request()->domain( $www, $prefix );
-}
-
-/**
- * Bulds WordPress ajax URL using the same domain used in the current request.
- *
- * @since 2.0.6
- */
-function awpcp_ajaxurl($overwrite=false) {
-	static $ajaxurl = false;
-
-	if ($overwrite || $ajaxurl === false) {
-		$url = admin_url('admin-ajax.php');
-		$parts = parse_url($url);
-		$ajaxurl = str_replace($parts['host'], awpcp_request()->domain(), $url);
-	}
-
-	return $ajaxurl;
 }
 
 /**
@@ -1587,6 +1312,42 @@ function awpcp_array_data($name, $default, $from=array()) {
 	return $default;
 }
 
+/**
+ * Taken and adapted from: http://stackoverflow.com/a/6795671/201354
+ */
+function awpcp_array_filter_recursive( $input, $callback = null ) {
+    foreach ( $input as &$value ) {
+        if ( is_array( $value ) ) {
+            $value = awpcp_array_filter_recursive( $value, $callback );
+        }
+    }
+
+    if ( is_callable( $callback ) ) {
+        return array_filter( $input, $callback );
+    } else {
+        return array_filter( $input );
+    }
+}
+
+/**
+ * Alternative to array_merge_recursive that keeps numeric keys.
+ *
+ * @since 3.4
+ */
+function awpcp_array_merge_recursive( $a, $b ) {
+    $merged = $a;
+
+    foreach ( $b as $key => $value ) {
+        if ( isset( $merged[ $key ] ) && is_array( $merged[$key] ) && is_array( $value ) ) {
+            $merged[ $key ] = awpcp_array_merge_recursive( $merged[ $key ], $value );
+        } else {
+            $merged[ $key ] = $value;
+        }
+    }
+
+    return $merged;
+}
+
 function awpcp_get_property($object, $property, $default='') {
     if (is_object($object) && (isset($object->$property) ||
     	array_key_exists($property, get_object_vars($object)))) {
@@ -1601,6 +1362,20 @@ function awpcp_get_properties($objects, $property, $default='') {
 		$results[] = awpcp_get_property($object, $property, $default);
 	}
 	return $results;
+}
+
+function awpcp_get_object_property_from_alternatives( $object, $alternatives, $default = '' ) {
+    foreach ( (array) $alternatives as $key ) {
+        $value = awpcp_get_property( $object, $key );
+
+        if ( strlen( $value ) == 0 ) {
+            continue;
+        }
+
+        return $value;
+    }
+
+    return $default;
 }
 
 /**
@@ -1714,50 +1489,97 @@ function awpcp_parse_bool($value) {
 	return $value ? true : false;
 }
 
+function awpcp_get_currency_code() {
+    $currency_code = get_awpcp_option( ''. 'currency-code' );
+
+    if ( function_exists( 'mb_strtoupper' ) ) {
+        return mb_strtoupper( $currency_code );
+    } else {
+        return strtoupper( $currency_code );
+    }
+}
+
 
 /**
  * XXX: Referenced in FAQ: http://awpcp.com/forum/faq/why-doesnt-my-currency-code-change-when-i-set-it/
  */
 function awpcp_get_currency_symbol() {
-	$dollar = array('CAD', 'AUD', 'NZD', 'SGD', 'HKD', 'USD');
-	$code = get_awpcp_option('displaycurrencycode');
+	$currency_symbols = awpcp_currency_symbols();
+	$currency_code = awpcp_get_currency_code();
 
-	if (in_array($code, $dollar)) {
-		$symbol = "$";
-	}
+    foreach (  $currency_symbols as $currency_symbol => $currency_codes ) {
+        if ( in_array( $currency_code, $currency_codes ) ) {
+            return $currency_symbol;
+        }
+    }
 
-	if (($code == 'JPY')) {
-		$symbol = "&yen;";
-	}
-
-	if (($code == 'EUR')) {
-		$symbol = "&euro;";
-	}
-
-	if (($code == 'GBP')) {
-		$symbol = "&pound;";
-	}
-
-	return empty($symbol) ? $code : $symbol;
+    return $currency_code;
 }
 
+/**
+ * @since 3.4
+ */
+function awpcp_currency_symbols() {
+    return array(
+        '$' => array( 'CAD', 'AUD', 'NZD', 'SGD', 'HKD', 'USD' ),
+        '&yen;' => array( 'JPY' ),
+        '&euro;' => array( 'EUR' ),
+        '&pound;' => array( 'GBP' ),
+    );
+}
 
 /**
  * @since 3.0
  */
-function awpcp_format_money($value, $include_symbol=true) {
-	$thousands_separator = get_awpcp_option('thousands-separator');
-	$decimal_separator = get_awpcp_option('decimal-separator');
-	$decimals = get_awpcp_option('show-decimals') ? 2 : 0;
-	$symbol = $include_symbol ? awpcp_get_currency_symbol() : '';
+function awpcp_format_money($value) {
+    if ( get_awpcp_option( 'show-currency-symbol' ) != 'do-not-show-currency-symbol' ) {
+        $show_currency_symbol = true;
+    } else {
+        $show_currency_symbol = false;
+    }
 
-	if ($value >= 0) {
-		$number = number_format($value, $decimals, $decimal_separator, $thousands_separator);
-		return sprintf('%s%s', $symbol, $number);
-	} else {
-		$number = number_format(- $value, $decimals, $decimal_separator, $thousands_separator);
-		return sprintf('(%s%s)', $symbol, $number);
-	}
+    return awpcp_get_formmatted_amount( $value, $show_currency_symbol );
+}
+
+function awpcp_format_money_without_currency_symbol( $value ) {
+    return awpcp_get_formmatted_amount( $value, false );
+}
+
+function awpcp_get_formmatted_amount( $value, $include_symbol ) {
+    $thousands_separator = get_awpcp_option('thousands-separator');
+    $decimal_separator = get_awpcp_option('decimal-separator');
+    $decimals = get_awpcp_option('show-decimals') ? 2 : 0;
+
+    $symbol_position = get_awpcp_option( 'show-currency-symbol' );
+    $symbol = $include_symbol ? awpcp_get_currency_symbol() : '';
+
+    if ( $include_symbol && $symbol_position == 'show-currency-symbol-on-left' ) {
+        $template = '<currenct-symbol><separator><amount>';
+    } else if ( $include_symbol && $symbol_position == 'show-currency-symbol-on-right' ) {
+        $template = '<amount><separator><currenct-symbol>';
+    } else {
+        $template = '<amount>';
+    }
+
+    if ( get_awpcp_option( 'include-space-between-currency-symbol-and-amount' ) ) {
+        $separator = '&nbsp;';
+    } else {
+        $separator = '';
+    }
+
+    if ($value >= 0) {
+        $number = number_format($value, $decimals, $decimal_separator, $thousands_separator);
+        $formatted = $template;
+    } else {
+        $number = number_format(- $value, $decimals, $decimal_separator, $thousands_separator);
+        $formatted = '(' . $template . ')';
+    }
+
+    $formatted = str_replace( '<currenct-symbol>', $symbol, $formatted );
+    $formatted = str_replace( '<amount>', $number, $formatted );
+    $formatted = str_replace( '<separator>', $separator, $formatted );
+
+    return $formatted;
 }
 
 /**
@@ -1824,7 +1646,7 @@ function awpcp_clear_flash_messages() {
 	return true;
 }
 
-function awpcp_flash($message, $class='updated') {
+function awpcp_flash( $message, $class = array( 'awpcp-updated', 'updated') ) {
 	$messages = awpcp_get_flash_messages();
 	$messages[] = array('message' => $message, 'class' => (array) $class);
 	awpcp_update_flash_messages($messages);
@@ -1859,7 +1681,7 @@ function awpcp_print_form_errors( $errors ) {
     }
 }
 
-function awpcp_print_message($message, $class=array('updated')) {
+function awpcp_print_message( $message, $class = array( 'awpcp-updated', 'updated' ) ) {
 	$class = array_merge(array('awpcp-message'), $class);
 	return '<div class="' . join(' ', $class) . '"><p>' . $message . '</p></div>';
 }
@@ -1934,7 +1756,7 @@ function awpcp_uploaded_file_error($file) {
 }
 
 function awpcp_get_file_extension( $filename ) {
-	return awpcp_utf8_pathinfo( $filename, PATHINFO_EXTENSION );
+	return strtolower( awpcp_utf8_pathinfo( $filename, PATHINFO_EXTENSION ) );
 }
 
 /**
@@ -1977,13 +1799,30 @@ function awpcp_table_exists($table) {
 }
 
 /**
+ * TODO: move memoization to where the information is needed. Having it here is the perfect
+ *          scenarion for hard to track bugs.
  * @since  2.1.4
  */
 function awpcp_column_exists($table, $column) {
+    static $column_exists = array();
+
+    if ( ! isset( $column_exists[ "$table-$column" ] ) ) {
+        $column_exists[ "$table-$column" ] = awpcp_check_if_column_exists( $table, $column );
+    }
+
+    return $column_exists[ "$table-$column" ];
+}
+
+/**
+ * @since 3.4
+ */
+function awpcp_check_if_column_exists( $table, $column ) {
     global $wpdb;
+
     $suppress_errors = $wpdb->suppress_errors();
     $result = $wpdb->query("SELECT `$column` FROM $table");
     $wpdb->suppress_errors( $suppress_errors );
+
     return $result !== false;
 }
 
@@ -1994,20 +1833,34 @@ function awpcp_column_exists($table, $column) {
 /**
  * Extracted from class-phpmailer.php (PHPMailer::EncodeHeader).
  *
+ * XXX: This may be necessary only for email addresses used in the Reply-To header.
+ *
  * @since 3.0.2
  */
 function awpcp_encode_address_name($str) {
-	if ( !preg_match('/[\200-\377]/', $str ) ) {
-		// Can't use addslashes as we don't know what value has magic_quotes_sybase
-		$encoded = addcslashes( $str, "\0..\37\177\\\"" );
-		if ( ( $str == $encoded) && !preg_match( '/[^A-Za-z0-9!#$%&\'*+\/=?^_`{|}~ -]/', $str ) ) {
-			return $encoded;
-		} else {
-			return "\"$encoded\"";
-		}
-	}
+    return awpcp_phpmailer()->encodeHeader( $str, 'phrase' );
+}
 
-	return $str;
+/**
+ * Returns or creates an instance of PHPMailer.
+ *
+ * Extracted from wp_mail()'s code.
+ *
+ * @since 3.4
+ */
+function awpcp_phpmailer() {
+    global $phpmailer;
+
+    // (Re)create it, if it's gone missing
+    if ( !is_object( $phpmailer ) || !is_a( $phpmailer, 'PHPMailer' ) ) {
+        require_once ABSPATH . WPINC . '/class-phpmailer.php';
+        require_once ABSPATH . WPINC . '/class-smtp.php';
+        $phpmailer = new PHPMailer( true );
+    }
+
+    $phpmailer->CharSet = apply_filters( 'wp_mail_charset', get_bloginfo( 'charset' ) );
+
+    return $phpmailer;
 }
 
 /**
@@ -2070,6 +1923,21 @@ function awpcp_admin_email_to() {
 	return awpcp_format_email_address( awpcp_admin_recipient_email_address(), awpcp_get_blog_name() );
 }
 
+function awpcp_moderators_email_to() {
+    $users = get_users( array( 'role' => 'awpcp-moderator' ) );
+    $email_addresses = array();
+
+    foreach ( $users as $user ) {
+        $properties = array( 'display_name', 'user_login', 'username' );
+        $user_name = awpcp_get_object_property_from_alternatives( $user->data, $properties );
+        $user_email = $user->data->user_email;
+
+        $email_addresses[] = awpcp_format_email_address( $user_email, $user_name );
+    }
+
+    return $email_addresses;
+}
+
 /**
  * @since  2.1.4
  */
@@ -2111,24 +1979,24 @@ function awpcp_ad_updated_email( $ad, $message ) {
 function awpcp_ad_awaiting_approval_email($ad, $ad_approve, $images_approve) {
 	// admin email
 	$params = array( 'page' => 'awpcp-listings',  'action' => 'manage-images', 'id' => $ad->ad_id );
-    $manage_images_url = add_query_arg( $params, admin_url( 'admin.php' ) );
+    $manage_images_url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
 
 	if ( false == $ad_approve && $images_approve ) {
 		$subject = __( 'Images on Ad "%s" are awaiting approval', 'AWPCP' );
 
-		$message = __( 'Images on Ad "%s" are awaiting approval. You can approve the images going to the Manage Images sections for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP');
+		$message = __( 'Images on Ad "%s" are awaiting approval. You can approve the images going to the Manage Images section for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP');
 		$messages = array( sprintf( $message, $ad->get_title(), $manage_images_url ) );
 	} else {
 		$subject = __( 'The Ad "%s" is awaiting approval', 'AWPCP' );
 
 		$message = __('The Ad "%s" is awaiting approval. You can approve the Ad going to the Manage Listings section and clicking the "Enable" action shown on top. Click here to continue: %s.', 'AWPCP');
 		$params = array('page' => 'awpcp-listings',  'action' => 'view', 'id' => $ad->ad_id);
-	    $url = add_query_arg( $params, admin_url( 'admin.php' ) );
+	    $url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
 
 	    $messages[] = sprintf( $message, $ad->get_title(), $url );
 
 	    if ( $images_approve ) {
-		    $message = __( 'Additionally, You can approve the images going to the Manage Images sections for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP' );
+		    $message = __( 'Additionally, You can approve the images going to the Manage Images section for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP' );
 		    $messages[] = sprintf( $message, $manage_images_url );
 		}
 	}
@@ -2178,17 +2046,26 @@ function awpcp_maybe_add_thickbox() {
  * @since 3.2.1
  */
 function awpcp_load_plugin_textdomain( $__file__, $text_domain ) {
-	$basename = dirname( plugin_basename( $__file__ ) );
+    $basename = dirname( plugin_basename( $__file__ ) );
+    $locale = apply_filters( 'plugin_locale', get_locale(), $text_domain );
 
-	if ( load_plugin_textdomain( $text_domain, false, $basename . '/languages/' ) ) {
-		return true;
-	}
+    // Load user translation first.
+    $mofile = trailingslashit( WP_LANG_DIR ) . $basename . '/' . $text_domain . '-' . $locale . '.mo';
+    load_textdomain( $text_domain, $mofile );
 
-	// main l10n MO file can be in the top level directory or inside the
-	// languages directory. A file inside the languages directory is prefered.
-	if ( $text_domain == 'AWPCP' ) {
-		return load_plugin_textdomain( $text_domain, false, $basename );
-	}
+    // Load translation included in plugin's languages directory. Stop if the file is loaded.
+    $mofile = trailingslashit( WP_PLUGIN_DIR ) . $basename . '/languages/' . $text_domain . '-' . $locale . '.mo';
+    if ( load_textdomain( $text_domain, $mofile ) ) {
+        return true;
+    }
+
+    // Try loading the translations from the plugin's root directory. WordPress will also
+    // look for a file in wp-content/languages/plugins/$domain-$locale.mo.
+    if ( load_plugin_textdomain( $text_domain, false, $basename ) ) {
+        return true;
+    }
+
+    return false;
 }
 
 function awpcp_utf8_strlen( $string ) {
@@ -2261,9 +2138,61 @@ function awpcp_utf8_basename( $path, $suffix = null ) {
 }
 
 /**
+ * @param string    $path           Path to the file whose unique filename needs to be generated.
+ * @param string    $filename       Target filename. The unique filename will be as similar as
+ *                                  possible to this name.
+ * @param array     $directories    The generated name must be unique in all directories in this array.
+ * @since 3.4
+ */
+function awpcp_unique_filename( $path, $filename, $directories ) {
+    $pathinfo = awpcp_utf8_pathinfo( $filename );
+
+    $name = $pathinfo['filename'];
+    $extension = $pathinfo['extension'];
+    $file_size = filesize( $path );
+    $timestamp = microtime();
+    $salt = wp_salt();
+    $counter = 0;
+
+    do {
+        $hash = hash( 'crc32b', "$name-$extension-$file_size-$timestamp-$salt-$counter" );
+        $new_filename = "$name-$hash.$extension";
+        $counter = $counter + 1;
+    } while ( awpcp_is_filename_already_used( $new_filename, $directories ) );
+
+    return $new_filename;
+}
+
+/**
+ * @since 3.4
+ */
+function awpcp_is_filename_already_used( $filename, $directories ) {
+    foreach ( $directories as $directory ) {
+        if ( file_exists( "$directory/$filename" ) ) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
  * @since 3.3
  */
 function awpcp_register_activation_hook( $__FILE__, $callback ) {
     $file = WP_CONTENT_DIR . '/plugins/' . basename( dirname( $__FILE__ ) ) . '/' . basename( $__FILE__ );
     register_activation_hook( $file, $callback );
+}
+
+function awpcp_register_deactivation_hook( $__FILE__, $callback ) {
+    $file = WP_CONTENT_DIR . '/plugins/' . basename( dirname( $__FILE__ ) ) . '/' . basename( $__FILE__ );
+    register_deactivation_hook( $file, $callback );
+}
+
+/**
+ * @since 3.4
+ */
+function awpcp_are_images_allowed() {
+    $allowed_image_extensions = array_filter( awpcp_get_option( 'allowed-image-extensions', array() ) );
+    return count( $allowed_image_extensions ) > 0;
 }

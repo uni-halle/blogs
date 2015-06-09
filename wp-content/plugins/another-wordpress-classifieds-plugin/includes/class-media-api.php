@@ -48,7 +48,7 @@ class AWPCP_MediaAPI {
         $image_mime_types = awpcp_get_image_mime_types();
 
         if ( is_null( $status ) ) {
-            if ( ! awpcp_current_user_is_admin() && in_array( $mime_type, $image_mime_types ) && get_awpcp_option( 'imagesapprove' ) ) {
+            if ( ! awpcp_current_user_is_moderator() && in_array( $mime_type, $image_mime_types ) && get_awpcp_option( 'imagesapprove' ) ) {
                 $status = AWPCP_Media::STATUS_AWAITING_APPROVAL;
             } else {
                 $status = AWPCP_Media::STATUS_APPROVED;
@@ -104,15 +104,22 @@ class AWPCP_MediaAPI {
     public function delete( $media ) {
         global $wpdb;
 
-        $info = awpcp_utf8_pathinfo( AWPCPUPLOADDIR . $media->name );
-        $filename = preg_replace( "/\.{$info['extension']}/", '', $info['basename'] );
+        $query = 'DELETE FROM ' . AWPCP_TABLE_MEDIA . ' WHERE id = %d';
+        $result = $wpdb->query( $wpdb->prepare( $query, $media->id ) );
 
-        $filenames = array(
+        if ( $result === false ) {
+            return false;
+        }
+
+        $info = awpcp_utf8_pathinfo( AWPCPUPLOADDIR . $media->name );
+
+        $filenames = apply_filters( 'awpcp-file-associated-paths', array(
+            AWPCPUPLOADDIR . "{$media->path}",
             AWPCPUPLOADDIR . "{$info['basename']}",
-            AWPCPUPLOADDIR . "{$filename}-large.{$info['extension']}",
+            AWPCPUPLOADDIR . "{$info['filename']}-large.{$info['extension']}",
             AWPCPTHUMBSUPLOADDIR . "{$info['basename']}",
-            AWPCPTHUMBSUPLOADDIR . "{$filename}-primary.{$info['extension']}",
-        );
+            AWPCPTHUMBSUPLOADDIR . "{$info['filename']}-primary.{$info['extension']}",
+        ), $media );
 
         foreach ( $filenames as $filename ) {
             if ( file_exists( $filename ) ) {
@@ -120,10 +127,7 @@ class AWPCP_MediaAPI {
             }
         }
 
-        $query = 'DELETE FROM ' . AWPCP_TABLE_MEDIA . ' WHERE id = %d';
-        $result = $wpdb->query( $wpdb->prepare( $query, $media->id ) );
-
-        return $result === false ? false : true;
+        return true;
     }
 
     public function enable( $media ) {
@@ -152,19 +156,26 @@ class AWPCP_MediaAPI {
         return $this->save( $media );
     }
 
-    public function set_ad_primary_image( $ad, $media ) {
+    public function set_media_as_primary( $listing, $media, $mime_types ) {
         global $wpdb;
 
-        $query = 'UPDATE ' . AWPCP_TABLE_MEDIA . ' SET is_primary = 0 WHERE ad_id = %d';
+        $mime_types_list = "'" . implode( "', '", $mime_types ) . "'";
 
-        if ( $wpdb->query( $wpdb->prepare( $query, $ad->ad_id ) ) === false ) {
+        $query = 'UPDATE ' . AWPCP_TABLE_MEDIA . ' SET is_primary = 0 ';
+        $query.= "WHERE ad_id = %d AND mime_type IN (" . $mime_types_list . ")";
+
+        if ( $wpdb->query( $wpdb->prepare( $query, $listing->ad_id ) ) === false ) {
             return false;
         }
 
         $query = 'UPDATE ' . AWPCP_TABLE_MEDIA . ' SET is_primary = 1 WHERE ad_id = %d AND id = %d';
-        $query = $wpdb->prepare( $query, $ad->ad_id, $media->id );
+        $query = $wpdb->prepare( $query, $listing->ad_id, $media->id );
 
         return $wpdb->query( $query ) !== false;
+    }
+
+    public function set_ad_primary_image( $ad, $media ) {
+        return $this->set_media_as_primary( $ad, $media, awpcp_get_image_mime_types() );
     }
 
     public function get_ad_primary_image( $ad ) {
@@ -257,7 +268,7 @@ class AWPCP_MediaAPI {
 
 
         if ( $fields == 'COUNT(*)' ) {
-            return $wpdb->get_var( $query );
+            return intval( $wpdb->get_var( $query ) );
         } else {
             $media = array();
             foreach ( $wpdb->get_results( $query ) as $item ) {

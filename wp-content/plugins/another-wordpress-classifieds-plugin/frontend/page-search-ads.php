@@ -12,8 +12,6 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
 
     public function __construct($page='awpcp-search-ads', $title=null) {
         parent::__construct($page, is_null($title) ? __('Search Ads', 'AWPCP') : $title);
-
-        add_filter('awpcp-display-ads-before-list', array($this, 'show_return_link'));
     }
 
     public function get_current_action($default='searchads') {
@@ -22,17 +20,11 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
 
     public function url($params=array()) {
         $page_url = awpcp_get_page_url( 'search-ads-page-name', true );
-        return add_query_arg( $params, $page_url );
-    }
-
-    public function show_return_link($content) {
-        if (isset($this->return_link) && !empty($this->return_link)) {
-            return $content . $this->return_link;
-        }
-        return $content;
+        return add_query_arg( urlencode_deep( $params ), $page_url );
     }
 
     public function dispatch() {
+        wp_enqueue_style('awpcp-jquery-ui');
         wp_enqueue_script('awpcp-page-search-listings');
         wp_enqueue_script('awpcp-extra-fields');
 
@@ -107,7 +99,9 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
         $ui['allow-user-to-search-in-multiple-regions'] = get_awpcp_option('allow-user-to-search-in-multiple-regions');
 
         $messages = $this->messages;
-        $hidden = array('a' => 'dosearch');
+
+        $url_params = wp_parse_args( parse_url( awpcp_current_url(), PHP_URL_QUERY ) );
+        $hidden = awpcp_flatten_array( array_merge( $url_params, array( 'a' => 'dosearch' ) ) );
 
         $page = $this;
         $template = AWPCP_DIR . '/frontend/templates/page-search-ads.tpl.php';
@@ -134,52 +128,37 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     }
 
     private function search_listings( $form ) {
-        global $wpdb, $hasextrafieldsmodule;
+        $query = array_merge( $form, array(
+            'keyword' => $form['query'],
+            'category_id' => $form['category'],
+            'contact_name' => $form['name'],
+            'min_price' => $form['min_price'],
+            'max_price' => $form['max_price'],
+            'regions' => $form['regions'],
+            'disabled' => false,
+            'limit' => absint( awpcp_request_param( 'results', get_awpcp_option( 'adresultsperpage', 10 ) ) ),
+            'offset' => absint( awpcp_request_param( 'offset', 0 ) ),
+            'orderby' => get_awpcp_option( 'search-results-order' ),
+        ) );
 
-        // build a link to hold all query parameters
+        return awpcp_display_listings( $query, 'search', array(
+            'show_intro_message' => true,
+            'show_menu_items' => true,
+            'show_category_selector' => false,
+            'show_pagination' => true,
+
+            'before_list' => $this->build_return_link(),
+        ) );
+    }
+
+    public function build_return_link() {
         $params = array_merge(stripslashes_deep($_REQUEST), array('a' => 'searchads'));
         $href = add_query_arg(urlencode_deep($params), awpcp_current_url());
-        $this->return_link = '<div class="awpcp-return-to-search-link"><a href="' . esc_attr($href) . '">' . __('Return to Search', 'AWPCP') . '</a></div>';
 
-        $conditions = array('disabled = 0');
+        $return_link = '<div class="awpcp-return-to-search-link awpcp-clearboth"><a href="<link-url>"><link-text></a></div>';
+        $return_link = str_replace( '<link-url>', esc_url( $href ), $return_link );
+        $return_link = str_replace( '<link-text>', __( 'Return to Search', 'AWPCP' ), $return_link );
 
-        if (!empty($form['query'])) {
-            // If user has extra fields module, we'll set this condition later inside the module logic.
-            if (!$hasextrafieldsmodule) {
-                $conditions[] = $wpdb->prepare( "( ad_title LIKE '%%%s%%' OR ad_details LIKE '%%%s%%' )", $form['query'], $form['query'] );
-            }
-        }
-
-        if (!empty($form['name'])) {
-            $conditions[] = $wpdb->prepare('ad_contact_name = %s', $form['name']);
-        }
-
-        if (!empty($form['category'])) {
-            $sql = '(ad_category_id = %1$d OR ad_category_parent_id = %1$d)';
-            $conditions[] = $wpdb->prepare($sql, $form['category']);
-        }
-
-        if ( strlen( $form['min_price'] ) > 0 ) {
-            $price = $form['min_price'] * 100;
-            $conditions[] = $wpdb->prepare('ad_item_price >= %d', $price);
-        }
-
-        if ( strlen( $form[ 'max_price' ] ) > 0 ) {
-            $price = $form['max_price'] * 100;
-            $conditions[] = $wpdb->prepare('ad_item_price <= %d', $price);
-        }
-
-        $conditions = array_merge( $conditions, awpcp_regions_search_conditions( $form[ 'regions' ] ) );
-        $where = join(' AND ', $conditions);
-
-        // Is the extra fields module present with the required search builder function?
-        // If so call the "where clause" builder function
-        if ($hasextrafieldsmodule == 1 && function_exists('build_extra_fields_search_where')) {
-            $where .= build_extra_fields_search_where();
-        }
-
-        $order = get_awpcp_option( 'search-results-order' );
-
-        return awpcp_display_ads( $where, '', '', $order, 'search' );
+        return $return_link;
     }
 }

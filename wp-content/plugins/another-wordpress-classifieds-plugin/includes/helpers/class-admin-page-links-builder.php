@@ -5,7 +5,7 @@ function awpcp_admin_page_links_builder() {
 }
 
 /**
- * @since next-release
+ * @since 3.3.2
  */
 class AWPCP_AdminPageLinksBuilder {
 
