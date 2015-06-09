@@ -3,3 +3,4 @@ wp-content/aam
 wp-content/Cimy_Header_Images
 wp-config.php
 cache
+debug_log.txt
