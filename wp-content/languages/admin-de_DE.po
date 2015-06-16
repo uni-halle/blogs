@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-06-08 18:20:33+0000\n"
+"PO-Revision-Date: 2015-06-10 12:07:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1643,7 +1643,7 @@ msgstr "Willkommen bei WordPress&nbsp;%s"
 
 #: wp-admin/themes.php:65
 msgid "If you would like to see more themes to choose from, click on the &#8220;Add New&#8221; button and you will be able to browse or search for additional themes from the <a href=\"%s\" target=\"_blank\">WordPress.org Theme Directory</a>. Themes in the WordPress.org Theme Directory are designed and developed by third parties, and are compatible with the license WordPress uses. Oh, and they&#8217;re free!"
-msgstr "Klicke auf die Schaltfläche &#8221;Hinzufügen&h8220;, wenn Du auf der Suche nach weiteren Gestaltungsvorlagen bist und entweder das <a href=\"%s\" target=\"_blank\">Wordpress Theme-Verzeichnis</a> durchstöbern oder gezielt nach Themes suchen möchtest. Die Gestaltungsvorlagen im WordPress.org Theme-Verzeichnis wurden von Drittanbietern gestaltet und entwickelt und sind mit der Lizenz, die WordPress nutzt, kompatibel. Ach ja, sie sind auch noch kostenlos!"
+msgstr "Klicke auf die Schaltfläche &#8222;Hinzufügen&h8220;, wenn Du auf der Suche nach weiteren Gestaltungsvorlagen bist und entweder das <a href=\"%s\" target=\"_blank\">WordPress Theme-Verzeichnis</a> durchstöbern oder gezielt nach Themes suchen möchtest. Die Gestaltungsvorlagen im WordPress.org Theme-Verzeichnis wurden von Drittanbietern gestaltet und entwickelt und sind mit der Lizenz, die WordPress nutzt, kompatibel. Ach ja, sie sind auch noch kostenlos!"
 
 #: wp-admin/includes/theme.php:211
 msgid "Fixed Layout"
@@ -2827,7 +2827,7 @@ msgstr "%s bearbeitet zeitgleich"
 
 #: wp-admin/edit-form-advanced.php:350
 msgid "You can upload and insert media (images, audio, documents, etc.) by clicking the Add Media button. You can select from the images and files already uploaded to the Media Library, or upload new media to add to your page or post. To create an image gallery, select the images to add and click the &#8220;Create a new gallery&#8221; button."
-msgstr "Du kannst Mediendateien (Bilder, Audio, Dokumente, etc.) hochladen und einfügen, indem du den Medien hinzufügen-Button klickst. Du kannst Bilder aus der Mediathek wählen, in der bereits hochgeladene Bilder abgelegt wurden, oder neue Medien hochladen. Um eine Bildergalerie zu erstellen, wählst du die Bilder aus, die erscheinen sollen und klickst auf &#8220;Neue Galerie erstellen&#8221;"
+msgstr "Du kannst Mediendateien (Bilder, Audio, Dokumente, etc.) hochladen und einfügen, indem du den Medien hinzufügen-Button klickst. Du kannst Bilder aus der Mediathek wählen, in der bereits hochgeladene Bilder abgelegt wurden, oder neue Medien hochladen. Um eine Bildergalerie zu erstellen, wählst du die Bilder aus, die erscheinen sollen und klickst auf &#8222;Neue Galerie erstellen&#8220;"
 
 #: wp-admin/includes/image-edit.php:165
 msgid "Image rotation is not supported by your web host."
@@ -3242,7 +3242,7 @@ msgstr "Schlagworte können selektiv mithilfe des <a href=\"%s\">Kategorie und S
 
 #: wp-admin/custom-header.php:106
 msgid "You can set a custom image header for your site. Simply upload the image and crop it, and the new header will go live immediately. Alternatively, you can use an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button."
-msgstr "Du kannst ein benutzerdefiniertes Bild für deine Seite definieren. Lade einfach ein Bild hoch und schneide es zu. Das neue Header-Bild wird sofort übernommen. Alternativ kannst du ein Bild, dass schon in der Mediathek abgelegt wurde, durch Klick auf den Button: &#8220;Bild wählen&#8221; auswählen."
+msgstr "Du kannst ein benutzerdefiniertes Bild für deine Seite definieren. Lade einfach ein Bild hoch und schneide es zu. Das neue Header-Bild wird sofort übernommen. Alternativ kannst du ein Bild, dass schon in der Mediathek abgelegt wurde, durch Klick auf den Button: &#8222;Bild wählen&#8220; auswählen."
 
 #: wp-admin/custom-header.php:781
 msgid "Skip Cropping, Publish Image as Is"
@@ -3260,7 +3260,7 @@ msgstr "Einklappen"
 
 #: wp-admin/custom-header.php:109
 msgid "If you don&#8217;t want a header image to be displayed on your site at all, click the &#8220;Remove Header Image&#8221; button at the bottom of the Header Image section of this page. If you want to re-enable the header image later, you just have to select one of the other image options and click &#8220;Save Changes&#8221;."
-msgstr "Wenn du nicht möchtest, dass das Header-Bild auf deiner Seite angezeigt wird, klicke &#8220;Bild entfernen&#8221; unterhalb der Bildauswahl auf dieser Seite. Falls du es wieder aktivieren möchtest, brauchst du lediglich eins der Bilder auszuwählen und die Änderungen speichern."
+msgstr "Wenn du nicht möchtest, dass das Header-Bild auf deiner Seite angezeigt wird, klicke &#8222;Bild entfernen&#8220; unterhalb der Bildauswahl auf dieser Seite. Falls du es wieder aktivieren möchtest, brauchst du lediglich eins der Bilder auszuwählen und die Änderungen speichern."
 
 #: wp-admin/media.php:62
 msgid "You attempted to edit an item that isn&#8217;t an attachment. Please go back and try again."
@@ -3311,10 +3311,6 @@ msgstr "Wenn du auf den Link des Kategorie- und Schlagwort-Konverters klickst, w
 msgid "Categories have hierarchy, meaning that you can nest sub-categories. Tags do not have hierarchy and cannot be nested. Sometimes people start out using one on their posts, then later realize that the other would work better for their content."
 msgstr "Kategorien sind hierarchisch, das bedeutet, du kannst Unterkategorien anlegen. Schlagwörter sind nicht hierarchisch und können nicht untergeordnet werden. "
 
-#: wp-admin/custom-header.php:107
-msgid "Some themes come with additional header images bundled. If you see multiple images displayed, select the one you&#8217;d like and click the &#8220;Save Changes&#8221; button."
-msgstr "Manche Themes bringen mehrere verschiedene Bilder mit, aus denen du wählen kannst. Klicke anschließend auf die Schaltfläche \"Speichern\", um ein gewähltes Bild zu übernehmen."
-
 #: wp-admin/custom-header.php:98
 msgid "This screen is used to customize the header section of your theme."
 msgstr "Dieser Bildschirm wird verwendet, um den Header des Themes anpassen."
@@ -3323,13 +3319,17 @@ msgstr "Dieser Bildschirm wird verwendet, um den Header des Themes anpassen."
 msgid "You can choose from the theme&#8217;s default header images, or use one of your own. You can also customize how your Site Title and Tagline are displayed."
 msgstr "Du kannst aus den Standard-Header-Bildern wählen oder ein Eigenes nutzen. Du kannst auch definieren, wie der Webseitentitel und die Webseitenbeschreibung dargestellt werden sollen."
 
-#: wp-admin/custom-header.php:108
-msgid "If your theme has more than one default header image, or you have uploaded more than one custom header image, you have the option of having WordPress display a randomly different image on each page of your site. Click the &#8220;Random&#8221; radio button next to the Uploaded Images or Default Images section to enable this feature."
-msgstr "Sollte dein Theme mehr als ein Standard-Header-Bild haben oder du mehr als ein benutzerdefiniertes Bild hochgeladen hast, dann kann WordPress diese in zufälliger Reihenfolge darstellen. Klicke dazu den Radiobutton \"zufällig\"."
-
 #: wp-admin/custom-header.php:116
 msgid "For most themes, the header text is your Site Title and Tagline, as defined in the <a href=\"%1$s\">General Settings</a> section."
 msgstr "In den meisten Themes ist der Header-Text gleichzeitig dein Webseitentitel und die Beschreibung, wie in den <a href=\"%1$s\">Allgemeinen Einstellungen</a> definiert."
+
+#: wp-admin/custom-header.php:108
+msgid "If your theme has more than one default header image, or you have uploaded more than one custom header image, you have the option of having WordPress display a randomly different image on each page of your site. Click the &#8220;Random&#8221; radio button next to the Uploaded Images or Default Images section to enable this feature."
+msgstr "Sollte dein Theme mehr als ein Standard-Header-Bild haben oder du mehr als ein benutzerdefiniertes Bild hochgeladen hast, dann kann WordPress diese in zufälliger Reihenfolge darstellen. Klicke dazu den Radiobutton &#8222;zufällig&#8220;."
+
+#: wp-admin/custom-header.php:107
+msgid "Some themes come with additional header images bundled. If you see multiple images displayed, select the one you&#8217;d like and click the &#8220;Save Changes&#8221; button."
+msgstr "Manche Themes bringen mehrere verschiedene Bilder mit, aus denen du wählen kannst. Klicke anschließend auf die Schaltfläche &#8222;Speichern&#8220;, um ein gewähltes Bild zu übernehmen."
 
 #: wp-admin/install.php:183
 msgid "Configuration Error"
@@ -3843,10 +3843,6 @@ msgstr "Theme"
 msgid "If you reached this screen by accident and meant to visit one of your own sites, here are some shortcuts to help you find your way."
 msgstr "Falls du diese Ansicht aus Versehen aufgerufen hast und eigentlich eine deiner eigenen Seiten besuchen wolltest, hier ein paar hoffentlich hilfreiche Links."
 
-#: wp-admin/includes/class-wp-ms-themes-list-table.php:411
-msgid "Visit theme homepage"
-msgstr "Theme Webseite besuchen"
-
 #: wp-admin/includes/ms.php:692
 msgid "American English"
 msgstr "Amerikanisches Englisch"
@@ -3871,6 +3867,10 @@ msgstr "Du hast versucht auf das \"%1$s\" Dashboard zuzugreifen, hast aber nicht
 #: wp-admin/includes/ms.php:696
 msgid "British English"
 msgstr "Britisches Englisch"
+
+#: wp-admin/includes/class-wp-ms-themes-list-table.php:411
+msgid "Visit theme homepage"
+msgstr "Theme Website besuchen"
 
 #: wp-admin/my-sites.php:94
 msgid "Global Settings"
@@ -4059,7 +4059,7 @@ msgstr "Neue Benutzer erhalten eine E-Mail, um sie wissen zu lassen das sie als 
 
 #: wp-admin/plugins.php:411
 msgid "The plugin generated %d characters of <strong>unexpected output</strong> during activation. If you notice &#8220;headers already sent&#8221; messages, problems with syndication feeds or other issues, try deactivating or removing this plugin."
-msgstr "Das Plugin verursachte eine Fehlermeldung %d Zeichen <strong>unerwartete Ausgabe</strong> während der Aktivierung. Sollte du Fehlermeldungen wie &#8220;headers already sent&#8221;, Probleme mit der Syndizierung der Feeds oder andere Fehler erhalten, versuche das Plugin zu deaktivieren oder zu löschen."
+msgstr "Das Plugin verursachte eine Fehlermeldung %d Zeichen <strong>unerwartete Ausgabe</strong> während der Aktivierung. Sollte du Fehlermeldungen wie &#8222;headers already sent&#8220;, Probleme mit der Syndizierung der Feeds oder andere Fehler erhalten, versuche das Plugin zu deaktivieren oder zu löschen."
 
 #: wp-admin/includes/theme.php:162
 msgid "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update."
@@ -4321,10 +4321,6 @@ msgstr "Beim Massenbearbeiten von Beiträgen kannst du für mehrere Beiträge au
 msgid "Adding Themes"
 msgstr "Themes hinzufügen"
 
-#: wp-admin/options-permalink.php:29
-msgid "Many people choose to use &#8220;pretty permalinks,&#8221; URLs that contain useful information such as the post title rather than generic post ID numbers. You can choose from any of the permalink formats under Common Settings, or can craft your own if you select Custom Structure."
-msgstr "Viele Leute benutzen \"sprechende Permalinks\". Dies sind Internetadressen (URLs) welche bereits einige Informationen zum Inhalt geben, welcher über diese Adresse erreichbar ist. Du kannst aus Vorlagen wählen oder eine eigene Permalink-Struktur festlegen."
-
 #: wp-admin/options-permalink.php:28 wp-admin/options-permalink.php:200
 msgid "Common Settings"
 msgstr "Gebräuchliche Einstellungen"
@@ -4336,6 +4332,10 @@ msgstr "Individuelle Strukturen"
 #: wp-admin/options-permalink.php:21
 msgid "Permalinks are the permanent URLs to your individual pages and blog posts, as well as your category and tag archives. A permalink is the web address used to link to your content. The URL to each post should be permanent, and never change &#8212; hence the name permalink."
 msgstr "Permalinks sind dauerhafte Adressen für einzelne Beiträge, Seiten, Kategorien usw.. Ein Permalink ist die Webadresse, die zu Deinem Inhalt verlinkt. Sie sollten eindeutig sein und sich niemals ändern. Sonst wären es keine Permalinks."
+
+#: wp-admin/options-permalink.php:29
+msgid "Many people choose to use &#8220;pretty permalinks,&#8221; URLs that contain useful information such as the post title rather than generic post ID numbers. You can choose from any of the permalink formats under Common Settings, or can craft your own if you select Custom Structure."
+msgstr "Viele Leute benutzen &#8222;sprechende Permalinks&#8220;. Dies sind Internetadressen (URLs) welche bereits einige Informationen zum Inhalt geben, welcher über diese Adresse erreichbar ist. Du kannst aus Vorlagen wählen oder eine eigene Permalink-Struktur festlegen."
 
 #: wp-admin/options-media.php:21
 msgid "Uploading Files allows you to choose the folder and path for storing your uploaded files."
@@ -4454,7 +4454,7 @@ msgstr "Falls eine Datei in keinem Beitrag oder Seite verwendet wird, so wird di
 
 #: wp-admin/edit.php:220
 msgid "Pages are similar to posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest pages under other pages by making one the &#8220;Parent&#8221; of the other, creating a group of pages."
-msgstr "Seiten sind Beiträgen recht ähnlich. Sie haben einen Titel, Inhalt und weitere Metadaten. Sie erscheinen jedoch nicht im chronologischen Ablauf der Beiträge und können auch nicht mit Kategorien und Schlagwörtern verknüpft werden. Dafür können Seiten hierarchisch angeordnet beziehungsweise verschachtelt werden, in dem einer Seite Eltern verpasst werden, also eine andere Seite als übergeordnete Seite festgelegt wird."
+msgstr "Seiten sind Beiträgen recht ähnlich. Sie haben einen Titel, Inhalt und weitere Metadaten. Sie erscheinen jedoch nicht im chronologischen Ablauf der Beiträge und können auch nicht mit Kategorien und Schlagwörtern verknüpft werden. Dafür können Seiten hierarchisch angeordnet beziehungsweise verschachtelt werden, in dem einer Seite &#8222;Eltern&#8220; verpasst werden, also eine andere Seite als übergeordnete Seite festgelegt wird."
 
 #: wp-admin/link-manager.php:48
 msgid "Links may be separated into Link Categories; these are different than the categories used on your posts."
@@ -4653,13 +4653,13 @@ msgstr "<a href=\"%1$s\" class=\"update-browser-link\">Aktualisiere %2$s</a> ode
 msgid "Scale images to match the large size selected in %1$simage options%2$s (%3$d &times; %4$d)."
 msgstr "Bilder skalieren, um die Maximale Bildgröße aus %1$sBildoptionen%2$s (%3$d &times; %4$d) zu erfüllen."
 
-#: wp-admin/includes/media.php:2013
-msgid "Insert media from another website"
-msgstr "Medien von einer anderen Webseite einfügen"
-
 #: wp-admin/includes/media.php:2486
 msgid "Audio, Video, or Other File"
 msgstr "Audio, Video oder eine andere Datei"
+
+#: wp-admin/includes/media.php:2013
+msgid "Insert media from another website"
+msgstr "Medien von einer anderen Website einfügen"
 
 #: wp-admin/options.php:144
 msgid "<strong>ERROR</strong>: options page not found."
@@ -5315,11 +5315,11 @@ msgstr "Diesem Benutzer können nicht die Rechte als seitenübergreifenden Admin
 
 #: wp-admin/includes/class-wp-themes-list-table.php:89
 msgid "You only have one theme installed right now. Live a little! You can choose from over 1,000 free themes in the WordPress.org Theme Directory at any time: just click on the <a href=\"%s\">Install Themes</a> tab above."
-msgstr "Du hast derzeit nur ein Theme installiert. Um etwas Abwechslung in deine Webseite zu bringen, hast du jederzeit Zugriff auf über 1.000 kostenlose Themes des WordPress.org-Themeverzeichnisses: Klicke einfach auf den Link <em><a href=\"%s\">Themes installieren</a></em>."
+msgstr "Du hast derzeit nur ein Theme installiert. Um etwas Abwechslung in deine Website zu bringen, hast du jederzeit Zugriff auf über 1.000 kostenlose Themes des WordPress.org-Themeverzeichnisses: Klicke einfach auf den Link <em><a href=\"%s\">Themes installieren</a></em>."
 
 #: wp-admin/maint/repair.php:113
 msgid "One or more database tables are unavailable. To allow WordPress to attempt to repair these tables, press the &#8220;Repair Database&#8221; button. Repairing can take a while, so please be patient."
-msgstr "Mindestens eine Datenbanktabelle ist nicht erreichbar. WordPress kann versuchen, diese Tabellen zu reparieren. Klicke dazu auf die Schaltfläche &#8220;Datenbank reparieren&#8221;. Die Reparatur kann etwas Zeit in Anspruch nehmen, habe also bitte etwas Geduld."
+msgstr "Mindestens eine Datenbanktabelle ist nicht erreichbar. WordPress kann versuchen, diese Tabellen zu reparieren. Klicke dazu auf die Schaltfläche &#8222;Datenbank reparieren&#8220;. Die Reparatur kann etwas Zeit in Anspruch nehmen, habe also bitte etwas Geduld."
 
 #: wp-admin/includes/file.php:16
 msgid "Visual Editor RTL Stylesheet"
@@ -5765,13 +5765,13 @@ msgstr "Dein Profil enthält die Informationen deines Benutzerkontos und ein paa
 msgid "You can Upload a theme manually if you have already downloaded its ZIP archive onto your computer (make sure it is from a trusted and original source). You can also do it the old-fashioned way and copy a downloaded theme&#8217;s folder via FTP into your <code>/wp-content/themes</code> directory."
 msgstr "Hast du bereits ein Theme in einer ZIP-Datei, kannst du es direkt über diese Oberfläche durch einen Klick auf \"Hochladen\" hochladen und verwenden. Du kannst es aber auch auf deinem Computer entpacken und via FTP in das Verzeichnis <code>wp-content/themes/</code> laden."
 
-#: wp-admin/edit-form-advanced.php:316
-msgid "Pages are similar to Posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest Pages under other Pages by making one the &#8220;Parent&#8221; of the other, creating a group of Pages."
-msgstr "Seiten sind Beiträgen recht ähnlich. Sie haben einen Titel, Inhalt und weitere Metadaten. Sie erscheinen jedoch nicht im chronologischen Ablauf der Beiträge und können auch nicht mit Kategorien und Schlagwörtern verknüpft werden. Dafür können Seiten hierarchisch angeordnet beziehungsweise verschachtelt werden, in dem einer Seite Eltern verpasst werden, also eine andere Seite als übergeordnete Seite festgelegt wird."
-
 #: wp-admin/edit-form-advanced.php:380
 msgid "<strong>Send Trackbacks</strong> - Trackbacks are a way to notify legacy blog systems that you&#8217;ve linked to them. Enter the URL(s) you want to send trackbacks. If you link to other WordPress sites they&#8217;ll be notified automatically using pingbacks, and this field is unnecessary."
 msgstr "<strong>Trackbacks senden</strong> – Mittels Trackbacks teilst du älteren Blogsystemen mit, dass du diese verlinkt hast. Trage einfach die URLs ein, an die du Trackbacks senden willst. Wenn du im Beitrag einen WordPress-Blog verlinkt hast, so wird automatisch ein Pingback gesendet und du musst das Trackbackfeld nicht mehr ausfüllen."
+
+#: wp-admin/edit-form-advanced.php:316
+msgid "Pages are similar to Posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest Pages under other Pages by making one the &#8220;Parent&#8221; of the other, creating a group of Pages."
+msgstr "Seiten sind Beiträgen recht ähnlich. Sie haben einen Titel, Inhalt und weitere Metadaten. Sie erscheinen jedoch nicht im chronologischen Ablauf der Beiträge und können auch nicht mit Kategorien und Schlagwörtern verknüpft werden. Dafür können Seiten hierarchisch angeordnet beziehungsweise verschachtelt werden, in dem einer Seite &#8222;Eltern&#8220; verpasst werden, also eine andere Seite als übergeordnete Seite festgelegt wird."
 
 #: wp-admin/plugin-editor.php:130
 msgid "You can use the editor to make changes to any of your plugins&#8217; individual PHP files. Be aware that if you make changes, plugins updates will overwrite your customizations."
@@ -5809,7 +5809,7 @@ msgstr "Du kannst auch Beiträge erstellen, indem du das <a href=\"%s\">Press Th
 
 #: wp-admin/edit-tags.php:217
 msgid "<strong>Slug</strong> - The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens."
-msgstr "<strong>Permalink</strong> – Die “Titelform (in URLs)” ist die URL-Variante des Namens. Sie besteht normalerweise nur aus Kleinbuchstaben, Zahlen und Bindestrichen."
+msgstr "<strong>Permalink</strong> – Die &#8222;Titelform (in URLs)&#8220; ist die URL-Variante des Namens. Sie besteht normalerweise nur aus Kleinbuchstaben, Zahlen und Bindestrichen."
 
 #: wp-admin/user-edit.php:43
 msgid "Required fields are indicated; the rest are optional. Profile information will only be displayed if your theme is set up to do so."
@@ -5933,7 +5933,7 @@ msgstr "Attribute"
 
 #: wp-admin/includes/meta-boxes.php:766
 msgid "Need help? Use the Help tab in the upper right of your screen."
-msgstr "Benötigst du Hilfe? Klicke auf die Registerkarte \"Hilfe\" in der rechten oberen Ecke des Bildschirms."
+msgstr "Benötigst du Hilfe? Klicke auf die Schaltfläche &#8222;Hilfe&#8220; in der rechten oberen Ecke des Bildschirms."
 
 #: wp-admin/export.php:48
 msgid "Once generated, your WXR file can be imported by another WordPress site or by another blogging platform able to access this format."
@@ -5989,13 +5989,13 @@ msgstr "Du kannst über \"Optionen\" auch den Zugänglichkeitsmodus aktivieren, 
 msgid "(no parent)"
 msgstr "Hauptseite (keine Übergeordnete)"
 
-#: wp-admin/edit-form-advanced.php:389
-msgid "<strong>Parent</strong> - You can arrange your pages in hierarchies. For example, you could have an &#8220;About&#8221; page that has &#8220;Life Story&#8221; and &#8220;My Dog&#8221; pages under it. There are no limits to how many levels you can nest pages."
-msgstr "<strong>Eltern</strong> – Wähle eine andere Seite aus, der diese Seite untergeordnet werden soll, um verschachtelte Seitenstrukturen aufzubauen. Zum Beispiel kannst du eine Seite \"Über mich\" erstellen und dieser anschließend die Seiten \"Mein Haus\", \"Mein Familie\" und \"Mein Auto\" unterordnen, indem du jeweils \"Über mich\" als Eltern-Seite angibst."
-
 #: wp-admin/edit-form-advanced.php:390
 msgid "<strong>Template</strong> - Some themes have custom templates you can use for certain pages that might have additional features or custom layouts. If so, you&#8217;ll see them in this dropdown menu."
 msgstr "<strong>Template</strong> – Manche Themes haben Templates, um einer Seite spezielle Layouts oder Funktionen zuzuweisen. Du kannst auch ein eigenes Seitentemplate erstellen, um zum Beispiel speziellen (PHP-)Code in eine Seite einzubauen."
+
+#: wp-admin/edit-form-advanced.php:389
+msgid "<strong>Parent</strong> - You can arrange your pages in hierarchies. For example, you could have an &#8220;About&#8221; page that has &#8220;Life Story&#8221; and &#8220;My Dog&#8221; pages under it. There are no limits to how many levels you can nest pages."
+msgstr "<strong>Eltern</strong> – Wähle eine andere Seite aus, der diese Seite untergeordnet werden soll, um verschachtelte Seitenstrukturen aufzubauen. Zum Beispiel kannst du eine Seite &#8222;Über mich&#8220; erstellen und dieser anschließend die Seiten &#8222;Mein Haus&#8220;, &#8222;Meine Familie&#8220; und &#8222;Mein Auto&#8220; unterordnen, indem du jeweils &#8222;Über mich&#8220; als Eltern-Seite angibst."
 
 #: wp-admin/includes/class-wp-upgrader-skins.php:225
 msgid "All updates have been completed."
@@ -6338,7 +6338,7 @@ msgstr "Entferne Benutzer von dieser Seite"
 
 #: wp-admin/tools.php:42
 msgid "Use Press This to clip text, images and videos from any web page. Then edit and add more straight from Press This before you save or publish it in a post on your site."
-msgstr "Benutze Press This, um Text, Bilder und Videos aus jeder beliebigen Webseite einzubinden. Dann kannst du es einfach mit Press This bearbeiten und noch etwas hinzufügen, bevor du es speicherst oder als Beitrag veröffentlichst."
+msgstr "Benutze Press This, um Text, Bilder und Videos aus jeder beliebigen Website einzubinden. Dann kannst du es einfach mit Press This bearbeiten und noch etwas hinzufügen, bevor du es speicherst oder als Beitrag veröffentlichst."
 
 #: wp-admin/includes/post.php:708
 msgid "You are not allowed to create pages on this site."
@@ -6572,7 +6572,7 @@ msgstr[1] "%s Kommentare wurden aus dem Papierkorb geholt"
 
 #: wp-admin/update-core.php:304
 msgid "The following themes have new versions available. Check the ones you want to update and then click &#8220;Update Themes&#8221;."
-msgstr "Für die folgenden Themes liegen Aktualisierungen vor. Markiere diejenigen, die du aktualisieren möchtest und klicke auf &#8220;Themes aktualisieren&#8221;."
+msgstr "Für die folgenden Themes liegen Aktualisierungen vor. Markiere diejenigen, die du aktualisieren möchtest und klicke auf &#8222;Themes aktualisieren&#8222;."
 
 #: wp-admin/user-new.php:216
 msgid "User has been added to your site."
@@ -6588,7 +6588,7 @@ msgstr "Einladungs-E-Mail versandt. Der Benutzer muss den Bestätigungslink ankl
 
 #: wp-admin/update-core.php:222
 msgid "The following plugins have new versions available. Check the ones you want to update and then click &#8220;Update Plugins&#8221;."
-msgstr "Für die folgenden Plugins sind neue Versionen verfügbar. Markiere diejenigen, die du aktualisieren möchtest und klicke auf &#8220;Plugins aktualisieren&#8221;."
+msgstr "Für die folgenden Plugins sind neue Versionen verfügbar. Markiere diejenigen, die du aktualisieren möchtest und klicke auf &#8222;Plugins aktualisieren&#8220;."
 
 #: wp-admin/edit-tag-form.php:14
 msgid "You did not select an item for editing."
@@ -7382,10 +7382,6 @@ msgstr "Kommentarmoderation"
 #: wp-admin/options-discussion.php:171
 msgid "Hold a comment in the queue if it contains %s or more links. (A common characteristic of comment spam is a large number of hyperlinks.)"
 msgstr "Einen Kommentar in die Warteschlange schieben, wenn er mehr als %s Links enthält. (Eine hohe Anzahl von Links ist ein typisches Merkmal von Kommentar-Spam.)"
-
-#: wp-admin/options-discussion.php:173
-msgid "When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
-msgstr "Wenn in einem Kommentar im Inhalt, Namen, URL, E-Mail-Adresse oder IP eines der unten aufgeführten Wörter oder Werte vorkommt, dann schiebe diesen Kommentar zum Freischalten in die <a href=\"edit-comments.php?comment_status=moderated\">Warteschlange</a>. Ein Wort oder IP-Adresse pro Zeile. Wortteile werden auch berücksichtigt, also wird durch &#8220;press&#8221; auch &#8220;WordPress&#8221; gefiltert."
 
 #: wp-admin/options-discussion.php:180 wp-admin/options-discussion.php:181
 msgid "Comment Blacklist"
@@ -8443,6 +8439,10 @@ msgstr "Die %s Kommentare sollen oben erscheinen"
 #: wp-admin/options-discussion.php:182
 msgid "When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be marked as spam. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
 msgstr "Wenn in einem Kommentar im Inhalt, Namen, URL, E-Mail-Adresse oder IP eines der unten aufgeführten Wörter oder Werte vorkommt, dann wird er als Spam markiert. Ein Wort oder IP-Adresse pro Zeile. Wortteile werden auch berücksichtigt, also wird durch &#8222;press&#8220; auch &#8222;WordPress&#8220; gefiltert."
+
+#: wp-admin/options-discussion.php:173
+msgid "When a comment contains any of these words in its content, name, URL, e-mail, or IP, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
+msgstr "Wenn in einem Kommentar im Inhalt, Namen, URL, E-Mail-Adresse oder IP eines der unten aufgeführten Wörter oder Werte vorkommt, dann schiebe diesen Kommentar zum Freischalten in die <a href=\"edit-comments.php?comment_status=moderated\">Warteschlange</a>. Ein Wort oder IP-Adresse pro Zeile. Wortteile werden auch berücksichtigt, also wird durch &#8222;press&#8220; auch &#8222;WordPress&#8220; gefiltert."
 
 #: wp-admin/options-media.php:15
 msgid "Media Settings"
@@ -10197,10 +10197,6 @@ msgstr "Wenn du ein Plugin im .zip-Format hast, kannst du es hier hochladen."
 msgid "Plugin zip file"
 msgstr "Plugin-ZIP-Archiv"
 
-#: wp-admin/includes/media.php:1246 wp-admin/includes/media.php:2511
-msgid "Alt text for the image, e.g. &#8220;The Mona Lisa&#8221;"
-msgstr "Beschreibung des Bildes, z.Bsp. &#8220;Die Mona Lisa&#8221;"
-
 #: wp-admin/includes/image-edit.php:54
 msgid "Original dimensions %s"
 msgstr "Originalgröße %s"
@@ -10327,10 +10323,6 @@ msgstr "Element hinzufügt."
 #: wp-admin/edit-tags.php:262
 msgid "Items deleted."
 msgstr "Elemente gelöscht."
-
-#: wp-admin/includes/media.php:2504
-msgid "Link text, e.g. &#8220;Ransom Demands (PDF)&#8221;"
-msgstr "Link-Text, z. B. &#8220;Rotkäppchen II – Der Wolf schlägt zurück (PDF)&#8221;"
 
 #: wp-admin/includes/class-wp-upgrader.php:124 wp-admin/includes/plugin.php:803
 msgid "Unable to locate WordPress Plugin directory."
@@ -10486,6 +10478,14 @@ msgstr "Du hast nicht die erforderlichen Rechte, um den Header anzupassen."
 #: wp-admin/includes/file.php:20
 msgid "Footer"
 msgstr "Footer"
+
+#: wp-admin/includes/media.php:2504
+msgid "Link text, e.g. &#8220;Ransom Demands (PDF)&#8221;"
+msgstr "Link-Text, z. B. &#8222;Rotkäppchen II – Der Wolf schlägt zurück (PDF)&#8220;"
+
+#: wp-admin/includes/media.php:1246 wp-admin/includes/media.php:2511
+msgid "Alt text for the image, e.g. &#8220;The Mona Lisa&#8221;"
+msgstr "Beschreibung des Bildes, z.Bsp. &#8222;Die Mona Lisa&#8220;"
 
 #: wp-admin/edit-tag-form.php:107 wp-admin/edit-tags.php:464
 msgid "The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens."

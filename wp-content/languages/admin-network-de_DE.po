@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-06-08 17:31:26+0000\n"
+"PO-Revision-Date: 2015-06-10 12:36:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1048,7 +1048,7 @@ msgstr "[%s] Neue Seite wurde erstellt"
 
 #: wp-admin/network/settings.php:229
 msgid "The welcome email sent to new site owners."
-msgstr "Diese E-Mail wird an Benutzer versandt, die eine neuen Seite registriert haben."
+msgstr "Diese E-Mail wird an Benutzer versandt, die eine neue Website registriert haben."
 
 #: wp-admin/network/settings.php:147
 msgid "Allow new registrations"
