@@ -4,8 +4,8 @@ Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 3.9
 Tested up to: 4.2.2
-Last Updated: 2015-Jun-3
-Stable tag: tags/3.5.1
+Last Updated: 2015-Jun-9
+Stable tag: tags/3.5.2
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -222,10 +222,21 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+
+= Version 3.5.2 =
+* Load translations from wp-content/languages/$domain-$locale.{po,mo} for better upgrade behavior
+* Improve error messages shown when there are missing pages
+* Always show a notice when the category filter is active in Manage Listings
+* Fix issue in RolesAndCapabilities::user_is_administrator().
+* Fix User Search problem in Listings Table
+* ListingsFinder Fix error in title condition
+* Fix error saving Facebook configuration
+* Avoid posting listings to User profile when no page or group is selected
+
 = Version 3.5.1 =
-- Use mb_strtoupper if available in _get_currency_code
-- Fix function that finds media thumbnails for sites not under single site directory structure
-- Make button's tooltip translatable in Delete Form.
+* Use mb_strtoupper if available in _get_currency_code
+* Fix function that finds media thumbnails for sites not under single site directory structure
+* Make button's tooltip translatable in Delete Form.
 
 = Version 3.5 =
 * NEW: Allow users to remove the title of the entry from the listing URL 

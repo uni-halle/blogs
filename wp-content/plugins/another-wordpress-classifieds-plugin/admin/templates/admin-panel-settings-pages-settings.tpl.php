@@ -6,23 +6,44 @@
 			<?php if (!empty($missing)): ?>
 
 			<div class="error">
-				<p><?php _e( "The following pages are missing, not published or the plugin can't find them.", 'AWPCP' ); ?></p>
+			<?php if ( ! empty( $missing['not-found'] ) ): ?>
+				<p><?php _e( "The following pages are missing; the plugin is looking for a page with a particular ID but it can no longer found.", 'AWPCP' ); ?></p>
 
 				<ul>
-
-			<?php foreach ($missing as $page): ?>
-			<?php $default = $awpcp->settings->get_option_default_value($page->page) ?>
-			<?php if ($page->id > 0): ?>
-				<?php $message = __("<strong>%s</strong> (%s page): The plugin is looking for a page with ID = %d.", 'AWPCP') ?>
-				<?php $message = sprintf($message, get_awpcp_option($page->page), $default, $page->id) ?>
-			<?php else: ?>
-				<?php $message = __("<strong>%s</strong> (%s page).", 'AWPCP') ?>
-				<?php $message = sprintf($message, get_awpcp_option($page->page), $default) ?>
-			<?php endif ?>
-				<li><?php echo $message ?></li>
-			<?php endforeach ?>
-
+				<?php foreach ( $missing['not-found'] as $page ): ?>
+				<?php $default = $awpcp->settings->get_option_default_value( $page->page ); ?>
+				<?php $message = __( "Page: %s (Default name: %s, Stored page ID = %d).", 'AWPCP' ); ?>
+				<?php $message = sprintf( $message, '<strong>' . get_awpcp_option( $page->page ) . '</strong>', $default, $page->id );  ?>
+				<li><?php echo $message; ?></li>
+				<?php endforeach ?>
 				</ul>
+			<?php endif; ?>
+
+			<?php if ( ! empty( $missing['not-published'] ) ): ?>
+				<p><?php _e( "The following pages are not published (did you move them to the Trash by accident?).", 'AWPCP' ); ?></p>
+
+				<ul>
+				<?php foreach ( $missing['not-published'] as $page ): ?>
+				<?php $default = $awpcp->settings->get_option_default_value( $page->page ); ?>
+				<?php $message = __( "Page: %s (Default name: %s, Stored page ID = %d, Current post status: %s).", 'AWPCP' ); ?>
+				<?php $message = sprintf( $message, '<strong>' . get_awpcp_option( $page->page ) . '</strong>', $default, $page->id, $page->status );  ?>
+				<li><?php echo $message; ?></li>
+				<?php endforeach ?>
+				</ul>
+			<?php endif; ?>
+
+			<?php if ( ! empty( $missing['not-referenced'] ) ): ?>
+				<p><?php _e( "The plugin has no associated page ID for the following pages. Please contact customer support.", 'AWPCP' ); ?></p>
+
+				<ul>
+				<?php foreach ( $missing['not-referenced'] as $page ): ?>
+				<?php $default = $awpcp->settings->get_option_default_value( $page->page ); ?>
+				<?php $message = __( "Page: %s (Default name: %s).", 'AWPCP' ); ?>
+				<?php $message = sprintf( $message, '<strong>' . get_awpcp_option( $page->page ) . '</strong>', $default );  ?>
+				<li><?php echo $message; ?></li>
+				<?php endforeach ?>
+				</ul>
+			<?php endif; ?>
 			</div>
 
 			<?php endif ?>

@@ -118,6 +118,8 @@ class AWPCP_ListingsFinder {
     private function build_select_clause( $query ) {
         if ( $query['fields'] == 'count' ) {
             $fields = 'COUNT( DISTINCT listings.`ad_id` )';
+        } else if ( $query['fields'] == '*' ) {
+            $fields = 'DISTINCT listings.*';
         } else {
             $fields = $query['fields'];
         }
@@ -164,7 +166,7 @@ class AWPCP_ListingsFinder {
         $conditions = array();
 
         if ( ! empty( $query['title'] ) ) {
-            $conditions[] = $this->db->prepare( "listings.`ad_title` LIKE '%%%s%%'" );
+            $conditions[] = $this->db->prepare( "listings.`ad_title` LIKE '%%%s%%'", $query['title'] );
         }
 
         return $conditions;
@@ -273,7 +275,7 @@ class AWPCP_ListingsFinder {
                         'type' => 'CHAR',
                     ),
                 ),
-                'post',
+                'user',
                 $this->db->users,
                 'ID'
             );
@@ -392,10 +394,10 @@ class AWPCP_ListingsFinder {
     }
 
     private function build_dates_condition( $query ) {
-        $conditions = array();
-
-        $conditions = array_merge( $this->build_date_condition( 'disabled_date', $query['disabled_date'] ) );
-        $conditions = array_merge( $this->build_date_condition( 'ad_enddate', $query['end_date'] ) );
+        $conditions = array_merge(
+            $this->build_date_condition( 'disabled_date', $query['disabled_date'] ),
+            $this->build_date_condition( 'ad_enddate', $query['end_date'] )
+        );
 
         return $conditions;
     }

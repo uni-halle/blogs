@@ -14,9 +14,22 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $this->page = $page;
     }
 
-    private function load_items_from_query() {
-        global $wpdb;
+    public function prepare_items() {
+        $search_params = $this->get_listing_search_params();
 
+        $this->load_items_from_query( $search_params['query'], $search_params['filters'] );
+
+        if ( isset( $search_params['query']['category_id'] ) && $search_params['query']['category_id'] ) {
+            $category = AWPCP_Category::find_by_id( $search_params['query']['category_id'] );
+            if (!is_null($category)) {
+                awpcp_flash(sprintf(__('Showing Ads from %s category.', 'AWPCP'), "<strong>{$category->name}</strong>"));
+            }
+        }
+
+        $this->_column_headers = array($this->get_columns(), array(), $this->get_sortable_columns());
+    }
+
+    private function get_listing_search_params() {
         $user = wp_get_current_user();
 
         $items_per_page = (int) get_user_meta($user->ID, 'listings-items-per-page', true);
@@ -56,6 +69,8 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
         $show_unpaid = false;
         $show_non_verified = false;
+        $show_expired = false;
+        $show_awaiting_approval = false;
 
         switch ($params['filterby']) {
             case 'is-featured':
@@ -119,18 +134,25 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $query['offset'] = $this->items_per_page * ( $params['paged'] - 1 );
         $query['limit'] = $this->items_per_page;
 
+        return array(
+            'query' => $query,
+            'filters' => compact( 'show_unpaid', 'show_expired', 'show_non_verified', 'show_awaiting_approval' ),
+        );
+    }
+
+    private function load_items_from_query( $query, $filters ) {
         $listings = awpcp_listings_collection();
 
-        if ( isset( $show_expired ) && $show_expired ) {
+        if ( isset( $filters['show_expired'] ) && $filters['show_expired'] ) {
             $this->total_items = $listings->count_expired_listings_with_query( $query );
             $this->items = $listings->find_expired_listings_with_query( $query );
-        } else if ( isset( $show_awaiting_approval ) && $show_awaiting_approval ) {
+        } else if ( isset( $filters['show_awaiting_approval'] ) && $filters['show_awaiting_approval'] ) {
             $this->total_items = $listings->count_listings_awaiting_approval_with_query( $query );
             $this->items = $listings->find_listings_awaiting_approval_with_query( $query );
-        } else if ( $show_non_verified ) {
+        } else if ( $filters['show_non_verified'] ) {
             $this->total_items = $listings->count_successfully_paid_listings_with_query( $query );
             $this->items = $listings->find_successfully_paid_listings_with_query( $query );
-        } else if ( $show_unpaid ) {
+        } else if ( $filters['show_unpaid'] ) {
             $this->total_items = $listings->count_listings_with_query( $query );
             $this->items = $listings->find_listings_with_query( $query );
         } else {
@@ -139,19 +161,6 @@ class AWPCP_Listings_Table extends WP_List_Table {
         }
 
         $this->set_pagination_args( array( 'total_items' => $this->total_items, 'per_page' => $this->items_per_page ) );
-    }
-
-    public function prepare_items() {
-        $this->load_items_from_query();
-
-        if (awpcp_request_param('filterby') == 'category') {
-            $category = AWPCP_Category::find_by_id(awpcp_request_param('category'));
-            if (!is_null($category)) {
-                awpcp_flash(sprintf(__('Showing Ads from %s category.', 'AWPCP'), "<strong>{$category->name}</strong>"));
-            }
-        }
-
-        $this->_column_headers = array($this->get_columns(), array(), $this->get_sortable_columns());
     }
 
     public function has_items() {

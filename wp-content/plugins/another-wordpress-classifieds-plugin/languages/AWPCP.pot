@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-"
 "plugin\n"
-"POT-Creation-Date: 2015-06-03 21:44:55+00:00\n"
+"POT-Creation-Date: 2015-06-07 22:45:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -138,7 +138,7 @@ msgid "Categories"
 msgstr ""
 
 #: admin/admin-panel-fees-table.php:121
-#: admin/templates/admin-sidebar.tpl.php:90 awpcp.php:747
+#: admin/templates/admin-sidebar.tpl.php:90 awpcp.php:748
 msgid "Featured Ads"
 msgstr ""
 
@@ -584,26 +584,26 @@ msgstr ""
 msgid "The specified listing doesn't exists."
 msgstr ""
 
-#: admin/admin-panel-settings.php:156
+#: admin/admin-panel-settings.php:164
 msgid ""
 "We could not obtain a valid access token from Facebook. The API returned the "
 "following error: %s"
 msgstr ""
 
-#: admin/admin-panel-settings.php:158
+#: admin/admin-panel-settings.php:166
 msgid ""
 "We could not obtain a valid access token from Facebook. Please try again."
 msgstr ""
 
-#: admin/admin-panel-settings.php:166
+#: admin/admin-panel-settings.php:174
 msgid "Facebook Config Diagnostics"
 msgstr ""
 
-#: admin/admin-panel-settings.php:173
+#: admin/admin-panel-settings.php:181
 msgid "Everything looks OK."
 msgstr ""
 
-#: admin/admin-panel-settings.php:221
+#: admin/admin-panel-settings.php:229
 msgid "There was an error trying to contact Facebook servers: \"%s\"."
 msgstr ""
 
@@ -681,7 +681,7 @@ msgid "Manage Extra Fields"
 msgstr ""
 
 #: admin/admin-panel.php:295 admin/templates/admin-sidebar.tpl.php:95
-#: awpcp.php:740
+#: awpcp.php:741
 msgid "Extra Fields"
 msgstr ""
 
@@ -1756,27 +1756,44 @@ msgstr ""
 msgid "Restore AWPCP Pages"
 msgstr ""
 
-#: admin/templates/admin-panel-settings-pages-settings.tpl.php:9
+#: admin/templates/admin-panel-settings-pages-settings.tpl.php:10
 msgid ""
-"The following pages are missing, not published or the plugin can't find them."
+"The following pages are missing; the plugin is looking for a page with a "
+"particular ID but it can no longer found."
 msgstr ""
 
-#: admin/templates/admin-panel-settings-pages-settings.tpl.php:16
+#: admin/templates/admin-panel-settings-pages-settings.tpl.php:15
+msgid "Page: %s (Default name: %s, Stored page ID = %d)."
+msgstr ""
+
+#: admin/templates/admin-panel-settings-pages-settings.tpl.php:23
 msgid ""
-"<strong>%s</strong> (%s page): The plugin is looking for a page with ID = %d."
+"The following pages are not published (did you move them to the Trash by "
+"accident?)."
 msgstr ""
 
-#: admin/templates/admin-panel-settings-pages-settings.tpl.php:19
-msgid "<strong>%s</strong> (%s page)."
+#: admin/templates/admin-panel-settings-pages-settings.tpl.php:28
+msgid ""
+"Page: %s (Default name: %s, Stored page ID = %d, Current post status: %s)."
 msgstr ""
 
-#: admin/templates/admin-panel-settings-pages-settings.tpl.php:32
+#: admin/templates/admin-panel-settings-pages-settings.tpl.php:36
+msgid ""
+"The plugin has no associated page ID for the following pages. Please contact "
+"customer support."
+msgstr ""
+
+#: admin/templates/admin-panel-settings-pages-settings.tpl.php:41
+msgid "Page: %s (Default name: %s)."
+msgstr ""
+
+#: admin/templates/admin-panel-settings-pages-settings.tpl.php:53
 msgid ""
 "If you are having problems with your plugin pages, you can delete them and "
 "use the Restore button to have the plugin create them again."
 msgstr ""
 
-#: admin/templates/admin-panel-settings-pages-settings.tpl.php:33
+#: admin/templates/admin-panel-settings-pages-settings.tpl.php:54
 msgid "Restore Pages"
 msgstr ""
 
@@ -1903,19 +1920,19 @@ msgstr ""
 msgid "Get a Premium Module!"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:38 awpcp.php:712
+#: admin/templates/admin-sidebar.tpl.php:38 awpcp.php:713
 msgid "Campaign Manager"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:44 awpcp.php:768
+#: admin/templates/admin-sidebar.tpl.php:44 awpcp.php:769
 msgid "Mark as Sold"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:50 awpcp.php:789
+#: admin/templates/admin-sidebar.tpl.php:50 awpcp.php:790
 msgid "Restricted Categories"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:55 awpcp.php:705
+#: admin/templates/admin-sidebar.tpl.php:55 awpcp.php:706
 msgid "BuddyPress Listings"
 msgstr ""
 
@@ -1923,11 +1940,11 @@ msgstr ""
 msgid "Comments/Ratings"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:65 awpcp.php:698
+#: admin/templates/admin-sidebar.tpl.php:65 awpcp.php:699
 msgid "Authorize.Net"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:70 awpcp.php:775
+#: admin/templates/admin-sidebar.tpl.php:70 awpcp.php:776
 msgid "PayPal Pro"
 msgstr ""
 
@@ -1935,7 +1952,7 @@ msgstr ""
 msgid "Coupon/Discount"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:80 awpcp.php:803
+#: admin/templates/admin-sidebar.tpl.php:80 awpcp.php:804
 msgid "Subscriptions"
 msgstr ""
 
@@ -1943,11 +1960,11 @@ msgstr ""
 msgid "Fee Per Category"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:100 awpcp.php:719
+#: admin/templates/admin-sidebar.tpl.php:100 awpcp.php:720
 msgid "Category Icons"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:105 awpcp.php:782
+#: admin/templates/admin-sidebar.tpl.php:105 awpcp.php:783
 msgid "Regions Control"
 msgstr ""
 
@@ -1955,7 +1972,7 @@ msgstr ""
 msgid "Google Checkout Payments"
 msgstr ""
 
-#: admin/templates/admin-sidebar.tpl.php:115 awpcp.php:796
+#: admin/templates/admin-sidebar.tpl.php:115 awpcp.php:797
 msgid "RSS"
 msgstr ""
 
@@ -2087,238 +2104,238 @@ msgstr ""
 msgid "Manage Ad Listings"
 msgstr ""
 
-#: awpcp.php:596
+#: awpcp.php:597
 msgid "AWPCP"
 msgstr ""
 
-#: awpcp.php:674
+#: awpcp.php:675
 msgid ""
 "AWPCP requires the graphics processing library GD and it is not installed. "
 "Contact your web host to fix this."
 msgstr ""
 
-#: awpcp.php:675
+#: awpcp.php:676
 #: includes/placeholders/class-placeholders-installation-verifier.php:19
 msgid "Warning"
 msgstr ""
 
-#: awpcp.php:691
+#: awpcp.php:692
 msgid "Attachments"
 msgstr ""
 
-#: awpcp.php:726
+#: awpcp.php:727
 msgid "Comments & Ratings"
 msgstr ""
 
-#: awpcp.php:733
+#: awpcp.php:734
 msgid "Coupons/Discount"
 msgstr ""
 
-#: awpcp.php:754
+#: awpcp.php:755
 msgid "Fee per Category"
 msgstr ""
 
-#: awpcp.php:761
+#: awpcp.php:762
 msgid "Google Checkout"
 msgstr ""
 
-#: awpcp.php:810 templates/components/media-manager.tpl.php:36
+#: awpcp.php:811 templates/components/media-manager.tpl.php:36
 msgid "Videos"
 msgstr ""
 
-#: awpcp.php:818
+#: awpcp.php:819
 msgid "XML Sitemap"
 msgstr ""
 
-#: awpcp.php:865
+#: awpcp.php:866
 msgid ""
 "The %1$s module you have installed is outdated and not compatible with this "
 "version of AWPCP. Please get %1$s %2$s or newer."
 msgstr ""
 
-#: awpcp.php:1007
+#: awpcp.php:1008
 msgid "This field is required."
 msgstr ""
 
-#: awpcp.php:1008 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:433
+#: awpcp.php:1009 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:433
 #: includes/settings-api.php:214
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: awpcp.php:1009 awpcp.php:1010
+#: awpcp.php:1010 awpcp.php:1011
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: awpcp.php:1011
+#: awpcp.php:1012
 msgid "Please enter a valid number."
 msgstr ""
 
-#: awpcp.php:1012
+#: awpcp.php:1013
 msgid "Please enter a valid amount."
-msgstr ""
-
-#: awpcp.php:1018
-msgctxt "uploader queue"
-msgid "Stop Upload"
 msgstr ""
 
 #: awpcp.php:1019
 msgctxt "uploader queue"
-msgid "Upload URL might be wrong or doesn't exist."
+msgid "Stop Upload"
 msgstr ""
 
 #: awpcp.php:1020
 msgctxt "uploader queue"
-msgid "tb"
+msgid "Upload URL might be wrong or doesn't exist."
 msgstr ""
 
 #: awpcp.php:1021
 msgctxt "uploader queue"
-msgid "Size"
+msgid "tb"
 msgstr ""
 
 #: awpcp.php:1022
 msgctxt "uploader queue"
-msgid "Close"
+msgid "Size"
 msgstr ""
 
 #: awpcp.php:1023
 msgctxt "uploader queue"
-msgid "Init error."
+msgid "Close"
 msgstr ""
 
 #: awpcp.php:1024
 msgctxt "uploader queue"
-msgid "Add files to the upload queue and click the start button."
+msgid "Init error."
 msgstr ""
 
 #: awpcp.php:1025
 msgctxt "uploader queue"
-msgid "Filename"
+msgid "Add files to the upload queue and click the start button."
 msgstr ""
 
 #: awpcp.php:1026
 msgctxt "uploader queue"
-msgid "Image format either wrong or not supported."
+msgid "Filename"
 msgstr ""
 
 #: awpcp.php:1027
 msgctxt "uploader queue"
-msgid "Status"
+msgid "Image format either wrong or not supported."
 msgstr ""
 
 #: awpcp.php:1028
 msgctxt "uploader queue"
-msgid "HTTP Error."
+msgid "Status"
 msgstr ""
 
 #: awpcp.php:1029
 msgctxt "uploader queue"
-msgid "Start Upload"
+msgid "HTTP Error."
 msgstr ""
 
 #: awpcp.php:1030
 msgctxt "uploader queue"
-msgid "mb"
+msgid "Start Upload"
 msgstr ""
 
 #: awpcp.php:1031
 msgctxt "uploader queue"
-msgid "kb"
+msgid "mb"
 msgstr ""
 
 #: awpcp.php:1032
 msgctxt "uploader queue"
-msgid "Duplicate file error."
+msgid "kb"
 msgstr ""
 
 #: awpcp.php:1033
 msgctxt "uploader queue"
-msgid "File size error."
+msgid "Duplicate file error."
 msgstr ""
 
 #: awpcp.php:1034
 msgctxt "uploader queue"
-msgid "N/A"
+msgid "File size error."
 msgstr ""
 
 #: awpcp.php:1035
 msgctxt "uploader queue"
-msgid "gb"
+msgid "N/A"
 msgstr ""
 
 #: awpcp.php:1036
 msgctxt "uploader queue"
-msgid "Error: Invalid file extension:"
+msgid "gb"
 msgstr ""
 
 #: awpcp.php:1037
 msgctxt "uploader queue"
-msgid "Select files"
+msgid "Error: Invalid file extension:"
 msgstr ""
 
 #: awpcp.php:1038
 msgctxt "uploader queue"
-msgid "%s already present in the queue."
+msgid "Select files"
 msgstr ""
 
 #: awpcp.php:1039
 msgctxt "uploader queue"
-msgid "File: %s"
+msgid "%s already present in the queue."
 msgstr ""
 
 #: awpcp.php:1040
 msgctxt "uploader queue"
-msgid "b"
+msgid "File: %s"
 msgstr ""
 
 #: awpcp.php:1041
 msgctxt "uploader queue"
-msgid "Uploaded %d/%d files"
+msgid "b"
 msgstr ""
 
 #: awpcp.php:1042
+msgctxt "uploader queue"
+msgid "Uploaded %d/%d files"
+msgstr ""
+
+#: awpcp.php:1043
 msgctxt "uploader queue"
 msgid ""
 "Upload element accepts only %d file(s) at a time. Extra files were stripped."
 msgstr ""
 
-#: awpcp.php:1043
+#: awpcp.php:1044
 msgctxt "uploader queue"
 msgid "%d files queued"
 msgstr ""
 
-#: awpcp.php:1044
+#: awpcp.php:1045
 msgctxt "uploader queue"
 msgid "File: %s, size: %d, max file size: %d"
 msgstr ""
 
-#: awpcp.php:1045
+#: awpcp.php:1046
 msgctxt "uploader queue"
 msgid "Drag files here."
 msgstr ""
 
-#: awpcp.php:1046
+#: awpcp.php:1047
 msgctxt "uploader queue"
 msgid "Runtime ran out of available memory."
 msgstr ""
 
-#: awpcp.php:1047
+#: awpcp.php:1048
 msgctxt "uploader queue"
 msgid "File count error."
 msgstr ""
 
-#: awpcp.php:1048
+#: awpcp.php:1049
 msgctxt "uploader queue"
 msgid "File extension error."
 msgstr ""
 
-#: awpcp.php:1049
+#: awpcp.php:1050
 msgctxt "uploader queue"
 msgid "Error: File too large:"
 msgstr ""
 
-#: awpcp.php:1050
+#: awpcp.php:1051
 msgctxt "uploader queue"
 msgid "Add Files"
 msgstr ""

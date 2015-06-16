@@ -4,7 +4,7 @@ class AWPCP_Admin_Settings {
 
 	public function AWPCP_Admin_Settings() {
 		// TODO: avoid instatiation of this class until is necessary
-		$pages = new AWPCP_Classified_Pages_Settings();
+		$pages = awpcp_classfieds_pages_settings();
 		$facebook = new AWPCP_Facebook_Page_Settings();
 	}
 
@@ -29,9 +29,17 @@ class AWPCP_Admin_Settings {
 	}
 }
 
+function awpcp_classfieds_pages_settings() {
+	return new AWPCP_Classified_Pages_Settings( awpcp_missing_pages_finder() );
+}
+
 class AWPCP_Classified_Pages_Settings {
 
-	public function __construct() {
+	private $missing_pages_finder;
+
+	public function __construct( $missing_pages_finder ) {
+		$this->missing_pages_finder = $missing_pages_finder;
+
 		add_action('awpcp-admin-settings-page--pages-settings', array($this, 'dispatch'));
 	}
 
@@ -44,7 +52,7 @@ class AWPCP_Classified_Pages_Settings {
 			$awpcp->restore_pages();
 		}
 
-		$missing = $awpcp->get_missing_pages();
+		$missing = $this->missing_pages_finder->find_missing_pages();
 
 		ob_start();
 			include(AWPCP_DIR . '/admin/templates/admin-panel-settings-pages-settings.tpl.php');
@@ -211,7 +219,9 @@ class AWPCP_Facebook_Page_Settings {
 			$config['page_token'] = $page_token;
 		}
 
-		if ( $group ) {
+		if ( $group == 'none' ) {
+			$config['group_id'] = '';
+		} else if ( ! empty( $group ) ) {
 			$config['group_id'] = $group;
 		}
 

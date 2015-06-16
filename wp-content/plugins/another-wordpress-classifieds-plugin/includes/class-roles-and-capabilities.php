@@ -106,6 +106,6 @@ class AWPCP_RolesAndCapabilities {
     }
 
     public function user_is_administrator( $user_id ) {
-        $this->user_can( get_userdata( $user_id ), $this->get_administrator_capabilities() );
+        return $this->user_can( get_userdata( $user_id ), $this->get_administrator_capabilities() );
     }
 }

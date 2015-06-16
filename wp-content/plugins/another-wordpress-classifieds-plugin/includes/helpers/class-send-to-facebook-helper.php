@@ -19,6 +19,10 @@ class AWPCP_SendToFacebookHelper {
     public function send_listing_to_facebook_page( $listing ) {
         $this->facebook_config->set_access_token( 'page_token' );
 
+        if ( ! $this->facebook_config->is_page_set() ) {
+            throw new AWPCP_Exception( 'There is no page selected.' );
+        }
+
         if ( $this->listings_metadata->get( $listing->ad_id, 'sent-to-facebook' ) ) {
             throw new AWPCP_Exception( __( 'The Ad was already sent to Facebook Page.', 'AWPCP' ) );
         }
@@ -67,6 +71,10 @@ class AWPCP_SendToFacebookHelper {
      */
     public function send_listing_to_facebook_group( $listing ) {
         $this->facebook_config->set_access_token( 'user_token' );
+
+        if ( ! $this->facebook_config->is_group_set() ) {
+            throw new AWPCP_Exception( 'There is no group selected.' );
+        }
 
         if ( $this->listings_metadata->get( $listing->ad_id, 'sent-to-facebook-group' ) ) {
             throw new AWPCP_Exception( __( 'The Ad was already sent to Facebook Group.', 'AWPCP' ) );

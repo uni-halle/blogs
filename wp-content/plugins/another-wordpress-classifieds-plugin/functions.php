@@ -2049,19 +2049,24 @@ function awpcp_load_plugin_textdomain( $__file__, $text_domain ) {
     $basename = dirname( plugin_basename( $__file__ ) );
     $locale = apply_filters( 'plugin_locale', get_locale(), $text_domain );
 
-    // Load user translation first.
-    $mofile = trailingslashit( WP_LANG_DIR ) . $basename . '/' . $text_domain . '-' . $locale . '.mo';
+    // Load user translation from wp-content/languages/plugins/$domain-$locale.mo
+    $mofile = WP_LANG_DIR . '/plugins/' . $text_domain . '-' . $locale . '.mo';
+    load_textdomain( $text_domain, $mofile );
+
+    // Load user translation from wp-content/languages/another-wordpress-classifieds-plugin/$domain-$locale.mo
+    $mofile = WP_LANG_DIR . '/' . $basename . '/' . $text_domain . '-' . $locale . '.mo';
     load_textdomain( $text_domain, $mofile );
 
     // Load translation included in plugin's languages directory. Stop if the file is loaded.
-    $mofile = trailingslashit( WP_PLUGIN_DIR ) . $basename . '/languages/' . $text_domain . '-' . $locale . '.mo';
+    $mofile = WP_PLUGIN_DIR . '/' . $basename . '/languages/' . $text_domain . '-' . $locale . '.mo';
     if ( load_textdomain( $text_domain, $mofile ) ) {
         return true;
     }
 
     // Try loading the translations from the plugin's root directory. WordPress will also
     // look for a file in wp-content/languages/plugins/$domain-$locale.mo.
-    if ( load_plugin_textdomain( $text_domain, false, $basename ) ) {
+    $mofile = WP_PLUGIN_DIR . '/' . $basename . '/' . $text_domain . '-' . $locale . '.mo';
+    if ( load_textdomain( $text_domain, $mofile ) ) {
         return true;
     }
 

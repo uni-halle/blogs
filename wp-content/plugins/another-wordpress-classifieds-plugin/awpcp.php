@@ -3,7 +3,7 @@
  Plugin Name: Another Wordpress Classifieds Plugin (AWPCP)
  Plugin URI: http://www.awpcp.com
  Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your wordpress blog. <strong>!!!IMPORTANT!!!</strong> Whether updating a previous installation of Another Wordpress Classifieds Plugin or installing Another Wordpress Classifieds Plugin for the first time, please backup your wordpress database before you install/uninstall/activate/deactivate/upgrade Another Wordpress Classifieds Plugin.
- Version: 3.5.1
+Version: 3.5.2
  Author: D. Rodenbaugh
  License: GPLv2 or any later version
  Author URI: http://www.skylineconsult.com
@@ -264,6 +264,7 @@ require_once( AWPCP_DIR . "/includes/class-listing-is-about-to-expire-notificati
 require_once( AWPCP_DIR . "/includes/class-listings-collection.php" );
 require_once( AWPCP_DIR . "/includes/class-listings-metadata.php" );
 require_once( AWPCP_DIR . "/includes/class-media-api.php" );
+require_once( AWPCP_DIR . "/includes/class-missing-pages-finder.php" );
 require_once( AWPCP_DIR . "/includes/class-secure-url-redirection-handler.php" );
 require_once( AWPCP_DIR . "/includes/class-roles-and-capabilities.php" );
 require_once( AWPCP_DIR . "/includes/class-users-collection.php" );
@@ -692,7 +693,7 @@ class AWPCP {
 					'url' => 'http://awpcp.com/premium-modules/attachments-module/?ref=panel',
 					'installed' => defined( 'AWPCP_ATTACHMENTS_MODULE' ),
 					'version' => 'AWPCP_ATTACHMENTS_MODULE_DB_VERSION',
-					'required' => '3.4.2',
+					'required' => '3.5.1',
 				),
 				'authorize.net' => array(
 					'name' => __(  'Authorize.Net', 'AWPCP'  ),
@@ -811,7 +812,7 @@ class AWPCP {
                     'url' => 'http://www.awpcp.com/',
                     'installed' => defined( 'AWPCP_VIDEOS_MODULE' ),
                     'version' => 'AWPCP_VIDEOS_MODULE_DB_VERSION',
-                    'required' => '1.0.3',
+                    'required' => '3.5.1',
                     'private' => true,
                 ),
 				'xml-sitemap' => array(
@@ -1184,44 +1185,6 @@ class AWPCP {
 		);
 
 		do_action( 'wp_affiliate_process_cart_commission', $data );
-	}
-
-	public function get_missing_pages() {
-		global $awpcp, $wpdb;
-
-		// pages that are registered in the code but no referenced in the DB
-		$shortcodes = awpcp_pages();
-		$registered = array_keys($shortcodes);
-		$referenced = $wpdb->get_col('SELECT page FROM ' . AWPCP_TABLE_PAGES);
-		$missing = array_diff($registered, $referenced);
-
-		// pages that are referenced but no longer registered in the code
-		$leftovers = array_diff($referenced, $registered);
-
-		$excluded = array_merge(array('view-categories-page-name'), $leftovers);
-
-		$query = 'SELECT pages.page, pages.id, posts.ID post ';
-		$query.= 'FROM ' . AWPCP_TABLE_PAGES . ' AS pages ';
-		$query.= 'LEFT JOIN ' . $wpdb->posts . ' AS posts ON (posts.ID = pages.id) ';
-		$query.= "WHERE posts.ID IS NULL OR posts.post_status != 'publish'";
-
-		if (!empty($excluded)) {
-			$query.= " AND pages.page NOT IN ('" . join("','", $excluded) . "')";
-		}
-
-		$orphan = $wpdb->get_results($query);
-
-		// if a page is registered in the code but there is no reference
-		// of it in the database, create it.
-		foreach ($missing as $page) {
-			$item = new stdClass();
-			$item->page = $page;
-			$item->id = -1;
-			$item->post = null;
-			array_push($orphan, $item);
-		}
-
-		return $orphan;
 	}
 
 	public function restore_pages() {
