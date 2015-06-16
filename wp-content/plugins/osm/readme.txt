@@ -3,7 +3,7 @@ Contributors: MiKa
 Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, Open Layers, Open Street Map, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, OpenWeatherMap, Weather, OpenSeaMap, stamen, basemap, exif, meta, widget
 Requires at least: 2.8
 Tested up to: 4.2.2
-Stable tag: 3.3.1
+Stable tag: 3.3.2
 
 Customize maps in your post, pages and widgets. Add geotag to your blog and site. Use GPX, KML, CSV, TXT ... 
 
@@ -34,7 +34,7 @@ Languages - thanks to:
 * English
 * Deutsch
 * Japanese [by Sykane]
-* French [by Tounoki]
+* French [by Tounoki and Marc]
 * Russian [by Вячеслав Стренадко/Vyacheslav Strenadko]
 * Italian [by Andrea Giacomelli]
 
@@ -69,6 +69,11 @@ There must be not format tag (like href ...) in the shortcode.
 
 
 == Changelog ==
+= 3.3.3 =
+* FIX: Marker anchor moved when zooming
+* FIX: French translation by Marc - thanks!
+= 3.3.2 =
+* NEW: Show description in KML file for osm_map_v3 shortcode
 = 3.3.1 =
 * FIX: wrong icons at osm_map_v3 shortcode
 = 3.3 =

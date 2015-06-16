@@ -48,8 +48,8 @@ function osm_addPopupClickhandler(a_MapObj, a_MapStr) {
 		  if (features[i].get("name")){
           NumOfNamedFeatures++;
           name_str = features[i].get("name");
-          desc_str = features[i].get("desc");
-          name_str = name_str ;
+          desc_str = features[i].get("description");
+          name_str = name_str + desc_str;
           if (features.length > 0) {name_str = name_str + "<br>"}
         }
         else{
@@ -70,7 +70,7 @@ function osm_addPopupClickhandler(a_MapObj, a_MapStr) {
     a_MapObj.on("singleclick", function(evt) {ClickdisplayFeatureInfo(evt);}); 
 }
 
-function osm_addMarkerLayer(a_mapname, a_lon, a_lat, a_MarkerName) {
+function osm_addMarkerLayer(a_mapname, a_lon, a_lat, a_MarkerName, a_MarkerXAnchor, a_MarkerYAnchor) {
   var iconFeature = new ol.Feature({
     geometry: new ol.geom.Point(
       ol.proj.transform([a_lon,a_lat], "EPSG:4326", "EPSG:3857")),
@@ -78,8 +78,8 @@ function osm_addMarkerLayer(a_mapname, a_lon, a_lat, a_MarkerName) {
   });
         var iconStyle = new ol.style.Style({
           image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
-            anchor: [0.5, 46],
-            anchorXUnits: "fraction",
+            anchor: [(a_MarkerXAnchor * -1),(a_MarkerYAnchor * -1)],
+            anchorXUnits: "pixels",
             anchorYUnits: "pixels",
             opacity: 0.9,
             src: a_MarkerName

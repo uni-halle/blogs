@@ -77,7 +77,6 @@ function osm_map_create_shortcode_function( $post ) {
   <ul class="tab-links">
     <li class="active"><a href="#tab_marker"><?php _e('Marker','OSM-plugin') ?></a></li>
     <li><a href="#tab_file_list">GPX | KML</a></li>
-	<li><a href="#tab_file">TXT</a></li>
     <li><a href="#tab_geotag"><?php _e('Geotagged','OSM-plugin') ?></a></li>
     <li><a href="#tab_about"><?php _e('About','OSM-plugin') ?></a></li>
   </ul>
@@ -121,30 +120,7 @@ function osm_map_create_shortcode_function( $post ) {
       echo $link;?></b><br><br>
       <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_file_list_sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
      </div> <!-- id="tab_file_list" -->
-	
-    <div id="tab_file" class="tab">
-      <b>1. <?php _e('Map type','OSM-plugin') ?></b>:
-      <select name="osm_file_map_type">
-      <?php include('osm-maptype-select.php'); ?>
-      </select>
-      <b>2. <?php _e('OSM control theme','OSM-plugin') ?></b>: 
-      <select name="osm_file_theme">
-      <?php include('osm-theme-select.php'); ?>
-      </select><br><br>
-      <b>3. <?php _e('If you want to add a file (KML, GPX, TXT):','OSM-plugin') ?></b>
-      <select name="osm_file_add_file">
-      <?php include('osm-file-select.php'); ?>
-      </select><br><br>
-      <b>4. <?php _e('Paste the local URL of file here: ','OSM-plugin') ?></b><br>
-      <?php _e('Do not save any of your personal data in the plugins/osm folder but in the upload folder!','OSM-plugin') ?><br>
-      <input name="file_FileURL" type="text" size="30" maxlength="200" value="../../../../wp-content/uploads/YOUR-FILE"><br><br>
-      <b>5. <?php $url = 'http://wp-osm-plugin.hanblog.net/'; 
-      $link = sprintf( __( 'Adjust the map and click into the map to generate the shortcode. Find more features  <a href="%s" target="_blank">here</a> !', 'OSM-plugin' ), esc_url( $url ) );
-      echo $link;?></b><br><br>
-      <?php echo Osm::sc_showMap(array('msg_box'=>'metabox_file_sc_gen','lat'=>OSM_default_lat,'long'=>OSM_default_lon,'zoom'=>OSM_default_zoom, 'type'=>'mapnik_ssl', 'width'=>'450','height'=>'300', 'map_border'=>'thin solid grey', 'theme'=>'dark', 'control'=>'mouseposition,scaleline')); ?>
-     </div> <!-- id="tab_file" -->
- 
-     <div id="tab_geotag" class="tab">
+    <div id="tab_geotag" class="tab">
        <b>1. <?php _e('Map type','OSM-plugin') ?></b>:
        <select name="osm_geotag_map_type">
        <?php include('osm-maptype-select.php'); ?>

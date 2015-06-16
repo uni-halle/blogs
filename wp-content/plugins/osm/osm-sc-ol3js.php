@@ -211,7 +211,6 @@
       }
 
      $MarkerUrl = "../../../../wp-content/plugins/osm/icons/".$Icon["name"];
-        
       list($temp_lat, $temp_lon) = Osm::checkLatLongRange('Marker',$temp_lat, $temp_lon,'no');
       if (($temp_lat != 0) || ($temp_lon != 0)){
       // set the center of the map to the first geotag
@@ -219,7 +218,7 @@
         
         $MarkerArray[] = array('lat'=> $temp_lat,'lon'=>$temp_lon,'text'=>$temp_popup,'popup_height'=>'150', 'popup_width'=>'150');
         //$output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.') ; ';
-        $output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.',"'.$MarkerUrl.'") ; ';
+        $output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.',"'.$MarkerUrl.'",'.$Icon["offset_width"].','.$Icon["offset_height"].') ; ';
       }// templat lon != 0
     } //($marker_latlon  == 'OSM_geotag')
     else if (strtolower($marker_latlon) != 'no'){
@@ -248,7 +247,7 @@
         $lon_marker = $temp_lon;
         $MarkerUrl = "../../../../wp-content/plugins/osm/icons/".$Icon["name"];
         $MarkerArray[] = array('lat'=> $temp_lat,'lon'=>$temp_lon,'text'=>$temp_popup,'popup_height'=>'150', 'popup_width'=>'150');
-        $output .= 'osm_addMarkerLayer('.$MapName.','.$lon_marker.','.$lat_marker.',"'.$MarkerUrl.'") ; ';
+        $output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.',"'.$MarkerUrl.'",'.$Icon["offset_width"].','.$Icon["offset_height"].') ; ';
       }// templat lon != 0
 
 }
