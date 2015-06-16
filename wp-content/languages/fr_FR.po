@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-04-24 12:16:55+0000\n"
+"PO-Revision-Date: 2015-06-12 09:59:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2780,11 +2780,6 @@ msgstr "Une page statique"
 msgid "Background Color"
 msgstr "Couleur d&rsquo;arrière-plan"
 
-#: wp-includes/class-wp-customize-control.php:974
-#: wp-includes/class-wp-customize-manager.php:1326
-msgid "Background Image"
-msgstr "Image d&rsquo;arrière-plan"
-
 #: wp-includes/class-wp-customize-manager.php:1348
 msgid "Background Repeat"
 msgstr "Répétition de l&rsquo;arrière-plan"
@@ -2793,13 +2788,18 @@ msgstr "Répétition de l&rsquo;arrière-plan"
 msgid "Background Position"
 msgstr "Position d&rsquo;arrière-plan"
 
-#: wp-includes/class-wp-customize-manager.php:1381
-msgid "Background Attachment"
-msgstr "Image d&rsquo;arrière-plan"
-
 #: wp-includes/class-wp-customize-manager.php:1277
 msgid "Display Header Text"
 msgstr "Afficher le texte d&rsquo;en-tête"
+
+#: wp-includes/class-wp-customize-manager.php:1381
+msgid "Background Attachment"
+msgstr "Image d’arrière-plan"
+
+#: wp-includes/class-wp-customize-control.php:974
+#: wp-includes/class-wp-customize-manager.php:1326
+msgid "Background Image"
+msgstr "Image d’arrière-plan"
 
 #: wp-includes/class-wp-customize-control.php:911
 msgid "Change Image"
@@ -5994,10 +5994,6 @@ msgstr "Les nouvelles inscriptions ne sont pas autorisées pour l&rsquo;instant.
 msgid "Registration complete. Please check your e-mail."
 msgstr "Enregistrement terminé. Veuillez vérifier vos nouveaux e-mails."
 
-#: wp-mail.php:54
-msgid "There doesn&#8217;t seem to be any new mail."
-msgstr "Il ne semble pas y avoir de nouvel e-mail."
-
 #: wp-mail.php:122
 msgid "Author is %s"
 msgstr "L&rsquo;auteur est %s"
@@ -6041,10 +6037,6 @@ msgstr "Si vous n&#8217;activez pas votre compte sous deux jours, vous devrez vo
 #: wp-signup.php:565
 msgid "Signup"
 msgstr "Inscription"
-
-#: wp-signup.php:670
-msgid "Registration has been disabled."
-msgstr "Les inscriptions ne sont pas autorisées pour le moment."
 
 #: wp-includes/default-widgets.php:410
 msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
@@ -6298,6 +6290,14 @@ msgstr "Barrer"
 msgid "number_format_thousands_sep"
 msgstr " "
 
+#: wp-mail.php:54
+msgid "There doesn&#8217;t seem to be any new mail."
+msgstr "Il ne semble pas y avoir de nouveau message."
+
+#: wp-signup.php:670
+msgid "Registration has been disabled."
+msgstr "Les inscriptions ont été désactivées."
+
 #: wp-includes/default-widgets.php:1261
 msgid "Tag Cloud"
 msgstr "Nuage d’étiquettes"
@@ -6478,12 +6478,6 @@ msgstr "Site web"
 msgid "Widgets"
 msgstr "Widgets"
 
-#: wp-includes/class-wp-xmlrpc-server.php:1393
-#: wp-includes/class-wp-xmlrpc-server.php:4182
-#: wp-includes/class-wp-xmlrpc-server.php:4615
-msgid "Sorry, your entry could not be posted. Something wrong happened."
-msgstr "Désolé, votre entrée n&rsquo;a pas pu être publiée. Une erreur est survenue."
-
 #: wp-includes/class-wp-xmlrpc-server.php:4232
 #: wp-includes/class-wp-xmlrpc-server.php:4706
 msgid "Sorry, you do not have the right to edit this post."
@@ -6600,10 +6594,6 @@ msgstr "Dernière mise à jour&nbsp;: %s"
 msgid "Bookmarks"
 msgstr "Favoris"
 
-#: wp-includes/category-template.php:486
-msgid "No categories"
-msgstr "Pas de catégorie"
-
 #: wp-includes/category-template.php:723 wp-includes/category-template.php:732
 msgid "%s topic"
 msgid_plural "%s topics"
@@ -6712,13 +6702,23 @@ msgstr "Cliquez ici pour annuler la réponse."
 msgid "<strong>ERROR</strong>: Please enter a username."
 msgstr "<strong>ERREUR</strong>&nbsp;: veuillez renseigner l&rsquo;identifiant."
 
-#: wp-includes/class-wp-xmlrpc-server.php:491
-msgid "Allow people to post comments on new articles"
-msgstr "Autoriser les visiteurs à publier des commentaires sur les derniers articles"
-
 #: wp-includes/comment-template.php:2206
 msgid "Email"
 msgstr "Adresse de contact"
+
+#: wp-includes/class-wp-xmlrpc-server.php:1393
+#: wp-includes/class-wp-xmlrpc-server.php:4182
+#: wp-includes/class-wp-xmlrpc-server.php:4615
+msgid "Sorry, your entry could not be posted. Something wrong happened."
+msgstr "Désolé, une erreur est survenue et votre texte n&rsquo;a pas pu être publié."
+
+#: wp-includes/class-wp-xmlrpc-server.php:491
+msgid "Allow people to post comments on new articles"
+msgstr "Autoriser les lecteurs à publier des commentaires sur les nouveaux articles"
+
+#: wp-includes/category-template.php:486
+msgid "No categories"
+msgstr "Aucune catégorie"
 
 #: wp-includes/taxonomy.php:493
 msgid "Separate tags with commas"
