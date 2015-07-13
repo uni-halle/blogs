@@ -3,9 +3,9 @@
  * Plugin Name: Social Media Widget
  * Plugin URI: http://wordpress.org/extend/plugins/social-media-widget/
  * Description: Adds links to all of your social media and sharing site profiles. Tons of icons come in 3 sizes, 4 icon styles, and 4 animations.
- * Version: 4.0.2
- * Author: Blink Web Effects
- * Author URI: http://blinkwebeffects.com/
+ * Version: 4.0.3
+ * Author: Noah Kagan
+ * Author URI: http://sumome.com
  **/
 
 
@@ -1060,10 +1060,12 @@ class Social_Widget extends WP_Widget {
 		</script>
 		<div style="clear: both;"></div>
 		<!-- Promo -->
-		<br /><p><b>Are you looking for <b>custom development</b>, <b>SEO</b> or <b>online marketing</b> services? <a href="http://blinkwebeffects.com/services/" target="_blank">
-		Click here to learn more and contact us today.</a></b></p> 
-		
-		
+		<br />
+		<?php add_thickbox(); ?>
+		<p style="font-weight:bold;">
+			Looking for more sharing tools?<br />
+			<a href="<?php echo admin_url('plugin-install.php?tab=plugin-information&plugin=sumome&TB_iframe=true&width=743&height=500'); ?>" class="thickbox">Checkout our SumoMe plugin!</a>
+		</p>
 		
 	<?php
 	}
@@ -1074,4 +1076,46 @@ add_action('wp_head', 'Social_Widget_Scripts');
 
 /* Load the widget */
 add_action( 'widgets_init', 'socialwidget_load_widgets' );
-?>
+
+add_option('socialwidget_global_notification', 1);
+
+function socialwidget_settings_page() {
+	include(plugin_dir_path( __FILE__ ).'/settings.php');
+}
+
+function socialwidget_plugins_page() {
+	include(plugin_dir_path( __FILE__ ).'/other_plugins.php');
+}
+
+function socialwidget_top_level_menu() {
+	add_menu_page( 'Social Media Widget', 'Social Media Widget', 'manage_options', 'social-media-widget', 'socialwidget_settings_page', 'dashicons-share');
+	//add_submenu_page( 'social-media-widget', 'Other Plugins', 'Other Plugins', 'manage_options', 'social-media-widget-other-plugins', 'socialwidget_other_plugins_page');
+}
+
+add_action( 'admin_menu', 'socialwidget_top_level_menu' );
+
+function socialwidget_global_notice() {
+	if (in_array(substr(basename($_SERVER['REQUEST_URI']), 0, 11), array('plugins.php', 'index.php')) && get_option('socialwidget_global_notification') == 1) {
+		?>
+			<style type="text/css">
+				#socialwidget_global_notification a.button:active {vertical-align:baseline;}
+			</style>
+			<div class="updated" id="socialwidget_global_notification" style="border:3px solid #317A96;position:relative;background:##3c9cc2;background-color:#3c9cc2;color:#ffffff;height:70px;">
+				<a class="notice-dismiss" href="<?php echo admin_url('admin.php?page=social-media-widget&socialwidget_global_notification=0'); ?>" style="right:165px;top:0;"></a>
+				<a href="<?php echo admin_url('admin.php?page=social-media-widget&socialwidget_global_notification=0'); ?>" style="position:absolute;top:9px;right:15px;color:#ffffff;">Dismiss and go to settings</a>
+				<p style="font-size:16px;line-height:50px;">
+					<?php _e('Looking for more sharing tools?'); ?> &nbsp;<a style="background-color: #6267BE;border-color: #3C3F76;" href="<?php echo admin_url('plugin-install.php?tab=plugin-information&plugin=sumome&TB_iframe=true&width=743&height=500'); ?>" class="thickbox button button-primary">Get SumoMe WordPress Plugin</a>
+				</p>
+	        </div>
+		<?php
+	}
+}
+add_action( 'admin_notices', 'socialwidget_global_notice' );
+
+
+function socialwidget_deactivate() {
+	delete_option('socialwidget_global_notification');
+}
+
+register_deactivation_hook( __FILE__, 'socialwidget_deactivate' );
+
