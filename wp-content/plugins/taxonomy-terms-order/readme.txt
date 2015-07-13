@@ -48,6 +48,11 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 == Change Log ==
 
+= 1.4.4 =
+  - User role switch from deprecated user_level to capabilities 
+  - Taxonomy sort for media
+  - Admin Options update
+
 = 1.4.2 =
   - Iranian Language (eydaaad@gmail.com) 
   - Admin css updates.
