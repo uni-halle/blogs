@@ -1,21 +1,19 @@
-=== Facebook Like Button===
+=== (PressGraph) Facebook Like===
 Contributors: AhmedGeek
-Donate link: http://www.indiegogo.com/TheGeekWedding/x/2240075
-Tags: Share, Facebook, Button, Like
+Tags: facebook, like, button, recommendations, opengraph, seo, recommend, sharing, social, pressgraph
 Requires at least: 2.5
-Tested up to: 3.5
-Stable tag: 5.9.71
+Tested up to: 4.2.2
+Stable tag: 6.0.0
+License: GPL2
 
-Add the new Facebook Like button and Facebook Recommendations widget to your wordpress blog.
+Plugin that helps you add the Facebook Like button to your website, without any coding required.
+
 
 == Description ==
 
-Add Facebook Like Button to your wordpress blog with a lot of customization options, And you can preview the settings at real-time in the settings section.
-Add the button count, or normal by using short cuts [fb_like] [fb_count].
+Add Facebook Like Button to your WordPress blog with lots of customizations, it supports Custom Post Types, with ability to disable the button for specific posts/pages, and you get live preview of the button on the settings page, so you can decide which look is the best for you.
 
-Add Facebook Recommendations Widget to your blog sidebar or to anywhere using this shortcut [fb_rec].
-
-Mulitple language support, you can change the button language to your language in 3.4! Feature added by anty http://anty.at
+Helps you add the OpenGraph meta tags, and you can customize the og:image meta tag, and add custom image for each post or default og:image for the entire website.
 
 == Installation ==
 
@@ -26,13 +24,47 @@ Mulitple language support, you can change the button language to your language i
 
 == Screenshots ==
 1. Like Button Settings Section.
-2. Inside the post.
-3. Recommendations Widget.
-4. Facebook Recommendations Settings Section.
+2. Custom post settings.
+3. The Like Button.
 
+== Frequently Asked Questions ==
+
+= What's the shortcode for the like button? =
+
+The Shortcode used inside post and pages or anywhere in the website is [PressGraphLike]
+You can customize the shortcode (button) using the following attributes:
+
+1. url (the url used inside the like button)
+2. colorscheme [should = (light or dark)]
+3. width (eg. 40px)
+4. layout [should = (standard, box_count, button_count or button)]
+5. action [should = (like or recommend)]
+6. show_faces [should = (true or false)]
+7. share [should = (true or false)]
 
 
 == Changelog ==
+
+= 6.0.2 =
+* Minor Bug Fix
+
+= 6.0.1 =
+* Minor Bug Fix
+
+= 6.0.0 =
+* Completely rewritten using object oriented php.
+* WordPress Settings API implementation.
+* WordPress Post Meta API implementation.
+* Custom og:images for each post.
+* Support for custom types.
+* Fixing major stability issues.
+* Enhanced security.
+* Enhanced locale support (now uses default website locale).
+* New Shortcode.
+
+
+= 5.9.7.2 =
+* Fixing Header Already Sent Issue
 
 = 5.9.71 =
 * Adding Indiegogo Campaign Video and Status to the Plugin Control Panel (Help Make it Happen Check your Like Button Settings Panel)
@@ -194,7 +226,7 @@ Mulitple language support, you can change the button language to your language i
 
 
 == Upgrade Notice ==
-
+	
 = 2.0 =
 Add new features and fix some bugs.
 
@@ -339,3 +371,20 @@ Bugs Fixed.
 
 = 5.9.7 =
 * Removing Wedding Banner
+
+= 5.9.7.2 =
+* Fixing Header Already Sent Issue
+
+= 6.0.0 =
+* Completely rewritten using object oriented php.
+* WordPress Settings API implementation.
+* WordPress Post Meta API implementation.
+* Custom og:images for each post.
+* Support for custom types.
+* Fixing major stability issues.
+* Enhanced security.
+* Enhanced locale support (now uses default website locale).
+* New Shortcode.
+
+= 6.0.1 =
+* Minor Bug Fix
