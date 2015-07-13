@@ -679,7 +679,7 @@
           }          
           if (jQuery('#form<?php print $instance['db_id'] ?> #method').val() == 'grid' || jQuery('#form<?php print $instance['db_id'] ?> #method').val() == 'grid-page') {
             jQuery('#form<?php print $instance['db_id'] ?> #gridOptions').show();
-          } else if (jQuery('#setupForm<?php print $instance['db_id'] ?> #method').val() == 'slideshow') {
+          } else if (jQuery('#form<?php print $instance['db_id'] ?> #method').val() == 'slideshow') {
             jQuery('#form<?php print $instance['db_id'] ?> .slideshowOptions').show();
           }          
         }
