@@ -13,14 +13,14 @@ class Sidebar_Login_Widget extends WP_Widget {
 	private $options  = array();
 
     /**
-     * Sidebar_Login_Widget function.
+     * Constructor
      */
-    public function Sidebar_Login_Widget() {
+    public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'description' => __( 'Displays a login area in the sidebar.', 'sidebar-login' ) );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'wp_sidebarlogin', __( 'Sidebar Login', 'sidebar-login' ), $widget_ops );
+		parent::__construct( 'wp_sidebarlogin', __( 'Sidebar Login', 'sidebar-login' ), $widget_ops );
     }
 
     /**
@@ -59,7 +59,7 @@ class Sidebar_Login_Widget extends WP_Widget {
 				'label'           => __( 'Login Redirect URL', 'sidebar-login' ),
 				'default'         => '',
 				'type'            => 'text',
-				'placeholder'     => 'Current page URL'
+				'placeholder'     => __( 'Current page URL', 'sidebar-login' )
 			),
 			'break-1'           => array(
 				'type'            => 'break'
@@ -72,7 +72,7 @@ class Sidebar_Login_Widget extends WP_Widget {
 			'logged_in_links'  => array(
 				'label'           => __( 'Links', 'sidebar-login' ) . ' (<code>' . __( 'Text | HREF | Capability', 'sidebar-login' ) . '</code>)',
 				'description'     => sprintf( __( '<a href="%s">Capability</a> (optional) refers to the type of user who can view the link.', 'sidebar-login' ), 'http://codex.wordpress.org/Roles_and_Capabilities' ),
-				'default'         => "Dashboard | %admin_url%\nProfile | %admin_url%/profile.php\nLogout | %logout_url%",
+				'default'         => __( "Dashboard | %admin_url%\nProfile | %admin_url%/profile.php\nLogout | %logout_url%", 'sidebar-login' ),
 				'type'            => 'textarea'
 			),
 			'show_avatar'  => array(
@@ -84,7 +84,7 @@ class Sidebar_Login_Widget extends WP_Widget {
 				'label'           => __( 'Logout Redirect URL', 'sidebar-login' ),
 				'default'         => '',
 				'type'            => 'text',
-				'placeholder'     => 'Current page URL'
+				'placeholder'     => __( 'Current page URL', 'sidebar-login' )
 			)
 		);
     }
@@ -97,8 +97,14 @@ class Sidebar_Login_Widget extends WP_Widget {
     public function replace_tags( $text ) {
 	    if ( $this->user ) {
 		    $text = str_replace(
-		    	array( '%username%', '%userid%' ),
-		    	array( ucwords( $this->user->display_name ), $this->user->ID ),
+		    	array( '%username%', '%userid%', '%firstname%', '%lastname%', '%name%' ),
+		    	array(
+		    		ucwords( $this->user->display_name ),
+		    		$this->user->ID,
+		    		$this->user->first_name,
+		    		$this->user->last_name,
+		    		trim( $this->user->first_name . ' ' . $this->user->last_name )
+		    	),
 		    	$text
 		    );
 
