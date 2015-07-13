@@ -2371,7 +2371,7 @@ class CommentpressCoreDatabase {
 	 * When a comment is saved, this also saves the text signature
 	 *
 	 * @param int $comment_id The numeric ID of the comment
-	 * @return boolean $result True if successful, false otherwose
+	 * @return boolean $result True if successful, false otherwise
 	 */
 	public function save_comment_signature( $comment_ID ) {
 
@@ -2408,6 +2408,70 @@ class CommentpressCoreDatabase {
 
 		// --<
 		return $result;
+
+	}
+
+
+
+	/**
+	 * When a comment is saved, this also saves the text selection
+	 *
+	 * @param int $comment_id The numeric ID of the comment
+	 * @return boolean $result True if successful, false otherwise
+	 */
+	public function save_comment_selection( $comment_id ) {
+
+		// get text selection
+		$text_selection = ( isset( $_POST['text_selection'] ) ) ? $_POST['text_selection'] : '';
+
+		// bail if we didn't get one
+		if ( $text_selection == '' ) return true;
+
+		// sanity check: must have a comma
+		if ( stristr( $text_selection, ',' ) === false ) return true;
+
+		// make into an array
+		$selection = explode( ',', $text_selection );
+
+		// sanity check: must have only two elements
+		if ( count( $selection ) != 2 ) return true;
+
+		// sanity check: both elements must be integers
+		$start_end = array();
+		foreach( $selection AS $item ) {
+
+			// not integer - kick out
+			if ( ! is_numeric( $item ) ) return true;
+
+			// cast as integer and add to array
+			$start_end[] = absint( $item );
+
+		}
+
+		// okay, we're good to go...
+		$selection_data = implode( ',', $start_end );
+
+		// set key
+		$key = '_cp_comment_selection';
+
+		// get current
+		$current = get_comment_meta( $comment_id, $key, true );
+
+		// if the comment meta already has a value...
+		if ( ! empty( $current ) ) {
+
+			// update the data
+			update_comment_meta( $comment_id, $key, $selection_data );
+
+		} else {
+
+			// add the data
+			add_comment_meta( $comment_id, $key, $selection_data, true );
+
+		}
+
+		// --<
+		return true;
 
 	}
 
@@ -2546,10 +2610,16 @@ class CommentpressCoreDatabase {
 			// comments must be closed
 			$vars['cp_comments_open'] = 'n';
 
+			// set empty permalink
+			$vars['cp_permalink'] = '';
+
 		} else {
 
 			// check for post comment_status
 			$vars['cp_comments_open'] = ( $post->comment_status == 'open' ) ? 'y' : 'n';
+
+			// set post permalink
+			$vars['cp_permalink'] = get_permalink( $post->ID );
 
 		}
 
@@ -2628,12 +2698,7 @@ class CommentpressCoreDatabase {
 		$vars['cp_tinymce'] = 1;
 
 		// check if users must be logged in to comment
-		if (
-
-			get_option( 'comment_registration' ) == '1' AND
-			! is_user_logged_in()
-
-		) {
+		if ( get_option( 'comment_registration' ) == '1' AND ! is_user_logged_in() ) {
 
 			// don't add rich text editor
 			$vars['cp_tinymce'] = 0;
@@ -2642,10 +2707,8 @@ class CommentpressCoreDatabase {
 
 		// check CP option
 		if (
-
 			$this->option_exists( 'cp_comment_editor' ) AND
 			$this->option_get( 'cp_comment_editor' ) != '1'
-
 		) {
 
 			// don't add rich text editor
@@ -2654,12 +2717,7 @@ class CommentpressCoreDatabase {
 		}
 
 		// if on a public groupblog and user isn't logged in
-		if (
-
-			$this->parent_obj->is_groupblog() AND
-			! is_user_logged_in()
-
-		) {
+		if ( $this->parent_obj->is_groupblog() AND ! is_user_logged_in() ) {
 
 			// don't add rich text editor, because only members can comment
 			$vars['cp_tinymce'] = 0;
@@ -2700,6 +2758,17 @@ class CommentpressCoreDatabase {
 
 		}
 
+		// add touch testing var
+		$vars['cp_touch_testing'] = 0;
+
+		// have we set our testing constant?
+		if ( defined( 'COMMENTPRESS_TOUCH_SELECT' ) AND COMMENTPRESS_TOUCH_SELECT ) {
+
+			// support touch device testing
+			$vars['cp_touch_testing'] = 1;
+
+		}
+
 		// add tablet var
 		$vars['cp_is_tablet'] = 0;
 
@@ -2733,10 +2802,8 @@ class CommentpressCoreDatabase {
 
 		// check option
 		if (
-
 			$this->option_exists( 'cp_promote_reading' ) AND
 			$this->option_get( 'cp_promote_reading' ) != '1'
-
 		) {
 
 			// promote commenting
@@ -2773,12 +2840,6 @@ class CommentpressCoreDatabase {
 		global $page;
 		$vars['cp_multipage_page'] = ( ! empty( $page ) ) ? $page : 0;
 
-		// add path to template directory
-		$vars['cp_template_dir'] = get_template_directory_uri();
-
-		// add path to plugin directory
-		$vars['cp_plugin_dir'] = WP_PLUGIN_URL . '/' . str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
-
 		// are chapters pages?
 		$vars['cp_toc_chapter_is_page'] = $this->option_get( 'cp_toc_chapter_is_page' );
 
@@ -2810,10 +2871,8 @@ class CommentpressCoreDatabase {
 
 		// check option
 		if (
-
 			$this->option_exists( 'cp_textblock_meta' ) AND
 			$this->option_get( 'cp_textblock_meta' ) == 'n'
-
 		) {
 
 			// only show textblock meta on rollover
@@ -2838,35 +2897,6 @@ class CommentpressCoreDatabase {
 		// do we have a user agent?
 		if ( isset( $_SERVER["HTTP_USER_AGENT"] ) ) {
 
-			// NOTE: keep an eye on touchphone agents
-
-			// get agent
-			$agent = $_SERVER["HTTP_USER_AGENT"];
-
-			// init touchphone array
-			$touchphones = array(
-				'iPhone',
-				'iPod',
-				'Android',
-				'BlackBerry9530',
-				'LG-TU915 Obigo', // LG touch browser
-				'LGE VX',
-				'webOS', // Palm Pre, etc.
-			);
-
-			// loop through them
-			foreach( $touchphones AS $phone ) {
-
-				// test for its name in the agent string
-				if ( strpos( $agent, $phone ) !== false ) {
-
-					// set flag
-					$this->is_mobile_touch = true;
-
-				}
-
-			}
-
 			// the old Commentpress also includes Mobile_Detect
 			if ( ! class_exists( 'Mobile_Detect' ) ) {
 
@@ -2878,19 +2908,36 @@ class CommentpressCoreDatabase {
 			// init
 			$detect = new Mobile_Detect();
 
+			// init mobile flag
+			$this->is_mobile = false;
+
 			// is it mobile?
 			if ( $detect->isMobile() ) {
 
-				// set flag
+				// overwrite flag
 				$this->is_mobile = true;
 
 			}
 
+			// init tablet flag
+			$this->is_tablet = false;
+
 			// is it a tablet?
 			if ( $detect->isTablet() ) {
 
-				// set flag
+				// overwrite flag
 				$this->is_tablet = true;
+
+			}
+
+			// init touch flag
+			$this->is_mobile_touch = false;
+
+			// to guess at touch devices, we assume *either* phone *or* tablet
+			if ( $detect->isMobile() OR $detect->isTablet() ) {
+
+				// overwrite flag
+				$this->is_mobile_touch = true;
 
 			}
 
@@ -2939,6 +2986,28 @@ class CommentpressCoreDatabase {
 
 		// --<
 		return $this->is_tablet;
+
+	}
+
+
+
+	/**
+	 * Returns class properties for touch devices
+	 *
+	 * @return bool $is_touch True if touch device, false otherwise
+	 */
+	public function is_touch() {
+
+		// do we have the property?
+		if ( ! isset( $this->is_mobile_touch ) ) {
+
+			// get it
+			$this->test_for_mobile();
+
+		}
+
+		// --<
+		return $this->is_mobile_touch;
 
 	}
 
