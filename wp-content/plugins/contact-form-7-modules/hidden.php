@@ -5,12 +5,12 @@ Plugin URI: https://katz.co/contact-form-7-hidden-fields/
 Description: Add hidden fields to the popular Contact Form 7 plugin.
 Author: Katz Web Services, Inc.
 Author URI: http://www.katzwebservices.com
-Version: 1.4.2
+Version: 2.0
 Text Domain: cf7_modules
 Domain Path: languages
 */
 
-/*  Copyright 2014 Katz Web Services, Inc. (email: info at katzwebservices.com)
+/*  Copyright 2015 Katz Web Services, Inc. (email: info at katzwebservices.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -39,9 +39,8 @@ add_action('plugins_loaded', 'contact_form_7_hidden_fields', 11);
 
 function contact_form_7_hidden_fields() {
 	global $pagenow;
-	if(function_exists('wpcf7_add_shortcode')) {
-		wpcf7_add_shortcode( 'hidden', 'wpcf7_hidden_shortcode_handler', true );
-		wpcf7_add_shortcode( 'hidden*', 'wpcf7_hidden_shortcode_handler', true );
+	if( class_exists('WPCF7_Shortcode') ) {
+		wpcf7_add_shortcode( array( 'hidden', 'hidden*' ), 'wpcf7_hidden_shortcode_handler', true );
 	} else {
 		if($pagenow != 'plugins.php') { return; }
 		add_action('admin_notices', 'cfhiddenfieldserror');
@@ -68,17 +67,16 @@ function contact_form_7_hidden_fields_scripts() {
 ** A base module for [hidden] and [hidden*]
 **/
 
-add_action('admin_init', 'load_contact_form_7_modules_functions');
-
-if(!function_exists('load_contact_form_7_modules_functions')) {
-	function load_contact_form_7_modules_functions() {
-		include_once(plugin_dir_path( __FILE__ ).'functions.php');
-	}
-}
-
 /* Shortcode handler */
 
 add_filter('wpcf7_form_elements', 'wpcf7_form_elements_strip_paragraphs_and_brs');
+
+/**
+ * Strip paragraph tags being wrapped around the field
+ * @param $form
+ *
+ * @return mixed
+ */
 function wpcf7_form_elements_strip_paragraphs_and_brs($form) {
 	return preg_replace_callback('/<p>(<input\stype="hidden"(?:.*?))<\/p>/ism', 'wpcf7_form_elements_strip_paragraphs_and_brs_callback', $form);
 }
@@ -95,158 +93,183 @@ function wpcf7_form_elements_strip_paragraphs_and_brs_callback($matches = array(
 
 function wpcf7_hidden_shortcode_handler( $tag ) {
 
-	if ( ! is_array( $tag ) )
-		return '';
+	$tag = new WPCF7_Shortcode( $tag );
 
-	$type = $tag['type'];
-	$name = $raw_name = $tag['name'];
-	$options = (array) $tag['options'];
-	$values = (array) $tag['values'];
-
-	if ( empty( $name ) ) {
+	if ( empty( $tag->name ) ) {
 		return '';
 	}
 
-	$atts = '';
-	$id_att = '';
-	$class_att = '';
-	$size_att = '';
-	$maxlength_att = '';
-	$tabindex_att = '';
-	$title_att = '';
+	$validation_error = wpcf7_get_validation_error( $tag->name );
 
-	$class_att .= ' wpcf7-hidden';
+	$class = wpcf7_form_controls_class( $tag->type, 'wpcf7-hidden' );
 
-	if ( 'hidden*' == $type )
-		$class_att .= ' wpcf7-validates-as-required';
-
-	foreach ( $options as $option ) {
-		if ( preg_match( '%^id:([-0-9a-zA-Z_]+)$%', $option, $matches ) ) {
-			$id_att = $matches[1];
-
-		} elseif ( preg_match( '%^class:([-0-9a-zA-Z_]+)$%', $option, $matches ) ) {
-			$class_att .= ' ' . $matches[1];
-		}
+	if ( $validation_error ) {
+		$class .= ' wpcf7-not-valid';
 	}
 
-	$value = (string) reset( $values );
+	$class .= ' wpcf7-hidden';
 
-	if ( wpcf7_script_is() && $value && preg_grep( '%^watermark$%', $options ) ) {
-		$class_att .= ' wpcf7-use-title-as-watermark';
-		$title_att .= sprintf( ' %s', $value );
-		$value = '';
+	if ( 'hidden*' === $tag->type ) {
+		$class .= ' wpcf7-validates-as-required';
 	}
 
-	if ( wpcf7_is_posted() )
-		$value = stripslashes_deep( $_POST[$name] );
+	$value = (string) reset( $tag->values );
 
-	if ( $id_att ) {
-		$id_att = trim( $id_att );
-		$atts .= ' id="' . trim( $id_att ) . '"';
-	}
-	if ( $class_att )
-		$atts .= ' class="' . trim( $class_att ) . '"';
-
-	// Add support for new CF7 format
-	if(preg_match('/hidden/ism', $name)) {
-		$name = isset($values[0]) ? $values[0] : $name;
+	$placeholder = '';
+	if ( $tag->has_option( 'placeholder' ) || $tag->has_option( 'watermark' ) ) {
+		$placeholder = $value;
+		$value       = '';
 	}
 
-	$sanitized_name = strtolower(trim($name));
+	$default_value = $tag->get_default_option( $value );
 
-	global $post;
+	$value = contact_form_7_hidden_fields_fill_post_data( $value, $tag );
 
-	if(is_object($post)) {
-
-		switch($sanitized_name) {
-			case 'post_title':
-			case 'post-title':
-				$value = $post->post_title;
-				break;
-			case 'page_url':
-			case 'post_url':
-				$value =  get_permalink($post->ID);
-				if(empty($value) && isset($post->guid)) {
-					$value = $post->guid;
-				}
-				$value = esc_url( $value );
-				break;
-			case 'post_category':
-				$categories = get_the_category($post->ID); $catnames = array();
-				// Get the category names
-				foreach($categories as $cat) { $catnames[] = $cat->cat_name; }
-
-				$value = implode(', ', $catnames);
-				break;
-			case 'post_author_id':
-				$value = $post->post_author;
-				break;
-			case 'post_author':
-				$user = get_userdata($post->post_author);
-				$value = $user->display_name;
-				break;
-			default:
-				// You want post_modified? just use [hidden hidden-123 "post_modified"]
-				if(isset($post->{$name})) { $value = $post->{$name}; }
-				break;
-		}
-
-		if (preg_match('/^custom_field\-(.*?)$/ism', $sanitized_name)) {
-			$custom_field = preg_replace('/custom_field\-(.*?)/ism', '$1', $name);
-			$value = get_post_meta($post->ID, $custom_field, false) ? get_post_meta($post->ID, $custom_field, false) : '';
-		}
-	}
-
-
-	// Process user stuff
-	if (preg_match('/user/ism', $sanitized_name) && is_user_logged_in()) {
-		global $current_user;
-      	get_currentuserinfo();
-
-      	switch ($sanitized_name) {
-      		case 'user_name':
-      			$value = $current_user->user_login;
-      			break;
-      		case 'user_id':
-      			$value = $current_user->ID;
-      			break;
-      		case 'caps':
-      			$value = $current_user->caps;
-      			break;
-      		case 'allcaps':
-      			$value = $current_user->allcaps;
-      			break;
-      		case 'user_roles':
-      			$value = $current_user->roles;
-      			break;
-      		default:
-      			// Gets the values for `user_email`, others that have `user_` prefix.
-      			if($current_user->has_prop($sanitized_name)) {
-      				$value = $current_user->get($sanitized_name);
-      			} else {
-	      			// Define some other item in the WP_User object using the `user_[what you want to get]` format
-	      			// This works for the `user_display_name` setting
-    	  			$user_key = preg_replace('/user[_-](.+)/ism', '$1', $sanitized_name);
-    	  			if($current_user->has_prop($user_key)) {
-      					$value = $current_user->get($user_key);
-      				}
-      			}
-      			break;
-      	}
+	// Post data hasn't filled yet. No arrays.
+	if( $default_value === $value ) {
+		$value = contact_form_7_hidden_fields_fill_user_data( $value );
 	}
 
 	// Arrays get imploded.
-	$value = is_array($value) ? implode(apply_filters('wpcf7_hidden_field_implode_glue', ', '), $value) : $value;
+	$value = is_array( $value ) ? implode( apply_filters( 'wpcf7_hidden_field_implode_glue', ', ' ), $value ) : $value;
 
-	// Make sure we're using a string
-	if(!is_string($value)) { $value = json_encode($value); }
+	// Make sure we're using a string. Objects get JSON-encoded.
+	if ( ! is_string( $value ) ) {
+		$value = json_encode( $value );
+	}
 
-	$value = apply_filters('wpcf7_hidden_field_value', apply_filters('wpcf7_hidden_field_value_'.$id_att, $value));
+	$value = apply_filters( 'wpcf7_hidden_field_value', apply_filters( 'wpcf7_hidden_field_value_' . $tag->get_id_option(), $value ) );
 
-	$html = '<input type="hidden" name="' . $raw_name . '" value="' . esc_attr( $value ) . '"' . $atts . ' />'."\n";
-	if($name !== $raw_name) { $html .= '<input type="hidden" name="' . $name . '" value="' . esc_attr( $value ) . '"' . $atts . ' />'; }
+	$value = wpcf7_get_hangover( $tag->name, $value );
+
+	$atts = array(
+		'type'        => 'hidden',
+		'class'       => $tag->get_class_option( $class ),
+		'id'          => $tag->get_id_option(),
+		'name'        => $tag->name,
+		'tabindex'    => $tag->get_option( 'tabindex', 'int', true ),
+		'placeholder' => $placeholder,
+		'value'       => $value,
+	);
+
+	$atts = wpcf7_format_atts( $atts );
+
+	$html = sprintf( '<input %1$s />%2$s', $atts, $validation_error );
 
 	return $html;
+}
+
+/**
+ * Fill data based on user information.
+ *
+ * @param string $value Existing value, if any
+ *
+ * @return mixed
+ */
+function contact_form_7_hidden_fields_fill_user_data( $value ) {
+
+	$return = $value;
+
+	// Process user stuff
+	if ( preg_match( '/user/ism', strtolower( trim( $value ) ) ) && is_user_logged_in() ) {
+		global $current_user;
+		get_currentuserinfo();
+
+		switch ( $value ) {
+			case 'user_name':
+				$return = $current_user->user_login;
+				break;
+			case 'user_id':
+				$return = $current_user->ID;
+				break;
+			case 'caps':
+				$return = $current_user->caps;
+				break;
+			case 'allcaps':
+				$return = $current_user->allcaps;
+				break;
+			case 'user_roles':
+				$return = $current_user->roles;
+				break;
+			default:
+				// Gets the values for `user_email`, others that have `user_` prefix.
+				if ( $current_user->has_prop( $value ) ) {
+					$return = $current_user->get( $value );
+				} else {
+					// Define some other item in the WP_User object using the `user_[what you want to get]` format
+					// This works for the `user_display_name` setting
+					$user_key = preg_replace( '/user[_-](.+)/ism', '$1', $value );
+					if ( $current_user->has_prop( $user_key ) ) {
+						$return = $current_user->get( $user_key );
+					}
+				}
+				break;
+		}
+	}
+
+	return $return;
+}
+
+/**
+ * Fill data based on user information.
+ *
+ * @param string $value Existing value, if any
+ * @param WPCF7_Shortcode $tag Tag
+ *
+ * @return mixed
+ */
+function contact_form_7_hidden_fields_fill_post_data( $value = '', $tag ) {
+	global $post;
+
+	$return = $value;
+
+	if ( is_object( $post ) ) {
+
+		switch ( strtolower( trim( $value ) ) ) {
+			case 'post_title':
+			case 'post-title':
+				$return = $post->post_title;
+				break;
+			case 'page_url':
+			case 'post_url':
+				$return = get_permalink( $post->ID );
+				if ( empty( $return ) && isset( $post->guid ) ) {
+					$return = $post->guid;
+				}
+				$return = esc_url( $return );
+				break;
+			case 'post_category':
+				$categories = get_the_category( $post->ID );
+				$catnames   = array();
+				// Get the category names
+				foreach ( $categories as $cat ) {
+					$catnames[] = $cat->cat_name;
+				}
+
+				$return = implode( ', ', $catnames );
+				break;
+			case 'post_author_id':
+				$return = $post->post_author;
+				break;
+			case 'post_author':
+				$user   = get_userdata( $post->post_author );
+				$return = $user->display_name;
+				break;
+			default:
+				// You want post_modified? just use [hidden hidden-123 "post_modified"]
+				if ( isset( $post->{ $value } ) ) {
+					$return = $post->{ $value };
+				}
+				break;
+		}
+
+		if ( preg_match( '/^custom_field\-(.*?)$/ism', $value ) ) {
+			$custom_field = preg_replace( '/custom_field\-(.*?)/ism', '$1', $value );
+			$return       = get_post_meta( $post->ID, $custom_field, false ) ? get_post_meta( $post->ID, $custom_field, false ) : '';
+		}
+	}
+
+	return $return;
 }
 
 add_filter('wpcf7_hidden_field_value_example', 'wpcf7_hidden_field_add_query_arg');
@@ -260,59 +283,90 @@ function wpcf7_hidden_field_add_query_arg($value = '') {
 
 /* Tag generator */
 
-add_action( 'admin_init', 'wpcf7_add_tag_generator_hidden', 30 );
+if ( is_admin() ) {
+	add_action( 'admin_init', 'wpcf7_add_tag_generator_hidden', 30 );
+}
 
 function wpcf7_add_tag_generator_hidden() {
-	if(function_exists('wpcf7_add_tag_generator')) {
-		wpcf7_add_tag_generator( 'hidden', __( 'Hidden field', 'cf7_modules' ), 'wpcf7-tg-pane-hidden', 'wpcf7_tg_pane_hidden' );
+
+	if( class_exists('WPCF7_TagGenerator') ) {
+
+		$tag_generator = WPCF7_TagGenerator::get_instance();
+		$tag_generator->add( 'hidden', __( 'hidden', 'cf7_modules' ), 'wpcf7_tg_pane_hidden' );
+
 	}
 }
 
-function wpcf7_tg_pane_hidden() {
+function wpcf7_tg_pane_hidden( $contact_form, $args = '' ) {
+
+	$args = wp_parse_args( $args, array() );
+
+	$description = __( "Generate a form tag for a hidden field. For more details, see %s.", 'contact-form-7' );
+	$desc_link = wpcf7_link( __( 'https://wordpress.org/plugins/contact-form-7-modules/', 'contact-form-7' ), __( 'the plugin page on WordPress.org', 'contact-form-7' ), array('target' => '_blank' ) );
 ?>
-<div id="wpcf7-tg-pane-hidden" class="hidden">
-<form action="">
+<div class="control-box">
+	<fieldset>
+		<legend><?php printf( esc_html( $description ), $desc_link ); ?></legend>
 
-<table>
-<tr><td><?php echo esc_html( __( 'Name', 'cf7_modules' ) ); ?><br /><input type="text" name="name" class="tg-name oneline" /></td><td></td></tr>
+		<table class="form-table">
+			<tbody>
+				<tr>
+					<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-name' ); ?>"><?php echo esc_html( __( 'Name', 'contact-form-7' ) ); ?></label></th>
+					<td><input type="text" name="name" class="tg-name oneline" id="<?php echo esc_attr( $args['content'] . '-name' ); ?>" /></td>
+				</tr>
 
-<tr>
-<td><code>id</code> (<?php echo esc_html( __( 'optional', 'cf7_modules' ) ); ?>)<br />
-<input type="text" name="id" class="idvalue oneline option" /></td>
-</tr>
+				<tr>
+					<th scope="row"><label for="<?php echo esc_attr( $args['content'] . '-id' ); ?>"><?php echo esc_html( __( 'ID attribute', 'contact-form-7' ) ); ?> (<?php echo esc_html( __( 'optional', 'cf7_modules' ) ); ?>)</label></th>
+					<td><input type="text" name="id" class="idvalue oneline option" id="<?php echo esc_attr( $args['content'] . '-id' ); ?>" /></td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<?php _e('Value', 'cf7_modules'); ?>
+					</th>
+					<td>
+						<input type="text" name="values" class="oneline" />
+						<div>
+							<input type="checkbox" name="watermark" class="option" />&nbsp;<?php echo esc_html( __( 'Use this text as watermark?', 'cf7_modules' ) ); ?>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<?php _e('Dynamic Values', 'cf7_modules'); ?>
+					</th>
+					<td>
+						<span class="howto" style="font-size:1em;"><?php _e('To use dynamic data from the post or page the form is embedded on, you can use the following values:', 'cf7_modules'); ?></span>
 
-<tr>
-<td>
-	<?php echo esc_html( __( 'Default value', 'cf7_modules' ) ); ?> (<?php echo esc_html( __( 'optional', 'cf7_modules' ) ); ?>)<br /><input type="text" name="values" class="oneline" />
-	<br /><input type="checkbox" name="watermark" class="option" />&nbsp;<?php echo esc_html( __( 'Use this text as watermark?', 'cf7_modules' ) ); ?>
-
-</td>
-
-<td>
-	<?php _e('Dynamic Values', 'cf7_modules'); ?><br />
-	<span class="howto" style="font-size:1em;"><?php _e('To use dynamic data from the post or page the form is embedded on, you can use the following values:', 'cf7_modules'); ?></span>
-	<ul>
-		<li><?php _e('<code>post_title</code>: The title of the post/page', 'cf7_modules'); ?></li>
-		<li><?php _e('<code>post_url</code>: The URL of the post/page', 'cf7_modules'); ?></li>
-		<li><?php _e('<code>post_category</code>: The categories the post is in, comma-separated', 'cf7_modules'); ?></li>
-		<li><?php _e('<code>post_date</code>: The date the post/page was created', 'cf7_modules'); ?></li>
-		<li><?php _e('<code>post_author</code>: The name of the author of the post/page', 'cf7_modules'); ?></li>
-	</ul>
-	<span class="howto"><?php _e('The following values will be replaced if an user is logged in:', 'cf7_modules'); ?></span>
-	<ul>
-		<li><?php _e('<code>user_name</code>: User Login', 'cf7_modules'); ?></li>
-		<li><?php _e('<code>user_id</code>: User ID', 'cf7_modules'); ?></li>
-		<li><?php _e('<code>user_email</code>: User Email Address', 'cf7_modules'); ?></li>
-		<li><?php _e('<code>user_display_name</code>: Display Name (Generally the first and last name of the user)', 'cf7_modules'); ?></li>
-	</ul>
-</td>
-</tr>
-</table>
-
-<div class="tg-tag"><?php echo esc_html( __( "Copy this code and paste it into the form left.", 'cf7_modules' ) ); ?><br /><input type="text" name="hidden" class="tag" readonly="readonly" onfocus="this.select()" /></div>
-
-<div class="tg-mail-tag"><?php echo esc_html( __( "And, put this code into the Mail fields below.", 'cf7_modules' ) ); ?><br /><input type="text" class="mail-tag" readonly="readonly" onfocus="this.select()" /></div>
-</form>
+						<ul>
+							<li><?php _e('<code>post_title</code>: The title of the post/page', 'cf7_modules'); ?></li>
+							<li><?php _e('<code>post_url</code>: The URL of the post/page', 'cf7_modules'); ?></li>
+							<li><?php _e('<code>post_category</code>: The categories the post is in, comma-separated', 'cf7_modules'); ?></li>
+							<li><?php _e('<code>post_date</code>: The date the post/page was created', 'cf7_modules'); ?></li>
+							<li><?php _e('<code>post_author</code>: The name of the author of the post/page', 'cf7_modules'); ?></li>
+						</ul>
+						<span class="howto"><?php _e('The following values will be replaced if an user is logged in:', 'cf7_modules'); ?></span>
+						<ul>
+							<li><?php _e('<code>user_name</code>: User Login', 'cf7_modules'); ?></li>
+							<li><?php _e('<code>user_id</code>: User ID', 'cf7_modules'); ?></li>
+							<li><?php _e('<code>user_email</code>: User Email Address', 'cf7_modules'); ?></li>
+							<li><?php _e('<code>user_display_name</code>: Display Name (Generally the first and last name of the user)', 'cf7_modules'); ?></li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
 </div>
+	<div class="insert-box">
+		<input type="text" name="hidden" class="tag code" readonly="readonly" onfocus="this.select()" />
+
+		<div class="submitbox">
+			<input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'contact-form-7' ) ); ?>" />
+		</div>
+
+		<br class="clear" />
+
+		<p class="description mail-tag"><label for="<?php echo esc_attr( $args['content'] . '-mailtag' ); ?>"><?php echo sprintf( esc_html( __( "To use the value input through this field in a mail field, you need to insert the corresponding mail-tag (%s) into the field on the Mail tab.", 'contact-form-7' ) ), '<strong><span class="mail-tag"></span></strong>' ); ?><input type="text" class="mail-tag code hidden" readonly="readonly" id="<?php echo esc_attr( $args['content'] . '-mailtag' ); ?>" /></label></p>
+	</div>
 <?php
 }

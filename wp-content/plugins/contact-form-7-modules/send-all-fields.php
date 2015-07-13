@@ -5,12 +5,12 @@ Plugin URI: https://katz.co/contact-form-7-hidden-fields/
 Description: Send all submitted fields in the message body using one simple tag: <code>[all-fields]</code>
 Author: Katz Web Services, Inc.
 Author URI: http://www.katzwebservices.com
-Version: 1.4.2
+Version: 2.0
 Text Domain: cf7_modules
 Domain Path: languages
 */
 
-/*  Copyright 2014 Katz Web Services, Inc. (email: info at katzwebservices.com)
+/*  Copyright 2015 Katz Web Services, Inc. (email: info at katzwebservices.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,17 +32,6 @@ add_action('init', 'contact_form_7_all_fields_textdomain');
 function contact_form_7_all_fields_textdomain() {
 	// Load the default language files
 	load_plugin_textdomain( 'cf7_modules', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-
-/**
- * A base module for [all-fields] and [all-fields*]
- */
-add_action('init', 'load_contact_form_7_modules_functions');
-
-if(!function_exists('load_contact_form_7_modules_functions')) {
-	function load_contact_form_7_modules_functions() {
-		include_once(plugin_dir_path( __FILE__ ).'functions.php');
-	}
 }
 
 add_filter('wpcf7_mail_components', 'all_fields_wpcf7_before_send_mail');
@@ -113,26 +102,16 @@ function all_fields_wpcf7_before_send_mail($array) {
     if($debug) { die(); } else { return $array; }
 }
 
+add_filter('wpcf7_collect_mail_tags', 'wpcf7_collect_mail_tags_add_all_fields_tag');
 
-/* Tag generator */
+/**
+ * Add a all-fields option to the Mail tab's merge tags
+ * @since 2.0
+ * @param array $mailtags
+ */
+function wpcf7_collect_mail_tags_add_all_fields_tag( $mailtags = array() ) {
 
-add_action( 'admin_init', 'wpcf7_add_tag_generator_all_fields', 30 );
+	$mailtags[] = 'all-fields';
 
-function wpcf7_add_tag_generator_all_fields() {
-	if(function_exists('wpcf7_add_tag_generator')) {
-		wpcf7_add_tag_generator( 'all-fields', __( 'All Fields', 'cf7_modules' ), 'wpcf7-tg-pane-all-fields', 'wpcf7_tg_pane_all_fields' );
-	}
-}
-
-function wpcf7_tg_pane_all_fields() {
-?>
-<div id="wpcf7-tg-pane-all-fields" class="hidden">
-	<form action="">
-	<h3><?php printf(__('Add all fields to your email with %s[all-fields]%s', 'cf7_modules'), '<code>', '</code>'); ?></h3>
-	<div class="tg-mail-tag" style="text-align:left; margin-top:.5em;">
-		<?php echo esc_html( __( "Put this code into the Mail fields below to output all submitted fields in the email.", 'cf7_modules' ) ); ?><br />&nbsp;<input type="text" value="[all-fields]" readonly="readonly" onfocus="this.select()" />
-	</div>
-	</form>
-</div>
-<?php
+	return $mailtags;
 }

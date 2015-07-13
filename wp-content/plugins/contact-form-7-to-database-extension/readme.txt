@@ -6,7 +6,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
 Tested up to: 4.2.1
-Stable tag: 2.9.1
+Stable tag: 2.9.3
 
 Saves submitted form data to the database. Export the data to a file or use short codes to display it.
 
@@ -83,6 +83,17 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.9.4 =
+* Added spreadsheet-like transforms:
+** Sum rows: trans="total=field1,field2,field3"
+** Sum columns: trans=TotalField(field1,field2,field3)
+** Sum both: trans="total=field1,field2&&TotalField(field1,field2,total)"
+** Sum product prices: trans="p1_total=multiply(p1,9.99)&&p2_total=multiply(p2,8.99)&&line_total=sum(p1_total,p2_total)&&TotalField(line_total)"
+
+= 2.9.3 =
+* Fix error on systems where php_uname() is not available
+* Allowing various PHP math functions in "trans"
 
 = 2.9.2 =
 * Fix for some cases where cannot delete row in administration page

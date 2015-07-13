@@ -1,7 +1,7 @@
 === Contact Form 7 Modules ===
 Tags: Contact Form 7, form, forms, contactform7, contact form, hidden fields, hidden, cf7, cforms ii, cforms, Contact Forms 7, Contact Forms, contacted, contacts
 Requires at least: 2.8
-Tested up to: 3.8.1
+Tested up to: 4.2.2
 Stable tag: trunk
 Contributors: katzwebdesign, katzwebservices
 Donate link: https://katz.co/contact-form-7-hidden-fields/
@@ -62,7 +62,8 @@ Using the <strong>Send All Fields</strong> module, you simply need to add `[all-
 
 == Screenshots ==
 
-1. The new Hidden fields tag generator
+1. The Hidden fields tag generator
+2. The `[all-fields]` Mail tag
 
 == Frequently Asked Questions ==
 
@@ -112,6 +113,11 @@ Add this to your `functions.php` file: `add_filter('wpcf7_send_all_fields_send_e
 	* `$format` _string_ Either "html" or "text"
 
 == Changelog ==
+
+= 2.0 on June 28, 2015 =
+* **Requires Contact Form 7 4.2 or higher**
+* Updated to work with latest Contact Form 7
+* Removed Contact Form 7 Newsletter plugin promotion
 
 = 1.4.2 on March 25, 2014 =
 * Added: `[all-fields]` shortcode now skips sending data for empty fields
