@@ -75,12 +75,6 @@ div.pdfemb-wantmobile-fsarea {
   cursor: grab !important;
 }
 
-.grab-to-pan-grab {
-  cursor: move !important;
-  cursor: -webkit-grab !important;
-  cursor: -moz-grab !important;
-  cursor: grab !important;
-}
 .grab-to-pan-grab *:not(input):not(textarea):not(button):not(select):not(:link) {
   cursor: inherit !important;
 }
@@ -196,7 +190,7 @@ div.pdfemb-errormsg {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 100000;
+    z-index: 4000;
     overflow-y: auto;
     overflow-x: hidden;
     display: none;

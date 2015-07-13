@@ -63,7 +63,7 @@ class core_pdf_embedder {
 	}
 	
 	protected function modify_pdfurl($url) {
-		return $url;
+		return set_url_scheme($url);
 	}
 	
 	/* public function pdfemb_wp_get_attachment_link( $link, $id, $size, $permalink, $icon, $text ) {
@@ -202,6 +202,8 @@ class core_pdf_embedder {
         $this->pdfemb_securesection_text();
         echo '</div>';
 
+        $this->draw_extra_sections();
+
         settings_fields($this->get_options_pagename());
 		
 		?>
@@ -221,6 +223,8 @@ class core_pdf_embedder {
     protected function draw_more_tabs() {
     }
 
+    protected function draw_extra_sections() {
+    }
 
     // Override elsewhere
 	protected function pdfemb_mainsection_text() {

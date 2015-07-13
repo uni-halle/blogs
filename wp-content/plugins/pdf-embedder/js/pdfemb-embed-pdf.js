@@ -48,7 +48,9 @@ jQuery(document).ready(function ($) {
                 divContainer.data('grabtopan', grabtopan);
 
                 $(window).resize(function() {
-                    $.fn.pdfEmbedder.queueRenderPage(divContainer, divContainer.data('pageNum'));
+					setTimeout(function() {
+						$.fn.pdfEmbedder.queueRenderPage(divContainer, divContainer.data('pageNum'));
+					}, 100);
                 });
             };
 	    	
@@ -91,7 +93,7 @@ jQuery(document).ready(function ($) {
 	    
 	    pdfDoc.getPage(pageNum).then(function(page) {
 	    	
-		    var canvas = divContainer.find('.pdfemb-the-canvas');
+		    var canvas = $('<canvas></canvas>', {'class': 'pdfemb-the-canvas'}).replaceAll(divContainer.find('.pdfemb-the-canvas'));
 		    var scale = 1.0;
 		    
 		    var vp = page.getViewport(scale);
