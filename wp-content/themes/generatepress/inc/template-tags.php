@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package Generate
+ * @package GeneratePress
  */
 if ( ! function_exists( 'generate_paging_nav' ) ) :
 	function generate_paging_nav() {

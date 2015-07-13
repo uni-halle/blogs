@@ -10,15 +10,15 @@
  *
  * This file is a core Generate file and should not be edited.
  *
- * @package  WordPress
+ * @package  GeneratePress
  * @author   Thomas Usborne
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.generatepress.com
  */
 
-require get_template_directory() . '/inc/addons/typography.php';
-require get_template_directory() . '/inc/addons/colors.php';
-require get_template_directory() . '/inc/addons/spacing.php';
+require get_template_directory() . '/inc/add-ons/typography.php';
+require get_template_directory() . '/inc/add-ons/colors.php';
+require get_template_directory() . '/inc/add-ons/spacing.php';
 
 /** 
  * Check to see if there's any addons not already activated

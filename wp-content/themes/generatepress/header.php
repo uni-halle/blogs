@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <main id="main">
  *
- * @package Generate
+ * @package GeneratePress
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>

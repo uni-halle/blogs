@@ -2,10 +2,10 @@
 /**
  * Generate functions and definitions
  *
- * @package Generate
+ * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.2.9.8');
+define( 'GENERATE_VERSION', '1.3.03');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -68,6 +68,13 @@ function generate_setup()
 	 */
 	add_theme_support( 'title-tag' );
 	
+	/*
+	 * Add HTML5 theme support
+	 */
+	add_theme_support( 'html5', array(
+		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+	) );
+	
 	/**
 	 * Set the content width to something large
 	 * We set a more accurate width in generate_smart_content_width()
@@ -75,6 +82,11 @@ function generate_setup()
 	global $content_width;
 	if ( ! isset( $content_width ) )
 		$content_width = 1200; /* pixels */
+		
+	/*
+	 * This theme styles the visual editor to resemble the theme style,
+	 */
+	add_editor_style( 'inc/css/editor-style.css' );
 
 }
 endif; // generate_setup
@@ -221,7 +233,7 @@ require get_template_directory() . '/inc/options.php';
 /**
  * Load add-on options
  */
-require get_template_directory() . '/inc/addons.php';
+require get_template_directory() . '/inc/add-ons.php';
 
 /**
  * Enqueue scripts and styles
@@ -235,7 +247,7 @@ function generate_scripts() {
 	);
 	
 	// Stylesheets
-	wp_enqueue_style( 'generate-style-grid', get_template_directory_uri() . '/css/unsemantic-grid.css', false, GENERATE_VERSION, 'all' );
+	wp_enqueue_style( 'generate-style-grid', get_template_directory_uri() . '/css/unsemantic-grid.min.css', false, GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-style', get_template_directory_uri() . '/style.css', false, GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-mobile-style', get_template_directory_uri() . '/css/mobile.css', false, GENERATE_VERSION, 'all' );
 	wp_add_inline_style( 'generate-style', generate_base_css() );
@@ -247,7 +259,7 @@ function generate_scripts() {
 
 	// Scripts
 	wp_enqueue_script( 'generate-navigation', get_template_directory_uri() . '/js/navigation.js', array(), GENERATE_VERSION, true );
-	wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.js', array('jquery'), GENERATE_VERSION, true );
+	wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), GENERATE_VERSION, true );
 	wp_enqueue_script( 'hoverIntent', get_template_directory_uri() . '/js/hoverIntent.js', array('superfish'), GENERATE_VERSION, true );
 
 	if ( 'enable' == $generate_settings['nav_search'] ) {
@@ -522,7 +534,7 @@ function generate_ie_compatibility()
 ?>
 	<!--[if lt IE 9]>
 		<script src="<?php echo get_template_directory_uri();?>/js/html5shiv.js"></script>
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/ie.css" />
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/ie.min.css" />
 	<![endif]-->
 <?php
 }

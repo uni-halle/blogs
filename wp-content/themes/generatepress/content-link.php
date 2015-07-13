@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Generate
+ * @package GeneratePress
  */
 $generate_settings = wp_parse_args( 
 	get_option( 'generate_settings', array() ), 

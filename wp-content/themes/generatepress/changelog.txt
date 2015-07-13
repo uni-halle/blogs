@@ -10,6 +10,47 @@ Changelog Legend:
 
 ----
 
+(6/28/2015) - 1.3.03
+[!] Remove unecessary admin_init hook
+
+----
+
+(6/28/2015) - 1.3.02
+[!] Fix galleries
+[x] blk_trans.png removed - using rgba for caption background instead
+[*] Remove two unnecessary queries
+
+----
+
+(6/27/2015) - 1.3.01
+[+] Bulgarian translated added
+[!] Fix bug where font variants weren't loading
+[!] Fix font related PHP notice
+
+----
+
+(6/19/2015) - 1.3.0
+[*] Improve mobile menu label spacing if no text is set
+[*] Fix <pre> tag output
+[+] Add basic styling to <blockquote>
+[+] Add subtle borders to table elements
+[*] Make <hr /> color compatible with all background colors
+[+] Slovak translation added (thanks, Jan!!)
+[*] Unsemantic grid updated and minified (44.91% savings)
+[+] Tablet support added (change your mobile specific media queries from 768px to 767px)
+[*] Minify ie.css (22.32% savings)
+[*] Superfish menu minified (82% savings)
+[!] Fix stretched images in IE8 and below
+[+] Declare HTML5 structure support
+[*] Google Fonts updated
+[*] Google Fonts inclusion completely re-written
+[*] Typography values stripped of variants
+[+] Add editor style
+[*] Comment styling slightly improved
+[x] Remove save changes button from Appearance > GeneratePress
+
+----
+
 (5/29/2015) - 1.2.9.8
 [*] Adjust superfish menu dropdown selector
 [*] Update superfish.js menu

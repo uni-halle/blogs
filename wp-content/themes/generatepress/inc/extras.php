@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package Generate
+ * @package GeneratePress
  */
 
 /**
@@ -87,9 +87,13 @@ function generate_right_sidebar_classes( $classes )
 
 	$right_sidebar_width = apply_filters( 'generate_right_sidebar_width', '25' );
 	$left_sidebar_width = apply_filters( 'generate_left_sidebar_width', '25' );
+	
+	$right_sidebar_tablet_width = apply_filters( 'generate_right_sidebar_tablet_width', '30' );
+	$left_sidebar_tablet_width = apply_filters( 'generate_left_sidebar_tablet_width', '30' );
 
 	$classes[] = 'widget-area';
 	$classes[] = 'grid-' . $right_sidebar_width;
+	$classes[] = 'tablet-grid-' . $right_sidebar_tablet_width;
 	$classes[] = 'grid-parent';
 	$classes[] = 'sidebar';
 
@@ -101,6 +105,9 @@ function generate_right_sidebar_classes( $classes )
 			case 'both-left' :
 				$total_sidebar_width = $left_sidebar_width + $right_sidebar_width;
 				$classes[] = 'pull-' . ( 100 - $total_sidebar_width );
+				
+				$total_sidebar_tablet_width = $left_sidebar_tablet_width + $right_sidebar_tablet_width;
+				$classes[] = 'tablet-pull-' . ( 100 - $total_sidebar_tablet_width );
 			break;
 		}
 	}
@@ -118,9 +125,15 @@ function generate_left_sidebar_classes( $classes )
 {
 	$right_sidebar_width = apply_filters( 'generate_right_sidebar_width', '25' );
 	$left_sidebar_width = apply_filters( 'generate_left_sidebar_width', '25' );
+	$total_sidebar_width = $left_sidebar_width + $right_sidebar_width;
+	
+	$right_sidebar_tablet_width = apply_filters( 'generate_right_sidebar_tablet_width', '30' );
+	$left_sidebar_tablet_width = apply_filters( 'generate_left_sidebar_tablet_width', '30' );
+	$total_sidebar_tablet_width = $left_sidebar_tablet_width + $right_sidebar_tablet_width;
 	
 	$classes[] = 'widget-area';
 	$classes[] = 'grid-' . $left_sidebar_width;
+	$classes[] = 'tablet-grid-' . $left_sidebar_tablet_width;
 	$classes[] = 'grid-parent';
 	$classes[] = 'sidebar';
 
@@ -131,12 +144,13 @@ function generate_left_sidebar_classes( $classes )
 		switch ( $layout ) {
 			case 'left-sidebar' :
 				$classes[] = 'pull-' . ( 100 - $left_sidebar_width );
+				$classes[] = 'tablet-pull-' . ( 100 - $left_sidebar_tablet_width );
 			break;
 			
 			case 'both-sidebars' :
 			case 'both-left' :
-				$total_sidebar_width = $left_sidebar_width + $right_sidebar_width;
 				$classes[] = 'pull-' . ( 100 - $total_sidebar_width );
+				$classes[] = 'tablet-pull-' . ( 100 - $total_sidebar_tablet_width );
 			break;
 		}
 	}
@@ -154,6 +168,11 @@ function generate_content_classes( $classes )
 {
 	$right_sidebar_width = apply_filters( 'generate_right_sidebar_width', '25' );
 	$left_sidebar_width = apply_filters( 'generate_left_sidebar_width', '25' );
+	$total_sidebar_width = $left_sidebar_width + $right_sidebar_width;
+	
+	$right_sidebar_tablet_width = apply_filters( 'generate_right_sidebar_tablet_width', '30' );
+	$left_sidebar_tablet_width = apply_filters( 'generate_left_sidebar_tablet_width', '30' );
+	$total_sidebar_tablet_width = $left_sidebar_tablet_width + $right_sidebar_tablet_width;
 	
 	$classes[] = 'content-area';
 	$classes[] = 'grid-parent';
@@ -166,32 +185,38 @@ function generate_content_classes( $classes )
 			
 			case 'right-sidebar' :
 				$classes[] = 'grid-' . ( 100 - $right_sidebar_width );
+				$classes[] = 'tablet-grid-' . ( 100 - $right_sidebar_tablet_width );
 			break;
 			
 			case 'left-sidebar' :
 				$classes[] = 'push-' . $left_sidebar_width;
 				$classes[] = 'grid-' . ( 100 - $left_sidebar_width );
+				$classes[] = 'tablet-push-' . $left_sidebar_tablet_width;
+				$classes[] = 'tablet-grid-' . ( 100 - $left_sidebar_tablet_width );
 			break;
 			
 			case 'no-sidebar' :
 				$classes[] = 'grid-100';
+				$classes[] = 'tablet-grid-100';
 			break;
 			
 			case 'both-sidebars' :
-				$total_sidebar_width = $left_sidebar_width + $right_sidebar_width;
 				$classes[] = 'push-' . $left_sidebar_width;
 				$classes[] = 'grid-' . ( 100 - $total_sidebar_width );
+				$classes[] = 'tablet-push-' . $left_sidebar_tablet_width;
+				$classes[] = 'tablet-grid-' . ( 100 - $total_sidebar_tablet_width );
 			break;
 			
 			case 'both-right' :
-				$total_sidebar_width = $left_sidebar_width + $right_sidebar_width;
 				$classes[] = 'grid-' . ( 100 - $total_sidebar_width );
+				$classes[] = 'tablet-grid-' . ( 100 - $total_sidebar_tablet_width );
 			break;
 			
 			case 'both-left' :
-				$total_sidebar_width = $left_sidebar_width + $right_sidebar_width;
 				$classes[] = 'push-' . $total_sidebar_width;
 				$classes[] = 'grid-' . ( 100 - $total_sidebar_width );
+				$classes[] = 'tablet-push-' . $total_sidebar_tablet_width;
+				$classes[] = 'tablet-grid-' . ( 100 - $total_sidebar_tablet_width );
 			break;
 		}
 	}

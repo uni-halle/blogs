@@ -61,8 +61,16 @@ function generate_sanitize_nav_layout( $input ) {
 function generate_sanitize_typography( $input ) 
 {
 
-	$google_fonts = ( get_transient('generate_font_list') ? get_transient('generate_font_list') : array() );
+	// Grab all of our fonts
+	$fonts = ( get_transient('generate_all_google_fonts') ? get_transient('generate_all_google_fonts') : array() );
 	
+	// Loop through all of them and grab their names
+	$font_names = array();
+	foreach ( $fonts as $k => $fam ) {
+		$font_names[] = $fam['name'];
+	}
+	
+	// Get all non-Google font names
 	$not_google = array(
 		'inherit',
 		'Arial, Helvetica, sans-serif',
@@ -79,13 +87,15 @@ function generate_sanitize_typography( $input )
 		'Trebuchet MS, Helvetica, sans-serif',
 		'Verdana, Geneva, sans-serif'
 	);
+
+	// Merge them both into one array
+	$valid = array_merge( $font_names, $not_google );
 	
-	$valid = array_merge( $google_fonts, $not_google );
-	
+	// Sanitize
     if ( in_array( $input, $valid ) ) {
         return $input;
     } else {
-        return 'Open Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic';
+        return 'Open Sans';
     }
 }
 

@@ -10,7 +10,7 @@
  *
  * This file is a core Generate file and should not be edited.
  *
- * @package  WordPress
+ * @package  GeneratePress
  * @author   Thomas Usborne
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.generatepress.com
@@ -76,7 +76,7 @@ function generate_settings_page()
 									<p>
 										<a id="generate_customize_button" class="button button-primary" href="<?php echo admin_url('customize.php'); ?>"><?php _e('Customize','generate');?></a>  
 										<?php if ( generate_addons_available() ) : ?>
-											<a id="generate_addon_button" class="button button-primary" href="<?php echo esc_url('http://generatepress.com/addons');?>" target="_blank"><?php _e('Add-ons','generate');?></a> 
+											<a id="generate_addon_button" class="button button-primary" href="<?php echo esc_url('http://generatepress.com/add-ons');?>" target="_blank"><?php _e('Add-ons','generate');?></a> 
 										<?php endif; ?>
 										<a title="<?php _e('Please help support development of the GeneratePress by buying me a coffee :)','generate');?>" class="button button-secondary" target="_blank" href="<?php echo esc_url('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UVPTY2ZJA68S6');?>"><?php _e('Buy me a coffee :)','generate');?></a>
 									</p>
@@ -99,11 +99,6 @@ function generate_settings_page()
 
 								</div>
 							</div>
-								
-							<?php if ( generate_no_addons() == false ) : ?>
-								<div style="display:block;:both;width:100%;"></div>
-								<?php submit_button(); ?>
-							<?php endif; ?>
 
 						</form>
 										
@@ -149,7 +144,7 @@ function generate_settings_page()
 												'license' => 'gen_colors_license_key_status',
 												'package' => 'generate_package_colors',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-colors/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/colors.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/colors.png'
 							
 										),
 										'1' => array(
@@ -159,7 +154,7 @@ function generate_settings_page()
 												'license' => 'gen_sections_license_key_status',
 												'package' => 'generate_package_sections',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-sections/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/sections.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/sections.png'
 							
 										),
 										'2' => array(
@@ -169,7 +164,7 @@ function generate_settings_page()
 												'license' => 'gen_fonts_license_key_status',
 												'package' => 'generate_package_typography',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-typography/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/typography.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/typography.png'
 										 ),
 										'3' => array(
 												'name' => __('Page Header','generate'),
@@ -178,7 +173,7 @@ function generate_settings_page()
 												'license' => 'gen_page_header_license_key_status',
 												'package' => 'generate_package_page_header',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-page-header/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/page-header.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/page-header.png'
 										),
 										'4' => array(
 												'name' => __('Import / Export','generate'),
@@ -187,7 +182,7 @@ function generate_settings_page()
 												'license' => 'gen_ie_license_key_status',
 												'package' => 'generate_package_import_export',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-import-export/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/importexport.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/importexport.png'
 										),
 										'5' => array(
 												'name' => __('Copyright','generate'),
@@ -196,7 +191,7 @@ function generate_settings_page()
 												'license' => 'gen_copyright_license_key_status',
 												'package' => 'generate_package_copyright',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-copyright/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/copyright.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/copyright.png'
 										),
 										'6' => array(
 												'name' => __('Disable Elements','generate'),
@@ -205,7 +200,7 @@ function generate_settings_page()
 												'license' => 'gen_disable_elements_license_key_status',
 												'package' => 'generate_package_disable_elements',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-disable-elements/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/disable-items.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/disable-items.png'
 										),
 										'7' => array(
 												'name' => __('Blog','generate'),
@@ -214,7 +209,7 @@ function generate_settings_page()
 												'license' => 'gen_blog_license_key_status',
 												'package' => 'generate_package_blog',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-blog/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/blog.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/blog.png'
 										),
 										'8' => array(
 												'name' => __('Hooks','generate'),
@@ -223,7 +218,7 @@ function generate_settings_page()
 												'license' => 'gen_hooks_license_key_status',
 												'package' => 'generate_package_hooks',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-hooks/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/hooks.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/hooks.png'
 										),
 										'9' => array(
 												'name' => __('Spacing','generate'),
@@ -232,7 +227,7 @@ function generate_settings_page()
 												'license' => 'gen_spacing_license_key_status',
 												'package' => 'generate_package_spacing',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-spacing/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/spacing.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/spacing.png'
 										),
 										'10' => array(
 												'name' => __('Backgrounds','generate'),
@@ -241,7 +236,7 @@ function generate_settings_page()
 												'license' => 'gen_backgrounds_license_key_status',
 												'package' => 'generate_package_backgrounds',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-backgrounds/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/backgrounds.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/backgrounds.png'
 										),
 										'11' => array(
 												'name' => __('Secondary Nav','generate'),
@@ -250,7 +245,7 @@ function generate_settings_page()
 												'license' => 'gen_secondary_nav_license_key_status',
 												'package' => 'generate_package_secondary_nav',
 												'url' => esc_url('http://www.generatepress.com/downloads/generate-secondary-nav/'),
-												'img' => get_template_directory_uri() . '/inc/addons/images/admin/secondarynav.png'
+												'img' => get_template_directory_uri() . '/inc/add-ons/images/secondarynav.png'
 										)
 									);
 										

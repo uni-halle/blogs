@@ -2,7 +2,7 @@
 /**
  * The Template for displaying all single posts.
  *
- * @package Generate
+ * @package GeneratePress
  */
 
 get_header(); ?>

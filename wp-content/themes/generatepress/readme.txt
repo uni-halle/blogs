@@ -3,7 +3,7 @@ Welcome to GeneratePress!
 -------------------------------------------------------
 Website: http://generatepress.com
 Support: http://generatepress.com/support
-Addons: http://generatepress.com/addons
+Add-ons: http://generatepress.com/add-ons
 Email: support@generatepress.com
 
 -------------------------------------------------------
@@ -22,7 +22,7 @@ GeneratePress has up to 8 widget area. 1 in your header, 1 for each sidebar and 
 	- Typography: Choose your default body font.
 	- Base Colors: Easily change your background color, text color and link color.
 	- Blog: Show the full post or excerpt.
-	- Addons are available for further customization.
+	- Add-ons are available for further customization.
 
 == Page Headers ==
 When adding a page or post, set your "Featured Image" to activate the page header.

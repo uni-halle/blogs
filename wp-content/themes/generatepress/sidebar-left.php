@@ -2,7 +2,7 @@
 /**
  * The Sidebar containing the main widget areas.
  *
- * @package Generate
+ * @package GeneratePress
  */
 $generate_settings = wp_parse_args( 
 	get_option( 'generate_settings', array() ), 

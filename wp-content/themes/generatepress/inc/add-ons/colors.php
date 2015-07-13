@@ -10,7 +10,7 @@
  *
  * This file is a core Generate file and should not be edited.
  *
- * @package  WordPress
+ * @package  GeneratePress
  * @author   Thomas Usborne
  * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
  * @link     http://www.generatepress.com

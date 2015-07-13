@@ -1,0 +1,965 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GeneratePress\n"
+"POT-Creation-Date: 2015-01-06 17:14-0800\n"
+"PO-Revision-Date: 2015-06-02 22:02+0100\n"
+"Last-Translator: Jiří Borový <jborovy@seznam.cz>\n"
+"Language-Team: Lakanda <lakandajan@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Language: sk_SK\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Oops! Stránka sa nenašla."
+
+#: 404.php:22
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Na tomto mieste sa nič nenachádza. Možno skúste vyhľadávanie alebo "
+"doleuvedené odkazy?"
+
+#: archive.php:33
+#, php-format
+msgid "About %s"
+msgstr "Info o %s"
+
+#: archive.php:41
+#, php-format
+msgid "Day: %s"
+msgstr "Deň: %s"
+
+#: archive.php:44
+#, php-format
+msgid "Month: %s"
+msgstr "Mesiac: %s"
+
+#: archive.php:47
+#, php-format
+msgid "Year: %s"
+msgstr "Rok: %s"
+
+#: archive.php:50
+msgid "Asides"
+msgstr "Poznámky"
+
+#: archive.php:53
+msgid "Images"
+msgstr "Obrázky"
+
+#: archive.php:56
+msgid "Videos"
+msgstr "Videá"
+
+#: archive.php:59
+msgid "Quotes"
+msgstr "Citáty"
+
+#: archive.php:62
+msgid "Links"
+msgstr "Odkazy"
+
+#: archive.php:65 sidebar-left.php:39 sidebar.php:38
+msgid "Archives"
+msgstr "Archívy"
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Jeden výskyt  &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s výskyty  &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s výskytov  &ldquo;%2$s&rdquo;"
+
+#: comments.php:36 comments.php:56
+msgid "Comment navigation"
+msgstr "Navigácia komentára"
+
+#: comments.php:37 comments.php:57
+msgid "&larr; Older Comments"
+msgstr "&larr; Staršie komentáre"
+
+#: comments.php:38 comments.php:58
+msgid "Newer Comments &rarr;"
+msgstr "Novšie komentáre &rarr;"
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "Pridávanie komentárov uzavreté."
+
+#: comments.php:73
+msgid "Name"
+msgstr "Meno"
+
+#: comments.php:74 inc/addons.php:103
+msgid "Email"
+msgstr "E-mail"
+
+#: comments.php:75 inc/options.php:75
+msgid "Website"
+msgstr "Webstránka"
+
+#: comments.php:80
+#, php-format
+msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
+msgstr "Musíte byť  <a href=\"%1$s\">prihlásený</a>, aby ste mohli komentovať."
+
+#: comments.php:81
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Ste prihlásený ako <a href=\"%1$s\">%2$s</a>. Chcete sa <a href=\"%3$s\" "
+"title=\"Odhlásiť sa z tohto účtu\">odhlásiť</a>?"
+
+#: comments.php:86
+msgid "Leave a Comment"
+msgstr "Napísať komentár"
+
+#: comments.php:87
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Napísať komentár k %s"
+
+#: comments.php:88
+msgid "Cancel reply"
+msgstr "Zrušiť odpoveď na komentár"
+
+#: comments.php:89
+msgid "Post Comment"
+msgstr "Odoslať komentár"
+
+#: content-link.php:30 content-page.php:20 content-single.php:21
+#: content.php:34 image.php:56
+msgid "Pages:"
+msgstr "Stránky:"
+
+#: content-page.php:26 content-single.php:32 image.php:78
+#: inc/template-tags.php:117 inc/template-tags.php:137
+msgid "Edit"
+msgstr "Upraviť"
+
+#: footer.php:50 functions.php:138
+msgid "Footer Widget 1"
+msgstr "Widget 1 v pätičke"
+
+#: footer.php:52 footer.php:66 footer.php:80 footer.php:94 footer.php:108
+msgid "Replace this widget content by going to <a href=\""
+msgstr "Nahraďte obsah widgetu obsahom <a href=\""
+
+#: footer.php:53 footer.php:67 footer.php:81 footer.php:95 footer.php:109
+msgid "To remove or choose the number of footer widgets, go to <a href=\""
+msgstr "Zmažte alebo zmeňte číslo widgetu v pätičke <a href=\""
+
+#: footer.php:64 functions.php:146
+msgid "Footer Widget 2"
+msgstr "Widget 2 v pätičke"
+
+#: footer.php:78 functions.php:154
+msgid "Footer Widget 3"
+msgstr "Widget 3 v pätičke"
+
+#: footer.php:92 functions.php:162
+msgid "Footer Widget 4"
+msgstr "Widget 4 v pätičke"
+
+#: footer.php:106 functions.php:170
+msgid "Footer Widget 5"
+msgstr "Widget 5 v pätičke"
+
+#: functions.php:52
+msgid "Primary Menu"
+msgstr "Základné navigačné menu"
+
+#: functions.php:114 inc/customizer.php:347 inc/metaboxes.php:57
+#: inc/sanitize.php:183
+msgid "Right Sidebar"
+msgstr "Pravý postranný panel"
+
+#: functions.php:122 inc/customizer.php:346 inc/metaboxes.php:61
+#: inc/sanitize.php:182
+msgid "Left Sidebar"
+msgstr "Ľavý postranný panel"
+
+#: functions.php:130
+msgid "Header"
+msgstr "Hlavička"
+
+#: functions.php:250
+msgid "Search"
+msgstr "Vyhľadávanie"
+
+#: functions.php:341 inc/options.php:120
+msgid "Copyright"
+msgstr "Copyright"
+
+#: functions.php:349 inc/options.php:24 inc/options.php:47
+msgid "GeneratePress"
+msgstr "GeneratePress"
+
+#: functions.php:349
+msgid "Proudly powered by WordPress"
+msgstr "S radosťou vytvorené vo WordPresse"
+
+#: functions.php:349
+msgid "WordPress"
+msgstr "WordPress"
+
+#: image.php:24
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+msgstr ""
+"Uverejnené <time class=\"entry-date\" datetime=\"%1$s\"> <span class=\"entry-"
+"date\">%2$s</span> </time> v <a href=\"%3$s\" title=\"Odkaz na obrázok v "
+"plnej veľkosti\">%4$s ×%5$s</a> v <a href=\"%6$s\" title=\"Návrat do%7$s\" "
+"rel=\"gallery\">%8$s</a>"
+
+#: image.php:64 inc/template-tags.php:80 inc/template-tags.php:86
+msgid "Previous"
+msgstr "Predchádzajúce"
+
+#: image.php:65 inc/template-tags.php:81 inc/template-tags.php:90
+msgid "Next"
+msgstr "Dalšie"
+
+#: image.php:69
+#, php-format
+msgid ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
+"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
+"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment"
+"\">Zanechajte komentár</a> ale trackback: <a class=\"trackback-link\" href="
+"\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback "
+"URL</a>."
+
+#: image.php:71
+#, php-format
+msgid ""
+"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+msgstr ""
+"Komentáre sú uzavreté, ale môžete zanechať spätný odkaz: <a class="
+"\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel="
+"\"trackback\">Trackback URL</a>."
+
+#: image.php:73
+msgid ""
+"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
+"\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+"Spätné odkazy sú uzavreté, ale môžete  <a class=\"comment-link\" href="
+"\"#respond\" title=\"Post a comment\">zanechať komentár</a>."
+
+#: image.php:75
+msgid "Both comments and trackbacks are currently closed."
+msgstr "Komentáre a spätné odkazy sú uzavreté."
+
+#: inc/addons.php:82
+msgid "verified"
+msgstr "overené"
+
+#: inc/addons.php:85
+msgid "unverified"
+msgstr "neoverené"
+
+#: inc/addons.php:88
+msgid "Activate"
+msgstr "Aktivovať"
+
+#: inc/addons.php:91
+msgid "Activate All"
+msgstr "Aktivovať všetko"
+
+#: inc/addons.php:94
+msgid "Deactivate"
+msgstr "Deaktivovať"
+
+#: inc/addons.php:97
+msgid ""
+"Please activate the email you purchased your add-ons with below in order to "
+"receive future updates."
+msgstr ""
+"Prosím aktivujte mailom kúpu addonu, aby ste mohli v budúcnosti dostávať "
+"aktualizácie."
+
+#: inc/addons.php:100
+msgid "Add-on"
+msgstr "Add-on"
+
+#: inc/addons.php:106
+msgid "Status"
+msgstr "Stav"
+
+#: inc/addons.php:109
+msgid "Action"
+msgstr "Urobiť"
+
+#: inc/addons.php:112
+msgid "Verify Email"
+msgstr "Potvrďte e-mail"
+
+#: inc/addons.php:115
+msgid "Refresh"
+msgstr "Obnoviť"
+
+#: inc/addons.php:118 inc/options.php:73
+msgid "Version"
+msgstr "Verzia"
+
+#: inc/addons.php:121
+msgid "Disable"
+msgstr "Vypnúť"
+
+#: inc/addons.php:124
+msgid "Enable"
+msgstr "Povoliť"
+
+#: inc/addons/typography.php:278 inc/options.php:93
+msgid "Typography"
+msgstr "PÍSMO"
+
+#: inc/addons/typography.php:300
+msgid "Body"
+msgstr "Telo"
+
+#: inc/addons/typography.php:322
+msgid "Font weight"
+msgstr "Hrúbka písma"
+
+#: inc/addons/typography.php:346
+msgid "Text transform"
+msgstr "Transformácia textu"
+
+#: inc/addons/typography.php:369
+msgid "Font size"
+msgstr "Veľkosť písma"
+
+#: inc/addons/typography.php:386 inc/customizer.php:175 inc/customizer.php:674
+msgid "More Settings"
+msgstr "Ďalšie nastavenia"
+
+#: inc/addons/typography.php:389
+#, php-format
+msgid "Looking to add more typography settings?<br /> %s."
+msgstr "Hľadáte ďalšie možnosti nastavenia písma?<br /> %s."
+
+#: inc/addons/typography.php:393
+msgid "Check out Generate Typography"
+msgstr "Pozrite sa na Generate Typography"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:34
+msgid "Default fonts"
+msgstr "Štandardné písma"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:52
+msgid "Google fonts"
+msgstr "Písma Google"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:62
+msgid "Font family"
+msgstr "Skupina fontov"
+
+#: inc/controls.php:24
+msgid "Width"
+msgstr "Šírka"
+
+#: inc/controls.php:52
+msgid "Select Image"
+msgstr "Zvoliť obrázok"
+
+#: inc/controls.php:52
+msgid "Use Image"
+msgstr "Použiť obrázok"
+
+#: inc/controls.php:52
+msgid "Upload"
+msgstr "Nahrať súbor"
+
+#: inc/controls.php:53
+msgid "Remove"
+msgstr "Odstrániť"
+
+#: inc/customizer.php:22
+msgid "Header Content"
+msgstr "Obsah hlavičky"
+
+#: inc/customizer.php:25
+msgid "Set Front Page"
+msgstr "Nastaviť hlavnú stránku"
+
+#: inc/customizer.php:28
+msgid "Set Navigation"
+msgstr "Nastaviť navigáciu"
+
+#: inc/customizer.php:46
+msgid "Hide site title"
+msgstr "Skryť nadpis stránky"
+
+#: inc/customizer.php:65
+msgid "Hide site tagline"
+msgstr "Skryť slogan stránky "
+
+#: inc/customizer.php:85
+msgid "Logo"
+msgstr "Logo"
+
+#: inc/customizer.php:98 inc/options.php:83
+msgid "Colors"
+msgstr "Farby"
+
+#: inc/customizer.php:109
+msgid "Base Colors"
+msgstr "Základné farby"
+
+#: inc/customizer.php:121
+msgid "Background Color"
+msgstr "Farba pozadia"
+
+#: inc/customizer.php:126
+msgid "Text Color"
+msgstr "Farba textu"
+
+#: inc/customizer.php:131
+msgid "Link Color"
+msgstr "Farba odkazu"
+
+#: inc/customizer.php:136
+msgid "Link Color Hover"
+msgstr "Farba odkazu (pri prejdení myšou)"
+
+#: inc/customizer.php:141
+msgid "Link Color Visited"
+msgstr "Farba návštíveného odkazu"
+
+#: inc/customizer.php:178
+#, php-format
+msgid "Looking to add more color settings?<br /> %s."
+msgstr "Hľadáte viac nastavení farieb?<br /> %s."
+
+#: inc/customizer.php:182
+msgid "Check out Generate Colors"
+msgstr "Pozrite sa na Generate Colors"
+
+#: inc/customizer.php:197
+msgid "Layout"
+msgstr "Rozloženie"
+
+#: inc/customizer.php:199
+msgid "Allows you to edit your theme's layout."
+msgstr "Umožňuje upravovať rozloženie témy."
+
+#: inc/customizer.php:219
+msgid "Container Width"
+msgstr "Šírka hlavného priestoru"
+
+#: inc/customizer.php:246
+msgid "Header Layout"
+msgstr "Rozloženie hlavičky"
+
+#: inc/customizer.php:249 inc/customizer.php:312 inc/customizer.php:577
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:238
+msgid "Fluid / Full Width"
+msgstr "Plávajúca šířka"
+
+#: inc/customizer.php:250 inc/customizer.php:313 inc/customizer.php:578
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:239
+msgid "Contained"
+msgstr "Hlavný priestor"
+
+#: inc/customizer.php:277
+msgid "Header Alignment"
+msgstr "Zarovnanie hlavičky"
+
+#: inc/customizer.php:280 inc/customizer.php:378 inc/sanitize.php:144
+msgid "Left"
+msgstr "Doľava"
+
+#: inc/customizer.php:281 inc/customizer.php:379 inc/sanitize.php:145
+msgid "Center"
+msgstr "V strede"
+
+#: inc/customizer.php:282 inc/customizer.php:380 inc/sanitize.php:146
+msgid "Right"
+msgstr "Vpravo"
+
+#: inc/customizer.php:309
+msgid "Navigation Layout"
+msgstr "Rozloženie navigácie"
+
+#: inc/customizer.php:340
+msgid "Navigation Position"
+msgstr "Pozícia navigácie"
+
+#: inc/customizer.php:343 inc/sanitize.php:179
+msgid "Below Header"
+msgstr "Pod hlavičkou"
+
+#: inc/customizer.php:344 inc/sanitize.php:180
+msgid "Above Header"
+msgstr "Nad hlavičkou"
+
+#: inc/customizer.php:345 inc/sanitize.php:181
+msgid "Float Right"
+msgstr "Zarovnanie v pravo"
+
+#: inc/customizer.php:348 inc/sanitize.php:184
+msgid "No Navigation"
+msgstr "Bez navigácie"
+
+#: inc/customizer.php:375
+msgid "Navigation Alignment"
+msgstr "Zarovnanie navigácie"
+
+#: inc/customizer.php:407
+msgid "Navigation Search"
+msgstr "Položka \"Hľadať\" v navigácii"
+
+#: inc/customizer.php:410 inc/sanitize.php:162
+msgid "Enabled"
+msgstr "Zapnuté"
+
+#: inc/customizer.php:411 inc/sanitize.php:163
+msgid "Disabled"
+msgstr "Vypnuté"
+
+#: inc/customizer.php:438
+msgid "Content Layout"
+msgstr "Rozloženie obsahu"
+
+#: inc/customizer.php:441 inc/sanitize.php:200
+msgid "Separate Containers"
+msgstr "Oddelené priestory"
+
+#: inc/customizer.php:442 inc/sanitize.php:201
+msgid "One Container"
+msgstr "Jeden priestor"
+
+#: inc/customizer.php:469 inc/metaboxes.php:20
+msgid "Sidebar Layout"
+msgstr "Rozloženie postranného panelu"
+
+#: inc/customizer.php:472 inc/customizer.php:507 inc/customizer.php:542
+#: inc/sanitize.php:217
+msgid "Sidebar / Content"
+msgstr "Postranný panel/Obsah"
+
+#: inc/customizer.php:473 inc/customizer.php:508 inc/customizer.php:543
+#: inc/sanitize.php:218
+msgid "Content / Sidebar"
+msgstr "Obsah/Postranný panel"
+
+#: inc/customizer.php:474 inc/customizer.php:509 inc/customizer.php:544
+#: inc/metaboxes.php:67 inc/sanitize.php:219
+msgid "Content (no sidebars)"
+msgstr "Obsah bez postranných panelov"
+
+#: inc/customizer.php:475 inc/customizer.php:510 inc/customizer.php:545
+#: inc/sanitize.php:220
+msgid "Sidebar / Content / Sidebar"
+msgstr "Postranný panel / Obsah / Postranný panel"
+
+#: inc/customizer.php:476 inc/customizer.php:511 inc/customizer.php:546
+#: inc/sanitize.php:221
+msgid "Sidebar / Sidebar / Content"
+msgstr "Postranný panel / Postranný panel / Obsah"
+
+#: inc/customizer.php:477 inc/customizer.php:512 inc/customizer.php:547
+#: inc/sanitize.php:222
+msgid "Content / Sidebar / Sidebar"
+msgstr "Obsah / Postranný panel / Postranný panel"
+
+#: inc/customizer.php:504
+msgid "Blog Sidebar Layout"
+msgstr "Rozloženie postranného panelu v Blogu"
+
+#: inc/customizer.php:539
+msgid "Single Post Sidebar Layout"
+msgstr "Rozloženie postranného panelu v Single post"
+
+#: inc/customizer.php:574
+msgid "Footer Layout"
+msgstr "Rozloženie pätičky"
+
+#: inc/customizer.php:605 inc/metaboxes.php:125
+msgid "Footer Widgets"
+msgstr "Widgety pätičky"
+
+#: inc/customizer.php:627 inc/options.php:138
+msgid "Blog"
+msgstr "Blog"
+
+#: inc/customizer.php:653
+msgid "Blog Post Content"
+msgstr "Obsah blogu"
+
+#: inc/customizer.php:656 inc/sanitize.php:276
+msgid "Show full post"
+msgstr "Zobraziť celý príspevok"
+
+#: inc/customizer.php:657 inc/sanitize.php:277
+msgid "Show excerpt"
+msgstr "Zobraziť výňatok"
+
+#: inc/customizer.php:677
+#, php-format
+msgid "Looking to add more blog settings?<br /> %s."
+msgstr "Chcete viac nastavení pre blog?<br /> %s."
+
+#: inc/customizer.php:681
+msgid "Check out Generate Blog"
+msgstr "Pozrite sa na Generate Blog"
+
+#: inc/customizer.php:702
+msgid "Default"
+msgstr "Predvolený"
+
+#: inc/customizer.php:738
+msgid "Addon available"
+msgstr "Addon dostupný"
+
+#: inc/customizer.php:788
+msgid "Addons Available! Take a look"
+msgstr "Addony sú dostupné, pozrite sa.."
+
+#: inc/extras.php:406
+#, php-format
+msgid "Page %s"
+msgstr "%s. stránka"
+
+#: inc/metaboxes.php:55
+msgid "Global Layout Settings"
+msgstr "Globálne nastavenia rozloženia"
+
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
+msgid "Content"
+msgstr "Obsah"
+
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
+msgid "Sidebar"
+msgstr "Postranný panel"
+
+#: inc/metaboxes.php:65
+msgid "No Sidebars"
+msgstr "Bez postranných panelov"
+
+#: inc/metaboxes.php:69
+msgid "Both Sidebars"
+msgstr "Oba postranné panely"
+
+#: inc/metaboxes.php:73
+msgid "Both Sidebars on Left"
+msgstr "Oba postranné panely v ľavo"
+
+#: inc/metaboxes.php:77
+msgid "Both Sidebars on Right"
+msgstr "Oba postranné panely v pravo"
+
+#: inc/metaboxes.php:160
+msgid "Global Footer Widget Settings"
+msgstr "Globálne nastavenie widgetov v pätičke"
+
+#: inc/metaboxes.php:162 inc/metaboxes.php:164
+msgid "0 Widgets"
+msgstr "Bez widgetov"
+
+#: inc/metaboxes.php:166 inc/metaboxes.php:168
+msgid "1 Widget"
+msgstr "Jeden widget"
+
+#: inc/metaboxes.php:170 inc/metaboxes.php:172
+msgid "2 Widgets"
+msgstr "2 widgety"
+
+#: inc/metaboxes.php:174 inc/metaboxes.php:176
+msgid "3 Widgets"
+msgstr "3 widgety"
+
+#: inc/metaboxes.php:178 inc/metaboxes.php:180
+msgid "4 Widgets"
+msgstr "4 widgety"
+
+#: inc/metaboxes.php:182 inc/metaboxes.php:184
+msgid "5 Widgets"
+msgstr "5 widgetov"
+
+#: inc/navigation.php:88
+msgid "Menu"
+msgstr "Menu"
+
+#: inc/navigation.php:89
+msgid "Skip to content"
+msgstr "Preskočiť na obsah"
+
+#: inc/options.php:57
+msgid "Import successful."
+msgstr "Import prebehol úspešne."
+
+#: inc/options.php:61
+msgid "Settings removed."
+msgstr "Nastavenie odstránené."
+
+#: inc/options.php:65
+msgid "Settings saved."
+msgstr "Nastavenie uložené."
+
+#: inc/options.php:70
+msgid "Information"
+msgstr "Informácie"
+
+#: inc/options.php:74
+msgid "Author"
+msgstr "Autor"
+
+#: inc/options.php:78 inc/options.php:222
+msgid "Add-ons"
+msgstr "Doplnky"
+
+#: inc/options.php:102
+msgid "Page Header"
+msgstr "Hlavička strany"
+
+#: inc/options.php:111
+msgid "Import / Export"
+msgstr "Import/Export"
+
+#: inc/options.php:129
+msgid "Disable Elements"
+msgstr "Zakázať prvky"
+
+#: inc/options.php:147
+msgid "Hooks"
+msgstr "Prekážky"
+
+#: inc/options.php:156
+msgid "Spacing"
+msgstr "Medzery"
+
+#: inc/options.php:165
+msgid "Backgrounds"
+msgstr "Pozadie"
+
+#: inc/options.php:174
+msgid "Secondary Nav"
+msgstr "Sekundárna navigácia"
+
+#: inc/options.php:188 inc/options.php:201
+msgid "Not activated."
+msgstr "Neaktivované."
+
+#: inc/options.php:192 inc/options.php:205
+msgid "Activated and unverified. Please activate below."
+msgstr "Aktivované, ale nepotvrdené. Pokračujte v aktivácii."
+
+#: inc/options.php:194 inc/options.php:207
+msgid "Activated and verified."
+msgstr "Aktivované a potvrdené."
+
+#: inc/options.php:220
+msgid "Customizer"
+msgstr "Customizer"
+
+#: inc/options.php:224
+msgid ""
+"Please help support development of the GeneratePress by buying me a coffee :)"
+msgstr ""
+"Prosím, pomôžte podporiť vývoj doplnku GeneratePress a kúpte mi kávu :)"
+
+#: inc/options.php:224
+msgid "Buy me a coffee :)"
+msgstr "Kúpte mi kávu :)"
+
+#: inc/options.php:232
+msgid "Addon Activation"
+msgstr "Aktivácia doplnkov"
+
+#: inc/options.php:237
+msgid "Looks like you don't have any Add-ons! <a href=\""
+msgstr "Vyzerá to, že nemáte žiadne doplnky! < href = \""
+
+#: inc/options.php:254
+msgid "Delete Customizer Settings"
+msgstr "Odstrániť Customizer nastavenia"
+
+#: inc/options.php:257
+msgid ""
+"<strong>Warning:</strong> Clicking this button will delete your settings set "
+"in the <a href=\""
+msgstr ""
+"<strong>Upozornenie:</strong> Kliknutím na toto tlačidlo odstránite "
+"nastavenia v<a href=\" href=\"\"></a href=\">"
+
+#: inc/options.php:258
+msgid "You may want to export your settings before deleting them forever."
+msgstr "Možno chcete exportovať nastavenia pred ich odstránením navždy."
+
+#: inc/options.php:263
+msgid "Delete Default Customizer Settings"
+msgstr "Zmazať štandardné nastavenia Customizeru"
+
+#: inc/template-tags.php:39
+msgid "&larr; Previous"
+msgstr "&larr; Späť"
+
+#: inc/template-tags.php:40
+msgid "Next &rarr;"
+msgstr "Ďalej &rarr;"
+
+#: inc/template-tags.php:76
+msgid "Post navigation"
+msgstr "Navigácia pre príspevky"
+
+#: inc/template-tags.php:86
+msgid "Older posts"
+msgstr "Staršie príspevky"
+
+#: inc/template-tags.php:90
+msgid "Newer posts"
+msgstr "Novšie príspevky"
+
+#: inc/template-tags.php:117
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/template-tags.php:128
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+#: inc/template-tags.php:134
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr "%1$s v %2$s"
+
+#: inc/template-tags.php:151
+msgid "Your comment is awaiting moderation."
+msgstr "Váš komentár čaká na schválenie."
+
+#: inc/template-tags.php:239
+#, php-format
+msgid ""
+"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+msgstr ""
+"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+
+#: inc/template-tags.php:246
+msgid "by"
+msgstr "od autora: "
+
+#: inc/template-tags.php:248
+#, php-format
+msgid "View all posts by %s"
+msgstr "Zobrazit všetky príspevky od %s"
+
+#: inc/template-tags.php:262
+msgid "Read more"
+msgstr "Čítajte viac"
+
+#: inc/template-tags.php:305
+msgctxt "label"
+msgid "Search"
+msgstr "Vyhľadávanie"
+
+#: inc/template-tags.php:350 inc/template-tags.php:358
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ", "
+
+#: inc/template-tags.php:353
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr "Kategórie"
+
+#: inc/template-tags.php:361
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr "Štítky"
+
+#: inc/template-tags.php:372
+msgctxt "Used before full size attachment link."
+msgid "Full size"
+msgstr "Plná veľkosť"
+
+#: inc/template-tags.php:381
+msgid "Leave a comment"
+msgstr "Zanechať komentár"
+
+#: inc/template-tags.php:381
+msgid "1 Comment"
+msgstr "1 Komentár"
+
+#: inc/template-tags.php:381
+msgid "% Comments"
+msgstr "% komentárov"
+
+#: no-results.php:15
+msgid "Nothing Found"
+msgstr "Nič sa nenašlo"
+
+#: no-results.php:22
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Ste pripravení zverejniť svoj ​​prvý príspevok? <a href=\"%1$s\">Začnite tu</"
+"a> ."
+
+#: no-results.php:26
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Ospravedlňujeme sa, ale nenašla sa žiadna zhoda hľadaných výrazov. Skúste to "
+"prosím znova s inými kľúčovými slovami."
+
+#: no-results.php:31
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr "Vypadá to, že nemôžeme nájsť, čo ste hľadali. Chcete pomôcť?"
+
+#: search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Výsledky vyhľadávania pre: %s"
+
+#: searchform.php:10 searchform.php:11
+msgctxt "label"
+msgid "Search for:"
+msgstr "Hľadaj:"
+
+#: searchform.php:11
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Hľadať &hellip;"
+
+#: searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr "Hľadať"
+
+#: sidebar-left.php:46 sidebar.php:45
+msgid "Meta"
+msgstr "Meta"

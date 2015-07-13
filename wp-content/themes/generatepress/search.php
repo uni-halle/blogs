@@ -2,7 +2,7 @@
 /**
  * The template for displaying Search Results pages.
  *
- * @package Generate
+ * @package GeneratePress
  */
 
 get_header(); ?>

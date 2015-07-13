@@ -4,7 +4,7 @@
  *
  * This is the template that is used by WooCommerce.
  *
- * @package Generate
+ * @package GeneratePress
  */
 
 get_header(); ?>

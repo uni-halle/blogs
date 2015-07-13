@@ -3,8 +3,8 @@ Theme Name: GeneratePress
 Theme URI: http://generatepress.com
 Author: Thomas Usborne
 Author URI: http://edge22.com
-Description: GeneratePress is a fast, lightweight, mobile responsive WordPress theme built with speed, SEO and usability in mind. Create your website just the way you want it using the Customizer and see the changes take place right in front of you before you publish. GeneratePress is mobile responsive, W3C Markup Validated, Schema.org microdata integrated, search engine friendly, cross browser compatible (including IE8+), WooCommerce compatible, BuddyPress compatible and 100% translatable. GeneratePress has 8 widget areas, 5 navigation positions, 5 sidebar layouts and much more. Navigate to Appearance > Customize to start customizing! Available in English, German, Portuguese, Spanish, Russian, French, Norwegian, Polish, Czech, Danish, Italian, Greek and Romanian! See more and check out our awesome add-ons at http://generatepress.com
-Version: 1.2.9.8
+Description: GeneratePress is a fast, lightweight, mobile responsive WordPress theme built with speed, SEO and usability in mind. Create your website just the way you want it using the Customizer and see the changes take place right in front of you before you publish. GeneratePress is mobile responsive, W3C Markup Validated, Schema.org microdata integrated, search engine friendly, cross browser compatible (including IE8+), WooCommerce compatible, BuddyPress compatible and 100% translatable. GeneratePress has 8 widget areas, 5 navigation positions, 5 sidebar layouts and much more. Navigate to Appearance > Customize to start customizing! Available in English, German, Portuguese, Spanish, Russian, French, Norwegian, Polish, Czech, Danish, Italian, Greek, Romanian, Slovak and Bulgarian! See more and check out our awesome add-ons at http://generatepress.com
+Version: 1.3.03
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: generate
@@ -423,10 +423,15 @@ input[type="file"] {
 .menu-toggle:before {
 	content: "\f0c9";
 	font-family: FontAwesome;
-	margin-right: 10px;
 }
 .toggled .menu-toggle:before {
 	content: "\f00d";
+}
+.menu-toggle .mobile-menu {
+	margin-left: 10px;
+}
+.menu-toggle .mobile-menu:empty {
+	display: none;
 }
 .main-navigation .main-nav ul ul li a {
 	line-height: normal;
@@ -687,7 +692,7 @@ input[type="file"] {
 .wp-caption .wp-caption-text {
 	padding: 8px 10px;
 	margin: 0;
-	background: url('images/blk_trans.png');
+	background: rgba(0, 0, 0, 0.5);
 	color:#FFF;
 	position:absolute;
 	bottom: 0;
@@ -697,22 +702,55 @@ input[type="file"] {
 	color:#FFF;
 	text-decoration: underline;
 }
-.site-main .gallery {
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+.gallery {
 	margin-bottom: 1.5em;
 }
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
 .gallery-caption {
-}
-.site-main .gallery a img {
-	border: none;
-	height: auto;
-	max-width: 90%;
-}
-.site-main .gallery dd {
-	margin: 0;
-}
-.site-main .gallery-columns-4 .gallery-item {
-}
-.site-main .gallery-columns-4 .gallery-item img {
+	display: block;
 }
 
 /* Make sure embeds and iframes fit their containers */
@@ -795,10 +833,36 @@ object {
 	display: none;
 }
 
-.comment {
-	padding-top: 30px;
-	margin-top: 15px;
-	border-top: 1px solid #DDD;
+.comment-body {
+	padding: 30px 0;
+}
+
+.comment-content {
+	padding: 30px;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.depth-1.parent > .children {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.comment .children {
+	padding-left: 30px;
+	margin-top: -30px;
+	border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pingback .comment-body,
+.trackback .comment-body {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pingback .edit-link {
+	font-size: 13px;
+}
+
+.comment-content p:last-child {
+	margin-bottom: 0;
 }
 
 .comment-list > .comment:first-child {
@@ -875,11 +939,76 @@ h3,
 h4,
 h5,
 h6 {
-	clear: both;
 	font-family: inherit;
 	font-size: 100%;
 	font-style: inherit;
 	font-weight: inherit;
+}
+
+pre {
+	background: rgba(0, 0, 0, 0.05);
+	font-family: inherit;
+	font-size: inherit;
+	line-height: normal;
+	margin-bottom: 1.5em;
+	padding: 20px;
+	overflow: auto;
+	max-width: 100%;
+}
+
+blockquote {
+	border-left: 5px solid rgba(0, 0, 0, 0.05);
+	padding: 20px;
+	font-size: 1.2em;
+	font-style:italic;
+	margin: 0 0 1.5em;
+	position: relative;
+}
+
+blockquote p:last-child {
+	margin: 0;
+}
+
+table, th, td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    margin: 0 0 1.5em;
+    table-layout: fixed;
+    width: 100%;
+}
+th,
+td {
+	padding: 8px;
+}
+th {
+    border-width: 0 1px 1px 0;
+}
+td {
+    border-width: 0 1px 1px 0;
+}
+
+hr {
+	background-color: rgba(0, 0, 0, 0.1);
+	border: 0;
+	height: 1px;
+	margin-bottom: 40px;
+	margin-top: 40px;
+}
+
+.site-main .gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item img {
+	vertical-align: bottom;
+}
+
+.gallery-icon {
+	padding: 5px;
 }
 
 .separate-containers .inside-article,

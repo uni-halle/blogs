@@ -24,7 +24,7 @@ class Generate_Google_Font_Dropdown_Custom_Control extends WP_Customize_Control
     public function render_content()
     {
 		unset($fonts);
-		$fonts = ( get_transient('generate_google_fonts_list') ? get_transient('generate_google_fonts_list') : '' );
+		$fonts = ( get_transient('generate_all_google_fonts') ? get_transient('generate_all_google_fonts') : '' );
         if(!empty($fonts))
         {
             ?>
@@ -54,8 +54,7 @@ class Generate_Google_Font_Dropdown_Custom_Control extends WP_Customize_Control
 							<?php
 							foreach ( $fonts as $k => $fam )
 							{
-								$var = join(',', $fam['font_variants']);
-								printf('<option value="%s" %s>%s</option>', $fam['name'] . ':' . $var, selected($this->value(), $fam['name'] . ':' . $var, false), $fam['name']);
+								printf('<option value="%s" %s>%s</option>', $fam['name'], selected($this->value(), $fam['name'], false), $fam['name']);
 							}
 							?>
 						</optgroup>
