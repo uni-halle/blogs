@@ -3,28 +3,12 @@
 Plugin Name: Enhanced Text Widget
 Plugin URI: http://wordpress.org/plugins/enhanced-text-widget/
 Description: An enhanced version of the default text widget where you may have Text, HTML, CSS, JavaScript, Flash, Shortcodes, and/or PHP as content with linkable widget title.
-Version: 1.4.4
+Version: 1.4.5
 Author: Boston Dell-Vandenberg
 Author URI: http://pomelodesign.com/
 Text Domain: enhancedtext
 Domain Path: /languages/
-License: GPLv3
-
-Enhanced Text Widget Plugin
-Copyright (C) 2012-2014, Boston Dell-Vandenberg - boston@pomelodesign.com
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+License: MIT
 */
 
 class EnhancedTextWidget extends WP_Widget {
@@ -55,6 +39,7 @@ class EnhancedTextWidget extends WP_Widget {
         $cssClass = empty($instance['cssClass']) ? '' : $instance['cssClass'];
         $text = apply_filters('widget_enhanced_text', $instance['text'], $instance);
         $hideTitle = !empty($instance['hideTitle']) ? true : false;
+        $hideEmpty = !empty($instance['hideEmpty']) ? true : false;
         $newWindow = !empty($instance['newWindow']) ? true : false;
         $filterText = !empty($instance['filter']) ? true : false;
         $bare = !empty($instance['bare']) ? true : false;
@@ -67,17 +52,6 @@ class EnhancedTextWidget extends WP_Widget {
             }
         }
 
-        echo $bare ? '' : $before_widget;
-
-        if ($newWindow) $newWindow = "target='_blank'";
-
-        if(!$hideTitle && $title) {
-            if($titleUrl) $title = "<a href='$titleUrl' $newWindow>$title</a>";
-            echo $bare ? $title : $before_title . $title . $after_title;
-        }
-
-        echo $bare ? '' : '<div class="textwidget widget-text">';
-
         // Parse the text through PHP
         ob_start();
         eval('?>' . $text);
@@ -87,11 +61,23 @@ class EnhancedTextWidget extends WP_Widget {
         // Run text through do_shortcode
         $text = do_shortcode($text);
 
-        // Echo the content
-        echo $filterText ? wpautop($text) : $text;
+        if (!empty($text) || !$hideEmpty) {
+            echo $bare ? '' : $before_widget;
 
-        echo $bare ? '' : '</div>' . $after_widget;
+            if ($newWindow) $newWindow = "target='_blank'";
 
+            if(!$hideTitle && $title) {
+                if($titleUrl) $title = "<a href='$titleUrl' $newWindow>$title</a>";
+                echo $bare ? $title : $before_title . $title . $after_title;
+            }
+
+            echo $bare ? '' : '<div class="textwidget widget-text">';
+
+            // Echo the content
+            echo $filterText ? wpautop($text) : $text;
+
+            echo $bare ? '' : '</div>' . $after_widget;
+        }
     }
 
     /**
@@ -107,6 +93,7 @@ class EnhancedTextWidget extends WP_Widget {
         $instance['titleUrl'] = strip_tags($new_instance['titleUrl']);
         $instance['cssClass'] = strip_tags($new_instance['cssClass']);
         $instance['hideTitle'] = isset($new_instance['hideTitle']);
+        $instance['hideEmpty'] = isset($new_instance['hideEmpty']);
         $instance['newWindow'] = isset($new_instance['newWindow']);
         $instance['filter'] = isset($new_instance['filter']);
         $instance['bare'] = isset($new_instance['bare']);
@@ -164,6 +151,10 @@ class EnhancedTextWidget extends WP_Widget {
 
         <p>
             <input id="<?php echo $this->get_field_id('hideTitle'); ?>" name="<?php echo $this->get_field_name('hideTitle'); ?>" type="checkbox" <?php checked(isset($instance['hideTitle']) ? $instance['hideTitle'] : 0); ?> />&nbsp;<label for="<?php echo $this->get_field_id('hideTitle'); ?>"><?php _e('Do not display the title', 'enhancedtext'); ?></label>
+        </p>
+
+        <p>
+            <input id="<?php echo $this->get_field_id('hideEmpty'); ?>" name="<?php echo $this->get_field_name('hideEmpty'); ?>" type="checkbox" <?php checked(isset($instance['hideEmpty']) ? $instance['hideEmpty'] : 0); ?> />&nbsp;<label for="<?php echo $this->get_field_id('hideEmpty'); ?>"><?php _e('Do not display empty widgets', 'enhancedtext'); ?></label>
         </p>
 
         <p>
