@@ -2,10 +2,10 @@
 /* 
 Plugin Name: WP Google Fonts
 Plugin URI: http://adrian3.com/projects/wordpress-plugins/wordpress-google-fonts-plugin/
-Version: v3.1.1
+Version: v3.1.3
 Description: The Wordpress Google Fonts Plugin makes it even easier to add and customize Google fonts on your site through Wordpress. 
-Author: Adrian Hanft, Aaron Brown
-Author URI: http://adrian3.com/
+Author: Noah Kagan
+Author URI: http://SumoMe.com/
 */
 
 /*  Copyright 2010-2011  Adrian Hanft
@@ -65,7 +65,7 @@ if (!class_exists('googlefonts')) {
         */
         var $options = array();
 
-		var $api_key = '?key=AIzaSyDXgT0NYjLhDmUzdcxC5RITeEDimRmpq3s';
+		var $api_key = '?key=AIzaSyD6kL15KaUQpZLBN42WzXadai8hDgoINUg';
 		
 		var $api_url = 'https://www.googleapis.com/webfonts/v1/webfonts';
 		
@@ -164,7 +164,11 @@ if (!class_exists('googlefonts')) {
 			add_action('wp_enqueue_scripts',array(&$this, 'googlefontsstart'));
 			add_action("wp_head", array(&$this,"addgooglefontscss")); 
 
-			add_action('wp_ajax_googlefont_action', array($this, 'googlefont_action_callback'));			
+			add_action('wp_ajax_googlefont_action', array($this, 'googlefont_action_callback'));
+			add_action( 'admin_notices', array(&$this, 'global_notice') );
+			add_option('wp_google_fonts_global_notification', 1);
+			register_deactivation_hook( __FILE__, array(&$this, 'gf_plugin_deactivate') );
+
         }
 
 		/***********************************************/
@@ -253,7 +257,7 @@ if (!class_exists('googlefonts')) {
 		
 		function gf_update_font_cache(){
 			$updated = false;
-			$fonts_json = $this->gf_download_font_list($this->api_url);
+			$fonts_json = NULL;//$this->gf_download_font_list($this->api_url); // No longer works without api key
 			
 			/* if we didn't get anything, try with api key */
 			if(!$fonts_json){
@@ -277,8 +281,8 @@ if (!class_exists('googlefonts')) {
 			
 			if(function_exists('wp_remote_get')){
 				
-				$response = wp_remote_get($url, array('sslverify' => false));
-				
+				$response = wp_remote_get($url/*, array('sslverify' => false)*/);
+
 				if( is_wp_error($response)){
 				
 					$this->gf_notices[] = sprintf(__("Unable to connect to Google's Webfont server at <a href='%s' target='_blank'>this URL</a>.", $this->localizationDomain), $url);
@@ -977,9 +981,39 @@ if (!class_exists('googlefonts')) {
         function admin_menu_link() {
             //If you change this from add_options_page, MAKE SURE you change the filter_plugin_actions function (below) to
             //reflect the page filename (ie - options-general.php) of the page your plugin is under!
-            add_options_page('Google Fonts', 'Google Fonts', 'manage_options', basename(__FILE__), array(&$this,'admin_options_page'));
+        	add_menu_page( 'Google Fonts', 'Google Fonts', 'manage_options', 'google-fonts', array(&$this,'admin_options_page') , 'dashicons-editor-textcolor');
+			add_submenu_page( 'google-fonts', 'Other Plugins', 'Other Plugins', 'manage_options', 'gf-plugin-other-plugins', array(&$this,'other_plugins_page'));
+
+            //add_options_page('Google Fonts', 'Google Fonts', 'manage_options', basename(__FILE__), array(&$this,'admin_options_page'));
             add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array(&$this, 'filter_plugin_actions'), 10, 2 );
         }
+
+        function global_notice() {
+			if (in_array(substr(basename($_SERVER['REQUEST_URI']), 0, 11), array('plugins.php', 'index.php')) && get_option('wp_google_fonts_global_notification') == 1) {
+				?>
+					<style type="text/css">
+						#wp_google_fonts_global_notification a.button:active {vertical-align:baseline;}
+					</style>
+					<div class="updated" id="wp_google_fonts_global_notification" style="border:3px solid #317A96;position:relative;background:##3c9cc2;background-color:#3c9cc2;color:#ffffff;height:70px;">
+						<a class="notice-dismiss" href="<?php echo admin_url('admin.php?page=google-fonts&wp_google_fonts_global_notification=0'); ?>" style="right:165px;top:0;"></a>
+						<a href="<?php echo admin_url('admin.php?page=google-fonts&wp_google_fonts_global_notification=0'); ?>" style="position:absolute;top:9px;right:15px;color:#ffffff;">Dismiss and go to settings</a>
+						<p style="font-size:16px;line-height:50px;">
+							<?php _e('Looking for more sharing tools?'); ?> &nbsp;<a style="background-color: #6267BE;border-color: #3C3F76;" href="<?php echo admin_url('plugin-install.php?tab=plugin-information&plugin=sumome&TB_iframe=true&width=743&height=500'); ?>" class="thickbox button button-primary">Get SumoMe WordPress Plugin</a>
+						</p>
+			        </div>
+				<?php
+			}
+		}
+
+		function other_plugins_page() {
+			include(plugin_dir_path( __FILE__ ).'/other_plugins.php');
+		}
+
+
+		function gf_plugin_deactivate() {
+			delete_option('wp_google_fonts_global_notification');
+		}
+
         
         /**
         * @desc Adds the Settings link to the plugin activate/deactivate page
@@ -987,7 +1021,7 @@ if (!class_exists('googlefonts')) {
         function filter_plugin_actions($links, $file) {
            //If your plugin is under a different top-level menu than Settiongs (IE - you changed the function above to something other than add_options_page)
            //Then you're going to want to change options-general.php below to the name of your top-level page
-           $settings_link = '<a href="options-general.php?page=' . basename(__FILE__) . '">' . __('Settings') . '</a>';
+           $settings_link = '<a href="admin.php?page=google-fonts">' . __('Settings') . '</a>';
            array_unshift( $links, $settings_link ); // before other links
 
            return $links;
@@ -1044,17 +1078,29 @@ if (!class_exists('googlefonts')) {
 					$message = '<div class="error"><p>' . __('Error. Either you did not make any changes, or your changes did not save. Please try again.', $this->localizationDomain) . '</p></div>';
 				}
             }
-			?>                                   
+
+            add_thickbox();
+            if ($_GET['wp_google_fonts_global_notification'] == 0) {
+        		update_option('wp_google_fonts_global_notification', 0);
+			}
+			?>   
+		   	<style type="text/css">
+				#wp_google_fonts_global_notification a.button:active {vertical-align:baseline;}
+			</style>                             
             <div class="wrap">
+            	<div id="wp_google_fonts_global_notification" style="border:3px solid #31964D;position:relative;background:#6AB07B;color:#ffffff;height:70px;margin:5px 0 15px;padding:1px 12px;">
+					<p style="font-size:16px;line-height:40px;">
+					<?php _e('Tools to grow your Email List, Social Sharing and Analytics.'); ?> &nbsp;<a style="background-color: #6267BE;border-color: #3C3F76;" href="<?php echo admin_url('plugin-install.php?tab=plugin-information&plugin=sumome&TB_iframe=true&width=743&height=500'); ?>" class="thickbox button button-primary">Get SumoMe WordPress Plugin</a>
+					</p>
+	        	</div> 
 				<table width="650" border="0" cellspacing="0" cellpadding="0">
 				  <tr>
 					<td>
 
 						<h1><?php _e('Google Font Control Panel', 'googlefonts'); ?></h1>
-						<p><img src="<?php 	echo $this->thispluginurl . '/images/google-fonts-logo.jpg'; ?>" width="261" height="146" align="right" />
-							<?php _e('This control panel gives you the ability to control how your Google Fonts fonts are displayed. For more information about this plugin, please visit the', $this->localizationDomain); ?> 
-							<a href="http://adrian3.com/projects/wordpress-plugins/wordpress-google-fonts-plugin/" title="Google Fonts plugin page"><?php _e('Google Fonts plugin page', $this->localizationDomain); ?></a>. 
-							<?php _e('Thanks for using Google Fonts, and we hope you like this plugin.', $this->localizationDomain); ?> <a href="http://adrian3.com/" title="-Adrian 3">-Adrian3</a> and <a href="http://www.webmalama.com/" title="Aaron Brown">Aaron Brown</a></p>
+						<p><?php _e('This control panel gives you the ability to control how your Google Fonts fonts are displayed. For more information about this plugin, please visit the', $this->localizationDomain); ?> 
+							<a href="https://github.com/adrian3/wp-google-fonts" title="Google Fonts plugin page"><?php _e('Google Fonts plugin page', $this->localizationDomain); ?></a>. 
+							<?php _e('Thanks for using Google Fonts, and we hope you like this plugin.', $this->localizationDomain); ?> <br /><a target="_blank" href="https://wordpress.org/plugins/sumome" >Updated by SumoMe (tools to grow your WP site)</a></p>
 
 						<hr />
 						
@@ -1078,7 +1124,7 @@ if (!class_exists('googlefonts')) {
 						
 						<h2><?php _e('Troubleshooting', $this->localizationDomain); ?></h2>
 						<p><?php _e('This plugin uses open source fonts that are hosted on Google&rsquo;s servers. For more information about this service, you can visit the', $this->localizationDomain); ?> 
-							<a href="http://code.google.com/webfonts/"><?php _e('Google Font Directory', $this->localizationDomain); ?></a>.
+							<a href="http://www.google.com/fonts/"><?php _e('Google Font Directory', $this->localizationDomain); ?></a>.
 						</p>
 						<hr />
 
