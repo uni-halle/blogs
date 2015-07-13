@@ -294,7 +294,7 @@ function omega_ngettext_with_context( $translated, $single, $plural, $number, $c
  */
 function omega_extensions_gettext( $translated, $text, $domain ) {
 
-	$extensions = array( 'custom-field-series', 'featured-header', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
+	$extensions = array( 'custom-field-series', 'featured-header', 'post-stylesheets' );
 
 	/* Check if the current textdomain matches one of the framework extensions. */
 	if ( in_array( $domain, $extensions ) && current_theme_supports( $domain ) ) {
@@ -324,7 +324,7 @@ function omega_extensions_gettext( $translated, $text, $domain ) {
  */
 function omega_extensions_gettext_with_context( $translated, $text, $context, $domain ) {
 
-	$extensions = array( 'custom-field-series', 'featured-header', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
+	$extensions = array( 'custom-field-series', 'featured-header', 'post-stylesheets' );
 
 	/* Check if the current textdomain matches one of the framework extensions. */
 	if ( in_array( $domain, $extensions ) && current_theme_supports( $domain ) ) {
@@ -355,7 +355,7 @@ function omega_extensions_gettext_with_context( $translated, $text, $context, $d
  */
 function omega_extensions_ngettext( $translated, $single, $plural, $number, $domain ) {
 
-	$extensions = array( 'custom-field-series', 'featured-header', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
+	$extensions = array( 'custom-field-series', 'featured-header', 'post-stylesheets' );
 
 	/* Check if the current textdomain matches one of the framework extensions. */
 	if ( in_array( $domain, $extensions ) && current_theme_supports( $domain ) ) {
@@ -387,7 +387,7 @@ function omega_extensions_ngettext( $translated, $single, $plural, $number, $dom
  */
 function omega_extensions_ngettext_with_context( $translated, $single, $plural, $number, $context, $domain ) {
 
-	$extensions = array( 'custom-field-series', 'featured-header', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
+	$extensions = array( 'custom-field-series', 'featured-header', 'post-stylesheets' );
 
 	/* Check if the current textdomain matches one of the framework extensions. */
 	if ( in_array( $domain, $extensions ) && current_theme_supports( $domain ) ) {

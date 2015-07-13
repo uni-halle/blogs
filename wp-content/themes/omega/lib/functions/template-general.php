@@ -91,8 +91,11 @@ function omega_get_author_uri() {
 	/* Translators: Theme name. */
 	$title = sprintf( __( '%s', 'omega' ), $name );
 
-	$nofollow = is_child_theme() ? 'rel="nofollow"' : '';
-	return sprintf( '<a class="theme-link" %s href="%s" title="%s">%s</a>', $nofollow, esc_url( $uri ), esc_attr( $title ), $name );
+	if (is_child_theme()) {
+		return sprintf( $name );
+	} else {
+		return sprintf( '<a class="theme-link"href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
+	}
 }
 
 /**

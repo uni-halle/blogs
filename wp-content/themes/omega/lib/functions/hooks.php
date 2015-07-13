@@ -156,7 +156,12 @@ function omega_branding() {
 function omega_default_footer_insert( $settings ) {
 
 	/* If there is a child theme active, use [child-link] shortcode to the $footer_insert. */
-	return '<p class="copyright">' . __( 'Copyright &#169; ', 'omega' ) . date_i18n( 'Y' ) . ' ' . get_bloginfo( 'name' ) . '.</p>' . "\n\n" . '<p class="credit">' . omega_get_theme_name() . __( ' WordPress Theme by ', 'omega' ) . omega_get_author_uri() . '.</p>';	
+	if ( !is_child_theme() ) {
+		return '<p class="copyright">' . __( 'Copyright &#169; ', 'omega' ) . date_i18n( 'Y' ) . ' ' . get_bloginfo( 'name' ) . '.</p>' . "\n\n" . '<p class="credit">' . omega_get_theme_name() . __( ' WordPress Theme by ', 'omega' ) . omega_get_author_uri() . '</p>';		
+	} else {
+		return '<p class="copyright">' . __( 'Copyright &#169; ', 'omega' ) . date_i18n( 'Y' ) . ' ' . get_bloginfo( 'name' ) . '.</p>' . "\n\n" . '<p class="credit">' . omega_get_child_theme_link() . __( ' WordPress Theme by ', 'omega' ) . omega_get_author_uri() . '</p>';		
+	}
+	
 
 }
 

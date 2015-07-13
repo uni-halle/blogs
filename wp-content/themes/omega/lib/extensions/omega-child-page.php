@@ -25,6 +25,8 @@ if ( is_admin() ) {
 			 		   'url' => 'https://themehall.com/product/composer-plus'),
 			 	array( 'name' => 'Custom Footer',
 			 		   'url' => 'https://themehall.com/product/omega-custom-footer-plugin'),
+			 	array( 'name' => 'Me',
+			 		   'url' => 'https://themehall.com/me-omega-child-theme'),
 			 	array( 'name' => 'Composer',
 			 		   'url' => 'https://themehall.com/composer-one-column-omega-child-theme'),
 			 	array( 'name' => 'Alpha',
@@ -65,13 +67,11 @@ if ( is_admin() ) {
 			$currenttheme = wp_get_theme();
 
 			foreach ( $omegachilds as $omegachild) {
-				if ($omegachild['name'] != $currenttheme->name) {
-					echo '<div class="available-theme">
-						<a class="screenshot" target="_blank" href="' . $omegachild['url'] .'" title="'.$omegachild['name'].'">
-							'.$omegachild['name'].'
-						</a>
-					</div>';
-				}
+				echo '<div class="available-theme">
+					<a class="screenshot" target="_blank" href="' . $omegachild['url'] .'" title="'.$omegachild['name'].'">
+						'.$omegachild['name'].'
+					</a>
+				</div>';
 			}
 			?>			
 				<div class="available-theme">

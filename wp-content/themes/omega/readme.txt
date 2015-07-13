@@ -2,7 +2,7 @@ Omega WordPress Theme
 ---------------------
 Omega is a parent theme for WordPress and Omega child
 
-Created by Hence Wijaya, https://themehall.com
+Created by Hence (Han) Wijaya, https://wordpress.org/support/profile/hwijaya
 
 
 Install
@@ -14,11 +14,9 @@ Install
 
 License
 -------
-Omega WordPress Theme, Copyright (C) 2013 themehall.com
+Omega WordPress Theme, Copyright (C) 2013 Hence (Han) Wijaya
 Omega WordPress Theme is licensed under the GPL.
-
-Omega WordPress Theme, Copyright 2012 Joe Smith
-Ginger is distributed under the terms of the GNU GPL
+Source: https://wordpress.org/themes/omega/
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,13 +29,10 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see .
+along with this program.  If not, see http://www.gnu.org/licenses.
 
 Omega WordPress Theme is derived from Hybrid Core, Copyright Justin Tadlock, justintadlock.com.
 Hybrid Core is distributed under the terms of the GNU GPL
-
-Omega WordPress Theme incorporates code from Genesis Framework, Copyright Copyblogger Media LLC, copyblogger.com.
-Genesis Framework is distributed under the terms of the GNU GPL
 
 Omega WordPress Theme incorporates code from Underscores WordPress Theme, Copyright 2013 Automattic, Inc.
 Underscores WordPress Theme is distributed under the terms of the GNU GPL
@@ -63,7 +58,18 @@ Source: http://tinynav.viljamis.com
 Changelog
 ---------
 
-1.1.3
+1.2.1   2015-6-25
+- update child theme link
+- improve TGM plugin multisite support 
+
+1.2.0   2015-6-15
+- remove custom widgets
+- update TGM-Plugin-Activation
+
+1.1.4   2015-04-26
+- Fix for Loop Pagination bug
+
+1.1.3   2015-04-26
 - update TGM_Plugin_Activation class
 
 1.1.2

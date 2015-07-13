@@ -257,9 +257,6 @@ class Omega {
 		/* Load the theme settings functions */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'settings.php' );
 
-		/* Load the widgets if supported. */
-		require_if_theme_supports( 'omega-widgets', trailingslashit( OMEGA_FUNCTIONS ) . 'widgets.php' );
-
 		/* Load the template hierarchy if supported. */
 		require_if_theme_supports( 'omega-template-hierarchy', trailingslashit( OMEGA_FUNCTIONS ) . 'template-hierarchy.php' );
 
@@ -296,9 +293,6 @@ class Omega {
 
 		/* Load the Color Palette extension if supported. */
 		require_if_theme_supports( 'color-palette', trailingslashit( OMEGA_EXTENSIONS ) . 'color-palette.php' );
-
-		/* Load the Theme Fonts extension if supported. */
-		require_if_theme_supports( 'theme-fonts', trailingslashit( OMEGA_EXTENSIONS ) . 'theme-fonts.php' );
 
 		/* Load  child themes page if supported. */
 		require_if_theme_supports( 'omega-child-page', trailingslashit( OMEGA_EXTENSIONS ) . '/omega-child-page.php' );
