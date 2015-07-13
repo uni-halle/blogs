@@ -1430,6 +1430,9 @@ SQL;
 				// Replace media URLs with the new URLs
 				$content = $this->process_content_media_links($content, $post_media);
 
+				// Replace video links
+				$content = $this->process_video_links($content);
+
 				// For importing backslashes
 				$content = addslashes($content);
 			}
@@ -1597,6 +1600,19 @@ SQL;
 			}
 		}
 
+		/**
+		 * Modify the video links
+		 *
+		 * @param string $content Content
+		 * @return string Content
+		 */
+		private function process_video_links($content) {
+			if ( strpos($content, '{"video"') !== false ) {
+				$content = preg_replace('/(<p>)?{"video":"(.*?)".*?}(<\/p>)?/', "$2", $content);
+			}
+			return $content;
+		}
+		
 		/**
 		 * Modify the internal links of all posts
 		 *
