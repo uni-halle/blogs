@@ -55,6 +55,7 @@ class AWPCP_CategoryShortcode {
         }
 
         $query = array(
+            'context' => 'public-listings',
             'category_id' => $category->id,
             'include_listings_in_children_categories' => $children,
             'limit' => absint( $this->request->param( 'results', $items_per_page ) ),

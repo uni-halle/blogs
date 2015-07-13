@@ -1,8 +1,9 @@
 /*global AWPCP*/
 AWPCP.run( 'awpcp/page-search-listings', [
     'jquery',
+    'awpcp/datepicker-field',
     'awpcp/jquery-validate-methods'
-], function($) {
+], function( $, DatepickerField ) {
     var AWPCP = $.AWPCP = $.extend({}, $.AWPCP, AWPCP);
 
     $(function() {
@@ -44,7 +45,7 @@ AWPCP.run( 'awpcp/page-search-listings', [
             });
 
             $( '[datepicker-placeholder]' ).each( function() {
-                $.noop( new $.AWPCP.DatepickerField( $(this).siblings('[name]:hidden') ) );
+                $.noop( new DatepickerField( $(this).siblings('[name]:hidden') ) );
             } );
         }
     });

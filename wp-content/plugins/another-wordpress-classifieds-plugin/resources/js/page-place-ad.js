@@ -2,10 +2,11 @@
 AWPCP.run('awpcp/page-place-ads', [
     'jquery',
     'awpcp/media-center',
+    'awpcp/datepicker-field',
     'awpcp/settings',
     'awpcp/jquery-userfield',
     'awpcp/jquery-validate-methods'
-], function( $, MediaCenter, settings ) {
+], function( $, MediaCenter, DatepickerField, settings ) {
     var AWPCP = jQuery.AWPCP = jQuery.extend({}, jQuery.AWPCP, AWPCP);
 
     $.AWPCP.PaymentTermsTable = function(table) {
@@ -216,7 +217,7 @@ AWPCP.run('awpcp/page-place-ads', [
                 container.find('[autocomplete-field], [dropdown-field]').userfield();
 
                 $( '[datepicker-placeholder]' ).each( function() {
-                    $.noop( new $.AWPCP.DatepickerField( $(this).siblings('[name]:hidden') ) );
+                    $.noop( new DatepickerField( $(this).siblings('[name]:hidden') ) );
                 } );
 
                 // display and control characters allowed for the Ad title

@@ -599,7 +599,6 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         $failed = 0;
         $non_existent = 0;
         $unauthorized = 0;
-        $not_allowed_for_moderators = 0;
         $total = count( $selected );
 
         foreach ($selected as $id) {
@@ -612,11 +611,6 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
             if ( ! awpcp_listing_authorization()->is_current_user_allowed_to_edit_listing( $listing ) ) {
                 $unauthorized = $unauthorized + 1;
-                continue;
-            }
-
-            if ( awpcp_current_user_is_moderator() && $listing->user_id != $user->ID ) {
-                $not_allowed_for_moderators = $not_allowed_for_moderators + 1;
                 continue;
             }
 
@@ -642,10 +636,6 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
         if ( $unauthorized > 0 ) {
             awpcp_flash( sprintf( __( "%d of %d Ads weren't deleted because you are not authorized.", 'AWPCP' ), $non_existent, $total ), 'error' );
-        }
-
-        if ( $not_allowed_for_moderators > 0 ) {
-            awpcp_flash( sprintf( __( "%d of %d Ads weren't deleted because Moderator uses are not allowed to use Bulk Delete operation to remove other users listings.", 'AWPCP' ), $not_allowed_for_moderators, $total ), 'error' );
         }
 
         return $this->redirect('index');

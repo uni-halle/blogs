@@ -40,6 +40,8 @@ class AWPCP_ListingsFinder {
 
     private function normalize_query( $user_query ) {
         $query = wp_parse_args( $user_query, array(
+            'context' => 'default',
+
             'fields' => '*',
             'raw' => false,
 
@@ -88,6 +90,10 @@ class AWPCP_ListingsFinder {
             'orderby' => 'default',
             'order' => 'DESC',
         ) );
+
+        if ( ! is_array( $query['context'] ) ) {
+            $query['context'] = array( $query['context'] );
+        }
 
         $query['regions'] = $this->normalize_regions_query( $query );
         $query['limit'] = $query['limit'] === 0 ? get_awpcp_option( 'adresultsperpage', 10 ) : $query['limit'];
@@ -595,6 +601,9 @@ class AWPCP_ListingsFinder {
                 break;
             case 'owner':
                 $parts = array( 'user_id %1$s', 'ad_startdate %1$s', 'ad_id %1$s' );
+                break;
+            case 'random':
+                $parts = array( 'RAND() %1$s' );
                 break;
             default:
                 $parts = array( 'ad_postdate DESC', 'ad_title ASC' );

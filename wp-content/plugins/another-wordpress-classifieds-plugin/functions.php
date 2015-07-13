@@ -1349,9 +1349,10 @@ function awpcp_array_merge_recursive( $a, $b ) {
 }
 
 function awpcp_get_property($object, $property, $default='') {
-    if (is_object($object) && (isset($object->$property) ||
-    	array_key_exists($property, get_object_vars($object)))) {
+    if ( is_object( $object ) && ( isset( $object->$property ) || array_key_exists( $property, get_object_vars( $object ) ) ) ) {
         return $object->$property;
+    } else if ( is_array( $object ) && isset( $object[ $property ] ) ) {
+        return $object[ $property ];
     }
     return $default;
 }
@@ -1504,10 +1505,15 @@ function awpcp_get_currency_code() {
  * XXX: Referenced in FAQ: http://awpcp.com/forum/faq/why-doesnt-my-currency-code-change-when-i-set-it/
  */
 function awpcp_get_currency_symbol() {
-	$currency_symbols = awpcp_currency_symbols();
+    $currency_symbol = get_awpcp_option( 'currency-symbol' );
+
+    if ( ! empty( $currency_symbol ) ) {
+        return $currency_symbol;
+    }
+
 	$currency_code = awpcp_get_currency_code();
 
-    foreach (  $currency_symbols as $currency_symbol => $currency_codes ) {
+    foreach ( awpcp_currency_symbols() as $currency_symbol => $currency_codes ) {
         if ( in_array( $currency_code, $currency_codes ) ) {
             return $currency_symbol;
         }
@@ -1562,7 +1568,7 @@ function awpcp_get_formmatted_amount( $value, $include_symbol ) {
     }
 
     if ( get_awpcp_option( 'include-space-between-currency-symbol-and-amount' ) ) {
-        $separator = '&nbsp;';
+        $separator = ' ';
     } else {
         $separator = '';
     }
@@ -1739,6 +1745,19 @@ function awpcp_render_attributes($attrs) {
     return join(' ', $attributes);
 }
 
+function awpcp_html_hidden_fields( $fields ) {
+    $output = array();
+
+    foreach ( array_filter( awpcp_flatten_array( $fields ) ) as $name => $value ) {
+        if ( is_object( $value ) ) {
+            continue;
+        }
+
+        $output[] = '<input type="hidden" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value ) . '" />';
+    }
+
+    return implode( "\n", $output );
+}
 
 function awpcp_uploaded_file_error($file) {
 	$upload_errors = array(

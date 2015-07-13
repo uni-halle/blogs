@@ -4,8 +4,8 @@ Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 3.9
 Tested up to: 4.2.2
-Last Updated: 2015-Jun-9
-Stable tag: tags/3.5.2
+Last Updated: 2015-Jun-23
+Stable tag: tags/3.5.3
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -222,6 +222,30 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+
+= Version 3.5.3 =
+* Remove restriction that prevents Moderators from using Bulk delete.
+* Update message shown when there are missing pages.
+* Add setting to allow users to overwrite contact name and email.
+* Remove usage of AWPCP_TABLE_PAGES table.
+* Add setting to overwrite the currency symbol.
+* Fix errors in French translation.
+* Fix spelling error in Spanish translation
+* Fix problems with Listing Awaiting Approval notification.
+* Fix flush-rewrite-rules error.
+* Fix Restore Pages feature.
+* Fix function that generated media thumbnails URLs.
+* Send both Awaiting Approval and Posted notifications.
+* Print regular whitespace instead of nbsp; in get_formmatted_amount.
+* Fix functions that generate Media URLs.
+* Add plugin integration for Facebook All.
+* Add RUB and TRY as supported PayPal currencies
+* Add purchases credit right after a real payment is made.
+* Make sure plugin pages info is imported once only.
+* Remove view-categories from pluing pages info.
+* Fix problem trying to compare page ids of.
+* Avoid fatal error trying to render an object as the value of a hidden field.
+* Enable localization for strings shown in UI Datepicker.
 
 = Version 3.5.2 =
 * Load translations from wp-content/languages/$domain-$locale.{po,mo} for better upgrade behavior

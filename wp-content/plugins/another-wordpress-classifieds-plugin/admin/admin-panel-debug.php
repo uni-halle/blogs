@@ -61,11 +61,13 @@ class AWPCP_Admin_Debug {
         $options['widget_awpcplatestads'] = get_option('widget_awpcplatestads');
         $options['awpcp_db_version'] = get_option('awpcp_db_version');
 
-		$sql = 'SELECT posts.ID post, posts.post_title title, pages.page ref, pages.id FROM ' . AWPCP_TABLE_PAGES . ' AS pages ';
-		$sql.= 'LEFT JOIN ' . $wpdb->posts . ' AS posts ';
-		$sql.= 'ON (posts.ID = pages.id)';
+        $plugin_pages_info = awpcp_get_plugin_pages_info();
+        $page_objects = get_pages( array( 'include' => awpcp_get_properties( $plugin_pages_info, 'page_id', 0 ) ) );
+        $plugin_pages = array();
 
-		$pages = $wpdb->get_results($sql);
+        foreach ( $page_objects as $page ) {
+        	$plugin_pages[ $page->ID ] = $page;
+        }
 
 		$rules = (array) $wp_rewrite->wp_rewrite_rules();
 

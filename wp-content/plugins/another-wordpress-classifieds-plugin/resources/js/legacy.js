@@ -123,18 +123,6 @@
 
     /* Widgets & Plugins */
 
-    $.AWPCP.DatepickerField = function(element) {
-        var self = this;
-
-        self.element = $(element);
-
-        self.element.parent().find('[datepicker-placeholder]').datepicker({
-            dateFormat: $.AWPCP.get('date-format'),
-            altField: self.element,
-            altFormat: 'yy/mm/dd'
-        });
-    };
-
     $.AWPCP.PaginationForm = function(form) {
         this.form = $(form);
         this.form.find('select').change(function() {

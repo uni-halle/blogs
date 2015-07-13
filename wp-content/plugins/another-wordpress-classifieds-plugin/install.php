@@ -14,11 +14,15 @@ define('AWPCP_TABLE_CATEGORIES', $wpdb->prefix . "awpcp_categories");
 define('AWPCP_TABLE_PAYMENTS', $wpdb->prefix . 'awpcp_payments');
 define('AWPCP_TABLE_CREDIT_PLANS', $wpdb->prefix . 'awpcp_credit_plans');
 define('AWPCP_TABLE_PAGES', $wpdb->prefix . "awpcp_pages");
-define('AWPCP_TABLE_PAGENAME', $wpdb->prefix . "awpcp_pagename");
 define('AWPCP_TABLE_TASKS', $wpdb->prefix . "awpcp_tasks");
 
+// TODO: remove references to these constants in plugin's code, then plan to
+//  remove the tables and finally the constants.
 define('AWPCP_TABLE_ADSETTINGS', $wpdb->prefix . "awpcp_adsettings");
 define('AWPCP_TABLE_ADPHOTOS', $wpdb->prefix . "awpcp_adphotos");
+
+// TODO: remove these constants after another major release (Added in 3.5.3)
+define( 'AWPCP_TABLE_PAGENAME', $wpdb->prefix . 'awpcp_pagename' );
 
 
 class AWPCP_Installer {
@@ -252,17 +256,6 @@ class AWPCP_Installer {
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
         dbDelta($sql);
 
-
-        // create Pagename table
-        // TODO: not sure if this table is needed at all, we could use an option...
-        $sql = "CREATE TABLE IF NOT EXISTS " . AWPCP_TABLE_PAGENAME . " (
-            `key_id` INT(10) NOT NULL AUTO_INCREMENT,
-            `userpagename` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-            PRIMARY KEY  (`key_id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
-        dbDelta($sql);
-
-
         // create Pages table
         $sql = 'CREATE TABLE IF NOT EXISTS ' . AWPCP_TABLE_PAGES . " (
             `page` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -270,7 +263,6 @@ class AWPCP_Installer {
           PRIMARY KEY  (`page`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
         dbDelta($sql);
-
 
         // create Payments table
         dbDelta($this->create_payments_table);
@@ -349,7 +341,6 @@ class AWPCP_Installer {
         $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_CREDIT_PLANS );
         $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_MEDIA );
         $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAGES );
-        $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAGENAME );
         $wpdb->query( "DROP TABLE IF EXISTS " . AWPCP_TABLE_PAYMENTS );
 
         // TODO: implement uninstall methods in other modules
@@ -394,7 +385,7 @@ class AWPCP_Installer {
     }
 
     // TODO: remove settings table after another major release
-    // TODO: remove pagename table after another major release
+    // TODO: remove pages table after another major release (Added in 3.5.3)
     public function upgrade($oldversion, $newversion) {
         global $wpdb;
 
@@ -442,6 +433,9 @@ class AWPCP_Installer {
         }
         if ( version_compare( $oldversion, '3.4' ) < 0 ) {
             $this->upgrade_to_3_4( $oldversion );
+        }
+        if ( version_compare( $oldversion, '3.5.3' ) < 0 ) {
+            $this->upgrade_to_3_5_3( $oldversion );
         }
 
         do_action('awpcp_upgrade', $oldversion, $newversion);
@@ -814,30 +808,23 @@ class AWPCP_Installer {
                 PRIMARY KEY  (`page`)
             ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
             dbDelta($sql);
-
-            $table = AWPCP_TABLE_PAGES;
         }
 
-        // if this table has records then we already did the migration, skip.
-        $count = count($wpdb->get_results('SELECT * FROM ' . AWPCP_TABLE_PAGES ));
-        if ($count <= 0) {
-            // map pagenames to ids
-            $pages = array_values($translations);
-            foreach ($pages as $page) {
-                $name = $awpcp->settings->get_option($page, null);
-                $sanitized = sanitize_title($name);
+        // map pagenames to ids
+        $pages = array_values( $translations );
+        foreach ( $pages as $page ) {
+            $name = $awpcp->settings->get_option( $page, null );
+            $sanitized = sanitize_title( $name );
 
-                if ($name == null || strcmp($sanitized, 'view-categories-page-name') === 0) {
-                    continue;
-                }
-
-                $sql = "SELECT ID FROM $wpdb->posts WHERE post_name = '$sanitized' AND post_type = 'page'";
-                $id = intval($wpdb->get_var($sql));
-                $id = $id > 0 ? $id : -1;
-
-                $params = array('page' => $page, 'id' => $id);
-                $result = $wpdb->insert(AWPCP_TABLE_PAGES, $params);
+            if ( $name == null || strcmp( $sanitized, 'view-categories-page-name' ) === 0 ) {
+                continue;
             }
+
+            $sql = "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = 'page'";
+            $id = intval( $wpdb->get_var( $wpdb->prepare( $sql, $sanitized ) ) );
+            $id = $id > 0 ? $id : -1;
+
+            awpcp_update_plugin_page_id( $page, $id );
         }
     }
 
@@ -879,12 +866,9 @@ class AWPCP_Installer {
         // with no AWPCP pages. The pages exist, but are not recognized
         // by the plugin.
         foreach ($translations as $old => $new) {
-            // Find current stored id
-            $query = 'SELECT page, id FROM ' . AWPCP_TABLE_PAGES . ' WHERE page = %s';
-            $pages = $wpdb->get_results($wpdb->prepare($query, $new));
+            $page_id = awpcp_get_page_id_by_ref( $new );
 
-            // A page was found, move on.
-            if (!empty($pages) && $pages[0]->id != -1) {
+            if ( $page_id > 0 ) {
                 continue;
             }
 
@@ -902,8 +886,7 @@ class AWPCP_Installer {
                 $id = intval($wpdb->get_var($wpdb->prepare($sql, $sanitized)));
                 $id = $id > 0 ? $id : -1;
 
-                $params = array('page' => $new, 'id' => $id);
-                $result = $wpdb->update(AWPCP_TABLE_PAGES, $params, array('page' => $new));
+                awpcp_update_plugin_page_id( $new, $id );
 
                 if ($id > 0) {
                     $awpcp->settings->update_option($new, $name, true);
@@ -1137,6 +1120,31 @@ class AWPCP_Installer {
         } else if ( is_numeric( $show_currency_symbol ) ) {
             awpcp()->settings->update_option( 'show-currency-symbol', 'do-not-show-currency-symbol' );
         }
+    }
+
+    private function upgrade_to_3_5_3( $oldversion ) {
+        global $wpdb;
+
+        $plugin_pages = awpcp_get_plugin_pages_info();
+
+        if ( empty( $plugin_pages ) ) {
+            // move plugin pages info from PAGES table to awpcp-plugin-pages option
+            $pages = $wpdb->get_results( 'SELECT page, id FROM ' . AWPCP_TABLE_PAGES, OBJECT_K );
+            foreach ( $pages as $page_ref => $page_info ) {
+                awpcp_update_plugin_page_id( $page_ref, $page_info->id );
+            }
+        }
+
+        // make sure there are entries for 'view-categories-page-name' in the plugin pages info
+        $plugin_pages = awpcp_get_plugin_pages_info();
+
+        if ( isset( $plugin_pages['view-categories-page-name'] ) ) {
+            unset( $plugin_pages['view-categories-page-name'] );
+            awpcp_update_plugin_pages_info( $plugin_pages );
+        }
+
+        // drop no longer used PAGENAME table
+        $wpdb->query( 'DROP TABLE IF EXISTS ' . AWPCP_TABLE_PAGENAME );
     }
 }
 

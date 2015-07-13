@@ -198,20 +198,15 @@ class AWPCP_ListingsAPI {
         $messages = array_merge( $messages, $this->get_ad_alerts( $ad ) );
 
         awpcp_send_listing_posted_notification_to_user( $ad, $transaction, join( "\n\n", $messages ) );
+        awpcp_send_listing_posted_notification_to_moderators( $ad, $transaction, join( "\n\n", $messages ) );
 
         $moderate_listings = get_awpcp_option( 'adapprove' );
         $moderate_images = get_awpcp_option('imagesapprove') == 1;
 
         if ( ( $moderate_listings || $moderate_images ) && $ad->disabled ) {
-            $notification_sent = awpcp_send_listing_awaiting_approval_notification_to_moderators(
+            awpcp_send_listing_awaiting_approval_notification_to_moderators(
                 $ad, $moderate_listings, $moderate_images
             );
-        } else {
-            $notification_sent = false;
-        }
-
-        if ( ! $notification_sent ) {
-            awpcp_send_listing_posted_notification_to_moderators( $ad, $transaction, join( "\n\n", $messages ) );
         }
     }
 
@@ -222,20 +217,15 @@ class AWPCP_ListingsAPI {
         $messages = array_merge( $messages, $this->get_ad_alerts( $ad ) );
 
         awpcp_send_listing_updated_notification_to_user( $ad, join( "\n\n", $messages ) );
+        awpcp_send_listing_updated_notification_to_moderators( $ad, join( "\n\n", $messages ) );
 
         $moderate_modifications = get_awpcp_option( 'disable-edited-listings-until-admin-approves' );
         $moderate_images = get_awpcp_option('imagesapprove') == 1;
 
         if ( ( $moderate_modifications || $moderate_images ) && $ad->disabled ) {
-            $notification_sent = awpcp_send_listing_awaiting_approval_notification_to_moderators(
+            awpcp_send_listing_awaiting_approval_notification_to_moderators(
                 $ad, $moderate_modifications, $moderate_images
             );
-        } else {
-            $notification_sent = false;
-        }
-
-        if ( ! $notification_sent ) {
-            awpcp_send_listing_updated_notification_to_moderators( $ad, join( "\n\n", $messages ) );
         }
     }
 

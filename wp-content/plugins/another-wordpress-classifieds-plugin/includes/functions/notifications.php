@@ -195,13 +195,15 @@ function awpcp_get_messages_for_listing_awaiting_approval_notification( $listing
         $params = array('page' => 'awpcp-listings',  'action' => 'view', 'id' => $listing->ad_id);
         $url = add_query_arg( urlencode_deep( $params ), admin_url( 'admin.php' ) );
 
-        $messages[] = sprintf( $message, $listing->get_title(), esc_url( $url ) );
+        $messages[] = sprintf( $message, $listing->get_title(), $url );
 
         if ( $moderate_images ) {
             $message = __( 'Additionally, You can approve the images going to the Manage Images section for that Ad and clicking the "Enable" button below each image. Click here to continue: %s.', 'AWPCP' );
-            $messages[] = sprintf( $message, esc_url( $manage_images_url ) );
+            $messages[] = sprintf( $message, $manage_images_url );
         }
     }
+
+    $subject = sprintf( $subject, $listing->get_title() );
 
     return array( 'subject' => $subject, 'messages' => $messages );
 }

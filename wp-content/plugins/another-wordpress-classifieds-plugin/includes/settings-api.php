@@ -784,12 +784,11 @@ class AWPCP_Settings_API {
 	public function validate_classifieds_pages_settings($options, $group) {
 		global $wpdb, $wp_rewrite;
 
-		$pages = awpcp_pages();
-		$pageids = $wpdb->get_results('SELECT page, id FROM ' . AWPCP_TABLE_PAGES, OBJECT_K);
+		$pageids = awpcp_get_plugin_pages_ids();
 		$pages_updated = 0;
 
-		foreach ($pages as $key => $data) {
-			$id = intval($pageids[$key]->id);
+		foreach ( awpcp_pages() as $key => $data ) {
+			$id = intval( $pageids[ $key ] );
 
 			if ( $id <= 0 ) {
 				continue;

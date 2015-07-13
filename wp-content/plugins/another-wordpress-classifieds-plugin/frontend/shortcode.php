@@ -137,6 +137,7 @@ class AWPCP_Pages {
         $limit = absint($attrs['limit']);
 
         $query = array(
+            'context' => 'public-listings',
             'limit' => $limit,
         );
 
@@ -155,6 +156,7 @@ class AWPCP_Pages {
         $limit = absint($attrs['limit']);
 
         $random_query = array(
+            'context' => 'public-listings',
             'fields' => 'ad_id',
             'raw' => true,
         );
@@ -286,6 +288,7 @@ function awpcpui_process($awpcppagename) {
 function awpcp_load_classifieds($awpcppagename) {
 	if (get_awpcp_option('main_page_display') == 1) {
         $query = array(
+            'context' => 'public-listings',
             'limit' => absint( awpcp_request_param( 'results', get_awpcp_option( 'adresultsperpage', 10 ) ) ),
             'offset' => absint( awpcp_request_param( 'offset', 0 ) ),
             'orderby' => get_awpcp_option( 'groupbrowseadsby' ),

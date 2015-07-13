@@ -28,21 +28,20 @@
 				<table>
 					<thead>
 						<tr>
-							<th><?php _e('Page ID', 'AWPCP') ?></th>
-							<th><?php _e('Title', 'AWPCP') ?></th>
-							<th><?php _e('Reference', 'AWPCP') ?></th>
 							<th><?php _e('Stored ID', 'AWPCP') ?></th>
+							<th><?php _e('Reference', 'AWPCP') ?></th>
+							<th><?php _e('Title', 'AWPCP') ?></th>
 						</tr>
 					</thead>
 					<tbody>
-				<?php foreach($pages as $page): ?>
+				<?php foreach( $plugin_pages_info as $page_ref => $info ): ?>
+					<?php $page = isset( $plugin_pages[ $info[ 'page_id' ] ] ) ? $plugin_pages[ $info[ 'page_id' ] ] : null; ?>
 						<tr>
-							<td class="align-center"><?php echo $page->post ?></td>
-							<td><?php echo $page->title ?></td>
-							<td class="align-center"><?php echo $page->ref ?></td>
-							<td class="align-center"><?php echo $page->id ?></td>
+							<td class="align-center"><?php echo $info['page_id']; ?></td>
+							<td class="align-center"><?php echo $page_ref; ?></td>
+							<td><?php echo $page ? $page->post_title : __( 'Page not found', 'AWPCP' ); ?></td>
 						</tr>
-				<?php endforeach ?> 
+				<?php endforeach ?>
 					</tbody>
 				</table>
 		    </div>

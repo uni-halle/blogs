@@ -118,22 +118,16 @@ class AWPCP_Admin {
 		$duplicates = array();
 		$awpcp_pages = array();
 		$wp_pages = array();
-		$pages = array();
 
 		$posts = get_posts( array( 'post_type' => 'page', 'name' => $view_categories ) );
+
 		foreach ( $posts as $post ) {
 			if ( $view_categories_url == get_permalink( $post->ID ) ) {
 				$duplicates[] = $post;
 			}
 		}
 
-		if ( !empty( $duplicates ) ) {
-			$query = 'SELECT id, page FROM ' . AWPCP_TABLE_PAGES .  ' WHERE page != %s';
-			$query = $wpdb->prepare( $query, 'view-categories-page-name' );
-			$pages = $wpdb->get_results( $query, OBJECT_K );
-		} else {
-			$pages = array();
-		}
+		$pages = empty( $duplicates ) ? array() : awpcp_get_plugin_pages_refs();
 
 		foreach ( $duplicates as $page ) {
 			if ( isset( $pages[ $page->ID ] ) ) {
@@ -358,11 +352,11 @@ class AWPCP_Admin {
 
 
 function checkifclassifiedpage($pagename) {
-	global $wpdb, $table_prefix;
+	global $wpdb;
 
-	$id = awpcp_get_page_id_by_ref('main-page-name');
+	$id = awpcp_get_page_id_by_ref( 'main-page-name' );
 	$query = 'SELECT ID FROM ' . $wpdb->posts . ' WHERE ID = %d';
-	$page_id = $wpdb->get_var($wpdb->prepare($query, $id));
+	$page_id = intval( $wpdb->get_var( $wpdb->prepare( $query, $id ) ) );
 
 	return $page_id === $id;
 }
@@ -950,7 +944,7 @@ function awpcp_subpages() {
 
 function awpcp_create_pages($awpcp_page_name, $subpages=true) {
 	global $wpdb;
-	
+
 	$refname = 'main-page-name';
 	$date = date("Y-m-d");
 
@@ -973,13 +967,7 @@ function awpcp_create_pages($awpcp_page_name, $subpages=true) {
 		);
 		$id = wp_insert_post($awpcp_page);
 
-		$previous = awpcp_get_page_id_by_ref($refname);
-		if ($previous === false) {
-			$wpdb->insert(AWPCP_TABLE_PAGES, array('page' => $refname, 'id' => $id));
-		} else {
-			$wpdb->update(AWPCP_TABLE_PAGES, array('page' => $refname, 'id' => $id), 
-					  array('page' => $refname));	
-		}
+		awpcp_update_plugin_page_id( $refname, $id );
 	} else {
 		$id = awpcp_get_page_id_by_ref($refname);
 	}
@@ -1026,13 +1014,7 @@ function awpcp_create_subpage($refname, $name, $shortcode, $awpcp_page_id=null) 
 	}
 
 	if ($id > 0) {
-		$previous = awpcp_get_page_id_by_ref($refname);
-		if ($previous === false) {
-			$wpdb->insert(AWPCP_TABLE_PAGES, array('page' => $refname, 'id' => $id));
-		} else {
-			$wpdb->update(AWPCP_TABLE_PAGES, array('page' => $refname, 'id' => $id), 
-					  array('page' => $refname));	
-		}
+		awpcp_update_plugin_page_id( $refname, $id );
 	}
 
 	return $id;

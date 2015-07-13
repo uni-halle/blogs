@@ -27,16 +27,10 @@ class AWPCP_PageNameMonitor {
             return;
         }
 
-        if ( ! $this->page_is_an_awpcp_page( $post_id ) ) {
+        if ( ! is_awpcp_page( $post_id ) ) {
             return;
         }
 
         flush_rewrite_rules();
-    }
-
-    private function page_is_an_awpcp_page( $page_id ) {
-        $query = 'SELECT * FROM ' . AWPCP_TABLE_PAGES . ' WHERE id = %d';
-        $page = $this->db->get_row( $this->db->prepare( $query, $page_id ) );
-        return is_null( $page ) ? false : true;
     }
 }

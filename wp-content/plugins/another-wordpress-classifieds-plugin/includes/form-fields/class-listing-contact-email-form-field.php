@@ -1,13 +1,20 @@
 <?php
 
 function awpcp_listing_contact_email_form_field( $slug ) {
-    return new AWPCP_ListingContactEmailFormField( $slug );
+    return new AWPCP_ListingContactEmailFormField( $slug, awpcp()->settings );
 }
 
 /**
  * TODO: what if that field shouldn't be shown?
  */
 class AWPCP_ListingContactEmailFormField extends AWPCP_FormField {
+
+    private $settings;
+
+    public function __construct( $slug, $settings ) {
+        parent::__construct( $slug );
+        $this->settings = $settings;
+    }
 
     public function get_name() {
         return _x( "Contact Person's Email", 'ad details form', 'AWPCP' );
@@ -22,6 +29,12 @@ class AWPCP_ListingContactEmailFormField extends AWPCP_FormField {
     }
 
     public function is_readonly( $value ) {
+        $make_contact_fields_writable = $this->settings->get_option( 'make-contact-fields-writable-for-logged-in-users' );
+
+        if ( is_user_logged_in() && $make_contact_fields_writable ) {
+            return false;
+        }
+
         if ( ! is_user_logged_in() || awpcp_current_user_is_moderator() || empty( $value ) ) {
             return false;
         }

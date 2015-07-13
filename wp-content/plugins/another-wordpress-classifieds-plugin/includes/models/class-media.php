@@ -50,6 +50,10 @@ class AWPCP_Media {
         return (bool) $this->is_primary;
     }
 
+    public function get_original_file_path() {
+        return trailingslashit( AWPCPUPLOADDIR ) . $this->path;
+    }
+
     public function get_url( $size = 'thumbnail' ) {
         if ( $size == 'original' ) {
             return $this->get_original_file_url();
@@ -67,14 +71,19 @@ class AWPCP_Media {
     }
 
     public function get_large_image_url() {
-        $original_file_url = $this->get_original_file_url();
+        $file_path = $this->get_original_file_path();
 
         $alternatives = array(
-            $this->get_url_with_suffix( $original_file_url, 'large' ),
-            $original_file_url
+            $this->get_path_with_suffix( $file_path, 'large' ),
+            $file_path
         );
 
-        return $this->get_url_from_alternatives( $alternatives );
+        return $this->get_url_from_path( $this->get_path_from_alternatives( $alternatives ) );
+    }
+
+    private function get_path_with_suffix( $path, $suffix ) {
+        $extension = awpcp_get_file_extension( $path );
+        return str_replace( ".{$extension}", "-{$suffix}.{$extension}", $path );
     }
 
     private function get_url_with_suffix( $base_url, $suffix ) {
@@ -82,12 +91,33 @@ class AWPCP_Media {
         return str_replace( ".{$extension}", "-{$suffix}.{$extension}", $base_url );
     }
 
-    private function get_url_from_alternatives( $alternatives ) {
-        $home_url = get_site_url();
-        $abs_path = rtrim( ABSPATH, '/' );
+    public function get_primary_thumbnail_url() {
+        $thumbnail_path = $this->get_thumbnail_path();
 
+        $alternatives = array(
+            $this->get_path_with_suffix( $thumbnail_path, 'primary' ),
+            $thumbnail_path,
+            $this->get_original_file_path(),
+        );
+
+        return $this->get_url_from_path( $this->get_path_from_alternatives( $alternatives ) );
+    }
+
+    public function get_thumbnail_url() {
+        return $this->get_url_from_path( $this->get_thumbnail_path() );
+    }
+
+    public function get_thumbnail_path() {
+        $alternatives = apply_filters( 'awpcp-get-file-thumbnail-url-alternatives', array(
+            trailingslashit( AWPCPTHUMBSUPLOADDIR ) . $this->name,
+        ), $this );
+
+        return $this->get_path_from_alternatives( $alternatives );
+    }
+
+    private function get_path_from_alternatives( $alternatives ) {
         foreach ( $alternatives as $path ) {
-            if ( file_exists( str_replace( $home_url, $abs_path, $path ) ) ) {
+            if ( file_exists( $path ) ) {
                 return $path;
             }
         }
@@ -95,24 +125,8 @@ class AWPCP_Media {
         return false;
     }
 
-    public function get_primary_thumbnail_url() {
-        $thumbnail_url = $this->get_thumbnail_url();
-
-        $alternatives = array(
-            $this->get_url_with_suffix( $thumbnail_url, 'primary' ),
-            $thumbnail_url,
-            $this->get_original_file_url()
-        );
-
-        return $this->get_url_from_alternatives( $alternatives );
-    }
-
-    public function get_thumbnail_url() {
-        $alternatives = apply_filters( 'awpcp-get-file-thumbnail-url-alternatives', array(
-            trailingslashit( AWPCPTHUMBSUPLOADURL ) . $this->name,
-        ), $this );
-
-        return $this->get_url_from_alternatives( $alternatives );
+    private function get_url_from_path( $path ) {
+        return $path ? str_replace( rtrim( ABSPATH, '/' ), get_site_url(), $path ) : false;
     }
 
     public function get_icon_url() {

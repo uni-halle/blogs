@@ -17,9 +17,10 @@ class AWPCP_RandomAdWidget extends AWPCP_LatestAdsWidget {
     }
 
     protected function query($instance) {
-        $query = parent::query($instance);
-
-        $query['args']['order'] = array( 'RAND() DESC' );
+        $query = array_merge( parent::query( $instance ), array(
+            'orderby' => 'random',
+            'order' => 'DESC',
+        ) );
 
         return $query;
     }

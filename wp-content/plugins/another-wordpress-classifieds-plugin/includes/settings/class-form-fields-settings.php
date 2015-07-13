@@ -28,6 +28,17 @@ class AWPCP_FormFieldsSettings {
         $settings->add_setting( $key, 'user-field-widget', __( 'HTML Widget for User field', 'AWPCP' ), 'radio', 'dropdown', __( 'The user field can be represented with an HTML dropdown or a text field with autocomplete capabilities. Using the dropdown is faster if you have a small number of users. If your website has a lot of registered users, however, the dropdown may take too long to render and using the autocomplete version may be a better idea.', 'AWPCP' ), array( 'options' => $options ) );
         $settings->add_setting( $key, 'displaypostedbyfield', __( 'Show User Field on Search', 'AWPCP' ), 'checkbox', 1, __( 'Show as "Posted By" in search form?', 'AWPCP' ) );
 
+        $key = $settings->add_section( $group, __( 'Contact Fields', 'AWPCP' ), 'contact', 10, array( $settings, 'section' ) );
+
+        $settings->add_setting(
+            $key,
+            'make-contact-fields-writable-for-logged-in-users',
+            __( 'Allow logged in users to overwrite Contact Name and Contact Email', 'AWPCP' ),
+            'checkbox',
+            false,
+            __( "Normally registered users who are not administrators are not allowed to change the email address or contact name. The fields are rendered as read-only and pre-filled with the information from each user's profile. If this setting is enabled, logged in users will be allowed to overwrite those fields.", 'AWPCP' )
+        );
+
         // Section: Phone Field
 
         $key = $settings->add_section($group, __('Phone Field', 'AWPCP'), 'phone', 15, array($settings, 'section'));

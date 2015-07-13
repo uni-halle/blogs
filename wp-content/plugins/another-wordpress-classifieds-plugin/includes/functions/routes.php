@@ -31,16 +31,8 @@ function checkforduplicate($cpagename_awpcp) {
  * Check if the page identified by $refname exists.
  */
 function awpcp_find_page($refname) {
-    global $wpdb;
-
-    $query = 'SELECT posts.ID, page FROM ' . $wpdb->posts . ' AS posts ';
-    $query.= 'LEFT JOIN ' . AWPCP_TABLE_PAGES . ' AS pages ';
-    $query.= 'ON (posts.ID = pages.id) WHERE pages.page = %s';
-
-    $query = $wpdb->prepare($query, $refname);
-    $pages = $wpdb->get_results($query);
-
-    return $pages !== false && !empty($pages);
+    $page = get_page( awpcp_get_page_id_by_ref( $refname ) );
+    return is_object( $page );
 }
 
 /**
@@ -64,8 +56,13 @@ function awpcp_get_page_id( $name ) {
  * @param $refname the name of the setting that holds the name of the page
  */
 function awpcp_get_page_id_by_ref( $refname ) {
-    $all_pages_ids = awppc_get_pages_ids();
-    return isset( $all_pages_ids[ $refname ] ) ? $all_pages_ids[ $refname ] : false;
+    $plugin_pages_info = awpcp_get_plugin_pages_info();
+
+    if ( isset( $plugin_pages_info[ $refname ] ) ) {
+        return intval( $plugin_pages_info[ $refname ]['page_id'] );
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -74,12 +71,12 @@ function awpcp_get_page_id_by_ref( $refname ) {
  * @return array Array of Page IDs
  */
 function awpcp_get_page_ids_by_ref( $refnames ) {
-    $all_pages_ids = awppc_get_pages_ids();
-
+    $plugin_pages_info = awpcp_get_plugin_pages_info();
     $pages_ids = array();
+
     foreach ( $refnames as $refname ) {
-        if ( isset( $all_pages_ids[ $refname ] ) ) {
-            $pages_ids[] = $all_pages_ids[ $refname ];
+        if ( isset( $plugin_pages_info[ $refname ] ) ) {
+            $pages_ids[] = intval( $plugin_pages_info[ $refname ]['page_id'] );
         }
     }
 
@@ -88,32 +85,70 @@ function awpcp_get_page_ids_by_ref( $refnames ) {
 
 /**
  * @since 3.4
+ * @deprecated 3.5.3
  */
 function awppc_get_pages_ids() {
-    static $pages_ids;
-
-    if ( is_null( $pages_ids ) ) {
-        $pages_ids = awpcp_get_pages_ids_from_db();
-    }
-
-    return $pages_ids;
+    return awpcp_get_plugin_pages_ids();
 }
 
 /**
  * @since 3.4
+ * @deprecated 3.5.3
  */
 function awpcp_get_pages_ids_from_db() {
-    global $wpdb;
+    return awpcp_get_plugin_pages_ids();
+}
 
-    $query = 'SELECT page, id FROM ' . AWPCP_TABLE_PAGES;
-    $results = $wpdb->get_results( $query );
+/**
+ * @since 3.5.3
+ */
+function awpcp_get_plugin_pages_info() {
+    return get_option( 'awpcp-plugin-pages', array() );
+}
 
-    $pages_ids = array();
-    foreach ( $results as $row ) {
-        $pages_ids[ $row->page ] = $row->id;
+/**
+ * @since 3.5.3
+ */
+function awpcp_update_plugin_pages_info( $plugin_pages ) {
+    return update_option( 'awpcp-plugin-pages', $plugin_pages );
+}
+
+/**
+ * @since 3.5.3
+ */
+function awpcp_get_plugin_pages_refs() {
+    $plugin_pages_info = awpcp_get_plugin_pages_info();
+    $plugin_pages = array();
+
+    foreach ( $plugin_pages_info as $page_ref => $page_info ) {
+        $plugin_pages[ $page_info['page_id'] ] = $page_ref;
     }
 
-    return $pages_ids;
+    return $plugin_pages;
+}
+
+/**
+ * @since 3.5.3
+ */
+function awpcp_get_plugin_pages_ids() {
+    $plugin_pages_info = awpcp_get_plugin_pages_info();
+
+    $plugin_pages = array();
+    foreach ( $plugin_pages_info as $page_ref => $page_info ) {
+        $plugin_pages[ $page_ref ] = $page_info['page_id'];
+    }
+
+    return $plugin_pages;
+}
+
+/**
+ * @since 3.5.3
+ */
+function awpcp_update_plugin_page_id( $page_ref, $page_id ) {
+    $plugin_pages_info = awpcp_get_plugin_pages_info();
+    $plugin_pages_info[ $page_ref ] = array( 'page_id' => $page_id );
+
+    return awpcp_update_plugin_pages_info( $plugin_pages_info );
 }
 
 if ( ! function_exists( 'is_awpcp_page' ) ) {
@@ -122,13 +157,20 @@ if ( ! function_exists( 'is_awpcp_page' ) ) {
      *
      * @since 3.4
      */
-    function is_awpcp_page() {
-        global $wpdb, $wp_the_query;
+    function is_awpcp_page( $page_id = null ) {
+        global $wp_the_query;
 
-        $page_names = implode( "', '", array_keys( awpcp_pages() ) );
-        $page_ids = $wpdb->get_col( sprintf( 'SELECT id FROM ' . AWPCP_TABLE_PAGES . " WHERE page IN ('%s')", $page_names ) );
+        if ( ! $wp_the_query ) {
+            return false;
+        }
 
-        return $wp_the_query && in_array( $wp_the_query->get_queried_object_id(), $page_ids );
+        $pages_refs = awpcp_get_plugin_pages_refs();
+
+        if ( is_null( $page_id ) ) {
+            $page_id = $wp_the_query->get_queried_object_id();
+        }
+
+        return isset( $pages_refs[ $page_id ] );
     }
 }
 

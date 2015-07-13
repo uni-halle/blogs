@@ -70,6 +70,15 @@ class AWPCP_GeneralSettings {
             __( "Prices in listings pages and payment pages will be displayed using this currency. The currency symbol will be generated based on this code, but if the plugin doesn't know the symbol for your currency, it will use an uppercase version of the code itself.", 'AWPCP' )
         );
 
+        $settings->add_setting(
+            $key,
+            'currency-symbol',
+            __( 'Currency symbol', 'AWPCP' ),
+            'textfield',
+            '',
+            __( "Use this setting to overwrite the currency symbol shown in listings pages. If empty, the plugin will attempt to show one of the standard symbols for the selected currency code, but if the plugin doesn't know the symbol for your currency, it will use an uppercase version of the currency code.", 'AWPCP' )
+        );
+
         $settings->add_setting($key, 'thousands-separator', __('Thousands separator', 'AWPCP'), 'textfield', _x(',', 'This translation is deprecated. Please go to the Settings section to change the thousands separator.', 'AWPCP'), '');
         $settings->add_setting($key, 'decimal-separator', __('Separator for the decimal point', 'AWPCP'), 'textfield', _x('.', 'This translation is deprecated. Please go to the Settings section to change the decimal separator.', 'AWPCP'), '');
         $settings->add_setting($key, 'show-decimals', __('Show decimals in price', 'AWPCP'), 'checkbox', 1, _x('Uncheck to show prices without decimals. The value will be rounded.', 'settings', 'AWPCP'));

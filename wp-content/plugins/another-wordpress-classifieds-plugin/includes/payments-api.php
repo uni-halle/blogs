@@ -99,23 +99,47 @@ class AWPCP_PaymentsAPI {
      *  other parts of the plugin can decide what to do.
      */
     public function update_account_balance($transaction) {
-        if ($transaction->is_completed() && $transaction->was_payment_successful()) {
-            if (awpcp_user_is_admin($transaction->user_id))
-                return;
-
-            $credit_plan = $this->get_transaction_credit_plan($transaction);
-
-            if (!is_null($credit_plan)) {
-                $balance = $this->get_account_balance($transaction->user_id);
-                $this->set_account_balance($transaction->user_id, $balance + $credit_plan->credits);
-            }
-
-            $totals = $transaction->get_totals();
-            if ($totals['credits'] > 0) {
-                $balance = $this->get_account_balance($transaction->user_id);
-                $this->set_account_balance($transaction->user_id, $balance - $totals['credits']);
-            }
+        if ( awpcp_user_is_admin( $transaction->user_id ) ) {
+            return;
         }
+
+        if ( $transaction->payment_is_completed() || $transaction->payment_is_pending() ) {
+            $this->maybe_increase_account_balance( $transaction );
+        }
+
+        if ( $transaction->was_payment_successful() && $transaction->is_completed() ) {
+            $this->maybe_decrease_account_balance( $transaction );
+        }
+    }
+
+    private function maybe_increase_account_balance( $transaction ) {
+        if ( $transaction->get( 'credits-purchase-processed' ) ) {
+            return;
+        }
+
+        $credit_plan = $this->get_transaction_credit_plan( $transaction );
+
+        if ( ! is_null( $credit_plan ) ) {
+            $balance = $this->get_account_balance( $transaction->user_id );
+            $this->set_account_balance( $transaction->user_id, $balance + $credit_plan->credits );
+        }
+
+        $transaction->set( 'credits-purchase-processed', true );
+    }
+
+    private function maybe_decrease_account_balance( $transaction ) {
+        if ( $transaction->get( 'credits-payment-processed' ) ) {
+            return;
+        }
+
+        $totals = $transaction->get_totals();
+
+        if ( $totals['credits'] > 0 ) {
+            $balance = $this->get_account_balance( $transaction->user_id );
+            $this->set_account_balance( $transaction->user_id, $balance - $totals['credits'] );
+        }
+
+        $transaction->set( 'credits-payment-processed', true );
     }
 
     public function set_account_balance($user_id, $balance) {

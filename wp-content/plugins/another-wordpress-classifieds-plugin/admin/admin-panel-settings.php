@@ -46,13 +46,13 @@ class AWPCP_Classified_Pages_Settings {
 	public function dispatch() {
 		global $awpcp;
 
-		$nonce = awpcp_post_param('_wpnonce');
-		$restore = awpcp_post_param('restore-pages', false);
-		if ($restore && wp_verify_nonce($nonce, 'awpcp-restore-pages')) {
-			$awpcp->restore_pages();
+		if ( $this->should_restore_pages() ) {
+			$restored_pages = awpcp_pages_creator()->restore_missing_pages();
+		} else {
+			$restored_pages = array();
 		}
 
-		$missing = $this->missing_pages_finder->find_missing_pages();
+		$missing = awpcp_array_filter_recursive( $this->missing_pages_finder->find_missing_pages() );
 
 		ob_start();
 			include(AWPCP_DIR . '/admin/templates/admin-panel-settings-pages-settings.tpl.php');
@@ -60,6 +60,13 @@ class AWPCP_Classified_Pages_Settings {
 		ob_end_clean();
 
 		echo $content;
+	}
+
+	private function should_restore_pages() {
+		$nonce = awpcp_post_param( '_wpnonce' );
+		$restore = awpcp_post_param( 'restore-pages', false );
+
+		return $restore && wp_verify_nonce( $nonce, 'awpcp-restore-pages' );
 	}
 }
 

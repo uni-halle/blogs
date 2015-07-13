@@ -3,7 +3,7 @@
  Plugin Name: Another Wordpress Classifieds Plugin (AWPCP)
  Plugin URI: http://www.awpcp.com
  Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your wordpress blog. <strong>!!!IMPORTANT!!!</strong> Whether updating a previous installation of Another Wordpress Classifieds Plugin or installing Another Wordpress Classifieds Plugin for the first time, please backup your wordpress database before you install/uninstall/activate/deactivate/upgrade Another Wordpress Classifieds Plugin.
-Version: 3.5.2
+Version: 3.5.3
  Author: D. Rodenbaugh
  License: GPLv2 or any later version
  Author URI: http://www.skylineconsult.com
@@ -95,6 +95,7 @@ require_once(AWPCP_DIR . "/includes/compatibility/compatibility.php");
 require_once( AWPCP_DIR . "/includes/compatibility/class-add-meta-tags-plugin-integration.php" );
 require_once(AWPCP_DIR . "/includes/compatibility/class-all-in-one-seo-pack-plugin-integration.php");
 require_once(AWPCP_DIR . "/includes/compatibility/class-facebook-plugin-integration.php");
+require_once( AWPCP_DIR . '/includes/compatibility/class-facebook-all-plugin-integration.php' );
 require_once( AWPCP_DIR . "/includes/compatibility/class-yoast-wordpress-seo-plugin-integration.php" );
 require_once( AWPCP_DIR . "/includes/compatibility/class-woocommerce-plugin-integration.php" );
 
@@ -265,8 +266,9 @@ require_once( AWPCP_DIR . "/includes/class-listings-collection.php" );
 require_once( AWPCP_DIR . "/includes/class-listings-metadata.php" );
 require_once( AWPCP_DIR . "/includes/class-media-api.php" );
 require_once( AWPCP_DIR . "/includes/class-missing-pages-finder.php" );
-require_once( AWPCP_DIR . "/includes/class-secure-url-redirection-handler.php" );
+require_once( AWPCP_DIR . "/includes/class-pages-creator.php" );
 require_once( AWPCP_DIR . "/includes/class-roles-and-capabilities.php" );
+require_once( AWPCP_DIR . "/includes/class-secure-url-redirection-handler.php" );
 require_once( AWPCP_DIR . "/includes/class-users-collection.php" );
 require_once(AWPCP_DIR . "/includes/payments-api.php");
 require_once(AWPCP_DIR . "/includes/regions-api.php");
@@ -366,7 +368,8 @@ class AWPCP {
         $this->settings->set_runtime_option( 'easy-digital-downloads-store-url', 'http://awpcp.com' );
         $this->settings->set_runtime_option( 'image-mime-types', array( 'image/png', 'image/jpeg', 'image/jpg', 'image/gif' ) );
 
-        $uploads_dir_name = $this->settings->get_option( 'uploadfoldername' );
+        // TODO: see if we can call setup_runtime_options after awpcp_register_settings action has fired!
+        $uploads_dir_name = $this->settings->get_option( 'uploadfoldername', 'uploads' );
         $uploads_dir = implode( DIRECTORY_SEPARATOR, array( rtrim( WP_CONTENT_DIR, DIRECTORY_SEPARATOR ), $uploads_dir_name, 'awpcp' ) );
         $uploads_url = implode( '/', array( rtrim( WP_CONTENT_URL, '/' ), $uploads_dir_name, 'awpcp' ) );
 
@@ -784,7 +787,7 @@ class AWPCP {
 					'url' => 'http://www.awpcp.com/premium-modules/regions-control-module?ref=panel',
 					'installed' => defined( 'AWPCP_REGION_CONTROL_MODULE' ),
 					'version' => 'AWPCP_REGION_CONTROL_MODULE_DB_VERSION',
-					'required' => '3.4',
+					'required' => '3.5.1',
 				),
 				'restricted-categories' => array(
 					'name' => __( 'Restricted Categories', 'AWPCP' ),
@@ -812,7 +815,7 @@ class AWPCP {
                     'url' => 'http://www.awpcp.com/',
                     'installed' => defined( 'AWPCP_VIDEOS_MODULE' ),
                     'version' => 'AWPCP_VIDEOS_MODULE_DB_VERSION',
-                    'required' => '3.5.1',
+                    'required' => '3.5.2',
                     'private' => true,
                 ),
 				'xml-sitemap' => array(
@@ -1052,6 +1055,35 @@ class AWPCP {
             ) );
         }
 
+        global $wp_locale;
+
+        $this->js->localize( 'datepicker', array(
+            // 'clearText' => _x( 'Clear', '[UI Datepicker] Display text for clear link', 'AWPCP' ),
+            // 'clearStatus' => _x( 'Erase the current date', '[UI Datepicker] Status text for clear link', 'AWPCP' ),
+            // 'closeText' => _x( 'Close', '[UI Datepicker] Display text for close link', 'AWPCP' ),
+            // 'closeStatus' => _x( 'Close without change', '[UI Datepicker] Status text for close link', 'AWPCP' ),
+            'prevText' => _x( '&#x3c;Prev', '[UI Datepicker] Display text for previous month link', 'AWPCP' ),
+            // 'prevStatus' => _x( 'Show the previous month', '[UI Datepicker] Status text for previous month link', 'AWPCP' ),
+            'nextText' => _x( 'Next&#x3e;', '[UI Datepicker] Display text for next month link', 'AWPCP' ),
+            // 'nextStatus' => _x( 'Show the next month', '[UI Datepicker] Status text for next month link', 'AWPCP' ),
+            // 'currentText' => _x( 'Today', '[UI Datepicker] Display text for current month link', 'AWPCP' ),
+            // 'currentStatus' => _x( 'Show the current month', '[UI Datepicker] Status text for current month link', 'AWPCP' ),
+            'monthNames' => array_values( $wp_locale->month ), // Names of months for drop-down and formatting
+            'monthNamesShort' => array_values( $wp_locale->month_abbrev ), // For formatting
+            // 'monthStatus' => _x( 'Show a different month', '[UI Datepicker] Status text for selecting a month', 'AWPCP' ),
+            // 'yearStatus' => _x( 'Show a different year', '[UI Datepicker] Status text for selecting a year', 'AWPCP' ),
+            // 'weekHeader' => _x( 'Wk', '[UI Datepicker] Header for the week of the year column', 'AWPCP' ),
+            // 'weekStatus' => _x( 'Week of the year', '[UI Datepicker] Status text for the week of the year column', 'AWPCP' ),
+            'dayNames' => array_values( $wp_locale->weekday ),
+            'dayNamesShort' => array_values( $wp_locale->weekday_abbrev ), // For formatting
+            'dayNamesMin' => array_values( $wp_locale->weekday_initial ), // Column headings for days starting at Sunday
+            // 'dayStatus' => _x( 'Set DD as first week day', '[UI Datepicker] Status text for the day of the week selection', 'AWPCP' ),
+            // 'dateStatus' => _x( 'Select DD, M d', '[UI Datepicker] Status text for the date selection', 'AWPCP' ),
+            'firstDay' => intval( _x( '0', '[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ...', 'AWPCP' ) ),
+            // 'initStatus' => _x( 'Select a date', '[UI Datepicker] Initial Status text on opening', 'AWPCP' ),
+            'isRTL' => $wp_locale->text_direction == 'ltr' ? false : true // True if right-to-left language, false if left-to-right
+        ) );
+
         $script = 'awpcp';
         if ( wp_script_is( $script, 'queue' ) || wp_script_is( $script, 'done' ) || wp_script_is( $script, 'to_do' ) ) {
             $this->js->print_data();
@@ -1185,33 +1217,6 @@ class AWPCP {
 		);
 
 		do_action( 'wp_affiliate_process_cart_commission', $data );
-	}
-
-	public function restore_pages() {
-		global $wpdb;
-
-		$shortcodes = awpcp_pages();
-		$missing = $this->get_missing_pages();
-		$pages = awpcp_get_properties($missing, 'page');
-
-		// If we are restoring the main page, let's do it first!
-		if (($p = array_search('main-page-name', $pages)) !== FALSE) {
-			// put the main page as the first page to restore
-			array_splice($missing, 0, 0, array($missing[$p]));
-			array_splice($missing, $p + 1, 1);
-		}
-
-		foreach($missing as $page) {
-			$refname = $page->page;
-			$name = get_awpcp_option($refname);
-			if (strcmp($refname, 'main-page-name') == 0) {
-				awpcp_create_pages($name, $subpages=false);
-			} else {
-				awpcp_create_subpage($refname, $name, $shortcodes[$refname][1]);
-			}
-		}
-
-		flush_rewrite_rules();
 	}
 
 	/**

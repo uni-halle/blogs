@@ -143,10 +143,8 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
 
     protected function query($instance) {
         return array(
-            'conditions' => array( "ad_title <> ''" ),
-            'args' => array(
-                'limit' => $instance['limit']
-            )
+            'context' => 'public-listings',
+            'limit' => $instance['limit'],
         );
     }
 
@@ -161,8 +159,7 @@ class AWPCP_LatestAdsWidget extends WP_Widget {
         echo !empty( $title ) ? $before_title . $title . $after_title : '';
 
         echo '<ul class="awpcp-listings-widget-items-list">';
-        $query = $this->query( $instance );
-        $items = AWPCP_Ad::get_enabled_ads( $query['args'], $query['conditions'] );
+        $items = awpcp_listings_collection()->find_enabled_listings_with_query( $this->query( $instance ) );
         echo $this->render( $items, $instance );
         echo '</ul>';
 

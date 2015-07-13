@@ -13,30 +13,39 @@ class AWPCP_Missing_Pages_Finder {
     }
 
     public function find_missing_pages() {
-        $shortcodes = awpcp_pages();
+        $plugin_pages = awpcp_get_plugin_pages_info();
 
-        $registered_pages = array_keys( $shortcodes );
-        $referenced_pages = $this->db->get_col( 'SELECT page FROM ' . AWPCP_TABLE_PAGES );
+        $registered_pages = array_keys( awpcp_pages() );
+        $referenced_pages = array_keys( $plugin_pages );
 
         // pages that are registered in the code but no referenced in the DB
         $pages_not_referenced = array_diff( $registered_pages, $referenced_pages );
-        // pages that are referenced but no longer registered in the code
-        $pages_not_registered = array_diff( $referenced_pages, $registered_pages );
-        $excluded_pages = array_merge( array( 'view-categories-page-name'), $pages_not_registered );
+        $registered_pages_ids = awpcp_get_page_ids_by_ref( $registered_pages );
 
-        $query = 'SELECT pages.page, pages.id, posts.ID post, posts.post_status status ';
-        $query.= 'FROM ' . AWPCP_TABLE_PAGES . ' AS pages ';
-        $query.= 'LEFT JOIN ' . $this->db->posts . ' AS posts ON (posts.ID = pages.id) ';
-        $query.= "WHERE posts.ID IS NULL OR posts.post_status != 'publish' ";
-        $query.= "AND pages.page NOT IN ('" . join( "','", $excluded_pages ) . "')";
+        $query = 'SELECT posts.ID post, posts.post_status status ';
+        $query.= 'FROM ' . $this->db->posts . ' AS posts ';
+        $query.= "WHERE posts.ID IN (" . join( ",", $registered_pages_ids ) . ") ";
 
-        $missing_pages = array();
+        $existing_pages = $this->db->get_results( $query, OBJECT_K );
+        $missing_pages = array( 'not-found' => array(), 'not-published' => array(), 'not-referenced' => array() );
 
-        foreach ( $this->db->get_results( $query ) as $page ) {
-            if ( is_null( $page->status ) ) {
-                $missing_pages['not-found'][] = $page;
-            } else {
+        foreach ( $plugin_pages as $page_ref => $page_info ) {
+            $page = isset( $existing_pages[ $page_info['page_id'] ] ) ? $existing_pages[ $page_info['page_id'] ] : null;
+
+            if ( is_object( $page ) && isset( $page->status ) && $page->status != 'publish' ) {
+                $page->page = $page_ref;
+                $page->id = $page_info['page_id'];
+
                 $missing_pages['not-published'][] = $page;
+            } else if ( is_null( $page ) ) {
+                $page = new stdClass;
+
+                $page->page = $page_ref;
+                $page->id = $page_info['page_id'];
+                $page->post = null;
+                $page->status = null;
+
+                $missing_pages['not-found'][] = $page;
             }
         }
 

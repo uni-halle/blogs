@@ -8,13 +8,18 @@ class AWPCP_Compatibility {
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 
         } else if ( is_admin() ) {
-
+            $this->load_plugin_integration_used_in_admin_screens();
         } else {
             $this->load_plugin_integration_used_in_frontend_screens();
         }
 
         $this->load_content_aware_sidebars_integration();
         $this->load_woocommerce_integration();
+    }
+
+    private function load_plugin_integration_used_in_admin_screens() {
+        $facebookall_plugin_integration = awpcp_facebook_all_plugin_integration();
+        add_action( 'init', array( $facebookall_plugin_integration, 'maybe_remove_userlogin_handler' ), 5 );
     }
 
     private function load_plugin_integration_used_in_frontend_screens() {
