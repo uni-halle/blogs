@@ -1,9 +1,9 @@
-<?php // encoding: utf-8
+<?php
 /**
 Plugin Name: qTranslate-X
 Plugin URI: http://wordpress.org/plugins/qtranslate-x/
 Description: Adds user-friendly and database-friendly multilingual content support.
-Version: 3.3
+Version: 3.4.1
 Author: qTranslate Team
 Author URI: http://qtranslatexteam.wordpress.com/about
 Tags: multilingual, multi, language, admin, tinymce, Polyglot, bilingual, widget, switcher, professional, human, translation, service, qTranslate, zTranslate, mqTranslate, qTranslate Plus, WPML
@@ -21,6 +21,10 @@ GitHub Branch: master
 /*
 	Copyright 2014  qTranslate Team  (email : qTranslateTeam@gmail.com )
 
+	The statement below within this comment block is relevant to
+	this file as well as to all files in this folder and to all files
+	in all sub-folders of this folder recursively.
+
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation; either version 2 of the License, or
@@ -36,12 +40,16 @@ GitHub Branch: master
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 /*
+ * Search for 'Designed as interface for other plugin integration' in comments to functions
+ * to find out which functions are safe to use in the 3rd-party integration.
+ * Avoid accessing internal variables directly, as they are subject to be re-designed at any time.
+*/
+/*
 	Most flags in flags directory are made by Luc Balemans and downloaded from
 	FOTW Flags Of The World website at http://flagspot.net/flags/
 	(http://www.crwflags.com/FOTW/FLAGS/wflags.html)
 */
-/*
-	Default Language Contributors
+/* Default Language Contributors
 	=============================
 	ar by Mohamed Magdy
 	de by Qian Qin
@@ -59,6 +67,8 @@ GitHub Branch: master
 	sv by bear3556, johdah 
 	vi by hathhai
 	zh(zh_CN) by Junyan Chen
+	ua(uk) Vadym Volos (https://google.com/+VadymVolos https://wordpress.org/support/profile/vadim-v)
+
 
 	Plugin Translation Contributors
 	===============================
@@ -68,14 +78,15 @@ GitHub Branch: master
 	cz by by bengo
 	da_DK by Jan Christensen, meviper
 	de_DE by Robert Skiba, Michel Weimerskirch, Maurizio Omissoni, Qian Qin
+	el_GR by Marios Bekatoros
 	eo    by Chuck Smith
 	es_CA by Carlos Sanz
 	es_ES by Alejandro Urrutia
 	fr_FR by eriath, Florent
 	hu_HU by Németh Balázs
 	id_ID by Masino Sinaga
-	it_IT by Maurizio Omissoni, shecky
-	ja_JP by dapperdanman1400
+	it_IT by Simone Montrucchio, Maurizio Omissoni, shecky
+	ja by dapperdanman1400
 	mk_MK by Pavle Boskoski
 	ms_MY by Lorna Timbah, webgrrrl
 	nl_NL by Marius Siroen, BlackDex
@@ -97,26 +108,35 @@ GitHub Branch: master
 	===============
 	All Supporters! Thanks for all the gifts, cards and donations!
 */
-
 if ( ! function_exists( 'add_filter' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
 }
+/**
+ * The constants defined below are
+ * Designed as interface for other plugin integration. The documentation is available at
+ * https://qtranslatexteam.wordpress.com/integration/
+ */
+define('QTX_VERSION','3.4.1');
 
 if ( ! defined( 'QTRANSLATE_FILE' ) ) {
 	define( 'QTRANSLATE_FILE', __FILE__ );
+	define( 'QTRANSLATE_DIR', dirname(__FILE__) );
 }
 
-define('QTX_VERSION','3.3');
+require_once(QTRANSLATE_DIR.'/inc/qtx_class_translator.php');
 
-require_once(dirname(__FILE__).'/qtranslate_options.php');
-require_once(dirname(__FILE__).'/qtranslate_utils.php');
-require_once(dirname(__FILE__).'/qtranslate_core.php');
-
-require_once(dirname(__FILE__).'/qtranslate_widget.php');
-
-if(is_admin()){
-	require_once(dirname(__FILE__).'/admin/qtx_activation_hook.php');
-	register_activation_hook(__FILE__, 'qtranxf_activation_hook');//does not work if inside qtranslate_configuration.php
+if(is_admin() ){ // && !(defined('DOING_AJAX') && DOING_AJAX) //todo cleanup
+	require_once(QTRANSLATE_DIR.'/admin/qtx_activation_hook.php');
+	qtranxf_register_activation_hooks();
 }
+
+// load additional functionalities
+
+//if(file_exists(QTRANSLATE_DIR.'/slugs'))
+//	require_once(QTRANSLATE_DIR.'/slugs/qtx_slug.php');
+
+// load qTranslate Services if available // disabled since 3.1
+//if(file_exists(QTRANSLATE_DIR.'/qtranslate_services.php'))
+//	require_once(QTRANSLATE_DIR.'/qtranslate_services.php');

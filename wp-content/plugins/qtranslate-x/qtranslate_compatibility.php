@@ -1,4 +1,6 @@
 <?php
+if ( !defined( 'ABSPATH' ) ) exit;
+
 if(!defined('QTRANS_INIT')){
 	define('QTRANS_INIT',true);
 }
@@ -10,22 +12,34 @@ if(!function_exists('qtrans_convertURL')){
 if(!function_exists('qtrans_generateLanguageSelectCode')){
 	function qtrans_generateLanguageSelectCode($style='', $id=''){ return qtranxf_generateLanguageSelectCode($style,$id); }
 }
-if(!function_exists('qtrans_getLanguage')){
-	function qtrans_getLanguage(){
-		return qtranxf_getLanguage();
+
+/**
+	Some 3rd-party plugins (for example "Google XML Sitemaps v3 for qTranslate") use this function and expect an array in return.
+*/
+if(!function_exists('qtrans_getAvailableLanguages')){
+	function qtrans_getAvailableLanguages($text){
+		$langs = qtranxf_getAvailableLanguages($text);
+		if(is_array($langs)) return $langs;
+		if(empty($text)) return array();
+		global $q_config;
+		return array($q_config['default_language']);
 	}
 }
+
+if(!function_exists('qtrans_getLanguage')){
+	function qtrans_getLanguage(){ return qtranxf_getLanguage(); }
+}
 if(!function_exists('qtrans_getLanguageName')){
-	function qtrans_getLanguageName($lang = ''){
-		return qtranxf_getLanguageName($lang);
-	}
+	function qtrans_getLanguageName($lang = ''){ return qtranxf_getLanguageName($lang); }
 }
 if(!function_exists('qtrans_getSortedLanguages')){
 	function qtrans_getSortedLanguages($reverse = false){ return qtranxf_getSortedLanguages($reverse); }
 }
-function qtrans_join($texts) {
-	if(!is_array($texts)) $texts = qtranxf_split($texts);
-	qtranxf_join_b($texts);
+if(!function_exists('qtrans_join')){
+	function qtrans_join($texts) {
+		if(!is_array($texts)) $texts = qtranxf_split($texts);
+		return qtranxf_join_b($texts);
+	}
 }
 if(!function_exists('qtrans_split')){
 	function qtrans_split($text, $quicktags = true){ return qtranxf_split($text); }

@@ -1,4 +1,6 @@
-<?php
+<?php // encoding: utf-8
+if ( !defined( 'ABSPATH' ) ) exit;
+
 /* There is no need to edit anything here! */
 define('QTX_STRING',	1);
 define('QTX_BOOLEAN',	2);
@@ -30,14 +32,16 @@ define('QTX_EDITOR_MODE_RAW', 1);
 define('QTX_EDITOR_MODE_SINGLGE', 2);
 
 define('QTX_HIGHLIGHT_MODE_NONE', 0);
-define('QTX_HIGHLIGHT_MODE_LEFT_BORDER', 1);
+define('QTX_HIGHLIGHT_MODE_BORDER_LEFT', 1);
 define('QTX_HIGHLIGHT_MODE_BORDER', 2);
+define('QTX_HIGHLIGHT_MODE_LEFT_SHADOW', 3);
+define('QTX_HIGHLIGHT_MODE_OUTLINE', 4);
 define('QTX_HIGHLIGHT_MODE_CUSTOM_CSS', 9);
 
 define('QTX_COOKIE_NAME_FRONT','qtrans_front_language');
 define('QTX_COOKIE_NAME_ADMIN','qtrans_admin_language');
 
-define('QTX_IGNORE_FILE_TYPES','gif,jpg,jpeg,png,svg,pdf,swf,tif,rar,zip,7z,mpg,divx,mpeg,avi,css,js');
+define('QTX_IGNORE_FILE_TYPES','gif,jpg,jpeg,png,svg,pdf,swf,tif,rar,zip,7z,mpg,divx,mpeg,avi,css,js,mp3,mp4,apk');
 
 
 global $q_config;
@@ -84,6 +88,7 @@ function qtranxf_set_default_options(&$ops)
 	$ops['front']['array']=array(
 		//'term_name'// uniquely special treatment
 		'text_field_filters' => array(),
+		'front_config' => array(),
 	);
 
 	//options processed in a special way
@@ -104,6 +109,7 @@ function qtranxf_set_default_options(&$ops)
 	$ops['languages']=array(
 		'language_name' => 'qtranslate_language_names',
 		'locale' => 'qtranslate_locales',
+		'locale_html' => 'qtranslate_locales_html',
 		'not_available' => 'qtranslate_na_messages',
 		'date_format' => 'qtranslate_date_formats',
 		'time_format' => 'qtranslate_time_formats',
@@ -111,7 +117,10 @@ function qtranxf_set_default_options(&$ops)
 		//'windows_locale' => null,//this property is not stored
 	);
 
-	$ops = apply_filters('qtranslate_default_options',$ops);
+	/**
+	 * A chance to add additional options
+	*/
+	$ops = apply_filters('qtranslate_option_config',$ops);
 }
 
 /* pre-Domain Endings - for future use
@@ -169,6 +178,7 @@ function qtranxf_default_language_name()
 	$cfg['hr'] = 'Hrvatski';
 	$cfg['eu'] = 'Euskera';
 	$cfg['el'] = 'Ελληνικά';
+	$cfg['ua'] = 'Українська';
 	//$cfg['tw'] = '中文';
 	return $cfg;
 }
@@ -192,7 +202,7 @@ function qtranxf_default_locale()
 	$cfg['it'] = 'it_IT';
 	$cfg['ro'] = 'ro_RO';
 	$cfg['hu'] = 'hu_HU';
-	$cfg['ja'] = 'ja_JP';
+	$cfg['ja'] = 'ja';
 	$cfg['es'] = 'es_ES';
 	$cfg['vi'] = 'vi';
 	$cfg['ar'] = 'ar';
@@ -205,8 +215,18 @@ function qtranxf_default_locale()
 	$cfg['hr'] = 'hr_HR';
 	$cfg['eu'] = 'eu_ES';
 	$cfg['el'] = 'el_GR';
+	$cfg['ua'] = 'uk';
 	//$cfg['tw'] = 'zh_TW';
 	return $cfg;
+}
+
+/**
+ * HTML locales for languages
+ * @since 3.4
+ */
+function qtranxf_default_locale_html(){
+	//HTML locales for languages are not provided by default
+	return array();
 }
 
 /**
@@ -241,6 +261,7 @@ function qtranxf_default_not_available()
 	$cfg['hr'] = 'Žao nam je, ne postoji prijevod na raspolaganju za ovaj proizvod još %LANG:, : i %.';
 	$cfg['eu'] = 'Sentitzen dugu, baina sarrera hau %LANG-z:, : eta % bakarrik dago.';
 	$cfg['el'] = 'Συγγνώμη,αυτή η εγγραφή είναι διαθέσιμη μόνο στα %LANG:, : και %.';
+	$cfg['ua'] = 'Вибачте цей текст доступний тільки в %LANG:, : і %.';
 	//$cfg['tw'] = '对不起，此内容只适用于%LANG:，:和%。';
 	return $cfg;
 }
@@ -276,6 +297,7 @@ function qtranxf_default_date_format()
 	$cfg['hr'] = '%d/%m/%Y';
 	$cfg['eu'] = '%Y %B %e, %A';
 	$cfg['el'] = '%d/%m/%y';
+	$cfg['ua'] = '%A %B %e%q, %Y';
 	//$cfg['tw'] = '%x %A';
 	return $cfg;
 }
@@ -311,6 +333,7 @@ function qtranxf_default_time_format()
 	$cfg['hr'] = '%H:%M';
 	$cfg['eu'] = '%H:%M';
 	$cfg['el'] = '%H:%M';
+	$cfg['ua'] = '%H:%M';
 	//$cfg['tw'] = '%I:%M%p';
 	return $cfg;
 }
@@ -347,6 +370,7 @@ function qtranxf_default_flag()
 	$cfg['hr'] = 'hr.png';
 	$cfg['eu'] = 'eu_ES.png';
 	$cfg['el'] = 'gr.png';
+	$cfg['ua'] = 'ua.png';
 	//$cfg['tw'] = 'tw.png';
 	return $cfg;
 }
@@ -585,30 +609,4 @@ function qtranxf_load_languages_enabled()
 	//foreach($q_config['enabled_languages'] as $lang){
 	//	$q_config['windows_locale'][$lang] = $locales[$lang];
 	//}
-}
-
-/**
- * Load enabled languages properties from  database
- * @since 3.3
- */
-function qtranxf_default_lsb_style_wrap_class()
-{
-	global $q_config;
-	switch($q_config['lsb_style']){
-		case 'Tabs_in_Block.css': return 'qtranxs-lang-switch-wrap wp-ui-primary';
-		default: return 'qtranxs-lang-switch-wrap';
-	}
-}
-
-/**
- * Load enabled languages properties from  database
- * @since 3.3
- */
-function qtranxf_default_lsb_style_active_class()
-{
-	global $q_config;
-	switch($q_config['lsb_style']){
-		case 'Tabs_in_Block.css': return 'wp-ui-highlight';
-		default: return 'active';
-	}
 }
