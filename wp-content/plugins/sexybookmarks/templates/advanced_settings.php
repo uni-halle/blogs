@@ -13,12 +13,6 @@
       <div class='clear'>
         <fieldset class="app">
         <legend><h2><?php _e('Advanced', 'shareaholic'); ?></h2></legend>
-          <input type='checkbox' id='tracking' name='shareaholic[disable_tracking]' class='check'
-            <?php if (isset($settings['disable_tracking'])) { ?>
-              <?php echo ($settings['disable_tracking'] == 'on' ? 'checked' : '') ?>
-              <?php } ?>>
-            <label style="display: inline-block; font-size:12px;" for="tracking"><?php echo sprintf(__('Disable Analytics', 'shareaholic')); ?> <?php echo sprintf(__('(it is recommended NOT to disable analytics)', 'shareaholic')); ?></label>
-          <br />
           <input type='checkbox' id='og_tags' name='shareaholic[disable_og_tags]' class='check'
             <?php if (isset($settings['disable_og_tags'])) { ?>
               <?php echo ($settings['disable_og_tags'] == 'on' ? 'checked' : '') ?>

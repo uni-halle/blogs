@@ -77,7 +77,6 @@ class ShareaholicUtilities {
    */
   private static function defaults() {
     return array(
-      'disable_tracking' => 'off',
       'disable_admin_bar_menu' => 'off',
       'disable_debug_info' => 'off',
       'disable_internal_share_counts_api' => 'off',
@@ -327,7 +326,6 @@ class ShareaholicUtilities {
       global $wpdb;
       $results = $wpdb->query( "UPDATE $wpdb->postmeta SET `meta_key` = 'shareaholic_disable_open_graph_tags' WHERE `meta_key` = 'Hide OgTags'" );
       $results = $wpdb->query( "UPDATE $wpdb->postmeta SET `meta_key` = 'shareaholic_disable_share_buttons' WHERE `meta_key` = 'Hide SexyBookmarks'" );
-      self::update_options(array('disable_tracking' => 'off'));
       self::update_options(array('metakey_6to7_upgraded' => 'true'));
     }
     
@@ -363,12 +361,23 @@ class ShareaholicUtilities {
    * @return string
    */
   public static function asset_url($asset) {
-    if (preg_match('/spreadaholic/', Shareaholic::URL)) {
+    $env = self::get_env();
+    if ($env === 'development') {
       return "http://spreadaholic.com:8080/" . $asset;
-    } elseif (preg_match('/stageaholic/', Shareaholic::URL)) {
+    } elseif ($env === 'staging') {
       return '//d2062rwknz205x.cloudfront.net/' . $asset;
     } else {
       return '//dsms0mj1bbhn4.cloudfront.net/' . $asset;
+    }
+  }
+
+  public static function get_env() {
+    if (preg_match('/spreadaholic/', Shareaholic::URL)) {
+      return 'development';
+    } elseif (preg_match('/stageaholic/', Shareaholic::URL)) {
+      return 'staging';
+    } else {
+      return 'production';
     }
   }
   

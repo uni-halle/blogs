@@ -515,7 +515,6 @@ class ShareaholicSixToSeven {
     $analytics_settings = get_option('ShareaholicAnalytics');
     $sexybookmarks_settings = get_option('SexyBookmarks');
 
-    $new_shareaholic_settings['disable_tracking'] = (bool)$analytics_settings['pubGaSocial'];
     $new_shareaholic_settings['disable_og_tags'] = $sexybookmarks_settings['ogtags'] == '0' ? 'on' : 'off';
 
     ShareaholicUtilities::update_options($new_shareaholic_settings);

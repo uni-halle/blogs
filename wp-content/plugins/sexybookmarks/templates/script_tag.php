@@ -8,12 +8,13 @@
       shr.setAttribute('data-cfasync', 'false');
       shr.src = '<?php echo ShareaholicUtilities::asset_url('assets/pub/shareaholic.js') ?>';
       shr.type = 'text/javascript'; shr.async = 'true';
+      <?php echo $overrides; ?>
+
       shr.onload = shr.onreadystatechange = function() {
         var rs = this.readyState;
         if (rs && rs != 'complete' && rs != 'loaded') return;
         var site_id = '<?php echo $api_key; ?>';
-        var page_config = <?php echo $page_config; ?>;
-        try { Shareaholic.init(site_id, page_config); } catch (e) {}
+        try { Shareaholic.init(site_id); } catch (e) {}
       };
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(shr, s);

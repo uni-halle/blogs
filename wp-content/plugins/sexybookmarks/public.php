@@ -49,7 +49,6 @@ class ShareaholicPublic {
     // should not discourage anyone in the future. -DG
     ShareaholicDeprecation::destroy_all();
     self::script_tag();
-    self::tracking_meta_tag();
     self::shareaholic_tags();
     self::draw_og_tags();
   }  
@@ -61,10 +60,9 @@ class ShareaholicPublic {
     if (ShareaholicUtilities::has_accepted_terms_of_service() &&
         ShareaholicUtilities::get_or_create_api_key()) {
       ShareaholicUtilities::load_template('script_tag', array(
-        'shareaholic_url' => Shareaholic::URL,
         'api_key' => ShareaholicUtilities::get_option('api_key'),
-        'page_config' => ShareaholicPublicJS::get_page_config(),
-        'base_settings' => ShareaholicPublicJS::get_base_settings()
+        'base_settings' => ShareaholicPublicJS::get_base_settings(),
+        'overrides' => ShareaholicPublicJS::get_overrides()
       ));
     }
   }
@@ -89,17 +87,6 @@ class ShareaholicPublic {
     if (isset($attributes['summary'])) $summary = esc_attr(trim($attributes['summary']));  
     
     return self::canvas($attributes['id'], $attributes['app'], $title, $link, $summary);
-  }
-
-  /**
-   * Draws the analytics disabling meta tag, if the user
-   * has asked for analytics to be disabled.
-   */
-  public static function tracking_meta_tag() {
-    $settings = ShareaholicUtilities::get_settings();
-    if ($settings['disable_tracking'] == "on") {
-      echo '<meta name="shareaholic:analytics" content="disabled" />';
-    }
   }
   
   
@@ -524,12 +511,6 @@ class ShareaholicPublic {
       exit;
     }
     
-    if (ShareaholicUtilities::get_option('disable_tracking') == NULL || ShareaholicUtilities::get_option('disable_tracking') == "off"){
-      $analytics_status =  "on";
-    } else {
-      $analytics_status =  "off";
-    }
-    
     if (ShareaholicUtilities::get_option('disable_internal_share_counts_api') == NULL || ShareaholicUtilities::get_option('disable_internal_share_counts_api') == "off"){
       $server_side_share_count_status =  "on";
     } else {
@@ -579,7 +560,6 @@ class ShareaholicPublic {
   	  'recommendations' => ShareaholicUtilities::get_option('recommendations'),
 	    ),
   	'advanced_settings' => array (
-  	  'analytics' => $analytics_status,
   	  'server_side_share_count_api' => $server_side_share_count_status,
   	  )
     );
