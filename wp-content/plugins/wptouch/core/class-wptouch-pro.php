@@ -54,6 +54,11 @@ class WPtouchProThree {
 
 	var $desktop_ajax_nonce;
 
+	var $cache_smash;
+
+	// Shortcodes that must process before AJAX shortcode request
+	var $preprocess_shortcodes = array( 'gallery', 'new_royalslider' );
+
 	function WPtouchPro() {
 		$this->is_mobile_device = false;
 		$this->showing_mobile_theme = false;
@@ -76,6 +81,8 @@ class WPtouchProThree {
 		$this->desktop_ajax_nonce = false;
 
 		$this->critical_notifications = array();
+
+		$this->cache_smash = false;
 	}
 
 	function invalidate_settings( $domain  = false ) {
@@ -141,6 +148,9 @@ class WPtouchProThree {
 
 		$this->cleanup_post_and_get();
 
+		require_once( WPTOUCH_DIR . '/core/class-cache-smash.php' );
+		$this->cache_smash = new WPtouchCacheSmash;
+
 		if ( is_admin() ) {
 			// New 3.0 Admin panels
 			require_once( WPTOUCH_DIR . '/core/admin-load.php' );
@@ -174,26 +184,23 @@ class WPtouchProThree {
 
 			// Backup/Restore
 			add_action( 'wptouch_settings_saved', array( &$this, 'check_for_restored_settings' ) );
-
 			add_action( 'wptouch_ajax_desktop_switch', array( &$this, 'handle_desktop_switch_ajax' ) );
 
 			require_once( WPTOUCH_DIR . '/core/cloud-migrate.php' );
 
 			if ( $this->should_do_desktop_shortcode_magic( $settings ) ) {
-				add_action( 'wptouch_ajax_handle_shortcode', array( &$this, 'handle_desktop_shortcode' ) );
 				add_action( 'save_post', array( &$this, 'handle_desktop_shortcode_save_post' ) );
 			}
 		} else {
+			if ( $this->should_do_desktop_shortcode_magic( $settings ) ) {
+				add_filter( 'wptouch_force_mobile_device', array( &$this, 'shortcode_override' ) );
+				add_action( 'init', array( &$this, 'handle_desktop_shortcode' ) );
+			}
+
 			add_action( 'wp', array( &$this, 'set_cache_cookie' ) );
 		}
 
-/*	TODO: Deprecated
-		// Set up debug log
-		if ( $settings->debug_log ) {
-			wptouch_debug_enable( true );
-			wptouch_debug_set_log_level( WPTOUCH_ALL );
-		}
-*/		wptouch_debug_enable( false );
+		wptouch_debug_enable( false );
 
 		add_filter( 'wptouch_available_icon_sets_post_sort', array( &$this, 'setup_custom_icons' ) );
 
@@ -224,6 +231,15 @@ class WPtouchProThree {
 		if ( !is_admin() ) {
 			if ( $this->should_do_desktop_shortcode_magic( $settings ) && ( $this->is_mobile_device && $this->showing_mobile_theme ) ) {
 				remove_filter( 'the_content', 'wptexturize' );
+
+				// Need finer-grain control over what gets processed or not.
+				global $shortcode_tags;
+				foreach ( $shortcode_tags as $shortcode => $object ) {
+					if ( !in_array( $shortcode, $this->preprocess_shortcodes ) ) {
+						unset ( $shortcode_tags[ $shortcode ] );
+					}
+				}
+
 				add_filter( 'the_content', array( &$this, 'desktop_shortcode_magic' ), 99 );
 			}
 		}
@@ -243,7 +259,7 @@ class WPtouchProThree {
 		}
 
 		// Check to see if the mobile theme should be shown - if so, initialize it
-		if ( $this->is_showing_mobile_theme_on_mobile_device() ) {
+		if ( $this->is_showing_mobile_theme_on_mobile_device() && !$this->cache_smash->should_disable_mobile_theme() ) {
 			$this->setup_mobile_theme_for_viewing();
 
 			// For Google Best Practices
@@ -262,9 +278,18 @@ class WPtouchProThree {
 		// }
 	}
 
+	function shortcode_override( $is_mobile_device ) {
+		if ( isset( $_GET[ 'wptouch_shortcode' ] ) ) {
+			return false;
+		} else {
+			return $is_mobile_device;
+		}
+	}
+
 	function desktop_shortcode_magic( $content ) {
 		if ( $this->is_mobile_device && $this->showing_mobile_theme ) {
 			global $woocommerce;
+
 			if ( is_singular() && ( !is_object( $woocommerce ) || !( is_cart() || is_checkout() ) ) ) {
 				$should_regenerate = true;
 
@@ -295,7 +320,6 @@ class WPtouchProThree {
 				} else {
 					$content = wptexturize( $content );
 				}
-
 			}
 
 			return $content;
@@ -309,32 +333,43 @@ class WPtouchProThree {
 	}
 
 	function handle_desktop_shortcode() {
-		$post = get_post( $this->post[ 'post_id' ] );
-		$post_content = $this->post[ 'post_content' ];
+		if ( isset( $_GET[ 'wptouch_shortcode'] ) ) {
+			$post_nonce = $this->post[ 'post_nonce' ];
 
-		if ( $post ) {
-			// Save data for later
-			$shortcode_data = new stdClass;
-
-			$pattern = get_shortcode_regex();
-			if ( preg_match_all( '/'. $pattern .'/s', $post_content, $matches ) ) {
-				// Has a valid shortcode
-				$shortcode_data->has_desktop_shortcode = 1;
-			} else {
-				// No valid shortcode
-				$shortcode_data->has_desktop_shortcode = 0;
+			if ( !wp_verify_nonce( $post_nonce, 'wptouch-ajax' ) ) {
+				return;
 			}
 
-			// Prevent mobile content from overriding this
-			remove_action( 'the_content', 'wptouch_addon_the_content_mobile_content', 1 );
-			$content = apply_filters( 'the_content', $post_content );
+			$post = get_post( $this->post[ 'post_id' ] );
+			$post_content = $this->post[ 'post_content' ];
 
-			$shortcode_data->valid_until = time() + 3600*24;
-			$shortcode_data->shortcode_content = $content;
+			if ( $post ) {
+				// Save data for later
+				$shortcode_data = new stdClass;
 
-			echo $content;
+				$pattern = get_shortcode_regex();
+				if ( preg_match_all( '/'. $pattern .'/s', $post_content, $matches ) ) {
+					// Has a valid shortcode
+					$shortcode_data->has_desktop_shortcode = 1;
+				} else {
+					// No valid shortcode
+					$shortcode_data->has_desktop_shortcode = 0;
+				}
 
-			update_post_meta( $this->post[ 'post_id' ], 'wptouch_sc_data', $shortcode_data );
+				// Prevent mobile content from overriding this
+				remove_action( 'the_content', 'wptouch_addon_the_content_mobile_content', 1 );
+				$content = apply_filters( 'the_content', $post_content );
+
+				$shortcode_data->valid_until = time() + 3600*24;
+				$shortcode_data->shortcode_content = $content;
+
+				echo $content;
+
+				update_post_meta( $this->post[ 'post_id' ], 'wptouch_sc_data', $shortcode_data );
+			}
+			die;
+		} else {
+			return;
 		}
 	}
 
@@ -465,6 +500,29 @@ class WPtouchProThree {
 	}
 
 	function handle_admin_notices() {
+		if ( $this->cache_smash->is_wp_super_cache_broken() ) {
+			// When Super Cache was active but deactivated
+			echo '<div class="error">' .
+			sprintf( __( '%sWPtouch: %s was recently disabled, but is still affecting your website and caching pages.%s', 'wptouch-pro' ), '<p><strong style="color: darkred">', $this->cache_smash->cache_plugin_name(), '</strong></p>' ) .
+			sprintf( __( '%sPlease reactivate the plugin, disable page caching, then deactivate the plugin again to correct this issue.%s', 'wptouch-pro' ), '<p>', '</p>' ) .
+			sprintf( __( '%sFixing this issue prevents cached desktop pages being served to mobile devices and vice-versa.%s', 'wptouch-pro' ), '<p>', '</p>' ) .
+			sprintf( __( '%sOnce fixed, this message will be dismissed automatically. Until fixed, %sWPtouch will not be shown%s to mobile visitors, and cannot be previewed.%s', 'wptouch-pro' ), '<p>', '<em><strong>', '</strong></em>', '</p>' ) .
+			'</div>';
+		} else {
+			if ( $this->cache_smash->cache_plugin_detected ) {
+				// When Super Cache or Total Cache are active
+				if ( !$this->cache_smash->cache_plugin_configured ) {
+					echo '<div class="error">' .
+					sprintf( __( '%sWPtouch: %s needs to be configured to work correctly with WPtouch.%s', 'wptouch-pro' ), '<p><strong style="color: darkred">', $this->cache_smash->cache_plugin_name(), '</strong></p>' ) .
+					sprintf( __( '%sFixing this issue prevents cached desktop pages being served to mobile devices and vice-versa.%s', 'wptouch-pro' ), '<p>', '</p>' ) .
+					sprintf( __( '%sOnce fixed, this message will be dismissed automatically. Until fixed, %sWPtouch will not be shown%s to mobile visitors, and cannot be previewed.%s', 'wptouch-pro' ), '<p>', '<em><strong>', '</strong></em>', '</p>' ) .
+					sprintf( __( '%sTo fix the issue, follow our %sstep-by-step setup guide%s on support.wptouch.com%s', 'wptouch-pro' ), '<p>','<a href="' . $this->cache_smash->get_cache_support_url() . '?utm_campaign=cache_smash&utm_medium=web&utm_source=' . WPTOUCH_UTM_SOURCE . '" target="_blank">', '</a>', '</p>' ) .
+					'</div>';
+				}
+			}
+		}
+
+
 		if ( wptouch_migration_is_theme_broken() && !wptouch_can_repair_active_theme() ) {
 			if ( $this->can_perform_cloud_install( true ) ) {
 				echo '<div class="updated" id="repair-cloud-theme" style="display: none;"></div>';
@@ -595,6 +653,7 @@ class WPtouchProThree {
 
 	function admin_handle_init() {
 		require_once( dirname( __FILE__ ) . '/info.php' );
+
 		$this->admin_initialize();
 		$this->setup_admin_twitter_bootstrap();
 		$this->setup_admin_stylesheets();
@@ -802,6 +861,8 @@ class WPtouchProThree {
 
 			if ( isset( $this->get[ 'nonce' ] ) && wp_verify_nonce( $this->get[ 'nonce' ], 'wptouch_switch' ) ) {
 				$this->redirect_to_page( $this->get['redirect'] );
+			} else {
+				$this->redirect_to_page( remove_query_arg( array( 'wptouch_switch', 'redirect', 'nonce' ) ) );
 			}
 		}
 
@@ -840,6 +901,11 @@ class WPtouchProThree {
 								$block_mobile = false;
 							}
 						}
+					}
+
+					// Allow WPtouch to run on the homepage if we're going to wind up redirecting to a landing page.
+					if ( $settings->homepage_landing != 'none' && $server_url == '/' ) {
+						$block_mobile = false;
 					}
 
 					if ( $block_mobile ) {
@@ -1886,7 +1952,8 @@ class WPtouchProThree {
 		$localize_params = 	array(
 			'ajaxurl' => get_bloginfo( 'wpurl' ) . '/wp-admin/admin-ajax.php',
 			'siteurl' => str_replace( array( 'http://' . $_SERVER['SERVER_NAME'] . '','https://' . $_SERVER['SERVER_NAME'] . '' ), '', get_bloginfo( 'url' ) . '/' ),
-			'security_nonce' => wp_create_nonce( 'wptouch-ajax' )
+			'security_nonce' => wp_create_nonce( 'wptouch-ajax' ),
+			'current_shortcode_url' => add_query_arg( array( 'wptouch_shortcode' => '1' ), esc_url_raw( $_SERVER[ 'REQUEST_URI' ] ) )
 		);
 
 		wp_localize_script( 'wptouch-ajax', 'wptouchMain', apply_filters( 'wptouch_localize_scripts', $localize_params  ) );

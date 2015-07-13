@@ -2,7 +2,6 @@
 
 add_action( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'foundation_related_posts_settings' );
 
-
 function foundation_related_posts_settings( $page_options ){
 	wptouch_add_page_section(
 		FOUNDATION_PAGE_GENERAL,
@@ -26,16 +25,27 @@ function foundation_related_posts_settings( $page_options ){
 				'1.0.7'
 			),
 			wptouch_add_pro_setting(
-				'radiolist',
+				'checkbox',
+				'related_posts_show_excerpts',
+				__( 'Include post excerpts', 'wptouch-pro' ),
+				'',
+				WPTOUCH_SETTING_BASIC,
+				'2.3.5'
+			),
+			wptouch_add_pro_setting(
+				'list',
 				'related_posts_max',
 				__( 'Maximum number of related posts to show', 'wptouch-pro' ),
 				'',
 				WPTOUCH_SETTING_BASIC,
-				'1.0.7',
+				'2.3.5',
 				array(
 					'2' => '2',
 					'3' => '3',
-					'4' => '4'
+					'4' => '4',
+					'5' => '5',
+					'8' => '8',
+					'10' => '10'
 				)
 			)
 		),

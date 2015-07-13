@@ -61,7 +61,7 @@ function foundation_sharing_content() {
 	}
 
 	if ( $settings->show_share && ( is_single() || $is_page ) ) {
-		$content = wptouch_capture_include_file( dirname( __FILE__ ) . '/sharing-html.php' );
+		$content = wptouch_capture_template_part( 'sharing' );
 	}
 
 	return $content;

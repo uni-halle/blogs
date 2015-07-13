@@ -1,5 +1,5 @@
 <?php
-define( 'FOUNDATION_VERSION', '2.3.4' );
+define( 'FOUNDATION_VERSION', '2.3.5' );
 
 define( 'FOUNDATION_DIR', WPTOUCH_DIR . '/themes/foundation' );
 define( 'FOUNDATION_URL', WPTOUCH_URL . '/themes/foundation' );
@@ -192,7 +192,6 @@ function foundation_setting_defaults( $settings ) {
 	$settings->featured_autoslide = false;
 	$settings->featured_continuous = false;
 	$settings->featured_grayscale = false;
-	$settings->featured_title_date = true;
 	$settings->featured_type = 'latest';
 	$settings->featured_tag = '';
 	$settings->featured_category = '';
@@ -211,10 +210,6 @@ function foundation_setting_defaults( $settings ) {
 
 	// Pages
 	$settings->show_comments_on_pages = false;
-
-	// Related posts
-	$settings->related_posts_enabled = false;
-	$settings->related_posts_max = 3;
 
 	return $settings;
 }
@@ -412,26 +407,23 @@ function foundation_render_theme_settings( $page_options ) {
 		FOUNDATION_SETTING_DOMAIN
 	);
 
-	$foundation_zoom_settings = array(
-		wptouch_add_setting(
-			'checkbox',
-			'allow_zoom',
-			__( 'Allow page zooming', 'wptouch-pro' ),
-			__( '' ),
-			WPTOUCH_SETTING_BASIC,
-			'2.3.4'
-		)
-	);
-
 	wptouch_add_page_section(
 		FOUNDATION_PAGE_GENERAL,
 		__( 'Page Zoom', 'wptouch-pro' ),
 		'foundation-zoom',
-		$foundation_zoom_settings,
+			array(
+				wptouch_add_setting(
+					'checkbox',
+					'allow_zoom',
+					__( 'Allow browser zooming', 'wptouch-pro' ),
+					__( '' ),
+					WPTOUCH_SETTING_BASIC,
+					'2.3.4'
+				)
+			),
 		$page_options,
 		FOUNDATION_SETTING_DOMAIN
 	);
-
 
 	wptouch_add_sub_page( FOUNDATION_PAGE_HOMESCREEN_ICONS, 'foundation-page-homescreen-icons', $page_options );
 

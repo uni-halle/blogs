@@ -297,6 +297,10 @@ function wptouch_admin_panel_get_classes( $classes = false ) {
 		$final_classes[] = 'wptouch-not-free';
 	}
 
+	if ( $wptouch_pro->cache_smash->is_cache_plugin_detected() && !$wptouch_pro->cache_smash->is_cache_configured() ) {
+		$final_classes[] = 'cache-not-configured';
+	}
+
 	return $final_classes;
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-add_filter( 'foundation_settings_pages', 'wptouch_custom_latest_post_settings' );
+add_filter( 'foundation_settings_blog', 'wptouch_custom_latest_post_settings' );
 
 function wptouch_custom_latest_post_settings( $settings ) {
 	$settings[] =

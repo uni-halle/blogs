@@ -1,6 +1,6 @@
 <?php
 
-define( 'BAUHAUS_THEME_VERSION', '1.4.8' );
+define( 'BAUHAUS_THEME_VERSION', '1.4.9' );
 define( 'BAUHAUS_SETTING_DOMAIN', 'bauhaus' );
 define( 'BAUHAUS_DIR', wptouch_get_bloginfo( 'theme_root_directory' ) );
 define( 'BAUHAUS_URL', wptouch_get_bloginfo( 'theme_root_url' ) );
@@ -300,7 +300,7 @@ function bauhaus_render_theme_settings( $page_options ) {
 function bauhaus_blog_settings( $blog_settings ) {
 
 	$blog_settings[] = wptouch_add_setting(
-		'radiolist',
+		'list',
 		'bauhaus_use_thumbnails',
 		__( 'Post thumbnails', 'wptouch-pro' ),
 		'',

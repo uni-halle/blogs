@@ -5,7 +5,7 @@ add_action( 'wptouch_body_bottom', 'foundation_setup_concat' );
 function foundation_setup_concat() {
 	// Added check to make sure cache directory is writable before attempting to write concat
 	if ( is_writable( WPTOUCH_BASE_CONTENT_DIR . '/cache' ) ) {
-		ob_start( 'foundation_do_concat' );	
+		ob_start( 'foundation_do_concat' );
 	}
 }
 
@@ -22,7 +22,7 @@ function foundation_do_concat( $contents ) {
 			if ( strpos( $file_name, '?' ) !== false ) {
 				$temp_file = explode( '?', $file_name );
 				$file_name = $temp_file[0];
-			} 
+			}
 
 			$actual_files[] = WPTOUCH_DIR . $file_name;
 		}
@@ -31,7 +31,7 @@ function foundation_do_concat( $contents ) {
 		$hash_string = '';
 		foreach( $actual_files as $file ) {
 			if ( file_exists( $file ) ) {
-				$hash_string = $hash_string . $file . filemtime( $file );	
+				$hash_string = $hash_string . $file . filemtime( $file );
 			} else {
 				$hash_string = $hash_string . $file;
 			}
@@ -49,7 +49,7 @@ function foundation_do_concat( $contents ) {
 					$file_contents = $wptouch_pro->load_file( $actual_file );
 					fwrite( $cache_file, $file_contents . "\n" );
 				}
-				
+
 				fclose( $cache_file );
 			}
 		}
@@ -62,4 +62,10 @@ function foundation_do_concat( $contents ) {
 	}
 
 	return $contents;
+}
+
+add_action( 'wptouch_version_update', 'foundation_purge_concat' );
+
+function foundation_purge_concat() {
+	wptouch_remove_directory_files( WPTOUCH_BASE_CONTENT_DIR . '/cache/', 'js' );
 }

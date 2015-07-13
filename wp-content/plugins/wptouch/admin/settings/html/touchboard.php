@@ -27,7 +27,7 @@
 	<div id="touchboard-news" class="overview-box-appearance">
 		<h3>
 			<?php _e( 'WPtouch News', 'wptouch-pro' ); ?>
-			<a href="//www.wptouch.com/blog/" target="_blank"><?php _e( 'Read More', 'wptouch-pro' ); ?> <i class="wptouch-icon-external-link"></i></a>
+			<a href="//www.wptouch.com/blog/" target="_blank"><!-- <?php _e( 'Read More', 'wptouch-pro' ); ?>--> <i class="wptouch-icon-external-link"></i></a>
 		</h3>
 		<span id="ajax-news">
 			<!-- ajaxed news here -->

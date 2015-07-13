@@ -222,17 +222,21 @@ function wptouch_get_content_classes() {
 	return apply_filters( 'wptouch_content_classes', $content_classes );
 }
 
-function wptouch_the_time( $format = false ) {
-	echo wptouch_get_the_time( $format );
+function wptouch_the_time( $format = false, $time = false ) {
+	echo wptouch_get_the_time( $format, $time );
 }
 
-function wptouch_get_the_time( $format = false ) {
+function wptouch_get_the_time( $format = false, $time = false ) {
 	if ( !$format ) {
 		$date_format = get_option( 'date_format' );
 		$format = $date_format;
 	}
 
-	return apply_filters( 'wptouch_get_the_time', get_the_time( $format ) );
+	if ( !$time ) {
+		$time = get_the_time( 'U' );
+	}
+
+	return apply_filters( 'wptouch_get_the_time', date_i18n( $format, $time ) );
 }
 
 function wptouch_has_tags() {

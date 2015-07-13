@@ -5,15 +5,15 @@
 			<ul class="related">
 				<?php $related_posts = wptouch_related_posts(); ?>
 				<?php foreach( $related_posts as $related_post ) { ?>
-				<li<?php if ( isset( $related_post->thumbnail ) ) echo ' class="has-thumb"'; ?>>
+				<li class="<?php if ( $related_post->thumbnail != '' ) echo 'has-thumb'; ?><?php if ( $related_post->excerpt == '' ) { echo ' no-excerpt'; } ?>">
 					<?php
-						if ( isset( $related_post->thumbnail ) && $related_post->thumbnail != '' ) {
+						if ( $related_post->thumbnail != '' ) {
 							echo $related_post->thumbnail;
 						} else {
 					?>
 							<div class="date-circle">
-								<span class="month"><?php wptouch_the_time( 'M' ); ?></span>
-								<span class="day"><?php wptouch_the_time( 'j' ); ?></span>
+								<span class="month"><?php echo $related_post->month; ?></span>
+								<span class="day"><?php echo $related_post->day; ?></span>
 							</div>
 					<?php
 						}

@@ -62,7 +62,15 @@ function wptouch_get_files_in_directory( $directory_name, $extension, $include_d
 	return $files;
 }
 
-function wptouch_remove_directory( $dir_name ) {
+function wptouch_remove_file( $dir_name, $f )  {
+	if ( $f == '__MACOSX' ) {
+		wptouch_remove_directory( $dir_name . '/' . $f );
+	}
+
+	@unlink( $dir_name . '/' . $f );
+}
+
+function wptouch_remove_directory_files( $dir_name, $file_type = false ) {
 	// Check permissions
 	if ( current_user_can( 'manage_options' ) ) {
 		$dir = @opendir( $dir_name );
@@ -70,15 +78,25 @@ function wptouch_remove_directory( $dir_name ) {
 			while ( $f = readdir( $dir ) ) {
 				if ( $f == '.' || $f == '..' ) continue;
 
-				if ( $f == '__MACOSX' ) {
-					wptouch_remove_directory( $dir_name . '/' . $f );
+				if ( !$file_type || strpos( $f, $file_type ) !== false ) {
+					echo 'deleting: ' . $f . "\n";
+					wptouch_remove_file( $dir_name, $f );
+				} else {
+					echo 'skipping: ' . $f . "\n";
 				}
-
-				@unlink( $dir_name . '/' . $f );
 			}
 
 			closedir( $dir );
+		}
+	}
+}
 
+function wptouch_remove_directory( $dir_name ) {
+	// Check permissions
+	if ( current_user_can( 'manage_options' ) ) {
+		$dir = @opendir( $dir_name );
+		if ( $dir ) {
+			wptouch_remove_directory_files( $dir_name );
 			rmdir( $dir_name );
 		}
 	}

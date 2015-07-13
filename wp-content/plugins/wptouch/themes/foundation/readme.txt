@@ -1,5 +1,5 @@
 Theme Name: Foundation
 Theme URI: http://www.wptouch.com/
 Description: The original WPtouch Pro foundation framework (DO NOT USE DIRECTLY)
-Version: 2.3.4
+Version: 2.3.5
 Author: BraveNewCode Inc.

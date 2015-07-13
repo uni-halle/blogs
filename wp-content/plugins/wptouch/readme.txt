@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.9
-Stable tag: 3.7.9.1
+Stable tag: 3.8.2
 Tested up to: 4.2.2
 License: GPLv2
 
@@ -10,7 +10,7 @@ Make your WordPress website mobile-friendly with just a few clicks.
 
 == Description ==
 
-WPtouch is a mobile plugin for WordPress that automatically adds a simple and elegant mobile theme for mobile visitors to your WordPress website. Recommended by Google, it will instantly enable a mobile-friendly version of your website that passes the Google Mobile test, and ensure your SEO rankings do not drop due to not having a mobile-friendly website. For more information about using WPtouch to achieve Google mobile-friendly status, please read our [comprehensive mobile-friendly guide](http://wptouch.s3.amazonaws.com/WPtouch%20-%20Make%20Your%20Website%20Mobile-Friendly.pdf).
+WPtouch is a mobile plugin for WordPress that automatically adds a simple and elegant mobile theme for mobile visitors to your WordPress website. Recommended by Google, it will instantly enable a mobile-friendly version of your website that passes the Google Mobile test, and ensure your SEO rankings do not drop due to not having a mobile-friendly website. For more information about using WPtouch to achieve Google mobile-friendly status, please read our [comprehensive mobile-friendly guide](http://bit.ly/bnc_mobilefriendly).
 
 The administration panel allows you to customize many aspects of its appearance, and deliver a *fast*, user-friendly and stylish version of your site to your mobile visitors, without modifying *a single bit of code*.  Your regular desktop theme is left intact, and will continue to show for your non-mobile visitors.
 
@@ -37,6 +37,28 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.8.2 (July 9, 2015) =
+
+* Fixed: Desktop theme shortcode handling
+* Removed: Requirement to set WordFence cache method to PHP. Further testing suggests Falcon Engine is compatible.
+
+= Version 3.8.1 (June 25, 2015) =
+
+* Added: Now suspend WPtouch functionality when WP Super Cache, W3 Total Cache and Wordfence are detected and throw messages about fixing them
+* Added: Unique ID for comments allowing direct linking
+* Added: Concatenated JavaScript files are automatically purged on plugin update
+* Fixed: Custom Landing page redirect when WPtouch is not active on the site root due to URL filtering (/ has been excluded or not expressly included)
+* Fixed: Bauhaus - An issue where Related Posts form different dates could all show the same date
+* Fixed: Minor display issues with RTL display in the admin
+* Changed: Updated translations
+* Changed: Made switch link code more robust
+* Changed: URL fragment list no longer shown when URL filtering is disabled
+* Changed: When running WPML with a custom landing page, homepage link is to the page in current language
+* Changed: Moved share link markup to template, which can now be overridden by themes
+* Changed: Moved featured slider markup to template, which can now be overridden by themes
+* Changed: Front Page Content field in Simple can now include shortcodes provided by plugins. Desktop shortcodes are not supported
+* Changed: Increased the size of preview windows in the admin to 380x667 (closer to iPhone 6)
 
 = Version 3.7.9.1 (June 4, 2015) =
 
@@ -1200,11 +1222,13 @@ You can install *WPtouch* directly from the WordPress admin! Visit the *Plugins 
 
 Once you have installed and activated WPtouch, visit the admin page via the sidebar menu to customize your WPtouch installation's appearance.
 
-Please note that if you are using a caching plugin like W3 Total Cache or WP Super Cache, you will have to do additional configuration, otherwise you may occasionally see the mobile site for desktop visitors and the desktop site for mobile visitors. These changes are outlined in the user manual which is accessible in the WPtouch admin.
+= Caching Plugin Configuration =
+
+Please note that if you are using a caching plugin like W3 Total Cache or WP Super Cache, you will have to do additional configuration, otherwise you may occasionally see the mobile site in a desktop browser and the desktop site in a mobile browseru. These changes are outlined in the user manual which is accessible in the WPtouch admin.
 
 = User Manual =
 
-You can download the user manual from within the WPtouch administration panel. It contains information on how to configure WPtouch.  Please note that if you are using a caching plugin, you will need to perform additional steps for WPtouch to work as expected.
+You can download the user manual from within the WPtouch administration panel, or [download the WPtouch manual here](). It contains information on how to configure WPtouch.  Please note that if you are using a caching plugin, you will need to perform additional steps for WPtouch to work as expected.
 
 For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wptouch-front-readme&utm_medium=web&utm_source=wordpressdotorg "WPtouch.com").
 

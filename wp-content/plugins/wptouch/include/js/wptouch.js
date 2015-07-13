@@ -28,13 +28,15 @@ function doWPtouchReady() {
 		// We have a shortcode
 		var params = {
 			post_id: shortcodeDiv.attr( 'data-post-id' ),
-			post_content: jQuery( '.wptouch-orig-content' ).html()
+			post_content: jQuery( '.wptouch-orig-content' ).html(),
+			post_nonce: wptouchMain.security_nonce
 		};
 
-		WPtouchAjax( 'handle_shortcode', params, function( response ) {
-			shortcodeDiv.html( response );
-			jQuery( document ).trigger( 'wptouch_ajax_content_loaded' );
-		});
+		jQuery.post( wptouchMain.current_shortcode_url + '&current_time=' + jQuery.now(), params, function( result ) {
+				shortcodeDiv.html( result );
+				jQuery( document ).trigger( 'wptouch_ajax_content_loaded' );
+			}
+		);
 	}
 }
 

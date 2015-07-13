@@ -113,14 +113,14 @@ function fdnAdminReady() {
 	fdnAdminAdsPlacement();
 
 	// Featured Slider Show/Hide
-	wptouchCheckToggle( '#featured_enabled', '#setting-featured_continuous, #setting-featured_grayscale, #setting-featured_autoslide, #setting-featured_speed, #setting-featured_filter_posts, #setting-featured_max_number_of_posts, #setting-featured_title_date' );
+	wptouchCheckToggle( '#featured_enabled', '#setting-featured_continuous, #setting-featured_grayscale, #setting-featured_autoslide, #setting-featured_speed, #setting-featured_filter_posts, #setting-featured_max_number_of_posts' );
 
 	// Login Options
 	wptouchCheckToggle( '#show_login_box', '#setting-show_login_links' );
 
 	// Related Posts Show/Hide
 	if ( !isFree.length ) {
-		wptouchCheckToggle( '#related_posts_enabled', '#setting-related_posts_max' );
+		wptouchCheckToggle( '#related_posts_enabled', '#setting-related_posts_max, #setting-related_posts_skip_tags, #setting-related_posts_show_excerpts' );
 	}
 
 	// Custom Post Types Show/Hide

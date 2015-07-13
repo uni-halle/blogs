@@ -101,7 +101,7 @@ function wptouchFdnDoDeviceAndOrientationListener() {
 // Back to top links in themes
 function wptouchFdnSetupBackToTopLinks() {
 	jQuery( 'body' ).on( 'click', '.back-to-top', function( e ){
-	    jQuery( 'body' ).animate( { scrollTop: jQuery( 'html' ).offset().top }, 550 );
+	    jQuery( 'body, html' ).animate( { scrollTop: jQuery( 'body' ).offset().top }, 550 );
 		e.preventDefault();
 	});
 }

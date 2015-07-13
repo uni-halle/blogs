@@ -1,5 +1,3 @@
-/* @override http://wptp3.local.com/wp-content/plugins/wptouch-pro-3/admin/css/rtl.css?ver=3.1 */
-
 /* @group General */
 body {
   direction: rtl;
@@ -14,7 +12,7 @@ body {
 #wptouch-settings-area h2.logo-title {
 	padding-left: 0px;
 	padding-right: 45px;
-	background: url(../images/title-icon-blue.png) no-repeat right center;
+	background-position: right;
 }
 
 #wptouch-settings-area h2.logo-title .title-orange {
@@ -64,14 +62,30 @@ body {
 
 /* @group What's New */
 
-#touchboard-left {
+#touchboard-left.overview-box-appearance {
 	margin-left: 265px;
 	margin-right: 0;
 }
 
-#change-log h4 {
-	padding-left: 0px;
-	padding-right: 20px;
+#touchboard-left .touchboard-top h2 {
+	padding-right: 5%;
+	padding-top: 4%;
+}
+
+#touchboard-left .touchboard-bottom img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#touchboard-left .touchboard-bottom h3 {
+	text-align: center;
+	margin-top: 10px;
+}
+
+#touchboard-left .touchboard-quote * {
+	text-align: left;
+	direction: ltr;
 }
 
 .overview-right-wrap {
@@ -143,107 +157,6 @@ body {
 
 /* @end */
 
-/* @group Carousels */
-
-#wptouch-settings-content .carousel ul.dots li {
-	margin-right: 3px;
-	margin-left: 3px;
-}
-
-#touchboard-carousel.carousel .carousel-control.left {
-	left: inherit;
-	right: 15px;
-}
-
-#touchboard-carousel.carousel .carousel-control.right {
-	right: inherit;
-	left: 15px;
-}
-
-/* @end */
-
-/* @group Notifications */
-
-.dropdown-menu.notifications-div:before {
-	left: 12%;
-}
-
-.dropdown-menu.notifications-div:after {
-	left: 12.4%;
-}
-
-.notifications.dropdown {
-	text-align: left;
-	float: left;
-}
-
-.notifications-btn {
-	margin-right: 0px;
-	margin-left: 0;
-}
-
-.dropdown .number {
-	right: auto;
-	float: left;
-	left: -8px;
-}
-
-#preview-notification {
-	margin-left: 0px;
-	padding-right: 0px;
-	float: right;
-	margin-right: 35px;
-	padding-left: 2px;
-}
-
-#preview-notification span {
-	margin-left: 0px;
-	margin-right: 2px;
-}
-
-.notifications ul li {
-	position: relative;
-	text-align: right;
-	color: #464646;
-	font-weight: bold;
-	font-size: 14px;
-	min-height: 20px;
-	border-bottom: 1px solid #e5e5e5;
-	padding: 15px 30px 15px 15px;
-	margin: 0;
-	text-shadow: #fff 0 1px 0;
-	direction: rtl;
-}
-
-.notifications ul li:before {
-	margin-right: -20px;
-	margin-left: 5px;
-}
-
-.notifications li.no-notifications {
-	left: 0;
-	right: 0;
-}
-
-#ajax-notifications .dismiss {
-	background-color: #5A90B1;
-	width: 16px;
-	height: 16px;
-	position: absolute;
-	color: #fff;
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	border-radius: 18px;
-	cursor: pointer;
-	display: none;
-	top: 17px;
-	font: bold 8px Tahoma, Geneva, sans-serif;
-	right: 7px;
-}
-
-/* @end */
-
 /* @group Form Elements */
 
 #wptouch-settings-area .button {
@@ -261,6 +174,10 @@ body {
 	margin-left: 2px;
 }
 
+input#preview {
+	margin-left: 22px;
+}
+
 /* @end */
 
 /* @group Sections & Misc */
@@ -274,8 +191,8 @@ body {
 #wptouch-settings-area .wptouch-section ul.padded {
 	padding-left: 0px;
 	border-left: 0px;
-	padding-right: 20px;
 	border-right: 1px solid #d0dfe9;
+	padding-right: 20px;
 }
 
 #wptouch-settings-area .wptouch-section ul.padded li {
@@ -404,9 +321,10 @@ ul.menu-tree li .drop-target {
 	float: right;
 }
 
-#default-area {
+#menu-icons-menus #default-area {
 	border-right: 0px;
 	border-left: 1px solid #ccc;
+	padding-right: 20px;
 }
 
 #default-trash-area span.text {

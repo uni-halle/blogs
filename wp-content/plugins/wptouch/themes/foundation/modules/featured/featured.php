@@ -9,8 +9,6 @@ define( 'FOUNDATION_FEATURED_MIN_NUM', 2 );
 
 global $foundation_featured_args;
 global $foundation_featured_posts;
-global $foundation_featured_data;
-
 
 function foundation_featured_init() {
 	$settings = foundation_get_settings();
@@ -31,8 +29,6 @@ function foundation_featured_init() {
 			FOUNDATION_VERSION,
 			true
 		);
-
-		foundation_determine_images();
 	}
 }
 
@@ -100,9 +96,7 @@ function foundation_featured_get_args() {
 	return wp_parse_args( $foundation_featured_args, $defaults );
 }
 
-function foundation_determine_images() {
-	global $foundation_featured_posts;
-	global $foundation_featured_data;
+function foundation_featured_get_slides() {
 	global $post;
 
 	$settings = foundation_get_settings();
@@ -143,44 +137,45 @@ function foundation_determine_images() {
 		$new_posts = new WP_Query( 'posts_per_page=' . $args[ 'max_search' ] );
 	}
 
-	while ( $new_posts->have_posts() ) {
-		$new_posts->the_post();
-
-		$image = get_the_post_thumbnail( $post->ID, 'foundation-featured-image' );
-
-		if ( preg_match( '#src=\"(.*)\"#iU', $image, $matches ) ) {
-			$image = $matches[1];
-
-			$our_size = sprintf( "%d", WPTOUCH_FEATURED_SIZE );
-			if ( strpos( $image, $our_size ) === false ) {
-				// It's not our image, so just use the WP medium size
-				$image = get_the_post_thumbnail( $post->ID, 'large' );
-				if ( preg_match( '#src=\"(.*)\"#iU', $image, $matches ) ) {
-					$image = $matches[1];
-				}
-			}
-		}
-
-		if ( $image ) {
-			$results = new stdClass;
-			$results->image = $matches[1];
-			$results->date = get_the_date();
-			$results->title = get_the_title();
-			$results->link = get_permalink();
-			$results->comments_number = wptouch_get_comment_count();
-
-			$foundation_featured_data[] = $results;
-
-			$foundation_featured_posts[] = $post->ID;
-		}
-
-		// Break out if we have enough images
-		if ( count( $foundation_featured_data ) == $args[ 'num' ] ) {
-			break;
-		}
-	}
+	return $new_posts;
 
 	add_filter( 'parse_query', 'foundation_featured_modify_query' );
+}
+
+function foundation_featured_has_image( $post = false ) {
+	if ( !$post ) {
+		global $post;
+	}
+
+	$image = get_the_post_thumbnail( $post->ID, 'foundation-featured-image' );
+	if ( $image ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function foundation_featured_get_image( $post = false ) {
+	if ( !$post ) {
+		global $post;
+	}
+
+	$image = get_the_post_thumbnail( $post->ID, 'foundation-featured-image' );
+
+    if ( preg_match( '#src=\"(.*)\"#iU', $image, $matches ) ) {
+      $image = $matches[1];
+
+      $our_size = sprintf( "%d", WPTOUCH_FEATURED_SIZE );
+      if ( strpos( $image, $our_size ) === false ) {
+        // It's not our image, so just use the WP medium size
+        $image = get_the_post_thumbnail( $post->ID, 'large' );
+        if ( preg_match( '#src=\"(.*)\"#iU', $image, $matches ) ) {
+          $image = $matches[1];
+        }
+      }
+    }
+
+    return $image;
 }
 
 function featured_should_show_slider() {
@@ -219,35 +214,33 @@ function foundation_featured_get_slider_classes() {
 }
 
 function foundation_featured_slider( $manual = false, $manual_html = false ) {
-	global $foundation_featured_data;
-
-	$args = foundation_featured_get_args();
 	$settings = foundation_get_settings();
+	$args = foundation_featured_get_args();
 
-	if ( $manual == false && ( count( $foundation_featured_data ) >= FOUNDATION_FEATURED_MIN_NUM ) && $settings->featured_enabled ) {
-		echo $args['before'];
+	if ( $manual == false && $settings->featured_enabled ) {
+		$slides = foundation_featured_get_slides();
 
-		echo "<div id='slider' class='" . implode( ' ', foundation_featured_get_slider_classes() ) . "'>\n";
-		echo "<div class='swipe-wrap'>\n";
-
-		foreach( $foundation_featured_data as $image_data ) {
-			echo "<div class='one-swipe-image' style='visibility: hidden;'>";
-			echo "<a href='" . $image_data->link . "' class='needsclick'>";
-			echo "<div class='comments-number'><span>" . $image_data->comments_number . "</span></div>";
-			echo "<img src='" . $image_data->image . "' alt='" . $image_data->title . "' / >";
-			if ( $settings->featured_title_date ) {
-				echo "<p class='featured-date'>". $image_data->date . "</p>";
-				echo "<p class='featured-title'><span>". $image_data->title . "</span></p>";
+		$slide_count = 0;
+		if ( $slides->post_count > 0 ) {
+			echo $args['before'];
+			echo "<div id='slider' class='" . implode( ' ', foundation_featured_get_slider_classes() ) . "'>\n";
+			echo "<div class='swipe-wrap'>\n";
+			while ( $slides->have_posts() && $slide_count < $args[ 'num' ] ) {
+				$slides->the_post();
+				$image = foundation_featured_has_image();
+				if ( $image ) {
+					$slide_count++;
+					get_template_part( 'featured-slider' );
+				}
 			}
-			echo "</a>";
-			echo "</div>";
+
+			echo "</div>\n";
+			echo "</div>\n";
+			echo $args['after'];
 		}
 
-		echo "</div>\n";
-		echo "</div>\n";
-		echo $args['after'];
-	// Private for now, we'll improve manual mode for customer use in 3.2
-	} elseif ( $manual == true ) {
+	} else {
+		// Private for now, we'll improve manual mode for customer use in 3.2
 		echo $args['before'];
 
 		echo "<div id='slider' class='" . implode( ' ', foundation_featured_get_slider_classes() ) . "'>\n";
@@ -313,14 +306,6 @@ function foundation_featured_settings( $page_options ) {
 				WPTOUCH_SETTING_ADVANCED,
 				'1.0'
 			),
-//			wptouch_add_setting(
-//				'checkbox',
-//				'featured_title_date',
-//				__( 'Show title & date', 'wptouch-pro' ),
-//				__( 'If disabled, the title and date will not be shown. Note: some themes do not show the date.', 'wptouch-pro' ),
-//				WPTOUCH_SETTING_ADVANCED,
-//				'2.0'
-//			),
 			wptouch_add_setting(
 				'checkbox',
 				'featured_filter_posts',

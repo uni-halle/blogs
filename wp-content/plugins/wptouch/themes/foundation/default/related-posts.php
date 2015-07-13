@@ -5,10 +5,10 @@
 			<ul class="related">
 				<?php $related_posts = wptouch_related_posts(); ?>
 				<?php foreach( $related_posts as $related_post ) { ?>
-				<li<?php if ( isset( $related_post->thumbnail ) ) echo ' class="has-thumb"'; ?>>
-					<?php 
-						if ( isset( $related_post->thumbnail ) ) {
-							echo $related_post->thumbnail; 
+				<li class="<?php if ( $related_post->thumbnail != '' ) echo 'has-thumb'; ?><?php if ( $related_post->excerpt == '' ) { echo ' no-excerpt'; } ?>">
+					<?php
+						if ( $related_post->thumbnail != '' ) {
+							echo $related_post->thumbnail;
 						} else {
 							echo "<div class='no-thumb'></div>";
 						}

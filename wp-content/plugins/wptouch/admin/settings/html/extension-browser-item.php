@@ -48,13 +48,6 @@
 		</h5>
 		<p class="desc"><?php wptouch_the_addon_description(); ?></p>
 
-		<p class="info">
-			<?php if ( !wptouch_is_addon_in_cloud() ) { ?>
-			<?php echo sprintf( __( 'Extension location: %s', 'wptouch-pro' ), wptouch_get_addon_location() ); ?>
-			<i class="wptouch-tooltip wptouch-icon-info-sign" title="<?php _e( 'Relative to your WordPress wp-content directory.', 'wptouch-pro' ); ?>"></i>
-			<?php } ?>
-			<br />
-		</p>
 		<ul class="item-actions">
 			<?php if ( wptouch_is_addon_in_cloud() ) { ?>
 				<?php if ( wptouch_get_addon_buy_url() ) { ?>
@@ -77,9 +70,9 @@
 					<?php if ( current_user_can( 'install_plugins' ) ) { ?>
 					<li>
 						<?php if ( wptouch_can_cloud_install( false ) ) { ?>
-						<a class="button-primary download" href="#" data-name="<?php wptouch_the_addon_base(); ?>" data-url="<?php wptouch_the_addon_download_url(); ?>" data-loading-text="<i class='icon-cloud-download'></i><?php _e( 'Downloading...', 'wptouch-pro' ); ?>"><i class="wptouch-icon-cloud-download"></i><?php _e( 'Install', 'wptouch-pro' ); ?></a>
+						<a class="button-secondary download" href="#" data-name="<?php wptouch_the_addon_base(); ?>" data-url="<?php wptouch_the_addon_download_url(); ?>" data-loading-text="<i class='icon-cloud-download'></i><?php _e( 'Downloading...', 'wptouch-pro' ); ?>"><i class="wptouch-icon-cloud-download"></i><?php _e( 'Install', 'wptouch-pro' ); ?></a>
 						<?php } else { ?>
-						<a class="button-primary" href="<?php wptouch_the_addon_download_url(); ?>"><i class="wptouch-icon-cloud-download"></i> <?php _e( 'Download', 'wptouch-pro' ); ?></a>
+						<a class="button-secondary" href="<?php wptouch_the_addon_download_url(); ?>"><i class="wptouch-icon-cloud-download"></i> <?php _e( 'Download', 'wptouch-pro' ); ?></a>
 						<?php } ?>
 					</li>
 					<?php } ?>

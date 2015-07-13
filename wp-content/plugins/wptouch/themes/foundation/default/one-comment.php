@@ -1,7 +1,7 @@
 <?php
 	$settings = foundation_get_settings();
 ?>
-<li class="comment clearfix">
+<li class="comment clearfix" id="comment-<?php echo get_comment_ID()?>">"
 	<div class="comment-top">
 		<div class="comment-avatar">
 			<?php echo get_avatar( $comment ); ?>

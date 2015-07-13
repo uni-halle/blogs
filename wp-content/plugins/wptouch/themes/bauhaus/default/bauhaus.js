@@ -41,7 +41,7 @@ function bauhausMoveFooterDiv(){
 // Add 'touched' class to these elements when they're actually touched (100ms delay) for a better UI experience (tappable module)
 function bauhausBindTappableLinks(){
 	// Drop down menu items
-	jQuery( 'li.menu-item' ).each( function(){
+	jQuery( '.wptouch-menu li.menu-item' ).each( function(){
 		jQuery( this ).addClass( 'tappable' );
 	});
 }

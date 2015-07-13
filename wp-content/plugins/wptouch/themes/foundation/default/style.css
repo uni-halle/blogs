@@ -1059,6 +1059,30 @@ form#commentform button#submit {
 
 /* @end */
 
+/* @group Related Posts
+ */
+
+.related li {
+	min-height: 60px;
+}
+
+.related-posts ul li.no-excerpt {
+	height: 54px;
+	line-height: 54px; /* <-- this is what you must define */
+	vertical-align: middle;
+
+}
+
+.related-posts ul li.no-excerpt a {
+	width: 80%;
+	display: inline-block;
+	line-height: 120%;
+}
+
+
+
+/* @end */
+
 /* @group Login Form */
 
 .wptouch-login-wrap {
