@@ -40,7 +40,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 #menu-nav li.current-post-ancestor ul.sub-menu,
 #menu-nav li.current-post-parent ul.sub-menu,
 #menu-nav li.current-page-ancestor ul.sub-menu,
-#menu-nav li.current_page_parent ul.sub-menu,
 #menu-nav li.current-category-parent ul.sub-menu,
 #menu-nav li.current-menu-item ul.sub-menu {display:block !important}
 
@@ -58,10 +57,9 @@ h2{font-size:12px;font-weight:bold;color:#666;background:inherit;margin:0.2em 0 
 #menu-nav ul,#menu-nav li{list-style:none;margin:0;}
 #menu-nav a{color:#000;text-decoration:none;display:block;border:1px solid #c3bdb4;border-left:0;border-right:0;padding:1px;margin-bottom:-1px;}
 #menu-nav a:hover,
-li.current-menu-item,li.current-category-parent, li.current-post-ancestor,li.current-page-ancestor, li.current_page_parent{font-weight:bold;}
+li.current-menu-item,li.current-category-parent, li.current-post-ancestor,li.current-page-ancestor{font-weight:bold;}
 li.current-menu-item, li.current-post-parent{font-weight:bold !important;}
 li.current-menu-item li,li.current-category-parent li, li.current-post-ancestor li,li.current-page-ancestor li{font-weight:normal;}
-
 #menu-nav{margin:1em 0 0 0;width:166px;overflow:hidden;font-size:12px;}#menu-nav ul li a{line-height:14px;border:0;color:#6f614d;padding:5px 2px 5px 1.2em;background:url(css/dot0.gif) left 10px no-repeat;}#menu-nav ul li a:hover{background-image:url(css/dot1.gif)}
 #menu-nav li ul{margin:4px 0 5px 0;}
 
