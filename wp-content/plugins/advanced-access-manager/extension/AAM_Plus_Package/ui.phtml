@@ -1,0 +1,154 @@
+<?php
+
+/**
+  Copyright (C) <2013-2014>  Vasyl Martyniuk <support@wpaam.com>
+
+  This program is commercial software: you are not allowed to redistribute it
+  and/or modify. Unauthorized copying of this file, via any medium is strictly
+  prohibited.
+  For any questions or concerns contact Vasyl Martyniuk <support@wpaam.com>
+ */
+?>
+<div id="default_access_dialog" class="aam-dialog">
+    <?php if ($this->getUser()->getUID() != 'visitor') { ?>
+        <div class="post-access-area">
+            <input type="radio" id="default_post_area_frontend" value="frontend" checked="checked" name="access_area" /><label for="default_post_area_frontend">Frontend</label>
+            <input type="radio" id="default_post_area_backend" value="backend" name="access_area" /><label for="default_post_area_backend">Backend</label>
+        </div>
+    <?php } ?>
+
+    <table class="dataTable" id="default_term_access_frontend">
+        <thead>
+            <tr>
+                <td colspan="2" style="text-align: center; font-size: 0.9em;">
+                    <?php echo __('All Categories Default Access', 'aam'); ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Capability', 'aam'); ?></th>
+                <th><?php echo __('Restrict', 'aam'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach (aam_Core_Settings::get('term_frontend_restrictions') as $i => $action) { ?>
+                <tr class="<?php echo ($i % 2 ? 'event' : 'odd'); ?>">
+                    <td>
+                        <div class="post-access">
+                            <?php echo __($action, 'aam'); ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="aam-list-row-actions">
+                            <div class="post-action">
+                                <input type="checkbox" id="default_term_frontend_<?php echo $action ?>" object="term" area="frontend" action="<?php echo $action ?>" />
+                                <label for="default_term_frontend_<?php echo $action ?>"><span></span></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+    <table class="dataTable" id="default_term_access_backend">
+        <thead>
+            <tr>
+                <td colspan="2" style="text-align: center; font-size: 0.9em;">
+                    <?php echo __('All Categories Default Access', 'aam'); ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Capability', 'aam'); ?></th>
+                <th><?php echo __('Restrict', 'aam'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach (aam_Core_Settings::get('term_backend_restrictions') as $i => $action) { ?>
+                <tr class="<?php echo ($i % 2 ? 'event' : 'odd'); ?>">
+                    <td>
+                        <div class="post-access">
+                            <?php echo __($action, 'aam'); ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="aam-list-row-actions">
+                            <div class="post-action">
+                                <input type="checkbox" id="default_term_backend_<?php echo $action ?>" object="term" area="backend" action="<?php echo $action ?>" />
+                                <label for="default_term_backend_<?php echo $action ?>"><span></span></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
+    <table class="dataTable" id="default_post_access_frontend">
+        <thead>
+            <tr>
+                <td colspan="2" style="text-align: center; font-size: 0.9em;">
+                    <?php echo __('All Posts Default Access', 'aam'); ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Capability', 'aam'); ?></th>
+                <th><?php echo __('Restrict', 'aam'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach (aam_Core_Settings::get('post_frontend_restrictions') as $i => $action) { ?>
+                <tr class="<?php echo ($i % 2 ? 'event' : 'odd'); ?>">
+                    <td>
+                        <div class="post-access">
+                            <?php echo __($action, 'aam'); ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="aam-list-row-actions">
+                            <div class="post-action">
+                                <input type="checkbox" id="default_post_frontend_<?php echo $action ?>" object="post" area="frontend" action="<?php echo $action ?>" />
+                                <label for="default_post_frontend_<?php echo $action ?>"><span></span></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+    <table class="dataTable" id="default_post_access_backend">
+        <thead>
+            <tr>
+                <td colspan="2" style="text-align: center; font-size: 0.9em;">
+                    <?php echo __('All Posts Default Access', 'aam'); ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?php echo __('Capability', 'aam'); ?></th>
+                <th><?php echo __('Restrict', 'aam'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            $post_actions = aam_Core_Settings::get('post_backend_restrictions');
+            $post_actions[] = AAM_Extension_Plus::ACTION_ADD; //add extra actions
+            foreach ($post_actions as $i => $action) { 
+            ?>
+                <tr class="<?php echo ($i % 2 ? 'event' : 'odd'); ?>">
+                    <td>
+                        <div class="post-access">
+                            <?php echo __($action, 'aam'); ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="aam-list-row-actions">
+                            <div class="post-action">
+                                <input type="checkbox" id="default_post_backend_<?php echo $action ?>" object="post" area="backend" action="<?php echo $action ?>" />
+                                <label for="default_post_backend_<?php echo $action ?>"><span></span></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+    <div class="aam-main-loader"></div>
+</div>
