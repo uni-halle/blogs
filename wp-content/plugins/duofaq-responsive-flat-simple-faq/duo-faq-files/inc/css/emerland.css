@@ -1,0 +1,14 @@
+.faq_wrap_all h3 {
+	background: none repeat scroll 0 0 #2ecc71;
+	border: 1px solid #2ecc71;
+	color: #ffffff;
+	border-bottom: 1px solid #ffffff;
+}
+
+.smart_all_accordion ul li a:hover{
+	background: none repeat scroll 0 0 #2ecc71;
+}
+
+.ui-accordion-content-active{
+	border: 1px solid #2ecc71 !important;
+}
