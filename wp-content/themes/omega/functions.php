@@ -54,7 +54,7 @@ function omega_theme_setup() {
 	add_theme_support( 'omega-child-page' );
 
 	/* Handle content width for embeds and images. */
-	omega_set_content_width( 640 );
+	omega_set_content_width( 700 );
 
 }
 

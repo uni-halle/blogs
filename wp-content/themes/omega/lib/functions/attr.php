@@ -9,6 +9,7 @@
  */
 
 /* Attributes for major structural elements. */
+add_filter( 'omega_attr_head',    'omega_attr_head',    5    );
 add_filter( 'omega_attr_body',    'omega_attr_body',    5    );
 add_filter( 'omega_attr_header',  'omega_attr_header',  5    );
 add_filter( 'omega_attr_footer',  'omega_attr_footer',  5    );
@@ -86,6 +87,22 @@ function omega_get_attr( $slug, $context = '', $attributes = array() ) {
 /* === Structural === */
 
 /**
+ * <head> element attributes.
+ *
+ * @since  1.2.2
+ * @access public
+ * @param  array   $attr
+ * @return array
+ */
+function omega_attr_head( $attr ) {
+
+	$attr['itemscope'] = '';
+	$attr['itemtype']  = 'http://schema.org/WebSite';
+
+	return $attr;
+}
+
+/**
  * <body> element attributes.
  *
  * @since  0.9.0
@@ -157,9 +174,8 @@ function omega_attr_content( $attr ) {
 	if ( is_singular( 'post' ) || is_home() || is_archive() ) {
 		$attr['itemscope'] = 'itemscope';
 		$attr['itemtype']  = 'http://schema.org/Blog';
-	}
-
-	elseif ( is_search() ) {
+		$attr['itemprop'] = 'mainEntityOfPage';
+	} elseif ( is_search() ) {
 		$attr['itemscope'] = 'itemscope';
 		$attr['itemtype']  = 'http://schema.org/SearchResultsPage';
 	}
@@ -182,7 +198,7 @@ function omega_attr_sidebar( $attr, $context ) {
 		$attr['id'] = "sidebar-{$context}";
 
 	$attr['role']      = 'complementary';
-	$attr['itemscope'] = 'itemscope';
+	$attr['itemscope'] = '';
 	$attr['itemtype']  = 'http://schema.org/WPSideBar';
 
 	return $attr;
@@ -484,12 +500,12 @@ function omega_attr_comment( $attr ) {
 	//$attr['id']    = 'comment-' . get_comment_ID(); hence disabled
 	//$attr['class'] = join( ' ', get_comment_class() );
 
-	if ( in_array( get_comment_type(), array( '', 'comment' ) ) ) {
+	//if ( in_array( get_comment_type(), array( '', 'comment' ) ) ) {
 		$attr['class']     = 'comment-item';
-		$attr['itemprop']  = 'comment';
+		//$attr['itemprop']  = 'comment';
 		$attr['itemscope'] = 'itemscope';
 		$attr['itemtype']  = 'http://schema.org/UserComments';
-	}
+	//}
 
 	return $attr;
 }

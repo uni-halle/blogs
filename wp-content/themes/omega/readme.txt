@@ -58,6 +58,13 @@ Source: http://tinynav.viljamis.com
 Changelog
 ---------
 
+1.2.3   2015-7-13
+- update schema.org
+
+1.2.2   2015-7-3
+- clean up white space
+- update schema.org
+
 1.2.1   2015-6-25
 - update child theme link
 - improve TGM plugin multisite support 

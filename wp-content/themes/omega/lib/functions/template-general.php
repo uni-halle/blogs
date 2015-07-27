@@ -94,7 +94,7 @@ function omega_get_author_uri() {
 	if (is_child_theme()) {
 		return sprintf( $name );
 	} else {
-		return sprintf( '<a class="theme-link"href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
+		return sprintf( '<a class="theme-link" href="%s" title="%s">%s</a>', esc_url( $uri ), esc_attr( $title ), $name );
 	}
 }
 
