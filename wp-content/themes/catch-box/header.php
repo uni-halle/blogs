@@ -122,5 +122,7 @@ do_action( 'catchbox_before' ); ?>
                  * catchbox_content hook
                  *
                  * @hooked catchbox_slider_display - 10
+                 * @hooked catchbox_breadcrumb_display - 20
+                 * 
                  */
                 do_action( 'catchbox_content' ); ?>

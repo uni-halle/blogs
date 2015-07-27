@@ -1441,3 +1441,24 @@ function catchbox_scrollup() {
 	
 }
 add_action( 'catchbox_after', 'catchbox_scrollup', 10 );
+
+
+if ( ! function_exists( 'catchbox_breadcrumb_display' ) ) :
+	/**
+	 * Display breadcrumb on header
+	 */
+	function catchbox_breadcrumb_display() {
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			echo '<div class="breadcrumbs wpseoyoast">';
+				yoast_breadcrumb();
+			echo '</div><!-- .wpseoyoast -->';
+		}
+		elseif ( function_exists( 'bcn_display' ) ) {
+			echo '<div class="breadcrumbs breadcrumbnavxt" xmlns:v="http://rdf.data-vocabulary.org/#">';
+					bcn_display();
+			echo '</div><!-- .breadcrumbnavxt -->';	
+		}
+		
+	}
+endif; // catchbox_breadcrumb_display	
+add_action( 'catchbox_content', 'catchbox_breadcrumb_display', 20 );
