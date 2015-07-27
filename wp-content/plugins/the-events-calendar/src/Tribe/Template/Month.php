@@ -16,7 +16,6 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 	 * Month view template class
 	 */
 	class Tribe__Events__Template__Month extends Tribe__Events__Template_Factory {
-
 		/**
 		 * Month Type Masks
 		 */
@@ -58,7 +57,7 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 		 * Query args
 		 * @var array|null
 		 */
-		protected static $args;
+		protected $args;
 
 		/**
 		 * Indicates the array index marking the first entry for the current month.
@@ -150,20 +149,29 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 				$this->html_cache = new Tribe__Events__Template_Part_Cache( 'month/content.php', serialize( $args ), $cache_expiration, 'save_post' );
 			}
 
-			$args = (array) $args;
-			self::$args            = (array) $args;
+			$args                  = (array) $args;
+			$this->args            = $args;
 			$this->events_per_day  = apply_filters( 'tribe_events_month_day_limit', tribe_get_option( 'monthEventAmount', '3' ) );
 			$this->requested_date  = $this->requested_date();
-			$this->first_grid_date = $this->calculate_first_cell_date( $this->requested_date );
-			$this->final_grid_date = $this->calculate_final_cell_date( $this->requested_date );
+			$this->first_grid_date = self::calculate_first_cell_date( $this->requested_date );
+			$this->final_grid_date = self::calculate_final_cell_date( $this->requested_date );
+
+			$args = array_merge( $args, array(
+				'fields'         => 'ids',
+				'start_date'     => tribe_event_beginning_of_day( $this->first_grid_date ),
+				'end_date'       => tribe_event_end_of_day( $this->final_grid_date ),
+				'post_status'    => array( 'publish' ),
+				'posts_per_page' => - 1,
+			) );
+
+			if ( is_user_logged_in() ) {
+				$args['post_status'][] = 'private';
+			}
+
+			$args = apply_filters( 'tribe_events_in_month_args', $args );
 
 			// get all the ids for the events in this month, speeds up queries
-			$this->events_in_month = tribe_get_events( array_merge( $args, array(
-				'fields'         => 'ids',
-				'start_date'     => $this->first_grid_date,
-				'end_date'       => $this->final_grid_date,
-				'posts_per_page' => - 1,
-			) ) );
+			$this->events_in_month = tribe_get_events( $args );
 
 			// don't enqueue scripts and js when we're not constructing month view,
 			// they'll have to be enqueued separately
@@ -184,6 +192,10 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 
 			// Since we set is_post_type_archive to true on month view, this prevents 'Events' from being added to the page title
 			add_filter( 'post_type_archive_title', '__return_false', 10 );
+
+			if ( ! empty( $this->events_in_month ) ) {
+				add_filter( 'tribe_events_month_has_events', '__return_true' );
+			}
 		}
 
 		/**
@@ -194,6 +206,9 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 		protected function unhook() {
 			parent::unhook();
 			remove_filter( 'post_type_archive_title', '__return_false', 10 );
+			if ( ! empty( $this->events_in_month ) ) {
+				remove_filter( 'tribe_events_month_has_events', '__return_true' );
+			}
 		}
 
 		/**
@@ -296,7 +311,7 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 					'posts_per_page' => $this->events_per_day,
 					'post__in'       => $this->events_in_month,
 					'orderby'        => 'menu_order',
-				), self::$args
+				), $this->args
 			);
 			$result = tribe_get_events( $args, true );
 
@@ -386,7 +401,7 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 		 */
 		protected function requested_date() {
 			// We expect the date to be Y-m (yyyy-mm) format, ie year and date only
-			$date = isset( self::$args['eventDate'] ) ? self::$args['eventDate'] : tribe_get_month_view_date();
+			$date = isset( $this->args['eventDate'] ) ? $this->args['eventDate'] : tribe_get_month_view_date();
 
 			// Test and return unmodified if valid
 			if ( false !== strtotime( $date . '-01' ) ) {
@@ -426,7 +441,7 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 		 *
 		 * @return bool|string (Y-m-d)
 		 */
-		protected function calculate_first_cell_date( $month, $start_of_week = null ) {
+		public static function calculate_first_cell_date( $month, $start_of_week = null ) {
 			if ( null === $start_of_week ) {
 				$start_of_week = (int) get_option( 'start_of_week', 0 );
 			}
@@ -463,7 +478,7 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 		 *
 		 * @return bool|string (Y-m-d)
 		 */
-		protected function calculate_final_cell_date( $month, $start_of_week = null ) {
+		public static function calculate_final_cell_date( $month, $start_of_week = null ) {
 			if ( null === $start_of_week ) {
 				$start_of_week = (int) get_option( 'start_of_week', 0 );
 			}
@@ -624,7 +639,7 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 			if ( $venue_id = tribe_get_venue_id( $post->ID ) ) {
 				$classes[] = 'tribe-events-venue-' . $venue_id;
 			}
-			if ( $organizer_id = tribe_get_organizer_id( $post->ID ) ) {
+			foreach ( tribe_get_organizer_ids( $post->ID ) as $organizer_id ) {
 				$classes[] = 'tribe-events-organizer-' . $organizer_id;
 			}
 
@@ -681,6 +696,5 @@ if ( ! class_exists( 'Tribe__Events__Template__Month' ) ) {
 				die();
 			}
 		}
-
 	} // class Tribe__Events__Template__Month
 }
