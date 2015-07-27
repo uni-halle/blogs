@@ -1,0 +1,12 @@
+{
+  "name": "foundationpress",
+  "main": [
+    "css/foundation.css",
+    "js/foundation.js"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "foundation": "~5.5.2",
+    "fontawesome": "~4.3.0"
+  }
+}
