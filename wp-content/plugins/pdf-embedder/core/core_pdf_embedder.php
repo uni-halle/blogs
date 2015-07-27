@@ -83,7 +83,7 @@ class core_pdf_embedder {
         $options = $this->get_option_pdfemb();
 		
 		$width = isset($atts['width']) ? $atts['width'] : $options['pdfemb_width'];
-		$height = isset($atts['height']) ? $atts['height'] : 'auto';
+		$height = isset($atts['height']) ? $atts['height'] : $options['pdfemb_height'];
 		
 		$extra_style = "";
 		if (is_numeric($width)) {
@@ -95,6 +95,9 @@ class core_pdf_embedder {
 
 		if (is_numeric($height)) {
 			$extra_style .= "height: ".$height."px; ";
+		}
+		elseif ($height!='max' && $height!='auto') {
+			$height = 'max';
 		}
 		
 		$toolbar = isset($atts['toolbar']) && in_array($atts['toolbar'], array('top', 'bottom', 'both')) ? $atts['toolbar'] : $options['pdfemb_toolbar'];

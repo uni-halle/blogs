@@ -6,6 +6,7 @@ div.pdfemb-viewer {
 	padding: 0px;
 	border: 1px solid black;
 	position: relative;
+	text-align: left;
 }
 
 div.pdfemb-inner-div {

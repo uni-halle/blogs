@@ -22,33 +22,14 @@ if (typeof PDFJS === 'undefined') {
   (typeof window !== 'undefined' ? window : this).PDFJS = {};
 }
 
-PDFJS.version = '1.0.1086';
-PDFJS.build = '465f52e';
+PDFJS.version = '1.1.337';
+PDFJS.build = '61f9052';
 
 (function pdfjsWrapper() {
   // Use strict in our context only - users might not want it
   'use strict';
 
-/* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
-/* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab: */
-/* Copyright 2012 Mozilla Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-/* globals Cmd, ColorSpace, Dict, MozBlobBuilder, Name, PDFJS, Ref, URL,
-           Promise */
 
-'use strict';
 
 var globalScope = (typeof window === 'undefined') ? this : window;
 
@@ -79,6 +60,14 @@ var AnnotationType = {
   WIDGET: 1,
   TEXT: 2,
   LINK: 3
+};
+
+var AnnotationBorderStyleType = {
+  SOLID: 1,
+  DASHED: 2,
+  BEVELED: 3,
+  INSET: 4,
+  UNDERLINE: 5
 };
 
 var StreamType = {
@@ -239,17 +228,10 @@ function warn(msg) {
 // Fatal errors that should trigger the fallback UI and halt execution by
 // throwing an exception.
 function error(msg) {
-  // If multiple arguments were passed, pass them all to the log function.
-  if (arguments.length > 1) {
-    var logArguments = ['Error:'];
-    logArguments.push.apply(logArguments, arguments);
-    console.log.apply(console, logArguments);
-    // Join the arguments into a single string for the lines below.
-    msg = [].join.call(arguments, ' ');
-  } else {
+  if (PDFJS.verbosity >= PDFJS.VERBOSITY_LEVELS.errors) {
     console.log('Error: ' + msg);
+    console.log(backtrace());
   }
-  console.log(backtrace());
   UnsupportedManager.notify(UNSUPPORTED_FEATURES.unknown);
   throw new Error(msg);
 }
@@ -356,6 +338,7 @@ function shadow(obj, prop, value) {
                                      writable: false });
   return value;
 }
+PDFJS.shadow = shadow;
 
 var PasswordResponses = PDFJS.PasswordResponses = {
   NEED_PASSWORD: 1,
@@ -540,7 +523,7 @@ Object.defineProperty(PDFJS, 'isLittleEndian', {
   }
 });
 
-  // Lazy test if the userAgant support CanvasTypedArrays
+  // Lazy test if the userAgent support CanvasTypedArrays
 function hasCanvasTypedArrays() {
   var canvas = document.createElement('canvas');
   canvas.width = canvas.height = 1;
@@ -979,6 +962,10 @@ function stringToUTF8String(str) {
   return decodeURIComponent(escape(str));
 }
 
+function utf8StringToString(str) {
+  return unescape(encodeURIComponent(str));
+}
+
 function isEmptyObj(obj) {
   for (var key in obj) {
     return false;
@@ -1000,10 +987,6 @@ function isNum(v) {
 
 function isString(v) {
   return typeof v === 'string';
-}
-
-function isNull(v) {
-  return v === null;
 }
 
 function isName(v) {
@@ -1635,7 +1618,7 @@ PDFJS.cMapUrl = (PDFJS.cMapUrl === undefined ? null : PDFJS.cMapUrl);
  */
 PDFJS.cMapPacked = PDFJS.cMapPacked === undefined ? false : PDFJS.cMapPacked;
 
-/*
+/**
  * By default fonts are converted to OpenType fonts and loaded via font face
  * rules. If disabled, the font will be rendered using a built in font renderer
  * that constructs the glyphs with primitive path commands.
@@ -1726,6 +1709,14 @@ PDFJS.disableWebGL = (PDFJS.disableWebGL === undefined ?
                       true : PDFJS.disableWebGL);
 
 /**
+ * Disables fullscreen support, and by extension Presentation Mode,
+ * in browsers which support the fullscreen API.
+ * @var {boolean}
+ */
+PDFJS.disableFullscreen = (PDFJS.disableFullscreen === undefined ?
+                           false : PDFJS.disableFullscreen);
+
+/**
  * Enables CSS only zooming.
  * @var {boolean}
  */
@@ -1744,12 +1735,21 @@ PDFJS.verbosity = (PDFJS.verbosity === undefined ?
                    PDFJS.VERBOSITY_LEVELS.warnings : PDFJS.verbosity);
 
 /**
- * The maximum supported canvas size in total pixels e.g. width * height. 
+ * The maximum supported canvas size in total pixels e.g. width * height.
  * The default value is 4096 * 4096. Use -1 for no limit.
  * @var {number}
  */
 PDFJS.maxCanvasPixels = (PDFJS.maxCanvasPixels === undefined ?
                          16777216 : PDFJS.maxCanvasPixels);
+
+/**
+ * Opens external links in a new window if enabled. The default behavior opens
+ * external links in the PDF.js window.
+ * @var {boolean}
+ */
+PDFJS.openExternalLinksInNewWindow = (
+  PDFJS.openExternalLinksInNewWindow === undefined ?
+    false : PDFJS.openExternalLinksInNewWindow);
 
 /**
  * Document initialization / loading parameters object.
@@ -2190,7 +2190,7 @@ var PDFDocumentProxy = (function PDFDocumentProxyClosure() {
  *                      rendering call the function that is the first argument
  *                      to the callback.
  */
- 
+
 /**
  * PDF page operator list.
  *
@@ -2262,13 +2262,10 @@ var PDFPageProxy = (function PDFPageProxyClosure() {
      * annotation objects.
      */
     getAnnotations: function PDFPageProxy_getAnnotations() {
-      if (this.annotationsPromise) {
-        return this.annotationsPromise;
+      if (!this.annotationsPromise) {
+        this.annotationsPromise = this.transport.getAnnotations(this.pageIndex);
       }
-
-      var promise = this.transport.getAnnotations(this.pageIndex);
-      this.annotationsPromise = promise;
-      return promise;
+      return this.annotationsPromise;
     },
     /**
      * Begins the process of rendering a page to the desired context.
@@ -2314,6 +2311,7 @@ var PDFPageProxy = (function PDFPageProxyClosure() {
                                                       this.commonObjs,
                                                       intentState.operatorList,
                                                       this.pageNumber);
+      internalRenderTask.useRequestAnimationFrame = renderingIntent !== 'print';
       if (!intentState.renderTasks) {
         intentState.renderTasks = [];
       }
@@ -3119,6 +3117,7 @@ var InternalRenderTask = (function InternalRenderTaskClosure() {
     this.running = false;
     this.graphicsReadyCallback = null;
     this.graphicsReady = false;
+    this.useRequestAnimationFrame = false;
     this.cancelled = false;
     this.capability = createPromiseCapability();
     this.task = new RenderTask(this);
@@ -3192,7 +3191,11 @@ var InternalRenderTask = (function InternalRenderTaskClosure() {
     },
 
     _scheduleNext: function InternalRenderTask__scheduleNext() {
-      window.requestAnimationFrame(this._nextBound);
+      if (this.useRequestAnimationFrame) {
+        window.requestAnimationFrame(this._nextBound);
+      } else {
+        Promise.resolve(undefined).then(this._nextBound);
+      }
     },
 
     _next: function InternalRenderTask__next() {
@@ -3324,11 +3327,8 @@ function createScratchCanvas(width, height) {
 }
 
 function addContextCurrentTransform(ctx) {
-  // If the context doesn't expose a `mozCurrentTransform`, add a JS based on.
+  // If the context doesn't expose a `mozCurrentTransform`, add a JS based one.
   if (!ctx.mozCurrentTransform) {
-    // Store the original context
-    ctx._scaleX = ctx._scaleX || 1.0;
-    ctx._scaleY = ctx._scaleY || 1.0;
     ctx._originalSave = ctx.save;
     ctx._originalRestore = ctx.restore;
     ctx._originalRotate = ctx.rotate;
@@ -3337,7 +3337,7 @@ function addContextCurrentTransform(ctx) {
     ctx._originalTransform = ctx.transform;
     ctx._originalSetTransform = ctx.setTransform;
 
-    ctx._transformMatrix = [ctx._scaleX, 0, 0, ctx._scaleY, 0, 0];
+    ctx._transformMatrix = ctx._transformMatrix || [1, 0, 0, 1, 0, 0];
     ctx._transformStack = [];
 
     Object.defineProperty(ctx, 'mozCurrentTransform', {
@@ -3713,6 +3713,8 @@ var CanvasGraphics = (function CanvasGraphicsClosure() {
     this.smaskCounter = 0;
     this.tempSMask = null;
     if (canvasCtx) {
+      // NOTE: if mozCurrentTransform is polyfilled, then the current state of
+      // the transformation must already be set in canvasCtx._transformMatrix.
       addContextCurrentTransform(canvasCtx);
     }
     this.cachedGetSinglePixelWidth = null;
@@ -4504,7 +4506,7 @@ var CanvasGraphics = (function CanvasGraphicsClosure() {
       }
 
       var name = fontObj.loadedName || 'sans-serif';
-      var bold = fontObj.black ? (fontObj.bold ? 'bolder' : 'bold') :
+      var bold = fontObj.black ? (fontObj.bold ? '900' : 'bold') :
                                  (fontObj.bold ? 'bold' : 'normal');
 
       var italic = fontObj.italic ? 'italic' : 'normal';
@@ -4764,6 +4766,7 @@ var CanvasGraphics = (function CanvasGraphicsClosure() {
       if (isTextInvisible || fontSize === 0) {
         return;
       }
+      this.cachedGetSinglePixelWidth = null;
 
       ctx.save();
       ctx.transform.apply(ctx, current.textMatrix);
@@ -5427,7 +5430,6 @@ var CanvasGraphics = (function CanvasGraphicsClosure() {
 
   return CanvasGraphics;
 })();
-
 
 
 var WebGLUtils = (function WebGLUtilsClosure() {
@@ -6337,7 +6339,8 @@ var FontLoader = {
 
   nativeFontFaces: [],
 
-  isFontLoadingAPISupported: !isWorker && !!document.fonts,
+  isFontLoadingAPISupported: (!isWorker && typeof document !== 'undefined' &&
+                              !!document.fonts),
 
   addNativeFontFace: function fontLoader_addNativeFontFace(nativeFontFace) {
     this.nativeFontFaces.push(nativeFontFace);
@@ -6350,6 +6353,13 @@ var FontLoader = {
     var rules = [];
     var fontsToLoad = [];
     var fontLoadPromises = [];
+    var getNativeFontPromise = function(nativeFontFace) {
+      // Return a promise that is always fulfilled, even when the font fails to
+      // load.
+      return nativeFontFace.loaded.catch(function(e) {
+        warn('Failed to load font "' + nativeFontFace.family + '": ' + e);
+      });
+    };
     for (var i = 0, ii = fonts.length; i < ii; i++) {
       var font = fonts[i];
 
@@ -6363,7 +6373,7 @@ var FontLoader = {
       if (this.isFontLoadingAPISupported) {
         var nativeFontFace = font.createNativeFontFace();
         if (nativeFontFace) {
-          fontLoadPromises.push(nativeFontFace.loaded);
+          fontLoadPromises.push(getNativeFontPromise(nativeFontFace));
         }
       } else {
         var rule = font.bindDOM();
@@ -6376,7 +6386,7 @@ var FontLoader = {
 
     var request = FontLoader.queueLoadingCallback(callback);
     if (this.isFontLoadingAPISupported) {
-      Promise.all(fontsToLoad).then(function() {
+      Promise.all(fontLoadPromises).then(function() {
         request.complete();
       });
     } else if (rules.length > 0 && !this.isSyncFontLoadingSupported) {
@@ -6614,25 +6624,70 @@ var AnnotationUtils = (function AnnotationUtilsClosure() {
     style.fontFamily = fontFamily + fallbackName;
   }
 
-  function initContainer(item, drawBorder) {
+  function initContainer(item) {
     var container = document.createElement('section');
     var cstyle = container.style;
     var width = item.rect[2] - item.rect[0];
     var height = item.rect[3] - item.rect[1];
 
-    var bWidth = item.borderWidth || 0;
-    if (bWidth) {
-      width = width - 2 * bWidth;
-      height = height - 2 * bWidth;
-      cstyle.borderWidth = bWidth + 'px';
-      var color = item.color;
-      if (drawBorder && color) {
-        cstyle.borderStyle = 'solid';
-        cstyle.borderColor = Util.makeCssRgb(Math.round(color[0] * 255),
-                                             Math.round(color[1] * 255),
-                                             Math.round(color[2] * 255));
+    // Border
+    if (item.borderStyle.width > 0) {
+      // Border width
+      container.style.borderWidth = item.borderStyle.width + 'px';
+      if (item.borderStyle.style !== AnnotationBorderStyleType.UNDERLINE) {
+        // Underline styles only have a bottom border, so we do not need
+        // to adjust for all borders. This yields a similar result as
+        // Adobe Acrobat/Reader.
+        width = width - 2 * item.borderStyle.width;
+        height = height - 2 * item.borderStyle.width;
+      }
+
+      // Horizontal and vertical border radius
+      var horizontalRadius = item.borderStyle.horizontalCornerRadius;
+      var verticalRadius = item.borderStyle.verticalCornerRadius;
+      if (horizontalRadius > 0 || verticalRadius > 0) {
+        var radius = horizontalRadius + 'px / ' + verticalRadius + 'px';
+        CustomStyle.setProp('borderRadius', container, radius);
+      }
+
+      // Border style
+      switch (item.borderStyle.style) {
+        case AnnotationBorderStyleType.SOLID:
+          container.style.borderStyle = 'solid';
+          break;
+
+        case AnnotationBorderStyleType.DASHED:
+          container.style.borderStyle = 'dashed';
+          break;
+
+        case AnnotationBorderStyleType.BEVELED:
+          warn('Unimplemented border style: beveled');
+          break;
+
+        case AnnotationBorderStyleType.INSET:
+          warn('Unimplemented border style: inset');
+          break;
+
+        case AnnotationBorderStyleType.UNDERLINE:
+          container.style.borderBottomStyle = 'solid';
+          break;
+
+        default:
+          break;
+      }
+
+      // Border color
+      if (item.color) {
+        container.style.borderColor =
+          Util.makeCssRgb(item.color[0] | 0,
+                          item.color[1] | 0,
+                          item.color[2] | 0);
+      } else {
+        // Transparent (invisible) border, so do not draw it at all.
+        container.style.borderWidth = 0;
       }
     }
+
     cstyle.width = width + 'px';
     cstyle.height = height + 'px';
     return container;
@@ -6673,7 +6728,7 @@ var AnnotationUtils = (function AnnotationUtilsClosure() {
       rect[2] = rect[0] + (rect[3] - rect[1]); // make it square
     }
 
-    var container = initContainer(item, false);
+    var container = initContainer(item);
     container.className = 'annotText';
 
     var image  = document.createElement('img');
@@ -6696,17 +6751,15 @@ var AnnotationUtils = (function AnnotationUtilsClosure() {
     content.setAttribute('hidden', true);
 
     var i, ii;
-    if (item.hasBgColor) {
+    if (item.hasBgColor && item.color) {
       var color = item.color;
 
       // Enlighten the color (70%)
       var BACKGROUND_ENLIGHT = 0.7;
-      var r = BACKGROUND_ENLIGHT * (1.0 - color[0]) + color[0];
-      var g = BACKGROUND_ENLIGHT * (1.0 - color[1]) + color[1];
-      var b = BACKGROUND_ENLIGHT * (1.0 - color[2]) + color[2];
-      content.style.backgroundColor = Util.makeCssRgb((r * 255) | 0,
-                                                      (g * 255) | 0,
-                                                      (b * 255) | 0);
+      var r = BACKGROUND_ENLIGHT * (255 - color[0]) + color[0];
+      var g = BACKGROUND_ENLIGHT * (255 - color[1]) + color[1];
+      var b = BACKGROUND_ENLIGHT * (255 - color[2]) + color[2];
+      content.style.backgroundColor = Util.makeCssRgb(r | 0, g | 0, b | 0);
     }
 
     var title = document.createElement('h1');
@@ -6782,11 +6835,14 @@ var AnnotationUtils = (function AnnotationUtilsClosure() {
   }
 
   function getHtmlElementForLinkAnnotation(item) {
-    var container = initContainer(item, true);
+    var container = initContainer(item);
     container.className = 'annotLink';
 
     var link = document.createElement('a');
     link.href = link.title = item.url || '';
+    if (item.url && PDFJS.openExternalLinksInNewWindow) {
+      link.target = '_blank';
+    }
 
     container.appendChild(link);
 
@@ -7045,7 +7101,7 @@ var SVGExtraState = (function SVGExtraStateClosure() {
     this.lineJoin = '';
     this.lineCap = '';
     this.miterLimit = 0;
-    
+
     this.dashArray = [];
     this.dashPhase = 0;
 
@@ -7272,7 +7328,7 @@ var SVGGraphics = (function SVGGraphicsClosure() {
       }
       return opListToTree(opList);
     },
-    
+
     executeOpTree: function SVGGraphics_executeOpTree(opTree) {
       var opTreeLen = opTree.length;
       for(var x = 0; x < opTreeLen; x++) {
@@ -7310,6 +7366,9 @@ var SVGGraphics = (function SVGGraphicsClosure() {
             break;
           case OPS.setWordSpacing:
             this.setWordSpacing(args[0]);
+            break;
+          case OPS.setHScale:
+            this.setHScale(args[0]);
             break;
           case OPS.setTextMatrix:
             this.setTextMatrix(args[0], args[1], args[2],

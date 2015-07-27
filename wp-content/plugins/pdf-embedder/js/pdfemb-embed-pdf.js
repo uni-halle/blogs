@@ -146,12 +146,12 @@ jQuery(document).ready(function ($) {
 	    	// Height can be overridden by user
 	    	var userHeight = parseInt(divContainer.data('height'), 10);
 	    	if (isNaN(userHeight) || userHeight <= 0 || userHeight > wantHeight) {
-                if (divContainer.data('height') == "max") {
-                    userHeight = divContainer.parent().height() - actualFixedToolbars * fixedToolbars.height();
-                }
-                else {
-                    userHeight = wantHeight;
-                }
+				if (divContainer.data('height') == "auto") { // Mainly for full screen mode
+					userHeight = divContainer.parent().height() - actualFixedToolbars * fixedToolbars.height();
+				}
+				else { // max
+					userHeight = wantHeight;
+				}
 	    	}
 	    	
 	    	wantWidth = Math.floor(wantWidth);
