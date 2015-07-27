@@ -42,7 +42,7 @@ function iww_func( $atts ){
 		$iwwformc = "<p>Sie haben sich bereits mit der E-Mail <strong>".urldecode($_COOKIE["iwwForm"])."</strong> eingetragen!</p>";
 	} 
 	else {	
-		$iwwformc =  "<p>Die Felder, die mit einem Stern (*) markiert sind, m&uuml;ssen ausgef&uuml;llt werden!<br>Nach dem Klick auf den Button &quot;Angaben speichern&quot; öffnet sich ein neues Fenster.</p><form target='_blank' action='".get_bloginfo('template_url')."/send.php' method='post'> 
+		/*$iwwformc =  "<p>Die Felder, die mit einem Stern (*) markiert sind, m&uuml;ssen ausgef&uuml;llt werden!<br>Nach dem Klick auf den Button &quot;Angaben speichern&quot; öffnet sich ein neues Fenster.</p><form target='_blank' action='".get_bloginfo('template_url')."/send.php' method='post'> 
 			<dl>
 				<dt><label for='tx_kofointerested_pi1_email'>E-Mail-Adresse <sup>*</sup></label></dt>
 				<dd><input type='text' id='tx_kofointerested_pi1_email' name='email' value=''/></dd>
@@ -57,7 +57,28 @@ function iww_func( $atts ){
 			<input type='submit' class='submitbutton' name='submit' value='Angaben speichern'/>
 			</form>
 			<br class='clear'>
-			<!-- /IWW BOX -->";
+			<!-- /IWW BOX -->";*/
+		$iwwformc = <<<IWWBOX
+<!--stay informed/iww -->
+<form action="http://www.ich-will-wissen.de/stay-informed/" method="post" id="stay-informed">
+<dl>
+<dt><label for="e-mail">E-Mail-Adresse:</label></dt>
+<dd><input name="e-mail" type="email" required id="e-mail" maxlength="80"></dd>
+<dt><label for="first-name">Vorname:</label></dt>
+<dd><input name="first-name" type="text" required id="first-name" maxlength="50"></dd>
+<dt><label for="last-name">Nachname:</label></dt>
+<dd><input name="last-name" type="text" required id="last-name" maxlength="50"></dd>
+</dl>
+<span class="clear"></span>
+<p>
+<input name="privacy" type="checkbox" value="1" required id="privacy"><label for="privacy">Die <a href="http://www.ich-will-wissen.de/information/datenschutz.html" target="_blank">Datenschutzerklärung</a> habe ich gelesen und stimme diesen zu.</label>
+</p>
+<input type="submit" value="Jetzt registrieren">
+</form>
+<br class="clear">
+<script src="http://www.ich-will-wissen.de/stay-informed/js/"></script>
+<!-- ende stay informed -->
+IWWBOX;
 	}
 	return $iww_text.''.$iwwformc;
 }
