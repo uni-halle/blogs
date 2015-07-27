@@ -80,8 +80,8 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
         }
 
         // Frontend-only components
-        if (!is_admin()) {
-
+        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+        {
             // Provides the controllers for the display types
             $this->get_registry()->add_adapter(
                 'I_Display_Type_Controller',
@@ -127,7 +127,8 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
     
     function _register_hooks()
 	{
-        if (!is_admin() && ((!defined('NGG_DISABLE_LEGACY_SHORTCODES') || !NGG_DISABLE_LEGACY_SHORTCODES)))
+        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id)
+        && (!defined('NGG_DISABLE_LEGACY_SHORTCODES') || !NGG_DISABLE_LEGACY_SHORTCODES))
         {
             C_NextGen_Shortcode_Manager::add('random',    array(&$this, 'render_random_images'));
             C_NextGen_Shortcode_Manager::add('recent',    array(&$this, 'render_recent_images'));

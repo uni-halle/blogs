@@ -362,7 +362,6 @@ class Mixin_Gallery_Mapper extends Mixin
     {
         $retval = FALSE;
         if ($gallery) {
-            $retval = $this->call_parent('destroy', $gallery);
             $gallery_id = is_numeric($gallery) ? $gallery : $gallery->{$gallery->id_field};
             // TODO: Look into making this operation more efficient
             if ($with_dependencies) {
@@ -371,7 +370,7 @@ class Mixin_Gallery_Mapper extends Mixin
                 $settings = C_NextGen_Settings::get_instance();
                 if ($settings->deleteImg) {
                     $storage = C_Gallery_Storage::get_instance();
-                    $storage->delete_gallery();
+                    $storage->delete_gallery($gallery);
                 }
                 // Delete the image records from the DB
                 $image_mapper->delete()->where(array('galleryid = %d', $gallery_id))->run_query();
@@ -380,8 +379,9 @@ class Mixin_Gallery_Mapper extends Mixin
                 // Delete tag associations no longer needed. The following SQL statement
                 // deletes all tag associates for images that no longer exist
                 global $wpdb;
-                $wpdb->query("\n\t\t\t\t\tDELETE FROM {$wpdb->term_relationships}\n\t\t\t\t\tINNER JOIN {$wpdb->term_taxonomy}\n\t\t\t\t\tON {$wpdb->term_taxonomy}.term_taxonomy_id = {$wpdb->term_relationships}.term_taxonomy_id\n\t\t\t\t\tWHERE {$wpdb->term_taxonomy}.term_taxonomy_id = {$wpdb->term_relationships}.term_taxonomy_id\n\t\t\t\t\tAND {$wpdb->term_taxonomy}.taxonomy = 'ngg_tag'\n\t\t\t\t\tAND {$wpdb->term_relationships}.object_id NOT IN (SELECT {$image_key} FROM {$image_table})");
+                $wpdb->query("\n\t\t\t\t\tDELETE wptr.* FROM {$wpdb->term_relationships} wptr\n\t\t\t\t\tINNER JOIN {$wpdb->term_taxonomy} wptt\n\t\t\t\t\tON wptt.term_taxonomy_id = wptr.term_taxonomy_id\n\t\t\t\t\tWHERE wptt.term_taxonomy_id = wptr.term_taxonomy_id\n\t\t\t\t\tAND wptt.taxonomy = 'ngg_tag'\n\t\t\t\t\tAND wptr.object_id NOT IN (SELECT {$image_key} FROM {$image_table})");
             }
+            $retval = $this->call_parent('destroy', $gallery);
             if ($retval) {
                 do_action('ngg_delete_gallery', $gallery);
                 C_Photocrati_Transient_Manager::flush('displayed_gallery_rendering');
@@ -951,44 +951,22 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
     {
         return $this->object->copy_images($images, $gallery, $db, TRUE);
     }
-    public function is_image_file()
+    public function is_image_file($filename = NULL)
     {
         $retval = FALSE;
-        if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
-            $file_info = $_FILES['file'];
+        if (!$filename && isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
             $filename = $_FILES['file']['tmp_name'];
-            if (isset($file_info['type'])) {
-                $type = strtolower($file_info['type']);
-                $valid_types = array('image/gif', 'image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png');
-                $valid_regex = '/\\.(jpg|jpeg|gif|png)$/i';
-                // Is this a valid type?
-                if (in_array($type, $valid_types)) {
-                    // If we can, we'll verify the mime type
-                    if (function_exists('exif_imagetype')) {
-                        if (($image_type = @exif_imagetype($filename)) !== FALSE) {
-                            $retval = in_array(image_type_to_mime_type($image_type), $valid_types);
-                        }
-                    } else {
-                        $file_info = @getimagesize($filename);
-                        if (isset($file_info[2])) {
-                            $retval = in_array(image_type_to_mime_type($file_info[2]), $valid_types);
-                        }
-                    }
-                } else {
-                    if (strpos($type, 'octet-stream') !== FALSE && preg_match($valid_regex, $type)) {
-                        // If we can, we'll verify the mime type
-                        if (function_exists('exif_imagetype')) {
-                            if (($image_type = @exif_imagetype($filename)) !== FALSE) {
-                                $retval = in_array(image_type_to_mime_type($image_type), $valid_types);
-                            }
-                        } else {
-                            $file_info = @getimagesize($filename);
-                            if (isset($file_info[2])) {
-                                $retval = in_array(image_type_to_mime_type($file_info[2]), $valid_types);
-                            }
-                        }
-                    }
-                }
+        }
+        $valid_types = array('image/gif', 'image/jpg', 'image/jpeg', 'image/pjpeg', 'image/png');
+        // If we can, we'll verify the mime type
+        if (function_exists('exif_imagetype')) {
+            if (($image_type = @exif_imagetype($filename)) !== FALSE) {
+                $retval = in_array(image_type_to_mime_type($image_type), $valid_types);
+            }
+        } else {
+            $file_info = @getimagesize($filename);
+            if (isset($file_info[2])) {
+                $retval = in_array(image_type_to_mime_type($file_info[2]), $valid_types);
             }
         }
         return $retval;
@@ -1201,6 +1179,7 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
     {
         $retval = FALSE;
         if (@file_exists($abspath)) {
+            $fs = C_Fs::get_instance();
             // Ensure that this folder has images
             $files_all = scandir($abspath);
             $files = array();
@@ -1209,11 +1188,12 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                 if ($file == '.' || $file == '..') {
                     continue;
                 }
-                $files[] = $file;
+                if ($this->object->is_image_file($fs->join_paths($abspath, $file))) {
+                    $files[] = $file;
+                }
             }
             if (!empty($files)) {
                 // Get needed utilities
-                $fs = C_Fs::get_instance();
                 $gallery_mapper = C_Gallery_Mapper::get_instance();
                 // Sometimes users try importing a directory, which actually has all images under another directory
                 $first_file_abspath = $fs->join_paths($abspath, $files[0]);
@@ -3006,7 +2986,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                         break;
                     case 'backup':
                         $retval = $fs->join_paths($gallery_path, $image->filename . '_backup');
-                        if ($check_existance && !file_exists($retval)) {
+                        if ($check_existance && !@file_exists($retval)) {
                             $retval = $fs->join_paths($gallery_path, $image->filename);
                         }
                         break;
@@ -3038,7 +3018,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
         }
         // Check the existance of the file
         if ($retval && $check_existance) {
-            if (!file_exists($retval)) {
+            if (!@file_exists($retval)) {
                 $retval = NULL;
             }
         }
@@ -3353,6 +3333,11 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
         if ($gallery_abspath = $this->object->get_gallery_abspath($gallery)) {
             $fs = C_Fs::get_instance();
             $retval = $fs->delete($gallery_abspath);
+            if ($retval) {
+                @rmdir($fs->join_paths($gallery_abspath, 'thumbs'));
+                @rmdir($fs->join_paths($gallery_abspath, 'dynamic'));
+                @rmdir($gallery_abspath);
+            }
         }
         return $retval;
     }
@@ -3452,7 +3437,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                 $target_path = path_join($thumbs_dir, $target_relpath);
                 $max_count = 100;
                 $count = 0;
-                while (file_exists($target_path) && $count <= $max_count) {
+                while (@file_exists($target_path) && $count <= $max_count) {
                     $count++;
                     $pathinfo = M_I18n::mb_pathinfo($target_path);
                     $dirname = $pathinfo['dirname'];
@@ -3462,7 +3447,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                     $basename = $filename . '_' . sprintf('%04d', $rand) . '.' . $extension;
                     $target_path = path_join($dirname, $basename);
                 }
-                if (file_exists($target_path)) {
+                if (@file_exists($target_path)) {
                 }
                 $target_dir = dirname($target_path);
                 wp_mkdir_p($target_dir);
@@ -3479,7 +3464,6 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                 }
                 update_post_meta($attachment_id, '_ngg_image_id', $image->{$image->id_field});
                 wp_update_attachment_metadata($attachment_id, wp_generate_attachment_metadata($attachment_id, $target_path));
-                set_post_thumbnail($post_id, $attachment_id);
             }
         }
         return $attachment_id;
@@ -3622,7 +3606,7 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
         if ($image) {
             $full_abspath = $this->object->get_image_abspath($image);
             $backup_abspath = $this->object->get_image_abspath($image, 'backup');
-            if ($backup_abspath != $full_abspath && file_exists($backup_abspath)) {
+            if ($backup_abspath != $full_abspath && @file_exists($backup_abspath)) {
                 if (is_writable($full_abspath) && is_writable(dirname($full_abspath))) {
                     // Copy the backup
                     if (@copy($backup_abspath, $full_abspath)) {

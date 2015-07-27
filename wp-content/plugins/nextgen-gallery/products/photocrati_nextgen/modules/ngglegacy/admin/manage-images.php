@@ -44,9 +44,12 @@ function nggallery_picturelist($controller) {
 
 		// look for pagination
         $_GET['paged'] = isset($_GET['paged']) && ($_GET['paged'] > 0) ? absint($_GET['paged']) : 1;
-        $items_per_page = apply_filters('ngg_manage_images_items_per_page', 50);
-
-		$start = ( $_GET['paged'] - 1 ) * $items_per_page;
+        $items_per_page = (!empty($_GET['items']) ? $_GET['items'] : apply_filters('ngg_manage_images_items_per_page', 50));
+        if ($items_per_page == 'all')
+            $items_per_page = PHP_INT_MAX;
+        else
+            $items_per_page = (int)$items_per_page;
+        $start = ( $_GET['paged'] - 1 ) * $items_per_page;
 
 		// get picture values
 		$image_mapper = C_Image_Mapper::get_instance();
@@ -60,7 +63,7 @@ function nggallery_picturelist($controller) {
 			limit($items_per_page, $start)->run_query();
 
 		// get the current author
-		$act_author_user    = get_userdata( (int) $gallery->author );
+        $act_author_user = get_userdata((int)$gallery->author);
 
 	}
 
@@ -107,9 +110,34 @@ function showDialog( windowId, title ) {
     jQuery("#" + windowId + ' .dialog-cancel').click(function() { jQuery( "#" + windowId ).dialog("close"); });
 }
 
+function setURLParam(param, paramVal) {
+	var url        = window.location.href;
+	var params     = "";
+	var tmp        = "";
+	var tmpArray   = url.split("?");
+	var base       = tmpArray[0];
+	var additional = tmpArray[1];
+
+	if (additional) {
+		tmpArray = additional.split("&");
+		for (i = 0; i < tmpArray.length; i++) {
+			if (tmpArray[i].split('=')[0] != param) {
+				params += tmp + tmpArray[i];
+				tmp = "&";
+			}
+		}
+	}
+
+	return base + "?" + params + tmp + "" + param + "=" + paramVal;
+}
+
 jQuery(function (){
 
     jQuery('span.tooltip, label.tooltip').tooltip();
+
+	jQuery('#ngg-manage-images-items-per-page').on('change', function() {
+		window.location.href = setURLParam('items', jQuery(this).val());
+	});
 
     // load a content via ajax
     jQuery('a.ngg-dialog').click(function() {
@@ -314,7 +342,37 @@ jQuery(document).ready( function($) {
 <?php endif; ?>
 
 <div class="tablenav top ngg-tablenav">
-    <?php $ngg->manage_page->pagination( 'top', $_GET['paged'], $total_number_of_images, $items_per_page ); ?>
+
+    <?php
+    $ngg->manage_page->pagination( 'top', $_GET['paged'], $total_number_of_images, $items_per_page );
+
+    $items_per_page_array = apply_filters('ngg_manage_images_items_per_page_array', array(
+        '25'  => __(' 25', 'nggallery'),
+        '50'  => __(' 50', 'nggallery'),
+        '75'  => __(' 75', 'nggallery'),
+        '100' => __('100', 'nggallery'),
+        '200' => __('200', 'nggallery'),
+        'all' => __('All', 'nggallery')
+    ));
+    ?>
+
+    <select id="ngg-manage-images-items-per-page">
+        <?php foreach ($items_per_page_array as $val => $label) { ?>
+            <?php
+            $selected = '';
+            if(!empty($_GET['items']) && $val == $_GET['items'])
+                $selected = 'selected';
+            elseif (empty($_GET['items']) && $val == $items_per_page)
+                $selected = 'selected';
+            ?>
+            <option value="<?php echo esc_attr($val); ?>" <?php echo $selected; ?>>
+                <?php echo esc_html($label); ?>
+            </option>
+        <?php } ?>
+    </select>
+    <label id="ngg-manage-images-items-per-page-label"
+           for="ngg-manage-images-items-per-page"><?php echo __('Images per page:', 'nggallery'); ?></label>
+
 	<div class="alignleft actions">
 	<select id="bulkaction" name="bulkaction">
 		<option value="no_action" ><?php _e("Bulk actions",'nggallery'); ?></option>
@@ -533,7 +591,8 @@ class _NGG_Images_List_Table extends WP_List_Table {
 	var $_screen;
 	var $_columns;
 
-	function _NGG_Images_List_Table( $screen ) {
+	function __construct($screen)
+	{
 		if ( is_string( $screen ) )
 			$screen = convert_to_screen( $screen );
 
@@ -588,5 +647,3 @@ class _NGG_Images_List_Table extends WP_List_Table {
 
 	}
 }
-
-?>

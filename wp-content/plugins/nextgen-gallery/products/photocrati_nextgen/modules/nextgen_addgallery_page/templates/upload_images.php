@@ -10,7 +10,7 @@
 </div>
 
 <div id="uploader">
-    <p><?php _e("You browser doesn't have Flash, Silverlight, HTML5, or HTML4 support.", 'nggallery'); ?></p>
+    <p><?php _e("Your browser doesn't have Silverlight, HTML5, or HTML4 support.", 'nggallery'); ?></p>
 </div>
 <script type="text/javascript">
     // Listen for events emitted in other frames

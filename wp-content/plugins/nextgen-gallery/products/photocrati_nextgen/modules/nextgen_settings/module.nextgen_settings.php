@@ -112,7 +112,7 @@ class C_NextGen_Settings_Installer
 			'wmPos'    => 'botRight',             // Postion
 			'wmXpos'   => 5,                      // X Pos
 			'wmYpos'   => 5,                      // Y Pos
-			'wmType'   => 0,                 // Type : 'image' / 'text'
+			'wmType'   => 0,                      // Type : 'image' / 'text'
 			'wmPath'   => '',                     // Path to image
 			'wmFont'   => 'arial.ttf',            // Font type
 			'wmSize'   => 10,                     // Font Size
@@ -121,30 +121,14 @@ class C_NextGen_Settings_Installer
 			'wmOpaque' => '100',                  // Font Opaque
 
 			// Image Rotator settings
-			'enableIR'          => 0,
-			'slideFx'           => 'fade',
-			'irURL'             => '',
-			'irXHTMLvalid'      => 0,
-			'irAudio'           => '',
-			'irWidth'           => 600,
-			'irHeight'          => 400,
-			'irShuffle'         => True,
-			'irLinkfromdisplay' => True,
-			'irShownavigation'  => 0,
-			'irShowicons'       => 0,
-			'irWatermark'       => 0,
-			'irOverstretch'     => 'True',
-			'irRotatetime'      => 10,
-			'irTransition'      => 'random',
-			'irKenburns'        => 0,
-			'irBackcolor'       => '000000',
-			'irFrontcolor'      => 'FFFFFF',
-			'irLightcolor'      => 'CC0000',
-			'irScreencolor'     => '000000',
+			'slideFX'      => 'fade',
+			'irWidth'      => 600,
+			'irHeight'     => 400,
+			'irRotatetime' => 10,
 
 			// CSS Style
-			'activateCSS'       => 1, // activate the CSS file
-			'CSSfile'           => 'nggallery.css',     // set default css filename
+			'activateCSS' => 1, // activate the CSS file
+			'CSSfile'     => 'nggallery.css',     // set default css filename
 		);
 	}
 

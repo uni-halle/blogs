@@ -41,9 +41,13 @@ Follow variables are useable :
                 <?php echo $gallery->title ?>
             </a>
         </h4>
-		<?php if (@$gallery->counter > 0) : ?>
-		<p class="ngg-album-gallery-image-counter"><strong><?php echo $gallery->counter ?></strong>&nbsp;<?php _e('Photos', 'nggallery') ?></p>
-		<?php endif; ?>
+		<p class="ngg-album-gallery-image-counter">
+			<?php if (isset($gallery->counter) && $gallery->counter > 0) { ?>
+				<strong><?php echo $gallery->counter; ?></strong>&nbsp;<?php _e('Photos', 'nggallery'); ?>
+			<?php } else { ?>
+				&nbsp;
+			<?php } ?>
+		</p>
 	</div>
 
  	<?php endforeach; ?>

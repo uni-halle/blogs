@@ -3,7 +3,7 @@ Contributors: photocrati
 Tags: nextgen, nextgen gallery, gallery, galleries, image, images, image gallery, photo, photos, photo gallery, picture, pictures, picture gallery, album, albums, photo albums, image album, media, media gallery, thumbnails, thumbnail gallery, thumbnail galleries, slideshow, slideshows, slideshow gallery, slideshow galleries, fancybox, lightbox, responsive, responsive gallery, responsive galleries, wordpress responsive gallery, nextcellent, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, best gallery plugin, free photo gallery, singlepic, image captions imagebrowser, watermarks, watermarking, photography, photographer
 Requires at least: 3.6.1
 Tested up to: 4.2.2
-Stable tag: 2.1.0
+Stable tag: 2.1.2
 License: GPLv2
 
 The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 12 million downloads.
@@ -199,6 +199,34 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 == Changelog ==
 
+= V2.1.2 - 07.20.2015 =
+* NEW:     Ability to import from Media Library
+* NEW:     Added filter 'ngg_datamapper_table_name'
+* NEW:     Added filter `ngg_legacy_template_directories` for legacy template locator (thanks Ross McKay)
+* NEW:     Pagination available onManage Images page
+* NEW:     Added filter ngg_manage_images_items_per_page_array to control pagination options
+* NEW:     Added filters 'ngg_load_frontend_logic' and 'ngg_get_modules_to_load'
+* NEW:     Added filter 'ngg_add_page_shortcode' to control Manage Galleries > 'Create new page' content
+* NEW:     Added filter 'ngg_manage_albums_items_order'
+* Changed: Removed PHP4 support
+* Fixed:   Ability to set NextGEN Image as Featured Image
+* Fixed:   Don't use resource manager in download requests for WP Photo Shelter
+* Fixed:   Updated custom jQuery-UI styling to resemble WordPress postbox styling
+* Fixed:   Styled plupload buttons to resemble WordPress buttons
+* Fixed:   Removed 'fixed' class from manage galleries table. Allows columns to adjust to content
+* Fixed:   Removed note about flash support and fixed typoe (thanks Rene Wolf)
+* Fixed:   Fixed typo in nggallery.po
+* Fixed:   Cache results of lookup_columns() to avoid multiple identical queries; thanks go to Alex Bradaric
+* Fixed:   Better WP-CPI detection
+* Fixed:   Removed unnecessary calls to parent::initialize()
+* Fixed:   Adjusted album-compact template to always include p.ngg-album-gallery-image-counter
+* Fixed:   Replaced empty gallery rendering in is_feed() with a link
+* Fixed:   Removed default settings for imagerotator, which is no longer supported
+* Fixed:   Optimizated scanning of images when importing a gallery
+* Fixed:   When a gallery is deleted, ensure that DB and filesystem are purged
+* Fixed:   Removed Insert Gallery Window box shadow
+* Fixed:   Ensure that file_exists() calls are prefixed with @
+
 = V2.1.0 - 05.18.2015 =
 * NEW:     Album breadcrumbs and pagination
 * NEW:     Ability to override builtin MVC templates
@@ -247,6 +275,9 @@ For more information, feel free to visit the official website for the NextGEN Ga
 * Fixed:   Properly handle themes that don't call wp_footer() or wp_print_footer_scripts()
 * Fixed:   Warning about missing style.php file on Network Admin -> Gallery page
 * Fixed:   Warning about getimagesize() failure when backing up an image
+
+= v2.0.79 - 03.20.2015 =
+* Secured: Sanitized C_Displayed_Gallery->_add_find_in_set_column() third parameter
 
 = V2.0.78.1 - 03.12.2015 =
 * Changed: Image date/time meta data fields are stored as UNIX timestamps

@@ -33,7 +33,7 @@ class M_WPCLI extends C_Base_Module
 
 new M_WPCLI();
 
-if (class_exists('WP_CLI_Command')) {
+if (defined('WP_CLI') && WP_CLI && class_exists('WP_CLI_Command', FALSE)) {
     /**
      * Manage NextGen Gallery
      */

@@ -56,7 +56,8 @@ class M_NextGen_Basic_Singlepic extends C_Base_Module
             );
         }
 
-        if (!is_admin()) {
+        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+        {
             // Provides settings fields and frontend rendering
             $this->get_registry()->add_adapter(
                 'I_Display_Type_Controller',
@@ -68,7 +69,9 @@ class M_NextGen_Basic_Singlepic extends C_Base_Module
 
 	function _register_hooks()
 	{
-        if (!is_admin() && (!defined('NGG_DISABLE_LEGACY_SHORTCODES') || !NGG_DISABLE_LEGACY_SHORTCODES)) {
+        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id)
+        && (!defined('NGG_DISABLE_LEGACY_SHORTCODES') || !NGG_DISABLE_LEGACY_SHORTCODES))
+        {
             C_NextGen_Shortcode_Manager::add('singlepic', array(&$this, 'render_singlepic'));
             C_NextGen_Shortcode_Manager::add('nggsinglepic', array(&$this, 'render_singlepic'));
 

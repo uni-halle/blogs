@@ -4,7 +4,12 @@ jQuery(function($){
     $('.accordion').accordion({
         clearStyle: true,
         autoHeight: false,
-        heightStyle: 'content'
+        heightStyle: 'content',
+        collapsible: true,
+        icons: {
+            header: 'ui-icon-triangle-1-s',
+            activeHeader: 'ui-icon-triangle-1-n'
+        }
     });
 
     // When a submit button is clicked...

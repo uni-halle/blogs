@@ -17,6 +17,48 @@ class A_Import_Folder_Form extends Mixin
         return $this->object->render_partial('photocrati-nextgen_addgallery_page#import_folder', array('browse_sec_token' => C_WordPress_Security_Manager::get_instance()->get_request_token('nextgen_upload_image'), 'import_sec_token' => C_WordPress_Security_Manager::get_instance()->get_request_token('nextgen_upload_image')), TRUE);
     }
 }
+class A_Import_Media_Library_Form extends Mixin
+{
+    public function get_title()
+    {
+        return __('Import from WordPress Media Library', 'nggallery');
+    }
+    public function enqueue_static_resources()
+    {
+        wp_enqueue_media();
+        wp_enqueue_script('nextgen_media_library_import-js');
+        wp_enqueue_style('nextgen_media_library_import-css');
+        $i18n_array = array('title' => __('Import Images into NextGen Gallery', 'nggallery'), 'import_multiple' => __('Import %s images', 'nggallery'), 'import_singular' => __('Import 1 image', 'nggallery'), 'imported_multiple' => __('%s images were uploaded successfully', 'nggallery'), 'imported_singular' => __('1 image was uploaded successfully', 'nggallery'), 'imported_none' => __('0 images were uploaded', 'nggallery'), 'progress_title' => __('Importing gallery', 'nggallery'), 'in_progress' => __('In Progress...', 'nggallery'), 'gritter_title' => __('Upload complete', 'nggallery'), 'gritter_error' => __('An unexpected error occured. This is most likely due to a server misconfiguration. Check your PHP error log or ask your hosting provider for assistance.', 'nggallery'));
+        foreach (C_WordPress_Security_Manager::get_instance()->get_request_token('nextgen_upload_image')->get_request_list() as $name => $value) {
+            $i18n_array['sectoken'][$name] = $value;
+        }
+        wp_localize_script('nextgen_media_library_import-js', 'ngg_importml_i18n', $i18n_array);
+    }
+    public function render()
+    {
+        $i18n = array('select-images-to-continue' => __('Please make a selection to continue', 'nggallery'), 'select-opener' => __('Select images', 'nggallery'), 'selected-image-import' => __('Import %d image(s)', 'nggallery'));
+        return $this->object->render_partial('photocrati-nextgen_addgallery_page#import_media_library', array('i18n' => $i18n, 'galleries' => $this->object->get_galleries()), TRUE);
+    }
+    public function get_galleries()
+    {
+        $security = $this->get_registry()->get_utility('I_Security_Manager');
+        $sec_actor = $security->get_current_actor();
+        $galleries = array();
+        if ($sec_actor->is_allowed('nextgen_edit_gallery')) {
+            $galleries = C_Gallery_Mapper::get_instance()->find_all();
+            if (!$sec_actor->is_allowed('nextgen_edit_gallery_unowned')) {
+                $galleries_all = $galleries;
+                $galleries = array();
+                foreach ($galleries_all as $gallery) {
+                    if ($sec_actor->is_user() && $sec_actor->get_entity_id() == (int) $gallery->author) {
+                        $galleries[] = $gallery;
+                    }
+                }
+            }
+        }
+        return $galleries;
+    }
+}
 class A_NextGen_AddGallery_Ajax extends Mixin
 {
     public function cookie_dump_action()
@@ -174,6 +216,83 @@ class A_NextGen_AddGallery_Ajax extends Mixin
             }
         } else {
             $retval['error'] = __('No permissions to import folders. Try refreshing the page or ensuring that your user account has sufficient roles/privileges.', 'nggallery');
+        }
+        return $retval;
+    }
+    public function import_media_library_action()
+    {
+        $retval = array();
+        $created_gallery = FALSE;
+        $gallery_id = intval($this->param('gallery_id'));
+        $gallery_name = urldecode($this->param('gallery_name'));
+        $gallery_mapper = C_Gallery_Mapper::get_instance();
+        $image_mapper = C_Image_Mapper::get_instance();
+        $attachment_ids = $this->param('attachment_ids');
+        if ($this->validate_ajax_request('nextgen_upload_image', TRUE)) {
+            if (empty($attachment_ids) || !is_array($attachment_ids)) {
+                $retval['error'] = __('An unexpected error occured.', 'nggallery');
+            }
+            if (empty($retval['error']) && $gallery_id == 0) {
+                if (strlen($gallery_name) > 0) {
+                    $gallery = $gallery_mapper->create(array('title' => $gallery_name));
+                    if (!$gallery->save()) {
+                        $retval['error'] = $gallery->get_errors();
+                    } else {
+                        $created_gallery = TRUE;
+                        $gallery_id = $gallery->id();
+                    }
+                } else {
+                    $retval['error'] = __('No gallery name specified', 'nggallery');
+                }
+            }
+            if (empty($retval['error'])) {
+                $retval['gallery_id'] = $gallery_id;
+                $storage = C_Gallery_Storage::get_instance();
+                foreach ($attachment_ids as $id) {
+                    try {
+                        $abspath = get_attached_file($id);
+                        $file_data = @file_get_contents($abspath);
+                        $file_name = M_I18n::mb_basename($abspath);
+                        $attachment = get_post($id);
+                        if (empty($file_data)) {
+                            $retval['error'] = __('Image generation failed', 'nggallery');
+                            break;
+                        }
+                        $image = $storage->upload_base64_image($gallery_id, $file_data, $file_name);
+                        if ($image) {
+                            // Potentially import metadata from WordPress
+                            $image = $image_mapper->find($image->id());
+                            if (!empty($attachment->post_excerpt)) {
+                                $image->alttext = $attachment->post_excerpt;
+                            }
+                            if (!empty($attachment->post_content)) {
+                                $image->description = $attachment->post_content;
+                            }
+                            $image = apply_filters('ngg_medialibrary_imported_image', $image, $attachment);
+                            $image_mapper->save($image);
+                        } else {
+                            $retval['error'] = __('Image generation failed', 'nggallery');
+                            break;
+                        }
+                        $retval['image_ids'][] = $image->{$image->id_field};
+                    } catch (E_NggErrorException $ex) {
+                        $retval['error'] = $ex->getMessage();
+                        if ($created_gallery) {
+                            $gallery_mapper->destroy($gallery_id);
+                        }
+                    } catch (Exception $ex) {
+                        $retval['error'] = __('An unexpected error occured.', 'nggallery');
+                        $retval['error_details'] = $ex->getMessage();
+                    }
+                }
+            }
+        } else {
+            $retval['error'] = __('No permissions to upload images. Try refreshing the page or ensuring that your user account has sufficient roles/privileges.', 'nggallery');
+        }
+        if (!empty($retval['error'])) {
+            return $retval;
+        } else {
+            $retval['gallery_name'] = esc_html($gallery_name);
         }
         return $retval;
     }

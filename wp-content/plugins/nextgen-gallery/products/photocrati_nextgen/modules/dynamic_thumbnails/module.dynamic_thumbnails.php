@@ -30,10 +30,8 @@ class M_Dynamic_Thumbnails extends C_Base_Module
 	function _register_utilities()
 	{
         $this->get_registry()->add_utility('I_Dynamic_Thumbnails_Manager', 'C_Dynamic_Thumbnails_Manager');
-        if (!is_admin()) {
+		if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
             $this->get_registry()->add_utility('I_Dynamic_Thumbnails_Controller', 'C_Dynamic_Thumbnails_Controller');
-        }
-
 	}
 
     function _register_hooks()

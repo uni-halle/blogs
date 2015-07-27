@@ -58,10 +58,6 @@
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
-    border: 1px solid #969696;
     background: rgba(255, 255, 255, 0.6);
-    -webkit-box-shadow: #B3B3B3 5px 5px 5px;
-    -moz-box-shadow: #B3B3B3 5px 5px 5px;
-    box-shadow: #B3B3B3 2px 2px 5px;
     border-top: none;
 }

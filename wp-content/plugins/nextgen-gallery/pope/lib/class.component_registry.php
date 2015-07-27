@@ -318,100 +318,102 @@ class C_Component_Registry
 
     /**
      * Retrieves a list of instantiated module ids, in their "loaded" order as defined by a product
+     *
      * @return array
      */
-    function get_module_list($for_product_id=FALSE)
-    {
-	    $retval = $module_list = array();
+	function get_module_list($for_product_id=FALSE)
+	{
+		$retval = $module_list = array();
 		// As of May 1, 2015, there's a new standard. A product will provide get_provided_modules() and get_modules_to_load().
 
-        // As of Feb 10, 2015, there's no standard way across Pope products to an "ordered" list of modules
-        // that the product provides.
-        //
-        // The "standard" going forward will insist that all Product classes will provide either:
-        // A) a static property called "modules"
-        // B) an instance method called "define_modules", which returns a list of modules, and as well, sets
-        //    a static property called "modules'.
-        //
-        // IMPORTANT!
-        // The Photocrati Theme, as of version 4.1.8, doesn't follow this standard. But both NextGEN Pro and Plus do.
+		// As of Feb 10, 2015, there's no standard way across Pope products to an "ordered" list of modules
+		// that the product provides.
+		//
+		// The "standard" going forward will insist that all Product classes will provide either:
+		// A) a static property called "modules"
+		// B) an instance method called "define_modules", which returns a list of modules, and as well, sets
+		//    a static property called "modules'.
+		//
+		// IMPORTANT!
+		// The Photocrati Theme, as of version 4.1.8, doesn't follow this standard. But both NextGEN Pro and Plus do.
 
-        // Following the standard above, collect all modules provided by a product
-        $problematic_product_id = FALSE;
-        foreach ($this->get_product_list() as $product_id) {
+		// Following the standard above, collect all modules provided by a product
+		$problematic_product_id = FALSE;
+		foreach ($this->get_product_list() as $product_id) {
+			$modules = array();
 
-            // Try getting the list of modules using the "standard" described above
-            $obj = $this->get_product($product_id);
-            try{
-                $klass = new ReflectionClass($obj);
-	            if ($klass->hasMethod('get_modules_to_load')) {
-		            $modules = $obj->get_modules_to_load();
-	            }
-	            elseif ($klass->hasProperty('modules')) {
-		            $modules = $klass->getStaticPropertyValue('modules');
-	            }
+			// Try getting the list of modules using the "standard" described above
+			$obj = $this->get_product($product_id);
+			try{
+				$klass = new ReflectionClass($obj);
+				if ($klass->hasMethod('get_modules_to_load')) {
+					$modules = $obj->get_modules_provided();
+				}
+				elseif ($klass->hasProperty('modules')) {
+					$modules = $klass->getStaticPropertyValue('modules');
+				}
 
-                if (!$modules && $klass->hasMethod('define_modules')) {
-	                $modules = $obj->define_modules();
-	                if ($klass->hasProperty('modules')) {
-		                $modules = $klass->getStaticPropertyValue('modules');
-	                }
-                }
+				if (!$modules && $klass->hasMethod('define_modules')) {
+					$modules = $obj->define_modules();
+					if ($klass->hasProperty('modules')) {
+						$modules = $klass->getStaticPropertyValue('modules');
+					}
+				}
+			}
 
-                $module_list[$product_id] = $modules;
-            }
+				// We've encountered a product that doesn't follow the standard. For these exceptions, we'll have to
+				// make an educated guess - if the module path is in the product's default module path, we know that
+				// it belongs to the product
+			catch (ReflectionException $ex) {
+				$modules = array();
+			}
 
-            // We've encountered a product that doesn't follow the standard. For these exceptions, we'll have to
-            // make an educated guess - if the module path is in the product's default module path, we know that
-            // it belongs to the product
-            catch (ReflectionException $ex) {
-                $product_path = $this->get_product_module_path($product_id);
-                $modules = array();
-                foreach ($this->_modules as $module_id => $module) {
-                    if (strpos($this->get_module_path($module_id), $product_path) !== FALSE) {
-                        $modules[] = $module_id;
-                    }
-                }
-                $module_list[$product_id] = $modules;
+			if (!$modules) {
+				$product_path = $this->get_product_module_path($product_id);
+				foreach ($this->_modules as $module_id => $module) {
+					if (strpos($this->get_module_path($module_id), $product_path) !== FALSE) {
+						$modules[] = $module_id;
+					}
+				}
+				if (!$modules) $problematic_product_id = $product_id;
+			}
 
-                // Did our educated guess work?
-                if (!$modules) $problematic_product_id = $product_id;
-            }
-        }
+			$module_list[$product_id] = $modules;
+		}
 
-        // If we have a problematic product, that is, one that we can't find it's ordered list of modules
-        // that it provides, then we have one last fallback: get a list of modules that Pope is aware of, but hasn't
-        // added to $module_list[$product_id] yet
-        if ($problematic_product_id) {
-            $modules = array();
-            foreach (array_keys($this->_modules) as $module_id) {
-                $assigned = FALSE;
-                foreach (array_keys($module_list) as $product_id) {
-                    if (in_array($module_id, $module_list[$product_id])) {
-                        $assigned =TRUE;
-                        break;
-                    }
-                }
-                if (!$assigned) $modules[] = $module_id;
-            }
-            $module_list[$problematic_product_id] = $modules;
-        }
+		// If we have a problematic product, that is, one that we can't find it's ordered list of modules
+		// that it provides, then we have one last fallback: get a list of modules that Pope is aware of, but hasn't
+		// added to $module_list[$product_id] yet
+		if ($problematic_product_id) {
+			$modules = array();
+			foreach (array_keys($this->_modules) as $module_id) {
+				$assigned = FALSE;
+				foreach (array_keys($module_list) as $product_id) {
+					if (in_array($module_id, $module_list[$product_id])) {
+						$assigned =TRUE;
+						break;
+					}
+				}
+				if (!$assigned) $modules[] = $module_id;
+			}
+			$module_list[$problematic_product_id] = $modules;
+		}
 
-        // Now that we know which products provide which modules, we can serve the request.
-        if (!$for_product_id) {
-            foreach (array_values($module_list) as $modules) {
-                $retval = array_merge($retval, $modules);
-            }
-        }
-        else $retval = $module_list[$for_product_id];
+		// Now that we know which products provide which modules, we can serve the request.
+		if (!$for_product_id) {
+			foreach (array_values($module_list) as $modules) {
+				$retval = array_merge($retval, $modules);
+			}
+		}
+		else $retval = $module_list[$for_product_id];
 
-        // Final fallback...if all else fails, just return the list of all modules
-        // that Pope is aware of
-        if (!$retval) $retval = array_keys($this->_modules);
+		// Final fallback...if all else fails, just return the list of all modules
+		// that Pope is aware of
+		if (!$retval) $retval = array_keys($this->_modules);
 
 
-        return $retval;
-    }
+		return $retval;
+	}
 
 	function get_loaded_module_list()
 	{

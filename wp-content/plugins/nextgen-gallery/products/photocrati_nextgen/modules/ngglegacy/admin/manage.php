@@ -12,8 +12,8 @@ class nggManageGallery {
 	var $search_result = false;
 
 	// initiate the manage page
-	function nggManageGallery() {
-
+	function __construct()
+	{
 		// GET variables
 		if( isset($_GET['gid']) ) {
 			$this->gid  = (int) $_GET['gid'];
@@ -575,15 +575,18 @@ class nggManageGallery {
 					nggAdmin::do_ajax_operation( 'gallery_import_metadata' , $_POST['doaction'], __('Import metadata','nggallery') );
 					break;
 				case 'delete_gallery':
-				// Delete gallery
-					if ( is_array($_POST['doaction']) ) {
-                        $deleted = false;
+					// Delete gallery
+					if (is_array($_POST['doaction']))
+					{
+                        $deleted = FALSE;
 						$mapper = C_Gallery_Mapper::get_instance();
-						foreach ( $_POST['doaction'] as $id ) $deleted = $mapper->destroy($id);
+						foreach ($_POST['doaction'] as $id) {
+							if ($mapper->destroy($id, TRUE))
+								$deleted = TRUE;
+						}
 
-						if($deleted)
+						if ($deleted)
                             nggGallery::show_message(__('Gallery deleted successfully ', 'nggallery'));
-
 					}
 					break;
 			}
@@ -674,7 +677,7 @@ class nggManageGallery {
                                     $storage->delete_image($image->pid);
 								}
                                 do_action('ngg_delete_picture', $image->pid);
-								$delete_pic = nggdb::delete_image( $image->pid );
+								$delete_pic = C_Image_Mapper::get_instance()->destroy($image->pid);
 							}
 						}
 						if($delete_pic)
@@ -840,7 +843,7 @@ class nggManageGallery {
             global $user_ID;
 
             $page['post_type']    = 'page';
-            $page['post_content'] = '[nggallery id=' . $this->gid . ']';
+	        $page['post_content'] = apply_filters('ngg_add_page_shortcode', '[nggallery id="' . $this->gid . '"]' );
             $page['post_parent']  = $parent_id;
             $page['post_author']  = $user_ID;
             $page['post_status']  = 'publish';

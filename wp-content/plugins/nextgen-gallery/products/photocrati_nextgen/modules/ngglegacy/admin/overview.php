@@ -94,7 +94,7 @@ function ngg_AboutMetaBox()
 {
     ?>
     <div id="poststuff">
-        <p><?php _e("NextGEN Gallery is one of the most popular WordPress plugins of all time with over 12 million downloads.", 'nggallery'); __(" It is developed and supported by Photocrati Media. We'd like to offer a special thanks to Alex Rabe, who first developed the plugin and maintained it through 2011.", 'nggallery'); ?></p>
+        <p><?php _e("NextGEN Gallery is one of the most popular WordPress plugins of all time with over 12 million downloads.", 'nggallery'); _e(" It is developed and supported by Photocrati Media. We'd like to offer a special thanks to Alex Rabe, who first developed the plugin and maintained it through 2011.", 'nggallery'); ?></p>
         <p><?php _e("<strong>NEED  HELP?</strong> If you need help or assistance please visit the <a href='http://wordpress.org/support/plugin/nextgen-gallery'>NextGEN Gallery forums on WordPress.org</a>. Please note that we actively monitor and  participate in the forums, but given that NextGEN Gallery is a free  product, we don't guarantee replies to support queries.", 'nggallery'); ?></p>
         <p><?php _e("<strong>EXTENDING NEXTGEN?</strong> There are many third party plugins that add displays and functionality for NextGEN Gallery. See our <a href='http://www.nextgen-gallery.com/nextgen-gallery-extension-plugins/'>Complete List of NextGEN Extension  Plugins</a>.", 'nggallery'); ?></p>
     </div>

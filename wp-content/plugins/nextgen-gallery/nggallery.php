@@ -4,7 +4,7 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 /**
  * Plugin Name: NextGEN Gallery by Photocrati
  * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 12 million downloads.
- * Version: 2.1.0
+ * Version: 2.1.2
  * Author: Photocrati Media
  * Plugin URI: http://www.nextgen-gallery.com
  * Author URI: http://www.photocrati.com
@@ -363,6 +363,15 @@ class C_NextGEN_Bootstrap
 			add_filter('http_request_args', array(&$this, 'fix_autoupdate_api_requests'), 10, 2);
 			add_action('all_admin_notices', array(&$this, 'render_incompatibility_warning'));
 		}
+
+		add_filter('ngg_load_frontend_logic', array($this, 'disable_frontend_logic'), -10, 2);
+	}
+
+	function disable_frontend_logic($enabled, $module_id)
+	{
+		if (is_admin())
+			$enabled = FALSE;
+		return $enabled;
 	}
 
 	function fix_autoupdate_api_requests($args, $url)
@@ -574,7 +583,7 @@ class C_NextGEN_Bootstrap
 		define('NGG_PRODUCT_URL', path_join(str_replace("\\", '/', NGG_PLUGIN_URL), 'products'));
 		define('NGG_MODULE_URL', path_join(str_replace("\\", '/', NGG_PRODUCT_URL), 'photocrati_nextgen/modules'));
 		define('NGG_PLUGIN_STARTED_AT', microtime());
-		define('NGG_PLUGIN_VERSION', '2.1.0');
+		define('NGG_PLUGIN_VERSION', '2.1.2');
 
 		if (!defined('NGG_HIDE_STRICT_ERRORS')) {
 			define('NGG_HIDE_STRICT_ERRORS', TRUE);

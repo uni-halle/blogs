@@ -50,14 +50,6 @@ class nggManageAlbum {
 	var $num_albums = false;
 
 	/**
-	 * PHP4 compatibility layer for calling the PHP5 constructor.
-	 *
-	 */
-	function nggManageAlbum() {
-		return $this->__construct();
-	}
-
-	/**
 	 * Gets the Pope component registry
 	 * @return C_Component_Registry
 	 */
@@ -96,6 +88,13 @@ class nggManageAlbum {
 		foreach (C_Gallery_Mapper::get_instance()->find_all() as $gallery) {
 			$this->galleries[$gallery->{$gallery->id_field}] = $gallery;
 		}
+
+		if (apply_filters('ngg_manage_albums_items_order', 'ASC') == 'DESC')
+		{
+			$this->albums = array_reverse($this->albums, TRUE);
+			$this->galleries = array_reverse($this->galleries, TRUE);
+		}
+
 		$this->num_albums  = count( $this->albums );
 		$this->num_galleries  = count( $this->galleries );
 

@@ -30,8 +30,8 @@ class nggMeta{
      * @param bool $onlyEXIF parse only exif if needed
      * @return
      */
-    function nggMeta($image_or_id, $onlyEXIF = false) {
-
+    function __construct($image_or_id, $onlyEXIF = false)
+    {
 	    if (is_int($image_or_id)) {
 		    //get the path and other data about the image
 		    $this->image = C_Image_Mapper::get_instance()->find( $image_or_id);

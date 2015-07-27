@@ -545,18 +545,24 @@ class C_DataMapper_Driver_Base extends C_Component
     public function get_table_name()
     {
         global $table_prefix;
-        return $table_prefix . $this->_object_name;
+        return apply_filters('ngg_datamapper_table_name', $table_prefix . $this->_object_name, $this->_object_name);
     }
     /**
      * Looks up using SQL the columns existing in the database
      */
     public function lookup_columns()
     {
-        global $wpdb;
-        $this->_table_columns = array();
-        $sql = "SHOW COLUMNS FROM `{$this->get_table_name()}`";
-        foreach ($wpdb->get_results($sql) as $row) {
-            $this->_table_columns[] = $row->Field;
+        // Avoid doing multiple SHOW COLUMNS if we can help it
+        $key = C_Photocrati_Transient_Manager::create_key('col_in_' . $this->get_table_name(), 'columns');
+        $this->_table_columns = C_Photocrati_Transient_Manager::fetch($key, FALSE);
+        if (!$this->_table_columns) {
+            global $wpdb;
+            $this->_table_columns = array();
+            $sql = "SHOW COLUMNS FROM `{$this->get_table_name()}`";
+            foreach ($wpdb->get_results($sql) as $row) {
+                $this->_table_columns[] = $row->Field;
+            }
+            C_Photocrati_Transient_Manager::update($key, $this->_table_columns);
         }
         return $this->_table_columns;
     }

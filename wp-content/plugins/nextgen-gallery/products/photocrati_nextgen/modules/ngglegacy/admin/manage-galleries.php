@@ -201,7 +201,7 @@ function nggallery_manage_gallery_main() {
         <?php $ngg->manage_page->pagination( 'top', $_GET['paged'], $total_number_of_galleries, $items_per_page  ); ?>
 
 		</div>
-		<table class="wp-list-table widefat fixed" cellspacing="0">
+		<table class="wp-list-table widefat" cellspacing="0">
 			<thead>
 			<tr>
 <?php $wp_list_table->print_column_headers(true); ?>
@@ -418,7 +418,8 @@ class _NGG_Galleries_List_Table extends WP_List_Table {
 	var $_screen;
 	var $_columns;
 
-	function _NGG_Galleries_List_Table( $screen ) {
+	function __construct($screen)
+	{
 		if ( is_string( $screen ) )
 			$screen = convert_to_screen( $screen );
 

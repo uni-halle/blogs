@@ -90,6 +90,7 @@ used as it is.
 			}
 		});
 
+		// The below has been edited to change the classes given to the Add Files / Start Upload buttons
 		target.prepend(
 			'<div class="plupload_wrapper plupload_scroll">' +
 				'<div id="' + id + '_container" class="plupload_container">' +
@@ -115,8 +116,8 @@ used as it is.
 							'<div class="plupload_filelist_footer">' +
 								'<div class="plupload_file_name">' +
 									'<div class="plupload_buttons">' +
-										'<a href="#" class="plupload_button plupload_add" id="' + id + '_browse">' + _('Add Files') + '</a>' +
-										'<a href="#" class="plupload_button plupload_start">' + _('Start Upload') + '</a>' +
+										'<a href="#" class="button-primary" id="' + id + '_browse">' + _('Add Files') + '</a>' +
+										'<a href="#" class="button-primary plupload_start" id="' + id + '_upload">' + _('Start Upload') + '</a>' +
 									'</div>' +
 									'<span class="plupload_upload_status"></span>' +
 								'</div>' +

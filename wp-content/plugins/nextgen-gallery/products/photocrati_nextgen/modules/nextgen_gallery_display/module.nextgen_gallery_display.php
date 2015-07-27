@@ -38,8 +38,8 @@ class M_Gallery_Display extends C_Base_Module
 	function _register_utilities()
 	{
         // Register frontend-only components
-        if (!is_admin()) {
-
+        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+        {
             // This utility provides a controller to render the settings form
             // for a display type, or render the front-end of a display type
             $this->get_registry()->add_utility(
@@ -94,7 +94,8 @@ class M_Gallery_Display extends C_Base_Module
         }
 
         // Frontend-only components
-        if (!is_admin()) {
+        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+        {
             $this->get_registry()->add_adapter('I_MVC_View', 'A_Gallery_Display_View');
             $this->get_registry()->add_adapter('I_MVC_View', 'A_Displayed_Gallery_Trigger_Element');
             $this->get_registry()->add_adapter('I_Display_Type_Controller', 'A_Displayed_Gallery_Trigger_Resources');
@@ -106,7 +107,8 @@ class M_Gallery_Display extends C_Base_Module
 	 */
 	function _register_hooks()
 	{
-		if (!is_admin()) {
+        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+        {
             C_NextGen_Shortcode_Manager::add('ngg_images', array(&$this, 'display_images'));
             add_action('wp_enqueue_scripts', array(&$this, 'no_resources_mode'), PHP_INT_MAX-1);
             add_filter('the_content', array($this, '_render_related_images'));
@@ -365,7 +367,8 @@ class M_Gallery_Display extends C_Base_Module
             $router->get_static_url('photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.css')
         );
 
-        if (!is_admin()) {
+        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+        {
             wp_register_style(
                 'nextgen_gallery_related_images',
                 $router->get_static_url('photocrati-nextgen_gallery_display#nextgen_gallery_related_images.css')

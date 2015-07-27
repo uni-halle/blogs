@@ -616,7 +616,8 @@ class Mixin_Displayed_Gallery_Validation extends Mixin
             }
             // If no maximum_entity_count has been given, then set a maximum
             if (!isset($this->object->maximum_entity_count)) {
-                $this->object->maximum_entity_count = C_Photocrati_Settings_Manager::get('maximum_entity_count', 500);
+                $settings = C_NextGen_Settings::get_instance();
+                $this->object->maximum_entity_count = $settings->get('maximum_entity_count', 500);
             }
         } else {
             $this->object->add_error('Invalid display type', 'display_type');
@@ -1577,7 +1578,7 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
         // Simply throwing our rendered gallery into a feed will most likely not work correctly.
         // The MediaRSS option in NextGEN is available as an alternative.
         if (!C_NextGen_Settings::get_instance()->galleries_in_feeds && is_feed()) {
-            return '';
+            return sprintf(__(' [<a href="%s">See image gallery at %s</a>] ', 'nggallery'), esc_url(apply_filters('the_permalink_rss', get_permalink())), $_SERVER['SERVER_NAME']);
         }
         if ($mode == null) {
             $mode = 'normal';

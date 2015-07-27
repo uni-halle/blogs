@@ -14,8 +14,8 @@ class nggLoader
 	var $add_PHP5_notice = false;
 	var $plugin_name = '';
 
-	function nggLoader() {
-
+	function __construct()
+	{
 		// Stop the plugin if we missed the requirements
 		if ( ( !$this->required_version() ) || ( !$this->check_memory_limit() ) )
 			return;

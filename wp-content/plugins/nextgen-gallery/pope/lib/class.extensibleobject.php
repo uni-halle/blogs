@@ -511,6 +511,8 @@ class ExtensibleObject extends PopeHelpers
 				);
 			}
 			elseif ($this->_throw_error) {
+                if (defined('POPE_DEBUG') && POPE_DEBUG)
+                    print_r(debug_backtrace());
 				throw new Exception("`{$method}` not defined for " . get_class());
 			}
 		}

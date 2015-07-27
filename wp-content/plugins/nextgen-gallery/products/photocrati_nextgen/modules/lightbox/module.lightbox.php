@@ -28,7 +28,8 @@ class M_Lightbox extends C_Base_Module
      */
     function _register_hooks()
     {
-        if (!is_admin()) add_action('wp_enqueue_scripts', array(C_Lightbox_Library_Manager::get_instance(), 'maybe_enqueue'));
+        if (!is_admin())
+            add_action('wp_enqueue_scripts', array(C_Lightbox_Library_Manager::get_instance(), 'maybe_enqueue'));
         add_action('init', array(&$this, '_register_custom_post_type'));
     }
 

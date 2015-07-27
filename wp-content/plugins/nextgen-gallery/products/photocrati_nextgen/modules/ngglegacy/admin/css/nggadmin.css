@@ -526,3 +526,14 @@ DIV that shows the image as you drag it
 	list-style-position:inside;
 	list-style-type:disc;
 }
+
+#ngg-manage-images-items-per-page-label {
+	float: right;
+	line-height: 30px;
+	margin-right: 5px;
+}
+
+#ngg-manage-images-items-per-page {
+	float: right;
+	margin-right: 5px;
+}

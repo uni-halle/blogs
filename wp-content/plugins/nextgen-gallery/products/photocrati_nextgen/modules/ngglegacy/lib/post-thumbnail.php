@@ -12,14 +12,6 @@
 class nggPostThumbnail {
 
 	/**
-	 * PHP4 compatibility layer for calling the PHP5 constructor.
-	 * 
-	 */
-	function nggPostThumbnail() {
-		return $this->__construct();
-	}
-
-	/**
 	 * Main constructor - Add filter and action hooks
 	 * 
 	 */	

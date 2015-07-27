@@ -448,7 +448,7 @@ msgid "Create a new gallery"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/upload_images.php:13
-msgid "You browser doesn't have Flash, Silverlight, HTML5, or HTML4 support."
+msgid "Your browser doesn't have Flash, Silverlight, HTML5, or HTML4 support."
 msgstr ""
 
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/upload_images.php:114

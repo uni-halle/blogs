@@ -147,6 +147,14 @@ function media_upload_nextgen_form($errors) {
 			} else if (str == '-1') {
 				// image removed
 			} else {
+				jQuery('a.ngg-post-thumbnail').each(function() { jQuery(this).show(); });
+				jQuery('a.ngg-post-thumbnail-standin').each(function() { jQuery(this).hide(); });
+				$link.hide();
+
+				var $dummy = $link.next();
+				$dummy.attr('id', 'wp-post-thumbnail-' + str);
+				$dummy.show();
+
 				WPSetAsThumbnail(str, nonce);
 			}
 		}
@@ -280,8 +288,9 @@ if ($chromeless)
 							if ( $calling_post_id && current_theme_supports( 'post-thumbnails', get_post_type( $calling_post_id ) ) )
 								$ajax_nonce = wp_create_nonce( "set_post_thumbnail-$calling_post_id" );
 								echo "<a class='ngg-post-thumbnail' id='ngg-post-thumbnail-" . $picid . "' href='#' onclick='NGGSetAsThumbnail(\"$picid\", \"$ajax_nonce\");return false;'>" . esc_html__( 'Use as featured image' ) . "</a>";
+								echo "<a class='ngg-post-thumbnail-standin' href='#' style='display:none;'></a>";
 							?>
-							<button type="submit" class="button" value="1" name="send[<?php echo $picid ?>]"><?php esc_html_e( 'Insert into Post' ); ?></button>
+							<button type="submit" id="ngg-mlitp-<?php echo esc_attr($picid); ?>" class="button ngg-mlitp" value="1" name="send[<?php echo $picid ?>]"><?php esc_html_e( 'Insert into Post' ); ?></button>
 						</td>
 				   </tr>
 			  </tbody></table>
@@ -297,6 +306,16 @@ if ($chromeless)
 	<input type="hidden" name="post_id" id="post_id" value="<?php echo (int) $post_id; ?>" />
 	<input type="hidden" name="select_gal" id="select_gal" value="<?php echo (int) $galleryID; ?>" />
 </form>
+
+<script type="text/javascript">
+jQuery(function($) {
+	// reset the media library modal tab
+	var mlmodal = top.wp.media.editor.get();
+	mlmodal.on('close', function() {
+		mlmodal.setState('insert');
+	});
+});
+</script>
 
 <?php
 }

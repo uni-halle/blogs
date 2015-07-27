@@ -163,12 +163,12 @@
     display: block;
     cursor: pointer;
     position: relative;
-    margin-top: 2px;
+    margin-top: 10px;
     padding: .5em .5em .5em .7em;
+    border: 1px solid #e5e5e5;
     min-height: 0; /* support: IE7 */
 }
 .ui-accordion .ui-accordion-icons {
-    padding-left: 2.2em;
 }
 .ui-accordion .ui-accordion-noicons {
     padding-left: .7em;
@@ -178,14 +178,20 @@
 }
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
     position: absolute;
-    left: .5em;
+    right: .5em;
+    left: initial;
     top: 50%;
     margin-top: -8px;
+    color: #a0a5aa;
 }
 .ui-accordion .ui-accordion-content {
     padding: 1em 2.2em;
+    border: 1px solid #e5e5e5;
     border-top: 0;
     overflow: auto;
+    margin: 0 0 10px 0;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04)
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 }
 .ui-autocomplete {
     position: absolute;
@@ -819,8 +825,7 @@ body .ui-tooltip {
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-    border: 1px solid #dfdfdf;
-    background: #f5f5f5 url(images/ui-bg_flat_0_f5f5f5_40x100.png) 50% 50% repeat-x;
+    background: #fff;
     font-weight: normal;
     color: #222;
 }
@@ -836,8 +841,6 @@ body .ui-tooltip {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-    border: 1px solid #dfdfdf;
-    background: #e1e1e1 url(images/ui-bg_flat_0_e1e1e1_40x100.png) 50% 50% repeat-x;
     font-weight: normal;
     color: #222;
 }
@@ -855,8 +858,7 @@ body .ui-tooltip {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-    border: 1px solid #dfdfdf;
-    background: #e1e1e1 url(images/ui-bg_flat_65_e1e1e1_40x100.png) 50% 50% repeat-x;
+    background: #fff;
     font-weight: normal;
     color: #222;
 }
@@ -937,7 +939,7 @@ body .ui-tooltip {
     background-image: url(images/ui-icons_eee_256x240.png);
 }
 .ui-state-default .ui-icon {
-    background-image: url(images/ui-icons_222_256x240.png);
+    background-image: url(images/ui-icons_999999_256x240.png);
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon {
@@ -1271,7 +1273,27 @@ body .ui-tooltip {
 }
 
 /* WP 4.1-beta1 makes the accordion fonts & margin huge */
+h3.ui-accordion-header.ui-state-default,
 h3.ui-accordion-header {
     margin: 3px 0 0 0;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+h3.ui-accordion-header a:focus,
+h3.ui-accordion-header:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+h3.ui-accordion-header.ui-state-active .ui-accordion-header-icon {
+}
+
+h3.ui-accordion-header.ui-state-active {
+    border-bottom: 1px solid #eee;
+}
+
+div.accordion {
+    margin-top: 10px;
 }

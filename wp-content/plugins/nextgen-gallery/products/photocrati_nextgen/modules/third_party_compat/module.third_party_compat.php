@@ -103,15 +103,16 @@ class M_Third_Party_Compat extends C_Base_Module
         add_filter('headway_gzip', array(&$this, 'headway_gzip'), (PHP_INT_MAX - 1));
         add_filter('ckeditor_external_plugins', array(&$this, 'ckeditor_plugins'), 11);
         add_filter('bp_do_redirect_canonical', array(&$this, 'fix_buddypress_routing'));
-        add_filter('the_content', array(&$this, 'check_weaverii'), -(PHP_INT_MAX-2));
-        add_action('wp', array(&$this, 'check_for_jquery_lightbox'));
-        add_filter('get_the_excerpt', array(&$this, 'disable_galleries_in_excerpts'), 1);
-        add_filter('get_the_excerpt', array(&$this, 'enable_galleries_in_excerpts'), PHP_INT_MAX-1);
-	    add_action('debug_bar_enqueue_scripts', array(&$this, 'no_debug_bar'));
+        add_filter('the_content', array($this, 'check_weaverii'), -(PHP_INT_MAX-2));
+        add_action('wp', array($this, 'check_for_jquery_lightbox'));
+        add_filter('get_the_excerpt', array($this, 'disable_galleries_in_excerpts'), 1);
+        add_filter('get_the_excerpt', array($this, 'enable_galleries_in_excerpts'), PHP_INT_MAX-1);
+	    add_action('debug_bar_enqueue_scripts', array($this, 'no_debug_bar'));
         add_filter('ngg_non_minified_modules', array($this, 'dont_minify_nextgen_pro_cssjs'));
-        add_filter('run_ngg_resource_manager', array(&$this, 'check_woocommerce_download'));
-        add_filter('run_ngg_resource_manager', array(&$this, 'check_wpecommerce_download'));
-        add_filter('run_ngg_resource_manager', array(&$this, 'check_mafs_download'));
+        add_filter('run_ngg_resource_manager', array($this, 'check_woocommerce_download'));
+        add_filter('run_ngg_resource_manager', array($this, 'check_wpecommerce_download'));
+        add_filter('run_ngg_resource_manager', array($this, 'check_mafs_download'));
+        add_filter('run_ngg_resource_manager', array($this, 'check_wps_download'));
 
         // WPML fix
         if (class_exists('SitePress')) {
@@ -122,6 +123,19 @@ class M_Third_Party_Compat extends C_Base_Module
 
         // TODO: Only needed for NGG Pro 1.0.10 and lower
         add_action('the_post', array(&$this, 'add_ngg_pro_page_parameter'));
+    }
+
+    /**
+     * Determine if the requested URL is a WP-Photo-Seller download and adjust the resource manager
+     *
+     * @param bool $valid_request
+     * @return bool
+     */
+    function check_wps_download($valid_request = TRUE)
+    {
+        if (class_exists('WPS') && isset($_REQUEST['wps_file_dl']) && $_REQUEST['wps_file_dl'] == '1')
+            $valid_request = FALSE;
+        return $valid_request;
     }
 
     /**

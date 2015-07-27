@@ -112,8 +112,8 @@ class ngg_Thumbnail {
      * @var string
      *
      */
-    function ngg_Thumbnail($fileName,$no_ErrorImage = false) {
-
+    function __construct($fileName,$no_ErrorImage = false)
+    {
         //make sure the GD library is installed
     	if(!function_exists("gd_info")) {
         	echo 'You do not have the GD Library installed.  This class requires the GD library to function properly.' . "\n";
