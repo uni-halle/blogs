@@ -5,8 +5,8 @@ Tags: contact form,database,contact form database,save contact form,form databas
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
-Tested up to: 4.2.1
-Stable tag: 2.9.3
+Tested up to: 4.2.3
+Stable tag: 2.9.4
 
 Saves submitted form data to the database. Export the data to a file or use short codes to display it.
 
@@ -83,6 +83,10 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.9.5 =
+* Bug fix to Google Spreadsheet Live Data export (failing to login)
+* Bug fix for exporting forms with a single quote in the name
 
 = 2.9.4 =
 * Added spreadsheet-like transforms:
