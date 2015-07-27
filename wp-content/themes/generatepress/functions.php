@@ -5,7 +5,7 @@
  * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.3.03');
+define( 'GENERATE_VERSION', '1.3.06');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -40,11 +40,6 @@ function generate_setup()
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
-	
-	/**
-	  * Allow shortcodes in widgets
-	  */
-	add_filter('widget_text', 'do_shortcode');
 
 	/**
 	 * This theme uses wp_nav_menu() in one location.

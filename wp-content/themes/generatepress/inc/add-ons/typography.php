@@ -80,14 +80,14 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 		$subnav_font_size = $generate_settings['navigation_font_size'] >= 17 ? $generate_settings['navigation_font_size'] - 3 : $generate_settings['navigation_font_size'] - 1;
 		
 		// Create all of our font family entries
-		$body_family = generate_get_font_family_css( 'font_body' );
-		$site_title_family = generate_get_font_family_css( 'font_site_title' );
-		$site_tagline_family = generate_get_font_family_css( 'font_site_tagline' );
-		$navigation_family = generate_get_font_family_css( 'font_navigation' );
-		$widget_family = generate_get_font_family_css( 'font_widget_title' );
-		$h1_family = generate_get_font_family_css( 'font_heading_1' );
-		$h2_family = generate_get_font_family_css( 'font_heading_2' );
-		$h3_family = generate_get_font_family_css( 'font_heading_3' );
+		$body_family = generate_get_font_family_css( 'font_body', 'generate_settings', generate_get_default_fonts() );
+		$site_title_family = generate_get_font_family_css( 'font_site_title', 'generate_settings', generate_get_default_fonts() );
+		$site_tagline_family = generate_get_font_family_css( 'font_site_tagline', 'generate_settings', generate_get_default_fonts() );
+		$navigation_family = generate_get_font_family_css( 'font_navigation', 'generate_settings', generate_get_default_fonts() );
+		$widget_family = generate_get_font_family_css( 'font_widget_title', 'generate_settings', generate_get_default_fonts() );
+		$h1_family = generate_get_font_family_css( 'font_heading_1', 'generate_settings', generate_get_default_fonts() );
+		$h2_family = generate_get_font_family_css( 'font_heading_2', 'generate_settings', generate_get_default_fonts() );
+		$h3_family = generate_get_font_family_css( 'font_heading_3', 'generate_settings', generate_get_default_fonts() );
 		
 		// Start the magic
 		$visual_css = array(
@@ -286,18 +286,21 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 		// Apply a filter to the output
 		$google_fonts = apply_filters( 'generate_typography_google_fonts', $google_fonts );
 		
+		// Get the subset
+		$subset = apply_filters( 'generate_fonts_subset','' );
+		
 		// Set up our arguments
-		$font_args = array(
-            'family' => $google_fonts,
-            'subset' => urlencode( apply_filters( 'generate_fonts_subset','latin,latin-ext' ) ),
-        );
+		$font_args = array();
+		$font_args[ 'family' ] = $google_fonts;
+		if ( '' !== $subset )
+			$font_args[ 'subset' ] = urlencode( $subset );
 		
 		// Create our URL using the arguments
         $fonts_url = add_query_arg( $font_args, '//fonts.googleapis.com/css' );
 		
 		// Enqueue our fonts
 		if ( $google_fonts ) { 
-			wp_enqueue_style('generate-fonts', $fonts_url );
+			wp_enqueue_style('generate-fonts', $fonts_url, array(), null, 'all' );
 		}
 	}
 endif;
@@ -602,11 +605,11 @@ if ( ! function_exists( 'generate_get_font_family_css' ) ) :
  * Wrapper function to create font-family value for CSS
  * @since 1.3.0
  */
-function generate_get_font_family_css( $font )
+function generate_get_font_family_css( $font, $settings, $default )
 {
 	$generate_settings = wp_parse_args( 
-		get_option( 'generate_settings', array() ), 
-		generate_get_default_fonts() 
+		get_option( $settings, array() ), 
+		$default 
 	);
 	
 	// We don't want to wrap quotes around these values

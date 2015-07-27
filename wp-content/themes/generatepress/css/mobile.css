@@ -1,3 +1,4 @@
+/* Landscape tablet and below */
 @media (max-width: 1024px) {
 	.inside-footer-widgets > div {
 		margin-bottom: 50px;
@@ -10,7 +11,16 @@
 	}
 }
 
-@media (max-width: 767px) {
+/* Portrait tablet and below */
+@media (max-width: 768px) {
+	.sidebar,
+	.content-area {
+		float: none;
+		width: 100%;
+		left: 0;
+		right: 0;
+	}
+	
 	.menu-toggle,
 	.main-navigation.toggled .main-nav > ul {
 		display: block;
@@ -84,7 +94,6 @@
 		max-width: 100%;
 		text-align: center;
 	}
-	.main-navigation, 
 	.main-navigation {
 		text-align:left;
 	}
@@ -127,5 +136,10 @@
 	.sf-menu .menu-item-has-children > a:first-child:after,
 	.sf-menu .page_item_has_children > a:first-child:after {
 		display: none;
+	}
+	
+	.site-info {
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 }

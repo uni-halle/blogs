@@ -475,6 +475,12 @@ function generate_header_items()
 		generate_get_defaults() 
 	);
 	
+	// If the disable title checkbox is checked, or the title field is empty, return true
+	$disable_title = ( '1' == $generate_settings[ 'hide_title' ] ) ? true : false;
+	
+	// If the disable tagline checkbox is checked, or the tagline field is empty, return true
+	$disable_tagline = ( '1' == $generate_settings[ 'hide_tagline' ] ) ? true : false;
+	
 	// Header widget
 	if ( is_active_sidebar('header') ) : ?>
 		<div class="header-widget">
@@ -483,13 +489,13 @@ function generate_header_items()
 	<?php endif;
 		
 	// Site title and tagline
-	if ( empty( $generate_settings['hide_title'] ) || empty( $generate_settings['hide_tagline'] ) ) : ?>
+	if ( false == $disable_title || false == $disable_tagline ) : ?>
 		<div class="site-branding">
-			<?php if ( empty( $generate_settings['hide_title'] ) ) : ?>
+			<?php if ( false == $disable_title ) : ?>
 				<p class="main-title" itemprop="headline"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 			<?php endif;
 				
-			if ( empty( $generate_settings['hide_tagline'] ) ) : ?>
+			if ( false == $disable_tagline ) : ?>
 				<p class="site-description"><?php echo html_entity_decode( bloginfo( 'description' ) ); ?></p>
 			<?php endif; ?>
 		</div>
@@ -498,7 +504,7 @@ function generate_header_items()
 	// Site logo
 	if ( ! empty( $generate_settings['logo'] ) ) : ?>
 		<div class="site-logo">
-			<a href="<?php echo apply_filters( 'generate_logo_href' , esc_url( home_url( '/' ) ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="header-image" src="<?php echo $generate_settings['logo']; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a>
+			<a href="<?php echo apply_filters( 'generate_logo_href' , esc_url( home_url( '/' ) ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img class="header-image" src="<?php echo esc_url( $generate_settings['logo'] ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a>
 		</div>
 	<?php endif;
 }

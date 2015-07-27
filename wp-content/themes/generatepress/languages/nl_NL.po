@@ -1,0 +1,894 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GeneratePress\n"
+"POT-Creation-Date: 2015-07-16 14:14+0200\n"
+"PO-Revision-Date: 2015-07-19 13:50+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl_NL\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Oeps! Deze pagina kan niet worden gevonden."
+
+#: 404.php:22
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Het lijkt erop dat niets is gevonden op deze locatie. Probeer een van de "
+"onderstaande links of een zoekopdracht"
+
+#: archive.php:33
+#, php-format
+msgid "About %s"
+msgstr "Over  %s"
+
+#: archive.php:41
+#, php-format
+msgid "Day: %s"
+msgstr "Dag: %s"
+
+#: archive.php:44
+#, php-format
+msgid "Month: %s"
+msgstr "Maand: %s"
+
+#: archive.php:47
+#, php-format
+msgid "Year: %s"
+msgstr "Jaar: %s"
+
+#: archive.php:50
+msgid "Asides"
+msgstr "Naast"
+
+#: archive.php:53
+msgid "Images"
+msgstr "Afbeeldingen"
+
+#: archive.php:56
+msgid "Videos"
+msgstr "Video's"
+
+#: archive.php:59
+msgid "Quotes"
+msgstr "Quotes"
+
+#: archive.php:62
+msgid "Links"
+msgstr "Koppelingen"
+
+#: archive.php:65 sidebar-left.php:39 sidebar.php:38
+msgid "Archives"
+msgstr "Archieven"
+
+#: comments.php:29
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Een mening over &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s meningen over &ldquo;%2$s&rdquo;"
+
+#: comments.php:36 comments.php:56
+msgid "Comment navigation"
+msgstr "Bericht navigatie"
+
+#: comments.php:37 comments.php:57
+msgid "&larr; Older Comments"
+msgstr "&larr; Oudere berichten"
+
+#: comments.php:38 comments.php:58
+msgid "Newer Comments &rarr;"
+msgstr "Nieuwere berichten &rarr;"
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "U kunt niet reageren"
+
+#: comments.php:73
+msgid "Name"
+msgstr "Naam"
+
+#: comments.php:74
+msgid "Email"
+msgstr "E-mail"
+
+#: comments.php:75 inc/options.php:70
+msgid "Website"
+msgstr "Website"
+
+#: comments.php:80
+#, php-format
+msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
+msgstr "U moet <a href=\"%1$s\">ingelogd zijn</a> om een bericht te plaatsen"
+
+#: comments.php:81
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Ingelogd als <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log uit"
+"\">Uitloggen?</a>"
+
+#: comments.php:86
+msgid "Leave a Comment"
+msgstr "Reageer"
+
+#: comments.php:87
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Reageer op %s"
+
+#: comments.php:88
+msgid "Cancel reply"
+msgstr "Annuleer reactie"
+
+#: comments.php:89
+msgid "Post Comment"
+msgstr "Plaats reactie"
+
+#: content-link.php:29 content-page.php:20 content-single.php:21
+#: content.php:41 image.php:56
+msgid "Pages:"
+msgstr "Pagina's:"
+
+#: content-page.php:26 content-single.php:32 image.php:78
+#: inc/template-tags.php:117 inc/template-tags.php:137
+msgid "Edit"
+msgstr "Bewerk"
+
+#: footer.php:50 functions.php:145
+msgid "Footer Widget 1"
+msgstr "Footer Widget 1"
+
+#: footer.php:52 footer.php:66 footer.php:80 footer.php:94 footer.php:108
+msgid "Replace this widget content by going to <a href=\""
+msgstr "Vervang deze widget content door te gaan naar <a href=\""
+
+#: footer.php:53 footer.php:67 footer.php:81 footer.php:95 footer.php:109
+msgid "To remove or choose the number of footer widgets, go to <a href=\""
+msgstr "Om footer widgets te verwijderen of kiezen, ga naar <a href=\""
+
+#: footer.php:64 functions.php:153
+msgid "Footer Widget 2"
+msgstr "Footer Widget 2"
+
+#: footer.php:78 functions.php:161
+msgid "Footer Widget 3"
+msgstr "Footer Widget 3"
+
+#: footer.php:92 functions.php:169
+msgid "Footer Widget 4"
+msgstr "Footer Widget 4"
+
+#: footer.php:106 functions.php:177
+msgid "Footer Widget 5"
+msgstr "Footer Widget 5"
+
+#: functions.php:53
+msgid "Primary Menu"
+msgstr "Primair Menu"
+
+#: functions.php:121 inc/customizer.php:347 inc/metaboxes.php:57
+#: inc/sanitize.php:184
+msgid "Right Sidebar"
+msgstr "Rechter Zijbalk"
+
+#: functions.php:129 inc/customizer.php:346 inc/metaboxes.php:61
+#: inc/sanitize.php:183
+msgid "Left Sidebar"
+msgstr "Linker Zijbalk"
+
+#: functions.php:137
+msgid "Header"
+msgstr "Header"
+
+#: functions.php:256 searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr "Zoeken"
+
+#: functions.php:349 inc/options.php:185
+msgid "Copyright"
+msgstr "Copyright"
+
+#: functions.php:357 inc/options.php:24 inc/options.php:65
+msgid "GeneratePress"
+msgstr "GeneratePress"
+
+#: functions.php:357
+msgid "Proudly powered by WordPress"
+msgstr "Ondersteund door Wordpress"
+
+#: functions.php:357
+msgid "WordPress"
+msgstr "WordPress"
+
+#: image.php:24
+#, php-format
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+msgstr ""
+"Gepubliceerd <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\">%2$s</time></span> op <a href=\"%3$s\" title=\"Link to full-size "
+"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
+"rel=\"gallery\">%8$s</a>"
+
+#: image.php:64 inc/template-tags.php:80 inc/template-tags.php:86
+msgid "Previous"
+msgstr "Vorige"
+
+#: image.php:65 inc/template-tags.php:81 inc/template-tags.php:90
+msgid "Next"
+msgstr "Volgende"
+
+#: image.php:69
+#, php-format
+msgid ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
+"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
+"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment"
+"\">Reageer</a> of laat een trackback achter: <a class=\"trackback-link\" "
+"href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+
+#: image.php:71
+#, php-format
+msgid ""
+"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
+"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+"\">Trackback URL</a>."
+msgstr ""
+"Reacties zijn uitgeschakeld, maar je kan een trackback achterlaten : <a "
+"class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" "
+"rel=\"trackback\">Trackback URL</a>."
+
+#: image.php:73
+msgid ""
+"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
+"\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+"Trackbacks zijn uitgeschakeld, maar je kan <a class=\"comment-link\" href="
+"\"#respond\" title=\"Post a comment\">een reactie achterlaten</a>."
+
+#: image.php:75
+msgid "Both comments and trackbacks are currently closed."
+msgstr "Zowel comments als trackbacks zijn op dit moment uitgeschakeld"
+
+#: inc/addons/typography.php:285 inc/options.php:158
+msgid "Typography"
+msgstr "Typografie "
+
+#: inc/addons/typography.php:307
+msgid "Body"
+msgstr "Body"
+
+#: inc/addons/typography.php:329
+msgid "Font weight"
+msgstr "Font Gewicht "
+
+#: inc/addons/typography.php:353
+msgid "Text transform"
+msgstr "Text Transform"
+
+#: inc/addons/typography.php:376
+msgid "Font size"
+msgstr "Font grootte"
+
+#: inc/addons/typography.php:393 inc/customizer.php:175 inc/customizer.php:674
+msgid "More Settings"
+msgstr "Meer Instellingen"
+
+#: inc/addons/typography.php:396
+#, php-format
+msgid "Looking to add more typography settings?<br /> %s."
+msgstr "Wil je meer typografie instellingen?<br /> %s."
+
+#: inc/addons/typography.php:400
+msgid "Check out Generate Typography"
+msgstr "Bekijk Generate Typografie"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:34
+msgid "Default fonts"
+msgstr "Standaard Fonts"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:53
+msgid "Google fonts"
+msgstr "Google Fonts"
+
+#: inc/addons/typography/google-font-dropdown-custom-control.php:63
+msgid "Font family"
+msgstr "Font Family"
+
+#: inc/controls.php:24
+msgid "Width"
+msgstr "Breedte"
+
+#: inc/controls.php:52
+msgid "Select Image"
+msgstr "Selecteer Afbeelding"
+
+#: inc/controls.php:52
+msgid "Use Image"
+msgstr "Gebruik Afbeelding"
+
+#: inc/controls.php:52
+msgid "Upload"
+msgstr "Upload"
+
+#: inc/controls.php:53
+msgid "Remove"
+msgstr "Verwijder"
+
+#: inc/customizer.php:22
+msgid "Header Content"
+msgstr "Header Content"
+
+#: inc/customizer.php:25
+msgid "Set Front Page"
+msgstr "Stel Voor Pagina in"
+
+#: inc/customizer.php:28
+msgid "Set Navigation"
+msgstr "Stel Navigatie in"
+
+#: inc/customizer.php:46
+msgid "Hide site title"
+msgstr "Maak site titel onzichtbaar"
+
+#: inc/customizer.php:65
+msgid "Hide site tagline"
+msgstr "Maak site tagline onzichtbaar"
+
+#: inc/customizer.php:85
+msgid "Logo"
+msgstr "Logo"
+
+#: inc/customizer.php:98 inc/options.php:138
+msgid "Colors"
+msgstr "Kleuren"
+
+#: inc/customizer.php:109
+msgid "Base Colors"
+msgstr "Basis Kleuren"
+
+#: inc/customizer.php:121
+msgid "Background Color"
+msgstr "Achtergrond Kleur"
+
+#: inc/customizer.php:126
+msgid "Text Color"
+msgstr "Text Kleur"
+
+#: inc/customizer.php:131
+msgid "Link Color"
+msgstr "Link Kleur"
+
+#: inc/customizer.php:136
+msgid "Link Color Hover"
+msgstr "Hover Link Kleur"
+
+#: inc/customizer.php:141
+msgid "Link Color Visited"
+msgstr "Bezochte Link Kleur"
+
+#: inc/customizer.php:178
+#, php-format
+msgid "Looking to add more color settings?<br /> %s."
+msgstr "Wil je meer kleuren instellingen?<br /> %s."
+
+#: inc/customizer.php:182
+msgid "Check out Generate Colors"
+msgstr "Bekijk de Generate Kleuren"
+
+#: inc/customizer.php:197
+msgid "Layout"
+msgstr "Layout"
+
+#: inc/customizer.php:199
+msgid "Allows you to edit your theme's layout."
+msgstr "Maakt het mogelijk de theme layout te wijzigen"
+
+#: inc/customizer.php:219
+msgid "Container Width"
+msgstr "Container Breedte"
+
+#: inc/customizer.php:246
+msgid "Header Layout"
+msgstr "Header Layout"
+
+#: inc/customizer.php:249 inc/customizer.php:312 inc/customizer.php:577
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:239
+msgid "Fluid / Full Width"
+msgstr "Fluid / Volledige Breedte"
+
+#: inc/customizer.php:250 inc/customizer.php:313 inc/customizer.php:578
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:240
+msgid "Contained"
+msgstr "Contained"
+
+#: inc/customizer.php:277
+msgid "Header Alignment"
+msgstr "Header Alignment"
+
+#: inc/customizer.php:280 inc/customizer.php:378 inc/sanitize.php:145
+msgid "Left"
+msgstr "Links"
+
+#: inc/customizer.php:281 inc/customizer.php:379 inc/sanitize.php:146
+msgid "Center"
+msgstr "Midden"
+
+#: inc/customizer.php:282 inc/customizer.php:380 inc/sanitize.php:147
+msgid "Right"
+msgstr "Rechts"
+
+#: inc/customizer.php:309
+msgid "Navigation Layout"
+msgstr "Navigatie Layout"
+
+#: inc/customizer.php:340
+msgid "Navigation Position"
+msgstr "Navigatie Positie"
+
+#: inc/customizer.php:343 inc/sanitize.php:180
+msgid "Below Header"
+msgstr "Onder de Header"
+
+#: inc/customizer.php:344 inc/sanitize.php:181
+msgid "Above Header"
+msgstr "Boven de Header"
+
+#: inc/customizer.php:345 inc/sanitize.php:182
+msgid "Float Right"
+msgstr "Float Rechts"
+
+#: inc/customizer.php:348 inc/sanitize.php:185
+msgid "No Navigation"
+msgstr "Geen Navigatie"
+
+#: inc/customizer.php:375
+msgid "Navigation Alignment"
+msgstr "Navigatie Alignment"
+
+#: inc/customizer.php:407
+msgid "Navigation Search"
+msgstr "Navigatie Zoeken"
+
+#: inc/customizer.php:410 inc/sanitize.php:163
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: inc/customizer.php:411 inc/sanitize.php:164
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: inc/customizer.php:438
+msgid "Content Layout"
+msgstr "Content Layout"
+
+#: inc/customizer.php:441 inc/sanitize.php:201
+msgid "Separate Containers"
+msgstr "Losse Containers"
+
+#: inc/customizer.php:442 inc/sanitize.php:202
+msgid "One Container"
+msgstr "Een Container"
+
+#: inc/customizer.php:469 inc/metaboxes.php:20
+msgid "Sidebar Layout"
+msgstr "Zijbalk Layout"
+
+#: inc/customizer.php:472 inc/customizer.php:507 inc/customizer.php:542
+#: inc/sanitize.php:218
+msgid "Sidebar / Content"
+msgstr "Zijbalk / Content"
+
+#: inc/customizer.php:473 inc/customizer.php:508 inc/customizer.php:543
+#: inc/sanitize.php:219
+msgid "Content / Sidebar"
+msgstr "Content / Zijbalk"
+
+#: inc/customizer.php:474 inc/customizer.php:509 inc/customizer.php:544
+#: inc/metaboxes.php:67 inc/sanitize.php:220
+msgid "Content (no sidebars)"
+msgstr "Content (geen zijbalken)"
+
+#: inc/customizer.php:475 inc/customizer.php:510 inc/customizer.php:545
+#: inc/sanitize.php:221
+msgid "Sidebar / Content / Sidebar"
+msgstr "Zijbalk / Content / Zijbalk"
+
+#: inc/customizer.php:476 inc/customizer.php:511 inc/customizer.php:546
+#: inc/sanitize.php:222
+msgid "Sidebar / Sidebar / Content"
+msgstr "Zijbalk / Zijbalk / Content"
+
+#: inc/customizer.php:477 inc/customizer.php:512 inc/customizer.php:547
+#: inc/sanitize.php:223
+msgid "Content / Sidebar / Sidebar"
+msgstr "Content / Zijbalk / Zijbalk"
+
+#: inc/customizer.php:504
+msgid "Blog Sidebar Layout"
+msgstr "Blog Sidebar Layout"
+
+#: inc/customizer.php:539
+msgid "Single Post Sidebar Layout"
+msgstr "Single Post Sidebar Layout"
+
+#: inc/customizer.php:574
+msgid "Footer Layout"
+msgstr "Footer Layout"
+
+#: inc/customizer.php:605 inc/metaboxes.php:125
+msgid "Footer Widgets"
+msgstr "Footer Widgets"
+
+#: inc/customizer.php:627 inc/options.php:203
+msgid "Blog"
+msgstr "Blog"
+
+#: inc/customizer.php:653
+msgid "Blog Post Content"
+msgstr "Blog Bericht Content"
+
+#: inc/customizer.php:656 inc/sanitize.php:277
+msgid "Show full post"
+msgstr "Laat volledig bericht zien"
+
+#: inc/customizer.php:657 inc/sanitize.php:278
+msgid "Show excerpt"
+msgstr "Bekijk samenvatting"
+
+#: inc/customizer.php:677
+#, php-format
+msgid "Looking to add more blog settings?<br /> %s."
+msgstr "Wil je meer blog instellingen?<br /> %s."
+
+#: inc/customizer.php:681
+msgid "Check out Generate Blog"
+msgstr "Bekijk de Generate Blog"
+
+#: inc/customizer.php:702
+msgid "Default"
+msgstr "Standaard"
+
+#: inc/customizer.php:738
+msgid "Addon available"
+msgstr "Addon beschikbaar"
+
+#: inc/customizer.php:796
+msgid "Addons Available! Take a look"
+msgstr "Addons Beschikbaar! Neem een kijkje"
+
+#: inc/metaboxes.php:55
+msgid "Global Layout Settings"
+msgstr "Globale Layout Instellingen"
+
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
+msgid "Content"
+msgstr "Content"
+
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
+msgid "Sidebar"
+msgstr "Zijbalk"
+
+#: inc/metaboxes.php:65
+msgid "No Sidebars"
+msgstr "Geen Zijbalken"
+
+#: inc/metaboxes.php:69
+msgid "Both Sidebars"
+msgstr "Beide Zijbalken"
+
+#: inc/metaboxes.php:73
+msgid "Both Sidebars on Left"
+msgstr "Beide Zijbalken links"
+
+#: inc/metaboxes.php:77
+msgid "Both Sidebars on Right"
+msgstr "Beide Zijbalken rechts"
+
+#: inc/metaboxes.php:160
+msgid "Global Footer Widget Settings"
+msgstr "Globale Footer Widget Instellingen"
+
+#: inc/metaboxes.php:162 inc/metaboxes.php:164
+msgid "0 Widgets"
+msgstr "0 Widgets"
+
+#: inc/metaboxes.php:166 inc/metaboxes.php:168
+msgid "1 Widget"
+msgstr "1 Widget"
+
+#: inc/metaboxes.php:170 inc/metaboxes.php:172
+msgid "2 Widgets"
+msgstr "2 Widgets"
+
+#: inc/metaboxes.php:174 inc/metaboxes.php:176
+msgid "3 Widgets"
+msgstr "3 Widgets"
+
+#: inc/metaboxes.php:178 inc/metaboxes.php:180
+msgid "4 Widgets"
+msgstr "4 Widgets"
+
+#: inc/metaboxes.php:182 inc/metaboxes.php:184
+msgid "5 Widgets"
+msgstr "5 Widgets"
+
+#: inc/navigation.php:88
+msgid "Menu"
+msgstr "Menu"
+
+#: inc/navigation.php:89
+msgid "Skip to content"
+msgstr "Ga door naar content"
+
+#: inc/options.php:68
+msgid "Version"
+msgstr "Versie"
+
+#: inc/options.php:69
+msgid "Author"
+msgstr "Auteur"
+
+#: inc/options.php:75
+msgid "Customize"
+msgstr "Aanpassen"
+
+#: inc/options.php:77 inc/options.php:131
+msgid "Add-ons"
+msgstr "Add-ons"
+
+#: inc/options.php:79
+msgid ""
+"Please help support development of the GeneratePress by buying me a coffee :)"
+msgstr ""
+"Ondersteun de ontwikkeling van GeneratePress door een kop koffie te kopen :)"
+
+#: inc/options.php:79
+msgid "Buy me a coffee :)"
+msgstr "Koop een kop koffie voor mij :)"
+
+#: inc/options.php:87
+msgid "Add-on Updates"
+msgstr "Add-on Updates"
+
+#: inc/options.php:92
+msgid "Looks like you don't have any Add-ons! <a href=\""
+msgstr "Het lijkt erop dat je geen Add-ons hebt! <a href=\""
+
+#: inc/options.php:111
+msgid "Delete Customizer Settings"
+msgstr "Verwijder Customizer Instellingen"
+
+#: inc/options.php:114
+msgid ""
+"<strong>Warning:</strong> Clicking this button will delete your settings set "
+"in the <a href=\""
+msgstr ""
+"<strong>Waarschuwing:</strong> Door op deze knop te klikken verwijder je "
+"jouw instellingen in de <a href=\""
+
+#: inc/options.php:115
+msgid "You may want to export your settings before deleting them forever."
+msgstr ""
+"Misschien wil je deze instellingen exporteren voordat je ze voor altijd "
+"verwijdert."
+
+#: inc/options.php:120
+msgid "Delete Default Customizer Settings"
+msgstr "Verwijder Standaard Customizer Instellingen"
+
+#: inc/options.php:167
+msgid "Page Header"
+msgstr "Page Header"
+
+#: inc/options.php:176
+msgid "Import / Export"
+msgstr "Importeren / Exporteren"
+
+#: inc/options.php:194
+msgid "Disable Elements"
+msgstr "Elementen uitschakelen"
+
+#: inc/options.php:212
+msgid "Hooks"
+msgstr "Hooks"
+
+#: inc/options.php:221
+msgid "Spacing"
+msgstr "Spacing"
+
+#: inc/options.php:230
+msgid "Backgrounds"
+msgstr "Achtergrond"
+
+#: inc/options.php:239
+msgid "Secondary Nav"
+msgstr "Secundaire menu"
+
+#: inc/options.php:253 inc/options.php:260
+msgid "Not activated."
+msgstr "Niet geactiveerd"
+
+#: inc/options.php:255 inc/options.php:262
+msgid "Activated."
+msgstr "Geactiveerd "
+
+#: inc/options.php:310
+msgid "Settings saved."
+msgstr "Instellingen opgeslagen"
+
+#: inc/options.php:314
+msgid "Import successful."
+msgstr "Import geslaagd."
+
+#: inc/options.php:318
+msgid "Settings removed."
+msgstr "Instellingen verwijderd."
+
+#: inc/template-tags.php:39
+msgid "&larr; Previous"
+msgstr "&larr; Vorige"
+
+#: inc/template-tags.php:40
+msgid "Next &rarr;"
+msgstr "Volgende &rarr;"
+
+#: inc/template-tags.php:76
+msgid "Post navigation"
+msgstr "Bericht navigatie"
+
+#: inc/template-tags.php:86
+msgid "Older posts"
+msgstr "Oudere berichten"
+
+#: inc/template-tags.php:90
+msgid "Newer posts"
+msgstr "Nieuwere berichten"
+
+#: inc/template-tags.php:117
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/template-tags.php:128
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+#: inc/template-tags.php:134
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr "%1$s op %2$s"
+
+#: inc/template-tags.php:151
+msgid "Your comment is awaiting moderation."
+msgstr "Uw reactie is in afwachting van moderatie"
+
+#: inc/template-tags.php:239
+#, php-format
+msgid ""
+"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+msgstr ""
+"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+
+#: inc/template-tags.php:246
+msgid "by"
+msgstr "door"
+
+#: inc/template-tags.php:248
+#, php-format
+msgid "View all posts by %s"
+msgstr "Bekijk alle berichten van %s"
+
+#: inc/template-tags.php:261 inc/template-tags.php:271
+msgid "Read more"
+msgstr "Lees verder"
+
+#: inc/template-tags.php:378
+msgctxt "label"
+msgid "Search"
+msgstr "Zoeken"
+
+#: inc/template-tags.php:424 inc/template-tags.php:432
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ","
+
+#: inc/template-tags.php:427
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr "Categorieën"
+
+#: inc/template-tags.php:435
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr "Tags"
+
+#: inc/template-tags.php:446
+msgctxt "Used before full size attachment link."
+msgid "Full size"
+msgstr "Volledig formaat"
+
+#: inc/template-tags.php:455
+msgid "Leave a comment"
+msgstr "Reageer"
+
+#: inc/template-tags.php:455
+msgid "1 Comment"
+msgstr "1 Reactie"
+
+#: inc/template-tags.php:455
+msgid "% Comments"
+msgstr "% Reacties"
+
+#: no-results.php:15
+msgid "Nothing Found"
+msgstr "Niets gevonden"
+
+#: no-results.php:22
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Klaar om je eerste bericht te plaatsen?  <a href=\"%1$s\">Begin hier</a>."
+
+#: no-results.php:26
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Sorry, maar er is niets gevonden in overeenstemming met je zoekterm. Probeer "
+"het opnieuw met een andere zoekterm"
+
+#: no-results.php:31
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Het lijkt erop dat we niet kunnen vinden waar je naar zoekt. Misschien lukt "
+"het met een zoekopdracht."
+
+#: search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Zoek resultaat voor: %s"
+
+#: searchform.php:10 searchform.php:11
+msgctxt "label"
+msgid "Search for:"
+msgstr "Zoekresultaat voor:"
+
+#: searchform.php:11
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Zoeken &hellip;"
+
+#: sidebar-left.php:46 sidebar.php:45
+msgid "Meta"
+msgstr "Meta"
