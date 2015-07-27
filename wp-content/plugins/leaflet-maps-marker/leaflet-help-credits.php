@@ -43,43 +43,51 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'leaflet-help-credits.php') { die (
 	?>
 	</p>
 	<ul>
-		<li>- Bengali (ba_BD) thanks to Nur Hasan, <a href="http://www.answersbd.com" target="_blank">http://www.answersbd.com</a></li>
-		<li>- Bosnian (bs_BA) thanks to Kenan Dervišević, <a href="http://dkenan.com" target="_blank">http://dkenan.com</a></li>
-		<li>- Bulgarian (bg_BG) thanks to Andon Ivanov, <a href="http://coffebreak.info" target="_blank">http://coffebreak.info</a></li>
-		<li>- Catalan (ca) thanks to Vicent Cubells, <a href="http://vcubells.net" target="_blank">http://vcubells.net</a> and Efraim Bayarri, <a href="http://replicantsfactory.com" target="_blank">http://replicantsfactory.com</a></li>
-		<li>- Chinese (zh_CN) thanks to John Shen, <a href="http://www.synyan.net" target="_blank">http://www.synyan.net</a> and ck</li>
-		<li>- Chinese (zh_TW) thanks to jamesho Ho, <a href="http://outdooraccident.org" target="_blank">http://outdooraccident.org</a></li>
-		<li>- Croatian (hr) thanks to Neven Pausic, <a href="http://www.airsoft-hrvatska.com" target="_blank">http://www.airsoft-hrvatska.com</a>, Alan Benic and Marijan Rajic, <a href="http://www.proprint.hr" target="_blank">http://www.proprint.hr</a></li>
-		<li>- Czech (cs_CZ) thanks to Viktor Kleiner and Vlad Kuzba, <a href="http://kuzbici.eu" target="_blank">http://kuzbici.eu</a></li>
-		<li>- Danish (da_DK) thanks to Mads Dyrmann Larsen and Peter Erfurt, <a href="http://24-7news.dk" target="_blank">http://24-7news.dk</a></li>
-		<li>- Dutch (nl_NL) thanks to Marijke Metz, <a href="http://www.mergenmetz.nl" target="_blank">http://www.mergenmetz.nl</a> and Patrick Ruers, <a href="http://www.stationskwartiersittard.nl" target="_blank">http://www.stationskwartiersittard.nl</a></li>
-		<li>- English (en_US) thanks to <a href="http://twitter.com/robertharm" target="_blank">@RobertHarm</a></li>
-		<li>- French (fr_FR) thanks to Vincèn Pujol, <a href="http://www.skivr.com" target="_blank">http://www.skivr.com</a> and Rodolphe Quiedeville, <a href="http://rodolphe.quiedeville.org" target="_blank">http://rodolphe.quiedeville.org</a>, Fx Benard, <a href="http://wp-translator.com" target="_blank">http://wp-translator.com</a>, cazal cédric, <a href="http://www.cedric-cazal.com" target="_blank">http://www.cedric-cazal.com</a>, Fabian Hurelle, <a href="http://hurelle.fr" target="_blank">http://hurelle.fr</a> and Thomas Guignard, <a href="http://news.timtom.ch" target="_blank">http://news.timtom.ch</a></li>
-		<li>- Galician (gl_ES) thanks to Fernando Coello, <a href="http://www.indicepublicidad.com" target="_blank">http://www.indicepublicidad.com</a></li>
-		<li>- German (de_DE) thanks to <a href="http://twitter.com/robertharm" target="_blank">@RobertHarm</a></li>
-		<li>- Hindi (hi_IN) thanks to Outshine Solutions, <a href="http://outshinesolutions.com" target="_blank">http://outshinesolutions.com</a> and Guntupalli Karunakar, <a href="http://indlinux.org" target="_blank">http://indlinux.org</a></li>
-		<li>- Hungarian (hu_HU) thanks to István Pintér, <a href="http://www.logicit.hu" target="_blank">http://www.logicit.hu</a> and Csaba Orban, <a href="http://www.foto-dvd.hu" target="_blank">http://www.foto-dvd.hu</a></li>
-		<li>- Indonesian (id_ID) thanks to Andy Aditya Sastrawikarta and Emir Hartato, <a href="http://whateverisaid.wordpress.com" target="_blank">http://whateverisaid.wordpress.com</a> and Phibu Reza, <a href="http://www.dedoho.pw/" target="_blank">http://www.dedoho.pw/</a></li>
+		<li>- Afrikaans (af) thanks to Hans, <a href="http://bmarksa.org/nuus/" target="_blank">http://bmarksa.org/nuus/</a></li>
+		<li>- Arabic (ar) thanks to Abdelouali Benkheil, Aladdin Alhamda - <a href="http://bazarsy.com" target="_blank">http://bazarsy.com</a>, Nedal Elghamry - <a href="http://arabhosters.com" target="_blank">http://arabhosters.com</a>, yassin and Abdelouali Benkheil - <a href="http://www.benkh.be" target="_blank">http://www.benkh.be</a></li>
+		<li>- Bengali (ba_BD) thanks to Nur Hasan - <a href="http://www.answersbd.com" target="_blank">http://www.answersbd.com</a></li>
+		<li>- Bosnian (bs_BA) thanks to Kenan Dervišević - <a href="http://dkenan.com" target="_blank">http://dkenan.com</a></li>
+		<li>- Bulgarian (bg_BG) thanks to Andon Ivanov - <a href="http://coffebreak.info" target="_blank">http://coffebreak.info</a></li>
+		<li>- Catalan (ca) thanks to Vicent Cubells - <a href="http://vcubells.net" target="_blank">http://vcubells.net</a> and Efraim Bayarri - <a href="http://replicantsfactory.com" target="_blank">http://replicantsfactory.com</a></li>
+		<li>- Chinese (zh_CN) thanks to John Shen - <a href="http://www.synyan.net" target="_blank">http://www.synyan.net</a> and ck</li>
+		<li>- Chinese (zh_TW) thanks to jamesho Ho - <a href="http://outdooraccident.org" target="_blank">http://outdooraccident.org</a></li>
+		<li>- Croatian (hr) thanks to Neven Pausic - <a href="http://www.airsoft-hrvatska.com" target="_blank">http://www.airsoft-hrvatska.com</a>, Alan Benic and Marijan Rajic - <a href="http://www.proprint.hr" target="_blank">http://www.proprint.hr</a></li>
+		<li>- Czech (cs_CZ) thanks to Viktor Kleiner and Vlad Kuzba - <a href="http://kuzbici.eu" target="_blank">http://kuzbici.eu</a></li>
+		<li>- Danish (da_DK) thanks to Mads Dyrmann Larsen and Peter Erfurt - <a href="http://24-7news.dk" target="_blank">http://24-7news.dk</a></li>
+		<li>- Dutch (nl_NL) thanks to Marijke Metz - <a href="http://www.mergenmetz.nl" target="_blank">http://www.mergenmetz.nl</a> and Patrick Ruers - <a href="http://www.stationskwartiersittard.nl" target="_blank">http://www.stationskwartiersittard.nl</a></li>
+		<li>- English (en_US)</li>
+		<li>- Finnish (fi_FI) thanks to Jessi Bj&ouml;rk - <a href="https://twitter.com/jessibjork" target="_blank">@jessibjork</a></li>
+		<li>- French (fr_FR) thanks to Vincèn Pujol - <a href="http://www.skivr.com" target="_blank">http://www.skivr.com</a> and Rodolphe Quiedeville - <a href="http://rodolphe.quiedeville.org" target="_blank">http://rodolphe.quiedeville.org</a>, Fx Benard - <a href="http://wp-translator.com" target="_blank">http://wp-translator.com</a>, cazal cédric - <a href="http://www.cedric-cazal.com" target="_blank">http://www.cedric-cazal.com</a>, Fabian Hurelle - <a href="http://hurelle.fr" target="_blank">http://hurelle.fr</a> and Thomas Guignard - <a href="http://news.timtom.ch" target="_blank">http://news.timtom.ch</a></li>
+		<li>- Galician (gl_ES) thanks to Fernando Coello - <a href="http://www.indicepublicidad.com" target="_blank">http://www.indicepublicidad.com</a></li>
+		<li>- German (de_DE)</li>
+		<li>- Greek (el) thanks to Philios Sazeides - <a href="http://www.mapdow.com" target="_blank">http://www.mapdow.com</a>, Evangelos Athanasiadis - <a href="http://www.wpmania.gr" target="_blank">http://www.wpmania.gr</a> and Vardis Vavoulakis - <a href="http://avakon.com" target="_blank">http://avakon.com</a></li>
+		<li>- Hebrew (he_IL) thanks to Alon Gilad - <a href="http://pluto2go.co.il" target="_blank">http://pluto2go.co.il</a> and kobi levi</li>
+		<li>- Hindi (hi_IN) thanks to Outshine Solutions - <a href="http://outshinesolutions.com" target="_blank">http://outshinesolutions.com</a> and Guntupalli Karunakar - <a href="http://indlinux.org" target="_blank">http://indlinux.org</a></li>
+		<li>- Hungarian (hu_HU) thanks to István Pintér - <a href="http://www.logicit.hu" target="_blank">http://www.logicit.hu</a> and Csaba Orban - <a href="http://www.foto-dvd.hu" target="_blank">http://www.foto-dvd.hu</a></li>
+		<li>- Indonesian (id_ID) thanks to Andy Aditya Sastrawikarta and Emir Hartato - <a href="http://whateverisaid.wordpress.com" target="_blank">http://whateverisaid.wordpress.com</a> and Phibu Reza - <a href="http://www.dedoho.pw/" target="_blank">http://www.dedoho.pw/</a></li>
 		<li>- Italian (it_IT) thanks to <a href="mailto:lucabarbetti@gmail.com">Luca Barbetti</a></li>
-		<li>- Japanese (ja) thanks to Shu Higashi, <a href="http://twitter.com/higa4" target="_blank">@higa4</a></li>
-		<li>- Korean (ko_KR) thanks to Andy Park, <a href="http://wcpadventure.com" target="_blank">http://wcpadventure.com</a></li>
-		<li>- Latvian (lv) thanks to Juris Orlovs, <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a></li>
-		<li>- Norwegian/Bokmål (nb_NO) translation thanks to Inge Tang, <a href="http://ingetang.com" target="_blank">http://ingetang.com</a></li>
-		<li>- Polish (pl_PL) thanks to Pawel Wyszy&#324;ski, <a href="http://injit.pl" target="_blank">http://injit.pl</a>, Tomasz Rudnicki, <a href="http://www.kochambieszczady.pl" target="_blank"></a> and Robert Pawlak</li>
-		<li>- Portuguese (pt_BR) thanks to Andre Santos, <a href="http://pelaeuropa.com.br" target="_blank">http://pelaeuropa.com.br</a> and Antonio Hammerl</li>
-		<li>- Portuguese (pt_PT) thanks to Joao Campos, <a href="http://www.all-about-portugal.com" target="_blank">http://www.all-about-portugal.com</a></li>
-		<li>- Romanian (ro_RO) thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a></li>
-		<li>- Russian (ru_RU) thanks to Ekaterina Golubina, (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a></li>
+		<li>- Japanese (ja) thanks to Shu Higashi - <a href="http://twitter.com/higa4" target="_blank">@higa4</a></li>
+		<li>- Korean (ko_KR) thanks to Andy Park - <a href="http://wcpadventure.com" target="_blank">http://wcpadventure.com</a></li>
+		<li>- Latvian (lv) thanks to Juris Orlovs - <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess - <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a></li>
+		<li>- Lithuanian (lt_LT) thanks to Donatas Liaudaitis - <a href="http://www.transleta.co.uk" target="_blank">http://www.transleta.co.uk</a></li>
+		<li>- Norwegian/Bokmål (nb_NO) translation thanks to Inge Tang - <a href="http://ingetang.com" target="_blank">http://ingetang.com</a></li>
+		<li>- Polish (pl_PL) thanks to Pawel Wyszy&#324;ski - <a href="http://injit.pl" target="_blank">http://injit.pl</a>, Tomasz Rudnicki - <a href="http://www.kochambieszczady.pl" target="_blank"></a> and Robert Pawlak</li>
+		<li>- Portuguese (pt_BR) thanks to Andre Santos - <a href="http://pelaeuropa.com.br" target="_blank">http://pelaeuropa.com.br</a> and Antonio Hammerl</li>
+		<li>- Portuguese (pt_PT) thanks to Joao Campos - <a href="http://www.all-about-portugal.com" target="_blank">http://www.all-about-portugal.com</a></li>
+		<li>- Romanian (ro_RO) thanks to Arian - <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea - <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu - <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a></li>
+		<li>- Russian (ru_RU) thanks to Ekaterina Golubina - (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko - <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a></li>
 		<li>- Slovak (sk_SK) thanks to Zdenko Podobny</a></li>
-		<li>- Slovenian (sl_SL) thanks to Anna Dukan, <a href="http://www.unisci24.com/blog/" target="_blank">http://www.unisci24.com/blog/</a></li>
-		<li>- Swedish (sv_SE) thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://20x.se" target="_blank">http://20x.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a></li>
-		<li>- Spanish (es_ES) thanks to David Ramírez, <a href="http://www.hiperterminal.com" target="_blank">http://www.hiperterminal.com</a> &amp; Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes</li>
-		<li>- Spanish/Mexico (es_MX) thanks to Victor Guevera, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Eze Lazcano</li>
-		<li>- Swedish (sv_SE) thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a> and Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a></li>
-		<li>- Turkish (tr_TR) thanks to Emre Erkan, <a href="http://www.karalamalar.net" target="_blank">http://www.karalamalar.net</a> and Mahir Tosun, <a href="http://www.bozukpusula.com" target="_blank">http://www.bozukpusula.com</a></li>
-		<li>- Ukrainian (uk_UK) thanks to Andrexj, <a href="http://all3d.com.ua" target="_blank">http://all3d.com.ua</a> and Sergey Zhitnitsky, <a href="http://zhitya.com" target="_blank">http://zhitya.com</a></li>
-		<li>- Vietnamese (vi) translation thanks to Hoai Thu, <a href="http://bizover.net" target="_blank">http://bizover.net</a></li>
-		<li>- Yiddish (yi) thanks to Raphael Finkel, <a href="http://www.cs.uky.edu/~raphael/yiddish.html" target="_blank">http://www.cs.uky.edu/~raphael/yiddish.html</a></li>
+		<li>- Slovenian (sl_SL) thanks to Anna Dukan - <a href="http://www.unisci24.com/blog/" target="_blank">http://www.unisci24.com/blog/</a></li>
+		<li>- Swedish (sv_SE) thanks to Olof Odier - <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha - <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson - <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren - <a href="http://20x.se" target="_blank">http://20x.se</a> and Anton Andreasson - <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a></li>
+		<li>- Spanish (es_ES) thanks to David Ramírez - <a href="http://www.hiperterminal.com" target="_blank">http://www.hiperterminal.com</a>, Alvaro Lara - <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Ricardo Viteri - <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes</li>
+		<li>- Spanish/Mexico (es_MX) thanks to Victor Guevera - <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Eze Lazcano</li>
+		<li>- Swedish (sv_SE) thanks to Olof Odier - <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha - <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a> and Dan Paulsson - <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a></li>
+		<li>- Thai (th) thanks to Makarapong Chathamma and Panupong Siriwichayakul - <a href="http://siteprogroup.com/" target="_blank">http://siteprogroup.com/</a></li>
+		<li>- Turkish (tr_TR) thanks to Emre Erkan - <a href="http://www.karalamalar.net" target="_blank">http://www.karalamalar.net</a> and Mahir Tosun - <a href="http://www.bozukpusula.com" target="_blank">http://www.bozukpusula.com</a></li>
+		<li>- Uighur (ug) thanks to Yidayet Begzad - <a href="http://ug.wordpress.org/" target="_blank">http://ug.wordpress.org/</a></li>
+		<li>- Ukrainian (uk_UK) thanks to Andrexj - <a href="http://all3d.com.ua" target="_blank">http://all3d.com.ua</a> and Sergey Zhitnitsky - <a href="http://zhitya.com" target="_blank">http://zhitya.com</a></li>
+		<li>- Vietnamese (vi) translation thanks to Hoai Thu - <a href="http://bizover.net" target="_blank">http://bizover.net</a></li>
+		<li>- Yiddish (yi) thanks to Raphael Finkel - <a href="http://www.cs.uky.edu/~raphael/yiddish.html" target="_blank">http://www.cs.uky.edu/~raphael/yiddish.html</a></li>
 	</ul>
 	<h3 style="font-size:23px;"><?php _e('Licenses for used libraries, services and images','lmm') ?></h3>
 	<ul>

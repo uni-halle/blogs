@@ -439,35 +439,30 @@ class Class_leaflet_options {
 		 		break;
 
 			case 'text-reverse':
-			default:
 		 		if ( $desc != '' )
 		 			echo '<span class="description">' . $desc . '</span><br />';
 				echo '<input class="regular-text' . $field_class . '" style="width:30em;" type="text" id="' . $id . '" name="leafletmapsmarker_options[' . $id . ']" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" />';
 		 		break;
 
 			case 'text-pro':
-			default:
 		 		echo '<input class="regular-text' . $field_class . '" style="width:30em;" type="text" id="' . $id . '" name="leafletmapsmarker_options[' . $id . ']" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" disabled="disabled" />';
 		 		if ( $desc != '' )
 		 			echo '<br /><span class="description">' . $desc . '</span>';
 		 		break;
 
 			case 'text-reverse-pro':
-			default:
 		 		if ( $desc != '' )
 		 			echo '<span class="description">' . $desc . '</span><br/>';
 		 		echo '<input class="regular-text' . $field_class . '" style="width:30em;" type="text" id="' . $id . '" name="leafletmapsmarker_options[' . $id . ']" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" disabled="disabled" />';
 		 		break;
 
 			case 'text-readonly':
-			default:
 		 		echo '<input readonly="readonly" class="regular-text' . $field_class . '" style="width:60em;" type="text" id="' . $id . '" name="leafletmapsmarker_options[' . $id . ']" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" />';
 	 		if ( $desc != '' )
 		 			echo '<br /><span class="description">' . $desc . '</span>';
 		 		break;
 
 			case 'text-deletable':
-			default:
 		 		echo '<input class="regular-text' . $field_class . '" style="width:60em;" type="text" id="' . $id . '" name="leafletmapsmarker_options[' . $id . ']" value="' . esc_attr( $options[$id] ) . '" />';
 	 		if ( $desc != '' )
 		 			echo '<br /><span class="description">' . $desc . '</span>';
@@ -3462,6 +3457,15 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'checkbox-pro',
 			'std'     => 0
 		);
+		$this->_settings['gpx_metadata_gpx_download'] = array(
+			'version' => 'p2.4',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section19',
+			'title'   => '',
+			'desc'    => __( 'download GPX file', 'lmm' ),
+			'type'    => 'checkbox-pro',
+			'std'     => 1
+		);
 		$this->_settings['gpx_max_point_interval'] = array(
 			'version' => 'p1.2',
 			'pane'    => 'mapdefaults',
@@ -3742,7 +3746,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section20',
 			'title'   => 'circleStyle' . $pro_button_link,
-			'desc'    => sprintf(esc_attr__('change the style of the circle around the location of the user, example: %1$s','lmm'), "'color':'red'"),
+			'desc'    => sprintf(esc_attr__('change the style of the circle around the location of the user, example: %1$s','lmm'), "<br/>'color':'#136AEC','fillColor':'#136AEC','fillOpacity':'0.15','weight':'2','opacity':'0.5'"),
 			'std'     => '',
 			'type'    => 'text-pro'
 		);
@@ -3751,7 +3755,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section20',
 			'title'   => 'markerStyle' . $pro_button_link,
-			'desc'    => sprintf(esc_attr__('change the style of the marker of the location of the user, example: %1$s','lmm'), "'color':'red'"),
+			'desc'    => sprintf(esc_attr__('change the style of the marker of the location of the user, example: %1$s','lmm'), "<br/>'color':'#136AEC','fillColor':'#136AEC','fillOpacity':'0.15','weight':'2','opacity':'0.5','radius':'5'"),
 			'std'     => '',
 			'type'    => 'text-pro'
 		);
@@ -3760,7 +3764,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section20',
 			'title'   => 'followCircleStyle' . $pro_button_link,
-			'desc'    => sprintf(esc_attr__('change the style of the circle around the location of the user while following, example: %1$s','lmm'), "'color':'red'"),
+			'desc'    => sprintf(esc_attr__('change the style of the circle around the location of the user while following, example: %1$s','lmm'), "<br/>'color':'#136AEC','fillColor':'#136AEC','fillOpacity':'0.15','weight':'2','opacity':'0.5'"),
 			'std'     => '',
 			'type'    => 'text-pro'
 		);
@@ -3769,7 +3773,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section20',
 			'title'   => 'followMarkerStyle' . $pro_button_link,
-			'desc'    => sprintf(esc_attr__('change the style of the marker of the location of the user while following, example: %1$s','lmm'), "'color':'red','weight':'4'"),
+			'desc'    => sprintf(esc_attr__('change the style of the marker of the location of the user while following, example: %1$s','lmm'), "<br/>'color':'#136AEC','fillColor':'#136AEC','fillOpacity':'0.15','weight':'4','opacity':'0.5','radius':'5'"),
 			'std'     => '',
 			'type'    => 'text-pro'
 		);
@@ -8549,6 +8553,8 @@ $this->_settings['clustering_helptext2'] = array(
 			'std'     => 'automatic',
 			'choices' => array(
 				'automatic' => __('automatic (use WordPress default)','lmm'),
+				'ar' => __('Arabic','lmm') . ' (ar)',
+				'af' => __('Afrikaans','lmm') . ' (af)',
 				'bn_BD' => __('Bengali','lmm') . ' (bn_BD)',
 				'bs_BA' => __('Bosnian','lmm') . ' (bs_BA)',
 				'bg_BG' => __('Bulgarian','lmm') . ' (bg_BG)',
@@ -8560,9 +8566,12 @@ $this->_settings['clustering_helptext2'] = array(
 				'da_DK' => __('Danish','lmm') . ' (da_DK)',
 				'nl_NL' => __('Dutch','lmm') . ' (nl_NL)',
 				'en_US' => __('English','lmm') . ' (en_US)',
+				'fi_FI' => __('Finnish','lmm') . ' (fi_FI)',
 				'fr_FR' => __('French','lmm') . ' (fr_FR)',
-				'de_DE' => __('German','lmm') . ' (de_DE)',
 				'gl_ES' => __('Galician','lmm') . ' (gl_ES)',
+				'de_DE' => __('German','lmm') . ' (de_DE)',
+				'el' => __('Greek','lmm') . ' (el)',
+				'he_IL' => __('Hebrew','lmm') . ' (he_IL)',
 				'hi_IN' => __('Hindi','lmm') . ' (hi_IN)',
 				'hu_HU' => __('Hungarian','lmm') . ' (hu_HU)',
 				'id_ID' => __('Indonesian','lmm') . ' (id_ID)',
@@ -8570,6 +8579,7 @@ $this->_settings['clustering_helptext2'] = array(
 				'ja' => __('Japanese','lmm') . ' (ja)',
 				'ko_KR' => __('Korean','lmm') . ' (ko_KR)',
 				'lv' => __('Latvian','lmm') . ' (lv)',
+				'lt_LT' => __('Lithuanian','lmm') . ' (lt_LT)',
 				'nb_NO' => __('Norwegian (Bokmål)','lmm') . ' (nb_NO)',
 				'pl_PL' => __('Polish','lmm') . ' (pl_PL)',
 				'pt_BR' => __('Portuguese','lmm') . ' - ' . __('Brazil','lmm') . ' (pt_BR)',
@@ -8581,7 +8591,9 @@ $this->_settings['clustering_helptext2'] = array(
 				'sv_SE' => __('Swedish','lmm') . ' (sv_SE)',
 				'es_ES' => __('Spanish','lmm') . ' (es_ES)',
 				'es_MX' => __('Spanish','lmm') . ' (es_MX)',
+				'th' => __('Thai','lmm') . ' (th)',
 				'tr_TR' => __('Turkish','lmm') . ' (tr_TR)',
+				'ug' => __('Uighur','lmm') . ' (ug)',
 				'uk_UK' => __('Ukrainian','lmm') . ' (uk_UK)',
 				'vi' => __('Vietnamese','lmm') . ' (vi)',
 				'yi' => __('Yiddish','lmm') . ' (yi)'
@@ -10048,7 +10060,7 @@ $this->_settings['clustering_helptext2'] = array(
 		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.10
-		if (get_option('leafletmapsmarker_version') == '3.9.9' )
+		if (get_option('leafletmapsmarker_version') == '3.9.10' )
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

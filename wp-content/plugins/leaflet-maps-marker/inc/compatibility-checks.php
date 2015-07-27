@@ -135,4 +135,10 @@ if (is_plugin_active('sucuri-scanner/sucuri.php') ) {
 if ( ($lmm_options[ 'mapbox_user' ] != 'mapbox') || ($lmm_options[ 'mapbox2_user' ] != 'mapbox') || ($lmm_options[ 'mapbox3_user' ] != 'mapbox') ) {
 	echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: as Mapbox now requires to use a custom API access token, custom Mapbox basemaps will not work anymore if you registered your Mapbox account after January 2015.<br/>In case your Mapbox maps are broken, please switch to another basemap like OpenStreetMap or <a href="%1$s">upgrade to Maps Marker Pro</a>, which enables you to continue using custom Mapbox basemaps - even with accounts created after January 2015 (please also note that Mapbox might discontinue the usage of their old API for existing users in the long run too!).','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade') . '</div></p>';
 }
+//info: plugin Autoptimize
+if (is_plugin_active('autoptimize/autoptimize.php') ) {
+	if ( (get_option( 'autoptimize_js_forcehead' ) != 'on') || (strpos(get_option( 'autoptimize_js_exclude'), 'mapsmarkerjs') === false) || (strpos(get_option( 'autoptimize_js_exclude'), 'leaflet') === false)) {
+		echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "Autoptimize" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%1$s">Autoptimize settings</a>, tick the checkbox "Force JavaScript in <head>?" and add the following to the end the option "Exclude scripts from Autoptimize:": %2$s','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=autoptimize', '<strong>,leaflet,mapsmarkerjs</strong>') . '</div></p>';
+	}
+}
 ?>

@@ -41,6 +41,103 @@ hr{color:#E6DB55}
 </style></head><body>
 <?php
 /*****************************************************************************************/
+
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.10') . '</strong> - ' . $text_b . ' 19.07.2015 (<a href="https://www.mapsmarker.com/v3.9.10" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">assign markers to multiple layers (thx Waseem!)</a>
+</td></tr>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">option to select markers from multiple layers when exporting to XLSX/XLS/CSV/ODS</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+support for displaying MaqQuest basemaps via https (thx Duncan!)
+</td></tr>
+<tr><td>' . $new . '</td><td>
+compatibility check for <a href="https://wordpress.org/plugins/autoptimize/" target="_blank">Autoptimize</a> plugin which can breaks maps if not properly configured
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+<a href="https://www.visualead.com">Visualead</a> API for creating QR codes now uses secure https by default
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+fix support for shortcode parameters lat/lon next to mlat/mlon for <a href="https://www.mapsmarker.com/docs/basic-usage/how-to-create-maps-directly-by-using-shortcodes-only/" target="_blank">maps added directly</a> (thx wongkasep!)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+fix popuptext not shown on maps created with shortcodes only (thx wongkasep!)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+fix compatibility for WordPress installations using HHVM (thx Rolf!)
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Afrikaans (af) translation thanks to Hans, <a href="http://bmarksa.org/nuus/" target="_blank">http://bmarksa.org/nuus/</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Arabic (ar) translation thanks to Abdelouali Benkheil, Aladdin Alhamda - <a href="http://bazarsy.com" target="_blank">http://bazarsy.com</a>, Nedal Elghamry - <a href="http://arabhosters.com" target="_blank">http://arabhosters.com</a>, yassin and Abdelouali Benkheil - <a href="http://www.benkh.be" target="_blank">http://www.benkh.be</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Finnish (fi_FI) translation thanks to Jessi Bj&ouml;rk - <a href="https://twitter.com/jessibjork" target="_blank">@jessibjork</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Greek (el) translation thanks to Philios Sazeides - <a href="http://www.mapdow.com" target="_blank">http://www.mapdow.com</a>, Evangelos Athanasiadis - <a href="http://www.wpmania.gr" target="_blank">http://www.wpmania.gr</a> and Vardis Vavoulakis - <a href="http://avakon.com" target="_blank">http://avakon.com</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Hebrew (he_IL) translation thanks to Alon Gilad - <a href="http://pluto2go.co.il" target="_blank">http://pluto2go.co.il</a> and kobi levi
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Lithuanian (lt_LT) translation thanks to Donatas Liaudaitis - <a href="http://www.transleta.co.uk" target="_blank">http://www.transleta.co.uk</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Thai (th) translation thanks to Makarapong Chathamma and Panupong Siriwichayakul - <a href="http://siteprogroup.com/" target="_blank">http://siteprogroup.com/</a>
+</td></tr>
+<tr><td>' . $new . '</td><td>
+Uighur (ug) translation thanks to Yidayet Begzad - <a href="http://ug.wordpress.org/" target="_blank">http://ug.wordpress.org/</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Czech translation thanks to Viktor Kleiner and Vlad Kuzba, <a href="http://kuzbici.eu" target="_blank">http://kuzbici.eu</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Galician translation thanks to Fernando Coello, <a href="http://www.indicepublicidad.com" target="_blank">http://www.indicepublicidad.com</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Japanese translations thanks to <a href="http://twitter.com/higa4" target="_blank">Shu Higash</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Latvian translation thanks to Juris Orlovs, <a href="http://lbpa.lv" target="_blank">http://lbpa.lv</a> and Eriks Remess <a href="http://geekli.st/Eriks" target="_blank">http://geekli.st/Eriks</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://drommemila.no" target="_blank">http://drommemila.no</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Romanian translation thanks to Arian, <a href="http://administrare-cantine.ro" target="_blank">http://administrare-cantine.ro</a>, Daniel Codrea, <a href="http://www.inadcod.com" target="_blank">http://www.inadcod.com</a> and Flo Bejgu, <a href="http://www.inboxtranslation.com" target="_blank">http://www.inboxtranslation.com</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Spanish translation thanks to David Ramí­rez, <a href="http://www.hiperterminal.com/" target="_blank">http://www.hiperterminal.com</a>, Alvaro Lara, <a href="http://www.alvarolara.com" target="_blank">http://www.alvarolara.com</a>, Victor Guevara, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a>, Ricardo Viteri, <a href="http://www.labviteri.com" target="_blank">http://www.labviteri.com</a> and Juan Valdes
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Spanish/Mexico translation thanks to Victor Guevera, <a href="http://1sistemas.net" target="_blank">http://1sistemas.net</a> and Eze Lazcano
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Swedish translation thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://20x.se" target="_blank">http://20x.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a>
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_f . '</a></p></strong>
+<tr><td>' . $issue . '</td><td>
+Internet Explorer can crash with WordPress 4.2 to 4.2.2 due to Emoji conflict (<a href="https://core.trac.wordpress.org/ticket/32305" target="_blank">details</a>) - planned to be fixed with WordPress 4.2.3, workaround until WordPress 4.2.3 is available: <a href="https://wordpress.org/plugins/disable-emojis/" target="_blank"">disable Emojis</a>
+</td></tr>	
+</table>'.PHP_EOL;
+
+if ( (version_compare($lmm_version_old,"3.9.9","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.9.9') . '</strong> - ' . $text_b . ' 29.05.2015 (<a href="https://www.mapsmarker.com/v3.9.9" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td>' . $new . '</td><td>
@@ -62,12 +159,8 @@ updated Norwegian (Bokmål) translation thanks to Inge Tang, <a href="http://dro
 <tr><td>' . $transl . '</td><td>
 updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://poi-gorod.ru" target="_blank">http://poi-gorod.ru</a>
 </td></tr>
-<tr><td colspan="2">
-<p><strong>' . $text_f . '</a></p></strong>
-<tr><td>' . $issue . '</td><td>
-Internet Explorer can crash with WordPress 4.2 to 4.2.2 due to Emoji conflict (<a href="https://core.trac.wordpress.org/ticket/32305" target="_blank">details</a>) - planned to be fixed with WordPress 4.2.3, workaround until WordPress 4.2.3 is available: <a href="https://wordpress.org/plugins/disable-emojis/" target="_blank"">disable Emojis</a>
-</td></tr>
 </table>'.PHP_EOL;
+}
 
 if ( (version_compare($lmm_version_old,"3.9.8","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';
@@ -125,11 +218,6 @@ updated Swedish translation thanks to Olof Odier <a href="http://www.historiskas
 <tr><td>' . $transl . '</td><td>
 updated Vietnamese (vi) translation thanks to Hoai Thu, <a href="http://bizover.net" target="_blank">http://bizover.net</a>
 </td></tr>
-<tr><td colspan="2">
-<p><strong>' . $text_f . '</a></p></strong>
-<tr><td>' . $issue . '</td><td>
-Internet Explorer can crash with WordPress 4.2 to 4.2.2 due to Emoji conflict (<a href="https://core.trac.wordpress.org/ticket/32305" target="_blank">details</a>) - planned to be fixed with WordPress 4.2.3, workaround until WordPress 4.2.3 is available: <a href="https://wordpress.org/plugins/disable-emojis/" target="_blank"">disable Emojis</a>
-</td></tr>
 </table>'.PHP_EOL;
 }
 
@@ -162,9 +250,6 @@ updated Czech translation thanks to Viktor Kleiner and Vlad Kuzba, <a href="http
 <tr><td>' . $transl . '</td><td>
 updated German translation
 </td></tr>
-<tr><td colspan="2">
-<p><strong>' . $text_f . '</a></p></strong>
-</td></tr>	
 </table>'.PHP_EOL;
 }
 
@@ -1608,7 +1693,7 @@ echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6.2') . '</
 <a href="https://www.mapsmarker.com/comparison"  target="_blank">new demo maps comparing free and pro version side-by-side</a>
 </td></tr>
 <tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
-<a href="http://demo.mapsmarker.com/"  target="_blank">new site demo.mapsmarker.com allowing you to also test the admin pages of Leaflet Maps Marker Pro</a>
+<a href="http://demo.mapsmarker.com/"  target="_blank">new site demo.mapsmarker.com allowing you to also test the admin pages of Maps Marker Pro</a>
 </td></tr>
 <tr><td>' . $fixed . '</td><td>
 maps did not load correctly in (jquery ui) tabs (thx <a href="http://twitter.com/leafletjs" target="_blank">@leafletjs</a>!)
@@ -1662,7 +1747,7 @@ echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.6.1') . '</
 <tr><td>
 <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" target="_top"  title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a>
 </td><td>
-<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" target="_top"  title="' . $text_h . '">Leaflet Maps Marker Pro can now be tested on localhost installations without time limitation and on up to 25 domains on live installations</a>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" target="_top"  title="' . $text_h . '">Maps Marker Pro can now be tested on localhost installations without time limitation and on up to 25 domains on live installations</a>
 </td></tr>
 <tr><td>
 <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" target="_top"  title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a>

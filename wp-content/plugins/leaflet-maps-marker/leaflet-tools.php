@@ -13,7 +13,7 @@ $table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 $table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
 $markercount_all = $wpdb->get_var('SELECT count(*) FROM '.$table_name_markers.'');
 $layercount_all = $wpdb->get_var('SELECT count(*) FROM '.$table_name_layers.'') - 1;
-$action = isset($_POST['action']) ? $_POST['action'] : '';
+$action = isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '');
 
 if (!empty($action)) {
 	$toolnonce = isset($_POST['_wpnonce']) ? $_POST['_wpnonce'] : (isset($_GET['_wpnonce']) ? $_GET['_wpnonce'] : '');
@@ -175,6 +175,29 @@ if (!empty($action)) {
 		} else {
 			echo '<p><div class="error" style="padding:10px;">' . __('Please confirm that you want to delete all markers by checking the checkbox','lmm') . '</div><br/><a class="button-secondary" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_tools">' . __('Back to Tools', 'lmm') . '</a></p>';
 		}
+	} 
+	elseif ($action == 'database_downgrade') {
+		//info: remove JSON encoding
+		$markers = $wpdb->get_results('SELECT id,layer FROM '.$wpdb->prefix.'leafletmapsmarker_markers');
+		foreach($markers as $marker){
+			if (is_numeric($marker->layer) === FALSE) { //info: just convert non-numeric values
+				$layer = json_decode($marker->layer, TRUE);
+				$wpdb->update( $wpdb->prefix . 'leafletmapsmarker_markers', 
+					array('layer'=> $layer[0]), //info: just take first element, discard others
+					array('id'=>$marker->id)
+					);
+				unset($layer);
+			}
+		}
+		delete_option('leafletmapsmarkerpro_license_key_trial');
+		echo '<p><div class="updated" style="padding:10px;">' . __('Database downgrade is finished.','lmm') . '</div><br/><a class="button-secondary" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_tools">' . __('Back to Tools', 'lmm') . '</a></p>';
+		echo '<script type="text/javascript">
+			jQuery(function($) {
+				$(document).ready(function(){
+					$("#database-downgrade").hide();
+				});
+			});
+		</script>';
 	}
 } else {
 	$layerlist = $wpdb->get_results('SELECT * FROM `' . $table_name_layers . '` WHERE `id` > 0', ARRAY_A);
