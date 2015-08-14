@@ -3,14 +3,14 @@
  * The main file!
  *
  * @package shareaholic
- * @version 7.6.1.7
+ * @version 7.6.1.8
  */
 
 /*
 Plugin Name: Shareaholic | share buttons, analytics, related content
 Plugin URI: https://shareaholic.com/publishers/
 Description: Whether you want to get people sharing, grow your fans, make money, or know who's reading your content, Shareaholic will help you get it done. See <a href="admin.php?page=shareaholic-settings">configuration panel</a> for more settings.
-Version: 7.6.1.7
+Version: 7.6.1.8
 Author: Shareaholic
 Author URI: https://shareaholic.com
 Text Domain: shareaholic
@@ -64,7 +64,7 @@ if (!class_exists('Shareaholic')) {
     const CM_API_URL = 'https://cm-web.shareaholic.com'; // uses static IPs for firewall whitelisting
     const REC_API_URL = 'http://recommendations.shareaholic.com';
 
-    const VERSION = '7.6.1.7';
+    const VERSION = '7.6.1.8';
 
     /**
      * Starts off as false so that ::get_instance() returns
@@ -132,6 +132,12 @@ if (!class_exists('Shareaholic')) {
 
       // Add custom action to run Shareaholic cron job
       add_action('shareaholic_remove_transients_hourly', array('ShareaholicCron', 'remove_transients'));
+
+      // do something before a post is updated
+      add_action('pre_post_update', array('ShareaholicUtilities', 'before_post_is_updated'));
+
+      // do something before a site's permalink structure changes
+      add_action('update_option_permalink_structure', array('ShareaholicUtilities', 'notify_content_manager_sitemap'));
     }
 
     /**

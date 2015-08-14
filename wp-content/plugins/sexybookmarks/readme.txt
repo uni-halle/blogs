@@ -1,9 +1,9 @@
 === Shareaholic | share buttons, related posts, social analytics & more ===
 Contributors: shareaholic
-Tags: sexybookmarks, shareaholic, shareholic, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, analytics, social media, social plugin
+Tags: shareaholic, shareholic, sexybookmarks, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote
 Requires at least: 3.0
-Tested up to: 4.2.2
-Stable tag: 7.6.1.7
+Tested up to: 4.2.4
+Stable tag: 7.6.1.8
 
 The easiest, most effective way to grow your website traffic, effectively engage your audience, monetize, and gain insights for free.
 
@@ -169,6 +169,9 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+
+= 7.6.1.8 =
+* Enhancement: Detect permalink changes in order to serve up-to-date content
 
 = 7.6.1.7 =
 * Bugfix: fix issue with Server side share count option
@@ -1212,6 +1215,9 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Initial release!
 
 == Upgrade Notice ==
+
+= 7.6.1.8 =
+* Enhancement: Detect permalink changes in order to serve up-to-date content
 
 = 7.6.1.7 =
 * Bugfix: fix issue with Server side share count option

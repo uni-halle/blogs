@@ -894,7 +894,7 @@ class ShareaholicUtilities {
      if ($post == NULL) {
        return false;
      }
-     
+
      if (in_array($post->post_status, array('draft', 'pending', 'auto-draft'))) {
        // Get the correct permalink for a draft
        $my_post = clone $post;
@@ -922,8 +922,8 @@ class ShareaholicUtilities {
     *
     * @param string $domain
     */
-    public static function notify_content_manager_sitemap() {      
-      $text_sitemap_url = admin_url('admin-ajax.php') . '?action=shareaholic_permalink_list&n=500&format=text';
+    public static function notify_content_manager_sitemap() {
+      $text_sitemap_url = admin_url('admin-ajax.php') . '?action=shareaholic_permalink_list&n=1000&format=text';
       
       $cm_sitemap_job_url = Shareaholic::CM_API_URL . '/jobs/sitemap';
       $payload = array (
@@ -1270,6 +1270,19 @@ class ShareaholicUtilities {
 
     return 'SUCCESS';
   }
+
+
+  /**
+   * Call the content manager for a post before it is updated
+   *
+   * We do this because a user may change their permalink
+   * and so we tell CM that the old permalink is not longer valid
+   *
+   */
+  public static function before_post_is_updated($post_id) {
+    ShareaholicUtilities::notify_content_manager_singlepage(get_post($post_id));
+  }
+
 
   /**
    * This is a wrapper for the Recommendations API
