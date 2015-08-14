@@ -1,5 +1,5 @@
 <?php
-define( 'FOUNDATION_VERSION', '2.3.5' );
+define( 'FOUNDATION_VERSION', '2.3.6' );
 
 define( 'FOUNDATION_DIR', WPTOUCH_DIR . '/themes/foundation' );
 define( 'FOUNDATION_URL', WPTOUCH_URL . '/themes/foundation' );

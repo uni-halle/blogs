@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.9
-Stable tag: 3.8.2
+Stable tag: 3.8.3
 Tested up to: 4.2.2
 License: GPLv2
 
@@ -37,6 +37,12 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.8.3 (July 30, 2015) =
+
+* Fixed: Errant quotation mark in comments
+* Fixed: Mobile theme appearing when tapping link in Facebook app on iPad
+* Fixed: Behaviour of 'enable parent items as links' setting
 
 = Version 3.8.2 (July 9, 2015) =
 

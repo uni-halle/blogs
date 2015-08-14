@@ -2281,7 +2281,7 @@ class WPtouchProThree {
 	function is_supported_device() {
 		global $wptouch_exclusion_list;
 
-		$user_agent = apply_filters( 'wptouch_user_agent', str_replace( 'Twitter for iPhone', '', $_SERVER['HTTP_USER_AGENT'] ) );
+		$user_agent = apply_filters( 'wptouch_user_agent', str_replace( array( 'Twitter for iPhone', 'iPad;FBSN/iPhone' ), '', $_SERVER['HTTP_USER_AGENT'] ) );
 
 		$settings = $this->get_settings();
 
