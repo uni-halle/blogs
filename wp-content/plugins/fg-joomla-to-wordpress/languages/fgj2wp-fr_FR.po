@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-11 08:13+0100\n"
-"PO-Revision-Date: 2015-04-11 08:14+0100\n"
+"POT-Creation-Date: 2015-08-02 08:18+0200\n"
+"PO-Revision-Date: 2015-08-02 08:19+0200\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.2\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/class-fg-joomla-to-wordpress-admin.php:91
@@ -524,8 +524,8 @@ msgid "Joomla web site parameters"
 msgstr "Paramètres du site Web Joomla"
 
 #: admin/partials/fg-joomla-to-wordpress-admin-display.php:55
-msgid "URL (beginning with http://)"
-msgstr "URL (commençant par http://)"
+msgid "URL of the live Joomla web site"
+msgstr "URL du site web Joomla de production"
 
 #: admin/partials/fg-joomla-to-wordpress-admin-display.php:59
 msgid "Joomla database parameters"
@@ -902,6 +902,9 @@ msgstr ""
 "wordpress.org/extend/plugins/fg-joomla-to-wordpress/\">FG Joomla to "
 "WordPress</a>. Vous pouvez aussi faire une donation en utilisant le bouton "
 "ci-dessous."
+
+#~ msgid "URL (beginning with http://)"
+#~ msgstr "URL (commençant par http://)"
 
 #~ msgid ""
 #~ "Please note that some of these features need an add-on in addition to the "

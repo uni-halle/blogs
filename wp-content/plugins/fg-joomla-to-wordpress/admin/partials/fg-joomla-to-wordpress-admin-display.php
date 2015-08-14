@@ -52,7 +52,7 @@
 					<th scope="row" colspan="2"><h3><?php _e('Joomla web site parameters', 'fgj2wp'); ?></h3></th>
 				</tr>
 				<tr>
-					<th scope="row"><label for="url"><?php _e('URL (beginning with http://)', 'fgj2wp'); ?></label></th>
+					<th scope="row"><label for="url"><?php _e('URL of the live Joomla web site', 'fgj2wp'); ?></label></th>
 					<td><input id="url" name="url" type="text" size="50" value="<?php echo $data['url']; ?>" /></td>
 				</tr>
 				<tr>
