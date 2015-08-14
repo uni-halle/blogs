@@ -45,6 +45,9 @@ You can customize the shortcode (button) using the following attributes:
 
 == Changelog ==
 
+= 6.0.3 =
+* Fixing an error some people were getting due to strange thing up with PHP.
+
 = 6.0.2 =
 * Minor Bug Fix
 
@@ -388,3 +391,6 @@ Bugs Fixed.
 
 = 6.0.1 =
 * Minor Bug Fix
+
+= 6.0.3 =
+* Fixing an error some people were getting due to strange thing up with PHP.

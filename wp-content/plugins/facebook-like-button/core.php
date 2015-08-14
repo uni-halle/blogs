@@ -4,7 +4,7 @@
 Plugin Name: Facebook Like (PressGraph)
 Plugin URI: http://www.ahmedgeek.com/facebook-like-v6
 Description: Plugin that helps you add the Facebook Like button to your website, no coding required.
-Version: 6.0.2
+Version: 6.0.3
 Author: AhmedGeek
 Author URI: http://www.ahmedgeek.com
 License: GPL2
@@ -28,10 +28,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 //Include AGPressGraph Core Manager
 
+namespace AGPressGraph;
+
 $AGPressGraphPath = plugin_dir_path(__FILE__);
 
 include_once($AGPressGraphPath . "core/AGLB.coremanager.php");
 
-$AGPressGraphCore = new AGPressGraph\coreManager();
+$AGPressGraphCore = new coreManager();
 	
 ?>
