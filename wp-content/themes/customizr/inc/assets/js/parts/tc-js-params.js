@@ -14,9 +14,10 @@ var TCParams = TCParams || {
 	SliderHover: 1,
 	SliderName: "demo",
   centerSliderImg : 1,
-	SmoothScroll: "linear",
-  SmoothScrollExclude : ['[class*=edd]', '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]'],
-	stickyCustomOffset: 0,
+	SmoothScroll: { Enabled : 1 , Options : {} },
+	anchorSmoothScroll: "linear",
+  anchorSmoothScrollExclude : ['[class*=edd]', '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]', '[class*=um-]'],
+	stickyCustomOffset: { _initial : 0, _scrolling : 0, options : { _static : true, _element : "" } },
 	stickyHeader: 1,
 	dropdowntoViewport: 1,
 	timerOnScrollAllBrowsers:1,
@@ -37,5 +38,7 @@ var TCParams = TCParams || {
   imgSmartLoadEnabled:0,
   imgSmartLoadOpts: {},
   goldenRatio : 1.618,
-  gridGoldenRatioLimit : 350
-};
+  gridGoldenRatioLimit : 350,
+  isSecondMenuEnabled : 0,
+  secondMenuRespSet : 'in-sn-before'
+}

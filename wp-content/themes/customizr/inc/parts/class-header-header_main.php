@@ -33,8 +33,6 @@ if ( ! class_exists( 'TC_header_main' ) ) :
     /***************************
     * HEADER HOOKS SETUP
     ****************************/
-
-
 	  /**
 		* Set all header hooks
 		* template_redirect callback
@@ -50,6 +48,11 @@ if ( ! class_exists( 'TC_header_main' ) ) :
 
       //html > header actions
       add_action ( '__before_main_wrapper'	, 'get_header');
+
+      //boolean filter to control the header's rendering
+      if ( ! apply_filters( 'tc_display_header', true ) )
+        return;
+
       add_action ( '__header' 				, array( $this , 'tc_prepare_logo_title_display' ) , 10 );
       add_action ( '__header' 				, array( $this , 'tc_tagline_display' ) , 20, 1 );
       add_action ( '__header' 				, array( $this , 'tc_navbar_display' ) , 30 );
@@ -58,15 +61,20 @@ if ( ! class_exists( 'TC_header_main' ) ) :
       add_filter ( 'tc_navbar_display', array( $this , 'tc_new_menu_view'), 10, 2);
 
       //body > header > navbar actions ordered by priority
-	  // GY : switch order for RTL sites 
-	  if (is_rtl()) {
-      add_action ( '__navbar' 				, array( $this , 'tc_social_in_header' ) , 20, 2 );
-      add_action ( '__navbar' 				, array( $this , 'tc_tagline_display' ) , 10, 1 );
-	  }
-	  else {
-      add_action ( '__navbar' 				, array( $this , 'tc_social_in_header' ) , 10, 2 );
-      add_action ( '__navbar' 				, array( $this , 'tc_tagline_display' ) , 20, 1 );
-	  }
+  	  // GY : switch order for RTL sites
+  	  if (is_rtl()) {
+        add_action ( '__navbar' 				, array( $this , 'tc_social_in_header' ) , 20, 2 );
+        add_action ( '__navbar' 				, array( $this , 'tc_tagline_display' ) , 10, 1 );
+  	  }
+  	  else {
+        add_action ( '__navbar' 				, array( $this , 'tc_social_in_header' ) , 10, 2 );
+        add_action ( '__navbar' 				, array( $this , 'tc_tagline_display' ) , 20, 1 );
+  	  }
+
+      //add a 100% wide container just after the sticky header to reset margin top
+      if ( 1 == esc_attr( TC_utils::$inst->tc_opt( 'tc_sticky_header' ) ) )
+        add_action( '__after_header'              , array( $this, 'tc_reset_margin_top_after_sticky_header'), 0 );
+
     }
 
 
@@ -90,7 +98,10 @@ if ( ! class_exists( 'TC_header_main' ) ) :
     }
 
 
-	   /**
+    /***************************
+    * VIEWS
+    ****************************/
+	  /**
 		* Displays what is inside the head html tag. Includes the wp_head() hook.
 		*
 		*
@@ -110,6 +121,10 @@ if ( ! class_exists( 'TC_header_main' ) ) :
 				    <link rel="profile" href="http://gmpg.org/xfn/11" />
 				    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
+				   <!-- html5shiv for IE8 and less  -->
+				    <!--[if lt IE 9]>
+				      <script src="<?php echo TC_BASE_URL ?>inc/assets/js/html5.js"></script>
+				    <![endif]-->
 				   <!-- Icons font support for IE6-7  -->
 				    <!--[if lt IE 8]>
 				      <script src="<?php echo TC_BASE_URL ?>inc/assets/css/fonts/lte-ie7.js"></script>
@@ -144,7 +159,7 @@ if ( ! class_exists( 'TC_header_main' ) ) :
 	       	//check if option is an attachement id or a path (for backward compatibility)
 	       	if ( is_numeric($_fav_option) ) {
 	       		$_attachement_id 	= $_fav_option;
-	       		$_attachment_data 	= apply_filters( 'tc_fav_attachment_img' , wp_get_attachment_image_src( $_fav_option , 'large' ) );
+	       		$_attachment_data 	= apply_filters( 'tc_fav_attachment_img' , wp_get_attachment_image_src( $_fav_option , 'full' ) );
 	       		$_fav_src 			= $_attachment_data[0];
 	       	} else { //old treatment
 	       		$_saved_path 		= esc_url ( TC_utils::$inst->tc_opt( 'tc_fav_upload') );
@@ -202,7 +217,7 @@ if ( ! class_exists( 'TC_header_main' ) ) :
           //check if option is an attachement id or a path (for backward compatibility)
           if ( is_numeric($_logo_option) ) {
               $_attachement_id 	= $_logo_option;
-              $_attachment_data 	= apply_filters( "tc{$logo_type}logo_attachment_img" , wp_get_attachment_image_src( $_logo_option , 'large' ) );
+              $_attachment_data 	= apply_filters( "tc{$logo_type}logo_attachment_img" , wp_get_attachment_image_src( $_logo_option , 'full' ) );
               $_logo_src 			= $_attachment_data[0];
               $_width 			= ( isset($_attachment_data[1]) && $_attachment_data[1] > 1 ) ? $_attachment_data[1] : $_width;
               $_height 			= ( isset($_attachment_data[2]) && $_attachment_data[2] > 1 ) ? $_attachment_data[2] : $_height;
@@ -412,8 +427,6 @@ if ( ! class_exists( 'TC_header_main' ) ) :
 
 
 
-
-
 		/**
 		* Displays the social networks block in the header
 		*
@@ -441,8 +454,6 @@ if ( ! class_exists( 'TC_header_main' ) ) :
 
         echo apply_filters( 'tc_social_in_header', $html, $resp );
     }
-
-
 
 
 
@@ -475,6 +486,27 @@ if ( ! class_exists( 'TC_header_main' ) ) :
 
 
 
+    /*
+    * hook : __after_header hook
+    *
+    * @package Customizr
+    * @since Customizr 3.2.0
+    */
+    function tc_reset_margin_top_after_sticky_header() {
+      echo apply_filters(
+        'tc_reset_margin_top_after_sticky_header',
+        sprintf('<div id="tc-reset-margin-top" class="container-fluid" style="margin-top:%1$spx"></div>',
+          apply_filters('tc_default_sticky_header_height' , 103 )
+        )
+      );
+    }
+
+
+
+
+    /***************************
+    * SETTER / GETTERS / HELPERS
+    ****************************/
 		/*
     * Callback of tc_user_options_style hook
     * @return css string

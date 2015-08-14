@@ -94,6 +94,11 @@ if ( ! class_exists( 'TC_resources' ) ) :
           'files' => array( 'jqueryimgOriginalSizes.js' ),
           'dependencies' => array('jquery')
         ),
+        'tc-smoothscroll' => array(
+          'path' => 'inc/assets/js/parts/',
+          'files' => array( 'smoothScroll.js' ),
+          'dependencies' => array( 'tc-js-arraymap-proto', 'underscore' )
+        ),
         'tc-dropcap' => array(
           'path' => 'inc/assets/js/parts/',
           'files' => array( 'jqueryaddDropCap.js' ),
@@ -156,8 +161,15 @@ if ( ! class_exists( 'TC_resources' ) ) :
 	    wp_enqueue_script( 'jquery' );
 	    wp_enqueue_script( 'jquery-ui-core' );
 
-	    //load modernizr.js in footer
-	    wp_enqueue_script( 'modernizr' , TC_BASE_URL . 'inc/assets/js/modernizr.min.js', array(), CUSTOMIZR_VER, true);
+	    wp_enqueue_script(
+        'modernizr'
+        ,
+        TC_BASE_URL . 'inc/assets/js/modernizr.min.js',
+        array(),
+        CUSTOMIZR_VER,
+        //load in head if browser is chrome => fix the issue of 3Dtransform not detected in some cases
+        ( isset($_SERVER['HTTP_USER_AGENT']) && false !== strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') ) ? false : true
+      );
 
       //customizr scripts and libs
 	   	if ( $this -> tc_load_concatenated_front_scripts() )	{
@@ -169,7 +181,7 @@ if ( ! class_exists( 'TC_resources' ) ) :
 			else {
         wp_enqueue_script( 'underscore' );
         //!!mind the dependencies
-        $this -> tc_enqueue_script( array( 'tc-js-params', 'tc-js-arraymap-proto', 'tc-img-original-sizes', 'tc-bootstrap' ) );
+        $this -> tc_enqueue_script( array( 'tc-js-params', 'tc-js-arraymap-proto', 'tc-img-original-sizes', 'tc-bootstrap', 'tc-smoothscroll' ) );
 
         if ( $this -> tc_is_fancyboxjs_required() )
           $this -> tc_enqueue_script( 'tc-fancybox' );
@@ -187,9 +199,12 @@ if ( ! class_exists( 'TC_resources' ) ) :
 			$has_post_comments 	= ( 0 != $wp_query -> post_count && comments_open() && get_comments_number() != 0 ) ? true : false;
 
 			//adds the jquery effect library if smooth scroll is enabled => easeOutExpo effect
-			$smooth_scroll 		= ( false != esc_attr( TC_utils::$inst->tc_opt( 'tc_link_scroll') ) ) ? 'easeOutExpo' : 'linear';
+			$anchor_smooth_scroll 		= ( false != esc_attr( TC_utils::$inst->tc_opt( 'tc_link_scroll') ) ) ? 'easeOutExpo' : 'linear';
 			if ( false != esc_attr( TC_utils::$inst->tc_opt( 'tc_link_scroll') ) )
 				wp_enqueue_script('jquery-effects-core');
+
+      $smooth_scroll_enabled = apply_filters('tc_enable_smoothscroll', ! wp_is_mobile() && 1 == esc_attr( TC_utils::$inst->tc_opt( 'tc_smoothscroll') ) );
+      $smooth_scroll_options = apply_filters('tc_smoothscroll_options', array() );
 
 			//gets current screen layout
     	$screen_layout      = TC_utils::tc_get_layout( TC_utils::tc_id() , 'sidebar'  );
@@ -211,15 +226,16 @@ if ( ! class_exists( 'TC_resources' ) ) :
 	          	'SliderDelay' 			=> $js_sliderdelay,
 	          	'SliderHover'			  => apply_filters( 'tc_stop_slider_hover', true ),
 	          	'centerSliderImg'   => esc_attr( TC_utils::$inst->tc_opt( 'tc_center_slider_img') ),
-              'SmoothScroll'			=> $smooth_scroll,
-              'SmoothScrollExclude' => apply_filters( 'tc_smoothscroll_excl' , array( '[class*=edd]' , '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]' ) ),
+              'SmoothScroll'      => array( 'Enabled' => $smooth_scroll_enabled, 'Options' => $smooth_scroll_options ),
+              'anchorSmoothScroll'			=> $anchor_smooth_scroll,
+              'anchorSmoothScrollExclude' => apply_filters( 'tc_anchor_smoothscroll_excl' , array( '[class*=edd]' , '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]', '[class*=um-]' ) ),
 	          	'ReorderBlocks' 		=> esc_attr( TC_utils::$inst->tc_opt( 'tc_block_reorder') ),
 	          	'centerAllImg' 			=> esc_attr( TC_utils::$inst->tc_opt( 'tc_center_img') ),
 	          	'HasComments' 			=> $has_post_comments,
 	          	'LeftSidebarClass' 		=> $left_sb_class,
 	          	'RightSidebarClass' 	=> $right_sb_class,
 	          	'LoadModernizr' 		=> apply_filters( 'tc_load_modernizr' , true ),
-	          	'stickyCustomOffset' 	=> apply_filters( 'tc_sticky_custom_offset' , 0 ),
+	          	'stickyCustomOffset' 	=> apply_filters( 'tc_sticky_custom_offset' , array( "_initial" => 0, "_scrolling" => 0, "options" => array( "_static" => true, "_element" => "" ) ) ),
 	          	'stickyHeader' 			=> esc_attr( TC_utils::$inst->tc_opt( 'tc_sticky_header' ) ),
 	          	'dropdowntoViewport' 	=> esc_attr( TC_utils::$inst->tc_opt( 'tc_menu_resp_dropdown_limit_to_viewport') ),
 	          	'timerOnScrollAllBrowsers' => apply_filters( 'tc_timer_on_scroll_for_all_browser' , true), //<= if false, for ie only
@@ -233,7 +249,9 @@ if ( ! class_exists( 'TC_resources' ) ) :
               'imgSmartLoadEnabled' => esc_attr( TC_utils::$inst->tc_opt( 'tc_img_smart_load' ) ),
               'imgSmartLoadOpts'    => apply_filters( 'tc_img_smart_load_options' , array() ),
               'goldenRatio'         => apply_filters( 'tc_grid_golden_ratio' , 1.618 ),
-              'gridGoldenRatioLimit' => esc_attr( TC_utils::$inst->tc_opt( 'tc_grid_thumb_height' ) )
+              'gridGoldenRatioLimit' => esc_attr( TC_utils::$inst->tc_opt( 'tc_grid_thumb_height' ) ),
+              'isSecondMenuEnabled'  => TC_utils::$inst->tc_is_secondary_menu_enabled(),
+              'secondMenuRespSet'   => esc_attr( TC_utils::$inst->tc_opt( 'tc_second_menu_resp_setting' ) )
 	        	),
 	        	TC_utils::tc_id()
 		    )//end of filter
@@ -244,7 +262,7 @@ if ( ! class_exists( 'TC_resources' ) ) :
 	      wp_enqueue_style( 'fancyboxcss' , TC_BASE_URL . 'inc/assets/js/fancybox/jquery.fancybox-1.3.4.min.css' );
 
 	    //holder.js is loaded when featured pages are enabled AND FP are set to show images and at least one holder should be displayed.
-        $tc_show_featured_pages 	         = TC_featured_pages::$instance -> tc_show_featured_pages();
+      $tc_show_featured_pages 	         = class_exists('TC_featured_pages') && TC_featured_pages::$instance -> tc_show_featured_pages();
     	if ( 0 != $tc_show_featured_pages && $this -> tc_maybe_is_holder_js_required() ) {
 	    	wp_enqueue_script(
 	    		'holder',
@@ -723,7 +741,7 @@ if ( ! class_exists( 'TC_resources' ) ) :
     function tc_maybe_is_holder_js_required(){
       $bool = false;
 
-      if ( ! TC_featured_pages::$instance -> tc_show_featured_pages_img() )
+      if ( ! ( class_exists('TC_featured_pages') && TC_featured_pages::$instance -> tc_show_featured_pages_img() ) )
         return $bool;
 
       $fp_ids = apply_filters( 'tc_featured_pages_ids' , TC_init::$instance -> fp_ids);

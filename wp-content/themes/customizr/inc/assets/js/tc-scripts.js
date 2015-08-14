@@ -14,9 +14,10 @@ var TCParams = TCParams || {
 	SliderHover: 1,
 	SliderName: "demo",
   centerSliderImg : 1,
-	SmoothScroll: "linear",
-  SmoothScrollExclude : ['[class*=edd]', '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]'],
-	stickyCustomOffset: 0,
+	SmoothScroll: { Enabled : 1 , Options : {} },
+	anchorSmoothScroll: "linear",
+  anchorSmoothScrollExclude : ['[class*=edd]', '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]', '[class*=um-]'],
+	stickyCustomOffset: { _initial : 0, _scrolling : 0, options : { _static : true, _element : "" } },
 	stickyHeader: 1,
 	dropdowntoViewport: 1,
 	timerOnScrollAllBrowsers:1,
@@ -37,8 +38,23 @@ var TCParams = TCParams || {
   imgSmartLoadEnabled:0,
   imgSmartLoadOpts: {},
   goldenRatio : 1.618,
-  gridGoldenRatioLimit : 350
-};// Object.create monkey patch ie8 http://stackoverflow.com/a/18020326
+  gridGoldenRatioLimit : 350,
+  isSecondMenuEnabled : 0,
+  secondMenuRespSet : 'in-sn-before'
+}
+// addEventListener Polyfill ie9- http://stackoverflow.com/a/27790212
+window.addEventListener = window.addEventListener || function (e, f) { window.attachEvent('on' + e, f); };
+
+
+// Datenow Polyfill ie9- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now
+if (!Date.now) {
+  Date.now = function now() {
+    return new Date().getTime();
+  };
+}
+
+
+// Object.create monkey patch ie8 http://stackoverflow.com/a/18020326
 if ( ! Object.create ) {
   Object.create = function(proto, props) {
     if (typeof props !== "undefined") {
@@ -182,7 +198,8 @@ if (!Array.prototype.map) {
     // 9. return A
     return A;
   };
-}/* ===================================================
+}
+/* ===================================================
  * bootstrap-transition.js v2.3.2
  * http://getbootstrap.com/2.3.2/javascript.html#transitions
  * ===================================================
@@ -1840,8 +1857,7 @@ var TCParams = TCParams || {};
 
       if ( TCParams && 1 == TCParams.dropdowntoViewport )
       {
-        var tcVisible = $('body').hasClass('sticky-enabled') ? $(window).height() : ($(window).height() - $('.navbar-wrapper').offset().top);
-        tcVisible = ( tcVisible - 90 ) > 80 ? tcVisible - 90 : 300;
+        var tcVisible = czrapp.$_window.height() - this.$element.offset().top + czrapp.$_window.scrollTop();
         this.$element.css('max-height' , tcVisible + 'px');
       }
       else if ( TCParams && 1 != TCParams.dropdowntoViewport && 1 == TCParams.stickyHeader )
@@ -1851,7 +1867,7 @@ var TCParams = TCParams || {};
           $('.back-to-top').trigger('click');
         }
         else {
-          ('html, body').animate({
+          $('html, body').animate({
                   scrollTop: 0
               }, 700);
         }
@@ -2549,37 +2565,37 @@ var TCParams = TCParams || {};
   var pluginPrefix = 'original',
       _props       = ['Width', 'Height'];
 
-  while (_prop = _props.pop()) {
-    (function ( _prop, _lprop ) {
-      $.fn[ pluginPrefix + _prop ] = ('natural' + _prop in new Image()) ? 
-        function () {
-          return this[0][ 'natural' + _prop ];
-        } : 
-        function () {
-          var _size = _getAttr( this, _lprop );
-        
-          if ( _size )
-            return _size;
+  _props.map( function(_prop) {
+    var _lprop = _prop.toLowerCase();
+    $.fn[ pluginPrefix + _prop ] = ('natural' + _prop in new Image()) ?
+      function () {
+        return this[0][ 'natural' + _prop ];
+      } :
+      function () {
+        var _size = _getAttr( this, _lprop );
 
-          var _node = this[0],
-              _img;
-
-          if (_node.tagName.toLowerCase() === 'img') {
-            _img = new Image();
-            _img.src = _node.src,
-            _size = _img[ _lprop ];
-          }
+        if ( _size )
           return _size;
-        };
-    }( _prop, _prop.toLowerCase()));
-  }
+
+        var _node = this[0],
+            _img;
+
+        if (_node.tagName.toLowerCase() === 'img') {
+          _img = new Image();
+          _img.src = _node.src;
+          _size = _img[ _lprop ];
+        }
+        return _size;
+      };
+  } );//map()
 
   function _getAttr( _el, prop ){
-    var _img_size = $(_el).attr( prop );  
-    return ( typeof _img_size === undefined ) ? false : _img_size;     
+    var _img_size = $(_el).attr( prop );
+    return ( typeof _img_size === undefined ) ? false : _img_size;
   }
 
 })( jQuery, window, document );
+
 /* ===================================================
  * jqueryaddDropCap.js v1.0.1
  * ===================================================
@@ -2785,7 +2801,7 @@ var TCParams = TCParams || {};
   //@return : string
   Plugin.prototype._removeSpecChars = function( _expr , _replaceBy ) {
     _replaceBy = _replaceBy || '';
-    return 'string' == typeof(_expr) ? _expr.replace(/[^\w-]/g, _replaceBy ) : '';
+    return 'string' == typeof(_expr) ? _expr.replace(/[^\w-\?!\u00bf-\u00ff]/g, _replaceBy ) : '';
   };
 
   //@return : string or false
@@ -2806,7 +2822,8 @@ var TCParams = TCParams || {};
           }
       });
   };
-})( jQuery, window, document );/* ===================================================
+})( jQuery, window, document );
+/* ===================================================
  * jqueryimgSmartLoad.js v1.0.0
  * ===================================================
  *
@@ -3084,6 +3101,8 @@ var TCParams = TCParams || {};
       var _main_domain = (location.host).split('.').slice(-2).join('.'),
           _reg = new RegExp( _main_domain );
 
+      _href = $.trim( _href );
+
       if ( _href !== '' && _href != '#' && this._isValidURL( _href ) )
         return ! _reg.test( _href );
       return;
@@ -3287,10 +3306,10 @@ var TCParams = TCParams || {};
       return 'x' == _dim ? $_img.outerWidth() : $_img.outerHeight();
     else {
       if ( 'x' == _dim ){
-        var _width = $_img.originalWidth();  
+        var _width = $_img.originalWidth();
         return typeof _width === undefined ? 0 : _width;
       }if ( 'y' == _dim ){
-        var _height = $_img.originalHeight();  
+        var _height = $_img.originalHeight();
         return typeof _height === undefined ? 0 : _height;
       }
     }
@@ -3347,6 +3366,714 @@ var TCParams = TCParams || {};
   };
 
 })( jQuery, window, document );
+// Customizr version of Galambosi's SmoothScroll
+
+// SmoothScroll for websites v1.3.8 (Balazs Galambosi)
+// Licensed under the terms of the MIT license.
+//
+// You may use it in your theme if you credit me. 
+// It is also free to use on any individual website.
+//
+// Exception:
+// The only restriction would be not to publish any  
+// extension for browsers or native application
+// without getting a written permission first.
+//
+
+(function () {
+
+// Scroll Variables (tweakable)
+var defaultOptions = {
+
+    // Scrolling Core
+    frameRate        : 150, // [Hz]
+    animationTime    : 400, // [px]
+    stepSize         : 120, // [px]
+
+    // Pulse (less tweakable)
+    // ratio of "tail" to "acceleration"
+    pulseAlgorithm   : true,
+    pulseScale       : 4,
+    pulseNormalize   : 1,
+
+    // Acceleration
+    accelerationDelta : 20,  // 20
+    accelerationMax   : 1,   // 1
+
+    // Keyboard Settings
+    keyboardSupport   : true,  // option
+    arrowScroll       : 50,     // [px]
+
+    // Other
+    touchpadSupport   : true,
+    fixedBackground   : true, 
+    excluded          : ''    
+};
+
+var options = defaultOptions;
+
+
+// Other Variables
+var isExcluded = false;
+var isFrame = false;
+var direction = { x: 0, y: 0 };
+var initDone  = false;
+var root = document.documentElement;
+var activeElement;
+var observer;
+var deltaBuffer = [];
+var isMac = /^Mac/.test(navigator.platform);
+
+var key = { left: 37, up: 38, right: 39, down: 40, spacebar: 32, 
+            pageup: 33, pagedown: 34, end: 35, home: 36 };
+
+
+/***********************************************
+ * SETTINGS
+ ***********************************************/
+
+var options = defaultOptions;
+
+
+/***********************************************
+ * INITIALIZE
+ ***********************************************/
+
+/**
+ * Tests if smooth scrolling is allowed. Shuts down everything if not.
+ */
+function initTest() {
+    if (options.keyboardSupport) {
+        addEvent('keydown', keydown);
+    }
+}
+
+/**
+ * Sets up scrolls array, determines if frames are involved.
+ */
+function init() {
+  
+    if (initDone || !document.body) return;
+
+    initDone = true;
+
+    var body = document.body;
+    var html = document.documentElement;
+    var windowHeight = window.innerHeight; 
+    var scrollHeight = body.scrollHeight;
+    
+    // check compat mode for root element
+    root = (document.compatMode.indexOf('CSS') >= 0) ? html : body;
+    activeElement = body;
+    
+    initTest();
+
+    // Checks if this script is running in a frame
+    if (top != self) {
+        isFrame = true;
+    }
+
+    /**
+     * This fixes a bug where the areas left and right to 
+     * the content does not trigger the onmousewheel event
+     * on some pages. e.g.: html, body { height: 100% }
+     */
+    else if (scrollHeight > windowHeight &&
+            (body.offsetHeight <= windowHeight || 
+             html.offsetHeight <= windowHeight)) {
+
+        var fullPageElem = document.createElement('div');
+        fullPageElem.style.cssText = 'position:absolute; z-index:-10000; ' +
+                                     'top:0; left:0; right:0; height:' + 
+                                      root.scrollHeight + 'px';
+        document.body.appendChild(fullPageElem);
+        
+        // DOM changed (throttled) to fix height
+        var pendingRefresh;
+        var refresh = function () {
+            if (pendingRefresh) return; // could also be: clearTimeout(pendingRefresh);
+            pendingRefresh = setTimeout(function () {
+                if (isExcluded) return; // could be running after cleanup
+                fullPageElem.style.height = '0';
+                fullPageElem.style.height = root.scrollHeight + 'px';
+                pendingRefresh = null;
+            }, 500); // act rarely to stay fast
+        };
+  
+        setTimeout(refresh, 10);
+
+        // TODO: attributeFilter?
+        var config = {
+            attributes: true, 
+            childList: true, 
+            characterData: false 
+            // subtree: true
+        };
+
+        observer = new MutationObserver(refresh);
+        observer.observe(body, config);
+
+        if (root.offsetHeight <= windowHeight) {
+            var clearfix = document.createElement('div');   
+            clearfix.style.clear = 'both';
+            body.appendChild(clearfix);
+        }
+    }
+
+    // disable fixed background
+    if (!options.fixedBackground && !isExcluded) {
+        body.style.backgroundAttachment = 'scroll';
+        html.style.backgroundAttachment = 'scroll';
+    }
+}
+
+/**
+ * Removes event listeners and other traces left on the page.
+ */
+function cleanup() {
+    observer && observer.disconnect();
+    removeEvent(wheelEvent, wheel);
+    removeEvent('mousedown', mousedown);
+    removeEvent('keydown', keydown);
+}
+
+
+/************************************************
+ * SCROLLING 
+ ************************************************/
+var que = [];
+var pending = false;
+var lastScroll = Date.now();
+
+/**
+ * Pushes scroll actions to the scrolling queue.
+ */
+function scrollArray(elem, left, top) {
+    
+    directionCheck(left, top);
+
+    if (options.accelerationMax != 1) {
+        var now = Date.now();
+        var elapsed = now - lastScroll;
+        if (elapsed < options.accelerationDelta) {
+            var factor = (1 + (50 / elapsed)) / 2;
+            if (factor > 1) {
+                factor = Math.min(factor, options.accelerationMax);
+                left *= factor;
+                top  *= factor;
+            }
+        }
+        lastScroll = Date.now();
+    }          
+    
+    // push a scroll command
+    que.push({
+        x: left, 
+        y: top, 
+        lastX: (left < 0) ? 0.99 : -0.99,
+        lastY: (top  < 0) ? 0.99 : -0.99, 
+        start: Date.now()
+    });
+        
+    // don't act if there's a pending queue
+    if (pending) {
+        return;
+    }  
+
+    var scrollWindow = (elem === document.body);
+    
+    var step = function (time) {
+        
+        var now = Date.now();
+        var scrollX = 0;
+        var scrollY = 0; 
+    
+        for (var i = 0; i < que.length; i++) {
+            
+            var item = que[i];
+            var elapsed  = now - item.start;
+            var finished = (elapsed >= options.animationTime);
+            
+            // scroll position: [0, 1]
+            var position = (finished) ? 1 : elapsed / options.animationTime;
+            
+            // easing [optional]
+            if (options.pulseAlgorithm) {
+                position = pulse(position);
+            }
+            
+            // only need the difference
+            var x = (item.x * position - item.lastX) >> 0;
+            var y = (item.y * position - item.lastY) >> 0;
+            
+            // add this to the total scrolling
+            scrollX += x;
+            scrollY += y;            
+            
+            // update last values
+            item.lastX += x;
+            item.lastY += y;
+        
+            // delete and step back if it's over
+            if (finished) {
+                que.splice(i, 1); i--;
+            }           
+        }
+
+        // scroll left and top
+        if (scrollWindow) {
+            window.scrollBy(scrollX, scrollY);
+        } 
+        else {
+            if (scrollX) elem.scrollLeft += scrollX;
+            if (scrollY) elem.scrollTop  += scrollY;                    
+        }
+        
+        // clean up if there's nothing left to do
+        if (!left && !top) {
+            que = [];
+        }
+        
+        if (que.length) { 
+            requestFrame(step, elem, (1000 / options.frameRate + 1)); 
+        } else { 
+            pending = false;
+        }
+    };
+    
+    // start a new queue of actions
+    requestFrame(step, elem, 0);
+    pending = true;
+}
+
+
+/***********************************************
+ * EVENTS
+ ***********************************************/
+
+/**
+ * Mouse wheel handler.
+ * @param {Object} event
+ */
+function wheel(event) {
+
+    if (!initDone) {
+        init();
+    }
+    
+    var target = event.target;
+    var overflowing = overflowingAncestor(target);
+
+    // use default if there's no overflowing
+    // element or default action is prevented   
+    // or it's a zooming event with CTRL 
+    if (!overflowing || event.defaultPrevented || event.ctrlKey) {
+        return true;
+    }
+    
+    // leave embedded content alone (flash & pdf)
+    if (isNodeName(activeElement, 'embed') || 
+       (isNodeName(target, 'embed') && /\.pdf/i.test(target.src)) ||
+       isNodeName(activeElement, 'object')) {
+        return true;
+    }
+
+    var deltaX = -event.wheelDeltaX || event.deltaX || 0;
+    var deltaY = -event.wheelDeltaY || event.deltaY || 0;
+    
+    if (isMac) {
+        if (event.wheelDeltaX && isDivisible(event.wheelDeltaX, 120)) {
+            deltaX = -120 * (event.wheelDeltaX / Math.abs(event.wheelDeltaX));
+        }
+        if (event.wheelDeltaY && isDivisible(event.wheelDeltaY, 120)) {
+            deltaY = -120 * (event.wheelDeltaY / Math.abs(event.wheelDeltaY));
+        }
+    }
+    
+    // use wheelDelta if deltaX/Y is not available
+    if (!deltaX && !deltaY) {
+        deltaY = -event.wheelDelta || 0;
+    }
+
+    // line based scrolling (Firefox mostly)
+    if (event.deltaMode === 1) {
+        deltaX *= 40;
+        deltaY *= 40;
+    }
+    
+    // check if it's a touchpad scroll that should be ignored
+    if (!options.touchpadSupport && isTouchpad(deltaY)) {
+        return true;
+    }
+
+    // scale by step size
+    // delta is 120 most of the time
+    // synaptics seems to send 1 sometimes
+    if (Math.abs(deltaX) > 1.2) {
+        deltaX *= options.stepSize / 120;
+    }
+    if (Math.abs(deltaY) > 1.2) {
+        deltaY *= options.stepSize / 120;
+    }
+    
+    scrollArray(overflowing, deltaX, deltaY);
+    event.preventDefault();
+    scheduleClearCache();
+}
+
+/**
+ * Keydown event handler.
+ * @param {Object} event
+ */
+function keydown(event) {
+
+    var target   = event.target;
+    var modifier = event.ctrlKey || event.altKey || event.metaKey || 
+                  (event.shiftKey && event.keyCode !== key.spacebar);
+    
+    // our own tracked active element could've been removed from the DOM
+    if (!document.contains(activeElement)) {
+        activeElement = document.activeElement;
+    }
+
+    // do nothing if user is editing text
+    // or using a modifier key (except shift)
+    // or in a dropdown
+    // or inside interactive elements
+    var inputNodeNames = /^(textarea|select|embed|object)$/i;
+    var buttonTypes = /^(button|submit|radio|checkbox|file|color|image)$/i;
+    if ( inputNodeNames.test(target.nodeName) ||
+         isNodeName(target, 'input') && !buttonTypes.test(target.type) ||
+         isNodeName(activeElement, 'video') ||
+         isInsideYoutubeVideo(event) ||
+         target.isContentEditable || 
+         event.defaultPrevented   ||
+         modifier ) {
+      return true;
+    }
+    
+    // spacebar should trigger button press
+    if ((isNodeName(target, 'button') ||
+         isNodeName(target, 'input') && buttonTypes.test(target.type)) &&
+        event.keyCode === key.spacebar) {
+      return true;
+    }
+    
+    var shift, x = 0, y = 0;
+    var elem = overflowingAncestor(activeElement);
+    var clientHeight = elem.clientHeight;
+
+    if (elem == document.body) {
+        clientHeight = window.innerHeight;
+    }
+
+    switch (event.keyCode) {
+        case key.up:
+            y = -options.arrowScroll;
+            break;
+        case key.down:
+            y = options.arrowScroll;
+            break;         
+        case key.spacebar: // (+ shift)
+            shift = event.shiftKey ? 1 : -1;
+            y = -shift * clientHeight * 0.9;
+            break;
+        case key.pageup:
+            y = -clientHeight * 0.9;
+            break;
+        case key.pagedown:
+            y = clientHeight * 0.9;
+            break;
+        case key.home:
+            y = -elem.scrollTop;
+            break;
+        case key.end:
+            var damt = elem.scrollHeight - elem.scrollTop - clientHeight;
+            y = (damt > 0) ? damt+10 : 0;
+            break;
+        case key.left:
+            x = -options.arrowScroll;
+            break;
+        case key.right:
+            x = options.arrowScroll;
+            break;            
+        default:
+            return true; // a key we don't care about
+    }
+
+    scrollArray(elem, x, y);
+    event.preventDefault();
+    scheduleClearCache();
+}
+
+/**
+ * Mousedown event only for updating activeElement
+ */
+function mousedown(event) {
+    activeElement = event.target;
+}
+
+
+/***********************************************
+ * OVERFLOW
+ ***********************************************/
+
+var uniqueID = (function () {
+    var i = 0;
+    return function (el) {
+        return el.uniqueID || (el.uniqueID = i++);
+    };
+})();
+
+var cache = {}; // cleared out after a scrolling session
+var clearCacheTimer;
+
+//setInterval(function () { cache = {}; }, 10 * 1000);
+
+function scheduleClearCache() {
+    clearTimeout(clearCacheTimer);
+    clearCacheTimer = setInterval(function () { cache = {}; }, 1*1000);
+}
+
+function setCache(elems, overflowing) {
+    for (var i = elems.length; i--;)
+        cache[uniqueID(elems[i])] = overflowing;
+    return overflowing;
+}
+
+//  (body)                (root)
+//         | hidden | visible | scroll |  auto  |
+// hidden  |   no   |    no   |   YES  |   YES  |
+// visible |   no   |   YES   |   YES  |   YES  |
+// scroll  |   no   |   YES   |   YES  |   YES  |
+// auto    |   no   |   YES   |   YES  |   YES  |
+
+function overflowingAncestor(el) {
+    var elems = [];
+    var body = document.body;
+    var rootScrollHeight = root.scrollHeight;
+    do {
+        var cached = cache[uniqueID(el)];
+        if (cached) {
+            return setCache(elems, cached);
+        }
+        elems.push(el);
+        if (rootScrollHeight === el.scrollHeight) {
+            var topOverflowsNotHidden = overflowNotHidden(root) && overflowNotHidden(body);
+            var isOverflowCSS = topOverflowsNotHidden || overflowAutoOrScroll(root);
+            if (isFrame && isContentOverflowing(root) || 
+               !isFrame && isOverflowCSS) {
+                return setCache(elems, getScrollRoot()); 
+            }
+        } else if (isContentOverflowing(el) && overflowAutoOrScroll(el)) {
+            return setCache(elems, el);
+        }
+    } while (el = el.parentElement);
+}
+
+function isContentOverflowing(el) {
+    return (el.clientHeight + 10 < el.scrollHeight);
+}
+
+// typically for <body> and <html>
+function overflowNotHidden(el) {
+    var overflow = getComputedStyle(el, '').getPropertyValue('overflow-y');
+    return (overflow !== 'hidden');
+}
+
+// for all other elements
+function overflowAutoOrScroll(el) {
+    var overflow = getComputedStyle(el, '').getPropertyValue('overflow-y');
+    return (overflow === 'scroll' || overflow === 'auto');
+}
+
+
+/***********************************************
+ * HELPERS
+ ***********************************************/
+
+function addEvent(type, fn) {
+    window.addEventListener(type, fn, false);
+}
+
+function removeEvent(type, fn) {
+    window.removeEventListener(type, fn, false);  
+}
+
+function isNodeName(el, tag) {
+    return (el.nodeName||'').toLowerCase() === tag.toLowerCase();
+}
+
+function directionCheck(x, y) {
+    x = (x > 0) ? 1 : -1;
+    y = (y > 0) ? 1 : -1;
+    if (direction.x !== x || direction.y !== y) {
+        direction.x = x;
+        direction.y = y;
+        que = [];
+        lastScroll = 0;
+    }
+}
+
+var deltaBufferTimer;
+
+if (window.localStorage && localStorage.SS_deltaBuffer) {
+    deltaBuffer = localStorage.SS_deltaBuffer.split(',');
+}
+
+function isTouchpad(deltaY) {
+    if (!deltaY) return;
+    if (!deltaBuffer.length) {
+        deltaBuffer = [deltaY, deltaY, deltaY];
+    }
+    deltaY = Math.abs(deltaY)
+    deltaBuffer.push(deltaY);
+    deltaBuffer.shift();
+    clearTimeout(deltaBufferTimer);
+    deltaBufferTimer = setTimeout(function () {
+        if (window.localStorage) {
+            localStorage.SS_deltaBuffer = deltaBuffer.join(',');
+        }
+    }, 1000);
+    return !allDeltasDivisableBy(120) && !allDeltasDivisableBy(100);
+} 
+
+function isDivisible(n, divisor) {
+    return (Math.floor(n / divisor) == n / divisor);
+}
+
+function allDeltasDivisableBy(divisor) {
+    return (isDivisible(deltaBuffer[0], divisor) &&
+            isDivisible(deltaBuffer[1], divisor) &&
+            isDivisible(deltaBuffer[2], divisor));
+}
+
+function isInsideYoutubeVideo(event) {
+    var elem = event.target;
+    var isControl = false;
+    if (document.URL.indexOf ('www.youtube.com/watch') != -1) {
+        do {
+            isControl = (elem.classList && 
+                         elem.classList.contains('html5-video-controls'));
+            if (isControl) break;
+        } while (elem = elem.parentNode);
+    }
+    return isControl;
+}
+
+var requestFrame = (function () {
+      return (window.requestAnimationFrame       || 
+              window.webkitRequestAnimationFrame || 
+              window.mozRequestAnimationFrame    ||
+              function (callback, element, delay) {
+                 window.setTimeout(callback, delay || (1000/60));
+             });
+})();
+
+var MutationObserver = (window.MutationObserver || 
+                        window.WebKitMutationObserver ||
+                        window.MozMutationObserver);  
+
+var getScrollRoot = (function() {
+  var SCROLL_ROOT;
+  return function() {
+    if (!SCROLL_ROOT) {
+      var dummy = document.createElement('div');
+      dummy.style.cssText = 'height:10000px;width:1px;';
+      document.body.appendChild(dummy);
+      var bodyScrollTop  = document.body.scrollTop;
+      var docElScrollTop = document.documentElement.scrollTop;
+      window.scrollBy(0, 1);
+      if (document.body.scrollTop != bodyScrollTop)
+        (SCROLL_ROOT = document.body);
+      else 
+        (SCROLL_ROOT = document.documentElement);
+      window.scrollBy(0, -1);
+      document.body.removeChild(dummy);
+    }
+    return SCROLL_ROOT;
+  };
+})();
+
+
+/***********************************************
+ * PULSE (by Michael Herf)
+ ***********************************************/
+ 
+/**
+ * Viscous fluid with a pulse for part and decay for the rest.
+ * - Applies a fixed force over an interval (a damped acceleration), and
+ * - Lets the exponential bleed away the velocity over a longer interval
+ * - Michael Herf, http://stereopsis.com/stopping/
+ */
+function pulse_(x) {
+    var val, start, expx;
+    // test
+    x = x * options.pulseScale;
+    if (x < 1) { // acceleartion
+        val = x - (1 - Math.exp(-x));
+    } else {     // tail
+        // the previous animation ended here:
+        start = Math.exp(-1);
+        // simple viscous drag
+        x -= 1;
+        expx = 1 - Math.exp(-x);
+        val = start + (expx * (1 - start));
+    }
+    return val * options.pulseNormalize;
+}
+
+function pulse(x) {
+    if (x >= 1) return 1;
+    if (x <= 0) return 0;
+
+    if (options.pulseNormalize == 1) {
+        options.pulseNormalize /= pulse_(1);
+    }
+    return pulse_(x);
+}
+
+var wheelEvent;
+if ('onwheel' in document.createElement('div'))
+    wheelEvent = 'wheel';
+else if ('onmousewheel' in document.createElement('div'))
+    wheelEvent = 'mousewheel';
+
+
+// Customizr mod
+//Customizr mod wrap following: instructions in a function statement
+//returns whether or not the smootScroll has been initialized
+function _maybeInit( fire ){
+  if (wheelEvent) {
+    addEvent(wheelEvent, wheel);
+    addEvent('mousedown', mousedown);
+    if ( ! fire ) addEvent('load', init);
+    else init();
+  }
+  return wheelEvent ? true : false;
+}
+// smoothScroll "constructor"
+smoothScroll = function ( _options ) {
+  smoothScroll._setCustomOptions( _options );
+  _maybeInit() && czrapp.$_body.addClass('tc-smoothscroll');
+}
+// expose useful methods ( for the preview )
+smoothScroll._cleanUp = function(){
+  cleanup();    
+  czrapp.$_body.removeClass('tc-smoothscroll');
+}
+smoothScroll._maybeFire = function(){
+  //will be called from the preview so when document already loaded
+  // pass to the function _fire = true, fire it immediately
+  _maybeInit(true) && czrapp.$_body.addClass('tc-smoothscroll');
+}
+smoothScroll._setCustomOptions = function( _options ){
+  options  =  _options ? _.extend( options, _options) : options;
+}
+// end Customizr mod
+})();
+
+var smoothScroll;
 //@global TCParams
 var czrapp = czrapp || {};
 
@@ -3415,9 +4142,9 @@ var czrapp = czrapp || {};
 
 
     /**
-     * Cache properties on Dom Ready
-     * @return {[type]} [description]
-     */
+    * Cache properties on Dom Ready
+    * @return {[type]} [description]
+    */
     cacheProp : function() {
       $.extend( czrapp, {
         //cache various jQuery el in czrapp obj
@@ -3429,11 +4156,60 @@ var czrapp = czrapp || {};
 
         //various properties definition
         localized        : TCParams || {},
-        reordered_blocks : false,//store the states of the sidebar layout
+        is_responsive    : this.isResponsive(),//store the initial responsive state of the window
+        current_device   : this.getDevice()//store the initial device
       });
+      return czrapp;
+    },
+
+
+    /***************************************************************************
+    * CUSTOM EVENTS
+    * tc-resize
+    ****************************************************************************/
+    emitCustomEvents : function() {
+      var that = this;
+      /*-----------------------------------------------------
+      -> CUSTOM RESIZE EVENT
+      ------------------------------------------------------*/
+      czrapp.$_window.resize( function(e) {
+        var $_windowWidth     = czrapp.$_window.width(),
+            _current          = czrapp.current_device,//<= stored on last resize event or on load
+            //15 pixels adjustement to avoid replacement before real responsive width
+            _to               = that.getDevice();
+
+        //updates width dependant properties
+        czrapp.is_responsive  = that.isResponsive();
+        czrapp.current_device = _to;
+        czrapp.$_body.trigger( 'tc-resize', { current : _current, to : _to} );
+      } );//resize();
 
       return czrapp;
     },
+
+
+    //bool
+    isResponsive : function() {
+      return $(window).width() <= 979 - 15;
+    },
+
+    //@return string of current device
+    getDevice : function() {
+      var _devices = {
+            desktop : 979 - 15,
+            tablet : 767 - 15,
+            smartphone : 480 - 15
+          },
+          _current_device = 'desktop',
+          $_window = czrapp.$_window || $(window);
+
+      _.map( _devices, function( max_width, _dev ){
+        if ( $_window.width() <= max_width )
+          _current_device = _dev;
+      } );
+      return _current_device;
+    },
+
 
 
     /***************************************************************************
@@ -3539,6 +4315,12 @@ var czrapp = czrapp || {};
 
     isCustomizing    : function() {
       return czrapp.$_body.hasClass('is-customizing');
+    },
+    getDevice : function() {
+      return czrapp.getDevice();
+    },
+    isReponsive : function() {
+      return czrapp.isReponsive();
     }
 
   };//_methods{}
@@ -3733,6 +4515,10 @@ var czrapp = czrapp || {};
     //INIT
     init : function() {
       var self = this;
+
+      // cache jQuery el
+      this.$_sliders = $( 'div[id*="customizr-slider"]' );
+
       //@todo EVENT
       //Recenter the slider arrows on resize
       czrapp.$_window.resize( function(){
@@ -3752,22 +4538,22 @@ var czrapp = czrapp || {};
         return;
 
       if ( 0 !== _delay.length && ! _hover ) {
-        $("#customizr-slider").carousel({
+        this.$_sliders.carousel({
             interval: _delay,
             pause: "false"
         });
       } else if ( 0 !== _delay.length ) {
-        $("#customizr-slider").carousel({
+        this.$_sliders.carousel({
             interval: _delay
         });
       } else {
-        $("#customizr-slider").carousel();
+        this.$_sliders.carousel();
       }
     },
 
     manageHoverClass : function() {
       //add a class to the slider on hover => used to display the navigation arrow
-      $(".carousel").hover( function() {
+      this.$_sliders.hover( function() {
           $(this).addClass('tc-slid-hover');
         },
         function() {
@@ -3778,9 +4564,9 @@ var czrapp = czrapp || {};
 
     //SLIDER ARROWS
     centerSliderArrows : function() {
-      if ( 0 === $('.carousel').length )
+      if ( 0 === this.$_sliders.length )
           return;
-      $('.carousel').each( function() {
+      this.$_sliders.each( function() {
           var _slider_height = $( '.carousel-inner' , $(this) ).height();
           $('.tc-slider-controls', $(this) ).css("line-height", _slider_height +'px').css("max-height", _slider_height +'px');
       });
@@ -3789,16 +4575,17 @@ var czrapp = czrapp || {};
 
     //Slider swipe support with hammer.js
     addSwipeSupport : function() {
-      if ( 'function' != typeof($.fn.hammer) )
+      if ( 'function' != typeof($.fn.hammer) || 0 === this.$_sliders.length )
         return;
+
       //prevent propagation event from sensible children
-      $(".carousel input, .carousel button, .carousel textarea, .carousel select, .carousel a").on("touchstart touchmove", function(ev) {
+      this.$_sliders.on('touchstart touchmove', 'input, button, textarea, select, a:not(".tc-slide-link")', function(ev) {
           ev.stopPropagation();
       });
 
-      var _is_rtl = $('body').hasClass('rtl');
-      $('.carousel' ).each( function() {
-          $(this).hammer().on('swipeleft tap', function() {
+      var _is_rtl = czrapp.$_body.hasClass('rtl');
+      this.$_sliders.each( function() {
+          $(this).hammer().on('swipeleft', function() {
               $(this).carousel( ! _is_rtl ? 'next' : 'prev' );
           });
           $(this).hammer().on('swiperight', function(){
@@ -3810,7 +4597,7 @@ var czrapp = czrapp || {};
     //Has to be fire on load after all other methods
     //@todo understand why...
     sliderTriggerSimpleLoad : function() {
-      this.triggerSimpleLoad( $( '.carousel .carousel-inner').find('img') );
+      this.triggerSimpleLoad( this.$_sliders.find('.carousel-inner img') );
     }
   };//methods {}
 
@@ -3825,10 +4612,9 @@ var czrapp = czrapp || {};
 (function($, czrapp) {
   var _methods =  {
     init : function() {
-       this.timer = 0;
-       this.increment = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
+      this.timer = 0;
+      this.increment = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
     },//init
-
 
     //Event Listener
     eventListener : function() {
@@ -3870,13 +4656,18 @@ var czrapp = czrapp || {};
       }
     },//eventHandler
 
+    //SMOOTH SCROLL
+    smoothScroll: function() {
+      if ( TCParams.SmoothScroll && TCParams.SmoothScroll.Enabled )
+        smoothScroll( TCParams.SmoothScroll.Options );
+    },
 
     //SMOOTH SCROLL FOR AUTHORIZED LINK SELECTORS
     anchorSmoothScroll : function() {
-      if ( ! TCParams.SmoothScroll || 'easeOutExpo' != TCParams.SmoothScroll )
+      if ( ! TCParams.anchorSmoothScroll || 'easeOutExpo' != TCParams.anchorSmoothScroll )
             return;
 
-      var _excl_sels = ( TCParams.SmoothScrollExclude && _.isArray( TCParams.SmoothScrollExclude ) ) ? TCParams.SmoothScrollExclude.join(',') : '';
+      var _excl_sels = ( TCParams.anchorSmoothScrollExclude && _.isArray( TCParams.anchorSmoothScrollExclude ) ) ? TCParams.anchorSmoothScrollExclude.join(',') : '';
       $('a[href^="#"]', '#content').not( _excl_sels ).click(function () {
         var anchor_id = $(this).attr("href");
 
@@ -3887,11 +4678,12 @@ var czrapp = czrapp || {};
         if ('#' != anchor_id) {
             $('html, body').animate({
                 scrollTop: $(anchor_id).offset().top
-            }, 700, TCParams.SmoothScroll);
+            }, 700, TCParams.anchorSmoothScroll);
         }
         return false;
       });//click
     },
+
 
     //Btt arrow visibility
     bttArrowVisibility : function () {
@@ -3975,82 +4767,57 @@ var czrapp = czrapp || {};
     //DYNAMIC REORDERING
     //Detect layout and reorder content divs
     dynSidebarReorder : function() {
-      //custom sidebar reorder event listener setup
+      //Enable reordering if option is checked in the customizer.
+      if ( 1 != TCParams.ReorderBlocks )
+        return;
+
+      //fire on DOM READY and only for responsive devices
+      if ( 'desktop' != this.getDevice() )
+        this._reorderSidebars( 'responsive' );
+
+      //fire on custom resize event
       var self = this;
-      czrapp.$_body.on( 'reorder-sidebars' , function(e, param) { self.listenToSidebarReorderEvent(e, param); } );
+      czrapp.$_body.on( 'tc-resize' , function(e, param) {
+        param = _.isObject(param) ? param : {};
+        var _to = 'desktop' != param.to ? 'responsive' : 'normal',
+            _current = 'desktop' != param.current ? 'responsive' : 'normal';
 
-      //fire on dom ready
-      this.emit('emitSidebarReorderEvent');
+        if ( _current != _to )
+          self._reorderSidebars( _to );
+      } );
     },
 
 
-    //DYNAMIC REORDERING
-    //Emit an event on the body el
-    emitSidebarReorderEvent : function() {
-      //Enable reordering if option is checked in the customizer.
-      if ( 1 != TCParams.ReorderBlocks )
-        return;
-
-      var $_windowWidth         = czrapp.$_window.width();
-
-      //15 pixels adjustement to avoid replacement before real responsive width
-      if ( $_windowWidth  > 767 - 15 && czrapp.reordered_blocks )
-        czrapp.$_body.trigger( 'reorder-sidebars', { to : 'normal' } );
-      else if ( ( $_windowWidth  <= 767 - 15 ) && ! czrapp.reordered_blocks )
-        czrapp.$_body.trigger( 'reorder-sidebars', { to : 'responsive' } );
-    },
-
-
-    //DYNAMIC REORDERING
-    //Listen to event on body el
-    listenToSidebarReorderEvent : function( e, param ) {
-      //Enable reordering if option is checked in the customizer.
-      if ( 1 != TCParams.ReorderBlocks )
-        return;
-
-      //assign default value to action param
-      param               = _.isObject(param) ? param : { to : 'normal' };
-      param.to            = param.to || 'normal';
-
-      var LeftSidebarClass    = TCParams.LeftSidebarClass || '.span3.left.tc-sidebar',
+    //Reorder sidebar actions
+    _reorderSidebars : function( _sidebarLayout ) {
+      _sidebarLayout = _sidebarLayout || 'normal';
+      var that = this,
+          LeftSidebarClass    = TCParams.LeftSidebarClass || '.span3.left.tc-sidebar',
           RightSidebarClass   = TCParams.RightSidebarClass || '.span3.right.tc-sidebar',
-          $_wrapper           = $('#main-wrapper .container[role=main] > .column-content-wrapper'),
-          $_content           = $("#main-wrapper .container .article-container"),
-          $_left              = $("#main-wrapper .container " + LeftSidebarClass),
-          $_right             = $("#main-wrapper .container " + RightSidebarClass),
           $_WindowWidth       = czrapp.$_window.width();
 
-      //15 pixels adjustement to avoid replacement before real responsive width
-      switch ( param.to ) {
-        case 'normal' :
-          if ( $_left.length ) {
-            $_left.detach();
-            $_content.detach();
-            $_wrapper.append($_left).append($_content);
-          }
-          if ( $_right.length ) {
-              $_right.detach();
-              $_wrapper.append($_right);
-          }
-          czrapp.reordered_blocks = false; //this could stay in both if blocks instead
-        break;
+      //cache some $
+      that.$_content      = that.$_content || $("#main-wrapper .container .article-container");
+      that.$_left         = that.$_left || $("#main-wrapper .container " + LeftSidebarClass);
+      that.$_right        = that.$_right || $("#main-wrapper .container " + RightSidebarClass);
 
-        case 'responsive' :
-          if ( $_left.length ) {
-             $_left.detach();
-            $_content.detach();
-            $_wrapper.append($_content).append($_left);
-          }
-          if ( $_right.length ) {
-              $_right.detach();
-              $_wrapper.append($_right);
-          }
-          czrapp.reordered_blocks = true; //this could stay in both if blocks instead
-        break;
-      }
+      // check if we have iframes
+      iframeContainers = that._has_iframe( { 'content' : this.$_content, 'left' : this.$_left } ) ;
+
+      var leftIframe    = $.inArray('left', iframeContainers) > -1,
+          contentIframe = $.inArray('content', iframeContainers) > -1;
+
+      //both conain iframes => do nothing
+      if ( leftIframe && contentIframe )
+        return;    
+
+      if ( that.$_left.length ) {
+        if ( leftIframe )
+          that.$_content[ _sidebarLayout === 'normal' ?  'insertAfter' : 'insertBefore']( that.$_left );
+        else
+          that.$_left[ _sidebarLayout === 'normal' ?  'insertBefore' : 'insertAfter']( that.$_content );
+      } 
     },
-
-
 
     //Handle dropdown on click for multi-tier menus
     dropdownMenuEventsHandler : function() {
@@ -4087,7 +4854,115 @@ var czrapp = czrapp || {};
             return false;
         });//.on()
       });//.each()
+    },
+
+    //@return void()
+    //simply toggles a "hover" class to the relevant elements
+    menuButtonHover : function() {
+      var $_menu_btns = $('.btn-toggle-nav');
+      //BUTTON HOVER (with handler)
+      $_menu_btns.hover(
+        function( evt ) {
+          $(this).addClass('hover');
+        },
+        function( evt ) {
+          $(this).removeClass('hover');
+        }
+      );
+    },
+
+
+    //Mobile behaviour for the secondary menu
+    secondMenuRespActions : function() {
+      if ( ! TCParams.isSecondMenuEnabled )
+        return;
+      //Enable reordering if option is checked in the customizer.
+      var userOption = TCParams.secondMenuRespSet || false,
+          that = this;
+      //if not a relevant option, abort
+      if ( ! userOption || -1 == userOption.indexOf('in-sn') )
+        return;
+
+      //cache some $
+      this.$_sec_menu_els  = this.$_sec_menu_els || $('.nav > li', '.tc-header .nav-collapse');
+      this.$_sn_wrap       = this.$_sn_wrap || $('.sn-nav', '.sn-nav-wrapper');
+      this.$_sec_menu_wrap = this.$_sec_menu_wrap || $('.nav', '.tc-header .nav-collapse');
+
+      //fire on DOM READY
+      var _locationOnDomReady = 'desktop' == this.getDevice() ? 'navbar' : 'side_nav';
+
+      if ( 'desktop' != this.getDevice() )
+        this._manageMenuSeparator( _locationOnDomReady , userOption)._moveSecondMenu( _locationOnDomReady , userOption );
+
+      //fire on custom resize event
+      czrapp.$_body.on( 'tc-resize', function( e, param ) {
+        param = _.isObject(param) ? param : {};
+        var _to = 'desktop' != param.to ? 'side_nav' : 'navbar',
+            _current = 'desktop' != param.current ? 'side_nav' : 'navbar';
+
+        if ( _current == _to )
+          return;
+
+        that._manageMenuSeparator( _to, userOption)._moveSecondMenu( _to, userOption );
+      } );//.on()
+    },
+
+    _manageMenuSeparator : function( _to, userOption ) {
+      //add/remove a separator between the two menus
+      var that = this;
+      if ( 'navbar' == _to )
+        $( '.secondary-menu-separator', that.$_sn_wrap).remove();
+      else {
+        $_sep = $( '<li class="menu-item secondary-menu-separator"><hr class="featurette-divider"></hr></li>' );
+
+        switch(userOption) {
+          case 'in-sn-before' :
+            this.$_sn_wrap.prepend($_sep);
+          break;
+
+          case 'in-sn-after' :
+            this.$_sn_wrap.append($_sep);
+          break;
+        }
+      }
+      return this;
+    },
+
+
+    //@return void()
+    //@param _where = menu items location string 'navbar' or 'side_nav'
+    _moveSecondMenu : function( _where, userOption ) {
+      _where = _where || 'side_nav';
+      var that = this;
+      switch( _where ) {
+          case 'navbar' :
+            that.$_sec_menu_wrap.append(that.$_sec_menu_els);
+          break;
+
+          case 'side_nav' :
+            if ( 'in-sn-before' == userOption )
+              that.$_sn_wrap.prepend(that.$_sec_menu_els);
+            else
+              that.$_sn_wrap.append(that.$_sec_menu_els);
+          break;
+        }
+    },
+
+    //Helpers
+    
+    //Check if the passed element(s) contains an iframe
+    //@return list of containers
+    //@param $_elements = mixed
+    _has_iframe : function ( $_elements ) {
+      var that = this,
+          to_return = [];
+      _.map( $_elements, function( $_el, container ){
+        if ( $_el.length > 0 && $_el.find('IFRAME').length > 0 )
+          to_return.push(container);
+      });
+      return to_return;
     }
+
   };//_methods{}
 
   czrapp.methods.Czr_UserExperience = {};
@@ -4104,14 +4979,15 @@ var czrapp = czrapp || {};
       //cache jQuery el
       this.$_sticky_logo    = $('img.sticky', '.site-logo');
       this.$_resetMarginTop = $('#tc-reset-margin-top');
-
       //subclass properties
       this.elToHide         = []; //[ '.social-block' , '.site-description' ],
-      this.customOffset     = +TCParams.stickyCustomOffset;
+      this.customOffset     = TCParams.stickyCustomOffset || {};// defaults : { _initial : 0, _scrolling : 0 }
       this.logo             = 0 === this.$_sticky_logo.length ? { _logo: $('img:not(".sticky")', '.site-logo') , _ratio: '' }: false;
       this.timer            = 0;
       this.increment        = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
       this.triggerHeight    = 20; //0.5 * windowHeight;
+
+      this.scrollingDelay   = 1 != TCParams.timerOnScrollAllBrowsers && czrapp.$_body.hasClass('ie') ? 50 : 5;
     },//init()
 
 
@@ -4132,12 +5008,18 @@ var czrapp = czrapp || {};
       });//.on()
 
       //RESIZING ACTIONS
-      czrapp.$_window.resize( function() {
+      czrapp.$_window.on( 'tc-resize', function() {
         self.stickyHeaderEventHandler('resize');
       });
 
+      //SCROLLING ACTIONS
       czrapp.$_window.scroll( function() {
         self.stickyHeaderEventHandler('scroll');
+      });
+
+      //SIDENAV ACTIONS => recalculate the top offset on sidenav toggle
+      czrapp.$_body.on( czrapp.$_body.hasClass('tc-is-mobile') ? 'touchstart' : 'click' , '.sn-toggle', function() {
+        self.stickyHeaderEventHandler('sidenav-toggle');
       });
     },
 
@@ -4159,24 +5041,25 @@ var czrapp = czrapp || {};
         break;
 
         case 'scroll' :
+          var _delay = 0;
+
            //use a timer
           if ( this.timer) {
             this.increment++;
             clearTimeout(self.timer);
           }
 
-          if ( 1 == TCParams.timerOnScrollAllBrowsers ) {
-            this.timer = setTimeout( function() {
+          if ( this.increment > 5 )
+            //decrease the scrolling trigger delay when smoothscroll on to avoid not catching the scroll when scrolling fast and sticky header not already triggered
+            _delay = ! ( czrapp.$_body.hasClass('tc-smoothscroll') && ! this._is_scrolling() ) ? this.scrollingDelay : 15;
+
+          this.timer = setTimeout( function() {
               self._sticky_header_scrolling_actions();
-            }, self.increment > 5 ? 50 : 0 );
-          } else if ( czrapp.$_body.hasClass('ie') ) {
-            this.timer = setTimeout( function() {
-              self._sticky_header_scrolling_actions();
-            }, self.increment > 5 ? 50 : 0 );
-          }
+          }, _delay );
         break;
 
         case 'resize' :
+        case 'sidenav-toggle' :
           self._set_sticky_offsets();
           self._set_header_top_offset();
           self._set_logo_height();
@@ -4198,17 +5081,62 @@ var czrapp = czrapp || {};
     },
 
     //STICKY HEADER SUB CLASS HELPER (private like)
-    _get_initial_offset : function() {
+    _get_top_offset : function() {
       //initialOffset     = ( 1 == isUserLogged &&  580 < $(window).width() ) ? $('#wpadminbar').height() : 0;
-      var initialOffset   = 0;
+      //custom offset : are we scrolling ? => 2 custom top offset values can be defined by users : initial and scrolling
+      //make sure custom offset are set and numbers
+      var initialOffset   = 0,
+          that            = this,
+          customOffset    = +this._get_custom_offset( that._is_scrolling() ? '_scrolling' : '_initial' );
+
       if ( 1 == this.isUserLogged() && ! this.isCustomizing() ) {
         if ( 580 < czrapp.$_window.width() )
           initialOffset = czrapp.$_wpadminbar.height();
         else
           initialOffset = ! this._is_scrolling() ? czrapp.$_wpadminbar.height() : 0;
       }
-      return initialOffset + this.customOffset;
+      return initialOffset + customOffset ;
     },
+
+
+    //CUSTOM TOP OFFSET
+    //return the user defined dynamic or static custom offset
+    //custom offset is a localized param that can be passed with the wp filter : tc_sticky_custom_offset
+    //its default value is an object : { _initial : 0, _scrolling : 0, options : { _static : true, _element : "" }
+    //if _static is set to false and a dom element is provided, then the custom offset will be the calculated height of the element
+    _get_custom_offset : function( _context ) {
+      //Always check if this.customOffset is well formed
+      if ( _.isEmpty( this.customOffset ) )
+        return 0;
+      if ( ! this.customOffset[_context] )
+        return 0;
+      if ( ! this.customOffset.options )
+        return this.customOffset[_context];
+
+      //always return a static value for the scrolling context;
+      if ( '_scrolling' == _context )
+        return +this.customOffset[_context] || 0;
+
+      //INITIAL CONTEXT
+      //CASE 1 : STATIC
+      if ( this.customOffset.options._static )
+        return +this.customOffset[_context] || 0;
+
+      var that = this,
+          $_el = $(that.customOffset.options._element);
+
+      //CASE 2 : DYNAMIC : based on an element's height
+      //does the element exists?
+      if ( ! $_el.length )
+        return 0;
+      else {
+        return $_el.outerHeight() || +this.customOffset[_context] || 0;
+      }
+      return;
+    },
+
+
+
 
     //STICKY HEADER SUB CLASS HELPER (private like)
     _set_sticky_offsets : function() {
@@ -4222,18 +5150,18 @@ var czrapp = czrapp || {};
       //What is the initial offset of the header ?
       var headerHeight    = czrapp.$_tcHeader.outerHeight(true); /* include borders and eventual margins (true param)*/
       //set initial margin-top = initial offset + header's height
-      this.$_resetMarginTop.css('margin-top' , ( + headerHeight + self.customOffset ) + 'px');
+      this.$_resetMarginTop.css('margin-top' , + headerHeight  + 'px');
     },
 
     //STICKY HEADER SUB CLASS HELPER (private like)
     _set_header_top_offset : function() {
       var self = this;
       //set header initial offset
-      czrapp.$_tcHeader.css('top' , self._get_initial_offset() );
+      czrapp.$_tcHeader.css('top' , self._get_top_offset() );
     },
 
     //STICKY HEADER SUB CLASS HELPER (private like)
-    _prepare_logo_transition : function(){ 
+    _prepare_logo_transition : function(){
       //do nothing if the browser doesn't support csstransitions (modernizr)
       //or if no logo (includes the case where we have two logos, normal and sticky one)
       if ( ! ( czrapp.$_html.hasClass('csstransitions') && ( this.logo && 0 !== this.logo._logo.length ) ) )
@@ -4241,11 +5169,11 @@ var czrapp = czrapp || {};
 
       var logoW = this.logo._logo.originalWidth(),
           logoH = this.logo._logo.originalHeight();
-      
+
       //check that all numbers are valid before using division
       if ( 0 === _.size( _.filter( [ logoW, logoH ], function(num){ return _.isNumber( parseInt(num, 10) ) && 0 !== num; } ) ) )
         return;
-    
+
       this.logo._ratio = logoW / logoH;
       this.logo._logo.css('width' , logoW );
     },
@@ -4299,6 +5227,284 @@ var czrapp = czrapp || {};
 
 })(jQuery, czrapp);
 var czrapp = czrapp || {};
+/************************************************
+* STICKY FOOTER SUB CLASS
+*************************************************/
+(function($, czrapp) {
+  var _methods =  {
+    init : function() {
+      this.$_push   = $('#tc-push-footer');
+      this._class   = 'sticky-footer-enabled';
+      this.$_page   = $('#tc-page-wrap');
+      
+      if ( 1 != TCParams.stickyHeader ) {//sticky header fires a resize
+        var self = this;
+        setTimeout( function() {
+                self._apply_sticky_footer(); }, 50 
+        );
+      }
+    },
+
+    /***********************************************
+    * DOM EVENT LISTENERS AND HANDLERS
+    ***********************************************/
+    stickyFooterEventListener : function() {
+      var self = this;
+
+      // maybe apply sticky footer on window resize
+      czrapp.$_window.on( 'tc-resize', function() {
+        self.stickyFooterEventHandler('resize');
+      });
+      /* can be useful without exposing methods make it react to this event which could be externally fired, used in the preview atm */
+      czrapp.$_body.on( 'refresh-sticky-footer', function() {
+        self.stickyFooterEventHandler('refresh');
+      });
+
+    },
+    
+    stickyFooterEventHandler : function( evt ) {
+      var self = this;
+
+      if ( ! this._is_sticky_footer_enabled() )
+        return;
+
+      switch ( evt ) {
+        case 'resize':
+          //to avoid the creation of a function inside a loop
+          //but still allow the access to "this"
+          var func = function() { return self._apply_sticky_footer() ;};
+          for ( var i = 0; i<5; i++ ) /* I've seen something like that in twentyfifteen */
+            setTimeout( func, 50 * i);
+        break;
+        case 'refresh':
+          this._apply_sticky_footer();
+        break;
+      }
+    },
+    /* We apply the "sticky" footer by setting the height of the push div, and adding the proper class to show it */
+    _apply_sticky_footer : function() {
+
+      var  _f_height     = this._get_full_height(),
+           _w_height     = czrapp.$_window.height(),
+           _push_height  = _w_height - _f_height,
+           _event        = false;
+      
+      if ( _push_height > 0 ) {
+        this.$_push.css('height', _push_height).addClass(this._class);
+        _event = 'sticky-footer-on';
+      }else if ( this.$_push.hasClass(this._class) ) {
+        this.$_push.removeClass(this._class);
+        _event = 'sticky-footer-off';
+      }
+
+      /* Fire an event which something might listen to */
+      if ( _event )
+        czrapp.$_body.trigger(_event);    
+    },
+    
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    /*
+    * return @bool: whether apply or not the sticky-footer
+    */
+    _is_sticky_footer_enabled : function() {
+      return czrapp.$_body.hasClass('tc-sticky-footer');
+    },
+
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    /* 
+    * return @int: the potential height value of the page
+    */
+    _get_full_height : function() {
+      var _full_height = this.$_page.outerHeight(true) + this.$_page.offset().top,
+          _push_height = 'block' == this.$_push.css('display') ? this.$_push.outerHeight() : 0;
+            
+      return _full_height - _push_height;
+    }
+  };//_methods{}
+
+  czrapp.methods.Czr_StickyFooter = {};
+  $.extend( czrapp.methods.Czr_StickyFooter , _methods );
+
+})(jQuery, czrapp);
+var czrapp = czrapp || {};
+/************************************************
+* SIDE NAV SUB CLASS
+*************************************************/
+(function($, czrapp) {
+  var _methods =  {
+    init : function() {
+      this.$_sidenav                = $( '#tc-sn' );
+
+      if ( ! this._is_sn_on() )
+        return;
+
+      //cache jQuery el
+      this.$_page_wrapper           = $('#tc-page-wrap');
+      this.$_page_wrapper_node      = this.$_page_wrapper.get(0);
+      this.$_page_wrapper_btn       = $('.btn-toggle-nav', '#tc-page-wrap');
+
+      this.$_sidenav_inner          = $( '.tc-sn-inner', this.$_sidenav);
+
+      this._toggle_event            = czrapp.$_body.hasClass('tc-is-mobile') ? 'touchstart' : 'click';
+
+      this._browser_can_translate3d = ! czrapp.$_html.hasClass('no-csstransforms3d');
+
+      /* Cross browser support for CSS "transition end" event */
+      this.transitionEnd            = 'transitionend webkitTransitionEnd otransitionend oTransitionEnd MSTransitionEnd';
+
+      //fire event listener
+      this.sideNavEventListener();
+
+      this._set_offset_height();
+
+    },//init()
+
+    /***********************************************
+    * DOM EVENT LISTENERS AND HANDLERS
+    ***********************************************/
+    sideNavEventListener : function() {
+      var self = this;
+
+      //BUTTON CLICK/TAP
+      czrapp.$_body.on( this._toggle_event, '.sn-toggle', function( evt ) {
+        self.sideNavEventHandler( evt, 'toggle' );
+      });
+
+      //TRANSITION END
+      this.$_page_wrapper.on( this.transitionEnd, function( evt ) {
+        self.sideNavEventHandler( evt, 'transitionend' );
+      });
+
+      //RESIZING ACTIONS
+      czrapp.$_window.on('tc-resize', function( evt ) {
+        self.sideNavEventHandler( evt, 'resize');
+      });
+
+      czrapp.$_window.scroll( function( evt ) {
+        self.sideNavEventHandler( evt, 'scroll');
+      });
+    },
+
+
+    sideNavEventHandler : function( evt, evt_name ) {
+      var self = this;
+
+      switch ( evt_name ) {
+        case 'toggle':
+          // prevent multiple firing of the click event
+          if ( ! this._is_translating() )
+            this._toggle_callback( evt );
+        break;
+
+        case 'transitionend' :
+           // react to the transitionend just if translating
+           if ( this._is_translating() && evt.target == this.$_page_wrapper_node )
+             this._transition_end_callback();
+        break;
+
+        case 'scroll' :
+        case 'resize' :
+          setTimeout( function(){
+              self._set_offset_height();
+          }, 200);
+        break;
+      }
+    },
+
+
+    _toggle_callback : function ( evt ){
+      evt.preventDefault();
+
+      if ( czrapp.$_body.hasClass( 'tc-sn-visible' ) )
+        this._anim_type = 'sn-close';
+      else
+        this._anim_type = 'sn-open';
+
+      //2 cases translation enabled or disabled.
+      //=> if translation3D enabled, the _transition_end_callback is fired at the end of anim by the transitionEnd event
+      if ( this._browser_can_translate3d ){
+        /* When the toggle menu link is clicked, animation starts */
+        czrapp.$_body.addClass( 'animating ' + this._anim_type )
+                     .trigger( this._anim_type + '_start' );
+        if ( this._is_sticky_header() ){
+          /* while animating disable sticky header if not scrolling */
+          if ( czrapp.$_body.hasClass('sticky-disabled') )
+            czrapp.$_body.removeClass('tc-sticky-header');
+        }
+      } else {
+        czrapp.$_body.toggleClass('tc-sn-visible')
+                     .trigger( this._anim_type );
+      }
+
+      //handles the page wrapper button fade in / out on click
+      var _event = evt || event,
+          $_clicked_btn = $( _event.target ),
+          _is_opening   = $('#tc-page-wrap').has( $_clicked_btn).length > 0;
+
+      this.$_page_wrapper_btn.each( function(){
+        $(this).fadeTo( 500 , _is_opening ? 0 : 1 , function() {
+          $(this).css( "visibility", _is_opening ? "hidden" : "visible");
+        }); //.fadeTo() duration, opacity, callback
+      } );
+      return false;
+   },
+
+   _transition_end_callback : function() {
+     czrapp.$_body.removeClass( 'animating ' +  this._anim_type)
+                  .toggleClass( 'tc-sn-visible' )
+                  .trigger( this._anim_type + '_end' );
+
+     /* on transition end re-set sticky header */
+     if ( this._is_sticky_header() ){
+       if ( czrapp.$_body.hasClass('sticky-disabled') )
+         czrapp.$_body.addClass('tc-sticky-header');
+      }
+    },
+
+
+
+    /***********************************************
+    * HELPERS
+    ***********************************************/
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _is_sn_on : function() {
+      return this.$_sidenav.length > 0 ? true : false;
+    },
+
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _get_initial_offset : function() {
+      var _initial_offset = czrapp.$_wpadminbar.length > 0 ? czrapp.$_wpadminbar.height() : 0;
+      _initial_offset = _initial_offset && czrapp.$_window.scrollTop() && 'absolute' == czrapp.$_wpadminbar.css('position') ? 0 : _initial_offset;
+
+      return _initial_offset; /* add a custom offset ?*/
+    },
+
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _set_offset_height : function() {
+      var _offset = this._get_initial_offset();
+
+      this.$_sidenav.css('top', _offset );
+      this.$_sidenav_inner.css('max-height', this.$_sidenav.outerHeight() - _offset);
+    },
+
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _is_translating : function() {
+      return czrapp.$_body.hasClass('animating');
+    },
+
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _is_sticky_header : function() {
+      this.__is_sticky_header = this.__is_sticky_header || czrapp.$_body.hasClass('tc-sticky-header');
+      return this.__is_sticky_header;
+    }
+
+  };//_methods{}
+
+  czrapp.methods.Czr_SideNav = {};
+  $.extend( czrapp.methods.Czr_SideNav , _methods );
+
+})(jQuery, czrapp);var czrapp = czrapp || {};
 
 /************************************************
 * LET'S DANCE
@@ -4308,8 +5514,10 @@ jQuery(function ($) {
     BrowserDetect : [],
     Czr_Plugins : ['centerImagesWithDelay', 'imgSmartLoad' , 'dropCaps', 'extLinks' , 'fancyBox'],
     Czr_Slider : ['fireSliders', 'manageHoverClass', 'centerSliderArrows', 'addSwipeSupport', 'sliderTriggerSimpleLoad'],
-    Czr_UserExperience : ['eventListener','anchorSmoothScroll', 'backToTop', 'widgetsHoverActions', 'attachmentsFadeEffect', 'clickableCommentButton', 'dynSidebarReorder', 'dropdownMenuEventsHandler' ],
-    Czr_StickyHeader : ['stickyHeaderEventListener', 'triggerStickyHeaderLoad' ]
+    Czr_UserExperience : ['eventListener', 'smoothScroll', 'anchorSmoothScroll', 'backToTop', 'widgetsHoverActions', 'attachmentsFadeEffect', 'clickableCommentButton', 'dynSidebarReorder', 'dropdownMenuEventsHandler', 'menuButtonHover', 'secondMenuRespActions'],
+    Czr_StickyHeader : ['stickyHeaderEventListener', 'triggerStickyHeaderLoad' ],
+    Czr_StickyFooter : ['stickyFooterEventListener'],
+    Czr_SideNav : []
   };
-  czrapp.cacheProp().loadCzr(toLoad);
+  czrapp.cacheProp().emitCustomEvents().loadCzr(toLoad);
 });

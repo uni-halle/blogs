@@ -114,13 +114,6 @@ if ( ! class_exists( 'TC_controls' ) ) :
   					break;
 
 
-	        	case 'button':
-	        		echo '<a class="button-primary" href="'.admin_url( $this -> link ).'" target="_blank">'.$this -> buttontext.'</a>';
-	        		if ( $this -> hr_after == true)
-	        			echo '<hr class="tc-after-button">';
-	        		break;
-
-
 	        	case 'select':
     					if ( empty( $this->choices ) )
     						return;
@@ -129,29 +122,30 @@ if ( ! class_exists( 'TC_controls' ) ) :
     						<h3 class="tc-customizr-title"><?php echo esc_html( $this->title); ?></h3>
     					<?php endif; ?>
     					<label>
-    						<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+    						<span class="customize-control-title"><?php echo $this->label; ?></span>
     						<?php $this -> tc_print_select_control() ?>
                 <?php if(!empty( $this -> notice)) : ?>
                   <span class="tc-notice"><?php echo $this -> notice ?></span>
                 <?php endif; ?>
     					</label>
     					<?php
-    					//retrieve all sliders in option array
-    			        $options          = get_option( 'tc_theme_options' );
-    			        $sliders 					= array();
-    			        if ( isset( $options['tc_sliders'])) {
-    			        	$sliders        = $options['tc_sliders'];
-    			    	}
-
-    					if ( 'tc_theme_options[tc_front_slider]' == $this -> id  && empty( $sliders ) ) {
-    						printf('<div style="width:99%; padding: 5px;"><p class="description">%1$s<br/><a class="button-primary" href="%2$s" target="_blank">%3$s</a><br/><span class="tc-notice">%4$s <a href="http://%5$s" title="%6$s" target="_blank">%6$s</a></span></p>',
-                  __("You haven't create any slider yet. Go to the media library, edit your images and add them to your sliders.", "customizr" ),
-                  admin_url( 'upload.php' ),
-                  __( 'Create a slider' , 'customizr' ),
-                  __( 'Need help to create a slider ?' , 'customizr' ),
-                  "doc.presscustomizr.com/",
-                  __( 'Check the documentation' , 'customizr' )
-                );
+    					if ( 'tc_theme_options[tc_front_slider]' == $this -> id ) {
+                //retrieve all sliders in option array
+                $options          = get_option( 'tc_theme_options' );
+                $sliders          = array();
+                if ( isset( $options['tc_sliders'])) {
+                  $sliders        = $options['tc_sliders'];
+                }
+                if ( empty( $sliders ) ) {
+      						printf('<div style="width:99%; padding: 5px;"><p class="description">%1$s<br/><a class="button-primary" href="%2$s" target="_blank">%3$s</a><br/><span class="tc-notice">%4$s <a href="%5$s" title="%6$s" target="_blank">%6$s</a></span></p>',
+                    __("You haven't create any slider yet. Go to the media library, edit your images and add them to your sliders.", "customizr" ),
+                    admin_url( 'upload.php?mode=list' ),
+                    __( 'Create a slider' , 'customizr' ),
+                    __( 'Need help to create a slider ?' , 'customizr' ),
+                    esc_url( "doc.presscustomizr.com/customizr/creating-sliders/" ),
+                    __( 'Check the documentation' , 'customizr' )
+                  );
+                }
     					}
 
     				break;
@@ -163,7 +157,7 @@ if ( ! class_exists( 'TC_controls' ) ) :
                 <h3 class="tc-customizr-title"><?php echo esc_html( $this->title); ?></h3>
               <?php endif; ?>
 	        		<label>
-	        			<span class="tc-number-label customize-control-title"><?php echo esc_html( $this->label ) ?></span>
+	        			<span class="tc-number-label customize-control-title"><?php echo $this->label ?></span>
 		        		<input <?php $this->link() ?> type="number" step="<?php echo $this-> step ?>" min="<?php echo $this-> min ?>" id="posts_per_page" value="<?php echo $this->value() ?>" class="tc-number-input small-text">
 		        		<?php if(!empty( $this -> notice)) : ?>
 			        		<span class="tc-notice"><?php echo $this-> notice ?></span>
@@ -179,7 +173,7 @@ if ( ! class_exists( 'TC_controls' ) ) :
     					<?php endif; ?>
     					<?php
     		        		printf('<div class="tc-check-label"><label><span class="customize-control-title">%1$s</span></label></div>',
-    		        		esc_html( $this->label )
+    		        		$this->label
     		        	);
     					?>
     					<input type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
@@ -197,7 +191,7 @@ if ( ! class_exists( 'TC_controls' ) ) :
                 <h3 class="tc-customizr-title"><?php echo esc_html( $this->title); ?></h3>
               <?php endif; ?>
     					<label>
-    						<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+    						<span class="customize-control-title"><?php echo $this->label; ?></span>
     						<?php if(!empty( $this -> notice)) : ?>
     							<span class="tc-notice"><?php echo $this-> notice; ?></span>
     						<?php endif; ?>
@@ -214,7 +208,7 @@ if ( ! class_exists( 'TC_controls' ) ) :
               <?php
 	        		printf('<label><span class="customize-control-title %1$s">%2$s</span><input type="text" value="%3$s" %4$s /></label>',
 	        			! empty( $this -> icon) ? $this -> icon : '',
-	        			esc_html( $this->label ),
+	        			$this->label,
 	        			esc_url( $this->value() ),
 	        			call_user_func( array( $this, 'get'.'_'.'link' ) )
 	        		);
@@ -228,7 +222,7 @@ if ( ! class_exists( 'TC_controls' ) ) :
               <?php endif; ?>
     					<label>
     						<?php if ( ! empty( $this->label ) ) : ?>
-    							<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+    							<span class="customize-control-title"><?php echo $this->label; ?></span>
     						<?php endif; ?>
     						<?php if ( ! empty( $this->description ) ) : ?>
     							<span class="description customize-control-description"><?php echo $this->description; ?></span>;;;
@@ -372,7 +366,7 @@ if ( ! class_exists( 'TC_Customize_Upload_Control' ) ) :
       <?php endif; ?>
 			<label>
 				<?php if ( ! empty( $this->label ) ) : ?>
-					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+					<span class="customize-control-title"><?php echo $this->label; ?></span>
 				<?php endif;
 				if ( ! empty( $this->description ) ) : ?>
 					<span class="description customize-control-description"><?php echo $this->description; ?></span>

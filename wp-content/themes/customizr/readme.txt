@@ -25,19 +25,59 @@ The exceptions to this license are as follows:
 * bootstrap-carousel.js v2.3.0 is licensed under the Apache License
 * holder.js v1.9 is licensed under the Apache License
 * modernizr.js is dual licensed under the BSD and MIT licenses
-* jquery.iphonecheck.js is copyrighted by Thomas Reynolds, licensed GPL & MIT
+* HTML5 Shiv v3.7.0 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
+* jqueryIphonecheck.js is copyrighted by Thomas Reynolds, licensed GPL & MIT
 * jquery.fancybox-1.3.4.js is dual licensed under the MIT and GPL licenses
 * retina.min.js is copyrighted by Imulus, LLC, Ben Atkin, and other contributors and licensed under MIT
 * iCheck v1.0.1 by Damir Sultanov, http://git.io/arlzeA, MIT Licensed
 * selecter v3.0.9 - 2014-02-10, Copyright 2014 Ben Plum, MIT Licensed
 * stepper v3.0.5 - 2014-02-06, Copyright 2014 Ben Plum, MIT Licensed
 * Hammer.JS - v2.0.4 - Copyright (c) 2014 Jorik Tangelder, MIT license
+* SmoothScroll - v1.3.8 (Balazs Galambosi), MIT license
 * Icon Set:	Entypo is licensed under SIL Open-Font License
-* The images screenshot.png, inc/assets/img/customizr-theme-customizer.png, inc/assets/img/customizr-theme-responsive.png are creations of Nicolas Guillaume and licensed under GPL v2+
+* The images screenshot.png, inc/assets/img/customizr-theme-customizer.png, inc/assets/img/customizr-theme-responsive.png, inc/admin/img/ are creations of Nicolas Guillaume and licensed under GPL v2+
 * The image slider-loader.gif is released under the WTFPL license (http://www.wtfpl.net/, GPL compatible), generated on http://ajaxload.info/
 
 
 #######################  Changelog ######################
+= 3.4.6 August 4th 2015 =
+* fixed : polylang compat code according to the new customizer settings
+* fixed : use original sizes (full) for logo and favicon attachments
+
+= 3.4.5 July 31st 2015 =
+* fixed : various css issues for the vertical menu items
+
+= 3.4.3 July 31st 2015 =
+* fixed : minor css adjustements for the menus
+* added : a dismissable help notice under the main regular menu, on front-end, for logged-in admin users (edit options cap)
+
+= 3.4.2 July 30th 2015 =
+* fixed : expand on click not working for the secondary menu.
+
+= 3.4.1 July 30th 2015 =
+* fix : a missing text domain for a translation string
+
+= 3.4.0 July 28th 2015 =
+* added : new features for sliders : use a custom link, possibility to link the entire slide and to open the page in a new tab
+* added : new default sidenav menu
+* added : new optional secondary menu
+* added : new default page menu
+* added : new feature smoothscroll option in customize > Global Settings
+* added : new feature Sticky Footer in customize > Footer
+* added : a "sidebars" panel in the customizer including a social links section. (moved from global settings > Social links). Header and Footer social links checkboxes have been also moved into their respective panels.
+* added : a theme updated notice that can be dismissed. Automatically removed after 5 prints.
+* added : various optional front end help notices and placeholder blocks for first time users.
+* fix : avoid blocks reordering when they contain at least one iframe (avoid some reported plugin conflicts)
+* fix : video post format, show full content in alternate layout
+* fix : display slider-loading-gif only if js enabled
+* fix : display a separator after the heading in the page for posts (when not home)
+* fix : html5shiv is loaded only for ie9-
+* fix : dynamic sidebar reordering of the sidebar was not triggered since latest front js framework implementation improved : used of the tc-resize event for all resize related actions added : secondary menu items re-location for responsivereplaced : (js) 'resize' event by the custom 'tc-resize'
+* fix : anchors smooth scroll - exclude ultimate members anchor links
+* changed : customize transport of the header layout setting is now 'refresh'
+* improved : modernizr upgraded to the latest version
+* improved : customizer preview is refreshed faster
+
 = 3.3.28 June 25th 2015 =
 * fix : re-introduce btt-arrow handling in new front js
 * fix : fix external link on multiple occurrences and exclude parents

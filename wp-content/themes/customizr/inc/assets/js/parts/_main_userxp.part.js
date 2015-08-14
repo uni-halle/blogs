@@ -6,10 +6,9 @@ var czrapp = czrapp || {};
 (function($, czrapp) {
   var _methods =  {
     init : function() {
-       this.timer = 0;
-       this.increment = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
+      this.timer = 0;
+      this.increment = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
     },//init
-
 
     //Event Listener
     eventListener : function() {
@@ -51,13 +50,18 @@ var czrapp = czrapp || {};
       }
     },//eventHandler
 
+    //SMOOTH SCROLL
+    smoothScroll: function() {
+      if ( TCParams.SmoothScroll && TCParams.SmoothScroll.Enabled )
+        smoothScroll( TCParams.SmoothScroll.Options );
+    },
 
     //SMOOTH SCROLL FOR AUTHORIZED LINK SELECTORS
     anchorSmoothScroll : function() {
-      if ( ! TCParams.SmoothScroll || 'easeOutExpo' != TCParams.SmoothScroll )
+      if ( ! TCParams.anchorSmoothScroll || 'easeOutExpo' != TCParams.anchorSmoothScroll )
             return;
 
-      var _excl_sels = ( TCParams.SmoothScrollExclude && _.isArray( TCParams.SmoothScrollExclude ) ) ? TCParams.SmoothScrollExclude.join(',') : '';
+      var _excl_sels = ( TCParams.anchorSmoothScrollExclude && _.isArray( TCParams.anchorSmoothScrollExclude ) ) ? TCParams.anchorSmoothScrollExclude.join(',') : '';
       $('a[href^="#"]', '#content').not( _excl_sels ).click(function () {
         var anchor_id = $(this).attr("href");
 
@@ -68,11 +72,12 @@ var czrapp = czrapp || {};
         if ('#' != anchor_id) {
             $('html, body').animate({
                 scrollTop: $(anchor_id).offset().top
-            }, 700, TCParams.SmoothScroll);
+            }, 700, TCParams.anchorSmoothScroll);
         }
         return false;
       });//click
     },
+
 
     //Btt arrow visibility
     bttArrowVisibility : function () {
@@ -156,82 +161,57 @@ var czrapp = czrapp || {};
     //DYNAMIC REORDERING
     //Detect layout and reorder content divs
     dynSidebarReorder : function() {
-      //custom sidebar reorder event listener setup
+      //Enable reordering if option is checked in the customizer.
+      if ( 1 != TCParams.ReorderBlocks )
+        return;
+
+      //fire on DOM READY and only for responsive devices
+      if ( 'desktop' != this.getDevice() )
+        this._reorderSidebars( 'responsive' );
+
+      //fire on custom resize event
       var self = this;
-      czrapp.$_body.on( 'reorder-sidebars' , function(e, param) { self.listenToSidebarReorderEvent(e, param); } );
+      czrapp.$_body.on( 'tc-resize' , function(e, param) {
+        param = _.isObject(param) ? param : {};
+        var _to = 'desktop' != param.to ? 'responsive' : 'normal',
+            _current = 'desktop' != param.current ? 'responsive' : 'normal';
 
-      //fire on dom ready
-      this.emit('emitSidebarReorderEvent');
+        if ( _current != _to )
+          self._reorderSidebars( _to );
+      } );
     },
 
 
-    //DYNAMIC REORDERING
-    //Emit an event on the body el
-    emitSidebarReorderEvent : function() {
-      //Enable reordering if option is checked in the customizer.
-      if ( 1 != TCParams.ReorderBlocks )
-        return;
-
-      var $_windowWidth         = czrapp.$_window.width();
-
-      //15 pixels adjustement to avoid replacement before real responsive width
-      if ( $_windowWidth  > 767 - 15 && czrapp.reordered_blocks )
-        czrapp.$_body.trigger( 'reorder-sidebars', { to : 'normal' } );
-      else if ( ( $_windowWidth  <= 767 - 15 ) && ! czrapp.reordered_blocks )
-        czrapp.$_body.trigger( 'reorder-sidebars', { to : 'responsive' } );
-    },
-
-
-    //DYNAMIC REORDERING
-    //Listen to event on body el
-    listenToSidebarReorderEvent : function( e, param ) {
-      //Enable reordering if option is checked in the customizer.
-      if ( 1 != TCParams.ReorderBlocks )
-        return;
-
-      //assign default value to action param
-      param               = _.isObject(param) ? param : { to : 'normal' };
-      param.to            = param.to || 'normal';
-
-      var LeftSidebarClass    = TCParams.LeftSidebarClass || '.span3.left.tc-sidebar',
+    //Reorder sidebar actions
+    _reorderSidebars : function( _sidebarLayout ) {
+      _sidebarLayout = _sidebarLayout || 'normal';
+      var that = this,
+          LeftSidebarClass    = TCParams.LeftSidebarClass || '.span3.left.tc-sidebar',
           RightSidebarClass   = TCParams.RightSidebarClass || '.span3.right.tc-sidebar',
-          $_wrapper           = $('#main-wrapper .container[role=main] > .column-content-wrapper'),
-          $_content           = $("#main-wrapper .container .article-container"),
-          $_left              = $("#main-wrapper .container " + LeftSidebarClass),
-          $_right             = $("#main-wrapper .container " + RightSidebarClass),
           $_WindowWidth       = czrapp.$_window.width();
 
-      //15 pixels adjustement to avoid replacement before real responsive width
-      switch ( param.to ) {
-        case 'normal' :
-          if ( $_left.length ) {
-            $_left.detach();
-            $_content.detach();
-            $_wrapper.append($_left).append($_content);
-          }
-          if ( $_right.length ) {
-              $_right.detach();
-              $_wrapper.append($_right);
-          }
-          czrapp.reordered_blocks = false; //this could stay in both if blocks instead
-        break;
+      //cache some $
+      that.$_content      = that.$_content || $("#main-wrapper .container .article-container");
+      that.$_left         = that.$_left || $("#main-wrapper .container " + LeftSidebarClass);
+      that.$_right        = that.$_right || $("#main-wrapper .container " + RightSidebarClass);
 
-        case 'responsive' :
-          if ( $_left.length ) {
-             $_left.detach();
-            $_content.detach();
-            $_wrapper.append($_content).append($_left);
-          }
-          if ( $_right.length ) {
-              $_right.detach();
-              $_wrapper.append($_right);
-          }
-          czrapp.reordered_blocks = true; //this could stay in both if blocks instead
-        break;
-      }
+      // check if we have iframes
+      iframeContainers = that._has_iframe( { 'content' : this.$_content, 'left' : this.$_left } ) ;
+
+      var leftIframe    = $.inArray('left', iframeContainers) > -1,
+          contentIframe = $.inArray('content', iframeContainers) > -1;
+
+      //both conain iframes => do nothing
+      if ( leftIframe && contentIframe )
+        return;    
+
+      if ( that.$_left.length ) {
+        if ( leftIframe )
+          that.$_content[ _sidebarLayout === 'normal' ?  'insertAfter' : 'insertBefore']( that.$_left );
+        else
+          that.$_left[ _sidebarLayout === 'normal' ?  'insertBefore' : 'insertAfter']( that.$_content );
+      } 
     },
-
-
 
     //Handle dropdown on click for multi-tier menus
     dropdownMenuEventsHandler : function() {
@@ -268,7 +248,115 @@ var czrapp = czrapp || {};
             return false;
         });//.on()
       });//.each()
+    },
+
+    //@return void()
+    //simply toggles a "hover" class to the relevant elements
+    menuButtonHover : function() {
+      var $_menu_btns = $('.btn-toggle-nav');
+      //BUTTON HOVER (with handler)
+      $_menu_btns.hover(
+        function( evt ) {
+          $(this).addClass('hover');
+        },
+        function( evt ) {
+          $(this).removeClass('hover');
+        }
+      );
+    },
+
+
+    //Mobile behaviour for the secondary menu
+    secondMenuRespActions : function() {
+      if ( ! TCParams.isSecondMenuEnabled )
+        return;
+      //Enable reordering if option is checked in the customizer.
+      var userOption = TCParams.secondMenuRespSet || false,
+          that = this;
+      //if not a relevant option, abort
+      if ( ! userOption || -1 == userOption.indexOf('in-sn') )
+        return;
+
+      //cache some $
+      this.$_sec_menu_els  = this.$_sec_menu_els || $('.nav > li', '.tc-header .nav-collapse');
+      this.$_sn_wrap       = this.$_sn_wrap || $('.sn-nav', '.sn-nav-wrapper');
+      this.$_sec_menu_wrap = this.$_sec_menu_wrap || $('.nav', '.tc-header .nav-collapse');
+
+      //fire on DOM READY
+      var _locationOnDomReady = 'desktop' == this.getDevice() ? 'navbar' : 'side_nav';
+
+      if ( 'desktop' != this.getDevice() )
+        this._manageMenuSeparator( _locationOnDomReady , userOption)._moveSecondMenu( _locationOnDomReady , userOption );
+
+      //fire on custom resize event
+      czrapp.$_body.on( 'tc-resize', function( e, param ) {
+        param = _.isObject(param) ? param : {};
+        var _to = 'desktop' != param.to ? 'side_nav' : 'navbar',
+            _current = 'desktop' != param.current ? 'side_nav' : 'navbar';
+
+        if ( _current == _to )
+          return;
+
+        that._manageMenuSeparator( _to, userOption)._moveSecondMenu( _to, userOption );
+      } );//.on()
+    },
+
+    _manageMenuSeparator : function( _to, userOption ) {
+      //add/remove a separator between the two menus
+      var that = this;
+      if ( 'navbar' == _to )
+        $( '.secondary-menu-separator', that.$_sn_wrap).remove();
+      else {
+        $_sep = $( '<li class="menu-item secondary-menu-separator"><hr class="featurette-divider"></hr></li>' );
+
+        switch(userOption) {
+          case 'in-sn-before' :
+            this.$_sn_wrap.prepend($_sep);
+          break;
+
+          case 'in-sn-after' :
+            this.$_sn_wrap.append($_sep);
+          break;
+        }
+      }
+      return this;
+    },
+
+
+    //@return void()
+    //@param _where = menu items location string 'navbar' or 'side_nav'
+    _moveSecondMenu : function( _where, userOption ) {
+      _where = _where || 'side_nav';
+      var that = this;
+      switch( _where ) {
+          case 'navbar' :
+            that.$_sec_menu_wrap.append(that.$_sec_menu_els);
+          break;
+
+          case 'side_nav' :
+            if ( 'in-sn-before' == userOption )
+              that.$_sn_wrap.prepend(that.$_sec_menu_els);
+            else
+              that.$_sn_wrap.append(that.$_sec_menu_els);
+          break;
+        }
+    },
+
+    //Helpers
+    
+    //Check if the passed element(s) contains an iframe
+    //@return list of containers
+    //@param $_elements = mixed
+    _has_iframe : function ( $_elements ) {
+      var that = this,
+          to_return = [];
+      _.map( $_elements, function( $_el, container ){
+        if ( $_el.length > 0 && $_el.find('IFRAME').length > 0 )
+          to_return.push(container);
+      });
+      return to_return;
     }
+
   };//_methods{}
 
   czrapp.methods.Czr_UserExperience = {};
