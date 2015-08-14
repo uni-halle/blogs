@@ -3,7 +3,7 @@
 Plugin Name: My Page Order
 Plugin URI: http://www.geekyweekly.com/mypageorder
 Description: My Page Order allows you to set the order of pages through a drag and drop interface. The default method of setting the order page by page is extremely clumsy, especially with a large number of pages.
-Version: 3.3.2
+Version: 4.3
 Author: Andrew Charlton
 Author URI: http://www.geekyweekly.com
 Author Email: froman118@gmail.com
@@ -233,9 +233,10 @@ function mypageorder_loadtranslation() {
 
 class mypageorder_Widget extends WP_Widget {
 
-	function mypageorder_Widget() {
+	function __construct() {
 		$widget_ops = array('classname' => 'widget_mypageorder', 'description' => __( 'Enhanced Pages widget provided by My Page Order', 'mypageorder') );
-		$this->WP_Widget('mypageorder', __('My Page Order', 'mypageorder'), $widget_ops);	}
+		parent::__construct('mypageorder', __('My Page Order', 'mypageorder'), $widget_ops);	
+		}
 
 	function widget( $args, $instance ) {
 		extract( $args );
