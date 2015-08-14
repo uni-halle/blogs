@@ -2,7 +2,7 @@
 /*
    Plugin Name: Contact Form DB
    Plugin URI: http://wordpress.org/extend/plugins/contact-form-7-to-database-extension/
-   Version: 2.9.5
+   Version: 2.9.7
    Author: Michael Simpson
    Description: Save form submissions to the database from <a href="http://wordpress.org/extend/plugins/contact-form-7/">Contact Form 7</a>, <a href="http://wordpress.org/extend/plugins/si-contact-form/">Fast Secure Contact Form</a>, <a href="http://wordpress.org/extend/plugins/jetpack/">JetPack Contact Form</a> and <a href="http://www.gravityforms.com">Gravity Forms</a>. Includes exports and short codes. | <a href="admin.php?page=CF7DBPluginSubmissions">Data</a> | <a href="admin.php?page=CF7DBPluginShortCodeBuilder">Short Codes</a> | <a href="admin.php?page=CF7DBPluginSettings">Settings</a> | <a href="http://cfdbplugin.com/">Reference</a>
    Text Domain: contact-form-7-to-database-extension
@@ -56,11 +56,10 @@ function CF7DBPlugin_i18n_init() {
 // Run initialization
 /////////////////////////////////
 
-// First initialize i18n
-CF7DBPlugin_i18n_init();
+// Initialize i18n
+add_action('plugins_loaded','CF7DBPlugin_i18n_init');
 
-
-// Next, run the version check.
+// Run the version check.
 // If it is successful, continue with initialization for this plugin
 if (CF7DBPlugin_PhpVersionCheck()) {
     // Only load and run the init function if we know PHP version can parse it
