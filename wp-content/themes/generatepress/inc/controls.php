@@ -31,7 +31,6 @@ if ( !class_exists('Generate_Customize_Width_Slider_Control') ) :
 			wp_enqueue_script( 'jquery-ui-core' );
 			wp_enqueue_script( 'jquery-ui-slider' );
 			wp_enqueue_script( 'generate-customcontrol-slider-js', get_template_directory_uri() . '/js/customcontrol.slider.js', array('jquery'), GENERATE_VERSION );
-			wp_enqueue_script( 'generate_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery' ), GENERATE_VERSION, true );
 			wp_enqueue_style('jquery-ui-smoothness', get_template_directory_uri() . '/inc/css/jquery-ui-smoothness.css');
 			
 		}

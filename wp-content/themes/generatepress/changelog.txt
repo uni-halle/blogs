@@ -10,6 +10,28 @@ Changelog Legend:
 
 ----
 
+(8/8/2015) - 1.3.08
+[x] Remove Customizer changes to nav section in anticipation of WordPress 4.3
+
+----
+
+(8/1/2015) - 1.3.07
+[*] If site title or tagline is empty (not disabled), don't print the surrounding HTML
+[*] FontAwesome updated to 4.4
+[+] Add some Easy Digital Downloads styling
+[!] Make it so base text colors works
+[+] Make some customizer changes happen instantly (no refresh), including:
+	+ site title
+	+ site tagline
+	+ background color
+	+ text color
+	+ link color
+	+ container width
+[*] Buy me a coffee link updated
+[*] Change "Header Content" Customizer name to "Site Identity"
+
+----
+
 (7/25/2015) - 1.3.06
 [+] Dutch translation added (thanks, Jaap!)
 [!] Fix fatal error

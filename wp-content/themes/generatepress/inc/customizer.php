@@ -19,9 +19,11 @@ function generate_customize_register( $wp_customize ) {
 	require_once get_template_directory() . '/inc/controls.php';
 	require_once get_template_directory() . '/inc/sanitize.php';
 	
-	$wp_customize->get_section('title_tagline')->title = __( 'Header Content', 'generate' );
+	$wp_customize->get_section('title_tagline')->title = __( 'Site Identity', 'generate' );
 	$wp_customize->get_control('blogdescription')->priority = 3;
+	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 	$wp_customize->get_control('blogname')->priority = 1;
+	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 	
 	$static_front_page = wp_list_pages( array( 'echo' => false ) );
 	if ( ! empty( $static_front_page ) ) :
@@ -29,8 +31,6 @@ function generate_customize_register( $wp_customize ) {
 		$wp_customize->get_section('static_front_page')->priority = 10;
 	endif;
 	
-	$wp_customize->get_section('nav')->priority = 5;
-	$wp_customize->get_section('nav')->title = __( 'Set Navigation', 'generate' );
 	$wp_customize->remove_section('background_image');
 	$wp_customize->remove_section('colors');
 	
@@ -83,7 +83,7 @@ function generate_customize_register( $wp_customize ) {
 	);
  
 	$wp_customize->add_control(
-		new Generate_Upload_Control(
+		new WP_Customize_Image_Control(
 			$wp_customize,
 			'generate_settings[logo]',
 			array(
@@ -123,27 +123,32 @@ function generate_customize_register( $wp_customize ) {
 	$body_colors[] = array(
 		'slug'=>'background_color', 
 		'default' => $defaults['background_color'],
-		'label' => __('Background Color', 'generate')
+		'label' => __('Background Color', 'generate'),
+		'transport' => 'postMessage'
 	);
 	$body_colors[] = array(
 		'slug'=>'text_color', 
 		'default' => $defaults['text_color'],
-		'label' => __('Text Color', 'generate')
+		'label' => __('Text Color', 'generate'),
+		'transport' => 'postMessage'
 	);
 	$body_colors[] = array(
 		'slug'=>'link_color', 
 		'default' => $defaults['link_color'],
-		'label' => __('Link Color', 'generate')
+		'label' => __('Link Color', 'generate'),
+		'transport' => 'postMessage'
 	);
 	$body_colors[] = array(
 		'slug'=>'link_color_hover', 
 		'default' => $defaults['link_color_hover'],
-		'label' => __('Link Color Hover', 'generate')
+		'label' => __('Link Color Hover', 'generate'),
+		'transport' => 'refresh'
 	);
 	$body_colors[] = array(
 		'slug'=>'link_color_visited', 
 		'default' => $defaults['link_color_visited'],
-		'label' => __('Link Color Visited', 'generate')
+		'label' => __('Link Color Visited', 'generate'),
+		'transport' => 'refresh'
 	);
 
 	foreach( $body_colors as $color ) {
@@ -153,7 +158,8 @@ function generate_customize_register( $wp_customize ) {
 				'default' => $color['default'],
 				'type' => 'option', 
 				'capability' => 'edit_theme_options',
-				'sanitize_callback' => 'generate_sanitize_hex_color'
+				'sanitize_callback' => 'generate_sanitize_hex_color',
+				'transport' => $color['transport']
 			)
 		);
 		// CONTROLS
@@ -161,9 +167,11 @@ function generate_customize_register( $wp_customize ) {
 			new WP_Customize_Color_Control(
 				$wp_customize,
 				$color['slug'], 
-				array('label' => $color['label'], 
-				'section' => 'body_section',
-				'settings' => 'generate_settings[' . $color['slug'] . ']')
+				array(
+					'label' => $color['label'], 
+					'section' => 'body_section',
+					'settings' => 'generate_settings[' . $color['slug'] . ']'
+				)
 			)
 		);
 	}
@@ -212,7 +220,8 @@ function generate_customize_register( $wp_customize ) {
 		array(
 			'default' => $defaults['container_width'],
 			'type' => 'option',
-			'sanitize_callback' => 'generate_sanitize_integer'
+			'sanitize_callback' => 'generate_sanitize_integer',
+			'transport' => 'postMessage'
 		)
 	);
 		
@@ -693,6 +702,17 @@ function generate_customize_register( $wp_customize ) {
 	}
 }
 
+add_action( 'customize_preview_init', 'generate_customizer_live_preview' );
+function generate_customizer_live_preview()
+{
+	wp_enqueue_script( 
+		  'generate-themecustomizer',
+		  get_template_directory_uri().'/inc/js/customizer.js',
+		  array( 'jquery','customize-preview' ),
+		  GENERATE_VERSION,
+		  true
+	);
+}
 
 /**
  * Heading area

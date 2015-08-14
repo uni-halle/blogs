@@ -29,6 +29,7 @@
 	.main-navigation ul li:hover > ul {
 		display: none;
 	}
+	
 	.sf-menu li:hover > ul, .sf-menu li.sfHover > ul {
 		display: none;
 	}
@@ -51,25 +52,31 @@
 	.main-navigation ul {
 		display: none;
 	}
+	
 	.nav-float-right .main-navigation {
 		float: none;
 		margin-bottom:20px;
 	}
+	
 	.site-main {
 		margin-left: 0 !important;
 		margin-right: 0 !important;
 		margin-bottom: 0 !important;
 	}
+	
 	.fluid-header .inside-header {
 		text-align: center;
 	}
+	
 	.menu-toggle {
 		text-align: center;
 	}
+	
 	.main-nav .sf-menu > li {
 		float: none;
 		clear: both;
 	}
+	
 	.nav-aligned-right.nav-below-header .main-navigation .menu > li, 
 	.nav-aligned-right.nav-below-header .main-navigation .sf-menu > li, 
 	.nav-aligned-right.nav-above-header .main-navigation .menu > li, 
@@ -82,6 +89,7 @@
 		margin: 0;
 		text-align: left;
 	}
+	
 	.main-navigation .main-nav ul ul {
 		position: relative;
 		top: 0;
@@ -94,9 +102,11 @@
 		max-width: 100%;
 		text-align: center;
 	}
+	
 	.main-navigation {
 		text-align:left;
 	}
+	
 	.navigation-search,
 	.navigation-search input {
 		width: 100%;
@@ -110,6 +120,7 @@
 	.main-navigation li.search-item .fa-times {
 		text-indent: -9999px;
 	}
+	
 	.alignleft,
 	.alignright {
 		float: none;
@@ -117,6 +128,7 @@
 		margin-left: 0;
 		margin-right: 0;
 	}
+	
 	.main-navigation li.search-item.current-menu-item {
 		position: relative !important;
 		right: auto;
@@ -133,6 +145,7 @@
 	.sf-menu .page_item_has_children > a:first-child {
 		padding-right: 1em;
 	}
+	
 	.sf-menu .menu-item-has-children > a:first-child:after,
 	.sf-menu .page_item_has_children > a:first-child:after {
 		display: none;
@@ -141,5 +154,12 @@
 	.site-info {
 		padding-left: 10px;
 		padding-right: 10px;
+	}
+	
+	.edd_download {
+		display: block;
+		float: none !important;
+		margin-bottom: 1.5em;
+		width: 100% !important;
 	}
 }
