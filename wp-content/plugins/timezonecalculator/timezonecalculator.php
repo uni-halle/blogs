@@ -5,7 +5,7 @@ Plugin Name: TimeZoneCalculator
 Plugin URI: http://www.bernhard-riedl.com/projects/
 Description: Calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
 Author: Dr. Bernhard Riedl
-Version: 3.30
+Version: 3.31
 Author URI: http://www.bernhard-riedl.com/
 */
 
@@ -1858,7 +1858,7 @@ class TimeZoneCalculator {
 				'updated' => 'true'
 			);
 
-			wp_redirect(add_query_arg($redirect_args, admin_url('tools.php')));
+			wp_safe_redirect(esc_url(add_query_arg($redirect_args, admin_url('tools.php')), null, 'redirect'));
 
 			exit;
 		}
@@ -1895,7 +1895,11 @@ class TimeZoneCalculator {
 	function world_clock_page() {
 		?><div class="wrap"><?php
 		if ($this->get_option('world_clock_tools_page') && current_user_can($this->get_option('world_clock_tools_page_capability'))) {
-			echo('<h2>World Clock</h2><br />');
+			global $wp_version;
+
+			$h_level=(version_compare($wp_version, '4.3', '>=')) ? '1' : '2';
+
+			echo('<h'.$h_level.'>World Clock</h'.$h_level.'><br />');
 			$this->display_world_clock('world_clock_tools_page');
 		}
 
@@ -1986,7 +1990,7 @@ class TimeZoneCalculator {
 	*/
 
 	function head_meta() {
-		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.30\"/>\n");
+		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.31\"/>\n");
 	}
 
 	/*
@@ -2112,7 +2116,7 @@ class TimeZoneCalculator {
 		$admin_bar_params=array(
 			'id' => $this->get_prefix(false),
 			'title' => $wordpress_clock_span,
-			'href' => $clock_href
+			'href' => esc_url($clock_href)
 		);
 
 		$wp_admin_bar->add_node($admin_bar_params);
@@ -2921,8 +2925,12 @@ class TimeZoneCalculator {
 		option-page html
 		*/
 
+		global $wp_version;
+
+		$h_level=(version_compare($wp_version, '4.3', '>=')) ? '1' : '2';
+
 		?><div class="wrap">
-		<h2><?php echo($this->get_nicename()); ?></h2>
+		<h<?php echo($h_level); ?>><?php echo($this->get_nicename()); ?></h<?php echo($h_level); ?>>
 
 		<?php call_user_func(array($this, 'callback_'.$section_prefix.'_intro')); ?>
 
