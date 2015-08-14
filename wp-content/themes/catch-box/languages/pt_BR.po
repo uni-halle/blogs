@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 16:48-0500\n"
-"PO-Revision-Date: 2015-07-16 16:48-0500\n"
+"POT-Creation-Date: 2015-08-05 13:48+0545\n"
+"PO-Revision-Date: 2015-08-05 13:48+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Valdir Trombini <valdirtrombini@hotmail.com>\n"
 "Language: pt_BR\n"
@@ -1032,34 +1032,30 @@ msgid "More Theme Options &raquo;"
 msgstr "More Theme Options &raquo;"
 
 #: ../inc/widgets.php:20
-msgid "Use this widget to add any type of Ad as a widget."
+msgid "CT: Adspace Widget"
 msgstr ""
-"Utilize este widget como espaço publicitário para veicularão dos seus "
-"produtos para comércio (código fonte do banner de quem você é afiliado), "
-"adicionando qualquer tipo de anúncio como um widget, no local de sua "
-"preferência."
 
 #: ../inc/widgets.php:21
-msgid "Catch Box Adspace Widget"
-msgstr "Espaço para publicidade (Catch Box)"
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr ""
 
-#: ../inc/widgets.php:38
+#: ../inc/widgets.php:39
 msgid "Title (optional):"
 msgstr "Título (opcional):"
 
-#: ../inc/widgets.php:43
+#: ../inc/widgets.php:44
 msgid "Ad Code:"
 msgstr "Código do Anúncio:"
 
-#: ../inc/widgets.php:49
+#: ../inc/widgets.php:50
 msgid "Image Url:"
 msgstr "Url da Imagem:"
 
-#: ../inc/widgets.php:53
+#: ../inc/widgets.php:54
 msgid "Link URL:"
 msgstr "URL do Link:"
 
-#: ../inc/widgets.php:57
+#: ../inc/widgets.php:58
 msgid "Alt text:"
 msgstr "Texto alternativo (alt text):"
 
@@ -1116,6 +1112,16 @@ msgstr "Próximo <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Arquivos da Tag: %s"
+
+#~ msgid "Use this widget to add any type of Ad as a widget."
+#~ msgstr ""
+#~ "Utilize este widget como espaço publicitário para veicularão dos seus "
+#~ "produtos para comércio (código fonte do banner de quem você é afiliado), "
+#~ "adicionando qualquer tipo de anúncio como um widget, no local de sua "
+#~ "preferência."
+
+#~ msgid "Catch Box Adspace Widget"
+#~ msgstr "Espaço para publicidade (Catch Box)"
 
 #~ msgid "Meta"
 #~ msgstr "Meta dados"

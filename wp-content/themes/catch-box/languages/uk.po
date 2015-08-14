@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 16:49-0500\n"
-"PO-Revision-Date: 2015-07-16 16:49-0500\n"
+"POT-Creation-Date: 2015-08-05 13:48+0545\n"
+"PO-Revision-Date: 2015-08-05 13:48+0545\n"
 "Last-Translator: Alexandr Baryshnyev <abb@eksi.net>\n"
 "Language-Team: Eksi.Net <info@eksi.net>\n"
 "Language: uk\n"
@@ -1011,30 +1011,30 @@ msgid "More Theme Options &raquo;"
 msgstr "Додаткові параметри теми &raquo;"
 
 #: ../inc/widgets.php:20
-msgid "Use this widget to add any type of Ad as a widget."
-msgstr "Використовуйте цей віджет для показу будь-якої реклами."
+msgid "CT: Adspace Widget"
+msgstr ""
 
 #: ../inc/widgets.php:21
-msgid "Catch Box Adspace Widget"
-msgstr "Catch Box рекламний віджет"
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr ""
 
-#: ../inc/widgets.php:38
+#: ../inc/widgets.php:39
 msgid "Title (optional):"
 msgstr "Титул (не обов'язково):"
 
-#: ../inc/widgets.php:43
+#: ../inc/widgets.php:44
 msgid "Ad Code:"
 msgstr "Рекламні коди:"
 
-#: ../inc/widgets.php:49
+#: ../inc/widgets.php:50
 msgid "Image Url:"
 msgstr "URL-адреса зображення:"
 
-#: ../inc/widgets.php:53
+#: ../inc/widgets.php:54
 msgid "Link URL:"
 msgstr "URL-адреса посилання:"
 
-#: ../inc/widgets.php:57
+#: ../inc/widgets.php:58
 msgid "Alt text:"
 msgstr "Текст підказки:"
 
@@ -1089,6 +1089,12 @@ msgstr "Наступна публікація <span class=\"meta-nav\">&rarr;</s
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Архіви за ключовими словами: %s"
+
+#~ msgid "Use this widget to add any type of Ad as a widget."
+#~ msgstr "Використовуйте цей віджет для показу будь-якої реклами."
+
+#~ msgid "Catch Box Adspace Widget"
+#~ msgstr "Catch Box рекламний віджет"
 
 #~ msgid "Meta"
 #~ msgstr "Мета"

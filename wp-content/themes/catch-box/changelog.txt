@@ -1,7 +1,11 @@
 == Changelog ==
 
+Version 3.6.1
+* Bug Fixed: Breadcrumbs div issue when Breadcrumbs is disable in WordPress SEO by Yoast plugin (Reported by Franziska)
+
 Version 3.6
 * Added support for Breadcrumbs via Breadcrumb NavXT and WordPress SEO by Yoast 
+* Updated codes to comply with deprecating PHP4 style constructors in WordPress 4.3
 
 Version 3.5.3
 * Added helper text and default widget when there is no widget is sidebar

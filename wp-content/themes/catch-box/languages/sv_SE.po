@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 16:49-0500\n"
-"PO-Revision-Date: 2015-07-16 16:49-0500\n"
+"POT-Creation-Date: 2015-08-05 13:48+0545\n"
+"PO-Revision-Date: 2015-08-05 13:48+0545\n"
 "Last-Translator: Johnny Eriksson <info@johnnysblogg.se>\n"
 "Language-Team: Johnny Eriksson <info@johnnysblogg.se>\n"
 "Language: sv\n"
@@ -1007,32 +1007,30 @@ msgid "More Theme Options &raquo;"
 msgstr "Fler temainst&auml;llningar &raquo;"
 
 #: ../inc/widgets.php:20
-msgid "Use this widget to add any type of Ad as a widget."
+msgid "CT: Adspace Widget"
 msgstr ""
-"Anv&auml;nd den h&auml;r widgeten f&ouml;r att l&auml;gga till valfri "
-"annonstyp som en widget."
 
 #: ../inc/widgets.php:21
-msgid "Catch Box Adspace Widget"
-msgstr "Catch Box annonsutrymmeswidget"
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr ""
 
-#: ../inc/widgets.php:38
+#: ../inc/widgets.php:39
 msgid "Title (optional):"
 msgstr "Titel (frivillig):"
 
-#: ../inc/widgets.php:43
+#: ../inc/widgets.php:44
 msgid "Ad Code:"
 msgstr "Ad-kod:"
 
-#: ../inc/widgets.php:49
+#: ../inc/widgets.php:50
 msgid "Image Url:"
 msgstr "Bild URL:"
 
-#: ../inc/widgets.php:53
+#: ../inc/widgets.php:54
 msgid "Link URL:"
 msgstr "L&auml;nk URL:"
 
-#: ../inc/widgets.php:57
+#: ../inc/widgets.php:58
 msgid "Alt text:"
 msgstr "Alt-text:"
 
@@ -1087,6 +1085,14 @@ msgstr "Senare <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Etikett-arkiv: %s"
+
+#~ msgid "Use this widget to add any type of Ad as a widget."
+#~ msgstr ""
+#~ "Anv&auml;nd den h&auml;r widgeten f&ouml;r att l&auml;gga till valfri "
+#~ "annonstyp som en widget."
+
+#~ msgid "Catch Box Adspace Widget"
+#~ msgstr "Catch Box annonsutrymmeswidget"
 
 #~ msgid "Meta"
 #~ msgstr "Meta"

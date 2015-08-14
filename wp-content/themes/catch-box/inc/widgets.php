@@ -12,15 +12,16 @@
 class catchbox_adwidget extends WP_Widget {
 	
 	/**
-	 * Constructor
-	 *
-	 * @return void
-	 **/
-	function catchbox_adwidget() {
-		$widget_ops = array( 'classname' => 'widget_catchbox_adwidget', 'description' => __( 'Use this widget to add any type of Ad as a widget.', 'catchbox' ) );
-		$this->WP_Widget( 'widget_catchbox_adwidget', __( 'Catch Box Adspace Widget', 'catchbox' ), $widget_ops );
-		$this->alt_option_name = 'widget_catchbox_adwidget';
+	 * Register widget with WordPress.
+	 */
+	function __construct() {
+		parent::__construct(
+			'widget_catchbox_adwidget', // Base ID
+			__( 'CT: Adspace Widget', 'catchbox' ), // Name
+			array( 'description' => __( 'Use this widget to add any type of Ad as a widget. ', 'catchbox' ) ) // Args
+		);
 	}
+	
 
 	/**
 	 * Creates the form for the widget in the back-end which includes the Title , adcode, image, alt

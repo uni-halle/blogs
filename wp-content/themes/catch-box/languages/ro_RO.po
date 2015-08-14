@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 16:48-0500\n"
-"PO-Revision-Date: 2015-07-16 16:48-0500\n"
+"POT-Creation-Date: 2015-08-05 13:48+0545\n"
+"PO-Revision-Date: 2015-08-05 13:48+0545\n"
 "Last-Translator: Marius Tirteu <admin@mannius.ro>\n"
 "Language-Team: Marius Tirteu <admin@mannius.ro>\n"
 "Language: en\n"
@@ -1000,31 +1000,30 @@ msgid "More Theme Options &raquo;"
 msgstr "More Theme Options &raquo;"
 
 #: ../inc/widgets.php:20
-msgid "Use this widget to add any type of Ad as a widget."
+msgid "CT: Adspace Widget"
 msgstr ""
-"Utilizați acest widget pentru a adăuga orice tip de reclamă ca un widget."
 
 #: ../inc/widgets.php:21
-msgid "Catch Box Adspace Widget"
-msgstr "Widget de reclamă Catch Box"
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr ""
 
-#: ../inc/widgets.php:38
+#: ../inc/widgets.php:39
 msgid "Title (optional):"
 msgstr "Titlu (opțional):"
 
-#: ../inc/widgets.php:43
+#: ../inc/widgets.php:44
 msgid "Ad Code:"
 msgstr "Cod reclamă:"
 
-#: ../inc/widgets.php:49
+#: ../inc/widgets.php:50
 msgid "Image Url:"
 msgstr "Adresă Imagine:"
 
-#: ../inc/widgets.php:53
+#: ../inc/widgets.php:54
 msgid "Link URL:"
 msgstr "Adresă legătură:"
 
-#: ../inc/widgets.php:57
+#: ../inc/widgets.php:58
 msgid "Alt text:"
 msgstr "Text alternativ:"
 
@@ -1079,6 +1078,13 @@ msgstr "Următorul <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Arhive etichete: %s"
+
+#~ msgid "Use this widget to add any type of Ad as a widget."
+#~ msgstr ""
+#~ "Utilizați acest widget pentru a adăuga orice tip de reclamă ca un widget."
+
+#~ msgid "Catch Box Adspace Widget"
+#~ msgstr "Widget de reclamă Catch Box"
 
 #~ msgid "Meta"
 #~ msgstr "Meta"

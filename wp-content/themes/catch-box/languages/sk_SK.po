@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 16:49-0500\n"
-"PO-Revision-Date: 2015-07-16 16:49-0500\n"
+"POT-Creation-Date: 2015-08-05 13:48+0545\n"
+"PO-Revision-Date: 2015-08-05 13:48+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: H.P. Brinkmann\n"
 "Language: sk_SK\n"
@@ -991,30 +991,30 @@ msgid "More Theme Options &raquo;"
 msgstr "More Theme Options &raquo;"
 
 #: ../inc/widgets.php:20
-msgid "Use this widget to add any type of Ad as a widget."
-msgstr "Použite tento widget pre pridanie akejkoľvek reklamy."
+msgid "CT: Adspace Widget"
+msgstr ""
 
 #: ../inc/widgets.php:21
-msgid "Catch Box Adspace Widget"
-msgstr "Catch Box Adspace Widget"
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr ""
 
-#: ../inc/widgets.php:38
+#: ../inc/widgets.php:39
 msgid "Title (optional):"
 msgstr "Názov (dobrovoľný):"
 
-#: ../inc/widgets.php:43
+#: ../inc/widgets.php:44
 msgid "Ad Code:"
 msgstr "Kód reklamy:"
 
-#: ../inc/widgets.php:49
+#: ../inc/widgets.php:50
 msgid "Image Url:"
 msgstr "URL obrázku:"
 
-#: ../inc/widgets.php:53
+#: ../inc/widgets.php:54
 msgid "Link URL:"
 msgstr "Link URL:"
 
-#: ../inc/widgets.php:57
+#: ../inc/widgets.php:58
 msgid "Alt text:"
 msgstr "Text:"
 
@@ -1067,6 +1067,12 @@ msgstr "Nasledujúci <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Viac v rovnakom štítku: %s"
+
+#~ msgid "Use this widget to add any type of Ad as a widget."
+#~ msgstr "Použite tento widget pre pridanie akejkoľvek reklamy."
+
+#~ msgid "Catch Box Adspace Widget"
+#~ msgstr "Catch Box Adspace Widget"
 
 #~ msgid "Meta"
 #~ msgstr "Ďalšie"

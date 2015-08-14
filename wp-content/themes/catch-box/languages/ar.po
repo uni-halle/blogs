@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 16:47-0500\n"
+"POT-Creation-Date: 2015-08-05 13:45+0545\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: www.ed3s.com <master@ed3s.com>\n"
@@ -991,30 +991,30 @@ msgid "More Theme Options &raquo;"
 msgstr "‏More Theme Options &raquo;"
 
 #: ../inc/widgets.php:20
-msgid "Use this widget to add any type of Ad as a widget."
-msgstr "لاضافة الاعلانات الخاصة بك"
+msgid "CT: Adspace Widget"
+msgstr ""
 
 #: ../inc/widgets.php:21
-msgid "Catch Box Adspace Widget"
-msgstr "Catch Box اعلانات جانبية"
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr ""
 
-#: ../inc/widgets.php:38
+#: ../inc/widgets.php:39
 msgid "Title (optional):"
 msgstr "العنوان (اختياري)"
 
-#: ../inc/widgets.php:43
+#: ../inc/widgets.php:44
 msgid "Ad Code:"
 msgstr "الكود"
 
-#: ../inc/widgets.php:49
+#: ../inc/widgets.php:50
 msgid "Image Url:"
 msgstr "رابط الصورة"
 
-#: ../inc/widgets.php:53
+#: ../inc/widgets.php:54
 msgid "Link URL:"
 msgstr "رابط"
 
-#: ../inc/widgets.php:57
+#: ../inc/widgets.php:58
 msgid "Alt text:"
 msgstr "نص بديل"
 
@@ -1069,6 +1069,12 @@ msgstr "<span class=\"meta-nav\">&rarr;</span> التالي"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "ارشيف الوسم : %s"
+
+#~ msgid "Use this widget to add any type of Ad as a widget."
+#~ msgstr "لاضافة الاعلانات الخاصة بك"
+
+#~ msgid "Catch Box Adspace Widget"
+#~ msgstr "Catch Box اعلانات جانبية"
 
 #~ msgid "Meta"
 #~ msgstr "منوعات"

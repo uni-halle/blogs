@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 16:48-0500\n"
-"PO-Revision-Date: 2015-07-16 16:48-0500\n"
+"POT-Creation-Date: 2015-08-05 13:47+0545\n"
+"PO-Revision-Date: 2015-08-05 13:47+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: César Gómez <cesar@temperatio.com>\n"
 "Language: es_ES\n"
@@ -1002,30 +1002,30 @@ msgid "More Theme Options &raquo;"
 msgstr "More Theme Options &raquo;"
 
 #: ../inc/widgets.php:20
-msgid "Use this widget to add any type of Ad as a widget."
-msgstr "Utiliza este widget para añadir cualquier tipo de anuncio como widget"
+msgid "CT: Adspace Widget"
+msgstr ""
 
 #: ../inc/widgets.php:21
-msgid "Catch Box Adspace Widget"
-msgstr "Widget de publicidad de Catch Box"
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr ""
 
-#: ../inc/widgets.php:38
+#: ../inc/widgets.php:39
 msgid "Title (optional):"
 msgstr "Título (opcional):"
 
-#: ../inc/widgets.php:43
+#: ../inc/widgets.php:44
 msgid "Ad Code:"
 msgstr "Código del anuncio:"
 
-#: ../inc/widgets.php:49
+#: ../inc/widgets.php:50
 msgid "Image Url:"
 msgstr "URL de imágen"
 
-#: ../inc/widgets.php:53
+#: ../inc/widgets.php:54
 msgid "Link URL:"
 msgstr "URL:"
 
-#: ../inc/widgets.php:57
+#: ../inc/widgets.php:58
 msgid "Alt text:"
 msgstr "Texto alternativo:"
 
@@ -1080,6 +1080,13 @@ msgstr "Siguiente <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Archivo de la etiqueta: %s"
+
+#~ msgid "Use this widget to add any type of Ad as a widget."
+#~ msgstr ""
+#~ "Utiliza este widget para añadir cualquier tipo de anuncio como widget"
+
+#~ msgid "Catch Box Adspace Widget"
+#~ msgstr "Widget de publicidad de Catch Box"
 
 #~ msgid "Meta"
 #~ msgstr "Meta"
