@@ -531,8 +531,13 @@ class Mixin_Attach_To_Post_Display_Tab extends Mixin
         $all_tags->id = 'All';
         array_unshift($tags, $all_tags);
         $display_types = array();
+        $registry = C_Component_Registry::get_instance();
         foreach ($display_type_mapper->find_all() as $display_type) {
             if (isset($display_type->hidden_from_ui) && $display_type->hidden_from_ui) {
+                continue;
+            }
+            $available = $registry->is_module_loaded($display_type->name);
+            if (!apply_filters('ngg_atp_show_display_type', $available, $display_type)) {
                 continue;
             }
             $display_types[] = $display_type;

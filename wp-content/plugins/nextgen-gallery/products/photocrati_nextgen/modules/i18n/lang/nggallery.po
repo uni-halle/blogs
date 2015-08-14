@@ -422,7 +422,7 @@ msgstr ""
 
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/import_folder.php:56
 #, php-format
-msgid "Done! Successfully imported %s images"
+msgid "Done! Successfully imported %s images. <a href=\"%s\" target=\"_blank\">Manage gallery</a>"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/attach_to_post/templates/attach_to_post.php:12
@@ -457,11 +457,11 @@ msgstr ""
 
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/upload_images.php:164
 #, php-format
-msgid "%s images were uploaded successfully"
+msgid "%s images were uploaded successfully. <a href=\"%s\" target=\"_blank\">Manage gallery</a>"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/upload_images.php:167
-msgid "1 image was uploaded successfully"
+msgid "1 image was uploaded successfully. <a href=\"%s\" target=\"_blank\">Manage gallery</a>"
 msgstr ""
 
 #: products/photocrati_nextgen/modules/nextgen_addgallery_page/templates/upload_images.php:170

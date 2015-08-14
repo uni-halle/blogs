@@ -2514,8 +2514,8 @@ class C_NextGen_Metadata extends C_Component
         }
         if (!is_array($this->exif_array)) {
             $meta = array();
-            $exif = isset($this->exif_array['EXIF']) ? $this->exif_array['EXIF'] : array();
-            if (count($exif)) {
+            if (isset($this->exif_data['EXIF'])) {
+                $exif = $this->exif_data['EXIF'];
                 if (!empty($exif['FNumber'])) {
                     $meta['aperture'] = 'F ' . round($this->exif_frac2dec($exif['FNumber']), 2);
                 }
@@ -3330,14 +3330,19 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
     public function delete_gallery($gallery)
     {
         $retval = FALSE;
-        if ($gallery_abspath = $this->object->get_gallery_abspath($gallery)) {
-            $fs = C_Fs::get_instance();
-            $retval = $fs->delete($gallery_abspath);
-            if ($retval) {
-                @rmdir($fs->join_paths($gallery_abspath, 'thumbs'));
-                @rmdir($fs->join_paths($gallery_abspath, 'dynamic'));
-                @rmdir($gallery_abspath);
+        if ($abspath = $this->object->get_gallery_abspath($gallery)) {
+            // delete the directory and everything in it
+            $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($abspath), RecursiveIteratorIterator::CHILD_FIRST);
+            foreach ($iterator as $file) {
+                if (in_array($file->getBasename(), array('.', '..'))) {
+                    continue;
+                } elseif ($file->isDir()) {
+                    rmdir($file->getPathname());
+                } elseif ($file->isFile() || $file->isLink()) {
+                    unlink($file->getPathname());
+                }
             }
+            $retval = @rmdir($abspath);
         }
         return $retval;
     }
@@ -3610,8 +3615,11 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                 if (is_writable($full_abspath) && is_writable(dirname($full_abspath))) {
                     // Copy the backup
                     if (@copy($backup_abspath, $full_abspath)) {
-                        // Re-create all image sizes
+                        // Re-create non-fullsize image sizes
                         foreach ($this->object->get_image_sizes($image) as $named_size) {
+                            if ($named_size == 'full') {
+                                continue;
+                            }
                             $this->object->generate_image_clone($backup_abspath, $this->object->get_image_abspath($image, $named_size), $this->object->get_image_size_params($image, $named_size));
                         }
                         // Reimport all metadata

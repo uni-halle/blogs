@@ -710,6 +710,14 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
     {
         return 'photocrati-nextgen_admin#nextgen_admin_page';
     }
+    /**
+     * Returns a list of parameters to include when rendering the view
+     * @return array
+     */
+    public function get_index_params()
+    {
+        return array();
+    }
     public function show_save_button()
     {
         return TRUE;
@@ -755,7 +763,9 @@ class Mixin_NextGen_Admin_Page_Instance_Methods extends Mixin
                 }
             }
             // Render the view
-            $this->render_partial($this->object->index_template(), array('page_heading' => $this->object->get_page_heading(), 'tabs' => $tabs, 'errors' => $errors, 'success' => $success, 'form_header' => $token->get_form_html(), 'show_save_button' => $this->object->show_save_button(), 'model' => $this->object->has_method('get_model') ? $this->get_model() : NULL));
+            $index_params = array('page_heading' => $this->object->get_page_heading(), 'tabs' => $tabs, 'errors' => $errors, 'success' => $success, 'form_header' => $token->get_form_html(), 'show_save_button' => $this->object->show_save_button(), 'model' => $this->object->has_method('get_model') ? $this->get_model() : NULL);
+            $index_params = array_merge($index_params, $this->object->get_index_params());
+            $this->render_partial($this->object->index_template(), $index_params);
         } else {
             $this->render_view('photocrati-nextgen_admin#not_authorized', array('name' => $this->object->name, 'title' => $this->object->get_page_title()));
         }

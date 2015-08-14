@@ -76,6 +76,13 @@ class M_Third_Party_Compat extends C_Base_Module
                 define('NGG_DISABLE_RESOURCE_MANAGER', TRUE);
         }
 
+        // Cornerstone's page builder requires a 'clean slate' of css/js that our resource manager interefers with
+        if (class_exists('Cornerstone'))
+        {
+            if (!defined('NGG_DISABLE_FILTER_THE_CONTENT')) define('NGG_DISABLE_FILTER_THE_CONTENT', TRUE);
+            if (!defined('NGG_DISABLE_RESOURCE_MANAGER'))   define('NGG_DISABLE_RESOURCE_MANAGER', TRUE);
+        }
+
         // Genesis Tabs creates a new query / do_shortcode loop which requires these be set
         if (class_exists('Genesis_Tabs'))
         {
@@ -113,6 +120,7 @@ class M_Third_Party_Compat extends C_Base_Module
         add_filter('run_ngg_resource_manager', array($this, 'check_wpecommerce_download'));
         add_filter('run_ngg_resource_manager', array($this, 'check_mafs_download'));
         add_filter('run_ngg_resource_manager', array($this, 'check_wps_download'));
+        add_filter('ngg_atp_show_display_type', array($this, 'atp_check_pro_albums'), 10, 2);
 
         // WPML fix
         if (class_exists('SitePress')) {
@@ -123,6 +131,18 @@ class M_Third_Party_Compat extends C_Base_Module
 
         // TODO: Only needed for NGG Pro 1.0.10 and lower
         add_action('the_post', array(&$this, 'add_ngg_pro_page_parameter'));
+    }
+
+    function atp_check_pro_albums($available, $display_type)
+    {
+        if (!defined('NGG_PRO_ALBUMS'))
+            return $available;
+
+        if (in_array($display_type->name, array(NGG_PRO_LIST_ALBUM, NGG_PRO_GRID_ALBUM))
+        &&  $this->get_registry()->is_module_loaded(NGG_PRO_ALBUMS))
+            $available = TRUE;
+
+        return $available;
     }
 
     /**

@@ -69,6 +69,8 @@ $class = '';
 				if (in_array($key, array('created_timestamp', 'timestamp')) && is_numeric($value)) {
 					$value = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $value);
 				}
+				if ($key == 'created_date')
+					$value = date_i18n(get_option('date_format'), strtotime($value));
 				$class = ( $class == 'class="alternate"' ) ? '' : 'class="alternate"';
 				echo '<tr '.$class.'>	
 						<td style="width:230px">' . esc_html ( $meta->i18n_name($key) ) . '</td>

@@ -112,7 +112,24 @@ class M_NextGen_Basic_Album extends C_Base_Module
             C_NextGen_Shortcode_Manager::add('album', array(&$this, 'ngglegacy_shortcode'));
             C_NextGen_Shortcode_Manager::add('nggalbum', array(&$this, 'ngglegacy_shortcode'));
         }
-	}
+
+        add_filter('ngg_atp_show_display_type', array($this, 'atp_show_basic_albums'), 10, 2);
+    }
+
+    /**
+     * ATP filters display types by not displaying those whose name attribute isn't an active POPE module. This
+     * is a workaround/hack to compensate for basic albums sharing a module.
+     *
+     * @param bool $available
+     * @param C_Display_Type $display_type
+     * @return bool
+     */
+    function atp_show_basic_albums($available, $display_type)
+    {
+        if (in_array($display_type->name, array(NGG_BASIC_COMPACT_ALBUM, NGG_BASIC_EXTENDED_ALBUM)))
+            $available = TRUE;
+        return $available;
+    }
 
     /**
      * Gets a value from the parameter array, and if not available, uses the default value

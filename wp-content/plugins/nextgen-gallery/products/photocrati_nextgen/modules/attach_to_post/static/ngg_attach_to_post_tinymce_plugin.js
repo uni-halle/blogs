@@ -85,7 +85,7 @@
 		},
 
         wm_close_event: function(e) {
-            if (e.target._id == 'ngg_attach_to_post_dialog') {
+            if (e && e.target && e.target._id && e.target._id == 'ngg_attach_to_post_dialog') {
                 // Restore scrolling for the main content window when the attach to post interface is closed
                 jQuery('html,body').css('overflow', 'auto');
                 tinyMCE.activeEditor.selection.select(tinyMCE.activeEditor.dom.select('p')[0]);

@@ -17,7 +17,7 @@ class M_NextGen_Settings extends C_Base_Module
 			'photocrati-nextgen_settings',
 			'NextGEN Gallery Settings',
 			'Provides central management for NextGEN Gallery settings',
-			'0.8',
+			'0.9',
 			'http://www.nextgen-gallery.com',
 			'Photocrati Media',
 			'http://www.photocrati.com'
@@ -129,6 +129,7 @@ class C_NextGen_Settings_Installer
 			// CSS Style
 			'activateCSS' => 1, // activate the CSS file
 			'CSSfile'     => 'nggallery.css',     // set default css filename
+			'always_enable_frontend_logic' => FALSE
 		);
 	}
 

@@ -59,7 +59,7 @@ class C_Widget_Gallery extends WP_Widget
     public function __construct()
     {
         $widget_ops = array('classname' => 'ngg_images', 'description' => __('Add recent or random images from the galleries', 'nggallery'));
-        $this->WP_Widget('ngg-images', __('NextGEN Widget', 'nggallery'), $widget_ops);
+        parent::__construct('ngg-images', __('NextGEN Widget', 'nggallery'), $widget_ops);
     }
     public function form($instance)
     {
@@ -159,7 +159,7 @@ class C_Widget_MediaRSS extends WP_Widget
     public function __construct()
     {
         $widget_ops = array('classname' => 'ngg_mrssw', 'description' => __('Widget that displays Media RSS links for NextGEN Gallery.', 'nggallery'));
-        $this->WP_Widget('ngg-mrssw', __('NextGEN Media RSS', 'nggallery'), $widget_ops);
+        parent::__construct('ngg-mrssw', __('NextGEN Media RSS', 'nggallery'), $widget_ops);
     }
     public function form($instance)
     {
@@ -215,7 +215,7 @@ class C_Widget_Slideshow extends WP_Widget
     public function __construct()
     {
         $widget_ops = array('classname' => 'widget_slideshow', 'description' => __('Show a NextGEN Gallery Slideshow', 'nggallery'));
-        $this->WP_Widget('slideshow', __('NextGEN Slideshow', 'nggallery'), $widget_ops);
+        parent::__construct('slideshow', __('NextGEN Slideshow', 'nggallery'), $widget_ops);
     }
     public function form($instance)
     {

@@ -1535,8 +1535,6 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
         // Validate the displayed gallery
         if ($displayed_gallery) {
             if ($displayed_gallery->validate()) {
-                // Set a temporary id
-                $displayed_gallery->id($displayed_gallery->to_transient());
                 // Display!
                 return $this->object->render($displayed_gallery, TRUE, $mode);
             } else {
@@ -1583,10 +1581,16 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
         if ($mode == null) {
             $mode = 'normal';
         }
-        // Save the displayed gallery as a transient if it hasn't already. Allows for ajax operations
-        // to add or modify the gallery without losing a retrievable ID
-        if (!$displayed_gallery->apply_transient()) {
-            $displayed_gallery->to_transient();
+        if (apply_filters('ngg_cache_displayed_galleries', FALSE)) {
+            // Save the displayed gallery as a transient if it hasn't already. Allows for ajax operations
+            // to add or modify the gallery without losing a retrievable ID
+            if (!$displayed_gallery->apply_transient()) {
+                $displayed_gallery->to_transient();
+            }
+        } else {
+            if (is_null($displayed_gallery->id())) {
+                $displayed_gallery->id(md5(json_encode($displayed_gallery->get_entity())));
+            }
         }
         // Get the display type controller
         $controller = $this->get_registry()->get_utility('I_Display_Type_Controller', $displayed_gallery->display_type);
@@ -1601,6 +1605,8 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
         } elseif ($controller->param('show')) {
             $lookup = FALSE;
         } elseif ($controller->is_cachable() === FALSE) {
+            $lookup = FALSE;
+        } elseif (!NGG_RENDERING_CACHE_ENABLED) {
             $lookup = FALSE;
         }
         // Enqueue any necessary static resources
@@ -1628,9 +1634,7 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
             }
             // Try getting the rendered HTML from the cache
             $key = C_Photocrati_Transient_Manager::create_key('displayed_gallery_rendering', $key_params);
-            if (NGG_RENDERING_CACHE_ENABLED) {
-                $html = C_Photocrati_Transient_Manager::fetch($key, FALSE);
-            }
+            $html = C_Photocrati_Transient_Manager::fetch($key, FALSE);
             // Output debug messages
             if ($html) {
                 $retval .= $this->debug_msg('HIT!');

@@ -422,11 +422,6 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
     {
         $display_settings = $displayed_gallery->display_settings;
         $gallery_id = $displayed_gallery->id();
-        $transient_id = $displayed_gallery->transient_id;
-        // We must use the transient_id to identify the gallery
-        if ($display_settings['ajax_pagination']) {
-            $gallery_id = $transient_id;
-        }
         if (!$display_settings['disable_pagination']) {
             $current_page = (int) $this->param('nggpage', $gallery_id, 1);
         } else {
@@ -517,7 +512,6 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
                 $params['storage'] =& $storage;
                 $params['images'] =& $images;
                 $params['displayed_gallery_id'] = $gallery_id;
-                $params['transient_id'] = $displayed_gallery->transient_id;
                 $params['current_page'] = $current_page;
                 $params['effect_code'] = $effect_code;
                 $params['pagination'] = $pagination;

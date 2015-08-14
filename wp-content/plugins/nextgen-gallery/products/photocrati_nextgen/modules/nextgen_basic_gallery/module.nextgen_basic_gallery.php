@@ -143,6 +143,8 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
         }
 
         add_action('ngg_routes', array(&$this, 'define_routes'));
+
+        add_filter('ngg_atp_show_display_type', array($this, 'atp_show_basic_galleries'), 10, 2);
 	}
 
     function define_routes($router)
@@ -154,6 +156,21 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
         $router->rewrite("{*}{$slug}{*}/show--slide/{*}",   "{1}{$slug}{2}/show--" . NGG_BASIC_SLIDESHOW  . "/{3}");
         $router->rewrite("{*}{$slug}{*}/show--gallery/{*}", "{1}{$slug}{2}/show--" . NGG_BASIC_THUMBNAILS . "/{3}");
         $router->rewrite("{*}{$slug}{*}/page/{\\d}{*}",     "{1}{$slug}{2}/nggpage--{3}{4}");
+    }
+
+    /**
+     * ATP filters display types by not displaying those whose name attribute isn't an active POPE module. This
+     * is a workaround/hack to compensate for basic slideshow & thumbnails sharing a module.
+     *
+     * @param bool $available
+     * @param C_Display_Type $display_type
+     * @return bool
+     */
+    function atp_show_basic_galleries($available, $display_type)
+    {
+        if (in_array($display_type->name, array(NGG_BASIC_THUMBNAILS, NGG_BASIC_SLIDESHOW)))
+            $available = TRUE;
+        return $available;
     }
 
     /**

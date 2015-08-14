@@ -164,13 +164,19 @@
 
                             // Determine appropriate message to display
                             var upload_count = window.uploaded_image_ids.length;
-                            var msg = "<?php _e('%s images were uploaded successfully', 'nggallery'); ?>";
-                            msg = msg.replace('%s', upload_count);
-                            if (upload_count == 1) {
-                                msg = "<?php _e('1 image was uploaded successfully', 'nggallery'); ?>";
-                            }
-                            else if (upload_count == 0) {
+                            var msg = '';
+
+                            <?php $url = admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid={gid}'; ?>
+
+                            if (upload_count == 0) {
                                 msg = "<?php _e('0 images were uploaded', 'nggallery'); ?>";
+                            } else {
+                                msg = '<?php printf(__('{count} images were uploaded successfully. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url); ?>';
+                                if (upload_count == 1) {
+                                    msg = '<?php printf(__('1 image was uploaded successfully. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url); ?>';
+                                }
+                                msg = msg.replace('{gid}', $gallery_id.val());
+                                msg = msg.replace('{count}', upload_count);
                             }
 
                             // Display message/notification

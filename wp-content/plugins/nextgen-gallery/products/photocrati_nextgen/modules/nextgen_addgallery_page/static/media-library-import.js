@@ -71,13 +71,15 @@
                     ngg_importml.selectors.ml_btn_import.attr('disabled', false);
                     ngg_importml.selectors.ml_btn_select.attr('disabled', false);
 
-                    delete ngg_importml.methods.import.params.gallery_id;
-                    delete ngg_importml.methods.import.params.gallery_name;
-
-                    var msg = ngg_importml_i18n.imported_multiple.replace('%s', ngg_importml.methods.import.import_count);
+                    var msg = ngg_importml_i18n.imported_multiple;
                     if (ngg_importml.methods.import.import_count == 1) {
                         msg = ngg_importml_i18n.imported_singular;
                     }
+                    msg = msg.replace('{gid}', ngg_importml.methods.import.params.gallery_id);
+                    msg = msg.replace('{count}', ngg_importml.methods.import.import_count);
+
+                    delete ngg_importml.methods.import.params.gallery_id;
+                    delete ngg_importml.methods.import.params.gallery_name;
 
                     $.gritter.add({
                         title: ngg_importml_i18n.gritter_title,

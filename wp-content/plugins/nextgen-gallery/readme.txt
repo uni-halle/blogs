@@ -2,17 +2,17 @@
 Contributors: photocrati
 Tags: nextgen, nextgen gallery, gallery, galleries, image, images, image gallery, photo, photos, photo gallery, picture, pictures, picture gallery, album, albums, photo albums, image album, media, media gallery, thumbnails, thumbnail gallery, thumbnail galleries, slideshow, slideshows, slideshow gallery, slideshow galleries, fancybox, lightbox, responsive, responsive gallery, responsive galleries, wordpress responsive gallery, nextcellent, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, best gallery plugin, free photo gallery, singlepic, image captions imagebrowser, watermarks, watermarking, photography, photographer
 Requires at least: 3.6.1
-Tested up to: 4.2.2
-Stable tag: 2.1.2
+Tested up to: 4.3.0
+Stable tag: 2.1.7
 License: GPLv2
 
-The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 12 million downloads.
+The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 13 million downloads.
 
 == Description ==
 
 = WordPress Gallery Plugin =
 
-NextGEN Gallery is the most popular **WordPress gallery plugin**, and one of the most popular WordPress plugins of all time, with over 12 million downloads.
+NextGEN Gallery is the most popular **WordPress gallery plugin**, and one of the most popular WordPress plugins of all time, with over 13 million downloads.
 
 It provides a powerful engine for uploading and managing galleries of images, with the ability to batch upload, import meta data, add/delete/rearrange/sort images, edit thumbnails, group galleries into albums, and more. It also provides two front-end display styles (slideshows and thumbnail galleries), both of which come with a wide array of options for controlling size, style, timing, transitions, controls, lightbox effects, and more.
 
@@ -198,6 +198,18 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.1.7 - 08.12.2015 =
+* Changed: "Flush image cache" now removes images from the database w/o a gallery
+* Changed: "Show Meta" popup: parse date_format through date_i18n()
+* Changed: Made Add Gallery/Images notifications a link to the gallery
+* Changed: No longer cache displayed galleries as transients
+* Changed: Updated widgets to use PHP5 parent::__construct() over $this->WP_Widget()
+* Fixed:   C_NextGen_Metadata->get_EXIF() was bugged with imagebrowser-exif template
+* Fixed:   Cornerstone/X compatibility
+* Fixed:   Recovering images was 'generating' from backup instead of copying
+* Fixed:   Setting post thumbnail more than once on a page/post
+* Fixed:   Permanently hide display types from ATP without an active POPE module
 
 = V2.1.2 - 07.20.2015 =
 * NEW:     Ability to import from Media Library

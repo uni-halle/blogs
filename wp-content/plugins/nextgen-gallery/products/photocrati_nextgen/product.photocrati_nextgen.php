@@ -37,7 +37,6 @@ class P_Photocrati_NextGen extends C_Base_Product
 
 		// Front-end only
 		'photocrati-dynamic_stylesheet'         =>  'frontend',
-		'photocrati-mediarss'                   =>  'frontend',
 
 		// Backend-only
 		'photocrati-nextgen_pro_upgrade'        =>  'backend',

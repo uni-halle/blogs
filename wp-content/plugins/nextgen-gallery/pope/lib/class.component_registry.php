@@ -101,7 +101,7 @@ class C_Component_Registry
 		    $this->mark_as_searched_path($path);
 	    }
 
-	    if ($load_all) $this->load_all_modules();
+	    if ($load_all) $this->load_all_modules(NULL, $path);
     }
 
 
@@ -183,7 +183,7 @@ class C_Component_Registry
 	    return $retval;
     }
 
-    function load_all_modules($type = null)
+    function load_all_modules($type=NULL, $dir=NULL)
     {
         $modules = $this->get_known_module_list();
         $ret = true;
@@ -191,7 +191,8 @@ class C_Component_Registry
         foreach ($modules as $module_id)
         {
             if ($type == null || $this->get_module_meta($module_id, 'type') == $type) {
-                $ret = $this->load_module($module_id) && $ret;
+                if ($dir == NULL || strpos($this->get_module_dir($module_id), $dir) !== FALSE)
+	                $ret = $this->load_module($module_id) && $ret;
             }
         }
 

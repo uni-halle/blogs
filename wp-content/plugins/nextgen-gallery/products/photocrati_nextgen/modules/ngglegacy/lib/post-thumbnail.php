@@ -51,7 +51,7 @@ class nggPostThumbnail {
 			
 			if (version_compare($wp_version, '3.5', '>=') && $thumbnail_id <= 0)
 			{
-				$iframe_src = get_upload_iframe_src('image');
+				$iframe_src = get_upload_iframe_src('image', $post_id);
 				$iframe_src = remove_query_arg('TB_iframe', $iframe_src);
 				$iframe_src = add_query_arg('tab', 'nextgen', $iframe_src);
 				$iframe_src = add_query_arg('chromeless', '1', $iframe_src);
