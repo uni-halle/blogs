@@ -2,8 +2,8 @@
 Contributors: danlester
 Tags: doc, docx, pdf, office, powerpoint, google, document, embed, intranet
 Requires at least: 3.3
-Tested up to: 4.2
-Stable tag: 2.2
+Tested up to: 4.3
+Stable tag: 2.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -118,6 +118,10 @@ the Plugins section of your Wordpress admin
 1. Follow the instructions from step 4 above
 
 == Changelog ==
+
+= 2.2.2 =
+
+Redesigned toolbar buttons
 
 = 2.2 =
 

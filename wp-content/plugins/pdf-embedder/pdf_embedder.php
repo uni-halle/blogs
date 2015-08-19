@@ -4,7 +4,7 @@
  * Plugin Name: PDF Embedder
  * Plugin URI: http://wp-pdf.com/
  * Description: Embed PDFs straight into your posts and pages, with flexible width and height. No third-party services required. 
- * Version: 2.2
+ * Version: 2.2.2
  * Author: Dan Lester
  * Author URI: http://wp-pdf.com/
  * License: GPL3
@@ -14,7 +14,7 @@ require_once( plugin_dir_path(__FILE__).'/core/core_pdf_embedder.php' );
 
 class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
-	protected $PLUGIN_VERSION = '2.2';
+	protected $PLUGIN_VERSION = '2.2.2';
 	
 	protected function useminified() {
 		/* using-minified */ return true;
@@ -34,8 +34,8 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 	
 	public function pdfemb_wp_enqueue_scripts() {
 		if (!$this->useminified()) {
-			wp_register_script( 'pdfemb_versionspecific_pdf_js', $this->my_plugin_url().'js/pdfemb-basic.js');
-			wp_register_script( 'pdfemb_grabtopan_js', $this->my_plugin_url().'js/grabtopan-basic.js');
+			wp_register_script( 'pdfemb_versionspecific_pdf_js', $this->my_plugin_url().'js/pdfemb-basic.js', array('jquery'));
+			wp_register_script( 'pdfemb_grabtopan_js', $this->my_plugin_url().'js/grabtopan-basic.js', array('jquery'));
 			wp_register_script( 'pdfemb_embed_pdf_js', $this->my_plugin_url().'js/pdfemb-embed-pdf.js', array('pdfemb_versionspecific_pdf_js', 'pdfemb_grabtopan_js', 'jquery') );
 		}
 		else {

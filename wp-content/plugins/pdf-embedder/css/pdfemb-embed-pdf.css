@@ -108,53 +108,118 @@ div.pdfemb-toolbar {
 	margin: 0px;
 	border: none;
 	z-index: 10;
-	 
+	position: absolute;
+
     background-color: grey; 
     width: 100%;
 }
 
 div.pdfemb-toolbar-fixed {
     display: block;
-    position: absolute;
 }
 
 div.pdfemb-toolbar-hover {
     display: none;
-    position: absolute;
 }
 
 div.pdfemb-toolbar-top {
-
 	top: 0px;
 	left: 0px;
 }
 
 div.pdfemb-toolbar-bottom {
-
 	bottom: 0px;
 	left: 0px;
+	padding-top: 1px;
 }
 
 div.pdfemb-toolbar button {
-	margin: 6px 0 6px 10px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	height: 25px;
-	font-family: sans-serif;
-	font-size: 10px;
-	padding: 5px;
-	text-align: center;
-	color: buttontext;
-	background-color: buttonface;
-	box-sizing: border-box;
-	letter-spacing: normal;
-	word-spacing: normal;
-	line-height: 1;
-	text-transform: none;
-	text-indent: 0px;
-	text-shadow: none;
-	font-weight: normal;
-	display: inline-block;
+	background-color: hsla(0,0%,0%,.12);
+	background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
+	background-clip: padding-box;
+	border: 1px solid hsla(0,0%,0%,.35);
+	border-color: hsla(0,0%,0%,.32) hsla(0,0%,0%,.38) hsla(0,0%,0%,.42);
+	box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset,
+	0 0 1px hsla(0,0%,100%,.15) inset,
+	0 1px 0 hsla(0,0%,100%,.05);
+	-webkit-transition-property: background-color, border-color, box-shadow;
+	-webkit-transition-duration: 150ms;
+	-webkit-transition-timing-function: ease;
+	transition-property: background-color, border-color, box-shadow;
+	transition-duration: 150ms;
+	transition-timing-function: ease;
+
+	min-width: 16px;
+	padding: 2px 6px 0;
+
+	border-radius: 2px;
+	color: hsla(0,0%,100%,.8);
+	font-size: 12px;
+	line-height: 14px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	cursor: default;
+
+	margin: 3px 2px 4px 0;
+
+	float: left;
+
+}
+
+div.pdfemb-toolbar button:hover {
+	background-color: hsla(0,0%,0%,.2);
+	box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset,
+	0 0 1px hsla(0,0%,100%,.15) inset,
+	0 0 1px hsla(0,0%,0%,.05);
+}
+
+div.pdfemb-toolbar button:first-child {
+	margin-left: 4px;
+}
+
+div.pdfemb-toolbar button.pdfemb-toggled {
+	background-color: hsla(0,0%,0%,.3);
+	background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
+	border-color: hsla(0,0%,0%,.4) hsla(0,0%,0%,.45) hsla(0,0%,0%,.5);
+	box-shadow: 0 1px 1px hsla(0,0%,0%,.1) inset,
+	0 0 1px hsla(0,0%,0%,.2) inset,
+	0 1px 0 hsla(0,0%,100%,.05);
+	-webkit-transition-property: background-color, border-color, box-shadow;
+	-webkit-transition-duration: 10ms;
+	-webkit-transition-timing-function: linear;
+	transition-property: background-color, border-color, box-shadow;
+	transition-duration: 10ms;
+	transition-timing-function: linear;
+}
+
+div.pdfemb-toolbar button.pdfemb-toggled:hover {
+	background-color: hsla(0,0%,0%,.4);
+	border-color: hsla(0,0%,0%,.4) hsla(0,0%,0%,.5) hsla(0,0%,0%,.55);
+	box-shadow: 0 1px 1px hsla(0,0%,0%,.2) inset,
+	0 0 1px hsla(0,0%,0%,.3) inset,
+	0 1px 0 hsla(0,0%,100%,.05);
+}
+
+
+div.pdfemb-toolbar button.pdfemb-prev::before {
+	content: url('../img/toolbarButton-pageUp.png');
+}
+
+div.pdfemb-toolbar button.pdfemb-next::before {
+	content: url('../img/toolbarButton-pageDown.png');
+}
+
+div.pdfemb-toolbar button.pdfemb-zoomout::before {
+	content: url('../img/toolbarButton-zoomOut.png');
+}
+
+div.pdfemb-toolbar button.pdfemb-zoomin::before {
+	content: url('../img/toolbarButton-zoomIn.png');
+}
+
+div.pdfemb-toolbar button.pdfemb-fs::before {
+	content: url('../img/toolbarButton-presentationMode.png');
 }
 
 div.pdfemb-toolbar button.pdfemb-btndisabled {
@@ -162,20 +227,23 @@ div.pdfemb-toolbar button.pdfemb-btndisabled {
 }
 
 div.pdfemb-toolbar div {
-	margin: 6px 0 6px 10px;
+	margin: 6px 15px 6px 2px;
 	font-family: sans-serif;
-	font-size: 10px;
-	padding: 5px;
+	font-size: 12px;
+	padding: 2px;
 	text-align: center;
 	letter-spacing: normal;
 	word-spacing: normal;
-	line-height: 1;
+	font-size: 12px;
+	line-height: 14px;
 	text-transform: none;
 	text-indent: 0px;
 	text-shadow: none;
 	font-weight: normal;
 	display: inline;
 	color: lightgray;
+
+	float: left;
 }
 
 div.pdfemb-errormsg {
