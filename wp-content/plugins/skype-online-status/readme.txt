@@ -2,9 +2,9 @@
 Contributors: RavanH
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Legacy%20Buttons&item_number=2%2e8&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8&lc=us
 Tags: skype, skype button, call, support, widget, widgets, post, posts, quicktag, tinymce, tinymce3, im, skype-button
-Requires at least: 3.1
-Tested up to: 4.2
-Stable tag: 3.0.1
+Requires at least: 3.2
+Tested up to: 4.3
+Stable tag: 3.0.2
 
 Unlimited, highly customizable and accessible (!) Skype buttons through widgets, post shortcode/quicktag and template tags.
 
@@ -149,10 +149,13 @@ When reporting bugs, please describe as carefully as possible and provide inform
 
 == Upgrade Notice ==
 
-= 3.0 =
-Removed status button templates and functionality because Skype dropped support!
+= 3.0.2 =
+Deprecating PHP4 style constructor
 
 == Changelog ==
+
+= 3.0.2 =
+* Deprecating PHP4 style constructor
 
 = 3.0.1 =
 * Translation strings updated

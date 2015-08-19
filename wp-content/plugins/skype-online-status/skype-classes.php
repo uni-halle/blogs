@@ -7,8 +7,8 @@
  */
 class Skype_Status_Widget extends WP_Widget {
 
-	function Skype_Status_Widget() {
-		$this->WP_Widget(
+	public function __construct() {
+		parent::__construct(
 			'skype-status', 
 			__('Skype Button', 'skype-online-status'),
 			array(
@@ -22,7 +22,7 @@ class Skype_Status_Widget extends WP_Widget {
 		);
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		extract($args);
 		$title = apply_filters( 'widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 
@@ -42,7 +42,7 @@ class Skype_Status_Widget extends WP_Widget {
 		echo $after . '</div>' . $after_widget;
 	}
 
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['skype_id'] =  trim(strip_tags(stripslashes($new_instance['skype_id']))); 
@@ -68,7 +68,7 @@ class Skype_Status_Widget extends WP_Widget {
 		return $instance;
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$defaults = array ( 
 			'title' => __('Skype Button', 'skype-online-status'),	// Widget title
 			'skype_id' => '',			// Skype ID to replace {skypeid} in template files

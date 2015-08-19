@@ -5,7 +5,7 @@ Plugin URI: http://status301.net/wordpress-plugins/skype-online-status/
 Description: Add multiple, highly customizable and accessible Skype buttons to post/page content (quick-tags), sidebar (unlimited number of widgets) or anywhere else (template code). Find documentation and advanced configuration options on the settings page or just go straight to your <a href="widgets.php">Widgets</a> page and add one there...  
 Text Domain: skype-online-status
 Domain Path: languages
-Version: 3.0.1
+Version: 3.0.2
 Author: RavanH
 Author URI: http://status301.net/
 */
