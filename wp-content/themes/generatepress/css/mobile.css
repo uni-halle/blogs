@@ -26,6 +26,20 @@
 		display: block;
 	}
 	
+	button.menu-toggle {
+		background-color: transparent;
+		width: 100%;
+		border: 0;
+	}
+	
+	button.menu-toggle:hover,
+	button.menu-toggle:active,
+	button.menu-toggle:focus {
+		background-color: transparent;
+		border: 0;
+		outline: 0;
+	}
+	
 	.main-navigation ul li:hover > ul {
 		display: none;
 	}

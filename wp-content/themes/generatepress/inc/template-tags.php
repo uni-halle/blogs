@@ -216,7 +216,8 @@ if ( ! function_exists( 'generate_content_more' ) ) :
  */
 	add_filter( 'the_content_more_link', 'generate_content_more' );
 	function generate_content_more( $more ) {
-		return '<p><a class="read-more content-read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read more', 'generate') . '</a></p>';
+		$more_jump = apply_filters( 'generate_more_jump','#more-' . get_the_ID() );
+		return '<p><a class="read-more content-read-more" href="'. get_permalink( get_the_ID() ) . $more_jump . '">' . __('Read more', 'generate') . '</a></p>';
 	}
 endif;
 

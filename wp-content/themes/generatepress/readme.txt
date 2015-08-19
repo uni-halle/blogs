@@ -1,9 +1,10 @@
 -------------------------------------------------------
 Welcome to GeneratePress!
 -------------------------------------------------------
-Website: http://generatepress.com
-Support: http://generatepress.com/support
-Add-ons: http://generatepress.com/add-ons
+Website: https://generatepress.com
+Support: https://generatepress.com/support
+Knowledgebase: https://generatepress.com/knowledgebase
+Add-ons: https://generatepress.com/add-ons
 Email: support@generatepress.com
 
 -------------------------------------------------------

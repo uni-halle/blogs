@@ -10,6 +10,15 @@ Changelog Legend:
 
 ----
 
+(8/15/2015) - 1.3.09
+[+] Add jump to anchor when using read more tag
+[*] Mobile menu toggle changed from <h3> to <button>
+	+ If you've used h3.menu-toggle in any custom CSS, you'll need to adjust it (.menu-toggle is fine)
+[*] Updated HTML5Shiv
+[*] Move HTML5Shiv below all other stylesheets
+
+----
+
 (8/8/2015) - 1.3.08
 [x] Remove Customizer changes to nav section in anticipation of WordPress 4.3
 

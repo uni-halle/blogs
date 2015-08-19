@@ -86,11 +86,10 @@ function generate_navigation_position()
 	<nav itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" id="site-navigation" role="navigation" <?php generate_navigation_class(); ?>>
 		<div class="inside-navigation grid-container grid-parent">
 			<?php do_action( 'generate_inside_navigation' ); ?>
-			<h3 class="menu-toggle">
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 				<?php do_action( 'generate_inside_mobile_menu' ); ?>
 				<span class="mobile-menu"><?php echo apply_filters('generate_mobile_menu_label', __( 'Menu', 'generate' ) ); ?></span>
-			</h3>
-			<div class="screen-reader-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'generate' ); ?>"><?php _e( 'Skip to content', 'generate' ); ?></a></div>
+			</button>
 			<?php 
 			wp_nav_menu( 
 				array( 
