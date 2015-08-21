@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-17 07:34:38+0000\n"
+"PO-Revision-Date: 2015-08-19 06:13:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,11 +22,6 @@ msgstr "Grazie per aver aggiornato! Con WordPress %s è ancora più facile compo
 msgid "List tables can and should designate a primary column."
 msgstr "Le tabelle di liste possono e dovrebbero specificare una colonna primaria."
 
-#. Translators: 1: singular.php; 2: single.php; 3:page.php
-#: wp-admin/about.php:89
-msgid "Added %1$s as a fallback for %2$s and %3$s"
-msgstr "Aggiunto %1$s come alternativo a %2$s o %3$s"
-
 #: wp-admin/about.php:87
 msgid "Template Hierarchy"
 msgstr "Gerarchia dei Template"
@@ -38,6 +33,11 @@ msgstr "Termini condivisi tra tassonomie multiple sono ora separati in termini a
 #: wp-admin/about.php:77
 msgid "Wherever you are on the front-end, you can click the customize link in the toolbar to swiftly make changes to your site."
 msgstr "Se ti trovi sul front-end, puoi cliccare sul link ‘Personalizza’ nella barra degli strumenti per modificare al volo l'aspetto del tuo sito."
+
+#. Translators: 1: singular.php; 2: single.php; 3:page.php
+#: wp-admin/about.php:89
+msgid "Added %1$s as a fallback for %2$s and %3$s"
+msgstr "Aggiunto %1$s come alternativo a %2$s e %3$s"
 
 #: wp-admin/about.php:76
 msgid "Customize your site quickly"
@@ -2515,10 +2515,6 @@ msgstr "Aggiungi nuovi elementi di menu nella colonna a sinistra."
 msgid "Plugins extend and expand the functionality of WordPress. You may automatically install plugins from the <a href=\"%1$s\">WordPress Plugin Directory</a> or upload a plugin in .zip format via <a href=\"%2$s\">this page</a>."
 msgstr "I plugin estendono ed espandono le funzionalità di WordPress. Puoi installare i plugin automaticamente dalla <a href=\"%1$s\">Directory dei plugin di WordPress</a> o caricando un plugin in formato zip tramite <a href=\"%2$s\">questa pagina</a>."
 
-#. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/plugins/hello-dolly/"
-msgstr "http://wordpress.org/plugins/hello-dolly/ "
-
 #: wp-admin/includes/class-wp-upgrader.php:1232
 msgid "The theme contains no files."
 msgstr "Il tema non contiene alcun file"
@@ -3651,22 +3647,6 @@ msgstr[1] "Corrotti <span class=\"count\">(%s)</span>"
 #: wp-admin/includes/theme.php:211
 msgid "Light"
 msgstr "Chiaro"
-
-#. Author URI of the plugin/theme
-msgid "http://ma.tt/"
-msgstr "http://ma.tt/"
-
-#. Author of the plugin/theme
-msgid "Matt Mullenweg"
-msgstr "Matt Mullenweg"
-
-#. Plugin Name of the plugin/theme
-msgid "Hello Dolly"
-msgstr "Hello Dolly"
-
-#. Description of the plugin/theme
-msgid "This is not just a plugin, it symbolizes the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong: Hello, Dolly. When activated you will randomly see a lyric from <cite>Hello, Dolly</cite> in the upper right of your admin screen on every page."
-msgstr "Questo non è solo un plugin ma simbolizza la speranza e l'entusiasmo di una intera generazione riassunti in due parole nella più famosa canzone di Louis Armstrong: Hello, Dolly. Quando viene attivato, si vedranno, alto a destra di ogni pagina di amministrazione, dei versi casuali della canzone <cite>Hello, Dolly</cite>."
 
 #: wp-admin/includes/screen.php:1066
 msgid "Show on screen"
@@ -10410,4 +10390,4 @@ msgstr "Non sei autorizzato ad importare."
 #: wp-admin/includes/meta-boxes.php:81 wp-admin/includes/meta-boxes.php:104
 #: wp-admin/includes/template.php:1728
 msgid "Scheduled"
-msgstr "Programmato"
+msgstr "Pianificato"

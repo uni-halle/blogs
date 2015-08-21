@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-14 10:35:49+0000\n"
+"PO-Revision-Date: 2015-08-19 10:16:37+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -968,18 +968,6 @@ msgstr "Glissez/déplacez les médias pour les réorganiser."
 msgid "Custom Link"
 msgstr "Lien personnalisé"
 
-#: wp-includes/default-widgets.php:348
-msgid "Select Year"
-msgstr "Sélectionnez l&rsquo;année"
-
-#: wp-includes/default-widgets.php:357
-msgid "Select Week"
-msgstr "Sélectionnez la semaine"
-
-#: wp-includes/default-widgets.php:354
-msgid "Select Day"
-msgstr "Sélectionnez le jour"
-
 #. translators: 1: 'siteurl'/'home' argument, 2: bloginfo() function name, 3:
 #. 'url' argument
 #: wp-includes/general-template.php:608
@@ -1014,14 +1002,26 @@ msgstr "Commentaires fermés<span class=\"screen-reader-text\"> sur %s</span>"
 msgid "No Comments<span class=\"screen-reader-text\"> on %s</span>"
 msgstr "Aucun commentaire<span class=\"screen-reader-text\"> sur %s</span>"
 
-#: wp-includes/default-widgets.php:360
-msgid "Select Post"
-msgstr "Sélectionnez un article"
-
 #: wp-includes/class-wp-customize-nav-menus.php:743
 #: wp-includes/class-wp-editor.php:1410 wp-includes/media-template.php:820
 msgid "Link Text"
 msgstr "Texte du lien"
+
+#: wp-includes/default-widgets.php:360
+msgid "Select Post"
+msgstr "Sélectionner un article"
+
+#: wp-includes/default-widgets.php:357
+msgid "Select Week"
+msgstr "Sélectionner la semaine"
+
+#: wp-includes/default-widgets.php:354
+msgid "Select Day"
+msgstr "Sélectionner le jour"
+
+#: wp-includes/default-widgets.php:348
+msgid "Select Year"
+msgstr "Sélectionner l&rsquo;année"
 
 #: wp-includes/class-wp-customize-section.php:440
 #: wp-includes/class-wp-customize-section.php:441
@@ -2483,10 +2483,6 @@ msgstr "Cellule d&rsquo;en-tête"
 msgid "https://wordpress.org/support/forum/requests-and-feedback"
 msgstr "https://wordpress.org/support/forum/requests-and-feedback"
 
-#: wp-includes/class-wp-customize-widgets.php:629
-msgid "Select an area to move this widget into:"
-msgstr "Sélectionnez une zone vers laquelle déplacer ce widget&nbsp;:"
-
 #: wp-includes/class-wp-editor.php:1029
 msgid "Toolbar Toggle"
 msgstr "Ouvrir/fermer la barre d'outils"
@@ -2498,6 +2494,10 @@ msgstr "Collez votre code d&rsquo;intégration ci-dessous&nbsp;:"
 #: wp-includes/class-wp-editor.php:1030 wp-includes/script-loader.php:120
 msgid "Insert Read More tag"
 msgstr "Insérer la balise « Lire la suite... »"
+
+#: wp-includes/class-wp-customize-widgets.php:629
+msgid "Select an area to move this widget into:"
+msgstr "Sélectionner une zone vers laquelle déplacer ce widget&nbsp;:"
 
 #: wp-includes/general-template.php:2959
 msgctxt "admin color scheme"
@@ -3311,13 +3311,13 @@ msgctxt "Uploader: Drop files here - or - Select Files"
 msgid "or"
 msgstr "ou"
 
-#: wp-includes/media-template.php:208
-msgid "Select Files"
-msgstr "Sélectionner des fichiers"
-
 #: wp-includes/class-wp-xmlrpc-server.php:1517
 msgid "There is a revision of this post that is more recent."
 msgstr "Ce contenu a déjà une révision plus récente."
+
+#: wp-includes/media-template.php:208
+msgid "Select Files"
+msgstr "Choisir des fichiers"
 
 #: wp-includes/class-wp-editor.php:180
 msgctxt "Name for the Text editor tab (formerly HTML)"
@@ -3355,7 +3355,7 @@ msgstr "Enregistrer &amp; publier"
 #: wp-includes/class-wp-customize-control.php:689
 #: wp-includes/class-wp-customize-control.php:694
 msgid "Select File"
-msgstr "Sélectionner un fichier"
+msgstr "Choisir un fichier"
 
 #: wp-includes/admin-bar.php:339
 #: wp-includes/class-wp-customize-control.php:1411
@@ -3967,7 +3967,7 @@ msgstr "Bleu"
 
 #: wp-includes/formatting.php:3683
 msgid "The timezone you have entered is not valid. Please select a valid timezone."
-msgstr "Le fuseau horaire ne semble pas être valide. Veuillez en choisir une valide."
+msgstr "Le fuseau horaire ne semble pas être valide. Veuillez en choisir un valide."
 
 #: wp-includes/admin-bar.php:633
 msgctxt "add new from admin bar"
@@ -5321,10 +5321,6 @@ msgstr "Afficher la description du lien"
 msgid "Show Link Rating"
 msgstr "Afficher la note du lien"
 
-#: wp-includes/default-widgets.php:351
-msgid "Select Month"
-msgstr "Choisir un mois"
-
 #: wp-includes/default-widgets.php:423 wp-includes/default-widgets.php:765
 msgid "Show post counts"
 msgstr "Afficher le nombre d&rsquo;articles"
@@ -5336,10 +5332,6 @@ msgstr "Calendrier"
 #: wp-includes/default-widgets.php:630
 msgid "Automatically add paragraphs"
 msgstr "Créer automatiquement les paragraphes"
-
-#: wp-includes/default-widgets.php:680
-msgid "Select Category"
-msgstr "Choisir une catégorie"
 
 #: wp-includes/default-widgets.php:768
 msgid "Show hierarchy"
@@ -5478,10 +5470,6 @@ msgstr "%1$s est <strong>déprécié</strong> depuis la version %2$s! Utilisez %
 #: wp-includes/functions.php:3408 wp-includes/functions.php:3512
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s est <strong>déprécié</strong> depuis la version %2$s, aucune alternative n&rsquo;est disponible."
-
-#: wp-includes/functions.php:4141
-msgid "Select a city"
-msgstr "Sélectionnez une ville"
 
 #: wp-includes/functions.php:4186 wp-includes/functions.php:4190
 msgid "UTC"
@@ -5958,10 +5946,6 @@ msgstr "Lettre"
 #: wp-includes/class-wp-editor.php:1052
 msgid "Action"
 msgstr "Action"
-
-#: wp-includes/class-wp-editor.php:855
-msgid "Select all"
-msgstr "Sélectionner tout"
 
 #: wp-includes/class-wp-editor.php:945
 msgid "Check Spelling"
@@ -6859,6 +6843,22 @@ msgstr "Commentaires sur : %s"
 #: wp-includes/ms-functions.php:1280
 msgid "New User Registration: %s"
 msgstr "Inscription d'un nouvel utilisateur : %s"
+
+#: wp-includes/default-widgets.php:680
+msgid "Select Category"
+msgstr "Sélectionner une catégorie"
+
+#: wp-includes/functions.php:4141
+msgid "Select a city"
+msgstr "Sélectionner une ville"
+
+#: wp-includes/default-widgets.php:351
+msgid "Select Month"
+msgstr "Sélectionner un mois"
+
+#: wp-includes/class-wp-editor.php:855
+msgid "Select all"
+msgstr "Tout sélectionner"
 
 #: wp-includes/class-wp-customize-panel.php:375
 #: wp-includes/class-wp-customize-panel.php:469
