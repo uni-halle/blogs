@@ -8,10 +8,10 @@ function to_plugin_options()
         if (isset($_POST['form_submit']))
             {
                     
-                $options['capability'] = $_POST['capability'];
+                $options['capability'] = sanitize_key($_POST['capability']);
                 
-                $options['autosort']    = isset($_POST['autosort'])     ? $_POST['autosort']    : '';
-                $options['adminsort']   = isset($_POST['adminsort'])    ? $_POST['adminsort']   : '';
+                $options['autosort']    = isset($_POST['autosort'])     ? intval($_POST['autosort'])    : '';
+                $options['adminsort']   = isset($_POST['adminsort'])    ? intval($_POST['adminsort'])   : '';
                     
                 ?><div class="updated fade"><p><?php _e('Settings Saved', 'tto') ?></p></div><?php
 

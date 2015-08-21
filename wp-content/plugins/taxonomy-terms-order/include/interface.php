@@ -5,8 +5,8 @@
         {
             global $wpdb, $wp_locale;
             
-            $taxonomy = isset($_GET['taxonomy']) ? $_GET['taxonomy'] : '';
-            $post_type = isset($_GET['post_type']) ? $_GET['post_type'] : '';
+            $taxonomy = isset($_GET['taxonomy']) ? sanitize_key($_GET['taxonomy']) : '';
+            $post_type = isset($_GET['post_type']) ? sanitize_key($_GET['post_type']) : '';
             if(empty($post_type))
                 {
                     $screen = get_current_screen();
@@ -68,11 +68,11 @@
                 ?>
                 
                 <form action="<?php echo $current_section_parent_file ?>" method="get" id="to_form">
-                    <input type="hidden" name="page" value="to-interface-<?php echo $post_type ?>" />
+                    <input type="hidden" name="page" value="to-interface-<?php echo esc_attr($post_type) ?>" />
                     <?php
                 
                      if (!in_array($post_type, array('post', 'attachment'))) 
-                        echo '<input type="hidden" name="post_type" value="'. $post_type .'" />';
+                        echo '<input type="hidden" name="post_type" value="'. esc_attr($post_type) .'" />';
 
                     //output all available taxonomies for this post type
                     
@@ -118,7 +118,7 @@
                                             $taxonomy_terms = get_terms($key);
                                                              
                                             ?>
-                                                <tr valign="top" class="<?php if ($alternate === TRUE) {echo 'alternate ';} ?>" id="taxonomy-<?php echo $taxonomy  ?>">
+                                                <tr valign="top" class="<?php if ($alternate === TRUE) {echo 'alternate ';} ?>" id="taxonomy-<?php echo esc_attr($taxonomy)  ?>">
                                                         <th class="check-column" scope="row"><input type="radio" onclick="to_change_taxonomy(this)" value="<?php echo $post_type_taxonomy ?>" <?php if ($post_type_taxonomy == $taxonomy) {echo 'checked="checked"';} ?> name="taxonomy">&nbsp;</th>
                                                         <td class="categories column-categories"><b><?php echo $taxonomy_info->label ?></b> (<?php echo  $taxonomy_info->labels->singular_name; ?>)</td>
                                                         <td class="categories column-categories"><?php echo count($taxonomy_terms) ?></td>
