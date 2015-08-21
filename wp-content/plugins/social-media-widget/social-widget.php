@@ -3,7 +3,7 @@
  * Plugin Name: Social Media Widget
  * Plugin URI: http://wordpress.org/extend/plugins/social-media-widget/
  * Description: Adds links to all of your social media and sharing site profiles. Tons of icons come in 3 sizes, 4 icon styles, and 4 animations.
- * Version: 4.0.3
+ * Version: 4.0.4
  * Author: Noah Kagan
  * Author URI: http://sumome.com
  **/
@@ -46,7 +46,7 @@ class Social_Widget extends WP_Widget {
 		$control_ops = array( 'id_base' => 'social-widget' );
 
 		/* Create the widget. */
-		$this->WP_Widget( 'social-widget', __('Social Media Widget', 'smw'), $widget_ops, $control_ops );
+		parent::__construct('social-widget', __('Social Media Widget', 'smw'), $widget_ops, $control_ops);
 
 		$this->networks = array(
 			'facebook' => array(
@@ -1110,7 +1110,7 @@ function socialwidget_global_notice() {
 		<?php
 	}
 }
-add_action( 'admin_notices', 'socialwidget_global_notice' );
+//add_action( 'admin_notices', 'socialwidget_global_notice' );
 
 
 function socialwidget_deactivate() {
