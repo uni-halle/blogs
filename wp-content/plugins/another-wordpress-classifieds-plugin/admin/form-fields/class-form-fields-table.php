@@ -12,16 +12,6 @@ class AWPCP_FormFieldsTable extends WP_List_Table {
         $this->request = $request;
     }
 
-    // public function get_items_per_page( $option, $default = 10 ) {
-    //     $user = $this->request->get_current_user();
-
-    //     $items_per_page = (int) get_user_meta( $user->ID, $option, true );
-    //     $items_per_page = awpcp_request_param( 'items-per-page', $items_per_page === 0 ? $default : $items_per_page );
-    //     update_user_meta( $user->ID, $option, $items_per_page );
-
-    //     return $items_per_page;
-    // }
-
     public function prepare( $items, $total_items ) {
         $this->items = $items;
 
@@ -36,8 +26,8 @@ class AWPCP_FormFieldsTable extends WP_List_Table {
     public function get_columns() {
         $columns = array(
             'cb' => '<input type="checkbox" />',
-            'slug' => _x( 'Slug', 'form field slug', 'AWPCP' ),
             'name' => _x( 'Name', 'form field name', 'AWPCP' ),
+            'slug' => _x( 'Slug', 'form field slug', 'AWPCP' ),
         );
 
         return $columns;
@@ -47,12 +37,13 @@ class AWPCP_FormFieldsTable extends WP_List_Table {
         return '<input type="checkbox" value="' . $item->get_slug() . '" name="selected[]" />';
     }
 
-    public function column_slug( $item ) {
-        return $item->get_slug();
+    public function column_name( $item ) {
+        $handle = '<div class="awpcp-sortable-handle"><div class="spinner awpcp-spinner awpcp-form-fields-table-spinner"></div></div>';
+        return $handle . $item->get_name() . $this->row_actions( array( '' => '' ) );
     }
 
-    public function column_name( $item ) {
-        return $item->get_name() . '<div class="awpcp-sortable-handle"><div class="spinner awpcp-spinner awpcp-form-fields-table-spinner"></div></div>';
+    public function column_slug( $item ) {
+        return $item->get_slug();
     }
 
     public function single_row($item) {

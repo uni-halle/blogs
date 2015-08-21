@@ -171,8 +171,12 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $columns = array();
 
         $columns['cb'] = '<input type="checkbox" />';
-        $columns['title'] = __('Headline', 'AWPCP');
-        $columns['manage'] = __('Manage Ad', 'AWPCP');
+        $columns['title'] = __( 'Title', 'AWPCP' );
+
+        if ( awpcp_current_user_is_admin() ) {
+            $columns['access_key'] = __( 'Access Key', 'AWPCP' );
+        }
+
         $columns['start_date'] = __('Start Date', 'AWPCP');
         $columns['end_date'] = __('End Date', 'AWPCP');
         $columns['renewed_date'] = __('Renewed Date', 'AWPCP');
@@ -353,22 +357,18 @@ class AWPCP_Listings_Table extends WP_List_Table {
     }
 
     public function column_title($item) {
-        $title = $item->get_title();
-        $url = $this->page->url(array('action' => 'view', 'id' => $item->ad_id));
-        if ( awpcp_current_user_is_admin() ) {
-            // TODO: build URL to view Ad inside admin
-            $template = '<strong><a title="%3$s" href="%2$s">%1$s</a></strong><br/><strong>%4$s</strong>: %5$s';
-            $content = sprintf( $template, $title, $url, __( 'View Ad.', 'AWPCP' ), __( 'Access Key', 'AWPCP' ), $item->get_access_key() );
-        } else {
-            $template = '<strong><a title="%3$s" href="%2$s">%1$s</a></strong>';
-            $content = sprintf($template, $title, $url, __('View Ad.', 'AWPCP'));
-        }
+        $content = sprintf(
+            '<a class="awpcp-admin-listings-table-listing-title" title="%3$s" href="%2$s">%1$s</a>',
+            $item->get_title(),
+            $this->page->url( array( 'action' => 'view', 'id' => $item->ad_id ) ),
+            __( 'View Ad.', 'AWPCP' )
+        );
 
-        return $content;
+        return $content . $this->row_actions( $this->get_row_actions( $item ), true );
     }
 
-    public function column_manage($item) {
-        return $this->row_actions($this->get_row_actions($item), true);
+    public function column_access_key($item) {
+        return $item->get_access_key();
     }
 
     public function column_start_date($item) {
@@ -380,7 +380,8 @@ class AWPCP_Listings_Table extends WP_List_Table {
     }
 
     public function column_renewed_date($item) {
-        return $item->get_renewed_date();
+        $renewed_date = $item->get_renewed_date();
+        return empty( $renewed_date ) ? '--' : $renewed_date;
     }
 
     public function column_status($item) {

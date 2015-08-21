@@ -3,9 +3,9 @@ Contributors: awpcp
 Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified script,classified theme,classifieds theme,wp classifieds,wp classified
 Requires at least: 3.9
-Tested up to: 4.2.2
-Last Updated: 2015-Jun-23
-Stable tag: tags/3.5.3
+Tested up to: 4.3
+Last Updated: 2015-Aug-19
+Stable tag: tags/3.5.3.1
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -222,6 +222,9 @@ Find the [faqs here](http://www.awpcp.com/forum/viewforum.php?f=3)
 [Plugin documentation](http://www.awpcp.com/documentation/)
 
 == Changelog ==
+
+= Version 3.5.3.1 =
+* Minor updates to support WP 4.3
 
 = Version 3.5.3 =
 * Remove restriction that prevents Moderators from using Bulk delete.
