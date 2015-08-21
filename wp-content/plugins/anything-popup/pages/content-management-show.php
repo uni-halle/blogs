@@ -4,6 +4,7 @@
 if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 {
 	$did = isset($_GET['did']) ? $_GET['did'] : '0';
+	if(!is_numeric($did)) { die('<p>Are you sure you want to do this?</p>'); }
 	
 	$pop_success = '';
 	$pop_success_msg = FALSE;
@@ -62,7 +63,6 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
       <table width="100%" class="widefat" id="straymanage">
         <thead>
           <tr>
-            <th class="check-column" scope="col"><input type="checkbox" name="pop_group_item[]" /></th>
 			<th scope="col"><?php _e('Id', 'anything-popup'); ?></th>
 			<th scope="col"><?php _e('Short code code', 'anything-popup'); ?></th>
             <th scope="col"><?php _e('Popup title', 'anything-popup'); ?></th>
@@ -75,7 +75,6 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
         </thead>
 		<tfoot>
           <tr>
-            <th class="check-column" scope="col"><input type="checkbox" name="pop_group_item[]" /></th>
 			<th scope="col"><?php _e('Id', 'anything-popup'); ?></th>
 			<th scope="col"><?php _e('Short code code', 'anything-popup'); ?></th>
             <th scope="col"><?php _e('Popup title', 'anything-popup'); ?></th>
@@ -95,7 +94,6 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 				{
 					?>
 					<tr class="<?php if ($i&1) { echo'alternate'; } else { echo ''; }?>">
-						<td align="left"><input type="checkbox" value="<?php echo $data['pop_id']; ?>" name="pop_group_item[]"></td>
 						<td><?php echo $data['pop_id']; ?></td>
 						<td>[AnythingPopup id="<?php echo $data['pop_id']; ?>"]
 						<div class="row-actions">
@@ -116,7 +114,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
 			}
 			else
 			{
-				?><tr><td colspan="9" align="center"><?php _e('No records available.', 'anything-popup'); ?></td></tr><?php 
+				?><tr><td colspan="8" align="center"><?php _e('No records available.', 'anything-popup'); ?></td></tr><?php 
 			}
 			?>
 		</tbody>

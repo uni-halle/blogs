@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anyth
 Plugin URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Tags: popup, contact
 Requires at least: 3.4
-Tested up to: 4.2.2
-Stable tag: 5.7
+Tested up to: 4.3
+Stable tag: 5.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -120,6 +120,10 @@ Support short code in the popup (i.e You can add other plugin short code inside 
 
 1. Tested up to 4.2.2
 
+= 5.8 =
+
+1. Tested up to 4.3
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -180,3 +184,7 @@ Support short code in the popup (i.e You can add other plugin short code inside 
 = 5.7 =
 
 1. Tested up to 4.2.2
+
+= 5.8 =
+
+1. Tested up to 4.3
