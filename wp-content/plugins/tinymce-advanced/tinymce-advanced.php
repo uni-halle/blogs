@@ -3,7 +3,7 @@
 Plugin Name: TinyMCE Advanced
 Plugin URI: http://www.laptoptips.ca/projects/tinymce-advanced/
 Description: Enables advanced features and plugins in TinyMCE, the visual editor in WordPress.
-Version: 4.2.3
+Version: 4.2.3.1
 Author: Andrew Ozz
 Author URI: http://www.laptoptips.ca/
 
@@ -49,6 +49,7 @@ class Tinymce_Advanced {
 		'table',
 		'visualblocks',
 		'visualchars',
+		'wptadv',
 	);
 
 	private $default_settings = array(
@@ -513,6 +514,8 @@ class Tinymce_Advanced {
 		if ( $this->check_admin_setting( 'no_autop' ) ) {
 			$this->plugins[] = 'wptadv';
 		}
+
+		$this->plugins = array_intersect( $this->plugins, $this->all_plugins );
 
 		$plugpath = TADV_URL . 'mce/';
 		$mce_plugins = (array) $mce_plugins;
