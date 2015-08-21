@@ -4,6 +4,7 @@
 function chapter_with_sample ($content) {
 
 	global $post;
+        #$content='<h3>'.$post->menu_order.'</h3>';
 	$anchor = '-'.$post->post_name;
 	$sample = trim(implode(get_post_custom_values('kapitelbeispiel')));
 	/*global $wp_query;
@@ -102,12 +103,15 @@ function manual_taxo_order( $query ) {
     if ( !is_admin() && $query->is_main_query() ) {
         if ( is_category() || is_tax() ) {
             $query->set( 'orderby', 'menu_order' );
+            $query->set( 'order', 'asc' );
         }
     }
 }
-add_action( 'pre_get_posts', 'manual_tax_order' );
+add_action( 'pre_get_posts', 'manual_taxo_order' );
 
 add_action ('__footer',function(){
+global $wp_query;
+$q=print_r($wp_query->request,1);
 ?>
 <footer class="mlu container"><a href="http://www.uni-halle.de"><img src="//blogs.urz.uni-halle.de/startklar/files/2015/06/MLU_Halle-Wittenberg_Siegel-e1433410810656.png" alt="Martin-Luther-Universität Halle-Wittenberg"></a></footer>
 <?php

@@ -7,6 +7,10 @@ Template:customizr-pro
 */
 @import url("../customizr-pro/style.css");
 
+.caret {
+  border-bottom-color: #005133 !important;
+  border-top-color: #005133 !important;
+}
 
 
 .fpc-widget-front,
@@ -27,15 +31,18 @@ a.relCategory { display: block; }
     border-top: 10px solid #94b34c;
 }
 .navbar .btn-navbar {
-   background-color: #005133;
+  background-color: #005133;
   background-image: linear-gradient(to bottom, #94b34c, #005133);
 }
 .navbar .btn-navbar:focus,
 .navbar .btn-navbar:hover {
    background-color: #94b34c;
 }
+.navbar .current-menu-ancestor a {
+    color: inherit !important;
+}
 .tc-sidebar .current-menu-item a {
-    color: #222;
+    color: #222 !important;
 }
 .tc-header .current-menu-ancestor>a,
 .tc-header .current-menu-item>a {
@@ -57,7 +64,11 @@ footer#footer .colophon a.back-to-top,
 .btt-arrow,
 article h2 a:hover,
 section h2 a:hover,
-.archive .archive-header .format-icon:before,
+article h2 a:active,
+section h2 a:active,
+article h2 a:focus,
+section h2 a:focus,
+header .format-icon:before,
 .fpc-container.fpc-marketing .fpc-widget-front h2 {
     color: #94b34c !important;
 }
@@ -109,6 +120,12 @@ ul.children { margin-left: 20px; }
 #right.widget-area { padding: 0 5px 0 0; }
 #right .widget { margin-top: 20px; padding-bottom: 20px; padding-left: 10px; border-bottom: 1px solid #EEE; }
 
+article table, .featurette-divider, .pager li>span {
+    border: none #005133;
+}
+.home #nav-below {
+    display: none;
+}
 footer.mlu img {
 	margin-bottom: 20px;
 }
