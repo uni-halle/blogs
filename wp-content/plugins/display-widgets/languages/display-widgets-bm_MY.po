@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Display Widgets v2.0\n"
+"Project-Id-Version: Display Widgets v2.04\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-01-14 00:16:06+0000\n"
+"PO-Revision-Date: 2015-08-20 01:40:02+0000\n"
 "Last-Translator: Jass <jass@100webhosting.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,108 +20,114 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: display-widgets.php:558
+#: display-widgets.php:602
 #@ display-widgets
 msgid "Front"
 msgstr "Muka Pertama"
 
-#: display-widgets.php:559
+#: display-widgets.php:603
 #@ display-widgets
 msgid "Blog"
 msgstr "Blog"
 
-#: display-widgets.php:560
+#: display-widgets.php:604
 #@ default
 msgid "Archives"
 msgstr "Simpanan-simpanan"
 
-#: display-widgets.php:561
+#: display-widgets.php:605
 #@ default
 msgid "Single Post"
 msgstr "Artikel tunggal"
 
-#: display-widgets.php:563
+#: display-widgets.php:607
 #@ default
 msgid "Search"
 msgstr "Cari"
 
-#: display-widgets.php:303
+#: display-widgets.php:338
 #@ default
 msgid "Pages"
 msgstr "Muka-muka surat"
 
-#: display-widgets.php:356
+#: display-widgets.php:384
 #@ default
 msgid "Categories"
 msgstr "Kategori-kategori"
 
-#: display-widgets.php:293
+#: display-widgets.php:326
 #@ display-widgets
 msgid "Miscellaneous"
 msgstr "Pelbagai"
 
-#: display-widgets.php:299
-#@ display-widgets
-msgid "Page"
-msgstr "Muka Surat"
-
-#: display-widgets.php:402
+#: display-widgets.php:435
 #@ display-widgets
 msgid "Comma Separated list of IDs of posts not listed above"
 msgstr "Senarai ID untuk Artikel-artikel yang dipisahkan oleh koma tidak disenaraikan di atas"
 
-#: display-widgets.php:328
+#: display-widgets.php:355
 #@ display-widgets
 msgid "Custom Post Types"
 msgstr "Jenis-jenis Artikel Khas"
 
-#: display-widgets.php:370
+#: display-widgets.php:402
 #@ display-widgets
 msgid "Taxonomies"
 msgstr "Taksonomi"
 
-#: display-widgets.php:385
+#: display-widgets.php:418
 #@ display-widgets
 msgid "Languages"
 msgstr ""
 
-#: display-widgets.php:277
+#: display-widgets.php:310
 #@ display-widgets
 msgid "Show Widget for:"
 msgstr ""
 
-#: display-widgets.php:279
+#: display-widgets.php:312
 #@ display-widgets
 msgid "Everyone"
 msgstr ""
 
-#: display-widgets.php:280
+#: display-widgets.php:313
 #@ display-widgets
 msgid "Logged-out users"
 msgstr ""
 
-#: display-widgets.php:281
+#: display-widgets.php:314
 #@ display-widgets
 msgid "Logged-in users"
 msgstr ""
 
-#: display-widgets.php:287
+#: display-widgets.php:320
 #@ display-widgets
 msgid "Hide on checked pages"
 msgstr ""
 
-#: display-widgets.php:288
+#: display-widgets.php:321
 #@ display-widgets
 msgid "Show on checked pages"
 msgstr ""
 
-#: display-widgets.php:341
+#: display-widgets.php:368
 #@ display-widgets
 msgid "Custom Post Type Archives"
 msgstr ""
 
-#: display-widgets.php:351
+#: display-widgets.php:379
 #@ display-widgets
 msgid "Archive"
+msgstr ""
+
+#: display-widgets.php:388
+#@ display-widgets
+msgid "All Categories"
+msgstr ""
+
+#: display-widgets.php:732
+#, php-format
+#@ display-widgets
+msgid "#%d (no title)"
 msgstr ""
 
