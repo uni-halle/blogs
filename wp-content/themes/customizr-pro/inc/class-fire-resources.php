@@ -22,7 +22,9 @@ if ( ! class_exists( 'TC_resources' ) ) :
 	        self::$instance =& $this;
           add_action( 'wp_enqueue_scripts'            , array( $this , 'tc_enqueue_gfonts' ) , 0 );
 	        add_action( 'wp_enqueue_scripts'						, array( $this , 'tc_enqueue_front_styles' ) );
-	        add_action( 'wp_enqueue_scripts'						, array( $this , 'tc_enqueue_front_scripts' ) );
+            add_action( 'wp_enqueue_scripts'						, array( $this , 'tc_enqueue_front_scripts' ) );
+          //force classic smilies
+          add_action( 'after_setup_theme'             , array( $this, 'tc_force_classic_smilies') );
           //Custom Stylesheets
           //Write font icon
           add_filter('tc_user_options_style'          , array( $this , 'tc_write_inline_font_icons_css') , apply_filters( 'tc_font_icon_priority', 999 ) );
@@ -79,13 +81,23 @@ if ( ! class_exists( 'TC_resources' ) ) :
         //adds support for map method in array prototype for old ie browsers <ie9
         'tc-js-arraymap-proto' => array(
           'path' => 'inc/assets/js/parts/',
-          'files' => array( 'arrayPrototypeMap.min.js' ),
+          'files' => array( 'oldBrowserCompat.min.js' ),
           'dependencies' => array()
         ),
         'tc-bootstrap' => array(
           'path' => 'inc/assets/js/parts/',
           'files' => array( 'bootstrap.js' , 'bootstrap.min.js' ),
           'dependencies' => array( 'tc-js-arraymap-proto', 'jquery', 'tc-js-params' )
+        ),
+        'tc-img-original-sizes' => array(
+          'path' => 'inc/assets/js/parts/',
+          'files' => array( 'jqueryimgOriginalSizes.js' ),
+          'dependencies' => array('jquery')
+        ),
+        'tc-smoothscroll' => array(
+          'path' => 'inc/assets/js/parts/',
+          'files' => array( 'smoothScroll.js' ),
+          'dependencies' => array( 'tc-js-arraymap-proto', 'underscore' )
         ),
         'tc-dropcap' => array(
           'path' => 'inc/assets/js/parts/',
@@ -105,13 +117,13 @@ if ( ! class_exists( 'TC_resources' ) ) :
         'tc-center-images' => array(
           'path' => 'inc/assets/js/parts/',
           'files' => array( 'jqueryCenterImages.js' ),
-          'dependencies' => array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-bootstrap', 'underscore' )
+          'dependencies' => array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-img-original-sizes', 'tc-bootstrap', 'underscore' )
         ),
         //!!no fancybox dependency if fancybox not required!
         'tc-main-front' => array(
           'path' => 'inc/assets/js/parts/',
           'files' => array( 'main.js' , 'main.min.js' ),
-          'dependencies' => $this -> tc_is_fancyboxjs_required() ? array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-bootstrap', 'tc-fancybox' , 'underscore' ) : array( 'jquery' , 'tc-js-params', 'tc-bootstrap' , 'underscore' )
+          'dependencies' => $this -> tc_is_fancyboxjs_required() ? array( 'tc-js-arraymap-proto', 'jquery' , 'tc-js-params', 'tc-img-original-sizes', 'tc-bootstrap', 'tc-fancybox' , 'underscore' ) : array( 'jquery' , 'tc-js-params', 'tc-img-original-sizes', 'tc-bootstrap' , 'underscore' )
         ),
         //loaded separately => not included in tc-script.js
         'tc-fancybox' => array(
@@ -149,8 +161,15 @@ if ( ! class_exists( 'TC_resources' ) ) :
 	    wp_enqueue_script( 'jquery' );
 	    wp_enqueue_script( 'jquery-ui-core' );
 
-	    //load modernizr.js in footer
-	    wp_enqueue_script( 'modernizr' , TC_BASE_URL . 'inc/assets/js/modernizr.min.js', array(), CUSTOMIZR_VER, true);
+	    wp_enqueue_script(
+        'modernizr'
+        ,
+        TC_BASE_URL . 'inc/assets/js/modernizr.min.js',
+        array(),
+        CUSTOMIZR_VER,
+        //load in head if browser is chrome => fix the issue of 3Dtransform not detected in some cases
+        ( isset($_SERVER['HTTP_USER_AGENT']) && false !== strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') ) ? false : true
+      );
 
       //customizr scripts and libs
 	   	if ( $this -> tc_load_concatenated_front_scripts() )	{
@@ -162,7 +181,7 @@ if ( ! class_exists( 'TC_resources' ) ) :
 			else {
         wp_enqueue_script( 'underscore' );
         //!!mind the dependencies
-        $this -> tc_enqueue_script( array( 'tc-js-params', 'tc-js-arraymap-proto', 'tc-bootstrap' ) );
+        $this -> tc_enqueue_script( array( 'tc-js-params', 'tc-js-arraymap-proto', 'tc-img-original-sizes', 'tc-bootstrap', 'tc-smoothscroll' ) );
 
         if ( $this -> tc_is_fancyboxjs_required() )
           $this -> tc_enqueue_script( 'tc-fancybox' );
@@ -180,9 +199,12 @@ if ( ! class_exists( 'TC_resources' ) ) :
 			$has_post_comments 	= ( 0 != $wp_query -> post_count && comments_open() && get_comments_number() != 0 ) ? true : false;
 
 			//adds the jquery effect library if smooth scroll is enabled => easeOutExpo effect
-			$smooth_scroll 		= ( false != esc_attr( TC_utils::$inst->tc_opt( 'tc_link_scroll') ) ) ? 'easeOutExpo' : 'linear';
+			$anchor_smooth_scroll 		= ( false != esc_attr( TC_utils::$inst->tc_opt( 'tc_link_scroll') ) ) ? 'easeOutExpo' : 'linear';
 			if ( false != esc_attr( TC_utils::$inst->tc_opt( 'tc_link_scroll') ) )
 				wp_enqueue_script('jquery-effects-core');
+
+      $smooth_scroll_enabled = apply_filters('tc_enable_smoothscroll', ! wp_is_mobile() && 1 == esc_attr( TC_utils::$inst->tc_opt( 'tc_smoothscroll') ) );
+      $smooth_scroll_options = apply_filters('tc_smoothscroll_options', array() );
 
 			//gets current screen layout
     	$screen_layout      = TC_utils::tc_get_layout( TC_utils::tc_id() , 'sidebar'  );
@@ -197,21 +219,23 @@ if ( ! class_exists( 'TC_resources' ) ) :
 	        $this -> tc_load_concatenated_front_scripts() ? 'tc-scripts' : 'tc-js-params',
 	        'TCParams',
 	        apply_filters( 'tc_customizr_script_params' , array(
-	          	'FancyBoxState' 		=> $this -> tc_is_fancyboxjs_required(),
+	          	'_disabled'          => apply_filters( 'tc_disabled_front_js_parts', array() ),
+              'FancyBoxState' 		=> $this -> tc_is_fancyboxjs_required(),
 	          	'FancyBoxAutoscale' => ( 1 == TC_utils::$inst->tc_opt( 'tc_fancybox_autoscale') ) ? true : false,
 	          	'SliderName' 			  => $js_slidername,
 	          	'SliderDelay' 			=> $js_sliderdelay,
 	          	'SliderHover'			  => apply_filters( 'tc_stop_slider_hover', true ),
 	          	'centerSliderImg'   => esc_attr( TC_utils::$inst->tc_opt( 'tc_center_slider_img') ),
-              'SmoothScroll'			=> $smooth_scroll,
-              'SmoothScrollExclude' => apply_filters( 'tc_smoothscroll_excl' , array( '[class*=edd]' , '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]' ) ),
+              'SmoothScroll'      => array( 'Enabled' => $smooth_scroll_enabled, 'Options' => $smooth_scroll_options ),
+              'anchorSmoothScroll'			=> $anchor_smooth_scroll,
+              'anchorSmoothScrollExclude' => apply_filters( 'tc_anchor_smoothscroll_excl' , array( '[class*=edd]' , '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]', '[class*=um-]' ) ),
 	          	'ReorderBlocks' 		=> esc_attr( TC_utils::$inst->tc_opt( 'tc_block_reorder') ),
 	          	'centerAllImg' 			=> esc_attr( TC_utils::$inst->tc_opt( 'tc_center_img') ),
 	          	'HasComments' 			=> $has_post_comments,
 	          	'LeftSidebarClass' 		=> $left_sb_class,
 	          	'RightSidebarClass' 	=> $right_sb_class,
 	          	'LoadModernizr' 		=> apply_filters( 'tc_load_modernizr' , true ),
-	          	'stickyCustomOffset' 	=> apply_filters( 'tc_sticky_custom_offset' , 0 ),
+	          	'stickyCustomOffset' 	=> apply_filters( 'tc_sticky_custom_offset' , array( "_initial" => 0, "_scrolling" => 0, "options" => array( "_static" => true, "_element" => "" ) ) ),
 	          	'stickyHeader' 			=> esc_attr( TC_utils::$inst->tc_opt( 'tc_sticky_header' ) ),
 	          	'dropdowntoViewport' 	=> esc_attr( TC_utils::$inst->tc_opt( 'tc_menu_resp_dropdown_limit_to_viewport') ),
 	          	'timerOnScrollAllBrowsers' => apply_filters( 'tc_timer_on_scroll_for_all_browser' , true), //<= if false, for ie only
@@ -225,7 +249,9 @@ if ( ! class_exists( 'TC_resources' ) ) :
               'imgSmartLoadEnabled' => esc_attr( TC_utils::$inst->tc_opt( 'tc_img_smart_load' ) ),
               'imgSmartLoadOpts'    => apply_filters( 'tc_img_smart_load_options' , array() ),
               'goldenRatio'         => apply_filters( 'tc_grid_golden_ratio' , 1.618 ),
-              'gridGoldenRatioLimit' => esc_attr( TC_utils::$inst->tc_opt( 'tc_grid_thumb_height' ) )
+              'gridGoldenRatioLimit' => esc_attr( TC_utils::$inst->tc_opt( 'tc_grid_thumb_height' ) ),
+              'isSecondMenuEnabled'  => TC_utils::$inst->tc_is_secondary_menu_enabled(),
+              'secondMenuRespSet'   => esc_attr( TC_utils::$inst->tc_opt( 'tc_second_menu_resp_setting' ) )
 	        	),
 	        	TC_utils::tc_id()
 		    )//end of filter
@@ -235,10 +261,9 @@ if ( ! class_exists( 'TC_resources' ) ) :
 	    if ( $this -> tc_is_fancyboxjs_required() )
 	      wp_enqueue_style( 'fancyboxcss' , TC_BASE_URL . 'inc/assets/js/fancybox/jquery.fancybox-1.3.4.min.css' );
 
-	    //holder.js is loaded when featured pages are enabled AND FP are set to show images
-	    $tc_show_featured_pages 	    = esc_attr( TC_utils::$inst->tc_opt( 'tc_show_featured_pages' ) );
-    	$tc_show_featured_pages_img   = esc_attr( TC_utils::$inst->tc_opt( 'tc_show_featured_pages_img' ) );
-    	if ( 0 != $tc_show_featured_pages && 0 != $tc_show_featured_pages_img ) {
+	    //holder.js is loaded when featured pages are enabled AND FP are set to show images and at least one holder should be displayed.
+      $tc_show_featured_pages 	         = class_exists('TC_featured_pages') && TC_featured_pages::$instance -> tc_show_featured_pages();
+    	if ( 0 != $tc_show_featured_pages && $this -> tc_maybe_is_holder_js_required() ) {
 	    	wp_enqueue_script(
 	    		'holder',
 	    		sprintf( '%1$sinc/assets/js/holder.min.js' , TC_BASE_URL ),
@@ -512,7 +537,94 @@ if ( ! class_exists( 'TC_resources' ) ) :
       return $this -> current_random_skin;
     }
 
+    /**
+    * Force classic smilies
+    * hook after_setup_theme
+    *
+    * @credits: https://wordpress.org/plugins/classic-smilies/
+    * @package Customizr
+    * @since Customizr 3.3+
+    */
+    function tc_force_classic_smilies() {
+      if ( apply_filters( 'tc_not_force_classic_smilies', is_admin() || ! ( 0 != esc_attr( TC_utils::$inst->tc_opt( 'tc_show_featured_pages' ) ) &&  $this -> tc_maybe_is_holder_js_required() ) ) )
+        return;
 
+      // put the classic smilies images back
+      global $wpsmiliestrans;
+      $wpsmiliestrans = array(
+        ':mrgreen:' => 'icon_mrgreen.gif',
+        ':neutral:' => 'icon_neutral.gif',
+        ':twisted:' => 'icon_twisted.gif',
+          ':arrow:' => 'icon_arrow.gif',
+          ':shock:' => 'icon_eek.gif',
+          ':smile:' => 'icon_smile.gif',
+            ':???:' => 'icon_confused.gif',
+           ':cool:' => 'icon_cool.gif',
+           ':evil:' => 'icon_evil.gif',
+           ':grin:' => 'icon_biggrin.gif',
+           ':idea:' => 'icon_idea.gif',
+           ':oops:' => 'icon_redface.gif',
+           ':razz:' => 'icon_razz.gif',
+           ':roll:' => 'icon_rolleyes.gif',
+           ':wink:' => 'icon_wink.gif',
+            ':cry:' => 'icon_cry.gif',
+            ':eek:' => 'icon_surprised.gif',
+            ':lol:' => 'icon_lol.gif',
+            ':mad:' => 'icon_mad.gif',
+            ':sad:' => 'icon_sad.gif',
+              '8-)' => 'icon_cool.gif',
+              '8-O' => 'icon_eek.gif',
+              ':-(' => 'icon_sad.gif',
+              ':-)' => 'icon_smile.gif',
+              ':-?' => 'icon_confused.gif',
+              ':-D' => 'icon_biggrin.gif',
+              ':-P' => 'icon_razz.gif',
+              ':-o' => 'icon_surprised.gif',
+              ':-x' => 'icon_mad.gif',
+              ':-|' => 'icon_neutral.gif',
+              ';-)' => 'icon_wink.gif',
+        // This one transformation breaks regular text with frequency.
+        //     '8)' => 'icon_cool.gif',
+               '8O' => 'icon_eek.gif',
+               ':(' => 'icon_sad.gif',
+               ':)' => 'icon_smile.gif',
+               ':?' => 'icon_confused.gif',
+               ':D' => 'icon_biggrin.gif',
+               ':P' => 'icon_razz.gif',
+               ':o' => 'icon_surprised.gif',
+               ':x' => 'icon_mad.gif',
+               ':|' => 'icon_neutral.gif',
+               ';)' => 'icon_wink.gif',
+              ':!:' => 'icon_exclaim.gif',
+              ':?:' => 'icon_question.gif',
+      );
+      add_filter( 'smilies_src', 'tc_classic_smilies_src', 10, 2 );
+
+      // disable any and all mention of emoji's
+      remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+      remove_action( 'wp_print_styles', 'print_emoji_styles' );
+      remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+      remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+      remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+
+      add_filter( 'the_content', 'tc_classic_smilies_rm_additional_styles', 11 );
+      add_filter( 'the_excerpt', 'tc_classic_smilies_rm_additional_styles', 11 );
+      add_filter( 'comment_text', 'tc_classic_smilies_rm_additional_styles', 21 );
+
+      // fix the path to the smilies to point to the plugin
+      function tc_classic_smilies_src( $old, $img ) {
+        return TC_BASE_URL . 'inc/assets/img/' . $img;
+      }
+
+      // filter function used to remove the tinymce emoji plugin
+      function tc_classic_smilies_rm_tinymce_emoji( $plugins ) {
+        return array_diff( $plugins, array( 'wpemoji' ) );
+      }
+
+      function tc_classic_smilies_rm_additional_styles( $content ) {
+        return str_replace( 'class="wp-smiley" style="height: 1em; max-height: 1em;"', 'class="wp-smiley"', $content );
+      }
+    }
 
     /*************************************
     * HELPERS
@@ -619,5 +731,29 @@ if ( ! class_exists( 'TC_resources' ) ) :
       return TC_utils::$inst -> tc_opt( 'tc_fancybox' ) || TC_utils::$inst -> tc_opt( 'tc_gallery_fancybox');
     }
 
-	}//end of TC_ressources
+    /**
+    * Helper to check if we need to enqueue holder js
+    *
+    * @return boolean
+    * @package Customizr
+    * @since v3.3+
+    */
+    function tc_maybe_is_holder_js_required(){
+      $bool = false;
+
+      if ( ! ( class_exists('TC_featured_pages') && TC_featured_pages::$instance -> tc_show_featured_pages_img() ) )
+        return $bool;
+
+      $fp_ids = apply_filters( 'tc_featured_pages_ids' , TC_init::$instance -> fp_ids);
+
+      foreach ( $fp_ids as $fp_single_id ){
+        $featured_page_id = TC_utils::$inst->tc_opt( 'tc_featured_page_'.$fp_single_id );
+        if ( null == $featured_page_id || ! $featured_page_id || ! TC_featured_pages::$instance -> tc_get_fp_img( null, $featured_page_id, null ) ) {
+          $bool = true;
+          break;
+        }
+      }
+      return $bool;
+    }
+  }//end of TC_ressources
 endif;

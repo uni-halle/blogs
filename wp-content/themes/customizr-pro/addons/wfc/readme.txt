@@ -14,6 +14,11 @@ SUPPORT : http://presscustomizr.com/support-forums/
 
 
 #######################  Changelog ######################
+= 2.0.12 July 29th 2015 =
+* updated : (css) customizr.json : added a specific class for the new Customizr side menu
+* fix : make the adding of custom fonts a little bit easier with the filter : 'tc_font_customizer_control_params'
+* fix: add rules to style grid post list titles
+
 = 2.0.11 April 10th 2015 =
 * updated : added missing customizr skins
 * updated : site name and copyright dates

@@ -806,7 +806,7 @@ class TC_admin_font_customizer {
 		$theme_name = TC_wfc::$theme_name;
 		wp_localize_script(
           'font-customizer-control',
-          'TCFontAdmin',
+          'TCFontAdmin', apply_filters('tc_font_customizer_control_params',
             array(
                 'SettingPrefix'					=> TC_wfc::$instance -> setting_prefix,
                 'DefaultSettings'				=> TC_wfc::$instance -> tc_get_selector_list(),
@@ -815,7 +815,7 @@ class TC_admin_font_customizer {
                 'HasSavedSets'					=> TC_wfc::$instance -> tc_get_saved_option($selector = null , $bool = true),
                 'SkinColors'					=> TC_wfc::$instance -> tc_skin_colors,
                 'Tree'							=> $this -> tc_control_tree,
-                'CFonts'						=> TC_utils_wfc::$cfonts_list,
+                'CFonts'						=> TC_utils_wfc::$instance -> get_cfonts_names(),
                 'Translations'		 			=> array(
                 	'reset_all_button' 	=> __('Reset all' , TC_wfc::$instance -> plug_lang ),
                 	'reset_all_confirm'	=> __('All settings reset to default' , TC_wfc::$instance -> plug_lang ),
@@ -828,6 +828,7 @@ class TC_admin_font_customizer {
                 'WFCNonce' 						=> wp_create_nonce( 'wfc-nonce' ),
                 'HasCustomToAdd' 				=> get_transient( 'custom_selector_added' )
             )
+         )//end filter
       	);
 		//delete the transient after setting the js var HasCustomToAdd
 		delete_transient( 'custom_selector_added' );

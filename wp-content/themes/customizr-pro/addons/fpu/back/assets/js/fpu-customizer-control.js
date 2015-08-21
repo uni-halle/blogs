@@ -46,10 +46,7 @@ jQuery(function ($) {
       OptionPrefix = TCFPCControlParams.OptionPrefix,
       settingMap = {};
 
-  settingMap[OptionPrefix + "[tc_show_fp]"] = {
-      controls: ShowFP,
-      callback: function( to ) { return 1 == to; }
-  };
+
   settingMap[OptionPrefix + "[tc_show_fp_text]"] = {
       controls: ShowExcerpt,
       callback: function( to ) { return 1 == to; }
@@ -74,7 +71,10 @@ jQuery(function ($) {
       controls: FPbyline,
       callback: function( to ) { return 'four' == to; }
   };
-
+  settingMap[OptionPrefix + "[tc_show_fp]"] = {
+      controls: ShowFP,
+      callback: function( to ) { return 1 == to; }
+  };
   $.each(settingMap, function( settingId, o ) {
     api( settingId, function( setting ) {
       $.each( o.controls, function( i, controlId ) {

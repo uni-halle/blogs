@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Unlimited FP\n"
-"POT-Creation-Date: 2015-05-13 20:45+0100\n"
-"PO-Revision-Date: 2015-05-13 20:45+0100\n"
+"POT-Creation-Date: 2014-03-28 13:31+0100\n"
+"PO-Revision-Date: 2014-03-28 13:31+0100\n"
 "Last-Translator: Nicolas <contact@themesandco.com>\n"
-"Language-Team: Nicolas G. <contact@presscustomizr.com>\n"
+"Language-Team: Nicolas G. <contact@themesandco.com>\n"
 "Language: Français\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,63 +16,385 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../footer-customizer.php:116
-msgid "Designed by"
+#: ../back/classes/class_admin_font_customizer.php:118
+#: ../back/classes/class_admin_font_customizer.php:374
+msgid "Body"
 msgstr ""
 
-#: ../footer-customizer.php:143
+#: ../back/classes/class_admin_font_customizer.php:119
+msgid "Header"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:120
+msgid "Sliders and Featured pages"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:121
+msgid "Posts / Pages"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:122
+msgid "Comments"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:123
+msgid "Sidebars"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:124
+msgid "Footer"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:137
+msgid "Font Family"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:140
+msgid "Subset"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:144
+msgid "Font family"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:148
+msgid "Apply an effect"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:155
+msgid "Font Style"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:158
+msgid "Color"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:162
+msgid "Color on hover"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:166
+msgid "Font size"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:170
+msgid "Line height"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:174
+msgid "Font weight"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:178
+msgid "Font style"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:182
+msgid "Text align"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:186
+msgid "Text decoration"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:190
+msgid "Text Transform"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:194
+msgid "Letter spacing"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:201
+msgid "Other settings"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:204
+msgid "Display icon"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:221
+msgid "No effect"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:223
+msgid "3D one"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:224
+msgid "3D two"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:228
+msgid "Shadow soft"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:229
+msgid "Shadow simple"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:230
+msgid "Shadow distant"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:231
+msgid "Shadow close one"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:232
+msgid "Shadow close two"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:233
+msgid "Shadow multiple"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:234
+msgid "Vintage retro"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:235
+msgid "Neon blue"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:236
+msgid "Neon green"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:237
+msgid "Neon orange"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:238
+msgid "Neon pink"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:239
+msgid "Neon red"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:240
+msgid "Neon grey"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:241
+msgid "Neon black"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:242
+msgid "Neon white"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:274
+msgid "Default website font"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:275
+msgid "Site title"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:276
+msgid "Site description"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:277
+msgid "Menu items"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:278
+msgid "Slider title"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:279
+msgid "Slider text"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:280
+msgid "Slider button"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:281
+msgid "Featured pages title"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:282
+msgid "Featured pages text"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:283
+msgid "Featured pages button"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:284
+msgid "Single post/page titles"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:285
+msgid "Post list titles"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:286
+msgid "Archive titles"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:287
+msgid "Post content / excerpt"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:288
+msgid "Post metas"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:289
+msgid "Links in post/pages"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:290
+msgid "H1 headings"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:291
+msgid "H2 headings"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:292
+msgid "H3 headings"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:293
+msgid "H4 headings"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:294
+msgid "H5 headings"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:295
+msgid "H6 headings"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:296
+msgid "Blockquotes"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:297
+msgid "Comments title"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:298
+msgid "Comments author"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:299
+msgid "Comments content"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:300
+msgid "Sidebar widget titles"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:301
+msgid "Links in sidebars"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:302
+msgid "Widget titles"
+msgstr ""
+
+#: ../back/classes/class_admin_font_customizer.php:303
 msgid "Footer credits"
 msgstr ""
 
-#: ../footer-customizer.php:145
-msgid "Customize the footer credits"
+#: ../back/classes/class_admin_font_customizer.php:375
+msgid "Default font TEST"
 msgstr ""
 
-#: ../footer-customizer.php:197
-msgid "Enable the footer copyrights and credits"
+#: ../back/classes/class_admin_font_customizer.php:411
+msgid "Font Customizer"
 msgstr ""
 
-#: ../footer-customizer.php:205
-msgid "Copyright text"
+#: ../back/classes/class_admin_font_customizer.php:413
+msgid "Play with beautiful fonts!"
 msgstr ""
 
-#: ../footer-customizer.php:206
-msgid "Copyright"
+#: ../back/classes/class_admin_font_customizer.php:534
+msgid "Reset all"
 msgstr ""
 
-#: ../footer-customizer.php:215
-msgid "Site name"
+#: ../back/classes/class_admin_font_customizer.php:535
+#: ../back/classes/class_customizer_font_controls.php:37
+msgid "Settings Updated"
 msgstr ""
 
-#: ../footer-customizer.php:224
-msgid "Site link"
+#: ../back/classes/class_admin_font_customizer.php:536
+msgid "Are you sure you want to reset all font settings to default?"
 msgstr ""
 
-#: ../footer-customizer.php:233
-msgid "Display designer credits"
+#: ../back/classes/class_admin_font_customizer.php:537
+#: ../back/classes/class_customizer_font_controls.php:49
+msgid "Yes"
 msgstr ""
 
-#: ../footer-customizer.php:234
-msgid "Credits"
+#: ../back/classes/class_admin_font_customizer.php:538
+#: ../back/classes/class_customizer_font_controls.php:50
+msgid "No"
 msgstr ""
 
-#: ../footer-customizer.php:242
-msgid "Credit text"
+#: ../back/classes/class_customizer_font_controls.php:34
+msgid "Reset"
 msgstr ""
 
-#: ../footer-customizer.php:251
-msgid "Designer name"
+#: ../back/classes/class_customizer_font_controls.php:45
+msgid "Are you sure you want to reset the settings for"
 msgstr ""
 
-#: ../footer-customizer.php:260
-msgid "Designer link"
+#: ../back/classes/class_customizer_font_controls.php:47
+msgid "to default?"
 msgstr ""
 
-#: ../footer-customizer.php:344
+#: ../back/classes/class_font_customizer_admin_notices.php:44
 #, php-format
 msgid ""
-"The <strong>%s</strong> plugin must be disabled since it is already included "
-"in this theme. Open the <a href=\"%s\">plugins page</a> to desactivate it."
+"The <strong>%1$s</strong> plugin can not be used with a theme (or a parent "
+"theme) different than Customizr with a version less than v3.1.0."
+msgstr ""
+
+#: ../back/classes/activation/class_activation_key.php:70
+#, php-format
+msgid "%1$s Key"
+msgstr ""
+
+#: ../back/classes/activation/class_activation_key.php:77
+msgid "Activation key"
+msgstr ""
+
+#: ../back/classes/activation/class_activation_key.php:81
+msgid "Enter your activation key"
+msgstr ""
+
+#: ../back/classes/activation/class_activation_key.php:87
+msgid "Activate key"
+msgstr ""
+
+#: ../back/classes/activation/class_activation_key.php:91
+msgid "active"
+msgstr ""
+
+#: ../back/classes/activation/class_activation_key.php:92
+msgid "Deactivate Key"
+msgstr ""
+
+#: ../back/classes/activation/class_activation_key.php:94
+msgid "Activate Key"
+msgstr ""
+
+#: ../front/classes/class_font_customizer_fonts.php:57
+msgid "All subsets"
+msgstr ""
+
+#: ../front/classes/class_font_customizer_fonts.php:59
+#: ../front/classes/class_font_customizer_fonts.php:83
+msgid "fonts"
 msgstr ""
 
 #, fuzzy

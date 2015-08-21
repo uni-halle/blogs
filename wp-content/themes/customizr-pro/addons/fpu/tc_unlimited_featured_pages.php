@@ -3,7 +3,7 @@
  * Plugin Name: Featured Pages Unlimited
  * Plugin URI: http://presscustomizr.com/extension/featured-pages-unlimited/
  * Description: Engage your visitors with beautifully featured content on home. Design live from the WordPress customizer.
- * Version: 2.0.11
+ * Version: 2.0.12
  * Author: Press Customizr
  * Author URI: http://www.presscustomizr.com
  * License: GPLv2 or later
@@ -57,7 +57,7 @@ class TC_fpu {
         $this -> plug_name    = 'Featured Pages Unlimited';
         $this -> plug_file    = __FILE__; //main plugin root file.
         $this -> plug_prefix  = 'unlimited_fp';
-        $this -> plug_version = '2.0.11';
+        $this -> plug_version = '2.0.12';
         $this -> plug_lang    = 'tc_unlimited_fp';
 
         //gets the theme name (or parent if child)
@@ -140,7 +140,8 @@ class TC_fpu {
         //disable front end rendering if theme = Customizr or Customizr Pro
         add_action ( 'wp'                               , array( $this , 'tc_disable_fp_rendering') );
         //unset options if theme = Customizr or Customizr Pro
-        add_filter ( 'tc_front_page_option_map'         , array( $this , 'tc_delete_fp_options' ) );
+        //This has to be fired after : tc_generates_featured_pages | 10 (priority)
+        add_filter ( 'tc_front_page_option_map'         , array( $this , 'tc_delete_fp_options' ), 20 );
 
         //add / register the following actions only in plugin context
         if ( ! did_action('plugins_loaded') ) {
@@ -315,7 +316,9 @@ class TC_fpu {
 
 
     /**
-    * Trigger actions if active theme is customizr or customizr-pro
+    * Unset Customizr theme default options for featured pages
+    * Triggered if active theme is customizr or customizr-pro
+    * hook : tc_front_page_option_map
     * @return void
     *
     */
@@ -324,15 +327,15 @@ class TC_fpu {
             return $front_page_option_map;
 
         $to_delete = array(
-            'tc_theme_options[tc_show_featured_pages]',
-            'tc_theme_options[tc_show_featured_pages_img]',
-            'tc_theme_options[tc_featured_page_button_text]',
-            'tc_theme_options[tc_featured_page_one]',
-            'tc_theme_options[tc_featured_page_two]',
-            'tc_theme_options[tc_featured_page_three]',
-            'tc_theme_options[tc_featured_text_one]',
-            'tc_theme_options[tc_featured_text_two]',
-            'tc_theme_options[tc_featured_text_three]'
+            'tc_show_featured_pages',
+            'tc_show_featured_pages_img',
+            'tc_featured_page_button_text',
+            'tc_featured_page_one',
+            'tc_featured_page_two',
+            'tc_featured_page_three',
+            'tc_featured_text_one',
+            'tc_featured_text_two',
+            'tc_featured_text_three'
         );
         foreach ($front_page_option_map as $key => $value) {
             if ( in_array( $key, $to_delete) ) {

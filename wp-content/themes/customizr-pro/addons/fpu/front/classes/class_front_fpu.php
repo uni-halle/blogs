@@ -159,27 +159,34 @@ class TC_front_fpu {
             <?php
               do_action ('__before_fp') ;
 
-              $j = 1;
+              $row = 1;
+
               for ($i = 1; $i <= $fp_nb ; $i++ ) {
+                    $j = $i % $fp_per_row;
                     printf('%1$s<div class="fpc-span%2$s fp-%3$s">%4$s</div>%5$s',
                         ( 1 == $j ) ? "<div class='{$_fp_row_classes}' role='complementary'>" : "",
-                        $span_value,
+                        apply_filters( 'fpc_span_value', $span_value, $fp_ids[ $i - 1 ]),
                         $fp_ids[$i - 1],
                         $this -> tc_fp_single_display( $fp_ids[$i - 1]),
-                        ( $j == $fp_per_row || $i == $fp_nb ) ? '</div>' : ''
+                        ( $j == 0 || $i == $fp_nb ) ? "</div><!--/fpc-row-{$row}-->" : ''
                     );
-              //set $j back to start value if reach $fp_per_row
-              $j++;
-              $j = ($j == ($fp_per_row + 1)) ? 1 : $j;
+                    if ( 0 == $j || $i == $fp_nb ) {
+                        do_action( "__after_row_{$row}" );
+                        $row++;
+                    }
               }
 
               do_action ('__after_fp') ;
 
               //display edit link for logged in users with edit posts capabilities
               if ( apply_filters('tc_show_fp_edit_link' , is_user_logged_in() && current_user_can( 'edit_theme_options' ) ) && ! TC_utils_fpu::$instance -> is_customizing ) {
+                $_current_url       = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                $_customize_url     = add_query_arg( 'url', urlencode( $_current_url ), wp_customize_url() );
+                $_customize_url     = add_query_arg( urlencode( "autofocus[section]" ), 'tc_fpu', $_customize_url );
+
                 printf('<a class="fpc-edit-link fpc-btn fpc-btn-inverse" href="%1$s" title="%2$s" target="_blank">%2$s</a>',
-                  admin_url().'customize.php',
-                  __( 'Edit Featured Pages' , $this -> plug_lang )
+                  $_customize_url,
+                  __( 'Edit The Featured Pages' , $this -> plug_lang )
                 );
               }//end edit attachment condition
             ?>
@@ -369,6 +376,17 @@ class TC_front_fpu {
               //$apply_random_to_btn = ('none' == $tc_fp_button_color ) ? $apply_random_to_btn : false;
               $apply_random_to_btn = ('none' != $tc_fp_button_color && $tc_fp_button_color_override ) ? false : $apply_random_to_btn;
 
+
+              $fpc_button_color = ! $apply_random_to_btn ? $tc_fp_button_color : '';
+              $fpc_button_class = 'fpc-btn fpc-btn-primary';
+
+              if ( 'skin' == $fpc_button_color ) {
+                if ( class_exists( 'TC___' ) )
+                  $fpc_button_class    = 'btn btn-primary';
+                else
+                  $fpc_button_color    = 'none';
+              }
+
               if ($apply_random_to_btn) {
                   $btn_style = sprintf('style="background-color:%1$s;border-color:%2$s;color:%3$s"',
                           $colors[$rand_color_key],
@@ -376,18 +394,20 @@ class TC_front_fpu {
                           $tc_button_text_color
                   );
               } else {
-                  $btn_style = ('none' != $tc_fp_button_color && 'original' != $tc_fp_button_color ) ? sprintf('style="color:%1$s!important"',
+                  $btn_style = ('none' != $fpc_button_color && 'original' != $fpc_button_color ) ? sprintf('style="color:%1$s!important"',
                           $tc_button_text_color
                   ) : '';
               }
 
               $fpc_button_text = apply_filters( 'fpc_button_text' , $tc_button_text , $fp_single_id );
+
               $tc_show_fp_button = $tc_show_fp_button && $fpc_button_text ? true : false;
               $tc_fp_button_block = sprintf('<a class="%1$s %2$s" href="%3$s" title="%4$s" data-color="%5$s" %6$s>%7$s</a>',
 
                                     apply_filters( 'fpc_button_class' ,
-                                                sprintf('fpc-btn fpc-btn-primary fp-button %1$s %2$s %3$s',
-                                                    ! $apply_random_to_btn ? $tc_fp_button_color : '',
+                                                sprintf('%1$s fp-button %2$s %3$s %4$s',
+                                                    $fpc_button_class,
+                                                    $fpc_button_color,
                                                     isset($colors[$rand_color_key]) ? 'btn-random-colors' : '',
                                                     $tc_fp_button_color_override ? 'btn-random-override' : ''
                                                 ),
@@ -397,7 +417,7 @@ class TC_front_fpu {
                                     $tc_show_fp_button ? '' : 'fpc-hide',
                                     $featured_page_link,
                                     $featured_page_title,
-                                    $tc_fp_button_color,
+                                    $fpc_button_color,
                                     $btn_style,
                                     $fpc_button_text
               );

@@ -1,6 +1,10 @@
 > Add beautiful effects to your blog post grid in the Customizr WordPress theme.
 
 # Changelog
+= v1.0.4 July 26th 2015 =
+* fix: gc_update_setting_control_map() function error when adding setting since latest customizr update
+* fix: darker entry-title background
+
 = v1.0.3 May 15th 2015 =
 * fix: properly pass sanitize_callback, fix issue with wp<4.1
 * fix: customize compatible code with old wp versions

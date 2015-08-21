@@ -1,4 +1,4 @@
-Press Customizr Footer Customizer plugin, copyright (C) 2014 Nicolas GUILLAUME
+Themes and Co Footer Customizer plugin, copyright (C) 2014 Nicolas GUILLAUME
         Licensed under the GNU GPL License below
 
 

@@ -1,6 +1,7 @@
 //Falls back to default params
 var TCParams = TCParams || {
-	centerAllImg: 1,
+	DisabledFeatures : {},
+  centerAllImg: 1,
 	FancyBoxAutoscale: 1,
 	FancyBoxState: 1,
 	HasComments: "",
@@ -13,9 +14,10 @@ var TCParams = TCParams || {
 	SliderHover: 1,
 	SliderName: "demo",
   centerSliderImg : 1,
-	SmoothScroll: "linear",
-  SmoothScrollExclude : ['[class*=edd]', '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]'],
-	stickyCustomOffset: 0,
+	SmoothScroll: { Enabled : 1 , Options : {} },
+	anchorSmoothScroll: "linear",
+  anchorSmoothScrollExclude : ['[class*=edd]', '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]', '[class*=um-]'],
+	stickyCustomOffset: { _initial : 0, _scrolling : 0, options : { _static : true, _element : "" } },
 	stickyHeader: 1,
 	dropdowntoViewport: 1,
 	timerOnScrollAllBrowsers:1,
@@ -36,8 +38,78 @@ var TCParams = TCParams || {
   imgSmartLoadEnabled:0,
   imgSmartLoadOpts: {},
   goldenRatio : 1.618,
-  gridGoldenRatioLimit : 350
-};;//map was added to the ECMA-262 standard in the 5th edition; as such it may not be present in all implementations of the standard. You can work around this by inserting the following code at the beginning of your scripts, allowing use of map in implementations which do not natively support it. This algorithm is exactly the one specified in ECMA-262, 5th edition, assuming Object, TypeError, and Array have their original values and that callback.call evaluates to the original value of Function.prototype.call.
+  gridGoldenRatioLimit : 350,
+  isSecondMenuEnabled : 0,
+  secondMenuRespSet : 'in-sn-before'
+}
+// addEventListener Polyfill ie9- http://stackoverflow.com/a/27790212
+window.addEventListener = window.addEventListener || function (e, f) { window.attachEvent('on' + e, f); };
+
+
+// Datenow Polyfill ie9- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now
+if (!Date.now) {
+  Date.now = function now() {
+    return new Date().getTime();
+  };
+}
+
+
+// Object.create monkey patch ie8 http://stackoverflow.com/a/18020326
+if ( ! Object.create ) {
+  Object.create = function(proto, props) {
+    if (typeof props !== "undefined") {
+      throw "The multiple-argument version of Object.create is not provided by this browser and cannot be shimmed.";
+    }
+    function ctor() { }
+
+    ctor.prototype = proto;
+    return new ctor();
+  };
+}
+
+
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+// filter() was added to the ECMA-262 standard in the 5th edition; as such it may not be present in all implementations of the standard.
+// You can work around this by inserting the following code at the beginning of your scripts, allowing use of filter() in ECMA-262 implementations which do not natively support it.
+// This algorithm is exactly the one specified in ECMA-262, 5th edition, assuming that fn.call evaluates to the original value of Function.prototype.call(), and that Array.prototype.push() has its original value.
+if ( ! Array.prototype.filter ) {
+  Array.prototype.filter = function(fun/*, thisArg*/) {
+    'use strict';
+
+    if (this === void 0 || this === null) {
+      throw new TypeError();
+    }
+
+    var t = Object(this);
+    var len = t.length >>> 0;
+    if (typeof fun !== 'function') {
+      throw new TypeError();
+    }
+
+    var res = [];
+    var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
+    for (var i = 0; i < len; i++) {
+      if (i in t) {
+        var val = t[i];
+
+        // NOTE: Technically this should Object.defineProperty at
+        //       the next index, as push can be affected by
+        //       properties on Object.prototype and Array.prototype.
+        //       But that method's new, and collisions should be
+        //       rare, so use the more-compatible alternative.
+        if (fun.call(thisArg, val, i, t)) {
+          res.push(val);
+        }
+      }
+    }
+
+    return res;
+  };
+}
+
+
+
+//map was added to the ECMA-262 standard in the 5th edition; as such it may not be present in all implementations of the standard. You can work around this by inserting the following code at the beginning of your scripts, allowing use of map in implementations which do not natively support it. This algorithm is exactly the one specified in ECMA-262, 5th edition, assuming Object, TypeError, and Array have their original values and that callback.call evaluates to the original value of Function.prototype.call.
 // Production steps of ECMA-262, Edition 5, 15.4.4.19
 // Reference: http://es5.github.io/#x15.4.4.19
 if (!Array.prototype.map) {
@@ -126,7 +198,8 @@ if (!Array.prototype.map) {
     // 9. return A
     return A;
   };
-};/* ===================================================
+}
+/* ===================================================
  * bootstrap-transition.js v2.3.2
  * http://getbootstrap.com/2.3.2/javascript.html#transitions
  * ===================================================
@@ -1784,8 +1857,7 @@ var TCParams = TCParams || {};
 
       if ( TCParams && 1 == TCParams.dropdowntoViewport )
       {
-        var tcVisible = $('body').hasClass('sticky-enabled') ? $(window).height() : ($(window).height() - $('.navbar-wrapper').offset().top);
-        tcVisible = ( tcVisible - 90 ) > 80 ? tcVisible - 90 : 300;
+        var tcVisible = czrapp.$_window.height() - this.$element.offset().top + czrapp.$_window.scrollTop();
         this.$element.css('max-height' , tcVisible + 'px');
       }
       else if ( TCParams && 1 != TCParams.dropdowntoViewport && 1 == TCParams.stickyHeader )
@@ -1795,7 +1867,7 @@ var TCParams = TCParams || {};
           $('.back-to-top').trigger('click');
         }
         else {
-          ('html, body').animate({
+          $('html, body').animate({
                   scrollTop: 0
               }, 700);
         }
@@ -2467,11 +2539,64 @@ var TCParams = TCParams || {};
   })
 
 }(window.jQuery);
-;//     Underscore.js 1.8.3
+//     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 //     Underscore may be freely distributed under the MIT license.
-(function(){function n(n){function t(t,r,e,u,i,o){for(;i>=0&&o>i;i+=n){var a=u?u[i]:i;e=r(e,t[a],a,t)}return e}return function(r,e,u,i){e=b(e,i,4);var o=!k(r)&&m.keys(r),a=(o||r).length,c=n>0?0:a-1;return arguments.length<3&&(u=r[o?o[c]:c],c+=n),t(r,e,u,o,c,a)}}function t(n){return function(t,r,e){r=x(r,e);for(var u=O(t),i=n>0?0:u-1;i>=0&&u>i;i+=n)if(r(t[i],i,t))return i;return-1}}function r(n,t,r){return function(e,u,i){var o=0,a=O(e);if("number"==typeof i)n>0?o=i>=0?i:Math.max(i+a,o):a=i>=0?Math.min(i+1,a):i+a+1;else if(r&&i&&a)return i=r(e,u),e[i]===u?i:-1;if(u!==u)return i=t(l.call(e,o,a),m.isNaN),i>=0?i+o:-1;for(i=n>0?o:a-1;i>=0&&a>i;i+=n)if(e[i]===u)return i;return-1}}function e(n,t){var r=I.length,e=n.constructor,u=m.isFunction(e)&&e.prototype||a,i="constructor";for(m.has(n,i)&&!m.contains(t,i)&&t.push(i);r--;)i=I[r],i in n&&n[i]!==u[i]&&!m.contains(t,i)&&t.push(i)}var u=this,i=u._,o=Array.prototype,a=Object.prototype,c=Function.prototype,f=o.push,l=o.slice,s=a.toString,p=a.hasOwnProperty,h=Array.isArray,v=Object.keys,g=c.bind,y=Object.create,d=function(){},m=function(n){return n instanceof m?n:this instanceof m?void(this._wrapped=n):new m(n)};"undefined"!=typeof exports?("undefined"!=typeof module&&module.exports&&(exports=module.exports=m),exports._=m):u._=m,m.VERSION="1.8.3";var b=function(n,t,r){if(t===void 0)return n;switch(null==r?3:r){case 1:return function(r){return n.call(t,r)};case 2:return function(r,e){return n.call(t,r,e)};case 3:return function(r,e,u){return n.call(t,r,e,u)};case 4:return function(r,e,u,i){return n.call(t,r,e,u,i)}}return function(){return n.apply(t,arguments)}},x=function(n,t,r){return null==n?m.identity:m.isFunction(n)?b(n,t,r):m.isObject(n)?m.matcher(n):m.property(n)};m.iteratee=function(n,t){return x(n,t,1/0)};var _=function(n,t){return function(r){var e=arguments.length;if(2>e||null==r)return r;for(var u=1;e>u;u++)for(var i=arguments[u],o=n(i),a=o.length,c=0;a>c;c++){var f=o[c];t&&r[f]!==void 0||(r[f]=i[f])}return r}},j=function(n){if(!m.isObject(n))return{};if(y)return y(n);d.prototype=n;var t=new d;return d.prototype=null,t},w=function(n){return function(t){return null==t?void 0:t[n]}},A=Math.pow(2,53)-1,O=w("length"),k=function(n){var t=O(n);return"number"==typeof t&&t>=0&&A>=t};m.each=m.forEach=function(n,t,r){t=b(t,r);var e,u;if(k(n))for(e=0,u=n.length;u>e;e++)t(n[e],e,n);else{var i=m.keys(n);for(e=0,u=i.length;u>e;e++)t(n[i[e]],i[e],n)}return n},m.map=m.collect=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=Array(u),o=0;u>o;o++){var a=e?e[o]:o;i[o]=t(n[a],a,n)}return i},m.reduce=m.foldl=m.inject=n(1),m.reduceRight=m.foldr=n(-1),m.find=m.detect=function(n,t,r){var e;return e=k(n)?m.findIndex(n,t,r):m.findKey(n,t,r),e!==void 0&&e!==-1?n[e]:void 0},m.filter=m.select=function(n,t,r){var e=[];return t=x(t,r),m.each(n,function(n,r,u){t(n,r,u)&&e.push(n)}),e},m.reject=function(n,t,r){return m.filter(n,m.negate(x(t)),r)},m.every=m.all=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=0;u>i;i++){var o=e?e[i]:i;if(!t(n[o],o,n))return!1}return!0},m.some=m.any=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=0;u>i;i++){var o=e?e[i]:i;if(t(n[o],o,n))return!0}return!1},m.contains=m.includes=m.include=function(n,t,r,e){return k(n)||(n=m.values(n)),("number"!=typeof r||e)&&(r=0),m.indexOf(n,t,r)>=0},m.invoke=function(n,t){var r=l.call(arguments,2),e=m.isFunction(t);return m.map(n,function(n){var u=e?t:n[t];return null==u?u:u.apply(n,r)})},m.pluck=function(n,t){return m.map(n,m.property(t))},m.where=function(n,t){return m.filter(n,m.matcher(t))},m.findWhere=function(n,t){return m.find(n,m.matcher(t))},m.max=function(n,t,r){var e,u,i=-1/0,o=-1/0;if(null==t&&null!=n){n=k(n)?n:m.values(n);for(var a=0,c=n.length;c>a;a++)e=n[a],e>i&&(i=e)}else t=x(t,r),m.each(n,function(n,r,e){u=t(n,r,e),(u>o||u===-1/0&&i===-1/0)&&(i=n,o=u)});return i},m.min=function(n,t,r){var e,u,i=1/0,o=1/0;if(null==t&&null!=n){n=k(n)?n:m.values(n);for(var a=0,c=n.length;c>a;a++)e=n[a],i>e&&(i=e)}else t=x(t,r),m.each(n,function(n,r,e){u=t(n,r,e),(o>u||1/0===u&&1/0===i)&&(i=n,o=u)});return i},m.shuffle=function(n){for(var t,r=k(n)?n:m.values(n),e=r.length,u=Array(e),i=0;e>i;i++)t=m.random(0,i),t!==i&&(u[i]=u[t]),u[t]=r[i];return u},m.sample=function(n,t,r){return null==t||r?(k(n)||(n=m.values(n)),n[m.random(n.length-1)]):m.shuffle(n).slice(0,Math.max(0,t))},m.sortBy=function(n,t,r){return t=x(t,r),m.pluck(m.map(n,function(n,r,e){return{value:n,index:r,criteria:t(n,r,e)}}).sort(function(n,t){var r=n.criteria,e=t.criteria;if(r!==e){if(r>e||r===void 0)return 1;if(e>r||e===void 0)return-1}return n.index-t.index}),"value")};var F=function(n){return function(t,r,e){var u={};return r=x(r,e),m.each(t,function(e,i){var o=r(e,i,t);n(u,e,o)}),u}};m.groupBy=F(function(n,t,r){m.has(n,r)?n[r].push(t):n[r]=[t]}),m.indexBy=F(function(n,t,r){n[r]=t}),m.countBy=F(function(n,t,r){m.has(n,r)?n[r]++:n[r]=1}),m.toArray=function(n){return n?m.isArray(n)?l.call(n):k(n)?m.map(n,m.identity):m.values(n):[]},m.size=function(n){return null==n?0:k(n)?n.length:m.keys(n).length},m.partition=function(n,t,r){t=x(t,r);var e=[],u=[];return m.each(n,function(n,r,i){(t(n,r,i)?e:u).push(n)}),[e,u]},m.first=m.head=m.take=function(n,t,r){return null==n?void 0:null==t||r?n[0]:m.initial(n,n.length-t)},m.initial=function(n,t,r){return l.call(n,0,Math.max(0,n.length-(null==t||r?1:t)))},m.last=function(n,t,r){return null==n?void 0:null==t||r?n[n.length-1]:m.rest(n,Math.max(0,n.length-t))},m.rest=m.tail=m.drop=function(n,t,r){return l.call(n,null==t||r?1:t)},m.compact=function(n){return m.filter(n,m.identity)};var S=function(n,t,r,e){for(var u=[],i=0,o=e||0,a=O(n);a>o;o++){var c=n[o];if(k(c)&&(m.isArray(c)||m.isArguments(c))){t||(c=S(c,t,r));var f=0,l=c.length;for(u.length+=l;l>f;)u[i++]=c[f++]}else r||(u[i++]=c)}return u};m.flatten=function(n,t){return S(n,t,!1)},m.without=function(n){return m.difference(n,l.call(arguments,1))},m.uniq=m.unique=function(n,t,r,e){m.isBoolean(t)||(e=r,r=t,t=!1),null!=r&&(r=x(r,e));for(var u=[],i=[],o=0,a=O(n);a>o;o++){var c=n[o],f=r?r(c,o,n):c;t?(o&&i===f||u.push(c),i=f):r?m.contains(i,f)||(i.push(f),u.push(c)):m.contains(u,c)||u.push(c)}return u},m.union=function(){return m.uniq(S(arguments,!0,!0))},m.intersection=function(n){for(var t=[],r=arguments.length,e=0,u=O(n);u>e;e++){var i=n[e];if(!m.contains(t,i)){for(var o=1;r>o&&m.contains(arguments[o],i);o++);o===r&&t.push(i)}}return t},m.difference=function(n){var t=S(arguments,!0,!0,1);return m.filter(n,function(n){return!m.contains(t,n)})},m.zip=function(){return m.unzip(arguments)},m.unzip=function(n){for(var t=n&&m.max(n,O).length||0,r=Array(t),e=0;t>e;e++)r[e]=m.pluck(n,e);return r},m.object=function(n,t){for(var r={},e=0,u=O(n);u>e;e++)t?r[n[e]]=t[e]:r[n[e][0]]=n[e][1];return r},m.findIndex=t(1),m.findLastIndex=t(-1),m.sortedIndex=function(n,t,r,e){r=x(r,e,1);for(var u=r(t),i=0,o=O(n);o>i;){var a=Math.floor((i+o)/2);r(n[a])<u?i=a+1:o=a}return i},m.indexOf=r(1,m.findIndex,m.sortedIndex),m.lastIndexOf=r(-1,m.findLastIndex),m.range=function(n,t,r){null==t&&(t=n||0,n=0),r=r||1;for(var e=Math.max(Math.ceil((t-n)/r),0),u=Array(e),i=0;e>i;i++,n+=r)u[i]=n;return u};var E=function(n,t,r,e,u){if(!(e instanceof t))return n.apply(r,u);var i=j(n.prototype),o=n.apply(i,u);return m.isObject(o)?o:i};m.bind=function(n,t){if(g&&n.bind===g)return g.apply(n,l.call(arguments,1));if(!m.isFunction(n))throw new TypeError("Bind must be called on a function");var r=l.call(arguments,2),e=function(){return E(n,e,t,this,r.concat(l.call(arguments)))};return e},m.partial=function(n){var t=l.call(arguments,1),r=function(){for(var e=0,u=t.length,i=Array(u),o=0;u>o;o++)i[o]=t[o]===m?arguments[e++]:t[o];for(;e<arguments.length;)i.push(arguments[e++]);return E(n,r,this,this,i)};return r},m.bindAll=function(n){var t,r,e=arguments.length;if(1>=e)throw new Error("bindAll must be passed function names");for(t=1;e>t;t++)r=arguments[t],n[r]=m.bind(n[r],n);return n},m.memoize=function(n,t){var r=function(e){var u=r.cache,i=""+(t?t.apply(this,arguments):e);return m.has(u,i)||(u[i]=n.apply(this,arguments)),u[i]};return r.cache={},r},m.delay=function(n,t){var r=l.call(arguments,2);return setTimeout(function(){return n.apply(null,r)},t)},m.defer=m.partial(m.delay,m,1),m.throttle=function(n,t,r){var e,u,i,o=null,a=0;r||(r={});var c=function(){a=r.leading===!1?0:m.now(),o=null,i=n.apply(e,u),o||(e=u=null)};return function(){var f=m.now();a||r.leading!==!1||(a=f);var l=t-(f-a);return e=this,u=arguments,0>=l||l>t?(o&&(clearTimeout(o),o=null),a=f,i=n.apply(e,u),o||(e=u=null)):o||r.trailing===!1||(o=setTimeout(c,l)),i}},m.debounce=function(n,t,r){var e,u,i,o,a,c=function(){var f=m.now()-o;t>f&&f>=0?e=setTimeout(c,t-f):(e=null,r||(a=n.apply(i,u),e||(i=u=null)))};return function(){i=this,u=arguments,o=m.now();var f=r&&!e;return e||(e=setTimeout(c,t)),f&&(a=n.apply(i,u),i=u=null),a}},m.wrap=function(n,t){return m.partial(t,n)},m.negate=function(n){return function(){return!n.apply(this,arguments)}},m.compose=function(){var n=arguments,t=n.length-1;return function(){for(var r=t,e=n[t].apply(this,arguments);r--;)e=n[r].call(this,e);return e}},m.after=function(n,t){return function(){return--n<1?t.apply(this,arguments):void 0}},m.before=function(n,t){var r;return function(){return--n>0&&(r=t.apply(this,arguments)),1>=n&&(t=null),r}},m.once=m.partial(m.before,2);var M=!{toString:null}.propertyIsEnumerable("toString"),I=["valueOf","isPrototypeOf","toString","propertyIsEnumerable","hasOwnProperty","toLocaleString"];m.keys=function(n){if(!m.isObject(n))return[];if(v)return v(n);var t=[];for(var r in n)m.has(n,r)&&t.push(r);return M&&e(n,t),t},m.allKeys=function(n){if(!m.isObject(n))return[];var t=[];for(var r in n)t.push(r);return M&&e(n,t),t},m.values=function(n){for(var t=m.keys(n),r=t.length,e=Array(r),u=0;r>u;u++)e[u]=n[t[u]];return e},m.mapObject=function(n,t,r){t=x(t,r);for(var e,u=m.keys(n),i=u.length,o={},a=0;i>a;a++)e=u[a],o[e]=t(n[e],e,n);return o},m.pairs=function(n){for(var t=m.keys(n),r=t.length,e=Array(r),u=0;r>u;u++)e[u]=[t[u],n[t[u]]];return e},m.invert=function(n){for(var t={},r=m.keys(n),e=0,u=r.length;u>e;e++)t[n[r[e]]]=r[e];return t},m.functions=m.methods=function(n){var t=[];for(var r in n)m.isFunction(n[r])&&t.push(r);return t.sort()},m.extend=_(m.allKeys),m.extendOwn=m.assign=_(m.keys),m.findKey=function(n,t,r){t=x(t,r);for(var e,u=m.keys(n),i=0,o=u.length;o>i;i++)if(e=u[i],t(n[e],e,n))return e},m.pick=function(n,t,r){var e,u,i={},o=n;if(null==o)return i;m.isFunction(t)?(u=m.allKeys(o),e=b(t,r)):(u=S(arguments,!1,!1,1),e=function(n,t,r){return t in r},o=Object(o));for(var a=0,c=u.length;c>a;a++){var f=u[a],l=o[f];e(l,f,o)&&(i[f]=l)}return i},m.omit=function(n,t,r){if(m.isFunction(t))t=m.negate(t);else{var e=m.map(S(arguments,!1,!1,1),String);t=function(n,t){return!m.contains(e,t)}}return m.pick(n,t,r)},m.defaults=_(m.allKeys,!0),m.create=function(n,t){var r=j(n);return t&&m.extendOwn(r,t),r},m.clone=function(n){return m.isObject(n)?m.isArray(n)?n.slice():m.extend({},n):n},m.tap=function(n,t){return t(n),n},m.isMatch=function(n,t){var r=m.keys(t),e=r.length;if(null==n)return!e;for(var u=Object(n),i=0;e>i;i++){var o=r[i];if(t[o]!==u[o]||!(o in u))return!1}return!0};var N=function(n,t,r,e){if(n===t)return 0!==n||1/n===1/t;if(null==n||null==t)return n===t;n instanceof m&&(n=n._wrapped),t instanceof m&&(t=t._wrapped);var u=s.call(n);if(u!==s.call(t))return!1;switch(u){case"[object RegExp]":case"[object String]":return""+n==""+t;case"[object Number]":return+n!==+n?+t!==+t:0===+n?1/+n===1/t:+n===+t;case"[object Date]":case"[object Boolean]":return+n===+t}var i="[object Array]"===u;if(!i){if("object"!=typeof n||"object"!=typeof t)return!1;var o=n.constructor,a=t.constructor;if(o!==a&&!(m.isFunction(o)&&o instanceof o&&m.isFunction(a)&&a instanceof a)&&"constructor"in n&&"constructor"in t)return!1}r=r||[],e=e||[];for(var c=r.length;c--;)if(r[c]===n)return e[c]===t;if(r.push(n),e.push(t),i){if(c=n.length,c!==t.length)return!1;for(;c--;)if(!N(n[c],t[c],r,e))return!1}else{var f,l=m.keys(n);if(c=l.length,m.keys(t).length!==c)return!1;for(;c--;)if(f=l[c],!m.has(t,f)||!N(n[f],t[f],r,e))return!1}return r.pop(),e.pop(),!0};m.isEqual=function(n,t){return N(n,t)},m.isEmpty=function(n){return null==n?!0:k(n)&&(m.isArray(n)||m.isString(n)||m.isArguments(n))?0===n.length:0===m.keys(n).length},m.isElement=function(n){return!(!n||1!==n.nodeType)},m.isArray=h||function(n){return"[object Array]"===s.call(n)},m.isObject=function(n){var t=typeof n;return"function"===t||"object"===t&&!!n},m.each(["Arguments","Function","String","Number","Date","RegExp","Error"],function(n){m["is"+n]=function(t){return s.call(t)==="[object "+n+"]"}}),m.isArguments(arguments)||(m.isArguments=function(n){return m.has(n,"callee")}),"function"!=typeof/./&&"object"!=typeof Int8Array&&(m.isFunction=function(n){return"function"==typeof n||!1}),m.isFinite=function(n){return isFinite(n)&&!isNaN(parseFloat(n))},m.isNaN=function(n){return m.isNumber(n)&&n!==+n},m.isBoolean=function(n){return n===!0||n===!1||"[object Boolean]"===s.call(n)},m.isNull=function(n){return null===n},m.isUndefined=function(n){return n===void 0},m.has=function(n,t){return null!=n&&p.call(n,t)},m.noConflict=function(){return u._=i,this},m.identity=function(n){return n},m.constant=function(n){return function(){return n}},m.noop=function(){},m.property=w,m.propertyOf=function(n){return null==n?function(){}:function(t){return n[t]}},m.matcher=m.matches=function(n){return n=m.extendOwn({},n),function(t){return m.isMatch(t,n)}},m.times=function(n,t,r){var e=Array(Math.max(0,n));t=b(t,r,1);for(var u=0;n>u;u++)e[u]=t(u);return e},m.random=function(n,t){return null==t&&(t=n,n=0),n+Math.floor(Math.random()*(t-n+1))},m.now=Date.now||function(){return(new Date).getTime()};var B={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"},T=m.invert(B),R=function(n){var t=function(t){return n[t]},r="(?:"+m.keys(n).join("|")+")",e=RegExp(r),u=RegExp(r,"g");return function(n){return n=null==n?"":""+n,e.test(n)?n.replace(u,t):n}};m.escape=R(B),m.unescape=R(T),m.result=function(n,t,r){var e=null==n?void 0:n[t];return e===void 0&&(e=r),m.isFunction(e)?e.call(n):e};var q=0;m.uniqueId=function(n){var t=++q+"";return n?n+t:t},m.templateSettings={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g,escape:/<%-([\s\S]+?)%>/g};var K=/(.)^/,z={"'":"'","\\":"\\","\r":"r","\n":"n","\u2028":"u2028","\u2029":"u2029"},D=/\\|'|\r|\n|\u2028|\u2029/g,L=function(n){return"\\"+z[n]};m.template=function(n,t,r){!t&&r&&(t=r),t=m.defaults({},t,m.templateSettings);var e=RegExp([(t.escape||K).source,(t.interpolate||K).source,(t.evaluate||K).source].join("|")+"|$","g"),u=0,i="__p+='";n.replace(e,function(t,r,e,o,a){return i+=n.slice(u,a).replace(D,L),u=a+t.length,r?i+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'":e?i+="'+\n((__t=("+e+"))==null?'':__t)+\n'":o&&(i+="';\n"+o+"\n__p+='"),t}),i+="';\n",t.variable||(i="with(obj||{}){\n"+i+"}\n"),i="var __t,__p='',__j=Array.prototype.join,"+"print=function(){__p+=__j.call(arguments,'');};\n"+i+"return __p;\n";try{var o=new Function(t.variable||"obj","_",i)}catch(a){throw a.source=i,a}var c=function(n){return o.call(this,n,m)},f=t.variable||"obj";return c.source="function("+f+"){\n"+i+"}",c},m.chain=function(n){var t=m(n);return t._chain=!0,t};var P=function(n,t){return n._chain?m(t).chain():t};m.mixin=function(n){m.each(m.functions(n),function(t){var r=m[t]=n[t];m.prototype[t]=function(){var n=[this._wrapped];return f.apply(n,arguments),P(this,r.apply(m,n))}})},m.mixin(m),m.each(["pop","push","reverse","shift","sort","splice","unshift"],function(n){var t=o[n];m.prototype[n]=function(){var r=this._wrapped;return t.apply(r,arguments),"shift"!==n&&"splice"!==n||0!==r.length||delete r[0],P(this,r)}}),m.each(["concat","join","slice"],function(n){var t=o[n];m.prototype[n]=function(){return P(this,t.apply(this._wrapped,arguments))}}),m.prototype.value=function(){return this._wrapped},m.prototype.valueOf=m.prototype.toJSON=m.prototype.value,m.prototype.toString=function(){return""+this._wrapped},"function"==typeof define&&define.amd&&define("underscore",[],function(){return m})}).call(this);;/* ===================================================
+(function(){function n(n){function t(t,r,e,u,i,o){for(;i>=0&&o>i;i+=n){var a=u?u[i]:i;e=r(e,t[a],a,t)}return e}return function(r,e,u,i){e=b(e,i,4);var o=!k(r)&&m.keys(r),a=(o||r).length,c=n>0?0:a-1;return arguments.length<3&&(u=r[o?o[c]:c],c+=n),t(r,e,u,o,c,a)}}function t(n){return function(t,r,e){r=x(r,e);for(var u=O(t),i=n>0?0:u-1;i>=0&&u>i;i+=n)if(r(t[i],i,t))return i;return-1}}function r(n,t,r){return function(e,u,i){var o=0,a=O(e);if("number"==typeof i)n>0?o=i>=0?i:Math.max(i+a,o):a=i>=0?Math.min(i+1,a):i+a+1;else if(r&&i&&a)return i=r(e,u),e[i]===u?i:-1;if(u!==u)return i=t(l.call(e,o,a),m.isNaN),i>=0?i+o:-1;for(i=n>0?o:a-1;i>=0&&a>i;i+=n)if(e[i]===u)return i;return-1}}function e(n,t){var r=I.length,e=n.constructor,u=m.isFunction(e)&&e.prototype||a,i="constructor";for(m.has(n,i)&&!m.contains(t,i)&&t.push(i);r--;)i=I[r],i in n&&n[i]!==u[i]&&!m.contains(t,i)&&t.push(i)}var u=this,i=u._,o=Array.prototype,a=Object.prototype,c=Function.prototype,f=o.push,l=o.slice,s=a.toString,p=a.hasOwnProperty,h=Array.isArray,v=Object.keys,g=c.bind,y=Object.create,d=function(){},m=function(n){return n instanceof m?n:this instanceof m?void(this._wrapped=n):new m(n)};"undefined"!=typeof exports?("undefined"!=typeof module&&module.exports&&(exports=module.exports=m),exports._=m):u._=m,m.VERSION="1.8.3";var b=function(n,t,r){if(t===void 0)return n;switch(null==r?3:r){case 1:return function(r){return n.call(t,r)};case 2:return function(r,e){return n.call(t,r,e)};case 3:return function(r,e,u){return n.call(t,r,e,u)};case 4:return function(r,e,u,i){return n.call(t,r,e,u,i)}}return function(){return n.apply(t,arguments)}},x=function(n,t,r){return null==n?m.identity:m.isFunction(n)?b(n,t,r):m.isObject(n)?m.matcher(n):m.property(n)};m.iteratee=function(n,t){return x(n,t,1/0)};var _=function(n,t){return function(r){var e=arguments.length;if(2>e||null==r)return r;for(var u=1;e>u;u++)for(var i=arguments[u],o=n(i),a=o.length,c=0;a>c;c++){var f=o[c];t&&r[f]!==void 0||(r[f]=i[f])}return r}},j=function(n){if(!m.isObject(n))return{};if(y)return y(n);d.prototype=n;var t=new d;return d.prototype=null,t},w=function(n){return function(t){return null==t?void 0:t[n]}},A=Math.pow(2,53)-1,O=w("length"),k=function(n){var t=O(n);return"number"==typeof t&&t>=0&&A>=t};m.each=m.forEach=function(n,t,r){t=b(t,r);var e,u;if(k(n))for(e=0,u=n.length;u>e;e++)t(n[e],e,n);else{var i=m.keys(n);for(e=0,u=i.length;u>e;e++)t(n[i[e]],i[e],n)}return n},m.map=m.collect=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=Array(u),o=0;u>o;o++){var a=e?e[o]:o;i[o]=t(n[a],a,n)}return i},m.reduce=m.foldl=m.inject=n(1),m.reduceRight=m.foldr=n(-1),m.find=m.detect=function(n,t,r){var e;return e=k(n)?m.findIndex(n,t,r):m.findKey(n,t,r),e!==void 0&&e!==-1?n[e]:void 0},m.filter=m.select=function(n,t,r){var e=[];return t=x(t,r),m.each(n,function(n,r,u){t(n,r,u)&&e.push(n)}),e},m.reject=function(n,t,r){return m.filter(n,m.negate(x(t)),r)},m.every=m.all=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=0;u>i;i++){var o=e?e[i]:i;if(!t(n[o],o,n))return!1}return!0},m.some=m.any=function(n,t,r){t=x(t,r);for(var e=!k(n)&&m.keys(n),u=(e||n).length,i=0;u>i;i++){var o=e?e[i]:i;if(t(n[o],o,n))return!0}return!1},m.contains=m.includes=m.include=function(n,t,r,e){return k(n)||(n=m.values(n)),("number"!=typeof r||e)&&(r=0),m.indexOf(n,t,r)>=0},m.invoke=function(n,t){var r=l.call(arguments,2),e=m.isFunction(t);return m.map(n,function(n){var u=e?t:n[t];return null==u?u:u.apply(n,r)})},m.pluck=function(n,t){return m.map(n,m.property(t))},m.where=function(n,t){return m.filter(n,m.matcher(t))},m.findWhere=function(n,t){return m.find(n,m.matcher(t))},m.max=function(n,t,r){var e,u,i=-1/0,o=-1/0;if(null==t&&null!=n){n=k(n)?n:m.values(n);for(var a=0,c=n.length;c>a;a++)e=n[a],e>i&&(i=e)}else t=x(t,r),m.each(n,function(n,r,e){u=t(n,r,e),(u>o||u===-1/0&&i===-1/0)&&(i=n,o=u)});return i},m.min=function(n,t,r){var e,u,i=1/0,o=1/0;if(null==t&&null!=n){n=k(n)?n:m.values(n);for(var a=0,c=n.length;c>a;a++)e=n[a],i>e&&(i=e)}else t=x(t,r),m.each(n,function(n,r,e){u=t(n,r,e),(o>u||1/0===u&&1/0===i)&&(i=n,o=u)});return i},m.shuffle=function(n){for(var t,r=k(n)?n:m.values(n),e=r.length,u=Array(e),i=0;e>i;i++)t=m.random(0,i),t!==i&&(u[i]=u[t]),u[t]=r[i];return u},m.sample=function(n,t,r){return null==t||r?(k(n)||(n=m.values(n)),n[m.random(n.length-1)]):m.shuffle(n).slice(0,Math.max(0,t))},m.sortBy=function(n,t,r){return t=x(t,r),m.pluck(m.map(n,function(n,r,e){return{value:n,index:r,criteria:t(n,r,e)}}).sort(function(n,t){var r=n.criteria,e=t.criteria;if(r!==e){if(r>e||r===void 0)return 1;if(e>r||e===void 0)return-1}return n.index-t.index}),"value")};var F=function(n){return function(t,r,e){var u={};return r=x(r,e),m.each(t,function(e,i){var o=r(e,i,t);n(u,e,o)}),u}};m.groupBy=F(function(n,t,r){m.has(n,r)?n[r].push(t):n[r]=[t]}),m.indexBy=F(function(n,t,r){n[r]=t}),m.countBy=F(function(n,t,r){m.has(n,r)?n[r]++:n[r]=1}),m.toArray=function(n){return n?m.isArray(n)?l.call(n):k(n)?m.map(n,m.identity):m.values(n):[]},m.size=function(n){return null==n?0:k(n)?n.length:m.keys(n).length},m.partition=function(n,t,r){t=x(t,r);var e=[],u=[];return m.each(n,function(n,r,i){(t(n,r,i)?e:u).push(n)}),[e,u]},m.first=m.head=m.take=function(n,t,r){return null==n?void 0:null==t||r?n[0]:m.initial(n,n.length-t)},m.initial=function(n,t,r){return l.call(n,0,Math.max(0,n.length-(null==t||r?1:t)))},m.last=function(n,t,r){return null==n?void 0:null==t||r?n[n.length-1]:m.rest(n,Math.max(0,n.length-t))},m.rest=m.tail=m.drop=function(n,t,r){return l.call(n,null==t||r?1:t)},m.compact=function(n){return m.filter(n,m.identity)};var S=function(n,t,r,e){for(var u=[],i=0,o=e||0,a=O(n);a>o;o++){var c=n[o];if(k(c)&&(m.isArray(c)||m.isArguments(c))){t||(c=S(c,t,r));var f=0,l=c.length;for(u.length+=l;l>f;)u[i++]=c[f++]}else r||(u[i++]=c)}return u};m.flatten=function(n,t){return S(n,t,!1)},m.without=function(n){return m.difference(n,l.call(arguments,1))},m.uniq=m.unique=function(n,t,r,e){m.isBoolean(t)||(e=r,r=t,t=!1),null!=r&&(r=x(r,e));for(var u=[],i=[],o=0,a=O(n);a>o;o++){var c=n[o],f=r?r(c,o,n):c;t?(o&&i===f||u.push(c),i=f):r?m.contains(i,f)||(i.push(f),u.push(c)):m.contains(u,c)||u.push(c)}return u},m.union=function(){return m.uniq(S(arguments,!0,!0))},m.intersection=function(n){for(var t=[],r=arguments.length,e=0,u=O(n);u>e;e++){var i=n[e];if(!m.contains(t,i)){for(var o=1;r>o&&m.contains(arguments[o],i);o++);o===r&&t.push(i)}}return t},m.difference=function(n){var t=S(arguments,!0,!0,1);return m.filter(n,function(n){return!m.contains(t,n)})},m.zip=function(){return m.unzip(arguments)},m.unzip=function(n){for(var t=n&&m.max(n,O).length||0,r=Array(t),e=0;t>e;e++)r[e]=m.pluck(n,e);return r},m.object=function(n,t){for(var r={},e=0,u=O(n);u>e;e++)t?r[n[e]]=t[e]:r[n[e][0]]=n[e][1];return r},m.findIndex=t(1),m.findLastIndex=t(-1),m.sortedIndex=function(n,t,r,e){r=x(r,e,1);for(var u=r(t),i=0,o=O(n);o>i;){var a=Math.floor((i+o)/2);r(n[a])<u?i=a+1:o=a}return i},m.indexOf=r(1,m.findIndex,m.sortedIndex),m.lastIndexOf=r(-1,m.findLastIndex),m.range=function(n,t,r){null==t&&(t=n||0,n=0),r=r||1;for(var e=Math.max(Math.ceil((t-n)/r),0),u=Array(e),i=0;e>i;i++,n+=r)u[i]=n;return u};var E=function(n,t,r,e,u){if(!(e instanceof t))return n.apply(r,u);var i=j(n.prototype),o=n.apply(i,u);return m.isObject(o)?o:i};m.bind=function(n,t){if(g&&n.bind===g)return g.apply(n,l.call(arguments,1));if(!m.isFunction(n))throw new TypeError("Bind must be called on a function");var r=l.call(arguments,2),e=function(){return E(n,e,t,this,r.concat(l.call(arguments)))};return e},m.partial=function(n){var t=l.call(arguments,1),r=function(){for(var e=0,u=t.length,i=Array(u),o=0;u>o;o++)i[o]=t[o]===m?arguments[e++]:t[o];for(;e<arguments.length;)i.push(arguments[e++]);return E(n,r,this,this,i)};return r},m.bindAll=function(n){var t,r,e=arguments.length;if(1>=e)throw new Error("bindAll must be passed function names");for(t=1;e>t;t++)r=arguments[t],n[r]=m.bind(n[r],n);return n},m.memoize=function(n,t){var r=function(e){var u=r.cache,i=""+(t?t.apply(this,arguments):e);return m.has(u,i)||(u[i]=n.apply(this,arguments)),u[i]};return r.cache={},r},m.delay=function(n,t){var r=l.call(arguments,2);return setTimeout(function(){return n.apply(null,r)},t)},m.defer=m.partial(m.delay,m,1),m.throttle=function(n,t,r){var e,u,i,o=null,a=0;r||(r={});var c=function(){a=r.leading===!1?0:m.now(),o=null,i=n.apply(e,u),o||(e=u=null)};return function(){var f=m.now();a||r.leading!==!1||(a=f);var l=t-(f-a);return e=this,u=arguments,0>=l||l>t?(o&&(clearTimeout(o),o=null),a=f,i=n.apply(e,u),o||(e=u=null)):o||r.trailing===!1||(o=setTimeout(c,l)),i}},m.debounce=function(n,t,r){var e,u,i,o,a,c=function(){var f=m.now()-o;t>f&&f>=0?e=setTimeout(c,t-f):(e=null,r||(a=n.apply(i,u),e||(i=u=null)))};return function(){i=this,u=arguments,o=m.now();var f=r&&!e;return e||(e=setTimeout(c,t)),f&&(a=n.apply(i,u),i=u=null),a}},m.wrap=function(n,t){return m.partial(t,n)},m.negate=function(n){return function(){return!n.apply(this,arguments)}},m.compose=function(){var n=arguments,t=n.length-1;return function(){for(var r=t,e=n[t].apply(this,arguments);r--;)e=n[r].call(this,e);return e}},m.after=function(n,t){return function(){return--n<1?t.apply(this,arguments):void 0}},m.before=function(n,t){var r;return function(){return--n>0&&(r=t.apply(this,arguments)),1>=n&&(t=null),r}},m.once=m.partial(m.before,2);var M=!{toString:null}.propertyIsEnumerable("toString"),I=["valueOf","isPrototypeOf","toString","propertyIsEnumerable","hasOwnProperty","toLocaleString"];m.keys=function(n){if(!m.isObject(n))return[];if(v)return v(n);var t=[];for(var r in n)m.has(n,r)&&t.push(r);return M&&e(n,t),t},m.allKeys=function(n){if(!m.isObject(n))return[];var t=[];for(var r in n)t.push(r);return M&&e(n,t),t},m.values=function(n){for(var t=m.keys(n),r=t.length,e=Array(r),u=0;r>u;u++)e[u]=n[t[u]];return e},m.mapObject=function(n,t,r){t=x(t,r);for(var e,u=m.keys(n),i=u.length,o={},a=0;i>a;a++)e=u[a],o[e]=t(n[e],e,n);return o},m.pairs=function(n){for(var t=m.keys(n),r=t.length,e=Array(r),u=0;r>u;u++)e[u]=[t[u],n[t[u]]];return e},m.invert=function(n){for(var t={},r=m.keys(n),e=0,u=r.length;u>e;e++)t[n[r[e]]]=r[e];return t},m.functions=m.methods=function(n){var t=[];for(var r in n)m.isFunction(n[r])&&t.push(r);return t.sort()},m.extend=_(m.allKeys),m.extendOwn=m.assign=_(m.keys),m.findKey=function(n,t,r){t=x(t,r);for(var e,u=m.keys(n),i=0,o=u.length;o>i;i++)if(e=u[i],t(n[e],e,n))return e},m.pick=function(n,t,r){var e,u,i={},o=n;if(null==o)return i;m.isFunction(t)?(u=m.allKeys(o),e=b(t,r)):(u=S(arguments,!1,!1,1),e=function(n,t,r){return t in r},o=Object(o));for(var a=0,c=u.length;c>a;a++){var f=u[a],l=o[f];e(l,f,o)&&(i[f]=l)}return i},m.omit=function(n,t,r){if(m.isFunction(t))t=m.negate(t);else{var e=m.map(S(arguments,!1,!1,1),String);t=function(n,t){return!m.contains(e,t)}}return m.pick(n,t,r)},m.defaults=_(m.allKeys,!0),m.create=function(n,t){var r=j(n);return t&&m.extendOwn(r,t),r},m.clone=function(n){return m.isObject(n)?m.isArray(n)?n.slice():m.extend({},n):n},m.tap=function(n,t){return t(n),n},m.isMatch=function(n,t){var r=m.keys(t),e=r.length;if(null==n)return!e;for(var u=Object(n),i=0;e>i;i++){var o=r[i];if(t[o]!==u[o]||!(o in u))return!1}return!0};var N=function(n,t,r,e){if(n===t)return 0!==n||1/n===1/t;if(null==n||null==t)return n===t;n instanceof m&&(n=n._wrapped),t instanceof m&&(t=t._wrapped);var u=s.call(n);if(u!==s.call(t))return!1;switch(u){case"[object RegExp]":case"[object String]":return""+n==""+t;case"[object Number]":return+n!==+n?+t!==+t:0===+n?1/+n===1/t:+n===+t;case"[object Date]":case"[object Boolean]":return+n===+t}var i="[object Array]"===u;if(!i){if("object"!=typeof n||"object"!=typeof t)return!1;var o=n.constructor,a=t.constructor;if(o!==a&&!(m.isFunction(o)&&o instanceof o&&m.isFunction(a)&&a instanceof a)&&"constructor"in n&&"constructor"in t)return!1}r=r||[],e=e||[];for(var c=r.length;c--;)if(r[c]===n)return e[c]===t;if(r.push(n),e.push(t),i){if(c=n.length,c!==t.length)return!1;for(;c--;)if(!N(n[c],t[c],r,e))return!1}else{var f,l=m.keys(n);if(c=l.length,m.keys(t).length!==c)return!1;for(;c--;)if(f=l[c],!m.has(t,f)||!N(n[f],t[f],r,e))return!1}return r.pop(),e.pop(),!0};m.isEqual=function(n,t){return N(n,t)},m.isEmpty=function(n){return null==n?!0:k(n)&&(m.isArray(n)||m.isString(n)||m.isArguments(n))?0===n.length:0===m.keys(n).length},m.isElement=function(n){return!(!n||1!==n.nodeType)},m.isArray=h||function(n){return"[object Array]"===s.call(n)},m.isObject=function(n){var t=typeof n;return"function"===t||"object"===t&&!!n},m.each(["Arguments","Function","String","Number","Date","RegExp","Error"],function(n){m["is"+n]=function(t){return s.call(t)==="[object "+n+"]"}}),m.isArguments(arguments)||(m.isArguments=function(n){return m.has(n,"callee")}),"function"!=typeof/./&&"object"!=typeof Int8Array&&(m.isFunction=function(n){return"function"==typeof n||!1}),m.isFinite=function(n){return isFinite(n)&&!isNaN(parseFloat(n))},m.isNaN=function(n){return m.isNumber(n)&&n!==+n},m.isBoolean=function(n){return n===!0||n===!1||"[object Boolean]"===s.call(n)},m.isNull=function(n){return null===n},m.isUndefined=function(n){return n===void 0},m.has=function(n,t){return null!=n&&p.call(n,t)},m.noConflict=function(){return u._=i,this},m.identity=function(n){return n},m.constant=function(n){return function(){return n}},m.noop=function(){},m.property=w,m.propertyOf=function(n){return null==n?function(){}:function(t){return n[t]}},m.matcher=m.matches=function(n){return n=m.extendOwn({},n),function(t){return m.isMatch(t,n)}},m.times=function(n,t,r){var e=Array(Math.max(0,n));t=b(t,r,1);for(var u=0;n>u;u++)e[u]=t(u);return e},m.random=function(n,t){return null==t&&(t=n,n=0),n+Math.floor(Math.random()*(t-n+1))},m.now=Date.now||function(){return(new Date).getTime()};var B={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"},T=m.invert(B),R=function(n){var t=function(t){return n[t]},r="(?:"+m.keys(n).join("|")+")",e=RegExp(r),u=RegExp(r,"g");return function(n){return n=null==n?"":""+n,e.test(n)?n.replace(u,t):n}};m.escape=R(B),m.unescape=R(T),m.result=function(n,t,r){var e=null==n?void 0:n[t];return e===void 0&&(e=r),m.isFunction(e)?e.call(n):e};var q=0;m.uniqueId=function(n){var t=++q+"";return n?n+t:t},m.templateSettings={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g,escape:/<%-([\s\S]+?)%>/g};var K=/(.)^/,z={"'":"'","\\":"\\","\r":"r","\n":"n","\u2028":"u2028","\u2029":"u2029"},D=/\\|'|\r|\n|\u2028|\u2029/g,L=function(n){return"\\"+z[n]};m.template=function(n,t,r){!t&&r&&(t=r),t=m.defaults({},t,m.templateSettings);var e=RegExp([(t.escape||K).source,(t.interpolate||K).source,(t.evaluate||K).source].join("|")+"|$","g"),u=0,i="__p+='";n.replace(e,function(t,r,e,o,a){return i+=n.slice(u,a).replace(D,L),u=a+t.length,r?i+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'":e?i+="'+\n((__t=("+e+"))==null?'':__t)+\n'":o&&(i+="';\n"+o+"\n__p+='"),t}),i+="';\n",t.variable||(i="with(obj||{}){\n"+i+"}\n"),i="var __t,__p='',__j=Array.prototype.join,"+"print=function(){__p+=__j.call(arguments,'');};\n"+i+"return __p;\n";try{var o=new Function(t.variable||"obj","_",i)}catch(a){throw a.source=i,a}var c=function(n){return o.call(this,n,m)},f=t.variable||"obj";return c.source="function("+f+"){\n"+i+"}",c},m.chain=function(n){var t=m(n);return t._chain=!0,t};var P=function(n,t){return n._chain?m(t).chain():t};m.mixin=function(n){m.each(m.functions(n),function(t){var r=m[t]=n[t];m.prototype[t]=function(){var n=[this._wrapped];return f.apply(n,arguments),P(this,r.apply(m,n))}})},m.mixin(m),m.each(["pop","push","reverse","shift","sort","splice","unshift"],function(n){var t=o[n];m.prototype[n]=function(){var r=this._wrapped;return t.apply(r,arguments),"shift"!==n&&"splice"!==n||0!==r.length||delete r[0],P(this,r)}}),m.each(["concat","join","slice"],function(n){var t=o[n];m.prototype[n]=function(){return P(this,t.apply(this._wrapped,arguments))}}),m.prototype.value=function(){return this._wrapped},m.prototype.valueOf=m.prototype.toJSON=m.prototype.value,m.prototype.toString=function(){return""+this._wrapped},"function"==typeof define&&define.amd&&define("underscore",[],function(){return m})}).call(this);/* ===================================================
+ * jqueryimgOriginalSizes.js v1.0.0
+ * ===================================================
+ * (c) 2015 Nicolas Guillaume, Nice, France - Rocco Aliberti, Salerno, Italy
+ * CenterImages plugin may be freely distributed under the terms of the GNU GPL v2.0 or later license.
+ *
+ * Heavily based on http://www.jacklmoore.com/notes/naturalwidth-and-naturalheight-in-ie/
+ *
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Retrieves the original imgs width and height, cross-browser
+ *
+ * Example usage
+ * var imgHeight = $('img#my-img').originalHeight(),
+ *     imgWidth  = $('img#my-img').originalWidth()
+ *
+ * =================================================== */
+;(function ( $, window, document, undefined ) {
+
+  var pluginPrefix = 'original',
+      _props       = ['Width', 'Height'];
+
+  _props.map( function(_prop) {
+    var _lprop = _prop.toLowerCase();
+    $.fn[ pluginPrefix + _prop ] = ('natural' + _prop in new Image()) ?
+      function () {
+        return this[0][ 'natural' + _prop ];
+      } :
+      function () {
+        var _size = _getAttr( this, _lprop );
+
+        if ( _size )
+          return _size;
+
+        var _node = this[0],
+            _img;
+
+        if (_node.tagName.toLowerCase() === 'img') {
+          _img = new Image();
+          _img.src = _node.src;
+          _size = _img[ _lprop ];
+        }
+        return _size;
+      };
+  } );//map()
+
+  function _getAttr( _el, prop ){
+    var _img_size = $(_el).attr( prop );
+    return ( typeof _img_size === undefined ) ? false : _img_size;
+  }
+
+})( jQuery, window, document );
+
+/* ===================================================
  * jqueryaddDropCap.js v1.0.1
  * ===================================================
  * (c) 2015 Nicolas Guillaume, Nice, France
@@ -2672,10 +2797,11 @@ var TCParams = TCParams || {};
     return (_expr.split(' ')).length;
   };
 
+  //Remove all characters from string but alphanumeric and -
   //@return : string
   Plugin.prototype._removeSpecChars = function( _expr , _replaceBy ) {
     _replaceBy = _replaceBy || '';
-    return 'string' == typeof(_expr) ? _expr.replace(/[^\w]/g, _replaceBy ) : '';
+    return 'string' == typeof(_expr) ? _expr.replace(/[^\w-\?!\u00bf-\u00ff]/g, _replaceBy ) : '';
   };
 
   //@return : string or false
@@ -2696,7 +2822,8 @@ var TCParams = TCParams || {};
           }
       });
   };
-})( jQuery, window, document );;/* ===================================================
+})( jQuery, window, document );
+/* ===================================================
  * jqueryimgSmartLoad.js v1.0.0
  * ===================================================
  *
@@ -2844,7 +2971,7 @@ var TCParams = TCParams || {};
         }
     });
   };
-})( jQuery, window, document );;//Target the first letter of the first element found in the wrapper
+})( jQuery, window, document );//Target the first letter of the first element found in the wrapper
 ;(function ( $, window, document, undefined ) {
     //defaults
     var pluginName = 'extLinks',
@@ -2868,19 +2995,22 @@ var TCParams = TCParams || {};
 
 
     Plugin.prototype.init = function() {
+      var $_external_icon = this.$_el.next('.tc-external');
       //if not eligible, then remove any remaining icon element and return
       //important => the element to remove is right after the current link element ( => use of '+' CSS operator )
       if ( ! this._is_eligible() ) {
-        if ( $( 'a[href*="' + this._href +'"] + .tc-external' ).length )
-          $( 'a[href*="' + this._href +'"] + .tc-external' ).remove();
+        if ( $_external_icon.length )
+          $_external_icon.remove();
         return;
       }
 
       //add the icon link, if not already there
-      if ( this.options.addIcon && ! $( 'a[href*="' + this._href +'"] + .tc-external' ).length ) {
+      if ( this.options.addIcon && 0 === $_external_icon.length ) {
         this.$_el.after('<span class="tc-external">');
       }
-      if ( this.options.newTab )
+
+      //add the target _blank, if not already there
+      if ( this.options.newTab && '_blank' != this.$_el.attr('target') )
         this.$_el.attr('target' , '_blank');
     };
 
@@ -2914,17 +3044,22 @@ var TCParams = TCParams || {};
     * @return boolean
     */
     Plugin.prototype._is_selector_allowed = function( requested_sel_type ) {
-      var sel_type = 'ids' == requested_sel_type ? 'id' : 'class';
+      var sel_type = 'ids' == requested_sel_type ? 'id' : 'class',
+          _selsToSkip   = this.options.skipSelectors[requested_sel_type];
+
+      //check if option is well formed
+      if ( 'object' != typeof(this.options.skipSelectors) || ! this.options.skipSelectors[requested_sel_type] || ! $.isArray( this.options.skipSelectors[requested_sel_type] ) || 0 === this.options.skipSelectors[requested_sel_type].length )
+        return true;
+
+      //has a forbidden parent?
+      if ( this.$_el.parents( _selsToSkip.map( function( _sel ){ return 'id' == sel_type ? '#' + _sel : '.' + _sel; } ).join(',') ).length > 0 )
+        return false;
+
       //has requested sel ?
       if ( ! this.$_el.attr( sel_type ) )
         return true;
 
-      //check if option is well formed
-      if ( 'object' != typeof(this.options.skipSelectors) || ! this.options.skipSelectors[requested_sel_type] || ! $.isArray( this.options.skipSelectors[requested_sel_type] )  )
-        return true;
-
       var _elSels       = this.$_el.attr( sel_type ).split(' '),
-          _selsToSkip   = this.options.skipSelectors[requested_sel_type],
           _filtered     = _elSels.filter( function(classe) { return -1 != $.inArray( classe , _selsToSkip ) ;});
 
       //check if the filtered selectors array with the non authorized selectors is empty or not
@@ -2966,6 +3101,8 @@ var TCParams = TCParams || {};
       var _main_domain = (location.host).split('.').slice(-2).join('.'),
           _reg = new RegExp( _main_domain );
 
+      _href = $.trim( _href );
+
       if ( _href !== '' && _href != '#' && this._isValidURL( _href ) )
         return ! _reg.test( _href );
       return;
@@ -2991,7 +3128,8 @@ var TCParams = TCParams || {};
       });
     };
 
-})( jQuery, window, document );;/* ===================================================
+})( jQuery, window, document );
+/* ===================================================
  * jqueryCenterImages.js v1.0.0
  * ===================================================
  * (c) 2015 Nicolas Guillaume, Nice, France
@@ -3167,12 +3305,14 @@ var TCParams = TCParams || {};
     if ( $_img.is(":visible") )
       return 'x' == _dim ? $_img.outerWidth() : $_img.outerHeight();
     else {
-      if ( 'x' == _dim && $_img.attr('width') )
-        return $_img.attr('width');
-      if ( 'y' == _dim && $_img.attr('height') )
-        return $_img.attr('height');
+      if ( 'x' == _dim ){
+        var _width = $_img.originalWidth();
+        return typeof _width === undefined ? 0 : _width;
+      }if ( 'y' == _dim ){
+        var _height = $_img.originalHeight();
+        return typeof _height === undefined ? 0 : _height;
+      }
     }
-    return 0;
   };
 
 
@@ -3225,36 +3365,1098 @@ var TCParams = TCParams || {};
       });
   };
 
-})( jQuery, window, document );;/* !
- * Customizr WordPress theme Javascript code
- * Copyright (c) 2014-2015 Nicolas GUILLAUME (@nicguillaume), Press Customizr.
- * GPL2+ Licensed
-*/
-//ON DOM READY
-jQuery(function ($) {
-    var _p = TCParams;
+})( jQuery, window, document );
+// Customizr version of Galambosi's SmoothScroll
 
-    //helper to trigger a simple load
-    //=> allow centering when smart load not triggered by smartload
-    var _trigger_simple_load = function( $_imgs ) {
+// SmoothScroll for websites v1.3.8 (Balazs Galambosi)
+// Licensed under the terms of the MIT license.
+//
+// You may use it in your theme if you credit me. 
+// It is also free to use on any individual website.
+//
+// Exception:
+// The only restriction would be not to publish any  
+// extension for browsers or native application
+// without getting a written permission first.
+//
+
+(function () {
+
+// Scroll Variables (tweakable)
+var defaultOptions = {
+
+    // Scrolling Core
+    frameRate        : 150, // [Hz]
+    animationTime    : 400, // [px]
+    stepSize         : 120, // [px]
+
+    // Pulse (less tweakable)
+    // ratio of "tail" to "acceleration"
+    pulseAlgorithm   : true,
+    pulseScale       : 4,
+    pulseNormalize   : 1,
+
+    // Acceleration
+    accelerationDelta : 20,  // 20
+    accelerationMax   : 1,   // 1
+
+    // Keyboard Settings
+    keyboardSupport   : true,  // option
+    arrowScroll       : 50,     // [px]
+
+    // Other
+    touchpadSupport   : true,
+    fixedBackground   : true, 
+    excluded          : ''    
+};
+
+var options = defaultOptions;
+
+
+// Other Variables
+var isExcluded = false;
+var isFrame = false;
+var direction = { x: 0, y: 0 };
+var initDone  = false;
+var root = document.documentElement;
+var activeElement;
+var observer;
+var deltaBuffer = [];
+var isMac = /^Mac/.test(navigator.platform);
+
+var key = { left: 37, up: 38, right: 39, down: 40, spacebar: 32, 
+            pageup: 33, pagedown: 34, end: 35, home: 36 };
+
+
+/***********************************************
+ * SETTINGS
+ ***********************************************/
+
+var options = defaultOptions;
+
+
+/***********************************************
+ * INITIALIZE
+ ***********************************************/
+
+/**
+ * Tests if smooth scrolling is allowed. Shuts down everything if not.
+ */
+function initTest() {
+    if (options.keyboardSupport) {
+        addEvent('keydown', keydown);
+    }
+}
+
+/**
+ * Sets up scrolls array, determines if frames are involved.
+ */
+function init() {
+  
+    if (initDone || !document.body) return;
+
+    initDone = true;
+
+    var body = document.body;
+    var html = document.documentElement;
+    var windowHeight = window.innerHeight; 
+    var scrollHeight = body.scrollHeight;
+    
+    // check compat mode for root element
+    root = (document.compatMode.indexOf('CSS') >= 0) ? html : body;
+    activeElement = body;
+    
+    initTest();
+
+    // Checks if this script is running in a frame
+    if (top != self) {
+        isFrame = true;
+    }
+
+    /**
+     * This fixes a bug where the areas left and right to 
+     * the content does not trigger the onmousewheel event
+     * on some pages. e.g.: html, body { height: 100% }
+     */
+    else if (scrollHeight > windowHeight &&
+            (body.offsetHeight <= windowHeight || 
+             html.offsetHeight <= windowHeight)) {
+
+        var fullPageElem = document.createElement('div');
+        fullPageElem.style.cssText = 'position:absolute; z-index:-10000; ' +
+                                     'top:0; left:0; right:0; height:' + 
+                                      root.scrollHeight + 'px';
+        document.body.appendChild(fullPageElem);
+        
+        // DOM changed (throttled) to fix height
+        var pendingRefresh;
+        var refresh = function () {
+            if (pendingRefresh) return; // could also be: clearTimeout(pendingRefresh);
+            pendingRefresh = setTimeout(function () {
+                if (isExcluded) return; // could be running after cleanup
+                fullPageElem.style.height = '0';
+                fullPageElem.style.height = root.scrollHeight + 'px';
+                pendingRefresh = null;
+            }, 500); // act rarely to stay fast
+        };
+  
+        setTimeout(refresh, 10);
+
+        // TODO: attributeFilter?
+        var config = {
+            attributes: true, 
+            childList: true, 
+            characterData: false 
+            // subtree: true
+        };
+
+        observer = new MutationObserver(refresh);
+        observer.observe(body, config);
+
+        if (root.offsetHeight <= windowHeight) {
+            var clearfix = document.createElement('div');   
+            clearfix.style.clear = 'both';
+            body.appendChild(clearfix);
+        }
+    }
+
+    // disable fixed background
+    if (!options.fixedBackground && !isExcluded) {
+        body.style.backgroundAttachment = 'scroll';
+        html.style.backgroundAttachment = 'scroll';
+    }
+}
+
+/**
+ * Removes event listeners and other traces left on the page.
+ */
+function cleanup() {
+    observer && observer.disconnect();
+    removeEvent(wheelEvent, wheel);
+    removeEvent('mousedown', mousedown);
+    removeEvent('keydown', keydown);
+}
+
+
+/************************************************
+ * SCROLLING 
+ ************************************************/
+var que = [];
+var pending = false;
+var lastScroll = Date.now();
+
+/**
+ * Pushes scroll actions to the scrolling queue.
+ */
+function scrollArray(elem, left, top) {
+    
+    directionCheck(left, top);
+
+    if (options.accelerationMax != 1) {
+        var now = Date.now();
+        var elapsed = now - lastScroll;
+        if (elapsed < options.accelerationDelta) {
+            var factor = (1 + (50 / elapsed)) / 2;
+            if (factor > 1) {
+                factor = Math.min(factor, options.accelerationMax);
+                left *= factor;
+                top  *= factor;
+            }
+        }
+        lastScroll = Date.now();
+    }          
+    
+    // push a scroll command
+    que.push({
+        x: left, 
+        y: top, 
+        lastX: (left < 0) ? 0.99 : -0.99,
+        lastY: (top  < 0) ? 0.99 : -0.99, 
+        start: Date.now()
+    });
+        
+    // don't act if there's a pending queue
+    if (pending) {
+        return;
+    }  
+
+    var scrollWindow = (elem === document.body);
+    
+    var step = function (time) {
+        
+        var now = Date.now();
+        var scrollX = 0;
+        var scrollY = 0; 
+    
+        for (var i = 0; i < que.length; i++) {
+            
+            var item = que[i];
+            var elapsed  = now - item.start;
+            var finished = (elapsed >= options.animationTime);
+            
+            // scroll position: [0, 1]
+            var position = (finished) ? 1 : elapsed / options.animationTime;
+            
+            // easing [optional]
+            if (options.pulseAlgorithm) {
+                position = pulse(position);
+            }
+            
+            // only need the difference
+            var x = (item.x * position - item.lastX) >> 0;
+            var y = (item.y * position - item.lastY) >> 0;
+            
+            // add this to the total scrolling
+            scrollX += x;
+            scrollY += y;            
+            
+            // update last values
+            item.lastX += x;
+            item.lastY += y;
+        
+            // delete and step back if it's over
+            if (finished) {
+                que.splice(i, 1); i--;
+            }           
+        }
+
+        // scroll left and top
+        if (scrollWindow) {
+            window.scrollBy(scrollX, scrollY);
+        } 
+        else {
+            if (scrollX) elem.scrollLeft += scrollX;
+            if (scrollY) elem.scrollTop  += scrollY;                    
+        }
+        
+        // clean up if there's nothing left to do
+        if (!left && !top) {
+            que = [];
+        }
+        
+        if (que.length) { 
+            requestFrame(step, elem, (1000 / options.frameRate + 1)); 
+        } else { 
+            pending = false;
+        }
+    };
+    
+    // start a new queue of actions
+    requestFrame(step, elem, 0);
+    pending = true;
+}
+
+
+/***********************************************
+ * EVENTS
+ ***********************************************/
+
+/**
+ * Mouse wheel handler.
+ * @param {Object} event
+ */
+function wheel(event) {
+
+    if (!initDone) {
+        init();
+    }
+    
+    var target = event.target;
+    var overflowing = overflowingAncestor(target);
+
+    // use default if there's no overflowing
+    // element or default action is prevented   
+    // or it's a zooming event with CTRL 
+    if (!overflowing || event.defaultPrevented || event.ctrlKey) {
+        return true;
+    }
+    
+    // leave embedded content alone (flash & pdf)
+    if (isNodeName(activeElement, 'embed') || 
+       (isNodeName(target, 'embed') && /\.pdf/i.test(target.src)) ||
+       isNodeName(activeElement, 'object')) {
+        return true;
+    }
+
+    var deltaX = -event.wheelDeltaX || event.deltaX || 0;
+    var deltaY = -event.wheelDeltaY || event.deltaY || 0;
+    
+    if (isMac) {
+        if (event.wheelDeltaX && isDivisible(event.wheelDeltaX, 120)) {
+            deltaX = -120 * (event.wheelDeltaX / Math.abs(event.wheelDeltaX));
+        }
+        if (event.wheelDeltaY && isDivisible(event.wheelDeltaY, 120)) {
+            deltaY = -120 * (event.wheelDeltaY / Math.abs(event.wheelDeltaY));
+        }
+    }
+    
+    // use wheelDelta if deltaX/Y is not available
+    if (!deltaX && !deltaY) {
+        deltaY = -event.wheelDelta || 0;
+    }
+
+    // line based scrolling (Firefox mostly)
+    if (event.deltaMode === 1) {
+        deltaX *= 40;
+        deltaY *= 40;
+    }
+    
+    // check if it's a touchpad scroll that should be ignored
+    if (!options.touchpadSupport && isTouchpad(deltaY)) {
+        return true;
+    }
+
+    // scale by step size
+    // delta is 120 most of the time
+    // synaptics seems to send 1 sometimes
+    if (Math.abs(deltaX) > 1.2) {
+        deltaX *= options.stepSize / 120;
+    }
+    if (Math.abs(deltaY) > 1.2) {
+        deltaY *= options.stepSize / 120;
+    }
+    
+    scrollArray(overflowing, deltaX, deltaY);
+    event.preventDefault();
+    scheduleClearCache();
+}
+
+/**
+ * Keydown event handler.
+ * @param {Object} event
+ */
+function keydown(event) {
+
+    var target   = event.target;
+    var modifier = event.ctrlKey || event.altKey || event.metaKey || 
+                  (event.shiftKey && event.keyCode !== key.spacebar);
+    
+    // our own tracked active element could've been removed from the DOM
+    if (!document.contains(activeElement)) {
+        activeElement = document.activeElement;
+    }
+
+    // do nothing if user is editing text
+    // or using a modifier key (except shift)
+    // or in a dropdown
+    // or inside interactive elements
+    var inputNodeNames = /^(textarea|select|embed|object)$/i;
+    var buttonTypes = /^(button|submit|radio|checkbox|file|color|image)$/i;
+    if ( inputNodeNames.test(target.nodeName) ||
+         isNodeName(target, 'input') && !buttonTypes.test(target.type) ||
+         isNodeName(activeElement, 'video') ||
+         isInsideYoutubeVideo(event) ||
+         target.isContentEditable || 
+         event.defaultPrevented   ||
+         modifier ) {
+      return true;
+    }
+    
+    // spacebar should trigger button press
+    if ((isNodeName(target, 'button') ||
+         isNodeName(target, 'input') && buttonTypes.test(target.type)) &&
+        event.keyCode === key.spacebar) {
+      return true;
+    }
+    
+    var shift, x = 0, y = 0;
+    var elem = overflowingAncestor(activeElement);
+    var clientHeight = elem.clientHeight;
+
+    if (elem == document.body) {
+        clientHeight = window.innerHeight;
+    }
+
+    switch (event.keyCode) {
+        case key.up:
+            y = -options.arrowScroll;
+            break;
+        case key.down:
+            y = options.arrowScroll;
+            break;         
+        case key.spacebar: // (+ shift)
+            shift = event.shiftKey ? 1 : -1;
+            y = -shift * clientHeight * 0.9;
+            break;
+        case key.pageup:
+            y = -clientHeight * 0.9;
+            break;
+        case key.pagedown:
+            y = clientHeight * 0.9;
+            break;
+        case key.home:
+            y = -elem.scrollTop;
+            break;
+        case key.end:
+            var damt = elem.scrollHeight - elem.scrollTop - clientHeight;
+            y = (damt > 0) ? damt+10 : 0;
+            break;
+        case key.left:
+            x = -options.arrowScroll;
+            break;
+        case key.right:
+            x = options.arrowScroll;
+            break;            
+        default:
+            return true; // a key we don't care about
+    }
+
+    scrollArray(elem, x, y);
+    event.preventDefault();
+    scheduleClearCache();
+}
+
+/**
+ * Mousedown event only for updating activeElement
+ */
+function mousedown(event) {
+    activeElement = event.target;
+}
+
+
+/***********************************************
+ * OVERFLOW
+ ***********************************************/
+
+var uniqueID = (function () {
+    var i = 0;
+    return function (el) {
+        return el.uniqueID || (el.uniqueID = i++);
+    };
+})();
+
+var cache = {}; // cleared out after a scrolling session
+var clearCacheTimer;
+
+//setInterval(function () { cache = {}; }, 10 * 1000);
+
+function scheduleClearCache() {
+    clearTimeout(clearCacheTimer);
+    clearCacheTimer = setInterval(function () { cache = {}; }, 1*1000);
+}
+
+function setCache(elems, overflowing) {
+    for (var i = elems.length; i--;)
+        cache[uniqueID(elems[i])] = overflowing;
+    return overflowing;
+}
+
+//  (body)                (root)
+//         | hidden | visible | scroll |  auto  |
+// hidden  |   no   |    no   |   YES  |   YES  |
+// visible |   no   |   YES   |   YES  |   YES  |
+// scroll  |   no   |   YES   |   YES  |   YES  |
+// auto    |   no   |   YES   |   YES  |   YES  |
+
+function overflowingAncestor(el) {
+    var elems = [];
+    var body = document.body;
+    var rootScrollHeight = root.scrollHeight;
+    do {
+        var cached = cache[uniqueID(el)];
+        if (cached) {
+            return setCache(elems, cached);
+        }
+        elems.push(el);
+        if (rootScrollHeight === el.scrollHeight) {
+            var topOverflowsNotHidden = overflowNotHidden(root) && overflowNotHidden(body);
+            var isOverflowCSS = topOverflowsNotHidden || overflowAutoOrScroll(root);
+            if (isFrame && isContentOverflowing(root) || 
+               !isFrame && isOverflowCSS) {
+                return setCache(elems, getScrollRoot()); 
+            }
+        } else if (isContentOverflowing(el) && overflowAutoOrScroll(el)) {
+            return setCache(elems, el);
+        }
+    } while (el = el.parentElement);
+}
+
+function isContentOverflowing(el) {
+    return (el.clientHeight + 10 < el.scrollHeight);
+}
+
+// typically for <body> and <html>
+function overflowNotHidden(el) {
+    var overflow = getComputedStyle(el, '').getPropertyValue('overflow-y');
+    return (overflow !== 'hidden');
+}
+
+// for all other elements
+function overflowAutoOrScroll(el) {
+    var overflow = getComputedStyle(el, '').getPropertyValue('overflow-y');
+    return (overflow === 'scroll' || overflow === 'auto');
+}
+
+
+/***********************************************
+ * HELPERS
+ ***********************************************/
+
+function addEvent(type, fn) {
+    window.addEventListener(type, fn, false);
+}
+
+function removeEvent(type, fn) {
+    window.removeEventListener(type, fn, false);  
+}
+
+function isNodeName(el, tag) {
+    return (el.nodeName||'').toLowerCase() === tag.toLowerCase();
+}
+
+function directionCheck(x, y) {
+    x = (x > 0) ? 1 : -1;
+    y = (y > 0) ? 1 : -1;
+    if (direction.x !== x || direction.y !== y) {
+        direction.x = x;
+        direction.y = y;
+        que = [];
+        lastScroll = 0;
+    }
+}
+
+var deltaBufferTimer;
+
+if (window.localStorage && localStorage.SS_deltaBuffer) {
+    deltaBuffer = localStorage.SS_deltaBuffer.split(',');
+}
+
+function isTouchpad(deltaY) {
+    if (!deltaY) return;
+    if (!deltaBuffer.length) {
+        deltaBuffer = [deltaY, deltaY, deltaY];
+    }
+    deltaY = Math.abs(deltaY)
+    deltaBuffer.push(deltaY);
+    deltaBuffer.shift();
+    clearTimeout(deltaBufferTimer);
+    deltaBufferTimer = setTimeout(function () {
+        if (window.localStorage) {
+            localStorage.SS_deltaBuffer = deltaBuffer.join(',');
+        }
+    }, 1000);
+    return !allDeltasDivisableBy(120) && !allDeltasDivisableBy(100);
+} 
+
+function isDivisible(n, divisor) {
+    return (Math.floor(n / divisor) == n / divisor);
+}
+
+function allDeltasDivisableBy(divisor) {
+    return (isDivisible(deltaBuffer[0], divisor) &&
+            isDivisible(deltaBuffer[1], divisor) &&
+            isDivisible(deltaBuffer[2], divisor));
+}
+
+function isInsideYoutubeVideo(event) {
+    var elem = event.target;
+    var isControl = false;
+    if (document.URL.indexOf ('www.youtube.com/watch') != -1) {
+        do {
+            isControl = (elem.classList && 
+                         elem.classList.contains('html5-video-controls'));
+            if (isControl) break;
+        } while (elem = elem.parentNode);
+    }
+    return isControl;
+}
+
+var requestFrame = (function () {
+      return (window.requestAnimationFrame       || 
+              window.webkitRequestAnimationFrame || 
+              window.mozRequestAnimationFrame    ||
+              function (callback, element, delay) {
+                 window.setTimeout(callback, delay || (1000/60));
+             });
+})();
+
+var MutationObserver = (window.MutationObserver || 
+                        window.WebKitMutationObserver ||
+                        window.MozMutationObserver);  
+
+var getScrollRoot = (function() {
+  var SCROLL_ROOT;
+  return function() {
+    if (!SCROLL_ROOT) {
+      var dummy = document.createElement('div');
+      dummy.style.cssText = 'height:10000px;width:1px;';
+      document.body.appendChild(dummy);
+      var bodyScrollTop  = document.body.scrollTop;
+      var docElScrollTop = document.documentElement.scrollTop;
+      window.scrollBy(0, 1);
+      if (document.body.scrollTop != bodyScrollTop)
+        (SCROLL_ROOT = document.body);
+      else 
+        (SCROLL_ROOT = document.documentElement);
+      window.scrollBy(0, -1);
+      document.body.removeChild(dummy);
+    }
+    return SCROLL_ROOT;
+  };
+})();
+
+
+/***********************************************
+ * PULSE (by Michael Herf)
+ ***********************************************/
+ 
+/**
+ * Viscous fluid with a pulse for part and decay for the rest.
+ * - Applies a fixed force over an interval (a damped acceleration), and
+ * - Lets the exponential bleed away the velocity over a longer interval
+ * - Michael Herf, http://stereopsis.com/stopping/
+ */
+function pulse_(x) {
+    var val, start, expx;
+    // test
+    x = x * options.pulseScale;
+    if (x < 1) { // acceleartion
+        val = x - (1 - Math.exp(-x));
+    } else {     // tail
+        // the previous animation ended here:
+        start = Math.exp(-1);
+        // simple viscous drag
+        x -= 1;
+        expx = 1 - Math.exp(-x);
+        val = start + (expx * (1 - start));
+    }
+    return val * options.pulseNormalize;
+}
+
+function pulse(x) {
+    if (x >= 1) return 1;
+    if (x <= 0) return 0;
+
+    if (options.pulseNormalize == 1) {
+        options.pulseNormalize /= pulse_(1);
+    }
+    return pulse_(x);
+}
+
+var wheelEvent;
+if ('onwheel' in document.createElement('div'))
+    wheelEvent = 'wheel';
+else if ('onmousewheel' in document.createElement('div'))
+    wheelEvent = 'mousewheel';
+
+
+// Customizr mod
+//Customizr mod wrap following: instructions in a function statement
+//returns whether or not the smootScroll has been initialized
+function _maybeInit( fire ){
+  if (wheelEvent) {
+    addEvent(wheelEvent, wheel);
+    addEvent('mousedown', mousedown);
+    if ( ! fire ) addEvent('load', init);
+    else init();
+  }
+  return wheelEvent ? true : false;
+}
+// smoothScroll "constructor"
+smoothScroll = function ( _options ) {
+  smoothScroll._setCustomOptions( _options );
+  _maybeInit() && czrapp.$_body.addClass('tc-smoothscroll');
+}
+// expose useful methods ( for the preview )
+smoothScroll._cleanUp = function(){
+  cleanup();    
+  czrapp.$_body.removeClass('tc-smoothscroll');
+}
+smoothScroll._maybeFire = function(){
+  //will be called from the preview so when document already loaded
+  // pass to the function _fire = true, fire it immediately
+  _maybeInit(true) && czrapp.$_body.addClass('tc-smoothscroll');
+}
+smoothScroll._setCustomOptions = function( _options ){
+  options  =  _options ? _.extend( options, _options) : options;
+}
+// end Customizr mod
+})();
+
+var smoothScroll;
+//@global TCParams
+var czrapp = czrapp || {};
+
+(function($, czrapp) {
+  //short name for the slice method from the built-in Array js prototype
+  //used to handle the event methods
+  var slice = Array.prototype.slice;
+
+  $.extend( czrapp, {
+    instances        : {},//will store all subclasses instances
+    methods          : {},//will store all subclasses methods
+
+    //parent class constructor
+    Base : function() {},
+
+    _inherits : function( classname ) {
+      //add the class to the czrapp and sets the parent this to it
+      czrapp[classname] = function() {
+        czrapp.Base.call(this);
+      };
+
+      //set the classical prototype chaining with inheritance
+      czrapp[classname].prototype = Object.create( czrapp.Base.prototype );
+      czrapp[classname].prototype.constructor = czrapp[classname];
+      return czrapp;
+    },
+
+
+    _instanciates : function( classname) {
+      czrapp.instances[classname] = czrapp.instances[classname] || new czrapp[classname]();
+      return czrapp;
+    },
+
+
+    /**
+     * [_init description]
+     * @param  {[type]} classname string
+     * @param  {[type]} methods   array of methods
+     * @return {[type]} czrapp object
+     */
+    _init : function(classname, methods) {
+      var _instance = czrapp.instances[classname] || false;
+      if ( ! _instance )
+        return;
+
+      //always fire the init method if exists
+      if ( _instance.init )
+        _instance.init();
+
+      //fire the array of methods on load
+      _instance.emit(methods);
+
+      //return czrapp for chaining
+      return czrapp;
+    },
+
+    //extend a classname prototype with a set of methods
+    _addMethods : function(classname) {
+      $.extend( czrapp[classname].prototype , czrapp._getMethods(classname) );
+      return czrapp;
+    },
+
+    _getMethods : function(classname) {
+      return czrapp.methods[classname] || {};
+    },
+
+
+    /**
+    * Cache properties on Dom Ready
+    * @return {[type]} [description]
+    */
+    cacheProp : function() {
+      $.extend( czrapp, {
+        //cache various jQuery el in czrapp obj
+        $_window         : $(window),
+        $_html           : $('html'),
+        $_body           : $('body'),
+        $_tcHeader       : $('.tc-header'),
+        $_wpadminbar     : $('#wpadminbar'),
+
+        //various properties definition
+        localized        : TCParams || {},
+        is_responsive    : this.isResponsive(),//store the initial responsive state of the window
+        current_device   : this.getDevice()//store the initial device
+      });
+      return czrapp;
+    },
+
+
+    /***************************************************************************
+    * CUSTOM EVENTS
+    * tc-resize
+    ****************************************************************************/
+    emitCustomEvents : function() {
+      var that = this;
+      /*-----------------------------------------------------
+      -> CUSTOM RESIZE EVENT
+      ------------------------------------------------------*/
+      czrapp.$_window.resize( function(e) {
+        var $_windowWidth     = czrapp.$_window.width(),
+            _current          = czrapp.current_device,//<= stored on last resize event or on load
+            //15 pixels adjustement to avoid replacement before real responsive width
+            _to               = that.getDevice();
+
+        //updates width dependant properties
+        czrapp.is_responsive  = that.isResponsive();
+        czrapp.current_device = _to;
+        czrapp.$_body.trigger( 'tc-resize', { current : _current, to : _to} );
+      } );//resize();
+
+      return czrapp;
+    },
+
+
+    //bool
+    isResponsive : function() {
+      return $(window).width() <= 979 - 15;
+    },
+
+    //@return string of current device
+    getDevice : function() {
+      var _devices = {
+            desktop : 979 - 15,
+            tablet : 767 - 15,
+            smartphone : 480 - 15
+          },
+          _current_device = 'desktop',
+          $_window = czrapp.$_window || $(window);
+
+      _.map( _devices, function( max_width, _dev ){
+        if ( $_window.width() <= max_width )
+          _current_device = _dev;
+      } );
+      return _current_device;
+    },
+
+
+
+    /***************************************************************************
+    * Event methods, offering the ability to bind to and trigger events.
+    * Inspired from the customize-base.js event manager object
+    * @uses slice method, alias of Array.prototype.slice
+    ****************************************************************************/
+    trigger: function( id ) {
+      if ( this.topics && this.topics[ id ] )
+        this.topics[ id ].fireWith( this, slice.call( arguments, 1 ) );
+      return this;
+    },
+
+    bind: function( id ) {
+      this.topics = this.topics || {};
+      this.topics[ id ] = this.topics[ id ] || $.Callbacks();
+      this.topics[ id ].add.apply( this.topics[ id ], slice.call( arguments, 1 ) );
+      return this;
+    },
+
+    unbind: function( id ) {
+      if ( this.topics && this.topics[ id ] )
+        this.topics[ id ].remove.apply( this.topics[ id ], slice.call( arguments, 1 ) );
+      return this;
+    },
+
+
+    /**
+     * Load the various { constructor [methods] }
+     *
+     * Constructors and methods can be disabled by passing a localized var TCParams._disabled (with the hook 'tc_disabled_front_js_parts' )
+     * Ex : add_filter('tc_disabled_front_js_parts', function() {
+     *   return array('Czr_Plugins' => array() , 'Czr_Slider' => array('addSwipeSupport') );
+     * });
+     * => will disabled all Czr_Plugin class (with all its methods) + will disabled the addSwipeSupport method from the Czr_Slider class
+     * @todo : check the classes dependencies and may be add a check if ( ! method_exits() )
+     *
+     * @param  {[type]} args [description]
+     * @return {[type]}      [description]
+     */
+    loadCzr : function( args ) {
+      var that = this,
+          _disabled = that.localized._disabled || {};
+
+      _.each( args, function( methods, key ) {
+        //normalize methods into an array if string
+        methods = 'string' == typeof(methods) ? [methods] : methods;
+
+        //key is the constructor
+        //check if the constructor has been disabled => empty array of methods
+        if ( that.localized._disabled[key] && _.isEmpty(that.localized._disabled[key]) )
+          return;
+
+        if ( that.localized._disabled[key] && ! _.isEmpty(that.localized._disabled[key]) ) {
+          var _to_remove = that.localized._disabled[key];
+          _to_remove = 'string' == typeof(_to_remove) ? [_to_remove] : _to_remove;
+          methods = _.difference( methods, _to_remove );
+        }
+        //chain various treatments
+        czrapp._inherits(key)._instanciates(key)._addMethods(key)._init(key, methods);
+      });//_.each()
+
+      czrapp.trigger('czrapp-ready', this);
+    }//loadCzr
+
+  });//extend
+})(jQuery, czrapp);
+
+
+
+/*************************
+* ADD BASE CLASS METHODS
+*************************/
+(function($, czrapp) {
+  var _methods = {
+    emit : function( cbs, args ) {
+      cbs = _.isArray(cbs) ? cbs : [cbs];
+      var self = this;
+      _.map( cbs, function(cb) {
+        if ( 'function' == typeof(self[cb]) ) {
+          self[cb].apply(self, 'undefined' == typeof( args ) ? Array() : args );
+          czrapp.trigger( cb, _.object( _.keys(args), args ) );
+        }
+      });//_.map
+    },
+
+    triggerSimpleLoad : function( $_imgs ) {
       if ( 0 === $_imgs.length )
         return;
 
       $_imgs.map( function( _ind, _img ) {
         $(_img).load( function () {
-            $(_img).trigger('simple_load');
+          $(_img).trigger('simple_load');
         });//end load
         if ( $(_img)[0] && $(_img)[0].complete )
           $(_img).load();
       } );//end map
-    };//end of fn
+    },//end of fn
+
+    isUserLogged     : function() {
+      return czrapp.$_body.hasClass('logged-in') || 0 !== czrapp.$_wpadminbar.length;
+    },
+
+    isCustomizing    : function() {
+      return czrapp.$_body.hasClass('is-customizing');
+    },
+    getDevice : function() {
+      return czrapp.getDevice();
+    },
+    isReponsive : function() {
+      return czrapp.isReponsive();
+    }
+
+  };//_methods{}
+
+  $.extend( czrapp.Base.prototype, _methods );//$.extend
+
+})(jQuery, czrapp);
+/***************************
+* ADD BROWSER DETECT METHODS
+****************************/
+(function($, czrapp) {
+  var _methods =  {
+    init : function() {
+      // Chrome is Webkit, but Webkit is also Safari. If browser = ie + strips out the .0 suffix
+      if ( $.browser.chrome )
+          czrapp.$_body.addClass("chrome");
+      else if ( $.browser.webkit )
+          czrapp.$_body.addClass("safari");
+      else if ( $.browser.msie || '8.0' === $.browser.version || '9.0' === $.browser.version || '10.0' === $.browser.version || '11.0' === $.browser.version )
+          czrapp.$_body.addClass("ie").addClass("ie" + $.browser.version.replace(/[.0]/g, ''));
+
+      //Adds version if browser = ie
+      if ( czrapp.$_body.hasClass("ie") )
+          czrapp.$_body.addClass($.browser.version);
+    }
+  };//_methods{}
+
+  $.extend( czrapp.methods.BrowserDetect = {} , _methods );
+
+})(jQuery, czrapp);var czrapp = czrapp || {};
+/***************************
+* ADD JQUERY PLUGINS METHODS
+****************************/
+(function($, czrapp) {
+  var _methods = {
+    centerImagesWithDelay : function( delay ) {
+      var self = this;
+      //fire the center images plugin
+      setTimeout( function(){ self.emit('centerImages'); }, delay || 300 );
+    },
 
 
-    //CENTER VARIOUS IMAGES
-    setTimeout( function() {
+    //IMG SMART LOAD
+    //.article-container covers all post / page content : single and list
+    //__before_main_wrapper covers the single post thumbnail case
+    //.widget-front handles the featured pages
+    imgSmartLoad : function() {
+      if ( 1 == TCParams.imgSmartLoadEnabled )
+        $( '.article-container, .__before_main_wrapper, .widget-front' ).imgSmartLoad( _.size( TCParams.imgSmartLoadOpts ) > 0 ? TCParams.imgSmartLoadOpts : {} );
+      else {
+        //if smart load not enabled => trigger the load event on img load
+        var $_to_center = $( '.article-container, .__before_main_wrapper, .widget-front' ).find('img');
+        this.triggerSimpleLoad($_to_center);
+      }//end else
+    },
+
+
+    //FIRE DROP CAP PLUGIN
+    dropCaps : function() {
+      if ( ! TCParams.dropcapEnabled || ! _.isObject( TCParams.dropcapWhere ) )
+        return;
+
+      $.each( TCParams.dropcapWhere , function( ind, val ) {
+        if ( 1 == val ) {
+          $( '.entry-content' , 'body.' + ( 'page' == ind ? 'page' : 'single-post' ) ).children().first().addDropCap( {
+            minwords : TCParams.dropcapMinWords,//@todo check if number
+            skipSelectors : _.isObject(TCParams.dropcapSkipSelectors) ? TCParams.dropcapSkipSelectors : {}
+          });
+        }
+      });//each
+    },
+
+
+    //FIRE EXT LINKS PLUGIN
+    //May be add (check if activated by user) external class + target="_blank" to relevant links
+    //images are excluded by default
+    //links inside post/page content
+    extLinks : function() {
+      if ( ! TCParams.extLinksStyle && ! TCParams.extLinksTargetExt )
+        return;
+      $('a' , '.entry-content').extLinks({
+        addIcon : TCParams.extLinksStyle,
+        newTab : TCParams.extLinksTargetExt,
+        skipSelectors : _.isObject(TCParams.extLinksSkipSelectors) ? TCParams.extLinksSkipSelectors : {}
+      });
+    },
+
+    //FIRE FANCYBOX PLUGIN
+    //Fancybox with localized script variables
+    fancyBox : function() {
+      if ( 1 != TCParams.FancyBoxState || 'function' != typeof($.fn.fancybox) )
+        return;
+
+      $("a.grouped_elements").fancybox({
+        transitionOut: "elastic",
+        transitionIn: "elastic",
+        speedIn: 200,
+        speedOut: 200,
+        overlayShow: !1,
+        autoScale: 1 == TCParams.FancyBoxAutoscale ? "true" : "false",
+        changeFade: "fast",
+        enableEscapeButton: !0
+      });
+
+      //replace title by img alt field
+      $('a[rel*=tc-fancybox-group]').each( function() {
+        var title = $(this).find('img').prop('title');
+        var alt = $(this).find('img').prop('alt');
+        if (typeof title !== 'undefined' && 0 !== title.length)
+          $(this).attr('title',title);
+        else if (typeof alt !== 'undefined' &&  0 !== alt.length)
+          $(this).attr('title',alt);
+      });
+    },
+
+
+    /**
+    * CENTER VARIOUS IMAGES
+    * @return {void}
+    */
+    centerImages : function() {
+      //SLIDER IMG + VARIOUS
+      setTimeout( function() {
+        $( '.carousel .carousel-inner').centerImages( {
+          enableCentering : 1 == TCParams.centerSliderImg,
+          imgSel : '.item .carousel-image img',
+          oncustom : ['slid', 'simple_load'],
+          defaultCSSVal : { width : '100%' , height : 'auto' },
+          useImgAttr : true
+        });
+        $('.tc-slider-loader-wrapper').hide();
+      } , 50);
+
       //Featured Pages
       $('.widget-front .thumb-wrapper').centerImages( {
-        enableCentering : 1 == _p.centerAllImg,
+        enableCentering : 1 == TCParams.centerAllImg,
         enableGoldenRatio : false,
         disableGRUnder : 0,//<= don't disable golden ratio when responsive
         zeroTopAdjust : 1,
@@ -3264,7 +4466,7 @@ jQuery(function ($) {
       //POST LIST THUMBNAILS + FEATURED PAGES
       //Squared, rounded
       $('.thumb-wrapper', '.hentry' ).centerImages( {
-        enableCentering : 1 == _p.centerAllImg,
+        enableCentering : 1 == TCParams.centerAllImg,
         enableGoldenRatio : false,
         disableGRUnder : 0,//<= don't disable golden ratio when responsive
         oncustom : ['smartload', 'simple_load']
@@ -3272,16 +4474,16 @@ jQuery(function ($) {
 
       //rectangulars
       $('.tc-rectangular-thumb').centerImages( {
-        enableCentering : 1 == _p.centerAllImg,
+        enableCentering : 1 == TCParams.centerAllImg,
         enableGoldenRatio : true,
-        goldenRatioVal : _p.goldenRatio || 1.618,
+        goldenRatioVal : TCParams.goldenRatio || 1.618,
         disableGRUnder : 0,//<= don't disable golden ratio when responsive
         oncustom : ['smartload', 'refresh-height', 'simple_load'] //bind 'refresh-height' event (triggered to the the customizer preview frame)
       });
 
       //SINGLE POST THUMBNAILS
       $('.tc-rectangular-thumb' , '.single').centerImages( {
-        enableCentering : 1 == _p.centerAllImg,
+        enableCentering : 1 == TCParams.centerAllImg,
         enableGoldenRatio : false,
         disableGRUnder : 0,//<= don't disable golden ratio when responsive
         oncustom : ['smartload', 'refresh-height', 'simple_load'] //bind 'refresh-height' event (triggered to the the customizer preview frame)
@@ -3289,371 +4491,351 @@ jQuery(function ($) {
 
       //POST GRID IMAGES
       $('.tc-grid-figure').centerImages( {
-        enableCentering : 1 == _p.centerAllImg,
+        enableCentering : 1 == TCParams.centerAllImg,
         oncustom : ['smartload', 'simple_load'],
         enableGoldenRatio : true,
-        goldenRatioVal : _p.goldenRatio || 1.618,
-        goldenRatioLimitHeightTo : _p.gridGoldenRatioLimit || 350
+        goldenRatioVal : TCParams.goldenRatio || 1.618,
+        goldenRatioLimitHeightTo : TCParams.gridGoldenRatioLimit || 350
       } );
-    }, 300 );
+    },//center_images
+
+  };//_methods{}
+
+  $.extend( czrapp.methods.Czr_Plugins = {} , _methods );
+
+})(jQuery, czrapp);
+var czrapp = czrapp || {};
+
+/************************************************
+* ADD SLIDER METHODS
+*************************************************/
+(function($, czrapp) {
+  var _methods = {
+
+    //INIT
+    init : function() {
+      var self = this;
+
+      // cache jQuery el
+      this.$_sliders = $( 'div[id*="customizr-slider"]' );
+
+      //@todo EVENT
+      //Recenter the slider arrows on resize
+      czrapp.$_window.resize( function(){
+        self.centerSliderArrows();
+      });
+    },
 
 
-    //SLIDER
-    //Slider with localized script variables
-    var d = _p.SliderName,
-        e = _p.SliderDelay;
-        j = _p.SliderHover;
 
-    if (0 !== d.length) {
-        if (0 !== e.length && !j) {
-            $("#customizr-slider").carousel({
-                interval: e,
-                pause: "false"
-            });
-        } else if (0 !== e.length) {
-            $("#customizr-slider").carousel({
-                interval: e
-            });
-        } else {
-            $("#customizr-slider").carousel();
-        }
-    }
+    fireSliders : function(name, delay, hover) {
+      //Slider with localized script variables
+      var _name   = name || TCParams.SliderName,
+          _delay  = delay || TCParams.SliderDelay;
+          _hover  = hover || TCParams.SliderHover;
 
-    //add a class to the slider on hover => used to display the navigation arrow
-    $(".carousel").hover( function() {
-            $(this).addClass('tc-slid-hover');
+      if ( 0 === _name.length )
+        return;
+
+      if ( 0 !== _delay.length && ! _hover ) {
+        this.$_sliders.carousel({
+            interval: _delay,
+            pause: "false"
+        });
+      } else if ( 0 !== _delay.length ) {
+        this.$_sliders.carousel({
+            interval: _delay
+        });
+      } else {
+        this.$_sliders.carousel();
+      }
+    },
+
+    manageHoverClass : function() {
+      //add a class to the slider on hover => used to display the navigation arrow
+      this.$_sliders.hover( function() {
+          $(this).addClass('tc-slid-hover');
         },
         function() {
-            $(this).removeClass('tc-slid-hover');
+          $(this).removeClass('tc-slid-hover');
         }
-    );
+      );
+    },
 
     //SLIDER ARROWS
-    function _center_slider_arrows() {
-        if ( 0 === $('.carousel').length )
-            return;
-        $('.carousel').each( function() {
-            var _slider_height = $( '.carousel-inner' , $(this) ).height();
-            $('.tc-slider-controls', $(this) ).css("line-height", _slider_height +'px').css("max-height", _slider_height +'px');
-        });
-    }
-    //Recenter the slider arrows
-    $(window).resize(function(){
-        _center_slider_arrows();
-    });
-    _center_slider_arrows();
+    centerSliderArrows : function() {
+      if ( 0 === this.$_sliders.length )
+          return;
+      this.$_sliders.each( function() {
+          var _slider_height = $( '.carousel-inner' , $(this) ).height();
+          $('.tc-slider-controls', $(this) ).css("line-height", _slider_height +'px').css("max-height", _slider_height +'px');
+      });
+    },
 
 
     //Slider swipe support with hammer.js
-    if ( 'function' == typeof($.fn.hammer) ) {
-
-        //prevent propagation event from sensible children
-        $(".carousel input, .carousel button, .carousel textarea, .carousel select, .carousel a").
-            on("touchstart touchmove", function(ev) {
-                ev.stopPropagation();
-        });
-
-        $('.carousel' ).each( function() {
-            $(this).hammer().on('swipeleft tap', function() {
-                $(this).carousel('next');
-            });
-            $(this).hammer().on('swiperight', function(){
-                $(this).carousel('prev');
-            });
-        });
-    }
-
-    //SLIDER IMG + VARIOUS
-    setTimeout( function() {
-      $( '.carousel .carousel-inner').centerImages( {
-        enableCentering : 1 == _p.centerSliderImg,
-        imgSel : '.item .carousel-image img',
-        oncustom : ['slid', 'simple_load'],
-        defaultCSSVal : { width : '100%' , height : 'auto' },
-        useImgAttr : true
-      } );
-      $('.tc-slider-loader-wrapper').hide();
-    } , 50);
-
-    _trigger_simple_load( $( '.carousel .carousel-inner').find('img') );
-
-
-
-
-    //IMG SMART LOAD
-    //.article-container covers all post / page content : single and list
-    //__before_main_wrapper covers the single post thumbnail case
-    //.widget-front handles the featured pages
-    if ( 1 == _p.imgSmartLoadEnabled )
-      $( '.article-container, .__before_main_wrapper, .widget-front' ).imgSmartLoad( _.size( _p.imgSmartLoadOpts ) > 0 ? _p.imgSmartLoadOpts : {} );
-    else {
-      //if smart load not enabled => trigger the load event on img load
-      var $_to_center = $( '.article-container, .__before_main_wrapper, .widget-front' ).find('img');
-      _trigger_simple_load($_to_center);
-    }//end else
-
-
-
-
-    //DROP CAPS
-    if ( _p.dropcapEnabled && 'object' == typeof( _p.dropcapWhere ) ) {
-      $.each( _p.dropcapWhere , function( ind, val ) {
-        if ( 1 == val ) {
-          $( '.entry-content' , 'body.' + ( 'page' == ind ? 'page' : 'single-post' ) ).children().first().addDropCap( {
-            minwords : _p.dropcapMinWords,//@todo check if number
-            skipSelectors : _.isObject(_p.dropcapSkipSelectors) ? _p.dropcapSkipSelectors : {}
-          });
-        }
-      });
-    }
-
-
-
-    //EXT LINKS
-    //May be add (check if activated by user) external class + target="_blank" to relevant links
-    //images are excluded by default
-    //links inside post/page content
-    if ( _p.extLinksStyle || _p.extLinksTargetExt ) {
-      $('a' , '.entry-content').extLinks({
-        addIcon : _p.extLinksStyle,
-        newTab : _p.extLinksTargetExt,
-        skipSelectors : _.isObject(_p.extLinksSkipSelectors) ? _p.extLinksSkipSelectors : {}
-      });
-    }
-
-
-    //FANCYBOX
-    //Fancybox with localized script variables
-    if ( 1 == _p.FancyBoxState && 'function' === typeof($.fn.fancybox) ) {
-      $("a.grouped_elements").fancybox({
-        transitionOut: "elastic",
-        transitionIn: "elastic",
-        speedIn: 200,
-        speedOut: 200,
-        overlayShow: !1,
-        autoScale: 1 == _p.FancyBoxAutoscale ? "true" : "false",
-        changeFade: "fast",
-        enableEscapeButton: !0
-      });
-      //replace title by img alt field
-      $('a[rel*=tc-fancybox-group]').each( function() {
-        var title = $(this).find('img').prop('title');
-        var alt = $(this).find('img').prop('alt');
-        if (typeof title !== 'undefined' && 0 !== title.length) {
-            $(this).attr('title',title);
-        }
-        else if (typeof alt !== 'undefined' &&  0 !== alt.length) {
-            $(this).attr('title',alt);
-        }
-      });
-    }
-
-
-
-    //SMOOTH SCROLL FOR AUTHORIZED LINK SELECTORS
-    var _maybe_apply_smooth_scroll = function() {
-      if ( ! _p.SmoothScroll || 'easeOutExpo' != _p.SmoothScroll )
+    addSwipeSupport : function() {
+      if ( 'function' != typeof($.fn.hammer) || 0 === this.$_sliders.length )
         return;
 
-      var _excl_sels = ( _p.SmoothScrollExclude && _.isArray( _p.SmoothScrollExclude ) ) ? _p.SmoothScrollExclude.join(',') : '';
-      $('a[href^="#"]', '#content').not( _excl_sels ).click(function () {
-          var anchor_id = $(this).attr("href");
+      //prevent propagation event from sensible children
+      this.$_sliders.on('touchstart touchmove', 'input, button, textarea, select, a:not(".tc-slide-link")', function(ev) {
+          ev.stopPropagation();
+      });
 
-          //anchor el exists ?
-          if ( ! $(anchor_id).length )
+      var _is_rtl = czrapp.$_body.hasClass('rtl');
+      this.$_sliders.each( function() {
+          $(this).hammer().on('swipeleft', function() {
+              $(this).carousel( ! _is_rtl ? 'next' : 'prev' );
+          });
+          $(this).hammer().on('swiperight', function(){
+              $(this).carousel( ! _is_rtl ? 'prev' : 'next' );
+          });
+      });
+    },
+
+    //Has to be fire on load after all other methods
+    //@todo understand why...
+    sliderTriggerSimpleLoad : function() {
+      this.triggerSimpleLoad( this.$_sliders.find('.carousel-inner img') );
+    }
+  };//methods {}
+
+  czrapp.methods.Czr_Slider = {};
+  $.extend( czrapp.methods.Czr_Slider , _methods );
+
+})(jQuery, czrapp);var czrapp = czrapp || {};
+
+/************************************************
+* USER EXPERIENCE SUB CLASS
+*************************************************/
+(function($, czrapp) {
+  var _methods =  {
+    init : function() {
+      this.timer = 0;
+      this.increment = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
+    },//init
+
+    //Event Listener
+    eventListener : function() {
+      var self = this;
+
+      czrapp.$_window.scroll( function() {
+        self.eventHandler( 'scroll' );
+      });
+
+    },//eventListener
+
+
+    //Event Handler
+    eventHandler : function ( evt ) {
+      var self = this;
+
+      switch ( evt ) {
+        case 'scroll' :
+          //react to window scroll only when we have the btt-arrow element
+          //I do this here 'cause I plan to pass the btt-arrow option as postMessage in customize
+          if ( 0 === $('.tc-btt-wrapper').length )
             return;
 
-          if ('#' != anchor_id) {
-              $('html, body').animate({
-                  scrollTop: $(anchor_id).offset().top
-              }, 700, _p.SmoothScroll);
+          //use a timer
+          if ( this.timer) {
+            this.increment++;
+            clearTimeout(self.timer);
           }
-          return false;
-      });//end click
-    };
-    //Fire smooth scroll
-    _maybe_apply_smooth_scroll();
+          if ( 1 == TCParams.timerOnScrollAllBrowsers ) {
+            this.timer = setTimeout( function() {
+              self.bttArrowVisibility();
+            }, self.increment > 5 ? 50 : 0 );
+          } else if ( czrapp.$_body.hasClass('ie') ) {
+            this.timer = setTimeout( function() {
+              self.bttArrowVisibility();
+            }, self.increment > 5 ? 50 : 0 );
+          }
+        break;
+      }
+    },//eventHandler
+
+    //SMOOTH SCROLL
+    smoothScroll: function() {
+      if ( TCParams.SmoothScroll && TCParams.SmoothScroll.Enabled )
+        smoothScroll( TCParams.SmoothScroll.Options );
+    },
+
+    //SMOOTH SCROLL FOR AUTHORIZED LINK SELECTORS
+    anchorSmoothScroll : function() {
+      if ( ! TCParams.anchorSmoothScroll || 'easeOutExpo' != TCParams.anchorSmoothScroll )
+            return;
+
+      var _excl_sels = ( TCParams.anchorSmoothScrollExclude && _.isArray( TCParams.anchorSmoothScrollExclude ) ) ? TCParams.anchorSmoothScrollExclude.join(',') : '';
+      $('a[href^="#"]', '#content').not( _excl_sels ).click(function () {
+        var anchor_id = $(this).attr("href");
+
+        //anchor el exists ?
+        if ( ! $(anchor_id).length )
+          return;
+
+        if ('#' != anchor_id) {
+            $('html, body').animate({
+                scrollTop: $(anchor_id).offset().top
+            }, 700, TCParams.anchorSmoothScroll);
+        }
+        return false;
+      });//click
+    },
+
+
+    //Btt arrow visibility
+    bttArrowVisibility : function () {
+      if ( czrapp.$_window.scrollTop() > 100 )
+        $('.tc-btt-wrapper').addClass('show');
+      else
+        $('.tc-btt-wrapper').removeClass('show');
+    },//bttArrowVisibility
 
 
 
     //BACK TO TOP
-    function g($) {
-        return ($.which > 0 || "mousedown" === $.type || "mousewheel" === $.type) && f.stop().off("scroll mousedown DOMMouseScroll mousewheel keyup", g);
-    }
-    //Stop the viewport animation if user interaction is detected
-    var f = $("html, body");
-    $(".back-to-top, .tc-btt-wrapper, .btt-arrow").on("click touchstart touchend", function ($) {
-            f.on("scroll mousedown DOMMouseScroll mousewheel keyup", g);
-            f.animate({
-                scrollTop: 0
-            }, 1e3, function () {
-                f.stop().off("scroll mousedown DOMMouseScroll mousewheel keyup", g);
-                //$(window).trigger('resize');
-            });
-            $.preventDefault();
-    });
+    backToTop : function() {
+      var $_html = $("html, body"),
+          _backToTop = function($) {
+            return ($.which > 0 || "mousedown" === $.type || "mousewheel" === $.type) && $_html.stop().off( "scroll mousedown DOMMouseScroll mousewheel keyup", _backToTop );
+          };
 
-
-    //DISPLAY BACK TO TOP BUTTON ON SCROLL
-    function btt_scrolling_actions() {
-      if ( $(window).scrollTop() > 100 )
-        $('.tc-btt-wrapper').addClass('show');
-      else
-        $('.tc-btt-wrapper').removeClass('show');
-    }
-    //use of a timer instead of attaching handler directly to the window scroll event
-    //@uses _p.timerOnScrollAllBrowsers : boolean set to true by default
-    //http://ejohn.org/blog/learning-from-twitter/
-    //https://dannyvankooten.com/delay-scroll-handlers-javascript/
-    var btt_timer,
-        btt_increment = 1,//used to wait a little bit after the first user scroll actions to trigger the timer
-        btt_triggerHeight = 20; //0.5 * windowHeight;
-
-    $(window).scroll(function() {
-      if ( btt_timer) {
-          btt_increment++;
-          window.clearTimeout(btt_timer);
-      }
-      if ( 1 == _p.timerOnScrollAllBrowsers ) {
-          btt_timer = window.setTimeout(function() {
-              btt_scrolling_actions();
-           }, btt_increment > 5 ? 50 : 0 );
-      } else if ( $('body').hasClass('ie') ) {
-           btt_timer = window.setTimeout(function() {
-              btt_scrolling_actions();
-           }, btt_increment > 5 ? 50 : 0 );
-      }
-    });//end of window.scroll()
-
-
-
-    //BROWSER DETECTION
-    // Chrome is Webkit, but Webkit is also Safari. If browser = ie + strips out the .0 suffix
-    if ( $.browser.chrome )
-        $("body").addClass("chrome");
-    else if ( $.browser.webkit )
-        $("body").addClass("safari");
-    else if ( $.browser.msie || '8.0' === $.browser.version || '9.0' === $.browser.version || '10.0' === $.browser.version || '11.0' === $.browser.version )
-        $("body").addClass("ie").addClass("ie" + $.browser.version.replace(/[.0]/g, ''));
-
-    //Adds version if browser = ie
-    if ( $("body").hasClass("ie") )
-        $("body").addClass($.browser.version);
+      $(".back-to-top, .tc-btt-wrapper, .btt-arrow").on("click touchstart touchend", function ($) {
+        $_html.on( "scroll mousedown DOMMouseScroll mousewheel keyup", _backToTop );
+        $_html.animate({
+            scrollTop: 0
+        }, 1e3, function () {
+            $_html.stop().off( "scroll mousedown DOMMouseScroll mousewheel keyup", _backToTop );
+            //czrapp.$_window.trigger('resize');
+        });
+        $.preventDefault();
+      });
+    },
 
 
     //VARIOUS HOVER ACTION
-    $(".widget-front, article").hover(function () {
-        $(this).addClass("hover");
-    }, function () {
-        $(this).removeClass("hover");
-    });
+    widgetsHoverActions : function() {
+      $(".widget-front, article").hover(function () {
+          $(this).addClass("hover");
+      }, function () {
+          $(this).removeClass("hover");
+      });
 
-    $(".widget li").hover(function () {
-        $(this).addClass("on");
-    }, function () {
-        $(this).removeClass("on");
-    });
-
+      $(".widget li").hover(function () {
+          $(this).addClass("on");
+      }, function () {
+          $(this).removeClass("on");
+      });
+    },
 
 
     //ATTACHMENT FADE EFFECT
-    $("article.attachment img").delay(500).animate({
+    attachmentsFadeEffect : function() {
+      $("article.attachment img").delay(500).animate({
             opacity: 1
         }, 700, function () {}
-    );
-
+      );
+    },
 
 
     //COMMENTS
     //Change classes of the comment reply and edit to make the whole button clickable (no filters offered in WP to do that)
-    if ( _p.HasComments ) {
-       //edit
-       $('cite p.edit-link').each(function() {
-            $(this).removeClass('btn btn-success btn-mini');
-       });
-       $('cite p.edit-link > a').each(function() {
-            $(this).addClass('btn btn-success btn-mini');
-       });
-       //reply
-       $('.comment .reply').each(function() {
-            $(this).removeClass('btn btn-small');
-       });
-       $('.comment .reply .comment-reply-link').each(function() {
-            $(this).addClass('btn btn-small');
-       });
-    }
+    clickableCommentButton : function() {
+      if ( ! TCParams.HasComments )
+        return;
+
+      //edit
+      $('cite p.edit-link').each(function() {
+        $(this).removeClass('btn btn-success btn-mini');
+      });
+      $('cite p.edit-link > a').each(function() {
+        $(this).addClass('btn btn-success btn-mini');
+      });
+
+      //reply
+      $('.comment .reply').each(function() {
+        $(this).removeClass('btn btn-small');
+      });
+      $('.comment .reply .comment-reply-link').each(function() {
+        $(this).addClass('btn btn-small');
+      });
+    },
 
 
     //DYNAMIC REORDERING
     //Detect layout and reorder content divs
-    var LeftSidebarClass    = _p.LeftSidebarClass || '.span3.left.tc-sidebar',
-        RightSidebarClass   = _p.RightSidebarClass || '.span3.right.tc-sidebar',
-        wrapper             = $('#main-wrapper .container[role=main] > .column-content-wrapper'),
-        content             = $("#main-wrapper .container .article-container"),
-        left                = $("#main-wrapper .container " + LeftSidebarClass),
-        right               = $("#main-wrapper .container " + RightSidebarClass),
-        reordered           = false;
+    dynSidebarReorder : function() {
+      //Enable reordering if option is checked in the customizer.
+      if ( 1 != TCParams.ReorderBlocks )
+        return;
 
-    function BlockPositions() {
-        //15 pixels adjustement to avoid replacement before real responsive width
-        WindowWidth = $(window).width();
-        if ( WindowWidth > 767 - 15 && reordered ) {
-            //$(window).width();
-            if ( $(left).length ) {
-                $(left).detach();
-                $(content).detach();
-                $(wrapper).append($(left)).append($(content));
-            }
-            if ( $(right).length ) {
-                $(right).detach();
-                $(wrapper).append($(right));
-            }
-            reordered = false; //this could stay in both if blocks instead
-        } else if ( ( WindowWidth <= 767 - 15 ) && ! reordered ) {
-            if ( $(left).length ) {
-                 $(left).detach();
-                $(content).detach();
-                $(wrapper).append($(content)).append( $(left) );
-            }
-            if ( $(right).length ) {
-                $(right).detach();
-                $(wrapper).append($(right));
-            }
-            reordered = true; //this could stay in both if blocks instead
-        }
-    }//end function
-    //Enable reordering if option is checked in the customizer.
-    if ( 1 == _p.ReorderBlocks ) {
-        //trigger the block positioning only when responsive
-        WindowWidth = $(window).width();
-        if ( WindowWidth <= 767 - 15 && ! reordered ) {
-            BlockPositions();
-        }
+      //fire on DOM READY and only for responsive devices
+      if ( 'desktop' != this.getDevice() )
+        this._reorderSidebars( 'responsive' );
 
-        $(window).resize(function () {
-            setTimeout(BlockPositions, 200);
-        });
-    }
+      //fire on custom resize event
+      var self = this;
+      czrapp.$_body.on( 'tc-resize' , function(e, param) {
+        param = _.isObject(param) ? param : {};
+        var _to = 'desktop' != param.to ? 'responsive' : 'normal',
+            _current = 'desktop' != param.current ? 'responsive' : 'normal';
+
+        if ( _current != _to )
+          self._reorderSidebars( _to );
+      } );
+    },
 
 
+    //Reorder sidebar actions
+    _reorderSidebars : function( _sidebarLayout ) {
+      _sidebarLayout = _sidebarLayout || 'normal';
+      var that = this,
+          LeftSidebarClass    = TCParams.LeftSidebarClass || '.span3.left.tc-sidebar',
+          RightSidebarClass   = TCParams.RightSidebarClass || '.span3.right.tc-sidebar',
+          $_WindowWidth       = czrapp.$_window.width();
 
+      //cache some $
+      that.$_content      = that.$_content || $("#main-wrapper .container .article-container");
+      that.$_left         = that.$_left || $("#main-wrapper .container " + LeftSidebarClass);
+      that.$_right        = that.$_right || $("#main-wrapper .container " + RightSidebarClass);
+
+      // check if we have iframes
+      iframeContainers = that._has_iframe( { 'content' : this.$_content, 'left' : this.$_left } ) ;
+
+      var leftIframe    = $.inArray('left', iframeContainers) > -1,
+          contentIframe = $.inArray('content', iframeContainers) > -1;
+
+      //both conain iframes => do nothing
+      if ( leftIframe && contentIframe )
+        return;    
+
+      if ( that.$_left.length ) {
+        if ( leftIframe )
+          that.$_content[ _sidebarLayout === 'normal' ?  'insertAfter' : 'insertBefore']( that.$_left );
+        else
+          that.$_left[ _sidebarLayout === 'normal' ?  'insertBefore' : 'insertAfter']( that.$_content );
+      } 
+    },
 
     //Handle dropdown on click for multi-tier menus
-    var $dropdown_ahrefs    = $('.tc-open-on-click .menu-item.menu-item-has-children > a[href!="#"]'),
-        $dropdown_submenus  = $('.tc-open-on-click .dropdown .dropdown-submenu');
+    dropdownMenuEventsHandler : function() {
+      var $dropdown_ahrefs    = $('.tc-open-on-click .menu-item.menu-item-has-children > a[href!="#"]'),
+          $dropdown_submenus  = $('.tc-open-on-click .dropdown .dropdown-submenu');
 
-
-    // go to the link if submenu is already opened
-    $dropdown_ahrefs.on('tap click', function(evt) {
+      //go to the link if submenu is already opened
+      $dropdown_ahrefs.on('tap click', function(evt) {
         if ( ( $(this).next('.dropdown-menu').css('visibility') != 'hidden' &&
                 $(this).next('.dropdown-menu').is(':visible')  &&
                 ! $(this).parent().hasClass('dropdown-submenu') ) ||
              ( $(this).next('.dropdown-menu').is(':visible') &&
                 $(this).parent().hasClass('dropdown-submenu') ) )
             window.location = $(this).attr('href');
-    });
-    // make sub-submenus dropdown on click work
-    $dropdown_submenus.each(function(){
+      });//.on()
+
+      // make sub-submenus dropdown on click work
+      $dropdown_submenus.each(function(){
         var $parent = $(this),
             $children = $parent.children('[data-toggle="dropdown"]');
         $children.on('tap click', function(){
@@ -3670,158 +4852,672 @@ jQuery(function ($) {
                 $parent.addClass('open');
 
             return false;
-        });
-    });
-});
+        });//.on()
+      });//.each()
+    },
 
-
-
-/* Sticky header since v3.2.0 */
-jQuery(function ($) {
-    var   _p              = TCParams,
-          $tcHeader       = $('.tc-header'),
-          elToHide        = [], //[ '.social-block' , '.site-description' ],
-          $_window        = $(window),
-          $_body          = $('body'),
-          $wpadminbar     = $('#wpadminbar'),
-          isUserLogged    = $_body.hasClass('logged-in') || 0 !== $wpadminbar.length,
-          isCustomizing   = $_body.hasClass('is-customizing'),
-          customOffset    = +_p.stickyCustomOffset,
-          $sticky_logo    = $('img.sticky', '.site-logo'),
-          $resetMarginTop = $('#tc-reset-margin-top'),
-          logo            = 0 === $sticky_logo.length ? { _logo: $('img:not(".sticky")', '.site-logo') , _ratio: '' }: false;
-
-    function _is_scrolling() {
-        return $_body.hasClass('sticky-enabled') ? true : false;
-    }
-
-    function _is_sticky_enabled() {
-        return $_body.hasClass('tc-sticky-header') ? true : false;
-    }
-
-    function _get_initial_offset() {
-        //initialOffset     = ( 1 == isUserLogged &&  580 < $(window).width() ) ? $('#wpadminbar').height() : 0;
-        var initialOffset   = 0;
-        if ( 1 == isUserLogged && ! isCustomizing ) {
-            if ( 580 < $_window.width() )
-                initialOffset = $wpadminbar.height();
-            else
-                initialOffset = ! _is_scrolling() ? $wpadminbar.height() : 0;
+    //@return void()
+    //simply toggles a "hover" class to the relevant elements
+    menuButtonHover : function() {
+      var $_menu_btns = $('.btn-toggle-nav');
+      //BUTTON HOVER (with handler)
+      $_menu_btns.hover(
+        function( evt ) {
+          $(this).addClass('hover');
+        },
+        function( evt ) {
+          $(this).removeClass('hover');
         }
-        return initialOffset + customOffset;
-    }
-
-    function _set_sticky_offsets() {
-        if ( ! _is_sticky_enabled() )
-            return;
-
-        //Reset all values first
-        $tcHeader.css('top' , '');
-        $tcHeader.css('height' , 'auto' );
-        $resetMarginTop.css('margin-top' , '' ).show();
-
-        //What is the initial offset of the header ?
-        var headerHeight    = $tcHeader.outerHeight(true); /* include borders and eventual margins (true param)*/
-        //set initial margin-top = initial offset + header's height
-        $resetMarginTop.css('margin-top' , ( +headerHeight + customOffset ) + 'px');
-    }
+      );
+    },
 
 
-    function _set_header_top_offset() {
-        //set header initial offset
-        $tcHeader.css('top' , _get_initial_offset() );
-    }
+    //Mobile behaviour for the secondary menu
+    secondMenuRespActions : function() {
+      if ( ! TCParams.isSecondMenuEnabled )
+        return;
+      //Enable reordering if option is checked in the customizer.
+      var userOption = TCParams.secondMenuRespSet || false,
+          that = this;
+      //if not a relevant option, abort
+      if ( ! userOption || -1 == userOption.indexOf('in-sn') )
+        return;
 
+      //cache some $
+      this.$_sec_menu_els  = this.$_sec_menu_els || $('.nav > li', '.tc-header .nav-collapse');
+      this.$_sn_wrap       = this.$_sn_wrap || $('.sn-nav', '.sn-nav-wrapper');
+      this.$_sec_menu_wrap = this.$_sec_menu_wrap || $('.nav', '.tc-header .nav-collapse');
 
-    function _set_logo_height(){
-        if ( logo && 0 === logo._logo.length || ! logo._ratio )
-            return;
+      //fire on DOM READY
+      var _locationOnDomReady = 'desktop' == this.getDevice() ? 'navbar' : 'side_nav';
 
-        logo._logo.css('height' , logo._logo.width() / logo._ratio );
+      if ( 'desktop' != this.getDevice() )
+        this._manageMenuSeparator( _locationOnDomReady , userOption)._moveSecondMenu( _locationOnDomReady , userOption );
 
-        setTimeout( function() {
-            _set_sticky_offsets();
-            _set_header_top_offset();
-        } , 200 );
-    }
+      //fire on custom resize event
+      czrapp.$_body.on( 'tc-resize', function( e, param ) {
+        param = _.isObject(param) ? param : {};
+        var _to = 'desktop' != param.to ? 'side_nav' : 'navbar',
+            _current = 'desktop' != param.current ? 'side_nav' : 'navbar';
 
-
-    //set site logo width and height if exists
-    //=> allow the CSS3 transition to be enabled
-    if ( _is_sticky_enabled() && logo && 0 !== logo._logo.length ) {
-        var logoW = logo._logo.attr('width'),
-            logoH = logo._logo.attr('height');
-
-        //check that all numbers are valid before using division
-        if ( 0 === _.size( _.filter( [ logoW, logoH ], function(num){ return _.isNumber( parseInt(num, 10) ) && 0 !== num; } ) ) )
+        if ( _current == _to )
           return;
 
-        logo._ratio  = logoW / logoH;
-        logo._logo.css('height' , logoH  ).css('width' , logoW );
+        that._manageMenuSeparator( _to, userOption)._moveSecondMenu( _to, userOption );
+      } );//.on()
+    },
+
+    _manageMenuSeparator : function( _to, userOption ) {
+      //add/remove a separator between the two menus
+      var that = this;
+      if ( 'navbar' == _to )
+        $( '.secondary-menu-separator', that.$_sn_wrap).remove();
+      else {
+        $_sep = $( '<li class="menu-item secondary-menu-separator"><hr class="featurette-divider"></hr></li>' );
+
+        switch(userOption) {
+          case 'in-sn-before' :
+            this.$_sn_wrap.prepend($_sep);
+          break;
+
+          case 'in-sn-after' :
+            this.$_sn_wrap.append($_sep);
+          break;
+        }
+      }
+      return this;
+    },
+
+
+    //@return void()
+    //@param _where = menu items location string 'navbar' or 'side_nav'
+    _moveSecondMenu : function( _where, userOption ) {
+      _where = _where || 'side_nav';
+      var that = this;
+      switch( _where ) {
+          case 'navbar' :
+            that.$_sec_menu_wrap.append(that.$_sec_menu_els);
+          break;
+
+          case 'side_nav' :
+            if ( 'in-sn-before' == userOption )
+              that.$_sn_wrap.prepend(that.$_sec_menu_els);
+            else
+              that.$_sn_wrap.append(that.$_sec_menu_els);
+          break;
+        }
+    },
+
+    //Helpers
+    
+    //Check if the passed element(s) contains an iframe
+    //@return list of containers
+    //@param $_elements = mixed
+    _has_iframe : function ( $_elements ) {
+      var that = this,
+          to_return = [];
+      _.map( $_elements, function( $_el, container ){
+        if ( $_el.length > 0 && $_el.find('IFRAME').length > 0 )
+          to_return.push(container);
+      });
+      return to_return;
     }
 
-    //LOADING ACTIONS
-    if ( _is_sticky_enabled() )
-        setTimeout( function() { _sticky_refresh(); _sticky_header_scrolling_actions(); } , 20 );
+  };//_methods{}
 
-    //RESIZING ACTIONS
-    $_window.resize(function() {
-        if ( ! _is_sticky_enabled() )
-            return;
-        _set_sticky_offsets();
-        _set_header_top_offset();
-        _set_logo_height();
-    });
+  czrapp.methods.Czr_UserExperience = {};
+  $.extend( czrapp.methods.Czr_UserExperience , _methods );
 
-    function _sticky_refresh() {
-        setTimeout( function() {
-            _set_sticky_offsets();
-            _set_header_top_offset();
-        } , 20 );
-        $_window.trigger('resize');
-    }
+})(jQuery, czrapp);
+var czrapp = czrapp || {};
+/************************************************
+* STICKY HEADER SUB CLASS
+*************************************************/
+(function($, czrapp) {
+  var _methods =  {
+    init : function() {
+      //cache jQuery el
+      this.$_sticky_logo    = $('img.sticky', '.site-logo');
+      this.$_resetMarginTop = $('#tc-reset-margin-top');
+      //subclass properties
+      this.elToHide         = []; //[ '.social-block' , '.site-description' ],
+      this.customOffset     = TCParams.stickyCustomOffset || {};// defaults : { _initial : 0, _scrolling : 0 }
+      this.logo             = 0 === this.$_sticky_logo.length ? { _logo: $('img:not(".sticky")', '.site-logo') , _ratio: '' }: false;
+      this.timer            = 0;
+      this.increment        = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
+      this.triggerHeight    = 20; //0.5 * windowHeight;
+
+      this.scrollingDelay   = 1 != TCParams.timerOnScrollAllBrowsers && czrapp.$_body.hasClass('ie') ? 50 : 5;
+    },//init()
+
+
+    triggerStickyHeaderLoad : function() {
+      if ( ! this._is_sticky_enabled() )
+        return;
+
+      //LOADING ACTIONS
+      czrapp.$_body.trigger( 'sticky-enabled-on-load' , { on : 'load' } );
+    },
+
+
+    stickyHeaderEventListener : function() {
+      //LOADING ACTIONS
+      var self = this;
+      czrapp.$_body.on( 'sticky-enabled-on-load' , function() {
+        self.stickyHeaderEventHandler('on-load');
+      });//.on()
+
+      //RESIZING ACTIONS
+      czrapp.$_window.on( 'tc-resize', function() {
+        self.stickyHeaderEventHandler('resize');
+      });
+
+      //SCROLLING ACTIONS
+      czrapp.$_window.scroll( function() {
+        self.stickyHeaderEventHandler('scroll');
+      });
+
+      //SIDENAV ACTIONS => recalculate the top offset on sidenav toggle
+      czrapp.$_body.on( czrapp.$_body.hasClass('tc-is-mobile') ? 'touchstart' : 'click' , '.sn-toggle', function() {
+        self.stickyHeaderEventHandler('sidenav-toggle');
+      });
+    },
+
+
+
+    stickyHeaderEventHandler : function( evt ) {
+      if ( ! this._is_sticky_enabled() )
+        return;
+
+      var self = this;
+
+      switch ( evt ) {
+        case 'on-load' :
+          self._prepare_logo_transition();
+          setTimeout( function() {
+            self._sticky_refresh();
+            self._sticky_header_scrolling_actions();
+          } , 20 );//setTimeout()
+        break;
+
+        case 'scroll' :
+          var _delay = 0;
+
+           //use a timer
+          if ( this.timer) {
+            this.increment++;
+            clearTimeout(self.timer);
+          }
+
+          if ( this.increment > 5 )
+            //decrease the scrolling trigger delay when smoothscroll on to avoid not catching the scroll when scrolling fast and sticky header not already triggered
+            _delay = ! ( czrapp.$_body.hasClass('tc-smoothscroll') && ! this._is_scrolling() ) ? this.scrollingDelay : 15;
+
+          this.timer = setTimeout( function() {
+              self._sticky_header_scrolling_actions();
+          }, _delay );
+        break;
+
+        case 'resize' :
+        case 'sidenav-toggle' :
+          self._set_sticky_offsets();
+          self._set_header_top_offset();
+          self._set_logo_height();
+        break;
+      }
+    },
+
+
+
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    _is_scrolling : function() {
+      return czrapp.$_body.hasClass('sticky-enabled') ? true : false;
+    },
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    _is_sticky_enabled : function() {
+      return czrapp.$_body.hasClass('tc-sticky-header') ? true : false;
+    },
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    _get_top_offset : function() {
+      //initialOffset     = ( 1 == isUserLogged &&  580 < $(window).width() ) ? $('#wpadminbar').height() : 0;
+      //custom offset : are we scrolling ? => 2 custom top offset values can be defined by users : initial and scrolling
+      //make sure custom offset are set and numbers
+      var initialOffset   = 0,
+          that            = this,
+          customOffset    = +this._get_custom_offset( that._is_scrolling() ? '_scrolling' : '_initial' );
+
+      if ( 1 == this.isUserLogged() && ! this.isCustomizing() ) {
+        if ( 580 < czrapp.$_window.width() )
+          initialOffset = czrapp.$_wpadminbar.height();
+        else
+          initialOffset = ! this._is_scrolling() ? czrapp.$_wpadminbar.height() : 0;
+      }
+      return initialOffset + customOffset ;
+    },
+
+
+    //CUSTOM TOP OFFSET
+    //return the user defined dynamic or static custom offset
+    //custom offset is a localized param that can be passed with the wp filter : tc_sticky_custom_offset
+    //its default value is an object : { _initial : 0, _scrolling : 0, options : { _static : true, _element : "" }
+    //if _static is set to false and a dom element is provided, then the custom offset will be the calculated height of the element
+    _get_custom_offset : function( _context ) {
+      //Always check if this.customOffset is well formed
+      if ( _.isEmpty( this.customOffset ) )
+        return 0;
+      if ( ! this.customOffset[_context] )
+        return 0;
+      if ( ! this.customOffset.options )
+        return this.customOffset[_context];
+
+      //always return a static value for the scrolling context;
+      if ( '_scrolling' == _context )
+        return +this.customOffset[_context] || 0;
+
+      //INITIAL CONTEXT
+      //CASE 1 : STATIC
+      if ( this.customOffset.options._static )
+        return +this.customOffset[_context] || 0;
+
+      var that = this,
+          $_el = $(that.customOffset.options._element);
+
+      //CASE 2 : DYNAMIC : based on an element's height
+      //does the element exists?
+      if ( ! $_el.length )
+        return 0;
+      else {
+        return $_el.outerHeight() || +this.customOffset[_context] || 0;
+      }
+      return;
+    },
+
+
+
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    _set_sticky_offsets : function() {
+      var self = this;
+
+      //Reset all values first
+      czrapp.$_tcHeader.css('top' , '');
+      czrapp.$_tcHeader.css('height' , 'auto' );
+      this.$_resetMarginTop.css('margin-top' , '' ).show();
+
+      //What is the initial offset of the header ?
+      var headerHeight    = czrapp.$_tcHeader.outerHeight(true); /* include borders and eventual margins (true param)*/
+      //set initial margin-top = initial offset + header's height
+      this.$_resetMarginTop.css('margin-top' , + headerHeight  + 'px');
+    },
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    _set_header_top_offset : function() {
+      var self = this;
+      //set header initial offset
+      czrapp.$_tcHeader.css('top' , self._get_top_offset() );
+    },
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    _prepare_logo_transition : function(){
+      //do nothing if the browser doesn't support csstransitions (modernizr)
+      //or if no logo (includes the case where we have two logos, normal and sticky one)
+      if ( ! ( czrapp.$_html.hasClass('csstransitions') && ( this.logo && 0 !== this.logo._logo.length ) ) )
+        return;
+
+      var logoW = this.logo._logo.originalWidth(),
+          logoH = this.logo._logo.originalHeight();
+
+      //check that all numbers are valid before using division
+      if ( 0 === _.size( _.filter( [ logoW, logoH ], function(num){ return _.isNumber( parseInt(num, 10) ) && 0 !== num; } ) ) )
+        return;
+
+      this.logo._ratio = logoW / logoH;
+      this.logo._logo.css('width' , logoW );
+    },
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    _set_logo_height : function(){
+      if ( this.logo && 0 === this.logo._logo.length || ! this.logo._ratio )
+        return;
+      var self = this;
+      this.logo._logo.css('height' , self.logo._logo.width() / self.logo._ratio );
+
+      setTimeout( function() {
+          self._set_sticky_offsets();
+          self._set_header_top_offset();
+      } , 200 );
+    },
+
+    _sticky_refresh : function() {
+      var self = this;
+      setTimeout( function() {
+          self._set_sticky_offsets();
+          self._set_header_top_offset();
+      } , 20 );
+      czrapp.$_window.trigger('resize');
+    },
+
 
     //SCROLLING ACTIONS
-    var timer,
-        increment = 1;//used to wait a little bit after the first user scroll actions to trigger the timer
+    _sticky_header_scrolling_actions : function() {
+      this._set_header_top_offset();
 
-    //var windowHeight = $(window).height();
-    var triggerHeight = 20; //0.5 * windowHeight;
+      var self = this;
+      //process scrolling actions
+      if ( czrapp.$_window.scrollTop() > this.triggerHeight ) {
+        if ( ! this._is_scrolling() )
+            czrapp.$_body.addClass("sticky-enabled").removeClass("sticky-disabled");
+      }
+      else if ( this._is_scrolling() ){
+        czrapp.$_body.removeClass("sticky-enabled").addClass("sticky-disabled");
+        setTimeout( function() { self._sticky_refresh(); } ,
+          self.isCustomizing ? 100 : 20
+        );
+        //additional refresh for some edge cases like big logos
+        setTimeout( function() { self._sticky_refresh(); } , 200 );
+      }
+    }
+  };//_methods{}
 
-    function _sticky_header_scrolling_actions() {
-        _set_header_top_offset();
-        //process scrolling actions
-        if ( $_window.scrollTop() > triggerHeight ) {
-            if ( ! _is_scrolling() )
-                $_body.addClass("sticky-enabled").removeClass("sticky-disabled");
+  czrapp.methods.Czr_StickyHeader = {};
+  $.extend( czrapp.methods.Czr_StickyHeader , _methods );
+
+})(jQuery, czrapp);
+var czrapp = czrapp || {};
+/************************************************
+* STICKY FOOTER SUB CLASS
+*************************************************/
+(function($, czrapp) {
+  var _methods =  {
+    init : function() {
+      this.$_push   = $('#tc-push-footer');
+      this._class   = 'sticky-footer-enabled';
+      this.$_page   = $('#tc-page-wrap');
+      
+      if ( 1 != TCParams.stickyHeader ) {//sticky header fires a resize
+        var self = this;
+        setTimeout( function() {
+                self._apply_sticky_footer(); }, 50 
+        );
+      }
+    },
+
+    /***********************************************
+    * DOM EVENT LISTENERS AND HANDLERS
+    ***********************************************/
+    stickyFooterEventListener : function() {
+      var self = this;
+
+      // maybe apply sticky footer on window resize
+      czrapp.$_window.on( 'tc-resize', function() {
+        self.stickyFooterEventHandler('resize');
+      });
+      /* can be useful without exposing methods make it react to this event which could be externally fired, used in the preview atm */
+      czrapp.$_body.on( 'refresh-sticky-footer', function() {
+        self.stickyFooterEventHandler('refresh');
+      });
+
+    },
+    
+    stickyFooterEventHandler : function( evt ) {
+      var self = this;
+
+      if ( ! this._is_sticky_footer_enabled() )
+        return;
+
+      switch ( evt ) {
+        case 'resize':
+          //to avoid the creation of a function inside a loop
+          //but still allow the access to "this"
+          var func = function() { return self._apply_sticky_footer() ;};
+          for ( var i = 0; i<5; i++ ) /* I've seen something like that in twentyfifteen */
+            setTimeout( func, 50 * i);
+        break;
+        case 'refresh':
+          this._apply_sticky_footer();
+        break;
+      }
+    },
+    /* We apply the "sticky" footer by setting the height of the push div, and adding the proper class to show it */
+    _apply_sticky_footer : function() {
+
+      var  _f_height     = this._get_full_height(),
+           _w_height     = czrapp.$_window.height(),
+           _push_height  = _w_height - _f_height,
+           _event        = false;
+      
+      if ( _push_height > 0 ) {
+        this.$_push.css('height', _push_height).addClass(this._class);
+        _event = 'sticky-footer-on';
+      }else if ( this.$_push.hasClass(this._class) ) {
+        this.$_push.removeClass(this._class);
+        _event = 'sticky-footer-off';
+      }
+
+      /* Fire an event which something might listen to */
+      if ( _event )
+        czrapp.$_body.trigger(_event);    
+    },
+    
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    /*
+    * return @bool: whether apply or not the sticky-footer
+    */
+    _is_sticky_footer_enabled : function() {
+      return czrapp.$_body.hasClass('tc-sticky-footer');
+    },
+
+
+    //STICKY HEADER SUB CLASS HELPER (private like)
+    /* 
+    * return @int: the potential height value of the page
+    */
+    _get_full_height : function() {
+      var _full_height = this.$_page.outerHeight(true) + this.$_page.offset().top,
+          _push_height = 'block' == this.$_push.css('display') ? this.$_push.outerHeight() : 0;
+            
+      return _full_height - _push_height;
+    }
+  };//_methods{}
+
+  czrapp.methods.Czr_StickyFooter = {};
+  $.extend( czrapp.methods.Czr_StickyFooter , _methods );
+
+})(jQuery, czrapp);
+var czrapp = czrapp || {};
+/************************************************
+* SIDE NAV SUB CLASS
+*************************************************/
+(function($, czrapp) {
+  var _methods =  {
+    init : function() {
+      this.$_sidenav                = $( '#tc-sn' );
+
+      if ( ! this._is_sn_on() )
+        return;
+
+      //cache jQuery el
+      this.$_page_wrapper           = $('#tc-page-wrap');
+      this.$_page_wrapper_node      = this.$_page_wrapper.get(0);
+      this.$_page_wrapper_btn       = $('.btn-toggle-nav', '#tc-page-wrap');
+
+      this.$_sidenav_inner          = $( '.tc-sn-inner', this.$_sidenav);
+
+      this._toggle_event            = czrapp.$_body.hasClass('tc-is-mobile') ? 'touchstart' : 'click';
+
+      this._browser_can_translate3d = ! czrapp.$_html.hasClass('no-csstransforms3d');
+
+      /* Cross browser support for CSS "transition end" event */
+      this.transitionEnd            = 'transitionend webkitTransitionEnd otransitionend oTransitionEnd MSTransitionEnd';
+
+      //fire event listener
+      this.sideNavEventListener();
+
+      this._set_offset_height();
+
+    },//init()
+
+    /***********************************************
+    * DOM EVENT LISTENERS AND HANDLERS
+    ***********************************************/
+    sideNavEventListener : function() {
+      var self = this;
+
+      //BUTTON CLICK/TAP
+      czrapp.$_body.on( this._toggle_event, '.sn-toggle', function( evt ) {
+        self.sideNavEventHandler( evt, 'toggle' );
+      });
+
+      //TRANSITION END
+      this.$_page_wrapper.on( this.transitionEnd, function( evt ) {
+        self.sideNavEventHandler( evt, 'transitionend' );
+      });
+
+      //RESIZING ACTIONS
+      czrapp.$_window.on('tc-resize', function( evt ) {
+        self.sideNavEventHandler( evt, 'resize');
+      });
+
+      czrapp.$_window.scroll( function( evt ) {
+        self.sideNavEventHandler( evt, 'scroll');
+      });
+    },
+
+
+    sideNavEventHandler : function( evt, evt_name ) {
+      var self = this;
+
+      switch ( evt_name ) {
+        case 'toggle':
+          // prevent multiple firing of the click event
+          if ( ! this._is_translating() )
+            this._toggle_callback( evt );
+        break;
+
+        case 'transitionend' :
+           // react to the transitionend just if translating
+           if ( this._is_translating() && evt.target == this.$_page_wrapper_node )
+             this._transition_end_callback();
+        break;
+
+        case 'scroll' :
+        case 'resize' :
+          setTimeout( function(){
+              self._set_offset_height();
+          }, 200);
+        break;
+      }
+    },
+
+
+    _toggle_callback : function ( evt ){
+      evt.preventDefault();
+
+      if ( czrapp.$_body.hasClass( 'tc-sn-visible' ) )
+        this._anim_type = 'sn-close';
+      else
+        this._anim_type = 'sn-open';
+
+      //2 cases translation enabled or disabled.
+      //=> if translation3D enabled, the _transition_end_callback is fired at the end of anim by the transitionEnd event
+      if ( this._browser_can_translate3d ){
+        /* When the toggle menu link is clicked, animation starts */
+        czrapp.$_body.addClass( 'animating ' + this._anim_type )
+                     .trigger( this._anim_type + '_start' );
+        if ( this._is_sticky_header() ){
+          /* while animating disable sticky header if not scrolling */
+          if ( czrapp.$_body.hasClass('sticky-disabled') )
+            czrapp.$_body.removeClass('tc-sticky-header');
         }
-        else if ( _is_scrolling() ){
-            $_body.removeClass("sticky-enabled").addClass("sticky-disabled");
-            setTimeout( function() { _sticky_refresh(); } ,
-              isCustomizing ? 100 : 20
-            );
-            //additional refresh for some edge cases like big logos
-            setTimeout( function() { _sticky_refresh(); } , 200 );
-        }
-    }//end of fn
+      } else {
+        czrapp.$_body.toggleClass('tc-sn-visible')
+                     .trigger( this._anim_type );
+      }
 
-    $_window.scroll(function() {
-        if ( ! _is_sticky_enabled() )
-            return;
-        //use a timer
-        if ( timer) {
-            increment++;
-            window.clearTimeout(timer);
-         }
+      //handles the page wrapper button fade in / out on click
+      var _event = evt || event,
+          $_clicked_btn = $( _event.target ),
+          _is_opening   = $('#tc-page-wrap').has( $_clicked_btn).length > 0;
 
-         if ( 1 == _p.timerOnScrollAllBrowsers ) {
-            timer = window.setTimeout(function() {
-                _sticky_header_scrolling_actions();
-             }, increment > 5 ? 50 : 0 );
-         } else if ( $_body.hasClass('ie') ) {
-             timer = window.setTimeout(function() {
-                _sticky_header_scrolling_actions();
-             }, increment > 5 ? 50 : 0 );
-        }
-    });//end of window.scroll()
+      this.$_page_wrapper_btn.each( function(){
+        $(this).fadeTo( 500 , _is_opening ? 0 : 1 , function() {
+          $(this).css( "visibility", _is_opening ? "hidden" : "visible");
+        }); //.fadeTo() duration, opacity, callback
+      } );
+      return false;
+   },
+
+   _transition_end_callback : function() {
+     czrapp.$_body.removeClass( 'animating ' +  this._anim_type)
+                  .toggleClass( 'tc-sn-visible' )
+                  .trigger( this._anim_type + '_end' );
+
+     /* on transition end re-set sticky header */
+     if ( this._is_sticky_header() ){
+       if ( czrapp.$_body.hasClass('sticky-disabled') )
+         czrapp.$_body.addClass('tc-sticky-header');
+      }
+    },
+
+
+
+    /***********************************************
+    * HELPERS
+    ***********************************************/
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _is_sn_on : function() {
+      return this.$_sidenav.length > 0 ? true : false;
+    },
+
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _get_initial_offset : function() {
+      var _initial_offset = czrapp.$_wpadminbar.length > 0 ? czrapp.$_wpadminbar.height() : 0;
+      _initial_offset = _initial_offset && czrapp.$_window.scrollTop() && 'absolute' == czrapp.$_wpadminbar.css('position') ? 0 : _initial_offset;
+
+      return _initial_offset; /* add a custom offset ?*/
+    },
+
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _set_offset_height : function() {
+      var _offset = this._get_initial_offset();
+
+      this.$_sidenav.css('top', _offset );
+      this.$_sidenav_inner.css('max-height', this.$_sidenav.outerHeight() - _offset);
+    },
+
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _is_translating : function() {
+      return czrapp.$_body.hasClass('animating');
+    },
+
+    //SIDE NAV SUB CLASS HELPER (private like)
+    _is_sticky_header : function() {
+      this.__is_sticky_header = this.__is_sticky_header || czrapp.$_body.hasClass('tc-sticky-header');
+      return this.__is_sticky_header;
+    }
+
+  };//_methods{}
+
+  czrapp.methods.Czr_SideNav = {};
+  $.extend( czrapp.methods.Czr_SideNav , _methods );
+
+})(jQuery, czrapp);var czrapp = czrapp || {};
+
+/************************************************
+* LET'S DANCE
+*************************************************/
+jQuery(function ($) {
+  var toLoad = {
+    BrowserDetect : [],
+    Czr_Plugins : ['centerImagesWithDelay', 'imgSmartLoad' , 'dropCaps', 'extLinks' , 'fancyBox'],
+    Czr_Slider : ['fireSliders', 'manageHoverClass', 'centerSliderArrows', 'addSwipeSupport', 'sliderTriggerSimpleLoad'],
+    Czr_UserExperience : ['eventListener', 'smoothScroll', 'anchorSmoothScroll', 'backToTop', 'widgetsHoverActions', 'attachmentsFadeEffect', 'clickableCommentButton', 'dynSidebarReorder', 'dropdownMenuEventsHandler', 'menuButtonHover', 'secondMenuRespActions'],
+    Czr_StickyHeader : ['stickyHeaderEventListener', 'triggerStickyHeaderLoad' ],
+    Czr_StickyFooter : ['stickyFooterEventListener'],
+    Czr_SideNav : []
+  };
+  czrapp.cacheProp().emitCustomEvents().loadCzr(toLoad);
 });

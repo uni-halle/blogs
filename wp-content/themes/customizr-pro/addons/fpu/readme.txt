@@ -4,7 +4,7 @@ Donate link: http://www.presscustomizr.com#footer
 Tags: pages, customizer, home, wordpress
 Requires at least: 3.4
 Tested up to: 4.2
-Stable tag: 2.0.11
+Stable tag: 2.0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ SUPPORT : http://presscustomizr.com/support-forums/
 
 
 #######################  Changelog ######################
+= 2.0.12 July 17th 2015 =
+* changed : adapt code to the latest Customizr changes
+
 = 2.0.11 May 15th 2015 =
 * Fix: polylang cast fpu options to array, needed when no options are set
 

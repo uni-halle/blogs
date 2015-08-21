@@ -170,7 +170,7 @@ class TC_utils_wfc {
         		'fp_btn' 				=> __( 'Featured pages button' , $this -> plug_lang ),
         		'single_post_title' 	=> __( 'Single post/page titles' , $this -> plug_lang ),
         		'post_list_titles' 		=> __( 'Post list titles' , $this -> plug_lang ),
-        		'archive_titles' 		=> __( 'Archive titles' , $this -> plug_lang ),
+        		'archive_titles' 		=> __( 'Archive/Blog titles' , $this -> plug_lang ),
         		'post_content' 			=> __( 'Post content / excerpt' , $this -> plug_lang ),
         		'post_metas' 			=> __( 'Post metas' , $this -> plug_lang ),
         		'post_links' 			=> __( 'Links in post/pages' , $this -> plug_lang ),
@@ -256,6 +256,21 @@ class TC_utils_wfc {
 		return apply_filters( 'tc_font_customizer_cfonts', $cfonts );
 	}
 
+    function get_cfonts_names(){
+      $cfonts = $this -> get_cfonts();  
+      return array_map( array( $this, 'get_font_property') , $cfonts, array_fill( 0, sizeof($cfonts), 'name' ) );     
+    }
+
+    /**
+    *  returns the requested prop for the passed font
+    *
+    * @param $font : array( 'name' => 'Name', 'subset' => array() )
+    * @param $prop : string 'name' or 'subset'
+    * @return mixed: name string or subset array
+    */
+    function get_font_property( $font, $prop ){
+        return $font[$prop];
+    }
 
 	function get_gfonts( $what = null ) {
 		//checks if transient exists or has expired

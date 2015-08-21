@@ -1,0 +1,253 @@
+/*EFFECTS */
+/*********************/
+/* Effect 1: Reveal */
+/*******************/
+
+/* this is the basic effect already implemented in the standard side nav */
+
+/***************************/
+/* Effect 2: Slide on top */
+/*************************/
+[class*=-mc_slide_top] #tc-sn {
+  z-index: 100;
+}
+.tc-sn-visible.sn-left-mc_slide_top #tc-page-wrap {
+  left: 0 !important;
+}
+.tc-sn-visible.sn-right-mc_slide_top #tc-page-wrap {
+  right: 0 !important; 
+}
+.animating[class*=mc_slide_top] #tc-page-wrap{
+  -webkit-transform: translate3d(0,0,0) !important;
+     -moz-transform: translate3d(0,0,0) !important;
+          transform: translate3d(0,0,0) !important;
+}
+
+/* shared with the push effect */
+.sn-left-mc_slide_top.sn-close #tc-sn, .sn-left-mc_slide_top #tc-sn,
+.sn-left-mc_push.sn-close #tc-sn, .sn-left-mc_push #tc-sn {
+  -webkit-transform: translate3d(-100%, 0, 0);
+     -moz-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+}
+
+.sn-right-mc_slide_top.sn-close #tc-sn, .sn-right-mc_slide_top #tc-sn,
+.sn-right-mc_push.sn-close #tc-sn, .sn-right-mc_push #tc-sn {
+  -webkit-transform: translate3d(100%, 0, 0);
+     -moz-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+}
+
+/*******************/
+/* Effect 3: Push */
+/*****************/
+/* All rules shared with the above effects */
+
+/************************/
+/* Effect 4: Fall-Down */
+/**********************/
+[class*=-mc_fall_down] #tc-sn{
+  -webkit-transform: translate3d(0, -100%, 0);
+     -moz-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+  -webkit-transition: ease-in-out 0.6s;
+     -moz-transition: ease-in-out 0.6s;
+       -o-transition: ease-in-out 0.6s;
+          transition: ease-in-out 0.6s;
+}
+[class*=-mc_fall_down].sn-close #tc-sn {
+  -webkit-transform: translate3d(0, -100%, 0);
+     -moz-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+}
+
+/**************************/
+/* Effect 5: Slide-along */
+/************************/
+
+/* Shared with reverse-slide-out which is its contrary */
+.sn-right-mc_slide_along.sn-close #tc-sn, .sn-right-mc_slide_along #tc-sn,
+.sn-left-mc_rev_slide_out.sn-close #tc-sn, .sn-left-mc_rev_slide_out #tc-sn{
+	-webkit-transform: translate3d(+50%, 0, 0);
+	   -moz-transform: translate3d(+50%, 0, 0);
+	        transform: translate3d(+50%, 0, 0);
+}
+
+.sn-left-mc_slide_along.sn-close #tc-sn, .sn-left-mc_slide_along #tc-sn,
+.sn-right-mc_rev_slide_out.sn-close #tc-sn, .sn-right-mc_rev_slide_out #tc-sn {
+	-webkit-transform: translate3d(-50%, 0, 0);
+	   -moz-transform: translate3d(-50%, 0, 0);
+	        transform: translate3d(-50%, 0, 0);
+}
+
+/********************************/
+/* Effect 6: Reverse-slide-out */
+/******************************/
+/* opposite of slide along shares same rules */
+
+
+/***************************/
+/* Effect 7: 3D Rotate in */
+/**************************/
+/* Two rules shared by effects 7-8-9-10, I used a common prefix: "mc_persp_"*/
+[class*=-mc_persp_] #tc-sn {
+  -webkit-perspective: 1500px;
+     -moz-perspective: 1500px;
+          perspective: 1500px;
+  -webkit-perspective-origin: 0% 50%;
+     -moz-perspective-origin: 0% 50%;
+          perspective-origin: 0% 50%;
+}
+[class*=-mc_persp_] #tc-sn .tc-sn-inner {
+  -webkit-transition: -webkit-transform 0.5s;
+     -moz-transition: -moz-transform 0.5s;
+       -o-transition: -o-transform 0.5s;
+          transition: transform 0.5s;
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+/* end shared rules with all mc_persp_ */
+
+.sn-close.sn-left-mc_persp_rotate_in #tc-sn .tc-sn-inner,
+.sn-left-mc_persp_rotate_in .tc-sn-inner{
+  -webkit-transform: translate3d(-100%,0,0) rotateY(-150deg);
+     -moz-transform: translate3d(-100%,0,0) rotateY(-150deg);
+          transform: translate3d(-100%,0,0) rotateY(-150deg);
+  -webkit-transform-origin: 100% 50%;
+     -moz-transform-origin: 100% 50%;
+      -ms-transform-origin: 100% 50%;
+       -o-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+}
+
+.sn-close.sn-right-mc_persp_rotate_in #tc-sn .tc-sn-inner,
+.sn-right-mc_persp_rotate_in .tc-sn-inner {
+  -webkit-transform: translate3d(100%,0,0) rotateY(150deg);
+     -moz-transform: translate3d(100%,0,0) rotateY(150deg);
+          transform: translate3d(100%,0,0) rotateY(150deg);
+  -webkit-transform-origin: 0 50%;
+     -moz-transform-origin: 0 50%;
+      -ms-transform-origin: 0 50%;
+       -o-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+/* shared with rotate out and rotate delay */
+.sn-open[class*=mc_persp_rotate_] .tc-sn-inner,
+.tc-sn-visible[class*=-mc_persp_rotate_] .tc-sn-inner {
+  -webkit-transform: translate3d(0, 0, 0) rotateY(0deg);
+     -moz-transform: translate3d(0, 0, 0) rotateY(0deg);
+          transform: translate3d(0, 0, 0) rotateY(0deg);
+}
+
+/***************************/
+/* Effect 8: 3D Rotate out */
+/**************************/
+
+.sn-close.sn-left-mc_persp_rotate_out #tc-sn .tc-sn-inner,
+.sn-left-mc_persp_rotate_out .tc-sn-inner{
+  -webkit-transform: translate3d(-100%,0,0) rotateY(150deg);
+     -moz-transform: translate3d(-100%,0,0) rotateY(150deg);
+          transform: translate3d(-100%,0,0) rotateY(150deg);
+  -webkit-transform-origin: 100% 50%;
+     -moz-transform-origin: 100% 50%;
+      -ms-transform-origin: 100% 50%;
+       -o-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+}
+
+.sn-close.sn-right-mc_persp_rotate_out #tc-sn .tc-sn-inner,
+.sn-right-mc_persp_rotate_out .tc-sn-inner{
+  -webkit-transform: translate3d(100%,0,0) rotateY(-150deg);
+     -moz-transform: translate3d(100%,0,0) rotateY(-150deg);
+          transform: translate3d(100%,0,0) rotateY(-150deg);
+  -webkit-transform-origin: 0 50%;
+     -moz-transform-origin: 0 50%;
+      -ms-transform-origin: 0 50%;
+       -o-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+
+/***********************/
+/* Effect 9: Scale Up */
+/*********************/
+
+[class*=-mc_persp_scale_up].sn-open .tc-sn-inner,
+.tc-sn-visible[class*=-mc_persp_scale_up] .tc-sn-inner{
+  -webkit-transform: translate3d(0,0,0);
+     -moz-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
+}
+
+[class*=-mc_persp_scale_up].sn-close .tc-sn-inner,
+[class*=-mc_persp_scale_up] .tc-sn-inner {
+  -webkit-transform: translate3d(0, 0, -500px);
+     -moz-transform: translate3d(0, 0, -500px);
+          transform: translate3d(0, 0, -500px);
+}
+
+/*********************************/
+/* Effect 10: Delayed 3D rotate */
+/*******************************/
+
+.sn-close.sn-left-mc_persp_rotate_delay #tc-sn .tc-sn-inner,
+.sn-left-mc_persp_rotate_delay .tc-sn-inner {
+  -webkit-transform: translate3d(-50%, 0, 0) rotateY(90deg);
+     -moz-transform: translate3d(-50%, 0, 0) rotateY(90deg);
+          transform: translate3d(-50%, 0, 0) rotateY(90deg);
+  -webkit-transform-origin: 0% 50%;
+     -moz-transform-origin: 0% 50%;
+      -ms-transform-origin: 0% 50%;
+       -o-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+
+}
+.sn-close.sn-right-mc_persp_rotate_delay #tc-sn .tc-sn-inner,
+.sn-right-mc_persp_rotate_delay .tc-sn-inner {
+  -webkit-transform: translate3d(50%, 0, 0) rotateY(-90deg);
+     -moz-transform: translate3d(50%, 0, 0) rotateY(-90deg);
+          transform: translate3d(50%, 0, 0) rotateY(-90deg);
+  -webkit-transform-origin: 100% 50%;
+     -moz-transform-origin: 100% 50%;
+      -ms-transform-origin: 100% 50%;
+       -o-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+
+}
+.sn-open[class*=mc_persp_rotate_delay] #tc-sn .tc-sn-inner {
+  -webkit-transition-delay: 0.1s;
+     -moz-transition-delay: 0.1s;
+       -o-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+  -webkit-transition-timing-function: ease-in-out;
+     -moz-transition-timing-function: ease-in-out;
+       -o-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+  -webkit-transition-property: -webkit-transform;
+     -moz-transition-property: -moz-transform;
+       -o-transition-property: -o-transform;
+          transition-property: transform;
+}
+/* Effects end */
+
+/* HACK */
+/* stick the sticky header to the left/right of the page wrapper*/
+/* following needed both in mobiles with max-width 400px and in the safari version I tried 6.1.5, since looks fine also in other desktop I left it as general rule*/
+/* basically on transition's end in those browsers the sticky header moved to left 0 (or right 0) of the window, overlapping the side menu */
+.tc-sticky-header.tc-sn-visible:not(.animating)[class*=-mc_slide_top] .tc-header {
+  left: 0 !important;
+}
+
+.no-csstransforms3d .tc-sticky-header.tc-sn-visible[class*=-mc_slide_top] .tc-header {
+  left: 0 !important;
+  right: auto !important;
+}
+/* MEDIA QUERIES */
+@media (max-width: 400px){
+  .sn-open[class*=-mc_persp_] {
+    z-index: 9999; 
+  }
+}

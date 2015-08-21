@@ -64,25 +64,26 @@ class TC_utils_gc {
 
     /**
     * Defines sections, settings and function of customizer and return and array
+    * hook : tc_add_setting_control_map
      */
     function gc_update_setting_control_map( $_map ) {
         $addon_opt_prefix     = $this -> addon_opt_prefix;
         $_new_settings = array(
-          "{$addon_opt_prefix}[tc_gc_limit_excerpt_length]"  =>  array(
+          "tc_gc_limit_excerpt_length"  =>  array(
                             'default'       => 1,
                             'label'         => __( 'Limit the excerpt length when the grid customizer is enabled' , $this -> plug_lang ),
-                            'section'       => 'tc_post_list_settings' ,
+                            'section'       => 'post_lists_sec',
                             'control'       => 'TC_controls' ,
                             'type'          => 'checkbox',
                             'priority'      => 25,
                             'notice'        =>  __( "Note : bear in mind that some grid customizer effects look better when the excerpt's length is limited to only a few words." , $this -> plug_lang ),
               ),
-          "{$addon_opt_prefix}[tc_gc_enabled]"  =>  array(
+          "tc_gc_enabled"  =>  array(
                             'default'       => 1,
                             'control'       => 'TC_controls' ,
                             'title'         => __( 'Grid Customizer' , $this -> plug_lang ),
                             'label'         => __( 'Enable the Grid Customizer' , $this -> plug_lang ),
-                            'section'       => 'tc_post_list_settings' ,
+                            'section'       => 'post_lists_sec',
                             'type'          => 'select',
                             'choices'       => array(
                                     1   => __( 'Enable' ,  $this -> plug_lang ),
@@ -91,20 +92,20 @@ class TC_utils_gc {
                             'priority'      => 48,
                             'notice'        =>  __( "Applies beautiful reveal effects to your posts. <strong>Note :</strong> the Grid Customizer limits the excerpt's length to ensure an optimal rendering." , $this -> plug_lang ),
            ),
-           "{$addon_opt_prefix}[tc_gc_effect]" =>  array(
+           "tc_gc_effect" =>  array(
                             'default'       => 'effect-1',
                             'label'         => __( 'Select the hover effect' , $this -> plug_lang ),
-                            'section'       => 'tc_post_list_settings' ,
+                            'section'       => 'post_lists_sec',
                             'type'          => 'select' ,
                             'choices'       => $this -> tc_get_effects_list(),
                             'priority'      => 50,
                             'transport'     => 'postMessage',
                             'notice'        =>  __( "Depending on the choosen effect, you might want to adjust the title and / or the excerpt length with the options above." , $this -> plug_lang ),
             ),
-            "{$addon_opt_prefix}[tc_gc_random]" =>  array(
+            "tc_gc_random" =>  array(
                             'default'       => 'no-random',
                             'label'         => __( 'Randomize the effects' , $this -> plug_lang ),
-                            'section'       => 'tc_post_list_settings' ,
+                            'section'       => 'post_lists_sec',
                             'type'          => 'select',
                             'control'       => 'TC_controls',
                             'choices'       => array(
@@ -114,10 +115,10 @@ class TC_utils_gc {
                             ),
                             'priority'      => 51
             ),
-           "{$addon_opt_prefix}[tc_gc_transp_bg]" =>  array(
+           "tc_gc_transp_bg" =>  array(
                             'default'       => 'title-dark-bg',
                             'label'         => __( 'Background' , $this -> plug_lang ),
-                            'section'       => 'tc_post_list_settings' ,
+                            'section'       => 'post_lists_sec',
                             'control'       => 'TC_controls' ,
                             'type'          => 'select',
                             'control'       => 'TC_controls',
@@ -131,10 +132,10 @@ class TC_utils_gc {
                             'priority'      => 52,
                             'transport'     => 'postMessage'
             ),
-            "{$addon_opt_prefix}[tc_gc_title_location]" =>  array(
+            "tc_gc_title_location" =>  array(
                             'default'       => 'over',
                             'label'         => __( 'Title location' , $this -> plug_lang ),
-                            'section'       => 'tc_post_list_settings' ,
+                            'section'       => 'post_lists_sec',
                             'control'       => 'TC_controls' ,
                             'type'          => 'select',
                             'control'       => 'TC_controls',
@@ -144,10 +145,10 @@ class TC_utils_gc {
                             ),
                             'priority'      => 53
             ),
-            "{$addon_opt_prefix}[tc_gc_title_color]" =>  array(
+            "tc_gc_title_color" =>  array(
                             'default'       => 'white',
                             'label'         => __( 'Title color' , $this -> plug_lang ),
-                            'section'       => 'tc_post_list_settings' ,
+                            'section'       => 'post_lists_sec',
                             'control'       => 'TC_controls' ,
                             'type'          => 'select',
                             'control'       => 'TC_controls',
@@ -159,29 +160,28 @@ class TC_utils_gc {
                             'priority'      => 54,
                             'transport'     => 'postMessage'
             ),
-            "{$addon_opt_prefix}[tc_gc_title_custom_color]" => array(
+            "tc_gc_title_custom_color" => array(
                                 'default'     => TC_utils::$inst -> tc_get_skin_color(),
                                 'control'     => 'WP_Customize_Color_Control',
                                 'label'       => __( 'Title custom color' , $this -> plug_lang ),
-                                'section'     => 'tc_post_list_settings',
+                                'section'     => 'post_lists_sec',
                                 'type'        =>  'color' ,
                                 'priority'    => 55,
                                 'sanitize_callback'    => array( $this, 'tc_sanitize_hex_color' ),
                                 'sanitize_js_callback' => 'maybe_hash_hex_color',
                                 'transport'   => 'postMessage'
             ),
-            "{$addon_opt_prefix}[tc_gc_title_caps]" =>  array(
+            "tc_gc_title_caps" =>  array(
                             'default'       => 0,
                             'label'         => __( 'Post titles in big caps' , $this -> plug_lang ),
-                            'section'       => 'tc_post_list_settings' ,
+                            'section'       => 'post_lists_sec',
                             'control'       => 'TC_controls' ,
                             'type'          => 'checkbox',
                             'priority'      => 56,
                             'transport'     => 'postMessage'
             ),
         );
-        $_map['add_setting_control'] = array_merge($_map['add_setting_control'] , $_new_settings );
-        return $_map;
+        return array_merge($_map , $_new_settings );
     }
 
     /**

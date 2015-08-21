@@ -1,15 +1,15 @@
 /*! Featured Pages Unlimited Customizer controls by Nicolas Guillaume, GPL2+ licensed */
 ( function( $ ) {
-	var OptionPrefix 		= TCFPCPreviewParams.OptionPrefix,
-		CurrentBtnColor 	= $( '.fp-button' ).attr('data-color'),
-		is_random_enabled 	= $( '.fpc-widget-front' ).hasClass('tc-random-colors-enabled'),
-		btn_random_override = $( '.fpc-widget-front .fp-button' ).hasClass('btn-random-override'),
+	var OptionPrefix        = TCFPCPreviewParams.OptionPrefix,
+		CurrentBtnColor       = $( '.fp-button' ).attr('data-color'),
+		is_random_enabled     = $( '.fpc-widget-front' ).hasClass('tc-random-colors-enabled'),
+		btn_random_override   = $( '.fpc-widget-front .fp-button' ).hasClass('btn-random-override'),
 		title_random_override = $( '.fpc-widget-front .fp-title' ).hasClass('text-random-override'),
-		text_random_override = $( '.fpc-widget-front .fp-excerpt' ).hasClass('text-random-override');
+		text_random_override  = $( '.fpc-widget-front .fp-excerpt' ).hasClass('text-random-override');
 
 	//gets the param object and turn into array
 	var FPpreviewParams = $.map(TCFPCPreviewParams.FPpreview, function(value, index) {
-    	return [value];
+    return [value];
 	});
 
 	//iterates on the array
@@ -77,24 +77,33 @@
 	wp.customize( OptionPrefix + '[tc_show_fp_button]' , function( value ) {
 		value.bind( function( to ) {
 			if ( false === to ) {
-				$( '.fpc-widget-front .fpc-btn' ).addClass('fpc-hide');
+				$( '.fpc-widget-front .fp-button' ).addClass('fpc-hide');
 			} else {
-				$( '.fpc-widget-front .fpc-btn' ).removeClass('fpc-hide');
+				$( '.fpc-widget-front .fp-button' ).removeClass('fpc-hide');
 			}
 		} );
 	} );
 	//button color
 	wp.customize( OptionPrefix + '[tc_fp_button_color]' , function( value ) {
 		value.bind( function( to ) {
-			if ( btn_random_override ) {
-				$( '.fp-button' ).removeClass(CurrentBtnColor);
-				$( '.fp-button' ).addClass(to);
-				//removes style if any
-				$( '.fp-button' ).attr('style' , '');
-			} else {
-				$( '.fp-button' ).removeClass(CurrentBtnColor);
-			}
-			CurrentBtnColor = to;
+            if ( is_random_enabled && ! btn_random_override )
+              return;
+
+            var to_remove        = CurrentBtnColor,
+                to_add           = to;
+
+            if ( 'skin' == CurrentBtnColor ){
+              to_remove += ' btn btn-primary';
+              to_add    += ' fpc-btn fpc-btn-primary'
+            }else if ( 'skin' == to ){
+              to_remove += ' fpc-btn fpc-btn-primary';
+              to_add    += ' btn btn-primary';
+            }
+		    
+            $( '.fp-button' ).removeClass(to_remove).addClass(to_add);
+			$( '.fp-button' ).attr('style' , '');
+			
+            CurrentBtnColor = to;
 		} );
 	} );
 
@@ -144,4 +153,3 @@
 		} );
 	} );
 } )( jQuery );
-

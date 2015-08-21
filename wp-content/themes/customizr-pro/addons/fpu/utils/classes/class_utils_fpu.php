@@ -378,8 +378,7 @@ class TC_utils_fpu {
 
 
     function tc_get_button_color_list() {
-        return apply_filters( 'fpc_button_colors' ,
-            array(
+        $colors = array(
                 'none'    =>  __( ' &#45; Select &#45; ' ,  $this -> plug_lang ),
                 'blue'    =>  __( 'Blue' , $this -> plug_lang ),
                 'green'   =>  __( 'Green' , $this -> plug_lang ),
@@ -390,8 +389,13 @@ class TC_utils_fpu {
                 'grey'    =>  __( 'Grey' , $this -> plug_lang ),
                 'original' =>  __( 'Light grey' , $this -> plug_lang ),
                 'black'   =>  __( 'Black' , $this -> plug_lang )
-            )
         );
+
+        //if theme is customizr or customizr-pro add the skin "color" option
+        if ( class_exists( 'TC___' ) )
+          $colors = array_merge( $colors, array( 'skin' => __('Theme Skin', $this -> plug_lang ) ) );    
+        
+        return apply_filters( 'fpc_button_colors' , $colors );
     }
 
 

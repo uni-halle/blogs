@@ -3,7 +3,7 @@
  * Plugin Name: WordPress Font Customizer
  * Plugin URI: http://presscustomizr.com/extension/wordpress-font-customizer
  * Description: Make beautiful Google font combinations and apply awesome CSS3 effects to any text of your website. Preview everything right from the WordPress customizer before publishing live. Cross browser compatible, fast and easy, the WordPress Font Customizer is the ultimate tool for typography lovers.
- * Version: 2.0.11
+ * Version: 2.0.12
  * Author: Press Customizr
  * Author URI: http://presscustomizr.com
  * License: GPL2+
@@ -40,7 +40,7 @@ class TC_wfc {
             $this -> plug_name    = 'WordPress Font Customizer';
             $this -> plug_file    = __FILE__; //main plugin root file.
             $this -> plug_prefix  = 'font_customizer';
-            $this -> plug_version = '2.0.11';
+            $this -> plug_version = '2.0.12';
             $this -> plug_lang    = 'tc_font_customizer';
 
             //define the plug option key
@@ -283,55 +283,55 @@ class TC_wfc {
 
 
       function tc_get_selector_list() {
-            $theme_name       = self::$theme_name;
-            $path             = dirname( __FILE__).'/sets/';
-            //first check if option exists and get it, else create/update option
-            if ( get_option("tc_font_customizer_selectors_{$theme_name}" ) && ! isset( $_GET['wfc-refresh-selector'] ) &&  1 == get_transient('wfc_refresh_selectors') ) {
-                  //html_entity_decode for selector => fixes characters (unrecognized expression) issue in javascript
-                  $_to_return  = apply_filters( "tc_default_selectors_{$theme_name}" , get_option("tc_font_customizer_selectors_{$theme_name}" ) );
-                  $_to_return  = $this -> _clean_selector_css($_to_return);
-                  return $_to_return;
-            }
+        $theme_name       = self::$theme_name;
+        $path             = dirname( __FILE__).'/sets/';
+        //first check if option exists and get it, else create/update option
+        if ( get_option("tc_font_customizer_selectors_{$theme_name}" ) && ! isset( $_GET['wfc-refresh-selector'] ) &&  1 == get_transient('wfc_refresh_selectors') ) {
+              //html_entity_decode for selector => fixes characters (unrecognized expression) issue in javascript
+              $_to_return  = apply_filters( "tc_default_selectors_{$theme_name}" , get_option("tc_font_customizer_selectors_{$theme_name}" ) );
+              $_to_return  = $this -> _clean_selector_css($_to_return);
+              return $_to_return;
+        }
 
-            $default_selector_settings       = file_exists("{$path}{$theme_name}.json") ? @file_get_contents( "{$path}{$theme_name}.json" ) : @file_get_contents( "{$path}default.json" );
-            if ( $default_selector_settings === false ) {
-                  $default_selector_settings = ! wp_remote_fopen( sprintf( "%s/sets/{$theme_name}.json" , TC_WFC_BASE_URL ) ) ? wp_remote_fopen( sprintf( "%s/sets/default.json" , TC_WFC_BASE_URL ) ) : wp_remote_fopen( sprintf( "%s/sets/{$theme_name}.json" , TC_WFC_BASE_URL ) );
-            }
+        $default_selector_settings       = file_exists("{$path}{$theme_name}.json") ? @file_get_contents( "{$path}{$theme_name}.json" ) : @file_get_contents( "{$path}default.json" );
+        if ( $default_selector_settings === false ) {
+              $default_selector_settings = ! wp_remote_fopen( sprintf( "%s/sets/{$theme_name}.json" , TC_WFC_BASE_URL ) ) ? wp_remote_fopen( sprintf( "%s/sets/default.json" , TC_WFC_BASE_URL ) ) : wp_remote_fopen( sprintf( "%s/sets/{$theme_name}.json" , TC_WFC_BASE_URL ) );
+        }
 
-            $default_selector_settings    = json_decode( $default_selector_settings , true );
-            $default_selector_settings    = isset($default_selector_settings['default']) ? $default_selector_settings['default'] : $default_selector_settings;
+        $default_selector_settings    = json_decode( $default_selector_settings , true );
+        $default_selector_settings    = isset($default_selector_settings['default']) ? $default_selector_settings['default'] : $default_selector_settings;
 
-            $property_list                = $this -> tc_get_property_list();
-            $property_list_keys           = array_keys($property_list);
+        $property_list                = $this -> tc_get_property_list();
+        $property_list_keys           = array_keys($property_list);
 
-            $selector_list = array();
-            foreach ($default_selector_settings as $sel => $sets) {
-                  foreach ($sets as $key => $value) {
-                        $prop                           = $property_list_keys[$key];
-                        switch ($prop) {
-                              case 'color-hover':
-                                    if ( 0 === $value )
-                                          continue;
-                                    //if color-hover set to 1 then it is the main color, else there's a custom value
-                                    $selector_list[$sel][$prop]    = ( 1 === $value ) ? $property_list[$prop] : $value;
-                              break;
+        $selector_list = array();
+        foreach ($default_selector_settings as $sel => $sets) {
+              foreach ($sets as $key => $value) {
+                    $prop                           = $property_list_keys[$key];
+                    switch ($prop) {
+                          case 'color-hover':
+                                if ( 0 === $value )
+                                      continue;
+                                //if color-hover set to 1 then it is the main color, else there's a custom value
+                                $selector_list[$sel][$prop]    = ( 1 === $value ) ? $property_list[$prop] : $value;
+                          break;
 
-                              default:
-                                    $selector_list[$sel][$prop]    = ( 0 === $value ) ? $property_list[$prop] : $value;
-                              break;
-                        }
+                          default:
+                                $selector_list[$sel][$prop]    = ( 0 === $value ) ? $property_list[$prop] : $value;
+                          break;
+                    }
 
-                 }
-            }
-            update_option( "tc_font_customizer_selectors_{$theme_name}", $selector_list );
-             //html_entity_decode for selector => fixes characters (unrecognized expression) issue in javascript
-            $_to_return  = apply_filters("tc_default_selectors_{$theme_name}" , $selector_list);
-            $_to_return  = $this -> _clean_selector_css($_to_return);
+             }
+        }
+        update_option( "tc_font_customizer_selectors_{$theme_name}", $selector_list );
+         //html_entity_decode for selector => fixes characters (unrecognized expression) issue in javascript
+        $_to_return  = apply_filters("tc_default_selectors_{$theme_name}" , $selector_list);
+        $_to_return  = $this -> _clean_selector_css($_to_return);
 
-            //update refresh transient for 24 hours
-            set_transient('wfc_refresh_selectors' , 1 , 60*60*24 );
+        //update refresh transient for 24 hours
+        set_transient('wfc_refresh_selectors' , 1 , 60*60*24 );
 
-            return $_to_return;
+        return $_to_return;
       }
 
 

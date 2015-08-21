@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Footer Customizer
- * Plugin URI: http://www.presscustomizr.com/extension/footer-customizer
+ * Plugin URI: http://www.themesandco.com/extension/footer-customizer
  * Description: Customize the footer credits of the Customizr WordPress theme.
- * Version: 1.0.0
- * Author: Press Customizr
+ * Version: 1.0.1
+ * Author: presscustomizr
  * Author URI: http://presscustomizr.com
  * License: GPL2+
  */
@@ -35,7 +35,7 @@ class TC_fc {
             $this -> plug_name    = 'Footer Customizer';
             $this -> plug_file    = __FILE__; //main plugin root file.
             $this -> plug_prefix  = 'footer_customizer';
-            $this -> plug_version = '1.0.0';
+            $this -> plug_version = '1.0.1';
             $this -> plug_lang    = did_action('plugins_loaded') ? 'customizr' : 'tc_font_customizer';
 
             //define the plug option key
@@ -114,16 +114,14 @@ class TC_fc {
               'fc_site_link'              => esc_url( home_url() ),
               'fc_show_designer_credits'  => 1,
               'fc_credit_text'            => __( 'Designed by' , $this -> plug_lang ),
-              'fc_designer_name'          => 'Press Customizr',
-              'fc_designer_link'          => 'http://presscustomizr.com'
+              'fc_designer_name'          => 'Themes &amp; Co',
+              'fc_designer_link'          => 'http://themesandco.com'
             );
       }//end of construct
 
 
 
       function fc_plugin_setup() {
-        if ( ! apply_filters( 'tc_enable_footer_customizer' , true ) )
-          return;
         //update section map, since 3.2.0
         add_filter ( 'tc_add_section_map'                   , array( $this ,  'fc_update_section_map'), 20 );
         //update setting_control_map
@@ -139,15 +137,14 @@ class TC_fc {
 
       function fc_update_section_map( $sections ) {
         $_new_footer_section = array(
-                        'tc_footer_customizer'          => array(
+                        'footer_customizer_sec'          => array(
                                             'title'       =>  __( 'Footer credits' , 'customizr' ),
                                             'priority'    =>  20,
                                             'description' =>  __( 'Customize the footer credits' , 'customizr' ),
                                             'panel'       => 'tc-footer-panel'
                         ),
         );
-        $_to_return = array_merge($sections['add_section'] , $_new_footer_section);
-        return array( 'add_section' => $_to_return );
+        return array_merge($sections , $_new_footer_section);
       }
 
 
@@ -156,7 +153,7 @@ class TC_fc {
         $_options = array();
         //get saved options
         foreach ( $this -> default_options as $_opt => $_default_value ) {
-          $_options[$_opt] = $this -> fc_get_option($_opt);
+          $_options[$_opt] = $this->fc_get_option($_opt);
         }
         if ( 1 != $_options['fc_show_footer_credits'] )
           return '';
@@ -166,15 +163,15 @@ class TC_fc {
           <p>
             <?php
             printf('&middot; <span class="fc-copyright-text">%1$s</span> <a class="fc-copyright-link" href="%2$s" title="%3$s" rel="bookmark">%3$s</a>',
-              $_options['fc_copyright_text'],
-              $_options['fc_site_link'],
-              $_options['fc_site_name']
+              esc_attr( $_options['fc_copyright_text'] ),
+              esc_url( $_options['fc_site_link'] ),
+              esc_attr( $_options['fc_site_name'] )
             );
             if ( 1 == $_options['fc_show_designer_credits'] ) {
               printf( ' &middot; <span class="fc-credits-text">%1$s</span> <a class="fc-credits-link" href="%2$s" title="%3$s">%3$s</a> &middot;',
-                $_options['fc_credit_text'],
-                $_options['fc_designer_link'],
-                $_options['fc_designer_name']
+                esc_attr( $_options['fc_credit_text'] ),
+                esc_url( $_options['fc_designer_link'] ),
+                esc_attr( $_options['fc_designer_name'] )
               );
             } else {
               printf( ' &middot;');
@@ -191,81 +188,80 @@ class TC_fc {
         $plug_option_prefix     = $this -> plug_option_prefix;
         $_defaults = $this -> default_options;
         $_new_settings = array(
-          "{$plug_option_prefix}[fc_show_footer_credits]" =>  array(
+          "fc_show_footer_credits" =>  array(
                     'default'       => isset( $_defaults['fc_show_footer_credits'] ) ? $_defaults['fc_show_footer_credits'] : false,
                     'control'       => 'TC_controls' ,
                     'label'         => __( "Enable the footer copyrights and credits" , "customizr" ),
-                    'section'       => 'tc_footer_customizer' ,
+                    'section'       => 'footer_customizer_sec' ,
                     'type'          => 'checkbox',
                     'priority'      => 1
           ),
-          "{$plug_option_prefix}[fc_copyright_text]" =>  array(
+          "fc_copyright_text" =>  array(
                     'default'       => isset( $_defaults['fc_copyright_text'] ) ? $_defaults['fc_copyright_text'] : false,
                     'control'       => 'TC_controls' ,
                     'label'         => __( "Copyright text" , "customizr" ),
                     'title'         => __( "Copyright"),
-                    'section'       => 'tc_footer_customizer' ,
+                    'section'       => 'footer_customizer_sec' ,
                     'type'          => 'text',
                     'priority'      => 5,
                     'transport'   =>  'postMessage',
           ),
-          "{$plug_option_prefix}[fc_site_name]" =>  array(
+          "fc_site_name" =>  array(
                     'default'       => isset( $_defaults['fc_site_name'] ) ? $_defaults['fc_site_name'] : false,
                     'control'       => 'TC_controls' ,
                     'label'         => __( "Site name" , "customizr" ),
-                    'section'       => 'tc_footer_customizer' ,
+                    'section'       => 'footer_customizer_sec' ,
                     'type'          => 'text',
                     'priority'      => 10,
                     'transport'   =>  'postMessage',
           ),
-          "{$plug_option_prefix}[fc_site_link]" =>  array(
+          "fc_site_link" =>  array(
                     'default'       => isset( $_defaults['fc_site_link'] ) ? $_defaults['fc_site_link'] : false,
                     'control'       => 'TC_controls' ,
                     'label'         => __( "Site link" , "customizr" ),
-                    'section'       => 'tc_footer_customizer' ,
+                    'section'       => 'footer_customizer_sec' ,
                     'type'          => 'url',
                     'priority'      => 20,
                     'transport'   =>  'postMessage',
           ),
-          "{$plug_option_prefix}[fc_show_designer_credits]" =>  array(
+          "fc_show_designer_credits" =>  array(
                     'default'       => isset( $_defaults['fc_show_designer_credits'] ) ? $_defaults['fc_show_designer_credits'] : false,
                     'control'       => 'TC_controls' ,
                     'label'         => __( "Display designer credits" , "customizr" ),
                     'title'         => __( "Credits"),
-                    'section'       => 'tc_footer_customizer' ,
+                    'section'       => 'footer_customizer_sec' ,
                     'type'          => 'checkbox',
                     'priority'      => 30
           ),
-          "{$plug_option_prefix}[fc_credit_text]" =>  array(
+          "fc_credit_text" =>  array(
                     'default'       => isset( $_defaults['fc_credit_text'] ) ? $_defaults['fc_credit_text'] : false,
                     'control'       => 'TC_controls' ,
                     'label'         => __( "Credit text" , "customizr" ),
-                    'section'       => 'tc_footer_customizer' ,
+                    'section'       => 'footer_customizer_sec' ,
                     'type'          => 'text',
                     'priority'      => 40,
                     'transport'   =>  'postMessage',
           ),
-          "{$plug_option_prefix}[fc_designer_name]" =>  array(
+          "fc_designer_name" =>  array(
                     'default'       => isset( $_defaults['fc_designer_name'] ) ? $_defaults['fc_designer_name'] : false,
                     'control'       => 'TC_controls' ,
                     'label'         => __( "Designer name" , "customizr" ),
-                    'section'       => 'tc_footer_customizer' ,
+                    'section'       => 'footer_customizer_sec' ,
                     'type'          => 'text',
                     'priority'      => 50,
                     'transport'   =>  'postMessage',
           ),
-          "{$plug_option_prefix}[fc_designer_link]" =>  array(
+          "fc_designer_link" =>  array(
                     'default'       => isset( $_defaults['fc_designer_link'] ) ? $_defaults['fc_designer_link'] : false,
                     'control'       => 'TC_controls' ,
                     'label'         => __( "Designer link" , "customizr" ),
-                    'section'       => 'tc_footer_customizer' ,
+                    'section'       => 'footer_customizer_sec' ,
                     'type'          => 'url',
                     'priority'      => 60,
                     'transport'   =>  'postMessage',
           ),
         );
-        $_map['add_setting_control'] = array_merge($_map['add_setting_control'] , $_new_settings );
-        return $_map;
+        return array_merge($_map , $_new_settings );
       }
 
 

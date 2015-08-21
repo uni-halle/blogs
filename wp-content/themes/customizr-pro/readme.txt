@@ -1,4 +1,4 @@
-# Customizr Pro v1.1.9
+# Customizr Pro v1.2.3
 > The pro version of the popular Customizr WordPress theme.
 
 ## Copyright
@@ -14,6 +14,86 @@ Customizr Pro is distributed under the terms of the [GNU GPL v2.0 or later](http
 * HOOKS API : http://presscustomizr.com/customizr/hooks-api/
 
 ## Changelog
+= 1.2.3 August 4th 2015 =
+* fixed : polylang compat code according to the new customizer settings
+* fixed : use original sizes (full) for logo and favicon attachments
+
+= 1.2.2 July 31st 2015 =
+* fixed : minor css adjustements for the menus
+* added : a dismissable help notice under the main regular menu, on front-end, for logged-in admin users (edit options cap)
+
+= 1.2.1 July 30th 2015 =
+* fixed : expand on click not working for the secondary menu.
+
+= 1.2.0 July 30th 2015 =
+* added : new features for sliders : use a custom link, possibility to link the entire slide and to open the page in a new tab
+* added : new default sidenav menu
+* added : new optional secondary menu
+* added : new default page menu
+* added : new feature smoothscroll option in customize > Global Settings
+* added : new feature Sticky Footer in customize > Footer
+* added : a "sidebars" panel in the customizer including a social links section. (moved from global settings > Social links). Header and Footer social links checkboxes have been also moved into their respective panels.
+* added : a theme updated notice that can be dismissed. Automatically removed after 5 prints.
+* added : various optional front end help notices and placeholder blocks for first time users.
+* added : (Featured paged) the theme skin is now available for the buttons 
+* fix : avoid blocks reordering when they contain at least one iframe (avoid some reported plugin conflicts)
+* fix : video post format, show full content in alternate layout
+* fix : display slider-loading-gif only if js enabled
+* fix : display a separator after the heading in the page for posts (when not home)
+* fix : html5shiv is loaded only for ie9-
+* fix : dynamic sidebar reordering of the sidebar was not triggered since latest front js framework implementation improved : used of the tc-resize event for all resize related actions added : secondary menu items re-location for responsivereplaced : (js) 'resize' event by the custom 'tc-resize'
+* fix : anchors smooth scroll - exclude ultimate members anchor links
+* changed : customize transport of the header layout setting is now 'refresh'
+* improved : modernizr upgraded to the latest version
+* improved : customizer preview is refreshed faster
+
+= 1.1.13 July 10th 2015 =
+* fix : slider creation/edition bug when sorting slides due to latest slider update.
+
+= 1.1.12 July 6th 2015 =
+* added : enhancements for Customizr Pro updates ( activation key Api requests )
+* fix: do not try to access maybe not existent TC_featured_pages class
+* fix : custom link not displayed in admin slides table
+added grunt commands
+* fix: slider front and backend improvements
+* fix: Use the global post variable in place of get_post for wp backward compatibility
+* fix: do not justify woocommerce product titles
+* fix: better check on wheter display or not attachment content
+
+= 1.1.11 June 25th 2015 =
+* fix : re-introduce btt-arrow handling in new front js
+* fix : fix external link on multiple occurrences and exclude parents
+
+= 1.1.10 June 19th 2015 =
+* fix : drop cap not working with composed words including the '-' character
+* fix: allow img smartload in mobiles
+* fix: new emoji core script collision with svg tags => falls back to classic smileys if <svg> are loaded on the pages (by holder.js)
+* fix: do not add no-effect class to round-divs when center images on
+* fix: prevent hiding of selecter dropdown
+* fix: use original img sizes
+* fix: some ie8 fixes for the new front-js
+* fix : reset margin for sticky header was not using the right variable
+* fix : close tc-page-wrapper before wp_footer() to avoid issues with wp admin bar
+* fix: when unhooking tc_parse_imgs for nextgen compatibility use proper priority
+* fix: better rtl slide controls and swiping(js)
+* changed : replace load function by loadCzr() => load might be a reserved word
+* updated Hebrew translion for V 3.3.26
+* updated translations for v 3.3.26
+* updated Hebrew translations f v3.3.26
+* added : split main front js into parts
+* added : js czrapp extendable object
+* added : sticky header as a sub class of Czr_Base
+* added : js event handlers for sidebar reordering actions
+* added : cleaner class inheritance framework for front end js
+* added : a div#tc-page-wrap including header, content and footer
+* added : oldBrowserCompat.js file including map + object.create
+* added : filter method to the Array.prototype for old browsers
+* added : a simple event manager set of methods in the front czrapp js
+* fix : post-navigation regression introduced while merging rtl code
+* fix: better check whether print or not the widget placeholder script
+* added : option filter and better contx retro compat to default
+* updated : Swedish translation sv_SE.po
+
 = 1.1.9 May 15th 2015 =
 * fix: store empty() function bool in a var to fix a PHP version compatibility issue
 * fix: use proper priority for tc_parse_imgs callback of the_content filter

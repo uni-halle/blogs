@@ -64,9 +64,9 @@
         _old_panel_html;
 
     if ( 'function' != typeof api.section )
-      _section_container = $('li#accordion-section-tc_post_list_settings');
+      _section_container = $('li#accordion-section-post_lists_sec');
     else
-      _section_container = api.section('tc_post_list_settings').container;
+      _section_container = api.section('post_lists_sec').container;
 
     _old_html = $( '.accordion-section-title' , _section_container ).html();
 

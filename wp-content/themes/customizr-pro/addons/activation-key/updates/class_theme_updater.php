@@ -7,6 +7,7 @@ class TC_theme_updater{
   private $license_key;
   private $version;
   private $author;
+  protected $strings = null;
 
   function __construct( $args = array() ) {
     $args = wp_parse_args( $args, array(
@@ -28,21 +29,47 @@ class TC_theme_updater{
     $this->author         = $author;
     $this->remote_api_url = $remote_api_url;
     $this->response_key   = $this->theme_slug . '-update-response';
+    $this->strings        = TC_activation_key::$instance -> strings;
 
+    //api not accessible transient name
+    $this->api_not_accessible_transient = $this->theme_slug . '_api_not_accessible';
+
+    add_action( 'load-themes.php'                       , array( &$this, 'load_themes_screen' ) );
 
     add_filter( 'site_transient_update_themes'          , array( &$this, 'theme_update_transient' ) );
     add_filter( 'delete_site_transient_update_themes'   , array( &$this, 'delete_theme_update_transient' ) );
     add_action( 'load-update-core.php'                  , array( &$this, 'delete_theme_update_transient' ) );
     add_action( 'load-themes.php'                       , array( &$this, 'delete_theme_update_transient' ) );
-    add_action( 'load-themes.php'                       , array( &$this, 'load_themes_screen' ) );
+
+
+    //change the url for the changelog
+    add_filter( 'wp_prepare_themes_for_js'              , array( $this, 'tc_set_correct_changelog_url') );
   }
 
+
+  /*******************************************************
+  * VIEWS
+  *******************************************************/
+  /*
+  * hook : load-themes.php
+  */
   function load_themes_screen() {
     add_thickbox();
-    add_action( 'admin_notices', array( &$this, 'update_nag' ) );
+    //UPGRADE MESSAGE : print the box on top of the theme's list in the the theme page
+    add_action( 'admin_notices', array( $this, 'update_nag' ) );
+
+    //API NOT ACCESSIBLE MESSAGE : print a box on top of the theme's list in the the theme page
+    add_action( 'admin_notices', array( $this, '_api_not_accessible' ) );
   }
 
+
+  /*
+  * hook : admin_notices
+  * fired in load_themes_screen
+  */
   function update_nag() {
+    $strings = $this->strings;
+
     $theme = wp_get_theme( $this->theme_slug );
 
     $api_response = get_transient( $this->response_key );
@@ -51,28 +78,76 @@ class TC_theme_updater{
       return;
 
     $update_url = wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=' . urlencode( $this->theme_slug ), 'upgrade-theme_' . $this->theme_slug );
-    $update_onclick = ' onclick="if ( confirm(\'' . esc_js( __( "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update." ) ) . '\') ) {return true;}return false;"';
+    $update_onclick = ' onclick="if ( confirm(\'' . esc_js( $strings['update-notice'] ) . '\') ) {return true;}return false;"';
 
     if ( version_compare( $this->version, $api_response->new_version, '<' ) ) {
 
       echo '<div id="update-nag">';
-        printf( '<strong>%1$s %2$s</strong> is available. <a href="%3$s" class="thickbox" title="%4s">Check out what\'s new</a> or <a href="%5$s"%6$s>update now</a>.',
-          $theme->get( 'Name' ),
-          $api_response->new_version,
-          '#TB_inline?width=640&amp;inlineId=' . $this->theme_slug . '_changelog',
-          $theme->get( 'Name' ),
-          $update_url,
-          $update_onclick
-        );
+      printf(
+        $strings['update-available'],
+        $theme->get( 'Name' ),
+        $api_response->new_version,
+        '#TB_inline?width=640&amp;inlineId=' . $this->theme_slug . '_changelog',
+        $theme->get( 'Name' ),
+        $update_url,
+        $update_onclick
+      );
       echo '</div>';
       echo '<div id="' . $this->theme_slug . '_' . 'changelog" style="display:none;">';
-        echo wpautop( $api_response->sections['changelog'] );
+      echo wpautop( $api_response->sections['changelog'] );
       echo '</div>';
     }
   }
 
 
+
+  /*
+  * hook : admin_notices
+  * fired in load_themes_screen
+  * Maybe display a notice in the theme screen if attemps to access the update API have failes
+  * @uses transient : api_not_accessible
+  */
+  function _api_not_accessible() {
+    //check if transient api not accessible exists
+    $api_response = get_transient( $this->response_key );
+
+    if ( ! get_transient($this->api_not_accessible_transient) )
+      return;
+
+    $theme = wp_get_theme( $this->theme_slug );
+    $theme_name = $theme->get( 'Name' );
+
+    ob_start();
+      ?>
+        <div class="update-nag">
+          <?php printf( '%1$s <strong>%2$s</strong>. %3$s <a href="%4$s" title="%5$s">%5$s</a>.',
+          __( "We couldn't check the updates for ", 'customizr'),
+          $theme_name,
+          __( 'You might need to check for updates on <a href="http://presscustomizr.com/extension/customizr-pro" title="Press Customizr" target="_blank">presscustomizr.com</a> and ', "customizr" ),
+          admin_url( 'themes.php?page=tc-licenses'),
+          __( "upload the theme manually", "customizr" )
+          ); ?>
+        </div>
+      <?php
+    $_html = ob_get_contents();
+    if ($_html) ob_end_clean();
+    echo $_html;
+  }
+
+
+
+  /*******************************************************
+  * WORDPRESS UPDATE API HOOKS
+  *******************************************************/
+  /*
+  * hook : site_transient_update_themes
+  * fired in all admin pages
+  */
   function theme_update_transient( $value ) {
+    //) if api has not been accessible in the last 24 hours, do nothing
+    if ( get_transient($this->api_not_accessible_transient) )
+      return $value;
+
     $update_data = $this->check_for_update();
     if ( $update_data ) {
       $value->response[ $this->theme_slug ] = $update_data;
@@ -81,19 +156,32 @@ class TC_theme_updater{
   }
 
 
+  /*
+  * hook : delete_site_transient_update_themes
+  * hook : load-update-core.php
+  * hook : load-themes.php
+  */
   function delete_theme_update_transient() {
     delete_transient( $this->response_key );
   }
 
 
+  /*
+  * fired in theme_update_transient() <= in all admin pages
+  * Maybe set a transient if API not accessible $this->api_not_accessible_transient
+  */
   function check_for_update() {
-
     $theme = wp_get_theme( $this->theme_slug );
 
     $update_data = get_transient( $this->response_key );
+
     if ( false === $update_data ) {
+      /*********************************************
+      * No transient. We need to set an update_data transient
+      **********************************************/
       $failed = false;
 
+      // if no license entered => do nothing
       if( empty( $this->license ) )
         return false;
 
@@ -106,10 +194,11 @@ class TC_theme_updater{
         'url'           => home_url()
       );
 
-      $response = wp_remote_post( $this->remote_api_url, array( 'timeout' => 2000, 'sslverify' => false, 'body' => $api_params ) );
+      $response = wp_remote_post( $this->remote_api_url, array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params , 'decompress' => false) );
 
       // make sure the response was successful
       if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
+        set_transient( $this->api_not_accessible_transient, true, 60*60*24 );
         $failed = true;
       }
 
@@ -132,12 +221,40 @@ class TC_theme_updater{
         $update_data->sections = maybe_unserialize( $update_data->sections );
         set_transient( $this->response_key, $update_data, strtotime( '+12 hours' ) );
       }
-    }
+    }//if false === $update_data
 
+    /*********************************************
+    * We have a transient (30 min long )
+    **********************************************/
     if ( version_compare( $this->version, $update_data->new_version, '>=' ) ) {
       return false;
     }
 
+    //at this stage, the API has answered so we can delete the $this->api_not_accessible_transient if exists
+    delete_transient( $this->api_not_accessible_transient );
+
     return (array) $update_data;
+  }//check_for_updates()
+
+
+
+
+  /*******************************************************
+  * VARIOUS CALLBACKS / HELPERS
+  *******************************************************/
+  /**
+  * Change the url for the changelog to get the local changelod (instead of the one on presscustomizr.com)
+  * hook : wp_prepare_themes_for_js
+  */
+  function tc_set_correct_changelog_url( $prepared_themes ) {
+    if ( ! isset($prepared_themes[$this->theme_slug]) || ! $prepared_themes[$this->theme_slug]['hasUpdate'] || ! isset($prepared_themes[$this->theme_slug]['update']) )
+      return $prepared_themes;
+
+    $prepared_themes[$this->theme_slug]['update'] = str_replace(
+      'http://presscustomizr.com/extension/customizr-pro/?changelog=1&#038;TB_iframe=true&#038;width=1024&#038;height=800',
+      '#TB_inline?width=640&inlineId=customizr-pro_changelog',
+      $prepared_themes[$this->theme_slug]['update']
+    );
+    return $prepared_themes;
   }
 }

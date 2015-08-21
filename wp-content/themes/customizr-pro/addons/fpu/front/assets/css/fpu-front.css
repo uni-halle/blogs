@@ -76,10 +76,8 @@
 .fpc-marketing .fpc-widget-front h2 {
   font-size: 1.6em;
   margin: 10px 0;
-  font-family: inherit;
   font-weight: 700;
   line-height: 1.2em;
-  color: inherit;
   text-shadow: 0 1px 0 #FFF;
   text-align: center
 }
@@ -91,7 +89,6 @@
   padding: 0!important;
   display: inline!important;
   line-height: 1em!important;
-  color: inherit!important
 }
 .fpc-widget-front .thumb-wrapper {
   width: 269px;
@@ -237,6 +234,11 @@
 }
 .fpc-widget-front .fp-excerpt.fpc-hide,.fpc-widget-front .fp-title.fpc-hide,.fpc-widget-front .fpc-btn.fpc-hide,.fpc-widget-front .thumb-wrapper.fpc-hide {
   display: none!important
+}
+.fpc-widget-front .btn {
+  padding: 4px 12px!important;
+  margin-bottom: 0;
+  margin-top: 10px;
 }
 .fpc-widget-front .fpc-btn {
   display: inline-block!important;
