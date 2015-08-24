@@ -41,6 +41,7 @@ a.relCategory { display: block; }
 .navbar .current-menu-ancestor a {
     color: inherit !important;
 }
+.tc-sidebar .current-cat>a,
 .tc-sidebar .current-menu-item a {
     color: #222 !important;
 }
