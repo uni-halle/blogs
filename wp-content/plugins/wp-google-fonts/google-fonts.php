@@ -2,7 +2,7 @@
 /* 
 Plugin Name: WP Google Fonts
 Plugin URI: http://adrian3.com/projects/wordpress-plugins/wordpress-google-fonts-plugin/
-Version: v3.1.3
+Version: v3.1.4
 Description: The Wordpress Google Fonts Plugin makes it even easier to add and customize Google fonts on your site through Wordpress. 
 Author: Noah Kagan
 Author URI: http://SumoMe.com/
@@ -1265,8 +1265,8 @@ if (!class_exists('googlefonts')) {
 		
 		// ajax handling
 		function googlefont_action_callback() {
-			$name = $_POST['googlefont_ajax_name'];
-			$family = $_POST['googlefont_ajax_family'];
+			$name = sanitize_text_field($_POST['googlefont_ajax_name']);
+			$family = sanitize_text_field($_POST['googlefont_ajax_family']);
 			$normalized_name = $this->gf_normalize_font_name($family);
 			$variants = $this->gf_get_font_data_by_family($name, $family, 'variants');
 			$subsets = $this->gf_get_font_data_by_family($name, $family, 'subsets');

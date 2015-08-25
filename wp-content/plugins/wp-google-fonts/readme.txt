@@ -16,6 +16,9 @@ The WP Google Font plugin makes it even easier to use Google's free service to a
 Right now, the Google Directory has hundreds of great fonts, and the selection is steadily growing. As new fonts are added, we will release updates to the plugin quickly so you can start using new fonts as they become available. It truly is an exciting time to be creating websites, and I hope this plugin helps you create some great stuff. - Adrian3
 
 == Changelog ==
+Version 3.1.4
+- Fix XSS vuln
+
 Version 3.1.3
 - Fix SSL cert notices on settings page for Google API requests.
 
