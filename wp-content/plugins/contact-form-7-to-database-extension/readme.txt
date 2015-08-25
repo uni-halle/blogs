@@ -5,8 +5,8 @@ Tags: contact form,database,contact form database,save contact form,form databas
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 3.2.1
-Tested up to: 4.2.3
-Stable tag: 2.9.6
+Tested up to: 4.3
+Stable tag: 2.9.7
 
 Saves submitted form data to the database. Export the data to a file or use short codes to display it.
 
@@ -83,6 +83,9 @@ You can always deactivate the plugin without loosing data.
 1. Admin Panel view of submitted form data
 
 == Changelog ==
+
+= 2.9.8 =
+* Bug fix: Capturing Gravity Forms List element when it has columns
 
 = 2.9.7 =
 * Bug Fix: Capturing file uploads from WR Contact Form 1.1.10
