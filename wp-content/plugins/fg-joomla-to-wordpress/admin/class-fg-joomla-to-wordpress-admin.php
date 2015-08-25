@@ -1301,7 +1301,7 @@ SQL;
 			}
 			$import_external = ($this->plugin_options['import_external'] == 1) || (isset($options['force_external']) && $options['force_external'] );
 			
-			$filename = str_replace("%20", " ", $filename); // for filenames with spaces
+			$filename = urldecode($filename); // for filenames with spaces or accents
 			
 			$filetype = wp_check_filetype($filename);
 			if ( empty($filetype['type']) || ($filetype['type'] == 'text/html') ) { // Unrecognized file type
@@ -1318,7 +1318,11 @@ SQL;
 					return false;
 				}
 			} else {
-				$old_filename = trailingslashit($this->plugin_options['url']) . $filename;
+				if ( strpos($filename, '/') == 0 ) { // Avoid a double slash
+					$old_filename = untrailingslashit($this->plugin_options['url']) . $filename;
+				} else {
+					$old_filename = trailingslashit($this->plugin_options['url']) . $filename;
+				}
 			}
 			$old_filename = str_replace(" ", "%20", $old_filename); // for filenames with spaces
 			$img_dir = strftime('%Y/%m', strtotime($date));
@@ -1459,7 +1463,7 @@ SQL;
 				foreach ( $post_media as $old_filename => $attachment_id ) {
 					$media = array();
 					$media['attachment_id'] = $attachment_id;
-					$media['old_filename_without_spaces'] = str_replace(" ", "%20", $old_filename); // for filenames with spaces
+					$media['url_old_filename'] = urlencode($old_filename); // for filenames with spaces or accents
 					if ( preg_match('/image/', get_post_mime_type($attachment_id)) ) {
 						// Image
 						$image_src = wp_get_attachment_image_src($attachment_id, 'full');
@@ -1499,13 +1503,17 @@ SQL;
 						if ( preg_match_all('#(src|href)="(.*?)"#i', $new_link, $matches, PREG_SET_ORDER) ) {
 							$caption = '';
 							foreach ( $matches as $match ) {
-								$old_filename = str_replace('%20', ' ', $match[2]); // For filenames with %20
+								$old_filename = $match[2];
 								$link_type = ($match[1] == 'src')? 'img': 'a';
 								if ( array_key_exists($old_filename, $medias) ) {
 									$media = $medias[$old_filename];
 									if ( array_key_exists('new_url', $media) ) {
-										if ( (strpos($new_link, $old_filename) > 0) || (strpos($new_link, $media['old_filename_without_spaces']) > 0) ) {
-											$new_link = preg_replace('#('.$old_filename.'|'.$media['old_filename_without_spaces'].')#', $media['new_url'], $new_link, 1);
+										if ( (strpos($new_link, $old_filename) > 0) || (strpos($new_link, $media['url_old_filename']) > 0) ) {
+											// URL encode the filename
+											$new_filename = basename($media['new_url']);
+											$encoded_new_filename = rawurlencode($new_filename);
+											$new_url = str_replace($new_filename, $encoded_new_filename, $media['new_url']);
+											$new_link = preg_replace('#(' . preg_quote($old_filename) . '|' . preg_quote($media['url_old_filename']) . ')#', $new_url, $new_link, 1);
 
 											if ( $link_type == 'img' ) { // images only
 												// Define the width and the height of the image if it isn't defined yet
@@ -2042,6 +2050,33 @@ SQL;
 			return false;
 		}
 
+		/**
+		 * Test if a remote file exists
+		 * 
+		 * @param string $filePath
+		 * @return boolean True if the file exists
+		 */
+		public function url_exists($filePath) {
+			$url = str_replace(' ', '%20', $filePath);
+			$url = str_replace('http://', '', $url);
+			if ( strstr($url, '/') ) {
+				$url = explode('/', $url, 2);
+				$url[1] = '/' . $url[1];
+			} else {
+				$url = array($url, '/');
+			}
+
+			$fh = fsockopen($url[0], 80);
+			if ( $fh ) {
+				fputs($fh,'GET ' . $url[1] . " HTTP/1.1\nHost:" . $url[0] . "\n\n");
+				$response = fread($fh, 22);
+				fclose($fh);
+				return (strpos($response, '200') !== false);
+			} else {
+				return false;
+			}
+		}
+		
 		/**
 		 * Search a term by its slug (LIKE search)
 		 * 

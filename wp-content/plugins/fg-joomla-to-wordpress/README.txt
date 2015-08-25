@@ -3,8 +3,8 @@ Contributors: Frédéric GILLES
 Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree
 Requires at least: 3.0
-Tested up to: 4.2.4
-Stable tag: 2.3.2
+Tested up to: 4.3
+Stable tag: 2.3.3
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -15,7 +15,7 @@ A plugin to migrate categories, posts, tags, images and other medias from Joomla
 
 This plugin migrates sections, categories, posts, images, medias and tags from Joomla to Wordpress.
 
-It has been tested with **Joomla versions 1.5 through 3.4** and **Wordpress 4.2** on huge databases (72 000+ posts). It is compatible with multisite installations.
+It has been tested with **Joomla versions 1.5 through 3.4** and **Wordpress 4.3** on huge databases (72 000+ posts). It is compatible with multisite installations.
 
 Major features include:
 
@@ -203,6 +203,10 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * other can be translated
 
 == Changelog ==
+
+= 2.3.3 =
+* Fixed: Some medias with accents were not imported
+* Tested with WordPress 4.3
 
 = 2.3.2 =
 * Tested with WordPress 4.2.4
@@ -620,6 +624,10 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 2.3.3 =
+Fixed: Some medias with accents were not imported
+Tested with WordPress 4.3
 
 = 2.3.2 =
 Tested with WordPress 4.2.4
