@@ -4,11 +4,11 @@ Plugin Name: Visual Form Builder
 Description: Dynamically build forms using a simple interface. Forms include jQuery validation, a basic logic-based verification system, and entry tracking.
 Author: Matthew Muro
 Author URI: http://matthewmuro.com
-Version: 2.8.3
+Version: 2.8.4
 */
 
 // Version number to output as meta tag
-define( 'VFB_VERSION', '2.8.3' );
+define( 'VFB_VERSION', '2.8.4' );
 
 /*
 This program is free software; you can redistribute it and/or modify
@@ -274,7 +274,8 @@ class Visual_Form_Builder{
     	if ( current_user_can( 'manage_options' ) ) :
 ?>
 			<a href="<?php echo add_query_arg( array( 'action' => 'visual_form_builder_media_button', 'width' => '450' ), admin_url( 'admin-ajax.php' ) ); ?>" class="button add_media thickbox" title="Add Visual Form Builder form">
-				<img width="18" height="18" src="<?php echo plugins_url( 'visual-form-builder/images/vfb_icon.png' ); ?>" alt="<?php _e( 'Add Visual Form Builder form', 'visual-form-builder' ); ?>" style="vertical-align: middle; margin-left: -8px; margin-top: -2px;" /> <?php _e( 'Add Form', 'visual-form-builder' ); ?>
+				<span class="dashicons dashicons-feedback" style="color:#888; display: inline-block; width: 18px; height: 18px; vertical-align: text-top; margin: 0 4px 0 0;"></span>
+				<?php _e( 'Add Form', 'visual-form-builder' ); ?>
 			</a>
 <?php
 		endif;
@@ -1550,7 +1551,7 @@ class Visual_Form_Builder{
 	public function add_admin() {
 		$current_pages = array();
 
-		$current_pages[ 'vfb' ] = add_menu_page( __( 'Visual Form Builder', 'visual-form-builder' ), __( 'Visual Form Builder', 'visual-form-builder' ), 'manage_options', 'visual-form-builder', array( &$this, 'admin' ), plugins_url( 'visual-form-builder/images/vfb_icon.png' ) );
+		$current_pages[ 'vfb' ] = add_menu_page( __( 'Visual Form Builder', 'visual-form-builder' ), __( 'Visual Form Builder', 'visual-form-builder' ), 'manage_options', 'visual-form-builder', array( &$this, 'admin' ), 'dashicons-feedback' );
 
 		add_submenu_page( 'visual-form-builder', __( 'Visual Form Builder', 'visual-form-builder' ), __( 'All Forms', 'visual-form-builder' ), 'manage_options', 'visual-form-builder', array( &$this, 'admin' ) );
 		$current_pages[ 'vfb-add-new' ] = add_submenu_page( 'visual-form-builder', __( 'Add New Form', 'visual-form-builder' ), __( 'Add New Form', 'visual-form-builder' ), 'manage_options', 'vfb-add-new', array( &$this, 'admin_add_new' ) );
@@ -1811,20 +1812,18 @@ class Visual_Form_Builder{
 				        <ul>
 				        	<li><a href="http://vfbpro.com/collections/add-ons"><?php _e( 'Now with Add-Ons' , 'visual-form-builder'); ?></a></li>
 				            <li><?php _e( 'Akismet Support' , 'visual-form-builder'); ?></li>
-				            <li><?php _e( 'reCAPTCHA' , 'visual-form-builder'); ?></li>
+				            <li><?php _e( 'reCAPTCHA v2' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Conditional Logic' , 'visual-form-builder'); ?></li>
-				            <li><?php _e( '10+ new Form Fields' , 'visual-form-builder'); ?></li>
+				            <li><?php _e( '15 new Form Fields' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Complete Entries Management' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Import/Export' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Quality HTML Email Template' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Plain Text Email Option' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Email Designer' , 'visual-form-builder'); ?></li>
-				            <li><?php _e( 'Analytics' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Data &amp; Form Migration' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Scheduling' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Limit Form Entries' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Form Paging' , 'visual-form-builder'); ?></li>
-				            <li><?php _e( 'Live Preview' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Custom Capabilities' , 'visual-form-builder'); ?></li>
 				            <li><?php _e( 'Automatic Updates' , 'visual-form-builder'); ?></li>
 				        </ul>
