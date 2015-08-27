@@ -18,7 +18,7 @@
                 <?php if ( comments_open() && ! post_password_required() ) : ?>
                     <span class="sep sep-comment"> &mdash; </span>
                     <span class="comments-link">
-                        <?php comments_popup_link(__('No Comments &darr;', 'catchbox'), __('1 Comment &darr;', 'catchbox'), __('% Comments &darr;', 'catchbox')); ?>
+                        <?php comments_popup_link(__('No Comments &darr;', 'catch-box'), __('1 Comment &darr;', 'catch-box'), __('% Comments &darr;', 'catch-box')); ?>
                     </span>
                 <?php endif; ?>
             </div><!-- .entry-meta -->
@@ -28,7 +28,7 @@
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php wp_link_pages( array( 
-			'before'		=> '<div class="page-link"><span class="pages">' . __( 'Pages:', 'catchbox' ) . '</span>',
+			'before'		=> '<div class="page-link"><span class="pages">' . __( 'Pages:', 'catch-box' ) . '</span>',
 			'after'			=> '</div>',
 			'link_before' 	=> '<span>',
 			'link_after'   	=> '</span>',
@@ -39,16 +39,16 @@
 	<footer class="entry-meta">
 		<?php
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( __( ', ', 'catchbox' ) );
+			$categories_list = get_the_category_list( __( ', ', 'catch-box' ) );
 
 			/* translators: used between list items, there is a space after the comma */
-			$tag_list = get_the_tag_list( '', __( ', ', 'catchbox' ) );
+			$tag_list = get_the_tag_list( '', __( ', ', 'catch-box' ) );
 			if ( '' != $tag_list ) {
-				$utility_text = __( 'This entry was posted in %1$s and tagged %2$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'catchbox' );
+				$utility_text = __( 'This entry was posted in %1$s and tagged %2$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'catch-box' );
 			} elseif ( '' != $categories_list ) {
-				$utility_text = __( 'This entry was posted in %1$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'catchbox' );
+				$utility_text = __( 'This entry was posted in %1$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'catch-box' );
 			} else {
-				$utility_text = __( 'This entry was posted by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'catchbox' );
+				$utility_text = __( 'This entry was posted by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'catch-box' );
 			}
 
 			printf(
@@ -61,7 +61,7 @@
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
 			);
 		?>
-		<?php edit_post_link( __( 'Edit', 'catchbox' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( __( 'Edit', 'catch-box' ), '<span class="edit-link">', '</span>' ); ?>
 
 		
 	</footer><!-- .entry-meta -->
@@ -73,11 +73,11 @@
 				<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'catchbox_author_bio_avatar_size', 68 ) ); ?>
 			</div><!-- #author-avatar -->
 			<div id="author-description">
-				<h2><?php printf( __( 'About %s', 'catchbox' ), get_the_author() ); ?></h2>
+				<h2><?php printf( __( 'About %s', 'catch-box' ), get_the_author() ); ?></h2>
 				<?php the_author_meta( 'description' ); ?>
 				<div id="author-link">
 					<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
-						<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'catchbox' ), get_the_author() ); ?>
+						<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'catch-box' ), get_the_author() ); ?>
 					</a>
 				</div><!-- #author-link	-->
 			</div><!-- #author-description -->

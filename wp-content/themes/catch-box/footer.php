@@ -41,7 +41,7 @@
 		 */
 		do_action( 'catchbox_before_footer_menu' ); 		
 		
-		if ( has_nav_menu( 'footer', 'catchbox' ) ) {
+		if ( has_nav_menu( 'footer', 'catch-box' ) ) {
 			// Check is footer menu is enable or not
 			$options = catchbox_get_theme_options();
 			if ( !empty ($options ['enable_menus'] ) ) :
@@ -51,7 +51,7 @@
 			endif;
 			?>
 			<nav id="access-footer" class="<?php echo $menuclass; ?>" role="navigation">
-				<h3 class="assistive-text"><?php _e( 'Footer menu', 'catchbox' ); ?></h3>
+				<h3 class="assistive-text"><?php _e( 'Footer menu', 'catch-box' ); ?></h3>
 				<?php wp_nav_menu( array( 'theme_location'  => 'footer', 'container_class' => 'menu-footer-container', 'depth' => 1 ) );  ?>
 			</nav>
        	<?php 

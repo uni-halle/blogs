@@ -1,5 +1,12 @@
 == Changelog ==
 
+Version 3.7
+* Bug Fixed: Content editor width issue (Reported by Robertf)
+* Compatible with WordPress 4.3
+* Removed support for WordPress version less than 4.1
+* Updated codes to comply with deprecating PHP4 style constructors in WordPress 4.3
+* Updated text-domain
+
 Version 3.6.1
 * Bug Fixed: Breadcrumbs div issue when Breadcrumbs is disable in WordPress SEO by Yoast plugin (Reported by Franziska)
 
@@ -414,7 +421,7 @@ Version 1.0.3
 * Added CSS to support plugin WP-PageNavi and WP Page Numbers Plugins
 
 Version 1.0.2
-* Removed extra register_nav_menu( 'primary', __( 'Primary Menu', 'catchbox' ) );
+* Removed extra register_nav_menu( 'primary', __( 'Primary Menu', 'catch-box' ) );
 * Removed Extra add_custom_background();
 
 Version 1.0.1

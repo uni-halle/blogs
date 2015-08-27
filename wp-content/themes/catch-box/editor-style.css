@@ -3,9 +3,6 @@ Theme Name: Catch Box
 Description: Used to style the TinyMCE editor.
 */
 
-html .mceContentBody {
-	max-width: 584px;
-}
 * {
 	color: inherit;
 	font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;

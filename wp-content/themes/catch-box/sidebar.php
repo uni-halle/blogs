@@ -26,16 +26,16 @@ else :
 				//Helper Text
 				if ( current_user_can( 'edit_theme_options' ) ) { ?>
 					<aside id="widget-default-text" class="widget widget_text">
-			           	<h3 class="widget-title"><?php _e( 'Primary Sidebar Widget Area', 'catchbox' ); ?></h3>
+			           	<h3 class="widget-title"><?php _e( 'Primary Sidebar Widget Area', 'catch-box' ); ?></h3>
 	           			<div class="textwidget">
-	                   		<p><?php _e( 'This is the Primary Sidebar Widget Area if you are using a two column site layout option.', 'catchbox' ); ?></p>
-	                   		<p><?php printf( __( 'By default it will load Search and Archives widgets as shown below. You can add widget to this area by visiting your <a href="%s">Widgets Panel</a> which will replace default widgets.', 'catchbox' ), admin_url( 'widgets.php' ) ); ?></p>
+	                   		<p><?php _e( 'This is the Primary Sidebar Widget Area if you are using a two column site layout option.', 'catch-box' ); ?></p>
+	                   		<p><?php printf( __( 'By default it will load Search and Archives widgets as shown below. You can add widget to this area by visiting your <a href="%s">Widgets Panel</a> which will replace default widgets.', 'catch-box' ), admin_url( 'widgets.php' ) ); ?></p>
 	                 	</div>
 		       		</aside><!-- #widget-default-text -->
 				<?php
 				} ?>
 				<aside id="archives" class="widget">
-					<h3 class="widget-title"><?php _e( 'Archives', 'catchbox' ); ?></h3>
+					<h3 class="widget-title"><?php _e( 'Archives', 'catch-box' ); ?></h3>
                     <div class="widget-content">
                         <ul>
                             <?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>

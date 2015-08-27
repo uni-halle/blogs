@@ -8,7 +8,7 @@
  */
 $options = catchbox_get_theme_options();
 if ( empty( $options['search_display_text'] ) || $options['search_display_text'] == 'Search' ) { 
-	$search_text =  __( 'Search', 'catchbox' );
+	$search_text =  __( 'Search', 'catch-box' );
 }
 else {
 	$search_text = esc_attr( $options['search_display_text'] );

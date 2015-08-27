@@ -17,8 +17,8 @@ class catchbox_adwidget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'widget_catchbox_adwidget', // Base ID
-			__( 'CT: Adspace Widget', 'catchbox' ), // Name
-			array( 'description' => __( 'Use this widget to add any type of Ad as a widget. ', 'catchbox' ) ) // Args
+			__( 'CT: Adspace Widget', 'catch-box' ), // Name
+			array( 'description' => __( 'Use this widget to add any type of Ad as a widget. ', 'catch-box' ) ) // Args
 		);
 	}
 	
@@ -36,26 +36,26 @@ class catchbox_adwidget extends WP_Widget {
 		$alt = esc_attr( $instance[ 'alt' ] );
 		?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title (optional):','catchbox'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title (optional):','catch-box'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" />
         </p>
         <?php if ( current_user_can( 'unfiltered_html' ) ) : // Only show it to users who can edit it ?>
             <p>
-                <label for="<?php echo $this->get_field_id('adcode'); ?>"><?php _e('Ad Code:','catchbox'); ?></label>
+                <label for="<?php echo $this->get_field_id('adcode'); ?>"><?php _e('Ad Code:','catch-box'); ?></label>
                 <textarea name="<?php echo $this->get_field_name('adcode'); ?>" class="widefat" id="<?php echo $this->get_field_id('adcode'); ?>"><?php echo $adcode; ?></textarea>
             </p>
             <p><strong>or</strong></p>
         <?php endif; ?>
         <p>
-            <label for="<?php echo $this->get_field_id('image'); ?>"><?php _e('Image Url:','catchbox'); ?></label>
+            <label for="<?php echo $this->get_field_id('image'); ?>"><?php _e('Image Url:','catch-box'); ?></label>
         <input type="text" name="<?php echo $this->get_field_name('image'); ?>" value="<?php echo $image; ?>" class="widefat" id="<?php echo $this->get_field_id('image'); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('href'); ?>"><?php _e('Link URL:','catchbox'); ?></label>
+            <label for="<?php echo $this->get_field_id('href'); ?>"><?php _e('Link URL:','catch-box'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('href'); ?>" value="<?php echo esc_url( $href ); ?>" class="widefat" id="<?php echo $this->get_field_id('href'); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('alt'); ?>"><?php _e('Alt text:','catchbox'); ?></label>
+            <label for="<?php echo $this->get_field_id('alt'); ?>"><?php _e('Alt text:','catch-box'); ?></label>
             <input type="text" name="<?php echo $this->get_field_name('alt'); ?>" value="<?php echo $alt; ?>" class="widefat" id="<?php echo $this->get_field_id('alt'); ?>" />
         </p>
         <?php

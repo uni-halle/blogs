@@ -79,7 +79,7 @@ function catchbox_setup() {
 	 * Add your files into /languages/ directory.
 	 * @see http://codex.wordpress.org/Function_Reference/load_theme_textdomain
 	 */
-	load_theme_textdomain( 'catchbox', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'catch-box', get_template_directory() . '/languages' );
 	
 	/**
      * Add callback for custom TinyMCE editor stylesheets. (editor-style.css)
@@ -108,9 +108,9 @@ function catchbox_setup() {
      * @see http://codex.wordpress.org/Function_Reference/register_nav_menus
      */		
 	register_nav_menus(array(
-		'primary' 	=> __( 'Primary Menu', 'catchbox' ),
-	   	'secondary'	=> __( 'Secondary Menu', 'catchbox' ),
-		'footer'	=> __( 'Footer Menu', 'catchbox' )
+		'primary' 	=> __( 'Primary Menu', 'catch-box' ),
+	   	'secondary'	=> __( 'Secondary Menu', 'catch-box' ),
+		'footer'	=> __( 'Footer Menu', 'catch-box' )
 	) );
 
 	/**
@@ -178,19 +178,19 @@ function catchbox_setup() {
 			'url' => '%s/images/headers/garden.jpg',
 			'thumbnail_url' => '%s/images/headers/garden-thumbnail.jpg',
 			/* translators: header image description */
-			'description' => __( 'Garden', 'catchbox' )
+			'description' => __( 'Garden', 'catch-box' )
 		),
 		'shore' => array(
 			'url' => '%s/images/headers/flower.jpg',
 			'thumbnail_url' => '%s/images/headers/flower-thumbnail.jpg',
 			/* translators: header image description */
-			'description' => __( 'Flower', 'catchbox' )
+			'description' => __( 'Flower', 'catch-box' )
 		),
 		'trolley' => array(
 			'url' => '%s/images/headers/mountain.jpg',
 			'thumbnail_url' => '%s/images/headers/mountain-thumbnail.jpg',
 			/* translators: header image description */
-			'description' => __( 'Mountain', 'catchbox' )
+			'description' => __( 'Mountain', 'catch-box' )
 		),
 	) );
 
@@ -317,58 +317,6 @@ function catchbox_admin_header_image() { ?>
 endif; // catchbox_admin_header_image
 
 
-if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
-	/**
-	* Filters wp_title to print a neat <title> tag based on what is being viewed.
-	*
-	* @param string $title Default title text for current view.
-	* @param string $sep Optional separator.
-	* @return string The filtered title.
-	*/
-	function catchbox_wp_title( $title, $sep ) {
-		if ( is_feed() ) {
-			return $title;
-		}
-		
-		global $page, $paged;
-		
-		// Add the blog name
-		$title .= get_bloginfo( 'name', 'display' );
-		
-		// Add the blog description for the home/front page.
-		$site_description = get_bloginfo( 'description', 'display' );
-		
-		if ( $site_description && ( is_home() || is_front_page() ) ) {
-			$title .= " $sep $site_description";
-		}
-		
-		// Add a page number if necessary:
-		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-			$title .= " $sep " . sprintf( __( 'Page %s', '_s' ), max( $paged, $page ) );
-		}
-		
-		return $title;
-		
-	}
-		
-	add_filter( 'wp_title', 'catchbox_wp_title', 10, 2 );
-
-	
-	/**
-	* Title shim for sites older than WordPress 4.1.
-	*
-	* @link https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
-	* @todo Remove this function when WordPress 4.3 is released.
-	*/
-	function catchbox_render_title() {
-	?>
-		<title><?php wp_title( '|', true, 'right' ); ?></title>
-	<?php
-	}
-	add_action( 'wp_head', 'catchbox_render_title' );
-endif;
-
-
 /**
  * Sets the post excerpt length.
  *
@@ -391,7 +339,7 @@ if ( ! function_exists( 'catchbox_continue_reading_link' ) ) :
  * Returns a "Continue Reading" link for excerpts
  */
 function catchbox_continue_reading_link() {
-	return ' <a class="more-link" href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'catchbox' ) . '</a>';
+	return ' <a class="more-link" href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'catch-box' ) . '</a>';
 }
 endif;
 
@@ -460,7 +408,7 @@ function catchbox_widgets_init() {
 	register_widget( 'catchbox_adwidget' );
 
 	register_sidebar( array(
-		'name' => __( 'Main Sidebar', 'catchbox' ),
+		'name' => __( 'Main Sidebar', 'catch-box' ),
 		'id' => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
@@ -469,9 +417,9 @@ function catchbox_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => __( 'Footer Area One', 'catchbox' ),
+		'name' => __( 'Footer Area One', 'catch-box' ),
 		'id' => 'sidebar-2',
-		'description' => __( 'An optional widget area for your site footer', 'catchbox' ),
+		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',
@@ -479,9 +427,9 @@ function catchbox_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => __( 'Footer Area Two', 'catchbox' ),
+		'name' => __( 'Footer Area Two', 'catch-box' ),
 		'id' => 'sidebar-3',
-		'description' => __( 'An optional widget area for your site footer', 'catchbox' ),
+		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',
@@ -489,9 +437,9 @@ function catchbox_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => __( 'Footer Area Three', 'catchbox' ),
+		'name' => __( 'Footer Area Three', 'catch-box' ),
 		'id' => 'sidebar-4',
-		'description' => __( 'An optional widget area for your site footer', 'catchbox' ),
+		'description' => __( 'An optional widget area for your site footer', 'catch-box' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',
@@ -523,7 +471,7 @@ function catchbox_content_nav( $nav_id ) {
 
 	if ( $wp_query->max_num_pages > 1 ) {  ?>  
 		<nav id="<?php echo $nav_id; ?>">
-			<h3 class="assistive-text"><?php _e( 'Post navigation', 'catchbox' ); ?></h3>
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'catch-box' ); ?></h3>
 			<?php if ( function_exists('wp_pagenavi' ) )  { 
 				wp_pagenavi();
 			}
@@ -531,8 +479,8 @@ function catchbox_content_nav( $nav_id ) {
 				wp_page_numbers();
 			}
 			else { ?>	
-				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'catchbox' ) ); ?></div>
-				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'catchbox' ) ); ?></div>
+				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'catch-box' ) ); ?></div>
+				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'catch-box' ) ); ?></div>
 			<?php 
 			} ?>
 		</nav><!-- #nav -->
@@ -552,7 +500,7 @@ function catchbox_content_query_nav( $nav_id ) {
 	
 	if ( $wp_query->max_num_pages > 1 ) { ?>
 		<nav id="<?php echo $nav_id; ?>">
-        	<h3 class="assistive-text"><?php _e( 'Post navigation', 'catchbox' ); ?></h3>
+        	<h3 class="assistive-text"><?php _e( 'Post navigation', 'catch-box' ); ?></h3>
 			<?php if ( function_exists('wp_pagenavi' ) )  { 
                 wp_pagenavi();
             }
@@ -560,8 +508,8 @@ function catchbox_content_query_nav( $nav_id ) {
                 wp_page_numbers();
             }
             else { ?>	
-            	<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'catchbox' ) ); ?></div>
-                <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'catchbox' ) ); ?></div>
+            	<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'catch-box' ) ); ?></div>
+                <div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'catch-box' ) ); ?></div>
             <?php 
             } ?>
 		</nav><!-- #nav -->
@@ -639,7 +587,7 @@ function catchbox_comment( $comment, $args, $depth ) {
 		case 'trackback' :
 	?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'catchbox' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'catchbox' ), '<span class="edit-link">', '</span>' ); ?></p>
+		<p><?php _e( 'Pingback:', 'catch-box' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'catch-box' ), '<span class="edit-link">', '</span>' ); ?></p>
 	<?php
 			break;
 		default :
@@ -656,22 +604,22 @@ function catchbox_comment( $comment, $args, $depth ) {
 						echo get_avatar( $comment, $avatar_size );
 
 						/* translators: 1: comment author, 2: date and time */
-						printf( __( '%1$s on %2$s <span class="says">said:</span>', 'catchbox' ),
+						printf( __( '%1$s on %2$s <span class="says">said:</span>', 'catch-box' ),
 							sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
 							sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
 								esc_url( get_comment_link( $comment->comment_ID ) ),
 								get_comment_time( 'c' ),
 								/* translators: 1: date, 2: time */
-								sprintf( __( '%1$s at %2$s', 'catchbox' ), get_comment_date(), get_comment_time() )
+								sprintf( __( '%1$s at %2$s', 'catch-box' ), get_comment_date(), get_comment_time() )
 							)
 						);
 					?>
 
-					<?php edit_comment_link( __( 'Edit', 'catchbox' ), '<span class="edit-link">', '</span>' ); ?>
+					<?php edit_comment_link( __( 'Edit', 'catch-box' ), '<span class="edit-link">', '</span>' ); ?>
 				</div><!-- .comment-author .vcard -->
 
 				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'catchbox' ); ?></em>
+					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'catch-box' ); ?></em>
 					<br />
 				<?php endif; ?>
 
@@ -680,7 +628,7 @@ function catchbox_comment( $comment, $args, $depth ) {
 			<div class="comment-content"><?php comment_text(); ?></div>
 
 			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply <span>&darr;</span>', 'catchbox' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply <span>&darr;</span>', 'catch-box' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
 		</article><!-- #comment-## -->
 
@@ -699,13 +647,13 @@ if ( ! function_exists( 'catchbox_posted_on' ) ) :
  * @since Catch Box 1.0
  */
 function catchbox_posted_on() {
-	printf( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date updated" datetime="%3$s" pubdate>%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'catchbox' ),
+	printf( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date updated" datetime="%3$s" pubdate>%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'catch-box' ),
 		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() ),
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		esc_attr( sprintf( __( 'View all posts by %s', 'catchbox' ), get_the_author() ) ),
+		esc_attr( sprintf( __( 'View all posts by %s', 'catch-box' ), get_the_author() ) ),
 		get_the_author()
 	);
 }
@@ -757,7 +705,7 @@ add_filter( 'body_class', 'catchbox_body_classes' );
  */
 function catchbox_post_id_column( $post_columns ) {
 	$beginning = array_slice( $post_columns, 0 ,1 );
-	$beginning[ 'postid' ] = __( 'ID', 'catchbox'  );
+	$beginning[ 'postid' ] = __( 'ID', 'catch-box'  );
 	$ending = array_slice( $post_columns, 1 );
 	$post_columns = array_merge( $beginning, $ending );
 	return $post_columns;
@@ -845,7 +793,7 @@ function catchbox_sliders() {
 				if ( $i == 1 ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
 				$catchbox_sliders .= '
 				<div class="'.$classes.'">
-					<a href="'.get_permalink().'" title="'.sprintf( esc_attr__( 'Permalink to %s', 'catchbox' ), the_title_attribute( 'echo=0' ) ).'" rel="bookmark">
+					<a href="'.get_permalink().'" title="'.sprintf( esc_attr__( 'Permalink to %s', 'catch-box' ), the_title_attribute( 'echo=0' ) ).'" rel="bookmark">
 							'.get_the_post_thumbnail( $post->ID, 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
 					</a>
 					<div class="featured-text">'
@@ -980,9 +928,9 @@ function catchbox_comment_form_fields( $fields ) {
 	$req = get_option( 'require_name_email' );
 	$aria_req = ( $req ? " aria-required='true'" : '' );
 	$commenter = wp_get_current_commenter();
-    $fields['author'] = '<p class="comment-form-author"><label for="author">' . esc_attr__( 'Name', 'catchbox' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+    $fields['author'] = '<p class="comment-form-author"><label for="author">' . esc_attr__( 'Name', 'catch-box' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
         '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>';
-    $fields['email'] = '<p class="comment-form-email"><label for="email">' . esc_attr__( 'Email', 'catchbox' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+    $fields['email'] = '<p class="comment-form-email"><label for="email">' . esc_attr__( 'Email', 'catch-box' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
         '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>'; 
     return $fields;
 }
@@ -1359,14 +1307,14 @@ if ( ! function_exists( 'catchbox_header_menu' ) ) :
  */
 function catchbox_header_menu() { ?>
 	<nav id="access" role="navigation">
-		<h3 class="assistive-text"><?php _e( 'Primary menu', 'catchbox' ); ?></h3>
+		<h3 class="assistive-text"><?php _e( 'Primary menu', 'catch-box' ); ?></h3>
 		<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'catchbox' ); ?>"><?php _e( 'Skip to primary content', 'catchbox' ); ?></a></div>
-		<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'catchbox' ); ?>"><?php _e( 'Skip to secondary content', 'catchbox' ); ?></a></div>
+		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'catch-box' ); ?>"><?php _e( 'Skip to primary content', 'catch-box' ); ?></a></div>
+		<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'catch-box' ); ?>"><?php _e( 'Skip to secondary content', 'catch-box' ); ?></a></div>
 		<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
 	
 		<?php
-			if ( has_nav_menu( 'primary', 'catchbox' ) ) { 
+			if ( has_nav_menu( 'primary', 'catch-box' ) ) { 
 				$args = array(
 					'theme_location'    => 'primary',
 					'container_class' 	=> 'menu-header-container', 
@@ -1382,7 +1330,7 @@ function catchbox_header_menu() { ?>
 			   
 		</nav><!-- #access -->
 		
-	<?php if ( has_nav_menu( 'secondary', 'catchbox' ) ) {
+	<?php if ( has_nav_menu( 'secondary', 'catch-box' ) ) {
 		// Check is footer menu is enable or not
 		$options = catchbox_get_theme_options();
 		if ( !empty ($options ['enable_menus'] ) ) :
@@ -1392,10 +1340,10 @@ function catchbox_header_menu() { ?>
 		endif;
 		?>
         <nav id="access-secondary" class="<?php echo $menuclass; ?>"  role="navigation">
-			<h3 class="assistive-text"><?php _e( 'Secondary menu', 'catchbox' ); ?></h3>
+			<h3 class="assistive-text"><?php _e( 'Secondary menu', 'catch-box' ); ?></h3>
 				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'catchbox' ); ?>"><?php _e( 'Skip to primary content', 'catchbox' ); ?></a></div>
-				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'catchbox' ); ?>"><?php _e( 'Skip to secondary content', 'catchbox' ); ?></a></div>
+				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'catch-box' ); ?>"><?php _e( 'Skip to primary content', 'catch-box' ); ?></a></div>
+				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'catch-box' ); ?>"><?php _e( 'Skip to secondary content', 'catch-box' ); ?></a></div>
 			<?php wp_nav_menu( array( 'theme_location'  => 'secondary', 'container_class' => 'menu-secondary-container' ) );  ?>
 		</nav>
 	<?php }

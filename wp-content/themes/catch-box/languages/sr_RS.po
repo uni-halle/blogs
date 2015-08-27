@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-05 13:48+0545\n"
-"PO-Revision-Date: 2015-08-05 13:48+0545\n"
+"POT-Creation-Date: 2015-08-20 18:31+0545\n"
+"PO-Revision-Date: 2015-08-20 18:31+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Catch Themes <info@catchinternet.com>\n"
 "Language: sr\n"
@@ -141,7 +141,7 @@ msgstr "Komentari su zatvoreni."
 #: ../content-aside.php:16 ../content-featured.php:14
 #: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
 #: ../content-link.php:16 ../content-quote.php:14 ../content-status.php:15
-#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:848
+#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:796
 #, php-format
 msgid "Permalink to %s"
 msgstr "Permalink za %s"
@@ -169,7 +169,7 @@ msgstr "%"
 
 #: ../content-aside.php:33 ../content-gallery.php:32 ../content-image.php:27
 #: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
-#: ../content.php:55 ../functions.php:394
+#: ../content.php:55 ../functions.php:342
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Nastaviti čitanje <span class=\"meta-nav\">&rarr;</span>"
 
@@ -201,8 +201,8 @@ msgstr "<b>%</b> Odgovora"
 #: ../content-aside.php:50 ../content-featured.php:51
 #: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
 #: ../content-page.php:27 ../content-quote.php:78 ../content-single.php:64
-#: ../content-status.php:51 ../content.php:100 ../functions.php:642
-#: ../functions.php:670 ../image.php:97
+#: ../content-status.php:51 ../content.php:100 ../functions.php:590
+#: ../functions.php:618 ../image.php:97
 msgid "Edit"
 msgstr "Uredi"
 
@@ -273,7 +273,7 @@ msgstr ""
 "</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
 "title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 
-#: ../content-image.php:45 ../functions.php:708
+#: ../content-image.php:45 ../functions.php:656
 #, php-format
 msgid "View all posts by %s"
 msgstr "Vidi sve objave od %s"
@@ -371,68 +371,63 @@ msgstr "Cvet"
 msgid "Mountain"
 msgstr "Planina"
 
-#: ../functions.php:347
-#, php-format
-msgid "Page %s"
-msgstr "Stranica %s"
-
-#: ../functions.php:463
+#: ../functions.php:411
 msgid "Main Sidebar"
 msgstr "Glavna bočna traka"
 
-#: ../functions.php:472
+#: ../functions.php:420
 msgid "Footer Area One"
 msgstr "Podnožje prvi deo"
 
-#: ../functions.php:474 ../functions.php:484 ../functions.php:494
+#: ../functions.php:422 ../functions.php:432 ../functions.php:442
 msgid "An optional widget area for your site footer"
 msgstr "Neobavezni dodatak za podnožje vaše stranice"
 
-#: ../functions.php:482
+#: ../functions.php:430
 msgid "Footer Area Two"
 msgstr "Podnožje drugi deo"
 
-#: ../functions.php:492
+#: ../functions.php:440
 msgid "Footer Area Three"
 msgstr "Podnožje treći deo"
 
-#: ../functions.php:526 ../functions.php:555 ../single.php:15
+#: ../functions.php:474 ../functions.php:503 ../single.php:15
 msgid "Post navigation"
 msgstr "Navigacija objava"
 
-#: ../functions.php:534 ../functions.php:563
+#: ../functions.php:482 ../functions.php:511
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Starije objave"
 
-#: ../functions.php:535 ../functions.php:564
+#: ../functions.php:483 ../functions.php:512
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Novije objave <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../functions.php:642
+#: ../functions.php:590
 msgid "Pingback:"
 msgstr "Pingback:"
 
 #. translators: 1: comment author, 2: date and time
-#: ../functions.php:659
+#: ../functions.php:607
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s na %2$s <span class=\"says\">kaže:</span>"
 
 #. translators: 1: date, 2: time
-#: ../functions.php:665
+#: ../functions.php:613
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s u %2$s"
 
-#: ../functions.php:674
+#: ../functions.php:622
 msgid "Your comment is awaiting moderation."
 msgstr "Vaš komentar čeka odobrenje od moderatora."
 
-#: ../functions.php:683
+#: ../functions.php:631
 msgid "Reply <span>&darr;</span>"
 msgstr "Odgovori <span>&darr;</span>"
 
-#: ../functions.php:702
+#: ../functions.php:650
 #, php-format
 msgid ""
 "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
@@ -447,31 +442,31 @@ msgstr ""
 "<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
 "\" rel=\"author\">%7$s</a></span></span>"
 
-#: ../functions.php:760
+#: ../functions.php:708
 msgid "ID"
 msgstr "ID"
 
-#: ../functions.php:983
+#: ../functions.php:931
 msgid "Name"
 msgstr "Ime"
 
-#: ../functions.php:985 ../inc/theme-options.php:887
+#: ../functions.php:933 ../inc/theme-options.php:887
 msgid "Email"
 msgstr "Email"
 
-#: ../functions.php:1362
+#: ../functions.php:1310
 msgid "Primary menu"
 msgstr "Osnovni meni"
 
-#: ../functions.php:1364 ../functions.php:1397
+#: ../functions.php:1312 ../functions.php:1345
 msgid "Skip to primary content"
 msgstr "Preskoči na osnovni sadržaj"
 
-#: ../functions.php:1365 ../functions.php:1398
+#: ../functions.php:1313 ../functions.php:1346
 msgid "Skip to secondary content"
 msgstr "Preskoči na dodatni sadržaj"
 
-#: ../functions.php:1395
+#: ../functions.php:1343
 msgid "Secondary menu"
 msgstr "Dodatni meni"
 
@@ -1078,6 +1073,9 @@ msgstr "Sledeće <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Arhiva oznaka: %s"
+
+#~ msgid "Page %s"
+#~ msgstr "Stranica %s"
 
 #~ msgid "Use this widget to add any type of Ad as a widget."
 #~ msgstr ""
