@@ -40,12 +40,12 @@ class Wunderground_Forecast_Widget extends WP_Widget {
 
 		$widget_ops = array(
 			'classname' => 'wunderground',
-			'description' => __( 'Add a Wunderground.com forecast')
+			'description' => __( 'Add a Wunderground.com forecast', 'wunderground')
 		);
 
 		$control_options = array( 'width' => 450 ); // Min-width of widgets config with expanded sidebar
 
-		parent::WP_Widget( false, __('Wunderground'), $widget_ops, $control_options );
+		parent::__construct( 'wunderground', __('Wunderground', 'wunderground'), $widget_ops, $control_options );
 	}
 
 	/**
@@ -98,6 +98,9 @@ class Wunderground_Forecast_Widget extends WP_Widget {
 
 		// PWS is offline or something.
 		if( !empty( $data['wunderground']->response->error )) {
+
+			$this->maybe_display_error( $data['wunderground']->response->error );
+
 			do_action('wunderground_log_debug', 'There was an error in the Wunderground response:', $data['wunderground']->response->error );
 			return;
 		}
@@ -114,6 +117,20 @@ class Wunderground_Forecast_Widget extends WP_Widget {
 		do_action('wunderground_render_template', $instance['layout'], $data );
 
 		echo $after_widget;
+	}
+
+	/**
+	 * If the user is logged in, display the error message
+	 * @param stdClass $error
+	 */
+	function maybe_display_error( $error ) {
+
+		if( !current_user_can( 'manage_options') || !is_object( $error ) || empty( $error->type ) ) {
+			return;
+		}
+
+		echo '<h4>' . esc_html( sprintf( __( 'There was an error fetching the forecast: %s', 'wunderground' ), $error->type ) ). '</h4>';
+
 	}
 
 	function getLocation() {
@@ -177,7 +194,7 @@ class Wunderground_Forecast_Widget extends WP_Widget {
 
 			$days_select = wunderground_render_select($this->get_field_name('numdays'), $this->get_field_id('numdays'), array( 1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10 ), $numdays);
 
-			echo sprintf('<label for="%s"><h3>%s</h3> %s</label>', $this->get_field_id('numdays'), __('# of Days in Forecast'), $days_select);
+			echo sprintf('<label for="%s"><h3>%s</h3> %s</label>', $this->get_field_id('numdays'), __('# of Days in Forecast', 'wunderground'), $days_select);
 
 		?>
 			<p>
@@ -238,11 +255,11 @@ class Wunderground_Forecast_Widget extends WP_Widget {
 				$boxes = array(
 					'search' => array(
 						'label' => __('Search Form', 'wunderground'),
-						'description' => __('Allow searching weather forecasts.')
+						'description' => __('Allow searching weather forecasts.', 'wunderground')
 					),
 					'daynames' => array(
 						'label' => __('Weekday Labels', 'wunderground'),
-						'description' => __('Show the names of the days of the week.')
+						'description' => __('Show the names of the days of the week.', 'wunderground')
 					),
 					'date' => array(
 						'label' => __('Date', 'wunderground'),
