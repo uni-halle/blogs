@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-18 19:59:05+0000\n"
+"PO-Revision-Date: 2015-08-26 08:51:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,11 +96,11 @@ msgstr "Menü Optionen"
 msgid "Registration confirmation will be e-mailed to you."
 msgstr "Du erhältst eine Bestätigung der Registrierung per E-Mail."
 
-#: wp-includes/script-loader.php:378
+#: wp-includes/script-loader.php:379
 msgid "Hide"
 msgstr "Verstecken"
 
-#: wp-includes/script-loader.php:377
+#: wp-includes/script-loader.php:378
 msgid "Show"
 msgstr "Anzeigen"
 
@@ -324,10 +324,6 @@ msgstr "[%s] Passwort wurde geändert"
 msgid "Close inserted text tag"
 msgstr "Tag für eingefügten Text schließen"
 
-#: wp-includes/script-loader.php:109
-msgid "Inserted text"
-msgstr "Tag für eingefügten Text schließen"
-
 #: wp-includes/shortcodes.php:301
 msgid "Attempting to parse a shortcode without a valid callback: %s"
 msgstr "Es wurde versucht, einen Shortcode ohne gültigen Callback zu parsen: %s"
@@ -368,6 +364,10 @@ msgstr ""
 #: wp-includes/taxonomy.php:513
 msgid "No tags"
 msgstr "Keine Schlagwörter"
+
+#: wp-includes/script-loader.php:109
+msgid "Inserted text"
+msgstr "Eingefügter Text"
 
 #: wp-includes/script-loader.php:106
 msgid "Close blockquote tag"
@@ -542,7 +542,7 @@ msgstr "Menü hinzufügen"
 
 #: wp-includes/class-wp-customize-nav-menus.php:453
 msgid "This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom links."
-msgstr "Dieser Panel ist zuständig für das Verwalten von Menüs für Inhalte, die du bereits auf deiner Website veröffentlicht hast. Du kannst Menüs erstellen und Einträge für existierende Inhalte wie Seiten, Beiträge, Kategorien, Schlagworte, Formate oder benutzerdefinierte Links hinzufügen."
+msgstr "Dieser Panel ist zuständig für die Verwaltung von Menüs für Inhalte, die du bereits auf deiner Website veröffentlicht hast. Du kannst Menüs erstellen und Einträge für existierende Inhalte wie Seiten, Beiträge, Kategorien, Schlagworte, Formate oder benutzerdefinierte Links hinzufügen."
 
 #. translators: 1: item name, 2: item position, 3: parent item name
 #: wp-includes/class-wp-customize-nav-menus.php:383
@@ -651,7 +651,7 @@ msgstr "%s (ungültig)"
 #. translators: %s: Current menu location
 #: wp-includes/class-wp-customize-nav-menus.php:329
 msgid "(Currently set to: %s)"
-msgstr "Aktueller Wert: %s"
+msgstr "(Aktueller Wert: %s)"
 
 #: wp-includes/class-wp-customize-nav-menus.php:118
 msgctxt "nav menu home label"
@@ -752,12 +752,12 @@ msgstr "Brauchst du Hilfe? <a href='https://codex.wordpress.org/Editing_wp-confi
 
 #: wp-includes/functions.php:3621
 msgid "Please see <a href=\"https://codex.wordpress.org/Debugging_in_WordPress\">Debugging in WordPress</a> for more information."
-msgstr "Schau Dir <a href=\"https://codex.wordpress.org/Debugging_in_WordPress\">Debugging in WordPress</a> an, um mehr darüber zu erfahren."
+msgstr "Schau dir <a href=\"https://codex.wordpress.org/Debugging_in_WordPress\">Debugging in WordPress</a> an, um mehr darüber zu erfahren."
 
 #: wp-includes/ms-load.php:433
 msgid "Read the <a target=\"_blank\" href=\"https://codex.wordpress.org/Debugging_a_WordPress_Network\">bug report</a> page. Some of the guidelines there may help you figure out what went wrong."
 msgstr ""
-"Lese die <a target=\"_blank\" href=\"https://codex.wordpress.org/Debugging_a_WordPress_Network\">Fehler-Report</a>-Seite. \n"
+"Lies die <a target=\"_blank\" href=\"https://codex.wordpress.org/Debugging_a_WordPress_Network\">Fehler-Report</a>-Seite. \n"
 "Einige der Richtlinien können dir helfen, herauszufinden, was falsch gelaufen ist."
 
 #: wp-includes/admin-bar.php:135
@@ -795,7 +795,7 @@ msgstr "%s aktualisiert!"
 #. translators: Plugin name and version
 #: wp-includes/script-loader.php:571
 msgid "Updating %s..."
-msgstr "Aktualisiere %s..."
+msgstr "Aktualisiere %s ..."
 
 #: wp-includes/class-wp-customize-section.php:416
 msgctxt "theme"
@@ -847,10 +847,6 @@ msgstr "<strong>FEHLER</strong>: Ungültiger Benutzername. <a href=\"%s\">Hast d
 msgid "Customizer"
 msgstr "Customizer"
 
-#: wp-includes/script-loader.php:566
-msgid "Updating..."
-msgstr "Aktualisiere..."
-
 #: wp-includes/script-loader.php:567
 msgid "Updated!"
 msgstr "Aktualisiert!"
@@ -863,7 +859,11 @@ msgstr "Aktualisierung erfolgreich abgeschlossen."
 #. translators: JavaScript accessible string
 #: wp-includes/script-loader.php:577
 msgid "Updating... please wait."
-msgstr "Aktualisiere... bitte warten."
+msgstr "Aktualisiere ... bitte warten."
+
+#: wp-includes/script-loader.php:566
+msgid "Updating..."
+msgstr "Aktualisiere ..."
 
 #. translators: Do not translate USERNAME, PASSWORD, LOGINLINK, SITE_NAME:
 #. those are placeholders.
@@ -1032,14 +1032,14 @@ msgstr "Installierte Themes durchsuchen ..."
 msgid "Live Preview"
 msgstr "Live-Vorschau"
 
-#: wp-includes/class-wp-customize-manager.php:630
-msgid "Loading ..."
-msgstr "Lade..."
-
 #: wp-includes/class-wp-customize-control.php:1428
 #: wp-includes/class-wp-customize-section.php:435
 msgid "Theme Details"
 msgstr "Theme-Details"
+
+#: wp-includes/class-wp-customize-manager.php:630
+msgid "Loading ..."
+msgstr "Lade ..."
 
 #: wp-includes/link-template.php:2387
 msgctxt "next post"
@@ -1094,7 +1094,7 @@ msgstr "Rich Text-Bereich. Drücke Alt-Shift-H für Hilfe."
 
 #: wp-includes/class-wp-editor.php:1046
 msgid "Elements path"
-msgstr "Elemente Pfad"
+msgstr "Elemente-Pfad"
 
 #. translators: 1: month, 2: day of month
 #: wp-includes/date.php:457
@@ -5065,10 +5065,6 @@ msgstr "Tut mir leid, du kannst keine Kommentare bearbeiten."
 msgid "Invalid comment status."
 msgstr "Ungültiger Kommentarstatus."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3444
-msgid "You must be registered to comment"
-msgstr "Um einen Kommentar zu hinterlassen, musst du angemeldet sein."
-
 #: wp-includes/class-wp-xmlrpc-server.php:3488
 msgid "Comment author name and email are required"
 msgstr "Name und E-Mail-Adresse des Autoren sind erforderlich."
@@ -5222,6 +5218,10 @@ msgstr "Der Beitrag konnte leider nicht bearbeitet werden. Irgendetwas ging schi
 #: wp-includes/class-wp-xmlrpc-server.php:5885
 msgid "Sorry, you can not edit this post."
 msgstr "Du verfügst nicht über ausreichende Rechte, um diesen Beitrag zu bearbeiten."
+
+#: wp-includes/class-wp-xmlrpc-server.php:3444
+msgid "You must be registered to comment"
+msgstr "Um einen Kommentar zu schreiben, musst du angemeldet sein."
 
 #: wp-includes/user.php:1894
 msgid "Cannot create a user with an empty login name."
@@ -6869,10 +6869,6 @@ msgstr "Kommentare zu %s"
 msgid "<abbr title=\"Really Simple Syndication\">RSS</abbr> feed for comments on this post."
 msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr>-Feed für Kommentare zu diesem Artikel."
 
-#: wp-includes/theme-compat/comments-popup.php:65
-msgid "Leave a comment"
-msgstr "Einen Kommentar hinterlassen"
-
 #: wp-includes/theme-compat/comments.php:82
 msgid "Log out of this account"
 msgstr "Diesen Benutzer abmelden"
@@ -6971,14 +6967,6 @@ msgstr[1] "%s Themen"
 #: wp-includes/comment-template.php:1394
 msgid "Log in to Reply"
 msgstr "Zum Antworten anmelden"
-
-#: wp-includes/comment-template.php:1504
-msgid "Leave a Comment"
-msgstr "Hinterlasse einen Kommentar"
-
-#: wp-includes/comment-template.php:1505
-msgid "Log in to leave a Comment"
-msgstr "Melde dich an, um einen Kommentar zu hinterlassen"
 
 #: wp-includes/comment-template.php:1572
 msgid "Click here to cancel reply."
@@ -7085,10 +7073,6 @@ msgstr "Widgets"
 #: wp-includes/widgets.php:139
 msgid "There are no options for this widget."
 msgstr "Für dieses Widget gibt es keine weiteren Einstellungen."
-
-#: wp-comments-post.php:115
-msgid "Sorry, you must be logged in to post a comment."
-msgstr "Um einen Kommentar zu hinterlassen, musst du angemeldet sein."
 
 #: wp-includes/general-template.php:391 wp-login.php:898 wp-login.php:930
 msgid "Log In"
@@ -7213,6 +7197,22 @@ msgstr "Websites"
 #: wp-includes/admin-bar.php:372
 msgid "My Sites"
 msgstr "Meine Websites"
+
+#: wp-includes/theme-compat/comments-popup.php:65
+msgid "Leave a comment"
+msgstr "Schreib einen Kommentar"
+
+#: wp-includes/comment-template.php:1504
+msgid "Leave a Comment"
+msgstr "Schreib einen Kommentar"
+
+#: wp-includes/comment-template.php:1505
+msgid "Log in to leave a Comment"
+msgstr "Melde dich an, um einen Kommentar zu schreiben"
+
+#: wp-comments-post.php:115
+msgid "Sorry, you must be logged in to post a comment."
+msgstr "Sorry, du musst angemeldet sein, um einen Kommentar zu schreiben."
 
 #: wp-includes/media-template.php:333 wp-includes/media-template.php:528
 #: wp-includes/media.php:3101
