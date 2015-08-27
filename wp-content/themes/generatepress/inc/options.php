@@ -107,8 +107,7 @@ function generate_settings_page()
 						<div class="postbox generate-metabox" id="gen-delete">
 							<h3 class="hndle"><?php _e('Delete Customizer Settings','generate');?></h3>
 							<div class="inside">
-												
-								<p><?php _e( '<strong>Warning:</strong> Deleting your <a href="' . admin_url('customize.php') . '">Customizer</a> settings can not be undone.','generate' ); ?></p>
+								<p><?php printf( __( '<strong>Warning:</strong> Deleting your <a href="%1$s">Customizer</a> settings can not be undone.','generate' ), admin_url('customize.php') ); ?></p>
 								<p><?php _e( 'Consider using our Import/Export add-on to export your settings before deleting them.','generate');?></p>
 								<form method="post">
 									<p><input type="hidden" name="generate_reset_customizer" value="generate_reset_customizer_settings" /></p>

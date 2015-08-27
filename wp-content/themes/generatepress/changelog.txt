@@ -10,6 +10,17 @@ Changelog Legend:
 
 ----
 
+(8/23/2015) - 1.3.11
+[x] Remove unnecessary file
+
+----
+
+(8/23/2015) - 1.3.10
+[!] Fix mobile menu text hover color
+[*] Update some text strings
+
+----
+
 (8/15/2015) - 1.3.09
 [+] Add jump to anchor when using read more tag
 [*] Mobile menu toggle changed from <h3> to <button>

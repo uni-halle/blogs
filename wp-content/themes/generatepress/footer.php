@@ -36,8 +36,8 @@
 							<aside class="widget inner-padding widget_text">
 								<h4 class="widget-title"><?php _e('Footer Widget 1','generate');?></h4>			
 								<div class="textwidget">
-									<p><?php _e('Replace this widget content by going to <a href="' . admin_url() . 'widgets.php"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 1.','generate');?></p>
-									<p><?php _e('To remove or choose the number of footer widgets, go to <a href="' . admin_url() . 'customize.php"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate');?></p>
+									<p><?php printf( __( 'Replace this widget content by going to <a href="%1$s"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 1.','generate' ), admin_url( 'widgets.php' ) ); ?></p>
+									<p><?php printf( __( 'To remove or choose the number of footer widgets, go to <a href="%1$s"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate' ), admin_url( 'customize.php' ) ); ?></p>
 								</div>
 							</aside>
 						<?php endif; ?>
@@ -50,8 +50,8 @@
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 2','generate');?></h4>			
 							<div class="textwidget">
-								<p><?php _e('Replace this widget content by going to <a href="' . admin_url() . 'widgets.php"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 2.','generate');?></p>
-								<p><?php _e('To remove or choose the number of footer widgets, go to <a href="' . admin_url() . 'customize.php"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate');?></p>
+								<p><?php printf( __( 'Replace this widget content by going to <a href="%1$s"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 2.','generate' ), admin_url( 'widgets.php' ) ); ?></p>
+								<p><?php printf( __( 'To remove or choose the number of footer widgets, go to <a href="%1$s"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate' ), admin_url( 'customize.php' ) ); ?></p>
 							</div>
 						</aside>
 					<?php endif; ?>
@@ -64,8 +64,8 @@
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 3','generate');?></h4>			
 							<div class="textwidget">
-								<p><?php _e('Replace this widget content by going to <a href="' . admin_url() . 'widgets.php"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 3.','generate');?></p>
-								<p><?php _e('To remove or choose the number of footer widgets, go to <a href="' . admin_url() . 'customize.php"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate');?></p>
+								<p><?php printf( __( 'Replace this widget content by going to <a href="%1$s"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 3.','generate' ), admin_url( 'widgets.php' ) ); ?></p>
+								<p><?php printf( __( 'To remove or choose the number of footer widgets, go to <a href="%1$s"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate' ), admin_url( 'customize.php' ) ); ?></p>
 							</div>
 						</aside>
 					<?php endif; ?>
@@ -78,8 +78,8 @@
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 4','generate');?></h4>			
 							<div class="textwidget">
-								<p><?php _e('Replace this widget content by going to <a href="' . admin_url() . 'widgets.php"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 4.','generate');?></p>
-								<p><?php _e('To remove or choose the number of footer widgets, go to <a href="' . admin_url() . 'customize.php"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate');?></p>
+								<p><?php printf( __( 'Replace this widget content by going to <a href="%1$s"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 4.','generate' ), admin_url( 'widgets.php' ) ); ?></p>
+								<p><?php printf( __( 'To remove or choose the number of footer widgets, go to <a href="%1$s"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate' ), admin_url( 'customize.php' ) ); ?></p>
 							</div>
 						</aside>
 					<?php endif; ?>
@@ -92,8 +92,8 @@
 						<aside class="widget inner-padding widget_text">
 							<h4 class="widget-title"><?php _e('Footer Widget 5','generate');?></h4>			
 							<div class="textwidget">
-								<p><?php _e('Replace this widget content by going to <a href="' . admin_url() . 'widgets.php"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 5.','generate');?></p>
-								<p><?php _e('To remove or choose the number of footer widgets, go to <a href="' . admin_url() . 'customize.php"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate');?></p>
+								<p><?php printf( __( 'Replace this widget content by going to <a href="%1$s"><strong>Appearance / Widgets</strong></a> and dragging widgets into Footer Area 5.','generate' ), admin_url( 'widgets.php' ) ); ?></p>
+								<p><?php printf( __( 'To remove or choose the number of footer widgets, go to <a href="%1$s"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>.','generate' ), admin_url( 'customize.php' ) ); ?></p>
 							</div>
 						</aside>
 					<?php endif; ?>

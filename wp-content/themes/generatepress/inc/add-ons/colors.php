@@ -157,6 +157,12 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 				'color' => $generate_settings['navigation_text_color']
 			),
 			
+			'button.menu-toggle:hover,
+			button.menu-toggle:active,
+			button.menu-toggle:focus' => array(
+				'color' => $generate_settings['navigation_text_color']
+			),
+			
 			// Sub-Navigation text
 			'.main-navigation .main-nav ul ul li a' => array(
 				'color' => $generate_settings['subnavigation_text_color']
