@@ -69,7 +69,7 @@ class FG_Joomla_to_WordPress {
 	public function __construct() {
 
 		$this->plugin_name = 'fgj2wp';
-		$this->version = '2.3.3';
+		$this->version = '2.4.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -171,9 +171,6 @@ class FG_Joomla_to_WordPress {
 		}
 
 		$plugin_admin = new FG_Joomla_to_WordPress_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'init' );
 		$this->loader->add_action( 'fgj2wp_post_test_database_connection', $plugin_admin, 'test_joomla_1_0', 8 );

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 08:18+0200\n"
-"PO-Revision-Date: 2015-08-02 08:19+0200\n"
+"POT-Creation-Date: 2015-08-30 06:43+0200\n"
+"PO-Revision-Date: 2015-08-30 06:44+0200\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: admin/class-fg-joomla-to-wordpress-admin.php:91
@@ -100,7 +100,7 @@ msgstr ""
 "a>."
 
 #: admin/class-fg-joomla-to-wordpress-admin.php:253
-#: admin/class-fg-joomla-to-wordpress-admin.php:596
+#: admin/class-fg-joomla-to-wordpress-admin.php:600
 #, php-format
 msgid "%d category"
 msgid_plural "%d categories"
@@ -135,15 +135,15 @@ msgid_plural "%d tags"
 msgstr[0] "%d mot-clef"
 msgstr[1] "%d mots-clefs"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:294
+#: admin/class-fg-joomla-to-wordpress-admin.php:298
 msgid "Instructions"
 msgstr "Instructions"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:300
+#: admin/class-fg-joomla-to-wordpress-admin.php:304
 msgid "Options"
 msgstr "Options"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:304
+#: admin/class-fg-joomla-to-wordpress-admin.php:308
 msgid ""
 "<a href=\"http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" target="
 "\"_blank\">FAQ</a>"
@@ -151,12 +151,12 @@ msgstr ""
 "<a href=\"http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" target="
 "\"_blank\">FAQ</a>"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:334
+#: admin/class-fg-joomla-to-wordpress-admin.php:338
 msgid "PDO is required. Please enable it."
 msgstr "PDO est requis. Veuillez l'activer."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:343
-#: admin/class-fg-joomla-to-wordpress-admin.php:559
+#: admin/class-fg-joomla-to-wordpress-admin.php:347
+#: admin/class-fg-joomla-to-wordpress-admin.php:563
 msgid ""
 "Couldn't connect to the Joomla database. Please check your parameters. And "
 "be sure the WordPress server can access the Joomla database."
@@ -165,16 +165,16 @@ msgstr ""
 "vos paramètres. Et soyez certains que le serveur WordPress ait accès à la "
 "base de données de Joomla."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:369
+#: admin/class-fg-joomla-to-wordpress-admin.php:373
 #: admin/class-fg-joomla-to-wordpress-weblinks.php:198
 msgid "Error:"
 msgstr "Erreur :"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:552
+#: admin/class-fg-joomla-to-wordpress-admin.php:556
 msgid "Connected with success to the Joomla database"
 msgstr "Connecté avec succès à la base de données Joomla"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:573
+#: admin/class-fg-joomla-to-wordpress-admin.php:577
 msgid ""
 "Your version of Joomla (probably 1.0) is not supported by this plugin. "
 "Please consider upgrading to the <a href=\"http://www.fredericgilles.net/fg-"
@@ -185,76 +185,83 @@ msgstr ""
 "fredericgilles.net/fg-joomla-to-wordpress/\" target=\"_blank\">version "
 "Premium</a>."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:586
+#: admin/class-fg-joomla-to-wordpress-admin.php:590
 msgid "Joomla data found:"
 msgstr "Données Joomla trouvées :"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:591
+#: admin/class-fg-joomla-to-wordpress-admin.php:595
 #, php-format
 msgid "%d section"
 msgid_plural "%d sections"
 msgstr[0] "%d section"
 msgstr[1] "%d sections"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:600
+#: admin/class-fg-joomla-to-wordpress-admin.php:604
 #, php-format
 msgid "%d article"
 msgid_plural "%d articles"
 msgstr[0] "%d article"
 msgstr[1] "%d articles"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:604
+#: admin/class-fg-joomla-to-wordpress-admin.php:608
 #, php-format
 msgid "%d user"
 msgid_plural "%d users"
 msgstr[0] "%d utilisateur"
 msgstr[1] "%d utilisateurs"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:609
+#: admin/class-fg-joomla-to-wordpress-admin.php:613
 #, php-format
 msgid "%d web link"
 msgid_plural "%d web links"
 msgstr[0] "%d lien"
 msgstr[1] "%d liens"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:784
+#: admin/class-fg-joomla-to-wordpress-admin.php:788
 #, php-format
 msgid "%d category imported"
 msgid_plural "%d categories imported"
 msgstr[0] "%d catégorie importée"
 msgstr[1] "%d catégories importées"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:792
+#: admin/class-fg-joomla-to-wordpress-admin.php:799
 #, php-format
 msgid "%d page imported"
 msgid_plural "%d pages imported"
 msgstr[0] "%d page importée"
 msgstr[1] "%d pages importées"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:796
+#: admin/class-fg-joomla-to-wordpress-admin.php:803
 #, php-format
 msgid "%d post imported"
 msgid_plural "%d posts imported"
 msgstr[0] "%d article importé"
 msgstr[1] "%d articles importés"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:798
+#: admin/class-fg-joomla-to-wordpress-admin.php:805
 #, php-format
 msgid "%d media imported"
 msgid_plural "%d medias imported"
 msgstr[0] "%d média importé"
 msgstr[1] "%d médias importés"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:803
+#: admin/class-fg-joomla-to-wordpress-admin.php:810
 #, php-format
 msgid "%d tag imported"
 msgid_plural "%d tags imported"
 msgstr[0] "%d mot-clef importé"
 msgstr[1] "%d mots-clefs importés"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:821
+#: admin/class-fg-joomla-to-wordpress-admin.php:828
 msgid "Don't forget to modify internal links."
 msgstr "N'oubliez pas de modifier les liens internes."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:960
+msgid ""
+"The import process is still running. Please wait before running it again."
+msgstr ""
+"Le process d’import est toujours en cours. Merci d’attendre avant de le "
+"relancer."
 
 #: admin/class-fg-joomla-to-wordpress-modules-check.php:43
 #, php-format

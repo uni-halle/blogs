@@ -260,6 +260,10 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 			// Hook for modifying the admin page
 			$data = apply_filters('fgj2wp_pre_display_admin_page', $data);
 
+			// Load the CSS and Javascript
+			$this->enqueue_styles();
+			$this->enqueue_scripts();
+			
 			include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/fg-joomla-to-wordpress-admin-display.php';
 
 			// Hook for doing other actions after displaying the admin page
@@ -787,6 +791,9 @@ SQL;
 				if ( !isset($this->premium_options['skip_articles']) || !$this->premium_options['skip_articles'] ) {
 					// Posts and medias
 					$result = $this->import_posts();
+					if ( $result === false ) { // Anti-duplicate
+						return;
+					}
 					switch ($this->post_type) {
 						case 'page':
 							$this->display_admin_notice(sprintf(_n('%d page imported', '%d pages imported', $result['posts_count'], 'fgj2wp'), $result['posts_count']));
@@ -931,6 +938,8 @@ SQL;
 			// Hook for doing other actions before the import
 			do_action('fgj2wp_pre_import_posts');
 
+			$test_antiduplicate = false;
+			
 			do {
 				$posts = $this->get_posts($step); // Get the Joomla posts
 
@@ -943,6 +952,17 @@ SQL;
 							continue;
 						}
 
+						// Anti-duplicate
+						if ( !$test_antiduplicate ) {
+							sleep(2);
+							$test_post_id = $this->get_wp_post_id_from_joomla_id($post['id']);
+							if ( !empty($test_post_id) ) {
+								$this->display_admin_error(__('The import process is still running. Please wait before running it again.', 'fgj2wp'));
+								return false;
+							}
+							$test_antiduplicate = true;
+						}
+						
 						// Hook for modifying the Joomla post before processing
 						$post = apply_filters('fgj2wp_pre_process_post', $post);
 
@@ -1937,6 +1957,32 @@ SQL;
 			}
 			ksort($posts);
 			return $posts;
+		}
+
+		/**
+		 * Returns the imported post ID corresponding to a Joomla ID
+		 *
+		 * @param int $joomla_id Joomla article ID
+		 * @return int WordPress post ID
+		 */
+		protected function get_wp_post_id_from_joomla_id($joomla_id) {
+			$post_id = $this->get_wp_post_id_from_meta('_fgj2wp_old_id', $joomla_id);
+			return $post_id;
+		}
+
+		/**
+		 * Returns the imported post ID corresponding to a meta key and value
+		 *
+		 * @param string $meta_key Meta key
+		 * @param string $meta_value Meta value
+		 * @return int WordPress post ID
+		 */
+		public function get_wp_post_id_from_meta($meta_key, $meta_value) {
+			global $wpdb;
+
+			$sql = "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '$meta_key' AND meta_value = '$meta_value' LIMIT 1";
+			$post_id = $wpdb->get_var($sql);
+			return $post_id;
 		}
 
 		/**
