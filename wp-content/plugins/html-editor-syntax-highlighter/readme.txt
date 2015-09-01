@@ -3,8 +3,8 @@ Contributors: nixdns
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TKH76XU7BFNCA
 Tags: html editor, syntax highlighter, plugin editor, syntax, highlighting, syntax highlighting, text editor, editor, text editor syntax, editor, editor syntax
 Requires at least: 3.3
-Tested up to: 4.1.1
-Stable tag: 1.6.7
+Tested up to: 4.3
+Stable tag: 1.6.8
 
 Add syntax highlighting to the HTML editor.
 
@@ -31,8 +31,11 @@ If you like the plugin, don’t hesitate to support me and leave a review :)
 
 == Changelog ==
 
+= 1.6.8 =
+* Fixed issues with switching editor modes in WP 4.3
+
 = 1.6.7 =
-* Added <p> tag button, it's visible only when the visual editor is disabled
+* Added paragraph tag button, it's visible only when the visual editor is disabled
 * Added minimum editor window height for the full-height mode
 
 = 1.6.6 =
