@@ -10,12 +10,19 @@ function nggallery_manage_gallery_main() {
 	//Build the pagination for more than 25 galleries
     $_GET['paged'] = isset($_GET['paged']) && ($_GET['paged'] > 0) ? absint($_GET['paged']) : 1;
 
-    $items_per_page = 25;
+	$items_per_page = apply_filters('ngg_manage_galleries_items_per_page', 25);
 
 	$start = ( $_GET['paged'] - 1 ) * $items_per_page;
 
-    $order = ( isset ( $_GET['order'] ) && $_GET['order'] == 'desc' ) ? 'DESC' : 'ASC';
-    $orderby = ( isset ( $_GET['orderby'] ) && ( in_array( $_GET['orderby'], array('gid', 'title', 'author') )) ) ? $_GET['orderby'] : 'gid';
+    if (!empty($_GET['order']) && in_array($_GET['order'], array('DESC', 'ASC')))
+		$order = $_GET['order'];
+	else
+		$order = apply_filters('ngg_manage_galleries_items_order', 'ASC');
+
+	if (!empty($_GET['orderby']) && in_array($_GET['orderby'], array('gid', 'title', 'author')))
+		$orderby = $_GET['orderby'];
+	else
+		$orderby = apply_filters('ngg_manage_galleries_items_orderby', 'gid');
 
 	$mapper = C_Gallery_Mapper::get_instance();
 	$total_number_of_galleries = $mapper->count();

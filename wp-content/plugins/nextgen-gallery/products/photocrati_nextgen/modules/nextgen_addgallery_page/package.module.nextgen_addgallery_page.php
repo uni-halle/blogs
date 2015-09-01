@@ -154,7 +154,7 @@ class A_NextGen_AddGallery_Ajax extends Mixin
             if ($dir = urldecode($this->param('dir'))) {
                 $fs = C_Fs::get_instance();
                 $root = $this->get_import_root_abspath();
-                if ($dir != '.' && $dir != '..') {
+                if (!(strpos($dir, '.') === 0 || strpos($dir, '/.') === 0 || strpos($dir, '\\.') === 0)) {
                     $browse_path = $fs->join_paths($root, $dir);
                     if (@file_exists($browse_path)) {
                         $files = scandir($browse_path);

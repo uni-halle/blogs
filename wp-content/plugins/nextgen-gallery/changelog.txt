@@ -1,6 +1,12 @@
 NextGEN Gallery
 by Photocrati Media
 
+= V2.1.9 - 08.25.2015 =
+* NEW:     Added ngg_manage_galleries_items_per_page filter
+* NEW:     Added ngg_manage_galleries_items_order filter
+* NEW:     ngg_manage_galleries_items_orderby
+* Secured: Limit the ability to browse folders outside of NGG_IMPORT_ROOT
+
 = V2.1.7 - 08.12.2015 =
 * Changed: "Flush image cache" now removes images from the database w/o a gallery
 * Changed: "Show Meta" popup: parse date_format through date_i18n()
