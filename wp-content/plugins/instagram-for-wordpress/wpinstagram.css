@@ -30,6 +30,7 @@ ul.wpinstagram li a {
 	cursor: pointer;
 }
 
+
 #fancybox-left, #fancybox-right {
 	width: 15% !important;
 }
@@ -43,10 +44,15 @@ ul.wpinstagram li a {
 	width: auto !important;
 }
 
+#fancybox-wrap video {
+	margin: 0;	
+}
+
 #fancybox-title {
 	opacity: 0;
 	transition: opacity 0.3s ease;
 }
+
 
 #fancybox-outer:hover #fancybox-title {
 	opacity: 1;
@@ -94,6 +100,28 @@ ul.wpinstagram li a {
 	left: -5px;
 	opacity: 0.6;	
 }
+
+ul.wpinstagram li button.videoButton {
+  position: absolute;
+  z-index: 3;
+  bottom: 8px;
+  left: 5px;
+  width: 0;
+  background: rgba(255, 255, 255, 0.4);
+  height: 0;
+  border-style: solid;
+  padding: 0;
+  border-width: 10px 0 10px 17.3px;
+  border-color: transparent transparent transparent #FFFFFF;
+  box-shadow: 0px 0px 3px 5px rgba(255, 255, 255, 0.4);
+}
+
+ul.wpinstagram li:hover button.videoButton {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: transparent transparent transparent #A0A0A0;
+  box-shadow: 0px 0px 3px 5px rgba(255, 255, 255, 0.2);
+}
+
 
 .wpinstagram li .social a:hover {
 	opacity: 1;

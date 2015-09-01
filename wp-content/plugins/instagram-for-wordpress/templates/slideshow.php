@@ -52,17 +52,20 @@
      $url = $image['image_large'];
   ?>  
     <li style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-bottom: <?php print $padding ?>;">
-      <a class="mainI" 
+         <a class="mainI <?php if ($image['type']==='video') {  print "video"; } else { print "image"; } ?>"
          href="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
-         data-user-url="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
+         data-user-url="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos"
          data-original="<?php print $image['image_large'] ?>"
+         data-video="<?php if ($image['type']==='video') {  print $image['video']; } ?>"
          title="<?php print htmlspecialchars($image['title']) ?>"
          rel="<?php print $image['id'] ?>"
-         data-onclick="http://ink361/com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
-         >
-         
+         data-onclick="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
+         >  
          <img src="<?php print $url ?>" style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-bottom: <?php print $padding ?>;">
       </a>
+        <?php if ($image['type']==='video') {
+        print "<button class='videoButton'></button>";
+        } ?>
       <span class="wpcaption">
         <?php print $image['parsedtitle'] ?>
       </span> 

@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 2.0.8
+	Version: 2.0.9
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -92,7 +92,25 @@ function load_wpinstagram_footer(){
         		                e.attr('href', e.attr('data-original'));
 		                });
 
-        	        	$("ul.wpinstagram.live").find("a.mainI").fancybox({
+        	        	$("ul.wpinstagram.live").find("a.mainI.video").on('click', function(event){
+        	        		event.stopPropagation();
+        	        		element = event.currentTarget;
+	        	        		$.fancybox({
+		        	                "transitionIn":                 "elastic",
+		        	                "height": '640',
+		        	                "width": '640',
+		        	                "content" : "<video width='640' height='640' controls poster='"+element.getAttribute('href')+"'> <source src='"+element.getAttribute('data-video')+"' type='video/mp4'><img src='"+element.getAttribute('href')+"'></video>",
+		                        	"transitionOut":                "elastic",
+	                        		"easingIn":                     "easeOutBack",
+	                		        "easingOut":                    "easeInBack",
+	        		                "titlePosition":                "over",   
+			                        "padding":                              0,
+	                        		"hideOnContentClick":   "false",
+	                        		"titleShow": false,
+	        		               			        	        })
+							return false;
+	        	        });
+				       	$("ul.wpinstagram.live").find("a.mainI.image").fancybox({
 	        	                "transitionIn":                 "elastic",
 	                        	"transitionOut":                "elastic",
                         		"easingIn":                     "easeOutBack",
@@ -115,13 +133,12 @@ function load_wpinstagram_footer(){
                 	        	        return html;
         	        	        }
 	        	        });
-
 		                jQuery('#fancybox-content').live('click', function(x) {
         	                	var src = $(this).find('img').attr('src');
 	                	        var a = $("ul.wpinstagram.live").find('a.[href="' + src + '"]').attr('data-user-url');                  		
                 		        document.getElementById('igTracker').src=$('ul.wpinstagram').find('a[href="' + src + '"]').attr('data-onclick');
         		                window.open(a, '_blank');
-		                });
+        		            });
 			} catch(error) {
 				$("ul.wpinstagram").find("a").each(function(i, e) {
 		                       	e = $(e);
@@ -358,17 +375,8 @@ class WPInstagram_Widget extends WP_Widget {
 							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
-						$images[] = array(
-							"id"		=> $item['id'],
-							"title"		=> $image_title,
-							"parsedtitle"	=> $this->_parse_title($image_title),
-							"user"		=> $item['user']['id'],
-							"username"	=> $item['user']['username'],
-							"image_small"	=> $item['images']['thumbnail']['url'],
-							"image_middle"	=> $item['images']['low_resolution']['url'],
-							"image_large"	=> $item['images']['standard_resolution']['url'],
-						);
-					}
+						$images[] = $this->_response_to_image($item);
+	 					}
 				}							
 			} else {
 				$this->_handle_error_response($response, $settings);
@@ -396,16 +404,7 @@ class WPInstagram_Widget extends WP_Widget {
 							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
-						$images[] = array(
-							"id"		=> $item['id'],
-							"title"		=> $image_title,
-							"parsedtitle"	=> $this->_parse_title($image_title),
-							"user"		=> $item['user']['id'],
-							"username"	=> $item['user']['username'],
-							"image_small"	=> $item['images']['thumbnail']['url'],
-							"image_middle"	=> $item['images']['low_resolution']['url'],
-							"image_large"	=> $item['images']['standard_resolution']['url'],
-						);
+						$images[] = $this->_response_to_image($item);
 					}
 				}							
 			} else {
@@ -434,16 +433,7 @@ class WPInstagram_Widget extends WP_Widget {
 							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
-						$images[] = array(
-							"id"		=> $item['id'],
-							"title"		=> $image_title,							
-							"parsedtitle"	=> $this->_parse_title($image_title),
-							"user"		=> $item['user']['id'],
-							"username"	=> $item['user']['username'],
-							"image_small"	=> $item['images']['thumbnail']['url'],
-							"image_middle"	=> $item['images']['low_resolution']['url'],
-							"image_large"	=> $item['images']['standard_resolution']['url'],
-						);
+						$images[] = $this->_response_to_image($item);
 					}
 				}							
 			} else {
@@ -472,16 +462,7 @@ class WPInstagram_Widget extends WP_Widget {
 							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
-						$images[] = array(
-							"id"		=> $item['id'],
-							"title"		=> $image_title,
-							"parsedtitle"	=> $this->_parse_title($image_title),
-							"user"		=> $item['user']['id'],
-							"username"	=> $item['user']['username'],
-							"image_small"	=> $item['images']['thumbnail']['url'],
-							"image_middle"	=> $item['images']['low_resolution']['url'],
-							"image_large"	=> $item['images']['standard_resolution']['url'],
-						);
+						$images[] = $this->_response_to_image($item);
 					}
 				}							
 			} else {
@@ -511,16 +492,7 @@ class WPInstagram_Widget extends WP_Widget {
 							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
-						$images[] = array(
-							"id"		=> $item['id'],
-							"title"		=> $image_title,
-							"parsedtitle"	=> $this->_parse_title($image_title),
-							"user"		=> $item['user']['id'],
-							"username"	=> $item['user']['username'],
-							"image_small"	=> $item['images']['thumbnail']['url'],
-							"image_middle"	=> $item['images']['low_resolution']['url'],
-							"image_large"	=> $item['images']['standard_resolution']['url'],
-						);
+						$images[] = $this->_response_to_image($item);
 					}
 				}							
 			} else {
@@ -624,17 +596,7 @@ class WPInstagram_Widget extends WP_Widget {
 							$image_title = "Instagram by @" . $item['user']['username'];
 						}
 						
-						$images[] = array(
-							"id"		=> $item['id'],
-							"title"		=> $image_title,
-							"parsedtitle"	=> $this->_parse_title($image_title),
-							"user"		=> $item['user']['id'],
-							"username"	=> $item['user']['username'],
-							"image_small"	=> $item['images']['thumbnail']['url'],
-							"image_middle"	=> $item['images']['low_resolution']['url'],
-							"image_large"	=> $item['images']['standard_resolution']['url'],
-							"tags"			=> $item['tags'],
-						);
+						$images[] = $this->_response_to_image($item);
 					}
 				}				
 			} else {
@@ -720,6 +682,25 @@ class WPInstagram_Widget extends WP_Widget {
 		} else {
 			return false;
 		}
+	}
+
+	function _response_to_image($item) {
+		$image = array(
+					"id"		=> $item['id'],
+					"title"		=> $image_title,
+					"parsedtitle"	=> $this->_parse_title($image_title),
+					"user"		=> $item['user']['id'],
+					"type" 		=> $item['type'],
+					"username"	=> $item['user']['username'],
+					"image_small"	=> $item['images']['thumbnail']['url'],
+					"image_middle"	=> $item['images']['low_resolution']['url'],
+					"image_large"	=> $item['images']['standard_resolution']['url'],
+					"tags"			=> $item['tags'],
+				);
+		if ($item['type']==='video') {
+			$image['video'] = $item['videos']['standard_resolution']['url'];
+		}
+		return $image;
 	}
 
     function _parse_title($title) {
