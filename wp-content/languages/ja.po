@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-16 16:56:32+0000\n"
+"PO-Revision-Date: 2015-08-30 13:48:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,11 +96,11 @@ msgstr "メニュー設定"
 msgid "Registration confirmation will be e-mailed to you."
 msgstr "登録確認メールをお送りします。"
 
-#: wp-includes/script-loader.php:378
+#: wp-includes/script-loader.php:379
 msgid "Hide"
 msgstr "隠す"
 
-#: wp-includes/script-loader.php:377
+#: wp-includes/script-loader.php:378
 msgid "Show"
 msgstr "表示する"
 
@@ -2799,7 +2799,7 @@ msgstr "メールアドレス (%s) をご確認ください。間違っている
 #. translators: 1: month, 2: day, 3: year, 4: hour, 5: minute
 #: wp-includes/script-loader.php:496 wp-includes/script-loader.php:534
 msgid "%1$s %2$s, %3$s @ %4$s:%5$s"
-msgstr "%3$s年%1$s月%2$s日 @ %4$s:%5$s"
+msgstr "%3$s年%1$s%2$s日 @ %4$s:%5$s"
 
 #: wp-includes/functions.php:4792
 msgid "The login page will open in a new window. After logging in you can close it and return to this page."
@@ -7507,10 +7507,6 @@ msgstr "非公開"
 msgid "Public, Sticky"
 msgstr "公開 (先頭に固定表示)"
 
-#: wp-includes/script-loader.php:500
-msgid "Schedule"
-msgstr "予約投稿"
-
 #: wp-includes/media.php:3033 wp-includes/script-loader.php:394
 #: wp-includes/script-loader.php:501
 msgid "Update"
@@ -7649,6 +7645,10 @@ msgstr "メディア添付が見つかりませんでした。"
 #: wp-includes/taxonomy.php:3444
 msgid "Invalid taxonomy"
 msgstr "不正なタクソノミーです。"
+
+#: wp-includes/script-loader.php:500
+msgid "Schedule"
+msgstr "公開予定日時"
 
 #: wp-includes/class-wp-customize-manager.php:186
 #: wp-includes/script-loader.php:430

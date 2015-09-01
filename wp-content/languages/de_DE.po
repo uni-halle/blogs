@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-26 08:51:09+0000\n"
+"PO-Revision-Date: 2015-08-31 14:26:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1088,13 +1088,13 @@ msgstr "Editor-Menü (falls aktiviert)"
 msgid "Focus shortcuts:"
 msgstr "Fokus-Tastenkombinationen:"
 
-#: wp-includes/class-wp-editor.php:1015
-msgid "Rich Text Area. Press Alt-Shift-H for help"
-msgstr "Rich Text-Bereich. Drücke Alt-Shift-H für Hilfe."
-
 #: wp-includes/class-wp-editor.php:1046
 msgid "Elements path"
 msgstr "Elemente-Pfad"
+
+#: wp-includes/class-wp-editor.php:1015
+msgid "Rich Text Area. Press Alt-Shift-H for help"
+msgstr "Rich Text-Bereich. Drücke Alt + Shift + H für Hilfe."
 
 #. translators: 1: month, 2: day of month
 #: wp-includes/date.php:457
@@ -2189,28 +2189,6 @@ msgstr "Zur Video-Wiedergabeliste hinzufügen"
 msgid "Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! \" ? $ % ^ &amp; )."
 msgstr "Tipp: Das Passwort sollte mindestens zwölf Zeichen lang sein. Für ein stärkeres Passwort verwende Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen wie ! \" ? $ % ^ &amp; )."
 
-#: wp-includes/wp-db.php:1497
-msgid ""
-"\n"
-"<h1>Error establishing a database connection</h1>\n"
-"<p>This either means that the username and password information in your <code>wp-config.php</code> file is incorrect or we can't contact the database server at <code>%s</code>. This could mean your host's database server is down.</p>\n"
-"<ul>\n"
-"\t<li>Are you sure you have the correct username and password?</li>\n"
-"\t<li>Are you sure that you have typed the correct hostname?</li>\n"
-"\t<li>Are you sure that the database server is running?</li>\n"
-"</ul>\n"
-"<p>If you're unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href='https://wordpress.org/support/'>WordPress Support Forums</a>.</p>\n"
-msgstr ""
-"\n"
-"<h1>Fehler beim Aufbau der Datenbank-Verbindung</h1>\n"
-"<p>Das bedeutet entweder, dass Benutzername oder Passwort in der Datei <code>wp-config.php</code> falsch sind oder der Datenbankserver <code>%s</code>nicht erreichbar ist.</p>\n"
-"<ul>\n"
-"→\t<li>Bist du sicher, dass Benutzername und Passwort stimmen?</li>\n"
-"→\t<li>Bist du sicher, dass der Name des Datenbankservers stimmt?</li>\n"
-"→\t<li>Bist du sicher, dass der Datenbankserver läuft?</li>\n"
-"</ul>\n"
-"<p>Wenn du nicht sicher bist, woran es liegt, kontaktiere am besten deinen Hoster. Wenn du weitergehende Hilfe brauchst, kannst du dich jederzeit an den <a href='http://de.wordpress.org/hilfe/'>WordPress Support</a> wenden.</p>\n"
-
 #: wp-includes/wp-db.php:1046
 msgid ""
 "<h1>Can&#8217;t select database</h1>\n"
@@ -2235,6 +2213,28 @@ msgstr ""
 #: wp-includes/update.php:466
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
 msgstr "Ein unerwarteter Fehler ist aufgetreten. Das könnte an WordPress.org oder der Konfiguration dieses Servers liegen. Solltest du weiterhin Probleme haben, wende dich an den <a href=\"https://de.wordpress.org/hilfe/\">Support</a>."
+
+#: wp-includes/wp-db.php:1497
+msgid ""
+"\n"
+"<h1>Error establishing a database connection</h1>\n"
+"<p>This either means that the username and password information in your <code>wp-config.php</code> file is incorrect or we can't contact the database server at <code>%s</code>. This could mean your host's database server is down.</p>\n"
+"<ul>\n"
+"\t<li>Are you sure you have the correct username and password?</li>\n"
+"\t<li>Are you sure that you have typed the correct hostname?</li>\n"
+"\t<li>Are you sure that the database server is running?</li>\n"
+"</ul>\n"
+"<p>If you're unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href='https://wordpress.org/support/'>WordPress Support Forums</a>.</p>\n"
+msgstr ""
+"\n"
+"<h1>Fehler beim Aufbau der Datenbank-Verbindung</h1>\n"
+"<p>Das bedeutet entweder, dass Benutzername oder Passwort in der Datei <code>wp-config.php</code> falsch sind oder der Datenbankserver <code>%s</code> nicht erreichbar ist.</p>\n"
+"<ul>\n"
+"→\t<li>Bist du sicher, dass Benutzername und Passwort stimmen?</li>\n"
+"→\t<li>Bist du sicher, dass der Name des Datenbankservers stimmt?</li>\n"
+"→\t<li>Bist du sicher, dass der Datenbankserver läuft?</li>\n"
+"</ul>\n"
+"<p>Wenn du nicht sicher bist, woran es liegt, kontaktiere am besten deinen Hoster. Wenn du weitergehende Hilfe brauchst, kannst du dich jederzeit an den <a href='http://de.wordpress.org/hilfe/'>WordPress Support</a> wenden.</p>\n"
 
 #: wp-includes/class-wp-editor.php:903
 msgid "Insert/edit video"
@@ -2471,10 +2471,6 @@ msgctxt "custom headers"
 msgid "Suggested"
 msgstr "Vorgeschlagen"
 
-#: wp-includes/class-wp-editor.php:1014
-msgid "Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off."
-msgstr "Einfügen erfolgt jetzt im reinen Text-Modus. Inhalte werden nun als reiner Text eingefügt bis du diese Option abschaltest."
-
 #: wp-includes/class-wp-customize-control.php:1241
 msgid "Randomizing uploaded headers"
 msgstr "Zufällig hochgeladenes Header-Bild"
@@ -2498,6 +2494,10 @@ msgstr "Die angegebene Zeichenfolge konnte nicht gefunden werden."
 #: wp-includes/class-wp-editor.php:964
 msgid "Header cell"
 msgstr "Tabellen-Kopfzelle"
+
+#: wp-includes/class-wp-editor.php:1014
+msgid "Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off."
+msgstr "Einfügen erfolgt jetzt im reinen Text-Modus. Inhalte werden als reiner Text eingefügt, bis du diese Option abschaltest."
 
 #: wp-includes/general-template.php:2959
 msgctxt "admin color scheme"
@@ -6964,19 +6964,6 @@ msgid_plural "%s topics"
 msgstr[0] "%s Thema"
 msgstr[1] "%s Themen"
 
-#: wp-includes/comment-template.php:1394
-msgid "Log in to Reply"
-msgstr "Zum Antworten anmelden"
-
-#: wp-includes/comment-template.php:1572
-msgid "Click here to cancel reply."
-msgstr "Hier klicken, um die Antwort abzubrechen."
-
-#: wp-includes/comment-template.php:1661 wp-includes/comment-template.php:2265
-#: wp-includes/theme-compat/comments.php:68
-msgid "Leave a Reply to %s"
-msgstr "Hinterlasse einen Kommentar zu %s"
-
 #: wp-includes/comment-template.php:1928
 msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
 msgstr "<cite class=\"fn\">%s</cite> <span class=\"says\">sagt:</span>"
@@ -7115,11 +7102,6 @@ msgstr "Die Benutzung von <code>user_level</code> in Plugins und Themes ist vera
 msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
 msgstr "Powered by WordPress, state-of-the-art semantic personal publishing platform."
 
-#: wp-includes/comment-template.php:1660 wp-includes/comment-template.php:2264
-#: wp-includes/theme-compat/comments.php:68
-msgid "Leave a Reply"
-msgstr "Hinterlasse eine Antwort"
-
 #: wp-includes/comment-template.php:2255
 #: wp-includes/theme-compat/comments.php:75
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
@@ -7209,6 +7191,24 @@ msgstr "Schreib einen Kommentar"
 #: wp-includes/comment-template.php:1505
 msgid "Log in to leave a Comment"
 msgstr "Melde dich an, um einen Kommentar zu schreiben"
+
+#: wp-includes/comment-template.php:1661 wp-includes/comment-template.php:2265
+#: wp-includes/theme-compat/comments.php:68
+msgid "Leave a Reply to %s"
+msgstr "Schreib einen Kommentar zu %s"
+
+#: wp-includes/comment-template.php:1394
+msgid "Log in to Reply"
+msgstr "Zum Kommentieren anmelden"
+
+#: wp-includes/comment-template.php:1572
+msgid "Click here to cancel reply."
+msgstr "Hier klicken, um das Kommentieren abzubrechen."
+
+#: wp-includes/comment-template.php:1660 wp-includes/comment-template.php:2264
+#: wp-includes/theme-compat/comments.php:68
+msgid "Leave a Reply"
+msgstr "Schreibe einen Kommentar"
 
 #: wp-comments-post.php:115
 msgid "Sorry, you must be logged in to post a comment."
