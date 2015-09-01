@@ -35,21 +35,6 @@ function omega_get_content_template() {
 		$templates[] = "content/attachment-{$type}.php";
 	}
 
-	/* If the post type supports 'post-formats', get the template based on the format. */
-	if ( post_type_supports( $post_type, 'post-formats' ) ) {
-
-		/* Get the post format. */
-		$post_format = get_post_format() ? get_post_format() : 'standard';
-
-		/* Template based off post type and post format. */
-		$templates[] = "content-{$post_type}-{$post_format}.php";
-		$templates[] = "content/{$post_type}-{$post_format}.php";
-
-		/* Template based off the post format. */
-		$templates[] = "content-{$post_format}.php";
-		$templates[] = "content/{$post_format}.php";
-	}
-
 	/* Template based off the post type. */
 	$templates[] = "content-{$post_type}.php";
 	$templates[] = "content/{$post_type}.php";

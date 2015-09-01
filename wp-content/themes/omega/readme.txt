@@ -57,6 +57,9 @@ Source: http://tinynav.viljamis.com
 
 Changelog
 ---------
+1.2.4   2015-8-26
+- update language
+- clean up media library and post format
 
 1.2.3   2015-7-13
 - update schema.org

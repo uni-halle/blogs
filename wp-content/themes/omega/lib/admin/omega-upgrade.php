@@ -55,7 +55,7 @@ function omega_upgrade_notice() {
 		if ( !empty( $options['upgrade-1-0-2'] ) && $options['upgrade-1-0-2'] ) {
 			echo '<div class="updated"><p>';
 				printf( __(
-					'Thanks for updating Omega Theme.  Please <a href="%1$s" target="_blank">read about important changes</a> in this version and give your site a quick check. <a href="%2$s">Dismiss notice</a>' ),
+					'Thanks for updating Omega Theme.  Please <a href="%1$s" target="_blank">read about important changes</a> in this version and give your site a quick check. <a href="%2$s">Dismiss notice</a>', 'omega' ),
 					'http://themehall.com/forums/topic/omega-1-0-0-updates',
 					'?omega_upgrade_notice_ignore=1' );
 			echo '</p></div>';
@@ -72,7 +72,7 @@ function omega_upgrade_notice_1_1_0() {
 		if ( !empty( $options['upgrade-1-1-0'] ) && $options['upgrade-1-1-0'] ) {
 			echo '<div class="updated"><p>';
 				printf( __(
-					'Thanks for updating Omega Theme.  Please <a href="%1$s" target="_blank">read about important changes</a> in this version and give your site a quick check. <a href="%2$s">Dismiss notice</a>' ),
+					'Thanks for updating Omega Theme.  Please <a href="%1$s" target="_blank">read about important changes</a> in this version and give your site a quick check. <a href="%2$s">Dismiss notice</a>', 'omega' ),
 					'https://themehall.com/forums/topic/omega-1-1-0-updates',
 					'?omega_upgrade_notice_ignore=1' );
 			echo '</p></div>';

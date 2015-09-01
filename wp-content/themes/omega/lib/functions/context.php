@@ -188,12 +188,6 @@ function omega_body_class_filter( $classes, $class ) {
 		if ( !empty( $template ) )
 			$classes[] = "{$post->post_type}-template-{$template}";
 
-		/* Post format. */
-		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {
-			$post_format = get_post_format( get_queried_object_id() );
-			$classes[] = ( empty( $post_format ) || is_wp_error( $post_format ) ) ? "{$post->post_type}-format-standard" : "{$post->post_type}-format-{$post_format}";
-		}
-
 		/* Attachment mime types. */
 		if ( is_attachment() ) {
 			foreach ( explode( '/', get_post_mime_type() ) as $type )

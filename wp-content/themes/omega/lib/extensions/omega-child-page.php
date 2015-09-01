@@ -25,6 +25,8 @@ if ( is_admin() ) {
 			 		   'url' => 'https://themehall.com/product/composer-plus'),
 			 	array( 'name' => 'Custom Footer',
 			 		   'url' => 'https://themehall.com/product/omega-custom-footer-plugin'),
+			 	array( 'name' => 'Superstore',
+			 		   'url' => 'https://wordpress.org/themes/superstore/'),
 			 	array( 'name' => 'Me',
 			 		   'url' => 'https://themehall.com/me-omega-child-theme'),
 			 	array( 'name' => 'Composer',

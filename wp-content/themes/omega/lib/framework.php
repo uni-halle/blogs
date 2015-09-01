@@ -248,20 +248,11 @@ class Omega {
 		/* Load the post template functions. */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'template-post.php' );
 
-		/* Load the media meta class. */
-		require_once( trailingslashit( OMEGA_CLASSES ) . 'media-meta.php' );
-
-		/* Load the media grabber class. */
-		require_once( trailingslashit( OMEGA_CLASSES ) . 'media-grabber.php' );
-
 		/* Load the theme settings functions */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'settings.php' );
 
 		/* Load the template hierarchy if supported. */
 		require_if_theme_supports( 'omega-template-hierarchy', trailingslashit( OMEGA_FUNCTIONS ) . 'template-hierarchy.php' );
-
-		/* Load the post format functionality if post formats are supported. */
-		require_if_theme_supports( 'post-formats', trailingslashit( OMEGA_FUNCTIONS ) . 'post-formats.php' );
 
 		/* Custom template tags for omega theme. */
 		require_once( trailingslashit( OMEGA_FUNCTIONS ) . 'template-tags.php' );
