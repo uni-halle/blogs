@@ -4,7 +4,6 @@ add_action( 'init', 'foundation_featured_setup' );
 add_action( 'foundation_module_init_mobile', 'foundation_featured_init' );
 add_action( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'foundation_featured_settings' );
 
-
 define( 'FOUNDATION_FEATURED_MIN_NUM', 2 );
 
 global $foundation_featured_args;
@@ -37,6 +36,28 @@ function foundation_featured_setup() {
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'foundation-featured-image', 900, 9999, false );
 	}
+
+	global $foundation_featured_posts;
+	$settings = foundation_get_settings();
+	$args = foundation_featured_get_args();
+
+	if ( $settings->featured_enabled ) {
+		$slides = foundation_featured_get_slides();
+
+		$slide_count = 0;
+		if ( $slides->post_count > 0 ) {
+			while ( $slides->have_posts() && $slide_count < $args[ 'num' ] ) {
+				$slides->the_post();
+				$image = foundation_featured_has_image();
+				if ( $image ) {
+					$slide_count++;
+					$foundation_featured_posts[] = get_the_ID();
+				}
+			}
+		}
+	}
+
+	add_filter( 'parse_query', 'foundation_featured_modify_query' );
 }
 
 function foundation_featured_config( $args ) {
@@ -46,36 +67,33 @@ function foundation_featured_config( $args ) {
 }
 
 function foundation_featured_modify_query( $query ) {
-	$settings = foundation_get_settings();
-	if ( $settings->featured_filter_posts ) {
-		return;
-	}
+	if ( is_main_query() ) {
+		$settings = foundation_get_settings();
 
-	$should_be_ignored = apply_filters(
-		'foundation_featured_should_modify_query',
-		$query->is_single || $query->is_page || $query->is_feed || $query->is_search || $query->is_archive || $query->is_category,
-		$query
-	);
+		if ( $settings->featured_filter_posts ) {
+			return;
+		}
 
-	if ( $should_be_ignored ) {
-		return;
-	}
+		$should_be_ignored = apply_filters(
+			'foundation_featured_should_modify_query',
+			$query->is_single || $query->is_page || $query->is_feed || $query->is_search || $query->is_archive || $query->is_category,
+			$query
+		);
 
-	global $foundation_featured_posts;
+		if ( $should_be_ignored ) {
+			return;
+		}
 
-	if ( count( $foundation_featured_posts ) < FOUNDATION_FEATURED_MIN_NUM ) {
+		global $foundation_featured_posts;
+
+		if ( count( $foundation_featured_posts ) < FOUNDATION_FEATURED_MIN_NUM ) {
+			return $query;
+		}
+
+		$query->set( 'post__not_in', $foundation_featured_posts );
+
 		return $query;
 	}
-
-	$post_array = array();
-
-	foreach( $foundation_featured_posts as $post_id ) {
-		$post_array[] = '-' . $post_id;
-	}
-
-	$query->query_vars[ 'post__not_in']  = $post_array;
-
-	return $query;
 }
 
 function foundation_featured_get_args() {
@@ -138,8 +156,6 @@ function foundation_featured_get_slides() {
 	}
 
 	return $new_posts;
-
-	add_filter( 'parse_query', 'foundation_featured_modify_query' );
 }
 
 function foundation_featured_has_image( $post = false ) {
@@ -214,26 +230,24 @@ function foundation_featured_get_slider_classes() {
 }
 
 function foundation_featured_slider( $manual = false, $manual_html = false ) {
+	global $foundation_featured_posts;
 	$settings = foundation_get_settings();
 	$args = foundation_featured_get_args();
 
 	if ( $manual == false && $settings->featured_enabled ) {
-		$slides = foundation_featured_get_slides();
+		$slides = new WP_Query( array( 'post__in' => $foundation_featured_posts ) );
 
-		$slide_count = 0;
 		if ( $slides->post_count > 0 ) {
 			echo $args['before'];
 			echo "<div id='slider' class='" . implode( ' ', foundation_featured_get_slider_classes() ) . "'>\n";
 			echo "<div class='swipe-wrap'>\n";
-			while ( $slides->have_posts() && $slide_count < $args[ 'num' ] ) {
+			while ( $slides->have_posts() ) {
 				$slides->the_post();
 				$image = foundation_featured_has_image();
 				if ( $image ) {
-					$slide_count++;
 					get_template_part( 'featured-slider' );
 				}
 			}
-
 			echo "</div>\n";
 			echo "</div>\n";
 			echo $args['after'];
@@ -255,31 +269,21 @@ function foundation_featured_slider( $manual = false, $manual_html = false ) {
 }
 
 function foundation_featured_settings( $page_options ) {
+	$settings = foundation_get_settings();
 
-	wptouch_add_page_section(
-		FOUNDATION_PAGE_GENERAL,
-		__( 'Featured Slider', 'wptouch-pro' ),
-		'foundation-featured-settings',
-		array(
+	if ( $settings->featured_enabled ) {
+		$featured_settings = array(
 			wptouch_add_setting(
-				'checkbox',
-				'featured_enabled',
-				__( 'Enable featured slider', 'wptouch-pro' ),
-				__( 'Requires at least 2 entries to contain featured images', 'wptouch-pro' ),
-				WPTOUCH_SETTING_BASIC,
-				'1.0'
-			),
-			wptouch_add_setting(
-				'list',
+				'range',
 				'featured_max_number_of_posts',
 				__( 'Maximum number of posts', 'wptouch-pro' ),
 				'',
 				WPTOUCH_SETTING_ADVANCED,
 				'2.0',
 				array(
-					'3' => __( '3 posts', 'wptouch-pro' ),
-					'5' => __( '5 posts', 'wptouch-pro' ),
-					'10' => __( '10 posts', 'wptouch-pro' )
+					'min' => 1,
+					'max' => 10,
+					'step' => 1,
 				)
 			),
 			wptouch_add_setting(
@@ -348,6 +352,14 @@ function foundation_featured_settings( $page_options ) {
 				__( 'Only this tag', 'wptouch-pro' ),
 				__( 'Enter the tag/category slug name', 'wptouch-pro' ),
 				WPTOUCH_SETTING_BASIC,
+				'1.0'
+			),
+			wptouch_add_setting(
+				'text',
+				'featured_tag',
+				__( 'Only this tag', 'wptouch-pro' ),
+				__( 'Enter the tag/category slug name', 'wptouch-pro' ),
+				WPTOUCH_SETTING_BASIC,
 				'1.0',
 				false //foundation_get_tag_list()
 			),
@@ -377,9 +389,31 @@ function foundation_featured_settings( $page_options ) {
 				WPTOUCH_SETTING_BASIC,
 				'1.0'
 			)
+		);
+	} else {
+		$featured_settings = array();
+	}
+
+	wptouch_add_page_section(
+		FOUNDATION_PAGE_GENERAL,
+		__( 'Featured Slider', 'wptouch-pro' ),
+		'foundation-featured-settings',
+		array_merge(
+			array(
+				wptouch_add_setting(
+					'checkbox',
+					'featured_enabled',
+					__( 'Enable featured slider', 'wptouch-pro' ),
+					__( 'Requires at least 2 entries to contain featured images', 'wptouch-pro' ),
+					WPTOUCH_SETTING_BASIC,
+					'1.0'
+				),
+			),
+			$featured_settings
 		),
 		$page_options,
-		FOUNDATION_SETTING_DOMAIN
+		FOUNDATION_SETTING_DOMAIN,
+		true
 	);
 
 	return $page_options;

@@ -194,7 +194,7 @@ class WPtouchProThree {
 		} else {
 			if ( $this->should_do_desktop_shortcode_magic( $settings ) ) {
 				add_filter( 'wptouch_force_mobile_device', array( &$this, 'shortcode_override' ) );
-				add_action( 'init', array( &$this, 'handle_desktop_shortcode' ) );
+				add_action( 'init', array( &$this, 'handle_desktop_shortcode' ), 9999 );
 			}
 
 			add_action( 'wp', array( &$this, 'set_cache_cookie' ) );

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WPtouch Mobile Plugin package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPtouch Mobile Plugin 3.8.3\n"
+"Project-Id-Version: WPtouch Mobile Plugin 3.8.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wptouch\n"
-"POT-Creation-Date: 2015-07-30 14:16:20+00:00\n"
+"POT-Creation-Date: 2015-08-31 17:16:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1643,111 +1643,101 @@ msgstr ""
 msgid "Custom Post Types"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:261
-msgid "Featured Slider"
-msgstr ""
-
-#: themes/foundation/modules/featured/featured.php:267
-msgid "Enable featured slider"
-msgstr ""
-
-#: themes/foundation/modules/featured/featured.php:268
-msgid "Requires at least 2 entries to contain featured images"
-msgstr ""
-
-#: themes/foundation/modules/featured/featured.php:275
+#: themes/foundation/modules/featured/featured.php:279
 msgid "Maximum number of posts"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:280
-msgid "3 posts"
-msgstr ""
-
-#: themes/foundation/modules/featured/featured.php:281
-msgid "5 posts"
-msgstr ""
-
-#: themes/foundation/modules/featured/featured.php:282
-msgid "10 posts"
-msgstr ""
-
-#: themes/foundation/modules/featured/featured.php:288
+#: themes/foundation/modules/featured/featured.php:292
 msgid "Automatically slide"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:296
+#: themes/foundation/modules/featured/featured.php:300
 msgid "Continuously slide"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:304
+#: themes/foundation/modules/featured/featured.php:308
 msgid "Grayscale images (CSS 3 effect)"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:305
+#: themes/foundation/modules/featured/featured.php:309
 msgid ""
 "Featured slider images will be in grayscale for devices that support CSS "
 "filters."
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:312
+#: themes/foundation/modules/featured/featured.php:316
 msgid "Featured slider posts also show in listings"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:320
+#: themes/foundation/modules/featured/featured.php:324
 msgid "Slide transition speed"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:325
+#: themes/foundation/modules/featured/featured.php:329
 msgid "Slow"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:326
+#: themes/foundation/modules/featured/featured.php:330
 msgid "Normal"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:327
+#: themes/foundation/modules/featured/featured.php:331
 msgid "Fast"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:338
+#: themes/foundation/modules/featured/featured.php:342
 msgid "Show latest posts"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:339
+#: themes/foundation/modules/featured/featured.php:343
 msgid "Show posts from a specific tag"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:340
+#: themes/foundation/modules/featured/featured.php:344
 msgid "Show posts from a specific category"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:341
+#: themes/foundation/modules/featured/featured.php:345
 msgid "Show posts from a specific post type"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:342
+#: themes/foundation/modules/featured/featured.php:346
 msgid "Show only specific posts or pages"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:348
+#: themes/foundation/modules/featured/featured.php:352
+#: themes/foundation/modules/featured/featured.php:360
 msgid "Only this tag"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:349
-#: themes/foundation/modules/featured/featured.php:358
+#: themes/foundation/modules/featured/featured.php:353
+#: themes/foundation/modules/featured/featured.php:361
+#: themes/foundation/modules/featured/featured.php:370
 msgid "Enter the tag/category slug name"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:357
+#: themes/foundation/modules/featured/featured.php:369
 msgid "Only this category"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:366
+#: themes/foundation/modules/featured/featured.php:378
 msgid "Only this post type"
 msgstr ""
 
-#: themes/foundation/modules/featured/featured.php:375
+#: themes/foundation/modules/featured/featured.php:387
 msgid "Comma-separated list of post/page IDs"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:399
+msgid "Featured Slider"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:406
+msgid "Enable featured slider"
+msgstr ""
+
+#: themes/foundation/modules/featured/featured.php:407
+msgid "Requires at least 2 entries to contain featured images"
 msgstr ""
 
 #: themes/foundation/modules/google-fonts/google-fonts.php:20
@@ -2287,9 +2277,9 @@ msgstr ""
 msgid "WPtouch Mobile Plugin"
 msgstr ""
 
-#. #-#-#-#-#  wptouch.pot (WPtouch Mobile Plugin 3.8.3)  #-#-#-#-#
+#. #-#-#-#-#  wptouch.pot (WPtouch Mobile Plugin 3.8.5)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wptouch.pot (WPtouch Mobile Plugin 3.8.3)  #-#-#-#-#
+#. #-#-#-#-#  wptouch.pot (WPtouch Mobile Plugin 3.8.5)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://www.wptouch.com/"
 msgstr ""
