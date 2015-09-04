@@ -674,10 +674,10 @@ class nggdb
 	    if ($offset && $limit) $mapper->limit($limit, $offset);
 
 	    // Add exclusion clause
-	    if ($exclude) $mapper->where(array("exclude = 0"));
+	    if ($exclude) $mapper->where(array("exclude = %d", 0));
 
 	    // Add gallery clause
-	    if ($galleryId) $mapper->where(array("galleryid = %d"), $galleryId);
+	    if ($galleryId) $mapper->where(array("galleryid = %d", $galleryId));
 
 		return $mapper->run_query();
     }

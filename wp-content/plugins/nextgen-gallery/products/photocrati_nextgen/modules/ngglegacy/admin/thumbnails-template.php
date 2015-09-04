@@ -89,16 +89,16 @@ if (!is_null($nextgen_thumb_size_custom_style))
     <input type="text"
            size="5"
            maxlength="5"
-           id='<?php echo $thumbnails_template_width_id; ?>'
-           name="<?php echo $thumbnails_template_width_name; ?>"
-           value="<?php echo $thumbnails_template_width_value; ?>"/>
+           id='<?php esc_attr_e($thumbnails_template_width_id); ?>'
+           name="<?php esc_attr_e($thumbnails_template_width_name); ?>"
+           value="<?php esc_attr_e($thumbnails_template_width_value); ?>"/>
     x
     <input type="text"
            size="5"
            maxlength="5"
-           id='<?php echo $thumbnails_template_height_id; ?>'
-           name="<?php echo $thumbnails_template_height_name; ?>"
-           value="<?php echo $thumbnails_template_height_value; ?>"/>
+           id='<?php esc_attr_e($thumbnails_template_height_id) ?>'
+           name="<?php esc_attr_e($thumbnails_template_height_name) ?>"
+           value="<?php esc_attr_e($thumbnails_template_height_value) ?>"/>
     <br/>
     <small><?php _e('These are maximum values', 'nggallery'); ?></small>
 </span>

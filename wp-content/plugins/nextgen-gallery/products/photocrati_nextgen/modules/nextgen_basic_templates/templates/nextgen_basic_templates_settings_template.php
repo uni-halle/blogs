@@ -14,7 +14,7 @@
                 <option></option>
                 <?php foreach ($templates as $file => $label): ?>
                     <?php if ($file && $label): ?>
-                    <option value="<?php echo $file; ?>" <?php selected($chosen_file, $file, TRUE); ?>><?php esc_html_e($label); ?></option>
+                    <option value="<?php esc_attr_e($file) ?>" <?php selected($chosen_file, $file, TRUE); ?>><?php esc_html_e($label); ?></option>
                     <?php endif ?>
                 <?php endforeach ?>
             </select>
