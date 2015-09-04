@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-30 13:48:22+0000\n"
+"PO-Revision-Date: 2015-09-03 02:18:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -7507,6 +7507,10 @@ msgstr "非公開"
 msgid "Public, Sticky"
 msgstr "公開 (先頭に固定表示)"
 
+#: wp-includes/script-loader.php:500
+msgid "Schedule"
+msgstr "予約投稿"
+
 #: wp-includes/media.php:3033 wp-includes/script-loader.php:394
 #: wp-includes/script-loader.php:501
 msgid "Update"
@@ -7645,10 +7649,6 @@ msgstr "メディア添付が見つかりませんでした。"
 #: wp-includes/taxonomy.php:3444
 msgid "Invalid taxonomy"
 msgstr "不正なタクソノミーです。"
-
-#: wp-includes/script-loader.php:500
-msgid "Schedule"
-msgstr "公開予定日時"
 
 #: wp-includes/class-wp-customize-manager.php:186
 #: wp-includes/script-loader.php:430
