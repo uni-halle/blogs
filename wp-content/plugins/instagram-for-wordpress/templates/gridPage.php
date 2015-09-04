@@ -83,15 +83,35 @@
       $page = ceil($count / ($rows * $cols));
 
       #determine photo to use for best quality
-      if ($settings->settings['responsive'] === 'yes') {
-        $url = $image['image_large'];
-      } else if ($imageWidth <= 150) {
-        $url = $image['image_small']; 
-      } else if ($imageWidth <= 306) {
-        $url = $image['image_middle'];
-      } else {                
-        $url = $image['image_large'];
+      if ($image['non_square']) {
+          $fullSize = $image['non_square_large'];
+          $fullSizeFallback = $image['image_large'];
+      } else {
+          $fullSize = $image['image_large'];
+          $fullSizeFallback = $image['image_large'];
       }   
+
+      if ($settings->settings['responsive'] === 'yes') {
+          if ($image['non_square']) {
+            $thumbUrl = $image['thumb_non_square_large'];
+          } else {
+            $thumbUrl = $image['image_large'];
+          }
+        } else if ($imageWidth <= 150) {
+           if ($image['non_square']) {
+            $thumbUrl = $image['thumb_non_square_small'];
+          } else {
+            $thumbUrl = $image['image_small'];
+          }
+      } else if ($imageWidth <= 306) {
+          if ($image['non_square']) {
+            $thumbUrl = $image['thumb_non_square_middle'];
+          } else {
+            $thumbUrl = $image['image_middle'];
+          } 
+      } else {                
+        $thumbUrl = $image['thumb_non_square_large'];
+      }
   ?>
     
   
@@ -99,13 +119,13 @@
        <a class="mainI <?php if ($image['type']==='video') {  print "video"; } else { print "image"; } ?>"
          href="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
          data-user-url="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos"
-         data-original="<?php print $image['image_large'] ?>"
+         data-original="<?php print $fullSize ?>"
          data-video="<?php if ($image['type']==='video') {  print $image['video']; } ?>"
          title="<?php print htmlspecialchars($image['title']) ?>"
          rel="<?php print $image['id'] ?>"
          data-onclick="http://ink361.com/app/users/ig-<?php print $image['user'] ?>/<?php print $image['username'] ?>/photos/ig-<?php print $image['id'] ?>"
          >                  
-         <img src="<?php print $url ?>" style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-right: <?php print $imagePadding ?>; margin-bottom: <?php print $padding ?>;">
+         <img src="<?php print $thumbUrl ?>" style="width: <?php print $imageWidth ?>; height: <?php print $imageHeight ?>; margin-right: <?php print $imagePadding ?>; margin-bottom: <?php print $padding ?>;">
       </a>    
       <span class="wpcaption">
         <?php print $image['parsedtitle'] ?>

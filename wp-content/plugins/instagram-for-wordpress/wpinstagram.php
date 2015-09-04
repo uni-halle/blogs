@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 2.0.9
+	Version: 2.0.10
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -685,18 +685,37 @@ class WPInstagram_Widget extends WP_Widget {
 	}
 
 	function _response_to_image($item) {
+		if (isset($item['caption']['text'])) {
+			$image_title = '@' . $item['user']['username'] . ': "' . filter_var($item['caption']['text'], FILTER_SANITIZE_STRING) . '"';
+		} else if (!isset($item['caption']['text'])) {
+			$image_title = "Instagram by @" . $item['user']['username'];
+		}
 		$image = array(
-					"id"		=> $item['id'],
-					"title"		=> $image_title,
-					"parsedtitle"	=> $this->_parse_title($image_title),
-					"user"		=> $item['user']['id'],
-					"type" 		=> $item['type'],
-					"username"	=> $item['user']['username'],
-					"image_small"	=> $item['images']['thumbnail']['url'],
-					"image_middle"	=> $item['images']['low_resolution']['url'],
-					"image_large"	=> $item['images']['standard_resolution']['url'],
-					"tags"			=> $item['tags'],
-				);
+			"id"		=> $item['id'],
+			"title"		=> $image_title,
+			"parsedtitle"	=> $this->_parse_title($image_title),
+			"user"		=> $item['user']['id'],
+			"type" 		=> $item['type'],
+			"username"	=> $item['user']['username'],
+			"image_small"	=> $item['images']['thumbnail']['url'],
+			"image_middle"	=> $item['images']['low_resolution']['url'],
+			"image_large"	=> $item['images']['standard_resolution']['url'],
+			"tags"			=> $item['tags'],
+			"non_square"     => false
+		);
+
+		$nonSquare = $item['images']['thumbnail']['url'];
+        if (isset($nonSquare)) {
+			$pattern = "/(.*?\/s150x150\/[a-zA-Z0-9_]+\/)([^\/]+\/)(.*)/";
+			$match =  preg_match( $pattern, $nonSquare, $matches);
+			if ($match && count($matches) == 4) {
+				$image['non_square'] = true;
+				$image['non_square_large'] =  str_replace('s150x150', 's640x640', $matches[1]) . $matches[3];  
+				$image['thumb_non_square_small'] = $nonSquare;
+				$image['thumb_non_square_middle'] = str_replace('s150x150', 's320x320', $nonSquare);
+				$image['thumb_non_square_large'] = str_replace('s150x150', 's320x320', $nonSquare);
+			}
+        }
 		if ($item['type']==='video') {
 			$image['video'] = $item['videos']['standard_resolution']['url'];
 		}
