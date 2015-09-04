@@ -4,7 +4,7 @@ Donate link: http://www.blackstudio.it/en/wordpress-plugins/black-studio-tinymce
 Tags: wysiwyg, widget, tinymce, editor, image, media, rich text, rich text editor, visual editor, wysiwyg editor, tinymce editor, widget editor, html editor, wysiwyg widget, html widget, editor widget, text widget, rich text widget, enhanced text widget, tinymce widget, visual widget, image widget, media widget
 Requires at least: 3.1
 Tested up to: 4.3
-Stable tag: 2.2.6
+Stable tag: 2.2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -179,7 +179,10 @@ Plugin's data is stored in serialized format inside a record in the `wp_options`
 
 == Changelog ==
 
-= 2.2.6 (2015-07-24) =
+= 2.2.7 (2015-09-03) =
+* Fixed issue with Customizer when clicking on the widget title arrow (courtesy of Syhlver)
+
+= 2.2.6 (2015-08-25) =
 * Fixed content duplication issue with Page Builder + WPML String Translation
 
 = 2.2.5 (2015-07-11) =
@@ -428,5 +431,5 @@ Plugin's data is stored in serialized format inside a record in the `wp_options`
 
 == Upgrade Notice ==
 
-= 2.2.6 =
+= 2.2.7 =
 Version 2.x is a major update. If you are upgrading from version 1.x please ensure to backup your database before upgrading.
