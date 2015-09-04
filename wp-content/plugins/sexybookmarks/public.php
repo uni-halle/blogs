@@ -450,6 +450,7 @@ class ShareaholicPublic {
       }
     }
 
+    header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     header('Cache-Control: max-age=180'); // 3 minutes
     echo json_encode($result);

@@ -58,15 +58,20 @@ class ShareaholicUtilities {
     return get_option('shareaholic_settings', self::defaults());
   }
 
-  /**
-   * Destroys all settings except the acceptance
-   * of the terms of service.
-   *
-   * @return bool
-   */
-  public static function destroy_settings() {
-    delete_option('shareaholic_get_or_create_api_key');
-    return delete_option('shareaholic_settings');
+  public static function reset_settings() {
+    $settings = self::get_settings();
+    $api_key = self::get_option('api_key');
+
+    $response = ShareaholicCurl::post(
+      Shareaholic::API_URL . '/publisher_tools/'  . $api_key .  '/reset/',
+      $settings,
+      'json'
+    );
+
+    // set the location on/off back to their defaults
+    if (isset($settings['location_name_ids']) && is_array($settings['location_name_ids'])) {
+      self::set_default_location_settings($settings['location_name_ids']);
+    }
   }
 
   /**
@@ -613,27 +618,11 @@ class ShareaholicUtilities {
 
       $verification_key = md5(mt_rand());
 
-      $turned_on_share_buttons_locations = array(
-        array('name' => 'post_below_content', 'counter' => 'badge-counter'),
-        array('name' => 'page_below_content', 'counter' => 'badge-counter'),
-        array('name' => 'index_below_content', 'counter' => 'badge-counter'),
-        array('name' => 'category_below_content', 'counter' => 'badge-counter')
-      );
-      $turned_off_share_buttons_locations = array(
-        array('name' => 'post_above_content', 'counter' => 'badge-counter'),
-        array('name' => 'page_above_content', 'counter' => 'badge-counter'),
-        array('name' => 'index_above_content', 'counter' => 'badge-counter'),
-        array('name' => 'category_above_content', 'counter' => 'badge-counter')
-      );
+      $turned_on_share_buttons_locations = self::get_default_sb_on_locations();
+      $turned_off_share_buttons_locations = self::get_default_sb_off_locations();
 
-      $turned_on_recommendations_locations = array(
-        array('name' => 'post_below_content'),
-        array('name' => 'page_below_content'),
-      );
-      $turned_off_recommendations_locations = array(
-        array('name' => 'index_below_content'),
-        array('name' => 'category_below_content'),
-      );
+      $turned_on_recommendations_locations = self::get_default_rec_on_locations();
+      $turned_off_recommendations_locations = self::get_default_rec_off_locations();
 
       $share_buttons_attributes = array_merge($turned_on_share_buttons_locations, $turned_off_share_buttons_locations);
       $recommendations_attributes = array_merge($turned_on_recommendations_locations, $turned_off_recommendations_locations);
@@ -668,38 +657,7 @@ class ShareaholicUtilities {
         ));
 
         if (isset($response['body']['location_name_ids']) && is_array($response['body']['location_name_ids'])) {
-
-          $turned_on_share_buttons_keys = array();
-          foreach($turned_on_share_buttons_locations as $loc) {
-            $turned_on_share_buttons_keys[] = $loc['name'];
-          }
-
-          $turned_on_recommendations_keys = array();
-          foreach($turned_on_recommendations_locations as $loc) {
-            $turned_on_recommendations_keys[] = $loc['name'];
-          }
-
-          $turned_off_share_buttons_keys = array();
-          foreach($turned_off_share_buttons_locations as $loc) {
-            $turned_off_share_buttons_keys[] = $loc['name'];
-          }
-
-          $turned_off_recommendations_keys = array();
-          foreach($turned_off_recommendations_locations as $loc) {
-            $turned_off_recommendations_keys[] = $loc['name'];
-          }
-
-          $turn_on = array(
-            'share_buttons' => self::associative_array_slice($response['body']['location_name_ids']['share_buttons'], $turned_on_share_buttons_keys),
-            'recommendations' => self::associative_array_slice($response['body']['location_name_ids']['recommendations'], $turned_on_recommendations_keys)
-          );
-
-          $turn_off = array(
-            'share_buttons' => self::associative_array_slice($response['body']['location_name_ids']['share_buttons'], $turned_off_share_buttons_keys),
-            'recommendations' => self::associative_array_slice($response['body']['location_name_ids']['recommendations'], $turned_off_recommendations_keys)
-          );
-
-          ShareaholicUtilities::turn_on_locations($turn_on, $turn_off);
+          self::set_default_location_settings($response['body']['location_name_ids']);
           ShareaholicUtilities::clear_cache();
         } else {
           ShareaholicUtilities::log_bad_response('FailedToCreateApiKey', $response);
@@ -714,6 +672,105 @@ class ShareaholicUtilities {
       usleep(100000);
       self::get_or_create_api_key();
     }
+  }
+
+
+  /**
+   * Get share buttons locations that should be turned on by default
+   *
+   * @return {Array}
+   */
+  public static function get_default_sb_on_locations() {
+    return array(
+      array('name' => 'post_below_content', 'counter' => 'badge-counter'),
+      array('name' => 'page_below_content', 'counter' => 'badge-counter'),
+      array('name' => 'index_below_content', 'counter' => 'badge-counter'),
+      array('name' => 'category_below_content', 'counter' => 'badge-counter')
+    );
+  }
+
+  /**
+   * Get share buttons locations that should be turned off by default
+   *
+   * @return {Array}
+   */
+  public static function get_default_sb_off_locations() {
+    return array(
+      array('name' => 'post_above_content', 'counter' => 'badge-counter'),
+      array('name' => 'page_above_content', 'counter' => 'badge-counter'),
+      array('name' => 'index_above_content', 'counter' => 'badge-counter'),
+      array('name' => 'category_above_content', 'counter' => 'badge-counter')
+    );
+  }
+
+  /**
+   * Get recommendations locations that should be turned on by default
+   *
+   * @return {Array}
+   */
+  public static function get_default_rec_on_locations() {
+    return array(
+      array('name' => 'post_below_content'),
+      array('name' => 'page_below_content'),
+    );
+  }
+
+
+  /**
+   * Get recommendations locations that should be turned off by default
+   *
+   * @return {Array}
+   */
+  public static function get_default_rec_off_locations() {
+    return array(
+      array('name' => 'index_below_content'),
+      array('name' => 'category_below_content'),
+    );
+  }
+
+  /**
+   * Given an object, set the default on/off locations
+   * for share buttons and recommendations
+   *
+   */
+  public static function set_default_location_settings($location_name_ids) {
+    $turned_on_share_buttons_locations = self::get_default_sb_on_locations();
+    $turned_off_share_buttons_locations = self::get_default_sb_off_locations();
+
+    $turned_on_recommendations_locations = self::get_default_rec_on_locations();
+    $turned_off_recommendations_locations = self::get_default_rec_off_locations();
+
+    $turned_on_share_buttons_keys = array();
+    foreach($turned_on_share_buttons_locations as $loc) {
+      $turned_on_share_buttons_keys[] = $loc['name'];
+    }
+
+    $turned_on_recommendations_keys = array();
+    foreach($turned_on_recommendations_locations as $loc) {
+      $turned_on_recommendations_keys[] = $loc['name'];
+    }
+
+    $turned_off_share_buttons_keys = array();
+    foreach($turned_off_share_buttons_locations as $loc) {
+      $turned_off_share_buttons_keys[] = $loc['name'];
+    }
+
+    $turned_off_recommendations_keys = array();
+    foreach($turned_off_recommendations_locations as $loc) {
+      $turned_off_recommendations_keys[] = $loc['name'];
+    }
+
+    $turn_on = array(
+      'share_buttons' => self::associative_array_slice($location_name_ids['share_buttons'], $turned_on_share_buttons_keys),
+      'recommendations' => self::associative_array_slice($location_name_ids['recommendations'], $turned_on_recommendations_keys)
+    );
+
+    $turn_off = array(
+      'share_buttons' => self::associative_array_slice($location_name_ids['share_buttons'], $turned_off_share_buttons_keys),
+      'recommendations' => self::associative_array_slice($location_name_ids['recommendations'], $turned_off_recommendations_keys)
+    );
+
+    ShareaholicUtilities::turn_on_locations($turn_on, $turn_off);
   }
 
   /**
