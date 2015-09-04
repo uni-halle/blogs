@@ -67,7 +67,7 @@ function foundation_featured_config( $args ) {
 }
 
 function foundation_featured_modify_query( $query ) {
-	if ( is_main_query() ) {
+	if ( $query->is_main_query() ) {
 		$settings = foundation_get_settings();
 
 		if ( $settings->featured_filter_posts ) {

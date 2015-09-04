@@ -65,7 +65,11 @@ function wptouch_admin_get_predefined_menus( $network_only = false ) {
 	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
 		$available_menus[ WPTOUCH_PRO_ADMIN_UPGRADE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_UPGRADE, __( 'Upgrade to Pro', 'wptouch-pro' ), WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
 	} elseif ( !defined( 'WPTOUCH_CLIENT_MODE' ) && wptouch_license_upgrade_available() ) {
-		$available_menus[ WPTOUCH_PRO_ADMIN_UPGRADE_LICENSE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_UPGRADE_LICENSE, __( 'Upgrade License', 'wptouch-pro' ), WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
+        $settings = wptouch_get_settings( 'bncid' );
+        
+        if ( $settings->bncid && $settings->wptouch_license_key ) {
+            $available_menus[ WPTOUCH_PRO_ADMIN_UPGRADE_LICENSE ] = wptouch_admin_create_menu( WPTOUCH_PRO_ADMIN_UPGRADE_LICENSE, __( 'Upgrade License', 'wptouch-pro' ), WPTOUCH_PRO_ADMIN_CUSTOM_PAGE );
+        }
 	}
 
 	return apply_filters( 'wptouch_available_menus', $available_menus );

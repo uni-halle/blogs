@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.9
-Stable tag: 3.8.5
+Stable tag: 3.8.6
 Tested up to: 4.3
 License: GPLv2
 
@@ -38,10 +38,15 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 
 == Changelog ==
 
+= Version 3.8.6 (Sep 1, 2015) =
+
+* Fixed:  Fatal error in some situations with featured posts with a call to is_main_query()
+
 = Version 3.8.5 (Aug 31, 2015) =
 
 * Fixed: Some themes experiencing delays with touch targets
 * Fixed: Posts in the featured slider did not reliably get excluded from the regular post listing
+* Fixed: aligncenter images exceeding 100% width
 * Fixed: issues with processing desktop theme shortcodes (Pro)
 
 = Version 3.8.3 (July 30, 2015) =
