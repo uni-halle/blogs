@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-31 15:22:04+0000\n"
+"PO-Revision-Date: 2015-09-04 18:35:43+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -322,7 +322,7 @@ msgstr "https://codex.wordpress.org/Child_Themes"
 
 #: wp-admin/options-writing.php:169
 msgid "WordPress is not notifying any <a href=\"https://codex.wordpress.org/Update_Services\">Update Services</a> because of your site&#8217;s <a href=\"%s\">visibility settings</a>."
-msgstr "WordPress benachrichtigt derzeit keine <a href=\"https://codex.wordpress.org/Update_Services\">Update Services</a>, wegen der aktuellen <a href=\"%s\">Einstellungen zur Sichtbarkeit für Suchmaschinen</a>. "
+msgstr "WordPress benachrichtigt derzeit keine <a href=\"https://codex.wordpress.org/Update_Services\">Update-Services</a>, wegen den aktuellen <a href=\"%s\">Einstellungen zur Sichtbarkeit für Suchmaschinen</a>. "
 
 #: wp-admin/edit-tags.php:244
 msgid "<a href=\"https://codex.wordpress.org/Posts_Tags_Screen\" target=\"_blank\">Documentation on Tags</a>"
@@ -568,7 +568,7 @@ msgstr "<a href=\"https://codex.wordpress.org/Version_%1$s\">WordPress %1$s</a> 
 
 #: wp-admin/install.php:212
 msgid "You cannot install because <a href=\"https://codex.wordpress.org/Version_%1$s\">WordPress %1$s</a> requires PHP version %2$s or higher. You are running version %3$s."
-msgstr "Die Installation kann nicht gestartet werden, da <a href=\"https://codex.wordpress.org/Version_%1$s\">WordPress %1$s</a> mindestens die PHP -Version %2$s benötigt. Deine PHP -Version ist %3$s."
+msgstr "Die Installation kann nicht gestartet werden, da <a href=\"https://codex.wordpress.org/Version_%1$s\">WordPress %1$s</a> mindestens die PHP-Version %2$s benötigt. Deine PHP-Version ist %3$s."
 
 #: wp-admin/install.php:214
 msgid "You cannot install because <a href=\"https://codex.wordpress.org/Version_%1$s\">WordPress %1$s</a> requires MySQL version %2$s or higher. You are running version %3$s."
@@ -584,7 +584,7 @@ msgstr "Um diese Datei zu ändern, muss sie vom Server <a href=\"https://codex.w
 
 #: wp-admin/options-writing.php:163
 msgid "When you publish a new post, WordPress automatically notifies the following site update services. For more about this, see <a href=\"https://codex.wordpress.org/Update_Services\">Update Services</a> on the Codex. Separate multiple service <abbr title=\"Universal Resource Locator\">URL</abbr>s with line breaks."
-msgstr "Wenn du einen Beitrag veröffentlichst, kann WordPress verschiedene Dienste darüber informieren. Um mehr darüber zu erfahren, besuche die Seite <a href=\"https://codex.wordpress.org/Update_Services\">Update Services</a> im Codex. Bitte trenne mehrere <abbr title=\"Universal Resource Locator\">URL</abbr>s jeweils durch einen Zeilenumbruch."
+msgstr "Wenn du einen Beitrag veröffentlichst, kann WordPress verschiedene Dienste darüber informieren. Um mehr darüber zu erfahren, besuche die Seite <a href=\"https://codex.wordpress.org/Update_Services\">Update-Services</a> im Codex. Bitte trenne mehrere <abbr title=\"Universal Resource Locator\">URL</abbr>s jeweils durch einen Zeilenumbruch."
 
 #: wp-admin/options-permalink.php:277
 msgid "If your <code>.htaccess</code> file were <a href=\"https://codex.wordpress.org/Changing_File_Permissions\">writable</a>, we could do this automatically, but it isn&#8217;t so these are the mod_rewrite rules you should have in your <code>.htaccess</code> file. Click in the field and press <kbd>CTRL + a</kbd> to select all."
@@ -760,39 +760,6 @@ msgstr "Beitragsoptionen verbergen"
 msgid "In the editing area the Tab key enters a tab character. To move below this area by pressing Tab, press the Esc key followed by the Tab key. In some cases the Esc key will need to be pressed twice before the Tab key will allow you to continue."
 msgstr "Im Bearbeitungsbereich fügt die Tabulator-Taste ein Tabulator-Zeichen ein. Um mit der Tabulator-Taste unter diesen Bereich zu gelangen, drücke die Escape-Taste gefolgt von der Tabulator-Taste. Unter Umständen muss die Escape-Taste zweimal gedrückt werden, bevor man mit der Tabulator-Taste fortfahren kann."
 
-#. translators: Do not translate USERNAME, URL_DELETE, SITE_NAME: those are
-#. placeholders.
-#: wp-admin/ms-delete-site.php:46
-msgid ""
-"Howdy ###USERNAME###,\n"
-"\n"
-"You recently clicked the 'Delete Site' link on your site and filled in a\n"
-"form on that page.\n"
-"\n"
-"If you really want to delete your site, click the link below. You will not\n"
-"be asked to confirm again so only click this link if you are absolutely certain:\n"
-"###URL_DELETE###\n"
-"\n"
-"If you delete your site, please consider opening a new site here\n"
-"some time in the future! (But remember your current site and username\n"
-"are gone forever.)\n"
-"\n"
-"Thanks for using the site,\n"
-"Webmaster\n"
-"###SITE_NAME###"
-msgstr ""
-"Hallo ###USERNAME###,\n"
-"\n"
-"Du hast gerade in deiner Website den Link \"Website löschen\" angeklickt und ein Formular auf dieser Seite ausgefüllt.\n"
-"\n"
-"Wenn du deine Website wirklich löschen möchtest, klicke bitte den nachfolgenden Link an. Du wirst nicht nochmal nach einer Bestätigung gefragt. Deshalb klick den Link nur an, wenn du dir absolut sicher bist: ###URL_DELETE###\n"
-"\n"
-"Vielleicht möchtest du, nachdem du deine Website gelöscht hast, demnächst hier eine neue Website anlegen? (Aber denk daran, dass deine aktuelle Website und Benutzername dauerhaft gelöscht sind.)\n"
-"\n"
-"Danke, dass du die Website nutzt,\n"
-"Webmaster\n"
-"###SITE_NAME###"
-
 #: wp-admin/tools.php:60
 msgid "If you can&#8217;t drag the bookmarklet to your bookmarks, copy the following code and create a new bookmark. Paste the code into the new bookmark&#8217;s URL field."
 msgstr "Wenn du das Bookmarklet nicht in deine Lesezeichen ziehen kannst, kopiere den folgenden Code und erstelle ein neues Lesezeichen. Füge dann den Code in das Adressfeld des neuen Lesezeichens ein."
@@ -881,6 +848,39 @@ msgstr "Beitragsseite"
 #: wp-admin/user-edit.php:42
 msgid "You can log out of other devices, such as your phone or a public computer, by clicking the Log Out Everywhere Else button."
 msgstr "Durch Anklicken des Buttons &#8222;Überall abmelden&#8220; kannst du dich von anderen Geräten wie zum Beispiel deinem Smartphone oder einem öffentlich zugänglichen Computer abmelden."
+
+#. translators: Do not translate USERNAME, URL_DELETE, SITE_NAME: those are
+#. placeholders.
+#: wp-admin/ms-delete-site.php:46
+msgid ""
+"Howdy ###USERNAME###,\n"
+"\n"
+"You recently clicked the 'Delete Site' link on your site and filled in a\n"
+"form on that page.\n"
+"\n"
+"If you really want to delete your site, click the link below. You will not\n"
+"be asked to confirm again so only click this link if you are absolutely certain:\n"
+"###URL_DELETE###\n"
+"\n"
+"If you delete your site, please consider opening a new site here\n"
+"some time in the future! (But remember your current site and username\n"
+"are gone forever.)\n"
+"\n"
+"Thanks for using the site,\n"
+"Webmaster\n"
+"###SITE_NAME###"
+msgstr ""
+"Hallo ###USERNAME###,\n"
+"\n"
+"Du hast gerade in deiner Website den Link „Website löschen“ angeklickt und ein Formular auf dieser Seite ausgefüllt.\n"
+"\n"
+"Wenn du deine Website wirklich löschen möchtest, klicke bitte den nachfolgenden Link an. Du wirst nicht nochmal nach einer Bestätigung gefragt. Deshalb klick den Link nur an, wenn du dir absolut sicher bist: ###URL_DELETE###\n"
+"\n"
+"Vielleicht möchtest du, nachdem du deine Website gelöscht hast, demnächst hier eine neue Website anlegen? (Aber denk daran, dass deine aktuelle Website und Benutzername dauerhaft gelöscht sind.)\n"
+"\n"
+"Danke, dass du die Website nutzt,\n"
+"Webmaster\n"
+"###SITE_NAME###"
 
 #: wp-admin/includes/class-wp-upgrader.php:3317
 msgid ""
@@ -1207,10 +1207,6 @@ msgstr "http://planet.wpde.org/de/small-feed/"
 msgid "Untested with your version of WordPress"
 msgstr "Ungetestet mit deiner Version von WordPress"
 
-#: wp-admin/custom-header.php:457
-msgid "You can now manage and live-preview Custom Header in the <a href=\"%1$s\">Customizer</a>."
-msgstr "Du kannst jetzt eigene Header unter <a href=\"%1$s\">\"Anpassen\"</a> verwalten und in einer Vorschau ansehen."
-
 #: wp-admin/includes/class-wp-links-list-table.php:105
 #: wp-admin/includes/class-wp-posts-list-table.php:325
 msgid "Filter by category"
@@ -1269,10 +1265,6 @@ msgctxt "Placeholder is the document title from the preview"
 msgid "Customize: %s"
 msgstr "Anpassungen:  %s"
 
-#: wp-admin/custom-background.php:186
-msgid "You can now manage and live-preview Custom Backgrounds in the <a href=\"%1$s\">Customizer</a>."
-msgstr "Du kannst jetzt eigene Hintergründe unter <a href=\"%1$s\">Anpassen</a> verwalten und in einer Vorschau ansehen."
-
 #: wp-admin/includes/class-wp-comments-list-table.php:287
 msgid "Filter by comment type"
 msgstr "Nach Kommentarart filtern"
@@ -1288,6 +1280,14 @@ msgstr "Die Sitzungen konnten nicht abgemeldet werden. Bitte versuche es noch ei
 #: wp-admin/includes/ajax-actions.php:1895
 msgid "You don't have permission to upload files."
 msgstr "Du hast keine Berechtigung, um Dateien hochzuladen."
+
+#: wp-admin/custom-header.php:457
+msgid "You can now manage and live-preview Custom Header in the <a href=\"%1$s\">Customizer</a>."
+msgstr "Du kannst jetzt eigene Header unter <a href=\"%1$s\">&#8222;Anpassen&#8220;</a> verwalten und in einer Vorschau ansehen."
+
+#: wp-admin/custom-background.php:186
+msgid "You can now manage and live-preview Custom Backgrounds in the <a href=\"%1$s\">Customizer</a>."
+msgstr "Du kannst jetzt eigene Hintergründe unter <a href=\"%1$s\">&#8222;Anpassen&#8220;</a> verwalten und in einer Vorschau ansehen."
 
 #: wp-admin/includes/screen.php:1086
 msgctxt "Welcome panel"
@@ -2199,7 +2199,7 @@ msgstr "Deinerseits ist nichts weiter zu tun."
 
 #: wp-admin/includes/class-wp-upgrader.php:3128
 msgid "For more on version %s, see the About WordPress screen:"
-msgstr "Um mehr über Version %s zu erfahren, schau dir die \"Über WordPress\"-Seite an:"
+msgstr "Um mehr über Version %s zu erfahren, schau dir die &#8222;Über WordPress&#8220;-Seite an:"
 
 #: wp-admin/includes/class-wp-upgrader.php:1823
 msgid "The translation is up to date."
@@ -2506,7 +2506,7 @@ msgstr "Wiederhole Passwort"
 
 #: wp-admin/includes/nav-menu.php:1195
 msgid "Add menu items from the column on the left."
-msgstr "Füge Menüpunkte aus der linken Spalte hinzu."
+msgstr "Füge Menüeinträge aus der linken Spalte hinzu."
 
 #: wp-admin/includes/plugin-install.php:138
 msgid "Plugins extend and expand the functionality of WordPress. You may automatically install plugins from the <a href=\"%1$s\">WordPress Plugin Directory</a> or upload a plugin in .zip format via <a href=\"%2$s\">this page</a>."
@@ -2671,10 +2671,6 @@ msgstr "Zugewiesenes Menü"
 msgid "Menu locations updated."
 msgstr "Menü Anordnung aktualisiert."
 
-#: wp-admin/nav-menus.php:537
-msgid "Delete a menu item by <strong>expanding it and clicking the Remove link</strong>"
-msgstr "Entferne ein Menü, indem Du es<strong>vergrößerst und auf den Entfernen-Link klickst</strong>"
-
 #: wp-admin/nav-menus.php:545
 msgid "This screen is used for globally assigning menus to locations defined by your theme."
 msgstr "Diese Ansicht wird benutzt um Menüs zu gewissen Stellen hinzuzufügen, welche durch dein Theme definiert sind."
@@ -2703,10 +2699,6 @@ msgstr "Um ein Menü zu einem oder mehreren Bereichen deines Themes hinzuzufüge
 msgid "Create, edit, and delete menus"
 msgstr "Menüs erstellen, bearbeiten und löschen"
 
-#: wp-admin/nav-menus.php:513
-msgid "Add, organize, and modify individual menu items"
-msgstr "Einzelne Menüpunkte hinzufügen, änderen oder organisieren"
-
 #: wp-admin/nav-menus.php:534
 msgid "Add one or several items at once by <strong>selecting the checkbox next to each item and clicking Add to Menu</strong>"
 msgstr "Füge einen oder mehrere Menüpunkte auf einmal hinzu, indem Du <strong>die Checkbox neben dem Menüpunkt auswählst und dann auf \"Zum Menü hinzufügen\" klickst</strong>"
@@ -2730,6 +2722,14 @@ msgstr "Revision wird gesichert ..."
 #: wp-admin/nav-menus.php:522
 msgid "To edit an existing menu, <strong>choose a menu from the drop down and click Select</strong>"
 msgstr "Um ein bestehendes Menü zu bearbeiten, <strong>wähle ein Menü aus der Auswahlliste und klicke auf Auswählen</strong>"
+
+#: wp-admin/nav-menus.php:537
+msgid "Delete a menu item by <strong>expanding it and clicking the Remove link</strong>"
+msgstr "Entferne einen Menüeintrag, indem Du ihn <strong>aufklappst und auf den Entfernen-Link klickst</strong>"
+
+#: wp-admin/nav-menus.php:513
+msgid "Add, organize, and modify individual menu items"
+msgstr "Einzelne Menüeinträge hinzufügen, anordnen oder ändern"
 
 #: wp-admin/includes/revision.php:358
 msgid "Restore This Revision"
@@ -4721,10 +4721,6 @@ msgstr "FEHLER: Bitte gib einen Kommentar ein."
 msgid "Overview"
 msgstr "Übersicht"
 
-#: wp-admin/index.php:45
-msgid "The left-hand navigation menu provides links to all of the WordPress administration screens, with submenu items displayed on hover. You can minimize this menu to a narrow icon strip by clicking on the Collapse Menu arrow at the bottom."
-msgstr "Das Menü auf der linken Seite bietet Zugang zu allen Einstellungen und Optionen deiner WordPress Administrationsseiten, deren Untermenüpunkte beim Überfahren mit der Maus angezeigt werden. Um das Menü zu einer schmalen Symbolleiste zu minimieren, klicke auf den Menü einklappen Pfeil am unteren Ende."
-
 #: wp-admin/index.php:50
 msgid "Navigation"
 msgstr "Navigation"
@@ -4736,6 +4732,10 @@ msgstr "Die folgenden Einstellungsmöglichkeiten kannst Du dazu benutzen, die Zu
 #: wp-admin/index.php:56
 msgid "<strong>Drag and Drop</strong> - To rearrange the boxes, drag and drop by clicking on the title bar of the selected box and releasing when you see a gray dotted-line rectangle appear in the location you want to place the box."
 msgstr "<strong>Drag-and-Drop</strong> – Um die Module neu anzuordnen klicke auf die Titelleiste des ausgewählten Moduls, halte die Maustaste fest, und ziehe das Modul an die gewünschte Position, und lasse es los, wenn dort ein grau gepunktetes Rechteck auftaucht. "
+
+#: wp-admin/index.php:45
+msgid "The left-hand navigation menu provides links to all of the WordPress administration screens, with submenu items displayed on hover. You can minimize this menu to a narrow icon strip by clicking on the Collapse Menu arrow at the bottom."
+msgstr "Das Menü auf der linken Seite bietet Zugang zu allen Einstellungen und Optionen deiner WordPress Administrationsseiten, deren Untermenüeinträge beim Überfahren mit der Maus angezeigt werden. Um das Menü zu einer schmalen Symbolleiste zu minimieren, klicke auf den Menü einklappen Pfeil am unteren Ende."
 
 #. translators: 1: plugin name, 2: plugin author
 #: wp-admin/plugins.php:313
@@ -5024,7 +5024,7 @@ msgstr "Es scheint, als würdest du eine unsichere Version von <a href='%s'>%s</
 
 #: wp-admin/includes/nav-menu.php:1228
 msgid "There are some invalid menu items. Please check or delete them."
-msgstr "Es gibt ein paar ungültige Elemente im Menü. Bitte überprüfe oder entferne diese."
+msgstr "Es gibt ein paar ungültige Einträge im Menü. Bitte überprüfe oder entferne diese."
 
 #: wp-admin/edit-tag-form.php:85 wp-admin/edit-tags.php:467
 #: wp-admin/includes/class-wp-terms-list-table.php:169
@@ -6393,7 +6393,7 @@ msgstr "Um Subdomains für Seitenadressen nutzen zu können, musst du einen Wild
 
 #: wp-admin/nav-menus.php:234
 msgid "The menu item has been successfully deleted."
-msgstr "Der Menüpunkt wurde erfolgreich gelöscht."
+msgstr "Der Menüeintrag wurde erfolgreich gelöscht."
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:222
 #: wp-admin/includes/class-wp-theme-install-list-table.php:137
@@ -6700,7 +6700,7 @@ msgstr "WordPress-Aktualisierungen"
 
 #: wp-admin/includes/nav-menu.php:134 wp-admin/includes/nav-menu.php:136
 msgid "Edit Menu Item"
-msgstr "Menüelement bearbeiten"
+msgstr "Menüeintrag bearbeiten"
 
 #: wp-admin/nav-menus.php:813
 msgid "Delete Menu"
@@ -6730,10 +6730,6 @@ msgstr "Bist du sicher, dass du diese Dateien und Daten löschen möchtest?"
 #: wp-admin/plugins.php:333
 msgid "Yes, delete these files and data"
 msgstr "Ja, lösche diese Dateien und Daten"
-
-#: wp-admin/includes/nav-menu.php:602
-msgid "Menu Item"
-msgstr "Menüelement"
 
 #: wp-admin/includes/nav-menu.php:713 wp-admin/includes/nav-menu.php:970
 msgid "View All"
@@ -6778,6 +6774,10 @@ msgstr "In dieser Zeitzone gibt es keine Sommerzeit."
 #: wp-admin/about.php:176
 msgid "Go to Dashboard"
 msgstr "Zum Dashboard"
+
+#: wp-admin/includes/nav-menu.php:602
+msgid "Menu Item"
+msgstr "Menüeintrag"
 
 #: wp-admin/includes/class-wp-theme-install-list-table.php:278
 msgid "Install %s"

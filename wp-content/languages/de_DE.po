@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-09-01 08:57:10+0000\n"
+"PO-Revision-Date: 2015-09-04 18:24:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,23 +38,23 @@ msgctxt "Word count type. Do not translate!"
 msgid "words"
 msgstr "words"
 
-#. translators: 1: Title of a menu item, 2: Type of a menu item
-#: wp-includes/class-wp-customize-control.php:1690
-msgid "Edit menu item: %1$s (%2$s)"
-msgstr "Menü-Eintrag bearbeiten: %1$s (%2$s)"
-
 #: wp-includes/script-loader.php:377
 msgid "Your new password has not been saved."
 msgstr "Dein neues Passwort wurde nicht gespeichert."
 
-#. translators: 1: Title of a menu item, 2: Type of a menu item
-#: wp-includes/class-wp-customize-control.php:1694
-msgid "Remove Menu Item: %1$s (%2$s)"
-msgstr "Menü-Eintrag entfernen: %1$s (%2$s)"
-
 #: wp-includes/class-wp-customize-nav-menus.php:729
 msgid "Toggle section: Custom Links"
 msgstr "Bereich umschalten: Individuelle Links"
+
+#. translators: 1: Title of a menu item, 2: Type of a menu item
+#: wp-includes/class-wp-customize-control.php:1690
+msgid "Edit menu item: %1$s (%2$s)"
+msgstr "Menüeintrag bearbeiten: %1$s (%2$s)"
+
+#. translators: 1: Title of a menu item, 2: Type of a menu item
+#: wp-includes/class-wp-customize-control.php:1694
+msgid "Remove Menu Item: %1$s (%2$s)"
+msgstr "Menüeintrag entfernen: %1$s (%2$s)"
 
 #: wp-includes/script-loader.php:382
 msgid "Hide password"
@@ -460,14 +460,14 @@ msgstr "Strg + Alt + Buchstabe:"
 msgid "Content:"
 msgstr "Inhalt:"
 
-#: wp-includes/class-wp-customize-section.php:236
-#: wp-includes/class-wp-customize-section.php:420
-msgid "Customizing"
-msgstr "Anpassen"
-
 #: wp-includes/class-wp-customize-panel.php:472
 msgid "Menu Options"
 msgstr "Menü Optionen"
+
+#: wp-includes/class-wp-customize-section.php:236
+#: wp-includes/class-wp-customize-section.php:420
+msgid "Customizing"
+msgstr "Deine Anpassungen für"
 
 #: wp-includes/class-wp-customize-panel.php:436
 msgid "Link Target"
@@ -519,22 +519,9 @@ msgstr[1] "Dein Theme enthält %s Menü-Positionen. Wähle aus, welches Menü an
 msgid "Menu Locations"
 msgstr "Menü-Positionen"
 
-#. translators: &#9656; is the unicode right-pointing triangle, and %s is the
-#. section title in the Customizer
-#: wp-includes/class-wp-customize-nav-menus.php:340
-#: wp-includes/class-wp-customize-nav-menus.php:709
-#: wp-includes/class-wp-customize-section.php:234
-#: wp-includes/class-wp-customize-widgets.php:693
-msgid "Customizing &#9656; %s"
-msgstr "Anpassen &#9656; %s"
-
 #: wp-includes/class-wp-customize-nav-menus.php:717
 msgid "Search Menu Items"
 msgstr "Menüeintrag suchen"
-
-#: wp-includes/class-wp-customize-nav-menus.php:712
-msgid "Add Menu Items"
-msgstr "Menüpunkte hinzufügen"
 
 #: wp-includes/class-wp-customize-nav-menus.php:553
 msgid "Add a Menu"
@@ -544,6 +531,19 @@ msgstr "Menü hinzufügen"
 msgid "This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom links."
 msgstr "Dieser Panel ist zuständig für die Verwaltung von Menüs für Inhalte, die du bereits auf deiner Website veröffentlicht hast. Du kannst Menüs erstellen und Einträge für existierende Inhalte wie Seiten, Beiträge, Kategorien, Schlagworte, Formate oder benutzerdefinierte Links hinzufügen."
 
+#: wp-includes/class-wp-customize-nav-menus.php:712
+msgid "Add Menu Items"
+msgstr "Menüeinträge hinzufügen"
+
+#. translators: &#9656; is the unicode right-pointing triangle, and %s is the
+#. section title in the Customizer
+#: wp-includes/class-wp-customize-nav-menus.php:340
+#: wp-includes/class-wp-customize-nav-menus.php:709
+#: wp-includes/class-wp-customize-section.php:234
+#: wp-includes/class-wp-customize-widgets.php:693
+msgid "Customizing &#9656; %s"
+msgstr "Deine Anpassungen für &#9656; %s"
+
 #. translators: 1: item name, 2: item position, 3: parent item name
 #: wp-includes/class-wp-customize-nav-menus.php:383
 msgid "%1$s. Sub item number %2$d under %3$s."
@@ -552,7 +552,7 @@ msgstr "%1$s. Unterelelement %2$d von %3$s."
 #. translators: 1: item name, 2: item position, 3: total number of items
 #: wp-includes/class-wp-customize-nav-menus.php:381
 msgid "%1$s. Menu item %2$d of %3$d."
-msgstr "%1$s. Menüpunkt %2$d von %3$d"
+msgstr "%1$s. Menüeintrag %2$d von %3$d"
 
 #. translators: %s: previous item name
 #: wp-includes/class-wp-customize-nav-menus.php:379
@@ -582,13 +582,13 @@ msgstr "An die Spitze verschieben"
 msgid "Move down one"
 msgstr "Nach unten verschieben"
 
-#: wp-includes/class-wp-customize-nav-menus.php:349
-msgid "Loading more results... please wait."
-msgstr "Weitere Ergebnisse werden geladen ... bitte warten."
-
 #: wp-includes/class-wp-customize-nav-menus.php:369
 msgid "Move up one"
 msgstr "Nach oben verschieben"
+
+#: wp-includes/class-wp-customize-nav-menus.php:349
+msgid "Loading more results... please wait."
+msgstr "Weitere Ergebnisse werden geladen … bitte warten."
 
 #: wp-includes/class-wp-customize-nav-menus.php:348
 msgid "Additional items found: %d"
@@ -795,7 +795,7 @@ msgstr "%s aktualisiert!"
 #. translators: Plugin name and version
 #: wp-includes/script-loader.php:571
 msgid "Updating %s..."
-msgstr "Aktualisiere %s ..."
+msgstr "Aktualisiere %s …"
 
 #: wp-includes/class-wp-customize-section.php:416
 msgctxt "theme"
@@ -859,11 +859,11 @@ msgstr "Aktualisierung erfolgreich abgeschlossen."
 #. translators: JavaScript accessible string
 #: wp-includes/script-loader.php:577
 msgid "Updating... please wait."
-msgstr "Aktualisiere ... bitte warten."
+msgstr "Aktualisiere … bitte warten."
 
 #: wp-includes/script-loader.php:566
 msgid "Updating..."
-msgstr "Aktualisiere ..."
+msgstr "Aktualisiere …"
 
 #. translators: Do not translate USERNAME, PASSWORD, LOGINLINK, SITE_NAME:
 #. those are placeholders.
@@ -1023,11 +1023,6 @@ msgstr "Die %1$s Option ist veraltet für die %2$s Funktionsfamilie. %3$s sollte
 msgid "The %1$s option is deprecated for the family of %2$s functions. Use the %3$s option instead."
 msgstr "Die %1$s Optionen sind veraltet für die %2$s Funktionsfamilie. Stattdessen sollte die %3$s Option verwendet werden."
 
-#: wp-includes/class-wp-customize-section.php:440
-#: wp-includes/class-wp-customize-section.php:441
-msgid "Search installed themes..."
-msgstr "Installierte Themes durchsuchen ..."
-
 #: wp-includes/class-wp-customize-control.php:1413
 msgid "Live Preview"
 msgstr "Live-Vorschau"
@@ -1037,9 +1032,14 @@ msgstr "Live-Vorschau"
 msgid "Theme Details"
 msgstr "Theme-Details"
 
+#: wp-includes/class-wp-customize-section.php:440
+#: wp-includes/class-wp-customize-section.php:441
+msgid "Search installed themes..."
+msgstr "Installierte Themes durchsuchen …"
+
 #: wp-includes/class-wp-customize-manager.php:630
 msgid "Loading ..."
-msgstr "Lade ..."
+msgstr "Lade …"
 
 #: wp-includes/link-template.php:2387
 msgctxt "next post"
@@ -4736,7 +4736,7 @@ msgstr "Der Menüname <strong>%s</strong> wird bereits verwendet. Bitte probiere
 
 #: wp-includes/nav-menu.php:348
 msgid "The given object ID is not that of a menu item."
-msgstr "Die übergebene ID gehört zu keinem Menüelement."
+msgstr "Die übergebene ID gehört zu keinem Menüeintrag."
 
 #: wp-includes/formatting.php:3615
 msgid "The WordPress address you entered did not appear to be a valid URL. Please enter a valid URL."
@@ -4839,17 +4839,17 @@ msgstr "Wartungsmodus"
 msgid "Briefly unavailable for scheduled maintenance. Check back in a minute."
 msgstr "Wegen geplanter Wartungsarbeiten kurzzeitig nicht verfügbar. Schau gleich noch einmal vorbei."
 
-#: wp-includes/post.php:100
-msgid "Navigation Menu Items"
-msgstr "Elemente des Navigations-Menüs"
-
-#: wp-includes/post.php:101
-msgid "Navigation Menu Item"
-msgstr "Element des Navigations-Menüs"
-
 #: wp-includes/taxonomy.php:82
 msgid "Navigation Menus"
 msgstr "Navigationsmenüs"
+
+#: wp-includes/post.php:100
+msgid "Navigation Menu Items"
+msgstr "Einträge des Navigations-Menüs"
+
+#: wp-includes/post.php:101
+msgid "Navigation Menu Item"
+msgstr "Eintrag des Navigations-Menüs"
 
 #: wp-links-opml.php:29
 msgid "Links for %s"
