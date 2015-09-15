@@ -1341,36 +1341,6 @@ class ShareaholicUtilities {
   }
 
 
-  /**
-   * This is a wrapper for the Recommendations API
-   *
-   */
-   public static function recommendations_status_check() {
-    if (self::get_option('api_key') != NULL){
-    	$recommendations_url = Shareaholic::REC_API_URL . "/v4/recommend?url=" . urlencode(get_bloginfo('url')) . "&internal=6&sponsored=0&api_key=" . self::get_option('api_key');
-      $cache_key = 'recommendations_status_check-' . md5( $recommendations_url );
-      
-      $response = get_transient($cache_key);
-      if (!$response){
-        $response = ShareaholicCurl::get($recommendations_url);
-        if( !is_wp_error( $response ) ) {
-            set_transient( $cache_key, $response, RECOMMENDATIONS_STATUS_CHECK_CACHE_LENGTH );
-        }
-      }
-      
-      if(is_array($response) && array_key_exists('response', $response)) {
-        $body = $response['body'];
-        if (is_array($body) && array_key_exists('internal', $body) && !empty($body['internal'])) {
-          return "ready";
-        } else {
-          return "processing";
-        }
-      } else {
-        return "unknown";
-      }
-    }
-   }
-
   public static function user_info() {
     $current_user = wp_get_current_user();
 

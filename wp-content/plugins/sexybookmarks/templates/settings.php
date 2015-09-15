@@ -46,17 +46,6 @@
     <div class='fieldset-footer'>
       <span class="helper_secondary"><i class="icon-star"></i> Re-crawl your content, exclude certain pages from being recommended, etc.</span>
       <button class='app_wide_settings btn' data-href='recommendations/edit'><?php _e('Edit Related & Promoted Content Settings', 'shareaholic'); ?></button>
-      <div class='app-status'>
-        &nbsp;&nbsp;&nbsp;&nbsp;<strong><?php echo sprintf(__('Status:', 'shareaholic')); ?></strong>
-        <?php
-          $status = ShareaholicUtilities::recommendations_status_check();
-          if ($status == "processing" || $status == 'unknown'){
-            echo '<img class="shrsb_health_icon" align="top" src="'.SHAREAHOLIC_ASSET_DIR.'img/circle_yellow.png" />'. sprintf(__('Processing', 'shareaholic'));
-          } else {
-            echo '<img class="shrsb_health_icon" align="top" src="'.SHAREAHOLIC_ASSET_DIR.'img/circle_green.png" />'. sprintf(__('Ready', 'shareaholic'));
-          }
-        ?>
-      </div>
     </div>
   </fieldset>
   

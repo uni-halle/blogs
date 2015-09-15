@@ -482,4 +482,15 @@ class ShareaholicAdmin {
       wp_mail($to, $subject, $message, $headers);
     }
   }
+
+  public static function admin_notices() {
+    global $pagenow;
+    if ($pagenow == 'options-permalink.php') {
+      $css_class = 'error';
+      $message = 'WARNING: changing the permalink structure will reset the share counts for your pages.';
+      echo "<div class='$css_class'><p style='font-weight: bold;'>";
+      _e($message, 'Shareaholic');
+      echo '</p></div>';
+    }
+  }
 }
