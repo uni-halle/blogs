@@ -4,7 +4,7 @@ Contributors: johnclause, chineseleper, Vavooon, grafcom
 Tags: multilingual, language, admin, tinymce, bilingual, widget, switcher, i18n, l10n, multilanguage, translation
 Requires at least: 3.9
 Tested up to: 4.3
-Stable tag: 3.4.3
+Stable tag: 3.4.4
 License: GPLv3 or later
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QEXEK3HX8AR6U
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -99,6 +99,10 @@ Read [migration instructions](https://qtranslatexteam.wordpress.com/migration/ "
 2. Language Management Interface
 
 ## Changelog ##
+
+### 3.4.4 stable ###
+* Fix: link 'View Page': [WP Topic](https://wordpress.org/support/topic/wpadminbar-view-page-returns-to-home-page).
+* Fix: security exploit found by WordPress for vulnerable parameters `json_config_files` and `json_custom_i18n_config`.
 
 ### 3.4.3 stable ###
 * Fix: qtranxf_trim_words defined at front and admin side: [Issue #201](https://github.com/qTranslate-Team/qtranslate-x/issues/201).
