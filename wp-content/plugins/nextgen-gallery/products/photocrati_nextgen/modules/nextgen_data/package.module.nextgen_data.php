@@ -1086,6 +1086,10 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                 $filename = str_replace($match[0], '.' . $match[1], $filename);
             }
             $abs_filename = implode(DIRECTORY_SEPARATOR, array($upload_dir, $filename));
+            // Ensure that the filename is valid
+            if (!preg_match('/(png|jpeg|jpg|gif)$/i', $abs_filename)) {
+                throw new E_UploadException(__('Invalid image file. Acceptable formats: JPG, GIF, and PNG.', 'nggallery'));
+            }
             // Prevent duplicate filenames: check if the filename exists and
             // begin appending '-i' until we find an open slot
             if (!ini_get('safe_mode') && @file_exists($abs_filename) && !$override) {
@@ -1181,24 +1185,27 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
         if (@file_exists($abspath)) {
             $fs = C_Fs::get_instance();
             // Ensure that this folder has images
-            $files_all = scandir($abspath);
+            // Ensure that this folder has images
+            $i = 0;
             $files = array();
-            // first perform some filtering on file list
-            foreach ($files_all as $file) {
+            foreach (scandir($abspath) as $file) {
                 if ($file == '.' || $file == '..') {
                     continue;
                 }
-                if ($this->object->is_image_file($fs->join_paths($abspath, $file))) {
-                    $files[] = $file;
+                $file_abspath = $fs->join_paths($abspath, $file);
+                // The first directory is considered valid
+                if (is_dir($file_abspath) && $i === 0) {
+                    $files[] = $file_abspath;
+                } elseif ($this->is_image_file($file_abspath)) {
+                    $files[] = $file_abspath;
                 }
             }
             if (!empty($files)) {
                 // Get needed utilities
                 $gallery_mapper = C_Gallery_Mapper::get_instance();
                 // Sometimes users try importing a directory, which actually has all images under another directory
-                $first_file_abspath = $fs->join_paths($abspath, $files[0]);
-                if (is_dir($first_file_abspath) && count($files) == 1) {
-                    return $this->import_gallery_from_fs($first_file_abspath, $gallery_id, $move_files);
+                if (is_dir($files[0])) {
+                    return $this->import_gallery_from_fs($files[0], $gallery_id, $move_files);
                 }
                 // If no gallery has been specified, then use the directory name as the gallery name
                 if (!$gallery_id) {
@@ -1215,14 +1222,13 @@ class Mixin_GalleryStorage_Driver_Base extends Mixin
                 // Ensure that we have a gallery id
                 if ($gallery_id) {
                     $retval = array('gallery_id' => $gallery_id, 'image_ids' => array());
-                    foreach ($files as $file) {
-                        if (!preg_match('/\\.(jpg|jpeg|gif|png)$/i', $file)) {
+                    foreach ($files as $file_abspath) {
+                        if (!preg_match('/\\.(jpg|jpeg|gif|png)$/i', $file_abspath)) {
                             continue;
                         }
-                        $file_abspath = $fs->join_paths($abspath, $file);
                         $image = null;
                         if ($move_files) {
-                            $image = $this->object->upload_base64_image($gallery_id, file_get_contents($file_abspath), str_replace(' ', '_', $file));
+                            $image = $this->object->upload_base64_image($gallery_id, file_get_contents($file_abspath), str_replace(' ', '_', M_I18n::mb_basename($file_abspath)));
                         } else {
                             // Create the database record ... TODO cleanup, some duplication here from upload_base64_image
                             $factory = C_Component_Factory::get_instance();
@@ -2923,6 +2929,10 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
                 $gallery = $this->object->_gallery_mapper->find($gallery);
             }
         }
+        // It just doesn't exist
+        if (!$gallery || is_numeric($gallery)) {
+            return $retval;
+        }
         // We we have a gallery, determine it's path
         if ($gallery) {
             if (isset($gallery->path)) {
@@ -3330,7 +3340,10 @@ class Mixin_NggLegacy_GalleryStorage_Driver extends Mixin
     public function delete_gallery($gallery)
     {
         $retval = FALSE;
-        if ($abspath = $this->object->get_gallery_abspath($gallery)) {
+        $fs = C_Fs::get_instance();
+        $safe_dirs = array(DIRECTORY_SEPARATOR, $fs->get_document_root('plugins'), $fs->get_document_root('plugins_mu'), $fs->get_document_root('templates'), $fs->get_document_root('stylesheets'), $fs->get_document_root('content'), $fs->get_document_root('galleries'), $fs->get_document_root());
+        $abspath = $this->object->get_gallery_abspath($gallery);
+        if ($abspath && file_exists($abspath) && !in_array(stripslashes($abspath), $safe_dirs)) {
             // delete the directory and everything in it
             $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($abspath), RecursiveIteratorIterator::CHILD_FIRST);
             foreach ($iterator as $file) {

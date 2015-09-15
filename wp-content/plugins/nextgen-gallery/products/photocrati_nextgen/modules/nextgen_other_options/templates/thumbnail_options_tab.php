@@ -82,7 +82,7 @@
 			?>
 				<option
 					<?php selected($size, $size) ?>
-					value="<?php esc_attr_e($size)?>"><?php esc_html_e($size) ?></option>
+					value="<?php echo esc_attr($size)?>"><?php esc_html_e($size) ?></option>
 			<?php
 				}
 			?>

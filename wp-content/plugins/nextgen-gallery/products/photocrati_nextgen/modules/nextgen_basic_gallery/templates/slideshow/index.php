@@ -3,11 +3,11 @@
 <?php if ($show_thumbnail_link) { ?>
 	<!-- Thumbnails Link -->
 	<div class="slideshowlink">
-        <a href='<?php esc_attr_e($thumbnail_link); ?>'><?php esc_html_e($thumbnail_link_text); ?></a>
+        <a href='<?php echo esc_attr($thumbnail_link); ?>'><?php esc_html_e($thumbnail_link_text); ?></a>
 	</div>
 <?php } ?>
 
-<div class="ngg-slideshow-image-list ngg-slideshow-nojs" id="<?php esc_attr_e($anchor); ?>-image-list">
+<div class="ngg-slideshow-image-list ngg-slideshow-nojs" id="<?php echo esc_attr($anchor); ?>-image-list">
 	<?php
 	$this->include_template('photocrati-nextgen_gallery_display#list/before');
 	for ($i = 0; $i < count($images); $i++) {
@@ -67,26 +67,26 @@
 </div>
 <?php $this->include_template('photocrati-nextgen_gallery_display#container/before'); ?>
 <div class="ngg-galleryoverview ngg-slideshow"
-     id="<?php esc_attr_e($anchor); ?>"
+     id="<?php echo esc_attr($anchor); ?>"
      data-placeholder="<?php echo nextgen_esc_url($placeholder); ?>"
-     style="max-width: <?php esc_attr_e($gallery_width); ?>px; max-height: <?php esc_attr_e($gallery_height); ?>px;">
+     style="max-width: <?php echo esc_attr($gallery_width); ?>px; max-height: <?php echo esc_attr($gallery_height); ?>px;">
 	<div class="ngg-slideshow-loader"
-	     id="<?php esc_attr_e($anchor); ?>-loader"
-	     style="width: <?php esc_attr_e($gallery_width); ?>px; height: <?php esc_attr_e($gallery_height); ?>px;">
-		<img src="<?php esc_attr_e(NGGALLERY_URLPATH); ?>images/loader.gif" alt=""/>
+	     id="<?php echo esc_attr($anchor); ?>-loader"
+	     style="width: <?php echo esc_attr($gallery_width); ?>px; height: <?php echo esc_attr($gallery_height); ?>px;">
+		<img src="<?php echo esc_attr(NGGALLERY_URLPATH); ?>images/loader.gif" alt=""/>
 	</div>
 </div>
 <?php $this->include_template('photocrati-nextgen_gallery_display#container/after'); ?>
 <script type="text/javascript">
-	jQuery('#<?php esc_attr_e($anchor); ?>-image-list').hide().removeClass('ngg-slideshow-nojs');
+	jQuery('#<?php echo esc_attr($anchor); ?>-image-list').hide().removeClass('ngg-slideshow-nojs');
 	jQuery(function($) {
-		jQuery('#<?php esc_attr_e($anchor); ?>').nggShowSlideshow({
-			id: '<?php esc_attr_e($displayed_gallery_id); ?>',
-			fx: '<?php esc_attr_e($cycle_effect); ?>',
-			width: <?php esc_attr_e($gallery_width); ?>,
-			height: <?php esc_attr_e($gallery_height); ?>,
-			domain: '<?php esc_attr_e(trailingslashit(home_url())); ?>',
-			timeout: <?php esc_attr_e(intval($cycle_interval) * 1000); ?>
+		jQuery('#<?php echo esc_attr($anchor); ?>').nggShowSlideshow({
+			id: '<?php echo esc_attr($displayed_gallery_id); ?>',
+			fx: '<?php echo esc_attr($cycle_effect); ?>',
+			width: <?php echo esc_attr($gallery_width); ?>,
+			height: <?php echo esc_attr($gallery_height); ?>,
+			domain: '<?php echo esc_attr(trailingslashit(home_url())); ?>',
+			timeout: <?php echo esc_attr(intval($cycle_interval) * 1000); ?>
 		});
 	});
 </script>

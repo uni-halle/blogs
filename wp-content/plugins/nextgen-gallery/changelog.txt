@@ -1,6 +1,12 @@
 NextGEN Gallery
 by Photocrati Media
 
+= V2.1.15 - 09.09.2015 =
+* Secured: Image uploads
+* Fixed:   Don't use esc_attr_e() to prevent translation issues
+* Fixed:   Ensure that deleting a gallery doesn't delete anything it shouldn't
+* Fixed:   get_gallery_abspath() should return NULL if the path doesn't exist
+
 = V2.1.10 - 09.01.2015 =
 * Secured: Escape output of parameters in templates to avoid XSS
 

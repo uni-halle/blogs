@@ -22,7 +22,7 @@
     </tr>
 
     <?php foreach ($sub_fields as $name => $form) { ?>
-        <tbody class="lightbox_library_settings hidden" id="lightbox_library_<?php esc_attr_e($name); ?>">
+        <tbody class="lightbox_library_settings hidden" id="lightbox_library_<?php echo esc_attr($name); ?>">
             <?php echo $form; ?>
         </tbody>
     <?php } ?>

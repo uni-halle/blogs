@@ -105,7 +105,7 @@
 				<?php for($i=100; $i>50; $i--): ?>
 					<option
 						<?php selected($i, $resized_image_quality) ?>
-						value="<?php esc_attr_e($i)?>"><?php esc_html_e($i) ?>%</option>
+						value="<?php echo esc_attr($i)?>"><?php esc_html_e($i) ?>%</option>
 				<?php endfor ?>
 				</select>
 			</div>
