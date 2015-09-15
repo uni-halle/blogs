@@ -2,8 +2,8 @@
 Contributors: vasyl_m
 Tags: security, login, access manager, access, access control, capability, role, user, post filter, category 
 Requires at least: 3.4.2
-Tested up to: 4.2.2
-Stable tag: 2.8.6
+Tested up to: 4.3
+Stable tag: 2.8.7
 
 The powerful and easy-to-use tool to improve security and define access to your 
 posts, pages and backend areas for single blog or multisite network.
@@ -93,8 +93,9 @@ the list of additional metaboxes can be picked by AAM.
 
 == Changelog ==
 
-= 2.8.6 =
+= 2.8.7 =
 * Tested and verified functionality on the latest WordPress release
+* Removed AAM Plus Package. Happy hours are over.
 
 = 2.8.5 =
 * Fixed bugs reported by (@TheThree)
