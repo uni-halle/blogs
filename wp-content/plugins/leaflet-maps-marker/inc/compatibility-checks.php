@@ -82,6 +82,10 @@ if (is_plugin_active('w3-total-cache/w3-total-cache.php') ) {
 if (is_plugin_active('root-relative-urls/sb_root_relative_urls.php') ) {
 	echo '<p><div class="error" style="padding:10px;"><strong>' . sprintf(__('Warning: the plugin %1$s is active and causing maps to break - please deactivate that plugin!','lmm'), '"Root Relative URLs"	') . '</strong></div></p>';
 }
+//info: plugin WP Deferred JavaScripts
+if (is_plugin_active('wp-deferred-javascripts/wp-deferred-javascripts.php') ) {
+	echo '<p><div class="error" style="padding:10px;"><strong>' . sprintf(__('Warning: the plugin %1$s is active and causing maps to break - please deactivate that plugin!','lmm'), '"WP Deferred JavaScripts"	') . '</strong></div></p>';
+}
 //info: Page Builder by SiteOrigin plugin incompatibility
 if (is_plugin_active('siteorigin-panels/siteorigin-panels.php') ) {
 	$pagebuilder_metadata = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'siteorigin-panels' . DIRECTORY_SEPARATOR . 'siteorigin-panels.php');

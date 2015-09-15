@@ -330,7 +330,7 @@ if ($mcount > intval($lmm_options[ 'markers_per_page' ])) {
 		<tr><td style="margin:0;padding:0;border:none;">
 		<input type="radio" id="duplicateselected" name="bulkactions-markers" value="duplicateselected" disabled="disabled" /> <label for="duplicateselected"><?php _e('duplicate and assign to the following layer:','lmm') ?></label>
 		<select id="layer-duplicate" name="layer-duplicate">
-		<option value="unchanged"><?php _e('same layer as original marker','lmm') ?></option>
+		<option value="unchanged"><?php _e('same layer(s) as original marker','lmm') ?></option>
 		<option value="0"><?php _e('unassigned','lmm') ?></option>
 		<?php
 			$layerlist = $wpdb->get_results('SELECT * FROM `'.$table_name_layers.'` WHERE `id` > 0 AND `multi_layer_map` = 0', ARRAY_A);

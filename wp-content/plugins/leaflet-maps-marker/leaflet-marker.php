@@ -357,7 +357,10 @@ if ( $edit_status == 'updated') {
 					<br>
 					<small><?php echo $layereditlink = ($layer != 0) ? "<a href=\"" . LEAFLET_WP_ADMIN_URL . "admin.php?page=leafletmapsmarker_layer&id=".$layer."\">" . __('edit layer','lmm') . " (ID ".$layer.")</a> " . __('or','lmm') . "" : "" ?> <a tabindex="121" href="<?php LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layer">
 					<?php _e('add new layer','lmm') ?>
-					</a></small>
+					</a>
+					<br/>
+					<a href="<?php echo LEAFLET_WP_ADMIN_URL; ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php echo esc_attr__(' Feature available in pro version only','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL; ?>inc/img/icon-eye-show.png" width="16" height="16" alt="preview icon" style="float:left;margin:2px 3px 0 0;" /> <?php _e('preview all markers from assigned layer(s)','lmm'); ?></a>
+					</small>
 
 					<hr style="border:none;color:#edecec;background:#edecec;height:1px;">
 					

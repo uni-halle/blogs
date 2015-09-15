@@ -1,8 +1,8 @@
 <?php
 /**
- * PHPExcel
+ * PHPExcel v1.8.1
  *
- * Copyright (c) 2006 - 2014 PHPExcel
+ * Copyright (c) 2006 - 2015 PHPExcel
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -25,11 +25,13 @@
  * @version    ##VERSION##, ##DATE##
  */
 
+
 /** PHPExcel root directory */
 if (!defined('PHPEXCEL_ROOT')) {
     define('PHPEXCEL_ROOT', dirname(__FILE__) . '/');
     require(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
 }
+
 
 /**
  * PHPExcel
@@ -459,10 +461,12 @@ class PHPExcel
      * Get active sheet
      *
      * @return PHPExcel_Worksheet
+     *
+     * @throws PHPExcel_Exception
      */
     public function getActiveSheet()
     {
-        return $this->_workSheetCollection[$this->_activeSheetIndex];
+        return $this->getSheet($this->_activeSheetIndex);
     }
 
     /**
@@ -568,16 +572,14 @@ class PHPExcel
      */
     public function getSheet($pIndex = 0)
     {
-
-        $numSheets = count($this->_workSheetCollection);
-
-        if ($pIndex > $numSheets - 1) {
+        if (!isset($this->_workSheetCollection[$pIndex])) {
+            $numSheets = $this->getSheetCount();
             throw new PHPExcel_Exception(
-            	"Your requested sheet index: {$pIndex} is out of bounds. The actual number of sheets is {$numSheets}."
-           	);
-        } else {
-            return $this->_workSheetCollection[$pIndex];
+                "Your requested sheet index: {$pIndex} is out of bounds. The actual number of sheets is {$numSheets}."
+            );
         }
+
+        return $this->_workSheetCollection[$pIndex];
     }
 
     /**
@@ -680,7 +682,7 @@ class PHPExcel
      */
     public function setActiveSheetIndex($pIndex = 0)
     {
-    		$numSheets = count($this->_workSheetCollection);
+        $numSheets = count($this->_workSheetCollection);
 
         if ($pIndex > $numSheets - 1) {
             throw new PHPExcel_Exception(
@@ -1009,7 +1011,7 @@ class PHPExcel
      */
     public function getCellStyleXfByHashCode($pValue = '')
     {
-        foreach ($this->_cellXfStyleCollection as $cellStyleXf) {
+        foreach ($this->_cellStyleXfCollection as $cellStyleXf) {
             if ($cellStyleXf->getHashCode() == $pValue) {
                 return $cellStyleXf;
             }

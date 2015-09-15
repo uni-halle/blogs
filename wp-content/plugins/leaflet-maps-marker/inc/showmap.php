@@ -270,7 +270,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 	$lmm_out .= '</div>'.PHP_EOL; //info: <!--end lmm-panel-->
 	}
 	$admin_error_link = (current_user_can( 'manage_options' )) ? '<br/><small><a href="https://www.mapsmarker.com/wp_footer" target="_blank" style="text-decoration:none;">' . __('click here for troubleshooting','lmm') . '</a></small>' : '';
-	$lmm_out .= '<div id="'.$mapname.'" style="background:#f6f6f6;border:1px solid #ccc;height:'.$mapheight.'px; overflow:hidden;padding:0;"><p style="font-size:80%;color:#9f9e9e;margin-left:5px;">' . __('loading map - please wait...','lmm') . $admin_error_link . '<noscript><br/><strong>' . __('Map could not be loaded - please enable Javascript!','lmm') . '</strong><br/><a style="text-decoration:none;" href="https://www.mapsmarker.com/js-disabled" target="_blank">&rarr; ' . __('more information','lmm') . '</a></noscript></p></div>'. PHP_EOL;
+	$lmm_out .= '<div id="'.$mapname.'" class="lmm-map" style="background:#f6f6f6;border:1px solid #ccc;height:'.$mapheight.'px; overflow:hidden;padding:0;"><p style="font-size:80%;color:#9f9e9e;margin-left:5px;">' . __('loading map - please wait...','lmm') . $admin_error_link . '<noscript><br/><strong>' . __('Map could not be loaded - please enable Javascript!','lmm') . '</strong><br/><a style="text-decoration:none;" href="https://www.mapsmarker.com/js-disabled" target="_blank">&rarr; ' . __('more information','lmm') . '</a></noscript></p></div>'. PHP_EOL;
 	//info: add geo microformats for layer maps
 	if (!empty($layer) && empty($marker))
 	{
@@ -330,6 +330,8 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 				$sort_order_mlm = 'mupdatedon';
 			} else if ( $lmm_options['defaults_layer_listmarkers_order_by'] == 'm.layer') {
 				$sort_order_mlm = 'mlayer';
+			} else if ( $lmm_options['defaults_layer_listmarkers_order_by'] == 'm.address') {
+				$sort_order_mlm = 'maddress';
 			} else if ( $lmm_options['defaults_layer_listmarkers_order_by'] == 'm.kml_timestamp') {
 				$sort_order_mlm = 'mkml_timestamp';
 			}
@@ -376,9 +378,9 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 		if ( (isset($lmm_options[ 'defaults_layer_listmarkers_show_icon' ]) == TRUE ) && ($lmm_options[ 'defaults_layer_listmarkers_show_icon' ] == 1 ) ) {
 			$lmm_out .= '<tr><td class="lmm-listmarkers-icon">';
 			if ($row['micon'] != null) {
-				$lmm_out .= '<img style="border-radius:0;box-shadow:none;" alt="marker icon" src="' . LEAFLET_PLUGIN_ICONS_URL . '/'.$row['micon'].'" title="' . stripslashes($row['markername']) . '" />';
+				$lmm_out .= '<img style="border-radius:0;box-shadow:none;" alt="marker icon" src="' . LEAFLET_PLUGIN_ICONS_URL . '/'.$row['micon'].'" />';
 			} else {
-				$lmm_out .= '<img style="border-radius:0;box-shadow:none;" alt="marker icon" src="' . LEAFLET_PLUGIN_URL . 'leaflet-dist/images/marker.png" title="' . stripslashes($row['markername']) . '" />';
+				$lmm_out .= '<img style="border-radius:0;box-shadow:none;" alt="marker icon" src="' . LEAFLET_PLUGIN_URL . 'leaflet-dist/images/marker.png" />';
 			};
 		} else {
 			$lmm_out .= '<tr><td>';
@@ -499,6 +501,8 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 		$orderby = __('updated on','lmm');
 	} else if ($lmm_options['defaults_layer_listmarkers_order_by'] == 'm.layer') {
 		$orderby = __('layer ID','lmm');
+	} else if ($lmm_options['defaults_layer_listmarkers_order_by'] == 'm.address') {
+		$orderby = __('address','lmm');
 	}
 	$lmm_out .= '<tr><td colspan="2" style="text-align:center">' . sprintf(__('The table above is listing %1s out of %2s markers (sorted by %3s %4s)','lmm'), intval($lmm_options[ 'defaults_layer_listmarkers_limit' ]), $markercount, $orderby, $asc_desc) . '</td></tr>';
 	}
@@ -823,60 +827,73 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 			$popuptext_sanitized = preg_replace($sanitize_popuptext_from, $sanitize_popuptext_to, preg_replace( '/(\015\012)|(\015)|(\012)/','<br />', $mpopuptext));
 			$lmmjs_out .= 'marker_'.$mapname_js.'.bindPopup("' . $popuptext_sanitized . '", {maxWidth: ' . intval($lmm_options['defaults_marker_popups_maxwidth']) . ', minWidth: ' . intval($lmm_options['defaults_marker_popups_minwidth']) . ', maxHeight: ' . intval($lmm_options['defaults_marker_popups_maxheight']) . ', autoPan: ' . $lmm_options['defaults_marker_popups_autopan'] . ', closeButton: ' . $lmm_options['defaults_marker_popups_closebutton'] . ', autoPanPadding: new L.Point(' . intval($lmm_options['defaults_marker_popups_autopanpadding_x']) . ', ' . intval($lmm_options['defaults_marker_popups_autopanpadding_y']) . ')})'.$mopenpopup.';'.PHP_EOL;
 		}
-	} else if (!empty($geojson) or !empty($geojsonurl) or !empty($layer) ) {
-		$lmmjs_out .= 'var geojsonObj_'.$mapname_js.', mapIcon, marker_clickable, marker_title;'.PHP_EOL;
-		//info: load GeoJSON for layer maps
-		if (!empty($layer) && ($multi_layer_map == 0) ) {
-			$lmmjs_out .= 'geojsonObj_'.$mapname_js.' = eval("(" + jQuery.ajax({url: "' . LEAFLET_PLUGIN_URL . 'leaflet-geojson.php?layer=' . $id . '&full=no&full_icon_url=no", async: false, cache: true}).responseText + ")");'.PHP_EOL;
-		} else if (!empty($layer) && ($multi_layer_map == 1) ) {
-			$lmmjs_out .= 'geojsonObj_'.$mapname_js.' = eval("(" + jQuery.ajax({url: "' . LEAFLET_PLUGIN_URL . 'leaflet-geojson.php?layer=' . $multi_layer_map_list . '&full=no&full_icon_url=no", async: false, cache: true}).responseText + ")");'.PHP_EOL;
-		}
-		$lmmjs_out .= 'L.geoJson(geojsonObj_'.$mapname_js.', {'.PHP_EOL;
-		$lmmjs_out .= '		onEachFeature: function(feature, marker) {'.PHP_EOL;
-		$lmmjs_out .= "			if (feature.properties.text != '') {".PHP_EOL;
-		$lmmjs_out .= '			marker.bindPopup(feature.properties.text, {'.PHP_EOL;
-		$lmmjs_out .= '			maxWidth: ' . intval($lmm_options['defaults_marker_popups_maxwidth']) . ', '.PHP_EOL;
-		$lmmjs_out .= '			minWidth: ' . intval($lmm_options['defaults_marker_popups_minwidth']) . ', '.PHP_EOL;
-		$lmmjs_out .= '			maxHeight: ' . intval($lmm_options['defaults_marker_popups_maxheight']) . ', '.PHP_EOL;
-		$lmmjs_out .= '			autoPan: ' . $lmm_options['defaults_marker_popups_autopan'] . ', '.PHP_EOL;
-		$lmmjs_out .= '			closeButton: ' . $lmm_options['defaults_marker_popups_closebutton'] . ', '.PHP_EOL;
-		$lmmjs_out .= '			autoPanPadding: new L.Point(' . intval($lmm_options['defaults_marker_popups_autopanpadding_x']) . ', ' . intval($lmm_options['defaults_marker_popups_autopanpadding_y']) . ')'.PHP_EOL;
-		$lmmjs_out .= '			});'.PHP_EOL;
-		$lmmjs_out .= '			}'.PHP_EOL;
-		$lmmjs_out .= '		},'.PHP_EOL;
-		$lmmjs_out .= 'pointToLayer: function (feature, latlng) {'.PHP_EOL;
-		//info: keep GeoJSON small for internal use
-		$lmmjs_out .= " if (feature.properties.iconUrl == undefined) {".PHP_EOL;
-		$lmmjs_out .= '	mapIcon = L.icon({ '.PHP_EOL;
-		$lmmjs_out .= "		iconUrl: (feature.properties.icon != '') ? '" . LEAFLET_PLUGIN_ICONS_URL . "/' + feature.properties.icon : '" . LEAFLET_PLUGIN_URL . "leaflet-dist/images/marker.png" . "',".PHP_EOL;
-		$lmmjs_out .= '		iconSize: [' . intval($lmm_options[ 'defaults_marker_icon_iconsize_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_iconsize_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= '		iconAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_iconanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_iconanchor_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= '		popupAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_popupanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_popupanchor_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= "		shadowUrl: '" . $marker_shadow_url . "',".PHP_EOL;
-		$lmmjs_out .= '		shadowSize: [' . intval($lmm_options[ 'defaults_marker_icon_shadowsize_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_shadowsize_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= '		shadowAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= "		className: (feature.properties.icon == '') ? 'lmm_marker_icon_default' : 'lmm_marker_icon_'+ feature.properties.icon.slice(0,-4)".PHP_EOL;
-		$lmmjs_out .= '	});'.PHP_EOL;
-		//info: use full icon url for external use
-		$lmmjs_out .= '} else {'.PHP_EOL;
-		$lmmjs_out .= '	mapIcon = L.icon({ '.PHP_EOL;
-		$lmmjs_out .= "		iconUrl: feature.properties.iconUrl,".PHP_EOL;
-		$lmmjs_out .= '		iconSize: [' . intval($lmm_options[ 'defaults_marker_icon_iconsize_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_iconsize_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= '		iconAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_iconanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_iconanchor_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= '		popupAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_popupanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_popupanchor_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= "		shadowUrl: '" . $marker_shadow_url . "',".PHP_EOL;
-		$lmmjs_out .= '		shadowSize: [' . intval($lmm_options[ 'defaults_marker_icon_shadowsize_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_shadowsize_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= '		shadowAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_y' ]) . '],'.PHP_EOL;
-		$lmmjs_out .= "		className: (feature.properties.icon == '') ? 'lmm_marker_icon_default' : 'lmm_marker_icon_'+ feature.properties.icon.slice(0,-4)".PHP_EOL;
-		$lmmjs_out .= '	});'.PHP_EOL;
-		$lmmjs_out .= '};'.PHP_EOL;
-		$lmmjs_out .= "if (feature.properties.text == '') { marker_clickable = false } else { marker_clickable = true };".PHP_EOL;
-		if ($lmm_options[ 'defaults_marker_icon_title' ] == 'show') {
-		$lmmjs_out .= "if (feature.properties.markername == '') { marker_title = '' } else { marker_title = feature.properties.markername };".PHP_EOL;
-		}
-		$lmmjs_out .= 'return L.marker(latlng, {icon: mapIcon, clickable: marker_clickable, title: marker_title, opacity: ' . floatval($lmm_options[ 'defaults_marker_icon_opacity' ]) . '});'.PHP_EOL;
-		$lmmjs_out .= '}'.PHP_EOL;
-		$lmmjs_out .= '}).addTo(' . $mapname_js . ');'.PHP_EOL;
+  } else if (!empty($geojson) or !empty($geojsonurl) or !empty($layer) ) {
+	$lmmjs_out .= 'var geojsonObj_'.$mapname_js.', mapIcon, marker_clickable, marker_title;'.PHP_EOL;
+	//info: load GeoJSON for layer maps
+	if (!empty($layer)) {
+		$lmmjs_out .= 'var xhReq_'.$mapname_js.' = new XMLHttpRequest();'.PHP_EOL;
+		if ($multi_layer_map == 0 ) { $geojson_api_link = $id; } else { $geojson_api_link = $multi_layer_map_list; }
+			$lmmjs_out .= 'xhReq_'.$mapname_js.'.open("GET", "' . LEAFLET_PLUGIN_URL . 'leaflet-geojson.php?layer=' . $geojson_api_link . '&full=no&full_icon_url=no", true);'.PHP_EOL; //info: for caching add &timestamp=' . time() . '
+			$lmmjs_out .= 'xhReq_'.$mapname_js.'.onreadystatechange = function xhReq_'.$uid.'(e) { if (xhReq_'.$mapname_js.'.readyState === 4) { if (xhReq_'.$mapname_js.'.status === 200) {'.PHP_EOL; //info: async 1/2			
+			
+			//info: check if WP DEBUG or other additional on-screen warnings or errors brake GeoJSON array validity
+			$lmmjs_out .= 'if (xhReq_'.$mapname_js.'.responseText.indexOf(\'{"type"\') != 0) {
+	var '.$mapname_js.'_position = xhReq_'.$mapname_js.'.responseText.indexOf(\'{"type"\');
+	try { geojsonObj_'.$mapname_js.' = JSON.parse(xhReq_'.$mapname_js.'.responseText.slice('.$mapname_js.'_position)); } catch (e) { console.log("' . esc_attr__('Error - invalid GeoJSON object:','lmm') . ' "+e.message); }'.PHP_EOL;
+			$lmmjs_out .= '} else {
+	try { geojsonObj_'.$mapname_js.' = JSON.parse(xhReq_'.$mapname_js.'.responseText); } catch (e) { console.log("' . esc_attr__('Error - invalid GeoJSON object:','lmm') . ' "+e.message); }'.PHP_EOL;
+			$lmmjs_out .= '}'.PHP_EOL;
+			
+	} 
+	$lmmjs_out .= 'L.geoJson(geojsonObj_'.$mapname_js.', {'.PHP_EOL;
+	$lmmjs_out .= '		onEachFeature: function(feature, marker) {'.PHP_EOL;
+	$lmmjs_out .= "			if (feature.properties.text != '') {".PHP_EOL;
+	$lmmjs_out .= '			marker.bindPopup(feature.properties.text, {'.PHP_EOL;
+	$lmmjs_out .= '			maxWidth: ' . intval($lmm_options['defaults_marker_popups_maxwidth']) . ', '.PHP_EOL;
+	$lmmjs_out .= '			minWidth: ' . intval($lmm_options['defaults_marker_popups_minwidth']) . ', '.PHP_EOL;
+	$lmmjs_out .= '			maxHeight: ' . intval($lmm_options['defaults_marker_popups_maxheight']) . ', '.PHP_EOL;
+	$lmmjs_out .= '			autoPan: ' . $lmm_options['defaults_marker_popups_autopan'] . ', '.PHP_EOL;
+	$lmmjs_out .= '			closeButton: ' . $lmm_options['defaults_marker_popups_closebutton'] . ', '.PHP_EOL;
+	$lmmjs_out .= '			autoPanPadding: new L.Point(' . intval($lmm_options['defaults_marker_popups_autopanpadding_x']) . ', ' . intval($lmm_options['defaults_marker_popups_autopanpadding_y']) . ')'.PHP_EOL;
+	$lmmjs_out .= '			});'.PHP_EOL;
+	$lmmjs_out .= '			}'.PHP_EOL;
+	$lmmjs_out .= '		},'.PHP_EOL;
+	$lmmjs_out .= 'pointToLayer: function (feature, latlng) {'.PHP_EOL;
+	//info: keep GeoJSON small for internal use
+	$lmmjs_out .= " if (feature.properties.iconUrl == undefined) {".PHP_EOL;
+	$lmmjs_out .= '	mapIcon = L.icon({ '.PHP_EOL;
+	$lmmjs_out .= "		iconUrl: (feature.properties.icon != '') ? '" . LEAFLET_PLUGIN_ICONS_URL . "/' + feature.properties.icon : '" . LEAFLET_PLUGIN_URL . "leaflet-dist/images/marker.png" . "',".PHP_EOL;
+	$lmmjs_out .= '		iconSize: [' . intval($lmm_options[ 'defaults_marker_icon_iconsize_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_iconsize_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= '		iconAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_iconanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_iconanchor_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= '		popupAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_popupanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_popupanchor_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= "		shadowUrl: '" . $marker_shadow_url . "',".PHP_EOL;
+	$lmmjs_out .= '		shadowSize: [' . intval($lmm_options[ 'defaults_marker_icon_shadowsize_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_shadowsize_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= '		shadowAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= "		className: (feature.properties.icon == '') ? 'lmm_marker_icon_default' : 'lmm_marker_icon_'+ feature.properties.icon.slice(0,-4)".PHP_EOL;
+	$lmmjs_out .= '	});'.PHP_EOL;
+	//info: use full icon url for external use
+	$lmmjs_out .= '} else {'.PHP_EOL;
+	$lmmjs_out .= '	mapIcon = L.icon({ '.PHP_EOL;
+	$lmmjs_out .= "		iconUrl: feature.properties.iconUrl,".PHP_EOL;
+	$lmmjs_out .= '		iconSize: [' . intval($lmm_options[ 'defaults_marker_icon_iconsize_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_iconsize_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= '		iconAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_iconanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_iconanchor_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= '		popupAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_popupanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_popupanchor_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= "		shadowUrl: '" . $marker_shadow_url . "',".PHP_EOL;
+	$lmmjs_out .= '		shadowSize: [' . intval($lmm_options[ 'defaults_marker_icon_shadowsize_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_shadowsize_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= '		shadowAnchor: [' . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_x' ]) . ', ' . intval($lmm_options[ 'defaults_marker_icon_shadowanchor_y' ]) . '],'.PHP_EOL;
+	$lmmjs_out .= "		className: (feature.properties.icon == '') ? 'lmm_marker_icon_default' : 'lmm_marker_icon_'+ feature.properties.icon.slice(0,-4)".PHP_EOL;
+	$lmmjs_out .= '	});'.PHP_EOL;
+	$lmmjs_out .= '};'.PHP_EOL;
+	$lmmjs_out .= "if (feature.properties.text == '') { marker_clickable = false } else { marker_clickable = true };".PHP_EOL;
+	if ($lmm_options[ 'defaults_marker_icon_title' ] == 'show') {
+	$lmmjs_out .= "if (feature.properties.markername == '') { marker_title = '' } else { marker_title = feature.properties.markername };".PHP_EOL;
+	}
+	$lmmjs_out .= 'return L.marker(latlng, {icon: mapIcon, clickable: marker_clickable, title: marker_title, opacity: ' . floatval($lmm_options[ 'defaults_marker_icon_opacity' ]) . '});'.PHP_EOL;
+	$lmmjs_out .= '}'.PHP_EOL;
+	$lmmjs_out .= '}).addTo(' . $mapname_js . ');'.PHP_EOL;
+}
+	if (!empty($layer)) {
+		$lmmjs_out .= '} else { if (window.console) { console.error(xhReq_'.$mapname_js.'.statusText); } } } }; xhReq_'.$mapname_js.'.onerror = function xhReq_'.$uid.'(e) { if (window.console) { console.error(xhReq_'.$mapname_js.'.statusText); } }; xhReq_'.$mapname_js.'.send(null);'.PHP_EOL; //info: async 2/2
 	}
 	$lmmjs_out .= '})(jQuery);'.PHP_EOL;
 
@@ -901,10 +918,10 @@ function resizeMap() {
 	}".PHP_EOL;
 		$lmmjs_out .= "}
 resizeMap();".PHP_EOL;
-	//info: fix for loading maps in jQuery UI tabs & jQuery Mobile
+	//info: fix for loading maps in bootstrap tabs, jQuery UI tabs & jQuery Mobile
 	$lmmjs_out .= "if (typeof jQuery().modal == 'function') {
 		".$mapname_js.".invalidateSize();
-		$('a[data-toggle=\"tab\"]').on('shown.bs.tab', function (e) {
+		$('a[data-toggle=\"tab\"],.tabbed-area a,.nav-tabs a').on('shown.bs.tab', function (e) {
 			".$mapname_js.".invalidateSize();
 		});
 	}

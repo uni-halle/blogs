@@ -120,6 +120,7 @@ class Class_leaflet_options {
 		$this->sections['misc-section7']			= esc_attr__('Sort order for layer listing page','lmm');
 		$this->sections['misc-section8']			= esc_attr__('QR code settings','lmm');
 		$this->sections['misc-section9']			= esc_attr__('MapsMarker API settings','lmm');
+		$this->sections['misc-section10']			= esc_attr__('Permission settings','lmm');
 
 		$this->sections['reset-section1']			= esc_attr__('Reset Settings','lmm');
 
@@ -2138,9 +2139,15 @@ class Class_leaflet_options {
 			'choices' => array(
 				'm.id' => 'ID',
 				'm.markername' => __('marker name','lmm'),
+				'm.popuptext' => __('popuptext','lmm'),
+				'm.icon' => __('icon','lmm'),
+				'm.createdby' => __('created by','lmm'),
 				'm.createdon' => __('created on','lmm'),
+				'm.updatedby' => __('updated by','lmm'),
 				'm.updatedon' => __('updated on','lmm'),
-				'm.layer' => __('layer ID','lmm')
+				'm.layer' => __('layer ID','lmm'),
+				'm.address' => __('address','lmm'),
+				'm.kml_timestamp' => __('KML timestamp','lmm')
 			)
 		);
 		$this->_settings['defaults_layer_listmarkers_sort_order'] = array(
@@ -8279,70 +8286,6 @@ $this->_settings['clustering_helptext2'] = array(
 				'hide' => __('hide','lmm')
 			)
 		);
-		$this->_settings['capabilities_edit'] = array(
-			'version' => '1.0',
-			'pane'    => 'misc',
-			'section' => 'misc-section1',
-			'title'   => __( 'User role needed for adding and editing markers/layers', 'lmm' ),
-			'desc'    => '',
-			'type'    => 'radio',
-			'std'     => 'edit_posts',
-			'choices' => array(
-				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
-				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
-				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
-				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
-				'read' => __('Subscriber (Capability read)', 'lmm')
-			)
-		);
-		$this->_settings['capabilities_edit_others'] = array(
-			'version' => 'p1.2',
-			'pane'    => 'misc',
-			'section' => 'misc-section1',
-			'title'   => __( 'User role needed for editing markers/layers from other users', 'lmm' ) . $pro_button_link,
-			'desc'    => '',
-			'type'    => 'radio-pro',
-			'std'     => 'edit_posts',
-			'choices' => array(
-				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
-				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
-				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
-				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
-				'read' => __('Subscriber (Capability read)', 'lmm')
-			)
-		);
-		$this->_settings['capabilities_delete'] = array(
-			'version' => '1.0',
-			'pane'    => 'misc',
-			'section' => 'misc-section1',
-			'title'   => __( 'User role needed for deleting markers/layers', 'lmm' ),
-			'desc'    => '',
-			'type'    => 'radio',
-			'std'     => 'edit_posts',
-			'choices' => array(
-				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
-				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
-				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
-				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
-				'read' => __('Subscriber (Capability read)', 'lmm')
-			)
-		);
-		$this->_settings['capabilities_delete_others'] = array(
-			'version' => 'p1.2',
-			'pane'    => 'misc',
-			'section' => 'misc-section1',
-			'title'   => __( 'User role needed for deleting markers/layers from other users', 'lmm' ) . $pro_button_link,
-			'desc'    => '',
-			'type'    => 'radio-pro',
-			'std'     => 'edit_posts',
-			'choices' => array(
-				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
-				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
-				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
-				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
-				'read' => __('Subscriber (Capability read)', 'lmm')
-			)
-		);
 		$this->_settings['markers_per_page'] = array(
 			'version' => '1.0',
 			'pane'    => 'misc',
@@ -9389,7 +9332,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'misc-section9',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => sprintf(__('For more information on how to use the MapsMarker API, <a href="%1s" target="_blank">please visit the API docs on mapsmarker.com</a>','lmm'), 'https://www.mapsmarker.com/mapsmarker-api') . '<br/><br/><br/><strong>' . __('API endpoint','lmm') . ':</strong> ' . LEAFLET_PLUGIN_URL . 'leaflet-api.php<br/><br/>',
+			'desc'    => __('The MapsMarker API provides developers with a future-proof way to access some of the common core functionality in Maps Marker Pro.','lmm') . '<br/><br/>' . __('There are two ways to access the API:','lmm') . '<br/><br/><strong>1. ' . __('API functions in the MMPAPI class','lmm') . '</strong><br/>'. __('Use the API functions to access the Maps Marker Pro install on the same server as your code, for example, if you are developing an add-on for Maps Marker Pro.','lmm') . '<br/><br/><strong>2. ' . __('Via HTTP using the Web API','lmm') . '</strong><br/>' . __('Use the Web API to access a Maps Marker Pro install either from JavaScript in a plugin or theme, or from an external client such as a desktop, mobile or web app.','lmm') . '<br/><br/>' . sprintf(__('For more information on how to use the MapsMarker API, <a href="%1s" target="_blank">please visit the API docs on mapsmarker.com</a>','lmm'), 'https://www.mapsmarker.com/mapsmarker-api') . '<br/><br/><hr noshade size="1"/><br/><span style="font-size:150%">' . __('MMPAPI class options','lmm') . '</span><br/><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>' . sprintf(__('No options available, for full docs and examples <a href="%1$s" target="_blank">please click here</a>','lmm'), 'https://www.mapsmarker.com/mmpapi') . '<br/><br/><hr noshade size="1"/><br/><span style="font-size:150%">' . __('Web API options','lmm') . '</span><br/><br/><strong>' . __('API endpoint','lmm') . ':</strong> ' . LEAFLET_PLUGIN_URL . 'leaflet-api.php<br/>',
 			'type'    => 'helptext'
 		);
 		$this->_settings['api_status'] = array(
@@ -9544,6 +9487,89 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'checkbox',
 			'std'     => 1
 		);
+		/*
+		* Permission settings
+		*/
+		$this->_settings['capabilities_view_others'] = array(
+			'version' => 'p2.5',
+			'pane'    => 'misc',
+			'section' => 'misc-section10',
+			'title'   => __( 'User role needed for viewing markers/layers from other users', 'lmm' ) . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'edit_posts',
+			'choices' => array(
+				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
+				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
+				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
+				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
+				'read' => __('Subscriber (Capability read)', 'lmm')
+			)
+		);
+		$this->_settings['capabilities_edit'] = array(
+			'version' => '1.0',
+			'pane'    => 'misc',
+			'section' => 'misc-section10',
+			'title'   => __( 'User role needed for adding and editing markers/layers', 'lmm' ),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => 'edit_posts',
+			'choices' => array(
+				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
+				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
+				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
+				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
+				'read' => __('Subscriber (Capability read)', 'lmm')
+			)
+		);
+		$this->_settings['capabilities_edit_others'] = array(
+			'version' => 'p1.2',
+			'pane'    => 'misc',
+			'section' => 'misc-section10',
+			'title'   => __( 'User role needed for editing markers/layers from other users', 'lmm' ) . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'edit_posts',
+			'choices' => array(
+				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
+				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
+				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
+				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
+				'read' => __('Subscriber (Capability read)', 'lmm')
+			)
+		);
+		$this->_settings['capabilities_delete'] = array(
+			'version' => '1.0',
+			'pane'    => 'misc',
+			'section' => 'misc-section10',
+			'title'   => __( 'User role needed for deleting markers/layers', 'lmm' ),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => 'edit_posts',
+			'choices' => array(
+				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
+				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
+				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
+				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
+				'read' => __('Subscriber (Capability read)', 'lmm')
+			)
+		);
+		$this->_settings['capabilities_delete_others'] = array(
+			'version' => 'p1.2',
+			'pane'    => 'misc',
+			'section' => 'misc-section10',
+			'title'   => __( 'User role needed for deleting markers/layers from other users', 'lmm' ) . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'edit_posts',
+			'choices' => array(
+				'activate_plugins' => __('Administrator (Capability activate_plugins)', 'lmm'),
+				'moderate_comments' => __('Editor (Capability moderate_comments)', 'lmm'),
+				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
+				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
+				'read' => __('Subscriber (Capability read)', 'lmm')
+			)
+		);
 
 		/*===========================================
 		*
@@ -9609,7 +9635,7 @@ $this->_settings['clustering_helptext2'] = array(
 	 */
 	public function save_defaults_for_new_options() {
 		//info:  set defaults for options introduced in v1.1
-		if (get_option('leafletmapsmarker_version') == '1.0' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.0','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9624,7 +9650,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v1.2
-		if (get_option('leafletmapsmarker_version') == '1.1' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9639,7 +9665,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v1.4
-		if (get_option('leafletmapsmarker_version') == '1.3' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.3','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9654,7 +9680,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v1.4.3
-		if (get_option('leafletmapsmarker_version') == '1.4.2' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.4.2','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9669,7 +9695,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v1.5
-		if (get_option('leafletmapsmarker_version') == '1.4.3' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.4.3','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9684,7 +9710,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v1.6
-		if (get_option('leafletmapsmarker_version') == '1.5.1' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.5.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9699,7 +9725,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v1.7
-		if (get_option('leafletmapsmarker_version') == '1.6' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.6','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9714,7 +9740,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v1.8
-		if (get_option('leafletmapsmarker_version') == '1.7' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.7','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9729,7 +9755,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v1.9
-		if (get_option('leafletmapsmarker_version') == '1.8' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'1.8','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9744,7 +9770,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.1
-		if (get_option('leafletmapsmarker_version') == '2.0' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.0','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9759,7 +9785,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.2
-		if (get_option('leafletmapsmarker_version') == '2.1' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9774,7 +9800,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.3
-		if (get_option('leafletmapsmarker_version') == '2.2' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.2','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9789,7 +9815,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.4
-		if (get_option('leafletmapsmarker_version') == '2.3' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.3','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9804,7 +9830,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.5
-		if (get_option('leafletmapsmarker_version') == '2.4' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.4','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9819,7 +9845,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.6
-		if (get_option('leafletmapsmarker_version') == '2.5' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.5','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9834,7 +9860,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.7.1
-		if (get_option('leafletmapsmarker_version') == '2.7' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.7','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9849,7 +9875,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.8
-		if (get_option('leafletmapsmarker_version') == '2.7.1' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.7.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9864,7 +9890,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v2.9
-		if (get_option('leafletmapsmarker_version') == '2.8.2' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.8.2','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9879,7 +9905,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.0
-		if (get_option('leafletmapsmarker_version') == '2.9.2' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'2.9.2','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9894,7 +9920,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.1
-		if (get_option('leafletmapsmarker_version') == '3.0' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.0','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9909,7 +9935,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.2
-		if (get_option('leafletmapsmarker_version') == '3.1' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9924,7 +9950,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.2.2
-		if (get_option('leafletmapsmarker_version') == '3.2.1' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.2.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9939,7 +9965,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.3
-		if (get_option('leafletmapsmarker_version') == '3.2.5' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.2.5','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9954,7 +9980,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.4
-		if (get_option('leafletmapsmarker_version') == '3.3' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.3','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9969,7 +9995,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.5
-		if (get_option('leafletmapsmarker_version') == '3.4.3' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.4.3','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9984,7 +10010,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.5.2
-		if (get_option('leafletmapsmarker_version') == '3.5.1' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.5.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -9999,7 +10025,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.6
-		if (get_option('leafletmapsmarker_version') == '3.5.4' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.5.4','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -10014,7 +10040,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.4
-		if (get_option('leafletmapsmarker_version') == '3.6.3' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.6.3','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -10029,7 +10055,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.8.6
-		if (get_option('leafletmapsmarker_version') == '3.8.5' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.8.5','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -10044,7 +10070,7 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		//info:  set defaults for options introduced in v3.8.7
-		if (get_option('leafletmapsmarker_version') == '3.8.6' )
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.8.6','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
@@ -10059,13 +10085,13 @@ $this->_settings['clustering_helptext2'] = array(
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
 		/* template for plugin updates
-		//info:  set defaults for options introduced in v3.10
-		if (get_option('leafletmapsmarker_version') == '3.9.10' )
+		//info:  set defaults for options introduced in v3.11
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.10','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )
 			{
-				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.10')
+				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.11')
 				{
 				$new_options_defaults[$id] = $setting['std'];
 				}

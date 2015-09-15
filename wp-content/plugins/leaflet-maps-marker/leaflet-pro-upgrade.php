@@ -58,7 +58,7 @@ if ( $action == NULL ) {
 				' . __('But the real power of the leaflet.js version used in Maps Marker Pro comes with about a hundred of subtle improvements and bugfixes, improving usability, performance and overall "feel" of browsing the map even further.','lmm') . '
 				</p>
 				<p>
-				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/pro-feature-leaflet-changelog" target="_blank">' . sprintf(__('Click here to get the full changelog for leaflet.js v%1s currently integrated in the pro version','lmm'), '0.7.3 (05/2014)') . '</a> (' . sprintf(__('v%1s is used in the free version','lmm'), '0.4.5 (10/2012)') . ')
+				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/pro-feature-leaflet-changelog" target="_blank">' . sprintf(__('Click here to get the full changelog for leaflet.js v%1s currently integrated in the pro version','lmm'), '0.7.5 (09/2015)') . '</a> (' . sprintf(__('v%1s is used in the free version','lmm'), '0.4.5 (10/2012)') . ')
 				</p>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
@@ -253,7 +253,7 @@ if ( $action == NULL ) {
 				<span class="pro-feature-header">' . __('MapsMarker API','lmm') . '</span>
 				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
 				<p style="margin:0 0 10px 0;">
-				' . __('Manage your markers and layers through a highly customizable REST API, which supports GET & POST requests, JSON & XML as formats and was developed with a focus on security.','lmm') . '
+				' . __('Manage your markers and layers through a highly customizable REST API, which supports GET & POST requests, JSON & XML as formats and was developed with a focus on security.','lmm') . ' ' . __('In addition, Maps Marker Pro also offers a separate MMPAPI class which you can use to developing an add-on for example.','lmm') . '
 				</p>
 				<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-preview-mapsmarker-api.png">
 				<p>
@@ -304,7 +304,6 @@ if ( $action == NULL ) {
 				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
 				<ul style="list-style-type:disc;margin-left:15px;margin-top:0;">
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.2.1p" target="_blank">' . __('improved performance for layer maps with a huge number of markers (parsing of GeoJSON is up to 3 times faster)','lmm') . '</a></li>
-					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.6p" target="_blank">' . __('improved performance for layer maps by asynchronous loading of markers via GeoJSON','lmm') . '</a></li>
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.3p" target="_blank">' . __('support for shortcodes in popup texts','lmm') . '</a></li>
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.5p" target="_blank">' . __('support for setting global maximum zoom level to 21 (tiles from basemaps with lower native zoom levels will be upscaled automatically)','lmm') . '</a></li>
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.5.1p" target="_blank">' . __('support for duplicating markers','lmm') . '</a></li>
@@ -324,6 +323,12 @@ if ( $action == NULL ) {
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v1.9.3p" target="_blank">' . __('bulk actions for layers (duplicate, delete layer only, delete & re-assign markers)','lmm') . '</a></li> 
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.1p" target="_blank">' . __('support for custom Mapbox basemaps','lmm') . '</a></li> 
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.1p" target="_blank">' . __('optimized editing workflow for marker maps - no more reloads needed due to AJAX support','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('optimized editing workflow for layer maps and list of markers-page - no more reloads needed due to AJAX support','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('option to duplicate layer AND assigned markers (for single layers and for layer bulk actions)','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('option to disable map dragging on touch devices only','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('dynamic preview of all markers from assigned layer(s) on marker edit pages','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('dynamic preview of markers from checked multi-layer-map layer(s) on layer edit pages','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('"edit map"-link on frontend based on user-permissions for better maintainability','lmm') . '</a></li> 
 				</ul>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>

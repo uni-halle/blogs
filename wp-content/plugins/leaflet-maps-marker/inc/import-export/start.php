@@ -166,7 +166,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 							}
 							echo '</li>
 							<li>' . __('If you want to bulk update existing markers, please make an export first!','lmm') . '</li>
-							<li>' . __('If you want to create new markers, please make sure the column ID is empty as otherwise the importer tries to update marker maps with that ID and will fail if map is not available!','lmm') . '</li>
 						</ul>
 					</td>
 				</tr>
@@ -181,6 +180,14 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 							echo ' <span style="background:yellow;padding:2px;">' . __('The PHP extension php_zip is not enabled on your server - this means that .xlsx or .ods files cannot be handled. Please contact your admin for more details.','lmm') . '</span>';
 						}
 					echo '</td>
+				</tr>
+				<tr>
+					<td valign="top">' . __('Import mode','lmm') . '</td>
+					<td>
+						<input id="import-mode-add" type="radio" name="import-mode" value="import-mode-add" checked="checked" disabled="disabled" /> <label for="import-mode-add"> ' . __('bulk additions (add new markers)','lmm') . '</label><br/>
+						<input id="import-mode-update" type="radio" name="import-mode" value="import-mode-update" disabled="disabled" /> <label for="import-mode-update"> ' . __('bulk updates (update existing markers)','lmm') . '</label><br/>
+						<p style="margin:5px 0 0 24px;">' . __('Please note: values in the column ID from import file will be ignored on bulk additions but are needed on bulk updates!','lmm') . '</p>
+					</td>
 				</tr>
 				<tr>
 					<td valign="top">' . __('Which geocoding option should be used?','lmm') . '</td>
@@ -306,7 +313,6 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 							}
 							echo '</li>
 							<li>' . __('If you want to bulk update existing layers, please make an export first!','lmm') . '</li>
-							<li>' . __('If you want to create new layers, please make sure the column ID is empty as otherwise the importer tries to update layer maps with that ID and will fail if map is not available!','lmm') . '</li>
 						</ul>
 					</td>
 				</tr>
@@ -321,6 +327,14 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 							echo ' <span style="background:yellow;padding:2px;">' . __('The PHP extension php_zip is not enabled on your server - this means that .xlsx or .ods files cannot be handled. Please contact your admin for more details.','lmm') . '</span>';
 						}
 					echo '</td>
+				</tr>
+				<tr>
+					<td valign="top">' . __('Import mode','lmm') . '</td>
+					<td>
+						<input id="import-mode-add" type="radio" name="import-mode" value="import-mode-add" checked="checked" disabled="disabled" /> <label for="import-mode-add"> ' . __('bulk additions (add new markers)','lmm') . '</label><br/>
+						<input id="import-mode-update" type="radio" name="import-mode" value="import-mode-update" disabled="disabled" /> <label for="import-mode-update"> ' . __('bulk updates (update existing markers)','lmm') . '</label><br/>
+						<p style="margin:5px 0 0 24px;">' . __('Please note: values in the column ID from import file will be ignored on bulk additions but are needed on bulk updates!','lmm') . '</p>
+					</td>
 				</tr>
 				<tr>
 					<td valign="top">' . __('Which geocoding option should be used?','lmm') . '</td>
@@ -493,6 +507,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						}
 					echo '<input id="export-exel2007" type="radio" name="export-format" value="exel2007" ' . $export_disabled . ' ' . $default_export_format_exel2007 . ' /> <label for="export-exel2007">Excel2007 (.xlsx) - ' . sprintf(__('compatible with OpenOffice %1$s and LibreOffice %2$s','lmm'), '3.0+', '3.6+') . '</label> ' . $export_disabled_info . '<br/>
 						<input id="export-excel5" type="radio" name="export-format" value="excel5" ' . $default_export_format_exel5 . ' /> <label for="export-excel5">Excel5 (.xls)</label><br/>
+						<input id="export-ods" type="radio" name="export-format" value="ods" ' . $export_disabled . ' /> <label for="export-ods">' . __('OpenDocument Spreadsheet','lmm') . ' (.ods)</label><br/>
 						<input id="export-csv" type="radio" name="export-format" value="csv" /> <label for="export-csv">CSV (.csv)</label>
 					</td>
 				</tr>
@@ -598,6 +613,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 						}
 					echo '<input id="export-exel2007" type="radio" name="export-format" value="exel2007" ' . $export_disabled . ' ' . $default_export_format_exel2007 . ' /> <label for="export-exel2007">Excel2007 (.xlsx) - ' . sprintf(__('compatible with OpenOffice %1$s and LibreOffice %2$s','lmm'), '3.0+', '3.6+') . '</label> ' . $export_disabled_info . '<br/>
 						<input id="export-excel5" type="radio" name="export-format" value="excel5" ' . $default_export_format_exel5 . ' /> <label for="export-excel5">Excel5 (.xls)</label><br/>
+						<input id="export-ods" type="radio" name="export-format" value="ods" ' . $export_disabled . ' /> <label for="export-ods">' . __('OpenDocument Spreadsheet','lmm') . ' (.ods)</label><br/>
 						<input id="export-csv" type="radio" name="export-format" value="csv" /> <label for="export-csv">CSV (.csv)</label>
 					</td>
 				</tr>
@@ -997,6 +1013,11 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 				header("Content-Disposition: attachment;filename=" . $filename . ".xlsx");
 				header("Content-Transfer-Encoding: binary ");
+			} else if ($export_format == 'ods') {
+				$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'OpenDocument');
+				header("Content-Type: application/vnd.oasis.opendocument.spreadsheet");
+				header("Content-Disposition: attachment;filename=" . $filename . ".ods");
+				header("Content-Transfer-Encoding: binary ");
 			}
 			$objWriter->save('php://output');
 
@@ -1162,6 +1183,11 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 				$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 				header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 				header("Content-Disposition: attachment;filename=" . $filename . ".xlsx");
+				header("Content-Transfer-Encoding: binary ");
+			} else if ($export_format == 'ods') {
+				$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'OpenDocument');
+				header("Content-Type: application/vnd.oasis.opendocument.spreadsheet");
+				header("Content-Disposition: attachment;filename=" . $filename . ".ods");
 				header("Content-Transfer-Encoding: binary ");
 			}
 			$objWriter->save('php://output');
