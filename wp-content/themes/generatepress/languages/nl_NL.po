@@ -2,13 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GeneratePress\n"
 "POT-Creation-Date: 2015-07-16 14:14+0200\n"
-"PO-Revision-Date: 2015-07-19 13:50+0200\n"
+"PO-Revision-Date: 2015-08-29 09:49-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -141,8 +141,8 @@ msgstr "Annuleer reactie"
 msgid "Post Comment"
 msgstr "Plaats reactie"
 
-#: content-link.php:29 content-page.php:20 content-single.php:21
-#: content.php:41 image.php:56
+#: content-link.php:29 content-page.php:20 content-single.php:21 content.php:41
+#: image.php:56
 msgid "Pages:"
 msgstr "Pagina's:"
 
@@ -818,7 +818,7 @@ msgstr "Zoeken"
 #: inc/template-tags.php:424 inc/template-tags.php:432
 msgctxt "Used between list items, there is a space after the comma."
 msgid ", "
-msgstr ","
+msgstr ", "
 
 #: inc/template-tags.php:427
 msgctxt "Used before category names."

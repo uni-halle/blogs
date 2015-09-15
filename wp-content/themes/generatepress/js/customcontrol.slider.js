@@ -18,7 +18,7 @@ jQuery(window).load(function(){
 		jQuery('input[name="generate_settings[container_width]"]').next('div.slider').slider({
 			value: container_width,
 			min: 700,
-			max: 1500,
+			max: 2000,
 			step: 5,
 			slide: function( event, ui ) {
 				// Change input value and slider position

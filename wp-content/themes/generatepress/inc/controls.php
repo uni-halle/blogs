@@ -18,10 +18,9 @@ if ( !class_exists('Generate_Customize_Width_Slider_Control') ) :
 		// Override content render function to output slider HTML
 		public function render_content()
 		{ ?>
-			<label><span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span></label>
+			<label><span class="customize-control-title"><?php echo esc_html( $this->label ); ?> - <strong class="value"><?php echo $this->value(); ?></strong>px</span></label>
 			<input name="<?php echo $this->id; ?>" type="text" <?php $this->link(); ?> value="<?php echo $this->value(); ?>" style="display:none" />
 			<div class="slider"></div>
-			<p class="description"><?php _e('Width','generate');?> - <strong class="value"><?php echo $this->value(); ?></strong>px</p>
 		<?php
 		}
 		
@@ -30,8 +29,9 @@ if ( !class_exists('Generate_Customize_Width_Slider_Control') ) :
 			
 			wp_enqueue_script( 'jquery-ui-core' );
 			wp_enqueue_script( 'jquery-ui-slider' );
-			wp_enqueue_script( 'generate-customcontrol-slider-js', get_template_directory_uri() . '/js/customcontrol.slider.js', array('jquery'), GENERATE_VERSION );
-			wp_enqueue_style('jquery-ui-smoothness', get_template_directory_uri() . '/inc/css/jquery-ui-smoothness.css');
+			wp_enqueue_script( 'generate-slider-js', get_template_directory_uri() . '/js/customcontrol.slider.js', array('jquery'), GENERATE_VERSION );
+			wp_enqueue_style('jquery-ui-slider', get_template_directory_uri() . '/inc/css/jquery-ui.structure.css');
+			wp_enqueue_style('jquery-ui-slider-theme', get_template_directory_uri() . '/inc/css/jquery-ui.theme.css');
 			
 		}
 	}

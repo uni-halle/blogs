@@ -31,5 +31,4 @@ jQuery(document).ready(function($) {
 			}
 		}
 	});
-	
 });

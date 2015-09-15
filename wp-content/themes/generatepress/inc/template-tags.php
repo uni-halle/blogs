@@ -358,6 +358,28 @@ function generate_menu_search_icon( $nav, $args )
 }
 endif;
 
+if ( ! function_exists( 'generate_mobile_menu_search_icon' ) ) :
+/**
+ * Add search icon to mobile menu bar
+ *
+ * @since 1.3.12
+ */
+add_action( 'generate_inside_mobile_menu','generate_mobile_menu_search_icon' );
+function generate_mobile_menu_search_icon() 
+{
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	// If the search icon isn't enabled, return the regular nav
+	if ( 'enable' !== $generate_settings['nav_search'] )
+		return;
+	
+	echo '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generate' ) . '"><a href="#"><i class="fa fa-search"></i></a></li>';
+}
+endif;
+
 if ( ! function_exists( 'generate_entry_meta' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags.

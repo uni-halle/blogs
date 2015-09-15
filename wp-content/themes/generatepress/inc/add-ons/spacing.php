@@ -91,7 +91,9 @@ if ( !function_exists('generate_spacing_css') ) :
 			),
 			
 			'.main-navigation .main-nav ul li a,
-			.menu-toggle' => array(
+			.menu-toggle,
+			.menu-toggle .search-item a,
+			.menu-toggle .search-item-disabled a' => array(
 				'padding-left' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
 				'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
 				'line-height' => ( isset( $spacing_settings['menu_item_height'] ) ) ? $spacing_settings['menu_item_height'] . 'px' : null,

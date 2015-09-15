@@ -5,7 +5,7 @@
  * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.3.11');
+define( 'GENERATE_VERSION', '1.3.13');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -253,6 +253,7 @@ function generate_scripts() {
 	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css', false, '4.4.0', 'all' );
 
 	// Scripts
+	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'generate-navigation', get_template_directory_uri() . '/js/navigation.js', array(), GENERATE_VERSION, true );
 	wp_enqueue_script( 'superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), GENERATE_VERSION, true );
 	wp_enqueue_script( 'hoverIntent', get_template_directory_uri() . '/js/hoverIntent.js', array('superfish'), GENERATE_VERSION, true );
