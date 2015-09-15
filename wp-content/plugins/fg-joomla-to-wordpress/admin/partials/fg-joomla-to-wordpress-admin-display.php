@@ -198,6 +198,7 @@
 			<li><?php _e('Virtuemart e-commerce', 'fgj2wp'); ?><sup>*</sup></li>
 			<li><?php _e('JReviews reviews', 'fgj2wp'); ?><sup>*</sup></li>
 			<li><?php _e('Mosets Tree directory', 'fgj2wp'); ?><sup>*</sup></li>
+			<li><?php _e('Multilingual content to WPML', 'fgj2wp'); ?><sup>*</sup></li>
 		</ul>
 		<div class="center">
 			<a href="http://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank"><img src="http://www.fredericgilles.net/wp-content/uploads/premium-version.png" alt="Buy Premium Version" /></a>

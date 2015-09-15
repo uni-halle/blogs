@@ -35,7 +35,6 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 
 		}
 
-
 		/**
 		 * Delete all links from the database
 		 *
@@ -242,7 +241,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 				return;
 			}
 
-			$this->plugin->display_admin_notice(sprintf(_n('%d web link imported', '%d web links imported', $this->links_count, 'fgj2wp'), $this->links_count));
+			$this->plugin->display_admin_notice(sprintf(_n('%d web link imported', '%d web links imported', $this->links_count, $this->plugin->get_plugin_name()), $this->links_count));
 		}
 
 		/**

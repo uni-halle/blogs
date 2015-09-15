@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-30 06:43+0200\n"
-"PO-Revision-Date: 2015-08-30 06:44+0200\n"
+"POT-Creation-Date: 2015-09-13 20:15+0200\n"
+"PO-Revision-Date: 2015-09-13 20:15+0200\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -166,7 +166,7 @@ msgstr ""
 "base de données de Joomla."
 
 #: admin/class-fg-joomla-to-wordpress-admin.php:373
-#: admin/class-fg-joomla-to-wordpress-weblinks.php:198
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:197
 msgid "Error:"
 msgstr "Erreur :"
 
@@ -473,21 +473,21 @@ msgstr "des groupes d'utilisateurs"
 msgid "User Groups add-on"
 msgstr "du module User Groups"
 
-#: admin/class-fg-joomla-to-wordpress-weblinks.php:84
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:83
 #, php-format
 msgid "%d links category imported"
 msgid_plural "%d links categories imported"
 msgstr[0] "%d catégorie de liens importée"
 msgstr[1] "%d catégories de liens importées"
 
-#: admin/class-fg-joomla-to-wordpress-weblinks.php:245
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:244
 #, php-format
 msgid "%d web link imported"
 msgid_plural "%d web links imported"
 msgstr[0] "%d lien web importé"
 msgstr[1] "%d liens web importés"
 
-#: admin/class-fg-joomla-to-wordpress-weblinks.php:258
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:257
 #, php-format
 msgid "%d link"
 msgid_plural "%d links"
@@ -891,13 +891,17 @@ msgstr "revues JReviews"
 msgid "Mosets Tree directory"
 msgstr "annuaire Mosets Tree"
 
-#: admin/partials/fg-joomla-to-wordpress-admin-display.php:205
+#: admin/partials/fg-joomla-to-wordpress-admin-display.php:201
+msgid "Multilingual content to WPML"
+msgstr "Contenu multilingue vers WPML"
+
+#: admin/partials/fg-joomla-to-wordpress-admin-display.php:206
 msgid "This feature needs an add-on in addition to the Premium version."
 msgstr ""
 "Cette fonctionnalité nécessite un module supplémentaire en plus de la "
 "version Premium."
 
-#: admin/partials/fg-joomla-to-wordpress-admin-display.php:207
+#: admin/partials/fg-joomla-to-wordpress-admin-display.php:208
 msgid ""
 "If you found this plugin useful and it saved you many hours or days, please "
 "rate it on <a href=\"http://wordpress.org/extend/plugins/fg-joomla-to-"
@@ -909,6 +913,9 @@ msgstr ""
 "wordpress.org/extend/plugins/fg-joomla-to-wordpress/\">FG Joomla to "
 "WordPress</a>. Vous pouvez aussi faire une donation en utilisant le bouton "
 "ci-dessous."
+
+#~ msgid "Multingual content to WPML"
+#~ msgstr "Contenu multilingue vers WPML"
 
 #~ msgid "URL (beginning with http://)"
 #~ msgstr "URL (commençant par http://)"
