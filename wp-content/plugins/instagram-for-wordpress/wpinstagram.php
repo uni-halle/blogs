@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 2.0.10
+	Version: 2.1.0
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -25,6 +25,44 @@ add_action('admin_notices', 'wpinstagram_show_instructions');
 function load_wpinstagram() {
 	register_widget('WPInstagram_Widget');
 }
+
+function wpinstagram_shortcode_handler($atts) {
+        extract(shortcode_atts(array(  
+                'type'          => -1, 
+                'id'            => -1, 
+                'rows'          => 3,  
+                'columns'       => 2,  
+                'size'          => 100,
+                'padding'       => 10,
+                'border'        => '',
+                'background'    => '',
+        ), $atts));
+
+        if ($type === -1 || ($type !== 'popular' && $id === -1)) {
+                require(plugin_dir_path(__FILE__) . 'templates/instagramWidgetInstructions.php');
+        } else {
+                require(plugin_dir_path(__FILE__) . 'templates/instagramWidget.php');
+        }
+}
+
+function wpinstagram_post_shortcode_handler($atts) {
+        extract(shortcode_atts(array(
+                'id'    => -1,
+        ), $atts));
+
+        if ($id === -1) {
+                require(plugin_dir_path(__FILE__) . 'templates/instagramPostInstructions.php');
+        } else {
+                require(plugin_dir_path(__FILE__) . 'templates/instagramPost.php');
+        }
+}
+
+function wpinstagram_register_shortcodes() {
+        add_shortcode('instagram-widget', 'wpinstagram_shortcode_handler');   
+        add_shortcode('instagram-post', 'wpinstagram_post_shortcode_handler');
+}
+
+add_action('init', 'wpinstagram_register_shortcodes');
 
 function wpinstagram_show_instructions() {
 	global $pagenow;		
