@@ -100,6 +100,10 @@ When you Copy a WordPress widget, it creates a new widget post in the Widget Wra
 
 == Changelog ==
 
+= 2.2.3 =
+
+* Updating widget constructors to PHP 5
+
 = 2.2.2 =
 
 * Warning fix: looking through non-array warning
@@ -309,4 +313,4 @@ Initial Release
 
 == Upgrade Notice ==
 
-2.2.2 Warning fix: looping through non-array
+2.2.3 PHP5 Constructors

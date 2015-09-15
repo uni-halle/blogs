@@ -20,7 +20,7 @@ class WidgetWrangler_Widget_Widget extends WP_Widget {
     $control_ops = array( 'id_base' => 'widget-wrangler-widget');
     
     // Create the widget. 
-    $this->WP_Widget( 'widget-wrangler-widget', __('Widget Wrangler - Widget', 'widgetwrangler'), $widget_ops, $control_ops );
+    parent::__construct( 'widget-wrangler-widget', __('Widget Wrangler - Widget', 'widgetwrangler'), $widget_ops, $control_ops );
     
     global $widget_wrangler;
     $this->ww = $widget_wrangler;

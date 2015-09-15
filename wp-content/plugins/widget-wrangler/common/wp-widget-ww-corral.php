@@ -20,7 +20,7 @@ class WidgetWrangler_Corral_Widget extends WP_Widget {
     $control_ops = array( 'id_base' => 'widget-wrangler-sidebar');
     
     // Create the widget. 
-    $this->WP_Widget( 'widget-wrangler-sidebar', __('Widget Wrangler - Corral', 'widgetwrangler'), $widget_ops, $control_ops );
+    parent::__construct( 'widget-wrangler-sidebar', __('Widget Wrangler - Corral', 'widgetwrangler'), $widget_ops, $control_ops );
     
     global $widget_wrangler;
     $this->ww = $widget_wrangler;
