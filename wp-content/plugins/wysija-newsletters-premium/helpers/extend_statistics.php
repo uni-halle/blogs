@@ -9,8 +9,9 @@ defined('WYSIJANLP') or die('Restricted access');
  */
 class WYSIJANLP_help_extend_statistics extends WYSIJA_help {
 
-    function WYSIJANLP_help_extend_campaigns() {
-        parent::WYSIJA_help();
+    function __construct() {
+        if (method_exists('WYSIJA_help', 'WYSIJA_help')) parent::WYSIJA_help();
+        else parent::__construct();
     }
 
     function hook_stats($filter, $hook_params) {

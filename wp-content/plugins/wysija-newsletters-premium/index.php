@@ -3,7 +3,7 @@
 Plugin Name: MailPoet Newsletters Premium
 Plugin URI: http://www.mailpoet.com/
 Description: Extended functionalities to the free version.
-Version: 2.6.13
+Version: 2.6.16
 Author: MailPoet
 Author URI: http://www.mailpoet.com/
 License: GPLv2 or later
@@ -66,7 +66,7 @@ function _filter_mailpoet_premium_version( $version, $package ) {
 		return $version;
 	}
 
-	return '2.6.13';
+	return '2.6.16';
 }
 
 function wysija_newsletters_premium_init(){

@@ -10,4 +10,4 @@ CREATE TABLE IF NOT EXISTS `bounce` (
   `created_at` INT unsigned NOT NULL,
   PRIMARY KEY (`bounce_id`),
   UNIQUE KEY `EMAIL_UNIQUE` (`email`)
-) ENGINE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci*/;
+) /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci*/;

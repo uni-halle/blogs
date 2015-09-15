@@ -7,8 +7,9 @@ defined('WYSIJANLP') or die('Restricted access');
  */
 class WYSIJANLP_help_premium extends WYSIJA_help {
 
-    function WYSIJANLP_help_premium() {
-        parent::WYSIJA_help();
+    function __construct() {
+        if (method_exists('WYSIJA_help', 'WYSIJA_help')) parent::WYSIJA_help();
+        else parent::__construct();
     }
 
     function init() {
@@ -19,6 +20,8 @@ class WYSIJANLP_help_premium extends WYSIJA_help {
         if ($model_config->getValue('premium_key')) {
             add_action( 'mpoet_sending_frequency', array($this, 'remove_sending_frequencies'));
         }
+
+        add_filter('mailpoet_back_footer', array($this , 'mailpoet_footer_version'));
         if (version_compare(WYSIJA::get_version(), '2.1.5') > 0) {
             //add premium hooks
             //only load the filters or hook which need to be loaded
@@ -53,6 +56,7 @@ class WYSIJANLP_help_premium extends WYSIJA_help {
 
                             $helper_extend_config = WYSIJA::get('extend_config', 'helper', false, WYSIJANLP);
 
+                            add_action( 'mailpoet_pre_config_screen' , array($helper_extend_config , 'premium_activated_message') );
                             //views/back/config.php
                             add_filter('wysija_extend_settings', array($helper_extend_config, 'premium_tabs_name'));
                             //add_filter('wysija_extend_settings_content', array($helper_extend_config, 'premium_tab_content'), 10, 2);
@@ -263,11 +267,40 @@ class WYSIJANLP_help_premium extends WYSIJA_help {
      * hook to remove the check on the the subscriber total above below 2000
      */
     function remove_checkTotalSubscribers() {
-        $mConfig = WYSIJA::get('config', 'model');
-        if ($mConfig->getValue('premium_key'))
+        $model_config = WYSIJA::get('config', 'model');
+        if ($model_config->getValue('premium_key')){
             remove_all_actions('wysija_check_total_subscribers');
+        }
+
+        $this->_check_expiry();
     }
 
+
+    function _check_expiry(){
+        $model_config = WYSIJA::get('config','model');
+        $renew_url = 'http://www.mailpoet.com/checkout/?utm_medium=plugin&utm_campaign=renewal_deal&utm_source=renewal_deal_';
+        $premium_expire_at = $model_config->getValue('premium_expire_at' );
+        $total_subscribers = $model_config->getValue('total_subscribers');
+        if( !empty($premium_expire_at) ){
+
+            if( (int)$premium_expire_at > time() ){
+                $days_to_expiry = ceil(((int)$model_config->getValue('premium_expire_at' ) - time()) / (3600*24));
+                if( $days_to_expiry < 60){
+                    $link_renew = '<a href="'.$renew_url.'about_to_expire'.'" target="_blank" >'.__('Renew my license now.', WYSIJA).'</a>';
+                    $mistake = __('Did you renew already?',WYSIJA) .' <a href="javascript:;" target="_blank" class="wysija-premium-activate" >'.__('Verify your license again.', WYSIJA).'</a>';
+                    $this->notice( sprintf(__('Your MailPoet Premium license is expiring in %s day(s).' , WYSIJA),$days_to_expiry ).' '.$link_renew.' '.$mistake);
+                }
+            }else{
+                $link_renew = '<a href="'.$renew_url.'has_expired'.'" target="_blank" >'.__('Renew my license now.', WYSIJA).'</a>';
+                $mistake = __('Did you renew already?',WYSIJA) .' <a href="javascript:;" target="_blank" class="wysija-premium-activate" >'.__('Verify your license again.', WYSIJA).'</a>';
+                $this->error( __('Your MailPoet Premium license has expired.' , WYSIJA).' '.$link_renew.' '.$mistake, true);
+                if( $total_subscribers > 1900){
+                    //remove other messages from main plugin
+                    remove_all_actions('wysija_check_total_subscribers');
+                }
+            }
+        }
+    }
     /**
      * function handling licence key check or dkim autosetup based on some parameters set in hte db
      */
@@ -411,4 +444,10 @@ class WYSIJANLP_help_premium extends WYSIJA_help {
         return '';
     }
 
+    function mailpoet_footer_version( $version_string ){
+        $premium = WYSIJA::get_version('wysija-newsletters-premium/index.php');
+        $version_string .= " | ". __("Premium", WYSIJA) . ": " . esc_attr($premium);
+
+        return $version_string;
+    }
 }

@@ -7,8 +7,33 @@ defined('WYSIJANLP') or die('Restricted access');
  */
 class WYSIJANLP_help_extend_config extends WYSIJA_help {
 
-    function WYSIJANLP_help_extend_config() {
-        parent::WYSIJA_help();
+    function __construct() {
+        if (method_exists('WYSIJA_help', 'WYSIJA_help')) parent::WYSIJA_help();
+        else parent::__construct();
+    }
+
+    function premium_activated_message(){
+        // display that premium is activated
+        $model_config = WYSIJA::get('config', 'model');
+        if ($model_config->getValue('premium_key')) {
+                $date_expiry = $model_config->getValue('premium_expire_at' );
+                if( $date_expiry > time() ){
+                    ?>
+                    <tr>
+                            <td class="premium_activated" colspan="2">
+                                    <i class="dashicons dashicons-awards"></i><?php echo __('Your Premium is activated.', WYSIJA); ?>
+                                    <span class="expiring_at"><?php
+
+
+                                    $date_expiry = date( get_option('date_format'), $date_expiry );
+
+                                    echo '('.sprintf(__('Valid until %s',WYSIJA),$date_expiry).')';
+                                    ?></span>
+                            </td>
+                    </tr>
+                    <?php
+                }
+        }
     }
 
     /**

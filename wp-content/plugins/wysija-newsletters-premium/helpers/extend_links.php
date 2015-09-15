@@ -7,8 +7,9 @@ class WYSIJANLP_help_extend_links extends WYSIJA_object{
 
     protected $file_extensions;
 
-    public function WYSIJANLP_help_extend_links(){
-        parent::WYSIJA_object();
+    public function __construct(){
+        if (method_exists('WYSIJA_object', 'WYSIJA_object')) parent::WYSIJA_object();
+        else parent::__construct();
         $this->file_extensions = array('pdf', 'doc', 'docx', 'xls', 'xlsx', 'mp3', 'mp4', 'ppt', 'pptx', 'rtf', 'odt');
     }
     /**

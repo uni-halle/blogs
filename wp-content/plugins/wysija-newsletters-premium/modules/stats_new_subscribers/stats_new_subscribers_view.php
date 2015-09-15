@@ -68,6 +68,7 @@ class WYSIJA_module_view_stats_new_subscribers_view extends WYSIJA_view_back {
 					chartData[index].time = new Date(_year, _month, _day);
 				}
 				else {
+					if ('WebkitAppearance' in document.documentElement.style) chartData[index].time = chartData[index].time.replace(/,/g, "/");
 					chartData[index].time = new Date(chartData[index].time);
 				}
 				chartData[index].balloonText = jQuery.datepicker.formatDate(dateFormat, chartData[index].time);
