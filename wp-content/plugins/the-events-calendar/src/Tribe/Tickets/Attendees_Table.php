@@ -71,14 +71,14 @@ class Tribe__Events__Tickets__Attendees_Table extends WP_List_Table {
 	public function get_columns() {
 		$columns = array(
 			'cb'              => '<input type="checkbox" />',
-			'order_id'        => __( 'Order #', 'tribe-events-calendar' ),
-			'order_status'    => __( 'Order Status', 'tribe-events-calendar' ),
-			'purchaser_name'  => __( 'Purchaser name', 'tribe-events-calendar' ),
-			'purchaser_email' => __( 'Purchaser email', 'tribe-events-calendar' ),
-			'ticket'          => __( 'Ticket type', 'tribe-events-calendar' ),
-			'attendee_id'     => __( 'Ticket #', 'tribe-events-calendar' ),
-			'security'        => __( 'Security Code', 'tribe-events-calendar' ),
-			'check_in'        => __( 'Check in', 'tribe-events-calendar' ),
+			'order_id'        => __( 'Order #', 'the-events-calendar' ),
+			'order_status'    => __( 'Order Status', 'the-events-calendar' ),
+			'purchaser_name'  => __( 'Purchaser name', 'the-events-calendar' ),
+			'purchaser_email' => __( 'Purchaser email', 'the-events-calendar' ),
+			'ticket'          => __( 'Ticket type', 'the-events-calendar' ),
+			'attendee_id'     => __( 'Ticket #', 'the-events-calendar' ),
+			'security'        => __( 'Security Code', 'the-events-calendar' ),
+			'check_in'        => __( 'Check in', 'the-events-calendar' ),
 		);
 
 		return $columns;
@@ -121,12 +121,10 @@ class Tribe__Events__Tickets__Attendees_Table extends WP_List_Table {
 
 		//back compat
 		if ( empty( $item['order_id_link'] ) ) {
-			$id = sprintf( '<a class="row-title" href="%s">%s</a>', esc_url( get_edit_post_link( $item['order_id'], true ) ), esc_html( $item['order_id'] ) );
-		} else {
-			$id = $item['order_id_link'];
+			$item['order_id_link'] = sprintf( '<a class="row-title" href="%s">%s</a>', esc_url( get_edit_post_link( $item['order_id'], true ) ), esc_html( $item['order_id'] ) );
 		}
 
-		return $id;
+		return $item['order_id_link'];
 	}
 
 	/**
@@ -165,8 +163,8 @@ class Tribe__Events__Tickets__Attendees_Table extends WP_List_Table {
 	 * @return string
 	 */
 	public function column_check_in( $item ) {
-		$checkin   = sprintf( '<a href="#" data-attendee-id="%d" data-provider="%s" class="button-secondary tickets_checkin">%s</a>', esc_attr( $item['attendee_id'] ), esc_attr( $item['provider'] ), __( 'Check in', 'tribe-events-calendar' ) );
-		$uncheckin = sprintf( '<span class="delete"><a href="#" data-attendee-id="%d" data-provider="%s" class="tickets_uncheckin">%s</a></span>', esc_attr( $item['attendee_id'] ), esc_attr( $item['provider'] ), __( 'Undo Check in', 'tribe-events-calendar' ) );
+		$checkin   = sprintf( '<a href="#" data-attendee-id="%d" data-provider="%s" class="button-secondary tickets_checkin">%s</a>', esc_attr( $item['attendee_id'] ), esc_attr( $item['provider'] ), __( 'Check in', 'the-events-calendar' ) );
+		$uncheckin = sprintf( '<span class="delete"><a href="#" data-attendee-id="%d" data-provider="%s" class="tickets_uncheckin">%s</a></span>', esc_attr( $item['attendee_id'] ), esc_attr( $item['provider'] ), __( 'Undo Check in', 'the-events-calendar' ) );
 
 		return $checkin . $uncheckin;
 	}
@@ -196,32 +194,37 @@ class Tribe__Events__Tickets__Attendees_Table extends WP_List_Table {
 	 *
 	 * Used for the Print, Email and Export buttons, and for the jQuery based search.
 	 *
+	 * @param string $which (top|bottom)
+	 * @see WP_List_Table::display()
 	 */
 	public function extra_tablenav( $which ) {
 
-		echo '<div class="alignleft actions">';
-
-		echo sprintf( '<input type="button" name="print" class="print button action" value="%s">', esc_attr__( 'Print', 'tribe-events-calendar' ) );
-		echo sprintf( '<input type="button" name="email" class="email button action" value="%s">', esc_attr__( 'Email', 'tribe-events-calendar' ) );
-		echo sprintf(
-			'<a href="%s" class="export button action">%s</a>', esc_url(
-				add_query_arg(
-					array(
-						'attendees_csv'       => true,
-						'attendees_csv_nonce' => wp_create_nonce( 'attendees_csv_nonce' ),
-					)
-				)
-			), esc_html__( 'Export', 'tribe-events-calendar' )
+		$export_url = add_query_arg(
+			array(
+				'attendees_csv' => true,
+				'attendees_csv_nonce' => wp_create_nonce( 'attendees_csv_nonce' ),
+			)
 		);
 
-		echo '</div>';
+		$nav = array(
+			'left' => array(
+				'print' => sprintf( '<input type="button" name="print" class="print button action" value="%s">', esc_attr__( 'Print', 'the-events-calendar' ) ),
+				'email' => sprintf( '<input type="button" name="email" class="email button action" value="%s">', esc_attr__( 'Email', 'the-events-calendar' ) ),
+				'export' => sprintf( '<a href="%s" class="export button action">%s</a>', esc_url( $export_url ), esc_html__( 'Export', 'the-events-calendar' ) ),
+			),
+			'right' => array(),
+		);
 
 		if ( 'top' == $which ) {
-			echo '<div class="alignright">';
-			echo sprintf( '%s: <input type="text" name="filter_attendee" id="filter_attendee" value="">', esc_html__( 'Filter by purchaser name, ticket #, order # or security code', 'tribe-events-calendar' ) );
-			echo '</div>';
-
+			$nav['right']['filter_box'] = sprintf( '%s: <input type="text" name="filter_attendee" id="filter_attendee" value="">', __( 'Filter by purchaser name, ticket #, order # or security code', 'the-events-calendar' ) );
 		}
+
+		$nav = apply_filters( 'tribe_events_tickets_attendees_table_nav', $nav, $which );
+
+		?>
+		<div class="alignleft actions"><?php echo implode( $nav['left'] ); ?></div>
+		<div class="alignright"><?php echo implode( $nav['right'] ) ?></div>
+		<?php
 	}
 
 	/**
@@ -232,9 +235,9 @@ class Tribe__Events__Tickets__Attendees_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 		$actions = array(
-			'check_in'        => esc_attr__( 'Check in', 'tribe-events-calendar' ),
-			'uncheck_in'      => esc_attr__( 'Undo Check in', 'tribe-events-calendar' ),
-			'delete_attendee' => esc_attr__( 'Delete', 'tribe-events-calendar' ),
+			'check_in'        => esc_attr__( 'Check in', 'the-events-calendar' ),
+			'uncheck_in'      => esc_attr__( 'Undo Check in', 'the-events-calendar' ),
+			'delete_attendee' => esc_attr__( 'Delete', 'the-events-calendar' ),
 		);
 
 		return (array) apply_filters( 'tribe_events_tickets_attendees_table_bulk_actions', $actions );

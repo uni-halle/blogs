@@ -232,6 +232,16 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 				return $data;
 			}
 
+			// If a specific timezone was not specified, default to the sitewide timezone
+			if ( ! isset( $data['EventTimezone'] ) ) {
+				$data['EventTimezone'] = Tribe__Events__Timezones::wp_timezone_string();
+			}
+
+			// Additionally store datetimes in UTC
+			$data['EventStartDateUTC'] = Tribe__Events__Timezones::to_utc( $data['EventStartDate'], $data['EventTimezone'] );
+			$data['EventEndDateUTC']   = Tribe__Events__Timezones::to_utc( $data['EventEndDate'], $data['EventTimezone'] );
+			$data['EventTimezoneAbbr'] = Tribe__Events__Timezones::abbr( $data['EventStartDate'], $data['EventTimezone'] );
+
 			// sanity check that start date < end date
 			$start_timestamp = strtotime( $data['EventStartDate'] );
 			$end_timestamp   = strtotime( $data['EventEndDate'] );
@@ -256,13 +266,9 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 * @param $event_id
 		 */
 		public static function update_event_cost( $event_id ) {
-			// Load the current event costs: assume the first of these is the "base" cost
-			// which can be set per event when only the core plugin is running
-			$event_cost = (array) get_post_meta( $event_id, '_EventCost' );
-			$base_cost  = array_shift( $event_cost );
-
-			// Allow addons (ie, ticketing plugins) to register additional event costs
-			$event_cost = (array) apply_filters( 'tribe_events_event_costs', array( $base_cost ), $event_id );
+			// Loads current event costs, on construct
+			// Tribe__Events__Tickets__Tickets->get_ticket_prices() adds them to this filter
+			$event_cost = (array) apply_filters( 'tribe_events_event_costs', array(), $event_id );
 
 			// Kill the old cost meta data
 			delete_post_meta( $event_id, '_EventCost' );
@@ -428,12 +434,16 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 
 			if ( ( isset( $data['Venue'] ) && $data['Venue'] ) || self::someVenueDataSet( $data ) ) {
 				$postdata = array(
-					'post_title'  => $data['Venue'] ? $data['Venue'] : __( "Unnamed Venue", 'tribe-events-calendar' ),
+					'post_title'  => $data['Venue'] ? $data['Venue'] : __( "Unnamed Venue", 'the-events-calendar' ),
 					'post_type'   => Tribe__Events__Main::VENUE_POST_TYPE,
 					'post_status' => $post_status,
 				);
 
 				$venueId = wp_insert_post( $postdata, true );
+
+				// By default, the show map and show map link options should be on
+				$data['ShowMap'] = isset( $data['ShowMap'] ) ? $data['ShowMap'] : 'true';
+				$data['ShowMapLink'] = isset( $data['ShowMapLink'] ) ? $data['ShowMapLink'] : 'true';
 
 				if ( ! is_wp_error( $venueId ) ) {
 					self::saveVenueMeta( $venueId, $data );
@@ -472,12 +482,12 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 		 *
 		 * @return void
 		 */
-		public static function updateVenue( $venueId, $data ) {
+		public static function updateVenue( $venue_id, $data ) {
 			$data['ShowMap']     = isset( $data['ShowMap'] ) ? $data['ShowMap'] : 'false';
 			$data['ShowMapLink'] = isset( $data['ShowMapLink'] ) ? $data['ShowMapLink'] : 'false';
-			Tribe__Events__API::saveVenueMeta( $venueId, $data );
 
-			do_action( 'tribe_events_venue_updated', $venueId, $data );
+			Tribe__Events__API::saveVenueMeta( $venue_id, $data );
+			do_action( 'tribe_events_venue_updated', $venue_id, $data );
 		}
 
 		/**
@@ -504,7 +514,7 @@ if ( ! class_exists( 'Tribe__Events__API' ) ) {
 			// TODO: We should probably do away with 'StateProvince' and stick to 'State' and 'Province'.
 			if ( ! isset( $data['StateProvince'] ) || $data['StateProvince'] == '' ) {
 				if ( isset( $data['State'] ) && $data['State'] != '' &&
-					 ( empty( $data['Country'] ) || $data['Country'] == 'US' || $data['Country'] == __( "United States", 'tribe-events-calendar' ) )
+					 ( empty( $data['Country'] ) || $data['Country'] == 'US' || $data['Country'] == __( "United States", 'the-events-calendar' ) )
 				) {
 					$data['StateProvince'] = $data['State'];
 				} else {

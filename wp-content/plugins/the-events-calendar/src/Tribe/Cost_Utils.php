@@ -33,7 +33,7 @@ class Tribe__Events__Cost_Utils {
 	public function get_all_costs() {
 		global $wpdb;
 
-		$costs = $wpdb->get_col( "SELECT meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_EventCost'" );
+		$costs = $wpdb->get_col( "SELECT DISTINCT meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_EventCost'" );
 
 		return $costs;
 	}//end get_all_costs
@@ -105,7 +105,7 @@ class Tribe__Events__Cost_Utils {
 		if ( $relevant_costs['min'] == $relevant_costs['max'] ) {
 			$formatted = $relevant_costs['min'];
 		} else {
-			$formatted = $relevant_costs['min'] . _x( ' - ', 'Cost range separator', 'tribe-events-calendar' ) . $relevant_costs['max'];
+			$formatted = $relevant_costs['min'] . _x( ' - ', 'Cost range separator', 'the-events-calendar' ) . $relevant_costs['max'];
 		}
 
 		return $formatted;
@@ -120,7 +120,7 @@ class Tribe__Events__Cost_Utils {
 	 */
 	public function maybe_replace_cost_with_free( $cost ) {
 		if ( '0' === (string) $cost ) {
-			return __( 'Free', 'tribe-events-calendar' );
+			return __( 'Free', 'the-events-calendar' );
 		}
 
 		return $cost;
@@ -158,10 +158,16 @@ class Tribe__Events__Cost_Utils {
 			$costs = array( $costs );
 		}
 
+		$new_costs = array();
+
 		foreach ( $costs as $index => $value ) {
 			$values = $this->parse_cost_range( $value );
-			$costs = array_merge( $costs, $values );
+			foreach ( $values as $val ) {
+				$new_costs[] = $val;
+			}
 		}
+
+		$costs = $new_costs;
 
 		if ( empty( $costs ) ) {
 			return 0;

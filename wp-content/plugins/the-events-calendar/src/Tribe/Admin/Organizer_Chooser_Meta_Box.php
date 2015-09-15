@@ -47,7 +47,7 @@ class Tribe__Events__Admin__Organizer_Chooser_Meta_Box {
 	public function render() {
 		$this->render_dropdowns();
 		$this->render_add_organizer_button();
-		include( $this->tribe->pluginPath . 'src/admin-views/new-organizer-meta-section.php' );
+		include $this->tribe->pluginPath . 'src/admin-views/new-organizer-meta-section.php';
 	}
 
 	/**
@@ -57,14 +57,14 @@ class Tribe__Events__Admin__Organizer_Chooser_Meta_Box {
 	 * @return void
 	 */
 	public function render_dropdowns() {
-		$postId = $this->event->ID;
-		$current_organizers = get_post_meta( $postId, '_EventOrganizerID', false );
+		$post_id = $this->event->ID;
+		$current_organizers = get_post_meta( $post_id, '_EventOrganizerID', false );
 		if ( $this->use_default_organizer( $current_organizers ) ) {
 			$current_organizers = array( $this->tribe->defaults()->organizer_id() );
 		}
-		$current_organizers = (array)apply_filters( 'tribe_display_event_organizer_dropdown_id', $current_organizers );
+		$current_organizers = (array) apply_filters( 'tribe_display_event_organizer_dropdown_id', $current_organizers );
 
-		?><script type="text/template" id="tmpl-tribe-select-organizer"><?php $this->single_organizer_dropdown(0); ?></script><?php
+		?><script type="text/template" id="tmpl-tribe-select-organizer"><?php $this->single_organizer_dropdown( 0 ); ?></script><?php
 
 		foreach ( $current_organizers as $organizer_id ) {
 			echo '<tbody>';
@@ -85,7 +85,7 @@ class Tribe__Events__Admin__Organizer_Chooser_Meta_Box {
 		<tr class="saved_organizer">
 			<td style="width:170px"><?php
 				$this->move_handle();
-				?><label data-l10n-create-organizer="<?php esc_attr_e( sprintf( __( 'Create New %s', 'tribe-events-calendar' ), $this->tribe->singular_organizer_label ) ); ?>"><?php printf( __( 'Use Saved %s:', 'tribe-events-calendar' ), $this->tribe->singular_organizer_label ); ?></label>
+				?><label data-l10n-create-organizer="<?php esc_attr_e( sprintf( __( 'Create New %s', 'the-events-calendar' ), $this->tribe->singular_organizer_label ) ); ?>"><?php printf( __( 'Use Saved %s:', 'the-events-calendar' ), $this->tribe->singular_organizer_label ); ?></label>
 			</td>
 			<td><?php
 				$this->tribe->saved_organizers_dropdown( $organizer_id, 'organizer[OrganizerID][]' );
@@ -94,7 +94,6 @@ class Tribe__Events__Admin__Organizer_Chooser_Meta_Box {
 			?></td>
 		</tr>
 	<?php
-
 	}
 
 	/**
@@ -110,7 +109,7 @@ class Tribe__Events__Admin__Organizer_Chooser_Meta_Box {
 				<?php if ( empty( $organizer_id ) ) { ?> style="display:none;"<?php } ?>
 				data-admin-url="<?php echo esc_url( admin_url( 'post.php?action=edit&post=' ) ); ?>"
 				href="<?php echo esc_url( admin_url( sprintf( 'post.php?action=edit&post=%s', $organizer_id ) ) ); ?>"
-				target="_blank"><?php printf( __( 'Edit %s', 'tribe-events-calendar' ), $this->tribe->singular_organizer_label ); ?></a>
+				target="_blank"><?php printf( __( 'Edit %s', 'the-events-calendar' ), $this->tribe->singular_organizer_label ); ?></a>
 		</div>
 		<?php
 	}
@@ -123,20 +122,20 @@ class Tribe__Events__Admin__Organizer_Chooser_Meta_Box {
 	 * @return bool
 	 */
 	protected function use_default_organizer( $current_organizers ) {
-		if ( !empty( $current_organizers ) ) {
-			return FALSE; // the event already has organizers
+		if ( ! empty( $current_organizers ) ) {
+			return false; // the event already has organizers
 		}
-		if ( !empty( $this->event->ID ) && get_post_status( $this->event->ID ) != 'auto-draft' ) {
-			return FALSE; // the event has already been saved
+		if ( ! empty( $this->event->ID ) && get_post_status( $this->event->ID ) != 'auto-draft' ) {
+			return false; // the event has already been saved
 		}
 		if ( is_admin() ) {
 			if ( get_current_screen()->action == 'add' ) {
-				return TRUE; // we're on the add new event screen
+				return true; // we're on the add new event screen
 			} else {
-				return FALSE;
+				return false;
 			}
 		} else {
-			return TRUE; // a front-end submission form (e.g., community)
+			return true; // a front-end submission form (e.g., community)
 		}
 	}
 
@@ -146,7 +145,7 @@ class Tribe__Events__Admin__Organizer_Chooser_Meta_Box {
 	 * @return void
 	 */
 	protected function render_add_organizer_button() {
-		printf( '<tfoot><tr><td colspan="2"><a class="tribe-add-organizer" href="#">%s</a></td></tr></tfoot>', __( 'Add another organizer', 'tribe-events-calendar' ) );
+		printf( '<tfoot><tr><td colspan="2"><a class="tribe-add-organizer" href="#">%s</a></td></tr></tfoot>', __( 'Add another organizer', 'the-events-calendar' ) );
 	}
 
 	/**
