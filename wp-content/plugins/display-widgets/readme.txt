@@ -4,7 +4,7 @@ Donate link: http://strategy11.com/donate/
 Tags: widget, widgets, admin, show, hide, page, sidebar, content, wpmu, wordpress, plugin, post, posts, content, filter, widget logic, widget context
 Requires at least: 3.1
 Tested up to: 4.3
-Stable tag: 2.04
+Stable tag: 2.05
 
 Simply hide widgets on specified pages. Adds checkboxes to each widget to either show or hide it on every site page.
 
@@ -64,6 +64,10 @@ function dw_callback_trigger(){
 1. The extra widget options added.
 
 == Changelog ==
+= 2.05 =
+* Add "Text Domain" to the plugin header to enable translations
+* Add Brazilian Portuguese translation
+
 = 2.04 =
 * Check if user is logged in before any other checks
 * Resume use of old hook for those with widgets showing that shouldn't
