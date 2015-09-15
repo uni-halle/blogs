@@ -2092,7 +2092,7 @@ jQuery(document).ready(function($) {
 	if( jQuery("#powerpress_settings_page").length > 0 )
 	{
 		var tabsCtl = jQuery("#powerpress_settings_page").tabs();
-		tabsCtl.tabs("option", "active", <?php echo (empty($_POST['tab'])?0:$_POST['tab']); ?>);
+		tabsCtl.tabs("option", "active", <?php echo (empty($_POST['tab'])?0: intval($_POST['tab'])); ?>);
 		jQuery('form').submit(function() {
 			var selectedTemp = tabsCtl.tabs('option', 'active');
 			jQuery('#save_tab_pos').val(selectedTemp);
@@ -2132,7 +2132,6 @@ jQuery(document).ready(function($) {
 	});
 });
 
-powerpress_url = '<?php echo powerpress_get_root_url(); ?>';
 //-->
 </script>
 <link rel="stylesheet" href="<?php echo powerpress_get_root_url(); ?>css/admin.css" type="text/css" media="screen" />
@@ -2551,10 +2550,6 @@ function powerpress_send_to_poster_image(url)
 		// Print this line for debugging when looking for other pages to include header data for
 		//echo "<!-- WP Page Name: $page_name; Hook Suffix: $hook_suffix -->\n";
 ?>
-<script type="text/javascript"><!--
-powerpress_url = '<?php echo powerpress_get_root_url(); ?>';
-//-->
-</script>
 <link rel="stylesheet" href="<?php echo powerpress_get_root_url(); ?>css/dashboard.css" type="text/css" media="screen" />
 <?php
 	}
@@ -3119,7 +3114,7 @@ function powerpress_remote_fopen($url, $basic_auth = false, $post_args = array()
 	unset($GLOBALS['g_powerpress_remote_error']);
 	unset($GLOBALS['g_powerpress_remote_errorno']);
 	
-	if( false && function_exists( 'curl_init' ) ) // Preferred method of connecting
+	if( defined('POWERPRESS_CURL') && POWERPRESS_CURL && function_exists( 'curl_init' ) )
 	{
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $url);

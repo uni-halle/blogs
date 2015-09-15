@@ -3,7 +3,7 @@ Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, itunes, enclosure, zune, iphone, youtube, viddler, blip.tv, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, webm, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, simple podcasting, seriously simple podcasting, seriously-simple-podcasting, podlove, podcast.de
 Requires at least: 3.6
 Tested up to: 4.3
-Stable tag: 6.0.4
+Stable tag: 6.0.5
 Donate link: https://www.patreon.com/blubrry?ty=h
 License: GPLv2 or later
 
@@ -204,6 +204,15 @@ To install Blubrry PowerPress manually, follow these steps:
 
 = Become a PowerPress Patron! =
 Help support your favorite podcasting plugin via Patreon. [Visit Blubrry's Patreon page](https://www.patreon.com/blubrry?ty=h)
+
+= 6.0.5 =
+* Released on 9/8/2015
+* Changed the Play in New Window logic to support WordPress MultiSite `switch_to_blog()` function calls (Thanks Avi for the patch!)
+* Removed the pp_flashembed JavaScript function from the player.js include (we are no longer using flash for fallback).
+* Minified version of player.min.js updated.
+* Fixed possible XSS vulnerability with the settings tab control.
+* Added new `POWERPRESS_CURL` define option for wp-config.php. When set, PowerPress will use it's own cURL logic rather than use the `wp_remote_get()`/`wp_remote_post()` functions.
+
 
 = 6.0.4 =
 * Released on 8/27/2015
