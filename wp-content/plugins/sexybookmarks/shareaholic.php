@@ -3,14 +3,14 @@
  * The main file!
  *
  * @package shareaholic
- * @version 7.6.2.1
+ * @version 7.6.2.2
  */
 
 /*
 Plugin Name: Shareaholic | share buttons, analytics, related content
 Plugin URI: https://shareaholic.com/publishers/
 Description: Whether you want to get people sharing, grow your fans, make money, or know who's reading your content, Shareaholic will help you get it done. See <a href="admin.php?page=shareaholic-settings">configuration panel</a> for more settings.
-Version: 7.6.2.1
+Version: 7.6.2.2
 Author: Shareaholic
 Author URI: https://shareaholic.com
 Text Domain: shareaholic
@@ -63,7 +63,7 @@ if (!class_exists('Shareaholic')) {
     const CM_API_URL = 'https://cm-web.shareaholic.com'; // uses static IPs for firewall whitelisting
     const REC_API_URL = 'http://recommendations.shareaholic.com';
 
-    const VERSION = '7.6.2.1';
+    const VERSION = '7.6.2.2';
 
     /**
      * Starts off as false so that ::get_instance() returns
@@ -140,6 +140,19 @@ if (!class_exists('Shareaholic')) {
 
       // use the admin notice API
       add_action('admin_notices', array('ShareaholicAdmin', 'admin_notices'));
+
+      // ShortCode UI specific hooks to prevent duplicate app rendering
+      // https://wordpress.org/support/topic/custom-post-type-exclude-issue?replies=10#post-3370550
+      add_action('scui_external_hooks_remove', array($this, 'remove_apps'));
+      add_action('scui_external_hooks_return', array($this, 'return_apps'));
+    }
+
+    public static function remove_apps() {
+      remove_filter('the_content', array('ShareaholicPublic', 'draw_canvases'));
+    }
+
+    public static function return_apps() {
+      add_filter('the_content', array('ShareaholicPublic', 'draw_canvases'));
     }
 
     /**
