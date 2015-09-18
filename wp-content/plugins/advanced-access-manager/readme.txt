@@ -1,9 +1,9 @@
 === Advanced Access Manager ===
-Contributors: vasyl_m
+Contributors: vasyltech
 Tags: security, login, access manager, access, access control, capability, role, user, post filter, category 
 Requires at least: 3.4.2
-Tested up to: 4.3
-Stable tag: 2.8.7
+Tested up to: 4.3.1
+Stable tag: 2.8.8
 
 The powerful and easy-to-use tool to improve security and define access to your 
 posts, pages and backend areas for single blog or multisite network.
@@ -92,6 +92,11 @@ the list of additional metaboxes can be picked by AAM.
 5. ConfigPress
 
 == Changelog ==
+
+= 2.8.8 =
+* AAM is changing the primary owner to VasylTech
+* Removed contextual help menu
+* Added notification about AAM v3
 
 = 2.8.7 =
 * Tested and verified functionality on the latest WordPress release

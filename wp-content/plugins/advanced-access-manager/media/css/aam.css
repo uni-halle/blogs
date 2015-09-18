@@ -858,3 +858,13 @@ a.aam-lock-big{
 .ui-accordion h4{
     margin: 0;
 }
+
+.notification-message {
+    width: 95%;
+    border: 1px solid #257da6;
+    padding: 10px;
+}
+
+.notification-message p {
+    font-size: 1.2em;
+}

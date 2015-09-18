@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 2.8.7
+  Version: 2.8.8
   Author: Vasyl Martyniuk <support@wpaam.com>
   Author URI: http://www.wpaam.com
 
@@ -68,9 +68,6 @@ class aam {
             add_action('admin_print_scripts', array($this, 'printScripts'));
             add_action('admin_print_styles', array($this, 'printStyles'));
             
-            //add help menu
-            add_filter('contextual_help', array($this, 'contextualHelp'), 10, 3);
-
             //manager Admin Menu
             if (aam_Core_API::isNetworkPanel()) {
                 add_action('network_admin_menu', array($this, 'adminMenu'), 999);
@@ -319,24 +316,6 @@ class aam {
         return $pages;
     }
     
-    /**
-     * Contextual Help Menu
-     * 
-     * @param type $contextual_help
-     * @param type $screen_id
-     * @param type $screen
-     * 
-     * @return 
-     */
-    public function contextualHelp($contextual_help, $screen_id, $screen){
-        if ($this->isAAMScreen()){
-            $help = new aam_View_Help();
-            $help->content($screen);
-        }
-        
-        return $contextual_help;
-    }
-
     /**
      * Filter Navigation menu
      *
