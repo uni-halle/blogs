@@ -1540,4 +1540,4 @@ $.fn.cycle.transitions.wipe = function($cont, $slides, opts) {
 	opts.animOut   = { left: 0 };
 };
 
-})(jQuery);
+})(wpigplugJS.jQuery);

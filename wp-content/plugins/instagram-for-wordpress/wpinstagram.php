@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 2.1.0
+	Version: 2.1.1
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -122,7 +122,7 @@ function wpinstagram_show_instructions() {
 function load_wpinstagram_footer(){
 	?>
 	<script>
-	        jQuery(document).ready(function($) {
+	        wpigplugJS.jQuery(document).ready(function($) {
 	        	try {
 		                $("ul.wpinstagram").find("a").each(function(i, e) {
 		                       	e = $(e);
@@ -171,7 +171,7 @@ function load_wpinstagram_footer(){
                 	        	        return html;
         	        	        }
 	        	        });
-		                jQuery('#fancybox-content').live('click', function(x) {
+		                $('#fancybox-content').live('click', function(x) {
         	                	var src = $(this).find('img').attr('src');
 	                	        var a = $("ul.wpinstagram.live").find('a.[href="' + src + '"]').attr('data-user-url');                  		
                 		        document.getElementById('igTracker').src=$('ul.wpinstagram').find('a[href="' + src + '"]').attr('data-onclick');
@@ -213,13 +213,14 @@ class WPInstagram_Widget extends WP_Widget {
 
         if (is_active_widget('', '', 'wpinstagram-widget') && !is_admin()) {            
                 wp_enqueue_script("jquery");
-                wp_enqueue_script("jquery.easing", $this->wpinstagram_path."js/jquery.easing-1.3.pack.js", Array('jquery'), null);
-                wp_enqueue_script("jquery.cycle", $this->wpinstagram_path."js/jquery.cycle.all.js", Array('jquery'), null);
+                wp_enqueue_script("wpigplug", $this->wpinstagram_path."js/wpigplug.js", Array('jquery'), null);
+                wp_enqueue_script("jquery.easing", $this->wpinstagram_path."js/jquery.easing-1.3.pack.js", Array('wpigplug'), null);
+                wp_enqueue_script("jquery.cycle", $this->wpinstagram_path."js/jquery.cycle.all.js", Array('wpigplug'), null);
                 wp_enqueue_style('wpinstagram', $this->wpinstagram_path . 'wpinstagram.css', Array(), '0.5');
                 if ($withfancybox) {
-                        wp_enqueue_script("fancybox", $this->wpinstagram_path."js/jquery.fancybox-1.3.4.pack.js", Array('jquery'), null);
+                        wp_enqueue_script("fancybox", $this->wpinstagram_path."js/jquery.fancybox-1.3.4.pack.js", Array('wpigplug'), null);
                         wp_enqueue_style("fancybox-css", $this->wpinstagram_path."js/fancybox/jquery.fancybox-1.3.4.min.css", Array(), null);
-                        wp_enqueue_script("jquery.mousewhell", $this->wpinstagram_path."js/jquery.mousewheel-3.0.4.pack.js", Array('jquery'), null);
+                        wp_enqueue_script("jquery.mousewhell", $this->wpinstagram_path."js/jquery.mousewheel-3.0.4.pack.js", Array('wpigplug'), null);
                         add_action('wp_footer', 'load_wpinstagram_footer');
                 }
         }
