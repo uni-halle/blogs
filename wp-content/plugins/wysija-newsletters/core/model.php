@@ -30,7 +30,7 @@ class WYSIJA_model extends WYSIJA_object{
 	var $time_start = 0;
 	var $query_duration = 0;
 
-	function WYSIJA_model($extensions=''){
+	function __construct($extensions=''){
 		if(defined('WYSIJA_DBG') && WYSIJA_DBG>0) $this->dbg=true;
 		global $wpdb;
 		$this->wpprefix=$wpdb->prefix;
