@@ -13,7 +13,7 @@
 </title>
 
 <!--Bootstrap CSS-->
-<link rel="stylesheet" type="text/css" media="screen" href="<? echo esc_url( get_template_directory_uri() );?>/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo esc_url( get_template_directory_uri() );?>/dist/css/bootstrap.min.css">
 <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
 <!--Custom CSS-->

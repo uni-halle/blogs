@@ -75,6 +75,10 @@ LAYOUT & GRID STYLES
 	margin: 0 auto;
 }
 
+#main {
+padding-bottom: $footerheight;
+}
+
 /*********************
 LINK STYLES
 *********************/
@@ -122,13 +126,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	font-size: 2.5em;
+	font-size: 2.25em;
 	line-height: 1.333em;
 }
 
 h2, .h2 {
-	font-size: 1.75em;
-	line-height: 1.4em;
+	font-size: 1.5em;
+	line-height: 1.3em;
 	margin-bottom: 0.375em;
 }
 
@@ -152,7 +156,7 @@ h5, .h5 {
 HEADER STYLES
 *********************/
 
-$headerheight: 4em;
+/* $headerheight: see _variables.scss and change there */
 
 .header {
 	background-color: $gkuh;
@@ -162,15 +166,17 @@ $headerheight: 4em;
 
 #inner-header {
     @include flexbox();
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: nowrap;
     height: $headerheight;
 }
 
 .logolink {
-    height: $headerheight * 0.8;
-    margin: $headerheight * 0.1;
-    @include flex(1 1 auto);
+    height: 80%;
+    margin: 0.4em 0.4em 0.4em 0;
+    @include flex(1 0 auto);
+    width: $headerheight * 0.8;
+    align-self: center;
     
     .logo {
     height: 100%; }
@@ -191,9 +197,15 @@ the navs on the site so our css is cleaner
 and more scalable.
 */
 
+/* special media query for super small devices so menu does not break */
+@media only screen and (max-width: 329px) {
+    .nav ul li { padding: 0 0.4em; } 
+    .logolink { height: 60%; }
+}
+
+
 .navcontainer {
-    @include flex(1 0 auto);
-    //align-items: center;
+    @include flex(4 1 auto);
     height: $headerheight;
     
     nav {
@@ -201,35 +213,42 @@ and more scalable.
     }
 }
 
-/* only top level menu entries */
+/* only top level menu entries. line-height property centers vertically */
 .top-nav > li {
     height: $headerheight;
     display: inline;
-    line-height: $headerheight;
+    line-height: $headerheight;    
+    border-right: 1px solid $navactive;
     
+    &:last-child {
+            /* no border for menu item on the right */
+            border-right: 0 solid $navactive;
+        }
 }
 
 .nav {
     
     ul {
-        //@include flexbox();
 		margin:0;
-        //height: 100%;
         text-align: right;
+        /* fix for inline-block gap */
+        letter-spacing: -1em;
 	}
     
 	li {
-        //float: left;
         display: inline-block;
         position: relative;
         background-color:$mainnav;
         padding: 0 0.75em;
-        margin: 0;
+        /* set to normal after gap fix in parent ul */
+        letter-spacing:normal;
         
 		a {
+            font-size: 0.9em;
 			color: $navtext;
 			text-decoration: none;
             height: 100%;
+            margin: 0;
 
 			/*
 			remember this is for mobile ONLY, so there's no need
@@ -240,13 +259,16 @@ and more scalable.
 			&:hover, &:focus {
 
 			}
-		}
+            
+		} /* end of ul li a */
 
 		&:first-child {
-            //border-right: 1px solid $border-color;
         }
+        
 		&:last-child {
-            //border-left: 1px solid $border-color;
+            /* no border for menu item on the right */
+            border-left: 0px solid $navactive;
+            margin-right: -0.75em;
         }
 
 		ul.sub-menu,
@@ -285,7 +307,8 @@ and more scalable.
            li.current-menu-item,
 	       li.current_page_item,
 	       li.current_page_ancestor {
-        background-color: $black;
+                background-color: $black;
+               border-left: 0px solid $navactive;
         
 
 		a {
@@ -298,7 +321,7 @@ and more scalable.
             visibility: visible;
             }
 
-		}
+		} /* end ul.sub-menu and ul.children */
         
         /* For hover-able devices: showing sub-menus */
 		&:hover > ul {
@@ -313,7 +336,8 @@ and more scalable.
 	li.current-menu-item,
 	li.current_page_item,
 	li.current_page_ancestor {
-        background-color: $black;
+        background-color: $navactive;
+        border: 0px solid $border-color;
         
 
 		a {
@@ -341,7 +365,7 @@ POSTS & CONTENT STYLES
 
 			header {
 				border-bottom: 1px solid $light-gray;
-				padding: 1.5em;
+				padding: 1.5em; 
 			}
 
 			footer {
@@ -938,27 +962,44 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 *********************/
 
-/* just change those valuey for the containers. the other elements are being calculated automatically */
+/* hide MLU blogfarm footer */
+#global-footer {
+    display: none;
+}
 
-$footerheight:  5em;
-$centerwidth: 30%;
+/* hide breadcrumbs on small devices */
+.breadcrumbs {
+    display: none;
+}
+
+/********* just change those valuey for the containers. the other elements are being calculated automatically *********/
+
+$centerwidth: 40%;
+
+/* $footerheight: HEIGHT OF FOOTER: see _variables.scss and change there */
+
 
 .footer {
 	clear: both;
-	background-color: $dark-gray;
-	color: $light-gray;
     display: block;
     position:fixed ;
     vertical-align: middle;
     bottom: 0;
     height: $footerheight;
     width: 100%;
+    line-height: normal;
+    //background-color: $dark-gray;
     
     a {
-    color: $gray;
-    text-decoration: none;
+        color: $gray;
+        text-decoration: none;
         font-weight: bold;
     }
+}
+
+#inner-footer {
+    background-color: $dark-gray;
+    height: 100%;
 }
 
 .fnavcontainer {
@@ -967,19 +1008,21 @@ $centerwidth: 30%;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: $footerheight;
+    height: 100%;
 }
 
 /* centered box with nav buttons and progress circle as a flexbox */
 .fnavcenter {
-    @include flex(1 0 main-size);
+    @include flex(1 0 $centerwidth);
     @include flexbox();
     display: flex;
+    -webkit-flex: 1 0 $centerwidth;
     align-items: center;
+    align-self: center;
     justify-content: center;
     height: $footerheight;
     //border: 1px solid #000;
-    min-width: $centerwidth;
+    width: $centerwidth;
     text-align: center;
 }
 
@@ -999,36 +1042,37 @@ $centerwidth: 30%;
     text-align: left;
 }
 
+$centerelement: 30%;
+
 .statuscow {
+    @include flex(1 1 $centerelement);
+    width: $centerelement * 1.1;
+    align-self: center;
+    //width: 5%;
     //background-color: $gkuh;
     //display: inline;
-    min-width: $footerheight / 1.5;
-    max-width: 30%;
-    min-height: $footerheight / 1.5;
-    max-height: $footerheight / 2.5;
-    @include flex(1 1 main-size);
+    //min-width: $footerheight / 1.5;
+    //min-height: $footerheight / 1.5;
+    //max-height: $footerheight / 2.5;
+    
 }
-
-    .tempcircle {
-    align-self: center;
-    }
 
 /* Positioning of prev/next triangle svg  */
 .tricontainer {
     //border: 1px solid green;
-    min-width: $footerheight / 1.5;
-    max-width: 30%;
-    min-height: $footerheight / 1.5;
-    max-height: $footerheight / 2.5;
-    @include flex(1 1 auto);
+    //width: $footerheight / 1.5;
+    //min-height: $footerheight / 1.5;
+    //max-height: $footerheight / 2.5;
+    @include flex(1 1 $centerelement);
     align-self: center;
+    width: $centerelement;
     //margin: 0 auto;
     //display: inline-block;
 }
 
 .prevbtn, .nextbtn {
     //border: 1px solid #fff;
-    width: 100%;
+    //width: 90%;
     //display: block;
 }
 

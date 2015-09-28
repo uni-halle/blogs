@@ -39,15 +39,16 @@ $bones-pink:        #f01d4f;
 $blue:              #2980b9;
 
 $gkuh:              #008d9a;
-$mainnav:           $light-gray;
-$navactive:         $gray;
-$navtext:           $dark-gray;
-$navtextactive:     $light-gray;
+$mainnav:           $light-gray; /* background color of menu items */
+$navactive:         $black; /* background color of active menu items */
+$navtext:           $dark-gray; /* text color of non-active menu items */
+$navtextactive:     $light-gray; /* text color of active menu items */
 $site-bgrd:         $white;
 $navbutton:         $gray;
 
-$link-color:        $bones-pink;
+$link-color:        $gkuh;
 $link-hover:        darken($link-color, 9%);
+$breadcrumb:        $dark-gray;
 
 $border-color:      #ccc;
 $disabled-gray:     #cfcfcf;
@@ -68,6 +69,9 @@ http://sachagreif.com/sass-color-variables/
 THE GRID
 adapted from: http://webdesign.tutsplus.com/tutorials/a-simple-responsive-grid-made-even-better-with-sass--cms-21540
 *********************/
+
+$headerheight: 4em;
+$footerheight:  4em;
 
 $grid-columns: 12;
 $grid-max-width: 100%;

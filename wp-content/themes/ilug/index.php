@@ -74,3 +74,34 @@ get_sidebar(); ?>
 </div><!-- #main -->
 		
 <?php get_footer(); ?>
+
+<style>
+	#global-footer:hover	{
+		background: rgba(255,255,255,0.0);
+		color: #000;
+	}
+
+	#global-footer:hover a {
+		color: #000;
+		text-decoration: underline;
+		text-shadow: #fff 0 0 0;
+	}
+
+	#global-footer a:hover {
+		color: #000;
+		text-decoration: none;
+		background-color: #fff;
+		text-shadow: #fff 0 0 0;
+	}
+
+	#global-footer p	{ 
+		margin-bottom: 10px;
+		margin-top: 0;
+		padding: 0;
+		line-height: 12px;
+	}
+
+	#global-footer p:last-child	{ 
+		margin-bottom: 0;
+	}
+</style>

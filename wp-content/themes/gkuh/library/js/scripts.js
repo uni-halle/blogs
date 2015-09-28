@@ -115,15 +115,15 @@ function loadGravatars() {
 */
 
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     
     // Mobile Dropdown Navigation
     
     // If the menu is displayed on a mobile device
-    if( viewport.width <= 500 ) {
+    if( viewport.width <= 700 ) {
          console.log('mobile');
-        //only if the click or tap is on a top-level menu entry that has a submenu - but not the submenu link itself (because obviously we need those links to work)
-        $("#menu-top > .menu-item-has-children > a").click(function(evt){
+        //select only top level menu links with a sub-menu
+        $(".top-nav > li.menu-item-has-children > a").click(function (evt) {
             //prevent only that top level link from being loaded 
             evt.preventDefault();
             //and add or remove the class "toggled" to the top-level li 

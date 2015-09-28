@@ -27,14 +27,20 @@ them in here, they won't work.
 NAVIGATION STYLES
 *********************/
 
-.nav {}
+.nav {
+    ul li a {
+    
+    font-size: 1rem;}
+    
+}
 
 	/* .menu is clearfixed inside mixins.scss */
 	.menu {
+        
 		ul {
 			li {
 				a {
-
+                    
 					/*
 					you can use hover styles here even though this size
 					has the possibility of being a mobile device.
@@ -104,6 +110,24 @@ POSTS & CONTENT STYLES
 /*********************
 FOOTER STYLES
 *********************/
+
+$centerwidth: 30%;
+$centerelement: 30%;
+
+.fnavcenter {
+    @include flex(1 0 $centerwidth); }
+
+.statuscow {
+    @include flex(1 1 $centerelement);
+    width: $centerelement * 1.1;
+}
+
+
+.tricontainer {
+    @include flex(1 1 $centerelement);
+    width: $centerelement;
+}
+
 
 /*
 check your menus here. do they look good?

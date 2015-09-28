@@ -12,3 +12,8 @@ be seen on the Desktop.
 .wrap {
   width: 1040px;
 }
+
+$centerwidth: 15%;
+
+.fnavcenter {
+    @include flex(1 0 $centerwidth); }

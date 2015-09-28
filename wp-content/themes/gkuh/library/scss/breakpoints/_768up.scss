@@ -40,85 +40,53 @@ NAVIGATION STYLES
 *********************/
 
 .nav {
-	border: 0;
+    
 	ul {
-		background:$black;
-		margin-top:0;
 	}
-	li {
-		float: left;
-		position: relative;
-
-		a {
-			border-bottom: 0;
-
-			/*
-			you can use hover styles here even though this size
-			has the possibility of being a mobile device.
-			*/
-			&:hover, &:focus {
-				color: $white;
-				text-decoration: underline;
-			}
-		}
+    
+	li {        
+        /* You can use :hover and :focus here */
+        &:hover, &:focus {
+            background-color: $navactive; 
+            
+            a { 
+            color: $navtextactive;
+            }
+        }
 
 		&:first-child {}
 		&:last-child {}
-
-		/*
-		plan your menus and drop-downs wisely.
-		*/
+          
+    	/* Sub-menu */
 		ul.sub-menu,
 		ul.children {
-			margin-top: 0;
-			border: 1px solid #ccc;
-			border-top: 0;
-			position: absolute;
-			visibility: hidden;
-			z-index: 8999;
+       
 
 			li {
+                
+                &:hover, &:focus {
+                    background-color: $navactive; 
+                    
+                    a {
+                        color: $navtextactive;
+                    }
+                }
 
-				a {
-					padding-left: 10px;
-					border-right: 0;
-					display: block;
-					width: 180px;
-					border-bottom: 1px solid #ccc;
-
-					&:hover,
-					&:focus {}
-
-					&:link {}
-				}
+				
 
 				&:first-child {}
 
-				&:last-child {
-
-					a {
-						border-bottom: 0;
-					}
-				}
-
-				/*
-				if you need to go deeper, go nuts
-				just remember deeper menus suck
-				for usability. k, bai.
-				*/
-				ul {
-					top:0;
-					left:100%;
-				}
-			}
+				&:last-child {}
 
 			/* highlight sub-menu current page */
 			li.current-menu-item,
 			li.current_page_item,
 			li.current_page_ancestor {
-				a {}
-			}
-		}
+				a {
+                    &:hover, &:focus {
+			         }
+                }
+			} /* end li.current_ */
 
 		/* showing sub-menus */
 		&:hover > ul {
@@ -126,7 +94,11 @@ NAVIGATION STYLES
 			visibility:visible;
 		}
 
-	} /* end .menu ul li */
+	} /* end sub-menu li */
+            
+             }
+        
+    } /* end .nav ul li*/
 
 	/* highlight current page */
 	li.current-menu-item,
@@ -269,6 +241,64 @@ you'll probably need to do quite a bit
 of overriding here if you styled them for
 mobile. Make sure to double check these!
 */
+
+/* set new height and call it at least once */
+$footerheight:  6em;
+
+/* show breadcrumbs on larger devices */
+.breadcrumbs {
+    display: block;
+    background-color: $light-gray;
+    color: $breadcrumb;
+    font-size: 0.8em;
+    font-weight: 500;
+    z-index: 99999999999;
+    height: $footerheight / 4;
+    line-height: $footerheight / 4;
+    
+    a {
+        color: $breadcrumb;
+    }
+}
+
+.breadcrumbs span[typeof="v:Breadcrumb"]:last-child span[property="v:title"],
+.breadcrumbs a[property="v:title"] {
+    display: inline-block;
+    //padding: 0;
+    //margin-top: -3px;
+    vertical-align: middle;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    //color: $gkuh;
+    
+}
+
+.breadcrumbs span[typeof="v:Breadcrumb"]:last-child span[property="v:title"] {
+color: $gkuh;
+}
+
+
+
+
+.footer {
+    height: $footerheight;
+}
+
+#inner-footer {
+    //background-color: $dark-gray;
+	color: $light-gray;
+    width: 100%;
+    //z-index: 999;
+    //height: 100%;
+}
+
+$centerwidth: 20%;
+
+.fnavcenter {
+    @include flex(1 0 $centerwidth); }
+
 .footer-links {
 	ul {
 		li {

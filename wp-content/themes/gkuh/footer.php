@@ -1,23 +1,22 @@
 			<footer class="footer" role="navigation" itemscope itemtype="http://schema.org/WPFooter">
+                
+                
+                <div class="breadcrumbs row" xmlns:v="http://rdf.data-vocabulary.org/#">
+                    <div class="col span_1">&nbsp; </div>
+                    <div class="col span_10">
+    <?php if(function_exists('bcn_display'))
+    {
+        bcn_display();
+    }?>
+                        </div>
+                    <div class="col span_1">&nbsp; </div>
+</div>
 
-				<div id="inner-footer" class="wrap cf">
-
-					<nav role="navigation">
-						<?php wp_nav_menu(array(
-    					'container' => '',                           // enter '' to remove nav container (just make sure .footer-links in _base.scss isn't wrapping)
-    					'container_class' => 'footer-links cf',         // class of container (should you choose to use it)
-    					'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
-    					'menu_class' => 'nav footer-nav cf',            // adding custom nav class
-    					'theme_location' => 'footer-links',             // where it's located in the theme
-    					'before' => '',                                 // before the menu
-    					'after' => '',                                  // after the menu
-    					'link_before' => '',                            // before each link
-    					'link_after' => '',                             // after each link
-    					'depth' => 0,                                   // limit the depth of the nav
-    					'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
-						)); ?>
-					</nav>
-
+				<div id="inner-footer" class="row">
+                    
+ <div class="col span_1">&nbsp; </div>
+					<nav role="navigation" class="col span_10"> 
+					
 <!-- Previous and Next Page Functionality -->
                     
                     <?php
@@ -50,11 +49,11 @@ $nextID = $pages[$current+1];
 </a></div>
         
     <div class="statuscow">
-        <span class="tempcircle">
+
             <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve" enable-background="new 0 0 50 50">
                 <circle cx="25" cy="25" r="20" stroke="grey" stroke-width="8" fill="none" />
             </svg>
-        </span>
+
     </div>
         
         <div class="tricontainer"><a href="<?php echo get_permalink($nextID); ?>" class="nextbtn" title="Zur nächsten Seite: <?php echo get_the_title($nextID); ?>">
@@ -70,9 +69,13 @@ $nextID = $pages[$current+1];
  title="Zur nächsten Seite: <?php echo get_the_title($nextID); ?>"><?php echo get_the_title($nextID); ?></a>
 </div>
     
-</div><!-- .navigation -->
+</div>
+                        
+                    </nav>
+                    
+                     <div class="col span_1">&nbsp; </div>
 
-				</div>
+				</div> <!-- end of #inner-footer -->
                 
                 
 
@@ -84,6 +87,8 @@ $nextID = $pages[$current+1];
 
 		<?php wp_footer(); ?>
 
+<!-- only for development. can be removed along with the file-->
+<script src="library/js/gridpak.js"></script>
 
 	</body>
 

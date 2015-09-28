@@ -9,6 +9,8 @@ $id = 188;
 $p = get_page($id);
 echo apply_filters('the_content', $p->post_content);
 ?>
+<a href="http://www.plandelta.de" target="_blank">Webdesign: Plandelta.de</a>
+<p>Eine Seite von <a href="https://blogs.urz.uni-halle.de/">Blogs@MLU</a>, dem Blog-Dienst des <a href="http://itz.uni-halle.de/">IT-Servicezentrums</a></p>
 
 	</section>
     <ul>

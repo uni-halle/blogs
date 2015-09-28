@@ -16,7 +16,7 @@
 
 		
 		Copyright © <?php echo date(Y); ?> ILUG 
-		<span class="footer_menu"><a href="http://www.ilug.uni-halle.de/wordpress/institut/kontakt-anfahrt/">Kontakt</a> | <a href="http://www.ilug.uni-halle.de/wordpress/impressum/">Impressum</a></span>
+		<span class="footer_menu"><a href="http://www.ilug.uni-halle.de/institut/kontakt-anfahrt/">Kontakt</a> | <a href="http://www.ilug.uni-halle.de/wordpress/impressum/">Impressum</a></span>
 
 
 	</footer>

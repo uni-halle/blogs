@@ -8,21 +8,25 @@
  * @subpackage Starkers
  * @since Starkers HTML5 3.0
  */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+?>
+<!DOCTYPE html>
+<html <?php language_attributes();?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<title><?php
- 
-    global $page, $paged;
+<title>
+<?php
+	global $page, $paged;
 	
 	if ( is_home() || is_front_page() ) {
 		echo "ILUG - Institut für Leistungsdiagnostik und Gesundheitsförderung";
 	} else {
-		echo qtrans_use($q_config['language'], $post->post_title, true) . " - ";
+			// @todo qtranslate-x verwenden
+			// echo qtrans_use($q_config['language'], $post->post_title, true) . " - ";
 	
 		// wp_title( '|', true, 'right' );
  
+		echo "b bloginfo ";
+
 		bloginfo( 'name' );	
  
 		$site_description = get_bloginfo( 'description', 'display' );

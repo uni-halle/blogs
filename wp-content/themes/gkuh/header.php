@@ -79,5 +79,7 @@
     </div>
 
 </div>
+                
+                <div class="col span_1">&nbsp; </div>
 
 </header>

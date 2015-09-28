@@ -9,3 +9,7 @@ on larger screens.
 
 ******************************************************************/
 
+$centerwidth: 15%;
+
+.fnavcenter {
+    @include flex(1 0 $centerwidth); }
