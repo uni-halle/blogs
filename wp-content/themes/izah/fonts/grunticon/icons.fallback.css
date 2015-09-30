@@ -1,0 +1,35 @@
+
+.icon-contact {
+	background-image: url('png/icon-contact.png');
+	background-repeat: no-repeat;
+}
+
+.icon-down {
+	background-image: url('png/icon-down.png');
+	background-repeat: no-repeat;
+}
+
+.icon-fontsize {
+	background-image: url('png/icon-fontsize.png');
+	background-repeat: no-repeat;
+}
+
+.icon-link {
+	background-image: url('png/icon-link.png');
+	background-repeat: no-repeat;
+}
+
+.icon-login {
+	background-image: url('png/icon-login.png');
+	background-repeat: no-repeat;
+}
+
+.icon-search {
+	background-image: url('png/icon-search.png');
+	background-repeat: no-repeat;
+}
+
+.icon-up {
+	background-image: url('png/icon-up.png');
+	background-repeat: no-repeat;
+}
