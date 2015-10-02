@@ -1,5 +1,11 @@
 === changelog ===
 
+= (9/20/2015) - 1.3.14 =
+* Improve CSS dealing with mobile search icon
+* Compress add-on icons to reduce file size
+* Removed disable mobile functions from core theme. Use "Generate Disable Mobile" plugin.
+* Russian translation updated
+
 = (9/10/2015) - 1.3.13 =
 * Adjust main title line height on mobile
 * Improve navigation search when navigation is in a sidebar

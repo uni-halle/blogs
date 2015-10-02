@@ -294,12 +294,9 @@ if ( ! class_exists( 'TC_customize' ) ) :
           //all customizr theme options start by "tc_" by convention
           //=> footer customizer addon starts by fc_
           //=> grid customizer addon starts by gc_
+          //When do we add a prefix ?
           $add_prefix = false;
-          if ( 'tc_' === substr( $key, 0, 3 ) )
-            $add_prefix = true;
-          if ( 'gc_' === substr( $key, 0, 3 ) )
-            $add_prefix = true;
-          if ( 'fc_' === substr( $key, 0, 3 ) )
+          if ( TC_utils::$inst -> tc_is_customizr_option( $key ) )
             $add_prefix = true;
           $_opt_name = $add_prefix ? "{$tc_option_group}[{$key}]" : $key;
 
@@ -380,7 +377,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
 			wp_localize_script(
 		        'tc-customizer-preview',
 		        'TCPreviewParams',
-		        apply_filters('tc_js_customizer_control_params' ,
+		        apply_filters('tc_js_customizer_preview_params' ,
 			        array(
 			        	'themeFolder' 		=> get_template_directory_uri(),
                 //can be hacked to override the preview params when a custom skin is used
@@ -459,7 +456,9 @@ if ( ! class_exists( 'TC_customize' ) ) :
             'themeName'     => TC___::$theme_name,
             'HideDonate'    => $this -> tc_get_hide_donate_status(),
             'ShowCTA'       => ( true == TC_utils::$inst->tc_opt('tc_hide_donate') && ! get_transient ('tc_cta') ) ? true : false,
+            'defaultSliderHeight' => 500,//500px, @todo make sure we can hard code it here
             'translatedStrings'    => array(
+              'postSliderNote' => __( "This option generates a home page slider based on your last posts, starting from the most recent or the featured (sticky) post(s) if any.", "customizr" ),
               'faviconNote' => __( "Your favicon is currently handled with an old method and will not be properly displayed on all devices. You might consider to re-upload your favicon with the new control below." , 'customizr')
             )
 	        )
@@ -557,10 +556,9 @@ if ( ! class_exists( 'TC_customize' ) ) :
       <script type="text/template" id="main_cta">
         <div class="tc-cta tc-cta-wrap">
           <?php
-            printf('<span class="tc-notice">%1$s</span><a class="tc-cta-btn" href="%2$s" title="%3$s" target="_blank">%3$s &raquo;</a>',
-              __( "Need more customizations options and premium support ?" , 'customizr' ),
+            printf('<a class="tc-cta-btn" href="%1$s" title="%2$s" target="_blank">%2$s &raquo;</a>',
               sprintf('%sextension/customizr-pro/', TC_WEBSITE ),
-              __( "Get Customizr Pro" , 'customizr' )
+              __( "Upgrade to Customizr Pro" , 'customizr' )
             );
           ?>
         </div>
@@ -571,7 +569,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
             printf('<span class="tc-notice">%1$s</span><a class="tc-cta-btn" href="%2$s" title="%3$s" target="_blank">%3$s &raquo;</a>',
               __( "Need more control on your fonts ? Style any text in live preview ( size, color, font family, effect, ...) with Customizr Pro." , 'customizr' ),
               sprintf('%sextension/customizr-pro/', TC_WEBSITE ),
-              __( "Get Customizr Pro" , 'customizr' )
+              __( "Upgrade to Customizr Pro" , 'customizr' )
             );
           ?>
         </div>
@@ -582,7 +580,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
             printf('<span class="tc-notice">%1$s</span><a class="tc-cta-btn" href="%2$s" title="%3$s" target="_blank">%3$s &raquo;</a>',
               __( "Add unlimited featured pages with Customizr Pro." , 'customizr' ),
               sprintf('%sextension/customizr-pro/', TC_WEBSITE ),
-              __( "Get Customizr Pro" , 'customizr' )
+              __( "Upgrade to Customizr Pro" , 'customizr' )
             );
           ?>
         </div>
@@ -596,7 +594,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
                sprintf('<a href="%1$s" class="tc-notice-inline-link" title="%2$s" target="_blank">%2$s<span class="tc-notice-ext-icon dashicons dashicons-external"></span></a>' , esc_url('demo.presscustomizr.com/?design=demo_grid_customizer'), __("Try it in the demo" , "customizr" )
               ),
               sprintf('%sextension/customizr-pro/', TC_WEBSITE ),
-              __( "Get Customizr Pro" , 'customizr' )
+              __( "Upgrade to Customizr Pro" , 'customizr' )
             );
           ?>
         </div>
@@ -610,7 +608,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
               sprintf('<a href="%1$s" class="tc-notice-inline-link" title="%2$s" target="_blank">%2$s<span class="tc-notice-ext-icon dashicons dashicons-external"></span></a>' , esc_url('demo.presscustomizr.com/?design=nav'), __("Side menu animation demo" , "customizr" )
               ),
               sprintf('%sextension/customizr-pro/', TC_WEBSITE ),
-              __( "Get Customizr Pro" , 'customizr' )
+              __( "Upgrade to Customizr Pro" , 'customizr' )
             );
           ?>
         </div>
@@ -622,7 +620,7 @@ if ( ! class_exists( 'TC_customize' ) ) :
             printf('<span class="tc-notice">%1$s</span><a class="tc-cta-btn" href="%2$s" title="%3$s" target="_blank">%3$s &raquo;</a>',
               __( "Customize your footer credits with Customizr Pro." , 'customizr' ),
               sprintf('%sextension/customizr-pro/', TC_WEBSITE ),
-              __( "Get Customizr Pro" , 'customizr' )
+              __( "Upgrade to Customizr Pro" , 'customizr' )
             );
           ?>
         </div>

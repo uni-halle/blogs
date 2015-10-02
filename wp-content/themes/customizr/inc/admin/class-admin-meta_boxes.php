@@ -640,14 +640,14 @@ if ( ! class_exists( 'TC_meta_boxes' ) ) :
           if ( $slider_check_value == true )  {
              ?>
             <div class="meta-box-item-title">
-                <h4><?php _e( 'Title text (80 car. max length)' , 'customizr' ); ?></h4>
+                <h4><?php _e( 'Title text (80 char. max length)' , 'customizr' ); ?></h4>
             </div>
             <div class="meta-box-item-content">
                 <input class="widefat" name="<?php echo esc_attr( $title_id); ?>" id="<?php echo esc_attr( $title_id); ?>" value="<?php echo esc_attr( $title_value); ?>" style="width:50%">
             </div>
 
             <div class="meta-box-item-title">
-                <h4><?php _e( 'Description text (below the title, 250 car. max length)' , 'customizr' ); ?></h4>
+                <h4><?php _e( 'Description text (below the title, 250 char. max length)' , 'customizr' ); ?></h4>
             </div>
             <div class="meta-box-item-content">
                 <textarea name="<?php echo esc_attr( $text_id); ?>" id="<?php echo esc_attr( $text_id); ?>" style="width:50%"><?php echo esc_attr( $text_value); ?></textarea>
@@ -662,7 +662,7 @@ if ( ! class_exists( 'TC_meta_boxes' ) ) :
             </div>
 
              <div class="meta-box-item-title">
-                <h4><?php _e( 'Button text (80 car. max length)' , 'customizr' ); ?></h4>
+                <h4><?php _e( 'Button text (80 char. max length)' , 'customizr' ); ?></h4>
             </div>
             <div class="meta-box-item-content">
                 <input class="widefat" name="<?php echo esc_attr( $button_id); ?>" id="<?php echo esc_attr( $button_id); ?>" value="<?php echo esc_attr( $button_value); ?>" style="width:50%">
@@ -972,6 +972,16 @@ if ( ! class_exists( 'TC_meta_boxes' ) ) :
                       }//end foreach
                    echo '</tbody></table><br/>';
                    ?>
+                   <div class="tc-add-slide-notice">
+                      <?php
+                        printf('<p>%1$s</p><p>%2$s <a href="%3$s" title="%4$s" target="_blank">%4$s &raquo;</a>.</p>',
+                          __('To add another slide : navigate to your media library (click on Media), open the edit screen of an image ( or add a new image ), and add it to your desired slider by using the dedicated option block at the bottom of the page.' , 'customizr'),
+                          __('For more informations about sliders, check the documentation page :' , 'customizr'),
+                          esc_url('http://docs.presscustomizr.com/search?query=slider'),
+                          __('Slider documentation' , 'customizr')
+                        );
+                      ?>
+                   </div>
               </div><!-- #tc_slides_table -->
          <?php endif; // empty( $current_post_slides? ?>
         <?php

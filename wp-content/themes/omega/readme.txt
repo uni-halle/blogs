@@ -55,8 +55,13 @@ TinyNav, Copyright (c) 2011-2012 Viljami Salminen.
 TinyNav is licensed under the MIT license
 Source: http://tinynav.viljamis.com
 
+Baseline Reset (normalize.css 2.1.2) is a project by Nicolas Gallagher, co-created with Jonathan Neal, is licensed under the MIT license
+
 Changelog
 ---------
+1.2.5   2015-9-26
+ - Phasing Out Favicon Support
+
 1.2.4   2015-8-26
 - update language
 - clean up media library and post format

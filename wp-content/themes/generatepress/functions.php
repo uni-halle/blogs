@@ -5,7 +5,7 @@
  * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.3.13');
+define( 'GENERATE_VERSION', '1.3.14');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -472,52 +472,12 @@ function generate_base_css()
 
 /** 
  * Add viewport to wp_head
- * Decide whether mobile viewport should be added or fixed width viewport
  * @since 1.1.0
  */
 add_action('wp_head','generate_add_viewport');
 function generate_add_viewport()
 {
-	$generate_settings = wp_parse_args( 
-		get_option( 'generate_settings', array() ), 
-		generate_get_defaults() 
-	);
-	
-	if ( !defined( 'GENERATE_DISABLE_MOBILE' ) ) :
-		echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
-	else :
-		echo '<meta name="viewport" content="width=' . $generate_settings['container_width'] . 'px">';
-	endif;
-}
-
-/** 
- * Destroy mobile responsive functionality
- * Only run if GENERATE_DISABLE_MOBILE constant is defined
- * @since 1.1.0
- */
-add_action( 'wp_enqueue_scripts', 'generate_dequeue_mobile_scripts', 100 );
-function generate_dequeue_mobile_scripts() {
-
-	if ( !defined( 'GENERATE_DISABLE_MOBILE' ) )
-		return;
-		
-	$generate_settings = wp_parse_args( 
-		get_option( 'generate_settings', array() ), 
-		generate_get_defaults() 
-	);
-
-	// Remove mobile stylesheets and scripts
-	wp_dequeue_style( 'generate-mobile-style' );
-	wp_dequeue_style( 'generate-style-grid' );
-	wp_dequeue_script( 'generate-navigation' );
-	
-	// Add in mobile grid (no min-width on line 100)
-	wp_enqueue_style( 'generate-style-grid-no-mobile', get_template_directory_uri() . '/css/unsemantic-grid-no-mobile.css', false, GENERATE_VERSION, 'all' );
-  
-   // Add necessary styles to kill mobile resposive features
-	$styles = 'body .grid-container {width:' . $generate_settings['container_width'] . 'px;max-width:' . $generate_settings['container_width'] . 'px}';
-	$styles .= '.menu-toggle {display:none;}';
-	wp_add_inline_style( 'generate-style', $styles );
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 }
 
 /** 

@@ -45,7 +45,7 @@ function omega_link_pingback() {
 function omega_wp_title( $title, $separator, $seplocation ) {
 
 	if ( is_front_page() )
-		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
+		$doctitle = get_bloginfo( 'name' ) . ' ' . $separator . ' ' . get_bloginfo( 'description' );
 
 	elseif ( is_home() || is_singular() )
 		$doctitle = single_post_title( '', false );

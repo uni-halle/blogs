@@ -102,18 +102,12 @@
 	}
 	
 	.main-navigation .menu li.search-item {
-		position: absolute;
-		top: 0;
-		right: 0;
+		display: none;
 	}
 	
 	li.search-item a {
 		padding-left: 20px;
 		padding-right: 20px;
-	}
-	
-	.main-navigation.toggled .main-nav .search-item {
-		display: none;
 	}
 	
 	.site-main {

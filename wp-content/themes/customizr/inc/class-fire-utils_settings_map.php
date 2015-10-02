@@ -865,7 +865,74 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'choices'     => ( true == $get_default ) ? null : $this -> tc_slider_choices(),
                                 'priority'    => 20
               ),
+              //posts slider
+              'tc_posts_slider_number' => array(
+                                'default'     => 1 ,
+                                'control'     => 'TC_controls',
+                                'label'       => __('Number of posts to display', 'customizr'),
+                                'section'     => 'frontpage_sec' ,
+                                'type'        => 'number',
+                                'priority'    => 22,
+                                'notice'      => __( "Only the posts with a featured image or at least an image inside their content will qualify for the slider. The number of post slides displayed won't exceed the number of available posts in your website.", 'customizr' )
+              ),
+              'tc_posts_slider_type' => array(
+                                'default'     => 'all',
+                                'control'     => 'TC_controls',
+                                'label'       => __( 'Select which kind of posts you want to display' , 'customizr' ),
+                                'section'     => 'frontpage_sec' ,
+                                'type'        => 'select' ,
+                                'choices'     => array(
+                                    'all'        => __('All posts', 'customizr' ),
+                                    'sticky'     => __('Only the sticky posts', 'customizr' ),
+                                    'not_sticky' => __('All posts excluded the sticky ones', 'customizr' )
+                                ),
+                                'priority'    => 23,
+                                'notice'      => sprintf('%1$s <a href="https://codex.wordpress.org/Sticky_Posts" target="_blank">%2$s</a>',
+                                    __( 'Choosing "All posts" you will display all your posts preceded by the sticky posts. You can also choose to display only the sticky posts, or to exclude them. If you\'re not sure how to set a sticky post, check', 'customizr' ),
+                                    __('the WordPress documentation.', 'customizr' )
+                                )
 
+              ),
+              'tc_posts_slider_title' => array(
+                                'default'     => 1,
+                                'control'     => 'TC_controls',
+                                'label'       => __( 'Display the title' , 'customizr' ),
+                                'section'     => 'frontpage_sec' ,
+                                'type'        => 'checkbox' ,
+                                'priority'    => 24,
+                                'notice'      => __( 'The title will be limited to 80 chars max', 'customizr' ),
+              ),
+              'tc_posts_slider_text' => array(
+                                'default'     => 1,
+                                'control'     => 'TC_controls',
+                                'label'       => __( 'Display the excerpt' , 'customizr' ),
+                                'section'     => 'frontpage_sec' ,
+                                'type'        => 'checkbox' ,
+                                'priority'    => 25,
+                                'notice'      => __( 'The excerpt will be limited to 80 chars max', 'customizr' ),
+              ),
+              'tc_posts_slider_link' => array(
+                                'default'     => 'cta',
+                                'control'     => 'TC_controls',
+                                'label'       => __( 'Link post with' , 'customizr' ),
+                                'section'     => 'frontpage_sec' ,
+                                'type'        => 'select' ,
+                                'choices'     => array(
+                                    'cta'        => __('Call to action button', 'customizr' ),
+                                    'slide'      => __('Entire slide', 'customizr' ),
+                                    'slide_cta'  => __('Entire slide and call to action button', 'customizr' )
+                                ),
+                                'priority'    => 26,
+
+              ),
+              'tc_posts_slider_button_text' => array(
+                                'default'     => __( 'Read more &raquo;' , 'customizr' ),
+                                'label'       => __( 'Button text' , 'customizr' ),
+                                'section'     => 'frontpage_sec' ,
+                                'type'        => 'text' ,
+                                'priority'    => 28,
+                                'notice'      => __( 'The button text will be limited to 80 chars max. Leave this field empty to hide the button', 'customizr' ),
+              ),
               //select slider
               'tc_slider_width' => array(
                                 'default'       => 1,
@@ -874,6 +941,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'section'     => 'frontpage_sec' ,
                                 'type'        => 'checkbox' ,
                                 'priority'      => 30,
+                                'notice'      => __( "When checked, the front page slider occupies the full viewport's width", 'customizr' ),
               ),
 
               //Delay between each slides
@@ -916,7 +984,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'section'     => 'frontpage_sec' ,
                                 'type'        => 'checkbox' ,
                                 'priority'       => 54,
-                                'notice'    => sprintf('%1$s <a href="http://doc.presscustomizr.com/customizr/recommended-plugins/#images" target="_blank">%2$s</a>',
+                                'notice'    => sprintf('%1$s <a href="http://docs.presscustomizr.com/customizr/recommended-plugins/#images" target="_blank">%2$s</a>',
                                     __( "If this option is checked, your images will be resized with your custom height on upload. This is better for your overall loading performance." , 'customizr' ),
                                     __( "You might want to regenerate your thumbnails." , 'customizr')
                                 ),
@@ -1040,7 +1108,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'priority'       => 40,
                                 'notice'    => sprintf('<br/> %s<br/>%s',
                                     sprintf( __("The above layout options will set your layout globally for your post and pages. But you can also define the layout for each post and page individually. Learn how in the %s.", "customizr"),
-                                        sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s<span style="font-size: 17px;" class="dashicons dashicons-external"></span></a>' , esc_url('doc.presscustomizr.com/customizr/content-options/#pages-and-posts-layout'), __("Customizr theme documentation" , "customizr" )
+                                        sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s<span style="font-size: 17px;" class="dashicons dashicons-external"></span></a>' , esc_url('docs.presscustomizr.com/customizr/content-options/#pages-and-posts-layout'), __("Customizr theme documentation" , "customizr" )
                                         )
                                     ),
                                     sprintf( __("If you need to change the layout design of the front page, then open the 'Front Page' section above this one.", "customizr") )
@@ -2345,9 +2413,9 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
               'three' => __( 'Home featured page three' , 'customizr' )
         ),
         'text'    => array(
-              'one'   => __( 'Featured text one (200 car. max)' , 'customizr' ),
-              'two'   => __( 'Featured text two (200 car. max)' , 'customizr' ),
-              'three' => __( 'Featured text three (200 car. max)' , 'customizr' )
+              'one'   => __( 'Featured text one (200 char. max)' , 'customizr' ),
+              'two'   => __( 'Featured text two (200 char. max)' , 'customizr' ),
+              'three' => __( 'Featured text three (200 char. max)' , 'customizr' )
         )
       );
 
@@ -2379,7 +2447,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                       'sanitize_callback' => array( $this , 'tc_sanitize_textarea' ),
                       'transport'   => 'postMessage',
                       'control'   => 'TC_controls' ,
-                      'label'       => isset($default['text'][$id]) ? $default['text'][$id] : sprintf( __('Featured text %1$s (200 car. max)' , 'customizr' ) , $id ),
+                      'label'       => isset($default['text'][$id]) ? $default['text'][$id] : sprintf( __('Featured text %1$s (200 char. max)' , 'customizr' ) , $id ),
                       'section'     => 'frontpage_sec' ,
                       'type'        => 'textarea' ,
                       'notice'    => __( 'You need to select a page first. Leave this field empty if you want to use the page excerpt.' , 'customizr' ),
@@ -2508,7 +2576,8 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
 
       $slider_choices = array(
         0     =>  __( '&mdash; No slider &mdash;' , 'customizr' ),
-        'demo'  =>  __( '&mdash; Demo Slider &mdash;' , 'customizr' )
+        'demo'  =>  __( '&mdash; Demo Slider &mdash;' , 'customizr' ),
+        'tc_posts_slider' => __('&mdash; Auto-generated slider from your blog posts &mdash;', 'customizr')
         );
       if ( $slider_names ) {
         foreach( $slider_names as $tc_name => $slides) {
