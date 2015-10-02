@@ -63,7 +63,7 @@ msgstr "Adresse web du site"
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\" target=\"_blank\">Documentation on Upgrade Network</a>"
 msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\" target=\"_blank\">Documentation sur la mise à jour du réseau (en)</a>"
 
-#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:279
+#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:280
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\" target=\"_blank\">Documentation on Network Users</a>"
 msgstr "<a href=https://codex.wordpress.org/Network_Admin_Users_Screen\" target=\"_blank\">Documentation sur les utilisateurs du réseau</a>"
 
@@ -140,7 +140,7 @@ msgstr "Oui, supprimer ces thèmes"
 msgid "Delete Themes"
 msgstr "Supprimer les thèmes"
 
-#: wp-admin/network/users.php:117
+#: wp-admin/network/users.php:118
 msgid "Once you hit &#8220;Confirm Deletion&#8221;, these users will be permanently removed."
 msgstr "Une fois que vous aurez cliqué sur &laquo;&nbsp;Confirmer la suppression&nbsp;&raquo;, l&rsquo;utilisateur sera définitivement supprimé."
 
@@ -176,11 +176,11 @@ msgstr "Configurer les attributs du site"
 msgid "You have chosen to delete the following users from all networks and sites."
 msgstr "Vous avez choisi de supprimer les utilisateurs suivants de tous les réseaux et sites."
 
-#: wp-admin/network/users.php:115
+#: wp-admin/network/users.php:116
 msgid "Once you hit &#8220;Confirm Deletion&#8221;, the user will be permanently removed."
 msgstr "Une fois que vous aurez cliqué sur &laquo;&nbsp;Confirmer la suppression&nbsp;&raquo;, l&rsquo;utilisateur serait définitivement supprimé."
 
-#: wp-admin/network/users.php:101
+#: wp-admin/network/users.php:102
 msgid "User has no sites or content and will be deleted."
 msgstr "L'utilisateur n'a aucun site ni contenu, et sera supprimé."
 
@@ -202,7 +202,7 @@ msgstr "Confirmez cette action"
 #: wp-admin/network/site-new.php:30 wp-admin/network/site-settings.php:33
 #: wp-admin/network/site-themes.php:33 wp-admin/network/site-users.php:36
 #: wp-admin/network/sites.php:46 wp-admin/network/user-new.php:30
-#: wp-admin/network/users.php:280
+#: wp-admin/network/users.php:281
 msgid "<a href=\"https://wordpress.org/support/forum/multisite/\" target=\"_blank\">Support Forums</a>"
 msgstr "<a href=\"http://www.wordpress-fr.net/support/forum-17-support-wordpress-multisites\" target=\"_blank\">Forum d&rsquo;entraide en français</a>"
 
@@ -210,7 +210,7 @@ msgstr "<a href=\"http://www.wordpress-fr.net/support/forum-17-support-wordpress
 msgid "This email address will receive notifications. Registration and support emails will also come from this address."
 msgstr "Cette adresse de messagerie recevra des notifications. Les inscriptions et les messages d&rsquo;assistance proviendront également de cette adresse."
 
-#: wp-admin/network/users.php:270
+#: wp-admin/network/users.php:271
 msgid "Hover over any user on the list to make the edit links appear. The Edit link on the left will take you to their Edit User profile page; the Edit link on the right by any site name goes to an Edit Site screen for that site."
 msgstr "Survolez n&rsquo;importe quel des utilisateurs de la liste pour faire apparaître les liens de modification. Le lien Modifier à gauche ouvrira la page de modification du profil de l'utilisateur&nbsp;; le lien Modifier à droite de n'importe quel nom de site ouvrira l'écran de modification de ce site."
 
@@ -791,7 +791,7 @@ msgstr "Ajoutez les lignes suivantes à votre fichier <code>wp-config.php</code>
 msgid "You do not have sufficient permissions to edit this site."
 msgstr "Vous n&rsquo;avez pas les droits suffisants pour modifier ce site."
 
-#: wp-admin/network/users.php:181
+#: wp-admin/network/users.php:182
 msgid "Warning! User cannot be modified. The user %s is a network administrator."
 msgstr "Attention&nbsp;! L&rsquo;utilisateur %s ne peut être modifié car c&rsquo;est un administrateur du réseau."
 
@@ -819,11 +819,11 @@ msgstr "Les réglages de fonctionnement permettent de modifier le nom du réseau
 msgid "Upload settings control the size of the uploaded files and the amount of available upload space for each site. You can change the default value for specific sites when you edit a particular site. Allowed file types are also listed (space separated only)."
 msgstr "Les réglages d’envoi des fichiers permettent de limiter la taille des fichiers mis en ligne et l&rsquo;espace disponible pour chaque site. Vous pouvez préciser la valeur pour chaque site individuellement. Vous pouvez également préciser les types de fichiers acceptés (séparés par des espaces)."
 
-#: wp-admin/network/users.php:271
+#: wp-admin/network/users.php:272
 msgid "You can also go to the user&#8217;s profile page by clicking on the individual username."
 msgstr "Vous pouvez également aller sur la page de profil d&rsquo;un utilisateur en cliquant sur son identifiant."
 
-#: wp-admin/network/users.php:273
+#: wp-admin/network/users.php:274
 msgid "The bulk action will permanently delete selected users, or mark/unmark those selected as spam. Spam users will have posts removed and will be unable to sign up again with the same email addresses."
 msgstr "Le menu &laquo;&nbsp;Actions groupées&nbsp;&raquo; permet d&rsquo;effacer définitivement plusieurs utilisateurs d&rsquo;un coup, ou de les marquer comme sains ou indésirables. Les utilisateurs indésirables verront leurs articles supprimés, et ne pourront plus se connecter avec leur adresse de messagerie."
 
@@ -851,11 +851,11 @@ msgstr "Si l&rsquo;administrateur du réseau désactive un thème en cours d&rsq
 msgid "If a version update to core has not happened, clicking this button won&#8217;t affect anything."
 msgstr "S&rsquo;il n&rsquo;y a pas eu de mise à jour de l&rsquo;installation de WordPress récemment, cliquer sur ce bouton n&rsquo;aura aucun effet."
 
-#: wp-admin/network/users.php:269
+#: wp-admin/network/users.php:270
 msgid "This table shows all users across the network and the sites to which they are assigned."
 msgstr "Ce tableau affiche tous les utilisateurs appartenant au réseau, et les sites auxquels ils sont assignés."
 
-#: wp-admin/network/users.php:272
+#: wp-admin/network/users.php:273
 msgid "You can sort the table by clicking on any of the bold headings and switch between list and excerpt views by using the icons in the upper right."
 msgstr "Un clic sur le titre d&rsquo;une colonne permet de changer le tri du tableau. Les icônes en haut à droit permettent d&rsquo;afficher des extraits ou non."
 
@@ -863,7 +863,7 @@ msgstr "Un clic sur le titre d&rsquo;une colonne permet de changer le tri du tab
 msgid "Users who are signed up to the network without a site are added as subscribers to the main or primary dashboard site, giving them profile pages to manage their accounts. These users will only see Dashboard and My Sites in the main navigation until a site is created for them."
 msgstr "Les utilisateurs qui se sont inscrits sur le réseau sans créer de site deviennent abonnés du site d&rsquo;accueil. Celui-ci leur permet d&rsquo;accéder à leur compte. Ces utilisateurs ne voient dans la navigation principale que les options &laquo;&nbsp;Tableau de bord&nbsp;&raquo; et &laquo;&nbsp;Mes sites&nbsp;&raquo;, jusqu&rsquo;à ce qu&rsquo;un site leur soit créé."
 
-#: wp-admin/network/users.php:274
+#: wp-admin/network/users.php:275
 msgid "You can make an existing user an additional super admin by going to the Edit User profile page and checking the box to grant that privilege."
 msgstr "Vous pouvez promouvoir un utilisateur existant en super-admin en allant sur leur page de profil, et en cochant la case correspondante."
 
@@ -923,7 +923,7 @@ msgstr "Site marqué comme sain."
 msgid "Site marked as spam."
 msgstr "Site marqué comme indésirable."
 
-#: wp-admin/network/users.php:297
+#: wp-admin/network/users.php:298
 msgid "Users removed from spam."
 msgstr "Utilisateurs marqués comme sains."
 
@@ -951,11 +951,11 @@ msgstr "Site activé."
 msgid "Site deactivated."
 msgstr "Site désactivé."
 
-#: wp-admin/network/users.php:294
+#: wp-admin/network/users.php:295
 msgid "Users marked as spam."
 msgstr "Utilisateurs marqués comme indésirables."
 
-#: wp-admin/network/users.php:300
+#: wp-admin/network/users.php:301
 msgid "Users deleted."
 msgstr "Utilisateurs supprimés."
 
@@ -1173,9 +1173,9 @@ msgstr "Noms de domaines bannis"
 #: wp-admin/network/site-themes.php:64 wp-admin/network/site-users.php:57
 #: wp-admin/network/sites.php:17 wp-admin/network/sites.php:124
 #: wp-admin/network/upgrade.php:39 wp-admin/network/user-new.php:37
-#: wp-admin/network/users.php:17 wp-admin/network/users.php:134
-#: wp-admin/network/users.php:155 wp-admin/network/users.php:168
-#: wp-admin/network/users.php:217
+#: wp-admin/network/users.php:17 wp-admin/network/users.php:135
+#: wp-admin/network/users.php:156 wp-admin/network/users.php:169
+#: wp-admin/network/users.php:218
 msgid "You do not have permission to access this page."
 msgstr "Vous n&rsquo;avez pas les droits suffisants pour accéder à cette page."
 

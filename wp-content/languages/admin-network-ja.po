@@ -63,7 +63,7 @@ msgstr "サイト URL"
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\" target=\"_blank\">Documentation on Upgrade Network</a>"
 msgstr "<a href=\"http://wpdocs.sourceforge.jp/Network_Admin_Updates_Screen\" target=\"_blank\">ネットワークのアップグレードの解説</a>"
 
-#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:279
+#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:280
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\" target=\"_blank\">Documentation on Network Users</a>"
 msgstr "<a href=\"http://wpdocs.sourceforge.jp/Network_Admin_Users_Screen\" target=\"_blank\">ネットワークユーザーの解説</a>"
 
@@ -141,7 +141,7 @@ msgstr "テーマの削除"
 msgid "Select a user"
 msgstr "ユーザーを選択"
 
-#: wp-admin/network/users.php:115
+#: wp-admin/network/users.php:116
 msgid "Once you hit &#8220;Confirm Deletion&#8221;, the user will be permanently removed."
 msgstr "「削除を確認」を押すと、このユーザーは永久的に削除されます。"
 
@@ -149,7 +149,7 @@ msgstr "「削除を確認」を押すと、このユーザーは永久的に削
 msgid "Size in kilobytes"
 msgstr "サイズ (KB)"
 
-#: wp-admin/network/users.php:101
+#: wp-admin/network/users.php:102
 msgid "User has no sites or content and will be deleted."
 msgstr "サイトやコンテンツを持たないユーザーは削除されます。"
 
@@ -177,7 +177,7 @@ msgstr "新しい登録設定"
 msgid "Enable menus"
 msgstr "メニューを有効化"
 
-#: wp-admin/network/users.php:117
+#: wp-admin/network/users.php:118
 msgid "Once you hit &#8220;Confirm Deletion&#8221;, these users will be permanently removed."
 msgstr "「削除を確認」を押すと、これらのユーザーは永久的に削除されます。"
 
@@ -195,7 +195,7 @@ msgstr "%2$s にある %1$s ファイルに含まれる他の WordPress ルー�
 #: wp-admin/network/site-new.php:30 wp-admin/network/site-settings.php:33
 #: wp-admin/network/site-themes.php:33 wp-admin/network/site-users.php:36
 #: wp-admin/network/sites.php:46 wp-admin/network/user-new.php:30
-#: wp-admin/network/users.php:280
+#: wp-admin/network/users.php:281
 msgid "<a href=\"https://wordpress.org/support/forum/multisite/\" target=\"_blank\">Support Forums</a>"
 msgstr "<a href=\"http://ja.forums.wordpress.org/forum/11\" target=\"_blank\">サポートフォーラム</a>"
 
@@ -207,7 +207,7 @@ msgstr "操作を確認"
 msgid "This email address will receive notifications. Registration and support emails will also come from this address."
 msgstr "このメールアドレスで通知を受け取れます。また、登録・サポートメールもこのアドレスから届きます。"
 
-#: wp-admin/network/users.php:270
+#: wp-admin/network/users.php:271
 msgid "Hover over any user on the list to make the edit links appear. The Edit link on the left will take you to their Edit User profile page; the Edit link on the right by any site name goes to an Edit Site screen for that site."
 msgstr "リスト上のユーザーをマウスオーバーすると編集リンクが表示されます。左側の編集リンクを使ってユーザープロフィールの編集画面へ移動できます。サイト名の右側にある編集リンクからは、そのサイトの「サイト編集」画面へ移動します。"
 
@@ -788,7 +788,7 @@ msgstr "このコードを追加してブラウザーで再読み込みを行う
 msgid "You do not have sufficient permissions to edit this site."
 msgstr "このサイトを編集する十分な権限がありません。"
 
-#: wp-admin/network/users.php:181
+#: wp-admin/network/users.php:182
 msgid "Warning! User cannot be modified. The user %s is a network administrator."
 msgstr "注意: ユーザーを変更できません。ユーザー %s はネットワーク管理者です。"
 
@@ -816,11 +816,11 @@ msgstr "運用設定には、ネットワーク名と管理者メールアドレ
 msgid "Upload settings control the size of the uploaded files and the amount of available upload space for each site. You can change the default value for specific sites when you edit a particular site. Allowed file types are also listed (space separated only)."
 msgstr "アップロード設定ではアップロードされるファイルのサイズと、それぞれのサイトで利用できるアップロード容量を調整できます。特定のサイトを編集するときに、そのサイトのデフォルト値を変更できます。許可されたファイルタイプをリストに入力します (スペースで区切ります)。"
 
-#: wp-admin/network/users.php:271
+#: wp-admin/network/users.php:272
 msgid "You can also go to the user&#8217;s profile page by clicking on the individual username."
 msgstr "ユーザーの名前をクリックして、各々のユーザーのプロフィール画面にいくこともできます。"
 
-#: wp-admin/network/users.php:273
+#: wp-admin/network/users.php:274
 msgid "The bulk action will permanently delete selected users, or mark/unmark those selected as spam. Spam users will have posts removed and will be unable to sign up again with the same email addresses."
 msgstr "一括操作により、選択したユーザーを永久に削除したり、スパム判定を切り替えることができます。スパムユーザーの投稿は削除され、同じメールアドレスでは再び登録できなくなります。"
 
@@ -828,7 +828,7 @@ msgstr "一括操作により、選択したユーザーを永久に削除した
 msgid "Visit to go to the frontend site live."
 msgstr "フロントエンドのサイトライブにアクセスします。"
 
-#: wp-admin/network/users.php:269
+#: wp-admin/network/users.php:270
 msgid "This table shows all users across the network and the sites to which they are assigned."
 msgstr "このテーブルでは、ネットワーク上のすべてのユーザーと所属するサイトを表示しています。"
 
@@ -864,11 +864,11 @@ msgstr "この画面では、テーマを各サイトの「外観」パネルで
 msgid "If the network admin disables a theme that is in use, it can still remain selected on that site. If another theme is chosen, the disabled theme will not appear in the site&#8217;s Appearance > Themes screen."
 msgstr "ネットワーク管理者が利用中のテーマを停止した場合、そのテーマをサイト上で使い続けることはできます。その後に他のテーマを選ぶと、停止されたテーマはサイトの「外観 > テーマ」画面に表示されなくなります。"
 
-#: wp-admin/network/users.php:272
+#: wp-admin/network/users.php:273
 msgid "You can sort the table by clicking on any of the bold headings and switch between list and excerpt views by using the icons in the upper right."
 msgstr "太字の見出しをクリックすればテーブルを並び替えられます。右上のアイコンを使って一覧表示・抜粋表示を切り替えられます。"
 
-#: wp-admin/network/users.php:274
+#: wp-admin/network/users.php:275
 msgid "You can make an existing user an additional super admin by going to the Edit User profile page and checking the box to grant that privilege."
 msgstr "ユーザープロフィール編集画面にいき、チェックボックスにチェックして権限を昇格させることで、既存のユーザーを追加の特権管理者にすることができます。"
 
@@ -916,7 +916,7 @@ msgstr "サイトをスパムとしてマークしました。"
 msgid "Sites removed from spam."
 msgstr "サイトのスパム判定を解除しました。"
 
-#: wp-admin/network/users.php:297
+#: wp-admin/network/users.php:298
 msgid "Users removed from spam."
 msgstr "ユーザーのスパマー判定を解除しました。"
 
@@ -944,11 +944,11 @@ msgstr "サイトのアーカイブ化を解除しました。"
 msgid "Site activated."
 msgstr "サイトを有効化しました。"
 
-#: wp-admin/network/users.php:294
+#: wp-admin/network/users.php:295
 msgid "Users marked as spam."
 msgstr "ユーザーをスパマーとしてマークしました。"
 
-#: wp-admin/network/users.php:300
+#: wp-admin/network/users.php:301
 msgid "Users deleted."
 msgstr "ユーザーを削除しました。"
 
@@ -1082,9 +1082,9 @@ msgstr "サイトネットワーク管理者のメールアドレス"
 #: wp-admin/network/site-themes.php:64 wp-admin/network/site-users.php:57
 #: wp-admin/network/sites.php:17 wp-admin/network/sites.php:124
 #: wp-admin/network/upgrade.php:39 wp-admin/network/user-new.php:37
-#: wp-admin/network/users.php:17 wp-admin/network/users.php:134
-#: wp-admin/network/users.php:155 wp-admin/network/users.php:168
-#: wp-admin/network/users.php:217
+#: wp-admin/network/users.php:17 wp-admin/network/users.php:135
+#: wp-admin/network/users.php:156 wp-admin/network/users.php:169
+#: wp-admin/network/users.php:218
 msgid "You do not have permission to access this page."
 msgstr "このページへのアクセス権がありません。"
 

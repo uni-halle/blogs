@@ -4172,19 +4172,19 @@ msgid "Show Toolbar when viewing site"
 msgstr "Afficher la barre d&rsquo;outils lorsque vous visitez le site"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:197
+#: wp-admin/about.php:205
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "La <strong>version %1$s</strong> corrige %2$s bug."
 msgstr[1] "La <strong>version %1$s</strong> corrige %2$s bugs."
 
-#: wp-admin/about.php:208
+#: wp-admin/about.php:114 wp-admin/about.php:216
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Pour plus d&rsquo;informations, consultez les <a href=\"%s\">notes de publication</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:201
+#: wp-admin/about.php:209
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "La <strong>version %1$s</strong> corrige un problème de sécurité et %2$s bug."
@@ -4192,7 +4192,7 @@ msgstr[1] "La <strong>version %1$s</strong> corrige un problème de sécurité e
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:205
+#: wp-admin/about.php:112 wp-admin/about.php:213
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "La <strong>version %1$s</strong> corrige quelques problèmes de sécurité et %2$s bug."
@@ -4202,19 +4202,19 @@ msgstr[1] "La <strong>version %1$s</strong> corrige quelques problèmes de sécu
 msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner."
 msgstr "Bienvenu dans votre tableau de bord WordPress&nbsp;! Ceci est l&rsquo;écran que vous verrez lorsque vous vous connectez à votre site, et qui vous donne accès à l&rsquo;ensemble des fonctionnalités de gestion de WordPress. Vous pouvez obtenir de l&rsquo;aide dans n&rsquo;importe quel écran en cliquant sur l&rsquo;onglet « Aide » présent en haut à droite de votre navigateur."
 
-#: wp-admin/about.php:188
+#: wp-admin/about.php:196
 msgid "Maintenance Release"
 msgid_plural "Maintenance Releases"
 msgstr[0] "Mise à jour de maintenance"
 msgstr[1] "Mises à jour de maintenance"
 
-#: wp-admin/about.php:189
+#: wp-admin/about.php:197
 msgid "Security Release"
 msgid_plural "Security Releases"
 msgstr[0] "Mise à jour de sécurité"
 msgstr[1] "Mises à jour de sécurité"
 
-#: wp-admin/about.php:190
+#: wp-admin/about.php:111 wp-admin/about.php:198
 msgid "Maintenance and Security Release"
 msgid_plural "Maintenance and Security Releases"
 msgstr[0] "Mise à jour de maintenance et de sécurité"
@@ -4225,7 +4225,7 @@ msgid "What&#8217;s New"
 msgstr "Nouveautés"
 
 #. translators: 1: WordPress version number.
-#: wp-admin/about.php:193
+#: wp-admin/about.php:201
 msgid "<strong>Version %1$s</strong> addressed a security issue."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues."
 msgstr[0] "La <strong>version %1$s</strong> corrige un problème de sécurité."
@@ -4235,7 +4235,7 @@ msgstr[1] "La <strong>version %1$s</strong> corrige plusieurs problèmes de séc
 msgid "This screen allows you to choose your default permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Cet écran vous permet de choisir la structure de permalien par défaut. Vous pouvez choisir les réglages les plus courants, ou créer la vôtre."
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:181
 msgid "Return to Updates"
 msgstr "Retourner aux mises à jour"
 
@@ -4535,11 +4535,11 @@ msgstr "Il semble y avoir une inclusion directe de <code>wp-admin/includes/templ
 msgid "Welcome to WordPress %s"
 msgstr "Bienvenue dans WordPress %s"
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:181
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Retourner aux mises à jour"
 
-#: wp-admin/about.php:176
+#: wp-admin/about.php:184
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Aller sur l&rsquo;accueil"
 
@@ -4551,7 +4551,7 @@ msgstr "WordPress est créé par une équipe de personnes passionnées, réparti
 msgid "Core Developers"
 msgstr "Développeurs principaux"
 
-#: wp-admin/about.php:159
+#: wp-admin/about.php:167
 msgid "Under the Hood"
 msgstr "Sous le capot"
 
@@ -6711,7 +6711,7 @@ msgid_plural "Drop-ins <span class=\"count\">(%s)</span>"
 msgstr[0] "Drop-ins <span class=\"count\">(%s)</span>"
 msgstr[1] "Drop-ins <span class=\"count\">(%s)</span>"
 
-#: wp-admin/about.php:176
+#: wp-admin/about.php:184
 msgid "Go to Dashboard"
 msgstr "Aller sur le tableau de bord"
 

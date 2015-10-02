@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-30 13:49:18+0000\n"
+"PO-Revision-Date: 2015-09-30 16:23:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -687,11 +687,6 @@ msgstr "これらのユーザーのコンテンツをどのように処理しま
 msgid "You have specified these users for deletion:"
 msgstr "これらのユーザーを削除します:"
 
-#: wp-admin/upload.php:240
-msgid "%d media attachment permanently deleted."
-msgid_plural "%d media attachments permanently deleted."
-msgstr[0] "%d個の添付メディアが永久に削除されました。"
-
 #: wp-admin/upload.php:261
 msgid "%d media attachment restored from the trash."
 msgid_plural "%d media attachments restored from the trash."
@@ -702,10 +697,15 @@ msgid "%d media attachment moved to the trash."
 msgid_plural "%d media attachments moved to the trash."
 msgstr[0] "%d個の添付メディアがゴミ箱に移動されました。"
 
+#: wp-admin/upload.php:240
+msgid "%d media attachment permanently deleted."
+msgid_plural "%d media attachments permanently deleted."
+msgstr[0] "%d個の添付メディアを永久に削除しました。"
+
 #: wp-admin/users.php:401
 msgid "%s user deleted."
 msgid_plural "%s users deleted."
-msgstr[0] "%s人のユーザーが削除されました。"
+msgstr[0] "%s人のユーザーを削除しました。"
 
 #: wp-admin/plugins.php:299
 msgid "These plugins may be active on other sites in the network."
@@ -865,7 +865,7 @@ msgstr "「他のすべての場所でログアウト」ボタンをクリック
 
 #: wp-admin/includes/update.php:331
 msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\" class=\"update-link\">update now</a>."
-msgstr "新しいバージョンの %1$s が利用可能です。<a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">バージョン %4$s の詳細を見る</a>か、<a href=\"%5$s\" class=\"update-link\">今すぐ更新</a>ししてください。"
+msgstr "新しいバージョンの %1$s が利用可能です。<a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">バージョン %4$s の詳細を見る</a>か、<a href=\"%5$s\" class=\"update-link\">今すぐ更新</a>してください。"
 
 #: wp-admin/includes/class-wp-press-this.php:880
 msgid "Toggle add category"
@@ -1115,7 +1115,7 @@ msgctxt "Plugin Installer"
 msgid "Recommended"
 msgstr "おすすめ"
 
-#: wp-admin/includes/upgrade.php:364
+#: wp-admin/includes/upgrade.php:365
 msgid ""
 "Your new WordPress site has been successfully set up at:\n"
 "\n"
@@ -2300,10 +2300,6 @@ msgstr "このパスワードはサーバー上に保存されません。"
 msgid "Category added."
 msgstr "カテゴリーが追加されました。"
 
-#: wp-admin/edit-tags.php:271
-msgid "Category deleted."
-msgstr "カテゴリーが削除されました。"
-
 #: wp-admin/edit-tags.php:272
 msgid "Category updated."
 msgstr "カテゴリーが更新されました。"
@@ -2316,17 +2312,9 @@ msgstr "カテゴリーは追加されませんでした。"
 msgid "Category not updated."
 msgstr "カテゴリーは更新されませんでした。"
 
-#: wp-admin/edit-tags.php:275
-msgid "Categories deleted."
-msgstr "カテゴリーが削除されました。"
-
 #: wp-admin/edit-tags.php:279
 msgid "Tag added."
 msgstr "タグが追加されました。"
-
-#: wp-admin/edit-tags.php:280
-msgid "Tag deleted."
-msgstr "タグが削除されました。"
 
 #: wp-admin/edit-tags.php:281
 msgid "Tag updated."
@@ -2339,10 +2327,6 @@ msgstr "タグは追加されませんでした。"
 #: wp-admin/edit-tags.php:283
 msgid "Tag not updated."
 msgstr "タグは更新されませんでした。"
-
-#: wp-admin/edit-tags.php:284
-msgid "Tags deleted."
-msgstr "タグが削除されました。"
 
 #: wp-admin/edit.php:265
 msgid "%s page moved to the Trash."
@@ -2388,6 +2372,22 @@ msgstr[0] "%s件の投稿を更新できませんでした。他の人が編集�
 msgid "%s page not updated, somebody is editing it."
 msgid_plural "%s pages not updated, somebody is editing them."
 msgstr[0] "%s件のページを更新できませんでした。他の人が編集中です。"
+
+#: wp-admin/edit-tags.php:271
+msgid "Category deleted."
+msgstr "カテゴリーを削除しました。"
+
+#: wp-admin/edit-tags.php:280
+msgid "Tag deleted."
+msgstr "タグを削除しました。"
+
+#: wp-admin/edit-tags.php:275
+msgid "Categories deleted."
+msgstr "カテゴリーを削除しました。"
+
+#: wp-admin/edit-tags.php:284
+msgid "Tags deleted."
+msgstr "タグを削除しました。"
 
 #: wp-admin/revision.php:109
 msgid "Compare two different revisions by <strong>selecting the &#8220;Compare any two revisions&#8221; box</strong> to the side."
@@ -4133,24 +4133,24 @@ msgstr "貢献開発者"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:201
+#: wp-admin/about.php:209
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>バージョン %1$s</strong> はセキュリティ問題に対応し、%2$s個のバグを修正しました。"
 
-#: wp-admin/about.php:208
+#: wp-admin/about.php:114 wp-admin/about.php:216
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "詳しくは<a href=\"%s\">リリースノート</a>をご覧ください。"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:205
+#: wp-admin/about.php:112 wp-admin/about.php:213
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>バージョン %1$s</strong> はいくつかのセキュリティ問題に対応し、%2$s個のバグを修正しました。"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:197
+#: wp-admin/about.php:205
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>バージョン %1$s</strong> では%2$s個のバグを修正しました。"
@@ -4159,7 +4159,7 @@ msgstr[0] "<strong>バージョン %1$s</strong> では%2$s個のバグを修正
 msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner."
 msgstr "WordPress のダッシュボードへようこそ ! これはサイトにログインすると表示される画面で、ここから WordPress のすべてのサイト管理機能へアクセスできます。どの画面にいても右上のヘルプタブをクリックすればヘルプ情報を得られます。"
 
-#: wp-admin/about.php:190
+#: wp-admin/about.php:111 wp-admin/about.php:198
 msgid "Maintenance and Security Release"
 msgid_plural "Maintenance and Security Releases"
 msgstr[0] "メンテナンス & セキュリティリリース"
@@ -4168,18 +4168,18 @@ msgstr[0] "メンテナンス & セキュリティリリース"
 msgid "What&#8217;s New"
 msgstr "新着情報"
 
-#: wp-admin/about.php:189
+#: wp-admin/about.php:197
 msgid "Security Release"
 msgid_plural "Security Releases"
 msgstr[0] "セキュリティリリース"
 
-#: wp-admin/about.php:188
+#: wp-admin/about.php:196
 msgid "Maintenance Release"
 msgid_plural "Maintenance Releases"
 msgstr[0] "メンテナンスリリース"
 
 #. translators: 1: WordPress version number.
-#: wp-admin/about.php:193
+#: wp-admin/about.php:201
 msgid "<strong>Version %1$s</strong> addressed a security issue."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues."
 msgstr[0] "<strong>バージョン %1$s</strong> はセキュリティ問題に対応しました。"
@@ -4192,7 +4192,7 @@ msgstr "この画面ではデフォルトのパーマリンク構造を選択で
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "WordPress %1$s へようこそ。<a href=\"%2$s\">詳細を読む</a>。"
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:181
 msgid "Return to Updates"
 msgstr "更新ページへ戻る"
 
@@ -4488,11 +4488,11 @@ msgstr "add_meta_box() を使用するために wp-admin/includes/template.php �
 msgid "Welcome to WordPress %s"
 msgstr "WordPress %s へようこそ"
 
-#: wp-admin/about.php:176
+#: wp-admin/about.php:184
 msgid "Go to Dashboard &rarr; Home"
 msgstr "ダッシュボード &rarr; ホームへ移動"
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:181
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "ダッシュボード &rarr; 更新へ戻る"
 
@@ -4504,7 +4504,7 @@ msgstr "WordPress は、世界中の熱心な人々によって作られてい�
 msgid "Core Developers"
 msgstr "コア開発者"
 
-#: wp-admin/about.php:159
+#: wp-admin/about.php:167
 msgid "Under the Hood"
 msgstr "開発者向けの変更"
 
@@ -5261,11 +5261,11 @@ msgid "Press This is a bookmarklet that makes it easy to blog about something yo
 msgstr "Press This は、Web 上で発見したものを簡単にブログに公開できるブックマークレットです。リンクを取得するためだけに使うことも、また抜粋を投稿することもできます。Press This を使えば、ページ上の画像を選択して自分の投稿上に含めることさえも可能です。この画面上の Press This リンクをドラッグし、ブラウザーのブックマークバーに移動すれば、コンテンツを簡単に作成できるようになります。ウェブサイトを閲覧中にこのブックマークレットをクリックすると、すべてのオプションを含んだポップアップウインドウが開きます。"
 
 #. translators: Default page slug
-#: wp-admin/includes/upgrade.php:227
+#: wp-admin/includes/upgrade.php:228
 msgid "sample-page"
 msgstr "sample-page"
 
-#: wp-admin/includes/upgrade.php:225
+#: wp-admin/includes/upgrade.php:226
 msgid "Sample Page"
 msgstr "サンプルページ"
 
@@ -5680,10 +5680,6 @@ msgstr "テーマの ZIP アーカイブをパソコンにすでにダウンロ�
 msgid "<strong>Send Trackbacks</strong> - Trackbacks are a way to notify legacy blog systems that you&#8217;ve linked to them. Enter the URL(s) you want to send trackbacks. If you link to other WordPress sites they&#8217;ll be notified automatically using pingbacks, and this field is unnecessary."
 msgstr "<strong>トラックバックの送信</strong> - トラックバックは、旧式のブログシステムに対してリンクを通知する方法です。トラックバックを送りたい URL を入力してください。他の WordPress サイトにリンクをした場合は、ピンバックで自動的に通知されますのでこの欄の入力は不要です。"
 
-#: wp-admin/link-manager.php:55
-msgid "If you delete a link, it will be removed permanently, as Links do not have a Trash function yet."
-msgstr "リンクを削除すると、リンクにはゴミ箱の機能がないため、完全に削除されます。"
-
 #: wp-admin/user-new.php:179
 msgid "Contributors can write and manage their posts but not publish posts or upload media files."
 msgstr "寄稿者は、投稿の作成や自分の投稿の管理ができますが、投稿の公開やメディアファイルのアップロードはできません。"
@@ -5699,6 +5695,10 @@ msgstr "管理者は、すべての管理機能を実行できます。"
 #: wp-admin/plugin-editor.php:130
 msgid "You can use the editor to make changes to any of your plugins&#8217; individual PHP files. Be aware that if you make changes, plugins updates will overwrite your customizations."
 msgstr "エディターを使って、プラグインの個々の PHP ファイルを変更できます。なお変更をしても、プラグインを更新するとそのカスタマイズは上書きされてしまうことに注意してください。"
+
+#: wp-admin/link-manager.php:55
+msgid "If you delete a link, it will be removed permanently, as Links do not have a Trash function yet."
+msgstr "リンクにはゴミ箱の機能がないため、削除すると元に戻せません。"
 
 #: wp-admin/edit-form-advanced.php:322
 msgid "You can also create posts with the <a href=\"%s\">Press This bookmarklet</a>."
@@ -6054,7 +6054,7 @@ msgstr "インストールされているプラグインを検索"
 
 #: wp-admin/nav-menus.php:598
 msgid "Your theme supports one menu. Select which menu you would like to use."
-msgstr "ご利用中のテーマは%s個のメニューに対応しています。各位置に表示されるメニューを選んでください。"
+msgstr "ご利用中のテーマは1個のメニューに対応しています。各位置に表示されるメニューを選んでください。"
 
 #: wp-admin/nav-menus.php:19
 msgid "Your theme does not support navigation menus or widgets."
@@ -6247,7 +6247,7 @@ msgstr "このサイトに投稿または下書きを作成する権限があり
 msgid "My Site"
 msgstr "参加サイト"
 
-#: wp-admin/includes/upgrade.php:380
+#: wp-admin/includes/upgrade.php:381
 msgid "New WordPress Site"
 msgstr "新しい WordPress サイト"
 
@@ -6694,7 +6694,7 @@ msgid "Drop-ins <span class=\"count\">(%s)</span>"
 msgid_plural "Drop-ins <span class=\"count\">(%s)</span>"
 msgstr[0] "ドロップイン <span class=\"count\">(%s)</span>"
 
-#: wp-admin/about.php:176
+#: wp-admin/about.php:184
 msgid "Go to Dashboard"
 msgstr "ダッシュボードへ移動"
 

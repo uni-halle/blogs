@@ -1,14 +1,14 @@
-# Translation of Development in Japanese
-# This file is distributed under the same license as the Development package.
+# Translation of 4.3.x in Japanese
+# This file is distributed under the same license as the 4.3.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-09-03 02:18:06+0000\n"
+"PO-Revision-Date: 2015-09-16 02:31:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: GlotPress/1.0-alpha-1100\n"
-"Project-Id-Version: Development\n"
+"Project-Id-Version: 4.3.x\n"
 
 #. translators: 'rtl' or 'ltr'. This sets the text direction for WordPress.
 #: wp-includes/locale.php:185
@@ -33,7 +33,7 @@ msgstr "セクションを閉じる: %s"
 #. Asian characters), enter 'characters_excluding_spaces' or
 #. 'characters_including_spaces'. Otherwise, enter 'words'. Do not translate
 #. into your own language.
-#: wp-includes/formatting.php:2862 wp-includes/script-loader.php:409
+#: wp-includes/formatting.php:2864 wp-includes/script-loader.php:409
 msgctxt "Word count type. Do not translate!"
 msgid "words"
 msgstr "characters_including_spaces"
@@ -66,7 +66,7 @@ msgstr "パスワードを表示"
 
 #: wp-includes/class-wp-customize-nav-menus.php:330
 msgid "Menu Name"
-msgstr "メニューの名前"
+msgstr "メニュー名"
 
 #: wp-includes/media-template.php:1248
 msgid "As a browser icon"
@@ -181,7 +181,7 @@ msgstr "WordPress データベースエラー:"
 msgid "Username may not be longer than 60 characters."
 msgstr "ユーザー名は60文字以下に設定してください。"
 
-#: wp-includes/pluggable.php:1730
+#: wp-includes/pluggable.php:1740
 msgid "To set your password, visit the following address:"
 msgstr "パスワードを設定するには以下のアドレスへ移動してください。"
 
@@ -515,10 +515,6 @@ msgstr "ひとつ下へ移動"
 msgid "Customizing &#9656; %s"
 msgstr "&#9656;「%s」をカスタマイズ中"
 
-#: wp-includes/class-wp-customize-nav-menus.php:570
-msgid "New menu name"
-msgstr "新しいメニューの名前"
-
 #: wp-includes/class-wp-customize-nav-menus.php:553
 msgid "Add a Menu"
 msgstr "メニューを追加"
@@ -543,6 +539,10 @@ msgstr[0] "テーマには %s 箇所のメニュー位置があります。使�
 #: wp-includes/class-wp-customize-nav-menus.php:471
 msgid "You can also place menus in widget areas with the Custom Menu widget."
 msgstr "カスタムメニューウィジェットを使うことでウィジェットエリアにもメニューを配置することができます。"
+
+#: wp-includes/class-wp-customize-nav-menus.php:570
+msgid "New menu name"
+msgstr "新規メニュー名"
 
 #. translators: 1: item name, 2: item position, 3: parent item name
 #: wp-includes/class-wp-customize-nav-menus.php:383
@@ -744,7 +744,7 @@ msgstr "http://wpdocs.osdn.jp/Cookies"
 
 #: wp-includes/query.php:729
 msgid "https://codex.wordpress.org/Function_Reference/is_main_query"
-msgstr "http://wpdocs.sourceforge.jp/関数リファレンス/is_main_query"
+msgstr "http://wpdocs.osdn.jp/Function_Reference/is_main_query"
 
 #: wp-load.php:76
 msgid "Need more help? <a href='https://codex.wordpress.org/Editing_wp-config.php'>We got it</a>."
@@ -862,7 +862,7 @@ msgstr "更新しました。"
 msgid "Updating..."
 msgstr "更新中..."
 
-#: wp-includes/media.php:3042
+#: wp-includes/media.php:3044
 msgid "Drag and drop to reorder media files."
 msgstr "メディアファイルを並び替えるにはドラッグしてドロップしてください。"
 
@@ -1116,7 +1116,7 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "ゴミ箱へ移動"
 
-#: wp-includes/media.php:3060
+#: wp-includes/media.php:3062
 msgctxt "noun"
 msgid "Trash"
 msgstr "ゴミ箱"
@@ -1372,11 +1372,11 @@ msgstr "デフォルト"
 msgid "<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new."
 msgstr "<strong>お使いの WordPress は正常に更新されました。</strong>新機能を見るには再びログインしてください。"
 
-#: wp-includes/media.php:3067
+#: wp-includes/media.php:3069
 msgid "Trash Selected"
 msgstr "選択した項目を削除"
 
-#: wp-includes/media.php:3068
+#: wp-includes/media.php:3070
 msgid "Untrash Selected"
 msgstr "選択した項目をゴミ箱から戻す"
 
@@ -1384,7 +1384,7 @@ msgstr "選択した項目をゴミ箱から戻す"
 msgid "Untrash"
 msgstr "ゴミ箱から元に戻す"
 
-#: wp-includes/media.php:3064
+#: wp-includes/media.php:3066
 msgid ""
 "You are about to trash these items.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -1396,15 +1396,15 @@ msgstr ""
 msgid "Press return or enter to open this panel"
 msgstr "パネルを開くには Return または Enter キーを押してください"
 
-#: wp-includes/media.php:3066
+#: wp-includes/media.php:3068
 msgid "Cancel Selection"
 msgstr "選択をキャンセル"
 
-#: wp-includes/media.php:3069
+#: wp-includes/media.php:3071
 msgid "Delete Selected"
 msgstr "選択した項目を削除"
 
-#: wp-includes/media.php:3065
+#: wp-includes/media.php:3067
 msgid "Bulk Select"
 msgstr "一括選択"
 
@@ -1420,7 +1420,7 @@ msgstr "(ラベルなし)"
 msgid "%s: %l."
 msgstr "%s: %l。"
 
-#: wp-includes/media.php:1520
+#: wp-includes/media.php:1522
 msgid "Bitrate"
 msgstr "ビットレート"
 
@@ -1480,27 +1480,27 @@ msgstr "アップロード先:"
 msgid "View attachment page"
 msgstr "添付ファイルのページを表示"
 
-#: wp-includes/media.php:1521
+#: wp-includes/media.php:1523
 msgid "Bitrate Mode"
 msgstr "ビットレートモード"
 
-#: wp-includes/media.php:3056
+#: wp-includes/media.php:3058
 msgid "All dates"
 msgstr "すべての日付"
 
-#: wp-includes/media.php:3072
+#: wp-includes/media.php:3074
 msgid "Filter by date"
 msgstr "日付で絞り込み"
 
-#: wp-includes/media.php:3073
+#: wp-includes/media.php:3075
 msgid "Filter by type"
 msgstr "タイプで絞り込み"
 
-#: wp-includes/media.php:3074
+#: wp-includes/media.php:3076
 msgid "Search Media"
 msgstr "メディアを検索"
 
-#: wp-includes/media.php:3059
+#: wp-includes/media.php:3061
 msgid "Unattached"
 msgstr "未添付"
 
@@ -1508,7 +1508,7 @@ msgstr "未添付"
 msgid "Dimensions:"
 msgstr "サイズ:"
 
-#: wp-includes/media.php:3063
+#: wp-includes/media.php:3065
 msgid ""
 "You are about to permanently delete these items.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -1540,10 +1540,6 @@ msgstr "検索もしくは上下矢印キーを使って項目を選択してく
 msgid "Your browser does not support direct access to the clipboard. Please use keyboard shortcuts or your browser&#8217;s edit menu instead."
 msgstr "お使いのブラウザーはクリップボードへの直接的なアクセスをサポートしていません。代わりにキーボードショートカットか、お使いのブラウザーの編集メニューをお使いください。"
 
-#: wp-includes/class-wp-customize-section.php:350
-msgid "Press return or enter to open"
-msgstr "展開するには Return または Enter キーを押してください"
-
 #: wp-comments-post.php:139
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."
 msgstr "<strong>エラー</strong>: コメントを保存できませんでした。後ほどもう一度お試しください。"
@@ -1570,6 +1566,10 @@ msgstr "<strong>新規イメージ追加</strong>のクリック後に画像を�
 #: wp-includes/class-wp-customize-widgets.php:359
 msgid "Widgets are independent sections of content that can be placed into widgetized areas provided by your theme (commonly called sidebars)."
 msgstr "ウィジェットはコンテンツから独立したセクションで、テーマ内のウィジェット化されたエリア (一般的にはサイドバーと呼ばれる) に置くことができます。"
+
+#: wp-includes/class-wp-customize-section.php:350
+msgid "Press return or enter to open"
+msgstr "Return または Enter キーで展開"
 
 #: wp-includes/update.php:122 wp-includes/update.php:302
 #: wp-includes/update.php:466
@@ -1634,12 +1634,12 @@ msgstr "フォントサイズ"
 msgid "Split table cell"
 msgstr "テーブルセルを分割"
 
-#: wp-includes/media.php:1516
+#: wp-includes/media.php:1518
 msgid "Genre"
 msgstr "ジャンル"
 
 #: wp-includes/media-template.php:390 wp-includes/media-template.php:570
-#: wp-includes/media.php:1512
+#: wp-includes/media.php:1514
 msgid "Album"
 msgstr "アルバム"
 
@@ -1660,48 +1660,48 @@ msgid "Image CSS Class"
 msgstr "画像 CSS クラス"
 
 #: wp-includes/media-template.php:389 wp-includes/media-template.php:569
-#: wp-includes/media.php:1511
+#: wp-includes/media.php:1513
 msgid "Artist"
 msgstr "アーティスト"
 
-#: wp-includes/media-template.php:241 wp-includes/media.php:3110
+#: wp-includes/media-template.php:241 wp-includes/media.php:3112
 msgid "Suggested image dimensions:"
 msgstr "推奨画像サイズ:"
 
-#: wp-includes/media.php:1517
+#: wp-includes/media.php:1519
 msgid "Year"
 msgstr "年"
 
-#: wp-includes/media.php:1518
+#: wp-includes/media.php:1520
 msgctxt "video or audio"
 msgid "Length"
 msgstr "時間"
 
-#: wp-includes/media.php:3130
+#: wp-includes/media.php:3132
 msgid "Edit Audio Playlist"
 msgstr "音声プレイリストを編集"
 
-#: wp-includes/media.php:3132
+#: wp-includes/media.php:3134
 msgid "Insert audio playlist"
 msgstr "音声プレイリストを挿入"
 
-#: wp-includes/media.php:3133
+#: wp-includes/media.php:3135
 msgid "Update audio playlist"
 msgstr "音声プレイリストを更新"
 
-#: wp-includes/media.php:3134
+#: wp-includes/media.php:3136
 msgid "Add to audio playlist"
 msgstr "音声プレイリストを追加"
 
-#: wp-includes/media.php:3135
+#: wp-includes/media.php:3137
 msgid "Add to Audio Playlist"
 msgstr "音声プレイリストを追加"
 
-#: wp-includes/media.php:3131
+#: wp-includes/media.php:3133
 msgid "&#8592; Cancel Audio Playlist"
 msgstr "&#8592;  音声プレイリストをキャンセル"
 
-#: wp-includes/media.php:3111
+#: wp-includes/media.php:3113
 msgid "There has been an error cropping your image."
 msgstr "画像を切り抜く際にエラーが発生しました。"
 
@@ -1754,7 +1754,7 @@ msgstr "自動"
 msgid "Move to another area&hellip;"
 msgstr "他のエリアへ移動…"
 
-#: wp-includes/media.php:3109
+#: wp-includes/media.php:3111
 msgid "Cropping&hellip;"
 msgstr "切り抜いています…"
 
@@ -2002,7 +2002,7 @@ msgstr "ローマ数字小文字"
 msgid "Add alternate sources for maximum HTML5 playback:"
 msgstr "フルスクリーン再生のための別ソースを追加"
 
-#: wp-includes/media.php:3098
+#: wp-includes/media.php:3100
 msgid "Image Details"
 msgstr "画像詳細"
 
@@ -2010,7 +2010,7 @@ msgstr "画像詳細"
 #: wp-includes/class-wp-customize-panel.php:369
 #: wp-includes/class-wp-customize-panel.php:459
 #: wp-includes/class-wp-customize-section.php:356
-#: wp-includes/class-wp-customize-widgets.php:688 wp-includes/media.php:3036
+#: wp-includes/class-wp-customize-widgets.php:688 wp-includes/media.php:3038
 msgid "Back"
 msgstr "戻る"
 
@@ -2027,16 +2027,16 @@ msgctxt "Search widget"
 msgid "Search"
 msgstr "検索"
 
-#: wp-includes/media.php:3100 wp-includes/media.php:3117
-#: wp-includes/media.php:3123
+#: wp-includes/media.php:3102 wp-includes/media.php:3119
+#: wp-includes/media.php:3125
 msgid "Cancel Edit"
 msgstr "編集をキャンセル"
 
-#: wp-includes/media.php:3105
+#: wp-includes/media.php:3107
 msgid "Select and Crop"
 msgstr "選択して切り抜く"
 
-#: wp-includes/media.php:3106
+#: wp-includes/media.php:3108
 msgid "Skip Cropping"
 msgstr "切り抜かない"
 
@@ -2044,15 +2044,15 @@ msgstr "切り抜かない"
 msgid "Metadata"
 msgstr "メタデータ"
 
-#: wp-includes/class-wp-customize-control.php:924 wp-includes/media.php:3104
+#: wp-includes/class-wp-customize-control.php:924 wp-includes/media.php:3106
 msgid "Choose Image"
 msgstr "画像の選択"
 
-#: wp-includes/media.php:3108
+#: wp-includes/media.php:3110
 msgid "Crop your image"
 msgstr "画像を切り抜き"
 
-#: wp-includes/media.php:3107
+#: wp-includes/media.php:3109
 msgid "Crop Image"
 msgstr "画像切り抜き"
 
@@ -2076,87 +2076,87 @@ msgstr "ポスター画像"
 msgid "There are no associated subtitles."
 msgstr "関連付けられた字幕がありません。"
 
-#: wp-includes/media.php:3052
+#: wp-includes/media.php:3054
 msgid "Create a new playlist"
 msgstr "プレイリストを新規作成"
 
-#: wp-includes/media.php:3053
+#: wp-includes/media.php:3055
 msgid "Create a new video playlist"
 msgstr "動画プレイリストを新規作成"
 
-#: wp-includes/media.php:3099
+#: wp-includes/media.php:3101
 msgid "Replace Image"
 msgstr "画像を置き換える"
 
-#: wp-includes/media.php:3114
+#: wp-includes/media.php:3116
 msgid "Audio Details"
 msgstr "音声ファイル詳細"
 
-#: wp-includes/media.php:3115
+#: wp-includes/media.php:3117
 msgid "Replace Audio"
 msgstr "音声ファイルを置き換える"
 
-#: wp-includes/media.php:3116
+#: wp-includes/media.php:3118
 msgid "Add Audio Source"
 msgstr "音声のソースを追加"
 
-#: wp-includes/media.php:3120
+#: wp-includes/media.php:3122
 msgid "Video Details"
 msgstr "動画詳細"
 
-#: wp-includes/media.php:3121
+#: wp-includes/media.php:3123
 msgid "Replace Video"
 msgstr "動画を置き換える"
 
-#: wp-includes/media.php:3122
+#: wp-includes/media.php:3124
 msgid "Add Video Source"
 msgstr "動画のソースを追加"
 
-#: wp-includes/media.php:3124
+#: wp-includes/media.php:3126
 msgid "Select Poster Image"
 msgstr "ポスター画像を選択"
 
-#: wp-includes/media.php:3125
+#: wp-includes/media.php:3127
 msgid "Add Subtitles"
 msgstr "字幕を追加"
 
-#: wp-includes/media.php:3128
+#: wp-includes/media.php:3130
 msgid "Drag and drop to reorder tracks."
 msgstr "トラックの順序を変更するにはドラッグ & ドロップしてください。"
 
-#: wp-includes/media.php:3129
+#: wp-includes/media.php:3131
 msgid "Create Audio Playlist"
 msgstr "音声プレイリストを作成"
 
-#: wp-includes/media.php:3138
+#: wp-includes/media.php:3140
 msgid "Drag and drop to reorder videos."
 msgstr "動画の順序を変更するにはドラッグ & ドロップしてください。"
 
-#: wp-includes/media.php:3139
+#: wp-includes/media.php:3141
 msgid "Create Video Playlist"
 msgstr "動画プレイリストを作成"
 
-#: wp-includes/media.php:3140
+#: wp-includes/media.php:3142
 msgid "Edit Video Playlist"
 msgstr "動画プレイリストを編集"
 
-#: wp-includes/media.php:3141
+#: wp-includes/media.php:3143
 msgid "&#8592; Cancel Video Playlist"
 msgstr "&#8592; 動画プレイリストをキャンセル"
 
-#: wp-includes/media.php:3142
+#: wp-includes/media.php:3144
 msgid "Insert video playlist"
 msgstr "動画プレイリストを挿入"
 
-#: wp-includes/media.php:3143
+#: wp-includes/media.php:3145
 msgid "Update video playlist"
 msgstr "動画プレイリストを更新"
 
-#: wp-includes/media.php:3144
+#: wp-includes/media.php:3146
 msgid "Add to video playlist"
 msgstr "動画プレイリストに追加"
 
-#: wp-includes/media.php:3145
+#: wp-includes/media.php:3147
 msgid "Add to Video Playlist"
 msgstr "動画プレイリストに追加"
 
@@ -2216,17 +2216,17 @@ msgstr ""
 "<p>もしデータベースの設置方法が分からない場合は<strong>ご利用中のホスティングサービスに連絡</strong>してください。それでもうまく行かなければ、<a href=\"https://ja.forums.wordpress.org/\">WordPress サポートフォーラム</a>でヘルプを得られるかもしれません。</p>"
 
 #. translators: used to join items in a list with more than 2 items
-#: wp-includes/formatting.php:3897
+#: wp-includes/formatting.php:3899
 msgid "%s, %s"
 msgstr "%s, %s"
 
 #. translators: used to join last two items in a list with more than 2 times
-#: wp-includes/formatting.php:3899
+#: wp-includes/formatting.php:3901
 msgid "%s, and %s"
 msgstr "%s, %s"
 
 #. translators: used to join items in a list with only 2 items
-#: wp-includes/formatting.php:3901
+#: wp-includes/formatting.php:3903
 msgid "%s and %s"
 msgstr "%s, %s"
 
@@ -2329,7 +2329,7 @@ msgstr "改ページ"
 msgid "Paste as text"
 msgstr "テキストとしてペースト"
 
-#: wp-includes/media-template.php:892 wp-includes/media.php:3034
+#: wp-includes/media-template.php:892 wp-includes/media.php:3036
 msgid "Replace"
 msgstr "置換"
 
@@ -2698,17 +2698,17 @@ msgstr "ミュート切り替え"
 msgid "Unmute"
 msgstr "ミュート解除"
 
-#: wp-includes/formatting.php:2754
+#: wp-includes/formatting.php:2756
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s週"
 
-#: wp-includes/formatting.php:2759
+#: wp-includes/formatting.php:2761
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%sか月"
 
-#: wp-includes/formatting.php:2764
+#: wp-includes/formatting.php:2766
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s年"
@@ -2879,11 +2879,11 @@ msgstr "ランダム"
 #. If there is not a word you can use in your language to avoid issues with
 #. the 		   lack of plural support here, turn it into "selected: %d" then
 #. translate it.
-#: wp-includes/media.php:3041
+#: wp-includes/media.php:3043
 msgid "%d selected"
 msgstr "%d点を選択済"
 
-#: wp-includes/media.php:3081
+#: wp-includes/media.php:3083
 msgid "Insert from URL"
 msgstr "URL から挿入"
 
@@ -2892,15 +2892,15 @@ msgctxt "Links widget"
 msgid "Random"
 msgstr "ランダム"
 
-#: wp-includes/media.php:3094
+#: wp-includes/media.php:3096
 msgid "Add to Gallery"
 msgstr "ギャラリーに追加"
 
-#: wp-includes/media-template.php:1236 wp-includes/media.php:3057
+#: wp-includes/media-template.php:1236 wp-includes/media.php:3059
 msgid "No items found."
 msgstr "項目は見つかりませんでした。"
 
-#: wp-includes/media.php:3095
+#: wp-includes/media.php:3097
 msgid "Reverse order"
 msgstr "順序を逆にする"
 
@@ -2918,11 +2918,11 @@ msgid "Sorry, that file cannot be edited."
 msgstr "そのファイルは編集できません。"
 
 #: wp-includes/media-template.php:442 wp-includes/media-template.php:544
-#: wp-includes/media.php:3070
+#: wp-includes/media.php:3072
 msgid "Delete Permanently"
 msgstr "完全に削除する"
 
-#: wp-includes/media.php:3062
+#: wp-includes/media.php:3064
 msgid ""
 "You are about to permanently delete this item.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -2942,7 +2942,7 @@ msgstr "エラーを非表示にする"
 msgid "Uploading"
 msgstr "アップロード中"
 
-#: wp-includes/media.php:2556
+#: wp-includes/media.php:2558
 msgid "No editor could be selected."
 msgstr "エディターを選択できませんでした。"
 
@@ -2977,19 +2977,19 @@ msgstr "動画"
 msgid "Manage Video"
 msgstr "動画の管理"
 
-#: wp-includes/media.php:3058
+#: wp-includes/media.php:3060
 msgid "Insert into page"
 msgstr "固定ページに挿入"
 
-#: wp-includes/media.php:3061
+#: wp-includes/media.php:3063
 msgid "Uploaded to this page"
 msgstr "この固定ページへのアップロード"
 
-#: wp-includes/media.php:3055
+#: wp-includes/media.php:3057
 msgid "All media items"
 msgstr "すべてのメディア"
 
-#: wp-includes/media.php:3061
+#: wp-includes/media.php:3063
 msgid "Uploaded to this post"
 msgstr "この投稿へのアップロード"
 
@@ -2997,7 +2997,7 @@ msgstr "この投稿へのアップロード"
 msgid "Audio"
 msgstr "音声"
 
-#: wp-includes/media.php:3054
+#: wp-includes/media.php:3056
 msgid "&#8592; Return to library"
 msgstr "&#8592; ライブラリへ戻る"
 
@@ -3006,7 +3006,7 @@ msgstr "&#8592; ライブラリへ戻る"
 msgid "Custom URL"
 msgstr "カスタム URL"
 
-#: wp-includes/media-template.php:500 wp-includes/media.php:3078
+#: wp-includes/media-template.php:500 wp-includes/media.php:3080
 msgid "Attachment Details"
 msgstr "添付ファイルの詳細"
 
@@ -3020,7 +3020,7 @@ msgid "Columns"
 msgstr "カラム"
 
 #: wp-includes/media-template.php:696 wp-includes/media-template.php:771
-#: wp-includes/media-template.php:945 wp-includes/media.php:2787
+#: wp-includes/media-template.php:945 wp-includes/media.php:2789
 msgid "Large"
 msgstr "大サイズ"
 
@@ -3032,11 +3032,11 @@ msgstr "添付ファイルの表示設定"
 msgid "Gallery Settings"
 msgstr "ギャラリーの設定"
 
-#: wp-includes/media.php:3046
+#: wp-includes/media.php:3048
 msgid "Upload Images"
 msgstr "画像をアップロード"
 
-#: wp-includes/media.php:3090
+#: wp-includes/media.php:3092
 msgid "&#8592; Cancel Gallery"
 msgstr "&#8592; ギャラリーをキャンセル"
 
@@ -3044,7 +3044,7 @@ msgstr "&#8592; ギャラリーをキャンセル"
 msgid "WordPress &rsaquo; Success"
 msgstr "WordPress &rsaquo; 成功"
 
-#: wp-includes/media.php:3045
+#: wp-includes/media.php:3047
 msgid "Upload Files"
 msgstr "ファイルをアップロード"
 
@@ -3052,7 +3052,7 @@ msgstr "ファイルをアップロード"
 msgid "Drop files anywhere to upload"
 msgstr "アップロードするファイルをドロップ"
 
-#: wp-includes/media.php:3091
+#: wp-includes/media.php:3093
 msgid "Insert gallery"
 msgstr "ギャラリーを挿入"
 
@@ -3060,11 +3060,11 @@ msgstr "ギャラリーを挿入"
 msgid "Drop files to upload"
 msgstr "ファイルをドロップしてアップロード"
 
-#: wp-includes/media.php:3049
+#: wp-includes/media.php:3051
 msgid "Media Library"
 msgstr "メディアライブラリ"
 
-#: wp-includes/media.php:3088
+#: wp-includes/media.php:3090
 msgid "Create Gallery"
 msgstr "ギャラリーを作成"
 
@@ -3143,7 +3143,7 @@ msgstr "この音声の説明を書く"
 msgid "Describe this media file&hellip;"
 msgstr "このメディアの説明を書く"
 
-#: wp-includes/media.php:3092
+#: wp-includes/media.php:3094
 msgid "Update gallery"
 msgstr "ギャラリーを更新"
 
@@ -3205,19 +3205,19 @@ msgstr "添付ファイルのページを表示"
 msgid "Whoops, the provided date is invalid."
 msgstr "入力された日付は無効です。"
 
-#: wp-includes/media.php:3050
+#: wp-includes/media.php:3052
 msgid "Insert Media"
 msgstr "メディアを挿入"
 
-#: wp-includes/media.php:3051
+#: wp-includes/media.php:3053
 msgid "Create a new gallery"
 msgstr "ギャラリーを作成"
 
-#: wp-includes/media.php:3058
+#: wp-includes/media.php:3060
 msgid "Insert into post"
 msgstr "投稿に挿入"
 
-#: wp-includes/media.php:3093
+#: wp-includes/media.php:3095
 msgid "Add to gallery"
 msgstr "ギャラリーに追加"
 
@@ -3443,7 +3443,7 @@ msgstr "画像の変更"
 
 #: wp-includes/class-wp-customize-control.php:1220
 msgid "Remove image"
-msgstr "画像の削除"
+msgstr "画像を削除"
 
 #: wp-includes/class-wp-xmlrpc-server.php:4002
 msgid "Sorry, you are not allowed to edit this post type."
@@ -3486,7 +3486,7 @@ msgstr "投稿ページ"
 #: wp-includes/class-wp-customize-control.php:1754
 #: wp-includes/class-wp-customize-widgets.php:653
 #: wp-includes/class-wp-editor.php:1035 wp-includes/media-template.php:473
-#: wp-includes/media.php:3035
+#: wp-includes/media.php:3037
 msgid "Remove"
 msgstr "削除"
 
@@ -3613,7 +3613,7 @@ msgstr "キャッチフレーズ"
 
 #: wp-includes/class-wp-customize-control.php:481
 #: wp-includes/class-wp-customize-nav-menus.php:480
-#: wp-includes/default-widgets.php:1593
+#: wp-includes/default-widgets.php:1592
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; 選択 &mdash;"
 
@@ -3728,7 +3728,7 @@ msgid "F Y"
 msgstr "Y年n月"
 
 #. translators: opening curly double quote
-#: wp-includes/formatting.php:88 wp-includes/formatting.php:4148
+#: wp-includes/formatting.php:88 wp-includes/formatting.php:4150
 msgctxt "opening curly double quote"
 msgid "&#8220;"
 msgstr "&#8220;"
@@ -3896,7 +3896,7 @@ msgstr "サポートフォーラム"
 msgid "Documentation"
 msgstr "ドキュメンテーション"
 
-#: wp-includes/formatting.php:2851 wp-includes/general-template.php:2853
+#: wp-includes/formatting.php:2853 wp-includes/general-template.php:2853
 msgid "&hellip;"
 msgstr "&hellip;"
 
@@ -3956,7 +3956,7 @@ msgctxt "admin color scheme"
 msgid "Blue"
 msgstr "ブルー"
 
-#: wp-includes/formatting.php:3683
+#: wp-includes/formatting.php:3685
 msgid "The timezone you have entered is not valid. Please select a valid timezone."
 msgstr "入力されたタイムゾーンは有効ではありません。有効なタイムゾーンを選択してください。"
 
@@ -4682,7 +4682,7 @@ msgstr "新規サイト登録: %s"
 msgid "New %1$s Site: %2$s"
 msgstr "新しい %1$s のサイト: %2$s"
 
-#: wp-includes/pluggable.php:1705
+#: wp-includes/pluggable.php:1715
 msgid "New user registration on your site %s:"
 msgstr "サイト「 %s 」の新規ユーザー登録:"
 
@@ -4732,15 +4732,15 @@ msgstr "<strong>%s</strong> という名前のメニューは既に存在して�
 msgid "The given object ID is not that of a menu item."
 msgstr "指定された ID はメニュー項目のものではありません。"
 
-#: wp-includes/formatting.php:3514
+#: wp-includes/formatting.php:3516
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
 msgstr "入力されたメールアドレスの形式が間違っているようです。正しいアドレスを記入してください。"
 
-#: wp-includes/formatting.php:3615
+#: wp-includes/formatting.php:3617
 msgid "The WordPress address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "入力された WordPress のアドレスは正しい URL の形式ではないようです。正しい URL を記入してください。"
 
-#: wp-includes/formatting.php:3628
+#: wp-includes/formatting.php:3630
 msgid "The Site address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "入力されたサイトのアドレスは正しい URL の形式ではないようです。正しい URL を記入してください。"
 
@@ -4849,7 +4849,7 @@ msgstr "ナビゲーションメニュー"
 msgid "Links for %s"
 msgstr "%s へのリンク"
 
-#: wp-includes/default-widgets.php:1583
+#: wp-includes/default-widgets.php:1582
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr "メニューはまだ作成されていません。<a href=\"%s\">作成する</a>。"
 
@@ -4979,7 +4979,7 @@ msgstr "投稿 \"%s\" への新しいコメントが承認待ちです。"
 msgid "Navigation Menu"
 msgstr "ナビゲーションメニュー"
 
-#: wp-includes/default-widgets.php:1591
+#: wp-includes/default-widgets.php:1590
 msgid "Select Menu:"
 msgstr "メニューを選択:"
 
@@ -5426,17 +5426,17 @@ msgid "Protected Comments: Please enter your password to view comments."
 msgstr "コメント保護中: 表示するにはパスワードを入力してください。"
 
 #. translators: min=minute
-#: wp-includes/formatting.php:2739
+#: wp-includes/formatting.php:2741
 msgid "%s min"
 msgid_plural "%s mins"
 msgstr[0] "%s分"
 
-#: wp-includes/formatting.php:2744
+#: wp-includes/formatting.php:2746
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "%s時間"
 
-#: wp-includes/formatting.php:2749
+#: wp-includes/formatting.php:2751
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s日"
@@ -5518,7 +5518,7 @@ msgid "Page not found"
 msgstr "ページが見つかりませんでした"
 
 #. translators: 1: month name, 2: 4-digit year
-#: wp-includes/general-template.php:1475 wp-includes/media.php:2968
+#: wp-includes/general-template.php:1475 wp-includes/media.php:2970
 msgid "%1$s %2$d"
 msgstr "%2$d年%1$s"
 
@@ -5985,7 +5985,7 @@ msgstr "フルスクリーン"
 msgid "Mute"
 msgstr "ミュート"
 
-#: wp-includes/media.php:3089
+#: wp-includes/media.php:3091
 msgid "Edit Gallery"
 msgstr "ギャラリーを編集"
 
@@ -6139,12 +6139,12 @@ msgstr "承認する: %s"
 msgid "[%1$s] Please moderate: \"%2$s\""
 msgstr "[%1$s] モデレートしてください: \"%2$s\""
 
-#: wp-includes/pluggable.php:1706 wp-includes/pluggable.php:1729
+#: wp-includes/pluggable.php:1716 wp-includes/pluggable.php:1739
 #: wp-login.php:371
 msgid "Username: %s"
 msgstr "ユーザー名: %s"
 
-#: wp-includes/pluggable.php:1709
+#: wp-includes/pluggable.php:1719
 msgid "[%s] New User Registration"
 msgstr "[%s] 新規ユーザー登録"
 
@@ -6155,6 +6155,10 @@ msgstr "保護中: %s"
 #: wp-includes/post-template.php:145
 msgid "Private: %s"
 msgstr "非公開: %s"
+
+#: wp-includes/post-template.php:808
+msgid "Next page"
+msgstr "次ページへ"
 
 #: wp-includes/post-template.php:1225
 msgid "Home"
@@ -6328,10 +6332,6 @@ msgstr "一括編集から除く"
 #: wp-includes/script-loader.php:558
 msgid "Plugin Information:"
 msgstr "プラグイン情報:"
-
-#: wp-includes/script-loader.php:615
-msgid "Saving..."
-msgstr "保存しています…"
 
 #: wp-includes/script-loader.php:616
 msgid "Could not set that as the thumbnail image. Try a different attachment."
@@ -6709,14 +6709,6 @@ msgstr "操作を実行する権限がありません。"
 msgid "An unidentified error has occurred."
 msgstr "不明なエラーが発生しました。"
 
-#: wp-includes/post-template.php:809
-msgid "Previous page"
-msgstr "前のページ"
-
-#: wp-includes/post-template.php:808
-msgid "Next page"
-msgstr "次ページ"
-
 #: wp-includes/class-http.php:826 wp-includes/class-http.php:1518
 #: wp-includes/class-http.php:1557
 msgid "Too many redirects."
@@ -6787,10 +6779,6 @@ msgstr "認証メールがまだ届いていませんか ?"
 msgid "Invalid term ID"
 msgstr "無効なキーワード ID"
 
-#: wp-signup.php:453
-msgid "Next"
-msgstr "次ページへ"
-
 #: wp-includes/pluggable.php:1679
 msgid "[%s] Password Lost/Changed"
 msgstr "[%s] パスワードの失効と変更"
@@ -6799,7 +6787,7 @@ msgstr "[%s] パスワードの失効と変更"
 msgid "Password Lost and Changed for user: %s"
 msgstr "%s のこれまでのパスワードを失効し、変更しました。"
 
-#: wp-includes/pluggable.php:1735
+#: wp-includes/pluggable.php:1745
 msgid "[%s] Your username and password info"
 msgstr "[%s] ユーザー名とパスワード情報"
 
@@ -6838,6 +6826,18 @@ msgstr "不正なタクソノミーです。"
 #: wp-includes/ms-load.php:432
 msgid "What do I do now?"
 msgstr "どうしましょうか ?"
+
+#: wp-signup.php:453
+msgid "Next"
+msgstr "次へ"
+
+#: wp-includes/post-template.php:809
+msgid "Previous page"
+msgstr "前のページへ"
+
+#: wp-includes/script-loader.php:615
+msgid "Saving..."
+msgstr "保存中…"
 
 #: wp-includes/taxonomy.php:504
 msgid "Edit Category"
@@ -6916,7 +6916,7 @@ msgstr "ビジュアル"
 #: wp-includes/default-widgets.php:555 wp-includes/default-widgets.php:624
 #: wp-includes/default-widgets.php:758 wp-includes/default-widgets.php:907
 #: wp-includes/default-widgets.php:1075 wp-includes/default-widgets.php:1465
-#: wp-includes/default-widgets.php:1587
+#: wp-includes/default-widgets.php:1586
 msgid "Title:"
 msgstr "タイトル:"
 
@@ -6998,7 +6998,7 @@ msgstr "編集"
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "コメントを投稿するには<a href=\"%s\">ログイン</a>してください。"
 
-#: wp-includes/category-template.php:1305
+#: wp-includes/category-template.php:1306
 msgid "Tags: "
 msgstr "タグ: "
 
@@ -7208,7 +7208,7 @@ msgstr "カテゴリー"
 msgid "Search Categories"
 msgstr "カテゴリーを検索"
 
-#: wp-includes/class-wp-customize-widgets.php:651 wp-includes/media.php:3071
+#: wp-includes/class-wp-customize-widgets.php:651 wp-includes/media.php:3073
 msgid "Apply"
 msgstr "適用"
 
@@ -7239,7 +7239,7 @@ msgstr "メールアドレス"
 #: wp-includes/class-wp-customize-control.php:1704
 #: wp-includes/class-wp-customize-nav-menus.php:737
 #: wp-includes/class-wp-editor.php:1407 wp-includes/media-template.php:377
-#: wp-includes/media-template.php:557 wp-includes/media.php:3028
+#: wp-includes/media-template.php:557 wp-includes/media.php:3030
 msgid "URL"
 msgstr "URL"
 
@@ -7361,7 +7361,7 @@ msgid "Plugins"
 msgstr "プラグイン"
 
 #: wp-includes/class-wp-editor.php:860 wp-includes/class-wp-editor.php:1445
-#: wp-includes/media.php:3032 wp-includes/script-loader.php:380
+#: wp-includes/media.php:3034 wp-includes/script-loader.php:380
 #: wp-includes/script-loader.php:428 wp-includes/script-loader.php:491
 msgid "Cancel"
 msgstr "キャンセル"
@@ -7425,7 +7425,7 @@ msgid "Redo"
 msgstr "やり直し"
 
 #: wp-includes/media-template.php:694 wp-includes/media-template.php:769
-#: wp-includes/media-template.php:943 wp-includes/media.php:2785
+#: wp-includes/media-template.php:943 wp-includes/media.php:2787
 msgid "Thumbnail"
 msgstr "サムネイル"
 
@@ -7441,7 +7441,7 @@ msgstr "GD イメージライブラリがインストールされていません
 msgid "File &#8220;%s&#8221; is not an image."
 msgstr "&#8220;%s&#8221; は画像ファイルではありません。"
 
-#: wp-includes/media.php:3029
+#: wp-includes/media.php:3031
 msgid "Add Media"
 msgstr "メディアを追加"
 
@@ -7511,7 +7511,7 @@ msgstr "公開 (先頭に固定表示)"
 msgid "Schedule"
 msgstr "予約投稿"
 
-#: wp-includes/media.php:3033 wp-includes/script-loader.php:394
+#: wp-includes/media.php:3035 wp-includes/script-loader.php:394
 #: wp-includes/script-loader.php:501
 msgid "Update"
 msgstr "更新"
@@ -7521,7 +7521,7 @@ msgid "Add or remove tags"
 msgstr "タグの追加もしくは削除"
 
 #: wp-includes/admin-bar.php:785 wp-includes/admin-bar.php:786
-#: wp-includes/class-wp-editor.php:1420 wp-includes/media.php:3030
+#: wp-includes/class-wp-editor.php:1420 wp-includes/media.php:3032
 msgid "Search"
 msgstr "検索"
 
@@ -7551,7 +7551,7 @@ msgstr "未分類"
 msgid "Close"
 msgstr "閉じる"
 
-#: wp-includes/media.php:3031
+#: wp-includes/media.php:3033
 msgid "Select"
 msgstr "選択"
 
@@ -7563,7 +7563,7 @@ msgstr "メディアを編集"
 msgid "New Post"
 msgstr "新規投稿"
 
-#: wp-includes/media.php:2761 wp-includes/script-loader.php:396
+#: wp-includes/media.php:2763 wp-includes/script-loader.php:396
 #: wp-includes/script-loader.php:547
 msgid "(no title)"
 msgstr "(タイトルなし)"
@@ -7577,17 +7577,17 @@ msgid "Are you sure you want to do this?"
 msgstr "本当に実行していいですか ?"
 
 #: wp-includes/media-template.php:333 wp-includes/media-template.php:528
-#: wp-includes/media.php:3101
+#: wp-includes/media.php:3103
 msgid "Edit Image"
 msgstr "画像を編集"
 
 #: wp-includes/media-template.php:697 wp-includes/media-template.php:772
-#: wp-includes/media-template.php:946 wp-includes/media.php:2788
+#: wp-includes/media-template.php:946 wp-includes/media.php:2790
 msgid "Full Size"
 msgstr "フルサイズ"
 
 #: wp-includes/pluggable.php:1465 wp-includes/pluggable.php:1595
-#: wp-includes/pluggable.php:1707
+#: wp-includes/pluggable.php:1717
 msgid "E-mail: %s"
 msgstr "メールアドレス: %s"
 
@@ -7613,7 +7613,7 @@ msgid "New Page"
 msgstr "新規固定ページ"
 
 #: wp-includes/media-template.php:695 wp-includes/media-template.php:770
-#: wp-includes/media-template.php:944 wp-includes/media.php:2786
+#: wp-includes/media-template.php:944 wp-includes/media.php:2788
 msgid "Medium"
 msgstr "中"
 
@@ -7633,7 +7633,7 @@ msgstr "投稿の編集"
 msgid "Dismiss"
 msgstr "非表示にする"
 
-#: wp-includes/media.php:3075
+#: wp-includes/media.php:3077
 msgid "No media attachments found."
 msgstr "メディア添付が見つかりませんでした。"
 
