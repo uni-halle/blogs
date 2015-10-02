@@ -379,6 +379,7 @@ class ShareaholicPublic {
     }
     if (trim($summary) == NULL && (!$is_list_page || $in_loop)) {
       $summary = htmlspecialchars(strip_tags(strip_shortcodes($post->post_excerpt)), ENT_QUOTES);
+      $summary = ShareaholicUtilities::truncate_text($summary, 500);
     }
     
     $canvas = "<div class='shareaholic-canvas'

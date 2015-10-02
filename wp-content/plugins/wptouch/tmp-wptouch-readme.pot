@@ -1,0 +1,3382 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "WPtouch Mobile Plugin"
+msgstr ""
+
+#. Short description.
+msgid "Make your WordPress website mobile-friendly with just a few clicks."
+msgstr ""
+
+#. Screenshot description.
+msgid "Post listings"
+msgstr ""
+
+#. Screenshot description.
+msgid "Post listings (different options &amp; colours)"
+msgstr ""
+
+#. Screenshot description.
+msgid "Single post w/ featured image"
+msgstr ""
+
+#. Screenshot description.
+msgid "Single post w/ featured image (different options &amp; colours)"
+msgstr ""
+
+#. Screenshot description.
+msgid "Footer area on a single post w/ comments"
+msgstr ""
+
+#. Screenshot description.
+msgid "Page w/ featured image"
+msgstr ""
+
+#. Screenshot description.
+msgid "Drop-down menu showing a custom WordPress menu and child page tree navigation"
+msgstr ""
+
+#. Screenshot description.
+msgid "WPtouch admin - What’s New"
+msgstr ""
+
+#. Screenshot description.
+msgid "WPtouch admin - Core Settings"
+msgstr ""
+
+#. Screenshot description.
+msgid "WPtouch admin - Theme Branding Settings"
+msgstr ""
+
+#. Screenshot description.
+msgid "WPtouch admin - Menu Setup"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "WPtouch is a mobile plugin for WordPress that automatically adds a simple and elegant mobile theme for mobile visitors to your WordPress website. Recommended by Google, it will instantly enable a mobile-friendly version of your website that passes the Google Mobile test, and ensure your SEO rankings do not drop due to not having a mobile-friendly website. For more information about using WPtouch to achieve Google mobile-friendly status, please read our <a href=\"http://bit.ly/bnc_mobilefriendly\">comprehensive mobile-friendly guide</a>."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The administration panel allows you to customize many aspects of its appearance, and deliver a <em>fast</em>, user-friendly and stylish version of your site to your mobile visitors, without modifying <em>a single bit of code</em>.  Your regular desktop theme is left intact, and will continue to show for your non-mobile visitors."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>Go Pro for support and enhanced themes &amp; features</strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "WPtouch Pro includes a variety of enhanced themes for blogs, businesses, and WooCommerce retailers; extensions that add rich advertising options, advanced web font controls, caching, and more; and of course, top-notch one-on-one support from our professional team."
+msgstr ""
+
+#. Found in description paragraph, installation paragraph, faq paragraph.
+msgid "For more information visit <a href=\"http://www.wptouch.com/?utm_campaign=wptouch-front-readme&amp;utm_medium=web&amp;utm_source=wordpressdotorg\" title=\"WPtouch.com\">WPtouch.com</a>."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "'WPtouch' &amp; ’WPtouch Pro' are trademarks of BraveNewCode Inc."
+msgstr ""
+
+#. Found in installation header.
+msgid "WordPress 4.0+"
+msgstr ""
+
+#. Found in installation header.
+msgid "Caching Plugin Configuration"
+msgstr ""
+
+#. Found in installation header.
+msgid "User Manual"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "You can install <em>WPtouch</em> directly from the WordPress admin! Visit the <em>Plugins - &gt; Add New</em> page and search for 'WPtouch'. Click to install."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "Once you have installed and activated WPtouch, visit the admin page via the sidebar menu to customize your WPtouch installation's appearance."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "Please note that if you are using a caching plugin like W3 Total Cache or WP Super Cache, you will have to do additional configuration, otherwise you may occasionally see the mobile site in a desktop browser and the desktop site in a mobile browseru. These changes are outlined in the user manual which is accessible in the WPtouch admin."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "You can download the user manual from within the WPtouch administration panel, or <a href=\"\">download the WPtouch manual here</a>. It contains information on how to configure WPtouch.  Please note that if you are using a caching plugin, you will need to perform additional steps for WPtouch to work as expected."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Preview window not working in some cases"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with adblockers and advertising in WPtouch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Featured posts settings issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Featured posts setting hiding posts in the admin post listings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed:  Fatal error in some situations with featured posts with a call to is_main_query()"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Some themes experiencing delays with touch targets"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Posts in the featured slider did not reliably get excluded from the regular post listing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: aligncenter images exceeding 100% width"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: issues with processing desktop theme shortcodes (Pro)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Errant quotation mark in comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Mobile theme appearing when tapping link in Facebook app on iPad"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Behaviour of 'enable parent items as links' setting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Desktop theme shortcode handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed: Requirement to set WordFence cache method to PHP. Further testing suggests Falcon Engine is compatible."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Now suspend WPtouch functionality when WP Super Cache, W3 Total Cache and Wordfence are detected and throw messages about fixing them"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Unique ID for comments allowing direct linking"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Concatenated JavaScript files are automatically purged on plugin update"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Custom Landing page redirect when WPtouch is not active on the site root due to URL filtering (/ has been excluded or not expressly included)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bauhaus - An issue where Related Posts form different dates could all show the same date"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Minor display issues with RTL display in the admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated translations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Made switch link code more robust"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: URL fragment list no longer shown when URL filtering is disabled"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: When running WPML with a custom landing page, homepage link is to the page in current language"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Moved share link markup to template, which can now be overridden by themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Moved featured slider markup to template, which can now be overridden by themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Front Page Content field in Simple can now include shortcodes provided by plugins. Desktop shortcodes are not supported"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Increased the size of preview windows in the admin to 380x667 (closer to iPhone 6)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Significant update to user’s guide"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug in Bauhaus that caused off-canvas menu to slide out from left instead of right"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: New setting for themes to enable/disable page zooming"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: jQuery Enhanced - allows replacement of jQuery version and relocation to footer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Open - Setting to disable white background behind logo (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Open - Now uses concatenation for scripts, loading faster (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Settings structured as arrays were not being correctly saved when PHP's 'magic_quotes_gpc' was enabled"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Advanced Type - Font selection saving with magic_quotes_gpc enabled (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: MobileStore - An issue with checkout button with some permalink settings (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Improved German translations, comment form labels, and other style tweaks (our thanks to Boris Raczynski)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: More language translations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Infinity Cache - Fixed issue where CSS files weren’t switched to CDNs (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Infinity Cache - Replaced CDN regex code for improved performance (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: MobileStore - Improved support for WooCommerce 2.3 and higher (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Open - More robust translation of week days (no longer using WordPress's i18n date function) (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Bauhaus, Simple - Eliminated references to deprecated modules"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Language translations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: New hook to perform actions when admin settings are saved"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: MobileStore - Improved compatibility with WooCommerce Checkout Manager fields (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: In rare cases themes and extensions attempted to auto-update without a valid source URL (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue with Web App Mode persistence that stopped links from being clickable (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Minor JavaScript issue in Advanced Type which could prevent saving settings in some scenarios (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Removed jQuery 2.x setting — caused too many issues with compatibility and older plugins and themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: URL filter allows filtering of homepage using the value '/'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Advanced Type Admin js for better compatibility (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Infinity Cache: automatically flush cache when WPtouch Pro settings are updated (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Extension settings layout (Infinity Cache, Mobile Content, Responsive Images - Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Open - Adjusted menu filter to be more flexible. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Improved SEO compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Web-App Mode support for Chrome on Android (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Support for overriding admin translation when localization is selected (add define( 'WPTOUCH_ADMIN_IGNORE_LOCALIZATION', true );  to wp-config.php)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Colour picker is now more resilient"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Homescreen icon now recommends 192x192 (best size for high-DPI devices, backwards compatible)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Web App Mode's persistence feature now fiters out more logout URLs (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bootstrap instance no longer attempts to load glyphicon image"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Occasional Infinity Cache/theme switch conflict (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Rare issue with MobileStore/Web App Mode (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: add_query_arg/remove_query_arg vulnerability"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug with saving filtered URL fragments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: wptouch-icons-old module for compatibility with custom themes that haven't migrated their icon classnames."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Improved compatibility with page builder plugin (process posts and pages for alternate mobile content when the_content is filtered). (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Improved compatibility with custom add to cart links in MobileStore. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Plugin repository description and labels."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Simplified admin (eliminated basic/advanced admin mode switching) and streamlined settings."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Labels no longer translated to placeholders for select controls in MobileStore. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Removed 'upgrade available' and 'notifications' buttons from admin."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Applying 'wptouch_settings_override_defaults' filter to default settings."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Notice in MobileStore when WooCommerce is not active. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Further refinement of icon sets, ensuring compatibility with Simple Social Icons plugin and other sources of icon fonts."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Reply link was being displayed beside comments with nested comments enabled, even when comments were closed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Overhauled support for shortcodes provided by desktop themes. WPtouch Pro can now optionally load content from WordPress with shortcodes processed. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug in URL-based filtering"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Possible hidden redirect exploit on mobile/desktop switcher"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: The ability for themes and extensions to disable Web-App Mode. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: If you set a custom excerpt for your posts, WPtouch will use it when it displays related posts. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: More localization updates (German, Greek, Hindi, and Indonesian)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: More robust category listing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: We moved support to the Freshdesk platform. All links have been updated to point to our new ticket &amp; knowledgebase and the new My Account page. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Web-App Mode is not compatible with off-site payment gateways. MobileStore no longer allows Web-App Mode to be used when no compatible gateways are found. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: MobileStore now allows selecting a custom latest posts page. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug in MobileStore where it was not possible to completely disable product filters once any had been selected. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Layout bug in menu on sites with sequential nested menu items."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Better support for Nextgen Gallery for sites using the Responsive Images extension. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated localizations – Arabic, Chinese (Simplified &amp; Traditional), Danish, Dutch, French, German, Greek, Hindi, Indonesian, Italian, Japanese, Korean, Russian, Swedish, Thai, Turkish, Vietnamese"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Change spaces in uploaded logo &amp; startup image filenames to dashes to prevent display issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Removed festive icons"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Spelling of devanagari in Advanced Type (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested for compatibility with WordPress 4.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: WPtouch Pro now auto-updates installed themes and extensions, ensuring your site is always completely up-to-date. Changes made to the theme will be saved (WPtouch Pro will create a new child theme with your changes) and custom themes are left unchanged. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Upgrade your WPtouch Pro license from inside the plugin with instant upgrade activation if your site is web-accessible. (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: A little festive spirit!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Slimmed down plugin by moving screenshots out of the package."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Typo in our URL - oops!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Updated icon font with new icon &amp; a new name to avoid conflicts with another plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Automatically disable WPtouch when activating WPtouch Pro"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Highlight available theme &amp; extension updates (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Better support for Shortcodes Ultimate"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Back-to-top links, and multilingual improvements in MobileStore (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Minimum character count for mid-content ads in MultiAds (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Improved Custom Latest Posts Page pagination handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Switch from WP_CONTENT_URL to content_url()"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: PHP error on WPEngine when debug mode was enabled (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Eliminated some warnings and notices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Arrow directions for next/previous posts in RTL mode"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Custom Latest Posts page now uses WPtouch posts-per-page setting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: New extension: Advanced Type (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Ability to ignore tags when identifying related content"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Ability to have WPtouch work on specific URLs/pages only"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Ability to have the featured slider show the latest posts from a specific post type"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Prose theme now allows site owners to disable use of featured images as header background on single posts (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Yelp option for footer social links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Improved appearance of Web App Notice Message on the WordPress login page (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: When viewing a WordPress media gallery item, the item's post parent is linked"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Share links adjust order and icon placement when the site is in an RTL language"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated add to home scripts to latest version (3.0.8)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: WPtouch Pro can now disable certain Jetpack components that duplicate WPtouch functionality (Related Posts, Sharing Buttons, Like Box)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Startup Screen support for iPhone 6 and 6+ (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Removed php warnings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Minor issues with our new MobileStore theme for WooCommerce (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: New theme MobileStore (eCommerce theme for WooCommerce!) (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Option to turn off menu output on the Open homepage (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Open theme now supports custom post type content (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Optional comment support to Prose (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Homescreen icon now recommends 180x180 (best size for iPhone 6, 6+, backwards compatible)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Better home-template.php support in themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated FastClick module to 1.0.3 (fixes form issues)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Theme browser now shows theme demos instead of screenshots for WebKit-based browsers (Safari, Chrome)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Cache timing tweaked to allow filtering of cache behaviour in Infinity Cache (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: If enabled in WPtouch, comment block is shown on pages only when they either accept comments and/or have comments to display"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Better SSL support w/ protocol-independent font and jQuery loading + image embeds"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue where Check All/None for menu items would affect all theme menus"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Better off-canvas menu support in Prose, Bauhaus and MobileStore"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Prevent Web App Mode from getting stuck in a logout loop (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Theme preview images causing SSL notices when viewing admin over HTTPS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Prevent mobile switch link from appearing in Web App Mode when pages are loading from cache (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bookmark icon not being used when bookmarking on iPad (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Backup file information, excluded license information and obfuscated filenames"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Potential security issue with URLs in comment forms"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Some customers reported ongoing issues with MIME-type detection for uploaded images."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Compatibility with WordPress 4.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with uploading image files on servers that don’t advertise MIME type"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Only images (png, jpg, gif, svg) will be accepted for home screens and icons."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with internal version upgrade notification"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Featured slider showing selected pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Display of comment count at top of posts in Bauhaus after comments have closed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Shortcodes are now processed properly in the Multi-ads extension advertising code (Pro only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: RTL issues with related posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Now allow mid-content advertisements in Multi-ads (Pro only)* Fixed: Display of comment count at top of posts in Bauhaus after comments have closed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "<p>Fixed: Comments remain visible after commenting has been closed for a given post/page</p>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "<p>Fixed: Custom Post Type module sometimes showed an error when searches were performed</p>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Featured Slider now shows posts from custom post types enabled for mobile display"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue which could cause the switch link to not store a cookie remembering the user's choice"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bauhaus with off-canvas and fly-in login form issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Improved off-canvas menu in Bauhaus"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Reduced Custom Post Type module memory consumption"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Note: Security issue found by Securi was already fixed in the previous release (3.4.3)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Bauhaus - off-canvas menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue with homescreen icons on Android"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bauhaus: search and custom post types"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Minor admin issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Security issue with file uploads and authenticated users (found by Sucuri, Inc.)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Custom post type support for customers whose web servers strip array indices from form fields"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Custom post type content is included in category/taxonomy/tag archive listings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Fastclick js library to 1.0.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Menu Setup in admin now refers to menus by name instead of location for consistency"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with date/time in Bauhaus"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: New theme: Prose (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: New extension: Multi-Ads - multiple ad units per page view for Small Business+ customers (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue with load more links in Web-App Mode with persistence enabled (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: CMS - an issue with blog listings on Firefox Mobile  (Pro Only)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue with date formats and non-English languages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue where an unwritable logfile would cause errors with debug enabled"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated all language files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue which caused mobile themes to be shown inside Twitter app on iPads"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Improved Android Firefox browser and older browsers and OS versions support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with custom post type array_flip warning message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: The ability to switch languages in the free version of WPtouch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Style support for Contact Form 7 forms in posts and pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Titles sometimes included HTML entities in shared Twitter content"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Links to posts and comments in Web-App Mode not working correctly"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: When enabled, related posts are now displayed before the next/previous links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Custom post types for display are now saved differently, allowing for more reliable settings behaviour and display"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Increased theme/add-on caching time"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Compatibility with WordPress 3.9.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue where page icons configured for WPtouch no longer showed in WPtouch Pro when WPtouch was removed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Menu items for custom taxonomy terms now link to the correct term archive URL"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue where single-file plugins could not be disabled the Compatibility screen"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue where WooRank wouldn’t properly detect WPtouch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue where links extension info did not correctly target the extension in the browser"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue where some JavaScript was loaded over HTTP when the page was loaded via HTTPS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Use jQuery 2.x setting now includes jQuery 2.1.1 (latest)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Related Posts first finds posts with at least two matching tags; if not enough are found, finds posts with at least one matching category"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Support for Windows Phone 8.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: product links from bravenewcode.com to wptouch.com"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Intentionally skipped"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Only show WPML switcher when WPML is installed and active"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Featured content slider now uses slugs for category/tag filtering"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Ability to enable/disable WPML language switcher in theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: WPML support in all themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Problem with WPtouch Pro update notification not showing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Link to network plugins page for updating WPtouch Pro on multisite"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Spanish translation renamed to es_ES.mo/po - please verify selection in admin menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Translations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Added caching to API requests to minimize external HTTP queries"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Firefox OS mobile support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Instagram to footer social links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue with WPTOUCH_CACHE_COOKIE that could cause issues on servers with high load"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue with the WPtouch custom die handler"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with Simple Sitemap Plugin and the number of posts per page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Featured Slider now respects post/page ID order, better RTL behaviour"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Rare issue with slashes appearing in the site title"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Various RTL issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Style issues in Bauhaus (1.0.7)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: WordPress smileys alignments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Excluded entries from categories still appearing in posts navigation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Added meta charset html tag for better compatibility with non-english sites"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issues running WPtouch correctly on Windows servers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Memory issues on sites with huge taxonomies"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue which could cause Sharing Links not to display"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: More admin styling improvements for WordPress 3.8"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Optimizations and file cleanup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Support for WordPress 3.8"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Support for all 8 WordPress 3.8 color schemes!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Featured gallery images and thumbnails now fallback to WordPress sizes if WPtouch's versions haven't been created yet (big speed boost!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Featured image placeholder no longer shows a pencil icon; instead it shows the post date"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue which could cause the featured slider to be show even though it was disabled"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue which could cause problems related to formerror.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Removed call to erroneous get_error() function in Cloud migration routines"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Small file operations issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Everything ;)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Everything ;)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Everything ;)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for Adsense settings issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Verified WordPress 3.7 compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issues with logging in / out on sites not in root"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Information in read me about the new user manual"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Links to user manual"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: The ability to share usage statistics to help improve the product"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Footer text"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with the settings page in the admin panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with WordPress multisite"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Potential security issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Downloadable User's Guide in admin panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Modified Adsense code to use asynchronous version as well as slot ID - you must create a new 320x50px ad via your adsense account"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Updated product tooltips codde"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Administration text and README descriptions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Admin bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Brazilian Português translation (thanks!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with comment posting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with Twitter sharing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Added new notification for WPtouch Pro 3 in the admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Removed affiliate program link (discontinued)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated read me text"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Made email menu item disabled by default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added BlackBerry 10 device support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Verified support for WordPress 3.5"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated admin layout and fixed admin styling issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Catalan translation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Missing images in /images folder"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with Sociable hooks"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Note: Still working on issues with stock Android JellyBean browser"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Enhanced security for Multisite installations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Ability to select german language"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: 'Powered by WPtouch' in footer is now off by default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with menu sorting by ID"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Broken link for iPhone/iPad icon generator"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Compatibility with WordPress 3.4.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Admin css with new prefixes for better cross-browser support, other improvements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Switch link redirect now redirects to current url even if a WPtouch homepage redirect is set"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Added HP TouchPad and Nexus 7 to the excluded tablets list (also includes Xoom and Galaxy Tab)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Added a variety of new Blackberry OS7 devices agents (Bold, Touch and Curve)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Cleaned up and removed unused/old assets"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Depreciated references to options (replaced with home_url() and site_url())"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: issue with search field"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue where the new switch link caused white box"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: PHP warnings regarding detection of https, depreciated calls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: 8 new background options, updated default background"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Twitter and Facebook share logos"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Changed drop menu arrow to text button"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Enhanced usability of search"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Changed mobile switch link to CSS only"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Prefixes for Opera, Mozilla browsers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: General styling updates"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Italian language translation (thanks Roberto Gallerani)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Turkish language translation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed: AppStores support - please visit the AppStores website for the Javascript code to use if you'd like to continue using it"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated fitvids() video script"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Admin styling issues on some WordPress versions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: File and image optimizations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Advertising integration with Appstores"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated video code for better handling of videos"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: More CSS prefixes for Mozilla/Opera browsers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Social Share plugin hiding"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Layout of advertising section"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Removed fixed header option for iOS5— it's half-baked and not fully working correctly yet"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with ordered lists"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with Login/My Account tab always showing in some situations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: fitVids() for much better video handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Option to use fixed header for iOS 5 devices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Minor CSS fixes and improvements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Nonce/re-direct behaviour for switch link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Default settings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Ability to add WPtouch info in Twenty Ten &amp; Eleven themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Minor layout adjustment in admin panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Added nonces and extra security check for icon deletion (thanks Julio POTIER from BLOG.boiteaweb.fr)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Option to allow zooming on content"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: WordPress 3.2 compatibility changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Re-compressed PNGs for performance and speed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Minimum WordPress version is now 3.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issues with $wpt variable in js"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Added nonces to redirect code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "IMPORTANT: Due to a WordPress.org issue, please update"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Javascript issue with excerpts and load more entries"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: time_since() function naming conflict"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Fixed bug with reset settings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Depreciated user level reference removed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Page icons missing when page sort order is 'By Page ID'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: 'Googlebot-Mobile' for mobile indexing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: lang attribute to head tag"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Dougal's fix for XMLRPC / App requests via WordPress for iOS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Updated Japanese translation (thanks to Yamaguchi Kenji)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Optimized categories/tags listings queries"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Switch link edge case issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Exclusion of Motorola Xoom and Galaxy Tab tablet devices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Cleaned up both category and tag exclusion logic, removed unneeded functions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIxed: Re-wrote category and tag exclusion code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: repaired code causing php warning items found in debug"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: wptouch.pot language file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: French translation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: IMPORTANT security issue with AJAX icon upload"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issue with excluded categories not working"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Ability to exclude tags by ID from blog (experimental)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Now filter the excluded categories and tags from the header listings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Now removing the admin bar when logged in and looking at WPtouch (will still show for regular theme)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translators: please re-submit translations with updated strings (excluded tags area)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed additional switch link issue found after 1.9.22 (now handles www.domain.com and domain.com, along with http:// and https://)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Basque translation courtesy of Ander Erguin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Japanese translation courtesy of Kenji Yamaguchi"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Experimental LiveFyre commenting support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added additional CSS to remove unneeded 3rd party plugin boxes on single posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More tweaks for failing switch link in some scenarios"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: More robust category exclusion"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for images and emoticons in comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for share on Twitter Link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added share on Facebook Link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updates for admin panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug with footer switch link (ampersand issue)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug with footer switch link (cookie issue)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug with login on some devices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: touchstart JavaScript for supported devices (speeds up interface responsiveness)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: More style adjustments in a few places, better Android compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue which could output site urls on single posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Using CSS-generated comment bubbles for supported devices for crispness and clarity"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Incorrect detection of BlackBerry Torch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue that prevented login from the header"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Option to disable comments on posts completely in WPtouch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Issues with WordTwit and GigPress drop-downs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIxed: An issue with French text appearing in non-french installs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: An issue with whitespace in admin files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Auto-capitalization of drop-menu items (should help localization efforts)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated: Screenshots"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: IMPORTANT: Security nonce and additional security check (thanks to Julio from http://Boiteaweb.fr for testing)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Improved header forms in theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Minor styling improvements in theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Fixed return on input in admin not saving"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Other admin improvements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More fixes for siteurl, url, home etc. for depreciation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug with YouTube &amp; Vimeo videos"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Bug with posting comments on some installations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Changed references of 'siteurl' and 'home' to url, siteurl &amp; home are depreciated in bloginfo()"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Other minor code warnings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Enhanced comment-bubbles on posts for iPhone/iPod using CSS."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Other improved styling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Localization changes and updates, including missing translatable text"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: French localization"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Ability to change languages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Filter for Follow Me plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed: Code which could cause a redeclare error if Super Cache is installed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Enqueue for admin js files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Compat for Share and Follow plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Missing localization code, .pot file for translations (submit yours to translation@wptouch.com)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Cleaned up unused code, empty strings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed: Optimized some assets"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Samsung s8000, Bada device user agents (Dolphin Browser)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Blackberry Storm V2 user agents"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Blackberry Torch user agent"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Sticky post icon in post listings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Filtering Facebook Like plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Filtering Sharebar plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for new Vimeo html5 embed code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for sticky post icon when calendar icons and thumbnails are off"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where footer message input would not clear in admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed viewport meta tag issue, fixes browser crashes on some devices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed viewport switch issue, where regular theme was zoomed too far out/in on switch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the_title() to the_title_attribute() for e-mailing posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More image optimizations and file size reductions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to customize the footer copyright message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added credit to Marcelo Marfil for his icons"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added official WordPress 3.0 compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with account tab logic"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with account tab login"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with comments on pages only showing 1 comment or not allowing replies"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with comments on private posts/pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed compatibility with Banner Cycler plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Replaced depreciated link_pages with wp_link_pages function in single.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated admin WPtouch Pro image/link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated compatibility section"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated copy, minor edits in a few places"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed application Twitter links on single post page, replaced with post to m.twitter.com"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added filter for whydowork plugin ads (to prefer native Adsense in WPtouch)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Attempted new fix for YouTube overtop menu bug, it's a mobile browser issue (can't fix)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor styling fixes and adjustments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixes login to admin through mobile device bug"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixes issue where mobile theme may be shown to desktop users (non-cache related)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixes issue where YouTube videos are on top of menus, other content"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed unused files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added automatic input focus to header Search for usability"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option for truncated post titles on main, search and archive views"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an issue with multi-page post links line height appearance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an issue where WPtouch would force all post thumbnails to be 50x50px (now respects user settings)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an issue where categories with 0 posts might be shown in the header"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now filtering Sociable from WPtouch automatically"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated styling for post listings, titles now use ellipses"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated list item styling in posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated block quote styling in posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed default Gravatar image"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor tweaks to calendar icon appearance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed a reference to an image that was missing and unused"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new notice area in admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed Saved Settings/Reset Settings overlay"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tweaked and fixed a couple issues with icon uploads"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Replaced references to depreciated PHP functions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new notice for 2.0 in admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added line in core-functions.php for full support of qTranslate"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with wp-skyscraper plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added cache manifest file for speedier browsing on supported servers and devices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added automatic WP Super Cache detection and configuration for the upcoming version of WP Super Cache"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixes admin panel not working or broken for some users"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed admin panel RSS feeds to use AJAX"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added function_exists and object checks to admin RSS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed Tweet RSS Feed to Support Forum Topics"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed minor page menu CSS issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Included 40% reduction in PNG sizes thanks to BNCID user 13xforever"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed more GigPress CSS issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to choose flat bookmark icon"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix case where missing CURL would stop admin settings from loading"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor Ajax upload fix"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor spelling fixes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Made changes to the way ajax uploads are handled"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated and fixed JS error in ajax_upload.js file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed replace class javascript for page &amp; post images and caption areas (still needs work)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Only loading the ajax_comments.js on the single post pages now"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated and edited admin verbiage"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added remove action for Google Libraries plugin (for compatibility)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added remove action for GigPress CSS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed broken GigPress drop down, added new styling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed javascript handlers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Misc tweaks and fixes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Theme CSS fixes and revisions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated outdated links in the admin panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated outdated text in the admin panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Re-validated admin XHTML with W3C"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed User Agent strings which caused browsers to show WPtouch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated user agents for Opera Mini and Palm Pre ('mini' and 'pre')"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed orphaned code relating to ajax comments option"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed date/time parsing for WordTwit integration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update to WordTwit 2.3.3 if you see incorrect date/times"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix for array warning issue on some installations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added HTML5 types for comment url and email (devices capable now show unique keyboard layouts for these inputs)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added and refined jQuery code, effects"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Revised post/page image sizing auto-detection features"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the way Ajax comments work - will now work for everyone"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed code for JS - return false;"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed admin panel to stop using Ajax that would sometimes fail to load"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed comments-ajax.php from theme (not needed anymore)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed ajax comments option from the admin  (not needed anymore)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed obsolete code orphans from old code methods"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fixes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixes an issue where post thumbnail selection would not be shown in the admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Adds auto-detection for post and page images and captions (will now center align if above 150px)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Resolves an issue where save/reset settings would cause permissions error or fail"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Resolves case where the upload path would not be found for custom-icons"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Compatibility with WP 2.9.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed broken thumbnail reflections on Android and other browsers. Now reflections only show for iPhone/iPod"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue where Tags &amp; Categories links in the header may not show on some devices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added friendly display when there are no Twitter tweets available via WordTwit"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an undefined function error when commenting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed case where post-thumbnails wouldn't work"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Stopped GigPress CSS from loading in the header when it's not enabled"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed error where Icon Upload would fail in admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated Ajax Upload script to v3.9"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Attempted fix for broken post thumbs reflections on Android. Now reflections only show for iPhone/iPod"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor administration changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated readme to describe WordPress MU installation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an issue where thumbnails wouldn't show"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for thumbnails using James Lao's 'Simple Post Thumbnails' plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed functions.php check from version (2.9) to whether function exists (WP Security Scan bypass)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added missing code to the theme's functions file for Post thumbs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Resolves an issue where blank spaces would appear, not Post Thumbs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for broken switch links (missing images) on some installations when in regular theme view"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added detect for custom field key 'Thumbnail' to work first before using WP 2.9 Thumbs, for those who've been using this method already"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Post Thumbnails View option (WordPress 2.9 only) for main post listings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to show neither post thumbnails nor calendar icons"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added style option to choose the font of H2 elements on post listings, single entries and pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Various style &amp; code improvements and fixes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed php logic in adsense-new.php (thx JeanPaulH)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for GigPress' Upcoming Shows to be a drop down in the header menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed relative comments logic, added function for GMT detection"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Adding padding, size to multipage links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed WP version from footer (security vulnerability)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed admin RSS feed from Support Topics to Twitter Topics"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated admin settings image"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed cutoff tweets from WordTwit in the drop-down"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Verified WP 2.9 compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Twitter updates menu item support for WordTwit's new features"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added CSS for TweetThis and AddThis plugins to be hidden"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added page/post title to HEAD for Tweet purposes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added user agent detection for non-apple mobile devices to be served Twitter link correctly"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added 180-degree animation to post-arrow dropper and removed excess JS and code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new tab pane for the header (menu, tags, categories, account)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added more theme compatibility for other touch devices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added 'edit, delete, spam' links for admins on comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed default OBJECT and EMBED css to only apply to .post, not site-wide"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed comment ajax routine"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed 'Links' appearance adding support for link categories, removed favicon scripts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the way the header links are setup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Small refinements in the theme CSS all-around"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Made progress towards reply and pagination in comments, not there yet"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed space appearing below title on single post pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added compressed js for the admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated Fancybox script &amp; files to v1.2.5"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated Ajax Upload script to v3.6"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for re-direct issues introduced with 1.9.3.4"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixes and changes for Adsense appearance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for direct messages not working with WPtouch exclusive mode"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added spam check for Push direct messages via a nonce"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added verification for Prowl API key"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to define custom user agents in the admin (go nuts!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor admin styling changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Dropped official support for WP 2.6 (sorry folks, you should update!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Dropped 'skins' references, they'll be a part of WPtouch 2.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Compressed style.css in theme for faster load times"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issues with adsense ads"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed time since code bug on comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue where comment count could read as 0 when there were no comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for width bug in some situations when switching themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for scenarios where a different uploads folder path or name is used"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor admin refinements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Porting CSS styles to a global sheet applicable to all our plugins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Push messages now come from your blogname not 'wptouch'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Switch link now re-directs to the page the switch request came from, not back to home"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed downloads admin area to support topics rss feed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added additional icons in the admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed international languages display of time since on comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed logic with PUSH notification via Prowl"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed unneeded files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Style fixes for the display of comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue where regular theme view would not allow pinching for zoom"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed JS bug in theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Possible fix for time since on comments not working in some situations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to disable Ajax comments for those who can't get them working"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue where mobile switch to regular theme was always zoomed in and required refresh"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue where pages changed from published to unpublished still showed in the WPtouch menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue where 'Load More Entries' caused blank page or other issues. WPtouch now detect possible issues and defaults to pagination"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "WPtouch now loads minified versions of its CSS and JS for the theme, speeding up load times"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added check for wp-load.php before attempting ajax comments. Should fix WP comment posting issues. Working on better Disqus and Intense Debate support as well"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed 'Find in this page' button, until bugs are resolved"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now WPtouch will not hide mobileSafari addressbar on single post pages on slower connections"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where WPtouch admin would report that CURL wasn't installed even if it was"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug for admin panel Ajax not working in some situations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Adsense re-enabled"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where SPAM comments were pushed via Prowl"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Push Notification options now announces if Curl is not available, instead of not appearing at all"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed text-size adjust option, now replaced with user-adjustable font sizes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor code corrections"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fully compatible with WordPress 2.6 - 2.8.x"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Major rewrites of theme files, css for simplicity, CoreTheme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Adsense has been temporarily disabled until we update code for new Google API changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added experimental support for Opera Mini &amp; Palm Pre mobile browsers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added filter trackbacks and pingbacks from display in comment counts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added friendly 'noscript' display bezel for users with javascript Turned off"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for Prowl Push notifications for comments, user registrations, and direct messages (if Curl exists on the server)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to exclude categories"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added native select for Tags"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added theme switch confirm message, saves a cookie to not repeat"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added jQuery color picker in admin hex areas for easy selections"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added link to online icon generator in admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added style declaration for images in comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added 'My Account' button in the sub//header for logged in users replacing Logout"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added theme skin selection support, still no other skins enabled yet"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added post-options bar on single post page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new background selections"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated plugin compatibility listing now loads from bravenewcode.com"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated style for comments, working on full support for WP 2.7 comments, Intense Debate"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated success message for ajax comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated font zoom replaced by font-size adjust button"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated ajax upload script to v3.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated fancybox to compressed v1.2.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated Ajax Upload script to 3.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated compatibility code (Various WordPress install scenarios) ~ thanks to Will Norris for the suggestions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated a check if comments are open before showing the comments link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated local jquery in exclusive mode to use WP, not Google"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated admin style and design"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated search now floats overtop the headerbar"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated the_content_rss() for excerpts, created a custom function which handles it nicely"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated several images in the core images folder, building more dependency on CoreTheme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed support for WordPress 2.3, lowest known WordPress version supported: 2.6"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed 404 image with English text in it, replaced it with localized 404 text"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed depreciated or unused functions from previous releases"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed ability to disable jQuery; WPtouch Exclusive mode should fix JS issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed home link in menu drop down now respects the logo/bookmark icon choice"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed WP Spam Free users having had new comments blocked"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed WPtouch appearing zoomed out and wide"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed custom page icons not showing up on pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some domains not showing the beta download/news areas"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed style issue for icons on pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the way javascript is called for a elements, should work better in other mobile browsers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed switch link issue where regular theme switch link was broken"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue where chosen pages and icons did not appear in the drop down"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a variety of scenarios where paths to files and images were broken"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a few areas that had text not yet localized, improperly coded"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More preparation for languages support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Preparation for WPtouch 2.0 and themes support (based on CoreTheme)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Other minor optimizations, fixes, changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed refresh issue (some pages keep re-loading)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed mkdir issue on PHP4 installations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Set viewport to fixed width for device to prevent some sites from loading wide"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor revisions to new CSS calendar icon styling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added exclusive mode feature to help in situations where other plugins are incompatible, load too many scripts/css files and both break and slow down WPtouch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Fancybox for some feature descriptions in the admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed calendar icons from images to CSS-based only (they look sexay!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refined styling of header logo, text shadow, general appearance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed unneeded declarations from the WPtouch stylesheet"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested and works efficiently with WordPress MU when installed site-wide (Finally!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Disqus commenting plugins out-of-the-box styling enhancements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed post nav on the single post page to prev/next post, instead of entry titles for length's sake"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug related to RSS feeds being broken in some situations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed fatal error on line 153 undefined 'is_front_page' function for WP 2.3.x users"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed jQuery failing to load for WP 2.3.x users"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option for font-zoom on rotate for accessibility, on by default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed various styling bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed switch link in WPtouch to remain fixed width"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed various content overflow issues in WPtouch theme files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "As a note for WordPress 2.3 users, WPtouch 1.9 will require WordPress 2.5+"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed new switch link to work under different WordPress install scenarios"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed switch link CSS style-sheet loading issues in some situations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed missing mime types for icon upload through IE7"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issues related to automatic favicon generation on a Links page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed footer switch links to mimic iPhone settings app appearance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed misc scenarios for ajax-upload errors"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed path issues related to custom icons (sites on windows servers)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issues related to ajax comments not working in some situations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added check for 'Allow Comments' on pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed Apache error (reported in logs)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed admin styling issues on IE7, Firefox"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with custom icons and the header logo"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with the Classic background not appearing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Significant rewrite of core code for increased efficiency"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed database calls to use wpdb object, will hopefully work with wpmu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Internationalization preparation of the admin and theme files (for WPtouch 1.9)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to add/delete custom icons that survive WPtouch &amp; WordPress upgrades"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to select left/full text justification, 3 font sizes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed how WPtouch admin panel shows icons, more room for custom icons"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added channel capability for Adsense"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now suppresses banners created by the Ribbon Manger Plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor tweaks to login, register, admin links, footer appearance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor tweaks to drop down menus, header styling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More refinements for search, categories &amp; tag pages, 'load more' link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Text &amp; code refinements in the WPtouch admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Experimental support for the Blackberry Storm"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with WPtouch header title display issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue related to login/logout/admin/register link path issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue where Bookmarks link when Advanced JS is turned off"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with default icon case"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with switch code on systems with PHP4"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue related to fresh installs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with Android and the sub-header menu links not working"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to do GZIP compression"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Suppressed warning about multiple gzhandlers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed user agent detection code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to choose if WPtouch or regular version of your site is shown first"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed WP login/out button bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added login/out auto-detect for WP 2.7 or pre-WP 2.7 sites"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed loading path issue that caused drop-down menu button to fail"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added choice between alphabetical or page order sorting of the drop down menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added clock icon"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixes for categories drop-down menu (now shows post #'s)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor fix for categories drop-down menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Automatic detection &amp; support for Peter's anti-spam plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Built-in support for Adsense in posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved Stats tracking box beside Advertising Options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Better WordPress version support detection"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More refined image auto-sizing with WP added images &amp; galleries in posts / pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for WordPress shortcodes appearing in excerpts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed how WPtouch shows switch links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Auto-adjusting width/height for MobileSafari plugin objects (YouTube, Quicktime)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Auto-resizing images in posts/pages on orientation change!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Auto-resizing WP image galleries"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Better support for captions on images, gallery items"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the ability to enable a quick login button w/ drop-down in the WPtouch header"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the ability to enable categories as a drop-down item in the WPtouch header"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the ability to disable WPtouch automatic homepage redirection (resolves white page issue)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the ability to manually select a re-direct landing page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refinements in WPtouch admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhanced support for WordPress 2.7 admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Re-designed post comment bubble icon"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Input box to inject custom code (Google Analytics, MINT, etc) into WPtouch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Basic support for Incognito &amp; WebMate browsers on iPhone &amp; iPod touch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Other code fixes, cleanups &amp; optimizations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Other theme style cleanups and enhancements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for WordPress image galleries"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for single post page split navigation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed admin footer links which did not locate WordPress install correctly"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added basic Google Android support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changes in WPtouch admin appearance and styling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added donate message in WPtouch admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "WPtouch now supports WordPress 2.3 or higher"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More jQuery tune-ups, now loads through wp_enqueue_script() or Google to prevent collisions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed $J to $wptouch to prevent collisions using jQuery"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Offloaded jQuery loading from our folder to Google instead for WP &gt; 2.5 sites"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a bug in wptouch.php on line 232, fixing drop-down menu display issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a bug where blank admin options were allowed instead of refused"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a bug with overriding the site title in the WPtouch admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some instances where ajax comments would not work"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a bug where the loading of javascript files would load in your site's default theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhanced drop-down menu appearance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More compatibility with other plugins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Code cleanups and optimizations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tweaks for the jQuery bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "No conflict setting added for jQuery"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Support for DISQUS 2.0.2-x Plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor style edits and enhancements for the search dropdown"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Another fix for drop-down Menu not working"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to change the header border background color"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for slashes appearing before apostrophes in the header title"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Admin wording changes, styling changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor style enhancements to the theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for Menu not working on some installations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Style enhancements for the menu, search, drop downs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Style enhancements for comments, logged in users"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Font adjustments for titles"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Style changes for single post page heading, for better clarity"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Admin wording changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for the theme appearing in Safari browsers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Switch from Prototype to the more WordPress-native jQuery for javascript (much faster!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for wrong re-directs happening unintentionally if you use a static home page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Elimination of unneeded images, javascript (shaving more than 100KB!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More template file cleanups, image &amp; code optimizations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "The addition of more comments in code templates to help you make custom modifications"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option to enable comments on pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option to manually enter in a new blog title (fixes cases where the blog title runs the length of the header and wraps)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option to hide/show excerpts by default on the home, search, and archive pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Switch code links are automatically injected into your regular theme's footer now, and is only seen on the iPhone/ipod touch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "In all, despite the addition of new features we've cut load times for WPtouch in half with this release over 1.2.x releases!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "The ability to disable Gravatars in comments (more control over optimization &amp; speed)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Redundant, unused template file cleanups (archive.php, search.php &amp; page.php are now all just index.php)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More style enhancements and tweaks, fixes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Switched to Snoopy from CURL for the admin news section (thanks to Joost de Valk (yoast.com)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "The ability to disable advanced javascript effects (fixes effects not working for some, speeds up the load time considerably)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Proper styling of embedded YouTube videos on mobileSafari in iPhone 2.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for the switch code not working on some blog installations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Redundant, unused code cleanups"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "the ability to enable/disable the default home, rss and email menu items"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "support for WordPress installations that have static home pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "dynamic WPtouch news in the administration panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "the ability to modify the default hyperlink color"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "major CSS &amp; PHP cleaning, resulting in reduced size and faster load times"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "the ability to enable/disable tags, categories and author names on the index, search and author pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "support for DISQUS commenting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "CSS refinements for comments, the drop-down menu, and overall appearance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "styling for YouTube embedded videos"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "bug fixes for blogs installed in directories other than root"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Initial release"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "= Version 3.4.7 (August 27th, 2014)"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Fixed: Comments remain visible after commenting has been closed for a given post/page"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Fixed: Custom Post Type module sometimes showed an error when searches were performed"
+msgstr ""
+
+#. Found in faq header.
+msgid "I thought most touch smartphones show my website fine the way it is now?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Well, what if my users don't like it and want to see my regular site?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Will it slow down my blog, or increase my server load?"
+msgstr ""
+
+#. Found in faq header.
+msgid "I notice my desktop site shows for mobile visitors, or vice versa"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes, that's true in general. However *not all websites are created equal, with some sites significantly failing to translate well in small mobile device viewports."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Many WordPress sites today also make heavy use of a variety of javascript, css and image files which significantly increase load times, in turn driving visitors on data connections crazy, often causing them to abandon your site altogether."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "We created <em>WPtouch</em> to be a lightweight, fast-loading, feature-rich mobile plugin to add a theme shown to mobile visitors. The plugin includes an admin panel for customizing many aspects of your site's presentation when showing the mobile theme."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "There's a link to switch back to the desktop theme in the footer area of <em>WPtouch</em> so your visitors can easily switch between the <em>WPtouch</em> view and your site's regular appearance."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "We even automatically put a little snippet of code into your current desktop theme which will be shown only to iPhone, iPod touch, Android or BlackBerry touch mobile device visitors, giving them control to switch between the two themes easily."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "No. The entire <em>WPtouch</em> footprint is small. In fact, it should reduce load, because of its streamlined approach to serving optimized content to mobile visitors. It was designed to be as lightweight and speedy as possible, while still serving your site's content in a richly presented way, sparing no essential features like search, login, categories, tags, comments etc."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "It sounds like you are using a caching plugin but you haven’t configured it. Please read the user manual (accessible from the WPtouch admin) and perform the cache changes are outlined in the user manual.  Once done, WPtouch will work as expected."
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Caching"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "W3 Total Cache"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "WP Super Cache"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "WP Rocket"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "WP Engine"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "If you have “Browser Cache” enabled, please disable ‘Set expires header’ in the Browser cache settings to prevent Desktop/Mobile switch link issues."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Go to the “Page Cache” settings under the Performance tab."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Copy the list of mobile user agents found in our list of “User agent list for configuring cache plugins“."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "If you have added support for additional mobile devices in WPtouch’s Compatibility &gt; Custom User Agents field, you must also include those user agents in the “Rejected User 5. Agents” area in W3 Total Cache."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Save your changes."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Go to the “CDN” settings under the Performance tab."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Scroll down to the “Rejected User Agents” field and paste the list of WPtouch default user agents, adding one per line."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Finally, go to the W3 Total Cache “Dashboard” and select “Empty All Caches”."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "In the Advanced tab of the WP Super Cache settings select “Mobile Device Support”* and click “Update Status”."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Still in the Advanced tab, scroll down to the “Rejected User Agents” area. Paste the entire list of mobile user agents found in our list of “User agent list for configuring cache plugins” into the field and click “Save UA Strings”."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "If you have added support for additional mobile devices in WPtouch’s Compatibility &gt; Custom User Agents field, you must also include those user agents in the “Rejected User Agents” area in WP Super Cache."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "In the “Contents” tab, click “Delete Cache” and “Delete Expired” to delete pages that were likely cached before adding the new list of rejected user agents."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Ensure that WP Super Cache is selected in the plugins list in the Compatibility section of the WPtouch admin panel."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "If you are using a caching plugin, you will need to configure it to work properly with WPtouch. If your caching plugin is not configured, or not configured properly, you will most encounter inconsistent behaviour where WPtouch shows for desktop visitors, or mobile visitors see your desktop site."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Ensure that W3 Total Cache is selected in the plugins list in the Compatibility section of the WPtouch admin panel."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Note: The native support for the free version of WPtouch found in WP Super Cache (under the “Plugins” tab) must be disabled to prevent conflicts in WPtouch."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "In the \"Basic Options\" of WP Rocket's settings page, make sure \"Enable caching for mobile devices.\" is deselected. Ensure that WP Rocket is selected in the plugins list in the Compatibility section of the WPtouch admin panel."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Please see the user manual for additional information."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Please contact WPEngine and ask them to exclude the user agents found in the “User agent list for configuring cache plugins“."
+msgstr ""

@@ -11,6 +11,10 @@
  * @package shareaholic
  */
 class ShareaholicAdmin {
+
+  const ACTIVATE_TIMESTAMP_OPTION = 'shareaholic_activate_timestamp';
+  const REVIEW_PERIOD = 1296000; // 15 days in seconds
+  const REVIEW_DISMISS_OPTION = 'shareaholic_review_dismiss';
   
   /**
    * Loads before all else
@@ -25,6 +29,63 @@ class ShareaholicAdmin {
          ShareaholicUtilities::share_counts_api_connectivity_check();
        }
     }
+    self::check_review_dismissal();
+    self::check_plugin_review();
+  }
+
+  /**
+   * Check if the user has dismissed the review message
+   *
+   */
+  public static function check_review_dismissal() {
+    if (!is_admin() ||
+        !current_user_can('manage_options') ||
+        !isset($_GET['_wpnonce']) ||
+        !wp_verify_nonce($_GET['_wpnonce'], 'review-nonce') ||
+        !isset($_GET[self::REVIEW_DISMISS_OPTION])) {
+      return;
+    }
+
+    add_site_option(self::REVIEW_DISMISS_OPTION, true);
+  }
+
+  /**
+   * Check if we should display the review message days after the
+   * plugin has been activated
+   *
+   */
+  public static function check_plugin_review() {
+    $activation_timestamp = get_site_option(self::ACTIVATE_TIMESTAMP_OPTION);
+    $review_dismissal = get_site_option(self::REVIEW_DISMISS_OPTION);
+
+    if ($review_dismissal == true) {
+      return;
+    }
+
+    if (!$activation_timestamp) {
+      $activation_timestamp = time();
+      add_site_option(self::ACTIVATE_TIMESTAMP_OPTION, $activation_timestamp);
+    }
+
+    // display review message after a certain period of time after activation
+    if (time() - $activation_timestamp > self::REVIEW_PERIOD) {
+      add_action('admin_notices', array('ShareaholicAdmin', 'display_review_notice'));
+    }
+  }
+
+  public static function display_review_notice() {
+    $dismiss_url = wp_nonce_url('?'. self::REVIEW_DISMISS_OPTION .'=true', 'review-nonce');
+
+    echo '
+    <div class="updated">
+      <p>' . __('You have been using the ', 'shareaholic') . '<a href="' . admin_url('admin.php?page=shareaholic-settings') . '">Shareaholic plugin</a>' . __(' for some time now, do you like it? If so, please consider leaving us a review on WordPress.org! It would help us out a lot and we would really appreciate it.', 'shareaholic') . '
+        <br />
+        <br />
+        <a onclick="location.href=\'' . esc_url($dismiss_url) . '\';" class="button button-primary" href="' . esc_url('https://wordpress.org/support/view/plugin-reviews/shareaholic?rate=5#postform') . '" target="_blank">' . __('Leave a Review', 'shareaholic') . '</a>
+        <a href="' . esc_url($dismiss_url) . '">' . __('No thanks', 'shareaholic') . '</a>
+      </p>
+    </div>';
+
   }
   
   /**

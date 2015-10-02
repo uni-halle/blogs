@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 2.8.8
+  Version: 2.9.2
   Author: Vasyl Martyniuk <support@wpaam.com>
   Author URI: http://www.wpaam.com
 
@@ -760,7 +760,6 @@ class aam {
                     AAM_MEDIA_URL . 'css/configpress.css', 
                     array('aam-common-style')
             );
-            wp_enqueue_style('aam-codemirror', AAM_MEDIA_URL . 'css/codemirror.css');
         }
 
     }
@@ -831,11 +830,7 @@ class aam {
             wp_localize_script('aam-admin', 'aamLocal', $localization);
         } elseif ($this->isAAMConfigPressScreen()) {
             wp_enqueue_script('jquery-ui-core');
-            wp_enqueue_script('jquery-effects-core');
-            wp_enqueue_script('jquery-effects-highlight');
             wp_enqueue_script('aam-admin', AAM_MEDIA_URL . 'js/configpress.js');
-            wp_enqueue_script('aam-codemirror', AAM_MEDIA_URL . 'js/codemirror.js');
-            wp_enqueue_script('aam-cmini', AAM_MEDIA_URL . 'js/properties.js');
 
             $localization = array(
                 'nonce' => wp_create_nonce('aam_ajax'),

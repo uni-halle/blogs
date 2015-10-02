@@ -22,7 +22,6 @@ add_filter( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'foundatio
 add_filter( 'wptouch_setting_version_compare', 'foundation_setting_version_compare', 10, 2 );
 add_filter( 'wptouch_body_classes', 'foundation_body_classes' );
 add_filter( 'wptouch_the_content', 'foundation_insert_multipage_links');
-//add_filter( 'wp_die_handler', 'foundation_custom_die_handler' );
 
 add_action( 'wptouch_post_head', 'foundation_setup_smart_app_banner' );
 add_action( 'wptouch_post_head', 'foundation_setup_viewport' );
@@ -327,12 +326,11 @@ function foundation_get_category_list() {
 
 function foundation_setup_viewport(){
 	$settings = foundation_get_settings();
-
-	if ( $settings->allow_zoom == true ) {
-		echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, user-scalable=yes, width=device-width" />';
-	} else {
-		echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />';
+	$zoomState = 'no';
+	if ( $settings->allow_zoom == true ) { 
+		$zoomState = 'yes';
 	}
+	echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, user-scalable=' . $zoomState .', width=device-width" />';
 }
 
 function foundation_render_theme_settings( $page_options ) {

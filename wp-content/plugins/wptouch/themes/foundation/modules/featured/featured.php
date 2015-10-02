@@ -67,7 +67,7 @@ function foundation_featured_config( $args ) {
 }
 
 function foundation_featured_modify_query( $query ) {
-	if ( $query->is_main_query() ) {
+	if ( $query->is_main_query()  && !is_admin() ) {
 		$settings = foundation_get_settings();
 
 		if ( $settings->featured_filter_posts ) {
@@ -271,128 +271,124 @@ function foundation_featured_slider( $manual = false, $manual_html = false ) {
 function foundation_featured_settings( $page_options ) {
 	$settings = foundation_get_settings();
 
-	if ( $settings->featured_enabled ) {
-		$featured_settings = array(
-			wptouch_add_setting(
-				'range',
-				'featured_max_number_of_posts',
-				__( 'Maximum number of posts', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_ADVANCED,
-				'2.0',
-				array(
-					'min' => 1,
-					'max' => 10,
-					'step' => 1,
-				)
-			),
-			wptouch_add_setting(
-				'checkbox',
-				'featured_autoslide',
-				__( 'Automatically slide', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_BASIC,
-				'1.0.2'
-			),
-			wptouch_add_pro_setting(
-				'checkbox',
-				'featured_continuous',
-				__( 'Continuously slide', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_BASIC,
-				'1.0.2'
-			),
-			wptouch_add_setting(
-				'checkbox',
-				'featured_grayscale',
-				__( 'Grayscale images (CSS 3 effect)', 'wptouch-pro' ),
-				__( 'Featured slider images will be in grayscale for devices that support CSS filters.', 'wptouch-pro' ),
-				WPTOUCH_SETTING_ADVANCED,
-				'1.0'
-			),
-			wptouch_add_setting(
-				'checkbox',
-				'featured_filter_posts',
-				__( 'Featured slider posts also show in listings', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_BASIC,
-				'1.0.3'
-			),
-			wptouch_add_setting(
-				'list',
-				'featured_speed',
-				__( 'Slide transition speed', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_ADVANCED,
-				'1.0.2',
-				array(
-					'slow' => __( 'Slow', 'wptouch-pro' ),
-					'normal' => __( 'Normal', 'wptouch-pro' ),
-					'fast' => __( 'Fast', 'wptouch-pro' )
-				)
-			),
-			wptouch_add_setting(
-				'list',
-				'featured_type',
-				'',
-				'',
-				WPTOUCH_SETTING_BASIC,
-				'1.0',
-				array(
-					'latest' => __( 'Show latest posts', 'wptouch-pro' ),
-					'tag' => __( 'Show posts from a specific tag', 'wptouch-pro' ),
-					'category' => __( 'Show posts from a specific category', 'wptouch-pro' ),
-					'post_type' => __( 'Show posts from a specific post type', 'wptouch-pro' ),
-					'posts' => __( 'Show only specific posts or pages', 'wptouch-pro' )
-				)
-			),
-			wptouch_add_setting(
-				'text',
-				'featured_tag',
-				__( 'Only this tag', 'wptouch-pro' ),
-				__( 'Enter the tag/category slug name', 'wptouch-pro' ),
-				WPTOUCH_SETTING_BASIC,
-				'1.0'
-			),
-			wptouch_add_setting(
-				'text',
-				'featured_tag',
-				__( 'Only this tag', 'wptouch-pro' ),
-				__( 'Enter the tag/category slug name', 'wptouch-pro' ),
-				WPTOUCH_SETTING_BASIC,
-				'1.0',
-				false //foundation_get_tag_list()
-			),
-			wptouch_add_setting(
-				'text',
-				'featured_category',
-				__( 'Only this category', 'wptouch-pro' ),
-				__( 'Enter the tag/category slug name', 'wptouch-pro' ),
-				WPTOUCH_SETTING_BASIC,
-				'1.0',
-				false //foundation_get_category_list()
-			),
-			wptouch_add_setting(
-				'list',
-				'featured_post_type',
-				__( 'Only this post type', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_BASIC,
-				'3.5.3',
-				array_merge( array( 'Select Post Type' ), wptouch_custom_posts_get_list() )
-			),
-			wptouch_add_setting(
-				'text',
-				'featured_post_ids',
-				__( 'Comma-separated list of post/page IDs', 'wptouch-pro' ),
-				'',
-				WPTOUCH_SETTING_BASIC,
-				'1.0'
+	$featured_settings = array(
+		wptouch_add_setting(
+			'list',
+			'featured_max_number_of_posts',
+			__( 'Maximum number of posts', 'wptouch-pro' ),
+			'',
+			WPTOUCH_SETTING_ADVANCED,
+			'2.0',
+			array(
+				'3' => __( '3 posts', 'wptouch-pro' ),
+				'5' => __( '5 posts', 'wptouch-pro' ),
+				'10' => __( '10 posts', 'wptouch-pro' )
 			)
-		);
-	} else {
-		$featured_settings = array();
-	}
+		),
+		wptouch_add_setting(
+			'checkbox',
+			'featured_autoslide',
+			__( 'Automatically slide', 'wptouch-pro' ),
+			'',
+			WPTOUCH_SETTING_BASIC,
+			'1.0.2'
+		),
+		wptouch_add_pro_setting(
+			'checkbox',
+			'featured_continuous',
+			__( 'Continuously slide', 'wptouch-pro' ),
+			'',
+			WPTOUCH_SETTING_BASIC,
+			'1.0.2'
+		),
+		wptouch_add_setting(
+			'checkbox',
+			'featured_grayscale',
+			__( 'Grayscale images (CSS 3 effect)', 'wptouch-pro' ),
+			__( 'Featured slider images will be in grayscale for devices that support CSS filters.', 'wptouch-pro' ),
+			WPTOUCH_SETTING_ADVANCED,
+			'1.0'
+		),
+		wptouch_add_setting(
+			'checkbox',
+			'featured_filter_posts',
+			__( 'Featured slider posts also show in listings', 'wptouch-pro' ),
+			'',
+			WPTOUCH_SETTING_BASIC,
+			'1.0.3'
+		),
+		wptouch_add_setting(
+			'list',
+			'featured_speed',
+			__( 'Slide transition speed', 'wptouch-pro' ),
+			'',
+			WPTOUCH_SETTING_ADVANCED,
+			'1.0.2',
+			array(
+				'slow' => __( 'Slow', 'wptouch-pro' ),
+				'normal' => __( 'Normal', 'wptouch-pro' ),
+				'fast' => __( 'Fast', 'wptouch-pro' )
+			)
+		),
+		wptouch_add_setting(
+			'list',
+			'featured_type',
+			'',
+			'',
+			WPTOUCH_SETTING_BASIC,
+			'1.0',
+			array(
+				'latest' => __( 'Show latest posts', 'wptouch-pro' ),
+				'tag' => __( 'Show posts from a specific tag', 'wptouch-pro' ),
+				'category' => __( 'Show posts from a specific category', 'wptouch-pro' ),
+				'post_type' => __( 'Show posts from a specific post type', 'wptouch-pro' ),
+				'posts' => __( 'Show only specific posts or pages', 'wptouch-pro' )
+			)
+		),
+		wptouch_add_setting(
+			'text',
+			'featured_tag',
+			__( 'Only this tag', 'wptouch-pro' ),
+			__( 'Enter the tag/category slug name', 'wptouch-pro' ),
+			WPTOUCH_SETTING_BASIC,
+			'1.0'
+		),
+		wptouch_add_setting(
+			'text',
+			'featured_tag',
+			__( 'Only this tag', 'wptouch-pro' ),
+			__( 'Enter the tag/category slug name', 'wptouch-pro' ),
+			WPTOUCH_SETTING_BASIC,
+			'1.0',
+			false //foundation_get_tag_list()
+		),
+		wptouch_add_setting(
+			'text',
+			'featured_category',
+			__( 'Only this category', 'wptouch-pro' ),
+			__( 'Enter the tag/category slug name', 'wptouch-pro' ),
+			WPTOUCH_SETTING_BASIC,
+			'1.0',
+			false //foundation_get_category_list()
+		),
+		wptouch_add_setting(
+			'list',
+			'featured_post_type',
+			__( 'Only this post type', 'wptouch-pro' ),
+			'',
+			WPTOUCH_SETTING_BASIC,
+			'3.5.3',
+			array_merge( array( 'Select Post Type' ), wptouch_custom_posts_get_list() )
+		),
+		wptouch_add_setting(
+			'text',
+			'featured_post_ids',
+			__( 'Comma-separated list of post/page IDs', 'wptouch-pro' ),
+			'',
+			WPTOUCH_SETTING_BASIC,
+			'1.0'
+		)
+	);
 
 	wptouch_add_page_section(
 		FOUNDATION_PAGE_GENERAL,

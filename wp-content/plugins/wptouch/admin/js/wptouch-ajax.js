@@ -1,9 +1,3 @@
-// Let's see if we're in a *happy* browser : )
-function wptouchIsWebKit() {
-	// Only recent versions of WebKit browsers have this
-	return ( '-webkit-filter' in document.body.style );
-}
-
 function wptouchSetupAjax() {
 	jQuery.ajaxSetup ({
 	    cache: false

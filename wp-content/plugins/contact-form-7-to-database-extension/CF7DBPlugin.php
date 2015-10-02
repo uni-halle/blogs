@@ -509,6 +509,9 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         require_once('CFDBMimeTypeExtensions.php');
         $mimeMap = new CFDBMimeTypeExtensions();
         $mimeType = $mimeMap->get_type_by_filename($fileInfo[0]);
+        if (ob_get_contents()) {
+            ob_clean(); // Fix bug where download files can be corrupted
+        }
         if ($mimeType) {
             header('Content-Type: ' . $mimeType);
             header("Content-Disposition: inline; filename=\"$fileInfo[0]\"");
@@ -860,12 +863,21 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
     public function createAdminMenu() {
         $roleAllowed = 'Administrator';
         $displayName = $this->getPluginDisplayName();
-        if ('false' == $this->getOption('HideAdminPanelFromNonAdmins', 'false')) {
+
+        $hideFromNonAdmins = $this->getOption('HideAdminPanelFromNonAdmins', 'false') != 'false';
+        if ($hideFromNonAdmins) {
+            $roleAllowed = 'Administrator';
+        } else {
             $roleAllowed = $this->getRoleOption('CanSeeSubmitData');
             if (!$roleAllowed) {
                 $roleAllowed = 'Administrator';
             }
         }
+
+        if (! $this->isUserRoleEqualOrBetterThan($roleAllowed)) {
+            return;
+        }
+
         $menuSlug = $this->getDBPageSlug();
 
         //create new top-level menu
@@ -924,7 +936,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
                          $this->getShortCodeBuilderPageSlug(),
                          array(&$this, 'showShortCodeBuilderPage'));
 
-        if ($this->isEditorActive()) {
+        if ($this->isEditorActive() && $this->canUserDoRoleOption('CanSeeSubmitData')) {
             add_submenu_page($menuSlug,
                     $displayName . ' Import',
                 __('Import', 'contact-form-7-to-database-extension'),

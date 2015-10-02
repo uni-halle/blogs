@@ -32,7 +32,7 @@ static function InitClass()
 	
 	// load lang
 	$lang_dir = defined('WPFB_LANG_DIR') ? ('../../'.WPFB_LANG_DIR) : basename(WPFB_PLUGIN_ROOT).'/languages';
-	load_plugin_textdomain(WPFB, 'wp-content/plugins/'.$lang_dir, $lang_dir);
+	load_plugin_textdomain('wp-filebase', false, $lang_dir);
 
 	add_action('parse_query', array(__CLASS__, 'ParseQuery')); // search
 	add_action('wp_enqueue_scripts', array(__CLASS__, 'EnqueueScripts'));
@@ -300,7 +300,7 @@ static function Footer() {
 	
 	if(!empty($wpfb_fb) && !WPFB_Core::$settings->disable_footer_credits) {
 		echo '<div id="wpfb-credits" name="wpfb-credits" style="'.esc_attr(WPFB_Core::$settings->footer_credits_style).'">';
-		printf(__('<a href="%s" title="Wordpress Download Manager Plugin" style="color:inherit;font-size:inherit;">Downloads served by WP-Filebase</a>',WPFB),'https://wpfilebase.com/');
+		printf(__('<a href="%s" title="Wordpress Download Manager Plugin" style="color:inherit;font-size:inherit;">Downloads served by WP-Filebase</a>','wp-filebase'),'https://wpfilebase.com/');
 		echo '</div>';
 	}
 }
@@ -454,7 +454,7 @@ static function GetOldCustomCssPath($path=null) {
 	return @is_dir($path) ? "$path/_wp-filebase.css" : null;
 }
 
-static function CreateTplFunc($parsed_tpl) {	return create_function('$f', "return ($parsed_tpl);"); }
+static function CreateTplFunc($parsed_tpl) {	return create_function('$f,$e=null', "return ($parsed_tpl);"); }
 
 
 static function PreSetPluginsTransientFilter($value)
@@ -470,7 +470,7 @@ static function PreSetPluginsTransientFilter($value)
 static function PluginsApiFilter($value, $action=null, $args=null)
 {
 	if(!is_object($args)) $args = (object)$args;
-	return ($action === 'plugin_information' && (strpos($args->slug,"wp-filebase")===0 || strpos($args->slug,"wpfb-")===0))
+	return ($action === 'plugin_information' && ( strncmp($args->slug, "wpfb-", 5) === 0))
 			  ? wpfb_call('ExtensionLib','GetApiPluginInfo', $args->slug)
 			  : $value;
 }

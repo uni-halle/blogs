@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 2.1.1
+	Version: 2.1.4
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -122,7 +122,7 @@ function wpinstagram_show_instructions() {
 function load_wpinstagram_footer(){
 	?>
 	<script>
-	        wpigplugJS.jQuery(document).ready(function($) {
+	        window.wpigplugJS.jQuery(document).ready(function($) {
 	        	try {
 		                $("ul.wpinstagram").find("a").each(function(i, e) {
 		                       	e = $(e);
@@ -130,25 +130,32 @@ function load_wpinstagram_footer(){
         		                e.attr('href', e.attr('data-original'));
 		                });
 
-        	        	$("ul.wpinstagram.live").find("a.mainI.video").on('click', function(event){
-        	        		event.stopPropagation();
-        	        		element = event.currentTarget;
-	        	        		$.fancybox({
-		        	                "transitionIn":                 "elastic",
-		        	                "height": '640',
-		        	                "width": '640',
-		        	                "content" : "<video width='640' height='640' controls poster='"+element.getAttribute('href')+"'> <source src='"+element.getAttribute('data-video')+"' type='video/mp4'><img src='"+element.getAttribute('href')+"'></video>",
-		                        	"transitionOut":                "elastic",
-	                        		"easingIn":                     "easeOutBack",
-	                		        "easingOut":                    "easeInBack",
-	        		                "titlePosition":                "over",   
-			                        "padding":                              0,
-	                        		"hideOnContentClick":   "false",
-	                        		"titleShow": false,
-	        		               			        	        })
-							return false;
-	        	        });
-				       	$("ul.wpinstagram.live").find("a.mainI.image").fancybox({
+        	        	var vids = $("ul.wpinstagram.live").find("a.mainI.video");
+        	        	if (vids && vids.length && vids.length > 0) {
+        	        		for (var i = 0; i < vids.length; i++) {
+        	        			var elem = vids[i];
+	        	        		elem.onclick = function(event){
+	        	        		event.stopPropagation();
+	        	        		var element = event.target || event.srcElement;
+	        	        		var element = element.parentNode;
+			        	        		$.fancybox({
+				        	                "transitionIn":                 "elastic",
+				        	                "height": '640',
+				        	                "width": '640',
+				        	                "content" : "<video width='640' height='640' controls poster='"+element.getAttribute('href')+"'> <source src='"+element.getAttribute('data-video')+"' type='video/mp4'><img src='"+element.getAttribute('href')+"'></video>",
+				                        	"transitionOut":                "elastic",
+			                        		"easingIn":                     "easeOutBack",
+			                		        "easingOut":                    "easeInBack",
+			        		                "titlePosition":                "over",   
+					                        "padding":                              0,
+			                        		"hideOnContentClick":   "false",
+			                        		"titleShow": false,
+			        		               			        	        })
+									return false;
+			        	        }
+	    	        		}
+	    	        	}
+				       $("ul.wpinstagram.live").find("a.mainI.image").fancybox({
 	        	                "transitionIn":                 "elastic",
 	                        	"transitionOut":                "elastic",
                         		"easingIn":                     "easeOutBack",
@@ -178,6 +185,7 @@ function load_wpinstagram_footer(){
         		                window.open(a, '_blank');
         		            });
 			} catch(error) {
+				console.log(error);
 				$("ul.wpinstagram").find("a").each(function(i, e) {
 		                       	e = $(e);
         	        	        e.attr('href', e.attr('data-href'));
@@ -212,15 +220,11 @@ class WPInstagram_Widget extends WP_Widget {
 		}
 
         if (is_active_widget('', '', 'wpinstagram-widget') && !is_admin()) {            
-                wp_enqueue_script("jquery");
-                wp_enqueue_script("wpigplug", $this->wpinstagram_path."js/wpigplug.js", Array('jquery'), null);
-                wp_enqueue_script("jquery.easing", $this->wpinstagram_path."js/jquery.easing-1.3.pack.js", Array('wpigplug'), null);
-                wp_enqueue_script("jquery.cycle", $this->wpinstagram_path."js/jquery.cycle.all.js", Array('wpigplug'), null);
+                wp_enqueue_script("wpigplug", $this->wpinstagram_path."js/wpigplug.min.js", Array(), null);
                 wp_enqueue_style('wpinstagram', $this->wpinstagram_path . 'wpinstagram.css', Array(), '0.5');
                 if ($withfancybox) {
-                        wp_enqueue_script("fancybox", $this->wpinstagram_path."js/jquery.fancybox-1.3.4.pack.js", Array('wpigplug'), null);
+                        wp_enqueue_script("fancybox", $this->wpinstagram_path."js/wpigplugfancybox.min.js", Array(), null);
                         wp_enqueue_style("fancybox-css", $this->wpinstagram_path."js/fancybox/jquery.fancybox-1.3.4.min.css", Array(), null);
-                        wp_enqueue_script("jquery.mousewhell", $this->wpinstagram_path."js/jquery.mousewheel-3.0.4.pack.js", Array('wpigplug'), null);
                         add_action('wp_footer', 'load_wpinstagram_footer');
                 }
         }

@@ -59,7 +59,6 @@ class CFDBPermittedFunctions {
             'strip_tags',
             'stripcslashes',
             'stripos',
-            'stripos',
             'strlen',
             'strnatcasecmp',
             'strnatcmp',

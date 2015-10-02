@@ -8,9 +8,6 @@
  */
 class SlideshowPlugin
 {
-	/** int $sessionCounter */
-	public static $sessionCounter = 0;
-
 	/**
 	 * Function deploy prints out the prepared html
 	 *
@@ -87,16 +84,16 @@ class SlideshowPlugin
 			return '<!-- WordPress Slideshow - No slideshows available -->';
 		}
 
-		// Log slideshow's issues to be able to track them on the page.
+		// Log slideshow's problems to be able to track them on the page.
 		$log = array();
 
-		// Get views
-		$views = SlideshowPluginSlideshowSettingsHandler::getViews($post->ID);
+		// Get slides
+		$slides = SlideshowPluginSlideshowSettingsHandler::getSlides($post->ID);
 
-		if (!is_array($views) ||
-			count($views) <= 0)
+		if (!is_array($slides) ||
+			count($slides) <= 0)
 		{
-			$log[] = 'No views were found';
+			$log[] = 'No slides were found';
 		}
 
 		// Get settings
@@ -117,11 +114,16 @@ class SlideshowPlugin
 		// Check if requested style is available. If not, use the default
 		list($styleName, $styleVersion) = SlideshowPluginSlideshowStylesheet::enqueueStylesheet($styleSettings['style']);
 
+		$data               = new stdClass();
+		$data->log          = $log;
+		$data->post         = $post;
+		$data->slides       = $slides;
+		$data->settings     = $settings;
+		$data->styleName    = $styleName;
+		$data->styleVersion = $styleVersion;
+
 		// Include output file to store output in $output.
-		$output = '';
-		ob_start();
-		include(SlideshowPluginMain::getPluginPath() . '/views/' . __CLASS__ . '/slideshow.php');
-		$output .= ob_get_clean();
+		$output = SlideshowPluginMain::getView(__CLASS__ . DIRECTORY_SEPARATOR . 'slideshow.php', $data);
 
 		// Enqueue slideshow script
 		wp_enqueue_script(
@@ -160,21 +162,22 @@ class SlideshowPlugin
 			}
 		}
 
-		// Include slideshow settings by localizing them
-		wp_localize_script(
-			'slideshow-jquery-image-gallery-script',
-			'SlideshowPluginSettings_' . $post->ID,
-			$settings
-		);
+		if (!SlideshowPluginGeneralSettings::getEnableLazyLoading())
+		{
+			// Include slideshow settings by localizing them
+			wp_localize_script(
+				'slideshow-jquery-image-gallery-script',
+				'SlideshowPluginSettings_' . $post->ID,
+				$settings
+			);
 
-		// Include the location of the admin-ajax.php file
-		wp_localize_script(
-			'slideshow-jquery-image-gallery-script',
-			'slideshow_jquery_image_gallery_script_adminURL',
-			admin_url()
-		);
-
-		self::$sessionCounter++;
+			// Include the location of the admin-ajax.php file
+			wp_localize_script(
+				'slideshow-jquery-image-gallery-script',
+				'slideshow_jquery_image_gallery_script_adminURL',
+				admin_url()
+			);
+		}
 
 		// Return output
 		return $output;

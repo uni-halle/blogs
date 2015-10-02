@@ -163,37 +163,11 @@ AAM.prototype.initUI = function() {
     //Retrieve settings for default segment
     this.retrieveSettings();
     
-    //init contextual menu if necessary
-    this.initContextualMenu();
-};
-
-/**
- * Initial Contextual Menu
- * 
- * @returns void
- * 
- * @access public
- */
-AAM.prototype.initContextualMenu = function(){
-    var _this = this;
-    if (parseInt(aamLocal.contextualMenu) !== 1){
-        jQuery('#contextual-help-link-wrap').pointer({
-                pointerClass : 'aam-help-pointer',
-                pointerWidth : 300,
-                content: aamLocal.labels['AAM Documentation'],
-                position: {
-                        edge : 'top',
-                        align : 'right'
-                },
-                close: function() {
-                    jQuery.ajax(aamLocal.ajaxurl, {
-                        type: 'POST',
-                        dataType: 'json',
-                        data: _this.compileAjaxPackage('discardHelp', false)
-                    });
-                }
-        }).pointer('open');
-    }
+    //notification message
+    jQuery('#close-aam-notification').bind('click', function (event) {
+        event.preventDefault();
+        jQuery('.aam-notification').remove();
+    });
 };
 
 /**

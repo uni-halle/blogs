@@ -1369,4 +1369,27 @@ class ShareaholicUtilities {
 
     return $user_info;
   }
+
+  /**
+   * Shorten a string to a certain character limit
+   * If the limit is reached, then return the truncated text
+   *
+   * @param {String} $text the text to truncate
+   * @param {Number} $char_count the max number of characters
+   * @return {String} the truncated text
+   */
+  public static function truncate_text($text, $char_count) {
+    $words = preg_split('/\s+/', $text);
+    $truncated_text = '';
+
+    foreach($words as $word) {
+      if (strlen($word) + strlen($truncated_text) >= $char_count) {
+        break;
+      }
+
+      $truncated_text .= ' ' . $word;
+    }
+
+    return trim($truncated_text);
+  }
 }

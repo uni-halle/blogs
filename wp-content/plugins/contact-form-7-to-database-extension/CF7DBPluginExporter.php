@@ -30,7 +30,9 @@ class CF7DBPluginExporter {
 
 //        print_r($params);
         foreach ($params as $key => $value) {
-            $params[$key] = stripslashes($value);
+            if (is_string($value)) {
+                $params[$key] = stripslashes($value);
+            }
         }
 
         // Assumes coming from CF7DBPlugin::whatsInTheDBPage()

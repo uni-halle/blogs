@@ -355,9 +355,10 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		 * Execute a SQL query on the Joomla database
 		 * 
 		 * @param string $sql SQL query
+		 * @param bool $display_error Display the error?
 		 * @return array Query result
 		 */
-		public function joomla_query($sql) {
+		public function joomla_query($sql, $display_error = true) {
 			global $joomla_db;
 			$result = array();
 
@@ -370,7 +371,9 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				}
 
 			} catch ( PDOException $e ) {
-				$this->display_admin_error(__('Error:', 'fgj2wp') . $e->getMessage());
+				if ( $display_error ) {
+					$this->display_admin_error(__('Error:', 'fgj2wp') . $e->getMessage());
+				}
 			}
 			return $result;
 		}

@@ -95,9 +95,14 @@ static function Display()
 						$cat->Delete();
 				}
 			}
+			
+			if(!empty($_REQUEST['redirect']) && !empty($_REQUEST['redirect_to'])) {
+				WPFB_AdminLite::JsRedirect($_REQUEST['redirect_to']);
+				exit;
+			}
 ?>
 	<h2><?php
-	echo str_replace(array('(<','>)'),array('<','>'), sprintf(__('Manage Categories (<a href="%s">add new</a>)', WPFB), '#addcat" class="add-new-h2'));
+	echo str_replace(array('(<','>)'),array('<','>'), sprintf(__('Manage Categories (<a href="%s">add new</a>)','wp-filebase'), '#addcat" class="add-new-h2'));
 	if ( isset($_GET['s']) && $_GET['s'] )
 		printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;'/*def*/) . '</span>', esc_html(stripslashes($_GET['s'])));
 	?></h2>
@@ -156,13 +161,13 @@ static function Display()
 				<th scope="col" class="check-column"><input type="checkbox" /></th>
 				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_name') ?>"><?php _e('Name'/*def*/) ?></a></th>
 				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_description') ?>"><?php _e('Description'/*def*/) ?></a></th>
-				<th scope="col" class="num"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_num_files') ?>"><?php _e('Files', WPFB) ?></a></th>
+				<th scope="col" class="num"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_num_files') ?>"><?php _e('Files','wp-filebase') ?></a></th>
 				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_parent') ?>"><?php _e('Parent Category'/*def*/) ?></a></th>
 				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_path') ?>"><?php _e('Path'/*def*/) ?></a></th>
-				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_user_roles') ?>"><?php _e('Access Permission',WPFB) ?></a></th>
+				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_user_roles') ?>"><?php _e('Access Permission','wp-filebase') ?></a></th>
 
-				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_owner') ?>"><?php _e('Owner',WPFB) ?></a></th>
-				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_order') ?>"><?php _e('Custom Sort Order',WPFB) ?></a></th>
+				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_owner') ?>"><?php _e('Owner','wp-filebase') ?></a></th>
+				<th scope="col"><a href="<?php echo WPFB_Admin::AdminTableSortLink('cat_order') ?>"><?php _e('Custom Sort Order','wp-filebase') ?></a></th>
 			</tr>
 			</thead>
 			<tbody id="the-list" class="list:cat">
@@ -183,7 +188,7 @@ static function Display()
 	<br class="clear" />
 	
 	<?php if ( WPFB_Core::CurUserCanCreateCat() ) : ?>
-		<p><?php _e('<strong>Note:</strong><br />Deleting a category does not delete the files in that category. Instead, files that were assigned to the deleted category are set to the parent category.', WPFB) ?></p><?php
+		<p><?php _e('<strong>Note:</strong><br />Deleting a category does not delete the files in that category. Instead, files that were assigned to the deleted category are set to the parent category.','wp-filebase') ?></p><?php
 		WPFB_Admin::PrintForm('cat');
 		endif;
 

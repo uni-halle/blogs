@@ -15,7 +15,7 @@ class WPFB_Item {
 	static $id_var;
 	
 	
-	function WPFB_Item($db_row=null)
+	function __construct($db_row=null)
 	{
 		if(!empty($db_row))
 		{
@@ -27,6 +27,8 @@ class WPFB_Item {
 			$this->is_category = isset($this->cat_id);
 		}
 	}
+	
+	function __toString() {	return $this->GetName() . ' ('.($this->is_file?'file':'cat'). ' '.$this->GetId().')'; }
 	
 	function GetId(){return (int)($this->is_file?$this->file_id:$this->cat_id);}	
 	function GetName(){return $this->is_file?$this->file_name:$this->cat_folder;}	
@@ -129,7 +131,7 @@ class WPFB_Item {
 	function GetEditUrl()
 	{
 		$fc = ($this->is_file?'file':'cat');
-		return admin_url("admin.php?page=wpfilebase_{$fc}s&action=edit{$fc}&{$fc}_id=".$this->GetId());
+		return admin_url("admin.php?page=wpfilebase_{$fc}s&action=edit{$fc}&{$fc}_id=".$this->GetId().(defined('DOING_AJAX') ? "&redirect_referer=1" : ""));
 	}
 	
 	function GetLocalPath($refresh=false){return WPFB_Core::UploadDir() . '/' . $this->GetLocalPathRel($refresh);}	
@@ -216,10 +218,29 @@ class WPFB_Item {
 		return $this->IsAncestorOf($p);
 	}
 	
+	/**
+	 * 
+	 * @staticvar WP_User $current_user
+	 * @param type $for_tpl
+	 * @param WP_User $user
+	 * @return boolean
+	 */
 	function CurUserCanAccess($for_tpl=false, $user = null)
 	{
-		$user = is_null($user) ? wp_get_current_user() : (empty($user->roles) ? new WP_User($user) : $user);
-		$user->get_role_caps();
+		static $current_user = null;
+		if(!$current_user) {
+			$current_user = wp_get_current_user();
+			$current_user->get_role_caps();
+		}
+		
+		if(!is_null($user)) {
+			if(empty($user->roles)) $user = new WP_User($user);
+			if($user->ID == $current_user->ID)
+				$user = $current_user;
+			else
+				$user->get_role_caps();
+		} else
+			$user = $current_user;
 		
 		if( ($for_tpl && !WPFB_Core::$settings->hide_inaccessible) || in_array('administrator',$user->roles) || ($this->is_file && $this->CurUserIsOwner($user)) )
 			return true;
@@ -289,10 +310,11 @@ class WPFB_Item {
 		
 		self::$tpl_uid++;
 		$f =& $this;
+                $e = null; // extra data
 		return eval("return ($parsed_tpl);");
 	}
 	
-	function GenTpl2($tpl_tag=null, $load_js=true)
+	function GenTpl2($tpl_tag=null, $load_js=true, $extra_data = null)
 	{
 		static $tpl_funcs = array('file' => array(), 'cat' => array());
 		
@@ -310,7 +332,10 @@ class WPFB_Item {
 		
 		self::$tpl_uid = (defined('DOING_AJAX') && DOING_AJAX) ? ($this->GetId().''.(round(microtime()*1000) % 1000)) : (self::$tpl_uid+1);
 			
-		return $tpl_funcs[$type][$tpl_tag]($this);
+		if($extra_data && !is_object($extra_data))
+			$extra_data = (object)$extra_data;
+		
+		return $tpl_funcs[$type][$tpl_tag]($this,$extra_data);
 	}
 	
 	function GetThumbPath($refresh=false)
@@ -405,6 +430,40 @@ class WPFB_Item {
 		return $files;
 	}
 	
+	/**
+	 * 
+	 * @staticvar function $parent_walker
+	 * @param boolean $recursive
+	 * @return WPFB_File[]
+	 */
+	function GetChildFilesFast($recursive=false)
+	{
+		static $parent_walker;
+		if(!$parent_walker) $parent_walker = create_function ('&$f,$fid,$pid', 'if($f->file_category != $pid) $f = null;');
+		
+		if($this->is_file)
+			return array($this->GetId() => $this);
+		
+		// get all direct child files (including secondary)
+		if(!isset($this->cat_child_files))
+			$this->cat_child_files = WPFB_File::GetFiles2(WPFB_File::GetSqlCatWhereStr($this->cat_id));
+		
+		
+		$files = $this->cat_child_files;
+		
+		// if not recursive, exclude secondary category links with GetSqlCatWhereStr
+		if(!$recursive) {	
+			array_walk($files, $parent_walker, $this->cat_id);
+			return array_filter($files);
+		}
+		
+		$cats = $this->GetChildCats(false);
+		foreach(array_keys($cats) as $i)
+			$files += $cats[$i]->GetChildFilesFast(true);		
+		
+		return $files;
+	}
+	
 	function GetReadPermissions() {
 		if(!is_null($this->_read_permissions)) return $this->_read_permissions; //caching
 		$rs = $this->is_file?$this->file_user_roles:$this->cat_user_roles;
@@ -428,6 +487,7 @@ class WPFB_Item {
 		return ($uid > 0 && $this->GetOwnerId() == $uid);
 	}
 	
+	
 	function ChangeCategoryOrName($new_cat_id, $new_name=null, $add_existing=false, $overwrite=false)
 	{
 		// 1. apply new values (inherit permissions if nothing (Everyone) set!)
@@ -436,6 +496,8 @@ class WPFB_Item {
 		// 4. notify parents
 		// 5. update child paths
 		if(empty($new_name)) $new_name = $this->GetName();
+		elseif(!$add_existing) $new_name = sanitize_file_name($new_name); // also removes ()!
+		
 		$this->Lock(true);
 		
 		$new_cat_id = intval($new_cat_id);
@@ -452,8 +514,24 @@ class WPFB_Item {
 		$cat_changed = $new_cat_id != $old_cat_id;
 		
 		if($cat_changed && $new_cat_id > 0 && $this->IsAncestorOf($new_cat)) {
-			return array( 'error' => __('Cannot move category into a sub-category of itself.',WPFB));
+			return array( 'error' => __('Cannot move category into a sub-category of itself.','wp-filebase'));
 		}
+		
+		// strip accents/umlauts
+		if($new_name != $old_name) {
+			if($this->is_file && $add_existing) {				
+				$this->file_name_original = rawurldecode($new_name); // expect utf8 chars to be urlencoded on disk, so decode them
+			} else {
+				$prev_new_name = $new_name;
+				$new_name = remove_accents($new_name);
+				if(wpfb_call('Misc','IsUtf8',$new_name)) $new_name = rawurlencode ($new_name);
+				if($this->is_file) $this->file_name_original = $prev_new_name;
+			}
+		}
+		
+		// unset original name if equal to actual
+		if($this->is_file && $new_name === $this->file_name_original)
+			$this->file_name_original = '';
 		
 		if($this->is_file) {
 			$this->file_category = $new_cat_id;
@@ -487,14 +565,15 @@ class WPFB_Item {
 							@unlink($new_path);
 					}
 				} else {
-					// rename item if filename collision (ignore if coliding with $this)
-					while(@file_exists($new_path) || (!is_null($ex_file = WPFB_File::GetByPath($new_path_rel)) && !$this->Equals($ex_file))) {
+					// rename item if filename collision (ignore if coliding with $this and ignore existing folders that does not belong to categories)
+					while( (@file_exists($new_path) && ($this->is_file || !is_dir($new_path) || !is_null(WPFB_Item::GetByPath($new_path_rel))))
+							  || (!is_null($ex_file = WPFB_Item::GetByPath($new_path_rel)) && !$this->Equals($ex_file))) {
 						$i++;	
 						if($this->is_file) {
 							$p = strrpos($name, '.');
-							$this->file_name = ($p <= 0) ? "$name($i)" : (substr($name, 0, $p)."($i)".substr($name, $p));
+							$this->file_name = ($p <= 0) ? "{$name}_{$i}" : (substr($name, 0, $p)."_$i".substr($name, $p));
 						} else
-							$this->cat_folder = "$name($i)";				
+							$this->cat_folder = "{$name}_{$i}";				
 						
 						$new_path_rel = $this->GetLocalPathRel(true);
 						$new_path = $this->GetLocalPath();
@@ -502,10 +581,13 @@ class WPFB_Item {
 				}
 			}
 			
+                        
 			// finally move it!
 			if(!empty($old_name) && @file_exists($old_path)) {
-				if($this->is_file && $this->IsLocal()) {
-					if(!@rename($old_path, $new_path))
+                                //echo "MOVING! $old_path -> $new_path";
+                                
+				if($this->is_file) {
+					if(!@rename($old_path, c))
 						return array( 'error' => sprintf('Unable to move file %s!', $old_path));
 					@chmod($new_path, octdec(WPFB_PERM_FILE));
 				} else {
@@ -527,7 +609,7 @@ class WPFB_Item {
 				if($i > 1) {
 					$p = strrpos($thumb_path, '-');
 					if($p <= 0) $p = strrpos($thumb_path, '.');
-					$thumb_path = substr($thumb_path, 0, $p)."($i)".substr($thumb_path, $p);
+					$thumb_path = substr($thumb_path, 0, $p)."_$i".substr($thumb_path, $p);
 					$this->file_thumbnail = basename($thumb_path);			
 				}
 				if(!is_dir(dirname($thumb_path))) WPFB_Admin::Mkdir(dirname($thumb_path));

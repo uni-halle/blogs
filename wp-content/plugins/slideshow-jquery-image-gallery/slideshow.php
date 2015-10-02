@@ -3,7 +3,7 @@
  Plugin Name: Slideshow
  Plugin URI: http://wordpress.org/extend/plugins/slideshow-jquery-image-gallery/
  Description: The slideshow plugin is easily deployable on your website. Add any image that has already been uploaded to add to your slideshow, add text slides, or even add a video. Options and styles are customizable for every single slideshow on your website.
- Version: 2.2.25
+ Version: 2.3.1
  Requires at least: 3.5
  Author: StefanBoonstra
  Author URI: http://stefanboonstra.com/
@@ -22,7 +22,7 @@
 class SlideshowPluginMain
 {
 	/** @var string $version */
-	static $version = '2.2.25';
+	static $version = '2.3.1';
 
 	/**
 	 * Bootstraps the application by assigning the right functions to
@@ -37,7 +37,8 @@ class SlideshowPluginMain
 		// Initialize localization on init
 		add_action('init', array(__CLASS__, 'localize'));
 
-		// Include backend scripts and styles
+		// Enqueue hooks
+		add_action('wp_enqueue_scripts'   , array(__CLASS__, 'enqueueFrontendScripts'));
 		add_action('admin_enqueue_scripts', array(__CLASS__, 'enqueueBackendScripts'));
 
 		// Ajax requests
@@ -66,7 +67,34 @@ class SlideshowPluginMain
 	}
 
 	/**
-	 * Includes backend script.
+	 * Enqueues frontend scripts and styles.
+	 *
+	 * Should always be called on the wp_enqueue_scripts hook.
+	 *
+	 * @since 2.3.0
+	 */
+	static function enqueueFrontendScripts()
+	{
+		// Enqueue slideshow script if lazy loading is enabled
+		if (SlideshowPluginGeneralSettings::getEnableLazyLoading())
+		{
+			wp_enqueue_script(
+				'slideshow-jquery-image-gallery-script',
+				self::getPluginUrl() . '/js/min/all.frontend.min.js',
+				array('jquery'),
+				self::$version
+			);
+
+			wp_localize_script(
+				'slideshow-jquery-image-gallery-script',
+				'slideshow_jquery_image_gallery_script_adminURL',
+				admin_url()
+			);
+		}
+	}
+
+	/**
+	 * Enqueues backend scripts and styles.
 	 *
 	 * Should always be called on the admin_enqueue_scrips hook.
 	 *
@@ -144,6 +172,44 @@ class SlideshowPluginMain
 	static function getPluginPath()
 	{
 		return dirname(__FILE__);
+	}
+
+	/**
+	 * Outputs the passed view. It's good practice to pass an object like an stdClass to the $data variable, as it can
+	 * be easily checked for validity in the view itself using "instanceof".
+	 *
+	 * @since 2.3.0
+	 * @param string   $view
+	 * @param stdClass $data (Optional, defaults to stdClass)
+	 */
+	static function outputView($view, $data = null)
+	{
+		if (!($data instanceof stdClass))
+		{
+			$data = new stdClass();
+		}
+
+		$file = self::getPluginPath() . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $view;
+
+		if (file_exists($file))
+		{
+			include $file;
+		}
+	}
+
+	/**
+	 * Uses self::outputView to render the passed view. Returns the rendered view instead of outputting it.
+	 *
+	 * @since 2.3.0
+	 * @param string   $view
+	 * @param stdClass $data (Optional, defaults to null)
+	 * @return string
+	 */
+	static function getView($view, $data = null)
+	{
+		ob_start();
+		self::outputView($view, $data);
+		return ob_get_clean();
 	}
 
 	/**

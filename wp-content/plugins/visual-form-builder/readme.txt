@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G87A9
 Tags: form, forms, contact form, contact forms, form, forms, form to email, email form, email, input, validation, jquery, shortcode, form builder, contact form builder, form manager, form creator
 Requires at least: 3.5
 Tested up to: 4.3
-Stable tag: 2.8.5
+Stable tag: 2.8.6
 License: GPLv2 or later
 
 Build beautiful, fully functional contact forms in only a few minutes without writing PHP, CSS, or HTML.
@@ -236,6 +236,10 @@ function my_scripts_method() {
 4. Rendered form on a page
 
 == Changelog ==
+
+**Version 2.8.6 - Sep 21, 2015**
+
+* Update to allow translations to use the WP_LANG_DIR folder for language packs
 
 **Version 2.8.5 - Sep 09, 2015**
 
@@ -668,6 +672,9 @@ function my_scripts_method() {
 * Plugin launch!
 
 == Upgrade Notice ==
+
+= 2.8.6 =
+Update to allow translations to use the WP_LANG_DIR folder for language packs
 
 = 2.8.5 =
 Better secure entry detail page against XSS vulnerability

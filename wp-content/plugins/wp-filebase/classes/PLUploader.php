@@ -22,7 +22,7 @@
 	
 	var $prefix;
 	
-	function WPFB_PLUploader($multi=true, $images_only=false)
+	function __construct($multi=true, $images_only=false)
 	{
 		static $footer_added = false;
 		
@@ -65,7 +65,7 @@ public function Display()
 		Drag &amp; Drop
 	</div>
 	<br />
-   <a id="<?php echo $this->prefix; ?>pickfiles" href="#" class="button"><?php _e($this->multi ? 'Select Files' : 'Select File',WPFB); ?></a>
+   <a id="<?php echo $this->prefix; ?>pickfiles" href="#" class="button"><?php _e($this->multi ? 'Select Files' : 'Select File','wp-filebase'); ?></a>
 	<br />
 	<div id="<?php echo $this->prefix; ?>error"></div>
 </div>
@@ -214,7 +214,7 @@ $plupload_init = array(
 
 		uploader.bind('UploadProgress', function(up, file) {
 			var item = jQuery('#'+file.dom_id);
-			jQuery('.bar', item).width( (200 * file.loaded) / file.size );
+			jQuery('.bar', item).width( ''+((100 * file.loaded) / file.size)+'%' );
 			jQuery('.percent', item).html( file.percent + '%' );
 			<?php if(!empty($this->js_upload_progress)) echo $this->js_upload_progress.'(file);'; ?>
 		});

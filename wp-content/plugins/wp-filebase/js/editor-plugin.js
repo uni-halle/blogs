@@ -101,9 +101,10 @@ function editorInsert(str, close)
 	return false;
 }
 
-function insertTag(tagObj)
+function insertTag(tagObj, tagName)
 {
-	var str = '[wpfilebase';
+	if(!tagName) tagName = 'wpfilebase';
+	var str = '['+tagName;
 	var q, v, content;
 	
 	if(typeof(tagObj.content) == 'string' && tagObj.content) {

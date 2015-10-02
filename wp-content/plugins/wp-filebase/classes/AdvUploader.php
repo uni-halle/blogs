@@ -30,7 +30,7 @@
 		return $json ? trim(json_encode($dat),'{}') : $dat;
 	}
 	
-	function WPFB_AdvUploader($form_url, $is_edit=false)
+	function __construct($form_url, $is_edit=false)
 	{
 		$this->form_url = $form_url;
 		$this->id = uniqid();

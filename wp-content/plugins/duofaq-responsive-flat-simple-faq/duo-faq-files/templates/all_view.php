@@ -33,7 +33,7 @@
             <?php foreach($posts as $post) { ?>
             <h3 class="accordion_title"><?php echo $post->post_title; ?></h3>
             <div class="smartItemsDetails">
-                <?php echo wpautop( $post->post_content ); ?>
+                <?php echo wpautop( do_shortcode( $post->post_content ) ); ?>
             </div>
             <?php } ?>
         </div>

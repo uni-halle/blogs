@@ -41,7 +41,13 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 		public function check_modules() {
 			$premium_url = 'http://www.fredericgilles.net/fg-joomla-to-wordpress/';
 			$message_premium = __('Your Joomla database contains %s. You need the <a href="%s" target="_blank">Premium version</a> to import them.', 'fgj2wp');
-			$message_addon = __('Your Joomla database contains %s. You need the <a href="%s" target="_blank">Premium version</a> and the <a href="%s" target="_blank">%s</a> to import them.', 'fgj2wp');
+			if ( defined('FGJ2WPP_LOADED') ) {
+				// Message for the Premium version
+				$message_addon = __('Your Joomla database contains %1$s. You need the <a href="%3$s" target="_blank">%4$s</a> to import them.', 'fgj2wp');
+			} else {
+				// Message for the free version
+				$message_addon = __('Your Joomla database contains %1$s. You need the <a href="%2$s" target="_blank">Premium version</a> and the <a href="%3$s" target="_blank">%4$s</a> to import them.', 'fgj2wp');
+			}
 			$modules = array(
 				array('users', 2,
 					'fg-joomla-to-wordpress-premium/fg-joomla-to-wordpress-premium.php',
@@ -160,6 +166,12 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 						}
 					}
 			}
+			
+			// Check if we need the WPML module
+			if ( ($this->count_languages() > 2) && !is_plugin_active('fg-joomla-to-wordpress-premium-wpml-module/fgj2wp-wpml.php') ) {
+				$message = sprintf($message_addon, __('several languages', 'fgj2wp'), $premium_url, $premium_url . 'wpml/', __('WPML add-on', 'fgj2wp'));
+				$this->plugin->display_admin_error($message);
+			}
 		}
 
 		/**
@@ -169,22 +181,33 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 		 * @return int Number of rows
 		 */
 		private function count($table) {
-			global $joomla_db;
+			$prefix = $this->plugin->plugin_options['prefix'];
+			$sql = "SELECT COUNT(*) AS nb FROM ${prefix}${table}";
+			return $this->count_sql($sql);
+		}
+
+		/**
+		 * Count the number languages used (Joomla 2.5+)
+		 *
+		 * @return int Number of languages used
+		 */
+		private function count_languages() {
+			$prefix = $this->plugin->plugin_options['prefix'];
+			$sql = "SELECT COUNT(DISTINCT `language`) AS nb FROM ${prefix}content AS nb";
+			return $this->count_sql($sql);
+		}
+
+		/**
+		 * Execute the SQL request and return the nb value
+		 *
+		 * @param string $sql SQL request
+		 * @return int Count
+		 */
+		private function count_sql($sql) {
 			$count = 0;
-
-			try {
-				$prefix = $this->plugin->plugin_options['prefix'];
-				$sql = "
-					SELECT COUNT(*) AS nb
-					FROM ${prefix}${table}
-				";
-				$query = $joomla_db->query($sql, PDO::FETCH_ASSOC);
-				if ( is_a($query, 'PDOStatement') ) {
-					$result = $query->fetch();
-					$count = $result['nb'];
-				}
-
-			} catch ( PDOException $e ) {
+			$result = $this->plugin->joomla_query($sql, false);
+			if ( isset($result[0]['nb']) ) {
+				$count = $result[0]['nb'];
 			}
 			return $count;
 		}

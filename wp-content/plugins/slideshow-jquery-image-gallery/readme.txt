@@ -5,7 +5,7 @@ Donate link: http://stefanboonstra.com/donate-to-slideshow/
 Tags: responsive, slideshow, slider, slide show, images, image, photo, video, text, gallery, galleries, jquery, javascript
 Requires at least: 3.5
 Tested up to: 4.3
-Stable tag: 2.2.25
+Stable tag: 2.3.1
 License: GPLv2
 
 Integrate a fancy slideshow in just five steps. - Rainbows. Rainbows everywhere.
@@ -175,6 +175,15 @@ personal taste.
 
 
 == Changelog ==
+
+= 2.3.1 =
+*   Fixed: Text and video slides could not be inserted.
+
+= 2.3.0 =
+*   Refactored the slideshow plugin's backend codebase to prepare for a larger backend rewrite.
+*   Removed backwards compatibility on inserting images with pre-3.5 versions of WordPress.
+*   Slideshows now work on infinite scroll and single page websites through the "Enable lazy loading" option.
+*   Fixed: YouTube thumbnail image disappeared after clicking the slideshow's navigation buttons.
 
 = 2.2.25 =
 *   Changed localization domain to match the plugin's slug in order to support language packs.

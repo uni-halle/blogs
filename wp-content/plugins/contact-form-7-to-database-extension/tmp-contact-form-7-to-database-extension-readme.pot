@@ -1,0 +1,1050 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Contact Form DB"
+msgstr ""
+
+#. Short description.
+msgid "Saves submitted form data to the database. Export the data to a file or use short codes to display it."
+msgstr ""
+
+#. Screenshot description.
+msgid "Admin Panel view of submitted form data"
+msgstr ""
+
+#. Found in description list item.
+msgid "JetPack Contact Form plugin"
+msgstr ""
+
+#. Found in description list item.
+msgid "Contact Form 7 (CF7) plugin"
+msgstr ""
+
+#. Found in description list item.
+msgid "Fast Secure Contact Form (FSCF) plugin"
+msgstr ""
+
+#. Found in description list item.
+msgid "Gravity Forms plugin"
+msgstr ""
+
+#. Found in description list item.
+msgid "WR ContactForm plugin"
+msgstr ""
+
+#. Found in description list item.
+msgid "Quform plugin (BETA)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Ninja Forms plugin (BETA)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Caldera Forms plugin (BETA)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Enfold theme forms"
+msgstr ""
+
+#. Found in description list item.
+msgid "\"Contact form DB\" to view and export form submission data"
+msgstr ""
+
+#. Found in description list item.
+msgid "\"Database Short Code\" page to generate short codes and exports"
+msgstr ""
+
+#. Found in description list item.
+msgid "\"Database Options\" to change configuration parameters"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "By simply installing the plugin, it will automatically begin to capture form submissions from:"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Other form submissions can be saved with the addition of the <a href=\"http://cfdbplugin.com/?page_id=508\">[cfdb-save-form-post]</a> short code on the target submission page."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "This plugin provides three administration pages in the administration area under the \"Contact form DB\" submenu."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Displaying Saved Data in Posts and Pages"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Your WordPress site must be running PHP5 or better. This plugin will fail to activate if your site is running PHP4."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Be sure that one or more of the supported form plugins installed and activated."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: where download files can be corrupted"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: fixing rare stripslash() error"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: fixes to permissions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: Capturing Gravity Forms List element when it has columns"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Capturing file uploads from WR Contact Form 1.1.10"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: Occasional problem with language translations being initialized"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor update to Contact Form 7 integration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix to Google Spreadsheet Live Data export (failing to login)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix for exporting forms with a single quote in the name"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix error on systems where php_uname() is not available"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Allowing various PHP math functions in \"trans\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for some cases where cannot delete row in administration page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Additional HTML-injection protections"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New option when Editor is installed [cfdb-datatable edit=\"cells\"] enables editing of table cells but not column headers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NaturalSortByMultiField transform now supports up to 10 fields to sort on"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now captures form submission from Caldera Forms"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Formatting changes on CFDB Options page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now captures form submission from Quform plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now captures form submission from Ninja Forms plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Reduced cell padding in admin table"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed typo in new option"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now captures Enfold Theme forms"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New on Options page: \"Use fixed width in Admin datatable\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Taiwanese language update"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed Delete button on Admin entry detail page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Security patch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix to work with Gravity Forms 1.9.1.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor fix to short code builder page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tweak to install procedure"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor tweak to allow edit mode in short code to be set via $_GET and $_POST"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Encoding fix on administration page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now captures data from WR ContactForm (BETA)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New option to allow only Administrators to see CFDB administration screens"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New option to send CFDB errors to a file to email"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix to avoid rare instances of duplicate submit_time"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix related to displaying form names in administration panel with certain characters"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix for Gravity Form integration. Sometimes field value was not captured where there are multiple fields of the same name but only one shown based on conditional field definition."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed icon in admin panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Dutch translation update"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added icons to admin panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Additional XSS protection for admin panels"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Swedish translation update"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Better XSS protection for admin panels"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix in [cfdb-html] variable substitution when data for column is not present."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Generating the [submit_time] tag for Contact Form 7 is now an option in the Options page and is off by default to avoid the post being flagged as spam"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added some protection against cross site scripting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: No longer generating 'submit_url' for Contact Form 7 email because it seems to cause CF7 to think it is a spam submission and it drops it."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: when form name has commas in it, retrieving its data from the DB did not work because plugin was treating it as a list of form names"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix to capturing Gravity Forms list values"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix in \"trans\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Work-around for WP bug https://core.trac.wordpress.org/ticket/29658"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix related to Excel Internet Query export"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix when HTML special characters in short code attributes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix related to \"trans\" with multiple transform functions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added delete button in admin screen viewing single submission"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can now include in CF7 emails the CFDB [submit_time] and [submit_url]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixes to handling line breaks in [cfdb-json]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "PHP fix: work-around for bug in PHP 5.3.0 - 5.3.8 https://bugs.php.net/bug.php?id=43200"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: [cfdb-export-link] was not processing all short code options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: on some system submit_time timestamp lost precision due to being represented in scientific notation. This can cause more than one submission being seen as the same."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix to error message introduced in 2.8.4"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New short code [cfdb-save-form-maker-post] can be used to capture data from Form Maker plugin."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: (recently introduced in 2.8) Fixed handling of filter expressions with $_POST(field) where field is blank"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: Fix for rarely experienced bug where plugin is confused about needing to upgrade itself"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "IMPORTANT: Addition fix to work properly with Contact Form 7 version 3.9"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "IMPORTANT: Contact Form 7 users will need to update to this version when they update to Contact Form 7 version 3.9 otherwise data will no longer be saved in the database!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: cases where blank version saved to DB was causing the plugin to keep trying to upgrade"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: data with blank column name was causing query to fail and data not to be displayed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: transform re-assigning the value of a column was creating a duplicate column"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can put functions in short code filters. <a href=\"http://cfdbplugin.com/?page_id=1073\">See documentation</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can transform data coming into short codes by assigning functions or classes in the new \"trans\" short code attribute. <a href=\"http://cfdbplugin.com/?page_id=1076\">See documentation</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "All short code options can be set to $_POST(value), $_GET(value), $_COOKIE(value)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Most short codes now allows for an optional \"before\" and \"after\" section"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Admin page view now has links on each row to bring up a window with just that entry's data. Easier to read and print (and edit if Editor extension is installed)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Support for MySqli which should fix some character encoding issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Returning null from cfdb_form_data filter now stops the form from saving"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: hook to save form data was not returning \"true\" an causing subsequent hooks for other plugins to not be called."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Simpler Google Live Data implementation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-json] now supports \"header\" and \"headers\" options. Short code builder page now generates JSON export link."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: short code builder page for Google Live Data typo: was giving the spreadsheet function as \"cfdbddata\" instead of \"cfdbdata\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for mysql_real_escape_string error"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Google Spreadsheet Live Data now fixed. But users need to regenerate Google script code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Google Spreadsheet Live Data function now supports all standard short code options (filter, show, hide, etc.)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Short Code Builder page now can build function call to be used in Google Spreadsheet"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-export-link], CSV exports and Excel export Links now support \"headers\" options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Integration with wp-parsidate to shows Shamsi(Jalali) dates."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Integration with Gravity Forms"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation updates"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: When option was set, Cookies were not being captured with the form submission unless explicitly listed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option page has \"have donated\" option that will turn off showing the Donate button on admin pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Admin page has checkbox for selecting all visible rows"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New option: #Rows (of maximum above) visible in the Admin datatable"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Custom short code filters (alpha)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor bug fix: needed to strip slashes from dt_options when using cfdb-datatable by URL"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor bug fix: avoiding divide by zero error in [cfdb-value]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor bug fix: avoiding error when no timezone set: \"Notice: date_default_timezone_set() [function.date-default-timezone-set.php]: Timezone ID '' is invalid\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-datatable form=\"form-name\" edit=\"true\"] The \"edit\" option makes the table editable if the CFDB Editor plugin extension is also installed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-datatable] \"Show\" setting shows all rows by default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-datatable] upgraded the included DataTables to version 1.9.4"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Support for import from CSV file when CFDB Editor extension is installed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor bug fix. When user has exactly one form and admin page auto-loads that form's data, the editor plugin did not know which form to edit."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now \"headers\" option on [cfdb-table] and [cfdb-datatable] allow you to change column header display names, e.g [cfdb-table form=\"form1\" headers=\"ext_field1=First Name,ext_field2=Last Name\"]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can now query multiple forms at once in short codes, e.g. [cfdb-table form=\"form1,form2\"]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added RSS URLs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can now use regex's in options for forms &amp; fields to ignore and which cookie values to save"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to set the timezone in which Submit Time should be captured."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: noSaveFields not observed for file upload files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixing \"PHP Notice: Undefined property: WPCF7_ContactForm::$user\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix where JetPack users could not see submitted data related to form field names with a single quote in them"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixing issue where admin page for data does not show for users less than administration even when permissions are set for such users to view the data"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed WordPress 3.5 compatibility issue where uploaded files were not being saved."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New top-level menu on administration page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "JetPack form submissions are now separated based on the JetPack form ID. The form name will be listed as 'JetPack Contact Form ' followed by the form's numeric ID."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Japanese language support (Shift-JIS)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed character encoding issues with Excel IQY"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new short code attribute \"role\" to limit short code output only to those with sufficient role."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new short code attribute \"permissionmsg\" to allow turning off the \"You do not have sufficient permissions to access this data\" message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now captures data from JetPack Contact Form"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added filter hook <a href=\"http://cfdbplugin.com/?page_id=747\">cfdb_form_data</a> that can be used to change data before it gets submitted"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added button to remove _wpcf7 columns in admin page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix that occasionally prevents pagination in the admin view of data"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix where external integrations posting to CFDB might fail if list of upload files was null instead of empty array"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix where $_GET and $_COOKIE would not work"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Variable substitution in filter now works when embedded in text, e.g. filter=\"fname~~/.<em>$_POST(fname).</em>/i&amp;&amp;lname~~/.<em>$_POST(lname).</em>/i\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Excel IQuery export now takes standard shortcode options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New \"header=false\" in table type short codes and IQuery will avoid showing the header."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Fix to match change to Contact Form 7 version 3.1 where uploaded files were not being saved to the database."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: seeing error \"undefined function is_plugin_active()\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Admin page data table was not showing top search banner when datatable using i18n"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Displays Jalali dates when wp-jalali plugin is installed and activated"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: cfdb-html now supports nested short codes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: short code builder for cfdb-html not showing template HTML tags"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: if \"form\" missing from a short code, PHP error no longer happens"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can do exports via the Short Code Builder Page with the main short code options applied (show, hide, search, filter, limit, orderby)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: relating to character encoding: umlaut characters not displaying correctly"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: \"class\" attribution on table tag was not being emitted for [cfdb-datatables]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some strings that were not being internationalized."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More links to documentation on Database Short Code page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Short code \"filter\" values using submit_time can now use 'strtotime' values. E.g. \"submit_time&gt;last week\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Dropped index <code>form_name_field_name_idx</code> but this fails on some MySQL versions and needs to be done manually (<a href=\"http://bugs.mysql.com/bug.php?id=37910\">MySQL Bug 37910</a>)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Upgrade of DataTables to version 1.8.2 from 1.7.6"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New short code: [cfdb-save-form-post]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-html] new option: \"stripbr\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Raw submit_time is available for short codes as a field name"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed unnecessary quotes in Short Code builder page for \"enc\" value in URL generated by [cfdb-export-link]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "On uninstall, table in DB is no longer dropped by default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "When accessing a file link, it will it can now display in the browser instead of forcing a download. Mime-type issues resolves."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: where [cfdb-count] always gave total, ignoring filters"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added 'percent' function to [cfdb-count]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Data editing support in conjunction with Contact Form to Database Edit plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: when using \"filter\" operators &lt; and &gt; where not working in cases where they were represented &amp;gt; and &amp;lt; HTML codes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: \"orderby\" in shortcode was ignoring if ordered by \"Submitted\" or \"submit_time\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Filter operations now try to do numeric comparisons when possible"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can now use \"submit_time\" field in \"filter\" to filter on the timestamp float."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-html] now preserves line breaks in fields by converting new lines to BR tags."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "CFDBFormIterator now includes a 'submit_time' field showing the raw timestamp"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-html] now has wpautop option"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Form input is now always run through stripslashes() regardless of whether or not get_magic_quotes_gpc is on. This is to be consistent with wp_magic_quotes always being called"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New shortcode: [cfdb-export-link]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix in JSON output"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Shortcode builder page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cf7db-count] shortcode now supports counting all forms using form=\"*\" or a list of forms using form=\"form1,form2,form3\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cf7db-html] now has \"filelinks\" option useful for displaying image uploads. "
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added options to turn on/off capturing form submissions from CF7 and FSCF"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added \"cfdb_submit\" hook. See http://cfdbplugin.com/?page_id=377"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added delimiter option for [cfdb-value] shortcode, e.g. [cfdb-value delimiter=',']"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix related to [cfdb-value] when not used as a shortcode (it was not observing show &amp; hide options)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now including DataTables distribution inside this distribution so that page does not reference scripts from another site (so sites using https have everything encrypted on the page)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "In [cfdb-html] shortcode, now removing undesired leading \"br\" tag and ending \"p\" tag that WordPress injects. This was messing up table rows (tr tags) in the shortcode because WP was injecting line breaks between the rows."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor bug fixes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to not delete data on uninstall"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug introduced in 1.8 where deleting individual rows from the admin page did nothing."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New shortcodes [cfdb-html] and [cfdb-count]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New Shortcode option: 'limit'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New Shortcode option: 'orderby'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Performance/memory enhancements to enable plugin to handle large data volumes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now capturing form submission times with microseconds to avoid collision of two submissions during the same second"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed to work with installations where wp-content is not at the standard location"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Shortcode \"show\" and \"hide\" values can now use regular expressions to identify columns"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option to show database query text on Admin page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Creating an export from the admin panel now filters rows based on text in the DataTable \"Search\" field."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[cfdb-json] now has \"format\" option."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where \"Submitted\" column would sometimes appear twice in shortcodes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now can filter on \"Submitted\" column."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Admin Database page is now blank by default and you have to select a form to display."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now fully supports internationalization (i18n) but we need people to contribute more translation files."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "DataTables (including those created by shortcodes) will automatically i18n based on translations available from DataTables.net"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Italian translation courtesy of Gianni Diurno"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Turkish translation courtesy of Oya Simpson"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Admin page DataTable: removed horizontal scrolling because headers do not scroll with columns properly"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated license to GPL3 from GPL2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: Fixed bug causing FireFox to not display DataTables correctly."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: Handling problem where user is unable to export from Admin page because jQuery fails to be loaded."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fix: avoiding inclusion of DataTables CSS in global admin because of style conflicts &amp; efficiency"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Accounting for local timezone offset in display of dates"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Admin page for viewing data is not sortable and filterable"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now works with Fast Secure Contact Form (FSCF)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New shortcode <code>[cfdb-value]</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New shortcode <code>[cfdb-json]</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Renamed shortcode <code>[cf7db-table]</code> to <code>[cfdb-table]</code> (dropped the \"7\") but old one still works."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to set roles that can see data when using <code>[cfdb-table]</code> shortcode"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can now specify per-column CSS for <code>[cfdb-table]</code> shortcode table (see FAQ)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with <code>[cfdb-table]</code> shortcode where the table aways appeared at the top of a post instead of embedded with the rest of the post text."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a PHP version check. This Plugin Requires PHP5 or later. Often default configurations are PHP4. Now a more informative error is given when the user tries to activate the plugin with PHP4."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "If user is logged in when submitting a form, 'Submitted Login' is captured"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "<code>[cfdb-table]</code> shortcode options for filtering rows including using user variables (see FAQ)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "<code>[cfdb-table]</code> shortcode options for CSS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can exclude forms from being saved to DB by name"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added <code>[cf7db-table]</code> shortcode to incorporate form data on regular posts and pages. Use <code>[cf7db-table form=\"your-form\"]</code> with optional \"show\" and \"hide: [cf7db-table form=\"your-form\" show=\"field1,field2,field3\"] (optionally show selected fields), [cf7db-table form=\"your-form\" hide=\"field1,field2,field3\"] (optionally hide selected fields)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added export to Google spreadsheet"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now saves files uploaded via a CF7 form. When defining a file upload in CF7, be sure to set a file size limit. Example: [file upload limit:10mb]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Made date-time format configurable."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Can specify field names to be excluded from being saved to the DB."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "In Database page, the order of columns in the table follows the order of fields from the last form submitted."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added export to Excel Internet Query"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "\"Submitted\" now shows time with timezone instead of just the date."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "The height of cells in the data display are limited to avoid really tall rows. Overflow cells will get a scroll bar."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Protection against HTML-injection"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option to show line breaks in multi-line form submissions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added POT file for i18n"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option for UTF-8 or UTF-16LE export. UTF-16LE works better for MS Excel for some people but does it not preserve line breaks inside a form entry."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Admin menu now appears under CF7's \"Contact\" top level menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Includes an Options page to configure who can see and delete submitted data in the database"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Saves data in DB table as UTF-8 to support non-latin character encodings."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "CSV Export now in a more Excel-friendly encoding so it can properly display characters from different languages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Export to CSV file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Now can delete a row"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Initial Revision."
+msgstr ""
+
+#. Found in faq header.
+msgid "Is there a tutorial?"
+msgstr ""
+
+#. Found in faq header.
+msgid "I installed the plugin but I don't see any of my forms listed in the administration page"
+msgstr ""
+
+#. Found in faq header.
+msgid "Where can I find documentation on the plugin?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Where do I see the data?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I display form data on a non-admin web page or in a post?"
+msgstr ""
+
+#. Found in faq header.
+msgid "What is the name of the table where the data is stored?"
+msgstr ""
+
+#. Found in faq header.
+msgid "If I uninstall the plugin, what happens to its data in the database?"
+msgstr ""
+
+#. Found in faq list item.
+msgid "In the admin page, \"Contact Form DB\""
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "See the <a href=\"https://www.youtube.com/watch?v=mcbIKJK6EJ0\">Video Tutorial</a>"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Nothing will show until you have actual form submissions captured by this plugin. The plugin is not aware of your form definitions, it is only aware of form submissions."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Refer the <a href=\"http://cfdbplugin.com/\">Plugin Site</a>"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Yes, <a href=\"http://cfdbplugin.com/?page_id=89\">documentation on shortcodes</a> <code>[cfdb-html]</code>, <code>[cfdb-datatable]</code>, <code>[cfdb-table]</code>, <code>[cfdb-json]</code> and <code>[cfdb-value]</code>, etc."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Note: if you changed your WordPress MySql table prefix from the default <code>wp_</code> to something else, then this table will also have that prefix instead of <code>wp_</code> (<code>$wpdb-&gt;prefix</code>)"
+msgstr ""

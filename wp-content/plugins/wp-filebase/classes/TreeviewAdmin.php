@@ -1,8 +1,8 @@
 <?php class WPFB_TreeviewAdmin {	
-	public static function ReturnHTML($id, $drag_drop=false, $tpl_tag=null) {
-		ob_start(); self::RenderHTML($id, $drag_drop, $tpl_tag); return ob_get_clean();
+	public static function ReturnHTML($id, $drag_drop=false, $tpl_tag=null, $args=array()) {
+		ob_start(); self::RenderHTML($id, $drag_drop, $tpl_tag, $args); return ob_get_clean();
 	}
-	public static function RenderHTML($id, $drag_drop=false, $tpl_tag=null)
+	public static function RenderHTML($id, $drag_drop=false, $tpl_tag=null, $args=array())
 	{		
 		$jss = md5($id);
 		?>
@@ -21,6 +21,8 @@ function wpfb_dtContains(dt,t) {
 }
 <?php } ?>
 
+wpfb_tvaUseDataText = false;
+
 function wpfb_fbDOMModHandle<?php echo $jss ?>() {
 	wpfb_fbDOMModTimeout<?php echo $jss ?> = -1;
 	
@@ -33,15 +35,20 @@ function wpfb_fbDOMModHandle<?php echo $jss ?>() {
 				var dt = e.originalEvent.dataTransfer;
 				dt.effectAllowed = (t==='cat')?'move':'linkMove';
 				dt.clearData();
-				dt.setData("application/x-wpfilebase-item", t+"-"+id);
-				dt.setData("application/x-wpfilebase-"+t+"-"+id, ''+id);
+				try {
+					dt.setData("application/x-wpfilebase-item", t+"-"+id);
+					dt.setData("application/x-wpfilebase-"+t+"-"+id, ''+id);
+				} catch(e) { // on IE, only text/URL data format is allowed
+					dt.setData("Text", "application/x-wpfilebase-item="+t+"-"+id);
+					wpfb_tvaUseDataText = true;
+				}
 				try { dt.setDragImage(li.find('img')[0],10,10); }
 				catch(e) {}
 			}
 		}).bind('dragover', function(e){
 			var id = wpfb_fileBrowserTargetId(e,'cat'), dt = e.originalEvent.dataTransfer;
 			var hasFiles = wpfb_dtContains(dt,"Files");
-			var hasWpfbItem = wpfb_dtContains(dt,"application/x-wpfilebase-item");			
+			var hasWpfbItem = wpfb_dtContains(dt,"application/x-wpfilebase-item") || (wpfb_tvaUseDataText && wpfb_dtContains(dt,"Text"));
 			if(!hasFiles && !hasWpfbItem)
 				return true;
 			
@@ -69,14 +76,14 @@ function wpfb_fbDOMModHandle<?php echo $jss ?>() {
 			wpfb_fbDragCat<?php echo $jss ?> = 0;			
 		}).bind('drop', function(e){		
 			var li = jQuery(e.currentTarget), id = wpfb_fileBrowserTargetId(e,'cat'), dt = e.originalEvent.dataTransfer;
-			if(!wpfb_dtContains(dt,"application/x-wpfilebase-item"))
+			if(!wpfb_dtContains(dt,"application/x-wpfilebase-item") && !(wpfb_tvaUseDataText && wpfb_dtContains(dt,"Text")))
 				return true;
 			
 			e.stopPropagation();
 			
 			var idp = wpfb_getFileBrowserIDP('<?php echo $id ?>');
 			
-			var tid = dt.getData("application/x-wpfilebase-item").split('-');		
+			var tid = wpfb_tvaUseDataText ? dt.getData("Text").substr("application/x-wpfilebase-item=".length).split('-') : dt.getData("application/x-wpfilebase-item").split('-');		
 			if(!tid || tid.length !== 2)
 				return false;
 			
@@ -86,14 +93,18 @@ function wpfb_fbDOMModHandle<?php echo $jss ?>() {
 			jQuery.ajax({url: wpfbConf.ajurl, type: "POST", dataType: "json",
 				data: {action:"change-category",new_cat_id:id,id:tid[1],type:tid[0]},				
 				success: (function(data){
-					if(data.error == false) {
+					if(!data.error) {
 						var dLi = jQuery('#'+idp+tid.join('-')); // the dragged
+						var tUl = jQuery('#'+idp+'cat-'+id).children('ul').first();
 						if(li.hasClass('expandable')) {
 							dLi.remove();
 							jQuery('.hitarea',li).click();
+						} else if(tUl.length) {
+							dLi.appendTo(tUl);
 						} else {
-							dLi.appendTo(jQuery('#'+idp+'cat-'+id).children('ul').first());
+							dLi.remove();
 						}
+						<?php if(!empty($args['onCategoryChanged'])) echo $args['onCategoryChanged'].'(tid, id);'; ?>
 					} else {
 						alert(data.error);
 					}
@@ -150,9 +161,13 @@ var callbacks<?php echo $jss ?> = {
 			up.settings.multipart_params["btn_cat_id"] = null;
 		}
 		
-		up.settings.multipart_params["presets"] = "file_category="+cat_id;
-		up.settings.multipart_params["cat_id"] = cat_id;
+		up.settings.multipart_params["cat_id"] = cat_id; // actually presets is used (see below)!
 		up.settings.multipart_params["tpl_tag"] = '<?php echo $tpl_tag; ?>';
+		
+		<?php if(!empty($args['uploadParamsFilter'])) echo 'up.settings.multipart_params = '.$args['uploadParamsFilter'].'(up.settings.multipart_params, files);'; ?>
+		
+		cat_id = up.settings.multipart_params["cat_id"];
+		up.settings.multipart_params["presets"] = (up.settings.multipart_params["presets"] ? '&' : '') + "file_category="+cat_id;
 		
 		var idp = wpfb_getFileBrowserIDP('<?php echo $id ?>');
 		var li = jQuery('#'+idp+'cat-'+cat_id);
@@ -166,24 +181,30 @@ var callbacks<?php echo $jss ?> = {
 		var idp = wpfb_getFileBrowserIDP('<?php echo $id ?>');
 		var cat_id = up.settings.multipart_params["cat_id"];
 		var el = (cat_id===0) ? jQuery('#<?php echo $id ?>') : jQuery('#'+idp+'cat-'+cat_id).children('ul').first();
-		el.after(
+		if(el.length) el.after(
 			'<div id="'+file.dom_id+'" class="wpfb-treeview-upload">'+
 				'<img src="<?php echo site_url(WPINC . '/images/crystal/default.png'); ?>" alt="Loading..." style="height:1.2em;margin-right:0.3em;"/>'+
 				'<span class="filename">'+file.name+'</span><span class="error"></span> '+
 				'<div class="loading" style="background-image:url(<?php echo admin_url('images/loading.gif');?>);width:1.2em;height:1.2em;background-size:contain;display:inline-block;vertical-align:sub;"></div>'+
 				'<span class="percent">0%</span>'+
 			'</div>');
+ 
+		<?php if(!empty($args['onFileQueued'])) echo $args['onFileQueued'].'(file, up.settings.multipart_params);'; ?>
 	},
 	success: function(file, serverData) {
 		var item = jQuery('#'+file.dom_id);
 		if(serverData.tpl) {
 			item.html(serverData.tpl);
+			var idp = wpfb_getFileBrowserIDP('<?php echo $id ?>');
+			item.attr('id', idp+'file-'+serverData.file_id);
 		} else {
 			var url = serverData.file_cur_user_can_edit ? serverData.file_edit_url : serverData.file_download_url;
 			jQuery('.filename', item).html('<a href="'+url+'" target="_blank">'+serverData.file_display_name+'</a>');
 			jQuery('img', item).attr('src', serverData.file_thumbnail_url);
 			jQuery('.loading,.percent',item).hide();
 		}
+		
+		<?php if(!empty($args['onSuccess'])) echo $args['onSuccess'].'(file,serverData);'; ?>
 	}
 };
 //]]>

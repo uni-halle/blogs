@@ -2,8 +2,8 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.9
-Stable tag: 3.8.6
-Tested up to: 4.3
+Stable tag: 3.8.7
+Tested up to: 4.3.1
 License: GPLv2
 
 Make your WordPress website mobile-friendly with just a few clicks.
@@ -37,6 +37,13 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.8.7 (Sep 18, 2015) =
+
+* Fixed: Preview window not working in some cases
+* Fixed: Issue with adblockers and advertising in WPtouch
+* Fixed: Featured posts settings issues
+* Fixed: Featured posts setting hiding posts in the admin post listings
 
 = Version 3.8.6 (Sep 1, 2015) =
 

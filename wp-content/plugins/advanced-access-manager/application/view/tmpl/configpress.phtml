@@ -18,7 +18,16 @@
                         </span>
                     </h3>
                     <div class="inside">
-                        <textarea id="configpress" style="width:100%; height: 400px;"><?php echo aam_Core_ConfigPress::read(); ?></textarea>
+                        <p>
+                            ConfigPress has been moved as a stand-alone plugin. Please install <a href="https://wordpress.org/plugins/configpress/" target="_blank">ConfigPress plugin</a> from official WordPress repository.
+                        </p>
+                        <?php $config = aam_Core_ConfigPress::read(); ?>
+                        <?php if ($config) { ?>
+                            <p>After you install ConfigPress plugin. Go to Settings > ConfigPress and copy & paste your below configurations:</p>
+                            <pre>
+<?php echo aam_Core_ConfigPress::read(); ?>
+                            </pre>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -38,7 +47,7 @@
                     <div class="inside">
                         <p>
                             Below is the list of all possible ConfigPress settings with explanation:
-                            <pre style="background:#fff;color:#000">
+                        <pre style="background:#fff;color:#000">
 <span style="color:#05a;font-weight: bold;">[aam]</span>
 <span style="color:#00b418">#Define default access to admin menu items if it was not configured.</span>
 <span style="color:#00b418">#By default it is set to</span> <span style="color:#d80800">"allow"</span>.
@@ -89,7 +98,7 @@
 <span style="color:#0100b6;font-weight:700;">access.deny.redirect</span> = <span style="color:#d80800">"http://someurlhere.in"</span>
 <span style="color:#00b418">#Redefine default <b>Access Denied</b> message.</span>
 <span style="color:#0100b6;font-weight:700;">access.deny.message</span> = <span style="color:#d80800">"Oops. This is restricted area"</span>
-                            </pre>
+                        </pre>
                         </p>
                     </div>
                 </div>
@@ -127,9 +136,6 @@
                     </h3>
                     <div class="inside">
                         <div class="large-icons-row">
-                            <a href="#" class="aam-icon aam-icon-large aam-icon-large-save" id="save_config" >
-                                <span></span><?php echo __('Save', 'aam'); ?>
-                            </a>
                             <a href="#" class="aam-icon aam-icon-large aam-icon-large-info" id="info_screen" >
                                 <span></span><?php echo __('Info', 'aam'); ?>
                             </a>

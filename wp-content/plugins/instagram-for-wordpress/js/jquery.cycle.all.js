@@ -1067,7 +1067,7 @@ $.fn.cycle.defaults = {
     width:            null      // container width (if the 'fit' option is true, the slides will be set to this width as well)
 };
 
-})(jQuery);
+})(window.wpigplugJS.jQuery);
 
 
 /*!
@@ -1540,4 +1540,4 @@ $.fn.cycle.transitions.wipe = function($cont, $slides, opts) {
 	opts.animOut   = { left: 0 };
 };
 
-})(wpigplugJS.jQuery);
+})(window.wpigplugJS.jQuery);

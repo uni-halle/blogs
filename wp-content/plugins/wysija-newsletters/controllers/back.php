@@ -12,7 +12,8 @@ class WYSIJA_control_back extends WYSIJA_control{
     var $viewShow=null;
     var $_affected_rows = 0; //affected rows by batch select
 
-    function __construct(){
+    function __construct($extension="wysija-newsletters"){
+        $this->extension=$extension;
         parent::__construct();
         global $wysija_msg,$wysija_queries,$wysija_queries_errors;
         $wysija_msgTemp=get_option('wysija_msg');

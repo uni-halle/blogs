@@ -1,14 +1,17 @@
 <?php
 /*
-Plugin Name: Visual Form Builder
-Description: Dynamically build forms using a simple interface. Forms include jQuery validation, a basic logic-based verification system, and entry tracking.
-Author: Matthew Muro
-Author URI: http://matthewmuro.com
-Version: 2.8.5
+Plugin Name: 	Visual Form Builder
+Plugin URI:		https://wordpress.org/plugins/visual-form-builder/
+Description: 	Dynamically build forms using a simple interface. Forms include jQuery validation, a basic logic-based verification system, and entry tracking.
+Version: 		2.8.6
+Author:			Matthew Muro
+Author URI: 	http://matthewmuro.com
+Text Domain: 	visual-form-builder
+Domain Path:	/languages/
 */
 
 // Version number to output as meta tag
-define( 'VFB_VERSION', '2.8.5' );
+define( 'VFB_VERSION', '2.8.6' );
 
 /*
 This program is free software; you can redistribute it and/or modify
@@ -224,7 +227,21 @@ class Visual_Form_Builder{
 	 * @since 2.7
 	 */
 	public function languages() {
-		load_plugin_textdomain( 'visual-form-builder', false , 'visual-form-builder/languages' );
+		$domain = 'visual-form-builder';
+
+		// The "plugin_locale" filter is also used in load_plugin_textdomain()
+		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+
+		$wp_lang_dir = WP_LANG_DIR . '/' . $domain . '/' . $locale . '.mo';
+
+		// Load translated strings from WP_LANG_DIR
+		load_textdomain( $domain, $wp_lang_dir );
+
+		// Lang folder path
+		$lang_dir    = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+
+		// Load translated strings, if no WP_LANG_DIR found
+		load_plugin_textdomain( $domain, false, $lang_dir );
 	}
 
 	/**

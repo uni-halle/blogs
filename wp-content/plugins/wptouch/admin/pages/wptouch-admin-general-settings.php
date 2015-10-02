@@ -57,7 +57,7 @@ function wptouch_render_general_page( $page_options ) {
 			wptouchize_it( sprintf( __( 'Display %sPowered by WPtouch Pro%s in footer', 'wptouch-pro' ), '&quot;', '&quot;' ) ),
 			'',
 			WPTOUCH_SETTING_BASIC,
-			3.0
+			'3.0'
 		)
 	);
 

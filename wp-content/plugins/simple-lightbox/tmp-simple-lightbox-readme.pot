@@ -1,0 +1,922 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Simple Lightbox"
+msgstr ""
+
+#. Short description.
+msgid "The highly customizable lightbox for WordPress"
+msgstr ""
+
+#. Screenshot description.
+msgid "Lightbox Customization Options"
+msgstr ""
+
+#. Screenshot description.
+msgid "Light Theme"
+msgstr ""
+
+#. Screenshot description.
+msgid "Dark Theme"
+msgstr ""
+
+#. Found in description header.
+msgid "Features"
+msgstr ""
+
+#. Found in description header.
+msgid "Usage"
+msgstr ""
+
+#. Found in description list item.
+msgid "Automatically activate links (no manual coding required)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Automatically resize lightbox to fit in window"
+msgstr ""
+
+#. Found in description list item.
+msgid "Customize lightbox with <strong>themes</strong>"
+msgstr ""
+
+#. Found in description list item.
+msgid "Mobile-optimized responsive themes included"
+msgstr ""
+
+#. Found in description list item.
+msgid "Customizable lightbox animations"
+msgstr ""
+
+#. Found in description list item.
+msgid "Infinitely customizable with <strong>add-ons</strong>"
+msgstr ""
+
+#. Found in description list item.
+msgid "Supports WordPress <strong>image attachment</strong> links"
+msgstr ""
+
+#. Found in description list item.
+msgid "Supports links in <strong>widgets</strong>"
+msgstr ""
+
+#. Found in description list item.
+msgid "Keyboard Navigation"
+msgstr ""
+
+#. Found in description list item.
+msgid "Display media metadata (caption, description, etc.) in lightbox"
+msgstr ""
+
+#. Found in description list item.
+msgid "Enable Lightbox depending on Page Type (Home, Pages, Archive, etc.)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Group image links (play as a slideshow)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Group image links by Post (separate slideshow for each post on page)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Insert links to images/image attachments into your posts/pages"
+msgstr ""
+
+#. Found in description list item.
+msgid "For more usage tips, go to <a href=\"http://archetyped.com/tools/simple-lightbox/\">Simple Lightbox's official page</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Simple Lightbox is a very simple and customizable lightbox that is easy to add to your WordPress website."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Options for customizing the lightbox behavior are located in the <strong>Appearance &gt; Lightbox</strong> admin menu (or just click the <strong>Settings</strong> link below the plugin's name when viewing the list of installed plugins)"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>That's it! The image will be displayed in a lightbox automatically.</strong>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Install and activate SLB"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Verify that your site's theme uses the <code>wp_head()</code>, <code>wp_footer()</code>, &amp; <code>the_content()</code> template tags (standard in any professional theme)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Activation when Home page set to static page (Lyra's Static Cling)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Prep for WordPress language packs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Client-side Utilities library"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Request processing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Query string removed from URI (A Stern Query)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Key-based asset data storage/retrieval"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved cache usage when processing links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Refactor image URI detection"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Ungrouped items in empty group (Robert &amp; The Lost Group)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: IE8 Support (S.Franzis' Legacy)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Widget support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Relative and internal URI handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Link activation performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: WordPress version compatibility (v4.2.1)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Standardize code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Do not process excerpt content"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Client-side libraries (Phase 1)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Set group via <code>slb_activate()</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Set group via <code>activate_links()</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: <code>slb_is_enabled</code> filter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: WordPress version requirement"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Field collection group parsing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: WordPress 3.9 support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Support URI, content"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Enhanced grouping support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Shortcode: <code>[slb_group]</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Shortcode: <code>[slb_exclude]</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Filter: <code>slb_pre_process_links</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Filter: <code>slb_post_process_links</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Filter: <code>slb_process_link_attributes</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Filter: <code>slb_media_item_properties</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Filter: <code>slb_pre_exclude_content</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Filter: <code>slb_exclude_shortcodes</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Filter: <code>slb_group_shortcodes</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Template Tag: <code>slb_activate()</code> - Manually activate content"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Option to enable/disable usage of WordPress-generated media title"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Dev mode"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Theme breakpoints"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Remove deprecated code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Remove deprecated legacy support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Content exclusion performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Content grouping performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Harden code against third-party post query modifications"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Utility code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Loading process"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Client-side code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Client-side: Code loading"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Client-side: Simplified dependency detection"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Client-side: Default Theme transitions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Grunt: Cleanup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Grunt: Path abstraction"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Grunt: Task loading"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Grunt: Selective file compilation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Widget processing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Remove call-time-pass-by-references"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Enable/Disable lightbox on certain requests (Danny the Enabler)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Widget links grouped with post links (Rafa's Widgetarian Adventure)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Client-side loading"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Theme validation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: WordPress 3.8 support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Add-on support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Load external data for item"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Unloading process for viewer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Relative links marked as \"internal\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Grunt build workflow"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Initialization process"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Client-side output (JavaScript, CSS)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved URI handling (variants, query strings, etc.)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved support for content types (video, etc.)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved File contents retrieval"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Plugin metadata cleanup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Use absolute paths for file includes (props k3davis)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: PHP configuration issue on some web hosts (Tim's got (config) issues)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Hide overlapping elements when lightbox is displayed (e.g. Flash, etc.)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Incorrect paths when WP in subdirectory (Kim's Van Repair)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Automatic resizing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Compatibility with non-standard wp-content location (On the Path of the Wijdemans)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: jQuery dependency handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Plugin initialization"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Deferred component stylesheet loading"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Code cleanup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Finalized Theme API"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Finalized Content Handler API"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Finalized Template Tag API"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Administration framework"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Baseline theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Hook for extending image link matching"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Link validation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Intelligent client-side loading"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Server-side processing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Default theme display"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: False positive link activation (What's eating Gilbert's links?)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Gallery post format compatibility (Just Juan problem with galleries)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Completely rewritten lightbox code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Automatically resize lightbox to fit window"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: APIs for third-party add-ons"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Flexible theme support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Flexible content handler support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Mobile-optimized responsive themes (2)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: PHP class autoloading"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved performance and compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Full internationalization support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Widget support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: WordPress 3.3 support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Localization support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Option to group gallery links separately (supports WordPress &amp; NextGen galleries)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Upgrade notice"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: WP 3.3 compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved compatibility with URI case-sensitivity"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Activation processing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Image grouping"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Image metadata loading performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: File loading"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved safeguards against interference by bugs in other plugins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Link processing performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Lightbox styling isolated from site styles"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved link processing performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved image metadata support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved support for HTTP/HTTPS requests"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: SLB is not defined in JS (Jezz Hands)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Boolean case-sensitivity (78 Truths)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: YouTube embed using iFrame overlaps lightbox (Elena in Hiding)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Issue when scanning links without valid URLs (McCloskey Iteration)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Image activation is case-sensitive (Sensitive Tanya)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Visible lightbox overlay edges when image larger than browser window (Chibi Overlay) "
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Options availability for some users"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Inconsistent loading of image metadata"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Links not fully processed when group is set manually"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Display image description in lightbox (with HTML support)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Support for W3 Total Cache plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Initial support for NextGEN galleries"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: <strong>Important:</strong> <a href=\"http://wordpress.org/about/requirements/\">System Requirements</a> aligned with WP 3.2.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved support for small images in default template"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Support for non-English text in user options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved IE compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Improved data handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Skin loading performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Skin CSS Cleanup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Caption support for galleries"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Options code cleanup (Juga Sweep)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: User-defined UI text not used (Ivan gets Even (cooler))"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Options reset after update (KRazy Donna)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Disabled links not being disabled (Disabling Sascha)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Distinct link activation (will not affect other lightboxes)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Backwards compatibility with legacy lightbox links (optional)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Support for WordPress 3.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Support for links added after page load (e.g. via AJAX, etc.)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Admin option to enable/disable attachment links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Support for image attachment links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Options management overhaul"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Additional WordPress 3.2 support (Gallery)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Cache-management for enqueued files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Improved UI consistency"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Improved compatibility for older versions of PHP"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Internal optimizations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Improved URL handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Improved options migration from old versions (Hutchison Migration)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: XHTML Validation (Hajo Validation)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Optional Link validation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Keyboard Navigation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Option to enable/disable image caption"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: <code>rel</code> attribute supported again"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Use <code>slb_off</code> in link's <code>rel</code> attribute to disable automatic activation for link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: HTTPS compatibility (J&uuml;rgen Protocol)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Enabling SLB on Pages issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Zmanu is_single"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Image order is sometimes incorrect"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Filter double clicks"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Separate options to enable/disable SLB on Posts and Pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Better grouping support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Caption may not display under certain circumstances (Caption Erin)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Images not grouped when \"separate by post\" option is activated (Logical Ross)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Lightbox will not be activated for links that already have <code>rel</code> attribute set"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Slideshow loops out of control (Mirage of Wallentin)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Lightbox fails when group by posts disabled (Lange Find)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Option to use the image's URI as caption when link title not set (Under UI options)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: WP Gallery support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Navigation hidden when only one image"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Use user-defined UI text"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Theme support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Javascript cleanup and file size reductions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: CSS cleanup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Integrated with jQuery"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Javascript filesize 9x smaller"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Close lightbox by clicking to left/right outside of image (an oft-requested feature)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Option to enable/disable lightbox resizing animation (thanks Maria!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update: Utilities code (internal)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Customizable UI label text (close, next, and prev button images can be replaced in <code>images</code> directory)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Group image links by Post (separate slideshow for each post)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add: Reset settings link on plugin listings page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimize: Organized settings page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed: Image title given higher precedence than Image alt (more compatible w/WP workflow)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Option to group automatically activated links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimized: Lightbox caption retrieval"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Enable/disable lightbox functionality by page type (Home, Pages/Posts, Archive, etc.)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Automatically activate lightbox functionality for image links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added: Link to settings menu on plugin listing page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimized: Options menu field building"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimized: Loading of default values for plugin options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimized: General code optimizations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Initial release"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "<a href=\"http://archetyped.com/lab/slb-2-3-0\" title=\"Simple Lightbox 2.3.0\">Full Release Notes</a>"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Get more information on <a href=\"http://archetyped.com/tools/simple-lightbox/\">Simple Lightbox's official page</a>"
+msgstr ""

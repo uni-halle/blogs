@@ -42,7 +42,8 @@ static function GetExtensionsVersionNumbers() {
 static function GetLatestVersionInfoExt()
 {		
 	$ext_vers = self::GetExtensionsVersionNumbers();
-	return (array)self::apiRequest('update-check-ext', array('extensions' => json_encode($ext_vers)));
+	$res = self::apiRequest('update-check-ext', array('extensions' => json_encode($ext_vers)));
+	return empty($res) ? array() : (array)$res;
 }
 
 static function GetLatestVersionInfo(){	return self::apiRequest('update-check'); }
@@ -64,7 +65,8 @@ static function QueryAvailableExtensions($bought_extensions_only=false) {
 
 static function GetApiPluginInfo($slug)
 {
-	$info = self::apiRequest('version-info', array('plugin_slug' => $slug));	
+	$info = self::apiRequest('version-info', array('plugin_slug' => $slug));
+	if(empty($info)) return false;
 	if(!empty($info->sections) && is_object($info->sections)) $info->sections = (array) $info->sections;
 	return $info;
 }

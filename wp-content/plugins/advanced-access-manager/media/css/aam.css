@@ -859,12 +859,38 @@ a.aam-lock-big{
     margin: 0;
 }
 
-.notification-message {
-    width: 95%;
-    border: 1px solid #257da6;
-    padding: 10px;
+.aam-logo {
+    float: left;
+    width: 128px;
+    height: 128px;
+    background: transparent url('images/logo.png') no-repeat center;
+    background-size: 100% 100%;
 }
 
-.notification-message p {
-    font-size: 1.2em;
+.aam-notification {
+    width: 95%;
+    border-left: 3px solid #F04748;
+    background-color: #FFFFFF;
+    padding: 10px;
+    position: relative;
+}
+
+.aam-notification-content {
+    float: left;
+    padding-left: 15px;
+}
+
+.aam-notification:after {
+    content: ' ';
+    display: block;
+    clear:both;
+}
+
+.aam-notification > .dashicons-dismiss {
+    color: #424242;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 1em;
+    margin-top: -0.5em;
 }

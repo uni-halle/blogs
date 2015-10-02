@@ -425,7 +425,7 @@
               </p>
               
               <p>
-                Let us know about your issue by contacting us <a href="mailto:support@ink361.com">via email</a>.
+                Let us know about your issue by contacting us <a href="mailto:help@ink361.com">via email</a>.
               </p>
               
               <p>
@@ -747,7 +747,7 @@
               data      : {
                 format          : 'json', 
                 addressdetails  : '1',
-                email           : 'support@ink361.com',
+                email           : 'help@ink361.com',
                 dedupe          : '1',
               },
               success   : function(response) {

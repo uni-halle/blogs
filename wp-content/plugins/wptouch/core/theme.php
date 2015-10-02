@@ -76,7 +76,7 @@ function wptouch_get_body_classes() {
 	$body_classes = array();
 
 	// Add a class to the body when we're in preview mode, or the preview window
-	if ( $settings->preview_mode == 'on' || wptouch_in_preview_window() ) {
+	if ( $settings->display_mode == 'preview' || wptouch_in_preview_window() ) {
 		$body_classes[] = 'preview-mode';
 	}
 

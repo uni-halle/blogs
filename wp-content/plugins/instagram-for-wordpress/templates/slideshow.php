@@ -98,7 +98,7 @@
  if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'vert') {
 ?>
  <script>
-  jQuery(document).ready(function($) {
+  window.wpigplugJS.jQuery(document).ready(function($) {
    $("ul.wpinstagram-slideshow").cycle({ pagerEvent : null, prevNextEvent: null, fx : "scrollUp", timeout : <?php print $delay ?>, next: 'ul.wpinstagram-slideshow', easing: 'easeInOutBack' });
   });
  </script>
@@ -106,7 +106,7 @@
  } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'horz') {
 ?>
  <script>
-  jQuery(document).ready(function($) {
+  window.wpigplugJS.jQuery(document).ready(function($) {
    $("ul.wpinstagram-slideshow").cycle({ fx : "scrollRight", easing : 'easeInOutBack', timeout : <?php print $delay ?> });
   });
  </script>
@@ -114,7 +114,7 @@
  } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'shuffle') {
 ?>
  <script>
-  jQuery(document).ready(function($) {
+  window.wpigplugJS.jQuery(document).ready(function($) {
    $("ul.wpinstagram-slideshow").cycle({ fx : "shuffle", easing : 'easeOutBack', timeout : <?php print $delay ?> });
   });
  </script>
@@ -122,7 +122,7 @@
  } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'zoom') {
 ?>
  <script>
-  jQuery(document).ready(function($) {
+  window.wpigplugJS.jQuery(document).ready(function($) {
    $("ul.wpinstagram-slideshow").cycle({ fx : "zoom", sync: true, timeout : <?php print $delay ?> });
   });
  </script>
@@ -130,7 +130,7 @@
  } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'turndown') {
 ?>
  <script>
-  jQuery(document).ready(function($) {
+  window.wpigplugJS.jQuery(document).ready(function($) {
    $("ul.wpinstagram-slideshow").cycle({ fx : "turnDown", timeout : <?php print $delay ?> });
   });
  </script>
@@ -138,7 +138,7 @@
  } else if (array_key_exists("transition", $settings->settings) && $settings->settings['transition'] == 'fold') {
 ?>
  <script>
-  jQuery(document).ready(function($) {
+  window.wpigplugJS.jQuery(document).ready(function($) {
    $("ul.wpinstagram-slideshow").cycle({ fx : "curtainX", timeout : <?php print $delay ?> });
   });
  </script>
@@ -146,7 +146,7 @@
  } else {
 ?>
  <script>
-  jQuery(document).ready(function($) {
+  window.wpigplugJS.jQuery(document).ready(function($) {
    $("ul.wpinstagram-slideshow").cycle({ fx : "fade", timeout : <?php print $delay ?> });
   });
  </script>
