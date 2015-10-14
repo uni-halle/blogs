@@ -3,7 +3,7 @@
  * The template for displaying 404 pages (Not Found).
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 

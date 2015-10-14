@@ -105,7 +105,7 @@
 	endif;
 	do_action('generate_after_footer_widgets');
 	?>
-	<footer class="site-info" itemtype="http://schema.org/WPFooter" itemscope="itemscope" role="contentinfo">
+	<footer class="site-info" itemtype="http://schema.org/WPFooter" itemscope="itemscope">
 		<div class="inside-site-info grid-container grid-parent">
 			<?php do_action( 'generate_credits' ); ?>
 		</div>

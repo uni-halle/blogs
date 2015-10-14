@@ -3,7 +3,7 @@
  * The Sidebar containing the main widget area.
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 ?>
@@ -29,7 +29,7 @@ else :
 			           	<h3 class="widget-title"><?php _e( 'Primary Sidebar Widget Area', 'catch-box' ); ?></h3>
 	           			<div class="textwidget">
 	                   		<p><?php _e( 'This is the Primary Sidebar Widget Area if you are using a two column site layout option.', 'catch-box' ); ?></p>
-	                   		<p><?php printf( __( 'By default it will load Search and Archives widgets as shown below. You can add widget to this area by visiting your <a href="%s">Widgets Panel</a> which will replace default widgets.', 'catch-box' ), admin_url( 'widgets.php' ) ); ?></p>
+	                   		<p><?php printf( __( 'By default it will load Search and Archives widgets as shown below. You can add widget to this area by visiting your <a href="%s">Widgets Panel</a> which will replace default widgets.', 'catch-box' ), esc_url( admin_url( 'widgets.php' ) ) ); ?></p>
 	                 	</div>
 		       		</aside><!-- #widget-default-text -->
 				<?php

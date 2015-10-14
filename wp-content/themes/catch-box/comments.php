@@ -8,7 +8,7 @@
  * located in the functions.php file.
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 ?>

@@ -13,8 +13,8 @@
 
 get_header(); ?>
 
-	<div id="primary" <?php generate_content_class();?> itemprop="mainContentOfPage">
-		<main id="main" <?php generate_main_class(); ?> itemtype="http://schema.org/Blog" itemscope="itemscope" role="main">
+	<div id="primary" <?php generate_content_class();?>>
+		<main id="main" <?php generate_main_class(); ?>>
 		<?php do_action('generate_before_main_content'); ?>
 		<?php if ( have_posts() ) : ?>
 

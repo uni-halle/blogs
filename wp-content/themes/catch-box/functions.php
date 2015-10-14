@@ -34,7 +34,7 @@
  * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 
@@ -193,7 +193,6 @@ function catchbox_setup() {
 			'description' => __( 'Mountain', 'catch-box' )
 		),
 	) );
-
 }
 endif; // catchbox_setup
 
@@ -728,7 +727,7 @@ add_action( 'admin_head-edit.php', 'catchbox_posts_id_column_css' );
  * This funcition passes the slider effect variables.
  */
 function catchbox_pass_slider_value() {
-	$options = get_option( 'catchbox_options_slider' );
+	$options = catchbox_get_theme_options();
 	if( !isset( $options[ 'transition_effect' ] ) ) {
 		$options[ 'transition_effect' ] = "fade";
 	}
@@ -770,8 +769,12 @@ function catchbox_sliders() {
 	//delete_transient( 'catchbox_sliders' );
 		
 	// get data value from catchbox_options_slider through theme options
-	$options = get_option( 'catchbox_options_slider' );
+	$options = catchbox_get_theme_options();
 	// get slider_qty from theme options
+	if( !isset( $options['slider_qty'] ) || !is_numeric( $options['slider_qty'] ) ) {
+		$options[ 'slider_qty' ] = 4;
+	}
+
 	$postperpage = $options[ 'slider_qty' ];
 		
 	if( ( !$catchbox_sliders = get_transient( 'catchbox_sliders' ) ) && !empty( $options[ 'featured_slider' ] ) ) {
@@ -793,7 +796,7 @@ function catchbox_sliders() {
 				if ( $i == 1 ) { $classes = "slides displayblock"; } else { $classes = "slides displaynone"; }
 				$catchbox_sliders .= '
 				<div class="'.$classes.'">
-					<a href="'.get_permalink().'" title="'.sprintf( esc_attr__( 'Permalink to %s', 'catch-box' ), the_title_attribute( 'echo=0' ) ).'" rel="bookmark">
+					<a href="'. esc_url ( get_permalink() ).'" title="'.sprintf( esc_attr__( 'Permalink to %s', 'catch-box' ), the_title_attribute( 'echo=0' ) ).'" rel="bookmark">
 							'.get_the_post_thumbnail( $post->ID, 'featured-slider', array( 'title' => $title_attribute, 'alt' => $title_attribute, 'class'	=> 'pngfix' ) ).'
 					</a>
 					<div class="featured-text">'
@@ -889,7 +892,7 @@ if ( ! function_exists( 'catchbox_alter_home' ) ):
  * @uses pre_get_posts hook
  */
 function catchbox_alter_home( $query ) {
-	$options = get_option( 'catchbox_options_slider' );
+	$options = catchbox_get_theme_options();
 	if( !isset( $options[ 'exclude_slider_post' ] ) ) {
  		$options[ 'exclude_slider_post' ] = "0";
  	}
@@ -968,10 +971,10 @@ function catchbox_favicon() {
 }
 
 //Load Favicon in Header Section
-add_action('wp_head', 'catchbox_favicon');
+//add_action('wp_head', 'catchbox_favicon');
 
 //Load Favicon in Admin Section
-add_action( 'admin_head', 'catchbox_favicon' );
+//add_action( 'admin_head', 'catchbox_favicon' );
 
 
 /**
@@ -1033,7 +1036,7 @@ function catchbox_socialprofile() {
 
 	//delete_transient( 'catchbox_socialprofile' );
 
-    $options = get_option('catchbox_options_social_links');
+    $options = catchbox_get_theme_options();
 	$flag = 0;	
 	if( !empty( $options ) ) {
 		foreach( $options as $option ) {
@@ -1056,103 +1059,103 @@ function catchbox_socialprofile() {
 			<div class="social-profile">
  		 		<ul>';
 					//Facebook
-					if ($options['social_facebook']) {
-						$catchbox_socialprofile .= '<li class="facebook"><a href="'.$options['social_facebook'].'" title="Facebook" target="_blank">Facebook</a></li>';
+					if ( !empty( $options['social_facebook'] ) ) {
+						$catchbox_socialprofile .= '<li class="facebook"><a href="'. esc_url( $options['social_facebook'] ) .'" title="Facebook" target="_blank">Facebook</a></li>';
 					}
 				
 					//Twitter
-					if ($options['social_twitter']) {
-						$catchbox_socialprofile .= '<li class="twitter"><a href="'.$options['social_twitter'].'" title="Twitter" target="_blank">Twitter</a></li>';
+					if ( !empty( $options['social_twitter'] ) ) {
+						$catchbox_socialprofile .= '<li class="twitter"><a href="'. esc_url( $options['social_twitter'] ) .'" title="Twitter" target="_blank">Twitter</a></li>';
 					}
 					
 					//Google+
-					if ($options['social_google']) {
-						$catchbox_socialprofile .= '<li class="google-plus"><a href="'.$options['social_google'].'" title="Google Plus" target="_blank">Google Plus</a></li>';
+					if ( !empty( $options['social_google'] ) ) {
+						$catchbox_socialprofile .= '<li class="google-plus"><a href="'. esc_url( $options['social_google'] ) .'" title="Google Plus" target="_blank">Google Plus</a></li>';
 					}
 				
 					//Linkedin
-					if ($options['social_linkedin']) {
-						$catchbox_socialprofile .= '<li class="linkedin"><a href="'.$options['social_linkedin'].'" title="Linkedin" target="_blank">Linkedin</a></li>';
+					if ( !empty( $options['social_linkedin'] ) ) {
+						$catchbox_socialprofile .= '<li class="linkedin"><a href="'. esc_url( $options['social_linkedin'] ) .'" title="Linkedin" target="_blank">Linkedin</a></li>';
 					}
 					
 					//Pinterest
-					if ($options['social_pinterest']) {
-						$catchbox_socialprofile .= '<li class="pinterest"><a href="'.$options['social_pinterest'].'" title="Pinterest" target="_blank">Pinterest</a></li>';
+					if ( !empty( $options['social_pinterest'] ) ) {
+						$catchbox_socialprofile .= '<li class="pinterest"><a href="'. esc_url( $options['social_pinterest'] ) .'" title="Pinterest" target="_blank">Pinterest</a></li>';
 					}
 					
 					//Youtube
-					if ($options['social_youtube']) {
-						$catchbox_socialprofile .= '<li class="you-tube"><a href="'.$options['social_youtube'].'" title="YouTube" target="_blank">YouTube</a></li>';
+					if ( !empty( $options['social_youtube'] ) ) {
+						$catchbox_socialprofile .= '<li class="you-tube"><a href="'. esc_url( $options['social_youtube'] ) .'" title="YouTube" target="_blank">YouTube</a></li>';
 					}
 					
 					//RSS Feed
-					if ($options['social_rss']) {
-						$catchbox_socialprofile .= '<li class="rss"><a href="'.$options['social_rss'].'" title="RSS Feed" target="_blank">RSS Feed</a></li>';
+					if ( !empty( $options['social_rss'] ) ) {
+						$catchbox_socialprofile .= '<li class="rss"><a href="'. esc_url( $options['social_rss'] ) .'" title="RSS Feed" target="_blank">RSS Feed</a></li>';
 					}
 					
 					//Deviantart
-					if ($options['social_deviantart']) {
-						$catchbox_socialprofile .= '<li class="deviantart"><a href="'.$options['social_deviantart'].'" title="Deviantart" target="_blank">Deviantart</a></li>';
+					if ( !empty( $options['social_deviantart'] ) ) {
+						$catchbox_socialprofile .= '<li class="deviantart"><a href="'. esc_url( $options['social_deviantart'] ) .'" title="Deviantart" target="_blank">Deviantart</a></li>';
 					}		
 					
 					//Tumblr
-					if ($options['social_tumblr']) {
-						$catchbox_socialprofile .= '<li class="tumblr"><a href="'.$options['social_tumblr'].'" title="Tumblr" target="_blank">Tumblr</a></li>';
+					if ( !empty( $options['social_tumblr'] ) ) {
+						$catchbox_socialprofile .= '<li class="tumblr"><a href="'. esc_url( $options['social_tumblr'] ) .'" title="Tumblr" target="_blank">Tumblr</a></li>';
 					}	
 					
 					//Vimeo
-					if ($options['social_viemo']) {
-						$catchbox_socialprofile .= '<li class="vimeo"><a href="'.$options['social_viemo'].'" title="Vimeo" target="_blank">Vimeo</a></li>';
+					if ( !empty( $options['social_viemo'] ) ) {
+						$catchbox_socialprofile .= '<li class="vimeo"><a href="'. esc_url( $options['social_viemo'] ) .'" title="Vimeo" target="_blank">Vimeo</a></li>';
 					}	
 					
 					//Dribbble
-					if ($options['social_dribbble']) {
-						$catchbox_socialprofile .= '<li class="dribbble"><a href="'.$options['social_dribbble'].'" title="Dribbble" target="_blank">Dribbble</a></li>';
+					if ( !empty( $options['social_dribbble'] ) ) {
+						$catchbox_socialprofile .= '<li class="dribbble"><a href="'. esc_url( $options['social_dribbble'] ) .'" title="Dribbble" target="_blank">Dribbble</a></li>';
 					}	
 					
 					//MySpace
-					if ($options['social_myspace']) {
-						$catchbox_socialprofile .= '<li class="my-space"><a href="'.$options['social_myspace'].'" title="MySpace" target="_blank">MySpace</a></li>';
+					if ( !empty( $options['social_myspace'] ) ) {
+						$catchbox_socialprofile .= '<li class="my-space"><a href="'. esc_url( $options['social_myspace'] ) .'" title="MySpace" target="_blank">MySpace</a></li>';
 					}	
 					
 					//Aim
-					if ($options['social_aim']) {
-						$catchbox_socialprofile .= '<li class="aim"><a href="'.$options['social_aim'].'" title="Aim" target="_blank">Aim</a></li>';
+					if ( !empty( $options['social_aim'] ) ) {
+						$catchbox_socialprofile .= '<li class="aim"><a href="'. esc_url( $options['social_aim'] ) .'" title="Aim" target="_blank">Aim</a></li>';
 					}	
 					
 					//Flickr
-					if ($options['social_flickr']) {
-						$catchbox_socialprofile .= '<li class="flickr"><a href="'.$options['social_flickr'].'" title="Flickr" target="_blank">Flickr</a></li>';
+					if ( !empty( $options[ 'social_flickr'] ) ) {
+						$catchbox_socialprofile .= '<li class="flickr"><a href="'. esc_url( $options['social_flickr'] ) .'" title="Flickr" target="_blank">Flickr</a></li>';
 					}	
 					
 					//Slideshare
 					if ( !empty( $options[ 'social_slideshare' ] ) ) {
-						$catchbox_socialprofile .= '<li class="slideshare"><a href="'.$options[ 'social_slideshare' ].'" title="Slideshare" target="_blank">Slideshare</a></li>';
+						$catchbox_socialprofile .= '<li class="slideshare"><a href="'. esc_url( $options[ 'social_slideshare' ] ) .'" title="Slideshare" target="_blank">Slideshare</a></li>';
 					}
 					
 					//Instagram
 					if ( !empty( $options[ 'social_instagram' ] ) ) {
-						$catchbox_socialprofile .= '<li class="instagram"><a href="'.$options[ 'social_instagram' ].'" title="Instagram" target="_blank">Instagram</a></li>';
+						$catchbox_socialprofile .= '<li class="instagram"><a href="'. esc_url( $options[ 'social_instagram' ] ) .'" title="Instagram" target="_blank">Instagram</a></li>';
 					}	
 					
 					//skype
 					if ( !empty( $options[ 'social_skype' ] ) ) {
-						$catchbox_socialprofile .= '<li class="skype"><a href="'.$options[ 'social_skype' ].'" title="Skype" target="_blank">Skype</a></li>';
+						$catchbox_socialprofile .= '<li class="skype"><a href="'. esc_attr( $options[ 'social_skype' ] ) .'" title="Skype" target="_blank">Skype</a></li>';
 					}
 					
 					//Soundcloud
 					if ( !empty( $options[ 'social_soundcloud' ] ) ) {
-						$catchbox_socialprofile .= '<li class="soundcloud"><a href="'.$options[ 'social_soundcloud' ].'" title="Soundcloud" target="_blank">Soundcloud</a></li>';
+						$catchbox_socialprofile .= '<li class="soundcloud"><a href="'. esc_url( $options[ 'social_soundcloud' ] ) .'" title="Soundcloud" target="_blank">Soundcloud</a></li>';
 					}
 					
 					//Email
 					if ( !empty( $options[ 'social_email' ] )  && is_email( $options[ 'social_email' ] ) ) {	
-						$catchbox_socialprofile .= '<li class="email"><a href="mailto:'.$options[ 'social_email' ].'" title="Email" target="_blank">Email</a></li>';
+						$catchbox_socialprofile .= '<li class="email"><a href="mailto:'. sanitize_email( $options[ 'social_email' ] ) .'" title="Email" target="_blank">Email</a></li>';
 					}					
 					
 					//Xing
 					if ( !empty( $options[ 'social_xing' ] ) ) {
-						$catchbox_socialprofile .= '<li class="xing"><a href="'.$options[ 'social_xing' ].'" title="Xing" target="_blank">Xing</a></li>';
+						$catchbox_socialprofile .= '<li class="xing"><a href="'. esc_url( $options[ 'social_xing' ] ) .'" title="Xing" target="_blank">Xing</a></li>';
 					}
 					
 					$catchbox_socialprofile .= '
@@ -1412,3 +1415,9 @@ if ( ! function_exists( 'catchbox_breadcrumb_display' ) ) :
 	}
 endif; // catchbox_breadcrumb_display	
 add_action( 'catchbox_content', 'catchbox_breadcrumb_display', 20 );
+
+
+/**
+ * Customizer Options
+ */
+require( get_template_directory() . '/inc/customizer/customizer.php' );

@@ -3,7 +3,7 @@
  * The template used for displaying page content in page.php
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 ?>

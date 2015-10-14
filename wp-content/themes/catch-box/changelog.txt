@@ -1,5 +1,14 @@
 == Changelog ==
 
+Version 3.9
+* Added Lithuanian translation lt_LT.po and lt_LT.mo
+
+Version 3.8
+* Added all theme options to customizer
+* Bug Fixed: Escaped Social Icons
+* Implemented sane defaults
+* Removed multiple options use and combined it to one
+
 Version 3.7
 * Bug Fixed: Content editor width issue (Reported by Robertf)
 * Compatible with WordPress 4.3

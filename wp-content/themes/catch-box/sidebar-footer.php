@@ -3,7 +3,7 @@
  * The Footer widget areas.
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 ?>

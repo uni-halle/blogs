@@ -19,10 +19,10 @@
 	<?php wp_head(); ?>
 </head>
 
-<body itemtype="http://schema.org/WebPage" itemscope="itemscope" <?php body_class(); ?>>
+<body <?php generate_body_schema();?> <?php body_class(); ?>>
 	<?php do_action( 'generate_before_header' ); ?>
 	<a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'generate' ); ?>"><?php _e( 'Skip to content', 'generate' ); ?></a>
-	<header itemtype="http://schema.org/WPHeader" itemscope="itemscope" id="masthead" role="banner" <?php generate_header_class(); ?>>
+	<header itemtype="http://schema.org/WPHeader" itemscope="itemscope" id="masthead" <?php generate_header_class(); ?>>
 		<div <?php generate_inside_header_class(); ?>>
 			<?php do_action( 'generate_before_header_content'); ?>
 			<?php generate_header_items(); ?>

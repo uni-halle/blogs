@@ -60,6 +60,7 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 			'heading_4_weight' => 'normal',
 			'heading_4_transform' => 'none',
 			'heading_4_font_size' => '15',
+			'footer_font_size' => '17'
 		);
 		
 		return apply_filters( 'generate_font_option_defaults', $generate_font_defaults );

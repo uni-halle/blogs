@@ -83,7 +83,7 @@ if ( ! function_exists( 'generate_navigation_position' ) ) :
 function generate_navigation_position()
 {
 	?>
-	<nav itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" id="site-navigation" role="navigation" <?php generate_navigation_class(); ?>>
+	<nav itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" id="site-navigation" <?php generate_navigation_class(); ?>>
 		<div class="inside-navigation grid-container grid-parent">
 			<?php do_action( 'generate_inside_navigation' ); ?>
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">

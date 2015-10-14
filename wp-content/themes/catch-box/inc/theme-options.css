@@ -378,3 +378,7 @@ a.readmore:hover {
 #catchthemes .form-table th {
     padding-left: 20px;
 }
+
+#theme-option-header-notice{
+    text-align:center;
+}

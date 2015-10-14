@@ -1,0 +1,1907 @@
+# Copyright (C) 2014 Catch Themes
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Catch Box\n"
+"Report-Msgid-Bugs-To: http://catchthemes.com/support-forum/forum/catch-"
+"responsive-free/\n"
+"POT-Creation-Date: 2015-10-08 22:20+0545\n"
+"PO-Revision-Date: 2015-10-08 22:20+0545\n"
+"Last-Translator: Catch Themes <info@catchthemes.com>\n"
+"Language-Team: Catch Themes <info@catchthemes.com>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;esc_attr_e;esc_attr__;"
+"_nx:1,2,4c;esc_html__;esc_attr_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:14
+msgid "Error 404 - Page Not Found."
+msgstr "Klaida 404 - puslapis nerastas."
+
+#: ../404.php:18
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr ""
+"Atrodo mes negalime rasti to, ko jūs ieškote. Galbūt ieškojimas gali padėti."
+
+#: ../404.php:19
+msgid "This might be because:"
+msgstr ""
+
+#: ../404.php:20
+msgid ""
+"You have typed the web address incorrectly, or the page you were looking for "
+"may have been moved, updated or deleted."
+msgstr ""
+
+#: ../404.php:21
+msgid "Please try the following options instead:"
+msgstr ""
+
+#: ../404.php:22
+msgid ""
+"Check for a mis-typed URL error, then press the refresh button on your "
+"browser or Use the search box below."
+msgstr ""
+
+#: ../archive.php:22
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Dienos archyvas: %s"
+
+#: ../archive.php:24
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Mėnesio archyvas: %s"
+
+#: ../archive.php:24
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "F Y"
+
+#: ../archive.php:26
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Metų archyvas: %s"
+
+#: ../archive.php:26
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "m."
+
+#: ../archive.php:28
+msgid "Blog Archives"
+msgstr "Tinklaraščio Archyvai"
+
+#: ../archive.php:52 ../author.php:69 ../category.php:45 ../index.php:32
+#: ../page-blog.php:65 ../search.php:39 ../tag.php:45
+msgid "Nothing Found"
+msgstr "Pagal šią užklausą nieko nerasta"
+
+#: ../archive.php:56 ../author.php:73 ../category.php:49 ../index.php:36
+#: ../page-blog.php:69 ../tag.php:49
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+"Atsiprašome, bet rezultatų ieškomame archyve neradome. Gal paieška padės "
+"rasti susijųsi įrašą."
+
+#: ../author.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Autoriaus Archyvai: %s"
+
+#: ../author.php:44 ../content-single.php:76
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: ../category.php:16
+#, php-format
+msgid "Category Archives: %s"
+msgstr "Temos Archyvai: %s"
+
+#: ../comments.php:17
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Įrašas apsaugotas slaptažodžiu. Norėdami skaityti komentarus įveskite "
+"slaptažodį."
+
+#: ../comments.php:33
+#, php-format
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] "%1$s mintys apie &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s minčių apie &ldquo;%2$s&rdquo;"
+
+#: ../comments.php:40 ../comments.php:60
+msgid "Comment navigation"
+msgstr "Komentarų valdymas"
+
+#: ../comments.php:41 ../comments.php:61
+msgid "&larr; Older Comments"
+msgstr "&larr; senesni komentarai"
+
+#: ../comments.php:42 ../comments.php:62
+msgid "Newer Comments &rarr;"
+msgstr "Naujausi komentarai &rarr;"
+
+#: ../comments.php:72
+msgid "Comments are closed."
+msgstr "Komentarai negalimi."
+
+#: ../content-aside.php:16 ../content-featured.php:14
+#: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
+#: ../content-link.php:16 ../content-quote.php:14 ../content-status.php:15
+#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:799
+#, php-format
+msgid "Permalink to %s"
+msgstr "Pastovi nuoroda į %s"
+
+#: ../content-aside.php:17
+msgid "Aside"
+msgstr "Be pavadinimo"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgid "Reply"
+msgstr "Atsakyti"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
+msgid "1"
+msgstr "1"
+
+#: ../content-aside.php:22 ../content-image.php:21 ../content-link.php:22
+#: ../content-quote.php:24 ../content-status.php:21
+msgctxt "comments number"
+msgid "%"
+msgstr "%"
+
+#: ../content-aside.php:33 ../content-gallery.php:32 ../content-image.php:27
+#: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
+#: ../content.php:55 ../functions.php:341
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Skaitykite toliau <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../content-aside.php:35 ../content-featured.php:24
+#: ../content-gallery.php:55 ../content-image.php:29 ../content-link.php:35
+#: ../content-page.php:19 ../content-quote.php:37 ../content-single.php:31
+#: ../content-status.php:36 ../content.php:57 ../image.php:87
+msgid "Pages:"
+msgstr "Puslapiai:"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "Leave a reply"
+msgstr "Parašykite komentarą"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>1</b> Reply"
+msgstr "Komentarų: <b>1</b>"
+
+#: ../content-aside.php:48 ../content-gallery.php:93 ../content-image.php:70
+#: ../content-link.php:48 ../content-quote.php:75 ../content-status.php:49
+#: ../content.php:97
+msgid "<b>%</b> Replies"
+msgstr "Komentarų: <b>%</b>"
+
+#: ../content-aside.php:50 ../content-featured.php:51
+#: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
+#: ../content-page.php:27 ../content-quote.php:78 ../content-single.php:64
+#: ../content-status.php:51 ../content.php:100 ../functions.php:589
+#: ../functions.php:617 ../image.php:97
+msgid "Edit"
+msgstr "Redaguoti"
+
+#. translators: used between list items, there is a space after the comma
+#: ../content-featured.php:35 ../content-featured.php:44
+#: ../content-gallery.php:68 ../content-gallery.php:78 ../content-image.php:53
+#: ../content-image.php:62 ../content-quote.php:50 ../content-quote.php:60
+#: ../content-single.php:42 ../content-single.php:45 ../content.php:71
+#: ../content.php:81
+msgid ", "
+msgstr ", "
+
+#: ../content-featured.php:37
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Įrašas paskelbtas temoje %1$s ir pažymėtas %2$s.Išsisaugokite <a href=\"%3$s"
+"\" title=\"Pastovi nuoroda į %4$s\" rel=\"bookmark\">pastovią nuorodą</a>."
+
+#: ../content-featured.php:39
+#, php-format
+msgid ""
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
+"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+"Įrašas paskelbtas temoje %1$s. Išsisaugokite <a href=\"%3$s\" title="
+"\"Pastovi nuoroda į %4$s\" rel=\"bookmark\">pastovią nuorodą</a>."
+
+#: ../content-gallery.php:17
+msgid "Gallery"
+msgstr "Galerija"
+
+#: ../content-gallery.php:47
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] "Šioje galerijoje yra <a %1$s>%2$s nuotrauka</a>."
+msgstr[1] "Šioje galerijoje yra <a %1$s>%2$s nuotraukos</a>."
+msgstr[2] "Šioje galerijoje yra <a %1$s>%2$s nuotraukų</a>."
+
+#: ../content-gallery.php:72 ../content-image.php:57 ../content-quote.php:54
+#: ../content.php:75
+#, php-format
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "<span class=\"%1$s\">Paskelbta temoje</span> %2$s"
+
+#: ../content-gallery.php:84 ../content-image.php:65 ../content-quote.php:66
+#: ../content.php:87
+#, php-format
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">Pažymėta</span> %2$s"
+
+#: ../content-image.php:16
+msgid "Image"
+msgstr "Paveikslėlis"
+
+#: ../content-image.php:40
+#, php-format
+msgid ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by "
+"</span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" "
+"title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+msgstr ""
+"<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s"
+"\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\">, "
+"autorius </span> <span class=\"author vcard\"><a class=\"url fn n\" href="
+"\"%4$s\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+
+#: ../content-image.php:45 ../functions.php:655
+#, php-format
+msgid "View all posts by %s"
+msgstr "Peržiūrėti visus įrašus %s"
+
+#: ../content-link.php:17
+msgid "Link"
+msgstr "Nuoroda"
+
+#: ../content-quote.php:15
+msgid "Quote"
+msgstr "Cituoti"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "No Comments &darr;"
+msgstr "Nėra komentarų &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "1 Comment &darr;"
+msgstr "1 komentaras &darr;"
+
+#: ../content-single.php:21 ../content.php:28
+msgid "% Comments &darr;"
+msgstr "% komentarų &darr;"
+
+#: ../content-single.php:47
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s by <a href=\"%6$s\">%5$s</a>. "
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+msgstr ""
+
+#: ../content-single.php:49
+#, php-format
+msgid ""
+"This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a "
+"href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: ../content-single.php:51
+#, php-format
+msgid ""
+"This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href="
+"\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: ../content-single.php:80
+#, php-format
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../content-status.php:16
+msgid "Status"
+msgstr "Būsena"
+
+#: ../content.php:16
+msgid "Featured"
+msgstr "Reklaminis"
+
+#: ../footer.php:54
+msgid "Footer menu"
+msgstr "Paraštės meniu"
+
+#: ../functions.php:111
+msgid "Primary Menu"
+msgstr "Pagrindinis meniu"
+
+#: ../functions.php:112
+msgid "Secondary Menu"
+msgstr "Antrinis meniu"
+
+#: ../functions.php:113
+msgid "Footer Menu"
+msgstr "Paraštės Meniu"
+
+#. translators: header image description
+#: ../functions.php:181
+msgid "Garden"
+msgstr "Garden"
+
+#. translators: header image description
+#: ../functions.php:187
+msgid "Flower"
+msgstr "Flower"
+
+#. translators: header image description
+#: ../functions.php:193
+msgid "Mountain"
+msgstr "Mountain"
+
+#: ../functions.php:410
+msgid "Main Sidebar"
+msgstr "Pagrindinė valdiklių sritis"
+
+#: ../functions.php:419
+msgid "Footer Area One"
+msgstr "Pirmoji poraštės valdiklių sritis"
+
+#: ../functions.php:421 ../functions.php:431 ../functions.php:441
+msgid "An optional widget area for your site footer"
+msgstr "Pasirinktinė valdiklių sritis tinklaraščio poraštėje"
+
+#: ../functions.php:429
+msgid "Footer Area Two"
+msgstr "Antroji poraštės valdiklių sritis"
+
+#: ../functions.php:439
+msgid "Footer Area Three"
+msgstr "Trečioji poraštės valdiklių sritis"
+
+#: ../functions.php:473 ../functions.php:502 ../single.php:15
+msgid "Post navigation"
+msgstr "Įrašo meniu"
+
+#: ../functions.php:481 ../functions.php:510
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Senesni pranešimai"
+
+#: ../functions.php:482 ../functions.php:511
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Naujausi pranešimai <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../functions.php:589
+msgid "Pingback:"
+msgstr "Žingsniu atgal:"
+
+#. translators: 1: comment author, 2: date and time
+#: ../functions.php:606
+#, php-format
+msgid "%1$s on %2$s <span class=\"says\">said:</span>"
+msgstr ""
+
+#. translators: 1: date, 2: time
+#: ../functions.php:612
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: ../functions.php:621
+msgid "Your comment is awaiting moderation."
+msgstr "Jūsų komentaras laukia patvirtinimo."
+
+#: ../functions.php:630
+msgid "Reply <span>&darr;</span>"
+msgstr "Atsakyti <span>&darr;</span>"
+
+#: ../functions.php:649
+#, php-format
+msgid ""
+"<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
+"\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>"
+"%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> "
+"<span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s"
+"\" rel=\"author\">%7$s</a></span></span>"
+msgstr ""
+
+#: ../functions.php:707
+msgid "ID"
+msgstr "ID"
+
+#: ../functions.php:934
+msgid "Name"
+msgstr "Vardas"
+
+#: ../functions.php:936 ../inc/customizer/customizer.php:604
+#: ../inc/theme-options.php:877
+msgid "Email"
+msgstr "E-paštas"
+
+#: ../functions.php:1313
+msgid "Primary menu"
+msgstr "Pagrindinis meniu"
+
+#: ../functions.php:1315 ../functions.php:1348
+msgid "Skip to primary content"
+msgstr "Eiti į pagrindinį turinį"
+
+#: ../functions.php:1316 ../functions.php:1349
+msgid "Skip to secondary content"
+msgstr "Eiti prie antrinio turinio"
+
+#: ../functions.php:1346
+msgid "Secondary menu"
+msgstr "Antrinis meniu"
+
+#: ../image.php:15
+msgid "Image navigation"
+msgstr "Paveikslėlių navigacija"
+
+#: ../image.php:16
+msgid "&larr; Previous"
+msgstr "&larr; Ankstesnis"
+
+#: ../image.php:17
+msgid "Next &rarr;"
+msgstr "Kitas &rarr;"
+
+#: ../image.php:27
+#, php-format
+msgid ""
+"<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class="
+"\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
+"at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> "
+"in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+msgstr ""
+
+#: ../inc/customizer/customizer-custom-controls.php:18
+#: ../inc/theme-options.php:629
+msgid "Theme Instructions"
+msgstr "Temos instrukcijos"
+
+#: ../inc/customizer/customizer-custom-controls.php:22
+#: ../inc/theme-options.php:627
+msgid "Support"
+msgstr "Pagalba"
+
+#: ../inc/customizer/customizer-custom-controls.php:26
+msgid "Changelog"
+msgstr "Keitimų žurnalas"
+
+#: ../inc/customizer/customizer-custom-controls.php:30
+msgid "Donate Now"
+msgstr "Paaukok dabar"
+
+#: ../inc/customizer/customizer-custom-controls.php:34
+msgid "Review"
+msgstr "Peržiūra"
+
+#: ../inc/customizer/customizer.php:33 ../inc/theme-options.php:199
+#: ../inc/theme-options.php:200 ../inc/theme-options.php:647
+msgid "Theme Options"
+msgstr "Temos parinktys"
+
+#: ../inc/customizer/customizer.php:34
+msgid "Basic theme Options"
+msgstr "Pagrindinės temos parinktys"
+
+#: ../inc/customizer/customizer.php:38
+msgid "Favicon"
+msgstr "Favicon"
+
+#: ../inc/customizer/customizer.php:43
+msgid "Webclip Icon Options"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:44
+msgid ""
+"Web Clip Icon for Apple devices. Recommended Size - Width 144px and Height "
+"144px height, which will support High Resolution Devices like iPad Retina"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:48 ../inc/customizer/customizer.php:222
+#: ../inc/theme-options.php:82
+msgid "Color Scheme"
+msgstr "Spalvų schema"
+
+#: ../inc/customizer/customizer.php:53 ../inc/customizer/customizer.php:233
+#: ../inc/theme-options.php:90
+msgid "Link Color"
+msgstr "Nuorodų spalva"
+
+#: ../inc/customizer/customizer.php:58 ../inc/customizer/customizer.php:243
+#: ../inc/theme-options.php:98
+msgid "Default Layout"
+msgstr "Įprastas išdėstymas"
+
+#: ../inc/customizer/customizer.php:63 ../inc/customizer/customizer.php:254
+msgid "Content Layout"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:68 ../inc/customizer/customizer.php:266
+#: ../inc/theme-options.php:114
+msgid "Excerpt Length in Words"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:73 ../inc/theme-options.php:122
+msgid "Feed Redirect URL"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:78 ../inc/theme-options.php:130
+msgid "Move Site Title and Tagline?"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:83 ../inc/customizer/customizer.php:302
+#: ../inc/theme-options.php:138
+msgid "Default Display Text in Search"
+msgstr "Įprastas ekrano tekstas paieškoje"
+
+#: ../inc/customizer/customizer.php:88 ../inc/theme-options.php:146
+msgid "Disable Search in Header?"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:93 ../inc/theme-options.php:154
+msgid "Enable Secondary & Footer Menu in Mobile Devices?"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:98 ../inc/customizer/customizer.php:330
+#: ../inc/theme-options.php:162
+msgid "Custom CSS Styles"
+msgstr "Savi CSS stiliai"
+
+#: ../inc/customizer/customizer.php:106 ../inc/customizer/customizer.php:107
+msgid "Featured Slider"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:111 ../inc/theme-options.php:677
+msgid "Slider Options"
+msgstr "Reklaminio slinkiklio parinktys"
+
+#: ../inc/customizer/customizer.php:116
+msgid "Slider Effect \tOptions"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:124 ../inc/theme-options.php:649
+msgid "Social Links"
+msgstr "Socialinės nuorodos"
+
+#: ../inc/customizer/customizer.php:125
+msgid "Add your social links here"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:129
+msgid "Predefined Social Icons"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:136 ../inc/customizer/customizer.php:141
+#: ../inc/theme-options.php:650
+msgid "Webmaster Tools"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:137 ../inc/customizer/customizer.php:142
+#, php-format
+msgid ""
+"Webmaster Tools falls under Plugins Territory according to Theme Review "
+"Guidelines in WordPress.org. This feature will be depreciated in future "
+"versions from Catch Box free version. If you want this feature, then you can "
+"add <a target=\"_blank\" href=\"%s\">Catch Web Tools</a>  plugin."
+msgstr ""
+
+#: ../inc/customizer/customizer.php:198
+msgid "Fav Icon"
+msgstr "Fav Icon"
+
+#: ../inc/customizer/customizer.php:210
+msgid "Web Clip Icon"
+msgstr "Web Clip Icon"
+
+#: ../inc/customizer/customizer.php:282
+msgid "Feed Redirect url"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:293 ../inc/theme-options.php:489
+msgid "Check to move above the Header/Logo Image"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:312 ../inc/theme-options.php:519
+msgid "Check to Disable"
+msgstr "Pažymėkite norėdami išjungti"
+
+#: ../inc/customizer/customizer.php:321 ../inc/theme-options.php:534
+msgid "Check to Enable"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:342
+msgid "Check to Exclude Slider posts from Homepage posts"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:351 ../inc/theme-options.php:692
+msgid "Number of Slides"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:352
+msgid ""
+"Customizer page needs to be refreshed after saving if number of slides is "
+"changed"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:367
+msgid "Transition Effect"
+msgstr "Pereinamasis efektas"
+
+#: ../inc/customizer/customizer.php:375 ../inc/theme-options.php:721
+msgid "fade"
+msgstr "Nuvysti"
+
+#: ../inc/customizer/customizer.php:376 ../inc/theme-options.php:722
+msgid "wipe"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:377 ../inc/theme-options.php:723
+msgid "scrollUp"
+msgstr "Slinkti vertikaliai"
+
+#: ../inc/customizer/customizer.php:378 ../inc/theme-options.php:724
+msgid "scrollDown"
+msgstr "Slinkti horizontaliai"
+
+#: ../inc/customizer/customizer.php:379 ../inc/theme-options.php:725
+msgid "scrollLeft"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:380 ../inc/theme-options.php:726
+msgid "scrollRight"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:381 ../inc/theme-options.php:727
+msgid "blindX"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:382 ../inc/theme-options.php:728
+msgid "blindY"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:383 ../inc/theme-options.php:729
+msgid "blindZ"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:384 ../inc/theme-options.php:730
+msgid "cover"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:385 ../inc/theme-options.php:731
+msgid "shuffle"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:390
+msgid "Transition Delay (in seconds)"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:406 ../inc/theme-options.php:746
+msgid "Transition Length"
+msgstr "Perėjimo ilgis"
+
+#: ../inc/customizer/customizer.php:424 ../inc/theme-options.php:630
+#: ../inc/theme-options.php:770
+msgid "Facebook"
+msgstr "Facebook"
+
+#: ../inc/customizer/customizer.php:434 ../inc/theme-options.php:631
+#: ../inc/theme-options.php:775
+msgid "Twitter"
+msgstr "Twitter"
+
+#: ../inc/customizer/customizer.php:444
+msgid "Google+"
+msgstr "Google+"
+
+#: ../inc/customizer/customizer.php:454 ../inc/theme-options.php:787
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: ../inc/customizer/customizer.php:464 ../inc/theme-options.php:793
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: ../inc/customizer/customizer.php:474 ../inc/theme-options.php:799
+msgid "Youtube"
+msgstr "Youtube"
+
+#: ../inc/customizer/customizer.php:484
+msgid "RSS"
+msgstr "RSS"
+
+#: ../inc/customizer/customizer.php:494
+msgid "deviantART"
+msgstr "deviantART"
+
+#: ../inc/customizer/customizer.php:504 ../inc/theme-options.php:817
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: ../inc/customizer/customizer.php:514 ../inc/theme-options.php:823
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: ../inc/customizer/customizer.php:524 ../inc/theme-options.php:829
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: ../inc/customizer/customizer.php:534 ../inc/theme-options.php:835
+msgid "MySpace"
+msgstr "MySpace"
+
+#: ../inc/customizer/customizer.php:544 ../inc/theme-options.php:841
+msgid "Aim"
+msgstr "Aim"
+
+#: ../inc/customizer/customizer.php:554 ../inc/customizer/customizer.php:574
+#: ../inc/theme-options.php:847
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../inc/customizer/customizer.php:564 ../inc/theme-options.php:853
+msgid "Slideshare"
+msgstr "Slideshare"
+
+#: ../inc/customizer/customizer.php:584 ../inc/theme-options.php:865
+msgid "Skype"
+msgstr "Skype"
+
+#: ../inc/customizer/customizer.php:594 ../inc/theme-options.php:871
+msgid "Soundcloud"
+msgstr "Soundcloud"
+
+#: ../inc/customizer/customizer.php:614 ../inc/theme-options.php:882
+msgid "Xing"
+msgstr "Xing"
+
+#: ../inc/customizer/customizer.php:626 ../inc/theme-options.php:906
+msgid "Code to display on Header"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:627
+msgid ""
+"Here you can put scripts from Google, Facebook etc. which will load on Header"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:637 ../inc/theme-options.php:917
+msgid "Code to display on Footer"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:638
+msgid ""
+"Here you can put scripts from Google, Facebook etc. which will load on Footer"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:767
+#, php-format
+msgid "#%s Featured Post ID"
+msgstr ""
+
+#: ../inc/customizer/customizer.php:782
+msgid ""
+"Caution: Reset all settings to default. Refresh the page after save to view "
+"full effects."
+msgstr ""
+"Atsargiai: Atstatykite visus nustatymus į numatytuosius. Po išsaugojimo "
+"atnaujinkite puslapį, kad galėtumėte peržiūrėti pilną efektą."
+
+#: ../inc/customizer/customizer.php:784
+msgid "Reset all settings"
+msgstr "Atstatyti visus nustatymus"
+
+#: ../inc/customizer/customizer.php:794
+msgid "Check to reset all settings to default"
+msgstr "Pažymėkite norėdami atstatyti visus nustatymus į numatytuosius"
+
+#: ../inc/customizer/customizer.php:804 ../inc/customizer/customizer.php:815
+msgid "Important Links"
+msgstr "Svarbios nuorodos"
+
+#: ../inc/customizer/customizer.php:849
+msgid "Upgrade To Pro"
+msgstr ""
+
+#: ../inc/theme-options.php:64
+msgid "Favicon URL"
+msgstr ""
+
+#: ../inc/theme-options.php:73
+msgid "Web Clip Icon URL"
+msgstr ""
+
+#: ../inc/theme-options.php:106
+msgid "Content layout"
+msgstr ""
+
+#: ../inc/theme-options.php:222
+msgid "Insert as Favicon"
+msgstr ""
+
+#: ../inc/theme-options.php:222
+msgid "Add/Change Favicon"
+msgstr ""
+
+#: ../inc/theme-options.php:236
+msgid "Insert as Web Clip Icon"
+msgstr ""
+
+#: ../inc/theme-options.php:236
+msgid "Add/Change Web Clip Icon"
+msgstr ""
+
+#: ../inc/theme-options.php:250
+msgid "Light"
+msgstr "Šviesi"
+
+#: ../inc/theme-options.php:256
+msgid "Dark"
+msgstr "Tamsi"
+
+#: ../inc/theme-options.php:262
+msgid "Blue"
+msgstr ""
+
+#: ../inc/theme-options.php:268
+msgid "Green"
+msgstr ""
+
+#: ../inc/theme-options.php:274
+msgid "Red"
+msgstr ""
+
+#: ../inc/theme-options.php:280
+msgid "Brown"
+msgstr ""
+
+#: ../inc/theme-options.php:286
+msgid "Orange"
+msgstr ""
+
+#: ../inc/theme-options.php:305
+msgid "Content on left"
+msgstr ""
+
+#: ../inc/theme-options.php:310
+msgid "Content on right"
+msgstr ""
+
+#: ../inc/theme-options.php:315
+msgid "One-column, no sidebar"
+msgstr ""
+
+#: ../inc/theme-options.php:333
+msgid "Show excerpt"
+msgstr ""
+
+#: ../inc/theme-options.php:338
+msgid "Show full content"
+msgstr ""
+
+#: ../inc/theme-options.php:461
+msgid "Words"
+msgstr ""
+
+#: ../inc/theme-options.php:548
+msgid "CSS Tutorial from W3Schools."
+msgstr ""
+
+#: ../inc/theme-options.php:548
+msgid "http://www.w3schools.com/css/default.asp"
+msgstr "http://www.w3schools.com/css/default.asp"
+
+#: ../inc/theme-options.php:548
+msgid "CSS Tutorial"
+msgstr ""
+
+#: ../inc/theme-options.php:548
+msgid "Click Here to Read"
+msgstr ""
+
+#: ../inc/theme-options.php:612
+msgid "Theme Options By"
+msgstr ""
+
+#: ../inc/theme-options.php:614
+msgid "http://catchthemes.com/"
+msgstr "http://catchthemes.com/"
+
+#: ../inc/theme-options.php:614 ../inc/theme-options.php:615
+#: ../inc/theme-options.php:1326
+msgid "Catch Themes"
+msgstr ""
+
+#: ../inc/theme-options.php:621
+msgid "http://catchthemes.com/themes/catch-box-pro/"
+msgstr "http://catchthemes.com/themes/catch-box-pro/"
+
+#: ../inc/theme-options.php:621
+msgid "Upgrade to Catch Box Pro"
+msgstr ""
+
+#: ../inc/theme-options.php:626
+msgid "http://catchthemes.com/donate/"
+msgstr "http://catchthemes.com/donate/"
+
+#: ../inc/theme-options.php:626
+msgid "Donate"
+msgstr ""
+
+#: ../inc/theme-options.php:627
+msgid "http://catchthemes.com/support/"
+msgstr "http://catchthemes.com/support/"
+
+#: ../inc/theme-options.php:628
+msgid "http://catchthemes.com/support-forum/forum/catch-box-public/"
+msgstr "http://catchthemes.com/support-forum/forum/catch-box-public/"
+
+#: ../inc/theme-options.php:628
+msgid "Support Forum"
+msgstr ""
+
+#: ../inc/theme-options.php:629
+msgid "http://catchthemes.com/theme-instructions/catch-box/"
+msgstr "http://catchthemes.com/theme-instructions/catch-box/"
+
+#: ../inc/theme-options.php:630
+msgid "https://www.facebook.com/catchthemes/"
+msgstr "https://www.facebook.com/catchthemes/"
+
+#: ../inc/theme-options.php:630
+msgid "Like Catch Themes on Facebook"
+msgstr ""
+
+#: ../inc/theme-options.php:631
+msgid "https://twitter.com/catchthemes/"
+msgstr "https://twitter.com/catchthemes/"
+
+#: ../inc/theme-options.php:631
+msgid "Follow Catch Themes on Twitter"
+msgstr ""
+
+#: ../inc/theme-options.php:632
+msgid "http://wordpress.org/support/view/theme-reviews/catch-box/"
+msgstr "http://wordpress.org/support/view/theme-reviews/catch-box/"
+
+#: ../inc/theme-options.php:632
+msgid "Rate us 5 Star on WordPress"
+msgstr ""
+
+#: ../inc/theme-options.php:632
+msgid "5 Star Rating"
+msgstr ""
+
+#: ../inc/theme-options.php:638
+#, php-format
+msgctxt "1: Customizer Link Start, 2: Customizer Link End"
+msgid ""
+"Theme Options Panel will be retired on future versions. Please use %1$s "
+"Customizer %2$s instead."
+msgstr ""
+
+#: ../inc/theme-options.php:648
+msgid "Featured Post Slider"
+msgstr ""
+
+#: ../inc/theme-options.php:681 ../inc/theme-options.php:683
+msgid "Post Slider Tutorial"
+msgstr ""
+
+#: ../inc/theme-options.php:683
+msgid ""
+"http://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
+"slider/"
+msgstr ""
+"http://catchthemes.com/blog/videos-blog/video-series-adding-featured-post-"
+"slider/"
+
+#: ../inc/theme-options.php:683
+msgid "Click Here to Read Post Slider Tutorial"
+msgstr ""
+
+#: ../inc/theme-options.php:687
+msgid "Exclude Slider post from Home page posts:"
+msgstr ""
+
+#: ../inc/theme-options.php:689
+msgid "Check to disable"
+msgstr ""
+
+#: ../inc/theme-options.php:698
+msgid "Featured Post ID"
+msgstr ""
+
+#: ../inc/theme-options.php:700
+msgid "Click Here To Edit"
+msgstr ""
+
+#: ../inc/theme-options.php:706
+msgid ""
+"<strong>Note</strong>: Here you add in Post IDs which displays on Homepage "
+"Featured Slider."
+msgstr ""
+
+#: ../inc/theme-options.php:707 ../inc/theme-options.php:753
+#: ../inc/theme-options.php:889 ../inc/theme-options.php:928
+msgid "Save"
+msgstr "Išsaugoti"
+
+#: ../inc/theme-options.php:711
+msgid "Slider Effect Options"
+msgstr ""
+
+#: ../inc/theme-options.php:716
+msgid "Transition Effect:"
+msgstr ""
+
+#: ../inc/theme-options.php:737
+msgid "Transition Delay"
+msgstr "Perėjimo delsimas"
+
+#: ../inc/theme-options.php:740 ../inc/theme-options.php:749
+msgid "second(s)"
+msgstr ""
+
+#: ../inc/theme-options.php:781
+msgid "Google +"
+msgstr "Google +"
+
+#: ../inc/theme-options.php:805
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: ../inc/theme-options.php:811
+msgid "Deviantart"
+msgstr "Deviantart"
+
+#: ../inc/theme-options.php:859
+msgid "Instagram"
+msgstr "Instagram"
+
+#: ../inc/theme-options.php:888
+msgid ""
+"<strong>Note:</strong> Enter the url for correponding social networking "
+"website"
+msgstr ""
+
+#: ../inc/theme-options.php:901
+msgid "Header and Footer Code"
+msgstr ""
+
+#: ../inc/theme-options.php:913
+msgid ""
+"Note: Here you can put scripts from Google, Facebook etc. which will load on "
+"Header"
+msgstr ""
+
+#: ../inc/theme-options.php:924
+msgid ""
+"Note: Here you can put scripts from Google, Facebook, Add This etc. which "
+"will load on footer"
+msgstr ""
+
+#: ../inc/theme-options.php:1284
+msgid "Y"
+msgstr "Y"
+
+#: ../inc/theme-options.php:1305
+msgid "WordPress"
+msgstr "WordPress"
+
+#: ../inc/theme-options.php:1315
+msgid "Theme: Catch Box by "
+msgstr "Theme: Catch Box by "
+
+#: ../inc/theme-options.php:1337
+msgid "Copyright"
+msgstr "Copyright"
+
+#: ../inc/theme-options.php:1337
+msgid "All Rights Reserved"
+msgstr "All Rights Reserved"
+
+#: ../inc/widgets.php:20
+msgid "CT: Adspace Widget"
+msgstr ""
+
+#: ../inc/widgets.php:21
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr ""
+
+#: ../inc/widgets.php:39
+msgid "Title (optional):"
+msgstr "Pavadinimas (nebūtina):"
+
+#: ../inc/widgets.php:44
+msgid "Ad Code:"
+msgstr ""
+
+#: ../inc/widgets.php:50
+msgid "Image Url:"
+msgstr ""
+
+#: ../inc/widgets.php:54
+msgid "Link URL:"
+msgstr ""
+
+#: ../inc/widgets.php:58
+msgid "Alt text:"
+msgstr ""
+
+#: ../search.php:15
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Paieškos rezultatai: %s"
+
+#: ../search.php:43
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+"Atsiprašome, bet nieks neatitiko Jūsų paieškos terminų. Bandykite dar kartą "
+"su kitais raktažodžiais."
+
+#: ../searchform.php:11
+msgid "Search"
+msgstr "Ieškoti..."
+
+#: ../sidebar.php:29
+msgid "Primary Sidebar Widget Area"
+msgstr "Pagrindinės šoninės juostos valdiklių sritis"
+
+#: ../sidebar.php:31
+msgid ""
+"This is the Primary Sidebar Widget Area if you are using a two column site "
+"layout option."
+msgstr "Tai yra pagrindinės šoninės juostos valdiklių sritis"
+
+#: ../sidebar.php:32
+#, php-format
+msgid ""
+"By default it will load Search and Archives widgets as shown below. You can "
+"add widget to this area by visiting your <a href=\"%s\">Widgets Panel</a> "
+"which will replace default widgets."
+msgstr ""
+"Pagal nutylėjimą jis užkraus paieškos ir archyvų valdiklius, kaip parodyta "
+"žemiau. Jūs galite pridėti valdiklį į šią sritį apsilankę savo <a href=\"%s"
+"\">valdiklių skyde</a> , kuris pakeis numatytuosius valdiklius."
+
+#: ../sidebar.php:38
+msgid "Archives"
+msgstr "Archyvai"
+
+#: ../single.php:16
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> Ankstesnis"
+
+#: ../single.php:17
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Toliau <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../tag.php:16
+#, php-format
+msgid "Tag Archives: %s"
+msgstr "Žymų Archyvai: %s"
+
+#~ msgid "Oops! That page can&rsquo;t be found."
+#~ msgstr "Apgailestaujame, šio puslapio nepavyko rasti!"
+
+#~ msgid ""
+#~ "It looks like nothing was found at this location. Maybe try one of the "
+#~ "links below or a search?"
+#~ msgstr ""
+#~ "Atrodo, nieko nerasta šioje vietoje. Gal pabandykite vieną iš žemiau "
+#~ "esančių nuorodų arba paiešką?"
+
+#~ msgid "Author: %s"
+#~ msgstr "Autorius: %s"
+
+#~ msgid "Day: %s"
+#~ msgstr "Diena: %s"
+
+#~ msgid "Month: %s"
+#~ msgstr "Mėnuo: %s"
+
+#~ msgid "Year: %s"
+#~ msgstr "Metai: %s"
+
+#~ msgid "Asides"
+#~ msgstr "Atidėjimo"
+
+#~ msgid "Galleries"
+#~ msgstr "Galerijos"
+
+#~ msgid "Images"
+#~ msgstr "Paveikslėliai"
+
+#~ msgid "Videos"
+#~ msgstr "Video"
+
+#~ msgid "Quotes"
+#~ msgstr "Citatos"
+
+#~ msgid "Links"
+#~ msgstr "Nuorodos"
+
+#~ msgid "Statuses"
+#~ msgstr "Būsenos"
+
+#~ msgid "Audios"
+#~ msgstr "Audio"
+
+#~ msgid "Chats"
+#~ msgstr "Pokalbiai"
+
+#~ msgid ""
+#~ "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+#~ msgstr ""
+#~ "Pasiruošę publikuoti savo pirmąjį įrašą? <a href=\"%1$s\">Pradėkite čia</"
+#~ "a> ."
+
+#~ msgid ""
+#~ "Sorry, but nothing matched your search terms. Please try again with some "
+#~ "different keywords."
+#~ msgstr ""
+#~ "Atsiprašome, bet nieks neatitiko Jūsų paieškos terminų. Bandykite dar "
+#~ "kartą su kitais raktažodžiais."
+
+#~ msgid ""
+#~ "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+#~ "searching can help."
+#~ msgstr ""
+#~ "Atrodo mes negalime rasti to, ko jūs ieškote. Galbūt ieškojimas gali "
+#~ "padėti."
+
+#~ msgid "Home"
+#~ msgstr "Pradžia"
+
+#~ msgid "Error 404"
+#~ msgstr "Klaida 404"
+
+#~ msgid "Page %s"
+#~ msgstr "Puslapis %s"
+
+#~ msgctxt "Open Sans font: on or off"
+#~ msgid "on"
+#~ msgstr "Įjungti"
+
+#~ msgctxt "Droid Sans font: on or off"
+#~ msgid "on"
+#~ msgstr "Įjungti"
+
+#~ msgid "%s <span class=\"says\">says:</span>"
+#~ msgstr "%s <span class=\"says\">sako:</span>"
+
+#~ msgctxt "1: date, 2: time"
+#~ msgid "%1$s at %2$s"
+#~ msgstr "%1$s %2$s"
+
+#~ msgctxt "Used before publish date."
+#~ msgid "<span class=\"screen-reader-text\">Posted on</span>"
+#~ msgstr "<span class=\"screen-reader-text\">Paskelbta</span>"
+
+#~ msgctxt "Used before post author name."
+#~ msgid "<span class=\"screen-reader-text\">Author</span>"
+#~ msgstr "<span class=\"screen-reader-text\">Autorius</span>"
+
+#~ msgid "Leave a comment"
+#~ msgstr "Parašykite komentarą"
+
+#~ msgid "1 Comment"
+#~ msgstr "1 komentaras"
+
+#~ msgid "% Comments"
+#~ msgstr "% komentarai"
+
+#~ msgctxt "Used between list items, there is a space after the comma."
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgctxt "Used before category names."
+#~ msgid "<span class=\"screen-reader-text\">Categories</span>"
+#~ msgstr "<span class=\"screen-reader-text\">Kategorijos</span>"
+
+#~ msgctxt "Used before tag names."
+#~ msgid "<span class=\"screen-reader-text\">Tags</span>"
+#~ msgstr "<span class=\"screen-reader-text\">Žymės</span>"
+
+#~ msgid "%s"
+#~ msgstr "%s"
+
+#~ msgid "Scroll Up"
+#~ msgstr "Slinkti aukštyn"
+
+#~ msgid "Posted on"
+#~ msgstr "Paskelbta"
+
+#~ msgid "By"
+#~ msgstr "pagal"
+
+#~ msgid "Read More ..."
+#~ msgstr "Skaityti toliau ..."
+
+#~ msgid "Catch Responsive is a Premium Responsive WordPress Theme"
+#~ msgstr ""
+#~ "Catch Responsive yra aukščiausios kokybės reaguojanti WordPress tema"
+
+#~ msgid ""
+#~ "This is promotion headline. You can edit this from Appearance -> "
+#~ "Customize -> Theme Options -> Promotion Headline Options"
+#~ msgstr ""
+#~ "Tai yra skatinamoji antraštė. Galite redaguoti ją per Išvaizda -> "
+#~ "Tinkinti -> Temos parinktys -> Reklaminės antraštės parinktys"
+
+#~ msgid "Reviews"
+#~ msgstr "Apžvalgos"
+
+#~ msgid "Search..."
+#~ msgstr "Ieškoti..."
+
+#~ msgid "Featured Content"
+#~ msgstr "Reklaminis turinys"
+
+#~ msgid "Here you can showcase the x number of Featured Content."
+#~ msgstr "Čia Jūs galite demonstruoti x skaičių reklaminio turinio."
+
+#~ msgid "Primary Sidebar, Content"
+#~ msgstr "Pagrindinė šoninė juosta, turinys"
+
+#~ msgid "Content, Primary Sidebar"
+#~ msgstr "Turinys, pagrindinė šoninė juosta"
+
+#~ msgid "No Sidebar ( Content Width )"
+#~ msgstr "Be šoninės juostos (turinio plotis)"
+
+#~ msgid "Show Excerpt"
+#~ msgstr "Rodyti Ištrauką"
+
+#~ msgid "Show Full Content (No Featured Image)"
+#~ msgstr "Rodyti visą turinį (be reklaminio paveikslėlio)"
+
+#~ msgid "Homepage / Frontpage"
+#~ msgstr "Pradžia / titulinis"
+
+#~ msgid "Excluding Homepage"
+#~ msgstr "Išskyrus pradžią"
+
+#~ msgid "Excluding Homepage, Page/Post Featured Image"
+#~ msgstr "Išskyrus pradžią, puslapio/įrašo reklaminis paveiksliukas"
+
+#~ msgid "Entire Site"
+#~ msgstr "Visas tinklapis"
+
+#~ msgid "Entire Site, Page/Post Featured Image"
+#~ msgstr "Visas tinklapis, puslapio/įrašo reklaminis paveiksliukas"
+
+#~ msgid "Pages and Posts"
+#~ msgstr "Puslapiai ir įrašai"
+
+#~ msgid "Disabled"
+#~ msgstr "Išjungta"
+
+#~ msgid "Full Image"
+#~ msgstr "Visas paveiksliukas"
+
+#~ msgid "Large Image"
+#~ msgstr "Didelis paveiksliukas"
+
+#~ msgid "Slider Image"
+#~ msgstr "Slankiklio paveiksliukas"
+
+#~ msgid "Demo Featured Content"
+#~ msgstr "Demo reklaminis turinys"
+
+#~ msgid "Featured Page Content"
+#~ msgstr "reklaminis puslapio turinys"
+
+#~ msgid "3 columns"
+#~ msgstr "3 stulpeliai"
+
+#~ msgid "4 columns"
+#~ msgstr "4 stulpeliai"
+
+#~ msgid "Demo Featured Slider"
+#~ msgstr "Demo reklaminis slankiklis"
+
+#~ msgid "Featured Page Slider"
+#~ msgstr "Reklaminis puslapio slankiklis"
+
+#~ msgid "Fade"
+#~ msgstr "Nuvysti"
+
+#~ msgid "Fade Out"
+#~ msgstr "Išnykti"
+
+#~ msgid "None"
+#~ msgstr "Nėra"
+
+#~ msgid "Scroll Horizontal"
+#~ msgstr "Slinkti horizontaliai"
+
+#~ msgid "Scroll Vertical"
+#~ msgstr "Slinkti vertikaliai"
+
+#~ msgid "Flip Horizontal"
+#~ msgstr "Apsukti horizontaliai"
+
+#~ msgid "Flip Vertical"
+#~ msgstr "Apsukti vertikaliai"
+
+#~ msgid "Tile Slide"
+#~ msgstr "Plytelių slinkimas"
+
+#~ msgid "Tile Blind"
+#~ msgstr "Plytelių užuolaida"
+
+#~ msgid "Suffle"
+#~ msgstr "Suffle"
+
+#~ msgid "Default(Older Posts/Newer Posts)"
+#~ msgstr "Įprastas (senesni pranešimai/naujesni pranešimai)"
+
+#~ msgid "Numeric"
+#~ msgstr "skaitmeninis"
+
+#~ msgid "Infinite Scroll (Click)"
+#~ msgstr "Begalinis slinkimas (paspaudimas)"
+
+#~ msgid "Infinite Scroll (Scroll)"
+#~ msgstr "Begalinis slinkimas (slinkimas)"
+
+#~ msgid "Full Size"
+#~ msgstr "Visas dydis"
+
+#~ msgid "Googleplus"
+#~ msgstr "Googleplus"
+
+#~ msgid "Feed"
+#~ msgstr "Feed"
+
+#~ msgid "GitHub"
+#~ msgstr "GitHub"
+
+#~ msgid "YouTube"
+#~ msgstr "YouTube"
+
+#~ msgid "PollDaddy"
+#~ msgstr "PollDaddy"
+
+#~ msgid "CodePen"
+#~ msgstr "CodePen"
+
+#~ msgid "Path"
+#~ msgstr "Path"
+
+#~ msgid "Digg"
+#~ msgstr "Digg"
+
+#~ msgid "Reddit"
+#~ msgstr "Reddit"
+
+#~ msgid "StumbleUpon"
+#~ msgstr "StumbleUpon"
+
+#~ msgid "Pocket"
+#~ msgstr "Pocket"
+
+#~ msgid "DropBox"
+#~ msgstr "DropBox"
+
+#~ msgid "Foursquare"
+#~ msgstr "Foursquare"
+
+#~ msgid "Spotify"
+#~ msgstr "Spotify"
+
+#~ msgid "Twitch"
+#~ msgstr "Twitch"
+
+#~ msgid "Default"
+#~ msgstr "Numatytasis"
+
+#~ msgid "Enable"
+#~ msgstr "Įjungti"
+
+#~ msgid "Disable"
+#~ msgstr "Išjungti"
+
+#~ msgid "Featured Image"
+#~ msgstr "Reklaminis paveikslėlis"
+
+#~ msgid "Disable Image"
+#~ msgstr "Išjungti paveikslėlį"
+
+#~ msgctxt "1: Year, 2: Site Title with home URL"
+#~ msgid "Copyright &copy; %1$s %2$s. All Rights Reserved."
+#~ msgstr "Autorinės teisės &copy; %1$s %2$s. Visos Teisės Saugomos."
+
+#~ msgid "by"
+#~ msgstr "pagal"
+
+#~ msgid ""
+#~ "Here you can showcase the x number of Featured Content. You can edit this "
+#~ "Headline, Subheadline and Feaured Content from \"Appearance -> Customize -"
+#~ "> Featured Content Options\"."
+#~ msgstr ""
+#~ "Čia Jūs galite demonstruoti x skaičių reklaminio turinio. Jūs galite "
+#~ "redaguoti šią antraštę, Paantraštę ir reklaminį turinį iš \"Išvaizda -> "
+#~ "Tinkinti -> Reklaminio turinio parinktys\"."
+
+#~ msgid "Permalink to: "
+#~ msgstr "Pastovi nuoroda į:"
+
+#~ msgid "Skip to content"
+#~ msgstr "Pereiti prie turinio"
+
+#~ msgid "Menu"
+#~ msgstr "Meniu"
+
+#~ msgid "Layout Options"
+#~ msgstr "Maketo parinktys"
+
+#~ msgid "Header Featured Image Options"
+#~ msgstr "Antraštės reklaminio paveikslėlio parinktys"
+
+#~ msgid "Single Page/Post Image Layout "
+#~ msgstr "Atskiro puslapio/įrašo paveikslėlio padėtis"
+
+#~ msgid "Catchresponsive Options"
+#~ msgstr "Catchresponsive parinktys"
+
+#~ msgid "Primary Sidebar"
+#~ msgstr "Pagrindinė šoninė juosta"
+
+#~ msgid ""
+#~ "This is the primary sidebar if you are using a two or three column site "
+#~ "layout option."
+#~ msgstr ""
+#~ "Tai yra pagrindinė šoninė juosta, jei Jūs naudojate dviejų ar trijų "
+#~ "stulpelių svetainės išdėstymo variantą."
+
+#~ msgid "Footer Area %d"
+#~ msgstr "Apačios sritis %d"
+
+#~ msgid "Footer %d widget area."
+#~ msgstr "Apačia %d valdiklio sritis."
+
+#~ msgid "Use this widget to add Social Icons as a widget. "
+#~ msgstr ""
+#~ "Naudokite šį valdiklį tam, kad pridėti socialines piktogramas kaip "
+#~ "valdiklius."
+
+#~ msgid ""
+#~ "Hold down the Ctrl (windows) / Command (Mac) button to select multiple "
+#~ "options."
+#~ msgstr ""
+#~ "Laikykite nuspaudę Ctrl (Windows) / Command (Mac) mygtuką, norėdami "
+#~ "pasirinkti kelis variantus."
+
+#~ msgid "Options for Featured Content"
+#~ msgstr "Parinktys reklaminiam turiniui"
+
+#~ msgid "Featured Content Options"
+#~ msgstr "Reklaminio turinio parinktys "
+
+#~ msgid "Enable Featured Content on"
+#~ msgstr "Įjungti reklaminį turinį"
+
+#~ msgid "Select Featured Content Layout"
+#~ msgstr "Pasirinkti reklaminio turinio išdėstymą"
+
+#~ msgid "Check to Move above Footer"
+#~ msgstr "Pažymėkite norėdami perkelti aukščiau apačios"
+
+#~ msgid "Select Content Type"
+#~ msgstr "Pasirinkite Turinio tipą"
+
+#~ msgid "Leave field empty if you want to remove Headline"
+#~ msgstr "Palikite lauką tuščią, jei norite pašalinti antraštę"
+
+#~ msgid "Headline for Featured Content"
+#~ msgstr "Antraštė reklaminiam turiniui"
+
+#~ msgid "Leave field empty if you want to remove Sub-headline"
+#~ msgstr "Palikite lauką tuščią, jei norite pašalinti poantraštę"
+
+#~ msgid "Sub-headline for Featured Content"
+#~ msgstr "Poantraštė reklaminiam turiniui"
+
+#~ msgid ""
+#~ "Save and refresh the page if No. of Featured Content is changed (Max no "
+#~ "of Featured Content is 20)"
+#~ msgstr ""
+#~ "Išsaugokite ir atnaujinkite puslapį, jei reklaminio turinio skaičius "
+#~ "pasikeitė (Max skaičius reklaminio turinio yra 20)"
+
+#~ msgid "No of Featured Content"
+#~ msgstr "Reklaminio turinio skaičius"
+
+#~ msgid "Featured Page"
+#~ msgstr "Reklaminis puslapis"
+
+#~ msgid "Featured Slider Options"
+#~ msgstr "Reklaminio slinkiklio parinktys"
+
+#~ msgid "Enable Slider on"
+#~ msgstr "Įjungti slinkiklį"
+
+#~ msgid "seconds(s)"
+#~ msgstr "sekundės(-džių)"
+
+#~ msgid "Select Slider Type"
+#~ msgstr "Pasirinkite slankiklio tipą"
+
+#~ msgid ""
+#~ "Save and refresh the page if No. of Slides is changed (Max no of slides "
+#~ "is 20)"
+#~ msgstr ""
+#~ "Išsaugokite ir atnaujinkite puslapį, jei skaidrių skaičius yra pasikeitęs "
+#~ "(maks. skaičius skaidrių yra 20)"
+
+#~ msgid "No of Slides"
+#~ msgstr "Skaidrių skaičius"
+
+#~ msgid "Enable Featured Header Image on "
+#~ msgstr "Įjungti reklaminės antraštės paveiksliuką"
+
+#~ msgid "Page/Post Featured Header Image Size"
+#~ msgstr "Puslapio/įrašo reklaminės antraštės paveiksliuko dydis"
+
+#~ msgid "Featured Header Image Alt/Title Tag "
+#~ msgstr "Reklaminės antraštės paveiksliuko alternatyvus tekstas"
+
+#~ msgid "Featured Header Image Link URL"
+#~ msgstr "Reklaminės antraštės paveiksliuko nuorodos URL"
+
+#~ msgid "Check to Open Link in New Window/Tab"
+#~ msgstr "Pažymėkite, kad atidaryti nuorodą naujame lange/kortelėje"
+
+#~ msgid "Note: Enter the url for correponding social networking website"
+#~ msgstr "Pastaba: įveskite URL atitinkamai socialinio tinklo svetainei"
+
+#~ msgid ""
+#~ "Skype link can be of formats:<br>callto://+{number}<br> skype:{username}?"
+#~ "{action}. More Information in readme file"
+#~ msgstr ""
+#~ "Skype nuoroda gali būti formatais:<br>callto://+{number}<br> skype:"
+#~ "{username}?{action}. Daugiau informacijos readme faile."
+
+#~ msgid ""
+#~ "Breadcrumbs are a great way of letting your visitors find out where they "
+#~ "are on your site with just a glance. You can enable/disable them on "
+#~ "homepage and entire site."
+#~ msgstr ""
+#~ "Viršutinis slankusis laukas yra puikus būdas leisti savo lankytojams "
+#~ "sužinoti, kur jie yra jūsų svetainėje vos tik žvilgterėjus. Jūs galite "
+#~ "įjungti/išjungti juos puslapyje ir visoje svetainėje."
+
+#~ msgid "Breadcrumb Options"
+#~ msgstr "Viršutinio slankaus lauko parinktys"
+
+#~ msgid "Check to enable Breadcrumb"
+#~ msgstr "Pažymėkite norėdami įjungti viršutinį slankųjį lauką."
+
+#~ msgid "Check to enable Breadcrumb on Homepage"
+#~ msgstr ""
+#~ "Pažymėkite norėdami įjungti viršutinį slankųjį lauką pradžios puslapyje."
+
+#~ msgid "Separator between Breadcrumbs"
+#~ msgstr "Viršutiniojo slankaus lauko skirtukas"
+
+#~ msgid "Custom/Inline CSS"
+#~ msgstr "Individualus/Inline CSS"
+
+#~ msgid "Custom CSS Options"
+#~ msgstr "Individualaus CSS parinktys"
+
+#~ msgid "Enter Custom CSS"
+#~ msgstr "Įveskite individualų CSS"
+
+#~ msgid "Excerpt Options"
+#~ msgstr "Ištraukos parinktys"
+
+#~ msgid "Excerpt length. Default is 55 words"
+#~ msgstr "Numatytasis nustatymas yra 55 žodžiai."
+
+#~ msgid "Excerpt Length (words)"
+#~ msgstr "Ištraukos Ilgis (žodžiais)"
+
+#~ msgid "Read More Text"
+#~ msgstr "Skaityti daugiau teksto"
+
+#~ msgid ""
+#~ "Only posts that belong to the categories selected here will be displayed "
+#~ "on the front page"
+#~ msgstr ""
+#~ "Tik pranešimai, kurie priklauso vienai iš pažymėtų kategorijų, bus rodomi "
+#~ "tituliniame puslapyje."
+
+#~ msgid "Homepage / Frontpage Options"
+#~ msgstr "Pradžios/titulinio puslapio parinktys"
+
+#~ msgid "Select Categories"
+#~ msgstr "Pasirinkite kategorijas"
+
+#~ msgid "Remove Icon images to disable."
+#~ msgstr "Pašalinkite favicon paveiksliukus tam, kad išjungti."
+
+#~ msgid "Icon Options"
+#~ msgstr "Ikonos parinktys"
+
+#~ msgid "Select/Add Favicon"
+#~ msgstr "Pasirinkti/įdėti Favicon"
+
+#~ msgid ""
+#~ "Web Clip Icon for Apple devices. Recommended Size - Width 144px and "
+#~ "Height 144px height, which will support High Resolution Devices like iPad "
+#~ "Retina."
+#~ msgstr ""
+#~ "Web Clip ikona Apple įrenginiams. Rekomenduojamas dydis - plotis 144px ir "
+#~ "aukštis 144px, kuris palaikys didelės raiškos įrenginius, pavyzdžiui, "
+#~ "iPad Retina."
+
+#~ msgid "Select/Add Web Clip Icon"
+#~ msgstr "Pasirinkti/pridėti Web Clip ikoną"
+
+#~ msgid "Archive Content Layout"
+#~ msgstr "Archyvo turinio išdėstymas"
+
+#~ msgid ""
+#~ "Numeric Option requires <a target=\"_blank\" href=\"%s\">WP-PageNavi "
+#~ "Plugin</a>.<br/>Infinite Scroll Options requires <a target=\"_blank\" "
+#~ "href=\"%s\">JetPack Plugin</a> with Infinite Scroll module Enabled."
+#~ msgstr ""
+#~ "Skaičių variantas reikalauja <a target=\"_blank\" href=\"%s\">WP-PageNavi "
+#~ "įskiepio</a> . <br/> Begalinio slinkimo parinktys reikalauja <a target="
+#~ "\"_blank\" href=\"%s\">Jetpack įskiepio</a> su įjungtu begalinio slinkimo "
+#~ "moduliu."
+
+#~ msgid ""
+#~ "Infinite Scroll Options requires <a target=\"_blank\" href=\"%s\">JetPack "
+#~ "Plugin</a> with Infinite Scroll module Enabled."
+#~ msgstr ""
+#~ "Begalinio slinkimo parinktys reikalauja <a target=\"_blank\" href=\"%s"
+#~ "\">Jetpack įskiepio</a> su įjungtu begalinio slinkimo moduliu."
+
+#~ msgid ""
+#~ "Numeric Option requires <a target=\"_blank\" href=\"%s\">WP-PageNavi "
+#~ "Plugin</a>."
+#~ msgstr ""
+#~ "Skaičių variantas reikalauja <a target=\"_blank\" href=\"%s\">WP-PageNavi "
+#~ "įskiepio</a> ."
+
+#~ msgid "Pagination Options"
+#~ msgstr "Numeracijos parinktys"
+
+#~ msgid "Pagination type"
+#~ msgstr "Numeracijos tipas"
+
+#~ msgid "To disable the fields, simply leave them empty."
+#~ msgstr "Norėdami išjungti laukus, tiesiog palikite juos tuščius."
+
+#~ msgid "Promotion Headline Options"
+#~ msgstr "Reklaminės antraštės parinktys"
+
+#~ msgid "Enable Promotion Headline on"
+#~ msgstr "Įjungti reklaminę antraštę"
+
+#~ msgid "Appropriate Words: 10"
+#~ msgstr "Tinka žodžių: 10"
+
+#~ msgid "Promotion Headline Text"
+#~ msgstr "Reklaminės antraštės tekstas"
+
+#~ msgid "Appropriate Words: 15"
+#~ msgstr "Tinka žodžių: 15"
+
+#~ msgid "Promotion Subheadline Text"
+#~ msgstr "Reklaminės poantraštės tekstas"
+
+#~ msgid "Appropriate Words: 3"
+#~ msgstr "Tinka žodžių: 3"
+
+#~ msgid "Promotion Headline Button Text "
+#~ msgstr "Reklaminės antraštės mygtuko tekstas"
+
+#~ msgid "Promotion Headline Link"
+#~ msgstr "Reklaminės antraštės nuoroda"
+
+#~ msgid "Change default placeholder text in Search."
+#~ msgstr "Keisti numatytąjį tekstą paieškoje."
+
+#~ msgid "Search Options"
+#~ msgstr "Paieškos parinktys"
+
+#~ msgid "Logo"
+#~ msgstr "Logotipas"
+
+#~ msgid "Check to disable logo"
+#~ msgstr "Pažymėkite langelį, jei norite išjungti logotipą."
+
+#~ msgid "Logo Alt Text"
+#~ msgstr "Logotipo alternatyvus tekstas"
+
+#~ msgid "Check to move Site Title and Tagline before logo"
+#~ msgstr ""
+#~ "Pažymėkite norėdami padėti tinklapio pavadinimą ir apibūdinimą prieš "
+#~ "logotipą"
+
+#~ msgid "Upgrade To Pro &raquo;"
+#~ msgstr "Atnaujinkite į Pro &raquo;"
+
+#~ msgid ""
+#~ "Some settings might be missing or disorganized in this version of "
+#~ "WordPress. So we suggest you to upgrade to version 4.0 or better."
+#~ msgstr ""
+#~ "Kai kurių nustatymų gali trūkti arba būti neorganizuoti šioje WordPress "
+#~ "versijoje. Taigi, mes rekomenduojame jums atnaujinti iki versijos 4.0 ar "
+#~ "geresnės."
+
+#~ msgid "Error 404-Page NOT Found"
+#~ msgstr "Klaida 404 puslapis nerastas"
+
+#~ msgctxt "label"
+#~ msgid "Search for:"
+#~ msgstr "Ieškoti:"
+
+#~ msgctxt "submit button"
+#~ msgid "Search"
+#~ msgstr "Ieškoti"
+
+#~ msgid ""
+#~ "This is the Primary Sidebar Widget Area if you are using a two or three "
+#~ "column site layout option."
+#~ msgstr ""
+#~ "Tai yra pagrindinės šoninės juostos valdiklių sritis, jei naudojate "
+#~ "dviejų ar trijų stulpelių svetainės išdėstymo variantą."
+
+#~ msgid "Featured Content Settings"
+#~ msgstr "Populiariausio turinio nustatymai "
+
+#~ msgid "Featured Content Type"
+#~ msgstr "Reklaminio turinio tipas"
+
+#~ msgid "Featured Slider Settings"
+#~ msgstr "Reklaminio slinkiklio nustatymai"
+
+#~ msgid "Featured Slider Type"
+#~ msgstr "Reklaminio slankiklio tipas"
+
+#~ msgid "Archive for %s"
+#~ msgstr "Archyvas %s"
+
+#~ msgid "Search results for: %s"
+#~ msgstr "Paieškos rezultatai: %s"
+
+#~ msgid "Posts tagged %s"
+#~ msgstr "Įrašai pažymėti %s"

@@ -2,13 +2,9 @@
 /**
  * @package GeneratePress
  */
-$generate_settings = wp_parse_args( 
-	get_option( 'generate_settings', array() ), 
-	generate_get_defaults() 
-);
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemprop="blogPost" itemtype="http://schema.org/BlogPosting" itemscope="itemscope">
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_article_schema( 'BlogPosting' ); ?>>
 	<div class="inside-article">
 		<?php do_action( 'generate_before_content'); ?>
 		<header class="entry-header">
@@ -21,21 +17,20 @@ $generate_settings = wp_parse_args(
 		</header><!-- .entry-header -->
 		<?php do_action( 'generate_after_entry_header'); ?>
 		
-		<?php
-		if ( is_search() || 'excerpt' == $generate_settings['post_content'] ) : ?>
-		<div class="entry-summary" itemprop="text">
-			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
+		<?php if ( true == generate_show_excerpt() ) : ?>
+			<div class="entry-summary" itemprop="text">
+				<?php the_excerpt(); ?>
+			</div><!-- .entry-summary -->
 		<?php else : ?>
-		<div class="entry-content" itemprop="text">
-			<?php the_content(); ?>
-			<?php
+			<div class="entry-content" itemprop="text">
+				<?php the_content(); ?>
+				<?php
 				wp_link_pages( array(
 					'before' => '<div class="page-links">' . __( 'Pages:', 'generate' ),
 					'after'  => '</div>',
 				) );
-			?>
-		</div><!-- .entry-content -->
+				?>
+			</div><!-- .entry-content -->
 		<?php endif; ?>
 		
 		<?php do_action( 'generate_after_entry_content'); ?>

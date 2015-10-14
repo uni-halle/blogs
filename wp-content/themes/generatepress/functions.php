@@ -5,7 +5,7 @@
  * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.3.14');
+define( 'GENERATE_VERSION', '1.3.16');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -547,5 +547,87 @@ function generate_smart_content_width()
 		// If both sidebars are present
 		$content_width = $generate_settings['container_width'] * ( ( 100 - ( $left_sidebar_width + $right_sidebar_width ) ) / 100 );	
 	}
+}
+endif;
+
+if ( ! function_exists( 'generate_body_schema' ) ) :
+/** 
+ * Figure out which schema tags to apply to the <body> element
+ * @since 1.3.15
+ */
+function generate_body_schema()
+{
+	// Set up blog variable
+	$blog = ( is_home() || is_archive() || is_attachment() || is_tax() || is_single() ) ? true : false;
+	
+	// Set up default itemtype
+	$itemtype = 'WebPage';
+
+	// Get itemtype for the blog
+	$itemtype = ( $blog ) ? 'Blog' : $itemtype;
+	
+	// Get itemtype for search results
+	$itemtype = ( is_search() ) ? 'SearchResultsPage' : $itemtype;
+	
+	// Get the result
+	$result = apply_filters( 'generate_body_itemtype', $itemtype );
+	
+	// Return our HTML
+	echo "itemtype='http://schema.org/$result' itemscope='itemscope'";
+}
+endif;
+
+if ( ! function_exists( 'generate_article_schema' ) ) :
+/** 
+ * Figure out which schema tags to apply to the <article> element
+ * The function determines the itemtype: generate_article_schema( 'BlogPosting' )
+ * @since 1.3.15
+ */
+function generate_article_schema( $type = 'CreativeWork' )
+{
+	// Get the itemtype
+	$itemtype = apply_filters( 'generate_article_itemtype', $type );
+	
+	// Print the results
+	echo "itemtype='http://schema.org/$itemtype' itemscope='itemscope'";
+}
+endif;
+
+if ( ! function_exists( 'generate_show_excerpt' ) ) :
+/** 
+ * Figure out if we should show the blog excerpts or full posts
+ * @since 1.3.15
+ */
+function generate_show_excerpt()
+{
+	// Get current post
+	global $post;
+	
+	// Get Customizer settings
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	// Check to see if the more tag is being used
+	$more_tag = apply_filters( 'generate_more_tag', @strpos( $post->post_content, '<!--more-->' ) );
+
+	// Check the post format
+	$format = ( false !== get_post_format() ) ? get_post_format() : 'standard';
+	
+	// Get the excerpt setting from the Customizer
+	$show_excerpt = ( 'excerpt' == $generate_settings['post_content'] ) ? true : false;
+	
+	// If our post format isn't standard, show the full content
+	$show_excerpt = ( 'standard' !== $format ) ? false : $show_excerpt;
+	
+	// If the more tag is found, show the full content
+	$show_excerpt = ( $more_tag ) ? false : $show_excerpt;
+	
+	// If we're on a search results page, show the excerpt
+	$show_excerpt = ( is_search() ) ? true : $show_excerpt;
+	
+	// Return our value
+	return apply_filters( 'generate_show_excerpt', $show_excerpt );
 }
 endif;

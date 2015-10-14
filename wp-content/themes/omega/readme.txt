@@ -59,6 +59,12 @@ Baseline Reset (normalize.css 2.1.2) is a project by Nicolas Gallagher, co-creat
 
 Changelog
 ---------
+1.2.7   2015-10-10
+ - fix tgmpa issue
+
+1.2.6   2015-10-9
+ - update tgmpa extension
+
 1.2.5   2015-9-26
  - Phasing Out Favicon Support
 

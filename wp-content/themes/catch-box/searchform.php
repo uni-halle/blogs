@@ -3,7 +3,7 @@
  * The template for displaying search forms in Catch Box
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 1.0
  */
 $options = catchbox_get_theme_options();

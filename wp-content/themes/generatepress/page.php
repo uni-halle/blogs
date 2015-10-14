@@ -13,7 +13,7 @@
 get_header(); ?>
 
 	<div id="primary" <?php generate_content_class();?>>
-		<main id="main" <?php generate_main_class(); ?> itemprop="mainContentOfPage" role="main">
+		<main id="main" <?php generate_main_class(); ?>>
 			<?php do_action('generate_before_main_content'); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 

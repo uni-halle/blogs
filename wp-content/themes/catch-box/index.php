@@ -9,7 +9,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  */
 
 get_header(); ?>            	

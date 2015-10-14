@@ -4,7 +4,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemprop="blogPost" itemtype="http://schema.org/BlogPosting" itemscope="itemscope">
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_article_schema( 'BlogPosting' ); ?>>
 	<div class="inside-article">
 		<?php do_action( 'generate_before_content'); ?>
 		<header class="entry-header">
@@ -13,17 +13,17 @@
 				<?php generate_posted_on(); ?>
 			</div><!-- .entry-meta -->
 		</header><!-- .entry-header -->
+		
 		<?php do_action( 'generate_after_entry_header'); ?>
 		<div class="entry-content" itemprop="text">
 			<?php the_content(); ?>
 			<?php
-				wp_link_pages( array(
-					'before' => '<div class="page-links">' . __( 'Pages:', 'generate' ),
-					'after'  => '</div>',
-				) );
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . __( 'Pages:', 'generate' ),
+				'after'  => '</div>',
+			) );
 			?>
 		</div><!-- .entry-content -->
-		
 		<?php do_action( 'generate_after_entry_content'); ?>
 
 		<footer class="entry-meta">

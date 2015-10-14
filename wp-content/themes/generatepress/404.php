@@ -9,7 +9,7 @@ get_header(); ?>
 
 
 	<div id="primary" <?php generate_content_class(); ?>>
-		<main id="main" <?php generate_main_class(); ?> itemprop="mainContentOfPage" role="main">
+		<main id="main" <?php generate_main_class(); ?>>
 			<?php do_action('generate_before_main_content'); ?>
 			<div class="inside-article">
 				<?php do_action( 'generate_before_content'); ?>
@@ -19,7 +19,7 @@ get_header(); ?>
 				<?php do_action( 'generate_after_entry_header'); ?>
 				<div class="entry-content" itemprop="text">
 					<p>
-						<?php echo apply_filters( 'generate_404_text', __( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'generate' ) ); ?>
+						<?php echo apply_filters( 'generate_404_text', __( 'It looks like nothing was found at this location. Maybe try searching?', 'generate' ) ); ?>
 					</p>
 					<?php get_search_form(); ?>
 				</div><!-- .entry-content -->

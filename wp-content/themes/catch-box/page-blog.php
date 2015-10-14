@@ -7,7 +7,7 @@ if ( !defined('ABSPATH')) exit;
  * Description: A Page Template that disables a blog
  *
  * @package Catch Themes
- * @subpackage Catch_Box
+ * @subpackage Catch Box
  * @since Catch Box 2.3.1
  */
 
