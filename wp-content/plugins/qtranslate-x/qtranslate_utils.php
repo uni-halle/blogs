@@ -1,52 +1,8 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) exit;
 
-// /*
 if(WP_DEBUG){
-	if(!function_exists('qtranxf_dbg_log')){
-		function qtranxf_dbg_log($msg,$var='novar',$bt=false,$exit=false){
-			//$d=ABSPATH.'/wp-logs';
-			//if(!file_exists($d)) mkdir($d);
-			//$f=$d.'/qtranslate.log';
-			$f=WP_CONTENT_DIR.'/debug-qtranslate.log';
-			if( $var !== 'novar' )
-				$msg .= var_export($var,true);
-			if($bt){
-				$msg .= PHP_EOL.'backtrace:'.PHP_EOL.var_export(debug_backtrace(),true);
-			}
-			error_log($msg.PHP_EOL,3,$f);
-			if($exit) exit();
-		}
-
-		function qtranxf_dbg_echo($msg,$var='novar',$bt=false,$exit=false){
-			if( $var !== 'novar' )
-				$msg .= var_export($var,true);
-			echo $msg."<br/>\n";
-			if($bt){
-				debug_print_backtrace();
-			}
-			if($exit) exit();
-		}
-
-		function qtranxf_dbg_log_if($condition,$msg,$var='novar',$bt=false,$exit=false){
-			if($condition)qtranxf_dbg_log($msg,$var,$bt,$exit);
-		}
-
-		function qtranxf_dbg_echo_if($condition,$msg,$var='novar',$bt=false,$exit=false){
-			if($condition)qtranxf_dbg_echo($msg,$var,$bt,$exit);
-		}
-	}
-	assert_options(ASSERT_BAIL,true);
-
-	/*
-	function qtranxf_do_tests(){
-		//qtranxf_dbg
-		if(file_exists(dirname(__FILE__).'/dev/qtx-tests.php'))
-			require_once(dirname(__FILE__).'/dev/qtx-tests.php');
-	}
-	add_action('qtranslate_init_language','qtranxf_do_tests');
-	// */
-
+	require_once(QTRANSLATE_DIR.'/inc/qtx_dbg.php');
 }else{
 	if(!function_exists('qtranxf_dbg_log')){
 		function qtranxf_dbg_log($msg,$var=null,$bt=false,$exit=false){}
@@ -57,7 +13,7 @@ if(WP_DEBUG){
 	//assert_options(ASSERT_ACTIVE,false);
 	//assert_options(ASSERT_WARNING,false);
 	//assert_options(ASSERT_QUIET_EVAL,true);
-}// */
+}
 
 /**
  * @since 3.3.1
@@ -95,13 +51,25 @@ function qtranxf_add_admin_notice($msg, $kind) {
 function qtranxf_translate_wp($s) { return __($s); }
 
 /**
+ * Looks up a translation in domain 'qtranslate', and if it is not there, uses the default WordPress domain to translate.
+ * @since 3.4.5.5
+*/
+function qtranxf_translate($s)
+{
+	$t = get_translations_for_domain( 'qtranslate' );
+	if(isset($t->entries[$s]) && !empty($t->entries[$s]->translations)){
+		return $t->entries[$s]->translations[0];
+	}
+	return qtranxf_translate_wp($s);
+}
+
+/**
  * @since 3.3.8.8
  */
 function qtranxf_plugin_basename(){
 	static $s;
 	if(!$s){
-		$b = plugin_basename(QTRANSLATE_FILE);
-		$s = basename(dirname($b)).'/'.basename($b);//Windows trick when folder is linked
+		$s = plugin_basename(wp_normalize_path(QTRANSLATE_FILE));
 	}
 	return $s;
 }
@@ -112,15 +80,46 @@ function qtranxf_plugin_basename(){
 function qtranxf_plugin_dirname(){
 	static $s;
 	if(!$s){
-		$b = plugin_basename(QTRANSLATE_FILE);
-		$s = basename(dirname($b));//Windows trick when folder is linked
+		$b = qtranxf_plugin_basename();
+		$s = dirname($b);
 	}
 	return $s;
 }
 
 /**
- * Return path to plugin folder relative to WP_CONTENT_DIR.
+ * Return path to plugin folder relative to WP_CONTENT_DIR. Works for plugin paths only.
+ * No trailing slash in the return string.
+ * It may return absolute path to plugin folder in case content and plugin directories are on different devices.
+ * $plugin is path to plugin file, like the one coming from __FILE__.
+ * @since 3.4.5
+*/
+function qtranxf_dir_from_wp_content($plugin){
+	global $wp_plugin_paths;
+	$plugin_realpath = wp_normalize_path( dirname( realpath( $plugin ) ) );
+	$d = $plugin_realpath;
+	foreach ( $wp_plugin_paths as $dir => $realdir ) {
+		if ( $plugin_realpath != $realdir ) continue;
+		$d = $dir;
+		break;
+	}
+	$c = trailingslashit(wp_normalize_path(WP_CONTENT_DIR));
+	$d_len = strlen($d);
+	$c_len = strlen($c);
+	$i = 0;
+	while($i < $d_len && $i < $c_len && $d[$i] == $c[$i]) ++$i;
+	if($i == $c_len) return substr($d,$c_len);
+	if($i == 0) return $d;//return absolute path then
+	$c = substr($c,$i);
+	$d = substr($d,$i);
+	for($i = substr_count($c,'/'); --$i >= 0;) $d = '../'.$d;
+	return $d;
+}
+
+/**
+ * Return path to QTX plugin folder relative to WP_CONTENT_DIR.
+ * Uses qtranxf_dir_from_wp_content
  * @since 3.4
+ * @since 3.4.5 modified for multisite.
  */
 function qtranxf_plugin_dirname_from_wp_content(){
 	static $s;
@@ -130,14 +129,12 @@ function qtranxf_plugin_dirname_from_wp_content(){
 		//qtranxf_dbg_log('plugin_dir_path: ', plugin_dir_path( __FILE__ ));//links are resolved, with trailing slash
 		//qtranxf_dbg_log('plugin_basename: ', plugin_basename( __FILE__ ));//no links resolved
 		//qtranxf_dbg_log('WP_CONTENT_DIR: ', WP_CONTENT_DIR);//no links resolved
+		//qtranxf_dbg_log('wp_content_dir(): ', wp_content_dir());//no links resolved
 		//qtranxf_dbg_log('WP_PLUGIN_DIR: ', WP_PLUGIN_DIR);//no links resolved
 		//qtranxf_dbg_log('WP_MU_PLUGIN_DIR: ', WPMU_PLUGIN_DIR);//no links resolved
 		//qtranxf_dbg_log('plugin_dir_url: ', plugin_dir_url( __FILE__ ));//no links, naturally
 		//qtranxf_dbg_log('content_url: ', content_url());//no links either
-
-		$d = plugin_dir_url( QTRANSLATE_FILE );
-		$c = content_url();
-		$s = trim(substr($d, strlen($c)), '/\\');
+		$s = qtranxf_dir_from_wp_content(QTRANSLATE_FILE);
 	}
 	return $s;
 }
@@ -469,15 +466,48 @@ function qtranxf_getLanguageDefault() {
 	return $q_config['default_language'];
 }
 
-function qtranxf_getLanguageName($lang = '') {
-    global $q_config;
-		if($lang=='' || !qtranxf_isEnabled($lang)) $lang = $q_config['language'];
-    return $q_config['language_name'][$lang];
+/**
+ * @since 3.4.5.4 - return language name in native language, former qtranxf_getLanguageName.
+*/
+function qtranxf_getLanguageNameNative($lang = ''){
+	global $q_config;
+	if(empty($lang)) $lang = $q_config['language'];
+	return $q_config['language_name'][$lang];
+}
+
+/**
+ * @since 3.4.5.4 - return language name in active language, if available, otherwise the name in native language.
+*/
+function qtranxf_getLanguageName($lang = ''){
+	global $q_config, $l10n;
+	if(empty($lang)) return $q_config['language_name'][$q_config['language']];
+	if(isset($q_config['language-names'][$lang])) return $q_config['language-names'][$lang];
+	if(!isset($l10n['language-names'])){//is not loaded by default, since this place should not be hit frequently
+		$locale = $q_config['locale'][$q_config['language']];
+		if(!load_textdomain( 'language-names', QTRANSLATE_DIR . '/lang/language-names/language-'.$locale.'.mo' )){
+			if($locale[2] == '_'){
+				$locale = substr($locale,0,2);
+				load_textdomain( 'language-names', QTRANSLATE_DIR . '/lang/language-names/language-'.$locale.'.mo' );
+			}
+		}
+	}
+	$translations = get_translations_for_domain('language-names');
+	$locale = $q_config['locale'][$lang];
+	while(!isset($translations->entries[$locale])){
+		if($locale[2] == '_'){
+			$locale = substr($locale,0,2);
+			if(isset($translations->entries[$locale])) break;
+		}
+		return $q_config['language-names'][$lang] = $q_config['language_name'][$lang];
+	}
+	$n = $translations->entries[$locale]->translations[0];
+	return $q_config['language-names'][$lang] = mb_convert_case($n,MB_CASE_TITLE);
 }
 
 function qtranxf_isEnabled($lang) {
 	global $q_config;
-	return in_array($lang, $q_config['enabled_languages']);
+	return isset($q_config['locale'][$lang]);//only available languages are loaded, this will work quiker
+	//return in_array($lang, $q_config['enabled_languages']);
 }
 
 /**
@@ -528,13 +558,16 @@ function qtranxf_getAvailableLanguages($text) {
 	return $result;
 }
 
-function qtranxf_isAvailableIn($post_id, $language='') {
+function qtranxf_isAvailableIn($post_id, $lang='') {
 	global $q_config;
-	if($language == '') $language = $q_config['default_language'];
-	$p = get_post($post_id); $post = &$p;
-	$languages = qtranxf_getAvailableLanguages($post->post_content);
-	if($languages===FALSE) return $language == $q_config['default_language'];
-	return in_array($language,$languages);
+	if(empty($lang)) $lang = $q_config['default_language'];
+	global $wpdb;
+	$post_content = $wpdb->get_var( $wpdb->prepare( "SELECT post_content FROM $wpdb->posts WHERE ID = %d", $post_id ) );
+	//qtranxf_dbg_log('qtranxf_isAvailableIn: $post_content: ', $post_content);
+	if(empty($post_content)) return false;
+	$languages = qtranxf_getAvailableLanguages($post_content);
+	if($languages===FALSE) return $lang == $q_config['default_language'];
+	return in_array($lang,$languages);
 }
 
 function qtranxf_convertDateFormatToStrftimeFormat($format) {
@@ -845,7 +878,7 @@ function qtranxf_parse_page_config($config, $url_path, $url_query) {
 
 	//qtranxf_dbg_log('qtranxf_parse_page_config: $page_configs: ', $page_configs);
 	foreach($page_configs as $post_type_key => &$page_config){
-		if(!empty($post_type_key))
+		//if(!empty($post_type_key))
 		//qtranxf_dbg_log('qtranxf_parse_page_config: $post_type_key="'.$post_type_key.'"; page_config: ', $page_config);
 		if(!empty($page_config)){
 			//clean up 'fields'

@@ -3,8 +3,8 @@ Developed by: qTranslate Team based on original code by Qian Qin
 Contributors: johnclause, chineseleper, Vavooon, grafcom
 Tags: multilingual, language, admin, tinymce, bilingual, widget, switcher, i18n, l10n, multilanguage, translation
 Requires at least: 3.9
-Tested up to: 4.3
-Stable tag: 3.4.4
+Tested up to: 4.4
+Stable tag: 3.4.6.2
 License: GPLv3 or later
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QEXEK3HX8AR6U
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -13,7 +13,7 @@ Adds a user-friendly multilingual dynamic content management.
 
 ## Description ##
 
-The plugin offers a way to maintain dynamic multilingual content on a WordPress site. While static localization is already excellently implemented and offered by WordPress framework through [po/mo file framework](https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/), it is still impossible to maintain dynamic multilingual content without an additional specialized plugin, to a kind of which qTranslate-X belongs to. For example, what if you need to make title, content and excerpt of a page to be multilingual? In theory, it could be handled by po/mo files, but in an insanely inconvenient way.
+The plugin offers a way to maintain dynamic multilingual content on a WordPress site. While static localization is already excellently implemented and offered by WordPress framework through [po/mo file framework](https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/), it is still impossible to maintain dynamic multilingual content without an additional specialized plugin, a kind of which qTranslate-X belongs to. For example, what if you need to make title, content and excerpt of a page to be multilingual? In theory, it could be handled by po/mo files, but in an insanely inconvenient way.
 
 To deal with dynamic content, qTranslate-X provides language switching buttons on applicable admin editing pages, which, once pressed, make all the text of multilingual fields to be filled with the language chosen. The instant language change happens locally in your browser without sending an additional request to the server, which makes it most convenient for bi-lingual or few-lingual sites, for example, owners of which perform the translation of content on their own. qTranslate-X does not provide a way to translate static strings, assuming that this part is already implemented and handled by the WordPress localization framework.
 
@@ -37,7 +37,7 @@ Plugin qTranslate-X makes creation of multilingual content as easy as working wi
 - qTranslate-X supports unlimited number of languages, which can be easily added/modified/deleted via a comfortable Configuration Page at Settings->Languages.
 - Custom CSS for "qTranslate Language Chooser" widget configurable via its properties.
 - Menu item "Language Switcher" to enable language choosing from a menu.
-- Use [Google XML Sitemaps v3 for qTranslate](https://wordpress.org/plugins/google-xml-sitemaps-v3-for-qtranslate/) plugin to rebuild your XML sitemap for better SEO support.
+- To generate language-specific sitemaps for better SEO support, use [Google XML Sitemaps](https://wordpress.org/plugins/google-sitemap-generator/) or 'XML Sitemaps' under [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/). Please, [report](https://qtranslatexteam.wordpress.com/contact-us/) a successful use of other sitemap plugins.
 
 The website [qTranslate-X explained](https://qtranslatexteam.wordpress.com/about/) provides and keeps updated a few useful listings:
 
@@ -69,6 +69,10 @@ We thank our sponsors for persistent help and support:
 
 **Important**: Read [migration instructions](https://qtranslatexteam.wordpress.com/migration/), if you previously used other multilingual plugin, otherwise initial installation of this plugin is no different from any other standard plugin:
 
+**Very Important**: Whenever you update the plugin, make sure to deactivate the previous version and then activate the new one. Normal WordPress update does that, and should be sufficient, but if you overwrote plugin files manually, be sure to execute deactivation/activation cycle, otherwise you will miss the execution of activation hooks and some options may become misconfigured. for For the sake of performance, plugin is not programmed to run all the necessary checks every time it is loaded, since activation hook is an expensive operation. That is why it is important to execute deactivation/activation cycle.
+
+Otherwise the installation is similar to any other WordPress plugin:
+
 1. Download the plugin from [WordPress](http://wordpress.org/plugins/qtranslate-x/ "qTranslate-X") or take the latest development version from [GitHub](https://github.com/qTranslate-Team/qtranslate-x).
 1. Use WordPress `/wp-admin/plugin-install.php` page to install a plugin or extract all the files and upload everything (keeping the directory structure) to the `/wp-content/plugins/` directory.
 1. Deactivate plugin qTranslate, mqTranslate, qTranslate Plus, zTranslate or any other multilingual plugin, if you are running any.
@@ -76,8 +80,8 @@ We thank our sponsors for persistent help and support:
 1. Open Settings->Languages configuration page and add/delete/disable any languages you need.
 1. Add the "qTranslate Language Chooser" widget or "Language Switcher" menu item to let your visitors switch the language.
 1. For the new installers, it may be useful to read [Startup Guide](https://qtranslatexteam.wordpress.com/startup-guide/).
-1. You may use [Google XML Sitemaps v3 for qTranslate](https://wordpress.org/plugins/google-xml-sitemaps-v3-for-qtranslate/) plugin to rebuild your XML sitemap for better SEO support.
 1. Configure theme or other plugins custom fields to be translatable if needed (Settings -> Languages: "Integration").
+1. If your theme shows [multilingual fields](https://qtranslatexteam.wordpress.com/multilingual-fields/) in raw format, then read [Integration Guide](https://qtranslatexteam.wordpress.com/integration/).
 
 ## Frequently Asked Questions ##
 
@@ -91,7 +95,8 @@ Developers: please drop new topics here, the text will be moved to [qTranslate-X
 
 ## Upgrade Notice ##
 
-Read [migration instructions](https://qtranslatexteam.wordpress.com/migration/ "Migration Guide") when switching from other multilingual plugin.
+### 3.4.6.2 ###
+This version recovers translation of parent of a category on category edit page.
 
 ## Screenshots ##
 
@@ -100,9 +105,51 @@ Read [migration instructions](https://qtranslatexteam.wordpress.com/migration/ "
 
 ## Changelog ##
 
+### 3.4.6.2 stable ###
+* Fix: recovered translation of parent of a category on category edit page.
+
+### 3.4.6.1 stable ###
+* Fix: Call of `qtranxf_get_admin_page_config` is moved after all integrating plugins loaded their `*-admin.php`, otherwise i18n configuration is loaded only partially, which broke "Woocommerce & qTranslate-X". [Issue #277](https://github.com/qTranslate-Team/qtranslate-x/issues/277).
+
+### 3.4.6 stable ###
+* All issues after version 3.4.4
+
+### 3.4.5.4 ###
+* Feature: Type 'custom' with arbitrary format of items for widget "qTranslate Language Chooser". Arguments of function `qtranxf_generateLanguageSelectCode` [are chenge](https://qtranslatexteam.wordpress.com/faq/#LanguageSwitchingMethods346) to comply with WordPress standards. Compatibility with old arguments is preserved.
+* Enhancement: Translation of language names to other languages: [Issue #264](https://github.com/qTranslate-Team/qtranslate-x/issues/264). Thanks to [benique](https://github.com/benique).
+* Enhancement: Moved meta tag "generator" to a separate action: [Issue #244](https://github.com/qTranslate-Team/qtranslate-x/issues/244).
+* Enhancement: PNG files have been further compressed with advanced algorightms: [PR #279](https://github.com/qTranslate-Team/qtranslate-x/pull/279). Thanks to [benique](https://github.com/benique).
+* Enhancement: Translation of colon ':' to satisfy French language and may be some other.
+* Fix: enabled back translation of posts in `qtranxf_postsFilter` with filter 'raw'.
+
+### 3.4.5.3 ###
+* Enhancement: integration with plugin [bbPress](https://wordpress.org/plugins/bbpress/) started, file `./i18n-config/plugins/bbpress/i18n-config.json`.
+* Enhancement: integration with theme [WPEX Elegant](https://themetix.com/wpex-elegant/) started, file `./i18n-config/themes/wpex-elegant/i18n-config.json`.
+* Enhancement: integration of WP Widget "Text" is enabled: [WP Issue](https://wordpress.org/support/topic/widget-text-translation-ability).
+* Fix: position of flags in admin menu: [Issue #269](https://github.com/qTranslate-Team/qtranslate-x/issues/269).
+
+### 3.4.5.2 ###
+* Improvement: admin configuration loading is moved to filter 'plugins_loaded', search for function `qtranxf_admin_load` to see the change.
+* Fix: removed meta box "Languages" in any Editor Mode, except "Single Language".
+
+### 3.4.5.1 ###
+* Enhancement: argument `$found` for `qtranxf_split_blocks`.
+* Enhancement: removed limit of 5 characters in language form for locale: [Issue #262](https://github.com/qTranslate-Team/qtranslate-x/issues/262);
+
+### 3.4.5 ###
+* Fix: Crash on customize.php screen. No Language Switching Buttons on customize screen yet, some values are not translated, but raw multilingual values work. [Issue #223](https://github.com/qTranslate-Team/qtranslate-x/issues/223).
+* Fix: Remove children of parent menu item deleted: [Issue #255](https://github.com/qTranslate-Team/qtranslate-x/issues/255).
+* Fix: Obsolete widget constructor [Issue #250](https://github.com/qTranslate-Team/qtranslate-x/issues/250)
+* Fix: Enable a language when gettext database fails to update on a private server: [Issue #236](https://github.com/qTranslate-Team/qtranslate-x/issues/236).
+* Fix: use table of list of languages for WP 4.3.
+* Fix: disabled translation of posts in `qtranxf_postsFilter` with filter 'raw'.
+* Enhancement: `home_url` on admin side now returns url of current front end language - this helps on customize screen.
+* Enhancement: choice 'css_only' for $style argument in `qtranxf_generateLanguageSelectCode`: [Issue #259](https://github.com/qTranslate-Team/qtranslate-x/issues/259).
+* Enhancement: [Handle the CSRF vulnerability](https://github.com/qTranslate-Team/qtranslate-x/pull/230).
+
 ### 3.4.4 stable ###
 * Fix: link 'View Page': [WP Topic](https://wordpress.org/support/topic/wpadminbar-view-page-returns-to-home-page).
-* Fix: security exploit found by WordPress for vulnerable parameters `json_config_files` and `json_custom_i18n_config`.
+* Fix: security exploit found by WordPress for vulnerable parameters `json_config_files` and `json_custom_i18n_config`: [report](https://qtranslatexteam.wordpress.com/2015/09/03/why-qtranslate-x-disappeared-from-wordpress-repository).
 
 ### 3.4.3 stable ###
 * Fix: qtranxf_trim_words defined at front and admin side: [Issue #201](https://github.com/qTranslate-Team/qtranslate-x/issues/201).
@@ -112,7 +159,7 @@ Read [migration instructions](https://qtranslatexteam.wordpress.com/migration/ "
 
 ### 3.4.2 stable ###
 * Fix: i18n configuration loading on the first installation, [WP Topic](https://wordpress.org/support/topic/update-that-makes-one-see-the-site-only-a-blank-page).
-* Fix for qtranxf_updateGettextDatabases. 
+* Fix for qtranxf_updateGettextDatabases.
 
 ### 3.4.1 stable ###
 * Fix: i18n configuration loading for integrated plugins.
@@ -313,7 +360,7 @@ Read [migration instructions](https://qtranslatexteam.wordpress.com/migration/ "
 * Improvement: added "x-default" link `<link hreflang="x-default" rel="alternate" />` as suggested by [Google](https://support.google.com/webmasters/answer/189077).
 * Feature: added exclusions to `qtranxf_convertFormat` for language-neutral date formats 'Z', 'c' and 'r' in addition to 'U' [[Issue #76](https://github.com/qTranslate-Team/qtranslate-x/issues/76)]
 * Feature: variable `$url_info['set_cookie']` can be overridden via `qtranslate_detect_language` filter. [[WP Topic](https://wordpress.org/support/topic/do-not-switch-admin-language-when-changing-language-on-frontend)]
-* Feature: admin notices for integrating plugins 'ACF qTranslate', 'All in One SEO Pack & qTranslate&#8209;X', 'Events Made Easy & qTranslate&#8209;X', 'qTranslate support for GravityForms', 'WooCommerce & qTranslate&#8209;X' and 'Wordpress SEO & qTranslate&#8209;X'.
+* Feature: admin notices for integrating plugins 'ACF qTranslate', 'All in One SEO Pack & qTranslate&#8209;X', 'Events Made Easy & qTranslate&#8209;X', 'qTranslate support for GravityForms', 'WooCommerce & qTranslate&#8209;X' and 'Yoast SEO & qTranslate&#8209;X'.
 * Feature: added URL folder `/oauth/` to the list of language-neutral URLs. [[Issue #81](https://github.com/qTranslate-Team/qtranslate-x/issues/81)]
 * Maintenance: GitHub repository information in the header of qtranslate.php
 * Performance: function `convertURL` now uses cached values of previously converted urls.

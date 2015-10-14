@@ -1,0 +1,1050 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FG Joomla to WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-04 22:28+0200\n"
+"PO-Revision-Date: 2015-10-04 22:44+0200\n"
+"Last-Translator: Hristo Pandjarov <hristo.p@siteground.com>\n"
+"Language-Team: SiteGround\n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.8.5\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:91
+msgid ""
+"All new imported posts or pages and their comments will be deleted from "
+"WordPress."
+msgstr ""
+"Всички нови, импортирани страници или публикации и техните коментари ще "
+"бъдат изтрити от WordPress."
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:92
+msgid "All content will be deleted from WordPress."
+msgstr "Цялото съдържание на WordPress ще бъде изтрито."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:93
+msgid "Please select a remove option."
+msgstr "Моля, изберете опция за премахване."
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:102
+msgid "Joomla (FG)"
+msgstr "Joomla (FG)"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:102
+msgid ""
+"Import categories, articles and medias (images, attachments) from a Joomla "
+"database into WordPress."
+msgstr ""
+"Импортирай категории, статии и мултимедия (изображения, прикрепени файлове) "
+"от база данни на Joomla в WordPress."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:160
+msgid "The wp-content directory must be writable."
+msgstr "Wp съдържание на директорията трябва да бъде достъпна за писане."
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:168
+#: admin/class-fg-joomla-to-wordpress-admin.php:202
+msgid "WordPress content removed"
+msgstr "WordPress съдържанието премахнато"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:170
+#: admin/class-fg-joomla-to-wordpress-admin.php:204
+msgid "Couldn't remove content"
+msgstr "Премахването на съдържание неуспешно"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:180
+msgid "Settings saved"
+msgstr "Настройките записани"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:220
+msgid "Prefixes removed from categories"
+msgstr "Префикси премахнати от категориите"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:229
+#, php-format
+msgid "%d internal link modified"
+msgid_plural "%d internal links modified"
+msgstr[0] "%d вътрешен линк модифициран"
+msgstr[1] "%d вътрешни линкове модифицирани"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:246
+msgid "Import Joomla (FG)"
+msgstr "Import Joomla (FG)"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:247
+msgid ""
+"This plugin will import sections, categories, posts, medias (images, "
+"attachments) and web links from a Joomla database into WordPress.<br /"
+">Compatible with Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2, 3.3 and "
+"3.4."
+msgstr ""
+"Този плъгин ще импортира секции, категории, длъжности, медии (снимки, "
+"прикачени файлове) и уеб връзки от база данни Joomla в WordPress."
+"<br>Съвместим с Joomla версии 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2, 3.3 и 3.4."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:248
+msgid ""
+"For any issue, please read the <a href=\"http://wordpress.org/plugins/fg-"
+"joomla-to-wordpress/faq/\" target=\"_blank\">FAQ</a> first."
+msgstr ""
+"При проблеми, моля прочетете първо <a href=\"http://wordpress.org/plugins/fg-"
+"joomla-to-wordpress/faq/\" target=\"_blank\">често задаваните въпроси</a>."
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:253
+#: admin/class-fg-joomla-to-wordpress-admin.php:603
+#, php-format
+msgid "%d category"
+msgid_plural "%d categories"
+msgstr[0] "%d категория"
+msgstr[1] "%d категории"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:254
+#, php-format
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr[0] "%d публикация"
+msgstr[1] "%d публикации"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:255
+#, php-format
+msgid "%d page"
+msgid_plural "%d pages"
+msgstr[0] "%d страница"
+msgstr[1] "%d страници"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:256
+#, php-format
+msgid "%d media"
+msgid_plural "%d medias"
+msgstr[0] "%d мултимедия"
+msgstr[1] "%d мултимедии"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:257
+#, php-format
+msgid "%d tag"
+msgid_plural "%d tags"
+msgstr[0] "%d етикет"
+msgstr[1] "%d етикети"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:298
+msgid "Instructions"
+msgstr "Инструкция за експлоатация"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:304
+msgid "Options"
+msgstr "Опции"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:308
+msgid ""
+"<a href=\"http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" target="
+"\"_blank\">FAQ</a>"
+msgstr ""
+"<a href=\"http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/\" target="
+"\"_blank\">ЧЕСТО ЗАДАВАНИ ВЪПРОСИ</a>"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:338
+msgid "PDO is required. Please enable it."
+msgstr "Изисква се PDO. Моля, разрешете го."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:347
+#: admin/class-fg-joomla-to-wordpress-admin.php:566
+msgid ""
+"Couldn't connect to the Joomla database. Please check your parameters. And "
+"be sure the WordPress server can access the Joomla database."
+msgstr ""
+"Неуспешно свързване с базата данни на Joomla. Моля, проверете параметрите и "
+"се убедете, че WordPress сървъра Ви има достъп до базата данни на Joomla."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:375
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:197
+msgid "Error:"
+msgstr "Грешка: "
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:559
+msgid "Connected with success to the Joomla database"
+msgstr "Успешно свързване с базата данни на Joomla"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:580
+msgid ""
+"Your version of Joomla (probably 1.0) is not supported by this plugin. "
+"Please consider upgrading to the <a href=\"http://www.fredericgilles.net/fg-"
+"joomla-to-wordpress/\" target=\"_blank\">Premium version</a>."
+msgstr ""
+"Вашата версия на Joomla (вероятно 1.0) не се поддържа от този плъгин. Моля "
+"Помислете за обновяване на <a href=\"http://www.fredericgilles.net/fg-joomla-"
+"to-wordpress/\" target=\"_blank\">премията версия</a>."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:593
+msgid "Joomla data found:"
+msgstr "Joomla намерени данни:"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:598
+#, php-format
+msgid "%d section"
+msgid_plural "%d sections"
+msgstr[0] "%d раздел"
+msgstr[1] "%d раздел"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:607
+#, php-format
+msgid "%d article"
+msgid_plural "%d articles"
+msgstr[0] "%d статия"
+msgstr[1] "%d статия"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:611
+#, php-format
+msgid "%d user"
+msgid_plural "%d users"
+msgstr[0] "%d потребител"
+msgstr[1] "%d потребител"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:616
+#, php-format
+msgid "%d web link"
+msgid_plural "%d web links"
+msgstr[0] "%d уеб връзка"
+msgstr[1] "%d уеб връзка"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:791
+#, php-format
+msgid "%d category imported"
+msgid_plural "%d categories imported"
+msgstr[0] "%d категория импортирана"
+msgstr[1] "%d категории импортирани"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:802
+#, php-format
+msgid "%d page imported"
+msgid_plural "%d pages imported"
+msgstr[0] "%d страница импортирана"
+msgstr[1] "%d страници импортирани"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:806
+#, php-format
+msgid "%d post imported"
+msgid_plural "%d posts imported"
+msgstr[0] "%d публикация импортирана"
+msgstr[1] "%d публикации импортирани"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:808
+#, php-format
+msgid "%d media imported"
+msgid_plural "%d medias imported"
+msgstr[0] "%d мултимедия импортирана"
+msgstr[1] "%d мултимедии импортирани"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:813
+#, php-format
+msgid "%d tag imported"
+msgid_plural "%d tags imported"
+msgstr[0] "%d етикет импортиран"
+msgstr[1] "%d етикети импортирани"
+
+# @ fgj2wp
+#: admin/class-fg-joomla-to-wordpress-admin.php:831
+msgid "Don't forget to modify internal links."
+msgstr "Не забравяйте да модифицирате вътрешните връзки."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:963
+msgid ""
+"The import process is still running. Please wait before running it again."
+msgstr ""
+"Процесът на импортиране все още се изпълнява. Моля, изчакайте преди да го "
+"изпълните отново."
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:43
+#, php-format
+msgid ""
+"Your Joomla database contains %s. You need the <a href=\"%s\" target=\"_blank"
+"\">Premium version</a> to import them."
+msgstr ""
+"Вашата Joomla база данни %s. Имате нужда <a href=\"%s\" target=\"_blank"
+"\">премия версия</a> , за да ги импортирате."
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:46
+#, php-format
+msgid ""
+"Your Joomla database contains %1$s. You need the <a href=\"%3$s\" target="
+"\"_blank\">%4$s</a> to import them."
+msgstr ""
+"Вашата Joomla база данни %1$s. Имате нужда от <a href=\"%3$s\" target="
+"\"_blank\">%4$s</a> , за да ги импортирате."
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:49
+#, php-format
+msgid ""
+"Your Joomla database contains %1$s. You need the <a href=\"%2$s\" target="
+"\"_blank\">Premium version</a> and the <a href=\"%3$s\" target=\"_blank\">"
+"%4$s</a> to import them."
+msgstr ""
+"Вашата Joomla база данни %1$s. Имате нужда <a href=\"%2$s\" target=\"_blank"
+"\">премия версия</a> и <a href=\"%3$s\" target=\"_blank\">%4$s</a> да ги "
+"импортирате."
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:54
+msgid "several users"
+msgstr "няколко потребители"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:58
+msgid "some tags"
+msgstr "някои етикети"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:62
+msgid "some K2 items"
+msgstr "някои елементи от K2"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:62
+msgid "K2 add-on"
+msgstr "K2 добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:66
+msgid "some Flexicontent items"
+msgstr "някои Flexicontent елементи"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:66
+msgid "Flexicontent add-on"
+msgstr "Flexicontent добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:70
+msgid "some EasyBlog posts"
+msgstr "някои EasyBlog мнения"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:70
+msgid "EasyBlog add-on"
+msgstr "EasyBlog добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:74
+msgid "some Joom!Fish translations"
+msgstr "някои Joom!Fish преводи"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:74
+msgid "Joom!Fish add-on"
+msgstr "Joom! Риба добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:78
+msgid "some Zoo items"
+msgstr "някои елементи от Zoo"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:78
+msgid "Zoo add-on"
+msgstr "Zoo добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:82
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:86
+msgid "some sh404sef redirections"
+msgstr "някои sh404sef пренасочване"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:82
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:86
+msgid "sh404sef add-on"
+msgstr "sh404sef добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:90
+msgid "some JoomSEF redirections"
+msgstr "някои JoomSEF пренасочване"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:90
+msgid "JoomSEF add-on"
+msgstr "JoomSEF добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:94
+msgid "some OpenSEF redirections"
+msgstr "някои OpenSEF пренасочване"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:94
+msgid "OpenSEF add-on"
+msgstr "OpenSEF добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:98
+msgid "some JComments comments"
+msgstr "някои JComments коментари"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:98
+msgid "JComments add-on"
+msgstr "JComments добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:102
+msgid "some JomComment comments"
+msgstr "някои JomComment коментари"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:102
+msgid "JomComment add-on"
+msgstr "JomComment добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:106
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:110
+msgid "a Kunena forum"
+msgstr "Kunena форум"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:106
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:110
+msgid "Kunena add-on"
+msgstr "Kunena добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:114
+msgid "some attachments"
+msgstr "Някои прикачени файлове"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:114
+msgid "Attachments add-on"
+msgstr "Добавка на прикачени файлове"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:118
+msgid "some Joomlatags tags"
+msgstr "някои етикети, Joomlatags"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:118
+msgid "Joomlatags add-on"
+msgstr "Joomlatags добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:122
+msgid "some JoomGallery galleries"
+msgstr "някои JoomGallery галерии"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:122
+msgid "JoomGallery add-on"
+msgstr "JoomGallery добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:126
+msgid "some PhocaGallery galleries"
+msgstr "някои PhocaGallery галерии"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:126
+msgid "PhocaGallery add-on"
+msgstr "PhocaGallery добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:130
+msgid "some JEvents events"
+msgstr "някои събития, JEvents"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:130
+msgid "JEvents add-on"
+msgstr "JEvents добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:134
+msgid "some contacts"
+msgstr "някои контакти"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:134
+msgid "Contact Manager add-on"
+msgstr "Contact Manager добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:138
+msgid "some Docman documents"
+msgstr "някои Docman документи"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:138
+msgid "Docman add-on"
+msgstr "Docman добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:142
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:146
+msgid "a Virtuemart e-commerce solution"
+msgstr "Virtuemart електронна търговия разтвор"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:142
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:146
+msgid "Virtuemart add-on"
+msgstr "VirtueMart добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:150
+msgid "some JReviews data"
+msgstr "някои данни, JReviews"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:150
+msgid "JReviews add-on"
+msgstr "JReviews добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:154
+msgid "a Mosets Tree directory"
+msgstr "Mosets дърво директория"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:154
+msgid "Mosets Tree add-on"
+msgstr "Mosets дърво добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:158
+msgid "user groups"
+msgstr "потребителски групи"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:158
+msgid "User Groups add-on"
+msgstr "Потребителски групи добавка"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:172
+msgid "several languages"
+msgstr "няколко езика"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:172
+msgid "WPML add-on"
+msgstr "WPML добавка"
+
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:83
+#, php-format
+msgid "%d links category imported"
+msgid_plural "%d links categories imported"
+msgstr[0] "%d връзки категория внесени"
+msgstr[1] "%d връзки категория внесени"
+
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:244
+#, php-format
+msgid "%d web link imported"
+msgid_plural "%d web links imported"
+msgstr[0] "%d уеб връзка внесени"
+msgstr[1] "%d уеб връзка внесени"
+
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:257
+#, php-format
+msgid "%d link"
+msgid_plural "%d links"
+msgstr[0] "%d линка"
+msgstr[1] "%d линка"
+
+#: admin/partials/actions.php:3
+msgid "Save settings"
+msgstr "Запиши настройките"
+
+# @ fgj2wp
+#: admin/partials/actions.php:4
+msgid "Import content from Joomla to WordPress"
+msgstr "Импортирай съдържанието на Joomla във WordPress"
+
+# @ fgj2wp
+#: admin/partials/after-migration.php:3
+msgid "After the migration"
+msgstr "След миграцията"
+
+#: admin/partials/after-migration.php:6
+msgid ""
+"During the migration, prefixes have been added to the categories slugs to "
+"avoid categories duplicates. This button will remove these prefixes which "
+"are useless after the migration."
+msgstr ""
+"По време на миграцията, префикси ще бъдат добавени към категориите за да се "
+"избегне дублиране. Този бутон ще премахне всички префикси, които не се "
+"използват след миграцията."
+
+#: admin/partials/after-migration.php:10
+msgid "Remove the prefixes from the categories"
+msgstr "Премахни префиксите от категориите"
+
+#: admin/partials/after-migration.php:15
+msgid "If you have links between articles, you need to modify internal links."
+msgstr ""
+"Ако имате връзки между статиите, трябва да модифицирате вътрешните връзки."
+
+# @ fgj2wp
+#: admin/partials/after-migration.php:19
+msgid "Modify internal links"
+msgstr "Модифицирай вътрешните връзки"
+
+# @ fgj2wp
+#: admin/partials/behavior.php:2
+msgid "Behavior"
+msgstr "Поведение"
+
+#: admin/partials/behavior.php:5
+msgid "Import introtext:"
+msgstr "Импортирай началния текст"
+
+#: admin/partials/behavior.php:7
+msgid ""
+"The text before the «Read more» split will be imported into the excerpt."
+msgstr ""
+"Текстът преди разделянето на «Прочети повече» ще бъдат импортирани в откъс."
+
+#: admin/partials/behavior.php:7
+msgid "to the excerpt"
+msgstr "в извадката"
+
+#: admin/partials/behavior.php:8
+msgid ""
+"The text before the «Read more» split will be imported into the post content "
+"with a «read more» link."
+msgstr ""
+"Текстът преди разделянето на «Прочети повече» ще бъдат внесени в пост "
+"съдържание с «Прочети повече» връзка."
+
+#: admin/partials/behavior.php:8
+msgid "to the content"
+msgstr "в съдържанието"
+
+#: admin/partials/behavior.php:9
+msgid ""
+"The text before the «Read more» split will be imported into both the excerpt "
+"and the post content."
+msgstr ""
+"Текстът преди разделянето на «Прочети повече» ще бъдат импортирани в откъс и "
+"съдържанието на пост."
+
+#: admin/partials/behavior.php:9
+msgid "to both"
+msgstr "и в двете"
+
+#: admin/partials/behavior.php:13
+msgid "Archived posts:"
+msgstr "Архивирани публикации:"
+
+#: admin/partials/behavior.php:15
+msgid "Do not import archived posts"
+msgstr "Не импортирай архивирани публикации"
+
+# @ fgj2wp
+#: admin/partials/behavior.php:15
+msgid "Not imported"
+msgstr "Не-импортирани"
+
+#: admin/partials/behavior.php:16
+msgid "Import archived posts as drafts"
+msgstr "Импортирай архивните публикации като чернови"
+
+#: admin/partials/behavior.php:16
+msgid "Import as drafts"
+msgstr "Импортирай като чернови"
+
+#: admin/partials/behavior.php:17
+msgid "Import archived posts as published posts"
+msgstr "Импортирай архивираните публикации като публикувани публикации"
+
+#: admin/partials/behavior.php:17
+msgid "Import as published posts"
+msgstr "Импортирай като публикувани публикации"
+
+# @ fgj2wp
+#: admin/partials/behavior.php:21
+msgid "Medias:"
+msgstr "Мултимедия:"
+
+# @ fgj2wp
+#: admin/partials/behavior.php:22
+msgid "Skip media"
+msgstr "Пропусни мултимедията"
+
+#: admin/partials/behavior.php:25
+msgid "Import first image:"
+msgstr "Импортирай първото изображение: "
+
+#: admin/partials/behavior.php:26
+msgid "The first image will be kept in the post content"
+msgstr "Първото изображение ще бъде запазено в съдържанието на публикацията"
+
+#: admin/partials/behavior.php:26
+msgid "as is"
+msgstr "както си е"
+
+#: admin/partials/behavior.php:27
+msgid ""
+"The first image will be removed from the post content and imported as the "
+"featured image only"
+msgstr ""
+"Първото изображение ще бъде премахнато от съдържанието на публикацията и "
+"импортирано само като изображение на публикацията"
+
+#: admin/partials/behavior.php:27
+msgid "as featured only"
+msgstr "само като изображение на публикацията"
+
+#: admin/partials/behavior.php:28
+msgid ""
+"The first image will be kept in the post content and imported as the "
+"featured image"
+msgstr ""
+"Първото изображение ще бъде запазено в съдържанието на публикацията и "
+"импортирано като изображение на публикацията"
+
+#: admin/partials/behavior.php:28
+msgid "as is and as featured"
+msgstr "както си е и като изображение на публикацията"
+
+#: admin/partials/behavior.php:30
+msgid "Import external media"
+msgstr "Импортирай външна мултимедия"
+
+#: admin/partials/behavior.php:32
+msgid ""
+"Checked: download the media with their full path in order to import media "
+"with identical names."
+msgstr ""
+"Избрано: ще свали мултимедията с пълния път до нея за да импортира, "
+"запазвайки имената на файловете."
+
+#: admin/partials/behavior.php:32
+msgid "Import media with duplicate names"
+msgstr "Импортирай мултимедия с дублирани имена"
+
+#: admin/partials/behavior.php:34
+msgid ""
+"Checked: download the media even if it has already been imported. Unchecked: "
+"Download only media which were not already imported."
+msgstr ""
+"Избрано: ще свали мултимедията дори ако вече е била импортирана. Неизбрано: "
+"ще свали само мултимедията, която не е импортирана вече."
+
+#: admin/partials/behavior.php:34
+msgid ""
+"Force media import. Keep unchecked except if you had previously some media "
+"download issues."
+msgstr ""
+"Сила медии импортиране. Запази нерегистриран, освен ако сте имали преди това "
+"някои медии изтегляне въпроси."
+
+#: admin/partials/behavior.php:36
+msgid "Timeout for each media:"
+msgstr "Изчакване за всеки медии:"
+
+#: admin/partials/behavior.php:37
+msgid "seconds"
+msgstr "секунди"
+
+# @ fgj2wp
+#: admin/partials/behavior.php:41
+msgid "Meta keywords:"
+msgstr "Мета ключови думи:"
+
+# @ fgj2wp
+#: admin/partials/behavior.php:42
+msgid "Import meta keywords as tags"
+msgstr "Импортирай мета ключовите думи като етикети"
+
+# @ fgj2wp
+#: admin/partials/behavior.php:45
+msgid "Create pages:"
+msgstr "Създай страници:"
+
+# @ fgj2wp
+#: admin/partials/behavior.php:46
+msgid "Import as pages instead of blog posts (without categories)"
+msgstr "Импортирай като страници, а не като публикации (без категории)"
+
+# @ fgj2wp
+#: admin/partials/database-info.php:2
+msgid "WordPress database"
+msgstr "WordPress база данни"
+
+#: admin/partials/empty-content.php:6
+msgid ""
+"If you want to restart the import from scratch, you must empty the WordPress "
+"content with the button hereafter."
+msgstr ""
+"Ако искате да рестартирате внос от нулата, трябва да изпразните съдържанието "
+"на WordPress с бутона по-долу."
+
+#: admin/partials/empty-content.php:7
+msgid "Remove only new imported posts"
+msgstr "Премахни само новите, импортирани публикации"
+
+# @ fgj2wp
+#: admin/partials/empty-content.php:8
+msgid "Remove all WordPress content"
+msgstr "Премахни цялото WordPress съдържание"
+
+# @ fgj2wp
+#: admin/partials/empty-content.php:9
+msgid "Empty WordPress content"
+msgstr "Изпразни WordPress съдържанието"
+
+#: admin/partials/extra-features.php:2
+msgid "Do you need extra features?"
+msgstr "Имате ли нужда от допълнителни услуги?"
+
+#: admin/partials/extra-features.php:4
+msgid "authors and all users migration"
+msgstr "миграция на автори и потребители"
+
+# @ fgj2wp
+#: admin/partials/extra-features.php:5
+msgid "menus migration"
+msgstr "миграция на менютата"
+
+#: admin/partials/extra-features.php:6
+msgid "HTML modules migration"
+msgstr "HTML модули миграция"
+
+#: admin/partials/extra-features.php:7
+msgid "SEO: keeps Joomla IDs or redirects standard Joomla URLs"
+msgstr "SEO: запзава Joomla ID-тата или пренасочва стандартните Joomla адреси"
+
+#: admin/partials/extra-features.php:8
+msgid "SEO: Keeps meta description and meta keywords"
+msgstr "SEO: Поддържа мета описание и мета ключови думи"
+
+#: admin/partials/extra-features.php:9
+msgid "SEO: Keeps sh404sef, JoomSEF and OpenSEF URLs"
+msgstr "SEO: Поддържа sh404sef, JoomSEF и OpenSEF URL адреси"
+
+# @ fgj2wp
+#: admin/partials/extra-features.php:10
+msgid "Joomla views counts migration"
+msgstr "Миграция на броя прегледи на Joomla страниците"
+
+#: admin/partials/extra-features.php:11
+msgid "Joomla 1.0 compatible"
+msgstr "Joomla 1.0 съвместимост"
+
+#: admin/partials/extra-features.php:12
+msgid "Joomla 2.5+ featured images"
+msgstr "Joomla 2.5+ изображения на публикации"
+
+#: admin/partials/extra-features.php:13
+msgid "Joomla 3.1+ tags"
+msgstr "Joomla 3.1 + Тагове"
+
+#: admin/partials/extra-features.php:14
+msgid "Joomla contacts"
+msgstr "Joomla контакти"
+
+#: admin/partials/extra-features.php:15
+msgid "Mambo 4.5 and 4.6 compatible"
+msgstr "Mambo 4.5 и 4.6 съвместимост"
+
+#: admin/partials/extra-features.php:16
+msgid "K2 content"
+msgstr "K2 съдържание"
+
+#: admin/partials/extra-features.php:17
+msgid "EasyBlog content"
+msgstr "EasyBlog съдържание"
+
+#: admin/partials/extra-features.php:18
+msgid "Kunena forum to bbPress"
+msgstr "Kunena към bbPress"
+
+# @ fgj2wp
+#: admin/partials/extra-features.php:19
+msgid "Flexicontent content"
+msgstr "Flexicontent съдържание"
+
+#: admin/partials/extra-features.php:20
+msgid "Zoo content"
+msgstr "Zoo съдържание"
+
+#: admin/partials/extra-features.php:21
+msgid "Jcomments and Jomcomment comments"
+msgstr "Jcomments и Jomcomment коментари"
+
+#: admin/partials/extra-features.php:22
+msgid "Joomlatags tags"
+msgstr "Joomlatags етикети"
+
+#: admin/partials/extra-features.php:23
+msgid "Attachments"
+msgstr "Прикачени файлове"
+
+#: admin/partials/extra-features.php:24
+msgid "Rokbox images"
+msgstr "Rockbox изображения"
+
+#: admin/partials/extra-features.php:25
+msgid "JoomGallery images"
+msgstr "JoomGallery снимки"
+
+#: admin/partials/extra-features.php:26
+msgid "Phocagallery images"
+msgstr "Phocagallery изображения"
+
+#: admin/partials/extra-features.php:27
+msgid "Joom!Fish translations to WPML"
+msgstr "Joom! Риба преводи на WPML"
+
+#: admin/partials/extra-features.php:28
+msgid "JEvents events"
+msgstr "JEvents събития"
+
+#: admin/partials/extra-features.php:29
+msgid "Docman documents"
+msgstr "Docman документи"
+
+#: admin/partials/extra-features.php:30
+msgid "Virtuemart e-commerce"
+msgstr "VirtueMart буквата e-търговия"
+
+#: admin/partials/extra-features.php:31
+msgid "JReviews reviews"
+msgstr "JReviews отзива"
+
+#: admin/partials/extra-features.php:32
+msgid "Mosets Tree directory"
+msgstr "Mosets дърво директория"
+
+#: admin/partials/extra-features.php:33
+msgid "Multilingual content to WPML"
+msgstr "Многоезично съдържание за WPML"
+
+#: admin/partials/extra-features.php:38
+msgid "This feature needs an add-on in addition to the Premium version."
+msgstr "Тази функция се нуждае добавка в допълнение към премията версия."
+
+#: admin/partials/paypal-donate.php:1
+msgid ""
+"If you found this plugin useful and it saved you many hours or days, please "
+"rate it on <a href=\"https://wordpress.org/support/view/plugin-reviews/fg-"
+"joomla-to-wordpress\">FG Joomla to WordPress</a>. You can also make a "
+"donation using the button below."
+msgstr ""
+"Ако сте намерили този плъгин е полезно и го записал много часове или дни, "
+"моля го оценят на <a href=\"https://wordpress.org/support/view/plugin-"
+"reviews/fg-joomla-to-wordpress\">FG Joomla за WordPress</a>. Можете също "
+"така да направите дарение с помощта на бутона по-долу."
+
+#: admin/partials/settings.php:2
+msgid "Automatic removal:"
+msgstr "Автоматично премахване:"
+
+#: admin/partials/settings.php:3
+msgid "Automatically remove all the WordPress content before each import"
+msgstr ""
+"Автоматично премахва всички WordPress съдържание преди всяко импортиране"
+
+# @ fgj2wp
+#: admin/partials/settings.php:6
+msgid "Joomla web site parameters"
+msgstr "Насторйки на Joomla сайта"
+
+#: admin/partials/settings.php:9
+msgid "URL of the live Joomla web site"
+msgstr "URL на уеб сайта на живо Joomla"
+
+# @ fgj2wp
+#: admin/partials/settings.php:13
+msgid "Joomla database parameters"
+msgstr "Настройки на Joomla базата данни"
+
+# @ fgj2wp
+#: admin/partials/settings.php:16
+msgid "Hostname"
+msgstr "Хост на базата"
+
+# @ fgj2wp
+#: admin/partials/settings.php:20
+msgid "Port"
+msgstr "Порт"
+
+# @ fgj2wp
+#: admin/partials/settings.php:24
+msgid "Database"
+msgstr "База данни"
+
+# @ fgj2wp
+#: admin/partials/settings.php:28
+msgid "Username"
+msgstr "Потребител"
+
+# @ fgj2wp
+#: admin/partials/settings.php:32
+msgid "Password"
+msgstr "Парола"
+
+# @ fgj2wp
+#: admin/partials/settings.php:36
+msgid "Joomla Table Prefix"
+msgstr "Префикс на Joomla таблиците"
+
+#: admin/partials/settings.php:41
+msgid "Test the connection"
+msgstr "Тест на връзката с базата"
+
+#~ msgid ""
+#~ "If you want to rerun the import, you must empty the WordPress content "
+#~ "with the button hereafter."
+#~ msgstr ""
+#~ "Ако искате да отмените импортирането, трябва да изпразните WordPress "
+#~ "съдържанието с този бутон."
+
+#~ msgid "URL (beginning with http://)"
+#~ msgstr "URL (започва с http://)"
+
+# @ fgj2wp
+#~ msgid "Joomla version"
+#~ msgstr "Версия на Joomla"
+
+# @ fgj2wp
+#~ msgid "Posts with a \"read more\" split:"
+#~ msgstr "Публикации с \"прочети повече\" разделение:"
+
+# @ fgj2wp
+#~ msgid ""
+#~ "Checked: the Joomla introtext is imported into the excerpt. Unchecked: it "
+#~ "is imported into the post content with a «read more» link."
+#~ msgstr ""
+#~ "Избрано: Joomla интро текста ще бъде импортиран като извадка. Неизбрано: "
+#~ "ще бъде импортиран като съдържание на публикацията с «прочети повече» "
+#~ "връзка."
+
+# @ fgj2wp
+#~ msgid "Import the text above the \"read more\" to the excerpt"
+#~ msgstr "Импортирай текста над \"прочети повече\" като извадка"
+
+#~ msgid "Archived posts"
+#~ msgstr "Архивирани публикации"
+
+#~ msgid ""
+#~ "Force media import. Leave unchecked if you have already transfered the "
+#~ "media.<br />It will speed up the import."
+#~ msgstr ""
+#~ "Принудително импортиране на мултимедията. Оставете неизбрано ако вече сте "
+#~ "трансферирали мултимедията.<br />Това ще  забърза импорта."
+
+#~ msgid "SEO: Keeps sh404sef URLs"
+#~ msgstr "SEO: запазва sh404sef адресите"
+
+#~ msgid "Jcomments comments"
+#~ msgstr "Jcomments коментари"
+
+#~ msgid "Jomcomment comments"
+#~ msgstr "Jomcomment коментари"
+
+# @ fgj2wp
+#~ msgid ""
+#~ "If you found this plugin useful and it saved you many hours or days, "
+#~ "please rate it on <a href=\"http://wordpress.org/extend/plugins/fg-joomla-"
+#~ "to-wordpress/\">FG Joomla to WordPress</a>. You can also make a donation "
+#~ "using the button below."
+#~ msgstr ""
+#~ "Ако намирате това разширение за полезно и ако ви е спестило много часове "
+#~ "или дни работа, моля гласувайте за него на <a href=\"http://wordpress.org/"
+#~ "extend/plugins/fg-joomla-to-wordpress/\">FG Joomla to WordPress</a>. Също "
+#~ "така, може да направите и дарение чрез бутона отдолу."
+
+# @ fgj2wp
+#~ msgid ""
+#~ "This plugin will import sections, categories, posts and medias (images, "
+#~ "attachments) from a Joomla database into WordPress.<br />Compatible with "
+#~ "Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0 and 3.1."
+#~ msgstr ""
+#~ "Това разширение ще импортира секции, категории, постове и мултимедия "
+#~ "(изображения и прикрепени файлове) от база данни на Joomla в Wordpress. "
+#~ "<br />Съвместимо с Joomla 1.5, 1.6, 1.7, 2.5, 3.0 и 3.1."
+
+#~ msgid ""
+#~ "Please note that some of these features need an add-on in addition to the "
+#~ "Premium version."
+#~ msgstr ""
+#~ "Някои от тези опции може да изискват допълнителни разширения към Премиум "
+#~ "версията."

@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.9
-Stable tag: 3.8.7
+Stable tag: 3.8.8
 Tested up to: 4.3.1
 License: GPLv2
 
@@ -37,6 +37,12 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.8.8 (Oct 2, 2015) =
+
+* Fixed: Issue with listing of draft posts in some WordPress configurations.
+* Fixed: For customers using Divi theme, trigger earlier builder component load for better shortcode compatibility (Pro)
+* Fixed: CMS - compatibility with 'EU Cookie' plugin (Pro)
 
 = Version 3.8.7 (Sep 18, 2015) =
 

@@ -65,28 +65,26 @@ function qtranxf_update_config_header_css() {
 		$q_config['header_css'] = qtranxf_front_header_css_default();
 	}
 	if(!$q_config['header_css_on'] || !empty($header_css)){
-		qtranxf_add_warning(sprintf(__('A manual update to option "%s" or to the theme custom CSS may be needed, after some languages are changed.', 'qtranslate'), __('Head inline CSS', 'qtranslate')));
+		qtranxf_add_warning(sprintf(__('A manual update to option "%s" or to the theme custom CSS may be needed, after some languages are changed.', 'qtranslate'), __('Head inline CSS', 'qtranslate')).' '.__('If you do not wish to customize this option, then reset it to the default by emptying its value.', 'qtranslate'));
 	}
 }
 
 function qtranxf_disableLanguage($lang) {
 	global $q_config;
-	if(qtranxf_isEnabled($lang)) {
-		$new_enabled = array();
-		foreach($q_config['enabled_languages'] as $k => $l){
-			if($l != $lang) continue;
-			unset($q_config['enabled_languages'][$k]);
-			break;
-		}
-		qtranxf_unsetLanguage($q_config,$lang);
-		if($q_config['language'] == $lang){
-			qtranxf_setLanguageAdmin($q_config['default_language']);
-		}
-		qtranxf_update_config_header_css();
-		//update_option('qtranslate_enabled_languages', $q_config['enabled_languages']);
-		return true;
+	if(!qtranxf_isEnabled($lang))
+		return false;
+	$new_enabled = array();
+	foreach($q_config['enabled_languages'] as $k => $l){
+		if($l != $lang) continue;
+		unset($q_config['enabled_languages'][$k]);
+		break;
 	}
-	return false;
+	qtranxf_unsetLanguage($q_config,$lang);
+	if($q_config['language'] == $lang){
+		qtranxf_setLanguageAdmin($q_config['default_language']);
+	}
+	qtranxf_update_config_header_css();
+	return true;
 }
 
 function qtranxf_enableLanguage($lang) {
@@ -100,7 +98,6 @@ function qtranxf_enableLanguage($lang) {
 
 	qtranxf_load_languages_enabled();
 	qtranxf_update_config_header_css();
-	//update_option('qtranslate_enabled_languages', $q_config['enabled_languages']);
 	return true;
 }
 

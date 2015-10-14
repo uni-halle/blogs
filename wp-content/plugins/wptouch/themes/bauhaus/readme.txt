@@ -1,8 +1,8 @@
 Theme Name: Bauhaus
 Theme URI: http://www.bravenewcode.com/wptouch/
 Description: Clean, modern, functional design. Great for all types of WordPress sites.
-Version: 1.4.9
-Stable tag: 1.4.9
+Version: 1.5
+Stable tag: 1.5
 Depends on: 3.7.3
 Author: BraveNewCode Inc.
 Parent: Foundation
@@ -10,6 +10,10 @@ Tags: smartphone
 
 
 == Changelog ==
+
+= Version 1.5 (September 2015) =
+
+* Changed: Updates for advertising support, iOS9
 
 = Version 1.4.9 (June 2015) =
 

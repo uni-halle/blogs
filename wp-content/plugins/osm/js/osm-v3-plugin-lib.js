@@ -45,15 +45,17 @@ function osm_addPopupClickhandler(a_MapObj, a_MapStr) {
       var name_str, desc_str, info = [];
       var i, ii;
       for (i = 0, ii = features.length; i < ii; ++i) {
-		  if (features[i].get("name")){
+        if (features[i].get("name")){
           NumOfNamedFeatures++;
           name_str = features[i].get("name");
-          desc_str = features[i].get("description");
-          name_str = name_str + desc_str;
+          desc_str = features[i].get("desc");
+          if (desc_str != undefined){
+            name_str = name_str + "<br>" + desc_str;
+          }
           if (features.length > 0) {name_str = name_str + "<br>"}
         }
         else{
-          name_str = "empty";
+          //name_str = "empty";
         }
         info.push(name_str);
       }
@@ -74,7 +76,7 @@ function osm_addMarkerLayer(a_mapname, a_lon, a_lat, a_MarkerName, a_MarkerXAnch
   var iconFeature = new ol.Feature({
     geometry: new ol.geom.Point(
       ol.proj.transform([a_lon,a_lat], "EPSG:4326", "EPSG:3857")),
-      name: "Mein Inhalt"
+      //name: "Mein Inhalt"
   });
         var iconStyle = new ol.style.Style({
           image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({

@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2015  Michael Kang (wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2015  MiKa (wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ class Osm_OLJS3
         source: new ol.source.OSM({})
       });';
     }
+
     else if ($a_Type == "stamen_toner"){
       $TileLayer .= '
       var raster = new ol.layer.Tile({
@@ -147,7 +148,27 @@ class Osm_OLJS3
           source: new ol.source.OSM()
         });';
       }
+    if (strtolower($a_MapControl[0])== 'fullscreen') {
+      $TileLayer .= '
+      var Controls = ol.control.defaults().extend([
+          new ol.control.FullScreen()
+      ]); ';
+    }
+
       return $TileLayer;
+  }
+
+  function checkControlType($a_MapControl){
+    foreach ( $a_MapControl as $MapControl ){
+	  Osm::traceText(DEBUG_INFO, "Checking the Map Control for OL3");
+	  $MapControl = strtolower($MapControl);
+
+	  if (( $MapControl != 'control') && ($MapControl != 'fullscreen') && ($MapControl != 'mouseposition')&& ($MapControl != 'rotate')&& ($MapControl != 'scaleline')&& ($MapControl != 'zoom')&& ($MapControl != 'zoomslider')&& ($MapControl != 'zoomtoextent') && ($MapControl != 'no') && ($MapControl != 'mouseposition') && ($MapControl != 'off')) {
+	    Osm::traceText(DEBUG_ERROR, "e_invalid_control");
+	    $a_MapControl[0]='No';
+	  }
+    }
+    return $a_MapControl;
   }
 
   function addVectorLayer($a_MapName, $a_FileName, $a_Colour, $a_Type, $a_Counter, $a_MarkerName)

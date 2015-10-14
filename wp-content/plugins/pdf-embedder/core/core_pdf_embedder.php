@@ -109,7 +109,7 @@ class core_pdf_embedder {
         if (!in_array($toolbar_fixed, array('on', 'off'))) {
             $toolbar_fixed = 'off';
         }
-		
+
 		$returnhtml = '<div class="pdfemb-viewer" data-pdf-url="'.esc_attr($this->modify_pdfurl($url)).'" style="'.esc_attr($extra_style).'" '
 						.'data-width="'.esc_attr($width).'" data-height="'.esc_attr($height).'" ';
 		
@@ -268,12 +268,23 @@ class core_pdf_embedder {
         <input type="radio" name='<?php echo $this->get_options_name(); ?>[pdfemb_toolbarfixed]' id='pdfemb_toolbarfixed_on' class='radio' value="on" <?php echo $options['pdfemb_toolbarfixed'] == 'on' ? 'checked' : ''; ?> />
         <label for="pdfemb_toolbarfixed_on" class="radio">Toolbar always visible</label>
         </span>
+
+		<?php
+            $this->pdfemb_mainsection_extra();
+        ?>
+
         <br class="clear" />
         <br class="clear" />
+
+
 
         <p>You can override these defaults for specific embeds by modifying the shortcodes - see <a href="<?php echo $this->get_instructions_url(); ?>" target="_blank">instructions</a>.</p>
 
         <?php
+	}
+
+	protected function pdfemb_mainsection_extra() {
+        // Override in Basic and Commercial
 	}
 
     protected function get_instructions_url() {

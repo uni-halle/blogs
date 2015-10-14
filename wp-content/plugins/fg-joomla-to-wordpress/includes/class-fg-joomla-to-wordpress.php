@@ -68,14 +68,13 @@ class FG_Joomla_to_WordPress {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'fgj2wp';
-		$this->version = '2.5.2';
+		$this->plugin_name = 'fg-joomla-to-wordpress';
+		$this->version = '2.6.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**

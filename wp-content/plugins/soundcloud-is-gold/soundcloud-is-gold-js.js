@@ -295,7 +295,7 @@ jQuery(document).ready(function($){
 	    color: color,
 	    format: format
         };
-	
+		
 	//Tell user it's loading
 	$('.soundcloudMMEmbed', parent).fadeOut('fast', function(){
 	    $('.soundcloudMMPreviewLoading', parent).fadeIn();

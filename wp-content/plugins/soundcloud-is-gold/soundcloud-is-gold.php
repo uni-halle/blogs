@@ -3,7 +3,7 @@
 Plugin Name: Soundcloud is Gold
 Plugin URI: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
 Description: <strong><a href="http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin">Soundcloud is gold</a></strong> integrates perfectly into wordpress. Browse through your soundcloud tracks, sets and favorites from the 'soundcloud is gold' tab with the post's 'upload media' popup window. Select, set and add track, sets or favorites to your post using the soundcloud player. Live Preview, easy, smart and straightforward. You can set default settings in the option page, choose your defaut soundcloud player (Mini, Standard, Artwork, html5), its width, extra classes for you CSS lovers and your favorite colors. You'll still be able to set players to different settings before adding to your post if you fancy a one off change. Now with Html5 player and Widget!
-Version: 2.3.1
+Version: 2.3.2
 Author: Thomas Michalak
 Author URI: http://www.mightymess.com/thomas-michalak
 License: GPL2 or Later
@@ -172,6 +172,17 @@ function soundcloud_is_gold_options(){
         <?php get_soundcloud_is_gold_default_settings_for_js(); ?>
     </script>
     
+    
+    <!-- XXS test -->
+    <!-- <form method="POST" action="
+http://localhost/~thomas/Others/dev/wp-admin/admin-ajax.php?action=get_soundcloud_player" />
+<input type="text" name="id" value='"></param></object><img src=x
+onerror=alert(1) />' />
+<input type="text" name="format" value="1">
+<input type="submit" name="submit" />
+</form> -->
+    
+
     <div class="soundcloudMMWrapper soundcloudMMOptions soundcloudMMMainWrapper">
         <div id="soundcloudMMTop" class="darkGreyGradient">
             <a id="soundcloudMMLogo" class="orangeGradient" href="http://www.soundcloud.com" title="visit SoundCloud website"><img src="<?php echo SIG_PLUGIN_DIR ?>/images/soundcloud-logo-sc.png" width="107" height="71" alt="Soundcloud Logo"/></a>

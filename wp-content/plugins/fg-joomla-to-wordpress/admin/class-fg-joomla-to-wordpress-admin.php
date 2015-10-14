@@ -88,9 +88,9 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/fg-joomla-to-wordpress-admin.js', array( 'jquery' ), $this->version, false );
 			wp_localize_script( $this->plugin_name, 'objectL10n', array(
-				'delete_new_posts_confirmation_message' => __( 'All new imported posts or pages and their comments will be deleted from WordPress.', 'fgj2wp' ),
-				'delete_all_confirmation_message' => __( 'All content will be deleted from WordPress.', 'fgj2wp' ),
-				'delete_no_answer_message' => __( 'Please select a remove option.', 'fgj2wp' ),
+				'delete_new_posts_confirmation_message' => __( 'All new imported posts or pages and their comments will be deleted from WordPress.', 'fg-joomla-to-wordpress' ),
+				'delete_all_confirmation_message' => __( 'All content will be deleted from WordPress.', 'fg-joomla-to-wordpress' ),
+				'delete_no_answer_message' => __( 'Please select a remove option.', 'fg-joomla-to-wordpress' ),
 			) );
 
 		}
@@ -99,7 +99,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		 * Initialize the plugin
 		 */
 		public function init() {
-			register_importer('fgj2wp', __('Joomla (FG)', 'fgj2wp'), __('Import categories, articles and medias (images, attachments) from a Joomla database into WordPress.', 'fgj2wp'), array($this, 'dispatch'));
+			register_importer('fgj2wp', __('Joomla (FG)', 'fg-joomla-to-wordpress'), __('Import categories, articles and medias (images, attachments) from a Joomla database into WordPress.', 'fg-joomla-to-wordpress'), array($this, 'dispatch'));
 		}
 
 		/**
@@ -157,7 +157,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 			// Check if the upload directory is writable
 			$upload_dir = wp_upload_dir();
 			if ( !is_writable($upload_dir['basedir']) ) {
-				$this->display_admin_error(__('The wp-content directory must be writable.', 'fgj2wp'));
+				$this->display_admin_error(__('The wp-content directory must be writable.', 'fg-joomla-to-wordpress'));
 			}
 
 			if ( isset($_POST['empty']) ) {
@@ -165,9 +165,9 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				// Delete content
 				if ( check_admin_referer( 'empty', 'fgj2wp_nonce' ) ) { // Security check
 					if ($this->empty_database($_POST['empty_action'])) { // Empty WP database
-						$this->display_admin_notice(__('WordPress content removed', 'fgj2wp'));
+						$this->display_admin_notice(__('WordPress content removed', 'fg-joomla-to-wordpress'));
 					} else {
-						$this->display_admin_error(__('Couldn\'t remove content', 'fgj2wp'));
+						$this->display_admin_error(__('Couldn\'t remove content', 'fg-joomla-to-wordpress'));
 					}
 					wp_cache_flush();
 				}
@@ -177,7 +177,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 
 				// Save database options
 				$this->save_plugin_options();
-				$this->display_admin_notice(__('Settings saved', 'fgj2wp'));
+				$this->display_admin_notice(__('Settings saved', 'fg-joomla-to-wordpress'));
 			}
 
 			elseif ( isset($_POST['test']) ) {
@@ -199,9 +199,9 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				// Automatic empty
 				if ( $this->plugin_options['automatic_empty'] ) {
 					if ($this->empty_database('all')) {
-						$this->display_admin_notice(__('WordPress content removed', 'fgj2wp'));
+						$this->display_admin_notice(__('WordPress content removed', 'fg-joomla-to-wordpress'));
 					} else {
-						$this->display_admin_error(__('Couldn\'t remove content', 'fgj2wp'));
+						$this->display_admin_error(__('Couldn\'t remove content', 'fg-joomla-to-wordpress'));
 					}
 					wp_cache_flush();
 				}
@@ -217,7 +217,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				// Remove the prefixes from the categories
 				if ( check_admin_referer( 'remove_cat_prefix', 'fgj2wp_nonce' ) ) { // Security check
 					$result = $this->remove_category_prefix();
-					$this->display_admin_notice(__('Prefixes removed from categories', 'fgj2wp'));
+					$this->display_admin_notice(__('Prefixes removed from categories', 'fg-joomla-to-wordpress'));
 				}
 			}
 
@@ -226,7 +226,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				// Modify internal links
 				if ( check_admin_referer( 'modify_links', 'fgj2wp_nonce' ) ) { // Security check
 					$result = $this->modify_links();
-					$this->display_admin_notice(sprintf(_n('%d internal link modified', '%d internal links modified', $result['links_count'], 'fgj2wp'), $result['links_count']));
+					$this->display_admin_notice(sprintf(_n('%d internal link modified', '%d internal links modified', $result['links_count'], 'fg-joomla-to-wordpress'), $result['links_count']));
 				}
 			}
 
@@ -243,18 +243,18 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 
 			$data = $this->plugin_options;
 
-			$data['title'] = __('Import Joomla (FG)', 'fgj2wp');
-			$data['description'] = __('This plugin will import sections, categories, posts, medias (images, attachments) and web links from a Joomla database into WordPress.<br />Compatible with Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2, 3.3 and 3.4.', 'fgj2wp');
-			$data['description'] .= "<br />\n" . __('For any issue, please read the <a href="http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/" target="_blank">FAQ</a> first.', 'fgj2wp');
+			$data['title'] = __('Import Joomla (FG)', 'fg-joomla-to-wordpress');
+			$data['description'] = __('This plugin will import sections, categories, posts, medias (images, attachments) and web links from a Joomla database into WordPress.<br />Compatible with Joomla versions 1.5, 1.6, 1.7, 2.5, 3.0, 3.1, 3.2, 3.3 and 3.4.', 'fg-joomla-to-wordpress');
+			$data['description'] .= "<br />\n" . __('For any issue, please read the <a href="http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/" target="_blank">FAQ</a> first.', 'fg-joomla-to-wordpress');
 			$data['posts_count'] = $this->count_posts('post');
 			$data['pages_count'] = $this->count_posts('page');
 			$data['media_count'] = $this->count_posts('attachment');
 			$data['database_info'] = array(
-				sprintf(_n('%d category', '%d categories', $cat_count, 'fgj2wp'), $cat_count),
-				sprintf(_n('%d post', '%d posts', $data['posts_count'], 'fgj2wp'), $data['posts_count']),
-				sprintf(_n('%d page', '%d pages', $data['pages_count'], 'fgj2wp'), $data['pages_count']),
-				sprintf(_n('%d media', '%d medias', $data['media_count'], 'fgj2wp'), $data['media_count']),
-				sprintf(_n('%d tag', '%d tags', $tags_count, 'fgj2wp'), $tags_count),
+				sprintf(_n('%d category', '%d categories', $cat_count, 'fg-joomla-to-wordpress'), $cat_count),
+				sprintf(_n('%d post', '%d posts', $data['posts_count'], 'fg-joomla-to-wordpress'), $data['posts_count']),
+				sprintf(_n('%d page', '%d pages', $data['pages_count'], 'fg-joomla-to-wordpress'), $data['pages_count']),
+				sprintf(_n('%d media', '%d medias', $data['media_count'], 'fg-joomla-to-wordpress'), $data['media_count']),
+				sprintf(_n('%d tag', '%d tags', $tags_count, 'fg-joomla-to-wordpress'), $tags_count),
 			);
 
 			// Hook for modifying the admin page
@@ -264,7 +264,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 			$this->enqueue_styles();
 			$this->enqueue_scripts();
 			
-			include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/fg-joomla-to-wordpress-admin-display.php';
+			include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/admin-display.php';
 
 			// Hook for doing other actions after displaying the admin page
 			do_action('fgj2wp_post_display_admin_page');
@@ -295,17 +295,17 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 			$screen = get_current_screen();
 			$screen->add_help_tab(array(
 				'id'	=> 'fgj2wp_help_instructions',
-				'title'	=> __('Instructions'),
+				'title'	=> __('Instructions', 'fg-joomla-to-wordpress'),
 				'content'	=> '',
 				'callback' => array($this, 'help_instructions'),
 			));
 			$screen->add_help_tab(array(
 				'id'	=> 'fgj2wp_help_options',
-				'title'	=> __('Options'),
+				'title'	=> __('Options', 'fg-joomla-to-wordpress'),
 				'content'	=> '',
 				'callback' => array($this, 'help_options'),
 			));
-			$screen->set_help_sidebar(__('<a href="http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/" target="_blank">FAQ</a>'), 'fgj2wp');
+			$screen->set_help_sidebar(__('<a href="http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/" target="_blank">FAQ</a>'), 'fg-joomla-to-wordpress');
 		}
 
 		/**
@@ -335,7 +335,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 			global $joomla_db;
 
 			if ( !class_exists('PDO') ) {
-				$this->display_admin_error(__('PDO is required. Please enable it.', 'fgj2wp'));
+				$this->display_admin_error(__('PDO is required. Please enable it.', 'fg-joomla-to-wordpress'));
 				return false;
 			}
 			try {
@@ -344,7 +344,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 					$joomla_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Display SQL errors
 				}
 			} catch ( PDOException $e ) {
-				$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fgj2wp') . '<br />' . $e->getMessage());
+				$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fg-joomla-to-wordpress') . '<br />' . $e->getMessage());
 				return false;
 			}
 			$this->plugin_options['version'] = $this->joomla_version();
@@ -372,7 +372,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 
 			} catch ( PDOException $e ) {
 				if ( $display_error ) {
-					$this->display_admin_error(__('Error:', 'fgj2wp') . $e->getMessage());
+					$this->display_admin_error(__('Error:', 'fg-joomla-to-wordpress') . $e->getMessage());
 				}
 			}
 			return $result;
@@ -556,14 +556,14 @@ SQL;
 						throw new PDOException($errorInfo[2], $errorInfo[1]);
 					}
 
-					$this->display_admin_notice(__('Connected with success to the Joomla database', 'fgj2wp'));
+					$this->display_admin_notice(__('Connected with success to the Joomla database', 'fg-joomla-to-wordpress'));
 
 					do_action('fgj2wp_post_test_database_connection');
 
 					return true;
 
 				} catch ( PDOException $e ) {
-					$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fgj2wp') . '<br />' . $e->getMessage());
+					$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fg-joomla-to-wordpress') . '<br />' . $e->getMessage());
 					return false;
 				}
 				$joomla_db = null;
@@ -577,7 +577,7 @@ SQL;
 		 */
 		public function test_joomla_1_0() {
 			if ( version_compare($this->plugin_options['version'], '1.5', '<') ) {
-				$this->display_admin_error(__('Your version of Joomla (probably 1.0) is not supported by this plugin. Please consider upgrading to the <a href="http://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank">Premium version</a>.', 'fgj2wp'));
+				$this->display_admin_error(__('Your version of Joomla (probably 1.0) is not supported by this plugin. Please consider upgrading to the <a href="http://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank">Premium version</a>.', 'fg-joomla-to-wordpress'));
 				// Deactivate the Joomla info feature
 				remove_action('fgj2wp_post_test_database_connection', array($this, 'get_joomla_info'), 9);
 				return false;
@@ -590,30 +590,30 @@ SQL;
 		 *
 		 */
 		public function get_joomla_info() {
-			$message = __('Joomla data found:', 'fgj2wp') . '<br />';
+			$message = __('Joomla data found:', 'fg-joomla-to-wordpress') . '<br />';
 
 			// Sections
 			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
 				$sections_count = $this->get_sections_count();
-				$message .= sprintf(_n('%d section', '%d sections', $sections_count, 'fgj2wp'), $sections_count) . '<br />';
+				$message .= sprintf(_n('%d section', '%d sections', $sections_count, 'fg-joomla-to-wordpress'), $sections_count) . '<br />';
 			}
 
 			// Categories
 			$cat_count = $this->get_categories_count();
-			$message .= sprintf(_n('%d category', '%d categories', $cat_count, 'fgj2wp'), $cat_count) . '<br />';
+			$message .= sprintf(_n('%d category', '%d categories', $cat_count, 'fg-joomla-to-wordpress'), $cat_count) . '<br />';
 
 			// Articles
 			$posts_count = $this->get_posts_count();
-			$message .= sprintf(_n('%d article', '%d articles', $posts_count, 'fgj2wp'), $posts_count) . '<br />';
+			$message .= sprintf(_n('%d article', '%d articles', $posts_count, 'fg-joomla-to-wordpress'), $posts_count) . '<br />';
 
 			// Users
 			$users_count = $this->get_users_count();
-			$message .= sprintf(_n('%d user', '%d users', $users_count, 'fgj2wp'), $users_count) . '<br />';
+			$message .= sprintf(_n('%d user', '%d users', $users_count, 'fg-joomla-to-wordpress'), $users_count) . '<br />';
 
 			// Web links
 			if ( $this->table_exists('weblinks') ) { // Joomla 3.4
 				$weblinks_count = $this->get_weblinks_count();
-				$message .= sprintf(_n('%d web link', '%d web links', $weblinks_count, 'fgj2wp'), $weblinks_count) . '<br />';
+				$message .= sprintf(_n('%d web link', '%d web links', $weblinks_count, 'fg-joomla-to-wordpress'), $weblinks_count) . '<br />';
 			}
 
 			$message = apply_filters('fgj2wp_pre_display_joomla_info', $message);
@@ -788,7 +788,7 @@ SQL;
 				// Categories
 				if ( !isset($this->premium_options['skip_categories']) || !$this->premium_options['skip_categories'] ) {
 					$cat_count = $this->import_categories();
-					$this->display_admin_notice(sprintf(_n('%d category imported', '%d categories imported', $cat_count, 'fgj2wp'), $cat_count));
+					$this->display_admin_notice(sprintf(_n('%d category imported', '%d categories imported', $cat_count, 'fg-joomla-to-wordpress'), $cat_count));
 				}
 
 				if ( !isset($this->premium_options['skip_articles']) || !$this->premium_options['skip_articles'] ) {
@@ -799,18 +799,18 @@ SQL;
 					}
 					switch ($this->post_type) {
 						case 'page':
-							$this->display_admin_notice(sprintf(_n('%d page imported', '%d pages imported', $result['posts_count'], 'fgj2wp'), $result['posts_count']));
+							$this->display_admin_notice(sprintf(_n('%d page imported', '%d pages imported', $result['posts_count'], 'fg-joomla-to-wordpress'), $result['posts_count']));
 							break;
 						case 'post':
 						default:
-							$this->display_admin_notice(sprintf(_n('%d post imported', '%d posts imported', $result['posts_count'], 'fgj2wp'), $result['posts_count']));
+							$this->display_admin_notice(sprintf(_n('%d post imported', '%d posts imported', $result['posts_count'], 'fg-joomla-to-wordpress'), $result['posts_count']));
 					}
-					$this->display_admin_notice(sprintf(_n('%d media imported', '%d medias imported', $result['media_count'], 'fgj2wp'), $result['media_count']));
+					$this->display_admin_notice(sprintf(_n('%d media imported', '%d medias imported', $result['media_count'], 'fg-joomla-to-wordpress'), $result['media_count']));
 
 					// Tags
 					if ($this->post_type == 'post') {
 						if ( $this->plugin_options['meta_keywords_in_tags'] ) {
-							$this->display_admin_notice(sprintf(_n('%d tag imported', '%d tags imported', $result['tags_count'], 'fgj2wp'), $result['tags_count']));
+							$this->display_admin_notice(sprintf(_n('%d tag imported', '%d tags imported', $result['tags_count'], 'fg-joomla-to-wordpress'), $result['tags_count']));
 						}
 					}
 				}
@@ -828,7 +828,7 @@ SQL;
 					$this->display_admin_notice(sprintf("Duration: %d sec<br />\n", $time_end - $time_start));
 				}
 
-				$this->display_admin_notice(__("Don't forget to modify internal links.", 'fgj2wp'));
+				$this->display_admin_notice(__("Don't forget to modify internal links.", 'fg-joomla-to-wordpress'));
 
 				wp_cache_flush();
 			}
@@ -960,7 +960,7 @@ SQL;
 							sleep(2);
 							$test_post_id = $this->get_wp_post_id_from_joomla_id($post['id']);
 							if ( !empty($test_post_id) ) {
-								$this->display_admin_error(__('The import process is still running. Please wait before running it again.', 'fgj2wp'));
+								$this->display_admin_error(__('The import process is still running. Please wait before running it again.', 'fg-joomla-to-wordpress'));
 								return false;
 							}
 							$test_antiduplicate = true;

@@ -3,8 +3,8 @@ Contributors: sumobi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EFUPMPEZPGW7L
 Tags: image gallery, image, galleries, simple, easy, sumobi
 Requires at least: 3.5
-Tested up to: 4.2.2
-Stable tag: 1.1.2
+Tested up to: 4.3.1
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,7 +31,7 @@ Features:
 1. Uses the new WP 3.5+ media manager for a familiar and intuitive way to add your images
 1. WordPress 3.6 Ready
 
-= Usage = 
+= Usage =
 
 Galleries are automatically appended to the bottom of your post/page unless you use the shortcode below. Using the shortcode will give you finer control over placement within the content area. Plugin settings are located under Settings -> Media
 
@@ -44,14 +44,14 @@ Use the following shortcode anywhere in the content area to display the gallery
 = Template Tag Usage =
 
 The following template tag is available to display the gallery
-    
+
     if( function_exists( 'easy_image_gallery' ) ) {
 	    echo easy_image_gallery();
     }
 
 If you use the template tag above, you will need remove the default content filter:
 
-    remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );    
+    remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );
 
 = Developer Friendly =
 
@@ -64,10 +64,10 @@ If you use the template tag above, you will need remove the default content filt
 
 **Stay up to date**
 
-*Become a fan on Facebook* 
+*Become a fan on Facebook*
 [http://www.facebook.com/sumobicom](http://www.facebook.com/sumobicom "Facebook")
 
-*Follow me on Twitter* 
+*Follow me on Twitter*
 [http://twitter.com/sumobi_](http://twitter.com/sumobi_ "Twitter")
 
 == Installation ==
@@ -106,9 +106,14 @@ In your WordPress admin under Settings -> Media
 
 == Upgrade Notice ==
 
-Updated PrettyPhoto JavaScript file to v3.1.6 and fixed captions that had quotes inside them
 
 == Changelog ==
+
+= 1.1.4 =
+* Tweak: Updated French translations, props fxbenard
+
+= 1.1.3 =
+* Tweak: Added text domain to plugin headers in accordance with new translation system
 
 = 1.1.2 =
 * Fix: Added esc_attr to title attribute. Captions that included quotes were getting cut off.
@@ -128,8 +133,8 @@ Updated PrettyPhoto JavaScript file to v3.1.6 and fixed captions that had quotes
 = 1.0.5 =
 
 * Tweak: The plugin's options page has been moved to settings -> media
-* Tweak: Renamed the 'thumbnail_image_size' filter name to be 'easy_image_gallery_thumbnail_image_size' so it's unique to the plugin 
-* Tweak: Renamed the 'linked_image_size' filter name to be 'easy_image_gallery_linked_image_size' so it's unique to the plugin 
+* Tweak: Renamed the 'thumbnail_image_size' filter name to be 'easy_image_gallery_thumbnail_image_size' so it's unique to the plugin
+* Tweak: Renamed the 'linked_image_size' filter name to be 'easy_image_gallery_linked_image_size' so it's unique to the plugin
 
 = 1.0.4 =
 
@@ -138,7 +143,7 @@ Updated PrettyPhoto JavaScript file to v3.1.6 and fixed captions that had quotes
 
 = 1.0.3 =
 
-* Fix: jQuery script that calls light box was being loaded when there were no gallery images 
+* Fix: jQuery script that calls light box was being loaded when there were no gallery images
 
 = 1.0.2 =
 

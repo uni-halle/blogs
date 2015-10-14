@@ -7,7 +7,13 @@
             active: false
         });
     }
-    else{
+    else if( faq_obj.collapse == 0 ){
+        $('.smartItems').accordion({
+            heightStyle: 'content',
+            collapsible: true
+        });
+    }
+    else if( faq_obj.collapse == -1 ){
         $('.smartItems').accordion({
             heightStyle: 'content',
             collapsible: true

@@ -155,7 +155,7 @@ header img {
 	background-color: rgba(0,0,0,.1);
 }
 
-.page-wrapper .wptouch-custom-ad {
+.page-wrapper .wptouch-custom-showcase {
 	margin: 0 0 -3px;
 }
 
@@ -658,13 +658,13 @@ ul.dots {
 	padding-left: 10px;
 }
 
-.post-page-content .wptouch-ad {
+.post-page-content .wptouch-showcase {
 	padding: 0;
 }
 
-.top-content-ad .wptouch-ad,
-.bottom-content-ad .wptouch-ad,
-#content .wptouch-ad {
+.top-content-showcase .wptouch-showcase,
+.bottom-content-showcase .wptouch-showcase,
+#content .wptouch-showcase {
 	margin-left: -15px;
 	margin-right: -15px;
 }

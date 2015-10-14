@@ -361,11 +361,11 @@ function get_soundcloud_is_gold_user_tracks(){
 	//Default Pagination Settings
 	$soundcloudIsGoldTracksPerPage = 25;
 	$soundcloudIsGoldPage = isset($_REQUEST['paged']) ? $_REQUEST['paged'] : '1';
-	$post_id = $_REQUEST['post_id'];
+	$post_id = no_more_XSS($_REQUEST['post_id']);
 	$soundcloudIsGoldApiOffset = $soundcloudIsGoldTracksPerPage*($soundcloudIsGoldPage-1);
 	
 	//API Call
-	$soundcloudIsGoldSelectedFormat = isset($_REQUEST['selectFormat']) ? $_REQUEST['selectFormat'] : 'tracks';
+	$soundcloudIsGoldSelectedFormat = isset($_REQUEST['selectFormat']) ? no_more_XSS($_REQUEST['selectFormat']) : 'tracks';
 	if($soundcloudIsGoldSelectedFormat == 'tracks') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/tracks.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
 	if($soundcloudIsGoldSelectedFormat == 'sets') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/playlists.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
 	if($soundcloudIsGoldSelectedFormat == 'favorites') $soundcloudIsGoldApiCall = 'http://api.soundcloud.com/users/'.$soundcloudIsGoldActiveUser.'/favorites.json?limit='.$soundcloudIsGoldTracksPerPage.'&offset='.$soundcloudIsGoldApiOffset.'&client_id=9rD2GrGrajkmkw5eYFDp2g';
@@ -578,7 +578,6 @@ function soundcloud_is_gold_shortcode($atts){
 }
 
 
-
 /******************************************************/
 /**                                                  **/
 /**                     OUTPUT                       **/
@@ -588,11 +587,7 @@ function soundcloud_is_gold_shortcode($atts){
 
 /** The Player **/
 function soundcloud_is_gold_player($id, $user, $autoPlay, $comments, $width, $classes, $playerTypes, $color, $artwork, $format){
-	//XSS Protection on data coming from fields
-	//$xssProtection = "/^[A-Za-z0-9 \,]{2,15}$/";
-	//if (!preg_match($xssProtection, $width)) $width == NULL;
-	//if (!preg_match($xssProtection, $classes)) $classes == NULL;
-
+	
 
 	$options = get_option('soundcloud_is_gold_options');
 	$soundcloudIsGoldSettings = isset($options['soundcloud_is_gold_settings']) ? $options['soundcloud_is_gold_settings'] : '';
@@ -616,10 +611,10 @@ function soundcloud_is_gold_player($id, $user, $autoPlay, $comments, $width, $cl
 	$color = str_replace('#', '', $color);
 	
 	//In case of requesting latest track
-	if(isset($user) && $user != "null"){
+	/*if(isset($user) && $user != "null"){
 		$returnedId = get_soundcloud_is_gold_latest_track_id($user, $format);
 		if($returnedId != "") $id = $returnedId;
-	}
+	}*/
 	
 	if($format == 'favorites') $format = "tracks"; //Reset Favorites to tracks as soundcloud treats them as tracks.
 	
@@ -660,10 +655,30 @@ function soundcloud_is_gold_player($id, $user, $autoPlay, $comments, $width, $cl
 	}
 	$player .= '</div>';
         
-	
 	return $player;
 
 }
+
+
+/*******************/
+/*                 */
+/*   XSS Protect   */
+/*                 */
+/*******************/
+/**
+ * XSS Protection on data coming from fields
+ * data = value coming from a field
+ * return cleaned data
+ **/
+
+function no_more_XSS($data){
+	$xssBlackList = "/^[A-Za-z0-9 \,]{2,15}$/";
+	//$check = preg_match($xssBlackList, $data);
+	$d = strip_tags($data);
+	return $d;
+
+}
+
 
 /*******************************************/
 /**                                       **/
@@ -673,14 +688,14 @@ function soundcloud_is_gold_player($id, $user, $autoPlay, $comments, $width, $cl
 /** Preview **/
 add_action('wp_ajax_soundcloud_is_gold_player_preview', 'soundcloud_is_gold_player_preview');
 function soundcloud_is_gold_player_preview(){
-	if(isset($_POST['request'])) echo soundcloud_is_gold_player($_POST['ID'], $_POST['user'], $_POST['autoPlay'], $_POST['comments'], $_POST['width'], $_POST['classes'], $_POST['playerType'], $_POST['color'], $_POST['artwork'], $_POST['format']);
+	if(isset($_POST['request'])) echo soundcloud_is_gold_player(no_more_XSS($_POST['ID']), no_more_XSS($_POST['user']), no_more_XSS($_POST['autoPlay']), no_more_XSS($_POST['comments']), no_more_XSS($_POST['width']), no_more_XSS($_POST['classes']), no_more_XSS($_POST['playerType']), no_more_XSS($_POST['color']), no_more_XSS($_POST['artwork']), no_more_XSS($_POST['format']));
 	die;
 }
 /** viewer Ajax **/
 add_action('wp_ajax_get_soundcloud_player', 'get_soundcloud_player');
 add_action('wp_ajax_nopriv_get_soundcloud_player', 'get_soundcloud_player');
 function get_soundcloud_player(){
-	echo soundcloud_is_gold_player($_POST['id'], $_POST['width'], $_POST['comments'], $_POST['autoPlay'], $_POST['type'], $_POST['color'], $_POST['format']);
+	echo soundcloud_is_gold_player(no_more_XSS($_POST['id']), no_more_XSS($_POST['width']), no_more_XSS($_POST['comments']), no_more_XSS($_POST['autoPlay']), no_more_XSS($_POST['type']), no_more_XSS($_POST['color']), no_more_XSS($_POST['format']));
 	die();
 }
 /** Add username **/

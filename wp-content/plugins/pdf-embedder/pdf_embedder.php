@@ -4,7 +4,7 @@
  * Plugin Name: PDF Embedder
  * Plugin URI: http://wp-pdf.com/
  * Description: Embed PDFs straight into your posts and pages, with flexible width and height. No third-party services required. 
- * Version: 2.2.2
+ * Version: 2.2.4
  * Author: Dan Lester
  * Author URI: http://wp-pdf.com/
  * License: GPL3
@@ -14,7 +14,7 @@ require_once( plugin_dir_path(__FILE__).'/core/core_pdf_embedder.php' );
 
 class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 
-	protected $PLUGIN_VERSION = '2.2.2';
+	protected $PLUGIN_VERSION = '2.2.4';
 	
 	protected function useminified() {
 		/* using-minified */ return true;
@@ -53,6 +53,18 @@ class pdfemb_basic_pdf_embedder extends core_pdf_embedder {
 	}
 	
 	// ADMIN
+
+	protected function pdfemb_mainsection_extra() {
+		?>
+		<br class="clear" />
+		<br class="clear" />
+
+		<label for="pdfemb_download" class="textinput">Download Button</label>
+		<span>
+        <label for="pdfemb_download" class="checkbox plain">Check to provide PDF download button on toolbar - only available in premium versions</label>
+        </span>
+		<?php
+	}
 	
 	protected function pdfemb_mobilesection_text()
     {

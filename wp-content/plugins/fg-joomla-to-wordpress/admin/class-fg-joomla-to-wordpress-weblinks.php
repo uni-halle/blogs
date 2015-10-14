@@ -80,7 +80,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 
 			// Links categories
 			$cat_count = $this->import_categories();
-			$this->plugin->display_admin_notice(sprintf(_n('%d links category imported', '%d links categories imported', $cat_count, 'fgj2wp'), $cat_count));
+			$this->plugin->display_admin_notice(sprintf(_n('%d links category imported', '%d links categories imported', $cat_count, 'fg-joomla-to-wordpress'), $cat_count));
 
 			$links = $this->get_weblinks();
 			foreach ( $links as $link ) {
@@ -194,7 +194,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 						$terms[] = $cat_id;
 						$this->categories[$category['name']] = $cat_id;
 					} else {
-						$this->plugin->display_admin_error(__('Error:', 'fgj2wp') . ' ' . print_r($cat_id, true));
+						$this->plugin->display_admin_error(__('Error:', 'fg-joomla-to-wordpress') . ' ' . print_r($cat_id, true));
 						continue;
 					}
 
@@ -241,7 +241,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 				return;
 			}
 
-			$this->plugin->display_admin_notice(sprintf(_n('%d web link imported', '%d web links imported', $this->links_count, $this->plugin->get_plugin_name()), $this->links_count));
+			$this->plugin->display_admin_notice(sprintf(_n('%d web link imported', '%d web links imported', $this->links_count, 'fg-joomla-to-wordpress'), $this->links_count));
 		}
 
 		/**
@@ -254,7 +254,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Weblinks', false) ) {
 			$links_count = $this->count_links();
 
 			if ( $links_count > 0 ) {
-				$data['database_info'][] = sprintf(_n('%d link', '%d links', $links_count, 'fgj2wp'), $links_count);
+				$data['database_info'][] = sprintf(_n('%d link', '%d links', $links_count, 'fg-joomla-to-wordpress'), $links_count);
 			}
 			return $data;
 		}

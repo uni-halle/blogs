@@ -30,11 +30,14 @@ class WYSIJA_control_front_stats extends WYSIJA_control_front{
                 $url = $this->encode_url($WJ_Stats->subscriber_clicked());
                 $external_url = htmlentities($WJ_Stats->subscriber_clicked()); // escape HTML characters (that's how URLs are saved in the DB)
                 $external_url = preg_replace('!/?\?utm.*!', '', $external_url); // remove anything that starts with ?utm or /?utm
-                $internal_url = htmlentities(get_site_url());
+                $internal_site_url = htmlentities(get_site_url());
+                $internal_home_url = htmlentities(get_home_url());
                 $model_email = WYSIJA::get('email', 'model');
                 $email_object = $model_email->getOne(false,array('email_id' => $_REQUEST['email_id']));
                 if (preg_match('/'. preg_quote($external_url, '/') .'/', $email_object['body']) ||
-                    preg_match('/^'. preg_quote($internal_url, '/') .'/', $url)) {
+                    preg_match('/^'. preg_quote($internal_site_url, '/') .'/', $url) ||
+                    preg_match('/^'. preg_quote($internal_home_url, '/') .'/', $url)
+                ) {
                     do_action('mpoet_click_stats', $WJ_Stats);
                     $this->redirect($url);
                 }

@@ -194,7 +194,7 @@ class WPtouchProThree {
 		} else {
 			if ( $this->should_do_desktop_shortcode_magic( $settings ) ) {
 				add_filter( 'wptouch_force_mobile_device', array( &$this, 'shortcode_override' ) );
-				add_action( 'init', array( &$this, 'handle_desktop_shortcode' ), 9999 );
+				add_action( 'wp', array( &$this, 'handle_desktop_shortcode' ), 9999 );
 			}
 
 			add_action( 'wp', array( &$this, 'set_cache_cookie' ) );
@@ -334,6 +334,7 @@ class WPtouchProThree {
 
 	function handle_desktop_shortcode() {
 		if ( isset( $_GET[ 'wptouch_shortcode'] ) ) {
+
 			$post_nonce = $this->post[ 'post_nonce' ];
 
 			if ( !wp_verify_nonce( $post_nonce, 'wptouch-ajax' ) ) {

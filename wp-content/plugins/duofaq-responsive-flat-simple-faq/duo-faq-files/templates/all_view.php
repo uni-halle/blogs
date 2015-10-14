@@ -29,6 +29,7 @@
             <?php echo $item->name; ?>
             <span><a href="#faq-top"><?php _e( 'Go To Top', 'df' ) ?></a> </span>
         </h4>
+        <?php if( $df_options['collapse'] != -1 ) { ?>
         <div class="smartItems">
             <?php foreach($posts as $post) { ?>
             <h3 class="accordion_title"><?php echo $post->post_title; ?></h3>
@@ -37,6 +38,16 @@
             </div>
             <?php } ?>
         </div>
+        <?php }else{ ?>
+            <?php foreach($posts as $post) { ?>
+            <div class="smartItems">
+                <h3 class="accordion_title"><?php echo $post->post_title; ?></h3>
+                <div class="smartItemsDetails">
+                    <?php echo wpautop( do_shortcode( $post->post_content ) ); ?>
+                </div>
+            </div>
+            <?php } ?>
+        <?php } ?>
     </div>
         <?php
     }

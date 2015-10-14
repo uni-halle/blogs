@@ -27,7 +27,8 @@
     'jsname'     => 'dummy',
     'marker_latlon'  => 'No',
     'map_border'  => '2px solid grey',
-    'marker_name' => 'NoName'
+    'marker_name' => 'NoName',
+    'control' => 'No'
     ), $atts));
 
     $type = strtolower($type);
@@ -36,6 +37,9 @@
     // get pairs of coordination
     $map_center_Array = explode( ' ', $map_center );
     list($lat, $lon) = explode(',', $map_center_Array[0]); 
+
+    $array_control = explode( ',', $control);
+    $array_control    = Osm_OLJS3::checkControlType($array_control);
 
     $pos = strpos($width, "%");
     if ($pos == false) {
@@ -106,7 +110,6 @@
     $output .= '(function($) {';
 
     $ov_map = "ov_map";
-    $array_control = "array_control";
     $extmap_type = "extmap_type";
     $extmap_name = "extmap_name";
     $extmap_address = "extmap_address";
@@ -118,6 +121,7 @@
       $output .= '
       var '.$MapName.' = new ol.Map({
         layers: [raster, Layer2],
+        interactions: ol.interaction.defaults({mouseWheelZoom:false}),
         target: "'.$MapName.'",
         view: new ol.View({
           center: ol.proj.transform(['.$lon.','.$lat.'], "EPSG:4326", "EPSG:3857"),
@@ -134,6 +138,7 @@
          source: source_basemap
        })
      ],
+     interactions: ol.interaction.defaults({mouseWheelZoom:false}),
      target: "'.$MapName.'",
      view: new ol.View({
      center: ol.proj.transform(['.$lon.','.$lat.'], "EPSG:4326", "EPSG:3857"),
@@ -143,7 +148,16 @@
     }
     else{
       $output .= '
-      var '.$MapName.' = new ol.Map({
+      var '.$MapName.' = new ol.Map({';
+
+if ($array_control[0]!="No"){
+      $output .= '
+controls: Controls,
+';
+}
+
+$output .= '
+        interactions: ol.interaction.defaults({mouseWheelZoom:false}),
         layers: [raster],
         target: "'.$MapName.'",
         view: new ol.View({
@@ -210,7 +224,7 @@
         $Icon["name"]  = $marker_name;
       }
 
-     $MarkerUrl = "../../../../wp-content/plugins/osm/icons/".$Icon["name"];
+     $MarkerUrl = OSM_PLUGIN_ICONS_URL.$Icon["name"];
       list($temp_lat, $temp_lon) = Osm::checkLatLongRange('Marker',$temp_lat, $temp_lon,'no');
       if (($temp_lat != 0) || ($temp_lon != 0)){
       // set the center of the map to the first geotag
@@ -245,7 +259,7 @@
       if (($temp_lat != 0) || ($temp_lon != 0)){
         $lat_marker = $temp_lat;
         $lon_marker = $temp_lon;
-        $MarkerUrl = "../../../../wp-content/plugins/osm/icons/".$Icon["name"];
+        $MarkerUrl = OSM_PLUGIN_ICONS_URL.$Icon["name"];
         $MarkerArray[] = array('lat'=> $temp_lat,'lon'=>$temp_lon,'text'=>$temp_popup,'popup_height'=>'150', 'popup_width'=>'150');
         $output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.',"'.$MarkerUrl.'",'.$Icon["offset_width"].','.$Icon["offset_height"].') ; ';
       }// templat lon != 0

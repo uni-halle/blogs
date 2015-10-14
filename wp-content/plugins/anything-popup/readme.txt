@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anyth
 Plugin URI: http://www.gopiplus.com/work/2012/05/25/wordpress-popup-plugin-anything-popup/
 Tags: popup, contact
 Requires at least: 3.4
-Tested up to: 4.3
-Stable tag: 5.8
+Tested up to: 4.3.1
+Stable tag: 5.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,10 @@ Popup windows are generally new web browser windows to display the content. but 
 * Drag and drop the widget
 * Paste the php code to your desired template location
 * Short code for pages and posts
+
+= Translators =
+
+* Polish (pl) - [Abdul Sattar](https://www.couponmachine.in/)
 
 == Installation ==
 
@@ -124,6 +128,10 @@ Support short code in the popup (i.e You can add other plugin short code inside 
 
 1. Tested up to 4.3
 
+= 5.8.1 =
+
+* Text Domain slug has been added for Language Packs.
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -188,3 +196,7 @@ Support short code in the popup (i.e You can add other plugin short code inside 
 = 5.8 =
 
 1. Tested up to 4.3
+
+= 5.8.1 =
+
+* Text Domain slug has been added for Language Packs.

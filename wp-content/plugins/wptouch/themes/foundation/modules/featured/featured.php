@@ -235,7 +235,14 @@ function foundation_featured_slider( $manual = false, $manual_html = false ) {
 	$args = foundation_featured_get_args();
 
 	if ( $manual == false && $settings->featured_enabled ) {
-		$slides = new WP_Query( array( 'post__in' => $foundation_featured_posts ) );
+
+		if ( function_exists( 'wptouch_custom_posts_add_to_search' ) ) {
+			$post_types = wptouch_custom_posts_add_to_search( array( 'post', 'page' ) );
+		} else {
+			$post_types = array( 'post', 'page' );
+		}
+
+		$slides = new WP_Query( array( 'post__in' => $foundation_featured_posts, 'post_type' => $post_types ) );
 
 		if ( $slides->post_count > 0 ) {
 			echo $args['before'];
@@ -344,14 +351,6 @@ function foundation_featured_settings( $page_options ) {
 				'post_type' => __( 'Show posts from a specific post type', 'wptouch-pro' ),
 				'posts' => __( 'Show only specific posts or pages', 'wptouch-pro' )
 			)
-		),
-		wptouch_add_setting(
-			'text',
-			'featured_tag',
-			__( 'Only this tag', 'wptouch-pro' ),
-			__( 'Enter the tag/category slug name', 'wptouch-pro' ),
-			WPTOUCH_SETTING_BASIC,
-			'1.0'
 		),
 		wptouch_add_setting(
 			'text',

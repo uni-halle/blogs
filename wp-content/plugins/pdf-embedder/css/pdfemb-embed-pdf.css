@@ -222,6 +222,10 @@ div.pdfemb-toolbar button.pdfemb-fs::before {
 	content: url('../img/toolbarButton-presentationMode.png');
 }
 
+div.pdfemb-toolbar button.pdfemb-download::before {
+	content: url('../img/toolbarButton-download.png');
+}
+
 div.pdfemb-toolbar button.pdfemb-btndisabled {
 	color: lightGray;
 }
