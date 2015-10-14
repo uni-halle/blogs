@@ -1,11 +1,13 @@
-/**
- * Gridpak Beta SCSS 
- *
- * Generator - http://gridpak.com/
- * Created by @erskinedesign
- */
+/** No grid used because no grid needed **/
 
-/* Reusable column setup */
+#content {
+    width: 100%;
+}
+
+#inner-content {
+    margin: 0 auto;
+}
+
 
 @mixin col {
     border:0px solid rgba(0,0,0,0);

@@ -29,5 +29,11 @@
 
 	wp_footer();
 ?>
+
+<script>
+	pageLoad();
+	staticSizeChanger();
+</script>
+
 </body>
 </html>

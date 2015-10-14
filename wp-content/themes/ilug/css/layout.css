@@ -13,23 +13,30 @@
 
 
 * {
-    line-height: 1.5;
+    /*line-height: 1.5;*/
 }
  
 body {
     padding: 0 2em;
-    font-weight: 300;
-    line-height: 1.6;
-    font: 12px Tahoma, Geneva, Verdana;
+    /*font-weight: 300;*/
+    line-height: 1.5em;
+    font: 0.8em Tahoma, Geneva, Verdana;
 }
 #header {
-    width: 799;
+    width: 799px;
 }
 #header_images {
     background-color: #B6D4D4;
-    height:238px;
-    widht: 100%;
+    /*height:238px;*/
+    width: 100%;
+	border-left: 1px solid #000;
+	float: left;
 }
+
+#header_images img {
+	width: 100%;
+}
+
 img.logo {
     float: left;
     margin: 40px 0 0 40px;
@@ -37,14 +44,192 @@ img.logo {
 #page {
     margin: 0 auto;
     max-width: 998px;
-    background: url('../images/bg.gif') repeat-y;
 }
 #main {
     float: right;
     width: 799px;
     position: relative;
-    left: -3px;
+    left: -5px;
+    background-image: url('../images/bg_main.png');
+	background-repeat: repeat-y;
 }
+#topbar {
+	background-color: #5EA8A5;
+	padding: 0px;
+	margin: 0px 0.9% 0px 0px;
+	/*position: absolute;*/
+	z-index: 1000px;
+	float: left;
+	width: 10%;
+}
+
+#topmenubutton {
+	background-color:#5EA8A5; 
+	width:100%; 
+	border:0px; 
+	/*border-bottom: 1px solid #000;*/
+	text-align: left;
+	padding-left: 5px;
+	height: 100%;
+	color: #fff;
+}
+
+#topwidgetarea {
+	background-color: #5EA8A5;
+	left: 10%;
+	top: 0%;
+	position: absolute;
+	z-index: 100;
+	color: #fff;
+}
+
+@media only screen and (min-device-width: 1025px) {
+	#topmenubutton {
+		font-size: 1.1em;
+	}
+
+	#topwidgetarea {
+		font-size: 1.1em;
+		line-height: 1.5em;/*2em;*/
+	}
+
+	#colophon {
+		font-size: 0.9em; /*11px;*/
+	}
+
+	aside ul.menu li a {
+		font-size: 0.95em;/* 12px; */
+	}
+	
+	aside ul.sub-menu li a {
+		font-size: 0.9em;/*11px;*/
+	}
+	
+	h1 {
+		font-size:1.3em;/*18px;*/
+	}
+	
+	h2 {
+		font-size: 1.2em;/*14px;*/
+	}
+	
+	h3 {
+		font-size: 1.1em;/*14px;*/
+	}
+	
+	#sidebar h3 {
+		font-size: 1.1em;/*17px;*/
+	}
+	
+	dt {
+		font-size: 0.95em;/*15px;*/
+	}
+	
+	.visual-form-builder fieldset.fb_form .vfb-legend h3 {
+		font-size: 0.9em;
+	}
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) {
+	#topmenubutton {
+		font-size: 0.8em;
+	}
+
+	#topwidgetarea {
+		font-size: 0.8em;
+		line-height: 1.2em;/*2em;*/
+	}
+
+	#colophon {
+		font-size: 0.9em; /*11px;*/
+	}
+
+	aside ul.menu li a {
+		font-size: 0.95em;/* 12px; */
+	}
+	
+	aside ul.sub-menu li a {
+		font-size: 0.9em;/*11px;*/
+	}
+	
+	h1 {
+		font-size:1.3em;/*18px;*/
+	}
+	
+	h2 {
+		font-size: 1.2em;/*14px;*/
+	}
+	
+	h3 {
+		font-size: 1.1em;/*14px;*/
+	}
+	
+	#sidebar h3 {
+		font-size: 1.1em;/*17px;*/
+	}
+	
+	dt {
+		font-size: 0.95em;/*15px;*/
+	}
+	
+	.visual-form-builder fieldset.fb_form .vfb-legend h3 {
+		font-size: 0.9em;
+	}
+}
+
+
+@media only screen and (max-device-width: 480px) {	
+	#topmenubutton {
+		font-size: 1.0em;
+	}
+
+	#topwidgetarea {
+		font-size: 1.2em;
+		line-height: 1.2em;/*2em;*/
+	}
+	
+	#colophon {
+		font-size: 0.9em; /*11px;*/
+	}
+	
+	aside ul.menu li a {
+		font-size: 1em;/* 12px; */
+	}
+	
+	aside ul.sub-menu li a {
+		font-size: 1em;/*11px;*/
+	}
+	
+	h1 {
+		font-size:1.3em;/*18px;*/
+	}
+	
+	h2 {
+		font-size: 1.2em;/*14px;*/
+	}
+	
+	h3 {
+		font-size: 1.1em;/*14px;*/
+	}
+	
+	#sidebar h3 {
+		font-size: 1.1em;/*17px;*/
+	}
+	
+	dt {
+		font-size: 0.95em;/*15px;*/
+	}
+	
+	.visual-form-builder fieldset.fb_form .vfb-legend h3 {
+		font-size: 0.9em;
+	}
+}
+
+#topwidgetarea a{
+	color: #fff;
+	padding: 10px;
+}
+
 #content {
     padding: 3%;
     width: 94%;
@@ -61,7 +246,7 @@ img.logo {
     padding-left: 13px;
     text-align: left;
     margin-top:4px;
-	line-height: 1.5;
+	line-height: 1.5em;
 }
 
 #content .literatur li {
@@ -74,17 +259,22 @@ img.logo {
     padding-left: 0.7%;
     padding-right: 0.4%;
     min-width:185px;
-    background-image: url('../images/links.gif');
-    background-repeat: no-repeat;
-    background-position: 3px 0;
+    background-image: url('../images/bg_sidebar.gif');
+	background-repeat: repeat-y;
 }
+
+#sidebarImage {
+    background-image: url('../images/links.gif');
+	background-repeat: no-repeat;
+	margin-left: -3px;
+}
+
 #colophon {
     clear:both;
     background: url('../images/footer_bg.png') repeat-y;
     color: #fff;
-    font-size:11px;
     text-align:center;
-    line-height:20px;
+    line-height:1.2em;
 	position:relative;
 	padding: 5px 0;
 }
@@ -125,8 +315,12 @@ ul.qtrans_language_chooser {
 
 /* Top Level */
 
-#menu-main {
+#sidebar #menu-main, #sidebar #menu-main-1 {
     margin: 0 0 25px 1px;
+}
+
+#topwidgetarea #menu-main, #topwidgetarea #menu-main-1 {
+    margin: 0 0 0px 1px;
 }
 
 aside ul {
@@ -143,13 +337,12 @@ aside ul.menu li {
 aside ul.menu li a {
     border-top: 1px solid #AED3D1;
     display: block;
-    line-height: 20px;
+    line-height: 1.2em;
     left: 0;
     padding: 3px 3px 3px 17px;
     position: relative;
     color: #000000;
     display: block;
-    font-size: 12px;
     text-decoration: none;
 }
 
@@ -181,7 +374,6 @@ aside ul.sub-menu {
 }
 
 aside ul.sub-menu li a {
-    font-size: 11px;
     color: #313431;
     height: auto;
     line-height: inherit;
@@ -269,7 +461,6 @@ h1,h2,h3,h4,h5,h6 {
 
 h1 {
     color: #003970;
-    font-size:18px;
     font-weight: normal;
     margin: 0 0 20px;
     padding: 0 30px 3px 0;
@@ -278,19 +469,16 @@ h1 {
 }
 h2 {
     color: #5EA8A5;
-    font-size: 14px;
     font-weight: bold;
     margin: 20px 0 20px;
 }
 
 h3 {
     color: #003970;
-    font-size: 14px;
 	padding: 0 0 15px;
 }
 
 #sidebar h3 {
-    font-size: 17px;
     border-bottom: 1px solid #FFFFFF;
     color: #003970;
     margin: 0 30px 20px 16px;	
@@ -315,11 +503,11 @@ a:hover {
 
 /* Text elements */
 p, ul, ol, dl {
-    font-weight: 300;
+    /*font-weight: 300;*/
 }
 p {
     margin-bottom: 1.625em;
-	line-height: 1.5;
+	line-height: 1.5em;
 }
 ul, ol {
     margin: 0 0 1.625em 2.5em;
@@ -347,7 +535,6 @@ dl {
     margin: 0 1.625em;
 }
 dt {
-    font-size: 15px;
     font-weight: bold;
 }
 dd {
@@ -479,7 +666,7 @@ table.press tr td {
 
 
 .visual-form-builder fieldset.pa_form li div label, .visual-form-builder fieldset.pa_form li span label {
-font-size: 100%;
+/*font-size: 1.0em;*/
 }
 
 /* Ausdauerprofi Fragebogen */
@@ -556,7 +743,6 @@ font-size: 100%;
 
 .visual-form-builder fieldset.fb_form .vfb-legend h3 {
     color: #003970;
-    font-size: 12px;    
     margin: 10px 0;
     font-weight: bold;
 }
@@ -576,3 +762,10 @@ font-size: 100%;
     margin-top:20px !important;
 }
 
+.referenzen a, .referenzen img {
+  margin: 10px 10px 10px 10px;
+}
+
+img {
+	max-width: 100%;
+}

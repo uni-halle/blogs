@@ -57,8 +57,18 @@
      */
     wp_head();
 ?>
+	<script src='<?php bloginfo('template_directory'); ?>/js/sizeswitch.js'></script>
+	
+	<!-- Links sollen immer das eigene Fenster nutzen, sofern nicht anders angegeben -->
+	<base target="_self">
+	<!-- Viewport fuer Mobiloptimierung setzen -->
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+	
+	<!-- Scripte fuer Maps einbinden -->
+    <script src="https://ilug.uni-halle.de/wp-content/themes/ilug/js/OpenLayers.js"></script>
+    <script src='https://ilug.uni-halle.de/wp-content/themes/ilug/js/openmaps.js'></script>
 </head>
  
-<body <?php body_class(); ?>>
+<body id='body' onresize='resizer();' <?php body_class(); ?>>
     <div id="page">
 	

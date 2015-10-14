@@ -46,6 +46,12 @@ function bones_ahoy() {
   // enqueue base scripts and styles
   add_action( 'wp_enqueue_scripts', 'bones_scripts_and_styles', 999 );
   // ie conditional wrapper
+    
+// Loads the Superfish JavaScript with jQuery as a dependency
+wp_enqueue_script( 'hoverintent', get_template_directory_uri() . '/library/js/superfish-js/hoverintent.js', array('jquery'), '20151008' );
+wp_enqueue_script( 'supersubs', get_template_directory_uri() . '/library/js/superfish-js/supersubs.js', array('jquery'), '20151008' );
+wp_enqueue_script( 'superfish', get_template_directory_uri() . '/library/js/superfish-js/superfish.js', array('jquery'), '20151008' );
+wp_enqueue_script( 'superfish-config', get_template_directory_uri() . '/library/js/superfish-js/superfishconfig.js', array('jquery'), '20151008' );
 
   // launching this stuff after theme setup
   bones_theme_support();
@@ -136,15 +142,15 @@ function bones_theme_customizer($wp_customize) {
 
   // $wp_customize->remove_section('title_tagline');
   // $wp_customize->remove_section('colors');
-  // $wp_customize->remove_section('background_image');
-  // $wp_customize->remove_section('static_front_page');
-  // $wp_customize->remove_section('nav');
+     $wp_customize->remove_section('background_image');
+     $wp_customize->remove_section('static_front_page');
+     $wp_customize->remove_section('nav');
 
   // Uncomment the below lines to remove the default controls
   // $wp_customize->remove_control('blogdescription');
   
   // Uncomment the following to change the default section titles
-  // $wp_customize->get_section('colors')->title = __( 'Theme Colors' );
+     $wp_customize->get_section('colors')->title = __( 'Theme Colors' );
   // $wp_customize->get_section('background_image')->title = __( 'Images' );
 }
 
@@ -239,12 +245,11 @@ can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
 function bones_fonts() {
-  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic');
+    wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Bree+Serif');
 }
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
-
-
 
 /************* GKUH Functions *********************/      
       
@@ -258,4 +263,5 @@ register_taxonomy_for_object_type('category', 'page');
 }
  // Add to the admin_init hook of your theme functions.php file 
 add_action( 'init', 'myplugin_settings' );
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>

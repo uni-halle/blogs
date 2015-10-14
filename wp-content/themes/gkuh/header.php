@@ -12,7 +12,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 		<title><?php wp_title(''); ?></title>
-
+        
 		<?php // mobile meta (hooray!) ?>
 		<meta name="HandheldFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
@@ -37,21 +37,19 @@
 
 		<?php // drop Google Analytics Here ?>
 		<?php // end analytics ?>
+        
+
 
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 
 		<div id="container">
-            
 
 			<header class="header row" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-                
-                <div class="col span_1">&nbsp; </div>
-
 
                 <!--   flexbox container             -->
-                <div id="inner-header" class="col span_10">
+                <div id="inner-header" class="maincontainer">
 
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 					<a href="<?php echo home_url(); ?>" rel="nofollow" class="logolink"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/library/images/Logo_GKUHp.png"></a>
@@ -65,7 +63,7 @@
     					         'container' => false,                           // remove nav container
     					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
     					         'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
-    					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
+    					         'menu_class' => 'nav top-nav cf sf-menu',               // adding custom nav class
     					         'theme_location' => 'main-nav',                 // where it's located in the theme
     					         'before' => '',                                 // before the menu
         			               'after' => '',                                  // after the menu
@@ -79,7 +77,5 @@
     </div>
 
 </div>
-                
-                <div class="col span_1">&nbsp; </div>
 
 </header>

@@ -16,7 +16,7 @@
 	width: 100%;
 	display: block;
 	position: relative;
-	padding-left: 1.19047619%; // 0.5 * Colum Margin 
+	padding-left: 1,2083333333%; // for exact centering: 0.5 * Colum Margin 
 }
 .cell {
   position: relative;
@@ -28,24 +28,14 @@
    For a given cell width, the calculation is: 
    width = (total cell width) * n - (column margins) 
    In this case: (6.25*n - 2,380952381%)% */
-.width-1  { width: 3.869047619047620% }
-.width-2  { width: 10.119047619047600% }
-.width-3  { width: 16.369047619047600% }
-.width-4  { width: 22.619047619047600% }
-.width-5  { width: 28.869047619047600% }
-.width-6  { width: 35.119047619047600% }
-.width-7  { width: 41.369047619047600% }
-.width-8  { width: 47.619047619047600% }
-.width-9  { width: 53.869047619047600% }
-.width-10  { width: 60.119047619047600% }
-.width-11  { width: 66.369047619047600% }
-.width-12  { width: 72.619047619047600% }
-.width-13  { width: 78.869047619047600% }
-.width-14  { width: 85.119047619047600% }
-.width-15  { width: 91.369047619047600% }
-.width-16  { width: 97.619047619047600% }
-
-
+.width-1  { width: 7.750000000000000% }
+.width-2  { width: 20.250000000000000% }
+.width-3  { width: 32.750000000000000% }
+.width-4  { width: 45.250000000000000% }
+.width-5  { width: 57.750000000000000% }
+.width-6  { width: 70.250000000000000% }
+.width-7  { width: 82.750000000000000% }
+.width-8  { width: 95.250000000000000% }
 
 
 /* Positioning classes, these are subtracting from a rightmost 
@@ -53,25 +43,22 @@
 /* For a given position, the calculation is:
    -100 + (total cell width * n)
    In this case: margin-left: -100 + (6.25*n) */
+.position-0  { margin-left: -100.000000000000000% }
+.position-1  { margin-left: -87.500000000000000% }
+.position-2  { margin-left: -75.000000000000000% }
+.position-3  { margin-left: -62.500000000000000% }
+.position-4  { margin-left: -50.000000000000000% }
+.position-5  { margin-left: -37.500000000000000% }
+.position-6  { margin-left: -25.000000000000000% }
+.position-7  { margin-left: -12.500000000000000% }
+.position-8  { margin-left: 0.000000000000000% }
 
-.position-0  { margin-left: -100%   }
-.position-1  { margin-left: -93.75% }
-.position-2  { margin-left: -87.5%  }
-.position-3  { margin-left: -81.25% }
-.position-4  { margin-left: -75%    }
-.position-5  { margin-left: -68.75% }
-.position-6  { margin-left: -62.5%  }
-.position-7  { margin-left: -56.25% }
-.position-8  { margin-left: -50%    }
-.position-9  { margin-left: -43.75% }
-.position-10 { margin-left: -37.5%  }
-.position-11 { margin-left: -31.25% }
-.position-12 { margin-left: -25%    }
-.position-13 { margin-left: -18.75% }
-.position-14 { margin-left: -12.5%  }
-.position-15 { margin-left:  -6.25% }
+
 
 /* End of the core Deco Grid System */
 
 /* Make sure the page never exceeds 992px, but scales down */
-body { max-width: 63em; margin: 0 auto;} 
+body { 
+  max-width: 78em; 
+  margin: 0 auto;
+} 

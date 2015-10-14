@@ -219,6 +219,17 @@ function starkers_widgets_init() {
 		'before_title' => '<h3>',
 		'after_title' => '</h3>',
 	) );
+	
+	// Area 7, located in the top. Empty by default.
+	register_sidebar( array(
+		'name' => __( 'First Top Widget Area', 'strauss' ),
+		'id' => 'first-top-widget-area',
+		'description' => __( 'The first top widget area', 'strauss' ),
+		'before_widget' => '<li>',
+		'after_widget' => '</li>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+        ) );
 }
 /** Register sidebars by running starkers_widgets_init() on the widgets_init hook. */
 add_action( 'widgets_init', 'starkers_widgets_init' );

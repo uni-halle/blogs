@@ -1,21 +1,16 @@
 			<footer class="footer" role="navigation" itemscope itemtype="http://schema.org/WPFooter">
                 
-                
-                <div class="breadcrumbs row" xmlns:v="http://rdf.data-vocabulary.org/#">
-                    <div class="col span_1">&nbsp; </div>
-                    <div class="col span_10">
-    <?php if(function_exists('bcn_display'))
-    {
+                <div class="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#">
+                        <div class="maincontainer">
+                                    
+    <?php if(function_exists('bcn_display')) {
         bcn_display();
     }?>
-                        </div>
-                    <div class="col span_1">&nbsp; </div>
-</div>
+                       </div> </div>
 
-				<div id="inner-footer" class="row">
+				<div id="inner-footer" class="maincontainer">
                     
- <div class="col span_1">&nbsp; </div>
-					<nav role="navigation" class="col span_10"> 
+					<nav role="navigation"> 
 					
 <!-- Previous and Next Page Functionality -->
                     
@@ -72,8 +67,6 @@ $nextID = $pages[$current+1];
 </div>
                         
                     </nav>
-                    
-                     <div class="col span_1">&nbsp; </div>
 
 				</div> <!-- end of #inner-footer -->
                 
@@ -86,9 +79,6 @@ $nextID = $pages[$current+1];
 		<?php // all js scripts are loaded in library/bones.php ?>
 
 		<?php wp_footer(); ?>
-
-<!-- only for development. can be removed along with the file-->
-<script src="library/js/gridpak.js"></script>
 
 	</body>
 

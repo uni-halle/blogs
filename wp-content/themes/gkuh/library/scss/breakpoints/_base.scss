@@ -15,10 +15,16 @@ and will be used across all viewports.
 GENERAL STYLES
 *********************/
 
+/* Use this setting to set the general width of the content (and also the inner header, footer and breadcrumb box) */
+.maincontainer {
+    width: 80%;
+    margin: 0 auto;
+}
+
 body {
-	font-family: $lato;
-	font-size: 100%;
-	line-height: 1.5;
+	font-family: $opensans;
+	font-size: 90%;
+	line-height: 1.25;
 	color: $text-color;
 	background-color: $site-bgrd;
   	-webkit-font-smoothing: antialiased;
@@ -75,9 +81,6 @@ LAYOUT & GRID STYLES
 	margin: 0 auto;
 }
 
-#main {
-padding-bottom: $footerheight;
-}
 
 /*********************
 LINK STYLES
@@ -113,7 +116,8 @@ H1, H2, H3, H4, H5 STYLES
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	text-rendering: optimizelegibility;
-	font-weight: 500;
+	font-weight: 400;
+    font-family: $bree;
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -126,8 +130,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	font-size: 2.25em;
+	font-size: 2em;
 	line-height: 1.333em;
+
 }
 
 h2, .h2 {
@@ -153,10 +158,10 @@ h5, .h5 {
 }
 
 /*********************
-HEADER STYLES
+SITE HEADER STYLES
 *********************/
 
-/* $headerheight: see _variables.scss and change there */
+$headerheight: 4em;
 
 .header {
 	background-color: $gkuh;
@@ -231,8 +236,7 @@ and more scalable.
     ul {
 		margin:0;
         text-align: right;
-        /* fix for inline-block gap */
-        letter-spacing: -1em;
+        letter-spacing: -1em; /* fix for inline-block gap */
 	}
     
 	li {
@@ -354,7 +358,7 @@ POSTS & CONTENT STYLES
 *********************/
 
 #content {
-	margin-top: 1.5em;
+	margin-top: 1em;
 }
 
 		.hentry {
@@ -365,7 +369,7 @@ POSTS & CONTENT STYLES
 
 			header {
 				border-bottom: 1px solid $light-gray;
-				padding: 1.5em; 
+				padding: 0; 
 			}
 
 			footer {
@@ -414,7 +418,7 @@ POSTS & CONTENT STYLES
 
 		/* entry content */
 		.entry-content {
-			padding: 1.5em 1.5em 0;
+			padding: 0;
 
 			p {
 				margin: 0 0 1.5em;
@@ -589,6 +593,77 @@ POSTS & CONTENT STYLES
 	.tags {
 		margin: 0;
 	}
+
+
+/***************
+List of Child Pages on First Page of a Section (See page.php for php code and list class name
+****************/
+
+/* Styling from http://red-team-design.com/css3-ordered-list-styles */
+
+.themenuebersicht {
+    counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font-size: 1.2em;
+    font-family: $bree, $sans-serif;
+    padding: 0 0 0 1.15em;
+    
+    li {
+    
+    a {
+        position: relative;
+        display: block;
+        padding: .4em .4em .4em 1.5em;
+        *padding: .4em;
+        margin: .5em 0;
+        text-decoration: none;
+        color: $text-color;
+        line-height: normal;
+        
+
+} /* end of ol li a */
+        
+    a:before{
+        content: counter(li);
+        counter-increment: li;
+        position: absolute; 
+        left: -1.3em;
+        top: 50%;
+        margin-top: -1em;
+        background: $site-bgrd;
+        height: 1.5em;
+        width: 1.5em;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 2em;
+        border: .4em solid $section2; /* todo section color */
+        z-index: 2;
+        color: $section2; /* todo section color */
+        
+} /* end of ol li a:before */
+        
+        a:hover:before{
+            color: $section2; /* todo section color */
+}
+      
+    a:after {
+        background: $section2;
+        content: "";
+        height: 2em;
+        left: -0.33em;
+        position: absolute;
+        top: -1.1em;
+        width: 5px;    
+        
+} /* end of ol li a:after */
+
+        
+} /* end of ol li */
+    
+} /* end of ol */
+
+
 
 /******************************************************************
 PAGE NAVI STYLES
@@ -962,6 +1037,8 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 *********************/
 
+$footerheight:  4em;
+
 /* hide MLU blogfarm footer */
 #global-footer {
     display: none;
@@ -976,19 +1053,18 @@ FOOTER STYLES
 
 $centerwidth: 40%;
 
-/* $footerheight: HEIGHT OF FOOTER: see _variables.scss and change there */
-
-
 .footer {
 	clear: both;
     display: block;
     position:fixed ;
     vertical-align: middle;
+    background-color: $dark-gray;
     bottom: 0;
     height: $footerheight;
     width: 100%;
     line-height: normal;
-    //background-color: $dark-gray;
+    background-color: $dark-gray;
+    z-index: 99999;
     
     a {
         color: $gray;
@@ -1102,3 +1178,8 @@ $centerelement: 30%;
 
 
 	.copyright {}
+
+/* needs to be down here because needs to be declared after footerheight variable. this makes sure that the content always stays above the footer */
+#main {
+padding-bottom: $footerheight;
+}

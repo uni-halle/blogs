@@ -18,29 +18,30 @@
 	<![endif]-->
 	<?php wp_head(); ?>
 	<script>
-		grunticon(["<?php echo get_template_directory_uri() . '/fonts/grunticon/icons.data.svg.css' ?>",
-			"<?php echo get_template_directory_uri() . '/fonts/grunticon/icons.data.png.css' ?>",
-			"<?php echo get_template_directory_uri() . '/fonts/grunticon/icons.fallback.css' ?>"
+		grunticon(["<?php echo get_template_directory_uri() . '/fonts/grunticon/icons.data.svg.css'; ?>",
+			"<?php echo get_template_directory_uri() . '/fonts/grunticon/icons.data.png.css'; ?>",
+			"<?php echo get_template_directory_uri() . '/fonts/grunticon/icons.fallback.css'; ?>"
 		]);
 	</script>
-	<noscript><link href="icons.fallback.css" rel="stylesheet"></noscript>	
+	<noscript><link href="<?php echo get_template_directory_uri() . '/fonts/grunticon/icons.fallback.css'; ?>" rel="stylesheet"></noscript>	
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed">
+<div id="site" class="hfeed">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'cleantraditional' ); ?></a>
 	
 	<header id="head" class="site-header row" role="banner">
-		<div class="cell position-0 width-8">
+		<div class="cell position-0 width-3">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-				<img src="<?php echo get_template_directory_uri() . '/img/Logo-Expertenplattform-Demographischer-Wandel-Sachsen-Anhalt.png' ?>" 
-					 alt="Logo Expertenplattform Demographischer Wandel Sachsen-Anhalt"/>
+				<img src="<?php echo get_header_image(); ?>" 
+					 title="<?php echo esc_attr( bloginfo( 'name' ) ); ?>"
+					 alt="<?php echo esc_attr( bloginfo( 'name' ) ); ?>"/>
 			</a>
 		</div>
-		<nav role="header-menu" class="cell position-8 width-8">
-			<ul class="header-menu">
+		<nav role="navigation" class="cell position-6 width-2">
+			<ul class="navigation-header">
 				<li><a href="<?php echo esc_url( site_url( '/wp-login.php' ) ); ?>">Login <span class="cleantraditional-icon icon-login"></span></a></li>
-				<li><a href="">Suchen <span class="cleantraditional-icon icon-search"></span></a></li>
+				<li><a href="<?php echo esc_url( site_url( '/suchen' ) ); ?>">Suchen <span class="cleantraditional-icon icon-search"></span></a></li>
 				<li>
 					<a class="button button-small" title="Schrift vergrößern"
 						href="#" onclick="jQuery('body').changeFontsize('increase');">+</a>
@@ -48,11 +49,11 @@
 						href="#" onclick="jQuery('body').changeFontsize('decrease');">-</a>
 					Schrift <span class="cleantraditional-icon icon-fontsize"></span>
 				</li>
-				<li><a href="">Kontakt <span class="cleantraditional-icon icon-contact"></span></a></li>
+				<li><a href="<?php echo esc_url( site_url( '/kontakt' ) ); ?>">Kontakt <span class="cleantraditional-icon icon-contact"></span></a></li>
 			</ul>
 		</nav>
 	</header>
 	
-	<div class="row"><div class="cell position-0 width-16 delimiter"></div></div>
+	<div class="row"><div class="cell position-0 width-8 delimiter"></div></div>
 	
 	<div id="content" class="site-content row">

@@ -1,10 +1,15 @@
 /** 
  *
- * Theme Name: Responsive Clean Representation Theme
- * Description: Repsonsive, minimal, oldstyle theme with vertical menu and sidebar. It aims to represent content in a traditional but clean and responsive way, to fit the need of e.g. research institutions.
+ * Theme Name: Responsive Clean Tradition
+ * Description: Repsonsive, minimal, oldstyle theme with vertical menu and sidebar.
+ * It aims to represent content in a traditional but clean and responsive way,
+ * to fit the need of e.g. research institutions.
  * Version: 1.0.0 
  * Author: Lars Kosubek & Sven Lutzack
  * Author URI: http://larskosubek.com
- * Tags: theme-options
+ * License: All rights reserved for " Interdisziplinäres Zentrum für Altern Halle"
+ * Text Domain: cleantraditional
+ * Tags: responsive, mobile, flexible-width, html5, green, white, light,
+ * vertical-menu, two-columns, three-columns, sidebar, custom-menu     
  */ 
 @import url('css/main.css');

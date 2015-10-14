@@ -17,7 +17,7 @@ http://thesassway.com/advanced/modular-css-naming-conventions
 ******************************************************************/
 
 /*********************
-IMPORTING PARTIALS
+IMPORTING PARTIALS 
 These files are needed at the beginning so that we establish all
 our mixins, functions, and variables that we'll be using across
 the whole project.
@@ -38,8 +38,11 @@ the whole project.
 // import mixins
 @import "partials/mixins";
 
+// the superfish menu
+@import "partials/superfish";
+
 // the grid
-@import "partials/grid";
+//@import "partials/grid";
 
 /*********************
 IMPORTING MODULES

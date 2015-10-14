@@ -24,7 +24,7 @@ LAYOUT & GRID STYLES
 *********************/
 
 .wrap {
-	width: 760px;
+//	width: 760px;
 }
 
 /*********************
@@ -108,6 +108,21 @@ NAVIGATION STYLES
 	}  /* end current highlighters */
 
 } /* end .nav */
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+
+#content {
+	margin-top: 1.5em;
+    
+    header {
+				padding: 1.5em 0; 
+			}
+}
+
+.entry-content {
+    padding: 1.5em 0; }
 
 /*********************
 SIDEBARS & ASIDES
@@ -236,14 +251,13 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 *********************/
 
-/*
-you'll probably need to do quite a bit
-of overriding here if you styled them for
-mobile. Make sure to double check these!
-*/
+/* if you want to change the heights, set new values and call them at least once in the media query */
+$footerheight:  7em;
+$breadcrumbheight: 1.75em;
 
-/* set new height and call it at least once */
-$footerheight:  6em;
+.footer {
+    height: $footerheight;
+}
 
 /* show breadcrumbs on larger devices */
 .breadcrumbs {
@@ -253,8 +267,8 @@ $footerheight:  6em;
     font-size: 0.8em;
     font-weight: 500;
     z-index: 99999999999;
-    height: $footerheight / 4;
-    line-height: $footerheight / 4;
+    height: $breadcrumbheight;
+    line-height: $breadcrumbheight;
     
     a {
         color: $breadcrumb;
@@ -279,19 +293,14 @@ $footerheight:  6em;
 color: $gkuh;
 }
 
-
-
-
-.footer {
-    height: $footerheight;
-}
-
 #inner-footer {
-    //background-color: $dark-gray;
 	color: $light-gray;
     width: 100%;
-    //z-index: 999;
-    //height: 100%;
+    height: $footerheight - $breadcrumbheight;
+}
+
+footer nav {
+    height: 100%;
 }
 
 $centerwidth: 20%;

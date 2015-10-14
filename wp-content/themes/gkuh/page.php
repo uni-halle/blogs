@@ -1,12 +1,10 @@
 <?php get_header(); ?>
 
-			<div id="content" class="row">
-                
-                <div class="col span_1">&nbsp; </div>
+			<div id="content">
 
-				<div id="inner-content" class="col span_10">
+				<div id="inner-content" class="maincontainer">
 
-						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+						<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -14,13 +12,27 @@
 
 								<header class="article-header">
 
-									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
-
-									
+									<h1 class="page-title" itemprop="headline">
+                                    <?php the_title(); ?>
+                                    </h1>  
 
 								</header> <?php // end article header ?>
 
 								<section class="entry-content cf" itemprop="articleBody">
+                                    
+                                    <!-- If the page has the category 'uebersicht' and therefore is the first of a new topic: display the child pages of this topic -->
+                                <?php 
+if ( in_category( 'uebersicht' )) {
+    echo '<h2>Inhaltsübersicht</h2>';
+    echo '<ol class="themenuebersicht">';
+    echo wp_list_pages('title_li=&child_of='.$post->ID) . '</ol>';
+} 
+else {
+    // do noting, sit back, relax and have a cup of tea
+};
+
+                                ?>
+                                    
 									<?php
 										// the content (pretty self explanatory huh)
 										the_content();
@@ -44,6 +56,7 @@
 											'link_after'  => '</span>',
 										) );
 									?>
+                                    
 								</section> <?php // end article section ?>
 
 								<!--<footer class="article-footer cf">
@@ -60,7 +73,7 @@
 
 				</div>
                 
-                <div class="col span_1">&nbsp; </div>
+                
 
 			</div>
 
