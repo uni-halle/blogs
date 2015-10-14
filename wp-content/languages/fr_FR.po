@@ -1,14 +1,14 @@
-# Translation of Development in French (France)
-# This file is distributed under the same license as the Development package.
+# Translation of 4.3.x in French (France)
+# This file is distributed under the same license as the 4.3.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-09-17 08:31:03+0000\n"
+"PO-Revision-Date: 2015-10-08 08:15:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: GlotPress/1.0-alpha-1100\n"
-"Project-Id-Version: Development\n"
+"Project-Id-Version: 4.3.x\n"
 
 #. translators: 'rtl' or 'ltr'. This sets the text direction for WordPress.
 #: wp-includes/locale.php:185
@@ -766,7 +766,7 @@ msgstr "https://codex.wordpress.org/"
 #. translators: 1: the id argument, 2: sidebar name, 3: recommended id value
 #: wp-includes/widgets.php:864
 msgid "No %1$s was set in the arguments array for the \"%2$s\" sidebar. Defaulting to \"%3$s\". Manually set the %1$s to \"%3$s\" to silence this notice and keep existing sidebar content."
-msgstr "Aucun %1$s n&rsquo;a été configuré dans le tableau d&rsquo;arguments de la barre latérale \"%2$s\". \"%3$s\" sera utilisé par défaut. Configurez manuellement %1$s avec \"%3$s\" pour faire disparaître cette notification et conserver le contenu actuel de la barre latérale."
+msgstr "Aucun %1$s n&rsquo;a été configuré dans le tableau d&rsquo;arguments de la colonne latérale \"%2$s\". \"%3$s\" sera utilisé par défaut. Configurez manuellement %1$s avec \"%3$s\" pour faire disparaître cette notification et conserver le contenu actuel de la colonne latérale."
 
 #: wp-includes/script-loader.php:517
 msgid "Connection lost or the server is busy. Please try again later."
@@ -1565,13 +1565,13 @@ msgstr "Appuyez sur Envoi ou Retour pour ouvrir"
 msgid "You are customizing %s"
 msgstr "Vous personnalisez %s"
 
-#: wp-includes/class-wp-customize-widgets.php:359
-msgid "Widgets are independent sections of content that can be placed into widgetized areas provided by your theme (commonly called sidebars)."
-msgstr "Les widgets sont des sections de contenu indépendants qui peuvent être placés dans les zones à widgets prévues dans votre thème (généralement, les barres latérales)."
-
 #: wp-comments-post.php:139
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."
 msgstr "<strong>ERREUR</strong>&nbsp;: le commentaire n&rsquo;a pas pu être enregistré. Veuillez réessayer plus tard."
+
+#: wp-includes/class-wp-customize-widgets.php:359
+msgid "Widgets are independent sections of content that can be placed into widgetized areas provided by your theme (commonly called sidebars)."
+msgstr "Les widgets sont des sections de contenu indépendants qui peuvent être placés dans les zones à widgets prévues dans votre thème (généralement, les colonnes latérales)."
 
 #: wp-includes/update.php:122 wp-includes/update.php:302
 #: wp-includes/update.php:466
@@ -1725,10 +1725,6 @@ msgstr "Terminé"
 msgid "Save and preview changes before publishing them."
 msgstr "Enregistrer les modifications et les prévisualiser avant de les publier"
 
-#: wp-includes/class-wp-customize-widgets.php:654
-msgid "Trash widget by moving it to the inactive widgets sidebar."
-msgstr "Mettez le widget à la Corbeille en le déplaçant vers la barre latérale inactive."
-
 #: wp-includes/class-wp-editor.php:815
 msgctxt "TinyMCE"
 msgid "Headings"
@@ -1746,6 +1742,10 @@ msgstr "Rechercher des widgets"
 #: wp-includes/class-wp-customize-widgets.php:700
 msgid "Search widgets&hellip;"
 msgstr "Recherche de widgets&hellip;"
+
+#: wp-includes/class-wp-customize-widgets.php:654
+msgid "Trash widget by moving it to the inactive widgets sidebar."
+msgstr "Mettez le widget à la Corbeille en le déplaçant vers la colonne latérale inactive."
 
 #: wp-includes/media-template.php:1084 wp-includes/media-template.php:1173
 msgctxt "auto preload"
@@ -2523,10 +2523,6 @@ msgstr "Café"
 msgid "Attempted to set image quality outside of the range [1,100]."
 msgstr "Tentative de mise en place d&rsquo;une qualité d&rsquo;image en dehors de l&rsquo;intervalle [1100]."
 
-#: wp-includes/default-widgets.php:1499
-msgid "Add a custom menu to your sidebar."
-msgstr "Ajouter un menu personnalisé à votre barre latérale."
-
 #: wp-includes/default-widgets.php:569
 msgid "Arbitrary text or HTML."
 msgstr "Texte arbitraire ou HTML."
@@ -2570,6 +2566,10 @@ msgstr "Les entrées depuis n&rsquo;importe quel flux RSS ou Atom."
 #: wp-includes/default-widgets.php:1399
 msgid "A cloud of your most used tags."
 msgstr "Un nuage de vos étiquettes les plus utilisées."
+
+#: wp-includes/default-widgets.php:1499
+msgid "Add a custom menu to your sidebar."
+msgstr "Ajouter un menu personnalisé à votre colonne latérale."
 
 #. translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
