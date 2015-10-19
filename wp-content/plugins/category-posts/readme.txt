@@ -3,8 +3,8 @@ Contributors: mkrdip, kometschuh
 Donate link: http://mkrdip.me/donate
 Tags: category, posts, widget, single category widget, posts widget, category recent posts
 Requires at least: 2.8
-Tested up to: 4.3.0
-Stable tag: 4.1.2
+Tested up to: 4.3.1
+Stable tag: 4.1.3
 License: GPLv2 or later 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,13 +19,15 @@ Category Posts Widget is a light widget designed to do one thing and do it well:
 * Option to change ordering of posts.
 * Option to show post thumbnail & set dimension by width & height.
 * Option to put thumbnail on top
+* Option to disable widget CSS.
 * Set how many posts to show.
 * Set which category the posts should come form.
 * Option to show the post excerpt and how long the excerpt should be.
 * Option to show the post date.
 * Option to show the comment count.
 * Option to make the widget title link to the category page.
-* Option to hide the title
+* Option to hide the title.
+* Option to hide widget, if category have currently no posts.
 * Multiple widgets.
 
 = Contribute =
@@ -57,6 +59,11 @@ Automatic installation is the easiest option as WordPress handles the file trans
 * Version 4.0 uses CSS file for styling the widget in front end.
 * Version 3.0 or later version uses WordPress 2.9's built in post thumbnail functionality.
 
+== Frequently Asked Questions ==
+
+= The font-size is different from that of other widgets? =
+
+Please use the option: "Disable widget CSS".
 
 == Screenshots ==
 
@@ -65,27 +72,31 @@ Automatic installation is the easiest option as WordPress handles the file trans
 
 == Changelog ==
 
+4.1.3
+
+* Added option to hide widget, if category have currently no posts.
+
 4.1.2
 
 * Fixed hide title bug.
 
 4.1.1
 
-* Added option to put thumbnail on top
-* Added option to hide the title
+* Added option to put thumbnail on top.
+* Added option to show/hide the title.
 * Fixed no background bug.
 
 4.1.0
 
-* Added PHP5 Constructor 
-* Added Option to allow/disallow widget CSS
-* Now, compatible with WordPress 4.3
+* Added PHP5 Constructor.
+* Added Option to allow/disallow widget CSS.
+* Now, compatible with WordPress 4.3.
 * Meet new plugin author [kometschuh](https://profiles.wordpress.org/kometschuh)
 
 4.0 
 
-* Added CSS file for post styling 
-* Now compaitable with latest versions of WordPress
+* Added CSS file for post styling .
+* Now compatible with latest versions of WordPress.
 
 3.3
 
@@ -109,7 +120,7 @@ Automatic installation is the easiest option as WordPress handles the file trans
 
 2.3
 
-* Really tried to fix bug where wp_query global was getting over written by manually instantiating a WP_Query object
+* Really tried to fix bug where wp_query global was getting over written by manually instantiating a WP_Query object.
 
 2.1
 

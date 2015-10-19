@@ -465,9 +465,10 @@ function qtranxf_load_option_qtrans_compatibility(){
 	require_once(dirname(__FILE__).'/qtranslate_compatibility.php');
 }
 
-/** Is in use by 3rd-party plugins (for example, alo_easymail) to test q-X presence
+/** Is in use by 3rd-party plugins (for example, alo_easymail) to test q-X presence,
+ * which they should have done by testing "if ( defined( 'QTRANSLATE_FILE' )"
  * @since 3.4
-*/
+ */
 function qtranxf_init() {
 	//qtranxf_dbg_log('"init": qtranxf_init: REQUEST_TIME_FLOAT: ', $_SERVER['REQUEST_TIME_FLOAT']);
 }
@@ -699,6 +700,9 @@ function qtranxf_loadConfig() {
 		qtranxf_update_i18n_config();
 	}
 
+	/**
+	 * Opportunity to load additional front-end features.
+	 */
 	do_action('qtranslate_loadConfig');
 }
 
@@ -1451,28 +1455,38 @@ function qtranxf_use_block($lang, $blocks, $show_available=false, $show_empty=fa
 
 	// content is not available in requested language (bad!!) what now?
 
-	//remove available languages that are not enabled
-	foreach($available_langs as $language => $b) {
-		if(qtranxf_isEnabled($language)) continue;
-		unset($available_langs[$language]);
+	//remove available languages that are not enabled and sort them in the order of enabled languages
+	//foreach($available_langs as $language => $b) {
+	//	if(qtranxf_isEnabled($language)) continue;
+	//	unset($available_langs[$language]);
+	//}
+	$alangs = array();
+	foreach($q_config['enabled_languages'] as $language) {
+		if(empty($available_langs[$language])) continue;
+		$alangs[] = $language;
 	}
+	if(empty($alangs)) return '';
 
-	// set alternative language
-	if(empty($available_langs[$q_config['default_language']])){
-		$alt_lang = null;
-		$alt_content = null;
-		$alt_lang_is_default = false;
-		foreach($available_langs as $language => $b) {
-			$alt_lang = $language;
-			$alt_content = $content[$language];
-			break;
-		}
-	}else{
-		$alt_lang = $q_config['default_language'];
-		$alt_content = $content[$alt_lang];
-		$alt_lang_is_default = true;
-	}
-	if(!$alt_lang) return '';
+	$available_langs = $alangs;
+	// set alternative language to the first available in the order of enabled languages
+	$alt_lang = current($available_langs);
+	$alt_content = $content[$alt_lang];
+	$alt_lang_is_default = $alt_lang == $q_config['default_language'];
+	//if(empty($available_langs[$q_config['default_language']])){
+	//	$alt_lang = null;
+	//	$alt_content = null;
+	//		$alt_lang_is_default = false;
+	//	foreach($available_langs as $language) {
+	//		$alt_lang = $language;
+	//		$alt_content = $content[$language];
+	//		break;
+	//	}
+	//}else{
+	//	$alt_lang = $q_config['default_language'];
+	//	$alt_content = $content[$alt_lang];
+	//	$alt_lang_is_default = true;
+	//}
+	//if(!$alt_lang) return '';
 
 	if(!$show_available){
 		if ($q_config['show_displayed_language_prefix'])
@@ -1489,11 +1503,12 @@ function qtranxf_use_block($lang, $blocks, $show_available=false, $show_empty=fa
 		$end_separator = $match[2];
 		// build available languages string backward
 		$i = 0;
-		foreach($available_langs as $language => $b) {
+		foreach(array_reverse($available_langs) as $language) {
 			if($i==1) $language_list = $end_separator.$language_list;
 			elseif($i>1) $language_list = $normal_separator.$language_list;
 			$language_name = qtranxf_getLanguageName($language);
-			$language_list = '&ldquo;<a href="'.qtranxf_convertURL('', $language, false, true).'" class="qtranxs-available-language-link qtranxs-available-language-link-'.$language.'">'.$language_name.'</a>&rdquo;'.$language_list;
+			//$language_list = '&ldquo;<a href="'.qtranxf_convertURL('', $language, false, true).'" class="qtranxs-available-language-link qtranxs-available-language-link-'.$language.'">'.$language_name.'</a>&rdquo;'.$language_list;
+			$language_list = '<a href="'.qtranxf_convertURL('', $language, false, true).'" class="qtranxs-available-language-link qtranxs-available-language-link-'.$language.'" title="'.$q_config['language_name'][$language].'">'.$language_name.'</a>'.$language_list;
 			++$i;
 		}
 	}

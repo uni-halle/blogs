@@ -178,6 +178,7 @@ class Osm_OLJS3
     $VectorLayer .= '
     var style'.$a_Counter.' = {
       "Point": [new ol.style.Style({
+          
           image: new ol.style.Icon({
             anchor: [0.5, 41],
             anchorXUnits: "fraction",
@@ -220,9 +221,7 @@ class Osm_OLJS3
       var vectorL = new ol.layer.Vector({
         source: new ol.source.Vector({
 	  url:"'.$a_FileName.'",
-          format: new ol.format.KML({
-            extractStyles: true
-          })
+          format: new ol.format.KML()
         })
       });';
     }

@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2015  Michael Kang (wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2015  MiKa (wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -144,7 +144,7 @@ class Osm_icon
     $a_IconName == "mic_brown_car_01.png" || $a_IconName == "mic_black_camera_01.png" ||
     $a_IconName == "mic_orange_archery_01.png" || $a_IconName == "mic_black_archery_01.png" ||
     $a_IconName == "mic_blue_empty_01.png" || $a_IconName == "mic_black_empty_01.png" ||
-    $a_IconName == "mic_black_heart_01.png"
+    $a_IconName == "mic_black_heart_01.png" || $a_IconName == "mic_green_vw_t3_01.png"
 ){
     return 1;
    }

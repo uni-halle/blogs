@@ -236,6 +236,9 @@ class adminManager{
 			?><option value="<?php echo $type; ?>" <?php echo (is_array($AGPressGraph_like_show_in)  ? (in_array($type, $AGPressGraph_like_show_in) ? "selected" : "") : "" ); ?>><?php echo $type; ?></option><?php
 		}
 ?>
+			 <option value="pg_show_in_home" <?php echo (is_array($AGPressGraph_like_show_in)  ? (in_array("pg_show_in_home", $AGPressGraph_like_show_in) ? "selected" : "") : "" ); ?>>Show in Home</option>
+			 <option value="pg_show_in_archive" <?php echo (is_array($AGPressGraph_like_show_in)  ? (in_array("pg_show_in_archive", $AGPressGraph_like_show_in) ? "selected" : "") : "" ); ?>>Show in Archive</option>
+			 <option value="pg_show_in_search" <?php echo (is_array($AGPressGraph_like_show_in)  ? (in_array("pg_show_in_search", $AGPressGraph_like_show_in) ? "selected" : "") : "" ); ?>>Show in Search</option>
 			 </select>
 
 		     <span class="description">Post Types where the like button is allowed to show.</span>

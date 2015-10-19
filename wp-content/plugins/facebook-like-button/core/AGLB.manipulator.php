@@ -23,7 +23,25 @@ class manipulator{
 		$thePostID = get_the_ID();
 		if(!is_null($thePostID) && $thePostID != -1){
 			$isDisabled = get_post_meta($thePostID, "AGLBIsDisabled", true);
-			if(!(bool)$isDisabled){
+			$supportedPostTypes = get_option("AGPressGraph_like_show_in", false);
+			
+			if(!$supportedPostTypes){
+				$supportedPostTypes = array();
+			}
+			
+			$postType = null;
+			
+			if(is_home()){
+				$postType = "pg_show_in_home";
+			}else if(is_archive()){
+				$postType = "pg_show_in_archive";
+			}else if(is_search()){
+				$postType = "pg_show_in_search";
+			}else{
+				$postType = get_post_type(get_the_ID());
+			}
+			
+			if(!(bool)$isDisabled && in_array($postType, $supportedPostTypes)){
 				switch($buttonPosition){
 					case "after":
 						$content = $content . "" . $theButtons->buttonWithOptions(get_permalink($thePostID), true, false);
@@ -42,7 +60,7 @@ class manipulator{
 				return $content;
 			}
 		}else{
-			return $content;
+			return $content. $postType;
 		}
 	}
 	
@@ -102,24 +120,35 @@ class manipulator{
 				$supportedPostTypes = array();
 			}
 			if( in_array($postType, $supportedPostTypes)){
-			$metaImage = get_post_meta(get_the_ID(), "AGLBCustomOGImage", true);
-			$defaultImage  = get_option("AGPressGraph_like_dimage", false);
-			$postThumbnail = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID()));
-			$ogImage = (!empty($metaImage) ? $metaImage : ($postThumbnail !== false ? $postThumbnail : $defaultImage ));
-			
+				$metaImage = get_post_meta(get_the_ID(), "AGLBCustomOGImage", true);
+				$defaultImage  = get_option("AGPressGraph_like_dimage", false);
+				$postThumbnail = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID()));
+				$ogImage = (!empty($metaImage) ? $metaImage : ($postThumbnail !== false ? $postThumbnail : $defaultImage ));
+				
+				?>
+					<!-- PressGraph Post Meta Tags -->
+					<meta property="og:title" content="<?php echo the_title(); ?>" />
+					<meta property="og:type" content="article" />
+					<meta property="og:url" content="<?php echo get_permalink(get_the_id()); ?>" />
+					<meta property="og:image" content="<?php echo $ogImage; ?>" />
+					<meta property="og:description" content="<?php echo strip_tags(the_excerpt()); ?>" />
+					<!-- PressGraph Post Meta Tags -->
+		
+				<?php			
+			}
+		}else{
+			$defaultImage  = get_option("AGPressGraph_like_dimage", false);			
 			?>
 				<!-- PressGraph Post Meta Tags -->
-				<meta property="og:title" content="<?php echo the_title(); ?>" />
+				<meta property="og:title" content="<?php echo bloginfo('name'); ?>" />
 				<meta property="og:type" content="article" />
-				<meta property="og:url" content="<?php echo get_permalink(get_the_id()); ?>" />
-				<meta property="og:image" content="<?php echo $ogImage; ?>" />
-				<meta property="og:description" content="<?php echo strip_tags(the_excerpt()); ?>" />
+				<meta property="og:url" content="<?php echo bloginfo("url"); ?>" />
+				<meta property="og:image" content="<?php echo $defaultImage; ?>" />
+				<meta property="og:description" content="<?php echo bloginfo("description"); ?>" />
 				<!-- PressGraph Post Meta Tags -->
 	
-			<?php			
-			}
-		
-		}		
+			<?php
+		}
 	}
 	
 	

@@ -1,0 +1,1454 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "qTranslate X"
+msgstr ""
+
+#. Short description.
+msgid "Adds a user-friendly multilingual dynamic content management."
+msgstr ""
+
+#. Screenshot description.
+msgid "Editing screen showing the buttons to switch the languages. Pressing a button does not make a call to the server, the editing happens locally, until \"Update\" button is pressed, the same way as it is for one language."
+msgstr ""
+
+#. Screenshot description.
+msgid "Language Management Interface"
+msgstr ""
+
+#. Found in description list item.
+msgid "One-click local switching between the languages - Changing the language as easy as switching between Visual and HTML."
+msgstr ""
+
+#. Found in description list item.
+msgid "Comes with a number of languages already built-in - English, German, Simplified Chinese, for example, and many more."
+msgstr ""
+
+#. Found in description list item.
+msgid "Language customizations without changing the .po/mo files - It stores all the translations in the same post fields, while shows it to user for editing one by one depending on the language to edit chosen."
+msgstr ""
+
+#. Found in description list item.
+msgid "In-line syntax '<code>[:en]English Text[:de]Deutsch[:]</code>' or '<code>&lt;!--:en--&gt;English Text&lt;!--:--&gt;&lt;!--:de--&gt;Deutsch&lt;!--:--&gt;</code>' for theme-custom fields gets them translated - See <a href=\"https://qtranslatexteam.wordpress.com/faq/#CustomFields\" title=\"qTranslate-X FAQ\">FAQ</a> for more information."
+msgstr ""
+
+#. Found in description list item.
+msgid "Language tag encoding allows strings like this '<code>[:en]English Text[:]&lt;html-language-neutral-code&gt;[:de]Deutsch[:]&lt;another-html-language-neutral-code&gt;</code>', with language-neutral text embedded."
+msgstr ""
+
+#. Found in description list item.
+msgid "Multilingual dates out of the box - translates dates and time for you."
+msgstr ""
+
+#. Found in description list item.
+msgid "Theme custom fields can be configured to be translatable too."
+msgstr ""
+
+#. Found in description list item.
+msgid "Choose one of a few modes to make your URLs look pretty and SEO-friendly, for example, the simple and beautiful <code>/en/foo/</code>, or nice and neat <code>en.yoursite.com</code>, or everywhere compatible <code>?lang=en</code>."
+msgstr ""
+
+#. Found in description list item.
+msgid "One language for each URL - Users and SEO will thank you for not mixing multilingual content."
+msgstr ""
+
+#. Found in description list item.
+msgid "qTranslate-X supports unlimited number of languages, which can be easily added/modified/deleted via a comfortable Configuration Page at Settings-&gt;Languages."
+msgstr ""
+
+#. Found in description list item.
+msgid "Custom CSS for \"qTranslate Language Chooser\" widget configurable via its properties."
+msgstr ""
+
+#. Found in description list item.
+msgid "Menu item \"Language Switcher\" to enable language choosing from a menu."
+msgstr ""
+
+#. Found in description list item.
+msgid "To generate language-specific sitemaps for better SEO support, use <a href=\"https://wordpress.org/plugins/google-sitemap-generator/\">Google XML Sitemaps</a> or 'XML Sitemaps' under <a href=\"https://wordpress.org/plugins/wordpress-seo/\">Yoast SEO</a>. Please, <a href=\"https://qtranslatexteam.wordpress.com/contact-us/\">report</a> a successful use of other sitemap plugins."
+msgstr ""
+
+#. Found in description list item.
+msgid "The <a href=\"https://qtranslatexteam.wordpress.com/integrated/\" title=\"Known integrated plugins\">list of plugins, which provide integration</a> of qTranslate-X with other popular plugins."
+msgstr ""
+
+#. Found in description list item.
+msgid "The <a href=\"https://qtranslatexteam.wordpress.com/compatible/\" title=\"Known compatible plugins\">list of some plugins reported to be compatible</a> with qTranslate-X without an additional integrating plugin."
+msgstr ""
+
+#. Found in description list item.
+msgid "The <a href=\"https://qtranslatexteam.wordpress.com/incompatible/\" title=\"Known incompatible plugins\">list of some plugins reported not to be currently compatible</a> with qTranslate-X."
+msgstr ""
+
+#. Found in description list item.
+msgid "The <a href=\"https://qtranslatexteam.wordpress.com/known-issues/\" title=\"Known Issues\">list of Know Issues</a>."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://www.citizenslawgroup.com\" title=\"Chicago Bankruptcy Attorney - Citizens Law Group\">Citizens Law Group</a>"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"https://profiles.wordpress.org/grafcom\" title=\"Gunu (Marius Siroen)\">Gunu</a> (Marius Siroen)"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://lightbulb.lu/\">Lightbulb Web Agency</a>"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://optimwise.com\" title=\"OptimWise web design\">OptimWise</a>"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"https://github.com/pedro-mendonca\">Pedro Mendonça</a>"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://www.pictibe.de\" title=\"pictibe Werbeagentur Köln Webdesign\">pictibe Werbeagentur</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The plugin offers a way to maintain dynamic multilingual content on a WordPress site. While static localization is already excellently implemented and offered by WordPress framework through <a href=\"https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/\">po/mo file framework</a>, it is still impossible to maintain dynamic multilingual content without an additional specialized plugin, a kind of which qTranslate-X belongs to. For example, what if you need to make title, content and excerpt of a page to be multilingual? In theory, it could be handled by po/mo files, but in an insanely inconvenient way."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "To deal with dynamic content, qTranslate-X provides language switching buttons on applicable admin editing pages, which, once pressed, make all the text of multilingual fields to be filled with the language chosen. The instant language change happens locally in your browser without sending an additional request to the server, which makes it most convenient for bi-lingual or few-lingual sites, for example, owners of which perform the translation of content on their own. qTranslate-X does not provide a way to translate static strings, assuming that this part is already implemented and handled by the WordPress localization framework."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The plugin <a href=\"https://qtranslatexteam.wordpress.com/integration/\" title=\"Integration Guide\">provides a way to designate</a> which fields on a page or post are to be multilingual. Once a field is declared multilingual, it will be distinguishably highlighted (in a customizable way) on admin side. At frontend, the value of active language, as defined by a page viewer, is extracted from multilingual field to be displayed within HTML context. Thus, a concept of <a href=\"https://qtranslatexteam.wordpress.com/multilingual-fields/\" title=\"Concept of 'Multilingual Field'\">multilingual field</a> is in use here, as opposite to a concept of whole separate page or separate site for each language, as it is done in a number of other multilingual content management plugins, see, for example, free <a href=\"https://wordpress.org/plugins/polylang/\" title=\"Plugin 'Polylang'\">Polylang</a> or paid <a href=\"https://wpml.org/\" title=\"The WordPress Multilingual Plugin\">WPML</a>. Each plugin has its own pros and cons, please, choose carefully the one which suits your needs the best."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Plugin qTranslate-X provides a convenient way to describe which fields need to be multilingual through a JSON-encoded configuration file as described in <a href=\"https://qtranslatexteam.wordpress.com/integration/\" title=\"Integration Guide\">Integration Guide</a>. It makes it easy to integrate your theme or other plugins with qTranslate-X. A JSON-encoded file, named <code>i18n-config.json</code>, such as <a href=\"https://github.com/qTranslate-Team/qtranslate-x/blob/master/i18n-config.json\" title=\"JSON-encoded configuration file of plugin qTranslate-X\">the one</a> used by qTranslate-X itself, may be provided by themes and plugins within their distribution. Plugin qTranslate-X picks up and load those configuration files on activation of a plugin or on the switch of a theme. Such a configuration file can potentially be employed by any other multilingual plugin. The developers are encouraged to <a href=\"https://qtranslatexteam.wordpress.com/contact-us/\" title=\"Contact qTranslate Team\">contact us</a> to discuss a common standard for the <code>i18n-config.json</code> configuration file."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The plugin does not currently offer any kind of translation services. The team has conducted an online survey to find out how people translate their content. You are welcome to <a href=\"http://www.marius-siroen.com/qTranslate-X/TranslateServices/\" title=\"Survey for 'Translation Services'\">make your entry too</a>. It appears so far, that translation service is not an immediate need. Administrators normally have their ways to translate the content, but they need a convenient way to enter translated content into an appropriate place, which this plugin is designed to help for. Translation services might still be provided in the future releases as a paid feature."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Plugin qTranslate-X makes creation of multilingual content as easy as working with a single language. Here are some features:"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The website <a href=\"https://qtranslatexteam.wordpress.com/about/\">qTranslate-X explained</a> provides and keeps updated a few useful listings:"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "If you encounter a conflicting plugin, please <a href=\"https://qtranslatexteam.wordpress.com/contact-us/\">let us know</a>, and meanwhile try to use other plugin of similar functionality, if possible."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "This plugin has started as a descendant of <a href=\"https://wordpress.org/plugins/qtranslate/\" title=\"Original qTranslate plugin\">qTranslate</a>, which has apparently been abandoned by the original author, <a href=\"http://www.qianqin.de/qtranslate/\" title=\"the original author of qTranslate\">Qian Qin</a>. At this point, qTranslate-X has many new features and hardly resembles its ancestor. Neither it is a straightforward compatible with older plugin. One will need to carefully read <a href=\"https://qtranslatexteam.wordpress.com/migration/\">Migration Guide</a> in order to switch a site from old qTranslate to qTranslate-X."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "You may still find some useful information through reading <a href=\"https://wordpress.org/plugins/qtranslate/\" title=\"Original qTranslate plugin\">qTranslate</a>'s original documentation, which is not duplicated here in full. There are also other plugins, which offer multilingual support, but it seems that Qian Qin has a very good original back-end design, and many people have been pleasantly using his plugin ever since. It stores all translations in the same single post, which makes it easy to maintain and to use it with other plugins. However, the user interface of former qTranslate got out of sync with the recent versions of Wordpress, especially after WP went to TinyMCE 4. There is a number of forks of qTranslate, see for example, <a href=\"https://wordpress.org/plugins/mqtranslate/\" title=\"mqTranslate plugin\">mqTranslate</a>, <a href=\"https://wordpress.org/plugins/qtranslate-xp/\" title=\"qTranslate Plus plugin\">qTranslate Plus</a> and <a href=\"https://wordpress.org/plugins/ztranslate/\" title=\"zTranslate plugin\">zTranslate</a>. They all try to fix qTranslate's user interface preserving its original back-end, which is what this plugin does too. This plugin is a hybrid of all of them and fixes a few bugs in each of them. It also has many new features too, like theme custom translatable fields, for example. We hope that this plugin is the most complete working version which combines the best features of <a href=\"https://wordpress.org/plugins/qtranslate/\" title=\"Original qTranslate plugin\">qTranslate</a>, <a href=\"https://wordpress.org/plugins/mqtranslate/\" title=\"mqTranslate fork\">mqTranslate</a>, <a href=\"https://wordpress.org/plugins/qtranslate-xp/\" title=\"qTranslate Plus fork\">qTranslate Plus</a> and <a href=\"https://wordpress.org/plugins/ztranslate/\" title=\"zTranslate fork\">zTranslate</a>."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "We organized an anonymous entity <a href=\"https://github.com/qTranslate-Team\">qTranslate Team</a> to maintain a joint authority of all qTranslate-ish plugins. Anyone is welcome to join with a contribution. Participating plugin authors should share the support efforts for each other."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "GitHub repository is available: <a href=\"https://github.com/qTranslate-Team/qtranslate-x\">https://github.com/qTranslate-Team/qtranslate-x.git</a>."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "We thank our sponsors for persistent help and support:"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Download the plugin from <a href=\"http://wordpress.org/plugins/qtranslate-x/\" title=\"qTranslate-X\">WordPress</a> or take the latest development version from <a href=\"https://github.com/qTranslate-Team/qtranslate-x\">GitHub</a>."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Use WordPress <code>/wp-admin/plugin-install.php</code> page to install a plugin or extract all the files and upload everything (keeping the directory structure) to the <code>/wp-content/plugins/</code> directory."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Deactivate plugin qTranslate, mqTranslate, qTranslate Plus, zTranslate or any other multilingual plugin, if you are running any."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate qTranslate-X through the 'Plugins' (<code>/wp-admin/plugins.php</code>) configuration page in WordPress."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Open Settings-&gt;Languages configuration page and add/delete/disable any languages you need."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Add the \"qTranslate Language Chooser\" widget or \"Language Switcher\" menu item to let your visitors switch the language."
+msgstr ""
+
+#. Found in installation list item.
+msgid "For the new installers, it may be useful to read <a href=\"https://qtranslatexteam.wordpress.com/startup-guide/\">Startup Guide</a>."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Configure theme or other plugins custom fields to be translatable if needed (Settings -&gt; Languages: \"Integration\")."
+msgstr ""
+
+#. Found in installation list item.
+msgid "If your theme shows <a href=\"https://qtranslatexteam.wordpress.com/multilingual-fields/\">multilingual fields</a> in raw format, then read <a href=\"https://qtranslatexteam.wordpress.com/integration/\">Integration Guide</a>."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "<strong>Important</strong>: Read <a href=\"https://qtranslatexteam.wordpress.com/migration/\">migration instructions</a>, if you previously used other multilingual plugin, otherwise initial installation of this plugin is no different from any other standard plugin:"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "<strong>Very Important</strong>: Whenever you update the plugin, make sure to deactivate the previous version and then activate the new one. Normal WordPress update does that, and should be sufficient, but if you overwrote plugin files manually, be sure to execute deactivation/activation cycle, otherwise you will miss the execution of activation hooks and some options may become misconfigured. for For the sake of performance, plugin is not programmed to run all the necessary checks every time it is loaded, since activation hook is an expensive operation. That is why it is important to execute deactivation/activation cycle."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "Otherwise the installation is similar to any other WordPress plugin:"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: The list of avalable languages in \"Not Available Message\" and alternative language shown now follow the order of languges defined on configuration page, ignoring the default language. For example, if the first language in the order is English, the second is your native and the default, then English translation will be preferably shown as alternative language. Most sites are expected to be unaffected, since the first language in the order is normally the default langauge. However, it may make sense to first try to show most common language (like English in this example), instead of the default language. Now this is possible with putting the most common language to be the first in the order of languages. The order affects language menu, widget and language shown when translation is not available, as well as any other place where languages need to be listed in an order."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: <code>home_url()</code> on admin side is now only filtered on <code>/wp-admin/customize.php</code> page, otherwise it created a few problems, for example, wrong overwriting of <code>.htaccess</code> file in some cases, causing Internal Server Error 500 with infinite redirection loop: <a href=\"https://wordpress.org/support/topic/internal-server-error-500-after-346-update\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: consistency and caching of meta data translations. Known affected theme: <a href=\"http://themeforest.net/item/sahifa-responsive-wordpress-news-magazine-blog-theme/2819356\">Sahifa</a>. <a href=\"https://wordpress.org/support/topic/qtranslate-x-not-working-with-sahifa-custom-sliders\">WP Issue</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: recovered translation of parent of a category on category edit page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Call of <code>qtranxf_get_admin_page_config</code> is moved after all integrating plugins loaded their <code>*-admin.php</code>, otherwise i18n configuration is loaded only partially, which broke \"Woocommerce &amp; qTranslate-X\". <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/277\">Issue #277</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "All issues after version 3.4.4"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: Type 'custom' with arbitrary format of items for widget \"qTranslate Language Chooser\". Arguments of function <code>qtranxf_generateLanguageSelectCode</code> <a href=\"https://qtranslatexteam.wordpress.com/faq/#LanguageSwitchingMethods346\">are chenge</a> to comply with WordPress standards. Compatibility with old arguments is preserved."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Translation of language names to other languages: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/264\">Issue #264</a>. Thanks to <a href=\"https://github.com/benique\">benique</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Moved meta tag \"generator\" to a separate action: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/244\">Issue #244</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: PNG files have been further compressed with advanced algorightms: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/279\">PR #279</a>. Thanks to <a href=\"https://github.com/benique\">benique</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Translation of colon ':' to satisfy French language and may be some other."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: enabled back translation of posts in <code>qtranxf_postsFilter</code> with filter 'raw'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: integration with plugin <a href=\"https://wordpress.org/plugins/bbpress/\">bbPress</a> started, file <code>./i18n-config/plugins/bbpress/i18n-config.json</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: integration with theme <a href=\"https://themetix.com/wpex-elegant/\">WPEX Elegant</a> started, file <code>./i18n-config/themes/wpex-elegant/i18n-config.json</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: integration of WP Widget \"Text\" is enabled: <a href=\"https://wordpress.org/support/topic/widget-text-translation-ability\">WP Issue</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: position of flags in admin menu: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/269\">Issue #269</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: admin configuration loading is moved to filter 'plugins_loaded', search for function <code>qtranxf_admin_load</code> to see the change."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: removed meta box \"Languages\" in any Editor Mode, except \"Single Language\"."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: argument <code>$found</code> for <code>qtranxf_split_blocks</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: removed limit of 5 characters in language form for locale: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/262\">Issue #262</a>;"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Crash on customize.php screen. No Language Switching Buttons on customize screen yet, some values are not translated, but raw multilingual values work. <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/223\">Issue #223</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Remove children of parent menu item deleted: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/255\">Issue #255</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Obsolete widget constructor <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/250\">Issue #250</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Enable a language when gettext database fails to update on a private server: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/236\">Issue #236</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: use table of list of languages for WP 4.3."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: disabled translation of posts in <code>qtranxf_postsFilter</code> with filter 'raw'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: <code>home_url</code> on admin side now returns url of current front end language - this helps on customize screen."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: choice 'css_only' for $style argument in <code>qtranxf_generateLanguageSelectCode</code>: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/259\">Issue #259</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/230\">Handle the CSRF vulnerability</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: link 'View Page': <a href=\"https://wordpress.org/support/topic/wpadminbar-view-page-returns-to-home-page\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: security exploit found by WordPress for vulnerable parameters <code>json_config_files</code> and <code>json_custom_i18n_config</code>: <a href=\"https://qtranslatexteam.wordpress.com/2015/09/03/why-qtranslate-x-disappeared-from-wordpress-repository\">report</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: qtranxf_trim_words defined at front and admin side: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/201\">Issue #201</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: <a href=\"http://seclists.org/bugtraq/2015/Jul/139\">BugTraq issue 139</a> reported for old qTranslate was assumed to be applicable to qTranlstae-X too, causing WP to ban the plugin temporarily."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: WP_CLI compatibility."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: a lot of thanks to all translators contributed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: i18n configuration loading on the first installation, <a href=\"https://wordpress.org/support/topic/update-that-makes-one-see-the-site-only-a-blank-page\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix for qtranxf_updateGettextDatabases."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: i18n configuration loading for integrated plugins."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Includes all changes after version 3.3. Please, review <a href=\"https://qtranslatexteam.wordpress.com/2015/05/15/release-notes-3-4/\">Release Notes</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Major new feature: <a href=\"https://qtranslatexteam.wordpress.com/integration/\">Integration Framework</a> is finalized in its first edition."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: warning message on the first update from 3.3 due to new options creation."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: deep translation of options (<code>qtranxf_translate_option</code>) including embedded serialized values."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: allow absolute paths in 'src' attribute in configuration: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/186\">Issue #186</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Dealing with '&amp;' in term name, filter 'get_terms_args'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: option 'Locale at front-end' added. <a href=\"https://wordpress.org/support/topic/setting-hreflang-language-locale\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: custom language switching menu with <code>#?lang=xx</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: in function qtranxf_collect_translations_posted, parse variables collected as a query string in an option."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: update option 'Configuration Files' on theme switch."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: search for i18n-config.json files under active theme, plugins and <code>qtranslate-x/i18n-config</code> folder."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: more on error handling."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: translation of admin menu."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: display translation of h2 titles on post.php (for custom types)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: finalizing <a href=\"https://qtranslatexteam.wordpress.com/integration/\">Integration Framework</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: swirly-bracket(brace) language encoding added to be used in places where square-bracket and comment encoding do not work. '[:]' sometimes conflict with shortcodes. '<!--:-->' does not survive tag clean up. '{:}'(swirly-bracket) seems to survive all."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: 'plugins' vs 'mu-plugins', links of sub-folders, etc. <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/168\">Issue #168</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: gettext filters in raw and single language modes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: turn on 'Compatibility Functions' on first activation, if a file of one of the former forks is detected."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: translation of user metadata at front end <a href=\"https://wordpress.org/support/topic/biographical-info-1\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: handling non-standard language code: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/171\">Issue #171</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: 'Head inline CSS' update on language list changes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: pagination of posts under Query Mode of URL Modification (filter 'qtranxf_convertBlogInfoURL'): <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/155\">Issue #155</a>. Filters 'home_url' and 'bloginfo_url' are disabled in Query mode."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: updated <code>qtranxf_get_option_config_files</code> to check for misconfigurations."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: prev/next_post_link <a href=\"https://wordpress.org/support/topic/prevnext_post_link-return-links-to-articles-without-translation\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: <a href=\"https://qtranslatexteam.wordpress.com/integration/\">Integration Framework</a> finalizing JSON file format."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: function <code>qtranxf_error_log</code> to show crucial error messages as admin notices on all admin pages and to update 'error_log' file."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: function <code>qtrans_join</code>: <a href=\"https://wordpress.org/support/topic/cant-switch-back-to-default-language\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: Meta-box 'Language' with Language Switching Buttons is now ready for functionality testing."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: <a href=\"https://qtranslatexteam.wordpress.com/integration/\">Integration Framework</a> for PHP code."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: skip filter 'pre_get_posts' for post_type 'nav_menu_item': <a href=\"https://wordpress.org/support/topic/menu-conflict-with-plugin-custom-field-template\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: hreflang in <code>&lt;link&gt;</code> is now locale instead of language code: <a href=\"https://wordpress.org/support/topic/setting-hreflang-language-locale\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: Meta-box 'LSB' for Language Switching Buttons, which can be placed anywhere on a page (not finished, just to test an idea on how it will look and work)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: integration framework is finished in its first version as it is described in <a href=\"https://qtranslatexteam.wordpress.com/integration/\">Integration Guide</a>. The configuration is now loadable from JSON files, which 3rd-party themes or plugins may generate."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: pre-sets for option 'Highlight Style' are changed to use CSS property 'border' instead of 'box-shadow' and 'outline', otherwise the highlighting was not always visible, specifically when class 'widefat' is also in use."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: visual mode misbehaviour in field 'Details' for events managed by plugin <a href=\"https://wordpress.org/plugins/events-made-easy/\">Events Made Easy</a> <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/152\">Issue #152</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: added class attributes <code>qtranxs-available-language*</code> to the message about available languages to make it CSS-customizable: <a href=\"https://wordpress.org/support/topic/translation-not-available-message-element-has-no-class\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: <code>qtrans_getAvailableLanguages</code> added to \"Compatibility Functions\"."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: tabs on configuration page, thanks to <a href=\"https://github.com/pedro-mendonca\">Pedro Mendonça</a> for the idea and initial coding: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/153\">Issue #135 &amp; #153</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: pagination of posts under Query Mode of URL Modification (filter 'get_pagenum_link'): <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/155\">Issue #155</a>, <a href=\"https://wordpress.org/support/topic/pagination-does-not-work-if-query-mode-used\">WP Topic</a> and <a href=\"https://wordpress.org/support/topic/navigation-problem-20\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: locale 'ja_JP' changed back to 'ja' as this is what WordPress uses. Files lang/qtranslate-ja_JP.mo/po renamed to qtranslate-ja.mo/po."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Includes all changes after version 3.2.9. Please, review <a href=\"https://qtranslatexteam.wordpress.com/2015/03/30/release-notes-3-3\">Release Notes</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: admin message with a link to <a href=\"https://qtranslatexteam.wordpress.com/startup-guide/\">Startup Guide</a> on the first install."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: sub-domains should be external hosts <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/148\">Issue #148</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: one more problem is discovered in function <code>qtranxf_filter_postmeta</code> for the case of empty $meta_key, reported in <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/138\">Issue #138</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: override admin language from <code>$_POST['WPLANG']</code> in case user tries to change language using field 'Site Language' on page <code>/wp-admin/options-general.php</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: action 'updated_postmeta' added to clear post meta data cache: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/138\">Issue #138</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: query argument <code>qtranslate-mode=raw</code> to retrieve a page without translation as suggested in <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/133\">issue #133</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: use of post meta cache after its update, <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/138\">Issue #138</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: German (de_DE) po/mo files updated. Thanks to Robert Skiba."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: Dutch (nl_NL) po/mo files updated. Thanks to Marius Siroen."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature replaced: Visual Composer compatibility moved to a separate plugin: <a href=\"https://wordpress.org/plugins/js-composer-qtranslate-x\">WPBakery Visual Composer &amp; qTranslate-X</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: filters 'gettext' and 'gettext_with_context' are moved to qtranslate_frontend.php, as they are not needed on admin side."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: js scripts in the <a href=\"https://qtranslatexteam.wordpress.com/integration/\">3rd-party integration framework</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: the list of available languages in the column 'Languages' of post listing."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: support for flags of type <code>svg</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: improved report messages for action 'markdefault'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: improved messages in column \"Language\" of post listing pages."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: another attempt to check <code>REDIRECT_STATUS</code> in function <code>qtranxf_can_redirect</code> to prevent unnecessary redirection if <code>mod_rewrite</code> is already doing redirection. In particular, this should help to troubleshoot internal server error as it was observed in <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/96\">Issue #96</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: troublesome use of deprecated function <code>mysql_real_escape_string</code> is removed: <a href=\"https://wordpress.org/support/topic/bulk-remove-language\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: alt attribute for flag icons in widget 'qTranslate Language Chooser': <a href=\"https://wordpress.org/support/topic/flag-icons-%E2%80%93-missing-alt-attributes\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: title attribute for language menu items: <a href=\"https://wordpress.org/support/topic/language-switcher-menu-flag-images-in-title\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: take language menu title from field 'Navigation Label' of menu editor: <a href=\"https://wordpress.org/support/topic/change-the-menu-label-text\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: options 'names' and 'colon' in Language Menu configuration."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: .pot, .po and .mo files updated."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Design: Java script interface for 3rd-party integration, functions: getLanguages, getFlagLocation, isLanguageEnabled, addLanguageSwitchBeforeListener, addLanguageSwitchAfterListener, enableLanguageSwitchingButtons."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: pot and po files updated."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: option 'Post Types' to exclude some post types from translation: <a href=\"https://wordpress.org/support/topic/activate-translation-only-for-specific-post-types\">WP Topic</a> and <a href=\"https://wordpress.org/support/topic/disable-qtranslate-x-for-specific-custom-post\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: Visual Composer compatibility (experimental)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement (cancelled previously changed at 3.2.9.8.8, it breaks some other places, needs more investigation): added check <code>isset($_SERVER['REDIRECT_STATUS'])</code> in function <code>qtranxf_can_redirect</code> to prevent another redirection if <code>mod_rewrite</code> is already doing redirection. In particular, this should help to troubleshoot internal server error 500 as it was observed in <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/96\">Issue #96</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: Greek ('el_GR') predefined language added, thanks to <a href=\"https://github.com/bekatoros\">Marios Bekatoros</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: Arabic (ar) po/mo files updated. Thanks to Nedal Elghamry."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: added check <code>isset($_SERVER['REDIRECT_STATUS'])</code> in function <code>qtranxf_can_redirect</code> to prevent another redirection if <code>mod_rewrite</code> is already doing redirection. In particular, this should help to troubleshoot internal server error 500 as it was observed in <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/96\">Issue #96</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: js functions <code>addLanguageSwitchBeforeListener</code> and <code>addLanguageSwitchAfterListener</code> is designed for other plugin integration, read <a href=\"https://qtranslatexteam.wordpress.com/integration/\">Integration</a> for more information. Thanks to <a href=\"https://github.com/picasso\">Dmitry</a> for the useful design discussion <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/128\">Issue #128</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: more special cases for arrays in POST, <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/127\">Issue #127</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: special cases for arrays in POST, <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/127\">Issue #127</a> and <a href=\"https://wordpress.org/support/topic/qtranslate-x-learndash-lms-quizzes\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: thanks to all translators contributed. po files updated with correct version number."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: taxonomy names with apostrophe and other special characters: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/122\">Issue #122</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: locale 'ja' changed to 'ja_JP'. Thanks to Yusuke Noguchi."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: thanks to all translators contributed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: choice 'Single Language Mode' for option 'Editor Mode'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: New release handling framework."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: function <code>qtranxf_sanitize_url</code>, thanks to <a href=\"https://github.com/ryo88c\">HAYASHI Ryo</a>: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/117\">Issue #117</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: js function <code>addLanguageSwitchListener</code> is designed for other plugin integration, read <a href=\"https://qtranslatexteam.wordpress.com/integration/\">Integration</a> for more information."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: handling of cookie <code>qtrans_edit_language</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: function <code>qtranxf_join_b</code>, test for <code>qtranxf_allthesame</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "PHP version compatibility: syntax changed in '<code>qtranxf_collect_translations*</code>'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: TinyMCE handling is re-designed once again. [<a href=\"https://wordpress.org/support/topic/default-wordpress-photo-gallery\">WP Topic</a>] [<a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/115\">Issue #115</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: new type of hook, displayHookAttrs, in <code>admin/js/common.js</code> to translate submit button texts (used in Woocommerce, for example)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: German (de_DE) po/mo files updated, thanks to Maurizio Omissoni."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: Italian (it_IT) po/mo files updated, thanks to Maurizio Omissoni."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: new front-end option 'Show content in an alternative language': <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/21\">Issue #21</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: error handling for gettext updates <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/105\">#105</a> and <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/113\">#113</a>, and other minor code clean up."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: Portuguese (pt_PT) po/mo files updated. Thanks to Pedro Mendonça."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: framework for handling admin notices on new releases."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: design of option handling: optimization and simplification in the code."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: replaced pre-defined language code 'pt-br' with 'pb': <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/104\">Issue #104</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: hidden multilingual input fields moved right before their single-lingual originals: <a href=\"https://wordpress.org/support/topic/problems-with-exisiting-posts\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: 'Code' column in the list of languages. Thanks to Pedro Mendonça for the <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/102\">discussion</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: date/time formats containing backslashes: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/99\">Issue #99</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: po files updated. Thanks to Pedro Mendonça for a <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/100\">discussion</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: languages management problems: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/102\">Issue #102</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: <code>qtrans_join</code> added to option 'Compatibility Functions'. [<a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/106\">Issue #106</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: various problems with new option save/load methods."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: CSS syntax. Thanks to <a href=\"https://github.com/mweimerskirch\">Michel Weimerskirch</a>: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/commit/83b4a9b513e623df3e9800888c742683c51eed6a#commitcomment-10435679\">Issue</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: option \"LSB Style\" to customize Language Switching Buttons style."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: after the first activation, the current WordPress active language becomes the default one for qTranslate-X, instead of English. No other languages are added anymore."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: option load and save algorithm re-designed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: special cases for function <code>convertURL</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: Option \"Highlight Style\". Thanks to <a href=\"https://github.com/mweimerskirch\">Michel Weimerskirch</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: handling of relative urls in qtranxf_convertURL."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: default locale for Estonian is 'et_EE'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: more on 'URL Modification Mode' option Per-Domain."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: function <code>convertURL</code> has been re-designed to take into account scheme, user, password and fragment correctly."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: added \"x-default\" link <code>&lt;link hreflang=\"x-default\" rel=\"alternate\" /&gt;</code> as suggested by <a href=\"https://support.google.com/webmasters/answer/189077\">Google</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: added exclusions to <code>qtranxf_convertFormat</code> for language-neutral date formats 'Z', 'c' and 'r' in addition to 'U' [<a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/76\">Issue #76</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: variable <code>$url_info['set_cookie']</code> can be overridden via <code>qtranslate_detect_language</code> filter. [<a href=\"https://wordpress.org/support/topic/do-not-switch-admin-language-when-changing-language-on-frontend\">WP Topic</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: admin notices for integrating plugins 'ACF qTranslate', 'All in One SEO Pack &amp; qTranslate&#8209;X', 'Events Made Easy &amp; qTranslate&#8209;X', 'qTranslate support for GravityForms', 'WooCommerce &amp; qTranslate&#8209;X' and 'Yoast SEO &amp; qTranslate&#8209;X'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: added URL folder <code>/oauth/</code> to the list of language-neutral URLs. [<a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/81\">Issue #81</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Maintenance: GitHub repository information in the header of qtranslate.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Performance: function <code>convertURL</code> now uses cached values of previously converted urls."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Performance: a few other little performance improvements."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: French (fr_FR) po/mo files updated. Thanks to Sophie."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Query in <code>qtranxf_excludePages</code>. [<a href=\"https://wordpress.org/support/topic/bug-in-qtranxf_excludepages\">WP Topic</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: Warning 'Undefined index: doing_front_end' reported in <a href=\"https://wordpress.org/support/topic/notice-undefined-index-doing_front_end\">WP Topic</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: time functions adjusted. [<a href=\"https://wordpress.org/support/topic/old-get_the_date-bug-is-back\">WP Topic</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: custom menu item query 'setlang=no': [<a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/80\">Issue #80</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Includes all changes after version 3.2.2."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: added <code>removeContentHook</code> in <code>admin/js/common.js</code>. Thanks to <a href=\"https://github.com/funkjedi\">Tim Robertson</a>: [<a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/69\">GitHub Issue #69</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: use of <code>nodeValue</code> instead of <code>innerHTML</code> in <code>addDisplayHook</code> of <code>admin/js/common.js</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: Dutch (nl_NL) po/mo updated, thanks to Marius Siroen."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: pot/po files updated"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: replaced option 'Remove plugin CSS' with 'Head inline CSS'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: problem with url like <code>site.com/en</code> without slash."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: options of similar functionality of mqTranslate: 'Remove plugin CSS', 'Cookie Settings' and 'Translation of options'. Thanks to <a href=\"https://github.com/xhaleera\">Christophe</a>) for the initial <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/63\">pull</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: <code>qtrans_getLanguageName</code> added to option 'Compatibility Functions'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: url like <code>site.com/en?arg=123</code> without slash before question mark now works correctly."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: multiple sets of Language Switching Buttons per page. Enabled by default above metabox 'Excerpt'. Will be customizable later."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: auto-translation of metadata at front-end, filter <code>qtranxf_filter_postmeta</code>. [<a href=\"https://wordpress.org/support/topic/qtranslate-x-hero-header\">Ticket</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: common.js modifications needed for plugin <a href=\"https://wordpress.org/plugins/all-in-one-seo-pack-qtranslate-x/\">All in One SEO Pack &amp; qTranslate-X</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: non-standard host port handling. Thanks to Christophe. [<a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/59\">Ticket</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: added option \"Hide Title Colon\" for widget \"qTanslate Language Chooser\". [<a href=\"https://wordpress.org/support/topic/semicolon-is-being-added-to-the-widget-title\">Ticket</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: disabled browser redirection for WP_CLI. [<a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/57\">Ticket</a>]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: wp-admin/nav-menus.php: new menu items for pages get added with title already translated."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Includes all changes after version 3.1."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: <code>add_filter('term_description')</code> at front-end. Thanks to <a href=\"https://github.com/qTranslate-Team/qtranslate-x/pull/39\">josk79</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: class <code>qtranxs-translatable</code> is introduced to distinct all translatable fields. Thanks to <a href=\"https://github.com/mweimerskirch\">Michel Weimerskirch</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: <code>QTRANS_INIT</code> constant is now defined when \"Compatibility Functions\" is on. [<a href=\"https://wordpress.org/support/topic/urgent-problem-with-dynamic-widgets-plugin\">WP issue</a>.]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: various code improvements, search for '3.2-b3' tag to look them them up."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: Hungarian (hu_HU) po/mo updated, thanks to Németh Balázs."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translation: German (de_DE) po/mo updated, thanks to Maurizio Omissoni."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Basque language added to the pre-set list of languages, thanks to Xabier Arrabal."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: 'Convert Database' options now also convert <code>postmeta.meta_value</code> database field."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: 'Convert Database' options would not work correctly for some options."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: <code>qtranxf_http_negotiate_language</code> used to return <code>en_US</code> when PHP supports function <code>http_negotiate_language</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: updated activation/migration messages with a link to <a href=\"https://qtranslatexteam.wordpress.com/migration/\">Migration from other multilingual plugins</a> publication."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: updated \"Compatibility Functions\" option with <code>qtrans_split</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: dealing with https and port 443."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Includes all changes after version 3.0."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Maintenance: 'Translate Service' feature has been disabled, as the vast majority of people <a href=\"http://www.marius-siroen.com/qTranslate-X/TranslateServices/\">surveyed</a> declined it. Thanks to <a href=\"https://profiles.wordpress.org/grafcom\">Gunu (Marius Siroen)</a> who made this survey possible."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: up to date code for <code>updateGettextDatabases</code> and cleaning up of a lot of code. Thanks to <a href=\"https://github.com/mweimerskirch\">Michel Weimerskirch</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translations: Croatian po/mo - thanks to Sheldon Miles."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translations: po/mo adjusted for a typo fixed. Thanks to <a href=\"https://github.com/mweimerskirch\">Michel Weimerskirch</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translations: default time format for Sweden changed - thanks to Tor-Björn."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: import/export from other qTranslate-ish forks."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: problem with menu editor under some configurations."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: 'Hide Title' in the widget. <a href=\"https://wordpress.org/support/topic/widget-cannot-save-titlecannot-uncheck-hide-title\">WP topic</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: corrected redirection in some peculiar cases."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: query to implement option 'Hide Content which is not available for the selected language'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: more on framework for integration with other plugins and themes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: closing tag <code>[:]</code> for square bracket language encoding mode is introduced."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: options to convert database to/from square bracket only mode."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: new language encoding mode 'byline', particularly needed for Woocommerce integration."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: altered the response of filter 'esc_html' to return a translation to current language instead of the default language."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix: import from <a href=\"https://wordpress.org/support/plugin/mqtranslate\">mqTranslate</a> (thanks to <a href=\"https://github.com/xhaleera\">Christophe</a>)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Includes all changes after version 2.9.6."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Please, do not forget to respond to <a href=\"http://www.marius-siroen.com/qTranslate-X/TranslateServices/\">survey on 'Translate Service' feature</a> by courtesy of <a href=\"https://profiles.wordpress.org/grafcom\">Gunu (Marius Siroen)</a>, whose continuous help is much appreciated."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature:  framework for integration with other plugins and themes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Maintenance: po/mo files updated."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: editing of menu item description on page /wp-admin/nav-menus.php."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Feature: hooks for integration with other plugins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: safer comment query with cache support when 'Hide Untranslated Content' is on. <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/17\">issue #17</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Compatibility: <a href=\"https://wordpress.org/plugins/ps-disable-auto-formatting/\">PS Disable Auto Formatting</a>. <a href=\"https://wordpress.org/support/topic/incompatibility-with-ps-disable-auto-formatting\">WP issue</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Maintenance: .pot and .po files updated with new untranslated strings."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "request for survey on <a href=\"http://www.marius-siroen.com/qTranslate-X/TranslateServices/\">'Translate Service' feature</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "the version can be downloaded here: <a href=\"https://github.com/qTranslate-Team/qtranslate-x/archive/2.9.8.7.zip\">2.9.8.7 alpha</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "more on proper detection of front-end vs back-end on AJAX calls."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "'attr_title' is now translated in menu display"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "more on option \"Hide Content which is not available for the selected language\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "thanks to Marius Siroen for Dutch translation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid ".pot/.po files in order. Thanks to <a href=\"https://github.com/pedro-mendonca\">Pedro Mendonça</a> for an extensive discussion on the best way to proceed with translations."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added 500ms delay before page refresh after new tag insertion on wp-admin/edit-tags.php."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Translations of captions and attributes in standard WP galleries, which is, in fact, much bigger change affecting many places. Need to re-test all carefully."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "improved run-time performance."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "some improvements on plugin translation as suggested by <a href=\"https://wordpress.org/support/profile/grafcom\">Gunu</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "updated \"Compatibility Functions\" option with <code>qtrans_generateLanguageSelectCode</code> and <code>qtrans_useCurrentLanguageIfNotFoundShowAvailable</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "more on TinyMCE compatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "taxonomy editor pages improved to switch languages for additional display fields."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "URL of a custom menu item gets converted to active language, unless query argument 'setlang=no' is added."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "filter 'get_search_form' is no longer need, since we adjusted home_url() <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/8\">issue #8</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "<a href=\"https://wordpress.org/support/topic/plugin-integration-1\">plugin integration design</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "po/mo files are updated. Translators needed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "more fixes for <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/5\">issue #5</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for wrong language on <a href=\"https://wordpress.org/support/topic/qtranslate-x-im8-qtranslate-woocommerce-bug\">AJAX requests</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "menu items with empty text for the current language are not shown any more (<a href=\"https://wordpress.org/support/topic/hide-specific-menu-item-for-1-language\">WP issue</a>)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "enable Language Switching Buttons on menu editor page. Fields \"Navigation Label\", \"Title Attribute\" and \"Description\" now respond to Language Switching Buttons."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "option \"Custom Pages\" to enable Language Switching Buttons on custom-defined pages."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[per-domain URL modification mode]https://wordpress.org/support/topic/qtranslate-tld-url-change-mode)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "split the qtranslate.js script into a few scripts in <code>admin/js/</code> folder to be loaded depending on the page which needs them."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "updated qtranslate.pot and fixed proper translation of various strings in the code (thanks to <a href=\"https://github.com/pedro-mendonca\">Pedro Mendonça</a>)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for when cookie 'qtrans_edit_language' contains unavailable language."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "various performance improvements."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "option \"Editor Raw Mode\" to be able to edit database text entries as they are, with language tag separators, without Language Switching Buttons."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for <a href=\"https://github.com/qTranslate-Team/qtranslate-x/issues/5\">random <code>&lt;p&gt;</code> in TinyMCE editors</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for login problem when <code>siteurl</code> option is different from 'home'."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "compatibility with <a href=\"https://wordpress.org/plugins/qtranslate-slug/\">Qtranslate Slug</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for <a href=\"https://wordpress.org/support/topic/duplicates-everything-doesnt-work-all-times\">blank translations</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for <code>&amp;amp;</code> in url <a href=\"https://wordpress.org/support/topic/strange-behavior-8\">problem</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for option <a href=\"https://wordpress.org/support/topic/cant-hide-the-non-existent-language-posts\">Hide Untranslated Content</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "compatibility with plugin <a href=\"https://wordpress.org/plugins/groups/\">Groups</a>, <a href=\"https://wordpress.org/support/topic/dropdown-doesnt-display-while-plugin-groups-is-active\">issue</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "more fixes for <code>&lt;!--more--&gt;</code> and <code>&lt;!--nextpage--&gt;</code> tags and parsing multilingual texts."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "more fixes for <code>&lt;!--more--&gt;</code> and <code>&lt;!--nextpage--&gt;</code> tags."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for https://wordpress.org/support/topic/comment-shows-404-error"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "\"Language Switcher\" menu options, read <a href=\"https://qtranslatexteam.wordpress.com/faq/\">FAQ</a> for more information."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for too early call to <code>current_user_can</code>, which caused a debug notice from within some other plugins."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for https://wordpress.org/support/topic/editor-adds-characters-before-text"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option \"Compatibility Functions\" to enable former qTranslate function names: qtrans_getLanguage, qtrans_convertURL, qtrans_use, qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage, qtranxf_useTermLib and qtrans_getSortedLanguages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "\"Language Switcher\" menu options: flags=[yes|no], type=[LM|AL]. They can be used in a query string in URL field of Language Menu."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "JS bug fixed, which would not show any field value if no languages are yet configured for that field."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "ability to enable \"Custom Fields\" by either \"id\" or \"class\" attribute."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "ability to specify filters, which other theme or plugins define, to pass relevant data through the translation."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "support for <code>&lt;!--more--&gt;</code> and <code>&lt;!--nextpage--&gt;</code> tags."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "language cookie are renamed to minimize possible interference with other sites."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added option \"Show displayed language prefix when content is not available for the selected language\"."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "compatibility with \"BuddyPress\" plugin and various improvements."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "custom CSS for \"qTranslate Language Chooser\" widget configurable via its properties."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "now always redirects to a canonical URL, as defined by options, before displaying a page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "use of cookies to carry the language chosen from session to session."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "[this does not work yet] created wrappers to make former qTranslate function names available: qtrans_getLanguage, qtrans_convertURL, qtrans_use, qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "user-friendly activation hook to deactivate/import/export other qTranslate forks."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "import/export settings from other forks"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "improved automatic downloading of gettext databases from WP repository."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "translation of \"Site Title\" and \"Tagline\" in Settings-&gt;General (/wp-admin/options-general.php)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option \"Custom Field\": theme custom fields can be translatable."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "handling multiple tinyMCE editors, as some themes have it. It will now make all fields in page and post editors of class \"wp-editor-area\" translatable."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix permalink on edit pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "disabled autosave script in editors, since it saves the active language only and sometimes hardly messes it up later."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixes for flag path, when WP is not in /. Permalink on edit pages is still broken, apparently has always been for this case."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "various minor improvements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "bug fixer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "enabled translation of image 'alt' attribute."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "corrected behaviour of category and tag editing pages when admin language is not the default one."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "hid 'Quick Edit' in category and tag editing pages since it does not work as user would expect. One has to use \"Edit\" link to edit category or tag name."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "enabled translations of image captions, titles and descriptions (but not 'alt')."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "improved Description, FAQ and other documentation."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added \"Language Switcher\" menu item to WP menu editing screen"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "currently editing language is memorized in cookies and preserved from one post to another"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "on the first page load, the default language is now activated instead of the last language"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "full screen mode for tinyMCE integrated properly"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "more translation on tag and category editor pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added 'post_title' filter to translate all titles fetched for display purpose"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed problem with comment date display in some themes"
+msgstr ""
+
+#. Found in faq list item.
+msgid "For the new installers, it may be useful to read <a href=\"https://qtranslatexteam.wordpress.com/startup-guide/\" title=\"Startup Guide\">Startup Guide</a>."
+msgstr ""
+
+#. Found in faq list item.
+msgid "It is important to read <a href=\"https://qtranslatexteam.wordpress.com/migration/\" title=\"Migration Guide\">migration instructions</a>, if you previously used other multilingual plugin."
+msgstr ""
+
+#. Found in faq list item.
+msgid "Read <a href=\"https://qtranslatexteam.wordpress.com/integration/\" title=\"Integration Guide\">Integration Guide</a> when you need to make theme or other plugin custom fields to be multilingual."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "A general FAQ list is available at \"qTranslate-X explained\" website: <a href=\"https://qtranslatexteam.wordpress.com/faq/\" title=\"qTranslate-X explained FAQ\">https://qtranslatexteam.wordpress.com/faq/</a>, where it is easier to maintain it in between releases."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Developers: please drop new topics here, the text will be moved to <a href=\"https://qtranslatexteam.wordpress.com/faq/\" title=\"qTranslate-X explained FAQ\">qTranslate-X explained</a> at the time of the next release."
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Known Issues"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Credentials"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Desirable Unimplemented Features"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "It is important to review the list of <a href=\"https://qtranslatexteam.wordpress.com/known-issues/\">Known Issues</a> before starting using the plugin."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Please, review the <a href=\"https://qtranslatexteam.wordpress.com/credentials/\">credentials page</a> at <a href=\"https://qtranslatexteam.wordpress.com/about/\">qTranslate-X explained</a> website."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "A list of <a href=\"https://qtranslatexteam.wordpress.com/desirable/\">desirable features</a> is maintained at <a href=\"https://qtranslatexteam.wordpress.com/about/\">qTranslate-X explained</a> website."
+msgstr ""

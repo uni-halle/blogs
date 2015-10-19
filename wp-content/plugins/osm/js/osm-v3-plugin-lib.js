@@ -43,14 +43,19 @@ function osm_addPopupClickhandler(a_MapObj, a_MapStr) {
     });
     if (features.length > 0) {
       var name_str, desc_str, info = [];
+      var description_str = [];
       var i, ii;
       for (i = 0, ii = features.length; i < ii; ++i) {
         if (features[i].get("name")){
           NumOfNamedFeatures++;
           name_str = features[i].get("name");
           desc_str = features[i].get("desc");
+          description_str = features[i].get("description");
           if (desc_str != undefined){
             name_str = name_str + "<br>" + desc_str;
+          }
+          if (description_str != undefined){
+            name_str = name_str + "<br>" + description_str;
           }
           if (features.length > 0) {name_str = name_str + "<br>"}
         }
