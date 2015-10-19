@@ -1307,12 +1307,14 @@ font-size: 16px;
 
 .document_page_style {
 margin-bottom: 2rem;
+min-height: 70px;
 
 }
 
 .document_page_style > a:first-of-type {
     display: block;
 width: 10%;
+height: 30px;
 }
 .document_page_style img {
 width: 60px;

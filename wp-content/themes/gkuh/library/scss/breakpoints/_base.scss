@@ -15,9 +15,12 @@ and will be used across all viewports.
 GENERAL STYLES
 *********************/
 
-/* Use this setting to set the general width of the content (and also the inner header, footer and breadcrumb box) */
+/* Use this variable to set the general width of the content (and also the inner header, footer and breadcrumb box) */
+
+$contentwidth: 80%;
+
 .maincontainer {
-    width: 80%;
+    width: $contentwidth;
     margin: 0 auto;
 }
 
@@ -225,6 +228,11 @@ and more scalable.
     line-height: $headerheight;    
     border-right: 1px solid $navactive;
     
+    &:first-child {
+            /* don't show "start" menu entry and hope people will know to klick/tap the logo but we don't have enough room */
+            display: none;
+        }
+    
     &:last-child {
             /* no border for menu item on the right */
             border-right: 0 solid $navactive;
@@ -301,6 +309,16 @@ and more scalable.
 					&:link {}
 
 				}
+                
+                a:before {
+                    content: "";
+                    height: 2em;
+                    left: -0.33em;
+                    position: absolute;
+                    top: -1.1em;
+                    width: 5px;
+                    
+                }
 
 				&:first-child {}
 
@@ -351,7 +369,6 @@ and more scalable.
 	}  /* end current highlighters */
 
 } /* end .nav */
-
 
 /*********************
 POSTS & CONTENT STYLES
@@ -637,18 +654,16 @@ List of Child Pages on First Page of a Section (See page.php for php code and li
         text-align: center;
         font-weight: bold;
         border-radius: 2em;
-        border: .4em solid $section2; /* todo section color */
+        border: .4em solid $section2;
         z-index: 2;
-        color: $section2; /* todo section color */
         
 } /* end of ol li a:before */
         
         a:hover:before{
-            color: $section2; /* todo section color */
+            //border: 1px solid;
 }
       
     a:after {
-        background: $section2;
         content: "";
         height: 2em;
         left: -0.33em;

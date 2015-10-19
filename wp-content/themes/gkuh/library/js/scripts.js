@@ -86,10 +86,6 @@ var timeToWaitForLast = 100;
  * Keep it light and always make sure the larger viewports are doing the heavy lifting.
  *
 */
-
-
-
- 
     
 
 /*
@@ -110,29 +106,11 @@ function loadGravatars() {
 } // end function
 
 
-/*
- * Put all your regular jQuery in here.
-*/
+/* initialise superfish mobile menue */
 
-
-jQuery(document).ready(function ($) {
-    
-    // Mobile Dropdown Navigation
-    
-    // If the menu is displayed on a mobile device
-    if( viewport.width <= 700 ) {
-         console.log('mobile');
-        //select only top level menu links with a sub-menu
-        $(".top-nav > li.menu-item-has-children > a").click(function (evt) {
-            //prevent only that top level link from being loaded 
-            evt.preventDefault();
-            //and add or remove the class "toggled" to the top-level li 
-            $(".sub-menu").toggleClass('toggled');
-    });   
-       } else {
-         // otherwise, let's do this instead
-           console.log('large');
-       };
+	jQuery(document).ready(function(){
+		jQuery('ul.sf-menu').superfish();
+	});
 
  
-}); /* end of as page load scripts */
+// }); /* end of as page load scripts */

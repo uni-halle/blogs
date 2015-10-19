@@ -63,6 +63,13 @@ function muhlenbergcenter_setup() {
     remove_action( 'wp_head', 'rsd_link' ); 
     remove_action( 'wp_head', 'wlwmanifest_link' );
     remove_action( 'wp_head', 'wp_generator' );
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
 }
 endif;
 add_action( 'after_setup_theme', 'muhlenbergcenter_setup' );
@@ -105,7 +112,7 @@ add_action( 'widgets_init', 'muhlenbergcenter_widgets_init' );
  * Change default theme stylesheet uri
  */
 function muhlenbergcenter_stylesheet_uri( $stylesheet_uri, $stylesheet_dir_uri ){
-    return $stylesheet_dir_uri.'/css/main.css';
+    return $stylesheet_dir_uri.'/css/main.min.css';
 }
 add_filter( 'stylesheet_uri', 'muhlenbergcenter_stylesheet_uri', 10, 2 );
 
@@ -146,7 +153,7 @@ class muhlenbergcenter_Walker_Nav_Menu extends Walker_Nav_Menu {
  */
 function blockgrid_gallery( $string, $attr ){
 
-    $output = '<ul class="medium-block-grid-6 small-block-grid-2 clearing-thumbs" data-clearing>';
+    $output = '<ul class="medium-block-grid-6  small-block-grid-2  clearing-thumbs" data-clearing>';
     $posts = get_posts( array(
         'include'   => $attr['ids'],
         'post_type' => 'attachment',
@@ -173,14 +180,16 @@ add_filter( 'post_gallery', 'blockgrid_gallery', 10, 2 );
  */
 function muhlenbergcenter_scripts() {
 
-	// Load stylesheets to the closing head tag.
-	wp_enqueue_style( 'normalize', get_template_directory_uri() . '/css/normalize.css', array(), 'v3.0.2' );
-	wp_enqueue_style( 'main', get_stylesheet_uri(), array(), 'v0.5.1' );
+    // Remove jQuery crab in front-end
+    if (!is_admin()) {
+        wp_dequeue_script('jquery');
+        wp_deregister_script('jquery');
+    }
 
-	// Load js-files to the closing body tag.
-	wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/js/vendor/fastclick.min.js', array( 'jquery' ), '2015-02-12', true );
-	wp_enqueue_script( 'foundation', get_template_directory_uri() . '/js/vendor/foundation.min.js', array( 'jquery' ), 'v5.5.1', true );
-	wp_enqueue_script( 'plugins', get_template_directory_uri() . '/js/plugins.min.js', array( 'jquery' ), 'v0.1.3', true );
-	wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.min.js', array( 'jquery' ), 'v0.1.2', true );
+    // Load stylesheets to the closing head tag.
+    wp_enqueue_style('main', get_stylesheet_uri(), array(), 'v0.6.1');
+
+    // Load js-files to the closing body tag.
+    wp_enqueue_script('main', get_template_directory_uri() . '/js/main.min.js', array(), 'v1.0.1', true);
 }
-add_action( 'wp_enqueue_scripts', 'muhlenbergcenter_scripts' );
+add_action('wp_enqueue_scripts', 'muhlenbergcenter_scripts');

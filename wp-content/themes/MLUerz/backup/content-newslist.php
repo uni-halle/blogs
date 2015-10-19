@@ -15,7 +15,7 @@
       <div class="col3_content" class="clearfix" >
 	<?php
 		// Post thumbnail.
-if ( is_single() ) {twentyfifteen_post_thumbnail();}
+		twentyfifteen_post_thumbnail();
 	?>
 	</div></div>
 	<div class="news-single-timedata"> <?php

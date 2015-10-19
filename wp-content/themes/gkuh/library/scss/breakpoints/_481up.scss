@@ -34,6 +34,11 @@ NAVIGATION STYLES
     
 }
 
+.top-nav > li:first-child {
+            /* from this size upward show "start" menu entry */
+            display: inline-block;
+        }
+
 	/* .menu is clearfixed inside mixins.scss */
 	.menu {
         

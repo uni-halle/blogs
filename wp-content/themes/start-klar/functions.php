@@ -113,6 +113,6 @@ add_action ('__footer',function(){
 global $wp_query;
 $q=print_r($wp_query->request,1);
 ?>
-<footer class="mlu container"><a href="http://www.uni-halle.de"><img src="//blogs.urz.uni-halle.de/startklar/files/2015/06/MLU_Halle-Wittenberg_Siegel-e1433410810656.png" alt="Martin-Luther-Universität Halle-Wittenberg"></a></footer>
+<footer class="mlu container"><a href="http://www.uni-halle.de"><img src="<?=get_stylesheet_directory_uri()?>/siegel_mlu_zentriert.png" alt="Martin-Luther-Universität Halle-Wittenberg"></a></footer>
 <?php
 },20);

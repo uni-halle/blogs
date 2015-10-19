@@ -14,6 +14,7 @@
             <?php
             $media_cats = array(
                 'parent'     => 25,
+                //'parent'     => 3,
                 'hide_empty' => 0
             );
             $categories = get_categories( $media_cats );

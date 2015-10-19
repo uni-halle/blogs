@@ -30,7 +30,20 @@ get_header(); ?>
 
 		// End the loop.
 		endwhile;
+
+
 		?>
+			
+			<?php
+if(is_front_page()) : 
+$startcat = get_option('page_for_posts');
+wp_reset_postdata();
+$latest_blog_posts = new WP_Query( array( 'category_name' => 'News' ) ); //'cat'=>$startcat
+
+if ( $latest_blog_posts->have_posts() ) : while ( $latest_blog_posts->have_posts() ) : $latest_blog_posts->the_post();
+			get_template_part( 'content', 'newslist' );endwhile; endif;
+endif;
+ ?>
 
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->

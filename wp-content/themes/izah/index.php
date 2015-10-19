@@ -28,7 +28,8 @@ get_header(); ?>
 
 
 <main id="main" class="site-main cell position-2 width-4" role="main">
-	<?php if ( is_home() && ! is_front_page() ) : ?>
+	<?php // show title of posts-page, if post-page isn't standard  
+		if ( is_home() && ! is_front_page() ) : ?>
 		<header class="page-header">
 			<h1 class="page-title"><?php echo apply_filters(' the_title' , get_page( get_option( 'page_for_posts' ) )->post_title ); ?></h1>
 		</header>

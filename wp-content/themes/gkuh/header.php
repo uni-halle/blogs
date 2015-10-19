@@ -27,9 +27,10 @@
 		<?php // or, set /favicon.ico for IE10 win ?>
 		<meta name="msapplication-TileColor" content="#f01d4f">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
-            <meta name="theme-color" content="#121212">
+        <meta name="theme-color" content="#121212">
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+    
 
 		<?php // wordpress head functions ?>
 		<?php wp_head(); ?>
@@ -38,15 +39,44 @@
 		<?php // drop Google Analytics Here ?>
 		<?php // end analytics ?>
         
+        
+         
+<!-- call function for color categries from functions.php  -->
+        
+        <?php
+    $category = get_the_category();
+    $the_category_id = $category[0]->cat_ID;
 
+    if(function_exists('rl_color')){
+        $rl_category_color = rl_color($the_category_id);
+    }
+else {
+    // nevermind
+};
+?>
+        
+<!-- set the category color classes with the respective color (which is set in the backend as category setting) -->        
+        <style>
+            /* add classes where the COLOR property should have category color */
+            .ccolor, .sf-with-ul:after, .themenuebersicht li a:before, .themenuebersicht li a:hover:before, .prevname a:hover, .nextname a:hover {color: <?php echo $rl_category_color; ?>;}
+            
+            /* add classes where the BACKGROUND-COLOR property should have category color */
+            .ccolorbgrd, .themenuebersicht li a:after {background-color: <?php echo $rl_category_color; ?>;}
+            
+            /* add classes where the border-color property should have category color */
+            .ccolorborder, .themenuebersicht li a:before, .themenuebersicht li a:before {border-color: <?php echo $rl_category_color; ?>;}
+            
+            .svgbutton:hover {fill: <?php echo $rl_category_color; ?>;}
+    
+        </style>
 
 	</head>
 
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 
 		<div id="container">
-
-			<header class="header row" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+            
+			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
                 <!--   flexbox container             -->
                 <div id="inner-header" class="maincontainer">
@@ -75,7 +105,7 @@
 
 					</nav>
     </div>
-
+                    
 </div>
 
 </header>

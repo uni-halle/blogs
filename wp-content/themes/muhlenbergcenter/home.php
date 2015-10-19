@@ -14,6 +14,7 @@ get_header(); ?>
             '[events_list scope="future" tag="home" limit="3"]
                 <article class="medium-4 columns event teaser" data-equalizer-watch>
                     {has_image}#_EVENTIMAGE{/has_image}
+                    {no_image}#_CATEGORYIMAGE{/no_image}
                     <h2>#_EVENTLINK</h2>
                     <ul class="no-bullet">
                         <li>#_EVENTDATES</li>
@@ -22,7 +23,7 @@ get_header(); ?>
                         <li>#_LOCATIONPOSTCODE, #_LOCATIONTOWN</li>
                     </ul>
                     <p>
-                        <a href="muhlenberg-events/">Show all upcoming events</a>
+                        <a href="upcoming-events/">Show all upcoming events</a>
                     </p>
                 </article>
             [/events_list]'

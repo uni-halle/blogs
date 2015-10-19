@@ -112,6 +112,7 @@ h1 {
     font-style: normal;
     font-family: "Open Sans" !important;
 }
+article h2 { font-size: 18px; }
 section h2 { font-family: "Open Sans"; font-size: 24px; }
 /*hr.__loop { display: none; }*/
 article .tc-content { margin-bottom: 10px; }
@@ -130,3 +131,23 @@ article table, .featurette-divider, .pager li>span {
 footer.mlu img {
 	margin-bottom: 20px;
 }
+
+.tc-header .brand .site-title:before {
+   background: url("logo.jpg") no-repeat ;
+   background-size: contain;
+   width: 1.2em; height: 1.2em;
+   display: inline-block; 
+   content: "";
+   margin-right: .5em;
+   vertical-align: bottom;
+}
+.tc-header .brand .site-title:hover:before {
+   filter: saturate(0) brightness(120%);
+}/*
+.sticky-enabled .brand .site-title {
+   background-position: 3.9em 0;
+}*/
+.mlu.container img {
+   height: 9em;
+}
+footer.mlu { text-align: center; }
