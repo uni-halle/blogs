@@ -43,9 +43,9 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       add_theme_support( 'polylang' );
       add_theme_support( 'woocommerce' );
       add_theme_support( 'the-events-calendar' );
-      add_theme_support( 'nextgen-gallery' );
       add_theme_support( 'optimize-press' );
       add_theme_support( 'sensei' );
+      add_theme_support( 'visual-composer' );//or js-composer as they call it
     }
 
 
@@ -87,6 +87,10 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       if ( current_theme_supports( 'polylang' ) && $this -> tc_is_plugin_active('polylang/polylang.php') )
         $this -> tc_set_polylang_compat();
 
+      /* The Events Calendar */
+      if ( current_theme_supports( 'the-events-calendar' ) && $this -> tc_is_plugin_active('the-events-calendar/the-events-calendar.php') )
+        $this -> tc_set_the_events_calendar_compat();
+
       /* Optimize Press */
       if ( current_theme_supports( 'optimize-press' ) && $this -> tc_is_plugin_active('optimizePressPlugin/optimizepress.php') )
         $this -> tc_set_optimizepress_compat();
@@ -95,13 +99,13 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       if ( current_theme_supports( 'woocommerce' ) && $this -> tc_is_plugin_active('woocommerce/woocommerce.php') )
         $this -> tc_set_woocomerce_compat();
 
-      /* Nextgen gallery */
-      if ( current_theme_supports( 'nextgen-gallery') && $this -> tc_is_plugin_active('nextgen-gallery/nggallery.php') )
-        $this -> tc_set_nggallery_compat();
-
       /* Sensei woocommerce addon */
       if ( current_theme_supports( 'sensei') && $this -> tc_is_plugin_active('woothemes-sensei/woothemes-sensei.php') )
         $this -> tc_set_sensei_compat();
+ 
+      /* Visual Composer */
+      if ( current_theme_supports( 'visual-composer') && $this -> tc_is_plugin_active('js_composer/js_composer.php') )
+        $this -> tc_set_vc_compat();
     }//end of plugin compatibility function
 
 
@@ -377,24 +381,64 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
     }//end polylang compat
 
 
-    /**
-    * NextGen Gallery compat hooks
-    * @package Customizr
-    * @since Customizr 3.3+
-    */
-    private function tc_set_nggallery_compat() {
-      /* Make Customizr smart load work with nextgen galleries and fix small bug which resulted in displaying plain image attributes */
-     add_action('wp_head', 'tc_content_parse_imgs_rehook');
-     function tc_content_parse_imgs_rehook(){
-       // smartload doesn't work at all for nggalleries in pages, looks like they add "data-src" to their images in pages .. mah
-       if ( is_page() || is_admin() || 0 == esc_attr( TC_utils::$inst->tc_opt( 'tc_img_smart_load' ) ) )
-        return;
 
-       remove_filter('the_content', array(TC_utils::$instance, 'tc_parse_imgs'), 20 );
-       // they add the actual images filtering the content with priority PHP_INT_MAX -1
-       add_filter('the_content'   , array(TC_utils::$instance, 'tc_parse_imgs'), PHP_INT_MAX );
-     }
-    }
+    /**
+    * The Events Calendar compat hooks
+    *
+    * @package Customizr
+    * @since Customizr 3.4+
+    */
+    private function tc_set_the_events_calendar_compat() {
+      /*
+      * Are we in the Events list context?
+      */  
+      if ( ! ( function_exists( 'tc_is_tec_events_list' ) ) ) {
+        function tc_is_tec_events_list() {
+          return function_exists( 'tribe_is_event_query' ) && tribe_is_event_query() && is_post_type_archive();
+        }
+      }
+
+      // hide tax archive title
+      add_filter( 'tc_show_tax_archive_title', 'tc_tec_disable_tax_archive_title');
+      function tc_tec_disable_tax_archive_title( $bool ) {
+        return tc_is_tec_events_list() ? false : $bool;
+      }
+
+      // Events archive is displayed, wrongly, we our post lists classes, we have to prevent this
+      add_filter( 'tc_post_list_controller', 'tc_tec_disable_post_list');
+      add_filter( 'tc_is_grid_enabled', 'tc_tec_disable_post_list');
+      function tc_tec_disable_post_list( $bool ) {
+        return tc_is_tec_events_list() ? false : $bool;
+      }
+
+      // Now we have to display a post or page content
+      add_filter( 'tc_show_single_post_content', 'tc_tec_show_content' );
+      function tc_tec_show_content( $bool ) {
+        return tc_is_tec_events_list() ? true : $bool;
+      }
+
+      // Force the tax name in the breadcrumb when list of events shown as 'Month'
+      // The Events Calendar adds a filter on post_type_archive_title with __return_false callback
+      // for their own reasons. This impacts on our breadcrumb 'cause we use the function post_type_archive_title() to build up the trail arg in posty_type_archives contexts.
+      // What we do here is unhooking their callback before the breadcrumb is built and re-hook it after it has been displayed
+      add_action( 'wp_head', 'tc_tec_allow_display_breadcrumb_in_mont_view');
+      function tc_tec_allow_display_breadcrumb_in_mont_view() {
+        if ( ! ( tc_is_tec_events_list() && function_exists( 'tribe_is_month' ) && tribe_is_month() ) )
+          return;
+
+        add_filter( 'tc_breadcrumb_trail_args', 'tc_tec_unhook_empty_post_type_archive_title');
+        function tc_tec_unhook_empty_post_type_archive_title( $args = null ) {
+          remove_filter( 'post_type_archive_title', '__return_false', 10 );
+          return $args;
+        }
+        add_filter( 'tc_breadcrumb_trail_display', 'tc_tec_rehook_empty_post_type_archive_title', PHP_INT_MAX );
+        function tc_tec_rehook_empty_post_type_archive_title( $breadcrumb = null ) {
+          add_filter( 'post_type_archive_title', '__return_false', 10 );
+          return $breadcrumb;
+        }
+      }
+    }//end the-events-calendar compat
+
 
 
     /**
@@ -557,7 +601,7 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       //link smooth scroll: exclude woocommerce tabs
       add_filter( 'tc_anchor_smoothscroll_excl', 'tc_woocommerce_disable_link_scroll' );
       function tc_woocommerce_disable_link_scroll( $excl ){
-        if ( false == TC_utils::$inst->tc_opt('tc_link_scroll') ) return $excl;
+        if ( false == esc_attr( TC_utils::$inst->tc_opt('tc_link_scroll') ) ) return $excl;
         
         if ( function_exists('is_woocommerce') && is_woocommerce() ) {
           if ( ! is_array( $excl ) )
@@ -580,7 +624,36 @@ if ( ! class_exists( 'TC_plugins_compat' ) ) :
       function tc_woocommerce_change_meta_boxes_priority($priority , $screen) {
          return ( 'product' == $screen ) ? 'default' : $priority ;
       }
-    }
+    }//end woocommerce compat
+
+
+    /**
+    * Visual Composer compat hooks
+    *
+    * @package Customizr
+    * @since Customizr 3.4+
+    */
+    private function tc_set_vc_compat() {
+      //link smooth scroll: exclude all anchor links inside vc wrappers (.vc_row)
+      add_filter( 'tc_anchor_smoothscroll_excl', 'tc_vc_disable_link_scroll' );
+      function tc_vc_disable_link_scroll( $excl ){
+        if ( false == esc_attr( TC_utils::$inst->tc_opt('tc_link_scroll') ) ) return $excl;
+        
+        if ( ! is_array( $excl ) )
+          $excl = array();
+          
+        if ( ! is_array( $excl['deep'] ) )
+          $excl['deep'] = array() ;
+          
+        if ( ! is_array( $excl['deep']['classes'] ) )
+            $excl['deep']['classes'] = array();        
+
+        $excl['deep']['classes'][] = 'vc_row';
+        
+        return $excl;
+      }
+    }//end woocommerce compat
+
 
     /**
     * CUSTOMIZR WRAPPERS

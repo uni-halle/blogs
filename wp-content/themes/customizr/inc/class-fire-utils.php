@@ -29,8 +29,12 @@ if ( ! class_exists( 'TC_utils' ) ) :
 
         //init properties
         add_action( 'after_setup_theme'       , array( $this , 'tc_init_properties') );
-        //WP filters
-        add_action( 'after_setup_theme'       , array( $this , 'tc_wp_filters') );
+
+        //Various WP filters for
+        //content
+        //thumbnails => parses image if smartload enabled
+        //title
+        add_action( 'wp_head'                 , array( $this , 'tc_wp_filters') );
 
         //get all options
         add_filter( '__options'               , array( $this , 'tc_get_theme_options' ), 10, 1);
@@ -95,7 +99,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
       function tc_wp_filters() {
         add_filter( 'the_content'                         , array( $this , 'tc_fancybox_content_filter' ) );
         if ( esc_attr( TC_utils::$inst->tc_opt( 'tc_img_smart_load' ) ) ) {
-          add_filter( 'the_content'                       , array( $this , 'tc_parse_imgs' ), 20 );
+          add_filter( 'the_content'                       , array( $this , 'tc_parse_imgs' ), PHP_INT_MAX );
           add_filter( 'tc_thumb_html'                     , array( $this , 'tc_parse_imgs' ) );
         }
         add_filter( 'wp_title'                            , array( $this , 'tc_wp_title' ), 10, 2 );
@@ -190,8 +194,8 @@ if ( ! class_exists( 'TC_utils' ) ) :
       * @since Customizr 3.4.9
       */
       function tc_is_customizr_option( $option_key ) {
-        $_is_tc_option = in_array( substr( $option_key, 0, 3 ), $this -> tc_options_prefixes ); 
-        return apply_filters( 'tc_is_customizr_option', $_is_tc_option , $option_key );       
+        $_is_tc_option = in_array( substr( $option_key, 0, 3 ), $this -> tc_options_prefixes );
+        return apply_filters( 'tc_is_customizr_option', $_is_tc_option , $option_key );
       }
 
 
@@ -975,23 +979,37 @@ if ( ! class_exists( 'TC_utils' ) ) :
 
     /**
     * Returns the url of the customizer with the current url arguments + an optional customizer section args
-    * @param $section is an array indicating the panel or section and its name. Ex : array( 'panel' => 'widgets')
+    *
+    * @param $autofocus(optional) is an array indicating the elements to focus on ( control,section,panel).
+    * Ex : array( 'control' => 'tc_front_slider', 'section' => 'frontpage_sec').
+    * Wordpress will cycle among autofocus keys focusing the existing element - See wp-admin/customize.php.
+    * The actual focused element depends on its type according to this priority scale: control, section, panel.
+    * In this sense when specifying a control, additional section and panel could be considered as fall-back.
+    *
+    * @param $control_wrapper(optional) is a string indicating the wrapper to apply to the passed control. By default is "tc_theme_options".
+    * Ex: passing $aufocus = array('control' => 'tc_front_slider') will produce the query arg 'autofocus'=>array('control' => 'tc_theme_options[tc_front_slider]'
+    *
     * @return url string
     * @since Customizr 3.4+
     */
-    static function tc_get_customizer_url( $_panel_or_section = null ) {
+    static function tc_get_customizer_url( $autofocus = null, $control_wrapper = 'tc_theme_options' ) {
       $_current_url       = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
       $_customize_url     = add_query_arg( 'url', urlencode( $_current_url ), wp_customize_url() );
-      $_panel_or_section  = ( ! is_array($_panel_or_section) || empty($_panel_or_section) ) ? null : $_panel_or_section;
+      $autofocus  = ( ! is_array($autofocus) || empty($autofocus) ) ? null : $autofocus;
 
-      if ( is_null($_panel_or_section) )
+      if ( is_null($autofocus) )
         return $_customize_url;
 
-      if ( ! array_key_exists('section', $_panel_or_section) && ! array_key_exists('panel', $_panel_or_section) )
+      // $autofocus must contain at least one key among (control,section,panel)
+      if ( ! count( array_intersect( array_keys($autofocus), array( 'control', 'section', 'panel') ) ) )
         return $_customize_url;
 
-      $_what = array_key_exists('section', $_panel_or_section) ? 'section' : 'panel';
-      return add_query_arg( urlencode( "autofocus[{$_what}]" ), $_panel_or_section[$_what], $_customize_url );
+      // wrap the control in the $control_wrapper if neded
+      if ( array_key_exists( 'control', $autofocus ) && ! empty( $autofocus['control'] ) && $control_wrapper ){
+        $autofocus['control'] = $control_wrapper . '[' . $autofocus['control'] . ']';
+      }
+      // We don't really have to care for not existent autofocus keys, wordpress will stash them when passing the values to the customize js
+      return add_query_arg( array( 'autofocus' => $autofocus ), $_customize_url );
     }
 
 

@@ -23,7 +23,9 @@ if ( ! class_exists( 'TC_nav_walker' ) ) :
     /**
     * hook : nav_menu_css_class
     */
-    function tc_add_bootstrap_classes($classes, $item, $args, $depth ) { 
+    function tc_add_bootstrap_classes($classes, $item, $args, $depth ) {
+      //cast $classes into array
+      $classes = (array)$classes;
       //check if $item is a dropdown ( a parent )
       //this is_dropdown property has been added in the the display_element() override method
       if ( $item -> is_dropdown ) {
@@ -58,7 +60,7 @@ if ( ! class_exists( 'TC_nav_walker' ) ) :
 
         //adds arrows down
         if ( $depth === 0 )
-            $item_html      = str_replace( '</a>' , ' <b class="caret"></b></a>' , $item_html);
+            $item_html      = str_replace( '</a>' , ' <strong class="caret"></strong></a>' , $item_html);
       }
       elseif (stristr( $item_html, 'li class="divider' )) {
         $item_html = preg_replace( '/<a[^>]*>.*?<\/a>/iU' , '' , $item_html);
@@ -76,7 +78,7 @@ if ( ! class_exists( 'TC_nav_walker' ) ) :
       //will be used in override start_el() and class filter
       $element->is_dropdown = ! empty( $children_elements[$element->ID]);
 
-      $element->classes = apply_filters( 'tc_nav_menu_css_class', $element->classes, $element, $args, $depth );
+      $element->classes = apply_filters( 'tc_nav_menu_css_class', array_filter( $element->classes ), $element, $args, $depth );
 
       //let the parent do the rest of the job !
       parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output);
@@ -142,7 +144,7 @@ if ( ! class_exists( 'TC_nav_walker_page' ) ) :
 
         //adds arrows down
         if ( $depth === 0 )
-          $item_html      = str_replace( '</a>' , ' <b class="caret"></b></a>' , $item_html);
+          $item_html      = str_replace( '</a>' , ' <strong class="caret"></strong></a>' , $item_html);
       }
 
       elseif (stristr( $item_html, 'li class="divider' )) {
