@@ -84,6 +84,9 @@ You can always deactivate the plugin without loosing data.
 
 == Changelog ==
 
+= 2.9.11 =
+* Bug fix: where download files can be corrupted (2nd fix)
+
 = 2.9.10 =
 * Bug fix: where download files can be corrupted
 

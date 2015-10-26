@@ -228,6 +228,9 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 					$result = $this->modify_links();
 					$this->display_admin_notice(sprintf(_n('%d internal link modified', '%d internal links modified', $result['links_count'], 'fg-joomla-to-wordpress'), $result['links_count']));
 				}
+			} else {
+				// Do other actions
+				do_action('fgj2wp_dispatch');
 			}
 
 			$this->display_admin_page(); // Display the admin page
@@ -721,7 +724,7 @@ SQL;
 		 * Save the plugin options
 		 *
 		 */
-		private function save_plugin_options() {
+		public function save_plugin_options() {
 			$this->plugin_options = array_merge($this->plugin_options, $this->validate_form_info());
 			update_option('fgj2wp_options', $this->plugin_options);
 
@@ -1373,7 +1376,33 @@ SQL;
 			}
 			
 			$post_title = !empty($name)? $name : preg_replace('/\.[^.]+$/', '', $basename);
-			$post_name = sanitize_title($post_title);
+			
+			// Image Alt
+			$image_alt = '';
+			if ( !empty($name) ) {
+				$image_alt = wp_strip_all_tags(stripslashes($name), true);
+			}
+			// GUID
+			$guid = $uploads['url'] . '/' . $basename;
+			
+			$attachment_id = $this->insert_attachment($post_title, $basename, $new_full_filename, $guid, $date, $filetype['type'], $image_alt);
+			return $attachment_id;
+		}
+		
+		/**
+		 * Save the attachment and generates its metadata
+		 * 
+		 * @param string $attachment_title Attachment name
+		 * @param string $basename Original attachment filename
+		 * @param string $new_full_filename New attachment filename with path
+		 * @param string $guid GUID
+		 * @param date $date Date
+		 * @param string $filetype File type
+		 * @param string $image_alt Image description
+		 * @return int|false Attachment ID or false
+		 */
+		public function insert_attachment($attachment_title, $basename, $new_full_filename, $guid, $date, $filetype, $image_alt='') {
+			$post_name = sanitize_title($attachment_title);
 			
 			// If the attachment does not exist yet, insert it in the database
 			$attachment_id = 0;
@@ -1386,11 +1415,11 @@ SQL;
 			}
 			if ( $attachment_id == 0 ) {
 				$attachment_data = array(
-					'guid'				=> $uploads['url'] . '/' . $basename, 
+					'guid'				=> $guid, 
 					'post_date'			=> $date,
-					'post_mime_type'	=> $filetype['type'],
+					'post_mime_type'	=> $filetype,
 					'post_name'			=> $post_name,
-					'post_title'		=> $post_title,
+					'post_title'		=> $attachment_title,
 					'post_status'		=> 'inherit',
 					'post_content'		=> '',
 				);
@@ -1398,7 +1427,7 @@ SQL;
 			}
 			
 			if ( !empty($attachment_id) ) {
-				if ( preg_match('/image/', $filetype['type']) ) { // Images
+				if ( preg_match('/image/', $filetype) ) { // Images
 					// you must first include the image.php file
 					// for the function wp_generate_attachment_metadata() to work
 					require_once(ABSPATH . 'wp-admin/includes/image.php');
@@ -1406,9 +1435,8 @@ SQL;
 					wp_update_attachment_metadata($attachment_id, $attach_data);
 
 					// Image Alt
-					if ( !empty($name) ) {
-						$image_alt = wp_strip_all_tags(stripslashes($name), true);
-						update_post_meta($attachment_id, '_wp_attachment_image_alt', addslashes($image_alt)); // update_meta expects slashed
+					if ( !empty($image_alt) ) {
+						update_post_meta($attachment_id, '_wp_attachment_image_alt', addslashes($image_alt)); // update_post_meta expects slashed
 					}
 				}
 				return $attachment_id;
@@ -1968,7 +1996,7 @@ SQL;
 		 * @param int $joomla_id Joomla article ID
 		 * @return int WordPress post ID
 		 */
-		protected function get_wp_post_id_from_joomla_id($joomla_id) {
+		public function get_wp_post_id_from_joomla_id($joomla_id) {
 			$post_id = $this->get_wp_post_id_from_meta('_fgj2wp_old_id', $joomla_id);
 			return $post_id;
 		}

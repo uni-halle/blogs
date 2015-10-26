@@ -2,7 +2,7 @@
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 2.1.5
+Stable tag: 2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://siteorigin.com/page-builder/#donate
@@ -96,6 +96,15 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 We've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 2.2.1 - October 22 2015 =
+* Various fixes to widget class names.
+* Added option to remove default `widget` class from Page Builder widgets.
+* Added action to saving home page.
+* Added support for defaults in widget and row styles.
+* Improve check for the homepage in sidebars simulator.
+* Changed parallax library to improve theme compatibility.
+* List privately published posts and pages under the prebuilt layout dialog Clone options.
 
 = 2.2 - September 7 2015 =
 * Added prebuilt layout directory.

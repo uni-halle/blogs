@@ -25,6 +25,11 @@ require_once('CFDBShortCodeContentParser.php');
 
 class ExportToValue extends ExportBase implements CFDBExport {
 
+    /**
+     * @param string $formName
+     * @param null $options
+     * @return void|String
+     */
     public function export($formName, $options = null) {
 
         // Allow for multiple form name inputs, comma-delimited

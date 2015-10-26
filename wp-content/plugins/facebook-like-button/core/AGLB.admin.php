@@ -34,7 +34,12 @@ class adminManager{
 		if(isset($_GET["updateFromNotice"]) && isset($_GET["page"]) && 
 				 $_GET["page"] == "AGPressGraph" && $_GET["updateFromNotice"]  == "true"){
 			update_option("AGPressGraph_like_didUpdateOptions", true);
-		} 
+		}
+		
+		if(isset($_GET["fromSellingNotice"]) && isset($_GET["page"]) && 
+				 $_GET["page"] == "AGPressGraph" && $_GET["fromSellingNotice"]  == "true"){
+				 		update_option("AGPressGraph_like_sellingNoticeSeen", true);
+				 }
 		
 	}
 	
@@ -584,6 +589,14 @@ class adminManager{
 	        <p><b>PressGraph <i>(Formerly Facebook Like Button)</i>:</b> been updated to version 6.0, and that requires you to update the plugin <a href="<?php echo admin_url('admin.php?page=AGPressGraph&updateFromNotice=true'); ?>">settings</a>.</p>
 	    </div>
 	    <?php
+	}
+	
+	public function sellingNotice(){
+		?>
+	    <div class="update-nag">
+	        <p><b>PressGraph <i>(Formerly Facebook Like Button)</i>:</b> Is to be sold (Source, Rights) if you're interested please contact me at <a href="mailto:me@ahmedgeek.com">me@ahmedgeek.com</a> or <a href="<?php echo admin_url('admin.php?page=AGPressGraph&fromSellingNotice=true'); ?>">dismiss</a> this message.</p>
+	    </div>
+		<?php
 	}
 
 }

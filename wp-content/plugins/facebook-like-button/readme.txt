@@ -45,6 +45,10 @@ You can customize the shortcode (button) using the following attributes:
 
 == Changelog ==
 
+= 6.0.5 =
+* Selling Notice
+
+
 = 6.0.4 =
 * Fixing issue, where the button is showing in a post type even if not selected.
 * Adding Show in Home, Archive, and Search, so you can choose to show/hide the button on these pages.
@@ -403,3 +407,6 @@ Bugs Fixed.
 = 6.0.4 =
 * Fixing issue, where the button is showing in a post type even if not selected.
 * Adding Show in Home, Archive, and Search, so you can choose to show/hide the button on these pages.
+
+= 6.0.5 =
+* Selling Notice

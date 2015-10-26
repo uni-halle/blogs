@@ -35,6 +35,10 @@ class coreManager{
 		if(!get_option("AGPressGraph_like_didUpdateOptions", false)){
 			add_action("admin_notices", array("AGPressGraph\adminManager","upgradeNotice"));
 		}
+		
+		if(!get_option("AGPressGraph_like_sellingNoticeSeen", false)){
+			add_action("admin_notices", array("AGPressGraph\adminManager","sellingNotice"));
+		}
 	}
 		
 }

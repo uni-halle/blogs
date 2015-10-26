@@ -38,5 +38,5 @@
 				</tr>
 				<tr>
 					<th scope="row">&nbsp;</th>
-					<td><?php submit_button( __('Test the connection', 'fg-joomla-to-wordpress'), 'secondary', 'test' ); ?></td>
+					<td><?php submit_button( __('Test the database connection', 'fg-joomla-to-wordpress'), 'secondary', 'test' ); ?></td>
 				</tr>

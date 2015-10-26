@@ -509,8 +509,8 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         require_once('CFDBMimeTypeExtensions.php');
         $mimeMap = new CFDBMimeTypeExtensions();
         $mimeType = $mimeMap->get_type_by_filename($fileInfo[0]);
-        if (ob_get_contents()) {
-            ob_clean(); // Fix bug where download files can be corrupted
+        if (ob_get_level()) {
+            ob_end_clean(); // Fix bug where download files can be corrupted
         }
         if ($mimeType) {
             header('Content-Type: ' . $mimeType);

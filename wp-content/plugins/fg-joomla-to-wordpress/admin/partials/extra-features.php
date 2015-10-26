@@ -31,6 +31,7 @@
 			<li><?php _e('JReviews reviews', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
 			<li><?php _e('Mosets Tree directory', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
 			<li><?php _e('Multilingual content to WPML', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
+			<li><?php _e('Simple Image Gallery & Simple Image Gallery Pro', 'fg-joomla-to-wordpress'); ?><sup>*</sup></li>
 		</ul>
 		<div class="center">
 			<a href="http://www.fredericgilles.net/fg-joomla-to-wordpress/" target="_blank"><img src="http://www.fredericgilles.net/wp-content/uploads/premium-version.png" alt="Buy Premium Version" /></a>

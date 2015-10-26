@@ -29,6 +29,7 @@
 
 			<table class="form-table">
 				<?php require('settings.php'); ?>
+				<?php do_action('fgj2wp_post_display_settings_options'); ?>
 				<?php require('behavior.php'); ?>
 				<?php require('actions.php'); ?>
 			</table>
