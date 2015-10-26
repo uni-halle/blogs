@@ -1,39 +1,35 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GeneratePress\n"
-"POT-Creation-Date: 2015-01-06 17:14-0800\n"
-"PO-Revision-Date: 2015-03-06 07:49+0100\n"
-"Last-Translator: Jiří Borový <jborovy@seznam.cz>\n"
+"POT-Creation-Date: 2015-10-18 16:57-0700\n"
+"PO-Revision-Date: 2015-10-18 16:57-0700\n"
+"Last-Translator: Foxtrot <foxtrot@foxtrot.me>\n"
 "Language-Team: \n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"Language: cs\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: 404.php:17
 msgid "Oops! That page can&rsquo;t be found."
-msgstr "Jejda, stránku nemůžeme nalézt!"
+msgstr "Jejda! Tuto stránku nelze nalézt."
 
 #: 404.php:22
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+msgid "It looks like nothing was found at this location. Maybe try searching?"
 msgstr ""
-"Vypadá to, že jsme nic nenašli. Můžete zkusit jeden z odkazů nebo znovu "
-"vyhledat!"
 
 #: archive.php:33
 #, php-format
 msgid "About %s"
-msgstr "Autor %s  napsal: "
+msgstr "%s"
 
 #: archive.php:41
 #, php-format
@@ -52,7 +48,7 @@ msgstr "Rok: %s"
 
 #: archive.php:50
 msgid "Asides"
-msgstr "Asides"
+msgstr "Poznámky"
 
 #: archive.php:53
 msgid "Images"
@@ -64,7 +60,7 @@ msgstr "Videa"
 
 #: archive.php:59
 msgid "Quotes"
-msgstr "Citáty"
+msgstr "Citace"
 
 #: archive.php:62
 msgid "Links"
@@ -72,51 +68,52 @@ msgstr "Odkazy"
 
 #: archive.php:65 sidebar-left.php:39 sidebar.php:38
 msgid "Archives"
-msgstr "Archív"
+msgstr "Archivy"
 
 #: comments.php:29
 #, php-format
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "Jedna zmínka  &ldquo;%2$s&rdquo;"
-msgstr[1] "%1$s zmínky  &ldquo;%2$s&rdquo;"
-msgstr[2] "%1$s zmínek  &ldquo;%2$s&rdquo;"
+msgstr[0] "Jedna zmínka &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s zmínky &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s zmínek &ldquo;%2$s&rdquo;"
 
-#: comments.php:36 comments.php:56
+#: comments.php:36 comments.php:58
 msgid "Comment navigation"
-msgstr "Navigace pro komentáře"
+msgstr "Navigace komentářů"
 
-#: comments.php:37 comments.php:57
+#: comments.php:37 comments.php:59
 msgid "&larr; Older Comments"
 msgstr "&larr; Starší komentáře"
 
-#: comments.php:38 comments.php:58
+#: comments.php:38 comments.php:60
 msgid "Newer Comments &rarr;"
 msgstr "Novější komentáře &rarr;"
 
-#: comments.php:68
+#: comments.php:70
 msgid "Comments are closed."
-msgstr "Přidání komentářů je zakázáno"
+msgstr "Komentáře jsou uzavřeny."
 
-#: comments.php:73
+#: comments.php:75
 msgid "Name"
 msgstr "Jméno"
 
-#: comments.php:74 inc/addons.php:103
+#: comments.php:76
 msgid "Email"
 msgstr "Email"
 
-#: comments.php:75 inc/options.php:75
+#: comments.php:77 inc/options.php:72
 msgid "Website"
-msgstr "Website"
+msgstr "Web"
 
-#: comments.php:80
+#: comments.php:82
 #, php-format
 msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
-msgstr "Musíte být  <a href=\"%1$s\">přihlášen</a>, aby jste mohl komentovat."
+msgstr ""
+"Musíte být <a href=\"%1$s\">přihlášeni</a>, abyste mohli psát komentáře."
 
-#: comments.php:81
+#: comments.php:83
 #, php-format
 msgid ""
 "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
@@ -125,530 +122,456 @@ msgstr ""
 "Jste přihlášeni jako <a href=\"%1$s\">%2$s</a>. Chcete se <a href=\"%3$s\" "
 "title=\"Odhlásit se z tohoto účtu\">odhlásit</a>?"
 
-#: comments.php:86
+#: comments.php:88
 msgid "Leave a Comment"
 msgstr "Napsat komentář"
 
-#: comments.php:87
+#: comments.php:89
 #, php-format
 msgid "Leave a Reply to %s"
-msgstr "Napsat komentář k %s"
+msgstr "Napsat odpověď k %s"
 
-#: comments.php:88
+#: comments.php:90
 msgid "Cancel reply"
-msgstr "Zrušit odpověď na komentář"
+msgstr "Zrušit odpověď"
 
-#: comments.php:89
+#: comments.php:91
 msgid "Post Comment"
 msgstr "Odeslat komentář"
 
-#: content-link.php:30 content-page.php:20 content-single.php:21
-#: content.php:34 image.php:56
+#: content-link.php:29 content-page.php:20 content-single.php:22 content.php:28
 msgid "Pages:"
 msgstr "Stránky:"
 
-#: content-page.php:26 content-single.php:32 image.php:78
-#: inc/template-tags.php:117 inc/template-tags.php:137
+#: content-page.php:26 content-single.php:32 inc/template-tags.php:117
+#: inc/template-tags.php:137
 msgid "Edit"
 msgstr "Upravit"
 
-#: footer.php:50 functions.php:138
+#: footer.php:37 functions.php:152
 msgid "Footer Widget 1"
 msgstr "Widget patičky 1"
 
-#: footer.php:52 footer.php:66 footer.php:80 footer.php:94 footer.php:108
-msgid "Replace this widget content by going to <a href=\""
-msgstr "Nahradtě obsah widgetu obsahem <a href=\""
+#: footer.php:39
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 1."
+msgstr ""
+"Nahraďte tento obsah widgetu tak, že půjdete do <a href=\"%1$s"
+"\"><strong>Vzhled / Widgety</strong></a> a přetáhnete widgety do Widget "
+"patičky 1."
 
-#: footer.php:53 footer.php:67 footer.php:81 footer.php:95 footer.php:109
-msgid "To remove or choose the number of footer widgets, go to <a href=\""
-msgstr "Smažte nebo změňte číslo widgetu patičky <a href=\""
+#: footer.php:40 footer.php:54 footer.php:68 footer.php:82 footer.php:96
+#, php-format
+msgid ""
+"To remove or choose the number of footer widgets, go to <a href=\"%1$s"
+"\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
+msgstr ""
+"Pro odstranění nebo výběr počtu widgetů patičky, jděte do <a href=\"%1$s"
+"\"><strong>Vzhled / Přizpůsobit / Rozvržení / Widgety patičky</strong></a>."
 
-#: footer.php:64 functions.php:146
+#: footer.php:51 functions.php:160
 msgid "Footer Widget 2"
 msgstr "Widget patičky 2"
 
-#: footer.php:78 functions.php:154
+#: footer.php:53
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 2."
+msgstr ""
+"Nahraďte tento obsah widgetu tak, že půjdete do <a href=\"%1$s"
+"\"><strong>Vzhled / Widgety</strong></a> a přetáhnete widgety do Widget "
+"patičky 2."
+
+#: footer.php:65 functions.php:168
 msgid "Footer Widget 3"
 msgstr "Widget patičky 3"
 
-#: footer.php:92 functions.php:162
-msgid "Footer Widget 4"
-msgstr "Wifget patičky 4"
+#: footer.php:67
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 3."
+msgstr ""
+"Nahraďte tento obsah widgetu tak, že půjdete do <a href=\"%1$s"
+"\"><strong>Vzhled / Widgety</strong></a> a přetáhnete widgety do Widget "
+"patičky 3."
 
-#: footer.php:106 functions.php:170
+#: footer.php:79 functions.php:176
+msgid "Footer Widget 4"
+msgstr "Widget patičky 4"
+
+#: footer.php:81
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 4."
+msgstr ""
+"Nahraďte tento obsah widgetu tak, že půjdete do <a href=\"%1$s"
+"\"><strong>Vzhled / Widgety</strong></a> a přetáhnete widgety do Widget "
+"patičky 4."
+
+#: footer.php:93 functions.php:184
 msgid "Footer Widget 5"
 msgstr "Widget patičky 5"
 
-#: functions.php:52
+#: footer.php:95
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 5."
+msgstr ""
+"Nahraďte tento obsah widgetu tak, že půjdete do <a href=\"%1$s"
+"\"><strong>Vzhled / Widgety</strong></a> a přetáhnete widgety do Widget "
+"patičky 5."
+
+#: functions.php:48
 msgid "Primary Menu"
-msgstr "Základní navigační menu"
+msgstr "Primární menu"
 
-#: functions.php:114 inc/customizer.php:347 inc/metaboxes.php:57
-#: inc/sanitize.php:183
+#: functions.php:128 inc/customizer.php:361 inc/metaboxes.php:57
+#: inc/sanitize.php:194
 msgid "Right Sidebar"
-msgstr "Postranní panel vpravo"
+msgstr "Pravý postranní panel"
 
-#: functions.php:122 inc/customizer.php:346 inc/metaboxes.php:61
-#: inc/sanitize.php:182
+#: functions.php:136 inc/customizer.php:360 inc/metaboxes.php:61
+#: inc/sanitize.php:193
 msgid "Left Sidebar"
-msgstr "Postranní panel vlevo"
+msgstr "Levý postranní panel"
 
-#: functions.php:130
+#: functions.php:144
 msgid "Header"
-msgstr "Záhlaví"
+msgstr "Hlavička"
 
-#: functions.php:250
-msgid "Search"
-msgstr "Hledej"
-
-#: functions.php:341 inc/options.php:120
+#: functions.php:389 inc/options.php:184
 msgid "Copyright"
 msgstr "Copyright"
 
-#: functions.php:349 inc/options.php:24 inc/options.php:47
+#: functions.php:397 inc/options.php:24 inc/options.php:67
 msgid "GeneratePress"
 msgstr "GeneratePress"
 
-#: functions.php:349
+#: functions.php:397
 msgid "Proudly powered by WordPress"
-msgstr "S radostí vytvořeno WordPressem"
+msgstr "Hrdě poháněno WordPressem"
 
-#: functions.php:349
+#: functions.php:397
 msgid "WordPress"
 msgstr "WordPress"
 
-#: image.php:24
-#, php-format
-msgid ""
-"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
-"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
-"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
-"rel=\"gallery\">%8$s</a>"
-msgstr ""
-"Vydáno <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s"
-"\">%2$s</time></span> v <a href=\"%3$s\" title=\"Link to full-size image\">"
-"%4$s &krát; %5$s</a> v <a href=\"%6$s\" title=\"Return to %7$s\" rel="
-"\"gallery\">%8$s</a>"
+#: header.php:24
+msgid "Skip to content"
+msgstr "Přeskočit na obsah"
 
-#: image.php:64 inc/template-tags.php:80 inc/template-tags.php:86
-msgid "Previous"
-msgstr "Předchozí"
+#: inc/add-ons/controls.php:34
+msgid "Default fonts"
+msgstr "Výchozí písma"
 
-#: image.php:65 inc/template-tags.php:81 inc/template-tags.php:90
-msgid "Next"
-msgstr "Další"
+#: inc/add-ons/controls.php:53
+msgid "Google fonts"
+msgstr "Google písma"
 
-#: image.php:69
-#, php-format
-msgid ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
-"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
-"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
-msgstr ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment"
-"\">Zanechte komentář</a> nebo trackback: <a class=\"trackback-link\" href="
-"\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Rrackback "
-"URL</a>."
+#: inc/add-ons/controls.php:62
+msgid "Font family"
+msgstr "Rodina písem"
 
-#: image.php:71
-#, php-format
-msgid ""
-"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
-"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
-"\">Trackback URL</a>."
-msgstr ""
-"Komentáře jsou zrušeny,ale můžete zanechat trackback: <a class=\"trackback-"
-"link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
-"\">Trackback URL</a>."
-
-#: image.php:73
-msgid ""
-"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
-"\" title=\"Post a comment\">post a comment</a>."
-msgstr ""
-"Trackbacky jsou zrušeny, ale můžete  <a class=\"comment-link\" href="
-"\"#respond\" title=\"Post a comment\">zanechat komentář</a>."
-
-#: image.php:75
-msgid "Both comments and trackbacks are currently closed."
-msgstr "Jak komentáře, tak trackacky jsou zrušeny."
-
-#: inc/addons.php:82
-msgid "verified"
-msgstr "Ověřeno"
-
-#: inc/addons.php:85
-msgid "unverified"
-msgstr "Neověřeno"
-
-#: inc/addons.php:88
-msgid "Activate"
-msgstr "Aktivovat"
-
-#: inc/addons.php:91
-msgid "Activate All"
-msgstr "Vše aktiváno"
-
-#: inc/addons.php:94
-msgid "Deactivate"
-msgstr "Deaktivovat"
-
-#: inc/addons.php:97
-msgid ""
-"Please activate the email you purchased your add-ons with below in order to "
-"receive future updates."
-msgstr ""
-"Prosím aktivujte emailem svoji koupi addonů, aby jste mohl dostávat budoucí "
-"aktualizace."
-
-#: inc/addons.php:100
-msgid "Add-on"
-msgstr "Addon"
-
-#: inc/addons.php:106
-msgid "Status"
-msgstr "Stav"
-
-#: inc/addons.php:109
-msgid "Action"
-msgstr "Provést"
-
-#: inc/addons.php:112
-msgid "Verify Email"
-msgstr "Potvrďte mail"
-
-#: inc/addons.php:115
-msgid "Refresh"
-msgstr "Obnovit"
-
-#: inc/addons.php:118 inc/options.php:73
-msgid "Version"
-msgstr "Verze"
-
-#: inc/addons.php:121
-msgid "Disable"
-msgstr "Zakázat"
-
-#: inc/addons.php:124
-msgid "Enable"
-msgstr "Povolit"
-
-#: inc/addons/typography.php:278 inc/options.php:93
+#: inc/add-ons/typography.php:322 inc/options.php:156
 msgid "Typography"
 msgstr "Typografie"
 
-#: inc/addons/typography.php:300
+#: inc/add-ons/typography.php:344
 msgid "Body"
 msgstr "Tělo"
 
-#: inc/addons/typography.php:322
+#: inc/add-ons/typography.php:366
 msgid "Font weight"
-msgstr "Šířka písma"
+msgstr "Tloušťka písma"
 
-#: inc/addons/typography.php:346
+#: inc/add-ons/typography.php:390
 msgid "Text transform"
 msgstr "Transformace textu"
 
-#: inc/addons/typography.php:369
+#: inc/add-ons/typography.php:413
 msgid "Font size"
-msgstr "Velikost Písma"
+msgstr "Velikost písma"
 
-#: inc/addons/typography.php:386 inc/customizer.php:175 inc/customizer.php:674
+#: inc/add-ons/typography.php:430 inc/customizer.php:188 inc/customizer.php:688
 msgid "More Settings"
 msgstr "Více nastavení"
 
-#: inc/addons/typography.php:389
+#: inc/add-ons/typography.php:433
 #, php-format
 msgid "Looking to add more typography settings?<br /> %s."
-msgstr "Hledám způsob, jak přidat více nastavení typografie?<br /> %s."
+msgstr "Chcete přidat více nastavení typografie?<br /> %s."
 
-#: inc/addons/typography.php:393
+#: inc/add-ons/typography.php:437
 msgid "Check out Generate Typography"
-msgstr "Podívejte se na generování typografie."
+msgstr "Mrkněte na Generate Typografie"
 
-#: inc/addons/typography/google-font-dropdown-custom-control.php:34
-msgid "Default fonts"
-msgstr "Standartní písma"
-
-#: inc/addons/typography/google-font-dropdown-custom-control.php:52
-msgid "Google fonts"
-msgstr "Písma Google"
-
-#: inc/addons/typography/google-font-dropdown-custom-control.php:62
-msgid "Font family"
-msgstr "Skupina písem"
-
-#: inc/controls.php:24
-msgid "Width"
-msgstr "Šířka"
-
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Select Image"
-msgstr "Zvolit obrázek"
+msgstr "Vybrat obrázek"
 
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Use Image"
 msgstr "Použít obrázek"
 
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Upload"
-msgstr "Nahrát soubor"
+msgstr "Nahrát"
 
-#: inc/controls.php:53
+#: inc/controls.php:52
 msgid "Remove"
 msgstr "Odstranit"
 
 #: inc/customizer.php:22
-msgid "Header Content"
-msgstr "Obsah hlavičky"
+msgid "Site Identity"
+msgstr "Identita stránky"
 
-#: inc/customizer.php:25
+#: inc/customizer.php:30
 msgid "Set Front Page"
-msgstr "Nastavit hlavní stránku"
+msgstr "Nastavit úvodní stránku"
 
-#: inc/customizer.php:28
-msgid "Set Navigation"
-msgstr "Nastavit navigaci"
-
-#: inc/customizer.php:46
+#: inc/customizer.php:51
 msgid "Hide site title"
-msgstr "Schovat title stránky"
+msgstr "Skrýt název webu"
 
-#: inc/customizer.php:65
+#: inc/customizer.php:70
 msgid "Hide site tagline"
-msgstr "Schovat slogan stránky "
+msgstr "Skrýt popis webu"
 
-#: inc/customizer.php:85
+#: inc/customizer.php:90
 msgid "Logo"
 msgstr "Logo"
 
-#: inc/customizer.php:98 inc/options.php:83
+#: inc/customizer.php:103 inc/options.php:140
 msgid "Colors"
 msgstr "Barvy"
 
-#: inc/customizer.php:109
+#: inc/customizer.php:114
 msgid "Base Colors"
 msgstr "Základní barvy"
 
-#: inc/customizer.php:121
+#: inc/customizer.php:126
 msgid "Background Color"
 msgstr "Barva pozadí"
 
-#: inc/customizer.php:126
+#: inc/customizer.php:132
 msgid "Text Color"
 msgstr "Barva textu"
 
-#: inc/customizer.php:131
+#: inc/customizer.php:138
 msgid "Link Color"
 msgstr "Barva odkazu"
 
-#: inc/customizer.php:136
+#: inc/customizer.php:144
 msgid "Link Color Hover"
-msgstr "Barva odkazu (při přejíždět myší)"
+msgstr "Barva odkazu při přejetí myší"
 
-#: inc/customizer.php:141
+#: inc/customizer.php:150
 msgid "Link Color Visited"
-msgstr "Barva návštíveného odkazu"
+msgstr "Barva navštívaného odkazu"
 
-#: inc/customizer.php:178
+#: inc/customizer.php:191
 #, php-format
 msgid "Looking to add more color settings?<br /> %s."
-msgstr "Chcete nastavit více barev ?<br /> %s."
+msgstr "Chcete přidat více nastavení barev?<br /> %s."
 
-#: inc/customizer.php:182
+#: inc/customizer.php:195
 msgid "Check out Generate Colors"
-msgstr "Označte pro generování barev"
+msgstr "Mrkněte na Generate Barvy"
 
-#: inc/customizer.php:197
+#: inc/customizer.php:210
 msgid "Layout"
-msgstr "Rozvržení webu"
+msgstr "Rozvržení"
 
-#: inc/customizer.php:199
+#: inc/customizer.php:212
 msgid "Allows you to edit your theme's layout."
-msgstr "Podporuje editování Vašeho layoutu téma."
+msgstr "Dovoluje vám upravit rozvržení vaší šablony."
 
-#: inc/customizer.php:219
+#: inc/customizer.php:233
 msgid "Container Width"
-msgstr "Šířka hlavního prostoru"
+msgstr "Šířka stránky"
 
-#: inc/customizer.php:246
+#: inc/customizer.php:260
 msgid "Header Layout"
-msgstr "Layout hlavičky"
+msgstr "Rozvržení hlavičky"
 
-#: inc/customizer.php:249 inc/customizer.php:312 inc/customizer.php:577
-#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:238
+#: inc/customizer.php:263 inc/customizer.php:326 inc/customizer.php:591
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:249
 msgid "Fluid / Full Width"
-msgstr "Plovoucí šířka"
+msgstr "Proměnlivá / Plná šířka"
 
-#: inc/customizer.php:250 inc/customizer.php:313 inc/customizer.php:578
-#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:239
+#: inc/customizer.php:264 inc/customizer.php:327 inc/customizer.php:592
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:250
 msgid "Contained"
-msgstr "Hlavní prostor"
+msgstr "Omezená"
 
-#: inc/customizer.php:277
+#: inc/customizer.php:291
 msgid "Header Alignment"
 msgstr "Zarovnání hlavičky"
 
-#: inc/customizer.php:280 inc/customizer.php:378 inc/sanitize.php:144
+#: inc/customizer.php:294 inc/customizer.php:392 inc/sanitize.php:155
 msgid "Left"
 msgstr "Doleva"
 
-#: inc/customizer.php:281 inc/customizer.php:379 inc/sanitize.php:145
+#: inc/customizer.php:295 inc/customizer.php:393 inc/sanitize.php:156
 msgid "Center"
-msgstr "Center"
+msgstr "Doprostřed"
 
-#: inc/customizer.php:282 inc/customizer.php:380 inc/sanitize.php:146
+#: inc/customizer.php:296 inc/customizer.php:394 inc/sanitize.php:157
 msgid "Right"
 msgstr "Doprava"
 
-#: inc/customizer.php:309
+#: inc/customizer.php:323
 msgid "Navigation Layout"
-msgstr "Layout navigace"
+msgstr "Rozvržení navigace"
 
-#: inc/customizer.php:340
+#: inc/customizer.php:354
 msgid "Navigation Position"
-msgstr "Pozice navigace"
+msgstr "Umístění navigace"
 
-#: inc/customizer.php:343 inc/sanitize.php:179
+#: inc/customizer.php:357 inc/sanitize.php:190
 msgid "Below Header"
 msgstr "Pod hlavičkou"
 
-#: inc/customizer.php:344 inc/sanitize.php:180
+#: inc/customizer.php:358 inc/sanitize.php:191
 msgid "Above Header"
 msgstr "Nad hlavičkou"
 
-#: inc/customizer.php:345 inc/sanitize.php:181
+#: inc/customizer.php:359 inc/sanitize.php:192
 msgid "Float Right"
-msgstr "Zarovnání v pravo"
+msgstr "Plovoucí vpravo"
 
-#: inc/customizer.php:348 inc/sanitize.php:184
+#: inc/customizer.php:362 inc/sanitize.php:195
 msgid "No Navigation"
 msgstr "Bez navigace"
 
-#: inc/customizer.php:375
+#: inc/customizer.php:389
 msgid "Navigation Alignment"
 msgstr "Zarovnání navigace"
 
-#: inc/customizer.php:407
+#: inc/customizer.php:421
 msgid "Navigation Search"
-msgstr "Formulář \"Hledej\" v navigaci"
+msgstr "Vyhledávání v navigaci"
 
-#: inc/customizer.php:410 inc/sanitize.php:162
+#: inc/customizer.php:424 inc/sanitize.php:173
 msgid "Enabled"
-msgstr "Zapnuto"
+msgstr "Povoleno"
 
-#: inc/customizer.php:411 inc/sanitize.php:163
+#: inc/customizer.php:425 inc/sanitize.php:174
 msgid "Disabled"
-msgstr "Vypnuto"
+msgstr "Zakázáno"
 
-#: inc/customizer.php:438
+#: inc/customizer.php:452
 msgid "Content Layout"
-msgstr "Layout obsahu"
+msgstr "Rozvržení obsahu"
 
-#: inc/customizer.php:441 inc/sanitize.php:200
+#: inc/customizer.php:455 inc/sanitize.php:211
 msgid "Separate Containers"
 msgstr "Oddělené prostory"
 
-#: inc/customizer.php:442 inc/sanitize.php:201
+#: inc/customizer.php:456 inc/sanitize.php:212
 msgid "One Container"
 msgstr "Jeden prostor"
 
-#: inc/customizer.php:469 inc/metaboxes.php:20
+#: inc/customizer.php:483 inc/metaboxes.php:20
 msgid "Sidebar Layout"
-msgstr "Layout postraního panelu"
+msgstr "Rozvržení postranních panelů stránky"
 
-#: inc/customizer.php:472 inc/customizer.php:507 inc/customizer.php:542
-#: inc/sanitize.php:217
+#: inc/customizer.php:486 inc/customizer.php:521 inc/customizer.php:556
+#: inc/sanitize.php:228
 msgid "Sidebar / Content"
-msgstr "Postranní panel/Obsah"
+msgstr "Panel / Obsah"
 
-#: inc/customizer.php:473 inc/customizer.php:508 inc/customizer.php:543
-#: inc/sanitize.php:218
+#: inc/customizer.php:487 inc/customizer.php:522 inc/customizer.php:557
+#: inc/sanitize.php:229
 msgid "Content / Sidebar"
-msgstr "Obsah/Postranní panel"
+msgstr "Obsah / Panel"
 
-#: inc/customizer.php:474 inc/customizer.php:509 inc/customizer.php:544
-#: inc/metaboxes.php:67 inc/sanitize.php:219
+#: inc/customizer.php:488 inc/customizer.php:523 inc/customizer.php:558
+#: inc/metaboxes.php:67 inc/sanitize.php:230
 msgid "Content (no sidebars)"
-msgstr "Obsah bez postranních panelů"
+msgstr "Obsah (bez panelů)"
 
-#: inc/customizer.php:475 inc/customizer.php:510 inc/customizer.php:545
-#: inc/sanitize.php:220
+#: inc/customizer.php:489 inc/customizer.php:524 inc/customizer.php:559
+#: inc/sanitize.php:231
 msgid "Sidebar / Content / Sidebar"
-msgstr "Postranní panel / Obsah / Postranní panel"
+msgstr "Panel / Obsah / Panel"
 
-#: inc/customizer.php:476 inc/customizer.php:511 inc/customizer.php:546
-#: inc/sanitize.php:221
+#: inc/customizer.php:490 inc/customizer.php:525 inc/customizer.php:560
+#: inc/sanitize.php:232
 msgid "Sidebar / Sidebar / Content"
-msgstr "Postranní panel / Panel uprostřed / Obsah"
+msgstr "Panel / Panel / Obsah"
 
-#: inc/customizer.php:477 inc/customizer.php:512 inc/customizer.php:547
-#: inc/sanitize.php:222
+#: inc/customizer.php:491 inc/customizer.php:526 inc/customizer.php:561
+#: inc/sanitize.php:233
 msgid "Content / Sidebar / Sidebar"
-msgstr "Obsah / Panel uprostřed / Postranní panel"
+msgstr "Obsah / Panel / Panel"
 
-#: inc/customizer.php:504
+#: inc/customizer.php:518
 msgid "Blog Sidebar Layout"
-msgstr "Layout blogu postranního panelu"
+msgstr "Rozvržení postranních panelů blogu"
 
-#: inc/customizer.php:539
+#: inc/customizer.php:553
 msgid "Single Post Sidebar Layout"
-msgstr "Layout jedinného postranního banneru"
+msgstr "Rozvržení postranních panelů příspěvku"
 
-#: inc/customizer.php:574
+#: inc/customizer.php:588
 msgid "Footer Layout"
-msgstr "Layout patičky"
+msgstr "Rozvržení patičky"
 
-#: inc/customizer.php:605 inc/metaboxes.php:125
+#: inc/customizer.php:619 inc/metaboxes.php:125
 msgid "Footer Widgets"
 msgstr "Widgety patičky"
 
-#: inc/customizer.php:627 inc/options.php:138
+#: inc/customizer.php:641 inc/options.php:198
 msgid "Blog"
 msgstr "Blog"
 
-#: inc/customizer.php:653
+#: inc/customizer.php:667
 msgid "Blog Post Content"
-msgstr "Obsah blogu - přízpěvků"
+msgstr "Obsah příspěvků blogu"
 
-#: inc/customizer.php:656 inc/sanitize.php:276
+#: inc/customizer.php:670 inc/sanitize.php:287
 msgid "Show full post"
-msgstr "Ukaž všechny přízpěvky"
+msgstr "Ukázat celý příspěvek"
 
-#: inc/customizer.php:657 inc/sanitize.php:277
+#: inc/customizer.php:671 inc/sanitize.php:288
 msgid "Show excerpt"
-msgstr "Ukaž pouze perex"
+msgstr "Ukázat úryvek"
 
-#: inc/customizer.php:677
+#: inc/customizer.php:691
 #, php-format
 msgid "Looking to add more blog settings?<br /> %s."
-msgstr "Hledáte více nastavení?<br /> %s."
+msgstr "Chcete přidat více nastavení blogu?<br /> %s."
 
-#: inc/customizer.php:681
+#: inc/customizer.php:695
 msgid "Check out Generate Blog"
-msgstr "Vygenerujte blog"
+msgstr "Mrkněte na Generate Blog"
 
-#: inc/customizer.php:702
+#: inc/customizer.php:727
 msgid "Default"
-msgstr "Výchozí hodnota"
+msgstr "Výchozí"
 
-#: inc/customizer.php:738
-msgid "Addon available"
-msgstr "Addon dostupný"
+#: inc/customizer.php:763
+msgid "Add-on available"
+msgstr "Dostupný doplněk"
 
-#: inc/customizer.php:788
-msgid "Addons Available! Take a look"
-msgstr "Addony jsou dostupné, podívejte se.."
-
-#: inc/extras.php:406
-#, php-format
-msgid "Page %s"
-msgstr "%s. stránka"
+#: inc/customizer.php:821
+msgid "Add-ons Available! Take a look"
+msgstr "Dostupné doplňky! Podívejte se"
 
 #: inc/metaboxes.php:55
 msgid "Global Layout Settings"
-msgstr "Kompletní nastavení layuoutu"
+msgstr "Globální nastavení rozvržení"
 
 #: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
 #: inc/metaboxes.php:75 inc/metaboxes.php:79
@@ -662,160 +585,178 @@ msgstr "Postranní panel"
 
 #: inc/metaboxes.php:65
 msgid "No Sidebars"
-msgstr "Bez postranních bannerů"
+msgstr "Bez postranních panelů"
 
 #: inc/metaboxes.php:69
 msgid "Both Sidebars"
-msgstr "Oba postranní bannery"
+msgstr "Oba postranní panely"
 
 #: inc/metaboxes.php:73
 msgid "Both Sidebars on Left"
-msgstr "Oba postranní bannery jsou nalevo"
+msgstr "Oba postranní panely vlevo"
 
 #: inc/metaboxes.php:77
 msgid "Both Sidebars on Right"
-msgstr "Oba postranní bannery jsou napravo"
+msgstr "Oba postranní panely vpravo"
 
 #: inc/metaboxes.php:160
 msgid "Global Footer Widget Settings"
-msgstr "Kompletní nastavení widgetů patičiky"
+msgstr "Globální nastavení widgetů patičky"
 
 #: inc/metaboxes.php:162 inc/metaboxes.php:164
 msgid "0 Widgets"
-msgstr "Bez widgetů"
+msgstr "0 widgetů"
 
 #: inc/metaboxes.php:166 inc/metaboxes.php:168
 msgid "1 Widget"
-msgstr "Jeden widget"
+msgstr "1 widget"
 
 #: inc/metaboxes.php:170 inc/metaboxes.php:172
 msgid "2 Widgets"
-msgstr "Dva widgety"
+msgstr "2 widgety"
 
 #: inc/metaboxes.php:174 inc/metaboxes.php:176
 msgid "3 Widgets"
-msgstr "Tři widgety"
+msgstr "3 widgety"
 
 #: inc/metaboxes.php:178 inc/metaboxes.php:180
 msgid "4 Widgets"
-msgstr "Čtyři widgety"
+msgstr "4 widgety"
 
 #: inc/metaboxes.php:182 inc/metaboxes.php:184
 msgid "5 Widgets"
-msgstr "Pět widgetů"
+msgstr "5 widgetů"
 
-#: inc/navigation.php:88
+#: inc/navigation.php:91
 msgid "Menu"
 msgstr "Menu"
 
-#: inc/navigation.php:89
-msgid "Skip to content"
-msgstr "Přeskočit obsah"
+#: inc/navigation.php:130 inc/template-tags.php:353 inc/template-tags.php:379
+#: searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr "Hledat"
 
-#: inc/options.php:57
-msgid "Import successful."
-msgstr "Úspěšný import"
-
-#: inc/options.php:61
-msgid "Settings removed."
-msgstr "Nastavení smazáno."
-
-#: inc/options.php:65
-msgid "Settings saved."
-msgstr "Nastavení bylo uloženo."
+#: inc/options.php:64 inc/options.php:77 inc/options.php:130
+msgid "Customize"
+msgstr "Přizpůsobit"
 
 #: inc/options.php:70
-msgid "Information"
-msgstr "Informace"
+msgid "Version"
+msgstr "Verze"
 
-#: inc/options.php:74
+#: inc/options.php:71
 msgid "Author"
 msgstr "Autor"
 
-#: inc/options.php:78 inc/options.php:222
+#: inc/options.php:79 inc/options.php:133
 msgid "Add-ons"
-msgstr "Addony"
+msgstr "Doplňky"
 
-#: inc/options.php:102
-msgid "Page Header"
-msgstr "Patička stránky"
+#: inc/options.php:81
+msgid ""
+"Please help support ongoing development of the GeneratePress by buying me a "
+"coffee :)"
+msgstr ""
+"Prosím, pomozte podpořit probíhající vývoj GeneratePressu tím, že mi koupíte "
+"kafe :)"
+
+#: inc/options.php:81
+msgid "Buy me a coffee :)"
+msgstr "Kupte mi kafe :)"
+
+#: inc/options.php:89
+msgid "Add-on Updates"
+msgstr "Aktualizace doplňků"
+
+#: inc/options.php:94
+msgid "No add-ons to keep up to date!"
+msgstr "Bez doplňků k aktualizaci!"
+
+#: inc/options.php:108
+msgid "Delete Customizer Settings"
+msgstr "Smazat nastavení Přizpůsobení"
+
+#: inc/options.php:110
+#, php-format
+msgid ""
+"<strong>Warning:</strong> Deleting your <a href=\"%1$s\">Customizer</a> "
+"settings can not be undone."
+msgstr ""
+"<strong>Varování:</strong> Smazání vašeho nastavení <a href=\"%1$s"
+"\">Přizpůsobení</a> nemůže být vráceno zpět."
 
 #: inc/options.php:111
+msgid ""
+"Consider using our Import/Export add-on to export your settings before "
+"deleting them."
+msgstr ""
+"Zvažte použití našeho Import/Export doplňku pro export vašeho nastavení, než "
+"jej smažete."
+
+#: inc/options.php:116
+msgid "Warning: This will delete your settings."
+msgstr "Varování: Toto smaže vaše nastavení."
+
+#: inc/options.php:118
+msgid "Delete Default Customizer Settings"
+msgstr "Smazat výchozí nastavení Přizpůsobení"
+
+#: inc/options.php:148
+msgid "Sections"
+msgstr "Sekce"
+
+#: inc/options.php:163
+msgid "Menu Plus"
+msgstr "Menu plus"
+
+#: inc/options.php:170
+msgid "Page Header"
+msgstr "Hlavička stránky"
+
+#: inc/options.php:177
 msgid "Import / Export"
-msgstr "Import/Export"
+msgstr "Import / Export"
 
-#: inc/options.php:129
+#: inc/options.php:191
 msgid "Disable Elements"
-msgstr "Vypnutí částí"
+msgstr "Zákaz prvků"
 
-#: inc/options.php:147
+#: inc/options.php:205
 msgid "Hooks"
-msgstr "Překážky"
+msgstr "Háky"
 
-#: inc/options.php:156
+#: inc/options.php:212
 msgid "Spacing"
-msgstr "Mezery"
+msgstr "Rozestupy"
 
-#: inc/options.php:165
+#: inc/options.php:219
 msgid "Backgrounds"
 msgstr "Pozadí"
 
-#: inc/options.php:174
+#: inc/options.php:226
 msgid "Secondary Nav"
 msgstr "Sekundární navigace"
 
-#: inc/options.php:188 inc/options.php:201
+#: inc/options.php:238 inc/options.php:245
 msgid "Not activated."
-msgstr "Není aktivován"
+msgstr "Není aktivováno."
 
-#: inc/options.php:192 inc/options.php:205
-msgid "Activated and unverified. Please activate below."
-msgstr "Aktivován, ale nepotvrzen. Pokračujte v aktivaci."
+#: inc/options.php:240 inc/options.php:247
+msgid "Activated."
+msgstr "Aktivováno."
 
-#: inc/options.php:194 inc/options.php:207
-msgid "Activated and verified."
-msgstr "Aktivován a potrzen."
+#: inc/options.php:296
+msgid "Settings saved."
+msgstr "Nastavení uloženo."
 
-#: inc/options.php:220
-msgid "Customizer"
-msgstr "Customizer"
+#: inc/options.php:300
+msgid "Import successful."
+msgstr "Import úspěšný."
 
-#: inc/options.php:224
-msgid ""
-"Please help support development of the GeneratePress by buying me a coffee :)"
-msgstr "Prosím, podpořte vývojáře  GeneratePress."
-
-#: inc/options.php:224
-msgid "Buy me a coffee :)"
-msgstr "Podpořte autory pluginu."
-
-#: inc/options.php:232
-msgid "Addon Activation"
-msgstr "Aktivace addonů"
-
-#: inc/options.php:237
-msgid "Looks like you don't have any Add-ons! <a href=\""
-msgstr "Vypadá to, že nepoužíváte žádné addony! <a href=\""
-
-#: inc/options.php:254
-msgid "Delete Customizer Settings"
-msgstr "Smazat nastavení Customizeru"
-
-#: inc/options.php:257
-msgid ""
-"<strong>Warning:</strong> Clicking this button will delete your settings set "
-"in the <a href=\""
-msgstr ""
-"<strong>Hlášení:</strong> Stistknutím tlačítka smažete veškerá nastavení:<a "
-"href=\""
-
-#: inc/options.php:258
-msgid "You may want to export your settings before deleting them forever."
-msgstr "Můžtete exportovat veškerá nastavení před tím, než je smažete navždy!"
-
-#: inc/options.php:263
-msgid "Delete Default Customizer Settings"
-msgstr "Smazat standartní nastavní Customizeru"
+#: inc/options.php:304
+msgid "Settings removed."
+msgstr "Nastavení odstraněno."
 
 #: inc/template-tags.php:39
 msgid "&larr; Previous"
@@ -827,15 +768,23 @@ msgstr "Další &rarr;"
 
 #: inc/template-tags.php:76
 msgid "Post navigation"
-msgstr "Navigace pro příspěvky"
+msgstr "Navigace příspěvků"
+
+#: inc/template-tags.php:80 inc/template-tags.php:86
+msgid "Previous"
+msgstr "Předchozí"
+
+#: inc/template-tags.php:81 inc/template-tags.php:90
+msgid "Next"
+msgstr "Další"
 
 #: inc/template-tags.php:86
 msgid "Older posts"
-msgstr "Starší přízpěvky"
+msgstr "Starší příspěvky"
 
 #: inc/template-tags.php:90
 msgid "Newer posts"
-msgstr "Novější přízpěvky"
+msgstr "Novější příspěvky"
 
 #: inc/template-tags.php:117
 msgid "Pingback:"
@@ -854,64 +803,52 @@ msgstr "%1$s v %2$s"
 
 #: inc/template-tags.php:151
 msgid "Your comment is awaiting moderation."
-msgstr "Váš komentář čeká na schválení"
+msgstr "Váš komentář čeká na schválení."
 
-#: inc/template-tags.php:239
-#, php-format
-msgid ""
-"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-msgstr ""
-"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-
-#: inc/template-tags.php:246
+#: inc/template-tags.php:194
 msgid "by"
-msgstr "od autora: "
+msgstr "od"
 
-#: inc/template-tags.php:248
+#: inc/template-tags.php:196
 #, php-format
 msgid "View all posts by %s"
-msgstr "Zobrazit všechny články od %s"
+msgstr "Zobrazit všechny příspěvky od %s"
 
-#: inc/template-tags.php:262
+#: inc/template-tags.php:209 inc/template-tags.php:220
 msgid "Read more"
-msgstr "Celý článek.."
+msgstr "Číst dál"
 
-#: inc/template-tags.php:305
+#: inc/template-tags.php:327
 msgctxt "label"
 msgid "Search"
-msgstr "Hledej"
+msgstr "Hledat"
 
-#: inc/template-tags.php:350 inc/template-tags.php:358
+#: inc/template-tags.php:393 inc/template-tags.php:401
 msgctxt "Used between list items, there is a space after the comma."
 msgid ", "
 msgstr ", "
 
-#: inc/template-tags.php:353
+#: inc/template-tags.php:396
 msgctxt "Used before category names."
 msgid "Categories"
 msgstr "Rubriky"
 
-#: inc/template-tags.php:361
+#: inc/template-tags.php:404
 msgctxt "Used before tag names."
 msgid "Tags"
 msgstr "Štítky"
 
-#: inc/template-tags.php:372
-msgctxt "Used before full size attachment link."
-msgid "Full size"
-msgstr "Plná velikost"
-
-#: inc/template-tags.php:381
+#: inc/template-tags.php:412
 msgid "Leave a comment"
-msgstr "Zanechte komentář"
+msgstr "Napsat komentář"
 
-#: inc/template-tags.php:381
+#: inc/template-tags.php:412
 msgid "1 Comment"
-msgstr "1 Komentář"
+msgstr "1 komentář"
 
-#: inc/template-tags.php:381
+#: inc/template-tags.php:412
 msgid "% Comments"
-msgstr "% Komentářů"
+msgstr "% komentářů"
 
 #: no-results.php:15
 msgid "Nothing Found"
@@ -922,21 +859,22 @@ msgstr "Nenalezeno"
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
-"Jste připraveni publikovat první přízpěvek? <a href=\"%1$s\">Tak začneme</a>."
+"Jste připraveni publikovat váš první příspěvek? <a href=\"%1$s\">Začněte "
+"zde</a>."
 
 #: no-results.php:26
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
-"Omlouváme se, ale hledaný výraz bohužel nebyl na webu nalezen. Zkuste to "
-"prosím znovu s nějakým jiným klíčovým slovem."
+"Omlouváme se, ale hledaný výraz nebyl bohužel nalezen. Zkuste to prosím "
+"znovu s nějakými jinými klíčovými slovy."
 
 #: no-results.php:31
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
-msgstr "Vypadá to, že nemůžeme najít, co jste hledali. Chtěli by jste pomoci?"
+msgstr "Vypadá to, že nemůžeme najít to, co hledáte. Možná pomůže vyhledávání."
 
 #: search.php:16
 #, php-format
@@ -946,18 +884,28 @@ msgstr "Výsledky vyhledávání pro: %s"
 #: searchform.php:10 searchform.php:11
 msgctxt "label"
 msgid "Search for:"
-msgstr "Výsledky hledání: "
+msgstr "Hledat:"
 
 #: searchform.php:11
 msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr "Hledat &hellip;"
 
-#: searchform.php:13
-msgctxt "submit button"
-msgid "Search"
-msgstr "Hledej"
-
 #: sidebar-left.php:46 sidebar.php:45
 msgid "Meta"
-msgstr "Další informace"
+msgstr "Základní informace"
+
+#~ msgid ""
+#~ "It looks like nothing was found at this location. Maybe try one of the "
+#~ "links below or a search?"
+#~ msgstr ""
+#~ "Vypadá to, že na tomto místě nebylo nic nalezeno. Zkuste jeden z odkazů "
+#~ "níže nebo použijte vyhledávání."
+
+#~ msgid ""
+#~ "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+#~ msgstr ""
+#~ "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+
+#~ msgid "Width"
+#~ msgstr "Šířka"

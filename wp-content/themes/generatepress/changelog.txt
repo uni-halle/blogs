@@ -1,5 +1,14 @@
 === changelog ===
 
+= (10/18/2015) - 1.3.17 =
+* Adjust grid CSS for Windows mobile phones
+* Fix WooCommerce specific styling to mobile
+* Update generatepress.pot translation file
+* Update Czech translation
+* All translations updated - ** please check your translations **
+* Adjust calendar widget styling
+* Add BuddyPress "Post in" styling
+
 = (10/11/2015) - 1.3.16 =
 * Improve schema markup throughout theme
 * Added generate_body_schema function to output the schema itemtype for the <body> element

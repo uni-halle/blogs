@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GeneratePress\n"
-"POT-Creation-Date: 2015-01-27 16:16-0800\n"
-"PO-Revision-Date: 2015-01-27 16:16-0800\n"
+"POT-Creation-Date: 2015-10-18 16:56-0700\n"
+"PO-Revision-Date: 2015-10-18 16:56-0700\n"
 "Last-Translator: Jean Paiva <jean_paiva_@hotmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -23,12 +23,8 @@ msgid "Oops! That page can&rsquo;t be found."
 msgstr "Oops! Não foi possível encontrar essa página."
 
 #: 404.php:22
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+msgid "It looks like nothing was found at this location. Maybe try searching?"
 msgstr ""
-"Parece que nada foi encontrado nessa localização. Tente um dos links abaixo "
-"ou talvez uma busca?"
 
 #: archive.php:33
 #, php-format
@@ -82,40 +78,40 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "Um pensamento em &ldquo;%2$s&rdquo;"
 msgstr[1] "%1$s pensamentos em &ldquo;%2$s&rdquo;"
 
-#: comments.php:36 comments.php:56
+#: comments.php:36 comments.php:58
 msgid "Comment navigation"
 msgstr "Navegação de Comentários"
 
-#: comments.php:37 comments.php:57
+#: comments.php:37 comments.php:59
 msgid "&larr; Older Comments"
 msgstr "&larr; Comentários Antigos"
 
-#: comments.php:38 comments.php:58
+#: comments.php:38 comments.php:60
 msgid "Newer Comments &rarr;"
 msgstr "Novos Comentários &larr;"
 
-#: comments.php:68
+#: comments.php:70
 msgid "Comments are closed."
 msgstr "Os Comentários estão fechados."
 
-#: comments.php:73
+#: comments.php:75
 msgid "Name"
 msgstr "Nome"
 
-#: comments.php:74 inc/addons.php:103
+#: comments.php:76
 msgid "Email"
 msgstr "Email"
 
-#: comments.php:75 inc/options.php:75
+#: comments.php:77 inc/options.php:72
 msgid "Website"
 msgstr "Website"
 
-#: comments.php:80
+#: comments.php:82
 #, php-format
 msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
 msgstr "Você deve estar <a href=\"%1$s\">logado</a> para fazer um comentário."
 
-#: comments.php:81
+#: comments.php:83
 #, php-format
 msgid ""
 "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
@@ -124,522 +120,435 @@ msgstr ""
 "Conectado como <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title="
 "\"Desconectar desta conta\">Desconectar?</a>"
 
-#: comments.php:86
+#: comments.php:88
 msgid "Leave a Comment"
 msgstr "Deixe um Comentário"
 
-#: comments.php:87
+#: comments.php:89
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr "Deixe uma resposta para %s"
 
-#: comments.php:88
+#: comments.php:90
 msgid "Cancel reply"
 msgstr "Cancelar resposta"
 
-#: comments.php:89
+#: comments.php:91
 msgid "Post Comment"
 msgstr "Publicar Comentário"
 
-#: content-link.php:29 content-page.php:20 content-single.php:21
-#: content.php:34 image.php:56
+#: content-link.php:29 content-page.php:20 content-single.php:22 content.php:28
 msgid "Pages:"
 msgstr "Páginas:"
 
-#: content-page.php:26 content-single.php:32 image.php:78
-#: inc/template-tags.php:117 inc/template-tags.php:137
+#: content-page.php:26 content-single.php:32 inc/template-tags.php:117
+#: inc/template-tags.php:137
 msgid "Edit"
 msgstr "Editar"
 
-#: footer.php:50 functions.php:143
+#: footer.php:37 functions.php:152
 msgid "Footer Widget 1"
 msgstr "Footer Widget 1"
 
-#: footer.php:52 footer.php:66 footer.php:80 footer.php:94 footer.php:108
-msgid "Replace this widget content by going to <a href=\""
-msgstr "Substitua o conteúdo widget em <a href=\""
-
-#: footer.php:53 footer.php:67 footer.php:81 footer.php:95 footer.php:109
-msgid "To remove or choose the number of footer widgets, go to <a href=\""
+#: footer.php:39
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 1."
 msgstr ""
-"Para remover ou escolher o número de widgets do rodapé, vá em <a href=\""
 
-#: footer.php:64 functions.php:151
+#: footer.php:40 footer.php:54 footer.php:68 footer.php:82 footer.php:96
+#, php-format
+msgid ""
+"To remove or choose the number of footer widgets, go to <a href=\"%1$s"
+"\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
+msgstr ""
+
+#: footer.php:51 functions.php:160
 msgid "Footer Widget 2"
 msgstr "Footer Widget 2"
 
-#: footer.php:78 functions.php:159
+#: footer.php:53
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 2."
+msgstr ""
+
+#: footer.php:65 functions.php:168
 msgid "Footer Widget 3"
 msgstr "Footer Widget 3"
 
-#: footer.php:92 functions.php:167
+#: footer.php:67
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 3."
+msgstr ""
+
+#: footer.php:79 functions.php:176
 msgid "Footer Widget 4"
 msgstr "Footer Widget 4"
 
-#: footer.php:106 functions.php:175
+#: footer.php:81
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 4."
+msgstr ""
+
+#: footer.php:93 functions.php:184
 msgid "Footer Widget 5"
 msgstr "Footer Widget 5"
 
-#: functions.php:52
+#: footer.php:95
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 5."
+msgstr ""
+
+#: functions.php:48
 msgid "Primary Menu"
 msgstr "Menu Primário"
 
-#: functions.php:119 inc/customizer.php:347 inc/metaboxes.php:57
-#: inc/sanitize.php:183
+#: functions.php:128 inc/customizer.php:361 inc/metaboxes.php:57
+#: inc/sanitize.php:194
 msgid "Right Sidebar"
 msgstr "Sidebar Direita"
 
-#: functions.php:127 inc/customizer.php:346 inc/metaboxes.php:61
-#: inc/sanitize.php:182
+#: functions.php:136 inc/customizer.php:360 inc/metaboxes.php:61
+#: inc/sanitize.php:193
 msgid "Left Sidebar"
 msgstr "Sidebar Esquerda"
 
-#: functions.php:135
+#: functions.php:144
 msgid "Header"
 msgstr "Cabeçalho"
 
-#: functions.php:254
-msgid "Search"
-msgstr "Buscar"
-
-#: functions.php:345 inc/options.php:120
+#: functions.php:389 inc/options.php:184
 msgid "Copyright"
 msgstr "Direitos Autorais"
 
-#: functions.php:353 inc/options.php:24 inc/options.php:47
+#: functions.php:397 inc/options.php:24 inc/options.php:67
 msgid "GeneratePress"
 msgstr "GeneratePress"
 
-#: functions.php:353
+#: functions.php:397
 msgid "Proudly powered by WordPress"
 msgstr "Orgulhosamente desenvolvido com WordPress"
 
-#: functions.php:353
+#: functions.php:397
 msgid "WordPress"
 msgstr "WordPress"
 
-#: image.php:24
-#, php-format
-msgid ""
-"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
-"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
-"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
-"rel=\"gallery\">%8$s</a>"
-msgstr ""
-"Públicado <span class=\"entry-date\"><time class=\"entry-date\" datetime="
-"\"%1$s\">%2$s</time></span> no <a href=\"%3$s\" title=\"Link to full-size "
-"image\">%4$s &times; %5$s</a> em <a href=\"%6$s\" title=\"Return to %7$s\" "
-"rel=\"gallery\">%8$s</a>"
+#: header.php:24
+msgid "Skip to content"
+msgstr "Pular para o Conteúdo"
 
-#: image.php:64 inc/template-tags.php:80 inc/template-tags.php:86
-msgid "Previous"
-msgstr "Próximo"
+#: inc/add-ons/controls.php:34
+msgid "Default fonts"
+msgstr "Fontes padrão"
 
-#: image.php:65 inc/template-tags.php:81 inc/template-tags.php:90
-msgid "Next"
-msgstr "Anterior"
+#: inc/add-ons/controls.php:53
+msgid "Google fonts"
+msgstr "Fontes do Google"
 
-#: image.php:69
-#, php-format
-msgid ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
-"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
-"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
-msgstr ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Poste um comentario"
-"\">Poste um comentário</a> ou deixe uma referência: <a class=\"trackback-link"
-"\" href=\"%s\" title=\"Link da Referência\" rel=\"trackback\">URL da "
-"Referência</a>."
+#: inc/add-ons/controls.php:62
+msgid "Font family"
+msgstr "Familia da fonte"
 
-#: image.php:71
-#, php-format
-msgid ""
-"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
-"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
-"\">Trackback URL</a>."
-msgstr ""
-"Os Comentários estão fechados, mas você pode deixar uma referência: <a class="
-"\"trackback-link\" href=\"%s\" title=\"Link da Referência\" rel=\"trackback"
-"\">URL da Referência</a>."
-
-#: image.php:73
-msgid ""
-"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
-"\" title=\"Post a comment\">post a comment</a>."
-msgstr ""
-"As Referências estão fechadas, mas você pode <a class=\"comment-link\" href="
-"\"#respond\" title=\"Postar comentário\">postar um comentário</a>."
-
-#: image.php:75
-msgid "Both comments and trackbacks are currently closed."
-msgstr "Ambos os comentários e referências estão atualmente fechados."
-
-#: inc/addons.php:82
-msgid "verified"
-msgstr "verificado"
-
-#: inc/addons.php:85
-msgid "unverified"
-msgstr "não verificado"
-
-#: inc/addons.php:88
-msgid "Activate"
-msgstr "Ativar"
-
-#: inc/addons.php:91
-msgid "Activate All"
-msgstr "Ativar Tudo"
-
-#: inc/addons.php:94
-msgid "Deactivate"
-msgstr "Desativar"
-
-#: inc/addons.php:97
-msgid ""
-"Please activate the email you purchased your add-ons with below in order to "
-"receive future updates."
-msgstr ""
-"Por favor, ative o e-mail que você comprou seus add-ons abaixo, a fim de "
-"receber futuras atualizações."
-
-#: inc/addons.php:100
-msgid "Add-on"
-msgstr "Add-on"
-
-#: inc/addons.php:106
-msgid "Status"
-msgstr "Status"
-
-#: inc/addons.php:109
-msgid "Action"
-msgstr "Ação"
-
-#: inc/addons.php:112
-msgid "Verify Email"
-msgstr "Verificar Email"
-
-#: inc/addons.php:115
-msgid "Refresh"
-msgstr "Atualizar"
-
-#: inc/addons.php:118 inc/options.php:73
-msgid "Version"
-msgstr "Versão"
-
-#: inc/addons.php:121
-msgid "Disable"
-msgstr "Desabilitar"
-
-#: inc/addons.php:124
-msgid "Enable"
-msgstr "Habilitado"
-
-#: inc/addons/typography.php:285 inc/options.php:93
+#: inc/add-ons/typography.php:322 inc/options.php:156
 msgid "Typography"
 msgstr "Tipografia"
 
-#: inc/addons/typography.php:307
+#: inc/add-ons/typography.php:344
 msgid "Body"
 msgstr "Corpo"
 
-#: inc/addons/typography.php:329
+#: inc/add-ons/typography.php:366
 msgid "Font weight"
 msgstr "Peso da fonte"
 
-#: inc/addons/typography.php:353
+#: inc/add-ons/typography.php:390
 msgid "Text transform"
 msgstr "Transformação do texto"
 
-#: inc/addons/typography.php:376
+#: inc/add-ons/typography.php:413
 msgid "Font size"
 msgstr "Tamanho da fonte"
 
-#: inc/addons/typography.php:393 inc/customizer.php:175 inc/customizer.php:674
+#: inc/add-ons/typography.php:430 inc/customizer.php:188 inc/customizer.php:688
 msgid "More Settings"
 msgstr "Mais definições"
 
-#: inc/addons/typography.php:396
+#: inc/add-ons/typography.php:433
 #, php-format
 msgid "Looking to add more typography settings?<br /> %s."
 msgstr "Procurando para adicionar mais configurações de tipografia?<br /> %s."
 
-#: inc/addons/typography.php:400
+#: inc/add-ons/typography.php:437
 msgid "Check out Generate Typography"
 msgstr "Confira Generate Typography"
 
-#: inc/addons/typography/google-font-dropdown-custom-control.php:34
-msgid "Default fonts"
-msgstr "Fontes padrão"
-
-#: inc/addons/typography/google-font-dropdown-custom-control.php:52
-msgid "Google fonts"
-msgstr "Fontes do Google"
-
-#: inc/addons/typography/google-font-dropdown-custom-control.php:62
-msgid "Font family"
-msgstr "Familia da fonte"
-
-#: inc/controls.php:24
-msgid "Width"
-msgstr "Largura"
-
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Select Image"
 msgstr "Selecione a imagem"
 
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Use Image"
 msgstr "Use a imagem"
 
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Upload"
 msgstr "Upload"
 
-#: inc/controls.php:53
+#: inc/controls.php:52
 msgid "Remove"
 msgstr "Remover"
 
 #: inc/customizer.php:22
-msgid "Header Content"
-msgstr "Conteúdo do Cabeçalho"
+msgid "Site Identity"
+msgstr ""
 
-#: inc/customizer.php:25
+#: inc/customizer.php:30
 msgid "Set Front Page"
 msgstr "Definir Página Inicial"
 
-#: inc/customizer.php:28
-msgid "Set Navigation"
-msgstr "Fixar Navegação"
-
-#: inc/customizer.php:46
+#: inc/customizer.php:51
 msgid "Hide site title"
 msgstr "Esconder Título do Site"
 
-#: inc/customizer.php:65
+#: inc/customizer.php:70
 msgid "Hide site tagline"
 msgstr "Esconder Tagline do Site"
 
-#: inc/customizer.php:85
+#: inc/customizer.php:90
 msgid "Logo"
 msgstr "Logo"
 
-#: inc/customizer.php:98 inc/options.php:83
+#: inc/customizer.php:103 inc/options.php:140
 msgid "Colors"
 msgstr "Cores"
 
-#: inc/customizer.php:109
+#: inc/customizer.php:114
 msgid "Base Colors"
 msgstr "Cores Base"
 
-#: inc/customizer.php:121
+#: inc/customizer.php:126
 msgid "Background Color"
 msgstr "Cor de Fundo"
 
-#: inc/customizer.php:126
+#: inc/customizer.php:132
 msgid "Text Color"
 msgstr "Cor do Texto"
 
-#: inc/customizer.php:131
+#: inc/customizer.php:138
 msgid "Link Color"
 msgstr "Cor do Link"
 
-#: inc/customizer.php:136
+#: inc/customizer.php:144
 msgid "Link Color Hover"
 msgstr "Cor do Link Hover"
 
-#: inc/customizer.php:141
+#: inc/customizer.php:150
 msgid "Link Color Visited"
 msgstr "Cor de Link Visitado"
 
-#: inc/customizer.php:178
+#: inc/customizer.php:191
 #, php-format
 msgid "Looking to add more color settings?<br /> %s."
 msgstr "Procurando para adicionar mais configurações de cor?<br /> %s."
 
-#: inc/customizer.php:182
+#: inc/customizer.php:195
 msgid "Check out Generate Colors"
 msgstr "Confira Generate Colors"
 
-#: inc/customizer.php:197
+#: inc/customizer.php:210
 msgid "Layout"
 msgstr "Layout"
 
-#: inc/customizer.php:199
+#: inc/customizer.php:212
 msgid "Allows you to edit your theme's layout."
 msgstr "Habilita você a editar o layout do seu tema."
 
-#: inc/customizer.php:219
+#: inc/customizer.php:233
 msgid "Container Width"
 msgstr "Largura do Container"
 
-#: inc/customizer.php:246
+#: inc/customizer.php:260
 msgid "Header Layout"
 msgstr "Layout do Cabeçalho"
 
-#: inc/customizer.php:249 inc/customizer.php:312 inc/customizer.php:577
-#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:238
+#: inc/customizer.php:263 inc/customizer.php:326 inc/customizer.php:591
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:249
 msgid "Fluid / Full Width"
 msgstr "Fluído / Full Width"
 
-#: inc/customizer.php:250 inc/customizer.php:313 inc/customizer.php:578
-#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:239
+#: inc/customizer.php:264 inc/customizer.php:327 inc/customizer.php:592
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:250
 msgid "Contained"
 msgstr "Contido"
 
-#: inc/customizer.php:277
+#: inc/customizer.php:291
 msgid "Header Alignment"
 msgstr "Alinhamento do Cabeçalho"
 
-#: inc/customizer.php:280 inc/customizer.php:378 inc/sanitize.php:144
+#: inc/customizer.php:294 inc/customizer.php:392 inc/sanitize.php:155
 msgid "Left"
 msgstr "Esquerda"
 
-#: inc/customizer.php:281 inc/customizer.php:379 inc/sanitize.php:145
+#: inc/customizer.php:295 inc/customizer.php:393 inc/sanitize.php:156
 msgid "Center"
 msgstr "Centro"
 
-#: inc/customizer.php:282 inc/customizer.php:380 inc/sanitize.php:146
+#: inc/customizer.php:296 inc/customizer.php:394 inc/sanitize.php:157
 msgid "Right"
 msgstr "Direita"
 
-#: inc/customizer.php:309
+#: inc/customizer.php:323
 msgid "Navigation Layout"
 msgstr "Layout da Navegação"
 
-#: inc/customizer.php:340
+#: inc/customizer.php:354
 msgid "Navigation Position"
 msgstr "Posição da Navegação"
 
-#: inc/customizer.php:343 inc/sanitize.php:179
+#: inc/customizer.php:357 inc/sanitize.php:190
 msgid "Below Header"
 msgstr "Abaixo do cabeçalho"
 
-#: inc/customizer.php:344 inc/sanitize.php:180
+#: inc/customizer.php:358 inc/sanitize.php:191
 msgid "Above Header"
 msgstr "A cima do cabeçalho"
 
-#: inc/customizer.php:345 inc/sanitize.php:181
+#: inc/customizer.php:359 inc/sanitize.php:192
 msgid "Float Right"
 msgstr "Flutuar para Direita"
 
-#: inc/customizer.php:348 inc/sanitize.php:184
+#: inc/customizer.php:362 inc/sanitize.php:195
 msgid "No Navigation"
 msgstr "Sem Navegação"
 
-#: inc/customizer.php:375
+#: inc/customizer.php:389
 msgid "Navigation Alignment"
 msgstr "Alinhamento da Navegação"
 
-#: inc/customizer.php:407
+#: inc/customizer.php:421
 msgid "Navigation Search"
 msgstr "Buscar na Navegação"
 
-#: inc/customizer.php:410 inc/sanitize.php:162
+#: inc/customizer.php:424 inc/sanitize.php:173
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: inc/customizer.php:411 inc/sanitize.php:163
+#: inc/customizer.php:425 inc/sanitize.php:174
 msgid "Disabled"
 msgstr "Desabilitado"
 
-#: inc/customizer.php:438
+#: inc/customizer.php:452
 msgid "Content Layout"
 msgstr "Layout do conteúdo"
 
-#: inc/customizer.php:441 inc/sanitize.php:200
+#: inc/customizer.php:455 inc/sanitize.php:211
 msgid "Separate Containers"
 msgstr "Separar Containers"
 
-#: inc/customizer.php:442 inc/sanitize.php:201
+#: inc/customizer.php:456 inc/sanitize.php:212
 msgid "One Container"
 msgstr "Um Container"
 
-#: inc/customizer.php:469 inc/metaboxes.php:20
+#: inc/customizer.php:483 inc/metaboxes.php:20
 msgid "Sidebar Layout"
 msgstr "Layout da Sidebar"
 
-#: inc/customizer.php:472 inc/customizer.php:507 inc/customizer.php:542
-#: inc/sanitize.php:217
+#: inc/customizer.php:486 inc/customizer.php:521 inc/customizer.php:556
+#: inc/sanitize.php:228
 msgid "Sidebar / Content"
 msgstr "Sidebar / Conteúdo"
 
-#: inc/customizer.php:473 inc/customizer.php:508 inc/customizer.php:543
-#: inc/sanitize.php:218
+#: inc/customizer.php:487 inc/customizer.php:522 inc/customizer.php:557
+#: inc/sanitize.php:229
 msgid "Content / Sidebar"
 msgstr "Conteúdo / Sidebar"
 
-#: inc/customizer.php:474 inc/customizer.php:509 inc/customizer.php:544
-#: inc/metaboxes.php:67 inc/sanitize.php:219
+#: inc/customizer.php:488 inc/customizer.php:523 inc/customizer.php:558
+#: inc/metaboxes.php:67 inc/sanitize.php:230
 msgid "Content (no sidebars)"
 msgstr "Conteúdo (Sem Sidebar)"
 
-#: inc/customizer.php:475 inc/customizer.php:510 inc/customizer.php:545
-#: inc/sanitize.php:220
+#: inc/customizer.php:489 inc/customizer.php:524 inc/customizer.php:559
+#: inc/sanitize.php:231
 msgid "Sidebar / Content / Sidebar"
 msgstr "Sidebar / Conteúdo / Sidebar"
 
-#: inc/customizer.php:476 inc/customizer.php:511 inc/customizer.php:546
-#: inc/sanitize.php:221
+#: inc/customizer.php:490 inc/customizer.php:525 inc/customizer.php:560
+#: inc/sanitize.php:232
 msgid "Sidebar / Sidebar / Content"
 msgstr "Sidebar / Sidebar / Conteúdo"
 
-#: inc/customizer.php:477 inc/customizer.php:512 inc/customizer.php:547
-#: inc/sanitize.php:222
+#: inc/customizer.php:491 inc/customizer.php:526 inc/customizer.php:561
+#: inc/sanitize.php:233
 msgid "Content / Sidebar / Sidebar"
 msgstr "Conteúdo / Sidebar / Sidebar"
 
-#: inc/customizer.php:504
+#: inc/customizer.php:518
 msgid "Blog Sidebar Layout"
 msgstr "Sidebar Layout do Blog"
 
-#: inc/customizer.php:539
+#: inc/customizer.php:553
 msgid "Single Post Sidebar Layout"
 msgstr "Sidebar Layout da Postagem"
 
-#: inc/customizer.php:574
+#: inc/customizer.php:588
 msgid "Footer Layout"
 msgstr "Layout do Rodapé"
 
-#: inc/customizer.php:605 inc/metaboxes.php:125
+#: inc/customizer.php:619 inc/metaboxes.php:125
 msgid "Footer Widgets"
 msgstr "Widgets do Rodapé"
 
-#: inc/customizer.php:627 inc/options.php:138
+#: inc/customizer.php:641 inc/options.php:198
 msgid "Blog"
 msgstr "Blog"
 
-#: inc/customizer.php:653
+#: inc/customizer.php:667
 msgid "Blog Post Content"
 msgstr "Conteúdo do Blog"
 
-#: inc/customizer.php:656 inc/sanitize.php:276
+#: inc/customizer.php:670 inc/sanitize.php:287
 msgid "Show full post"
 msgstr "Mostrar toda Postagem"
 
-#: inc/customizer.php:657 inc/sanitize.php:277
+#: inc/customizer.php:671 inc/sanitize.php:288
 msgid "Show excerpt"
 msgstr "Mostrar prévia"
 
-#: inc/customizer.php:677
+#: inc/customizer.php:691
 #, php-format
 msgid "Looking to add more blog settings?<br /> %s."
 msgstr "Procurando para adicionar mais configurações ao blog?<br /> %s."
 
-#: inc/customizer.php:681
+#: inc/customizer.php:695
 msgid "Check out Generate Blog"
 msgstr "Confira Generate Blog"
 
-#: inc/customizer.php:702
+#: inc/customizer.php:727
 msgid "Default"
 msgstr "Padrão"
 
-#: inc/customizer.php:738
-msgid "Addon available"
-msgstr "Disponível Addon"
+#: inc/customizer.php:763
+msgid "Add-on available"
+msgstr ""
 
-#: inc/customizer.php:796
-msgid "Addons Available! Take a look"
-msgstr "Disponível Addons! Confira"
+#: inc/customizer.php:821
+msgid "Add-ons Available! Take a look"
+msgstr ""
 
 #: inc/metaboxes.php:55
 msgid "Global Layout Settings"
@@ -699,121 +608,130 @@ msgstr "4 Widgets"
 msgid "5 Widgets"
 msgstr "5 Widgets"
 
-#: inc/navigation.php:88
+#: inc/navigation.php:91
 msgid "Menu"
 msgstr "Menu"
 
-#: inc/navigation.php:89
-msgid "Skip to content"
-msgstr "Pular para o Conteúdo"
+#: inc/navigation.php:130 inc/template-tags.php:353 inc/template-tags.php:379
+#: searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr "Buscar"
 
-#: inc/options.php:57
-msgid "Import successful."
-msgstr "Importado com Sucesso."
-
-#: inc/options.php:61
-msgid "Settings removed."
-msgstr "Configurações Removidas."
-
-#: inc/options.php:65
-msgid "Settings saved."
-msgstr "Configurações Salvas."
+#: inc/options.php:64 inc/options.php:77 inc/options.php:130
+msgid "Customize"
+msgstr ""
 
 #: inc/options.php:70
-msgid "Information"
-msgstr "Informações"
+msgid "Version"
+msgstr "Versão"
 
-#: inc/options.php:74
+#: inc/options.php:71
 msgid "Author"
 msgstr "Autor"
 
-#: inc/options.php:78 inc/options.php:222
+#: inc/options.php:79 inc/options.php:133
 msgid "Add-ons"
 msgstr "Add-ons"
 
-#: inc/options.php:102
-msgid "Page Header"
-msgstr "Cabeçalho da Página"
-
-#: inc/options.php:111
-msgid "Import / Export"
-msgstr "Importar / Exportar"
-
-#: inc/options.php:129
-msgid "Disable Elements"
-msgstr "Desabilitar Elementos"
-
-#: inc/options.php:147
-msgid "Hooks"
-msgstr "Hooks"
-
-#: inc/options.php:156
-msgid "Spacing"
-msgstr "Espeaçamento"
-
-#: inc/options.php:165
-msgid "Backgrounds"
-msgstr "Fundos"
-
-#: inc/options.php:174
-msgid "Secondary Nav"
-msgstr "Nav Secundária"
-
-#: inc/options.php:188 inc/options.php:201
-msgid "Not activated."
-msgstr "Não ativada."
-
-#: inc/options.php:192 inc/options.php:205
-msgid "Activated and unverified. Please activate below."
-msgstr "Ativada e não verificada. Por favor ative abaixo."
-
-#: inc/options.php:194 inc/options.php:207
-msgid "Activated and verified."
-msgstr "Ativado e verificado."
-
-#: inc/options.php:220
-msgid "Customizer"
-msgstr "Customizer"
-
-#: inc/options.php:224
+#: inc/options.php:81
 msgid ""
-"Please help support development of the GeneratePress by buying me a coffee :)"
+"Please help support ongoing development of the GeneratePress by buying me a "
+"coffee :)"
 msgstr ""
-"Por favor ajude a manter o desenvolvimento de GeneratePress me pagando um "
-"café :)"
 
-#: inc/options.php:224
+#: inc/options.php:81
 msgid "Buy me a coffee :)"
 msgstr "Compre-me um café :)"
 
-#: inc/options.php:232
-msgid "Addon Activation"
-msgstr "Ativação de Addon"
+#: inc/options.php:89
+msgid "Add-on Updates"
+msgstr ""
 
-#: inc/options.php:237
-msgid "Looks like you don't have any Add-ons! <a href=\""
-msgstr "Parece que você não tem nenhum Add-on! <a href=\""
+#: inc/options.php:94
+msgid "No add-ons to keep up to date!"
+msgstr ""
 
-#: inc/options.php:254
+#: inc/options.php:108
 msgid "Delete Customizer Settings"
 msgstr "Deletar configurações do Customizer"
 
-#: inc/options.php:257
+#: inc/options.php:110
+#, php-format
 msgid ""
-"<strong>Warning:</strong> Clicking this button will delete your settings set "
-"in the <a href=\""
+"<strong>Warning:</strong> Deleting your <a href=\"%1$s\">Customizer</a> "
+"settings can not be undone."
 msgstr ""
-"<strong>Atenção:</strong> Clicando neste botão irá deletar toda a "
-"configuração em <a href=\""
 
-#: inc/options.php:258
-msgid "You may want to export your settings before deleting them forever."
+#: inc/options.php:111
+msgid ""
+"Consider using our Import/Export add-on to export your settings before "
+"deleting them."
 msgstr ""
-"Talvez você queira exportar suas configurações antes de deletar para sempre."
 
-#: inc/options.php:263
+#: inc/options.php:116
+msgid "Warning: This will delete your settings."
+msgstr ""
+
+#: inc/options.php:118
 msgid "Delete Default Customizer Settings"
 msgstr "Deletar configurações padrões do Customizer"
+
+#: inc/options.php:148
+msgid "Sections"
+msgstr ""
+
+#: inc/options.php:163
+msgid "Menu Plus"
+msgstr ""
+
+#: inc/options.php:170
+msgid "Page Header"
+msgstr "Cabeçalho da Página"
+
+#: inc/options.php:177
+msgid "Import / Export"
+msgstr "Importar / Exportar"
+
+#: inc/options.php:191
+msgid "Disable Elements"
+msgstr "Desabilitar Elementos"
+
+#: inc/options.php:205
+msgid "Hooks"
+msgstr "Hooks"
+
+#: inc/options.php:212
+msgid "Spacing"
+msgstr "Espeaçamento"
+
+#: inc/options.php:219
+msgid "Backgrounds"
+msgstr "Fundos"
+
+#: inc/options.php:226
+msgid "Secondary Nav"
+msgstr "Nav Secundária"
+
+#: inc/options.php:238 inc/options.php:245
+msgid "Not activated."
+msgstr "Não ativada."
+
+#: inc/options.php:240 inc/options.php:247
+msgid "Activated."
+msgstr ""
+
+#: inc/options.php:296
+msgid "Settings saved."
+msgstr "Configurações Salvas."
+
+#: inc/options.php:300
+msgid "Import successful."
+msgstr "Importado com Sucesso."
+
+#: inc/options.php:304
+msgid "Settings removed."
+msgstr "Configurações Removidas."
 
 #: inc/template-tags.php:39
 msgid "&larr; Previous"
@@ -826,6 +744,14 @@ msgstr "Próximo &rarr;"
 #: inc/template-tags.php:76
 msgid "Post navigation"
 msgstr "Navegação da postagem"
+
+#: inc/template-tags.php:80 inc/template-tags.php:86
+msgid "Previous"
+msgstr "Próximo"
+
+#: inc/template-tags.php:81 inc/template-tags.php:90
+msgid "Next"
+msgstr "Anterior"
 
 #: inc/template-tags.php:86
 msgid "Older posts"
@@ -854,60 +780,48 @@ msgstr "%1$s ás %2$s"
 msgid "Your comment is awaiting moderation."
 msgstr "Seu comentário está aguardando moderação."
 
-#: inc/template-tags.php:239
-#, php-format
-msgid ""
-"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-msgstr ""
-"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-
-#: inc/template-tags.php:246
+#: inc/template-tags.php:194
 msgid "by"
 msgstr "por"
 
-#: inc/template-tags.php:248
+#: inc/template-tags.php:196
 #, php-format
 msgid "View all posts by %s"
 msgstr "Ver todas postagens por %s"
 
-#: inc/template-tags.php:262
+#: inc/template-tags.php:209 inc/template-tags.php:220
 msgid "Read more"
 msgstr "Ler mais"
 
-#: inc/template-tags.php:307
+#: inc/template-tags.php:327
 msgctxt "label"
 msgid "Search"
 msgstr "Buscar"
 
-#: inc/template-tags.php:353 inc/template-tags.php:361
+#: inc/template-tags.php:393 inc/template-tags.php:401
 msgctxt "Used between list items, there is a space after the comma."
 msgid ", "
 msgstr ","
 
-#: inc/template-tags.php:356
+#: inc/template-tags.php:396
 msgctxt "Used before category names."
 msgid "Categories"
 msgstr "Categorias"
 
-#: inc/template-tags.php:364
+#: inc/template-tags.php:404
 msgctxt "Used before tag names."
 msgid "Tags"
 msgstr "Tags"
 
-#: inc/template-tags.php:375
-msgctxt "Used before full size attachment link."
-msgid "Full size"
-msgstr "Tamanho Inteiro"
-
-#: inc/template-tags.php:384
+#: inc/template-tags.php:412
 msgid "Leave a comment"
 msgstr "Deixe um comentário"
 
-#: inc/template-tags.php:384
+#: inc/template-tags.php:412
 msgid "1 Comment"
 msgstr "1 Comentário"
 
-#: inc/template-tags.php:384
+#: inc/template-tags.php:412
 msgid "% Comments"
 msgstr "% Comentários"
 
@@ -953,14 +867,171 @@ msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr "Buscar &hellip;"
 
-#: searchform.php:13
-msgctxt "submit button"
-msgid "Search"
-msgstr "Buscar"
-
 #: sidebar-left.php:46 sidebar.php:45
 msgid "Meta"
 msgstr "Meta"
+
+#~ msgid ""
+#~ "It looks like nothing was found at this location. Maybe try one of the "
+#~ "links below or a search?"
+#~ msgstr ""
+#~ "Parece que nada foi encontrado nessa localização. Tente um dos links "
+#~ "abaixo ou talvez uma busca?"
+
+#~ msgid "Replace this widget content by going to <a href=\""
+#~ msgstr "Substitua o conteúdo widget em <a href=\""
+
+#~ msgid "To remove or choose the number of footer widgets, go to <a href=\""
+#~ msgstr ""
+#~ "Para remover ou escolher o número de widgets do rodapé, vá em <a href=\""
+
+#~ msgid "Search"
+#~ msgstr "Buscar"
+
+#~ msgid ""
+#~ "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+#~ "\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+#~ "image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s"
+#~ "\" rel=\"gallery\">%8$s</a>"
+#~ msgstr ""
+#~ "Públicado <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+#~ "\"%1$s\">%2$s</time></span> no <a href=\"%3$s\" title=\"Link to full-size "
+#~ "image\">%4$s &times; %5$s</a> em <a href=\"%6$s\" title=\"Return to %7$s"
+#~ "\" rel=\"gallery\">%8$s</a>"
+
+#~ msgid ""
+#~ "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post "
+#~ "a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s"
+#~ "\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</"
+#~ "a>."
+#~ msgstr ""
+#~ "<a class=\"comment-link\" href=\"#respond\" title=\"Poste um comentario"
+#~ "\">Poste um comentário</a> ou deixe uma referência: <a class=\"trackback-"
+#~ "link\" href=\"%s\" title=\"Link da Referência\" rel=\"trackback\">URL da "
+#~ "Referência</a>."
+
+#~ msgid ""
+#~ "Comments are closed, but you can leave a trackback: <a class=\"trackback-"
+#~ "link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+#~ "\">Trackback URL</a>."
+#~ msgstr ""
+#~ "Os Comentários estão fechados, mas você pode deixar uma referência: <a "
+#~ "class=\"trackback-link\" href=\"%s\" title=\"Link da Referência\" rel="
+#~ "\"trackback\">URL da Referência</a>."
+
+#~ msgid ""
+#~ "Trackbacks are closed, but you can <a class=\"comment-link\" href="
+#~ "\"#respond\" title=\"Post a comment\">post a comment</a>."
+#~ msgstr ""
+#~ "As Referências estão fechadas, mas você pode <a class=\"comment-link\" "
+#~ "href=\"#respond\" title=\"Postar comentário\">postar um comentário</a>."
+
+#~ msgid "Both comments and trackbacks are currently closed."
+#~ msgstr "Ambos os comentários e referências estão atualmente fechados."
+
+#~ msgid "verified"
+#~ msgstr "verificado"
+
+#~ msgid "unverified"
+#~ msgstr "não verificado"
+
+#~ msgid "Activate"
+#~ msgstr "Ativar"
+
+#~ msgid "Activate All"
+#~ msgstr "Ativar Tudo"
+
+#~ msgid "Deactivate"
+#~ msgstr "Desativar"
+
+#~ msgid ""
+#~ "Please activate the email you purchased your add-ons with below in order "
+#~ "to receive future updates."
+#~ msgstr ""
+#~ "Por favor, ative o e-mail que você comprou seus add-ons abaixo, a fim de "
+#~ "receber futuras atualizações."
+
+#~ msgid "Add-on"
+#~ msgstr "Add-on"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Action"
+#~ msgstr "Ação"
+
+#~ msgid "Verify Email"
+#~ msgstr "Verificar Email"
+
+#~ msgid "Refresh"
+#~ msgstr "Atualizar"
+
+#~ msgid "Disable"
+#~ msgstr "Desabilitar"
+
+#~ msgid "Enable"
+#~ msgstr "Habilitado"
+
+#~ msgid "Width"
+#~ msgstr "Largura"
+
+#~ msgid "Header Content"
+#~ msgstr "Conteúdo do Cabeçalho"
+
+#~ msgid "Set Navigation"
+#~ msgstr "Fixar Navegação"
+
+#~ msgid "Addon available"
+#~ msgstr "Disponível Addon"
+
+#~ msgid "Addons Available! Take a look"
+#~ msgstr "Disponível Addons! Confira"
+
+#~ msgid "Information"
+#~ msgstr "Informações"
+
+#~ msgid "Activated and unverified. Please activate below."
+#~ msgstr "Ativada e não verificada. Por favor ative abaixo."
+
+#~ msgid "Activated and verified."
+#~ msgstr "Ativado e verificado."
+
+#~ msgid "Customizer"
+#~ msgstr "Customizer"
+
+#~ msgid ""
+#~ "Please help support development of the GeneratePress by buying me a "
+#~ "coffee :)"
+#~ msgstr ""
+#~ "Por favor ajude a manter o desenvolvimento de GeneratePress me pagando um "
+#~ "café :)"
+
+#~ msgid "Addon Activation"
+#~ msgstr "Ativação de Addon"
+
+#~ msgid "Looks like you don't have any Add-ons! <a href=\""
+#~ msgstr "Parece que você não tem nenhum Add-on! <a href=\""
+
+#~ msgid ""
+#~ "<strong>Warning:</strong> Clicking this button will delete your settings "
+#~ "set in the <a href=\""
+#~ msgstr ""
+#~ "<strong>Atenção:</strong> Clicando neste botão irá deletar toda a "
+#~ "configuração em <a href=\""
+
+#~ msgid "You may want to export your settings before deleting them forever."
+#~ msgstr ""
+#~ "Talvez você queira exportar suas configurações antes de deletar para "
+#~ "sempre."
+
+#~ msgid ""
+#~ "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+#~ msgstr ""
+#~ "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+
+#~ msgctxt "Used before full size attachment link."
+#~ msgid "Full size"
+#~ msgstr "Tamanho Inteiro"
 
 #~ msgid "Page %s"
 #~ msgstr "Página %s"

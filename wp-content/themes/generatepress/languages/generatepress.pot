@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GeneratePress\n"
-"POT-Creation-Date: 2015-08-29 09:51-0700\n"
+"POT-Creation-Date: 2015-10-18 16:20-0700\n"
 "PO-Revision-Date: 2015-04-04 15:17-0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,9 +24,7 @@ msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
 #: 404.php:22
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+msgid "It looks like nothing was found at this location. Maybe try searching?"
 msgstr ""
 
 #: archive.php:33
@@ -138,7 +136,7 @@ msgstr ""
 msgid "Post Comment"
 msgstr ""
 
-#: content-link.php:34 content-page.php:20 content-single.php:21 content.php:41
+#: content-link.php:29 content-page.php:20 content-single.php:22 content.php:28
 msgid "Pages:"
 msgstr ""
 
@@ -232,19 +230,19 @@ msgstr ""
 msgid "Header"
 msgstr ""
 
-#: functions.php:388 inc/options.php:184
+#: functions.php:389 inc/options.php:184
 msgid "Copyright"
 msgstr ""
 
-#: functions.php:396 inc/options.php:24 inc/options.php:67
+#: functions.php:397 inc/options.php:24 inc/options.php:67
 msgid "GeneratePress"
 msgstr ""
 
-#: functions.php:396
+#: functions.php:397
 msgid "Proudly powered by WordPress"
 msgstr ""
 
-#: functions.php:396
+#: functions.php:397
 msgid "WordPress"
 msgstr ""
 
@@ -264,41 +262,37 @@ msgstr ""
 msgid "Font family"
 msgstr ""
 
-#: inc/add-ons/typography.php:321 inc/options.php:156
+#: inc/add-ons/typography.php:322 inc/options.php:156
 msgid "Typography"
 msgstr ""
 
-#: inc/add-ons/typography.php:343
+#: inc/add-ons/typography.php:344
 msgid "Body"
 msgstr ""
 
-#: inc/add-ons/typography.php:365
+#: inc/add-ons/typography.php:366
 msgid "Font weight"
 msgstr ""
 
-#: inc/add-ons/typography.php:389
+#: inc/add-ons/typography.php:390
 msgid "Text transform"
 msgstr ""
 
-#: inc/add-ons/typography.php:412
+#: inc/add-ons/typography.php:413
 msgid "Font size"
 msgstr ""
 
-#: inc/add-ons/typography.php:429 inc/customizer.php:188 inc/customizer.php:688
+#: inc/add-ons/typography.php:430 inc/customizer.php:188 inc/customizer.php:688
 msgid "More Settings"
 msgstr ""
 
-#: inc/add-ons/typography.php:432
+#: inc/add-ons/typography.php:433
 #, php-format
 msgid "Looking to add more typography settings?<br /> %s."
 msgstr ""
 
-#: inc/add-ons/typography.php:436
+#: inc/add-ons/typography.php:437
 msgid "Check out Generate Typography"
-msgstr ""
-
-#: inc/controls.php:24
-msgid "Width"
 msgstr ""
 
 #: inc/controls.php:51
@@ -617,7 +611,8 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: inc/navigation.php:130 inc/template-tags.php:353 searchform.php:13
+#: inc/navigation.php:130 inc/template-tags.php:353 inc/template-tags.php:379
+#: searchform.php:13
 msgctxt "submit button"
 msgid "Search"
 msgstr ""
@@ -784,12 +779,6 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:187
-#, php-format
-msgid ""
-"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-msgstr ""
-
 #: inc/template-tags.php:194
 msgid "by"
 msgstr ""
@@ -808,30 +797,30 @@ msgctxt "label"
 msgid "Search"
 msgstr ""
 
-#: inc/template-tags.php:371 inc/template-tags.php:379
+#: inc/template-tags.php:393 inc/template-tags.php:401
 msgctxt "Used between list items, there is a space after the comma."
 msgid ", "
 msgstr ""
 
-#: inc/template-tags.php:374
+#: inc/template-tags.php:396
 msgctxt "Used before category names."
 msgid "Categories"
 msgstr ""
 
-#: inc/template-tags.php:382
+#: inc/template-tags.php:404
 msgctxt "Used before tag names."
 msgid "Tags"
 msgstr ""
 
-#: inc/template-tags.php:390
+#: inc/template-tags.php:412
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags.php:390
+#: inc/template-tags.php:412
 msgid "1 Comment"
 msgstr ""
 
-#: inc/template-tags.php:390
+#: inc/template-tags.php:412
 msgid "% Comments"
 msgstr ""
 

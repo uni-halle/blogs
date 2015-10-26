@@ -2,1196 +2,1224 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GeneratePress v1.2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-01-24 23:43:39+0000\n"
+"POT-Creation-Date: 2015-10-18 16:56-0700\n"
+"PO-Revision-Date: 2015-10-18 16:56-0700\n"
 "Last-Translator: krice <kri_ce@hotmail.com>\n"
 "Language-Team: \n"
+"Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: CSL v1.x\n"
-"X-Poedit-Language: Norwegian (Bokmål)\n"
-"X-Poedit-Country: NORWAY\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-Bookmarks: \n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
 
+# @ generate
 #: 404.php:17
-#@ generate
 msgid "Oops! That page can&rsquo;t be found."
 msgstr "Oops! Siden ble ikke funnet"
 
 #: 404.php:22
-#@ generate
-msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
-msgstr "Ingenting ble funnet på denne plasseringen. Prøv en av linkene under eller et søk."
+msgid "It looks like nothing was found at this location. Maybe try searching?"
+msgstr ""
 
+# @ generate
 #: archive.php:33
 #, php-format
-#@ generate
 msgid "About %s"
 msgstr "Om %s"
 
+# @ generate
 #: archive.php:41
 #, php-format
-#@ generate
 msgid "Day: %s"
 msgstr "Dag: %s"
 
+# @ generate
 #: archive.php:44
 #, php-format
-#@ generate
 msgid "Month: %s"
 msgstr "Måned: %s"
 
+# @ generate
 #: archive.php:47
 #, php-format
-#@ generate
 msgid "Year: %s"
 msgstr "År: %s"
 
+# @ generate
 #: archive.php:50
-#@ generate
 msgid "Asides"
 msgstr "Notiser"
 
+# @ generate
 #: archive.php:53
-#@ generate
 msgid "Images"
 msgstr "Bilder"
 
+# @ generate
 #: archive.php:56
-#@ generate
 msgid "Videos"
 msgstr "Videoer"
 
+# @ generate
 #: archive.php:59
-#@ generate
 msgid "Quotes"
 msgstr "Sitater"
 
+# @ generate
 #: archive.php:62
-#@ generate
 msgid "Links"
 msgstr "Lenker"
 
-#: archive.php:65
-#: sidebar-left.php:39
-#: sidebar.php:38
-#@ generate
+# @ generate
+#: archive.php:65 sidebar-left.php:39 sidebar.php:38
 msgid "Archives"
 msgstr "Arkiv"
 
+# @ generate
 #: comments.php:29
 #, php-format
-#@ generate
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "En tanke om &ldquo;%2$s&rdquo;"
 msgstr[1] "%1$s tanker om &ldquo;%2$s&rdquo;"
 
-#: comments.php:36
-#: comments.php:56
-#@ generate
+# @ generate
+#: comments.php:36 comments.php:58
 msgid "Comment navigation"
 msgstr "Kommentarnavigasjon"
 
-#: comments.php:37
-#: comments.php:57
-#@ generate
+# @ generate
+#: comments.php:37 comments.php:59
 msgid "&larr; Older Comments"
 msgstr "&larr; Eldre kommentarer"
 
-#: comments.php:38
-#: comments.php:58
-#@ generate
+# @ generate
+#: comments.php:38 comments.php:60
 msgid "Newer Comments &rarr;"
 msgstr "Nyere kommentarer &rarr;"
 
-#: comments.php:68
-#@ generate
+# @ generate
+#: comments.php:70
 msgid "Comments are closed."
 msgstr "Stengt for kommentarer"
 
-#: comments.php:73
-#@ generate
+# @ generate
+#: comments.php:75
 msgid "Name"
 msgstr "Navn"
 
-#: comments.php:74
-#: inc/addons.php:103
-#@ generate
+# @ generate
+#: comments.php:76
 msgid "Email"
 msgstr "E-post"
 
-#: comments.php:75
-#: inc/options.php:75
-#@ generate
+# @ generate
+#: comments.php:77 inc/options.php:72
 msgid "Website"
 msgstr "Nettsted"
 
-#: comments.php:80
+# @ generate
+#: comments.php:82
 #, php-format
-#@ generate
 msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
 msgstr "Du må være <a href=\"%1$s\">logget inn</a> for å skrive en kommentar."
 
-#: comments.php:81
+# @ generate
+#: comments.php:83
 #, php-format
-#@ generate
-msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
-msgstr "Logget inn som <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Logg ut av denne kontoen\">Logg ut?</a>"
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Logget inn som <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Logg ut "
+"av denne kontoen\">Logg ut?</a>"
 
-#: comments.php:86
-#@ generate
+# @ generate
+#: comments.php:88
 msgid "Leave a Comment"
 msgstr "Skriv en kommentar"
 
-#: comments.php:87
+# @ generate
+#: comments.php:89
 #, php-format
-#@ generate
 msgid "Leave a Reply to %s"
 msgstr "Skriv et svar til %s"
 
-#: comments.php:88
-#@ generate
+# @ generate
+#: comments.php:90
 msgid "Cancel reply"
 msgstr "Avbryt svar"
 
-#: comments.php:89
-#@ generate
+# @ generate
+#: comments.php:91
 msgid "Post Comment"
 msgstr "Legg til kommentar"
 
-#: content-link.php:29
-#: content-page.php:20
-#: content-single.php:21
-#: content.php:34
-#: image.php:56
-#@ generate
+# @ generate
+#: content-link.php:29 content-page.php:20 content-single.php:22 content.php:28
 msgid "Pages:"
 msgstr "Sider:"
 
-#: content-page.php:26
-#: content-single.php:32
-#: image.php:78
-#: inc/template-tags.php:117
+# @ generate
+#: content-page.php:26 content-single.php:32 inc/template-tags.php:117
 #: inc/template-tags.php:137
-#@ generate
 msgid "Edit"
 msgstr "Rediger"
 
-#: footer.php:50
-#: functions.php:143
-#@ generate
+# @ generate
+#: footer.php:37 functions.php:152
 msgid "Footer Widget 1"
 msgstr "Bunnfeltwidget 1"
 
-#: footer.php:64
-#: functions.php:151
-#@ generate
+#: footer.php:39
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 1."
+msgstr ""
+
+#: footer.php:40 footer.php:54 footer.php:68 footer.php:82 footer.php:96
+#, php-format
+msgid ""
+"To remove or choose the number of footer widgets, go to <a href=\"%1$s"
+"\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
+msgstr ""
+
+# @ generate
+#: footer.php:51 functions.php:160
 msgid "Footer Widget 2"
 msgstr "Bunnfeltwidget 2"
 
-#: footer.php:78
-#: functions.php:159
-#@ generate
+#: footer.php:53
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 2."
+msgstr ""
+
+# @ generate
+#: footer.php:65 functions.php:168
 msgid "Footer Widget 3"
 msgstr "Bunnfeltwidget 3"
 
-#: footer.php:92
-#: functions.php:167
-#@ generate
+#: footer.php:67
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 3."
+msgstr ""
+
+# @ generate
+#: footer.php:79 functions.php:176
 msgid "Footer Widget 4"
 msgstr "Bunnfeltwidget 4"
 
-#: footer.php:106
-#: functions.php:175
-#@ generate
+#: footer.php:81
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 4."
+msgstr ""
+
+# @ generate
+#: footer.php:93 functions.php:184
 msgid "Footer Widget 5"
 msgstr "Bunnfeltwidget 5"
 
-#: functions.php:52
-#@ generate
+#: footer.php:95
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 5."
+msgstr ""
+
+# @ generate
+#: functions.php:48
 msgid "Primary Menu"
 msgstr "Hovedmeny"
 
-#: functions.php:119
-#: inc/customizer.php:347
-#: inc/metaboxes.php:57
-#: inc/sanitize.php:183
-#@ generate
+# @ generate
+#: functions.php:128 inc/customizer.php:361 inc/metaboxes.php:57
+#: inc/sanitize.php:194
 msgid "Right Sidebar"
 msgstr "Høyre sidemeny"
 
-#: functions.php:127
-#: inc/customizer.php:346
-#: inc/metaboxes.php:61
-#: inc/sanitize.php:182
-#@ generate
+# @ generate
+#: functions.php:136 inc/customizer.php:360 inc/metaboxes.php:61
+#: inc/sanitize.php:193
 msgid "Left Sidebar"
 msgstr "Venstre sidemeny"
 
-#: functions.php:135
-#@ generate
+# @ generate
+#: functions.php:144
 msgid "Header"
 msgstr "Toppfelt"
 
-#: functions.php:255
-#@ generate
-msgid "Search"
-msgstr "Søk"
-
-#: functions.php:346
-#: inc/options.php:120
-#@ generate
+# @ generate
+#: functions.php:389 inc/options.php:184
 msgid "Copyright"
 msgstr "Opphavsrett"
 
-#: functions.php:354
-#: inc/options.php:24
-#: inc/options.php:47
-#@ generate
+# @ generate
+#: functions.php:397 inc/options.php:24 inc/options.php:67
 msgid "GeneratePress"
 msgstr "GeneratePress"
 
-#: functions.php:354
-#@ generate
+# @ generate
+#: functions.php:397
 msgid "Proudly powered by WordPress"
 msgstr "Drevet med kraft fra WordPress"
 
-#: functions.php:354
-#@ generate
+# @ generate
+#: functions.php:397
 msgid "WordPress"
 msgstr "Wordpress"
 
-#: image.php:24
-#, php-format
-#@ generate
-msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
-msgstr "Publisert <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> på <a href=\"%3$s\" title=\"Lenke til bilde i full størrelse\">%4$s &times; %5$s</a> i <a href=\"%6$s\" title=\"Tilbake til %7$s\" rel=\"gallery\">%8$s</a>"
+# @ generate
+#: header.php:24
+msgid "Skip to content"
+msgstr "Hopp til innhold"
 
-#: image.php:64
-#: inc/template-tags.php:80
-#: inc/template-tags.php:86
-#@ generate
-msgid "Previous"
-msgstr "Forrige"
-
-#: image.php:65
-#: inc/template-tags.php:81
-#: inc/template-tags.php:90
-#@ generate
-msgid "Next"
-msgstr "Neste"
-
-#: image.php:69
-#, php-format
-#@ generate
-msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
-msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Skriv en kommentar\">Legg til en kommentar</a> eller legg igjen et tilbaketråkk: <a class=\"trackback-link\" href=\"%s\" title=\"Tilbaketråkk-URL for innlegget\" rel=\"trackback\">Tilbaketråkk-URL</a>."
-
-#: image.php:71
-#, php-format
-#@ generate
-msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
-msgstr "Kommentarfeltet er stengt, men du kan legge igjen et tilbaketråkk <a class=\"trackback-link\" href=\"%s\" title=\"Tilbaketråkk-URL for innlegget ditt\\\" rel=\"trackback\">Tilbaketråkk-URL</a>."
-
-#: image.php:73
-#@ generate
-msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
-msgstr "Tilbaketråkk er stengt, men du kan <a class=\"comment-link\" href=\"#respond\" title=\"Legg til en kommentar\">legge til en kommentar</a>."
-
-#: image.php:75
-#@ generate
-msgid "Both comments and trackbacks are currently closed."
-msgstr "Kommentarer og tilbaketråkk er for tiden stengt."
-
-#: inc/addons/typography/google-font-dropdown-custom-control.php:34
-#@ generate
+# @ generate
+#: inc/add-ons/controls.php:34
 msgid "Default fonts"
 msgstr "Standardskrifttyper"
 
-#: inc/addons/typography/google-font-dropdown-custom-control.php:52
-#@ generate
+# @ generate
+#: inc/add-ons/controls.php:53
 msgid "Google fonts"
 msgstr "Google-skrifttyper"
 
-#: inc/addons/typography/google-font-dropdown-custom-control.php:62
-#@ generate
+# @ generate
+#: inc/add-ons/controls.php:62
 msgid "Font family"
 msgstr "Skrifttype"
 
-#: inc/addons/typography.php:278
-#: inc/options.php:93
-#@ generate
+# @ generate
+#: inc/add-ons/typography.php:322 inc/options.php:156
 msgid "Typography"
 msgstr "Typografi"
 
-#: inc/addons/typography.php:300
-#@ generate
+# @ generate
+#: inc/add-ons/typography.php:344
 msgid "Body"
 msgstr "Kropp"
 
-#: inc/addons/typography.php:322
-#@ generate
+# @ generate
+#: inc/add-ons/typography.php:366
 msgid "Font weight"
 msgstr "Skrifttykkelse"
 
-#: inc/addons/typography.php:346
-#@ generate
+# @ generate
+#: inc/add-ons/typography.php:390
 msgid "Text transform"
 msgstr "Tekstforvandling"
 
-#: inc/addons/typography.php:369
-#@ generate
+# @ generate
+#: inc/add-ons/typography.php:413
 msgid "Font size"
 msgstr "Skriftstørrelse"
 
-#: inc/addons/typography.php:386
-#: inc/customizer.php:175
-#: inc/customizer.php:674
-#@ generate
+# @ generate
+#: inc/add-ons/typography.php:430 inc/customizer.php:188 inc/customizer.php:688
 msgid "More Settings"
 msgstr "Flere innstillinger"
 
-#: inc/addons/typography.php:389
+# @ generate
+#: inc/add-ons/typography.php:433
 #, php-format
-#@ generate
 msgid "Looking to add more typography settings?<br /> %s."
 msgstr "Lyst til å legge til flere typografi-innstillinger?<br /> %s."
 
-#: inc/addons/typography.php:393
-#@ generate
+# @ generate
+#: inc/add-ons/typography.php:437
 msgid "Check out Generate Typography"
 msgstr "Sjekk ut Generate Typography"
 
-#: inc/addons.php:82
-#@ generate
-msgid "verified"
-msgstr "bekreftet"
-
-#: inc/addons.php:85
-#@ generate
-msgid "unverified"
-msgstr "ubekreftet"
-
-#: inc/addons.php:88
-#@ generate
-msgid "Activate"
-msgstr "Aktiver"
-
-#: inc/addons.php:91
-#@ generate
-msgid "Activate All"
-msgstr "Aktiver alle"
-
-#: inc/addons.php:94
-#@ generate
-msgid "Deactivate"
-msgstr "Deaktiver"
-
-#: inc/addons.php:97
-#@ generate
-msgid "Please activate the email you purchased your add-ons with below in order to receive future updates."
-msgstr "Vennligst aktiver e-posten du kjøpte tilleggene dine med under for å motta fremtidige oppdateringer."
-
-#: inc/addons.php:100
-#@ generate
-msgid "Add-on"
-msgstr "Tillegg"
-
-#: inc/addons.php:106
-#@ generate
-msgid "Status"
-msgstr "Status"
-
-#: inc/addons.php:109
-#@ generate
-msgid "Action"
-msgstr "Handling"
-
-#: inc/addons.php:112
-#@ generate
-msgid "Verify Email"
-msgstr "Bekreft e-post"
-
-#: inc/addons.php:115
-#@ generate
-msgid "Refresh"
-msgstr "Oppdater"
-
-#: inc/addons.php:118
-#: inc/options.php:73
-#@ generate
-msgid "Version"
-msgstr "Versjon"
-
-#: inc/addons.php:121
-#@ generate
-msgid "Disable"
-msgstr "Deaktiver"
-
-#: inc/addons.php:124
-#@ generate
-msgid "Enable"
-msgstr "Aktiver"
-
-#: inc/controls.php:24
-#@ generate
-msgid "Width"
-msgstr "Bredde"
-
-#: inc/controls.php:52
-#@ generate
+# @ generate
+#: inc/controls.php:51
 msgid "Select Image"
 msgstr "Velg bilde"
 
-#: inc/controls.php:52
-#@ generate
+# @ generate
+#: inc/controls.php:51
 msgid "Use Image"
 msgstr "Bruk bilde"
 
-#: inc/controls.php:52
-#@ generate
+# @ generate
+#: inc/controls.php:51
 msgid "Upload"
 msgstr "Last opp"
 
-#: inc/controls.php:53
-#@ generate
+# @ generate
+#: inc/controls.php:52
 msgid "Remove"
 msgstr "Fjern"
 
 #: inc/customizer.php:22
-#@ generate
-msgid "Header Content"
-msgstr "Toppfeltinnhold"
+msgid "Site Identity"
+msgstr ""
 
-#: inc/customizer.php:25
-#@ generate
+# @ generate
+#: inc/customizer.php:30
 msgid "Set Front Page"
 msgstr "Velg startside"
 
-#: inc/customizer.php:28
-#@ generate
-msgid "Set Navigation"
-msgstr "Velg navigasjon"
-
-#: inc/customizer.php:46
-#@ generate
+# @ generate
+#: inc/customizer.php:51
 msgid "Hide site title"
 msgstr "Skjul sidetittel"
 
-#: inc/customizer.php:65
-#@ generate
+# @ generate
+#: inc/customizer.php:70
 msgid "Hide site tagline"
 msgstr "Skjul nettstedslagord"
 
-#: inc/customizer.php:85
-#@ generate
+# @ generate
+#: inc/customizer.php:90
 msgid "Logo"
 msgstr "Logo"
 
-#: inc/customizer.php:98
-#: inc/options.php:83
-#@ generate
+# @ generate
+#: inc/customizer.php:103 inc/options.php:140
 msgid "Colors"
 msgstr "Farger"
 
-#: inc/customizer.php:109
-#@ generate
+# @ generate
+#: inc/customizer.php:114
 msgid "Base Colors"
 msgstr "Grunnfarger"
 
-#: inc/customizer.php:121
-#@ generate
+# @ generate
+#: inc/customizer.php:126
 msgid "Background Color"
 msgstr "Bakgrunnsfarge"
 
-#: inc/customizer.php:126
-#@ generate
+# @ generate
+#: inc/customizer.php:132
 msgid "Text Color"
 msgstr "Tekstfarge"
 
-#: inc/customizer.php:131
-#@ generate
+# @ generate
+#: inc/customizer.php:138
 msgid "Link Color"
 msgstr "Lenkefarge"
 
-#: inc/customizer.php:136
-#@ generate
+# @ generate
+#: inc/customizer.php:144
 msgid "Link Color Hover"
 msgstr "Lenkefarge, hover"
 
-#: inc/customizer.php:141
-#@ generate
+# @ generate
+#: inc/customizer.php:150
 msgid "Link Color Visited"
 msgstr "Lenkefarge, besøkte lenker"
 
-#: inc/customizer.php:178
+# @ generate
+#: inc/customizer.php:191
 #, php-format
-#@ generate
 msgid "Looking to add more color settings?<br /> %s."
 msgstr "Vil du legge til flere fargeinnstillinger?<br /> %s."
 
-#: inc/customizer.php:182
-#@ generate
+# @ generate
+#: inc/customizer.php:195
 msgid "Check out Generate Colors"
 msgstr "Sjekk Generate Colors"
 
-#: inc/customizer.php:197
-#@ generate
+# @ generate
+#: inc/customizer.php:210
 msgid "Layout"
 msgstr "Oppsett"
 
-#: inc/customizer.php:199
-#@ generate
+# @ generate
+#: inc/customizer.php:212
 msgid "Allows you to edit your theme's layout."
 msgstr "Lar deg endre temaets oppsett."
 
-#: inc/customizer.php:219
-#@ generate
+# @ generate
+#: inc/customizer.php:233
 msgid "Container Width"
 msgstr "Beholderbredde"
 
-#: inc/customizer.php:246
-#@ generate
+# @ generate
+#: inc/customizer.php:260
 msgid "Header Layout"
 msgstr "Toppfeltoppsett"
 
-#: inc/customizer.php:249
-#: inc/customizer.php:312
-#: inc/customizer.php:577
-#: inc/sanitize.php:29
-#: inc/sanitize.php:46
-#: inc/sanitize.php:238
-#@ generate
+# @ generate
+#: inc/customizer.php:263 inc/customizer.php:326 inc/customizer.php:591
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:249
 msgid "Fluid / Full Width"
 msgstr "Flytende / full bredde"
 
-#: inc/customizer.php:250
-#: inc/customizer.php:313
-#: inc/customizer.php:578
-#: inc/sanitize.php:30
-#: inc/sanitize.php:47
-#: inc/sanitize.php:239
-#@ generate
+# @ generate
+#: inc/customizer.php:264 inc/customizer.php:327 inc/customizer.php:592
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:250
 msgid "Contained"
 msgstr "Inngjerdet"
 
-#: inc/customizer.php:277
-#@ generate
+# @ generate
+#: inc/customizer.php:291
 msgid "Header Alignment"
 msgstr "Toppfeltjustering"
 
-#: inc/customizer.php:280
-#: inc/customizer.php:378
-#: inc/sanitize.php:144
-#@ generate
+# @ generate
+#: inc/customizer.php:294 inc/customizer.php:392 inc/sanitize.php:155
 msgid "Left"
 msgstr "Venstre"
 
-#: inc/customizer.php:281
-#: inc/customizer.php:379
-#: inc/sanitize.php:145
-#@ generate
+# @ generate
+#: inc/customizer.php:295 inc/customizer.php:393 inc/sanitize.php:156
 msgid "Center"
 msgstr "Midtstilt"
 
-#: inc/customizer.php:282
-#: inc/customizer.php:380
-#: inc/sanitize.php:146
-#@ generate
+# @ generate
+#: inc/customizer.php:296 inc/customizer.php:394 inc/sanitize.php:157
 msgid "Right"
 msgstr "Høyre"
 
-#: inc/customizer.php:309
-#@ generate
+# @ generate
+#: inc/customizer.php:323
 msgid "Navigation Layout"
 msgstr "Navigasjonsoppsett"
 
-#: inc/customizer.php:340
-#@ generate
+# @ generate
+#: inc/customizer.php:354
 msgid "Navigation Position"
 msgstr "Navigasjonsplassering"
 
-#: inc/customizer.php:343
-#: inc/sanitize.php:179
-#@ generate
+# @ generate
+#: inc/customizer.php:357 inc/sanitize.php:190
 msgid "Below Header"
 msgstr "Under toppfelt"
 
-#: inc/customizer.php:344
-#: inc/sanitize.php:180
-#@ generate
+# @ generate
+#: inc/customizer.php:358 inc/sanitize.php:191
 msgid "Above Header"
 msgstr "Over toppfelt"
 
-#: inc/customizer.php:345
-#: inc/sanitize.php:181
-#@ generate
+# @ generate
+#: inc/customizer.php:359 inc/sanitize.php:192
 msgid "Float Right"
 msgstr "Flytende til høyre"
 
-#: inc/customizer.php:348
-#: inc/sanitize.php:184
-#@ generate
+# @ generate
+#: inc/customizer.php:362 inc/sanitize.php:195
 msgid "No Navigation"
 msgstr "Ingen navigasjon"
 
-#: inc/customizer.php:375
-#@ generate
+# @ generate
+#: inc/customizer.php:389
 msgid "Navigation Alignment"
 msgstr "Navigasjonsjustering"
 
-#: inc/customizer.php:407
-#@ generate
+# @ generate
+#: inc/customizer.php:421
 msgid "Navigation Search"
 msgstr "Navigasjonssøk"
 
-#: inc/customizer.php:410
-#: inc/sanitize.php:162
-#@ generate
+# @ generate
+#: inc/customizer.php:424 inc/sanitize.php:173
 msgid "Enabled"
 msgstr "Aktivert"
 
-#: inc/customizer.php:411
-#: inc/sanitize.php:163
-#@ generate
+# @ generate
+#: inc/customizer.php:425 inc/sanitize.php:174
 msgid "Disabled"
 msgstr "Deaktivert"
 
-#: inc/customizer.php:438
-#@ generate
+# @ generate
+#: inc/customizer.php:452
 msgid "Content Layout"
 msgstr "Innholdsoppsett"
 
-#: inc/customizer.php:441
-#: inc/sanitize.php:200
-#@ generate
+# @ generate
+#: inc/customizer.php:455 inc/sanitize.php:211
 msgid "Separate Containers"
 msgstr "Adskilte beholdere"
 
-#: inc/customizer.php:442
-#: inc/sanitize.php:201
-#@ generate
+# @ generate
+#: inc/customizer.php:456 inc/sanitize.php:212
 msgid "One Container"
 msgstr "En beholder"
 
-#: inc/customizer.php:469
-#: inc/metaboxes.php:20
-#@ generate
+# @ generate
+#: inc/customizer.php:483 inc/metaboxes.php:20
 msgid "Sidebar Layout"
 msgstr "Sidemenyoppsett"
 
-#: inc/customizer.php:472
-#: inc/customizer.php:507
-#: inc/customizer.php:542
-#: inc/sanitize.php:217
-#@ generate
+# @ generate
+#: inc/customizer.php:486 inc/customizer.php:521 inc/customizer.php:556
+#: inc/sanitize.php:228
 msgid "Sidebar / Content"
 msgstr "Sidemeny / innhold"
 
-#: inc/customizer.php:473
-#: inc/customizer.php:508
-#: inc/customizer.php:543
-#: inc/sanitize.php:218
-#@ generate
+# @ generate
+#: inc/customizer.php:487 inc/customizer.php:522 inc/customizer.php:557
+#: inc/sanitize.php:229
 msgid "Content / Sidebar"
 msgstr "Innhold / sidemeny"
 
-#: inc/customizer.php:474
-#: inc/customizer.php:509
-#: inc/customizer.php:544
-#: inc/metaboxes.php:67
-#: inc/sanitize.php:219
-#@ generate
+# @ generate
+#: inc/customizer.php:488 inc/customizer.php:523 inc/customizer.php:558
+#: inc/metaboxes.php:67 inc/sanitize.php:230
 msgid "Content (no sidebars)"
 msgstr "Innhold (ingen sidemenyer)"
 
-#: inc/customizer.php:475
-#: inc/customizer.php:510
-#: inc/customizer.php:545
-#: inc/sanitize.php:220
-#@ generate
+# @ generate
+#: inc/customizer.php:489 inc/customizer.php:524 inc/customizer.php:559
+#: inc/sanitize.php:231
 msgid "Sidebar / Content / Sidebar"
 msgstr "Sidemeny / innhold / sidemeny"
 
-#: inc/customizer.php:476
-#: inc/customizer.php:511
-#: inc/customizer.php:546
-#: inc/sanitize.php:221
-#@ generate
+# @ generate
+#: inc/customizer.php:490 inc/customizer.php:525 inc/customizer.php:560
+#: inc/sanitize.php:232
 msgid "Sidebar / Sidebar / Content"
 msgstr "Sidemeny / sidemeny / innhold"
 
-#: inc/customizer.php:477
-#: inc/customizer.php:512
-#: inc/customizer.php:547
-#: inc/sanitize.php:222
-#@ generate
+# @ generate
+#: inc/customizer.php:491 inc/customizer.php:526 inc/customizer.php:561
+#: inc/sanitize.php:233
 msgid "Content / Sidebar / Sidebar"
 msgstr "Innhold / sidemeny / sidemeny"
 
-#: inc/customizer.php:504
-#@ generate
+# @ generate
+#: inc/customizer.php:518
 msgid "Blog Sidebar Layout"
 msgstr "Bloggsidemenyoppsett"
 
-#: inc/customizer.php:539
-#@ generate
+# @ generate
+#: inc/customizer.php:553
 msgid "Single Post Sidebar Layout"
 msgstr "Innleggssidemenyoppsett"
 
-#: inc/customizer.php:574
-#@ generate
+# @ generate
+#: inc/customizer.php:588
 msgid "Footer Layout"
 msgstr "Bunnfeltoppsett"
 
-#: inc/customizer.php:605
-#: inc/metaboxes.php:125
-#@ generate
+# @ generate
+#: inc/customizer.php:619 inc/metaboxes.php:125
 msgid "Footer Widgets"
 msgstr "Bunnfeltwidgeter"
 
-#: inc/customizer.php:627
-#: inc/options.php:138
-#@ generate
+# @ generate
+#: inc/customizer.php:641 inc/options.php:198
 msgid "Blog"
 msgstr "Blogg"
 
-#: inc/customizer.php:653
-#@ generate
+# @ generate
+#: inc/customizer.php:667
 msgid "Blog Post Content"
 msgstr "Blogginnlegginnhold"
 
-#: inc/customizer.php:656
-#: inc/sanitize.php:276
-#@ generate
+# @ generate
+#: inc/customizer.php:670 inc/sanitize.php:287
 msgid "Show full post"
 msgstr "Vis hele innlegget"
 
-#: inc/customizer.php:657
-#: inc/sanitize.php:277
-#@ generate
+# @ generate
+#: inc/customizer.php:671 inc/sanitize.php:288
 msgid "Show excerpt"
 msgstr "Vis utdrag"
 
-#: inc/customizer.php:677
+# @ generate
+#: inc/customizer.php:691
 #, php-format
-#@ generate
 msgid "Looking to add more blog settings?<br /> %s."
 msgstr "Vil du legge til flere blogginnstillinger?<br /> %s."
 
-#: inc/customizer.php:681
-#@ generate
+# @ generate
+#: inc/customizer.php:695
 msgid "Check out Generate Blog"
 msgstr "Sjekk Generate Blog"
 
-#: inc/customizer.php:702
-#@ generate
+# @ generate
+#: inc/customizer.php:727
 msgid "Default"
 msgstr "Standard"
 
-#: inc/customizer.php:738
-#@ generate
-msgid "Addon available"
-msgstr "Tillegg tilgjengelig"
+#: inc/customizer.php:763
+msgid "Add-on available"
+msgstr ""
 
-#: inc/customizer.php:788
-#@ generate
-msgid "Addons Available! Take a look"
-msgstr "Tillegg tilgjengelige! Ta en titt"
+#: inc/customizer.php:821
+msgid "Add-ons Available! Take a look"
+msgstr ""
 
-#: inc/extras.php:406
-#, php-format
-#@ generate
-msgid "Page %s"
-msgstr "Side %s"
-
+# @ generate
 #: inc/metaboxes.php:55
-#@ generate
 msgid "Global Layout Settings"
 msgstr "Globale oppsettinnstillinger"
 
-#: inc/metaboxes.php:59
-#: inc/metaboxes.php:63
-#: inc/metaboxes.php:71
-#: inc/metaboxes.php:75
-#: inc/metaboxes.php:79
-#@ generate
+# @ generate
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
 msgid "Content"
 msgstr "Innhold"
 
-#: inc/metaboxes.php:59
-#: inc/metaboxes.php:63
-#: inc/metaboxes.php:71
-#: inc/metaboxes.php:75
-#: inc/metaboxes.php:79
-#@ generate
+# @ generate
+#: inc/metaboxes.php:59 inc/metaboxes.php:63 inc/metaboxes.php:71
+#: inc/metaboxes.php:75 inc/metaboxes.php:79
 msgid "Sidebar"
 msgstr "Sidemeny"
 
+# @ generate
 #: inc/metaboxes.php:65
-#@ generate
 msgid "No Sidebars"
 msgstr "Ingen sidemenyer"
 
+# @ generate
 #: inc/metaboxes.php:69
-#@ generate
 msgid "Both Sidebars"
 msgstr "Begge sidemenyer"
 
+# @ generate
 #: inc/metaboxes.php:73
-#@ generate
 msgid "Both Sidebars on Left"
 msgstr "Begge sidemenyer til venstre"
 
+# @ generate
 #: inc/metaboxes.php:77
-#@ generate
 msgid "Both Sidebars on Right"
 msgstr "Begge sidemenyer til høyre"
 
+# @ generate
 #: inc/metaboxes.php:160
-#@ generate
 msgid "Global Footer Widget Settings"
 msgstr "Globale bunnfeltwidgetinnstillinger"
 
-#: inc/metaboxes.php:162
-#: inc/metaboxes.php:164
-#@ generate
+# @ generate
+#: inc/metaboxes.php:162 inc/metaboxes.php:164
 msgid "0 Widgets"
 msgstr "0 widgeter"
 
-#: inc/metaboxes.php:166
-#: inc/metaboxes.php:168
-#@ generate
+# @ generate
+#: inc/metaboxes.php:166 inc/metaboxes.php:168
 msgid "1 Widget"
 msgstr "1 widget"
 
-#: inc/metaboxes.php:170
-#: inc/metaboxes.php:172
-#@ generate
+# @ generate
+#: inc/metaboxes.php:170 inc/metaboxes.php:172
 msgid "2 Widgets"
 msgstr "2 widgeter"
 
-#: inc/metaboxes.php:174
-#: inc/metaboxes.php:176
-#@ generate
+# @ generate
+#: inc/metaboxes.php:174 inc/metaboxes.php:176
 msgid "3 Widgets"
 msgstr "3 widgeter"
 
-#: inc/metaboxes.php:178
-#: inc/metaboxes.php:180
-#@ generate
+# @ generate
+#: inc/metaboxes.php:178 inc/metaboxes.php:180
 msgid "4 Widgets"
 msgstr "4 widgeter"
 
-#: inc/metaboxes.php:182
-#: inc/metaboxes.php:184
-#@ generate
+# @ generate
+#: inc/metaboxes.php:182 inc/metaboxes.php:184
 msgid "5 Widgets"
 msgstr "5 widgeter"
 
-#: inc/navigation.php:88
-#@ generate
+# @ generate
+#: inc/navigation.php:91
 msgid "Menu"
 msgstr "Meny"
 
-#: inc/navigation.php:89
-#@ generate
-msgid "Skip to content"
-msgstr "Hopp til innhold"
-
-#: inc/options.php:57
-#@ generate
-msgid "Import successful."
-msgstr "Import vellykket."
-
-#: inc/options.php:61
-#@ generate
-msgid "Settings removed."
-msgstr "Innstillinger fjernet."
-
-#: inc/options.php:65
-#@ generate
-msgid "Settings saved."
-msgstr "Innstillinger lagret."
-
-#: inc/options.php:70
-#@ generate
-msgid "Information"
-msgstr "Informasjon"
-
-#: inc/options.php:74
-#@ generate
-msgid "Author"
-msgstr "Forfatter"
-
-#: inc/options.php:78
-#: inc/options.php:222
-#@ generate
-msgid "Add-ons"
-msgstr "Tillegg"
-
-#: inc/options.php:102
-#@ generate
-msgid "Page Header"
-msgstr "Sidetoppfelt"
-
-#: inc/options.php:111
-#@ generate
-msgid "Import / Export"
-msgstr "Import/eksport"
-
-#: inc/options.php:129
-#@ generate
-msgid "Disable Elements"
-msgstr "Deaktiver elementer"
-
-#: inc/options.php:147
-#@ generate
-msgid "Hooks"
-msgstr "Knagger"
-
-#: inc/options.php:156
-#@ generate
-msgid "Spacing"
-msgstr "Avstand"
-
-#: inc/options.php:165
-#@ generate
-msgid "Backgrounds"
-msgstr "Bakgrunner"
-
-#: inc/options.php:174
-#@ generate
-msgid "Secondary Nav"
-msgstr "Sekundærnavigasjon"
-
-#: inc/options.php:188
-#: inc/options.php:201
-#@ generate
-msgid "Not activated."
-msgstr "Ikke aktivert."
-
-#: inc/options.php:192
-#: inc/options.php:205
-#@ generate
-msgid "Activated and unverified. Please activate below."
-msgstr "Aktivert og ubekreftet. Vennligst aktiver under."
-
-#: inc/options.php:194
-#: inc/options.php:207
-#@ generate
-msgid "Activated and verified."
-msgstr "Aktivert og bekreftet."
-
-#: inc/options.php:220
-#@ generate
-msgid "Customizer"
-msgstr "Tilpasser"
-
-#: inc/options.php:224
-#@ generate
-msgid "Please help support development of the GeneratePress by buying me a coffee :)"
-msgstr "Vær så snill å støtte utviklingen av GeneratePress - kjøp en kopp kaffe til meg :-)"
-
-#: inc/options.php:224
-#@ generate
-msgid "Buy me a coffee :)"
-msgstr "Kjøp en kaffe til meg :-)"
-
-#: inc/options.php:232
-#@ generate
-msgid "Addon Activation"
-msgstr "Tilleggsaktivering"
-
-#: inc/options.php:254
-#@ generate
-msgid "Delete Customizer Settings"
-msgstr "Slett tilpasserinnstillinger"
-
-#: inc/options.php:258
-#@ generate
-msgid "You may want to export your settings before deleting them forever."
-msgstr "Du vil kanskje eksportere innstillingene før du sletter dem for alltid."
-
-#: inc/options.php:263
-#@ generate
-msgid "Delete Default Customizer Settings"
-msgstr "Slett standard tilpasserinnstillinger"
-
-#: inc/template-tags.php:39
-#@ generate
-msgid "&larr; Previous"
-msgstr "&larr; Forrige"
-
-#: inc/template-tags.php:40
-#@ generate
-msgid "Next &rarr;"
-msgstr "Neste &rarr;"
-
-#: inc/template-tags.php:76
-#@ generate
-msgid "Post navigation"
-msgstr "Innleggsnavigasjon"
-
-#: inc/template-tags.php:86
-#@ generate
-msgid "Older posts"
-msgstr "Eldre innlegg"
-
-#: inc/template-tags.php:90
-#@ generate
-msgid "Newer posts"
-msgstr "Nyere innlegg"
-
-#: inc/template-tags.php:117
-#@ generate
-msgid "Pingback:"
-msgstr "Tilbakeping:"
-
-#: inc/template-tags.php:128
-#, php-format
-#@ generate
-msgid "%s"
-msgstr "%s"
-
-#: inc/template-tags.php:134
-#, php-format
-#@ generate
-msgctxt "1: date, 2: time"
-msgid "%1$s at %2$s"
-msgstr "%1$s klokka %2$s"
-
-#: inc/template-tags.php:151
-#@ generate
-msgid "Your comment is awaiting moderation."
-msgstr "Kommentaren din venter på moderering."
-
-#: inc/template-tags.php:239
-#, php-format
-#@ generate
-msgid "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-msgstr "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-
-#: inc/template-tags.php:246
-#@ generate
-msgid "by"
-msgstr "av"
-
-#: inc/template-tags.php:248
-#, php-format
-#@ generate
-msgid "View all posts by %s"
-msgstr "Vis alle innlegg av %s"
-
-#: inc/template-tags.php:262
-#@ generate
-msgid "Read more"
-msgstr "Les mer"
-
-#: inc/template-tags.php:307
-#@ generate
-msgctxt "label"
-msgid "Search"
-msgstr "Søk"
-
-#: inc/template-tags.php:353
-#: inc/template-tags.php:361
-#@ generate
-msgctxt "Used between list items, there is a space after the comma."
-msgid ", "
-msgstr ","
-
-#: inc/template-tags.php:356
-#@ generate
-msgctxt "Used before category names."
-msgid "Categories"
-msgstr "Kategorier"
-
-#: inc/template-tags.php:364
-#@ generate
-msgctxt "Used before tag names."
-msgid "Tags"
-msgstr "Merkelapper"
-
-#: inc/template-tags.php:375
-#@ generate
-msgctxt "Used before full size attachment link."
-msgid "Full size"
-msgstr "Full størrelse"
-
-#: inc/template-tags.php:384
-#@ generate
-msgid "Leave a comment"
-msgstr "Legg igjen en kommentar"
-
-#: inc/template-tags.php:384
-#@ generate
-msgid "1 Comment"
-msgstr "1 kommentar"
-
-#: inc/template-tags.php:384
-#@ generate
-msgid "% Comments"
-msgstr "% kommentarer"
-
-#: no-results.php:15
-#@ generate
-msgid "Nothing Found"
-msgstr "Ingenting funnet"
-
-#: no-results.php:22
-#, php-format
-#@ generate
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr "Klar til å publisere ditt første innlegg? <a href=\"%1$s\">Start her</a>."
-
-#: no-results.php:26
-#@ generate
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr "Beklager, men ingenting passet til søkekriteriene. Vennligst prøv igjen med litt andre søkeord."
-
-#: no-results.php:31
-#@ generate
-msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "Vi klarer ikke å finne det du leter etter. Kanskje det hjelper å søke?"
-
-#: search.php:16
-#, php-format
-#@ generate
-msgid "Search Results for: %s"
-msgstr "Søkeresultater for: %s"
-
-#: searchform.php:10
-#: searchform.php:11
-#@ generate
-msgctxt "label"
-msgid "Search for:"
-msgstr "Søk etter:"
-
-#: searchform.php:11
-#@ generate
-msgctxt "placeholder"
-msgid "Search &hellip;"
-msgstr "Søk &hellip;"
-
+# @ generate
+#: inc/navigation.php:130 inc/template-tags.php:353 inc/template-tags.php:379
 #: searchform.php:13
-#@ generate
 msgctxt "submit button"
 msgid "Search"
 msgstr "Søk"
 
-#: sidebar-left.php:46
-#: sidebar.php:45
-#@ generate
+#: inc/options.php:64 inc/options.php:77 inc/options.php:130
+msgid "Customize"
+msgstr ""
+
+# @ generate
+#: inc/options.php:70
+msgid "Version"
+msgstr "Versjon"
+
+# @ generate
+#: inc/options.php:71
+msgid "Author"
+msgstr "Forfatter"
+
+# @ generate
+#: inc/options.php:79 inc/options.php:133
+msgid "Add-ons"
+msgstr "Tillegg"
+
+#: inc/options.php:81
+msgid ""
+"Please help support ongoing development of the GeneratePress by buying me a "
+"coffee :)"
+msgstr ""
+
+# @ generate
+#: inc/options.php:81
+msgid "Buy me a coffee :)"
+msgstr "Kjøp en kaffe til meg :-)"
+
+#: inc/options.php:89
+msgid "Add-on Updates"
+msgstr ""
+
+#: inc/options.php:94
+msgid "No add-ons to keep up to date!"
+msgstr ""
+
+# @ generate
+#: inc/options.php:108
+msgid "Delete Customizer Settings"
+msgstr "Slett tilpasserinnstillinger"
+
+#: inc/options.php:110
+#, php-format
+msgid ""
+"<strong>Warning:</strong> Deleting your <a href=\"%1$s\">Customizer</a> "
+"settings can not be undone."
+msgstr ""
+
+#: inc/options.php:111
+msgid ""
+"Consider using our Import/Export add-on to export your settings before "
+"deleting them."
+msgstr ""
+
+#: inc/options.php:116
+msgid "Warning: This will delete your settings."
+msgstr ""
+
+# @ generate
+#: inc/options.php:118
+msgid "Delete Default Customizer Settings"
+msgstr "Slett standard tilpasserinnstillinger"
+
+#: inc/options.php:148
+msgid "Sections"
+msgstr ""
+
+#: inc/options.php:163
+msgid "Menu Plus"
+msgstr ""
+
+# @ generate
+#: inc/options.php:170
+msgid "Page Header"
+msgstr "Sidetoppfelt"
+
+# @ generate
+#: inc/options.php:177
+msgid "Import / Export"
+msgstr "Import/eksport"
+
+# @ generate
+#: inc/options.php:191
+msgid "Disable Elements"
+msgstr "Deaktiver elementer"
+
+# @ generate
+#: inc/options.php:205
+msgid "Hooks"
+msgstr "Knagger"
+
+# @ generate
+#: inc/options.php:212
+msgid "Spacing"
+msgstr "Avstand"
+
+# @ generate
+#: inc/options.php:219
+msgid "Backgrounds"
+msgstr "Bakgrunner"
+
+# @ generate
+#: inc/options.php:226
+msgid "Secondary Nav"
+msgstr "Sekundærnavigasjon"
+
+# @ generate
+#: inc/options.php:238 inc/options.php:245
+msgid "Not activated."
+msgstr "Ikke aktivert."
+
+#: inc/options.php:240 inc/options.php:247
+msgid "Activated."
+msgstr ""
+
+# @ generate
+#: inc/options.php:296
+msgid "Settings saved."
+msgstr "Innstillinger lagret."
+
+# @ generate
+#: inc/options.php:300
+msgid "Import successful."
+msgstr "Import vellykket."
+
+# @ generate
+#: inc/options.php:304
+msgid "Settings removed."
+msgstr "Innstillinger fjernet."
+
+# @ generate
+#: inc/template-tags.php:39
+msgid "&larr; Previous"
+msgstr "&larr; Forrige"
+
+# @ generate
+#: inc/template-tags.php:40
+msgid "Next &rarr;"
+msgstr "Neste &rarr;"
+
+# @ generate
+#: inc/template-tags.php:76
+msgid "Post navigation"
+msgstr "Innleggsnavigasjon"
+
+# @ generate
+#: inc/template-tags.php:80 inc/template-tags.php:86
+msgid "Previous"
+msgstr "Forrige"
+
+# @ generate
+#: inc/template-tags.php:81 inc/template-tags.php:90
+msgid "Next"
+msgstr "Neste"
+
+# @ generate
+#: inc/template-tags.php:86
+msgid "Older posts"
+msgstr "Eldre innlegg"
+
+# @ generate
+#: inc/template-tags.php:90
+msgid "Newer posts"
+msgstr "Nyere innlegg"
+
+# @ generate
+#: inc/template-tags.php:117
+msgid "Pingback:"
+msgstr "Tilbakeping:"
+
+# @ generate
+#: inc/template-tags.php:128
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+# @ generate
+#: inc/template-tags.php:134
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr "%1$s klokka %2$s"
+
+# @ generate
+#: inc/template-tags.php:151
+msgid "Your comment is awaiting moderation."
+msgstr "Kommentaren din venter på moderering."
+
+# @ generate
+#: inc/template-tags.php:194
+msgid "by"
+msgstr "av"
+
+# @ generate
+#: inc/template-tags.php:196
+#, php-format
+msgid "View all posts by %s"
+msgstr "Vis alle innlegg av %s"
+
+# @ generate
+#: inc/template-tags.php:209 inc/template-tags.php:220
+msgid "Read more"
+msgstr "Les mer"
+
+# @ generate
+#: inc/template-tags.php:327
+msgctxt "label"
+msgid "Search"
+msgstr "Søk"
+
+# @ generate
+#: inc/template-tags.php:393 inc/template-tags.php:401
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ","
+
+# @ generate
+#: inc/template-tags.php:396
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr "Kategorier"
+
+# @ generate
+#: inc/template-tags.php:404
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr "Merkelapper"
+
+# @ generate
+#: inc/template-tags.php:412
+msgid "Leave a comment"
+msgstr "Legg igjen en kommentar"
+
+# @ generate
+#: inc/template-tags.php:412
+msgid "1 Comment"
+msgstr "1 kommentar"
+
+# @ generate
+#: inc/template-tags.php:412
+msgid "% Comments"
+msgstr "% kommentarer"
+
+# @ generate
+#: no-results.php:15
+msgid "Nothing Found"
+msgstr "Ingenting funnet"
+
+# @ generate
+#: no-results.php:22
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Klar til å publisere ditt første innlegg? <a href=\"%1$s\">Start her</a>."
+
+# @ generate
+#: no-results.php:26
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Beklager, men ingenting passet til søkekriteriene. Vennligst prøv igjen med "
+"litt andre søkeord."
+
+# @ generate
+#: no-results.php:31
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr "Vi klarer ikke å finne det du leter etter. Kanskje det hjelper å søke?"
+
+# @ generate
+#: search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Søkeresultater for: %s"
+
+# @ generate
+#: searchform.php:10 searchform.php:11
+msgctxt "label"
+msgid "Search for:"
+msgstr "Søk etter:"
+
+# @ generate
+#: searchform.php:11
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Søk &hellip;"
+
+# @ generate
+#: sidebar-left.php:46 sidebar.php:45
 msgid "Meta"
 msgstr "Meta"
 
+# @ generate
+#~ msgid ""
+#~ "It looks like nothing was found at this location. Maybe try one of the "
+#~ "links below or a search?"
+#~ msgstr ""
+#~ "Ingenting ble funnet på denne plasseringen. Prøv en av linkene under "
+#~ "eller et søk."
+
+# @ generate
+#~ msgid "Search"
+#~ msgstr "Søk"
+
+# @ generate
+#~ msgid ""
+#~ "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+#~ "\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+#~ "image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s"
+#~ "\" rel=\"gallery\">%8$s</a>"
+#~ msgstr ""
+#~ "Publisert <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+#~ "\"%1$s\">%2$s</time></span> på <a href=\"%3$s\" title=\"Lenke til bilde i "
+#~ "full størrelse\">%4$s &times; %5$s</a> i <a href=\"%6$s\" title=\"Tilbake "
+#~ "til %7$s\" rel=\"gallery\">%8$s</a>"
+
+# @ generate
+#~ msgid ""
+#~ "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post "
+#~ "a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s"
+#~ "\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</"
+#~ "a>."
+#~ msgstr ""
+#~ "<a class=\"comment-link\" href=\"#respond\" title=\"Skriv en kommentar"
+#~ "\">Legg til en kommentar</a> eller legg igjen et tilbaketråkk: <a class="
+#~ "\"trackback-link\" href=\"%s\" title=\"Tilbaketråkk-URL for innlegget\" "
+#~ "rel=\"trackback\">Tilbaketråkk-URL</a>."
+
+# @ generate
+#~ msgid ""
+#~ "Comments are closed, but you can leave a trackback: <a class=\"trackback-"
+#~ "link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+#~ "\">Trackback URL</a>."
+#~ msgstr ""
+#~ "Kommentarfeltet er stengt, men du kan legge igjen et tilbaketråkk <a "
+#~ "class=\"trackback-link\" href=\"%s\" title=\"Tilbaketråkk-URL for "
+#~ "innlegget ditt\\\" rel=\"trackback\">Tilbaketråkk-URL</a>."
+
+# @ generate
+#~ msgid ""
+#~ "Trackbacks are closed, but you can <a class=\"comment-link\" href="
+#~ "\"#respond\" title=\"Post a comment\">post a comment</a>."
+#~ msgstr ""
+#~ "Tilbaketråkk er stengt, men du kan <a class=\"comment-link\" href="
+#~ "\"#respond\" title=\"Legg til en kommentar\">legge til en kommentar</a>."
+
+# @ generate
+#~ msgid "Both comments and trackbacks are currently closed."
+#~ msgstr "Kommentarer og tilbaketråkk er for tiden stengt."
+
+# @ generate
+#~ msgid "verified"
+#~ msgstr "bekreftet"
+
+# @ generate
+#~ msgid "unverified"
+#~ msgstr "ubekreftet"
+
+# @ generate
+#~ msgid "Activate"
+#~ msgstr "Aktiver"
+
+# @ generate
+#~ msgid "Activate All"
+#~ msgstr "Aktiver alle"
+
+# @ generate
+#~ msgid "Deactivate"
+#~ msgstr "Deaktiver"
+
+# @ generate
+#~ msgid ""
+#~ "Please activate the email you purchased your add-ons with below in order "
+#~ "to receive future updates."
+#~ msgstr ""
+#~ "Vennligst aktiver e-posten du kjøpte tilleggene dine med under for å "
+#~ "motta fremtidige oppdateringer."
+
+# @ generate
+#~ msgid "Add-on"
+#~ msgstr "Tillegg"
+
+# @ generate
+#~ msgid "Status"
+#~ msgstr "Status"
+
+# @ generate
+#~ msgid "Action"
+#~ msgstr "Handling"
+
+# @ generate
+#~ msgid "Verify Email"
+#~ msgstr "Bekreft e-post"
+
+# @ generate
+#~ msgid "Refresh"
+#~ msgstr "Oppdater"
+
+# @ generate
+#~ msgid "Disable"
+#~ msgstr "Deaktiver"
+
+# @ generate
+#~ msgid "Enable"
+#~ msgstr "Aktiver"
+
+# @ generate
+#~ msgid "Width"
+#~ msgstr "Bredde"
+
+# @ generate
+#~ msgid "Header Content"
+#~ msgstr "Toppfeltinnhold"
+
+# @ generate
+#~ msgid "Set Navigation"
+#~ msgstr "Velg navigasjon"
+
+# @ generate
+#~ msgid "Addon available"
+#~ msgstr "Tillegg tilgjengelig"
+
+# @ generate
+#~ msgid "Addons Available! Take a look"
+#~ msgstr "Tillegg tilgjengelige! Ta en titt"
+
+# @ generate
+#~ msgid "Page %s"
+#~ msgstr "Side %s"
+
+# @ generate
+#~ msgid "Information"
+#~ msgstr "Informasjon"
+
+# @ generate
+#~ msgid "Activated and unverified. Please activate below."
+#~ msgstr "Aktivert og ubekreftet. Vennligst aktiver under."
+
+# @ generate
+#~ msgid "Activated and verified."
+#~ msgstr "Aktivert og bekreftet."
+
+# @ generate
+#~ msgid "Customizer"
+#~ msgstr "Tilpasser"
+
+# @ generate
+#~ msgid ""
+#~ "Please help support development of the GeneratePress by buying me a "
+#~ "coffee :)"
+#~ msgstr ""
+#~ "Vær så snill å støtte utviklingen av GeneratePress - kjøp en kopp kaffe "
+#~ "til meg :-)"
+
+# @ generate
+#~ msgid "Addon Activation"
+#~ msgstr "Tilleggsaktivering"
+
+# @ generate
+#~ msgid "You may want to export your settings before deleting them forever."
+#~ msgstr ""
+#~ "Du vil kanskje eksportere innstillingene før du sletter dem for alltid."
+
+# @ generate
+#~ msgid ""
+#~ "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+#~ msgstr ""
+#~ "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+
+# @ generate
+#~ msgctxt "Used before full size attachment link."
+#~ msgid "Full size"
+#~ msgstr "Full størrelse"

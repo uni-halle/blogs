@@ -5,7 +5,7 @@
  * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.3.16');
+define( 'GENERATE_VERSION', '1.3.17');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 

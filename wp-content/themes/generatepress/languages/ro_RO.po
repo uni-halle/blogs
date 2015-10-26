@@ -1,14 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GeneratePress\n"
-"POT-Creation-Date: 2015-04-04 15:17-0800\n"
-"PO-Revision-Date: 2015-05-10 17:40+0200\n"
+"POT-Creation-Date: 2015-10-18 16:55-0700\n"
+"PO-Revision-Date: 2015-10-18 16:55-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -16,7 +17,6 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
-"Language: ro\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: 404.php:17
@@ -24,12 +24,8 @@ msgid "Oops! That page can&rsquo;t be found."
 msgstr "Ne pare rau. Aceasta pagina nu poate fi gasita."
 
 #: 404.php:22
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+msgid "It looks like nothing was found at this location. Maybe try searching?"
 msgstr ""
-"Se pare ca nimic nu poate fi gasit la aceasta locatie. Poate poti incerca o "
-"cautare, sau una din legaturile de mai jos..."
 
 #: archive.php:33
 #, php-format
@@ -84,41 +80,41 @@ msgstr[0] "O parere despre &ldquo;%2$s&rdquo;"
 msgstr[1] "%1$s de pareri despre &ldquo;%2$s&rdquo;"
 msgstr[2] "%1$s de pareri despren &ldquo;%2$s&rdquo;"
 
-#: comments.php:36 comments.php:56
+#: comments.php:36 comments.php:58
 msgid "Comment navigation"
 msgstr "Navigare comentarii"
 
-#: comments.php:37 comments.php:57
+#: comments.php:37 comments.php:59
 msgid "&larr; Older Comments"
 msgstr "&larr; Comentarii mai vechi"
 
-#: comments.php:38 comments.php:58
+#: comments.php:38 comments.php:60
 msgid "Newer Comments &rarr;"
 msgstr "Comentarii mai noi &rarr;"
 
-#: comments.php:68
+#: comments.php:70
 msgid "Comments are closed."
 msgstr "Sectiunea de comentarii este inchisa."
 
-#: comments.php:73
+#: comments.php:75
 msgid "Name"
 msgstr "Nume"
 
-#: comments.php:74
+#: comments.php:76
 msgid "Email"
 msgstr "Email"
 
-#: comments.php:75 inc/options.php:70
+#: comments.php:77 inc/options.php:72
 msgid "Website"
 msgstr "Website"
 
-#: comments.php:80
+#: comments.php:82
 #, php-format
 msgid "You must be <a href=\"%1$s\">logged in</a> to post a comment."
 msgstr ""
 "Trebuie sa fii <a href=\"%1$s\">logat</a> pentru a posta un comentariu."
 
-#: comments.php:81
+#: comments.php:83
 #, php-format
 msgid ""
 "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
@@ -127,465 +123,436 @@ msgstr ""
 "Logat ca <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this "
 "account\">Vrei sa te deloghezi?</a>"
 
-#: comments.php:86
+#: comments.php:88
 msgid "Leave a Comment"
 msgstr "Lasa un comentariu"
 
-#: comments.php:87
+#: comments.php:89
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr "Raspunde lui %s"
 
-#: comments.php:88
+#: comments.php:90
 msgid "Cancel reply"
 msgstr "Anuleaza raspuns"
 
-#: comments.php:89
+#: comments.php:91
 msgid "Post Comment"
 msgstr "Posteaza un comentariu"
 
-#: content-link.php:29 content-page.php:20 content-single.php:21
-#: content.php:41 image.php:56
+#: content-link.php:29 content-page.php:20 content-single.php:22 content.php:28
 msgid "Pages:"
 msgstr "Pagini:"
 
-#: content-page.php:26 content-single.php:32 image.php:78
-#: inc/template-tags.php:117 inc/template-tags.php:137
+#: content-page.php:26 content-single.php:32 inc/template-tags.php:117
+#: inc/template-tags.php:137
 msgid "Edit"
 msgstr "Editeaza"
 
-#: footer.php:50 functions.php:145
+#: footer.php:37 functions.php:152
 msgid "Footer Widget 1"
 msgstr "Widget Subsol 1"
 
-#: footer.php:52 footer.php:66 footer.php:80 footer.php:94 footer.php:108
-msgid "Replace this widget content by going to <a href=\""
-msgstr "Pentru a inlocui continutul acestui widget, mergi la <a href=\""
-
-#: footer.php:53 footer.php:67 footer.php:81 footer.php:95 footer.php:109
-msgid "To remove or choose the number of footer widgets, go to <a href=\""
+#: footer.php:39
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 1."
 msgstr ""
-"Pentru a inlatura sau a alege numarul de widgeturi din subsol, mergi la <a "
-"href=\""
 
-#: footer.php:64 functions.php:153
+#: footer.php:40 footer.php:54 footer.php:68 footer.php:82 footer.php:96
+#, php-format
+msgid ""
+"To remove or choose the number of footer widgets, go to <a href=\"%1$s"
+"\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
+msgstr ""
+
+#: footer.php:51 functions.php:160
 msgid "Footer Widget 2"
 msgstr "Widget Subsol 2"
 
-#: footer.php:78 functions.php:161
+#: footer.php:53
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 2."
+msgstr ""
+
+#: footer.php:65 functions.php:168
 msgid "Footer Widget 3"
 msgstr "Widget Subsol 3"
 
-#: footer.php:92 functions.php:169
+#: footer.php:67
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 3."
+msgstr ""
+
+#: footer.php:79 functions.php:176
 msgid "Footer Widget 4"
 msgstr "Widget Subsol 4"
 
-#: footer.php:106 functions.php:177
+#: footer.php:81
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 4."
+msgstr ""
+
+#: footer.php:93 functions.php:184
 msgid "Footer Widget 5"
 msgstr "Widget Subsol 5"
 
-#: functions.php:53
+#: footer.php:95
+#, php-format
+msgid ""
+"Replace this widget content by going to <a href=\"%1$s"
+"\"><strong>Appearance / Widgets</strong></a> and dragging widgets into "
+"Footer Area 5."
+msgstr ""
+
+#: functions.php:48
 msgid "Primary Menu"
 msgstr "Meniu Principal"
 
-#: functions.php:121 inc/customizer.php:347 inc/metaboxes.php:57
-#: inc/sanitize.php:184
+#: functions.php:128 inc/customizer.php:361 inc/metaboxes.php:57
+#: inc/sanitize.php:194
 msgid "Right Sidebar"
 msgstr "Sidebar Dreapta"
 
-#: functions.php:129 inc/customizer.php:346 inc/metaboxes.php:61
-#: inc/sanitize.php:183
+#: functions.php:136 inc/customizer.php:360 inc/metaboxes.php:61
+#: inc/sanitize.php:193
 msgid "Left Sidebar"
 msgstr "Sidebar Stanga"
 
-#: functions.php:137
+#: functions.php:144
 msgid "Header"
 msgstr "Header"
 
-#: functions.php:256 searchform.php:13
-msgctxt "submit button"
-msgid "Search"
-msgstr "Cautare"
-
-#: functions.php:349 inc/options.php:185
+#: functions.php:389 inc/options.php:184
 msgid "Copyright"
 msgstr "Copyright"
 
-#: functions.php:357 inc/options.php:24 inc/options.php:65
+#: functions.php:397 inc/options.php:24 inc/options.php:67
 msgid "GeneratePress"
 msgstr "GeneratePress"
 
-#: functions.php:357
+#: functions.php:397
 msgid "Proudly powered by WordPress"
 msgstr "Acest website ruleaza pe platforma WordPress"
 
-#: functions.php:357
+#: functions.php:397
 msgid "WordPress"
 msgstr "WordPress"
 
-#: image.php:24
-#, php-format
-msgid ""
-"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
-"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
-"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
-"rel=\"gallery\">%8$s</a>"
-msgstr ""
-"Publicat la <span class=\"entry-date\"><time class=\"entry-date\" datetime="
-"\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
-"image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" "
-"rel=\"gallery\">%8$s</a>"
+#: header.php:24
+msgid "Skip to content"
+msgstr "Sari la continut"
 
-#: image.php:64 inc/template-tags.php:80 inc/template-tags.php:86
-msgid "Previous"
-msgstr "Anterior"
+#: inc/add-ons/controls.php:34
+msgid "Default fonts"
+msgstr "Fonturi de baza"
 
-#: image.php:65 inc/template-tags.php:81 inc/template-tags.php:90
-msgid "Next"
-msgstr "Urmatorul"
+#: inc/add-ons/controls.php:53
+msgid "Google fonts"
+msgstr "Fonturi Google"
 
-#: image.php:69
-#, php-format
-msgid ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
-"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
-"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
-msgstr ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment"
-"\">Posteaza un comentariu</a> sau lasa un Trackbac: <a class=\"trackback-link"
-"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">URL "
-"Trackback</a>."
+#: inc/add-ons/controls.php:62
+msgid "Font family"
+msgstr "Familie Font"
 
-#: image.php:71
-#, php-format
-msgid ""
-"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
-"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
-"\">Trackback URL</a>."
-msgstr ""
-"Comentariile sunt inchise, dar poti lasa un trackback: <a class=\"trackback-"
-"link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
-"\">Trackback URL</a>."
-
-#: image.php:73
-msgid ""
-"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
-"\" title=\"Post a comment\">post a comment</a>."
-msgstr ""
-"Trackback-urile sunt inchise, dar <a class=\"comment-link\" href=\"#respond"
-"\" title=\"Post a comment\">poti posta un comentariu</a>."
-
-#: image.php:75
-msgid "Both comments and trackbacks are currently closed."
-msgstr "Si comentariile si trackback-urile sunt inchise momentan."
-
-#: inc/addons/typography.php:285 inc/options.php:158
+#: inc/add-ons/typography.php:322 inc/options.php:156
 msgid "Typography"
 msgstr "Tipografie"
 
-#: inc/addons/typography.php:307
+#: inc/add-ons/typography.php:344
 msgid "Body"
 msgstr "Body"
 
-#: inc/addons/typography.php:329
+#: inc/add-ons/typography.php:366
 msgid "Font weight"
 msgstr "Grosime font"
 
-#: inc/addons/typography.php:353
+#: inc/add-ons/typography.php:390
 msgid "Text transform"
 msgstr "Transformare text"
 
-#: inc/addons/typography.php:376
+#: inc/add-ons/typography.php:413
 msgid "Font size"
 msgstr "Dimensiune font"
 
-#: inc/addons/typography.php:393 inc/customizer.php:175 inc/customizer.php:674
+#: inc/add-ons/typography.php:430 inc/customizer.php:188 inc/customizer.php:688
 msgid "More Settings"
 msgstr "Mai multe setari"
 
-#: inc/addons/typography.php:396
+#: inc/add-ons/typography.php:433
 #, php-format
 msgid "Looking to add more typography settings?<br /> %s."
 msgstr "Cauti sa adaugi mai multe setari de tipografie?<br /> %s."
 
-#: inc/addons/typography.php:400
+#: inc/add-ons/typography.php:437
 msgid "Check out Generate Typography"
 msgstr "Arunca o privire la Generate Typography (Genereaza Tipografii)"
 
-#: inc/addons/typography/google-font-dropdown-custom-control.php:34
-msgid "Default fonts"
-msgstr "Fonturi de baza"
-
-#: inc/addons/typography/google-font-dropdown-custom-control.php:53
-msgid "Google fonts"
-msgstr "Fonturi Google"
-
-#: inc/addons/typography/google-font-dropdown-custom-control.php:63
-msgid "Font family"
-msgstr "Familie Font"
-
-#: inc/controls.php:24
-msgid "Width"
-msgstr "Latine"
-
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Select Image"
 msgstr "Selecteaza imagine"
 
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Use Image"
 msgstr "Foloseste imagine"
 
-#: inc/controls.php:52
+#: inc/controls.php:51
 msgid "Upload"
 msgstr "Incarca"
 
-#: inc/controls.php:53
+#: inc/controls.php:52
 msgid "Remove"
 msgstr "Inlatura"
 
 #: inc/customizer.php:22
-msgid "Header Content"
-msgstr "Continut Header"
+msgid "Site Identity"
+msgstr ""
 
-#: inc/customizer.php:25
+#: inc/customizer.php:30
 msgid "Set Front Page"
 msgstr "Seteaza pagina principala"
 
-#: inc/customizer.php:28
-msgid "Set Navigation"
-msgstr "Seteaza navigare"
-
-#: inc/customizer.php:46
+#: inc/customizer.php:51
 msgid "Hide site title"
 msgstr "Ascunde titlul siteului"
 
-#: inc/customizer.php:65
+#: inc/customizer.php:70
 msgid "Hide site tagline"
 msgstr "Ascunde subtitlu"
 
-#: inc/customizer.php:85
+#: inc/customizer.php:90
 msgid "Logo"
 msgstr "Logo"
 
-#: inc/customizer.php:98 inc/options.php:138
+#: inc/customizer.php:103 inc/options.php:140
 msgid "Colors"
 msgstr "Culori"
 
-#: inc/customizer.php:109
+#: inc/customizer.php:114
 msgid "Base Colors"
 msgstr "Culori de baza"
 
-#: inc/customizer.php:121
+#: inc/customizer.php:126
 msgid "Background Color"
 msgstr "Culoare de fundal"
 
-#: inc/customizer.php:126
+#: inc/customizer.php:132
 msgid "Text Color"
 msgstr "Culoare text"
 
-#: inc/customizer.php:131
+#: inc/customizer.php:138
 msgid "Link Color"
 msgstr "Culoare legaturi"
 
-#: inc/customizer.php:136
+#: inc/customizer.php:144
 msgid "Link Color Hover"
 msgstr "Culoare legaturi selectate"
 
-#: inc/customizer.php:141
+#: inc/customizer.php:150
 msgid "Link Color Visited"
 msgstr "Culoare legaturi vizitate"
 
-#: inc/customizer.php:178
+#: inc/customizer.php:191
 #, php-format
 msgid "Looking to add more color settings?<br /> %s."
 msgstr "Cauti sa adaugi mai multe setari de culoare?<br /> %s."
 
-#: inc/customizer.php:182
+#: inc/customizer.php:195
 msgid "Check out Generate Colors"
 msgstr "Arunca o privire la Generate Colors (Genereaza culori)"
 
-#: inc/customizer.php:197
+#: inc/customizer.php:210
 msgid "Layout"
 msgstr "Asezare in pagina"
 
-#: inc/customizer.php:199
+#: inc/customizer.php:212
 msgid "Allows you to edit your theme's layout."
 msgstr ""
 "Iti permite sa alegi cum vor fi asezate in pagina elementele siteului tau."
 
-#: inc/customizer.php:219
+#: inc/customizer.php:233
 msgid "Container Width"
 msgstr "Latimea containerului"
 
-#: inc/customizer.php:246
+#: inc/customizer.php:260
 msgid "Header Layout"
 msgstr "Schema Header"
 
-#: inc/customizer.php:249 inc/customizer.php:312 inc/customizer.php:577
-#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:239
+#: inc/customizer.php:263 inc/customizer.php:326 inc/customizer.php:591
+#: inc/sanitize.php:29 inc/sanitize.php:46 inc/sanitize.php:249
 msgid "Fluid / Full Width"
 msgstr "Fluid / Latime Intreaga"
 
-#: inc/customizer.php:250 inc/customizer.php:313 inc/customizer.php:578
-#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:240
+#: inc/customizer.php:264 inc/customizer.php:327 inc/customizer.php:592
+#: inc/sanitize.php:30 inc/sanitize.php:47 inc/sanitize.php:250
 msgid "Contained"
 msgstr "In container"
 
-#: inc/customizer.php:277
+#: inc/customizer.php:291
 msgid "Header Alignment"
 msgstr "Aliniere Header"
 
-#: inc/customizer.php:280 inc/customizer.php:378 inc/sanitize.php:145
+#: inc/customizer.php:294 inc/customizer.php:392 inc/sanitize.php:155
 msgid "Left"
 msgstr "Stanga"
 
-#: inc/customizer.php:281 inc/customizer.php:379 inc/sanitize.php:146
+#: inc/customizer.php:295 inc/customizer.php:393 inc/sanitize.php:156
 msgid "Center"
 msgstr "Centru"
 
-#: inc/customizer.php:282 inc/customizer.php:380 inc/sanitize.php:147
+#: inc/customizer.php:296 inc/customizer.php:394 inc/sanitize.php:157
 msgid "Right"
 msgstr "Dreapta"
 
-#: inc/customizer.php:309
+#: inc/customizer.php:323
 msgid "Navigation Layout"
 msgstr "Asezare Navigare"
 
-#: inc/customizer.php:340
+#: inc/customizer.php:354
 msgid "Navigation Position"
 msgstr "Pozitie Navigare"
 
-#: inc/customizer.php:343 inc/sanitize.php:180
+#: inc/customizer.php:357 inc/sanitize.php:190
 msgid "Below Header"
 msgstr "Sub Header"
 
-#: inc/customizer.php:344 inc/sanitize.php:181
+#: inc/customizer.php:358 inc/sanitize.php:191
 msgid "Above Header"
 msgstr "Desupra Headerului"
 
-#: inc/customizer.php:345 inc/sanitize.php:182
+#: inc/customizer.php:359 inc/sanitize.php:192
 msgid "Float Right"
 msgstr "Pluteste Dreapta"
 
-#: inc/customizer.php:348 inc/sanitize.php:185
+#: inc/customizer.php:362 inc/sanitize.php:195
 msgid "No Navigation"
 msgstr "Fara Navigare"
 
-#: inc/customizer.php:375
+#: inc/customizer.php:389
 msgid "Navigation Alignment"
 msgstr "Aliniere Navigare"
 
-#: inc/customizer.php:407
+#: inc/customizer.php:421
 msgid "Navigation Search"
 msgstr "Cautare Navigare"
 
-#: inc/customizer.php:410 inc/sanitize.php:163
+#: inc/customizer.php:424 inc/sanitize.php:173
 msgid "Enabled"
 msgstr "Activat"
 
-#: inc/customizer.php:411 inc/sanitize.php:164
+#: inc/customizer.php:425 inc/sanitize.php:174
 msgid "Disabled"
 msgstr "Dezactivat"
 
-#: inc/customizer.php:438
+#: inc/customizer.php:452
 msgid "Content Layout"
 msgstr "Asezare Continut"
 
-#: inc/customizer.php:441 inc/sanitize.php:201
+#: inc/customizer.php:455 inc/sanitize.php:211
 msgid "Separate Containers"
 msgstr "Containere Separate"
 
-#: inc/customizer.php:442 inc/sanitize.php:202
+#: inc/customizer.php:456 inc/sanitize.php:212
 msgid "One Container"
 msgstr "Un Container"
 
-#: inc/customizer.php:469 inc/metaboxes.php:20
+#: inc/customizer.php:483 inc/metaboxes.php:20
 msgid "Sidebar Layout"
 msgstr "Asezare Sidebar"
 
-#: inc/customizer.php:472 inc/customizer.php:507 inc/customizer.php:542
-#: inc/sanitize.php:218
+#: inc/customizer.php:486 inc/customizer.php:521 inc/customizer.php:556
+#: inc/sanitize.php:228
 msgid "Sidebar / Content"
 msgstr "Sidebar / Continut"
 
-#: inc/customizer.php:473 inc/customizer.php:508 inc/customizer.php:543
-#: inc/sanitize.php:219
+#: inc/customizer.php:487 inc/customizer.php:522 inc/customizer.php:557
+#: inc/sanitize.php:229
 msgid "Content / Sidebar"
 msgstr "Continut / Sidebar"
 
-#: inc/customizer.php:474 inc/customizer.php:509 inc/customizer.php:544
-#: inc/metaboxes.php:67 inc/sanitize.php:220
+#: inc/customizer.php:488 inc/customizer.php:523 inc/customizer.php:558
+#: inc/metaboxes.php:67 inc/sanitize.php:230
 msgid "Content (no sidebars)"
 msgstr "Continut (fara sidebar-uri)"
 
-#: inc/customizer.php:475 inc/customizer.php:510 inc/customizer.php:545
-#: inc/sanitize.php:221
+#: inc/customizer.php:489 inc/customizer.php:524 inc/customizer.php:559
+#: inc/sanitize.php:231
 msgid "Sidebar / Content / Sidebar"
 msgstr "Sidebar / Continut / Sidebar"
 
-#: inc/customizer.php:476 inc/customizer.php:511 inc/customizer.php:546
-#: inc/sanitize.php:222
+#: inc/customizer.php:490 inc/customizer.php:525 inc/customizer.php:560
+#: inc/sanitize.php:232
 msgid "Sidebar / Sidebar / Content"
 msgstr "Sidebar / Sidebar / Continut"
 
-#: inc/customizer.php:477 inc/customizer.php:512 inc/customizer.php:547
-#: inc/sanitize.php:223
+#: inc/customizer.php:491 inc/customizer.php:526 inc/customizer.php:561
+#: inc/sanitize.php:233
 msgid "Content / Sidebar / Sidebar"
 msgstr "Continut / Sidebar / Sidebar"
 
-#: inc/customizer.php:504
+#: inc/customizer.php:518
 msgid "Blog Sidebar Layout"
 msgstr "Asezare Sidebar Blog"
 
-#: inc/customizer.php:539
+#: inc/customizer.php:553
 msgid "Single Post Sidebar Layout"
 msgstr "Asezare Sidebar Postari"
 
-#: inc/customizer.php:574
+#: inc/customizer.php:588
 msgid "Footer Layout"
 msgstr "Asezare Subsol"
 
-#: inc/customizer.php:605 inc/metaboxes.php:125
+#: inc/customizer.php:619 inc/metaboxes.php:125
 msgid "Footer Widgets"
 msgstr "Widgeturi Subsol"
 
-#: inc/customizer.php:627 inc/options.php:203
+#: inc/customizer.php:641 inc/options.php:198
 msgid "Blog"
 msgstr "Blog"
 
-#: inc/customizer.php:653
+#: inc/customizer.php:667
 msgid "Blog Post Content"
 msgstr "Continut Postare Blog"
 
-#: inc/customizer.php:656 inc/sanitize.php:277
+#: inc/customizer.php:670 inc/sanitize.php:287
 msgid "Show full post"
 msgstr "Arata intreaga postare"
 
-#: inc/customizer.php:657 inc/sanitize.php:278
+#: inc/customizer.php:671 inc/sanitize.php:288
 msgid "Show excerpt"
 msgstr "Arata varianta scurta."
 
-#: inc/customizer.php:677
+#: inc/customizer.php:691
 #, php-format
 msgid "Looking to add more blog settings?<br /> %s."
 msgstr "Cauti sa adaugi mai multe setari la blog?<br /> %s."
 
-#: inc/customizer.php:681
+#: inc/customizer.php:695
 msgid "Check out Generate Blog"
 msgstr "Incearca Generate Blog"
 
-#: inc/customizer.php:702
+#: inc/customizer.php:727
 msgid "Default"
 msgstr "Prestabilit"
 
-#: inc/customizer.php:738
-msgid "Addon available"
-msgstr "Optiune extra disponibila"
+#: inc/customizer.php:763
+msgid "Add-on available"
+msgstr ""
 
-#: inc/customizer.php:796
-msgid "Addons Available! Take a look"
-msgstr "Optiuni premium disponibile! Arunca o privire."
+#: inc/customizer.php:821
+msgid "Add-ons Available! Take a look"
+msgstr ""
 
 #: inc/metaboxes.php:55
 msgid "Global Layout Settings"
@@ -645,114 +612,128 @@ msgstr "4 Widget-uri"
 msgid "5 Widgets"
 msgstr "5 Widget-uri"
 
-#: inc/navigation.php:88
+#: inc/navigation.php:91
 msgid "Menu"
 msgstr "Meniu"
 
-#: inc/navigation.php:89
-msgid "Skip to content"
-msgstr "Sari la continut"
+#: inc/navigation.php:130 inc/template-tags.php:353 inc/template-tags.php:379
+#: searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr "Cautare"
 
-#: inc/options.php:68
-msgid "Version"
-msgstr "Versiune"
-
-#: inc/options.php:69
-msgid "Author"
-msgstr "Autor"
-
-#: inc/options.php:75
+#: inc/options.php:64 inc/options.php:77 inc/options.php:130
 msgid "Customize"
 msgstr "Personalizeaza"
 
-#: inc/options.php:77 inc/options.php:131
+#: inc/options.php:70
+msgid "Version"
+msgstr "Versiune"
+
+#: inc/options.php:71
+msgid "Author"
+msgstr "Autor"
+
+#: inc/options.php:79 inc/options.php:133
 msgid "Add-ons"
 msgstr "Optiuni Extra"
 
-#: inc/options.php:79
+#: inc/options.php:81
 msgid ""
-"Please help support development of the GeneratePress by buying me a coffee :)"
+"Please help support ongoing development of the GeneratePress by buying me a "
+"coffee :)"
 msgstr ""
-"Te rog sustine GeneratePress printr-o mica donatie ( fa cinste cu o "
-"cafea ) :)"
 
-#: inc/options.php:79
+#: inc/options.php:81
 msgid "Buy me a coffee :)"
 msgstr "Cumpara-mi o cafea :)"
 
-#: inc/options.php:87
+#: inc/options.php:89
 msgid "Add-on Updates"
 msgstr "Actualizari Optiuni Extra"
 
-#: inc/options.php:92
-msgid "Looks like you don't have any Add-ons! <a href=\""
-msgstr "Se pare ca nu ai nici o optiune extra! <a href=\""
+#: inc/options.php:94
+msgid "No add-ons to keep up to date!"
+msgstr ""
 
-#: inc/options.php:111
+#: inc/options.php:108
 msgid "Delete Customizer Settings"
 msgstr "Sterge setarile de personalizare"
 
-#: inc/options.php:114
+#: inc/options.php:110
+#, php-format
 msgid ""
-"<strong>Warning:</strong> Clicking this button will delete your settings set "
-"in the <a href=\""
+"<strong>Warning:</strong> Deleting your <a href=\"%1$s\">Customizer</a> "
+"settings can not be undone."
 msgstr ""
-"<strong>Atentie:</strong> Apasand acest buton vei sterge setarile din <a "
-"href=\""
 
-#: inc/options.php:115
-msgid "You may want to export your settings before deleting them forever."
-msgstr "Ai putea sa-ti salvezi setarile inainte de a le sterge permanent."
+#: inc/options.php:111
+msgid ""
+"Consider using our Import/Export add-on to export your settings before "
+"deleting them."
+msgstr ""
 
-#: inc/options.php:120
+#: inc/options.php:116
+msgid "Warning: This will delete your settings."
+msgstr ""
+
+#: inc/options.php:118
 msgid "Delete Default Customizer Settings"
 msgstr "Sterge setarile prestabilite de personalizare"
 
-#: inc/options.php:167
+#: inc/options.php:148
+msgid "Sections"
+msgstr ""
+
+#: inc/options.php:163
+msgid "Menu Plus"
+msgstr ""
+
+#: inc/options.php:170
 msgid "Page Header"
 msgstr "Header Pagina"
 
-#: inc/options.php:176
+#: inc/options.php:177
 msgid "Import / Export"
 msgstr "Importare / Exportare"
 
-#: inc/options.php:194
+#: inc/options.php:191
 msgid "Disable Elements"
 msgstr "Dezactivare Elemente"
 
-#: inc/options.php:212
+#: inc/options.php:205
 msgid "Hooks"
 msgstr "Hooks (carlige)"
 
-#: inc/options.php:221
+#: inc/options.php:212
 msgid "Spacing"
 msgstr "Spatiere"
 
-#: inc/options.php:230
+#: inc/options.php:219
 msgid "Backgrounds"
 msgstr "Fundaluri"
 
-#: inc/options.php:239
+#: inc/options.php:226
 msgid "Secondary Nav"
 msgstr "Navigare Secundara"
 
-#: inc/options.php:253 inc/options.php:260
+#: inc/options.php:238 inc/options.php:245
 msgid "Not activated."
 msgstr "Dezactivat."
 
-#: inc/options.php:255 inc/options.php:262
+#: inc/options.php:240 inc/options.php:247
 msgid "Activated."
 msgstr "Activat."
 
-#: inc/options.php:310
+#: inc/options.php:296
 msgid "Settings saved."
 msgstr "Setari salvate."
 
-#: inc/options.php:314
+#: inc/options.php:300
 msgid "Import successful."
 msgstr "Importarea a fost facuta cu succes."
 
-#: inc/options.php:318
+#: inc/options.php:304
 msgid "Settings removed."
 msgstr "Setari inlaturate."
 
@@ -767,6 +748,14 @@ msgstr "Ulterior &rarr;"
 #: inc/template-tags.php:76
 msgid "Post navigation"
 msgstr "Navigare postare"
+
+#: inc/template-tags.php:80 inc/template-tags.php:86
+msgid "Previous"
+msgstr "Anterior"
+
+#: inc/template-tags.php:81 inc/template-tags.php:90
+msgid "Next"
+msgstr "Urmatorul"
 
 #: inc/template-tags.php:86
 msgid "Older posts"
@@ -795,60 +784,48 @@ msgstr "%1$s at %2$s"
 msgid "Your comment is awaiting moderation."
 msgstr "Comentariul tau asteapta aprobare."
 
-#: inc/template-tags.php:239
-#, php-format
-msgid ""
-"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-msgstr ""
-"<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
-
-#: inc/template-tags.php:246
+#: inc/template-tags.php:194
 msgid "by"
 msgstr "de"
 
-#: inc/template-tags.php:248
+#: inc/template-tags.php:196
 #, php-format
 msgid "View all posts by %s"
 msgstr "Vezi toate postarile facute de %s"
 
-#: inc/template-tags.php:261 inc/template-tags.php:271
+#: inc/template-tags.php:209 inc/template-tags.php:220
 msgid "Read more"
 msgstr "Citeste mai mult"
 
-#: inc/template-tags.php:378
+#: inc/template-tags.php:327
 msgctxt "label"
 msgid "Search"
 msgstr "Cautare"
 
-#: inc/template-tags.php:424 inc/template-tags.php:432
+#: inc/template-tags.php:393 inc/template-tags.php:401
 msgctxt "Used between list items, there is a space after the comma."
 msgid ", "
 msgstr ", "
 
-#: inc/template-tags.php:427
+#: inc/template-tags.php:396
 msgctxt "Used before category names."
 msgid "Categories"
 msgstr "Categorii"
 
-#: inc/template-tags.php:435
+#: inc/template-tags.php:404
 msgctxt "Used before tag names."
 msgid "Tags"
 msgstr "Tag-uri"
 
-#: inc/template-tags.php:446
-msgctxt "Used before full size attachment link."
-msgid "Full size"
-msgstr "Dimensiune completa"
-
-#: inc/template-tags.php:455
+#: inc/template-tags.php:412
 msgid "Leave a comment"
 msgstr "Lasa un comentariu"
 
-#: inc/template-tags.php:455
+#: inc/template-tags.php:412
 msgid "1 Comment"
 msgstr "1 Comentariu"
 
-#: inc/template-tags.php:455
+#: inc/template-tags.php:412
 msgid "% Comments"
 msgstr "% Comentarii"
 
@@ -896,3 +873,103 @@ msgstr "Cautare &hellip;"
 #: sidebar-left.php:46 sidebar.php:45
 msgid "Meta"
 msgstr "Meta"
+
+#~ msgid ""
+#~ "It looks like nothing was found at this location. Maybe try one of the "
+#~ "links below or a search?"
+#~ msgstr ""
+#~ "Se pare ca nimic nu poate fi gasit la aceasta locatie. Poate poti incerca "
+#~ "o cautare, sau una din legaturile de mai jos..."
+
+#~ msgid "Replace this widget content by going to <a href=\""
+#~ msgstr "Pentru a inlocui continutul acestui widget, mergi la <a href=\""
+
+#~ msgid "To remove or choose the number of footer widgets, go to <a href=\""
+#~ msgstr ""
+#~ "Pentru a inlatura sau a alege numarul de widgeturi din subsol, mergi la "
+#~ "<a href=\""
+
+#~ msgid ""
+#~ "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+#~ "\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size "
+#~ "image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s"
+#~ "\" rel=\"gallery\">%8$s</a>"
+#~ msgstr ""
+#~ "Publicat la <span class=\"entry-date\"><time class=\"entry-date\" "
+#~ "datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to "
+#~ "full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title="
+#~ "\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+
+#~ msgid ""
+#~ "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post "
+#~ "a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s"
+#~ "\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</"
+#~ "a>."
+#~ msgstr ""
+#~ "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment"
+#~ "\">Posteaza un comentariu</a> sau lasa un Trackbac: <a class=\"trackback-"
+#~ "link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+#~ "\">URL Trackback</a>."
+
+#~ msgid ""
+#~ "Comments are closed, but you can leave a trackback: <a class=\"trackback-"
+#~ "link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
+#~ "\">Trackback URL</a>."
+#~ msgstr ""
+#~ "Comentariile sunt inchise, dar poti lasa un trackback: <a class="
+#~ "\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel="
+#~ "\"trackback\">Trackback URL</a>."
+
+#~ msgid ""
+#~ "Trackbacks are closed, but you can <a class=\"comment-link\" href="
+#~ "\"#respond\" title=\"Post a comment\">post a comment</a>."
+#~ msgstr ""
+#~ "Trackback-urile sunt inchise, dar <a class=\"comment-link\" href="
+#~ "\"#respond\" title=\"Post a comment\">poti posta un comentariu</a>."
+
+#~ msgid "Both comments and trackbacks are currently closed."
+#~ msgstr "Si comentariile si trackback-urile sunt inchise momentan."
+
+#~ msgid "Width"
+#~ msgstr "Latine"
+
+#~ msgid "Header Content"
+#~ msgstr "Continut Header"
+
+#~ msgid "Set Navigation"
+#~ msgstr "Seteaza navigare"
+
+#~ msgid "Addon available"
+#~ msgstr "Optiune extra disponibila"
+
+#~ msgid "Addons Available! Take a look"
+#~ msgstr "Optiuni premium disponibile! Arunca o privire."
+
+#~ msgid ""
+#~ "Please help support development of the GeneratePress by buying me a "
+#~ "coffee :)"
+#~ msgstr ""
+#~ "Te rog sustine GeneratePress printr-o mica donatie ( fa cinste cu o "
+#~ "cafea ) :)"
+
+#~ msgid "Looks like you don't have any Add-ons! <a href=\""
+#~ msgstr "Se pare ca nu ai nici o optiune extra! <a href=\""
+
+#~ msgid ""
+#~ "<strong>Warning:</strong> Clicking this button will delete your settings "
+#~ "set in the <a href=\""
+#~ msgstr ""
+#~ "<strong>Atentie:</strong> Apasand acest buton vei sterge setarile din <a "
+#~ "href=\""
+
+#~ msgid "You may want to export your settings before deleting them forever."
+#~ msgstr "Ai putea sa-ti salvezi setarile inainte de a le sterge permanent."
+
+#~ msgid ""
+#~ "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+#~ msgstr ""
+#~ "<span class=\"posted-on\">%1$s</span> <span class=\"byline\">%2$s</span>"
+
+#~ msgctxt "Used before full size attachment link."
+#~ msgid "Full size"
+#~ msgstr "Dimensiune completa"
