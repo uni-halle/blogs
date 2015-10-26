@@ -45,6 +45,19 @@ function staticSizeChanger()
 		document.getElementById("topbar").style.height = "238px";
 		document.getElementById('colophon').style.backgroundSize = "";
 	}
+	
+	
+	if(width < 480)
+	{
+		document.getElementById('topbar').style.width = "15%";
+		document.getElementById('header_images').style.width = "85%";
+		document.getElementById('topwidgetarea').style.left = "15%";
+	}
+	else
+	{
+		document.getElementById('topbar').style.width = "10%";
+		document.getElementById('header_images').style.width = "90%";
+	}
 }
 
 function turnSidebarTop()

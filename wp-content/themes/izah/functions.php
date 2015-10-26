@@ -57,6 +57,8 @@ function cleantraditional_setup() {
 			'main' => __( 'Hauptnavigation', 'cleantraditional' ),
 			'footer-1'  => __( 'Footer 1', 'cleantraditional' ),
 			'footer-2'  => __( 'Footer 2', 'cleantraditional' ),
+			'footer-3'  => __( 'Footer 3', 'cleantraditional' ),
+			'footer-4'  => __( 'Footer 4', 'cleantraditional' ),
 			'site-bottom' => __( 'Footer unten', 'cleantraditional' ),
 	) );	
 

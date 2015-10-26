@@ -8,11 +8,11 @@
 ?>
 
 <section class="no-results not-found">
-	<header class="entry-header">
-		<h1 class="entry-title"><?php _e( 'Keine Suchergebnisse', 'cleantraditional' ); ?></h1>
-	</header><!-- .page-header -->
+	<header class="page-header">
+		<h1 class="page-title"><?php _e( 'Keine Suchergebnisse', 'cleantraditional' ); ?></h1>
+	</header>
 
-	<div class="entry-content">
+	<div class="page-content">
 
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 

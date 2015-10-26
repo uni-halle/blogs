@@ -99,7 +99,7 @@ body {
   font-family: "Noto Sans", "Geneva", "sans-serif";
   color: $color-text-1; 
 }
-  
+
   
 /* Layout
 --------------------------------------------------- */
@@ -176,11 +176,11 @@ nav {
   .sub-menu .sub-menu li {
     margin-bottom: em(6);
   }    
-  .current-menu-item > a, .current-menu-ancestor > a {
+  .current-menu-item > a, .current-menu-ancestor > a, .current_page_parent > a {
     font-weight: bold;
     color: $color-highlight-2;
   } 
-  .current-menu-item > .sub-menu, .current-menu-ancestor > .sub-menu {
+  .current-menu-item > .sub-menu, .current-menu-ancestor > .sub-menu, .current_page_parent > .sub-menu {
     // show relevant sub menus
     display: block;
   }    
@@ -206,7 +206,7 @@ nav {
 .site-footer nav {
   font-size: em( 13, 15 );
   line-height: 1.3em;
-  padding-top: 0.75em;
+  padding-top: 1.5em;
   ul {
     margin-bottom: 0;
   }
@@ -221,6 +221,7 @@ nav {
 
 .navigation-site-bottom {
   font-weight: bold;
+  padding-bottom: 0.5em;
   li {
     float: left;
     margin-right: 1.6em;
@@ -846,7 +847,7 @@ a:hover > .cleantraditional-icon  {
   height: em( 17 );
   width: em( 17 ) ;
   background-size: em( 17 ) auto;
-  vertical-align: middle;  
+  vertical-align: sub;  
   &:focus,&:hover {
     background-color: $color-highlight-3;
   } 
@@ -909,8 +910,8 @@ h3,
 h4, 
 h5, 
 h6 {
-  margin-top: em(24);
-  margin-bottom: em(15);
+  margin-top: em(30);
+  margin-bottom: em(18);
   font-weight: 300; 
 }
 h1 { 
@@ -1035,7 +1036,7 @@ textarea {
      -moz-appearance: none;
           appearance: none; }
 textarea {
-  min-height: 65px;
+  min-height: 120px;
   padding-top: 6px;
   padding-bottom: 6px; }
 input[type="email"]:focus,
@@ -1069,7 +1070,7 @@ label > .label-body {
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
-  list-style: circle inside; }
+  list-style: none inside; }
 ol {
   list-style: decimal inside; }
 ol, ul {
@@ -1148,6 +1149,21 @@ hr {
   margin-left: auto;
   margin-right: auto;
 } 
+.cll{
+  clear:left;
+}
+.clr{
+  clear:right;
+}
+.clb{
+  clear:both;
+}
+
+/* Workaround
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.social_share_privacy {
+  margin-bottom: 0;
+}
 
 /* Accessibility
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

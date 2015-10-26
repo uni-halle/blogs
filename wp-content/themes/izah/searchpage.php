@@ -15,7 +15,7 @@ get_header(); ?>
 
 
 <?php if ( has_nav_menu( 'main' ) ) : ?>
-	<nav id="site-navigation" class="navigation-main cell position-0 width-2" role="navigation">
+	<nav id="site-navigation" class="navigation-main cell position-0 width-2">
 		<?php
 			// Primary navigation menu.
 			wp_nav_menu( array(
@@ -27,7 +27,7 @@ get_header(); ?>
 <?php endif; ?>
 
 
-<main id="main" class="site-main cell position-2 width-4" role="main">
+<main id="main" class="site-main cell position-2 width-4">
 	<header class="page-header">
 		<h1 class="page-title">
 			<?php echo esc_attr( bloginfo( 'name' ) ) 

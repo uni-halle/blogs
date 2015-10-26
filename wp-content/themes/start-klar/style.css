@@ -151,3 +151,33 @@ footer.mlu img {
    height: 9em;
 }
 footer.mlu { text-align: center; }
+.navbar-wrapper { display: none !important ;}
+
+#header_img,.tc-header {
+	/*width: 1024px;
+	width: 100%;
+	height: 3em;
+	/*height: ;*/
+	/*height: 10em;*/
+	background: url("startklar-header.png") no-repeat center;
+	background-size: cover;
+}
+.sticky-enabled #header_img {
+	height: 3em;
+}
+.navbar.resp * {
+	padding:0;
+	margin: 0;
+}
+
+
+.row-fluid .span3 {
+	width: auto;
+	padding: 3em 0 3em 4em;
+	/*padding-left: 4em;
+	padding-top: 3em;*7
+}
+header .brand h1{
+	text-shadow: 1px 1px 3px #fff;
+
+}
