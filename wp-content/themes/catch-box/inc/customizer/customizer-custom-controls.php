@@ -14,7 +14,7 @@ class CatchBox_Important_Links extends WP_Customize_Control {
     	//Add Theme instruction, Support Forum, Changelog, Donate link, Review, Facebook, Twitter, Google+, Pinterest links
         $important_links = array(
 						'theme_instructions' => array( 
-							'link'	=> esc_url( 'http://catchthemes.com/theme-instructions/adventurous/' ),
+							'link'	=> esc_url( 'http://catchthemes.com/theme-instructions/catch-box/' ),
 							'text' 	=> __( 'Theme Instructions', 'catch-box' ),
 							),
 						'support' => array( 
@@ -22,7 +22,7 @@ class CatchBox_Important_Links extends WP_Customize_Control {
 							'text' 	=> __( 'Support', 'catch-box' ),
 							),
 						'changelog' => array( 
-							'link'	=> esc_url( 'http://catchthemes.com/changelogs/adventurous-theme/' ),
+							'link'	=> esc_url( 'http://catchthemes.com/changelogs/catch-box-theme/' ),
 							'text' 	=> __( 'Changelog', 'catch-box' ),
 							),
 						'donate' => array( 
@@ -30,7 +30,7 @@ class CatchBox_Important_Links extends WP_Customize_Control {
 							'text' 	=> __( 'Donate Now', 'catch-box' ),
 							),
 						'review' => array( 
-							'link'	=> esc_url( 'https://wordpress.org/support/view/theme-reviews/adventurous' ),
+							'link'	=> esc_url( 'https://wordpress.org/support/view/theme-reviews/catch-box' ),
 							'text' 	=> __( 'Review', 'catch-box' ),
 							),
 						);

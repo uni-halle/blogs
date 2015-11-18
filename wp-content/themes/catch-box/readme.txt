@@ -19,11 +19,11 @@ Copyright: Automattic, automattic.com
 Licensed under GPLv2 or later
 
 Scripts used in the site are as below:
-	1. Menu script uses Tinynav script (http://tinynav.viljamis.com) licensed under MIT
-	2. HTML5 script (https://github.com/aFarkas/html5shiv) licensed under MIT/GPL2
+	1. Menu script uses Sidr (https://github.com/artberri/sidr) licensed under MIT license
+	2. HTML5 script (https://github.com/aFarkas/html5shiv) licensed under MIT/GPL2 license
 	3. Slider script uses Cycle script http://jquery.malsup.com/cycle/ lincensed under MIT/GPL license
 	4. jQyery Cookie script (https://github.com/carhartl/jquery-cookie) licensed under MIT license
-	5. DD_belatedPNG script (http://www.dillerdesign.com/experiment/DD_belatedPNG/) licensed under MIT License
+	5. DD_belatedPNG script (http://www.dillerdesign.com/experiment/DD_belatedPNG/) licensed under MIT license
 	
 Font Icons
 	Genericons by Automattic, Inc.
@@ -68,7 +68,7 @@ dark, light, blue, white, black, gray, one-column, two-columns, left-sidebar, ri
 == Installation ==
 
 1. Primary: Login to your wp-admin area and go to Appearance -> Themes. Select Install tab and click on Upload link. Select theme .zip and ckick on Install now button. If you have any errors, use alternate method.
-2. Alternate: Unzip the template file (catchbox.zip) that you have downloaded. Via FTP, upload the whole folder (catchresponsive) to your server and place it in the /wp-content/themes/ folder. Do not change directory name. The template files should thus be here now: /wp-content/themes/catchbox/index.php (for example).
+2. Alternate: Unzip the template file (catch-box.zip) that you have downloaded. Via FTP, upload the whole folder (catchresponsive) to your server and place it in the /wp-content/themes/ folder. Do not change directory name. The template files should thus be here now: /wp-content/themes/catch-box/index.php (for example).
 3. Log into your WP admin panel and click on the Design tab. Now click on the Catch Box theme to activate it.
 4. Complete all of the required inputs on the Catch Box Options page (in the WP admin panel) and click "Save Changes".
 

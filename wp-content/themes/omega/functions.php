@@ -16,6 +16,8 @@ function omega_theme_setup() {
 
 	/* Load omega functions */
 	require get_template_directory() . '/lib/functions/hooks.php';
+
+	add_theme_support( 'title-tag' ); 
 	
 	/* Load scripts. */
 	add_theme_support( 

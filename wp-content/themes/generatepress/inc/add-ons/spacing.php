@@ -92,8 +92,7 @@ if ( !function_exists('generate_spacing_css') ) :
 			
 			'.main-navigation .main-nav ul li a,
 			.menu-toggle,
-			.menu-toggle .search-item a,
-			.menu-toggle .search-item-disabled a' => array(
+			.main-navigation .mobile-bar-items a' => array(
 				'padding-left' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
 				'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
 				'line-height' => ( isset( $spacing_settings['menu_item_height'] ) ) ? $spacing_settings['menu_item_height'] . 'px' : null,
@@ -261,4 +260,68 @@ if ( !function_exists('generate_spacing_css') ) :
 		wp_add_inline_style( 'generate-style', generate_spacing_css() );
 	
 	}
+endif;
+
+if ( ! function_exists( 'generate_mobile_search_spacing_fallback' ) ) :
+/**
+ * Add fallback CSS for our mobile search icon color
+ */
+function generate_mobile_search_spacing_fallback()
+{
+	if ( function_exists( 'generate_spacing_get_defaults' ) ) :
+		$spacing_settings = wp_parse_args( 
+			get_option( 'generate_spacing_settings', array() ), 
+			generate_spacing_get_defaults() 
+		);
+	endif;
+		
+	$space = ' ';
+	// Start the magic
+	$spacing_css = array (
+		
+		'.main-navigation .mobile-bar-items a' => array(
+			'padding-left' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
+			'padding-right' => ( isset( $spacing_settings['menu_item'] ) ) ? $spacing_settings['menu_item'] . 'px' : null,
+			'line-height' => ( isset( $spacing_settings['menu_item_height'] ) ) ? $spacing_settings['menu_item_height'] . 'px' : null,
+		)
+		
+	);
+	
+	// Output the above CSS
+	$output = '';
+	foreach($spacing_css as $k => $properties) {
+		if(!count($properties))
+			continue;
+
+		$temporary_output = $k . ' {';
+		$elements_added = 0;
+
+		foreach($properties as $p => $v) {
+			if(empty($v))
+				continue;
+
+			$elements_added++;
+			$temporary_output .= $p . ': ' . $v . '; ';
+		}
+
+		$temporary_output .= "}";
+
+		if($elements_added > 0)
+			$output .= $temporary_output;
+	}
+	
+	$output = str_replace(array("\r", "\n", "\t"), '', $output);
+	return $output;
+}
+endif;
+
+if ( ! function_exists( 'generate_mobile_search_spacing_fallback_css' ) ) :
+/**
+ * Enqueue our mobile search icon color fallback CSS
+ */
+add_action( 'wp_enqueue_scripts', 'generate_mobile_search_spacing_fallback_css', 50 );
+function generate_mobile_search_spacing_fallback_css() 
+{
+	wp_add_inline_style( 'generate-style', generate_mobile_search_spacing_fallback() );
+}
 endif;

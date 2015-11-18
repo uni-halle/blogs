@@ -64,42 +64,32 @@ function generate_settings_page()
 								<a id="generate_customize_button" class="button button-primary" href="<?php echo admin_url('customize.php'); ?>"><?php _e('Customize','generate');?></a>  
 							</div>
 							<div class="postbox generate-metabox" id="gen-1">
-								<h3 class="hndle"><?php _e('GeneratePress','generate');?></h3>
+								<h3 class="hndle"><?php _e('GeneratePress','generate');?> <?php echo GENERATE_VERSION; ?></h3>
 								<div class="inside">
 									<p>
-										<strong style="display:inline-block;width:60px;"><?php _e('Version','generate');?>:</strong> <?php echo GENERATE_VERSION; ?><br />
-										<strong style="display:inline-block;width:60px;"><?php _e('Author','generate');?>:</strong> <a href="<?php echo esc_url('http://edge22.com');?>" target="_blank">Tom Usborne</a><br />
-										<strong style="display:inline-block;width:60px;"><?php _e('Website','generate');?>:</strong> <a href="<?php echo esc_url('http://generatepress.com');?>" target="_blank">GeneratePress</a>
-									</p>
-										
-												
+										<span><?php printf( _x( 'Made with %s by Tom Usborne', 'made with love', 'generate' ), '<span style="color:#D04848" class="dashicons dashicons-heart"></span>' ); ?></span>
+									</p>		
 									<p>
-										<a id="generate_customize_button" class="button button-primary" href="<?php echo admin_url('customize.php'); ?>"><?php _e('Customize','generate');?></a>  
 										<?php if ( generate_addons_available() ) : ?>
-											<a id="generate_addon_button" class="button button-primary" href="<?php echo esc_url('http://generatepress.com/add-ons');?>" target="_blank"><?php _e('Add-ons','generate');?></a> 
+											<a id="generate_addon_button" class="button button-primary" href="<?php echo esc_url('https://generatepress.com/add-ons');?>" target="_blank"><?php _e('Add-ons','generate');?></a> 
 										<?php endif; ?>
-										<a title="<?php _e('Please help support ongoing development of the GeneratePress by buying me a coffee :)','generate');?>" class="button button-secondary" target="_blank" href="<?php echo esc_url('https://generatepress.com/ongoing-development');?>"><?php _e('Buy me a coffee :)','generate');?></a>
+										<a class="button button-primary" href="<?php echo esc_url( 'https://generatepress.com/support' ); ?>" target="_blank"><?php _e('Support','generate');?></a>  
+										<a class="button button-primary" href="<?php echo esc_url( 'https://generatepress.com/knowledgebase' ); ?>" target="_blank"><?php _e('Knowledgebase','generate');?></a>  
+										<a title="<?php _e('Please help support the ongoing development of GeneratePress by buying me a coffee :)','generate');?>" class="button button-secondary" target="_blank" href="<?php echo esc_url('https://generatepress.com/ongoing-development');?>"><?php _e('Buy me a coffee :)','generate');?></a>
 									</p>
 								</div>
 							</div>
 
 							<?php do_action('generate_inside_options_form'); ?>
-								
-							<div class="postbox generate-metabox" id="gen-license-keys">
-								<h3 class="hndle"><?php _e('Add-on Updates','generate');?></h3>
-								<div class="inside">
-									
-									<?php
-									if ( generate_no_addons() == true ) :
-										echo '<div class="no-addons">' . __('No add-ons to keep up to date!','generate') . '</div>';
-									endif;
-										
-									do_action('generate_license_key_items'); 
-									?>
-
+							<?php if ( ! generate_no_addons() ) : ?>
+								<div class="postbox generate-metabox" id="gen-license-keys">
+									<h3 class="hndle"><?php _e('Add-on Updates','generate');?></h3>
+									<div class="inside">
+										<?php do_action('generate_license_key_items'); ?>
+									</div>
 								</div>
-							</div>
-
+							<?php endif; ?>
+							
 						</form>
 										
 						<?php do_action('generate_options_items'); ?>

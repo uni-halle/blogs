@@ -190,6 +190,7 @@ function generate_sanitize_nav_position( $input ) {
         'nav-below-header' => __( 'Below Header', 'generate' ),
 		'nav-above-header' => __( 'Above Header', 'generate' ),
 		'nav-float-right' => __( 'Float Right', 'generate' ),
+		'nav-float-left' => __( 'Float Left', 'generate' ),
 		'nav-left-sidebar' => __( 'Left Sidebar', 'generate' ),
 		'nav-right-sidebar' => __( 'Right Sidebar', 'generate' ),
 		'' => __( 'No Navigation', 'generate' )

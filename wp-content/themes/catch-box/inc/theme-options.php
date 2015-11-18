@@ -1018,11 +1018,13 @@ function catchbox_theme_options_validate( $input ) {
 		$options_validated[ 'featured_slider' ] = array();
 	}
 		
- 	if( isset( $input[ 'slider_qty' ] ) )	
+ 	if( isset( $input[ 'slider_qty' ] ) ) {	
 		for ( $i = 1; $i <= $input [ 'slider_qty' ]; $i++ ) {
-			if ( isset( $input[ 'featured_slider' ][ $i ] ) ) 
-				$options_validated[ 'featured_slider' ][ $i ] = absint($input[ 'featured_slider' ][ $i ] );
+			if ( !empty( $input[ 'featured_slider' ][ $i ] ) && intval( $input[ 'featured_slider' ][ $i ] ) ) {
+				$options_validated[ 'featured_slider' ][ $i ] = absint( $input[ 'featured_slider' ][ $i ] );
+			}
 		}
+	}
 
 	if ( isset( $input['exclude_slider_post'] ) ) {
         // Our checkbox value is either 0 or 1 

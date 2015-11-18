@@ -353,16 +353,6 @@ class Omega {
 		/* Make text widgets and term descriptions shortcode aware. */
 		add_filter( 'widget_text', 'do_shortcode' );
 
-		/* Use same default filters as 'the_content' with a little more flexibility. */
-		add_filter( 'omega_loop_description', array( $wp_embed, 'run_shortcode' ),   5 );
-		add_filter( 'omega_loop_description', array( $wp_embed, 'autoembed'     ),   5 );
-		add_filter( 'omega_loop_description',                   'wptexturize',       10 );
-		add_filter( 'omega_loop_description',                   'convert_smilies',   15 );
-		add_filter( 'omega_loop_description',                   'convert_chars',     20 );
-		add_filter( 'omega_loop_description',                   'wpautop',           25 );
-		add_filter( 'omega_loop_description',                   'do_shortcode',      30 );
-		add_filter( 'omega_loop_description',                   'shortcode_unautop', 35 );
-
 		/* Filters for the audio transcript. */
 		add_filter( 'omega_audio_transcript', 'wptexturize',   10 );
 		add_filter( 'omega_audio_transcript', 'convert_chars', 20 );

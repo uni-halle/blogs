@@ -197,6 +197,12 @@ function catchbox_setup() {
 endif; // catchbox_setup
 
 
+/**
+ * Custom Menus
+ */
+require get_template_directory() . '/inc/catchbox-menus.php';
+
+
 if ( ! function_exists( 'catchbox_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
@@ -368,32 +374,6 @@ function catchbox_custom_excerpt_more( $output ) {
 	return $output;
 }
 add_filter( 'get_the_excerpt', 'catchbox_custom_excerpt_more' );
-
-
-/**
- * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
- */
-function catchbox_page_menu_args( $args ) {
-	$args['show_home'] = true;
-	return $args;
-}
-add_filter( 'wp_page_menu_args', 'catchbox_page_menu_args' );
-
-
-/**
- * Replacing classes in default wp_page_menu
- *
- * REPLACE "current_page_item" WITH CLASS "current-menu-item"
- */
-function catchbox_page_menu_active( $text ) {
-	$replace = array(
-		// List of classes to replace with "active"
-		'current_page_item' => 'current-menu-item'
-	);
-	$text = str_replace(array_keys($replace), $replace, $text);
-		return $text;
-}
-add_filter ( 'wp_page_menu', 'catchbox_page_menu_active' );
 
 
 if ( ! function_exists( 'catchbox_widgets_init' ) ):
@@ -688,6 +668,11 @@ function catchbox_body_classes( $classes ) {
 	elseif ( is_page_template( 'page-fullwidth.php' ) || is_attachment() ) {
 		$classes[] = 'no-sidebar full-width';
 	}	
+
+	if ( empty ( $options ['enable_menus'] ) ) {
+		$classes[] = 'one-menu';
+	}
+
 	return $classes;
 }
 endif; // catchbox_body_classes
@@ -776,6 +761,11 @@ function catchbox_sliders() {
 	}
 
 	$postperpage = $options[ 'slider_qty' ];
+
+	//In customizer, all values are returned but with empty, this rectifies the issue in customizer
+	if( isset( $options[ 'featured_slider' ] ) && !array_filter( $options[ 'featured_slider' ] ) ) {
+	    return;
+	}
 		
 	if( ( !$catchbox_sliders = get_transient( 'catchbox_sliders' ) ) && !empty( $options[ 'featured_slider' ] ) ) {
 		echo '<!-- refreshing cache -->';
@@ -837,18 +827,11 @@ function catchbox_scripts_method() {
 		wp_enqueue_script( 'catchbox_slider', get_template_directory_uri() . '/js/catchbox_slider.js', array( 'jquery-cycle' ), '1.0', true );
 	}
 	
-	//Responsive Menu
-	wp_register_script('catchbox-menu', get_template_directory_uri() . '/js/catchbox-menu.min.js', array('jquery'), '1.1.0', true);
-	wp_register_script('catchbox-allmenu', get_template_directory_uri() . '/js/catchbox-allmenu-min.js', array('jquery'), '201301503', true);
-	
-	//Check is secondayand footer menu is enable or not
-	$options = catchbox_get_theme_options();
-	if ( !empty ($options ['enable_menus'] ) ) :
-		wp_enqueue_script( 'catchbox-allmenu' );
-	else :
-		wp_enqueue_script( 'catchbox-menu' );
-	endif;
-	
+	/**
+	 * Loads up Responsive Menu
+	 */
+	wp_enqueue_script('sidr', get_template_directory_uri() . '/js/jquery.sidr.min.js', array('jquery'), '1.2.1.1', false );
+
 	/**
 	 * Adds JavaScript to pages with the comment form to support
 	 * sites with threaded comments (when in use).
@@ -905,21 +888,6 @@ function catchbox_alter_home( $query ) {
 }
 endif; // catchbox_alter_home
 add_action( 'pre_get_posts','catchbox_alter_home' );
-
-
-/**
- * Remove div from wp_page_menu() and replace with ul.
- * @uses wp_page_menu filter
- */
-function catchbox_wp_page_menu( $page_markup ) {
-    preg_match('/^<div class=\"([a-z0-9-_]+)\">/i', $page_markup, $matches);
-        $divclass = $matches[1];
-        $replace = array('<div class="'.$divclass.'">', '</div>');
-        $new_markup = str_replace($replace, '', $page_markup);
-        $new_markup = preg_replace('/^<ul>/i', '<ul class="'.$divclass.'">', $new_markup);
-        return $new_markup; }
-
-add_filter( 'wp_page_menu', 'catchbox_wp_page_menu' );
 
 
 if ( ! function_exists( 'catchbox_comment_form_fields' ) ) :
@@ -1300,61 +1268,6 @@ endif; //catchbox_header_search
 
 // Loads Header Search in catchbox_headercontent hook
 add_action( 'catchbox_headercontent', 'catchbox_header_search', 15 ); 
-
-
-if ( ! function_exists( 'catchbox_header_menu' ) ) :
-/**
- * Header Menu
- *
- * @since Catch Box 2.5
- */
-function catchbox_header_menu() { ?>
-	<nav id="access" role="navigation">
-		<h3 class="assistive-text"><?php _e( 'Primary menu', 'catch-box' ); ?></h3>
-		<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'catch-box' ); ?>"><?php _e( 'Skip to primary content', 'catch-box' ); ?></a></div>
-		<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'catch-box' ); ?>"><?php _e( 'Skip to secondary content', 'catch-box' ); ?></a></div>
-		<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assiged to the primary position is the one used. If none is assigned, the menu with the lowest ID is used. */ ?>
-	
-		<?php
-			if ( has_nav_menu( 'primary', 'catch-box' ) ) { 
-				$args = array(
-					'theme_location'    => 'primary',
-					'container_class' 	=> 'menu-header-container', 
-					'items_wrap'        => '<ul class="menu">%3$s</ul>' 
-				);
-				wp_nav_menu( $args );
-			}
-			else {
-				echo '<div class="menu-header-container">';
-					wp_page_menu( array( 'menu_class'  => 'menu' ) );
-				echo '</div>';
-			} ?> 		
-			   
-		</nav><!-- #access -->
-		
-	<?php if ( has_nav_menu( 'secondary', 'catch-box' ) ) {
-		// Check is footer menu is enable or not
-		$options = catchbox_get_theme_options();
-		if ( !empty ($options ['enable_menus'] ) ) :
-			$menuclass = "mobile-enable";
-		else :
-			$menuclass = "mobile-disable";
-		endif;
-		?>
-        <nav id="access-secondary" class="<?php echo $menuclass; ?>"  role="navigation">
-			<h3 class="assistive-text"><?php _e( 'Secondary menu', 'catch-box' ); ?></h3>
-				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-				<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to primary content', 'catch-box' ); ?>"><?php _e( 'Skip to primary content', 'catch-box' ); ?></a></div>
-				<div class="skip-link"><a class="assistive-text" href="#secondary" title="<?php esc_attr_e( 'Skip to secondary content', 'catch-box' ); ?>"><?php _e( 'Skip to secondary content', 'catch-box' ); ?></a></div>
-			<?php wp_nav_menu( array( 'theme_location'  => 'secondary', 'container_class' => 'menu-secondary-container' ) );  ?>
-		</nav>
-	<?php }
-} 
-endif; //catchbox_header_menu
-
-// Load Header Menu in  catchbox_after_headercontent hook 
-add_action( 'catchbox_after_headercontent', 'catchbox_header_menu', 10 ); 
 
 
 if ( ! function_exists( 'catchbox_footer_content' ) ) :

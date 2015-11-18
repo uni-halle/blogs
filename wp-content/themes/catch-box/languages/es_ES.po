@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-08 22:20+0545\n"
-"PO-Revision-Date: 2015-10-08 22:20+0545\n"
+"POT-Creation-Date: 2015-11-17 21:38+0545\n"
+"PO-Revision-Date: 2015-11-17 21:38+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: César Gómez <cesar@temperatio.com>\n"
 "Language: es_ES\n"
@@ -142,7 +142,7 @@ msgstr "Los comentarios están cerrados."
 #: ../content-aside.php:16 ../content-featured.php:14
 #: ../content-gallery.php:16 ../content-gallery.php:48 ../content-image.php:15
 #: ../content-link.php:16 ../content-quote.php:14 ../content-status.php:15
-#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:799
+#: ../content.php:15 ../content.php:19 ../content.php:47 ../functions.php:789
 #, php-format
 msgid "Permalink to %s"
 msgstr "Enlace permanente a %s"
@@ -170,7 +170,7 @@ msgstr "%"
 
 #: ../content-aside.php:33 ../content-gallery.php:32 ../content-image.php:27
 #: ../content-link.php:33 ../content-quote.php:35 ../content-status.php:34
-#: ../content.php:55 ../functions.php:341
+#: ../content.php:55 ../functions.php:347
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Seguir leyendo <span class=\"meta-nav\">&rarr;</span>"
 
@@ -202,8 +202,8 @@ msgstr "<b>%</b> Respuestas"
 #: ../content-aside.php:50 ../content-featured.php:51
 #: ../content-gallery.php:96 ../content-image.php:74 ../content-link.php:50
 #: ../content-page.php:27 ../content-quote.php:78 ../content-single.php:64
-#: ../content-status.php:51 ../content.php:100 ../functions.php:589
-#: ../functions.php:617 ../image.php:97
+#: ../content-status.php:51 ../content.php:100 ../functions.php:569
+#: ../functions.php:597 ../image.php:97
 msgid "Edit"
 msgstr "Editar"
 
@@ -274,7 +274,7 @@ msgstr ""
 "por </span> <span class=\"author vcard\"> <a href=\"url fn n\" href=\"%4$s\" "
 "title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
 
-#: ../content-image.php:45 ../functions.php:655
+#: ../content-image.php:45 ../functions.php:635
 #, php-format
 msgid "View all posts by %s"
 msgstr "Ver todos los artículos de %s"
@@ -342,19 +342,15 @@ msgstr "Estado"
 msgid "Featured"
 msgstr "Destacados"
 
-#: ../footer.php:54
-msgid "Footer menu"
-msgstr "Menú del pie de página"
-
 #: ../functions.php:111
 msgid "Primary Menu"
 msgstr "Menú principal"
 
-#: ../functions.php:112
+#: ../functions.php:112 ../inc/catchbox-menus.php:234
 msgid "Secondary Menu"
 msgstr "Menú secundario"
 
-#: ../functions.php:113
+#: ../functions.php:113 ../inc/catchbox-menus.php:261
 msgid "Footer Menu"
 msgstr "Menú del pie de página"
 
@@ -373,63 +369,63 @@ msgstr "Flor"
 msgid "Mountain"
 msgstr "Montaña"
 
-#: ../functions.php:410
+#: ../functions.php:390
 msgid "Main Sidebar"
 msgstr "Barra lateral principal"
 
-#: ../functions.php:419
+#: ../functions.php:399
 msgid "Footer Area One"
 msgstr "Área uno del pie de página"
 
-#: ../functions.php:421 ../functions.php:431 ../functions.php:441
+#: ../functions.php:401 ../functions.php:411 ../functions.php:421
 msgid "An optional widget area for your site footer"
 msgstr "Un área opcional de widgets en el pie de página"
 
-#: ../functions.php:429
+#: ../functions.php:409
 msgid "Footer Area Two"
 msgstr "Área dos del pie de página"
 
-#: ../functions.php:439
+#: ../functions.php:419
 msgid "Footer Area Three"
 msgstr "Área tres del pie de página"
 
-#: ../functions.php:473 ../functions.php:502 ../single.php:15
+#: ../functions.php:453 ../functions.php:482 ../single.php:15
 msgid "Post navigation"
 msgstr "Navegación por los artículos"
 
-#: ../functions.php:481 ../functions.php:510
+#: ../functions.php:461 ../functions.php:490
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr "<span class=\"meta-nav\">&larr;</span> Artículos más antiguos"
 
-#: ../functions.php:482 ../functions.php:511
+#: ../functions.php:462 ../functions.php:491
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Artículos más recientes <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../functions.php:589
+#: ../functions.php:569
 msgid "Pingback:"
 msgstr "Pingback:"
 
 #. translators: 1: comment author, 2: date and time
-#: ../functions.php:606
+#: ../functions.php:586
 #, php-format
 msgid "%1$s on %2$s <span class=\"says\">said:</span>"
 msgstr "%1$s en %2$s <span class=\"says\"> dijo: </span>"
 
 #. translators: 1: date, 2: time
-#: ../functions.php:612
+#: ../functions.php:592
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s en %2$s"
 
-#: ../functions.php:621
+#: ../functions.php:601
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario está en espera de moderación."
 
-#: ../functions.php:630
+#: ../functions.php:610
 msgid "Reply <span>&darr;</span>"
 msgstr "Responder <span>&darr;</span>"
 
-#: ../functions.php:649
+#: ../functions.php:629
 #, php-format
 msgid ""
 "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel="
@@ -444,34 +440,18 @@ msgstr ""
 "class=\"author vcard\"> <a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" "
 "rel=\"author\">%7$s</a></span></span>"
 
-#: ../functions.php:707
+#: ../functions.php:692
 msgid "ID"
 msgstr "ID"
 
-#: ../functions.php:934
+#: ../functions.php:902
 msgid "Name"
 msgstr "Nombre"
 
-#: ../functions.php:936 ../inc/customizer/customizer.php:604
+#: ../functions.php:904 ../inc/customizer/customizer.php:604
 #: ../inc/theme-options.php:877
 msgid "Email"
 msgstr "Email"
-
-#: ../functions.php:1313
-msgid "Primary menu"
-msgstr "Menú principal"
-
-#: ../functions.php:1315 ../functions.php:1348
-msgid "Skip to primary content"
-msgstr "Saltar al contenido principal"
-
-#: ../functions.php:1316 ../functions.php:1349
-msgid "Skip to secondary content"
-msgstr "Saltar al contenido secundario"
-
-#: ../functions.php:1346
-msgid "Secondary menu"
-msgstr "Menú secundario"
 
 #: ../image.php:15
 msgid "Image navigation"
@@ -497,6 +477,30 @@ msgstr ""
 "\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> "
 "<a href=\"%3$s\" title=\"Enlace a la imagen a tamaño completo\">%4$s &times "
 "%5$s</ a> <a href=\"%6$s\" title=\"Volver a %7$s\" rel=\"gallery\">%8$s</ a>"
+
+#: ../inc/catchbox-menus.php:69
+msgid "Primary menu"
+msgstr "Menú principal"
+
+#: ../inc/catchbox-menus.php:71 ../inc/catchbox-menus.php:104
+msgid "Skip to primary content"
+msgstr "Saltar al contenido principal"
+
+#: ../inc/catchbox-menus.php:72 ../inc/catchbox-menus.php:105
+msgid "Skip to secondary content"
+msgstr "Saltar al contenido secundario"
+
+#: ../inc/catchbox-menus.php:102
+msgid "Secondary menu"
+msgstr "Menú secundario"
+
+#: ../inc/catchbox-menus.php:133
+msgid "Footer menu"
+msgstr "Menú del pie de página"
+
+#: ../inc/catchbox-menus.php:220
+msgid "Menu"
+msgstr ""
 
 #: ../inc/customizer/customizer-custom-controls.php:18
 #: ../inc/theme-options.php:629
@@ -950,7 +954,7 @@ msgid "http://catchthemes.com/"
 msgstr "http://catchthemes.com/"
 
 #: ../inc/theme-options.php:614 ../inc/theme-options.php:615
-#: ../inc/theme-options.php:1326
+#: ../inc/theme-options.php:1328
 msgid "Catch Themes"
 msgstr "Catch Themes"
 
@@ -1131,23 +1135,23 @@ msgstr ""
 "Note: Here you can put scripts from Google, Facebook, Add This etc. which "
 "will load on footer"
 
-#: ../inc/theme-options.php:1284
+#: ../inc/theme-options.php:1286
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/theme-options.php:1305
+#: ../inc/theme-options.php:1307
 msgid "WordPress"
 msgstr "WordPress"
 
-#: ../inc/theme-options.php:1315
+#: ../inc/theme-options.php:1317
 msgid "Theme: Catch Box by "
 msgstr "Theme: Catch Box by "
 
-#: ../inc/theme-options.php:1337
+#: ../inc/theme-options.php:1339
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../inc/theme-options.php:1337
+#: ../inc/theme-options.php:1339
 msgid "All Rights Reserved"
 msgstr "Todos los Derechos Reservados"
 

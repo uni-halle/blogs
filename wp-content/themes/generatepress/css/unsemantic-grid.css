@@ -1,11 +1,10 @@
 /* ================================================================== */
 /* This file has a mobile-to-tablet, and tablet-to-desktop breakpoint */
 /* ================================================================== */
-@media (max-width: 400px) {
-  @-ms-viewport {
-    width: device-width;
-  }
+@-ms-viewport {
+	width: auto;
 }
+
 .clear {
   clear: both;
   display: block;

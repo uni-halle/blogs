@@ -435,25 +435,6 @@ function omega_search_title( $prefix = '', $display = true ) {
 }
 
 /**
- * Retrieve the 404 page title.
- *
- * @since  0.9.0
- * @access public
- * @param  string  $prefix
- * @param  bool    $display
- * @return string
- */
-function omega_404_title( $prefix = '', $display = true ) {
-
-	$title = __( '404 Not Found', 'omega' );
-
-	if ( false === $display )
-		return $title;
-
-	echo $title;
-}
-
-/**
  * Produces the date of post publication.
  *
  * Supported attributes are:

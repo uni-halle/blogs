@@ -5,7 +5,7 @@
  * @package GeneratePress
  */
 	
-define( 'GENERATE_VERSION', '1.3.17');
+define( 'GENERATE_VERSION', '1.3.20');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -629,5 +629,16 @@ function generate_show_excerpt()
 	
 	// Return our value
 	return apply_filters( 'generate_show_excerpt', $show_excerpt );
+}
+endif;
+
+if ( ! function_exists( 'generate_show_title' ) ) :
+/** 
+ * Check to see if we should show our page/post title or not
+ * @since 1.3.18
+ */
+function generate_show_title()
+{
+	return apply_filters( 'generate_show_title', true );
 }
 endif;

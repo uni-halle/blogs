@@ -7,8 +7,11 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_article_schema( 'BlogPosting' ); ?>>
 	<div class="inside-article">
 		<?php do_action( 'generate_before_content'); ?>
+		
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
+			<?php if ( generate_show_title() ) : ?>
+				<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
+			<?php endif; ?>
 			<div class="entry-meta">
 				<?php generate_posted_on(); ?>
 			</div><!-- .entry-meta -->

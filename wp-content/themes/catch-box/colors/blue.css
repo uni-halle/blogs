@@ -60,3 +60,21 @@ body {
 #content #infinite-handle span:hover {
 	background-color: #1b4266;
 }
+
+/* Mobile Menu */
+.menu-access-wrap,
+.sidr {
+    background-color: #255a8c;
+}
+.sidr ul,
+.sidr ul li {
+	border-color: #1b4266;
+}
+.sidr ul li a, 
+.sidr ul li span {
+    color: #eee;
+}
+.sidr ul li a:hover {
+	background-color: #1b4266;
+	color: #fff;
+}

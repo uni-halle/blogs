@@ -39,23 +39,15 @@
 		/** 
 		 * catchbox_before_footer_menu hook
 		 */
-		do_action( 'catchbox_before_footer_menu' ); 		
-		
-		if ( has_nav_menu( 'footer', 'catch-box' ) ) {
-			// Check is footer menu is enable or not
-			$options = catchbox_get_theme_options();
-			if ( !empty ($options ['enable_menus'] ) ) :
-				$menuclass = "mobile-enable";
-			else :
-				$menuclass = "mobile-disable";
-			endif;
-			?>
-			<nav id="access-footer" class="<?php echo $menuclass; ?>" role="navigation">
-				<h3 class="assistive-text"><?php _e( 'Footer menu', 'catch-box' ); ?></h3>
-				<?php wp_nav_menu( array( 'theme_location'  => 'footer', 'container_class' => 'menu-footer-container', 'depth' => 1 ) );  ?>
-			</nav>
-       	<?php 
-		} 
+		do_action( 'catchbox_before_footer_menu' ); 	
+
+			/** 
+			 * catchbox_before_footer_menu hook
+			 *
+			 * @hooked catchbox_footer_menu_display - 10
+			 * @hooked catchbox_mobile_footer_nav_anchor 20
+			 */
+			do_action( 'catchbox_footer_menu' ); 
 		
 		/** 
 		 * catchbox_before_footer_menu hook
@@ -84,6 +76,7 @@
  * catchbox_after hook
  *
  * @hooked catchbox_scrollup - 10 
+ * @hooked catchbox_mobile_menus - 20
  */
 do_action( 'catchbox_after' );
 ?>

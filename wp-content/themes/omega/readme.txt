@@ -59,6 +59,9 @@ Baseline Reset (normalize.css 2.1.2) is a project by Nicolas Gallagher, co-creat
 
 Changelog
 ---------
+1.2.8   2015-11-13
+ - add 'title-tag' theme support
+
 1.2.7   2015-10-10
  - fix tgmpa issue
 

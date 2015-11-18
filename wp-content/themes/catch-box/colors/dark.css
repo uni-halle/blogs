@@ -587,6 +587,24 @@ li.bypostauthor a.comment-reply-link:active {
 	border-color: #333;
 }
 
+/* Mobile Menu */
+.menu-access-wrap,
+.sidr {
+    background-color: #3d3d3d;
+}
+.sidr ul,
+.sidr ul li {
+	border-color: #222;
+}
+.sidr ul li a, 
+.sidr ul li span {
+    color: #eee;
+}
+.sidr ul li a:hover {
+	background-color: #222;
+	color: #fff;
+}
+
 
 /* =Print
 ----------------------------------------------- */

@@ -37,7 +37,7 @@ function generate_add_navigation_float_right()
 		generate_get_defaults() 
 	);
 	
-	if ( 'nav-float-right' == $generate_settings['nav_position_setting'] ) :
+	if ( 'nav-float-right' == $generate_settings['nav_position_setting'] || 'nav-float-left' == $generate_settings[ 'nav_position_setting' ] ) :
 		generate_navigation_position();
 	endif;
 	
@@ -96,6 +96,7 @@ function generate_navigation_position()
 					'theme_location' => 'primary',
 					'container' => 'div',
 					'container_class' => 'main-nav',
+					'container_id' => 'primary-menu',
 					'menu_class' => '',
 					'fallback_cb' => 'generate_menu_fallback',
 					'items_wrap' => '<ul id="%1$s" class="%2$s ' . join( ' ', generate_get_menu_class() ) . '">%3$s</ul>'

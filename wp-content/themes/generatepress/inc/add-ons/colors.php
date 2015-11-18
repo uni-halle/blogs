@@ -159,7 +159,10 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			
 			'button.menu-toggle:hover,
 			button.menu-toggle:active,
-			button.menu-toggle:focus' => array(
+			button.menu-toggle:focus,
+			.main-navigation .mobile-bar-items a,
+			.main-navigation .mobile-bar-items a:hover,
+			.main-navigation .mobile-bar-items a:focus' => array(
 				'color' => $generate_settings['navigation_text_color']
 			),
 			
@@ -476,4 +479,70 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 		wp_add_inline_style( 'generate-style', generate_advanced_css() );
 	
 	}
+endif;
+
+if ( ! function_exists( 'generate_mobile_search_color_fallback' ) ) :
+/**
+ * Add fallback CSS for our mobile search icon color
+ */
+function generate_mobile_search_color_fallback()
+{
+	if ( function_exists( 'generate_get_color_defaults' ) ) :
+		$generate_settings = wp_parse_args( 
+			get_option( 'generate_settings', array() ), 
+			generate_get_color_defaults() 
+		);
+	endif;
+	
+	$space = ' ';
+
+	// Start the magic
+	$visual_css = array (
+		
+		'.main-navigation .mobile-bar-items a,
+		.main-navigation .mobile-bar-items a:hover,
+		.main-navigation .mobile-bar-items a:focus' => array(
+			'color' => $generate_settings['navigation_text_color']
+		)
+		
+	);
+	
+	// Output the above CSS
+	$output = '';
+	foreach($visual_css as $k => $properties) {
+		if(!count($properties))
+			continue;
+
+		$temporary_output = $k . ' {';
+		$elements_added = 0;
+
+		foreach($properties as $p => $v) {
+			if(empty($v))
+				continue;
+
+			$elements_added++;
+			$temporary_output .= $p . ': ' . $v . '; ';
+		}
+
+		$temporary_output .= "}";
+
+		if($elements_added > 0)
+			$output .= $temporary_output;
+	}
+	
+	$output = str_replace(array("\r", "\n", "\t"), '', $output);
+	return $output;
+}
+endif;
+
+if ( ! function_exists( 'generate_mobile_search_color_fallback_css' ) ) :
+/**
+ * Enqueue our mobile search icon color fallback CSS
+ */
+add_action( 'wp_enqueue_scripts', 'generate_mobile_search_color_fallback_css', 50 );
+function generate_mobile_search_color_fallback_css() {
+
+	wp_add_inline_style( 'generate-style', generate_mobile_search_color_fallback() );
+
+}
 endif;

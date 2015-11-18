@@ -79,6 +79,7 @@ do_action( 'catchbox_before' ); ?>
 		 * catchbox_after_headercontent hook
 		 *
          * @hooked catchbox_header_menu - 10
+         * @hooked catchbox_mobile_header_nav_anchor - 20
 		 */
 		do_action( 'catchbox_after_headercontent' ); ?>           
                 

@@ -4,9 +4,11 @@ Theme URI: http://catchthemes.com/themes/catchbox
 Author: Catch Themes
 Author URI: http://catchthemes.com
 Description: Catch Box is simple, lightweight, box shaped, and adaptable WordPress Theme for bloggers and professionals. It is based on HTML5, CSS3 and Responsive Web Design to view in various devices. 10 Best Reasons to use Catch Box Theme. 1. Responsive Web Design, 2. Custom Menus (Primary, Secondary and Footer menus), 3. Theme Options for light, dark, blue, green, red, brown and orange color scheme, custom link colors, three layout choices, two content choices between excerpt and content option in homepage, feed redirection, custom css styles, 4. Featured Sliders where you can define number of slides and post IDs, 5. Social Links (Facebook, Twitter, RSS, Linkedin, Pinterest, etc), 6. Webmaster Tools (Google, Yahoo and Bing site verification ID, Header and Footer codes), 7. Custom Backgrounds, 8. Custom Header, 9. Catchbox Adspace widget to add any type of Advertisements, and 10. Support popular plugins. Multilingual Ready (WPML) and also currently translated in Brazilian Portuguese, Spanish, Danish, German, French, Polish, Czech, Croatian, Italian, Swedish, Russian, Arabic, Serbian, Dutch, Persian, Hungarian, Slovak, Japanese, Bosnian, Catalan, Romanian, Ukrainian and Lithuanian languages. Theme Support at http://catchthemes.com/support/
-Version: 3.9
+Version: 4.1
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: catch-box
+Domain Path: /languages/
 Tags: dark, light, blue, white, black, gray, green, red, brown, orange, one-column, two-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 */
 
@@ -467,31 +469,47 @@ a:active,
 a:hover {
 	text-decoration: underline;
 }
-/* Assistive text */
-.screen-reader-text,
-.assistive-text {
-	position: absolute !important;
-	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-	clip: rect(1px, 1px, 1px, 1px);
-}
-#access a.assistive-text:active,
-#access a.assistive-text:focus {
-	background: #eee;
-	border-bottom: 1px solid #ccc;
-	color: #1982d1;
-	clip: auto !important;
-	font-size: 12px;
-	position: absolute;
-	text-decoration: underline;
-	top: 0;
-	left: 3%;
-}
 /* close commented backslash hack */
 .displayblock {
 	display: block;
 }
 .displaynone {
 	display: none;
+}
+
+
+/* =Accessibility
+================================================== */
+
+/* Text meant only for screen readers. */
+.screen-reader-text,
+.assistive-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+.screen-reader-text:focus,
+.assistive-text:active,
+.assistive-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
 }
 
 
@@ -727,19 +745,6 @@ a:hover {
 #colophon #access-footer ul.menu li:first-child {
     border: none;
 }
-
-
-/* =Responsive Menu (Tinynav.js)
--------------------------------------------------------------- */
-
-.tinynav { 
-    display: none;
-	font-size: 16px;
-}
-.default-menu {
-	display: none !important;
-}
-
 
 /* =Search Form
 ----------------------------------------------- */
@@ -2758,6 +2763,214 @@ a#scrollup:hover {
 	filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
+/* =Mobile Menus
+----------------------------------------------- */
+
+.menu-access-wrap,
+.mobile-menu,
+.mobile-menu-anchor {
+	display: none;
+}
+.menu-access-wrap {
+	background-color: #3d3d3d;
+}
+.sidr-open .menu-access-wrap {
+	clear: both;
+	display: block;
+	padding: 5px 20px;
+}
+.sidr-open .mobile-menu-anchor {
+	display: inline-block;
+}
+.sidr-open #branding #access,
+.sidr-open #branding #access-secondary,
+.sidr-open #colophon #access-footer {
+	display: none;
+}
+.mobile-menu-text {
+    font-size: 16px;
+    line-height: 1;
+    padding: 0 10px;
+    vertical-align: top;
+}
+#mobile-header-left-menu {
+	float: left;
+}
+#mobile-header-right-menu {
+	float: right;
+}
+.mobile-menu-anchor a.genericon-menu {
+	color: #ddd;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+}
+.mobile-menu-anchor a.genericon-menu:hover {
+	color: #fff;
+	text-decoration: none;
+}
+.mobile-header-left-nav-open #mobile-header-left-menu .genericon-menu:before,
+.mobile-secondary-nav-open #mobile-secondary-menu .genericon-menu:before,
+.mobile-header-right-nav-open #mobile-header-right-menu .genericon-menu:before,
+.mobile-footer-nav-open #mobile-footer-menu .genericon-menu:before {
+	content: "\f406";
+}
+.sidr {
+	display: none;
+	position: absolute;
+	position: fixed;
+	top: 0;
+	height: 100%;
+	z-index: 999999;
+	width: 260px;
+	overflow-x: none;
+	overflow-y: auto;
+	font-size: 15px;
+	background-color: #3d3d3d;
+	color: #eee;
+}
+.sidr .sidr-inner {
+	padding: 0 0 15px;
+}
+.sidr .sidr-inner>p {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.sidr.right {
+	left: auto;
+	right: -260px; 
+}
+.sidr.left {
+	left: -260px;
+	right: auto;
+}
+.sidr h1, 
+.sidr h2, 
+.sidr h3, 
+.sidr h4, 
+.sidr h5, 
+.sidr h6 {
+	font-size: 11px;
+	font-weight: normal;
+	padding: 0 15px;
+	margin: 0 0 5px;
+	color: #fff;
+	line-height: 24px;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(100%, #1a1a1a));
+	background-image: -webkit-linear-gradient(#4d4d4d, #1a1a1a);
+	background-image: -moz-linear-gradient(#4d4d4d, #1a1a1a);
+	background-image: -o-linear-gradient(#4d4d4d, #1a1a1a);
+	background-image: linear-gradient(#4d4d4d, #1a1a1a);
+	-webkit-box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.2);
+}
+.sidr p {
+	font-size: 13px;
+	margin: 0 0 12px;
+}
+.sidr p a {
+	color: rgba(255, 255, 255, 0.9);
+}
+.sidr>p {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+.sidr ul {
+	display: block;
+	margin: 0 0 15px;
+	padding: 0;
+	border-top: 1px solid #1a1a1a;
+	border-bottom: 1px solid #4d4d4d;
+}
+.sidr ul li {
+	display: block;
+	margin: 0;
+	line-height: 1.8;
+	border-top: 1px solid #4d4d4d;
+	border-bottom: 1px solid #1a1a1a;
+}
+.sidr ul li a, 
+.sidr ul li span {
+	padding: 10px 15px;
+	display: block;
+	text-decoration: none;
+	color: #eee;
+}
+.sidr ul li a:hover {
+	background-color: #333;
+	color: #fff;
+}
+.sidr ul li ul {
+	border-bottom: none;
+	margin: 0;
+}
+.sidr ul li ul li {
+	line-height: 1.6;
+	font-size: 13px;
+}
+.sidr ul li ul li:last-child {
+	border-bottom: none;
+}
+.sidr ul li ul li a, 
+.sidr ul li ul li span {
+	padding-left: 20px;
+}
+.sidr ul li ul li ul li a, 
+.sidr ul li ul li ul li span {
+	padding-left: 30px;
+}
+.sidr form {
+	margin: 0 15px;
+}
+.sidr label {
+	font-size: 13px;
+}
+.sidr input[type="text"], 
+.sidr input[type="password"], 
+.sidr input[type="date"], 
+.sidr input[type="datetime"], 
+.sidr input[type="email"], 
+.sidr input[type="number"], 
+.sidr input[type="search"], 
+.sidr input[type="tel"], 
+.sidr input[type="time"], 
+.sidr input[type="url"], 
+.sidr textarea, 
+.sidr select {
+	width: 100%;
+	font-size: 13px;
+	padding: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0 0 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	border: none;
+	background: rgba(0, 0, 0, 0.1);
+	color: rgba(255, 255, 255, 0.6);
+	display: block;
+	clear: both;
+}
+.sidr input[type=checkbox] {
+	width: auto;
+	display: inline;
+	clear: none;
+}
+.sidr input[type=button], 
+.sidr input[type=submit] {
+	color: #333;
+	background: #fff;
+}
+.sidr input[type=button]:hover,
+.sidr input[type=submit]:hover {
+	background: rgba(255, 255, 255, 0.9);
+}
+
 
 /*--------------------------------------------------------------
 Responsive Style
@@ -2988,43 +3201,43 @@ Responsive Style
 		max-width: 100%
 	}
 	/* Menu */
-	#access .menu-header-container,
-	#access-secondary .menu-secondary-container,
-	#access-footer .menu-footer-container {
-		padding: 14px 0;
-	}	
-	#branding ul.menu, 
-	#access-secondary.mobile-disable,
-	#access-footer ul.menu,
-	#colophon #access-footer.mobile-disable {
+	#branding #access,
+	#branding #access-secondary,
+	#colophon #access-footer {
 		display: none;
 	}
-	#branding ul.menu li,
-	#access-footer ul.menu li {
-		border: none;
-	    float: none;
-	    text-align: center;
-    }
-	#colophon #access-footer ul.menu a {
+	.menu-access-wrap {
+		background-color: #3d3d3d;
+		clear: both;
 		display: block;
+	}
+	.one-menu .menu-access-wrap,
+	#colophon .menu-access-wrap {
+		text-align: center;
+	}
+	.one-menu #mobile-header-left-menu {
 		float: none;
-	}	
-	.tinynav {
-		background: url("images/menu.png") right 1px no-repeat;
-		border: none;
-		color: #fff;
-		display: block;
-		margin-bottom: 0;
-		margin-left: auto;
-		margin-top: 0;
-		overflow: hidden;
-		width: 100%;
-	}	
-	.tinynav2 {
-		color: #373737;
-	}	
-	.tinynav option {
-		color: #000;
+		transition-property: left, right;
+  		transition-duration: 3s, 3s;
+  		transition-delay: 0s, 1s;
+	}
+	.one-menu.sidr-open #mobile-header-left-menu {
+		float: left;
+		transition-property: right, left;
+  		transition-duration: 3s, 3s;
+  		transition-delay: 0s, 1s;
+	}
+	.mobile-menu-anchor {
+		display: inline-block;
+	}
+	.mobile-footer-nav-open #colophon .menu-access-wrap {
+	    left: 0;
+	    position: absolute;
+	    top: 0;
+	    z-index: 999;
+	}
+	#mobile-header-right-menu .mobile-menu-text {
+		float: left;
 	}
 	#respond input#submit {
 		left: 20px;
@@ -3041,6 +3254,9 @@ Responsive Style
 	----------------------------------------------- */
 	.site {
 		margin: 20px auto;
+	}
+	.menu-access-wrap {
+		padding: 5px 20px;
 	}
 	#main,
 	#supplementary {
@@ -3418,6 +3634,9 @@ Responsive Style
 	----------------------------------------------- */
 	.site {
 		margin: 0 auto;
+	}
+	.menu-access-wrap {
+		padding: 5px 15px;
 	}
 	#main,
 	#supplementary {

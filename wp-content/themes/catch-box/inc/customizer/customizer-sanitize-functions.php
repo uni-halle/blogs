@@ -90,10 +90,10 @@ function catchbox_sanitize_image( $image, $setting ) {
  * @since Catch Box 1.4
  */
 function catchbox_sanitize_post_id( $input ) {
-    // Ensure $input is an absolute integer.
+	// Ensure $input is an absolute integer.
 	$post_id = absint( $input );
-	// If $page_id is an ID of a published page, return it; otherwise, return false
-	return ( 'publish' == get_post_status( $post_id ) ? $post_id : false );
+	// If $page_id is an ID of a published page, return it; otherwise, return empty
+	return ( 'publish' == get_post_status( $post_id ) ? $post_id : '' );
 }
 
 /**
@@ -151,10 +151,6 @@ function catchbox_sanitize_number_range( $number, $setting ) {
  * @return string Sanitized slug if it is a valid choice; otherwise, the setting default.
  */
 function catchbox_sanitize_select( $input, $setting ) {
-	
-	// Ensure input is a slug.
-	$input = sanitize_key( $input );
-	
 	// Get list of choices from the control associated with the setting.
 	$choices = $setting->manager->get_control( $setting->id )->choices;
 	
@@ -177,6 +173,8 @@ function catchbox_reset_all_settings( $input ) {
        
         // Flush out all transients	on reset
         catchbox_themeoption_invalidate_caches();
+
+        return false;
     } 
     else {
         return '';

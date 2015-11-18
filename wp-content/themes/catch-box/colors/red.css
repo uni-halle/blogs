@@ -62,3 +62,21 @@ body {
 #site-generator {
 	border-color: #89251e;
 }
+
+/* Mobile Menu */
+.menu-access-wrap,
+.sidr {
+    background-color: #ba3027;
+}
+.sidr ul,
+.sidr ul li {
+	border-color: #89251e;
+}
+.sidr ul li a, 
+.sidr ul li span {
+    color: #eee;
+}
+.sidr ul li a:hover {
+	background-color: #89251e;
+	color: #fff;
+}

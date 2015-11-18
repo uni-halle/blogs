@@ -1,5 +1,22 @@
 == Changelog ==
 
+Version 4.1
+* Added text-domain in style.css file
+* Added screen-reader-text css class to support Accessibility
+* Bug Fixed: Mobile menu color schemes and line height
+* Bug Fixed: Incorrect links fixed in Customizer Important Links 
+* Updated: French translation fr_FR.po and fr_FR.mo
+
+Version 4.0
+* Added new mobile menu script
+** jquery.sidr.min.js and jquery.sidr.js
+* Added catchbox_footer_menu hook
+* Bug Fixed: Disabling Featured Post slider issue (Reported by mrdave43)
+* Bug Fixed: Customizer Dropdown type saving issue
+* Removed old scripts
+** catchbox-allmenu-min.js and catchbox-allmenu.js 
+** catchbox-menu-min.js and catchbox-menu.js 
+
 Version 3.9
 * Added Lithuanian translation lt_LT.po and lt_LT.mo
 

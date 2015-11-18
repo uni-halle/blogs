@@ -19,6 +19,8 @@
 require get_template_directory() . '/inc/add-ons/typography.php';
 require get_template_directory() . '/inc/add-ons/colors.php';
 require get_template_directory() . '/inc/add-ons/spacing.php';
+require get_template_directory() . '/inc/add-ons/disable-elements.php';
+require get_template_directory() . '/inc/add-ons/menu-plus.php';
 
 /** 
  * Check to see if there's any addons not already activated

@@ -75,9 +75,15 @@
 		display: none;
 	}
 	
-	.nav-float-right .main-navigation {
+	.nav-float-right .main-navigation,
+	.nav-float-left .main-navigation {
 		float: none;
 		margin-bottom:20px;
+	}
+	
+	.nav-float-left .site-branding,
+	.nav-float-left .site-logo {
+		float: none;
 	}
 	
 	.navigation-search {
@@ -85,8 +91,8 @@
 		top: 0;
 	}
 	
-	.menu-toggle li.search-item,
-	.menu-toggle li.search-item-disabled {
+	.mobile-bar-items {
+		display: block;
 		position: absolute;
 		right: 0;
 		top: 0;
@@ -94,15 +100,12 @@
 		list-style-type: none;
 	}
 	
-	.menu-toggle li.search-item a,
-	.menu-toggle li.search-item-disabled a{
-		line-height: inherit;
-		color: inherit;
-		background-color: inherit;
+	.mobile-bar-items a {
+		display: inline-block;
 	}
 	
 	.main-navigation .menu li.search-item {
-		display: none;
+		display: none !important;
 	}
 	
 	li.search-item a {
