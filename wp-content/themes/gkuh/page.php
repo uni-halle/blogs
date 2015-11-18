@@ -19,6 +19,7 @@
 								</header> <?php // end article header ?>
 
 								<section class="entry-content cf" itemprop="articleBody">
+                                    <div class="page-content">
                                     
                                     <!-- If the page has the category 'uebersicht' and therefore is the first of a new topic: display the child pages of this topic -->
                                 <?php 
@@ -27,11 +28,10 @@ if ( in_category( 'uebersicht' )) {
     echo '<ol class="themenuebersicht">';
     echo wp_list_pages('title_li=&child_of='.$post->ID.'&depth=1&sort_column=menu_order') . '</ol>';
 } 
-else {
-    // do noting, sit back, relax and have a cup of tea
-};
-
+;
                                 ?>
+                                    
+                                   
                                     
 									<?php
 										// the content (pretty self explanatory huh)
@@ -57,24 +57,34 @@ else {
 										) );
 									?>
                                     
-								</section> <?php // end article section ?>
+                                    
+                                  </div>  
+                                    
+                                <?php get_sidebar( gkuh ); ?>
+                                    
+								</section> 
 
-								<!--<footer class="article-footer cf">
+								<footer class="article-footer cf">
 
-								</footer>-->
+								</footer>
 
 								<?php comments_template(); ?>
+                                
 
 							</article>
 
 							<?php endwhile; endif; ?>
+                            
+                            
 
 						</main>
+                    
+                    
 
 				</div>
-                
-                
 
 			</div>
+
+
 
 <?php get_footer(); ?>

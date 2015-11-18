@@ -1,15 +1,12 @@
 /** 
  *
  * Theme Name: Responsive Clean Traditional
- * Description: Repsonsive, minimal, oldstyle theme with vertical menu and sidebar.
- * It aims to represent content in a traditional but clean and responsive way,
- * to fit the need of e.g. research institutions.
+ * Description: Repsonsive, minimal, oldstyle theme with vertical menu and sidebar. It aims to represent content in a traditional but responsive way, to fit the needs of e.g. research institutions for a clean and simple layout. Based on 8-column deco grid (http://limi.net/deco.gs). Customizable Logo and 1 main (left side) / 4 footer / 1 bottom menu slots. Noto Sans font and Genericons icon font integrated.   
  * Version: 1.0.0 
  * Author: Lars Kosubek & Sven Lutzack
  * Author URI: http://larskosubek.com
  * License: All rights reserved for " Interdisziplinäres Zentrum für Altern Halle"
  * Text Domain: cleantraditional
- * Tags: responsive, mobile, flexible-width, html5, green, white, light,
- * vertical-menu, two-columns, three-columns, sidebar, custom-menu     
- */ 
+ * Tags: responsive, mobile, flexible-width, html5, css3, green, white, light, vertical-menu, two-columns, three-columns, sidebar, custom-menu     
+ */
 @import url('css/main.css');

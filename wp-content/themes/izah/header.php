@@ -38,7 +38,7 @@
 					 alt="<?php echo esc_attr( bloginfo( 'name' ) ); ?>"/>
 			</a>
 		</div>
-		<nav>
+		<nav id="site-header-navigation" class="cell position-4 width-4">
 			<ul class="navigation-header">
 				<li><a href="<?php echo esc_url( site_url( '/wp-login.php' ) ); ?>">Login <span class="cleantraditional-icon icon-login"></span></a></li>
 				<li><a href="<?php echo esc_url( site_url( '/suchen' ) ); ?>">Suchen <span class="cleantraditional-icon icon-search"></span></a></li>

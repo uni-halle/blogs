@@ -122,6 +122,17 @@ This is for the larger monitors and possibly full screen viewers.
 } // end of media query
 
 /*********************
+VERY LARGE VIEWING SIZE
+This is for very large monitors and possibly full screen viewers.
+*********************/
+@media only screen and (min-width: 1600px) {
+
+	// styles in 1240up.scss
+	@import "breakpoints/1600up";
+
+} // end of media query
+
+/*********************
 RETINA (2x RESOLUTION DEVICES)
 This applies to the retina iPhone (4s) and iPad (2,3) along with
 other displays with a 2x resolution. You can also create a media

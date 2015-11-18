@@ -43,30 +43,44 @@
          
 <!-- call function for color categries from functions.php  -->
         
-        <?php
-    $category = get_the_category();
+         <?php 
+        
+        $category = get_the_category();
     $the_category_id = $category[0]->cat_ID;
 
     if(function_exists('rl_color')){
         $rl_category_color = rl_color($the_category_id);
     }
-else {
-    // nevermind
-};
+        
+    
+       
 ?>
         
-<!-- set the category color classes with the respective color (which is set in the backend as category setting) -->        
+<!-- set the category color classes with the respective color (which is set in the admin area as category setting) -->        
         <style>
             /* add classes where the COLOR property should have category color */
             .ccolor, .sf-with-ul:after, .themenuebersicht li a:before, .themenuebersicht li a:hover:before, .prevname a:hover, .nextname a:hover {color: <?php echo $rl_category_color; ?>;}
             
             /* add classes where the BACKGROUND-COLOR property should have category color */
-            .ccolorbgrd, .themenuebersicht li a:after {background-color: <?php echo $rl_category_color; ?>;}
+            .ccolorbgrd, .themenuebersicht li a:after, .sidebar-current-item {background-color: <?php echo $rl_category_color; ?>;}
             
             /* add classes where the border-color property should have category color */
             .ccolorborder, .themenuebersicht li a:before, .themenuebersicht li a:before {border-color: <?php echo $rl_category_color; ?>;}
             
             .svgbutton:hover {fill: <?php echo $rl_category_color; ?>;}
+            
+            <?php //list all category menu item classes and give color to the marker element defined in _base.scss
+             $topid = get_cat_ID( 'lektion' ); 
+                if($topid){
+                $categories = get_categories('orderby=name&child_of=' . $topid);
+                foreach($categories as $category) {
+                    $catid = $category->cat_ID;
+                    $catcolor = rl_color($catid);
+                    echo '.menu-item-category-' . $category->slug . '::after {border-right: 8px solid ' . $catcolor . ';} ';
+                } 
+        }
+
+            ?>
     
         </style>
 

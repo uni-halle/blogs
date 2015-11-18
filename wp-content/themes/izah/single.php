@@ -47,6 +47,7 @@ get_header(); ?>
 			endif;
 	
             // Previous/next post navigation.
+            /*
             the_post_navigation( array(
                 'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Beitrag', 'cleantraditional' ) . ':</span> ' .
                     '<span class="screen-reader-text">' . __( 'Nächster Beitrag:', 'cleantraditional' ) . '</span> ' .
@@ -55,7 +56,7 @@ get_header(); ?>
                     '<span class="screen-reader-text">' . __( 'Vorheriger Beitrag:', 'cleantraditional' ) . '</span> ' .
                     '<span class="post-title">%title</span>', 
             ) );
-			
+		    */	
 		// End the loop.
 		endwhile;
 	

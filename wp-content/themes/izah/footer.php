@@ -10,7 +10,7 @@ $menu_locations = get_nav_menu_locations();
 	</div><!-- #content -->
 
 	<div class="row">
-		<div class="cell position-6 width-2">
+		<div class="cell position-2 width-4" style="padding: 2em 0 1em">
 			<a href="#content">
 				 <span class="cleantraditional-icon-small icon-up"></span><!-- 
 				 --><?php _e( 'zum Seitenanfang', 'cleantraditional' ); ?>

@@ -247,7 +247,7 @@ and more scalable.
         letter-spacing: -1em; /* fix for inline-block gap */
 	}
     
-	li {
+    li {
         display: inline-block;
         position: relative;
         background-color:$mainnav;
@@ -296,33 +296,44 @@ and more scalable.
 			li {
                 padding: 1em 0.5em;
                 line-height: 1em;
-                border-bottom: 1px solid #fff;
+                border-bottom: 2px solid #fff;
+                border-collapse: separate;
                 display: block;
                 width: 100%;
+                
 				a {
-					border-right: 0;
+                    padding-right: 8px;
 					display: block;
                     color: $navtext;
 					&:hover,
 					&:focus {}
 
 					&:link {}
-
-				}
+                    
+                    &:last-child {}
                 
-                a:before {
-                    content: "";
-                    height: 2em;
-                    left: -0.33em;
-                    position: absolute;
-                    top: -1.1em;
-                    width: 5px;
+                }
+                
+                &:after {
+                    display:block;
+                    content:".";
+                    color:transparent;
+                    font-size:0;
+                    border-right-style: solid;
+                    border-right-width: 8px;
+                    height:100%;
+                    position:absolute;
+                    right:0;
+                    padding:0;
+                    top:0;
                     
                 }
 
 				&:first-child {}
 
-				&:last-child {}
+				&:last-child {
+                    border-bottom: 0;
+                }
 
 			}
             
@@ -351,6 +362,8 @@ and more scalable.
 		}
         
 	} /* end .menu li */
+    
+    
         
  /* end .menu ul */
 
@@ -654,14 +667,11 @@ List of Child Pages on First Page of a Section (See page.php for php code and li
         text-align: center;
         font-weight: bold;
         border-radius: 2em;
-        border: .4em solid $section2;
+        border-width: .4em;
+        border-style: solid;
         z-index: 2;
         
 } /* end of ol li a:before */
-        
-        a:hover:before{
-            //border: 1px solid;
-}
       
     a:after {
         content: "";
@@ -672,7 +682,6 @@ List of Child Pages on First Page of a Section (See page.php for php code and li
         width: 5px;    
         
 } /* end of ol li a:after */
-
         
 } /* end of ol li */
     
@@ -1014,7 +1023,12 @@ COMMENT FORM STYLES
 SIDEBARS & ASIDES
 *********************/
 
-.sidebar {}
+#sidebar-gkuh {
+    display: none;
+}
+
+.sidebar {
+}
 
 	.widgettitle {}
 
@@ -1065,7 +1079,7 @@ $footerheight:  4em;
 }
 
 /********* just change those valuey for the containers. the other elements are being calculated automatically *********/
-
+/* this is the width of the container for the navigation elements (arrows and circle) */
 $centerwidth: 40%;
 
 .footer {
@@ -1133,19 +1147,33 @@ $centerwidth: 40%;
     text-align: left;
 }
 
-$centerelement: 30%;
+/* this is the width of the circle */
+$centerelement: 40%;
 
 .statuscow {
     @include flex(1 1 $centerelement);
-    width: $centerelement * 1.1;
+    //width: $centerelement;
+    //width: $centerelement * 1.1;
     align-self: center;
+    //height: $footerheight;
     //width: 5%;
     //background-color: $gkuh;
     //display: inline;
     //min-width: $footerheight / 1.5;
     //min-height: $footerheight / 1.5;
-    //max-height: $footerheight / 2.5;
+    //max-height: $footerheight / 2.5; 
     
+    svg {
+        transform: rotate(270deg);
+    }
+    
+    circle {
+        transform: rotate(0.1deg); // to fix Firefox
+    }
+    
+    .circle-cover {
+        stroke: $navbutton;
+    }
 }
 
 /* Positioning of prev/next triangle svg  */

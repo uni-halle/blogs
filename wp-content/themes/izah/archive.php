@@ -31,8 +31,12 @@ get_header(); ?>
 
 <main id="main" class="site-main cell position-2 width-4">
 	<header class="page-header">
-		<?php
-			the_archive_title( '<h1 class="page-title">', '</h1>' );
+        <?php
+            if ( is_category() ) {
+                echo '<h1 class="page-title">' . single_cat_title( '', false ) . '</h1>';
+            } else {
+			    the_archive_title( '<h1 class="page-title">', '</h1>' );
+            }
 			the_archive_description( '<div class="taxonomy-description">', '</div>' );
 		?>
 	</header><!-- .page-header -->

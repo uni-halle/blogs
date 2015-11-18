@@ -1,7 +1,18 @@
-/**
- * main stylesheet
+/** 
  *
- * with help of www.getskeleton.com V2.0.4 by Dave Gamache
+ * Theme Name: Responsive Clean Traditional
+ * Description: Repsonsive, minimal, oldstyle theme with vertical menu and sidebar.
+ * It aims to represent content in a traditional but clean and responsive way,
+ * to fit the need of e.g. research institutions.
+ * Version: 1.0.0 
+ * Author: Lars Kosubek & Sven Lutzack
+ * Author URI: http://larskosubek.com
+ * License: All rights reserved for " Interdisziplinäres Zentrum für Altern Halle"
+ * Text Domain: cleantraditional
+ * Tags: responsive, mobile, flexible-width, html5, green, white, light,
+ * vertical-menu, two-columns, three-columns, sidebar, custom-menu     
+ * 
+ * Main stylesheet derived from of www.getskeleton.com V2.0.4 by Dave Gamache.
  */
 
 $color-1:               #469170;
@@ -66,12 +77,12 @@ $color-text-6:          #232323;
 
 /* Normalize
 -------------------------------------------------- */
-@import url('normalize.css');
+@import 'normalize';
 
 
 /* Flexible Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-@import url('grid.css');
+@import 'grid';
 img,
 embed,
 object,
@@ -94,9 +105,9 @@ html {
 }
 body {
   font-size: 1.5em; /* currently rems cause chrome bug misinterpreting rems on body element */
-  line-height: 1.6;
+  line-height: 1.5;
   font-weight: 400;
-  font-family: "Noto Sans", "Geneva", "sans-serif";
+  font-family: "Noto Sans", "Geneva", sans-serif;
   color: $color-text-1; 
 }
 
@@ -144,6 +155,7 @@ nav {
     color: $color-text-4;
     &:hover {
       color: $color-1; 
+      text-decoration: none;
     }
     &:hover span {
       background-color: $color-1;
@@ -189,6 +201,9 @@ nav {
     min-width: em(150);
     border-bottom: 1px solid $color-2; 
     padding-bottom: em(6);
+    &:last-child {
+        border-bottom: 0;
+    }
   }
   .sub-menu .sub-menu > li {
     // dots for choosen list-item of 3rd level nav
@@ -343,6 +358,7 @@ body.page .entry-title,
 body.single .entry-title,
 body.blog .site-main > article:first-of-type .entry-title,
 body.search .site-main > article:first-of-type .entry-title,
+body.archive .site-main > article:first-of-type .entry-title,
 .entry-content > h1:first-child,
 .entry-content > h2:first-child,
 .entry-content > h3:first-child,
@@ -910,27 +926,23 @@ h3,
 h4, 
 h5, 
 h6 {
-  margin-top: em(30);
-  margin-bottom: em(18);
+  margin-top: 2.5em;
+  margin-bottom: 1.2em;
   font-weight: 300; 
 }
 h1 { 
   font-size: em(22);  
   font-size: 2.2rem; 
-  line-height: 1.35;  
-  letter-spacing: -.08rem;
 }
 h2 { 
   font-size: em(20);
   font-size: 2rem;
-  line-height: 1.25;
-  letter-spacing: -.08rem;
+  line-height: 1.35;
 }
 h3 { 
   font-size: em(18);
   font-size: 1.8rem;
   line-height: 1.5;
-  letter-spacing: -.05rem;
 }
 h4,
 h5,
@@ -938,7 +950,6 @@ h6 {
   font-size: em(16);
   font-size: 1.6rem;
   line-height: 1.6;
-  letter-spacing: 0;  
 }
 
 p {
@@ -1070,7 +1081,7 @@ label > .label-body {
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
-  list-style: none inside; }
+  list-style: none inside circle; }
 ol {
   list-style: decimal inside; }
 ol, ul {
@@ -1217,20 +1228,44 @@ on small devices, paste the mobile query code up in the buttons section and styl
 there.
 */
 
-/* Larger than mobile */
-@media (min-width: 400px) {}
+@media screen and (max-width: #{em(920)} ) {
+   #content {
+     .position-2 {
+        width: 70.250000000000000%;
+     }      
+     .position-6 {
+        margin-left: -100.000000000000000%;
+        width: 95.250000000000000%;
+     }  
+   }
+   #sidebar {
+     clear:both;
+   }
+}
 
-/* Larger than phablet (also point when grid becomes active) */
-@media (min-width: 550px) {}
-
-/* Larger than tablet */
-@media (min-width: 750px) {}
-
-/* Larger than desktop */
-@media (min-width: 1000px) {}
-
-/* Larger than Desktop HD */
-@media (min-width: 1200px) {}
+@media screen and (max-width: #{em(660)} ) {
+  #content {
+    .position-0, .position-2 {
+       margin-left: -100.000000000000000%;
+       width: 95.250000000000000%;
+    }  
+  }
+  #main {
+    clear:both;
+  }
+  #foot {
+    .width-2 {
+      width: 45.250000000000000%;
+    }
+    .position-2, .position-6 {
+      margin-left: -50.000000000000000%;
+    }
+    .position-4 {
+      clear:both;
+      margin-left: -100.000000000000000%;
+    }
+  }
+}
 
 
 

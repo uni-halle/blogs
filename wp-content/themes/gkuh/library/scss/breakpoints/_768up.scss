@@ -122,14 +122,30 @@ POSTS & CONTENT STYLES
 }
 
 .entry-content {
-    padding: 1.5em 0; }
+    padding: 0; }
+
+$page-content: 67%;
+
+.page-content {
+    width: $page-content;
+    height: 100%;
+    float: left;
+}
 
 /*********************
 SIDEBARS & ASIDES
 *********************/
 
+#sidebar-gkuh {
+    display: block;
+}
+
 .sidebar {
-	margin-top: 2.2em;
+    width: 100 - $page-content;
+    float: right;
+    font-size: 0.7em;
+    border-left: 1px solid $border-color;
+    height: 100%;
 }
 
 	.widgettitle {
@@ -139,7 +155,7 @@ SIDEBARS & ASIDES
 
 	.widget {
 		padding: 0 10px;
-		margin: 2.2em 0;
+		margin-bottom: 2.2em;
 
 		ul {
 			li {

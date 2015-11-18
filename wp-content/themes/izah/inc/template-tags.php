@@ -250,7 +250,7 @@ function cleantraditional_excerpt_more( $more ) {
 		/* translators: %s: Name of current post */
 		sprintf( __( 'Weiterlesen %s', 'cleantraditional' ), '<span class="screen-reader-text">' . get_the_title( get_the_ID() ) . '</span>' )
 		);
-	return ' &hellip; ' . $link;
+	return '&hellip; ' . $link;
 }
 add_filter( 'excerpt_more', 'cleantraditional_excerpt_more' );
 endif;

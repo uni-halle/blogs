@@ -2,13 +2,13 @@
  * The 16-column Deco Grid System. 
  * Available in multiple variants, see http://deco.gs
  *
- * Content is         1008px
- * Cells are          3,869047619% (=39px)
- * Column margins are 2,380952381% (=24px)
- * Total is           6.25%. (=62px) (which makes 16 columns)
+ * Content is         1200px
+ * Cells are          7,75% (=93px)
+ * Column margins are 4.75% (=57px)
+ * Total is           12.5%. (=150px) (which makes 8 columns)
  * 
- * If page width is fixed to 1008px width:
- * Cell will be equivalent to 39px, left/right margin will be 24px.
+ * If page width is fixed to 1200px width:
+ * Cell will be equivalent to 93px, left/right margin will be 57px.
  */
  
 .row {
@@ -16,7 +16,7 @@
 	width: 100%;
 	display: block;
 	position: relative;
-	padding-left: 1,2083333333%; // for exact centering: 0.5 * Colum Margin 
+	padding-left: 2.375%; // for exact centering: 0.5 * Colum Margin 
 }
 .cell {
   position: relative;
@@ -59,6 +59,6 @@
 
 /* Make sure the page never exceeds 992px, but scales down */
 body { 
-  max-width: 78em; 
+  max-width: em(1200); 
   margin: 0 auto;
 } 

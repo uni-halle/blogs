@@ -165,9 +165,9 @@ add_action( 'customize_register', 'bones_theme_customizer' );
 // Sidebars & Widgetizes Areas
 function bones_register_sidebars() {
 	register_sidebar(array(
-		'id' => 'sidebar1',
-		'name' => __( 'Sidebar 1', 'bonestheme' ),
-		'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
+        'id' => 'sidebar-gkuh',
+		'name' => __( 'GKUH Sidebar', 'bonestheme' ),
+		'description' => __( 'Dieser Bereich ist nur auf großen Bildschirmen sichtbar und enthält standardmäßig das Widget „GKUHplus Seitenliste“. Weitere Widgets wenn gewünscht einfach dazu holen. ', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -181,24 +181,121 @@ function bones_register_sidebars() {
 
 	Just change the name to whatever your new
 	sidebar's id is, for example:
-
+*/
 	register_sidebar(array(
-		'id' => 'sidebar2',
-		'name' => __( 'Sidebar 2', 'bonestheme' ),
-		'description' => __( 'The second (secondary) sidebar.', 'bonestheme' ),
+        'id' => 'sidebar1',
+		'name' => __( 'Extra Sidebar', 'bonestheme' ),
+		'description' => __( 'Hier kann extra Inhalt hinein, wenn gewünscht', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
 		'after_title' => '</h4>',
+		
 	));
 
-	To call the sidebar in your template, you can just copy
-	the sidebar.php file and rename it to your sidebar's name.
-	So using the above example, it would be:
-	sidebar-sidebar2.php
-
-	*/
 } // don't remove this bracket!
+
+
+/******** GKUHplus pagelist widget *******/
+// Creating the widget 
+class gkuh_pagelist_widget extends WP_Widget {
+
+function __construct() {
+parent::__construct(
+// Base ID of your widget
+'gkuh_pagelist_widget', 
+
+// Widget name will appear in UI
+__('GKUHplus Seitenliste', 'gkuh_pagelist_widget_domain'), 
+
+// Widget description
+array( 'description' => __( 'Hier wird die Liste der Seiten in der aktuellen Lektion angezeigt', 'gkuh_pagelist_widget_domain' ), ) 
+);
+}
+
+// Creating widget front-end
+// This is where the action happens
+public function widget( $args, $instance ) {
+$title = apply_filters( 'widget_title', $instance['title'] );
+// before and after widget arguments are defined by themes
+echo $args['before_widget'];
+if ( ! empty( $title ) )
+echo $args['before_title'] . $title . $args['after_title'];
+
+    if ( in_category( array( 'inhalt', 'quiz' ) )) { //only display submenu on pages with category 'Lektionsinhalt' oder 'Quiz' 
+        
+ echo '<h2>In dieser Lektion:</h2>';
+    
+    $menu_name = 'main-nav';
+
+    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+	$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+        $args = array(
+        'order'                  => 'DESC',
+        'post_status'            => 'publish',
+        'output'                 => ARRAY_A,
+        'nopaging'               => true,
+        'update_post_term_cache' => false);   
+	$menu_items = wp_get_nav_menu_items($menu->term_id, $args);
+	$menu_list = '<ol class="themenuebersicht">';  
+    $thisparent = wp_get_post_parent_id($post);
+
+	foreach ( (array) $menu_items as $key => $menu_item ) {
+        $thatparent = $menu_item->post_parent;
+        $title = $menu_item->title;
+        $url = $menu_item->url;
+        $thatid = $menu_item->object_id;
+        
+        if($thisparent === $thatparent && $thatid == get_the_ID()) {
+            $menu_list .= '<li class="sidebar-menu-parent sidebar-current-item"><a href="' . $url . '">' . $title . '</a></li>';
+        }
+        elseif($thisparent === $thatparent) {
+            $menu_list .= '<li class="sidebar-menu-parent"><a href="' . $url . '">' . $title . '</a></li>';
+        }
+	}
+	$menu_list .= '</ul>';
+    } else {
+	$menu_list = '<ul><li>Menu "' . $menu_name . '" nicht definiert.</li></ul>';
+    }
+    echo $menu_list;
+    
+echo $args['after_widget'];
+}
+    
+    }
+		
+// Widget Backend 
+public function form( $instance ) {
+if ( isset( $instance[ 'title' ] ) ) {
+$title = $instance[ 'title' ];
+}
+else {
+$title = __( 'New title', 'gkuh_pagelist_widget_domain' );
+}
+// Widget admin form
+?>
+<p>
+<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+</p>
+<?php 
+}
+	
+// Updating widget replacing old instances with new
+public function update( $new_instance, $old_instance ) {
+$instance = array();
+$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+return $instance;
+}
+} // Class gkuh_pagelist_widget ends here
+
+// Register and load the widget
+function wpb_load_widget() {
+	register_widget( 'gkuh_pagelist_widget' );
+}
+add_action( 'widgets_init', 'wpb_load_widget' );
+
+
 
 
 /************* COMMENT LAYOUT *********************/
@@ -255,7 +352,38 @@ function bones_fonts() {
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
-/*************** GKUH FUNCTIONS *********************/      
+/*************** GKUH FUNCTIONS *********************/ 
+
+/********************************
+DEBUG LOG FUNCTION @todo (remove)
+********************************/
+    /*function mebug() {
+  $f=fopen( dirname(__FILE__) . DIRECTORY_SEPARATOR . 'mylog.log', 'a' );
+  foreach (func_get_args() as $obj) {
+    fwrite($f, date('Y-m-d G:i:s')." ");
+    if (is_array($obj) || is_object($obj)) {
+      fwrite($f, print_r($obj,1)."\n");
+    }
+    else {
+      fwrite($f, $obj."\n");
+    }
+  }
+  fclose($f);
+}
+*/
+/*********************************
+CREATE PAGE LIST BY MAIN NAV ORDER @todo
+*********************************/
+/*
+This is crucial for many features including previous/next page, menu colors, submenus and progress. The usual order of wordpress pages/posts is difficult to set and we want to always use the order given for the main nav menu
+*/
+
+
+
+
+/**********************
+CATEGORIES FOR PAGES
+***********************/
       
 /* This lets you add categories and tags to pages, which is neccessary for the color association for each lesson  */ 
       
@@ -455,8 +583,43 @@ function rl_color($catid){
     return $yt_cat_color;
 }
 
-/**************************
-END OF COLOR CATEGORY
-***************************/
+
+/**********************
+CATEGORIES TO NAV ITEMS
+***********************/
+
+function wpa_category_nav_class( $classes, $item ){
+    if( $item->post_parent != 0 ){
+        $categories = get_the_category($item->object_id);
+        $topid = get_cat_ID( 'lektion' );
+        foreach($categories as $category) {
+            if (cat_is_ancestor_of($topid, $category)) {
+                $catclass = $category->slug;
+            }
+        }
+        $classes[] = 'menu-item-category-' . $catclass;
+        $catlist[] = $catclass;
+    }
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'wpa_category_nav_class', 10, 2 );
+
+/** adds category css class to menu page items **/
+
+//function show_category_of_menu_item ( $classes, $item ) {    
+//  if($item)
+//    $category = get_category( $item );
+//	$classes[] = 'menu-item-category-' . $category[0];
+//	return $classes;
+
+    
+    //if( 'category' == $item->object ){
+    //    $category = get_category( $item->object_id );
+    //    $classes[] = 'menu-item-category-' . $category->slug;
+    //}
+    //return $classes;
+//}
+//add_filter( 'nav_menu_css_class', 'show_category_of_menu_item', 10, 2 );
+                  
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

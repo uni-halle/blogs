@@ -107,11 +107,14 @@ function cleantraditional_scripts() {
 	// Load js cookie helper
 	wp_enqueue_script( 'cleantraditional-js-cookie', get_template_directory_uri() . '/js/vendor/js.cookie.js', array(), '2.0.3', true );	
 
+	// Load js cookie helper
+	wp_enqueue_script( 'cleantraditional-js-resp-imgmaps', get_template_directory_uri() . '/js/vendor/jquery.rwdImageMaps.min.js', array('jquery'), '1.5', true );
+	
 	// Load own custom js
 	wp_enqueue_script( 'cleantraditional-js-grunticons', get_template_directory_uri() . '/fonts/grunticon/grunticon.loader.js', array(), '2.1.2' );	
 	
 	// Load own plugins incl. jQuery
-	wp_enqueue_script( 'cleantraditional-js-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'cleantraditional-js-cookie'), THEME_VERSION , true );
+	wp_enqueue_script( 'cleantraditional-js-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery', 'cleantraditional-js-cookie', 'cleantraditional-js-resp-imgmaps'), THEME_VERSION , true );
 
 	// Load own custom js
 	wp_enqueue_script( 'cleantraditional-js-custom', get_template_directory_uri() . '/js/main.js', array(), THEME_VERSION );

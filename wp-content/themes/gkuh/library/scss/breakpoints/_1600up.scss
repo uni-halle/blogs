@@ -2,14 +2,14 @@
 Site Name: 
 Author: 
 
-Stylesheet: Super Large Monitor Stylesheet
+Stylesheet: Super Super Large Monitor Stylesheet
 
 You can add some advanced styles here if you like. This kicks in
-on larger screens.
+on very large screens.
 
 ******************************************************************/
 
-$centerwidth: 10%;
+$centerwidth: 7%;
 
 .fnavcenter {
     @include flex(1 0 $centerwidth); }

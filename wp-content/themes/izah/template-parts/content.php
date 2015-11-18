@@ -30,10 +30,10 @@
 	<div class="entry-content">
 		<?php
 			/* translators: %s: Name of current post */
-			the_content( sprintf(
-				__( 'weiterlesen %s', 'cleantraditional' ),
-				the_title( '<span class="screen-reader-text">', '</span>', false )
-			) );
+			    the_content( sprintf(
+				    __( 'weiterlesen %s', 'cleantraditional' ),
+				    the_title( '<span class="screen-reader-text">', '</span>', false )
+			    ) );
 
 			wp_link_pages( array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Seiten:', 'cleantraditional' ) . '</span>',
