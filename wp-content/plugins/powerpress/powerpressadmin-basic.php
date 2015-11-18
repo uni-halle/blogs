@@ -152,7 +152,8 @@ jQuery(document).ready(function($) {
 		<li><a href="#tab3"><span><?php echo htmlspecialchars(__('Media Appearance', 'powerpress')); ?></span></a></li>
 		<li><a href="#tab4"><span><?php echo htmlspecialchars(__('Feeds', 'powerpress')); ?></span></a></li>
 		<li><a href="#tab5"><span><?php echo htmlspecialchars(__('iTunes', 'powerpress')); ?></span></a></li>
-		<li><a href="#tab6"><span><?php echo htmlspecialchars(__('Artwork', 'powerpress')); ?></span></a></li>
+		<li><a href="#tab6" style="position: relative;"><span style="margin-right: 25px;"><?php echo htmlspecialchars(__('Google Play', 'powerpress')); ?></span> <span style="position: absolute; top: 0; right: 2px;"><?php echo powerpressadmin_new(); ?></a></span></li>
+		<li><a href="#tab7"><span><?php echo htmlspecialchars(__('Artwork', 'powerpress')); ?></span></a></li>
   </ul>
 	
 	<div id="tab0" class="powerpress_tab">
@@ -190,6 +191,7 @@ jQuery(document).ready(function($) {
 		<?php
 		powerpressadmin_edit_feed_general($FeedSettings, $General);
 		powerpressadmin_edit_feed_settings($FeedSettings, $General, $FeedAttribs);
+		powerpressadmin_edit_funding($FeedSettings);
 		powerpressadmin_edit_tv($FeedSettings);
 		?>
 	</div>
@@ -200,8 +202,12 @@ jQuery(document).ready(function($) {
 		powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs);
 		?>
 	</div>
-	
 	<div id="tab6" class="powerpress_tab">
+		<?php
+		powerpressadmin_edit_googleplay($FeedSettings, $General, $FeedAttribs);
+		?>
+	</div>
+	<div id="tab7" class="powerpress_tab">
 		<?php
 		powerpressadmin_edit_artwork($FeedSettings, $General);
 		?>
@@ -231,7 +237,7 @@ function powerpressadmin_advanced_options($General)
 		<div>
 			<input type="checkbox" name="NULL[player_options]" value="1" checked disabled /> 
 			<strong><?php echo __('Audio Player Options', 'powerpress'); ?></strong> - 
-			<?php echo __('Select from 7 different web based audio players.', 'powerpress'); ?> 
+			<?php echo __('Select from 3 different web based audio players.', 'powerpress'); ?> 
 			<span style="font-size: 85%;">(<a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_player.php'); ?>"><?php echo __('configure audio player', 'powerpress'); ?></a>)</span>
 			
 			
@@ -239,7 +245,7 @@ function powerpressadmin_advanced_options($General)
 		<div>
 			<input type="checkbox" name="NULL[video_player_options]" value="1" checked disabled /> 
 			<strong><?php echo __('Video Player Options', 'powerpress'); ?></strong> - 
-			<?php echo __('Select from 4 different web based video players.', 'powerpress'); ?> 
+			<?php echo __('Select from 3 different web based video players.', 'powerpress'); ?> 
 			<span style="font-size: 85%;">(<a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_videoplayer.php'); ?>"><?php echo __('configure video player', 'powerpress'); ?></a>)</span>
 			
 		</div>
@@ -322,24 +328,26 @@ function powerpressadmin_advanced_options($General)
 
 <div style="margin-left: 10px;">
 	<h3 style="margin-bottom: 5px;"><?php echo __('Looking for Support, Consulting or Custom Development?', 'powerpress'); ?></h3>
-	<p style="margin: 0  0 0 50px; font-size: 115%;">
+	<p style="margin: 0  0 0 50px;">
 		<?php echo __('Blubrry offers a variety of options, free and paid, to assist you with your podcasting and Internet media needs. Whether you need your theme customized for podcasting or you want consulting on what video format is best for your audience, we have the staff and knowledge to assist.', 'powerpress'); ?>
 	</p>
-	<p style="margin: 5px 0 0 50px; font-size: 115%;">
+	<p style="margin: 5px 0 0 50px;">
 	<strong><?php echo '<a href="http://create.blubrry.com/support/" target="_blank">'. __('Learn More about Blubrry Support Options', 'powerpress') .'</a>'; ?></strong>
 	</p>
 </div>
 
 <div style="margin-left: 10px;">
 	<h3 style="margin-bottom: 5px;"><?php echo __('Want your own iOS and Android podcast apps?', 'powerpress'); ?></h3>
-	<p style="margin: 0  0 0 50px; font-size: 115%;">
+	<p style="margin: 0  0 0 50px;">
 		<?php echo __('Blubrry has partnered with Reactor by AppPresser to provide iOS and Android apps for PowerPress powered podcasts. With Reactor, you are able to build, design and retain control of your app to highlight your podcast content, and provide access to value-add content from your website.', 'powerpress'); ?>
 	</p>
-	<p style="margin: 5px 0 0 50px; font-size: 115%;">
+	<p style="margin: 5px 0 0 50px;">
 		<strong><?php echo '<a href="http://create.blubrry.com/resources/partners/reactor-ios-android-podcast-apps-powerpress/" target="_blank">'. __('Learn More about Reactor iOS and Android podcast apps for PowerPress', 'powerpress') .'</a>'; ?></strong>
 	</p>
 </div>
-
+<div style="margin-left: 10px;">
+<?php powerpresspartner_clammr_info(); ?>
+</div>
 <?php
 	if( isset($General['timestamp']) && $General['timestamp'] > 0 && $General['timestamp'] < ( time()- (60*60*24*14) ) ) // Lets wait 14 days before we annoy them asking for support
 	{
@@ -452,10 +460,15 @@ function powerpressadmin_edit_entry_options($General)
 						(<?php echo __('Leave unchecked to use the first 250 characters of your blog post', 'powerpress'); ?>)</p>
 					<p style="margin-top: 15px;"><input id="episode_box_summary" class="episode_box_option" name="General[episode_box_summary]" type="checkbox" value="1"<?php if( !empty($General['episode_box_summary']) ) echo ' checked'; ?> /> <?php echo __('iTunes Summary Field', 'powerpress'); ?>
 						(<?php echo __('Leave unchecked to use your blog post', 'powerpress'); ?>)</p>
+					
+					
+						
 					<p style="margin-top: 15px;"><input id="episode_box_author" class="episode_box_option" name="General[episode_box_author]" type="checkbox" value="1"<?php if( !empty($General['episode_box_author']) ) echo ' checked'; ?> /> <?php echo __('iTunes Author Field', 'powerpress'); ?>
 						(<?php echo __('Leave unchecked to the post author name', 'powerpress'); ?>)</p>
+					
 					<p style="margin-top: 15px;"><input id="episode_box_explicit" class="episode_box_option" name="General[episode_box_explicit]" type="checkbox" value="1"<?php if( !empty($General['episode_box_explicit']) ) echo ' checked'; ?> /> <?php echo __('iTunes Explicit Field', 'powerpress'); ?>
 						(<?php echo __('Leave unchecked to use your feed\'s explicit setting', 'powerpress'); ?>)</p>
+					
 						
 					<p style="margin-top: 15px;"><label><input id="episode_box_itunes_image" class="episode_box_option" name="General[episode_box_itunes_image]" type="checkbox" value="1"<?php if( !empty($General['episode_box_itunes_image']) ) echo ' checked'; ?> /> <?php echo __('iTunes Episode Image Field', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?>
 						(<?php echo __('Leave unchecked to use the image embedded into your media files.', 'powerpress'); ?>)</p>	
@@ -464,28 +477,33 @@ function powerpressadmin_edit_entry_options($General)
 						(<?php echo __('Leave unchecked if you do not distribute closed captioned media', 'powerpress'); ?>)</p>
 						
 					<p style="margin-top: 15px;"><label><input id="episode_box_order" class="episode_box_option" name="General[episode_box_order]" type="checkbox" value="1"<?php if( !empty($General['episode_box_order']) ) echo ' checked'; ?> <?php if( !empty($General['episode_box_feature_in_itunes']) ) echo ' disabled'; ?> /> <?php echo __('iTunes Order', 'powerpress'); ?></label> 
-						(<?php echo __('Override the default ordering of episodes on the iTunes podcast directory', 'powerpress'); ?>)</p>
-						<em><strong><?php echo __('If conflicting values are present the iTunes directory will use the default ordering.', 'powerpress'); ?></strong></em><br />
+						(<?php echo __('Override the default ordering of episodes on the iTunes and Google Play Music podcast directories', 'powerpress'); ?>)</p>
+						<em><strong><?php echo __('If conflicting values are present the directories will use the default ordering.', 'powerpress'); ?></strong></em><br />
 						<em><strong><?php echo __('This feature only applies to the default podcast feed and Custom Podcast Channel feeds added by PowerPress.', 'powerpress'); ?></strong></em>
 					
-					<p style="margin-top: 15px;"><label><input id="episode_box_feature_in_itunes" class="episode_box_option" name="General[episode_box_feature_in_itunes]" type="checkbox" value="1"<?php if( !empty($General['episode_box_feature_in_itunes']) ) echo ' checked'; ?> /> <?php echo __('Feature Episode in iTunes', 'powerpress'); ?></label>
-						(<?php echo __('Display selected episode at top of your iTunes Directory listing', 'powerpress'); ?>)</p>
+					<p style="margin-top: 15px;"><label><input id="episode_box_feature_in_itunes" class="episode_box_option" name="General[episode_box_feature_in_itunes]" type="checkbox" value="1"<?php if( !empty($General['episode_box_feature_in_itunes']) ) echo ' checked'; ?> /> <?php echo __('Feature Episode in iTunes and Google Play Music', 'powerpress'); ?></label>
+						(<?php echo __('Display selected episode at top of your iTunes and Google Play Music directory listings', 'powerpress'); ?>)</p>
 						<em><strong><?php echo __('All other episodes will be listed following the featured episode.', 'powerpress'); ?></strong></em><br />
 						<em><strong><?php echo __('This feature only applies to the default podcast feed and Custom Podcast Channel feeds added by PowerPress.', 'powerpress'); ?></strong></em>
 						
-<?php if( defined('POWERPRESS_NOT_SUPPORTED') ) { ?>
-<fieldset style="border: 1px dashed #333333; margin: 10px 0 10px -20px;">
-<legend style="margin: 0 20px; padding: 0 5px; font-weight: bold;"><?php echo __('Features Not Supported by PowerPress', 'powerpress');  ?></legend>
+						
+					<p style="margin-top: 15px;"><input id="episode_box_gp_desc" class="episode_box_option" name="General[episode_box_gp_desc]" type="checkbox" value="1"<?php if( !empty($General['episode_box_gp_desc']) ) echo ' checked'; ?> /> <?php echo __('Google Play Description Field', 'powerpress'); ?>
+						(<?php echo __('Leave unchecked to use your blog post', 'powerpress'); ?>)</p>
+					<p style="margin-top: 15px;"><input id="episode_box_gp_explicit" class="episode_box_option" name="General[episode_box_gp_explicit]" type="checkbox" value="1"<?php if( !empty($General['episode_box_gp_explicit']) ) echo ' checked'; ?> /> <?php echo __('Google Play Explicit Field', 'powerpress'); ?>
+						(<?php echo __('Leave unchecked to use your feed\'s explicit setting', 'powerpress'); ?>)</p>
+						
+				<fieldset style="border: 1px dashed #333333; margin: 10px 0 10px -20px;">
+					<legend style="margin: 0 20px; padding: 0 5px 5px 5px; font-weight: bold;"><?php echo __('Warning', 'powerpress');  ?></legend>
 					<p style="margin: 5px 10px 0 20px;">
 						<strong style="color: #CC0000;"><?php echo __('USE THE FOLLOWING SETTINGS AT YOUR OWN RISK.', 'powerpress'); ?></strong>
 					</p>
-					<p style="margin: 10px 10px 10px 20px;"><input id="episode_box_block" class="episode_box_option" name="General[episode_box_block]" type="checkbox" value="1"<?php if( !empty($General['episode_box_block']) ) echo ' checked'; ?> /> <?php echo __('iTunes Block', 'powerpress'); ?> 
-						(<?php echo __('Prevent episodes from appearing in iTunes. Feature only applies to iTunes, episodes will still appear in other directories and applications', 'powerpress'); ?>)</p>
-
+					<p style="margin: 15px 0 0 20px;"><label><input id="episode_box_block" class="episode_box_option" name="General[episode_box_block]" type="checkbox" value="1"<?php if( !empty($General['episode_box_block']) ) echo ' checked'; ?> /> <?php echo __('iTunes Block', 'powerpress'); ?> (<?php echo htmlspecialchars('<itunes:block>yes</itunes:block>'); ?>)</label></p>
+					<div style="margin: 0 10px 10px 20px;"><em><strong><?php echo __('Prevent episodes from appearing in iTunes and other diretories that support the iTunes:block tag. Episodes may still appear in other directories and applications.', 'powerpress'); ?></strong></em></div>
 					
-</fieldset>
-<?php } ?>
-					<em><?php echo __('NOTE: An invalid entry into any of the iTunes fields may cause problems with your iTunes listing. It is highly recommended that you validate your feed using feedvalidator.org everytime you modify any of the iTunes fields listed above.', 'powerpress'); ?></em><br />
+					<p style="margin: 15px 0 0 20px;"><label><input id="episode_box_gp_block" class="episode_box_option" name="General[episode_box_gp_block]" type="checkbox" value="1"<?php if( !empty($General['episode_box_gp_block']) ) echo ' checked'; ?> /> <?php echo __('Google Play Block', 'powerpress'); ?> (<?php echo htmlspecialchars('<googleplay:block>yes</itunes:googleplay>'); ?>)</label></p>
+					<div style="margin: 0 10px 10px 20px;"><em><strong><?php echo __('Prevent episodes from appearing in Google Play Music. Episodes may still appear in other directories and applications.', 'powerpress'); ?></strong></em></div>
+				</fieldset>
+
 				</div>
 
 </td>
@@ -697,6 +715,136 @@ while( list($value,$desc) = each($options) )
 	}
 }
 
+
+function powerpressadmin_edit_googleplay($FeedSettings, $General, $FeedAttribs = array() )
+{
+	$feed_slug = $FeedAttribs['feed_slug'];
+	$cat_ID = $FeedAttribs['category_id'];
+
+	// Set default settings (if not set)
+	if( empty($FeedSettings['googleplay_url']) )
+		$FeedSettings['googleplay_url'] = '';
+	if( empty($FeedSettings['googleplay_email']) )
+		$FeedSettings['googleplay_email'] = '';
+	if( empty($FeedSettings['googleplay_author']) )
+		$FeedSettings['googleplay_author'] = '';
+	if( empty($FeedSettings['googleplay_description']) )
+		$FeedSettings['googleplay_description'] = '';
+	if( empty($FeedSettings['googleplay_explicit']) )
+		$FeedSettings['googleplay_explicit'] = '';
+	if( empty($FeedSettings['googleplay_cat']) )
+		$FeedSettings['googleplay_cat'] = '';
+		
+	?>
+	<h3><?php echo __('Google Play Settings', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></h3>
+<table class="form-table">
+<tr valign="top">
+<th scope="row"><?php echo __('Google Play Listing URL', 'powerpress'); ?></th> 
+<td>
+<input type="text" style="width: 80%;" name="Feed[googleplay_url]" value="<?php echo esc_attr($FeedSettings['googleplay_url']); ?>" maxlength="250" />
+<p><?php echo __('Your listing URL will be issued to you from Google Play Music.', 'powerpress'); ?></p>
+<!-- <p><?php echo sprintf(__('e.g. %s', 'powerpress'), 'http://itunes.apple.com/podcast/title-of-podcast/id<strong>000000000</strong>'); ?></p> -->
+
+<p><?php echo sprintf( __('Click the following link to %s.', 'powerpress'), '<a href="https://play.google.com/music/podcasts/publish" target="_blank">'. __('Publish a Podcast on Google Play Music', 'powerpress') .'</a>'); ?>
+ </p>
+ <p>
+<?php echo __('Recommended feed to submit to Google Play Music: ', 'powerpress'); ?>
+<?php
+
+	switch( $FeedAttribs['type'] )
+	{
+		case 'ttid':
+		case 'category': {
+			echo get_category_feed_link($cat_ID);
+		}; break;
+		case 'channel': {
+			echo get_feed_link($feed_slug);
+		}; break;
+		case 'post_type': {
+			$url = get_post_type_archive_feed_link($FeedAttribs['post_type'], $feed_slug);
+			echo $url;
+		}; break;
+		case 'general':
+		default: {
+			echo get_feed_link('podcast');
+		}
+	}
+
+?>
+</p>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row">
+<?php echo __('Google Play Email', 'powerpress'); ?> 
+<span class="powerpress-required"><?php echo __('Required', 'powerpress'); ?></span>
+</th>
+<td>
+<input type="text" name="Feed[googleplay_email]" class="bpp_input_med" value="<?php echo esc_attr($FeedSettings['googleplay_email']); ?>" maxlength="250" />
+<div>(<?php echo __('Google will email this address when your podcast is accepted into the Google Play Music Podcast Directory.', 'powerpress'); ?>)</div>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row">
+<?php echo __('Google Play Author', 'powerpress'); ?> 
+</th>
+<td>
+<input type="text" name="Feed[googleplay_author]" class="bpp_input_med" value="<?php echo esc_attr($FeedSettings['googleplay_author']); ?>" maxlength="250" />
+<div>(<?php echo __('iTunes Author will be used if left blank', 'powerpress'); ?>)</div>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row">
+<?php echo __('Google Play Description', 'powerpress'); ?> 
+</th>
+<td>
+<p style="margin-top: 5px;"><?php echo __('Your description cannot exceed 4,000 characters in length.', 'powerpress'); ?></p>
+<textarea name="Feed[googleplay_description]" rows="5" style="width:80%;" ><?php echo esc_textarea($FeedSettings['googleplay_description']); ?></textarea>
+<div>(<?php echo __('iTunes Summary will be used if left blank', 'powerpress'); ?>)</div>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row">
+<?php echo __('Google Play Explicit', 'powerpress'); ?> 
+</th>
+<td>
+<select name="Feed[googleplay_explicit]" class="bpp_input_med">
+<?php
+$explicit = array(0=> __('No - display nothing', 'powerpress'), 1=>__('Yes - explicit content', 'powerpress') );
+
+while( list($value,$desc) = each($explicit) )
+	echo "\t<option value=\"$value\"". ($FeedSettings['googleplay_explicit']==$value?' selected':''). ">$desc</option>\n";
+
+?>
+</select>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row">
+<?php echo __('Google Play Category', 'powerpress'); ?>
+<span class="powerpress-required"><?php echo __('Required', 'powerpress'); ?></span>
+</th>
+<td>
+<select name="Feed[googleplay_cat]" class="bpp_input_med">
+<?php
+
+$MoreCategories = false;
+
+
+$Categories = powerpress_googleplay_categories();
+
+echo '<option value="">'. __('Select Category', 'powerpress') .'</option>';
+while( list($value,$desc) = each($Categories) )
+	echo "\t<option value=\"$value\"". ($FeedSettings['googleplay_cat']==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
+
+?>
+</select>
+</td>
+</tr>
+
+</table>
+	<?php
+}
 
 function powerpressadmin_edit_itunes_general($FeedSettings, $General, $FeedAttribs = array() )
 {
@@ -1256,7 +1404,7 @@ function powerpress_admin_appearance_common($Feed, $FeedAttribs = array())
 	if( !empty($FeedAttribs['feed_slug']) )
 		$feed_slug = $FeedAttribs['feed_slug'];
 		
-	if( $FeedAttribs['type'] == 'ttid' )
+	if( !empty($FeedAttribs['feed_slug']) && $FeedAttribs['type'] == 'ttid' )
 	{
 		//echo "<br /><br />";
 		return;
@@ -1404,6 +1552,37 @@ function powerpressadmin_welcome($GeneralSettings)
 <?php
 } // End powerpressadmin_welcome()
 
+function powerpressadmin_edit_funding($FeedSettings = false, $feed_slug='podcast', $cat_ID=false)
+{
+	if( !isset($FeedSettings['donate_link']) )
+		$FeedSettings['donate_link'] = 0;
+	if( !isset($FeedSettings['donate_url']) )
+		$FeedSettings['donate_url'] = '';
+	if( !isset($FeedSettings['donate_label']) )
+		$FeedSettings['donate_label'] = '';
+?>
+<!--  Donate link and label -->
+<table class="form-table">
+<tr valign="top">
+<th scope="row">
+<?php echo __('Donate Link', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></th> 
+<td>
+	<p style="padding-top: 8px;"><label for="donate_link"><input type="checkbox" id="donate_link" name="Feed[donate_link]" value="1" <?php if( $FeedSettings['donate_link'] == 1 ) echo 'checked '; ?>/> 
+	<?php echo __('Syndicate a donate link with your podcast. Create your own croudfunding page with PayPal donate buttons, or link to a service such as Patreon.', 'powerpress'); ?></label></p>
+	<ul>
+	<li><label for="donate_url" style="width: 100px; display:inline-block; text-align: right;">Donate URL:</label> <input type="text" id="donate_url" value="<?php echo esc_attr($FeedSettings['donate_url']); ?>" name="Feed[donate_url]" style="width:50%; max-width: 300px;" />
+	</li>
+	<li><label for="donate_label" style="width: 100px; display:inline-block; text-align: right;">Donate label:</label> <input type="text" id="donate_label" value="<?php echo esc_attr($FeedSettings['donate_label']); ?>" name="Feed[donate_label]" style="width: 50%; max-width: 300px;" />
+	<?php echo __('(optional)', 'powerpress'); ?>
+	</li>
+	</ul>
+	<p><a href="http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/syndicating-a-donate-link-in-your-podcast/" target="_blank"><?php echo __('Learn more about syndicating donate links for podcasting', 'powerpress'); ?></a></p>
+</td>
+</tr>
+</table>
+<?php
+}
+
 function powerpressadmin_edit_tv($FeedSettings = false, $feed_slug='podcast', $cat_ID=false)
 {
 	if( !isset($FeedSettings['parental_rating']) )
@@ -1470,7 +1649,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <span class="powerpress-required"><?php echo __('Required', 'powerpress'); ?></span>
 </th>
 <td>
-<input type="text" id="itunes_image" name="Feed[itunes_image]" style="width: 60%;" value="<?php echo esc_attr( !empty($FeedSettings['itunes_image'])? $FeedSettings['itunes_image']:''); ?>" maxlength="250" />
+<input type="text" id="itunes_image" name="Feed[itunes_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['itunes_image'])? $FeedSettings['itunes_image']:''); ?>" maxlength="250" />
 <a href="#" onclick="javascript: window.open( document.getElementById('itunes_image').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
 <p><?php echo __('iTunes image must be at least 1400 x 1400 pixels in .jpg or .png format. iTunes image must not exceed 3000 x 3000 pixels and must use RGB color space.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/itunes.jpg
@@ -1507,12 +1686,38 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <table class="form-table">
 <tr valign="top">
 <th scope="row">
-<?php echo __('iTunes Episode Image', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></th>
+<?php echo __('iTunes Episode Image', 'powerpress'); ?></th>
 <td>
 
-<p><label><input type="checkbox" name="Feed[episode_itunes_image]" value="1" <?php if( !empty($FeedSettings['episode_itunes_image']) ) echo 'checked '; ?>/> <?php echo __('Use iTunes image above', 'powerpress'); ?></label></p>
+<p style="padding-top: 10px;"><label><input type="checkbox" name="Feed[episode_itunes_image]" value="1" <?php if( !empty($FeedSettings['episode_itunes_image']) ) echo 'checked '; ?>/> <?php echo __('Use iTunes image above', 'powerpress'); ?></label></p>
 <p><?php echo __('Use the program iTunes image above as your iTunes episode image.', 'powerpress'); ?></p>
 <p class="description"><?php echo __('NOTE: You must still save artwork into your media files to guarantee your artwork is displayed during playback.', 'powerpress'); ?></p>
+</td>
+</tr>
+
+<table class="form-table">
+<tr valign="top">
+<th scope="row">
+<?php echo __('Google Play Image', 'powerpress'); ?>  <?php echo powerpressadmin_new(); ?>
+</th>
+<td>
+<input type="text" id="googleplay_image" name="Feed[googleplay_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['googleplay_image'])? $FeedSettings['googleplay_image']:''); ?>" maxlength="250" />
+<a href="#" onclick="javascript: window.open( document.getElementById('googleplay_image').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
+
+<p><?php echo __('Google Play image must be at least 1200 x 1200 pixels in .jpg or .png format to be eligible for featuring. Image must not exceed 7000 x 7000 pixels.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?>: http://example.com/images/googleplay.jpg
+ </p>
+
+<p><strong><?php echo __('Leave this setting blank to use the iTunes image (recommended).', 'powerpress'); ?></strong></p>
+
+<?php if( $SupportUploads ) { ?>
+
+<p><label class="powerpress-normal-font"><input name="googleplay_image_checkbox" type="checkbox" onchange="powerpress_show_field('googleplay_image_upload', this.checked)" value="1" /> <?php echo __('Upload new image', 'powerpress'); ?></label> &nbsp; 
+	<span style="font-size:85%;">(<?php echo __('Using this option should update your image on Google Play Music within 24 hours', 'powerpress'); ?>)</span>
+</p>
+<div style="display:none" id="googleplay_image_upload">
+	<label for="googleplay_image_file"><?php echo __('Choose file', 'powerpress'); ?>:</label><input type="file" id="googleplay_image_file" name="googleplay_image_file"  /><br />
+</div>
+<?php } ?>
 </td>
 </tr>
 
@@ -1522,7 +1727,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <span style="font-size: 85%; margin-left: 5px;"><?php echo __('Recommendation: Use iTunes image', 'powerpress'); ?></span>
 </th>
 <td>
-<input type="text" id="rss2_image" name="Feed[rss2_image]" style="width: 60%;" value="<?php echo esc_attr( !empty($FeedSettings['rss2_image'])? $FeedSettings['rss2_image']:''); ?>" maxlength="250" />
+<input type="text" id="rss2_image" name="Feed[rss2_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['rss2_image'])? $FeedSettings['rss2_image']:''); ?>" maxlength="250" />
 <a href="#" onclick="javascript: window.open( document.getElementById('rss2_image').value ); return false;"><?php echo __('preview', 'powerpress'); ?></a>
 
 <p><?php echo __('Place the URL to the RSS image above.', 'powerpress'); ?> <?php echo __('Example', 'powerpress'); ?> http://mysite.com/images/rss.jpg</p>

@@ -42,6 +42,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		public $plugin_options;				// Plug-in options
 
 		protected $post_type = 'post';		// post or page
+		protected $faq_url;					// URL of the FAQ page
 
 		/**
 		 * Initialize the class and set its properties.
@@ -54,6 +55,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 
 			$this->plugin_name = $plugin_name;
 			$this->version = $version;
+			$this->faq_url = 'https://wordpress.org/plugins/fg-joomla-to-wordpress/faq/';
 
 		}
 
@@ -308,7 +310,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				'content'	=> '',
 				'callback' => array($this, 'help_options'),
 			));
-			$screen->set_help_sidebar(__('<a href="http://wordpress.org/plugins/fg-joomla-to-wordpress/faq/" target="_blank">FAQ</a>'), 'fg-joomla-to-wordpress');
+			$screen->set_help_sidebar('<a href="' . $this->faq_url . '" target="_blank">' . __('FAQ', 'fg-joomla-to-wordpress') . '</a>');
 		}
 
 		/**
@@ -347,7 +349,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 					$joomla_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Display SQL errors
 				}
 			} catch ( PDOException $e ) {
-				$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fg-joomla-to-wordpress') . '<br />' . $e->getMessage());
+				$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fg-joomla-to-wordpress') . '<br />' . $e->getMessage() . '<br />' . sprintf(__('Please read the <a href="%s" target="_blank">FAQ for the solution</a>.', 'fg-joomla-to-wordpress'), $this->faq_url));
 				return false;
 			}
 			$this->plugin_options['version'] = $this->joomla_version();
@@ -566,7 +568,7 @@ SQL;
 					return true;
 
 				} catch ( PDOException $e ) {
-					$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fg-joomla-to-wordpress') . '<br />' . $e->getMessage());
+					$this->display_admin_error(__('Couldn\'t connect to the Joomla database. Please check your parameters. And be sure the WordPress server can access the Joomla database.', 'fg-joomla-to-wordpress') . '<br />' . $e->getMessage() . '<br />' . sprintf(__('Please read the <a href="%s" target="_blank">FAQ for the solution</a>.', 'fg-joomla-to-wordpress'), $this->faq_url));
 					return false;
 				}
 				$joomla_db = null;
@@ -922,15 +924,16 @@ SQL;
 		/**
 		 * Import posts
 		 *
+		 * @param bool $test_mode Test mode active: import only one post
 		 * @return array:
 		 * 		int posts_count: Number of posts imported
 		 * 		int media_count: Number of medias imported
 		 */
-		private function import_posts() {
+		private function import_posts($test_mode = false) {
 			$posts_count = 0;
 			$media_count = 0;
 			$imported_tags = array();
-			$step = 1000; // to limit the results
+			$step = $test_mode? 1 : 1000; // to limit the results
 
 			$tab_categories = $this->tab_categories(); // Get the categories list
 
@@ -1067,7 +1070,7 @@ SQL;
 						}
 					}
 				}
-			} while ( ($posts != null) && (count($posts) > 0) );
+			} while ( ($posts != null) && (count($posts) > 0) && !$test_mode);
 
 			// Hook for doing other actions after the import
 			do_action('fgj2wp_post_import_posts');
@@ -1485,8 +1488,8 @@ SQL;
 				// Replace media URLs with the new URLs
 				$content = $this->process_content_media_links($content, $post_media);
 
-				// Replace video links
-				$content = $this->process_video_links($content);
+				// Replace audio and video links
+				$content = $this->process_audio_video_links($content);
 
 				// For importing backslashes
 				$content = addslashes($content);
@@ -1660,14 +1663,17 @@ SQL;
 		}
 
 		/**
-		 * Modify the video links
+		 * Modify the audio and video links
 		 *
 		 * @param string $content Content
 		 * @return string Content
 		 */
-		private function process_video_links($content) {
+		private function process_audio_video_links($content) {
 			if ( strpos($content, '{"video"') !== false ) {
 				$content = preg_replace('/(<p>)?{"video":"(.*?)".*?}(<\/p>)?/', "$2", $content);
+			}
+			if ( strpos($content, '{audio}') !== false ) {
+				$content = preg_replace('#{audio}(.*?){/audio}#', "$1", $content);
 			}
 			return $content;
 		}
@@ -1706,33 +1712,21 @@ SQL;
 								list($link_without_anchor, $anchor_link) = $this->split_anchor_link($link); // Split the anchor link
 								// Is it an internal link ?
 								if ( $this->is_internal_link($link_without_anchor) ) {
-									$meta_key_value = $this->get_joomla_id_in_link($link_without_anchor);
-									$joomla_id = $meta_key_value['meta_value'];
-									// Can we find an ID in the link ?
-									if ( $joomla_id != 0 ) {
-										// Get the linked post
-										$linked_posts = get_posts(array(
-											'numberposts'	=> 1,
-											'post_type'		=> 'any',
-											'meta_key'		=> $meta_key_value['meta_key'],
-											'meta_value'	=> $joomla_id,
-										));
-										if ( count($linked_posts) > 0 ) {
-											$linked_post_id = $linked_posts[0]->ID;
-											$linked_post_id = apply_filters('fgj2wp_post_get_post_by_joomla_id', $linked_post_id, $post); // Used to get the ID of the translated post
-											$new_link = get_permalink($linked_post_id);
-											if ( !empty($anchor_link) ) {
-												$new_link .= '#' . $anchor_link;
-											}
-											$content = str_replace("href=\"$link\"", "href=\"$new_link\"", $content);
-											// Update the post
-											wp_update_post(array(
-												'ID'			=> $post->ID,
-												'post_content'	=> $content,
-											));
-											$links_count++;
+									$linked_post = $this->get_wp_post_from_joomla_url($link_without_anchor);
+									if ( $linked_post ) {
+										$linked_post_id = $linked_post->ID;
+										$linked_post_id = apply_filters('fgj2wp_post_get_post_by_joomla_id', $linked_post_id, $post); // Used to get the ID of the translated post
+										$new_link = get_permalink($linked_post_id);
+										if ( !empty($anchor_link) ) {
+											$new_link .= '#' . $anchor_link;
 										}
-										unset($linked_posts);
+										$content = str_replace("href=\"$link\"", "href=\"$new_link\"", $content);
+										// Update the post
+										wp_update_post(array(
+											'ID'			=> $post->ID,
+											'post_content'	=> $content,
+										));
+										$links_count++;
 									}
 								}
 							}
@@ -1758,6 +1752,35 @@ SQL;
 			$result = (preg_match("#^".$this->plugin_options['url']."#", $link) > 0) ||
 				(preg_match("#^http#", $link) == 0);
 			return $result;
+		}
+		
+		/**
+		 * Get a WordPress post that matches a Joomla URL
+		 * 
+		 * @param string $url URL
+		 * @return Post WordPress post | false
+		 */
+		private function get_wp_post_from_joomla_url($url) {
+			$post = false;
+			$meta_key_value = $this->get_joomla_id_in_link($url);
+			$joomla_id = $meta_key_value['meta_value'];
+			// Can we find an ID in the link ?
+			if ( $joomla_id != 0 ) {
+				// Get the linked post
+				$posts =  get_posts(array(
+					'numberposts'	=> 1,
+					'post_type'		=> 'any',
+					'meta_key'		=> $meta_key_value['meta_key'],
+					'meta_value'	=> $joomla_id,
+				));
+				if ( is_array($posts) && (count($posts) > 0) ) {
+					$post = $posts[0];
+				}
+			}
+			if ( !$post ) {
+				$post = apply_filters('fgj2wp_get_wp_post_from_joomla_url', $post, $url);
+			}
+			return $post;
 		}
 
 		/**

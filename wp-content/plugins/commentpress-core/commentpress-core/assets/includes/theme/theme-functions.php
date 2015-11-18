@@ -170,7 +170,7 @@ function commentpress_customize_register( $wp_customize ) {
 		$wp_customize->add_control( new WP_Customize_Site_Image_Control(
 			$wp_customize, 'cp_site_image', array(
 			'label' => apply_filters( 'commentpress_customizer_site_image_title', __( 'Site Image', 'commentpress-core' ) ),
-		    'description' => apply_filters( 'commentpress_customizer_site_image_description', __( 'Choose an image to represent your site', 'commentpress-core' ) ),
+		    'description' => apply_filters( 'commentpress_customizer_site_image_description', __( 'Choose an image to represent this site. Other plugins may use this image to illustrate this site - in multisite directory listings, for example.', 'commentpress-core' ) ),
 			'section' => 'cp_site_image',
 			'settings' => 'commentpress_theme_settings[cp_site_image]',
 			'priority'	=>	1
@@ -195,6 +195,7 @@ function commentpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control( new WP_Customize_Image_Control(
 		$wp_customize, 'cp_inline_header_image', array(
 		'label' => __( 'Logo Image', 'commentpress-core' ),
+	    'description' => apply_filters( 'commentpress_customizer_site_logo_description', __( 'You may prefer to display an image instead of text in the header of your site. The image must be a maximum of 70px tall. If it is less tall, then you can adjust the vertical alignment using the "Top padding in px" setting below.', 'commentpress-core' ) ),
 		'section' => 'cp_inline_header_image',
 		'settings' => 'commentpress_theme_settings[cp_inline_header_image]',
 		'priority'	=>	1
@@ -640,6 +641,9 @@ function commentpress_get_body_classes( $raw = false ) {
 	// construct attribute
 	$_body_classes = $sidebar_class . $commentable . $layout_class . $page_type . $groupblog_type . $blog_type . $tinymce_version;
 
+	// allow filtering
+	$_body_classes = apply_filters( 'commentpress_body_classes', $_body_classes );
+
 	// if we want them wrapped, do so
 	if ( ! $raw ) {
 
@@ -653,6 +657,63 @@ function commentpress_get_body_classes( $raw = false ) {
 
 }
 endif; // commentpress_get_body_classes
+
+
+
+if ( ! function_exists( 'commentpress_document_title_parts' ) ):
+/**
+ * Add the root network name when the sub-blog is a group blog
+ *
+ * @param array $parts The existing title parts
+ * @return array $parts The modified title parts
+ */
+function commentpress_document_title_parts( $parts ) {
+
+	global $commentpress_core;
+
+	// if we have the plugin enabled...
+	if ( is_object( $commentpress_core ) ) {
+
+		// if it's a groupblog
+		if ( $commentpress_core->is_groupblog() ) {
+			if ( ! isset( $parts['site'] ) ) {
+				$parts['title'] .= commentpress_site_title( '|', false );
+				unset( $parts['tagline'] );
+			} else {
+				$parts['site'] .= commentpress_site_title( '|', false );
+			}
+		}
+
+	}
+
+	// return filtered array
+	return apply_filters( 'commentpress_document_title_parts', $parts );
+
+}
+endif; // commentpress_document_title_parts
+
+// add a filter for the above
+add_filter( 'document_title_parts', 'commentpress_document_title_parts' );
+
+
+
+if ( ! function_exists( 'commentpress_document_title_separator' ) ):
+/**
+ * Use the separator that CommentPress has always used.
+ *
+ * @param string $sep The existing separator
+ * @return string $sep The modified separator
+ */
+function commentpress_document_title_separator( $sep ) {
+
+	// --<
+	return '|';
+
+}
+endif; // commentpress_document_title_separator
+
+// add a filter for the above
+add_filter( 'document_title_separator', 'commentpress_document_title_separator' );
 
 
 
@@ -672,7 +733,7 @@ function commentpress_site_title( $sep = '', $echo = true ) {
 		// if we're on a sub-blog
 		if ( ! is_main_site() ) {
 
-			global $current_site;
+			$current_site = get_current_site();
 
 			// print?
 			if( $echo ) {

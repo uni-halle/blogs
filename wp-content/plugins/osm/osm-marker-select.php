@@ -1,4 +1,3 @@
-<option value="none"><?php _e('none','OSM-plugin') ?></option>
 <option value="mic_black_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
 <option value="mic_red_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('red','OSM-plugin') ?></option>
 <option value="mic_green_pinother_02.png"><?php _e('Pin #3','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>

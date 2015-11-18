@@ -3,7 +3,7 @@
 	Plugin Name: Instagram for Wordpress
 	Plugin URI: http://wordpress.org/extend/plugins/instagram-for-wordpress/
 	Description: Comprehensive Instagram sidebar widget with many options.
-	Version: 2.1.4
+	Version: 2.1.6
 	Author: jbenders
 	Author URI: http://ink361.com/
 */
@@ -288,6 +288,8 @@ class WPInstagram_Widget extends WP_Widget {
 						$this->_display_feed($details);
 					} else if ($details->settings['display'] === 'popular') {
 						$this->_display_popular($details);					
+					} else if ($details->settings['display'] === 'celebs') {
+						$this->_display_user($details->settings['celebPick'], $details);
 					} else if ($details->settings['display'] === 'user') {
 						$this->_display_user($details->settings['user'], $details);
 					} else if ($details->settings['display'] === 'tags') {
@@ -372,6 +374,7 @@ class WPInstagram_Widget extends WP_Widget {
 				"tag2"			=> stripslashes($_POST['tag2']),
 				"tag3"			=> stripslashes($_POST['tag3']),
 				"tag4"			=> stripslashes($_POST['tag4']),
+				"celebPick"		=> stripslashes($_POST['celebPick']),
 				"tagCompare"	=> stripslashes($_POST['tagCompare']),
 				"width"			=> stripslashes($_POST['width']),
 				"height"		=> stripslashes($_POST['height']),
@@ -1101,6 +1104,11 @@ class WPInstagram_Widget extends WP_Widget {
 			$settings['tag4']	= '';
 		}
 		
+		
+		if (!array_key_exists("celebPick", $settings)) {
+			$settings['celebPick'] = '';
+		}
+
 		if (!array_key_exists("tagCompare", $settings)) {
 			$settings['tagCompare'] = 'cumulative';
 		}

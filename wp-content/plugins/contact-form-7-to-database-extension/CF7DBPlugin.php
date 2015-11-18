@@ -1008,7 +1008,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
                 <input name="form_name" type="hidden" value="<?php echo htmlspecialchars($form) ?>"/>
                 <input name="<?php echo htmlspecialchars($submitTime) ?>" type="hidden" value="row"/>
                 <?php wp_nonce_field(); ?>
-                <button id="delete" name="delete" onclick="this.form.submit();"><?php echo htmlspecialchars(__('Delete', 'contact-form-7-to-database-extension')); ?></button>
+                <button id="delete" name="cfdbdel" onclick="this.form.submit();"><?php echo htmlspecialchars(__('Delete', 'contact-form-7-to-database-extension')); ?></button>
             </form>
             <?php
             $exp->export($form, array('submit_time' => $submitTime));

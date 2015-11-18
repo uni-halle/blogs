@@ -2,7 +2,7 @@
 Contributors: bravenewcode, duanestorey, dalemugford, mkuplens
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 3.9
-Stable tag: 3.8.8
+Stable tag: 3.8.9
 Tested up to: 4.3.1
 License: GPLv2
 
@@ -16,7 +16,7 @@ The administration panel allows you to customize many aspects of its appearance,
 
 **Go Pro for support and enhanced themes & features**
 
-WPtouch Pro includes a variety of enhanced themes for blogs, businesses, and WooCommerce retailers; extensions that add rich advertising options, advanced web font controls, caching, and more; and of course, top-notch one-on-one support from our professional team.
+WPtouch Pro offers a variety of enhanced themes for blogs, businesses, and WooCommerce retailers; extensions that add rich advertising options, advanced web font controls, caching, and more; and of course, top-notch one-on-one support from our professional team.
 
 For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wptouch-front-readme&utm_medium=web&utm_source=wordpressdotorg "WPtouch.com").
 
@@ -37,6 +37,11 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 11. WPtouch admin - Menu Setup
 
 == Changelog ==
+
+= Version 3.8.9 (Nov 17, 2015) =
+
+* Fixed: Once selected, Custom Post Types could not all be deselected
+* Fixed: Private Posts were not being included in the featured slider if a user was logged in and able to view the post
 
 = Version 3.8.8 (Oct 2, 2015) =
 

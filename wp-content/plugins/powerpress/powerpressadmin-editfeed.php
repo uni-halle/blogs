@@ -259,6 +259,7 @@ function powerpress_admin_editfeed($type='', $type_value = '', $feed_slug = fals
   <ul class="powerpress_settings_tabs">
 		<li><a href="#feed_tab_feed"><span><?php echo htmlspecialchars(__('Feed Settings', 'powerpress')); ?></span></a></li>
 		<li><a href="#feed_tab_itunes"><span><?php echo htmlspecialchars(__('iTunes Settings', 'powerpress')); ?></span></a></li>
+		<li><a href="#feed_tab_googleplay"><span><?php echo htmlspecialchars(__('Google Play', 'powerpress')); ?></span></a></li>
 		<li><a href="#feed_tab_artwork"><span><?php echo htmlspecialchars(__('Artwork', 'powerpress')); ?></span></a></li>
 	<?php if( in_array($FeedAttribs['type'], array('category', 'ttid', 'post_type', 'channel') ) ) { ?>
 		<li><a href="#feed_tab_appearance"><span><?php echo htmlspecialchars(__('Media Appearance', 'powerpress')); ?></span></a></li>
@@ -273,6 +274,7 @@ function powerpress_admin_editfeed($type='', $type_value = '', $feed_slug = fals
 		<?php
 		powerpressadmin_edit_feed_settings($FeedSettings, $General, $FeedAttribs );
 		if( !empty($General['advanced_mode_2']) ) {
+			powerpressadmin_edit_funding($FeedSettings, $feed_slug);
 			powerpressadmin_edit_tv($FeedSettings, $feed_slug);
 		}
 		?>
@@ -283,6 +285,12 @@ function powerpress_admin_editfeed($type='', $type_value = '', $feed_slug = fals
 		if( $feed_slug != 'podcast' || $FeedAttribs['type'] == 'post_type' ) // Custom post type
 			powerpressadmin_edit_itunes_general($FeedSettings, $General, $FeedAttribs);
 		powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs);
+		?>
+	</div>
+	
+	<div id="feed_tab_googleplay" class="powerpress_tab">
+		<?php
+		powerpressadmin_edit_googleplay($FeedSettings, $General, $FeedAttribs);
 		?>
 	</div>
 	
@@ -847,7 +855,7 @@ function powerpress_default_premium_label(event)
 	</p>
 	
 	<div id="premium_label_custom" style="margin-left: 20px; display: <?php echo ($FeedSettings['premium_label']!=''?'block':'none'); ?>;">
-	<textarea name="Feed[premium_label]" id="premium_label" style="width: 80%; height: 65px; margin-bottom: 0; padding-bottom: 0;"><?php echo htmlspecialchars($FeedSettings['premium_label']); ?></textarea>
+	<textarea name="Feed[premium_label]" id="premium_label" style="width: 80%; height: 65px; margin-bottom: 0; padding-bottom: 0;"><?php echo esc_textarea($FeedSettings['premium_label']); ?></textarea>
 		<div style="width: 80%; font-size: 85%; text-align: right;">
 			<a href="#" onclick="powerpress_premium_label_append_signin_link();return false;"><?php echo __('Add sign in link to message', 'powerpress'); ?></a>
 		</div>
@@ -1008,7 +1016,7 @@ function powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs 
 <td>
 <p style="margin-top: 5px;"><?php echo __('Your summary may not contain HTML and cannot exceed 4,000 characters in length.', 'powerpress'); ?></p>
 
-<textarea name="Feed[itunes_summary]" rows="5" style="width:80%;" ><?php echo $FeedSettings['itunes_summary']; ?></textarea>
+<textarea name="Feed[itunes_summary]" rows="5" style="width:80%;" ><?php echo esc_textarea($FeedSettings['itunes_summary']); ?></textarea>
 </td>
 </tr>
 

@@ -1,0 +1,290 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Short description.
+msgid "Embed PDFs straight into your posts and pages, with intelligent resizing of width and height. No third-party services or iframes required."
+msgstr ""
+
+#. Screenshot description.
+msgid "Uploaded PDF is displayed within your page/post at the correct size to fit."
+msgstr ""
+
+#. Screenshot description.
+msgid "User hovers over document to see Next/Prev page butons."
+msgstr ""
+
+#. Found in description header.
+msgid "Usage"
+msgstr ""
+
+#. Found in description header.
+msgid "Mobile-friendly embedding using PDF Embedder Premium"
+msgstr ""
+
+#. Found in description header.
+msgid "Protect your PDFs with our secure premium version"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Upload PDFs and embed them straight into your site - just like adding images! PDFs will be automatically sized to their natural size and shape (or just fill the width available if they are too big). Optionally, you can specify a width and the correct height will be calculated automatically. The shape will be recalculated whenever the page is resized by the user."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The plugin has a unique method for embedding PDFs, using Javascript only, and <em>not</em> using iframes or third-party services. This gives a lot of flexibility over the appearance of your document."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The viewer currently has Next/Prev buttons to page through the document, and zoom buttons."
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"PDFs are embedded within your existing WordPress pages so we have full control over appearance, and all Javascript and other files are served by your own server\n"
+"(not by Google or any other third-party who may not be able to guarantee their own reliability).\n"
+"Even if other plugins use similar technology, they will insert the PDF itself into an 'iframe' which means they do not get the flexibility over sizing."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "There is no button for users to download the PDF in the free version of the plugin, but this is available in the Premium versions along with other extra features."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Once installed and Activated, click Add Media from any page or post, just like adding an image, but drag and drop a PDF file instead."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "When you insert into your post, it will appear in the editor as a 'shortcode' as follows:"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "[pdf-embedder url=\"https://mysite.com/wp-content/uploads/2015/01/Plan-Summary.pdf\"]"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "You can change the default appearance - e.g. width, and toolbar position/appearance through <strong>Settings -&gt; PDF Embedder</strong>."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "To override your site-wide defaults on an individual embed, see the <a href=\"http://wp-pdf.com/free-instructions/?utm_source=PDF%20Readme%20Instructions&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">Plugin Instructions</a> for information about sizing options plus other ways to customize the shortcodes."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The free version of the plugin should work on most mobile browsers, but it will be cumbersome for users with small screens - it is difficult to position the document entirely within the screen, and your users' fingers may catch the entire browser page when they're trying only to move about the document..."
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"Our <strong>PDF Embedder Premium</strong> plugin solves this problem with an intelligent 'full screen' mode. \n"
+"When the document is smaller than a certain width, the document displays only as a 'thumbnail' with a large 'View in Full Screen' button for the user to click when they want to study your document. \n"
+"This opens up the document so it has the full focus of the mobile browser, and the user can move about the document without hitting other parts of the web page by mistake. Click Exit to return to the regular web page."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "See our website <a href=\"http://wp-pdf.com/premium/?utm_source=PDF%20Readme%20Premium&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">wp-pdf.com</a> for more details and purchase options."
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"Our <strong>PDF Embedder Premium Secure</strong> plugin provides the same simple but elegant viewer as the premium version, with the added protection that it is difficult for users to \n"
+"download or print the original PDF document."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "This means that your PDF is unlikely to be shared outside your site where you have no control over who views, prints, or shares it."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "See our website <a href=\"http://wp-pdf.com/secure/?utm_source=PDF%20Readme%20Secure&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">wp-pdf.com</a> for more details and purchase options."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Go to your WordPress admin control panel's plugin page"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Search for 'PDF Embedder'"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click Install"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click Activate on the plugin"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Follow the instructions from step 4 above"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "Easiest way:"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "If you cannot install from the WordPress plugins directory for any reason, and need to install from ZIP file:"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Better explanation of some error messages (e.g. attempt to access PDF on a different domain).\n"
+"Forced white background by default - some Theme's CSS would override."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "'Download PDF' button added to options, but function is only available in Premium versions."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Redesigned toolbar buttons"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "New version of PDF.js, fixes some PDF rendering bugs."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Obtains PDF over same transport (https/http) as host page, regardless of that specified in the shortcode url parameter. This avoids conflicts and failure to display PDF if the two don't match."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Settings -&gt; PDF Embedder page so you can now set site-wide defaults for width, height, and toolbar location/appearance."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Added zoom feature. Toolbars can be fixed instead of appearing on hover."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Fixed 'scrollbars' in IE."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Fixed 'scrollbar' issues."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Displays page number on toolbar (\"Page 1/10\")."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Added 'Loading...' indicator."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Improved display of many PDFs (Added 'cmaps' to the distribution)."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Added compatibility.js to support some minor browsers, e.g. Safari which did not allow ranged downloads"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Minified Javascript code. Default width/height (now \"max\") expands to fill parent container width regardless of the natural size of the document. Use width=\"auto\" to obtain the old behavior."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Added usage instructions within the settings page."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "First version"
+msgstr ""
+
+#. Found in faq header.
+msgid "How can I obtain support for this product?"
+msgstr ""
+
+#. Found in faq header.
+msgid "How can I change the Size or customize the Toolbar?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I improve the viewing experience for mobile users?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I protect my PDFs so they are difficult for viewers to download directly?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I add a Download button to the toolbar?"
+msgstr ""
+
+#. Found in faq list item.
+msgid "If width='max' the width will take as much space as possible within its parent container (e.g. column within your page)."
+msgstr ""
+
+#. Found in faq list item.
+msgid "If width is a number (e.g. width='500') then it will display at that number of pixels wide."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "We have <a href=\"https://wp-pdf.com/free-instructions/\">instructions</a> and <a href=\"https://wp-pdf.com/troubleshooting/\">troubleshooting</a> pages explaining common setup queries and issues."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Please feel free to email <a href=\"mailto:contact@wp-pdf.com\">contact@wp-pdf.com</a> with any questions."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Always include your full shortcode, plus links to the relevant pages, and screenshots if they would be helpful too."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"We may occasionally be able to respond to support queries posted on the 'Support' forum here on the wordpress.org\n"
+"plugin page, but we recommend sending us an email instead if possible."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "See Settings -&gt; PDF Embedder in your WordPress admin to change site-wide defaults. You can also override individual embeds by modifying the shortcode."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Resizing works as follows:"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "<em>In all cases, if the parent container is narrower than the width calculated above, then the document width will be reduced to the size of the container.</em>"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "The height will be calculated so that the document fits naturally, given the width already calculated."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "The Next/Prev toolbar can appear at the top or bottom of the document (or both), and it can either appear only when the user hovers over the document or it can be fixed at all times."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "See the <a href=\"http://wp-pdf.com/free-instructions/?utm_source=PDF%20Readme%20FAQ&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">Plugin Instructions</a> for more details about sizing and toolbar options."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"Yes, our <strong>PDF Embedder Premium</strong> plugin has an intelligent 'full screen' mode. \n"
+"When the document is smaller than a certain width, the document displays only as a 'thumbnail' with a large 'View in Full Screen' button for the user to click when they want to study your document. \n"
+"This opens up the document so it has the full focus of the mobile browser, and the user can move about the document without hitting other parts of the web page by mistake. \n"
+"Click Exit to return to the regular web page."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "See our website <a href=\"http://wp-pdf.com/premium/?utm_source=PDF%20Readme%20FAQ%20Premium&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">wp-pdf.com</a> for more details and purchase options."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Not with the free or (regular) premium versions - it is relatively easy to find the link to download the file directly."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "A <strong>secure premium</strong> version is available that encrypts the PDF during transmission, so it is difficult for a casual user to save or print the file for use outside your site."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "See our website <a href=\"http://wp-pdf.com/secure/?utm_source=PDF%20Readme%20FAQ%20Secure&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">wp-pdf.com</a> for more details and purchase options."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "This is possible only in the Premium version."
+msgstr ""

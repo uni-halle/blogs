@@ -3,7 +3,7 @@ Contributors: jbenders
 Tags: widgets, photos, instagram
 Requires at least: 3.0
 Tested up to: 4.3.1
-Stable tag: 2.1.4
+Stable tag: 2.1.6
 
 A comprehensive sidebar widget that can show your latest photos, tagged
 photos, photos from a location, your favourite photos, your feed, other users photos. Can be shown
@@ -49,6 +49,14 @@ For information regarding the use of shortcodes please refer to
 http://wordpress.ink361.com/help/shortcode
 
 == Changelog ==
+
+= 2.1.6 = 
+* Added options for more grid entries
+* small textual improvement
+
+= 2.1.5=
+* Added celebrity accounts option
+
 = 2.1.4=
 * bug fix where slideshow wouldnt work 
 

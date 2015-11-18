@@ -20,6 +20,14 @@ function wptouch_preserve_theme_custom_post_types() {
 	$settings = foundation_get_settings();
 	$post_types_to_preserve = array();
 
+	global $wptouch_pro;
+	if ( $settings->enabled_custom_post_types != false && isset( $wptouch_pro->post[ 'object_wptouch__foundation__enabled_custom_post_types' ] ) && !isset( $wptouch_pro->post[ 'wptouch__foundation__enabled_custom_post_types' ] ) ) {
+		$settings->enabled_custom_post_types = false;
+		$settings->save();
+		update_option( 'wptouch_custom_post_types', false );
+		update_option( 'wptouch_custom_taxonomies', false );
+	}
+
 	if ( $settings->enable_custom_post_types ) {
 		$post_types_from_form = maybe_unserialize( stripslashes( $settings->enabled_custom_post_types ) );
 

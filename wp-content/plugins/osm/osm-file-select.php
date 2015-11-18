@@ -4,4 +4,3 @@
 <option value="gpx_green"><?php _e('GPX file','OSM-plugin');echo ' ';_e('green','OSM-plugin') ?></option>
 <option value="gpx_blue"><?php _e('GPX file','OSM-plugin');echo ' ';_e('blue','OSM-plugin') ?></option>
 <option value="gpx_black"><?php _e('GPX file','OSM-plugin');echo ' ';_e('black','OSM-plugin') ?></option>
-<option value="text"><?php _e('text file','OSM-plugin') ?></option>

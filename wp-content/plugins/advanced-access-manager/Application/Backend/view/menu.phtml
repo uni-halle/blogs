@@ -1,0 +1,57 @@
+<div class="aam-feature" id="admin_menu-content">
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="aam-info">
+                <?php echo AAM_Backend_Helper::preparePhrase(__('Backend Menu feature does not restrict direct access to the page but rather filters it from the menu. In order to completely restrict access to the desired page, un-check the capability that is assigned to the menu [(the capability is shown right next to the menu title)].', AAM_KEY), 'small'); ?>
+            </p>
+        </div>
+    </div>
+    <div class="panel-group" id="admin-menu" role="tablist" aria-multiselectable="true">
+        <?php
+        $object = AAM_Backend_View::getSubject()->getObject('menu');
+        foreach ($this->getMenu() as $i => $menu) {
+            ?>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="menu-<?php echo $i; ?>-heading">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#admin-menu" href="#menu-<?php echo $i; ?>" aria-controls="menu-<?php echo $i; ?>">
+                            <?php echo $menu['name']; ?> <small class="aam-menu-capability"><?php echo $menu['capability']; ?></small>
+                        </a>
+                        <?php echo ($object->has($menu['id']) ? '<i class="aam-panel-title-icon icon-eye-off text-danger"></i>' : ''); ?>
+                    </h4>
+                </div>
+
+                <div id="menu-<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="menu-<?php echo $i; ?>-heading">
+                    <div class="panel-body">
+                        <?php if (!empty($menu['submenu'])) { ?>
+                            <div class="row aam-bordered">
+                                <?php echo ($object->has($menu['id']) ? '<div class="aam-lock"></div>' : ''); ?>
+                                <?php foreach ($menu['submenu'] as $j => $submenu) { ?>
+                                    <div class="col-xs-12 col-md-6 aam-submenu-item">
+                                        <label for="menu-item-<?php echo $i . $j; ?>"><?php echo $submenu['name']; ?> <small class="aam-menu-capability"><?php echo $submenu['capability']; ?></small></label>
+                                        <input type="checkbox" class="aam-checkbox-danger" id="menu-item-<?php echo $i . $j; ?>" data-menu-id="<?php echo $submenu['id']; ?>"<?php echo ($object->has($submenu['id']) || $object->has($menu['id']) ? ' checked="checked"' : ''); ?> />
+                                        <label for="menu-item-<?php echo $i . $j; ?>"></label>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
+
+                        <div class="row<?php echo (!empty($menu['submenu']) ? ' aam-margin-top-xs' : ''); ?>">
+                            <div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3">
+                                <?php if ($object->has($menu['id'])) { ?>
+                                    <a href="#" class="btn btn-primary btn-sm btn-block aam-restrict-menu" data-menu-id="<?php echo $menu['id']; ?>" data-target="#menu-<?php echo $i; ?>">
+                                        <i class="icon-eye"></i> <?php echo __('Show Menu', AAM_KEY); ?>
+                                    </a>
+                                <?php } else { ?>
+                                    <a href="#" class="btn btn-danger btn-sm btn-block aam-restrict-menu" data-menu-id="<?php echo $menu['id']; ?>" data-target="#menu-<?php echo $i; ?>">
+                                        <i class="icon-eye-off"></i> <?php echo __('Hide Menu', AAM_KEY); ?>
+                                    </a>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>

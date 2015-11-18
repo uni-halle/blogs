@@ -260,6 +260,89 @@ function powerpress_admin_init()
 				}
 			}
 			
+			// New Google Play image
+			if( !empty($_POST['googleplay_image_checkbox']) )
+			{
+				$filename = str_replace(" ", "_", basename($_FILES['googleplay_image_file']['name']) );
+				$temp = $_FILES['googleplay_image_file']['tmp_name'];
+				
+				if( file_exists($upload_path . $filename ) )
+				{
+					$filenameParts = pathinfo($filename);
+					if( !empty($filenameParts['extension']) ) {
+						do {
+							$filename_no_ext = substr($filenameParts['basename'], 0, (strlen($filenameParts['extension'])+1) * -1 );
+							$filename = sprintf('%s-%03d.%s', $filename_no_ext, rand(0, 999), $filenameParts['extension'] );
+						} while( file_exists($upload_path . $filename ) );
+					}
+				}
+				
+				// Check the image...
+				if( file_exists($temp) )
+				{
+					$ImageData = @getimagesize($temp);
+					
+					$rgb = true; // We assume it is RGB
+					if( defined('POWERPRESS_IMAGICK') && POWERPRESS_IMAGICK )
+					{
+						if( $ImageData[2] == IMAGETYPE_PNG && extension_loaded('imagick') )
+						{
+							$image = new Imagick( $temp );
+							if( $image->getImageColorspace() != imagick::COLORSPACE_RGB )
+							{
+								$rgb = false;
+							}
+						}
+					}
+					
+					if( empty($ImageData['channels']) )
+						$ImageData['channels'] = 3; // Assume it's ok if we cannot detect it.
+				
+					if( $ImageData )
+					{
+						if( $rgb && ( $ImageData[2] == IMAGETYPE_JPEG || $ImageData[2] == IMAGETYPE_PNG ) && $ImageData[0] == $ImageData[1] && $ImageData[0] >= 1200  && $ImageData[0] <= 7000 && $ImageData['channels'] == 3 ) // Just check that it is an image, the correct image type and that the image is square
+						{
+							if( !move_uploaded_file($temp, $upload_path . $filename) )
+							{
+								powerpress_page_message_add_error( __('Error saving Google Play Music image', 'powerpress')  .':	' . htmlspecialchars($_FILES['googleplay_image_file']['name']) .' - '. __('An error occurred saving the Google Play Music image on the server.', 'powerprss'). ' '. sprintf(__('Local folder: %s; File name: %s', 'powerpress'), $upload_path, $filename) );
+							}
+							else
+							{
+								$Feed['googleplay_image'] = $upload_url . $filename;
+								if( $ImageData[0] < 1200 || $ImageData[1] < 1200 )
+								{
+									powerpress_page_message_add_error( __('Google Play Music image warning', 'powerpress')  .':	'. htmlspecialchars($_FILES['googleplay_image_file']['name']) . __(' is', 'powerpress') .' '. $ImageData[0] .' x '.$ImageData[0]   .' - '. __('Image must be square 1200 x 1200 pixels or larger to be eligible for featuring.', 'powerprss') );
+								}
+							}
+						}
+						else if( $ImageData['channels'] != 3 || $rgb == false )
+						{
+							powerpress_page_message_add_error( __('Invalid Google Play Music image', 'powerpress')  .':	' . htmlspecialchars($_FILES['googleplay_image_file']['name']) .' - '. __('Image must be in RGB color space (CMYK is not supported).', 'powerprss') );
+						}
+						else if( $ImageData[0] != $ImageData[1] )
+						{
+							powerpress_page_message_add_error( __('Invalid Google Play Music image', 'powerpress')  .':	' . htmlspecialchars($_FILES['googleplay_image_file']['name']) .' - '. __('Image must be square, 1200 x 1200 is the required minimum size to be eligible for featuring.', 'powerprss') );
+						}
+						else if( $ImageData[0] != $ImageData[1] || $ImageData[0] < 600 )
+						{
+							powerpress_page_message_add_error( __('Invalid Google Play Music image', 'powerpress')  .':	' . htmlspecialchars($_FILES['googleplay_image_file']['name']) .' - '. __('Image is too small, 1200 x 1200 is the required minimum size to be eligible for featuring.', 'powerprss') );
+						}
+						else if( $ImageData[0] != $ImageData[1] || $ImageData[0] > 7000 )
+						{
+							powerpress_page_message_add_error( __('Invalid Google Play Music image', 'powerpress')  .':	' . htmlspecialchars($_FILES['googleplay_image_file']['name']) .' - '. __('Image is too large, 7000 x 7000 is the maximum size allowed.', 'powerprss') );
+						}
+						else
+						{
+							powerpress_page_message_add_error( __('Invalid Google Play Music image', 'powerpress')  .':	' . htmlspecialchars($_FILES['googleplay_image_file']['name']) );
+						}
+					}
+					else
+					{
+						powerpress_page_message_add_error( __('Invalid Google Play Music image', 'powerpress')  .':	' . htmlspecialchars($_FILES['googleplay_image_file']['name']) );
+					}
+				}
+			}
+			
 			// New mp3 coverart image
 			if( !empty($_POST['coverart_image_checkbox']) )
 			{
@@ -461,12 +544,16 @@ function powerpress_admin_init()
 						$General['episode_box_subtitle'] = 0;
 					if( !isset($General['episode_box_summary'] ) )
 						$General['episode_box_summary'] = 0;
+					if( !isset($General['episode_box_gp_desc'] ) )
+						$General['episode_box_gp_desc'] = 0;
+					if( !isset($General['episode_box_gp_explicit'] ) )
+						$General['episode_box_gp_explicit'] = 0;
 					if( !isset($General['episode_box_author'] ) )
 						$General['episode_box_author'] = 0;	
 					if( !isset($General['episode_box_explicit'] ) )
 						$General['episode_box_explicit'] = 0;
 					if( !isset($General['episode_box_closed_captioned'] ) )
-						$General['episode_box_closed_captioned'] = 0;	
+						$General['episode_box_closed_captioned'] = 0;
 					if( !isset($General['episode_box_itunes_image'] ) )
 						$General['episode_box_itunes_image'] = 0;		
 						
@@ -477,6 +564,13 @@ function powerpress_admin_init()
 						$General['episode_box_feature_in_itunes'] = 0;	
 					else
 						$General['episode_box_order'] = 0;
+						
+					if( !isset($General['episode_box_block'] ) )
+						$General['episode_box_block'] = 0;
+					if( !isset($General['episode_box_gp_block'] ) )
+						$General['episode_box_gp_block'] = 0;
+					if( !isset($General['episode_box_gp_explicit'] ) )
+						$General['episode_box_gp_explicit'] = 0;
 						
 					if( !isset($General['allow_feed_comments'] ) )
 						$General['allow_feed_comments'] = 0;
@@ -668,6 +762,8 @@ function powerpress_admin_init()
 					$Feed['itunes_complete'] = false;
 				if( !isset($Feed['maximize_feed']) )
 					$Feed['maximize_feed'] = false;
+				if( !isset($Feed['donate_link']) )
+					$Feed['donate_link'] = false;
 				if( !isset($Feed['episode_itunes_image']) )
 					$Feed['episode_itunes_image'] = false;	
 					
@@ -695,6 +791,14 @@ function powerpress_admin_init()
 					
 					powerpress_save_settings($Feed, 'powerpress_feed'.($FeedSlug?'_'.$FeedSlug:'') );
 				}
+			}
+			
+			if( isset($_POST['PowerPressClammr']) )
+			{
+				if( empty($_POST['PowerPressClammr']) )
+					update_option('powerpress_clammr', 0);
+				else
+					update_option('powerpress_clammr', 1);
 			}
 			
 			if( isset($_POST['EpisodeBoxBGColor']) )
@@ -1308,16 +1412,26 @@ function powerpress_save_settings($SettingsNew=false, $field = 'powerpress_gener
 				unset($Settings['episode_box_subtitle']);
 			if( isset($Settings['episode_box_summary'] ) && $Settings['episode_box_summary'] == 0 )
 				unset($Settings['episode_box_summary']);
+			if( isset($Settings['episode_box_gp_desc'] ) && $Settings['episode_box_gp_desc'] == 0 )
+				unset($Settings['episode_box_gp_desc']);
+			if( isset($Settings['episode_box_gp_block'] ) && $Settings['episode_box_gp_block'] == 0 )
+				unset($Settings['episode_box_gp_block']);
+			if( isset($Settings['episode_box_gp_explicit'] ) && $Settings['episode_box_gp_explicit'] == 0 )
+				unset($Settings['episode_box_gp_explicit']);	
 			if( isset($Settings['episode_box_closed_captioned'] ) && $Settings['episode_box_closed_captioned'] == 0 )
 				unset($Settings['episode_box_closed_captioned']);	
 			if( isset($Settings['episode_box_author'] ) && $Settings['episode_box_author'] == 0 )
 				unset($Settings['episode_box_author']);
 			if( isset($Settings['episode_box_explicit'] ) && $Settings['episode_box_explicit'] == 0 )
 				unset($Settings['episode_box_explicit']);
+			if( isset($Settings['episode_box_block'] ) && $Settings['episode_box_block'] == 0 )
+				unset($Settings['episode_box_block']);
 			if( isset($Settings['episode_box_itunes_image'] ) && $Settings['episode_box_itunes_image'] == 0 )
 				unset($Settings['episode_box_itunes_image']);	
 			if( isset($Settings['episode_box_order'] ) && $Settings['episode_box_order'] == 0 )
 				unset($Settings['episode_box_order']);
+			if( isset($Settings['episode_box_gp_explicit'] ) && $Settings['episode_box_gp_explicit'] == 0 )
+				unset($Settings['episode_box_gp_explicit']);
 			if( isset($Settings['episode_box_feature_in_itunes'] ) && $Settings['episode_box_feature_in_itunes'] == 0 )
 				unset($Settings['episode_box_feature_in_itunes']);
 			if( isset($Settings['videojs_css_class']) && empty($Settings['videojs_css_class']) )
@@ -1343,6 +1457,12 @@ function powerpress_save_settings($SettingsNew=false, $field = 'powerpress_gener
 				unset($Settings['itunes_complete']);
 			if( isset($Settings['maximize_feed'] ) && $Settings['maximize_feed'] == 0 )
 				unset($Settings['maximize_feed']);
+			if( isset($Settings['donate_link'] ) && $Settings['donate_link'] == 0 )
+				unset($Settings['donate_link']);
+			if( empty($Settings['donate_url']) )
+				unset($Settings['donate_url']);
+			if( empty($Settings['donate_label']) )
+				unset($Settings['donate_label']);
 			if( isset($Settings['allow_feed_comments'] ) && $Settings['allow_feed_comments'] == 0 )
 				unset($Settings['allow_feed_comments']);	
 			if( empty($Settings['episode_itunes_image']) )
@@ -1791,6 +1911,9 @@ function powerpress_edit_post($post_ID, $post)
 				// iTunes Summary
 				if( isset($Powerpress['summary']) && trim($Powerpress['summary']) != '' ) 
 					$ToSerialize['summary'] = stripslashes($Powerpress['summary']);
+				// Google Play Description
+				if( isset($Powerpress['gp_desc']) && trim($Powerpress['gp_desc']) != '' ) 
+					$ToSerialize['gp_desc'] = stripslashes($Powerpress['gp_desc']);
 				// iTunes keywords (Deprecated by Apple)
 				if( isset($Powerpress['keywords']) && trim($Powerpress['keywords']) != '' ) 
 					$ToSerialize['keywords'] = stripslashes($Powerpress['keywords']);
@@ -1800,22 +1923,27 @@ function powerpress_edit_post($post_ID, $post)
 				// iTunes Explicit
 				if( isset($Powerpress['explicit']) && trim($Powerpress['explicit']) != '' ) 
 					$ToSerialize['explicit'] = $Powerpress['explicit'];
+				// Google Play Explicit
+				if( isset($Powerpress['gp_explicit']) && trim($Powerpress['gp_explicit']) == '1' )
+					$ToSerialize['gp_explicit'] = $Powerpress['gp_explicit'];
 				// iTunes CC
 				if( isset($Powerpress['cc']) && trim($Powerpress['cc']) != '' ) 
 					$ToSerialize['cc'] = $Powerpress['cc'];
 				// iTunes Episode image
 				if( isset($Powerpress['itunes_image']) && trim($Powerpress['itunes_image']) != '' ) 
 					$ToSerialize['itunes_image'] = $Powerpress['itunes_image'];
-					
 				// order
 				if( isset($Powerpress['order']) && trim($Powerpress['order']) != '' ) 
 					$ToSerialize['order'] = $Powerpress['order'];
 				// always
 				if( isset($Powerpress['always']) && trim($Powerpress['always']) != '' ) 
 					$ToSerialize['always'] = $Powerpress['always'];
-				// iTunes Block (FUTURE USE)
+				// iTunes Block
 				if( isset($Powerpress['block']) && $Powerpress['block'] == '1' ) 
 					$ToSerialize['block'] = 1;
+				// Google Play Block
+				if( isset($Powerpress['gp_block']) && $Powerpress['gp_block'] == '1' ) 
+					$ToSerialize['gp_block'] = 1;
 				// Player Embed
 				if( isset($Powerpress['embed']) && trim($Powerpress['embed']) != '' )
 					$ToSerialize['embed'] = stripslashes($Powerpress['embed']); // we have to strip slahes if they are present befure we serialize the data
@@ -2130,7 +2258,13 @@ jQuery(document).ready(function($) {
 		}
 		jQuery(this).closest("form").submit();
 	});
+	jQuery('.goto-artwork-tab').click( function(event) {
+		event.preventDefault();
+		// TODO:
+		
+	});
 });
+
 
 //-->
 </script>
@@ -4236,7 +4370,7 @@ function powerpressadmin_community_news($items=3)
 	echo ' &nbsp; ';
 	echo '<a href="http://www.powerpresspodcast.com/feed/podcast/"><img src="'.get_bloginfo('wpurl').'/wp-includes/images/rss.png" alt="'. __('Podcast', 'powerpress') .'" /> '. __('Podcast', 'powerpress') .'</a>';
 	echo ' &nbsp; ';
-	echo '<a href="https://itunes.apple.com/us/podcast/blubrry-powerpress-community/id430248099/"><img src="'.powerpress_get_root_url().'/images/itunes_modern.png" alt="'. __('iTunes', 'powerpress') .'" /> '. __('iTunes', 'powerpress') .'</a>';
+	echo '<a href="https://itunes.apple.com/us/podcast/blubrry-powerpress-community/id430248099/"><img src="'.powerpress_get_root_url().'images/itunes_modern.png" alt="'. __('iTunes', 'powerpress') .'" /> '. __('iTunes', 'powerpress') .'</a>';
 	//echo ' &nbsp; &nbsp; ';
 	
 	echo '</div>';
@@ -4278,6 +4412,41 @@ function powerpress_admin_plugin_action_links( $links, $file )
 	return $links;
 }
 add_filter( 'plugin_action_links', 'powerpress_admin_plugin_action_links', 10, 2 );
+
+			
+// At bottom of powerpressadmin.php
+function powerpresspartner_clammr_info($Settings=true)
+{
+	if( defined('POWERPRESS_DISABLE_PARTNERS') && POWERPRESS_DISABLE_PARTNERS == true )
+		return;
+	$ClammrPluginEnabled = false;
+	if( !empty($GLOBALS['ClammrPlayer']) )
+		$ClammrPluginEnabled = is_object($GLOBALS['ClammrPlayer']);
+?>
+<h3 style="position: relative;margin-left: 30px; margin-bottom: 5px;">
+<img src="<?php echo powerpress_get_root_url(); ?>images/clammr.png" style="width: 30px; height: 30px; position: absolute; top: 0; left: -34px;" />
+<?php echo __('Clammr Player PowerPress Add-on', 'powerpress'); ?>  <?php echo powerpressadmin_new(); ?></h3> 
+<p style="margin-left: 50px;">
+	<?php echo __('Blubrry has partnered with Clammr to enable a social-themed audio player for your site. As visitors listen to your podcast, they can tap the integrated Clammr Button to tag their favorite highlights and share them to Facebook and Twitter. The shared highligths contain links back to you full audio and site, driving additional audience and traffic to you.', 'powerpress'); ?>
+</p>
+<?php if( $Settings ) { if( $ClammrPluginEnabled == false ) {
+
+	$plugin_link = '<a href="'. esc_url( network_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . 'audio-player-by-clammr' .
+		'&TB_iframe=true&width=640&height=662' ) ) .'" class="thickbox" title="' .
+		esc_attr__('Install Plugin') . '">'. __('Install Clammr Audio Player add-on plugin', 'powerpress') . '</a>';
+?>
+<p style="margin-left: 50px;"><strong><?php echo $plugin_link; ?></strong></p><?php } else { 
+$PowerPressClammr = get_option('powerpress_clammr');
+?>
+<p style="margin-bottom: 20px; margin-left: 50px;">
+	<input type="hidden" name="PowerPressClammr" value="0" />
+	<input type="checkbox" name="PowerPressClammr" value="1" <?php if( !empty($PowerPressClammr) ) echo 'checked'; ?> /> 
+	<strong><?php echo __('Enable Clammr Audio Player with PowerPress', 'powerpress'); ?></strong>
+</p>
+<?php
+		}
+	}
+}
 
 require_once( POWERPRESS_ABSPATH .'/powerpressadmin-jquery.php');
 // Only include the dashboard when appropriate.

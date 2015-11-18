@@ -1,0 +1,1078 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Advanced Access Manager"
+msgstr ""
+
+#. Short description.
+msgid ""
+"The powerful and easy-to-use tool to improve security and manage access to your \n"
+"posts, pages and backend area."
+msgstr ""
+
+#. Screenshot description.
+msgid "Backend Menu interface"
+msgstr ""
+
+#. Screenshot description.
+msgid "Metaboxes &amp; Widgets interface"
+msgstr ""
+
+#. Screenshot description.
+msgid "Capabilities interface"
+msgstr ""
+
+#. Screenshot description.
+msgid "Posts &amp; Pages interface"
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"Advanced Access Manager main and the only objective is to control access to your \n"
+"posts, pages, custom post types, categories, comments, metaboxes, dashboard widgets, \n"
+"frontend widgets and admin menu. In order to perform this task successfully, \n"
+"AAM has a powerful interface to manage your roles, users, visitors and capabilities."
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"Check our <a href=\"http://vasyltech.com/advanced-access-manager\">website page</a> to find out more \n"
+"about the Advanced Access Manager."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Upload <code>advanced-access-manager</code> folder to the <code>/wp-content/plugins/</code> directory"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the plugin through the 'Plugins' menu in WordPress"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Localized Javascript labels"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added visual header for current editable subject (user/role)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended capability update check"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested against WP 3.8 version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with protected method for user and role subjects"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added notification when extension update is available"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated main localization file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Hide the backend post &amp; pages access options for visitor"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Posts &amp; Pages access manager"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Posts &amp; Pages pagination"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Menu &amp; Submenus filters"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Brand new and much more intuitive user interface"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fully responsive design"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Better, more reliable and faster core functionality"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Completely new extension handler"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added \"Manage Access\" action to the list of user"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added missing files from the previous commit."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Introduced AAM version 3 alpha"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Small fix in core"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved ConfigPress as stand-alone plugin. It is no longer a part of AAM"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Styled the AAM notification message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "AAM is changing the primary owner to VasylTech"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed contextual help menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added notification about AAM v3"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested and verified functionality on the latest WordPress release"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed AAM Plus Package. Happy hours are over."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bugs reported by (@TheThree)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved CSS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated the extension list pricing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated AAM Plugin Manager"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved ConfigPress security (thanks to Tom Adams from security.dxw.com)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ConfigPress new setting control_permalink"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with Default acces to posts/pages for AAM Plus Package"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with AAM Plugin Manager for lower PHP version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Simplified the Repository internal handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Development License Support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with AAM Control Manage HTML"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with __PHP_Incomplete_Class"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added AAM Plugin Manager Extension"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed Deprecated ConfigPress Object from the core"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ConfigPress Reference Page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Maintenance release"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved SSL handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ConfigPress property aam.native_role_id"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with countryCode in AAM Security Extension"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with subject managing check "
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with update hook"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with extension activation hook"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added AAM Security Feature. First iteration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with user inheritance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with user restore default settings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with installed extension detection"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved core extension handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved subject inheritance mechanism"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed deprecated ConfigPress Tutorial"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimized CSS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Regenerated translation pot file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with AAM Media Manager"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended AAM Media Manager Extension"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Adjusted control_area to AAM Media Manager"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with mb_* functions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Contextual Help Menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated My Feature extension"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with AAM Plus Package and Multisite"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Introduced Development License"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor internal adjustment for AAM Development Community"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refactored Post &amp; Pages Access List"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended ConfigPress with Post &amp; Pages Access List Options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refactored internal UI hander"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with Restore Default flag and AAM Plus Package"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added LIST Restriction for AAM Plus Package"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ADD Restriction for AAM Plus Package"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Filter list of editable roles based on current user level"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Gives ability for non-admin users manage AAM if admin granted access"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed Backup object. Replaces with Restore Default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Merged ajax handler with UI manager"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Implemented Clear All Settings feature (one step closer to Import/Export)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Error notification for Extension page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Multisite and AAM Plus Package ajax call"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Regenerated language file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with non-existing term"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Norwegian language Norwegian (by Christer Berg Johannesen)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Localize the default Roles"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Regenerated .pod file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added AAM Media Manager Extension"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added AAM Content Manager Extension"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Standardized Extension Modules"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with Media list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Persian translation by Ghaem Omidi"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Inherit Capabilities From Role drop-down on Add New Role Dialog"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Small Cosmetic CSS changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved Admin Menu access control"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended ConfigPress with aam.menu.undefined setting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with Frontend Widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated Polish Language File"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed very significant issue with Role deletion"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Unfiltered Capability checkbox"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with language encoding"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with Metaboxes tooltips"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the issue with Activity include"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with jQuery UI Tooltip Widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added AAM Warning Panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Event Log Feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved ConfigPress to separate Page (refactored internal handling)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Reverted back the SSL handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Post Delete feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Post's Restore Default Restrictions feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ConfigPress Extension turn on/off setting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Russian translation by (Maxim Kernozhitskiy http://aeromultimedia.com)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed Migration possibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refactored AAM Core Console model"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Increased the number of saved restriction for basic version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Simplified Undo feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed fatal error in caching mechanism"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended ConfigPress tutorial"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed error for AAM Plus Package for PHP earlier versions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved Admin over SSL check"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved Taxonomy Query handling mechanism"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with Admin Menu restrictions (thanks to MikeB2B)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Polish Translation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with Widgets restriction"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved internal User &amp; Role handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Implemented caching mechanism"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended Update mechanism (remove the AAM cache after update)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added New ConfigPress setting aam.caching (by default is FALSE)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved Metabox &amp; Widgets filtering mechanism"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added French Translation (by Moskito7)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added \"My Feature\" Tab"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Regenerated .pot file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New UI"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Robust and completely new core functionality"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Over 3 dozen of bug fixed and improvement during 3 alpha &amp; beta versions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved Update mechanism"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with empty event list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with direct attachment access"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Reverted back the default UI design"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Last release of 1.x AAM Branch"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "AAM 2.0 alpha 1 Announcement"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Event Manager"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ConfigPress parameter \"aam.encoding\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed user caching issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with encoding"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Clear output buffer to avoid from third party plugins issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Notification about new release 2.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Accordion Fix"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed reported issue #8894 to PHPSnapshot"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Media File access control"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended ConfigPress Tutorial"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed CSS issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with cache removal query"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Silenced Upgrade for release 1.7 and higher"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed Capabilities description"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added .POT file for multi-language support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Silenced issue in updateRestriction function"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Silenced the issue with phpQuery and taxonomy rendering"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed Zend Caching mechanism"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Silenced the issue with array_merge in API model"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the ConfigPress reference"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Created ConfigPress PDF Tutorial"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved SOAP wsdl to local directory"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the way AHM displays"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Encoding issue fixed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed AWM Group page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed .htaccess file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Super Admin losing capabilities"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Implemented native WordPress jQuery UI include to avoid version issues"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed JS issue with dialog destroy"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed Javascript issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with comment feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended ConfigPress"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New view"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated ConfigPress Reference Guide"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Implemented alternative way of Premium Upgrade"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New design"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug fixing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Maintenance work"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Multisite importing feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated jQuery UI lib to 1.8.20"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minimized JavaScript"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Implemented Web Service for AWM Group page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Implemented Web Service for Premium Version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with User Restrictions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Edit Permalink"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Upgrade Hook"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Reorganized Label Module (Preparing for Russian and Polish transactions)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed custom error handler"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Turn off error reporting by default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More advanced Post/Taxonomy access control"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Refresh feature for Post/Taxonomy Tree"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Custom Capability Edit Permalink"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Filtering Post's Quick Menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refactored JavaScript"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added more advanced possibility to manage comments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Change Capabilities view"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added additional checking for plugin's reliability"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Few GUI changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ConfigPress reference guide"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Introduced Extended version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with UI menu ordering"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with ConfigPress caching"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bugs in filtermetabox class"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with confirmation message in Multisite Setup"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Resolved issue with chmod"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with clearing config.ini during upgrade"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed 2 bugs reported by jimaek"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Silenced few warnings in Access Control Class"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Extended description to Manually Metabox Init feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added possibility to filter Frontend Widgets"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refactored the Option Page manager"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added About page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug for post__not_in"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Admin Panel filtering"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Restore Default button"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Social and Support links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Modified Error Handling feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Modified Config Press Handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with categories"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Addedd delete_capabilities parameter to Config Press"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Introduced error handling"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added internal .htaccess"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Introduced _Visitor User Role"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed few core bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Implemented caching system"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved API"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Performed code refactoring"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Access Config"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added User Managing feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bugs related to WP 3.3.x releases"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Emergency bug fixing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed cURL bug"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some bugs with checking algorithm"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Maintained the code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Multi-Site Support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Multi-Language Support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved checking algorithm"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved Super Admin functionality"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Optimized main class"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved Checking algorithm"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to change User Role's Label"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to Exclude Pages from Navigation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to spread Post/Category Restriction Options to all User Roles"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Sorted List of Capabilities Alphabetically"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Change some interface button to WordPress default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Deleted General Info metabox"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved check Access algorithm for compatibility with non standard links"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Split restriction on Front-end and Back-end"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Page Menu Filtering"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Admin Top Menu Filtering"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Import/Export Configuration functionality"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with propAttr jQuery IU incompatibility"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added filters for checkAccess and compareMenu results"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some notice messages reported by llucax"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to sort Admin Menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to filter Posts, Categories and Pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with comment editing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Implemented JavaScript error catching"
+msgstr ""

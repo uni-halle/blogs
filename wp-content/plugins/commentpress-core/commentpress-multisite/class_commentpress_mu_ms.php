@@ -118,14 +118,12 @@ class CommentpressMultisite {
 
 		// always add the admin page to the Settings menu
 		$page = add_submenu_page(
-
 			'settings.php',
 			__( 'CommentPress', 'commentpress-core' ),
 			__( 'CommentPress', 'commentpress-core' ),
 			'manage_options',
 			'cpmu_admin_page',
 			array( $this, '_network_admin_form' )
-
 		);
 
 		// add styles only on our admin page, see:
@@ -142,16 +140,6 @@ class CommentpressMultisite {
 	 * @return void
 	 */
 	public function add_admin_styles() {
-
-		/*
-		// EXAMPLES:
-
-		// add css
-		wp_enqueue_style('cpmu-admin-style', COMMENTPRESS_PLUGIN_URL . 'commentpress-multisite/assets/css/admin.css');
-
-		// add javascripts
-		wp_enqueue_script( 'cpmu-admin-js', COMMENTPRESS_PLUGIN_URL . 'commentpress-multisite/assets/js/admin.js' );
-		*/
 
 		// add admin css
 		wp_enqueue_style(
@@ -172,16 +160,6 @@ class CommentpressMultisite {
 	 * @return void
 	 */
 	public function add_frontend_styles() {
-
-		/*
-		// EXAMPLES:
-
-		// add javascripts
-		wp_enqueue_script(
-			'cpmu-admin-js',
-			COMMENTPRESS_PLUGIN_URL . 'commentpress-multisite/assets/js/admin.js'
-		);
-		*/
 
 		// add css for signup form
 		wp_enqueue_style(
@@ -513,9 +491,7 @@ class CommentpressMultisite {
 		echo '
 		<div class="wrap" id="cpmu_admin_wrapper">
 
-		<div class="icon32" id="icon-options-general"><br/></div>
-
-		<h2>' . __( 'CommentPress Network Settings', 'commentpress-core' ) . '</h2>
+		<h1>' . __( 'CommentPress Network Settings', 'commentpress-core' ) . '</h1>
 
 		<form method="post" action="' . htmlentities($url . '&updated=true') . '">
 
@@ -733,7 +709,6 @@ class CommentpressMultisite {
 
 		// get option
 		$disabled = $this->db->option_get( 'cpmu_disable_translation_workflow' ) == '1' ? false : true;
-		//_cpdie( array( $disabled ) );
 
 		// return whatever option is set
 		return $disabled;

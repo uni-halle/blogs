@@ -1,0 +1,1460 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Blubrry PowerPress Podcasting plugin"
+msgstr ""
+
+#. Short description.
+msgid "PowerPress brings the essential features for podcasting to WordPress including full iTunes and Google Play support, Web audio/video players and more."
+msgstr ""
+
+#. Screenshot description.
+msgid "PowerPress's Simple Mode will walk you through setting up your podcast in 3 easy steps."
+msgstr ""
+
+#. Screenshot description.
+msgid "Just like blogging, podcasting utilizes blog posting features with the addition of a podcast episode box. Yes, podcasting is that simple!"
+msgstr ""
+
+#. Screenshot description.
+msgid "PowerPress comes with a built-in subscribe sidebar widget to help your audience subscribe to your podcast."
+msgstr ""
+
+#. Screenshot description.
+msgid "PowerPress comes with an editable subscribe page builder with a subscribe embed tool to help your web visitors subscribe."
+msgstr ""
+
+#. Screenshot description.
+msgid "PowerPress's Advanced Mode settings let you dig in as deep as you want to with every possible setting for podcasting at your fingertips."
+msgstr ""
+
+#. Screenshot description.
+msgid "PowerPress incorporates the built-in WordPress media players into your blog posts and pages."
+msgstr ""
+
+#. Found in description header.
+msgid "Simple Mode"
+msgstr ""
+
+#. Found in description header.
+msgid "PowerPress Key Features"
+msgstr ""
+
+#. Found in description header.
+msgid "Become a PowerPress Patron!"
+msgstr ""
+
+#. Found in description header.
+msgid "Includes Full Google Play Music Support!"
+msgstr ""
+
+#. Found in description header.
+msgid "Includes Full iTunes Support!"
+msgstr ""
+
+#. Found in description header.
+msgid "Integrated Media Players"
+msgstr ""
+
+#. Found in description header.
+msgid "Integrates with Blubrry's Services"
+msgstr ""
+
+#. Found in description header.
+msgid "Subscribe Tools Baked In"
+msgstr ""
+
+#. Found in description header.
+msgid "Advanced Features for those who need more"
+msgstr ""
+
+#. Found in description header.
+msgid "Migrating from PodPress?"
+msgstr ""
+
+#. Found in description header.
+msgid "Need Help?"
+msgstr ""
+
+#. Found in description header.
+msgid "Need More Help?"
+msgstr ""
+
+#. Found in description list item.
+msgid "Full iTunes support: Adds iTunes compliant podcast feeds to your WordPress blog."
+msgstr ""
+
+#. Found in description list item.
+msgid "Integrated HTML5 Media Players: Audio/video Web players with embed support from sites such as YouTube."
+msgstr ""
+
+#. Found in description list item.
+msgid "Subscribe tools: Create subscribe page with our exclusive subscribe shortcode embed and subscribe sidebar widget optimized for responsive websites, high-resolution screens and Apple Retina displays."
+msgstr ""
+
+#. Found in description list item.
+msgid "Podcasting SEO: Improve discovery of your podcast on search engines such as Google, and with the iTunes podcast directory."
+msgstr ""
+
+#. Found in description list item.
+msgid "Media modifiers: Easily add, modify and remove podcasts from blog posts and pages."
+msgstr ""
+
+#. Found in description list item.
+msgid "Migration tools: Quickly migrate from PodPress, Blogger or Movable Type without losing episodes."
+msgstr ""
+
+#. Found in description list item.
+msgid "Multi-podcast support: Create separate podcasts by category (Category Podcasting) or by media format (Podcast Channels)."
+msgstr ""
+
+#. Found in description list item.
+msgid "Post type and taxonomy podcasting: Create podcasts from custom post types and taxonomies."
+msgstr ""
+
+#. Found in description list item.
+msgid "*Media Statistics: Get FREE Blubrry Media Statistics from your WordPress dashboard."
+msgstr ""
+
+#. Found in description list item.
+msgid "Languages supported: English, Danish, French, Simplified Chinese, Italian, Romanian, Russian, Brazilian Portuguese (<a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/translating-powerpress/\">Want to translate PowerPress?</a>)"
+msgstr ""
+
+#. Found in description list item.
+msgid "iTunes compliant podcast feeds: The appropriate tags are added to your feeds so your iTunes listing looks great."
+msgstr ""
+
+#. Found in description list item.
+msgid "Optimized iTunes summary: Converts your blog-post content to a format suited for viewing in iTunes (<a href=\"http://create.blubrry.com/resources/powerpress/powerpress-settings/itunes/\">learn more</a>)."
+msgstr ""
+
+#. Found in description list item.
+msgid "Tunes artwork: Upload and manage your iTunes artwork directly from within PowerPress settings."
+msgstr ""
+
+#. Found in description list item.
+msgid "iTunes podcasting: Fully supported, including the latest <a href=\"http://www.powerpresspodcast.com/2012/05/10/itunes-podcasting-specifications-changed-may-2012-what-that-means-for-podcasting/\">Apple iTunes podcasting specifications</a>."
+msgstr ""
+
+#. Found in description list item.
+msgid "Feed Episode Maximizer: Increase the number of episodes viewed on iTunes while decreasing the byte size of your feeds."
+msgstr ""
+
+#. Found in description list item.
+msgid "Audio players: Pick from MediaElement.js, native HTML5 audio or 1 Pixel Out Player."
+msgstr ""
+
+#. Found in description list item.
+msgid "Video players: Pick from MediaElement.js, native HTML5 video or VideoJS."
+msgstr ""
+
+#. Found in description list item.
+msgid "Post positioning: Position player above or below your content."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/shortcode/\">Player shortcode</a>: Place the player exactly where you want by adding the <code>[powerpress]</code> shortcode directly into your post content."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-playlist-shortcode/\">Playlist player shortcode</a>: Include a playlist of your latest podcast episodes utilizing the <code>[powerpress_playlist]</code> shortcode in any page or post."
+msgstr ""
+
+#. Found in description list item.
+msgid "Embeds: Add embeds from sites such as YouTube."
+msgstr ""
+
+#. Found in description list item.
+msgid "Links: Provide download, play in new window and embed links."
+msgstr ""
+
+#. Found in description list item.
+msgid "Audio formats supported: mp3, m4a, oga (ogg audio), opus."
+msgstr ""
+
+#. Found in description list item.
+msgid "Video formats supported: m4v, mp4, webm, ogv (ogg video)."
+msgstr ""
+
+#. Found in description list item.
+msgid "Quickly access your Blubrry media download statistics from your WordPress dashboard."
+msgstr ""
+
+#. Found in description list item.
+msgid "Publish Blubrry hosted media directly from your blog."
+msgstr ""
+
+#. Found in description list item.
+msgid "View Blubrry hosting usage quota from your blog."
+msgstr ""
+
+#. Found in description list item.
+msgid "Configure how Blubrry writes media (ID3) tags within PowerPress settings."
+msgstr ""
+
+#. Found in description list item.
+msgid "Migrate all of your media to your Blubrry <a href=\"http://create.blubrry.com/resources/podcast-media-hosting/\">Podcast Media Hosting</a> account with just a couple clicks."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/subscribe-page/\">Subscribe page</a>: Instantly create a subscribe page with simplified instructions on how to subscribe to your podcast using the PowerPress subscribe page shortcode."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-subscribe-shortcode/\">Subscribe page shortcode</a>: Add the <code>[powerpress_subscribe]</code> shortcode to include a mobile-device optimized subscribe embed in any post or page that includes buttons to subscribe on iTunes, by RSS, BeyondPod for Android, Podcast Republic for Android and an automatically highlighted textbox to easily copy and paste your podcast feed into any subscription application."
+msgstr ""
+
+#. Found in description list item.
+msgid "Subscribe sidebar widget: Mobile device optimized sidebar buttons to subscribe on iTunes, by RSS and a \"more subscribe options\" button linked to your podcast's subscribe page."
+msgstr ""
+
+#. Found in description list item.
+msgid "Subscribe links: Subscribe on iTunes, by RSS and a link to your custom subscribe page below every player."
+msgstr ""
+
+#. Found in description list item.
+msgid "Retina enabled: Subscribe button images optimized for high resolution displays including Apple Retina displays."
+msgstr ""
+
+#. Found in description list item.
+msgid "Responsive: Subscribe tools are designed for any screen and optimized for touch screens by providing custom buttons that are at minimum 48 pixels in height."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/podcasting-seo-settings/\">Podcasting SEO settings</a>: Utilize the iTunes features that improve the discovery of your podcasts and include the necessary meta data in your blog pages for search engines to discover."
+msgstr ""
+
+#. Found in description list item.
+msgid "Embeds: Provide embeds your audience can take with them (just like YouTube embeds)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Media size and duration detection: Enter your media URL and let the PowerPress do the rest."
+msgstr ""
+
+#. Found in description list item.
+msgid "Category Casting: Add podcast support to your WordPress category feeds."
+msgstr ""
+
+#. Found in description list item.
+msgid "Custom Podcast Channels: Distribute multiple formats (audio/video) and versions (short/full length)."
+msgstr ""
+
+#. Found in description list item.
+msgid "*Taxonomy Podcasting: Create podcasts for your custom taxonomy tag names including WordPress Tags. (feature sponsored by <a href=\"http://afterbuzztv.com/\">AfterBuzzTV.com</a>)"
+msgstr ""
+
+#. Found in description list item.
+msgid "*Post Type Podcasting: Create podcasts for your custom post types."
+msgstr ""
+
+#. Found in description list item.
+msgid "FeedBurner Support: Use FeedBurner.com to host your podcast feeds (<a href=\"http://create.blubrry.com/manual/syndicating-your-podcast-rss-feeds/feedburner-for-podcasting/\">we do not recommend FeedBurner for podcasting</a>)."
+msgstr ""
+
+#. Found in description list item.
+msgid "**User Role Management: Control which users in your blog can podcast."
+msgstr ""
+
+#. Found in description list item.
+msgid "Diagnostics: Check to see if your server is configured to support all of the available features in PowerPress."
+msgstr ""
+
+#. Found in description list item.
+msgid "WordPress MultiSite: Blubrry PowerPress is compatible with WordPress MultiSite and can be extended using the <a href=\"https://wordpress.org/plugins/powerpress-multisite/\">Blubrry PowerPress MultiSite add-on plugin</a>."
+msgstr ""
+
+#. Found in description list item.
+msgid "***Supported syndication formats: mp3, m4a, mp4, m4v, webm, ogg, oga, ogv, wma, ra, mp4a, m4v, mp4v, mpg, asf, avi, wmv, flv, swf, mov, divx, 3gp, midi, wav, aa, pdf, torrent, m4b, m4r, epub."
+msgstr ""
+
+#. Found in description list item.
+msgid "Visit the Blubrry <a href=\"http://forum.blubrry.com/\">Community Forum</a> and <a href=\"http://create.blubrry.com/resources/\">Blubrry Resources</a> "
+msgstr ""
+
+#. Found in description list item.
+msgid "Use the Blubrry <a href=\"http://www.blubrry.com/contact.php\">Contact Us</a> form"
+msgstr ""
+
+#. Found in description list item.
+msgid "Blubrry <a href=\"http://create.blubrry.com/resources/powerpress/\">PowerPress Documentation</a>"
+msgstr ""
+
+#. Found in description list item.
+msgid "Check out <a href=\"http://create.blubrry.com/manual/\">The Podcasting Manual</a> - everything you need to know about podcasting"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Blubrry PowerPress brings the essential features for podcasting to WordPress. Developed by podcasters for podcasters, PowerPress offers full iTunes and Google Play support, Web audio/video media players, exclusive subscribe tools, podcasting SEO features and more."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "PowerPress's Simple Mode will walk you through setting up your podcast in 3 easy steps. Overwhelmed at any time, simply switch to Simple Mode to configure only the essential features to podcast."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "*The Blubrry basic statistics service is FREE. Our <a href=\"https://secure.blubrry.com/podcast-statistics-premium/\">Premium Statistics Service</a>, which includes <a href=\"http://create.blubrry.com/resources/podcast-media-download-statistics/rawvoice-certified/\">RawVoice Certified Statistics</a>, U.S. downloads, trending and exporting, is available for $5 month."
+msgstr ""
+
+#. Found in description paragraph, changelog paragraph.
+msgid "Help support your favorite podcasting plugin via Patreon. <a href=\"https://www.patreon.com/blubrry?ty=h\">Visit Blubrry's Patreon page</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Blubrry PowerPress 6.1+ fully supports Google Play Music podcast directory. Upgrade to PowerPress 6.1 then submit your podcast to <a href=\"http://g.co/podcastportal\">Google Play Music</a>."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Blubrry PowerPress fully supports iTunes, which set the standard and is required for podcasting. PowerPress comes with the following iTunes specific features:"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Blubrry PowerPress includes extensive Web player options to display your podcast audio and video in your Web pages."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Make your life easier by adding our FREE or paid media hosting and statistics services to streamline your podcast productivity."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "The Blubrry basic statistics service is FREE. Our <a href=\"https://secure.blubrry.com/podcast-statistics-premium/\">Premium Statistics Service</a>, which includes <a href=\"http://create.blubrry.com/resources/podcast-media-download-statistics/rawvoice-certified/\">RawVoice Certified Statistics</a>, U.S. downloads, trending and exporting, is available for $5 month. Blubrry <a href=\"https://secure.blubrry.com/podcast-publishing-premium-with-hosting/\">Media Hosting</a> packages start at $12."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "A Blubrry PowerPress exclusive, podcasting subscribe tools help you convert Web visitors into podcast subscribers."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Want more? We've got more! Check out some of the advanced features:"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "*Custom Post Types and Taxonomies features require a separate plugin to manage."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "**User Role Management requires a separate plugin to manage WordPress Roles and Capabilities."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "***Apple iTunes only supports mp3, m4a, mp4, m4v, pdf and epub."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Switching to PowerPress is seamless. Simply enable PowerPress then disable PodPress and you're done! Visit <a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/migrating-from-podpress-to-powerpress/\">Migrating from PodPress to PowerPress</a> for details."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "PowerPress will continue where plugin your old plugin left off by including your previously created episodes in your feeds and Web pages."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Note: Advanced settings such as settings for podcast categories will need to be recreated in PowerPress."
+msgstr ""
+
+#. Found in description paragraph.
+msgid ". . . or have some ideas that could improve the plugin?"
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"We now offer one-on-one consulting via GoToMeeting, Skype or phone.\n"
+"<a href=\"http://create.blubrry.com/support/podcast-consulting-services/\">Learn more about Blubrry Consulting Services</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<em>PowerPress is developed and maintained by <a href=\"http://www.blubrry.com\">Blubrry</a>, a podcasting company and community providing tools and resources for podcasters to measure, monetize, publish and host podcasts. Although we'd like you to become a member of <a href=\"http://www.blubrry.com/createaccount.php\">Blubrry</a>, <strong>no membership is required</strong> to use this free open source podcasting plugin.</em>"
+msgstr ""
+
+#. Found in installation header.
+msgid "Point and Click Installation"
+msgstr ""
+
+#. Found in installation header.
+msgid "Manual Installation"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Sign into your blog, go to the plugins section and click 'Add New'."
+msgstr ""
+
+#. Found in installation list item.
+msgid "In the search box enter \"PowerPress\", then click 'Search'. "
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click the 'Install Now' link and proceed to install the plugin."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Once installed, click 'Activate'."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Configure your Blubrry PowerPress by going to the <strong>Settings</strong> &gt; <strong>Blubrry PowerPress</strong> page."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Download <a href=\"http://wordpress.org/plugins/powerpress/\">PowerPress from WordPress.org</a>."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Extract the downloaded zip file to a temporary folder."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Copy the entire powerpress folder from the downloaded zip file into the /wp-content/plugins/ folder on your server."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the \"Blubrry PowerPress\" plugin in your blog's Plugin Management page."
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "To install Blubrry PowerPress manually, follow these steps:"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "PowerPress 7.0 delayed due to Google Play Music update. We are now scheduling PowerPress 7.0 release by Christmas."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "We are looking for beta testers! If you would like to beta test future versions of PowerPress, please <a href=\"http://www.blubrry.com/contact.php\">contact us</a> with your name and email."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 11/16/2015"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Clammr Audio Player option added to PowerPress."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic to call the do_shortcode fucntion when themes override the audio shortcode."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug in the media redirect url function when switching between sites for a MultiSite. (Thanks Avi for the patch!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "HTML output will only append a \"\\n\" when in debug mode. This will prevent situation where some plugins convert new lines into <code>&lt;br&gt;</code> tags. (Thanks Avi for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new define option <code>POWERPRESS_DO_SHORTCODE</code>, when set in your wp-config.php the <code>do_shortcode</code> is used rather than calling the <code>wp_audio_shortcode</code> function."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved the wp_enqueue_style for subscribe widget within the shortcode. Shortcode can now be used outside of <code>the_content</code>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 10/30/2015"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Google Play Music podcast directory support."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Donate Link option under Feed settings tab."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the enqueuing of mediaelement.js scripts and styles for the player and links in theme pages. PowerPress's player.min.js will only be included on pages with the player or player links. (Thanks wadehammes for bringing to our attention)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated iTunes subtitle and summary values to treat utf8mb4 data as utf8."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added better logic for checking for UTF8 values for iTunes attributes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the text domain setting in the powerpress.php file for <a href=\"http://translate.wordpress.org\">translate.wordpress.org</a> use."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhanced iTunes summary bug where some iTunes summaries were getting cut to 255 characters fixed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Code updated to support PHP7."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 9/8/2015"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the Play in New Window logic to support WordPress MultiSite <code>switch_to_blog()</code> function calls (Thanks Avi for the patch!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the pp_flashembed JavaScript function from the player.js include (we are no longer using flash for fallback)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minified version of player.min.js updated."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed possible XSS vulnerability with the settings tab control."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new <code>POWERPRESS_CURL</code> define option for wp-config.php. When set, PowerPress will use it's own cURL logic rather than use the <code>wp_remote_get()</code>/<code>wp_remote_post()</code> functions."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 8/27/2015"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new Subscribe by Email option to Subscribe Links feature. By default this new feature is not enabled. Go to \"PowerPress Settings\" &gt; \"Media Appearance\" to enable Subscribe by Email."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhanced iTunes Summary feature now maintains <a> links.</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added check for null values returned from <code>get_role</code> function."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "HTTPS URL warnings have been removed. The past year usage of podcast applications that do not support https is now negligible."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for https:// media URLs for Blubrry and RawVoice statistics services."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Verify media URL option now verifies SSL certificates and hostnames for https URLs."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Podcast subscribe link support to post type podcasting."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Links to Feed Validator have been temporarily removed, service does not correctly validate secure podcast feeds. We are working on an alternative."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved defines for customizing links within the <code>plugins_loaded</code> action after translations are loaded."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with linking blubrry account displayed HTML syntax for sign-in errors."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic to the Subscribe to Podcast sidebar widget to only display category, feed slug and post type settings when appropriate."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new define option <code>POWERPRESS_NO_THE_EXCERPT</code>, allows you to remove PowerPress's the_excerpt filter for special situations that warrant it. (Thanks Avi for the code)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed logic for the <code>powerpress_get_the_excerpt_rss</code> function. (Thanks Avi for the code)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added 'mov' file extensions to the list of migrate-able media files."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated migrate media logic to allow for resetting of migration."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved error reporting for blubrry.com API calls."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tweaked how Blubrry account linking is presented in plugin to make it easier."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 5/7/2015"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added define option <code>POWERPRESS_DEFAULT_MEDIA_URL</code> to enable the default media URL field."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed notice messages being printed when populating category podcasting settings (thanks slapdashcast for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "iTunes image requirements updated, 3000x3000 is now the maximum (previously 2048x2048) for iTunes artwork. 1400x1400 is still the recommended size."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added <a href=\"http://subscribeonandroid.com/\">Subscribe on Android</a>, the one-click subscribe protocol for Android. There are currently 6 Android apps that support Subscribe on Android one-click with more to follow in the coming weeks."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "PowerPress Playlist Player SQLi injection vulnerability fixed (Thanks Ben Bidner, Security Wrangler @ Automattic.com!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Subscribe tools now use the esc_attr, esc_url and esc_html native WordPress functions (rather than htmlspecialchars)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 3/21/2015"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where specific global podcast settings are not applied when podcast channel settings iTunes new feed URL or feed maximizer option were configured then deleted afterward. This only effected settings if you deleted the default podcast feed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added wp-config define option <code>POWERPRESS_DISABLE_ITUNES_UTF8</code>, when set to true PowerPress will not convert iTunes values to UTF-8. This is for the very small number of folks who are not using UTF-8 in their website."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "The subscribe shortcode embed attributes are now strictly enforced. If you enter a category or a podcast channel and it does not exist, the shortcode will be empty and will no longer fall-back to the main podcast settings."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "The subscribe shortcode embed specifying a category not displaying category fixed (thanks elembemedia for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Subscribe links below player for category podcasts now works but only if you select 1 category. 2 or more categories complicates things."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic to fix situation with JetPack and automatic excerpts. Manual excerpts or regular content pages are not affected. (Thanks grahamharper for the details!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new \"Having Issues?\" option \"Yes, excluding excerpts\", will apply player and links fix logic except when the_excerpt filter is called first."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "AudioObject and VideoObject descriptions are now set using the blog post if no itunes subtitle is set."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed Episode Titles bug, if you did not set a custom episode title the program title was not appended."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed \"Feature Episode\" bug, unchecking the option will now properly save."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed playlist player date attribute not applying when set to false (thanks trb310 for pointing out the issue!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Danish translation updated, thanks <a href=\"http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=280\">Team Blogos</a>!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new subscribe embed attribute \"heading\", you can now customize the \"Subscribe to\" label, e.g. add \"the\" to the Subscribe to label <code>[powerpress_subscribe heading=\"Subscribe to the\"</code>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new define <code>POWERPRESS_DEBUG</code> for PowerPress debugging."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Coming in PowerPress 6.1 we will allow podcasters who use category podcasting to set one of their category podcasts as the \"Default\". This podcast category will replace the default podcast feed. This will solve a number of complications Category podcasting has in regards to slug name collisions as well as in-page features like the subscribe links."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Coming in PowerPress 6.1 Podcasting SEO field options will be customizable."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 1/25/2015"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Duration detection option now works for sites running PHP 5.2 (If you can, please upgrade your PHP, but we understand that some situations warrant running outdated software)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tweaked CSS for subscribe sidebar widget font color to always be white."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the new 6.0 logic that prevents players from being added until after the wp_head is called, we now ignore when having theme issues option is selected to fix custom theme logic that may happen before wp_head."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added additional \"Having Theme Issues\" option, alternative logic to try to fix the situation where the player and/or links does not appear with some themes and plugins."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Even though PowerPress 6.0 requires WordPress 3.6+, code has been added to prevent error messages in the event plugin updated on older version of WordPress."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where malicious code could be injected into the edit existing category podcasting page. Thanks <a href=\"https://www.netsparker.com\">Netsparker</a> for reporting the issue."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Podcasting SEO settings where Episode Titles could not be disabled."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where Godaddy customers using PHP 5.4 were getting a blank screen for the PowerPress Settings page due to a bug in the stristr() function. Godaddy is aware of the problem and working on a fix. In the mean time we've replaced calls to stristr() with preg_match()."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Podcast Republic now uses the podcast feed URL for subscriptions (rather than the iTunes URL)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 12/19/2014"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "You must have WordPress 3.6 or newer and PHP 5.2 or newer for PowerPress 6.0."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW FEATURE: Playlist player, utilizes WordPress built-in playlist specifically for podcasting. <a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-playlist-shortcode/\">Learn more</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW FEATURE: Subscribe links, adds subscribe on iTunes and via RSS links below the player and links."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW FEATURE: Subscribe page template and <code>[powerpress_subscribe]</code> page shortcode added. Create a \"Subscribe to podcast\" page for your podcast."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW FEATURE: Subscribe to podcast widget, adds subscribe on iTunes and via RSS links to side bar, with optional link to subscribe to podcast page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW FEATURE: Podcasting SEO settings. Includes options to customize podcast feed titles, AudioObjects, VideoObjects, and highlight key iTunes fields."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW FEATURE: Migrate to Blubrry Podcast Hosting in 3 easy steps added."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "iTunes image requirements updated, 1400x1400 minimum size is now \"required\" and 2048x2048 is now the maximum size for iTunes artwork."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "iTunes category and subcategory selection updated for latest iTunes category selection rules."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhnaced iTunes Summary is back! The feature actually never left, but for the past few years links were not formatted in the iOS app. Now that they are, we now recommend the feature."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where Feed Maximizer option only worked when Podcast Channels was enabled (Thanks Daniel Lewis for bringing to our attention!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where player and links would not appear if Yoast's WordPress SEO plugin option \"Add Open Graph meta data\" was enabled."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "iTunes keywords feature has been removed, feature was deprecated last year by Apple. The iTunes keywords field will appear for previous episodes that used the feature."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for Opus audio with content type audio/ogg. (Thanks thebugcast for the heads up!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Files with 'ogg' file extension are now treated as audio/ogg, unless the following define is added to your wp-config.php: <code>define('POWERPRESS_OGG_VIDEO', true);</code> (Thanks thebugcast for pointing out the default!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated the Find and Replace episode URLs tool to use native WordPress MySQL query functions."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the logic for HEAD requests for HTTP authentication. Default WordPress behavior is to exit all HEAD requests. (Thanks thebugcast!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed all content types to either use the site default or use UTF8 (applies to play in new window and 401 Unauthorized HTML pages)."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new <code>powerpress_premium_content_authorized</code> filter for premium plugins to override the default behavior which uses roles and capabilities."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated the getid3 library to latest version, PowerPress now includes ogg duration detection support for \"Speex\" or \"vorbis\"."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "We are no longer detecting if the sample rate is optimal, we're no longer worried about Flash playback."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed Flow Player, Simple Flash, AudioPlay and Flash Mp3 Maxi players. These flash players are no longer supported."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New MediaElement.js Audio player max width setting added. Player will now display full width otherwise. Player is now responsive, the width will shrink or stretch for the screen."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved MediaElement.js Video player width and height settings. Player will now display full width, or as styled by the theme's CSS if width and height are blank. Player is now responsive, the width will shrink or stretch for the screen, the height can be set with a blank width to allow for the player to fit different screens."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "We are now warning users not to use Flash based players in the player selection screens."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to set stats redirect at the channel/post type level. Requires a define <code>CHANNEL_STATS_REDIRECT</code> and/or <code>POST_TYPE_STATS_REDIRECT</code> in the wp-config.php file."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FeedBurner feed URL when set will be used in the new subscribe page and subscribe sidebar widget (Thanks Daniel Lewis for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Playlist Player no longer includes the play time when it is zero. (Thanks Daniel Lewis for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Program Titles with double quotes in the general settings was not escaped correctly, it is now fixed.  (Thanks Robin for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Edit value fields now use the <code>esc_attr()</code> wordpress function rather than the <code>htmlspecialchars()</code> native PHP function."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added <code>powerpress_admin_capabilities</code> filter for premium capabilities. (Thanks Blair Williams for the suggestion)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Made subscribe sidebar and subscribe embed button icons Retina screen compatible"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Re-added the blubrry folder icon for blubrry podcast hosting customers."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tweaked wording and updated documentation for SEO settings (Thanks Daniel Lewis for the feedback!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tweaked updated documentation for the PowerPress Playlist (Thanks Daniel Lewis for asking questions, it helped us better document the features)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed subscribe links always displaying (thanks Thiago Miro for pointing out the bug)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed upload itunes image and poster image episode functions to use selected image size when \"Link URL\" is blank (Thanks Daniel Lewis for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a learn more link to the SEO page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added code for the new Subscribe embed so the subscribe embed CSS is only loaded when the shortcode is used in a page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the wp-video and wp-video-shortcode classes to the MEJS video player so latest CSS styling in WordPress is again applied 100% of the time to the MEJS player packaged in PowerPress."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Playlist player will now use the iTunes episode image if one is set for each episode. Program level image is used if no image is set."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Playlist player taxonomy podcasting now accepts the term_taxonomy_id, making it more efficient."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved the Shortcodes into their own section in Media Appearance settings, they are now included in Podcast Channels, Category Podcasting, Post Type podcasting and Taxonomy podcasting with the appropriate attributes set for convenience."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Brazilian Portuguese translation for v6.0+ by <a href=\"http://radiofobia.com.br/\">Leo Lopes from Radiofobia</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 12/16/2014"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update your copy of PowerPress to version 5.0.9 immediately"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Due to concerns of possible security exploits, the FlowPlayer flash based player has been removed from PowerPress as of version 5.0.10. PowerPress users are strongly encouraged to update their copy of PowerPress immediately."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FlowPlayer will be replaced with the default WordPress MediaElement.js player."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 7/28/2014"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed wo logic errors in the powerpress-player.php (Thanks Tom from the Hawaii Vacation Connection podcast for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for the <a href=\"http://create.blubrry.com/resources/powerpress/powerpress-language/\">PowerPress in your Language</a> add-on plugin. "
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed support for the <a href=\"http://create.blubrry.com/resources/powerpress/powerpress-language/\">PowerPress in your Language</a>, plugin was rejected by WordPress.org. We are doing our best to come up with another solution."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Screenshot files have been moved to the assets folder, they will no longer be packaged with the plugin's zip file."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed PHP warning in powerpressadmin.php on line 2405 (Thanks Robin for letting us know)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added notice for FeedBurner setting \"We recommend that you disabled SmartCast when using PowerPress with FeedBurner\",  otherwise FeedBuner will duplicate iTunes descriptions for episodes. (Thanks Daniel Lewis for suggestion)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added <a href=\"http://create.blubrry.com/resources/podcast-media-hosting/no-fault/\">No-Fault Hosting</a> support for all Blubrry Podcast Hosting customers. In addition, starting August 1st 2014, publishing quotas will be reset on the 1st of each month."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "PowerPress 6.0 beta will be available for testing the end of this week. If you are interested in beta testing, please <a href=\"http://www.blubrry.com/contact.php\">contact us</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 6/11/2014"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added better error reporting logic for services and statistics."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to get podcast meta data optionally from a value (rather than from database)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic to override the html content-type when a HTTP HEAD request is made for a feed URL"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed notice message on line 220 of powerpress.php (thanks brandonferens for letting us know about the notice message)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 4/3/3014"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug found with some versions of php with a parse error on line 1345 (Thanks joebotha for reporting)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic to deal with the WP Super Cache plugin adding HTML comments at the bottom of feeds. Setting to allow HTML comments with a note have been added to the Feed settings page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic to deal with the W3 Total Cache plugin adding HTML comments at the bottom of feeds. Uses same setting as above."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic for Verify feature to ignore PHP Warning messages caused by other plugins."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added minified versions of the player and mejs javascript files. (Thanks idleberg for the suggestion)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the riff module to getid3 library (thanks Kathy for reporting the riff error)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Blubrry media hosting screen, selecting already published media not returning to the post edit screen (Thanks Paul for making us aware of the bug)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed notice message found in powerpressadmin-defaults.php (thanks sbmorrissey for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for future MultiSite features."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested compatibility with WordPress 3.9."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 3/2/2014"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic for Blubrry Services to use alternative API servers to address random issues with session errors."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 1/30/2014"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with MEjs player not working for m4a files (Thanks JT for the code patch!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic to PowerPress edit iTunes Subscription URL settings, precaution to make sure the field is saved correctly."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Made a few CSS changes for WordPress 3.8+"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Noted in the HTML5 audio player option that Firefox 26.0+ now supports mp3 playback. We are aware that Firefox 21.0 supported mp3 playback but it was limited to particular Windows versions."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where player and links may not appear for custom post type podcasting episodes. (Thanks Seth and Segovia for discovering and helping me debug the problem!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where Blubrry hosting customers may not have been able to publish media for custom post type podcasting."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Renamed post type podcasting setting field in database to avoid possible field setting conflicts."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added logic to allow for the premium podcast feeds feature to work with custom post type podcasting."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the HTML5 download attribute, when then download link is clicked the file will be downloaded, rather than streamed to default media player. Only Chrome, Firefox and Opera web browsers currently support this HTML5 attribute."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 12/3/2013"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with feed title not properly XML encoding ampersand. (Thanks Robin for bringing to our attention!) "
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated supported version number to WordPress 3.7.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 09/23/2013"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed another bug with <em>Feed Episode Maximizer</em> RSS  having the invalid characters when used with WordPRess 3.6. Added function <code>powerpress_get_the_excerpt_rss()</code> to permanently fix issue."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed <code>PHP_EOL</code> from powerpress-player.php where the player links are added to the post content. This should solve the issue where some themes or plugins replace new line characters with actual <code>&lt;br/&gt;</code> tags. (Thanks Nathan for the fix!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Option to remove statistics from Dashboard has been re-added. 5.0/5.0.1 removed the option which was automatically disabling statistics in dashboard. Our mistake!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with embed link no longer appearing when using FlowPlayerClassic audio player. (thanks cimmerian for bringing to our attention!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with Taxonomy podcasting program level attributes (description, itunes subtitle) not getting applied to taxonomy feed correctly (Thanks Matt for bringing to our attention!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with file size and duratoin checkbox setting in General Settings not saving correctly (Thanks Bridge Maker for letting us know about the bug!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added image uploader option to both the episode entry box poster image and new itunes image fields. This version will not cause issues with the media upload button if a user cancels the image upload."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 08/30/2013"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed debug alert box from PowerPress mejs file, only occurred in IE and Safari browsers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed issue with blubrry Hosting users not being able to upload media with some versions of PHP."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed podcast title in defaults mode not getting applied to podcast feed."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved extensive changelog history to <a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-version-history/\">PowerPress Version History</a> page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Released on 08/27/2013"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Advanced Mode added (Was an old feature in PowerPress 1.0 that was removed since 2.0, now it's back!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Default Mode with 3 Simple Steps added!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Taxonomy Podcasting added (feature sponsored by <a href=\"http://afterbuzztv.com/\">AfterBuzzTV.com</a>)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Post Type Podcasting added"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "MediaElement.js HTML5/CSS Audio and Video player added. You must have WordPress 3.6+ to use this player."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Embed player will now use the MediaElement.js player when selected"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "We now allow images that are 300x300 as the itunes image, but a warning is printed at the top of the page."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug where settings saved message did not always appear at the top of the pages."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added define <code>POWERPRESS_NO_PODCAST_FEED</code>, if set to true in wp-config, PowerPress will not add the default podcast feed with slug name 'podcast'. For users who exclusively want a page or category called 'podcast'. NOTE: There will be no podcast only feed provided by default when this define is set, use at your own risk."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "iTunes and RSS image settings moved to \"Artwork\" tab."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New iTunes Episode image option added to both the Artwork tab as well as the Episode Entry Box (Thanks Robin Brinkler and Daniel Lewis for suggesting the features)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "jQuery based watermark replaced with HTML5 placeholder values, the jquery.watermark.js is no longer packaged with PowerPress."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with <em>Feed Episode Maximizer</em> RSS  having the invalid characters when used with WordPRess 3.6."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "<em>Feed Episode Maximizer</em> is no longer experimental, we've successfully used the feature on a number of podcasts without issue for over a year now."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Player width for audio and video can now use a percentage, ideal for resposive sites."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "player.js script is now always enqueued with other WordPress scripts. If you have player issues, please update your theme!"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added link to settings from the plugins management screen, should help folks who are new to PowerPress find settings quickly."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Releaesd on 6/20/2013"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "PowerPress 5.0 is coming! If you would like to beta test, please contact Angelo at cio [at] rawovice dot com. Beta testing starts when WordPress 3.6 is released, PowerPress 5.0 will utilize some new features in WordPress 3.6."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "The PowerPress Version Updates Survey results will be posted in the coming weeks.  Based on user feedback, we will release minor updates within 7 days if necessary, major releases between 1-3 months apart, and new features will be included in the plugin but disabled by default."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed logic for displaying statistics in dashboard to time out after 1 second (was previously 15 seconds) so if there's a network issue between the server and blubrry.com the dashboard still loads promptly. (Thanks Michael Hansen for bringing to our attention!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new filter <code>powerpress_feed_auth</code> for other plugins to filter feed authentication. (Thanks amereservant for the feature suggestion!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new define <code>POWERPRESS_AUTO_DETECT_ONCE</code>, edits to existing episodes will use the specify option if this define is set to true. (Thanks amereservant for the feature suggestion!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with ID3 tagging not correctly incrementing the track number for episodes. This only affected Blubrry hosting customers who had this option turned on. (Thanks RWPeck for bringing to our attention!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Mobile devices now use the same HTML5 player as the regular desktop HTML5 player found in PowerPress. This is due to reports that some mobile devices are now pre-loading media on pages, this will cut down on such bandwidth. (Thanks Daniel for bringing to our attention)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new define <code>POWERPRESS_POST_TYPES</code>, when set, only the post types specified are given podcasting episode entry boxes. Multiple post types are separated by commas. Example with added movies custom post type added: <code>'page,post,movies'</code>. This will bypass the default behavior of adding episode boxes to all post types with <code>post</code> or <code>page</code> capability."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed bug with unchecking iTunes Closed Captioned option not saving. (Thanks davidcross for reporting bug)"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid "Please visit the <a href=\"http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-version-history/\">PowerPress Version History</a> page for history prior to version 4.0.9."
+msgstr ""
+
+#. Found in faq header.
+msgid "Compatible Themes and Plugins"
+msgstr ""
+
+#. Found in faq header.
+msgid "Premium podcasting themes compatible with PowerPress"
+msgstr ""
+
+#. Found in faq header.
+msgid "Related Plugins"
+msgstr ""
+
+#. Found in faq header.
+msgid "Why doesn't Blubrry PowerPress support multiple enclosures in one feed item/post?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Why doesn't Blubrry PowerPress include media statistics built-in?"
+msgstr ""
+
+#. Found in faq header.
+msgid "How do you insert the player within a blog post?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Why can't you upload large media files?"
+msgstr ""
+
+#. Found in faq header.
+msgid "The Media Player does not appear on my site?"
+msgstr ""
+
+#. Found in faq list item.
+msgid "<a href=\"http://wordpress.org/extend/plugins/message-flow/\">Message Flow</a> - generates a CoverFlow-like interface for your blog posts with podcast episodes. For podcasts, use shortocde <code>[message-flow podcasts_only=\"true\"]</code>."
+msgstr ""
+
+#. Found in faq list item.
+msgid "<a href=\"http://wordpress.org/extend/plugins/podpress-addons/\">Eli's PowerPress Addon Widget</a> - Adds a sidebar widget that lists your podcast episodes linked to the play in a new window PowerPress player."
+msgstr ""
+
+#. Found in faq list item.
+msgid "<a href=\"http://wordpress.org/extend/plugins/powerpress-posts-from-mysql/developers/\">PowerPress Posts From MySQL</a> - Creates blog posts with PowerPress podcast episode information from a MySQL table."
+msgstr ""
+
+#. Found in faq list item.
+msgid "<a href=\"http://wordpress.org/plugins/featured-podcast-widget/\">Featured Podcast Widget</a>, <a href=\"http://www.richardfarrar.com/featured-podcast-widget-for-wordpress/\">Home Page</a> - A widget that enables you to display your latest podcast from a category or featured podcast utilising the PowerPress plugin's default player."
+msgstr ""
+
+#. Found in faq list item.
+msgid "<a href=\"http://wordpress.org/extend/plugins/subscribe-sidebar/\">Subscribe Sidebar plugin by Blubrry</a> - A sidebar widget that provides a list of \"Subscribe\" links to your sidebar."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Most themes and plugins are compatible with PowerPress. PowerPress is developed and tested using the default themes packaged with WordPress including twentyten, twentytwelve, twentythirteen, twentyfourteen, twentyfifteen, and all future versions. These themes use WordPress best practices and adhere to theme rules set by WordPress.org. Any child theme based on these themes should also work without issue."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "If you are having a problem, try <a href=\"http://create.blubrry.com/resources/powerpress/using-powerpress/diagnosing-feed-andor-player-issues-with-powerpress/\">Diagnosing Feed and/or Player Issues</a>."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "If you are having a problem specifically with the player and links, try the \"Having issues?\" option under PowerPress Settings &gt; Appearance tab. Visit <a href=\"http://create.blubrry.com/resources/powerpress/powerpress-settings/media-appearance/plugin-theme-conflict-issues/\">Resolving Plugin or Theme Conflicts</a> for details."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "<a href=\"https://www.appendipity.com/themes/podcast-pro-theme/?aid=13\">Appendipity Podcast Pro theme</a> is is designed specifically to take advantage of built-in features, settings and podcast episode meta data in PowerPress. The Blubrry team works with the Appendipity team during beta testing and major WordPress releases to make sure the Podcast Pro theme and PowerPress work together seamlessly."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "The following plugins may be used in conjunction with PowerPress."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Blubrry PowerPress does not allow you to include multiple media files for one feed item (blog post). This is because each podcatcher handles multiple enclosures in feeds differently. iTunes will download the first enclosure that it sees in the feed ignoring the rest. Other podcatchers and podcasting directories either pick up the first enclosure or the last in each post item. This inconsistency combined with the fact that <a href=\"http://www.reallysimplesyndication.com/2004/12/21\">Dave Winer does not recommend multiple enclosures</a> and the <a href=\"http://www.feedvalidator.org/docs/warning/DuplicateEnclosure.html\">FeedValidator.org recommendation against it</a> is why the Blubrry PowerPress does not support them."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "As a alternative, PowerPress allows you to create additional Custom Podcast Feeds to associate any magnitude of media format and/or length in a blog post to specific custom feeds. For example, you can create one blog post associated to separate video and audio podcast feeds saving you time from entering your show notes twice."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Blubrry PowerPress does not include media statistics built-in. This is not because Blubrry has its own statistics service, although that's a good reason by itself. Maintaining and calculating statistics is a resource and server intensive task that would add bloat to an otherwise efficient WordPress podcasting plugin. We recommend using your media hosting's web statistics to give you basic download numbers and, if you are seeking more grandular measurements such as client and geographical information for each episode, you're more than welcome to use the <a href=\"http://create.blubrry.com/resources/podcast-media-download-statistics/\">Blubrry Statistics service</a> as well."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "You may however access your Blubrry Statistics from within your WordPress dashboard."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "You can insert the media player within your blog posts by using the WordPress shortcode feature. The shortcode for PowerPress is <code>[powerpress]</code> (all lowercase)"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "You may use the shortcode to add a player to other media files (non episode files) by specifying the media url in the shortcode: [powerpress url=\"http://example.com/path/to/media.mp3\"]"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "For advanced users with multiple podcast feeds, you may insert the player for a specific feed by specifying the feed slug in the shortcode: [powerpress feed=\"podcast\"]"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "If you want to specify a cover image, add an image attribute which points to the specific image url: [powerpress image=\"http://example.com/path/to/cover_image.jpg\"] <em>Experimental</em>"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "File uploads are tricky to handle because there are so many web hosting variations with different upload size limits. We recommend using an FTP application to upload large media files. FTP is much more efficient than web based uploads and is typically provided by nearly all web hosting providers."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ". . . or the RSS feed is invalid?"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "This can happen when there is a theme or plugin conflict. Please visit our <a href=\"http://create.blubrry.com/resources/powerpress/using-powerpress/diagnosing-feed-andor-player-issues-with-powerpress/\">Diagnosing Feed and/or Player Issues</a> for instructions how to resolve such issues."
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Contributors"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Translators"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Tips and Tutorials"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Feedback"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Support"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Blubrry Social"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Danish translation for v1.0.11+ by <a href=\"http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=280\">Team Blogos</a> - Latest translation available <a href=\"http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=280\">here</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "French translation for v1.0.11+ by <a href=\"http://wpchannel.com/\">Aureien Denis</a> - Aurélien is looking for assistance maintaining the French translation, email wpchannel [at] gmail.com if interested."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Simplified Chinese for v1.0.12+ by <a href=\"http://codeex.cn\">webmote</a> - From webmote: Welcome to use the plugin. Very good! and then hope you to access my site."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Italian translation for v2.0.4+ by <a href=\"http://veneziadoc.net/\">Umberto Sartori</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Romanian translation for v2.0.4+ by Alexander Ovsov (Web Geek Sciense: http://webhostinggeeks.com/science/)"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Russian translation for v4.0.5+ by  <a href=\"http://www.nightdiary.ru/\">Igor Mercury</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Brazilian Portuguese translation for v6.0+ by <a href=\"http://radiofobia.com.br/\">Leo Lopes from Radiofobia</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "<a href=\"http://blog.nicolasbouliane.com/?p=1695\">Using PowerPress outside the Loop</a> - by <a href=\"http://blog.nicolasbouliane.com/\">Nicolas Bouliane</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "<a href=\"http://www.powerpresspodcast.com/\">The PowerPress Podcast</a> - by <a href=\"http://www.blubrry.com/\">Blubrry</a>"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Angelo Mandato, CIO <a href=\"http://www.rawvoice.com\">RawVoice</a> - Plugin founder, architect and lead developer"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Pat McSweeny, PHP Developer - Developed initial version (v0.1.0) of plugin"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Jerry Stephens, <a href=\"http://wayofthegeek.org\">Way of the Geek</a> - Contributed initial code fix for excerpt bug resolved in v0.6.1, wrote initial code for the 4 new flash players."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Darcy Fiander, <a href=\"http://rootyradio.com\">Rooty Radio</a> - Fixed bug with category links to FeedValidator.org and category title warning when validating category feeds."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Joel Haasnoot, <a href=\"http://waarisdetrein.nl/joelhaasnoot/\">Perosnal Blog</a> - Developed PodPress archive statistics."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Nicolas Bouliane, <a href=\"http://nicolasbouliane.com/\">Perosnal Blog</a> - contributed code for <code>get_the_powerpress_all_players()</code> function."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Please <a href=\"http://www.blubrry.com/contact.php\">contact blubrry</a> with the link to your tips or tutorial for PowerPress and we'll add them to the list above."
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "<a href=\"http://create.blubrry.com/resources/powerpress/\">http://create.blubrry.com/resources/powerpress/</a>"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "<a href=\"http://create.blubrry.com/support/\">http://create.blubrry.com/support/</a>"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "<a href=\"https://twitter.com/blubrry\">Twitter</a> - <a href=\"https://www.facebook.com/blubrry\">Facebook</a> - <a href=\"https://plus.google.com/u/0/104806426850567631953/posts\">Google+</a>"
+msgstr ""

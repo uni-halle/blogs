@@ -326,9 +326,11 @@ table.html5formats tr > td:first-child {
 ?>
 			</p>
 			<?php powerpressplayer_mediaelement_info(); ?>
+			<div style="margin: 30px 0;">
+			<?php powerpresspartner_clammr_info(false); ?>
+			</div>
 		</li>
 	
-		
 		<li><label><input type="radio" name="Player[player]" id="player_html5audio" value="html5audio" <?php if( $General['player'] == 'html5audio' ) echo 'checked'; ?> /> <?php echo __('HTML5 Audio Player', 'powerpress'); ?>  </label>
 			<strong style="padding-top: 8px; margin-left: 20px;"><a href="#" id="activate_html5audio" class="activate-player"><?php echo __('Activate and Configure Now', 'powerpress'); ?></a></strong>
 		</li>
@@ -436,8 +438,8 @@ function update_audio_player()
 	if( myWidth < 10 || myWidth > 900 )
 		myWidth = 290;
 	
-	var out = '<object type="application/x-shockwave-flash" data="<?php echo powerpress_get_root_url();?>/audio-player.swf" width="'+myWidth+'" height="24">'+"\n";
-	out += '    <param name="movie" value="<?php echo powerpress_get_root_url();?>/audio-player.swf" />'+"\n";
+	var out = '<object type="application/x-shockwave-flash" data="<?php echo powerpress_get_root_url();?>audio-player.swf" width="'+myWidth+'" height="24">'+"\n";
+	out += '    <param name="movie" value="<?php echo powerpress_get_root_url();?>audio-player.swf" />'+"\n";
 	out += '    <param name="FlashVars" value="playerID=1&amp;soundFile=<?php echo $Audio['audio-player']; ?>';
 	
 	var x = 0;
@@ -976,6 +978,7 @@ function audio_player_defaults()
 		<td valign="top">
 				<input type="text" style="width: 50px;" id="audio_player_max_width" name="General[audio_player_max_width]" class="player-width" value="<?php echo esc_attr($General['audio_player_max_width']); ?>" maxlength="4" />
 			<?php echo __('Width of Audio mp3 player (leave blank for max width)', 'powerpress'); ?>
+			<?php powerpresspartner_clammr_info(); ?>
 		</td>
 	</tr>
 	

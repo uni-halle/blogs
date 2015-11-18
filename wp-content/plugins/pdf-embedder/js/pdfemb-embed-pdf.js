@@ -65,7 +65,13 @@ jQuery(document).ready(function ($) {
                           initPdfDoc(pdfDoc_, showIsSecure)
                       },
                       function(e) {
-                          divContainer.empty().append($('<div></div>', {'class': 'pdfemb-errormsg'}).append(document.createTextNode(e.message)));
+						  var msgnode = document.createTextNode(e.message);
+						  if (e.name == 'UnexpectedResponseException' && e.status == 0) {
+							  msgnode = $('<span></span>').append(
+								  document.createTextNode("Error: URL to the PDF file must be on exactly the same domain as the current web page. "))
+								  .append($('<a href="https://wp-pdf.com/troubleshooting/#unexpected" target="_blank">Click here for more info</a>'));
+						  }
+                          divContainer.empty().append($('<div></div>', {'class': 'pdfemb-errormsg'}).append(msgnode));
                       }
                   );
 	  	    	  

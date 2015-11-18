@@ -101,6 +101,7 @@ div.pdfemb-viewer canvas {
 	margin: 0px;
 	padding: 0px;
 	display: inline-block;
+	background-color: white;
 }
 
 div.pdfemb-toolbar {

@@ -69,7 +69,7 @@ class CFDBViewWhatsInDB extends CFDBView {
         }
         if ($currSelection) {
             // Check for delete operation
-            if (isset($_POST['delete']) &&
+            if (isset($_POST['cfdbdel']) &&
                     $canEdit &&
                     wp_verify_nonce($_REQUEST['_wpnonce'])) {
                 if (isset($_POST['submit_time'])) {
@@ -114,7 +114,7 @@ class CFDBViewWhatsInDB extends CFDBView {
     <table width="100%" cellspacing="20">
         <tr>
             <td align="left" valign="top">
-                <form method="get" action="" name="displayform" id="displayform">
+                <form method="get" action="<?php echo $_SERVER['REQUEST_URI']?>" name="displayform" id="displayform">
                     <input type="hidden" name="page" value="<?php echo htmlspecialchars($this->getRequestParam('page')) ?>"/>
                     <select name="form_name" id="form_name" onchange="this.form.submit();">
                         <option value=""><?php echo htmlspecialchars(__('* Select a form *', 'contact-form-7-to-database-extension')); ?></option>
@@ -205,7 +205,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                         form.submit();
                     }
                 </script>
-                <form name="exportcsv" action="">
+                <form name="exportcsv" action="<?php echo $_SERVER['REQUEST_URI']?>">
                     <input type="hidden" name="unbuffered" value="true"/>
                     <select size="1" name="enc">
                         <option id="IQY" value="IQY">
@@ -246,16 +246,16 @@ class CFDBViewWhatsInDB extends CFDBView {
             </td>
             <td align="right" valign="top">
                 <?php if ($currSelection && $canEdit) { ?>
-                <form action="" method="post">
+                <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
                     <input name="form_name" type="hidden" value="<?php echo $currSelectionEscaped ?>"/>
                     <input name="all" type="hidden" value="y"/>
                     <?php wp_nonce_field(); ?>
-                    <input name="delete" type="submit"
+                    <input name="cfdbdel" type="submit"
                            value="<?php echo htmlspecialchars(__('Delete All This Form\'s Records', 'contact-form-7-to-database-extension')); ?>"
                            onclick="return confirm('<?php echo htmlspecialchars(__('Are you sure you want to delete all the data for this form?', 'contact-form-7-to-database-extension')); ?>')"/>
                 </form>
                 <br/>
-                    <form action="" method="post">
+                    <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
                         <input name="form_name" type="hidden" value="<?php echo $currSelectionEscaped ?>"/>
                         <?php wp_nonce_field(); ?>
                         <input name="delete_wpcf7" type="submit"
@@ -325,9 +325,9 @@ class CFDBViewWhatsInDB extends CFDBView {
             }
             if ($canEdit) {
                 ?>
-        <form action="" method="post">
+        <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
             <input name="form_name" type="hidden" value="<?php echo $currSelectionEscaped ?>"/>
-                <input name="delete" type="hidden" value="rows"/>
+                <input name="cfdbdel" type="hidden" value="rows"/>
                 <?php wp_nonce_field(); ?>
                 <?php
 

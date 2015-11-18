@@ -1,0 +1,151 @@
+<div class="aam-feature" id="extension-content">
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="aam-info">
+                <?php echo AAM_Backend_Helper::preparePhrase('One license is limited to one domain only but it can be used for unlimited number of test or development environments where URL is either [localhost] or starts with [dev.], [staging.] or [test.]', 'i', 'i', 'i', 'i'); ?>
+            </p>
+        </div>
+    </div>
+    
+    <label for="extension-key"><?php echo __('Install Extension', AAM_KEY); ?> <a href="#install-extension-modal" data-toggle="modal"><i class="icon-help-circled"></i></a></label>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="form-group">
+                <input type="text" class="form-control" id="extension-key" placeholder="<?php echo __('License Key', AAM_KEY); ?>" />
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-primary btn-block" id="install-extension"><i class="icon-download-cloud"></i> <?php echo __('Install', AAM_KEY); ?></button>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered aam-margin-top-xs" id="extension-list">
+        <thead>
+            <tr>
+                <th width="80%"><?php echo __('Extension', AAM_KEY); ?></th>
+                <th><?php echo __('Action', AAM_KEY); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $dev = AAM_Core_Repository::getInstance()->extensionStatus('AAM Development License'); ?>
+            <?php if ($dev !== AAM_Core_Repository::STATUS_INSTALLED) { ?>
+                <tr>
+                    <td>
+                        <strong>AAM Development License - $150 <small>USD</small></strong>
+                        <p class="text-justify">
+                            <?php echo __('Development license gives you an ability to download all the available extensions and use them to up to 5 life domains.', AAM_KEY); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <?php if ($dev == AAM_Core_Repository::STATUS_UPDATE) { ?>
+                            <a href="#" class="btn btn-success btn-block aam-update-extension" data-product="AAM Development License"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                        <?php } else { ?>
+                            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZX9RCWU6BTE52" target="_blank" class="btn btn-success btn-block"><i class="icon-basket"></i> <?php echo __('Purchase', AAM_KEY); ?></a>
+                        <?php } ?>
+                    </td>
+                </tr>
+            <?php } ?>
+            <?php $plusPackage = AAM_Core_Repository::getInstance()->extensionStatus('AAM Plus Package'); ?>
+            <?php if ($plusPackage !== AAM_Core_Repository::STATUS_INSTALLED) { ?>
+                <tr>
+                    <td>
+                        <strong>AAM Plus Package - $30 <small>USD</small></strong>
+                        <p class="text-justify">
+                            <?php echo __('Unlock limitations related to Posts and Pages feature. Extend basic AAM functionality with Page Categories and ability to manage access to your comments (AAM Plus Package adds new capabilities to the default list of WordPress capabilities like Edit Comments, Delete Comments, Spam Comments etc.).', AAM_KEY); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <?php if ($plusPackage == AAM_Core_Repository::STATUS_UPDATE) { ?>
+                            <a href="#" class="btn btn-success btn-block aam-update-extension" data-product="AAM Plus Package"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                        <?php } else { ?>
+                            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FGAHULDEFZV4U" target="_blank" class="btn btn-success btn-block"><i class="icon-basket"></i> <?php echo __('Purchase', AAM_KEY); ?></a>
+                        <?php } ?>
+                    </td>
+                </tr>
+            <?php } ?>
+            <?php $utilities = AAM_Core_Repository::getInstance()->extensionStatus('AAM Utilities'); ?>
+            <?php if ($utilities !== AAM_Core_Repository::STATUS_INSTALLED) { ?>
+                <tr>
+                    <td>
+                        <strong>AAM Utilities - <span class="text-success">Free</span></strong>
+                        <p class="text-justify">
+                            <?php echo __('Various useful tools for AAM like caching or clear all settings.', AAM_KEY); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <?php if ($utilities == AAM_Core_Repository::STATUS_UPDATE) { ?>
+                            <a href="#" class="btn btn-success btn-block aam-update-extension" data-product="AAM Utilities"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                        <?php } else { ?>
+                            <a href="#" class="btn btn-success btn-block aam-download-extension" data-license="AAMUTILITIES"><i class="icon-download-cloud"></i> <?php echo __('Download', AAM_KEY); ?></a>
+                        <?php } ?>
+                    </td>
+                </tr>
+            <?php } ?>
+            <?php $multisite = AAM_Core_Repository::getInstance()->extensionStatus('AAM Multisite'); ?>
+            <?php if ($multisite !== AAM_Core_Repository::STATUS_INSTALLED) { ?>
+                <tr>
+                    <td>
+                        <strong>AAM Multisite - <span class="text-success">Free</span></strong>
+                        <p class="text-justify">
+                            <?php echo __('Convenient way to navigate between different sites in the Network Admin Panel. This extension adds additional widget to the AAM page that allows to switch between different sites.', AAM_KEY); ?>
+                        </p>
+                    </td>
+                    <td>
+                        <?php if ($multisite == AAM_Core_Repository::STATUS_UPDATE) { ?>
+                            <a href="#" class="btn btn-success btn-block aam-update-extension" data-product="AAM Multisite"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                        <?php } else { ?>
+                            <a href="#" class="btn btn-success btn-block aam-download-extension" data-license="AAMMULTISITE"><i class="icon-download-cloud"></i> <?php echo __('Download', AAM_KEY); ?></a>
+                        <?php } ?>
+                    </td>
+                </tr>
+            <?php } ?>
+            <tr id="extension-list-empty" class="hidden">
+                <td colspan="2">
+                    <p class="aam-notification-message text-center">
+                        <?php echo __('All extensions are installed and up to date.', AAM_KEY); ?>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="extension-notification-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><?php echo __('Notification', AAM_KEY); ?></h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center aam-notification-message">
+                        <strong><span id="installation-error"></span></strong>. <?php echo sprintf(__('Click "Download" button below for a manual installation. Simply unzip the archive to wp-content%s directory.', AAM_KEY), AAM_Core_Repository::RELPATH); ?>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="download-extension"><?php echo __('Download', AAM_KEY); ?></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('Cancel', AAM_KEY); ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="install-extension-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><?php echo __('Install Extension Info', AAM_KEY); ?></h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-justify aam-notification-message">
+                        <?php echo __('In order to install premium extension, please use PayPal transaction ID number that you recieved after the payment was completed successfully (it might take up to 2 hours for PayPal to send you the email). If you already purchased an extension for the older AAM version, use the license key but please remember that it is limited only to one life domain.', AAM_KEY); ?>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('Close', AAM_KEY); ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

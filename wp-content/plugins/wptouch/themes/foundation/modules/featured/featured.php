@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'init', 'foundation_featured_setup' );
+add_action( 'wp_loaded', 'foundation_featured_setup' );
 add_action( 'foundation_module_init_mobile', 'foundation_featured_init' );
 add_action( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'foundation_featured_settings' );
 

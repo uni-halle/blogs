@@ -69,7 +69,7 @@ class FG_Joomla_to_WordPress {
 	public function __construct() {
 
 		$this->plugin_name = 'fg-joomla-to-wordpress';
-		$this->version = '2.7.1';
+		$this->version = '2.9.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -162,6 +162,9 @@ class FG_Joomla_to_WordPress {
 	 */
 	private function define_admin_hooks() {
 
+		// Add links to the plugin page
+		$this->loader->add_filter( 'plugin_action_links_' . $this->plugin_name . '/' . $this->plugin_name . '.php', $this, 'plugin_action_links' );
+		
 		/**
 		 * The plugin is hooked to the WordPress importer
 		 */
@@ -193,6 +196,19 @@ class FG_Joomla_to_WordPress {
 		$this->loader->add_action( 'fgj2wp_import_notices', $plugin_weblinks, 'display_links_count' );
 		$this->loader->add_action( 'fgj2wp_pre_display_admin_page', $plugin_weblinks, 'process_admin_page', 11, 1 );
 		
+	}
+
+	/**
+	 * Customize the links on the plugins list page
+	 *
+	 * @param array $links Links
+	 * @return array Links
+	 */
+	public function plugin_action_links($links) {
+		// Add the import link
+		$import_link = '<a href="admin.php?import=fgj2wp">'. __('Import', $this->plugin_name) . '</a>';
+		array_unshift($links, $import_link);
+		return $links;
 	}
 
 	/**

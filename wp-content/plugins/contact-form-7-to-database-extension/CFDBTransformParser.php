@@ -30,6 +30,7 @@ require_once('SortByMultiField.php');
 require_once('NaturalSortByField.php');
 require_once('NaturalSortByMultiField.php');
 require_once('SortByDateField.php');
+require_once('SummationRow.php');
 
 require_once('CountField.php');
 require_once('SumField.php');
