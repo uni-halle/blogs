@@ -6,7 +6,8 @@ function mlu_allow_simple_scripts() {
 	global $allowedposttags;
 	$allowedposttags=array_merge($allowedposttags,[
 		'script'=>['type'=>true],
-		'iframe'=>[]
+		'iframe'=>[],
+		'input'=>['type'=>true]
 	]);
 }
 
