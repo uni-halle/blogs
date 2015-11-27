@@ -1164,7 +1164,7 @@ GENERAL STYLES
 /* line 27, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 90%;
+  font-size: 80%;
   line-height: 1.25;
   color: #5c6b80;
   background-color: #fff;
@@ -1258,12 +1258,12 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 
 /* line 135, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 h1, .h1 {
-  font-size: 2em;
-  line-height: 1.333em; }
+  font-size: 1.8em;
+  line-height: 1.2em; }
 
 /* line 141, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 h2, .h2 {
-  font-size: 1.5em;
+  font-size: 1.4em;
   line-height: 1.3em;
   margin-bottom: 0.375em; }
 
@@ -1548,58 +1548,67 @@ POSTS & CONTENT STYLES
   /* line 453, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content p {
     margin: 0 0 1.5em; }
-  /* line 478, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 460, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  .entry-content ul, .entry-content ol {
+    margin-left: 1em; }
+  /* line 467, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  .entry-content ul {
+    list-style-type: disc; }
+    /* line 472, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    .entry-content ul li ul {
+      list-style-type: circle; }
+  /* line 486, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content table {
     width: 100%;
     border: 1px solid #7f7f7f;
     margin-bottom: 1.5em; }
-    /* line 483, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 491, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .entry-content table caption {
       margin: 0 0 7px;
       font-size: 0.75em;
       color: #9fa6b4;
       text-transform: uppercase;
       letter-spacing: 1px; }
-  /* line 492, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 500, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content tr {
     border-bottom: 1px solid #7f7f7f; }
-    /* line 495, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 503, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .entry-content tr:nth-child(even) {
       background-color: #d8d8d8; }
-  /* line 500, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 508, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content td {
     padding: 7px;
     border-right: 1px solid #7f7f7f; }
-    /* line 504, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 512, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .entry-content td:last-child {
       border-right: 0; }
-  /* line 509, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 517, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content th {
     background-color: #d8d8d8;
     border-bottom: 1px solid #7f7f7f;
     border-right: 1px solid #7f7f7f; }
-    /* line 514, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 522, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .entry-content th:last-child {
       border-right: 0; }
-  /* line 519, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 527, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content blockquote {
     margin: 0 0 1.5em 0.75em;
     padding: 0 0 0 0.75em;
     border-left: 3px solid #2980b9;
     font-style: italic;
     color: #9fa6b4; }
-  /* line 534, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 542, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content dd {
     margin-left: 0;
     font-size: 0.9em;
     color: #787878;
     margin-bottom: 1.5em; }
-  /* line 541, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 549, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content img {
     margin: 0 0 1.5em 0;
     max-width: 100%;
     height: auto; }
-  /* line 561, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 569, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content .size-auto,
   .entry-content .size-full,
   .entry-content .size-large,
@@ -1607,7 +1616,7 @@ POSTS & CONTENT STYLES
   .entry-content .size-thumbnail {
     max-width: 100%;
     height: auto; }
-  /* line 566, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 574, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .entry-content pre {
     background: #323944;
     color: #d8d8d8;
@@ -1617,18 +1626,18 @@ POSTS & CONTENT STYLES
     border-radius: 3px; }
 
 /* end .entry-content */
-/* line 577, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 585, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .wp-caption {
   max-width: 100%;
   background: #eee;
   padding: 5px;
   /* images inside wp-caption */ }
-  /* line 583, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 591, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .wp-caption img {
     max-width: 100%;
     margin-bottom: 0;
     width: 100%; }
-  /* line 589, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 597, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .wp-caption p.wp-caption-text {
     font-size: 0.85em;
     margin: 4px 0 7px;
@@ -1638,7 +1647,7 @@ POSTS & CONTENT STYLES
 /* image gallery styles */
 /* end .gallery */
 /* gallery caption styles */
-/* line 623, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 631, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .tags {
   margin: 0; }
 
@@ -1646,7 +1655,7 @@ POSTS & CONTENT STYLES
 List of Child Pages on First Page of a Section (See page.php for php code and list class name
 ****************/
 /* Styling from http://red-team-design.com/css3-ordered-list-styles */
-/* line 634, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 642, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .themenuebersicht {
   counter-reset: li;
   /* Initiate a counter */
@@ -1654,26 +1663,26 @@ List of Child Pages on First Page of a Section (See page.php for php code and li
   /* Remove default numbering */
   *list-style: decimal;
   /* Keep using default numbering for IE6/7 */
-  font-size: 1.2em;
+  font-size: 1em;
   font-family: "Bree Serif", "Georgia", Cambria, Times New Roman, Times, serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: 0 0 0 1.15em;
+  padding: 0 0 0 1em;
   /* end of ol li */ }
-  /* line 642, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 650, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .themenuebersicht li {
     /* end of ol li a */
     /* end of ol li a:before */
     /* end of ol li a:after */ }
-    /* line 644, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 652, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .themenuebersicht li a {
       position: relative;
       display: block;
-      padding: 0.4em 0.4em 0.4em 1.5em;
+      padding: 0.4em 0.4em 0.4em 1.25em;
       *padding: .4em;
       margin: .5em 0;
       text-decoration: none;
       color: #5c6b80;
       line-height: normal; }
-    /* line 657, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 665, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .themenuebersicht li a:before {
       content: counter(li);
       counter-increment: li;
@@ -1690,7 +1699,7 @@ List of Child Pages on First Page of a Section (See page.php for php code and li
       border-width: .4em;
       border-style: solid;
       z-index: 2; }
-    /* line 676, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 684, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .themenuebersicht li a:after {
       content: "";
       height: 2em;
@@ -1703,15 +1712,15 @@ List of Child Pages on First Page of a Section (See page.php for php code and li
 /******************************************************************
 PAGE NAVI STYLES
 ******************************************************************/
-/* line 697, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 705, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .pagination,
 .wp-prev-next {
   margin: 1.5em 0; }
 
-/* line 700, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 708, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .pagination {
   text-align: center; }
-  /* line 703, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 711, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .pagination ul {
     display: inline-block;
     background-color: #fff;
@@ -1719,7 +1728,7 @@ PAGE NAVI STYLES
     padding: 0;
     clear: both;
     border-radius: 3px; }
-  /* line 712, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 720, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .pagination li {
     padding: 0;
     margin: 0;
@@ -1727,7 +1736,7 @@ PAGE NAVI STYLES
     display: inline;
     overflow: hidden;
     border-right: 1px solid #7f7f7f; }
-  /* line 721, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 729, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .pagination a, .pagination span {
     margin: 0;
     text-decoration: none;
@@ -1739,26 +1748,26 @@ PAGE NAVI STYLES
     min-width: 1em;
     display: block;
     color: #2980b9; }
-    /* line 733, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 741, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .pagination a:hover, .pagination a:focus, .pagination span:hover, .pagination span:focus {
       background-color: #2980b9;
       color: #fff; }
-  /* line 739, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 747, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .pagination .current {
     cursor: default;
     color: #5c6b80; }
-    /* line 743, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 751, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .pagination .current:hover, .pagination .current:focus {
       background-color: #fff;
       color: #5c6b80; }
 
 /* end .bones_page_navi */
 /* fallback previous & next links */
-/* line 756, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 764, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .wp-prev-next .prev-link {
   float: left; }
 
-/* line 760, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 768, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .wp-prev-next .next-link {
   float: right; }
 
@@ -1767,19 +1776,19 @@ PAGE NAVI STYLES
 COMMENT STYLES
 ******************************************************************/
 /* h3 comment title */
-/* line 771, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 779, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #comments-title {
   padding: 0.75em;
   margin: 0;
   border-top: 1px solid #d8d8d8;
   /* number of comments span */ }
 
-/* line 791, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 799, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .commentlist {
   margin: 0;
   list-style-type: none; }
 
-/* line 796, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 804, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .comment {
   position: relative;
   clear: both;
@@ -1790,64 +1799,64 @@ COMMENT STYLES
   /* end .commentlist .vcard */
   /* end children */
   /* general comment classes */ }
-  /* line 803, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 811, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment .comment-author {
     padding: 7px;
     border: 0; }
-  /* line 809, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 817, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment .vcard {
     margin-left: 50px; }
-    /* line 812, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 820, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .comment .vcard cite.fn {
       font-weight: 700;
       font-style: normal; }
-    /* line 820, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 828, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .comment .vcard time {
       display: block;
       font-size: 0.9em;
       font-style: italic; }
-      /* line 825, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+      /* line 833, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
       .comment .vcard time a {
         color: #9fa6b4;
         text-decoration: none; }
-        /* line 829, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+        /* line 837, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
         .comment .vcard time a:hover {
           text-decoration: underline; }
-    /* line 839, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    /* line 847, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
     .comment .vcard .avatar {
       position: absolute;
       left: 16px;
       border-radius: 50%; }
-  /* line 847, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 855, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment:last-child {
     margin-bottom: 0; }
-  /* line 851, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 859, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment .children {
     margin: 0;
     /* variations */
     /* change number for different depth */ }
-  /* line 869, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 877, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment[class*=depth-] {
     margin-top: 1.1em; }
-  /* line 873, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 881, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment.depth-1 {
     margin-left: 0;
     margin-top: 0; }
-  /* line 878, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 886, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment:not(.depth-1) {
     margin-top: 0;
     margin-left: 7px;
     padding: 7px; }
-  /* line 891, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 899, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment.odd {
     background-color: #fff; }
-  /* line 894, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 902, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .comment.even {
     background: #d8d8d8; }
 
 /* comment meta */
 /* comment content */
-/* line 928, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 936, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .comment_content p {
   margin: 0.7335em 0 1.5em;
   font-size: 1em;
@@ -1855,14 +1864,14 @@ COMMENT STYLES
 
 /* end .commentlist .comment_content */
 /* comment reply link */
-/* line 937, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 945, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .comment-reply-link {
   font-size: 0.9em;
   float: right; }
 
 /* end .commentlist .comment-reply-link */
 /* edit comment link */
-/* line 949, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 957, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .comment-edit-link {
   font-style: italic;
   margin: 0 7px;
@@ -1872,69 +1881,69 @@ COMMENT STYLES
 /******************************************************************
 COMMENT FORM STYLES
 ******************************************************************/
-/* line 962, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 970, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .comment-respond {
   padding: 1.5em;
   border-top: 1px solid #d8d8d8; }
 
-/* line 968, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 976, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #reply-title {
   margin: 0; }
 
-/* line 972, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 980, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .logged-in-as {
   color: #9fa6b4;
   font-style: italic;
   margin: 0; }
-  /* line 977, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 985, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .logged-in-as a {
     color: #5c6b80; }
 
-/* line 982, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 990, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .comment-form-comment {
   margin: 1.5em 0 0.75em; }
 
-/* line 986, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 994, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .form-allowed-tags {
   padding: 1.5em;
   background-color: #d8d8d8;
   font-size: 0.9em; }
 
 /* comment submit button */
-/* line 993, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1001, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #submit {
   float: right;
   font-size: 1em; }
 
 /* comment form title */
-/* line 1000, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1008, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #comment-form-title {
   margin: 0 0 1.1em; }
 
 /* cancel comment reply link */
 /* logged in comments */
 /* allowed tags */
-/* line 1013, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1021, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #allowed_tags {
   margin: 1.5em 10px 0.7335em 0; }
 
 /* no comments */
-/* line 1018, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1026, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .nocomments {
   margin: 0 20px 1.1em; }
 
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 1026, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1034, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #sidebar-gkuh {
   display: none; }
 
-/* line 1039, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1047, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .widget ul li {
   /* deep nesting */ }
 
-/* line 1056, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1064, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .no-widgets {
   background-color: #fff;
   padding: 1.5em;
@@ -1947,42 +1956,43 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 *********************/
 /* hide MLU blogfarm footer */
-/* line 1072, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1081, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #global-footer {
   display: none; }
 
 /* hide breadcrumbs on small devices */
-/* line 1077, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1086, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .breadcrumbs {
   display: none; }
 
 /********* just change those valuey for the containers. the other elements are being calculated automatically *********/
 /* this is the width of the container for the navigation elements (arrows and circle) */
-/* line 1085, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1095, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .footer {
   clear: both;
   display: block;
   position: fixed;
   vertical-align: middle;
   background-color: #323232;
-  bottom: 0;
+  bottom: -1px;
   height: 4em;
   width: 100%;
   line-height: normal;
   background-color: #323232;
   z-index: 99999; }
-  /* line 1098, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 1108, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .footer a {
     color: #7f7f7f;
     text-decoration: none;
     font-weight: bold; }
 
-/* line 1105, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1115, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #inner-footer {
   background-color: #323232;
-  height: 100%; }
+  height: 100%;
+  width: 95%; }
 
-/* line 1110, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1121, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .fnavcontainer {
   display: -webkit-box;
   display: -moz-box;
@@ -1996,7 +2006,7 @@ FOOTER STYLES
   height: 100%; }
 
 /* centered box with nav buttons and progress circle as a flexbox */
-/* line 1120, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1131, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .fnavcenter {
   -webkit-box-flex: 1 0 40%;
   -moz-box-flex: 1 0 40%;
@@ -2017,7 +2027,7 @@ FOOTER STYLES
   width: 40%;
   text-align: center; }
 
-/* line 1134, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1145, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .prevname, .nextname {
   -webkit-box-flex: 2 2 auto;
   -moz-box-flex: 2 2 auto;
@@ -2026,18 +2036,19 @@ FOOTER STYLES
   flex: 2 2 auto;
   width: 30%;
   align-self: center;
-  font-size: 0.9em; }
+  font-size: 0.9em;
+  overflow: hidden; }
 
-/* line 1142, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1154, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .prevname {
   text-align: right; }
 
-/* line 1146, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1158, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .nextname {
   text-align: left; }
 
 /* this is the width of the circle */
-/* line 1153, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1166, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .statuscow {
   -webkit-box-flex: 1 1 40%;
   -moz-box-flex: 1 1 40%;
@@ -2045,29 +2056,52 @@ FOOTER STYLES
   -ms-flex: 1 1 40%;
   flex: 1 1 40%;
   align-self: center; }
-  /* line 1166, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 1179, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .statuscow svg {
     transform: rotate(270deg); }
-  /* line 1170, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+  /* line 1183, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .statuscow circle {
-    transform: rotate(0.1deg); }
-  /* line 1174, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+    transform: rotate(0.1deg);
+    position: relative;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0; }
+  /* line 1192, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
   .statuscow .circle-cover {
     stroke: #7f7f7f; }
 
+/* line 1198, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+.svgscalefix {
+  width: 100%;
+  padding: 0;
+  position: relative;
+  padding-top: 10%; }
+
+/* line 1205, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+.svgscalefix-circle {
+  width: 100%;
+  padding: 0;
+  position: relative;
+  padding-top: 10%; }
+
 /* Positioning of prev/next triangle svg  */
-/* line 1180, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1213, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .tricontainer {
   -webkit-box-flex: 1 1 40%;
   -moz-box-flex: 1 1 40%;
   -webkit-flex: 1 1 40%;
   -ms-flex: 1 1 40%;
   flex: 1 1 40%;
-  align-self: center;
   width: 40%; }
 
-/* line 1198, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* line 1226, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 .svgbutton {
+  position: relative;
+  height: 90%;
+  width: 100%;
+  left: 0;
+  top: 0;
   fill: #7f7f7f; }
 
 /*
@@ -2080,8 +2114,8 @@ FOOTER STYLES
 	view.
 	*/
 /* end .footer-links */
-/* needs to be down here because needs to be declared after footerheight variable. this makes sure that the content always stays above the footer */
-/* line 1226, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
+/* needs to be down here because needs to be declared after footerheight variable. this makes sure that the main content always stays above the footer */
+/* line 1266, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_base.scss */
 #main {
   padding-bottom: 4em; }
 
@@ -2119,7 +2153,7 @@ NAVIGATION STYLES
 *********************/
   /* line 31, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
   .nav ul li a {
-    font-size: 1rem; }
+    font-size: 1em; }
   /* line 37, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
   .top-nav > li:first-child {
     /* from this size upward show "start" menu entry */
@@ -2169,17 +2203,21 @@ POSTS & CONTENT STYLES
       display: block;
       clear: both; }
   /* end .entry-content */
+  /* line 115, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
+  .themenuebersicht {
+    font-size: 1.1em;
+    padding: 0 0 0 1em; }
   /*********************
 FOOTER STYLES
 *********************/
-  /* line 122, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
+  /* line 127, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
   .fnavcenter {
     -webkit-box-flex: 1 0 30%;
     -moz-box-flex: 1 0 30%;
     -webkit-flex: 1 0 30%;
     -ms-flex: 1 0 30%;
     flex: 1 0 30%; }
-  /* line 125, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
+  /* line 130, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
   .statuscow {
     -webkit-box-flex: 1 1 30%;
     -moz-box-flex: 1 1 30%;
@@ -2187,7 +2225,7 @@ FOOTER STYLES
     -ms-flex: 1 1 30%;
     flex: 1 1 30%;
     width: 33%; }
-  /* line 131, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
+  /* line 136, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_481up.scss */
   .tricontainer {
     -webkit-box-flex: 1 1 30%;
     -moz-box-flex: 1 1 30%;
@@ -2243,32 +2281,35 @@ NAVIGATION STYLES
       /* You can use :hover and :focus here */
       /* Sub-menu */ }
       /* line 49, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+      .nav li a {
+        font-size: 1.1em; }
+      /* line 53, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
       .nav li:hover, .nav li:focus {
         background-color: #323944; }
-        /* line 52, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+        /* line 56, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
         .nav li:hover a, .nav li:focus a {
           color: #d8d8d8; }
-      /* line 62, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+      /* line 66, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
       .nav li ul.sub-menu,
       .nav li ul.children {
         /* end sub-menu li */ }
-        /* line 65, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+        /* line 69, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
         .nav li ul.sub-menu li,
         .nav li ul.children li {
           /* highlight sub-menu current page */
           /* end li.current_ */
           /* showing sub-menus */ }
-          /* line 67, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+          /* line 71, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
           .nav li ul.sub-menu li:hover,
           .nav li ul.sub-menu li:focus,
           .nav li ul.children li:hover, .nav li ul.children li:focus {
             background-color: #323944; }
-            /* line 70, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+            /* line 74, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
             .nav li ul.sub-menu li:hover a,
             .nav li ul.sub-menu li:focus a,
             .nav li ul.children li:hover a, .nav li ul.children li:focus a {
               color: #d8d8d8; }
-          /* line 92, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+          /* line 96, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
           .nav li ul.sub-menu li:hover > ul,
           .nav li ul.children li:hover > ul {
             top: auto;
@@ -2277,46 +2318,50 @@ NAVIGATION STYLES
   /*********************
 POSTS & CONTENT STYLES
 *********************/
-  /* line 116, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 120, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   #content {
     margin-top: 1.5em; }
-    /* line 119, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+    /* line 123, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
     #content header {
       padding: 1.5em 0; }
-  /* line 124, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 128, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .entry-content {
     padding: 0; }
-  /* line 129, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 133, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .page-content {
     width: 67%;
     height: 100%;
     float: left; }
+  /* line 139, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  .themenuebersicht {
+    font-size: 1.2em;
+    padding: 0 0 0 1em; }
   /*********************
 SIDEBARS & ASIDES
 *********************/
-  /* line 139, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 148, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   #sidebar-gkuh {
     display: block; }
-  /* line 143, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 152, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .sidebar {
     width: 33%;
     float: right;
     font-size: 0.7em;
     border-left: 1px solid #ccc;
     height: 100%; }
-  /* line 151, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 160, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .widgettitle {
     border-bottom: 2px solid #444;
     margin-bottom: 0.75em; }
-  /* line 156, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 165, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .widget {
     padding: 0 10px;
     margin-bottom: 2.2em; }
-    /* line 161, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+    /* line 170, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
     .widget ul li {
       margin-bottom: 0.75em;
       /* deep nesting */ }
-      /* line 169, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+      /* line 178, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
       .widget ul li ul {
         margin-top: 0.75em;
         padding-left: 1em; }
@@ -2335,11 +2380,11 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 *********************/
   /* if you want to change the heights, set new values and call them at least once in the media query */
-  /* line 274, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 283, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .footer {
     height: 7em; }
   /* show breadcrumbs on larger devices */
-  /* line 279, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 288, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .breadcrumbs {
     display: block;
     background-color: #d8d8d8;
@@ -2349,10 +2394,10 @@ FOOTER STYLES
     z-index: 99999999999;
     height: 1.75em;
     line-height: 1.75em; }
-    /* line 289, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+    /* line 298, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
     .breadcrumbs a {
       color: #323232; }
-  /* line 295, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 304, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .breadcrumbs span[typeof="v:Breadcrumb"]:last-child span[property="v:title"],
   .breadcrumbs a[property="v:title"] {
     display: inline-block;
@@ -2361,25 +2406,25 @@ FOOTER STYLES
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
-  /* line 308, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 317, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .breadcrumbs span[typeof="v:Breadcrumb"]:last-child span[property="v:title"] {
     color: #008d9a; }
-  /* line 312, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 321, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   #inner-footer {
     color: #d8d8d8;
     width: 100%;
     height: 5.25em; }
-  /* line 318, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 327, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   footer nav {
     height: 100%; }
-  /* line 324, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 333, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .fnavcenter {
     -webkit-box-flex: 1 0 20%;
     -moz-box-flex: 1 0 20%;
     -webkit-flex: 1 0 20%;
     -ms-flex: 1 0 20%;
     flex: 1 0 20%; }
-  /* line 329, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
+  /* line 338, C:/wamp/www/wp-content/themes/gkuh-elearning/library/scss/breakpoints/_768up.scss */
   .footer-links ul li {
     /*
 			be careful with the depth of your menus.

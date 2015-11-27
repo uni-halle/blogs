@@ -30,7 +30,7 @@ NAVIGATION STYLES
 .nav {
     ul li a {
     
-    font-size: 1rem;}
+    font-size: 1em;}
     
 }
 
@@ -111,6 +111,11 @@ POSTS & CONTENT STYLES
 	}
 
 } /* end .entry-content */
+
+.themenuebersicht {
+    font-size: 1.1em;
+    padding: 0 0 0 1em;
+}
 
 /*********************
 FOOTER STYLES

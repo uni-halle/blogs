@@ -74,9 +74,11 @@ else {
                             <!-- triangle buttons and status circle -->
                             <div class="tricontainer">
                                 <a href="<?php echo get_permalink($prevID); ?>" class="prevbtn" title="Zurück zur Seite: <?php echo get_the_title($prevID); ?>">
+                                    <div class="svgscalefix">
                                     <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve" enable-background="new 0 0 50 50">
                                         <path class="svgbutton prevsvg" d="M47.5 16.3c0 5 0 13 0 18v4.3c0 5-3.5 7-7.8 4.5L36 41c-4.3-2.5-11.3-6.6-15.6-9l-3.7-2.1c-4.3-2.5-4.3-6.6 0-9l3.7-2.1c4.3-2.5 11.3-6.6 15.6-9l3.7-2.1C44 5 47.5 7 47.5 12V16.3z" />
                                     </svg>
+                                    </div>
                                 </a>
                             </div>
 
@@ -159,7 +161,7 @@ else {
             //echo $pos . '/' . $page_count . '<br>=' . $progress . '%'; //debug
         
          // doing the math… as seen here: http://bytes.babbel.com/en/articles/2015-03-19-radial-svg-progressbar.html
-            $rad = 1.1; //set the radius
+            $rad = 1.3; //set the radius
             $cir = $rad * 2 * pi(); //Umfang (circumference )
             $offset = -($cir / $page_count) * $pos; //needs to be negative to move the circle clockwise
             
@@ -169,25 +171,30 @@ else {
         ?>
 
                                 <div class="statuscow" id="cont">
+                                    <div class="svgscalefix-circle">
 
-                                    <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve" enable-background="new 0 0 50 50">
+                                    <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve" enable-background="new 0 0 50 50" preserveAspectRatio="xMidYMid meet">
                                         <!-- background circle and the one who then looks like the progress -->
                                         <circle r="<?php echo $rad . 'em' ?>" cx="25" cy="25" fill="transparent" stroke-dasharray="0" stroke-dashoffset="0" class="circle-bgrd" stroke-width="0.5em" stroke="<?php echo $rl_category_color; ?>"></circle>
 
                                         <!-- foreground circle that gets offset -->
                                         <circle r="<?php echo $rad . 'em' ?>" cx="25" cy="25" fill="transparent" stroke-dasharray="<?php echo $cir . 'em' ?>" stroke-dashoffset="<?php echo $offset . 'em' ?>" class="circle-cover" stroke-width=".54em"></circle>
                                     </svg>
+                                        </div>
 
 
                                 </div>
 
                                 <div class="tricontainer">
+                                    
                                     <a href="<?php echo get_permalink($nextID); ?>" class="nextbtn" title="Zur nächsten Seite: <?php echo get_the_title($nextID); ?>">
-                                        <svg version="1.1" id="nexttriangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve" enable-background="new 0 0 50 50">
+                                        <div class="svgscalefix">
+                                        <svg version="1.1" id="nexttriangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve" enable-background="new 0 0 50 50" preserveAspectRatio="xMidYMid meet">
                                             <path class="svgbutton nextsvg" d="M1.5 34.3c0-5 0-13.1 0-18V12c0-5 3.7-7 8-4.5l3.7 2.1c4.3 2.5 11.3 6.6 15.6 9l3.7 2.1c4.3 2.5 4.3 6.6 0 9L29 32c-4.3 2.5-11.3 6.6-15.6 9l-3.9 2.1c-4.3 2.5-8 0.5-8-4.5V34.3z" />
                                         </svg>
                                     </a>
                                 </div>
+                            </div>
                         </div>
 
                         <!-- display and link name of next page -->

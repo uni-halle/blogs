@@ -44,7 +44,11 @@ NAVIGATION STYLES
 	ul {
 	}
     
-	li {        
+	li {     
+        
+        a {
+            font-size: 1.1em;
+        }
         /* You can use :hover and :focus here */
         &:hover, &:focus {
             background-color: $navactive; 
@@ -130,6 +134,11 @@ $page-content: 67%;
     width: $page-content;
     height: 100%;
     float: left;
+}
+
+.themenuebersicht {
+    font-size: 1.2em;
+    padding: 0 0 0 1em;
 }
 
 /*********************

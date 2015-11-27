@@ -16,7 +16,6 @@
 	width: 100%;
 	display: block;
 	position: relative;
-	padding-left: 2.375%; // for exact centering: 0.5 * Colum Margin 
 }
 .cell {
   position: relative;
@@ -43,15 +42,14 @@
 /* For a given position, the calculation is:
    -100 + (total cell width * n)
    In this case: margin-left: -100 + (6.25*n) */
-.position-0  { margin-left: -100.000000000000000% }
-.position-1  { margin-left: -87.500000000000000% }
-.position-2  { margin-left: -75.000000000000000% }
-.position-3  { margin-left: -62.500000000000000% }
-.position-4  { margin-left: -50.000000000000000% }
-.position-5  { margin-left: -37.500000000000000% }
-.position-6  { margin-left: -25.000000000000000% }
-.position-7  { margin-left: -12.500000000000000% }
-.position-8  { margin-left: 0.000000000000000% }
+.position-0  { margin-left: -97.625000000000000% }
+.position-1  { margin-left: -85.125000000000000% }
+.position-2  { margin-left: -72.625000000000000% }
+.position-3  { margin-left: -60.125000000000000% }
+.position-4  { margin-left: -47.625000000000000% }
+.position-5  { margin-left: -35.125000000000000% }
+.position-6  { margin-left: -22.625000000000000% }
+.position-7  { margin-left: -10.125000000000000% }
 
 
 

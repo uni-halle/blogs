@@ -110,7 +110,6 @@ body {
   font-family: "Noto Sans", "Geneva", sans-serif;
   color: $color-text-1; 
 }
-
   
 /* Layout
 --------------------------------------------------- */
@@ -188,11 +187,15 @@ nav {
   .sub-menu .sub-menu li {
     margin-bottom: em(6);
   }    
-  .current-menu-item > a, .current-menu-ancestor > a, .current_page_parent > a {
+  .current-menu-item > a,
+  .current-menu-ancestor > a, 
+  .current_page_parent > a {
     font-weight: bold;
     color: $color-highlight-2;
   } 
-  .current-menu-item > .sub-menu, .current-menu-ancestor > .sub-menu, .current_page_parent > .sub-menu {
+  .current-menu-item > .sub-menu,
+  .current-menu-ancestor > .sub-menu,
+  .current_page_parent > .sub-menu {
     // show relevant sub menus
     display: block;
   }    
@@ -911,7 +914,7 @@ a:hover > .cleantraditional-icon-small  {
   line-height: 1;
   speak: none;
   text-align: center;
-  text-decoration: inherit;
+  text-decoration: none;
   text-transform: none;
   vertical-align: top;
   color: $color-text-3;
@@ -929,10 +932,14 @@ h6 {
   margin-top: 2.5em;
   margin-bottom: 1.2em;
   font-weight: 300; 
+  &.has-toptitle {
+    margin-top: 0;
+  }
 }
 h1 { 
   font-size: em(22);  
   font-size: 2.2rem; 
+  font-weight: bold;
 }
 h2 { 
   font-size: em(20);
@@ -954,6 +961,19 @@ h6 {
 
 p {
   margin-top: 0; }
+  
+.toptitle {
+  color: $color-text-3;
+  font-style: italic;
+  &.is-in-loop {
+    margin-top: 3.3em;
+  }
+}
+
+.subtitle {
+  color: $color-text-2;
+  font-size: em(18);
+}
 
 
 /* Links
@@ -1081,7 +1101,7 @@ label > .label-body {
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
-  list-style: none inside circle; }
+  list-style: circle inside; }
 ol {
   list-style: decimal inside; }
 ol, ul {
@@ -1234,21 +1254,27 @@ there.
         width: 70.250000000000000%;
      }      
      .position-6 {
-        margin-left: -100.000000000000000%;
+        margin-left: -97.625000000000000%;
         width: 95.250000000000000%;
      }  
    }
    #sidebar {
      clear:both;
+     margin-top: 2em;
    }
 }
 
 @media screen and (max-width: #{em(660)} ) {
   #content {
     .position-0, .position-2 {
-       margin-left: -100.000000000000000%;
+       margin-left: -97.625000000000000%;
        width: 95.250000000000000%;
     }  
+    .navigation-main {
+        border-bottom: 2px dotted $color-1;
+        margin-bottom: 2em;
+        padding-bottom: 1em;
+    }
   }
   #main {
     clear:both;
@@ -1258,11 +1284,14 @@ there.
       width: 45.250000000000000%;
     }
     .position-2, .position-6 {
-      margin-left: -50.000000000000000%;
+        margin-left: -47.625000000000000%;
     }
     .position-4 {
       clear:both;
-      margin-left: -100.000000000000000%;
+      margin-left: -97.625000000000000%;
+    }
+    .navigation-footer li {
+        word-wrap: break-word;
     }
   }
 }

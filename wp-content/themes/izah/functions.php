@@ -62,7 +62,7 @@ function cleantraditional_setup() {
 			'site-bottom' => __( 'Footer unten', 'cleantraditional' ),
 	) );	
 
-	add_editor_style( array( 'style.css', 'genericons/genericons.css', cleantraditional_fonts_url() ) );
+	add_editor_style( array( 'style.css', 'fonts/genericons/genericons.css', cleantraditional_fonts_url() ) );
 }
 endif; // cleantraditional_setup
 add_action( 'after_setup_theme', 'cleantraditional_setup' );
@@ -99,7 +99,7 @@ function cleantraditional_scripts() {
 	wp_enqueue_style( 'cleantraditional-fonts', cleantraditional_fonts_url(), array(), null );	
 	
 	// Add Genericons, used in the main stylesheet.
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.2' );	
+	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/fonts/genericons/genericons.css', array(), '3.2' );	
 	
 	// Load main stylesheet
 	wp_enqueue_style( 'cleantraditional-style', get_stylesheet_uri() );

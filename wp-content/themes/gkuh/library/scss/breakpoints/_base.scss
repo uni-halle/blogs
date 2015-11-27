@@ -26,7 +26,7 @@ $contentwidth: 80%;
 
 body {
 	font-family: $opensans;
-	font-size: 90%;
+	font-size: 80%;
 	line-height: 1.25;
 	color: $text-color;
 	background-color: $site-bgrd;
@@ -133,13 +133,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	font-size: 2em;
-	line-height: 1.333em;
+	font-size: 1.8em;
+	line-height: 1.2em;
 
 }
 
 h2, .h2 {
-	font-size: 1.5em;
+	font-size: 1.4em;
 	line-height: 1.3em;
 	margin-bottom: 0.375em;
 }
@@ -458,14 +458,22 @@ POSTS & CONTENT STYLES
 			ul, ol, table, dl {}
 
 			ul, ol {
+                margin-left: 1em;
 
 				li {}
 
 			}
 
 			ul {
+                list-style-type: disc;
 
-				li {}
+				li {
+                    
+                    ul {
+                        list-style-type: circle;
+                        
+                    }
+                }
 
 			}
 
@@ -635,16 +643,16 @@ List of Child Pages on First Page of a Section (See page.php for php code and li
     counter-reset: li; /* Initiate a counter */
     list-style: none; /* Remove default numbering */
     *list-style: decimal; /* Keep using default numbering for IE6/7 */
-    font-size: 1.2em;
+    font-size: 1em;
     font-family: $bree, $sans-serif;
-    padding: 0 0 0 1.15em;
+    padding: 0 0 0 1em;
     
     li {
     
     a {
         position: relative;
         display: block;
-        padding: .4em .4em .4em 1.5em;
+        padding: .4em .4em .4em 1.25em;
         *padding: .4em;
         margin: .5em 0;
         text-decoration: none;
@@ -1066,7 +1074,8 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 *********************/
 
-$footerheight:  4em;
+$footerheightvalue:  4;
+$footerheight:  $footerheightvalue * 1em;
 
 /* hide MLU blogfarm footer */
 #global-footer {
@@ -1080,7 +1089,8 @@ $footerheight:  4em;
 
 /********* just change those valuey for the containers. the other elements are being calculated automatically *********/
 /* this is the width of the container for the navigation elements (arrows and circle) */
-$centerwidth: 40%;
+$centerwidthvalue: 40;
+$centerwidth: $centerwidthvalue * 1%;
 
 .footer {
 	clear: both;
@@ -1137,6 +1147,7 @@ $centerwidth: 40%;
     //border: 1px solid red;
     align-self: center;
     font-size: 0.9em;
+    overflow: hidden;
 }
 
 .prevname {
@@ -1148,12 +1159,13 @@ $centerwidth: 40%;
 }
 
 /* this is the width of the circle */
-$centerelement: 40%;
+$centerelementvalue: 40;
+$centerelement: $centerelementvalue * 1%;
 
 .statuscow {
     @include flex(1 1 $centerelement);
-    //width: $centerelement;
     //width: $centerelement * 1.1;
+    //height: 0;
     align-self: center;
     //height: $footerheight;
     //width: 5%;
@@ -1169,11 +1181,25 @@ $centerelement: 40%;
     
     circle {
         transform: rotate(0.1deg); // to fix Firefox
+        position: relative;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
     }
     
     .circle-cover {
         stroke: $navbutton;
     }
+}
+
+// inline svg scales difficult in some browsers and needs this container and the padding-top-fix. see https://css-tricks.com/scale-svg/
+.svgscalefix {
+    width: 100%;
+    padding: 0;
+    position: relative; // important
+    padding-top: ($centerelementvalue / $footerheightvalue) * 1% ; //scaling fix
+    
 }
 
 /* Positioning of prev/next triangle svg  */
@@ -1185,18 +1211,25 @@ $centerelement: 40%;
     @include flex(1 1 $centerelement);
     align-self: center;
     width: $centerelement;
+    padding-top: ($centerelementvalue / $footerheightvalue) * 1% ;
     //margin: 0 auto;
     //display: inline-block;
 }
+
+.svgbutton {
+    position: relative; //important for scaling fix
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    fill: $navbutton;
+}
+
 
 .prevbtn, .nextbtn {
     //border: 1px solid #fff;
     //width: 90%;
     //display: block;
-}
-
-.svgbutton {
-    fill:$navbutton;
 }
 
 
@@ -1222,7 +1255,7 @@ $centerelement: 40%;
 
 	.copyright {}
 
-/* needs to be down here because needs to be declared after footerheight variable. this makes sure that the content always stays above the footer */
+/* needs to be down here because needs to be declared after footerheight variable. this makes sure that the main content always stays above the footer */
 #main {
 padding-bottom: $footerheight;
 }
