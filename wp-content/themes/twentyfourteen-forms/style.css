@@ -51,8 +51,8 @@ margin-top: 24px;
 .full-width .site-content .entry-content,
 .entry-header,
 .entry-content {
-padding-right: 10px;
-padding-left: 10px;
+padding-right: 3px;
+padding-left: 3px;
 }
  /* maximale Breite des Contents und footer */
 .site-content .entry-header, 
@@ -67,7 +67,8 @@ max-width: 400px;
 
 /* padding für content */
 .site-content .entry-content, .site-content .entry-summary, .page-content {
-padding: 0px 10px 0;
+/*padding: 0px 10px 0;*/
+padding: 0;
 }
 
 .hentry {
@@ -129,3 +130,7 @@ div#global-footer {
 #colophon {
 	display:none;
 }
+
+article form * { max-width: 100%; }
+fieldset { margin: 0; padding: 11px 4px 0; }
+fieldset legend { padding: 3px 10px; font-weight:bold;}
