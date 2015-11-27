@@ -1,0 +1,904 @@
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+@import url(css/dropdown.css);
+@import url(css/jquery-ui/jquery-ui.css);
+
+/* jQuery UI tab patch */
+.ui-widget-header {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Admin header */
+#tnp-header {
+    text-align: left;
+    font-size: 12px;
+    xheight: 110px;
+    color: #fff;
+    font-family: "Montserrat",sans-serif;
+}
+
+#tnp-header input {
+    font-size: 12px;
+}
+
+#tnp-header a {
+    text-decoration: none;
+    /*font-family: "Montserrat",sans-serif;*/
+    color: white;
+    letter-spacing: 0.1em;
+}
+
+#tnp-header a:hover {
+    color: #fff;
+}
+
+.error a, .error a:hover {
+    color: #000!important;
+}
+
+.updated a, .updated a:hover {
+    color: #000!important;
+}
+
+/* Admin header for extensions */
+#newsletter-header-ext {
+    text-align: left;
+    background-color: #fff;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    float: right;
+    width: 300px;
+}
+
+#newsletter-header-ext a {
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+#newsletter-path {
+
+}
+
+#newsletter-nav {
+    margin-bottom: 15px;
+}
+
+.newsletter-separator {
+    clear: both;
+    height: 5px;
+}
+
+/*
+.tnp-wrap, .tnp-wrap td, .tnp-wrap th, .tnp-wrap input, .tnp-wrap textarea {
+    font-size: 13px;
+    font-family: sans-serif;
+    line-height: 130%;
+}
+*/
+
+.tnp-wrap select {
+    height: auto;
+    vertical-align: initial;
+}
+.tnp-wrap {
+    /*background-color: white;*/
+    /*padding: 10px;*/
+}
+
+.tnp-wrap td a {
+    text-decoration: underline;
+}
+
+.tnp-wrap a {
+    font-weight: bold;
+}
+
+.tnp-wrap h2 {
+}
+
+.tnp-wrap h3 {
+}
+
+.tnp-wrap h4 {
+}
+
+.tnp-wrap h5 {
+
+}
+
+.tnp-wrap ul li {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.form-table {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.form-table th {
+    text-align: right;
+    font-weight: bold;
+    border-right: 1px solid #ddd;
+    max-width: 200px;
+    color: #000000;
+}
+.form-table th small {
+    font-weight: normal;
+}
+
+.widefat th {
+    text-align: left;
+}
+
+
+p.submit {
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.bordered-table {
+    border-collapse: collapse;
+}
+
+.bordered-table td, .bordered-table th {
+    border: 1px solid #ccc;
+    padding: 3px;
+}
+
+.newsletter-button {
+    font-size: 10px;
+}
+table.clicks td {
+    border: 1px solid #666;
+    padding: 2px;
+    font-size: 10px;
+}
+
+table.clicks {
+    border-collapse: collapse;
+}
+
+.grid {
+    border-collapse: collapse;
+}
+.grid td, .grid th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 0;
+}
+.grid th {
+    background-color: #aaa;
+}
+
+.form-table textarea {
+    width: 100%;
+}
+
+.hints {
+    xborder: 1px solid #e4e4ee;
+    xbackground-color: #f4f4ff;
+    xpadding: 5px;
+    margin-top: 10px;
+    xborder-radius: 4px 4px;
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+    xbackground-color: #fcf8e3;
+    xborder-color: #faebcc;
+}
+
+.intro {
+    font-size: 11px;
+    margin: 6px 6px 8px;
+}
+
+.inside p, .inside li {
+    font-size: 12px;
+    margin: 10px;
+}
+
+.inside ul {
+    list-style-type: circle;
+    list-style-position: inside;
+}
+
+.newsletter-badge {
+    color: #fff;
+    background-color: #666;
+    border-radius: 5px;
+    padding: 1px 5px;
+}
+
+.newsletter-checkbox-group, .nl-checkbox-group {
+    float: left;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    margin-bottom: 5px;
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Checkbox group */
+.newsletter-checkboxes-item {
+    float: left;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #f4f4f4;
+    width: 150px;
+    margin-bottom: 5px;
+    padding: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.newsletter-checkboxes-item input {
+    vertical-align: text-bottom;
+}
+
+.newsletter-checkboxes-item label {
+    display: inline;
+}
+
+.newsletter-preferences-item {
+    float: left;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    width: 250px;
+    margin-bottom: 5px;
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.newsletter-preferences-item label {
+    display: inline;
+}
+
+.form-table td .nl-checkbox-group label {
+    display: inline;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+    font-size: 12px;
+}
+
+
+
+.widefat td, .widefat th {
+    vertical-align: middle;
+}
+
+/*
+.form-table td label {
+  font-size: 10px;
+  display: block;
+}
+*/
+
+.notice {
+    padding-right: 70px;
+    position: relative;
+}
+
+.notice a.dismiss {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #666;
+}
+
+.newsletter-message {
+    background-color: #efe;
+    border-color: #393;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 3px;
+    padding: .6em;
+    margin-bottom: .6em;
+}
+
+.newsletter-error-span {
+    color: #f00;
+    font-weight: bold;
+}
+
+.newsletter-error {
+    background-color: #fee;
+    border-color: #933;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    padding: .6em;
+    margin-bottom: .6em;
+}
+
+.newsletter-error strong, .newsletter-message strong {
+    font-weight: bold;
+}
+
+#newsletter-warnings {
+    background-color: #FFEBE8;
+    border-color: #C00;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    padding: .6em;
+    margin-bottom: .6em;
+}
+
+.newsletter-buttons {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.newsletter-buttons-bottom {
+}
+
+.newsletter-buttons-top {
+}
+
+/* Text under the panel title to explain the panel purpose. */
+/*
+.preamble {
+    margin-bottom: 15px;
+    border-radius: 3px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    background-image: url("images/preamble.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 65px;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+
+.preamble p {
+    margin: 0;
+}
+*/
+
+.newsletter-preamble {
+    margin-bottom: 15px;
+    xborder-radius: 3px;
+    xbackground-color: #f4f4f4;
+    xpadding: 10px;
+    xbackground-image: url("images/preamble.png");
+    xbackground-repeat: no-repeat;
+    xbackground-position: left;
+    xpadding-left: 65px;
+    font-size: 13px;
+    xfont-family: sans-serif;
+}
+
+.newsletter-preamble p {
+    margin: 0;
+}
+
+.tab-preamble {
+    font-size: 13px;
+    line-height: normal;
+    xfont-family: sans-serif;
+    xcolor: #3a87ad;
+    xbackground-color: #d9edf7;
+    xborder: 1px solid #bce8f1;
+    xpadding: 15px;
+    xmargin-bottom: 20px;
+    xborder-radius: 4px;
+}
+
+.tab-preamble p {
+    margin: 0 0 5px 0;
+}
+
+.tnp-paginator {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.newsletter-option-grid th {
+    text-align: right;
+    width: auto;
+    border: 0;
+    padding: 3px;
+    font-weight: normal;
+    vertical-align: top;
+    padding-right: 15px;
+}
+.newsletter-option-grid td {
+    border: 0;
+    padding: 3px;
+    vertical-align: top;
+}
+
+.newsletter-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fafafa;
+    margin-bottom: 15px;
+}
+
+.newsletter-box h3 {
+    margin-top: 0;
+}
+
+.newsletter-textarea-preview {
+    border: 1px solid #ddd;
+}
+
+.tnp-tab-notice {
+    padding: 20px;
+    background-color: #eee;
+}
+
+.tnp-wrap a[target=_blank] {
+}
+
+/* .tnp-wrap a[target=_blank]:after {
+    content: "»";
+}*/
+
+
+/*  CSS The Newsletter Team */
+
+/* CSS Tips */
+
+.tnp-tip {
+    margin-top: 5px;
+}
+
+.tip-button {
+    padding: 0px 5px;
+    color: #FD5F65;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    /*font-family: "Montserrat";*/
+    font-size: 10px;
+    border: 1px red solid;
+}
+
+.tip-content {
+    /*font-family: "Montserrat";*/
+    font-weight: 500;
+    font-size: 11px;
+    color: #999999;
+}
+
+/* CSS General Font Styles */
+
+.tnp-wrap p {
+    /*font-family: "Montserrat";*/
+    font-weight: 400;
+}
+
+p.description {
+    font-size: 11px !important;
+}
+
+
+/* CSS Themes Preview */
+
+.tnp-theme-preview {
+    display: inline-block;
+    text-align: center;
+}
+
+.tnp-theme-preview p {
+    /*font-family: "Montserrat";*/
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.tnp-theme-preview img:hover {
+    border: 5px solid #FD5F65;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #FD5F65;
+}
+
+.tnp-theme-preview img {
+    border: 5px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+.tnp-header-logo {
+    margin-left: 10px;
+}
+
+/* Stefano 4.0 */
+
+.ui-tabs {
+    border-color: #ddd;
+    background-color: #f2f2f2;
+    border: 0;
+}
+
+.ui-tabs .ui-tabs-nav {
+    margin: 0;
+    padding: .2em .2em 0 0;
+    background-color: #f2f2f2;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding: 1em 0;
+    background-color: #f2f2f2;
+    margin: 0;
+    border: 0;
+}
+
+/* Altrimenti si crea una striscia bianca in mezzo alla pagina! */
+    
+
+.wp-core-ui .button-primary {
+    background-color: #2b2f3a;
+    color: #fff;
+}
+
+
+/* Regole Generali*/
+
+#tnp-body {
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    border-color: #34495E;
+    border-width: 10px;
+    border-style: solid;
+}
+
+#tnp-body h3 {
+    margin-top: 0px;
+}
+
+.tnp-body-lite {
+    background-color: #F1F1F1 !important;
+}
+
+
+/* Header & Sub-header Pannelli */
+
+#tnp-heading {
+    padding: 10px;
+    background-color: #34495E;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#tnp-heading a {
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 1.5px solid #fff;
+    text-decoration: none;
+}
+
+#tnp-heading a:hover {
+    color: #27AE60;
+    border-bottom: 1.5px solid #27AE60;
+}
+
+#tnp-heading div p {
+    color: #666;
+}
+
+#tnp-heading h2 {
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.1rem;
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    font-weight: 700;
+    padding: 0;
+}
+
+#tnp-heading p {
+    margin: 0px;
+    color: #fff;
+}
+
+#tnp-heading .tnp-btn-h1 {
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 3px;
+    padding: 6px 11px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: "Montserrat", sans-serif;
+    margin-left: 10px;
+    font-size: 0.75rem;
+    font-weight: 300;
+    border: none;
+}
+
+#tnp-heading .tnp-btn-h1:hover {
+    color: #fff;
+    background-color: #5DADE2;
+    -webkit-transition: background-color .25s linear;
+    transition: background-color .25s linear;
+    -webkit-font-smoothing: subpixel-antialiased;
+    border: none;
+    color: #fff;
+}
+
+
+/* Dashboard Box */
+
+.postbox {
+    border: none;
+}
+
+.postbox h3 a {
+    float: right;
+}
+
+
+#dashboard-widgets .postbox-container {
+    width: 33.333%
+}
+
+.postbox-container h3 {
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0.05rem;
+    background-color: #415b76;
+    color: #fff;
+}
+
+#dashboard-widgets .postbox-container h3 a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    padding: 2px 8px;
+    background-color: #26C281;
+    border-radius: 2px;
+    font-weight: 300;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+}
+
+#dashboard-widgets .postbox-container h3 a:hover {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    background-color: #2ECC71;
+}
+
+.postbox-container i {
+    margin-right: 3px;
+}
+#tnp-dash-newsletters tr td:last-of-type {
+    width: 80px;
+    text-align: right;
+}
+
+#tnp-dash-subscribers tr td:last-of-type {
+    width: 80px;
+    text-align: right;
+}
+
+#tnp-dash-subscribers tr td:first-of-type {
+    width: 250px;
+    overflow: hidden;
+}
+
+#tnp-dash-subscribers table {
+  table-layout: fixed;
+}
+
+#tnp-dash-documentation .inside div {
+    margin-top: 10px; 
+}
+
+#tnp-dash-documentation .inside a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    padding: 5px 10px;
+}
+
+
+/* Footer */
+
+#tnp-footer div {
+    width: 33%;
+    display: inline-block;
+}
+    
+#tnp-footer {
+    margin-top: 10px;
+    padding: 20px 10px 10px 40px;
+    background-color: #34495E;
+    border-radius: 5px;
+    font-family: "Montserrat", sans-serif;
+}
+
+#tnp-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#tnp-footer a:hover {
+    color: #BDC3C7;    
+}
+
+#tnp-footer input[type="submit"] {
+    background-color: #2ECC71;
+    border: none;
+    padding: 5px;
+    color: #fff;
+}
+
+#tnp-footer form {
+    white-space: nowrap;
+}
+
+#tnp-footer li {
+    display: inline;
+    margin-left: 15px;
+    padding: 2px 5px;
+    border-left: 3px solid #2ECC71;
+}
+    
+ /* Wrapper Background */
+ 
+#wpwrap {
+    background-color: #2C3E50;
+}
+
+/* Global buttons styles */
+
+#dashboard-widgets .button {
+    border: none;
+    background: none;
+    box-shadow: none;
+    color: #322C39;
+}
+
+#dashboard-widgets .button:hover {
+    background-color: #ECF0F1;
+}
+
+.wp-core-ui .button-secondary, .wp-core-ui .button, .wp-core-ui .button-primary {
+    background-color: #3498db;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    font-family: 'Montserrat',sans-serif;
+    margin: 0px 2px;
+}
+
+.wp-core-ui .button-secondary:hover, .wp-core-ui .button:hover, .wp-core-ui .button-primary:hover {
+    background-color: #5DADE2;
+    color: #fff;
+}
+
+span.wp-media-buttons-icon:before {
+    color: #fff;
+}
+
+.tnp-paginator [value="Go"] {
+    background-color: #27AE60;
+}
+
+.tnp-paginator [value="Go"]:hover {
+    background-color: #2ECC71;
+}
+
+.notice-dismiss {
+   padding: 3px;
+}
+
+/*.widefat .button-secondary {
+    background: none;
+    color: #3498db;
+}*/
+
+/* Paginator */
+
+.tnp-paginator {
+    color: #2C3E50;
+    font-family: "Montserrat",sans-serif;
+    margin: 10px 0px;
+}
+
+.tnp-paginator .button-secondary {
+    background: #666;
+    padding: 5px;
+    line-height: normal;
+    height: auto;
+    font-size: 12px;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+}
+
+.tnp-paginator [value="Go"] {
+    background-color: #27AE60 !important;
+}
+
+.tnp-paginator [value="Go"]:hover {
+    background-color: #2ECC71 !important;
+}
+
+.tnp-paginator input {
+    background-color: #2C3E50;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    padding: 5px;
+    line-height: normal;
+    font-size: 12px;
+    height: 25px;
+}
+
+/* Subscribers Search Box */
+
+.tnp-subscribers-search {
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    background-color: #2C3E50;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.tnp-subscribers-search select {
+    margin-left: 5px;
+    padding: none;
+    line-height: inherit;
+}
+
+
+/* Responsive Video Embeds */
+
+.tnp-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+ 
+.tnp-video-container iframe,
+.tnp-video-container object,
+.tnp-video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Colors Palette */
+
+.orange {  
+    background-color: #F39C12; /*Orange #F39C12 */
+}
+
+.blue { 
+    background-color: #2980B9; /* Blue #2980B9 */
+}
+
+.purple {
+    background-color: #8E44AD; /* Purple #8E44AD */
+}
+
+.notice a {
+    color: #000 !important;
+}

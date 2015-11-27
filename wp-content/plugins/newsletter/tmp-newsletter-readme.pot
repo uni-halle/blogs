@@ -1,0 +1,1906 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Newsletter"
+msgstr ""
+
+#. Short description.
+msgid "Add a real newsletter system to your blog. For free. With unlimited newsletters and subscribers."
+msgstr ""
+
+#. Found in description header.
+msgid "Main Features"
+msgstr ""
+
+#. Found in description header.
+msgid "Integration with WordPress registration"
+msgstr ""
+
+#. Found in description header.
+msgid "Professional Extensions"
+msgstr ""
+
+#. Found in description header.
+msgid "Support"
+msgstr ""
+
+#. Found in description header.
+msgid "Follow Us"
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Unlimited Subscribers</strong> with statistics "
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Unlimited Emails</strong> with tracking"
+msgstr ""
+
+#. Found in description list item.
+msgid "Customizable <strong>subscription widget</strong>, <strong>page</strong> or <strong>custom form</strong>"
+msgstr ""
+
+#. Found in description list item.
+msgid "Wordpress User Registration <strong>seamless integration</strong>"
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Single</strong> And <strong>Double Opt-In</strong> plus privacy checkbox for EU laws compliance"
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Subscribers preferences</strong> to fine-target your campaigns"
+msgstr ""
+
+#. Found in description list item.
+msgid "SMTP-Ready "
+msgstr ""
+
+#. Found in description list item.
+msgid "Customizable Themes"
+msgstr ""
+
+#. Found in description list item.
+msgid "Html and Text versions of Emails "
+msgstr ""
+
+#. Found in description list item.
+msgid "All messages are <strong>fully translatable</strong> from Admin Panel (no .po/.mo)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Diagnostics Panel to check your blog mailing capability "
+msgstr ""
+
+#. Found in description list item.
+msgid "Newsletter subscription check box on standard WordPress registration form"
+msgstr ""
+
+#. Found in description list item.
+msgid "Auto confirmation on first login"
+msgstr ""
+
+#. Found in description list item.
+msgid "Imports already registered users"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://www.thenewsletterplugin.com/plugins/newsletter/reports-module\">Reports Extension</a> is a regular WordPress plugin which improves the internal statistics collection system and provides better reports of data collected for each sent email. Neat."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://www.thenewsletterplugin.com/feed-by-mail-extension\">Feed By Mail Extension</a> generates and sends your newsletters using your blog last posts, even custom ones like events or products. Just sit and watch!"
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://www.thenewsletterplugin.com/woocommerce-extension\">WooCommerce Extension</a> subscribe customers to a mailing list and generate product newletters."
+msgstr ""
+
+#. Found in description list item.
+msgid "<a href=\"http://www.thenewsletterplugin.com/amazon-ses-extension-for-the-newsletter-plugin\">Amazon SES Extension</a> seamlessly integrate Amazon SES with The Newsletter Plugin. Hassle-free."
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Our Official Website</strong> - http://www.thenewsletterplugin.com/ "
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Our Facebook Page</strong> - https://www.facebook.com/thenewsletterplugin "
+msgstr ""
+
+#. Found in description list item.
+msgid "<strong>Our Twitter Account</strong> - https://twitter.com/newsletterwp"
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"Newsletter is a <strong>real newsletter system</strong> for your WordPress blog: perfect for list building, you can easily create,\n"
+"send and track e-mails, headache-free. It just works out of box!"
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"<strong>Set Up Your First Newsletter In Just A Couple Of Clicks</strong>\n"
+"[youtube https://www.youtube.com/watch?v=JaxK7XwqvVI]"
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"Need <em>more power</em>? Feel <em>something's missing</em>? The Newsletter Plugin features can be easily extended through \n"
+"our <strong>premium, professional Extensions</strong>! Let us introduce just two of them : )"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "We provide support for our plugin on <a href=\"https://wordpress.org/support/plugin/newsletter\">Wordpress.org forums</a> and through our official <a href=\"http://www.thenewsletterplugin.com/forums\">forum here</a>, but only Premium Users with an active license have access to one-to-one support via our <a href=\"http://www.thenewsletterplugin.com/support-ticket\">ticketing system</a>."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Put the plug-in folder into [wordpress_dir]/wp-content/plugins/"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Go into the WordPress admin interface and activate the plugin"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Optional: go to the options page and configure the plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an error on content lock"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed CSS for extensions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed few debug notices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the content lock user recognition"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Subscriber search by list "
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed and improved the email template for service messages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the welcome email enable/disable setting "
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed main settings saving"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed unsubscription settings saving"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Shiny new look"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New top menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Locked content feature moved into the subscription module"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Separated SMTP configuration panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Newsletter users import transfer first and last name"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Various bug fixes and improvements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Corrected the call to maybe_maybe_convert_table_to_utf8mb4"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "CSV export fix"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Delete button on newsletter list fixed (wrong since version 3.9.3)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the blog charset to the dagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the read count (was due to antispam filter changes)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Language domain fixes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the tab separator in CSV export"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the already subscribed option"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed obsolete code for anchor tracking"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the sent newsletters to the subscriber editing panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a sent-to table"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enable the tracking key edit"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the antibot option, active by default"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "First round of changes for translate.wordpress.org"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed few notices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added deprecation notices for the email.php and email-alternative.php files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the export separator"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed reference to plugin files in URLs to avoid spam filter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the selection of Newsletter action URL"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed obsolete files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the new excerpt extraction"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved support for browser without javascript"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Adding multi subscription support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved antibot"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some debug/deprecated noticies"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for new beta Report Extension features"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Unsubscription works now only with JavaScript enabled browser to block bots"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New way to extract excerpts to avoid third party filters"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the image selector for header logo"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added preview form subscription message template"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added WordPress like metadata on themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the default theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed few theme screeshots"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added attribute \"layout\" to shortcode with value \"html5\" for tableless form"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the widget constructor"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved checks on tracking links which could be used for spamming links (open redirect)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the widget constructor"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the newsletter_form shortcode"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added shortcodes for in page form building (beta): see the <a href=\"http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation\">plugin documentation</a>."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the unsubscription problem"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the editor for unsubscription messages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the unsubscription error message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the email change from admin panels"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the profile field check when set as optionals"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the profile editing page (with confirmation for email change)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added new sync between confirmed email and linked wp user email"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved check and messages on subscriber edit panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the confirmation behavior for already confirmed users (welcome page reshown)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the subscription delete option when a WordPress user si deleted"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Unsubscribe action for already unsubscribed subscribers reshow the unsubscription message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Better management of emoji (creating sometime a database error)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Corrected open tracking with new tracking URL schema"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "CSV import fix"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added subject empty check when sending tests"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added option to import subscribers as confirmed or not confirmed "
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added import subscribers from CSV file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated the WP compatibility version number"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the save button on sent emails"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the List-§Unsubscribe header with new URL schema"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the online email view with the new URL schema"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the editor role"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the unsubscription url with the new action url schema"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the readme.txt"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested with WP 4.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the new action URL schema"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a notice for blank page on newsletter creation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Few notices removed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added more html require attributes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the alternative confirmation redirect"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the referrer attribute on shortcodes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added control to avoid the wp super cache caching on newsletter services"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the new action URL schema (see the subscription steps panel)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added confirmation_url attribute to the form short code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added referrer attribute to the form short code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Newsletters now start with empty subject and it's require to write it"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the API add service key check"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a couple of PHP noticies on widget (when not configured)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed extra profile field rules and placeholder"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the editor issue on subscription steps panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Attempt to fix the home url retrieval on some custom installations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed some unused code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the rate request notice"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the new URL tracking option (beta)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the new URL tracking option notice"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added file owner checking on diagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added action files call checking on diagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added dimensions on read-tracking image"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the html tag to the message templates"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the template generation method to avoid conflicts with themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bugfix"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Little fix"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the subject of the administrative notification"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Cleaned up obsolete code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for extension versions check"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed typo in text only themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed wrong unsubscribe code in German Welcome Email"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New Blog Info configuration panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New Default Theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Minor layout changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix subscription email link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added notices when filters are active on subscriber management panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Few fixes on statistic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed undefined index noticies on subscription page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Several fixes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "A TNT team member quitted smoking, so the plugin become smoking free"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a cron monitor"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a xmas theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the opt-in mode for wordpress registsred users"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the noticies"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed somes styles"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the direct newsletter edit for themes without options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Header changed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed all links to refer the new site www.thenewsletterplugin.com"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the newsletter editor default style"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added parameter \"plugin url\" on diagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added custom post types to the linear theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added custom post types to the vimeo-like theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the feed by mail placeholder panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the antibot option with preferences"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Support for greek (and others) characters without the entity encoding"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a debug notice in the widget code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added gender on import"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for the constant NEWSLETTER_LOG_DIR in wp-config.php to define the loggin folder"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the domain removal on subscription steps messages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the feed by mail test function"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the separator selection on CSV export"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the UTF-8 BOM to the export"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some debug noticies"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the widget when field names contain double quotes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the extension list from welcome panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the and operator in the newsletter recipients selector"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the select_group(...) in NewsletterControls class"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a possible antibot to the subscription flow"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added soundcloud for social icon on default theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the welcome screen (should)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the private flag on newsletters"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed old extension version checking/reporting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added custom header for newsletter tagging with mandrill"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added internally used html 5 subscription form"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the license key field for special installations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the web preview charset"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for extensions as plugins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the {title} tag replacement for old subscriber list with the gender not set"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the upgrade from old versions button on diagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Support for the SendGrid extension"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the subscriber list panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Interface reviewed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the image chooser for WP 3.8.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the export for editors"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Patch for anonymous users create by woocommerce"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Madrill API adapter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Header separation between this plugin and the extensions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Default to base 64 encoding of outgoing email to solve the long lines problem"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some warnings in debug mode"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the disabling setting of the social icons (on default newsletter themes)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added filters on widget for WPML"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added filter for single line feeds refused by some mail servers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a javascript protection against auto confirmation from bot"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a warning with debug active on site login"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the subscription panel where some panels where no more visible."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the full_name tag"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the \"simple\" theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added indexes to the statistic table to improve the reports extension response time"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some noticies in debug mode"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Revisited the theme chooser and the theme configuration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a double field on the locked content configuration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the delivery engine"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved error messages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the last tab store (jquery changes)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added some new controls for the pop up extensions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the precendence bulk header (https://support.google.com/mail/answer/81126)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added filter on messages to avoid wrong URLs when the blog change domain or folder"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the alt attribute to the tracking image"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New option to set the PHP max execution time"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some text on main configuration panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refined the subscription for already subscribed emails"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the delivery engine warning message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the version check"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed newsletter copy to copy even the editor and traking status"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the subscribers search list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added some more buttons on Newsletter editor"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the subscription form menu voice (I cannot answer anymore the same request about subscribe button translation :-)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Suppressed warning on log function"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed activation in debug mode"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some notices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added defaults for subscriber titles (Mr, Mrs, ...)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Internal code fixes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the \"editor\" access control"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the feed by mail field on widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed tab names to avoid mod_security interference"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the \"name\" form field rules"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added (undocumented/untested) way to change the table names"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a caching blocking on short code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New way to create a newsletter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the mailto rewriting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added tags and categories to default theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added post type on default theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some administrative CSS"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Revisited the theme selection and configuration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the module version check"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the IP tracking on opening"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Disabled the save button on composer when the newsletter is \"sending\" or \"sent\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ip field on statistics"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Reviewed the subscriber statistics panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some links on welcome panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added extensions version check"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the Mandrill Extension support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the banner options on default theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New \"new newsletter\" panel (hope simpler to use)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a bug in an administrative query"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a replacement on online email version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a missing privacy check box configuration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the split posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added post_type control"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Re-enabled the subscription for addresses not confirmed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the welcome and ocnfirmaiton email when sent from subscribers list panel (were not using the theme)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the \"pre-checked\" option to preferences configuration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a possible loop on widget (when using extended fields in combobox format)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the newsletter_replace filter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the person title for salutation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the profile field panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the massive deletion of unsubscribed users"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a controls for the Reports module version 1.0.4"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed opening tracking and removed 1x1 GIF"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for popup on subscription form"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the link to the reports module"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the forced preferences on subscription panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the home_url and blog_url replacements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the cleans up of tags used in href attributes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the cleans up of URL tags"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added module version checking support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the welcome email option to disable it"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the new subscriber notification missing under some specific conditions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added target _blank on theme links so they open on a new windows for the online version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed to the plugins_url() function"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added clean up of url tags on composer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added schedule list on Diagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the enable/disable resubscription option"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a check for the delivery engine shutdown on some particular situations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Revisited the WordPress registration integration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Revisited the WordPress user import and moved on subscriber massive action panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added links to new documentation chapter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed a survived reference to an old table"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Reactivated the replacement of the {blog_url} tag"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the tracking code injection"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a default query generation for compatibility with 2.5 version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the tag replacements when using the old forms"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the subscription options change problem during the upgrade"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "English corrections by Rita Vaccaro"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the Feed by Mail demo module"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for the Facebook module"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed fatal error with old form formats"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added hint() method to NewsletterControls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the Newsletter::replace_date() to replace even the {date} tag without a format"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added NewsletterModule::format_time_delta()"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added NewsletterModule::format_scheduler_time"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the diagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an error on subscription with old forms"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the unsubscription with old formats"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the confirmation for multiple calls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed user saving on new installation (column missing for followup module)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added compatibility code with domain remaping plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a setting to let unsubscribed users to subscribe again"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the re-subscription option"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the NEWSLETTER_MAX_EXECUTION_TIME"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the NEWSLETTER_CRON_INTERVAL"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the delivery engine performances"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the newsletter list panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Change the subscription in case of unsubscribed, bounced or confirmed address with a configurable error message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Some CSS review"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the unsubscription procedure with a check on user status"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added Pint theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added better support for Follow Up for Newsletter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed integration with Feed by Mail for Newsletter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a bug on profile save"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a message about log folder on diagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the sex field on user creation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the subscription form absent on some configurations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Content locking deactivated if a user is logged in"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a button to create a newsletter dedicated page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added top message is the newsletter dedicated page is not configured"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the subscription process with the old \"na\" action"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added a new option with wp registration integration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the opt-in mode to wp registration integration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a bug on post/page preview"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added support for SendGrid Module"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a fatal error on new installations on emails.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the access control for editors"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved to the log system to block it when the log folder cannot be created"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Moved all menu voices to the new format"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added ability to send and email to not confirmed subscribers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a problem with internal module versions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the copy and delete buttons on newsletter list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the old trigger button on newsletter list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the edit button on old user search"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the module version checking"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the \"unconfirm\" button on massive subscriber management panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added link to change preferences/sex from emails"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added tag reference on email composer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added \"negative\" preference selection on email targeting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the subscription during WordPress user registration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the preference saving from profile page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the default value for the gender field to \"n\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added loading of the Feed by Mail module"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added loading of the Follow Up module"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added loading of the MailJet module"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the administrative page header"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the subscriber list and search panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the locked content feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the good bye email not using the standard email template"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changed the diagnostics panel with module versions checking"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed some code on NewsletterModule"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an important bug"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the charset on some pages and previews for umlaut characters"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a warning in WP 3.5"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the visual editor on/off on composer panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added file permissions check on diagnostic panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the default value for \"sex\" on email at database level"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the checking of required surname"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a warning on subscription panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improved the subscription management for bounced or unsubscribed addresses"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Removed the simple theme of tinymce to reduce the number of files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added neutral style for subscription form"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added styling for widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the widget html"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the reset button on subscription panels"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the language initialization on first installation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed save button on profile page (now it can be an image)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed email listing showing the planned status"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the alternative email template for subscription messages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added user statistics by referrer (field nr passed during subscription)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added user statistics by http referer (one r missing according to the http protocol)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the preview for themes without textual version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the subscription redirect for blogs without permalink"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the \"sex\" column on database so email configuration is correctly stored"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the wp user integration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed documentation on subscription panel and on subscription/page.php file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the statistics module URL rewriting"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a \"echo\" on module.php datetime method"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the multi-delete on newsletter list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed eval() usage on add_menu_page and add_admin_page function"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed a number of ob_end_clean() called wht not required and interfering with other output buffering"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the editor access level"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Documented how to customize the subscription/email.php file (see inside the file) for subscription messages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the confirmation message lost (only for who do not already save the subscription options...)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed an extra character on head when including the form css"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the double privacy check on subscription widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the charset of subscription/page.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the theme preview with wp_nonce_url"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added compatibility code for forms directly coded inside the subscription message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added link to composer when the javascript redirect fails on creation of a new newsletter"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fixed the old email list and conversion"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Release"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added the user massive management panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Updated to 20 lists instead of 9"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Max lists can be set on wp-config.php with define('NEWSLETTER_LIST_MAX', [number])"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Default preferences ocnfigurable on subscription panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the profile fields generation on subscription form"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed javascript email check"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed rewrite of link that are anchors"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "possible patch to increase concurrency detection while sending"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed warning message on email composer panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "changed the confirmation and cancellation URLs to a direct call to Newsletter Pro to avoid double emails"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "mail opening now tracked"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the add api"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "feed by mail settings added: categories and max posts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "feed by mail themes change to use the new settings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "unsubscribed users are marked as unsubscribed and not removed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "api now respect follow up and feed by mail subscription options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the profile form to add the user id and token"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "subscribers' panel changed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "optimizations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "main url fixed everywhere"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "small changes to the email composer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "small changes to the blank theme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "subscribers panel now show the profile data"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "search can be ordered by profile data"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "result limit on search can be specified"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "{unlock_url} fixed (it was not pointing to the right configured url)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the concurrent email sending problem"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added WordPress media gallery integration inside email composer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added the add_user method"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the API (was not working) and added multilist on API (thankyou betting-tips-uk.com)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed privacy check box on widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added compatibility with lite cache"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the list checkboxes on user edit panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "removed the 100 users limit on search panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "category an max posts selection on email composer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "improved the url tag replacement for some particular blog installation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the unsubscription administrator notification"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "replaced sex with gender in notification emails"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the confirm/unconfirm button on user list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed some labels"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "subscription form table HTML"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added {date} tag and {date_'format'} tag, where 'format' can be any of the PHP date formats"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added {blog_description} tag"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the feed reset button"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added one day back button to the feed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "updated custom forms documentation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the trigger button on emails panel"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "changed both feed by mail themes (check them if you create your own theme)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed the custom profile field generation (important!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed documentation about custom forms"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Version 2.5.1.3\n"
+"- fix the feed email test id (not important, it only generates PHP error logs)\n"
+"- feed by mail send now now force the sending if in a non sending day\n"
+"- changed the way feed by mail themes extract the posts: solves the sticky posts problem\n"
+"- added the feed last check time reset button\n"
+"- fixed the confirm and cancel buttons on user list\n"
+"- fixed the welcome email when using a custom thank you page\n"
+"- added images to theme 1\n"
+"- added button to trigger the delivery engine\n"
+"- fixed the widget mail check\n"
+"- reintroduced style.css for themes\n"
+"- updated theme documentation\n"
+"- added CDATA on JavaScript\n"
+"- fixed theme 1 which was not adding the images\n"
+"- added theme 3"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Version 2.5.1.2\n"
+"- fixed the old profile fields saving"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Version 2.5.1.1\n"
+"- new fr_FR file\n"
+"- fixed test of SMTP configuration which was sending to test address 2 instead of test address 1\n"
+"- bounced voice remove on search filter\n"
+"- added action \"of\" which return only the subscription form and fire a subcription of type \"os\"\n"
+"- added action \"os\" that subscribe the user and show only the welcome/confirmation required message\n"
+"- fixed issue with main page url configuration"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Version 2.5.1\n"
+"- Fixed the widget that was not using the extended fields\n"
+"- Fixed the widget that was not using the lists\n"
+"- Added the class \"newsletter-profile\" and \"newsletter-profile-[number]\" to the widget form\n"
+"- Added the class \"newsletter-profile\" and \"newsletter-profile-[number]\" to the main subscription form\n"
+"- Added the class \"newsletter-profile\" and \"newsletter-profile-[number]\" to the profile form\n"
+"- Added the classes \"newsletter-email\", \"newsletter-firstname\", \"newsletter-surname\" to the respective fields on every form\n"
+"- Removed email theme option on subscription panel (was not used)\n"
+"- Fixed the welcome email on double opt in process\n"
+"- Subscription notifications to admin only for confirmed subscription\n"
+"- Fixed subscription process panel for double opt in (layout problems)\n"
+"- Improved subscription process panel"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Version 2.5.0.1\n"
+"- Fix unsubscription process not working"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Version 2.5.0\n"
+"- Official first release"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"See the <a href=\"http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-faq\">Newsletter FAQ</a> or the\n"
+"<a href=\"http://www.thenewsletterplugin.com/forums\">Newsletter Forum</a> to ask for help."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "For documentation start from <a href=\"http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-documentation\">Newsletter documentation</a>."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Thank you, The Newsletter Team"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Screen shots"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "No screenshots are available at this time."
+msgstr ""
