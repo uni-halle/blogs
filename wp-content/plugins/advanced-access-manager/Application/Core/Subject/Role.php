@@ -91,7 +91,9 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
      * @access public
      */
     public function removeCapability($capability) {
-        return $this->getSubject()->remove_cap($capability);
+        $this->getSubject()->remove_cap($capability);
+        
+        return true;
     }
 
     /**
@@ -106,7 +108,9 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
      * @access public
      */
     public function addCapability($capability) {
-        return $this->getSubject()->add_cap($capability, 1);
+        $this->getSubject()->add_cap($capability, 1);
+        
+        return true;
     }
 
     /**

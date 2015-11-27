@@ -4,7 +4,7 @@ Donate link: http://mkrdip.me/donate
 Tags: category, posts, widget, single category widget, posts widget, category recent posts
 Requires at least: 2.8
 Tested up to: 4.3.1
-Stable tag: 4.1.3
+Stable tag: 4.1.4
 License: GPLv2 or later 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,16 +19,26 @@ Category Posts Widget is a light widget designed to do one thing and do it well:
 * Option to change ordering of posts.
 * Option to show post thumbnail & set dimension by width & height.
 * Option to put thumbnail on top
+* Option to hide posts which have no thumbnail.
 * Option to disable widget CSS.
 * Set how many posts to show.
+* Option exclude current post.
+* Option show post author.
 * Set which category the posts should come form.
 * Option to show the post excerpt and how long the excerpt should be.
 * Option to show the post date.
+* Option to make the widget date link to the category page.
+* Option to format the outputted date string.
 * Option to show the comment count.
 * Option to make the widget title link to the category page.
+* Option to link to the category page below posts list.
 * Option to hide the title.
 * Option to hide widget, if category have currently no posts.
 * Multiple widgets.
+
+= Documentation =
+
+Formatting date and time: See <a target="_blank" href="https://codex.wordpress.org/Formatting_Date_and_Time">Formatting Date and Time</a>.
 
 = Contribute =
 While using this plugin if you find any bug or any conflict, please submit an issue at 
@@ -65,12 +75,25 @@ Automatic installation is the easiest option as WordPress handles the file trans
 
 Please use the option: "Disable widget CSS".
 
+= I want the title as a link pointing to the selected Categorie page? =
+
+Enable the check box "Make widget title link".
+
 == Screenshots ==
 
 1. The widget configuration dialog.
 2. Front end of the widget using a default WordPress Theme.
 
 == Changelog ==
+
+4.1.4
+
+* Added option exclude current post.
+* Added option to hide posts which have no thumbnail.
+* Added option to make the widget date link to the category page.
+* Added option to link to the category page below posts list.
+* Added option show post author.
+* Added option to format the outputted date string.
 
 4.1.3
 

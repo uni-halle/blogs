@@ -1,49 +1,84 @@
 === Shareaholic | share buttons, related posts, social analytics & more ===
 Contributors: shareaholic
-Tags: shareaholic, shareholic, sexybookmarks, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote
+Tags: shareaholic, shareholic, sexybookmarks, recommendations, related content, cookie consent, share buttons, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
-Tested up to: 4.3.1
-Stable tag: 7.6.2.3
+Tested up to: 4.4
+Stable tag: 7.7.1.0
 
-The easiest, most effective way to grow your website traffic, effectively engage your audience, monetize, and gain insights for free.
+World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
 == Description ==
 
-Shareaholic is an **all-in-one content amplification and monetization platform**, that includes related content recommendations, promoted content, social sharing, following, site monetization apps such as affiliate linking, and social analytics. This module makes it a snap for any website — big or small — to engage and grow their traffic, market their content, gain insights, and monetize their traffic, all from one powerful but easy-to-use dashboard.
+Shareaholic is the world's leading **all-in-one Content Amplification Platform**, which includes related content recommendations, social sharing, following, social analytics and site monetization apps such as promoted content, native ads and affiliate links. This module makes it a snap for any website — big or small — to engage and grow their traffic, market their content, gain insights, and monetize their audience, all from one powerful but easy-to-use dashboard. All our Apps are designed to work well together, on any website.
+
 
 = Recent Updates =
 
+* Automatic Google Analytics integration ([setup guide](http://support.shareaholic.com/hc/en-us/articles/205181045-)) for sharing analytics
 * [Promoted Content](http://support.shareaholic.com/hc/en-us/articles/202657036)
-* [Affiliate Linking](http://support.shareaholic.com/hc/en-us/articles/202938373-How-does-the-Affiliate-Links-app-work-) - earn revenue from your existing product links with zero additional effort
 * [Post-Share Follow Buttons](https://blog.shareaholic.com/post-share-follow-buttons/)
-* [Floating Share Buttons](https://blog.shareaholic.com/floating-share-buttons/)
-* [Shareable Images](https://blog.shareaholic.com/image-share-buttons/) (Pinterest "pin it" button for images)
-* Bonus: [EU / UK Cookie Compliance Banner App](https://blog.shareaholic.com/cookie-consent-banner-app/)
+* [EU / UK Cookie Compliance Banner App](https://blog.shareaholic.com/cookie-consent-banner-app/)
 * Localized in 15+ languages
-* Related Content support for post keywords specified in the "All in One SEO Pack", "WordPress SEO by Yoast", "Add Meta Tags", etc plugins
+* Official support for WooCommerce
+
+> <strong>Support</strong><br>
+> One on one email support is available. Visit our [Support Center](http://support.shareaholic.com/). Rest easy knowing real people are ready to help you. Everyone on our Customer Care team is an experienced Shareaholic user.
 
 = Share Buttons =
 
-Make it 1-click easy for your visitors to share your content with their friends with Shareaholic's award winning Share Buttons.
+Make it 1-click easy for your visitors to share your content with their friends with Shareaholic's award winning Share Buttons. This is the ultimate Social Media Widget for your website.
 
-* Share Counters for Twitter, Facebook, LinkedIn, Pinterest, Buffer, Google Plus, etc
+* Vector share & follow buttons (SVG icons)
+* Official Share Counters for Twitter, Facebook, LinkedIn, Pinterest, Buffer, Google Plus, and more
 * Official support for Google's URL shortener (goo.gl) and Google Analytics
 * Supported URL Shorteners: Bitly (including custom tracking), J.mp, TinyURL, Goo.gl, Shr.lc
 * Full support for: Facebook, Twitter, Pinterest, Google Plus, Reddit, LinkedIn, Gmail, Delicious, OneNote, Evernote, Stumbleupon, Digg, Tumblr, Hootsuite, Buffer, Fancy, Wanelo, Yummly, WeHeartIt, Flipboard, Printfriendly, Amazon Wishlist, Instapaper, Pocket, Odnoklassniki, Houzz, Hacker News, Inbound.org, Vk, etc
+* Automatic Google Analytics integration ([setup guide](http://support.shareaholic.com/hc/en-us/articles/205181045-))
+* Supports theme features such as HTML5 & XHTML, widgets, infinite scroll, post formats
 
 [Share Buttons](https://shareaholic.com/publishers/sharing/) (demo)
 
+= Share Buttons for Images (Pinterest "pin it" button for images) =
+
+Get more shares and viral traffic by adding smart share buttons to the images on your website and making them easy to share.
+
+[Learn more](https://blog.shareaholic.com/image-share-buttons/)
+
+= Floating Share Buttons =
+
+Increase sharing engagement by 2x or more by Share Buttons that hover on the side of the page, rather than in the page content.
+
+[Learn more](https://blog.shareaholic.com/floating-share-buttons/)
+
 = Related Content =
 
-Increases pageviews, engagement and time on site by highlighting relevant content that may not otherwise be discovered from across your site. Shareaholic is not just yet another related posts content plugin. It involves a simple installation that's easy to update and tweak. You'll be using well-engineered and optimized code that won't slow or block your pages from loading. You can choose between several themes to match your site's design and customize every pixel if you'd like. Optimized for mobile devices like the iPhone, iPod touch, iPad, Android mobile phones, and more!
+Increases pageviews, engagement and time on site by highlighting relevant content that may not otherwise be discovered from across your site. Shareaholic is not just yet another related posts content plugin. It involves a simple installation that's easy to update and tweak. You'll be using well-engineered and optimized code that won't slow or block your pages from loading.
 
-= Follow Buttons =
-
-Helps you get more followers to grow your social influence on Facebook, Twitter, Pinterest, Instagram and many other social networks.
+* Choose between several themes to seamlessly match your site's theme, design and personality. and customize every pixel if you'd like
+* Make money by displaying sponsored content, at the bottom of your posts, in the sidebar, or both
+* Easily promote your product or service on thousands of blogs and websites
+* Automatically utilizes post keywords specified in the "All in One SEO Pack", "WordPress SEO by Yoast", "Add Meta Tags", and other plugins
+* Optimized for mobile devices like the iPhone, iPod touch, iPad, Android mobile phones, and more
 
 = Social Analytics =
 
 Provides you with important actionable metrics including insights into popular pages on your website, referral channels, and who are making referrals and spreading your webpages on the internet on your behalf bringing you back more traffic and new visitors.
+
+[Learn more](https://shareaholic.com/publishers/analytics)
+
+= Affiliate Links =
+
+Automagically turn your site’s existing links into rewards. Clicks that turn into purchases from our ever-expanding universe of 35,000+ retailers, turn into commissions for you with zero additional effort.
+
+[Learn more](http://support.shareaholic.com/hc/en-us/articles/202938373-How-does-the-Affiliate-Links-app-work-)
+
+= Follow Buttons =
+
+Will help you get more followers and grow your social influence on Facebook, Twitter, Pinterest, Instagram and many other social networks. 
+
+Supported services include: Facebook, Twitter, Vine, Pinterest, YouTube, Google+, LinkedIn, SlideShare, Instagram, VK, RSS feed, Github, Stackoverflow, Dribbble, Behance, 500px, iTunes, Houzz, Flickr, Foursquare, Yelp, Bloglovin, Etsy, TripAdvisor, About.me, Polyvore, Soundcloud, eBay, Better Business Bureau (BBB), Skype, Zillow, Disqus, Spotify, Feedly, LiveJournal
+
+[Learn more](https://shareaholic.com/publishers)
 
 = Additional features =
 
@@ -51,23 +86,17 @@ Provides you with important actionable metrics including insights into popular p
 * **Mobile Optimized** - Responsive and retina display friendly. Shareaholic will work and look great on all mobile devices and tablets.
 * **Built for Scale** - It doesn't matter if your website generates 1 view or 100 million. Shareaholic scales to any size and will work just as well.
 * **Generate Revenue** - Make money with minimal effort while retaining full control at all times.
-* **Fast & Secure** - We use industry best practices to make our code as fast and unobtrusive as possible, meaning - for example - that the performance impact is comparable to adding Google Analytics to your site. Because all of the processing and collection runs on our servers and not yours, it doesn't cause any additional load on your hosting account. In addition, our JavaScript is hosted on Amazon's CDN to make fetching it as blazing fast and reliable as possible. In fact, it's one of the fastest proven analytics system, hosted or not hosted, that you can use.
+* **[Fast & Secure](http://support.shareaholic.com/hc/en-us/articles/204339849-)** - We use industry best practices to make our code as fast and unobtrusive as possible, meaning - for example - that the performance impact is comparable to adding Google Analytics to your site. Because all of the processing and collection runs on our servers and not yours, it doesn't cause any additional load on your hosting account. In addition, our JavaScript is hosted on Amazon's CDN to make fetching it as blazing fast and reliable as possible. In fact, it's one of the fastest proven analytics system, hosted or not hosted, that you can use.
 
 = You're in Great Company =
 
 Shareaholic is used and trusted by hundreds of thousands of websites like yours and touches over 450 million people each month. Designed and built with all the love in the world in Boston, Massachusetts.
 
-= Support =
-
-Need help? Visit our [Support Center](http://support.shareaholic.com/). Rest easy knowing real people are ready to help you. Everyone on our Customer Care team is an experienced Shareaholic user.
-
 Note: The analytics portion of Shareaholic may use trusted 3rd party services like Google Analytics and AppNexus to enhance its data.
 
 [Support](http://support.shareaholic.com/) | [Privacy](https://shareaholic.com/privacy/) | [Terms](https://shareaholic.com/terms/) | [API](https://shareaholic.com/api/) | [Social Analytics](https://shareaholic.com/publishers/analytics/)
 
-== Other Notes ==
-
-= Special Thanks & Credits =
+== Special Thanks & Credits ==
 
 The plugin wouldn't be half of what it is today if it weren't for people like you who take the time to help it grow! Whether it be by submitting bug reports, translations, or maybe even a little development help. 
 
@@ -75,7 +104,7 @@ Listed here are credits and special thanks to some of you who have helped us out
 
  [Complete credits on Shareaholic.com](https://shareaholic.com/tools/wordpress/credits)
 
-= Shareaholic in Your Language =
+== Shareaholic in Your Language ==
 
 Shareaholic is used all over the world. Our goal is to support Shareaholic in the native language of all our users and people who want to use our products. Shareaholic for WordPress is currently localized in the following languages:
 
@@ -90,8 +119,8 @@ Shareaholic is used all over the world. Our goal is to support Shareaholic in th
 * Afrikaans (af_AF)
 * Italian (it_IT)
 * Turkish (tr_TR) by [Plantekno Bitki](http://plantekno.com)
-* Spanish - Mexico (es_MX) by [Luis Jared Pardo ](http://www.clickseguro.net)
-* Spanish - Spain (es_ES) by [Luis Jared Pardo ](http://www.clickseguro.net)
+* Spanish - Mexico (es_MX) by [Luis Jared Pardo](http://www.clickseguro.net)
+* Spanish - Spain (es_ES) by [David Marco Busto](http://alfabetadigital.com)
 * Romanian (ro_RO)
 * Contribute a translation! -- we would appreciate your help in translating Shareaholic into even more languages! It doesn’t take much to get started. Instructions: https://shareaholic.com/tools/wordpress/translate
 
@@ -133,6 +162,7 @@ You can place Share Buttons, Related Content and any other Shareaholic app manua
 `[shareaholic app="recommendations" id="<insert shareaholic app ID here>"]`
 `[shareaholic app="ad_spaces" id="<insert shareaholic app ID here>"]`
 `[shareaholic app="follow_buttons" id="<insert shareaholic app ID here>"]`
+`[shareaholic app="total_share_count"]`
 
 Notes: optionally, you can also specify `title`, `link` or `summary` as Shareaholic shortcode parameters. If you don't specify these optional  parameters, the shortcode will automatically determine these values.
 
@@ -153,13 +183,6 @@ Shareaholic Shortcode's are full featured and support all available configuratio
 
 [General information about shortcodes and WordPress](https://codex.wordpress.org/Shortcode)
 
-Old legacy methods (not officially supported as of version 7.0.0.0):
-
-`<?php if(function_exists('selfserv_shareaholic')) { selfserv_shareaholic(); } ?>`
-`<?php if(function_exists('get_shr_like_buttonset')) { get_shr_like_buttonset('Top'); } ?>`
-`<?php if(function_exists('get_shr_like_buttonset')) { get_shr_like_buttonset('Bottom'); } ?>`
-
-
 == Frequently Asked Questions ==
 
 = Where can I find a detailed FAQ? =
@@ -170,16 +193,64 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 
 == Changelog ==
 
+= 7.7.1.0 =
+
+* Bugfix: Update to fix W3C HTML5 validation
+
+= 7.7.0.0 =
+* New: Google Analytics integration for sharing analytics ([setup guide](http://support.shareaholic.com/hc/en-us/articles/205181045-))
+* New: Options to display 4, 6, 8, 12, or 16 related posts! ([learn more](https://blog.shareaholic.com/additional-options-for-the-shareaholic-related-content-app/))
+* New: Giant Floated Share Buttons theme ([learn more](https://blog.shareaholic.com/giant-floated-share-buttons/))
+* New: "Round" Related Content App theme added ([learn more](https://blog.shareaholic.com/new-related-content-app-theme-round/))
+* New: Affiliate Links Earnings Dashboard ([learn more](https://blog.shareaholic.com/affiliate-links-app-earnings-dashboard-now-live/))
+* New: Total Share Counts App - showcase the number of shares your content has received ([learn more](https://blog.shareaholic.com/showcase-your-share-count-totals/))
+* New: Conditionally Display Share Counts & More Advanced Display Rules for your Share Buttons ([learn more](https://blog.shareaholic.com/new-features-conditionally-display-share-counts-more-advanced-display-rules/))
+* New: Adds support for adding [shortcodes](https://wordpress.org/plugins/shareaholic/installation/) to your sidebar text widgets - it's now so easy for you to include Shareaholic Apps such as Share Buttons, Follow Buttons and Related Content in your sidebar. Simply copy/paste the corresponding [Shareaholic shortcode](https://wordpress.org/plugins/shareaholic/installation/) for the App.
+* New: Custom color, order and theming options for Follow Buttons ([learn more](https://blog.shareaholic.com/new-follow-button-feature-updates/))
+* New: Follow Buttons additions (learn more [here](https://blog.shareaholic.com/13-new-ways-to-grow-your-following/) & [here](https://blog.shareaholic.com/9-new-share-follow-buttons-to-help-grow-your-site-traffic/))
+ * Vine
+ * Google Classroom ([more](https://blog.shareaholic.com/google-classroom-social-share-button-follow-button/))
+ * Behance
+ * SlideShare
+ * About.me
+ * Polyvore
+ * StackOverflow
+ * Tripadvisor
+ * Soundcloud
+ * Spotify
+ * Better Business Bureau
+ * eBay
+ * Github
+ * Houzz
+ * Etsy
+ * 500px
+ * iTunes
+ * Skype
+ * Disqus
+ * Zillow Digs
+ * Feedly
+ * LiveJournal
+* New: Share Buttons additions
+ * Microsoft OneNote
+ * Google Classroom ([more](https://blog.shareaholic.com/google-classroom-social-share-button-follow-button/)
+ * Kik
+ * Line.me
+ * Baidu
+ * WhatsApp ([more](https://blog.shareaholic.com/now-offering-whatsapp-sms-client-share-buttons/))
+ * SMS Client ([more](https://blog.shareaholic.com/now-offering-whatsapp-sms-client-share-buttons/))
+* Enhancement: Vector share & follow buttons (icons are now SVG - meaning they load fast, scalable to any size, and are stunning on Retina and Retina HD displays)
+* Enhancement: Updates to Google's icons ([learn more](https://blog.shareaholic.com/re-googles-look-evolved/))
+
 = 7.6.2.3 =
-* Bugfix: limit the summary data attribute to at most 500 characters
-* Enhancement: present a plugin review notice to WP admins
+* Bugfix: Limited the summary data attribute to at most 500 characters
+* Enhancement: Present a plugin review notice to admins
 
 = 7.6.2.2 =
-* Enhancement: updated Shareaholic JavaScript snippet - now a lot simpler!
-* Bugfix: added hooks to prevent conflicts with Shortcode UI plugin
+* Enhancement: Updated Shareaholic JavaScript snippet - now a lot simpler!
+* Bugfix: Added hooks to prevent conflicts with Shortcode UI plugin
 
 = 7.6.2.1 =
-* Bugfix: use different hook to avoid modifying headers after they are sent
+* Bugfix: Use different hook to avoid modifying headers after they are sent
 
 = 7.6.2.0 =
 * Enhancement: Show message to users in permalink section in regards to share counts
@@ -191,13 +262,13 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Enhancement: Detect permalink changes in order to serve up-to-date content
 
 = 7.6.1.7 =
-* Bugfix: fix issue with Server side share count option
+* Bugfix: Fixed issue with Server side share count option
 
 = 7.6.1.6 =
-* Enhancement: remove analytics option from Advanced Settings page
+* Enhancement: Removed analytics option from Advanced Settings page
 
 = 7.6.1.5 =
-* Enhancement: added support for Yummly and Fancy server-side share counts
+* Enhancement: Added support for Yummly and Fancy server-side share counts
 
 = 7.6.1.4 =
 * Minor enhancements
@@ -938,300 +1009,11 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Added new feature to Mister-Wong so that now the *.com* extension is replaced dynamically based on your locale
 * Minified stylesheet to save a couple KB
 
-= 2.6.1.3 =
-* Updated Danish translation
-* Updated French translation
-* Added Norwegian translation
-* Added Dutch translation
-* Fixed validity issue with Strands & Plurk sharing links
-* Updated methods of calling styles and scripts
-* Fixed issue with sponsor messages not staying hidden
-* Fixed JSON compatibility issue due to multiple instances of the JSON class
-
-= 2.6.1.2 =
-* Added Plurk
-* Added Danish translation
-* Fixed dashboard styling in IE
-* Removed sidebar ads
-* Added new plugin sponsorship network
-* Added ability to select all, none, and popular networks
-* Added German translation and a german BG image
-* Added custom donation form in sidebar
-
-= 2.6.1.1 =
-* Added Turkish translation
-* Added and updated Italian translation
-* Added Tumblr, Strands, Stumpedia, Current, Blogger
-
-= 2.6.1 =
-* This is a "re-release" of *v2.6.0*, but hopefully without the massive amounts of errors this time. 
-* Also removed any and all API calls the plugin was making so as to prevent SexyBookmarks from being the _culprit_ when it comes to people receiving the "Unexpected http error occurred during the API request" error.
-* Removed some old warnings/errors that are no longer needed.
-* Solved the riddle of the disappearing footers/sidebars (I think)
-* Better optimized the dashboard and image sprites
-* I believe this version fixes the problem with bitly creating massive amounts of short URLs for each post, but only time and trial by fire will tell...
-* Also added Orkut
-
-= 2.6.0.1 =
-* This is actually a rollback release back to 2.5.5.1 due to the very unstable nature of 2.6.0. I'll look into that soon. Sorry for having you all update more than once within such a short span of time. we're having growing pains. --norman
-
-= 2.6.0 =
-* Optimized/Reduced file sizes
-* Plugin now uses sprite for all icons in dashboard
-* Custom mods feature added to prevent mods from being lost during upgrade
-* Got rid of feedity and replaced top contributors list with custom function
-* Optimized dashboard jQuery functions to be less redundant
-* Added wishlist to sidebar
-* Added TheWebBlend, Wykop, BlogEngage, Hyves, Pusha, Hatena Bookmarks, MyLinkVault, SlashDot, Squidoo, Propeller, FAQpal, Evernote, Meneame, Bitacoras, JumpTags, Bebo, N4G
-
-= 2.5.5.1 =
-* Undo the jQuery compatibility "fix" introduced in 2.5.5 which generated a ridiculous amount of bug reports. JQuery is now a dependency by default instead of the fix which made it optional. If other activated plugins or your theme is including JQuery and NOT using WordPress's built-in wp_enqueue_script functions, you're doing it wrong!
-
-= 2.5.5 =
-* SexyBookmarks now only loads it's CSS/JS if the menu is being displayed on a particular page/post
-* Added a jQuery compatibility fix for those of you who have had trouble with jQuery related issues
-* Short URLs are now only generated once a post is published
-* Fixed validity of links added in last release
-* Fixed a couple small dashboard bugs (mostly jQuery related)
-* Added Italian translation
-* Added Sphinn, Fleck, Xerpi, Netvibes, Netvouz, NUjij, GlobalGrind, Wikio, Blogosphere News, Posterous, Techmeme, eKudos, Ping.fm, ToMuse
-* Reinstated email link with simple mailto
-* Updated readme with new info
-* Fixed issue with Twitter link breaking if title includes quotes
-* Updated default translation files
-* Added new screenshots
-
-= 2.5.4.1 =
-* Fixed fatal error "cannot redeclare plugins_api()"
-
-= 2.5.4 =
-* Added update notice
-* Fixed a couple minor css issues in dashboard
-* Fixed issue where some themes were causing icons to display vertically rather than horizontally
-* Added Ning, DesignBump, Hacker News (news.ycombinator), Identica, PrintFriendly to the list
-* Added Romanian translation
-
-= 2.5.3.4 =
-* Added French translation
-* Added ability to turn SexyBookmarks on/off on a post by post basis
-* Added more stringent dashboard checks to prevent more conflicts
-* Fixed issue with the default URL shortener
-* Added [B2L Shortener](http://b2l.me)
-* Changed Twitter message from RT @username to (via @username)
-* Fixed problem with plugin adding Blog name to beginning of post titles when shared
-* Fixed problem with bit.ly URLs breaking and returning error
-* Fixed bug causing Twittley default category not to hold it's value
-
-= 2.5.3.3 =
-* snuck in fixing issues introduced w/ some css changes.
-* also just made another release for those who may have gotten the improper release from last night so you won't have to jump thru hoops to get a fixed version.
-
-= 2.5.3.2 =
-* No changes, just fixing SVN hiccup from earlier tonight
-
-= 2.5.3.1 =
-* Fixed issue from **v2.5.3** where CSS was not being applied properly
-* Fixed issue with bit.ly being stubborn when selected
-
-= 2.5.3 =
-* Added i18n / l10n support
-* Added Russian translation and several popular Russian bookmarking sites
-* Added DesignMoo
-* Added bit.ly support and integration
-* Fixed plugin conflicts due to jQuery incompatibility
-
-
-= 2.5.2.3 =
-* Added mobile browser check & ability to hide menu from mobile
-* Fixed issue with titles & URLs on index pointing to site and not individual articles
-* Fixed persistent Twittley error message when saving settings
-* Resolved issue with Google Bookmarks link
-* Fixed Subscribe to comments link
-* Fixed issue with some themes forcing borders and background colors for menu items
-* Minor dashboard adjustments
-
-= 2.5.2.2 =
-* Changed icon of Fwisp by request of site owner
-* Fixed status message problem when trying to dismiss more than one
-* Re-added Twitter Friendly Links support after accidental removal
-* Added an automatic check/removal of email link for those who previously had it set
-
-= 2.5.2.1 =
-* Fixed URL shortening bug from 2.5.2
-* Fixed persistent Twitter bug
-* Fixed readme problem
-
-= 2.5.2 =
-* Added cligs, Supr, Short-to, and Trim as supported URL shortening services
-* Added Fwisp as a supported site
-* FIXED TWITTER ENCODING BUG!!!
-* Updated/Optimized readme file
-* Updated screenshot
-* Completely redesigned the entire plugin options page
-* Refactored some JS code.
-* Limited the jQuery selector for "external" links within the .sexy-bookmarks div.
-* Do not apply JS when links are set **not** to open in a new window in the case that some other plugin is handling such links.
-* Added a few more BG images to choose from.
-* Removed email link until further notice.
-* Fixed the issue with scripts and styles loading throughout the entire dashboard.
-* Fixed small issue with manual mode returning wrong post titles.
-* Added Twittley to the list of sites
-
-= 2.5.1 =
-* Fixed problem with auto-centering and animation slide effect not working.
-
-= 2.5 =
-* Added a permalink structure check so that ALL subscribe to comments links will work no matter how your permalinks are configured.
-* Fixed my CSS goof for people who's theme was applying a background color rather than the desired image.
-* Added the ability to host your own short URLs by using the [Twitter Friendly Links Plugin](http://wordpress.org/extend/plugins/twitter-friendly-links/).
-* You can now choose to place the menu on your site anywhere **once** and it will work throughout the entire site rather than having it displayed on every page/article.
-* Added new "smart options" in the admin area (dependent options).
-* Added new background image "Share the wealth!".
-* Updated the "Sharing is sexy!" and "Sharing is caring!" images.
-
-= 2.4.3 =
-* Replaced the deceased Yahoo! MyWeb with Yahoo! Buzz and a few custom features for that particular service.
-* Fixed error with images not showing up for Tipd, Tumblr, and PFBuzz.
-
-= 2.4.2 =
-* Fixed typo with one of the URL shortening services.
-* Fixed the subscribe to comments feed error I created.
-
-= 2.4.1 =
-* Small CSS fix for anyone having CSS generated content placed in the menu by their theme's stylesheet.
-* Fixed validation error for PFBuzz link.
-
-= 2.4 =
-* Added Tipd, Tumblr, and PFBuzz to the list of available sites.
-
-= 2.3.4 =
-* Small CSS fix for those of you who don't get the "hover" effect on mouseover.
-
-= 2.3.3 =
-* Fixed Snipr URL shortener.
-* Minor CSS fixes
-
-= 2.3.2 =
-* Added option to reset/refresh all stored short URLs.
-
-= 2.3.1 =
-* Fixed auto-centering js not being included when it should be.
-* Fixed minor bug causing apostrophes to not be encoded properly for email subject/body.
-
-= 2.3.0 =
-* Restyled the admin panel and logically grouped the options/settings.
-* Removed use of inline styles (most of them anyway).
-* Minor bug fix for servers that don't support short tags (i.e. you're getting all the Array Array Array messages).
-
-= 2.2.4 =
-* Added iZeby and Mister Wong to the list of available sites.
-
-= 2.2.3 =
-* Fixed minor CSS issue introduced in v2.2.2
-* Added option to auto-center the bookmarks menu (via jQuery).
-
-= 2.2.2 =
-* Added option to vertically expand multi-rowed bookmark lines on mouseover using jQuery.
-
-= 2.2.1 =
-* Fixed problem with short tags that caused an array to print at top of your pages.
-* Fixed urlencode of subject and body of email link.
-* Fixed code's "validity".
-* Title text shows up correctly now rather than displaying the word "Array" when hovering over links.
-
-= 2.2 =
-* Icons are now rearrangeable.
-* You can now pick your own URL shortening service.
-* Code is more efficient and puts less strain on the server.
-
-= 2.1.5 =
-* Fixed bug causing email link to break layouts in some cases (minor update, only critical to those using NextGen plugin).
-
-= 2.1.4 =
-* Fixed small bug that was messing up the "Quick Edit" styles in the dashboard (minor update, not critical).
-
-= 2.1.3 =
-* Replaced cURL command with custom function that stores short URLs in the database to reduce server load.
-* Replaced Furl with Diigo since Furl no longer exists.
-* Now only fetching short URL if Twitter is selected to be displayed in the menu.
-
-= 2.1.2 =
-* Added ability to choose which URL shortening service to use.
-* Also added a fallback to file_get_contents() if cURL is not enabled on your server.
-* Added another fallback so that if file_get_contents() isn't enabled either, the URL won't be shortened and will simply print the permalink of the post.
-
-= 2.1.1 =
-* Fixed the bug causing your sites to crash right and left due to timeouts with the URL shortening service.
-
-= 2.1 =
-* Added ability to display menu on main page.
-* Fixed 2 minor bugs with email link
-* Shortened URLs are now static and do not change with each page refresh.
-
-= 2.0.3 =
-* Fixed error causing RSS and Email icons not to show up when using manual method.
-
-= 2.0.2 =
-* Fixed the display error for Yahoo and Stumbleupon when using manual method.
-
-= 2.0.1 =
-* Fixed the problem with your blogname showing up in each post.
-* Also fixed the encoding of **:** and **?** characters.
-
-= 2.0 =
-* Added newsvine, devmarks, linkedin, "Email to friend", and "Subscribe to comments".
-* Got rid of the table based layout for the admin options area, and replaced it with DIVs.
-* Added another option for choosing the background image of the DIV that contains the menu.
-
-= 1.4 =
-* FAIL - abandoned development and skipped ahead
-
-= 1.3.4 =
-* Done away with all third party URL shortening services. Now using my own service so that you will not receive errors when the max API limit has been reached.
-
-= 1.3.3 =
-* Fixed Twitter links (http://is.gd has a new api with tighter restrictions, so now the plugin uses http://ri.ms to shorten links).
-
-= 1.3.2 =
-* Added a custom function so that you can now insert the menu into your theme anywhere you choose.
-
-= 1.3.1 =
-* Fixed my goof from last night that caused images to disappear.
-* Added extra functionality for Twitter link (auto @reply with your Twitter id).
-* Twitter link automatically shortens the URL to each post via the API at [IS.GD](http://is.gd).
-
-= 1.3 =
-* Corrected a css bug causing the DIV's background image to show.
-
-= 1.2.1 =
-* Fixed issue people have been having with an additional overlay of the menu where it shouldn't be (other plugin conflicts).
-
-= 1.2 =
-* Critical namespace update, no longer "WP-Social-Bookmarks".
-* Added function to allow you to choose page, post, or both.
-
-= 1.1.4 =
-* Resolved issue that caused the menu to be placed at top of post even if "below post" was chosen.
-
-= 1.1.3 =
-* Fixed bug that caused pages to disappear,
-* Now plugin only displays on single posts
-
-= 1.1.2 =
-* Fixed issue with custom css section overlapping icons in options page.
-* Added custom background styles to the container DIV.
-
-= 1.1.1 =
-* Added a custom CSS section for styling the container DIV.
-
-= 1.1 =
-* Added Twitter to the list.
-* Added a few more options.
-
-= 1.0 =
-* Initial release!
-
 == Upgrade Notice ==
+
+= 7.7.1.0 =
+* This is a major update with lots of new features and enhancements that you'll love!
+* W3C HTML5 validation fix
 
 = 7.6.2.3 =
 * Bugfix: limit the summary data attribute to at most 500 characters
@@ -1460,30 +1242,3 @@ As always, we're listening and working in all your feedback. This release repres
 
 = 7.0.1.0 =
 * Huge update! Completely re-written from the ground up to be faster and with a new simple interface! Includes brand new Share button themes (including vertical share buttons!) and Related posts themes. Related Posts now come mobile optimized and responsive out of the box - Shareaholic automagically determines how many Related Posts to show given how much screen width it is given. You can now even customize your "You may also like" text and exclude URLs.
-
-= 6.1.3.5 =
-Several bug fixes and performance improvements. This is a highly recommended upgrade!
-
-= 3.2.3.1 =
-Fixed small bug with short URL function which caused it to fail if you do not have cURL enabled
-
-= 3.2.3 =
-Tested on several servers which still had issues with the past releases, and worked on each. You should feel more confident about upgrading to this version.
-
-= 3.2.1.2 =
-Bug fixes for persistent bugs that weren't fixed in v3.2.1.1
-
-= 3.2.1.1 =
-Bug fix release for all bugs that arose with v3.2
-
-= 3.2 =
-Finally integrated the sprite generator (long overdue) plus several critical performance bug fixes
-
-= 3.1 =
-The dynamic sprite generator has been completely rewritten from scratch, so this *should* be the final attempt at getting all of the inconsistencies and errors fixed in the v3 series that has caused so many problems so far.
-
-= 3.0.1 =
-Major bug fixes for v3.0 - Upgrade immediately if you've installed v3.0 as this will fix problems you probably haven't even noticed yet. Will need to go to Settings->SexyBookmarks and save settings again after upgrading.
-
-= 3.0 =
-Users whose servers have PHP5+ AND the PHPGD library installed will need to login to their dashboard (Settings -> SexyBookmarks) and click the "Save Changes" button upon upgrading to generate a dynamic image sprite based on your selection of networks.

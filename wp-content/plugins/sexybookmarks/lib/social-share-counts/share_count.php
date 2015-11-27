@@ -39,12 +39,6 @@ abstract class ShareaholicShareCount {
         'timeout' => 3,  // in number of seconds
         'callback' => 'facebook_count_callback',
       ),
-      'twitter' => array(
-        'url' => 'https://cdn.api.twitter.com/1/urls/count.json?url=%s',
-        'method' => 'GET',
-        'timeout' => 3,
-        'callback' => 'twitter_count_callback',
-      ),
       'linkedin' => array(
         'url' => 'https://www.linkedin.com/countserv/count/share?format=json&url=%s',
         'method' => 'GET',
@@ -189,22 +183,6 @@ abstract class ShareaholicShareCount {
     }
     $body = json_decode($response['body'], true);
     return isset($body['shares']) ? intval($body['shares']) : false;
-  }
-
-
-  /**
-   * Callback function for twitter count API
-   * Gets the twitter counts from response
-   *
-   * @param Array $response The response from calling the API
-   * @return mixed The counts from the API or false if error
-   */
-  public function twitter_count_callback($response) {
-    if($this->has_http_error($response)) {
-      return false;
-    }
-    $body = json_decode($response['body'], true);
-    return isset($body['count']) ? intval($body['count']) : false;
   }
 
 

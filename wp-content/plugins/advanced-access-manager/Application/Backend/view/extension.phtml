@@ -38,7 +38,7 @@
                     </td>
                     <td>
                         <?php if ($dev == AAM_Core_Repository::STATUS_UPDATE) { ?>
-                            <a href="#" class="btn btn-success btn-block aam-update-extension" data-product="AAM Development License"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                            <a href="#" class="btn btn-warning btn-block aam-update-extension" data-product="AAM Development License"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
                         <?php } else { ?>
                             <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZX9RCWU6BTE52" target="_blank" class="btn btn-success btn-block"><i class="icon-basket"></i> <?php echo __('Purchase', AAM_KEY); ?></a>
                         <?php } ?>
@@ -56,7 +56,7 @@
                     </td>
                     <td>
                         <?php if ($plusPackage == AAM_Core_Repository::STATUS_UPDATE) { ?>
-                            <a href="#" class="btn btn-success btn-block aam-update-extension" data-product="AAM Plus Package"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                            <a href="#" class="btn btn-warning btn-block aam-update-extension" data-product="AAM Plus Package"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
                         <?php } else { ?>
                             <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FGAHULDEFZV4U" target="_blank" class="btn btn-success btn-block"><i class="icon-basket"></i> <?php echo __('Purchase', AAM_KEY); ?></a>
                         <?php } ?>
@@ -74,7 +74,7 @@
                     </td>
                     <td>
                         <?php if ($utilities == AAM_Core_Repository::STATUS_UPDATE) { ?>
-                            <a href="#" class="btn btn-success btn-block aam-update-extension" data-product="AAM Utilities"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                            <a href="#" class="btn btn-warning btn-block aam-update-extension" data-product="AAM Utilities"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
                         <?php } else { ?>
                             <a href="#" class="btn btn-success btn-block aam-download-extension" data-license="AAMUTILITIES"><i class="icon-download-cloud"></i> <?php echo __('Download', AAM_KEY); ?></a>
                         <?php } ?>
@@ -92,7 +92,7 @@
                     </td>
                     <td>
                         <?php if ($multisite == AAM_Core_Repository::STATUS_UPDATE) { ?>
-                            <a href="#" class="btn btn-success btn-block aam-update-extension" data-product="AAM Multisite"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
+                            <a href="#" class="btn btn-warning btn-block aam-update-extension" data-product="AAM Multisite"><i class="icon-arrows-cw"></i> <?php echo __('Update', AAM_KEY); ?></a>
                         <?php } else { ?>
                             <a href="#" class="btn btn-success btn-block aam-download-extension" data-license="AAMMULTISITE"><i class="icon-download-cloud"></i> <?php echo __('Download', AAM_KEY); ?></a>
                         <?php } ?>
@@ -117,9 +117,16 @@
                     <h4 class="modal-title"><?php echo __('Notification', AAM_KEY); ?></h4>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center aam-notification-message">
-                        <strong><span id="installation-error"></span></strong>. <?php echo sprintf(__('Click "Download" button below for a manual installation. Simply unzip the archive to wp-content%s directory.', AAM_KEY), AAM_Core_Repository::RELPATH); ?>
+                    <p class="text-center aam-notification">
+                        <strong><span id="installation-error"></span>.</strong> <?php echo __('Extension requires manual installation. Please follow few simple steps below.', AAM_KEY); ?>
                     </p>
+                    
+                    <ul class="aam-outer-top-xs aam-numeric-list">
+                        <li><?php echo AAM_Backend_Helper::preparePhrase(__('Click [Download] button below and save the zip archive on your computer', AAM_KEY), 'b'); ?>;</li>
+                        <li><?php echo AAM_Backend_Helper::preparePhrase(__('Connect to your website via FTP and navigate to [wp-content] folder', AAM_KEY), 'b'); ?>;</li>
+                        <li><?php echo AAM_Backend_Helper::preparePhrase(__('Create [aam/extension] folder inside [wp-content] and make sure it is writable by your server', AAM_KEY), 'b', 'b'); ?>;</li>
+                        <li><?php echo AAM_Backend_Helper::preparePhrase(__('Unzip downloaded archive and transfer the folder inside the [wp-content/aam/extension] folder', AAM_KEY), 'b'); ?>.</li>
+                    </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="download-extension"><?php echo __('Download', AAM_KEY); ?></button>

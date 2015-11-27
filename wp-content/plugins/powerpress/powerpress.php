@@ -2,12 +2,12 @@
 /*
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
-Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> adds podcasting support to your blog. Features include: media player, 3rd party statistics, iTunes integration, Blubrry Services (Media Statistics and Hosting) integration and a lot more.
-Version: 6.2
+Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> is the No. 1 Podcasting plugin for WordPress. Developed by podcasters for podcasters; features include Simple and Advanced modes, multiple audio/video player options, subscribe to podcast tools, podcast SEO features, and more! Fully supports iTunes, Google Play, Stitcher, and Blubrry Podcasting directories, as well as all podcast applications and clients.
+Version: 6.2.1
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Requires at least: 3.7
-Tested up to: 4.3.1
+Tested up to: 4.4
 Text Domain: powerpress
 Change Log:
 	Please see readme.txt for detailed change log.
@@ -35,7 +35,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '6.2' );
+define('POWERPRESS_VERSION', '6.2.1' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -91,7 +91,7 @@ if( defined('POWERPRESS_DEBUG') ) {
 }
 
 if( !defined('POWERPRESS_SUBSCRIBE') )
-	define('POWERPRESS_SUBSCRIBE', true); // Temporary until we finish tweaking the features
+	define('POWERPRESS_SUBSCRIBE', true);
 
 // Set regular expression values for determining mobile devices
 if( !defined('POWERPRESS_MOBILE_REGEX') )
@@ -137,16 +137,25 @@ function powerpress_content($content)
 		if( defined('JETPACK__VERSION') && version_compare(JETPACK__VERSION, '2.0',  '>=')	) {
 			$GeneralSettings['player_aggressive'] = 1; // Jet pack still doesn't behave with PowerPress the_content
 		}
+		if( defined('WPSEO_VERSION') ) {
+			$GeneralSettings['player_aggressive'] = 4;
+		}
 	}
 	
 	if( !empty($GeneralSettings['player_aggressive']) )
 	{
-		if( $GeneralSettings['player_aggressive'] == 2 ) // If we do not have theme issues then lets keep this logic clean. and only display playes after the wp_head only
+		if( $GeneralSettings['player_aggressive'] == 4 )
+		{
+			$in_http_head = powerpress_in_wp_head();
+			if( $in_http_head === true )
+				return $content;
+		}
+		else if( $GeneralSettings['player_aggressive'] == 2 ) // If we do not have theme issues then lets keep this logic clean. and only display playes after the wp_head only
 		{
 			if( empty($GLOBALS['powerpress_wp_head_completed']) )
 				return $content;
 		}
-		else
+		else // method 1 or 3...
 		{
 			if( strstr($content, '<!--powerpress_player-->') !== false )
 				return $content; // The players were already added to the content
@@ -3115,6 +3124,25 @@ function powerpress_get_api_array()
 	
 	return $return;
 }
+
+
+function powerpress_in_wp_head()
+{
+	$e = new Exception();
+	$trace = $e->getTrace();
+	
+	if( !empty($trace) ) {
+		while( list($index,$call) = each($trace) ) {
+			if( isset($call['function']) ) {
+				// Which calls should we not add the player and links...
+				switch( $call['function'] ) {
+					case 'wp_head': return true; break;
+				}
+			}
+		}
+	}
+	return false;
+}
 /*
 End Helper Functions
 */
@@ -3137,5 +3165,3 @@ if( defined('POWERPRESS_NEW_CODE') && POWERPRESS_NEW_CODE && file_exists(POWERPR
 	require_once(POWERPRESS_ABSPATH.'/powerpress-new-code.php');
 }
 */
-
-?>

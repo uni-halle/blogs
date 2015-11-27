@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Shareaholic | share buttons, analytics, related content "
-"7.6.0.6\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/shareaholic\n"
-"POT-Creation-Date: 2015-01-19 19:25:30+00:00\n"
+"7.6.2.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shareaholic\n"
+"POT-Creation-Date: 2015-10-02 18:14:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,122 +13,129 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin.php:197
+#: admin.php:81
+msgid "You have been using the "
+msgstr ""
+
+#: admin.php:81
+msgid ""
+" for some time now, do you like it? If so, please consider leaving us a "
+"review on WordPress.org! It would help us out a lot and we would really "
+"appreciate it."
+msgstr ""
+
+#: admin.php:84
+msgid "Leave a Review"
+msgstr ""
+
+#: admin.php:85
+msgid "No thanks"
+msgstr ""
+
+#: admin.php:283
 msgid "Shareaholic Settings"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (Shareaholic | share buttons, analytics, related content 7.6.0.6)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Shareaholic | share buttons, analytics, related content 7.6.2.3)  #-#-#-#-#
 #. Author of the plugin/theme
-#: admin.php:198 utilities.php:113
+#: admin.php:284 utilities.php:117
 msgid "Shareaholic"
 msgstr ""
 
-#: admin.php:206 admin.php:207 utilities.php:130
+#: admin.php:292 admin.php:293 templates/settings.php:4 utilities.php:134
 msgid "App Manager"
 msgstr ""
 
-#: admin.php:214 admin.php:215
+#: admin.php:300 admin.php:301 templates/advanced_settings.php:4
 msgid "Advanced Settings"
 msgstr ""
 
-#: admin.php:230 admin.php:299
+#: admin.php:316 admin.php:385
 msgid "Settings successfully saved"
 msgstr ""
 
-#: admin.php:293
+#: admin.php:379
 msgid "Settings successfully reset. Refresh this page to complete the reset."
 msgstr ""
 
-#: templates/advanced_settings.php:3
-msgid "Shareaholic: Advanced Settings"
-msgstr ""
-
-#: templates/advanced_settings.php:7
+#: templates/advanced_settings.php:8
 msgid "You rarely should need to edit the settings on this page."
 msgstr ""
 
-#: templates/advanced_settings.php:7
+#: templates/advanced_settings.php:8
 msgid ""
 "After changing any Shareaholic advanced setting, it is good practice to "
 "clear any WordPress caching plugins (if you are using one, like W3 Total "
 "Cache or WP Super Cache)."
 msgstr ""
 
-#: templates/advanced_settings.php:14
+#: templates/advanced_settings.php:15
 msgid "Advanced"
 msgstr ""
 
-#: templates/advanced_settings.php:19
-msgid "Disable Analytics"
-msgstr ""
-
-#: templates/advanced_settings.php:19
-msgid "(it is recommended NOT to disable analytics)"
-msgstr ""
-
-#: templates/advanced_settings.php:25
+#: templates/advanced_settings.php:20
 msgid "Disable <code>Open Graph</code> tags"
 msgstr ""
 
-#: templates/advanced_settings.php:25
+#: templates/advanced_settings.php:20
 msgid "(it is recommended NOT to disable open graph tags)"
 msgstr ""
 
-#: templates/advanced_settings.php:31
+#: templates/advanced_settings.php:26
 msgid "Disable Admin Bar Menu (requires page refresh)"
 msgstr ""
 
-#: templates/advanced_settings.php:37
+#: templates/advanced_settings.php:32
 msgid "Disable Debugger (it is recommended NOT to disable the debugger)"
 msgstr ""
 
-#: templates/advanced_settings.php:43
+#: templates/advanced_settings.php:38
 msgid "Disable server-side Share Counts API"
 msgstr ""
 
-#: templates/advanced_settings.php:43
+#: templates/advanced_settings.php:38
 msgid ""
 "(unless there are issues with calling the service, it is recommended NOT to "
 "disable this API)"
 msgstr ""
 
-#: templates/advanced_settings.php:45 templates/settings.php:108
+#: templates/advanced_settings.php:40 templates/settings.php:93
 msgid "Saving Changes..."
 msgstr ""
 
-#: templates/advanced_settings.php:45 templates/settings.php:108
+#: templates/advanced_settings.php:40 templates/settings.php:93
 msgid "Save Changes"
 msgstr ""
 
-#: templates/advanced_settings.php:53
+#: templates/advanced_settings.php:48
 msgid "Server Connectivity"
 msgstr ""
 
-#: templates/advanced_settings.php:55
+#: templates/advanced_settings.php:50
 msgid "All Shareaholic servers are reachable"
 msgstr ""
 
-#: templates/advanced_settings.php:56
+#: templates/advanced_settings.php:51
 msgid "Shareaholic should be working correctly."
 msgstr ""
 
-#: templates/advanced_settings.php:56
+#: templates/advanced_settings.php:51
 msgid "All Shareaholic servers are accessible."
 msgstr ""
 
-#: templates/advanced_settings.php:58
+#: templates/advanced_settings.php:53
 msgid "Unable to reach any Shareaholic server"
 msgstr ""
 
-#: templates/advanced_settings.php:58 templates/advanced_settings.php:65
+#: templates/advanced_settings.php:53 templates/advanced_settings.php:60
 msgid "Checking..."
 msgstr ""
 
-#: templates/advanced_settings.php:58 templates/advanced_settings.php:65
+#: templates/advanced_settings.php:53 templates/advanced_settings.php:60
 msgid "Re-check"
 msgstr ""
 
-#: templates/advanced_settings.php:59
+#: templates/advanced_settings.php:54
 msgid ""
 "A network problem or firewall is blocking all connections from your web "
 "server to Shareaholic.com.  <strong>Shareaholic cannot work correctly until "
@@ -138,23 +145,23 @@ msgid ""
 "onclick=\"%s\">know</a> too, so we can follow up!"
 msgstr ""
 
-#: templates/advanced_settings.php:62
+#: templates/advanced_settings.php:57
 msgid "Server-side Share Counts API is reachable"
 msgstr ""
 
-#: templates/advanced_settings.php:63
+#: templates/advanced_settings.php:58
 msgid "The server-side Share Counts API should be working correctly."
 msgstr ""
 
-#: templates/advanced_settings.php:63
+#: templates/advanced_settings.php:58
 msgid "All servers and services needed by the API are accessible."
 msgstr ""
 
-#: templates/advanced_settings.php:65
+#: templates/advanced_settings.php:60
 msgid "Unable to reach the server-side Share Count API"
 msgstr ""
 
-#: templates/advanced_settings.php:66
+#: templates/advanced_settings.php:61
 msgid ""
 "A network problem or firewall is blocking connections from your web server "
 "to various Share Count APIs.  <strong>The API cannot work correctly until "
@@ -165,29 +172,29 @@ msgid ""
 "successfully -- so nothing to worry about!"
 msgstr ""
 
-#: templates/advanced_settings.php:73
+#: templates/advanced_settings.php:68
 msgid "Your Shareaholic Site ID"
 msgstr ""
 
-#: templates/advanced_settings.php:77
+#: templates/advanced_settings.php:72
 msgid "Not set."
 msgstr ""
 
-#: templates/advanced_settings.php:87
+#: templates/advanced_settings.php:82
 msgid "Reset"
 msgstr ""
 
-#: templates/advanced_settings.php:88
+#: templates/advanced_settings.php:83
 msgid ""
 "This will reset all of your settings and start you from scratch. This can "
 "not be undone."
 msgstr ""
 
-#: templates/advanced_settings.php:90
+#: templates/advanced_settings.php:85
 msgid "Resetting Plugin..."
 msgstr ""
 
-#: templates/advanced_settings.php:90
+#: templates/advanced_settings.php:85
 msgid "Reset Plugin"
 msgstr ""
 
@@ -256,78 +263,62 @@ msgstr ""
 msgid "Do not include Open Graph tags"
 msgstr ""
 
-#: templates/settings.php:3
-msgid "Shareaholic: App Manager"
-msgstr ""
-
-#: templates/settings.php:22
+#: templates/settings.php:18
 msgid ""
 "First time here? Read %sUnderstanding the new Shareaholic for WordPress "
 "interface and configuration settings.%s"
 msgstr ""
 
-#: templates/settings.php:22
+#: templates/settings.php:18
 msgid ""
 "If you are upgrading from an earlier version of Shareaholic for WordPress "
 "and need help, have a question or have a bug to report, please %slet us know"
 "%s."
 msgstr ""
 
-#: templates/settings.php:25
+#: templates/settings.php:21
 msgid "Related & Promoted Content"
 msgstr ""
 
-#: templates/settings.php:26
+#: templates/settings.php:22
 msgid ""
 "Pick where you want the app to be displayed. Click \"Customize\" to "
 "customize look & feel, themes, block lists, etc."
 msgstr ""
 
-#: templates/settings.php:44 templates/settings.php:87
+#: templates/settings.php:40 templates/settings.php:72
 msgid "Customize"
 msgstr ""
 
-#: templates/settings.php:52
+#: templates/settings.php:48
 msgid "Edit Related & Promoted Content Settings"
 msgstr ""
 
-#: templates/settings.php:54
-msgid "Status:"
-msgstr ""
-
-#: templates/settings.php:58
-msgid "Processing"
-msgstr ""
-
-#: templates/settings.php:60
-msgid "Ready"
-msgstr ""
-
-#: templates/settings.php:67
+#: templates/settings.php:52
 msgid "Share Buttons"
 msgstr ""
 
-#: templates/settings.php:68
+#: templates/settings.php:53
 msgid ""
 "Pick where you want your buttons to be displayed. Click \"Customize\" to "
 "customize look & feel, themes, share counters, alignment, etc."
 msgstr ""
 
-#: templates/settings.php:95
+#: templates/settings.php:80
 msgid "Edit Share Button Settings"
 msgstr ""
 
-#: templates/settings.php:99
+#: templates/settings.php:84
 msgid "Monetization"
 msgstr ""
 
-#: templates/settings.php:100
+#: templates/settings.php:85
 msgid ""
 "Configure your  monetization settings from one place, including Promoted "
 "Content, Affiliate Links App, etc."
 msgstr ""
 
-#: templates/settings.php:102
+#: templates/settings.php:87
 msgid "Edit Monetization Settings"
 msgstr ""
 
@@ -441,15 +432,15 @@ msgstr ""
 msgid "Why am I seeing ads?"
 msgstr ""
 
-#: utilities.php:96
+#: utilities.php:100
 msgid "Settings"
 msgstr ""
 
-#: utilities.php:137
-msgid "General Settings"
+#: utilities.php:141
+msgid "Website Settings"
 msgstr ""
 
-#: utilities.php:144
+#: utilities.php:148
 msgid "FAQ & Support"
 msgstr ""
 

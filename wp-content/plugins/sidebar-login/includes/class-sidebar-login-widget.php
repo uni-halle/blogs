@@ -97,13 +97,14 @@ class Sidebar_Login_Widget extends WP_Widget {
     public function replace_tags( $text ) {
 	    if ( $this->user ) {
 		    $text = str_replace(
-		    	array( '%username%', '%userid%', '%firstname%', '%lastname%', '%name%' ),
+		    	array( '%username%', '%userid%', '%firstname%', '%lastname%', '%name%', '%avatar%' ),
 		    	array(
 		    		ucwords( $this->user->display_name ),
 		    		$this->user->ID,
 		    		$this->user->first_name,
 		    		$this->user->last_name,
-		    		trim( $this->user->first_name . ' ' . $this->user->last_name )
+		    		trim( $this->user->first_name . ' ' . $this->user->last_name ),
+		    		get_avatar( $this->user->ID, apply_filters( 'sidebar_login_widget_avatar_size', 38 ) )
 		    	),
 		    	$text
 		    );
@@ -293,7 +294,7 @@ class Sidebar_Login_Widget extends WP_Widget {
 			$show_rememberme = ! isset( $this->instance['show_rememberme'] ) || ! empty( $this->instance['show_rememberme'] );
 
 			$login_form_args = apply_filters( 'sidebar_login_widget_form_args', array(
-		        'echo' 				=> true,
+		        'echo' 				=> false,
 		        'redirect' 			=> esc_url( apply_filters( 'sidebar_login_widget_login_redirect', $redirect ) ),
 		        'label_username' 	=> __( 'Username', 'sidebar-login' ),
 		        'label_password' 	=> __( 'Password', 'sidebar-login' ),
@@ -303,7 +304,7 @@ class Sidebar_Login_Widget extends WP_Widget {
 		        'value_remember' 	=> true
 		    ) );
 
-			wp_login_form( $login_form_args );
+			echo apply_filters( 'sidebar_login_widget_wp_login_form', wp_login_form( $login_form_args ), $login_form_args );
 
 			$this->show_links( 'logged_out', $logged_out_links );
 

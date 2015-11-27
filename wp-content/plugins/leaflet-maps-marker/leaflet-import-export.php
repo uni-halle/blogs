@@ -36,7 +36,7 @@ if (!empty($action)) {
 	}
 	?>	
 	
-	<h3 style="font-size:23px;"><?php _e('Import/Export','lmm'); ?></h3>
+	<h1><?php _e('Import/Export','lmm'); ?></h1>
 
 	<p><?php echo sprintf(__('For details and tutorials about imports and exports, please visit %1s','lmm'), '<a href="https://www.mapsmarker.com/import-export" target="_blank" style="text-decoration:none;">www.mapsmarker.com/import-export</a>'); ?></p>
 	

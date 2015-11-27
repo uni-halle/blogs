@@ -33,6 +33,7 @@ class AAM_Backend_Manager {
      */
     protected function __construct() {
         //print required JS & CSS
+        add_action('admin_enqueue_scripts', array($this, 'enqueueScript'));
         add_action('admin_print_scripts', array($this, 'printJavascript'));
         add_action('admin_print_styles', array($this, 'printStylesheet'));
 
@@ -50,9 +51,30 @@ class AAM_Backend_Manager {
         
         //check extension version
         $this->checkExtensionList();
+        
+        //check cache status
+        $this->checkCacheStatus();
 
         //register backend hooks and filters
         AAM_Backend_Filter::register();
+    }
+    
+    /**
+     * Enqueue global js
+     * 
+     * Very important to track the JS errors on page to notify the customer that
+     * plugin might not function properly because of the javascript error on the page
+     * 
+     * @return void
+     * 
+     * @access public
+     */
+    public function enqueueScript() {
+        if (AAM::isAAM()) {
+            echo "<script type=\"text/javascript\">\n";
+            echo file_get_contents(AAM_MEDIA . '/js/aam-hook.js');
+            echo "</script>\n";
+        }
     }
     
     /**
@@ -72,6 +94,18 @@ class AAM_Backend_Manager {
                     )
                 );
             }
+        }
+    }
+    
+    protected function checkCacheStatus() {
+        if (apply_filters('aam-cache-status-action', false) === false) {
+            $message  = __(
+                'AAM caching is off. To speed-up the website turn it on.', AAM_KEY
+            );
+            $message .= '&nbsp;<a href="#cache-info-modal" data-toggle="modal">';
+            $message .= __('Read more.', AAM_KEY) . '</a>';
+            
+            AAM_Core_Console::add($message);
         }
     }
 

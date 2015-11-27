@@ -1,5 +1,5 @@
 <?php
-/*  (c) Copyright 2014  MiKa (wp-osm-plugin.HanBlog.Net)
+/*  (c) Copyright 2014  MiKa (http://wp-osm-plugin.HanBlog.Net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@
     'marker_latlon'  => 'No',
     'map_border'  => '2px solid grey',
     'marker_name' => 'NoName',
+    'marker_size' => 'no',
     'control' => 'No',
     'wms_type' => 'wms_type',
     'wms_address' => 'wms_address',
@@ -35,7 +36,8 @@
     'wms_attr_name' => 'wms_attr_name',
     'wms_attr_url' => 'wms_attr_url',
     'tagged_type' => 'no',
-    'tagged_filter' => 'osm_all'
+    'tagged_filter' => 'osm_all',
+    'mwz' => 'false'
     ), $atts));
 
     $type = strtolower($type);
@@ -47,6 +49,11 @@
 
     $array_control = explode( ',', $control);
     $array_control    = Osm_OLJS3::checkControlType($array_control);
+    
+    if (($mwz != "true") && ($mwz != "false")){
+        $mwz = "false";
+        Osm::traceText(DEBUG_ERROR, "Error at argument mwz (true|false)!");
+    }
 
     $pos = strpos($width, "%");
     if ($pos == false) {
@@ -83,10 +90,23 @@
       }
       $height_str = substr($height, 0, $pos+1 ); // make it 30% 
     }
-
-    $default_icon = $marker_name;
-    $marker_name = Osm_icon::replaceOldIcon($marker_name);
-    
+    if ($marker_size == "no"){
+      $default_icon = new cOsm_icon($marker_name); 
+    }
+    else{
+      $marker_size_array = explode(',', $marker_size);
+      if(count($marker_size_array) == 3) {
+        $marker_height = $marker_size_array[0];
+        $marker_width = $marker_size_array[1];
+        $marker_focus = $marker_size_array[2];
+        $default_icon = new cOsm_icon($marker_name, $marker_height, $marker_width, $marker_focus);
+      }
+      else{
+        Osm::traceText(DEBUG_ERROR, "marker_size error!");
+        $default_icon = new cOsm_icon("mic_blue_pinother_02.png");
+      }
+       
+    }
     $MapCounter += 1;
     $MapName = 'map_ol3js_'.$MapCounter;
 
@@ -125,7 +145,7 @@
       $output .= '
       var '.$MapName.' = new ol.Map({
         layers: [raster, Layer2],
-        interactions: ol.interaction.defaults({mouseWheelZoom:false}),
+        interactions: ol.interaction.defaults({mouseWheelZoom:'.$mwz.'}),
         target: "'.$MapName.'",
         view: new ol.View({
           center: ol.proj.transform(['.$lon.','.$lat.'], "EPSG:4326", "EPSG:3857"),
@@ -142,7 +162,7 @@
          source: source_basemap
        })
      ],
-     interactions: ol.interaction.defaults({mouseWheelZoom:false}),
+     interactions: ol.interaction.defaults({mouseWheelZoom:'.$mwz.'}),
      target: "'.$MapName.'",
      view: new ol.View({
      center: ol.proj.transform(['.$lon.','.$lat.'], "EPSG:4326", "EPSG:3857"),
@@ -160,7 +180,7 @@ controls: Controls,
 ';
 
 $output .= '
-        interactions: ol.interaction.defaults({mouseWheelZoom:false}),
+        interactions: ol.interaction.defaults({mouseWheelZoom:'.$mwz.'}),
         layers: [raster],
         target: "'.$MapName.'",
         view: new ol.View({
@@ -199,10 +219,10 @@ $output .= '
         //$output .= 'osm_addPopupClickhandler('.$MapName.',  "'.$MapName.'"); ';
 	  }
     } // $file_list != "NoFile"
-
+        echo "<br>";
 
   if (($tagged_type == "post") || ($tagged_type == "page") || ($tagged_type == "any")){
-    $tagged_icon = new cOsm_icon($default_icon);
+    $tagged_icon = new cOsm_icon($default_icon->getIconName());
     
     $MarkerArray = OSM::OL3_createMarkerList('osm_l', $tagged_filter, 'Osm_None', $tagged_type, 'Osm_All', 'none');
 
@@ -214,7 +234,7 @@ $output .= '
         $tagged_icon->setIcon($MarkerArray[$Counter][Marker]);
       }
       else{
-         $tagged_icon->setIcon($default_icon);   
+         $tagged_icon->setIcon($default_icon->getIconName());   
        }
  
        $MarkerText = addslashes($MarkerArray[$Counter][text]);
@@ -254,13 +274,13 @@ $output .= '
       global $post;
       $CustomFieldName = get_option('osm_custom_field','OSM_geo_data');
       $Data = get_post_meta($post->ID, $CustomFieldName, true);  
-      $metaIcon = get_post_meta($post->ID, 'OSM_geo_icon', true);
-      $postgeotag_icon = new cOsm_icon($marker_name);
+      $metaIcon_name = get_post_meta($post->ID, 'OSM_geo_icon', true);
+      $postgeotag_icon = $default_icon;
       if ($metaIcon == ""){
-          $postgeotag_icon->setIcon($marker_name);
+          $postgeotag_icon=$default_icon;
       }
       else{
-         $postgeotag_icon->setIcon( $metaIcon);
+         $postgeotag_icon->setIcon( $metaIcon_name);
       }
       $Data = preg_replace('/\s*,\s*/', ',',$Data);
       // get pairs of coordination
@@ -280,8 +300,6 @@ $output .= '
     } //($marker_latlon  == 'OSM_geotag')
     else if (strtolower($marker_latlon) != 'no'){
       $DoPopUp = 'false';
-
-      $marker_icon = new cOsm_icon($marker_name);
       $marker_latlon_temp = preg_replace('/\s*,\s*/', ',',$marker_latlon);
       // get pairs of coordination
       $GeoData_Array = explode( ' ', $marker_latlon_temp);
@@ -292,7 +310,7 @@ $output .= '
         $lat_marker = $temp_lat;
         $lon_marker = $temp_lon;
         $MarkerArray[] = array('lat'=> $temp_lat,'lon'=>$temp_lon,'text'=>$temp_popup,'popup_height'=>'150', 'popup_width'=>'150');
-        $output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.',"'.$marker_icon->getIconURL().'",'.$marker_icon->getIconOffsetwidth().','.$marker_icon->getIconOffsetheight().') ; ';
+        $output .= 'osm_addMarkerLayer('.$MapName.','.$temp_lon.','.$temp_lat.',"'.$default_icon->getIconURL().'",'.$default_icon->getIconOffsetwidth().','.$default_icon->getIconOffsetheight().') ; ';
       }// templat lon != 0
 
 }

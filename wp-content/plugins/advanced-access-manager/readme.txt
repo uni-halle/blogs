@@ -1,22 +1,34 @@
 === Advanced Access Manager ===
 Contributors: vasyltech
-Tags: access control, access manager, role, user, capability, admin, page, post
+Tags: access, access manager, role, user, capability, admin, page, post, widget
 Requires at least: 3.8
 Tested up to: 4.3.1
-Stable tag: 3.0 Beta
+Stable tag: 3.0.2
 
-The powerful and easy-to-use tool to improve security and manage access to your 
-posts, pages and backend area.
+One of the best tools in WordPress repository to manage access to your posts, 
+pages, categories and backend area for users, roles and visitors.
 
 == Description ==
 
-Advanced Access Manager main and the only objective is to control access to your 
-posts, pages, custom post types, categories, comments, metaboxes, dashboard widgets, 
-frontend widgets and admin menu. In order to perform this task successfully, 
-AAM has a powerful interface to manage your roles, users, visitors and capabilities.
+> Advanced Access Manager (aka AAM) is the only free plugin that allows you to
+> control access to your posts, pages or backend area on user, visitor and role
+> levels.
 
-Check our [website page](http://vasyltech.com/advanced-access-manager) to find out more 
-about the Advanced Access Manager.
+AAM is well documented so even unexperienced WordPress user can easily understand 
+how to use it in the most efficient way.
+
+AAM the main objectives are to control access to your:
+
+* posts, pages, custom post types and categories;
+* backend metaboxes and widgets as well as frontend widgets;
+* backend menu;
+* comments;
+
+> AAM is very flexible and customizable plugin that is used by a lot of developers
+> around the globe to create secure and powerful WordPress solutions.
+
+Check our [website page](http://vasyltech.com/advanced-access-manager) to find 
+out more about the Advanced Access Manager.
 
 == Installation ==
 
@@ -25,34 +37,33 @@ about the Advanced Access Manager.
 
 == Screenshots ==
 
-1. Backend Menu interface
-2. Metaboxes & Widgets interface
-3. Capabilities interface
-4. Posts & Pages interface
+1. Backend menu manager
+2. Metaboxes & Widgets manager
+3. User/Role Capabilities manager
+4. Posts & Pages manager
+5. Posts & Pages access control form
 
 == Changelog ==
 
-= 3.0 Beta =
-* Localized Javascript labels
-* Added visual header for current editable subject (user/role)
-* Extended capability update check
-* Tested against WP 3.8 version
-* Fixed bug with protected method for user and role subjects
-* Added notification when extension update is available
-* Updated main localization file
-* Hide the backend post & pages access options for visitor
+= 3.0.2 =
+* Fixed a bug with posts access within categories
+* Significantly improved the caching mechanism
+* Added mandatory notification if caching is not turned on
+* Added more help content
 
-= 3.0 Alpha 2 =
-* Fixed bug with Posts & Pages access manager
-* Fixed bug with Posts & Pages pagination
-* Fixed bug with Menu & Submenus filters
+= 3.0.1 =
+* Fixed the bug with capability saving
+* Fixed the bug with capability drop-down menu
+* Made backend menu help is more clear
+* Added tooltips to some UI buttons
 
-= 3.0 Alpha =
+= 3.0 =
 * Brand new and much more intuitive user interface
 * Fully responsive design
 * Better, more reliable and faster core functionality
 * Completely new extension handler
 * Added "Manage Access" action to the list of user
+* Tested against WP 3.8 and PHP 5.2.17 versions
 
 = 2.9.4 =
 * Added missing files from the previous commit.

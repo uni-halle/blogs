@@ -1,4 +1,10 @@
 
+#pdfemb-tabs {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0;
+    padding-left: 10px;
+}
+
 .pdfembtab.active {
     display: block;
 }
@@ -87,6 +93,10 @@ a#pdfemb-personalinstrlink {
 
 #pdfemb-tableright div span {
     padding: 5px;
+}
+
+#pdfemb-tableright div ul li {
+    font-weight: bold;
 }
 
 .pdfemb-tablecell {

@@ -27,7 +27,7 @@ if(!current_user_can('manage_polls')) {
 $max_records = 2000;
 $pollip_answers = array();
 $poll_question_data = $wpdb->get_row("SELECT pollq_multiple, pollq_question, pollq_totalvoters FROM $wpdb->pollsq WHERE pollq_id = $poll_id");
-$poll_question = stripslashes($poll_question_data->pollq_question);
+$poll_question = wp_kses_post( stripslashes( $poll_question_data->pollq_question ) );
 $poll_totalvoters = intval($poll_question_data->pollq_totalvoters);
 $poll_multiple = intval($poll_question_data->pollq_multiple);
 $poll_registered = $wpdb->get_var("SELECT COUNT(pollip_userid) FROM $wpdb->pollsip WHERE pollip_qid = $poll_id AND pollip_userid > 0");
@@ -381,7 +381,7 @@ if(!empty($_POST['do'])) {
 		<?php if($poll_logs_count) { ?>
 			<strong><?php _e('Are You Sure You Want To Delete Logs For This Poll Only?', 'wp-polls'); ?></strong><br /><br />
 			<input type="checkbox" id="delete_logs_yes" name="delete_logs_yes" value="yes" />&nbsp;<label for="delete_logs_yes"><?php _e('Yes', 'wp-polls'); ?></label><br /><br />
-			<input type="button" name="do" value="<?php _e('Delete Logs For This Poll Only', 'wp-polls'); ?>" class="button" onclick="delete_this_poll_logs(<?php echo $poll_id; ?>, '<?php printf(esc_js(__('You are about to delete poll logs for this poll \'%s\' ONLY. This action is not reversible.', 'wp-polls')), esc_attr( $poll_question ) ); ?>', '<?php echo wp_create_nonce('wp-polls_delete-poll-logs'); ?>');" />
+			<input type="button" name="do" value="<?php _e('Delete Logs For This Poll Only', 'wp-polls'); ?>" class="button" onclick="delete_this_poll_logs(<?php echo $poll_id; ?>, '<?php printf(esc_js(__('You are about to delete poll logs for this poll \'%s\' ONLY. This action is not reversible.', 'wp-polls')), htmlspecialchars( $poll_question ) ); ?>', '<?php echo wp_create_nonce('wp-polls_delete-poll-logs'); ?>');" />
 		<?php
 			} else {
 				_e('No poll logs available for this poll.', 'wp-polls');

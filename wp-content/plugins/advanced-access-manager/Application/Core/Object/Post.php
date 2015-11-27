@@ -61,23 +61,37 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
     public function read() {
         $subject = $this->getSubject();
         $opname = $this->getOptionName();
+        $chname = $opname . '|' . $this->getPost()->ID;
 
         //cache extension in place first
-        $option = apply_filters('aam-read-cache-filter', null, $opname, $subject);
+        $option = apply_filters('aam-read-cache-filter', array(), $chname, $subject);
+        
+        if ($option === false) { //if false, then the result is empty
+            $option = array();
+        } else {
+            if (empty($option)) { //no cache for this element
+                $option = get_post_meta($this->getPost()->ID, $opname, true);
+            }
 
-        if (empty($option)) { //no cache, than try to read it from DB
-            $option = get_post_meta($this->getPost()->ID, $opname, true);
+            //try to inherit from parent
+            if (empty($option)) {
+                $option = $subject->inheritFromParent('post', $this->getPost()->ID);
+            }
+
+            //filter option
+            $option = apply_filters('aam-post-access-filter', $option, $this);
         }
         
-        //try to inherit from parent
-        if (empty($option)) {
-            $option = $subject->inheritFromParent('post', $this->getPost()->ID);
-        }
-
-        $this->setOption(apply_filters('aam-post-access-filter', $option, $this));
+        $this->setOption($option);
 
         //trigger caching mechanism
-        do_action('aam-write-cache-action', $opname, $option, $subject);
+        do_action(
+            'aam-write-cache-action', 
+            $chname, 
+            //if cache is on and result is empty, simply cache the false to speed-up
+            (empty($option) ? false : $option), 
+            $subject
+        );
     }
 
     /**

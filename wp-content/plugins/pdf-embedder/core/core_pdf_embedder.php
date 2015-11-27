@@ -32,7 +32,23 @@ class core_pdf_embedder {
 	
 	protected function get_translation_array() {
 		return Array('worker_src' => $this->my_plugin_url().'js/pdfjs/pdf.worker'.($this->useminified() ? '.min' : '').'.js',
-		             'cmap_url' => $this->my_plugin_url().'js/pdfjs/cmaps/');
+		             'cmap_url' => $this->my_plugin_url().'js/pdfjs/cmaps/',
+            'objectL10n' => array(
+                'loading' => esc_html__('Loading...', 'pdf-embedder'),
+                'page' => esc_html__('Page', 'pdf-embedder'),
+                'zoom' => esc_html__('Zoom', 'pdf-embedder'),
+                'prev' => esc_html__('Previous page', 'pdf-embedder'),
+                'next' => esc_html__('Next page', 'pdf-embedder'),
+                'zoomin' => esc_html__('Zoom In', 'pdf-embedder'),
+                'zoomout' => esc_html__('Zoom Out', 'pdf-embedder'),
+                'secure' => esc_html__('Secure', 'pdf-embedder'),
+                'download' => esc_html__('Download PDF', 'pdf-embedder'),
+                'fullscreen' => esc_html__('Full Screen', 'pdf-embedder'),
+                'domainerror' => esc_html__('Error: URL to the PDF file must be on exactly the same domain as the current web page.', 'pdf-embedder'),
+                'clickhereinfo' => esc_html__('Click here for more info', 'pdf-embedder'),
+                'widthheightinvalid' => esc_html__("PDF page width or height are invalid", 'pdf-embedder'),
+                'viewinfullscreen' => esc_html__("View in Full Screen", 'pdf-embedder')
+            ));
 	}
 	
 	protected function get_extra_js_name() {
@@ -49,14 +65,25 @@ class core_pdf_embedder {
 	}
 	
 	public function pdfemb_post_mime_types($post_mime_types) {
-		$post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
+		$post_mime_types['application/pdf'] = array( __( 'PDFs' , 'pdf-embedder'), __( 'Manage PDFs' , 'pdf-embedder'), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' , 'pdf-embedder') );
 		return $post_mime_types;
 	}
 	
 	// Embed PDF shortcode instead of link
 	public function pdfemb_media_send_to_editor($html, $id, $attachment) {
-		if (preg_match( "/\.pdf$/i", $attachment['url'])) {
-			return '[pdf-embedder url="' . $attachment['url'] . '"]';
+		$pdf_url = '';
+		if (isset($attachment['url']) && preg_match( "/\.pdf$/i", $attachment['url'])) {
+			$pdf_url = $attachment['url'];
+		}
+		elseif ($id > 0) {
+			$post = get_post($id);
+			if ($post && isset($post->post_mime_type) && $post->post_mime_type == 'application/pdf') {
+				$pdf_url = wp_get_attachment_url($id);
+			}
+		}
+
+		if ($pdf_url != '') {
+			return '[pdf-embedder url="' . $pdf_url . '"]';
 		} else {
 			return $html;
 		}
@@ -146,12 +173,12 @@ class core_pdf_embedder {
 	
 	public function pdfemb_admin_menu() {
 		if (is_multisite()) {
-			add_submenu_page( 'settings.php', 'PDF Embedder settings', 'PDF Embedder',
+			add_submenu_page( 'settings.php', __('PDF Embedder settings', 'pdf-embedder'), __('PDF Embedder', 'pdf-embedder'),
 			'manage_network_options', $this->get_options_menuname(),
 			array($this, 'pdfemb_options_do_page'));
 		}
 		else {
-			add_options_page( 'PDF Embedder settings', 'PDF Embedder',
+			add_options_page( __('PDF Embedder settings', 'pdf-embedder'), __('PDF Embedder', 'pdf-embedder'),
 			'manage_options', $this->get_options_menuname(),
 			array($this, 'pdfemb_options_do_page'));
 		}
@@ -171,11 +198,11 @@ class core_pdf_embedder {
 			  
 		<div>
 		
-    		<h2>PDF Embedder setup</h2>
+    		<h2><?php esc_html_e('PDF Embedder setup', 'pdf-embedder'); ?></h2>
 
-            <p>To use the plugin, just embed PDFs in the same way as you would normally embed images in your posts/pages - but try with a PDF file instead.</p>
-            <p>From the post editor, click Add Media, and then drag-and-drop your PDF file into the media library.
-                When you insert the PDF into your post, it will automatically embed using the plugin's viewer.</p>
+            <p><?php esc_html_e('To use the plugin, just embed PDFs in the same way as you would normally embed images in your posts/pages - but try with a PDF file instead.', 'pdf-embedder'); ?></p>
+            <p><?php esc_html_e("From the post editor, click Add Media, and then drag-and-drop your PDF file into the media library.
+                When you insert the PDF into your post, it will automatically embed using the plugin's viewer.", 'pdf-embedder'); ?></p>
 
 
             <div id="pdfemb-tablewrapper">
@@ -183,9 +210,9 @@ class core_pdf_embedder {
             <div id="pdfemb-tableleft" class="pdfemb-tablecell">
 
                 <h2 id="pdfemb-tabs" class="nav-tab-wrapper">
-                    <a href="#main" id="main-tab" class="nav-tab nav-tab-active">Main Settings</a>
-                    <a href="#mobile" id="mobile-tab" class="nav-tab">Mobile</a>
-                    <a href="#secure" id="secure-tab" class="nav-tab">Secure</a>
+                    <a href="#main" id="main-tab" class="nav-tab nav-tab-active"><?php esc_html_e('Main Settings', 'pdf-embedder'); ?></a>
+                    <a href="#mobile" id="mobile-tab" class="nav-tab"><?php esc_html_e('Mobile', 'pdf-embedder'); ?></a>
+                    <a href="#secure" id="secure-tab" class="nav-tab"><?php esc_html_e('Secure', 'pdf-embedder'); ?></a>
                     <?php $this->draw_more_tabs(); ?>
                 </h2>
 
@@ -212,16 +239,21 @@ class core_pdf_embedder {
 		?>
 
                     <p class="submit">
-                        <input type="submit" value="Save Changes" class="button button-primary" id="submit" name="submit">
+                        <input type="submit" value="<?php esc_html_e('Save Changes', 'pdf-embedder'); ?>" class="button button-primary" id="submit" name="submit">
                     </p>
 				
                 </form>
             </div>
 
+            <?php $this->options_do_sidebar(); ?>
+
         </div>
 		
 		</div>  <?php
 	}
+
+    protected function options_do_sidebar() {
+    }
 
     protected function draw_more_tabs() {
     }
@@ -235,38 +267,38 @@ class core_pdf_embedder {
 		?>
 
 
-        <h2>Default Viewer Settings</h2>
+        <h2><?php _e('Default Viewer Settings', 'pdf-embedder'); ?></h2>
 
-        <label for="input_pdfemb_width" class="textinput">Width</label>
+        <label for="input_pdfemb_width" class="textinput"><?php _e('Width', 'pdf-embedder'); ?></label>
         <input id='input_pdfemb_width' class='textinput' name='<?php echo $this->get_options_name(); ?>[pdfemb_width]' size='10' type='text' value='<?php echo esc_attr($options['pdfemb_width']); ?>' />
 		<br class="clear"/>
 
-        <label for="input_pdfemb_height" class="textinput">Height</label>
+        <label for="input_pdfemb_height" class="textinput"><?php _e('Height', 'pdf-embedder'); ?></label>
         <input id='input_pdfemb_height' class='textinput' name='<?php echo $this->get_options_name(); ?>[pdfemb_height]' size='10' type='text' value='<?php echo esc_attr($options['pdfemb_height']); ?>' />
         <br class="clear"/>
 
-        <p class="desc big"><i>Enter <b>max</b> or an integer number of pixels</i></p>
+        <p class="desc big"><i><?php _e('Enter <b>max</b> or an integer number of pixels', 'pdf-embedder'); ?></i></p>
 
         <br class="clear"/>
 
-        <label for="pdfemb_toolbar" class="textinput">Toolbar Location</label>
+        <label for="pdfemb_toolbar" class="textinput"><?php esc_html_e('Toolbar Location', 'pdf-embedder'); ?></label>
         <select name='<?php echo $this->get_options_name(); ?>[pdfemb_toolbar]' id='pdfemb_toolbar' class='select'>
-            <option value="top" <?php echo $options['pdfemb_toolbar'] == 'top' ? 'selected' : ''; ?>>Top</option>
-            <option value="bottom" <?php echo $options['pdfemb_toolbar'] == 'bottom' ? 'selected' : ''; ?>>Bottom</option>
-            <option value="both" <?php echo $options['pdfemb_toolbar'] == 'both' ? 'selected' : ''; ?>>Both</option>
+            <option value="top" <?php echo $options['pdfemb_toolbar'] == 'top' ? 'selected' : ''; ?>><?php esc_html_e('Top', 'pdf-embedder'); ?></option>
+            <option value="bottom" <?php echo $options['pdfemb_toolbar'] == 'bottom' ? 'selected' : ''; ?>><?php esc_html_e('Bottom', 'pdf-embedder'); ?></option>
+            <option value="both" <?php echo $options['pdfemb_toolbar'] == 'both' ? 'selected' : ''; ?>><?php esc_html_e('Both', 'pdf-embedder'); ?></option>
         </select>
         <br class="clear" />
         <br class="clear" />
 
-        <label for="pdfemb_toolbarfixed" class="textinput">Toolbar Hover</label>
+        <label for="pdfemb_toolbarfixed" class="textinput"><?php esc_html_e('Toolbar Hover', 'pdf-embedder'); ?></label>
         <span>
         <input type="radio" name='<?php echo $this->get_options_name(); ?>[pdfemb_toolbarfixed]' id='pdfemb_toolbarfixed_off' class='radio' value="off" <?php echo $options['pdfemb_toolbarfixed'] == 'off' ? 'checked' : ''; ?> />
-        <label for="pdfemb_toolbarfixed_off" class="radio">Toolbar appears only on hover over document</label>
+        <label for="pdfemb_toolbarfixed_off" class="radio"><?php esc_html_e('Toolbar appears only on hover over document', 'pdf-embedder'); ?></label>
         </span>
         <br/>
         <span>
         <input type="radio" name='<?php echo $this->get_options_name(); ?>[pdfemb_toolbarfixed]' id='pdfemb_toolbarfixed_on' class='radio' value="on" <?php echo $options['pdfemb_toolbarfixed'] == 'on' ? 'checked' : ''; ?> />
-        <label for="pdfemb_toolbarfixed_on" class="radio">Toolbar always visible</label>
+        <label for="pdfemb_toolbarfixed_on" class="radio"><?php esc_html_e('Toolbar always visible', 'pdf-embedder'); ?></label>
         </span>
 
 		<?php
@@ -278,7 +310,7 @@ class core_pdf_embedder {
 
 
 
-        <p>You can override these defaults for specific embeds by modifying the shortcodes - see <a href="<?php echo $this->get_instructions_url(); ?>" target="_blank">instructions</a>.</p>
+        <p><?php printf( __('You can override these defaults for specific embeds by modifying the shortcodes - see <a href="%s" target="_blank">instructions</a>.', 'pdf-embedder'), $this->get_instructions_url()); ?></p>
 
         <?php
 	}
@@ -298,14 +330,13 @@ class core_pdf_embedder {
     {
         ?>
 
-        <h2>Protect your PDFs using PDF Embedder Secure</h2>
-        <p>Our <b>PDF Embedder Premium Secure</b> plugin provides the same simple but elegant viewer for your website visitors, with the added protection that
-            it is difficult for users to download or print the original PDF document.</p>
+        <h2><?php esc_html_e('Protect your PDFs using PDF Embedder Secure', 'pdf-embedder'); ?></h2>
+        <p><?php _e('Our <b>PDF Embedder Premium Secure</b> plugin provides the same simple but elegant viewer for your website visitors, with the added protection that
+            it is difficult for users to download or print the original PDF document.', 'pdf-embedder'); ?></p>
 
-        <p>This means that your PDF is unlikely to be shared outside your site where you have no control over who views, prints, or shares it.</p>
+        <p><?php esc_html_e('This means that your PDF is unlikely to be shared outside your site where you have no control over who views, prints, or shares it.', 'pdf-embedder'); ?></p>
 
-        <p>See our website <a href="http://wp-pdf.com/secure/?utm_source=PDF%20Settings%20Secure&utm_medium=freemium&utm_campaign=Freemium">wp-pdf.com</a> for more
-            details and purchase options.
+        <p><?php printf( __('See our website <a href="%s">wp-pdf.com</a> for more details and purchase options.', 'pdf-embedder'), 'http://wp-pdf.com/secure/?utm_source=PDF%20Settings%20Secure&utm_medium=freemium&utm_campaign=Freemium' ); ?>
         </p>
 
         <?php
@@ -351,14 +382,14 @@ class core_pdf_embedder {
 	
 	protected function get_error_string($fielderror) {
         $local_error_strings = Array(
-            'pdfemb_width|widtherror' => 'Width must be "max" or an integer (number of pixels)',
-            'pdfemb_height|heighterror' => 'Height must be "max" or an integer (number of pixels)'
+            'pdfemb_width|widtherror' => __('Width must be "max" or an integer (number of pixels)', 'pdf-embedder'),
+            'pdfemb_height|heighterror' => __('Height must be "max" or an integer (number of pixels)', 'pdf-embedder')
         );
         if (isset($local_error_strings[$fielderror])) {
             return $local_error_strings[$fielderror];
         }
 
-		return 'Unspecified error';
+		return __('Unspecified error', 'pdf-embedder');
 	}
 
 	public function pdfemb_save_network_options() {
@@ -399,7 +430,7 @@ class core_pdf_embedder {
 			?>
 					<div id="setting-error-settings_updated" class="updated settings-error">
 					<p>
-					<strong>Settings saved</strong>
+					<strong><?php esc_html_e('Settings saved', 'pdf-embedder'); ?></strong>
 					</p>
 					</div>
 				<?php
@@ -476,8 +507,17 @@ class core_pdf_embedder {
 		add_filter( 'media_send_to_editor', array($this, 'pdfemb_media_send_to_editor'), 20, 3 );
 		
 		register_setting( $this->get_options_pagename(), $this->get_options_name(), Array($this, 'pdfemb_options_validate') );
+
+		add_filter( 'attachment_fields_to_edit', array($this, 'pdfemb_attachment_fields_to_edit'), 10, 2 );
+
+		wp_enqueue_style( 'pdfemb_admin_other_css', $this->my_plugin_url().'css/pdfemb-admin-other.css' );
 	}
-	
+
+	// Override in Basic and Commercial
+	public function pdfemb_attachment_fields_to_edit($form_fields, $post) {
+		return $form_fields;
+	}
+
 	// Override in Premium
 	public function pdfemb_init() {
 	}
@@ -486,7 +526,7 @@ class core_pdf_embedder {
         if ($file == $this->my_plugin_basename()) {
             $links = $this->extra_plugin_action_links($links);
 
-            $settings_link = '<a href="' . $this->get_settings_url() . '">Settings</a>';
+            $settings_link = '<a href="' . $this->get_settings_url() . '">' . __('Settings', 'pdf-embedder') .'</a>';
             array_unshift($links, $settings_link);
         }
 
@@ -496,8 +536,14 @@ class core_pdf_embedder {
     protected function extra_plugin_action_links( $links ) {
         return $links;
     }
-	
+
+	public function pdfemb_plugins_loaded() {
+		load_plugin_textdomain( 'pdf-embedder', false, dirname($this->my_plugin_basename()).'/lang/' );
+	}
+
 	protected function add_actions() {
+
+		add_action( 'plugins_loaded', array($this, 'pdfemb_plugins_loaded') );
 
 		add_action( 'init', array($this, 'pdfemb_init') );
 		

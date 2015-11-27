@@ -1,0 +1,1090 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "WP-Polls"
+msgstr ""
+
+#. Short description.
+msgid "Adds an AJAX poll system to your WordPress blog. You can also easily add a poll into your WordPress&#039;s blog post/page."
+msgstr ""
+
+#. Screenshot description.
+msgid "Admin - All Poll"
+msgstr ""
+
+#. Screenshot description.
+msgid "Admin - Manage Polls"
+msgstr ""
+
+#. Screenshot description.
+msgid "Admin - Poll Options"
+msgstr ""
+
+#. Screenshot description.
+msgid "Admin - Poll Templates"
+msgstr ""
+
+#. Screenshot description.
+msgid "Admin - Poll Widget"
+msgstr ""
+
+#. Screenshot description.
+msgid "Admin - Uninstall Poll"
+msgstr ""
+
+#. Screenshot description.
+msgid "Poll - Single Poll Answer"
+msgstr ""
+
+#. Screenshot description.
+msgid "Poll - Mutiple Poll Answers"
+msgstr ""
+
+#. Screenshot description.
+msgid "Poll - Results"
+msgstr ""
+
+#. Screenshot description.
+msgid "Poll - Archive"
+msgstr ""
+
+#. Found in description header.
+msgid "Build Status"
+msgstr ""
+
+#. Found in description header.
+msgid "Development"
+msgstr ""
+
+#. Found in description header.
+msgid "Translations"
+msgstr ""
+
+#. Found in description header.
+msgid "Credits"
+msgstr ""
+
+#. Found in description header.
+msgid "Donations"
+msgstr ""
+
+#. Found in description list item.
+msgid "Plugin icon by <a href=\"http://www.freepik.com\">Freepik</a> from <a href=\"http://www.flaticon.com\">Flaticon</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "WP-Polls is extremely customizable via templates and css styles and there are tons of options for you to choose to ensure that WP-Polls runs the way you wanted. It now supports multiple selection of answers."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<a href=\"https://travis-ci.org/lesterchan/wp-polls\"></a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<a href=\"https://github.com/lesterchan/wp-polls\" title=\"https://github.com/lesterchan/wp-polls\">https://github.com/lesterchan/wp-polls</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<a href=\"http://dev.wp-plugins.org/browser/wp-polls/i18n/\" title=\"http://dev.wp-plugins.org/browser/wp-polls/i18n/\">http://dev.wp-plugins.org/browser/wp-polls/i18n/</a>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "I spent most of my free time creating, updating, maintaining and supporting these plugins, if you really love my plugins and could spare me a couple of bucks, I will really appreciate it. If not feel free to use it without any obligations."
+msgstr ""
+
+#. Found in installation header.
+msgid "General Usage (Without Widget)"
+msgstr ""
+
+#. Found in installation header.
+msgid "General Usage (With Widget)"
+msgstr ""
+
+#. Found in installation list item, remaining content list item.
+msgid "Open <code>wp-content/plugins</code> Folder"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Put: <code>Folder: wp-polls</code>"
+msgstr ""
+
+#. Found in installation list item, remaining content list item.
+msgid "Activate <code>WP-Polls</code> Plugin"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Go to <code>WP-Admin -&gt; WP-Polls</code>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Open <code>wp-content/themes/&lt;YOUR THEME NAME&gt;/sidebar.php</code>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Add:"
+msgstr ""
+
+#. Found in installation list item.
+msgid "To show specific poll, use <code>&lt;?php get_poll(2); ?&gt;</code> where 2 is your poll id."
+msgstr ""
+
+#. Found in installation list item.
+msgid "To show random poll, use <code>&lt;?php get_poll(-2); ?&gt;</code>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "To embed a specific poll in your post, use <code>[poll id=\"2\"]</code> where 2 is your poll id."
+msgstr ""
+
+#. Found in installation list item.
+msgid "To embed a random poll in your post, use <code>[poll id=\"-2\"]</code>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "To embed a specific poll's result in your post, use <code>[poll id=\"2\" type=\"result\"]</code> where 2 is your poll id."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Go to <code>WP-Admin -&gt; Appearance -&gt; Widgets</code>."
+msgstr ""
+
+#. Found in installation list item.
+msgid "You can add the Polls Widget by clicking on the 'Add' link besides it."
+msgstr ""
+
+#. Found in installation list item.
+msgid "After adding, you can configure the Polls Widget by clicking on the 'Edit' link besides it."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click 'Save Changes'."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Scroll down for instructions on how to create a Polls Archive."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Use wp_kses_post() to get filter always bad tags"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Add wp_polls_vote_poll_success action hook"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Add wp_polls_add_poll, wp_polls_update_poll, wp_polls_delete_poll action hooks"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: PHP Notices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Removed not needed wp_print_scripts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Use esc_attr() and esc_textarea() instead of htmlspecialchars(). Props <a href=\"https://in.linkedin.com/pub/govind-singh/21/1a9/bab\">Govind Singh</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Make use of wp_add_inline_style. Props @pathawks."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Create 2 filters for secret ballot. Props @afragen."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Added new index to wp_pollsip. Props ArtemR."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Integration with WP-Stats"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Proper IP checking"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll answer percentage are now not rounded off, previously it was always rounded to add up to 100%"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Support WordPress MultiSite Network Activation"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses native WordPress uninstall.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Show shortcode in success message after creating a poll"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Checks and ensure that Poll Question and Poll Answers are not empty"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Checks whether Poll is closed before checking whether user has voted"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Use POST for View Results and Vote link"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Added ?v=VERSION_NUMBER to the plugin TinyMCE JS because it is breaking a lot of editors due to cache issue"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Added backward compatibility with [poll=1] in order not to break older polls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Notices from polls_archive function. Props. @prettyboymp."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Ajax request in parallel with animation. Props @nodecode."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Editor button was outputting the wrong shortcode."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: ReferenceError: pollsEdL10n is not defined if TinyMCE 4.0 is loaded outside the Add/Edit Posts/Pages."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Use Dashicons"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Supports TinyMCE 4.0 For WordPress 3.9"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Poll ID after adding it"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Use SITECOOKIEPATH instead of COOKIEPATH."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Use http://ipinfo.io instead of http://ws.arin.net to get check IP information."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Wrapped all JS function in jQuery.ready(). It is ugly, but it will do till I have time to rewrite it."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Add INDEX for wp_pollsip: pollip_ip_qid (pollip_ip, pollip_qid) to prevent full table scan. Thanks archon810 from AndroidPolice."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Add in various filters in the plugin. Props Machiel."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Deveral undefined variable / undefined index notices. Props Machiel."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Move AJAX Request to wp-admin/admin-ajax.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added nonce To AJAX Calls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: PHP Notices/add_options() Deprecated Arguments (<a href=\"http://www.parapxl.com/\" title=\"Dewey Bushaw\">Dewey Bushaw</a>)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Escaped Hostname. Thanks to Renaud Feil (<a href=\"http://www.stratsec.net\" title=\"Renaud Feil\">Renaud Feil</a>)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Ensure Poll ID In Shortcode Is An Integer. Thanks to Renaud Feil (<a href=\"http://www.stratsec.net\" title=\"Renaud Feil\">Renaud Feil</a>)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: XSS Vulnerability. Thanks to Dweeks, Leon Juranic and Chad Lavoie of the Swiftwill Security Team Inc (<a href=\"http://www.swiftwill.com\" title=\"www.swiftwill.com\">www.swiftwill.com</a>)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses WordPress nonce Throughout"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Display 2,000 Records In Poll Logs Instead Of 100"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Works For WordPress 2.8 Only"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Javascript Now Placed At The Footer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses jQuery Instead Of tw-sack"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Minified Javascript Instead Of Packed Javascript"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Renamed polls-admin-js-packed.js To polls-admin-js.js"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Renamed polls-admin-js.js To polls-admin-js.dev.js"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Renamed polls-js-packed.js To polls-js.js"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Renamed polls-js.js To polls-js.dev.js"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Translate Javascript Variables Using wp_localize_script()"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Add \"Add Poll\" To WordPress Favourite Actions"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Minified plugin.js And Added Non-Minified plugin.min.js"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Able To Remove Individual Answers When Adding Or Editing A Poll"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Use _n() Instead Of __ngettext() And _n_noop() Instead Of __ngettext_noop()"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses New Widget Class From WordPress"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Merge Widget Code To wp-polls.php And Remove wp-polls-widget.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Uses $_SERVER['PHP_SELF'] With plugin_basename(<strong>FILE</strong>) Instead Of Just $_SERVER['REQUEST_URI']"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Ensure That Percentage Always Add Up To 100%"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: More Efficient WP-Polls Archive"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Logged By Username Now Shows Poll Results To Users Who Did Not Login"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Works For WordPress 2.7 Only"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Load Admin JS And CSS Only In WP-Polls Admin Pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added polls-admin-css.css For WP-Polls Admin CSS Styles"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Right To Left Language Support by Kambiz R. Khojasteh"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added \"polls-css-rtl.css\" by Kambiz R. Khojasteh"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Applied Output Of polls_archive() To \"polls_archive\" Filter by Kambiz R. Khojasteh"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Call To polls_textdomain() In create_poll_table() and vote_poll() functions by Kambiz R. Khojasteh"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses wp_register_style(), wp_print_styles(), plugins_url() And site_url()"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: [poll id=\"-2\"] or  Will Randomize The Poll"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: SSL Support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Moved Call To update_pollbar() From onblur To onclick Event. It Was Showing The Last Selection Instead Of Current One by Kambiz R. Khojasteh"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Works For WordPress 2.6"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Better Translation Using __ngetext() by Anna Ozeritskaya"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: MYSQL Charset Issue Should Be Solved"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Works For WordPress 2.5 Only"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Paging Header And Footer Template For Polls Archive Page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses WP-PageNavi Style Paging For Polls Archive Page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: WP-Polls Will Load 'polls-css.css' Inside Your Theme Directory If It Exists. If Not, It Will Just Load The Default 'polls-css.css' By WP-Polls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses Shortcode API"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: When Inserting Poll Into Post, It is Now [poll id=\"1\"], Where 1 Is Your Poll ID"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: When User Does Not Have Permission To Vote, The Voting Form Is Now Disabled Instead Of Showing Poll's Result"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added A New Action Called \"Display Disabled Poll's Voting Form\" To Action Taken When A Poll Is Closed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Updated WP-Polls TinyMCE Plugin To Work With TinyMCE 3.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Add Time Expiry For Cookie/Log"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Removed polls-usage.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Removed \"Fade Anything Technique\" In Polls Admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses /wp-polls/ Folder Instead Of /polls/"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses wp-polls.php Instead Of polls.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses wp-polls-widget.php Instead Of polls-widget.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Use number_format_i18n() Instead"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Renamed polls-admin-js.php To polls-admin-js.js and Move The Dynamic Javascript Variables To The PHP Pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Renamed polls-js.php To polls-js.js and Move The Dynamic Javascript Variables To The PHP Pages"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses polls-js-packed.js And polls-admin-js-packed.js"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Unable To Delete Poll Or Poll Answers If There Is Quotes Within The Poll Or Poll Answer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: number_format() Not Used In Polls Archive"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Unable To Schedule Future Poll If The Year Is Different From Current Year"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: TinyMCE Tool Tip For Insert Poll Not Translated"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Content-Type Not Being Sent Back When AJAX Return Results"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Works For WordPress 2.3 Only"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Quick Tag For Poll To Visual (TinyMCE) / Code Editor"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: New CSS Style For WP-Polls Archive (.wp-polls-archive)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uses WP-Stats Filter To Add Stats Into WP-Stats Page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Add Polls To Excerpt"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added \"Random Order\" For Sorting Poll's Answers And Poll's Result Answers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Language Problem By Setting Database Table To UTF8"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Some Text Not Translated In Polls Widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: 2 Wrong Options Name In Polls Uninstall"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Some Translation Bug in polls-usage.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Archive Link, Individual Poll Header And Footer In Poll Archive Template"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Templates Has Now Its Own Page 'WP-Admin -&gt; Polls -&gt; Poll Templates'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Widget Can Now Display Multiple Polls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Allow User To Select More Than 1 Poll Answer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added AJAX Style Option: \"Show Loading Image With Text\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added AJAX Style Option: \"Show Fading In And Fading Out Of Polls\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Major Changes To The Administration Panel For WP-Polls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: AJAX Added To The Administration Panel For WP-Polls"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Default Poll's Result Template Will Now Show Number Of Votes Beside The Percentage"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Term \"Total Votes\" Changed To \"Total Voters\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Removed Polls From Feed If The Poll Is Embedded Into The Post Using [poll=ID]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Filtering Of Individual Poll Logs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Poll Archive Will Now Show Only Polls Results"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Works For WordPress 2.1 Only"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Renamed polls-js.js to polls-js.php To Enable PHP Parsing"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Make A Poll Expire"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Make A Future Poll"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Future Poll Will Automatically Open When The Poll's Date Is Reached"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Expired Poll Will Automatically Closed When The Poll's Date Is Reached"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ablity To Choose What To Do When The Poll Is Closed (Display Result, Remove Poll From Sidebar)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Future Dated Polls Will Not Appear In The Post/Sidebar/Polls Archive"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: polls.php Now Handles The AJAX Processing Instead Of index.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Able To Modify The Style Of Poll Results Bar in 'Polls -&gt; Poll Option'"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Usage Instructions Is Also Included Within The Plugin Itself"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Uninstaller Done By Philippe Corbes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Localization Done By Ravan"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Add HTML Into Poll Question and Answers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: AJAX Not Working On Servers Running On PHP CGI"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Added Some Default Styles To polls-css.css To Ensure That WP-Polls Does Not Break"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Other Languages Not Appearing Properly"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Poll IP Logs Of Deleted Poll's Answer Did Not Get Deleted"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: There Is An Error In Voting If There Is Only 1 Poll's Answer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Polls Archive Is Now Embedded Into A Page, And Hence No More Integrating Of Polls Archive"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: WP-Polls Is Now Using DIV To Display The Poll's Results Instead Of The Image Bar"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Widget Title Option To WP-Polls Widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Logged By UserName"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added CSS Class 'wp-polls-image' To All IMG Tags"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: If Site URL Doesn't Match WP Option's Site URL, WP-Polls Will Not Work"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: You Can Now Place The Poll On The Sidebar As A Widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Moved wp-polls.php To wp-content/plugins/polls/ Folder"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: AJAX Not Working In Opera Browser"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Poll Not Working On Physical Pages That Is Integrated Into WordPress"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Is Now Using AJAX"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Close/Open Poll"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Poll Option For Logging Method"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Poll Option For Who Can Vote"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Poll Results Footer Template Variable (Used When User Click \"View Results\")"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added The Ability To Delete All Poll Logs Or Logs From A Specific Poll"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Administration Panel And The Code That WP-Polls Generated Is XHTML 1.0 Transitional"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Bug In vote_poll();"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Random Poll Not Working Correctly"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Bar Is Slightly Nicer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Got Rid Of Tables, Now Using List"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added In Most Voted And Least Voted Answer/Votes/Percentage For Individual Poll As Template Variables"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Display Random Poll Option Under Poll -&gt; Poll Options -&gt; Current Poll"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Totally Removed Tables In wp-polls.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Improved On 'manage_polls' Capabilities"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Neater Structure"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: No More Install/Upgrade File, It Will Install/Upgrade When You Activate The Plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added Poll Stats Function"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Added 'manage_polls' Capabilities To Administrator Role"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: [poll=POLL_ID] Tag To Insert Poll Into A Post"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Edit Poll's Timestamp"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Ability To Edit Individual Poll's Answer Votes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: %POLL_RESULT_URL% To Display Poll's Result URL"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Cannot Sent Header Error"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Compatible With WordPress 2.0 Only"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Administration Menu Added Automatically Upon Activating The Plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Removed Add Poll Link From The Administration Menu"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: GPL License Added"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Page Title Added To wp-polls.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: poll-install.php And poll-upgrade.php will Now Be Installed/Upgraded To 2.02 Instead Of 2.01"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Showing 0 Vote On Poll Edit Page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Null Vote Being Counted As A Vote"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Auto Loading Of Poll Option: Polls Per Page In Poll Archive Page Is Now \"No\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Host Column In Poll IP Table To Prevent Network Lagging When Resolving IP"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: New Poll Error Template"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Upgrade Script To Insert Lastest Poll ID Of User's Current Polls, Instead Of Poll ID 1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Replace All &lt;?### With &lt;?php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Added addalshes() To $pollip_user"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Better Localization Support (80% Done, Will Leave It In The Mean Time)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: IP Logging"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Options: Sorting Of Answers In Voting Form"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Options: Sorting Of Answers In Results View"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Options: Number Of Polls Per Page In Poll Archive"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Options: Choose Poll To Display On Index Page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Options: Able To Disable Poll With Custom Message"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Poll Options: Poll Templates"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "NEW: Display User's Voted Choice"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "FIXED: Better Install/Upgrade Script"
+msgstr ""
+
+#. Found in faq header.
+msgid "How To Add A Polls Archive?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Why doesn't my poll's answers add up to 100%?"
+msgstr ""
+
+#. Found in faq header.
+msgid "How Does WP-Polls Load CSS?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Why In Internet Explorer (IE) The poll's Text Appear Jagged?"
+msgstr ""
+
+#. Found in faq header.
+msgid "How Do I Have Individual Colors For Each Poll's Bar?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Polls Stats (Outside WP Loop)"
+msgstr ""
+
+#. Found in faq header.
+msgid "To Display Total Polls"
+msgstr ""
+
+#. Found in faq header.
+msgid "To Display Total Poll Answers"
+msgstr ""
+
+#. Found in faq header.
+msgid "To Display Total Poll Votes"
+msgstr ""
+
+#. Found in faq header.
+msgid "To Display Total Poll Voters"
+msgstr ""
+
+#. Found in faq list item.
+msgid "Go to <code>WP-Admin -&gt; Pages -&gt; Add New</code>."
+msgstr ""
+
+#. Found in faq list item.
+msgid "Type any title you like in the post's title area."
+msgstr ""
+
+#. Found in faq list item.
+msgid "If you ARE  using nice permalinks,  after typing the title, WordPress will generate the permalink to the page. You will see an 'Edit' link just beside the permalink."
+msgstr ""
+
+#. Found in faq list item.
+msgid "Click 'Edit' and type in <code>pollsarchive</code> in the text field and click 'Save'."
+msgstr ""
+
+#. Found in faq list item.
+msgid "Type <code>[page_polls]</code> in the post's content area."
+msgstr ""
+
+#. Found in faq list item.
+msgid "Click 'Publish'."
+msgstr ""
+
+#. Found in faq list item.
+msgid "If you ARE NOT using nice permalinks, you need to go to <code>WP-Admin -&gt; Polls -&gt; Poll Options</code> and under <code>Poll Archive -&gt; Polls Archive URL</code>, you need to fill in the URL to the Polls Archive Page you created above."
+msgstr ""
+
+#. Found in faq list item.
+msgid "It is because of rounding issues. To make it always round up to 100%, the last poll's answer will get the remainding percentage added to it. To enable this feature, add this to your theme's functions.php: <code>add_filter( 'wp_polls_round_percentage', '__return_true' );</code>"
+msgstr ""
+
+#. Found in faq list item.
+msgid "WP-Polls will load <code>polls-css.css</code> from your theme's directory if it exists."
+msgstr ""
+
+#. Found in faq list item.
+msgid "If it doesn't exists, it will just load the default <code>polls-css.css</code> that comes with WP-Polls."
+msgstr ""
+
+#. Found in faq list item.
+msgid "This will allow you to upgrade WP-Polls without worrying about overwriting your polls styles that you have created."
+msgstr ""
+
+#. Found in faq list item.
+msgid "To solve this issue, Open poll-css.css"
+msgstr ""
+
+#. Found in faq list item.
+msgid "Find: <code>/* background-color: #ffffff; */</code>"
+msgstr ""
+
+#. Found in faq list item.
+msgid "Replace: <code>background-color: #ffffff;</code> (where #ffffff should be your background color for the poll.)"
+msgstr ""
+
+#. Found in faq list item.
+msgid "Courtesy Of <a href=\"http://treedbox.com\" title=\"TreedBox.com\">TreedBox.com</a>"
+msgstr ""
+
+#. Found in faq list item.
+msgid "Open poll-css.css"
+msgstr ""
+
+#. Found in faq list item.
+msgid "Add to the end of the file:"
+msgstr ""
+
+#. Found in faq list item.
+msgid "Use:"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Upgrading"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Deactivate <code>WP-Polls</code> Plugin"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Put/Overwrite: <code>Folder: wp-polls</code>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Go to <code>WP-Admin -&gt; Polls -&gt; Polls Templates</code> and restore all the template variables to <code>Default</code>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Go to <code>WP-Admin -&gt; Appearance -&gt; Widgets</code> and re-add the Poll Widget"
+msgstr ""

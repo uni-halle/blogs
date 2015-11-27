@@ -44,7 +44,7 @@ class AAM_Backend_Role {
                 $role,
                 $uc,
                 translate_user_role($data['name']),
-                'manage,edit' . ($uc ? ',no-delete' : ',delete')
+                'manage,edit' . ($uc || !current_user_can('delete_users') ? ',no-delete' : ',delete')
             );
         }
 

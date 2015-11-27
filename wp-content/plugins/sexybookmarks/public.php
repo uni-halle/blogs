@@ -34,7 +34,12 @@ class ShareaholicPublic {
     if(!current_theme_supports('post-thumbnails')){
       add_theme_support('post-thumbnails');
     }
-    
+		
+    // Adds support for shortcodes in sidebar text widgets
+    if (!has_filter('widget_text', 'do_shortcode')){
+      add_filter('widget_text', 'do_shortcode', 11);
+    }
+		
     add_image_size('shareaholic-thumbnail', 300); // 300 pixels wide (and unlimited height)
   }
 	

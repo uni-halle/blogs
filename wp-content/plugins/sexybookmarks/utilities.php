@@ -1073,7 +1073,7 @@ class ShareaholicUtilities {
    */
   public static function add_header_xua($headers) {
       if(!isset($headers['X-UA-Compatible'])) {
-        $headers['X-UA-Compatible'] = 'IE=edge,chrome=1';
+        $headers['X-UA-Compatible'] = 'IE=edge';
       }
       return $headers;
   }
@@ -1083,7 +1083,7 @@ class ShareaholicUtilities {
    *
    */
   public static function draw_meta_xua() {
-    echo '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">';
+    echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
   }
   
   /**
@@ -1315,7 +1315,7 @@ class ShareaholicUtilities {
     $has_majority_services = count(array_keys($response['body']['data'])) >= 8 ? true : false;
     $has_important_services = true;
     // Does it have counts for twtr, linkedin, pinterest, and delicious?
-    foreach (array('twitter', 'linkedin', 'pinterest', 'delicious') as $service) {
+    foreach (array('linkedin', 'pinterest', 'delicious') as $service) {
       if (!isset($response['body']['data'][$service]) || !is_numeric($response['body']['data'][$service])) {
         $has_important_services = false;
       }

@@ -196,30 +196,34 @@ private function setIconsize($a_IconName, $a_IconHeight = -1, $a_IconWidth = -1,
         $this->icon_offset_height = round(-$this->icon_height/2);
         $this->icon_offset_width = round(-$this->icon_width/2);
       }
-      else if ($marker_focus == 1){ // left bottom
+      else if ($a_IconFocus == 1){ // left bottom
         $this->icon_offset_height = -$this->icon_height;
         $this->icon_offset_width  = 0;
       }
-      else if ($marker_focus == 2){ // left top
+      else if ($a_IconFocus == 2){ // left top
         $this->icon_offset_height = 0;
         $this->icon_offset_width  = 0;
       }
-      else if ($marker_focus == 3){ // right top
+      else if ($a_IconFocus == 3){ // right top
         $this->icon_offset_height = 0;
         $this->icon_offset_width  = -$this->icon_width;
       }
-      else if ($marker_focus == 4){ // right bottom
+      else if ($a_IconFocus == 4){ // right bottom
         $this->icon_offset_height = -$this->icon_height;
         $this->icon_offset_width  = -$this->icon_width;
       }
-      else if ($marker_focus == 5){ // center bottom
+      else if ($a_IconFocus == 5){ // center bottom
         $this->icon_offset_height = -$this->icon_height;
         $this->icon_offset_width = round(-$this->icon_width/2);
-      }
-	
+  }
+   else {
 	$this->icon_offset_height = -1;
 	$this->icon_offset_width = -1;
-  }
+    }
+}
+//Osm::traceText(DEBUG_ERROR, "height: ". $a_IconHeight);
+//Osm::traceText(DEBUG_ERROR, "height: ". $this->icon_offset_height);
+//Osm::traceText(DEBUG_ERROR, "height: ". $this->icon_offset_width);
 }
 
   public function setIcon($a_IconName = 'mic_blue_pinother_02.png', $a_IconHeight = -1, $a_IconWidth = -1, $a_IconFocus = -1)

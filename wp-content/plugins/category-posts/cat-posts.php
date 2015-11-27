@@ -4,7 +4,7 @@ Plugin Name: Category Posts Widget
 Plugin URI: http://mkrdip.me/category-posts-widget
 Description: Adds a widget that shows the most recent posts from a single category.
 Author: Mrinal Kanti Roy
-Version: 4.1.3
+Version: 4.1.4
 Author URI: http://mkrdip.me
 */
 
@@ -77,14 +77,31 @@ class CategoryPosts extends WP_Widget {
 			$sort_by = 'date';
 			$sort_order = 'DESC';
 		}
+		
+		// Exclude current post
+		$current_post_id = get_the_ID();
+		$exclude_current_post = (isset( $instance['exclude_current_post'] ) && $instance['exclude_current_post'] != -1) ? $current_post_id : "";		
 
 		// Get array of post info.
-		$cat_posts = new WP_Query(
-			"showposts=" . $instance["num"] . 
-			"&cat=" . $instance["cat"] .
-			"&orderby=" . $sort_by .
-			"&order=" . $sort_order
+		$args = array(
+			'showposts' => $instance["num"],
+			'cat' => $instance["cat"],
+			'post__not_in' => array( $exclude_current_post ),
+			'orderby' => $sort_by,
+			'order' => $sort_order
 		);
+		
+		if( isset( $instance['hideNoThumb'] ) ) {
+			$args = array_merge( $args, array( 'meta_query' => array(
+					array(
+					 'key' => '_thumbnail_id',
+					 'compare' => 'EXISTS' )
+					)
+				)	
+			);
+		}
+		
+		$cat_posts = new WP_Query( $args );
 		
 		if ( !isset ( $instance["hide_if_empty"] ) || $cat_posts->have_posts() ) {
 			
@@ -137,8 +154,11 @@ class CategoryPosts extends WP_Widget {
 					</a>
 
 					<?php if ( isset( $instance['date'] ) ) : ?>
-						<p class="post-date <?php if( !isset( $instance['disable_css'] ) ) { echo " cat-post-date"; } ?>">
-							<?php the_time("j M Y"); ?>
+						<?php if ( isset( $instance['date_format'] ) && strlen( trim( $instance['date_format'] ) ) > 0 ) { $date_format = $instance['date_format']; } else { $date_format = "j M Y"; } ?>
+						<p class="post-date <?php if( !isset( $instance['disable_css'] ) ) { echo "cat-post-date"; } ?>">						
+						<?php if( isset ( $instance["date_link"] ) ) { ?> <a href="<?php the_permalink(); ?>"><?php } ?>
+							<?php the_time($date_format); ?>
+						<?php if( isset ( $instance["date_link"] ) ) { echo "</a>"; } ?>
 						</p>
 					<?php endif;
 
@@ -153,14 +173,20 @@ class CategoryPosts extends WP_Widget {
 							</a>
 					<?php endif;
 					endif;
-						
+
 					if ( isset( $instance['excerpt'] ) ) : 
 						the_excerpt();
 					endif;
-
+					
 					if ( isset( $instance['comment_num'] ) ) : ?>
 						<p class="comment-num <?php if( !isset( $instance['disable_css'] ) ) { echo "cat-post-comment-num"; } ?>">
 							(<?php comments_number(); ?>)
+						</p>
+					<?php endif;					
+
+					if ( isset( $instance['author'] ) ) : ?>
+						<p class="post-author <?php if( !isset( $instance['disable_css'] ) ) { echo "cat-post-author"; } ?>">
+							<?php the_author_posts_link(); ?>
 						</p>
 					<?php endif; ?>
 				</li>
@@ -169,6 +195,13 @@ class CategoryPosts extends WP_Widget {
 
 			echo "</ul>\n";
 
+			// Footer link to category page
+			if( isset ( $instance["footer_link"] ) ) {
+				echo "<a";
+					if( !isset( $instance['disable_css'] ) ) { echo " class:\"cat-post-footer-link\""; }
+				echo " href=\"" . get_category_link($instance["cat"]) . "\">" . $instance["footer_link"] . "</a>";
+			}
+
 			echo $after_widget;
 
 			remove_filter('excerpt_length', $new_excerpt_length);
@@ -176,8 +209,8 @@ class CategoryPosts extends WP_Widget {
 			if (function_exists ('wp_reset_postdata')) //wp_reset_postdata only exists in WordPress >3.0.0
 				wp_reset_postdata();
 			
-		} // END if !isset ( $instance["hide_if_empty"] ) || $cat_posts->have_posts()
-	}
+		} // END if
+	} // END function
 
 	/**
 	 * Update the options
@@ -207,48 +240,66 @@ class CategoryPosts extends WP_Widget {
 	 */
 	function form($instance) {
 		$instance = wp_parse_args( ( array ) $instance, array(
-			'title'          => __( '' ),
-			'hide_title'     => __( '' ),
-			'cat'            => __( '' ),
-			'num'            => __( '' ),
-			'sort_by'        => __( '' ),
-			'asc_sort_order' => __( '' ),
-			'title_link'     => __( '' ),
-			'excerpt'        => __( '' ),
-			'excerpt_length' => __( '' ),
-			'comment_num'    => __( '' ),
-			'date'           => __( '' ),
-			'thumb'          => __( '' ),
-			'thumbTop'       => __( '' ),
-			'thumb_w'        => __( '' ),
-			'thumb_h'        => __( '' ),
-			'disable_css'    => __( '' ),
-			'hide_if_empty'  => __( '' )
+			'title'                => __( '' ),
+			'hide_title'           => __( '' ),
+			'cat'                  => __( '' ),
+			'num'                  => __( '' ),
+			'sort_by'              => __( '' ),
+			'asc_sort_order'       => __( '' ),
+			'exclude_current_post' => __( '' ),
+			'title_link'           => __( '' ),
+			'footer_link'          => __( '' ),
+			'excerpt'              => __( '' ),
+			'excerpt_length'       => __( '' ),
+			'comment_num'          => __( '' ),
+			'author'               => __( '' ),
+			'date'                 => __( '' ),
+			'date_link'            => __( '' ),
+			'date_format'          => __( '' ),
+			'thumb'                => __( '' ),
+			'thumbTop'             => __( '' ),
+			'hideNoThumb'          => __( '' ),
+			'thumb_w'              => __( '' ),
+			'thumb_h'              => __( '' ),
+			'disable_css'          => __( '' ),
+			'hide_if_empty'        => __( '' )
 		) );
 
-		$title          = $instance['title'];
-		$hide_title     = $instance['hide_title'];
-		$cat            = $instance['cat'];
-		$num            = $instance['num'];
-		$sort_by        = $instance['sort_by'];
-		$asc_sort_order = $instance['asc_sort_order'];
-		$title_link     = $instance['title_link'];
-		$excerpt        = $instance['excerpt'];
-		$excerpt_length = $instance['excerpt_length'];
-		$comment_num    = $instance['comment_num'];
-		$date           = $instance['date'];
-		$thumb          = $instance['thumb'];
-		$thumbTop       = $instance['thumbTop'];
-		$thumb_w        = $instance['thumb_w'];
-		$thumb_h        = $instance['thumb_h'];
-		$disable_css    = $instance['disable_css'];
-		$hide_if_empty  = $instance['hide_if_empty'];		
+		$title                = $instance['title'];
+		$hide_title           = $instance['hide_title'];
+		$cat                  = $instance['cat'];
+		$num                  = $instance['num'];
+		$sort_by              = $instance['sort_by'];
+		$asc_sort_order       = $instance['asc_sort_order'];
+		$exclude_current_post = $instance['exclude_current_post'];
+		$title_link           = $instance['title_link'];
+		$footer_link          = $instance['footer_link'];
+		$excerpt              = $instance['excerpt'];
+		$excerpt_length       = $instance['excerpt_length'];
+		$comment_num          = $instance['comment_num'];
+		$author               = $instance['author'];
+		$date                 = $instance['date'];
+		$date_link            = $instance['date_link'];
+		$date_format          = $instance['date_format'];
+		$thumb                = $instance['thumb'];
+		$thumbTop             = $instance['thumbTop'];
+		$hideNoThumb          = $instance['hideNoThumb'];
+		$thumb_w              = $instance['thumb_w'];
+		$thumb_h              = $instance['thumb_h'];
+		$disable_css          = $instance['disable_css'];
+		$hide_if_empty        = $instance['hide_if_empty'];
 
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id("title"); ?>">
 				<?php _e( 'Title' ); ?>:
-				<input class="widefat" id="<?php echo $this->get_field_id("title"); ?>" name="<?php echo $this->get_field_name("title"); ?>" type="text" value="<?php echo esc_attr($instance["title"]); ?>" />
+				<input class="widefat" style="width:80%;" id="<?php echo $this->get_field_id("title"); ?>" name="<?php echo $this->get_field_name("title"); ?>" type="text" value="<?php echo esc_attr($instance["title"]); ?>" />
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id("title_link"); ?>">
+				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("title_link"); ?>" name="<?php echo $this->get_field_name("title_link"); ?>"<?php checked( (bool) $instance["title_link"], true ); ?> />
+				<?php _e( 'Make widget title link' ); ?>
 			</label>
 		</p>
 		<p>
@@ -258,15 +309,9 @@ class CategoryPosts extends WP_Widget {
 			</label>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id("title_link"); ?>">
-				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("title_link"); ?>" name="<?php echo $this->get_field_name("title_link"); ?>"<?php checked( (bool) $instance["title_link"], true ); ?> />
-				<?php _e( 'Make widget title link' ); ?>
-			</label>
-		</p>		
-		<p>
 			<label>
 				<?php _e( 'Category' ); ?>:
-				<?php wp_dropdown_categories( array( 'name' => $this->get_field_name("cat"), 'selected' => $instance["cat"] ) ); ?>
+				<?php wp_dropdown_categories( array( 'hide_empty'=> 0, 'name' => $this->get_field_name("cat"), 'selected' => $instance["cat"] ) ); ?>
 			</label>
 		</p>
 		<p>
@@ -296,6 +341,30 @@ class CategoryPosts extends WP_Widget {
 			</label>
 		</p>
 		<p>
+			<label for="<?php echo $this->get_field_id("exclude_current_post"); ?>">
+				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("exclude_current_post"); ?>" name="<?php echo $this->get_field_name("exclude_current_post"); ?>"<?php checked( (bool) $instance["exclude_current_post"], true ); ?> />
+				<?php _e( 'Exclude current post' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id("date"); ?>">
+				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("date"); ?>" name="<?php echo $this->get_field_name("date"); ?>"<?php checked( (bool) $instance["date"], true ); ?> />
+				<?php _e( 'Show post date' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id("date_format"); ?>">
+				<?php _e( 'Date format:' ); ?>
+			</label>
+			<input class="text" placeholder="j M Y" id="<?php echo $this->get_field_id("date_format"); ?>" name="<?php echo $this->get_field_name("date_format"); ?>" type="text" value="<?php echo esc_attr($instance["date_format"]); ?>" size="8" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id("date_link"); ?>">
+				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("date_link"); ?>" name="<?php echo $this->get_field_name("date_link"); ?>"<?php checked( (bool) $instance["date_link"], true ); ?> />
+				<?php _e( 'Make widget date link' ); ?>
+			</label>
+		</p>
+		<p>
 			<label for="<?php echo $this->get_field_id("excerpt"); ?>">
 				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("excerpt"); ?>" name="<?php echo $this->get_field_name("excerpt"); ?>"<?php checked( (bool) $instance["excerpt"], true ); ?> />
 				<?php _e( 'Show post excerpt' ); ?>
@@ -306,18 +375,6 @@ class CategoryPosts extends WP_Widget {
 				<?php _e( 'Excerpt length (in words):' ); ?>
 			</label>
 			<input style="text-align: center;" type="text" id="<?php echo $this->get_field_id("excerpt_length"); ?>" name="<?php echo $this->get_field_name("excerpt_length"); ?>" value="<?php echo $instance["excerpt_length"]; ?>" size="3" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id("comment_num"); ?>">
-				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("comment_num"); ?>" name="<?php echo $this->get_field_name("comment_num"); ?>"<?php checked( (bool) $instance["comment_num"], true ); ?> />
-				<?php _e( 'Show number of comments' ); ?>
-			</label>
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id("date"); ?>">
-				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("date"); ?>" name="<?php echo $this->get_field_name("date"); ?>"<?php checked( (bool) $instance["date"], true ); ?> />
-				<?php _e( 'Show post date' ); ?>
-			</label>
 		</p>
 		<?php if ( function_exists('the_post_thumbnail') && current_theme_supports("post-thumbnails") ) : ?>
 			<p>
@@ -331,7 +388,7 @@ class CategoryPosts extends WP_Widget {
 					<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("thumbTop"); ?>" name="<?php echo $this->get_field_name("thumbTop"); ?>"<?php checked( (bool) $instance["thumbTop"], true ); ?> />
 					<?php _e( 'Thumbnail to top' ); ?>
 				</label>
-			</p>			
+			</p>
 			<p>
 				<label>
 					<?php _e('Thumbnail dimensions (in pixels)'); ?>:<br />
@@ -344,7 +401,31 @@ class CategoryPosts extends WP_Widget {
 					</label>
 				</label>
 			</p>
-		<?php endif; ?>
+			<p>
+				<label for="<?php echo $this->get_field_id("hideNoThumb"); ?>">
+					<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("hideNoThumb"); ?>" name="<?php echo $this->get_field_name("hideNoThumb"); ?>"<?php checked( (bool) $instance["hideNoThumb"], true ); ?> />
+					<?php _e( 'Hide posts which have no thumbnail' ); ?>
+				</label>
+			</p>			
+		<?php endif; ?>	
+		<p>
+			<label for="<?php echo $this->get_field_id("comment_num"); ?>">
+				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("comment_num"); ?>" name="<?php echo $this->get_field_name("comment_num"); ?>"<?php checked( (bool) $instance["comment_num"], true ); ?> />
+				<?php _e( 'Show number of comments' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id("author"); ?>">
+				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("author"); ?>" name="<?php echo $this->get_field_name("author"); ?>"<?php checked( (bool) $instance["author"], true ); ?> />
+				<?php _e( 'Show post author' ); ?>
+			</label>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id("footer_link"); ?>">
+				<?php _e( 'Footer link text' ); ?>:
+				<input class="widefat" style="width:60%;" placeholder="... more by this topic" id="<?php echo $this->get_field_id("footer_link"); ?>" name="<?php echo $this->get_field_name("footer_link"); ?>" type="text" value="<?php echo esc_attr($instance["footer_link"]); ?>" />
+			</label>
+		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id("disable_css"); ?>">
 				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("disable_css"); ?>" name="<?php echo $this->get_field_name("disable_css"); ?>"<?php checked( (bool) $instance["disable_css"], true ); ?> />
@@ -356,7 +437,7 @@ class CategoryPosts extends WP_Widget {
 				<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id("hide_if_empty"); ?>" name="<?php echo $this->get_field_name("hide_if_empty"); ?>"<?php checked( (bool) $instance["hide_if_empty"], true ); ?> />
 				<?php _e( 'Hide if empty' ); ?>
 			</label>
-		</p>		
+		</p>
 		<?php
 	}
 }

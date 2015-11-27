@@ -5,9 +5,9 @@ Plugin URI:        https://www.mapsmarker.com
 Tags:              Google Maps, OpenStreetMap, OSM, bing maps, googlemaps, google earth, map, maps, kml, gpx, location, augmented-reality
 Author URI:        https://www.mapsmarker.com
 Author:            MapsMarker.com e.U.
-Requires at least: 3.3
-Tested up to:      4.3
-Stable tag:        3.10
+Requires at least: 3.4
+Tested up to:      4.4-beta4
+Stable tag:        3.10.1
 License:           GPLv2
 
 The most comprehensive & user-friendly mapping solution for WordPress
@@ -97,7 +97,7 @@ This plugin is built by a team with a vision. We follow a moral code and value t
 * smooth update functions
 * complete uninstall: one-click removal with zero data residue (also on WordPress MultiSite installations)
 
-= 36 TRANSLATIONS - AND COUNTING! =
+= 46 TRANSLATIONS - AND COUNTING! =
 
 We feature full RTL (right-to-left) language support as well as full support for cyrillic, chinese and other characters with UTF-8. 
 Maps Marker makes it easy to switch between languages. Thanks to over 100 translators around the world, more languages are added regularly. Please feel free to contribute (and earn a license key in return) at [https://translate.mapsmarker.com](https://translate.mapsmarker.com)
@@ -131,6 +131,7 @@ Maps Marker makes it easy to switch between languages. Thanks to over 100 transl
 * Korean (ko_KR) thanks to Andy Park
 * Latvian (lv) thanks to Juris Orlovs and Eriks Remess
 * Lithuanian (lt_LT) thanks to Donatas Liaudaitis
+* Malawy (ms_MY) thanks to Mohd Zulkifli
 * Norwegian/Bokmal (nb_NO) thanks to Inge Tang
 * Polish (pl_PL) translation thanks to Pawel Wyszynski, Tomasz Rudnicki and Robert Pawlak
 * Portuguese (pt_BR) thanks to Andre Santos and Antonio Hammerl
@@ -169,7 +170,7 @@ For full credits of each translations please visit [https://www.mapsmarker.com/l
 * [upload icon button & custom icon directory](https://www.mapsmarker.com/pro-feature-backlink-upload-button)
 * [backup and restore of settings](https://www.mapsmarker.com/pro-feature-backup-restore)
 * [advanced recent marker widget](https://www.mapsmarker.com/pro-feature-advanced-widget)
-* [MapsMarker API](https://www.mapsmarker.com/pro-feature-mapsmarker-api)
+* [MapsMarker API and MMPAPI class access](https://www.mapsmarker.com/pro-feature-mapsmarker-api)
 * [whitelabel backend admin pages](https://www.mapsmarker.com/pro-feature-whitelabel)
 * [advanced permission settings](https://www.mapsmarker.com/pro-feature-advanced-permissions)
 * [improved performance for layer maps with a huge number of markers (parsing of GeoJSON is up to 3 times faster)](https://www.mapsmarker.com/v1.2.1p)
@@ -190,6 +191,14 @@ For full credits of each translations please visit [https://www.mapsmarker.com/l
 * [improved accessibility/screen reader support by using proper alt texts](https://www.mapsmarker.com/v1.9.2p)
 * [support for duplicating layer maps (without assigned markers)](https://www.mapsmarker.com/v1.9.3p)
 * [bulk actions for layers (duplicate, delete layer only, delete & re-assign markers)](https://www.mapsmarker.com/v1.9.3p)
+* Parsing of shortcodes in popuptexts
+* [support for custom Mapbox basemaps](https://www.mapsmarker.com/v2.5p)
+* [optimized editing workflow - no more reloads needed due to AJAX support](https://www.mapsmarker.com/v2.5p)
+* [support for URL hashes for specific map views](https://www.mapsmarker.com/v2.6p)
+* [highlight a marker on a layer map by opening its popup via shortcode attribute [mapsmarker layer="1" highlightmarker="2"] or by adding ?highlightmarker=2 to the URL where the map is embedded](https://www.mapsmarker.com/v2.6p)
+* [XML sitemaps integration: improved local SEO value by automatically adding links to KML maps to your XML sitemaps (if plugin "Google XML Sitemaps" is active)](https://www.mapsmarker.com/v2.6p)
+* [support for sorting list of markers below layer maps by distance from layer center](https://www.mapsmarker.com/v2.6p)
+* [improved backend usability by listing all contents (posts, pages, CPTs, widgets) where each shortcode is used](https://www.mapsmarker.com/v2.6p)
 * **frequent updates**
 * **dedicated and priority support** from the plugin author
 * non-expiring license keys
@@ -326,10 +335,10 @@ MapsMarker &reg;
 Copyright 2011-2015, MapsMarker.com e.U., All Rights Reserved
 
 == Upgrade Notice ==
-= v3.10 =
-support for async loading on layer maps, bing maps optimizations, bugfixes - see https://www.mapsmarker.com/v3.10 for more details
+= v3.10.1 =
+support for responsive tables on backend, bugfixes - see https://www.mapsmarker.com/v3.10.1 for more details
 
 == Changelog ==
-[blog post with details about v3.10](https://www.mapsmarker.com/v3.10)
+[blog post with details about v3.10.1](https://www.mapsmarker.com/v3.10.1)
 
 [changelog for all versions](https://www.mapsmarker.com/changelog)

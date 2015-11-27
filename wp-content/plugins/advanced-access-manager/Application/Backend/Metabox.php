@@ -26,7 +26,7 @@ class AAM_Backend_Metabox {
         global $wp_post_types; //important to keep. Is used in metabox.phtml
         
         ob_start();
-        require_once(dirname(__FILE__) . '/view/metabox.phtml');
+        require_once(dirname(__FILE__) . '/view/object/metabox.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 

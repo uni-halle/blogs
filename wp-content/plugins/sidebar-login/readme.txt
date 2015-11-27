@@ -2,9 +2,9 @@
 Contributors: mikejolley
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mike.jolley@me.com&currency_code=&amount=&return=&item_name=Donation+for+Sidebar+Login
 Tags: login, sidebar, widget, sidebar login, meta, form, register
-Requires at least: 3.0
-Tested up to: 4.2
-Stable tag: 2.7.2
+Requires at least: 3.5
+Tested up to: 4.4
+Stable tag: 2.7.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,9 +16,9 @@ Sidebar-Login adds a useful login widget which you can use to login from in the 
 
 Once a user logs in it then redirects them back to the page they logged in from rather than the admin panel (this is configurable).
 
-If you'd like to contribute code to the plugin you can do so via GitHub: https://github.com/mikejolley/sidebar-login.
+If you'd like to contribute code to the plugin you can do so via [GitHub](https://github.com/mikejolley/sidebar-login).
 
-If you'd like to contribute a localisation, the project is hosted on Transifex: https://www.transifex.com/projects/p/sidebar-login/
+If you'd like to contribute a translation, [the project is hosted on WordPress.org](https://translate.wordpress.org/projects/wp-plugins/sidebar-login).
 
 = Usage =
 
@@ -39,6 +39,7 @@ These tags can be used in the widget settings for titles + links and will be rep
 * `%logout_url%` - logout url
 * `%buddypress_profile_url%` - Buddypress Profile URL
 * `%bbpress_profile_url%` - Buddypress Profile URL
+* `%avatar%` - User Avatar
 
 = Filter Reference =
 
@@ -55,6 +56,7 @@ These tags can be used in the widget settings for titles + links and will be rep
 * `sidebar_login_widget_logout_redirect` - the redirect after logging out.
 * `sidebar_login_widget_register_url` - The URL for registration links.
 * `sidebar_login_widget_lost_password_url` - The URL for lost password links.
+* `sidebar_login_widget_wp_login_form` - The HTML of the Login form.
 
 = Action Reference =
 
@@ -67,7 +69,7 @@ These tags can be used in the widget settings for titles + links and will be rep
 
 = Notes =
 
-* Due to AJAX not working across different domains (see [same_origin_policy](http://en.wikipedia.org/wiki/Same_origin_policy)), AJAX logins will be disabled if your site it non-SSL, but the FORCE_SSL_LOGIN constant is set to true. Instead it will fallback to a traditional POST.
+* Due to AJAX not working across different domains (see [same_origin_policy](http://en.wikipedia.org/wiki/Same_origin_policy)), AJAX logins will be disabled if your site it non-SSL, but the FORCE_SSL_ADMIN constant is set to true. Instead it will fallback to a traditional POST.
 
 == Screenshots ==
 
@@ -76,6 +78,12 @@ These tags can be used in the widget settings for titles + links and will be rep
 3. Widget settings
 
 == Changelog ==
+
+= 2.7.3 =
+* Tweak - %avatar% placeholder.
+* Tweak - Removed translations due to WordPress.org language packs.
+* Tweak - sidebar_login_widget_wp_login_form filter.
+* Fix - Removed force_ssl_login which is deprecated in 4.4 in favour of force_ssl_admin.
 
 = 2.7.2 =
 * Feature - Added firstname, lastname, name tags.

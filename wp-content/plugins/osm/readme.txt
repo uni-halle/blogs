@@ -1,9 +1,9 @@
 === OSM - OpenStreetMap ===
 Contributors: MiKa
-Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, Open Layers, Open Street Map, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, OpenWeatherMap, fullscreen, OpenSeaMap, stamen, basemap, exif, meta, widget
+Tags: map, OpenStreetMap, Google Maps, googlemaps, geo, KML, GPX, geotag, geolocation, geocache, geocaching, OSM, travelogue, OpenLayers, CloudMade, marker, POI, geocode, geotagging, location, Tracks, WMS, OpenWeatherMap, fullscreen, OpenSeaMap, stamen, basemap, exif, meta, widget
 Requires at least: 3.0
 Tested up to: 4.3.1
-Stable tag: 3.5.3
+Stable tag: 3.5.4
 
 Customize maps in your post, pages and widgets. Add geotag to your blog and site. Use GPX, KML, ... 
 

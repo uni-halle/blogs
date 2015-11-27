@@ -1,33 +1,54 @@
 <div class="wrap">
-    <?php if (AAM_Core_Console::hasIssues()) { ?>
-        <div class="row aam-no-margin">
-            <div class="col-xs-12">
-                <div class="row aam-notification">
-                    <div class="col-xs-4 col-md-2 aam-notification-icon">
-                        <i class="icon-attention-circled"></i>
-                    </div>
-                    <div class="col-xs-8 col-md-10 aam-notification-content">
-                        <ul class="aam-error-list">
-                            <?php foreach (AAM_Core_Console::getWarnings() as $message) { ?>
-                                <li><?php echo $message; ?></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
+    <div class="row aam-no-margin aam-notification-container<?php echo (AAM_Core_Console::hasIssues() ? '' : ' hidden') ?>">
+        <div class="col-xs-12">
+            <div class="row aam-notification">
+                <div class="col-xs-4 col-md-2 aam-notification-icon">
+                    <i class="icon-attention-circled"></i>
+                </div>
+                <div class="col-xs-8 col-md-10 aam-notification-content">
+                    <ul class="aam-error-list">
+                        <?php foreach (AAM_Core_Console::getWarnings() as $message) { ?>
+                            <li><?php echo $message; ?></li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
         </div>
-    <?php } ?>
+    </div>
+
+    <div class="modal fade" id="cache-info-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><?php echo __('Cache Information', AAM_KEY); ?></h4>
+                </div>
+                <div class="modal-body">
+                    <p class="aam-info"><?php echo __('AAM main objective is to control access to your frontend and backend resources. In some cases your website may get slower because AAM performs additional checks. That is why it is important to have AAM caching turned on. Please follow few simple steps below to turn on the caching mechanism.', AAM_KEY); ?></p>
+                    <ul class="aam-numeric-list">
+                        <li><?php echo AAM_Backend_Helper::preparePhrase(__('Go to [Extensions] tab and click [Download] button for [AAM Utilities]', AAM_KEY), 'b', 'b', 'i'); ?>;</li>
+                        <li><?php echo AAM_Backend_Helper::preparePhrase(__('After [AAM Utilities] installed successfully, go to [Utilities] tab and enable [Caching].', AAM_KEY), 'i', 'b', 'b'); ?></ol>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('OK', AAM_KEY); ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-xs-12 col-md-8">
             <h1 class="aam-current-subject"></h1>
         </div>
     </div>
+
     <div class="row">
         <div class="col-xs-12 col-md-8">
             <div class="metabox-holder">
                 <div class="postbox">
                     <h3 class="hndle">
-                        <span><?php echo __('Access Manager', AAM_KEY); ?></span> <small><span class="text-warning text-uppercase">Beta Version</span></small>
+                        <span><?php echo __('Access Manager', AAM_KEY); ?></span>
                         <span class="aam-help-menu" data-target="#access-manager-inside"><i class="icon-help-circled"></i></span>
                     </h3>
                     <div class="inside" id="access-manager-inside">
@@ -63,8 +84,14 @@
 
                             <p class="text-justify">
                                 <strong><?php echo __('Extensions', AAM_KEY); ?></strong><br/>
-                                <?php echo sprintf(__('Extend AAM functionality with variety of extensions that can be either downloaded for free or purchased. All payment transactions are handled securely through PayPal and the PayPal Transaction ID is used to obtain the purchased extension (you can find Transaction ID in the email that PayPal send you after the purchase). Most of the time the extension is available for download almost immediately but it might take up to 2 hours for PayPal to notify our server about your payment. You are allowed to get the full refund within 30 days after the purchase, if extension did not meet your expectation. Please submit the %srefund form%s and we will issue a refund within next 3 business days.', AAM_KEY), '<a href="http://vasyltech/advanced-access-manager" target="_blank">', '</a>'); ?>
+                                <?php echo sprintf(__('Extend AAM functionality with variety of extensions that can be either downloaded for free or purchased. All payment transactions are handled securely through PayPal and the PayPal Transaction ID is used to obtain the purchased extension (you can find Transaction ID in the email that PayPal send you after the purchase). Most of the time the extension is available for download almost immediately but it might take up to 2 hours for PayPal to notify our server about your payment. You are allowed to get the full refund within 30 days after the purchase, if extension did not meet your expectation. Please submit the %srefund form%s and we will issue a refund within next 3 business days.', AAM_KEY), '<a href="http://vasyltech.com/advanced-access-manager" target="_blank">', '</a>'); ?>
                             </p>
+
+                            <div class="aam-info aam-social">
+                                <a href="http://vasyltech.com" target="_blank"><i class="icon-home"></i></a>
+                                <a href="http://twitter.com/vasyltech" target="_blank"><i class="icon-twitter"></i></a>
+                                <a href="https://github.com/VasylTech/advanced-access-manager" target="_blank"><i class="icon-github"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,7 +112,9 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#roles" aria-controls="roles" role="tab" data-toggle="tab"><i class="icon-users"></i> <?php echo __('Roles', AAM_KEY); ?></a></li>
                                 <li role="presentation"><a href="#users" aria-controls="users" role="tab" data-toggle="tab"><i class="icon-user"></i> <?php echo __('Users', AAM_KEY); ?></a></li>
-                                <li role="presentation"><a href="#visitor" aria-controls="visitor" role="tab" data-toggle="tab"><i class="icon-user-secret"></i> <?php echo __('Visitor', AAM_KEY); ?></a></li>
+                                <?php if (current_user_can('edit_users')) { ?>
+                                    <li role="presentation"><a href="#visitor" aria-controls="visitor" role="tab" data-toggle="tab"><i class="icon-user-secret"></i> <?php echo __('Visitor', AAM_KEY); ?></a></li>
+                                <?php } ?>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="roles">
@@ -175,7 +204,7 @@
                                                     <h4 class="modal-title"><?php echo __('Notification', AAM_KEY); ?></h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-center aam-notification-message"><?php echo __('You are not allowed to delete this role because there is at least one user assigned to it.', AAM_KEY); ?></p>
+                                                    <p class="text-center aam-notification-message"><?php echo __('You are not allowed to delete this role because either you do not have a capability to "Delete Users" or there is at least one user assigned to it.', AAM_KEY); ?></p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('OK', AAM_KEY); ?></button>
@@ -199,14 +228,14 @@
                                     </table>
 
                                     <div class="modal fade" id="user-notification-modal" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-dialog modal-sm" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
                                                     <h4 class="modal-title"><?php echo __('Notification', AAM_KEY); ?></h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-center aam-notification-message"><?php echo __('You are not allowed to block yourself.', AAM_KEY); ?></p>
+                                                    <p class="text-center aam-notification-message"><?php echo __('You are not allowed to perform this action.', AAM_KEY); ?></p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('OK', AAM_KEY); ?></button>
@@ -216,12 +245,14 @@
                                     </div>
 
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="visitor">
-                                    <div class="visitor-message">
-                                        <span><?php echo __('Manage access to your website for visitors (any user that is not authenticated)', AAM_KEY); ?>.</span>
-                                        <button class="btn btn-primary btn-block" id="manage-visitor"><i class="icon-cog"></i> <?php echo __('Manage Visitor', AAM_KEY); ?></button>
+                                <?php if (current_user_can('edit_users')) { ?>
+                                    <div role="tabpanel" class="tab-pane" id="visitor">
+                                        <div class="visitor-message">
+                                            <span><?php echo __('Manage access to your website for visitors (any user that is not authenticated)', AAM_KEY); ?>.</span>
+                                            <button class="btn btn-primary btn-block" id="manage-visitor"><i class="icon-cog"></i> <?php echo __('Manage Visitor', AAM_KEY); ?></button>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="aam-help-context">
@@ -243,6 +274,12 @@
                                 <strong><?php echo __('Visitor Manager', AAM_KEY); ?></strong><br/>
                                 <?php echo __('Visitor is any user that is not authenticated to your website. Considering the fact that visitors do not have any access to backend, any features that ara backend related are disabled.', AAM_KEY); ?>
                             </p>
+
+                            <div class="aam-info aam-social">
+                                <a href="http://vasyltech.com" target="_blank"><i class="icon-home"></i></a>
+                                <a href="http://twitter.com/vasyltech" target="_blank"><i class="icon-twitter"></i></a>
+                                <a href="https://github.com/VasylTech/advanced-access-manager" target="_blank"><i class="icon-github"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,6 +290,19 @@
 </div>
 
 <div class="aam-welcome-message">
+    <div class="row aam-no-margin aam-notification-container hidden">
+        <div class="col-xs-12">
+            <div class="row aam-notification">
+                <div class="col-xs-4 col-md-2 aam-notification-icon">
+                    <i class="icon-attention-circled"></i>
+                </div>
+                <div class="col-xs-8 col-md-10 aam-notification-content">
+                    <ul class="aam-error-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <h1><?php echo AAM_Backend_Helper::preparePhrase('Welcome to [Advanced Access Manager] [(aka AAM)]', 'strong', 'small'); ?></h1>
 
     <p class="aam-info aam-margin-top-xs">
@@ -280,10 +330,10 @@
         <li><?php echo __('You are not longer allowed to delete any user or group or users (but you still can do it within native WordPress interface).', AAM_KEY); ?></li>
         <li><?php echo __('You are not allowed to delete any capability (even the one that you created manually).', AAM_KEY); ?></li>
     </ul>
-    
+
     <h3>Rollback to AAM version 2</h3>
     <p><?php echo sprintf(__('You can rolleback to the earlier version of AAM by simply downloading any previous version on %sthis page%s. After download, replace the wp-content/plugins/advanced-access-manager directory with the archive\'s content.'), '<a href="https://wordpress.org/plugins/advanced-access-manager/developers/" target="_blank">', '</a>'); ?></p>
-    
+
     <p class="aam-margin-top-xs text-center">
         <a href="#" class="btn btn-lg btn-primary" id="confirm-welcome"><i class="icon-check"></i> <?php echo __('Ok, got it', AAM_KEY); ?></a>
     </p>

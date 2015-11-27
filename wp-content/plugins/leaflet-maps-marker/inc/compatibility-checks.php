@@ -145,4 +145,9 @@ if (is_plugin_active('autoptimize/autoptimize.php') ) {
 		echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: you are using the plugin "Autoptimize" which is currently causing maps to break!<br/>To fix this, please navigate to <a href="%1$s">Autoptimize settings</a>, tick the checkbox "Force JavaScript in <head>?" and add the following to the end the option "Exclude scripts from Autoptimize:": %2$s','lmm'), LEAFLET_WP_ADMIN_URL . 'options-general.php?page=autoptimize', '<strong>,leaflet,mapsmarkerjs</strong>') . '</div></p>';
 	}
 }
+//info: check if plugin directory has not been renamed (=broken GeoJSON)
+$plugin_basename = explode("/", plugin_basename( __FILE__ ));
+if ($plugin_basename[0] != 'leaflet-maps-marker') {
+	echo '<p><div class="error" style="padding:10px;">' . sprintf(__('Warning: you are using the custom directory name %1$s for the plugin %2$s which causes layer maps to break!<br/>To fix this, please disable the plugin temporarily, rename the current plugin folder located at %3$s to %4$s and re-enable the plugin.','lmm'), '<strong>' . $plugin_basename[0] . '</strong>', '<strong>Leaflet Maps Marker</strong>', WP_PLUGIN_DIR, '<strong>leaflet-maps-marker</strong>') . '</div></p>';
+}
 ?>

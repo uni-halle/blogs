@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 3.0 Beta
+  Version: 3.0.2
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: http://www.vasyltech.com
 
@@ -110,7 +110,7 @@ class AAM {
      */
     public static function getInstance() {
         if (is_null(self::$_instance)) {
-            load_plugin_textdomain('aam', false, dirname(__FILE__) . '/Lang');
+            load_plugin_textdomain(AAM_KEY, false, dirname(__FILE__) . '/Lang');
             self::$_instance = new self;
         }
 

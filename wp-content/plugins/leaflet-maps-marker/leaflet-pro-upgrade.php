@@ -16,7 +16,7 @@ if ( $action == NULL ) {
 	if (!file_exists($lmm_pro_readme)) {
 		$override_css = ($first_run == 'false') ? 'style="margin-top:20px;"' : '';
 		echo '<div class="pro-upgrade-logo-rtl" ' . $override_css . '><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/logo-mapsmarker-pro.png" alt="Pro Logo" title="Maps Marker Pro Logo" /></div>';
-		echo '<h3 style="font-size:23px;margin:28px 0 0 0;">' . __('More power: try Maps Marker Pro for free!','lmm') . '</h3>';
+		echo '<h1 style="margin:6px 0 0 0;">' . __('More power: try Maps Marker Pro for free!','lmm') . '</h1>';
 		echo '<form method="post"><input type="hidden" name="action" value="upgrade_to_pro_version" />';
 		wp_nonce_field('pro-upgrade-nonce');
 		echo '<p>' . __('Start a free 30-day-trial of Maps Marker Pro without any obligation. You can switch back to the free version anytime.','lmm') . '</p>';
@@ -58,7 +58,7 @@ if ( $action == NULL ) {
 				' . __('But the real power of the leaflet.js version used in Maps Marker Pro comes with about a hundred of subtle improvements and bugfixes, improving usability, performance and overall "feel" of browsing the map even further.','lmm') . '
 				</p>
 				<p>
-				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/pro-feature-leaflet-changelog" target="_blank">' . sprintf(__('Click here to get the full changelog for leaflet.js v%1s currently integrated in the pro version','lmm'), '0.7.5 (09/2015)') . '</a> (' . sprintf(__('v%1s is used in the free version','lmm'), '0.4.5 (10/2012)') . ')
+				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/pro-feature-leaflet-changelog" target="_blank">' . sprintf(__('Click here to get the full changelog for leaflet.js v%1s currently integrated in the pro version','lmm'), '0.7.7 (10/2015)') . '</a> (' . sprintf(__('v%1s is used in the free version','lmm'), '0.4.5 (10/2012)') . ')
 				</p>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
@@ -329,6 +329,11 @@ if ( $action == NULL ) {
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('dynamic preview of all markers from assigned layer(s) on marker edit pages','lmm') . '</a></li> 
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('dynamic preview of markers from checked multi-layer-map layer(s) on layer edit pages','lmm') . '</a></li> 
 					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.5p" target="_blank">' . __('"edit map"-link on frontend based on user-permissions for better maintainability','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.6p" target="_blank">' . __('option to sort list of markers below layer maps by distance from layer center','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.6p" target="_blank">' . __('highlight a marker on a layer map by opening its popup via shortcode attribute [mapsmarker layer="1" highlightmarker="2"] or by adding ?highlightmarker=2 to the URL where the map is embedded','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.6p" target="_blank">' . __('improved backend usability by listing all contents (posts, pages, CPTs, widgets) where each shortcode is used','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.6p" target="_blank">' . __('XML sitemaps integration: improved local SEO value by automatically adding links to KML maps to your XML sitemaps (if plugin "Google XML Sitemaps" is active)','lmm') . '</a></li> 
+					<li><a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.6p" target="_blank">' . sprintf(__('add dynamic URL hashes to web pages with maps, allowing users to easily link to specific map views. Example: %1$s','lmm'), 'https://domain/link-to-map/#11/48.2073/16.3792') . '</a></li> 
 				</ul>
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
@@ -349,7 +354,7 @@ if ( $action == NULL ) {
 					<li>' . __('email notify on marker/layer actions','lmm') . '</li>
 					<li>' . __('support for permalinks','lmm') . ' (http://your-domain.com/maps/marker/1/kml)</li>
 					<li>' . __('support for geocoding services other than Google Places','lmm') . '</li>
-					<li>' . __('better integration with other plugins','lmm') . ' (Google XML Sitemap, Contact Form 7, Event Organizer...)</li>
+					<li>' . __('better integration with other plugins','lmm') . ' (Contact Form 7, Event Organizer...)</li>
 					<li>...</li>
 				</ul>
 				<p>
@@ -361,7 +366,7 @@ if ( $action == NULL ) {
 			</p>
 			<p>' . __('For more details, showcases and reviews please also visit <a style="text-decoration:none;" href="http://www.mapsmarker.com">www.mapsmarker.com</a>','lmm') . '</p>';
 	} else if (file_exists($lmm_pro_readme)) {
-		echo '<h3 style="font-size:23px;">' . __('Upgrade to pro version','lmm') . '</h3>';
+		echo '<h1>' . __('Upgrade to pro version','lmm') . '</h1>';
 		echo '<div class="error" style="padding:10px;"><strong>' . __('You already downloaded "Maps Marker Pro" to your server but did not activate the plugin yet!','lmm') . '</strong></div>';
 		if ( current_user_can( 'install_plugins' ) ) {
 			echo sprintf(__('Please navigate to <a href="%1$s">Plugins / Installed Plugins</a> and activate the plugin "Maps Marker Pro".','lmm'), LEAFLET_WP_ADMIN_URL . 'plugins.php');

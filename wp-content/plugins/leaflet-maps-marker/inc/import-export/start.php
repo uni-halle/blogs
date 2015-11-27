@@ -129,7 +129,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			*         import form             *
 			**********************************/
 			echo '<table><tr><td><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-import.png" width="32" height="32" alt="import"></td>';
-			echo '<td><h3 style="font-size:20px;margin:0px;"> ' . __('prepare import','lmm') . '</h3></td></tr></table>';
+			echo '<td><h1 style="font-size:20px;margin:0px;"> ' . __('prepare import','lmm') . '</h1></td></tr></table>';
 			echo '
 			<script>
 			function lmm_check_file_extension()	{
@@ -276,7 +276,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			*      import form layers        *
 			**********************************/
 			echo '<table><tr><td><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-import.png" width="32" height="32" alt="import"></td>';
-			echo '<td><h3 style="font-size:20px;margin:0px;"> ' . __('prepare import','lmm') . ' (' . __('layers','lmm') . ')</h3></td></tr></table>';
+			echo '<td><h1 style="font-size:20px;margin:0px;"> ' . __('prepare import','lmm') . ' (' . __('layers','lmm') . ')</h1></td></tr></table>';
 			echo '
 			<script>
 			function lmm_check_file_extension()	{
@@ -423,7 +423,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			*         export form             *
 			**********************************/
 			echo '<table><tr><td><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-export.png" width="32" height="32" alt="export"></td>';
-			echo '<td><h3 style="font-size:20px;margin:0px;"> ' . __('prepare export','lmm') . '</h3></td></tr></table>';
+			echo '<td><h1 style="font-size:20px;margin:0px;"> ' . __('prepare export','lmm') . '</h1></td></tr></table>';
 			$layerlist = $wpdb->get_results('SELECT `id`,`name`,`multi_layer_map` FROM '.$table_name_layers, ARRAY_A);
 			$markercount_all = $wpdb->get_var('SELECT count(*) FROM '.$table_name_markers.'');
 			$iconlist = $wpdb->get_results('SELECT distinct(icon) FROM '.$table_name_markers, ARRAY_A);
@@ -565,7 +565,7 @@ if (!lmm_is_plugin_active('leaflet-maps-marker/leaflet-maps-marker.php') ) {
 			*      export form layers        *
 			**********************************/
 			echo '<table><tr><td><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/icon-export.png" width="32" height="32" alt="export"></td>';
-			echo '<td><h3 style="font-size:20px;margin:0px;"> ' . __('prepare export','lmm') . ' (' . __('layers','lmm') . ')</h3></td></tr></table>';
+			echo '<td><h1 style="font-size:20px;margin:0px;"> ' . __('prepare export','lmm') . ' (' . __('layers','lmm') . ')</h1></td></tr></table>';
 			$layerlist = $wpdb->get_results('SELECT `id`,`name`,`multi_layer_map` FROM '.$table_name_layers, ARRAY_A);
 			$layercount_all = $wpdb->get_var('SELECT count(*) FROM '.$table_name_layers.'') - 1;
 			

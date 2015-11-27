@@ -15,8 +15,8 @@ Shareaholic is used all over the world. Our goal is to support Shareaholic in th
 * Afrikaans (af_AF)
 * Italian (it_IT)
 * Turkish (tr_TR) by [Plantekno Bitki](http://plantekno.com)
-* Spanish - Mexico (es_MX) by [Luis Jared Pardo ](http://www.clickseguro.net)
-* Spanish - Mexico (es_ES) by [Luis Jared Pardo ](http://www.clickseguro.net)
+* Spanish - Mexico (es_MX) by [Luis Jared Pardo](http://www.clickseguro.net)
+* Spanish - Spain (es_ES) by [David Marco Busto](http://alfabetadigital.com)
 * Romanian (ro_RO)
 * Contribute a translation!
 

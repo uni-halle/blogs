@@ -24,7 +24,7 @@ class AAM_Backend_Menu {
      */
     public function getContent() {
         ob_start();
-        require_once(dirname(__FILE__) . '/view/menu.phtml');
+        require_once(dirname(__FILE__) . '/view/object/menu.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 

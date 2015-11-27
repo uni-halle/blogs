@@ -168,23 +168,40 @@ class AAM_Core_Repository {
         $const = str_replace(' ', '_', strtoupper($title));
         
         if (is_null($cache)) {
-            $list = AAM_Core_API::getOption('aam-extension-list', array());
-            $cache = array();
-            foreach($list as $row) {
-                $cache[$row->title] = $row;
-            }
+            $cache = $this->prepareExtensionCache();
         }
         
         if (!defined($const)) { //extension does not exist
             $status = self::STATUS_DOWNLOAD;
         } elseif (!empty($cache[$title])) {
-            $version = constant($const);
-            if ($version != $cache[$title]->version) { //version mismatch?
+            $ver = constant($const);
+            //Check if there is a version mismatch. Also ignore if there is no 
+            //license stored for this extension
+            if ($ver != $cache[$title]->version && !empty($cache[$title]->license)) { 
                 $status = self::STATUS_UPDATE;
             }
         }
         
         return $status;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    protected function prepareExtensionCache() {
+        $list = AAM_Core_API::getOption('aam-extension-list', array());
+        $licenses = AAM_Core_API::getOption('aam-extension-license', array());
+
+        $cache = array();
+        foreach ($list as $row) {
+            $cache[$row->title] = $row;
+            if (isset($licenses[$row->title])) {
+                $cache[$row->title]->license = $licenses[$row->title];
+            }
+        }
+        
+        return $cache;
     }
 
     /**

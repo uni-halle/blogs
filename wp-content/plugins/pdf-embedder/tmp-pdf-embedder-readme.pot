@@ -25,6 +25,34 @@ msgstr ""
 msgid "Protect your PDFs with our secure premium version"
 msgstr ""
 
+#. Found in description list item.
+msgid "Download button in the toolbar."
+msgstr ""
+
+#. Found in description list item.
+msgid "Hyperlinks are fully functional."
+msgstr ""
+
+#. Found in description list item.
+msgid "Edit page number to jump straight to page."
+msgstr ""
+
+#. Found in description list item.
+msgid "Track number of downloads and views."
+msgstr ""
+
+#. Found in description list item.
+msgid "Removes wp-pdf.com attribution from the toolbar."
+msgstr ""
+
+#. Found in description list item.
+msgid "Mobile-friendly."
+msgstr ""
+
+#. Found in description list item.
+msgid "Secure option - difficult to download original PDF."
+msgstr ""
+
 #. Found in description paragraph.
 msgid "Upload PDFs and embed them straight into your site - just like adding images! PDFs will be automatically sized to their natural size and shape (or just fill the width available if they are too big). Optionally, you can specify a width and the correct height will be calculated automatically. The shape will be recalculated whenever the page is resized by the user."
 msgstr ""
@@ -34,7 +62,7 @@ msgid "The plugin has a unique method for embedding PDFs, using Javascript only,
 msgstr ""
 
 #. Found in description paragraph.
-msgid "The viewer currently has Next/Prev buttons to page through the document, and zoom buttons."
+msgid "The free viewer currently has Next/Prev buttons to page through the document, and zoom buttons."
 msgstr ""
 
 #. Found in description paragraph.
@@ -45,7 +73,13 @@ msgid ""
 msgstr ""
 
 #. Found in description paragraph.
-msgid "There is no button for users to download the PDF in the free version of the plugin, but this is available in the Premium versions along with other extra features."
+msgid ""
+"There is no button for users to download the PDF in the free version of the plugin, but this is available in the Premium versions along with other extra features.\n"
+"Hyperlinks in your PDF will only be clickable in the Premium versions."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>Now translation-ready!</strong> Please contribute your translations."
 msgstr ""
 
 #. Found in description paragraph.
@@ -66,6 +100,14 @@ msgstr ""
 
 #. Found in description paragraph.
 msgid "To override your site-wide defaults on an individual embed, see the <a href=\"http://wp-pdf.com/free-instructions/?utm_source=PDF%20Readme%20Instructions&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">Plugin Instructions</a> for information about sizing options plus other ways to customize the shortcodes."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>Extra Premium Features</strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "See <a href=\"http://wp-pdf.com/?utm_source=PDF%20Readme%20Box&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">wp-pdf.com</a> for details!"
 msgstr ""
 
 #. Found in description paragraph.
@@ -123,6 +165,25 @@ msgstr ""
 
 #. Found in installation paragraph.
 msgid "If you cannot install from the WordPress plugins directory for any reason, and need to install from ZIP file:"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Code placeholders for tracking views/downloaders - available only in premium versions.\n"
+"Updated languages."
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Now translation-ready! Your language contributions are welcome.\n"
+"Compatibility with WordPress 4.4"
+msgstr ""
+
+#. Found in changelog paragraph.
+msgid ""
+"Contains information about new features in Premium version:\n"
+"Functioning hyperlinks\n"
+"Jump to page number"
 msgstr ""
 
 #. Found in changelog paragraph.
@@ -211,6 +272,14 @@ msgstr ""
 msgid "Can I add a Download button to the toolbar?"
 msgstr ""
 
+#. Found in faq header.
+msgid "Are Hyperlinks supported?"
+msgstr ""
+
+#. Found in faq header.
+msgid "Can I remove the wp-pdf.com link from the viewer toolbar?"
+msgstr ""
+
 #. Found in faq list item.
 msgid "If width='max' the width will take as much space as possible within its parent container (e.g. column within your page)."
 msgstr ""
@@ -287,4 +356,18 @@ msgstr ""
 
 #. Found in faq paragraph.
 msgid "This is possible only in the Premium version."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "The Premium versions allow functioning hyperlinks - both internal links within the document, and links to external websites."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"The easiest way is to upgrade to our Premium version, but if you know how to add entries to your database then you can add a line to the wp_options table\n"
+"with option_name 'pdfemb_poweredby' and option_value '1'."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "For more information on Premium versions visit <a href=\"http://wp-pdf.com/?utm_source=PDF%20Readme%20FAQ%20Bottom&amp;utm_medium=freemium&amp;utm_campaign=Freemium\">wp-pdf.com</a>."
 msgstr ""

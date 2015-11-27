@@ -72,6 +72,21 @@ class AAM_Core_Request {
     public static function server($param = null, $default = null) {
         return self::readArray($_SERVER, $param, $default);
     }
+    
+    /**
+     * Get parameter from global _COOKIE array
+     *
+     * @param string $param   _COOKIE Parameter
+     * @param mixed  $default Default value
+     *
+     * @return mixed
+     *
+     * @access public
+     * @static
+     */
+    public static function cookie($param = null, $default = null) {
+        return self::readArray($_COOKIE, $param, $default);
+    }
 
     /**
      * Check array for specified parameter and return the it's value or

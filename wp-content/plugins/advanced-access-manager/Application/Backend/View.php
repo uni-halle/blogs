@@ -118,7 +118,7 @@ class AAM_Backend_View {
      */
     public function renderContent() {
         ob_start();
-        require_once(dirname(__FILE__) . '/view/content.phtml');
+        require_once(dirname(__FILE__) . '/view/main-panel.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 

@@ -1171,28 +1171,13 @@ function powerpress_do_pinw($pinw, $process_podpress)
 <?php 
 	
 	do_action('wp_powerpress_player_scripts');
-
-	$include_mejs = false;
-	if( empty($GeneralSettings['player']) || empty($GeneralSettings['video_player']) )
-	{
-		$include_mejs = true;
-	}
-	else if( !empty($GeneralSettings['player']) && ($GeneralSettings['player'] == 'mediaelement-audio' || $GeneralSettings['video_player'] == 'mediaelement-video' ) )
-	{
-		$include_mejs = true;
-	}
 	
-	if( $include_mejs  )
-	{
-		wp_enqueue_style('wp-mediaelement');
-		wp_enqueue_script('wp-mediaelement');
+	
+	if( !empty($GLOBALS['ClammrPlayer']) ) {
+		$GLOBALS['ClammrPlayer']->initialize();
+		wp_head();
 	}
 
-	
-	wp_print_styles();
-	wp_print_scripts();
-	
-	//wp_head();
 ?>
 <style type="text/css">
 body { font-size: 13px; font-family: Arial, Helvetica, sans-serif; /* width: 100%; min-height: 100%; } html { height: 100%; */ }
@@ -1219,8 +1204,15 @@ body { font-size: 13px; font-family: Arial, Helvetica, sans-serif; /* width: 100
 		echo apply_filters('powerpress_player', '', powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), array('feed'=>$feed_slug, 'autoplay'=>true, 'type'=>$EpisodeData['type']) );
 	}
 	
+	wp_print_styles();
+	wp_print_scripts();
 ?>
 </div>
+<?php
+	if( !empty($GLOBALS['ClammrPlayer']) ) {
+		wp_footer();
+	}
+?>
 </body>
 </html>
 <?php
@@ -1406,7 +1398,7 @@ function powerpressplayer_build_mediaelementvideo($media_url, $EpisodeData=array
 	
 	// Double check that WordPress is providing the shortcode...
 	global $shortcode_tags;
-	if( !defined('POWERPRESS_DO_SHORTCODE') && !empty($shortcode_tags['video']) && is_string($shortcode_tags['video']) && $shortcode_tags['video'] == 'wp_video_shortcode' ) {
+	if( !defined('POWERPRESS_DO_SHORTCODE') ) {
 		$shortcode = wp_video_shortcode( $attr );
 	} else {
 		$shortcode_value = '[video ';
@@ -1517,7 +1509,7 @@ function powerpressplayer_build_mediaelementaudio($media_url, $EpisodeData=array
 	} else {
 		// Double check that WordPress is providing the shortcode...
 		global $shortcode_tags;
-		if( !defined('POWERPRESS_DO_SHORTCODE') && !empty($shortcode_tags['audio']) && is_string($shortcode_tags['audio']) && $shortcode_tags['audio'] == 'wp_audio_shortcode' ) {
+		if( !defined('POWERPRESS_DO_SHORTCODE') ) { // && !empty($shortcode_tags['audio']) && is_string($shortcode_tags['audio']) && $shortcode_tags['audio'] == 'wp_audio_shortcode' ) {
 			$content .= wp_audio_shortcode( $attr );
 		} else {
 			$content .= do_shortcode( '[audio src="'.  esc_attr($media_url) .'" autoplay="'. ( $autoplay ?'on':'') .'" loop="" preload="none"]');
@@ -1848,4 +1840,4 @@ function powerpressplayer_build_videojs($media_url, $EpisodeData = array())
 	return $content;
 }
 
-?>
+

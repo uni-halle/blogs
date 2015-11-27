@@ -202,7 +202,7 @@ if (!empty($action)) {
 } else {
 	$layerlist = $wpdb->get_results('SELECT * FROM `' . $table_name_layers . '` WHERE `id` > 0', ARRAY_A);
 	?>
-	<h3 style="font-size:23px;"><?php _e('Tools','lmm'); ?></h3>
+	<h1><?php _e('Tools','lmm'); ?></h1>
 	<?php $nonce= wp_create_nonce('tool-nonce'); ?>
 	
 	<?php

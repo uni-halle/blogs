@@ -57,7 +57,7 @@ class AAM_Backend_Capability {
      */
     public function getContent() {
         ob_start();
-        require_once(dirname(__FILE__) . '/view/capability.phtml');
+        require_once(dirname(__FILE__) . '/view/object/capability.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 

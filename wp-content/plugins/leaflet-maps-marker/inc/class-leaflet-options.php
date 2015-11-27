@@ -106,8 +106,7 @@ class Class_leaflet_options {
 		$this->sections['directions-section1']		= esc_attr__('General directions settings','lmm');
 		$this->sections['directions-section2']		= esc_attr__('Google Maps directions','lmm');
 		$this->sections['directions-section3']		= 'yournavigation.org';
-		$this->sections['directions-section4']		= 'map.project-osrm.org';
-		$this->sections['directions-section5']		= 'openrouteservice.org';
+		$this->sections['directions-section4']		= 'openrouteservice.org';
 
 		$this->sections['ar-section1']				= esc_attr__('Wikitude settings','lmm');
 
@@ -121,6 +120,7 @@ class Class_leaflet_options {
 		$this->sections['misc-section8']			= esc_attr__('QR code settings','lmm');
 		$this->sections['misc-section9']			= esc_attr__('MapsMarker API settings','lmm');
 		$this->sections['misc-section10']			= esc_attr__('Permission settings','lmm');
+		$this->sections['misc-section11']			= esc_attr__('XML sitemaps integration','lmm');
 
 		$this->sections['reset-section1']			= esc_attr__('Reset Settings','lmm');
 
@@ -178,7 +178,7 @@ class Class_leaflet_options {
 		if ( isset( $_GET['settings-updated'] ) )
 			echo '<div style="margin:15px 0 0 0;" class="updated"><p>' . __( 'Plugin options updated.','lmm' ) . '</p></div>';
 		
-		echo '<h3 style="font-size:23px;margin:0.83em 0 0 0;float:left;">'.__('Settings','lmm').'</h3><div class="wrap lmmsettings" style="clear:both;">';
+		echo '<h1 style="margin:0.83em 0 0 0;float:left;">'.__('Settings','lmm').'</h1><div class="wrap lmmsettings" style="clear:both;">';
 		echo '<form action="options.php" method="post">';
 		settings_fields( 'leafletmapsmarker_options' );
 		echo '<div class="lmm-ui-tabs tabs-top tabbable tabs-top">
@@ -222,7 +222,7 @@ class Class_leaflet_options {
 	                $li_class = 0 === $sub_panel_index ? ' in active' : '';
 	                $sub_panel_index++;
                     echo '<div class="section tab-pane lmm-fade' . $li_class . '" id="' . $section. '">';
-                    echo "<h3 class='titl'>".$this->sections[$section]."</h3>";
+                    echo "<h2 class='h2-lmm-settings'>".$this->sections[$section]."</h2>";
                     if (function_exists('display_'.$pane_slug.'_section')) { //info: Phalanger fix
                     	@call_user_func(array(&$this, 'display_'.$pane_slug.'_section'), array());
                     }
@@ -323,7 +323,7 @@ class Class_leaflet_options {
 		switch ( $type ) {
 
 			case 'heading':
-				echo '</td></tr><tr valign="top"><td colspan="2" rowspan="2"><h4>' . $desc . '</h4>';
+				echo '</td></tr><tr valign="top"><td colspan="2" rowspan="2"><h3 class="h3-lmm-settings">' . $desc . '</h3>';
 				break;
 
 			case 'helptext':
@@ -479,6 +479,7 @@ class Class_leaflet_options {
 			return;
 			
 		$pro_button_link = '<br/><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" /></a>';
+		$pro_button_link_inline = ' <a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade" title="' . esc_attr__('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '"><img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-pro-option.png" width="65" height="15" style="display:inline;" /></a>';
 
 		/*===========================================
 		*
@@ -2076,7 +2077,7 @@ class Class_leaflet_options {
 			'section' => 'mapdefaults-section9',
 			'std'     => '',
 			'title'   => '',
-			'desc'    => '<img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-list-markers.jpg" width="400" height="199" />',
+			'desc'    => '<img src="'. LEAFLET_PLUGIN_URL .'inc/img/help-list-markers.png" width="400" height="199" />',
 			'type'    => 'helptext'
 		);
 		$this->_settings['defaults_layer_listmarkers'] = array(
@@ -2128,12 +2129,30 @@ class Class_leaflet_options {
 			'type'    => 'checkbox',
 			'std'     => 1
 		);
+		$this->_settings['defaults_layer_listmarkers_show_distance'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => '',
+			'desc'    => sprintf(__('distance (will only be displayed if option %1$s is set to %2$s!)','lmm'), '"' . __('Order list of markers by','lmm') . '"', '"' . __('distance from layer center','lmm') . '"') . $pro_button_link_inline,
+			'type'    => 'checkbox-pro',
+			'std'     => 0
+		);
+		$this->_settings['defaults_layer_listmarkers_show_distance_precision'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section9',
+			'title'   => __( 'Distance precision', 'lmm' ) . $pro_button_link_inline,
+			'desc'    => __( 'Number of digits to show after the decimal point', 'lmm' ),
+			'std'     => '1',
+			'type'    => 'text-pro'
+		);		
 		$this->_settings['defaults_layer_listmarkers_order_by'] = array(
 			'version' => '1.5',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section9',
 			'title'   => __('Order list of markers by','lmm'),
-			'desc'    =>  '',
+			'desc'    => __('The option "order by distance from layer center" is only available in the pro version!','lmm') . $pro_button_link_inline,
 			'type'    => 'radio',
 			'std'     => 'm.id',
 			'choices' => array(
@@ -2392,6 +2411,19 @@ class Class_leaflet_options {
 				'id' => '<a href="http://ideditor.com/" target="_blank">iD</a>',
 				'potlatch2' => '<a href="http://wiki.openstreetmap.org/wiki/Potlatch_2" target="_blank">Potlatch 2</a>',
 				'remote' => __('remote editor','lmm') . ' (<a href="http://wiki.openstreetmap.org/wiki/JOSM" target="_blank">JOSM</a> / <a href="http://wiki.openstreetmap.org/wiki/Merkaartor" target="_blank">Merkaartor</a>)'
+			)
+		);
+		$this->_settings['leaflet_hash_status'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section10',
+			'title'   => __('URL hashes','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('add dynamic URL hashes to web pages with maps, allowing users to easily link to specific map views. Example: %1$s','lmm'), 'https://domain/link-to-map/#11/48.2073/16.3792'),
+			'type'    => 'radio-pro',
+			'std'     => 'enabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
 			)
 		);
 		/*
@@ -3246,6 +3278,42 @@ $this->_settings['clustering_helptext2'] = array(
 			'std'     => '1',
 			'type'    => 'text-pro'
 		);
+		$this->_settings['clustering_helptext4'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'std'     => '',
+			'title'   =>'spiderLegPolylineOptions' . $pro_button_link,
+			'desc'    => sprintf(__('Allows you to specify <a href="%1$s" target="_blank">PolylineOptions</a> to style spider legs.','lmm'), 'http://leafletjs.com/reference.html#polyline-options'),
+			'type'    => 'helptext-twocolumn'
+		);
+		$this->_settings['clustering_spiderLegPolylineOptions_color'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('color (stroke color)','lmm') . ' - ' . __('example','lmm') . ': 222',
+			'std'     => '222',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_spiderLegPolylineOptions_weight'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('weight (stroke width in pixel)','lmm') . ' - ' . __('example','lmm') . ': 1.5',
+			'std'     => '1.5',
+			'type'    => 'text-reverse-pro'
+		);
+		$this->_settings['clustering_spiderLegPolylineOptions_opacity'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section18',
+			'title'   =>'',
+			'desc'    => __('opacity (stroke opacity)','lmm') . ' - ' . __('example','lmm') . ': 0.5',
+			'std'     => '0.5',
+			'type'    => 'text-reverse-pro'
+		);
 		$this->_settings['clustering_animateAddingMarkers'] = array(
 			'version' => 'p1.0',
 			'pane'    => 'mapdefaults',
@@ -3482,11 +3550,24 @@ $this->_settings['clustering_helptext2'] = array(
 			'std'     => '15000',
 			'type'    => 'text-pro'
 		);
+		$this->_settings['gpx_icons_status'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'mapdefaults',
+			'section' => 'mapdefaults-section19',
+			'title'   => __('GPX icon settings','lmm'). $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'show',
+			'choices' => array(
+				'show' => __('show default start and end icons','lmm'),
+				'hide' => __('hide default start and end icons','lmm')
+			)
+		);
 		$this->_settings['gpx_startIconUrl'] = array(
 			'version' => 'p1.2',
 			'pane'    => 'mapdefaults',
 			'section' => 'mapdefaults-section19',
-			'title'   => __('GPX icon settings','lmm'). $pro_button_link,
+			'title'   => '',
 			'desc'    => __('Start icon','lmm') . ' - ' . sprintf(__('Leave empty to use the <a href="%1s" target="_blank">default icon</a>. To use a custom icon, please enter the file name of the icon within your marker icon directory (%2s)','lmm'), LEAFLET_PLUGIN_URL . 'leaflet-dist/images/gpx-icon-start.png', LEAFLET_PLUGIN_ICONS_URL),
 			'std'     => '',
 			'type'    => 'text-pro'
@@ -4138,8 +4219,8 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'basemaps',
 			'section' => 'basemaps-section5',
 			'title'   => __( 'Tiles URL', 'lmm' ),
-			'desc'    => __("For example","lmm"). ": http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg",
-			'std'     => 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+			'desc'    => __("For example","lmm"). ": https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+			'std'     => 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg',
 			'type'    => 'text'
 		);
 		$this->_settings['custom_basemap2_attribution'] = array(
@@ -4189,7 +4270,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'title'   => __('Support for subdomains?','lmm'),
 			'desc'    => __('Will replace {s} from tiles url if available','lmm'),
 			'type'    => 'radio',
-			'std'     => 'no',
+			'std'     => 'yes',
 			'choices' => array(
 				'yes' => __('Yes (please enter subdomains in next form field)','lmm'),
 				'no' => __('No','lmm')
@@ -4201,7 +4282,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'section' => 'basemaps-section5',
 			'title'   => __( 'Subdomain names', 'lmm' ),
 			'desc'    => __('For example','lmm'). ": &quot;a&quot;, &quot;b&quot;, &quot;c&quot;",
-			'std'     => '&quot;a&quot;, &quot;b&quot;, &quot;c&quot;',
+			'std'     => '&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;',
 			'type'    => 'text'
 		);
 		$this->_settings['custom_basemap2_continuousworld_enabled'] = array(
@@ -4902,14 +4983,6 @@ $this->_settings['clustering_helptext2'] = array(
 			'desc'    => __('WMS stands for <a href="http://www.opengeospatial.org/standards/wms" target="_blank">Web Map Service</a> and is a standard protocol for serving georeferenced map images over the Internet that are generated by a map server using data from a GIS database.<br/>With Leaflet Maps Marker you can configure up to 10 WMS layers which can be enabled for each map. As default, 10 WMS layers from <a href="http://data.wien.gv.at" target="_blank">OGD Vienna</a> and from the <a href="http://www.eea.europa.eu/code/gis" target="_blank">European Environment Agency</a> have been predefined for you.<br/>A selection of further possible WMS layers can be found at <a href="http://www.mapsmarker.com/wms" target="_blank">http://www.mapsmarker.com/wms</a>', 'lmm'),
 			'type'    => 'helptext'
 		);
-		$this->_settings['wms_available_heading'] = array(
-			'version' => '1.0',
-			'pane'    => 'wms',
-			'section' => 'wms-sections1',
-			'title'   => '',
-			'desc'    => '<a name="wms1" class="lmm-index-links"></a>' . __( 'Available WMS layers for new markers/layers', 'lmm'),
-			'type'    => 'heading'
-		);
 		$this->_settings['wms_available_helptext'] = array(
 			'version' => '1.0',
 			'pane'    => 'wms',
@@ -5146,7 +5219,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections2',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -5357,7 +5430,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections3',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -5567,7 +5640,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections4',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -5777,7 +5850,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections5',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -5989,7 +6062,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections6',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6200,7 +6273,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections7',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6410,7 +6483,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections8',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6620,7 +6693,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections9',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6831,7 +6904,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections10',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -7042,7 +7115,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections11',
 			'std'     => '',
-			'title'   => '<strong>' . __('KML settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -7762,8 +7835,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'choices' => array(
 				'googlemaps' => __('Google Maps (worldwide)','lmm') . ' - <a href="http://maps.google.com/maps?saddr=Vienna&daddr=Linz&hl=de&sll=37.0625,-95.677068&sspn=59.986788,135.263672&geocode=FS6Z3wIdO9j5ACmfyjZRngdtRzFGW6JRiuXC_Q%3BFfwa4QIdBvzZAClNhZn6lZVzRzHEdXlXLClTfA&vpsrc=0&mra=ls&t=m&z=9&layer=t" style="text-decoration:none;" target="_blank">Demo</a>',
 				'yours' => __('yournavigation.org (based on OpenStreetMap, worldwide)','lmm') . ' - <a href="http://www.yournavigation.org/?flat=52.215636&flon=6.963946&tlat=52.2573&tlon=6.1799&v=motorcar&fast=1&layer=mapnik" style="text-decoration:none;" target="_blank">Demo</a>',
-				'osrm' => __('map.project-osrm.org (based on OpenStreetMap, worldwide)','lmm') . ' - <a href="http://map.project-osrm.org/?hl=en&loc=48.242330,16.433030&loc=48.219069,16.380959" style="text-decoration:none;" target="_blank">Demo</a>',
-				'ors' => __('openrouteservice.org (based on OpenStreetMap, Europe only)','lmm') . ' - <a href="http://openrouteservice.org/index.php?start=7.0892567,50.7265543&end=7.0986258,50.7323634&lat=50.72905&lon=7.09574&zoom=15&pref=Fastest&lang=de" style="text-decoration:none;" target="_blank">Demo</a>',
+				'ors' => __('openrouteservice.org (based on OpenStreetMap, Europe only)','lmm') . ' - <a href="http://openrouteservice.org/?pos=7.0892567,50.7265543&wp=7.0892567,50.7265543&zoom=15&routeWeigh=Fastest&routeOpt=Bicycle&layer=B000FTTTTTTTTTT" style="text-decoration:none;" target="_blank">Demo</a>',
 				'bingmaps' => __('Bing Maps (worldwide)','lmm') . ' - <a href="http://www.bing.com/maps/default.aspx?v=2&rtp=pos.48.208614_16.370541___e_~pos.48.207321_16.330513" style="text-decoration:none;" target="_blank">Demo</a>'
 			)
 		);
@@ -7944,119 +8016,57 @@ $this->_settings['clustering_helptext2'] = array(
 			)
 		);
 		/*
-		* map.project-osrm.org
-		*/
-		$this->_settings['directions_osrm_helptext1'] = array(
-			'version' => '2.7.1',
-			'pane'    => 'directions',
-			'section' => 'directions-section4',
-			'title'   => '',
-			'desc'    => '',
-			'type'    => 'helptext',
-			'std'     => ''
-		);
-		$this->_settings['directions_osrm_language'] = array(
-			'version' => '2.7.1',
-			'pane'    => 'directions',
-			'section' => 'directions-section4',
-			'title'   => __('Language of route instructions','lmm'),
-			'desc'    => '',
-			'type'    => 'radio',
-			'std'     => 'en',
-			'choices' => array(
-				'en' => __('English','lmm'),
-				'de' => __('German','lmm'),
-				'dk' => __('Danish','lmm'),
-				'es' => __('Spanish','lmm'),
-				'fi' => __('Finnish','lmm'),
-				'fr' => __('French','lmm'),
-				'it' => __('Italian','lmm'),
-				'lv' => __('Latvian','lmm'),
-				'pl' => __('Polish','lmm'),
-				'ru' => __('Russian','lmm')
-			)
-		);
-		$this->_settings['directions_osrm_units'] = array(
-			'version' => '2.7.1',
-			'pane'    => 'directions',
-			'section' => 'directions-section4',
-			'title'   => __('Units','lmm'),
-			'desc'    => '',
-			'type'    => 'radio',
-			'std'     => '0',
-			'choices' => array(
-				'0' => __('metric (kilometer)','lmm'),
-				'1' => __('imperial (miles)','lmm')
-			)
-		);
-		/*
 		* openrouteservice.org
 		*/
 		$this->_settings['directions_ors_helptext1'] = array(
 			'version' => '1.4',
 			'pane'    => 'directions',
-			'section' => 'directions-section5',
+			'section' => 'directions-section4',
 			'std'     => '',
 			'title'   => '',
 			'desc'    => '',
 			'type'    => 'helptext'
 		);
-		$this->_settings['directions_ors_route_preferences'] = array(
-			'version' => '1.4',
+		$this->_settings['directions_ors_routeWeigh'] = array(
+			'version' => '3.10.1',
 			'pane'    => 'directions',
-			'section' => 'directions-section5',
-			'title'   => __('Route preferences','lmm'),
-			'desc'    => '',
+			'section' => 'directions-section4',
+			'title'   => 'routeWeigh',
+			'desc'    => __('weighting method of routing','lmm'),
 			'type'    => 'radio',
-
-			'std'     => 'Shortest',
+			'std'     => 'Fastest',
 			'choices' => array(
-				'Fastest' => __('fastest route','lmm'),
-				'Shortest' => __('shortest route','lmm'),
-				'Pedestrian' => __('route for pedestrians','lmm'),
-				'Bicycle' => __('route for bicycles','lmm')
+				'Fastest' => __('Fastest','lmm'),
+				'Shortest' => __('Shortest','lmm'),
+				'Recommended' => __('Recommended','lmm')
 			)
 		);
-		$this->_settings['directions_ors_language'] = array(
-			'version' => '1.4',
+		$this->_settings['directions_ors_routeOpt'] = array(
+			'version' => '3.10.1',
 			'pane'    => 'directions',
-			'section' => 'directions-section5',
-			'title'   => __('Language of route instructions','lmm'),
-			'desc'    => '',
+			'section' => 'directions-section4',
+			'title'   => 'routeOpt',
+			'desc'    => __('preferred route profile','lmm'),
 			'type'    => 'radio',
-			'std'     => 'en',
+			'std'     => 'Car',
 			'choices' => array(
-				'en' => __('English','lmm'),
-				'de' => __('German','lmm'),
-				'it' => __('Italian','lmm'),
-				'fr' => __('French','lmm'),
-				'es' => __('Spanish','lmm')
+				'Car' => __('Car','lmm'),
+				'Bicycle' => __('Bicycle','lmm'),
+				'Pedestrian' => __('Pedestrian','lmm'),
+				'HeavyVehicle' => __('HeavyVehicle','lmm')
 			)
 		);
-		$this->_settings['directions_ors_no_motorways'] = array(
-			'version' => '1.4',
+		$this->_settings['directions_ors_layer'] = array(
+			'version' => '3.10.1',
 			'pane'    => 'directions',
-			'section' => 'directions-section5',
-			'title'   => __('No motorways?','lmm'),
+			'section' => 'directions-section4',
+			'title'   => __('default background layer','lmm'),
 			'desc'    => '',
 			'type'    => 'radio',
-			'std'     => 'false',
+			'std'     => 'B000FTTTTTTTTTT',
 			'choices' => array(
-				'false' => __('false','lmm'),
-				'true' => __('true','lmm')
-			)
-		);
-		$this->_settings['directions_ors_no_tollways'] = array(
-			'version' => '1.4',
-			'pane'    => 'directions',
-			'section' => 'directions-section5',
-			'title'   => __('No tollways?','lmm'),
-			'desc'    => '',
-			'type'    => 'radio',
-			'std'     => 'false',
-			'choices' => array(
-				'false' => __('false','lmm'),
-				'true' => __('true','lmm')
+				'B000FTTTTTTTTTT' => 'OpenMapsurfer',
+				'0B00FTTTTTTTTTT' => 'OSM Mapnik'
 			)
 		);
 		/*===========================================
@@ -8523,6 +8533,7 @@ $this->_settings['clustering_helptext2'] = array(
 				'ko_KR' => __('Korean','lmm') . ' (ko_KR)',
 				'lv' => __('Latvian','lmm') . ' (lv)',
 				'lt_LT' => __('Lithuanian','lmm') . ' (lt_LT)',
+				'ms_MY' => __('Malawy','lmm') . ' (ms_MY)',
 				'nb_NO' => __('Norwegian (Bokmål)','lmm') . ' (nb_NO)',
 				'pl_PL' => __('Polish','lmm') . ' (pl_PL)',
 				'pt_BR' => __('Portuguese','lmm') . ' - ' . __('Brazil','lmm') . ' (pt_BR)',
@@ -8765,6 +8776,15 @@ $this->_settings['clustering_helptext2'] = array(
 			'desc'    => __('Controlbox status','lmm'),
 			'type'    => 'checkbox',
 			'std'     => 0
+		);
+		$this->_settings['misc_marker_listing_columns_used_in_content'] = array(
+			'version' => '3.10.1',
+			'pane'    => 'misc',
+			'section' => 'misc-section4',
+			'title'    => '',
+			'desc'    => __('Used in content','lmm') . $pro_button_link_inline,
+			'type'    => 'checkbox',
+			'std'     => 1
 		);
 		$this->_settings['misc_marker_listing_columns_shortcode'] = array(
 			'version' => '1.0',
@@ -9028,6 +9048,15 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'checkbox',
 			'std'     => 0
 		);
+		$this->_settings['misc_layer_listing_columns_used_in_content'] = array(
+			'version' => '3.10.1',
+			'pane'    => 'misc',
+			'section' => 'misc-section6',
+			'title'    => '',
+			'desc'    => __('Used in content','lmm') . $pro_button_link_inline,
+			'type'    => 'checkbox',
+			'std'     => 1
+		);
 		$this->_settings['misc_layer_listing_columns_shortcode'] = array(
 			'version' => '1.0',
 			'pane'    => 'misc',
@@ -9172,7 +9201,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section8',
 			'std'     => '',
-			'title'   => '<strong>' . __('Visualead settings','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('Visualead settings','lmm') . '</h3>',
 			'desc'    =>  '<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-visualead.png" width="200" height="200" /><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>',
 			'type'    => 'helptext'
 		);
@@ -9310,7 +9339,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section8',
 			'std'     => '',
-			'title'   => '<strong>' . __('Google QR settings','lmm') . '</strong><br/><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-google-qr.png" width="122" height="126" />',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('Google QR settings','lmm') . '</h3><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-google-qr.png" width="122" height="126" />',
 			'desc'    => '',
 			'type'    => 'helptext'
 		);
@@ -9375,7 +9404,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section9',
 			'std'     => '',
-			'title'   => '<strong>' . __('Authentication','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('Authentication','lmm') . '</h3>',
 			'desc'    =>  sprintf(__('You will find a <a href="%1$s">API URL generator</a> and <a href="%2$s">API URL tester</a> in the tools section. Please see the API docs for more information on authentication.','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_tools#api-url-generator', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_tools#api-url-tester'),
 			'type'    => 'helptext'
 		);
@@ -9402,7 +9431,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section9',
 			'std'     => '',
-			'title'   => '<strong>' . __('Security options','lmm') . '</strong>',
+			'title'   => '<h3 class="h3-lmm-settings">' . __('Security options','lmm') . '</h3>',
 			'desc'    =>  '',
 			'type'    => 'helptext'
 		);
@@ -9490,6 +9519,15 @@ $this->_settings['clustering_helptext2'] = array(
 		/*
 		* Permission settings
 		*/
+		$this->_settings['capabilities_helptext1'] = array(
+			'version' => '3.10.1',
+			'pane'    => 'misc',
+			'section' => 'misc-section10',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => '',
+			'type'    => 'helptext'
+		);
 		$this->_settings['capabilities_view_others'] = array(
 			'version' => 'p2.5',
 			'pane'    => 'misc',
@@ -9568,6 +9606,126 @@ $this->_settings['clustering_helptext2'] = array(
 				'edit_published_posts' => __('Author (Capability edit_published_posts)', 'lmm'),
 				'edit_posts' => __('Contributor (Capability edit_posts)', 'lmm'),
 				'read' => __('Subscriber (Capability read)', 'lmm')
+			)
+		);
+		/*
+		* XML sitemaps integration
+		*/
+		$this->_settings['xml_sitemaps_helptext1'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section11',
+			'std'     => '',
+			'title'   => '',
+			'desc'    => sprintf(__( 'XML sitemaps help search engines like Google, Bing, Yahoo and Ask.com to better index your blog. With such a sitemap, it is much easier for the crawlers to see the complete structure of your site and retrieve it more efficiently. Geolocation information can also be added to sitemaps in order to improve your local SEO value for services like Google Places.<br/><br/>In order to automatically add links to your KML maps to your XML sitemaps, please install and activate the plugin %1$s. If you do not want to use that plugin, you can manually register <a href="%2$s" target="_blank">your geositemap</a> by following <a href="%3$s" target="_blank">this tutorial</a>.', 'lmm'), '<a href="https://wordpress.org/plugins/google-sitemap-generator/" target="_blank">Google XML Sitemaps</a>', LEAFLET_PLUGIN_URL . 'leaflet-geositemap.php', 'https://www.mapsmarker.com/geo-sitemap'),
+			'type'    => 'helptext'
+		);
+		$this->_settings['xml_sitemaps_status'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section11',
+			'title'   => __('Automatic Google XML sitemap integration','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('If enabled is selected and the plugin %1$s is active, KML links will automatically be added to your XML sitemap','lmm'), '<a href="https://wordpress.org/plugins/google-sitemap-generator/" target="_blank">Google XML Sitemaps</a>'),
+			'type'    => 'radio-pro',
+			'std'     => 'disabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
+		);
+		$this->_settings['xml_sitemaps_include'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section11',
+			'title'   => __('Content to add to XML sitemap','lmm') . $pro_button_link,
+			'desc'    => '',
+			'type'    => 'radio-pro',
+			'std'     => 'both',
+			'choices' => array(
+				'both' => __('marker and layer maps','lmm'),
+				'markers' => __('marker maps only','lmm'),
+				'layers' => __('layer maps only','lmm')
+			)
+		);
+		$this->_settings['xml_sitemaps_priority_markers'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section11',
+			'title'   => __('Priority for marker maps','lmm') . $pro_button_link,
+			'desc'    => __('The priority of maps relative to other URLs on your site','lmm'),
+			'type'    => 'select-pro',
+			'std'     => '0.5',
+			'choices' => array(
+				'0' => '0',
+				'0.1' => '0.1',
+				'0.2' => '0.2',
+				'0.3' => '0.3',
+				'0.4' => '0.4',
+				'0.5' => '0.5',
+				'0.6' => '0.6',
+				'0.7' => '0.7',
+				'0.8' => '0.8',
+				'0.9' => '0.9',
+				'1' => '1'
+			)
+		);
+		$this->_settings['xml_sitemaps_priority_layers'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section11',
+			'title'   => __('Priority for layer maps','lmm') . $pro_button_link,
+			'desc'    => __('The priority of maps relative to other URLs on your site','lmm'),
+			'type'    => 'select-pro',
+			'std'     => '0.5',
+			'choices' => array(
+				'0' => '0',
+				'0.1' => '0.1',
+				'0.2' => '0.2',
+				'0.3' => '0.3',
+				'0.4' => '0.4',
+				'0.5' => '0.5',
+				'0.6' => '0.6',
+				'0.7' => '0.7',
+				'0.8' => '0.8',
+				'0.9' => '0.9',
+				'1' => '1'
+			)
+		);
+		$this->_settings['xml_sitemaps_change_frequency_markers'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section11',
+			'title'   => __('Change frequency for marker maps','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('How frequently the maps are likely to change. This value provides general information to search engines and may not correlate exactly to how often they crawl the page. Additional information available at %1$s','lmm'), '<a href="http://www.sitemaps.org/protocol.html" target="_blank">sitemaps.org</a>'),
+			'type'    => 'select-pro',
+			'std'     => 'monthly',
+
+			'choices' => array(
+				'always' => __('Always','lmm'),
+				'hourly' => __('Hourly','lmm'),
+				'daily' => __('Daily','lmm'),
+				'weekly' => __('Weekly','lmm'),
+				'monthly' => __('Monthly','lmm'),
+				'yearly' => __('Yearly','lmm'),
+				'never' => __('Never','lmm')
+			)
+		);
+		$this->_settings['xml_sitemaps_change_frequency_layers'] = array(
+			'version' => 'p2.6',
+			'pane'    => 'misc',
+			'section' => 'misc-section11',
+			'title'   => __('Change frequency for layer maps','lmm') . $pro_button_link,
+			'desc'    => sprintf(__('How frequently the maps are likely to change. This value provides general information to search engines and may not correlate exactly to how often they crawl the page. Additional information available at %1$s','lmm'), '<a href="http://www.sitemaps.org/protocol.html" target="_blank">sitemaps.org</a>'),
+			'type'    => 'select-pro',
+			'std'     => 'monthly',
+			'choices' => array(
+				'always' => __('Always','lmm'),
+				'hourly' => __('Hourly','lmm'),
+				'daily' => __('Daily','lmm'),
+				'weekly' => __('Weekly','lmm'),
+				'monthly' => __('Monthly','lmm'),
+				'yearly' => __('Yearly','lmm'),
+				'never' => __('Never','lmm')
 			)
 		);
 
@@ -10084,9 +10242,24 @@ $this->_settings['clustering_helptext2'] = array(
 		$options_new = array_merge($options_current, $new_options_defaults);
 		update_option( 'leafletmapsmarker_options', $options_new );
 		}
+		//info:  set defaults for options introduced in v3.10.1
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.10','='))
+		{
+			$new_options_defaults = array();
+			foreach ( $this->settings as $id => $setting )
+			{
+				if ( $setting['type'] != 'heading' && $setting['type'] != 'helptext' && $setting['type'] != 'helptext-twocolumn' && $setting['type'] != 'checkbox-pro' && $setting['type'] != 'select-pro' && $setting['type'] != 'radio-pro' && $setting['type'] != 'radio-reverse-pro' && $setting['type'] != 'textarea-pro' && $setting['type'] != 'text-pro' && $setting['type'] != 'text-reverse-pro' && $setting['version'] == '3.10.1')
+				{
+				$new_options_defaults[$id] = $setting['std'];
+				}
+			}
+		$options_current = get_option( 'leafletmapsmarker_options' );
+		$options_new = array_merge($options_current, $new_options_defaults);
+		update_option( 'leafletmapsmarker_options', $options_new );
+		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.11
-		if (version_compare(get_option('leafletmapsmarker_version'),'3.10','='))
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.10.1','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

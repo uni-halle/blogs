@@ -162,7 +162,7 @@ div.pdfemb-toolbar button {
 	-ms-user-select: none;
 	cursor: default;
 
-	margin: 3px 2px 4px 0;
+	margin: 4px 2px 4px 0;
 
 	float: left;
 
@@ -251,6 +251,19 @@ div.pdfemb-toolbar div {
 	float: left;
 }
 
+div.pdfemb-toolbar div.pdfemb-poweredby {
+    float: right;
+}
+
+div.pdfemb-toolbar div.pdfemb-poweredby a {
+    color: lightgray;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+}
+div.pdfemb-toolbar div.pdfemb-poweredby a:hover {
+    border-bottom: none;
+}
+
 div.pdfemb-errormsg {
 	padding: 5px;
 	text-align: center;
@@ -277,4 +290,73 @@ div.pdfemb-errormsg {
     position: relative;
     top: 0px;
     left: 0px;
+}
+
+input.pdfemb-page-num {
+	display: inline;
+	font-family: sans-serif;
+	width: 30px;
+	height: 15px;
+	vertical-align: middle;
+	font-size: 10px;
+	padding: 0px 2px;
+	color: black;
+	text-align: center;
+	margin: 0px;
+}
+
+.pdfembAnnotationLayer {
+    position: absolute;
+}
+
+.pdfembAnnotationLayer .annotLink > a:hover {
+    opacity: 0.2;
+    background: #ff0;
+    box-shadow: 0px 2px 10px #ff0;
+}
+
+.pdfembAnnotationLayer .annotText > img {
+    position: absolute;
+    cursor: pointer;
+}
+
+.pdfembAnnotationLayer .annotTextContentWrapper {
+    position: absolute;
+    width: 20em;
+}
+
+.pdfembAnnotationLayer .annotTextContent {
+    z-index: 200;
+    float: left;
+    max-width: 20em;
+    background-color: #FFFF99;
+    box-shadow: 0px 2px 5px #333;
+    border-radius: 2px;
+    padding: 0.6em;
+    cursor: pointer;
+}
+
+.pdfembAnnotationLayer .annotTextContent > h1 {
+    font-size: 1em;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 0.2em;
+}
+
+.pdfembAnnotationLayer .annotTextContent > p {
+    padding-top: 0.2em;
+}
+
+.pdfembAnnotationLayer .annotLink > a {
+    position: absolute;
+    font-size: 1em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.pdfembAnnotationLayer .annotLink > a /* -ms-a */  {
+    background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAA\
+                   LAAAAAABAAEAAAIBRAA7") 0 0 repeat;
 }

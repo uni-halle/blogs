@@ -1,24 +1,25 @@
 /*Marker-Tabelle*/
-.fixed .check-column { width: 2%; }
-.fixed .column-id { width: 4%; }
+.fixed .check-column { width: 2%; padding:12px 0px 0px 4px !important; }
+.fixed .column-id { width: 36px; }
 .fixed .column-type { width: 5%; }
 .fixed .column-markername { width: 20%; }
-.fixed .column-layername { width: 240px; }
-.fixed .column-address { width: 20%; }
+.fixed .column-layername { width: 150px; }
+.fixed .column-address { width: 15%; }
 .fixed .column-coords { width: 105px; }
 .fixed .column-count { width: 5%;text-align:center; }
 .fixed .column-mapsize { width: 90px; }
 .fixed .column-zoom { width: 45px; }
-.fixed .column-icon { width: 5%; }
-.fixed .column-popuptext { width: 210px; }
+.fixed .column-icon { width: 58px; }
+.fixed .column-popuptext { width: 150px; }
 .fixed .column-openpopup { width: 60px; }
-.fixed .column-code { width: 170px; }
+.fixed .column-code { width: 161px; }
 .fixed .column-geojson { width: 80px;text-align:center; }
 .fixed .column-georss { width: 68px;text-align:center; }
 .fixed .column-kml { width: 50px;text-align:center; }
 .fixed .column-fullscreen { width: 82px;text-align:center; }
 .fixed .column-qr-code { width: 72px;text-align:center; }
 .fixed .column-wikitude { width: 80px;text-align:center; }
+.fixed .column-usedincontent { width: 65px; }
 /*tinymce border and background*/
 .wp_themeSkin .mceIframeContainer  { border:1px solid #E2E2E2;background:#FFF; }
 /*options page*/
@@ -142,16 +143,20 @@ ul.lmm-ui-tabs-navleft li.lmm-ui-state-active a {
 	margin-right: 280px;
 	border-right:1px solid #E9E9E9;
 }
-
-h3.titl{
-	font-size: 15px;
+h2.h2-lmm-settings {
+	font-size: 20px;
 	font-style: italic;
 	font-weight: bold;
 	color: #444444;
 	background: #ffffff;
-	margin: 17px 0 -18px 0;
-	padding: 10px 10px 10px 0;
+	margin: 17px 0 -35px 0;
+	padding: 10px 10px 0px 0;
 	border-top:1px solid #E9E9E9;
+}
+h3.h3-lmm-settings {
+	font-size: 17px;
+	font-weight:bold;
+	margin: 0px;
 }
 .lmm-nav-primary {
 	background: #767676 !important;
@@ -601,6 +606,7 @@ a.pro-upgrade-external-links:hover {
 /*RTL-tweaks*/
 .switch-link-rtl {
 	float: left;
+	margin-top:10px;
 }
 .lmm-rtl {
 	float: right;
@@ -612,4 +618,66 @@ a.pro-upgrade-external-links:hover {
 .pro-upgrade-logo-rtl {
 	float:right;
 	margin: 0 0 0 10px;
+}
+/* tables responsive view */
+@media screen and ( max-width: 782px ) {
+	#list-layers tbody th.check-column{
+		padding: 3px 0 0 3px !important;
+	}
+	#list-layers input[type=text]{
+		-webkit-appearance: none;
+    	padding: 3px 5px !important;
+    	font-size: 10pt !important;
+	}
+	#list-layers .centeralize{
+		text-align: right !important;
+	}
+	#list-layers .before_primary{
+		display: none !important;
+	}
+	#list-layers .lmm-border{
+		border: none !important; 
+	}
+	#list-layers .check-column{
+		border-bottom:1px solid #edecec !important;
+	}
+	#list-layers .column-primary{
+		border-bottom:1px solid #edecec !important; 
+	}
+	#list-layers tr td:last-child{
+		border-bottom:1px solid #edecec !important;
+	}
+	#list-layers .dynamic_border{
+		border: none !important; 
+	}
+
+	#list-markers tbody th.check-column{
+		padding: 3px 0 0 3px !important;
+	}
+	#list-markers input[type=text]{
+		-webkit-appearance: none;
+    	padding: 3px 5px !important;
+    	font-size: 10pt !important;
+	}
+	#list-markers .centeralize{
+		text-align: right !important;
+	}
+	#list-markers .before_primary{
+		display: none !important;
+	}
+	#list-markers .lmm-border{
+		border: none !important; 
+	}
+	#list-markers .check-column{
+		border-bottom:1px solid #edecec !important;
+	}
+	#list-markers .column-primary{
+		border-bottom:1px solid #edecec !important; 
+	}
+	#list-markers tr td:last-child{
+		border-bottom:1px solid #edecec !important;
+	}
+	#list-markers .dynamic_border{
+		border: none !important; 
+	}
 }
