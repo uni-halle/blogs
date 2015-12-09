@@ -1,144 +1,203 @@
-<div class="aam-feature" id="post-content">
-    <?php if (!defined('AAM_PLUS_PACKAGE')) { ?>
-        <div class="row">
-            <div class="col-xs-12">
-                <p class="aam-info">
-                    <?php echo AAM_Backend_Helper::preparePhrase('You are allowed to manage access up to 10 posts, pages or custom post types. Consider to purchase [AAM Plus Package] extension to unlock this limitation.', 'b'); ?>
-                </p>
+<?php if (defined('AAM_KEY')) { ?>
+    <div class="aam-feature" id="post-content">
+        <?php if (!defined('AAM_PLUS_PACKAGE')) { ?>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="aam-info">
+                        <?php echo AAM_Backend_Helper::preparePhrase('You are allowed to manage access up to 10 posts, pages or custom post types. Consider to purchase [AAM Plus Package] extension to unlock this limitation.', 'b'); ?>
+                    </p>
+                </div>
+            </div>
+        <?php } ?>
+
+        <div class="aam-post-breadcrumb">
+            <a href="#" data-level="root"><i class="icon-home"></i> <?php echo __('Root', AAM_KEY); ?></a>
+        </div>
+
+        <div class="aam-overwrite hidden" id="post-overwritten">
+            <span><i class="icon-attention-circled"></i> <?php echo __('Settings may not be inherited', AAM_KEY); ?></span>
+            <span><a href="#" id="post-reset"><?php echo __('Reset', AAM_KEY); ?></a>&nbsp;|&nbsp;<a href="#aam-reset-info-modal" data-toggle="modal"><?php echo __('Help', AAM_KEY); ?></a></span>
+        </div>
+
+        <div class="aam-inherited hidden" id="post-inherited">
+            <span><?php echo __('Settings inherited from', AAM_KEY); ?> <strong id="post-parent"></strong></span> 
+            <span><a href="#aam-inheritance-modal" data-toggle="modal"><?php echo __('Help', AAM_KEY); ?></a></span>
+        </div>
+
+        <div class="aam-post-manager-container">
+            <table id="post-list" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Link</th>
+                        <th width="5%">&nbsp;</th>
+                        <th width="75%"><?php echo __('Title', AAM_KEY); ?></th>
+                        <th><?php echo __('Actions', AAM_KEY); ?></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="aam-post-manager" data-type="type">
+                <?php echo apply_filters('aam-post-type-ui-filter', AAM_Backend_View::getInstance()->loadPartial('post-type.phtml')); ?>
+                <a href="#" class="btn btn-xs btn-primary post-back">&Lt; <?php echo __('Go Back', AAM_KEY); ?></a>
+            </div>
+
+            <div class="aam-post-manager" data-type="term">
+                <?php echo apply_filters('aam-term-type-ui-filter', AAM_Backend_View::getInstance()->loadPartial('term-type.phtml')); ?>
+                <a href="#" class="btn btn-xs btn-primary post-back">&Lt; <?php echo __('Go Back', AAM_KEY); ?></a>
+            </div>
+
+            <div class="aam-post-manager" data-type="post">
+                <table class="table table-striped table-bordered">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" class="aam-table-group">
+                                <i class="icon-doc-text-inv"></i> <strong><?php echo __('Frontend', AAM_KEY); ?></strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="90%">
+                                <strong class="aam-block"><?php echo __('List', AAM_KEY); ?></strong>
+                                <p class="aam-hint">
+                                    <?php echo __('Filter (exclude) post from any list on your website frontend.', AAM_KEY); ?>
+                                    <span class="aam-highlight"><?php echo __('Warning!', AAM_KEY); ?></span> 
+                                    <?php echo __('If checked, this property may slowdown your website with large amount of posts.', AAM_KEY); ?>
+                                </p>
+                            </td>
+                            <td>
+                                <div class="aam-row-actions">
+                                    <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.list"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="aam-block"><?php echo __('Read', AAM_KEY); ?></strong>
+                                <p class="aam-hint">
+                                    <?php echo __('Restrict access to read a post. If "List" option is not checked, a post will be still listed on your website frontend.', AAM_KEY); ?>
+                                </p>
+                            </td>
+                            <td>
+                                <div class="aam-row-actions">
+                                    <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.read"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="aam-block"><?php echo __('Comment', AAM_KEY); ?></strong>
+                                <p class="aam-hint">
+                                    <?php echo __('Restrict access to comment on a post (if commenting feature is activated).', AAM_KEY); ?>
+                                </p>
+                            </td>
+                            <td>
+                                <div class="aam-row-actions">
+                                    <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.comment"></i>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="aam-backend-post-access">
+                            <td colspan="2" class="aam-table-group">
+                                <i class="icon-doc-text-inv"></i> <strong><?php echo __('Backend', AAM_KEY); ?></strong>
+                            </td>
+                        </tr>
+
+                        <tr class="aam-backend-post-access">
+                            <td>
+                                <strong class="aam-block"><?php echo __('List', AAM_KEY); ?></strong>
+                                <p class="aam-hint">
+                                    <?php echo __('Filter (exclude) post from any list on your website backend.', AAM_KEY); ?>
+                                    <span class="aam-highlight"><?php echo __('Warning!', AAM_KEY); ?></span> 
+                                    <?php echo __('If checked, this property may slowdown your backend with large amount of posts.', AAM_KEY); ?>
+                                </p>
+                            </td>
+                            <td>
+                                <div class="aam-row-actions">
+                                    <i class="aam-row-action text-muted icon-check-empty" data-property="backend.list"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="aam-backend-post-access">
+                            <td>
+                                <strong class="aam-block"><?php echo __('Edit', AAM_KEY); ?></strong>
+                                <p class="aam-hint">
+                                    <?php echo __('Restrict access to edit a post (also the link "Edit" and "Quick Edit" will be removed below the post title).', AAM_KEY); ?>
+                                </p>
+                            </td>
+                            <td>
+                                <div class="aam-row-actions">
+                                    <i class="aam-row-action text-muted icon-check-empty" data-property="backend.edit"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="aam-backend-post-access">
+                            <td>
+                                <strong class="aam-block"><?php echo __('Delete', AAM_KEY); ?></strong>
+                                <p class="aam-hint">
+                                    <?php echo __('Restrict access to trash or permanently delete a post (also the link "Trash" or "Delete Permanently" will be removed for a post).', AAM_KEY); ?>
+                                </p>
+                            </td>
+                            <td>
+                                <div class="aam-row-actions">
+                                    <i class="aam-row-action text-muted icon-check-empty" data-property="backend.delete"></i>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <a href="#" class="btn btn-xs btn-primary post-back">&Lt; <?php echo __('Go Back', AAM_KEY); ?></a>
             </div>
         </div>
-    <?php } ?>
 
-    <div class="aam-post-breadcrumb">
-        <a href="#" data-level="root"><i class="icon-home"></i> <?php echo __('Root', AAM_KEY); ?></a>
-    </div>
+        <div class="modal fade" id="aam-inheritance-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><?php echo __('Inheritance', AAM_KEY); ?></h4>
+                    </div>
+                    <div class="modal-body aam-info-modal">
+                        <p><?php echo __('If no access settings defined for post* or category* AAM triggers the inheritance mechanism in order listed below. The inheritance process terminates when the first defined set of settings is found.', AAM_KEY); ?></p>
+                        <ul class="aam-numeric-list">
+                            <li><?php echo __('If caching is on, read the cached settings', AAM_KEY); ?>;</li>
+                            <li><?php echo __('Read post\'s or category\'s settings', AAM_KEY); ?>;</li>
+                            <li><?php echo __('If AAM Plus Package installed, iterate through the tree of parent categories and read settings', AAM_KEY); ?>;</li>
+                            <li><?php echo __('If AAM Plus Package installed, read the default access settings for posts or categories', AAM_KEY); ?>;</li>
+                            <li><?php echo __('If user, read settings from the parent role and repeat the same sequence of steps', AAM_KEY); ?>;</li>
+                        </ul>
 
-    <div class="aam-post-manager-container">
-        <table id="post-list" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Link</th>
-                    <th width="5%">&nbsp;</th>
-                    <th width="75%"><?php echo __('Title', AAM_KEY); ?></th>
-                    <th><?php echo __('Actions', AAM_KEY); ?></th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-
-        <div class="aam-post-manager" data-type="type">
-            <?php echo apply_filters('aam-post-type-ui-filter', AAM_Backend_View::getInstance()->loadPartial('post-type.phtml')); ?>
-            <a href="#" class="btn btn-xs btn-primary post-back">&Lt; <?php echo __('Go Back', AAM_KEY); ?></a>
+                        <p class="aam-info aam-hint">
+                            * <?php echo AAM_Backend_Helper::preparePhrase(__('[post] - any post, page or custom post type', AAM_KEY), 'strong'); ?>;<br/>
+                            * <?php echo AAM_Backend_Helper::preparePhrase(__('[category] - any taxonomy/term or custom taxonomy', AAM_KEY), 'strong'); ?>.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('OK', AAM_KEY); ?></button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="aam-post-manager" data-type="term">
-            <?php echo apply_filters('aam-term-type-ui-filter', AAM_Backend_View::getInstance()->loadPartial('term-type.phtml')); ?>
-            <a href="#" class="btn btn-xs btn-primary post-back">&Lt; <?php echo __('Go Back', AAM_KEY); ?></a>
-        </div>
-
-        <div class="aam-post-manager" data-type="post">
-            <table class="table table-striped table-bordered">
-                <tbody>
-                    <tr>
-                        <td colspan="2" class="aam-table-group">
-                            <i class="icon-doc-text-inv"></i> <strong><?php echo __('Frontend', AAM_KEY); ?></strong>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td width="90%">
-                            <strong class="aam-block"><?php echo __('List', AAM_KEY); ?></strong>
-                            <p class="aam-hint">
-                                <?php echo __('Filter (exclude) post from any list on your website frontend.', AAM_KEY); ?>
-                                <span class="aam-highlight"><?php echo __('Warning!', AAM_KEY); ?></span> 
-                                <?php echo __('If checked, this property may slowdown your website with large amount of posts.', AAM_KEY); ?>
-                            </p>
-                        </td>
-                        <td>
-                            <div class="aam-row-actions">
-                                <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.list"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong class="aam-block"><?php echo __('Read', AAM_KEY); ?></strong>
-                            <p class="aam-hint">
-                                <?php echo __('Restrict access to read a post. If "List" option is not checked, a post will be still listed on your website frontend.', AAM_KEY); ?>
-                            </p>
-                        </td>
-                        <td>
-                            <div class="aam-row-actions">
-                                <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.read"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong class="aam-block"><?php echo __('Comment', AAM_KEY); ?></strong>
-                            <p class="aam-hint">
-                                <?php echo __('Restrict access to comment on a post (if commenting feature is activated).', AAM_KEY); ?>
-                            </p>
-                        </td>
-                        <td>
-                            <div class="aam-row-actions">
-                                <i class="aam-row-action text-muted icon-check-empty" data-property="frontend.comment"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                    <tr class="aam-backend-post-access">
-                        <td colspan="2" class="aam-table-group">
-                            <i class="icon-doc-text-inv"></i> <strong><?php echo __('Backend', AAM_KEY); ?></strong>
-                        </td>
-                    </tr>
-                    
-                    <tr class="aam-backend-post-access">
-                        <td>
-                            <strong class="aam-block"><?php echo __('List', AAM_KEY); ?></strong>
-                            <p class="aam-hint">
-                                <?php echo __('Filter (exclude) post from any list on your website backend.', AAM_KEY); ?>
-                                <span class="aam-highlight"><?php echo __('Warning!', AAM_KEY); ?></span> 
-                                <?php echo __('If checked, this property may slowdown your backend with large amount of posts.', AAM_KEY); ?>
-                            </p>
-                        </td>
-                        <td>
-                            <div class="aam-row-actions">
-                                <i class="aam-row-action text-muted icon-check-empty" data-property="backend.list"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="aam-backend-post-access">
-                        <td>
-                            <strong class="aam-block"><?php echo __('Edit', AAM_KEY); ?></strong>
-                            <p class="aam-hint">
-                                <?php echo __('Restrict access to edit a post (also the link "Edit" and "Quick Edit" will be removed below the post title).', AAM_KEY); ?>
-                            </p>
-                        </td>
-                        <td>
-                            <div class="aam-row-actions">
-                                <i class="aam-row-action text-muted icon-check-empty" data-property="backend.edit"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="aam-backend-post-access">
-                        <td>
-                            <strong class="aam-block"><?php echo __('Delete', AAM_KEY); ?></strong>
-                            <p class="aam-hint">
-                                <?php echo __('Restrict access to trash or permanently delete a post (also the link "Trash" or "Delete Permanently" will be removed for a post).', AAM_KEY); ?>
-                            </p>
-                        </td>
-                        <td>
-                            <div class="aam-row-actions">
-                                <i class="aam-row-action text-muted icon-check-empty" data-property="backend.delete"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-            <a href="#" class="btn btn-xs btn-primary post-back">&Lt; <?php echo __('Go Back', AAM_KEY); ?></a>
+        <div class="modal fade" id="aam-reset-info-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo __('Close', AAM_KEY); ?>"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><?php echo __('Reset Information', AAM_KEY); ?></h4>
+                    </div>
+                    <div class="modal-body aam-info-modal">
+                        <p><?php echo AAM_Backend_Helper::preparePhrase(__('[Settings may not be inherited] message indicates that access settings for current post or category are not inherited from parent category, role or default settings because they were modified for this particular post or category. Click [Reset] if you need to reset the access.', AAM_KEY), 'strong', 'strong'); ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('OK', AAM_KEY); ?></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+<?php
+}

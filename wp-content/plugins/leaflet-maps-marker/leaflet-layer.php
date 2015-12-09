@@ -34,7 +34,7 @@ if ( version_compare( $wp_version, '3.4', '>=' ) ) {
 }
 $table_name_markers = $wpdb->prefix.'leafletmapsmarker_markers';
 $table_name_layers = $wpdb->prefix.'leafletmapsmarker_layers';
-$layerlist = $wpdb->get_results('SELECT l.id as lid,l.name as lname FROM `'.$table_name_layers.'` as l WHERE l.multi_layer_map = 0 and l.id != 0', ARRAY_A);
+$layerlist = $wpdb->get_results('SELECT l.id as lid,l.name as lname FROM `'.$table_name_layers.'` as l WHERE l.multi_layer_map = 0 and l.id != 0 ORDER BY l.id ASC', ARRAY_A);
 $action = isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '');
 $oid = isset($_POST['id']) ? intval($_POST['id']) : (isset($_GET['id']) ? intval($_GET['id']) : '');
 $lat_check = isset($_POST['layerviewlat']) ? $_POST['layerviewlat'] : (isset($_GET['layerviewlat']) ? $_GET['layerviewlat'] : '');
@@ -1050,7 +1050,7 @@ var markers = {};
 	?>
 	selectlayer.attributionControl.setPrefix("<?php echo $attrib_prefix; ?>");
 	<?php 
-		if (is_ssl() == TRUE) {
+		if (substr($locale, 0, 2) != 'zh') { //info: conditional ssl loading (performance issues in China)
 			$protocol_handler = 'https';
 			$mapquest_ssl = '-s';
 		} else {

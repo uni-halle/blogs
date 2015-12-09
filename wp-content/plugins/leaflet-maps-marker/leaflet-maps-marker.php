@@ -4,11 +4,11 @@ Plugin Name: Leaflet Maps Marker
 Plugin URI: https://www.mapsmarker.com
 Description: The most comprehensive & user-friendly mapping solution for WordPress
 Tags: map, maps, Leaflet, OpenStreetMap, geoJSON, json, jsonp, OSM, travelblog, opendata, open data, opengov, open government, ogdwien, WMTS, geoRSS, location, geo, geo-mashup, geocoding, geolocation, travel, mapnick, osmarender, cloudmade, mapquest, geotag, geocaching, gpx, OpenLayers, mapping, bikemap, coordinates, geocode, geocoding, geotagging, latitude, longitude, position, route, tracks, google maps, googlemaps, gmaps, google map, google map short code, google map widget, google maps v3, google earth, gmaps, ar, augmented-reality, wikitude, wms, web map service, geocache, geocaching, qr, qr code, fullscreen, marker, marker icons, layer, multiple markers, karte, blogmap, geocms, geographic, routes, tracks, directions, navigation, routing, location plan, YOURS, yournavigation, ORS, openrouteservice, widget, bing, bing maps, microsoft, map short code, map widget, kml, cross-browser, fully documented, traffic, bike lanes, map short code, custom marker text, custom marker icons and text, gpx
-Version: 3.10.1
+Version: 3.10.3
 Author: MapsMarker.com e.U.
 Author URI: https://www.mapsmarker.com
 Requires at least: 3.4
-Tested up to: 4.4
+Tested up to: 4.4-RC1
 Copyright 2011-2015 - MapsMarker.com e.U. - All rights reserved
 MapsMarker &reg;
 Parts of this plugin were originally based on the Leaflet Plugin by Hind (Copyright 2011)
@@ -601,14 +601,14 @@ class Leafletmapsmarker
 			$gmaps_base_domain = "&base_domain=" . $lmm_options['google_maps_base_domain_custom'];
 		}
 		//info: Google API key
-		if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = $lmm_options['google_maps_api_key']; } else { $google_maps_api_key = ''; }
-		$protocol_handler = (is_ssl() == TRUE) ? 'https' : 'http'; //info: conditional ssl loading for Google js (performance issues in China)
+		if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = '?key=' . $lmm_options['google_maps_api_key']; } else { $google_maps_api_key = ''; }
+		$protocol_handler = (substr($locale, 0, 2) == 'zh') ? 'http' : 'https'; //info: conditional ssl loading for Google js (performance issues in China)
 		//info: fallback for adding js to footer 1
 		if ($lmm_options['misc_javascript_header_footer'] == 'footer') {
-			wp_register_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi?key='.$google_maps_api_key, array(), 3.7, true);
+			wp_register_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi'.$google_maps_api_key, array(), 3.7, true);
 		} else {
 			wp_enqueue_script( array ( 'jquery' ) );
-			wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi?key='.$google_maps_api_key, array(), NULL);
+			wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi'.$google_maps_api_key, array(), NULL);
 		}
 		//info: Bing culture code
 		if ($lmm_options['bingmaps_culture'] == 'automatic') {
@@ -654,9 +654,9 @@ class Leafletmapsmarker
 		}
 		wp_enqueue_script( array ( 'jquery' ) );
 		//info: Google API key
-		if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = $lmm_options['google_maps_api_key']; } else { $google_maps_api_key = ''; }
-		$protocol_handler = (is_ssl() == TRUE) ? 'https' : 'http'; //info: conditional ssl loading for Google js (performance issues in China)
-		wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi?key='.$google_maps_api_key, array(), 3.7, true);
+		if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = '?key=' . $lmm_options['google_maps_api_key']; } else { $google_maps_api_key = ''; }
+		$protocol_handler = (substr($locale, 0, 2) == 'zh') ? 'http' : 'https'; //info: conditional ssl loading for Google js (performance issues in China)
+		wp_enqueue_script( 'leafletmapsmarker-googlemaps-loader', $protocol_handler . '://www.google.com/jsapi'.$google_maps_api_key, array(), 3.7, true);
 		//info: Bing culture code
 		if ($lmm_options['bingmaps_culture'] == 'automatic') {
 			if ( $locale != NULL ) { $bing_culture = str_replace("_","-", $locale); } else { $bing_culture =  'en_us'; }
@@ -801,7 +801,7 @@ class Leafletmapsmarker
 	}	
 	function lmm_install_and_updates() {
 		//info: set transient to execute install & update-routine only once a day
-		$current_version = "v3101"; //2do - mandatory: change on each update to new version!
+		$current_version = "v3103"; //2do - mandatory: change on each update to new version!
 		$schedule_transient = 'leafletmapsmarker_install_update_cache_' . $current_version;
 		$install_update_schedule = get_transient( $schedule_transient );
 		if ( $install_update_schedule === FALSE ) {

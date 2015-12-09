@@ -124,7 +124,7 @@
 	
 */
 
-$patgenLanguage = 'Romanian';
+$patgenLanguage = __( 'Romanian', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -786,4 +786,3 @@ $patgen = array(
 )
 );
 
-?>

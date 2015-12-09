@@ -183,5 +183,24 @@ final class AAM_Core_API {
         }
         exit;
     }
+    
+    /**
+     * Remove directory recursively
+     * 
+     * @param string $pathname
+     * 
+     * @return void
+     * 
+     * @access public
+     */
+    public static function removeDirectory($pathname) {
+        $files = glob($pathname . '/*');
+        
+	foreach ($files as $file) {
+		is_dir($file) ? self::removeDirectory($file) : @unlink($file);
+	}
+        
+	@rmdir($pathname);
+    }
 
 }

@@ -78,7 +78,7 @@ abstract class AAM_Core_Subject {
         $subject = $this->getSubject();
         
         //make sure that method is callable
-        if (method_exists($subject, $name)) {
+        if ($subject instanceof AAM_Core_Subject && method_exists($subject, $name)) {
             $response = call_user_func_array(array($subject, $name), $args);
         } else {
             $response = null;
@@ -212,7 +212,9 @@ abstract class AAM_Core_Subject {
      * @return type
      */
     public function hasCapability($capability) {
-        return $this->getSubject()->has_cap($capability);
+        $subject = $this->getSubject();
+        
+        return ($subject ? $subject->has_cap($capability) : false);
     }
     
     /**
@@ -225,6 +227,16 @@ abstract class AAM_Core_Subject {
      */
     public function save($param, $value, $object, $objectId = 0) {
         return $this->getObject($object, $objectId)->save($param, $value);
+    }
+    
+    /**
+     *
+     * @param type $object
+     * @param type $id
+     * @return type
+     */
+    public function deleteOption($object, $id = 0) {
+        return AAM_Core_API::deleteOption($this->getOptionName($object, $id));
     }
 
     /**
@@ -246,6 +258,11 @@ abstract class AAM_Core_Subject {
     abstract protected function retrieveSubject();
     
     /**
+     * 
+     */
+    abstract public function getOptionName($object, $id);
+    
+    /**
      * Read object from parent subject
      * 
      * @param string $object
@@ -256,7 +273,7 @@ abstract class AAM_Core_Subject {
      * @access public
      */
     public function inheritFromParent($object, $id = ''){
-        if ($subject = $this->getParentSubject()){
+        if ($subject = $this->getParent()){
             $option = $subject->getObject($object, $id)->getOption();
         } else {
             $option = null;
@@ -274,6 +291,20 @@ abstract class AAM_Core_Subject {
      * 
      * @access public
      */
-    abstract public function getParentSubject();
+    abstract public function getParent();
+    
+    /**
+     * Check if subject has parent
+     * 
+     * Return true if current subject has parent subject. Applicable only for User
+     * only were Role is a parent subject to it.
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public function hasParent() {
+        return false;
+    }
     
 }

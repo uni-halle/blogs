@@ -34,6 +34,18 @@ class AAM_Backend_Metabox {
     }
     
     /**
+     * 
+     * @return type
+     */
+    public function reset() {
+        $object = AAM_Backend_View::getSubject()->getObject('metabox');
+        
+        return json_encode(array(
+            'status' => ($object->reset() ? 'success' : 'failure')
+        ));
+    }
+    
+    /**
      *
      * @global type $wp_post_types
      * @return type
@@ -179,6 +191,16 @@ class AAM_Backend_Metabox {
         }
         
         return $response;
+    }
+    
+     /**
+     * 
+     * @return type
+     */
+    protected function isOverwritten() {
+        $object = AAM_Backend_View::getSubject()->getObject('metabox');
+        
+        return $object->isOverwritten();
     }
 
     /**

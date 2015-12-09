@@ -60,7 +60,7 @@
 	
 */
 
-$patgenLanguage = 'Basque';
+$patgenLanguage = __( 'Basque', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -265,4 +265,3 @@ $patgen = array(
 )
 );
 
-?>

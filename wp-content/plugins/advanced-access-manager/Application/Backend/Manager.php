@@ -81,7 +81,7 @@ class AAM_Backend_Manager {
      * 
      */
     protected function checkExtensionList() {
-        $list = AAM_Core_API::getOption('aam-extension-list', array());
+        $list = AAM_Core_API::getOption('aam-extension-repository', array());
         $repo = AAM_Core_Repository::getInstance();
         
         foreach($list as $extension) {
@@ -97,8 +97,17 @@ class AAM_Backend_Manager {
         }
     }
     
+    /**
+     * Check caching status
+     * 
+     * If caching is off, show notification about it
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
     protected function checkCacheStatus() {
-        if (apply_filters('aam-cache-status-action', false) === false) {
+        if (apply_filters('aam-cache-status-filter', false) === false) {
             $message  = __(
                 'AAM caching is off. To speed-up the website turn it on.', AAM_KEY
             );

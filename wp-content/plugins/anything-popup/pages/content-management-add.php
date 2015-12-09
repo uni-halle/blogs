@@ -1,4 +1,5 @@
 <?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
+<?php if ( ! empty( $_POST ) && ! wp_verify_nonce( $_REQUEST['wp_create_nonce'], 'content-management-add-nonce' ) )  { die('<p>Security check failed.</p>'); } ?>
 <div class="wrap">
 <?php
 $pop_errors = array();
@@ -176,6 +177,7 @@ if ($pop_error_found == FALSE && strlen($pop_success) > 0)
         <input name="Help" lang="publish" class="button add-new-h2" onclick="_pop_help()" value="<?php _e('Help', 'anything-popup'); ?>" type="button" />
       </p>
 	  <?php wp_nonce_field('pop_form_add'); ?>
+	  <input type="hidden" name="wp_create_nonce" id="wp_create_nonce" value="<?php echo wp_create_nonce( 'content-management-add-nonce' ); ?>"/>
     </form>
 </div>
 <p class="description">

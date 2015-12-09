@@ -1,25 +1,28 @@
-/*Marker-Tabelle*/
-.fixed .check-column { width: 2%; padding:12px 0px 0px 4px !important; }
-.fixed .column-id { width: 36px; }
-.fixed .column-type { width: 5%; }
-.fixed .column-markername { width: 20%; }
-.fixed .column-layername { width: 150px; }
-.fixed .column-address { width: 15%; }
+/*marker+layer-columns*/
+.fixed .check-column { width: 20px; }
+.fixed .column-id { width: 49px; }
+.fixed .column-type { width: 65px; }
+.fixed .column-markername { width: 180px; }
+.fixed .column-layername { width: 130px; }
+.fixed .column-address { width: 130px; }
 .fixed .column-coords { width: 105px; }
-.fixed .column-count { width: 5%;text-align:center; }
+.fixed .column-count { width: 68px;text-align:center; }
 .fixed .column-mapsize { width: 90px; }
 .fixed .column-zoom { width: 45px; }
-.fixed .column-icon { width: 58px; }
+.fixed .column-icon { width: 62px; }
 .fixed .column-popuptext { width: 150px; }
 .fixed .column-openpopup { width: 60px; }
-.fixed .column-code { width: 161px; }
+.fixed .column-code { width: 131px; }
 .fixed .column-geojson { width: 80px;text-align:center; }
 .fixed .column-georss { width: 68px;text-align:center; }
 .fixed .column-kml { width: 50px;text-align:center; }
 .fixed .column-fullscreen { width: 82px;text-align:center; }
 .fixed .column-qr-code { width: 72px;text-align:center; }
 .fixed .column-wikitude { width: 80px;text-align:center; }
-.fixed .column-usedincontent { width: 65px; }
+.fixed .column-usedincontent { width: 150px; }
+.widefat .check-column {
+    padding: 10px 3px 5px !important;
+}
 /*tinymce border and background*/
 .wp_themeSkin .mceIframeContainer  { border:1px solid #E2E2E2;background:#FFF; }
 /*options page*/
@@ -143,7 +146,7 @@ ul.lmm-ui-tabs-navleft li.lmm-ui-state-active a {
 	margin-right: 280px;
 	border-right:1px solid #E9E9E9;
 }
-h2.h2-lmm-settings {
+h3.h3-lmm-settings {
 	font-size: 20px;
 	font-style: italic;
 	font-weight: bold;
@@ -153,7 +156,7 @@ h2.h2-lmm-settings {
 	padding: 10px 10px 0px 0;
 	border-top:1px solid #E9E9E9;
 }
-h3.h3-lmm-settings {
+h4.h4-lmm-settings {
 	font-size: 17px;
 	font-weight:bold;
 	margin: 0px;

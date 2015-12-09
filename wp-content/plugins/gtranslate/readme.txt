@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator, language translator, google translator, language translate, google language translator, translation, translate, multi language
 Requires at least: 2.8
 Tested up to: 4.3
-Stable tag: 2.0.1
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.me/EdvardAnanyan/10
@@ -456,6 +456,12 @@ You need to go to the language you want to edit, for instance, French: http://do
 1. Main View
 
 == Changelog ==
+
+= 2.0.3 =
+* Update recommended message added - a minor change compared to 2.0.2
+
+= 2.0.2 =
+* Added support for sites using SSL
 
 = 2.0.1 =
 * Admin refreshed

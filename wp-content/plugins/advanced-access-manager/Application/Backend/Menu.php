@@ -30,6 +30,18 @@ class AAM_Backend_Menu {
 
         return $content;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function reset() {
+        $object = AAM_Backend_View::getSubject()->getObject('menu');
+        
+        return json_encode(array(
+            'status' => ($object->reset() ? 'success' : 'failure')
+        ));
+    }
 
     /**
      * Get subject's menu
@@ -131,9 +143,9 @@ class AAM_Backend_Menu {
      * 
      * @return boolean
      * 
-     * @access public
+     * @access protected
      */
-    public function hasRestrictedAll($menu) {
+    protected function hasRestrictedAll($menu) {
         $object = AAM_Backend_View::getSubject()->getObject('menu');
         $response = $object->has($menu['id']);
 
@@ -145,6 +157,16 @@ class AAM_Backend_Menu {
         }
 
         return $response;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    protected function isOverwritten() {
+        $object = AAM_Backend_View::getSubject()->getObject('menu');
+        
+        return $object->isOverwritten();
     }
 
     /**

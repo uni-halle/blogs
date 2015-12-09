@@ -302,18 +302,27 @@ if (!empty($action)) {
 				<option value="0">ID 0 - <?php _e('unassigned','lmm') ?> (<?php echo $markercount_layer0; ?> <?php _e('marker','lmm'); ?>)</option>
 				<?php
 				foreach ($layerlist as $row) {
-					$markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN `'.$table_name_markers.'` AS m ON l.id=m.layer WHERE l.id='.$row['id']);
-					echo '<option value="' . $row['id'] . '">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . $markercount .' ' . __('marker','lmm') . ')</option>';
+					if ($row['multi_layer_map'] == 0) {
+						$markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN `'.$table_name_markers.'` AS m ON l.id=m.layer WHERE l.id='.$row['id']);
+						echo '<option value="' . $row['id'] . '">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . $markercount .' ' . __('marker','lmm') . ')</option>';
+					} else {
+						echo '<option value="' . $row['id'] . '" disabled="disabled">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . __('This is a multi-layer map - markers cannot be assigned to this layer directly','lmm') . ')</option>';
+					}
 				}
 				?>
 				</select>
+				<br/>
 				<?php _e('Target','lmm') ?>:
 				<select id="layer_assign_to" name="layer_assign_to">
 				<option value="0">ID 0 - <?php _e('unassigned','lmm') ?> (<?php echo $markercount_layer0; ?> <?php _e('marker','lmm'); ?>)</option>
 				<?php
 				foreach ($layerlist as $row) {
-					$markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN `'.$table_name_markers.'` AS m ON l.id=m.layer WHERE l.id='.$row['id']);
-					echo '<option value="' . $row['id'] . '">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . $markercount .' ' . __('marker','lmm') . ')</option>';
+					if ($row['multi_layer_map'] == 0) {
+						$markercount = $wpdb->get_var('SELECT count(*) FROM `'.$table_name_layers.'` as l INNER JOIN `'.$table_name_markers.'` AS m ON l.id=m.layer WHERE l.id='.$row['id']);
+						echo '<option value="' . $row['id'] . '">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . $markercount .' ' . __('marker','lmm') . ')</option>';
+					} else {
+						echo '<option value="' . $row['id'] . '" disabled="disabled">ID ' . $row['id'] . ' - ' . stripslashes(htmlspecialchars($row['name'])) . ' (' . __('This is a multi-layer map - markers cannot be assigned to this layer directly','lmm') . ')</option>';
+					}
 				}
 				?>
 				</select>

@@ -162,7 +162,7 @@ class AAM_Backend_Extension {
      * @return int
      */
     protected static function getUpdatesCount() {
-        $list = AAM_Core_API::getOption('aam-extension-list', array());
+        $list = AAM_Core_API::getOption('aam-extension-repository', array());
         $repo = AAM_Core_Repository::getInstance();
         $count = 0;
         

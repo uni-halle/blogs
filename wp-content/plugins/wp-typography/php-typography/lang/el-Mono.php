@@ -46,7 +46,7 @@
 	
 */
 
-$patgenLanguage = 'Greek (Modern Monotonic)';
+$patgenLanguage = __( 'Greek (Modern Monotonic)', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -596,4 +596,3 @@ $patgen = array(
 )
 );
 
-?>

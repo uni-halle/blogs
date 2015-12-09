@@ -123,7 +123,7 @@
 	
 */
 
-$patgenLanguage = 'Norwegian';
+$patgenLanguage = __( 'Norwegian', 'wp-typography' );
 
 $patgenExceptions = array(
 	"attende"=>"atten-de",
@@ -27305,3 +27305,4 @@ $patgen = array(
 		"åøy"=>"0004",
 		),
 	);
+

@@ -93,7 +93,7 @@
 	
 */
 
-$patgenLanguage = 'Icelandic';
+$patgenLanguage = __( 'Icelandic', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -4296,4 +4296,3 @@ $patgen = array(
 )
 );
 
-?>

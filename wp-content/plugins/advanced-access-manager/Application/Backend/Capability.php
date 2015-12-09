@@ -125,7 +125,7 @@ class AAM_Backend_Capability {
         return apply_filters('aam-capability-groups-filter', array(
             __('System', AAM_KEY),
             __('Posts & Pages', AAM_KEY),
-            __('Backend Interface', AAM_KEY),
+            __('Backend', AAM_KEY),
             __('Miscellaneous', AAM_KEY)
         ));
     }
@@ -166,7 +166,7 @@ class AAM_Backend_Capability {
         } elseif (in_array($capability, $this->_groups['post'])) {
             $response = __('Posts & Pages', AAM_KEY);
         } elseif (in_array($capability, $this->_groups['backend'])) {
-            $response = __('Backend Interface', AAM_KEY);
+            $response = __('Backend', AAM_KEY);
         } else {
             $response = __('Miscellaneous', AAM_KEY);
         }

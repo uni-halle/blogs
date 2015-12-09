@@ -23,12 +23,12 @@ class AAM_Core_Subject_Visitor extends AAM_Core_Subject {
     /**
      * Retrieve Visitor Subject
      *
-     * @return stdClass
+     * @return null|AAM_Core_Subject
      *
      * @access protected
      */
     protected function retrieveSubject() {
-        return new stdClass;
+        return null;
     }
 
     /**
@@ -65,18 +65,6 @@ class AAM_Core_Subject_Visitor extends AAM_Core_Subject {
     }
 
     /**
-     *
-     * @param type $object
-     * @param type $id
-     * @return type
-     */
-    public function deleteOption($object, $id = 0) {
-        return AAM_Core_API::deleteOption(
-                        $this->getOptionName($object, $id)
-        );
-    }
-
-    /**
      * 
      * @param type $object
      * @param type $id
@@ -97,7 +85,7 @@ class AAM_Core_Subject_Visitor extends AAM_Core_Subject {
     /**
      * @inheritdoc
      */
-    public function getParentSubject() {
+    public function getParent() {
         return null;
     }
 

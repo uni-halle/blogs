@@ -31,6 +31,7 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
         
         if (empty($option)) {
             $option = $this->getSubject()->inheritFromParent('menu');
+            $this->setInherited(empty($option) ? null : 'role');
         }
         
         $this->setOption($option);
@@ -112,6 +113,13 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
         $option[$menu] = $granted;
 
         return $this->getSubject()->updateOption($option, 'menu');
+    }
+    
+    /**
+     * 
+     */
+    public function reset() {
+        return $this->getSubject()->deleteOption('menu');
     }
 
 }

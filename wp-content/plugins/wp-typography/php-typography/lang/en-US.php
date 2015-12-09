@@ -52,7 +52,7 @@
 	
 */
 
-$patgenLanguage = 'English (United States)';
+$patgenLanguage = __( 'English (United States)', 'wp-typography' );
 
 $patgenExceptions = array(
 'associate'=>'as-so-ciate',
@@ -5019,4 +5019,3 @@ $patgen = array(
 )
 );
 
-?>

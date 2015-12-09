@@ -92,7 +92,7 @@
 	
 */
 
-$patgenLanguage = 'Russian';
+$patgenLanguage = __( 'Russian', 'wp-typography' );
 
 $patgenExceptions = array(
 'асбест'=>'ас-бест',
@@ -5101,4 +5101,3 @@ $patgen = array(
 )
 );
 
-?>

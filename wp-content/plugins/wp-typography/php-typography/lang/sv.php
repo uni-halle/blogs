@@ -125,7 +125,7 @@
 	
 */
 
-$patgenLanguage = 'Swedish';
+$patgenLanguage = __( 'Swedish', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -4832,4 +4832,4 @@ $patgen = array(
 'ée'=>'030'
 )
 );
-?>
+

@@ -86,29 +86,26 @@ class AAM_Backend_View {
     public function processAjax() {
         $response = null;
         
-        $act = explode('.', AAM_Core_Request::request('sub_action'));
+        $action = AAM_Core_Request::request('sub_action');
+        $parts  = explode('.', $action);
         
-        if (count($act) == 1 && method_exists($this, $act[0])) {
-            $response = call_user_func(array($this, $act[0]));
-        } else {
-            $classname = 'AAM_Backend_' . $act[0];
+        if (method_exists($this, $parts[0])) {
+            $response = call_user_func(array($this, $parts[0]));
+        } elseif (count($parts) == 2) { //cover the Model.method pattern
+            $classname = 'AAM_Backend_' . $parts[0];
             if (class_exists($classname)) {
-                $object = new $classname();
-                if (method_exists($object, $act[1])) {
-                    $response = call_user_func(array($object, $act[1]));
+                $object = new $classname;
+                if (method_exists($object, $parts[1])) {
+                    $response = call_user_func(array($object, $parts[1]));
                 }
             }
         }
         
-        if (is_null($response)) {
-            $response = apply_filters(
-                'aam-ajax-action', $response, $this->getSubject(), $act[0], $act[1]
-            );
-        }
-
-        return $response;
+        return apply_filters(
+                'aam-ajax-filter', $response, $this->getSubject(), $action
+        );
     }
-
+    
     /**
      * Render the Main Control Area
      *

@@ -234,3 +234,7 @@ table.dataTable>tbody>tr.child span.dtr-title {
     font-weight: bold;
     min-width: 75px;
 }
+
+.table small {
+    color: #777777;
+}

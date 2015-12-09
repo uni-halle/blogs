@@ -84,7 +84,7 @@
 	
 */
 
-$patgenLanguage = "Ukrainian";
+$patgenLanguage = __( "Ukrainian", 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -2089,4 +2089,4 @@ $patgen = array(
 "евказ"=>"034000"
 )
 );
-?>
+

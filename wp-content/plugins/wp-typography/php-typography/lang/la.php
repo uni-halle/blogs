@@ -191,7 +191,7 @@
 	
 */
 
-$patgenLanguage = 'Latin';
+$patgenLanguage = __( 'Latin', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -542,4 +542,3 @@ $patgen = array(
 )
 );
 
-?>

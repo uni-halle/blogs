@@ -808,7 +808,7 @@ var marker,selectlayer,googleLayer_roadmap,googleLayer_satellite,googleLayer_hyb
 	?>
 	selectlayer.attributionControl.setPrefix("<?php echo $attrib_prefix; ?>");
 	<?php 
-		if (is_ssl() == TRUE) {
+		if (substr($locale, 0, 2) != 'zh') { //info: conditional ssl loading (performance issues in China)
 			$protocol_handler = 'https';
 			$mapquest_ssl = '-s';
 		} else {

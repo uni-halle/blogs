@@ -26,7 +26,7 @@
 */
 
 
-$patgenLanguage = 'Hungarian';
+$patgenLanguage = __( 'Hungarian', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -13499,7 +13499,4 @@ $patgen = array(
 'zzst'=>'00300'
 )
 );
-	
-	
 
-?>

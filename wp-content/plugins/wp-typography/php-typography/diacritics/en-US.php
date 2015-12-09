@@ -10,9 +10,12 @@
  *	
  *	In the form of $diacriticWords = array( key => value );
  *	where "key" is the needle and "value" is the replacement
-**/
+ *
+ *  @package wpTypography
+ *  @license http://www.gnu.org/licenses/gpl-2.0.html
+ */
 
-$diacriticLanguage = 'English (United States)';
+$diacriticLanguage = __( 'English (United States)', 'wp-typography' );
 
 $diacriticWords = array(
 	"a bas"=>"à bas",
@@ -423,3 +426,4 @@ $diacriticWords = array(
 	"Ubermensch"=>"Übermensch",
 	"Zaire"=>"Zaïre",
 );
+

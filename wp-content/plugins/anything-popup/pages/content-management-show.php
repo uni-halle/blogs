@@ -1,4 +1,5 @@
 <?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
+<?php if ( ! empty( $_POST ) && ! wp_verify_nonce( $_REQUEST['wp_create_nonce'], 'content-management-show-nonce' ) )  { die('<p>Security check failed.</p>'); } ?>
 <?php
 // Form submitted, check the data
 if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
@@ -121,6 +122,7 @@ if (isset($_POST['frm_pop_display']) && $_POST['frm_pop_display'] == 'yes')
         </table>
 		<?php wp_nonce_field('pop_form_show'); ?>
 		<input type="hidden" name="frm_pop_display" value="yes"/>
+		<input type="hidden" name="wp_create_nonce" id="wp_create_nonce" value="<?php echo wp_create_nonce( 'content-management-show-nonce' ); ?>"/>
       </form>	
 	  <div class="tablenav">
 	  <h2>

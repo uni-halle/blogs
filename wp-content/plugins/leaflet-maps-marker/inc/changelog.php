@@ -41,6 +41,69 @@ hr{color:#E6DB55}
 </style></head><body>
 <?php
 /*****************************************************************************************/
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.3') . '</strong> - ' . $text_b . ' 06.12.2015 (<a href="https://www.mapsmarker.com/v3.10.3" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td>' . $changed . '</td><td>
+always load Google Maps API and tiles for OpenStreetMap, MapQuest as well as OGD Vienna via https (except if Chinese locale is set as performance issues with https in China have been reported)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+restored old headings order (h2+h3+h4) on Settings page as admin notices were not shown correctly on top of page
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
+</td></tr>	
+</table>'.PHP_EOL;
+
+if ( (version_compare($lmm_version_old,"3.10.2","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
+echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.2') . '</strong> - ' . $text_b . ' 29.11.2015 (<a href="https://www.mapsmarker.com/v3.10.2" target="_blank">' . $text_c . '</a>):</p>
+<table>
+<tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
+<a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '">significantly decreased loadtimes for OpenStreetMap-based maps by supporting conditional & deferred Google Maps API loading (~370kb(!) less uncompressed data transmission)</a>
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+enqueue Google Maps API only if not loaded yet (which caused layer maps to break due to recent API changes)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+Tools page/move markers-bulk action: multi-layer-maps are now excluded as markers cannot be assigned directly to multi-layer-maps (thx Andres!)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+version number in plugin backend header now always shows the currently used version and not the latest one available (thx Duncan!)
+</td></tr>
+<tr><td>' . $changed . '</td><td>
+sort "list of markers" for multi-layer-map selection on layer edit-pages by ID ascending
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+responsive tables were not shown correctly on some devices (column with relative instead of absolute widths)
+</td></tr>
+<tr><td>' . $fixed . '</td><td>
+fix for "WPBakery Visual Composer" plugin v4.7+ introduced with v2.6 did not work correctly on all sites
+</td></tr>
+<tr><td colspan="2">
+<p><strong>' . $text_d . '</a></p></strong>
+<p>' . sprintf($text_e, 'https://translate.mapsmarker.com/projects/lmm') . '</p>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated German translation
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Russian translation thanks to Ekaterina Golubina (supported by Teplitsa of Social Technologies - <a href="http://te-st.ru" target="_blank">http://te-st.ru</a>) and Vyacheslav Strenadko, <a href="http://slavblog.ru" target="_blank">http://slavblog.ru</a>
+</td></tr>
+<tr><td>' . $transl . '</td><td>
+updated Swedish translation thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://bilddigital.se" target="_blank">http://bilddigital.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a>
+</td></tr>
+</table>'.PHP_EOL;
+}
+
+if ( (version_compare($lmm_version_old,"3.10.1","<")) && ( $lmm_version_old > '0' ) ) {
+echo '<p><hr noshade size="1"/></p>';
 echo '<p style="margin:0.5em 0 0 0;"><strong>' . sprintf($text_a, '3.10.1') . '</strong> - ' . $text_b . ' 21.11.2015 (<a href="https://www.mapsmarker.com/v3.10.1" target="_blank">' . $text_c . '</a>):</p>
 <table>
 <tr><td><a href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade"  target="_top" title="' . $text_h . '"><img src="' . LEAFLET_PLUGIN_URL .'inc/img/icon-changelog-pro.png"></a></td><td>
@@ -150,6 +213,7 @@ updated Spanish translation thanks to David Ramí­rez, <a href="http://www.hipe
 updated Swedish translation thanks to Olof Odier <a href="http://www.historiskastadsvandringar.se" target="_blank">http://www.historiskastadsvandringar.se</a>, Tedy Warsitha <a href="http://codeorig.in/" target="_blank">http://codeorig.in/</a>, Dan Paulsson <a href="http://www.paulsson.eu" target="_blank">http://www.paulsson.eu</a>, Elger Lindgren, <a href="http://bilddigital.se" target="_blank">http://bilddigital.se</a> and Anton Andreasson, <a href="http://andreasson.org/" target="_blank">http://andreasson.org/</a>
 </td></tr>
 </table>'.PHP_EOL;
+}
 
 if ( (version_compare($lmm_version_old,"3.10","<")) && ( $lmm_version_old > '0' ) ) {
 echo '<p><hr noshade size="1"/></p>';

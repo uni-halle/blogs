@@ -182,10 +182,13 @@ if ( ($action == 'add') || ($action == 'edit') || ($action == 'duplicate') ) {
 	<table cellpadding="5" cellspacing="0" class="widefat fixed" <?php echo $menu_visibility; ?>>
 	  <tr>
 		<td><div class="logo-rtl"><a href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_pro_upgrade" title="<?php _e('Upgrade to pro version for even more features - click here to find out how you can start a free 30-day-trial easily','lmm'); ?>"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/logo-mapsmarker.png" width="65" height="65" alt="Leaflet Maps Marker Plugin Logo by Julia Loew, www.weiderand.net" /></a></div>
-	<?php $free_version = get_option("leafletmapsmarker_version"); ?>
-	<div style="font-size:1.5em;margin-bottom:5px;"><span style="font-weight:bold;">Maps Marker<sup style="font-size:75%;">&reg;</sup> <a href="https://www.mapsmarker.com/v<?php echo $free_version; ?>" target="_blank" title="<?php esc_attr_e('view blogpost for current version','lmm');?>">v<?php echo $free_version; ?></a> - <?php _e('Lite Edition','lmm'); ?></span></div>
+	<?php
+		require_once(ABSPATH . WPINC . DIRECTORY_SEPARATOR . 'plugin.php');
+		$free_version = get_plugin_data(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'leaflet-maps-marker' . DIRECTORY_SEPARATOR . 'leaflet-maps-marker.php');
+	?>
+	<div style="font-size:1.5em;margin-bottom:5px;"><span style="font-weight:bold;">Maps Marker<sup style="font-size:75%;">&reg;</sup> <a href="https://www.mapsmarker.com/v<?php echo $free_version['Version']; ?>" target="_blank" title="<?php esc_attr_e('view blogpost for current version','lmm');?>">v<?php echo $free_version['Version']; ?></a> - <?php _e('Lite Edition','lmm'); ?></span></div>
 	  <p style="margin:1em 0 0 0;line-height:32px;">
-	  <a class="<?php echo $buttonclass1; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_markers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /><?php _e("List all markers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a class="<?php echo $buttonclass1; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_markers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /> <?php _e("List all markers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	  <a class="<?php echo $buttonclass2; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_marker"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-add.png" width="10" height="10" /> <?php _e("Add new marker", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 	  <a class="<?php echo $buttonclass2b; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_import_export"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-import-export.png" width="10" height="10" /> <?php _e("Import/Export", "lmm"); ?></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 	  <a class="<?php echo $buttonclass3; ?>" href="<?php echo LEAFLET_WP_ADMIN_URL ?>admin.php?page=leafletmapsmarker_layers"><img src="<?php echo LEAFLET_PLUGIN_URL ?>inc/img/icon-menu-list.png" width="10" height="10" /> <?php _e("List all layers", "lmm") ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

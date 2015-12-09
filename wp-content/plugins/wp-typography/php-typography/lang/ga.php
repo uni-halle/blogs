@@ -114,7 +114,7 @@
 	
 */
 
-$patgenLanguage = 'Irish';
+$patgenLanguage = __( 'Irish', 'wp-typography' );
 
 $patgenExceptions = array(
 'bhrachtaí'=>'bhrachtaí',
@@ -6209,4 +6209,3 @@ $patgen = array(
 )
 );
 
-?>

@@ -63,6 +63,16 @@ if ( $action == NULL ) {
 				</div>
 				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
 
+				<span class="pro-feature-header">' . __('significantly decreased loadtimes for OpenStreetMap-based maps','lmm') . '</span>
+				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
+				<div style="float:left;margin:0 10px 0 0;"><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/pro-feature-speed.png"></div>
+				' . __('Maps Marker Pro supports conditional and deferred Google Maps API loading. This saves visitor of your site up to ~370kb uncompressed data transmission for each page view with an embedded OpenStreetMap based map! If you are using Google Maps as basemap, the needed scripts are loaded deferred and on demand only.','lmm') . '
+				<p>
+				<a class="pro-upgrade-external-links" href="https://www.mapsmarker.com/v2.6.1p" target="_blank">' . __('Click here to get more information about this pro feature on mapsmarker.com','lmm') . '</a>
+				</p>
+				</div>
+				<p><a href="#top" class="upgrade-top-link">' . __('back to top to start free 30-day-trial','lmm') . '</a></p>
+
 				<span class="pro-feature-header">' . __('Marker clustering','lmm') . '</span>
 				<div class="pro-feature-content" style="background:' . $bgcolor . ';">
 				<p style="margin:0 0 10px 0;">

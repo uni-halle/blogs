@@ -200,18 +200,34 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
                 $this->getOptionName($object, $id), $this->getId()
         );
     }
+    
+    /**
+     * Read user's option
+     * 
+     * @param string $object
+     * @param string $id
+     *
+     * @return mixed
+     * 
+     * @access public
+     */
+    public function deleteOption($object, $id = 0) {
+        return delete_user_option(
+                $this->getId(), $this->getOptionName($object, $id)
+        );
+    }
 
     /**
      * @inheritdoc
      */
-    public function getParentSubject() {
+    public function getParent() {
         //try to get this option from the User's Role
         $roles = $this->getSubject()->roles;
         //first user role is counted only. AAM does not support multi-roles
         $subject_role = array_shift($roles);
 
+        //in case of multisite & current user does not belong to the site
         if ($subject_role) {
-            //in case of multisite & current user does not belong to the site
             $role = new AAM_Core_Subject_Role($subject_role);
         } else {
             $role = null;
@@ -232,6 +248,13 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
      */
     public function getOptionName($object, $id) {
         return "aam_{$object}" . ($id ? "_{$id}" : '');
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public function hasParent() {
+        return true;
     }
 
     /**

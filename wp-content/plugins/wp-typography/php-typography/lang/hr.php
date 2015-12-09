@@ -85,7 +85,7 @@
 	
 */
 
-$patgenLanguage = 'Croatian';
+$patgenLanguage = __( 'Croatian', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -1575,4 +1575,3 @@ $patgen = array(
 )
 );
 
-?>

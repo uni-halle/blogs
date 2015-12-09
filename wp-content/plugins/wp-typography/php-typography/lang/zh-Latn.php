@@ -102,7 +102,7 @@
 	
 */
 
-$patgenLanguage = 'Chinese pinyin (Latin)';
+$patgenLanguage = __( 'Chinese pinyin (Latin)', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -306,4 +306,3 @@ $patgen = array(
 )
 );
 
-?>

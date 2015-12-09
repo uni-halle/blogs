@@ -23,7 +23,7 @@ abstract class AAM_Core_Object {
      * @access private
      */
     private $_subject = null;
-    
+
     /**
      * Object options
      *
@@ -32,6 +32,15 @@ abstract class AAM_Core_Object {
      * @access private
      */
     private $_option = array();
+
+    /**
+     * Inheritance indicator
+     * 
+     * @var null|string
+     * 
+     * @access private 
+     */
+    private $_inherited = null;
 
     /**
      * Constructor
@@ -95,5 +104,47 @@ abstract class AAM_Core_Object {
     public function getOption() {
         return $this->_option;
     }
+
+    /**
+     * Set Inherited flag
+     * 
+     * @param string $inherited
+     * 
+     * @return void
+     */
+    public function setInherited($inherited) {
+        $this->_inherited = $inherited;
+    }
+
+    /**
+     * Get Inherited flag
+     * 
+     * @return null|string
+     * 
+     * @access public
+     */
+    public function getInherited() {
+        return $this->_inherited;
+    }
     
+    /**
+     * Check if options were overwritten
+     * 
+     * In order to consider options overwritten there are three conditions to be met:
+     * - Current subject has to have the parent subject;
+     * - Current object should have no empty option set;
+     * - The inherited flad should be null;
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public function isOverwritten () {
+        $parent  = $this->getSubject()->hasParent();
+        $option  = $this->getOption();
+        $inherit = $this->getInherited();
+        
+        return ($parent && !empty($option) && is_null($inherit));
+    }
+
 }

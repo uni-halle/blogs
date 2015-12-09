@@ -100,7 +100,7 @@
 	
 */
 
-$patgenLanguage = 'Portuguese';
+$patgenLanguage = __( 'Portuguese', 'wp-typography' );
 
 $patgenExceptions = array(
 'hardware'=>'hard-ware',
@@ -423,4 +423,3 @@ $patgen = array(
 )
 );
 
-?>

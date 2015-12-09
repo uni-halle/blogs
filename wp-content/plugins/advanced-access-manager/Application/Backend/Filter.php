@@ -121,15 +121,12 @@ class AAM_Backend_Filter {
                 unset($actions['inline hide-if-no-js']);
             }
         }
-        //filter trash menu
-        if ($object->has('backend.trash')) {
-            if (isset($actions['trash'])) {
-                unset($actions['trash']);
-            }
-        }
 
         //filter delete menu
         if ($object->has('backend.delete')) {
+            if (isset($actions['trash'])) {
+                unset($actions['trash']);
+            }
             if (isset($actions['delete'])) {
                 unset($actions['delete']);
             }
@@ -235,11 +232,15 @@ class AAM_Backend_Filter {
      */
     public function thePosts($posts) {
         $filtered = array();
-
-        foreach ($posts as $post) {
-            $object = AAM::getUser()->getObject('post', $post->ID);
-            if (!$object->has('backend.list')) {
-                $filtered[] = $post;
+        
+        if (AAM::isAAM()) { //skip post filtering if this is AAM page
+            $filtered = $posts;
+        } else {
+            foreach ($posts as $post) {
+                $object = AAM::getUser()->getObject('post', $post->ID);
+                if (!$object->has('backend.list')) {
+                    $filtered[] = $post;
+                }
             }
         }
 

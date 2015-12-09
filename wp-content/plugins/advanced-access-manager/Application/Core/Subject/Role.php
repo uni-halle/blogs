@@ -28,7 +28,7 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
      * @access protected
      */
     protected function retrieveSubject() {
-        $roles = new WP_Roles;
+        $roles = AAM_Core_API::getRoles();
         $role = $roles->get_role($this->getId());
 
         if (!is_null($role) && isset($role->capabilities)) {
@@ -49,14 +49,14 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
      */
     public function delete() {
         $status = false;
-        $role = new WP_Roles;
+        $roles = AAM_Core_API::getRoles();
 
         if ($this->getId() !== 'administrator') {
             $count = count_users();
             $stats = $count['avail_roles'];
 
             if (empty($stats[$this->getId()])) {
-                $role->remove_role($this->getId());
+                $roles->remove_role($this->getId());
                 $status = true;
             }
         }
@@ -65,15 +65,19 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
     }
 
     /**
-     *
-     * @param type $name
+     * Update role name
+     * 
+     * @param string $name
+     * 
      * @return boolean
+     * 
+     * @access public
      */
     public function update($name) {
-        $role = new WP_Roles;
+        $roles = AAM_Core_API::getRoles();
         if ($name) {
-            $role->roles[$this->getId()]['name'] = $name;
-            $status = AAM_Core_API::updateOption($role->role_key, $role->roles);
+            $roles->roles[$this->getId()]['name'] = $name;
+            $status = AAM_Core_API::updateOption($roles->role_key, $roles->roles);
         } else {
             $status = false;
         }
@@ -114,8 +118,11 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
     }
 
     /**
-     *
-     * @return type
+     * Get role's capabilities
+     * 
+     * @return array
+     * 
+     * @access public
      */
     public function getCapabilities() {
         return $this->getSubject()->capabilities;
@@ -150,23 +157,11 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
     /**
      *
      * @param type $object
-     * @param type $object_id
-     * @return type
-     */
-    public function deleteOption($object, $object_id = 0) {
-        return AAM_Core_API::deleteOption(
-                        $this->getOptionName($object, $object_id)
-        );
-    }
-
-    /**
-     *
-     * @param type $object
-     * @param type $object_id
+     * @param type $id
      * @return string
      */
-    public function getOptionName($object, $object_id) {
-        $name = "aam_{$object}" . ($object_id ? "_{$object_id}_" : '_');
+    public function getOptionName($object, $id) {
+        $name = "aam_{$object}" . ($id ? "_{$id}_" : '_');
         $name .= self::UID . '_' . $this->getId();
 
         return $name;
@@ -183,7 +178,7 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
     /**
      * @inheritdoc
      */
-    public function getParentSubject() {
+    public function getParent() {
         return null;
     }
 

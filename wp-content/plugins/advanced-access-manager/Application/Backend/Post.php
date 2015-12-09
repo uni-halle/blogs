@@ -66,12 +66,10 @@ class AAM_Backend_Post {
             $breadcrub = $this->renderPostBreadcrumb();
         }
 
-        return json_encode(
-            array(
+        return json_encode(array(
                 'status' => 'success',
                 'breadcrumb' => ($breadcrub ? $breadcrub : __('Base Level', AAM_KEY))
-            )
-        );
+        ));
     }
 
     /**
@@ -83,9 +81,8 @@ class AAM_Backend_Post {
      */
     protected function renderTermBreadcrumb() {
         list($term, $taxonomy) = explode('|', AAM_Core_Request::post('id'));
-        $ancestors = array_reverse(
-                get_ancestors($term, $taxonomy, 'taxonomy')
-        );
+        $ancestors = array_reverse(get_ancestors($term, $taxonomy, 'taxonomy'));
+        
         $breadcrumb = array();
         foreach ($ancestors as $id) {
             $breadcrumb[] = get_term($id, $taxonomy)->name;
@@ -239,16 +236,21 @@ class AAM_Backend_Post {
 
         $object = AAM_Backend_View::getSubject()->getObject($type, $id);
 
-        //prepare the response object - for base version only Post object
-        if ($object instanceof AAM_Core_Object_Post) {
-            $response = $object->getOption();
+        //prepare the response object
+        if ($object instanceof AAM_Core_Object) {
+            $access   = $object->getOption();
+            $metadata = array(
+                'inherited'   => $object->getInherited(),
+                'overwritten' => $object->isOverwritten()
+            );
         } else {
-            $response = array();
+            $access = $metadata = array();
         }
 
-        return json_encode(
-                apply_filters('aam-get-post-access-filter', $response, $object)
-        );
+        return json_encode(array(
+            'access' => $access,
+            'meta'   => $metadata
+        ));
     }
     
     /**
@@ -267,6 +269,9 @@ class AAM_Backend_Post {
             $value = filter_var(
                     AAM_Core_Request::post('value'), FILTER_VALIDATE_BOOLEAN
             );
+            
+            //clear cache
+            do_action('aam-clear-cache-action', AAM_Backend_View::getSubject());
 
             $result = AAM_Backend_View::getSubject()->save(
                     $param, $value, $object, $objectId
@@ -280,6 +285,31 @@ class AAM_Backend_Post {
                     'status' => ($result ? 'success' : 'failure'),
                     'error' => (empty($error) ? '' : $error)
         ));
+    }
+    
+    /**
+     * Reset the object settings
+     * 
+     * @return string
+     * 
+     * @access public
+     */
+    public function reset() {
+        $type = AAM_Core_Request::post('type');
+        $id = AAM_Core_Request::post('id', 0);
+
+        $object = AAM_Backend_View::getSubject()->getObject($type, $id);
+        if ($object instanceof AAM_Core_Object) {
+            $result = $object->reset();
+            //clear cache
+            do_action('aam-clear-cache-action', AAM_Backend_View::getSubject());
+        } else {
+            $result = false;
+        }
+        
+        return json_encode(
+                array('status' => ($result ? 'success' : 'failure'))
+        );
     }
 
     /**

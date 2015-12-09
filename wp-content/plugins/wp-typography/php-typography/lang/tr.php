@@ -39,7 +39,7 @@
 	
 */
 
-$patgenLanguage = 'Turkish';
+$patgenLanguage = __( 'Turkish', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -656,4 +656,4 @@ $patgen = array(
 'mtrak'=>'014000'
 )
 );
-?>
+

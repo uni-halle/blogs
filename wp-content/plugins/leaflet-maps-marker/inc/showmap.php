@@ -539,7 +539,7 @@ if (basename($_SERVER['SCRIPT_FILENAME']) == 'showmap.php') { die ("Please do no
 	$lmmjs_out .= $mapname_js.' = new L.Map("'.$mapname.'", { dragging: ' . $lmm_options['misc_map_dragging'] . ', touchZoom: ' . $lmm_options['misc_map_touchzoom'] . ', scrollWheelZoom: ' . $lmm_options['misc_map_scrollwheelzoom'] . ', doubleClickZoom: ' . $lmm_options['misc_map_doubleclickzoom'] . ', boxzoom: ' . $lmm_options['map_interaction_options_boxzoom'] . ', trackResize: ' . $lmm_options['misc_map_trackresize'] . ', worldCopyJump: ' . $lmm_options['map_interaction_options_worldcopyjump'] . ', closePopupOnClick: ' . $lmm_options['misc_map_closepopuponclick'] . ', keyboard: ' . $lmm_options['map_keyboard_navigation_options_keyboard'] . ', keyboardPanOffset: ' . intval($lmm_options['map_keyboard_navigation_options_keyboardpanoffset']) . ', keyboardZoomOffset: ' . intval($lmm_options['map_keyboard_navigation_options_keyboardzoomoffset']) . ', inertia: ' . $lmm_options['map_panning_inertia_options_inertia'] . ', inertiaDeceleration: ' . intval($lmm_options['map_panning_inertia_options_inertiadeceleration']) . ', inertiaMaxSpeed: ' . intval($lmm_options['map_panning_inertia_options_inertiamaxspeed']) . ', zoomControl: ' . $lmm_options['misc_map_zoomcontrol'] . ', crs: ' . $lmm_options['misc_projections'] . ' });'.PHP_EOL;
 	$lmmjs_out .= $mapname_js.'.attributionControl.setPrefix("' . $attrib_prefix . '");'.PHP_EOL;
 	//info: define basemaps
-	if (is_ssl() == TRUE) {
+	if (substr($locale, 0, 2) != 'zh') { //info: conditional ssl loading (performance issues in China)
 		$protocol_handler = 'https';
 		$mapquest_ssl = '-s';
 	} else {
@@ -960,7 +960,7 @@ if (typeof jQuery.mobile != 'undefined') {
 			if (typeof jQuery != 'undefined') {
 				jQuery(document).ready(function($) {
 					".$mapname_js.".invalidateSize();
-					jQuery('.vc_tta').on('show.vc.tab show.vc.accordion', function(event, ui) { 
+					jQuery('.vc_tta').on('show.vc.tab, show.vc.accordion', function(event, ui) { 
 						".$mapname_js.".invalidateSize(); 
 					}); 
 				});

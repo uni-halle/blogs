@@ -178,7 +178,7 @@ class Class_leaflet_options {
 		if ( isset( $_GET['settings-updated'] ) )
 			echo '<div style="margin:15px 0 0 0;" class="updated"><p>' . __( 'Plugin options updated.','lmm' ) . '</p></div>';
 		
-		echo '<h1 style="margin:0.83em 0 0 0;float:left;">'.__('Settings','lmm').'</h1><div class="wrap lmmsettings" style="clear:both;">';
+		echo '<h2 style="margin:0.83em 0 0 0;float:left;">'.__('Settings','lmm').'</h2><div class="wrap lmmsettings" style="clear:both;">';
 		echo '<form action="options.php" method="post">';
 		settings_fields( 'leafletmapsmarker_options' );
 		echo '<div class="lmm-ui-tabs tabs-top tabbable tabs-top">
@@ -222,7 +222,7 @@ class Class_leaflet_options {
 	                $li_class = 0 === $sub_panel_index ? ' in active' : '';
 	                $sub_panel_index++;
                     echo '<div class="section tab-pane lmm-fade' . $li_class . '" id="' . $section. '">';
-                    echo "<h2 class='h2-lmm-settings'>".$this->sections[$section]."</h2>";
+                    echo "<h3 class='h3-lmm-settings'>".$this->sections[$section]."</h3>";
                     if (function_exists('display_'.$pane_slug.'_section')) { //info: Phalanger fix
                     	@call_user_func(array(&$this, 'display_'.$pane_slug.'_section'), array());
                     }
@@ -323,7 +323,7 @@ class Class_leaflet_options {
 		switch ( $type ) {
 
 			case 'heading':
-				echo '</td></tr><tr valign="top"><td colspan="2" rowspan="2"><h3 class="h3-lmm-settings">' . $desc . '</h3>';
+				echo '</td></tr><tr valign="top"><td colspan="2" rowspan="2"><h4 class="h4-lmm-settings">' . $desc . '</h4>';
 				break;
 
 			case 'helptext':
@@ -4760,8 +4760,8 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'overlays',
 			'section' => 'overlays-section4',
 			'title'   => __( 'Tiles URL', 'lmm' ),
-			'desc'    => __("For example","lmm"). ": http://maps.wien.gv.at/wmts/beschriftung/normal/google3857/{z}/{y}/{x}.png",
-			'std'     => 'http://{s}.wien.gv.at/wmts/beschriftung/normal/google3857/{z}/{y}/{x}.png',
+			'desc'    => __("For example","lmm"). ": https://maps.wien.gv.at/wmts/beschriftung/normal/google3857/{z}/{y}/{x}.png",
+			'std'     => 'https://{s}.wien.gv.at/wmts/beschriftung/normal/google3857/{z}/{y}/{x}.png',
 			'type'    => 'text'
 		);
 		$this->_settings['overlays_custom3_attribution'] = array(
@@ -4875,8 +4875,8 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'overlays',
 			'section' => 'overlays-section5',
 			'title'   => __( 'Tiles URL', 'lmm' ),
-			'desc'    => __("For example","lmm"). ": http://maps.wien.gv.at/wmts/beschriftung/normal/google3857/{z}/{y}/{x}.png",
-			'std'     => 'http://{s}.wien.gv.at/wmts/beschriftung/normal/google3857/{z}/{y}/{x}.png',
+			'desc'    => __("For example","lmm"). ": https://maps.wien.gv.at/wmts/beschriftung/normal/google3857/{z}/{y}/{x}.png",
+			'std'     => 'https://{s}.wien.gv.at/wmts/beschriftung/normal/google3857/{z}/{y}/{x}.png',
 			'type'    => 'text'
 		);
 		$this->_settings['overlays_custom4_attribution'] = array(
@@ -5219,7 +5219,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections2',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -5430,7 +5430,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections3',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -5640,7 +5640,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections4',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -5850,7 +5850,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections5',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6062,7 +6062,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections6',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6273,7 +6273,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections7',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6483,7 +6483,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections8',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6693,7 +6693,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections9',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -6904,7 +6904,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections10',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -7115,7 +7115,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'wms',
 			'section' => 'wms-sections11',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('KML settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('KML settings','lmm') . '</h4>',
 			'desc'    => __('If the WMS server supports KML output of the WMS layer, the settings below will be used when a marker or layer map with this active WMS layer is exported as KML.','lmm'),
 			'type'    => 'helptext'
 		);
@@ -7229,6 +7229,19 @@ $this->_settings['clustering_helptext2'] = array(
 			'desc'    => __( 'Please enter your Google Maps API key here', 'lmm' ),
 			'std'     => '',
 			'type'    => 'text'
+		);
+		$this->_settings['google_maps_api_deferred_loading'] = array(
+			'version' => 'p2.6.2',
+			'pane'    => 'google',
+			'section' => 'google-section1',
+			'title'   => __('Deferred loading','lmm') . $pro_button_link,
+			'desc'    => __('If enabled, Google Maps API scripts will only be loaded on demand as this significantly decreases the loadtime for all OpenStreetMap based maps. Disabling this feature is only recommended if you are experiencing compatibility issues with other plugins or themes.','lmm'),
+			'type'    => 'radio-pro',
+			'std'     => 'disabled',
+			'choices' => array(
+				'enabled' => __('enabled','lmm'),
+				'disabled' => __('disabled','lmm')
+			)
 		);
 		/*
 		* Google language localization
@@ -7833,7 +7846,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'type'    => 'radio',
 			'std'     => 'googlemaps',
 			'choices' => array(
-				'googlemaps' => __('Google Maps (worldwide)','lmm') . ' - <a href="http://maps.google.com/maps?saddr=Vienna&daddr=Linz&hl=de&sll=37.0625,-95.677068&sspn=59.986788,135.263672&geocode=FS6Z3wIdO9j5ACmfyjZRngdtRzFGW6JRiuXC_Q%3BFfwa4QIdBvzZAClNhZn6lZVzRzHEdXlXLClTfA&vpsrc=0&mra=ls&t=m&z=9&layer=t" style="text-decoration:none;" target="_blank">Demo</a>',
+				'googlemaps' => __('Google Maps (worldwide)','lmm') . ' - <a href="https://maps.google.com/maps?saddr=Vienna&daddr=Linz&hl=de&sll=37.0625,-95.677068&sspn=59.986788,135.263672&geocode=FS6Z3wIdO9j5ACmfyjZRngdtRzFGW6JRiuXC_Q%3BFfwa4QIdBvzZAClNhZn6lZVzRzHEdXlXLClTfA&vpsrc=0&mra=ls&t=m&z=9&layer=t" style="text-decoration:none;" target="_blank">Demo</a>',
 				'yours' => __('yournavigation.org (based on OpenStreetMap, worldwide)','lmm') . ' - <a href="http://www.yournavigation.org/?flat=52.215636&flon=6.963946&tlat=52.2573&tlon=6.1799&v=motorcar&fast=1&layer=mapnik" style="text-decoration:none;" target="_blank">Demo</a>',
 				'ors' => __('openrouteservice.org (based on OpenStreetMap, Europe only)','lmm') . ' - <a href="http://openrouteservice.org/?pos=7.0892567,50.7265543&wp=7.0892567,50.7265543&zoom=15&routeWeigh=Fastest&routeOpt=Bicycle&layer=B000FTTTTTTTTTT" style="text-decoration:none;" target="_blank">Demo</a>',
 				'bingmaps' => __('Bing Maps (worldwide)','lmm') . ' - <a href="http://www.bing.com/maps/default.aspx?v=2&rtp=pos.48.208614_16.370541___e_~pos.48.207321_16.330513" style="text-decoration:none;" target="_blank">Demo</a>'
@@ -9201,7 +9214,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section8',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('Visualead settings','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('Visualead settings','lmm') . '</h4>',
 			'desc'    =>  '<img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-visualead.png" width="200" height="200" /><a style="background:#f99755;display:block;padding:3px;text-decoration:none;color:#2702c6;width:635px;margin:10px 0;" href="' . LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_pro_upgrade">' . __('This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily','lmm') . '</a>',
 			'type'    => 'helptext'
 		);
@@ -9339,7 +9352,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section8',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('Google QR settings','lmm') . '</h3><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-google-qr.png" width="122" height="126" />',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('Google QR settings','lmm') . '</h3><img src="' . LEAFLET_PLUGIN_URL . 'inc/img/help-google-qr.png" width="122" height="126" />',
 			'desc'    => '',
 			'type'    => 'helptext'
 		);
@@ -9404,7 +9417,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section9',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('Authentication','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('Authentication','lmm') . '</h4>',
 			'desc'    =>  sprintf(__('You will find a <a href="%1$s">API URL generator</a> and <a href="%2$s">API URL tester</a> in the tools section. Please see the API docs for more information on authentication.','lmm'), LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_tools#api-url-generator', LEAFLET_WP_ADMIN_URL . 'admin.php?page=leafletmapsmarker_tools#api-url-tester'),
 			'type'    => 'helptext'
 		);
@@ -9431,7 +9444,7 @@ $this->_settings['clustering_helptext2'] = array(
 			'pane'    => 'misc',
 			'section' => 'misc-section9',
 			'std'     => '',
-			'title'   => '<h3 class="h3-lmm-settings">' . __('Security options','lmm') . '</h3>',
+			'title'   => '<h4 class="h4-lmm-settings">' . __('Security options','lmm') . '</h4>',
 			'desc'    =>  '',
 			'type'    => 'helptext'
 		);
@@ -10259,7 +10272,7 @@ $this->_settings['clustering_helptext2'] = array(
 		}
 		/* template for plugin updates
 		//info:  set defaults for options introduced in v3.11
-		if (version_compare(get_option('leafletmapsmarker_version'),'3.10.1','='))
+		if (version_compare(get_option('leafletmapsmarker_version'),'3.10.3','='))
 		{
 			$new_options_defaults = array();
 			foreach ( $this->settings as $id => $setting )

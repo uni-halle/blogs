@@ -3,7 +3,7 @@ Contributors: vasyltech
 Tags: access, access manager, role, user, capability, admin, page, post, widget
 Requires at least: 3.8
 Tested up to: 4.3.1
-Stable tag: 3.0.2
+Stable tag: 3.0.5
 
 One of the best tools in WordPress repository to manage access to your posts, 
 pages, categories and backend area for users, roles and visitors.
@@ -44,6 +44,33 @@ out more about the Advanced Access Manager.
 5. Posts & Pages access control form
 
 == Changelog ==
+
+= 3.0.5 =
+* Wrapped all *.phtml files into condition to avoid crash on direct file access
+* Fixed bug with Visitor subject API
+* Added internal capability id to the list of capabilities
+* Fixed bug with strict standard notice
+* Fixed bug when extension after update still indicates that update is needed
+* Fixed bug when extensions were not able to load js & css on windows server
+* Updated AAM Utilities extension
+* Updated AAM Multisite extension
+
+= 3.0.4 =
+* Improved the Metaboxes & Widget filtering on user level
+* Improved visual feedback for already installed extensions
+* Fixed the bug when posts and categories were filtered on the AAM page
+* Significantly improved the posts & pages inheritance mechanism
+* Updated and fixed bugs in AAM Plus Package and AAM Utilities
+* Improved AAM navigation during page reload
+* Removed Trash post access option. Now Delete option is the same
+* Added UI feedback on current posts, menu and metaboxes inheritance status
+* Updated AAM Multisite extension
+
+= 3.0.3 =
+* Fixed bug with backend menu saving
+* Fixed bug with metaboxes & widgets saving
+* Fixed bug with WP_Filesystem when non-standard filesystem is used
+* Optimized Posts & Pages breadcrumb load
 
 = 3.0.2 =
 * Fixed a bug with posts access within categories

@@ -443,6 +443,42 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     border: 1px solid #E5E5E5;
 }
 
+.aam-inherited {
+    padding: 5px 15px;
+    background-color: #337ab7;
+    color: #FFFFFF;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.aam-overwrite {
+    padding: 5px 15px;
+    background-color: #f0ad4e;
+    color: #FFFFFF;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.aam-overwrite a, .aam-inherited a{
+    color: #FFFFFF;
+}
+
+.aam-overwrite:after, .aam-inherited:after {
+    display: inline-block;
+    content: '';
+    clear: both;
+}
+
+.aam-overwrite span:first-child, .aam-inherited span:first-child {
+    float: left;
+}
+
+.aam-overwrite span:last-child, .aam-inherited span:last-child {
+    float: right;
+}
+
 .row.aam-bordered {
     margin-left: 0;
     margin-right: 0;
@@ -545,6 +581,22 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     padding: 10px;
 }
 
+.aam-extension-installed {
+    border: 1px solid transparent;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: #666666;
+    color: #FFFFFF;
+    width: 100%;
+}
+
 .aam-help-menu {
     float: right;
     font-size: 1.2em;
@@ -612,6 +664,13 @@ input[type="checkbox"]:focus, input[type="radio"]:focus {
     position: relative;
     font-size: 1.2em;
     margin-bottom: 20px;
+}
+
+.aam-info-modal, .aam-info-modal p, .aam-info-modal ul {
+    font-size: 1.1em;
+    -moz-hyphens: auto;
+    word-wrap: break-word;
+    text-align: justify;
 }
 
 .aam-notification {

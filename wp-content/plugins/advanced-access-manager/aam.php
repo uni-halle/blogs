@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: Manage User and Role Access to WordPress Backend and Frontend.
-  Version: 3.0.2
+  Version: 3.0.5
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: http://www.vasyltech.com
 
@@ -97,7 +97,10 @@ class AAM {
      * @access public
      */
     public static function isAAM() {
-        return (AAM_Core_Request::get('page') == 'aam');
+        $page   = AAM_Core_Request::get('page');
+        $action = AAM_Core_Request::post('action');
+        
+        return (is_admin() && (in_array('aam', array($page, $action))));
     }
 
     /**
@@ -130,7 +133,7 @@ class AAM {
         //grab the server extension list
         $response = AAM_Core_Server::check();
         if (!is_wp_error($response)) {
-            AAM_Core_API::updateOption('aam-extension-list', $response);
+            AAM_Core_API::updateOption('aam-extension-repository', $response);
         }
     }
 
@@ -142,7 +145,7 @@ class AAM {
      * @access public
      */
     public static function activate() {
-        global $wp_filesystem, $wp_version;
+        global $wp_version;
         
         //check PHP Version
         if (version_compare(PHP_VERSION, '5.2') == -1) {
@@ -152,13 +155,10 @@ class AAM {
         }
 
         //create an wp-content/aam folder if does not exist
-        WP_Filesystem(); //initialize the WordPress filesystem
-
-        $wp_content = $wp_filesystem->wp_content_dir();
-
-        //make sure that we have always content dir
-        if ($wp_filesystem->exists($wp_content . '/aam') === false) {
-            $wp_filesystem->mkdir($wp_content . '/aam');
+        $dirname = WP_CONTENT_DIR . '/aam';
+        
+        if (file_exists($dirname) === false) {
+            mkdir($dirname, fileperms( ABSPATH ) & 0777 | 0755);
         }
     }
 
@@ -172,17 +172,14 @@ class AAM {
      * @access public
      */
     public static function uninstall() {
-        global $wp_filesystem;
-        
         //trigger any uninstall hook that is registered by any extension
         do_action('aam-uninstall-action');
 
-        WP_Filesystem(); //initialize the WordPress filesystem
-
-        $wp_content = $wp_filesystem->wp_content_dir();
-
-        //remove the content directory
-        $wp_filesystem->rmdir($wp_content . '/aam', true);
+        //remove aam directory if exists
+        $dirname = WP_CONTENT_DIR . '/aam';
+        if (file_exists($dirname)) {
+            AAM_Core_API::removeDirectory($dirname);
+        }
     }
 
 }

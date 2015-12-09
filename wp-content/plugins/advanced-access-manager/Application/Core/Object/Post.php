@@ -63,23 +63,25 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
         $opname = $this->getOptionName();
         $chname = $opname . '|' . $this->getPost()->ID;
 
-        //cache extension in place first
+        //read cache first
         $option = apply_filters('aam-read-cache-filter', array(), $chname, $subject);
         
-        if ($option === false) { //if false, then the result is empty
+        if ($option === false) { //if false, then the cache is empty but exist
             $option = array();
         } else {
             if (empty($option)) { //no cache for this element
                 $option = get_post_meta($this->getPost()->ID, $opname, true);
             }
+            
+            //try to inherit from terms or default first - AAM Plus Package or any
+            //other extension that use this filter
+            $option = apply_filters('aam-post-access-filter', $option, $this);
 
             //try to inherit from parent
             if (empty($option)) {
                 $option = $subject->inheritFromParent('post', $this->getPost()->ID);
+                $this->setInherited(empty($option) ? null : 'role');
             }
-
-            //filter option
-            $option = apply_filters('aam-post-access-filter', $option, $this);
         }
         
         $this->setOption($option);
@@ -104,21 +106,22 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
     public function save($property, $checked) {
         $option = $this->getOption();
         
-        if ($checked) {
-            $option[$property] = $checked;
-        } elseif (isset($option[$property])) {
-            //this is important, because if you uncheck all options, AAM will try to
-            //inherit settings from the parent. This way there is no need to 
-            //implement "Reset Settings" feature
-            unset($option[$property]); //remove it
-        }
-        
-        //clear cache
-        do_action('aam-clear-cache-action', $this->getSubject());
+        $option[$property] = $checked;
         
         return update_post_meta(
                 $this->getPost()->ID, $this->getOptionName(), $option
         );
+    }
+    
+    /**
+     * Reset post settings
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public function reset() {
+        return delete_post_meta($this->getPost()->ID, $this->getOptionName());
     }
 
     /**
@@ -180,6 +183,24 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
      */
     public function getPost() {
         return $this->_post;
+    }
+    
+    /**
+     * Check if options were overwritten
+     * 
+     * In order to consider options overwritten there are three conditions to be met:
+     * - Current object should have no empty option set;
+     * - The inherited flad should be null;
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public function isOverwritten () {
+        $option  = $this->getOption();
+        $inherit = $this->getInherited();
+        
+        return (!empty($option) && is_null($inherit));
     }
 
 }

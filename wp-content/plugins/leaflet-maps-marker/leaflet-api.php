@@ -19,8 +19,10 @@ function lmm_accent_folding($address) {
  * originially based on allow_url_fopen-scripty by Abdullah Rubiyath
  */
 function lmm_getLatLng($address) {
+	global $locale;
+	$protocol_handler = (substr($locale, 0, 2) == 'zh') ? 'http' : 'https'; //info: conditional ssl loading for Google js (performance issues in China)
 	$address_to_geocode = lmm_accent_folding($address);
-	$url = 'http://maps.googleapis.com/maps/api/geocode/xml?address=' . urlencode($address_to_geocode) . '&sensor=false';
+	$url = $protocol_handler . '://maps.googleapis.com/maps/api/geocode/xml?address=' . urlencode($address_to_geocode);
 	$xml_raw = wp_remote_get( $url, array( 'sslverify' => false, 'timeout' => 10 ) );	
 	$xml = simplexml_load_string($xml_raw['body']);
 	$response = array();

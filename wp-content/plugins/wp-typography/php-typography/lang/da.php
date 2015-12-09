@@ -88,7 +88,7 @@ ORIGINAL FILE INFO
 
 */
 
-$patgenLanguage = 'Danish';
+$patgenLanguage = __( 'Danish', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -1247,4 +1247,3 @@ $patgen = array(
 )
 );
 
-?>

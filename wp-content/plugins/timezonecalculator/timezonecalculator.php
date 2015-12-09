@@ -5,7 +5,7 @@ Plugin Name: TimeZoneCalculator
 Plugin URI: http://www.bernhard-riedl.com/projects/
 Description: Calculates, displays and automatically updates times and dates in different timezones with respect to daylight saving.
 Author: Dr. Bernhard Riedl
-Version: 3.31
+Version: 3.32
 Author URI: http://www.bernhard-riedl.com/
 */
 
@@ -226,7 +226,7 @@ class TimeZoneCalculator {
 				'view_timezones_capability' => 'Capability to view timezones',
 				'view_other_users_timezones_capability' => 'Capability to view timezones-selection of other users',
 				'debug_mode' => 'Enable Debug-Mode',
-				'display_sponsored_link' => 'Support your free TimeZoneCalculator by adding a link to it\'s sponsor'
+				'display_sponsored_link' => 'Support your free TimeZoneCalculator by adding a link to Hipmunk, our sponsor'
 			)
 		),
 		'preview' => array(
@@ -1990,7 +1990,7 @@ class TimeZoneCalculator {
 	*/
 
 	function head_meta() {
-		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.31\"/>\n");
+		echo("<meta name=\"".$this->get_nicename()."\" content=\"3.32\"/>\n");
 	}
 
 	/*
@@ -2036,7 +2036,11 @@ class TimeZoneCalculator {
 
 	function show_user_profile($profileuser) {
 		if ($this->get_option('include_world_clock_user_profile')) {
-			echo('<h3>World Clock</h3>');
+			global $wp_version;
+
+			$h_sub_level=(version_compare($wp_version, '4.4', '>=')) ? '2' : '3';
+
+			echo('<h'.$h_sub_level.'>World Clock</h'.$h_sub_level.'>');
 			$this->display_world_clock('user_profile', $profileuser->ID);
 		}
 	}
@@ -2496,7 +2500,7 @@ class TimeZoneCalculator {
 			else
 				$ret_val.='<p>';
 
-			$ret_val.='Find hotels in these timezones using <a target="_blank" href="https://hipmunk.com/">Hipmunk hotels</a>.';
+			$ret_val.='Find hotels in these timezones using <a target="_blank" rel="nofollow" href="https://hipmunk.com/">Hipmunk hotels</a>.';
 
 			if (strpos($params['before_list'], '<ul')!==false)
  				$ret_val.='</li>';
@@ -4007,7 +4011,7 @@ class TimeZoneCalculator {
 
 			<li>The <em>Debug Mode</em> can be used to have a look on the actions undertaken by <?php echo($this->get_nicename()); ?> and to investigate unexpected behaviour.</li>
 
-			<li>Last but not least you can decide whether you want to support TimeZoneCalculator's development by showing a link to our sponsor <a target="_blank" href="https://hipmunk.com/">Hipmunk</a>.</li>
+			<li>Last but not least you can decide whether you want to support TimeZoneCalculator's development by showing a link to our sponsor <a target="_blank" rel="nofollow" href="https://hipmunk.com/">Hipmunk</a>.</li>
 		</ul>
 
 		<input type="hidden" <?php echo($this->get_setting_name_and_id('section')); ?> value="<?php echo($this->get_option('section')); ?>" />

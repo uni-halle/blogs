@@ -119,8 +119,8 @@ if (isset($_GET['layer'])) {
 	$lmm_out .= '<style type="text/css" id="leafletmapsmarker-image-css-override">.leaflet-popup-content img { ' . htmlspecialchars($lmm_options['defaults_marker_popups_image_css']) . ' }</style>'.PHP_EOL;
 	$lmm_out .= '<script type="text/javascript" src="' . site_url() . '/wp-includes/js/jquery/jquery.js"></script>'.PHP_EOL;
 	//info: Google API key
-	if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = $lmm_options['google_maps_api_key']; } else { $google_maps_api_key = ''; }
-	$lmm_out .= '<script type="text/javascript" src="https://www.google.com/jsapi?key=' .htmlspecialchars($google_maps_api_key) . '"></script>'.PHP_EOL;
+	if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = '?key=' . htmlspecialchars($lmm_options['google_maps_api_key']); } else { $google_maps_api_key = ''; }
+	$lmm_out .= '<script type="text/javascript" src="https://www.google.com/jsapi' .$google_maps_api_key . '"></script>'.PHP_EOL;
 	//info: Google language localization (JSON API)
 	if ($lmm_options['google_maps_language_localization'] == 'browser_setting') {
 		$google_language = '';
@@ -214,7 +214,7 @@ if (isset($_GET['layer'])) {
 	$lmm_out .= $mapname.' = new L.Map("'.$mapname.'", { dragging: ' . $lmm_options['misc_map_dragging'] . ', touchZoom: ' . $lmm_options['misc_map_touchzoom'] . ', scrollWheelZoom: ' . $lmm_options['misc_map_scrollwheelzoom'] . ', doubleClickZoom: ' . $lmm_options['misc_map_doubleclickzoom'] . ', boxzoom: ' . $lmm_options['map_interaction_options_boxzoom'] . ', trackResize: ' . $lmm_options['misc_map_trackresize'] . ', worldCopyJump: ' . $lmm_options['map_interaction_options_worldcopyjump'] . ', closePopupOnClick: ' . $lmm_options['misc_map_closepopuponclick'] . ', keyboard: ' . $lmm_options['map_keyboard_navigation_options_keyboard'] . ', keyboardPanOffset: ' . intval($lmm_options['map_keyboard_navigation_options_keyboardpanoffset']) . ', keyboardZoomOffset: ' . intval($lmm_options['map_keyboard_navigation_options_keyboardzoomoffset']) . ', inertia: ' . $lmm_options['map_panning_inertia_options_inertia'] . ', inertiaDeceleration: ' . intval($lmm_options['map_panning_inertia_options_inertiadeceleration']) . ', inertiaMaxSpeed: ' . intval($lmm_options['map_panning_inertia_options_inertiamaxspeed']) . ', zoomControl: ' . $lmm_options['misc_map_zoomcontrol'] . ', crs: ' . $lmm_options['misc_projections'] . ' });'.PHP_EOL;
 	$lmm_out .= $mapname.'.attributionControl.setPrefix("' . $attrib_prefix . '");'.PHP_EOL;
 	//info: define basemaps
-	if (is_ssl() == TRUE) {
+	if (substr($locale, 0, 2) != 'zh') { //info: conditional ssl loading (performance issues in China)
 		$protocol_handler = 'https';
 		$mapquest_ssl = '-s';
 	} else {
@@ -583,8 +583,8 @@ elseif (isset($_GET['marker'])) {
 	$lmm_out .= '<style type="text/css" id="leafletmapsmarker-image-css-override">.leaflet-popup-content img { ' . htmlspecialchars($lmm_options['defaults_marker_popups_image_css']) . ' }</style>'.PHP_EOL;
 	$lmm_out .= '<script type="text/javascript" src="' . site_url() . '/wp-includes/js/jquery/jquery.js"></script>'.PHP_EOL;
 	//info: Google API key
-	if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = $lmm_options['google_maps_api_key']; } else { $google_maps_api_key = ''; }
-	$lmm_out .= '<script type="text/javascript" src="https://www.google.com/jsapi?key=' .htmlspecialchars($google_maps_api_key) . '"></script>'.PHP_EOL;
+	if ( isset($lmm_options['google_maps_api_key']) && ($lmm_options['google_maps_api_key'] != NULL) ) { $google_maps_api_key = '?key=' . htmlspecialchars($lmm_options['google_maps_api_key']); } else { $google_maps_api_key = ''; }
+	$lmm_out .= '<script type="text/javascript" src="https://www.google.com/jsapi' . $google_maps_api_key . '"></script>'.PHP_EOL;
 	//info: Google language localization (JSON API)
 	if ($lmm_options['google_maps_language_localization'] == 'browser_setting') {
 		$google_language = '';
@@ -700,7 +700,7 @@ elseif (isset($_GET['marker'])) {
 	$lmm_out .= $mapname.' = new L.Map("'.$mapname.'", { dragging: ' . $lmm_options['misc_map_dragging'] . ', touchZoom: ' . $lmm_options['misc_map_touchzoom'] . ', scrollWheelZoom: ' . $lmm_options['misc_map_scrollwheelzoom'] . ', doubleClickZoom: ' . $lmm_options['misc_map_doubleclickzoom'] . ', boxzoom: ' . $lmm_options['map_interaction_options_boxzoom'] . ', trackResize: ' . $lmm_options['misc_map_trackresize'] . ', worldCopyJump: ' . $lmm_options['map_interaction_options_worldcopyjump'] . ', closePopupOnClick: ' . $lmm_options['misc_map_closepopuponclick'] . ', keyboard: ' . $lmm_options['map_keyboard_navigation_options_keyboard'] . ', keyboardPanOffset: ' . intval($lmm_options['map_keyboard_navigation_options_keyboardpanoffset']) . ', keyboardZoomOffset: ' . intval($lmm_options['map_keyboard_navigation_options_keyboardzoomoffset']) . ', inertia: ' . $lmm_options['map_panning_inertia_options_inertia'] . ', inertiaDeceleration: ' . intval($lmm_options['map_panning_inertia_options_inertiadeceleration']) . ', inertiaMaxSpeed: ' . intval($lmm_options['map_panning_inertia_options_inertiamaxspeed']) . ', zoomControl: ' . $lmm_options['misc_map_zoomcontrol'] . ', crs: ' . $lmm_options['misc_projections'] . ' });'.PHP_EOL;
 	$lmm_out .= $mapname.'.attributionControl.setPrefix("' . $attrib_prefix . '");'.PHP_EOL;
 	//info: define basemaps
-	if (is_ssl() == TRUE) {
+	if (substr($locale, 0, 2) != 'zh') { //info: conditional ssl loading (performance issues in China)
 		$protocol_handler = 'https';
 		$mapquest_ssl = '-s';
 	} else {

@@ -94,7 +94,7 @@
 	
 */
 
-$patgenLanguage = 'Estonian';
+$patgenLanguage = __( 'Estonian', 'wp-typography' );
 
 $patgenExceptions = array();
 
@@ -3800,4 +3800,3 @@ $patgen = array(
 )
 );
 
-?>
