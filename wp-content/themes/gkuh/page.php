@@ -27,12 +27,11 @@ if ( in_category( 'uebersicht' )) {
     echo '<h2>Inhaltsübersicht</h2>';
     echo '<ol class="themenuebersicht">';
     echo wp_list_pages('title_li=&child_of='.$post->ID.'&depth=1&sort_column=menu_order') . '</ol>';
-} 
-;
-                                ?>
-                                    
-                                   
-                                    
+} ;
+
+?>
+                                  
+  
 									<?php
 										// the content (pretty self explanatory huh)
 										the_content();

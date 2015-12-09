@@ -26,7 +26,7 @@ $contentwidth: 80%;
 
 body {
 	font-family: $opensans;
-	font-size: 80%;
+	font-size: 90%;
 	line-height: 1.25;
 	color: $text-color;
 	background-color: $site-bgrd;
@@ -145,16 +145,15 @@ h2, .h2 {
 }
 
 h3, .h3 {
-	font-size: 1.125em;
+	font-size: 1.3em;
 }
 
 h4, .h4 {
-	font-size: 1.1em;
-	font-weight: 700;
+	font-size: 1.2em;
 }
 
-h5, .h5 {
-	font-size: 0.846em;
+h5, .h5, h6, .h6 {
+	font-size: 1.1em;
 	line-height: 2.09em;
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -395,16 +394,13 @@ POSTS & CONTENT STYLES
 			background-color: $white;
 			border-radius: 3px;
 			margin-bottom: 1.5em;
-			border: 1px solid $border-color;
 
 			header {
-				border-bottom: 1px solid $light-gray;
 				padding: 0; 
 			}
 
 			footer {
 				padding: 1.5em;
-				border-top: 1px solid $light-gray;
 
 				p {
 					margin: 0;
@@ -458,10 +454,11 @@ POSTS & CONTENT STYLES
 			ul, ol, table, dl {}
 
 			ul, ol {
-                margin-left: 1em;
+                margin-left: 1.5em;
 
-				li {}
-
+				li {
+                    margin-top: 1em;
+                }
 			}
 
 			ul {
@@ -471,7 +468,11 @@ POSTS & CONTENT STYLES
                     
                     ul {
                         list-style-type: circle;
+                        margin: 0 0 0 1em;
                         
+                        li {
+                        margin: 0;
+                        }
                     }
                 }
 
@@ -551,6 +552,8 @@ POSTS & CONTENT STYLES
 				max-width: 100%;
 				height: auto;
 			}
+            
+            img + h
 
 			/*
 			image alignment on a screen this size may be
@@ -606,6 +609,8 @@ POSTS & CONTENT STYLES
 		.gallery {
 
 			dl {
+                display: inline-block;
+                padding: 4px;
 
 				a {}
 
@@ -618,6 +623,10 @@ POSTS & CONTENT STYLES
 			dd {}
 
 		} /* end .gallery */
+
+        #gallery-1 .gallery-item {
+            width: auto;
+        }
 
 		/* gallery caption styles */
 		.gallery-caption {}
@@ -1098,7 +1107,7 @@ $centerwidth: $centerwidthvalue * 1%;
     position:fixed ;
     vertical-align: middle;
     background-color: $dark-gray;
-    bottom: 0;
+    bottom: -1px;
     height: $footerheight;
     width: 100%;
     line-height: normal;
@@ -1115,6 +1124,7 @@ $centerwidth: $centerwidthvalue * 1%;
 #inner-footer {
     background-color: $dark-gray;
     height: 100%;
+    width: 95%;
 }
 
 .fnavcontainer {
@@ -1147,6 +1157,7 @@ $centerwidth: $centerwidthvalue * 1%;
     //border: 1px solid red;
     align-self: center;
     font-size: 0.9em;
+    line-height: 1.1em;
     overflow: hidden;
 }
 
@@ -1181,7 +1192,7 @@ $centerelement: $centerelementvalue * 1%;
     
     circle {
         transform: rotate(0.1deg); // to fix Firefox
-        position: relative;
+        position: relative; // important for scaling fix
         height: 100%;
         width: 100%;
         left: 0;
@@ -1198,8 +1209,14 @@ $centerelement: $centerelementvalue * 1%;
     width: 100%;
     padding: 0;
     position: relative; // important
-    padding-top: ($centerelementvalue / $footerheightvalue) * 1% ; //scaling fix
-    
+    padding-top: 10% ; //scaling fix
+}
+
+.svgscalefix-circle {
+    width: 100%;
+    padding: 0;
+    position: relative; // important
+    padding-top: 10% ; //scaling fix
 }
 
 /* Positioning of prev/next triangle svg  */
@@ -1209,16 +1226,16 @@ $centerelement: $centerelementvalue * 1%;
     //min-height: $footerheight / 1.5;
     //max-height: $footerheight / 2.5;
     @include flex(1 1 $centerelement);
-    align-self: center;
+    //align-self: center;
     width: $centerelement;
-    padding-top: ($centerelementvalue / $footerheightvalue) * 1% ;
+    //padding-top: 10% ;
     //margin: 0 auto;
     //display: inline-block;
 }
 
 .svgbutton {
     position: relative; //important for scaling fix
-    height: 100%;
+    height: 90%;
     width: 100%;
     left: 0;
     top: 0;

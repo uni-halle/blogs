@@ -128,12 +128,14 @@ POSTS & CONTENT STYLES
 .entry-content {
     padding: 0; }
 
-$page-content: 67%;
+$page-content-value: 67;
 
 .page-content {
-    width: $page-content;
+    width: $page-content-value * 1%;
     height: 100%;
     float: left;
+    border-right: 1px dashed $border-color; /* border to sidebar */
+    padding-right: 2em;
 }
 
 .themenuebersicht {
@@ -145,21 +147,23 @@ $page-content: 67%;
 SIDEBARS & ASIDES
 *********************/
 
+
 #sidebar-gkuh {
     display: block;
+    height: 100%;
 }
 
 .sidebar {
-    width: 100 - $page-content;
+    width: (100 - $page-content-value) * 1%;
     float: right;
-    font-size: 0.7em;
-    border-left: 1px solid $border-color;
+    font-size: 0.8em;
+    
     height: 100%;
 }
 
 	.widgettitle {
-		border-bottom: 2px solid #444;
-		margin-bottom: 0.75em;
+		//border-bottom: 2px solid #444;
+		margin-bottom: 0.25em;
 	}
 
 	.widget {
@@ -277,8 +281,15 @@ FOOTER STYLES
 *********************/
 
 /* if you want to change the heights, set new values and call them at least once in the media query */
-$footerheight:  7em;
-$breadcrumbheight: 1.75em;
+$footerheight-value: 7;
+$footerheight:  $footerheight-value * 1em;
+
+$breadcrumb-value: 1.75;
+$breadcrumbheight: $breadcrumb-value * 1em;
+
+/*width of center area with buttons */
+$centerwidth-value: 20;
+$centerwidth: $centerwidth-value * 1%;
 
 .footer {
     height: $footerheight;
@@ -321,14 +332,14 @@ color: $gkuh;
 #inner-footer {
 	color: $light-gray;
     width: 100%;
-    height: $footerheight - $breadcrumbheight;
+    height: ($footerheight-value - $breadcrumb-value) * 1em;
 }
 
 footer nav {
     height: 100%;
 }
 
-$centerwidth: 20%;
+
 
 .fnavcenter {
     @include flex(1 0 $centerwidth); }

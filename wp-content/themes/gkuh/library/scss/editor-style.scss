@@ -32,7 +32,7 @@ body#tinymce.wp-editor {
 	@import "partials/mixins";
 
 	width: 731px;
-	font-family: $lato;
+	font-family: $opensans;
 	font-size: 100%;
 	line-height: 1.5;
 	color: $text-color;
@@ -187,6 +187,10 @@ body#tinymce.wp-editor {
 			margin: 0 0 1.5em;
 			border-radius: 3px;
 		}
+    
+    ol, ul {
+        padding-left: 1.25em;
+    }
 
 		/*********************
 		LARGER MOBILE DEVICES

@@ -35,11 +35,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 
 
-#menu-nav li ul.sub-menu, #menu-nav button {display:none;}
+#menu-nav li ul.sub-menu, #menu-nav button {display:none}
 
 #menu-nav li.current-post-ancestor ul.sub-menu,
 #menu-nav li.current-post-parent ul.sub-menu,
-#menu-nav li.current-menu-parent ul.sub-menu,
 #menu-nav li.current-page-ancestor ul.sub-menu,
 #menu-nav li.current_page_parent ul.sub-menu,
 #menu-nav li.current-category-parent ul.sub-menu,
@@ -397,8 +396,4 @@ top: -1em;}
     overflow: hidden;
     position: absolute !important;
     width: 1px;
-}
-
-.gallery-caption {
-	font-size: 70%;
 }

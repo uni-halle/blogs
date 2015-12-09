@@ -61,7 +61,12 @@ function show_sub_categories($catDescription) {
 	if (!(is_category()||is_tax())) return $catDescription;
 	if (did_action('__after_loop')) return array_shift(explode(".",$catDescription)).'...';
 	$catsHTML='';
-	foreach (get_categories(array('parent'=>get_query_var('cat'),'hide_empty'=>false)) as $subCat) {
+	foreach (get_categories(array(
+		'parent'=>get_query_var('cat'),
+		'hide_empty'=>false,
+		'orderby'=>'id',
+		'order'=>'ASC'
+	)) as $subCat) {
 		extract((array)$subCat);
 		$description=array_shift(explode("\n",$description));
 		$link = esc_url(get_category_link($term_id));
@@ -79,7 +84,7 @@ html
 		if($catsHTML!='') {
 			add_filter('tc_show_excerpt',function(){return excerpt_state(true); });
 			add_filter('get_the_excerpt','add_more_tag_to_preview');
-			add_action('__before_article',function(){ static $b=true; if ($b): $b=false; ?><h1>Kapitel-Übersicht</h1><?php endif; });
+			add_action('__before_article',function(){ static $b=true; if ($b): $b=false; ?><h1>In diesem Kapitel:</h1><?php endif; });
 		} else {
 			add_filter('the_content','add_create_comment_link');
 		}

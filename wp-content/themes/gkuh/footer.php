@@ -92,52 +92,23 @@ else {
         
         //find category (slug and id) of this page (only the topic-related one which is a child category of 'lektion')
         
-    $topid = get_cat_ID( 'lektion' ); 
+    $topid = get_cat_ID( 'lektion' ); //@todo should work without because of global variables set in header - or isnt that how it works?
     if($topid){                  //check if the required category exists
-        foreach((get_the_category()) as $childcat) {
+/*        foreach((get_the_category()) as $childcat) {
                 if (cat_is_ancestor_of($topid, $childcat)) {
                 $topicat_slug = $childcat->slug;
                 $topicat_id = $childcat->term_id;  
                     }
-        }
-        
+        }*/
+        //echo $topid; //debug
         //get object with pages in this category
         $cat_pages = get_posts('orderby=menu_order&&child_of=0&sort_order=asc&post_type=page&category=' . $topicat_id );
-            
-/*    $menu_name = 'main-nav';
-    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[$menu_name] ) ) {
-	$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
         
-	$menu_items = wp_get_nav_menu_items($menu->term_id);
-        
-    $menu_pages = array();
-        foreach ($menu_items as $menukey => $menu_item) {
-            $itemid = $menu_item->object_id;
-            $itemcat = get_cat_ID($itemid);
-            
-            $menu_pages[] += $menu_item->object_id;
-            
-            $menu_pages[] += $itemcat;
-}*/
-
-	//foreach ( (array) $menu_items as $key => $menu_item ) {
-        
-	    //$title = $menu_item->title;
-        //$itemid = $menu_item->object_id;
-        //$itemcat = get_cat_ID($itemid);
-        //$categories = get_the_category();
-        //$itemcat = $categories[slug];
-        
-        //merror($catpages);
-	//}
-    //} 
-        
-         //error_log($timestamp . $menu_items . "\n", 3, $logpath);
-            //merror($menu_items);
             
          
         //count number of pages in this category            
             $page_count = count($cat_pages);
+            //echo $page_count; //debug
                     
         //find position of this page in the object
             $page_id = get_the_ID(); //get id of this page
