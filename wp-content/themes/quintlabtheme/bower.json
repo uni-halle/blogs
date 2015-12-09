@@ -1,0 +1,13 @@
+{
+  "name": "quintlab",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "bourbon": "~4.2.3",
+    "font-awesome": "fontawesome#~4.4.0",
+    "jquery": "1.x",
+    "neat": "~1.7.2",
+    "normalize.css": "~3.0.3",
+    "slick-carousel": "~1.5.8"
+  }
+}
