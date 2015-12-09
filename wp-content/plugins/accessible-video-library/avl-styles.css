@@ -1,0 +1,4 @@
+.avl-settings pre { width: 100%; overflow: scroll; background: #fff; padding: 5px; }
+.avl-settings .postbox { margin: 10px 10px 0 0}
+.avl-settings .postbox .inside { overflow: visible!important} /* some plugins change this, but I need it at WP default. */
+.avl-settings .meta-box-sortables { min-height: 0}

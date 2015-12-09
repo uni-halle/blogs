@@ -1,0 +1,125 @@
+/*
+CSS for admin area of HD Questionnaire
+*/
+
+body.taxonomy-quiz .term-description-wrap {display:none !important;}
+
+/* ------- Loading Animation
+________________________________________________________
+-------------------------------------------------------- */
+.hdQuFin {position: fixed; bottom: 0; left: 0; z-index: -1; width: 100%; height: 8px; background: rgba(15, 143, 18, 0.7); -webkit-transform: translate3d(-103%, 0, 0); transform: translate3d(-103%, 0, 0); pointer-events: none;}
+.hdQuFin.hd-animate {bottom: -20px; z-index: 100; -webkit-transition: -webkit-transform 1.2s ease-in, bottom 0.3s 2.7s; transition: transform 1.2s ease-in, bottom 0.3s 2.7s; -webkit-transform: translate3d(0%, 0, 0); transform: translate3d(0%, 0, 0);}
+
+
+/* ------- Individual Quiz Options Page
+________________________________________________________
+-------------------------------------------------------- */
+.taxonomy-quiz .form-field {color:#efefef; background:#2d2d2d}
+.taxonomy-quiz .form-table tr.h3Highlight, .taxonomy-quiz .form-table tr.h3Highlight th {background:#3a3a3a;}
+.taxonomy-quiz .form-table th h3 {color:#fff;margin:0;}
+.taxonomy-quiz .form-table th {color:#999; background:#2a2a2a}
+.taxonomy-quiz .form-table th label {color:#FD751A;}
+.taxonomy-quiz .form-table th {padding: 20px;}
+.taxonomy-quiz .form-field input[type=number] {max-width:70px !important;}
+.taxonomy-quiz .form-field p.description {color:#efefef;}
+.taxonomy-quiz .form-field p.description.small {color:#999;}
+.taxonomy-quiz table {border-spacing: 0px 5px; border-collapse: separate;}
+.taxonomy-quiz #wpcontent {background: #222}
+.taxonomy-quiz #wpcontent h1 {color:#fff}
+.taxonomy-quiz ul#adminmenu a.wp-has-current-submenu:after {border-right-color: #222 !important;}
+/* ------- Fluid Columns
+________________________________________________________
+-------------------------------------------------------- */
+.one_half{ width:48%; }.one_third{ width:30.66%; }.two_third{ width:64.33%; }.one_fourth{ width:22%; }.three_fourth{ width:74%; }.one_fifth{ width:16.8%; }.two_fifth{ width:37.6%; }.three_fifth{ width:58.4%; }.four_fifth{ width:67.2%; }.one_sixth{ width:13.33%; }.five_sixth{ width:82.67%; }.one_half,.one_third,.two_third,.three_fourth,.one_fourth,.one_fifth,.two_fifth,.three_fifth,.four_fifth,.one_sixth,.five_sixth{ position:relative; margin-right:3%; float:left; }.last{ margin-right:0 !important; clear:right; }
+.clearboth {clear:both;display:block;font-size:0;height:0;line-height:0;width:100%;}
+
+#hdQuestionnaireContent {max-width:600px; margin: 0 auto;}
+
+#hdQuestionnaireContent .correct {border-bottom: 3px solid rgba(15, 143, 18, 0.7) !important}
+#hdQuestionnaireContent .wrong {border-bottom: 3px solid rgba(196, 22, 36, 0.7) !important}
+#hdQuestionnaireContent .correct2 {border: 8px solid rgba(15, 143, 18, 0.7) !important }
+#hdQuestionnaireContent .wrong2 {border: 8px solid rgba(196, 22, 36, 0.7) !important}
+#hdQuestionnaireContent .hdCountdown {width:60px; height: 60px; border-radius:50%; background:#2d2d2d; color:#fff; line-height:60px; text-align:center; position:fixed; right:10px; bottom:10px}
+#hdQuestionnaireContent .hdCountdown.warning {background:rgba(196, 22, 36, 0.7);}
+#hdQuestionnaireContent {width: 100% !important; margin: 0 auto !important; margin:0 auto; max-width: 550px;}
+#hdQuestionnaireContent h3 {margin-top: 0 !important; font-size: 22px; line-height: 26px; margin-bottom:20px !important; padding-top: 0 !important}
+#hdQuestionnaireContent .question.qTitle h3{margin: 0 !important; padding: 0 !important; font-size: 26px; line-height: 30px;}
+#hdQuestionnaireContent .question.qTitle {border-bottom: 3px solid #999; background:#eaeaea}
+
+#hdQuestionnaireContent #hdQuFinish, #hdQuestionnaireContent #hdQuNext, #hdQuestionnaireContent #jPaginateNext {cursor:pointer; text-align: center; letter-spacing: 0; padding: 15px 28px;	color: #fff !important; margin: 0 auto; margin-bottom:10px; position:relative; width: auto; min-width: 4em; height: auto; line-height: 1.5em; vertical-align: middle; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); text-decoration: none !important; background: #2d2d2d; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0px -2px 0 rgba(0, 0, 0, 0.3); border-radius: 4px;}
+#hdQuestionnaireContent #hdQuFinish:hover, #hdQuestionnaireContent #hdQuNext:hover, #hdQuestionnaireContent #jPaginateNext:hover {box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4), inset 0px -2px 0 rgba(0, 0, 0, 0.3); background:#4f4f4f}
+#hdQuestionnaireContent #hdQuFinish.loading{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}@-webkit-keyframes pulse{from,to{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}50%{-webkit-transform:scale3d(1.05,1.05,1.05);transform:scale3d(1.05,1.05,1.05)}}@keyframes pulse{from,to{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}50%{-webkit-transform:scale3d(1.05,1.05,1.05);transform:scale3d(1.05,1.05,1.05)}}.pulse{-webkit-animation-name:pulse;animation-name:pulse}
+
+
+#hdQuestionnaireContent .hd_qu_featuredImage_wrapper {overflow:hidden; width:100%; height:auto;}
+#hdQuestionnaireContent .hd_qu_featuredImage {width:100%; height: auto; margin-bottom:20px; -webkit-transition: all 650ms ease-in-out !important;-moz-transition: all 650ms ease-in-out !important; -o-transition: all 650ms ease-in-out !important; -ms-transition: all 650ms ease-in-out !important; }
+#hdQuestionnaireContent .hd_qu_featuredImage:hover {opacity:0.8}
+
+#hdQuestionnaireContent label {cursor: pointer !important;}
+#hdQuestionnaireContent input[type="radio"] {display:none !important; }
+#hdQuestionnaireContent input[type="radio"] + label span {display:inline-block !important; width:19px !important; height:19px !important; background:url(icon.png) left top no-repeat !important; margin: -4px 0 !important; font-size: 14px }
+#hdQuestionnaireContent label span {-webkit-transition: all 150ms ease-in-out !important;-moz-transition: all 150ms ease-in-out !important; -o-transition: all 150ms ease-in-out !important; -ms-transition: all 150ms ease-in-out !important; position: relative !important; top: 0px !important;}
+
+#hdQuestionnaireContent .hdQuTooltip {margin-left:12px;}
+.hdQuTooltip {float:right; cursor:pointer; width: 40px; height:40px; line-height:40px; text-align:center; background:#2d2d2d; color:#fff; font-size:12px; display:inline-block; margin-right:12px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%;}
+.hdQuTooltip.toolLeft {margin-right:12px; margin-top:-10px; float:left;}
+a.hdQuTooltip.toolLeft > span {margin-left: -30px !important;}
+.hdQuTooltip.toolLeft span b {margin-left: 0px;}
+a.hdQuTooltip {outline: none; text-decoration: none;}
+a.hdQuTooltip strong {line-height: 30px;}
+a.hdQuTooltip > span {text-align:left;width: 300px; padding: 10px 20px;margin-top: 20px; margin-left: -230px; opacity: 0; visibility: hidden; z-index: 10; position: absolute; font-size: 12px;  font-style: normal; border-radius: 3px; -webkit-transition-property: opacity, margin-top, visibility, margin-left; -webkit-transition-duration: 0.4s, 0.3s, 0.4s, 0.3s; -webkit-transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out; transition-property: opacity, margin-top, visibility, margin-left; transition-duration: 0.4s, 0.3s, 0.4s, 0.3s; transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;}
+a.hdQuTooltip:hover > span { opacity: 1; text-decoration: none; visibility: visible; overflow: visible; margin-top: 60px; display: inline; margin-left: -232px;}
+a.hdQuTooltip span b {width: 15px; height: 15px; margin-left: 200px; margin-top: -19px; display: block; position: absolute;-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-box-shadow: inset -1px 1px 0 #fff; -moz-box-shadow: inset 0 1px 0 #fff; -o-box-shadow: inset 0 1px 0 #fff; box-shadow: inset 0 1px 0 #fff; display: none\0/; *display: none;}    
+a.hdQuTooltip > span { color: #FFFFFF; background: #2d2d2d; line-height:140%;}  
+a.hdQuTooltip span b {background: #2d2d2d; border-top: 1px solid #2d2d2d; border-right: 1px solid #2d2d2d;}
+
+.hdTable .hdQuTooltip {margin-right:12px; margin-top:-10px;color:#000;float:none;}
+.hdTable .hdQuTooltip, .hdTable a.hdQuTooltip > .hdTable span, .hdTable a.hdQuTooltip span b, .hdTable a.hdQuTooltip > span {background:#fdfdfd; color:#2d2d2d}
+.hdTable a.hdQuTooltip > span {margin-left: -30px;}
+.hdTable a.hdQuTooltip span b {margin-left: 0px;}
+
+#hdQuestionnaireContent input[type="radio"]:checked + label span {background:url(icon.png) -19px top no-repeat !important;}
+#hdQuestionnaireContent label {-webkit-transition: all 650ms ease-in-out !important;-moz-transition: all 650ms ease-in-out !important; -o-transition: all 650ms ease-in-out !important; -ms-transition: all 650ms ease-in-out !important; display:block; padding: 6px 0 }
+#hdQuestionnaireContent label:hover {background:#e3e3e3 }
+#hdQuestionnaireContent .question {margin: 20px 0; padding: 12px; background: #efefef; border-bottom: 2px solid #dedede}
+#hdQuestionnaireContent #results {display:none; margin: 20px 0; padding: 12px; background: #efefef; border-bottom: 2px solid #dedede}
+#hdQuestionnaireContent #hdQuShare {background:#e3e3e3; padding: 12px}
+#hdQuestionnaireContent #hdQuShare h4 {margin:12px 0}
+.hdTable p {text-align:right}
+#hdQuestionnaire, #hdQuestionnaire2 {width: 100% !important;}
+#hdQuestionnaire tr:hover {background:#ccc !important}
+#hdQuestionnaire input[type=radio] {text-align:center;}
+#hdQuestionnaire td, #hdQuestionnaire2 td {padding: 10px}
+#hdQuestionnaire tr:nth-child(even){background-color:#efefef}
+#hdQuestionnaire tr > :first-child{background-color:#fff}
+#hdQuestionnaire tr:nth-child(odd){background-color:#dedede}
+#hdQuestionnaire td.answerFeaturedImage {display:none; }
+#hdQuestionnaire .answerFeaturedImage.showImage {display:inline-block;}
+#hdQuestionnaire .widefat {width: 100%}
+#hdQuestionnaire .widefat2 {width: 100%}
+#hdQuestionnaire .uploadimage {cursor:pointer;}
+.widefatText {width:100%; padding: 12px;}
+.payPal {float:right; cursor:pointer; text-align: center;letter-spacing: 0;padding: 15px 28px;color: #fff !important;margin: 0 auto;margin-bottom:10px;position:relative;width: auto;min-width: 4em;height: auto;line-height: 1.5em; vertical-align: middle; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); text-decoration: none !important; background: #FD751A; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0px -2px 0 rgba(0, 0, 0, 0.3); border-radius: 4px; border:none;}
+.payPal:hover {box-shadow: 0 0px 2px rgba(0, 0, 0, 0.4), inset 0px -2px 0 rgba(0, 0, 0, 0.3);}
+
+#hdAdvancedFeatures .hdAdvancedFeatures {margin:12px; display:inline-block; width:30%}
+
+#hdTitle {margin:30px auto;}
+#hdTitle h1 {color:#2d2d2d; padding:10px; display:inline-block; line-height:40px;}
+.hdContent {-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:#2d2d2d; color:#eee; margin-bottom: 30px; padding: 35px 45px;}
+.hdContent h1 {color:#fff; padding:10px}
+.hdContent h2 {color:#FF6600; font-size:26px; margin: 0;}
+.hdContent h3 {color:#fff; padding:0; border-bottom: 1px solid #FF6600; display:inline-block;}
+.hdContent a {color:#FD751A; text-decoration:none;}
+.hdInput {width: 200px; padding: 10px;}
+.hdContent .widefat {display:block}
+
+#twShare, #fbShare {display:inline-block;}
+
+#hdQuestionnaireContent .question .imageAnswer {position:relative; width:49%; margin-bottom:2%; overflow:hidden; cursor:pointer;  -webkit-transition-duration: 0.4s, 0.3s, 0.4s, 0.3s; -webkit-transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out; transition-property: opacity, margin-top, visibility, margin-left; transition-duration: 0.4s, 0.3s, 0.4s, 0.3s; transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;}
+#hdQuestionnaireContent .question .imageAnswer:hover {opacity:0.6}
+#hdQuestionnaireContent .question .imageAnswer.selected {border: 8px solid #2d2d2d;}
+#hdQuestionnaireContent .question .imageAnswer img {width:100%;}
+#hdQuestionnaireContent .question .imageAnswer:nth-child(odd) {float:left}
+#hdQuestionnaireContent .question .imageAnswer:nth-child(even) {float:right}
+#hdQuestionnaireContent .question .imageAnswer .imageInner {position:absolute; width:100%; bottom:0; background: rgba(0,0,0,0.7); color:#fff; padding: 12px; }

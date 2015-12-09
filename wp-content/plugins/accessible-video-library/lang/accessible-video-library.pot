@@ -1,0 +1,345 @@
+# Copyright (C) 2014 Accessible Video Library
+# This file is distributed under the same license as the Accessible Video Library package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Accessible Video Library 1.1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/accessible-video-library\n"
+"POT-Creation-Date: 2014-05-20 20:53:03+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: accessible-video-library.php:29
+msgid "Captions (SRT/DFXP)"
+msgstr ""
+
+#: accessible-video-library.php:31
+msgid "Video (mp4)"
+msgstr ""
+
+#: accessible-video-library.php:32
+msgid "Video (ogv)"
+msgstr ""
+
+#: accessible-video-library.php:33
+msgid "YouTube Video URL"
+msgstr ""
+
+#: accessible-video-library.php:62
+msgid "Accessible Video Library > Help"
+msgstr ""
+
+#: accessible-video-library.php:79
+msgid "Accessible Video Library Settings Updated"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (Accessible Video Library 1.1.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: accessible-video-library.php:83
+msgid "Accessible Video Library"
+msgstr ""
+
+#: accessible-video-library.php:88
+msgid "Help"
+msgstr ""
+
+#: accessible-video-library.php:92
+msgid "Responsive Videos"
+msgstr ""
+
+#: accessible-video-library.php:95
+msgid "Update Settings"
+msgstr ""
+
+#: accessible-video-library.php:100
+msgid "You can customize some aspects of your videos using filters."
+msgstr ""
+
+#: accessible-video-library.php:101
+msgid ""
+"The use of videos from your video library is largely through shortcodes, "
+"documented below."
+msgstr ""
+
+#: accessible-video-library.php:104
+msgid "Shortcodes"
+msgstr ""
+
+#: accessible-video-library.php:108
+msgid ""
+"The only required field is the ID of the video you want to display. You can "
+"also enter a width and a height, and the video will be displayed with those "
+"dimensions."
+msgstr ""
+
+#: accessible-video-library.php:111
+msgid "Custom Filters"
+msgstr ""
+
+#: accessible-video-library.php:112
+msgid ""
+"Out of the box, Accessible Video Library supports captions, ogv and mp4 "
+"video formats, the addition of Spanish subtitles, and a YouTube video "
+"reference."
+msgstr ""
+
+#: accessible-video-library.php:112
+msgid ""
+"Using a custom WordPress filter, you can easily add support for additional "
+"video formats and additional subtitle languages."
+msgstr ""
+
+#: accessible-video-library.php:113
+msgid "Read more about <a href=\"%s\">WordPress filters</a>"
+msgstr ""
+
+#: accessible-video-library.php:114
+msgid "Add Video Formats"
+msgstr ""
+
+#: accessible-video-library.php:128
+msgid "Add Additional Languages"
+msgstr ""
+
+#: accessible-video-library.php:141
+msgid "Get Plug-in Support"
+msgstr ""
+
+#: accessible-video-library.php:239
+msgid ""
+"Please read the FAQ and other Help documents before making a support request."
+msgstr ""
+
+#: accessible-video-library.php:244
+msgid ""
+"Thank you for supporting the continuing development of this plug-in! I'll "
+"get back to you as soon as I can."
+msgstr ""
+
+#: accessible-video-library.php:246
+msgid ""
+"I'll get back to you as soon as I can, after dealing with any support "
+"requests from plug-in supporters."
+msgstr ""
+
+#: accessible-video-library.php:257
+msgid ""
+"Please note: I do keep records of those who have donated, but if your "
+"donation came from somebody other than your account at this web site, please "
+"note this in your message."
+msgstr ""
+
+#: accessible-video-library.php:259
+msgid ""
+"I have read <a href=\"http://www.joedolson.com/articles/accessible-video-"
+"library/\">the FAQ for this plug-in</a>."
+msgstr ""
+
+#: accessible-video-library.php:262
+msgid ""
+"I have <a href=\"http://www.joedolson.com/donate.php\">made a donation to "
+"help support this plug-in</a>."
+msgstr ""
+
+#: accessible-video-library.php:268
+msgid "Send Support Request"
+msgstr ""
+
+#: accessible-video-library.php:271
+msgid ""
+"The following additional information will be sent with your support request:"
+msgstr ""
+
+#: accessible-video-library.php:286
+msgid "Support this Plug-in"
+msgstr ""
+
+#: accessible-video-library.php:294
+msgid ""
+"<a href=\"http://www.joedolson.com/donate.php\">Make a donation today!</a> "
+"Every donation counts - donate $5, $10, or $100 and help me keep this plug-"
+"in running!"
+msgstr ""
+
+#: accessible-video-library.php:304
+msgid "Check out my other plug-ins"
+msgstr ""
+
+#: accessible-video-library.php:305
+msgid "Rate this plug-in"
+msgstr ""
+
+#: accessible-video-library.php:329
+msgid "video"
+msgstr ""
+
+#: accessible-video-library.php:330
+msgid "videos"
+msgstr ""
+
+#: accessible-video-library.php:331
+msgid "Video"
+msgstr ""
+
+#: accessible-video-library.php:332
+msgid "Videos"
+msgstr ""
+
+#: accessible-video-library.php:340
+msgid "US English Subtitles (SRT/DFXP)"
+msgstr ""
+
+#: accessible-video-library.php:343
+msgid "Spanish Subtitles (SRT/DFXP)"
+msgstr ""
+
+#: accessible-video-library.php:350
+msgid "Video Data"
+msgstr ""
+
+#: accessible-video-library.php:365
+msgid "Shortcode"
+msgstr ""
+
+#: accessible-video-library.php:417
+msgid "Upload"
+msgstr ""
+
+#: accessible-video-library.php:489
+msgid "Add New"
+msgstr ""
+
+#: accessible-video-library.php:490
+msgid "Create New %s"
+msgstr ""
+
+#: accessible-video-library.php:491
+msgid "Modify %s"
+msgstr ""
+
+#: accessible-video-library.php:492
+msgid "New %s"
+msgstr ""
+
+#: accessible-video-library.php:493
+msgid "View %s"
+msgstr ""
+
+#: accessible-video-library.php:494
+msgid "Search %s"
+msgstr ""
+
+#: accessible-video-library.php:495
+msgid "No %s found"
+msgstr ""
+
+#: accessible-video-library.php:496
+msgid "No %s found in Trash"
+msgstr ""
+
+#: accessible-video-library.php:540
+msgid "%1$s updated. <a href=\"%2$s\">View %1$s</a>"
+msgstr ""
+
+#: accessible-video-library.php:541
+msgid "Custom field updated."
+msgstr ""
+
+#: accessible-video-library.php:542
+msgid "Custom field deleted."
+msgstr ""
+
+#: accessible-video-library.php:543
+msgid "%s updated."
+msgstr ""
+
+#. translators: %s: date and time of the revision
+#: accessible-video-library.php:545
+msgid "%1$s restored to revision from %2$ss"
+msgstr ""
+
+#: accessible-video-library.php:546
+msgid "%1$s published. <a href=\"%2$s\">View %3$s</a>"
+msgstr ""
+
+#: accessible-video-library.php:547
+msgid "%s saved."
+msgstr ""
+
+#: accessible-video-library.php:548
+msgid "%1$s submitted. <a target=\"_blank\" href=\"%2$s\">Preview %3$s</a>"
+msgstr ""
+
+#: accessible-video-library.php:549
+msgid ""
+"%1$s scheduled for: <strong>%2$s</strong>. <a target=\"_blank\" href=\"%3$s"
+"\">Preview %4$s item</a>"
+msgstr ""
+
+#: accessible-video-library.php:550
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: accessible-video-library.php:551
+msgid "%1$s draft updated. <a target=\"_blank\" href=\"%2$s\">Preview %3$s</a>"
+msgstr ""
+
+#: accessible-video-library.php:570
+msgid "%s Categories"
+msgstr ""
+
+#: accessible-video-library.php:676
+msgid "Transcript<span class=\"screen-reader-text\"> to %s</span>"
+msgstr ""
+
+#: accessible-video-library.php:725 accessible-video-library.php:767
+msgid "Captions"
+msgstr ""
+
+#: accessible-video-library.php:768
+msgid "Transcript"
+msgstr ""
+
+#: accessible-video-library.php:769
+msgid "ID"
+msgstr ""
+
+#: accessible-video-library.php:775
+msgid "No"
+msgstr ""
+
+#: accessible-video-library.php:776
+msgid "Yes"
+msgstr ""
+
+#: accessible-video-library.php:893
+msgid "All videos"
+msgstr ""
+
+#: accessible-video-library.php:894
+msgid "Videos missing Captions"
+msgstr ""
+
+#: accessible-video-library.php:895
+msgid "Videos missing Transcripts"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.joedolson.com/articles/accessible-video-library/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Accessible video library manager. Write transcripts and upload captions."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Joseph C Dolson"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.joedolson.com"
+msgstr ""

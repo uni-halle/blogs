@@ -1,0 +1,7 @@
+.mejs-container { margin-bottom: 30px; }
+.mejs-controls { bottom: -30px !important; }
+.mejs-captions-position-hover { bottom: 15px !important; }
+.mejs-captions-layer { font-size: 14px !important; }
+.mejs-controls .mejs-captions-button .mejs-captions-selector ul li label { font-size: 12px!important; padding: 2px 0 0 0!important; }
+.mejs-controls .mejs-captions-button .mejs-captions-selector ul li label:hover { text-decoration: underline; cursor: pointer; }
+.video-transcript-link { display: inline-block; }
