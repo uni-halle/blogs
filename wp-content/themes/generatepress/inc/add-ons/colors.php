@@ -188,10 +188,7 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			// Navigation background / text current
 			'.main-navigation .main-nav ul .current-menu-item > a, 
 			.main-navigation .main-nav ul .current-menu-parent > a, 
-			.main-navigation .main-nav ul .current-menu-ancestor > a, 
-			.main-navigation .main-nav ul .current_page_item > a, 
-			.main-navigation .main-nav ul .current_page_parent > a, 
-			.main-navigation .main-nav ul .current_page_ancestor > a' => array(
+			.main-navigation .main-nav ul .current-menu-ancestor > a' => array(
 				'color' => $generate_settings['navigation_text_current_color'],
 				'background-color' => $generate_settings['navigation_background_current_color']
 			),
@@ -200,15 +197,9 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			'.main-navigation .main-nav ul .current-menu-item > a:hover, 
 			.main-navigation .main-nav ul .current-menu-parent > a:hover, 
 			.main-navigation .main-nav ul .current-menu-ancestor > a:hover, 
-			.main-navigation .main-nav ul .current_page_item > a:hover, 
-			.main-navigation .main-nav ul .current_page_parent > a:hover, 
-			.main-navigation .main-nav ul .current_page_ancestor > a:hover, 
 			.main-navigation .main-nav ul .current-menu-item.sfHover > a, 
 			.main-navigation .main-nav ul .current-menu-parent.sfHover > a, 
-			.main-navigation .main-nav ul .current-menu-ancestor.sfHover > a, 
-			.main-navigation .main-nav ul .current_page_item.sfHover > a, 
-			.main-navigation .main-nav ul .current_page_parent.sfHover > a, 
-			.main-navigation .main-nav ul .current_page_ancestor.sfHover > a' => array(
+			.main-navigation .main-nav ul .current-menu-ancestor.sfHover > a' => array(
 				'color' => $generate_settings['navigation_text_current_color'],
 				'background-color' => $generate_settings['navigation_background_current_color']
 			),
@@ -216,10 +207,7 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			// Sub-Navigation background / text current
 			'.main-navigation .main-nav ul ul .current-menu-item > a, 
 			.main-navigation .main-nav ul ul .current-menu-parent > a, 
-			.main-navigation .main-nav ul ul .current-menu-ancestor > a, 
-			.main-navigation .main-nav ul ul .current_page_item > a, 
-			.main-navigation .main-nav ul ul .current_page_parent > a, 
-			.main-navigation .main-nav ul ul .current_page_ancestor > a' => array(
+			.main-navigation .main-nav ul ul .current-menu-ancestor > a' => array(
 				'color' => $generate_settings['subnavigation_text_current_color'],
 				'background-color' => $generate_settings['subnavigation_background_current_color']
 			),
@@ -227,16 +215,10 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			// Sub-Navigation current background / text current
 			'.main-navigation .main-nav ul ul .current-menu-item > a:hover, 
 			.main-navigation .main-nav ul ul .current-menu-parent > a:hover, 
-			.main-navigation .main-nav ul ul .current-menu-ancestor > a:hover, 
-			.main-navigation .main-nav ul ul .current_page_item > a:hover, 
-			.main-navigation .main-nav ul ul .current_page_parent > a:hover, 
-			.main-navigation .main-nav ul ul .current_page_ancestor > a:hover,
+			.main-navigation .main-nav ul ul .current-menu-ancestor > a:hover,
 			.main-navigation .main-nav ul ul .current-menu-item.sfHover > a, 
 			.main-navigation .main-nav ul ul .current-menu-parent.sfHover > a, 
-			.main-navigation .main-nav ul ul .current-menu-ancestor.sfHover > a, 
-			.main-navigation .main-nav ul ul .current_page_item.sfHover > a, 
-			.main-navigation .main-nav ul ul .current_page_parent.sfHover > a, 
-			.main-navigation .main-nav ul ul .current_page_ancestor.sfHover > a' => array(
+			.main-navigation .main-nav ul ul .current-menu-ancestor.sfHover > a' => array(
 				'color' => $generate_settings['subnavigation_text_current_color'],
 				'background-color' => $generate_settings['subnavigation_background_current_color']
 			),

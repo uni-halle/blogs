@@ -126,7 +126,12 @@ function generate_menu_fallback( $args )
 	<div class="main-nav">
 		<ul <?php generate_menu_class(); ?>>
 			<?php 
-			wp_list_pages('sort_column=menu_order&title_li=');
+			$args = array(
+				'sort_column' => 'menu_order',
+				'title_li' => '',
+				'walker' => new Generate_Page_Walker()
+			);
+			wp_list_pages( $args );
 			if ( 'enable' == $generate_settings['nav_search'] ) :
 				echo '<li class="search-item" title="' . _x( 'Search', 'submit button', 'generate' ) . '"><a href="#"><i class="fa fa-search"></i></a></li>';
 			endif;
@@ -135,3 +140,52 @@ function generate_menu_fallback( $args )
 	</div><!-- .main-nav -->
 	<?php 
 }
+
+if ( ! class_exists( 'Generate_Page_Walker' ) ) :
+/**
+ * Add current-menu-item to the current item if no theme location is set
+ * This means we don't have to duplicate CSS properties for current_page_item and current-menu-item
+ *
+ * @since 1.3.21
+ */
+class Generate_Page_Walker extends Walker_page 
+{
+	function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) 
+	{
+
+		$css_class = array( 'page_item', 'page-item-' . $page->ID );
+
+		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
+			$css_class[] = 'page_item_has_children';
+		}
+
+		if ( ! empty( $current_page ) ) {
+			$_current_page = get_post( $current_page );
+			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
+				$css_class[] = 'current-menu-ancestor';
+			}
+			if ( $page->ID == $current_page ) {
+				$css_class[] = 'current-menu-item';
+			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
+				$css_class[] = 'current-menu-parent';
+			}
+		} elseif ( $page->ID == get_option('page_for_posts') ) {
+			$css_class[] = 'current-menu-parent';
+		}
+
+		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+
+		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
+		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
+
+		$output .= sprintf(
+			'<li class="%s"><a href="%s">%s%s%s</a>',
+			$css_classes,
+			get_permalink( $page->ID ),
+			$args['link_before'],
+			apply_filters( 'the_title', $page->post_title, $page->ID ),
+			$args['link_after']
+		);
+	}
+}
+endif;
