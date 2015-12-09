@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the 4.3.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-11-09 14:35:27+0000\n"
+"PO-Revision-Date: 2015-12-08 17:58:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -958,6 +958,10 @@ msgstr ""
 "Toute l'équipe de ###SITENAME###\n"
 "###SITEURL###"
 
+#: wp-login.php:649
+msgid "Enter your new password below."
+msgstr "Veuillez saisir votre nouveau mot de passe ci-dessous."
+
 #. translators: Do not translate USERNAME, ADMIN_EMAIL, EMAIL, SITENAME,
 #. SITEURL: those are placeholders.
 #: wp-includes/user.php:2257
@@ -977,7 +981,7 @@ msgid ""
 msgstr ""
 "Bonjour ###USERNAME###,\n"
 "\n"
-"Ce message vous confirme que votre adresse de messagerie à bien été modifiée sur le site ###SITENAME###.\n"
+"Ce message vous confirme que votre adresse de messagerie a bien été modifiée sur le site ###SITENAME###.\n"
 "\n"
 "Si vous n'avez pas effectué cette action, veuillez contacter rapidement l'administrateur du site à cette adresse :\n"
 "###ADMIN_EMAIL###\n"
@@ -987,10 +991,6 @@ msgstr ""
 "Cordialement,\n"
 "L'équipe du site ###SITENAME###\n"
 "###SITEURL###"
-
-#: wp-login.php:649
-msgid "Enter your new password below."
-msgstr "Veuillez saisir votre nouveau mot de passe ci-dessous."
 
 #: wp-includes/post.php:1655
 msgid "No posts found."

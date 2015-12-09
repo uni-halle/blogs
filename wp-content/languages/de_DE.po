@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the 4.3.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-09-19 16:05:50+0000\n"
+"PO-Revision-Date: 2015-12-03 15:13:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -153,10 +153,6 @@ msgstr "Die E-Mail konnte nicht gesendet werden."
 #: wp-includes/user.php:2492 wp-includes/user.php:2509
 msgid "Invalid key"
 msgstr "Ungültiger Schlüssel"
-
-#: wp-login.php:555
-msgid "Lost Password"
-msgstr "Passwort verloren"
 
 #: wp-login.php:563
 msgid "Username or E-mail:"
@@ -991,6 +987,10 @@ msgstr "Dein Link zum Zurücksetzen des Passworts ist abgelaufen. Bitte fordere 
 msgid "WordPress database error:"
 msgstr "WordPress-Datenbank-Fehler:"
 
+#: wp-login.php:555
+msgid "Lost Password"
+msgstr "Passwort vergessen"
+
 #: wp-includes/script-loader.php:254
 msgid "Image"
 msgstr "Bild"
@@ -1124,14 +1124,6 @@ msgid_plural "Currently %s comments are waiting for approval. Please visit the m
 msgstr[0] "Zurzeit wartet %s Kommentar auf Freigabe. Bitte gehe zur Moderationsansicht:"
 msgstr[1] "Zurzeit warten %s Kommentare auf Freigabe. Bitte gehe zur Moderationsansicht:"
 
-#: wp-includes/pluggable.php:1675
-msgid "Password Lost and Changed for user: %s"
-msgstr "Passwort verloren und geändert für Benutzer: %s"
-
-#: wp-includes/pluggable.php:1679
-msgid "[%s] Password Lost/Changed"
-msgstr "[%s] Passwort verloren/ändern"
-
 #: wp-includes/pluggable.php:1465 wp-includes/pluggable.php:1595
 #: wp-includes/pluggable.php:1717
 msgid "E-mail: %s"
@@ -1160,10 +1152,6 @@ msgstr "Nächste Seite"
 #: wp-includes/post-template.php:809
 msgid "Previous page"
 msgstr "Vorherige Seite"
-
-#: wp-includes/post-template.php:1225
-msgid "Home"
-msgstr "Home"
 
 #: wp-includes/post-template.php:1810
 msgid "%1$s [Autosave]"
@@ -2576,6 +2564,18 @@ msgstr "Eintrag des Navigations-Menüs"
 #: wp-includes/pluggable.php:1740
 msgid "To set your password, visit the following address:"
 msgstr "Unter der folgenden Adresse kannst du dein Passwort festlegen:"
+
+#: wp-includes/pluggable.php:1675
+msgid "Password Lost and Changed for user: %s"
+msgstr "Passwort vergessen und geändert für Benutzer: %s"
+
+#: wp-includes/pluggable.php:1679
+msgid "[%s] Password Lost/Changed"
+msgstr "[%s] Passwort vergessen/ändern"
+
+#: wp-includes/post-template.php:1225
+msgid "Home"
+msgstr "Startseite"
 
 #: wp-includes/media-template.php:1097 wp-includes/media-template.php:1186
 msgid "Loop"
