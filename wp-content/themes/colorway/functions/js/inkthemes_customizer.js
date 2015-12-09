@@ -1,0 +1,1 @@
+jQuery(document).ready(function () {    jQuery('.wp-full-overlay-sidebar-content').prepend('<a style="margin-top: 21px;margin-bottom: 16px; margin-left: 87px;"href="' + ink_advert.url + '" class="button" target="_blank" rel="nofollow">' + ink_advert.pro + '</a>');});

@@ -1,0 +1,294 @@
+Theme Name: ColorWay
+
+========================
+
+* Version 3.4.0
+***************************************
+1. Theme option to WordPress customizer API migration.
+
+* Version 3.3.9
+***************************************
+1. Home page Widgetized area placeholder image changed.
+2. Small radius tweak added on Header dropdown menu.
+
+* Version 3.3.8
+***************************************
+1. Slider caption heading color changed to black.
+
+* Version 3.3.7
+***************************************
+1. Demo content store in database issue fixed.
+
+* Version 3.3.6
+***************************************
+1. Theme check issue fixed.
+2. All text domain matched with theme directory.
+3. Made translation ready.
+4. Language .pot file matched with text domain.
+5. Added testimonial section on/off.
+6. Footer social icon distraction issue fixed.
+7. Slider caption issue fixed.
+8. Slider caption animation increased.
+9. Home page widget area placeholder image changed for better understand.
+
+* Version 3.3.5
+***************************************
+1. Home Page Slider images Changed.
+
+* Version 3.3.4
+***************************************
+1. Home Page Slider Option Added.
+2. Blog Style In Home Page Updated
+3. Post Crousel In Home Page Added.
+4. Animate.css File Added For Smome Animation In Theme.
+
+* Version 3.3.3
+***************************************
+1. Theme Option Editor Style Updated.
+
+* Version 3.3.2
+***************************************
+1. Removed Wrong character from editor-style.css
+
+* Version 3.3.1
+***************************************
+1. One Admin Page Added.
+2. Theme Option File Updated
+
+* Version 3.3.0
+***************************************
+1. Used sane defaults to theme options.
+2. Sanitized all options.
+3. An option added for on/off for top feature section on home page. 
+4. An option added for on/off for blog section on home page.
+5. Remove title tag from header.php, used wordpress functionality instead.
+6. Data lost on theme update, issue fixed.
+7. Miner changes in style.css.
+8. All stylesheet enqueued through wp function instead of import.
+
+* Version 3.2.9
+***************************************
+1. Use integrated theme option panel instead of theme options setting by plugin.
+2. Removed front-page.php, used home.php instead.
+3. Removed unused functions.
+
+* Version 3.2.8
+***************************************
+1. Text wrapped issue fixed
+2. Used updated version of TGM-Plugin-Activation class
+
+* Version 3.2.7
+***************************************
+1. ABSPATH is removed used dirname instead.
+
+* Version 3.2.6
+***************************************
+1. Cannot upload images in Theme Options page issue fixed.
+2. Removed integrated option framework setting and implemented theme option settings by plugin instead.
+
+* Version 3.2.5
+***************************************
+1. Now Google fonts load from https site
+2. fixed-width tag changed to fixed-layout.
+3. The theme uses the register_post_type() function, which is plugin-territory functionality, issue fixed.
+4. The <title> tags can only contain a call to wp_title(). Use the wp_title filter to modify the output, issue fixed.
+5. screen_icon() found in the file plugin-activation.php. Deprecated since version 3.8, issue fixed.
+6. get_current_theme() found in the file theme-options.php. Deprecated since version 3.4. Use wp_get_theme(), issue fixed.
+
+* Version 3.2.4
+***************************************
+1. Mobile Navigation Issue Fixed.
+2. Theme Style Update.
+
+* Version 3.2.3
+***************************************
+1. Logo Upload issue Fixed
+
+* Version 3.2.2
+***************************************
+Theme Design Improvement
+Fonts Update
+Metabox alignment fixed on blog
+
+* Version 3.2.1
+***************************************
+text domain issue fixed.
+
+* Version 3.2
+***************************************
+1. Theme Layout Inhance
+2. Theme Font Change
+3. Design Improved
+4. Blog Post on Home Page Added
+5. Home Page Widget Area Added
+
+* Version 3.1
+***************************************
+1. FormGet Plugin recommends added.
+
+* Version 3.0
+***************************************
+1. Font license specified.
+2. Theme check issue fixed.
+
+* Version 2.5.7
+***************************************
+1. Script license specified.
+
+* Version 2.5.5
+***************************************
+1. Images sources specified. 
+
+* Version 2.5.3
+***************************************
+1. Core wordpres background added.
+2. If "Front page displays" is set to "Your latest posts" then latest posts should be displayed fixed.
+
+* Version 2.5.2
+***************************************
+1. Edge case word straight fix to word wrap.
+
+* Version 2.5.2
+***************************************
+1. Remove @package wordpress from all files.
+2. Theme name issue fixed.
+3. Upload button style issue in theme option fixed.
+
+* Version 2.5.1
+***************************************
+1. An undefined function was calling in attachment.php is now fixed.
+
+* Version 2.5
+***************************************
+1. Theme name bug fixed. 
+
+* Version 2.4
+***************************************
+1. All headings SEO friendly.
+
+* Version 2.3
+***************************************
+1. Code optimized.
+2. Image fade effect added
+
+* Version 2.2
+***************************************
+1. Debug issues fixed.
+
+* Version 2.1
+***************************************
+1. Color style not working in wordpress preview fixed.
+
+* Version 2.0 
+***************************************
+1. All Javascripts file changed to un-minified.
+
+
+2. Styles, javascripts and functions are set to unique theme slug.
+3. Copyright resources has removed.
+
+
+* Version 1.7.9 
+***************************************
+1. Theme upgraded to responsive layout
+
+
+
+* Version 1.7.8 
+***************************************
+1. Some jquery issue fixed.
+
+
+2. Stylesheet optimized. 
+
+
+* Version 1.7.7 
+***************************************
+1. Some little bugs fixed.
+
+2. Child theme enabled.
+
+
+* Version 1.7.6 
+***************************************
+1. "Main Menu" theme location issue fixed.
+
+
+2. Search Result Posts/Pages? are not proerply aligned issue fixed.
+
+
+3. Themes are required to enqueue comment-reply script via callback issue fixed.
+
+
+4. Cufon replacement and tipsy calling issue fixed.
+
+5. Neutral default image issue fixed.
+
+
+6. Long strings in menu drop down. e.g(aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa) issue fixed.
+
+
+7. Long menu overlaps the designated space in the theme issue fixed.
+
+
+7. Long site title / descriiption overflows in the footer issue fixed.
+
+
+* Version 1.7.5 
+***************************************
+
+1. Stylesheet optimized.
+
+2. Some little bug fixed
+
+
+3. Footer social logos arranged.
+
+
+
+* Version 1.7.4 
+***************************************
+1. Wordpress jquery initialization 
+
+2. Removed unwanted files.
+
+
+3. Fixed unlinked images.
+
+
+4. Fixed analytics code.
+
+* Version 1.7.3 
+***************************************
+1. More social icons added.
+
+
+
+* Version 1.7.2 
+***************************************
+1. Functions file updated.
+
+2. Attachment file added.
+
+
+3. Few bugs fixed in attachment file.
+
+
+
+* Version 1.7.1 
+***************************************
+1. Custom css option panel resolved.
+
+
+2. Favicon option panel resolved.
+
+
+3. Analytics option panel resolved.
+
+
+4. Searching resolved.
+
+
+5. Cufon heading to display resolved.
+
+

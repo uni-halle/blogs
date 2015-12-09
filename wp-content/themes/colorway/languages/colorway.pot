@@ -1,0 +1,1518 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Colorway\n"
+"POT-Creation-Date: 2015-08-24 17:56+0530\n"
+"PO-Revision-Date: 2015-08-24 17:59+0530\n"
+"Last-Translator: InkThemes <inkthemes@gmail.com>\n"
+"Language-Team: InkThemes <inkthemes@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr_e;_n_noop;esc_html_x\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:18
+msgid "Not Found"
+msgstr ""
+
+#: 404.php:19
+msgid ""
+"Apologies, but the page you requested could not be found. Perhaps searching "
+"will help."
+msgstr ""
+
+#: archive.php:33
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: archive.php:35
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: archive.php:37
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: archive.php:39
+msgid "Blog Archives"
+msgstr ""
+
+#: attachment.php:23
+#, php-format
+msgid "Return to %s"
+msgstr ""
+
+#: attachment.php:26
+#, php-format
+msgid "<span>&larr;</span> %s"
+msgstr ""
+
+#: attachment.php:33
+#, php-format
+msgid "By %2$s"
+msgstr ""
+
+#: attachment.php:39
+#, php-format
+msgid "Published %2$s"
+msgstr ""
+
+#: attachment.php:45
+#, php-format
+msgid "Full size is %s pixels"
+msgstr ""
+
+#: attachment.php:45
+msgid "Link to full-size image"
+msgstr ""
+
+#: attachment.php:50 attachment.php:91
+msgid "Edit"
+msgstr ""
+
+#: attachment.php:89
+msgid "Continue reading &rarr;"
+msgstr ""
+
+#: attachment.php:90 page.php:33
+msgid "Pages:"
+msgstr ""
+
+#: author.php:35
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: blog.php:33 home.php:189 loop.php:12 search.php:28
+msgid "Permanent Link to "
+msgstr ""
+
+#: blog.php:42 loop.php:21 single.php:31
+msgid "Post Tagged with "
+msgstr ""
+
+#: blog.php:45 loop.php:26 search.php:35 single.php:25
+msgid "No Comments."
+msgstr ""
+
+#: blog.php:45 loop.php:26 search.php:35 single.php:25
+msgid "1 Comment."
+msgstr ""
+
+#: blog.php:45 loop.php:26 search.php:35 single.php:25
+msgid "% Comments."
+msgstr ""
+
+#: blog.php:47 loop.php:24 search.php:36
+msgid "Continue Reading..."
+msgstr ""
+
+#: blog.php:54 loop.php:34
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: category.php:23
+#, php-format
+msgid "Category Archives: %s"
+msgstr ""
+
+#: comments.php:6
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:14
+msgid "No Responses"
+msgstr ""
+
+#: comments.php:14
+msgid "One Response"
+msgstr ""
+
+#: comments.php:14
+msgid "% Responses"
+msgstr ""
+
+#: comments.php:14
+msgid "so far."
+msgstr ""
+
+#: comments.php:28
+msgid "Comments are closed."
+msgstr ""
+
+#: contact.php:12
+msgid "Please enter your name."
+msgstr ""
+
+#: contact.php:18
+msgid "Please enter your email address."
+msgstr ""
+
+#: contact.php:21
+msgid "You entered an invalid email address."
+msgstr ""
+
+#: contact.php:27
+msgid "Please enter a message."
+msgstr ""
+
+#: contact.php:67
+msgid "Thanks, your email was sent successfully."
+msgstr ""
+
+#: contact.php:72
+msgid "Sorry, an error occured."
+msgstr ""
+
+#: contact.php:78
+msgid "Name:"
+msgstr ""
+
+#: contact.php:85
+msgid "Email"
+msgstr ""
+
+#: contact.php:92
+msgid "Message:"
+msgstr ""
+
+#: contact.php:108
+msgid "Send Email"
+msgstr ""
+
+#: contact.php:123 single.php:49
+msgid "If you enjoyed this article please consider sharing it!"
+msgstr ""
+
+#: contact.php:125 single.php:52
+msgid "Tweet this!"
+msgstr ""
+
+#: contact.php:128 single.php:55
+msgid "Share on StumbleUpon!"
+msgstr ""
+
+#: contact.php:131 single.php:58
+msgid "Share on Facebook"
+msgstr ""
+
+#: contact.php:134 single.php:61
+msgid "Digg This!"
+msgstr ""
+
+#: footer.php:55
+msgid "Colorway Wordpress Theme</a> by InkThemes.com"
+msgstr ""
+
+#: home.php:35
+msgid ""
+"Design is not just what it looks like and feels like. Design is how it works."
+msgstr ""
+
+#: home.php:56
+msgid "Power of Easiness"
+msgstr ""
+
+#: home.php:61
+msgid ""
+"This Colorway Wordpress Theme gives you the easiness of building your site "
+"without any coding skills required."
+msgstr ""
+
+#: home.php:78
+msgid "Power of Speed"
+msgstr ""
+
+#: home.php:83
+msgid ""
+"The Colorway Wordpress Theme is highly optimized for Speed. So that your "
+"website opens faster than any similar themes."
+msgstr ""
+
+#: home.php:97
+msgid "Power of SEO"
+msgstr ""
+
+#: home.php:102
+msgid ""
+"Visitors to the Website are very highly desirable. With the SEO Optimized "
+"Themes, You get more traffic from Google."
+msgstr ""
+
+#: home.php:117
+msgid "Ready Contact Form"
+msgstr ""
+
+#: home.php:122
+msgid ""
+"Let your visitors easily contact you. The builtin readymade contact form "
+"makes it easier for clients to contact."
+msgstr ""
+
+#: home.php:140
+msgid "Widget Area"
+msgstr ""
+
+#: home.php:158
+msgid "Latest From The Blog"
+msgstr ""
+
+#: home.php:192
+msgid "Continue Reading &rarr;"
+msgstr ""
+
+#: home.php:213
+msgid "Our Customer Love Us"
+msgstr ""
+
+#: home.php:218
+msgid "Read the reviews of some of our  Customers."
+msgstr ""
+
+#: home.php:226 home.php:247 home.php:268
+msgid ""
+"Create and Manage multiple contact forms using single dashboard. You can "
+"show Form on any single/every page of your website. You can also collect "
+"payments, leads and much more..."
+msgstr ""
+
+#: home.php:238
+msgid "Robin Chang"
+msgstr ""
+
+#: home.php:259
+msgid "Rown Wiesly"
+msgstr ""
+
+#: home.php:280
+msgid "Jex Polack"
+msgstr ""
+
+#: search.php:14
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: search.php:45
+msgid "Nothing Found"
+msgstr ""
+
+#: search.php:48
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: search.php:59 tag.php:36
+msgid "&larr; Older posts"
+msgstr ""
+
+#: search.php:60 tag.php:37
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: searchform.php:6 searchform.php:7 searchform.php:8
+msgid "Search"
+msgstr ""
+
+#: sidebar.php:7
+msgid "Archives"
+msgstr ""
+
+#: sidebar.php:13
+msgid "Categories"
+msgstr ""
+
+#: single.php:22
+msgid "Posted on"
+msgstr ""
+
+#: single.php:23
+msgid "in"
+msgstr ""
+
+#: single.php:24
+msgid "on"
+msgstr ""
+
+#: single.php:37
+msgid "Previous Post "
+msgstr ""
+
+#: single.php:39
+msgid "Next Post "
+msgstr ""
+
+#: slit_slider.php:28
+msgid "Your Site is faster to build."
+msgstr ""
+
+#: slit_slider.php:34
+msgid ""
+"Premium WordPress Themes with Single Click Installation, Just a Click and "
+"your website is ready for use."
+msgstr ""
+
+#: slit_slider.php:109
+msgid "Previous"
+msgstr ""
+
+#: slit_slider.php:110
+msgid "Next"
+msgstr ""
+
+#: tag.php:22
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: functions/admin-functions.php:13
+msgid "This theme comes with an "
+msgstr ""
+
+#: functions/admin-functions.php:13
+msgid ""
+"options panel</a> to configure settings. This theme also supports widgets, "
+"please visit the "
+msgstr ""
+
+#: functions/admin-functions.php:13
+msgid "widgets settings page</a> to configure them."
+msgstr ""
+
+#: functions/admin-interface.php:21
+msgid "Theme Options"
+msgstr ""
+
+#: functions/admin-interface.php:49
+msgid "Colorway Pro Version Features"
+msgstr ""
+
+#: functions/admin-interface.php:53
+msgid "8 Built in Color Schemes"
+msgstr ""
+
+#: functions/admin-interface.php:55
+msgid "PDF/Video Documentations"
+msgstr ""
+
+#: functions/admin-interface.php:57
+msgid "Background Images Bonus"
+msgstr ""
+
+#: functions/admin-interface.php:59 functions/theme-options.php:67
+msgid "Home Page Slider"
+msgstr ""
+
+#: functions/admin-interface.php:65
+msgid "Seo optimized Theme"
+msgstr ""
+
+#: functions/admin-interface.php:67
+msgid "Wpml Compatible Theme"
+msgstr ""
+
+#: functions/admin-interface.php:69
+msgid "Improved Zoom-box"
+msgstr ""
+
+#: functions/admin-interface.php:71
+msgid "Gallery & Contact Page"
+msgstr ""
+
+#: functions/admin-interface.php:74
+msgid "View Pro Demo"
+msgstr ""
+
+#: functions/admin-interface.php:75
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: functions/admin-interface.php:85
+msgid "Options Updated"
+msgstr ""
+
+#: functions/admin-interface.php:88
+msgid "Options Reset"
+msgstr ""
+
+#: functions/admin-interface.php:95
+msgid " Options"
+msgstr ""
+
+#: functions/admin-interface.php:117
+msgid "Save All Changes"
+msgstr ""
+
+#: functions/admin-interface.php:123
+msgid "Reset Options"
+msgstr ""
+
+#: functions/admin-interface.php:134
+msgid "Notifications"
+msgstr ""
+
+#: functions/admin-interface.php:138
+msgid "Get Themes email updates and a free WordPress ebook"
+msgstr ""
+
+#: functions/admin-interface.php:139
+msgid ""
+"We'll send you new updates about themes and WordPress and a free WordPress "
+"tips & tricks ebook!"
+msgstr ""
+
+#: functions/admin-interface.php:146
+msgid "Your Name"
+msgstr ""
+
+#: functions/admin-interface.php:155
+msgid "Get the Colorway Pro Theme"
+msgstr ""
+
+#: functions/admin-interface.php:156
+msgid ""
+"You are using the Lite Version of ColorWay Theme. Upgrade to Pro for extra "
+"features like Home Page Slider Contact Page, Gallery Features, Portfolio "
+"Page Template, FullWidth Page Templates, Multiple Color Options and much "
+"more."
+msgstr ""
+
+#: functions/admin-interface.php:157
+msgid "Get the Colorway Pro"
+msgstr ""
+
+#: functions/admin-interface.php:161
+msgid "Rate us on WordPress.org "
+msgstr ""
+
+#: functions/admin-interface.php:162
+msgid ""
+"Get Best and free theme support. We are always ready to solve your queries. "
+"Just started your query at Wordpress.org"
+msgstr ""
+
+#: functions/admin-interface.php:163
+msgid "Get Free Support"
+msgstr ""
+
+#: functions/admin-interface.php:167
+msgid "Extra Benefits With Colorway Pro"
+msgstr ""
+
+#: functions/admin-interface.php:168
+msgid ""
+"Get Premium Support & Free Bonus that includes one WordPress Notification "
+"Plugin and free bonus psd"
+msgstr ""
+
+#: functions/admin-interface.php:485
+msgid "Upload Error: "
+msgstr ""
+
+#: functions/admin-interface.php:490
+msgid "Unsupported filetype uploaded."
+msgstr ""
+
+#: functions/admin-interface.php:790
+msgid "Arial"
+msgstr ""
+
+#: functions/admin-interface.php:791
+msgid "Verdana"
+msgstr ""
+
+#: functions/admin-interface.php:792
+msgid "Trebuchet"
+msgstr ""
+
+#: functions/admin-interface.php:793
+msgid "Georgia"
+msgstr ""
+
+#: functions/admin-interface.php:794
+msgid "Times New Roman"
+msgstr ""
+
+#: functions/admin-interface.php:795
+msgid "Tahoma"
+msgstr ""
+
+#: functions/admin-interface.php:796
+msgid "Palatino"
+msgstr ""
+
+#: functions/admin-interface.php:797
+msgid "Helvetica*"
+msgstr ""
+
+#: functions/admin-interface.php:823
+msgid "Normal"
+msgstr ""
+
+#: functions/admin-interface.php:824
+msgid "Italic"
+msgstr ""
+
+#: functions/admin-interface.php:825
+msgid "Bold"
+msgstr ""
+
+#: functions/admin-interface.php:826
+msgid "Bold/Italic"
+msgstr ""
+
+#: functions/admin-interface.php:878
+msgid "Solid"
+msgstr ""
+
+#: functions/admin-interface.php:879
+msgid "Dashed"
+msgstr ""
+
+#: functions/admin-interface.php:880
+msgid "Dotted"
+msgstr ""
+
+#: functions/admin-interface.php:979
+msgid "Upload Image"
+msgstr ""
+
+#: functions/admin-interface.php:987
+msgid "Remove"
+msgstr ""
+
+#: functions/inkthemes-functions.php:50 functions/inkthemes-functions.php:65
+msgid "Home"
+msgstr ""
+
+#: functions/inkthemes-functions.php:80
+msgid "Archive by category"
+msgstr ""
+
+#: functions/inkthemes-functions.php:128
+msgid "Search results for"
+msgstr ""
+
+#: functions/inkthemes-functions.php:130
+msgid "Posts tagged "
+msgstr ""
+
+#: functions/inkthemes-functions.php:134
+msgid "Articles posted by "
+msgstr ""
+
+#: functions/inkthemes-functions.php:136
+msgid "Error 404"
+msgstr ""
+
+#: functions/inkthemes-functions.php:141
+msgid "Page"
+msgstr ""
+
+#: functions/inkthemes-functions.php:250
+msgid "Primary Widget Area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:252
+msgid "The primary widget area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:260
+msgid "Secondary Widget Area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:262
+msgid "The secondary widget area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:270
+msgid "First Footer Widget Area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:272
+msgid "The first footer widget area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:280
+msgid "Second Footer Widget Area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:282
+msgid "The second footer widget area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:290
+msgid "Third Footer Widget Area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:292
+msgid "The third footer widget area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:300
+msgid "Fourth Footer Widget Area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:302
+msgid "The fourth footer widget area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:310
+msgid "Home Page Right Feature Widget Area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:312
+msgid "The Home Page Right Feature widget area"
+msgstr ""
+
+#: functions/inkthemes-functions.php:331
+msgid "Post navigation"
+msgstr ""
+
+#: functions/inkthemes-functions.php:333
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: functions/inkthemes-functions.php:336
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:55
+#: functions/plugin-activation.php:155
+msgid "Install Required Plugins"
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:56
+#: functions/plugin-activation.php:156
+msgid "Install Plugins"
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:57
+#: functions/plugin-activation.php:157
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:58
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:59
+#: functions/inkthemes-plugin-notify.php:60
+#: functions/plugin-activation.php:160
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:61
+#: functions/plugin-activation.php:161
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:62
+#, php-format
+msgid "The following recommend plugin is currently inactive: %1$s."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:63
+#: functions/plugin-activation.php:163
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:64
+#: functions/plugin-activation.php:164
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:65
+#: functions/plugin-activation.php:165
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:66
+#: functions/plugin-activation.php:166
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:67
+#: functions/plugin-activation.php:167
+msgid "Begin installing plugin"
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:68
+msgid "Activate installed plugin"
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:69
+msgid "Return to recommend Plugins Installer"
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:70
+#: functions/plugin-activation.php:171 functions/plugin-activation.php:1678
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: functions/inkthemes-plugin-notify.php:71
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: functions/plugin-activation.php:158
+msgid "Something went wrong."
+msgstr ""
+
+#: functions/plugin-activation.php:159
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgstr ""
+
+#: functions/plugin-activation.php:162
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgstr ""
+
+#: functions/plugin-activation.php:168
+msgid "Begin activating plugin"
+msgstr ""
+
+#: functions/plugin-activation.php:169
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: functions/plugin-activation.php:170
+msgid "Return to the dashboard"
+msgstr ""
+
+#: functions/plugin-activation.php:172
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: functions/plugin-activation.php:173
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: functions/plugin-activation.php:174
+msgid "Dismiss this notice"
+msgstr ""
+
+#: functions/plugin-activation.php:476 functions/plugin-activation.php:1868
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: functions/plugin-activation.php:1020
+msgid "Private Repository"
+msgstr ""
+
+#: functions/plugin-activation.php:1023
+msgid "Pre-Packaged"
+msgstr ""
+
+#: functions/plugin-activation.php:1028
+msgid "WordPress Repository"
+msgstr ""
+
+#: functions/plugin-activation.php:1030
+msgid "Required"
+msgstr ""
+
+#: functions/plugin-activation.php:1030
+msgid "Recommended"
+msgstr ""
+
+#: functions/plugin-activation.php:1032
+msgid "Not Installed"
+msgstr ""
+
+#: functions/plugin-activation.php:1034
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: functions/plugin-activation.php:1123 functions/plugin-activation.php:1214
+msgid "Install"
+msgstr ""
+
+#: functions/plugin-activation.php:1141 functions/plugin-activation.php:1215
+msgid "Activate"
+msgstr ""
+
+#: functions/plugin-activation.php:1182
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: functions/plugin-activation.php:1196
+msgid "Plugin"
+msgstr ""
+
+#: functions/plugin-activation.php:1197
+msgid "Source"
+msgstr ""
+
+#: functions/plugin-activation.php:1198
+msgid "Type"
+msgstr ""
+
+#: functions/plugin-activation.php:1199
+msgid "Status"
+msgstr ""
+
+#: functions/plugin-activation.php:1663
+msgid "Install package not available."
+msgstr ""
+
+#: functions/plugin-activation.php:1664
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: functions/plugin-activation.php:1665
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: functions/plugin-activation.php:1666
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: functions/plugin-activation.php:1667
+msgid "Plugin install failed."
+msgstr ""
+
+#: functions/plugin-activation.php:1668
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: functions/plugin-activation.php:1677
+msgid "Plugin activation failed."
+msgstr ""
+
+#: functions/plugin-activation.php:1780
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: functions/plugin-activation.php:1781
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: functions/plugin-activation.php:1781 functions/plugin-activation.php:1790
+msgid "Show Details"
+msgstr ""
+
+#: functions/plugin-activation.php:1781 functions/plugin-activation.php:1790
+msgid "Hide Details"
+msgstr ""
+
+#: functions/plugin-activation.php:1782
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: functions/plugin-activation.php:1783
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: functions/plugin-activation.php:1787
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: functions/plugin-activation.php:1788
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: functions/plugin-activation.php:1789
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: functions/plugin-activation.php:1790
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: functions/plugin-activation.php:1791
+msgid "All installations have been completed."
+msgstr ""
+
+#: functions/plugin-activation.php:1792
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: functions/theme-options.php:21
+msgid "On"
+msgstr ""
+
+#: functions/theme-options.php:21
+msgid "Off"
+msgstr ""
+
+#: functions/theme-options.php:25
+msgid "All Post)"
+msgstr ""
+
+#: functions/theme-options.php:35
+msgid "Select a page:"
+msgstr ""
+
+#: functions/theme-options.php:43
+msgid "General Settings"
+msgstr ""
+
+#: functions/theme-options.php:45
+msgid "Custom Logo"
+msgstr ""
+
+#: functions/theme-options.php:46
+msgid "Choose your own logo. Optimal Size: 215px Wide by 55px Height"
+msgstr ""
+
+#: functions/theme-options.php:49
+msgid "Custom Favicon"
+msgstr ""
+
+#: functions/theme-options.php:50
+msgid "Specify a 16px x 16px image that will represent your website's favicon."
+msgstr ""
+
+#: functions/theme-options.php:53
+msgid "Tracking Code"
+msgstr ""
+
+#: functions/theme-options.php:54
+msgid "Paste your Google Analytics (or other) tracking code here."
+msgstr ""
+
+#: functions/theme-options.php:58
+msgid "Home Page Blog post On/Off"
+msgstr ""
+
+#: functions/theme-options.php:59
+msgid "Turn on or off the home page blog post as per your requirement."
+msgstr ""
+
+#: functions/theme-options.php:69
+msgid "Home Page First Slider Image"
+msgstr ""
+
+#: functions/theme-options.php:70 functions/theme-options.php:90
+msgid "Choose Image for your Home page Slider. Optimal Size: 1171px x 526px"
+msgstr ""
+
+#: functions/theme-options.php:73
+msgid "Home Page First Slider Heading"
+msgstr ""
+
+#: functions/theme-options.php:74 functions/theme-options.php:94
+msgid "Enter the Heading for Home page slider"
+msgstr ""
+
+#: functions/theme-options.php:78
+msgid "Home Page First Slide Link"
+msgstr ""
+
+#: functions/theme-options.php:79 functions/theme-options.php:99
+msgid "Enter the Link URL for Home Page Slider"
+msgstr ""
+
+#: functions/theme-options.php:83
+msgid "Home Page First Slide Description"
+msgstr ""
+
+#: functions/theme-options.php:84 functions/theme-options.php:104
+msgid "Enter the Description for Home Page First Slides Show"
+msgstr ""
+
+#: functions/theme-options.php:89
+msgid "Home Page Second Slider Image"
+msgstr ""
+
+#: functions/theme-options.php:93
+msgid "Home Page Second Slider Heading"
+msgstr ""
+
+#: functions/theme-options.php:98
+msgid "Home Page Second Slide Link"
+msgstr ""
+
+#: functions/theme-options.php:103
+msgid "Home Page Second Slide Description"
+msgstr ""
+
+#: functions/theme-options.php:108
+msgid "Home Page Slider On/Off"
+msgstr ""
+
+#: functions/theme-options.php:109
+msgid "Turn on or off the home page Slider as per your requirement."
+msgstr ""
+
+#: functions/theme-options.php:117
+msgid "Home Page Settings"
+msgstr ""
+
+#: functions/theme-options.php:119
+msgid "Home Page Intro"
+msgstr ""
+
+#: functions/theme-options.php:120
+msgid "Enter your heading text for home page"
+msgstr ""
+
+#: functions/theme-options.php:125
+msgid "First Feature Image"
+msgstr ""
+
+#: functions/theme-options.php:126
+msgid "Choose image for your feature column first. Optimal size 198px x 115px"
+msgstr ""
+
+#: functions/theme-options.php:130
+msgid "First Feature Heading"
+msgstr ""
+
+#: functions/theme-options.php:131
+msgid "Enter your heading line for first column"
+msgstr ""
+
+#: functions/theme-options.php:135
+msgid "First Feature Link"
+msgstr ""
+
+#: functions/theme-options.php:136
+msgid "Enter your link for feature column first"
+msgstr ""
+
+#: functions/theme-options.php:140
+msgid "First Feature Content"
+msgstr ""
+
+#: functions/theme-options.php:141
+msgid "Enter your feature content for column first"
+msgstr ""
+
+#: functions/theme-options.php:146
+msgid "Second Feature Image"
+msgstr ""
+
+#: functions/theme-options.php:147
+msgid "Choose image for your feature column second. Optimal size 198px x 115px"
+msgstr ""
+
+#: functions/theme-options.php:151
+msgid "Second Feature Heading"
+msgstr ""
+
+#: functions/theme-options.php:152
+msgid "Enter your heading line for second column"
+msgstr ""
+
+#: functions/theme-options.php:156
+msgid "Second Feature Link"
+msgstr ""
+
+#: functions/theme-options.php:157
+msgid "Enter your link for feature column second"
+msgstr ""
+
+#: functions/theme-options.php:161
+msgid "Second Feature Content"
+msgstr ""
+
+#: functions/theme-options.php:162
+msgid "Enter your feature content for column second"
+msgstr ""
+
+#: functions/theme-options.php:167
+msgid "Third Feature Image"
+msgstr ""
+
+#: functions/theme-options.php:168
+msgid "Choose image for your feature column thrid. Optimal size 198px x 115px"
+msgstr ""
+
+#: functions/theme-options.php:172
+msgid "Third Feature Heading"
+msgstr ""
+
+#: functions/theme-options.php:173
+msgid "Enter your heading line for third column"
+msgstr ""
+
+#: functions/theme-options.php:177
+msgid "Third Feature Link"
+msgstr ""
+
+#: functions/theme-options.php:178
+msgid "Enter your link for feature column third"
+msgstr ""
+
+#: functions/theme-options.php:182
+msgid "Third Feature Content"
+msgstr ""
+
+#: functions/theme-options.php:183
+msgid "Enter your feature content for third column"
+msgstr ""
+
+#: functions/theme-options.php:188
+msgid "Fourth Feature Image"
+msgstr ""
+
+#: functions/theme-options.php:189
+msgid "Choose image for your feature column fourth. Optimal size 198px x 115px"
+msgstr ""
+
+#: functions/theme-options.php:193
+msgid "Fourth Feature Heading"
+msgstr ""
+
+#: functions/theme-options.php:194
+msgid "Enter your heading line for fourth column"
+msgstr ""
+
+#: functions/theme-options.php:198
+msgid "Fourth Feature link"
+msgstr ""
+
+#: functions/theme-options.php:199
+msgid "Enter your link for feature column fourth"
+msgstr ""
+
+#: functions/theme-options.php:203
+msgid "Fourth Feature Content"
+msgstr ""
+
+#: functions/theme-options.php:204
+msgid "Enter your feature content for fourth column"
+msgstr ""
+
+#: functions/theme-options.php:208
+msgid "Home Page Widget Heading"
+msgstr ""
+
+#: functions/theme-options.php:209
+msgid "Enter your text for homepage Widget heading."
+msgstr ""
+
+#: functions/theme-options.php:213
+msgid "Home Page Blog Heading"
+msgstr ""
+
+#: functions/theme-options.php:214
+msgid "Enter your text for homepage blog heading."
+msgstr ""
+
+#: functions/theme-options.php:218
+msgid "Home Page Blog Posts"
+msgstr ""
+
+#: functions/theme-options.php:219
+msgid "Select Number of Post you want to show on Home page."
+msgstr ""
+
+#: functions/theme-options.php:225
+msgid "Home Page Testimonial Setting"
+msgstr ""
+
+#: functions/theme-options.php:227
+msgid "Testimonial Section On/Off"
+msgstr ""
+
+#: functions/theme-options.php:228
+msgid ""
+"Turn on or off the home page testimonial section as per your requirement."
+msgstr ""
+
+#: functions/theme-options.php:233
+msgid "Testimonial Main Heading"
+msgstr ""
+
+#: functions/theme-options.php:234
+msgid "Here mention the text testimonial Section Main Description"
+msgstr ""
+
+#: functions/theme-options.php:239
+msgid "Testimonial Main Description"
+msgstr ""
+
+#: functions/theme-options.php:240
+msgid "Here mention the text testimonial Section Description"
+msgstr ""
+
+#: functions/theme-options.php:245
+msgid "First Testimonial Description"
+msgstr ""
+
+#: functions/theme-options.php:246
+msgid "Here mention the first testimonial description of client"
+msgstr ""
+
+#: functions/theme-options.php:251
+msgid "First Testimonial Image"
+msgstr ""
+
+#: functions/theme-options.php:252
+msgid "Here mention the first testimonial Image of client"
+msgstr ""
+
+#: functions/theme-options.php:257
+msgid "First Testimonial Name"
+msgstr ""
+
+#: functions/theme-options.php:258 functions/theme-options.php:276
+#: functions/theme-options.php:294
+msgid "Here mention the name of  testimonial name of client"
+msgstr ""
+
+#: functions/theme-options.php:263
+msgid "Second Testimonial Description"
+msgstr ""
+
+#: functions/theme-options.php:264
+msgid "Here mention the Second testimonial description of client"
+msgstr ""
+
+#: functions/theme-options.php:269
+msgid "Second Testimonial Image"
+msgstr ""
+
+#: functions/theme-options.php:270
+msgid "Here mention the Second testimonial Image of client"
+msgstr ""
+
+#: functions/theme-options.php:275
+msgid "Second Testimonial Name"
+msgstr ""
+
+#: functions/theme-options.php:281
+msgid "Third Testimonial Description"
+msgstr ""
+
+#: functions/theme-options.php:282
+msgid "Here mention the Third testimonial description of client"
+msgstr ""
+
+#: functions/theme-options.php:287
+msgid "Third Testimonial Image"
+msgstr ""
+
+#: functions/theme-options.php:288
+msgid "Here mention the Third testimonial Image of client"
+msgstr ""
+
+#: functions/theme-options.php:293
+msgid "Third Testimonial Name"
+msgstr ""
+
+#: functions/theme-options.php:301
+msgid "Styling Options"
+msgstr ""
+
+#: functions/theme-options.php:303
+msgid "Custom CSS"
+msgstr ""
+
+#: functions/theme-options.php:304
+msgid "Quickly add some CSS to your theme by adding it to this block."
+msgstr ""
+
+#: functions/theme-options.php:308
+msgid "Footer Settings"
+msgstr ""
+
+#: functions/theme-options.php:310
+msgid "Facebook URL"
+msgstr ""
+
+#: functions/theme-options.php:311
+msgid "Enter your Facebook URL if you have one"
+msgstr ""
+
+#: functions/theme-options.php:315
+msgid "Twitter URL"
+msgstr ""
+
+#: functions/theme-options.php:316
+msgid "Enter your Twitter URL if you have one"
+msgstr ""
+
+#: functions/theme-options.php:320
+msgid "RSS Feed URL"
+msgstr ""
+
+#: functions/theme-options.php:321
+msgid "Enter your RSS Feed URL if you have one"
+msgstr ""
+
+#: functions/theme-options.php:325
+msgid "Linked In URL"
+msgstr ""
+
+#: functions/theme-options.php:326
+msgid "Enter your Linkedin URL if you have one"
+msgstr ""
+
+#: functions/theme-options.php:330
+msgid "Stumble Upon URL"
+msgstr ""
+
+#: functions/theme-options.php:331 functions/theme-options.php:336
+msgid "Enter your Stumble Upon URL if you have one"
+msgstr ""
+
+#: functions/theme-options.php:335
+msgid "Digg URL"
+msgstr ""
+
+#: functions/theme-options.php:340
+msgid "Premium Features"
+msgstr ""
+
+#: functions/themes-page.php:25
+msgid "join inkthemes membership"
+msgstr ""
+
+#: functions/themes-page.php:27
+#, php-format
+msgid ""
+"Get 100% complete access to our entire collection of 47+ WordPress Themes "
+"for only $147"
+msgstr ""
+
+#: functions/themes-page.php:28
+msgid "GRAB THIS OFFER $147 ONLY"
+msgstr ""
+
+#: functions/themes-page.php:32
+msgid "What You Will Get"
+msgstr ""
+
+#: functions/themes-page.php:37
+msgid "Get Access to All InkThemes"
+msgstr ""
+
+#: functions/themes-page.php:38
+msgid ""
+"Launch your new site in few minutes with 47+ fully functional WordPress "
+"Themes."
+msgstr ""
+
+#: functions/themes-page.php:42
+msgid "Forum Support"
+msgstr ""
+
+#: functions/themes-page.php:43
+msgid ""
+"Unparalleled technical support will make your website building hassle free."
+msgstr ""
+
+#: functions/themes-page.php:47
+msgid "Use on Multiple Domains"
+msgstr ""
+
+#: functions/themes-page.php:48
+msgid "Use the themes on multiple domains for yourself or for your clients."
+msgstr ""
+
+#: functions/themes-page.php:52
+msgid "Consistent Updates"
+msgstr ""
+
+#: functions/themes-page.php:53
+msgid ""
+"We bring your needs into action with regular updates to bring the best "
+"themes for you."
+msgstr ""
+
+#: functions/themes-page.php:57
+msgid "Photoshop Files"
+msgstr ""
+
+#: functions/themes-page.php:58
+msgid "Do design edits easily. Get layered photoshop files for all the themes."
+msgstr ""
+
+#: functions/themes-page.php:62
+msgid "One Click Install"
+msgstr ""
+
+#: functions/themes-page.php:63
+msgid ""
+"Preloaded with sample data. You are just a click away from building "
+"astounding website."
+msgstr ""
+
+#: functions/themes-page.php:67
+msgid "popular wordpress Themes from inkthemes"
+msgstr ""
+
+#: functions/themes-page.php:73 functions/themes-page.php:81
+#: functions/themes-page.php:89 functions/themes-page.php:97
+#: functions/themes-page.php:105
+msgid "Read More"
+msgstr ""
+
+#: functions/themes-page.php:75
+msgid "Business & Blog"
+msgstr ""
+
+#: functions/themes-page.php:76 functions/themes-page.php:84
+#: functions/themes-page.php:92 functions/themes-page.php:100
+#: functions/themes-page.php:108
+msgid "WordPress Themes"
+msgstr ""
+
+#: functions/themes-page.php:83
+msgid "Directory & Classified"
+msgstr ""
+
+#: functions/themes-page.php:91
+msgid "Video & Membership"
+msgstr ""
+
+#: functions/themes-page.php:99
+msgid "Appointment & Lead"
+msgstr ""
+
+#: functions/themes-page.php:107
+msgid "Ecommerce & Sales"
+msgstr ""
+
+#: functions/themes-page.php:111
+msgid "And many More..."
+msgstr ""
+
+#: functions/themes-page.php:114
+msgid "BUMPER BONUSES (OVER $820) FOR FREE"
+msgstr ""

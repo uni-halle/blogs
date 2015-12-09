@@ -1,0 +1,293 @@
+<wpml-config>
+    <admin-texts>
+        <key name="inkthemes_options">
+            <key name="of_template">
+                <key name="0">
+                    <key name="name"/>
+                    <key name="type"/>
+                </key>
+                <key name="1">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="type"/>
+                </key>
+                <key name="2">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="type"/>
+                </key>
+                <key name="3">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="4">
+                    <key name="name"/>
+                    <key name="type"/>
+                </key>
+                <key name="5">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="type"/>
+                </key>
+                <key name="6">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="7">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="8">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="9">
+                    <key name="name"/>
+                    <key name="type"/>
+                </key>
+                <key name="10">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="11">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="12">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="13">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="14">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="15">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="16">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="17">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="18">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="19">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="20">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="21">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="22">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="23">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="24">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="25">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="26">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="27">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="28">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="29">
+                    <key name="name"/>
+                    <key name="type"/>
+                </key>
+                <key name="30">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="31">
+                    <key name="name"/>
+                    <key name="type"/>
+                </key>
+                <key name="32">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="33">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="34">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="35">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="36">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+                <key name="37">
+                    <key name="name"/>
+                    <key name="desc"/>
+                    <key name="id"/>
+                    <key name="std"/>
+                    <key name="type"/>
+                </key>
+            </key>
+            <key name="of_themename"/>
+            <key name="of_shortname"/>
+            <key name="colorway_logo"/>
+            <key name="colorway_favicon"/>
+            <key name="colorway_analytics"/>
+            <key name="colorway_slideimage1"/>
+            <key name="colorway_slideheading1"/>
+            <key name="colorway_slidelink1"/>
+            <key name="colorway_slidedescription1"/>
+            <key name="inkthemes_mainheading"/>
+            <key name="inkthemes_fimg1"/>
+            <key name="inkthemes_headline1"/>
+            <key name="inkthemes_link1"/>
+            <key name="inkthemes_feature1"/>
+            <key name="inkthemes_fimg2"/>
+            <key name="inkthemes_headline2"/>
+            <key name="inkthemes_link2"/>
+            <key name="inkthemes_feature2"/>
+            <key name="inkthemes_fimg3"/>
+            <key name="inkthemes_headline3"/>
+            <key name="inkthemes_link3"/>
+            <key name="inkthemes_feature3"/>
+            <key name="inkthemes_fimg4"/>
+            <key name="inkthemes_headline4"/>
+            <key name="inkthemes_link4"/>
+            <key name="inkthemes_feature4"/>
+            <key name="inkthemes_testimonial"/>
+            <key name="inkthemes_blog_head"/>
+            <key name="inkthemes_customcss"/>
+            <key name="colorway_facebook"/>
+            <key name="colorway_twitter"/>
+            <key name="colorway_rss"/>
+            <key name="colorway_linkedin"/>
+            <key name="colorway_stumble"/>
+            <key name="colorway_digg"/>
+            <key name="re_nm"/>
+        </key>
+    </key>
+    </admin-texts>
+</wpml-config>
