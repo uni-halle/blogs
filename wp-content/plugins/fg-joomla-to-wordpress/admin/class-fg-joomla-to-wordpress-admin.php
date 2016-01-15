@@ -40,9 +40,11 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		private $version;
 
 		public $plugin_options;				// Plug-in options
+		public $imported_categories = array();
 
 		protected $post_type = 'post';		// post or page
 		protected $faq_url;					// URL of the FAQ page
+		protected $notices = array();		// Error or success messages
 
 		/**
 		 * Initialize the class and set its properties.
@@ -105,18 +107,27 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 		}
 
 		/**
-		 * Display admin notice
+		 * Display the stored notices
+		 */
+		public function display_notices() {
+			foreach ( $this->notices as $notice ) {
+				echo '<div class="' . $notice['level'] . '"><p>[' . $this->plugin_name . '] ' . $notice['message'] . "</p></div>\n";
+			}
+		}
+		
+		/**
+		 * Store an admin notice
 		 */
 		public function display_admin_notice( $message )	{
-			echo '<div class="updated"><p>['.$this->plugin_name.'] '.$message.'</p></div>';
+			$this->notices[] = array('level' => 'updated', 'message' => $message);
 			error_log('[INFO] [' . $this->plugin_name . '] ' . $message);
 		}
 
 		/**
-		 * Display admin error
+		 * Store an admin error
 		 */
 		public function display_admin_error( $message )	{
-			echo '<div class="error"><p>['.$this->plugin_name.'] '.$message.'</p></div>';
+			$this->notices[] = array('level' => 'error', 'message' => $message);
 			error_log('[ERROR] [' . $this->plugin_name . '] ' . $message);
 		}
 
@@ -162,7 +173,12 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				$this->display_admin_error(__('The wp-content directory must be writable.', 'fg-joomla-to-wordpress'));
 			}
 
-			if ( isset($_POST['empty']) ) {
+			// Requires at least WordPress 4.4
+			if ( version_compare(get_bloginfo('version'), '4.4', '<') ) {
+				$this->display_admin_error(sprintf(__('WordPress 4.4+ is required. Please <a href="%s">update WordPress</a>.', 'fg-joomla-to-wordpress'), admin_url('update-core.php')));
+			}
+			
+			elseif ( isset($_POST['empty']) ) {
 
 				// Delete content
 				if ( check_admin_referer( 'empty', 'fgj2wp_nonce' ) ) { // Security check
@@ -211,15 +227,6 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				// Import content
 				if ( check_admin_referer( 'parameters_form', 'fgj2wp_nonce' ) ) { // Security check
 					$this->import();
-				}
-			}
-
-			elseif ( isset($_POST['remove_cat_prefix']) ) {
-
-				// Remove the prefixes from the categories
-				if ( check_admin_referer( 'remove_cat_prefix', 'fgj2wp_nonce' ) ) { // Security check
-					$result = $this->remove_category_prefix();
-					$this->display_admin_notice(__('Prefixes removed from categories', 'fg-joomla-to-wordpress'));
 				}
 			}
 
@@ -409,6 +416,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 				$sql_queries[] = "TRUNCATE $wpdb->commentmeta";
 				$sql_queries[] = "TRUNCATE $wpdb->comments";
 				$sql_queries[] = "TRUNCATE $wpdb->term_relationships";
+				$sql_queries[] = "TRUNCATE $wpdb->termmeta";
 				$sql_queries[] = "TRUNCATE $wpdb->postmeta";
 				$sql_queries[] = "TRUNCATE $wpdb->posts";
 				$sql_queries[] = <<<SQL
@@ -530,14 +538,15 @@ SQL;
 
 			$sql = <<<SQL
 OPTIMIZE TABLE 
-`$wpdb->commentmeta` ,
-`$wpdb->comments` ,
-`$wpdb->options` ,
-`$wpdb->postmeta` ,
-`$wpdb->posts` ,
-`$wpdb->terms` ,
-`$wpdb->term_relationships` ,
-`$wpdb->term_taxonomy`
+`$wpdb->commentmeta`,
+`$wpdb->comments`,
+`$wpdb->options`,
+`$wpdb->postmeta`,
+`$wpdb->posts`,
+`$wpdb->terms`,
+`$wpdb->term_relationships`,
+`$wpdb->term_taxonomy`,
+`$wpdb->termmeta`
 SQL;
 			$wpdb->query($sql);
 		}
@@ -845,70 +854,98 @@ SQL;
 		 * @return int Number of categories imported
 		 */
 		private function import_categories() {
-			$cat_count = 0;
-			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
-				$sections = $this->get_sections(); // Get the Joomla sections
-			} else {
-				$sections = array();
-			}
+			
 			$categories = $this->get_categories(); // Get the Joomla categories
-			$categories = array_merge($sections, $categories);
-			if ( is_array($categories) ) {
-				$terms = array('1'); // unclassified category
-				foreach ( $categories as $category ) {
+			
+			// Get the Joomla sections
+			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
+				$sections = $this->get_sections();
+				$categories = array_merge($sections, $categories);
+			}
+			
+			$cat_count = $this->insert_categories($categories);
+			
+			return $cat_count;
+		}
+		
+		/**
+		 * Insert a list of categories in the database
+		 * 
+		 * @param array $categories List of categories
+		 * @param string $taxonomy Taxonomy
+		 * @return int Number of inserted categories
+		 */
+		public function insert_categories($categories, $taxonomy='category') {
+			$cat_count = 0;
+			$term_metakey = '_fgj2wp_old_category_id';
+			
+			// Set the list of previously imported categories
+			$this->imported_categories = $this->get_term_metas_by_metakey($term_metakey);
+			
+			$terms = array();
+			if ( $taxonomy == 'category') {
+				$terms[] = '1'; // unclassified category
+			}
+			
+			foreach ( $categories as $category ) {
 
-					if ( get_category_by_slug($category['name']) ) {
-						continue; // Do not import already imported category
-					}
+				$category_id = $category['id'];
 
-					// Insert the category
-					$new_category = array(
-						'cat_name' 				=> $category['title'],
-						'category_description'	=> $category['description'],
-						'category_nicename'		=> $category['name'], // slug
-					);
-
-					// Hook before inserting the category
-					$new_category = apply_filters('fgj2wp_pre_insert_category', $new_category, $category);
-
-					if ( ($cat_id = wp_insert_category($new_category)) !== false ) {
-						$cat_count++;
-						$terms[] = $cat_id;
-					}
-
-					// Hook after inserting the category
-					do_action('fgj2wp_post_insert_category', $cat_id, $category);
+				// Check if the category is already imported
+				if ( array_key_exists($category_id, $this->imported_categories) ) {
+					continue; // Do not import already imported category
 				}
+				
+				$parent_id = isset($category['parent_id']) && isset($this->imported_categories[$category['parent_id']])? $this->imported_categories[$category['parent_id']]: '';
+				
+				// Insert the category
+				$new_category = array(
+					'cat_name' 				=> $category['title'],
+					'category_description'	=> isset($category['description'])? $category['description']: '',
+					'category_nicename'		=> $category['name'], // slug
+					'taxonomy'				=> $taxonomy,
+					'category_parent'		=> $parent_id,
+				);
 
-				// Update the categories with their parent ids
-				// We need to do it in a second step because the children categories
-				// may have been imported before their parent
-				foreach ( $categories as $category ) {
-					$cat = get_category_by_slug($category['name']);
-					if ( $cat ) {
-						// Parent category
-						if ( !empty($category['parent']) ) {
-							$parent_cat = get_category_by_slug($category['parent']);
-							if ( $parent_cat ) {
-								// Hook before editing the category
-								$cat = apply_filters('fgj2wp_pre_edit_category', $cat, $parent_cat);
-								wp_update_term($cat->term_id, 'category', array('parent' => $parent_cat->term_id));
-								// Hook after editing the category
-								do_action('fgj2wp_post_edit_category', $cat);
-							}
-						}
-					}
+				// Hook before inserting the category
+				$new_category = apply_filters('fgj2wp_pre_insert_category', $new_category, $category);
+				
+				$new_cat_id = wp_insert_category($new_category, true);
+				if ( is_wp_error($new_cat_id) ) {
+					continue;
 				}
+				$cat_count++;
+				$terms[] = $new_cat_id;
+				$this->imported_categories[$category_id] = $new_cat_id;
 
-				// Hook after importing all the categories
-				do_action('fgj2wp_post_import_categories', $categories);
+				// Store the Joomla category ID
+				add_term_meta($new_cat_id, $term_metakey, $category_id, true);
 
-				// Update cache
-				if ( !empty($terms) ) {
-					wp_update_term_count_now($terms, 'category');
-					$this->clean_cache($terms);
+				// Hook after inserting the category
+				do_action('fgj2wp_post_insert_category', $new_cat_id, $category);
+			}
+
+			// Update the categories with their parent ids
+			// We need to do it in a second step because the children categories
+			// may have been imported before their parent
+			foreach ( $categories as $category ) {
+				// Parent category
+				if ( isset($this->imported_categories[$category['id']]) && !empty($category['parent_id']) && isset($this->imported_categories[$category['parent_id']]) ) {
+					$cat_id = $this->imported_categories[$category['id']];
+					$parent_cat_id = $this->imported_categories[$category['parent_id']];
+					wp_update_term($cat_id, $taxonomy, array('parent' => $parent_cat_id));
 				}
 			}
+
+			// Hook after importing all the categories
+			do_action('fgj2wp_post_import_categories', $categories);
+
+			// Update cache
+			if ( !empty($terms) ) {
+				wp_update_term_count_now($terms, $taxonomy);
+				$this->clean_cache($terms, $taxonomy);
+			}
+			
 			return $cat_count;
 		}
 
@@ -916,9 +953,9 @@ SQL;
 		 * Clean the cache
 		 * 
 		 */
-		public function clean_cache($terms = array()) {
-			delete_option("category_children");
-			clean_term_cache($terms, 'category');
+		public function clean_cache($terms=array(), $taxonomy='category') {
+			delete_option($taxonomy . '_children');
+			clean_term_cache($terms, $taxonomy);
 		}
 
 		/**
@@ -934,8 +971,6 @@ SQL;
 			$media_count = 0;
 			$imported_tags = array();
 			$step = $test_mode? 1 : 1000; // to limit the results
-
-			$tab_categories = $this->tab_categories(); // Get the categories list
 
 			// Set the WordPress post ID to start the deletion (used when we want to remove only the new imported posts)
 			$start_id = intval(get_option('fgj2wp_start_id'));
@@ -993,14 +1028,13 @@ SQL;
 						}
 
 						// Categories IDs
-						$categories = array($post['category']);
+						$categories = array($post['catid']);
 						// Hook for modifying the post categories
 						$categories = apply_filters('fgj2wp_post_categories', $categories, $post);
 						$categories_ids = array();
-						foreach ( $categories as $category_name ) {
-							$category = sanitize_title($category_name);
-							if ( array_key_exists($category, $tab_categories) ) {
-								$categories_ids[] = $tab_categories[$category];
+						foreach ( $categories as $catid ) {
+							if ( array_key_exists($catid, $this->imported_categories) ) {
+								$categories_ids[] = $this->imported_categories[$catid];
 							}
 						}
 						if ( count($categories_ids) == 0 ) {
@@ -1087,12 +1121,12 @@ SQL;
 		 *
 		 * @return array of Sections
 		 */
-		private function get_sections() {
+		protected function get_sections() {
 			$sections = array();
 
 			$prefix = $this->plugin_options['prefix'];
 			$sql = "
-				SELECT s.title, CONCAT('s', s.id, '-', IF(s.alias <> '', s.alias, s.name)) AS name, s.description
+				SELECT CONCAT('s', s.id) AS id, s.title, IF(s.alias <> '', s.alias, s.name) AS name, s.description, 0 AS parent_id
 				FROM ${prefix}sections s
 			";
 			$sql = apply_filters('fgj2wp_get_sections_sql', $sql, $prefix);
@@ -1107,21 +1141,20 @@ SQL;
 		 *
 		 * @return array of Categories
 		 */
-		private function get_categories() {
+		protected function get_categories() {
 			$categories = array();
 
 			$prefix = $this->plugin_options['prefix'];
 			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
 				$sql = "
-					SELECT c.title, CONCAT('c', c.id, '-', IF(c.alias <> '', c.alias, c.name)) AS name, c.description, CONCAT('s', s.id, '-', IF(s.alias <> '', s.alias, s.name)) AS parent
+					SELECT c.id, c.title, IF(c.alias <> '', c.alias, c.name) AS name, c.description, CONCAT('s', s.id) AS parent_id
 					FROM ${prefix}categories c
 					INNER JOIN ${prefix}sections AS s ON s.id = c.section
 				";
 			} else {
 				$sql = "
-					SELECT c.title, CONCAT('c', c.id, '-', c.alias) AS name, c.description, CONCAT('c', cp.id, '-', cp.alias) AS parent
+					SELECT c.id, c.title, c.alias AS name, c.description, c.parent_id
 					FROM ${prefix}categories c
-					INNER JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
 					WHERE c.extension = 'com_content'
 					ORDER BY c.lft
 				";
@@ -1137,29 +1170,27 @@ SQL;
 		 * Get Joomla component categories
 		 *
 		 * @param string $component Component name
-		 * @param string $cat_prefix Category prefix to set
 		 * @return array of Categories
 		 */
-		public function get_component_categories($component, $cat_prefix) {
+		public function get_component_categories($component) {
 			$categories = array();
 
 			$prefix = $this->plugin_options['prefix'];
 			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
-				$sql = "
-					SELECT c.title, CONCAT('$cat_prefix', c.id, '-', IF(c.alias <> '', c.alias, c.name)) AS name, c.description, CONCAT('$cat_prefix', cp.id, '-', IF(cp.alias <> '', cp.alias, cp.name)) AS parent
-					FROM ${prefix}categories c
-					LEFT JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
-					WHERE c.section = '$component'
-				";
+				$name_field = "IF(c.alias <> '', c.alias, c.name)";
+				$extension_field = 'c.section';
+				$orderby = '';
 			} else {
-				$sql = "
-					SELECT c.title, CONCAT('$cat_prefix', c.id, '-', c.alias) AS name, c.description, CONCAT('$cat_prefix', cp.id, '-', cp.alias) AS parent
-					FROM ${prefix}categories c
-					LEFT JOIN ${prefix}categories AS cp ON cp.id = c.parent_id
-					WHERE c.extension = '$component'
-					ORDER BY c.lft
-				";
+				$name_field = 'c.alias';
+				$extension_field = 'c.extension';
+				$orderby = 'ORDER BY c.lft';
 			}
+			$sql = "
+				SELECT c.id, c.title, $name_field AS name, c.description, c.parent_id
+				FROM ${prefix}categories c
+				WHERE $extension_field = '$component'
+				$orderby
+			";
 			$sql = apply_filters('fgj2wp_get_categories_sql', $sql, $prefix);
 			$categories = $this->joomla_query($sql);
 			return $categories;
@@ -1177,29 +1208,21 @@ SQL;
 			$last_joomla_id = (int)get_option('fgj2wp_last_joomla_id'); // to restore the import where it left
 			$prefix = $this->plugin_options['prefix'];
 
-			// The "name" column disappears in version 1.6+
-			if ( version_compare($this->plugin_options['version'], '1.5', '<=') ) {
-				$cat_field = "IF(c.alias <> '', c.alias, c.name)";
-			} else {
-				$cat_field = 'c.alias';
-			}
-
 			// Hooks for adding extra cols and extra joins
 			$extra_cols = apply_filters('fgj2wp_get_posts_add_extra_cols', '');
 			$extra_joins = apply_filters('fgj2wp_get_posts_add_extra_joins', '');
 
 			$sql = "
-				SELECT DISTINCT p.id, p.title, p.alias, p.introtext, p.fulltext, p.state, CONCAT('c', c.id, '-', $cat_field) AS category, p.modified, p.created AS `date`, p.attribs, p.metakey, p.metadesc, p.ordering
+				SELECT DISTINCT p.id, p.title, p.alias, p.introtext, p.fulltext, p.state, p.catid, p.modified, p.created AS `date`, p.attribs, p.metakey, p.metadesc, p.ordering
 				$extra_cols
 				FROM ${prefix}content p
-				LEFT JOIN ${prefix}categories AS c ON p.catid = c.id
 				$extra_joins
 				WHERE p.state >= -1 -- don't get the trash
 				AND p.id > '$last_joomla_id'
 				ORDER BY p.id
 				LIMIT $limit
 			";
-			$sql = apply_filters('fgj2wp_get_posts_sql', $sql, $prefix, $cat_field, $extra_cols, $extra_joins, $last_joomla_id, $limit);
+			$sql = apply_filters('fgj2wp_get_posts_sql', $sql, $prefix, $extra_cols, $extra_joins, $last_joomla_id, $limit);
 			$posts = $this->joomla_query($sql);
 			return $posts;
 		}
@@ -1257,22 +1280,6 @@ SQL;
 				$post_attribs = json_decode($attribs, true);
 			}
 			return $post_attribs;
-		}
-
-		/**
-		 * Return an array with all the categories sorted by name
-		 *
-		 * @return array categoryname => id
-		 */
-		public function tab_categories() {
-			$tab_categories = array();
-			$categories = get_categories(array('hide_empty' => '0'));
-			if ( is_array($categories) ) {
-				foreach ( $categories as $category ) {
-					$tab_categories[$category->slug] = $category->term_id;
-				}
-			}
-			return $tab_categories;
 		}
 
 		/**
@@ -1912,30 +1919,6 @@ SQL;
 		}
 
 		/**
-		 * Remove the prefixes from the categories
-		 */
-		private function remove_category_prefix() {
-			$matches = array();
-
-			// Hook for doing other actions before removing the prefixes
-			do_action('fgj2wp_pre_remove_category_prefix');
-
-			$categories = get_terms( 'category', array('hide_empty' => 0) );
-			if ( !empty($categories) ) {
-				foreach ( $categories as $cat ) {
-					if ( preg_match('/^(s|c(d|e|k|z)?)\d+-(.*)/', $cat->slug, $matches) ) {
-						wp_update_term($cat->term_id, 'category', array(
-							'slug' => $matches[3]
-						));
-					}
-				}
-			}
-
-			// Hook for doing other actions after removing the prefixes
-			do_action('fgj2wp_post_remove_category_prefix');
-		}
-
-		/**
 		 * Guess the Joomla version
 		 *
 		 * @return string Joomla version
@@ -2040,50 +2023,6 @@ SQL;
 		}
 
 		/**
-		 * Returns the imported categories mapped with their Joomla ID
-		 *
-		 * @return array of category IDs [joomla_category_id => wordpress_category_id]
-		 */
-		public function get_imported_joomla_categories() {
-			global $wpdb;
-			$categories = array();
-			$matches = array();
-
-			$sql = "SELECT term_id, slug FROM {$wpdb->terms} WHERE slug LIKE 'c%'";
-			$results = $wpdb->get_results($sql);
-			foreach ( $results as $result ) {
-				if ( preg_match("/^c(\d+)-/", $result->slug, $matches) ) {
-					$cat_id = $matches[1];
-					$categories[$cat_id] = $result->term_id;
-				}
-			}
-			ksort($categories);
-			return $categories;
-		}
-
-		/**
-		 * Returns the imported sections mapped with their Joomla ID
-		 *
-		 * @return array of section IDs [joomla_section_id => wordpress_category_id]
-		 */
-		public function get_imported_joomla_sections() {
-			global $wpdb;
-			$sections = array();
-			$matches = array();
-
-			$sql = "SELECT term_id, slug FROM {$wpdb->terms} WHERE slug LIKE 's%'";
-			$results = $wpdb->get_results($sql);
-			foreach ( $results as $result ) {
-				if ( preg_match("/^s(\d+)-/", $result->slug, $matches) ) {
-					$section_id = $matches[1];
-					$sections[$section_id] = $result->term_id;
-				}
-			}
-			ksort($sections);
-			return $sections;
-		}
-
-		/**
 		 * Returns the imported users mapped with their Joomla ID
 		 *
 		 * @return array of user IDs [joomla_user_id => wordpress_user_id]
@@ -2175,6 +2114,25 @@ SQL;
 			} else {
 				return false;
 			}
+		}
+		
+		/**
+		 * Get all the term metas corresponding to a meta key
+		 * 
+		 * @param string $meta_key Meta key
+		 * @return array List of term metas: term_id => meta_value
+		 */
+		public function get_term_metas_by_metakey($meta_key) {
+			global $wpdb;
+			$metas = array();
+			
+			$sql = "SELECT term_id, meta_value FROM {$wpdb->termmeta} WHERE meta_key = '$meta_key'";
+			$results = $wpdb->get_results($sql);
+			foreach ( $results as $result ) {
+				$metas[$result->meta_value] = $result->term_id;
+			}
+			ksort($metas);
+			return $metas;
 		}
 		
 		/**

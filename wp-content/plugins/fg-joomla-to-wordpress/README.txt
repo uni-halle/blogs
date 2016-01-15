@@ -2,9 +2,9 @@
 Contributors: Frédéric GILLES
 Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery
-Requires at least: 3.0
-Tested up to: 4.4
-Stable tag: 2.9.2
+Requires at least: 4.4
+Tested up to: 4.4.1
+Stable tag: 2.11.1
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -205,6 +205,19 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * other can be translated
 
 == Changelog ==
+
+= 2.11.1 =
+* Tested with WordPress 4.4.1
+
+= 2.11.0 =
+* Fixed: Categories with null description were not imported
+
+= 2.10.0 =
+* Tweak: Use the WordPress 4.4 term metas: performance improved, nomore need to add a category prefix
+* Tweak: Optimize code
+* Fixed: The notices and errors were sometimes displayed before the header is sent
+* Fixed: Categories with duplicated names were not imported
+* Fixed: The cache for the taxonomies different from category was not cleaned
 
 = 2.9.2 =
 * Tested with WordPress 4.4
@@ -669,6 +682,19 @@ http://wordpress.org/support/plugin/fg-joomla-to-wordpress
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 2.11.1 =
+Tested with WordPress 4.4.1
+
+= 2.11.0 =
+Fixed: Categories with null description were not imported
+
+= 2.10.0 =
+Tweak: Use the WordPress 4.4 term metas: performance improved, nomore need to add a category prefix
+Tweak: Optimize code
+Fixed: The notices and errors were sometimes displayed before the header is sent
+Fixed: Categories with duplicated names were not imported
+Fixed: The cache for the taxonomies different from category was not cleaned
 
 = 2.9.2 =
 Tested with WordPress 4.4
