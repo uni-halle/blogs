@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-12-01 09:00:55+0000\n"
+"PO-Revision-Date: 2015-12-22 13:05:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6415,14 +6415,6 @@ msgstr "Rolle ändern in&#160;&hellip;"
 msgid "Welcome to WordPress!"
 msgstr "Willkommen bei WordPress!"
 
-#: wp-admin/includes/dashboard.php:1020
-msgid "https://planet.wordpress.org/"
-msgstr "http://planet.wpde.org/"
-
-#: wp-admin/includes/dashboard.php:1029
-msgid "https://planet.wordpress.org/feed/"
-msgstr "http://planet.wpde.org/de/small-feed/"
-
 #: wp-admin/includes/dashboard.php:637
 msgid "[Pending]"
 msgstr "[Ausstehend]"
@@ -6496,6 +6488,14 @@ msgstr "Erstelle einen Beitrag"
 #: wp-admin/includes/dashboard.php:1367
 msgid "More Actions"
 msgstr "Weitere Möglichkeiten"
+
+#: wp-admin/includes/dashboard.php:1029
+msgid "https://planet.wordpress.org/feed/"
+msgstr "http://de.planetwp.org/de/small-feed/feed/"
+
+#: wp-admin/includes/dashboard.php:1020
+msgid "https://planet.wordpress.org/"
+msgstr "http://de.planetwp.org"
 
 #: wp-admin/includes/class-wp-upgrader.php:1234
 msgid "Theme installed successfully."
